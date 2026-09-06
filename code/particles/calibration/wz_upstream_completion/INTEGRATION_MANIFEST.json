@@ -16,17 +16,17 @@
   "package_test_count_policy": "the current executable count is reported by pytest collection; 38 is the preserved baseline specification-suite count",
   "runtime_log_excluded": "outputs/latest_validation.log",
   "file_count_excluding_manifest_and_runtime_log": 92,
-  "total_bytes_excluding_manifest_and_runtime_log": 25289446,
+  "total_bytes_excluding_manifest_and_runtime_log": 25293383,
   "files": [
     {
       "path": "OPH_SM_EFT_WZ_COMPLETION_THEOREMS.md",
-      "bytes": 57778,
-      "sha256": "63532dba329324ee670cba5597e2decf8a002ff8d075b832cbcb5ffe56a8ee61"
+      "bytes": 57600,
+      "sha256": "246ae82ae7728e0d4a7981e739e9453a00cde16855bde24b4e83a2f4e6193813"
     },
     {
       "path": "README.md",
-      "bytes": 5329,
-      "sha256": "a6944ee7af324c23d6ad95bd6d5a1af9e8815d2d71ac914c41ecd5f30dcafd30"
+      "bytes": 5281,
+      "sha256": "6498dcff0794acc46dce36640ab2c91b9092317a774e9b1718dfc5673f947660"
     },
     {
       "path": "UPSTREAM_PACKAGE_MANIFEST.json",
@@ -35,8 +35,8 @@
     },
     {
       "path": "candidate_axioms/OPH_PLUS_SM_EFT_FJ_V1.md",
-      "bytes": 2792,
-      "sha256": "371d5bcb4076b81608c7c1298956a62ab4919a933bdb90d54f7c6f171137f49c"
+      "bytes": 2777,
+      "sha256": "eb46985eb5bcf536cced821866acb78f33faec123868582d1334430212a2fa63"
     },
     {
       "path": "checkers/check_certified_second_sheet_poles.py",
@@ -70,8 +70,8 @@
     },
     {
       "path": "checkers/check_sm_eft_action.py",
-      "bytes": 7360,
-      "sha256": "a77b7af530f668d9f4f2075daa2d6645695d08c5db32b40b6edb731b3af1762e"
+      "bytes": 9515,
+      "sha256": "8ca28ec2c7664625d9f8c3e96dff12a07b27f30b76a3633159efec3bcc23ca2a"
     },
     {
       "path": "checkers/check_ward_st_nielsen.py",
@@ -100,8 +100,8 @@
     },
     {
       "path": "docs/OPTIONAL_D11_DOUBLE_CRITICALITY_CANDIDATE.md",
-      "bytes": 932,
-      "sha256": "3c6358e53934de392b82f2db910e8cb3fb606c94e0ff09511aa1d1d49f379224"
+      "bytes": 929,
+      "sha256": "72c8b8ef6ef44194ed666876d7d30325a6a7e5a94ae6e45436fa560b12347c24"
     },
     {
       "path": "docs/PRIMARY_REFERENCES.md",
@@ -136,12 +136,12 @@
     {
       "path": "outputs/diagram_universe_wz.json",
       "bytes": 33958,
-      "sha256": "61c4a595e3afae99dd340d019db1f75bd8734489d97e0a65956cacd5116d080a"
+      "sha256": "4b3fac0705dda96e7cb2b393107aa0661fbe7f148809868470b443401ef02cd3"
     },
     {
       "path": "outputs/eft_matching_1.json",
       "bytes": 5153,
-      "sha256": "65f4c1ba52ee4c6625179878a704c74656d59466bea3b556600d7fe79d77f04b"
+      "sha256": "b8ec42db22907704c1ecd13cb41d43cea5131a13d72e05c2ea9452f3623cdc93"
     },
     {
       "path": "outputs/fj_converted_equivalence.json",
@@ -166,7 +166,7 @@
     {
       "path": "outputs/renormalization_ct_1.json",
       "bytes": 24065,
-      "sha256": "0c43dfa7b22bdc867d58b5d09ca3db065ebc96b23a34c8068e0155ca851a2f8b"
+      "sha256": "2fcbd33e8c416913aeb7fd59aaa7a487c475d106cf8fe297c446ed7a5cac2c7a"
     },
     {
       "path": "outputs/rule_engine_check.json",
@@ -176,12 +176,12 @@
     {
       "path": "outputs/rule_table_engine_a.json",
       "bytes": 107935,
-      "sha256": "a24c8b709288a91b591ad1bbce1ac73f7cc7d5d88cb243828a4b70baaf5213c9"
+      "sha256": "8d6eea11f67cbbcb912176d3e2ff0f1b1a15edd5b3c790ad5fce38afda9b5a92"
     },
     {
       "path": "outputs/rule_table_engine_b.json",
       "bytes": 108316,
-      "sha256": "5b838ee77a78e81966fb1a7edae6598fa8ec25a40f4769efd613489c03c7147d"
+      "sha256": "35cefdc8b01f4052e03e8af20428b737950c9b61e326f56c1511620cb104e52e"
     },
     {
       "path": "outputs/scientific_status.json",
@@ -190,8 +190,8 @@
     },
     {
       "path": "outputs/sm_eft_action_1.json",
-      "bytes": 17203,
-      "sha256": "736bcf6a4812295f1a898e01a6d53bab8367ef7610bfb7dd3e89db7c43900be4"
+      "bytes": 17635,
+      "sha256": "67e8a73c079ed0950b2d526704360652aa674083c94b510b6dc9f4aa458df030"
     },
     {
       "path": "outputs/upstream_validation.log",
@@ -285,8 +285,8 @@
     },
     {
       "path": "producers/sm_eft_action_producer.py",
-      "bytes": 16269,
-      "sha256": "365d178eb8f62d2577cc0d55eb8d0769ab9dc929e2028b42289397cc200b8a42"
+      "bytes": 16660,
+      "sha256": "ad2317c0665b62c3cef83eee9b3ae182dc2adc346c06aa4db6907d13b1075aee"
     },
     {
       "path": "producers/vertex_format.py",
@@ -470,8 +470,8 @@
     },
     {
       "path": "tests/test_sm_eft_action.py",
-      "bytes": 3388,
-      "sha256": "d1f510a1c855d541a746dc46a3f126f56f921611aa8d49f45b5d62780e52a20c"
+      "bytes": 4591,
+      "sha256": "7d6be127b3dc7e7275be670c95853d7870f47b2876eba739849a3a8e8ad402d0"
     },
     {
       "path": "tests/test_wz_pole_diagnostic.py",

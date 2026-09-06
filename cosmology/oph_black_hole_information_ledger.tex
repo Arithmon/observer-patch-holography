@@ -12,12 +12,7 @@
 \IfFileExists{paper/release_info.tex}{
   \input{paper/release_info.tex}
 }{
-  \IfFileExists{../paper/release_info.tex}{
-    \input{../paper/release_info.tex}
-  }{
-    \newcommand{\OPHPaperReleaseID}{r2017}
-    \newcommand{\OPHPaperReleaseDate}{August 11, 2026}
-  }
+  \input{../paper/release_info.tex}
 }
 
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -51,35 +46,18 @@ Observer-Patch Holography}
 \end{center}
 
 \begin{abstract}
-In the finite observer-patch model, the two commitments whose apparent
-conflict constitutes the black-hole information problem are separate
-machine-checked results: within a supplied pointwise-continuous
-one-parameter star-automorphism class, private dynamics is forced to be
-unitary conjugation, and the public record channel is an exact uniform mixture of
-sign unitaries, hence unital. This paper combines
-those results, the exact data-processing and second-law theorems, and a
-conditional rich-fibre packet in a finite information ledger. The no-loss
-conjecture identifies the publicization defect
-$\Ent(\mathcal E(\rho))-\Ent(\rho)=\KL{\rho}{\mathcal E(\rho)}$ with information
-relocated to observer-inaccessible coherences. The displayed equality, a
-generalized-second-law-shaped monotone, complementarity on the finite net, and
-a nondegenerate finite KMS identity are explicitly stated conjectures unless
-labeled as theorems. Every statement is finite; no continuum horizon, collapse,
-Hawking flux, island formula, or evaporating-spacetime Page curve is
-claimed. The black-hole reading is a declared finite-model formulation. The
-source-derived parent order computes source height as the exact longest
-authenticated-parent-chain length, attained at every event, and proves strict
-increase along generated ancestry. Independently, a real axis and the
-rank-three carrier construct a finite one-plus-three ambient Lorentzian
-precursor. Positive-scale source height enters only through event placement,
-not as an intrinsic dimension estimate or physical clock. An auxiliary
-enumerated injective forward-causal placement exists at every finite cutoff,
-but is neither order-reflecting nor physical. Physical attachment requires a
-source-selected order embedding with calibrated density (a causal-set
-faithful embedding), manifoldlikeness, a source-realized clock, and the
-Einstein-branch stress map. Smooth Einstein promotion further requires either
-same-family tensor-curvature convergence or the continuum
-small-ball/null-balance identification; scalar curvature alone is diagnostic.
+We formulate a finite information ledger for observer-patch models using
+machine-checked dynamics and record channels. A continuous one-parameter
+star-automorphism group on a finite-dimensional private algebra acts by
+blockwise unitary conjugation. For a supplied projective partition, the
+public record channel is the exact uniform mixture of independent sign
+unitaries. Classical relative-entropy contraction and finite fluctuation
+identities supply complementary thermodynamic inputs. A declared rich-fibre
+adapter constructs noncommutative regional algebras with commuting disjoint
+blocks and unique restriction gluing. We state the support-aware entropy
+identity and its proposed thermality and information-relocation consequences
+as finite conjectures. Together these results and conjectures make the
+black-hole information question precise within the supplied finite model.
 \end{abstract}
 
 \section*{Finite-model scope and theorem boundary}
@@ -130,7 +108,7 @@ theorems. It would identify the information absent from the public record with
 observer-inaccessible coherences of the ambient state through the formula in
 Conjecture~\ref{tgt:core}.
 
-\section{Machine-checked inputs}
+\section{Machine-checked inputs}\label{sec:checked-inputs}
 
 Each input below is a machine-checked result in the repository, cited by
 module. Their joint consequence and the precise conjectures are stated in
@@ -155,10 +133,12 @@ load-bearing.
 Every stochastic kernel preserving a faithful stationary reference
 contracts Kullback--Leibler divergence to that reference
 (\texttt{kl\_push\_le}), the conditional heat bath obeys the second law
-(\texttt{heatBath\_secondLaw}), and the finite fluctuation theorems hold
-exactly over the rationals
-(\texttt{Thermodynamics/FiniteConditionalRepair.lean},
-\texttt{Thermodynamics/FluctuationTheorems.lean}).
+(\texttt{heatBath\_secondLaw}). For finite real-valued distributions and
+kernels, the integral fluctuation identity holds under its positivity,
+normalization and stationary-reference hypotheses; the pointwise Crooks
+identity additionally assumes detailed balance.
+The proofs are in \path{Lean/Thermodynamics/FiniteConditionalRepair.lean}
+and \path{Lean/Thermodynamics/FluctuationTheorems.lean}.
 \end{theorem}
 
 \begin{theorem}[Support boundary for entropy architecture]
@@ -283,19 +263,16 @@ continuum small-ball/null-balance identification.
 
 \section{Relation to standard approaches}
 
-The Page analysis, the Hayden--Preskill protocol, and the island
-computations concern continuum or holographic systems with gravitational
-dynamics; none of that setting is constructed here. The relation is one
-of shape, stated plainly: the finite ledger realizes, inside a
-machine-checked model, the position that unitarity and thermality are
-compatible because thermality is an access statement rather than a
-dynamical one. The model contributes two elements that are usually
-assumptions elsewhere: the unitarity of the microdynamics is forced by a
-converse theorem rather than postulated, and the record channel is an
-explicitly named mixture of unitaries rather than a generic
-coarse-graining. What the model does not contribute is any statement
-about gravitating systems: there is no horizon, no semiclassical limit,
-and no replica computation, and this paper asserts none.
+The Page analysis, the Hayden--Preskill protocol, and island computations
+concern continuum or holographic systems with gravitational dynamics. The
+finite ledger formulates their information question using separately proved
+unitary dynamics and a specified record channel. Its proposed entropy and
+thermality composition remains conditional on
+Conjectures~\ref{tgt:core}--\ref{tgt:kms}. Within the supplied automorphism
+class, the Stone converse gives unitary implementation; the public channel
+is the explicit sign-unitary mixture. A physical black-hole interpretation
+additionally requires the spacetime, horizon and stress attachments stated
+above.
 
 \section{Observables discipline}
 
@@ -344,7 +321,7 @@ excluding it would not reject the unrestricted integer family.
 
 \section{Verification surface}
 
-The proved theorems cited in Section~2 carry \texttt{\#print axioms}
+The proved theorems cited in Section~\ref{sec:checked-inputs} carry \texttt{\#print axioms}
 receipts with only the standard axioms, no admissions, and no
 native-evaluation shortcut, in the modules named inline. The support-aware
 entropy statements use the general spectral-information definitions.

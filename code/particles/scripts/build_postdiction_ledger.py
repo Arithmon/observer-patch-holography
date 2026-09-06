@@ -97,6 +97,7 @@ LEAN_RECEIPTS = {
     "A5PortAction": LEAN_SCREEN / "A5PortAction.lean",
     "PortFrameGram": LEAN_SCREEN / "PortFrameGram.lean",
     "ExteriorSelection": LEAN_SCREEN / "ExteriorSelection.lean",
+    "WeylYukawaConventions": LEAN_SCREEN / "WeylYukawaConventions.lean",
     "TimeOrderLedger": REPO / "Lean" / "Time" / "TimeOrderLedger.lean",
     "ObserverHistory": REPO / "Lean" / "Time" / "ObserverHistory.lean",
     "ClockReadout": REPO / "Lean" / "Time" / "ClockReadout.lean",
@@ -1122,10 +1123,18 @@ def _forced_structure(
             "derived_block_charges": matter_menu["declared_algebra"][
                 "derived_block_charges"
             ],
-            "lean_declarations": {"ExteriorSelection": list(exterior_declarations)},
+            "lean_declarations": {
+                "ExteriorSelection": list(exterior_declarations),
+                "WeylYukawaConventions": ["conjugate_charge_dictionary", "weyl_up_neutral",
+                    "weyl_down_neutral", "weyl_lepton_neutral", "dirac_up_neutral",
+                    "dirac_down_neutral", "dirac_lepton_neutral", "mixed_convention_not_neutral"],
+            },
             "lean_receipts": _lean_receipt(
-                "ExteriorSelection",
-                declarations={"ExteriorSelection": exterior_declarations},
+                "ExteriorSelection", "WeylYukawaConventions",
+                declarations={"ExteriorSelection": exterior_declarations,
+                    "WeylYukawaConventions": ("conjugate_charge_dictionary", "weyl_up_neutral",
+                        "weyl_down_neutral", "weyl_lepton_neutral", "dirac_up_neutral",
+                        "dirac_down_neutral", "dirac_lepton_neutral", "mixed_convention_not_neutral")},
             ),
             "hypothesis_boundary": (
                 "the selection is exhaustive inside the declared exterior "

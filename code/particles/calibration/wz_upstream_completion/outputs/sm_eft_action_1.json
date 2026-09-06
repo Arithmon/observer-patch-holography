@@ -89,7 +89,7 @@
           ],
           "matrix": "Yu"
         },
-        "expression": "- Qbar Yu Htilde u_c + h.c.",
+        "expression": "- Qbar Yu Htilde u_R + h.c.",
         "operator": "yukawa_up"
       },
       {
@@ -131,7 +131,7 @@
           ],
           "matrix": "Yd"
         },
-        "expression": "- Qbar Yd H d_c + h.c.",
+        "expression": "- Qbar Yd H d_R + h.c.",
         "operator": "yukawa_down"
       },
       {
@@ -173,7 +173,7 @@
           ],
           "matrix": "Ye"
         },
-        "expression": "- Lbar Ye H e_c + h.c.",
+        "expression": "- Lbar Ye H e_R + h.c.",
         "operator": "yukawa_lepton"
       },
       {
@@ -245,6 +245,7 @@
   "conventions": {
     "conjugate_doublet": "Htilde = i sigma^2 H^*",
     "covariant_derivative": "D_mu = partial_mu - i g3 G^a_mu T^a - i g2 W^i_mu tau^i/2 - i gprime Y B_mu",
+    "fermion_action_chart": "four-component chiral bilinears; the census uses only left Weyl fields",
     "gamma5_prescription": "BMHV, declared; finite symmetry-restoring counterterms owned by the renormalization workstream",
     "gauge_fixing": "R_xi class for U1, SU2, SU3 with independent xi symbols; the nonlinear gauge grid of the frozen contract applies downstream",
     "generator_normalization": "Tr(T^a T^b) = delta^{ab}/2",
@@ -256,7 +257,21 @@
     },
     "inverse_propagator_sign": "frozen by the downstream strict pole-map contract; not restated here",
     "metric_signature": "(+,-,-,-)",
-    "regularization": "dimensional, d = 4 - 2 epsilon"
+    "regularization": "dimensional, d = 4 - 2 epsilon",
+    "right_handed_dictionary": {
+      "d_R": {
+        "census_field": "d_c",
+        "operation": "charge_conjugation"
+      },
+      "e_R": {
+        "census_field": "e_c",
+        "operation": "charge_conjugation"
+      },
+      "u_R": {
+        "census_field": "u_c",
+        "operation": "charge_conjugation"
+      }
+    }
   },
   "field_census": {
     "anomaly_forms_per_generation": {
@@ -503,8 +518,8 @@
   "lane": "external_strict_one_loop_wz_validation",
   "lane_status": "EXTERNAL_SM_DECLARED_ACTION",
   "packet_hashes": {
-    "action_ast": "ec75e7373fdd995fc0f3d45f8fe95169bac979cb8a55a53a2c0a559b9ac310de",
-    "conventions": "501438741c6bbaa5011d44e38dce4fc3a0e27bf4b452517fa65710fd8a0e3ff8",
+    "action_ast": "e7e9e61e9ad78c217e738d3a12353857abf2de95da2ac2dd36aef852253de1dd",
+    "conventions": "95bb0170434c611e3e5c3d5710e32503dd156838aeae2af84579ec04871adef7",
     "field_census": "0a9b524fdf3a726ba2d62aae349759657d6f37bb73a8e468e79d0097bcde43aa",
     "source_dag": "e2583e9888998b8618272607665b96a1a3388c18d534f28a86c475958557e7f0",
     "vev_types": "407e04ae36d59925795054b61037020bb3466a56142c9f9fa7e80e4815b82676",
@@ -555,7 +570,7 @@
     ],
     "target_values_in_ancestry": false
   },
-  "subject_digest": "2822c158805db038dfe2682508316f100968ce152e47b23062d6e11029607b5e",
+  "subject_digest": "7a88486b20e5114769cfabde4a0ed7f3d8409acb81b1fa9a8659188794d85862",
   "vev_types": {
     "equality_theorem": "absent; the two types stay distinct until a theorem is supplied",
     "v_F": {

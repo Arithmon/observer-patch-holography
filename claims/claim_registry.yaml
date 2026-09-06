@@ -3629,7 +3629,8 @@
         "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
         "code/a5_closure/exterior_sm_completion.py",
         "code/a5_closure/exterior_sm_completion.json",
-        "code/a5_closure/test_audit.py"
+        "code/a5_closure/test_audit.py",
+        "Lean/Screen/WeylYukawaConventions.lean"
       ],
       "falsifier": "The exterior decomposition, any displayed hypercharge sum, any listed anomaly coefficient, any one-Higgs singlet multiplicity, or the weak-doublet count differs from the certificate under the stated carrier assumptions.",
       "scope_if_false": "The exterior representation route falls. The abstract A5 coefficient bracket and unrelated consensus or gravity branches survive.",
@@ -3988,7 +3989,7 @@
     },
     {
       "claim_id": "OPH-DM-CONT",
-      "statement": "The OPH dark sector is conditionally classified as non-luminous modular charge of the screen. Under the universal-coupling premise geometry responds to total modular charge, so the luminous-only Einstein relation holds exactly when non-luminous charge vanishes; this does not derive that a nonzero charge exists or physically attach a carrier. A candidate carrier is anomalous modular energy on overlap collars: its stress is bounded by the collar recovery defect, vanishes at full recovery, and dilutes as the inverse cube of the scale factor when conserved. On the collar-scale premise a compact source sees only ambient anomalous density, whose Solar-System footprint has zero trace-free quadrupole and a small traceful isotropic tidal scale; Cassini supplies only a dimensional comparison, not a direct bound on that isotropic channel. On the linear enclosed-mass premise the deep-regime density conditionally gives the radial-acceleration relation, flat rotation curves, and baryonic Tully-Fisher relation with one constant. A matched seen-data SPARC diagnostic excludes bulge-ambiguous galaxies, compares the same anomalous observable on a 97-galaxy common set, and finds a paired interval containing zero. The combined changes are consistent with, but do not causally isolate, a mixed-proxy explanation. A source-bound empirical full-RAR calibration separately authenticates the committed CDS snapshot, fixes exact cut and unit bookkeeping, and exposes large deterministic weighting sensitivity. It consumes no OPH candidate value, remains target-informed and retrospective, and supplies neither a source-derived acceleration constant nor OPH evidence. A separate penalized profile objective scans a declared covariance family; its threshold sets are uncalibrated sensitivity contours, some disconnected, and cannot accept or reject a future source value. The local QUMOND quadrature replay reproduces published fixed-input central values but emits thousands of integration warnings and has no tail or singularity certificate, so it independently certifies or retires no field law. The compact-source saturation theorem and deep-profile characterization remain conditional; physical envelope attachment, galactic sourcing, transition profile, relativistic stress and lensing relation, magnitude, localization, abundance, certified field-law numerics, and a prospectively frozen calibrated likelihood remain open.",
+      "statement": "The OPH dark sector is conditionally classified as non-luminous modular charge of the screen. Under the universal-coupling premise geometry responds to total modular charge, so the luminous-only Einstein relation holds exactly when non-luminous charge vanishes; this does not derive that a nonzero charge exists or physically attach a carrier. A candidate carrier is anomalous modular energy on overlap collars: its stress is bounded by the collar recovery defect, vanishes at full recovery, and dilutes as the inverse cube of the scale factor when conserved. On the collar-scale premise a compact source sees only ambient anomalous density, whose Solar-System footprint has zero trace-free quadrupole and a small traceful isotropic tidal scale; Cassini supplies only a dimensional comparison, not a direct bound on that isotropic channel. On the linear enclosed-mass premise the deep-regime density conditionally gives the radial-acceleration relation, flat rotation curves, and baryonic Tully-Fisher relation with one constant. A matched seen-data SPARC diagnostic excludes bulge-ambiguous galaxies, compares the same anomalous observable on a 97-galaxy common set, and finds a paired interval containing zero. The combined changes are consistent with, but do not causally isolate, a mixed-proxy explanation. A source-bound empirical full-RAR calibration separately authenticates the committed CDS snapshot, fixes exact cut and unit bookkeeping, and exposes large deterministic weighting sensitivity. It consumes no OPH candidate value, remains target-informed and retrospective, and supplies neither a source-derived acceleration constant nor OPH evidence. A separate penalized profile objective scans a declared covariance family; its threshold sets are uncalibrated sensitivity contours, some disconnected, and cannot accept or reject a future source value. The local QUMOND quadrature replay reproduces published fixed-input central values but emits thousands of integration warnings and has no tail or singularity certificate, so it independently certifies or retires no field law. The saturation theorem gives asymptotic suppression under common envelope parameters, not exact vanishing at finite density or depth. That finite-source condition and the deep-profile characterization remain conditional; physical envelope attachment, galactic sourcing, transition profile, relativistic stress and lensing relation, magnitude, localization, abundance, certified field-law numerics, and a prospectively frozen calibrated likelihood remain open.",
       "owner_paper": "cosmology/oph_dark_matter_paper.tex",
       "tier": "phenomenological_continuation",
       "assumptions": [
@@ -7035,7 +7036,7 @@
     },
     {
       "claim_id": "OPH-DM-COLLAR-SATURATION",
-      "statement": "The exponential recovery envelope of the conditional collar-recovery mixing branch, with the collar defect at depth delta bounded by kappa * B * exp(-(delta * rho^(1/3) - r0)/zeta) in the local record density rho, composes exactly with the committed dark-sector screening interface. Along remainder families with fixed collar radius and bounded collar constant, the recovery defect and the anomalous collar stress tend to zero as the collar depth grows at fixed record density, and as the record density grows at fixed positive depth; the quantitative stress rate is |T_anom| <= 15 C/(8 pi^2 ell^4) * kappa * B * exp(-(delta * rho^(1/3) - r0)/zeta), and the settled-cut threshold is exact: the envelope bound falls below eps precisely when delta * rho^(1/3) exceeds r0 + zeta * log(kappa * B / eps). The delimitation is exact in both directions: the identically zero defect satisfies every envelope hypothesis, so the envelope never forces a nonzero defect and galactic-scale sourcing stays a premise; and an explicit sparsely recorded instance sits at the bound with an order-one defect and strictly positive stress 15/(4 pi^2), so the same hypotheses admit a nonzero dark source on sparse cuts. That physical collars satisfy the envelope is the conditional mixing branch of the collar-recovery claim, taken as a hypothesis; no physical value of any envelope parameter is asserted, and no galactic defect is proved nonzero.",
+      "statement": "The exponential recovery envelope of the conditional collar-recovery mixing branch, with the collar defect at depth delta bounded by kappa * B * exp(-(delta * rho^(1/3) - r0)/zeta) in the local record density rho, composes exactly with the committed dark-sector screening interface. Along remainder families with common kappa>=0, B>=1, r0>=0 and zeta>0, fixed positive collar radius and bounded collar constant, the recovery defect and the anomalous collar stress tend to zero as the collar depth grows at fixed positive record density, and as the record density grows at fixed positive depth; the quantitative stress rate is |T_anom| <= 15 C/(8 pi^2 ell^4) * kappa * B * exp(-(delta * rho^(1/3) - r0)/zeta), and for eps>0 and kappa*B>0, the settled-cut threshold is exact: the envelope bound falls below eps precisely when delta * rho^(1/3) exceeds r0 + zeta * log(kappa * B / eps). The delimitation is exact in both directions: the identically zero defect satisfies every envelope hypothesis, so the envelope never forces a nonzero defect and galactic-scale sourcing stays a premise; and an explicit sparsely recorded instance sits at the bound with an order-one defect and strictly positive stress 15/(4 pi^2), so the same hypotheses admit a nonzero dark source on sparse cuts. For kappa=0 the defect and stress vanish at every admissible depth. That physical collars satisfy the envelope is the conditional mixing branch of the collar-recovery claim, taken as a hypothesis; no physical value of any envelope parameter is asserted, and no galactic defect is proved nonzero.",
       "owner_paper": "cosmology/oph_dark_matter_paper.tex",
       "tier": "conditional_saturation_composition_theorem",
       "assumptions": [
@@ -7045,7 +7046,7 @@
       "imported_results": [
         "real_exponential_and_squeeze_limits"
       ],
-      "oph_specific_delta": "Composes the Einstein branch's collar-recovery rate schema with the dark-sector screening interface, so the compact-source half of the collar-scale premise becomes a conditional theorem with an exact exponential rate in the local record density and an exact settled-cut threshold, while the galactic-sourcing half is proved to be genuinely premise-level: the envelope admits both the zero defect and an order-one sparse-cut defect.",
+      "oph_specific_delta": "Composes the Einstein branch's collar-recovery rate schema with the dark-sector screening interface, giving conditional asymptotic suppression with an exact exponential rate and positive-tolerance threshold. Exact vanishing at a finite compact source and physical galactic sourcing remain separate premises: the envelope admits both the zero defect and an order-one sparse-cut defect.",
       "novelty_type": "conditional_saturation_composition_with_exact_two_sided_delimitation",
       "evidence": [
         "Lean/ObserverPatchHolography/EinsteinBranch/CollarScaleSaturation.lean",
@@ -9623,6 +9624,136 @@
         "open": [],
         "boundary": [],
         "rationale": "The trial assumes the declared finite interacting Hilbert realization, Laplace-Beltrami ordering, hbar, centered Gaussian width and polynomial coefficient bounds. Exact moment integration establishes only a mathematical norm-error envelope. Registered Born preparations, region maps, physical quantum instruments and source-selected clocks are neither required inputs nor outputs of this certificate."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-MAGNETIC-CONTINUUM",
+      "statement": "On the same uniformly shape-regular cone refinements, fix A(x)=c+B cross x/2 and phi=0 and vary only complex scalar matter in the supplied dressed action. Exact edge integrals reproduce this affine-skew potential; dressed nodal traces agree, and a cellwise gauge argument proves an H2-to-H1 interpolation error O(1/n). For m^2>0, g>=0, a C2-in-time H2-in-space magnetic-Neumann reference and magnetic Ritz initial data, conserved energy, fixed-domain Sobolev embedding and Gronwall give H1 field and L2 velocity trajectory error at most C_T/n. Three Lean theorems prove pointwise cubic norm stability, including the sharp symmetric coefficient 3/2 and the 3R^2 Lipschitz bound on norm balls. The continuum estimate remains an analytic paper proof. Independent numerical complex Ritz, gauge, trace, phase-derivative and nonlinear-pulse controls check the finite implementation. Complex matter charge and prescribed magnetic curvature can be nonzero; the background is not varied, and no Maxwell backreaction, full charged Gauss-compatible continuum, physical source or clock is derived.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "analytic_fixed_background_complex_magnetic_matter_trajectory_convergence",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "supplied_scalar_QED_action_and_real_unwrapped_connection",
+        "fixed_uniform_magnetic_background_and_complex_Ritz_initialization"
+      ],
+      "imported_results": [
+        "Whitney_edge_space_unisolvence",
+        "local_gauge_finite_element_approximation",
+        "magnetic_Ritz_projection_and_Sobolev_embedding",
+        "energy_Gronwall_estimate",
+        "local_semilinear_wave_existence_and_finite_propagation"
+      ],
+      "oph_specific_delta": "The exact affine-skew magnetic field and the existing field-dependent scalar dressing define a conforming complex trial space with a uniform approximation and trajectory estimate. This extends matter control to prescribed nonzero curvature and potentially charged complex fields; it does not supersede the invariant real-sector theorem for the fully varied Maxwell action.",
+      "novelty_type": "same_dressed_action_fixed_background_complex_magnetic_Ritz_trajectory_control",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_MAGNETIC_CONTINUUM.tex",
+        "Lean/Screen/MagneticMatterStability.lean",
+        "code/electromagnetism/whitney_magnetic_continuum.py",
+        "code/electromagnetism/verify_whitney_magnetic_continuum.py",
+        "code/electromagnetism/test_whitney_magnetic_continuum.py",
+        "code/electromagnetism/runtime/whitney_magnetic_continuum_receipt.json"
+      ],
+      "falsifier": "Nonmatching dressed traces, a wrong phase derivative or gauge sign, failure of Whitney reproduction or Ritz coercivity, a refinement-dependent stability constant, or promotion of fixed-background scalar evolution to full Maxwell backreaction invalidates the affected conclusion.",
+      "scope_if_false": "The specified mathematical or finite numerical bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
+      "status": "analytic_fixed_background_complex_magnetic_matter_trajectory_convergence__physical_identification_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        728,
+        754,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The theorem starts from a supplied Euclidean cone, uniform mathematical refinements, a prescribed time-independent magnetic field, an explicit scalar action and smooth reference with compatible Ritz data. Registered physical metric, source, species and clock identifications are excluded conclusions rather than consumed antecedents. No physical premise is discharged."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-QUANTUM-PACKET",
+      "statement": "The full charged trajectory admits a time-dependent Coulomb rechart, including the derivative of the gauge transformation. On Gauss-compatible temporal-gauge solutions the Schur minimizer equals the transformed scalar potential, and the full 56-dimensional reduced cotangent has zero constant-phase moment map. Isotropic Gaussian half-density seeds retain all thirty radiative and twenty-six scalar configuration directions. Their residual U(1) projection has exact strictly positive squared norm exp(-A) I0(sqrt(A^2-B^2)), with A>=abs(B); normalized projections belong to the strong domain of the same interacting Hamiltonian. At the exact initial datum, hbar=1 and widths 1/4, 1/2 and 1, the squared projection norm exceeds 1/64. Gauge-invariant radius moments and a normalized-projection residual-transfer inequality are derived. Independently replayed numerical packets at two classical samples are preparations, not quantum evolution. No residual or tail bound certifies the intended time 1/40 and norm-error 1/10 target.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "analytic_full_configuration_Coulomb_preparation_and_neutral_projection",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "declared_Riemannian_Laplace_Beltrami_Friedrichs_quantization",
+        "full_configuration_isotropic_Gaussian_orbit_preparation"
+      ],
+      "imported_results": [
+        "cotangent_reduction_and_Gauss_constraint",
+        "Gaussian_overlap_and_modified_Bessel_integral",
+        "compact_group_orthogonal_projection",
+        "strong_domain_polynomial_Gaussian_bounds",
+        "unitary_Duhamel_residual_estimate"
+      ],
+      "oph_specific_delta": "Constructs the actual full-dimensional reduced phase-space preparation from the coupled charged solution, with its moving gauge derivative and exact neutral projection normalization. This removes a preparation and normalization obstacle without replacing quantum propagation by a classical trajectory.",
+      "novelty_type": "same_action_full_56D_Coulomb_cotangent_and_normalized_neutral_orbit_packets",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_QUANTUM_PACKET.tex",
+        "code/electromagnetism/whitney_quantum_packet.py",
+        "code/electromagnetism/verify_whitney_quantum_packet.py",
+        "code/electromagnetism/test_whitney_quantum_packet.py",
+        "code/electromagnetism/runtime/whitney_quantum_packet_receipt.json"
+      ],
+      "falsifier": "An omitted moving-gauge tangent, wrong cotangent or moment map, vanishing or misnormalized projection, removed transverse direction, incorrect half-density operator or strong-domain estimate invalidates the affected result. Classical centers cannot be identified with projected charged one-point means or with an error-controlled quantum history.",
+      "scope_if_false": "The specified mathematical or finite numerical bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
+      "status": "analytic_full_configuration_Coulomb_preparation_and_neutral_projection__quantum_propagation_not_certified",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730,
+        743,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The construction supplies mathematical states for the declared finite action, geometry, quantization, hbar and Gaussian widths. Physical preparation, measurement instruments, source-selected regions and laboratory time are excluded conclusions, not consumed premises; none is discharged."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-CHARGED-ENCLOSURE",
+      "statement": "For the supplied charged cone action and exact neutral initial data at e=1/4, m^2=1/2 and g=1/4, a phase rotation and cyclic-momentum reduction give a nine-dimensional rational Hamiltonian system with an everywhere positive Schur denominator. Exact outward-rounded dyadic arithmetic, strict Picard inclusions and degree-32 Taylor coefficient bounds enclose its unique solution over all eighty intervals of length 1/40 in [0,2]. Exact dyadic polynomial coefficients give a uniform canonical-coordinate infinity-norm error at most 1e-20. The inverse phase map and exact symmetry lift satisfy all 68 real temporal-gauge Euler equations and 13 Gauss constraints. Independently enclosed sine/cosine reconstruction bounds original position and velocity differences from the 81 stored binary64 samples at their nominal times by 1e-10. Those samples are not inputs to the existence or uniform-time proof. Physical calibration, spatial continuum convergence, observer provenance and quantum evolution are separate.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "independently_replayed_exact_interval_whole_window_charged_IVP_enclosure",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "supplied_scalar_QED_action_and_real_unwrapped_connection",
+        "exact_charged_canonical_initial_data_and_outward_interval_arithmetic"
+      ],
+      "imported_results": [
+        "Legendre_transform_and_cyclic_momentum_reduction",
+        "exact_simplex_moments",
+        "smooth_ODE_local_existence_and_first_exit_Picard_inclusion",
+        "interval_Taylor_method_with_uniform_Lagrange_remainder",
+        "icosahedral_fixed_space_variational_lift",
+        "Noether_Gauss_constraint_propagation"
+      ],
+      "oph_specific_delta": "Rewrites the complete dressed charged action in rational canonical coordinates and independently certifies the entire two-unit finite-action trajectory, including a rigorous comparison to the stored sample values. This replaces solver agreement with an explicit uniform numerical enclosure for this supplied model.",
+      "novelty_type": "rationalized_same_action_charged_whole_window_interval_certificate",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_CHARGED_ENCLOSURE.tex",
+        "code/electromagnetism/whitney_charged_enclosure.py",
+        "code/electromagnetism/verify_whitney_charged_enclosure.py",
+        "code/electromagnetism/test_whitney_charged_enclosure.py",
+        "code/electromagnetism/runtime/whitney_charged_enclosure_receipt.json"
+      ],
+      "falsifier": "A wrong action coefficient, initial momentum, Schur sign, inward-rounded operation, failed strict Picard inclusion, omitted Taylor coefficient radius, invalid remainder or sample phase conversion invalidates the affected bound. Endpoints alone cannot certify the whole interval; physical time and continuum conclusions are excluded.",
+      "scope_if_false": "The specified mathematical or finite numerical bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
+      "status": "independently_replayed_exact_interval_whole_window_charged_IVP_enclosure__physical_identification_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        754,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The theorem and certificate fix a supplied mathematical action, geometry, exact initial data, symmetry sector and action-time convention. Source-selected physical field, clock and preparation premises are excluded conclusions and are neither consumed nor discharged."
       }
     }
   ]

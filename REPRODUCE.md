@@ -14,6 +14,20 @@ python -m pytest -q \
   tools/test_modal_maxwell_factorization_surfaces.py
 ```
 
+The coupled-action controls can also be reproduced together:
+
+```bash
+python -m pytest -q \
+  code/electromagnetism/test_whitney_charged_enclosure.py \
+  code/electromagnetism/test_whitney_magnetic_continuum.py \
+  code/electromagnetism/test_whitney_quantum_packet.py
+```
+
+These check a rigorous fixed-mesh time enclosure, numerical controls for the
+analytic prescribed-magnetic-field continuum theorem, and full-dimensional
+neutral-state preparation. Their separate acceptance rules do not certify
+physical calibration or useful interacting quantum propagation.
+
 ## Environment
 
 - CPython 3.12 or newer (verified on 3.12 and 3.13).
@@ -35,12 +49,25 @@ pip install -r requirements.txt
 python tools/run_mandatory_suite.py
 ```
 
-`requirements.txt` pins the core dependencies. The runner is the single
-documented mandatory command, and it is the exact command CI
-(`.github/workflows/mandatory-suite.yml`) enforces on every push and PR. The
-default run is the standard suite; five long-running replay/mutation-scan
-steps (listed in `HEAVY_STEP_TITLES` inside the runner, together most of the
-suite's runtime) are deferred to
+`requirements.txt` pins the core dependencies. The default command runs the
+complete standard suite. On every push and PR, CI
+(`.github/workflows/mandatory-suite.yml`) runs the same ordered steps in two
+isolated partitions on each operating system. Each partition has its own
+clean checkout and the existing 30-minute job limit. Both partitions must
+succeed; a failed, cancelled or skipped partition cannot produce a passing
+aggregate check. The partition commands are:
+
+```bash
+python tools/run_mandatory_suite.py --shard-index 0 --shard-count 2
+python tools/run_mandatory_suite.py --shard-index 1 --shard-count 2
+```
+
+The indices are zero-based. Their ordered union is exactly the default suite;
+running only one partition does not verify the complete suite. Partition flags
+apply only to standard mode; full and certificate runs use their unpartitioned
+commands. Five designated
+replay/mutation-scan steps (listed in `HEAVY_STEP_TITLES` inside the runner)
+are deferred to
 
 ```bash
 python tools/run_mandatory_suite.py --full
@@ -159,8 +186,8 @@ Einstein-branch axiom check. `Lean/README.md` documents the layout;
 ## Paper review and publication builds
 
 With the pinned publication tools above installed, rebuild every registered
-paper, the warnings gate, the local review manifest, and the reader-facing
-book from the repository root:
+paper, including every extra and cosmology source, the warnings gate, the
+local review manifest, and the reader-facing book from the repository root:
 
 ```bash
 python3 tools/refresh_paper_release.py --preview
@@ -218,10 +245,13 @@ A clean clone must also retain no tracked publication drift after the first
 rebuild:
 
 ```bash
-git diff --exit-code -- paper flagship extra book/reverse-engineering-reality-book.pdf
+git diff --exit-code -- paper flagship extra cosmology book/reverse-engineering-reality-book.pdf
 ```
 
-The `Paper Preview Build` workflow enforces this check. A committed PDF and
+The `Paper Preview Build` workflow enforces this check, compares the committed
+book with a scratch rebuild, and rejects generated paper PDFs missing from
+Git, including ignored files. Cosmology remains unpublished research while
+its tracked artifacts obey the same reproducibility checks. A committed PDF and
 manifest pair therefore cannot substitute another paper's bytes at the
 expected path; the source rebuild restores the correct artifact and makes the
 job fail.

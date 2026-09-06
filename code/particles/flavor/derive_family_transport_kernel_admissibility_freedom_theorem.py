@@ -1,51 +1,28 @@
 #!/usr/bin/env python3
-"""Kernel admissibility freedom theorem (#377): certificates fix no spectrum.
+"""Finite-grid diagnostic of kernel admissibility and non-uniqueness.
 
-Theorem (kernel admissibility freedom). Let the admissibility battery of
-the family-transport lane consist of the certificates the corpus records
-for the on-disk kernel: two refinement levels with positive-semidefinite
-hermitian descendants, an open three-cluster gap at every level, a simple
-centered spectrum, a conjugacy-Riesz margin (defect supremum below half
-the minimal gap), persistent projector labeling (every same-label overlap
-amplitude exceeds every cross-label amplitude), and nondegenerate
-overlap-edge amplitudes above the recorded floor. Then for every target
-pair (r, s) with r > 0 and s > 0 there exists a kernel family passing the
-full battery whose centered compressed branch generator has raw gap ratio
-exactly r and spectral span exactly s. Consequently the battery constrains
-the emitted invariants
+For positive r,s, exact algebra gives positive gaps g21=s*r/(1+r),
+g32=s/(1+r), ratio r and span s. Subtracting the mean and shifting the
+spectrum positive realizes those gaps in a positive Hermitian matrix;
+unitary conjugation preserves them. The corresponding identities are
+rho_ord=3/(2+r) and x2=(r-1)/(r+1).
 
-    rho_ord = 3/(2 + r),   x2 = (r - 1)/(r + 1),   span = s
+The numerical battery is a different statement. It imposes fixed positive
+gap and squared-overlap floors. Two gaps strictly above GAP_FLOOR have
+sum strictly above 2*GAP_FLOOR, so this battery cannot accept every positive
+span. Shrinking frame drift can improve the defect inequality while making
+cross-label overlaps fail their floor; nonzero overlap is not sufficient.
+The bounded shrink loop below supplies no universal termination or joint
+feasibility theorem. Its defect compares transport matrices with a descendant
+gap as a declared numerical diagnostic, not a proved Riesz-projector bound.
 
-not at all: the map from certificate-passing kernels onto (r, s) is
-surjective onto (0, infinity)^2.
-
-Proof (constructive, executed below). Fix the trace-free target spectrum
-lambda with gaps g21 = s r/(1+r), g32 = s/(1+r), shift it positive, and
-set T_0 = Q_0 diag(sqrt(mu)) Q_0^dagger with Q_0 = exp(i eps_0 H) for a
-fixed fully off-diagonal Hermitian mixer H. Then the hermitian descendant
-T_0 T_0^dagger = Q_0 diag(mu) Q_0^dagger has exactly the prescribed
-spectrum, since unitary conjugation preserves eigenvalues. Level one uses
-a slightly rotated frame and a relative eigenvalue drift matched to the
-on-disk kernel scale, shrunk geometrically until the Riesz margin
-certificate passes, which terminates because defects scale linearly in
-the shrink factor while the gap is fixed. Off-diagonal mixer entries make
-every cross-label eigenline overlap nonzero, clearing the amplitude
-floor, while the small frame difference keeps same-label overlaps
-dominant. Every certificate is then checked numerically for a witness
-grid that brackets the on-disk operating point by more than an order of
-magnitude in both coordinates, plus the operating point itself.
-
-Corollary (content of K1). The persistence certificates are a filter, not
-a generator: deriving a kernel that merely passes them cannot emit
-rho_ord, x2, or the spans. The load-bearing content of the issue-377
-program is a selection principle for the transport operator itself. This exact
-kernel-family freedom is the operator-side analogue of the positive-rescaling
-counterfamily; its application to all currently registered OPH source data
-retains the separate registry-completeness premise.
-
-No quark reference value, fitted spread, or flavor template enters any
-step; the construction is target-free by inspection and the witness grid
-covers arbitrary (r, s), not preferred values.
+This script evaluates twelve binary64 witnesses on a declared finite grid.
+Passing distinct grid points is evidence of non-uniqueness within this
+diagnostic, not surjectivity, a complete admissibility theorem or a physical
+no-go. The historical grid contains rounded template-context coordinates;
+it does not contain the exact on-disk operating point and is not an
+independently source-selected prediction. No quark mass or fitted spread
+is used. The stored kernel is read as declared context.
 
 Run:
     python3 code/particles/flavor/derive_family_transport_kernel_admissibility_freedom_theorem.py
@@ -59,6 +36,7 @@ import json
 import math
 import pathlib
 from datetime import datetime, timezone
+from fractions import Fraction
 
 import numpy as np
 
@@ -68,7 +46,8 @@ RUNS = ROOT / "particles" / "runs" / "flavor"
 DEFAULT_OUT = RUNS / "family_transport_kernel_admissibility_freedom_theorem.json"
 KERNEL_PATH = RUNS / "family_transport_kernel.json"
 
-AMPLITUDE_FLOOR = 1.0e-12
+GAP_FLOOR = 1.0e-12
+AMPLITUDE_FLOOR = 1.0e-12  # Applied to squared eigenline overlaps.
 MIXER = np.asarray([[0.0, 1.0, 1.0j],
                     [1.0, 0.0, 1.0],
                     [-1.0j, 1.0, 0.0]], dtype=complex)
@@ -76,8 +55,8 @@ EPS_FRAME_0 = 0.05
 EPS_FRAME_DRIFT = 0.02
 EIGENVALUE_DRIFT_REL = 0.003
 
-R_GRID = (0.05, 0.317889, 1.0, 5.0)      # includes the on-disk raw ratio
-S_GRID = (0.1, 1.253553, 10.0)           # includes the on-disk span
+R_GRID = (0.05, 0.317889, 1.0, 5.0)      # Includes a rounded context coordinate.
+S_GRID = (0.1, 1.253553, 10.0)           # Includes a rounded context coordinate.
 
 
 def _timestamp() -> str:
@@ -102,6 +81,8 @@ def _eigenlines(hermitian: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
 
 
 def build_witness(r: float, s: float) -> dict:
+    if not (math.isfinite(r) and math.isfinite(s) and r > 0 and s > 0):
+        raise ValueError("positive finite ratio and span required")
     lam = _centered_spectrum(r, s)
     shift = 1.0 + abs(float(lam[0]))
     mu = lam + shift
@@ -145,7 +126,7 @@ def build_witness(r: float, s: float) -> dict:
     certificates["three_cluster_gap_open_all_levels"] = all(
         min(d["g21"], d["g32"]) > 0.0 for d in descendants)
     certificates["simple_centered_spectrum"] = all(
-        min(d["g21"], d["g32"]) > 1.0e-12 for d in descendants)
+        min(d["g21"], d["g32"]) > GAP_FLOOR for d in descendants)
     certificates["riesz_margin_defect_below_half_gap"] = bool(
         defect < 0.5 * gap_min)
 
@@ -201,53 +182,74 @@ def build() -> dict:
 
     span_r = (min(R_GRID), max(R_GRID))
     span_s = (min(S_GRID), max(S_GRID))
+    context_level = max(kernel["refinements"], key=lambda row: row["level"])
+    context_eigenvalues = sorted(float(x) for x in context_level["eigenvalues"])
+    context_r = ((context_eigenvalues[1] - context_eigenvalues[0])
+                 / (context_eigenvalues[2] - context_eigenvalues[1]))
+    context_s = context_eigenvalues[2] - context_eigenvalues[0]
 
     return {
         "artifact": "oph_family_transport_kernel_admissibility_freedom_theorem",
         "generated_utc": _timestamp(),
         "github_issues": [377, 379, 380],
-        "proof_status": "closed_constructive_freedom_theorem",
-        "claim_tier": "certificate_battery_nonselection_obstruction",
-        "row_class": "theorem_grade_obstruction",
+        "proof_status": "finite_grid_numerical_witnesses_only",
+        "claim_tier": "declared_tolerance_battery_nonuniqueness_examples",
+        "row_class": "numerical_diagnostic",
         "guards": {
             "quark_reference_values_consumed": False,
             "fitted_spreads_consumed": False,
-            "numerical_flavor_template_consumed": False,
+            "kernel_template_consumed_for_context": True,
+            "grid_is_source_selected": False,
+            "universal_tolerance_battery_surjectivity": False,
+            "physical_no_go": False,
             "public_promotion_allowed": False,
         },
-        "theorem_statement": (
-            "For every (r, s) in (R_>0)^2 there is a two-level transport "
-            "kernel passing the full recorded admissibility battery (PSD "
-            "hermitian descendants, open three-cluster gaps, simple "
-            "centered spectrum, conjugacy-Riesz margin, persistent "
-            "projector labeling, overlap-edge amplitudes above the floor) "
-            "whose centered compressed branch generator has raw gap ratio "
-            "exactly r and spectral span exactly s. The battery therefore "
-            "places no constraint on (rho_ord, x2, span): certificate-"
-            "passing kernels surject onto the full invariant space."
+        "statement": (
+            "Twelve distinct declared (r,s) targets pass the binary64 "
+            "diagnostic battery with target errors below 1e-9. These "
+            "finite witnesses show non-uniqueness within that battery. "
+            "They do not establish universal feasibility, exact numerical "
+            "certification, source selection or a physical prediction."
         ),
-        "proof_kind": "explicit_construction_with_executed_certificates",
+        "proof_kind": "finite_binary64_witness_evaluation",
+        "numeric_battery": {
+            "strict_gap_floor": GAP_FLOOR,
+            "strict_squared_overlap_floor": AMPLITUDE_FLOOR,
+            "maximum_shrink_attempts": 61,
+            "joint_feasibility_guaranteed": False,
+            "riesz_margin_scope": "declared transport-defect/descendant-gap "
+                                  "comparison; no projector perturbation theorem",
+            "exact_span_obstruction": {
+                "gap_floor": str(Fraction.from_float(GAP_FLOOR)),
+                "excluded_span_upper_inclusive": str(
+                    2 * Fraction.from_float(GAP_FLOOR)),
+                "floor_semantics": "exact rational value of the binary64 "
+                                   "threshold used by the numerical battery",
+                "reason": "g21>f and g32>f imply s=g21+g32>2f",
+                "scope": "fixed numerical acceptance floor, not a physical no-go",
+            },
+        },
         "construction": {
             "spectrum_placement": "trace-free target spectrum with gaps "
                                   "(s r/(1+r), s/(1+r)), shifted positive; "
                                   "T = Q diag(sqrt(mu)) Q_dagger so the "
                                   "descendant spectrum is exact under "
                                   "unitary conjugation",
-            "frames": "Q_level = exp(i eps_level H) with a fully "
-                      "off-diagonal Hermitian mixer H; the frame "
-                      "difference makes every cross-label overlap nonzero "
-                      "while keeping same-label overlaps dominant",
-            "riesz_termination": "frame drift and eigenvalue drift shrink "
-                                 "geometrically until the defect supremum "
-                                 "is below half the minimal gap; "
-                                 "termination is guaranteed because the "
-                                 "defect is linear in the shrink factor "
-                                 "at fixed gap",
+            "frames": "Q_level = exp(i eps_level H) with a declared "
+                      "Hermitian mixer; overlap floors and label dominance "
+                      "are checked numerically at each grid target",
+            "bounded_shrink_search": "frame and eigenvalue drifts shrink "
+                                     "until the defect test passes or 61 "
+                                     "attempts are used; other battery "
+                                     "conditions are checked afterward",
         },
         "witness_grid": {
             "r_values": list(R_GRID),
             "s_values": list(S_GRID),
-            "includes_on_disk_operating_point": True,
+            "includes_on_disk_operating_point": bool(
+                context_r in R_GRID and context_s in S_GRID),
+            "selection": "declared grid with rounded kernel-template "
+                         "context coordinates; not independent physics evidence",
             "r_span_orders_of_magnitude": math.log10(span_r[1] / span_r[0]),
             "s_span_orders_of_magnitude": math.log10(span_s[1] / span_s[0]),
             "all_certificates_pass": all_pass,
@@ -266,33 +268,31 @@ def build() -> dict:
         "on_disk_kernel_context": {
             "artifact": kernel.get("artifact"),
             "status": kernel.get("status"),
-            "note": "the on-disk template is one point of this free family; "
-                    "see the rho_ord sensitivity audit for its local "
-                    "elasticity",
+            "raw_gap_ratio_r": context_r,
+            "spectral_span": context_s,
+            "nearest_r_grid_distance": min(abs(r-context_r) for r in R_GRID),
+            "nearest_s_grid_distance": min(abs(s-context_s) for s in S_GRID),
+            "note": "declared template context, not an independently "
+                    "source-selected or exactly sampled physical target",
         },
         "corollary_for_issue_377": (
-            "Deriving a kernel that passes the persistence certificates "
-            "cannot close K1: the certificates are a filter with zero "
-            "selective power over the emitted invariants. The remaining "
-            "burden of the kernel program is a source selection principle "
-            "for the transport operator itself, equivalently a derivation "
-            "of the invariant triple named by the three-scalar interface "
-            "theorem."
+            "The finite passing witnesses do not select a unique ratio "
+            "or span. A source selection principle requires separate "
+            "evidence; this diagnostic does not classify all admissible "
+            "kernels or all physical quark interfaces."
         ),
         "relation_to_nonidentifiability": (
-            "This exact kernel-family freedom is the operator-side analogue of the "
-            "positive-rescaling counterfamily: the free (R_>0)^2 spread fiber "
-            "reappears as the free (r, s) invariant space of certificate-passing "
-            "kernels. Its current-OPH interpretation remains conditional on the "
-            "registered source signature containing no orbit-separating datum."
+            "Exact positive-parameter spectrum placement is separate from "
+            "the finite tolerance battery. The latter excludes sufficiently "
+            "small spans and has multiple passing examples, without a "
+            "universal nonidentifiability or physical no-go conclusion."
         ),
     }
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Prove the kernel admissibility freedom theorem "
-                    "constructively.")
+        description="Evaluate a finite grid of kernel admissibility witnesses.")
     parser.add_argument("--output", default=str(DEFAULT_OUT))
     args = parser.parse_args()
 

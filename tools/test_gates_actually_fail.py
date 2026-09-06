@@ -11,13 +11,17 @@ a tracked repository file.
 
 from __future__ import annotations
 
+import csv
 import hashlib
+import io
 import json
 import shutil
 import subprocess
 import sys
 from pathlib import Path
 from typing import Any
+
+import pytest
 
 from tools import check_reader_style
 
@@ -443,6 +447,58 @@ def test_claim_gate_rejects_physical_promotion_with_open_work(
     assert "asserts physical establishment while gates [42] are open" in _combined(
         mutant
     )
+
+
+@pytest.mark.parametrize("matrix", ["novelty_matrix.csv", "falsification_matrix.csv"])
+@pytest.mark.parametrize(
+    ("mutation", "diagnostic"),
+    [
+        ("matching", None),
+        ("overflow", "overflow CSV cells"),
+        ("missing", "missing CSV cells"),
+        ("empty", "empty CSV cells"),
+        ("duplicate_header", "duplicate CSV headers"),
+        ("empty_header", "missing or empty CSV header"),
+        ("unterminated_quote", "invalid CSV"),
+    ],
+)
+def test_claim_matrix_csv_structure_is_checked_before_field_use(
+    tmp_path: Path, matrix: str, mutation: str, diagnostic: str | None
+) -> None:
+    root = tmp_path / "claims"
+    _write_claim_fixture(root)
+    path = root / "claims" / matrix
+    with path.open(encoding="utf-8", newline="") as handle:
+        headers, body = list(csv.reader(handle))
+    # Commas, escaped quotes, and multiline cells are legitimate scientific text.
+    body[-1] += ', including "quoted" detail\nand a second line'
+    if mutation == "overflow":
+        body.append("silently discarded scope")
+    elif mutation == "missing":
+        body.pop()
+    elif mutation == "empty":
+        body[-1] = ""
+    elif mutation == "duplicate_header":
+        headers.append(headers[-1])
+        body.append("overwritten scope")
+    elif mutation == "empty_header":
+        headers[-1] = ""
+    output = io.StringIO(newline="")
+    writer = csv.writer(output, lineterminator="\n")
+    writer.writerow(headers)
+    if mutation == "unterminated_quote":
+        output.write('"unterminated scientific text\n')
+    else:
+        writer.writerow(body)
+    path.write_text(output.getvalue(), encoding="utf-8")
+
+    result = _run(str(CLAIM_CHECKER), str(root))
+    if diagnostic is None:
+        assert result.returncode == 0, _combined(result)
+    else:
+        assert result.returncode != 0, _combined(result)
+        assert matrix in _combined(result)
+        assert diagnostic in _combined(result)
 
 
 def test_external_provenance_gate_rejects_a_forged_artifact_pin(

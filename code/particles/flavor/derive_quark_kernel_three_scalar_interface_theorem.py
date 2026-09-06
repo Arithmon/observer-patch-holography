@@ -4,9 +4,11 @@
 Fix the shared scale g_ch and impose the legacy reciprocal profile rays.
 That restricted candidate chain factors through the triple
 
-    (r, sigma_u, sigma_d) in (R_>0)^3,
+    (r, sigma_u, sigma_d) in (R_>0)^3, with p(r) != 0,
 
-and the forward/left-inverse round trip below is exact inside that subfamily.
+where p(r) = -r^3 + 4r^2 + 23r - 2. The affine mean coefficient B has
+positive poles at roots of p; the forward/left-inverse round trip below is
+exact inside this nonsingular subfamily.
 This is not the interface of general ordered three-point spectra. At fixed x,
 the centered vectors L=ctr(-1,x,1) and Q=ctr(1,x^2,1) span the centered
 plane; allowing both coordinates in each sector removes the ray restriction.
@@ -27,6 +29,7 @@ import json
 import math
 import pathlib
 from datetime import datetime, timezone
+from numbers import Real
 
 import numpy as np
 
@@ -67,9 +70,14 @@ def rays(rho: float) -> tuple[np.ndarray, np.ndarray]:
 
 
 def mean_coefficients(r: float) -> tuple[float, float]:
+    if not isinstance(r, Real) or isinstance(r, (bool, np.bool_)) or not math.isfinite(r) or r <= 0:
+        raise ValueError("a finite positive gap ratio is required")
     rho, x2 = rho_of_r(r), x2_of_r(r)
     a_ud = 1.0 / (2.0 * (1.0 + rho - x2 * x2))
-    b_ud = 1.0 / (2.0 * (1.0 - x2 * x2 - x2 * x2 / (1.0 + rho)))
+    denominator = 2.0 * (1.0 - x2 * x2 - x2 * x2 / (1.0 + rho))
+    if denominator == 0.0:
+        raise ValueError("singular affine mean coefficient: p(r) must be nonzero")
+    b_ud = 1.0 / denominator
     return a_ud, b_ud
 
 
@@ -177,7 +185,8 @@ def build() -> dict:
             "At fixed shared scale g_ch and after imposing the legacy "
             "reciprocal profile rays, that restricted candidate chain "
             "factors through exactly the triple "
-            "(r, sigma_u, sigma_d) in (R_>0)^3 of the centered compressed "
+            "(r, sigma_u, sigma_d) in (R_>0)^3 with "
+            "p(r)=-r^3+4r^2+23r-2 nonzero, for the centered compressed "
             "branch generator: rho_ord = 3/(2+r) and x2 = (r-1)/(r+1) "
             "carry no information beyond r; rays, mean-law coefficients, "
             "sector means, and the six coordinates are closed-form in the "
@@ -187,6 +196,14 @@ def build() -> dict:
             "coordinates and one mean per sector."
         ),
         "interface": {
+            "domain": {
+                "positive_coordinates": ["r", "sigma_u", "sigma_d"],
+                "additional_condition": "p(r) != 0",
+                "p": "-r^3+4r^2+23r-2",
+                "B_ud": "(r+1)^2*(r+5)/(2*p(r))",
+                "positive_pole_brackets": [["2/25", "9/100"], ["71/10", "36/5"]],
+                "scope": "The affine mean law is undefined at these positive poles; this is a restricted-chart domain, not a physical exclusion.",
+            },
             "coordinates": ["r (raw gap ratio)", "sigma_u (per-side span)",
                             "sigma_d (per-side span)"],
             "derived_scalars": {
@@ -223,8 +240,9 @@ def build() -> dict:
         },
         "nonredundancy": {
             "freedom_theorem": "family_transport_kernel_admissibility_"
-                               "freedom_theorem (certificates leave the "
-                               "triple free)",
+                               "freedom_theorem (finite-grid numerical "
+                               "witnesses show non-uniqueness; no universal "
+                               "tolerance-battery surjectivity theorem)",
             "axiom_level_no_go": "quark_axiom_level_yukawa_moduli_"
                                  "nonidentifiability (the axioms emit no "
                                  "component of the triple)",

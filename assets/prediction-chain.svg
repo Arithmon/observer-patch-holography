@@ -81,33 +81,34 @@
   <circle cx="4840" cy="4543" r="320" fill="rgb(212 181 110 / 0.06)" />
 
 <g filter="url(#panelShadow)">
-  <rect x="120" y="54" width="5380" height="188" rx="34" fill="url(#heroGradient)" stroke="rgb(255 255 255 / 0.09)" />
+  <rect x="120" y="54" width="5380" height="206" rx="34" fill="url(#heroGradient)" stroke="rgb(255 255 255 / 0.09)" />
   <rect x="150" y="80" width="110" height="68" rx="24" fill="url(#brandGradient)" opacity="0.18" />
   <rect x="162" y="92" width="86" height="44" rx="14" fill="rgb(9 13 20 / 0.98)" stroke="rgb(255 255 255 / 0.1)" />
   <text x="205" y="119" text-anchor="middle" fill="#4ee7ff" font-size="24" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="4">OPH</text>
   <text x="310" y="102" fill="#4ee7ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="600" letter-spacing="5">FLOATING PRAGMA // POSTER DAG</text>
   <text x="310" y="156" fill="#f4f7fb" font-size="54" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-1.7">Observer Patch Holography Derivation DAG</text>
   <text x="310" y="222" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace">Source provenance generates finite causal order and a 1+3 precursor; physical refinement links it conditionally to spacetime, gravity, and Standard Model branches.</text>
-  <rect x="4260" y="76" width="1120" height="112" rx="24" fill="rgb(255 255 255 / 0.03)" stroke="rgb(255 255 255 / 0.08)" />
+  <rect x="4260" y="76" width="1120" height="162" rx="24" fill="rgb(255 255 255 / 0.03)" stroke="rgb(255 255 255 / 0.08)" />
   <text x="4292" y="104" fill="#f4f7fb" font-size="18" font-family="Space Grotesk, sans-serif" font-weight="700">Poster logic</text>
-  <text x="4292" y="128" fill="#9ba7b8" font-size="14" font-family="JetBrains Mono, monospace">Top: the three axioms with typed interfaces and declared completions. Middle: derivation spine. Bottom: conditional branch outputs and closure constraints.</text>
-  <rect x="4300" y="140" width="110" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#d4b56e" />
-  <text x="4314" y="157" fill="#d4b56e" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">AXIOM</text>
-  <rect x="4428" y="140" width="130" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#f3df9a" />
-  <text x="4442" y="157" fill="#f3df9a" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">FIXED POINTS</text>
-  <rect x="4576" y="140" width="110" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#4ee7ff" />
-  <text x="4590" y="157" fill="#4ee7ff" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">THEOREM</text>
-  <rect x="4704" y="140" width="110" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#7ca6ff" />
-  <text x="4718" y="157" fill="#7ca6ff" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">OUTPUT</text>
-  <rect x="4832" y="140" width="146" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#ff8f97" />
-  <text x="4846" y="157" fill="#ff8f97" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">OPEN CONDITION</text>
-  <rect x="4996" y="140" width="110" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#ffb8be" />
-  <text x="5010" y="157" fill="#ffb8be" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">ENDPOINT</text>
-  <text x="4292" y="176" fill="rgb(155 167 184 / 0.84)" font-size="13" font-family="JetBrains Mono, monospace">Scientific sources: OPH papers, the Lean library, exact finite calculations, and frozen computational receipts.</text>
-  <text x="4292" y="194" fill="rgb(155 167 184 / 0.84)" font-size="13" font-family="JetBrains Mono, monospace">RER evidence custody: evidence/source_causal_history_family/, evidence/causet_likeness/, evidence/local_domain/.</text>
+  <text x="4292" y="128" fill="#9ba7b8" font-size="14" font-family="JetBrains Mono, monospace">Top: the three axioms with typed interfaces and declared completions. Middle: derivation spine. Bottom: conditional branch</text>
+  <text x="4292" y="146" fill="#9ba7b8" font-size="14" font-family="JetBrains Mono, monospace">outputs and closure constraints.</text>
+  <rect x="4300" y="158" width="314" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#d4b56e" />
+  <text x="4314" y="175" fill="#d4b56e" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">AXIOM / INTERFACE / DECLARED</text>
+  <rect x="4632" y="158" width="154" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#f3df9a" />
+  <text x="4646" y="175" fill="#f3df9a" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">FIXED POINTS</text>
+  <rect x="4804" y="158" width="110" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#4ee7ff" />
+  <text x="4818" y="175" fill="#4ee7ff" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">THEOREM</text>
+  <rect x="4932" y="158" width="110" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#7ca6ff" />
+  <text x="4946" y="175" fill="#7ca6ff" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">OUTPUT</text>
+  <rect x="5060" y="158" width="174" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#ff8f97" />
+  <text x="5074" y="175" fill="#ff8f97" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">OPEN CONDITION</text>
+  <rect x="5252" y="158" width="114" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#ffb8be" />
+  <text x="5266" y="175" fill="#ffb8be" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">ENDPOINT</text>
+  <text x="4292" y="194" fill="rgb(155 167 184 / 0.84)" font-size="13" font-family="JetBrains Mono, monospace">Scientific sources: OPH papers, the Lean library, exact finite calculations, and frozen computational receipts.</text>
+  <text x="4292" y="212" fill="rgb(155 167 184 / 0.84)" font-size="13" font-family="JetBrains Mono, monospace">RER evidence custody: evidence/source_causal_history_family/, evidence/causet_likeness/, evidence/local_domain/.</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="120" y="330" width="1750" height="620" rx="32" fill="url(#panelGradient)" stroke="rgb(212 181 110 / 0.12)" />
+  <rect x="120" y="330" width="1750" height="695" rx="32" fill="url(#panelGradient)" stroke="rgb(212 181 110 / 0.12)" />
   <rect x="142" y="352" width="1706" height="86" rx="20" fill="rgb(212 181 110 / 0.05)" stroke="rgb(255 255 255 / 0.05)" />
   <text x="162" y="388" fill="#f4f7fb" font-size="32" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.4">Three Axioms and Named Interfaces</text>
   <text x="162" y="418" fill="#9ba7b8" font-size="13" font-family="JetBrains Mono, monospace">Core basis of OPH: three axioms; interfaces and declared completions are typed separately.</text>
@@ -142,13 +143,13 @@
   <line x1="150" y1="1337" x2="1740" y2="1337" stroke="rgb(78 231 255 / 0.10)" />
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="1850" y="1239" width="1100" height="1717" rx="32" fill="url(#panelGradient)" stroke="rgb(255 255 255 / 0.08)" />
+  <rect x="1850" y="1239" width="1100" height="1781" rx="32" fill="url(#panelGradient)" stroke="rgb(255 255 255 / 0.08)" />
   <rect x="1872" y="1261" width="1056" height="64" rx="20" fill="rgb(255 255 255 / 0.03)" stroke="rgb(255 255 255 / 0.05)" />
   <text x="1892" y="1297" fill="#f4f7fb" font-size="32" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.4">Relativity and Gravity Branch</text>
   <line x1="1880" y1="1337" x2="2920" y2="1337" stroke="rgb(78 231 255 / 0.10)" />
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="3080" y="1239" width="1100" height="1560" rx="32" fill="url(#panelGradient)" stroke="rgb(255 255 255 / 0.08)" />
+  <rect x="3080" y="1239" width="1100" height="1592" rx="32" fill="url(#panelGradient)" stroke="rgb(255 255 255 / 0.08)" />
   <rect x="3102" y="1261" width="1056" height="64" rx="20" fill="rgb(255 255 255 / 0.03)" stroke="rgb(255 255 255 / 0.05)" />
   <text x="3122" y="1297" fill="#f4f7fb" font-size="32" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.4">Gauge and Standard Model Branch</text>
   <line x1="3110" y1="1337" x2="4150" y2="1337" stroke="rgb(78 231 255 / 0.10)" />
@@ -185,14 +186,14 @@
   <line x1="4340" y1="3236" x2="5450" y2="3236" stroke="rgb(255 143 151 / 0.22)" />
 </g>
 <g fill="none">
-  <path d="M 325.0 842.0 C 325.0 1107.0, 535.0 1094.0, 535.0 1359.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
-  <path d="M 325.0 842.0 C 325.0 1107.0, 535.0 1094.0, 535.0 1359.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
-  <path d="M 655.0 842.0 C 655.0 1107.0, 535.0 1094.0, 535.0 1359.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
-  <path d="M 655.0 842.0 C 655.0 1107.0, 535.0 1094.0, 535.0 1359.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
-  <path d="M 325.0 842.0 C 325.0 1113.7, 1275.0 1087.3, 1275.0 1359.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
-  <path d="M 325.0 842.0 C 325.0 1113.7, 1275.0 1087.3, 1275.0 1359.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
-  <path d="M 655.0 842.0 C 655.0 1113.7, 1275.0 1087.3, 1275.0 1359.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
-  <path d="M 655.0 842.0 C 655.0 1113.7, 1275.0 1087.3, 1275.0 1359.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
+  <path d="M 325.0 965.0 C 325.0 1209.1, 535.0 1114.9, 535.0 1359.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
+  <path d="M 325.0 965.0 C 325.0 1209.1, 535.0 1114.9, 535.0 1359.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
+  <path d="M 655.0 872.0 C 655.0 1131.9, 535.0 1099.1, 535.0 1359.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
+  <path d="M 655.0 872.0 C 655.0 1131.9, 535.0 1099.1, 535.0 1359.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
+  <path d="M 325.0 965.0 C 325.0 1215.8, 1275.0 1108.2, 1275.0 1359.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
+  <path d="M 325.0 965.0 C 325.0 1215.8, 1275.0 1108.2, 1275.0 1359.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
+  <path d="M 655.0 872.0 C 655.0 1138.6, 1275.0 1092.4, 1275.0 1359.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
+  <path d="M 655.0 872.0 C 655.0 1138.6, 1275.0 1092.4, 1275.0 1359.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
   <path d="M 1000.0 815.0 C 1000.0 1135.0, 535.0 1583.0, 535.0 1903.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
   <path d="M 1000.0 815.0 C 1000.0 1135.0, 535.0 1583.0, 535.0 1903.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
   <path d="M 1000.0 815.0 C 1000.0 1135.0, 1275.0 1583.0, 1275.0 1903.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
@@ -209,18 +210,18 @@
   <path d="M 1360.0 815.0 C 1360.0 1135.0, 2400.0 1527.0, 2400.0 1847.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
   <path d="M 1360.0 815.0 C 1360.0 1135.0, 4895.0 1262.0, 4895.0 1582.0" stroke="#4ee7ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
   <path d="M 1360.0 815.0 C 1360.0 1135.0, 4895.0 1262.0, 4895.0 1582.0" stroke="#4ee7ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowCyan)" />
-  <path d="M 1705.0 779.0 C 1705.0 1099.0, 3630.0 1728.0, 3630.0 2048.0" stroke="#7ca6ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
-  <path d="M 1705.0 779.0 C 1705.0 1099.0, 3630.0 1728.0, 3630.0 2048.0" stroke="#7ca6ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowBlue)" />
-  <path d="M 1705.0 779.0 C 1705.0 1099.0, 3630.0 1961.0, 3630.0 2281.0" stroke="#7ca6ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
-  <path d="M 1705.0 779.0 C 1705.0 1099.0, 3630.0 1961.0, 3630.0 2281.0" stroke="#7ca6ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowBlue)" />
+  <path d="M 1705.0 782.0 C 1705.0 1102.0, 3630.0 1760.0, 3630.0 2080.0" stroke="#7ca6ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
+  <path d="M 1705.0 782.0 C 1705.0 1102.0, 3630.0 1760.0, 3630.0 2080.0" stroke="#7ca6ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowBlue)" />
+  <path d="M 1705.0 782.0 C 1705.0 1102.0, 3630.0 1993.0, 3630.0 2313.0" stroke="#7ca6ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
+  <path d="M 1705.0 782.0 C 1705.0 1102.0, 3630.0 1993.0, 3630.0 2313.0" stroke="#7ca6ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowBlue)" />
   <path d="M 2822.5 1083.0 C 2822.5 1403.0, 1275.0 1816.0, 1275.0 2136.0" stroke="#4ee7ff" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
   <path d="M 2822.5 1083.0 C 2822.5 1403.0, 1275.0 1816.0, 1275.0 2136.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.18" marker-end="url(#arrowCyan)" />
-  <path d="M 2822.5 1083.0 C 2822.5 1403.0, 2155.0 2025.0, 2155.0 2345.0" stroke="#4ee7ff" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
-  <path d="M 2822.5 1083.0 C 2822.5 1403.0, 2155.0 2025.0, 2155.0 2345.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.18" marker-end="url(#arrowCyan)" />
+  <path d="M 2822.5 1083.0 C 2822.5 1403.0, 2155.0 2089.0, 2155.0 2409.0" stroke="#4ee7ff" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
+  <path d="M 2822.5 1083.0 C 2822.5 1403.0, 2155.0 2089.0, 2155.0 2409.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.18" marker-end="url(#arrowCyan)" />
   <path d="M 3047.5 828.0 C 3047.5 1148.0, 2400.0 3721.0, 2400.0 4041.0" stroke="#7ca6ff" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
   <path d="M 3047.5 828.0 C 3047.5 1148.0, 2400.0 3721.0, 2400.0 4041.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.18" marker-end="url(#arrowBlue)" />
-  <path d="M 3272.5 1055.0 C 3272.5 1375.0, 2400.0 1760.0, 2400.0 2080.0" stroke="#ff8f97" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
-  <path d="M 3272.5 1055.0 C 3272.5 1375.0, 2400.0 1760.0, 2400.0 2080.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.24" marker-end="url(#arrowRose)" />
+  <path d="M 3272.5 1055.0 C 3272.5 1375.0, 2400.0 1824.0, 2400.0 2144.0" stroke="#ff8f97" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
+  <path d="M 3272.5 1055.0 C 3272.5 1375.0, 2400.0 1824.0, 2400.0 2144.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.24" marker-end="url(#arrowRose)" />
   <path d="M 3497.5 856.0 C 3497.5 1176.0, 3630.0 1262.0, 3630.0 1582.0" stroke="#ff8f97" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
   <path d="M 3497.5 856.0 C 3497.5 1176.0, 3630.0 1262.0, 3630.0 1582.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.24" marker-end="url(#arrowRose)" />
   <path d="M 3497.5 856.0 C 3497.5 1176.0, 1275.0 2926.0, 1275.0 3246.0" stroke="#d4b56e" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
@@ -279,42 +280,42 @@
   <path d="M 535.0 2096.0 C 535.0 2176.0, 1275.0 1823.0, 1275.0 1903.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowCyan)" />
   <path d="M 1630.0 1999.5 C 1950.0 1999.5, 1610.0 1445.5, 1930.0 1445.5" stroke="#4ee7ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 1630.0 1999.5 C 1950.0 1999.5, 1610.0 1445.5, 1930.0 1445.5" stroke="#4ee7ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowCyan)" />
-  <path d="M 1630.0 1999.5 C 1950.0 1999.5, 1610.0 1943.5, 1930.0 1943.5" stroke="#4ee7ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 1630.0 1999.5 C 1950.0 1999.5, 1610.0 1943.5, 1930.0 1943.5" stroke="#4ee7ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowCyan)" />
+  <path d="M 1275.0 2096.0 C 1275.0 2176.0, 2400.0 1767.0, 2400.0 1847.0" stroke="#4ee7ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 1275.0 2096.0 C 1275.0 2176.0, 2400.0 1767.0, 2400.0 1847.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowCyan)" />
   <path d="M 535.0 2425.0 C 535.0 2583.9, 535.0 2377.1, 535.0 2536.0" stroke="#4ee7ff" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
   <path d="M 535.0 2425.0 C 535.0 2583.9, 535.0 2377.1, 535.0 2536.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.18" marker-end="url(#arrowCyan)" />
   <path d="M 1275.0 2496.0 C 1275.0 2642.9, 535.0 2389.1, 535.0 2536.0" stroke="#4ee7ff" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
   <path d="M 1275.0 2496.0 C 1275.0 2642.9, 535.0 2389.1, 535.0 2536.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.18" marker-end="url(#arrowCyan)" />
   <path d="M 2400.0 1542.0 C 2400.0 1626.7, 2400.0 1497.3, 2400.0 1582.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 2400.0 1542.0 C 2400.0 1626.7, 2400.0 1497.3, 2400.0 1582.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 2400.0 1807.0 C 2400.0 1976.3, 2400.0 1910.7, 2400.0 2080.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2400.0 1807.0 C 2400.0 1976.3, 2400.0 1910.7, 2400.0 2080.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
-  <path d="M 890.0 2748.0 C 1210.0 2748.0, 1610.0 2192.5, 1930.0 2192.5" stroke="#ff8f97" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
-  <path d="M 890.0 2748.0 C 1210.0 2748.0, 1610.0 2192.5, 1930.0 2192.5" stroke="#ff8f97" stroke-width="2.6" opacity="0.24" marker-end="url(#arrowRose)" />
-  <path d="M 2400.0 2305.0 C 2400.0 2406.2, 2645.0 2243.8, 2645.0 2345.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2400.0 2305.0 C 2400.0 2406.2, 2645.0 2243.8, 2645.0 2345.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
-  <path d="M 2400.0 2040.0 C 2400.0 2225.8, 2645.0 2159.2, 2645.0 2345.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2400.0 2040.0 C 2400.0 2225.8, 2645.0 2159.2, 2645.0 2345.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
-  <path d="M 2155.0 2663.0 C 2155.0 2743.0, 2645.0 2265.0, 2645.0 2345.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2155.0 2663.0 C 2155.0 2743.0, 2645.0 2265.0, 2645.0 2345.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
-  <path d="M 2645.0 2635.0 C 2645.0 2955.0, 2400.0 3986.0, 2400.0 4306.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2645.0 2635.0 C 2645.0 2955.0, 2400.0 3986.0, 2400.0 4306.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
-  <path d="M 2400.0 2896.0 C 2400.0 3216.0, 2400.0 3986.0, 2400.0 4306.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2400.0 2896.0 C 2400.0 3216.0, 2400.0 3986.0, 2400.0 4306.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
-  <path d="M 3630.0 1542.0 C 3630.0 1700.4, 3630.0 1656.6, 3630.0 1815.0" stroke="#4ee7ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 3630.0 1542.0 C 3630.0 1700.4, 3630.0 1656.6, 3630.0 1815.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowCyan)" />
-  <path d="M 3630.0 1542.0 C 3630.0 1779.7, 3630.0 1810.3, 3630.0 2048.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 3630.0 1542.0 C 3630.0 1779.7, 3630.0 1810.3, 3630.0 2048.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 3630.0 1542.0 C 3630.0 1858.9, 3630.0 1964.1, 3630.0 2281.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 3630.0 1542.0 C 3630.0 1858.9, 3630.0 1964.1, 3630.0 2281.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 3630.0 1775.0 C 3630.0 2095.0, 3630.0 2194.0, 3630.0 2514.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 3630.0 1775.0 C 3630.0 2095.0, 3630.0 2194.0, 3630.0 2514.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 3630.0 2008.0 C 3630.0 2251.1, 3630.0 2270.9, 3630.0 2514.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 3630.0 2008.0 C 3630.0 2251.1, 3630.0 2270.9, 3630.0 2514.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 3630.0 2241.0 C 3630.0 2404.9, 3630.0 2350.1, 3630.0 2514.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 3630.0 2241.0 C 3630.0 2404.9, 3630.0 2350.1, 3630.0 2514.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 3630.0 2474.0 C 3630.0 2558.7, 3630.0 2429.3, 3630.0 2514.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 3630.0 2474.0 C 3630.0 2558.7, 3630.0 2429.3, 3630.0 2514.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 2400.0 1807.0 C 2400.0 1998.1, 2400.0 1952.9, 2400.0 2144.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 2400.0 1807.0 C 2400.0 1998.1, 2400.0 1952.9, 2400.0 2144.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
+  <path d="M 890.0 2748.0 C 1210.0 2748.0, 1610.0 2256.5, 1930.0 2256.5" stroke="#ff8f97" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
+  <path d="M 890.0 2748.0 C 1210.0 2748.0, 1610.0 2256.5, 1930.0 2256.5" stroke="#ff8f97" stroke-width="2.6" opacity="0.24" marker-end="url(#arrowRose)" />
+  <path d="M 2400.0 2369.0 C 2400.0 2470.2, 2645.0 2307.8, 2645.0 2409.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 2400.0 2369.0 C 2400.0 2470.2, 2645.0 2307.8, 2645.0 2409.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
+  <path d="M 2400.0 2104.0 C 2400.0 2300.7, 2645.0 2212.3, 2645.0 2409.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 2400.0 2104.0 C 2400.0 2300.7, 2645.0 2212.3, 2645.0 2409.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
+  <path d="M 2155.0 2727.0 C 2155.0 2807.0, 2645.0 2329.0, 2645.0 2409.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 2155.0 2727.0 C 2155.0 2807.0, 2645.0 2329.0, 2645.0 2409.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
+  <path d="M 2645.0 2699.0 C 2645.0 3019.0, 2400.0 3986.0, 2400.0 4306.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 2645.0 2699.0 C 2645.0 3019.0, 2400.0 3986.0, 2400.0 4306.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
+  <path d="M 2400.0 2960.0 C 2400.0 3280.0, 2400.0 3986.0, 2400.0 4306.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 2400.0 2960.0 C 2400.0 3280.0, 2400.0 3986.0, 2400.0 4306.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
+  <path d="M 3630.0 1542.0 C 3630.0 1705.9, 3630.0 1651.1, 3630.0 1815.0" stroke="#4ee7ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 3630.0 1542.0 C 3630.0 1705.9, 3630.0 1651.1, 3630.0 1815.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowCyan)" />
+  <path d="M 3630.0 1542.0 C 3630.0 1790.5, 3630.0 1831.5, 3630.0 2080.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 3630.0 1542.0 C 3630.0 1790.5, 3630.0 1831.5, 3630.0 2080.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 3630.0 1542.0 C 3630.0 1862.0, 3630.0 1993.0, 3630.0 2313.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 3630.0 1542.0 C 3630.0 1862.0, 3630.0 1993.0, 3630.0 2313.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 3630.0 1775.0 C 3630.0 2095.0, 3630.0 2226.0, 3630.0 2546.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 3630.0 1775.0 C 3630.0 2095.0, 3630.0 2226.0, 3630.0 2546.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 3630.0 2040.0 C 3630.0 2288.5, 3630.0 2297.5, 3630.0 2546.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 3630.0 2040.0 C 3630.0 2288.5, 3630.0 2297.5, 3630.0 2546.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 3630.0 2273.0 C 3630.0 2436.9, 3630.0 2382.1, 3630.0 2546.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 3630.0 2273.0 C 3630.0 2436.9, 3630.0 2382.1, 3630.0 2546.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 3630.0 2506.0 C 3630.0 2590.7, 3630.0 2461.3, 3630.0 2546.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 3630.0 2506.0 C 3630.0 2590.7, 3630.0 2461.3, 3630.0 2546.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
   <path d="M 4895.0 1542.0 C 4895.0 1779.7, 4895.0 1810.3, 4895.0 2048.0" stroke="#4ee7ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 4895.0 1542.0 C 4895.0 1779.7, 4895.0 1810.3, 4895.0 2048.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowCyan)" />
   <path d="M 4895.0 1775.0 C 4895.0 1855.0, 4895.0 1735.0, 4895.0 1815.0" stroke="#4ee7ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
@@ -331,8 +332,8 @@
   <path d="M 890.0 3374.5 C 1210.0 3374.5, 1610.0 3342.5, 1930.0 3342.5" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
   <path d="M 1275.0 3471.0 C 1275.0 3566.5, 535.0 3447.5, 535.0 3543.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 1275.0 3471.0 C 1275.0 3566.5, 535.0 3447.5, 535.0 3543.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 3630.0 2739.0 C 3630.0 3059.0, 535.0 3223.0, 535.0 3543.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 3630.0 2739.0 C 3630.0 3059.0, 535.0 3223.0, 535.0 3543.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 3630.0 2771.0 C 3630.0 3091.0, 535.0 3223.0, 535.0 3543.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 3630.0 2771.0 C 3630.0 3091.0, 535.0 3223.0, 535.0 3543.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
   <path d="M 535.0 3736.0 C 535.0 3816.0, 1275.0 3463.0, 1275.0 3543.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 535.0 3736.0 C 535.0 3816.0, 1275.0 3463.0, 1275.0 3543.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
   <path d="M 535.0 3736.0 C 535.0 3869.6, 535.0 3770.4, 535.0 3904.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
@@ -345,14 +346,14 @@
   <path d="M 2400.0 3439.0 C 2400.0 3529.1, 2400.0 3388.9, 2400.0 3479.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
   <path d="M 535.0 3503.0 C 535.0 3583.0, 2400.0 3399.0, 2400.0 3479.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 535.0 3503.0 C 535.0 3583.0, 2400.0 3399.0, 2400.0 3479.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 2645.0 2635.0 C 2645.0 2955.0, 2400.0 3159.0, 2400.0 3479.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2645.0 2635.0 C 2645.0 2955.0, 2400.0 3159.0, 2400.0 3479.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 2645.0 2699.0 C 2645.0 3019.0, 2400.0 3159.0, 2400.0 3479.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 2645.0 2699.0 C 2645.0 3019.0, 2400.0 3159.0, 2400.0 3479.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
   <path d="M 2400.0 3439.0 C 2400.0 3624.6, 2400.0 3590.4, 2400.0 3776.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 2400.0 3439.0 C 2400.0 3624.6, 2400.0 3590.4, 2400.0 3776.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
   <path d="M 2400.0 3736.0 C 2400.0 3831.5, 2400.0 3680.5, 2400.0 3776.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 2400.0 3736.0 C 2400.0 3831.5, 2400.0 3680.5, 2400.0 3776.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
-  <path d="M 2645.0 2635.0 C 2645.0 2955.0, 2400.0 3721.0, 2400.0 4041.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2645.0 2635.0 C 2645.0 2955.0, 2400.0 3721.0, 2400.0 4041.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 2645.0 2699.0 C 2645.0 3019.0, 2400.0 3721.0, 2400.0 4041.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 2645.0 2699.0 C 2645.0 3019.0, 2400.0 3721.0, 2400.0 4041.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
   <path d="M 2400.0 4266.0 C 2400.0 4361.5, 2400.0 4210.5, 2400.0 4306.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 2400.0 4266.0 C 2400.0 4361.5, 2400.0 4210.5, 2400.0 4306.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
   <path d="M 4895.0 2008.0 C 4895.0 2328.0, 3630.0 2926.0, 3630.0 3246.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
@@ -363,8 +364,8 @@
   <path d="M 1630.0 4032.5 C 1950.0 4032.5, 2840.0 3607.5, 3160.0 3607.5" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
   <path d="M 890.0 3639.5 C 1210.0 3639.5, 2840.0 3607.5, 3160.0 3607.5" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 890.0 3639.5 C 1210.0 3639.5, 2840.0 3607.5, 3160.0 3607.5" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
-  <path d="M 3630.0 2739.0 C 3630.0 3059.0, 3630.0 3424.0, 3630.0 3744.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 3630.0 2739.0 C 3630.0 3059.0, 3630.0 3424.0, 3630.0 3744.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
+  <path d="M 3630.0 2771.0 C 3630.0 3091.0, 3630.0 3424.0, 3630.0 3744.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 3630.0 2771.0 C 3630.0 3091.0, 3630.0 3424.0, 3630.0 3744.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
   <path d="M 535.0 3503.0 C 535.0 3666.9, 3630.0 3580.1, 3630.0 3744.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 535.0 3503.0 C 535.0 3666.9, 3630.0 3580.1, 3630.0 3744.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
   <path d="M 4895.0 2474.0 C 4895.0 2794.0, 3630.0 3689.0, 3630.0 4009.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
@@ -373,12 +374,12 @@
   <path d="M 3630.0 3471.0 C 3630.0 3725.0, 3630.0 3755.0, 3630.0 4009.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
   <path d="M 3630.0 4202.0 C 3630.0 4282.0, 3630.0 4162.0, 3630.0 4242.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 3630.0 4202.0 C 3630.0 4282.0, 3630.0 4162.0, 3630.0 4242.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 2155.0 2663.0 C 2155.0 2948.1, 4895.0 2960.9, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2155.0 2663.0 C 2155.0 2948.1, 4895.0 2960.9, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 2645.0 2635.0 C 2645.0 2924.8, 4895.0 2956.2, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2645.0 2635.0 C 2645.0 2924.8, 4895.0 2956.2, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
-  <path d="M 3630.0 2739.0 C 3630.0 2982.4, 4895.0 3002.6, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 3630.0 2739.0 C 3630.0 2982.4, 4895.0 3002.6, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 2155.0 2727.0 C 2155.0 2990.3, 4895.0 2982.7, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 2155.0 2727.0 C 2155.0 2990.3, 4895.0 2982.7, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 2645.0 2699.0 C 2645.0 2967.1, 4895.0 2977.9, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 2645.0 2699.0 C 2645.0 2967.1, 4895.0 2977.9, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 3630.0 2771.0 C 3630.0 3003.6, 4895.0 3013.4, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 3630.0 2771.0 C 3630.0 3003.6, 4895.0 3013.4, 4895.0 3246.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
   <path d="M 890.0 3639.5 C 1210.0 3639.5, 4080.0 3342.5, 4400.0 3342.5" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 890.0 3639.5 C 1210.0 3639.5, 4080.0 3342.5, 4400.0 3342.5" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
   <path d="M 4895.0 3439.0 C 4895.0 3519.0, 4895.0 3399.0, 4895.0 3479.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
@@ -416,36 +417,41 @@
 </g>
 <g>
 <g filter="url(#panelShadow)">
-  <rect x="164" y="504" width="322" height="344" rx="30" fill="none" stroke="#d4b56e" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
-  <rect x="170" y="510" width="310" height="332" rx="24" fill="rgb(14 16 24 / 0.96)" stroke="#d4b56e" stroke-width="2.2" opacity="1.0" />
+  <rect x="164" y="504" width="322" height="467" rx="30" fill="none" stroke="#d4b56e" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
+  <rect x="170" y="510" width="310" height="455" rx="24" fill="rgb(14 16 24 / 0.96)" stroke="#d4b56e" stroke-width="2.2" opacity="1.0" />
   <rect x="171" y="511" width="308" height="38" rx="23" fill="rgba(212, 181, 110, 0.18)" opacity="0.84" />
   <rect x="186" y="522" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#d4b56e" opacity="1" />
   <text x="200" y="541" fill="#d4b56e" font-size="14" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">AXIOM</text>
-  <rect x="188" y="833" width="167.4" height="3" rx="1.5" fill="#d4b56e" opacity="0.88" />
+  <rect x="188" y="956" width="167.4" height="3" rx="1.5" fill="#d4b56e" opacity="0.88" />
   <text x="194" y="588" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">A1 Twelve-Port</text>
-  <text x="194" y="621" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Observer Screen</text>
-  <text x="194" y="668" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">12 ports, 30 edges,</text>
-  <text x="194" y="698" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">20 oriented faces</text>
-  <text x="194" y="728" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">carrier, federation,</text>
-  <text x="194" y="758" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">support kept distinct</text>
-  <text x="194" y="788" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">S2 belongs to the</text>
-  <text x="194" y="818" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">support branch</text>
+  <text x="194" y="621" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Observer</text>
+  <text x="194" y="654" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Screen</text>
+  <text x="194" y="701" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">12 ports, 30</text>
+  <text x="194" y="731" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">edges, 20</text>
+  <text x="194" y="761" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">oriented faces</text>
+  <text x="194" y="791" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">carrier,</text>
+  <text x="194" y="821" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">federation,</text>
+  <text x="194" y="851" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">support kept</text>
+  <text x="194" y="881" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">distinct</text>
+  <text x="194" y="911" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">S2 belongs to the</text>
+  <text x="194" y="941" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">support branch</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="494" y="504" width="322" height="344" rx="30" fill="none" stroke="#d4b56e" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
-  <rect x="500" y="510" width="310" height="332" rx="24" fill="rgb(14 16 24 / 0.96)" stroke="#d4b56e" stroke-width="2.2" opacity="1.0" />
+  <rect x="494" y="504" width="322" height="374" rx="30" fill="none" stroke="#d4b56e" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
+  <rect x="500" y="510" width="310" height="362" rx="24" fill="rgb(14 16 24 / 0.96)" stroke="#d4b56e" stroke-width="2.2" opacity="1.0" />
   <rect x="501" y="511" width="308" height="38" rx="23" fill="rgba(212, 181, 110, 0.18)" opacity="0.84" />
   <rect x="516" y="522" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#d4b56e" opacity="1" />
   <text x="530" y="541" fill="#d4b56e" font-size="14" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">AXIOM</text>
-  <rect x="518" y="833" width="167.4" height="3" rx="1.5" fill="#d4b56e" opacity="0.88" />
+  <rect x="518" y="863" width="167.4" height="3" rx="1.5" fill="#d4b56e" opacity="0.88" />
   <text x="524" y="588" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">A2 Observer</text>
   <text x="524" y="621" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Agreement</text>
   <text x="524" y="668" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">meaning of shared</text>
-  <text x="524" y="698" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">data agrees across</text>
-  <text x="524" y="728" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">every overlap</text>
-  <text x="524" y="758" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">objectivity from</text>
-  <text x="524" y="788" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">compatible</text>
-  <text x="524" y="818" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">overlaps</text>
+  <text x="524" y="698" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">data agrees</text>
+  <text x="524" y="728" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">across every</text>
+  <text x="524" y="758" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">overlap</text>
+  <text x="524" y="788" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">objectivity from</text>
+  <text x="524" y="818" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">compatible</text>
+  <text x="524" y="848" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">overlaps</text>
 </g>
 <g filter="url(#panelShadow)">
   <rect x="824" y="504" width="352" height="317" rx="30" fill="none" stroke="#d4b56e" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
@@ -459,8 +465,8 @@
   <text x="854" y="654" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Randomness</text>
   <text x="854" y="701" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">information</text>
   <text x="854" y="731" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">projection onto the</text>
-  <text x="854" y="761" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">agreement</text>
-  <text x="854" y="791" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">constraint set</text>
+  <text x="854" y="761" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">agreement constraint</text>
+  <text x="854" y="791" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">set</text>
 </g>
 <g filter="url(#panelShadow)">
   <rect x="1184" y="504" width="352" height="317" rx="30" fill="none" stroke="#d4b56e" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
@@ -470,26 +476,26 @@
   <text x="1220" y="541" fill="#d4b56e" font-size="14" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">INTERFACE</text>
   <rect x="1208" y="806" width="183.6" height="3" rx="1.5" fill="#d4b56e" opacity="0.88" />
   <text x="1214" y="588" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Gravity</text>
-  <text x="1214" y="621" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Interfaces</text>
-  <text x="1214" y="654" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">(not axioms)</text>
+  <text x="1214" y="621" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Interfaces (not</text>
+  <text x="1214" y="654" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">axioms)</text>
   <text x="1214" y="701" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">collar recovery,</text>
   <text x="1214" y="731" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">S_gen, focusing:</text>
   <text x="1214" y="761" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">derived or open,</text>
   <text x="1214" y="791" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">with countermodels</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="1544" y="504" width="322" height="281" rx="30" fill="none" stroke="#d4b56e" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
-  <rect x="1550" y="510" width="310" height="269" rx="24" fill="rgb(14 16 24 / 0.96)" stroke="#d4b56e" stroke-width="2.2" opacity="1.0" />
+  <rect x="1544" y="504" width="322" height="284" rx="30" fill="none" stroke="#d4b56e" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
+  <rect x="1550" y="510" width="310" height="272" rx="24" fill="rgb(14 16 24 / 0.96)" stroke="#d4b56e" stroke-width="2.2" opacity="1.0" />
   <rect x="1551" y="511" width="308" height="38" rx="23" fill="rgba(212, 181, 110, 0.18)" opacity="0.84" />
   <rect x="1566" y="522" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#d4b56e" opacity="1" />
   <text x="1580" y="541" fill="#d4b56e" font-size="14" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">DECLARED</text>
-  <rect x="1568" y="770" width="167.4" height="3" rx="1.5" fill="#d4b56e" opacity="0.88" />
+  <rect x="1568" y="773" width="167.4" height="3" rx="1.5" fill="#d4b56e" opacity="0.88" />
   <text x="1574" y="588" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Declared</text>
-  <text x="1574" y="635" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">Completions</text>
-  <text x="1574" y="665" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">generation window</text>
-  <text x="1574" y="695" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">3..5, one Higgs,</text>
-  <text x="1574" y="725" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">sector absences:</text>
-  <text x="1574" y="755" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">open declarations</text>
+  <text x="1574" y="621" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Completions</text>
+  <text x="1574" y="668" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">generation window</text>
+  <text x="1574" y="698" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">3..5, one Higgs,</text>
+  <text x="1574" y="728" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">sector absences:</text>
+  <text x="1574" y="758" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">open declarations</text>
 </g>
 <g filter="url(#panelShadow)">
   <rect x="1974" y="504" width="292" height="434" rx="30" fill="none" stroke="#f3df9a" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
@@ -798,64 +804,66 @@
   <text x="1954" y="1783" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">H3 is not event spacetime</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="1930" y="1847" width="940" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
+  <rect x="1930" y="1847" width="940" height="257" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
   <rect x="1931" y="1848" width="938" height="38" rx="27" fill="rgba(78, 231, 255, 0.16)" opacity="0.72" />
   <rect x="1946" y="1859" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#4ee7ff" opacity="1" />
   <text x="1960" y="1878" fill="#4ee7ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">THEOREM</text>
-  <rect x="1948" y="2031" width="300.8" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
-  <text x="1954" y="1931" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Section 5.2 Null Modular Bridge</text>
-  <text x="1954" y="1984" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">half-sided modular inclusion</text>
-  <text x="1954" y="2016" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">positive null-translation generator</text>
+  <rect x="1948" y="2095" width="300.8" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
+  <text x="1954" y="1931" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Conditional Null Modular Bridge</text>
+  <text x="1954" y="1984" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">geometric scaling; common reference vector</text>
+  <text x="1954" y="2016" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">standard half-sided inclusion; relative commutant cyclic</text>
+  <text x="1954" y="2048" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">positive self-adjoint generator on the Stone domain</text>
+  <text x="1954" y="2080" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">local stress requires a separate same-source map</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="1930" y="2080" width="940" height="225" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#ff8f97" stroke-width="1.6" opacity="1.0" />
-  <rect x="1931" y="2081" width="938" height="38" rx="27" fill="rgba(255, 143, 151, 0.18)" opacity="0.72" />
-  <rect x="1946" y="2092" width="154" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#ff8f97" opacity="1" />
-  <text x="1960" y="2111" fill="#ff8f97" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OPEN CONDITION</text>
-  <rect x="1948" y="2296" width="300.8" height="3" rx="1.5" fill="#ff8f97" opacity="0.82" />
-  <text x="1954" y="2164" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Conditional Effective 3+1 Manifold</text>
-  <text x="1954" y="2217" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">physical signals + source-selected exact order embedding</text>
-  <text x="1954" y="2249" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Poisson/count density + number-volume calibration</text>
-  <text x="1954" y="2281" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">manifold tests; tensor curvature or null-balance for Einstein</text>
+  <rect x="1930" y="2144" width="940" height="225" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#ff8f97" stroke-width="1.6" opacity="1.0" />
+  <rect x="1931" y="2145" width="938" height="38" rx="27" fill="rgba(255, 143, 151, 0.18)" opacity="0.72" />
+  <rect x="1946" y="2156" width="154" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#ff8f97" opacity="1" />
+  <text x="1960" y="2175" fill="#ff8f97" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OPEN CONDITION</text>
+  <rect x="1948" y="2360" width="300.8" height="3" rx="1.5" fill="#ff8f97" opacity="0.82" />
+  <text x="1954" y="2228" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Conditional Effective 3+1 Manifold</text>
+  <text x="1954" y="2281" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">physical signals + source-selected exact order embedding</text>
+  <text x="1954" y="2313" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Poisson/count density + number-volume calibration</text>
+  <text x="1954" y="2345" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">manifold tests; tensor curvature or null-balance for Einstein</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="1930" y="2345" width="450" height="318" rx="24" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
-  <rect x="1931" y="2346" width="448" height="38" rx="23" fill="rgba(78, 231, 255, 0.16)" opacity="0.72" />
-  <rect x="1946" y="2357" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#4ee7ff" opacity="1" />
-  <text x="1960" y="2376" fill="#4ee7ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">THEOREM</text>
-  <rect x="1948" y="2654" width="144.0" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
-  <text x="1954" y="2423" fill="#f4f7fb" font-size="22" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Finite 9-Direction</text>
-  <text x="1954" y="2454" fill="#f4f7fb" font-size="22" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Einstein Shape</text>
-  <text x="1954" y="2499" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">separate supplied 3+1 tensor</text>
-  <text x="1954" y="2527" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">interface</text>
-  <text x="1954" y="2555" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">nine source-direction balances</text>
-  <text x="1954" y="2583" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">-&gt; all-null balance</text>
-  <text x="1954" y="2611" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Ward/Bianchi + connectedness -&gt;</text>
-  <text x="1954" y="2639" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">constant ambiguity</text>
+  <rect x="1930" y="2409" width="450" height="318" rx="24" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
+  <rect x="1931" y="2410" width="448" height="38" rx="23" fill="rgba(78, 231, 255, 0.16)" opacity="0.72" />
+  <rect x="1946" y="2421" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#4ee7ff" opacity="1" />
+  <text x="1960" y="2440" fill="#4ee7ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">THEOREM</text>
+  <rect x="1948" y="2718" width="144.0" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
+  <text x="1954" y="2487" fill="#f4f7fb" font-size="22" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Finite 9-Direction</text>
+  <text x="1954" y="2518" fill="#f4f7fb" font-size="22" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Einstein Shape</text>
+  <text x="1954" y="2563" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">separate supplied 3+1 tensor</text>
+  <text x="1954" y="2591" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">interface</text>
+  <text x="1954" y="2619" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">nine source-direction balances</text>
+  <text x="1954" y="2647" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">-&gt; all-null balance</text>
+  <text x="1954" y="2675" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Ward/Bianchi + connectedness -&gt;</text>
+  <text x="1954" y="2703" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">constant ambiguity</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="2420" y="2345" width="450" height="290" rx="24" fill="rgb(10 14 22 / 0.93)" stroke="#ff8f97" stroke-width="1.6" opacity="1.0" />
-  <rect x="2421" y="2346" width="448" height="38" rx="23" fill="rgba(255, 143, 151, 0.18)" opacity="0.72" />
-  <rect x="2436" y="2357" width="154" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#ff8f97" opacity="1" />
-  <text x="2450" y="2376" fill="#ff8f97" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OPEN CONDITION</text>
-  <rect x="2438" y="2626" width="144.0" height="3" rx="1.5" fill="#ff8f97" opacity="0.82" />
-  <text x="2444" y="2423" fill="#f4f7fb" font-size="22" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Conditional Smooth GR</text>
-  <text x="2444" y="2454" fill="#f4f7fb" font-size="22" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Promotion</text>
-  <text x="2444" y="2499" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">same physical refinement family</text>
-  <text x="2444" y="2527" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">tensor curvature or continuum</text>
-  <text x="2444" y="2555" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">null-balance</text>
-  <text x="2444" y="2583" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">stress, coupling, scale; scalar</text>
-  <text x="2444" y="2611" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">R is diagnostic</text>
+  <rect x="2420" y="2409" width="450" height="290" rx="24" fill="rgb(10 14 22 / 0.93)" stroke="#ff8f97" stroke-width="1.6" opacity="1.0" />
+  <rect x="2421" y="2410" width="448" height="38" rx="23" fill="rgba(255, 143, 151, 0.18)" opacity="0.72" />
+  <rect x="2436" y="2421" width="154" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#ff8f97" opacity="1" />
+  <text x="2450" y="2440" fill="#ff8f97" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OPEN CONDITION</text>
+  <rect x="2438" y="2690" width="144.0" height="3" rx="1.5" fill="#ff8f97" opacity="0.82" />
+  <text x="2444" y="2487" fill="#f4f7fb" font-size="22" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Conditional Smooth GR</text>
+  <text x="2444" y="2518" fill="#f4f7fb" font-size="22" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Promotion</text>
+  <text x="2444" y="2563" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">same physical refinement family</text>
+  <text x="2444" y="2591" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">tensor curvature or continuum</text>
+  <text x="2444" y="2619" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">null-balance</text>
+  <text x="2444" y="2647" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">stress, coupling, scale; scalar</text>
+  <text x="2444" y="2675" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">R is diagnostic</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="1930" y="2703" width="940" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
-  <rect x="1931" y="2704" width="938" height="38" rx="27" fill="rgba(78, 231, 255, 0.16)" opacity="0.72" />
-  <rect x="1946" y="2715" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#4ee7ff" opacity="1" />
-  <text x="1960" y="2734" fill="#4ee7ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">THEOREM</text>
-  <rect x="1948" y="2887" width="300.8" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
-  <text x="1954" y="2787" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">QNEC / QFC / Modular Consistency</text>
-  <text x="1954" y="2840" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">gravity-side consistency bounds</text>
-  <text x="1954" y="2872" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">null entropy inequalities and focusing</text>
+  <rect x="1930" y="2767" width="940" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
+  <rect x="1931" y="2768" width="938" height="38" rx="27" fill="rgba(78, 231, 255, 0.16)" opacity="0.72" />
+  <rect x="1946" y="2779" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#4ee7ff" opacity="1" />
+  <text x="1960" y="2798" fill="#4ee7ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">THEOREM</text>
+  <rect x="1948" y="2951" width="300.8" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
+  <text x="1954" y="2851" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">QNEC / QFC / Modular Consistency</text>
+  <text x="1954" y="2904" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">gravity-side consistency bounds</text>
+  <text x="1954" y="2936" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">null entropy inequalities and focusing</text>
 </g>
 <g filter="url(#panelShadow)">
   <rect x="3160" y="1349" width="940" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
@@ -878,45 +886,46 @@
   <text x="3184" y="1751" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">physical current and Tannaka identity require attachment</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="3160" y="1815" width="940" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
+  <rect x="3160" y="1815" width="940" height="225" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
   <rect x="3161" y="1816" width="938" height="38" rx="27" fill="rgba(78, 231, 255, 0.16)" opacity="0.72" />
   <rect x="3176" y="1827" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#4ee7ff" opacity="1" />
   <text x="3190" y="1846" fill="#4ee7ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">THEOREM</text>
-  <rect x="3178" y="1999" width="300.8" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
-  <text x="3184" y="1899" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Theorem 6.13 Hypercharge Structure</text>
-  <text x="3184" y="1952" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">anomaly freedom + Yukawas</text>
-  <text x="3184" y="1984" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">exact rational hypercharges</text>
+  <rect x="3178" y="2031" width="300.8" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
+  <text x="3184" y="1899" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Conditional Hypercharge Ratios</text>
+  <text x="3184" y="1952" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">declared Weyl matter + compatible Yukawas</text>
+  <text x="3184" y="1984" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">anomaly equations fix charge ratios</text>
+  <text x="3184" y="2016" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Nc = 3 and normalization give rational SM charges</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="3160" y="2048" width="940" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#7ca6ff" stroke-width="1.6" opacity="1.0" />
-  <rect x="3161" y="2049" width="938" height="38" rx="27" fill="rgba(124, 166, 255, 0.16)" opacity="0.72" />
-  <rect x="3176" y="2060" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#7ca6ff" opacity="1" />
-  <text x="3190" y="2079" fill="#7ca6ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OUTPUT</text>
-  <rect x="3178" y="2232" width="300.8" height="3" rx="1.5" fill="#7ca6ff" opacity="0.82" />
-  <text x="3184" y="2132" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Theorem 6.14 Colors = 3</text>
-  <text x="3184" y="2185" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Witten anomaly on the realized branch</text>
-  <text x="3184" y="2217" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Nc = 3 on the realized branch</text>
+  <rect x="3160" y="2080" width="940" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#7ca6ff" stroke-width="1.6" opacity="1.0" />
+  <rect x="3161" y="2081" width="938" height="38" rx="27" fill="rgba(124, 166, 255, 0.16)" opacity="0.72" />
+  <rect x="3176" y="2092" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#7ca6ff" opacity="1" />
+  <text x="3190" y="2111" fill="#7ca6ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OUTPUT</text>
+  <rect x="3178" y="2264" width="300.8" height="3" rx="1.5" fill="#7ca6ff" opacity="0.82" />
+  <text x="3184" y="2164" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Conditional Three-Color Matter Packet</text>
+  <text x="3184" y="2217" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">declared matrix-current and matter fixture</text>
+  <text x="3184" y="2249" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Nc = 3; Witten parity checks consistency</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="3160" y="2281" width="940" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#7ca6ff" stroke-width="1.6" opacity="1.0" />
-  <rect x="3161" y="2282" width="938" height="38" rx="27" fill="rgba(124, 166, 255, 0.16)" opacity="0.72" />
-  <rect x="3176" y="2293" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#7ca6ff" opacity="1" />
-  <text x="3190" y="2312" fill="#7ca6ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OUTPUT</text>
-  <rect x="3178" y="2465" width="300.8" height="3" rx="1.5" fill="#7ca6ff" opacity="0.82" />
-  <text x="3184" y="2365" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Generation Window 3..5</text>
-  <text x="3184" y="2418" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">CP + UV clauses; count open, 3 declared</text>
-  <text x="3184" y="2450" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">physical rank-45 family attachment required</text>
+  <rect x="3160" y="2313" width="940" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#7ca6ff" stroke-width="1.6" opacity="1.0" />
+  <rect x="3161" y="2314" width="938" height="38" rx="27" fill="rgba(124, 166, 255, 0.16)" opacity="0.72" />
+  <rect x="3176" y="2325" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#7ca6ff" opacity="1" />
+  <text x="3190" y="2344" fill="#7ca6ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OUTPUT</text>
+  <rect x="3178" y="2497" width="300.8" height="3" rx="1.5" fill="#7ca6ff" opacity="0.82" />
+  <text x="3184" y="2397" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Generation Window 3..5</text>
+  <text x="3184" y="2450" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">CP + UV clauses; count open, 3 declared</text>
+  <text x="3184" y="2482" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">physical rank-45 family attachment required</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="3160" y="2514" width="940" height="225" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#7ca6ff" stroke-width="1.6" opacity="1.0" />
-  <rect x="3161" y="2515" width="938" height="38" rx="27" fill="rgba(124, 166, 255, 0.16)" opacity="0.72" />
-  <rect x="3176" y="2526" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#7ca6ff" opacity="1" />
-  <text x="3190" y="2545" fill="#7ca6ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OUTPUT</text>
-  <rect x="3178" y="2730" width="300.8" height="3" rx="1.5" fill="#7ca6ff" opacity="0.82" />
-  <text x="3184" y="2598" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Conditional Standard Model Package</text>
-  <text x="3184" y="2651" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">exact quotient and hypercharges on the declared packet</text>
-  <text x="3184" y="2683" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">route identity, physical matter, family, and QFT attachments</text>
-  <text x="3184" y="2715" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">required</text>
+  <rect x="3160" y="2546" width="940" height="225" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#7ca6ff" stroke-width="1.6" opacity="1.0" />
+  <rect x="3161" y="2547" width="938" height="38" rx="27" fill="rgba(124, 166, 255, 0.16)" opacity="0.72" />
+  <rect x="3176" y="2558" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#7ca6ff" opacity="1" />
+  <text x="3190" y="2577" fill="#7ca6ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OUTPUT</text>
+  <rect x="3178" y="2762" width="300.8" height="3" rx="1.5" fill="#7ca6ff" opacity="0.82" />
+  <text x="3184" y="2630" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Conditional Standard Model Package</text>
+  <text x="3184" y="2683" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">exact quotient and hypercharges on the declared packet</text>
+  <text x="3184" y="2715" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">route identity, physical matter, family, and QFT attachments</text>
+  <text x="3184" y="2747" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">required</text>
 </g>
 <g filter="url(#panelShadow)">
   <rect x="4400" y="1349" width="990" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />

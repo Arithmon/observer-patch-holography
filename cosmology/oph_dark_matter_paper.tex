@@ -28,7 +28,11 @@
 \large Modular Charge, the Anomalous Collar Source, and the Deep Galaxy Law}
 \author{Bernhard Mueller \and David Matscheko}
 \date{\OPHPaperReleaseDate}
-\input{../paper/release_info}
+\IfFileExists{paper/release_info.tex}{
+  \input{paper/release_info.tex}
+}{
+  \input{../paper/release_info.tex}
+}
 
 \begin{document}
 \maketitle
@@ -42,49 +46,24 @@
 \end{center}
 
 \begin{abstract}
-In observer-patch holography the physical Einstein adapter sources curvature
-from the modular-charge stress of the screen under a supplied universal
-coupling. Every screen source that carries modular charge therefore gravitates
-on that adapter, whether or not it
-carries the electromagnetic readout, and the luminous-only Einstein relation
-holds exactly when the non-luminous charge vanishes. This is a conditional
-classification identity for any hypothesized excess, not a derivation that a
-nonzero dark charge exists. A candidate carrier is anomalous modular energy
-on overlap collars, supplied by a separate collar-recovery and modular-stress
-attachment rather than by the finite Einstein-shape theorem. Under that attachment its
-rest-frame stress is bounded by the collar recovery defect, vanishes at full
-recovery, and dilutes as the inverse cube of the scale factor when conserved.
-The collars that carry it are galactic-scale objects, so a compact source sees
-only the ambient anomalous density; an isotropic ambient density has no
-trace-free quadrupole. Its traceful tidal scale in the Solar System is four
-orders of magnitude below the dimensionally comparable Cassini quadrupole
-uncertainty, although Cassini does not directly bound the isotropic channel.
-In the deep regime the anomalous density
-with linear enclosed mass gives \(a_A=\sqrt{a_ba_0}\), flat rotation curves,
-and the baryonic Tully--Fisher relation \(v^4=GM_ba_0\). A corrected SPARC
-diagnostic compares the observed acceleration with
-\(a_b+\sqrt{a_ba_0}\); a first comparison against a Tully--Fisher proxy
-built from the catalogued finite-radius flat speed showed non-overlapping
-\(a_0\) intervals. A matched diagnostic changes to the same baryon-subtracted
-anomalous-observable family, common cuts, and a bulgeless common sample; its
-paired interval contains
-zero, so the two channels are consistent with one fitted constant on this
-seen sample. This is consistent with, but does not causally isolate, a
-mixed-proxy explanation and by itself selects no model. The
-compact-source half of the collar-scale premise is a conditional theorem
-under an exponential recovery envelope, with a rate in the local record
-density, and the deep profile with its single constant is characterized,
-conditional on two named premises, as the unique law satisfying deep-regime
-scale covariance and quadrature
-composition of independent sources. All structural statements are
-machine-checked. A separate source-bound replay of the published empirical
-full radial-acceleration interpolation reproduces the 153-galaxy parent
-selection and fits an acceleration scale compatible with the established
-empirical value, while exposing order-ten-percent weighting sensitivity.
-Because both the interpolation and dataset were known, that replay strengthens
-provenance but is not OPH-specific evidence. The
-magnitude of the anomalous charge and the physical attachment of the envelope
-are not derived here.
+Under a supplied universal coupling, the observer-patch Einstein adapter
+responds to total modular charge, including sources without electromagnetic
+readout. We study anomalous energy on overlap collars as a candidate dark
+source. Under the collar-recovery and modular-stress attachment, its stress
+is bounded by the recovery defect, vanishes at full recovery, and dilutes as
+\(a^{-3}\) when its comoving charge is conserved. A common exponential
+recovery envelope gives a quantitative compact-source saturation theorem.
+The erasure-record model independently computes the optimal recovery defect
+as \((1-p)/2\). Under the galactic collar-scale premise an isotropic ambient
+source has zero trace-free quadrupole. Deep-regime scale covariance and
+quadrature composition characterize a unique one-constant law,
+\(a_A=\sqrt{a_ba_0}\), with flat rotation curves and
+\(v^4=GM_ba_0\). These structural results are machine-checked. A
+retrospective SPARC comparison on a matched 97-galaxy sample finds the two
+baryon-subtracted channels consistent with one fitted constant. An
+independent replay of the empirical full radial-acceleration interpolation
+authenticates the 153-galaxy parent selection and quantifies its weighting
+sensitivity.
 \end{abstract}
 
 \section*{Claim Boundary}
@@ -353,9 +332,8 @@ supplies a narrower finite statement~\cite{ophconsensus}: an injected overlap
 mismatch persists at full strength through any continuation in which no later
 commit writes a register in that overlap support. This is an unwritten-support
 persistence theorem. It does not show that a physical galactic cut satisfies
-the no-write hypothesis or remains long-lived. The anomalous charge is therefore a
-property of the record state of a region, and the region in question is the
-galaxy.
+the no-write hypothesis or remains long-lived. The proposed physical
+identification assigns this anomalous record state to galactic collars.
 
 \begin{premise}[Collar scale]
 \label{pre:scale}
@@ -365,8 +343,9 @@ generate anomalous charge of its own; it sits in the ambient anomalous
 density \(\rho_A\) of its neighbourhood.
 \end{premise}
 
-The compact-source half of this premise is a conditional theorem. The
-collar-recovery claim of the spacetime paper~\cite{ophEinstein} bounds the
+A conditional saturation theorem supports limiting suppression in the
+compact-source part of this premise. The collar-recovery claim of the
+spacetime paper~\cite{ophEinstein} bounds the
 defect on its conditional mixing branch by an exponential envelope, which we
 write in the local record density \(\rho\) as
 \begin{equation}
@@ -380,10 +359,12 @@ the collar depth counted in UV record spacings.
 
 \begin{theorem}[Compact-source saturation]
 \label{thm:saturation}
-Under the envelope \eqref{eq:envelope}, along any family of collars with
-fixed radius \(\ell\) and bounded collar constant \(C_C\), the recovery
-defect and the anomalous stress tend to zero as the depth grows at fixed
-record density, and as the record density grows at fixed positive depth.
+Under the envelope \eqref{eq:envelope}, fix common parameters
+\(\kappa\geq0\), \(B\geq1\), \(r_0\geq0\), and \(\zeta>0\).
+Along a family of collars with fixed radius \(\ell>0\) and uniformly bounded
+nonnegative collar constant \(C_C\), the recovery defect and anomalous stress
+tend to zero as the depth tends to infinity at fixed positive record density,
+or as the record density tends to infinity at fixed positive depth.
 Quantitatively,
 \begin{equation}
 \bigl|\delta\langle T_{00}^{\rm anom}\rangle\bigr|
@@ -391,9 +372,11 @@ Quantitatively,
 \exp\!\Bigl(-\frac{\delta\rho^{1/3}-r_0}{\zeta}\Bigr),
 \label{eq:rate}
 \end{equation}
-and the envelope bound falls below \(\varepsilon\) exactly when
-\(\delta\rho^{1/3}>r_0+\zeta\log(\kappa B/\varepsilon)\). Where records are
-dense, a source generates no persistent anomalous charge of its own.
+For \(\kappa B>0\) and \(\varepsilon>0\), the defect envelope bound falls
+below \(\varepsilon\) exactly when
+\(\delta\rho^{1/3}>r_0+\zeta\log(\kappa B/\varepsilon)\).
+For \(\kappa=0\), the defect and stress vanish at every admissible depth.
+Thus the bounded stress tends to zero in these fixed-parameter limits.
 \end{theorem}
 
 The delimitation is exact in both directions and machine-checked. The
@@ -414,8 +397,9 @@ deterministic or randomized, is exactly \((1-p)/2\): an unrecorded cut
 carries an order-one defect necessarily, a saturated record carries none,
 and the defect falls below \(\varepsilon\) exactly when
 \(p>1-2\varepsilon\), the mechanism-side counterpart of the settled-cut
-threshold. Composed with Theorem~\ref{thm:off} the sparse instance carries
-anomalous stress \(15/(16\pi^2)\) exactly. The identification of the model
+threshold. With unit collar radius and collar constant, and anomalous energy
+equal to the model defect, the unrecorded instance carries stress
+\(15/(16\pi^2)\) exactly. The identification of the model
 defect with \(\eta_\delta\) is a modeling premise, and which record density
 a galactic-scale settled cut realizes is open; the model shows the
 mechanism class exists, with an exact defect-density law.
@@ -451,11 +435,10 @@ Section~\ref{sec:solar} and nothing else in the construction.
 \section{The Deep-Regime Profile}
 \label{sec:deep}
 
-Around a baryonic mass \(M_b\), the codimension-one collar count of the
-microphysics paper~\cite{ophmicro} gives the number of settled cuts enclosing
-the source within radius \(r\) as proportional to \(r\). Rather than positing
-the enclosed-mass profile as a functional form, the deep regime is
-characterized by two premises, each independently falsifiable.
+Around a baryonic mass \(M_b\), the proposed collar-count interpretation
+assigns a number of settled cuts proportional to the enclosing radius
+\(r\). The precise deep-regime characterization uses the following two
+premises, each independently falsifiable.
 
 \begin{premise}[Deep-regime scale covariance]
 \label{pre:cov}
@@ -710,8 +693,9 @@ synthetic sample with a known \(a_0\) recovers a unit paired ratio through
 the same pipeline, and an independent script re-derives every quoted number
 from the released receipt. The combined matched-analysis changes remove the
 displacement and are consistent with a mixed-proxy explanation, but they also
-change the radius, subtraction, sample, and combination rule together; causal
-attribution requires staged one-change-at-a-time ablations. The deep-regime
+change the radius, subtraction, sample, and combination rule together. This
+does not causally isolate a mixed-proxy explanation; attribution requires
+staged one-change-at-a-time ablations. The deep-regime
 profile is consistent with one fitted constant across the matched channels on
 this seen sample. Consistency on seen data selects nothing: this is a
 postdiction diagnostic with declared mass-to-light ratios and cuts, and a
@@ -756,8 +740,7 @@ sign, the cut, the mass-to-light encoding, and the covariance algebra.
 \section{Cosmological Scaling}
 \label{sec:cosmo}
 
-If the total anomalous charge in a comoving region is conserved, which holds
-whenever the collar family of the region is stable under the expansion,
+If the total anomalous charge in a comoving region is conserved,
 Theorem~\ref{thm:cold} gives \(\rho_A\propto a^{-3}\): the anomalous medium
 has the homogeneous dilution law of a pressureless component. This does not
 derive its pressure perturbations, anisotropic stress, sound speed, or
@@ -770,10 +753,11 @@ therefore remain open.
 \label{sec:open}
 
 \begin{enumerate}
-\item \textbf{Collar scale.} The compact-source half of
-Premise~\ref{pre:scale} is Theorem~\ref{thm:saturation}, conditional on the
-exponential envelope \eqref{eq:envelope}. What remains is the physical
-attachment: a proof that physical collars satisfy the mixing branch behind
+\item \textbf{Collar scale.} Theorem~\ref{thm:saturation} supplies
+asymptotic compact-source suppression under the common exponential
+envelope \eqref{eq:envelope}; exact absence of a compact source's own
+anomalous charge remains part of Premise~\ref{pre:scale}. Physical attachment
+requires a proof that physical collars satisfy the mixing branch behind
 the envelope, and a positive mechanism for the order-one defect on
 galactic-scale settled cuts, which the envelope provably does not force.
 \item \textbf{Magnitude.} The normalization of
@@ -781,8 +765,7 @@ galactic-scale settled cuts, which the envelope provably does not force.
 Ward/Bianchi branch is not derived. The per-cut dictionary
 \eqref{eq:dictionary} reduces the question to the collar density \(n\) and
 the per-cut variance constant \(c\): a repair-conservation normalization
-would fix \(c\), and the codimension-one collar count of the microphysics
-paper would fix \(n\).
+would fix \(c\), and a source-derived galactic collar count would fix \(n\).
 \item \textbf{Profile.} Theorem~\ref{thm:char} reduces the profile to
 Premises~\ref{pre:cov} and \ref{pre:quad}; what remains is deriving those
 two premises from the collar geometry of a point source, and extending the
@@ -828,14 +811,13 @@ it is a custody and estimator-sensitivity result, not OPH evidence. A calibrated
 covariance and intrinsic-scatter treatment stays required for a physical
 verdict; the correlation scan is a large unresolved sensitivity, not a
 ranking of the total systematic budget. The
-compact-source half of the collar-scale premise is a
-conditional saturation theorem with an exponential rate in the local record
-density, and the profile with its unique constant is characterized by
+conditional saturation theorem gives a density-dependent asymptotic bound;
+exact finite-source absence remains a premise. The profile with its unique
+constant is characterized by
 deep-regime scale covariance and quadrature composition of independent
-sources. The physical attachment of the envelope, the mechanism selecting
-galactic-scale cuts, and the magnitude of the charge are the work that
-turns the remaining premises of Sections~\ref{sec:solar} and \ref{sec:deep}
-into derivations.
+sources. Physical application requires attachment of the envelope, a mechanism
+selecting galactic-scale cuts, and the charge magnitude specified in
+Sections~\ref{sec:solar} and \ref{sec:deep}.
 
 \begin{thebibliography}{99}
 

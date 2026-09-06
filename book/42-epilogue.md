@@ -12,7 +12,7 @@ Go through those four looking for a material. An algebra is a collection of oper
 
 Of the four objects, the record algebra is the one that copies, and chapter nineteen put a mechanism under it. Writing a record runs the observer's questions through the mail room: whatever falls inside one alternative is kept, and every comparison that only meant something across two of them is destroyed. What survives that sorting commutes with everything the observer can ask, which is why a record can be read without being spent, and why the center of the algebra is where tables and pointer readings live.
 
-Chapter twenty priced the consequence in two lines. A reversible machine leaves the overlap of two states where it was, and a machine that hands each of them back twice squares it, so a copier works only where the overlap equals its own square, which leaves zero and one. A polarization nobody has measured sits between the two. No machine duplicates it. A record sits at zero against every other record by construction, so records copy freely and the copying costs them nothing.
+Chapter twenty priced the consequence in two lines. A reversible machine leaves the overlap of two states where it was, and a machine that hands each of them back twice squares it, so a copier works only where the overlap equals its own square, which leaves zero and one. A polarization nobody has measured sits between the two. No machine duplicates it. Distinct orthogonal records admit copying while preserving the source. Physical resource costs depend on the implementation and on how the target register is prepared or reset.
 
 Redundancy runs on that gap. Chapter thirty-three's chair has a definite place because sixteen copies of a sixteen-bit fact push forgery below one part in ten to the seventy-seventh, and the room goes on copying a chair long past sixteen. What can be copied about an observer is exactly what has been written into its records.
 
@@ -46,7 +46,7 @@ Observers capable of running a repair law is a description of somebody, and call
 
 ## Thirty-nine rungs
 
-1. Why is the universe so hard to reverse engineer? Every program that tried surrendered one assumption and defended the arena.
+1. Why is the universe so hard to reverse engineer? Each starting point explains some structures and supplies others; the test is what follows and what can be measured.
 2. Why is there anything rather than nothing? Self-consistency alone picks one number out of the continuum, 1.6180339887.
 3. Why would a universe need anybody in it? Put the stage in first and the stage is the one thing left unexplained.
 4. Why do two descriptions ever agree? They have to match where both look, and a loop of exchange rates has to return what it started with.
@@ -61,23 +61,23 @@ Observers capable of running a repair law is a description of somebody, and call
 13. What is one piece of reality actually made of? Six parts and six moves, and a bounded interface is a bound on what can be known about a region.
 14. Why twelve? A closed carrier admits twelve ports, thirty seams and twenty faces, and no other count.
 15. Why does the position carrier have three directions? On the declared operational-cost branch, only the slowest-fading block survives enough rounds to carry the candidate position readback, and its rank is three. Joined to an independent real axis, it gives an exact finite one-plus-three ambient Lorentzian carrier. Authenticated parent edges compute exact longest-chain source height, and an auxiliary enumeration places every finite log injectively and forward-causally in the carrier. Neither construction derives intrinsic poset dimension, physical coordinates or a clock; physical spacetime requires source-selected order reflection, a compatible refinement, independent dimension and manifoldlikeness tests, and calibrated clocks and volumes.
-16. Why do authenticated records have a direction? A write discards alternatives and later certified reads inherit an informational arrow. Identifying it with the physical arrow of time requires the dynamical, causal and clock bridges.
+16. Why do authenticated records have a direction? Certified reads depend on earlier records. A retained input can make writing reversible; the physical arrow requires the channel, boundary conditions and clock bridges.
 17. Why does the frame module have a limiting cone? Imported classical mathematics identifies the orientation-preserving conformal group of the realized celestial sphere with the proper Lorentz group. Physical signal speed requires causal, ruler and clock attachment.
-18. Why does anything have energy? Energy is how fast repair gets through a region's records, timed by the clock that region makes for itself.
+18. Why does anything have energy? Continuous reversible motion has a generator. Reading it as physical energy requires an energy scale and a calibrated clock.
 19. Why can't you ask everything at once? Refusing to answer two questions together is what makes an undocumented machine readable from a seat inside it, and the questions that refuse nothing form the center where records sit.
 20. Why does nature cheat, but only by exactly 2√2? The ceiling is a product of commutators, and sits at 2.8284.
-21. Why does time feel like it's moving? The state supplies its own flow, and the flow is trivial on records.
-22. Why does writing something down cost heat? All four laws of thermodynamics come out of one repair rule, and at three hundred kelvin the world charges 2.87 joules divided by ten to the twenty-first for every yes-or-no question a record settles.
+21. Why does time feel like it's moving? A faithful finite state supplies a dimensionless modular flow, trivial on central records. A physical clock needs preparation, readout and calibration.
+22. Why can resetting memory cost heat? For an unbiased bit without usable side information, the standard thermal reset assumptions give a mean heat bound of 2.87 times ten to the minus twenty-first joules at three hundred kelvin.
 23. Why does a region's memory scale with its surface? A finite overlap network is a constraint code, and a code of that kind carries no distance.
 24. Why does gravity look like geometry? On a physically faithful smooth limit of the source-derived causal carrier, the stress, entropy, scaling and scale branch yields Einstein geometry. The finite precursor alone does not.
 25. Why exactly these forces? One plus three plus eight, and nothing else survives the arithmetic.
-26. Why this exact list of matter, and why three times over? Fifteen states make one generation, and of 1,024 possible matter contents exactly two survive as mirror images of each other.
+26. Why this list of matter? Within the declared finite menu and its constraints, two mirror fifteen-state contents survive among 1,024 candidates. Family counting uses additional premises.
 27. What is a particle, what is a wave, and why does it look like both? They are one object read at two record depths, and the unified route to proton decay is exactly absent.
-28. Why 1/137, and why is there a limit to what the universe can remember? A closure with no measured number in it gives 137.035660 against a measured 137.035999.
+28. Why 1/137, and why a capacity limit? Declared closure maps connect these questions to consistency. The diagnostic 137.035660 requires a physical carrier and independent transport before comparison with measured 137.035999.
 29. Why do the masses land where they do? The tau is pinned inside a window 72 electron-volts wide, sitting 0.43 sigma from the measurement.
 30. What is a Lagrangian, and why is it the last thing? A running total with one contribution per step and no foresight in it, whose smallest value is the likeliest history.
 31. Why does anything move? On the declared shell-law/rest-fiber branch, the candidate exponent is the rank-three spatial dimension less one, hence two. Reading that structural exponent as the physical inverse-square law requires the source-causal carrier, field and scale attachments.
-32. Why was every open problem the same problem? Every one of them was a consequence of starting with a stage.
+32. How can the problems be connected? One observer architecture supports conditional constructions of records, geometry and matter; a common physical realization must connect them.
 33. Why was Newton right for two hundred years? Redundancy is what makes anything definite, and the layer he wrote down has no motion of its own.
 34. What is anything made of? Ten entries, each a rate, a count, a rank, a cost or a commitment, and no substances.
 35. Why these laws and not others? The average score climbs at the rate the survivors disagree with each other and never falls, and what got selected was a repair rule, chosen from inside, with no second world anywhere to compare against.

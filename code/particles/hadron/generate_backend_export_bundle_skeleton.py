@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Emit a fillable backend-export skeleton for hadron production.
 
-This is the production-side counterpart of the existing JSON skeleton. Instead
+This uses the documented backend-export contract. Instead
 of asking an external RHMC/HMC code to hand-build a giant JSON file, it emits a
 manifest that records the exact dataset paths and per-source coordinates. When
 h5py is available it can also emit a placeholder HDF5 file with the canonical

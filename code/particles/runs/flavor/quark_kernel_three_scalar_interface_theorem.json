@@ -22,7 +22,7 @@
     "coordinate_count": "two centered coordinates plus one mean in each sector; when both centered coordinates are free, x/r is a basis choice and not a seventh spectral invariant",
     "gram_determinant": "4*(1-x^2)^2/3"
   },
-  "generated_utc": "2026-07-12T09:23:00Z",
+  "generated_utc": "2026-09-06T12:02:49Z",
   "github_issues": [
     377,
     379,
@@ -46,6 +46,27 @@
       "rho_ord": "3/(2 + r)",
       "x2": "(r - 1)/(r + 1)"
     },
+    "domain": {
+      "B_ud": "(r+1)^2*(r+5)/(2*p(r))",
+      "additional_condition": "p(r) != 0",
+      "p": "-r^3+4r^2+23r-2",
+      "positive_coordinates": [
+        "r",
+        "sigma_u",
+        "sigma_d"
+      ],
+      "positive_pole_brackets": [
+        [
+          "2/25",
+          "9/100"
+        ],
+        [
+          "71/10",
+          "36/5"
+        ]
+      ],
+      "scope": "The affine mean law is undefined at these positive poles; this is a restricted-chart domain, not a physical exclusion."
+    },
     "left_inverse": {
       "r": "3/rho - 2 with rho = ln(m_c/m_u)/ln(m_t/m_c)",
       "sigma_d": "ln(m_b/m_d)/2",
@@ -60,7 +81,7 @@
   "nonredundancy": {
     "axiom_level_no_go": "quark_axiom_level_yukawa_moduli_nonidentifiability (the axioms emit no component of the triple)",
     "conclusion": "the imposed reciprocal-ray subfamily is exactly three-dimensional and recoverable by the left inverse; this is not a nonredundancy statement for the general six-coordinate eigenvalue interface",
-    "freedom_theorem": "family_transport_kernel_admissibility_freedom_theorem (certificates leave the triple free)"
+    "freedom_theorem": "family_transport_kernel_admissibility_freedom_theorem (finite-grid numerical witnesses show non-uniqueness; no universal tolerance-battery surjectivity theorem)"
   },
   "proof_status": "closed_ray_subfamily_interface_theorem",
   "round_trips": [
@@ -90,5 +111,5 @@
     }
   ],
   "row_class": "restricted_subfamily_theorem",
-  "theorem_statement": "At fixed shared scale g_ch and after imposing the legacy reciprocal profile rays, that restricted candidate chain factors through exactly the triple (r, sigma_u, sigma_d) in (R_>0)^3 of the centered compressed branch generator: rho_ord = 3/(2+r) and x2 = (r-1)/(r+1) carry no information beyond r; rays, mean-law coefficients, sector means, and the six coordinates are closed-form in the triple; the forward map is injective with an explicit closed-form left inverse. This statement is not the general quark interface: a general common-scale pair has two centered coordinates and one mean per sector."
+  "theorem_statement": "At fixed shared scale g_ch and after imposing the legacy reciprocal profile rays, that restricted candidate chain factors through exactly the triple (r, sigma_u, sigma_d) in (R_>0)^3 with p(r)=-r^3+4r^2+23r-2 nonzero, for the centered compressed branch generator: rho_ord = 3/(2+r) and x2 = (r-1)/(r+1) carry no information beyond r; rays, mean-law coefficients, sector means, and the six coordinates are closed-form in the triple; the forward map is injective with an explicit closed-form left inverse. This statement is not the general quark interface: a general common-scale pair has two centered coordinates and one mean per sector."
 }

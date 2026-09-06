@@ -224,7 +224,10 @@
   "OPH-WHITNEY-REAL-CONTINUUM",
   "OPH-WHITNEY-CHARGED-INSTRUMENT",
   "OPH-WHITNEY-EPHEMERIS-CLOCK",
-  "OPH-WHITNEY-QUANTUM-HISTORY"
+  "OPH-WHITNEY-QUANTUM-HISTORY",
+  "OPH-WHITNEY-MAGNETIC-CONTINUUM",
+  "OPH-WHITNEY-QUANTUM-PACKET",
+  "OPH-WHITNEY-CHARGED-ENCLOSURE"
  ],
  "edges": [
   {
@@ -1991,6 +1994,31 @@
    "from": "OPH-WHITNEY-INTERACTING-QUANTUM",
    "to": "OPH-WHITNEY-QUANTUM-HISTORY",
    "role": "Supplies the same declared action, mathematical configuration or independently authenticated decoded record named in the child theorem; no physical selection or empirical status is inherited."
+  },
+  {
+   "from": "OPH-WHITNEY-CHARGED-MATTER",
+   "to": "OPH-WHITNEY-MAGNETIC-CONTINUUM",
+   "role": "Supplies the exact dressed scalar action; only the scalar variables are varied with the magnetic background prescribed."
+  },
+  {
+   "from": "OPH-WHITNEY-REAL-CONTINUUM",
+   "to": "OPH-WHITNEY-MAGNETIC-CONTINUUM",
+   "role": "Supplies the globally ordered uniformly shape-regular cone refinement only; the child does not inherit the real-sector invariance or zero-current hypotheses."
+  },
+  {
+   "from": "OPH-WHITNEY-INTERACTING-QUANTUM",
+   "to": "OPH-WHITNEY-QUANTUM-PACKET",
+   "role": "Supplies the full reduced kinetic metric, chosen self-adjoint Hamiltonian, neutral reducing subspace and polynomial coefficient bounds."
+  },
+  {
+   "from": "OPH-WHITNEY-CHARGED-EXECUTION",
+   "to": "OPH-WHITNEY-QUANTUM-PACKET",
+   "role": "Supplies Gauss-compatible classical phase-space centers only; these are preparation parameters and do not determine quantum time evolution."
+  },
+  {
+   "from": "OPH-WHITNEY-CHARGED-EXECUTION",
+   "to": "OPH-WHITNEY-CHARGED-ENCLOSURE",
+   "role": "Supplies the exact fixed-space lift and charged initial datum. Historical floating-point samples are comparison targets, not inputs to the continuous-time enclosure proof."
   }
  ]
 }

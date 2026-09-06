@@ -12,16 +12,7 @@
 \IfFileExists{paper/release_info.tex}{
   \input{paper/release_info.tex}
 }{
-  \IfFileExists{../paper/release_info.tex}{
-    \input{../paper/release_info.tex}
-  }{
-    \newcommand{\OPHPaperReleaseID}{r1518}
-    \newcommand{\OPHPaperReleaseDate}{July 7, 2026}
-    \newcommand{\OPHPaperReleaseBanner}{%
-      \begin{center}
-      \small\textbf{Paper release:} \texttt{\OPHPaperReleaseID}\quad\textbf{Released:} \OPHPaperReleaseDate
-      \end{center}}
-  }
+  \input{../paper/release_info.tex}
 }
 
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -61,18 +52,15 @@ Observer-Screen Synchronization in Observer-Patch Holography Cosmology}
 \end{center}
 
 \begin{abstract}
-Observer-Patch Holography (OPH) cosmology replaces the inflaton with finite observer-screen
-synchronization. Flatness, horizon coherence, near scale invariance, hot source
-release, and acoustic-transfer inputs are treated as jobs for the finite screen
-state rather than for a new scalar field.
-
-The conditional source theorem fixes the screen amplitude from a primitive
-collar release law and the tilt from an edge-center generator. The radial
-result proves one-shell non-identifiability and supplies physical dilation and
-cross-covariance tomography as conditional uniqueness routes. A physical
-cosmological prediction requires one finite source instantiation, transfer
-calculation, and likelihood; simulator outputs without those receipts are
-diagnostics.
+We formulate observer-screen synchronization as a proposed alternative to an
+inflaton in Observer-Patch Holography (OPH). The conditional source theorem
+fixes a screen amplitude from a primitive collar release law and a spectral
+tilt from an edge-center generator. Physical source dilation and radial
+cross-covariance tomography give two sufficient routes to a unique
+three-dimensional spectrum. Vanishing spatial curvature holonomy identifies
+a flat FLRW branch. These results specify how a finite screen source, its
+clock and release law, and a compatible transport calculation would jointly
+determine cosmological initial data.
 \end{abstract}
 
 \section{Scope}
@@ -152,8 +140,9 @@ primordial growth mode, physical radial lift, transfer calculation, and likeliho
 The flatness branch is split into identification and selection. On a clocked
 Friedmann--Lema\^itre--Robertson--Walker (FLRW) continuation
 with \(u_a=-N\nabla_a\chi\), \(h_{ab}=g_{ab}+u_au_b\), and
-\(K(\tau)=\kappa/a(\tau)^2\), the area-normalized small-loop holonomy of the spatial
-Levi--Civita connection identifies \(K=0\) and hence \(\kappa=0\).  It does not select that sector
+\(K(\tau)=\kappa/a(\tau)^2\), vanishing area-normalized small-loop holonomy of
+the spatial Levi--Civita connection identifies \(K=0\) and hence
+\(\kappa=0\). It does not select that sector
 from the raw FLRW fiber. A numerical calculation must distinguish exact
 selection derived from the finite screen, a flat branch conditioned on an
 explicit premise, and a branch for which no selection theorem is supplied. Screen and collar defect
@@ -194,7 +183,12 @@ the amplitude conversion
 A_\zeta=\frac{A_q}{\pi^{3/2}}
 \frac{\Gamma(3/2+\theta/2)}{\Gamma(1+\theta/2)}
 \]
-at the source pivot. A finite run requires \(R_\star\), the radial window, the unrestricted
+at the source pivot when \(q=\Pi_{\geq2}\zeta(R_\star\hat n)\) and
+\(k_\star R_\star=1\). For the general attachment
+\(q=Z_\star\Pi_{\geq2}\zeta(R_\star\hat n)\), the displayed expression
+is divided by \(Z_\star^2(k_\star R_\star)^\theta\), with
+\(Z_\star\neq0\) and \(-2<\theta<4\).
+A finite run requires \(R_\star\), the radial window, the unrestricted
 null-space report, the forward residual, and the physical scale. The screen theorem proves no
 temperature, polarization, lensing, acoustic-peak, or likelihood statement.
 

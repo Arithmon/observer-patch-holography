@@ -169,10 +169,39 @@ def family_a_cells() -> list[dict]:
 
 # ---------------- family B: class-fusion law ----------------
 
+def fusion_counts(left: np.ndarray, right: np.ndarray, labels: np.ndarray,
+                  s3_class: np.ndarray, s3_mul: np.ndarray,
+                  s3_inv: np.ndarray) -> np.ndarray:
+    """Count classes on directed non-backtracking two-edge paths.
+
+    A stored edge (i, j, g) represents i->j with g and j->i with g^-1.
+    Reversing storage endpoints and inverting g leaves the path counts fixed.
+    """
+    head: dict[int, list[tuple[int, int]]] = {}
+    for idx in range(left.shape[0]):
+        i, j, g = int(left[idx]), int(right[idx]), int(labels[idx])
+        head.setdefault(i, []).append((j, g))
+        head.setdefault(j, []).append((i, int(s3_inv[g])))
+    counts = np.zeros((3, 3), dtype=float)
+    for idx in range(left.shape[0]):
+        i, j, g1 = int(left[idx]), int(right[idx]), int(labels[idx])
+        for k, g2 in head.get(j, ()):
+            if k == i:
+                continue
+            counts[s3_class[g1], s3_class[s3_mul[g1, g2]]] += 1.0
+        g1r = int(s3_inv[g1])
+        for k, g2 in head.get(i, ()):
+            if k == j:
+                continue
+            counts[s3_class[g1r], s3_class[s3_mul[g1r, g2]]] += 1.0
+    return counts
+
+
 def family_b_cells() -> list[dict]:
     holonomy = _sim_module("oph_fpe/defects/array_s3_holonomy.py", "s3holo")
     s3_class = np.asarray(holonomy.S3_CLASS, dtype=np.int64)
     s3_mul = np.asarray(holonomy.S3_MUL, dtype=np.int64)
+    s3_inv = np.asarray(holonomy.S3_INV, dtype=np.int64)
     cells = []
     for run_id in GAUGE_RUNS:
         path = SIM_ROOT / "runs" / run_id / "s3_gauge_state.npz"
@@ -184,24 +213,7 @@ def family_b_cells() -> list[dict]:
         gauge = np.asarray(state["gauge"], dtype=np.int64)
 
         def fusion_matrix(labels: np.ndarray) -> np.ndarray:
-            n = int(max(left.max(), right.max())) + 1
-            head: dict[int, list[tuple[int, int]]] = {}
-            for idx in range(left.shape[0]):
-                head.setdefault(int(left[idx]), []).append((int(right[idx]), int(labels[idx])))
-                head.setdefault(int(right[idx]), []).append((int(left[idx]), int(labels[idx])))
-            counts = np.zeros((3, 3), dtype=float)
-            inv = np.asarray(holonomy.S3_INV, dtype=np.int64)
-            for idx in range(left.shape[0]):
-                i, j, g1 = int(left[idx]), int(right[idx]), int(labels[idx])
-                for (k, g2) in head.get(j, ()):
-                    if k == i:
-                        continue
-                    counts[s3_class[g1], s3_class[s3_mul[g1, g2]]] += 1.0
-                g1r = int(inv[g1])
-                for (k, g2) in head.get(i, ()):
-                    if k == j:
-                        continue
-                    counts[s3_class[g1r], s3_class[s3_mul[g1r, g2]]] += 1.0
+            counts = fusion_counts(left, right, labels, s3_class, s3_mul, s3_inv)
             rows = counts.sum(axis=1, keepdims=True)
             m = counts / np.where(rows > 0, rows, 1.0)
             return m @ m.T
@@ -322,7 +334,28 @@ def family_d_cells() -> list[dict]:
     return cells
 
 
+def require_declared_inputs() -> None:
+    """Reject an incomplete grammar sweep before reading or replacing a report."""
+    paths = {SCAN_PATH}
+    for run_id in RESPONSE_RUNS:
+        paths.update(SIM_ROOT / "runs" / run_id / name for name in (
+            "modular_response_kernel_cache.json", "modular_response_kernel_payload.npz"))
+    for run_id in GAUGE_RUNS:
+        paths.add(SIM_ROOT / "runs" / run_id / "s3_gauge_state.npz")
+    for run_id in TOWER_RUNS:
+        paths.update(SIM_ROOT / "runs" / run_id / name for name in (
+            "s3_gauge_state.npz", "freezeout_fields.npz"))
+    for run_id in TIMELINE_RUNS:
+        paths.add(SIM_ROOT / "runs" / run_id / "defect_timeline_report.json")
+    missing = sorted(path.as_posix() for path in paths if not path.is_file())
+    if missing:
+        raise FileNotFoundError(
+            "Declared survey inputs missing; refusing a partial survey: "
+            + ", ".join(missing))
+
+
 def build() -> dict:
+    require_declared_inputs()
     scan = json.loads(SCAN_PATH.read_text(encoding="utf-8"))
     band = scan["findings"]["a2_band_by_convention"]["quoted_mixed"]
     template_rho = float(scan["template_rho_ord"])

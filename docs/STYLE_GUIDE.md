@@ -98,6 +98,18 @@ the repository, the ledgers, or the other papers.
 - An abstract reads on its own. A reader who has seen none of the other papers
   follows every sentence in it.
 
+## Comparing research programs
+
+Make OPH's case through its concrete constructions: bounded self-reading
+patches, protected overlap records, and the derived structures connected to
+them. Compare named formulations using primary sources and the same criteria:
+explicit inputs, strength of derivation, controlled approximation, physical
+identification and prospective tests. Credit established results and shared
+ideas. Numerical claims of superiority require a defined metric and evidence;
+theorem counts, author reputation and publicity do not measure physical truth.
+Keep detailed comparisons in overview discussions. Specialist papers retain
+their scientific focus, and READMEs give the short positive case.
+
 ## Repository READMEs
 
 - A README is an informal front door for interested non-specialists. It gives

@@ -7,7 +7,10 @@ from __future__ import annotations
 
 import copy
 import json
+import os
+import shutil
 import subprocess
+import textwrap
 from pathlib import Path, PureWindowsPath
 
 import pytest
@@ -515,11 +518,12 @@ def test_preview_ci_accepts_same_release_previews_and_rejects_artifact_drift() -
         REPO_ROOT / ".github" / "workflows" / "publication-build.yml"
     ).read_text(encoding="utf-8")
     assert "git diff --quiet --" in workflow
-    # The committed book PDF is a release artifact rebuilt when a release is cut, so the
-    # preview job must neither diff against it nor write over it.  It builds the book to a
-    # scratch path instead, which still proves the manuscript compiles, still enforces the
-    # warning budget, and still requires two builds to agree byte for byte.
-    assert "book/reverse-engineering-reality-book.pdf" not in workflow
+    # Scratch builds must detect stale committed books without overwriting the evidence.
+    assert 'cmp --silent "${RUNNER_TEMP}/book-first.pdf" book/reverse-engineering-reality-book.pdf' in workflow
+    assert "git diff --quiet -- paper flagship extra cosmology" in workflow
+    assert workflow.count("find paper flagship extra cosmology -maxdepth") == 3
+    assert 'git ls-files --error-unmatch -- "$pdf"' in workflow
+    assert workflow.count('- "cosmology/**"') == 2
     assert workflow.count("python tools/refresh_paper_release.py --preview") == 2
     assert workflow.count('python tools/build_book_pdf.py --output "${RUNNER_TEMP}/') == 2
     assert 'diff -u "${RUNNER_TEMP}/book-first.sha256"' in workflow
@@ -530,6 +534,103 @@ def test_preview_ci_accepts_same_release_previews_and_rejects_artifact_drift() -
     assert "Record first-pass publication hashes" not in workflow
     assert workflow.count("sha256sum paper/paper_release_manifest.json") == 2
     assert 'diff -u "${RUNNER_TEMP}/manifest-first.sha256"' in workflow
+
+
+@pytest.mark.parametrize(
+    ("case", "diagnostic"),
+    [
+        ("matching", None),
+        ("untracked", "Generated PDF is not committed"),
+        ("ignored", "Generated PDF is not committed"),
+        ("untracked_whitespace", "Generated PDF is not committed"),
+        ("changed_tracked", "The committed PDFs or manifest do not match"),
+        ("stale_book", "The committed book PDF does not match"),
+    ],
+)
+def test_actual_preview_artifact_step_rejects_missing_or_stale_commits(
+    tmp_path: Path, case: str, diagnostic: str | None
+) -> None:
+    """Execute the workflow's own Bash block, without rebuilding any real PDF."""
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "publication-build.yml"
+    ).read_text(encoding="utf-8")
+    marker = (
+        "      - name: Require committed preview artifacts to match the source rebuild\n"
+        "        run: |\n"
+    )
+    assert workflow.count(marker) == 1
+    script = textwrap.dedent(
+        workflow.split(marker, 1)[1].split("\n      - name:", 1)[0]
+    )
+    env = os.environ.copy()
+    bash = shutil.which("bash")
+    if os.name == "nt":
+        # Execute this Ubuntu workflow regression with Git Bash, never WSL Bash.
+        git = shutil.which("git")
+        assert git is not None, "Git is required for the preview fixture"
+        git_root = Path(git).resolve().parent.parent
+        candidates = [git_root / "bin/bash.exe", git_root / "usr/bin/bash.exe"]
+        bash_path = next((p for p in candidates if p.is_file()), None)
+        if bash_path is None:
+            pytest.skip("Git Bash is required to replay the Ubuntu workflow on Windows")
+        bash = str(bash_path)
+        env["PATH"] = os.pathsep.join(
+            [str(git_root / "usr/bin"), str(git_root / "bin"), env["PATH"]]
+        )
+    assert bash is not None, "Bash is required to replay the preview workflow"
+
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    scratch = tmp_path / "scratch"
+    scratch.mkdir()
+    env["RUNNER_TEMP"] = scratch.as_posix()
+
+    def git_run(*args: str) -> None:
+        subprocess.run(
+            ["git", *args], cwd=repo, env=env, check=True,
+            capture_output=True, text=True, encoding="utf-8",
+        )
+
+    git_run("init", "--quiet")
+    git_run("config", "user.name", "Preview fixture")
+    git_run("config", "user.email", "preview@example.invalid")
+    git_run("config", "commit.gpgSign", "false")
+    git_run("config", "core.autocrlf", "false")
+    hooks = tmp_path / "empty-hooks"
+    hooks.mkdir()
+    git_run("config", "core.hooksPath", hooks.as_posix())
+    for directory in ("paper", "flagship", "extra", "cosmology", "book"):
+        (repo / directory).mkdir()
+    for directory in ("paper", "flagship", "extra", "cosmology"):
+        (repo / directory / "existing paper.pdf").write_bytes(b"%PDF-existing\n")
+    book = repo / "book/reverse-engineering-reality-book.pdf"
+    book.write_bytes(b"%PDF-book\n")
+    (scratch / "book-first.pdf").write_bytes(book.read_bytes())
+    if case == "ignored":
+        (repo / ".gitignore").write_text("cosmology/generated.pdf\n", encoding="utf-8")
+    if case.startswith("untracked") or case == "ignored":
+        (repo / "cosmology/generated.tex").write_text("new source\n", encoding="utf-8")
+    git_run("add", ".")
+    git_run("commit", "--quiet", "-m", "committed preview fixture")
+
+    if case in ("untracked", "ignored"):
+        (repo / "cosmology/generated.pdf").write_bytes(b"%PDF-generated\n")
+    elif case == "untracked_whitespace":
+        (repo / "cosmology/generated paper.pdf").write_bytes(b"%PDF-generated\n")
+    elif case == "changed_tracked":
+        (repo / "cosmology/existing paper.pdf").write_bytes(b"%PDF-rebuilt\n")
+    elif case == "stale_book":
+        (scratch / "book-first.pdf").write_bytes(b"%PDF-current-book\n")
+
+    result = subprocess.run(
+        [bash, "--noprofile", "--norc", "-e", "-c", script],
+        cwd=repo, env=env, capture_output=True, text=True, encoding="utf-8",
+    )
+    output = result.stdout + result.stderr
+    assert result.returncode == (0 if diagnostic is None else 1), output
+    if diagnostic is not None:
+        assert diagnostic in output
+    assert book.read_bytes() == b"%PDF-book\n", "the gate must not refresh the book"
 
 
 def test_preview_ci_watches_every_theorem_count_input() -> None:

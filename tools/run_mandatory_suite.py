@@ -7,6 +7,12 @@ This is the one command REPRODUCE.md documents and CI enforces:
     python tools/run_mandatory_suite.py --full         # + the heavy replay/mutation steps
     python tools/run_mandatory_suite.py --certificates # + exact certificate suites
     python tools/run_mandatory_suite.py --certificate-smoke-only
+    python tools/run_mandatory_suite.py --shard-index 0 --shard-count 2
+
+CI can partition the standard suite into nonempty contiguous shards. The
+zero-based shard index and shard count must be supplied together; sharding
+cannot be combined with full or certificate modes. Concatenating the shard
+command lists reproduces the unchanged standard list in order.
 
 The standard suite runs every register validation, certificate check,
 independent replay, and fast mutation gate. Five long-running replay and
@@ -379,7 +385,10 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
          "code/electromagnetism/test_whitney_real_continuum.py",
          "code/electromagnetism/test_whitney_charged_instrument.py",
          "code/electromagnetism/test_whitney_ephemeris_clock.py",
-         "code/electromagnetism/test_whitney_quantum_history.py"],
+         "code/electromagnetism/test_whitney_quantum_history.py",
+         "code/electromagnetism/test_whitney_charged_enclosure.py",
+         "code/electromagnetism/test_whitney_magnetic_continuum.py",
+         "code/electromagnetism/test_whitney_quantum_packet.py"],
     ),
     (
         "Execute the discrete Coulomb-Green replay, verifier, and mutation guards",
@@ -1139,6 +1148,9 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/particles/leptons/test_charged_entropic_branch_no_go.py",
             "code/particles/flavor/test_entropy_w5_shape_certificate.py",
             "tools/test_post_r2029_audit_surfaces.py",
+            "code/particles/flavor/test_kernel_admissibility_diagnostic.py",
+            "code/particles/flavor/test_k1_carrier_readout_survey.py",
+            "code/particles/flavor/test_quark_s3_d12_template_postdiction.py",
         ],
     ),
 ]
@@ -1200,8 +1212,9 @@ CERTIFICATE_SMOKE_STEPS: list[tuple[str, list[str]]] = [
 
 # The heavy replay/mutation steps excluded from the default run and enforced
 # by --full. Measured 2026-08-14 on the reference laptop these five steps take
-# about 260s, 220s, 45s, 35s, and 22s; every other step finishes in a few
-# seconds. Each entry must match a MANDATORY_STEPS title exactly; main()
+# about 260s, 220s, 45s, 35s, and 22s. Several standard groups now also take
+# minutes; CI shards the standard list without adding heavy exclusions.
+# Each entry must match a MANDATORY_STEPS title exactly; main()
 # fails closed if one does not, so a renamed step cannot silently drop out of
 # both modes.
 HEAVY_STEP_TITLES: frozenset[str] = frozenset(
@@ -1245,10 +1258,24 @@ def main() -> None:
         action="store_true",
         help="recompute and verify only the two canonical exact certificate receipts",
     )
+    parser.add_argument(
+        "--shard-index", type=int,
+        help="zero-based index of a standard-suite shard (requires --shard-count)",
+    )
+    parser.add_argument(
+        "--shard-count", type=int,
+        help="number of nonempty standard-suite shards (requires --shard-index)",
+    )
     args = parser.parse_args()
 
     if args.certificates_only and args.certificate_smoke_only:
         parser.error("--certificates-only and --certificate-smoke-only are mutually exclusive")
+    sharded = args.shard_index is not None or args.shard_count is not None
+    if sharded:
+        if args.shard_index is None or args.shard_count is None:
+            parser.error("--shard-index and --shard-count must be supplied together")
+        if args.full or args.certificates or args.certificates_only or args.certificate_smoke_only:
+            parser.error("sharding is available only for the standard suite")
 
     mandatory_titles = {title for title, _ in MANDATORY_STEPS}
     unknown_heavy = HEAVY_STEP_TITLES - mandatory_titles
@@ -1272,6 +1299,19 @@ def main() -> None:
         )
         for title in sorted(HEAVY_STEP_TITLES):
             print(f"  - {title}")
+    if sharded:
+        total = len(steps)
+        if not 1 <= args.shard_count <= total:
+            parser.error(f"--shard-count must be between 1 and {total}; shards must be nonempty")
+        if not 0 <= args.shard_index < args.shard_count:
+            parser.error("--shard-index must satisfy 0 <= index < --shard-count")
+        start = total * args.shard_index // args.shard_count
+        stop = total * (args.shard_index + 1) // args.shard_count
+        steps = steps[start:stop]
+        print(
+            f"standard shard {args.shard_index + 1}/{args.shard_count}: "
+            f"steps {start + 1}..{stop} of {total}", flush=True,
+        )
     if args.certificates or args.certificates_only:
         steps += CERTIFICATE_STEPS
     if args.certificate_smoke_only:
@@ -1283,6 +1323,11 @@ def main() -> None:
         print("certificate smoke suite OK")
     elif args.full:
         print("mandatory suite OK (full)")
+    elif sharded:
+        print(
+            f"mandatory shard OK ({args.shard_index + 1}/{args.shard_count}; "
+            "standard mode)"
+        )
     else:
         print("mandatory suite OK (standard; heavy steps deferred to --full)")
 

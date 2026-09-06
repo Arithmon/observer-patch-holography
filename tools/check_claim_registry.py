@@ -50,7 +50,7 @@ PREMISE_DEPENDENCY_CLASSIFICATIONS = {
 }
 PREMISE_ID = re.compile(r"^PR-[0-9]{2}$")
 PREMISE_DEPENDENCY_PROJECTION_SHA256 = (
-    "bb0f1330604ab328b6e64175ae156c2c9817b78f07e3fc84eb342422586c7d24"
+    "dedfbac34c4241d45d0e5b9516747bea6b8b5ac6d533ac91ad0a11373a672313"
 )
 
 # Controlled claim classification (issue #512). `status` stays descriptive
@@ -151,7 +151,31 @@ def load_json(path: Path) -> dict:
 
 def load_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
-        return list(csv.DictReader(handle))
+        reader = csv.DictReader(handle, strict=True)
+        try:
+            headers = reader.fieldnames
+            require(
+                bool(headers) and all(header.strip() for header in headers),
+                f"{path}: missing or empty CSV header",
+            )
+            duplicates = sorted(
+                header for header, count in Counter(headers).items() if count > 1
+            )
+            require(not duplicates, f"{path}: duplicate CSV headers: {duplicates}")
+            rows = []
+            for row in reader:
+                location = f"{path}: CSV line {reader.line_num}"
+                require(None not in row, f"{location}: overflow CSV cells")
+                missing = [header for header, value in row.items() if value is None]
+                require(not missing, f"{location}: missing CSV cells: {missing}")
+                empty = [header for header, value in row.items() if not value.strip()]
+                require(not empty, f"{location}: empty CSV cells: {empty}")
+                rows.append(row)
+            return rows
+        except csv.Error as exc:
+            raise SystemExit(
+                f"{path}: invalid CSV at line {reader.line_num}: {exc}"
+            ) from exc
 
 
 def check_exact_claim_id_projection(

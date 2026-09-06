@@ -166,7 +166,7 @@ Put those two together. The world of pointer readings has no continuous reversib
 
 ## A rule that fits every count
 
-Max Born wrote the odds rule down in 1926, in a paper on collisions, putting it in the body of the text as the amplitude and correcting it to the square of the amplitude in a footnote. That footnote is the **Born rule**, one of the three things chapter one said quantum mechanics arrived with and nobody derived. A century of physicists treated the squaring as a postulate, because nobody could get it out of anything more basic.
+Max Born wrote the odds rule down in 1926, in a paper on collisions, putting it in the body of the text as the amplitude and correcting it to the square of the amplitude in a footnote. That footnote is the **Born rule**, a postulate in the standard formulation of quantum mechanics. Reconstruction theorems ask which other assumptions force the same probability rule.
 
 Andrew Gleason derived it in 1957, in the *Journal of Mathematics and Mechanics*, from almost nothing: any assignment of numbers to yes-or-no questions that lands in the unit interval, gives the certain question one, and adds up across every complete list of exclusive alternatives is the trace against exactly one density matrix. The argument assumes no continuity anywhere and no shape whatever for the rule. There was one hole. Gleason's argument needs three dimensions or more, it fails at two, and two is where a spin lives. Paul Busch closed it in *Physical Review Letters* in 2003 by widening the questions to include blunt ones, which answer yes with a weight instead of sorting the world cleanly in two. The wider version covers every finite dimension including two.
 
