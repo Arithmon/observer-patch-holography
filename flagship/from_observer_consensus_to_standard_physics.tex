@@ -3161,9 +3161,9 @@ cells and uniform shape bounds gives
  \sup_{0\leq t\leq T}\bigl(\|u_n-u\|_{H^1}
        +\|\dot u_n-\dot u\|_{L^2}\bigr)\leq C_T/n.
 \]
-The quartic interaction survives the limit. This is a trajectory theorem
-for the real sector; electrically active continuum convergence needs a
-separate estimate.
+For a smooth magnetic-Neumann reference and magnetic Ritz data, complex
+matter has the same rate in a prescribed uniform magnetic field.
+Self-consistent Maxwell backreaction requires a separate estimate.
 
 On the fixed mesh with unwrapped edge coordinates and $e\ne0$,
 eliminating the twelve mean-zero gauge directions using the full kinetic
@@ -3179,17 +3179,16 @@ nonzero subspace invariant under the remaining constant matter phase reduces
 its closure and carries unitary evolution. Completeness and extension
 uniqueness concern this declared prescription, not selection of quantization.
 
-The charged model also has a bounded self-reading software realization:
-five patches use local states, ports, retained records and feedback to
-produce successive field configurations. Independent replay tests the full
-Euler--Lagrange and Gauss equations. On a regular nonturning path with supplied
-energy $E>V$ and the full kinetic metric $G$ in the fixed temporal gauge,
-the configuration duration
-$d\tau=\sqrt{G_q(dq,dq)/(2(E-V(q)))}$ is invariant under positive reparameterization and recovers action time on
-an energy-$E$ solution.
-This Jacobi--Maupertuis construction supplies a model clock. Geometry,
-couplings, preparation, quantization and laboratory identification remain
-separate inputs \cite{ophobservers,ophrepo}.
+Five self-reading software patches evolve field records through local states,
+ports, readback and feedback. Separately, exact interval arithmetic encloses
+the same charged initial-value solution throughout $[0,2]$: degree-32
+polynomials approximate its nine canonical coordinates within $10^{-20}$.
+The symmetry lift satisfies 68 Euler--Lagrange and 13 Gauss equations.
+For energy $E>V$ and temporal-gauge kinetic metric $G$, the regular-path duration
+$d\tau=\sqrt{G_q(dq,dq)/(2(E-V(q)))}$ is reparameterization invariant and
+recovers action time on an energy-$E$ solution. This supplies a model clock.
+Geometry, couplings, preparation, quantization and laboratory identification
+remain separate inputs \cite{ophobservers,ophrepo}.
 
 \subsection{Standard Model action structures}
 \label{sec:sm-lagrangian}

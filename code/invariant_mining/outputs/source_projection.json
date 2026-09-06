@@ -79,9 +79,9 @@
       "sha256": "sha256:8a52c2df5b6b2dc3366c96cf9004267b5d4c12239a698f7914abe2203e7e3bd1"
     },
     {
-      "bytes": 43341,
+      "bytes": 43543,
       "path": "tools/run_mandatory_suite.py",
-      "sha256": "sha256:85d3c77cc2d68af4a3547933ac00c855d2db2eb22deedb52385c678800a5b90c"
+      "sha256": "sha256:6be21cab2d8c86de3fab6376f96faacd55b2812605b594c52c3e4cb847d52936"
     }
   ],
   "issue": 647,

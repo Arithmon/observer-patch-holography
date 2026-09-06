@@ -71,6 +71,11 @@ OBSERVATION_EVIDENCE = [
     "code/electromagnetism/verify_whitney_charged_instrument.py",
     "code/electromagnetism/test_whitney_charged_instrument.py",
     "code/electromagnetism/runtime/whitney_charged_instrument_receipt.json",
+    "paper/tex_fragments/WHITNEY_CHARGED_ENCLOSURE.tex",
+    "code/electromagnetism/whitney_charged_enclosure.py",
+    "code/electromagnetism/verify_whitney_charged_enclosure.py",
+    "code/electromagnetism/test_whitney_charged_enclosure.py",
+    "code/electromagnetism/runtime/whitney_charged_enclosure_receipt.json",
 ]
 
 POSTDICTION_ARTIFACTS = [

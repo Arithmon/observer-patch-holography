@@ -84,7 +84,7 @@ lean_lib «OPHScreen» where
     `A5CarrierClassBand,
     `A5OrbitRaySeparation, `DiscreteRefinement, `LabeledEventReadout, `SerialMaxwellReadout,
     `ConeCochainBridge, `WhitneyTimeBridge, `WhitneyMaxwellDynamics, `WhitneyQuantumBridge,
-    `WhitneyChargedMatter, `WhitneySpatialConsistency,
+    `WhitneyChargedMatter, `WhitneySpatialConsistency, `MagneticMatterStability,
     `BaryonDimensionSix,
     `BipoSHTransferInvariant, `BipoSHInverseBoundary, `BipoSHFrameInvariant,
     `VolumeReadoutBridge, `PrimitivePortTranslationBridge,

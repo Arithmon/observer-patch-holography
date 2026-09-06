@@ -14,6 +14,20 @@ python -m pytest -q \
   tools/test_modal_maxwell_factorization_surfaces.py
 ```
 
+The coupled-action controls can also be reproduced together:
+
+```bash
+python -m pytest -q \
+  code/electromagnetism/test_whitney_charged_enclosure.py \
+  code/electromagnetism/test_whitney_magnetic_continuum.py \
+  code/electromagnetism/test_whitney_quantum_packet.py
+```
+
+These check a rigorous fixed-mesh time enclosure, numerical controls for the
+analytic prescribed-magnetic-field continuum theorem, and full-dimensional
+neutral-state preparation. Their separate acceptance rules do not certify
+physical calibration or useful interacting quantum propagation.
+
 ## Environment
 
 - CPython 3.12 or newer (verified on 3.12 and 3.13).

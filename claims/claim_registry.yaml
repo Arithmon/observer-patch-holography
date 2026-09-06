@@ -9625,6 +9625,136 @@
         "boundary": [],
         "rationale": "The trial assumes the declared finite interacting Hilbert realization, Laplace-Beltrami ordering, hbar, centered Gaussian width and polynomial coefficient bounds. Exact moment integration establishes only a mathematical norm-error envelope. Registered Born preparations, region maps, physical quantum instruments and source-selected clocks are neither required inputs nor outputs of this certificate."
       }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-MAGNETIC-CONTINUUM",
+      "statement": "On the same uniformly shape-regular cone refinements, fix A(x)=c+B cross x/2 and phi=0 and vary only complex scalar matter in the supplied dressed action. Exact edge integrals reproduce this affine-skew potential; dressed nodal traces agree, and a cellwise gauge argument proves an H2-to-H1 interpolation error O(1/n). For m^2>0, g>=0, a C2-in-time H2-in-space magnetic-Neumann reference and magnetic Ritz initial data, conserved energy, fixed-domain Sobolev embedding and Gronwall give H1 field and L2 velocity trajectory error at most C_T/n. Three Lean theorems prove pointwise cubic norm stability, including the sharp symmetric coefficient 3/2 and the 3R^2 Lipschitz bound on norm balls. The continuum estimate remains an analytic paper proof. Independent numerical complex Ritz, gauge, trace, phase-derivative and nonlinear-pulse controls check the finite implementation. Complex matter charge and prescribed magnetic curvature can be nonzero; the background is not varied, and no Maxwell backreaction, full charged Gauss-compatible continuum, physical source or clock is derived.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "analytic_fixed_background_complex_magnetic_matter_trajectory_convergence",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "supplied_scalar_QED_action_and_real_unwrapped_connection",
+        "fixed_uniform_magnetic_background_and_complex_Ritz_initialization"
+      ],
+      "imported_results": [
+        "Whitney_edge_space_unisolvence",
+        "local_gauge_finite_element_approximation",
+        "magnetic_Ritz_projection_and_Sobolev_embedding",
+        "energy_Gronwall_estimate",
+        "local_semilinear_wave_existence_and_finite_propagation"
+      ],
+      "oph_specific_delta": "The exact affine-skew magnetic field and the existing field-dependent scalar dressing define a conforming complex trial space with a uniform approximation and trajectory estimate. This extends matter control to prescribed nonzero curvature and potentially charged complex fields; it does not supersede the invariant real-sector theorem for the fully varied Maxwell action.",
+      "novelty_type": "same_dressed_action_fixed_background_complex_magnetic_Ritz_trajectory_control",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_MAGNETIC_CONTINUUM.tex",
+        "Lean/Screen/MagneticMatterStability.lean",
+        "code/electromagnetism/whitney_magnetic_continuum.py",
+        "code/electromagnetism/verify_whitney_magnetic_continuum.py",
+        "code/electromagnetism/test_whitney_magnetic_continuum.py",
+        "code/electromagnetism/runtime/whitney_magnetic_continuum_receipt.json"
+      ],
+      "falsifier": "Nonmatching dressed traces, a wrong phase derivative or gauge sign, failure of Whitney reproduction or Ritz coercivity, a refinement-dependent stability constant, or promotion of fixed-background scalar evolution to full Maxwell backreaction invalidates the affected conclusion.",
+      "scope_if_false": "The specified mathematical or finite numerical bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
+      "status": "analytic_fixed_background_complex_magnetic_matter_trajectory_convergence__physical_identification_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        728,
+        754,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The theorem starts from a supplied Euclidean cone, uniform mathematical refinements, a prescribed time-independent magnetic field, an explicit scalar action and smooth reference with compatible Ritz data. Registered physical metric, source, species and clock identifications are excluded conclusions rather than consumed antecedents. No physical premise is discharged."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-QUANTUM-PACKET",
+      "statement": "The full charged trajectory admits a time-dependent Coulomb rechart, including the derivative of the gauge transformation. On Gauss-compatible temporal-gauge solutions the Schur minimizer equals the transformed scalar potential, and the full 56-dimensional reduced cotangent has zero constant-phase moment map. Isotropic Gaussian half-density seeds retain all thirty radiative and twenty-six scalar configuration directions. Their residual U(1) projection has exact strictly positive squared norm exp(-A) I0(sqrt(A^2-B^2)), with A>=abs(B); normalized projections belong to the strong domain of the same interacting Hamiltonian. At the exact initial datum, hbar=1 and widths 1/4, 1/2 and 1, the squared projection norm exceeds 1/64. Gauge-invariant radius moments and a normalized-projection residual-transfer inequality are derived. Independently replayed numerical packets at two classical samples are preparations, not quantum evolution. No residual or tail bound certifies the intended time 1/40 and norm-error 1/10 target.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "analytic_full_configuration_Coulomb_preparation_and_neutral_projection",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "declared_Riemannian_Laplace_Beltrami_Friedrichs_quantization",
+        "full_configuration_isotropic_Gaussian_orbit_preparation"
+      ],
+      "imported_results": [
+        "cotangent_reduction_and_Gauss_constraint",
+        "Gaussian_overlap_and_modified_Bessel_integral",
+        "compact_group_orthogonal_projection",
+        "strong_domain_polynomial_Gaussian_bounds",
+        "unitary_Duhamel_residual_estimate"
+      ],
+      "oph_specific_delta": "Constructs the actual full-dimensional reduced phase-space preparation from the coupled charged solution, with its moving gauge derivative and exact neutral projection normalization. This removes a preparation and normalization obstacle without replacing quantum propagation by a classical trajectory.",
+      "novelty_type": "same_action_full_56D_Coulomb_cotangent_and_normalized_neutral_orbit_packets",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_QUANTUM_PACKET.tex",
+        "code/electromagnetism/whitney_quantum_packet.py",
+        "code/electromagnetism/verify_whitney_quantum_packet.py",
+        "code/electromagnetism/test_whitney_quantum_packet.py",
+        "code/electromagnetism/runtime/whitney_quantum_packet_receipt.json"
+      ],
+      "falsifier": "An omitted moving-gauge tangent, wrong cotangent or moment map, vanishing or misnormalized projection, removed transverse direction, incorrect half-density operator or strong-domain estimate invalidates the affected result. Classical centers cannot be identified with projected charged one-point means or with an error-controlled quantum history.",
+      "scope_if_false": "The specified mathematical or finite numerical bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
+      "status": "analytic_full_configuration_Coulomb_preparation_and_neutral_projection__quantum_propagation_not_certified",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730,
+        743,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The construction supplies mathematical states for the declared finite action, geometry, quantization, hbar and Gaussian widths. Physical preparation, measurement instruments, source-selected regions and laboratory time are excluded conclusions, not consumed premises; none is discharged."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-CHARGED-ENCLOSURE",
+      "statement": "For the supplied charged cone action and exact neutral initial data at e=1/4, m^2=1/2 and g=1/4, a phase rotation and cyclic-momentum reduction give a nine-dimensional rational Hamiltonian system with an everywhere positive Schur denominator. Exact outward-rounded dyadic arithmetic, strict Picard inclusions and degree-32 Taylor coefficient bounds enclose its unique solution over all eighty intervals of length 1/40 in [0,2]. Exact dyadic polynomial coefficients give a uniform canonical-coordinate infinity-norm error at most 1e-20. The inverse phase map and exact symmetry lift satisfy all 68 real temporal-gauge Euler equations and 13 Gauss constraints. Independently enclosed sine/cosine reconstruction bounds original position and velocity differences from the 81 stored binary64 samples at their nominal times by 1e-10. Those samples are not inputs to the existence or uniform-time proof. Physical calibration, spatial continuum convergence, observer provenance and quantum evolution are separate.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "independently_replayed_exact_interval_whole_window_charged_IVP_enclosure",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "supplied_scalar_QED_action_and_real_unwrapped_connection",
+        "exact_charged_canonical_initial_data_and_outward_interval_arithmetic"
+      ],
+      "imported_results": [
+        "Legendre_transform_and_cyclic_momentum_reduction",
+        "exact_simplex_moments",
+        "smooth_ODE_local_existence_and_first_exit_Picard_inclusion",
+        "interval_Taylor_method_with_uniform_Lagrange_remainder",
+        "icosahedral_fixed_space_variational_lift",
+        "Noether_Gauss_constraint_propagation"
+      ],
+      "oph_specific_delta": "Rewrites the complete dressed charged action in rational canonical coordinates and independently certifies the entire two-unit finite-action trajectory, including a rigorous comparison to the stored sample values. This replaces solver agreement with an explicit uniform numerical enclosure for this supplied model.",
+      "novelty_type": "rationalized_same_action_charged_whole_window_interval_certificate",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_CHARGED_ENCLOSURE.tex",
+        "code/electromagnetism/whitney_charged_enclosure.py",
+        "code/electromagnetism/verify_whitney_charged_enclosure.py",
+        "code/electromagnetism/test_whitney_charged_enclosure.py",
+        "code/electromagnetism/runtime/whitney_charged_enclosure_receipt.json"
+      ],
+      "falsifier": "A wrong action coefficient, initial momentum, Schur sign, inward-rounded operation, failed strict Picard inclusion, omitted Taylor coefficient radius, invalid remainder or sample phase conversion invalidates the affected bound. Endpoints alone cannot certify the whole interval; physical time and continuum conclusions are excluded.",
+      "scope_if_false": "The specified mathematical or finite numerical bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
+      "status": "independently_replayed_exact_interval_whole_window_charged_IVP_enclosure__physical_identification_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        754,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The theorem and certificate fix a supplied mathematical action, geometry, exact initial data, symmetry sector and action-time convention. Source-selected physical field, clock and preparation premises are excluded conclusions and are neither consumed nor discharged."
+      }
     }
   ]
 }

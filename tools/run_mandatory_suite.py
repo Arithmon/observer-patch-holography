@@ -385,7 +385,10 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
          "code/electromagnetism/test_whitney_real_continuum.py",
          "code/electromagnetism/test_whitney_charged_instrument.py",
          "code/electromagnetism/test_whitney_ephemeris_clock.py",
-         "code/electromagnetism/test_whitney_quantum_history.py"],
+         "code/electromagnetism/test_whitney_quantum_history.py",
+         "code/electromagnetism/test_whitney_charged_enclosure.py",
+         "code/electromagnetism/test_whitney_magnetic_continuum.py",
+         "code/electromagnetism/test_whitney_quantum_packet.py"],
     ),
     (
         "Execute the discrete Coulomb-Green replay, verifier, and mutation guards",

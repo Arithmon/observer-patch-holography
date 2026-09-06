@@ -22,7 +22,7 @@ The mechanic balances a wheel using a picture in which the wheel is an object at
 
 Underneath it sits a rule about descriptions: one earns its keep by being the bottom one, so demoting the everyday container to a reading must take something away from the garage.
 
-That container is the coarse-grained, heavily copied reading of a network of observers repairing their disagreements, and taking the reading is what a body does all day. The size of the error in it has been measured. In 1960 Robert Pound and Glen Rebka needed the 22.5-meter tower of the Jefferson Physical Laboratory, an iron-57 source and ten days of counting to catch a clock in a basement running slow against one on the roof, by 2.56 parts in ten to the fifteenth, give or take 0.25.
+OPH proposes that the familiar container is a shared reading of observers repairing disagreements. The ordinary picture of one clock rate throughout that container has measured limits. In 1960 Robert Pound and Glen Rebka used the 22.5-meter tower of the Jefferson Physical Laboratory and an iron-57 source to measure the gravitational frequency shift, by 2.56 parts in ten to the fifteenth, give or take 0.25. That tests gravitational redshift; identifying an observer construction with the same physical clock requires its own evidence.
 
 So the corrections sit nine decimal places below anything in a workshop. They arrive when the resolution rises. A clock in a navigation satellite runs fast by forty-five microseconds a day and slow by seven, and the correction had to be built into the hardware before the network could find anybody. A wheel balancer reads none of that. The wheel comes back balanced.
 
@@ -84,7 +84,7 @@ Asking for the moment assumes a mechanism with a rate and a threshold, sitting i
 
 A record gets written. Between commits, every question about the spreading pattern lives in the part of the algebra where questions refuse to be answered together, and the phase and the frequency are the content. At a commit an entry lands in the center, where everything commutes, and what the plate holds afterward is one more count at one place. Wave and particle differ by how much of the thing has been written down. The plate writes down only the arrival.
 
-So there is no rate to measure and no threshold to find. What gets fixed instead is the odds. Any assignment of numbers to outcomes that lands in the unit interval, gives the certain event one and adds up consistently across compatible questions is the trace against a single density matrix, in every finite dimension. Alongside it sits a fake, built to reproduce every count a machine actually produced and belonging to no state at all: it scores one pair of questions 35/64 where adding up demands 143/256.
+The probability theorem fixes the odds on the declared finite space of quantum questions. A normalized assignment that adds on every allowed sum of effects, including effects for uncertain outcomes, is the trace against a single density matrix. This does not determine the physical timing or mechanism of an instrument. An exact-fit counterexample reproduces a supplied count table while belonging to no state: it scores one pair of questions 35/64 where effect additivity demands 143/256.
 
 ## Where does the explaining stop?
 
@@ -94,7 +94,7 @@ The question expects an evasion, on the assumption that a structure either expla
 
 The stopping point is printed to the same precision as the results. The carrier's geometry fixes the charges and the family count. It does not fix the mixing between families. Every angle between two symmetry axes of the twelve-port solid was enumerated, four hundred and sixty-five of them, and the smallest nonzero one is 20.9052 degrees, while the Cabibbo angle measured in the laboratory is 13.0029. No angle on that list lands within seven degrees of the measurement.
 
-The other boundary is an instrument. The electromagnetic closure certifies 137.035660 where the measurement reads 137.035999. The difference sits in the quark cloud. Closing it calls for one strong-force quantity known to four parts in a billion, and the best determinations reach four parts in a thousand after campaigns costing ten million processor-hours.
+The electromagnetic closure certifies the diagnostic 137.035660 where the measurement reads 137.035999. Its numerical enclosure cannot identify that difference as a quark contribution. The same physical carrier and an independently calculated transport must connect the closure to the laboratory reading. A correction chosen from the discrepancy would use the target to reproduce itself.
 
 ## You knew the answers before you started
 
@@ -102,7 +102,7 @@ Every one of these numbers was measured decades before the arithmetic that lands
 
 The complaint assumes flexibility, and flexibility is countable.
 
-A fit is worthless when it has a dial in it, meaning a quantity somebody turns until the output matches. Count the dials between the wiring and the result and there are none. The grain appears on both sides of its own equation, the family count is the number of corners on an oriented face, and a structure with no continuous freedom either lands on the measured value or misses it in public.
+A comparison has to count its adjustable inputs and disclose how its target entered the construction. The grain appears on both sides of a declared closure equation, while the family count uses a specified representation and attachment. Uniqueness inside those choices does not make their physical identification automatic. A prospective test fixes its prediction and decision rule before the qualifying measurement.
 
 On the supplied horizon-record branch, identifying dark-energy density with the inverse of a selected time-independent capacity gives $w=-1$. The finite causal poset derives neither that density map nor time-independence. Five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect spectra that test constant-dark-energy models. The charged-lepton balance puts the third mass in a window 72 electron-volts wide, sitting 0.43 sigma from the measurement. The proposed missing-generator branch forbids its named proton-decay channel, so one clean event in that channel would end it.
 
