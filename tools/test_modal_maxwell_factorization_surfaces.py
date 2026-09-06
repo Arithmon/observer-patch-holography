@@ -66,6 +66,11 @@ OBSERVATION_EVIDENCE = [
     "code/electromagnetism/runtime/whitney_spatial_consistency_receipt.json",
     "code/electromagnetism/verify_whitney_spatial_consistency.py",
     "code/electromagnetism/test_whitney_spatial_consistency.py",
+    "paper/tex_fragments/WHITNEY_CHARGED_INSTRUMENT.tex",
+    "code/electromagnetism/whitney_charged_instrument.py",
+    "code/electromagnetism/verify_whitney_charged_instrument.py",
+    "code/electromagnetism/test_whitney_charged_instrument.py",
+    "code/electromagnetism/runtime/whitney_charged_instrument_receipt.json",
 ]
 
 POSTDICTION_ARTIFACTS = [

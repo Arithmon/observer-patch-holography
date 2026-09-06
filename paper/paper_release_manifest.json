@@ -20,13 +20,13 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "cfe6cecdf30822333a5cb7b759c5e3bbedd832a15df581f915b9cc8a004e2279",
-      "size_bytes": 464168
+      "sha256": "9b5709399343f85c2e06c74d3e1f1ed497b80c0d9eb772541e878849ee597e94",
+      "size_bytes": 464369
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "d7fe3ccd03b7f19d871dbbb4d1f753487d0fdac99879287884283fe5366248ce",
-      "size_bytes": 806511
+      "sha256": "a40f429c319315ab888a4593ec7b5a60f965a791aae53a12664d1293ac7e9812",
+      "size_bytes": 806352
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
