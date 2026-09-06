@@ -4848,6 +4848,127 @@ def _whitney_coupled_rows() -> list[dict[str, Any]]:
     return rows
 
 
+def _verify_whitney_completion_parent(stem: str) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Fresh replay of one new continuum, instrument, clock or trial parent."""
+    if stem not in {"real_continuum", "charged_instrument", "ephemeris_clock", "quantum_history"}:
+        raise SystemExit("unknown Whitney completion evidence parent")
+    path = CODE / "electromagnetism" / f"verify_whitney_{stem}.py"
+    spec = importlib.util.spec_from_file_location(f"whitney_{stem}_structural_verifier", path)
+    if spec is None or spec.loader is None:
+        raise SystemExit(f"missing independent Whitney {stem} verifier")
+    verifier = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(verifier)
+    receipt = verifier.load()
+    return receipt, verifier.verify(receipt)
+
+
+def _whitney_completion_rows() -> list[dict[str, Any]]:
+    """Project exact scopes and counts; never project recomputed float errors."""
+    scopes = {
+        "real_continuum": "UNIFORM_CONE_REFINEMENT__CONDITIONAL_REAL_QUARTIC_WAVE_CONTINUUM__FINITE_NUMERIC_CHECKS",
+        "charged_instrument": "SELF_READING_COUPLED_CLASSICAL_EXECUTION__COMPUTATIONAL_PATCHES__MODEL_TIME_ONLY",
+        "ephemeris_clock": "ACTION_DERIVED_MODEL_CLOCK__NUMERICAL_POLYLINE_READOUT",
+        "quantum_history": "FULL_56D_NEUTRAL_POTENTIAL_PHASE_TRIAL__GLOBAL_NORM_BOUND__DECLARED_INPUTS",
+    }
+    required = {
+        "real_continuum": {"accepted": True, "refinement_parameters": [1, 2, 4, 8],
+            "tetrahedra": [20, 160, 1280, 10240], "uniform_shape_bound": "72",
+            "conditional_real_sector_trajectory_bound": True, "full_charged_complex_trajectory_bound": False,
+            "numerical_trajectory_error_certified": False, "physical_source_or_clock_selected": False,
+            "formalized_in_lean": False},
+        "charged_instrument": {"accepted": True, "patches": 5, "writable_real_registers": 10,
+            "events": 1782, "decoded_samples": 81, "completed_repair_cycles": 405,
+            "solver_advances": 80, "full_equations_per_sample": 68, "gauss_equations_per_sample": 13,
+            "exact_record_restoration": True, "observer_software_history": True,
+            "physical_clock_calibrated": False, "physical_observer_placement": False,
+            "quantum_state_history": False, "spatial_trajectory_convergence": False,
+            "rigorous_trajectory_enclosure": False, "empirical_prediction": False},
+        "ephemeris_clock": {"accepted": True, "source_configurations": 81,
+            "calibrated_physical_clock": False, "rigorous_numerical_enclosure": False,
+            "quantum_clock_operator": False},
+        "quantum_history": {"accepted": True, "real_configuration_dimension": 56,
+            "state_samples": 5, "phase_configurations": 4, "global_time_coverage": True,
+            "trial_history_computed": True, "exact_Hamiltonian_history_computed": False,
+            "configuration_density_moves": False, "observer_history": False,
+            "physical_state_preparation": False, "empirical_comparison": False,
+            "ordinary_physics_benchmark": False, "analytic_proof_formalized_in_Lean": False,
+            "numeric_quadrature_used_for_bound": False},
+    }
+    specs = (
+        ("real_continuum", "WHITNEY_REAL_CONTINUUM.tex", "thm:whitney-real-continuum-trajectory",
+         ["prop:whitney-uniform-cone-refinement", "lem:whitney-real-sector-invariant", "eq:whitney-real-trajectory-error"],
+         "A conforming uniformly shape-regular refinement of the same solid supports the full charged action's invariant real scalar sector with A=phi=0. Given a C^2([0,T];H^2) real Neumann solution and mass-shifted Ritz initial position and velocity, the semidiscrete nonlinear wave trajectories converge at O(1/n) in H^1 position plus L^2 velocity, uniformly on the fixed time interval. The proof uses the actual invariant sector and retains its full-action equations and constraints.",
+         "analytic conditional real-sector continuum trajectory bound; independent finite geometry/Ritz and wave checks; no observed postdiction",
+         "Supplied cone and continuum time, scalar species/action, m^2>0, g>=0, real neutral sector, natural Neumann boundary conditions, and an existing C^2_t H^2_x continuum reference. The theorem requires Ritz-compatible initialization. The stored pulse trajectories instead use nodal initialization and verify numerical implementation, not the continuum error bound. No full charged-complex trajectory convergence, numerical interval enclosure, source-selected geometry/matter/clock or empirical comparison is established."),
+        ("charged_instrument", "WHITNEY_CHARGED_INSTRUMENT.tex", "prop:whitney-charged-record-restoration", [],
+         "Five computational observer-like patches execute 1782 events with local coordinate/velocity states, ring ports, destructive averaging probes, retained records and feedback. All 405 probe cycles restore their rational registers exactly. Eighty numerical action advances consume previously decoded states; 81 decoded frames reconstruct the same charged action's full fields, with all 68 configuration equations and 13 Gauss equations independently checked. Historical trajectory samples are comparison-only.",
+         "exact software readback/restoration and independently replayed numerical coupled fields; no observed postdiction",
+         "Supplied symmetry-coordinate patch placement, classical writable registers and records, numerical solver, cone, scalar action, initial data and action step. Hash-pinned replay proves internal software provenance without external attestation. The five patches are computational coordinates, not physical observer locations. Repair counts are operational events; their assignment to model time is supplied. Numerical residuals are not rigorous trajectory enclosures, and no quantum history, continuum trajectory limit or laboratory clock calibration is attached."),
+        ("ephemeris_clock", "WHITNEY_EPHEMERIS_CLOCK.tex", "prop:whitney-ephemeris-clock", ["eq:whitney-ephemeris-clock"],
+         "The complete coupled kinetic metric, potential and supplied energy define the Jacobi-Maupertuis duration d_tau=sqrt(G[dq,dq]/(2(E-V))). On a regular nonturning stationary path of the fixed-energy Jacobi action, this timing recovers the natural action evolution and is invariant under positive reparameterization. A consumer integrates polygonal paths through 81 independently decoded configurations without using recorded velocities, timestamps or repair counts in its clock integral. A fixed smooth nonturning curve has an analytic O(delta^2) polygon-duration estimate.",
+         "standard Jacobi timing attached to the same action and software records; independently replayed numerical readout; no observed postdiction",
+         "Supplied full action, energy, temporal gauge, configuration-coordinate convention and ordered classical path. The analytic statement requires positive kinetic energy and E-V>0 and excludes turning points. The numerical polyline and quadrature comparisons do not certify segment-wide admissibility or integration/trajectory errors. Source authentication may inspect record metadata; the duration calculation consumes configurations only. This model-internal duration has no selected physical units, laboratory calibration, Lorentzian spacetime identification or quantum-clock operator."),
+        ("quantum_history", "WHITNEY_QUANTUM_HISTORY.tex", "thm:whitney-quantum-trial-history", [],
+         "The full 56-real-coordinate interacting Hilbert space admits the explicitly time-dependent neutral trial v(t)=exp(-itV/hbar)f_sigma. Exact global Gaussian moments and analytic coefficient bounds certify its Hilbert-norm distance from the exact Hamiltonian evolution for every time in a declared short interval. The packet supplies five times and four exact phase configurations while keeping the configuration probability density fixed; it does not restrict the quantum state to the classical five-coordinate trajectory.",
+         "analytic trial-evolution error theorem and independently replayed exact global bound; no observed postdiction",
+         "Supplied interacting action, Hilbert measure, operator ordering, hbar, Gaussian width and Hamiltonian time. This is a potential-phase trial with a conservative dimensionless horizon 2^-55 and norm-error target 1/10, not a computed exact Hamiltonian history or a practical ordinary-physics simulation. Global analytic envelopes and exact Gaussian moments avoid numerical quadrature or omitted Gaussian tails in the bound. No evolving configuration density, observer preparation, physical clock, continuum QFT or empirical comparison is established."),
+    )
+    rows = []
+    for stem, fragment, label, supporting_labels, statement, match, boundary in specs:
+        receipt, verified = _verify_whitney_completion_parent(stem)
+        if (receipt.get("scope") != scopes[stem]
+                or verified.get("scope", scopes[stem] if stem == "ephemeris_clock" else None) != scopes[stem]):
+            raise SystemExit("Whitney completion certificate scope mismatch: "+stem)
+        projection = {}
+        for key, expected in required[stem].items():
+            actual = verified.get(key)
+            if json.dumps(actual, sort_keys=True, allow_nan=False) != json.dumps(expected, sort_keys=True, allow_nan=False):
+                raise SystemExit("Whitney completion category/count mismatch: "+stem+"/"+key)
+            projection[key] = actual
+        projection["scope"] = scopes[stem]
+        if stem == "quantum_history":
+            for key in ("horizon", "target_norm_error", "squared_norm_error_upper"):
+                value = verified.get(key)
+                try:
+                    valid = type(value) is str and str(Fraction(value)) == value and Fraction(value) > 0
+                except (ValueError, ZeroDivisionError):
+                    valid = False
+                if not valid:
+                    raise SystemExit("Whitney completion quantum bound needs a positive canonical rational: "+key)
+                projection[key] = value
+            if (Fraction(projection["horizon"]) != Fraction(1, 2**55)
+                    or projection["target_norm_error"] != "1/10"
+                    or Fraction(projection["squared_norm_error_upper"]) > Fraction(1, 100)):
+                raise SystemExit("Whitney completion quantum certified interval/target mismatch")
+            for key in ("horizon", "target_norm_error"):
+                if receipt.get("error_certificate", {}).get(key) != projection[key]:
+                    raise SystemExit("Whitney completion quantum certificate attachment mismatch")
+            if receipt.get("error_certificate", {}).get("horizon_squared_error_upper") != projection["squared_norm_error_upper"]:
+                raise SystemExit("Whitney completion quantum exact bound attachment mismatch")
+        paper = "paper/tex_fragments/"+fragment
+        text = (REPO/paper).read_text(encoding="utf-8")
+        for named in [label, *supporting_labels]:
+            if "\\label{"+named+"}" not in text:
+                raise SystemExit("Whitney completion analytic theorem missing: "+paper+"#"+named)
+        row = {"id": "whitney_"+stem, "statement": statement, "match": match,
+            "observed_counterpart": "Mathematical field, software-instrument and quantum structures; no observed data",
+            "observed_postdiction": False, "physical_comparison_status": "NOT_EVALUABLE",
+            "source_selected_physical_continuum": False,
+            "continuum_convergence_established": stem == "real_continuum",
+            "continuum_convergence_scope": "conditional analytic invariant real-sector trajectory bound" if stem == "real_continuum" else "not established by this row",
+            "certificate_scope": scopes[stem], "independent_verifier_result": projection,
+            "analytic_paper_theorem": {"source": paper, "label": label},
+            "analytic_supporting_results": {"source": paper, "labels": supporting_labels},
+            "analytic_proof_formalized_in_lean": False, "lean_declarations": {}, "lean_receipts": [],
+            "artifact_refs": ["paper/observers_are_all_you_need.tex", paper]+[
+                "code/electromagnetism/"+name for name in (
+                    f"runtime/whitney_{stem}_receipt.json", f"whitney_{stem}.py",
+                    f"verify_whitney_{stem}.py", f"test_whitney_{stem}.py")],
+            "hypothesis_boundary": boundary, "paper_ref": "observers synthesis, whitney "+stem.replace("_", " ")}
+        rows.append(row)
+    return rows
+
+
 def build(
     out_path: Path = DEFAULT_OUT,
     md_path: Path | None = DEFAULT_MD,
@@ -4917,6 +5038,7 @@ def build(
     sections["forced_structure"].append(_cone_whitney_bridge_row())
     sections["forced_structure"].extend(_whitney_dynamics_rows())
     sections["forced_structure"].extend(_whitney_coupled_rows())
+    sections["forced_structure"].extend(_whitney_completion_rows())
     result = {
         "artifact": "oph_postdiction_ledger",
         "generator": "code/particles/scripts/build_postdiction_ledger.py",

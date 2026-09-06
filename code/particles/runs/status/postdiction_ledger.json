@@ -2246,6 +2246,214 @@
         "rigorous_trajectory_error_enclosure": false,
         "spatial_action_consistency": false,
         "statement": "A five-real-coordinate icosahedrally invariant sector of the same charged action evolves from the nonzero neutral initial data with all 68 full temporal-gauge Euler equations and all 13 Gauss equations checked at 81 samples. The analytic finite-group argument lifts the restricted equations to the full action. The independent verifier reconstructs unrestricted element Jacobians, re-integrates the path and RK4 controls, verifies degree-five quadrature, and rejects omitted-dressing and underintegration controls. Stored classical field readouts include electric cochains, matter fields and local charge."
+      },
+      {
+        "analytic_paper_theorem": {
+          "label": "thm:whitney-real-continuum-trajectory",
+          "source": "paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex"
+        },
+        "analytic_proof_formalized_in_lean": false,
+        "analytic_supporting_results": {
+          "labels": [
+            "prop:whitney-uniform-cone-refinement",
+            "lem:whitney-real-sector-invariant",
+            "eq:whitney-real-trajectory-error"
+          ],
+          "source": "paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex"
+        },
+        "artifact_refs": [
+          "paper/observers_are_all_you_need.tex",
+          "paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex",
+          "code/electromagnetism/runtime/whitney_real_continuum_receipt.json",
+          "code/electromagnetism/whitney_real_continuum.py",
+          "code/electromagnetism/verify_whitney_real_continuum.py",
+          "code/electromagnetism/test_whitney_real_continuum.py"
+        ],
+        "certificate_scope": "UNIFORM_CONE_REFINEMENT__CONDITIONAL_REAL_QUARTIC_WAVE_CONTINUUM__FINITE_NUMERIC_CHECKS",
+        "continuum_convergence_established": true,
+        "continuum_convergence_scope": "conditional analytic invariant real-sector trajectory bound",
+        "hypothesis_boundary": "Supplied cone and continuum time, scalar species/action, m^2>0, g>=0, real neutral sector, natural Neumann boundary conditions, and an existing C^2_t H^2_x continuum reference. The theorem requires Ritz-compatible initialization. The stored pulse trajectories instead use nodal initialization and verify numerical implementation, not the continuum error bound. No full charged-complex trajectory convergence, numerical interval enclosure, source-selected geometry/matter/clock or empirical comparison is established.",
+        "id": "whitney_real_continuum",
+        "independent_verifier_result": {
+          "accepted": true,
+          "conditional_real_sector_trajectory_bound": true,
+          "formalized_in_lean": false,
+          "full_charged_complex_trajectory_bound": false,
+          "numerical_trajectory_error_certified": false,
+          "physical_source_or_clock_selected": false,
+          "refinement_parameters": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "scope": "UNIFORM_CONE_REFINEMENT__CONDITIONAL_REAL_QUARTIC_WAVE_CONTINUUM__FINITE_NUMERIC_CHECKS",
+          "tetrahedra": [
+            20,
+            160,
+            1280,
+            10240
+          ],
+          "uniform_shape_bound": "72"
+        },
+        "lean_declarations": {},
+        "lean_receipts": [],
+        "match": "analytic conditional real-sector continuum trajectory bound; independent finite geometry/Ritz and wave checks; no observed postdiction",
+        "observed_counterpart": "Mathematical field, software-instrument and quantum structures; no observed data",
+        "observed_postdiction": false,
+        "paper_ref": "observers synthesis, whitney real continuum",
+        "physical_comparison_status": "NOT_EVALUABLE",
+        "source_selected_physical_continuum": false,
+        "statement": "A conforming uniformly shape-regular refinement of the same solid supports the full charged action's invariant real scalar sector with A=phi=0. Given a C^2([0,T];H^2) real Neumann solution and mass-shifted Ritz initial position and velocity, the semidiscrete nonlinear wave trajectories converge at O(1/n) in H^1 position plus L^2 velocity, uniformly on the fixed time interval. The proof uses the actual invariant sector and retains its full-action equations and constraints."
+      },
+      {
+        "analytic_paper_theorem": {
+          "label": "prop:whitney-charged-record-restoration",
+          "source": "paper/tex_fragments/WHITNEY_CHARGED_INSTRUMENT.tex"
+        },
+        "analytic_proof_formalized_in_lean": false,
+        "analytic_supporting_results": {
+          "labels": [],
+          "source": "paper/tex_fragments/WHITNEY_CHARGED_INSTRUMENT.tex"
+        },
+        "artifact_refs": [
+          "paper/observers_are_all_you_need.tex",
+          "paper/tex_fragments/WHITNEY_CHARGED_INSTRUMENT.tex",
+          "code/electromagnetism/runtime/whitney_charged_instrument_receipt.json",
+          "code/electromagnetism/whitney_charged_instrument.py",
+          "code/electromagnetism/verify_whitney_charged_instrument.py",
+          "code/electromagnetism/test_whitney_charged_instrument.py"
+        ],
+        "certificate_scope": "SELF_READING_COUPLED_CLASSICAL_EXECUTION__COMPUTATIONAL_PATCHES__MODEL_TIME_ONLY",
+        "continuum_convergence_established": false,
+        "continuum_convergence_scope": "not established by this row",
+        "hypothesis_boundary": "Supplied symmetry-coordinate patch placement, classical writable registers and records, numerical solver, cone, scalar action, initial data and action step. Hash-pinned replay proves internal software provenance without external attestation. The five patches are computational coordinates, not physical observer locations. Repair counts are operational events; their assignment to model time is supplied. Numerical residuals are not rigorous trajectory enclosures, and no quantum history, continuum trajectory limit or laboratory clock calibration is attached.",
+        "id": "whitney_charged_instrument",
+        "independent_verifier_result": {
+          "accepted": true,
+          "completed_repair_cycles": 405,
+          "decoded_samples": 81,
+          "empirical_prediction": false,
+          "events": 1782,
+          "exact_record_restoration": true,
+          "full_equations_per_sample": 68,
+          "gauss_equations_per_sample": 13,
+          "observer_software_history": true,
+          "patches": 5,
+          "physical_clock_calibrated": false,
+          "physical_observer_placement": false,
+          "quantum_state_history": false,
+          "rigorous_trajectory_enclosure": false,
+          "scope": "SELF_READING_COUPLED_CLASSICAL_EXECUTION__COMPUTATIONAL_PATCHES__MODEL_TIME_ONLY",
+          "solver_advances": 80,
+          "spatial_trajectory_convergence": false,
+          "writable_real_registers": 10
+        },
+        "lean_declarations": {},
+        "lean_receipts": [],
+        "match": "exact software readback/restoration and independently replayed numerical coupled fields; no observed postdiction",
+        "observed_counterpart": "Mathematical field, software-instrument and quantum structures; no observed data",
+        "observed_postdiction": false,
+        "paper_ref": "observers synthesis, whitney charged instrument",
+        "physical_comparison_status": "NOT_EVALUABLE",
+        "source_selected_physical_continuum": false,
+        "statement": "Five computational observer-like patches execute 1782 events with local coordinate/velocity states, ring ports, destructive averaging probes, retained records and feedback. All 405 probe cycles restore their rational registers exactly. Eighty numerical action advances consume previously decoded states; 81 decoded frames reconstruct the same charged action's full fields, with all 68 configuration equations and 13 Gauss equations independently checked. Historical trajectory samples are comparison-only."
+      },
+      {
+        "analytic_paper_theorem": {
+          "label": "prop:whitney-ephemeris-clock",
+          "source": "paper/tex_fragments/WHITNEY_EPHEMERIS_CLOCK.tex"
+        },
+        "analytic_proof_formalized_in_lean": false,
+        "analytic_supporting_results": {
+          "labels": [
+            "eq:whitney-ephemeris-clock"
+          ],
+          "source": "paper/tex_fragments/WHITNEY_EPHEMERIS_CLOCK.tex"
+        },
+        "artifact_refs": [
+          "paper/observers_are_all_you_need.tex",
+          "paper/tex_fragments/WHITNEY_EPHEMERIS_CLOCK.tex",
+          "code/electromagnetism/runtime/whitney_ephemeris_clock_receipt.json",
+          "code/electromagnetism/whitney_ephemeris_clock.py",
+          "code/electromagnetism/verify_whitney_ephemeris_clock.py",
+          "code/electromagnetism/test_whitney_ephemeris_clock.py"
+        ],
+        "certificate_scope": "ACTION_DERIVED_MODEL_CLOCK__NUMERICAL_POLYLINE_READOUT",
+        "continuum_convergence_established": false,
+        "continuum_convergence_scope": "not established by this row",
+        "hypothesis_boundary": "Supplied full action, energy, temporal gauge, configuration-coordinate convention and ordered classical path. The analytic statement requires positive kinetic energy and E-V>0 and excludes turning points. The numerical polyline and quadrature comparisons do not certify segment-wide admissibility or integration/trajectory errors. Source authentication may inspect record metadata; the duration calculation consumes configurations only. This model-internal duration has no selected physical units, laboratory calibration, Lorentzian spacetime identification or quantum-clock operator.",
+        "id": "whitney_ephemeris_clock",
+        "independent_verifier_result": {
+          "accepted": true,
+          "calibrated_physical_clock": false,
+          "quantum_clock_operator": false,
+          "rigorous_numerical_enclosure": false,
+          "scope": "ACTION_DERIVED_MODEL_CLOCK__NUMERICAL_POLYLINE_READOUT",
+          "source_configurations": 81
+        },
+        "lean_declarations": {},
+        "lean_receipts": [],
+        "match": "standard Jacobi timing attached to the same action and software records; independently replayed numerical readout; no observed postdiction",
+        "observed_counterpart": "Mathematical field, software-instrument and quantum structures; no observed data",
+        "observed_postdiction": false,
+        "paper_ref": "observers synthesis, whitney ephemeris clock",
+        "physical_comparison_status": "NOT_EVALUABLE",
+        "source_selected_physical_continuum": false,
+        "statement": "The complete coupled kinetic metric, potential and supplied energy define the Jacobi-Maupertuis duration d_tau=sqrt(G[dq,dq]/(2(E-V))). On a regular nonturning stationary path of the fixed-energy Jacobi action, this timing recovers the natural action evolution and is invariant under positive reparameterization. A consumer integrates polygonal paths through 81 independently decoded configurations without using recorded velocities, timestamps or repair counts in its clock integral. A fixed smooth nonturning curve has an analytic O(delta^2) polygon-duration estimate."
+      },
+      {
+        "analytic_paper_theorem": {
+          "label": "thm:whitney-quantum-trial-history",
+          "source": "paper/tex_fragments/WHITNEY_QUANTUM_HISTORY.tex"
+        },
+        "analytic_proof_formalized_in_lean": false,
+        "analytic_supporting_results": {
+          "labels": [],
+          "source": "paper/tex_fragments/WHITNEY_QUANTUM_HISTORY.tex"
+        },
+        "artifact_refs": [
+          "paper/observers_are_all_you_need.tex",
+          "paper/tex_fragments/WHITNEY_QUANTUM_HISTORY.tex",
+          "code/electromagnetism/runtime/whitney_quantum_history_receipt.json",
+          "code/electromagnetism/whitney_quantum_history.py",
+          "code/electromagnetism/verify_whitney_quantum_history.py",
+          "code/electromagnetism/test_whitney_quantum_history.py"
+        ],
+        "certificate_scope": "FULL_56D_NEUTRAL_POTENTIAL_PHASE_TRIAL__GLOBAL_NORM_BOUND__DECLARED_INPUTS",
+        "continuum_convergence_established": false,
+        "continuum_convergence_scope": "not established by this row",
+        "hypothesis_boundary": "Supplied interacting action, Hilbert measure, operator ordering, hbar, Gaussian width and Hamiltonian time. This is a potential-phase trial with a conservative dimensionless horizon 2^-55 and norm-error target 1/10, not a computed exact Hamiltonian history or a practical ordinary-physics simulation. Global analytic envelopes and exact Gaussian moments avoid numerical quadrature or omitted Gaussian tails in the bound. No evolving configuration density, observer preparation, physical clock, continuum QFT or empirical comparison is established.",
+        "id": "whitney_quantum_history",
+        "independent_verifier_result": {
+          "accepted": true,
+          "analytic_proof_formalized_in_Lean": false,
+          "configuration_density_moves": false,
+          "empirical_comparison": false,
+          "exact_Hamiltonian_history_computed": false,
+          "global_time_coverage": true,
+          "horizon": "1/36028797018963968",
+          "numeric_quadrature_used_for_bound": false,
+          "observer_history": false,
+          "ordinary_physics_benchmark": false,
+          "phase_configurations": 4,
+          "physical_state_preparation": false,
+          "real_configuration_dimension": 56,
+          "scope": "FULL_56D_NEUTRAL_POTENTIAL_PHASE_TRIAL__GLOBAL_NORM_BOUND__DECLARED_INPUTS",
+          "squared_norm_error_upper": "2821070527734238082785504701970586512551596824573/374144419156711147060143317175368453031918731001856",
+          "state_samples": 5,
+          "target_norm_error": "1/10",
+          "trial_history_computed": true
+        },
+        "lean_declarations": {},
+        "lean_receipts": [],
+        "match": "analytic trial-evolution error theorem and independently replayed exact global bound; no observed postdiction",
+        "observed_counterpart": "Mathematical field, software-instrument and quantum structures; no observed data",
+        "observed_postdiction": false,
+        "paper_ref": "observers synthesis, whitney quantum history",
+        "physical_comparison_status": "NOT_EVALUABLE",
+        "source_selected_physical_continuum": false,
+        "statement": "The full 56-real-coordinate interacting Hilbert space admits the explicitly time-dependent neutral trial v(t)=exp(-itV/hbar)f_sigma. Exact global Gaussian moments and analytic coefficient bounds certify its Hilbert-norm distance from the exact Hamiltonian evolution for every time in a declared short interval. The packet supplies five times and four exact phase configurations while keeping the configuration probability density fixed; it does not restrict the quantum state to the classical five-coordinate trajectory."
       }
     ],
     "hadrons": [

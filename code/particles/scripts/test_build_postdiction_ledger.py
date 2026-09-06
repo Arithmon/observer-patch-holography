@@ -29,7 +29,7 @@ def whitney_rows():
 @pytest.fixture(scope="module")
 def coupled_whitney_rows(result):
     # New initial-state evidence strengthens its existing quantum row.
-    assert len(result["sections"]["forced_structure"]) == 52
+    assert len(result["sections"]["forced_structure"]) == 56
     names = {"whitney_spatial_consistency", "whitney_interacting_quantum", "whitney_charged_execution"}
     rows = {row["id"]: row for row in result["sections"]["forced_structure"] if row["id"] in names}
     assert set(rows) == names
@@ -1066,3 +1066,148 @@ def test_coupled_missing_analytic_quantum_theorem_is_not_silently_promoted(
     monkeypatch.setattr(Path, "read_text", empty)
     with pytest.raises(SystemExit, match="analytic theorem missing"):
         ledger._whitney_coupled_rows()
+
+
+@pytest.fixture(scope="module")
+def completion_whitney_rows(result):
+    names = {"whitney_real_continuum", "whitney_charged_instrument", "whitney_ephemeris_clock", "whitney_quantum_history"}
+    rows = {row["id"]: row for row in result["sections"]["forced_structure"] if row["id"] in names}
+    assert set(rows) == names
+    return rows
+
+
+def completion_parent_fixture(rows, stem):
+    row = rows["whitney_"+stem]
+    summary = deepcopy(row["independent_verifier_result"])
+    packet = {"scope": row["certificate_scope"]}
+    if stem == "quantum_history":
+        packet["error_certificate"] = {"horizon": summary["horizon"], "target_norm_error": summary["target_norm_error"],
+                                       "horizon_squared_error_upper": summary["squared_norm_error_upper"]}
+    return packet, summary
+
+
+def test_new_bridges_preserve_precise_conditional_scopes(completion_whitney_rows):
+    rows = completion_whitney_rows
+    for row in rows.values():
+        assert row["observed_postdiction"] is False
+        assert row["physical_comparison_status"] == "NOT_EVALUABLE"
+        assert row["source_selected_physical_continuum"] is False
+        assert row["analytic_proof_formalized_in_lean"] is False
+        assert row["lean_receipts"] == [] and row["lean_declarations"] == {}
+        assert row["independent_verifier_result"]["accepted"] is True
+        proof = row["analytic_paper_theorem"]
+        text = (ledger.REPO/proof["source"]).read_text(encoding="utf-8")
+        assert "\\label{"+proof["label"]+"}" in text
+        for label in row["analytic_supporting_results"]["labels"]:
+            assert "\\label{"+label+"}" in text
+        assert all((ledger.REPO/path).is_file() for path in row["artifact_refs"])
+    real = rows["whitney_real_continuum"]
+    assert real["continuum_convergence_established"] is True
+    assert "conditional analytic invariant real-sector" in real["continuum_convergence_scope"]
+    assert real["independent_verifier_result"]["full_charged_complex_trajectory_bound"] is False
+    assert "Ritz" in real["hypothesis_boundary"] and "nodal initialization" in real["hypothesis_boundary"]
+    observer = rows["whitney_charged_instrument"]["independent_verifier_result"]
+    assert observer["events"] == 1782 and observer["decoded_samples"] == 81
+    assert observer["observer_software_history"] is True and observer["physical_observer_placement"] is False
+    clock = rows["whitney_ephemeris_clock"]["independent_verifier_result"]
+    assert clock["source_configurations"] == 81 and clock["calibrated_physical_clock"] is False
+    assert "duration" not in clock and "comparison_error" not in clock
+    history = rows["whitney_quantum_history"]["independent_verifier_result"]
+    assert history["horizon"] == "1/36028797018963968"
+    assert history["target_norm_error"] == "1/10"
+    assert history["global_time_coverage"] is True and history["trial_history_computed"] is True
+    assert history["exact_Hamiltonian_history_computed"] is False
+    assert history["ordinary_physics_benchmark"] is False
+    assert history["configuration_density_moves"] is False
+
+
+def test_new_bridge_projection_has_no_float_diagnostic_leak(completion_whitney_rows, monkeypatch):
+    calls = []
+    def replay(stem):
+        calls.append(stem)
+        packet, summary = completion_parent_fixture(completion_whitney_rows, stem)
+        summary.update(numeric_diagnostics={"changed": .123456789}, duration=1.2345, comparison_error=.01)
+        return packet, summary
+    monkeypatch.setattr(ledger, "_verify_whitney_completion_parent", replay)
+    actual = {row["id"]: row for row in ledger._whitney_completion_rows()}
+    assert actual == completion_whitney_rows
+    assert calls == ["real_continuum", "charged_instrument", "ephemeris_clock", "quantum_history"]
+    def no_float(value):
+        if isinstance(value, dict):
+            return all(no_float(v) for v in value.values())
+        if isinstance(value, list):
+            return all(no_float(v) for v in value)
+        return type(value) is not float
+    assert all(no_float(row["independent_verifier_result"]) for row in actual.values())
+
+
+@pytest.mark.parametrize("stem,key,value", [
+    ("real_continuum", "accepted", 1),
+    ("real_continuum", "refinement_parameters", [1, 2, 4, 8.0]),
+    ("real_continuum", "uniform_shape_bound", "144/2"),
+    ("real_continuum", "conditional_real_sector_trajectory_bound", False),
+    ("real_continuum", "full_charged_complex_trajectory_bound", True),
+    ("real_continuum", "numerical_trajectory_error_certified", True),
+    ("real_continuum", "physical_source_or_clock_selected", True),
+    ("charged_instrument", "events", 1782.0),
+    ("charged_instrument", "decoded_samples", 80),
+    ("charged_instrument", "observer_software_history", False),
+    ("charged_instrument", "physical_clock_calibrated", True),
+    ("charged_instrument", "physical_observer_placement", True),
+    ("charged_instrument", "quantum_state_history", True),
+    ("ephemeris_clock", "accepted", 1),
+    ("ephemeris_clock", "source_configurations", 81.0),
+    ("ephemeris_clock", "calibrated_physical_clock", True),
+    ("ephemeris_clock", "rigorous_numerical_enclosure", True),
+    ("quantum_history", "exact_Hamiltonian_history_computed", True),
+    ("quantum_history", "configuration_density_moves", True),
+    ("quantum_history", "ordinary_physics_benchmark", True),
+    ("quantum_history", "global_time_coverage", 1),
+    ("quantum_history", "numeric_quadrature_used_for_bound", True),
+    ("quantum_history", "horizon", "1/18014398509481984"),
+    ("quantum_history", "horizon", "2/72057594037927936"),
+    ("quantum_history", "target_norm_error", .1),
+    ("quantum_history", "squared_norm_error_upper", "1/99"),
+])
+def test_new_bridge_provider_promotions_and_types_fail(completion_whitney_rows, monkeypatch, stem, key, value):
+    def replay(name):
+        packet, summary = completion_parent_fixture(completion_whitney_rows, name)
+        if name == stem:
+            summary[key] = value
+        return packet, summary
+    monkeypatch.setattr(ledger, "_verify_whitney_completion_parent", replay)
+    with pytest.raises(SystemExit, match="Whitney completion"):
+        ledger._whitney_completion_rows()
+
+
+@pytest.mark.parametrize("stem", ["real_continuum", "charged_instrument", "ephemeris_clock", "quantum_history"])
+def test_new_bridge_source_bytes_are_replayed_fresh(monkeypatch, stem):
+    original = Path.read_bytes
+    path = ledger.CODE/"electromagnetism"/f"verify_whitney_{stem}.py"
+    seen = []
+    def altered(target):
+        data = original(target)
+        if target == path:
+            seen.append(target)
+            return data+b"\n# altered independent provider\n"
+        return data
+    monkeypatch.setattr(Path, "read_bytes", altered)
+    with pytest.raises(ValueError, match="pin"):
+        ledger._verify_whitney_completion_parent(stem)
+    assert seen
+
+
+@pytest.mark.parametrize("stem", ["real_continuum", "charged_instrument", "ephemeris_clock", "quantum_history"])
+def test_new_bridge_missing_theorem_label_fails(completion_whitney_rows, monkeypatch, stem):
+    monkeypatch.setattr(ledger, "_verify_whitney_completion_parent",
+                        lambda name: completion_parent_fixture(completion_whitney_rows, name))
+    proof = completion_whitney_rows["whitney_"+stem]["analytic_paper_theorem"]
+    original = Path.read_text
+    def removed(path, *args, **kwargs):
+        text = original(path, *args, **kwargs)
+        if path == ledger.REPO/proof["source"]:
+            return text.replace("\\label{"+proof["label"]+"}", "")
+        return text
+    monkeypatch.setattr(Path, "read_text", removed)
+    with pytest.raises(SystemExit, match="analytic theorem missing"):
+        ledger._whitney_completion_rows()

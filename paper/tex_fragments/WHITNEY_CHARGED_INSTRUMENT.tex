@@ -1,0 +1,51 @@
+\paragraph{A self-reading execution of the charged action.}
+The five-coordinate invariant sector also admits a bounded software
+execution with its own local states, ports, records and feedback. Each
+patch holds one coordinate and its velocity. Five ring ports connect these
+computational patches; their locations are not identified with physical
+observers or with points of the supplied cone. The numerical integrator
+reads the preceding decoded records before each advance. Historical
+trajectory samples enter only a subsequent comparison.
+
+\begin{proposition}[Exact record-assisted restoration]
+\label{prop:whitney-charged-record-restoration}
+Let each patch hold a pair in \(\mathbb Q^2\). Record its initial pair,
+then probe a ring edge by replacing both endpoint pairs \(x,y\) with
+\(r=(x+y)/2\). Retain the response \(r\), and restore the endpoints
+using the first endpoint's retained baseline \(b\) as
+\((b,2r-b)\). Processing the five edges serially restores every patch
+exactly. Each patch's pair can be recovered from its predecessor's
+response and baseline and agrees with its own retained baseline.
+\end{proposition}
+\begin{proof}
+At the first probe, \(b=x\), hence \(2r-b=y\).
+Inductively every probe starts from the original endpoint pairs and
+restores them, so the same identity holds on every edge. Each patch has
+one predecessor in the ring, which proves the stated decoding rule.
+\end{proof}
+
+The implementation in
+\path{code/electromagnetism/whitney_charged_instrument.py}
+encodes numerical coordinates as exact rational representations of
+binary64 values. Its destructive probes, responses and feedback therefore
+obey the proposition exactly, while its dynamical advances remain numerical.
+The recorded execution has \(81\) decoded states, \(405\) completed
+repair cycles and \(1782\) events. The action time step \(1/40\),
+couplings and initial data are supplied. Every advance consumes the
+previous decoded state; a distinct verifier reconstructs event read
+versions, write values and hash links, then independently integrates the
+action from those records. It checks all \(68\) configuration equations,
+all \(13\) Gauss equations, energy and the full coupled field readouts
+on the decoded samples. These checks retain the scalar basis derivatives.
+
+The public frames expand the decoded coordinates by the proved symmetry
+map and provide the Whitney connection, electric cochains, complex matter
+coefficients, local charge and centroid covariant derivatives. They support
+synchronized visualization of this software computation and its declared
+field interpretation. The repair-cycle counter measures completed protocol
+operations. The conversion from a sweep to an action-time step is supplied;
+it is neither a laboratory calibration nor a derivation of physical time.
+Hash-pinned replay establishes internal software provenance, without an
+external witness or an identification of the patches with physical observers.
+The exact register restoration is separate from numerical trajectory error,
+spatial convergence and quantum-state evolution.

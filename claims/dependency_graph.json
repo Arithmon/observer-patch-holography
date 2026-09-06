@@ -220,7 +220,11 @@
   "OPH-WHITNEY-CHARGED-MATTER",
   "OPH-WHITNEY-SPATIAL-CONSISTENCY",
   "OPH-WHITNEY-INTERACTING-QUANTUM",
-  "OPH-WHITNEY-CHARGED-EXECUTION"
+  "OPH-WHITNEY-CHARGED-EXECUTION",
+  "OPH-WHITNEY-REAL-CONTINUUM",
+  "OPH-WHITNEY-CHARGED-INSTRUMENT",
+  "OPH-WHITNEY-EPHEMERIS-CLOCK",
+  "OPH-WHITNEY-QUANTUM-HISTORY"
  ],
  "edges": [
   {
@@ -1962,6 +1966,31 @@
    "from": "OPH-WHITNEY-CHARGED-MATTER",
    "to": "OPH-WHITNEY-CHARGED-EXECUTION",
    "role": "Supplies the same gauge-dressed scalar/Maxwell action, full interpolation derivatives and finite geometric configuration; physical source, quantum prescription and numerical acceptance remain separately declared."
+  },
+  {
+   "from": "OPH-WHITNEY-CHARGED-MATTER",
+   "to": "OPH-WHITNEY-REAL-CONTINUUM",
+   "role": "Supplies the same declared action, mathematical configuration or independently authenticated decoded record named in the child theorem; no physical selection or empirical status is inherited."
+  },
+  {
+   "from": "OPH-WHITNEY-CHARGED-EXECUTION",
+   "to": "OPH-WHITNEY-CHARGED-INSTRUMENT",
+   "role": "Supplies the same declared action, mathematical configuration or independently authenticated decoded record named in the child theorem; no physical selection or empirical status is inherited."
+  },
+  {
+   "from": "OPH-WHITNEY-CHARGED-INSTRUMENT",
+   "to": "OPH-WHITNEY-EPHEMERIS-CLOCK",
+   "role": "Supplies the same declared action, mathematical configuration or independently authenticated decoded record named in the child theorem; no physical selection or empirical status is inherited."
+  },
+  {
+   "from": "OPH-WHITNEY-CHARGED-MATTER",
+   "to": "OPH-WHITNEY-EPHEMERIS-CLOCK",
+   "role": "Supplies the same declared action, mathematical configuration or independently authenticated decoded record named in the child theorem; no physical selection or empirical status is inherited."
+  },
+  {
+   "from": "OPH-WHITNEY-INTERACTING-QUANTUM",
+   "to": "OPH-WHITNEY-QUANTUM-HISTORY",
+   "role": "Supplies the same declared action, mathematical configuration or independently authenticated decoded record named in the child theorem; no physical selection or empirical status is inherited."
   }
  ]
 }

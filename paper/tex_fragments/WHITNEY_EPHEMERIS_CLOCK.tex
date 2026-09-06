@@ -1,0 +1,92 @@
+\paragraph{A clock read from the changing field configuration.}
+A repair count and a time coordinate are different objects. The same
+autonomous action does, however, supply a dynamical duration functional.
+This is an application of the classical Jacobi--Maupertuis construction
+\cite{Gryb2010}, not a new quantization rule. Write a natural mechanical
+Lagrangian as \(L=\tfrac12G_q(\dot q,\dot q)-V(q)\), using the complete
+coupled kinetic metric, or its Gauss-reduced metric on an admissible
+horizontal path. Fix an energy \(E\) and an oriented regular path in the
+open region \(V<E\). Define
+\begin{equation}
+ d\tau=\sqrt{\frac{G_q(dq,dq)}{2(E-V(q))}},\qquad
+ J_E[q]=\int\sqrt{2(E-V(q))G_q(q',q')}\,ds.
+ \label{eq:whitney-ephemeris-clock}
+\end{equation}
+
+\begin{proposition}[Dynamical duration on a nonturning path]
+\label{prop:whitney-ephemeris-clock}
+For smooth positive-definite \(G\) and smooth \(V\), the duration above
+is invariant under orientation-preserving regular reparameterization.
+A regular stationary path of \(J_E\), parameterized by \(\tau\), solves
+the Euler--Lagrange equations of \(L\) with energy \(E\). Conversely,
+every solution of that energy with positive kinetic energy is such a path,
+and its \(\tau\) increments equal its original action-time increments.
+For fixed \(G,V,E\), positive energy-compatible timing of that oriented
+path is unique up to its origin.
+\end{proposition}
+\begin{proof}
+Set \(T_s=G_q(q',q')/2\) and \(N=\sqrt{T_s/(E-V)}\).
+Positive reparameterization multiplies both \(q'\) and \(N\) by
+the same positive derivative, proving duration invariance. The lapse action
+\[
+ I[q,N]=\int\bigl(T_s/N+N(E-V)\bigr)\,ds
+\]
+has lapse equation \(T_s/N^2=E-V\). Its unique positive solution gives
+\(I[q,N(q,q')]=J_E[q]\). Substitution preserves the configuration
+Euler equation because the lapse variation vanishes. With
+\(d\tau=N\,ds\), that equation is
+\[
+ \frac{d}{d\tau}(G_{ij}\dot q^j)
+ -\frac12\partial_iG_{jk}\dot q^j\dot q^k+\partial_iV=0.
+\]
+The lapse equation is the required energy identity. Conversely this
+identity and the Euler equation give the two equations for \(I\).
+Uniqueness follows directly from its positive square root. The assertion
+does not extend through a turning point where numerator and denominator
+both vanish, or to a constant equilibrium path.
+\end{proof}
+
+This construction is covariant under changes of configuration coordinates.
+For gauge independence one must use the reduced metric or keep the scalar
+potential in the full covariant tangent. Arbitrary time-dependent gauge
+changes followed by discarding the scalar potential do not preserve the
+kinetic energy. The numerical construction below uses the specified
+temporal-gauge representative throughout. Nor does a Jacobi metric on
+configuration space itself define a Lorentzian spacetime metric.
+
+There is also a useful approximation statement. Let a fixed \(C^3\)
+regular path remain in a compact nonturning region, with \(G,V\) smooth
+there. Its polygonal interpolants at parameter spacing at most \(\delta\)
+have duration error \(O(\delta^2)\). To see this, write the duration
+integrand as \(F(q,v)=\sqrt{G_q(v,v)/(2(E-V(q)))}\). On each short
+segment, the configuration error is \(O(h^2)\), the velocity error is
+\(O(h)\), and the latter has zero integral. Expand \(F\) to first
+order: freezing its velocity derivative at the midpoint cancels that
+integral, and the derivative's variation and quadratic remainder both
+integrate to \(O(h^3)\). Summing gives the assertion. Smoothness is used
+away from zero velocity and \(E-V=0\). This bound compares exact curve
+integrals; floating-point quadrature and errors in the supplied samples
+require separate control.
+
+The executable consumer reads only the ordered decoded configuration
+coordinates from a bounded self-reading software episode. Local patch
+states, port responses, retained records and feedback restoration belong
+to that episode's independent provenance check. The clock consumer uses
+neither the recorded velocities, action timestamps nor repair counts.
+It retains the same complete scalar-basis derivative in its kinetic form
+and supplies the initial energy
+\(E=1969/160+(493/120)\sqrt5\). Piecewise linear interpolation gives
+a duration on each configuration segment. A separate implementation
+integrates unrestricted tetrahedral fields instead of the producer's
+one-dimensional symmetric formulas; a nonlinear reparameterization of
+each segment checks duration invariance. The producer, verifier and
+data are \path{code/electromagnetism/whitney_ephemeris_clock.py},
+\path{code/electromagnetism/verify_whitney_ephemeris_clock.py} and
+\path{code/electromagnetism/runtime/whitney_ephemeris_clock_receipt.json}.
+
+The clock is internal to the supplied autonomous model: its rate is
+reconstructed from change and the action-energy convention. Selecting that
+action, energy and physical preparation from observer histories, assigning
+physical units, and comparing this duration with laboratory clocks remain
+additional tasks. It neither constructs a quantum clock observable nor
+identifies an arbitrary event ordering with proper time.

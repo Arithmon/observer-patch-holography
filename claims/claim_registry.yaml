@@ -9462,6 +9462,168 @@
         "boundary": [],
         "rationale": "The executable implication assumes the supplied exact cone, scalar action, couplings, symmetric initial data, numerical time parameter and error policy. Its readouts are numerical fields rather than an inhabited physical instrument or source clock. Those physical identifications are not antecedents or discharged conclusions of the certificate."
       }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-REAL-CONTINUUM",
+      "statement": "The same supplied dressed charged-scalar/Maxwell action contains the exact invariant real scalar sector with zero electromagnetic fields, charge and current. A globally ordered edgewise refinement of the twenty-tetrahedron cone is conforming, nested and uniformly shape regular, with 20 n^3 cells at n=2^k. For m^2>0, g>=0 and any Neumann continuum solution u in C^2([0,T];H^2), H1 Ritz-projected initial data give semidiscrete trajectory error at most C_T/n in H1 configuration and L2 velocity. The proof retains the quartic interaction, uses the full action variation to establish invariance, and uses conserved energy, H1-to-L6 embedding and Gronwall without a mesh-dependent inverse estimate. Nonzero localized smooth continuum examples exist on a short interval by standard whole-space semilinear theory and finite propagation. Independent finite geometry, Ritz and nonlinear pulse checks support the implementation; the analytic theorem is not formalized in Lean or a numerical interval certificate. Electrically active complex matter, physical geometry/time selection and continuum quantum field theory are not established.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "analytic_invariant_real_quartic_wave_trajectory_convergence_on_uniform_same_domain_refinements",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "supplied_scalar_QED_action_and_real_unwrapped_connection",
+        "smooth_real_Neumann_reference_and_Ritz_initialization"
+      ],
+      "imported_results": [
+        "edgewise_Kuhn_simplex_refinement",
+        "Ritz_projection_and_Sobolev_embedding",
+        "energy_Gronwall_estimate",
+        "local_semilinear_Klein_Gordon_existence_and_finite_propagation"
+      ],
+      "oph_specific_delta": "Replaces smooth-test action consistency by actual nonlinear trajectory control for an invariant sector of the same charged action. The finite-element and PDE tools are standard; the full-action invariant-sector join and explicit uniform cone family delimit the result.",
+      "novelty_type": "analytic_invariant_real_quartic_wave_trajectory_convergence_on_uniform_same_domain_refinements",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex",
+        "code/electromagnetism/whitney_real_continuum.py",
+        "code/electromagnetism/verify_whitney_real_continuum.py",
+        "code/electromagnetism/test_whitney_real_continuum.py",
+        "code/electromagnetism/runtime/whitney_real_continuum_receipt.json"
+      ],
+      "falsifier": "A macro-face mismatch, nonuniform shape bound, nonzero omitted gauge variation, incorrect Ritz residual or mesh-dependent stability constant invalidates the result; zero-current convergence cannot be promoted to electrically active complex matter.",
+      "scope_if_false": "The stated mathematical or executable bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
+      "status": "analytic_invariant_real_quartic_wave_trajectory_convergence_on_uniform_same_domain_refinements__physical_identification_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        728,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The theorem assumes the supplied cone, exact scalar action, smooth Neumann solution and Ritz-compatible initial data. It proves convergence only in the invariant zero-current real sector. Registered physical event placement, metric selection, species identification and laboratory clocks are excluded conclusions rather than used antecedents; no physical premise is discharged."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-CHARGED-INSTRUMENT",
+      "statement": "Five computational observer-like patches hold exact rational encodings of the five symmetric coordinates and velocities of the supplied coupled action. Their ring ports perform destructive pair averaging, retained response recording and exact feedback restoration. Each numerical advance consumes the previous decoded state, and an independent verifier replays 1782 events, 405 feedback cycles and 81 decoded frames, then independently checks the numerical advances, all 68 Euler equations, 13 Gauss constraints and full field readouts. Historical trajectory samples are comparison-only and supply no event custody. The patches have computational placement, not physical observer placement; their cycle counter is distinct from the supplied action parameter. Hash-pinned internal provenance is not external identity attestation, rigorous ODE error control, quantum measurement or an empirical result.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "authenticated_internal_software_observer_execution_of_the_same_charged_action",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "exact_classical_record_feedback_access",
+        "exact_icosahedral_fixed_space_and_bounded_charged_execution"
+      ],
+      "imported_results": [
+        "exact_rational_vector_averaging_inverse",
+        "finite_dimensional_ODE_numerical_integration_and_refinement_controls"
+      ],
+      "oph_specific_delta": "Connects exact self-reading patch records and feedback to the actual charged state used by every subsequent numerical advance and field reconstruction. Provenance, numerical dynamics and physical identification remain separately typed.",
+      "novelty_type": "authenticated_internal_software_observer_execution_of_the_same_charged_action",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_CHARGED_INSTRUMENT.tex",
+        "code/electromagnetism/whitney_charged_instrument.py",
+        "code/electromagnetism/verify_whitney_charged_instrument.py",
+        "code/electromagnetism/test_whitney_charged_instrument.py",
+        "code/electromagnetism/runtime/whitney_charged_instrument_receipt.json"
+      ],
+      "falsifier": "An event reads a nonexistent or wrong writer/value, an unused input is promoted to causal consumption, feedback fails to restore, an advance uses an unrecorded future state, or independent full-action reconstruction disagrees.",
+      "scope_if_false": "The stated mathematical or executable bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
+      "status": "authenticated_internal_software_observer_execution_of_the_same_charged_action__physical_identification_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        737,
+        754,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The replay starts from declared classical rational read/write access, computational ring placement, symmetric initial data and the pinned numerical charged action. It certifies internal software record restoration and subsequent decoded-state consumption. It uses no registered physical preparation, detector or event-cone realization and establishes none of those attachments."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-EPHEMERIS-CLOCK",
+      "statement": "For the same complete natural kinetic action at supplied energy E, the Jacobi duration d_tau=sqrt(G(dq,dq)/(2(E-V))) is invariant under positive regular reparameterization. On regular paths in V<E, stationary Jacobi paths recover the original Euler-Lagrange equations and energy, with positive timing unique up to its origin. Exact polygonal duration integrals approximate a fixed smooth nonturning path at O(delta^2). A numerical consumer reads only the ordered decoded configurations of the charged software episode; recorded timestamps, velocities and cycle counts are excluded from the duration calculation. A separate full-tetrahedron implementation verifies its durations and nonlinear reparameterization control. Model geometry, action, energy and temporal gauge are supplied. The result is a model-internal dynamical clock, not SI calibration, source-selected physical proper time, a quantum clock operator or a rigorous numerical enclosure.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "analytic_Jacobi_clock_and_configuration_only_numerical_observer_readout",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "supplied_scalar_QED_action_and_real_unwrapped_connection",
+        "fixed_energy_regular_Hill_region_and_temporal_gauge_clock"
+      ],
+      "imported_results": [
+        "Jacobi_Maupertuis_lapse_elimination",
+        "smooth_homogeneous_curve_integral_polygon_error"
+      ],
+      "oph_specific_delta": "Applies standard Jacobi timing to the complete charged kinetic metric and actual independently decoded configuration path. It replaces arbitrary sample labels with an action-derived duration within the supplied model, without selecting the action or physical units.",
+      "novelty_type": "analytic_Jacobi_clock_and_configuration_only_numerical_observer_readout",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_EPHEMERIS_CLOCK.tex",
+        "code/electromagnetism/whitney_ephemeris_clock.py",
+        "code/electromagnetism/verify_whitney_ephemeris_clock.py",
+        "code/electromagnetism/test_whitney_ephemeris_clock.py",
+        "code/electromagnetism/runtime/whitney_ephemeris_clock_receipt.json"
+      ],
+      "falsifier": "Wrong kinetic normalization, omission of the scalar-basis derivative, a lapse sign error, nonregular/turning paths, a parameter-dependent duration, timestamp leakage or promotion of quadrature-node checks to a rigorous or calibrated physical clock invalidates the claim.",
+      "scope_if_false": "The stated mathematical or executable bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
+      "status": "analytic_Jacobi_clock_and_configuration_only_numerical_observer_readout__physical_identification_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        728,
+        754,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The duration functional assumes a supplied natural kinetic metric, potential, conserved energy and regular path in the open Hill region. Its executable input is the decoded temporal-gauge configuration path. It neither consumes nor discharges the empirical clock/energy calibration import PR-15: no SI scale, physical energy preparation or proper-time identification enters its mathematical conclusion."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-QUANTUM-HISTORY",
+      "statement": "The normalized neutral Gaussian half-density on the full 56-real-dimensional reduced configuration space admits the potential-phase trial v(t)=exp(-it V/hbar)f. Exact global polynomial metric and derivative bounds, exact cone inequalities and Gaussian moments give rational upper bounds on its initial kinetic energy, total energy and gradient-of-potential moment. A kinetic-form overlap inequality bounds its norm error relative to the same interacting self-adjoint Hamiltonian flow. Exact rational evaluation chooses a short dyadic interval meeting a declared norm-error tolerance; no Gaussian-tail truncation, Monte Carlo confidence estimate or finite quantum truncation is used. The trial retains constant configuration probability density and changes phase. Its very conservative horizon is not a useful macroscopic simulation or continuum QFT result. Quantization, state, geometry and time convention remain supplied, and the exact unitary history is bounded rather than computed pointwise.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "analytic_full_configuration_quantum_trial_history_with_exact_conservative_error_envelope",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "declared_Riemannian_Laplace_Beltrami_Friedrichs_quantization",
+        "declared_neutral_Gaussian_half_density_trial_state",
+        "global_polynomial_quantum_trial_error_bounds"
+      ],
+      "imported_results": [
+        "kinetic_form_Cauchy_Schwarz_and_unitary_energy_conservation",
+        "exact_Gaussian_chi_squared_moments"
+      ],
+      "oph_specific_delta": "Provides a computed error-controlled trial history for the same complete interacting quantum operator using exact global bounds. It does not confuse the five-dimensional classical symmetry sector with an invariant quantum subspace; no physically useful duration or empirical preparation is claimed.",
+      "novelty_type": "analytic_full_configuration_quantum_trial_history_with_exact_conservative_error_envelope",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_QUANTUM_HISTORY.tex",
+        "code/electromagnetism/whitney_quantum_history.py",
+        "code/electromagnetism/verify_whitney_quantum_history.py",
+        "code/electromagnetism/test_whitney_quantum_history.py",
+        "code/electromagnetism/runtime/whitney_quantum_history_receipt.json"
+      ],
+      "falsifier": "An incorrect global metric/derivative constant, moment, energy sign or overlap inequality invalidates the bound; a noneligible time, understated error, omitted tail, false density motion or five-coordinate quantum substitution must be rejected.",
+      "scope_if_false": "The stated mathematical or executable bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
+      "status": "analytic_full_configuration_quantum_trial_history_with_exact_conservative_error_envelope__physical_identification_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730,
+        743,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The trial assumes the declared finite interacting Hilbert realization, Laplace-Beltrami ordering, hbar, centered Gaussian width and polynomial coefficient bounds. Exact moment integration establishes only a mathematical norm-error envelope. Registered Born preparations, region maps, physical quantum instruments and source-selected clocks are neither required inputs nor outputs of this certificate."
+      }
     }
   ]
 }

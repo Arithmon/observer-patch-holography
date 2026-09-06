@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 351,
+  "surface_count": 355,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -225,7 +225,17 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/WHITNEY_CHARGED_INSTRUMENT.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/WHITNEY_CHARGED_MATTER.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/WHITNEY_EPHEMERIS_CLOCK.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -236,6 +246,16 @@
     },
     {
       "path": "paper/tex_fragments/WHITNEY_MAXWELL_DYNAMICS.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/WHITNEY_QUANTUM_HISTORY.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },

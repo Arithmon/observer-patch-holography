@@ -374,6 +374,14 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
          "code/electromagnetism/test_whitney_charged_dynamics.py"],
     ),
     (
+        "Execute same-action real continuum, charged observer, dynamical clock and quantum trial controls",
+        [sys.executable, "-m", "pytest", "-q",
+         "code/electromagnetism/test_whitney_real_continuum.py",
+         "code/electromagnetism/test_whitney_charged_instrument.py",
+         "code/electromagnetism/test_whitney_ephemeris_clock.py",
+         "code/electromagnetism/test_whitney_quantum_history.py"],
+    ),
+    (
         "Execute the discrete Coulomb-Green replay, verifier, and mutation guards",
         [
             sys.executable,
