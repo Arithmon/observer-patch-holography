@@ -9,23 +9,21 @@ open OPH.PSL2F5SixAxesBridge
 /-!
 # The committed twelve-port rotations as a typed finite group
 
-GOLDEN-LIFT-2A upgrades the existing pointwise bridge between the antipodal
-quotient of the sixty committed twelve-port rotations and `A5SixAxes.L60` to
-a genuine group isomorphism.
+The sixty committed twelve-port rotations are packaged as a subgroup of
+`Equiv.Perm (Fin 12)` and identified with the committed six-axis subgroup.
 
 The load-bearing check is multiplication on the actual `Fin 12`
-permutations.  The port-row multiplication and inverse indices are transported
-through the already certified `rowEquiv` into the exact multiplication and
-inverse tables of `A5SixAxes`; the resulting identities are then checked
-pointwise on the committed port permutations.  `PortGroup` is defined as the
-range of those sixty rows, so it contains exactly the committed rotations.
+permutations. The port-row multiplication and inverse indices are transported
+through the certified `rowEquiv` into the exact multiplication and inverse
+tables of `A5SixAxes`; the resulting identities are then checked pointwise on
+the committed port permutations. `PortGroup` is defined as the range of those
+sixty rows, so it contains exactly the committed rotations.
 
-The final interface composes this group with the GOLDEN-LIFT-1 equivalence and
-gives
+Composing this group isomorphism with `psl_equiv_six_axis_group` gives
 
     PSL2F5 ≃* PortGroup.
 
-BOUNDARY.  This file does not prove `PSL(2,5) ≅ A5`, identify `SL(2,5)` with
+BOUNDARY. This file does not prove `PSL(2,5) ≅ A5`, identify `SL(2,5)` with
 the binary icosahedral group, construct an `SU(2)` lift, invoke McKay, transport
 the golden sectors as typed representations, derive or select `φ`, state a
 mass law, or identify physical rotations. -/
@@ -64,7 +62,7 @@ theorem portEl_zero : portEl 0 = 1 := by
   decide
 
 /- The quadratic check is split into the same five-row bands used by
-`A5SixAxes.rowF_mul`.  This keeps kernel reduction on raw action values rather
+`A5SixAxes.rowF_mul`. This keeps kernel reduction on raw action values rather
 than asking `decide` to compare `Equiv.Perm` proof structures. -/
 
 set_option maxHeartbeats 4000000 in
@@ -192,7 +190,7 @@ theorem portEl_inv (i : Fin 60) :
 /-! ## 2. The exact subgroup carried by the committed port rows -/
 
 /-- The subgroup consisting exactly of the sixty committed twelve-port
-rotations.  Range membership makes the row ancestry explicit. -/
+rotations. Range membership makes the row ancestry explicit. -/
 def PortGroup : Subgroup (Equiv.Perm (Fin 12)) where
   carrier := Set.range portEl
   one_mem' := ⟨0, portEl_zero⟩
@@ -206,8 +204,8 @@ def PortGroup : Subgroup (Equiv.Perm (Fin 12)) where
     obtain ⟨i, rfl⟩ := hg
     exact ⟨portInvIndex i, (portEl_inv i).symm⟩
 
-/-- Distinct row indices give distinct committed port permutations.  The proof
-reuses the already certified faithfulness of the antipodal quotient. -/
+/-- Distinct row indices give distinct committed port permutations. The proof
+reuses the certified faithfulness of the antipodal quotient. -/
 theorem portEl_injective : Function.Injective portEl := by
   intro i j hij
   apply quotient_action_faithful
@@ -219,7 +217,7 @@ theorem portEl_injective : Function.Injective portEl := by
 noncomputable def portIndex (g : PortGroup) : Fin 60 :=
   Classical.choose (show ∃ i : Fin 60, portEl i = g.1 from g.property)
 
-/-- The chosen row really is the underlying port permutation. -/
+/-- The chosen row is the underlying port permutation. -/
 theorem portIndex_spec (g : PortGroup) : portEl (portIndex g) = g.1 :=
   Classical.choose_spec (show ∃ i : Fin 60, portEl i = g.1 from g.property)
 
@@ -261,8 +259,8 @@ theorem sixEl_zero : OPH.A5SixAxes.el 0 = 1 := by
   revert x
   decide
 
-/-- Multiplication of explicit six-axis rows, exposed from the already
-certified raw row table. -/
+/-- Multiplication of explicit six-axis rows, exposed from the certified raw
+row table. -/
 theorem sixEl_mul (i j : Fin 60) :
     OPH.A5SixAxes.el i * OPH.A5SixAxes.el j =
       OPH.A5SixAxes.el (OPH.A5SixAxes.mulT i j) := by
@@ -290,7 +288,7 @@ noncomputable def portToSix : PortGroup →*
     rw [portIndex_mul, rowEquiv_portMulIndex]
     exact (sixEl_mul _ _).symm
 
-/-- The port-to-six-axis homomorphism has trivial kernel. -/
+/-- The port-to-six-axis homomorphism is injective. -/
 theorem portToSix_injective : Function.Injective portToSix := by
   intro g h hgh
   have hval :
@@ -337,8 +335,8 @@ noncomputable def portGroupEquivSixAxisGroup :
   MulEquiv.ofBijective portToSix
     ⟨portToSix_injective, portToSix_surjective⟩
 
-/-- GOLDEN-LIFT-2A headline interface: Mathlib's abstract projective group is
-isomorphic to the subgroup of the sixty committed twelve-port rotations. -/
+/-- Mathlib's abstract projective group is isomorphic to the subgroup of the
+sixty committed twelve-port rotations. -/
 noncomputable def pslEquivPortGroup :
     OPH.PSL2F5SixAxesBridge.PSL2F5 ≃* PortGroup :=
   OPH.PSL2F5SixAxesBridge.psl_equiv_six_axis_group.trans
@@ -346,11 +344,13 @@ noncomputable def pslEquivPortGroup :
 
 end OPH.A5PortGroupBridge
 
-/- Axiom audit: standard axioms only are intended; no `sorry`, `admit`, new
-axioms, or `native_decide`. -/
+/- Axiom audit: no `sorry`, `admit`, new axioms, or `native_decide`. -/
 
+#print axioms OPH.A5PortGroupBridge.portEl_zero
 #print axioms OPH.A5PortGroupBridge.portEl_mul
 #print axioms OPH.A5PortGroupBridge.portEl_inv
 #print axioms OPH.A5PortGroupBridge.portEl_injective
 #print axioms OPH.A5PortGroupBridge.portToSix_injective
 #print axioms OPH.A5PortGroupBridge.portToSix_surjective
+#print axioms OPH.A5PortGroupBridge.portGroupEquivSixAxisGroup
+#print axioms OPH.A5PortGroupBridge.pslEquivPortGroup
