@@ -23,10 +23,22 @@ import whitney_interacting_quantum as quantum
 @lru_cache(maxsize=1)
 def fixture_data():
     mesh = quantum.geometry(4)
-    rng = np.random.default_rng(48321)
-    a = mesh.slice[:42, :30]@rng.normal(size=30)/5
-    psi = rng.normal(size=13)+1j*rng.normal(size=13)
+    a, psi = physical_fixture(mesh)
     return mesh, a, psi
+
+
+def physical_fixture(mesh):
+    """Fix physical edge data before choosing any null-space coordinates."""
+    rng = np.random.default_rng(48321)
+    raw = rng.normal(size=42)/25
+    laplacian = mesh.d.T@mesh.mass@mesh.d
+    # Adding the constant projector fixes the mean-zero inverse without an
+    # SVD basis. The source lies in the mean-zero subspace by incidence.
+    xi = np.linalg.solve(laplacian+np.ones((13, 13))/13,
+                         mesh.d.T@mesh.mass@raw)
+    a = raw-mesh.d@xi
+    psi = rng.normal(size=13)+1j*rng.normal(size=13)
+    return a, psi
 
 
 def direct_zero_potential_metric(mesh, psi, charge, scalar_factor=2):
@@ -208,12 +220,49 @@ def test_generic_coefficients_have_controlled_quadrature_order_sensitivity():
         metric, potential = quantum.coefficients(a, psi, 0.7, mesh=refined)
         gamma, _, _, _ = quantum.reduced_coefficients(a, psi, 0.7, mesh=refined)
         results.append((metric, potential, gamma))
-    coarse = np.array([np.max(abs(a-b)) for a, b in zip(results[0], results[1], strict=True)])
-    fine = np.array([np.max(abs(a-b)) for a, b in zip(results[1], results[2], strict=True)])
+    def errors(left, right):
+        # Spectral norms retain the absolute error bounds under every valid
+        # orthogonal Coulomb frame; entrywise maxima would change with SVDs.
+        return np.array([np.linalg.norm(left[0]-right[0], 2),
+                         abs(left[1]-right[1]),
+                         np.linalg.norm(left[2]-right[2], 2)])
+    coarse = errors(results[0], results[1])
+    fine = errors(results[1], results[2])
     assert np.all(coarse > 1e-8)  # Gauge invariance alone hides these errors.
     assert np.all(coarse < 2e-6)
     assert np.all(fine < 1e-8) and np.all(fine < coarse/100)
     # These are finite order-comparison diagnostics, not interval error bounds.
+
+
+def test_physical_fixture_and_quadrature_errors_survive_coulomb_frame_rotation():
+    mesh, a, psi = fixture_data()
+    rotation = np.eye(56)
+    for i in range(0, 30, 2):
+        angle = (i+1)/7
+        rotation[i:i+2, i:i+2] = [[np.cos(angle), -np.sin(angle)],
+                                 [np.sin(angle), np.cos(angle)]]
+    rotated = replace(mesh, slice=mesh.slice@rotation)
+    rotated_a, rotated_psi = physical_fixture(rotated)
+    np.testing.assert_array_equal(rotated_a, a)
+    np.testing.assert_array_equal(rotated_psi, psi)
+    np.testing.assert_allclose(mesh.d.T@mesh.mass@a, 0, atol=2e-15)
+    assert np.linalg.norm(a) > 0.1
+    original_metrics, rotated_metrics = [], []
+    for order in (4, 5, 6):
+        original_mesh = replace(quantum.geometry(order), slice=mesh.slice,
+                                mean_zero=mesh.mean_zero)
+        rotated_mesh = replace(original_mesh, slice=rotated.slice)
+        gamma, potential, _, _ = quantum.reduced_coefficients(a, psi, 0.7, mesh=original_mesh)
+        moved, moved_potential, _, _ = quantum.reduced_coefficients(
+            rotated_a, rotated_psi, 0.7, mesh=rotated_mesh)
+        np.testing.assert_allclose(moved, rotation.T@gamma@rotation, atol=3e-13, rtol=3e-13)
+        assert moved_potential == potential
+        original_metrics.append(gamma)
+        rotated_metrics.append(moved)
+    for k in (1, 2):
+        original_error = np.linalg.norm(original_metrics[k]-original_metrics[k-1], 2)
+        rotated_error = np.linalg.norm(rotated_metrics[k]-rotated_metrics[k-1], 2)
+        assert rotated_error == pytest.approx(original_error, abs=2e-14, rel=1e-5)
 
 
 @pytest.mark.parametrize("parameter,value", [("mass_squared", -1), ("quartic", -1),
