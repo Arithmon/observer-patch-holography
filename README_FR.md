@@ -4,22 +4,22 @@
 
 [Read in English](README.md) · [Livre](https://oph-book.floatingpragma.io/) · [Article phare](flagship/from_observer_consensus_to_standard_physics.pdf) · [Manuels](https://learn.floatingpragma.io/) · [Simulation](https://simulation.floatingpragma.io/) · [Carnet](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
 
-L’Holographie des parcelles d’observateur, ou OPH, est un programme de
-recherche pour une théorie du tout sans boutons de réglage, construit sur une
-thèse centrale : **les observateurs sont premiers, et la réalité objective est
-émergente.** La physique commence habituellement en fournissant un espace-temps,
-des champs quantiques, un groupe de jauge et une table de constantes mesurées.
-OPH commence par des observateurs : des systèmes bornés dotés d’un état local,
-d’une relecture d’eux-mêmes et de leurs voisins, de registres et de
-mouvements de réparation. La réalité émerge de la réparation des
-recouvrements d’observateurs sur un écran holographique. À partir de cette
-architecture, OPH construit une voie mathématique unique à travers les
-registres quantiques, la thermodynamique, la cinématique des référentiels
-lorentziens, un précurseur causal et lorentzien dérivé de la source, puis des
-branches conditionnelles pour l’espace-temps physique et la gravitation, la
-structure de jauge, la matière et les constantes de la nature. Ses étapes les plus fortes sont des théorèmes
-finis exacts, chaque pont physique étant formulé de façon à pouvoir être prouvé
-ou testé.
+L’Holographie des parcelles d’observateur, ou OPH, construit un programme de
+recherche pour une théorie du tout autour d’une thèse : **les observateurs
+sont premiers, et la réalité objective est émergente.** Ses observateurs sont
+des systèmes bornés dotés d’un état local, de frontières, de relecture, de
+registres et de moyens de réparer leurs désaccords.
+
+L’argument en faveur d’OPH tient à ce qu’une même architecture relie. Des
+registres cohérents portent les probabilités quantiques. La réponse complète
+et réversible des frontières et le transport interne entre observateurs
+fixent la structure locale de symétrie des forces connues. Une loi de matière
+fournie permet de construire un mouvement continu contrôlé d’un champ réel
+et, sur un maillage fini, un espace d’états quantiques en interaction. Ces
+constructions relient des objets que les calculs ordinaires de physique
+introduisent séparément. Chaque résultat expose ses hypothèses et une preuve
+ou un calcul reproductible, donnant à l’unification proposée un chemin concret
+de la cohérence interne aux tests physiques.
 
 Trois axiomes régissent l’architecture des observateurs et la manière dont ils
 parviennent à un consensus. Deux programmes d’autocohérence cherchent ensuite
@@ -29,15 +29,11 @@ de reconstruction plutôt qu’en données ajustées.
 
 ## Commencer ici
 
-La physique a plusieurs fois révisé son idée de ce qui est fondamental. L’espace fut
-absolu jusqu’à devenir relatif ; la matière fut continue jusqu’à être
-quantifiée. Chaque révision paraissait scandaleuse depuis l’intérieur de
-l’ancien tableau et évidente depuis l’intérieur du suivant. OPH opère la
-révision suivante. L’observateur, traité pendant un siècle comme une gêne aux
-marges de la mécanique quantique, passe au fondement. L’espace-temps, la
-matière et les constantes deviennent des problèmes précis de reconstruction,
-attaqués théorème par théorème et testés reçu par reçu. Le matériel ci-dessous
-vous fait traverser ce basculement sans prérequis.
+La question de départ est ce qu’un observateur peut établir depuis
+l’intérieur du monde. OPH transforme l’accord entre observateurs bornés en
+contraintes mathématiques, puis suit ces contraintes vers la physique
+familière. Vous pouvez suivre l’argument dans le livre, examiner ses preuves
+ou reproduire les simulations.
 
 - **Le livre.** [*Reverse Engineering Reality*](https://oph-book.floatingpragma.io/)
   est l’exposé grand public, écrit en anglais pour des lecteurs sans formation

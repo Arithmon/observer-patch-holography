@@ -46,7 +46,7 @@ And a third habit. Never assume a component you have not found on the board. If 
 
 This book runs that discipline under one aggravating condition, which Galileo's cabin introduced and which never goes away: the engineer is a part. There is no bench to put the machine on.
 
-Every theory anyone has written down begins by assuming a great deal: a space for things to be in, a time for them to happen along, a list of fields, a symmetry group, and a page of numbers measured in laboratories and entered by hand. Those assumptions are not idle. They are what makes the equations work. But a component you assumed is a component you will never find. The six symptoms above are all complaints about the arena rather than about the things moving around in it.
+A reconstruction asks how much physics follows from a smaller starting point. OPH starts with bounded systems that read their boundaries, retain records and repair disagreements with neighbors. Agreement becomes a mathematical constraint. The test is how much familiar physics follows from those constraints, with every extra assumption visible.
 
 The everyday picture of the world is that there is a three-dimensional container, time runs inside it at one rate for everybody, objects occupy positions in it, and physics describes how the objects move.
 
@@ -54,9 +54,9 @@ In 2002 the programmer Joel Spolsky wrote down a rule about descriptions of that
 
 ## One equation at a time
 
-The framework being described has a name. It is called Observer Patch Holography, and the full version of it lives outside this book: papers carrying the theorems, longer treatments that build the mathematics as they go, and machine-checked proofs for the parts that have to bear weight. Appendix C says where all of it sits.
+The framework has a name: Observer Patch Holography. Its case is the reach of one observer architecture. Under explicit probability assumptions, the algebra of readable questions supports quantum probabilities. Complete reversible boundary response and internal transport constrain the local symmetries of forces. A supplied matter law supports controlled motion of a real field in a continuum and, at fixed mesh, an interacting quantum state space. Objects that ordinary calculations introduce separately become parts of a connected argument.
 
-None of that is reproduced here, because reproducing it would produce a different book. What follows is the argument rather than the apparatus: the concepts, the constructions, and the points at which a number falls out with nothing fed in to produce it. Where a step is carrying real load you will be told what it rests on and where the checkable version can be found.
+The papers state the assumptions behind each result and supply proofs or calculations that can be repeated independently. Physical claims face a further demand: identify what an instrument would measure and what outcome would refute the claim. Appendix C points to that evidence. This book develops the argument in words, explaining what each step rests on.
 
 There are equations in this book, not many, and every one of them is doing work. Each one is introduced by a sentence saying what it is about to say and followed by a sentence saying what it said. Every symbol in it is explained in words on the same page.
 
@@ -74,8 +74,8 @@ What do the units say? If one side of the equals sign is a length and the other 
 
 There is a single line that working physicists write down when somebody asks what the world is made of. It is short enough to fit on a coffee mug, which is where most of the people who have seen it encountered it. Four or five terms, depending on how you group them. Each term is a compression: unfold one and out comes a force, or a family of particles, or the reason anything has mass.
 
-Nobody derives that line. It is written down, adjusted, and checked. The symmetry group inside it was selected because it matched what the detectors reported. The number of particle families in it is three because experiments have found three. Somewhere between nineteen and twenty-six of the numbers in it were measured in laboratories and typed in. The line is a transcription of those results, and the most successful description of anything human beings have ever produced.
+The Standard Model packages an extraordinary range of measurements in that line. Its symmetry and field choices constrain the terms, while experiments supply parameters. A deeper reconstruction must account for those choices as well as reproduce their successful predictions.
 
-By the last third of this book you will be able to read that line and say where every symbol in it came from.
+By the last third of this book, you will be able to read that line and ask which parts follow from observer consistency, which require further assumptions, and how the resulting claims can be tested.
 
 That is the promise. This prologue makes no other.

@@ -4,18 +4,20 @@
 
 [Book](https://oph-book.floatingpragma.io/) · [Technical paper](flagship/from_observer_consensus_to_standard_physics.pdf) · [Textbooks](https://learn.floatingpragma.io/) · [Simulation](https://simulation.floatingpragma.io/) · [Notebook](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
 
-Observer Patch Holography (OPH) is a zero-dial theory-of-everything research
-program built on one central thesis: **observers are primary, and objective
-reality is emergent.** Physics normally begins by supplying spacetime, quantum
-fields, a gauge group, and a table of measured constants. OPH begins with
-observers: bounded systems that carry local state, read part of themselves and
-their neighbors, keep records, and repair disagreement. Reality emerges from
-observer overlap repair on a holographic screen. From this architecture OPH
-builds a single mathematical route through quantum records, thermodynamics,
-Lorentz-frame kinematics, a source-derived causal/Lorentz precursor, conditional
-physical spacetime and gravity branches,
-gauge structure, matter, and the constants of nature. Its strongest steps are exact finite theorems,
-with each physical bridge made precise enough to prove or test.
+Observer Patch Holography (OPH) builds a theory-of-everything research program
+around one thesis: **observers are primary, and objective reality is
+emergent.** Its observers are bounded systems with local state, boundaries,
+readback, records and ways to repair disagreement.
+
+The case for OPH is how much one architecture connects. Consistent records
+support quantum probabilities. Complete reversible boundary response and
+internal observer transport fix the local symmetry pattern of the known
+forces. A supplied matter law supports controlled continuum motion of a real
+field and, on a finite mesh, an interacting quantum state space. These
+constructions connect objects that ordinary physics calculations introduce
+separately. Each result comes with explicit assumptions and a proof or
+reproducible calculation, giving the proposed unification a concrete route
+from internal consistency to physical tests.
 
 Three axioms govern the observer architecture and how observers reach
 consensus. Two self-consistency programs then seek fixed points for the pixel
@@ -24,14 +26,11 @@ constants into sharp reconstruction targets rather than fitted inputs.
 
 ## Start Here
 
-Physics has revised its idea of what is fundamental before. Space was
-absolute until it was relative; matter was continuous until it was quantized.
-Each revision looked outrageous from inside the previous picture and obvious
-from inside the next one. OPH makes the next revision. The observer, treated
-for a century as a nuisance at the edge of quantum mechanics, moves to the
-foundation. Spacetime, matter, and the constants become precise reconstruction
-problems that can be attacked theorem by theorem and tested receipt by receipt.
-The material below takes you through that shift from a standing start.
+The starting question is what an observer can establish from inside the
+world. OPH turns agreement between bounded observers into mathematical
+constraints, then follows those constraints toward familiar physics.
+You can follow the argument in the book, inspect its proofs, or replay the
+simulations.
 
 - **The book.** [*Reverse Engineering Reality*](https://oph-book.floatingpragma.io/)
   is the general-audience account, written for readers with no physics

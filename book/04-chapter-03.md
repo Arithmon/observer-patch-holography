@@ -88,7 +88,7 @@ An observer here is any bounded system that keeps records. A thermostat is one. 
 
 There is a second misreading, subtler than the first and more persistent, and the one that makes people suspicious of observer-centered physics for good reasons.
 
-Putting observers at the bottom sounds like putting *us* at the bottom. That sounds like a demotion of the universe in favour of the people looking at it. It sounds like the world is somehow for us, or shaped by us, or waiting on our attention. Every anthropic argument ever made has this flavour. The flavour is unpleasant for a reason: a universe arranged around the preferences of its inhabitants is exactly the kind of story people invent.
+Putting observers at the bottom sounds like putting *us* at the bottom. That sounds like a demotion of the universe in favour of the people looking at it. It sounds like the world is shaped by our attention. An anthropic selection argument conditions on observers existing; it does not require their preferences to arrange the universe. The observer architecture here likewise concerns what systems can record and compare.
 
 That is the opposite of what is being said. An observer in this book does not get what it wants. It gets what it can consistently record. The second is a much harsher master than the first. The thermostat cannot decide the room is warm. It can hold a number, and the number can be wrong, and being wrong has consequences it does not choose. Everything in the next thirty chapters comes from what a bounded record-keeper is *forbidden* to do: it cannot see everything, it cannot write without limit, it cannot compare what it has no access to, and it cannot disagree with its neighbors indefinitely without something giving way.
 
@@ -96,23 +96,21 @@ There is a cheap way to feel the asymmetry. Set the thermostat to twenty-five de
 
 Observer-first is constraint-first. Nothing anywhere in this book turns on anybody wanting anything.
 
-## Why a theory that starts with a stage cannot explain the stage
+## What the starting point explains
 
-Write down a spacetime on the first line of your theory, and every sentence after it is a sentence about something in the spacetime. Position is a quantity at a place. Velocity is a change of place. Field strength is a number at a place. Curvature is a statement about how places sit relative to each other. The entire vocabulary is defined by reference to the arena, which means the vocabulary can say nothing whatever about the arena. Ask where the arena came from, or why it has three large directions, or what it is made of, and the language has no way to form the question, because it was built on the assumption that places exist and are not the sort of thing one asks about.
+A theory that supplies a spacetime can explain how its geometry changes and what matter does within it. Explaining why that starting structure is appropriate requires an additional argument. Chapter one's examples show several ways to move the boundary between what is assumed and what is derived.
 
-This is why chapter one's log reads the way it does. Every program on it improved the description of what happens in the arena and none of them said anything about the arena. The reason is structural rather than a failure of ambition. You cannot get a statement about the floor out of a vocabulary in which every noun is standing on it.
+OPH begins on the observer side of that boundary. Consider the sentence: *these two records agree*. It specifies a relation between bounded record-keepers without assigning them coordinates or a distance. The patch architecture makes such comparisons precise through its states, ports and repair laws.
 
-The only escape is to build the description out of things that do not presuppose the arena. Consider the sentence: *these two records agree*. There is no location anywhere in it. It does not say where the records are, how far apart they are, whether they are in the same room or the same galaxy, or whether either of those questions means anything. It is a statement about two bounded record-keepers and nothing else, and perfectly meaningful in a world with no space in it at all.
-
-That is a sentence you can build a physics out of without assuming a stage. Whether you can build *this* physics out of it takes the rest of the book. The vocabulary question has been settled by something you could buy in a hardware shop.
+That gives a vocabulary for reconstruction. Whether it describes physical spacetime depends on how the records, their relations and their dynamics connect to measured geometry. Agreement supplies the common constraint; the physical bridges must do the rest.
 
 ## The bill
 
 One thing has been quietly assumed for six pages and it comes due later.
 
-Writing a record costs something. It costs room, because a mark occupies whatever it is a mark on, and there is only so much of that. And it costs energy, because setting a physical system into one configuration rather than another means moving something. No observer has ever been built that writes for free. The reason is not engineering.
+A physical record uses memory and must be carried by a physical process. Its energy cost depends on that process. Copying a readable value into a prepared register can retain the input; erasing an unknown value removes information from the memory being reset. Under the thermal conditions developed later, that reset has a mean heat bound.
 
-The three requirements above were stated as though they were free. They are not. The price of a written record turns out to be one of the more important numbers in physics.
+Finite memory and thermodynamic reset connect the observer description to physical resources. Counting records and counting erased bits are different operations.
 
 That is the whole starting position: bounded record-keepers, comparing what they hold against what they see, at a cost.
 

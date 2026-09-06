@@ -10,7 +10,7 @@ It is easy to read that as an anecdote about eccentric mathematicians and miss w
 
 What they were building has a name. A **formal system** is a set of marks you are allowed to write, a starting position, and a set of moves that turn one arrangement of marks into another. Meaning is absent by construction. The marks stand for nothing, the moves have no reasons, and the system has no idea what it is about. Hand the rules to somebody who shares no language with you and they will apply them correctly.
 
-Which makes it the only kind of object anybody can examine without assuming something first. Chapter one ended by throwing away everything: no space, no fields, no symmetry group, no numbers, no place for events to be. The question is whether anything at all survives that. It has a famous form. Leibniz put it in 1714, in a short piece written for a prince: why is there something rather than nothing? Nothing, he pointed out, is simpler and easier.
+Such a system makes its starting assumptions explicit. Chapter one introduced a relational observer architecture before assigning physical space or time to it. The question is what that architecture can support. Behind it stands an older question, posed by Leibniz in 1714: why is there something rather than nothing? Nothing, he pointed out, is simpler and easier.
 
 ## Two answers that do not work
 

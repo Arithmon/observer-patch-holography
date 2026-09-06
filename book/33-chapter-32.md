@@ -4,11 +4,9 @@ In September 2006 Lee Smolin published *The Trouble with Physics*. The most usef
 
 A physicist can spend forty years on any one of those five and never need to open the literature of the other four. They have separate conferences, separate journals, separate graduate courses and separate senior figures who do not attend one another's talks. Somebody working on the measurement problem and somebody working on the cosmological constant share about as much technical vocabulary as a cardiologist and a bridge engineer.
 
-They are one problem in five costumes. The list runs longer than five. Every celebrated open problem in physics is a symptom of the same move: a background written down at the top of the page, followed by a question that the background has made unanswerable.
+OPH approaches these questions through one observer architecture. Records, local agreement and bounded access recur in its constructions of quantum probabilities, geometry and matter. Their common starting point creates opportunities to connect the problems, while each physical conclusion retains its own assumptions.
 
-A background is a set of places for things to be at, a parameter for them to happen along, and the two of them present before anything happens in them. Chapter one called it the arena and found it sitting under every program of the last fifty years. Read Smolin's five with the arena in view and each one is a question about the arena rather than about what moves around inside it: how many dimensions it has, what the constants of the things in it are, why one class of event occurring inside it counts as a measurement while the others do not, and what its empty parts weigh. A description that grants itself the arena in its first line has no route to any of that. Four of the five ask what the arena is or what sits in it, and the fifth asks whether the law running on it needs changing at the radius of a galaxy.
-
-Take them one at a time. Name the problem the way its own literature names it. Name the thing assumed underneath it, which is usually so old that nobody lists it among the assumptions. Then take the assumption out and watch what the problem does. Solving a problem leaves an answer behind that somebody can go and measure. Removing an assumption leaves a question that cannot be put into words any more.
+Chapter one's comparisons showed several ways to reconstruct parts of the physical description. The question here is what the observer route contributes. Removing an assumption is useful only when a replacement explains the relevant physics. A successful solution must reach quantities that somebody can measure.
 
 ## Ten words Bell wanted banned
 
@@ -18,9 +16,9 @@ His target was a joint. The theory as John von Neumann set it out in 1932 contai
 
 The assumption under the joint is older than the theory and it sits inside the word Bell most wanted removed. To measure is to find out a value that was there beforehand. To disturb is to spoil a value that was there beforehand. Both take for granted a world stocked with definite values and experiments as encounters with them, and the measurement problem is the question of how one encounter manages to be smooth and a jump at once.
 
-Take the stocked world out. What an observer has is an algebra of questions, some of which refuse to commute, and a record layer sitting in the part that commutes with everything. Nothing gets disturbed, because nothing was carrying a value to be disturbed. A record gets written. The write is a commit that discards the alternatives it resolved. The odds come with it: any assignment of numbers to yes-or-no questions that lands between zero and one, gives the certain question the value one, and adds up across every complete list of exclusive alternatives is the trace against exactly one state, in every finite dimension. Born put the squaring in a footnote in 1926 because he had noticed that it worked. Additivity forces it. The word Bell wanted removed drops out of the description altogether, and what stands in the place where it was is an operation with a price: a write that cannot be undone, leaving the world less able than it was to say what it used to hold.
+In the finite reconstruction, an observer has an algebra of questions and a commuting record layer. The probability theorem concerns assignments to all quantum effects, including weighted questions, that are normalized and additive whenever the sum is another allowed effect. Under those hypotheses, the assignment is the trace against a unique state in every finite dimension. Additivity only on sharp projectors needs the familiar dimension restriction; agreement on a finite set of observed questions is weaker still.
 
-The joint Bell objected to turns out to have a home. It falls between the questions that commute and the questions that refuse, it sits in a different place for every observer, and no experiment slides it, because a commit either happened or it did not. The ball out of Robins' musket took one route across the room because one route got written down, in splinters and in a length of ribbon on the floor.
+An instrument connects those probabilities to records. A nonselective readout can discard distinctions in the reduced description while a larger reversible system retains them. The formal representation does not choose a physical instrument or explain which outcome an observer experiences. Those identifications are additional parts of the physical account.
 
 ## Loschmidt's objection
 
@@ -30,11 +28,9 @@ Where it gets smuggled in is a statement about how everything started: an arrang
 
 The assumption sits one line above the fix. The elementary dynamics is blind to direction, so a direction has to be imported from outside the dynamics, and the only place left to import one from is the boundary.
 
-Here the elementary move is a commit. A commit is a write that destroys what it resolved. The forward and reverse weights of any transition differ by exactly the exponential of the entropy produced, an identity between whole-number ratios with nothing approximated anywhere in it. The mean of the entropy produced equals the fall in relative entropy on the nose. One curve gets averaged in one place, that single step is the only inequality in the argument, and everything on either side of it is an equality.
+The finite repair construction makes its direction assumptions explicit. A stochastic kernel preserves a supplied reference distribution. With strictly positive initial, reference and output laws, the average exponential of minus entropy production is one, and mean entropy production equals the fall in relative entropy. Detailed balance supplies the stronger relation between forward and reverse transition weights. These are statements about a declared probability model.
 
-An arrangement at the beginning can bias which configurations are common and which are rare. Making a write reversible is beyond it.
-
-So the asymmetry belongs to the operation, and works on the first repair of a fresh arrangement exactly as it works on the ten billionth. Loschmidt's reversal turns every velocity around and un-writes nothing. The bits the commits threw away have nowhere to come back from.
+A commit can retain its inputs in a reversible record, so commits alone do not evade Loschmidt's objection. Physical irreversibility requires the channel, boundary conditions and discarded information to be identified. Thermal heat bounds additionally require the reservoir and energy assumptions of chapter twenty-two. The finite inequality connects to the physical arrow only through those bridges.
 
 ## A hundred and twenty orders of magnitude
 
@@ -52,7 +48,7 @@ In 1953 Fred Hoyle turned up at the Kellogg Radiation Laboratory at Caltech and 
 
 Shift that level by a fraction of a percent and the reaction that builds carbon inside stars stops working, which makes that level the first exhibit in every account of a universe tuned for its occupants. Take any of the twenty-six measured numbers of the Standard Model, change it on paper and work out what the resulting world does, and for several of them the answer is a world with no chemistry in it. The constants of this one look, from that angle, like settings somebody dialed in.
 
-An argument of that shape is a probability claim. A probability claim needs two things: a collection to draw from, and a weight on the collection. The collection turned up afterwards, and chapter one gave its size: the ways of curling up the extra dimensions of a string theory, estimated at ten to the five hundredth, each giving a different set of particles and constants at ordinary energies. A number that large makes a hospitable world unsurprising, provided the collection is there.
+An argument of that shape needs both a collection of candidates and a probability measure on it. String compactifications supply examples with different particle spectra and parameters. Counting many candidates alone does not determine the probability of a hospitable world; that depends on their physical content and the weights assigned to them.
 
 The numerical proposal reads two quantities twice, once from the finite structure and once through a supplied physical observer map. If each pair is proved to refer to the same carrier, consistency gives an equation with the quantity on both sides. The declared map is a contraction, so it has one fixed point in its feasible set. Its coupling coordinate is 137.035660 against the measured 137.035999. This proves uniqueness inside the named map, not that the source-derived causal poset selects every physical attachment or excludes every other architecture.
 
@@ -104,7 +100,7 @@ Why do the charges come in sixths? Because six combinations of gauge moves do no
 
 Why does the proton refuse to decay the grand-unified way? Because the carrier that route needs, one direction coupling color to weak charge at once, is missing from a twelve-dimensional list that splits into eight, three and one, and a missing direction cannot be made small or slow: that route is closed exactly.
 
-Why is the fine-structure constant near one part in 137? Because the grain of a screen has two readings that have to agree, and the equation saying so has a single root: 137.035660 against a measured 137.035999, with the difference sitting in the quark cloud and waiting on an instrument.
+Why is the fine-structure constant near one part in 137? A declared screen map has one fixed point, with diagnostic coupling 137.035660 against the measured 137.035999. Connecting its two readings to one physical carrier and independently determining the transport are necessary for a physical comparison.
 
 Why do the charged-lepton masses satisfy Koide's relation? Because three masses built on the twenty faces sit on a circulant whose positivity confines them to a chamber where the Koide combination takes the value two thirds, which puts the tau inside a window seventy-two electron-volts wide, at 1776.969027 million electron-volts against a measured 1776.93.
 
@@ -118,19 +114,19 @@ On the proposed dark-sector branch, missing-mass phenomenology is represented by
 
 ## The empty column
 
-Chapter one read three centuries of physics as a crash log: what was assumed, what broke, and what got fixed. The seven problems above never reached the third column. Here it is.
+The observer constructions supply a set of conditional answers. Each row states both the mathematical contribution and the physical inputs it consumes.
 
-| The problem | What sits underneath | What comes out when that goes |
+| The problem | Observer construction | Physical requirement |
 |-|-|-|
-| Measurement | A world stocked with definite values, disturbed by an encounter | A commit into the commuting part of an algebra, with the odds forced by additivity |
-| The arrow of time | Direction-blind dynamics plus a special first arrangement | An irreversible write, forward and reverse weights apart by the exponential of the entropy produced |
-| The cosmological constant | A vacuum energy sitting in a spacetime that was there first | Local null data leave one metric term free; a separate horizon-record adapter gives a conditional capacity coordinate |
-| Fine-tuning | An ensemble of worlds for this one to be improbable among | One structure, two quantities read twice, one solution each |
-| The hierarchy | A fundamental scale entered by hand for a measured one to be compared against | A coupling of one part in 24.32 arriving in an exponent |
-| Grand unification | A symmetry imposed on the world from outside it | Every relabeling an inside job, one central dial, and no simple group with room for it |
-| Holographic duality | A boundary at infinity taken as its own summary, so the assumption is the conclusion | A collar with an interior on both sides, and a constraint code carrying no distance |
+| Measurement | Effect-additive probabilities and a commuting record layer | An instrument and an outcome interpretation |
+| The arrow of time | Relative-entropy contraction for a reference-preserving channel | Dynamics, boundary conditions and a physical clock |
+| The cosmological constant | Null data leave one metric term free; a horizon model assigns capacity | A common entropy, area and scale identification |
+| Fine-tuning | Unique fixed points of declared maps | Independent map selection and physical readouts |
+| The hierarchy | An exponential relation on a calibrated branch | Physical scale, coupling and matching inputs |
+| Grand unification | Response assumptions exclude a simple local gauge Lie algebra | Realized gauge and matter interfaces |
+| Holographic duality | Finite overlaps define a constraint code | Geometry and an entropy law for the physical connector |
 
-Seven rows expose one recurring assumption: somebody wrote down the stage before writing down anything that happens on it. The finite wiring removes part of that assumption by supplying records, seams and repair. Several right-hand entries also consume physical carrier, scale, stress, clock or horizon maps. Twelve ports and thirty seams provide the common precursor; they do not produce those adapters by themselves.
+The connection between the rows is the bounded observer architecture. Twelve ports and thirty seams supply a common finite construction. Physical carrier, scale, stress, clock and horizon maps identify what its mathematical objects measure. The strength of the proposed unification is tested by whether those maps belong to one physical realization.
 
 There is a test that separates the outcomes. Ask what a solution would have to contain. The finite construction can remove a misplaced mechanism or replace a free parameter with a conditional fixed-point equation. A physical result additionally needs its named bridge to instruments. For the cosmological constant, the null argument explains why local light-ray data leave the metric term undetermined. The horizon-capacity proposal supplies a value only if its record, entropy, area and scale identifications hold on one physical branch.
 
