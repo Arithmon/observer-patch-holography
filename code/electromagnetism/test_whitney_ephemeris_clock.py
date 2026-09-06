@@ -1,5 +1,5 @@
 """Independent geometry, invariance and false-clock controls."""
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import sys
 from types import SimpleNamespace
 
@@ -106,3 +106,35 @@ def test_verifier_loads_from_an_external_working_directory(tmp_path):
     import subprocess
     code = "import importlib.util; s=importlib.util.spec_from_file_location('clock',"+repr(str(Path(audit.__file__)))+"); m=importlib.util.module_from_spec(s); s.loader.exec_module(m); assert m.instrument_verifier().OUTPUT.is_file()"
     subprocess.run([sys.executable, "-c", code], cwd=tmp_path, check=True, capture_output=True)
+
+
+@pytest.mark.parametrize("path_type", [PurePosixPath, PureWindowsPath])
+def test_source_attachment_is_portable_across_path_flavors(monkeypatch, path_type):
+    # Actual file reads remain local; relative path serialization uses the
+    # selected platform flavor, so Windows behavior is exercised on Unix too.
+    class SourcePath:
+        def __init__(self, actual):
+            self.actual = actual
+
+        def relative_to(self, root):
+            return path_type(*self.actual.relative_to(root).parts)
+
+        def __fspath__(self):
+            return str(self.actual)
+
+        def __getattr__(self, name):
+            return getattr(self.actual, name)
+
+    source = SourcePath(producer.SOURCE)
+    monkeypatch.setattr(producer, "SOURCE", source)
+    monkeypatch.setattr(audit, "SOURCE", source)
+    packet = producer.build()
+    assert packet["source"]["path"] == "code/electromagnetism/runtime/whitney_charged_instrument_receipt.json"
+    assert audit.verify(packet)["accepted"]
+
+
+def test_noncanonical_source_path_rejected():
+    packet = producer.build()
+    packet["source"]["path"] = packet["source"]["path"].replace("/", "\\")
+    with pytest.raises(ValueError, match="source attachment"):
+        audit.verify(packet)

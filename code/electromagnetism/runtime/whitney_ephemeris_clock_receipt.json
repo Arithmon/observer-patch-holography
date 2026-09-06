@@ -293,11 +293,11 @@
     "Lean/ObserverPatchHolography/CoreAxioms.lean": "addcea08fe55c0ccc3edbeb90ebd9df4b640c96bd20e9755417bcdb84f093fe4",
     "Lean/Screen/SeamCurrentCarrierQuotient.lean": "e5f712cbccc5a1462945f0cb511a47064fe10818748498021d5c70ae169a933f",
     "Lean/Screen/SeamCurrentEdge30Moment.lean": "dca0b721180b8b6a2363105ec9cb35bb9c5f5dca2da4352a9caef3b00129cd01",
-    "code/electromagnetism/test_whitney_ephemeris_clock.py": "32f9f78a7324c1632047b1b1d75de24a53e3b5696708b5e0f908877a19560867",
+    "code/electromagnetism/test_whitney_ephemeris_clock.py": "59ba49dc8ccc7120caee2491ea2c70c462ade170bd5fe254f75e3e90db3e532a",
     "code/electromagnetism/verify_cone_whitney_bridge.py": "a3d7f6e69975421e91849283d5173cc070f77c7ef24b3b285248f9f7447ac4f0",
     "code/electromagnetism/verify_whitney_charged_dynamics.py": "b0a96b874ec313c9b7871cac6f7495cedaab544f63e41ec5aaef68c2604890d0",
-    "code/electromagnetism/verify_whitney_ephemeris_clock.py": "47844e3b2fbdc0fbc8bfa40ced3f90eafa202d7a026be5576715b09bc9fecf67",
-    "code/electromagnetism/whitney_ephemeris_clock.py": "cf96b2bc0a04f649136c4b1b3dee3697b96ed8cd33d4ca1b258f0dcb4646e9e9",
+    "code/electromagnetism/verify_whitney_ephemeris_clock.py": "da90241a29fd01b1d0f6ed2dcc8c3d586cedf76f859bca4d4a6cac7c078590ac",
+    "code/electromagnetism/whitney_ephemeris_clock.py": "70fe5e15d3c85ba186e6f31f98a13bd43dee6c729de6e9f5a1e19bd65aedb92c",
     "paper/tex_fragments/WHITNEY_EPHEMERIS_CLOCK.tex": "807b68aa628951e5cabbcea9c10a3c25a87ae91b9e070b40ba7e69a7c9e52ca2"
   }
 }

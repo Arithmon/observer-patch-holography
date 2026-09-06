@@ -100,7 +100,7 @@ def build():
     return {
         "schema": "oph.whitney_ephemeris_clock.v1",
         "scope": "ACTION_DERIVED_MODEL_CLOCK__NUMERICAL_POLYLINE_READOUT",
-        "source": {"path": str(SOURCE.relative_to(ROOT)),
+        "source": {"path": SOURCE.relative_to(ROOT).as_posix(),
                    "sha256": hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
                    "consumed_fields": ["frames[].q_exact"]},
         "source_pins": {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in PINS},
@@ -123,5 +123,5 @@ def build():
 
 if __name__ == "__main__":
     packet = build()
-    OUTPUT.write_text(json.dumps(packet, sort_keys=True, indent=2, allow_nan=False)+"\n", encoding="utf-8")
+    OUTPUT.write_bytes((json.dumps(packet, sort_keys=True, indent=2, allow_nan=False)+"\n").encode("utf-8"))
     print(OUTPUT)

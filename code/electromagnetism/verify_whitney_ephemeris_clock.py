@@ -137,7 +137,7 @@ def verify(packet):
     require(type(packet["source_pins"]) is dict and set(packet["source_pins"]) == PINS, "pin census")
     for path in PINS:
         equal(packet["source_pins"][path], hashlib.sha256((ROOT/path).read_bytes()).hexdigest(), "pin "+path)
-    equal(packet["source"], {"path": str(SOURCE.relative_to(ROOT)),
+    equal(packet["source"], {"path": SOURCE.relative_to(ROOT).as_posix(),
           "sha256": hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
           "consumed_fields": ["frames[].q_exact"]}, "source attachment")
     instrument = instrument_verifier()
