@@ -57,6 +57,15 @@ OBSERVATION_EVIDENCE = [
     "code/electromagnetism/test_whitney_charged_matter.py",
     "paper/tex_fragments/WHITNEY_MAXWELL_DYNAMICS.tex",
     "paper/tex_fragments/WHITNEY_CHARGED_MATTER.tex",
+    "paper/tex_fragments/WHITNEY_CHARGED_EXECUTION.tex",
+    "code/electromagnetism/runtime/whitney_charged_dynamics_receipt.json",
+    "code/electromagnetism/verify_whitney_charged_dynamics.py",
+    "code/electromagnetism/test_whitney_charged_dynamics.py",
+    "paper/tex_fragments/WHITNEY_SPATIAL_CONSISTENCY.tex",
+    "Lean/Screen/WhitneySpatialConsistency.lean",
+    "code/electromagnetism/runtime/whitney_spatial_consistency_receipt.json",
+    "code/electromagnetism/verify_whitney_spatial_consistency.py",
+    "code/electromagnetism/test_whitney_spatial_consistency.py",
 ]
 
 POSTDICTION_ARTIFACTS = [
@@ -146,6 +155,8 @@ def test_observation_row_advances_only_the_modal_partial_rung() -> None:
     assert "declared unit step is unstable" in notes
     assert "PR-15, PR-53, and PR-54 stay open" in notes
     assert "does not close issue" not in notes
+    assert "not authenticated observer activity or quantum-state evolution" in notes
+    assert "does not prove nonlinear trajectory convergence or select physical spacetime" in notes
     for required_boundary in (
         "nonnegative under h^2 Lambda <= 4",
         "sharp constant Lambda = 3 + sqrt(5)",

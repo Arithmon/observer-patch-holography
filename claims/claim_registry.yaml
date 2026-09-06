@@ -9321,6 +9321,140 @@
         "boundary": [],
         "rationale": "This theorem begins with a supplied complex scalar, real charge, nonnegative mass-squared and self-coupling, real unwrapped Whitney connection, exact integrated scalar-QED Lagrangian and closed-load boundary convention. Its dynamical current and Gauss propagation follow within that declared finite mathematical model. Registered physical matter-selection, Standard Model, charge-normalization, spacetime and interacting-quantum premises are not antecedents or discharged consequences of this construction."
       }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-SPATIAL-CONSISTENCY",
+      "statement": "For conforming shape-regular refinements of the same twenty-tetrahedron cone, exact edge integrals and nodal samples feed the same gauge-dressed scalar/Whitney action. On a fixed bounded broken W1,infinity-in-time W2,infinity-in-space window with compatible scalar H1 and vector Hcurl traces, the action and its complete real first variation differ from the continuum scalar-electrodynamics action by at most C_R delta, uniformly over unit-window variations. Constants are independent of refinement. Antisymmetry gives a vanishing barycentric path sum and its potential/time derivatives, yielding O(delta^2) scalar value/time error and O(delta) spatial-gradient error; Whitney electric/curl errors are O(delta). Five Lean declarations verify finite cancellation/decomposition algebra; the uniform analytic estimate is proved in the paper. Independently evaluated manufactured fields on 20,160,1280 tetrahedra test the implementation and complete directional derivative. Original smooth-potential paths and Whitney-potential paths are different constructions; H1 alone has no bounded vertex evaluation in three dimensions. This is smooth-test action consistency, not nonlinear trajectory convergence, a certified numerical error constant, quantum continuum convergence, physical geometry/time selection or observed postdiction.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "analytic_same_family_uniform_action_and_first_variation_consistency_with_finite_algebra_and_numerical_controls",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "supplied_scalar_QED_action_and_real_unwrapped_connection",
+        "exact_dressed_scalar_action_with_full_shape_derivatives",
+        "shape_regular_macroface_respecting_Whitney_refinements",
+        "bounded_broken_smooth_window_and_compatible_traces",
+        "exact_edge_nodal_sampling_and_space_time_action_integration"
+      ],
+      "imported_results": [
+        "Whitney_commuting_finite_element_interpolation",
+        "local_Taylor_and_simplex_scaling_estimates",
+        "bounded_window_polynomial_action_differentiation"
+      ],
+      "oph_specific_delta": "Controls the full nonlinear, potential-dependent scalar interpolation and its field derivative on refinements of the actual supplied cone action. The cancellation removes a possible first-order scalar-value defect and makes a common classical continuum-action comparison explicit. Finite-element approximation and Taylor estimates are standard; this is a checked same-family composition, not derivation of the continuum action or physical spacetime from OPH.",
+      "novelty_type": "same_dressed_action_uniform_spatial_consistency_with_complete_first_variation",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_SPATIAL_CONSISTENCY.tex",
+        "Lean/Screen/WhitneySpatialConsistency.lean",
+        "code/electromagnetism/whitney_spatial_consistency.py",
+        "code/electromagnetism/verify_whitney_spatial_consistency.py",
+        "code/electromagnetism/test_whitney_spatial_consistency.py",
+        "code/electromagnetism/runtime/whitney_spatial_consistency_receipt.json"
+      ],
+      "falsifier": "Compatible edge samples fail to be single valued; the Whitney curl estimate, phase cancellation, time or potential derivative misses a term; a constant depends on refinement outside the declared hypotheses; independent quadrature or directional derivatives disagree; original-field path substitution or H1 point-sampling control is accepted; action consistency is promoted to trajectory or physical continuum convergence.",
+      "scope_if_false": "The nonlinear interpolation estimate or manufactured-field implementation fails at the affected layer. Fixed-mesh classical existence, gauge reduction and frozen empirical comparisons retain their separate hypotheses.",
+      "status": "paper_uniform_Cdelta_action_and_full_first_variation_bound__5_Lean_algebra_lemmas__three_refinement_numerical_controls",
+      "claim_class": "conditional_implication",
+      "gates": [
+        728,
+        737,
+        754
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This analytic implication assumes a supplied macro-domain, shape-regular refinements, smooth sampled fields and the exact scalar-electrodynamics action. Registered physical source placement, metric, clock, matter selection and laboratory comparisons are excluded conclusions rather than consumed premises; no physical premise is discharged."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-INTERACTING-QUANTUM",
+      "statement": "For the same finite charged action with nonzero charge and nonnegative potential, the actual 68-real-coordinate kinetic metric is smooth and positive. The mean-zero real gauge action has a global smooth Coulomb slice R^30 x C^13, and eliminating its twelve scalar-potential coefficients gives the positive kinetic Schur complement on that slice. The remaining constant multiplier enforces total Gauss neutrality. Supplying hbar>0, the Riemannian volume of that metric and a Laplace-Beltrami/Friedrichs prescription yields a densely defined closable nonnegative form and a self-adjoint interacting Hamiltonian on L2 of the 56-dimensional slice. Residual U(1) invariance preserves the closed form and resolvent; its nonzero infinite-dimensional invariant subspace reduces the Hamiltonian, whose restriction generates unitary neutral-state dynamics. The paper specifies the operator domain and invariant form core. This analytic proof is not a Lean self-adjointness theorem. Independent exact simplex moments and generic finite coefficient/gauge/Schur tests support the action reduction; nonzero-potential coefficients use quadrature approximations with order-sensitivity controls. No unique quantization, essential self-adjointness, equivalence of quantization orders, executed quantum state, continuum interacting QFT or physical Born/state/clock selection is inferred.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "analytic_same_action_gauge_reduction_and_declared_neutral_Friedrichs_quantization",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "supplied_scalar_QED_action_and_real_unwrapped_connection",
+        "exact_dressed_scalar_action_with_full_shape_derivatives",
+        "autonomous_positive_energy_temporal_gauge_and_neutral_load_boundary",
+        "nonzero_charge_and_mean_zero_real_gauge_reduction",
+        "declared_Riemannian_Laplace_Beltrami_Friedrichs_quantization"
+      ],
+      "imported_results": [
+        "finite_dimensional_gauge_reduction_and_Schur_complement",
+        "closed_semibounded_form_representation_theorem",
+        "compact_group_invariant_form_reduction",
+        "spectral_unitary_evolution"
+      ],
+      "oph_specific_delta": "Uses the complete field-dependent kinetic metric of the same charged action to construct one interacting neutral Hilbert realization. It avoids treating a Coulomb principal block as the reduced metric or quotienting the residual stabilizer singularity. Gauge reduction, Friedrichs extensions and compact-group averaging are standard mathematical inputs; no fundamental quantum prescription is derived from the observer records.",
+      "novelty_type": "same_full_kinetic_metric_interacting_Hilbert_realization_with_explicit_quantization_choices",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex",
+        "paper/tex_fragments/WHITNEY_CHARGED_MATTER.tex",
+        "code/electromagnetism/whitney_interacting_quantum.py",
+        "code/electromagnetism/test_whitney_interacting_quantum.py"
+      ],
+      "falsifier": "The vertical-velocity identity, scalar normalization, Schur minimum or constant Gauss sign fails; the mean-zero action has an unaccounted stabilizer; the form is not dense/closable or its operator domain is incorrect; the residual circle does not preserve the closed form/domain; the neutral restriction is not self-adjoint; finite quadrature tests are represented as an operator-domain proof or a physical quantum realization.",
+      "scope_if_false": "The finite interacting reduction or the declared quantization fails. The free radiative Fock construction and classical action/existence theorem retain their separate domains; no empirical prediction has been promoted.",
+      "status": "analytic_positive_Schur_metric_and_Friedrichs_Hamiltonian_on_neutral_Hilbert_space__quantization_imported",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730,
+        754,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The theorem starts from the supplied finite scalar action, its real gauge representation and an explicitly chosen quantum measure, ordering, extension and hbar. Registered source-produced effects, physical instruments, Born statistics and operational clock claims are neither used nor established, so no canonical physical premise is consumed or discharged."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-CHARGED-EXECUTION",
+      "statement": "A bounded numerical execution of the same charged scalar/Maxwell action uses e=1/4, m^2=1/2, g=1/4, temporal gauge and the explicit locally charged neutral initial data on the fixed cone. Exact rotational symmetry reduces the evolution to five real configuration coordinates; the signed finite-group action makes reduced stationarity imply every full finite equation. The independent verifier reconstructs all 68 Euler-Lagrange and 13 Gauss residuals at 81 sampled times on 0<=t<=2, including the full gauge-dependent basis derivatives. It reconstructs the geometry and all sixty signed rotations from committed sources and replays the trajectory by an independently assembled RHS. The reduced action has polynomial spatial degree at most four and its unrestricted first variation at most five, enabling exact-order polynomial quadrature in the symmetry sector. Separate RK4 step comparisons provide numerical convergence evidence, with explicit underintegration and omitted-dressing controls. The receipt includes fields, charge loads and supplied clock/units metadata for reproducible readouts. These floating-point residuals and time comparisons are not interval trajectory enclosures; the trajectory has no authenticated serial observer readback, quantum-state history, spatial solution-convergence proof or physical laboratory identification.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "symmetry_lifted_full_equation_numerical_charged_trajectory_with_independent_replay",
+      "assumptions": [
+        "declared_euclidean_cone_geometry_and_Whitney_metric",
+        "supplied_scalar_QED_action_and_real_unwrapped_connection",
+        "exact_dressed_scalar_action_with_full_shape_derivatives",
+        "autonomous_positive_energy_temporal_gauge_and_neutral_load_boundary",
+        "finite_Gauss_compatible_charged_initial_data",
+        "exact_icosahedral_fixed_space_and_bounded_charged_execution"
+      ],
+      "imported_results": [
+        "finite_group_symmetric_criticality_and_invariant_ODE_subspace",
+        "exact_simplex_polynomial_quadrature",
+        "finite_dimensional_ODE_numerical_integration_and_refinement_controls"
+      ],
+      "oph_specific_delta": "Executes a nontrivial charged configuration of the same fully differentiated action while retaining independent checks in every unrestricted field direction. Exact symmetry makes the laptop reduction legitimate; the verifier detects a reduced-only stationarity claim, missing dressing force or false observer/quantum provenance. It supplies a mathematical trajectory and reusable field readouts, not a source-selected physical process.",
+      "novelty_type": "same_charged_action_symmetry_lifted_numerical_trajectory_with_all_finite_equation_checks",
+      "evidence": [
+        "paper/tex_fragments/WHITNEY_CHARGED_EXECUTION.tex",
+        "paper/tex_fragments/WHITNEY_CHARGED_MATTER.tex",
+        "code/electromagnetism/whitney_charged_dynamics.py",
+        "code/electromagnetism/verify_whitney_charged_dynamics.py",
+        "code/electromagnetism/test_whitney_charged_dynamics.py",
+        "code/electromagnetism/runtime/whitney_charged_dynamics_receipt.json"
+      ],
+      "falsifier": "The oriented rotation action or fixed-space lift fails; any full residual, Gauss equation, independent time replay or readout exceeds its declared tolerance; insufficient quadrature or omitted dressing is accepted; pinned sources or declared inputs can change without detection; solver residuals are described as certified trajectory errors or the uninstrumented classical run is promoted to a quantum/observer/physical continuum history.",
+      "scope_if_false": "The symmetric charged execution or its certificate fails; the analytic finite action/existence and conditional quantum/spatial theorems require separate assessment. Physical prediction rows are unaffected.",
+      "status": "bounded_81_sample_charged_trajectory__all_68_equations_and_13_Gauss_checks__numerical_error_controls_no_serial_custody",
+      "claim_class": "conditional_implication",
+      "gates": [
+        737,
+        754,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The executable implication assumes the supplied exact cone, scalar action, couplings, symmetric initial data, numerical time parameter and error policy. Its readouts are numerical fields rather than an inhabited physical instrument or source clock. Those physical identifications are not antecedents or discharged conclusions of the certificate."
+      }
     }
   ]
 }

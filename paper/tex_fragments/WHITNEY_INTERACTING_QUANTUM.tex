@@ -1,0 +1,226 @@
+\paragraph{A Hilbert realization of the coupled finite action.}
+The charged action also admits an interacting quantum Hamiltonian once a
+quantization prescription is supplied. The kinetic energy depends on the
+matter field and its gauge-dependent interpolation. Its reduction therefore
+uses that kinetic metric, rather than the Maxwell mass matrix alone.
+The construction retains the fixed cone, its unwrapped real edge
+coefficients, the autonomous scalar action with \(m^2,g\geq0\), and
+\(e\ne0\).
+
+Write \(y=(a,\psi)\in\mathcal Y=\mathbb R^{42}\times
+\mathbb C^{13}\), regarded as a real manifold. Let
+\(W(a)\psi=\Psi_a\), \(S(a,\psi)b=\partial_a(W(a)\psi)[b]\),
+and define
+\begin{align}
+ G_y(v,v)&=v_a^{\mathsf T}Mv_a+
+              2\|W(a)v_\psi+S(a,\psi)v_a\|_{L^2(\Omega)}^2,
+ \label{eq:whitney-interacting-metric}\\
+ V(y)&=\frac12a^{\mathsf T}Ka+
+ \|D_x\Psi_a\|_{L^2}^2+m^2\|\Psi_a\|_{L^2}^2
+                         +\frac g2\|\Psi_a\|_{L^4}^4.
+ \label{eq:whitney-interacting-potential}
+\end{align}
+The factor two in \(G\) follows from the normalization of the scalar
+kinetic term. Nodal interpolation and \(M>0\) imply that \(G\)
+is a smooth positive metric, including at \(\psi=0\).
+The potential is smooth and nonnegative.
+
+\begin{theorem}[Gauge reduction and a neutral interacting Hilbert space]
+\label{thm:whitney-interacting-quantum}
+The mean-zero real gauge group has a global smooth quotient
+\[
+ \mathcal Q=\ker(D^{\mathsf T}M)\times\mathbb C^{13}
+          \cong\mathbb R^{30}\times\mathbb C^{13}.
+\]
+Eliminating the twelve mean-zero scalar-potential coefficients from
+\eqref{eq:whitney-charged-action} defines a smooth positive metric
+\(\gamma\) on \(\mathcal Q\). With \(J_y=(0,i\psi)\)
+and \(c\) the remaining constant scalar potential, the reduced action is
+\begin{equation}
+ L_{\mathrm{red}}(y,\dot y,c)
+ =\frac12\gamma_y(\dot y+ecJ_y,\dot y+ecJ_y)-V(y).
+ \label{eq:whitney-interacting-reduced-action}
+\end{equation}
+Its Hamiltonian at \(c=0\) is
+\(H_{\mathrm{cl}}(y,p)=\tfrac12\gamma_y^{-1}(p,p)+V(y)\),
+with the remaining Gauss constraint \(p(J_y)=0\).
+
+Supply \(\hbar>0\), the Riemannian volume \(d\mu=d\mathrm{vol}_\gamma\),
+and Laplace--Beltrami quantization with the Friedrichs realization. Then
+\(\mathcal H=L^2(\mathcal Q,d\mu)\) has a nonnegative self-adjoint
+Hamiltonian \(\widehat H\), extending
+\(-\hbar^2\Delta_\gamma/2+V\) on \(C_c^\infty(\mathcal Q)\).
+The closed, nonzero subspace
+\begin{equation}
+ \mathcal H_0=\{f\in\mathcal H:
+ f(a,e^{i\alpha}\psi)=f(a,\psi)\text{ in }L^2
+                    \text{ for every }\alpha\in\mathbb R\}
+ \label{eq:whitney-interacting-neutral-hilbert}
+\end{equation}
+reduces \(\widehat H\). Its restriction \(\widehat H_0\) is
+self-adjoint on \(\mathcal D(\widehat H)\cap\mathcal H_0\)
+and generates the strongly continuous unitary evolution
+\(\exp(-it\widehat H_0/\hbar)\). Thus a single interacting finite
+action supplies both a classical constrained Hamiltonian and, under the
+declared prescription, a compatible neutral quantum state space.
+\end{theorem}
+
+\begin{proof}
+Let \(\mathfrak g_0=\{\xi\in\mathbb R^{13}:\sum_i\xi_i=0\}\).
+Its action is \((a,\psi)\mapsto(a+D\xi,e^{ie\xi}\psi)\).
+Because the incidence matrix has kernel the constants,
+\(D^{\mathsf T}MD\) is positive on \(\mathfrak g_0\).
+Every orbit therefore meets \(\mathcal Q\) exactly once: solve
+\(D^{\mathsf T}MD\xi=-D^{\mathsf T}Ma\) in
+\(\mathfrak g_0\). This solution depends smoothly on \(a\).
+Together with the inverse gauge action it gives a global product
+description \(\mathcal Y\cong\mathcal Q\times\mathfrak g_0\),
+so no singular quotient is needed for these twelve gauge directions.
+
+For a gauge velocity define
+\(R_y\xi=(D\xi,ie\xi\mathbin{\odot}\psi)\).
+Differentiating the exact interpolation gauge identity gives
+\begin{equation}
+ S(a,\psi)D\xi+W(a)(ie\xi\mathbin{\odot}\psi)
+                 =ie(W_0\xi)\Psi_a.
+ \label{eq:whitney-interacting-vertical-identity}
+\end{equation}
+Consequently the full Lagrangian is exactly
+\(L=G_y(\dot y+R_y\phi,\dot y+R_y\phi)/2-V(y)\).
+This identity retains the derivative of the dressing; discarding it
+would change both the scalar-potential equation and the reduced metric.
+Time-independent gauge transformations are isometries of \(G\) and
+preserve \(V\), by the same pointwise unit-phase covariance.
+
+Choose any basis of \(\mathfrak g_0\). At \(y\in\mathcal Q\)
+let \(R\) denote its vertical matrix and put
+\(I_y=R^{\mathsf T}G_yR\). The matrix \(I_y\) is positive:
+the Maxwell contribution gives
+\(\xi^{\mathsf T}D^{\mathsf T}MD\xi>0\) for nonzero
+\(\xi\in\mathfrak g_0\).
+For \(w\in T_y\mathcal Q\), set
+\begin{align*}
+ \eta_*(w)&=-I_y^{-1}R^{\mathsf T}G_yw,\\
+ \gamma_y(w,w)&=G_y(w,w)-
+ (R^{\mathsf T}G_yw)^{\mathsf T}I_y^{-1}(R^{\mathsf T}G_yw).
+\end{align*}
+Completing the square yields the exact identity
+\[
+ G_y(w+R\eta,w+R\eta)
+ =\gamma_y(w,w)+(\eta-\eta_*)^{\mathsf T}I_y(\eta-\eta_*).
+\]
+Thus \(\gamma\) is independent of the chosen vertical basis and
+smooth. If \(\gamma_y(w,w)=0\), positivity of \(G\) gives
+\(w=-R\eta_*\). Since \(w\) is tangent to the Coulomb slice,
+\(D^{\mathsf T}MD\eta_*=0\), so \(\eta_*=0\) and
+\(w=0\). This proves positivity without a global uniform lower bound.
+
+Write \(\phi=\eta+c\mathbf1\), with \(\eta\in\mathfrak g_0\).
+The twelve \(\eta\) equations are precisely the preceding minimization,
+with \(w=\dot y+ecJ_y\). Substitution proves
+\eqref{eq:whitney-interacting-reduced-action}. Elimination is variationally
+valid because the eliminated derivative \(\partial L/\partial\eta\)
+vanishes identically at its unique solution. The Legendre transform gives
+\[
+ p=\gamma_y(\dot y+ecJ_y,\,\cdot\,),\qquad
+ H(y,p,c)=\frac12\gamma_y^{-1}(p,p)+V(y)-ec\,p(J_y).
+\]
+Variation of \(c\), with \(e\ne0\), gives the remaining constraint.
+It is the constant component of the original thirteen Gauss equations,
+not an extra neutrality assumption added after quantization.
+
+For the analytic construction use the Hermitian form, initially on
+\(C_c^\infty(\mathcal Q)\),
+\begin{equation}
+ q(f,k)=\frac{\hbar^2}{2}\int_{\mathcal Q}
+       \gamma^{-1}(d\overline f,dk)\,d\mu
+       +\int_{\mathcal Q}V\overline f k\,d\mu.
+ \label{eq:whitney-interacting-quantum-form}
+\end{equation}
+Its domain is dense because \(\mu\) has a smooth positive density
+in the global Euclidean coordinates. The form is nonnegative and
+closable. Indeed, if \(f_n\to0\) in \(L^2\) and \(f_n\)
+is form-Cauchy, its differentials and \(\sqrt V f_n\) have
+respective \(L^2\) limits. Integration against compactly supported
+smooth vector fields, using the metric divergence, shows that the first
+limit is zero. Local boundedness of \(V\) shows that the second limit
+is zero on every compact set and hence globally. Therefore
+\(q(f_n,f_n)\to0\), proving closability.
+
+Let \(\overline q\) be its closure. The closed-form representation
+theorem gives a unique nonnegative self-adjoint operator for this
+particular closed form; this is the Friedrichs realization of the
+displayed differential operator. Explicitly, with the inner product
+linear in its second argument,
+\[
+ \mathcal D(\widehat H)=\{f\in\mathcal D(\overline q):
+ \exists b\in\mathcal H\ \forall k\in\mathcal D(\overline q),\
+       \overline q(k,f)=\langle k,b\rangle\},\qquad
+ \widehat Hf=b.
+\]
+The representation theorem and its symmetry version are standard
+functional analysis \cite{IbortLledoPerezPardo2014}; the reduction and
+coefficient hypotheses needed here have been verified above. This
+argument requires neither metric completeness nor an essential
+self-adjointness assertion for the initial differential operator.
+
+The residual circle \(T_\alpha(a,\psi)=(a,e^{i\alpha}\psi)\)
+preserves the slice, its vertical spaces, \(G\), and \(V\). It
+therefore preserves \(\gamma\), \(\mu\), and \(q\).
+The pullbacks \(\mathcal U_\alpha f=f\circ T_{-\alpha}\)
+are unitary and strongly continuous, first on compactly supported smooth
+functions by dominated convergence and then on \(\mathcal H\) by
+density. They preserve the closed form and its domain. Uniqueness in
+the displayed operator-domain characterization gives
+\(\mathcal U_\alpha\widehat H=\widehat H\mathcal U_\alpha\)
+with domain preservation. Their bounded group average
+\(P_0=(2\pi)^{-1}\int_0^{2\pi}\mathcal U_\alpha\,d\alpha\)
+is the orthogonal projection onto \(\mathcal H_0\) and commutes
+with the resolvent of \(\widehat H\). Hence this subspace reduces
+the operator, and its restriction is self-adjoint. Smooth compactly
+supported functions of \(a\) and \(\sum_i|\psi_i|^2\)
+give nonzero invariant vectors; the subspace is infinite-dimensional.
+The space \(P_0C_c^\infty(\mathcal Q)\) is a dense form core
+for the restriction: averaging preserves smoothness, its support lies
+in the compact circle-saturation of the original support, and averaging
+is contractive in the closed-form norm. Apply \(P_0\) to a form-core
+approximating sequence for any invariant form-domain vector. This asserts
+a form core, not an operator core for the restricted Hamiltonian.
+Spectral calculus supplies the stated strongly continuous unitary group.
+For initial states in \(\mathcal D(\widehat H_0)\) it solves
+\(i\hbar\partial_t f=\widehat H_0f\) in the strong sense; for
+every Hilbert state it supplies norm-preserving evolution.
+\end{proof}
+
+With the convention
+\(\mathcal U_{es}=\exp(-is\widehat Q/\hbar)\), the
+self-adjoint charge generator acts
+on compactly supported smooth functions as
+\[
+ \widehat Q=-i\hbar e\sum_i
+       \left(u_i\frac{\partial}{\partial v_i}
+                  -v_i\frac{\partial}{\partial u_i}\right),
+ \qquad \psi_i=u_i+iv_i.
+\]
+Thus \(\mathcal H_0=\ker\widehat Q\) expresses the quantum
+constant Gauss constraint. It allows matter amplitudes and neutral
+correlations; it does not freeze the scalar field at zero.
+The point \(\psi=0\), where the circle has a stabilizer, remains
+an ordinary point of \(\mathcal Q\). Taking circle-invariant Hilbert
+vectors avoids imposing a smooth structure on a singular full orbit space.
+
+The metric coefficients and their Schur reduction are approximated by
+positive element quadrature in
+\path{code/electromagnetism/whitney_interacting_quantum.py}; independent
+tests check the actual cone, gauge covariance, scalar normalization,
+Gauss elimination, and the nondegenerate zero-matter limit. These finite
+checks compare exact simplex moments at \(a=0\) and quadrature orders
+four, five and six at a fixed nonzero configuration. The latter comparison
+measures quadrature sensitivity, not a certified integration error. The
+tests do not prove closability or self-adjointness; those are the analytic
+arguments above. The quantum prescription chooses a measure, operator
+ordering, extension and \(\hbar\). No equivalence with quantization
+before reduction, unique quantization, quantum trajectory computation,
+continuum interacting field theory, physical quantum state, or Born-rule
+selection follows. The established attachment is to the same finite
+charged action and its full kinetic metric.

@@ -3,12 +3,12 @@
 
 The ledger is a deterministic aggregator.  Numeric values and measured
 references are read mechanically from their parent artifacts.  Structural rows are
-derived from validated structured parents, with any direct algebraic
+derived from analytic paper proofs and validated finite evidence, with any direct algebraic
 corollary identified as such.  A missing or inconsistent parent is a hard
 failure, not a silently absent row.
 
 Section one records the forced-structure layer: machine-checked finite
-theorems and executable certificates that precede or constrain numeric lanes,
+theorems, analytic paper proofs and executable certificates that precede or constrain numeric lanes,
 including the icosahedral gauge packet and generic observer-law boundaries.
 Lean-backed rows record module paths and exact declaration names; executable
 rows record their structured artifacts.  The builder rejects a missing
@@ -85,6 +85,7 @@ LEAN_RECEIPTS = {
     "WhitneyMaxwellDynamics": LEAN_SCREEN / "WhitneyMaxwellDynamics.lean",
     "WhitneyQuantumBridge": LEAN_SCREEN / "WhitneyQuantumBridge.lean",
     "WhitneyChargedMatter": LEAN_SCREEN / "WhitneyChargedMatter.lean",
+    "WhitneySpatialConsistency": LEAN_SCREEN / "WhitneySpatialConsistency.lean",
     "A2HolonomyBridge": LEAN_SCREEN / "A2HolonomyBridge.lean",
     "A5OPH": LEAN_SCREEN / "A5OPH.lean",
     "A5CharacterField": LEAN_SCREEN / "A5CharacterField.lean",
@@ -4660,7 +4661,7 @@ def _whitney_dynamics_rows() -> list[dict[str, Any]]:
             "interpolate_vertex", "interpolate_face_trace"),
          "Real Whitney edge integrals dress nodal complex scalar fields by straight-segment U(1) phases, giving exact nodal interpolation, gauge covariance and matching face traces. Restriction of a supplied nonnegative-potential scalar-QED action to these fields and the same volume Maxwell variables gives a joint gauge-invariant action. The paper proves its Noether/Gauss identity, positive temporal-gauge velocity Hessian and global finite-dimensional classical evolution, and constructs nonzero locally charged but globally neutral exact initial data.",
          "exact finite interpolation gauge algebra; analytic coupled-action and global-existence proof; no observed postdiction",
-         "Supplied scalar species, charge, mass, nonnegative quartic coefficient, Euclidean geometry, time and exact pulled-back scalar-QED Lagrangian. Real unwrapped edge integrals are needed. Differentiate the gauge-dependent scalar basis in all field variations; a naive projected scalar current omits terms. All thirteen scalar variations require total neutrality in the declared boundary convention. No executed charged-matter episode, source-selected matter content, spatial error estimate, interacting quantum completion or Standard Model identification is supplied.",
+         "Supplied scalar species, charge, mass, nonnegative quartic coefficient, Euclidean geometry, time and exact pulled-back scalar-QED Lagrangian. Real unwrapped edge integrals are needed. Differentiate the gauge-dependent scalar basis in all field variations; a naive projected scalar current omits terms. All thirteen scalar variations require total neutrality in the declared boundary convention. This algebra/global-existence result alone supplies no executed charged-matter episode, spatial error estimate or interacting quantum completion; those distinct constructions have separate rows. No source-selected matter content or Standard Model identification is supplied.",
          "WHITNEY_CHARGED_MATTER.tex"),
     ]
     rows = []
@@ -4685,6 +4686,106 @@ def _whitney_dynamics_rows() -> list[dict[str, Any]]:
                 "verify_whitney_maxwell_dynamics.py", "test_whitney_maxwell_dynamics.py")]
         if name == "whitney_charged_matter":
             row["artifact_refs"].append("code/electromagnetism/test_whitney_charged_matter.py")
+        rows.append(row)
+    return rows
+
+
+def _verify_whitney_coupled_parent(stem: str) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Load and independently replay a current parent on every invocation."""
+    if stem not in {"spatial_consistency", "charged_dynamics"}:
+        raise SystemExit("unknown coupled Whitney evidence parent")
+    path = CODE / "electromagnetism" / f"verify_whitney_{stem}.py"
+    spec = importlib.util.spec_from_file_location(f"whitney_{stem}_ledger_verifier", path)
+    if spec is None or spec.loader is None:
+        raise SystemExit(f"missing independent Whitney {stem} verifier")
+    verifier = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(verifier)
+    receipt = verifier.load()
+    return receipt, verifier.verify(receipt)
+
+
+def _whitney_coupled_rows() -> list[dict[str, Any]]:
+    """Controlled action consistency, finite quantization and classical execution.
+
+    The analytic theorems remain paper proofs. Numeric parents are replayed
+    freshly, but only their stable categorical/count fields enter this ledger.
+    No floating-point replay residual becomes a platform-dependent projection.
+    """
+    spatial_receipt, spatial_verified = _verify_whitney_coupled_parent("spatial_consistency")
+    charged_receipt, charged_verified = _verify_whitney_coupled_parent("charged_dynamics")
+    for key in ("continuum_trajectory_claimed", "observer_history_claimed", "uniform_bound_certified_by_numerics"):
+        if spatial_verified[key] is not False:
+            raise SystemExit("coupled Whitney spatial evidence cannot promote " + key)
+    if charged_verified["accepted"] is not True:
+        raise SystemExit("coupled Whitney charged execution was not accepted")
+    for key in ("observer_history", "quantum_state", "physical_continuum"):
+        if charged_verified[key] is not False:
+            raise SystemExit("coupled Whitney execution cannot promote " + key)
+    spatial_keys = (
+        "scope", "refinement_levels", "tetrahedra", "vertices",
+        "finite_algebra_lean_declarations", "independent_derivative_stencil_points",
+        "continuum_trajectory_claimed", "observer_history_claimed", "uniform_bound_certified_by_numerics",
+    )
+    charged_keys = (
+        "accepted", "samples", "full_equations_per_sample", "gauss_equations_per_sample",
+        "symmetry", "trajectory_error_status", "observer_history", "quantum_state", "physical_continuum",
+    )
+    specs = (
+        ("whitney_spatial_consistency", "WHITNEY_SPATIAL_CONSISTENCY.tex", "thm:whitney-spatial-consistency",
+         "On conforming shape-regular refinements of the same cone, the supplied dressed scalar/Whitney action and its full real first variation approximate the continuum scalar-electrodynamics action at O(delta), uniformly on bounded piecewise W^{1,infinity}_t W^{2,infinity}_x windows with compatible traces. The analytic proof controls the potential-dependent scalar interpolation and all dressing derivatives. Five finite Lean identities establish cancellation/error algebra; a manufactured-field refinement packet independently checks the implementation on three meshes.",
+         "analytic smooth-window action/first-variation consistency; finite Lean algebra and numerical refinement checks; no observed postdiction",
+         "Supplied geometry, smooth bounded fields, conforming shape-regular refinements, action time parameter and scalar-electrodynamics density. The uniform estimate is an analytic paper theorem, not a Lean convergence theorem or a bound certified by finite samples. Exact edge integration and the Whitney interior-path definition are required. No nonlinear trajectory convergence, arbitrary-H1 nodal estimate, observer source selection, calibrated physical clock or empirical comparison is established."),
+        ("whitney_interacting_quantum", "WHITNEY_INTERACTING_QUANTUM.tex", "thm:whitney-interacting-quantum",
+         "For the same interacting finite charged action with nonzero charge, the actual positive kinetic metric gives a smooth Schur metric on the global mean-zero-gauge Coulomb slice R^30 x C^13. Declared Laplace--Beltrami/Friedrichs quantization yields a nonnegative self-adjoint Hamiltonian on L2 of that slice with its Riemannian volume. The residual U(1)-invariant subspace is nonzero and reduces the Hamiltonian, providing neutral unitary interacting evolution and a dense invariant form core.",
+         "analytic gauge-reduction, closed-form and self-adjoint-domain proof; numerical finite-metric controls; no observed postdiction",
+         "Supplied cone, scalar species/action, nonzero charge, nonnegative mass-squared/quartic coupling, hbar, quantization measure, ordering and Friedrichs realization. The Schur complement uses the full coupled kinetic metric, not only the Maxwell block. The analytic proof is not formalized in Lean and does not assert essential self-adjointness, unique quantization, equivalence to quantization before reduction, continuum interacting QFT, a computed quantum-state history, physical Born statistics or laboratory identification."),
+        ("whitney_charged_execution", "WHITNEY_CHARGED_EXECUTION.tex", "prop:whitney-charged-symmetric-lift",
+         "A five-real-coordinate icosahedrally invariant sector of the same charged action evolves from the nonzero neutral initial data with all 68 full temporal-gauge Euler equations and all 13 Gauss equations checked at 81 samples. The analytic finite-group argument lifts the restricted equations to the full action. The independent verifier reconstructs unrestricted element Jacobians, re-integrates the path and RK4 controls, verifies degree-five quadrature, and rejects omitted-dressing and underintegration controls. Stored classical field readouts include electric cochains, matter fields and local charge.",
+         "analytic full variational symmetry lift and numerical charged trajectory with independent replay; no observed postdiction",
+         "Supplied dimensionless cone, scalar action, e=1/4, m^2=1/2, g=1/4, temporal gauge, initial data and action parameter on [0,2]. Exact-real symmetry and polynomial quadrature arguments are separate from floating-point samples. Sample residuals, independent integration and fixed-step comparisons do not enclose trajectory error rigorously. The trajectory occupies the fixed five-coordinate sector, with zero magnetic field but nonzero electric interaction and matter motion. No authenticated observer execution, actual quantum state, spatial continuum trajectory limit, physical clock or measured postdiction is supplied."),
+    )
+    rows = []
+    for name, fragment, label, statement, match, boundary in specs:
+        paper = "paper/tex_fragments/" + fragment
+        path = REPO / paper
+        if not path.is_file() or "\\label{" + label + "}" not in path.read_text(encoding="utf-8"):
+            raise SystemExit("coupled Whitney analytic theorem missing: " + paper + "#" + label)
+        row = {
+            "id": name, "statement": statement,
+            "observed_counterpart": "Mathematical classical/quantum field structures; no observed data",
+            "match": match, "physical_comparison_status": "NOT_EVALUABLE",
+            "observed_postdiction": False, "continuum_convergence_established": False,
+            "spatial_action_consistency": name == "whitney_spatial_consistency",
+            "analytic_paper_theorem": {"source": paper, "label": label},
+            "lean_declarations": {}, "lean_receipts": [],
+            "artifact_refs": ["paper/observers_are_all_you_need.tex", paper],
+            "hypothesis_boundary": boundary,
+            "paper_ref": "observers synthesis, " + name.replace("_", " "),
+        }
+        if name == "whitney_spatial_consistency":
+            declarations = ("weighted_antisymmetric_cancellation", "weighted_path_phase_zero",
+                            "polarized_cancellation", "centered_dressing_error", "centered_potential_variation")
+            row.update({
+                "lean_declarations": {"WhitneySpatialConsistency": list(declarations)},
+                "lean_receipts": _lean_receipt("WhitneySpatialConsistency", declarations={"WhitneySpatialConsistency": declarations}),
+                "lean_scope": "finite cancellation and error-decomposition algebra only; no formal spatial convergence theorem",
+                "certificate_scope": spatial_receipt["scope"],
+                "independent_verifier_result": {key: spatial_verified[key] for key in spatial_keys},
+            })
+            artifacts = ("runtime/whitney_spatial_consistency_receipt.json", "whitney_spatial_consistency.py",
+                         "verify_whitney_spatial_consistency.py", "test_whitney_spatial_consistency.py")
+        elif name == "whitney_interacting_quantum":
+            row.update({"hilbert_space_constructed": True, "computed_quantum_state_history": False,
+                        "analytic_proof_formalized_in_lean": False})
+            artifacts = ("whitney_interacting_quantum.py", "test_whitney_interacting_quantum.py")
+        else:
+            row.update({"certificate_scope": charged_receipt["scope"],
+                        "independent_verifier_result": {key: charged_verified[key] for key in charged_keys},
+                        "rigorous_trajectory_error_enclosure": False,
+                        "authenticated_observer_history": False, "computed_quantum_state_history": False})
+            artifacts = ("runtime/whitney_charged_dynamics_receipt.json", "whitney_charged_dynamics.py",
+                         "verify_whitney_charged_dynamics.py", "test_whitney_charged_dynamics.py")
+        row["artifact_refs"].extend("code/electromagnetism/" + artifact for artifact in artifacts)
         rows.append(row)
     return rows
 
@@ -4757,6 +4858,7 @@ def build(
     sections["forced_structure"].append(_serial_maxwell_readout_row())
     sections["forced_structure"].append(_cone_whitney_bridge_row())
     sections["forced_structure"].extend(_whitney_dynamics_rows())
+    sections["forced_structure"].extend(_whitney_coupled_rows())
     result = {
         "artifact": "oph_postdiction_ledger",
         "generator": "code/particles/scripts/build_postdiction_ledger.py",
@@ -4771,8 +4873,8 @@ def build(
         },
         "aggregation_policy": (
             "numeric values and measured references are read mechanically from cited "
-            "parents; structural rows are derived from validated Lean "
-            "declarations, structured parents, or both, and identify direct "
+            "parents; structural rows distinguish analytic paper proofs, validated Lean "
+            "declarations and structured parents, and identify direct "
             "algebraic corollaries explicitly; a missing or inconsistent "
             "receipt aborts the build"
         ),
@@ -4808,7 +4910,7 @@ def _render_md(ledger: dict[str, Any]) -> str:
     add("")
     add("Numeric values and measured references on this page are read mechanically from "
         "the cited parent artifacts. Structural rows are derived from validated "
-        "Lean declarations, structured parents, or both, and direct algebraic "
+        "Lean declarations, analytic paper proofs, structured parents, or their combination, and direct algebraic "
         "corollaries are identified. "
         "The ledger promotes nothing and changes no solve path. Interval rows "
         "report containment of the compare-only witness; conditional rows carry "
@@ -4822,10 +4924,10 @@ def _render_md(ledger: dict[str, Any]) -> str:
     add("")
     add("## Forced structure")
     add("")
-    add("These finite structural results precede or constrain numeric lanes. "
+    add("These structural results precede or constrain numeric lanes. "
         "They include the icosahedral gauge packet and generic observer-law "
-        "boundaries. Each row is checked in Lean, by a structured executable "
-        "artifact, or by both, and records its own classical inputs and missing "
+        "boundaries. Each row distinguishes analytic paper proofs, finite Lean results "
+        "and structured executable checks, and records its own classical inputs and missing "
         "physical attachments.")
     add("")
     add("| Result | Observed counterpart | Match | Receipts |")

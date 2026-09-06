@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from copy import deepcopy
 import json
 from pathlib import Path
 
@@ -13,7 +14,9 @@ import build_postdiction_ledger as ledger
 @pytest.fixture(scope="module")
 def result(tmp_path_factory):
     tmp = tmp_path_factory.mktemp("ledger")
-    return ledger.build(tmp / "postdiction_ledger.json", tmp / "POSTDICTION_LEDGER.md")
+    result = ledger.build(tmp / "postdiction_ledger.json", tmp / "POSTDICTION_LEDGER.md")
+    assert (tmp / "POSTDICTION_LEDGER.md").read_text(encoding="utf-8") == ledger._render_md(result)
+    return result
 
 
 @pytest.fixture(scope="module")
@@ -21,6 +24,14 @@ def whitney_rows():
     rows = ledger._whitney_dynamics_rows()
     assert len(rows) == 3
     return {row["id"]: row for row in rows}
+
+
+@pytest.fixture(scope="module")
+def coupled_whitney_rows(result):
+    names = {"whitney_spatial_consistency", "whitney_interacting_quantum", "whitney_charged_execution"}
+    rows = {row["id"]: row for row in result["sections"]["forced_structure"] if row["id"] in names}
+    assert set(rows) == names
+    return rows
 
 
 def test_guards_are_compare_only(result):
@@ -582,10 +593,10 @@ def test_fail_closed_on_missing_parent(tmp_path, monkeypatch):
         ledger.build(tmp_path / "out.json", None)
 
 
-def test_markdown_rendered(tmp_path):
-    md = tmp_path / "ledger.md"
-    ledger.build(tmp_path / "out.json", md)
-    text = md.read_text(encoding="utf-8")
+def test_markdown_rendered(result):
+    # The module fixture verifies the written file against this renderer;
+    # prose assertions do not require another full numerical parent replay.
+    text = ledger._render_md(result)
     assert "# Postdiction Ledger" in text
     assert "## Forced structure" in text
     assert "## Quantum carrier gate" in text
@@ -594,7 +605,7 @@ def test_markdown_rendered(tmp_path):
     assert "Certified same-scheme anchor gap" not in text
     assert "`code/particles/scripts/build_postdiction_ledger.py`" in text
     assert "`code/particles/runs/status/postdiction_ledger.json`" in text
-    assert "Each row is checked in Lean, by a structured executable artifact" in text
+    assert "Each row distinguishes analytic paper proofs, finite Lean results" in text
     assert "Every step is machine checked in the Lean workspace" not in text
     assert "Scientific owner: #736" in text
     assert "Historical context:" not in text
@@ -808,7 +819,7 @@ def test_whitney_matter_keeps_gauge_algebra_distinct_from_analytic_evolution(whi
         "Real unwrapped edge integrals are needed",
         "Differentiate the gauge-dependent scalar basis in all field variations",
         "All thirteen scalar variations require total neutrality",
-        "No executed charged-matter episode",
+        "This algebra/global-existence result alone supplies no executed charged-matter episode",
         "source-selected matter content",
         "interacting quantum completion",
     ):
@@ -852,3 +863,140 @@ def test_whitney_builder_rejects_altered_dynamics_provider(monkeypatch):
     ):
         ledger._whitney_dynamics_rows()
     assert seen == [provider]
+
+
+def test_coupled_whitney_rows_separate_analytic_numeric_and_empirical_scopes(coupled_whitney_rows):
+    rows = coupled_whitney_rows
+    for row in rows.values():
+        assert row["physical_comparison_status"] == "NOT_EVALUABLE"
+        assert row["observed_postdiction"] is False
+        assert row["continuum_convergence_established"] is False
+        assert "no observed postdiction" in row["match"]
+        assert "no observed data" in row["observed_counterpart"]
+        assert not {"measured", "delta_over_sigma"} & row.keys()
+        theorem = row["analytic_paper_theorem"]
+        assert "\\label{"+theorem["label"]+"}" in (ledger.REPO/theorem["source"]).read_text(encoding="utf-8")
+    spatial = rows["whitney_spatial_consistency"]
+    assert spatial["spatial_action_consistency"] is True
+    assert "O(delta)" in spatial["statement"]
+    assert "no formal spatial convergence theorem" in spatial["lean_scope"]
+    assert len(spatial["lean_declarations"]["WhitneySpatialConsistency"]) == 5
+    assert spatial["independent_verifier_result"]["tetrahedra"] == [20, 160, 1280]
+    assert spatial["independent_verifier_result"]["uniform_bound_certified_by_numerics"] is False
+    quantum = rows["whitney_interacting_quantum"]
+    assert quantum["hilbert_space_constructed"] is True
+    assert quantum["computed_quantum_state_history"] is False
+    assert quantum["analytic_proof_formalized_in_lean"] is False
+    assert quantum["lean_receipts"] == [] and quantum["lean_declarations"] == {}
+    assert "independent_verifier_result" not in quantum
+    for text in ("actual positive kinetic metric", "Schur metric", "R^30 x C^13", "Friedrichs", "form core"):
+        assert text in quantum["statement"]
+    for text in ("hbar", "quantization measure", "ordering", "not formalized in Lean", "unique quantization"):
+        assert text in quantum["hypothesis_boundary"]
+    charged = rows["whitney_charged_execution"]
+    assert charged["rigorous_trajectory_error_enclosure"] is False
+    assert charged["authenticated_observer_history"] is False
+    assert charged["computed_quantum_state_history"] is False
+    assert charged["lean_receipts"] == [] and charged["lean_declarations"] == {}
+    summary = charged["independent_verifier_result"]
+    assert summary["accepted"] is True and summary["samples"] == 81
+    assert summary["full_equations_per_sample"] == 68 and summary["gauss_equations_per_sample"] == 13
+    assert summary["symmetry"]["real_configuration_fixed_dimension"] == 5
+    assert all(summary[key] is False for key in ("observer_history", "quantum_state", "physical_continuum"))
+
+
+def test_coupled_projection_is_stable_when_replayed_float_diagnostics_change(coupled_whitney_rows, monkeypatch):
+    rows = coupled_whitney_rows
+    by_parent = {"spatial_consistency": rows["whitney_spatial_consistency"],
+                 "charged_dynamics": rows["whitney_charged_execution"]}
+    calls = []
+    def replay(stem):
+        calls.append(stem)
+        row = by_parent[stem]
+        summary = deepcopy(row["independent_verifier_result"])
+        # These are deliberately new values, not patched expected row bytes.
+        # A replay checks its own tolerances; the ledger must not serialize
+        # its platform-dependent recomputed diagnostic floats.
+        summary.update({"numeric_diagnostics": [{"action": 0.123456789}],
+                        "full_euler_max_abs": 9.1e-14, "energy_drift": 1.1e-13,
+                        "rk4_endpoint_errors": [6.1e-6, 4.1e-7, 2.1e-8]})
+        return {"scope": row["certificate_scope"]}, summary
+    monkeypatch.setattr(ledger, "_verify_whitney_coupled_parent", replay)
+    actual = {row["id"]: row for row in ledger._whitney_coupled_rows()}
+    assert calls == ["spatial_consistency", "charged_dynamics"]
+    assert actual == rows
+
+
+@pytest.mark.parametrize("parent,key,value", [
+    ("spatial_consistency", "uniform_bound_certified_by_numerics", True),
+    ("spatial_consistency", "continuum_trajectory_claimed", True),
+    ("spatial_consistency", "observer_history_claimed", True),
+    ("charged_dynamics", "accepted", False),
+    ("charged_dynamics", "quantum_state", True),
+    ("charged_dynamics", "observer_history", True),
+    ("charged_dynamics", "physical_continuum", True),
+])
+def test_coupled_builder_rejects_promotion_flags_even_from_provider(
+    coupled_whitney_rows, monkeypatch, parent, key, value
+):
+    by_parent = {"spatial_consistency": coupled_whitney_rows["whitney_spatial_consistency"],
+                 "charged_dynamics": coupled_whitney_rows["whitney_charged_execution"]}
+    def replay(stem):
+        row = by_parent[stem]
+        summary = deepcopy(row["independent_verifier_result"])
+        if stem == parent:
+            summary[key] = value
+        return {"scope": row["certificate_scope"]}, summary
+    monkeypatch.setattr(ledger, "_verify_whitney_coupled_parent", replay)
+    with pytest.raises(SystemExit, match="coupled Whitney"):
+        ledger._whitney_coupled_rows()
+
+
+@pytest.mark.parametrize("parent,provider", [
+    ("spatial_consistency", "Lean/Screen/WhitneySpatialConsistency.lean"),
+    ("charged_dynamics", "code/electromagnetism/verify_whitney_charged_dynamics.py"),
+])
+def test_coupled_fresh_parent_replay_rejects_changed_provider_bytes(monkeypatch, parent, provider):
+    original = Path.read_bytes
+    path = ledger.REPO/provider
+    seen = []
+    def altered(target):
+        raw = original(target)
+        if target == path:
+            seen.append(target)
+            return raw+b"\n# independent changed-provider mutation\n"
+        return raw
+    monkeypatch.setattr(Path, "read_bytes", altered)
+    with pytest.raises(ValueError, match="source pin"):
+        ledger._verify_whitney_coupled_parent(parent)
+    assert seen == [path]
+
+
+def test_coupled_named_spatial_algebra_cannot_be_replaced_by_empty_provider(
+    coupled_whitney_rows, tmp_path, monkeypatch
+):
+    row = coupled_whitney_rows["whitney_spatial_consistency"]
+    declarations = row["lean_declarations"]["WhitneySpatialConsistency"]
+    empty = tmp_path/"WhitneySpatialConsistency.lean"
+    empty.write_text("-- no finite algebra declarations\n", encoding="utf-8")
+    monkeypatch.setitem(ledger.LEAN_RECEIPTS, "WhitneySpatialConsistency", empty)
+    with pytest.raises(SystemExit, match="Lean declaration missing: WhitneySpatialConsistency"):
+        ledger._lean_receipt("WhitneySpatialConsistency", declarations={"WhitneySpatialConsistency": tuple(declarations)})
+
+
+def test_coupled_missing_analytic_quantum_theorem_is_not_silently_promoted(
+    coupled_whitney_rows, monkeypatch
+):
+    by_parent = {"spatial_consistency": coupled_whitney_rows["whitney_spatial_consistency"],
+                 "charged_dynamics": coupled_whitney_rows["whitney_charged_execution"]}
+    def replay(stem):
+        row = by_parent[stem]
+        return {"scope": row["certificate_scope"]}, deepcopy(row["independent_verifier_result"])
+    monkeypatch.setattr(ledger, "_verify_whitney_coupled_parent", replay)
+    original = Path.read_text
+    quantum_path = ledger.REPO/"paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex"
+    def empty(path, *args, **kwargs):
+        return "No analytic theorem." if path == quantum_path else original(path, *args, **kwargs)
+    monkeypatch.setattr(Path, "read_text", empty)
+    with pytest.raises(SystemExit, match="analytic theorem missing"):
+        ledger._whitney_coupled_rows()

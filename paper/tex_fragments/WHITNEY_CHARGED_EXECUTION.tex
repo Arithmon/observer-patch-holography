@@ -1,0 +1,112 @@
+\paragraph{An executed charged solution of the same finite action.}
+The preceding initial data lie in a useful invariant sector of
+\eqref{eq:whitney-charged-action}. Let every outward radial edge have
+coefficient \(\alpha\), every boundary edge have coefficient zero, and
+let the scalar coefficient be \(c\in\mathbb C\) at the centre and
+\(b\in\mathbb C\) at all boundary vertices. This sector has five real
+configuration coordinates. On each tetrahedron write \(s=\lambda_0\),
+\(C=e^{ie\alpha}c\), and \(U=C-b\). Then
+\begin{align}
+ A_h&=-\alpha\nabla s,&
+ \Psi_a&=e^{-ie\alpha s}\bigl(sC+(1-s)b\bigr),\nonumber\\
+ D_x\Psi_a&=e^{-ie\alpha s}U\nabla s,&
+ \partial_t\Psi_a&=e^{-ie\alpha s}\left[
+ s e^{ie\alpha}\dot c+(1-s)\dot b
+       +ie\dot\alpha s(1-s)U\right].
+ \label{eq:whitney-charged-symmetric-fields}
+\end{align}
+The last term retains the time derivative of the scalar basis.
+Although \(A_h\) is a spatial gradient and the magnetic field vanishes,
+the electric field \(\dot\alpha\nabla s\), local charge and matter
+motion are nonzero. Removing this electric field by a time-dependent
+spatial gauge introduces a scalar potential; it does not remove the
+interaction.
+
+\begin{proposition}[Full variational lift of the symmetric sector]
+\label{prop:whitney-charged-symmetric-lift}
+The five-coordinate Euler--Lagrange equations obtained by restricting
+\eqref{eq:whitney-charged-action} in temporal gauge imply all sixty-eight
+real temporal-gauge Euler--Lagrange equations. Initial satisfaction of
+Gauss's law implies all thirteen Gauss equations along this solution.
+On this sector the action integrands are polynomials of degree at most
+four in barycentric coordinates after cancellation of their common unit
+phase. Their unrestricted first variations, and the full Euler
+expressions evaluated on a twice differentiable symmetric path, have
+polynomial degree at most five.
+\end{proposition}
+\begin{proof}
+The sixty proper rotations of the regular icosahedron act on nodal
+coefficients by permutation and on oriented edge coefficients by signed
+permutation. They preserve tetrahedral volume, the Euclidean metric and
+straight paths, hence preserve the complete dressed action. Vertex
+transitivity fixes one boundary scalar coefficient. The radial edges
+form one orbit. Each boundary edge is reversed by a half-turn, forcing
+its invariant coefficient to vanish. Thus the fixed configuration
+space is precisely the stated five-dimensional real space.
+
+At an invariant position, velocity and acceleration the full Euler
+covector is invariant. Its value on any variation equals its value on
+the average of that variation over the finite rotation group. This
+average lies in the five-dimensional fixed space. Consequently
+vanishing of the restricted Euler covector implies vanishing on every
+real variation. Equivalently, regularity and uniqueness of the full
+Euler system make its evolution preserve this fixed space. Gauss
+propagation follows from \eqref{eq:whitney-matter-noether} with the
+compatible initial data, without discarding the scalar variations.
+
+Antisymmetry gives the first line of
+\eqref{eq:whitney-charged-symmetric-fields}; direct differentiation gives
+the second line. After removal of the common phase, the scalar field
+has degree one and its time derivative degree at most two. The spatial
+covariant derivative has degree zero. An unrestricted edge variation
+of the scalar field has degree at most two, its time derivative at most
+three, and its spatial covariant derivative at most two. These degree
+counts give the claims for the action and its first variation. The
+same counts apply after the time integration by parts: the scalar
+acceleration has degree at most three. Four-point tensor
+Gauss--Legendre quadrature after a Duffy map integrates these degree-five
+tetrahedral polynomials exactly in real arithmetic. The Jacobian adds
+at most two powers in any quadrature coordinate. For the restricted
+action one can instead integrate over \(s\) with the exact marginal
+weight \(3(1-s)^2\).
+\end{proof}
+
+A bounded numerical evolution supplies \(e=1/4\), \(m^2=1/2\) and
+\(g=1/4\), starts from the charged initial condition above, and evolves
+the supplied dimensionless action parameter over \([0,2]\). It stores
+81 samples of all position, velocity and acceleration coefficients,
+electric and magnetic cochains, nodal charge loads, and scalar and
+covariant-derivative fields at all twenty tetrahedral centroids.
+The independent verifier reconstructs the oriented mesh and unrestricted
+scalar Jacobians, checks all 68 Euler and 13 Gauss equations at every
+sample, and re-integrates the trajectory using full local Jacobians
+pulled back to the fixed space. This reconstruction does not use the
+producer's one-dimensional phase-cancelled formulas.
+
+The largest full Euler residual is below \(6\times10^{-14}\), the
+largest Gauss residual below \(4\times10^{-15}\), and energy drift
+below \(7\times10^{-14}\). Independent trajectory reconstruction
+agrees within \(3\times10^{-14}\). Fixed-step fourth-order
+Runge--Kutta endpoint errors at 80, 160 and 320 steps are approximately
+\(6.61\times10^{-6}\), \(4.32\times10^{-7}\) and
+\(2.75\times10^{-8}\), respectively, against a tighter reference.
+Four- and five-point tetrahedral quadratures agree within
+\(5\times10^{-14}\); underintegration with three points instead
+gives a full Euler defect of about \(3\times10^{-4}\).
+Freezing the scalar basis during variation gives a defect exceeding
+\(0.34\). The maximum nodal charge-load change exceeds \(2.25\),
+so this is a coupled charged trajectory, not repetition of the initial
+constraint check. These are observed floating-point residuals and
+refinement comparisons, not a rigorous enclosure of trajectory error.
+
+The producer and independent verifier are
+\path{code/electromagnetism/whitney_charged_dynamics.py} and
+\path{code/electromagnetism/verify_whitney_charged_dynamics.py}; the
+versioned data are in
+\path{code/electromagnetism/runtime/whitney_charged_dynamics_receipt.json}.
+The data identify the mesh, oriented basis, gauge, complex encoding,
+couplings, clock, source hashes and field sampling locations. They contain
+no authenticated observer readback or quantum state. The construction
+executes the supplied classical action on one fixed geometry; it does
+not identify a physical clock, select the matter theory from source
+histories, or establish a spatial continuum limit.

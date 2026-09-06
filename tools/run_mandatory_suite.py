@@ -366,6 +366,13 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
          "code/electromagnetism/test_whitney_charged_matter.py"],
     ),
     (
+        "Execute coupled Whitney spatial, interacting Hilbert and charged evolution controls",
+        [sys.executable, "-m", "pytest", "-q",
+         "code/electromagnetism/test_whitney_spatial_consistency.py",
+         "code/electromagnetism/test_whitney_interacting_quantum.py",
+         "code/electromagnetism/test_whitney_charged_dynamics.py"],
+    ),
+    (
         "Execute the discrete Coulomb-Green replay, verifier, and mutation guards",
         [
             sys.executable,

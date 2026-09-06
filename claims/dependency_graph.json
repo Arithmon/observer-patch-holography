@@ -217,7 +217,10 @@
   "OPH-CONE-WHITNEY-BRIDGE",
   "OPH-WHITNEY-MAXWELL-DYNAMICS",
   "OPH-WHITNEY-RADIATIVE-QUANTUM",
-  "OPH-WHITNEY-CHARGED-MATTER"
+  "OPH-WHITNEY-CHARGED-MATTER",
+  "OPH-WHITNEY-SPATIAL-CONSISTENCY",
+  "OPH-WHITNEY-INTERACTING-QUANTUM",
+  "OPH-WHITNEY-CHARGED-EXECUTION"
  ],
  "edges": [
   {
@@ -1944,6 +1947,21 @@
    "from": "OPH-WHITNEY-MAXWELL-DYNAMICS",
    "to": "OPH-WHITNEY-CHARGED-MATTER",
    "role": "Supplies the full geometric Maxwell action and connected mass-metric Gauss solve used by the explicit neutral charged initial data; the new scalar dynamics does not consume the prescribed-current numerical trajectory."
+  },
+  {
+   "from": "OPH-WHITNEY-CHARGED-MATTER",
+   "to": "OPH-WHITNEY-SPATIAL-CONSISTENCY",
+   "role": "Supplies the same gauge-dressed scalar/Maxwell action, full interpolation derivatives and finite geometric configuration; physical source, quantum prescription and numerical acceptance remain separately declared."
+  },
+  {
+   "from": "OPH-WHITNEY-CHARGED-MATTER",
+   "to": "OPH-WHITNEY-INTERACTING-QUANTUM",
+   "role": "Supplies the same gauge-dressed scalar/Maxwell action, full interpolation derivatives and finite geometric configuration; physical source, quantum prescription and numerical acceptance remain separately declared."
+  },
+  {
+   "from": "OPH-WHITNEY-CHARGED-MATTER",
+   "to": "OPH-WHITNEY-CHARGED-EXECUTION",
+   "role": "Supplies the same gauge-dressed scalar/Maxwell action, full interpolation derivatives and finite geometric configuration; physical source, quantum prescription and numerical acceptance remain separately declared."
   }
  ]
 }

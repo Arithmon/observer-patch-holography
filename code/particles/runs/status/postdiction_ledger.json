@@ -1,5 +1,5 @@
 {
-  "aggregation_policy": "numeric values and measured references are read mechanically from cited parents; structural rows are derived from validated Lean declarations, structured parents, or both, and identify direct algebraic corollaries explicitly; a missing or inconsistent receipt aborts the build",
+  "aggregation_policy": "numeric values and measured references are read mechanically from cited parents; structural rows distinguish analytic paper proofs, validated Lean declarations and structured parents, and identify direct algebraic corollaries explicitly; a missing or inconsistent receipt aborts the build",
   "artifact": "oph_postdiction_ledger",
   "generator": "code/particles/scripts/build_postdiction_ledger.py",
   "guards": {
@@ -2053,7 +2053,7 @@
           "code/electromagnetism/test_whitney_charged_matter.py"
         ],
         "continuum_convergence_established": false,
-        "hypothesis_boundary": "Supplied scalar species, charge, mass, nonnegative quartic coefficient, Euclidean geometry, time and exact pulled-back scalar-QED Lagrangian. Real unwrapped edge integrals are needed. Differentiate the gauge-dependent scalar basis in all field variations; a naive projected scalar current omits terms. All thirteen scalar variations require total neutrality in the declared boundary convention. No executed charged-matter episode, source-selected matter content, spatial error estimate, interacting quantum completion or Standard Model identification is supplied.",
+        "hypothesis_boundary": "Supplied scalar species, charge, mass, nonnegative quartic coefficient, Euclidean geometry, time and exact pulled-back scalar-QED Lagrangian. Real unwrapped edge integrals are needed. Differentiate the gauge-dependent scalar basis in all field variations; a naive projected scalar current omits terms. All thirteen scalar variations require total neutrality in the declared boundary convention. This algebra/global-existence result alone supplies no executed charged-matter episode, spatial error estimate or interacting quantum completion; those distinct constructions have separate rows. No source-selected matter content or Standard Model identification is supplied.",
         "id": "whitney_charged_matter",
         "lean_declarations": {
           "WhitneyChargedMatter": [
@@ -2073,6 +2073,140 @@
         "paper_ref": "observers synthesis, whitney charged matter",
         "physical_comparison_status": "NOT_EVALUABLE",
         "statement": "Real Whitney edge integrals dress nodal complex scalar fields by straight-segment U(1) phases, giving exact nodal interpolation, gauge covariance and matching face traces. Restriction of a supplied nonnegative-potential scalar-QED action to these fields and the same volume Maxwell variables gives a joint gauge-invariant action. The paper proves its Noether/Gauss identity, positive temporal-gauge velocity Hessian and global finite-dimensional classical evolution, and constructs nonzero locally charged but globally neutral exact initial data."
+      },
+      {
+        "analytic_paper_theorem": {
+          "label": "thm:whitney-spatial-consistency",
+          "source": "paper/tex_fragments/WHITNEY_SPATIAL_CONSISTENCY.tex"
+        },
+        "artifact_refs": [
+          "paper/observers_are_all_you_need.tex",
+          "paper/tex_fragments/WHITNEY_SPATIAL_CONSISTENCY.tex",
+          "code/electromagnetism/runtime/whitney_spatial_consistency_receipt.json",
+          "code/electromagnetism/whitney_spatial_consistency.py",
+          "code/electromagnetism/verify_whitney_spatial_consistency.py",
+          "code/electromagnetism/test_whitney_spatial_consistency.py"
+        ],
+        "certificate_scope": "MANUFACTURED_SMOOTH_ACTION_VARIATION_REFINEMENT__NO_TRAJECTORY_OR_PHYSICAL_IDENTIFICATION",
+        "continuum_convergence_established": false,
+        "hypothesis_boundary": "Supplied geometry, smooth bounded fields, conforming shape-regular refinements, action time parameter and scalar-electrodynamics density. The uniform estimate is an analytic paper theorem, not a Lean convergence theorem or a bound certified by finite samples. Exact edge integration and the Whitney interior-path definition are required. No nonlinear trajectory convergence, arbitrary-H1 nodal estimate, observer source selection, calibrated physical clock or empirical comparison is established.",
+        "id": "whitney_spatial_consistency",
+        "independent_verifier_result": {
+          "continuum_trajectory_claimed": false,
+          "finite_algebra_lean_declarations": 5,
+          "independent_derivative_stencil_points": 4,
+          "observer_history_claimed": false,
+          "refinement_levels": [
+            0,
+            1,
+            2
+          ],
+          "scope": "MANUFACTURED_SMOOTH_ACTION_VARIATION_REFINEMENT__NO_TRAJECTORY_OR_PHYSICAL_IDENTIFICATION",
+          "tetrahedra": [
+            20,
+            160,
+            1280
+          ],
+          "uniform_bound_certified_by_numerics": false,
+          "vertices": [
+            13,
+            55,
+            309
+          ]
+        },
+        "lean_declarations": {
+          "WhitneySpatialConsistency": [
+            "weighted_antisymmetric_cancellation",
+            "weighted_path_phase_zero",
+            "polarized_cancellation",
+            "centered_dressing_error",
+            "centered_potential_variation"
+          ]
+        },
+        "lean_receipts": [
+          "Lean/Screen/WhitneySpatialConsistency.lean"
+        ],
+        "lean_scope": "finite cancellation and error-decomposition algebra only; no formal spatial convergence theorem",
+        "match": "analytic smooth-window action/first-variation consistency; finite Lean algebra and numerical refinement checks; no observed postdiction",
+        "observed_counterpart": "Mathematical classical/quantum field structures; no observed data",
+        "observed_postdiction": false,
+        "paper_ref": "observers synthesis, whitney spatial consistency",
+        "physical_comparison_status": "NOT_EVALUABLE",
+        "spatial_action_consistency": true,
+        "statement": "On conforming shape-regular refinements of the same cone, the supplied dressed scalar/Whitney action and its full real first variation approximate the continuum scalar-electrodynamics action at O(delta), uniformly on bounded piecewise W^{1,infinity}_t W^{2,infinity}_x windows with compatible traces. The analytic proof controls the potential-dependent scalar interpolation and all dressing derivatives. Five finite Lean identities establish cancellation/error algebra; a manufactured-field refinement packet independently checks the implementation on three meshes."
+      },
+      {
+        "analytic_paper_theorem": {
+          "label": "thm:whitney-interacting-quantum",
+          "source": "paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex"
+        },
+        "analytic_proof_formalized_in_lean": false,
+        "artifact_refs": [
+          "paper/observers_are_all_you_need.tex",
+          "paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex",
+          "code/electromagnetism/whitney_interacting_quantum.py",
+          "code/electromagnetism/test_whitney_interacting_quantum.py"
+        ],
+        "computed_quantum_state_history": false,
+        "continuum_convergence_established": false,
+        "hilbert_space_constructed": true,
+        "hypothesis_boundary": "Supplied cone, scalar species/action, nonzero charge, nonnegative mass-squared/quartic coupling, hbar, quantization measure, ordering and Friedrichs realization. The Schur complement uses the full coupled kinetic metric, not only the Maxwell block. The analytic proof is not formalized in Lean and does not assert essential self-adjointness, unique quantization, equivalence to quantization before reduction, continuum interacting QFT, a computed quantum-state history, physical Born statistics or laboratory identification.",
+        "id": "whitney_interacting_quantum",
+        "lean_declarations": {},
+        "lean_receipts": [],
+        "match": "analytic gauge-reduction, closed-form and self-adjoint-domain proof; numerical finite-metric controls; no observed postdiction",
+        "observed_counterpart": "Mathematical classical/quantum field structures; no observed data",
+        "observed_postdiction": false,
+        "paper_ref": "observers synthesis, whitney interacting quantum",
+        "physical_comparison_status": "NOT_EVALUABLE",
+        "spatial_action_consistency": false,
+        "statement": "For the same interacting finite charged action with nonzero charge, the actual positive kinetic metric gives a smooth Schur metric on the global mean-zero-gauge Coulomb slice R^30 x C^13. Declared Laplace--Beltrami/Friedrichs quantization yields a nonnegative self-adjoint Hamiltonian on L2 of that slice with its Riemannian volume. The residual U(1)-invariant subspace is nonzero and reduces the Hamiltonian, providing neutral unitary interacting evolution and a dense invariant form core."
+      },
+      {
+        "analytic_paper_theorem": {
+          "label": "prop:whitney-charged-symmetric-lift",
+          "source": "paper/tex_fragments/WHITNEY_CHARGED_EXECUTION.tex"
+        },
+        "artifact_refs": [
+          "paper/observers_are_all_you_need.tex",
+          "paper/tex_fragments/WHITNEY_CHARGED_EXECUTION.tex",
+          "code/electromagnetism/runtime/whitney_charged_dynamics_receipt.json",
+          "code/electromagnetism/whitney_charged_dynamics.py",
+          "code/electromagnetism/verify_whitney_charged_dynamics.py",
+          "code/electromagnetism/test_whitney_charged_dynamics.py"
+        ],
+        "authenticated_observer_history": false,
+        "certificate_scope": "NUMERICAL_COUPLED_CHARGED_MATTER__SYMMETRIC_SECTOR_OF_FULL_FINITE_ACTION",
+        "computed_quantum_state_history": false,
+        "continuum_convergence_established": false,
+        "hypothesis_boundary": "Supplied dimensionless cone, scalar action, e=1/4, m^2=1/2, g=1/4, temporal gauge, initial data and action parameter on [0,2]. Exact-real symmetry and polynomial quadrature arguments are separate from floating-point samples. Sample residuals, independent integration and fixed-step comparisons do not enclose trajectory error rigorously. The trajectory occupies the fixed five-coordinate sector, with zero magnetic field but nonzero electric interaction and matter motion. No authenticated observer execution, actual quantum state, spatial continuum trajectory limit, physical clock or measured postdiction is supplied.",
+        "id": "whitney_charged_execution",
+        "independent_verifier_result": {
+          "accepted": true,
+          "full_equations_per_sample": 68,
+          "gauss_equations_per_sample": 13,
+          "observer_history": false,
+          "physical_continuum": false,
+          "quantum_state": false,
+          "samples": 81,
+          "symmetry": {
+            "edge_fixed_dimension": 1,
+            "node_fixed_dimension": 2,
+            "proper_rotations": 60,
+            "real_configuration_fixed_dimension": 5
+          },
+          "trajectory_error_status": "observed numerical convergence and residuals; no rigorous trajectory error enclosure"
+        },
+        "lean_declarations": {},
+        "lean_receipts": [],
+        "match": "analytic full variational symmetry lift and numerical charged trajectory with independent replay; no observed postdiction",
+        "observed_counterpart": "Mathematical classical/quantum field structures; no observed data",
+        "observed_postdiction": false,
+        "paper_ref": "observers synthesis, whitney charged execution",
+        "physical_comparison_status": "NOT_EVALUABLE",
+        "rigorous_trajectory_error_enclosure": false,
+        "spatial_action_consistency": false,
+        "statement": "A five-real-coordinate icosahedrally invariant sector of the same charged action evolves from the nonzero neutral initial data with all 68 full temporal-gauge Euler equations and all 13 Gauss equations checked at 81 samples. The analytic finite-group argument lifts the restricted equations to the full action. The independent verifier reconstructs unrestricted element Jacobians, re-integrates the path and RK4 controls, verifies degree-five quadrature, and rejects omitted-dressing and underintegration controls. Stored classical field readouts include electric cochains, matter fields and local charge."
       }
     ],
     "hadrons": [
