@@ -299,8 +299,8 @@ theorem portToSix_injective : Function.Injective portToSix := by
       OPH.A5SixAxes.rowF (rowEquiv (portIndex g)) =
         OPH.A5SixAxes.rowF (rowEquiv (portIndex h)) := by
     funext x
-    have hx := congrFun hval x
-    simpa only [OPH.A5SixAxes.el_apply] using hx
+    simpa [OPH.A5SixAxes.el_apply] using
+      congrArg (fun e : Equiv.Perm (Fin 6) => e x) hval
   have hidx : rowEquiv (portIndex g) = rowEquiv (portIndex h) :=
     six_axis_rows_injective hrow
   have hpidx : portIndex g = portIndex h := rowEquiv.injective hidx
