@@ -15,8 +15,8 @@
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
-      "sha256": "9204d5ea1bfb5b510290c2e7ca3a13207133f223fd866d97c4d306b3cbe9b7a6",
-      "size_bytes": 672617
+      "sha256": "9f4ab8f5c056d792f276aa584c1da032440d1dfe9ff31a266b7dfbdfd9fdbe34",
+      "size_bytes": 672856
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",

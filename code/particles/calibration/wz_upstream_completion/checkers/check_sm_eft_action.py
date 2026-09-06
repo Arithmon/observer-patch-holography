@@ -85,9 +85,43 @@ def check(bundle: dict[str, Any]) -> None:
         fail("the GUT normalization must be recorded and excluded")
     if "BMHV" not in conventions["gamma5_prescription"]:
         fail("the gamma5 prescription must be declared")
+    dictionary = conventions.get("right_handed_dictionary")
+    expected_dictionary = {
+        right: {"census_field": left, "operation": "charge_conjugation"}
+        for right, left in (("u_R", "u_c"), ("d_R", "d_c"), ("e_R", "e_c"))
+    }
+    if dictionary != expected_dictionary:
+        fail("right-handed action fields require the charge-conjugated left-Weyl dictionary")
+    if conventions.get("fermion_action_chart") != "four-component chiral bilinears; the census uses only left Weyl fields":
+        fail("fermion action chart must be explicit")
 
     ast = bundle["action_ast"]
     retained_names = {entry["operator"] for entry in ast["retained"]}
+    if len(retained_names) != len(ast["retained"]):
+        fail("duplicate retained operator")
+    operators = {entry["operator"]: entry for entry in ast["retained"]}
+    # Reconstruct charges from every census generation, independently of the
+    # producer. A self-hashed mixed-chirality formula must still be rejected.
+    higgs = census["scalars"]
+    if len(higgs) != 1 or higgs[0]["name"] != "H":
+        fail("one named Higgs doublet required")
+    h = Fraction(higgs[0]["hypercharge"])
+    for generation in (1, 2, 3):
+        rows = [f for f in fermions if f["generation"] == generation]
+        if {f["name"] for f in rows} != {"Q", "u_c", "d_c", "L", "e_c"} or len(rows) != 5:
+            fail("each generation must carry the declared five distinct Weyl multiplets")
+        if any(f["chirality"] != "left_weyl" for f in rows):
+            fail("the source census is entirely left Weyl")
+        charge = {f["name"]: Fraction(f["hypercharge"]) for f in rows}
+        for operator, doublet, singlet, scalar_sign, expression in (
+            ("yukawa_up", "Q", "u_c", -1, "- Qbar Yu Htilde u_R + h.c."),
+            ("yukawa_down", "Q", "d_c", 1, "- Qbar Yd H d_R + h.c."),
+            ("yukawa_lepton", "L", "e_c", 1, "- Lbar Ye H e_R + h.c."),
+        ):
+            if operators.get(operator, {}).get("expression") != expression:
+                fail("Yukawa expression mixes the declared Weyl census and action chart")
+            if -charge[doublet]+scalar_sign*h-charge[singlet] != 0:
+                fail("Yukawa hypercharge does not vanish after the declared charge conjugation")
     for needed in (
         "gauge_kinetic_SU3", "gauge_kinetic_SU2", "gauge_kinetic_U1",
         "higgs_kinetic", "fermion_kinetic", "yukawa_up", "yukawa_down",

@@ -109,3 +109,32 @@ def test_producer_cli_round_trip(tmp_path: Path) -> None:
     )
     assert result.returncode == 0
     assert "subject_digest" in result.stdout
+
+
+def rehash(bundle):
+    """Remove hash failures as an excuse for accepting an invalid formula."""
+    for key in bundle["packet_hashes"]:
+        bundle["packet_hashes"][key] = producer.canonical_sha256(bundle[key])
+    bundle["subject_digest"] = producer.canonical_sha256(
+        {"packet_hashes": bundle["packet_hashes"], "schema": bundle["schema"]})
+
+
+@pytest.mark.parametrize("operator,right,wrong", [
+    ("yukawa_up", "u_R", "u_c"), ("yukawa_down", "d_R", "d_c"),
+    ("yukawa_lepton", "e_R", "e_c"),
+])
+def test_rehashed_mixed_weyl_chart_fails(bundle, operator, right, wrong):
+    doctored = json.loads(json.dumps(bundle))
+    entry = next(x for x in doctored["action_ast"]["retained"] if x["operator"] == operator)
+    entry["expression"] = entry["expression"].replace(right, wrong)
+    rehash(doctored)
+    with pytest.raises(SystemExit, match="mixes"):
+        checker.check(doctored)
+
+
+def test_rehashed_missing_charge_conjugation_fails(bundle):
+    doctored = json.loads(json.dumps(bundle))
+    doctored["conventions"]["right_handed_dictionary"]["u_R"]["operation"] = "identity"
+    rehash(doctored)
+    with pytest.raises(SystemExit, match="dictionary"):
+        checker.check(doctored)

@@ -564,10 +564,21 @@
             "parity_sectors_survive",
             "conj_exchanges_survivors",
             "witten_automatic"
+          ],
+          "WeylYukawaConventions": [
+            "conjugate_charge_dictionary",
+            "weyl_up_neutral",
+            "weyl_down_neutral",
+            "weyl_lepton_neutral",
+            "dirac_up_neutral",
+            "dirac_down_neutral",
+            "dirac_lepton_neutral",
+            "mixed_convention_not_neutral"
           ]
         },
         "lean_receipts": [
-          "Lean/Screen/ExteriorSelection.lean"
+          "Lean/Screen/ExteriorSelection.lean",
+          "Lean/Screen/WeylYukawaConventions.lean"
         ],
         "match": "exact",
         "observed_counterpart": "Standard Model one-generation hypercharge assignment",

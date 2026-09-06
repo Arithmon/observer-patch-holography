@@ -78,7 +78,7 @@ lean_lib «OPHScreen» where
     `A5PortModule, `A5PortSixAxesBridge, `A5Commutant, `A5ResponseWordAlgebra,
     `A5IncidenceResponse, `TraceBalancedKernel, `TrichotomyCases, `Z6Descent,
     `A5AngularMultiplets, `A5AngularBands, `A5AngularKernels,
-    `ExteriorSelection, `EqualStateWeights,
+    `ExteriorSelection, `WeylYukawaConventions, `EqualStateWeights,
     `A5FamilyBand, `RGRepresentationFrontier, `CommonEWOrderUnit,
     `KineticFormDichotomy, `A5PrimitivePortPrediction,
     `A5CarrierClassBand,

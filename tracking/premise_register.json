@@ -1672,7 +1672,8 @@
         "Lean/Screen/GlobalFormCharacterDescent.lean",
         "Lean/Screen/FermionSectorAssembly.lean",
         "Lean/Screen/NeutralCurrentDictionary.lean",
-        "Lean/Screen/ChargedCurrentDictionary.lean"
+        "Lean/Screen/ChargedCurrentDictionary.lean",
+        "Lean/Screen/WeylYukawaConventions.lean"
       ],
       "evidence_roles": {
         "claims/assumption_dictionary.md": "statement",
@@ -1687,7 +1688,8 @@
         "Lean/Screen/GlobalFormCharacterDescent.lean": "conditional_consumer",
         "Lean/Screen/FermionSectorAssembly.lean": "conditional_consumer",
         "Lean/Screen/NeutralCurrentDictionary.lean": "conditional_consumer",
-        "Lean/Screen/ChargedCurrentDictionary.lean": "conditional_consumer"
+        "Lean/Screen/ChargedCurrentDictionary.lean": "conditional_consumer",
+        "Lean/Screen/WeylYukawaConventions.lean": "conditional_consumer"
       },
       "notes": "Removal needs a source-selected five-mode carrier and exterior table together with outcome-independent completeness against the relevant alternative matter carriers, or a genuinely fresh preregistered replacement grammar spanning them. PR-12 is a separate negative-control and search class, not a superset from which PR-59 can be selected. The two surviving masks are exact only inside the declared PR-59 table."
     },

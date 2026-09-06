@@ -3629,7 +3629,8 @@
         "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
         "code/a5_closure/exterior_sm_completion.py",
         "code/a5_closure/exterior_sm_completion.json",
-        "code/a5_closure/test_audit.py"
+        "code/a5_closure/test_audit.py",
+        "Lean/Screen/WeylYukawaConventions.lean"
       ],
       "falsifier": "The exterior decomposition, any displayed hypercharge sum, any listed anomaly coefficient, any one-Higgs singlet multiplicity, or the weak-doublet count differs from the certificate under the stated carrier assumptions.",
       "scope_if_false": "The exterior representation route falls. The abstract A5 coefficient bracket and unrelated consensus or gravity branches survive.",

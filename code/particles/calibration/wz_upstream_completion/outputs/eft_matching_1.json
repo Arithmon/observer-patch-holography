@@ -1,5 +1,5 @@
 {
-  "action_subject_digest": "2822c158805db038dfe2682508316f100968ce152e47b23062d6e11029607b5e",
+  "action_subject_digest": "7a88486b20e5114769cfabde4a0ed7f3d8409acb81b1fa9a8659188794d85862",
   "claim_boundary": "The interval EFT/RG packet of the validation lane: one pure Standard Model interval with census-derived one-loop gauge beta coefficients, frozen schemes, imported finite maps recorded as imports, a symbolic interval Jacobian, a declared truncation remainder, and one canonical typed output vector. No numeric coupling value exists anywhere in this packet, and nothing promotes.",
   "controls": {
     "gut_b1": {
@@ -142,7 +142,7 @@
   },
   "promotion_allowed": false,
   "schema": "eft_matching_1.v1",
-  "subject_digest": "8b143c32c8c44b102df925a2c81f39b6f424fe8ca1b07cb6ad2d89faf5314baf",
+  "subject_digest": "e4d20edf3f4b66a010891af2ad653f05a558c9435e761897e84a5315333eb56e",
   "yukawa_quartic_structure": {
     "census_group_factors": {
       "color_number": 3,

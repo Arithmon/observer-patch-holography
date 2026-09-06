@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 355,
+  "surface_count": 356,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1261,6 +1261,11 @@
     },
     {
       "path": "Lean/Screen/VolumeReadoutBridge.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WeylYukawaConventions.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
     },

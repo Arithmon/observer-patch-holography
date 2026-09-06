@@ -1,6 +1,6 @@
 {
   "bindings": {
-    "eft_matching_subject": "2822c158805db038dfe2682508316f100968ce152e47b23062d6e11029607b5e",
+    "eft_matching_subject": "7a88486b20e5114769cfabde4a0ed7f3d8409acb81b1fa9a8659188794d85862",
     "rule_engine_check": {
       "entry_count": 123,
       "status": "PASS"
@@ -919,7 +919,7 @@
     "scheme": "MSbar minimal subtraction for every generator",
     "tadpole": "FJ condition on dv: the counterterm tadpole cancels the one-loop tadpole T_h of FJ_DIRECT_1; recorded as an equation, not a value"
   },
-  "packet_sha256": "8ab197385af852aef0df20d79ebf46ff2872daa0975b713e385c83f0da578e99",
+  "packet_sha256": "76f171e9e36ebe95b1f200f51b1aa5a225470b29b70957d34a68f387aa284934",
   "schema": "renormalization_ct.v1",
   "st_restoration": {
     "fixed_by": [
