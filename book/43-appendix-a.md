@@ -72,9 +72,9 @@ No finite exchange of messages between observers recovers a shared present. Then
 
 The word is doing three jobs at once. The question welds them into one object and then finds that object missing.
 
-Order is a partial order on committed repairs, the only global temporal structure there is. Direction comes from the commit, which is an arithmetic loss: seven possible pasts average into one reading and 2.807 bits go with them. Flow is what a state makes its own algebra do, one shuffle for each amount of shuffling, extracted from what an observer holds with nothing added.
+Committed repairs define a partial order. An irreversible reduction of seven equally likely arrangements to one discards 2.807 bits when no recoverable record remains. Retaining that information keeps the full operation reversible. A faithful state on its declared observable algebra also defines a modular flow. Translating its parameter into clock readings requires a physical identification.
 
-A universal present appears nowhere on that list. Two observers in different states run at different rates and neither is wrong. The part of a person that has been written into a record is the part standing still, because the flow moves only what fails to commute. A record commutes with everything. Read the same flow sideways and it is a temperature, one that acceleration alone sets, at about four parts in ten to the twenty-first of a degree for every meter per second squared.
+These constructions need no universal present. Modular flow fixes central records and can be trivial even for distinct states. In the supplied Minkowski-vacuum setting, an ideal uniformly accelerated detector has a stationary thermal response, at about four parts in ten to the twenty-first of a degree per meter per second squared. That temperature uses a physical field, trajectory and time convention.
 
 ## When exactly does the particle decide?
 
