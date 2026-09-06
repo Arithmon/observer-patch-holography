@@ -151,7 +151,31 @@ def load_json(path: Path) -> dict:
 
 def load_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
-        return list(csv.DictReader(handle))
+        reader = csv.DictReader(handle, strict=True)
+        try:
+            headers = reader.fieldnames
+            require(
+                bool(headers) and all(header.strip() for header in headers),
+                f"{path}: missing or empty CSV header",
+            )
+            duplicates = sorted(
+                header for header, count in Counter(headers).items() if count > 1
+            )
+            require(not duplicates, f"{path}: duplicate CSV headers: {duplicates}")
+            rows = []
+            for row in reader:
+                location = f"{path}: CSV line {reader.line_num}"
+                require(None not in row, f"{location}: overflow CSV cells")
+                missing = [header for header, value in row.items() if value is None]
+                require(not missing, f"{location}: missing CSV cells: {missing}")
+                empty = [header for header, value in row.items() if not value.strip()]
+                require(not empty, f"{location}: empty CSV cells: {empty}")
+                rows.append(row)
+            return rows
+        except csv.Error as exc:
+            raise SystemExit(
+                f"{path}: invalid CSV at line {reader.line_num}: {exc}"
+            ) from exc
 
 
 def check_exact_claim_id_projection(

@@ -159,8 +159,8 @@ Einstein-branch axiom check. `Lean/README.md` documents the layout;
 ## Paper review and publication builds
 
 With the pinned publication tools above installed, rebuild every registered
-paper, the warnings gate, the local review manifest, and the reader-facing
-book from the repository root:
+paper, including every extra and cosmology source, the warnings gate, the
+local review manifest, and the reader-facing book from the repository root:
 
 ```bash
 python3 tools/refresh_paper_release.py --preview
@@ -218,10 +218,13 @@ A clean clone must also retain no tracked publication drift after the first
 rebuild:
 
 ```bash
-git diff --exit-code -- paper flagship extra book/reverse-engineering-reality-book.pdf
+git diff --exit-code -- paper flagship extra cosmology book/reverse-engineering-reality-book.pdf
 ```
 
-The `Paper Preview Build` workflow enforces this check. A committed PDF and
+The `Paper Preview Build` workflow enforces this check, compares the committed
+book with a scratch rebuild, and rejects generated paper PDFs missing from
+Git, including ignored files. Cosmology remains unpublished research while
+its tracked artifacts obey the same reproducibility checks. A committed PDF and
 manifest pair therefore cannot substitute another paper's bytes at the
 expected path; the source rebuild restores the correct artifact and makes the
 job fail.

@@ -16,6 +16,7 @@ on:
       - "paper/**"
       - "flagship/**"
       - "extra/**"
+      - "cosmology/**"
       - "book/**"
       - "assets/**"
       - "tools/build_tex_papers.py"
@@ -39,6 +40,7 @@ on:
       - "paper/**"
       - "flagship/**"
       - "extra/**"
+      - "cosmology/**"
       - "book/**"
       - "assets/**"
       - "tools/build_tex_papers.py"
@@ -116,11 +118,8 @@ jobs:
           done
           exit 1
 
-      # Built to a scratch path on purpose. The committed book PDF is a release artifact
-      # rebuilt when a release is cut, and writing it here would both clobber it and, since
-      # the canonical build stamps the manifest receipt alongside it, leave the receipt
-      # disagreeing with the committed bytes. What CI needs is proof that the manuscript
-      # compiles, stays inside its warning budget, and compiles to the same bytes twice.
+      # Build to scratch so verification cannot silently refresh stale committed bytes.
+      # The canonical book must match its current manuscript even without a release bump.
       - name: Build the book and enforce its warning budget
         run: |
           for attempt in 1 2 3; do
@@ -132,23 +131,29 @@ jobs:
           done
           exit 1
 
-      # The book PDF is deliberately absent from this check. Book updates are independent
-      # of the paper release and land sporadically, and the committed PDF is rebuilt when a
-      # release is cut, so between releases it legitimately lags the markdown. The book is
-      # still built below and still has to build twice to the same bytes, so a broken or
-      # non-deterministic manuscript is caught here; only the claim that the committed
-      # bytes track every edit is dropped.
       - name: Require committed preview artifacts to match the source rebuild
         run: |
-          if ! git diff --quiet -- paper flagship extra; then
+          set -o pipefail
+          find paper flagship extra cosmology -maxdepth 1 -type f -name '*.pdf' -print0 \
+            | while IFS= read -r -d '' pdf; do
+                if ! git ls-files --error-unmatch -- "$pdf" >/dev/null 2>&1; then
+                  echo "::error::Generated PDF is not committed: $pdf. Inspect it and add it to Git."
+                  exit 1
+                fi
+              done
+          if ! git diff --quiet -- paper flagship extra cosmology; then
             echo "::error::The committed PDFs or manifest do not match the source rebuild. No release bump is required. Run 'python3 tools/refresh_paper_release.py --preview' and 'python3 tools/build_book_pdf.py', inspect the PDFs, then commit the rebuilt artifacts."
-            git diff --stat -- paper flagship extra
+            git diff --stat -- paper flagship extra cosmology
+            exit 1
+          fi
+          if ! cmp --silent "${RUNNER_TEMP}/book-first.pdf" book/reverse-engineering-reality-book.pdf; then
+            echo "::error::The committed book PDF does not match its manuscript. Run 'python3 tools/build_book_pdf.py', inspect it, and commit the PDF and manifest."
             exit 1
           fi
 
       - name: Record first-pass preview hashes
         run: |
-          find paper flagship extra -maxdepth 1 -type f -name '*.pdf' -print0 \
+          find paper flagship extra cosmology -maxdepth 1 -type f -name '*.pdf' -print0 \
             | sort -z \
             | xargs -0 sha256sum > "${RUNNER_TEMP}/papers-first.sha256"
           sha256sum paper/paper_release_manifest.json \
@@ -163,7 +168,7 @@ jobs:
 
       - name: Require byte-identical second pass
         run: |
-          find paper flagship extra -maxdepth 1 -type f -name '*.pdf' -print0 \
+          find paper flagship extra cosmology -maxdepth 1 -type f -name '*.pdf' -print0 \
             | sort -z \
             | xargs -0 sha256sum > "${RUNNER_TEMP}/papers-second.sha256"
           sha256sum paper/paper_release_manifest.json \

@@ -12,16 +12,7 @@
 \IfFileExists{paper/release_info.tex}{
   \input{paper/release_info.tex}
 }{
-  \IfFileExists{../paper/release_info.tex}{
-    \input{../paper/release_info.tex}
-  }{
-    \newcommand{\OPHPaperReleaseID}{r1518}
-    \newcommand{\OPHPaperReleaseDate}{July 7, 2026}
-    \newcommand{\OPHPaperReleaseBanner}{%
-      \begin{center}
-      \small\textbf{Paper release:} \texttt{\OPHPaperReleaseID}\quad\textbf{Released:} \OPHPaperReleaseDate
-      \end{center}}
-  }
+  \input{../paper/release_info.tex}
 }
 
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -56,16 +47,15 @@ Finite Transfer Conditions, Fluctuation Ensembles, and Proto-Objects}
 \end{center}
 
 \begin{abstract}
-Observer-Patch Holography (OPH) cosmology needs a sharp distinction between a field that looks noisy and a
-field that deserves to be called a physical vacuum. This paper sets that
-boundary. A settled simulator state, a repair relaxation, or a plausible visual
-fluctuation is only a diagnostic unless it comes from OPH source data with a
-proper transfer construction and refinement check.
-
-The same boundary organizes structure formation. Vacuum-like fields, primordial
-seeds, and observable sky predictions are different claims. The paper keeps
-those layers separate so a useful simulation cannot be mistaken for a completed
-cosmological prediction.
+We specify finite quotient ensembles and transfer conditions for
+Observer-Patch Holography (OPH) cosmology. A declared quotient-intrinsic action
+and base measure determine a finite state, while reversible Euclidean data,
+reflection positivity and compatible refinement support its vacuum
+interpretation. On a separate supplied Whitney action, controlled real-field
+trajectories and a neutral interacting Hilbert space provide explicit matter
+and state constructions. We state the further source and transfer conditions
+that connect such objects to primordial seeds, observer-facing worldlines
+and large-scale structure observables.
 \end{abstract}
 
 \section{Scope}
@@ -95,6 +85,50 @@ Whenever the smooth Einstein equation is invoked, scalar-curvature convergence
 alone is only diagnostic: the branch additionally requires same-family
 tensor-curvature convergence or the independent continuum
 small-ball/null-balance identification.
+
+\section{Matter and States on a Supplied Spatial Domain}
+
+The Whitney construction on the fixed tetrahedral cone gives a controlled
+matter continuum in a specified sector of one charged scalar action. For
+\(m^2>0\), \(g\geq0\), a supplied
+\(u\in C^2([0,T];H^2(\Omega))\) solving the real cubic Klein--Gordon
+equation with natural Neumann boundary, and Ritz-projected initial data,
+uniform conforming refinements give
+\[
+ \sup_{0\leq t\leq T}
+ \bigl(\|u_n-u\|_{H^1}+\|\dot u_n-u_t\|_{L^2}\bigr)
+ \leq C_T n^{-1}.
+\]
+The real, zero-current solutions are invariant solutions of the full
+charged action. The proof uses a fixed shape-regular refinement family,
+the conserved nonlinear energy and a Ritz error estimate
+(\pathref{paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex}).
+
+On the original finite mesh with nonzero coupling \(e\), eliminating
+mean-zero gauge directions gives a
+complete kinetic metric \(\gamma\) on
+\(\mathcal Q\cong\mathbb R^{30}\times\mathbb C^{13}\). With supplied
+\(\hbar>0\) and Laplace--Beltrami ordering, the neutral subspace of
+\(L^2(\mathcal Q,d\mathrm{vol}_\gamma)\) has a unique nonnegative
+self-adjoint Hamiltonian and unitary dynamics. Normalized Gaussian
+half-density states lie in its operator domain and have explicit initial
+matter moments
+(\pathref{paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex}). These
+are states of a finite spatial discretization, not a derived cosmological
+ground state or a continuum quantum field limit.
+
+For the same autonomous action, the Jacobi duration
+\[
+ d\tau=\sqrt{\frac{G_q(dq,dq)}{2(E-V(q))}}
+\]
+recovers action time on regular nonturning solutions at supplied energy
+\(E\), using the full coupled kinetic metric or its gauge reduction
+(\pathref{paper/tex_fragments/WHITNEY_EPHEMERIS_CLOCK.tex}). Its
+configuration-based reconstruction supplies an internal model clock.
+A cosmological interpretation additionally requires observer-selected
+geometry, physical preparation and units, and a compatible expanding
+background. Those attachments are separate from these matter and state
+theorems.
 
 \section{Finite Quotient Ensemble Theorem}
 
@@ -149,10 +183,11 @@ vacuum classification for a reference baseline or rendering field.
 
 \section{Unsupplied Premises}
 
-Finite OPH source data do not supply the reversible conductances \(J_r\), the
-potential \(V_r\), or the slab thickness \(a_{t,r}\). Reflection positivity,
-or an equivalent reconstruction theorem on the selected branch, is not
-supplied. The bridge from a source-derived vacuum to primordial growth seeds
+The cosmological source construction does not supply the reversible
+conductances \(J_r\), potential \(V_r\), or slab thickness \(a_{t,r}\)
+required above. A source-instantiated reflection-positive vacuum, or an
+equivalent reconstruction on this cosmological branch, is not supplied.
+The bridge from a source-derived vacuum to primordial growth seeds
 without cosmic microwave background or large-scale structure data is not
 supplied. A physical proto-object or worldline requires conditions distinct
 from those used for production particle claims.

@@ -6,18 +6,14 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs,array,longtable}
 \usepackage{enumitem}
+\usepackage{needspace}
 \usepackage{hyperref}
 \usepackage{xurl}
 
 \IfFileExists{paper/release_info.tex}{
   \input{paper/release_info.tex}
 }{
-  \IfFileExists{../paper/release_info.tex}{
-    \input{../paper/release_info.tex}
-  }{
-    \newcommand{\OPHPaperReleaseID}{r1529}
-    \newcommand{\OPHPaperReleaseDate}{July 11, 2026}
-  }
+  \input{../paper/release_info.tex}
 }
 
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -51,11 +47,13 @@ a Theorem-Conditional Reduction}
 
 \begin{abstract}
 This note shows that standard general-relativistic photon--baryon Boltzmann
-transport follows on the Observer-Patch Holography (OPH) branch when its geometry, electromagnetic action,
-physical photon, electron mass, and recombination history are supplied. It
-locates the repair-exchange and collar-stress interfaces where an OPH-specific
-effect could enter. A physical cosmic microwave background (CMB) prediction requires finite source receipts,
-transfer functions, and likelihood closure.
+transport follows on an Observer-Patch Holography (OPH) branch with supplied
+geometry, photon refinement convergence, electromagnetic vertex, polarized
+collision matrix, electron mass, and recombination history. The reduction
+gives the linear multipole hierarchy, acoustic and diffusion approximations,
+and a line-of-sight transfer formula in a common brightness convention. It
+also defines repair-exchange and collar-stress interfaces for conditional
+extensions of the standard transport system.
 \end{abstract}
 
 \section{Claim boundary}
@@ -225,9 +223,17 @@ $C_r\phi\to C\phi$, then the limiting density obeys
 \[
 \partial_\tau f+\{f,H\}=C^*f.
 \]
-A nonzero limit of $\Gamma_r$ produces a diffusion/Fokker--Planck term and
-does not satisfy the deterministic Liouville conclusion.
+A nonzero limit of $\Gamma_r$ excludes the deterministic Liouville
+conclusion. A diffusion conclusion additionally requires vanishing jumps and
+a local second-order limiting generator. A jump limit instead contributes
+its jump operator to the transport equation.
 \end{corollary}
+
+For example, on two states let $Q\phi(i)=\phi(1-i)-\phi(i)$ and
+$P_h=I+hQ$, $0<h\leq1$. For $\phi(i)=i$, the scaled conditional
+variance is $\Gamma_h(\phi)=1-h\to1$, while the limiting generator
+$Q$ describes rate-one jumps between the two states. Thus nonzero
+quadratic variation alone does not identify a diffusion.
 
 \begin{remark}
 The transport model places the collision functional at record commits and
@@ -316,7 +322,7 @@ Assumption~\ref{a:rec}.
 \end{remark}
 
 \begin{remark}[OPH-specific channels]\label{r:channels}
-Two and only two places exist where OPH kernels can modify this functional
+The declared two-channel continuation permits the following modifications
 at linear order:
 (i) a number-changing repair-exchange channel $\Gamma_{\rm rec}(k,a)$ adds a
 monopole source and a spectral-distortion term; it enters $C[f]$
@@ -324,19 +330,21 @@ additively and requires an active fiber, a physical clock, and a
 common-parent response;
 (ii) a collar-packet stress $\rho_A,B_A(k,a)$ enters only the gravitational
 source side (the Einstein constraints in \S\ref{s:hierarchy}), never $C[f]$.
-With both gates closed at zero, the transport below is exactly standard.
+Setting both declared corrections to zero recovers standard transport.
 \end{remark}
 
 \section{The Linear Multipole Hierarchy}\label{s:hierarchy}
 
 \begin{theorem}[Reduction to the standard hierarchy]\label{t:hierarchy}
 Linearize Theorems~\ref{t:liouville}--\ref{t:collision} on the background of
-Assumption~\ref{a:bg} with scalar perturbations, expand the temperature
-brightness $F_\gamma(\mathbf k,\hat n,\tau)$ and polarization brightness
-$G_\gamma$ in Legendre multipoles with $\mu=\hat k\cdot\hat n$. Writing
+Assumption~\ref{a:bg} with scalar perturbations, expand the fractional
+intensity brightness $F_\gamma(\mathbf k,\hat n,\tau)$ and polarization
+brightness $G_\gamma$ as
+$F_\gamma=\sum_\ell(-i)^\ell(2\ell+1)F_{\gamma\ell}P_\ell(\mu)$,
+and likewise for $G_\gamma$, with $\mu=\hat k\cdot\hat n$. Writing
 $\delta_\gamma=F_{\gamma0}$, $\theta_\gamma=\tfrac34 kF_{\gamma1}$,
 $\sigma_\gamma=\tfrac12F_{\gamma2}$, and $\kdot\equiv a n_e\sigma_T$, the
-system is (Ma--Bertschinger 1995, eq.~63):
+system is (Ma--Bertschinger 1995, eq.~64):
 \begin{align*}
 \dot\delta_\gamma &= -\tfrac43\theta_\gamma+4\dot\phi,\\
 \dot\theta_\gamma &= k^2\!\left(\tfrac14\delta_\gamma-\sigma_\gamma\right)
@@ -385,7 +393,8 @@ points.
 \section{Acoustic normal form, damping, and the line of sight}
 
 \begin{proposition}[Acoustic oscillations]\label{p:acoustic}
-In the tight-coupling regime $\kdot\gg k,\ \ah$, define
+In the tight-coupling regime $\kdot\gg k,\ \ah$, neglect baryon thermal
+pressure and define
 $R\equiv 3\bar\rho_b/4\bar\rho_\gamma$ and $\Theta_0=\delta_\gamma/4$. To
 leading order in $1/\kdot$,
 \[
@@ -394,17 +403,19 @@ leading order in $1/\kdot$,
 =-\frac{k^2}{3}(1+R)\,\psi
 +\frac{\Dd}{\Dd\tau}\!\left[(1+R)\,\dot\phi\right],
 \]
-a driven oscillator with sound speed $c_s^2=1/[3(1+R)]$. The WKB solution
-gives, at last scattering $\tau_\ast$,
+a driven oscillator with sound speed $c_s^2=1/[3(1+R)]$. Its homogeneous
+WKB phase, when the coefficients vary slowly compared with an oscillation,
+is $k r_s$, where
 \[
-[\Theta_0+\psi](\tau_\ast)\;\propto\;\cos\!\big(k\,r_s(\tau_\ast)\big),
-\qquad
 r_s(\tau_\ast)=\int_0^{\tau_\ast}\!c_s\,\Dd\tau,
 \]
-so extrema sit at $k_n\,r_s(\tau_\ast)=n\pi$: compressions (odd $n$) are
-baryon-enhanced, rarefactions (even $n$) suppressed, and the dark-matter
-driving of the potentials boosts the third peak: every feature of the
-measured TT curve is produced by this system and by no OPH-specific term.
+at last scattering $\tau_\ast$. A cosine initial phase gives the approximate
+unforced extrema $k_n r_s\simeq n\pi$. Baryon loading changes the
+equilibrium offset and relative compression and rarefaction amplitudes;
+evolving gravitational potentials drive the oscillator. Initial phases,
+free-streaming species, finite visibility and angular projection shift the
+observed peak positions and heights. The oscillator therefore identifies the
+acoustic mechanism without fixing exact peaks of a measured TT spectrum.
 \end{proposition}
 
 \begin{proposition}[Silk damping]\label{p:damping}
@@ -422,8 +433,9 @@ contrast.
 \end{proposition}
 
 \begin{proposition}[Line-of-sight solution]\label{p:los}
-With visibility $g(\tau)=\kdot\,e^{-\kappa(\tau,\tau_0)}$, the temperature
-multipoles today are
+For $k>0$, with visibility $g(\tau)=\kdot\,e^{-\kappa(\tau,\tau_0)}$ and an
+optically thick initial endpoint, the temperature multipoles today, for
+$\ell\geq2$, are
 \[
 \Theta_\ell(k,\tau_0)=\int_0^{\tau_0}\!\Dd\tau\;
 \Big\{
@@ -434,18 +446,32 @@ j_\ell\big(k(\tau_0-\tau)\big)
 +e^{-\kappa}\big(\dot\psi+\dot\phi\big)\,j_\ell
 \Big\},
 \]
-($\Pi=F_{\gamma2}+G_{\gamma0}+G_{\gamma2}$; every unlabelled
+($\Theta_\ell=F_{\gamma\ell}/4$,
+$\Pi=(F_{\gamma2}+G_{\gamma0}+G_{\gamma2})/4$,
+$v_b=\theta_b/k$; every unlabelled
 $j_\ell$ has argument $k(\tau_0-\tau)$), and
 \[
 C_\ell^{TT}=4\pi\!\int\!\frac{\Dd k}{k}\,
 \Delta_\zeta^2(k)\,\left|\frac{\Theta_\ell(k,\tau_0)}{\zeta(k)}\right|^2 .
 \]
 Given the conditional $(A_s,n_s)$ of Assumption~\ref{a:init} and the imports of
-Assumptions~\ref{a:qed}--\ref{a:rec}, this reproduces the curve computed by
-the diagnostic CAMB calculation. Agreement of an independent implementation
-with CAMB at the sub-percent level is the numerical acceptance test.
+Assumptions~\ref{a:qed}--\ref{a:rec}, this is the standard linear transfer
+formula. Agreement of an independent implementation with CAMB at identical
+inputs and sub-percent tolerances is a separate numerical acceptance test.
 \end{proposition}
 
+The normalization can be checked directly from the stated hierarchy.
+Dividing the intensity collision term of Ma--Bertschinger by four gives
+$-\kdot\Pi P_2(\mu)/2$ and the Doppler term $-i\mu\kdot\theta_b/k$.
+Along the line of sight, $P_2(\mu)=(3\mu^2-1)/2$ and
+$\partial_\tau e^{ik\mu(\tau-\tau_0)}=ik\mu e^{ik\mu(\tau-\tau_0)}$.
+Integration by parts therefore gives $g\Pi/4+3(g\Pi)^{\cdot\cdot}/(4k^2)$
+and $(g\theta_b)^{\cdot}/k^2$, respectively. The initial boundary terms
+vanish by optical thickness, and the observer terms affect only the
+monopole and dipole. These conventions specify the signs and factors in
+the Seljak--Zaldarriaga line-of-sight construction.
+
+\Needspace{12\baselineskip}
 \section{Premises and Numerical Tests}\label{s:premises}
 
 \begin{longtable}{@{}L{0.16\linewidth}L{0.5\linewidth}L{0.26\linewidth}@{}}
@@ -497,8 +523,8 @@ schedule, refinement, boundary-leakage, and collision/free-channel residuals.
 Pass requires $\widehat L_r\phi\to X_H\phi$ and
 $\widehat\Gamma_r(\phi)\to0$ on the frozen basis with the preregistered
 uniform compact envelopes. Random-schedule tests are supplemental.
-A nonzero second-moment limit selects the diffusion alternative rather than
-the Liouville theorem.
+A nonzero second-moment limit excludes the deterministic Liouville theorem;
+the limiting jump sizes and generator distinguish diffusion from jump transport.
 
 \section{Scope of the Conditional Reduction}
 The cited branch theorems supply the \emph{scalar angular form} of the
@@ -522,6 +548,8 @@ in the Synchronous and Conformal Newtonian Gauges}, ApJ 455, 7 (1995).
 Press (2020).
 \item U. Seljak and M. Zaldarriaga, \emph{A Line-of-Sight Integration
 Approach to Cosmic Microwave Background Anisotropies}, ApJ 469, 437 (1996).
+\item S. Bashinsky and U. Seljak, \emph{Signatures of Relativistic Neutrinos
+in CMB Anisotropy and Matter Clustering}, Phys. Rev. D 69, 083002 (2004).
 \item W. Hu and M. White, \emph{CMB Anisotropies: Total Angular Momentum
 Method}, Phys. Rev. D 56, 596 (1997).
 \item Related OPH papers: \emph{Observers Are All You Need}; \emph{Reality as a
