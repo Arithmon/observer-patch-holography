@@ -17,6 +17,7 @@ if str(HERE) not in sys.path:
 from audit_quark_s3_d12_template_postdiction import build_audit  # noqa: E402
 from derive_quark_kernel_normalization_acceptance_harness import evaluate as evaluate_legacy_acceptance  # noqa: E402
 from derive_quark_kernel_three_scalar_interface_theorem import build as build_ray_interface  # noqa: E402
+from derive_quark_kernel_three_scalar_interface_theorem import mean_coefficients  # noqa: E402
 from quark_s3_d12_template_postdiction import evaluate, load_repository_inputs  # noqa: E402
 from verify_quark_flavor_source_closure import build_artifact as build_source_closure  # noqa: E402
 from verify_s3_transposition_heat_shape import build_artifact as build_s3_artifact  # noqa: E402
@@ -97,6 +98,23 @@ def test_legacy_three_scalar_theorem_is_scoped_to_ray_subfamily() -> None:
     assert artifact["proof_status"] == "closed_ray_subfamily_interface_theorem"
     assert artifact["guards"]["general_quark_interface_claim_allowed"] is False
     assert artifact["general_interface_boundary"]["common_scale_eigenvalue_coordinates"] == 6
+    assert artifact["interface"]["domain"]["additional_condition"] == "p(r) != 0"
+    assert artifact["interface"]["domain"]["positive_pole_brackets"] == [
+        ["2/25", "9/100"], ["71/10", "36/5"]]
+    assert "no universal tolerance-battery surjectivity theorem" in artifact["nonredundancy"]["freedom_theorem"]
+
+
+@pytest.mark.parametrize("r", [0.08, 0.09, 1.0, 7.1, 7.2])
+def test_affine_mean_matches_factored_denominator_on_both_sides_of_poles(r) -> None:
+    _, coefficient = mean_coefficients(r)
+    polynomial = -r**3 + 4*r**2 + 23*r - 2
+    assert coefficient == pytest.approx((r+1)**2*(r+5)/(2*polynomial), rel=2e-12)
+
+
+@pytest.mark.parametrize("r", [0, -1, True, float("inf"), float("nan"), 1+1j])
+def test_affine_mean_rejects_inputs_outside_positive_real_domain(r) -> None:
+    with pytest.raises(ValueError, match="finite positive"):
+        mean_coefficients(r)
 
 
 def test_legacy_acceptance_harness_rejects_template_ancestry_at_g1() -> None:

@@ -1139,6 +1139,9 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/particles/leptons/test_charged_entropic_branch_no_go.py",
             "code/particles/flavor/test_entropy_w5_shape_certificate.py",
             "tools/test_post_r2029_audit_surfaces.py",
+            "code/particles/flavor/test_kernel_admissibility_diagnostic.py",
+            "code/particles/flavor/test_k1_carrier_readout_survey.py",
+            "code/particles/flavor/test_quark_s3_d12_template_postdiction.py",
         ],
     ),
 ]

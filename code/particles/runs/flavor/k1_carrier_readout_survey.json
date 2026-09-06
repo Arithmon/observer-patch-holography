@@ -92,6 +92,7 @@
     {
       "attempt_ref": 2,
       "cell_id": "B.class_fusion.e1_s3_bw_screen_64k_1783837538",
+      "current_corrected_orientation_evidence_valid": false,
       "evaluation": {
         "in_band": false,
         "min_null_distance": 4.339713299827963e-08,
@@ -129,6 +130,7 @@
           "rho_ord": 1.499999564083845
         }
       },
+      "orientation_evidence_status": "historical_uncorrected_reverse_edge_labels",
       "physical": {
         "eigenvalues_centered": [
           -0.3890419701559901,
@@ -143,6 +145,7 @@
     {
       "attempt_ref": 2,
       "cell_id": "B.class_fusion.e1_s3_bw_screen_4k_1783837537",
+      "current_corrected_orientation_evidence_valid": false,
       "evaluation": {
         "in_band": false,
         "min_null_distance": 6.266252960962504e-06,
@@ -180,6 +183,7 @@
           "rho_ord": 1.4999993223611574
         }
       },
+      "orientation_evidence_status": "historical_uncorrected_reverse_edge_labels",
       "physical": {
         "eigenvalues_centered": [
           -0.3886506683848976,
@@ -194,6 +198,7 @@
     {
       "attempt_ref": null,
       "cell_id": "B.class_fusion.k1_fusion_universe_4k_20260712",
+      "current_corrected_orientation_evidence_valid": false,
       "evaluation": {
         "in_band": false,
         "min_null_distance": 1.7778843022231428e-06,
@@ -231,6 +236,7 @@
           "rho_ord": 1.4999924255445145
         }
       },
+      "orientation_evidence_status": "historical_uncorrected_reverse_edge_labels",
       "physical": {
         "eigenvalues_centered": [
           -0.3879114230302309,
@@ -729,6 +735,28 @@
     "band_fraction_of_rho_range": 0.01591919832525379,
     "expected_chance_in_band_count": 0.30246476817982204,
     "physical_cells": 19
+  },
+  "orientation_correction": {
+    "affected_cell_ids": [
+      "B.class_fusion.e1_s3_bw_screen_64k_1783837538",
+      "B.class_fusion.e1_s3_bw_screen_4k_1783837537",
+      "B.class_fusion.k1_fusion_universe_4k_20260712"
+    ],
+    "corrected_orientation_replay_performed": false,
+    "corrected_rule": "A stored edge (i,j,g) represents reverse transport (j,i,S3_INV[g]).",
+    "historical_shortlist_valid_for_corrected_estimator": false,
+    "interpretation": "The stored family-B calculation copied g into reverse adjacency. Its numeric outputs and the dependent shortlist are retained as historical records, not valid evidence for the corrected estimator. All other historical values are preserved; this correction supplies no new physical result.",
+    "missing_source_run_ids": [
+      "oph_universe_64k_final_audited_20260711",
+      "oph_universe_4k_viewer_smoke_20260706_v2",
+      "e1_s3_bw_screen_64k_1783837538",
+      "e1_s3_bw_screen_4k_1783837537",
+      "k1_fusion_universe_4k_20260712",
+      "k1_fusion_universe_64k_20260712",
+      "k1_population_transfer_4k_dense_20260712"
+    ],
+    "original_artifact_sha256": "72e0310ad69372e2388ead93890a8e74b9b9109b227638cc3b93a013e7fe3daf",
+    "replay_blocker": "The historical simulator input runs required by the declared survey are absent from the available checkout."
   },
   "row_class": "systematic_readout_survey",
   "runs_missing_at_execution": [
