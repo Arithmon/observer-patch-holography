@@ -34,7 +34,14 @@ The mean-zero real gauge group has a global smooth quotient
 \]
 Eliminating the twelve mean-zero scalar-potential coefficients from
 \eqref{eq:whitney-charged-action} defines a smooth positive metric
-\(\gamma\) on \(\mathcal Q\). With \(J_y=(0,i\psi)\)
+\(\gamma\) on \(\mathcal Q\). In fixed Euclidean-orthonormal slice
+coordinates there are constants \(c_*,C_*>0\) such that
+\begin{equation}
+ \frac{c_*|w|^2}{1+|\psi|^2}\leq\gamma_y(w,w)
+             \leq C_*(1+|\psi|^2)|w|^2.
+ \label{eq:whitney-interacting-global-metric-bound}
+\end{equation}
+This metric is complete. With \(J_y=(0,i\psi)\)
 and \(c\) the remaining constant scalar potential, the reduced action is
 \begin{equation}
  L_{\mathrm{red}}(y,\dot y,c)
@@ -46,10 +53,12 @@ Its Hamiltonian at \(c=0\) is
 with the remaining Gauss constraint \(p(J_y)=0\).
 
 Supply \(\hbar>0\), the Riemannian volume \(d\mu=d\mathrm{vol}_\gamma\),
-and Laplace--Beltrami quantization with the Friedrichs realization. Then
+and Laplace--Beltrami quantization. Then
 \(\mathcal H=L^2(\mathcal Q,d\mu)\) has a nonnegative self-adjoint
-Hamiltonian \(\widehat H\), extending
-\(-\hbar^2\Delta_\gamma/2+V\) on \(C_c^\infty(\mathcal Q)\).
+Hamiltonian \(\widehat H\): the operator
+\(-\hbar^2\Delta_\gamma/2+V\) on \(C_c^\infty(\mathcal Q)\)
+is essentially self-adjoint, and its unique self-adjoint extension is its
+Friedrichs realization.
 The closed, nonzero subspace
 \begin{equation}
  \mathcal H_0=\{f\in\mathcal H:
@@ -113,7 +122,41 @@ Thus \(\gamma\) is independent of the chosen vertical basis and
 smooth. If \(\gamma_y(w,w)=0\), positivity of \(G\) gives
 \(w=-R\eta_*\). Since \(w\) is tangent to the Coulomb slice,
 \(D^{\mathsf T}MD\eta_*=0\), so \(\eta_*=0\) and
-\(w=0\). This proves positivity without a global uniform lower bound.
+\(w=0\).
+
+The stronger bound uses the actual dressed basis. On a tetrahedron \(T\),
+choose a node maximizing \(|z_i|\). Where \(\lambda_i\geq3/4\),
+unit-modulus phases and the triangle inequality give
+\(|W(a)z|\geq(2\lambda_i-1)|z_i|\geq|z_i|/2\).
+This region has volume \(|T|/64\), so
+\[
+ \|W(a)z\|_{L^2(T)}^2\geq\frac{|T|}{1024}|z_T|^2.
+\]
+Summing over tetrahedra gives \(\|W(a)z\|^2\geq c_W|z|^2\),
+uniformly in all unwrapped \(a\), with
+\(c_W=\min_T|T|/1024>0\). The fixed path coefficients also give
+\(\|W(a)\|\leq C\) and \(\|S(a,\psi)\|\leq C|\psi|\).
+Let \(T_c\) and \(B\) be orthonormal bases of the Coulomb and mean-zero
+spaces, and write \(w=(T_cb,z)\). For every \(\eta\), the vertical
+identity and \(T_c^{\mathsf T}MD=0\) give
+\begin{align*}
+ E_\eta&:=G(w+R_y(B\eta),w+R_y(B\eta))\\
+ &=b^{\mathsf T}T_c^{\mathsf T}MT_cb+
+   \eta^{\mathsf T}B^{\mathsf T}D^{\mathsf T}MDB\eta+2\|F_\eta\|^2,\\
+ F_\eta&=Wz+ST_cb+ie(W_0B\eta)\Psi_a.
+\end{align*}
+Both displayed Maxwell matrices are positive. The remaining two terms in
+\(F_\eta-Wz\) have norm at most
+\(C|\psi|(|b|+|\eta|)\). Consequently
+\(|b|^2+|z|^2\leq C(1+|\psi|^2)E_\eta\) for every \(\eta\).
+Taking the minimum proves the lower bound in
+\eqref{eq:whitney-interacting-global-metric-bound}; taking \(\eta=0\)
+proves the upper bound. Constants concern this fixed mesh.
+In global coordinates \(q\), the lower bound implies
+\(\gamma\geq c_*(1+|q|^2)^{-1}I\). An escaping curve therefore has
+length at least \(\sqrt{c_*}\) times its radial \(\operatorname{arsinh}|q|\)
+variation and cannot have finite length. Smooth positivity on compact sets
+then proves completeness.
 
 Write \(\phi=\eta+c\mathbf1\), with \(\eta\in\mathfrak g_0\).
 The twelve \(\eta\) equations are precisely the preceding minimization,
@@ -161,8 +204,12 @@ linear in its second argument,
 The representation theorem and its symmetry version are standard
 functional analysis \cite{IbortLledoPerezPardo2014}; the reduction and
 coefficient hypotheses needed here have been verified above. This
-argument requires neither metric completeness nor an essential
-self-adjointness assertion for the initial differential operator.
+argument identifies the Friedrichs realization. Completeness strengthens
+this identification: apply the essential-self-adjointness theorem of
+Shubin \cite[Theorem~1.1]{Shubin2001}, with zero magnetic one-form and
+scalar potential \(2V/\hbar^2\). The manifold and measure are smooth,
+the metric is complete, and this potential is smooth and nonnegative.
+Thus the minimal operator has exactly one self-adjoint extension.
 
 The residual circle \(T_\alpha(a,\psi)=(a,e^{i\alpha}\psi)\)
 preserves the slice, its vertical spaces, \(G\), and \(V\). It
@@ -180,12 +227,12 @@ with the resolvent of \(\widehat H\). Hence this subspace reduces
 the operator, and its restriction is self-adjoint. Smooth compactly
 supported functions of \(a\) and \(\sum_i|\psi_i|^2\)
 give nonzero invariant vectors; the subspace is infinite-dimensional.
-The space \(P_0C_c^\infty(\mathcal Q)\) is a dense form core
+The space \(P_0C_c^\infty(\mathcal Q)\) is an operator core
 for the restriction: averaging preserves smoothness, its support lies
 in the compact circle-saturation of the original support, and averaging
-is contractive in the closed-form norm. Apply \(P_0\) to a form-core
-approximating sequence for any invariant form-domain vector. This asserts
-a form core, not an operator core for the restricted Hamiltonian.
+is contractive in the graph norm because it commutes with \(\widehat H\).
+Apply \(P_0\) to the compactly supported smooth graph approximants supplied
+by essential self-adjointness. It is also a form core.
 Spectral calculus supplies the stated strongly continuous unitary group.
 For initial states in \(\mathcal D(\widehat H_0)\) it solves
 \(i\hbar\partial_t f=\widehat H_0f\) in the strong sense; for
@@ -209,6 +256,60 @@ The point \(\psi=0\), where the circle has a stabilizer, remains
 an ordinary point of \(\mathcal Q\). Taking circle-invariant Hilbert
 vectors avoids imposing a smooth structure on a singular full orbit space.
 
+\begin{proposition}[A normalized neutral initial state]
+\label{prop:whitney-interacting-gaussian-state}
+In the orthonormal \(56\)-dimensional slice coordinates write
+\(d\mu=\rho(q)\,dq\), with \(\rho=\sqrt{\det\gamma}\).
+For any supplied \(\sigma>0\), the function
+\begin{equation}
+ f_\sigma(q)=\rho(q)^{-1/2}(2\pi\sigma^2)^{-14}
+                    \exp\!\left(-\frac{|q|^2}{4\sigma^2}\right)
+ \label{eq:whitney-interacting-gaussian-state}
+\end{equation}
+is a normalized vector in \(\mathcal D(\widehat H_0)\). Its initial
+multiplication observables satisfy
+\begin{align}
+ \mathbb E\|\Psi_a\|_{L^2}^2&=\frac45\sigma^2|\Omega|,&
+ \mathbb E\|\Psi_a\|_{L^4}^4&=\frac{48}{35}\sigma^4|\Omega|,
+ \label{eq:whitney-interacting-gaussian-matter-moments}\\
+ \mathbb E\frac{a^{\mathsf T}Ka}{2}
+       &=\frac{\sigma^2}{2}\operatorname{tr}(T_c^{\mathsf T}KT_c).
+ \label{eq:whitney-interacting-gaussian-magnetic-moment}
+\end{align}
+\end{proposition}
+\begin{proof}
+The measure \(|f_\sigma|^2d\mu\) is exactly
+\(N(0,\sigma^2I_{56})\). The residual circle acts orthogonally and
+preserves \(\rho\), so \(f_\sigma\) is normalized and neutral.
+
+For the operator-domain condition, every derivative of \(W\) in \(a\)
+is uniformly bounded, and the corresponding derivatives of \(S\) are
+linear in \(\psi\). The vertical Gram matrix has the fixed positive
+lower bound \(B^{\mathsf T}D^{\mathsf T}MDB\). Differentiating its inverse
+and the Schur formula shows polynomial growth of all metric derivatives.
+The global metric bound gives polynomial growth of \(\gamma^{-1}\)
+and its derivatives; \(\partial_j\log\rho=
+\tfrac12\operatorname{tr}(\gamma^{-1}\partial_j\gamma)\) gives the same
+control for derivatives of \(\log\rho\). The potential and its
+derivatives grow polynomially, with \(V(q)\leq C(1+|q|)^4\).
+Thus \(f_\sigma\) and the differential expression
+\((-\hbar^2\Delta_\gamma/2+V)f_\sigma\) lie in \(L^2(d\mu)\):
+after multiplication by \(\sqrt\rho\), each differentiated term is
+bounded by a polynomial times a Gaussian. Integration by parts against
+\(C_c^\infty\) puts the state in the adjoint domain; essential
+self-adjointness identifies that domain with \(\mathcal D(\widehat H)\).
+
+Conditional on \(a\), independent circular Gaussian nodal coefficients
+give pointwise second and fourth moments
+\(2\sigma^2\sum_i\lambda_i^2\) and
+\(8\sigma^4(\sum_i\lambda_i^2)^2\). The simplex averages of
+\(\sum_i\lambda_i^2\) and \((\sum_i\lambda_i^2)^2\) are
+\(2/5\) and \(6/35\), respectively. This proves the matter identities;
+the magnetic identity follows from the transverse Gaussian covariance.
+\end{proof}
+This is a selected initial state, without a ground-state,
+physical-preparation, or computed-time-history assertion.
+
 The metric coefficients and their Schur reduction are approximated by
 positive element quadrature in
 \path{code/electromagnetism/whitney_interacting_quantum.py}; independent
@@ -219,8 +320,11 @@ four, five and six at a fixed nonzero configuration. The latter comparison
 measures quadrature sensitivity, not a certified integration error. The
 tests do not prove closability or self-adjointness; those are the analytic
 arguments above. The quantum prescription chooses a measure, operator
-ordering, extension and \(\hbar\). No equivalence with quantization
-before reduction, unique quantization, quantum trajectory computation,
-continuum interacting field theory, physical quantum state, or Born-rule
-selection follows. The established attachment is to the same finite
+ordering and \(\hbar\); the extension is unique for that operator.
+The code evaluates Gaussian half-densities and exact moment formulae;
+its curved-measure amplitudes use the approximate metric density.
+No equivalence with quantization before reduction, unique quantization,
+quantum trajectory computation, continuum interacting field theory,
+physical-state selection, or Born-rule selection follows.
+The established attachment is to the same finite
 charged action and its full kinetic metric.

@@ -12,7 +12,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from functools import lru_cache
+from fractions import Fraction
 from itertools import combinations, product
+from math import isfinite
 
 import numpy as np
 from scipy.linalg import null_space
@@ -187,3 +189,80 @@ def coulomb_representative(a, psi, charge=1.0, mesh=None):
     xi = -b@np.linalg.solve(b.T@mesh.d.T@mesh.mass@mesh.d@b,
                            b.T@mesh.d.T@mesh.mass@a)
     return a+mesh.d@xi, np.exp(1j*charge*xi)*psi, xi
+
+
+def _state_arguments(q, sigma):
+    if not np.isrealobj(q):
+        raise ValueError("finite real 56-dimensional state coordinates required")
+    q = np.asarray(q, dtype=float)
+    if q.shape != (56,) or not np.isfinite(q).all():
+        raise ValueError("finite real 56-dimensional state coordinates required")
+    try:
+        valid_sigma = (not isinstance(sigma, (bool, np.bool_)) and np.ndim(sigma) == 0
+                       and np.isrealobj(sigma) and isfinite(sigma) and sigma > 0)
+    except (TypeError, ValueError, OverflowError):
+        valid_sigma = False
+    if not valid_sigma:
+        raise ValueError("positive finite real sigma required")
+    return q, float(sigma)
+
+
+def gaussian_half_density_log(q, sigma=1.0):
+    """Log of the exactly normalized selected Gaussian in Lebesgue L2(R56).
+
+    This is g=sqrt(rho)*f, not the curved-measure wavefunction f. Its squared
+    modulus is the density of N(0, sigma**2 I56). No state evolution is run.
+    """
+    q, sigma = _state_arguments(q, sigma)
+    return float(-14*(np.log(2*np.pi)+2*np.log(sigma))-(q/sigma)@(q/sigma)/4)
+
+
+def gaussian_state_log_amplitude(q, sigma=1.0, charge=1.0, mesh=None):
+    """Approximate log f=log g-log(det gamma)/4 at orthonormal slice q.
+
+    Exact normalization belongs to the analytic state using the EXACT
+    Riemannian density. Here gamma uses numerical element quadrature, so this
+    pointwise amplitude is an approximation, not a normalization certificate.
+    """
+    q, sigma = _state_arguments(q, sigma)
+    mesh = geometry() if mesh is None else mesh
+    section = mesh.slice
+    if (section.shape != (68, 56)
+            or not np.allclose(section.T@section, np.eye(56), atol=1e-12, rtol=0)
+            or not np.allclose(section[:42, 30:], 0, atol=1e-12, rtol=0)
+            or not np.allclose(section[42:, :30], 0, atol=1e-12, rtol=0)
+            or not np.allclose(section[42:, 30:], np.eye(26), atol=1e-12, rtol=0)
+            or not np.allclose(mesh.d.T@mesh.mass@section[:42, :30], 0,
+                               atol=1e-11, rtol=0)):
+        raise ValueError("orthonormal Coulomb frame with standard scalar coordinates required")
+    a = mesh.slice[:42, :30]@q[:30]
+    psi = q[30:43]+1j*q[43:]
+    gamma, _, _, _ = reduced_coefficients(a, psi, charge=charge, mesh=mesh)
+    sign, logdet = np.linalg.slogdet(gamma)
+    if sign <= 0 or not np.isfinite(logdet):
+        raise ValueError("numerically positive reduced metric required")
+    return float(gaussian_half_density_log(q, sigma)-logdet/4)
+
+
+def gaussian_initial_moments(sigma, volume, transverse_stiffness_trace):
+    """Exact algebraic selected-state moments, preserving rational inputs.
+
+    Geometry/trace values supplied as floats retain their numerical precision;
+    this function does not certify their geometric evaluation. Scalar real
+    and imaginary coordinates each have variance sigma**2.
+    """
+    for name, value, positive in (("sigma", sigma, True), ("volume", volume, True),
+                                 ("trace", transverse_stiffness_trace, False)):
+        try:
+            valid = (not isinstance(value, (bool, np.bool_)) and np.ndim(value) == 0
+                     and np.isrealobj(value) and isfinite(value)
+                     and (value > 0 if positive else value >= 0))
+        except (TypeError, ValueError, OverflowError):
+            valid = False
+        if not valid:
+            raise ValueError("finite real "+name+" with the required sign expected")
+    return {
+        "matter_l2": Fraction(4, 5)*sigma**2*volume,
+        "matter_l4": Fraction(48, 35)*sigma**4*volume,
+        "magnetic_energy": Fraction(1, 2)*sigma**2*transverse_stiffness_trace,
+    }

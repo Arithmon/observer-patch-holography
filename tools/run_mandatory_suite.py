@@ -370,6 +370,7 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
         [sys.executable, "-m", "pytest", "-q",
          "code/electromagnetism/test_whitney_spatial_consistency.py",
          "code/electromagnetism/test_whitney_interacting_quantum.py",
+         "code/electromagnetism/test_whitney_quantum_state.py",
          "code/electromagnetism/test_whitney_charged_dynamics.py"],
     ),
     (

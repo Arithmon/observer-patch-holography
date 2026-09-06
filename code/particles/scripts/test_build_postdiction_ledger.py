@@ -28,6 +28,8 @@ def whitney_rows():
 
 @pytest.fixture(scope="module")
 def coupled_whitney_rows(result):
+    # New initial-state evidence strengthens its existing quantum row.
+    assert len(result["sections"]["forced_structure"]) == 52
     names = {"whitney_spatial_consistency", "whitney_interacting_quantum", "whitney_charged_execution"}
     rows = {row["id"]: row for row in result["sections"]["forced_structure"] if row["id"] in names}
     assert set(rows) == names
@@ -888,8 +890,36 @@ def test_coupled_whitney_rows_separate_analytic_numeric_and_empirical_scopes(cou
     assert quantum["computed_quantum_state_history"] is False
     assert quantum["analytic_proof_formalized_in_lean"] is False
     assert quantum["lean_receipts"] == [] and quantum["lean_declarations"] == {}
-    assert "independent_verifier_result" not in quantum
-    for text in ("actual positive kinetic metric", "Schur metric", "R^30 x C^13", "Friedrichs", "form core"):
+    for key in ("metric_completeness_established", "essential_self_adjointness_established",
+                "unique_extension_given_ordering", "initial_state_constructed",
+                "initial_observables_provided"):
+        assert quantum[key] is True
+    summary = quantum["independent_verifier_result"]
+    assert summary["accepted"] is True
+    assert summary["initial_state_constructed"] is True
+    assert summary["initial_observables_provided"] is True
+    assert all(summary[key] is False for key in ("quantum_time_history", "observer_history", "physical_comparison",
+                                               "analytic_operator_domain_proved_by_numeric_replay"))
+    assert summary["real_configuration_dimension"] == 56
+    assert {key: summary[key] for key in ("gaussian_sigma", "gaussian_norm_squared",
+                                        "matter_l2_coefficient", "matter_l4_coefficient")} == {
+        "gaussian_sigma": "1/2", "gaussian_norm_squared": "1",
+        "matter_l2_coefficient": "1/5", "matter_l4_coefficient": "3/35",
+    }
+    assert summary["volume_in_Qsqrt5"] == ["10", "10/3"]
+    support = quantum["analytic_supporting_results"]
+    assert support["labels"] == [
+        "eq:whitney-interacting-global-metric-bound",
+        "prop:whitney-interacting-gaussian-state",
+        "eq:whitney-interacting-gaussian-state",
+        "eq:whitney-interacting-gaussian-matter-moments",
+        "eq:whitney-interacting-gaussian-magnetic-moment",
+    ]
+    paper = (ledger.REPO / support["source"]).read_text(encoding="utf-8")
+    assert all("\\label{" + label + "}" in paper for label in support["labels"])
+    assert "code/electromagnetism/runtime/whitney_quantum_state_receipt.json" in quantum["artifact_refs"]
+    assert "code/electromagnetism/verify_whitney_quantum_state.py" in quantum["artifact_refs"]
+    for text in ("actual positive kinetic metric", "Schur metric", "R^30 x C^13", "Friedrichs", "form core", "complete", "essentially self-adjoint", "operator core", "Hamiltonian domain"):
         assert text in quantum["statement"]
     for text in ("hbar", "quantization measure", "ordering", "not formalized in Lean", "unique quantization"):
         assert text in quantum["hypothesis_boundary"]
@@ -908,7 +938,8 @@ def test_coupled_whitney_rows_separate_analytic_numeric_and_empirical_scopes(cou
 def test_coupled_projection_is_stable_when_replayed_float_diagnostics_change(coupled_whitney_rows, monkeypatch):
     rows = coupled_whitney_rows
     by_parent = {"spatial_consistency": rows["whitney_spatial_consistency"],
-                 "charged_dynamics": rows["whitney_charged_execution"]}
+                 "charged_dynamics": rows["whitney_charged_execution"],
+                 "quantum_state": rows["whitney_interacting_quantum"]}
     calls = []
     def replay(stem):
         calls.append(stem)
@@ -923,7 +954,7 @@ def test_coupled_projection_is_stable_when_replayed_float_diagnostics_change(cou
         return {"scope": row["certificate_scope"]}, summary
     monkeypatch.setattr(ledger, "_verify_whitney_coupled_parent", replay)
     actual = {row["id"]: row for row in ledger._whitney_coupled_rows()}
-    assert calls == ["spatial_consistency", "charged_dynamics"]
+    assert calls == ["spatial_consistency", "charged_dynamics", "quantum_state"]
     assert actual == rows
 
 
@@ -935,12 +966,34 @@ def test_coupled_projection_is_stable_when_replayed_float_diagnostics_change(cou
     ("charged_dynamics", "quantum_state", True),
     ("charged_dynamics", "observer_history", True),
     ("charged_dynamics", "physical_continuum", True),
+    ("quantum_state", "accepted", False),
+    ("quantum_state", "accepted", 1),
+    ("quantum_state", "initial_state_constructed", False),
+    ("quantum_state", "initial_observables_provided", False),
+    ("quantum_state", "quantum_time_history", True),
+    ("quantum_state", "quantum_time_history", 0),
+    ("quantum_state", "observer_history", True),
+    ("quantum_state", "physical_comparison", True),
+    ("quantum_state", "analytic_operator_domain_proved_by_numeric_replay", True),
+    ("quantum_state", "real_configuration_dimension", 56.0),
+    ("quantum_state", "real_configuration_dimension", 55),
+    ("quantum_state", "scope", "OTHER_SCOPE"),
+    ("quantum_state", "gaussian_sigma", "0"),
+    ("quantum_state", "gaussian_sigma", "-1/2"),
+    ("quantum_state", "gaussian_sigma", 0.5),
+    ("quantum_state", "gaussian_sigma", "1/0"),
+    ("quantum_state", "gaussian_norm_squared", "2"),
+    ("quantum_state", "matter_l2_coefficient", "2/10"),
+    ("quantum_state", "matter_l4_coefficient", "nan"),
+    ("quantum_state", "volume_in_Qsqrt5", ["10", "20/6"]),
+    ("quantum_state", "volume_in_Qsqrt5", ["10"]),
 ])
 def test_coupled_builder_rejects_promotion_flags_even_from_provider(
     coupled_whitney_rows, monkeypatch, parent, key, value
 ):
     by_parent = {"spatial_consistency": coupled_whitney_rows["whitney_spatial_consistency"],
-                 "charged_dynamics": coupled_whitney_rows["whitney_charged_execution"]}
+                 "charged_dynamics": coupled_whitney_rows["whitney_charged_execution"],
+                 "quantum_state": coupled_whitney_rows["whitney_interacting_quantum"]}
     def replay(stem):
         row = by_parent[stem]
         summary = deepcopy(row["independent_verifier_result"])
@@ -955,6 +1008,7 @@ def test_coupled_builder_rejects_promotion_flags_even_from_provider(
 @pytest.mark.parametrize("parent,provider", [
     ("spatial_consistency", "Lean/Screen/WhitneySpatialConsistency.lean"),
     ("charged_dynamics", "code/electromagnetism/verify_whitney_charged_dynamics.py"),
+    ("quantum_state", "code/electromagnetism/verify_whitney_quantum_state.py"),
 ])
 def test_coupled_fresh_parent_replay_rejects_changed_provider_bytes(monkeypatch, parent, provider):
     original = Path.read_bytes
@@ -984,11 +1038,20 @@ def test_coupled_named_spatial_algebra_cannot_be_replaced_by_empty_provider(
         ledger._lean_receipt("WhitneySpatialConsistency", declarations={"WhitneySpatialConsistency": tuple(declarations)})
 
 
+@pytest.mark.parametrize("missing_label", [
+    "thm:whitney-interacting-quantum",
+    "eq:whitney-interacting-global-metric-bound",
+    "prop:whitney-interacting-gaussian-state",
+    "eq:whitney-interacting-gaussian-state",
+    "eq:whitney-interacting-gaussian-matter-moments",
+    "eq:whitney-interacting-gaussian-magnetic-moment",
+])
 def test_coupled_missing_analytic_quantum_theorem_is_not_silently_promoted(
-    coupled_whitney_rows, monkeypatch
+    coupled_whitney_rows, monkeypatch, missing_label
 ):
     by_parent = {"spatial_consistency": coupled_whitney_rows["whitney_spatial_consistency"],
-                 "charged_dynamics": coupled_whitney_rows["whitney_charged_execution"]}
+                 "charged_dynamics": coupled_whitney_rows["whitney_charged_execution"],
+                 "quantum_state": coupled_whitney_rows["whitney_interacting_quantum"]}
     def replay(stem):
         row = by_parent[stem]
         return {"scope": row["certificate_scope"]}, deepcopy(row["independent_verifier_result"])
@@ -996,7 +1059,10 @@ def test_coupled_missing_analytic_quantum_theorem_is_not_silently_promoted(
     original = Path.read_text
     quantum_path = ledger.REPO/"paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex"
     def empty(path, *args, **kwargs):
-        return "No analytic theorem." if path == quantum_path else original(path, *args, **kwargs)
+        source = original(path, *args, **kwargs)
+        if path == quantum_path:
+            return source.replace("\\label{" + missing_label + "}", "")
+        return source
     monkeypatch.setattr(Path, "read_text", empty)
     with pytest.raises(SystemExit, match="analytic theorem missing"):
         ledger._whitney_coupled_rows()

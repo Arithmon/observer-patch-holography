@@ -9369,34 +9369,41 @@
     },
     {
       "claim_id": "OPH-WHITNEY-INTERACTING-QUANTUM",
-      "statement": "For the same finite charged action with nonzero charge and nonnegative potential, the actual 68-real-coordinate kinetic metric is smooth and positive. The mean-zero real gauge action has a global smooth Coulomb slice R^30 x C^13, and eliminating its twelve scalar-potential coefficients gives the positive kinetic Schur complement on that slice. The remaining constant multiplier enforces total Gauss neutrality. Supplying hbar>0, the Riemannian volume of that metric and a Laplace-Beltrami/Friedrichs prescription yields a densely defined closable nonnegative form and a self-adjoint interacting Hamiltonian on L2 of the 56-dimensional slice. Residual U(1) invariance preserves the closed form and resolvent; its nonzero infinite-dimensional invariant subspace reduces the Hamiltonian, whose restriction generates unitary neutral-state dynamics. The paper specifies the operator domain and invariant form core. This analytic proof is not a Lean self-adjointness theorem. Independent exact simplex moments and generic finite coefficient/gauge/Schur tests support the action reduction; nonzero-potential coefficients use quadrature approximations with order-sensitivity controls. No unique quantization, essential self-adjointness, equivalence of quantization orders, executed quantum state, continuum interacting QFT or physical Born/state/clock selection is inferred.",
+      "statement": "For the same finite charged action with nonzero charge and nonnegative potential, the actual 68-real-coordinate kinetic metric is smooth and positive. The mean-zero real gauge action has a global smooth Coulomb slice R^30 x C^13; eliminating its twelve scalar-potential coefficients gives the kinetic Schur metric gamma. Uniform dressed-mass coercivity gives fixed-mesh bounds c/(1+|psi|^2) Id <= gamma <= C(1+|psi|^2) Id and metric completeness. Supplying hbar>0, Riemannian volume and Laplace-Beltrami ordering then makes the nonnegative formal Hamiltonian essentially self-adjoint on compactly supported smooth functions, so its Friedrichs realization is its unique self-adjoint extension. Residual U(1) invariance gives a nonzero infinite-dimensional neutral reducing Hilbert space and unitary dynamics; averaged compactly supported smooth functions form an operator core. The state defined by a declared Gaussian half-density is normalized, neutral and in the strong Hamiltonian domain. Exact Gaussian and simplex moments give its initial integrated scalar quadratic and quartic observables; a separately verified packet supplies their values at declared width and couplings. These analytic proofs are not Lean self-adjointness or completeness theorems. Independent exact simplex moments and finite coefficient/gauge/Schur tests support the action reduction; nonzero-potential coefficients use quadrature approximations. Neither unique quantization, equivalence of quantization orders, quantum time-history execution, continuum interacting QFT nor physical Born/state/clock selection is inferred.",
       "owner_paper": "paper/observers_are_all_you_need.tex",
-      "tier": "analytic_same_action_gauge_reduction_and_declared_neutral_Friedrichs_quantization",
+      "tier": "analytic_complete_reduced_metric_and_essentially_self_adjoint_neutral_Hamiltonian",
       "assumptions": [
         "declared_euclidean_cone_geometry_and_Whitney_metric",
         "supplied_scalar_QED_action_and_real_unwrapped_connection",
         "exact_dressed_scalar_action_with_full_shape_derivatives",
         "autonomous_positive_energy_temporal_gauge_and_neutral_load_boundary",
         "nonzero_charge_and_mean_zero_real_gauge_reduction",
-        "declared_Riemannian_Laplace_Beltrami_Friedrichs_quantization"
+        "declared_Riemannian_Laplace_Beltrami_Friedrichs_quantization",
+        "declared_neutral_Gaussian_half_density_trial_state"
       ],
       "imported_results": [
         "finite_dimensional_gauge_reduction_and_Schur_complement",
+        "complete_manifold_semibounded_Schrodinger_essential_self_adjointness",
         "closed_semibounded_form_representation_theorem",
         "compact_group_invariant_form_reduction",
-        "spectral_unitary_evolution"
+        "spectral_unitary_evolution",
+        "Gaussian_Wick_and_simplex_moment_identities"
       ],
-      "oph_specific_delta": "Uses the complete field-dependent kinetic metric of the same charged action to construct one interacting neutral Hilbert realization. It avoids treating a Coulomb principal block as the reduced metric or quotienting the residual stabilizer singularity. Gauge reduction, Friedrichs extensions and compact-group averaging are standard mathematical inputs; no fundamental quantum prescription is derived from the observer records.",
-      "novelty_type": "same_full_kinetic_metric_interacting_Hilbert_realization_with_explicit_quantization_choices",
+      "oph_specific_delta": "The full field-dependent kinetic metric of the same charged action obeys a global fixed-mesh coercivity bound, making the reduced configuration manifold complete. This removes self-adjoint extension freedom for the declared metric measure and ordering and supports an explicit normalized neutral strong-domain state with exact initial scalar observables. Gauge reduction, complete-manifold essential self-adjointness and compact-group averaging are standard inputs; neither the quantum prescription nor the trial state is selected by observer records.",
+      "novelty_type": "same_action_global_metric_completeness_and_neutral_initial_state_with_declared_quantization",
       "evidence": [
         "paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex",
         "paper/tex_fragments/WHITNEY_CHARGED_MATTER.tex",
         "code/electromagnetism/whitney_interacting_quantum.py",
-        "code/electromagnetism/test_whitney_interacting_quantum.py"
+        "code/electromagnetism/test_whitney_interacting_quantum.py",
+        "code/electromagnetism/whitney_quantum_state.py",
+        "code/electromagnetism/verify_whitney_quantum_state.py",
+        "code/electromagnetism/test_whitney_quantum_state.py",
+        "code/electromagnetism/runtime/whitney_quantum_state_receipt.json"
       ],
-      "falsifier": "The vertical-velocity identity, scalar normalization, Schur minimum or constant Gauss sign fails; the mean-zero action has an unaccounted stabilizer; the form is not dense/closable or its operator domain is incorrect; the residual circle does not preserve the closed form/domain; the neutral restriction is not self-adjoint; finite quadrature tests are represented as an operator-domain proof or a physical quantum realization.",
+      "falsifier": "The vertical-velocity identity, scalar normalization, Schur minimum or constant Gauss sign fails; the mean-zero action has an unaccounted stabilizer; the uniform dressed-mass bound, metric completeness or essential self-adjointness argument fails; the operator domain or invariant core is incorrect; the residual circle does not preserve the domain; the Gaussian normalization, strong-domain membership or exact initial moments fail; fixed-mesh constants are presented as uniform spatial bounds, quadrature as an analytic proof, unique extension as unique quantization, or a chosen initial state as an executed quantum history or physical preparation.",
       "scope_if_false": "The finite interacting reduction or the declared quantization fails. The free radiative Fock construction and classical action/existence theorem retain their separate domains; no empirical prediction has been promoted.",
-      "status": "analytic_positive_Schur_metric_and_Friedrichs_Hamiltonian_on_neutral_Hilbert_space__quantization_imported",
+      "status": "analytic_complete_Schur_metric_and_essential_self_adjointness__normalized_neutral_initial_state__quantization_and_state_supplied",
       "claim_class": "conditional_implication",
       "gates": [
         730,
@@ -9408,7 +9415,7 @@
         "consumed": [],
         "open": [],
         "boundary": [],
-        "rationale": "The theorem starts from the supplied finite scalar action, its real gauge representation and an explicitly chosen quantum measure, ordering, extension and hbar. Registered source-produced effects, physical instruments, Born statistics and operational clock claims are neither used nor established, so no canonical physical premise is consumed or discharged."
+        "rationale": "The theorem starts from the supplied finite scalar action, its real gauge representation and an explicitly chosen quantum measure, ordering and hbar. A Gaussian width and trial state are also declared; completeness fixes the self-adjoint extension for that rule. Registered source-produced effects, physical instruments, Born statistics and operational clock claims are neither used nor established, so no canonical physical premise is consumed or discharged."
       }
     },
     {

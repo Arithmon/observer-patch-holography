@@ -9,6 +9,7 @@ do not substitute for the paper's closed-form and operator-domain proofs.
 from functools import lru_cache
 from dataclasses import replace
 from math import factorial
+from fractions import Fraction
 from pathlib import Path
 import sys
 
@@ -246,3 +247,111 @@ def test_reject_malformed_configuration(part):
         a = a.astype(complex)+1j
     with pytest.raises(ValueError, match="coefficients required"):
         quantum.coefficients(a, psi, mesh=mesh)
+
+
+def test_large_unwrapped_phases_obey_pointwise_dominant_node_bound():
+    mesh, a, psi = fixture_data()
+    for scale in (0, 1e3, 1e9):
+        _, jacobian, _ = quantum.scalar_fields(scale*a, psi, 0.7, mesh)
+        dressed = jacobian[:, 42:55]
+        for i in range(13):
+            v = 0.7*np.exp(1j*np.arange(13))
+            v[i] = 1
+            corner = mesh.nodal[:, i] >= 0.75
+            assert corner.any()
+            actual = abs(dressed[corner]@v)
+            bound = 2*mesh.nodal[corner, i]-1
+            assert np.all(actual >= bound-2e-14)
+    # These are pointwise checks; fixed quadrature does not resolve the
+    # oscillatory integrals at these large unwrapped configurations.
+    lam = np.array([3/4, 1/12, 1/12, 1/12])
+    phases = np.array([1, -1, -1, -1])
+    assert lam@phases == pytest.approx(1/2)
+    assert abs(lam[1:]@phases[1:]) < 1/2  # deleting the dominant term fails
+    assert Fraction(1, 4)**3*Fraction(1, 4)*Fraction(1, 4) == Fraction(1, 1024)
+
+
+def test_gaussian_normalization_by_independent_56_dimensional_radial_integral():
+    from scipy.integrate import quad
+    from scipy.special import gammaln
+    sigma = 0.5
+    log_area = np.log(2)+28*np.log(np.pi)-gammaln(28)
+    def radial(r):
+        if r == 0:
+            return 0
+        q = np.zeros(56)
+        q[0] = r
+        return np.exp(log_area+55*np.log(r)+2*quantum.gaussian_half_density_log(q, sigma))
+    integral, error = quad(radial, 0, np.inf, epsabs=2e-12, epsrel=2e-12)
+    assert integral == pytest.approx(1, abs=3e-12)
+    assert error < 3e-12
+    # An amplitude normalized as if dimension were 52 fails the radial check.
+    assert abs(integral*(2*np.pi*sigma**2)**2-1) > 1
+
+
+def test_gaussian_log_amplitude_density_factor_and_neutrality():
+    mesh, a, psi = fixture_data()
+    q = np.concatenate((mesh.slice[:42, :30].T@a, psi.real, psi.imag))
+    logg = quantum.gaussian_half_density_log(q, Fraction(1, 2))
+    logf = quantum.gaussian_state_log_amplitude(q, 0.5, 0.7, mesh)
+    gamma, _, _, _ = quantum.reduced_coefficients(a, psi, 0.7, mesh=mesh)
+    logdet = np.linalg.slogdet(gamma)[1]
+    assert logf+logdet/4 == pytest.approx(logg, abs=3e-13)
+    assert abs(logf+logdet/2-logg) > 1  # density versus metric determinant
+    moved = np.exp(0.63j)*psi
+    rotated = np.concatenate((q[:30], moved.real, moved.imag))
+    assert quantum.gaussian_half_density_log(rotated, 0.5) == pytest.approx(logg, abs=3e-13)
+    assert quantum.gaussian_state_log_amplitude(rotated, 0.5, 0.7, mesh) == pytest.approx(logf, abs=3e-13)
+
+
+def test_gaussian_matter_moments_against_exact_wick_and_simplex_integration():
+    sigma, volume, trace = Fraction(2, 3), Fraction(7, 5), Fraction(11, 7)
+    def simplex_mean(powers):
+        result = Fraction(factorial(3), factorial(3+sum(powers)))
+        for power in powers:
+            result *= factorial(power)
+        return result
+    quadratic = sum(simplex_mean(tuple(2*int(k == i) for k in range(4))) for i in range(4))
+    quartic = sum(simplex_mean(tuple(2*int(k == i)+2*int(k == j) for k in range(4)))
+                  for i in range(4) for j in range(4))
+    moments = quantum.gaussian_initial_moments(sigma, volume, trace)
+    # Independent real/imaginary variance and circular-Gaussian Wick pairing.
+    assert moments['matter_l2'] == 2*sigma**2*quadratic*volume
+    assert moments['matter_l4'] == 2*(2*sigma**2)**2*quartic*volume
+    assert moments['magnetic_energy'] == sigma**2*trace/2
+    assert all(isinstance(value, Fraction) for value in moments.values())
+    assert moments['matter_l2'] != sigma**2*quadratic*volume
+    assert moments['matter_l4'] != (2*sigma**2)**2*quartic*volume
+
+
+def test_gaussian_state_rejects_wrong_coordinate_frame():
+    mesh, _, _ = fixture_data()
+    section = mesh.slice.copy()
+    section[:, 0] *= 2
+    with pytest.raises(ValueError, match='orthonormal Coulomb frame'):
+        quantum.gaussian_state_log_amplitude(np.zeros(56), mesh=replace(mesh, slice=section))
+    # An orthogonal exchange of field and scalar columns is also invalid.
+    section = mesh.slice.copy()
+    section[:, [0, 30]] = section[:, [30, 0]]
+    with pytest.raises(ValueError, match='orthonormal Coulomb frame'):
+        quantum.gaussian_state_log_amplitude(np.zeros(56), mesh=replace(mesh, slice=section))
+
+
+@pytest.mark.parametrize('sigma', [0, -1, np.nan, np.inf, 1j, [1], True])
+def test_gaussian_rejects_invalid_width(sigma):
+    with pytest.raises(ValueError, match='sigma'):
+        quantum.gaussian_half_density_log(np.zeros(56), sigma)
+
+
+@pytest.mark.parametrize('q', [np.zeros(55), np.zeros((56, 1)), np.full(56, np.nan),
+                             np.full(56, np.inf), np.ones(56, dtype=complex)*1j])
+def test_gaussian_rejects_invalid_coordinates(q):
+    with pytest.raises(ValueError, match='56-dimensional'):
+        quantum.gaussian_half_density_log(q)
+
+
+@pytest.mark.parametrize('arguments', [(0, 1, 1), (1, 0, 1), (1, 1, -1),
+                                     (1, np.inf, 1), (1, 1, 1j), (True, 1, 1)])
+def test_gaussian_moments_reject_invalid_parameters(arguments):
+    with pytest.raises(ValueError, match='required sign'):
+        quantum.gaussian_initial_moments(*arguments)

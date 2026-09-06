@@ -29,6 +29,7 @@ docs/POSTDICTION_LEDGER.md.
 from __future__ import annotations
 
 import argparse
+from fractions import Fraction
 import importlib.util
 import hashlib
 import json
@@ -4692,7 +4693,7 @@ def _whitney_dynamics_rows() -> list[dict[str, Any]]:
 
 def _verify_whitney_coupled_parent(stem: str) -> tuple[dict[str, Any], dict[str, Any]]:
     """Load and independently replay a current parent on every invocation."""
-    if stem not in {"spatial_consistency", "charged_dynamics"}:
+    if stem not in {"spatial_consistency", "charged_dynamics", "quantum_state"}:
         raise SystemExit("unknown coupled Whitney evidence parent")
     path = CODE / "electromagnetism" / f"verify_whitney_{stem}.py"
     spec = importlib.util.spec_from_file_location(f"whitney_{stem}_ledger_verifier", path)
@@ -4708,11 +4709,13 @@ def _whitney_coupled_rows() -> list[dict[str, Any]]:
     """Controlled action consistency, finite quantization and classical execution.
 
     The analytic theorems remain paper proofs. Numeric parents are replayed
-    freshly, but only their stable categorical/count fields enter this ledger.
+    freshly, but only their stable categories, counts and exact rational
+    strings enter this ledger.
     No floating-point replay residual becomes a platform-dependent projection.
     """
     spatial_receipt, spatial_verified = _verify_whitney_coupled_parent("spatial_consistency")
     charged_receipt, charged_verified = _verify_whitney_coupled_parent("charged_dynamics")
+    quantum_receipt, quantum_verified = _verify_whitney_coupled_parent("quantum_state")
     for key in ("continuum_trajectory_claimed", "observer_history_claimed", "uniform_bound_certified_by_numerics"):
         if spatial_verified[key] is not False:
             raise SystemExit("coupled Whitney spatial evidence cannot promote " + key)
@@ -4721,6 +4724,34 @@ def _whitney_coupled_rows() -> list[dict[str, Any]]:
     for key in ("observer_history", "quantum_state", "physical_continuum"):
         if charged_verified[key] is not False:
             raise SystemExit("coupled Whitney execution cannot promote " + key)
+    for key in ("accepted", "initial_state_constructed", "initial_observables_provided"):
+        if quantum_verified[key] is not True:
+            raise SystemExit("coupled Whitney quantum initial evidence missing: " + key)
+    for key in ("quantum_time_history", "observer_history", "physical_comparison",
+                "analytic_operator_domain_proved_by_numeric_replay"):
+        if quantum_verified[key] is not False:
+            raise SystemExit("coupled Whitney quantum initial evidence cannot promote " + key)
+    if (type(quantum_verified["real_configuration_dimension"]) is not int
+            or quantum_verified["real_configuration_dimension"] != 56):
+        raise SystemExit("coupled Whitney quantum configuration dimension must be exactly 56")
+    if (type(quantum_verified["scope"]) is not str
+            or quantum_verified["scope"] != quantum_receipt["scope"]):
+        raise SystemExit("coupled Whitney quantum certificate scope mismatch")
+    exact_quantum_keys = ("gaussian_sigma", "gaussian_norm_squared",
+                          "matter_l2_coefficient", "matter_l4_coefficient")
+    volume = quantum_verified["volume_in_Qsqrt5"]
+    if type(volume) is not list or len(volume) != 2:
+        raise SystemExit("coupled Whitney quantum exact quadratic-field volume missing")
+    for value in [*(quantum_verified[key] for key in exact_quantum_keys), *volume]:
+        try:
+            canonical = type(value) is str and str(Fraction(value)) == value
+        except (ValueError, ZeroDivisionError):
+            canonical = False
+        if not canonical:
+            raise SystemExit("coupled Whitney quantum projection requires canonical exact rational strings")
+    if (quantum_verified["gaussian_norm_squared"] != "1"
+            or Fraction(quantum_verified["gaussian_sigma"]) <= 0):
+        raise SystemExit("coupled Whitney quantum Gaussian must be normalized with positive width")
     spatial_keys = (
         "scope", "refinement_levels", "tetrahedra", "vertices",
         "finite_algebra_lean_declarations", "independent_derivative_stencil_points",
@@ -4730,15 +4761,21 @@ def _whitney_coupled_rows() -> list[dict[str, Any]]:
         "accepted", "samples", "full_equations_per_sample", "gauss_equations_per_sample",
         "symmetry", "trajectory_error_status", "observer_history", "quantum_state", "physical_continuum",
     )
+    quantum_keys = (
+        "scope", "accepted", "initial_state_constructed", "initial_observables_provided",
+        "quantum_time_history", "observer_history", "physical_comparison",
+        "analytic_operator_domain_proved_by_numeric_replay",
+        "real_configuration_dimension", *exact_quantum_keys, "volume_in_Qsqrt5",
+    )
     specs = (
         ("whitney_spatial_consistency", "WHITNEY_SPATIAL_CONSISTENCY.tex", "thm:whitney-spatial-consistency",
          "On conforming shape-regular refinements of the same cone, the supplied dressed scalar/Whitney action and its full real first variation approximate the continuum scalar-electrodynamics action at O(delta), uniformly on bounded piecewise W^{1,infinity}_t W^{2,infinity}_x windows with compatible traces. The analytic proof controls the potential-dependent scalar interpolation and all dressing derivatives. Five finite Lean identities establish cancellation/error algebra; a manufactured-field refinement packet independently checks the implementation on three meshes.",
          "analytic smooth-window action/first-variation consistency; finite Lean algebra and numerical refinement checks; no observed postdiction",
          "Supplied geometry, smooth bounded fields, conforming shape-regular refinements, action time parameter and scalar-electrodynamics density. The uniform estimate is an analytic paper theorem, not a Lean convergence theorem or a bound certified by finite samples. Exact edge integration and the Whitney interior-path definition are required. No nonlinear trajectory convergence, arbitrary-H1 nodal estimate, observer source selection, calibrated physical clock or empirical comparison is established."),
         ("whitney_interacting_quantum", "WHITNEY_INTERACTING_QUANTUM.tex", "thm:whitney-interacting-quantum",
-         "For the same interacting finite charged action with nonzero charge, the actual positive kinetic metric gives a smooth Schur metric on the global mean-zero-gauge Coulomb slice R^30 x C^13. Declared Laplace--Beltrami/Friedrichs quantization yields a nonnegative self-adjoint Hamiltonian on L2 of that slice with its Riemannian volume. The residual U(1)-invariant subspace is nonzero and reduces the Hamiltonian, providing neutral unitary interacting evolution and a dense invariant form core.",
-         "analytic gauge-reduction, closed-form and self-adjoint-domain proof; numerical finite-metric controls; no observed postdiction",
-         "Supplied cone, scalar species/action, nonzero charge, nonnegative mass-squared/quartic coupling, hbar, quantization measure, ordering and Friedrichs realization. The Schur complement uses the full coupled kinetic metric, not only the Maxwell block. The analytic proof is not formalized in Lean and does not assert essential self-adjointness, unique quantization, equivalence to quantization before reduction, continuum interacting QFT, a computed quantum-state history, physical Born statistics or laboratory identification."),
+         "For the same interacting finite charged action with nonzero charge, the actual positive kinetic metric gives a smooth Schur metric on the global mean-zero-gauge Coulomb slice R^30 x C^13. Uniform fixed-mesh nodal coercivity gives two-sided polynomial metric bounds and proves that this configuration metric is complete. The declared Laplace--Beltrami operator with nonnegative potential is essentially self-adjoint on compactly supported smooth functions; its unique self-adjoint closure agrees with the Friedrichs realization for the chosen quantization measure and ordering. The residual U(1)-invariant subspace reduces the Hamiltonian and has a dense invariant operator core as well as a form core. An explicit metric-density-corrected Gaussian is exactly normalized, neutral and in the Hamiltonian domain. Independent exact initial-state moment identities provide mathematical observables; no quantum time history is computed.",
+         "analytic gauge-reduction, metric-completeness and essential-self-adjointness proof; exact normalized initial state and initial observables; no observed postdiction",
+         "Supplied fixed cone, scalar species/action, nonzero charge, nonnegative mass-squared/quartic coupling, hbar, quantization measure, Laplace--Beltrami ordering and Gaussian width. The Schur complement uses the full coupled kinetic metric, not only the Maxwell block. Essential self-adjointness removes extension ambiguity for this declared operator, not the quantization choices themselves. The metric constants depend on the fixed mesh and couplings and are not uniform continuum-refinement estimates. The analytic proof is not formalized in Lean. The chosen Gaussian is not a derived vacuum or physical preparation. No unique quantization, equivalence to quantization before reduction, continuum interacting QFT, computed quantum-state history, physical Born statistics or laboratory identification is supplied."),
         ("whitney_charged_execution", "WHITNEY_CHARGED_EXECUTION.tex", "prop:whitney-charged-symmetric-lift",
          "A five-real-coordinate icosahedrally invariant sector of the same charged action evolves from the nonzero neutral initial data with all 68 full temporal-gauge Euler equations and all 13 Gauss equations checked at 81 samples. The analytic finite-group argument lifts the restricted equations to the full action. The independent verifier reconstructs unrestricted element Jacobians, re-integrates the path and RK4 controls, verifies degree-five quadrature, and rejects omitted-dressing and underintegration controls. Stored classical field readouts include electric cochains, matter fields and local charge.",
          "analytic full variational symmetry lift and numerical charged trajectory with independent replay; no observed postdiction",
@@ -4775,9 +4812,30 @@ def _whitney_coupled_rows() -> list[dict[str, Any]]:
             artifacts = ("runtime/whitney_spatial_consistency_receipt.json", "whitney_spatial_consistency.py",
                          "verify_whitney_spatial_consistency.py", "test_whitney_spatial_consistency.py")
         elif name == "whitney_interacting_quantum":
+            supporting_labels = (
+                "eq:whitney-interacting-global-metric-bound",
+                "prop:whitney-interacting-gaussian-state",
+                "eq:whitney-interacting-gaussian-state",
+                "eq:whitney-interacting-gaussian-matter-moments",
+                "eq:whitney-interacting-gaussian-magnetic-moment",
+            )
+            paper_text = path.read_text(encoding="utf-8")
+            for supporting_label in supporting_labels:
+                if "\\label{" + supporting_label + "}" not in paper_text:
+                    raise SystemExit("coupled Whitney analytic theorem missing: " + paper + "#" + supporting_label)
             row.update({"hilbert_space_constructed": True, "computed_quantum_state_history": False,
+                        "metric_completeness_established": True,
+                        "essential_self_adjointness_established": True,
+                        "unique_extension_given_ordering": True,
+                        "initial_state_constructed": True,
+                        "initial_observables_provided": True,
+                        "analytic_supporting_results": {"source": paper, "labels": list(supporting_labels)},
+                        "certificate_scope": quantum_receipt["scope"],
+                        "independent_verifier_result": {key: quantum_verified[key] for key in quantum_keys},
                         "analytic_proof_formalized_in_lean": False})
-            artifacts = ("whitney_interacting_quantum.py", "test_whitney_interacting_quantum.py")
+            artifacts = ("whitney_interacting_quantum.py", "test_whitney_interacting_quantum.py",
+                         "runtime/whitney_quantum_state_receipt.json", "whitney_quantum_state.py",
+                         "verify_whitney_quantum_state.py", "test_whitney_quantum_state.py")
         else:
             row.update({"certificate_scope": charged_receipt["scope"],
                         "independent_verifier_result": {key: charged_verified[key] for key in charged_keys},

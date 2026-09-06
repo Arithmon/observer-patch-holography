@@ -2,8 +2,8 @@
   "book": {
     "built_for_release_id": "r2036",
     "pdf_path": "book/reverse-engineering-reality-book.pdf",
-    "sha256": "e44ad60e568bba7080401255c016fd8f36a5547d954d66e5f10afc2bff8ecfb5",
-    "size_bytes": 1366544
+    "sha256": "8c653e5f45e1713b0e1aa074b104ebe067d58f7b94e2e32bce4e18f8fe9c741f",
+    "size_bytes": 1366596
   },
   "extra_papers": {},
   "generated_at": "2026-09-05T00:00:00Z",
@@ -20,13 +20,13 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "6e937b269695bad643ace550b71ec51d0112b0b922ba17c3601528e4e0654f1f",
-      "size_bytes": 464130
+      "sha256": "58d2a82584acc51dce3055e8b17f75ac996ee80bda93b07bc50e726c495ed69e",
+      "size_bytes": 464085
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "47839da1250c7128f047b284bd02a01474e75baca56bb54c7d4fd7beba24ac81",
-      "size_bytes": 758327
+      "sha256": "77258c90ae7877320cebfac670b73005677c1fc4e0f946627df7ca08388b0992",
+      "size_bytes": 766913
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
