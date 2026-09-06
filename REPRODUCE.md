@@ -35,12 +35,25 @@ pip install -r requirements.txt
 python tools/run_mandatory_suite.py
 ```
 
-`requirements.txt` pins the core dependencies. The runner is the single
-documented mandatory command, and it is the exact command CI
-(`.github/workflows/mandatory-suite.yml`) enforces on every push and PR. The
-default run is the standard suite; five long-running replay/mutation-scan
-steps (listed in `HEAVY_STEP_TITLES` inside the runner, together most of the
-suite's runtime) are deferred to
+`requirements.txt` pins the core dependencies. The default command runs the
+complete standard suite. On every push and PR, CI
+(`.github/workflows/mandatory-suite.yml`) runs the same ordered steps in two
+isolated partitions on each operating system. Each partition has its own
+clean checkout and the existing 30-minute job limit. Both partitions must
+succeed; a failed, cancelled or skipped partition cannot produce a passing
+aggregate check. The partition commands are:
+
+```bash
+python tools/run_mandatory_suite.py --shard-index 0 --shard-count 2
+python tools/run_mandatory_suite.py --shard-index 1 --shard-count 2
+```
+
+The indices are zero-based. Their ordered union is exactly the default suite;
+running only one partition does not verify the complete suite. Partition flags
+apply only to standard mode; full and certificate runs use their unpartitioned
+commands. Five designated
+replay/mutation-scan steps (listed in `HEAVY_STEP_TITLES` inside the runner)
+are deferred to
 
 ```bash
 python tools/run_mandatory_suite.py --full
