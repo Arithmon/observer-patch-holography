@@ -25,8 +25,8 @@
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "9595ee23d25cd8d119ff86809e307cc4ca83a3e9a61dfde574f70c9cff922336",
-      "size_bytes": 863575
+      "sha256": "ed2aee0f683e3c04fbd04e31b75a413b45f418bc9add13ce2ba67e6bce0e464a",
+      "size_bytes": 863917
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
@@ -45,8 +45,8 @@
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
-      "sha256": "f43d4b9711ac85bb0fed36927e95ddd5d97537778c44a12e72f580bd3ebf4dd9",
-      "size_bytes": 440068
+      "sha256": "3e589a865f1d50c82323dc54de612af74551a47503259628d21cd894454299a8",
+      "size_bytes": 440460
     }
   },
   "release_id": "r2038",
