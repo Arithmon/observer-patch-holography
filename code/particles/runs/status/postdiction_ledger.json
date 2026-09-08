@@ -1127,7 +1127,7 @@
               }
             ],
             "native_physical_spacetime_selected": false,
-            "packet_sha256": "0f0eab1d33cb2e92275206edec0b32c1d40e484564005b3c6b9bede0a5f29c6c",
+            "packet_sha256": "c0f790ad383039186371b7a8020f190371fa533ad634010f01f9c271f1545681",
             "scope": "CONDITIONAL_SOURCE_CODED_CAUSETS__SUPPLIED_POPULATION_READ_LAW_AND_CLOCK"
           },
           "labels": [
@@ -1155,7 +1155,7 @@
           "primitive_source_words_executed_as_repairs": false,
           "receipt_pin": {
             "bytes": 30029,
-            "sha256": "0f0eab1d33cb2e92275206edec0b32c1d40e484564005b3c6b9bede0a5f29c6c"
+            "sha256": "c0f790ad383039186371b7a8020f190371fa533ad634010f01f9c271f1545681"
           },
           "scope_boundary": "The source-axis cube, golden product population, every-neighbor read law, distinguished-event count and model tick are supplied. The analytic limit concerns bounded boundary-null regions and contained timelike diamonds with converging tips. Finite execution replays source records, local writer/value custody and interventions; it is not an asymptotic experiment or a physical dimension fit. Spatial populations are nested; changing radii and ticks do not give induced-prefix histories.",
           "source": "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex",

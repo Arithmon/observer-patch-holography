@@ -187,7 +187,9 @@ def test_rehashed_scientific_forgery_rejected(small, which):
 
 
 @pytest.mark.parametrize("data", [b'{"a":1,"a":2}', b'{"a":1.0}', b'{"a":NaN}',
-    b'{"a":1e9999}', b'{"a":Infinity}', b'{"a":-Infinity}', b'\xff', b' '*2000001])
+    b'{"a":1e9999}', b'{"a":Infinity}', b'{"a":-Infinity}', b'\xff', b' '*2000001],
+    ids=["duplicate-key", "float-token", "nan", "exponent-overflow",
+         "positive-infinity", "negative-infinity", "invalid-utf8", "oversized-input"])
 def test_strict_loader(tmp_path, data):
     path = tmp_path/"bad.json"
     path.write_bytes(data)
