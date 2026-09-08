@@ -1252,7 +1252,7 @@ clock, and the spatial readback is not derived
 generically.
 
 \paragraph{Exact-to-conditional composition.}
-A physical \(3+1\) continuum requires one source-selected family. It must
+The strict causal-set route requires one source-selected family. It must
 identify physical events and links, make order and cone agree exactly in both
 directions, and cover the source \(S^2\) densely and isotropically. It must
 also calibrate \(\#I/\rho\to\operatorname{Vol}(I)\), refine compatibly, pass
@@ -1303,25 +1303,26 @@ single-frame/barycentre ansatz. It supplies no source-derived inter-carrier
 gluing and does not exclude a different physical refinement with
 growing width, a source-selected order embedding, isotropic links, calibrated volume, and a
 smooth continuum limit.
-The same frozen 24-event order nevertheless has an exact positive decoration
-property. Its 30 Hasse links are all authenticated direct reads. Each link
-carries its source-native carrier-local port label and, in the receipt's hidden
-reference presentation, a normalized future-null representative \((1,n)\)
-with zero Lorentz norm, without a coordinate target, edge length, or fitted
-parameter. The used ports have per-carrier ranks \(2,1,2\); no single carrier
-populates rank three at this cutoff. A registered independent \(A_5\)
-relabeling preserves those three local ranks but changes the pooled rank from
-three to two, proving that the pooled rank-three span is presentation
-dependent. Naive shared-template, unit-scale path integration is also
-path-dependent. This is a link-decoration result: no theorem supplies a local
-rank-three Lorentz cone, glues the carrier frames, integrates the labels to
-global event coordinates, or establishes an order embedding or a continuum.
-The archived full embedded-history receipt, compact theorem-level projection,
-and standard-library checker are
-\path{evidence/source_causal_history_family/source_causal_history_family_receipt.json},
-\path{evidence/source_causal_history_family/source_causal_history_family_publication_projection.json}
-and
-\path{evidence/source_causal_history_family/verify_source_causal_history_family_projection.py}.
+A resolution rule selects conservative-record populations.
+In a radius-$r$ response-metric ball, with $r,\delta,\eta>0$, a maximal
+$\delta$-separated subset of a finite $\eta$-dense menu has fill distance at most
+$h=\delta+\eta$ and cardinality between $(r/h)^3$ and $(1+2r/\delta)^3$.
+Edges of length at most $a>2h$ form a connected graph whose weighted path
+metric converges to the response metric when $a\to0$ and $h/a\to0$.
+
+Their scalar action uses Voronoi volumes $v_i$ and
+conductances $a_{ij}=45v_iv_j(1-|x_i-x_j|/\epsilon)_+/(\pi\epsilon^5)$.
+Its positive weighted Laplacian generates
+$\ddot q+c^2Lq+m^2q=0$ and a compatible oscillator quantization.
+For a smooth Klein--Gordon reference with an $\epsilon$ boundary buffer and
+$0<h\le\epsilon$, the sampled operator residual is bounded by
+$(15/112)\epsilon^2\|D^4u\|_\infty+
+960h\epsilon^{-2}\|\nabla u\|_\infty$.
+Positive energy gives uniform finite-time field and detector bounds.
+With $\epsilon\to0$ and $h/\epsilon^2\to0$, these include controlled
+responses outside the continuum speed-$c$ cone. The spacetime paper proves these estimates; Lean checks the weighted-energy
+algebra. Coarsening, volume weights, the force law, inertia and quantization
+are inputs. Physical source selection and clock calibration remain separate.
 
 A separate post-hoc exploratory causet-likeness comparison, frozen after
 evaluation for exact replay, exercises the interval pipeline against Poisson-sprinkled

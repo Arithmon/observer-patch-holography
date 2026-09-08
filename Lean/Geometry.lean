@@ -16,6 +16,7 @@ import Geometry.CausalOrderComposition
 import Geometry.EventPopulationChartInterface
 import Geometry.SourceDerivedSpacetimeCarrier
 import Geometry.RefiningLatticeCausalCone
+import Geometry.MetricKernelEnergy
 import Geometry.SourceOrderFrameCompatibilityPacket
 import Geometry.SourceOrderEinsteinComposition
 import Geometry.CommonWorldKinematicsWitness

@@ -1868,7 +1868,7 @@
   {
    "from": "OPH-GR-PORT-RESPONSE-COMPLETION",
    "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
-   "role": "supplies the exact positive rank-three FrameQuotient and Gram form used independently in the source one-plus-three carrier R plus FrameQuotient"
+   "role": "supplies the exact positive rank-three FrameQuotient and Gram form used independently in the source one-plus-three carrier R plus FrameQuotient, and the dense conservative record carrier consumed by the conditional metric coarsening and scalar-action construction"
   },
   {
    "from": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE",

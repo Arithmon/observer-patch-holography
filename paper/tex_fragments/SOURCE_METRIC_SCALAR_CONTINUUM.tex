@@ -1,0 +1,172 @@
+\subsection{Spatial populations and a common scalar continuum action}
+\label{sec:source-metric-scalar-continuum}
+
+The completed conservative source-record carrier is a Euclidean
+three-space under the stated response and metric hypotheses. Its whole
+dense record group is not a locally finite population. A finite-resolution
+selection and a transport law can be stated on that carrier without
+inserting a Cartesian lattice. This construction keeps both choices explicit.
+
+Fix $r,\delta,\eta>0$, a response-metric ball $\Omega=\overline B(0,r)$,
+and a finite directed
+seam-word endpoint menu $M\subset\Omega$ that is an $\eta$-net of $\Omega$.
+Such menus exist: density approximates a slightly inward-shifted point by
+a source endpoint, compactness extracts finitely many approximants, and a
+finite maximum word budget contains all of them. This is algebraic endpoint
+availability, not a proof that a repair law accepts those words as moves.
+Choose a maximal $\delta$-separated subset $S\subset M$, and set
+$h=\delta+\eta$. The resolution, window and tie rule are supplied; maximal
+means inclusion-maximal, not maximum cardinality or a selected energy minimum.
+
+\begin{proposition}[Finite spatial population and metric transport]
+\label{prop:source-metric-population}
+The selected points form an $h$-net, and
+\[
+ (r/h)^3\le |S|\le(1+2r/\delta)^3.
+\]
+For $R\ge h$ and $B(x,R)\subset\Omega$,
+\[
+ ((R-h)/h)^3\le |S\cap B(x,R)|\le(1+2R/\delta)^3.
+\]
+Connect distinct points whose source distance is at most $a>2h$, weighting
+edges by that distance. The graph is connected, degrees are bounded by
+$(1+2a/\delta)^3-1$, and its shortest-path metric satisfies
+\[
+ |s-t|\le d_G(s,t)\le
+ \left(1+\frac{2h}{a-2h}\right)|s-t|+2h.
+\]
+Consequently $a\to0$ and $h/a\to0$ give uniform metric convergence on the
+fixed window. With $\eta\le\delta$ and $a=8\delta$, degrees instead stay
+at most $4912$ and $d_G\le2|s-t|+4\delta$; this latter estimate alone
+does not imply a Euclidean metric limit.
+\end{proposition}
+\begin{proof}
+Maximality puts each menu point within $\delta$ of $S$, proving coverage.
+Disjoint radius-$\delta/2$ balls give the upper counts; covering the window,
+or $B(x,R-h)$, by radius-$h$ balls gives the lower counts. For the graph,
+divide the segment from $s$ to $t$ into
+$k=\lceil |s-t|/(a-2h)\rceil$ pieces. Convexity retains the segment in
+$\Omega$; approximate its interior division points within $h$, keeping its
+endpoints exact. Consecutive approximants are at most $a$ apart and the
+path length is at most $|s-t|+2hk$. The triangle inequality gives the lower
+bound. These estimates are independent of the choice among maximal sets.
+\end{proof}
+
+The metric fixes relative three-volume. Let $C_i$ be the Voronoi cell of
+$x_i\in S$, clipped to $\Omega$, and $v_i=\operatorname{vol}(C_i)>0$.
+Thus $\sum_i v_i=V=\operatorname{vol}(\Omega)$, and almost every point of
+$C_i$ is at distance at most $h$ from $x_i$. These are metric weights,
+not a physical event-count density. For $0<h\le\epsilon$ supply
+\[
+ a_{ij}=\frac{45v_iv_j}{\pi\epsilon^5}
+       (1-|x_i-x_j|/\epsilon)_+,
+ \qquad (Lq)_i=v_i^{-1}\sum_j a_{ij}(q_i-q_j).
+\]
+The weighted inner product is $\langle p,q\rangle_v=\sum_i v_ip_iq_i$.
+Symmetry gives
+$\langle q,Lq\rangle_v=\frac12\sum_{ij}a_{ij}(q_i-q_j)^2\ge0$.
+The common finite action is
+\begin{equation}
+ S_h[q]=\frac12\int
+ \left[\|\dot q\|_v^2-c^2\langle q,Lq\rangle_v-m^2\|q\|_v^2\right]dt,
+ \qquad c>0,\quad m\ge0.
+ \label{eq:source-metric-scalar-action}
+\end{equation}
+Its equation is $\ddot q+c^2Lq+m^2q=0$. The coefficient $m$ has inverse-time
+units in this convention; neither physical mass nor time units are inferred.
+
+\begin{proposition}[Uniform scalar and detector limit]
+\label{prop:source-metric-scalar-limit}
+Let $u_{tt}-c^2\Delta u+m^2u=0$ be a smooth reference on the full carrier.
+On $[0,T]$, its spatial support has distance greater than $\epsilon$ from
+the complement of $\Omega$. Write
+$M_1=\sup|\nabla u|$ and $M_4=\sup\|D_x^4u\|_{\rm op}$, with suprema
+over the full carrier and time window. Then
+\[
+ \big|(Lu|_S)_i+\Delta u(x_i)\big|
+ \le \frac{15}{112}\epsilon^2M_4+
+     \frac{120h(\epsilon+h)^3}{\epsilon^5}M_1
+ \le \frac{15}{112}\epsilon^2M_4+\frac{960h}{\epsilon^2}M_1.
+\]
+Put $B=c^2\sqrt V[(15/112)\epsilon^2M_4+960h\epsilon^{-2}M_1]$.
+Initialize the finite action with the sampled reference position and velocity.
+Then
+\[
+ \|\dot q-u_t|_S\|_v\le tB,\qquad
+ \|q-u|_S\|_v\le\tfrac12t^2B.
+\]
+For a fixed $C^1$ detector $b$, the field readout
+$D_h=\sum_i v_ib(x_i)q_i$ and its continuum counterpart
+$D=\int_\Omega bu$ obey
+\[
+ |D_h(t)-D(t)|\le
+ \tfrac12\sqrt V\|b\|_\infty t^2B+
+ Vh\|\nabla(bu(t))\|_\infty.
+\]
+Thus $\epsilon\to0$ and $h/\epsilon^2\to0$ yield a uniform finite-time
+observable limit. In normalized carrier units $\epsilon=h^{1/4}$ gives
+an $O(\sqrt h)$ bound. Nested populations are unnecessary.
+\end{proposition}
+\begin{proof}
+Compare $L$ with the integral operator having kernel
+$45(1-|z|/\epsilon)_+/(\pi\epsilon^5)$. Odd Taylor terms cancel and
+\[
+ \int (1-|z|/\epsilon)_+z_1^2\,dz=\frac{2\pi}{45}\epsilon^5,
+ \qquad
+ \int (1-|z|/\epsilon)_+|z|^4\,dz=\frac{\pi}{14}\epsilon^7.
+\]
+The second moment gives $-\Delta$; the fourth-order Taylor remainder,
+bounded by $M_4|z|^4/24$, gives $15\epsilon^2M_4/112$.
+For nearest-cell projection $P$, compare
+$g_x(y)=(1-|x-y|/\epsilon)_+(u(x)-u(y))$ with $g_x(P(y))$.
+Splitting the difference at the larger kernel value uses a point within
+$\epsilon$ of $x$; kernel and field Lipschitz bounds give
+$|g_x(P(y))-g_x(y)|\le2hM_1$. This difference vanishes outside
+$B(x,\epsilon+h)$, giving the stated quadrature term. If $u(x)\ne0$,
+the support buffer retains the whole kernel ball in $\Omega$; otherwise
+the integrand outside $\Omega$ is zero. No boundary term is omitted.
+
+The sampled residual in the weighted norm is at most $B$. The positive
+operator $A=c^2L+m^2I$ has
+$\|\cos(t\sqrt A)\|\le1$ and
+$\|\sin(t\sqrt A)/\sqrt A\|\le t$, with the zero eigenspace interpreted
+by continuity. Duhamel integration gives the two trajectory bounds.
+Cauchy--Schwarz and nearest-cell quadrature for $bu$ give the detector bound.
+\end{proof}
+
+The same cell argument gives $\|L\|_v\le960/\epsilon^2$, using twice the
+largest weighted degree. \texttt{MetricKernelEnergy} formalizes the finite
+positive-energy and mass-weighted degree inequalities; the geometric,
+integral and continuum arguments above are analytic proofs. A local
+discrete-action time integrator with a strict Courant bound may consume
+this operator and add its own time and initialization errors.
+
+Smooth compact initial data admit the reference until their speed-$c$
+domain of influence reaches the window boundary. Local energy flux for the
+Klein--Gordon equation gives that speed; the nonnegative mass term changes
+energy density but not the characteristic cone. Applied to a smooth local
+preparation difference, the detector estimate bounds the finite response
+outside that cone. A nonzero continuum signal is resolvable when its lower
+bound exceeds the approximation and detector errors. Instantaneous small
+tails of the finite graph are not identified with detectable superluminal
+signals. This is an interior effective limit, not a theorem about arbitrary
+boundary conditions or exact microscopic order reflection.
+
+The canonical variables $Q_i=\sqrt{v_i}q_i$ and
+$P_i=p_i/\sqrt{v_i}$, $p_i=v_i\dot q_i$, give the oscillator Hamiltonian
+$\frac12(|P|^2+Q^T\widetilde A Q)$, where
+$\widetilde A=M^{1/2}(c^2L+m^2I)M^{-1/2}\ge0$ and
+$M=\operatorname{diag}(v_i)$. Supplied canonical quantization on
+$L^2(\mathbb R^{|S|},dQ)$ gives the same field readouts as multiplication
+operators. For $m>0$ every mode has a Gaussian vacuum; at $m=0$ zero
+modes remain free particles unless a separate restriction is declared.
+This finite Hilbert construction is not an interacting quantum continuum
+or a derivation of the Standard Model.
+
+Coarsening, the volume prescription, radial force law, inertia, action
+coefficients and accessible observer variables remain added assumptions.
+The kernel graph may have growing degree. Algebraic source words alone
+do not implement its couplings as accepted primitive repairs or calibrate
+their duration. The construction supplies one conditional scalar effective
+world on the response carrier; its selection and physical interpretation
+remain separate obligations.

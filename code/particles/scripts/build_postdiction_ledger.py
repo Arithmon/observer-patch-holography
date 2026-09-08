@@ -130,6 +130,7 @@ LEAN_RECEIPTS = {
     / "SourceOrderFrameCompatibilityPacket.lean",
     "RefiningLatticeCausalCone": REPO / "Lean" / "Geometry"
     / "RefiningLatticeCausalCone.lean",
+    "MetricKernelEnergy": REPO / "Lean" / "Geometry" / "MetricKernelEnergy.lean",
     "LorentzOverlapCocycle": REPO / "Lean" / "Geometry"
     / "LorentzOverlapCocycle.lean",
     "EventGermDisplacement": REPO / "Lean" / "Geometry"
@@ -2248,7 +2249,27 @@ def _forced_structure(
         {
             "id": "source_derived_finite_one_three_causal_carrier",
             "supplied_law_refinement_control": _refining_causal_control(),
+            "metric_scalar_continuum": {
+                "classification": "conditional_analytic_scalar_limit_not_observed_spacetime",
+                "spatial_selection": "maximal separated finite conservative source-word menu in a metric ball",
+                "action": "positive Voronoi-mass radial-kernel Klein-Gordon action",
+                "operator_error": "(15/112)*epsilon^2*M4+960*h/epsilon^2*M1",
+                "limit": "epsilon->0 and h/epsilon^2->0; smooth interior references",
+                "physical_source_or_clock_selected": False,
+                "quantum_continuum_claim": False,
+                "analytic_proof": "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
+                "finite_algebra_receipt": _lean_receipt(
+                    "MetricKernelEnergy",
+                    declarations={"MetricKernelEnergy": (
+                        "dirichlet_nonnegative", "dirichlet_constant",
+                        "symmetric_second_moment", "weighted_degree_bound",
+                        "massive_energy_nonnegative",
+                    )},
+                ),
+            },
             "artifact_refs": [
+                "Lean/Geometry/MetricKernelEnergy.lean",
+                "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
                 "Lean/Geometry/RefiningLatticeCausalCone.lean",
                 "paper/tex_fragments/REFINING_CAUSAL_CONE.tex",
                 "code/causal_refinement/refining_cone.py",
@@ -2274,7 +2295,11 @@ def _forced_structure(
                 "exactly with its carrier cone order. A separate supplied growing-menu "
                 "lattice has exact finite inner/outer cone bounds and an analytic "
                 "controlled cone and interval-volume limit; its local read/write "
-                "control has 81 events, 794 authenticated edges and width 27"
+                "control has 81 events, 794 authenticated edges and width 27. "
+                "A separate conditional construction selects finite populations "
+                "from the dense source metric and gives a positive scalar action "
+                "with an analytic continuum field and detector error bound; "
+                "physical selection of the coarsening and action is not derived"
             ),
             "observed_counterpart": (
                 "finite causal-set-like order with an effective 1+3 Lorentz "
@@ -2354,7 +2379,13 @@ def _forced_structure(
                 "and event-cell measure. Its cone and interval-volume limits are "
                 "analytic conditional results, not a source-selected physical "
                 "manifold, Poisson sprinkling or calibrated density. The finite "
-                "Lean bounds and replay do not formalize the Riemann-volume argument"
+                "Lean bounds and replay do not formalize the Riemann-volume argument. "
+                "The separate metric scalar limit supplies its coarsening, clipped "
+                "Voronoi masses, radial-kernel force law, inertia and canonical "
+                "quantization. Its analytic estimate assumes smooth references "
+                "with an interaction-radius boundary buffer and h/epsilon^2 "
+                "tending to zero. Five Lean lemmas check finite energy algebra, "
+                "not the analytic PDE limit or physical source selection"
             ),
             "paper_ref": (
                 "flagship and spacetime papers, source-derived causal order and "

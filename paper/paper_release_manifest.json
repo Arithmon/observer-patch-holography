@@ -2,8 +2,8 @@
   "book": {
     "built_for_release_id": "r2038",
     "pdf_path": "book/reverse-engineering-reality-book.pdf",
-    "sha256": "0ae7d215370d2829ad040a791faaf05dedee3d92c98cb95559991d3a75db0fcc",
-    "size_bytes": 1349978
+    "sha256": "847571aa72b7536e6060594a034a27e53c61acc6ba08eb0abe218af99d91316b",
+    "size_bytes": 1347171
   },
   "extra_papers": {},
   "generated_at": "2026-09-07T00:00:00Z",
@@ -20,13 +20,13 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "c7209fe09675d46276b0fd486e63ee14682c22ba0fe067b284744f69730dc6bc",
-      "size_bytes": 464944
+      "sha256": "45e342dd1483ea160dc7da9f476b973529df261a00dcded418502b271c879383",
+      "size_bytes": 465681
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "058c0475f63aea21fd5198e9b05e44b969eea54cb0b5ca73b4c1cd3376dc8a35",
-      "size_bytes": 873180
+      "sha256": "d479c636ee41da6c933ec84232fc87283bc4e7320bd46a92825cb64efbb9ad94",
+      "size_bytes": 873491
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
@@ -35,18 +35,18 @@
     },
     "reality_as_consensus_protocol": {
       "pdf_path": "paper/reality_as_consensus_protocol.pdf",
-      "sha256": "c0b6e80fd1d1342d749bff62c654c3833cd076a6894a05917e765c2a661d90a1",
-      "size_bytes": 508429
+      "sha256": "9b486f2b2b15538de8315565c94839c7a49cc1a6c11146be525a6e8bbdc2f72e",
+      "size_bytes": 508470
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "4420871b2b5cf3b2c8d0b37a6cd02b1e4db67ecef45335bb8845e981eae8f6ec",
-      "size_bytes": 663499
+      "sha256": "66625c7a38b6612c5e1a251cd36588a30d57a75b35ca5bfcfd96e68484905b8c",
+      "size_bytes": 676838
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
-      "sha256": "cd777c0530a026fcedc4462550ae3418c64a892c55fe08755e60f3f581994d13",
-      "size_bytes": 440450
+      "sha256": "fc684e86d9a3f68f25a42b9334727f5f1f893d86b311abe425371c65bbef48c1",
+      "size_bytes": 440467
     }
   },
   "release_id": "r2038",

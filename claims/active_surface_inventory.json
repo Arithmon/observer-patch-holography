@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 364,
+  "surface_count": 365,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -201,6 +201,11 @@
     },
     {
       "path": "paper/tex_fragments/SCREEN_SPECTRUM_THEOREMS.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
