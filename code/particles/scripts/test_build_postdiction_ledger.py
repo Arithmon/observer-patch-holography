@@ -528,6 +528,112 @@ def test_refining_causal_projection_requires_finite_lean_bounds(monkeypatch, tmp
         ledger._refining_causal_control()
 
 
+def test_source_net_projection_separates_finite_analytic_and_physical_results(result):
+    rows = result["sections"]["forced_structure"]
+    assert len(rows) == 56
+    row = next(r for r in rows if r["id"] == "source_derived_finite_one_three_causal_carrier")
+    control = row["declared_source_net_control"]
+    assert control["analytic_controlled_causal_limit"] is True
+    assert control["analytic_declared_family_raw_count_limit"] is True
+    assert control["analytic_contained_interval_ordering_fraction"] == "1/10"
+    assert control["volume_convention"] == "dt d^3x"
+    for key in (
+        "primitive_source_words_executed_as_repairs",
+        "continuum_or_pair_count_limit_formalized_in_lean",
+        "finite_runs_certify_asymptotic_limit", "native_OPH_population_or_law_selected",
+        "physical_clock_calibrated", "field_action_or_quantum_continuum_identified",
+        "observed_postdiction",
+    ):
+        assert control[key] is False
+    summary = control["independent_verifier_result"]
+    assert [r["source_records"] for r in summary["levels"]] == [27, 125, 512, 2197]
+    assert [r["positive_inner_cone"] for r in summary["levels"]] == [False, False, False, True]
+    assert summary["levels"][-1]["inner_speed_lower"] == "75989/250000"
+    receipt = ledger.CODE / "causal_refinement/source_net_causet_receipt.json"
+    raw = receipt.read_bytes()
+    assert control["receipt_pin"] == {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+    assert control["source"] in row["artifact_refs"]
+    assert "not constructed" in row["match"]
+
+
+@pytest.mark.parametrize("field,value", [
+    ("accepted", 1), ("native_physical_spacetime_selected", True),
+    ("scope", "PHYSICAL_SPACETIME_DERIVED"), ("packet_sha256", "0"*64),
+    ("q", True), ("width", 2197.0), ("height", 99),
+    ("inner_speed_lower", "1"), ("positive_inner_cone", 1),
+    ("reads_per_full_trace", 0),
+])
+def test_source_net_projection_rejects_verifier_summary_drift(result, monkeypatch, field, value):
+    row = next(r for r in result["sections"]["forced_structure"]
+               if r["id"] == "source_derived_finite_one_three_causal_carrier")
+    summary = deepcopy(row["declared_source_net_control"]["independent_verifier_result"])
+    target = summary if field in summary else summary["levels"][-1]
+    target[field] = value
+    original = ledger.importlib.util.spec_from_file_location
+    def spec(name, path, *args, **kwargs):
+        item = original(name, path, *args, **kwargs)
+        if name == "source_net_causal_ledger_verifier":
+            execute = item.loader.exec_module
+            def changed(module):
+                execute(module)
+                module.verify = lambda packet: deepcopy(summary)
+            item.loader.exec_module = changed
+        return item
+    monkeypatch.setattr(ledger.importlib.util, "spec_from_file_location", spec)
+    with pytest.raises(SystemExit, match="scope/count mismatch"):
+        ledger._source_net_causal_control()
+
+
+@pytest.mark.parametrize("label", [
+    "prop:source-net-causal-path", "prop:source-net-alexandrov-volume",
+    "cor:source-net-general-diamond", "prop:golden-source-count-limit",
+    "cor:source-record-ordering-fraction",
+])
+def test_source_net_projection_requires_each_analytic_statement(monkeypatch, label):
+    original = Path.read_text
+    target = ledger.REPO / "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex"
+    def erased(path, *args, **kwargs):
+        text = original(path, *args, **kwargs)
+        return text.replace("\\label{" + label + "}", "") if path == target else text
+    monkeypatch.setattr(Path, "read_text", erased)
+    with pytest.raises(SystemExit, match="source-net analytic theorem missing"):
+        ledger._source_net_causal_control()
+
+
+@pytest.mark.parametrize("name", [
+    "covering_constructs_path", "reachable_outer", "same_layer_precedes_iff",
+    "finite_antichain_card_le", "cone_speed_identity",
+])
+def test_source_net_projection_requires_constructed_lean_paths(monkeypatch, tmp_path, name):
+    source = ledger.LEAN_RECEIPTS["SourceNetCausalCone"]
+    target = tmp_path / "SourceNetCausalCone.lean"
+    text = source.read_text(encoding="utf-8")
+    assert "theorem " + name in text
+    target.write_text(text.replace("theorem " + name, "theorem erased_" + name), encoding="utf-8")
+    monkeypatch.setitem(ledger.LEAN_RECEIPTS, "SourceNetCausalCone", target)
+    with pytest.raises(SystemExit, match="Lean declaration missing"):
+        ledger._source_net_causal_control()
+
+
+@pytest.mark.parametrize("forgery", ["source_pin", "late_value", "count_includes_reads", "scope"])
+def test_source_net_projection_replays_resealed_false_receipt(tmp_path, forgery):
+    source = ledger.CODE / "causal_refinement/source_net_causet_receipt.json"
+    packet = json.loads(source.read_text(encoding="utf-8"))
+    first = packet["levels"][0]
+    if forgery == "source_pin":
+        packet["source_pins"]["code/causal_refinement/source_net_causet.py"] = "0"*64
+    elif forgery == "late_value":
+        first["forward_execution"]["layer_value_sums"][-1] += 1
+    elif forgery == "count_includes_reads":
+        first["center_intervals"][-1]["inclusive_event_count"] += first["forward_execution"]["authenticated_read_count"]
+    else:
+        packet["scope"]["finite_runs_demonstrate_fixed_time_asymptotic_limit"] = True
+    target = tmp_path / "resealed.json"
+    target.write_text(json.dumps(packet, sort_keys=True, separators=(",", ":")) + "\n", encoding="utf-8")
+    with pytest.raises(SystemExit, match="source-net independent replay failed"):
+        ledger._source_net_causal_control(target)
+
+
 def test_thermodynamic_receipt_owners_are_separate(result):
     row = next(
         item

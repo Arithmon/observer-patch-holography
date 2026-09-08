@@ -130,6 +130,7 @@ LEAN_RECEIPTS = {
     / "SourceOrderFrameCompatibilityPacket.lean",
     "RefiningLatticeCausalCone": REPO / "Lean" / "Geometry"
     / "RefiningLatticeCausalCone.lean",
+    "SourceNetCausalCone": REPO / "Lean" / "Geometry" / "SourceNetCausalCone.lean",
     "MetricKernelEnergy": REPO / "Lean" / "Geometry" / "MetricKernelEnergy.lean",
     "LorentzOverlapCocycle": REPO / "Lean" / "Geometry"
     / "LorentzOverlapCocycle.lean",
@@ -500,6 +501,85 @@ def _refining_causal_control() -> dict[str, Any]:
         "native_OPH_law_selected": False,
         "physical_clock_calibrated": False,
         "observed_postdiction": False,
+    }
+
+
+def _source_net_causal_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    """Separate the finite source execution from its analytic declared-law limit."""
+    source = "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex"
+    labels = (
+        "prop:source-net-causal-path", "prop:source-net-alexandrov-volume",
+        "cor:source-net-general-diamond", "prop:golden-source-count-limit",
+        "cor:source-record-ordering-fraction",
+    )
+    path = REPO / source
+    text = path.read_text(encoding="utf-8") if path.is_file() else ""
+    if any("\\label{" + label + "}" not in text for label in labels):
+        raise SystemExit("source-net analytic theorem missing")
+    declarations = (
+        "covering_constructs_path", "reachable_outer", "same_layer_precedes_iff",
+        "finite_antichain_card_le", "cone_speed_identity",
+    )
+    lean_refs = _lean_receipt(
+        "SourceNetCausalCone", declarations={"SourceNetCausalCone": declarations},
+    )
+    directory = CODE / "causal_refinement"
+    spec = importlib.util.spec_from_file_location(
+        "source_net_causal_ledger_verifier", directory / "verify_source_net_causet.py",
+    )
+    if spec is None or spec.loader is None:
+        raise SystemExit("missing independent source-net verifier")
+    verifier = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(verifier)
+    receipt_path = receipt_path or directory / "source_net_causet_receipt.json"
+    raw = receipt_path.read_bytes()
+    try:
+        summary = verifier.verify(verifier.load(receipt_path))
+    except ValueError as exc:
+        raise SystemExit(f"source-net independent replay failed: {exc}") from exc
+    if receipt_path.read_bytes() != raw:
+        raise SystemExit("source-net receipt changed during replay")
+    expected = {
+        "accepted": True,
+        "scope": "CONDITIONAL_SOURCE_CODED_CAUSETS__SUPPLIED_POPULATION_READ_LAW_AND_CLOCK",
+        "native_physical_spacetime_selected": False,
+        "levels": [
+            {"q": q, "source_records": q**3, "width": q**3, "height": height,
+             "reads_per_full_trace": reads, "positive_inner_cone": q == 13,
+             "inner_speed_lower": "75989/250000" if q == 13 else "0"}
+            for q, height, reads in ((3, 3, 622), (5, 4, 8355),
+                                     (8, 4, 99192), (13, 5, 1176764))
+        ],
+        "packet_sha256": hashlib.sha256(raw).hexdigest(),
+    }
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("source-net verifier scope/count mismatch")
+    return {
+        "source": source, "labels": list(labels),
+        "lean_declarations": {"SourceNetCausalCone": list(declarations)},
+        "lean_receipts": lean_refs,
+        "receipt_pin": {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()},
+        "independent_verifier_result": summary,
+        "analytic_controlled_causal_limit": True,
+        "analytic_declared_family_raw_count_limit": True,
+        "analytic_contained_interval_ordering_fraction": "1/10",
+        "volume_convention": "dt d^3x",
+        "primitive_source_words_executed_as_repairs": False,
+        "continuum_or_pair_count_limit_formalized_in_lean": False,
+        "finite_runs_certify_asymptotic_limit": False,
+        "native_OPH_population_or_law_selected": False,
+        "physical_clock_calibrated": False,
+        "field_action_or_quantum_continuum_identified": False,
+        "observed_postdiction": False,
+        "scope_boundary": (
+            "The source-axis cube, golden product population, every-neighbor read law, "
+            "distinguished-event count and model tick are supplied. The analytic "
+            "limit concerns bounded boundary-null regions and contained timelike "
+            "diamonds with converging tips. Finite execution replays source records, "
+            "local writer/value custody and interventions; it is not an asymptotic "
+            "experiment or a physical dimension fit. Spatial populations are nested; "
+            "changing radii and ticks do not give induced-prefix histories."
+        ),
     }
 
 
@@ -2295,6 +2375,7 @@ def _forced_structure(
         {
             "id": "source_derived_finite_one_three_causal_carrier",
             "supplied_law_refinement_control": _refining_causal_control(),
+            "declared_source_net_control": _source_net_causal_control(),
             "metric_scalar_continuum": {
                 "classification": "conditional_analytic_scalar_limit_not_observed_spacetime",
                 "spatial_selection": "maximal separated finite conservative source-word menu in a metric ball",
@@ -2322,6 +2403,12 @@ def _forced_structure(
                 "code/causal_refinement/verify_refining_cone.py",
                 "code/causal_refinement/test_refining_cone.py",
                 "code/causal_refinement/refining_cone_receipt.json",
+                "Lean/Geometry/SourceNetCausalCone.lean",
+                "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex",
+                "code/causal_refinement/source_net_causet.py",
+                "code/causal_refinement/verify_source_net_causet.py",
+                "code/causal_refinement/test_source_net_causet.py",
+                "code/causal_refinement/source_net_causet_receipt.json",
             ],
             "statement": (
                 "Authenticated read-after-write provenance generates a finite "
@@ -2345,7 +2432,13 @@ def _forced_structure(
                 "A separate conditional construction selects finite populations "
                 "from the dense source metric and gives a positive scalar action "
                 "with an analytic continuum field and detector error bound; "
-                "physical selection of the coarsening and action is not derived"
+                "physical selection of the coarsening and action is not derived. "
+                "A declared local-read law on golden-orbit conservative source "
+                "records has Lean-constructed finite cone bounds and analytic "
+                "raw-count four-volume and contained-interval ordering-fraction "
+                "limits, the latter equal to 1/10. Independent exact finite "
+                "executions use 27, 125, 512 and 2197 sites with equal widths; "
+                "the sharper q=13 fill gives inner speed at least 75989/250000"
             ),
             "observed_counterpart": (
                 "finite causal-set-like order with an effective 1+3 Lorentz "
@@ -2431,7 +2524,14 @@ def _forced_structure(
                 "quantization. Its analytic estimate assumes smooth references "
                 "with an interaction-radius boundary buffer and h/epsilon^2 "
                 "tending to zero. Five Lean lemmas check finite energy algebra, "
-                "not the analytic PDE limit or physical source selection"
+                "not the analytic PDE limit or physical source selection. "
+                "The golden population, cube, all-neighbor read law, model tick "
+                "and distinguished-event counting are declared. Its raw-count "
+                "limit is not a native physical calibration, Poisson sprinkling "
+                "or a finite-run dimension fit. Accepted primitive repairs, "
+                "field-action agreement and laboratory clock attachment remain "
+                "separate; neither the analytic volume nor pair-count proof is "
+                "formalized by the finite Lean path module"
             ),
             "paper_ref": (
                 "flagship and spacetime papers, source-derived causal order and "

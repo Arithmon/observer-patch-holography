@@ -1,6 +1,8 @@
 # 24. Why Does Gravity Look Like Geometry?
 
-The OPH argument in this chapter is a conditional branch theorem. Independently of event order, a real axis and the rank-three source carrier define an exact one-plus-three ambient target and its Lorentz cone. The finite construction also supplies an authenticated order and its exact longest-parent-chain source height. An auxiliary enumeration places every finite log injectively and forward-causally in the target, but need not reflect the order. For a source-selected candidate, the edge-speed bound gives forward cone compatibility, while equal-height spatial separation and spacelike increasing-height incomparable pairs are sufficient for exact order reflection. The precursor is not a smooth spacetime: source height is not a physical clock, and target dimension is not intrinsic poset dimension. The argument assumes that one source-selected refinement turns that precursor into a distinguishing Lorentzian manifold with an exact order embedding, Poisson/count-volume uniformity, independent dimension and manifoldlikeness tests, stable topology and a same-family tensor-curvature identification with the smooth Einstein tensor, or the independently premised continuum small-ball/null-balance route. It also assumes the physical stress attachment, the geometric modular and null bridges, fixed-cap generalized-entropy stationarity, the smooth small-ball formulas, controlled scaling tails, universal coupling, a vacuum reference and physical scale. Scalar-curvature convergence alone is only a diagnostic.
+The gravity argument in this chapter is conditional. The source metric gives a continuous three-dimensional carrier. A specified population of conservative records, complete local reads and a model clock produce causal orders and event counts approaching flat spacetime. The radius of each read shrinks while covering more of the increasingly fine population. This is an effective geometry with a proved limit. Identifying its events and clock physically, and showing that matter uses the same cone, are further conditions.
+
+Curved spacetime and Einstein's equation require more. One physical refinement must carry a common metric and conserved stress, compatible clocks and volume, stable geometry, and controlled curvature. Exact order reflection is one route; vanishing causal error with refinement is another. The gravity theorem also assumes the modular and null bridges, fixed-cap entropy stationarity, the small-ball formulas, universal coupling, a vacuum reference and physical scale. Smooth tensor curvature must be identified on that family, or through the separate small-ball argument. Scalar-curvature convergence alone does not identify the Einstein tensor.
 
 In the autumn of 1907 Albert Einstein was examining patents in Bern and owed Johannes Stark a review article on relativity for a yearbook of radioactivity and electronics. He was assembling it at his desk in the office when the thought arrived that he described fifteen years afterward, in a lecture in Kyoto on 14 December 1922, as the happiest of his life. If a person falls freely, he will not feel his own weight.
 
@@ -93,7 +95,7 @@ system inverts. This is exact algebra and the inversion is stable. Calling
 these nine supplied equalities nine measurements would add a physical
 direction-selection and instrument theorem that the finite result does not
 contain. Turning the matrix fields into smooth curvature and physical stress
-requires the source-selected order embedding, link-direction, count-to-volume, topology,
+requires the physical causal-order, link-direction, count-to-volume, topology,
 refinement and curvature-convergence conditions named at the start of the
 chapter.
 

@@ -7,7 +7,7 @@ On a supplied fixed spatial cone, the charged scalar action supports controlled 
 ## Required constructions
 
 - **Finite source:** source-derived scalar amplitude, shape, clock, release surface, and background capacity.
-- **Physical causal carrier:** physical events and links, source-selected placements with order and cone agreement in both directions (which derives event separation), approximately Poisson count density completing the causal-set faithful-embedding condition, dense and isotropic source directions, and compatible refinement.
+- **Physical causal carrier:** physically identified events and links on a compatible refinement, with exact order reflection or a uniformly vanishing causal discrepancy, calibrated count-to-volume convergence, and compatible source directions. The conservative-record flat limit uses a specified population, local read law and model clock; selecting and calibrating that law physically is additional.
 - **Continuum promotion:** independently calibrated count-to-volume density, independent dimension and manifoldlikeness tests, stable topology, and a unique Lorentzian limit. Smooth Einstein promotion additionally needs either same-family tensor-curvature convergence or the continuum small-ball/null-balance identification; scalar-curvature convergence alone is diagnostic.
 - **Physical scale:** maps to physical wavenumber, angular multipole, scale factor or redshift, and a common mode basis.
 - **Covariant stress:** total stress-energy closure, recipient stress for nonzero exchange, causal response, and refinement convergence.
@@ -18,9 +18,9 @@ On a supplied fixed spatial cone, the charged scalar action supports controlled 
 The radial mathematics proves the one-shell obstruction and two sufficient
 conditional uniqueness routes: physical dilation and cross-covariance tomography. No finite source map
 that passes either radial route is supplied, nor is an inhabited physical
-source-causal continuum family with the required causal-set faithful embedding,
-manifoldlikeness, topology, and tensor-curvature or small-ball/null-balance
-certificate. The
+source-causal continuum family with the required physical order and volume
+approximation, manifoldlikeness, topology, and tensor-curvature or
+small-ball/null-balance certificate. The
 relativistic repair stress, dark abundance, Boltzmann bridge, and joint
 likelihood remain unsupplied. CMB outputs are diagnostics and do not establish or falsify a
 cosmological OPH claim.

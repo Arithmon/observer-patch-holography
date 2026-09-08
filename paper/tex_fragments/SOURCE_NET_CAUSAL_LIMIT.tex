@@ -1,0 +1,355 @@
+\subsection{Causal order on a source-metric population}
+\label{sec:source-net-causal-limit}
+
+The continuous rank-three repair carrier admits finite populations chosen
+by its own metric. A covering property of such a population also supplies a
+constructive causal approximation, with an explicit local read law and
+model clock. Let $\Omega$ be a convex subset of a real normed space, and let
+$S\subset\Omega$ satisfy
+\[
+ \forall x\in\Omega\quad\exists s\in S:\quad\|s-x\|\leq h,
+ \qquad h\geq0.
+\]
+For an edge radius $a>2h$, put an event at every $(j,s)$,
+$j\in\{0,\ldots,K\}$, $s\in S$. An event at $(j+1,t)$ reads every
+$(j,s)$ with $\|t-s\|\leq a$. This includes the same-site read, so waiting
+is permitted. The event order is the reflexive transitive closure of these
+reads. Reading every permitted neighbour, keeping the full population at
+each layer, and assigning a duration $\Delta=a/c$ with $c>0$ are hypotheses
+of this construction. They are substantive choices of dynamics and clock.
+
+\begin{proposition}[Covering constructs causal paths]
+\label{prop:source-net-causal-path}
+For $s,t\in S$ and $k\geq1$, with both layers present,
+\begin{equation}
+ \|t-s\|\leq k(a-2h)
+ \quad\Longrightarrow\quad
+ (j,s)\preceq(j+k,t)
+ \quad\Longrightarrow\quad
+ \|t-s\|\leq ka.
+ \label{eq:source-net-cone-sandwich}
+\end{equation}
+If $S$ is finite and nonempty, this layered poset has width exactly $|S|$.
+Every event at layer $j$ has height $j$, counting edges from layer zero.
+\end{proposition}
+\begin{proof}
+Divide the segment from $s$ to $t$ into $k$ equal pieces, with division
+points $x_i=s+i(t-s)/k$. Convexity gives $x_i\in\Omega$. Keep the endpoints
+$p_0=s$, $p_k=t$ and choose $p_i\in S$ with $\|p_i-x_i\|\leq h$ at every
+interior division point. Then
+\[
+ \|p_{i+1}-p_i\|
+ \leq \|t-s\|/k+2h\leq a.
+\]
+These are actual permitted reads. For any permitted path the triangle
+inequality gives the opposite bound in
+\eqref{eq:source-net-cone-sandwich}. A layer is an antichain, and the
+same-site waiting chains partition all events into $|S|$ chains. This proves
+the width statement. Every read increases the layer by one, and a waiting
+chain reaches every layer, proving the height statement.
+\end{proof}
+
+The path construction and outer displacement bound hold in arbitrary real
+normed spaces; \texttt{Geometry/SourceNetCausalCone.lean} formalizes them.
+The volume estimates below are analytic results for the three-dimensional
+Euclidean repair carrier.
+
+For model time $\tau=k\Delta$, the two radii in
+\eqref{eq:source-net-cone-sandwich} are
+$c(1-2h/a)\tau$ and $c\tau$. Consider a family with
+\begin{equation}
+ a_n\longrightarrow0,\qquad h_n/a_n\longrightarrow0.
+ \label{eq:source-net-causal-refinement}
+\end{equation}
+The read law agrees with the speed-$c$ continuum causal order away from its
+null boundary. More explicitly, take two continuum events with positive
+time separation whose positions lie in $\Omega$. Sample positions within
+$h_n$ and times on the layer grid within $\Delta_n$. A strict timelike
+margin eventually exceeds the endpoint errors, the time rounding errors,
+and $2ch_n/a_n$ times the sampled duration; the inner implication then
+applies. A strict spacelike margin eventually exceeds the endpoint and time
+errors, and the outer implication forbids a path. This statement requires
+the sampled layers to exist in the chosen time window. It makes no assertion
+of exact order reflection for null-separated events at a finite resolution.
+
+\paragraph{Volume from a controlled population measure.}
+Suppose $\Omega\subset\mathbb R^3$ is bounded and convex, and $S$ is finite.
+In addition to the $h$-covering population $S$, supply a measurable partition
+$(C_s)_{s\in S}$ of $\Omega$, up to null sets, with positive masses
+$v_s=\operatorname{vol}(C_s)$ and assignment error
+\begin{equation}
+ y\in C_s\quad\Longrightarrow\quad\|y-s\|\leq H
+ \quad\hbox{for almost every }y.
+ \label{eq:source-net-cell-assignment}
+\end{equation}
+Clipped Voronoi cells allow $H=h$. Equal-volume cells with a different
+assignment bound are also admitted; no Voronoi hypothesis is required.
+For $x\in S$ and $T=K\Delta>0$, let $I$ be the inclusive discrete interval
+between $(0,x)$ and $(K,x)$, and assign it spacetime mass
+\[
+ V_{S,\Delta}(I)=\Delta\sum_{(j,s)\in I}v_s.
+\]
+The spatial assignment rule and the temporal factor are part of the measure.
+The limiting volume convention is $dt\,d^3x$. For the metric
+$c^2dt^2-|dx|^2$, its metric volume is $c$ times this coordinate volume.
+
+\begin{proposition}[Weighted Alexandrov-volume limit]
+\label{prop:source-net-alexandrov-volume}
+Assume the preceding hypotheses and
+$B(x,cT/2+H)\subset\Omega$. Then
+\begin{align}
+ \left|V_{S,\Delta}(I)-\frac{\pi c^3T^4}{24}\right|
+ &\leq 4\pi(T+\Delta)(cT/2+H)^2
+       \left(H+\frac{cTh}{a}\right)
+       +\frac{\pi c^3T^3\Delta}{2}.
+ \label{eq:source-net-volume-error}
+\end{align}
+Thus $H_n\to0$ and \eqref{eq:source-net-causal-refinement} imply the
+continuum Alexandrov-volume limit on aligned, bounded interior time
+windows. If all cells have a common mass $v$, this is the raw event-count
+statement $v\Delta\,|I|\to\pi c^3T^4/24$.
+\end{proposition}
+\begin{proof}
+Write $u_j=\min(j\Delta,T-j\Delta)$ and $r_j=cu_j$. The causal sandwich
+puts every population point within $c(1-2h/a)u_j$ of $x$ in the interval,
+and puts every interval point within $r_j$. At the endpoint layers the
+interval contains precisely the single endpoint. The partition assignment
+therefore gives, at every layer,
+\[
+ \frac{4\pi}{3}\bigl(c(1-2h/a)u_j-H\bigr)_+^3
+ \leq\sum_{(j,s)\in I}v_s
+ \leq\frac{4\pi}{3}(r_j+H)^3.
+\]
+For the lower estimate, a point in the smaller ball is assigned to a
+population point inside the inner causal radius. For the upper estimate,
+the union of cells assigned to interval points lies in the larger ball.
+The stated interior buffer keeps these balls in the spatial window.
+The deviation of either radius from $r_j$ is at most
+$H+cTh/a$. Since the derivative of $(4\pi/3)r^3$ is $4\pi r^2$, the
+error per layer is bounded by
+$4\pi(cT/2+H)^2(H+cTh/a)$.
+
+Finally, $F(t)=(4\pi/3)[c\min(t,T-t)]^3$ has Lipschitz constant
+$\pi c^3T^2$, vanishes at both endpoints, and integrates to
+$\pi c^3T^4/24$. Its left Riemann sum differs from its integral by at most
+$\pi c^3T^3\Delta/2$. The inclusive right endpoint contributes zero to
+this reference sum. Summing the spatial errors over $K+1$ layers proves
+\eqref{eq:source-net-volume-error}.
+\end{proof}
+
+\begin{proposition}[Interior diamonds with moving tips]
+\label{cor:source-net-general-diamond}
+Let $x,y\in S$, $\|y-x\|<cT$, and $T=K\Delta>0$. Suppose the
+continuum diamond between $(0,x)$ and $(T,y)$ has a positive spatial
+buffer inside $\Omega$. Write
+\[
+ D(t)=B(x,ct)\cap B(y,c(T-t)),\qquad
+ V(D)=\int_0^T\operatorname{vol}(D(t))\,dt.
+\]
+For the inclusive discrete interval $I$ between these tips,
+\begin{align}
+ |V_{S,\Delta}(I)-V(D)|
+ &\leq 8\pi(T+\Delta)(cT+H)^2
+       \left(H+\frac{2cTh}{a}\right)
+       +4\pi c^3T^3\Delta.
+ \label{eq:source-net-general-volume-error}
+\end{align}
+In particular, the same refinement conditions give weighted interval-volume
+convergence for arbitrary fixed interior timelike diamonds.
+\end{proposition}
+\begin{proof}
+At layer $j$, the union of assigned cells contains the intersection of
+the two balls with radii
+$(c(1-2h/a)j\Delta-H)_+$ and
+$(c(1-2h/a)(T-j\Delta)-H)_+$, up to null sets. It is contained in the
+intersection with radii $cj\Delta+H$ and $c(T-j\Delta)+H$.
+Zero-radius balls contribute zero volume. Changing either reference
+radius changes the intersection only within that ball's spherical shell.
+Each radial error is at most $H+2cTh/a$, and each outer radius is at most
+$cT+H$. The sum of the two shell bounds gives the spatial term in
+\eqref{eq:source-net-general-volume-error}. The reference section volume
+has Lipschitz constant at most $8\pi c^3T^2$: over a time increment,
+each of the two radii changes at speed $c$, and each ball has surface area
+at most $4\pi c^2T^2$. Both endpoint sections have zero volume. The same
+Riemann-sum argument gives the temporal term.
+\end{proof}
+
+\paragraph{A conservative-record family with a raw count law.}
+The population and equal-mass hypotheses have an explicit realization in
+conservative source records. In the exact source-axis presentation, write
+$\varphi=(1+\sqrt5)/2$ and $L=2/\sqrt{\varphi+2}$. For consecutive Fibonacci
+numbers $q=F_n$, $p=F_{n+1}$, with $n\geq4$, define
+\[
+ \xi_b=b\varphi-\lfloor b\varphi\rfloor,\qquad 0\leq b<q.
+\]
+For a triple $b=(b_1,b_2,b_3)$, put
+$m_i=-\lfloor b_i\varphi\rfloor$ and take the integer record
+\begin{equation}
+ z(b)=(b_2-m_1,b_2+m_1,b_3-m_2,b_3+m_2,b_1-m_3,b_1+m_3).
+ \label{eq:golden-source-record}
+\end{equation}
+Its coordinate sum is $2(b_1+b_2+b_3)$. It therefore lies in the exact
+conservative seam-current image, whose integer section supplies a finite
+source word. Direct contraction with the source axes gives the readback
+\[
+ s(b)=L(\xi_{b_1},\xi_{b_2},\xi_{b_3})\in\Omega=[0,L]^3.
+\]
+These are actual source-record images. A regular mesh is used below only
+to prove a volume estimate; it does not replace the event positions.
+
+\begin{proposition}[Source-record quadrature and four-dimensional counting]
+\label{prop:golden-source-count-limit}
+The population $S_q=\{s(b):0\leq b_i<q\}$ has exactly $q^3$ distinct
+sites. It admits a partition of $\Omega$ into cells of common volume
+$v_q=L^3/q^3$, assigned to the sites with error
+\begin{equation}
+ H_q=\frac{2\sqrt3 L}{q}.
+ \label{eq:golden-source-assignment}
+\end{equation}
+Consequently, for every Lipschitz function $f$ on $\Omega$,
+\[
+ \left|v_q\sum_{s\in S_q}f(s)-\int_\Omega f(x)\,d^3x\right|
+ \leq L^3 H_q\operatorname{Lip}(f).
+\]
+Apply the preceding complete-neighbour read law on $S_q$, with
+$a_q=L/\sqrt q$ and $\Delta_q=a_q/c$. Its density in the declared
+$dt\,d^3x$ convention is
+\begin{equation}
+ \rho_q=\frac{q^3}{L^3\Delta_q}.
+ \label{eq:golden-source-event-density}
+\end{equation}
+Normalized raw event counts converge to volume on fixed bounded regions
+with volume-null boundary. On intervals whose endpoints converge to a
+strictly timelike pair and whose limiting diamond has an interior buffer
+in the spatial and temporal windows, the generated order intervals
+converge to that same diamond in count measure. In particular, for vertical
+tips separated by model time $T$,
+\[
+ \frac{|I_q|}{\rho_q}\longrightarrow\frac{\pi c^3T^4}{24}.
+\]
+The local limiting order and measure are those of flat $1+3$ spacetime.
+This conclusion concerns this declared source-record family and update law.
+\end{proposition}
+\begin{proof}
+The Fibonacci recurrence gives $\gcd(p,q)=1$ and
+$p-q\varphi=(-1)^n\varphi^{-n}$, hence
+$|\varphi-p/q|<q^{-2}$. Let $k_b$ be the residue of $bp$ modulo $q$.
+These residues permute $0,\ldots,q-1$. For $b=0$ the two floors below
+are zero. For $0<b<q$, $bp/q$ is at least $1/q$ from either adjacent
+integer, whereas $|b(\varphi-p/q)|<1/q$. Therefore
+\[
+ \lfloor b\varphi\rfloor=\lfloor bp/q\rfloor,\qquad
+ \xi_b=\frac{k_b}{q}+b(\varphi-p/q),\qquad
+ \left|\xi_b-\frac{k_b}{q}\right|<\frac1q.
+\]
+Irrationality of $\varphi$ makes the orbit points distinct; the source
+readback then distinguishes all $q^3$ records.
+
+Assign to $s(b)$ the rectangular cell
+$\prod_i[Lk_{b_i}/q,L(k_{b_i}+1)/q]$, resolving cell-boundary ties
+arbitrarily. This is a partition up to null sets. A site need not belong
+to its assigned cell, but every coordinate displacement from a point of
+that cell is at most $2L/q$. This proves
+\eqref{eq:golden-source-assignment}, the covering property and the
+Lipschitz estimate by integrating the displacement bound over each cell.
+Taking products with time cells $[j\Delta_q,(j+1)\Delta_q]$ proves
+convergence of the normalized event measure: for a Lipschitz test function
+on an aligned time window of length $T$, the error is at most
+\[
+ TL^3\bigl(H_q\operatorname{Lip}_x(f)
+               +\Delta_q\operatorname{Lip}_t(f)\bigr).
+\]
+An extra endpoint layer contributes at most
+$L^3\Delta_q\|f\|_\infty$. Continuous approximation then gives the
+count statement for regions with volume-null boundary.
+
+Use $h_q\leq H_q$ in the causal sandwich.
+Here $a_q\to0$ and $H_q/a_q=2\sqrt3/\sqrt q\to0$; the sufficient
+positive-inner-cone condition from this bound holds when $q>48$.
+For converging timelike tips, the order and sampling discrepancies are
+confined to shrinking neighbourhoods of the two limiting null boundaries.
+Their volume is zero. The uniform cell displacement and temporal error
+also tend to zero, so the normalized number of events in these shrinking
+neighbourhoods tends to zero. This proves interval-count convergence;
+for vertical tips it also follows directly from
+\eqref{eq:source-net-volume-error}. The formula for the flat diamond is
+its elementary ball-section integral.
+\end{proof}
+
+\begin{proposition}[The four-dimensional ordering fraction]
+\label{cor:source-record-ordering-fraction}
+For the contained timelike intervals in
+Proposition~\ref{prop:golden-source-count-limit}, let $N_q=|I_q|$ and let
+$C_q$ count their strict causally ordered pairs. Then
+\[
+ \frac{2C_q}{N_q(N_q-1)}\longrightarrow\frac1{10},
+\]
+the four-dimensional Myrheim--Meyer fraction~\cite{reid2003}.
+\end{proposition}
+\begin{proof}
+The cell assignment gives convergence also for the product event measure.
+Interval-membership boundaries, the pairwise null-relation boundary and
+the coincidence diagonal have zero limiting measure. The causal sandwich
+confines disagreement to shrinking neighbourhoods of these boundaries.
+Hence the normalized strict-pair count tends to its continuum double
+integral; $N_q\to\infty$ removes the distinction between $N_q^2$ and
+$N_q(N_q-1)$.
+
+In units $c=1$, place the limiting tips at $(0,0)$ and $(T,0)$ and write
+$V=\pi T^4/24$. The volume to the future of $(t,x)$ within the interval is
+$\pi[(T-t)^2-|x|^2]^2/24$. Thus the strict oriented-pair integral is
+\[
+ \frac{\pi^2}{6}\int_0^T\!\int_0^{\min(t,T-t)}
+       r^2\bigl((T-t)^2-r^2\bigr)^2\,dr\,dt
+   =\frac{\pi^2T^8}{11520}=\frac{V^2}{20}.
+\]
+The ordering fraction counts both orientations of distinct comparable
+pairs, giving $1/10$. Constant changes of time and volume units cancel in
+the ratio. This is an interval statistic; the same value is not asserted
+for a whole spatial box times a time window.
+\end{proof}
+
+A sharper finite covering constant is available without changing this
+construction. Sort the one-dimensional orbit as
+$0=\eta_0<\cdots<\eta_{q-1}<1$ and put
+\[
+ r_q=\max\left\{\frac12\max_{i<q-1}(\eta_{i+1}-\eta_i),
+                     1-\eta_{q-1}\right\},\qquad
+ h_q=\sqrt3 Lr_q.
+\]
+The product population has exactly this covering radius in the closed
+cube. The path condition $2h_q<a_q$ is the exact quadratic-field inequality
+$12qr_q^2<1$. This sharper $h_q$ concerns paths; the assignment estimate
+$H_q$ in the count proof is separate.
+
+The source-word section has coefficients growing at most linearly in $q$;
+the finite implementation records their actual primitive lengths.
+Counting one distinguished event per site and layer is part of the stated
+law. Intermediate seam-word operations, read instructions and bookkeeping
+records are not silently included in the same density. The spatial
+populations are nested along increasing Fibonacci cutoffs. Their changing
+layer duration and edge radius do not make the spacetime histories induced
+prefixes; regulator convergence uses the common metric carrier and controlled
+cell assignments.
+
+\paragraph{Source populations and physical interpretation.}
+The finite-word source construction supplies arbitrarily fine metric nets
+in bounded convex windows with nonempty interior in the rank-three
+completion. A maximal separated
+subset retains a controlled fill distance and three-dimensional packing
+bounds. These statements supply the spatial hypotheses of
+Proposition~\ref{prop:source-net-causal-path} under a specified resolution
+and population rule. Three-dimensional packing bounds alone do not supply
+equal-volume sampling. The count conclusion requires a partition satisfying
+\eqref{eq:source-net-cell-assignment} and, for unweighted counts, equal
+cell masses or a separate counting approximation.
+
+The construction gives a causal approximation on source-metric points
+without inserting a Cartesian spatial table. The complete neighbour read
+law, repeated population, cell measure, and model duration are supplied.
+An implementation by accepted observer repairs must realize these inputs
+with its actual records and operation costs. A scalar action on the same
+population can have a different finite propagation relation; the causal
+cone proved here is not an identification of that action's stencil cone
+or its continuum response speed. Agreement with a field action and a
+physical clock is an additional common-model condition.

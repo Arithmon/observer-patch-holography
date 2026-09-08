@@ -87,11 +87,10 @@ interacting kinetic metric is complete. Its declared Laplace--Beltrami
 Hamiltonian has a unique self-adjoint closure, a neutral Hilbert sector and
 explicit normalized states.
 
-On dense source-metric populations, a declared positive scalar action has
-controlled finite-time convergence to a \((3+1)\)-dimensional wave field,
-with vanishing intervention responses outside its limiting causal cone.
-A prospective propagation test fixes the first anisotropic harmonic at
-angular rank six.
+Conservative source-record populations with a declared local read law
+converge to flat $(3+1)$ causal order and volume. On dense source-metric
+populations, a separate declared scalar action gives controlled wave-field
+convergence and vanishing intervention responses outside its limiting cone.
 \end{abstract}
 
 \vspace{0.5em}
@@ -2101,55 +2100,75 @@ tensor identification, which is not inferred from a finite matrix named
 \texttt{geometry}.
 \end{theorem}
 
+\begin{theorem}[A source-record causal and count limit]
+\label{thm:source-record-causal-count}
+In the rank-three conservative repair carrier, let
+$\varphi=(1+\sqrt5)/2$, $L=2/\sqrt{\varphi+2}$ and $q=F_n$, $n\geq4$.
+The population
+\[
+ S_q=L\{b\varphi-\lfloor b\varphi\rfloor:0\leq b<q\}^{3}
+ \subset[0,L]^3
+\]
+consists of $q^3$ distinct conservative source-record images.
+At each layer retain this population and let every next-layer event read
+all preceding-layer sites within $a_q=L/\sqrt q$, including itself.
+Assign model duration $\Delta_q=a_q/c$, $c>0$.
+On bounded model-time windows, the posets have width $q^3$;
+each event has edge-count height equal to its layer index.
+As $q\to\infty$, their order converges away from null separation to the
+speed-$c$ causal order. With $\rho_q=q^3/(L^3\Delta_q)$, normalized
+counts converge to $dt\,d^3x$ volume. For fixed interior timelike diamonds,
+\[
+ \frac{|I_q|}{\rho_q}\longrightarrow\operatorname{Vol}(I),
+ \qquad
+ \frac{2C_q}{|I_q|(|I_q|-1)}\longrightarrow\frac1{10},
+\]
+where $C_q$ counts strict causally ordered pairs. For vertical duration
+$T$, $\operatorname{Vol}(I)=\pi c^3T^4/24$.
+\end{theorem}
+\begin{proof}
+The exact integer section realizes each site by a conservative seam word.
+Consecutive Fibonacci approximants permute a uniform reference partition,
+with equal cell volume $L^3/q^3$ and site-assignment error
+$H_q=2\sqrt3 L/q$. For any $h$-covering population in a convex window,
+segment subdivision constructs a $k$-read path whenever
+$d\leq k(a-2h)$; every such path satisfies $d\leq ka$.
+The finite path construction is formalized in Lean.
+Here $h_q\leq H_q$ and $H_q/a_q\to0$, so the two cones coalesce.
+The product cell assignment proves count convergence; null boundaries
+have zero volume. The continuum strict-pair integral is
+$\operatorname{Vol}(I)^2/20$, giving the ordering fraction.
+The spacetime derivation supplies the source records, explicit volume
+error bounds, and the full argument~\cite{ophEinstein}.
+\end{proof}
+
 \begin{boundary}
-No physical instance of the source-causal continuum certificate is supplied. Its finite
-precursor is populated by several exact results: universal finite-poset
-compilation into authenticated provenance, an auxiliary separated one-way
-placement for every finite log, a two-check exact-order-embedding constructor,
-and source-native carrier-local port/null-ray decorations on all 30 Hasse
-links of the frozen 24-event control. The used-port ranks are \(2,1,2\);
-pooled rank is non-invariant under independent carrier relabeling, naive path
-integration fails, and no local rank-three cone or frame gluing follows. A
-separate four-seed geometry-seeded control proves
-that nested Poisson \(3+1\) causal orders, their Hasse links, and their exact
-order embeddings survive declared-parent-list-free provenance compilation exactly;
-the separately checked fixed-volume Poisson count channel makes the combined
-control a construction-seeded causal-set faithful-embedding control. These results
-remove the free event order, supplied ordinal placement coordinate, rank-four chart,
-and fitted signature from the precursor, but they do not promote a commit log
-to physical spacetime or show that OPH selects the seeded control. The independently replayed source-history family at
-$4,8,16,32,64$ rounds gives exact induced-prefix custody from $24$
-to $384$ events. Its width remains $2$ while its ordering fraction rises from
-$0.8841$ to $0.9922$, so it is an exact custody family, not a spacetime-density
-refinement. On the $24$-event control, one prescribed single-frame source-port
-placement---positive \texttt{timeScale} times canonical source height as the
-temporal coordinate of the event placement, authenticated record-port anchors, and
-arithmetic consumed-record barycentres expressed in one stipulated reference
-frame---is noninjective and fails the two-way cone test. That result rejects
-this ansatz; it neither derives inter-carrier gluing nor excludes another
-source-selected placement. Physical event/link identification, an exact
-source-selected order embedding with dense and isotropic source directions,
-count--volume calibration, independent dimension tests, manifoldlikeness,
-topology, refinement convergence, uniqueness, and smooth curvature therefore remain open and are
-exposed as independently testable conditions rather than hidden behind a supplied atlas.
+This construction supplies a flat effective order and volume for an
+explicit source-record population, neighbour read law and model clock.
+Its finite implementation verifies conservative seam compositions and
+independently replays versioned reads and interventions. Counts exclude
+auxiliary read instructions and seam operations. It does not select that law from the
+observer axioms, calibrate a physical clock, or identify its cone with a
+matter action. These are distinct requirements of a physical
+source-causal continuum certificate.
+The earlier width-two history family and the noninjective single-frame
+consumed-record barycentre placement retain their original counterexample
+scope. The new population and law are different constructions. Neither a
+rank-three carrier nor an arbitrary finite-poset provenance compiler alone
+provides the causal or count limit. Curved limits, topology stability and
+the common physical field realization require their stated additional
+hypotheses.
 \end{boundary}
 
 \subsection{A finite source satisfying part of the local-domain contract}
 
-One deterministic capture at $16{,}384$ carriers tests finite rows upstream of
-the continuum certificate: a finite informational event complex of
-$2{,}304$ events with exact acyclicity and a strict ordinal depth function; six closed
-observer-visibility neighborhoods with exact induced affine transitions,
-cocycles, orientation, and time orientation; an observer-visible seam complex
-of $8{,}662$ carriers and $11{,}816$ seams whose $38$ triangles are all
-frustrated under the declared orientation-reversing transport, with
-lift-ambiguity rank $3{,}117$ over $\mathbb F_2$; typed scalar, chiral, and
-gauge sections passing exact integer adjoint, kinetic, covariance, gluing,
-refinement, and boundary checks; and a signed-graph rank theorem giving a zero
-twisted kernel and an exactly positive dimensionless spectral gap for the
-declared local operator. The rank and positivity statements are finite
-theorems, one provenance graph binds the construction, and an isolated rerun
-reproduces the canonical receipt byte for byte \cite{ophsim}.
+One deterministic capture at $16{,}384$ carriers supplies an acyclic
+$2{,}304$-event complex with ordinal depth, six observer-visibility
+neighborhoods with induced affine transitions and cocycles, and typed
+scalar, chiral and gauge sections passing finite adjoint, kinetic,
+covariance and gluing checks. Its signed-graph operator has zero twisted
+kernel and positive dimensionless gap. The finite provenance and algebraic
+checks reproduce under isolated replay~\cite{ophsim}.
 
 The signature result of that capture is reported at its proved strength. The
 declared chart carries one ancestry-depth coordinate and three spectral
@@ -4872,7 +4891,7 @@ Mueller, B., Osika, A., Poneder, M., Xue, K., Nguyen, P., Visser, M.\,A.,
 Matscheko, D., and de La Fourni\`ere, B. (2026). \emph{Recovering Observer
 Spacetime and Einstein
 Dynamics from Overlap Consistency}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/ff1981be069d3e5fa70d953e27b3786dd4c2b99d/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}
 
 \bibitem{ophGauge}
 Mueller, B., Osika, A., Poneder, M., Xue, K., Nguyen, P., and Matscheko, D. (2026).
