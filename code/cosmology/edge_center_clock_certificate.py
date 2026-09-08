@@ -41,12 +41,15 @@ from fractions import Fraction
 import hashlib
 import json
 from pathlib import Path
+import sys
 from typing import Any
 
 from mpmath import iv, mp, mpf
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
+sys.path.insert(0, str(HERE.parent))
+from interval_decimal import interval_json
 DEFAULT_OUT = HERE / "manifests" / "edge_center_clock_certificate.json"
 
 SCHEMA = "oph.edge_center_clock_certificate.v3"
@@ -107,12 +110,11 @@ class CertificateError(ValueError):
 
 
 def _endpoints(x: Any) -> tuple[Any, Any]:
-    return mpf(x.a), mpf(x.b)
+    return tuple(mp.make_mpf(endpoint) for endpoint in x._mpi_)
 
 
 def _interval_json(x: Any) -> dict[str, str]:
-    lo, hi = _endpoints(x)
-    return {"lo": mp.nstr(lo, 40), "hi": mp.nstr(hi, 40)}
+    return interval_json(x, 40)
 
 
 def _width(x: Any) -> Any:
@@ -580,7 +582,6 @@ def survival_family_records(P: Any, depth: int = TOWER_DEPTH) -> list[dict[str, 
     # reserve-trace premise; it is not inferred from the collar counts below.
     eps = P / 24
     eps_half = P / 48
-    _, eps_hi = _endpoints(eps)
     exact_gate = mpf(EXACT_DEFECT_WIDTH_BOUND)
     poisson_floor = iv.exp(-eps)
     records: list[dict[str, Any]] = []
@@ -600,7 +601,9 @@ def survival_family_records(P: Any, depth: int = TOWER_DEPTH) -> list[dict[str, 
         if not _contains_zero(derivative_defect) or _width(derivative_defect) > exact_gate:
             raise CertificateError(f"derivative defect gate failed at depth {m}")
 
-        shrinking_bound = eps_hi * eps_hi / sub_slots
+        shrinking_bound_interval = eps.b**2 / sub_slots
+        _, shrinking_bound = _endpoints(shrinking_bound_interval)
+        shrinking_bound_text = interval_json(shrinking_bound_interval, 20)["hi"]
 
         limit_derivative_defect = eps - (1 - iv.exp(-eps / sub_slots)) * sub_slots
         limit_lo, limit_hi = _endpoints(limit_derivative_defect)
@@ -646,17 +649,17 @@ def survival_family_records(P: Any, depth: int = TOWER_DEPTH) -> list[dict[str, 
                     "limit_family_derivative": {
                         "value": _interval_json(limit_derivative_defect),
                         "nonnegative": True,
-                        "bound": mp.nstr(shrinking_bound, 20),
+                        "bound": shrinking_bound_text,
                     },
                     "orientation_balance": {
                         "value": _interval_json(orientation_defect),
                         "nonnegative": True,
-                        "bound": mp.nstr(shrinking_bound, 20),
+                        "bound": shrinking_bound_text,
                     },
                     "refinement_to_poisson_floor": {
                         "value": _interval_json(refinement_defect),
                         "strictly_positive": True,
-                        "bound": mp.nstr(shrinking_bound, 20),
+                        "bound": shrinking_bound_text,
                     },
                 },
             }
@@ -834,6 +837,7 @@ def build(
             "library": "mpmath.iv",
             "precision_decimal_digits": PRECISION,
             "rounding": "binary interval floating-point with outward enclosures",
+            "serialization": "exact binary endpoints to directed decimal bounds",
             "exact_arithmetic": False,
             "exact_integer_geometry": True,
             "claim": (

@@ -176,9 +176,10 @@
       "evidence": [
         "Lean/Thermodynamics/HorizonThermalitySurface.lean",
         "code/geometry/runs/h3_kms_finite_diagnostic_projection.json",
-        "cosmology/oph_black_hole_information_ledger.tex"
+        "cosmology/oph_black_hole_information_ledger.tex",
+        "code/geometry/runs/modular_clock_instrumentation_report.json"
       ],
-      "notes": "The cap Clausius inequality and capacity identities compose with the declared repair law as a conditional horizon-thermality-shaped surface; physical temperature still consumes the calibration row and a physical horizon dictionary. The compact H3/KMS projection preserves a runtime-bound finite replay instrument, diagnostic geometry scores, a constructed mixed-GNS diagnostic, repeated-rho identity, and native BW payload conformance. Its geometry comparison is not physical-gate eligible, source selection and multiresolution certification are absent, and the physical preflight is negative. It supplies no source-selected spacetime refinement, physical causal attachment, faithful embedding, 3+1-dimensional manifold limit, smooth curvature, or physical temperature.",
+      "notes": "The cap Clausius inequality and capacity identities compose with the declared repair law as a conditional horizon-thermality-shaped surface; physical temperature still consumes the calibration row and a physical horizon dictionary. The compact H3/KMS projection preserves a runtime-bound finite replay instrument, diagnostic geometry scores, a constructed mixed-GNS diagnostic, repeated-rho identity, and native BW payload conformance. Its geometry comparison is not physical-gate eligible, source selection and multiresolution certification are absent, and the physical preflight is negative. It supplies no source-selected spacetime refinement, physical causal attachment, faithful embedding, 3+1-dimensional manifold limit, smooth curvature, or physical temperature. The finite free-fermion ring diagnostic sums all fitting odd ranges at sizes 16,32,64,128. A fixed-nine-range control reverses its apparent profile convergence at size128. Both are numerical finite-cutoff diagnostics; common-cap KMS and Cauchy convergence receipts remain unsupplied, and the observation status is unchanged.",
       "open_premises": []
     },
     {

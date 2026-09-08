@@ -208,7 +208,7 @@
     },
     {
       "rung": 7,
-      "title": "Cap flow, Bisognano-Wichmann identification, and independent normalization controls",
+      "title": "Finite cap-profile diagnostics and independent Bisognano-Wichmann identification",
       "status": "conditional_open_interface",
       "premise_interfaces": [
         "support_visible_bw_modular_normalization"
@@ -227,6 +227,10 @@
           "kind": "code",
           "path": "code/geometry/quotient_cap_readout.py",
           "symbol": "kms_receipt"
+        },
+        {
+          "kind": "receipt",
+          "path": "code/geometry/runs/modular_clock_instrumentation_report.json"
         }
       ],
       "mutation_tests": [

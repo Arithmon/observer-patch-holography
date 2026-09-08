@@ -8,6 +8,7 @@ Nothing here evaluates or constrains the physical readback map F; CL-7 is open.
 from __future__ import annotations
 
 import json
+from fractions import Fraction
 from pathlib import Path
 import unittest
 
@@ -15,7 +16,9 @@ from mpmath import iv, mp, mpf
 
 from toy_readback import (
     ARTIFACT_NAME,
+    _interval_json,
     build_certificate,
+    contraction_certificate,
     enumerate_sector_count,
     toy_nf,
     toy_readback,
@@ -79,6 +82,30 @@ class FinitePipelineTests(unittest.TestCase):
 
 
 class ContractionCertificateTests(unittest.TestCase):
+    def test_decreasing_cubic_self_map_is_not_a_contraction(self) -> None:
+        certificate = contraction_certificate(lambda x: -x**3, lambda x: -3*x**2, iv.mpf([-1, 1]))
+        self.assertTrue(certificate["self_map_pass"])
+        self.assertEqual(Fraction(certificate["lipschitz_bound_L"]), 3)
+        self.assertFalse(certificate["lipschitz_pass"])
+        self.assertFalse(certificate["banach_pass"])
+
+    def test_decreasing_affine_contraction_is_admitted(self) -> None:
+        certificate = contraction_certificate(lambda x: -x/2, lambda x: iv.mpf(-1)/2, iv.mpf([-1, 1]))
+        self.assertTrue(certificate["banach_pass"])
+        self.assertFalse(certificate["monotone_nonnegative_pass"])
+        self.assertEqual(Fraction(certificate["lipschitz_bound_L"]), Fraction(1, 2))
+
+    def test_serialized_intervals_remain_outward(self) -> None:
+        old_iv, old_mp = iv.dps, mp.dps
+        try:
+            iv.dps, mp.dps = 60, 15
+            for numerator in (-1, 1):
+                emitted = _interval_json(iv.mpf(numerator) / 3)
+                self.assertLessEqual(Fraction(emitted["lo"]), Fraction(numerator, 3))
+                self.assertGreaterEqual(Fraction(emitted["hi"]), Fraction(numerator, 3))
+        finally:
+            iv.dps, mp.dps = old_iv, old_mp
+
     def test_toy_fixed_point_exists_and_certificate_passes(self) -> None:
         certificate = build_default_certificate()
 

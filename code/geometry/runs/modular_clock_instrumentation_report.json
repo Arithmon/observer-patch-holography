@@ -2,13 +2,20 @@
   "artifact": "oph_modular_clock_instrumentation",
   "object_id": "ModularClockInstrumentation_Issue503",
   "issue": 503,
-  "scope": "boundary-collar instrumentation: declared Gaussian MaxEnt reference states (critical hopping, anti-periodic twist, half filling, v_F = 1) on the stage-r cap-boundary collar rings; modular data computed at 120-digit precision; profile extracted by odd-range chiral resummation (nearest-neighbour truncation alone is off by ~9 percent and does not converge); receipts evaluated are the boundary-circle profile-KMS and cross-ratio clauses; cap-interior modular data are pending",
+  "scope": "boundary-collar instrumentation: declared Gaussian MaxEnt reference states (critical hopping, anti-periodic twist, half filling, v_F = 1) on the stage-r cap-boundary collar rings; modular data computed with 120-digit eigendecomposition then rounded to float64; every available odd hopping range is summed. Finite profile and transport diagnostics only: no verified KMS identity, analytic BW identification, continuum convergence, Cauchy-limit certificate or physical clock attachment.",
   "rings": [
     16,
     32,
-    64
+    64,
+    128
   ],
-  "resummation_rmax": 9,
+  "resummation_rule": "all_fitting_odd_ranges_at_each_bond",
+  "resummation_rmax_by_ring": [
+    7,
+    15,
+    31,
+    63
+  ],
   "kms_profile_receipt": [
     {
       "n_ring": 16,
@@ -23,19 +30,28 @@
       "n_ring": 32,
       "arc_sites": 16,
       "interior_bonds": 9,
-      "median_relative_residual_2pi": 0.0011474903070090026,
-      "max_relative_residual_2pi": 0.0015845438556624236,
-      "median_relative_residual_wrong_1p2": 0.16762290858917417,
-      "separation_factor": 146.07784271929287
+      "median_relative_residual_2pi": 0.0011523214863986553,
+      "max_relative_residual_2pi": 0.0016091424031511314,
+      "median_relative_residual_wrong_1p2": 0.16762693457199884,
+      "separation_factor": 145.46889609416422
     },
     {
       "n_ring": 64,
       "arc_sites": 32,
       "interior_bonds": 17,
-      "median_relative_residual_2pi": 0.00011239035725785218,
-      "max_relative_residual_2pi": 0.0002453673130835554,
-      "median_relative_residual_wrong_1p2": 0.16668836640762252,
-      "separation_factor": 1483.1198198364727
+      "median_relative_residual_2pi": 0.00028500570147849125,
+      "max_relative_residual_2pi": 0.0004017591777718543,
+      "median_relative_residual_wrong_1p2": 0.1669041714178987,
+      "separation_factor": 585.6169562646262
+    },
+    {
+      "n_ring": 128,
+      "arc_sites": 64,
+      "interior_bonds": 33,
+      "median_relative_residual_2pi": 7.105749477931411e-05,
+      "max_relative_residual_2pi": 0.00010040892887830388,
+      "median_relative_residual_wrong_1p2": 0.16672588124564935,
+      "separation_factor": 2346.3518065681333
     }
   ],
   "crossratio_receipt": [
@@ -55,9 +71,9 @@
         3,
         11
       ],
-      "cr_lattice": 5.891265823688044,
+      "cr_lattice": 5.891346879748015,
       "cr_moebius": 5.82842712474619,
-      "relative_error": 0.010781416254662446
+      "relative_error": 0.010795323275928581
     },
     {
       "n_ring": 64,
@@ -65,27 +81,171 @@
         7,
         23
       ],
-      "cr_lattice": 5.841805767794002,
+      "cr_lattice": 5.844160543957693,
       "cr_moebius": 5.82842712474619,
-      "relative_error": 0.0022954122547074185
+      "relative_error": 0.002699427971690982
+    },
+    {
+      "n_ring": 128,
+      "quadruple_bonds": [
+        15,
+        47
+      ],
+      "cr_lattice": 5.832360810330684,
+      "cr_moebius": 5.82842712474619,
+      "relative_error": 0.0006749137460762
     }
   ],
   "verdicts": {
     "kms_residual_decreasing": true,
-    "kms_final_median_residual": 0.00011239035725785218,
+    "kms_final_median_residual": 7.105749477931411e-05,
     "wrong_normalization_separated": true,
     "crossratio_error_decreasing": true,
-    "crossratio_final_relative_error": 0.0022954122547074185,
+    "crossratio_final_relative_error": 0.0006749137460762,
     "crossratio_cauchy_decreasing": true
   },
+  "finite_diagnostics": {
+    "profile_agreement_with_decreasing_finite_residual": true,
+    "crossratio_agreement_with_decreasing_finite_differences": true
+  },
+  "fixed_depth_control": {
+    "resummation_rmax": 9,
+    "kms_profile_receipt": [
+      {
+        "n_ring": 16,
+        "arc_sites": 8,
+        "interior_bonds": 5,
+        "median_relative_residual_2pi": 0.004807594416665895,
+        "max_relative_residual_2pi": 0.006485050005438087,
+        "median_relative_residual_wrong_1p2": 0.17067299534722147,
+        "separation_factor": 35.50070587393363
+      },
+      {
+        "n_ring": 32,
+        "arc_sites": 16,
+        "interior_bonds": 9,
+        "median_relative_residual_2pi": 0.0011474903070090026,
+        "max_relative_residual_2pi": 0.0015845438556624236,
+        "median_relative_residual_wrong_1p2": 0.16762290858917417,
+        "separation_factor": 146.07784271929287
+      },
+      {
+        "n_ring": 64,
+        "arc_sites": 32,
+        "interior_bonds": 17,
+        "median_relative_residual_2pi": 0.00011239035725785218,
+        "max_relative_residual_2pi": 0.0002453673130835554,
+        "median_relative_residual_wrong_1p2": 0.16668836640762252,
+        "separation_factor": 1483.1198198364727
+      },
+      {
+        "n_ring": 128,
+        "arc_sites": 64,
+        "interior_bonds": 33,
+        "median_relative_residual_2pi": 0.0003381195054814601,
+        "max_relative_residual_2pi": 0.002217790744556858,
+        "median_relative_residual_wrong_1p2": 0.16638490041209875,
+        "separation_factor": 492.0890327672091
+      }
+    ],
+    "crossratio_receipt": [
+      {
+        "n_ring": 16,
+        "quadruple_bonds": [
+          1,
+          5
+        ],
+        "cr_lattice": 6.08042436424952,
+        "cr_moebius": 5.82842712474619,
+        "relative_error": 0.04323589093760938
+      },
+      {
+        "n_ring": 32,
+        "quadruple_bonds": [
+          3,
+          11
+        ],
+        "cr_lattice": 5.891265823688044,
+        "cr_moebius": 5.82842712474619,
+        "relative_error": 0.010781416254662446
+      },
+      {
+        "n_ring": 64,
+        "quadruple_bonds": [
+          7,
+          23
+        ],
+        "cr_lattice": 5.841805767794002,
+        "cr_moebius": 5.82842712474619,
+        "relative_error": 0.0022954122547074185
+      },
+      {
+        "n_ring": 128,
+        "quadruple_bonds": [
+          15,
+          47
+        ],
+        "cr_lattice": 5.825098818784266,
+        "cr_moebius": 5.82842712474619,
+        "relative_error": 0.0005710470236116594
+      }
+    ],
+    "verdicts": {
+      "kms_residual_decreasing": false,
+      "kms_final_median_residual": 0.0003381195054814601,
+      "wrong_normalization_separated": true,
+      "crossratio_error_decreasing": true,
+      "crossratio_final_relative_error": 0.0005710470236116594,
+      "crossratio_cauchy_decreasing": true
+    },
+    "finite_diagnostics": {
+      "profile_agreement_with_decreasing_finite_residual": false,
+      "crossratio_agreement_with_decreasing_finite_differences": true
+    },
+    "omitted_range_diagnostics": [
+      {
+        "n_ring": 16,
+        "max_absolute_omitted_range_bound": 0.0,
+        "max_relative_omitted_range_bound": 0.0,
+        "max_absolute_full_minus_fixed_profile": 0.0
+      },
+      {
+        "n_ring": 32,
+        "max_absolute_omitted_range_bound": 0.0008377468474704623,
+        "max_relative_omitted_range_bound": 2.6179588983451953e-05,
+        "max_absolute_full_minus_fixed_profile": 0.0007871535196386503
+      },
+      {
+        "n_ring": 64,
+        "max_absolute_omitted_range_bound": 0.06433390840391061,
+        "max_relative_omitted_range_bound": 0.0010052173188111035,
+        "max_absolute_full_minus_fixed_profile": 0.04141609541474622
+      },
+      {
+        "n_ring": 128,
+        "max_absolute_omitted_range_bound": 0.7062232267337172,
+        "max_relative_omitted_range_bound": 0.005517368958857166,
+        "max_absolute_full_minus_fixed_profile": 0.2967295581997007
+      }
+    ],
+    "interpretation": "The fixed-depth finite trend may fail; its omitted tail has no proved vanishing refinement bound."
+  },
+  "error_scope": {
+    "finite_range_truncation_removed": true,
+    "roundoff_interval_certified": false,
+    "continuum_profile_error_certified": false,
+    "tail_bound": "2 sum over omitted fitting odd r of r abs(h[i,i+r]); triangle inequality for exact entries, numerical evaluation here"
+  },
   "receipts_witnessed": {
-    "geometric_2pi_kms_boundary_collar": true,
-    "modular_cross_ratio_boundary_collar": true
+    "geometric_2pi_kms_boundary_collar": false,
+    "modular_cross_ratio_boundary_collar": false
   },
   "receipts_pending": [
+    "uniform continuum profile and transport error bounds",
+    "same-algebra KMS identity and BW identification",
     "cap-interior modular data (full 2D cap algebras)",
     "Cyc/NTI/weak-additivity/MI null-net receipts",
-    "source-causal event/link adequacy, physical placement, faithful embedding, and continuum-limit certificates",
+    "physical event/link and clock attachment, with the exact embedding or controlled continuum approximation required by the chosen route",
     "UC/VR/scale physical-identification receipts"
   ]
 }

@@ -39,8 +39,12 @@ import argparse
 import itertools
 import json
 from pathlib import Path
+import sys
 
 from mpmath import iv, mp, mpf
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from interval_decimal import interval_json, scalar_bound
 
 ARTIFACT_NAME = "oph_capacity_readback_toy_schema"
 DISCLAIMER = (
@@ -156,12 +160,11 @@ VARIANTS = {
 # ---------------------------------------------------------------------------
 
 def _endpoints(x) -> tuple[mpf, mpf]:
-    return mpf(x.a), mpf(x.b)
+    return tuple(mp.make_mpf(endpoint) for endpoint in x._mpi_)
 
 
 def _interval_json(x) -> dict[str, str]:
-    lo, hi = _endpoints(x)
-    return {"lo": mp.nstr(lo, 30), "hi": mp.nstr(hi, 30)}
+    return interval_json(x, 30)
 
 
 def _contained(inner, outer) -> bool:
@@ -177,14 +180,15 @@ def contraction_certificate(readback, derivative, interval) -> dict:
     derivative_enclosure = derivative(interval)
     _, derivative_hi = _endpoints(derivative_enclosure)
     derivative_lo, _ = _endpoints(derivative_enclosure)
-    lipschitz_pass = derivative_hi < 1
+    _, absolute_derivative_hi = _endpoints(abs(derivative_enclosure))
+    lipschitz_pass = absolute_derivative_hi < 1
     monotone_pass = derivative_lo >= 0
     return {
         "interval": _interval_json(interval),
         "image": _interval_json(image),
         "self_map_pass": self_map_pass,
         "derivative_enclosure": _interval_json(derivative_enclosure),
-        "lipschitz_bound_L": mp.nstr(derivative_hi, 30),
+        "lipschitz_bound_L": scalar_bound(absolute_derivative_hi, 30, upper=True),
         "lipschitz_pass": bool(lipschitz_pass),
         "monotone_nonnegative_pass": bool(monotone_pass),
         "banach_pass": bool(self_map_pass and lipschitz_pass),

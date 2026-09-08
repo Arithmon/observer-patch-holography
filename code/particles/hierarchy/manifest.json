@@ -59,8 +59,8 @@
     },
     {
       "path": "STATUS.md",
-      "sha256": "04f91a97d1cac2c868774f34ec35ffdcd533a2f1d55927042f7cc3a7462fb2ca",
-      "bytes": 8308
+      "sha256": "2500d6402119938b1a2bff23a31d173f09d9ddcb819e43124dd6791a8feafca3",
+      "bytes": 9313
     },
     {
       "path": "certificates/DAG_U.json",
@@ -169,8 +169,8 @@
     },
     {
       "path": "certificates/independent_interval_witness_receipt.json",
-      "sha256": "ae6262c86b592796b1574f3c58ae4ca44df1516fa169c2b1c6ef6f735a5b2291",
-      "bytes": 836
+      "sha256": "fea4717522a42fea83c93268a861c601a3bef48c43a68358681984ff5c7c87ae",
+      "bytes": 4429
     },
     {
       "path": "certificates/local_global_resonance_audit.json",
@@ -194,8 +194,8 @@
     },
     {
       "path": "computations/hierarchy_interval_witness.py",
-      "sha256": "8823c747ace9a45737604df5830d5d31b682c1b86fec88250aeae94e6f36929b",
-      "bytes": 7532
+      "sha256": "68213d392782607d29a55193f26a391e4850120ad47b0bba650d915a4f531ce0",
+      "bytes": 10417
     },
     {
       "path": "computations/hierarchy_numeric_witness.json",
@@ -219,8 +219,8 @@
     },
     {
       "path": "test_interval_witness.py",
-      "sha256": "c27663bba676f9e164bef51250d307c4edf861d54a122ab54cbcf1e876cfcdfe",
-      "bytes": 2087
+      "sha256": "42a1f0d09d923a1ae0f688354d7969facb586731072651fc3bf4054ccd4c7436",
+      "bytes": 9280
     },
     {
       "path": "theorem_package.md",
@@ -376,6 +376,21 @@
       "path": "test_antecedent_only_nonidentifiability.py",
       "sha256": "9405e6949e680b54fb3dd3378a0304821d833b5edb034c040f975c66cacc9943",
       "bytes": 4595
+    },
+    {
+      "path": "computations/hierarchy_implicit_scale_witness.py",
+      "sha256": "960bb9b2e9e76ffdfe21976237a203a1dda6cdb582072a6c82ee0566bcebd137",
+      "bytes": 5649
+    },
+    {
+      "path": "validators/verify_implicit_scale_attachment.py",
+      "sha256": "c85ce2d6bec112b66c91a6ea362c09a52da9cbf29bdfe595fa56415b7a883816",
+      "bytes": 6577
+    },
+    {
+      "path": "certificates/implicit_scale_attachment_receipt.json",
+      "sha256": "20a3af02a3f7c8db0181fd414decb2900f47de5ceb987647b7709488c0f74021",
+      "bytes": 1995
     }
   ]
 }

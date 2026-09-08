@@ -83,7 +83,9 @@ That instruction picks out one map. Applying it twice does nothing that applying
 
 For the declared resampling map, distance to its preserved reference cannot increase. That is the second-law inequality of chapter sixteen. It compares two probability descriptions under one channel; it does not identify the reference with physical truth or identify every source repair with that channel.
 
-The resampling map is idempotent, so applying the same map again changes nothing. It also preserves every initially positive state weight. A fully supported distribution therefore stays fully supported through finitely many such steps. A zero-temperature Gibbs state has zero excited-state weights when excited states exist, so this finite protocol cannot reach it from full support. Its physical temperature reading still uses the specified energy and thermal reference.
+Full resampling settles the unresolved probabilities in one step. Local repair can take longer while preserving the same public record. An exact eight-state example keeps one recorded bit fixed and updates two other bits from their conditional probabilities. Their correlations decay toward equilibrium; the recorded bit remains unchanged. This supplies a finite model of memory and relaxation under a specified transition law. Identifying that law and its clock with a physical system requires further evidence.
+
+Both constructions preserve every initially positive state weight. A zero-temperature Gibbs state has zero excited-state weights when excited states exist, so finitely many such steps cannot reach it from full support. Its physical temperature reading uses the specified energy and thermal reference.
 
 Landauer’s bound follows on the identified thermal branch. If a reference-preserving heat stroke lowers entropy by c nats at positive inverse temperature beta, it expels at least c divided by beta of mean energy. Converting that energy decrease into reservoir heat uses the physical heat-stroke model. Setting c to the logarithm of two gives the one-bit bound.
 

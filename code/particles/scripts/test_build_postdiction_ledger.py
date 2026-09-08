@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import hashlib
 import json
 from pathlib import Path
 
@@ -544,6 +545,102 @@ def test_thermodynamic_receipt_owners_are_separate(result):
     assert "Closed #732 records only the attained conditional composition milestone" in boundary
     assert "superseded historical owners" not in boundary
     assert "five receipts stay open under issue #688" not in boundary
+
+
+def test_protected_memory_projection_replays_exact_packet_and_bytes(tmp_path):
+    source = ledger.CODE / "thermodynamics/protected_memory/runtime/protected_memory_receipt.json"
+    raw = source.read_bytes()
+    copied = tmp_path / source.name
+    copied.write_bytes(raw)
+    control = ledger._protected_memory_control(copied)
+    assert control == ledger._protected_memory_control()
+    assert control["receipt_pin"] == {
+        "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest(),
+    }
+    report = control["independent_verifier_result"]
+    assert report["accepted"] is True
+    assert report["gap_lower"] == "7/192"
+    assert report["green_kubo_matrix"] == [
+        ["11417/9375", "1832/3125"], ["1832/3125", "3816/3125"],
+    ]
+    assert control["fibre_centered_currents_required"] is True
+    assert control["new_supplied_local_stochastic_law"] is True
+    assert control["observed_postdiction"] is False
+
+
+def test_protected_memory_projection_rejects_rehashed_false_memory(tmp_path):
+    source = ledger.CODE / "thermodynamics/protected_memory/runtime/protected_memory_receipt.json"
+    packet = json.loads(source.read_text(encoding="utf-8"))
+    gk = packet["green_kubo"]
+    # Forge instantaneous mixing while retaining internally matching sum and
+    # remainder summaries. All provider pins remain valid; the ledger hashes
+    # the new file itself, so a stale receipt hash cannot be the rejection.
+    gk["correlations"][1:] = [[["0", "0"], ["0", "0"]] for _ in range(64)]
+    gk["matrix"] = deepcopy(gk["equal_time"])
+    gk["partial_sum"] = deepcopy(gk["equal_time"])
+    gk["exact_remainder"] = [["0", "0"], ["0", "0"]]
+    forged = tmp_path / "rehashed_false_memory.json"
+    forged.write_text(json.dumps(packet, sort_keys=True) + "\n", encoding="utf-8")
+    assert hashlib.sha256(forged.read_bytes()).digest() != hashlib.sha256(source.read_bytes()).digest()
+    with pytest.raises(SystemExit, match="protected-memory independent replay failed"):
+        ledger._protected_memory_control(forged)
+
+
+@pytest.mark.parametrize("field,value", [
+    ("accepted", 1),
+    ("states", True),
+    ("gap_lower", "1"),
+    ("native_source_attachment", True),
+    ("historical_obstruction_overturned", True),
+    ("physical_clock_or_conductivity", True),
+    ("new_Lean_formalization", True),
+])
+def test_protected_memory_projection_rejects_provider_promotion(monkeypatch, field, value):
+    original_spec = ledger.importlib.util.spec_from_file_location
+    def spec(name, path, *args, **kwargs):
+        item = original_spec(name, path, *args, **kwargs)
+        if name == "protected_memory_ledger_verifier":
+            original_exec = item.loader.exec_module
+            def execute(module):
+                original_exec(module)
+                original_verify = module.verify
+                def changed(packet):
+                    result = original_verify(packet)
+                    result[field] = value
+                    return result
+                module.verify = changed
+            item.loader.exec_module = execute
+        return item
+    monkeypatch.setattr(ledger.importlib.util, "spec_from_file_location", spec)
+    with pytest.raises(SystemExit, match="protected-memory verifier scope/count mismatch"):
+        ledger._protected_memory_control()
+
+
+def test_protected_memory_projection_requires_fresh_provider_bytes(monkeypatch):
+    target = ledger.CODE / "thermodynamics/protected_memory/protected_memory.py"
+    original = Path.read_bytes
+    def altered(path):
+        raw = original(path)
+        return raw + b"\n# changed provider\n" if path == target else raw
+    monkeypatch.setattr(Path, "read_bytes", altered)
+    with pytest.raises(SystemExit, match="protected-memory independent replay failed: source pins"):
+        ledger._protected_memory_control()
+
+
+def test_protected_memory_row_keeps_classification_and_lean_declarations(result):
+    row = next(item for item in result["sections"]["forced_structure"]
+               if item["id"] == "finite_green_kubo_graph_transport")
+    assert row["protected_record_memory"] == ledger._protected_memory_control()
+    assert row["match"] == (
+        "exact finite conditional transport structure; physical generator and coefficients not constructed"
+    )
+    assert set(row["lean_declarations"]) == {"GreenKubo", "GraphDiffusion"}
+    assert len(row["lean_declarations"]["GreenKubo"]) == 8
+    assert len(row["lean_declarations"]["GraphDiffusion"]) == 11
+    assert "paper/tex_fragments/PROTECTED_RECORD_MEMORY.tex" in row["artifact_refs"]
+    assert "centering within each protected fibre" in row["hypothesis_boundary"]
+    assert "does not overturn the historical idempotent-projector obstruction" in row["hypothesis_boundary"]
+    assert "this row emits no prediction-ladder entry" in row["hypothesis_boundary"]
 
 
 def test_born_frame_row_keeps_post_hoc_orientation_out_of_source_selection(result):

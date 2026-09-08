@@ -101,7 +101,7 @@ a^{-1}
 \qquad
 \alpha_Y(\mu;P,a)=\frac35\alpha_1(\mu;P,a).
 \]
-The source \(Z\)-scale is the positive solution of
+The source \(Z\)-scale satisfies the implicit equation
 \[
 \mu
 =
@@ -240,9 +240,10 @@ then there is a unique \(\alpha_U(P_C)\in I_U\) satisfying
 \[
 \Phi_U(P_C,\alpha_U(P_C))=0.
 \]
-The dependency graph of this zero contains no measured \(G\), no Planck unit formed
-using measured \(G\), no measured \(\Lambda\), no measured \(M_Z\), no measured \(M_W\), and no
-measured low-energy gauge coupling.
+The comparison pixel \(P_C\) inherits its CODATA electromagnetic input.
+Holding that pixel fixed, this calculation uses no additional measured
+low-energy coupling, measured \(G\), Planck unit formed using measured
+\(G\), measured \(\Lambda\), measured \(M_Z\), or measured \(M_W\).
 \end{theorem}
 
 \begin{proof}
@@ -252,6 +253,61 @@ change gives existence by the intermediate value theorem. The derivative exclusi
 uniqueness. The dependency statement follows by inspection of the declared source map: the residual
 is built only from \(P_C\), the declared running packet, the self-consistent \(Z\)-scale equation,
 and finite compact-group representation sums.
+\end{proof}
+
+\begin{theorem}[Implicit-scale attachment at the comparison pixel]
+\label{thm:particle-implicit-scale-attachment}
+Let $F(a,\mu)$ be the right-hand side of the source $Z$-scale equation,
+with the exact stored decimal
+\[
+ \widehat P_C=1.630968209403959324879279847782648941,
+ \qquad J=[7\times10^{-18},8\times10^{-18}].
+\]
+For every $a\in I_U$, all running denominators are positive on $J$ and
+\[
+ F(a,J)\subset[7.49,7.52]\times10^{-18}\subset\operatorname{int}J,
+ \qquad 0\le\partial_\mu F(a,J)\le0.006<1/100.
+\]
+There is exactly one scale $\mu(a)\in J$, it is continuously differentiable,
+and the finite-cutoff hierarchy residual evaluated at this exact scale obeys
+\[
+ \frac{\mathrm d}{\mathrm da}\Phi_U(\widehat P_C,a)\in[-12,-10].
+\]
+The lower and upper endpoint values lie respectively in
+\[
+ [1.09907,1.09908]\times10^{-5},\qquad
+ [-1.09904,-1.09902]\times10^{-5}.
+\]
+There is therefore exactly one zero in $I_U$. The cutoffs remain $N_2=128,N_3=64$; neither an
+infinite representation sum nor a scale outside $J$ is part of this claim.
+\end{theorem}
+
+\begin{proof}
+The uniform self-map and derivative bound give a contraction on $J$.
+The interior image and $1-\partial_\mu F\ge99/100$ give the implicit derivative
+\[
+ \mu'(a)=\frac{\partial_a F}{1-\partial_\mu F}.
+\]
+Every interval image of a box containing this fixed point retains it.
+Eight images on $I_U\times J$ enclose the scale for the derivative test;
+sixteen images at each endpoint enclose the endpoint residuals. These are
+inclusions of the exact fixed point, not assertions that an iterate equals it.
+Interval automatic differentiation and an independent analytic calculation
+verify the displayed bounds at 60-digit interval precision. For the latter,
+write $S=\alpha_2+3\alpha_1/5$ and
+$B=\alpha_2^2+99\alpha_1^2/25$. Then
+\[
+ F_\mu=\frac{FB}{4\pi\mu S},\qquad
+ F_a=F\left[\frac{\pi}{2a^2}
+ +\frac{\alpha_2^2+3\alpha_1^2/5}{2a^2S}\right].
+\]
+The finite entropy derivative is
+$\mathrm d\bar\ell_G/\mathrm dt=-\operatorname{Cov}_t(C_2,\log d)$;
+combining it with
+$t_i'=4\pi^2\alpha_i^2[a^{-2}+b_i\mu'/(2\pi\mu)]$
+gives the certified residual derivative. Continuity, endpoint signs, and
+strict monotonicity finish the argument. The separate 60- and 64-iteration
+certificates retain their own finite-map scope and Krawczyk enclosures.
 \end{proof}
 
 \paragraph{Precision policy.}

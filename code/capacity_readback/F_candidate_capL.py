@@ -29,7 +29,7 @@ from pathlib import Path
 
 from mpmath import iv, mp, mpf
 
-from toy_readback import _contained, _endpoints, _interval_json
+from toy_readback import _contained, _endpoints, _interval_json, scalar_bound
 
 ARTIFACT_NAME = "oph_capacity_readback_candidate_capL_2026-07-14"
 PRECISION = 40
@@ -101,14 +101,14 @@ def contraction_certificate_centered(F, Fp, interval) -> dict:
     self_map_pass = _contained(image, interval)
     derivative_enclosure = Fp(interval)
     d_lo, d_hi = _endpoints(derivative_enclosure)
-    abs_L = max(abs(d_lo), abs(d_hi))
+    _, abs_L = _endpoints(abs(derivative_enclosure))
     return {
         "interval": _interval_json(interval),
         "image_form": "centered mean-value: F(m) + F'(I)*(I - m)",
         "image": _interval_json(image),
         "self_map_pass": bool(self_map_pass),
         "derivative_enclosure": _interval_json(derivative_enclosure),
-        "lipschitz_bound_L": mp.nstr(abs_L, 30),
+        "lipschitz_bound_L": scalar_bound(abs_L, 30, upper=True),
         "lipschitz_pass": bool(abs_L < 1),
         "monotone_nonnegative_pass": bool(d_lo >= 0),
         "banach_pass": bool(self_map_pass and abs_L < 1),

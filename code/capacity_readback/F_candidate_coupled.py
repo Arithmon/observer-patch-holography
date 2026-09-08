@@ -126,8 +126,7 @@ def build() -> dict:
             "map": "F(N) = pi * exp((1-lambda)*log(N/pi) + lambda*x_EW)",
             "contraction_certificate": cert_n,
             "fixed_point_enclosure": {
-                "lo": mp.nstr(n_box_lo, 40),
-                "hi": mp.nstr(n_box_hi, 40),
+                **_interval_json(n_box),
                 "relative_width": mp.nstr((n_box_hi - n_box_lo) / n_box_lo, 8),
             },
         },

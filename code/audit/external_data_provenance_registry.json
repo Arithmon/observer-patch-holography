@@ -322,8 +322,8 @@
       },
       "loader": {
         "path": "code/particles/neutrino/score_neutrino_nufit61.py",
-        "sha256": "339ab9726164ba2304bb9116b8e47d0c76cad0133621f805578d514f3694a9d2",
-        "bytes": 17531,
+        "sha256": "5515bd53abe65da6b6802affd2499e1399b41bbf2d28dea857b92764c13d0be8",
+        "bytes": 29955,
         "classification": "hash_verifying_external_table_scorer",
         "network_required": false,
         "deterministic_from_declared_inputs": true,

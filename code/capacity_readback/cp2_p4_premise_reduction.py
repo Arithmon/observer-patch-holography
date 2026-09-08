@@ -69,7 +69,7 @@ if not (_CANON / "toy_readback.py").exists():
 
 from mpmath import iv, mp, mpf
 
-from toy_readback import _contained, _endpoints, _interval_json
+from toy_readback import _contained, _endpoints, _interval_json, scalar_bound
 from F_candidate_capL import P_HI, P_LO
 from F_candidate_coupled import ALPHA_U_HI, ALPHA_U_LO
 
@@ -84,17 +84,11 @@ def _thin(x) -> object:
 
 def _abs_lo(box) -> mpf:
     """Certified lower bound of |box|."""
-    lo, hi = _endpoints(box)
-    if lo > 0:
-        return lo
-    if hi < 0:
-        return -hi
-    return mpf(0)
+    return _endpoints(abs(box))[0]
 
 
 def _abs_hi(box) -> mpf:
-    lo, hi = _endpoints(box)
-    return max(abs(lo), abs(hi))
+    return _endpoints(abs(box))[1]
 
 
 def _banach_box(C, Cp, seed, half_width: str, iterations: int = 400) -> dict:
@@ -107,13 +101,12 @@ def _banach_box(C, Cp, seed, half_width: str, iterations: int = 400) -> dict:
     m = _thin(mpf(box.mid))
     image = C(m) + Cp(box) * (box - m)
     ok = _contained(image, box)
-    dlo, dhi = _endpoints(Cp(box))
-    L = max(abs(dlo), abs(dhi))
+    L = _abs_hi(Cp(box))
     return {
         "box": _interval_json(box),
         "image": _interval_json(image),
         "self_map_pass": bool(ok),
-        "lipschitz_bound_L": mp.nstr(L, 30),
+        "lipschitz_bound_L": scalar_bound(L, 30, upper=True),
         "banach_pass": bool(ok and L < 1),
         "enclosure": _interval_json(image),
     }
@@ -144,7 +137,7 @@ def build() -> dict:
         x0 = iv.mpf(probe)
         residual = iv.log(iv.pi * iv.exp(x0) / iv.pi) - x0
         bound = _abs_hi(residual)
-        rc_residuals.append({"x": probe, "abs_residual_hi": mp.nstr(bound, 8)})
+        rc_residuals.append({"x": probe, "abs_residual_hi": scalar_bound(bound, 8, upper=True)})
         if bound > mpf("1e-40"):
             rc_pass = False
     a1 = {
@@ -177,15 +170,15 @@ def build() -> dict:
             {
                 "family": name,
                 "gauge": gauge,
-                "seed_residual_abs_hi": mp.nstr(_abs_hi(seed_residual), 8),
+                "seed_residual_abs_hi": scalar_bound(_abs_hi(seed_residual), 8, upper=True),
                 "seed_pass": bool(_abs_hi(seed_residual) < mpf("1e-40")),
                 "monotone": monotone_note,
                 "coupled_banach_pass": bool(coupled_cert["banach_pass"]),
                 "coupled_fixed_point_load": coupled_cert["box"],
                 "rc_probe_x": rc_probe,
-                "rc_residual_abs_lo": mp.nstr(rc_bound, 8),
+                "rc_residual_abs_lo": scalar_bound(rc_bound, 8, upper=False),
                 "rc_pass": bool(rc_bound == 0),
-                "separation_from_balance_lo": mp.nstr(sep_lo, 8),
+                "separation_from_balance_lo": scalar_bound(sep_lo, 8, upper=False),
                 "p4_cp4_coherent": bool(sep_lo < mpf("1e-8")),
                 "classification": classification,
             }
@@ -363,7 +356,7 @@ def build() -> dict:
         collapse_probes.append(
             {
                 "load_offset": delta,
-                "abs_readback_residual_lo": mp.nstr(lo_bound, 8),
+                "abs_readback_residual_lo": scalar_bound(lo_bound, 8, upper=False),
                 "nonzero_certified": ok,
             }
         )
@@ -377,7 +370,7 @@ def build() -> dict:
         "point (degenerate coherence, the count representation carries no "
         "independent information)",
         "off_balance_probes": collapse_probes,
-        "balance_residual_abs_hi": mp.nstr(balance_width, 8),
+        "balance_residual_abs_hi": scalar_bound(balance_width, 8, upper=True),
         "pass": bool(collapse_pass and balance_width < mpf("1e-20")),
     }
 
@@ -406,7 +399,7 @@ def build() -> dict:
         "derivative_sign_probes": sign_probes,
         "argmax_load": _interval_json(argmax_box),
         "fixed_point_load": _interval_json(box_id),
-        "agreement_abs_hi": mp.nstr(_abs_hi(agreement), 8),
+        "agreement_abs_hi": scalar_bound(_abs_hi(agreement), 8, upper=True),
         "pass": bool(sign_pass and _abs_hi(agreement) < mpf("1e-8")),
     }
 
@@ -422,7 +415,7 @@ def build() -> dict:
         b3_rows.append(
             {
                 "stationary_point": a_label,
-                "separation_from_fixed_point_lo": mp.nstr(separation, 8),
+                "separation_from_fixed_point_lo": scalar_bound(separation, 8, upper=False),
                 "diverges": bool(separation > mpf("1")),
             }
         )
@@ -453,8 +446,8 @@ def build() -> dict:
         "20 nats below balance tops the balance value by about 100 while the "
         "balance point stays stationary to below 1e-80; the declared-score argmax leaves "
         "the fixed point",
-        "value_gap_lo": mp.nstr(_abs_lo(value_gap), 8),
-        "H_at_balance_abs_hi": mp.nstr(_abs_hi(H_at_balance), 8),
+        "value_gap_lo": scalar_bound(_abs_lo(value_gap), 8, upper=False),
+        "H_at_balance_abs_hi": scalar_bound(_abs_hi(H_at_balance), 8, upper=True),
         "pass": bool(
             _abs_lo(value_gap) > mpf(90) and _abs_hi(H_at_balance) < mpf("1e-80")
         ),
@@ -484,7 +477,7 @@ def build() -> dict:
                     "branch": label,
                     "c": c,
                     "N_star_nats": _interval_json(n_star),
-                    "log10_separation_lo": mp.nstr(sep_lo, 8),
+                    "log10_separation_lo": scalar_bound(sep_lo, 8, upper=False),
                 }
             )
     b5 = {
@@ -493,7 +486,7 @@ def build() -> dict:
         "least 121 decimal orders below the bridge capacity; restates "
         "p4_coherent_rows = 0 of the 2026-07-14 run",
         "rows": lattice_rows,
-        "min_log10_separation": mp.nstr(min_log10_sep, 8),
+        "min_log10_separation": scalar_bound(min_log10_sep, 8, upper=False),
         "pass": bool(min_log10_sep > mpf(121)),
     }
 

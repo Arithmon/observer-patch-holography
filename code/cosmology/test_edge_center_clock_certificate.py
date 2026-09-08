@@ -5,6 +5,7 @@ import hashlib
 import itertools
 import json
 import math
+from fractions import Fraction
 
 from mpmath import iv, mp, mpf
 import pytest
@@ -15,6 +16,7 @@ from edge_center_clock_certificate import (
     P_CERTIFICATE_PATH,
     SELECTED_PRIMARY_BRANCH,
     CertificateError,
+    _interval_json,
     assert_counts_select_unique_clock_scale,
     assert_counts_select_unique_generator,
     assert_counts_select_unique_reserve_share,
@@ -34,6 +36,14 @@ from edge_center_clock_certificate import (
 @pytest.fixture(scope="module")
 def payload() -> dict:
     return build()
+
+
+@pytest.mark.parametrize("value", ["inf", "-inf", "nan"])
+@pytest.mark.parametrize("upper", [False, True])
+def test_nonfinite_endpoints_cannot_be_serialized_as_finite(value, upper):
+    from interval_decimal import endpoint_decimal
+    with pytest.raises(ValueError, match="finite"):
+        endpoint_decimal(mp.mpf(value)._mpf_, 40, upper=upper)
 
 
 # ---------------------------------------------------------------------------
@@ -194,16 +204,45 @@ def test_repair_round_invariant_is_loaded_and_checked(payload: dict) -> None:
 
 
 def test_generator_is_p_over_24_interval(payload: dict) -> None:
-    mp.dps = 60
     record = load_certified_p_interval()
-    lo = mpf(record["lo"]) / 24
-    hi = mpf(record["hi"]) / 24
+    lo = Fraction(record["lo"]) / 24
+    hi = Fraction(record["hi"]) / 24
     emitted = payload["generator"]["full_collar_derivative"]
-    assert mpf(emitted["lo"]) <= lo <= hi <= mpf(emitted["hi"]) * (1 + mpf("1e-38"))
-    assert abs(mpf(emitted["lo"]) - lo) < mpf("1e-38")
+    assert Fraction(emitted["lo"]) <= lo <= hi <= Fraction(emitted["hi"])
     assert payload["generator"]["status"] == "imported_conditional_density"
     assert payload["generator"]["emitted_from_finite_collar_records"] is False
     assert payload["generator"]["operational_clock_bound"] is False
+
+
+@pytest.mark.parametrize("numerator,denominator", [(1, 3), (-1, 3), (0, 1), (1, 7), (-13, 11)])
+@pytest.mark.parametrize("scale", ["1e-90", "1", "1e90"])
+def test_serialization_preserves_exact_rational_containment(numerator, denominator, scale):
+    old_iv, old_mp = iv.dps, mp.dps
+    try:
+        iv.dps, mp.dps = 70, 15
+        value = iv.mpf(numerator) / denominator * iv.mpf(scale)
+        serialized = _interval_json(value)
+        exact = Fraction(numerator, denominator) * Fraction(scale)
+        assert Fraction(serialized["lo"]) <= exact <= Fraction(serialized["hi"])
+        # Independently decode both binary endpoints; even lowering the scalar
+        # context must not narrow the original interval during serialization.
+        for endpoint in value._mpi_:
+            sign, mantissa, exponent, _ = endpoint
+            dyadic = (-1 if sign else 1) * Fraction(mantissa) * Fraction(2) ** exponent
+            assert Fraction(serialized["lo"]) <= dyadic <= Fraction(serialized["hi"])
+    finally:
+        iv.dps, mp.dps = old_iv, old_mp
+
+
+def test_serialized_tilt_contains_source_interval_without_rounding_slack(payload):
+    p = load_certified_p_interval()
+    lo, hi = Fraction(p["lo"]), Fraction(p["hi"])
+    half = payload["half_collar_identity"]
+    assert Fraction(half["theta"]["lo"]) <= lo / 48 <= hi / 48 <= Fraction(half["theta"]["hi"])
+    assert Fraction(half["n_s"]["lo"]) <= 1-hi/48 <= 1-lo/48 <= Fraction(half["n_s"]["hi"])
+    for record in payload["survival_family"]["records"]:
+        bound = Fraction(record["defects"]["refinement_to_poisson_floor"]["bound"])
+        assert bound >= (hi / 24)**2 / record["sub_slots_per_tick"]
 
 
 def test_half_collar_identity_intervals(payload: dict) -> None:

@@ -503,6 +503,52 @@ def _refining_causal_control() -> dict[str, Any]:
     }
 
 
+def _protected_memory_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    """Replay the supplied stochastic law before projecting its exact evidence."""
+    source = "paper/tex_fragments/PROTECTED_RECORD_MEMORY.tex"
+    label = "prop:protected-record-memory"
+    path = REPO / source
+    if not path.is_file() or "\\label{" + label + "}" not in path.read_text(encoding="utf-8"):
+        raise SystemExit("protected-memory analytic theorem missing")
+    directory = CODE / "thermodynamics" / "protected_memory"
+    verifier_path = directory / "verify_protected_memory.py"
+    spec = importlib.util.spec_from_file_location("protected_memory_ledger_verifier", verifier_path)
+    if spec is None or spec.loader is None:
+        raise SystemExit("missing independent protected-memory verifier")
+    verifier = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(verifier)
+    receipt_path = receipt_path or directory / "runtime" / "protected_memory_receipt.json"
+    raw = receipt_path.read_bytes()
+    try:
+        summary = verifier.verify(verifier.load(receipt_path))
+    except ValueError as exc:
+        raise SystemExit(f"protected-memory independent replay failed: {exc}") from exc
+    if receipt_path.read_bytes() != raw:
+        raise SystemExit("protected-memory receipt changed during replay")
+    expected = {
+        "accepted": True,
+        "scope": "EXACT_NEW_LOCAL_STOCHASTIC_LAW__PROTECTED_RECORD_AND_DECAYING_MEMORY",
+        "states": 8, "protected_fibres": 2, "current_count": 2,
+        "correlation_lags": 65, "distribution_samples": 8,
+        "two_step_minorization": "7/96", "gap_lower": "7/192",
+        "green_kubo_matrix": [["11417/9375", "1832/3125"], ["1832/3125", "3816/3125"]],
+        "native_source_attachment": False,
+        "historical_obstruction_overturned": False,
+        "physical_clock_or_conductivity": False,
+        "new_Lean_formalization": False,
+    }
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("protected-memory verifier scope/count mismatch")
+    return {
+        "source": source, "label": label,
+        "receipt_pin": {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()},
+        "independent_verifier_result": summary,
+        "new_supplied_local_stochastic_law": True,
+        "fibre_centered_currents_required": True,
+        "observed_postdiction": False,
+    }
+
+
 def _forced_structure(
     matter: dict[str, Any],
     matter_menu: dict[str, Any],
@@ -3420,7 +3466,10 @@ def _forced_structure(
                 "positive-lag correlation and cannot supply a nonzero decaying "
                 "memory tail with stabilizing sums. Typed finite-graph Fick "
                 "and Fourier updates obey exact source balance and source-free "
-                "conservation"
+                "conservation. A separate exact eight-state supplied local "
+                "resampling law preserves a nonconstant record while its "
+                "fibre-centred currents have decaying memory, a gap of at least "
+                "7/192, and a rational Green--Kubo matrix with certified tails"
             ),
             "observed_counterpart": (
                 "Onsager symmetry, Green--Kubo response, Fick diffusion, and "
@@ -3484,11 +3533,26 @@ def _forced_structure(
                     ),
                 },
             ),
+            "artifact_refs": [
+                "code/thermodynamics/protected_memory/protected_memory.py",
+                "code/thermodynamics/protected_memory/verify_protected_memory.py",
+                "code/thermodynamics/protected_memory/test_protected_memory.py",
+                "code/thermodynamics/protected_memory/runtime/protected_memory_receipt.json",
+                "paper/tex_fragments/PROTECTED_RECORD_MEMORY.tex",
+            ],
+            "protected_record_memory": _protected_memory_control(),
             "hypothesis_boundary": (
                 "the reversible kernel, linear Poisson solver, graph, distance, "
                 "clock increment, volumes, heat capacities, and conductances "
                 "are declared finite inputs. No theorem identifies the "
-                "Green--Kubo coefficient with graph conductance. Scientific "
+                "Green--Kubo coefficient with graph conductance. The eight-state "
+                "witness supplies a new faithful reference and lazy conditional "
+                "resampling law; its equilibrium projection P differs from its "
+                "transition T. The Poisson and tail bounds require centering "
+                "within each protected fibre; a globally centred conserved "
+                "record still has persistent correlation. This is no native "
+                "source attachment and does not overturn the historical "
+                "idempotent-projector obstruction. Scientific "
                 "owners #728, #729, #737, and #739 record the missing source "
                 "evolution, physical equilibrium reference and conserved quantity, "
                 "source-realized geometry, instrumentation, and source clock; "

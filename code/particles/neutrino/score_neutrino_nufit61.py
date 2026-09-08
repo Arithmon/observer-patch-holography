@@ -3,8 +3,9 @@
 
 The NuFIT release contains marginalized profile surfaces, not a public
 six-dimensional likelihood.  Overlapping profiles must not be added.  This
-scorer reports each selected surface separately and uses their maximum as a
-lower bound on the unavailable full fixed-candidate Delta chi-square.
+scorer reports each selected surface separately. Under its declared bilinear
+interpolation, certified component lower bounds are combined by maximum;
+no interpolation-error bound for the unavailable full likelihood is claimed.
 
 The absolute oscillation scale is not promoted in the OPH candidate.  The
 ``DMS/DMA`` surface is therefore minimized along the source-predicted
@@ -16,7 +17,10 @@ from __future__ import annotations
 import argparse
 import bisect
 import contextlib
+from decimal import Context, Decimal, ROUND_CEILING, ROUND_FLOOR
+from fractions import Fraction
 import hashlib
+import heapq
 import json
 import math
 import pathlib
@@ -198,6 +202,7 @@ def _ratio_profile(
     ratio_dm21_over_dm32: float,
     samples: int,
 ) -> dict[str, Any]:
+    """Sample the nuisance curve for diagnostics, never for a lower bound."""
     if ratio_dm21_over_dm32 <= 0.0:
         raise ValueError("the normal-ordering mass-squared ratio must be positive")
     if samples < 1001:
@@ -232,6 +237,157 @@ def _ratio_profile(
     best["profiled_nuisance"] = "one positive common oscillation scale"
     best["samples"] = samples
     return best
+
+
+def _log10_interval(value: Fraction) -> tuple[Fraction, Fraction]:
+    """Enclose log10 of an exact rational using correctly rounded Decimal.log10.
+
+    Directed division encloses the argument; log10 is monotone and correctly
+    rounded to nearest (Python's decimal contract). One adjacent decimal on
+    each side therefore encloses each endpoint, independently of float libm.
+    See https://docs.python.org/3/library/decimal.html#decimal.Decimal.log10.
+    """
+    if value <= 0:
+        raise ValueError("logarithm argument must be positive")
+    down, up, near = Context(prec=70, rounding=ROUND_FLOOR), Context(prec=70, rounding=ROUND_CEILING), Context(prec=70)
+    numerator, denominator = Decimal(value.numerator), Decimal(value.denominator)
+    lo, hi = down.divide(numerator, denominator), up.divide(numerator, denominator)
+    # log10(1)=0 exactly. Decimal's next neighbour of zero is a subnormal
+    # with a million-place exponent under its default context, unnecessary
+    # here and prohibitively expensive to turn into a Fraction.
+    return (Fraction(0) if lo == 1 else Fraction(near.log10(lo).next_minus(near)),
+            Fraction(0) if hi == 1 else Fraction(near.log10(hi).next_plus(near)))
+
+
+def _outward_float(value: Fraction, upper: bool) -> float:
+    result = float(value)
+    if (upper and Fraction(result) < value) or (not upper and Fraction(result) > value):
+        result = math.nextafter(result, math.inf if upper else -math.inf)
+    return result
+
+
+def _bilinear_point_bracket(grid: RectilinearGrid, x: float, y: float) -> dict[str, float]:
+    """Outward float readout of the exact interpolant at binary64 inputs."""
+    if not math.isfinite(x) or not math.isfinite(y):
+        raise ValueError("interpolation coordinates must be finite")
+    if not (grid.x_axis[0] <= x <= grid.x_axis[-1] and grid.y_axis[0] <= y <= grid.y_axis[-1]):
+        raise ValueError("certified interpolation cannot extrapolate")
+    x0, x1, _ = grid._bracket(grid.x_axis, x, "x")
+    y0, y1, _ = grid._bracket(grid.y_axis, y, "y")
+    tx = (Fraction(x) - Fraction(x0)) / (Fraction(x1) - Fraction(x0))
+    ty = (Fraction(y) - Fraction(y0)) / (Fraction(y1) - Fraction(y0))
+    value = ((1-tx)*(1-ty)*Fraction(grid.values[x0, y0])
+             + tx*(1-ty)*Fraction(grid.values[x1, y0])
+             + (1-tx)*ty*Fraction(grid.values[x0, y1])
+             + tx*ty*Fraction(grid.values[x1, y1]))
+    return {"lower_bound": _outward_float(value, False), "upper_bound": _outward_float(value, True)}
+
+
+def _ratio_profile_bracket(
+    grid: RectilinearGrid,
+    ratio_dm21_over_dm32: float,
+    tolerance: Fraction = Fraction(1, 100_000_000),
+    max_subdivisions: int = 20_000,
+) -> dict[str, Any]:
+    """Certified min bracket for the declared bilinear table, not its likelihood.
+
+    Treat parsed binary64 coordinates/ordinates and the supplied ratio as exact
+    rationals. The curve is x=log10(r*y/(1000*(1+r))). Every y interval maps
+    into a certified x interval. On each intersected table cell a bilinear
+    function has its extrema at rectangle corners, evaluated here exactly.
+    Such rectangles cover the complete curve, including crossings between
+    samples. Their minima are LOWER bounds; an enclosed value at a feasible
+    midpoint is an UPPER bound. Best-first dyadic subdivision closes the gap.
+    No differentiability bound for the experimental likelihood is asserted.
+    """
+    if (isinstance(ratio_dm21_over_dm32, bool)
+            or not isinstance(ratio_dm21_over_dm32, (int, float))
+            or not math.isfinite(ratio_dm21_over_dm32) or ratio_dm21_over_dm32 <= 0):
+        raise ValueError("the normal-ordering mass-squared ratio must be finite and positive")
+    if not isinstance(tolerance, Fraction) or tolerance <= 0:
+        raise ValueError("the enclosure tolerance must be a positive Fraction")
+    if type(max_subdivisions) is not int or max_subdivisions < 0:
+        raise ValueError("max_subdivisions must be a nonnegative integer")
+    if len(grid.x_axis) < 2 or len(grid.y_axis) < 2:
+        raise ValueError("profiling needs at least two coordinates on each axis")
+    all_values = (*grid.x_axis, *grid.y_axis, *grid.values.values())
+    if any(isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v)
+           for v in all_values):
+        raise ValueError("profile grid coordinates and values must be finite real numbers")
+    xs, ys = tuple(map(Fraction, grid.x_axis)), tuple(map(Fraction, grid.y_axis))
+    if ys[0] <= 0 or any(b <= a for axis in (xs, ys) for a, b in zip(axis, axis[1:])):
+        raise ValueError("profile axes must increase, with positive atmospheric coordinates")
+    r = Fraction(ratio_dm21_over_dm32)
+    factor = r / (1000 * (1 + r))
+    table = {(Fraction(x), Fraction(y)): Fraction(z) for (x, y), z in grid.values.items()}
+
+    def rectangle(j: int, lo: Fraction, hi: Fraction) -> tuple[Fraction, Fraction] | None:
+        # The logarithm bounds are rounded outwards even for exact powers of 10.
+        xlo, xhi = _log10_interval(factor * lo)[0], _log10_interval(factor * hi)[1]
+        xlo, xhi = max(xs[0], xlo), min(xs[-1], xhi)
+        if xlo > xhi:
+            return None
+        extrema = []
+        first = max(0, bisect.bisect_left(xs, xlo) - 1)
+        last = min(len(xs) - 2, bisect.bisect_right(xs, xhi) - 1)
+        y0, y1 = ys[j], ys[j + 1]
+        for i in range(first, last + 1):
+            x0, x1 = xs[i], xs[i + 1]
+            for x in (max(x0, xlo), min(x1, xhi)):
+                for y in (lo, hi):
+                    tx, ty = (x - x0) / (x1 - x0), (y - y0) / (y1 - y0)
+                    extrema.append((1-tx)*(1-ty)*table[x0, y0] + tx*(1-ty)*table[x1, y0]
+                                   + (1-tx)*ty*table[x0, y1] + tx*ty*table[x1, y1])
+        return min(extrema), max(extrema)
+
+    heap: list[tuple[Fraction, int, int, Fraction, Fraction]] = []
+    serial, upper = 0, None
+
+    def insert(j: int, lo: Fraction, hi: Fraction) -> None:
+        nonlocal serial, upper
+        box = rectangle(j, lo, hi)
+        if box is None:
+            return
+        heapq.heappush(heap, (box[0], serial, j, lo, hi))
+        serial += 1
+        mid = (lo + hi) / 2
+        xlo, xhi = _log10_interval(factor * mid)
+        # An upper bound needs a genuinely feasible point, not a clipped one.
+        if xs[0] <= xlo and xhi <= xs[-1]:
+            point = rectangle(j, mid, mid)
+            assert point is not None
+            upper = point[1] if upper is None else min(upper, point[1])
+
+    for j, (lo, hi) in enumerate(zip(ys, ys[1:])):
+        insert(j, lo, hi)
+    if not heap:
+        raise ValueError("the source ratio curve does not cross the NuFIT grid")
+    subdivisions = 0
+    while upper is None or upper - heap[0][0] > tolerance:
+        if subdivisions >= max_subdivisions:
+            raise ValueError("profile enclosure did not reach its declared tolerance")
+        _, _, j, lo, hi = heapq.heappop(heap)
+        mid = (lo + hi) / 2
+        insert(j, lo, mid)
+        insert(j, mid, hi)
+        subdivisions += 1
+        if not heap:
+            raise ValueError("the source ratio curve has no certified feasible interval")
+    lower = heap[0][0]
+    assert upper is not None and lower <= upper
+    exported_lower, exported_upper = _outward_float(lower, False), _outward_float(upper, True)
+    return {
+        "lower_bound": exported_lower,
+        "upper_bound": exported_upper,
+        "absolute_tolerance": str(tolerance),
+        "tolerance_scope": "exact_rational_interval_before_outward_binary64_export",
+        "exported_width_upper": _outward_float(Fraction(exported_upper) - Fraction(exported_lower), True),
+        "subdivisions": subdivisions,
+        "covering_intervals": len(heap),
+        "method": "exact_rational_bilinear_rectangles_and_outward_Decimal_log10",
+        "scope": "minimum_of_declared_bilinear_interpolant_on_exact_binary64_input_ratio_curve",
+        "experimental_likelihood_interpolation_error_bounded": False,
+    }
 
 
 def _verify_table(path: pathlib.Path, source: dict[str, Any], source_id: str) -> dict[str, Any]:
@@ -269,6 +425,12 @@ def score_table(
     t23_dcp = grids["T23/DCP"].interpolate(
         coordinates["sin2_theta23"], coordinates["delta_cp_deg_wrapped"]
     )
+    t13_t12["certified_table_value_interval"] = _bilinear_point_bracket(
+        grids["T13/T12"], coordinates["sin2_theta13"], coordinates["sin2_theta12"]
+    )
+    t23_dcp["certified_table_value_interval"] = _bilinear_point_bracket(
+        grids["T23/DCP"], coordinates["sin2_theta23"], coordinates["delta_cp_deg_wrapped"]
+    )
     ratio_profile = _ratio_profile(
         grids["DMS/DMA"], coordinates["ratio_dm21_over_dm32"], profile_samples
     )
@@ -280,13 +442,28 @@ def score_table(
     ratio_profile["half_resolution_delta_chi2_difference"] = abs(
         ratio_profile["delta_chi2"] - coarse_ratio_profile["delta_chi2"]
     )
+    ratio_profile["sampled_value_role"] = "uncertified_sampled_minimum_diagnostic_not_a_lower_bound"
+    ratio_profile["certified_profile_bracket"] = _ratio_profile_bracket(
+        grids["DMS/DMA"], coordinates["ratio_dm21_over_dm32"]
+    )
     component_values = {
-        "T13/T12": t13_t12["delta_chi2"],
-        "T23/DCP": t23_dcp["delta_chi2"],
-        "DMS/DMA_ratio_profile": ratio_profile["delta_chi2"],
+        "T13/T12": t13_t12["certified_table_value_interval"]["lower_bound"],
+        "T23/DCP": t23_dcp["certified_table_value_interval"]["lower_bound"],
+        "DMS/DMA_ratio_profile": ratio_profile["certified_profile_bracket"]["lower_bound"],
     }
     limiting_projection = max(component_values, key=component_values.__getitem__)
     lower_bound = component_values[limiting_projection]
+    maximum_profile_upper = max(
+        t13_t12["certified_table_value_interval"]["upper_bound"],
+        t23_dcp["certified_table_value_interval"]["upper_bound"],
+        ratio_profile["certified_profile_bracket"]["upper_bound"],
+    )
+    if lower_bound > THREE_SIGMA_TWO_DOF_DELTA_CHI2:
+        comparison_status, passes = "REJECTED", False
+    elif maximum_profile_upper <= THREE_SIGMA_TWO_DOF_DELTA_CHI2:
+        comparison_status, passes = "COMPATIBLE_PROFILES", True
+    else:
+        comparison_status, passes = "UNRESOLVED_INTERVAL", None
     return {
         "source": receipt,
         "profiles": {
@@ -296,11 +473,16 @@ def score_table(
         },
         "joint_fixed_candidate_delta_chi2_lower_bound": lower_bound,
         "lower_bound_reason": (
-            "Each published surface profiles over undisplayed parameters. Their maximum, not their sum, "
-            "is therefore a lower bound on the unavailable full fixed-candidate Delta chi-square."
+            "Under the declared bilinear table interpolation, each angular surface profiles over "
+            "undisplayed parameters. The ratio curve contributes its certified lower bound, never "
+            "its sampled minimum. The maximum, not the sum, is a lower bound for these profile models; "
+            "interpolation error relative to the unavailable experimental likelihood is not bounded."
         ),
         "limiting_projection": limiting_projection,
-        "passes_published_3sigma_2d_compatibility": lower_bound <= THREE_SIGMA_TWO_DOF_DELTA_CHI2,
+        "maximum_component_profile_upper_bound": maximum_profile_upper,
+        "upper_bound_scope": "maximum_of_selected_profiles_not_an_upper_bound_on_the_full_joint_likelihood",
+        "published_3sigma_2d_comparison_status": comparison_status,
+        "passes_published_3sigma_2d_compatibility": passes,
         "wilks_two_dof_reference_p_for_limiting_projection": math.exp(-0.5 * lower_bound),
     }
 
@@ -323,6 +505,34 @@ def _source_boundary(kernel: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _prior_score_projection(
+    prior: dict[str, Any], coordinates: dict[str, float], candidate_sha256: str,
+    manifest_sha256: str, kernel_sha256: str,
+) -> dict[str, Any]:
+    """Preserve a prior comparison's inputs without inventing byte custody."""
+    if prior.get("artifact") != "oph_neutrino_nufit61_retrospective_profile_score":
+        raise ValueError("prior artifact is not a neutrino profile score")
+    old_coordinates = prior["candidate"]["coordinates"]
+    if (old_coordinates.keys() != coordinates.keys()
+            or any(type(old_coordinates[k]) is not type(v) or old_coordinates[k] != v
+                   for k, v in coordinates.items())):
+        raise ValueError("prior scored coordinate projection changed")
+    if prior["nufit_release"]["source_manifest_sha256"] != manifest_sha256:
+        raise ValueError("prior comparison source manifest changed")
+    if prior["source_boundary"]["family_transport_kernel_sha256"] != kernel_sha256:
+        raise ValueError("prior family-kernel source changed")
+    old_candidate = prior["candidate"]["sha256"]
+    return {
+        "original_candidate_sha256": old_candidate,
+        "replayed_candidate_sha256": candidate_sha256,
+        "candidate_byte_identity": old_candidate == candidate_sha256,
+        "scored_coordinate_projection_exactly_equal": True,
+        "comparison_source_manifest_unchanged": True,
+        "family_kernel_unchanged": True,
+        "scope": "same_scored_coordinates_and_comparison_sources_not_a_claim_of_candidate_byte_identity",
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Score the frozen weighted-cycle candidate on NuFIT 6.1 profiles.")
     parser.add_argument("--candidate", default=str(DEFAULT_CANDIDATE))
@@ -332,6 +542,8 @@ def main() -> int:
     parser.add_argument("--tb-yes-no", required=True, help="Pinned v61.release-TByes-NO.txt.xz")
     parser.add_argument("--profile-samples", type=int, default=20001)
     parser.add_argument("--generated-utc", default="")
+    parser.add_argument("--prior-score-git-object", default="",
+                        help="Optional immutable full-commit:path of the earlier comparison receipt")
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT))
     args = parser.parse_args()
 
@@ -360,12 +572,13 @@ def main() -> int:
         ),
     }
     all_fail = all(
-        not result["passes_published_3sigma_2d_compatibility"] for result in scores.values()
+        result["published_3sigma_2d_comparison_status"] == "REJECTED" for result in scores.values()
     )
     boundary = _source_boundary(kernel)
     payload = {
         "artifact": "oph_neutrino_nufit61_retrospective_profile_score",
         "generated_utc": args.generated_utc or _timestamp(),
+        "scorer": {"filename": pathlib.Path(__file__).name, "sha256": _sha256(pathlib.Path(__file__))},
         "candidate": {
             "artifact": candidate.get("artifact"),
             "filename": candidate_path.name,
@@ -408,9 +621,25 @@ def main() -> int:
         },
     }
 
+    if args.prior_score_git_object:
+        if not re.fullmatch(r"[0-9a-f]{40}:[A-Za-z0-9_./-]+", args.prior_score_git_object):
+            raise ValueError("prior score must name a full commit and repository path")
+        raw = subprocess.check_output(
+            ["git", "cat-file", "blob", args.prior_score_git_object], cwd=ROOT
+        )
+        prior = _prior_score_projection(
+            json.loads(raw), coordinates, _sha256(candidate_path),
+            _sha256(manifest_path), _sha256(kernel_path)
+        )
+        payload["prior_comparison_provenance"] = {
+            "git_object": args.prior_score_git_object,
+            "receipt_sha256": hashlib.sha256(raw).hexdigest(),
+            **prior,
+        }
+
     output_path = pathlib.Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    output_path.write_bytes((json.dumps(payload, indent=2, sort_keys=True) + "\n").encode("utf-8"))
     print(f"saved: {output_path}")
     print(
         json.dumps(

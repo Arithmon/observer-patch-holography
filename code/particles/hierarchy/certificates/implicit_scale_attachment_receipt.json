@@ -1,0 +1,73 @@
+{
+  "schema": "oph-hierarchy-implicit-scale-v1",
+  "pixel_decimal": "1.630968209403959324879279847782648941",
+  "coupling_interval": [
+    "0.041123336195630494",
+    "0.041125336195630496"
+  ],
+  "scale_rectangle": [
+    "7e-18",
+    "8e-18"
+  ],
+  "scale_image_outer": [
+    "7.49e-18",
+    "7.52e-18"
+  ],
+  "scale_partial_mu_outer": [
+    "0",
+    "0.006"
+  ],
+  "contraction_bound": "1/100",
+  "endpoint_residual_outer": [
+    [
+      "0.0000109907",
+      "0.0000109908"
+    ],
+    [
+      "-0.0000109904",
+      "-0.0000109902"
+    ]
+  ],
+  "implicit_residual_derivative_outer": [
+    "-12",
+    "-10"
+  ],
+  "finite_representation_cutoffs": {
+    "su2_max_n": 128,
+    "su3_max_p_and_q": 64
+  },
+  "interval_image_refinements": {
+    "whole_coupling_interval": 8,
+    "each_endpoint": 16
+  },
+  "scope": {
+    "true_implicit_scale": true,
+    "unique_scale_on_declared_rectangle": true,
+    "unique_hierarchy_root_on_declared_interval": true,
+    "infinite_representation_sums": false,
+    "physical_hierarchy_attachment": false,
+    "pixel_target_independent": false
+  },
+  "source_pins": {
+    "code/particles/hierarchy/computations/hierarchy_implicit_scale_witness.py": {
+      "bytes": 5649,
+      "sha256": "960bb9b2e9e76ffdfe21976237a203a1dda6cdb582072a6c82ee0566bcebd137"
+    },
+    "code/particles/hierarchy/computations/hierarchy_interval_witness.py": {
+      "bytes": 10417,
+      "sha256": "68213d392782607d29a55193f26a391e4850120ad47b0bba650d915a4f531ce0"
+    },
+    "code/particles/hierarchy/validators/verify_implicit_scale_attachment.py": {
+      "bytes": 6577,
+      "sha256": "c85ce2d6bec112b66c91a6ea362c09a52da9cbf29bdfe595fa56415b7a883816"
+    },
+    "code/particles/hierarchy/test_interval_witness.py": {
+      "bytes": 9280,
+      "sha256": "42a1f0d09d923a1ae0f688354d7969facb586731072651fc3bf4054ccd4c7436"
+    },
+    "code/interval_decimal.py": {
+      "bytes": 1520,
+      "sha256": "1808baa06a619eb0a1c1beb51a5763ec2c5083961acf83e0233da4b7b16e9a96"
+    }
+  }
+}

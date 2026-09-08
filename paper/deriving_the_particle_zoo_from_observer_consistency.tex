@@ -1070,7 +1070,7 @@ as follows. The source/root certificate gives
 \(P_{\mathrm{fwd}}=1.630972095858897\ldots\), but the declared map is
 incomplete. The certified gauge-width map gives
 \(\alpha^{-1}=137.035660136946577\ldots\), with gauge-width residual
-\(2.5\times10^{-6}\) relative to the measured \(137.035999177(21)\). The no-hadron packet
+\(2.5\times10^{-6}\) relative to the measured \(137.035999177(21)\). Its absolute residual \(3.3904\times10^{-4}\) exceeds the experimental standard uncertainty \(2.1\times10^{-8}\); this numerical proximity does not establish agreement at measured precision. The no-hadron packet
 that combines different pixel coordinates is no fixed point and is excluded from physical
 output. Source-only closure requires Ward-projected same-scheme transport,
 target-independent map selection, and the typed same-quantity bridge. The separate
@@ -2500,7 +2500,7 @@ transmutation coefficient is conditional on an intertwiner between the
 port and weak carriers and on equality of their normalized load traces. It is not the
 \(SU(2)\) beta-function coefficient, and its physical load interpretation
 cannot be inferred from the dimension count alone.
-The hierarchy certificate records the interval
+The finite-iteration hierarchy certificate records the interval
 \[
 I_U=[0.041123336195630494,\;0.041125336195630496],
 \]
@@ -2511,9 +2511,13 @@ K(I_U)\subset
 \subset \mathrm{int}(I_U),
 \]
 and a strictly negative derivative enclosure
-\([-10.995768,-10.985284]\). Thus the local source equation has a unique zero in
-that enclosure. On the public endpoint branch, at the CODATA-located
-comparison pixel \(P_C\),
+\([-10.995768,-10.985284]\) for its declared finite map.
+The exact implicit-scale attachment of
+Theorem~\ref{thm:particle-implicit-scale-attachment} separately proves a
+unique hierarchy zero in $I_U$ at the stored comparison decimal, with
+residual derivative in $[-12,-10]$ and scale in
+$[7,8]\times10^{-18}$. It retains the finite representation cutoffs.
+On the public endpoint branch, at the CODATA-located comparison pixel \(P_C\),
 \[
 \begin{aligned}
 \alpha_U(P_C)&=0.041124336195630495,\\

@@ -20,12 +20,20 @@ Witness content:
 """
 import json
 import sys
+from fractions import Fraction
+import hashlib
+from pathlib import Path
 import mpmath as mp
 from mpmath import iv
+from mpmath.libmp import to_rational
+
+CODE_ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(CODE_ROOT))
+from interval_decimal import interval_json  # noqa: E402
 
 iv.dps = 60
 
-# Declared antecedents (from the frozen source packet; not from any target).
+# Fixed antecedents from the frozen packet; no values fitted in this computation.
 P_STR = '1.630968209403959324879279847782648941'
 I_LO = '0.041123336195630494'
 I_HI = '0.041125336195630496'
@@ -163,7 +171,24 @@ def phi(a, P, b1, b2, b3, weak_mult=4, mu_iters=64):
 
 
 def interval_str(x):
-    return f"[{mp.nstr(mp.mpf(x.a), 25)}, {mp.nstr(mp.mpf(x.b), 25)}]"
+    """Export genuine outer endpoints, independently of scalar mp precision."""
+    bounds = interval_json(x, 40)
+    return f"[{bounds['lo']}, {bounds['hi']}]"
+
+
+def subdivision(pieces=8):
+    """Exact rational knots and outward cells covering the declared interval."""
+    if type(pieces) is not int or pieces < 1:
+        raise ValueError("pieces must be a positive integer")
+    lo, hi = Fraction(I_LO), Fraction(I_HI)
+    knots = [lo + (hi - lo) * k / pieces for k in range(pieces + 1)]
+    enclosed = [iv.mpf(q.numerator) / iv.mpf(q.denominator) for q in knots]
+    cells = [iv.mpf([a.a, b.b]) for a, b in zip(enclosed, enclosed[1:])]
+    for k, cell in enumerate(cells):
+        left, right = (Fraction(*to_rational(x)) for x in cell._mpi_)
+        if not left <= knots[k] < knots[k + 1] <= right:
+            raise ValueError("outward subdivision lost exact rational coverage")
+    return knots, cells
 
 
 def sign_of(x):
@@ -174,7 +199,7 @@ def sign_of(x):
     return 0
 
 
-def main():
+def _produce_at_working_precision():
     b1, b2, b3 = iv.mpf(33) / 5, iv.mpf(1), iv.mpf(-3)
     lo, hi = iv.mpf(I_LO), iv.mpf(I_HI)
 
@@ -185,11 +210,10 @@ def main():
 
     # W2: certified derivative enclosure over a subdivision of I_U.
     pieces = 8
+    knots, cells = subdivision(pieces)
     derivs = []
     w2_ok = True
-    width = (mp.mpf(I_HI) - mp.mpf(I_LO)) / pieces
-    for k in range(pieces):
-        a_piece = iv.mpf([str(mp.mpf(I_LO) + k * width), str(mp.mpf(I_LO) + (k + 1) * width)])
+    for a_piece in cells:
         res = phi(Dual.var(a_piece), P_STR, b1, b2, b3)
         derivs.append(res.d)
         if not (res.d.b < 0):
@@ -208,8 +232,7 @@ def main():
     f_hi_P = phi(hi, P_pert, b1, b2, b3)
     controls['pixel_perturbed_bracket_broken'] = not (sign_of(f_lo_P) * sign_of(f_hi_P) == -1)
 
-    all_derivs_lo = min(mp.mpf(d.a) for d in derivs)
-    all_derivs_hi = max(mp.mpf(d.b) for d in derivs)
+    derivative_union = iv.mpf([min(d.a for d in derivs), max(d.b for d in derivs)])
 
     out = {
         'witness': 'independent_hierarchy_interval_witness',
@@ -220,14 +243,57 @@ def main():
         'phi_at_upper': interval_str(f_hi),
         'bracket_sign_change': bool(w1_ok),
         'derivative_enclosure_pieces': pieces,
-        'derivative_enclosure_union': f"[{mp.nstr(all_derivs_lo, 12)}, {mp.nstr(all_derivs_hi, 12)}]",
+        'derivative_subdivision': {
+            'exact_rational_knots': [str(k) for k in knots],
+            'outward_cells': [interval_str(cell) for cell in cells],
+            'derivative_enclosures': [interval_str(d) for d in derivs],
+            'entire_declared_interval_covered': True,
+        },
+        'derivative_enclosure_union': interval_str(derivative_union),
         'derivative_strictly_negative': bool(w2_ok),
         'unique_root_certified': bool(w1_ok and w2_ok),
         'perturbation_controls': controls,
         'controls_all_fail_closed': all(controls.values()),
+        'formula_scope': {
+            'pixel_decimal': P_STR,
+            'su2_max_n': N2,
+            'su3_max_p_and_q': N3,
+            'mu_iterations': 64,
+            'infinite_sum_or_fixed_point_limit_certified_here': False,
+            'physical_hierarchy_attachment': False,
+        },
+        'endpoint_serialization': 'exact binary endpoints rounded down/up to 40 decimal significant digits',
+        'source_pins': {
+            path.relative_to(CODE_ROOT.parent).as_posix(): {
+                'bytes': path.stat().st_size,
+                'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+            }
+            for path in (Path(__file__).resolve(), CODE_ROOT / 'interval_decimal.py')
+        },
+        'historical_correction': {
+            'prior_receipt_git_object': '5e1816846d14dbd73cdeeb3e8ab596099cc06076:code/particles/hierarchy/certificates/independent_interval_witness_receipt.json',
+            'prior_receipt_sha256': 'ae6262c86b592796b1574f3c58ae4ca44df1516fa169c2b1c6ef6f735a5b2291',
+            'prior_producer_sha256': '8823c747ace9a45737604df5830d5d31b682c1b86fec88250aeae94e6f36929b',
+            'reason': 'Scalar rounding did not preserve outer endpoints, and scalar-rounded subdivision omitted part of the declared interval; this is a fresh finite-formula witness.',
+        },
     }
+    return out
+
+
+def produce():
+    """Use the declared interval precision without changing caller settings."""
+    previous = iv.dps
+    try:
+        iv.dps = 60
+        return _produce_at_working_precision()
+    finally:
+        iv.dps = previous
+
+
+def main():
+    out = produce()
     print(json.dumps(out, indent=2))
-    return 0 if (w1_ok and w2_ok and all(controls.values())) else 1
+    return 0 if (out['unique_root_certified'] and out['controls_all_fail_closed']) else 1
 
 
 if __name__ == '__main__':

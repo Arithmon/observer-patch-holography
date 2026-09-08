@@ -1589,7 +1589,14 @@
         "statement": "With a faithful common reference and repaired-visible fibre supplied, Axiom 3 instantiated on states selects the Gibbs exponential family by the exact information-projection Pythagorean identity, and instantiated on transition distributions over the repaired-visible fibre selects weighted conditional resampling from the same reference. The kernel is stochastic, idempotent, reversible, stationary, and fixes fibre-measurable charges; relative entropy to the reference contracts under it; the exact first-law split carries its bilinear cross term; the excited Gibbs mass obeys the finite gap bound with entropy limit log g0; partition pinching has an explicit normalized projector Kraus family and is formally CPTP; more generally, every stochastic kernel preserving a faithful stationary reference contracts relative entropy even without detailed balance, with an exact lazy directed three-cycle as the nonreversible separation witness. On the committed source artifact, however, the transition action has a nonconstant eigenmode with eigenvalue 665437/726948, whereas the candidate state-side heat-bath action is idempotent; every intertwiner kills that mode. Its stationary mass 7155/61511 is also not a deterministic pushforward of the equally weighted 16384-state empirical table"
       },
       {
-        "hypothesis_boundary": "the reversible kernel, linear Poisson solver, graph, distance, clock increment, volumes, heat capacities, and conductances are declared finite inputs. No theorem identifies the Green--Kubo coefficient with graph conductance. Scientific owners #728, #729, #737, and #739 record the missing source evolution, physical equilibrium reference and conserved quantity, source-realized geometry, instrumentation, and source clock; empirical calibration is PR-15, and closed #732 is only a conditional composition milestone. The bounded algebraic C2 receipt is separate, and this row emits no prediction-ladder entry",
+        "artifact_refs": [
+          "code/thermodynamics/protected_memory/protected_memory.py",
+          "code/thermodynamics/protected_memory/verify_protected_memory.py",
+          "code/thermodynamics/protected_memory/test_protected_memory.py",
+          "code/thermodynamics/protected_memory/runtime/protected_memory_receipt.json",
+          "paper/tex_fragments/PROTECTED_RECORD_MEMORY.tex"
+        ],
+        "hypothesis_boundary": "the reversible kernel, linear Poisson solver, graph, distance, clock increment, volumes, heat capacities, and conductances are declared finite inputs. No theorem identifies the Green--Kubo coefficient with graph conductance. The eight-state witness supplies a new faithful reference and lazy conditional resampling law; its equilibrium projection P differs from its transition T. The Poisson and tail bounds require centering within each protected fibre; a globally centred conserved record still has persistent correlation. This is no native source attachment and does not overturn the historical idempotent-projector obstruction. Scientific owners #728, #729, #737, and #739 record the missing source evolution, physical equilibrium reference and conserved quantity, source-realized geometry, instrumentation, and source clock; empirical calibration is PR-15, and closed #732 is only a conditional composition milestone. The bounded algebraic C2 receipt is separate, and this row emits no prediction-ladder entry",
         "id": "finite_green_kubo_graph_transport",
         "lean_declarations": {
           "GraphDiffusion": [
@@ -1623,7 +1630,43 @@
         "match": "exact finite conditional transport structure; physical generator and coefficients not constructed",
         "observed_counterpart": "Onsager symmetry, Green--Kubo response, Fick diffusion, and Fourier heat transport",
         "paper_ref": "observers paper, finite transport theorem",
-        "statement": "A finite reversible Markov kernel with a linear Poisson solver has a symmetric positive-semidefinite Green--Kubo matrix and an exact finite correlation sum with propagated remainder. One full-fibre repair projector has constant positive-lag correlation and cannot supply a nonzero decaying memory tail with stabilizing sums. Typed finite-graph Fick and Fourier updates obey exact source balance and source-free conservation"
+        "protected_record_memory": {
+          "fibre_centered_currents_required": true,
+          "independent_verifier_result": {
+            "accepted": true,
+            "correlation_lags": 65,
+            "current_count": 2,
+            "distribution_samples": 8,
+            "gap_lower": "7/192",
+            "green_kubo_matrix": [
+              [
+                "11417/9375",
+                "1832/3125"
+              ],
+              [
+                "1832/3125",
+                "3816/3125"
+              ]
+            ],
+            "historical_obstruction_overturned": false,
+            "native_source_attachment": false,
+            "new_Lean_formalization": false,
+            "physical_clock_or_conductivity": false,
+            "protected_fibres": 2,
+            "scope": "EXACT_NEW_LOCAL_STOCHASTIC_LAW__PROTECTED_RECORD_AND_DECAYING_MEMORY",
+            "states": 8,
+            "two_step_minorization": "7/96"
+          },
+          "label": "prop:protected-record-memory",
+          "new_supplied_local_stochastic_law": true,
+          "observed_postdiction": false,
+          "receipt_pin": {
+            "bytes": 40048,
+            "sha256": "8347678f724317ab8c5586932ab9420d9054e76daafee1edb6d123facac7004f"
+          },
+          "source": "paper/tex_fragments/PROTECTED_RECORD_MEMORY.tex"
+        },
+        "statement": "A finite reversible Markov kernel with a linear Poisson solver has a symmetric positive-semidefinite Green--Kubo matrix and an exact finite correlation sum with propagated remainder. One full-fibre repair projector has constant positive-lag correlation and cannot supply a nonzero decaying memory tail with stabilizing sums. Typed finite-graph Fick and Fourier updates obey exact source balance and source-free conservation. A separate exact eight-state supplied local resampling law preserves a nonconstant record while its fibre-centred currents have decaying memory, a gap of at least 7/192, and a rational Green--Kubo matrix with certified tails"
       },
       {
         "hypothesis_boundary": "the pointwise update is a declared finite premise; the load, current, update order, and charge have no physical identity. The guarded WardLimitManifest derives zero limiting residual from exact finite-residual vanishing and convergence on a shrinking scale with separating tests. Scientific owner #729 records the obligation to define that residual from finite continuity, identify it with physical distributional divergence, and supply the source, transport, chart, and common-tower evidence before continuum Ward use; scientific owner #737 records the missing instrument attachment, and #739 records deferred premise discharge",

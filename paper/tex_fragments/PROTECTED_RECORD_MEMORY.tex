@@ -1,0 +1,99 @@
+\subsection{Protected records with decaying repair memory}
+\label{sec:protected-record-memory}
+
+A conditional expectation describing equilibrium need not be the transition
+operator. This distinction admits conserved records and dissipative memory
+on one finite state space. The following construction supplies a local
+stochastic law and its faithful reference; neither is identified with a
+particular physical source.
+
+Let $X=\coprod_c(\{c\}\times U_c\times V_c)$ be finite, with nonempty
+coordinate sets and a strictly positive probability law $\pi$.
+On the real space $L^2(\pi)$, let $P$ be conditional expectation given $c$,
+$E_u$ conditional expectation given $(c,v)$, and $E_v$ conditional
+expectation given $(c,u)$. Their stochastic interpretations resample only
+the omitted coordinate from the same reference. Define
+\begin{equation}
+ T=\tfrac12 I+\tfrac14E_u+\tfrac14E_v.
+ \label{eq:protected-memory-lazy-law}
+\end{equation}
+Thus bounded patches carry local state $(c,u,v)$, a protected record $c$,
+coordinate readback ports and conditional repair moves. The step index is
+a declared update count, with no laboratory time calibration.
+
+\begin{proposition}[A protected-record dynamics with finite correlation tails]
+\label{prop:protected-record-memory}
+The kernel $T$ is stochastic, reversible with respect to $\pi$, and fixes
+every function of $c$. It satisfies $TP=PT=P$. There is
+$0<\varepsilon<1$ such that the entrywise inequality
+$T^2\ge\varepsilon P$ holds. Consequently, on $\ker P$,
+\begin{equation}
+ \|T^n\|\le(1-\varepsilon)^{\lfloor n/2\rfloor},\qquad
+ \operatorname{gap}(I-T)\ge\varepsilon/2.
+ \label{eq:protected-memory-decay}
+\end{equation}
+The unique fibre-centred Poisson solver is
+$R=(I-T+P)^{-1}-P$. For $Pf=Pg=0$,
+\begin{equation}
+ \mathcal G(f,g)=\langle f,Rg\rangle_\pi
+   =\sum_{n=0}^{\infty}\langle f,T^ng\rangle_\pi
+ \label{eq:protected-memory-green-kubo}
+\end{equation}
+is symmetric and positive semidefinite. After retaining lags $0$ through
+$N$, its exact remainder and a uniform bound are
+\begin{equation}
+ \begin{split}
+ \mathcal G(f,g)-\sum_{n=0}^{N}\langle f,T^ng\rangle_\pi
+   &=\langle f,T^{N+1}Rg\rangle_\pi,\\
+ \left|\mathcal G(f,g)-\sum_{n=0}^{N}\langle f,T^ng\rangle_\pi\right|
+   &\le\frac{\|f\|_\pi^2+\|g\|_\pi^2}{\varepsilon}
+      (1-\varepsilon)^{\lfloor(N+1)/2\rfloor}.
+ \end{split}
+ \label{eq:protected-memory-tail}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Conditional expectations are orthogonal projections in $L^2(\pi)$;
+their kernels satisfy detailed balance and preserve $c$. The tower property
+gives $TP=PT=P$, and $T\ge I/2$ as an operator. Two consecutive repairs,
+first one coordinate and then the other, can reach every state in the same
+fibre with positive probability. Finiteness and faithfulness therefore give
+the displayed minorization. The remainder
+$Q=(T^2-\varepsilon P)/(1-\varepsilon)$ is stochastic and stationary for
+$\pi$. Jensen's inequality gives $\|Q\|\le1$. On $\ker P$ this implies
+\eqref{eq:protected-memory-decay}, using
+$1-\sqrt{1-\varepsilon}\ge\varepsilon/2$ for the gap.
+The Neumann series on that subspace defines $R$, while $R$ vanishes on
+$\operatorname{ran}P$. Reversibility makes $R$ self-adjoint, and its
+eigenvalues there are $(1-\lambda)^{-1}>0$. The finite geometric-series
+identity gives the exact remainder. Sum
+$|\langle f,T^ng\rangle|\le\|f\|\|g\|
+(1-\varepsilon)^{\lfloor n/2\rfloor}$ from $N+1$ onwards, grouping
+successive pairs and using $2\|f\|\|g\|\le\|f\|^2+\|g\|^2$.
+\end{proof}
+
+An exact eight-state instance takes $c,u,v\in\{0,1\}$, fibre masses
+$(1/3,2/3)$, and conditional reference weights
+$(1,2,3,4)/10$ and $(4,1,2,3)/10$ in lexicographic $(u,v)$ order.
+Both references are nonproduct laws. Its sharp two-step minorization is
+$\varepsilon=7/96$, giving a certified gap lower bound $7/192$.
+For $f=u-Pu$ and $g=v-Pv$, the one-sided coefficient matrix is exactly
+\[
+ \begin{pmatrix}11417/9375&1832/3125\\
+                 1832/3125&3816/3125\end{pmatrix},
+\]
+and the positive-lag autocorrelation $\langle f,Tf\rangle=443/2400$
+is nonzero. An independent rational verifier reconstructs the coordinate
+kernels, checks both Poisson inverse identities, and replays 65 correlation
+lags, the exact cutoff remainder and eight distribution readouts.
+
+Fibre centering is essential: $c-2/3$ has global mean zero but is fixed by
+$T$, with persistent correlation $2/9$ and no centred Poisson solution.
+The limiting distribution retains its initial fibre masses. This is not
+global ergodicity, an identification of $T$ with the full-fibre projector,
+or a dynamic intertwiner recovering a recurrent mode from that projector.
+It leaves the obstruction for the distinct source-counted transition
+artifact intact. The local stochastic law and reference are supplied;
+physical source attachment, transport normalization, clock calibration
+and a continuum limit require additional arguments.

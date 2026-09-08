@@ -906,6 +906,8 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/consensus/test_issue_517_proof_obligations.py",
             "code/particles/hierarchy/test_antecedent_only_nonidentifiability.py",
             "code/particles/hierarchy/test_hierarchy_bundle.py",
+            "code/particles/hierarchy/test_interval_witness.py",
+            "code/particles/neutrino/test_score_neutrino_nufit61.py",
         ],
     ),
     (
@@ -1060,6 +1062,8 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/a5_closure/tests/test_optimizer_pushforward_certificate.py",
             "code/a5_closure/tests/test_multiplicity_window_certificate.py",
             "code/capacity_readback/test_capacity_semantics_menu_certificate.py",
+            "code/capacity_readback/test_toy_readback.py",
+            "code/capacity_readback/test_cp2_p4_premise_reduction.py",
             "code/a5_closure/tests/test_load_fiber_readback_certificate.py",
             "code/a5_closure/tests/test_noncentral_seam_reduction_certificate.py",
             "code/a5_closure/tests/test_record_counting_mechanism_certificate.py",
@@ -1080,6 +1084,23 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
         [
             sys.executable,
             "code/thermodynamics/conditional_repair_certificate.py",
+        ],
+    ),
+    (
+        "Independently replay the protected-record memory certificate",
+        [
+            sys.executable,
+            "code/thermodynamics/protected_memory/verify_protected_memory.py",
+        ],
+    ),
+    (
+        "Execute the protected-record memory mutation controls",
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "code/thermodynamics/protected_memory/test_protected_memory.py",
         ],
     ),
     (
