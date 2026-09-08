@@ -128,6 +128,8 @@ LEAN_RECEIPTS = {
     / "SourceDerivedSpacetimeCarrier.lean",
     "SourceOrderFrameCompatibilityPacket": REPO / "Lean" / "Geometry"
     / "SourceOrderFrameCompatibilityPacket.lean",
+    "RefiningLatticeCausalCone": REPO / "Lean" / "Geometry"
+    / "RefiningLatticeCausalCone.lean",
     "LorentzOverlapCocycle": REPO / "Lean" / "Geometry"
     / "LorentzOverlapCocycle.lean",
     "EventGermDisplacement": REPO / "Lean" / "Geometry"
@@ -453,6 +455,50 @@ def _quantum_carrier_status_row(packet: dict[str, Any]) -> dict[str, Any]:
             "The packet is target-named, comparison-value-free, and ineligible "
             "as a blind prediction."
         ),
+    }
+
+
+def _refining_causal_control() -> dict[str, Any]:
+    """Keep the supplied move-law control distinct from native source order."""
+    source = "paper/tex_fragments/REFINING_CAUSAL_CONE.tex"
+    label = "prop:refining-causal-cone"
+    path = REPO / source
+    if not path.is_file() or "\\label{" + label + "}" not in path.read_text(encoding="utf-8"):
+        raise SystemExit("supplied causal-cone analytic theorem missing")
+    verifier_path = CODE / "causal_refinement" / "verify_refining_cone.py"
+    spec = importlib.util.spec_from_file_location("refining_causal_ledger_verifier", verifier_path)
+    if spec is None or spec.loader is None:
+        raise SystemExit("missing independent supplied causal-cone verifier")
+    verifier = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(verifier)
+    summary = verifier.verify(verifier.load())
+    expected = {
+        "verdict": "PASS_SUPPLIED_LAW_CAUSAL_REFINEMENT_CONTROL",
+        "path_witnesses": 16, "largest_radius": 32, "largest_inner_speed": "29/32",
+        "history_events": 81, "authenticated_edges": 794, "exact_history_width": 27,
+        "native_physical_spacetime_selected": False,
+        "continuum_claim": "analytic inner/outer bound; supplied grid, clock and density",
+    }
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("supplied causal-cone verifier scope/count mismatch")
+    declarations = (
+        "causal_cone_sandwich", "scaled_inner_cone_reachable",
+        "scaled_reachable_outer_cone", "fixed_menu_missing_timelike_endpoint",
+    )
+    return {
+        "source": source, "label": label,
+        "lean_declarations": {"RefiningLatticeCausalCone": list(declarations)},
+        "lean_receipts": _lean_receipt(
+            "RefiningLatticeCausalCone",
+            declarations={"RefiningLatticeCausalCone": declarations},
+        ),
+        "independent_verifier_result": summary,
+        "analytic_controlled_causal_limit": True,
+        "analytic_interval_volume_limit": True,
+        "continuum_limit_formalized_in_lean": False,
+        "native_OPH_law_selected": False,
+        "physical_clock_calibrated": False,
+        "observed_postdiction": False,
     }
 
 
@@ -2201,6 +2247,15 @@ def _forced_structure(
         },
         {
             "id": "source_derived_finite_one_three_causal_carrier",
+            "supplied_law_refinement_control": _refining_causal_control(),
+            "artifact_refs": [
+                "Lean/Geometry/RefiningLatticeCausalCone.lean",
+                "paper/tex_fragments/REFINING_CAUSAL_CONE.tex",
+                "code/causal_refinement/refining_cone.py",
+                "code/causal_refinement/verify_refining_cone.py",
+                "code/causal_refinement/test_refining_cone.py",
+                "code/causal_refinement/refining_cone_receipt.json",
+            ],
             "statement": (
                 "Authenticated read-after-write provenance generates a finite "
                 "locally finite partial order, and canonical source height obeys "
@@ -2216,7 +2271,10 @@ def _forced_structure(
                 "two-way order--cone equivalence and constructs the finite "
                 "source-order/frame packet. The explicit four-event Boolean "
                 "diamond is a non-chain control whose generated order agrees "
-                "exactly with its carrier cone order"
+                "exactly with its carrier cone order. A separate supplied growing-menu "
+                "lattice has exact finite inner/outer cone bounds and an analytic "
+                "controlled cone and interval-volume limit; its local read/write "
+                "control has 81 events, 794 authenticated edges and width 27"
             ),
             "observed_counterpart": (
                 "finite causal-set-like order with an effective 1+3 Lorentz "
@@ -2291,7 +2349,12 @@ def _forced_structure(
                 "estimator, topology, manifoldlike refinement, uniqueness "
                 "theorem, continuum convergence, smooth metric, curvature, "
                 "Einstein equation, observable, decision rule, or prediction is "
-                "constructed"
+                "constructed by this finite source theorem. The separate growing-menu "
+                "control supplies the frame, local move law, mesh, model layer time "
+                "and event-cell measure. Its cone and interval-volume limits are "
+                "analytic conditional results, not a source-selected physical "
+                "manifold, Poisson sprinkling or calibrated density. The finite "
+                "Lean bounds and replay do not formalize the Riemann-volume argument"
             ),
             "paper_ref": (
                 "flagship and spacetime papers, source-derived causal order and "
@@ -4832,12 +4895,42 @@ def _whitney_coupled_rows() -> list[dict[str, Any]]:
             for supporting_label in supporting_labels:
                 if "\\label{" + supporting_label + "}" not in paper_text:
                     raise SystemExit("coupled Whitney analytic theorem missing: " + paper + "#" + supporting_label)
+            observable_source = "paper/tex_fragments/WHITNEY_COMMON_OBSERVABLES.tex"
+            observable_labels = (
+                "thm:whitney-common-observables",
+                "eq:whitney-common-observables",
+                "eq:whitney-common-observable-pvm",
+                "eq:whitney-common-observable-law",
+                "cor:whitney-continuum-detector-readouts",
+            )
+            observable_path = REPO / observable_source
+            observable_text = observable_path.read_text(encoding="utf-8") if observable_path.is_file() else ""
+            for observable_label in observable_labels:
+                if "\\label{" + observable_label + "}" not in observable_text:
+                    raise SystemExit("coupled Whitney analytic theorem missing: " + observable_source + "#" + observable_label)
+            row["statement"] += (
+                " The same reconstructed gauge-invariant scalar quadratic/quartic and magnetic smearings define self-adjoint multiplication operators on maximal neutral domains, a joint spectral PVM and a pushforward probability law for every normalized neutral state. Bounded Borel detector functions retain the identical classical configuration readout. Under the separately stated smooth real Neumann reference and Ritz initialization, scalar smearings and fixed Lipschitz detector responses converge classically at O(1/n)."
+            )
+            row["hypothesis_boundary"] += (
+                " The shared-observable theorem uses real bounded scalar smearings and square-integrable magnetic smearings. Its continuum detector corollary retains the zero-current real sector, m^2>0, smooth Neumann reference, conforming refinement and Ritz data. These are analytic results, not numeric proofs of multiplication self-adjointness or quantum refinement. No ground-state assumption, quantum-classical state identification or physical detector calibration follows. General bounded Borel detectors have no asserted classical continuum convergence rate."
+            )
+            row["artifact_refs"].extend([observable_source, "paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex"])
             row.update({"hilbert_space_constructed": True, "computed_quantum_state_history": False,
                         "metric_completeness_established": True,
                         "essential_self_adjointness_established": True,
                         "unique_extension_given_ordering": True,
                         "initial_state_constructed": True,
                         "initial_observables_provided": True,
+                        "shared_reconstructed_observable_algebra": {
+                            "source": observable_source, "labels": list(observable_labels),
+                            "self_adjoint_neutral_multipliers": True,
+                            "joint_spectral_probability_law": True,
+                            "conditional_real_sector_detector_convergence": True,
+                            "ground_state_required": False,
+                            "quantum_refinement_convergence": False,
+                            "physical_detector_calibration": False,
+                            "proved_by_numeric_parent_replay": False,
+                        },
                         "analytic_supporting_results": {"source": paper, "labels": list(supporting_labels)},
                         "certificate_scope": quantum_receipt["scope"],
                         "independent_verifier_result": {key: quantum_verified[key] for key in quantum_keys},

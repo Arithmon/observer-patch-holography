@@ -446,6 +446,20 @@ def test_source_derived_finite_one_three_row_binds_exact_stack_without_continuum
     assert "Adjoining that ordinal axis" not in row["statement"]
     assert "two-way order--cone equivalence" in row["statement"]
     assert "four-event Boolean diamond" in row["statement"]
+    control = row["supplied_law_refinement_control"]
+    assert control["analytic_controlled_causal_limit"] is True
+    assert control["analytic_interval_volume_limit"] is True
+    assert all(control[key] is False for key in (
+        "continuum_limit_formalized_in_lean", "native_OPH_law_selected",
+        "physical_clock_calibrated", "observed_postdiction",
+    ))
+    assert control["independent_verifier_result"]["authenticated_edges"] == 794
+    assert control["independent_verifier_result"]["exact_history_width"] == 27
+    assert control["lean_declarations"] == {"RefiningLatticeCausalCone": [
+        "causal_cone_sandwich", "scaled_inner_cone_reachable",
+        "scaled_reachable_outer_cone", "fixed_menu_missing_timelike_endpoint",
+    ]}
+    assert control["source"] in row["artifact_refs"]
     boundary = row["hypothesis_boundary"]
     for excluded in (
         "not a physical clock",
@@ -459,6 +473,58 @@ def test_source_derived_finite_one_three_row_binds_exact_stack_without_continuum
         "Einstein equation",
     ):
         assert excluded in boundary
+
+
+@pytest.mark.parametrize("field,value", [
+    ("native_physical_spacetime_selected", True),
+    ("history_events", True),
+    ("history_events", 80),
+    ("authenticated_edges", 793),
+    ("largest_inner_speed", "1"),
+    ("continuum_claim", "source-selected physical spacetime"),
+])
+def test_refining_causal_projection_rejects_changed_scope_and_counts(monkeypatch, field, value):
+    original_spec = ledger.importlib.util.spec_from_file_location
+    def spec(name, path, *args, **kwargs):
+        item = original_spec(name, path, *args, **kwargs)
+        if name == "refining_causal_ledger_verifier":
+            original_exec = item.loader.exec_module
+            def execute(module):
+                original_exec(module)
+                original_verify = module.verify
+                def changed(packet):
+                    result = original_verify(packet)
+                    result[field] = value
+                    return result
+                module.verify = changed
+            item.loader.exec_module = execute
+        return item
+    monkeypatch.setattr(ledger.importlib.util, "spec_from_file_location", spec)
+    with pytest.raises(SystemExit, match="scope/count mismatch"):
+        ledger._refining_causal_control()
+
+
+def test_refining_causal_projection_requires_analytic_theorem(monkeypatch):
+    original = Path.read_text
+    target = ledger.REPO / "paper/tex_fragments/REFINING_CAUSAL_CONE.tex"
+    def erased(path, *args, **kwargs):
+        text = original(path, *args, **kwargs)
+        return text.replace("\\label{prop:refining-causal-cone}", "") if path == target else text
+    monkeypatch.setattr(Path, "read_text", erased)
+    with pytest.raises(SystemExit, match="analytic theorem missing"):
+        ledger._refining_causal_control()
+
+
+@pytest.mark.parametrize("name", ["causal_cone_sandwich", "scaled_inner_cone_reachable",
+                                 "scaled_reachable_outer_cone", "fixed_menu_missing_timelike_endpoint"])
+def test_refining_causal_projection_requires_finite_lean_bounds(monkeypatch, tmp_path, name):
+    original = ledger.LEAN_RECEIPTS["RefiningLatticeCausalCone"]
+    text = original.read_text(encoding="utf-8")
+    target = tmp_path / "RefiningLatticeCausalCone.lean"
+    target.write_text(text.replace("theorem " + name + " ", "theorem erased_" + name + " "), encoding="utf-8")
+    monkeypatch.setitem(ledger.LEAN_RECEIPTS, "RefiningLatticeCausalCone", target)
+    with pytest.raises(SystemExit, match="Lean declaration missing"):
+        ledger._refining_causal_control()
 
 
 def test_thermodynamic_receipt_owners_are_separate(result):
@@ -919,6 +985,24 @@ def test_coupled_whitney_rows_separate_analytic_numeric_and_empirical_scopes(cou
     assert all("\\label{" + label + "}" in paper for label in support["labels"])
     assert "code/electromagnetism/runtime/whitney_quantum_state_receipt.json" in quantum["artifact_refs"]
     assert "code/electromagnetism/verify_whitney_quantum_state.py" in quantum["artifact_refs"]
+    shared = quantum["shared_reconstructed_observable_algebra"]
+    assert shared == {
+        "source": "paper/tex_fragments/WHITNEY_COMMON_OBSERVABLES.tex",
+        "labels": ["thm:whitney-common-observables", "eq:whitney-common-observables",
+                   "eq:whitney-common-observable-pvm", "eq:whitney-common-observable-law",
+                   "cor:whitney-continuum-detector-readouts"],
+        "self_adjoint_neutral_multipliers": True,
+        "joint_spectral_probability_law": True,
+        "conditional_real_sector_detector_convergence": True,
+        "ground_state_required": False,
+        "quantum_refinement_convergence": False,
+        "physical_detector_calibration": False,
+        "proved_by_numeric_parent_replay": False,
+    }
+    assert shared["source"] in quantum["artifact_refs"]
+    assert "paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex" in quantum["artifact_refs"]
+    assert "shared_reconstructed_observable_algebra" not in summary
+    assert "General bounded Borel detectors have no asserted classical continuum convergence rate" in quantum["hypothesis_boundary"]
     for text in ("actual positive kinetic metric", "Schur metric", "R^30 x C^13", "Friedrichs", "form core", "complete", "essentially self-adjoint", "operator core", "Hamiltonian domain"):
         assert text in quantum["statement"]
     for text in ("hbar", "quantization measure", "ordering", "not formalized in Lean", "unique quantization"):
@@ -1045,6 +1129,11 @@ def test_coupled_named_spatial_algebra_cannot_be_replaced_by_empty_provider(
     "eq:whitney-interacting-gaussian-state",
     "eq:whitney-interacting-gaussian-matter-moments",
     "eq:whitney-interacting-gaussian-magnetic-moment",
+    "thm:whitney-common-observables",
+    "eq:whitney-common-observables",
+    "eq:whitney-common-observable-pvm",
+    "eq:whitney-common-observable-law",
+    "cor:whitney-continuum-detector-readouts",
 ])
 def test_coupled_missing_analytic_quantum_theorem_is_not_silently_promoted(
     coupled_whitney_rows, monkeypatch, missing_label
@@ -1058,9 +1147,10 @@ def test_coupled_missing_analytic_quantum_theorem_is_not_silently_promoted(
     monkeypatch.setattr(ledger, "_verify_whitney_coupled_parent", replay)
     original = Path.read_text
     quantum_path = ledger.REPO/"paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex"
+    observable_path = ledger.REPO/"paper/tex_fragments/WHITNEY_COMMON_OBSERVABLES.tex"
     def empty(path, *args, **kwargs):
         source = original(path, *args, **kwargs)
-        if path == quantum_path:
+        if path in (quantum_path, observable_path):
             return source.replace("\\label{" + missing_label + "}", "")
         return source
     monkeypatch.setattr(Path, "read_text", empty)

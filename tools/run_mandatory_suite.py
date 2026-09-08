@@ -361,6 +361,11 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
          "code/electromagnetism/test_serial_maxwell_readout.py"],
     ),
     (
+        "Execute refining causal-cone paths and authenticated local-law controls",
+        [sys.executable, "-m", "pytest", "-q",
+         "code/causal_refinement/test_refining_cone.py"],
+    ),
+    (
         "Execute cone Whitney interpolation, full action derivatives and custody controls",
         [sys.executable, "-m", "pytest", "-q",
          "code/electromagnetism/test_cone_whitney_bridge.py"],

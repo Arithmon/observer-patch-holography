@@ -54,7 +54,7 @@ In 2002 the programmer Joel Spolsky wrote down a rule about descriptions of that
 
 ## One equation at a time
 
-The framework has a name: Observer Patch Holography. Its case is the reach of one observer architecture. Under explicit probability assumptions, the algebra of readable questions supports quantum probabilities. Complete reversible boundary response and internal transport constrain the local symmetries of forces. A supplied matter law supports controlled motion of a real field in a continuum and, at fixed mesh, an interacting quantum state space. Objects that ordinary calculations introduce separately become parts of a connected argument.
+The framework has a name: Observer Patch Holography. Its case is the reach of one observer architecture. Under explicit probability assumptions, the algebra of readable questions supports quantum probabilities. Complete reversible boundary response and internal transport constrain the local symmetries of forces. A supplied matter law supports controlled motion of a real field in a continuum and, at fixed mesh, an interacting quantum state space. Scalar-density and magnetic readouts use the same field reconstruction in both descriptions; quantum probabilities come from the declared Hilbert representation. Objects that ordinary calculations introduce separately become parts of a connected argument.
 
 The papers state the assumptions behind each result and supply proofs or calculations that can be repeated independently. Physical claims face a further demand: identify what an instrument would measure and what outcome would refute the claim. Appendix C points to that evidence. This book develops the argument in words, explaining what each step rests on.
 

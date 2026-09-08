@@ -2019,6 +2019,11 @@
    "from": "OPH-WHITNEY-CHARGED-EXECUTION",
    "to": "OPH-WHITNEY-CHARGED-ENCLOSURE",
    "role": "Supplies the exact fixed-space lift and charged initial datum. Historical floating-point samples are comparison targets, not inputs to the continuous-time enclosure proof."
+  },
+  {
+   "from": "OPH-WHITNEY-REAL-CONTINUUM",
+   "to": "OPH-WHITNEY-INTERACTING-QUANTUM",
+   "role": "Supplies only the conditional real-sector H1 trajectory estimate, smooth Neumann reference and Ritz initialization used to bound quadratic/quartic shared readouts and Lipschitz detector responses; it supplies no quantum-state refinement or physical detector calibration."
   }
  ]
 }
