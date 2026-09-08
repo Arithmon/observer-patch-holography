@@ -1504,3 +1504,31 @@ def test_new_bridge_missing_theorem_label_fails(completion_whitney_rows, monkeyp
     monkeypatch.setattr(Path, "read_text", removed)
     with pytest.raises(SystemExit, match="analytic theorem missing"):
         ledger._whitney_completion_rows()
+
+
+def test_count_clock_is_structural_and_independently_replayed(result):
+    row = next(r for r in result["sections"]["forced_structure"]
+               if r["id"] == "source_derived_finite_one_three_causal_carrier")
+    clock = row["declared_count_clock_control"]
+    assert clock["independent_verifier_result"]["interval_counts"] == [2, 41, 80]
+    assert clock["independent_verifier_result"]["authenticated_events"] == 500
+    assert clock["count_decoder_uses_timestamps_or_density"] is False
+    assert clock["count_volume_or_curve_limit_formalized_in_lean"] is False
+    assert clock["observed_postdiction"] is False
+    assert clock["independent_verifier_result"]["finite_clock_accuracy_certified"] is False
+    assert clock["independent_verifier_result"]["physical_clock_identified"] is False
+    assert row["operational_cone_selection"]["native_operational_boost_covariance_derived"] is False
+
+
+@pytest.mark.parametrize("mutation", ["count", "physical_promotion"])
+def test_count_clock_ledger_rejects_forged_evidence(tmp_path, mutation):
+    source = ledger.CODE / "causal_refinement/source_count_clock_receipt.json"
+    item = json.loads(source.read_text(encoding="utf-8"))
+    if mutation == "count":
+        item["interval_counts"][1] += 1
+    else:
+        item["scope"]["physical_clock_identified"] = True
+    path = tmp_path / "clock.json"
+    path.write_text(json.dumps(item), encoding="utf-8")
+    with pytest.raises(SystemExit, match="count-clock independent replay failed"):
+        ledger._source_count_clock_control(path)

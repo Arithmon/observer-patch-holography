@@ -131,6 +131,7 @@ LEAN_RECEIPTS = {
     "RefiningLatticeCausalCone": REPO / "Lean" / "Geometry"
     / "RefiningLatticeCausalCone.lean",
     "SourceNetCausalCone": REPO / "Lean" / "Geometry" / "SourceNetCausalCone.lean",
+    "SourceCountClock": REPO / "Lean" / "Time" / "SourceCountClock.lean",
     "MetricKernelEnergy": REPO / "Lean" / "Geometry" / "MetricKernelEnergy.lean",
     "LorentzOverlapCocycle": REPO / "Lean" / "Geometry"
     / "LorentzOverlapCocycle.lean",
@@ -579,6 +580,64 @@ def _source_net_causal_control(receipt_path: Path | None = None) -> dict[str, An
             "local writer/value custody and interventions; it is not an asymptotic "
             "experiment or a physical dimension fit. Spatial populations are nested; "
             "changing radii and ticks do not give induced-prefix histories."
+        ),
+    }
+
+
+def _source_count_clock_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    """Replay the finite decoder; retain the analytic/physical scope boundary."""
+    source = "paper/tex_fragments/SOURCE_COUNT_CLOCK.tex"
+    labels = ("thm:source-count-clock", "prop:source-count-clock-error",
+              "prop:source-count-clock-uniqueness")
+    prose = (REPO / source).read_text(encoding="utf-8")
+    if any("\\label{" + label + "}" not in prose for label in labels):
+        raise SystemExit("count-clock analytic theorem missing")
+    directory = CODE / "causal_refinement"
+    verifier_path = directory / "verify_source_count_clock.py"
+    spec = importlib.util.spec_from_file_location("count_clock_ledger_verifier", verifier_path)
+    if spec is None or spec.loader is None:
+        raise SystemExit("missing independent count-clock verifier")
+    verifier = importlib.util.module_from_spec(spec)
+    exec(compile(verifier_path.read_bytes(), str(verifier_path), "exec"), verifier.__dict__)
+    receipt_path = receipt_path or directory / "source_count_clock_receipt.json"
+    raw = receipt_path.read_bytes()
+    try:
+        summary = verifier.verify(verifier.load(receipt_path))
+    except ValueError as exc:
+        raise SystemExit(f"count-clock independent replay failed: {exc}") from exc
+    if receipt_path.read_bytes() != raw:
+        raise SystemExit("count-clock receipt changed during replay")
+    expected = {
+        "schema": "source-count-clock-v1", "source_q": 5,
+        "authenticated_events": 500, "interval_counts": [2, 41, 80],
+        "exact_clock_bounds": 3, "conditional_error_controls": 3,
+        "proper_time_ratio_limit_is_analytic": True,
+        "finite_clock_accuracy_certified": False, "physical_clock_identified": False,
+    }
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("count-clock verifier scope/count mismatch")
+    declarations = ("fourth_power_order", "fourth_root_unique", "common_weight_cancels",
+                    "volume_ratio_enclosure", "clock_enclosure")
+    return {
+        "source": source, "labels": list(labels),
+        "lean_receipts": _lean_receipt("SourceCountClock",
+            declarations={"SourceCountClock": declarations}),
+        "lean_declarations": {"SourceCountClock": list(declarations)},
+        "receipt_pin": {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()},
+        "independent_verifier_result": summary,
+        "count_decoder_uses_timestamps_or_density": False,
+        "analytic_same_family_proper_time_ratio_limit": True,
+        "analytic_volume_only_inertial_clock_uniqueness": True,
+        "analytic_resolved_timelike_worldline_accumulation": True,
+        "count_volume_or_curve_limit_formalized_in_lean": False,
+        "observed_postdiction": False,
+        "scope_boundary": (
+            "The geometric clock is retrospective and requires access to complete "
+            "authenticated interval ancestry and a reference. The common order/count "
+            "limit is the separately declared source-net law. Finite error controls "
+            "check supplied arithmetic budgets, not actual q=5 timing accuracy. "
+            "Native law selection, a running matter pointer and physical calibration "
+            "are not derived. Lean checks finite scale and interval algebra only."
         ),
     }
 
@@ -2376,6 +2435,15 @@ def _forced_structure(
             "id": "source_derived_finite_one_three_causal_carrier",
             "supplied_law_refinement_control": _refining_causal_control(),
             "declared_source_net_control": _source_net_causal_control(),
+            "declared_count_clock_control": _source_count_clock_control(),
+            "operational_cone_selection": {
+                "analytic_proof": "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
+                "hypotheses": "nonzero closed convex pointed cone; finite irreducible carrier rotations; one continuous operational boost direction; time orientation",
+                "conclusion": "unique future Lorentz cone",
+                "native_operational_boost_covariance_derived": False,
+                "cone_classification_formalized_in_lean": False,
+                "observed_postdiction": False,
+            },
             "metric_scalar_continuum": {
                 "classification": "conditional_analytic_scalar_limit_not_observed_spacetime",
                 "spatial_selection": "maximal separated finite conservative source-word menu in a metric ball",
@@ -2385,6 +2453,8 @@ def _forced_structure(
                 "physical_source_or_clock_selected": False,
                 "quantum_continuum_claim": False,
                 "analytic_proof": "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
+                "analytic_same_action_boost_detector_comparison": True,
+                "boost_comparison_boundary": "spacetime-smearing and two transformed preparations supplied through a smooth continuum reference with common window/buffer; no finite-history boost map or raw-support covariance",
                 "finite_algebra_receipt": _lean_receipt(
                     "MetricKernelEnergy",
                     declarations={"MetricKernelEnergy": (
@@ -2409,6 +2479,13 @@ def _forced_structure(
                 "code/causal_refinement/verify_source_net_causet.py",
                 "code/causal_refinement/test_source_net_causet.py",
                 "code/causal_refinement/source_net_causet_receipt.json",
+                "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
+                "paper/tex_fragments/SOURCE_COUNT_CLOCK.tex",
+                "Lean/Time/SourceCountClock.lean",
+                "code/causal_refinement/source_count_clock.py",
+                "code/causal_refinement/verify_source_count_clock.py",
+                "code/causal_refinement/test_source_count_clock.py",
+                "code/causal_refinement/source_count_clock_receipt.json",
             ],
             "statement": (
                 "Authenticated read-after-write provenance generates a finite "
@@ -2439,6 +2516,13 @@ def _forced_structure(
                 "limits, the latter equal to 1/10. Independent exact finite "
                 "executions use 27, 125, 512 and 2197 sites with equal widths; "
                 "the sharper q=13 fill gives inner speed at least 75989/250000"
+                ". On this declared family, fourth roots of authenticated interval-count "
+                "ratios recover geometric proper-time ratios, uniquely up to units among "
+                "positive volume-only inertially additive readouts. Exact q=5 replay "
+                "checks the decoder. A separate analytic finite-rotation/one-boost "
+                "criterion selects the Lorentz cone under operational covariance. "
+                "The same declared scalar action has controlled spacetime-smeared "
+                "boost comparisons for two reference-supplied preparations"
             ),
             "observed_counterpart": (
                 "finite causal-set-like order with an effective 1+3 Lorentz "

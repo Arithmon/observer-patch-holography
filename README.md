@@ -78,18 +78,13 @@ calculations and reproducible simulations:
   conditional theorem package about how observers resample toward consensus
   yields all four laws, with the second law appearing as data processing
   applied to repair and the Landauer bound as a corollary.
-- **Relativity and gravity from observer geometry.** Authenticated reads
-  between observers generate a finite causal poset directly, with no event
-  order supplied by hand. A real axis and the exact rank-three source quotient
-  give a four-dimensional Lorentz target whose unit directions are exactly its
-  future-null rays, so the signature is derived rather than fitted. Two finite
-  checks lift a source-selected placement to exact agreement between record
-  order and light cone. Physical spacetime and smooth general relativity need
-  further attachment, calibration, and refinement, each named in the
-  [spacetime derivation](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf).
-  The [source-history archive](evidence/source_causal_history_family/) and
-  [causet-control archive](evidence/causet_likeness/) carry full receipts and
-  standard-library checkers.
+- **Space and time from observer records.** The source response supplies a
+  three-dimensional spatial geometry. With an explicit local reading rule,
+  conservative observer records approach the familiar causal geometry and
+  volume of a flat 3+1-dimensional world. Counts of records between events
+  recover elapsed-time ratios. The [spacetime paper](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf)
+  develops the proofs and their assumptions; [executable evidence](code/causal_refinement/)
+  lets readers replay the construction.
 - **Field geometry on the twelve-port screen.** The finite screen carries
   exact Green, Thomson, Gauss, curvature, and gauge-invariance theorems. The
   same geometry connects port loads, seam data, local curvature, and the
@@ -352,7 +347,7 @@ The [paper index](paper/) gives the curated publication map. Focused research PD
   </a>
 </p>
 
-<p align="center"><sub>The typed OPH dependency map. An independent real axis and the exact rank-three source quotient define the ambient target R ⊕ V₃, with dimension four and Lorentz signature. Authenticated order supplies its exact longest parent-chain height only for a scaled event placement in that target. The target-carrier dimension is not an intrinsic poset-dimension estimate, and height is not a physical clock. Physical placement, count-to-volume calibration, independent dimension tests, manifoldlikeness, topology, curvature, and the Einstein continuum remain explicit bridges. Event number is not public capacity N.</sub></p>
+<p align="center"><sub>The OPH reconstruction map connects observer records, three-dimensional source geometry, causal order, clocks, fields and quantum states. Each arrow names a mathematical connection; the papers state the assumptions that join them into an effective physical description.</sub></p>
 
 ## Repository Guide
 

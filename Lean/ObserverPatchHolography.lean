@@ -41,6 +41,7 @@ import ObserverPatchHolography.RepairWordSchedule
 import Time.TimeOrderLedger
 import Time.ObserverHistory
 import Time.ClockReadout
+import Time.SourceCountClock
 import Time.WorldlineRealization
 import Time.ProperTimeCalibration
 import Time.ClockComparison

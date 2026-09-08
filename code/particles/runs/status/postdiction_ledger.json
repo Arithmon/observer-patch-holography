@@ -1077,8 +1077,61 @@
           "code/causal_refinement/source_net_causet.py",
           "code/causal_refinement/verify_source_net_causet.py",
           "code/causal_refinement/test_source_net_causet.py",
-          "code/causal_refinement/source_net_causet_receipt.json"
+          "code/causal_refinement/source_net_causet_receipt.json",
+          "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
+          "paper/tex_fragments/SOURCE_COUNT_CLOCK.tex",
+          "Lean/Time/SourceCountClock.lean",
+          "code/causal_refinement/source_count_clock.py",
+          "code/causal_refinement/verify_source_count_clock.py",
+          "code/causal_refinement/test_source_count_clock.py",
+          "code/causal_refinement/source_count_clock_receipt.json"
         ],
+        "declared_count_clock_control": {
+          "analytic_resolved_timelike_worldline_accumulation": true,
+          "analytic_same_family_proper_time_ratio_limit": true,
+          "analytic_volume_only_inertial_clock_uniqueness": true,
+          "count_decoder_uses_timestamps_or_density": false,
+          "count_volume_or_curve_limit_formalized_in_lean": false,
+          "independent_verifier_result": {
+            "authenticated_events": 500,
+            "conditional_error_controls": 3,
+            "exact_clock_bounds": 3,
+            "finite_clock_accuracy_certified": false,
+            "interval_counts": [
+              2,
+              41,
+              80
+            ],
+            "physical_clock_identified": false,
+            "proper_time_ratio_limit_is_analytic": true,
+            "schema": "source-count-clock-v1",
+            "source_q": 5
+          },
+          "labels": [
+            "thm:source-count-clock",
+            "prop:source-count-clock-error",
+            "prop:source-count-clock-uniqueness"
+          ],
+          "lean_declarations": {
+            "SourceCountClock": [
+              "fourth_power_order",
+              "fourth_root_unique",
+              "common_weight_cancels",
+              "volume_ratio_enclosure",
+              "clock_enclosure"
+            ]
+          },
+          "lean_receipts": [
+            "Lean/Time/SourceCountClock.lean"
+          ],
+          "observed_postdiction": false,
+          "receipt_pin": {
+            "bytes": 2762,
+            "sha256": "9db7d6cd2b6f53138a2c6d8c2f6637882464ac4fc1ff05954f9805644247d7a5"
+          },
+          "scope_boundary": "The geometric clock is retrospective and requires access to complete authenticated interval ancestry and a reference. The common order/count limit is the separately declared source-net law. Finite error controls check supplied arithmetic budgets, not actual q=5 timing accuracy. Native law selection, a running matter pointer and physical calibration are not derived. Lean checks finite scale and interval algebra only.",
+          "source": "paper/tex_fragments/SOURCE_COUNT_CLOCK.tex"
+        },
         "declared_source_net_control": {
           "analytic_contained_interval_ordering_fraction": "1/10",
           "analytic_controlled_causal_limit": true,
@@ -1194,6 +1247,8 @@
         "metric_scalar_continuum": {
           "action": "positive Voronoi-mass radial-kernel Klein-Gordon action",
           "analytic_proof": "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
+          "analytic_same_action_boost_detector_comparison": true,
+          "boost_comparison_boundary": "spacetime-smearing and two transformed preparations supplied through a smooth continuum reference with common window/buffer; no finite-history boost map or raw-support covariance",
           "classification": "conditional_analytic_scalar_limit_not_observed_spacetime",
           "finite_algebra_receipt": [
             "Lean/Geometry/MetricKernelEnergy.lean"
@@ -1205,8 +1260,16 @@
           "spatial_selection": "maximal separated finite conservative source-word menu in a metric ball"
         },
         "observed_counterpart": "finite causal-set-like order with an effective 1+3 Lorentz carrier and null-cone directions",
+        "operational_cone_selection": {
+          "analytic_proof": "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
+          "conclusion": "unique future Lorentz cone",
+          "cone_classification_formalized_in_lean": false,
+          "hypotheses": "nonzero closed convex pointed cone; finite irreducible carrier rotations; one continuous operational boost direction; time orientation",
+          "native_operational_boost_covariance_derived": false,
+          "observed_postdiction": false
+        },
         "paper_ref": "flagship and spacetime papers, source-derived causal order and finite 1+3 carrier",
-        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000",
+        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations",
         "supplied_law_refinement_control": {
           "analytic_controlled_causal_limit": true,
           "analytic_interval_volume_limit": true,

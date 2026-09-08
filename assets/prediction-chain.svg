@@ -105,7 +105,7 @@
   <rect x="5252" y="158" width="114" height="24" rx="12" fill="rgb(255 255 255 / 0.04)" stroke="#ffb8be" />
   <text x="5266" y="175" fill="#ffb8be" font-size="12" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2">ENDPOINT</text>
   <text x="4292" y="194" fill="rgb(155 167 184 / 0.84)" font-size="13" font-family="JetBrains Mono, monospace">Scientific sources: OPH papers, the Lean library, exact finite calculations, and frozen computational receipts.</text>
-  <text x="4292" y="212" fill="rgb(155 167 184 / 0.84)" font-size="13" font-family="JetBrains Mono, monospace">RER evidence custody: evidence/source_causal_history_family/, evidence/causet_likeness/, evidence/local_domain/.</text>
+  <text x="4292" y="212" fill="rgb(155 167 184 / 0.84)" font-size="13" font-family="JetBrains Mono, monospace">Source-record causal and count-clock evidence: code/causal_refinement/.</text>
 </g>
 <g filter="url(#panelShadow)">
   <rect x="120" y="330" width="1750" height="695" rx="32" fill="url(#panelGradient)" stroke="rgb(212 181 110 / 0.12)" />
@@ -137,7 +137,7 @@
   <line x1="3760" y1="428" x2="5450" y2="428" stroke="rgb(78 231 255 / 0.10)" />
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="120" y="1239" width="1650" height="1781" rx="32" fill="url(#panelGradient)" stroke="rgb(255 255 255 / 0.08)" />
+  <rect x="120" y="1239" width="1650" height="1749" rx="32" fill="url(#panelGradient)" stroke="rgb(255 255 255 / 0.08)" />
   <rect x="142" y="1261" width="1606" height="64" rx="20" fill="rgb(255 255 255 / 0.03)" stroke="rgb(255 255 255 / 0.05)" />
   <text x="162" y="1297" fill="#f4f7fb" font-size="32" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.4">Consensus / Source-Causal-Order / Finite 1+3 Spine</text>
   <line x1="150" y1="1337" x2="1740" y2="1337" stroke="rgb(78 231 255 / 0.10)" />
@@ -282,16 +282,16 @@
   <path d="M 1630.0 1999.5 C 1950.0 1999.5, 1610.0 1445.5, 1930.0 1445.5" stroke="#4ee7ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowCyan)" />
   <path d="M 1275.0 2096.0 C 1275.0 2176.0, 2400.0 1767.0, 2400.0 1847.0" stroke="#4ee7ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 1275.0 2096.0 C 1275.0 2176.0, 2400.0 1767.0, 2400.0 1847.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowCyan)" />
-  <path d="M 535.0 2425.0 C 535.0 2583.9, 535.0 2377.1, 535.0 2536.0" stroke="#4ee7ff" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
-  <path d="M 535.0 2425.0 C 535.0 2583.9, 535.0 2377.1, 535.0 2536.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.18" marker-end="url(#arrowCyan)" />
-  <path d="M 1275.0 2496.0 C 1275.0 2642.9, 535.0 2389.1, 535.0 2536.0" stroke="#4ee7ff" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
-  <path d="M 1275.0 2496.0 C 1275.0 2642.9, 535.0 2389.1, 535.0 2536.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.18" marker-end="url(#arrowCyan)" />
-  <path d="M 2400.0 1542.0 C 2400.0 1626.7, 2400.0 1497.3, 2400.0 1582.0" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
-  <path d="M 2400.0 1542.0 C 2400.0 1626.7, 2400.0 1497.3, 2400.0 1582.0" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
+  <path d="M 535.0 2425.0 C 535.0 2578.5, 535.0 2382.5, 535.0 2536.0" stroke="#4ee7ff" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
+  <path d="M 535.0 2425.0 C 535.0 2578.5, 535.0 2382.5, 535.0 2536.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.18" marker-end="url(#arrowCyan)" />
+  <path d="M 1275.0 2496.0 C 1275.0 2637.4, 535.0 2394.6, 535.0 2536.0" stroke="#4ee7ff" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
+  <path d="M 1275.0 2496.0 C 1275.0 2637.4, 535.0 2394.6, 535.0 2536.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.18" marker-end="url(#arrowCyan)" />
+  <path d="M 1630.0 2316.0 C 1950.0 2316.0, 1610.0 1694.5, 1930.0 1694.5" stroke="#7ca6ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
+  <path d="M 1630.0 2316.0 C 1950.0 2316.0, 1610.0 1694.5, 1930.0 1694.5" stroke="#7ca6ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowBlue)" />
   <path d="M 2400.0 1807.0 C 2400.0 1998.1, 2400.0 1952.9, 2400.0 2144.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 2400.0 1807.0 C 2400.0 1998.1, 2400.0 1952.9, 2400.0 2144.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
-  <path d="M 890.0 2748.0 C 1210.0 2748.0, 1610.0 2256.5, 1930.0 2256.5" stroke="#ff8f97" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
-  <path d="M 890.0 2748.0 C 1210.0 2748.0, 1610.0 2256.5, 1930.0 2256.5" stroke="#ff8f97" stroke-width="2.6" opacity="0.24" marker-end="url(#arrowRose)" />
+  <path d="M 890.0 2732.0 C 1210.0 2732.0, 1610.0 2256.5, 1930.0 2256.5" stroke="#ff8f97" stroke-width="7" opacity="0.04" filter="url(#softGlow)" />
+  <path d="M 890.0 2732.0 C 1210.0 2732.0, 1610.0 2256.5, 1930.0 2256.5" stroke="#ff8f97" stroke-width="2.6" opacity="0.24" marker-end="url(#arrowRose)" />
   <path d="M 2400.0 2369.0 C 2400.0 2470.2, 2645.0 2307.8, 2645.0 2409.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 2400.0 2369.0 C 2400.0 2470.2, 2645.0 2307.8, 2645.0 2409.0" stroke="#ff8f97" stroke-width="2.6" opacity="0.28" marker-end="url(#arrowRose)" />
   <path d="M 2400.0 2104.0 C 2400.0 2300.7, 2645.0 2212.3, 2645.0 2409.0" stroke="#ff8f97" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
@@ -766,21 +766,20 @@
   <text x="944" y="2472" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">placement</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="180" y="2536" width="710" height="424" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="0.78" />
+  <rect x="180" y="2536" width="710" height="392" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="0.78" />
   <rect x="181" y="2537" width="708" height="38" rx="27" fill="rgba(78, 231, 255, 0.16)" opacity="0.48" />
   <rect x="196" y="2548" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#4ee7ff" opacity="0.7" />
   <text x="210" y="2567" fill="#4ee7ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="0.84">BRIDGE</text>
-  <rect x="198" y="2951" width="227.2" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
-  <text x="204" y="2620" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="0.9">Finite Placement and Seeded Causet</text>
-  <text x="204" y="2659" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="0.9">Control</text>
-  <text x="204" y="2712" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">every finite log has an auxiliary injective</text>
-  <text x="204" y="2744" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">forward placement</text>
-  <text x="204" y="2776" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">converse cone support gives an exact finite</text>
-  <text x="204" y="2808" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">order embedding</text>
-  <text x="204" y="2840" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">seeded 3+1: exact order + Poisson/fixed-volume</text>
-  <text x="204" y="2872" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">count</text>
-  <text x="204" y="2904" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">joint causal-set faithful-embedding control;</text>
-  <text x="204" y="2936" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">inputs seeded</text>
+  <rect x="198" y="2919" width="227.2" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
+  <text x="204" y="2620" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="0.9">Source-Record Order and Count</text>
+  <text x="204" y="2659" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="0.9">Limit</text>
+  <text x="204" y="2712" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">golden source records; declared local</text>
+  <text x="204" y="2744" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">neighbour-read law</text>
+  <text x="204" y="2776" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">controlled flat 1+3 causal order and raw-count</text>
+  <text x="204" y="2808" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">volume</text>
+  <text x="204" y="2840" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">interval comparability tends to 1/10</text>
+  <text x="204" y="2872" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">interior count fourth roots -&gt; proper-time</text>
+  <text x="204" y="2904" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="0.82">ratio limit</text>
 </g>
 <g filter="url(#panelShadow)">
   <rect x="1930" y="1349" width="940" height="193" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
@@ -798,10 +797,10 @@
   <rect x="1946" y="1594" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#7ca6ff" opacity="1" />
   <text x="1960" y="1613" fill="#7ca6ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OUTPUT</text>
   <rect x="1948" y="1798" width="300.8" height="3" rx="1.5" fill="#7ca6ff" opacity="0.82" />
-  <text x="1954" y="1666" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Lorentz and H3 Frame Kinematics</text>
-  <text x="1954" y="1719" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Conf^+(S^2) = PSL(2,C) = SO^+(3,1)</text>
-  <text x="1954" y="1751" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">classical identity; physical sky / frames supplied</text>
-  <text x="1954" y="1783" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">H3 is not event spacetime</text>
+  <text x="1954" y="1666" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Operational Lorentz-Cone Criterion</text>
+  <text x="1954" y="1719" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">nonzero closed convex pointed displacement cone</text>
+  <text x="1954" y="1751" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">operational A5 + one continuous boost direction</text>
+  <text x="1954" y="1783" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">time orientation selects the future Lorentz cone</text>
 </g>
 <g filter="url(#panelShadow)">
   <rect x="1930" y="1847" width="940" height="257" rx="28" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
@@ -822,8 +821,8 @@
   <text x="1960" y="2175" fill="#ff8f97" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OPEN CONDITION</text>
   <rect x="1948" y="2360" width="300.8" height="3" rx="1.5" fill="#ff8f97" opacity="0.82" />
   <text x="1954" y="2228" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Conditional Effective 3+1 Manifold</text>
-  <text x="1954" y="2281" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">physical signals + source-selected exact order embedding</text>
-  <text x="1954" y="2313" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Poisson/count density + number-volume calibration</text>
+  <text x="1954" y="2281" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">physical signals + exact or controlled causal agreement</text>
+  <text x="1954" y="2313" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">source-selected event law + count-volume calibration</text>
   <text x="1954" y="2345" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">manifold tests; tensor curvature or null-balance for Einstein</text>
 </g>
 <g filter="url(#panelShadow)">

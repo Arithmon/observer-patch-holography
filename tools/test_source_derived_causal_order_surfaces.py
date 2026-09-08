@@ -324,33 +324,10 @@ def test_history_receipt_records_positive_custody_and_negative_placement() -> No
     assert "EXPECTED_ORDERING_FRACTIONS" in verifier
 
 
-def test_every_simulation_claiming_surface_points_to_current_rer_evidence() -> None:
-    source_history_surfaces = (
-        "flagship/from_observer_consensus_to_standard_physics.tex",
-        "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
-        "paper/screen_microphysics_and_observer_synchronization.tex",
-        "paper/observers_are_all_you_need.tex",
-        "paper/reality_as_consensus_protocol.tex",
-        "paper/tex_fragments/PAPER.tex",
-        "paper/tex_fragments/EINSTEIN_DERIVATION_SCOPE.tex",
-        "paper/tex_fragments/UNIFIED_OBSERVER_PHYSICS_SPINE.tex",
-        "extra/observer_patch_holography_as_string_vacuum_selector.tex",
-        "book/08-chapter-07.md",
-        "book/35-chapter-34.md",
-        "book/45-appendix-c.md",
-        "README.md",
-        "README_FR.md",
-    )
-    causet_control_surfaces = source_history_surfaces + (
-        "cosmology/oph_cosmology_finite_source_cmb_program.tex",
-        "cosmology/oph_dark_matter_paper.tex",
-        "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
-    )
-    for relative in source_history_surfaces:
-        assert "evidence/source_causal_history_family" in _text(relative), relative
-    for relative in causet_control_surfaces:
-        assert "evidence/causet_likeness" in _text(relative), relative
-
+def test_scientific_registry_keeps_archived_causal_evidence_reachable() -> None:
+    # Current paper exposition may retire superseded experiments. Their
+    # scientific records and independent verifiers remain mandatory archive
+    # evidence; the preceding test preserves the exact historical verdicts.
     claims = _claims()
     history_evidence = claims[HISTORY_CLAIM]["evidence"]
     assert (

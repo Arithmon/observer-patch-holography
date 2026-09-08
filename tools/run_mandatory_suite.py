@@ -364,7 +364,8 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
         "Execute refining causal-cone paths and authenticated local-law controls",
         [sys.executable, "-m", "pytest", "-q",
          "code/causal_refinement/test_refining_cone.py",
-         "code/causal_refinement/test_source_net_causet.py"],
+         "code/causal_refinement/test_source_net_causet.py",
+         "code/causal_refinement/test_source_count_clock.py"],
     ),
     (
         "Execute cone Whitney interpolation, full action derivatives and custody controls",

@@ -170,3 +170,69 @@ do not implement its couplings as accepted primitive repairs or calibrate
 their duration. The construction supplies one conditional scalar effective
 world on the response carrier; its selection and physical interpretation
 remain separate obligations.
+
+\begin{proposition}[Controlled boost comparison for scalar detectors]
+\label{prop:source-metric-boost-detectors}
+Let $\Lambda$ be a proper orthochronous Lorentz transformation of
+$c^2dt^2-|dx|^2$, and let $u$ be a smooth Klein--Gordon solution on the
+full spacetime. Put $u^\Lambda=u\circ\Lambda^{-1}$. Suppose both
+references satisfy the support and derivative hypotheses of
+Proposition~\ref{prop:source-metric-scalar-limit} on the same $[0,T]$
+and $\Omega$, with a common positive interior buffer. Choose a real
+$f\in C_c^1(\mathbb R^{1+3})$ such that both $f$ and
+$f^\Lambda=f\circ\Lambda^{-1}$ are supported in
+$(0,T)\times\Omega^\circ$. For $w=u,u^\Lambda$, let $q_h^w$ solve
+the same action~\eqref{eq:source-metric-scalar-action}, with the same
+$L,v_i,c,m$, initialized by $w(0,x_i)$ and $\partial_tw(0,x_i)$.
+Define the spacetime-smeared readouts
+\[
+ \mathcal D_h(f;q)=\int_0^T\sum_i v_i f(t,x_i)q_i(t)\,dt,
+ \qquad
+ \mathcal D(f;w)=\int_{\mathbb R^{1+3}}fw\,dt\,d^3x.
+\]
+Using the preceding spatial derivative bounds $M_1(w),M_4(w)$, put
+\[
+ B_w=c^2\sqrt V\left[
+   \frac{15}{112}\epsilon^2M_4(w)
+   +960h\epsilon^{-2}M_1(w)\right],
+\]
+and
+\[
+ \mathcal E_h(f,w)=
+ \frac{\sqrt V B_w}{2}\int_0^T t^2\|f(t,\cdot)\|_\infty\,dt
+ +Vh\int_0^T
+       \|\nabla_x(f(t,\cdot)w(t,\cdot))\|_\infty\,dt.
+\]
+Then
+\begin{equation}
+ \left|\mathcal D_h(f^\Lambda;q_h^{u^\Lambda})
+          -\mathcal D_h(f;q_h^u)\right|
+ \le \mathcal E_h(f^\Lambda,u^\Lambda)+\mathcal E_h(f,u).
+ \label{eq:source-metric-boost-detector-error}
+\end{equation}
+The right-hand side tends to zero for $\epsilon\to0$ and
+$h/\epsilon^2\to0$. The conclusion is uniform over a bounded boost
+class when the common window, buffer and displayed derivative and detector
+bounds are uniform over that class.
+\end{proposition}
+\begin{proof}
+Lorentz covariance of the Klein--Gordon equation makes $u^\Lambda$ a
+solution with the same $c,m$. The preceding detector estimate applies at
+each time with $b=f(t,\cdot)$; its time integral is
+$|\mathcal D_h(f;q_h^w)-\mathcal D(f;w)|\le\mathcal E_h(f,w)$.
+Since $\det\Lambda=1$ and both detector supports lie in the comparison
+window, change of variables gives
+$\mathcal D(f^\Lambda;u^\Lambda)=\mathcal D(f;u)$.
+The two approximation bounds and the triangle inequality prove the claim.
+\end{proof}
+
+The transformed preparations are supplied through the continuum reference
+on the transformed Cauchy surface; this comparison does not construct a
+boost map from one finite history or its initial data. The same estimate
+applies to smooth local preparation differences by linearity. Spacetime
+smearing is essential to the displayed comparison: a fixed-time detector
+instead transforms to a tilted hypersurface with its transformed measure.
+The result controls detector values for one common declared action, not
+exact finite-graph support, native source selection, or boosts of arbitrary
+finite records. Time integration and preparation errors, if present in an
+execution, require their own bounds.

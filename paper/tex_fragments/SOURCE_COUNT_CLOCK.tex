@@ -1,0 +1,151 @@
+\subsection{A clock read from source interval counts}
+\label{sec:source-count-clock}
+
+The equal-mass source populations of
+Proposition~\ref{prop:golden-source-count-limit} admit a clock defined by
+their records. Suppose an observer can read the complete ancestry of an
+upper event and identify a lower anchor. Its inclusive interval is
+$I(p,q)=\{e:p\preceq e\preceq q\}$. Choose a nondegenerate reference
+interval $J$ in the same history and define
+\begin{equation}
+ \mathcal T(I;J)=\left(\frac{|I|}{|J|}\right)^{1/4}.
+ \label{eq:source-count-clock}
+\end{equation}
+This readout uses order and cardinality. It needs no numerical event
+labels, spatial coordinates, timestamps, absolute density or oscillator
+frequency. Complete ancestry access is a substantive readout hypothesis:
+a hash of an unavailable record does not provide its contents. The cost
+of collecting and counting the records is separate from the duration
+reconstructed by the readout.
+
+\begin{theorem}[Count clocks and proper-time ratios]
+\label{thm:source-count-clock}
+Consider the declared source histories with their controlled order and
+equal-mass count limit. Let $I_n,J_n$ approximate fixed interior timelike
+diamonds, with one common event weight $w_n>0$, and let their limiting
+proper-time separations be $\tau_I,\tau_J>0$. Then
+\[
+ \mathcal T(I_n;J_n)\longrightarrow\frac{\tau_I}{\tau_J}.
+\]
+The reference interval fixes the time unit; the clock origin is free.
+\end{theorem}
+\begin{proof}
+For coordinate measure $dt\,d^3x$ and metric $c^2dt^2-|dx|^2$, a flat
+diamond of proper-time separation $\tau$ has volume
+$K\tau^4$, where $K=\pi c^3/24$. The vertical formula follows by
+integrating its ball sections. A Lorentz transformation has determinant
+one and sends a timelike tip displacement to its rest form, so the same
+formula holds for moving tips. The count-volume theorem gives
+$w_n|I_n|\to K\tau_I^4$ and $w_n|J_n|\to K\tau_J^4$.
+Taking their ratio and its positive fourth root proves the claim. Both
+the event weight and the volume constant cancel.
+\end{proof}
+
+The supplied relation $\Delta=a/c$ enters the proof of the order and
+volume limit. It is absent from the clock's definition. This distinction
+allows a retrospective clock to be read from the same history without
+assuming an oscillator Hamiltonian. It does not select the population,
+read law or laboratory unit from accepted microscopic repairs.
+
+\begin{proposition}[Finite clock enclosure]
+\label{prop:source-count-clock-error}
+Suppose $A=wN$, $B=wM$ and independently justified volume bounds obey
+$|A-V_I|\leq E_I$, $|B-V_J|\leq E_J$, with $B>E_J\geq0$,
+$E_I\geq0$ and $V_J>0$. Then
+\begin{equation}
+ \left(\frac{(A-E_I)_+}{B+E_J}\right)^{1/4}
+ \leq\frac{\tau_I}{\tau_J}\leq
+ \left(\frac{A+E_I}{B-E_J}\right)^{1/4}.
+ \label{eq:source-count-clock-error}
+\end{equation}
+The same formula uses counts $N,M$ and errors $E_I/w,E_J/w$.
+\end{proposition}
+\begin{proof}
+The true volumes belong to their stated intervals. Division by a positive
+denominator and the increasing fourth root preserve the two inequalities.
+The error bound in \eqref{eq:source-net-general-volume-error} supplies
+such volume errors when its geometric hypotheses hold. Counts alone do
+not supply those errors.
+\end{proof}
+
+For relative volume errors $A=V_I(1+d_I)$ and $B=V_J(1+d_J)$, with
+$|d_I|\leq\eta_I<1$ and $|d_J|\leq\eta_J<1$, the measured clock divided
+by the exact proper-time ratio lies in
+\begin{equation}
+ \left[
+ \left(\frac{1-\eta_I}{1+\eta_J}\right)^{1/4},
+ \left(\frac{1+\eta_I}{1-\eta_J}\right)^{1/4}
+ \right].
+ \label{eq:source-count-clock-relative}
+\end{equation}
+
+\begin{proposition}[Unit freedom within the volume clock class]
+\label{prop:source-count-clock-uniqueness}
+A positive elapsed-time function $F(V)$ depending only on diamond volume
+and additive for successive collinear inertial intervals is
+$F(V)=\kappa V^{1/4}$ for some $\kappa>0$.
+\end{proposition}
+\begin{proof}
+Set $g(t)=F(Kt^4)$ for $t>0$. Inertial additivity gives
+$g(t+s)=g(t)+g(s)$. Positivity implies strict monotonicity. Additivity
+first fixes $g$ on positive rationals; monotonicity and rational
+approximation give $g(t)=g(1)t$ for all positive real $t$.
+This is uniqueness within the stated class, not a premise about every
+physical pointer.
+\end{proof}
+
+\paragraph{Accumulating duration along a curve.}
+Let $\gamma(t)=(t,x(t))$ be $C^2$ on $[0,T]$, with
+$|x'(t)|\leq v<c$, $|x''(t)|\leq A_0$, and a common spatial buffer for
+its small diamonds. Segment durations are comparable to
+$\delta_n\to0$. Suppose
+\[
+ \frac{\Delta_n}{\delta_n}\to0,\qquad
+ \frac{H_n}{\delta_n}\to0,\qquad
+ \frac{h_n}{a_n}\to0,
+\]
+and sampled tips have spatial and temporal errors $O(H_n+\Delta_n)$.
+Summing \eqref{eq:source-count-clock} over successive segment intervals,
+using the same fixed reference interval, converges to
+\begin{equation}
+ \frac1{\tau_J}\int_0^T\sqrt{1-|x'(t)|^2/c^2}\,dt.
+ \label{eq:source-count-clock-curve}
+\end{equation}
+Indeed, the two-shell estimate is uniformly
+$O(\delta_n^4h_n/a_n+\delta_n^3(H_n+\Delta_n))$ per segment.
+The strict speed margin bounds each exact diamond volume below by a
+positive constant times $\delta_n^4$. Tip perturbations have the same
+relative error order. Equation~\eqref{eq:source-count-clock-relative}
+therefore controls all segment clocks by one vanishing relative error.
+
+The continuum polygon error has an explicit bound. For
+$f(u)=\sqrt{1-|u|^2/c^2}$ on $|u|\leq v$, its Hessian norm is at most
+$M_0=[c^2(1-v^2/c^2)^{3/2}]^{-1}$. Taylor expansion about each segment's
+average velocity has zero integrated linear term. Since the velocity
+differs from that average by at most $A_0\delta_i$, the chord and curve
+proper times differ by at most $M_0A_0^2\delta_i^3/2$. The total is at
+most $M_0A_0^2T(\max_i\delta_i)^2/2$. This proves
+\eqref{eq:source-count-clock-curve}. Fixed one-layer intervals do not
+satisfy these resolution hypotheses.
+
+\paragraph{Finite records and calibration scope.}
+The finite executable control parses writer identities, immutable
+register versions and values in the $q=5$ history. Its $500$ events give
+the three centered inclusive counts $2,41,80$. The first two continuum
+diamonds lie inside the source window; the third does not. Exact dyadic
+fourth-root bounds, schedule permutation and opaque event relabeling
+check the readout. These coarse intervals provide no finite proper-time
+accuracy certificate. The source-pinned expected hash authenticates the
+replayed content relative to that commitment; it is not an external
+signature or a proof of physical provenance. Unrelated serial audit
+links are excluded from the semantic read order.
+
+Lean formalizes the finite interval and root inequalities. The count-volume
+and curve limits above are analytic proofs. In this layered law every causal pair $k$
+layers apart has a path of exactly $k$ reads, and every strict chain has
+at most $k$ edges. Longest-chain height consequently reads coordinate
+duration independently of displacement. It is not a proper-time clock
+for moving tips in this family. The count construction concerns
+geometric duration reconstructed from accessible records; it neither
+sets the time cost of primitive seam words nor identifies physical clock
+readings without a common physical interpretation of the event law.

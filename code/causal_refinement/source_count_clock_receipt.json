@@ -1,0 +1,95 @@
+{
+  "authenticated_events": 500,
+  "conditional_error_controls": [
+    {
+      "count_error_bounds": [
+        "1",
+        "2"
+      ],
+      "counts": [
+        16,
+        81
+      ],
+      "proper_time_ratio_bounds": [
+        "197057493064511642929897/302231454903657293676544",
+        "102923636817028660022671/151115727451828646838272"
+      ]
+    },
+    {
+      "count_error_bounds": [
+        "2",
+        "1"
+      ],
+      "counts": [
+        1,
+        16
+      ],
+      "proper_time_ratio_bounds": [
+        "0",
+        "808457421302958072798161/1208925819614629174706176"
+      ]
+    },
+    {
+      "count_error_bounds": [
+        "0",
+        "0"
+      ],
+      "counts": [
+        16,
+        81
+      ],
+      "proper_time_ratio_bounds": [
+        "402975273204876391568725/604462909807314587353088",
+        "805950546409752783137451/1208925819614629174706176"
+      ]
+    }
+  ],
+  "continuum_diamond_inside_source_window": [
+    true,
+    true,
+    false
+  ],
+  "dyadic_bits": 80,
+  "interval_counts": [
+    2,
+    41,
+    80
+  ],
+  "ratio_to_first_interval_bounds": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "1286198867110455770321547/604462909807314587353088",
+      "2572397734220911540643095/1208925819614629174706176"
+    ],
+    [
+      "1520143739590276869958633/604462909807314587353088",
+      "3040287479180553739917267/1208925819614629174706176"
+    ]
+  ],
+  "schema": "source-count-clock-v1",
+  "scope": {
+    "error_control_values_are_supplied_arithmetic_tests": true,
+    "external_signature_verified": false,
+    "finite_clock_accuracy_certified": false,
+    "finite_decoder_control_only": true,
+    "native_read_law_selected": false,
+    "physical_clock_identified": false,
+    "proper_time_ratio_limit_is_analytic": true,
+    "selected_source_level_freshly_replayed": true,
+    "source_commitment_checked": true,
+    "timestamp_density_or_spatial_coordinate_used_by_clock_readout": false
+  },
+  "source_pins": {
+    "Lean/Time/SourceCountClock.lean": "f44c5c2823b9112711073542bfcd7e42b0e950af88c2c273b362fef2f5077f79",
+    "code/causal_refinement/source_count_clock.py": "f0eea9f3a6c3152a35d11723666d980b36763ade5d5e4c115c728b203db8f40e",
+    "code/causal_refinement/test_source_count_clock.py": "70123d6ec935d65304cd90d538698a52a7a1b46c90c6802cd8918587070232a2",
+    "code/causal_refinement/verify_source_count_clock.py": "677a480f34fcc6fc40e40474f51e915e8bcbe4994aeab4144011dd88315ef0ca",
+    "paper/tex_fragments/SOURCE_COUNT_CLOCK.tex": "f61f8f53d9e8ae2f3c1395a8a028407bc5daa07ccc1f1e522b4028934cc7f4c0"
+  },
+  "source_q": 5,
+  "source_receipt_sha256": "c0f790ad383039186371b7a8020f190371fa533ad634010f01f9c271f1545681",
+  "source_trace_sha256": "35b50b2a2883e7e02081db475591bde25f1ea0879ee9a42072c960ef07abde5c"
+}

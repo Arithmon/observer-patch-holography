@@ -87,20 +87,14 @@ simulations reproductibles :
   observateurs se rééchantillonnent vers le consensus donne les quatre lois,
   la deuxième apparaissant comme du traitement de données appliqué à la
   réparation, avec la borne de Landauer en corollaire.
-- **La relativité et la gravitation à partir de la géométrie des
-  observateurs.** Les lectures authentifiées entre observateurs engendrent
-  directement un poset causal fini, sans ordre événementiel posé à la main.
-  Un axe réel et le quotient source de rang trois donnent une cible
-  lorentzienne de dimension quatre dont les directions unitaires sont
-  exactement ses rayons nuls futurs : la signature est dérivée et non ajustée.
-  Deux vérifications finies portent un placement sélectionné par la source
-  jusqu’à l’accord exact de l’ordre des enregistrements et du cône de lumière.
-  L’espace-temps physique et la relativité générale lisse exigent encore
-  attachement, étalonnage et raffinement, tous nommés dans la
-  [dérivation de l’espace-temps](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf).
-  Les [archives de l’historique causal](evidence/source_causal_history_family/)
-  et des [contrôles causet](evidence/causet_likeness/) contiennent les reçus
-  complets et leurs vérificateurs en bibliothèque standard.
+- **L’espace et le temps à partir des registres d’observateurs.** La réponse
+  de la source fournit une géométrie spatiale à trois dimensions. Avec une
+  règle locale de lecture explicite, les registres conservatifs approchent
+  la géométrie causale et le volume d’un monde plat à 3+1 dimensions.
+  Le nombre de registres entre événements permet de retrouver des rapports
+  de durées. L’[article sur l’espace-temps](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf)
+  expose les preuves et leurs hypothèses ; les [preuves exécutables](code/causal_refinement/)
+  permettent de reproduire la construction.
 - **La géométrie des champs sur l’écran à douze ports.** L’écran fini porte
   des théorèmes exacts de Green, Thomson, Gauss, courbure et invariance de
   jauge. La même géométrie relie les charges aux ports, les données de couture,
@@ -381,7 +375,7 @@ briseraient.
   </a>
 </p>
 
-<p align="center"><sub>La carte typée des dépendances d’OPH. Un axe réel indépendant et le quotient source exact de rang trois définissent la cible ambiante R ⊕ V₃, de dimension quatre et de signature lorentzienne. L’ordre authentifié détermine la hauteur source canonique, soit la longueur maximale d’une chaîne de parents, uniquement pour placer les événements dans cette cible après une mise à l’échelle positive. La dimension de la cible n’est pas une dimension intrinsèque du poset, et la hauteur n’est pas une horloge physique. Le plongement physique, l’étalonnage nombre-vers-volume, les tests de dimension indépendants, la propriété de variété, la topologie, la courbure et la limite d’Einstein restent des ponts explicites. Le nombre d’événements n’est pas la capacité publique N.</sub></p>
+<p align="center"><sub>La carte de reconstruction OPH relie registres d’observateurs, géométrie spatiale à trois dimensions, ordre causal, horloges, champs et états quantiques. Chaque flèche représente un lien mathématique ; les articles précisent les hypothèses qui les réunissent dans une description physique effective.</sub></p>
 
 ## Guide du dépôt
 
