@@ -227,7 +227,9 @@
   "OPH-WHITNEY-QUANTUM-HISTORY",
   "OPH-WHITNEY-MAGNETIC-CONTINUUM",
   "OPH-WHITNEY-QUANTUM-PACKET",
-  "OPH-WHITNEY-CHARGED-ENCLOSURE"
+  "OPH-WHITNEY-CHARGED-ENCLOSURE",
+  "OPH-QFT-RESTRICTION-NATURALITY",
+  "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON"
  ],
  "edges": [
   {
@@ -2024,6 +2026,21 @@
    "from": "OPH-WHITNEY-REAL-CONTINUUM",
    "to": "OPH-WHITNEY-INTERACTING-QUANTUM",
    "role": "Supplies only the conditional real-sector H1 trajectory estimate, smooth Neumann reference and Ritz initialization used to bound quadratic/quartic shared readouts and Lipschitz detector responses; it supplies no quantum-state refinement or physical detector calibration."
+  },
+  {
+   "to": "OPH-QFT-RESTRICTION-NATURALITY",
+   "role": "supplies finite restriction, repair and refinement laws; restriction-repair compatibility is additionally stated and inhabited",
+   "from": "OPH-FINITE-CAUSAL-OBSERVER-NET"
+  },
+  {
+   "to": "OPH-QFT-RESTRICTION-NATURALITY",
+   "role": "supplies authenticated generated precedence and the actual diamond-to-chain coarsening certificate",
+   "from": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE"
+  },
+  {
+   "to": "OPH-WHITNEY-CHARGED-INSTRUMENT",
+   "role": "supplies the independently verified historical q/v error enclosure for the new decoded-checkpoint triangle bound only",
+   "from": "OPH-WHITNEY-CHARGED-ENCLOSURE"
   }
  ]
 }

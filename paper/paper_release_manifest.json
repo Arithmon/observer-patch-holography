@@ -2,8 +2,8 @@
   "book": {
     "built_for_release_id": "r2038",
     "pdf_path": "book/reverse-engineering-reality-book.pdf",
-    "sha256": "d2d70e224f4f0fb31c1af19a5ac42a93c33dcb4def6f6176119b6aa5ed5829d4",
-    "size_bytes": 1341843
+    "sha256": "d119674b18ecbf2b0166f3b1b28c8b65a7d3adf08db64de14ed53ad8daad9420",
+    "size_bytes": 1342234
   },
   "extra_papers": {},
   "generated_at": "2026-09-07T00:00:00Z",
@@ -20,13 +20,13 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "7d3c3c120f62b7b81833a65e880ab74c4453e5e3d5d1ce28f09c24ec3a108d93",
-      "size_bytes": 463891
+      "sha256": "e3f9157c067e7de8b64ac5be2f6e4f99a888b07814eddbbb705c2e3399e91b41",
+      "size_bytes": 463949
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "03744db20bf83c4c14e9c229a3895237afedfd83d87ced56a1e7322859707d35",
-      "size_bytes": 877784
+      "sha256": "16516b2b3059456c3773ec890615889df46888ea79a8c3bea9c0c75d0cd2e13b",
+      "size_bytes": 890850
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
@@ -35,8 +35,8 @@
     },
     "reality_as_consensus_protocol": {
       "pdf_path": "paper/reality_as_consensus_protocol.pdf",
-      "sha256": "0c4cd3ac6e6e68d70217af1f0ee72feca506ed6212118f90a23ede05f95d181d",
-      "size_bytes": 506230
+      "sha256": "29b14bfe4bcc718e9bb2a8b1754b2348af8424ae30d9507ade8c6545a9af9586",
+      "size_bytes": 510506
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",

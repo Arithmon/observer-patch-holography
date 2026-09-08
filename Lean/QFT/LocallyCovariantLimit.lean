@@ -74,11 +74,11 @@ refinement independence, the Cauchy embedding class with the limit
 time-slice property, and the public-record subfunctor with its
 naturality receipt and commutative limit public algebra.  The colimit
 is algebraic: no C*-norm, limit norm, or completion is constructed.  No
-limit-level contravariant restriction map is defined: the corpus
-carries no naturality receipt relating `restrict` to `algebraRefine`,
-and the germ-wise candidate map is well-defined only given such a
-receipt, so the limit-level restriction is left open rather than
-constructed.  The public-record subfunctor takes a
+limit-level contravariant restriction map is defined. This interface
+does not require restriction/refinement naturality; `LimitRestriction`
+supplies a conditional finite receipt under restriction-repair
+compatibility, without constructing a limit-level restriction here.
+The public-record subfunctor takes a
 `CoherentObserverFamily` as an input; every committed constant-observer
 tower carries one.  No CP, CPTP, or adaptive physical locality property
 is inferred from B2 Kraus normalisation or from the E1 finite

@@ -1,0 +1,63 @@
+\subsection{Restriction naturality on authenticated event regions}
+\label{sec:source-restriction-naturality}
+
+Let a finite regional net have local algebras $\mathcal A_r(U)$,
+contravariant restrictions $R^r_{V,U}$ for $V\subseteq U$, algebra
+refinements $j_{rs}$, and regional repair maps $P^r_V$.  Restriction is
+additional algebraic data; isotony alone does not supply it.  Suppose repair
+is natural,
+\[
+ j_{rs}P^r_V=P^s_{V_s}j_{rs},
+\]
+where $V_s$ is the refined region.  The following compatibility is a
+separate hypothesis on the restricted domain:
+\begin{equation}
+ R^r_{V,U}X=P^r_VX\qquad(X\in\mathcal A_r(U)).
+ \label{eq:source-restriction-repair-compatibility}
+\end{equation}
+
+\begin{proposition}[Finite restriction and refinement square]
+\label{prop:source-restriction-naturality}
+Under these hypotheses,
+\begin{equation}
+ j_{rs}R^r_{V,U}X=R^s_{V_s,U_s}j_{rs}X.
+ \label{eq:source-restriction-square}
+\end{equation}
+Let each event $e$ of an authenticated semantic log carry a declared region
+$U_e$, with $U_e\subseteq U_f$ on every authenticated direct-parent edge.
+Generated reflexive precedence then defines restrictions from the algebra
+at $f$ to that at $e$, with identity and contravariant composition.  If a
+certified event map preserves those direct edges in target generated
+precedence and satisfies $U'_{F(e)}=(U_e)_s$, the same square holds for these
+event restrictions.
+\end{proposition}
+
+\begin{proof}
+For the algebra square, substitute
+\eqref{eq:source-restriction-repair-compatibility}, apply repair naturality,
+and substitute the target compatibility.  Inclusion extends from direct
+edges to generated precedence by transitivity; the restriction identity and
+tower law give identity and composition.  The event map preserves generated
+precedence by induction on an authenticated path, so the target restriction
+is typed.  Its region compatibility identifies its algebra square with
+\eqref{eq:source-restriction-square}.
+\end{proof}
+
+An inhabited example decorates the committed four-event Boolean diamond
+and three-event chain by a two-dimensional diagonal algebra.  The injection
+event has the scalar algebra, and every response and answer has the full
+diagonal algebra.  Restriction to the root sends
+$\operatorname{diag}(x_0,x_1)$ to $x_0I$; in particular,
+$\operatorname{diag}(1,0)$ is changed.  The authenticated coarsening maps
+the diamond labels $(0,1,2,3)$ to $(0,1,1,2)$ and merges two distinct
+responses.  Its region decorations agree, and the restriction square is
+inhabited.  The reversed assignment $(2,1,1,0)$ violates authenticated
+precedence.  The finite identity, composition, compatibility, and coarsening
+statements are proved in \texttt{QFT/LimitRestriction.lean}.
+
+The algebra regulator in this example is constant.  Region decoration and
+edge preservation are explicit data; neither physical regions nor a
+source-selected refinement family are inferred.  These are restrictions of
+commutative finite algebras, without an assertion of homomorphic scalar
+restriction for matrix factors.  No normed limit restriction, physical
+locality, spacetime identification, or physical time-slice property follows.

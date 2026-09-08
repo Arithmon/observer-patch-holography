@@ -1402,6 +1402,15 @@ def test_new_bridges_preserve_precise_conditional_scopes(completion_whitney_rows
     observer = rows["whitney_charged_instrument"]["independent_verifier_result"]
     assert observer["events"] == 1782 and observer["decoded_samples"] == 81
     assert observer["observer_software_history"] is True and observer["physical_observer_placement"] is False
+    assert observer["rigorous_trajectory_enclosure"] is False
+    checkpoint = rows["whitney_charged_instrument"]["decoded_checkpoint_control"]
+    assert checkpoint["independent_verifier_result"]["checkpoint_qv_error_certified"] is True
+    assert checkpoint["independent_verifier_result"]["decoded_checkpoints"] == observer["decoded_samples"]
+    assert checkpoint["independent_verifier_result"]["events"] == observer["events"]
+    assert checkpoint["independent_verifier_result"]["simple_checkpoint_error_upper"] == "10001/100000000000000"
+    assert checkpoint["independent_verifier_result"]["continuous_observer_error_certified"] is False
+    assert checkpoint["observed_postdiction"] is False
+    assert "floating solver is not recomputed" in checkpoint["event_replay_scope"]
     clock = rows["whitney_ephemeris_clock"]["independent_verifier_result"]
     assert clock["source_configurations"] == 81 and clock["calibrated_physical_clock"] is False
     assert "duration" not in clock and "comparison_error" not in clock
@@ -1422,6 +1431,8 @@ def test_new_bridge_projection_has_no_float_diagnostic_leak(completion_whitney_r
         summary.update(numeric_diagnostics={"changed": .123456789}, duration=1.2345, comparison_error=.01)
         return packet, summary
     monkeypatch.setattr(ledger, "_verify_whitney_completion_parent", replay)
+    monkeypatch.setattr(ledger, "_whitney_checkpoint_control", lambda: deepcopy(
+        completion_whitney_rows["whitney_charged_instrument"]["decoded_checkpoint_control"]))
     actual = {row["id"]: row for row in ledger._whitney_completion_rows()}
     assert actual == completion_whitney_rows
     assert calls == ["real_continuum", "charged_instrument", "ephemeris_clock", "quantum_history"]
@@ -1448,6 +1459,7 @@ def test_new_bridge_projection_has_no_float_diagnostic_leak(completion_whitney_r
     ("charged_instrument", "physical_clock_calibrated", True),
     ("charged_instrument", "physical_observer_placement", True),
     ("charged_instrument", "quantum_state_history", True),
+    ("charged_instrument", "rigorous_trajectory_enclosure", True),
     ("ephemeris_clock", "accepted", 1),
     ("ephemeris_clock", "source_configurations", 81.0),
     ("ephemeris_clock", "calibrated_physical_clock", True),
@@ -1469,6 +1481,8 @@ def test_new_bridge_provider_promotions_and_types_fail(completion_whitney_rows, 
             summary[key] = value
         return packet, summary
     monkeypatch.setattr(ledger, "_verify_whitney_completion_parent", replay)
+    monkeypatch.setattr(ledger, "_whitney_checkpoint_control", lambda: deepcopy(
+        completion_whitney_rows["whitney_charged_instrument"]["decoded_checkpoint_control"]))
     with pytest.raises(SystemExit, match="Whitney completion"):
         ledger._whitney_completion_rows()
 
@@ -1494,6 +1508,8 @@ def test_new_bridge_source_bytes_are_replayed_fresh(monkeypatch, stem):
 def test_new_bridge_missing_theorem_label_fails(completion_whitney_rows, monkeypatch, stem):
     monkeypatch.setattr(ledger, "_verify_whitney_completion_parent",
                         lambda name: completion_parent_fixture(completion_whitney_rows, name))
+    monkeypatch.setattr(ledger, "_whitney_checkpoint_control", lambda: deepcopy(
+        completion_whitney_rows["whitney_charged_instrument"]["decoded_checkpoint_control"]))
     proof = completion_whitney_rows["whitney_"+stem]["analytic_paper_theorem"]
     original = Path.read_text
     def removed(path, *args, **kwargs):
@@ -1504,6 +1520,89 @@ def test_new_bridge_missing_theorem_label_fails(completion_whitney_rows, monkeyp
     monkeypatch.setattr(Path, "read_text", removed)
     with pytest.raises(SystemExit, match="analytic theorem missing"):
         ledger._whitney_completion_rows()
+
+
+def checkpoint_parent_fixture(rows):
+    path = ledger.CODE / "electromagnetism/runtime/whitney_charged_checkpoint_receipt.json"
+    raw = path.read_bytes()
+    summary = deepcopy(rows["whitney_charged_instrument"]["decoded_checkpoint_control"]["independent_verifier_result"])
+    return raw, json.loads(raw), summary
+
+
+def test_checkpoint_projection_is_exact_and_preserves_parent_specs(completion_whitney_rows, monkeypatch):
+    raw, packet, summary = checkpoint_parent_fixture(completion_whitney_rows)
+    summary["numeric_diagnostics"] = {"forbidden_in_projection": 0.1}
+    monkeypatch.setattr(ledger, "_verify_whitney_checkpoint_parent", lambda path: (raw, packet, summary))
+    control = ledger._whitney_checkpoint_control()
+    assert control == completion_whitney_rows["whitney_charged_instrument"]["decoded_checkpoint_control"]
+    assert control["receipt_pin"] == {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+    assert len(completion_whitney_rows) == 4
+    assert "numeric_diagnostics" not in control["independent_verifier_result"]
+    assert all(type(x) is not float for x in control["independent_verifier_result"].values())
+
+
+@pytest.mark.parametrize("key,value", [
+    ("events", 1782.0), ("decoded_checkpoints", 80), ("original_qv_dimension", 9),
+    ("checkpoint_qv_error_certified", False), ("parent_enclosure_freshly_verified", False),
+    ("observer_events_exactly_replayed", 1), ("continuous_observer_error_certified", True),
+    ("nonlinear_field_error_certified", True), ("configuration_clock_error_certified", True),
+    ("physical_clock_calibrated", True), ("external_signature_attestation", True),
+    ("quantum_history", True), ("exact_model_step", "1/80"),
+    ("historical_qv_error_upper", "1/100000000000"),
+    ("decoded_checkpoint_error_upper", "1/10000000000"),
+    ("maximum_decoded_reference_difference", 0.0),
+    ("simple_checkpoint_error_upper", "100010/1000000000000000"),
+])
+def test_checkpoint_projection_rejects_error_flag_or_bound_promotions(completion_whitney_rows, monkeypatch, key, value):
+    raw, packet, summary = checkpoint_parent_fixture(completion_whitney_rows)
+    summary[key] = value
+    if key in packet["bounds"]:
+        packet["bounds"][key] = value
+    monkeypatch.setattr(ledger, "_verify_whitney_checkpoint_parent", lambda path: (raw, packet, summary))
+    with pytest.raises(SystemExit, match="Whitney checkpoint"):
+        ledger._whitney_checkpoint_control()
+
+
+@pytest.mark.parametrize("mutation", ["coherent_frame_substitution", "understated_error", "continuous_flag"])
+def test_checkpoint_ledger_replays_actual_forged_receipt(tmp_path, mutation):
+    source = ledger.CODE / "electromagnetism/runtime/whitney_charged_checkpoint_receipt.json"
+    packet = json.loads(source.read_text(encoding="utf-8"))
+    if mutation == "coherent_frame_substitution":
+        historical = json.loads((ledger.CODE / "electromagnetism/runtime/whitney_charged_dynamics_receipt.json").read_bytes())
+        row = packet["checkpoints"][79]
+        row["decoded_qv"] = deepcopy(packet["checkpoints"][78]["decoded_qv"])
+        old = historical["samples"][79]
+        differences = [abs(ledger.Fraction(x) - ledger.Fraction(y)) for x, y in
+                       zip(row["decoded_qv"], old["q_reduced"] + old["v_reduced"], strict=True)]
+        row["absolute_reference_differences"] = list(map(str, differences))
+        row["checkpoint_error_upper"] = str(ledger.Fraction(1, 10**10) + max(differences))
+        maximum = max(ledger.Fraction(x) for r in packet["checkpoints"] for x in r["absolute_reference_differences"])
+        packet["bounds"]["maximum_decoded_reference_difference"] = str(maximum)
+        packet["bounds"]["decoded_checkpoint_error_upper"] = str(ledger.Fraction(1, 10**10) + maximum)
+    elif mutation == "understated_error":
+        packet["bounds"]["decoded_checkpoint_error_upper"] = "1/10000000000"
+    else:
+        packet["contract"]["continuous_observer_error_certified"] = True
+    path = tmp_path / "checkpoint.json"
+    path.write_text(json.dumps(packet), encoding="utf-8")
+    with pytest.raises(SystemExit, match="Whitney checkpoint independent replay failed"):
+        ledger._whitney_checkpoint_control(path)
+
+
+def test_checkpoint_ledger_executes_fresh_source_bytes(monkeypatch):
+    original = Path.read_bytes
+    verifier_path = ledger.CODE / "electromagnetism/verify_whitney_charged_checkpoint.py"
+    seen = []
+    def altered(path):
+        data = original(path)
+        if path == verifier_path:
+            seen.append(path)
+            return data + b"\n# altered checkpoint provider\n"
+        return data
+    monkeypatch.setattr(Path, "read_bytes", altered)
+    with pytest.raises(SystemExit, match="Whitney checkpoint independent replay failed"):
+        ledger._whitney_checkpoint_control()
+    assert len(seen) >= 2
 
 
 def test_count_clock_is_structural_and_independently_replayed(result):

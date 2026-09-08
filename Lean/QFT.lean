@@ -37,6 +37,8 @@ import QFT.HistoryActionBinding
 import QFT.TwoFactorHistoryBinding
 import QFT.InhabitedTowerRow
 import QFT.LocallyCovariantLimit
+import QFT.LimitRestriction
+import QFT.EffectiveQuantumComparison
 import QFT.StructuralInheritance
 import QFT.SectorInheritance
 import QFT.InheritanceMatrix

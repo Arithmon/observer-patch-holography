@@ -2601,12 +2601,48 @@
           "code/electromagnetism/runtime/whitney_charged_instrument_receipt.json",
           "code/electromagnetism/whitney_charged_instrument.py",
           "code/electromagnetism/verify_whitney_charged_instrument.py",
-          "code/electromagnetism/test_whitney_charged_instrument.py"
+          "code/electromagnetism/test_whitney_charged_instrument.py",
+          "code/electromagnetism/runtime/whitney_charged_checkpoint_receipt.json",
+          "code/electromagnetism/whitney_charged_checkpoint.py",
+          "code/electromagnetism/verify_whitney_charged_checkpoint.py",
+          "code/electromagnetism/test_whitney_charged_checkpoint.py"
         ],
         "certificate_scope": "SELF_READING_COUPLED_CLASSICAL_EXECUTION__COMPUTATIONAL_PATCHES__MODEL_TIME_ONLY",
         "continuum_convergence_established": false,
         "continuum_convergence_scope": "not established by this row",
-        "hypothesis_boundary": "Supplied symmetry-coordinate patch placement, classical writable registers and records, numerical solver, cone, scalar action, initial data and action step. Hash-pinned replay proves internal software provenance without external attestation. The five patches are computational coordinates, not physical observer locations. Repair counts are operational events; their assignment to model time is supplied. Numerical residuals are not rigorous trajectory enclosures, and no quantum history, continuum trajectory limit or laboratory clock calibration is attached.",
+        "decoded_checkpoint_control": {
+          "event_replay_scope": "Exact writer/value, probe, retained response, feedback and decode replay. The frozen numerical-advance outputs are compared directly with certified historical samples; their floating solver is not recomputed by this consumer.",
+          "independent_verifier_result": {
+            "accepted": true,
+            "checkpoint_qv_error_certified": true,
+            "configuration_clock_error_certified": false,
+            "continuous_observer_error_certified": false,
+            "decoded_checkpoint_error_upper": "2199228333677/21990232555520000000000",
+            "decoded_checkpoints": 81,
+            "events": 1782,
+            "exact_model_step": "1/40",
+            "external_signature_attestation": false,
+            "historical_qv_error_upper": "1/10000000000",
+            "maximum_decoded_reference_difference": "21/2251799813685248",
+            "model_time_horizon": "2",
+            "nonlinear_field_error_certified": false,
+            "observer_events_exactly_replayed": true,
+            "original_qv_dimension": 10,
+            "parent_enclosure_freshly_verified": true,
+            "physical_clock_calibrated": false,
+            "quantum_history": false,
+            "scope": "CERTIFIED_DECODED_CHARGED_CHECKPOINTS__SUPPLIED_ACTION_TIME",
+            "simple_checkpoint_error_upper": "10001/100000000000000"
+          },
+          "observed_postdiction": false,
+          "receipt": "code/electromagnetism/runtime/whitney_charged_checkpoint_receipt.json",
+          "receipt_pin": {
+            "bytes": 73173,
+            "sha256": "6405cb4620d3881e0c8de836ecd2ca6561cad5452b8920c78e99c219f74727b6"
+          },
+          "scope_boundary": "The exact rational triangle inequality bounds ten original reduced q/v coordinates at the 81 decoded j/40 checkpoints only. Intermediate probe registers, continuous observer evolution, nonlinear fields, configuration-clock quadrature and physical calibration are not enclosed."
+        },
+        "hypothesis_boundary": "Supplied symmetry-coordinate patch placement, classical writable registers and records, numerical solver, cone, scalar action, initial data and action step. Hash-pinned replay proves internal software provenance without external attestation. The five patches are computational coordinates, not physical observer locations. Repair counts are operational events; their assignment to model time is supplied. The original numerical residuals are not rigorous trajectory enclosures. The separate checkpoint certificate transfers the historical sample bound by an exact rational triangle inequality; it does not enclose intermediate probe registers, continuous observer evolution, nonlinear field or configuration-clock readouts. No quantum history, continuum trajectory limit or laboratory clock calibration is attached.",
         "id": "whitney_charged_instrument",
         "independent_verifier_result": {
           "accepted": true,
@@ -2630,13 +2666,13 @@
         },
         "lean_declarations": {},
         "lean_receipts": [],
-        "match": "exact software readback/restoration and independently replayed numerical coupled fields; no observed postdiction",
+        "match": "exact software readback/restoration, replayed numerical fields and separately certified decoded checkpoint errors; no observed postdiction",
         "observed_counterpart": "Mathematical field, software-instrument and quantum structures; no observed data",
         "observed_postdiction": false,
         "paper_ref": "observers synthesis, whitney charged instrument",
         "physical_comparison_status": "NOT_EVALUABLE",
         "source_selected_physical_continuum": false,
-        "statement": "Five computational observer-like patches execute 1782 events with local coordinate/velocity states, ring ports, destructive averaging probes, retained records and feedback. All 405 probe cycles restore their rational registers exactly. Eighty numerical action advances consume previously decoded states; 81 decoded frames reconstruct the same charged action's full fields, with all 68 configuration equations and 13 Gauss equations independently checked. Historical trajectory samples are comparison-only."
+        "statement": "Five computational observer-like patches execute 1782 events with local coordinate/velocity states, ring ports, destructive averaging probes, retained records and feedback. All 405 probe cycles restore their rational registers exactly. Eighty numerical action advances consume previously decoded states; 81 decoded frames reconstruct the same charged action's full fields, with all 68 configuration equations and 13 Gauss equations independently checked. A separate exact consumer freshly verifies the charged IVP enclosure and record replay: all ten decoded q/v coordinates at nominal j/40 checkpoints lie within 10001/10^14 of the exact trajectory. Historical samples remain comparison-only inputs, not instrument evolution inputs."
       },
       {
         "analytic_paper_theorem": {

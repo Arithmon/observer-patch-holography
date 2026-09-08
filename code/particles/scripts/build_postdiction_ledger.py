@@ -5243,6 +5243,84 @@ def _verify_whitney_completion_parent(stem: str) -> tuple[dict[str, Any], dict[s
     return receipt, verifier.verify(receipt)
 
 
+def _verify_whitney_checkpoint_parent(receipt_path: Path | None = None) -> tuple[bytes, dict[str, Any], dict[str, Any]]:
+    """Replay the separate checkpoint certificate from fresh verifier bytes."""
+    directory = CODE / "electromagnetism"
+    path = directory / "verify_whitney_charged_checkpoint.py"
+    spec = importlib.util.spec_from_file_location("whitney_checkpoint_ledger_verifier", path)
+    if spec is None or spec.loader is None:
+        raise SystemExit("missing independent Whitney checkpoint verifier")
+    verifier = importlib.util.module_from_spec(spec)
+    exec(compile(path.read_bytes(), str(path), "exec"), verifier.__dict__)
+    receipt_path = receipt_path or directory / "runtime/whitney_charged_checkpoint_receipt.json"
+    raw = receipt_path.read_bytes()
+    try:
+        receipt = verifier.load(receipt_path)
+        summary = verifier.verify(receipt)
+    except ValueError as exc:
+        raise SystemExit(f"Whitney checkpoint independent replay failed: {exc}") from exc
+    if receipt_path.read_bytes() != raw:
+        raise SystemExit("Whitney checkpoint receipt changed during replay")
+    return raw, receipt, summary
+
+
+def _whitney_checkpoint_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    """Keep exact checkpoint errors separate from the original instrument scope."""
+    raw, receipt, verified = _verify_whitney_checkpoint_parent(receipt_path)
+    required = {
+        "accepted": True,
+        "scope": "CERTIFIED_DECODED_CHARGED_CHECKPOINTS__SUPPLIED_ACTION_TIME",
+        "events": 1782, "decoded_checkpoints": 81, "original_qv_dimension": 10,
+        "exact_model_step": "1/40", "model_time_horizon": "2",
+        "checkpoint_qv_error_certified": True, "parent_enclosure_freshly_verified": True,
+        "observer_events_exactly_replayed": True,
+        "continuous_observer_error_certified": False, "nonlinear_field_error_certified": False,
+        "configuration_clock_error_certified": False, "physical_clock_calibrated": False,
+        "external_signature_attestation": False, "quantum_history": False,
+    }
+    projection = {}
+    for key, expected in required.items():
+        actual = verified.get(key)
+        if json.dumps(actual, sort_keys=True, allow_nan=False) != json.dumps(expected, sort_keys=True, allow_nan=False):
+            raise SystemExit("Whitney checkpoint category/count mismatch: " + key)
+        projection[key] = actual
+    for key in ("historical_qv_error_upper", "maximum_decoded_reference_difference",
+                "decoded_checkpoint_error_upper", "simple_checkpoint_error_upper"):
+        value = verified.get(key)
+        try:
+            valid = (type(value) is str and str(Fraction(value)) == value
+                     and Fraction(value) >= 0 and receipt.get("bounds", {}).get(key) == value)
+        except (ValueError, ZeroDivisionError):
+            valid = False
+        if not valid:
+            raise SystemExit("Whitney checkpoint exact bound attachment mismatch: " + key)
+        projection[key] = value
+    historical = Fraction(projection["historical_qv_error_upper"])
+    difference = Fraction(projection["maximum_decoded_reference_difference"])
+    transferred = Fraction(projection["decoded_checkpoint_error_upper"])
+    simple = Fraction(projection["simple_checkpoint_error_upper"])
+    if historical != Fraction(1, 10**10) or transferred != historical + difference or not (
+            transferred <= simple == Fraction(10001, 10**14)):
+        raise SystemExit("Whitney checkpoint triangle bound mismatch")
+    return {
+        "receipt": "code/electromagnetism/runtime/whitney_charged_checkpoint_receipt.json",
+        "receipt_pin": {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()},
+        "independent_verifier_result": projection,
+        "observed_postdiction": False,
+        "event_replay_scope": (
+            "Exact writer/value, probe, retained response, feedback and decode replay. "
+            "The frozen numerical-advance outputs are compared directly with certified "
+            "historical samples; their floating solver is not recomputed by this consumer."
+        ),
+        "scope_boundary": (
+            "The exact rational triangle inequality bounds ten original reduced q/v "
+            "coordinates at the 81 decoded j/40 checkpoints only. Intermediate probe "
+            "registers, continuous observer evolution, nonlinear fields, configuration-clock "
+            "quadrature and physical calibration are not enclosed."
+        ),
+    }
+
+
 def _whitney_completion_rows() -> list[dict[str, Any]]:
     """Project exact scopes and counts; never project recomputed float errors."""
     scopes = {
@@ -5282,9 +5360,9 @@ def _whitney_completion_rows() -> list[dict[str, Any]]:
          "analytic conditional real-sector continuum trajectory bound; independent finite geometry/Ritz and wave checks; no observed postdiction",
          "Supplied cone and continuum time, scalar species/action, m^2>0, g>=0, real neutral sector, natural Neumann boundary conditions, and an existing C^2_t H^2_x continuum reference. The theorem requires Ritz-compatible initialization. The stored pulse trajectories instead use nodal initialization and verify numerical implementation, not the continuum error bound. No full charged-complex trajectory convergence, numerical interval enclosure, source-selected geometry/matter/clock or empirical comparison is established."),
         ("charged_instrument", "WHITNEY_CHARGED_INSTRUMENT.tex", "prop:whitney-charged-record-restoration", [],
-         "Five computational observer-like patches execute 1782 events with local coordinate/velocity states, ring ports, destructive averaging probes, retained records and feedback. All 405 probe cycles restore their rational registers exactly. Eighty numerical action advances consume previously decoded states; 81 decoded frames reconstruct the same charged action's full fields, with all 68 configuration equations and 13 Gauss equations independently checked. Historical trajectory samples are comparison-only.",
-         "exact software readback/restoration and independently replayed numerical coupled fields; no observed postdiction",
-         "Supplied symmetry-coordinate patch placement, classical writable registers and records, numerical solver, cone, scalar action, initial data and action step. Hash-pinned replay proves internal software provenance without external attestation. The five patches are computational coordinates, not physical observer locations. Repair counts are operational events; their assignment to model time is supplied. Numerical residuals are not rigorous trajectory enclosures, and no quantum history, continuum trajectory limit or laboratory clock calibration is attached."),
+         "Five computational observer-like patches execute 1782 events with local coordinate/velocity states, ring ports, destructive averaging probes, retained records and feedback. All 405 probe cycles restore their rational registers exactly. Eighty numerical action advances consume previously decoded states; 81 decoded frames reconstruct the same charged action's full fields, with all 68 configuration equations and 13 Gauss equations independently checked. A separate exact consumer freshly verifies the charged IVP enclosure and record replay: all ten decoded q/v coordinates at nominal j/40 checkpoints lie within 10001/10^14 of the exact trajectory. Historical samples remain comparison-only inputs, not instrument evolution inputs.",
+         "exact software readback/restoration, replayed numerical fields and separately certified decoded checkpoint errors; no observed postdiction",
+         "Supplied symmetry-coordinate patch placement, classical writable registers and records, numerical solver, cone, scalar action, initial data and action step. Hash-pinned replay proves internal software provenance without external attestation. The five patches are computational coordinates, not physical observer locations. Repair counts are operational events; their assignment to model time is supplied. The original numerical residuals are not rigorous trajectory enclosures. The separate checkpoint certificate transfers the historical sample bound by an exact rational triangle inequality; it does not enclose intermediate probe registers, continuous observer evolution, nonlinear field or configuration-clock readouts. No quantum history, continuum trajectory limit or laboratory clock calibration is attached."),
         ("ephemeris_clock", "WHITNEY_EPHEMERIS_CLOCK.tex", "prop:whitney-ephemeris-clock", ["eq:whitney-ephemeris-clock"],
          "The complete coupled kinetic metric, potential and supplied energy define the Jacobi-Maupertuis duration d_tau=sqrt(G[dq,dq]/(2(E-V))). On a regular nonturning stationary path of the fixed-energy Jacobi action, this timing recovers the natural action evolution and is invariant under positive reparameterization. A consumer integrates polygonal paths through 81 independently decoded configurations without using recorded velocities, timestamps or repair counts in its clock integral. A fixed smooth nonturning curve has an analytic O(delta^2) polygon-duration estimate.",
          "standard Jacobi timing attached to the same action and software records; independently replayed numerical readout; no observed postdiction",
@@ -5346,6 +5424,11 @@ def _whitney_completion_rows() -> list[dict[str, Any]]:
                     f"runtime/whitney_{stem}_receipt.json", f"whitney_{stem}.py",
                     f"verify_whitney_{stem}.py", f"test_whitney_{stem}.py")],
             "hypothesis_boundary": boundary, "paper_ref": "observers synthesis, whitney "+stem.replace("_", " ")}
+        if stem == "charged_instrument":
+            row["decoded_checkpoint_control"] = _whitney_checkpoint_control()
+            row["artifact_refs"].extend("code/electromagnetism/" + name for name in (
+                "runtime/whitney_charged_checkpoint_receipt.json", "whitney_charged_checkpoint.py",
+                "verify_whitney_charged_checkpoint.py", "test_whitney_charged_checkpoint.py"))
         rows.append(row)
     return rows
 

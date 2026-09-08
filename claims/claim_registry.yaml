@@ -9555,28 +9555,35 @@
     },
     {
       "claim_id": "OPH-WHITNEY-CHARGED-INSTRUMENT",
-      "statement": "Five computational observer-like patches hold exact rational encodings of the five symmetric coordinates and velocities of the supplied coupled action. Their ring ports perform destructive pair averaging, retained response recording and exact feedback restoration. Each numerical advance consumes the previous decoded state, and an independent verifier replays 1782 events, 405 feedback cycles and 81 decoded frames, then independently checks the numerical advances, all 68 Euler equations, 13 Gauss constraints and full field readouts. Historical trajectory samples are comparison-only and supply no event custody. The patches have computational placement, not physical observer placement; their cycle counter is distinct from the supplied action parameter. Hash-pinned internal provenance is not external identity attestation, rigorous ODE error control, quantum measurement or an empirical result.",
+      "statement": "Five computational observer-like patches hold exact rational encodings of the five symmetric coordinates and velocities of the supplied coupled action. Their ring ports perform destructive pair averaging, retained response recording and exact feedback restoration. Each numerical advance consumes the previous decoded state, and an independent verifier replays 1782 events, 405 feedback cycles and 81 decoded frames, then independently checks the numerical advances, all 68 Euler equations, 13 Gauss constraints and full field readouts. Historical trajectory samples are comparison-only and supply no event custody. The patches have computational placement, not physical observer placement; their cycle counter is distinct from the supplied action parameter. A separate exact checkpoint certificate freshly verifies both the charged interval enclosure and the event-derived decoded states. At all 81 exact nominal times j/40, the ten original position/velocity coordinates differ from the exact charged IVP by at most 1e-10 + 21/2^51 < 1.0001e-10. Intermediate probe registers, continuous observer evolution, nonlinear field and clock readout errors are not covered. Hash-pinned internal provenance is not external identity attestation, quantum measurement or an empirical result.",
       "owner_paper": "paper/observers_are_all_you_need.tex",
       "tier": "authenticated_internal_software_observer_execution_of_the_same_charged_action",
       "assumptions": [
         "declared_euclidean_cone_geometry_and_Whitney_metric",
         "exact_classical_record_feedback_access",
-        "exact_icosahedral_fixed_space_and_bounded_charged_execution"
+        "exact_icosahedral_fixed_space_and_bounded_charged_execution",
+        "exact_charged_canonical_initial_data_and_outward_interval_arithmetic"
       ],
       "imported_results": [
         "exact_rational_vector_averaging_inverse",
-        "finite_dimensional_ODE_numerical_integration_and_refinement_controls"
+        "finite_dimensional_ODE_numerical_integration_and_refinement_controls",
+        "coordinatewise_triangle_inequality_with_exact_rational_bounds"
       ],
-      "oph_specific_delta": "Connects exact self-reading patch records and feedback to the actual charged state used by every subsequent numerical advance and field reconstruction. Provenance, numerical dynamics and physical identification remain separately typed.",
+      "oph_specific_delta": "Connects exact self-reading patch records and feedback to the actual charged state used by every subsequent numerical advance and field reconstruction. Provenance, numerical dynamics and physical identification remain separately typed. Fresh exact replay joins all decoded q/v checkpoints to the independently enclosed same-action IVP without using copied visualization frames as evidence.",
       "novelty_type": "authenticated_internal_software_observer_execution_of_the_same_charged_action",
       "evidence": [
         "paper/tex_fragments/WHITNEY_CHARGED_INSTRUMENT.tex",
         "code/electromagnetism/whitney_charged_instrument.py",
         "code/electromagnetism/verify_whitney_charged_instrument.py",
         "code/electromagnetism/test_whitney_charged_instrument.py",
-        "code/electromagnetism/runtime/whitney_charged_instrument_receipt.json"
+        "code/electromagnetism/runtime/whitney_charged_instrument_receipt.json",
+        "paper/tex_fragments/WHITNEY_CHARGED_CHECKPOINT.tex",
+        "code/electromagnetism/whitney_charged_checkpoint.py",
+        "code/electromagnetism/verify_whitney_charged_checkpoint.py",
+        "code/electromagnetism/test_whitney_charged_checkpoint.py",
+        "code/electromagnetism/runtime/whitney_charged_checkpoint_receipt.json"
       ],
-      "falsifier": "An event reads a nonexistent or wrong writer/value, an unused input is promoted to causal consumption, feedback fails to restore, an advance uses an unrecorded future state, or independent full-action reconstruction disagrees.",
+      "falsifier": "An event reads a nonexistent or wrong writer/value, an unused input is promoted to causal consumption, feedback fails to restore, an advance uses an unrecorded future state, or independent full-action reconstruction disagrees. A coherently rehashed substituted frame, wrong exact time, understated component bound or false continuous/physical error promotion must be rejected by the checkpoint verifier.",
       "scope_if_false": "The stated mathematical or executable bridge fails at the affected layer. No observational rung, physical premise or prospective comparison is promoted.",
       "status": "authenticated_internal_software_observer_execution_of_the_same_charged_action__physical_identification_excluded",
       "claim_class": "conditional_implication",
@@ -9802,6 +9809,82 @@
         "open": [],
         "boundary": [],
         "rationale": "The theorem and certificate fix a supplied mathematical action, geometry, exact initial data, symmetry sector and action-time convention. Source-selected physical field, clock and preparation premises are excluded conclusions and are neither consumed nor discharged."
+      }
+    },
+    {
+      "claim_id": "OPH-QFT-RESTRICTION-NATURALITY",
+      "statement": "For a finite regional net with refinement-natural repair, equality of restriction with repair on its local domain implies contravariant restriction/refinement naturality. Regions monotone on authenticated direct-parent edges induce restrictions on generated reflexive precedence with identity and composition. An authenticated edge-preserving event map with matching region decorations inherits the square. The committed support-graded diagonal net inhabits these hypotheses on the Boolean diamond and three-event chain; the noninjective map (0,1,2,3) to (0,1,1,2) merges incomparable responses, and root restriction changes diag(1,0) to the identity. The algebra regulator is constant and the regions are declared; no nonconstant physical refinement, normed limit restriction, matrix-factor scalar homomorphism, continuum QFT or physical time-slice property is inferred.",
+      "owner_paper": "paper/reality_as_consensus_protocol.tex",
+      "tier": "inhabited_conditional_finite_restriction_refinement_naturality",
+      "assumptions": [
+        "proof_carrying_finite_causal_net_data",
+        "restriction_repair_compatibility",
+        "authenticated_monotone_region_decoration"
+      ],
+      "imported_results": [
+        "restriction_identity_and_composition",
+        "refinement_natural_regional_repair",
+        "generated_relation_path_induction"
+      ],
+      "oph_specific_delta": "Composes a nontrivial finite algebra restriction with actual authenticated diamond-to-chain source coarsening; compatibility is an explicit hypothesis and is proved on the inhabited support-graded example.",
+      "novelty_type": "authenticated_finite_restriction_refinement_composition",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_RESTRICTION_NATURALITY.tex",
+        "Lean/QFT/LimitRestriction.lean",
+        "Lean/QFT/LocallyCovariantLimit.lean",
+        "Lean/ObserverPatchHolography/Provenance/SemanticEventProvenance.lean"
+      ],
+      "falsifier": "Restriction fails the naturality square despite repair compatibility and repair naturality; an authenticated edge loses region monotonicity; the instantiated diamond-to-chain square is ill-typed; or the claimed nontrivial restriction fixes the displayed projector.",
+      "scope_if_false": "Only the finite restriction composition or its explicit witness falls; no physical-region, continuum or time-slice conclusion is substituted.",
+      "status": "conditional_finite_naturality_proved_and_inhabited__physical_and_limit_restrictions_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This finite algebraic implication uses declared region decorations, supplied finite-net laws and authenticated event precedence. It neither consumes nor discharges physical region, state, clock or continuum-identification premises."
+      }
+    },
+    {
+      "claim_id": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+      "statement": "For self-adjoint H_e>=0 and H_h, hbar>0, a linear isometry J and fixed energy projection P=1_[0,E](H_e), assume J Ran(P) lies in D(H_h) and the full target-space residual (H_h J-J H_e)P has norm at most epsilon_H. Unit-interval effects with compressed detector discrepancy at most epsilon_D, initial trace distance at most epsilon_0 and effective-state spectral tail at most eta<1 give probability error at most min(1,epsilon_0+2 sqrt(eta)+|t| epsilon_H/hbar+epsilon_D). The proof retains off-image leakage and energy-cut coherences. A two-level sigma_x evolution has zero compressed generator residual but unit probability error at pi hbar/2. Lean proves the derivative-input Hilbert norm and bounded-effect estimates, vector-tail decomposition and exact two-level trajectory; the unbounded spectral-domain and mixed trace-class proof is analytic. No numerical accuracy for a Whitney/effective pair or quantum continuum limit is asserted.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "conditional_energy_window_quantum_probability_error_theorem",
+      "assumptions": [
+        "self_adjoint_energy_window_full_residual",
+        "isometric_preparation_detector_and_tail_comparison"
+      ],
+      "imported_results": [
+        "spectral_theorem_for_self_adjoint_operators",
+        "strong_unitary_evolution_on_operator_domain",
+        "purification_and_trace_distance_contractivity",
+        "bounded_effect_trace_inequality"
+      ],
+      "oph_specific_delta": "Provides an explicit detector-level acceptance theorem for a finite-energy effective quantum endpoint, with a separately proved full-residual requirement and exact leakage control. Applying it to the charged model requires a certified common pair of Hamiltonians, state map and detector family.",
+      "novelty_type": "conditional_effective_quantum_error_comparison_with_leakage_control",
+      "evidence": [
+        "paper/tex_fragments/EFFECTIVE_QUANTUM_COMPARISON.tex",
+        "Lean/QFT/EffectiveQuantumComparison.lean"
+      ],
+      "falsifier": "A state and effect satisfying every stated domain, full-residual, detector and tail hypothesis violate the probability bound; the graph-norm Duhamel argument fails; or the exact two-level trajectory does not exhibit the claimed compressed-residual leakage.",
+      "scope_if_false": "The comparison theorem or its control falls. Self-adjointness of a separately constructed Hamiltonian and classical continuum bounds retain their independent scopes.",
+      "status": "conditional_probability_error_bound_proved__model_pair_accuracy_not_supplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730,
+        743,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This is a general comparison implication for supplied mathematical Hilbert models, not an assertion of physical preparation, detectors, clock, source-selected action or their registered realizations."
       }
     }
   ]

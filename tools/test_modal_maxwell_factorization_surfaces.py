@@ -76,6 +76,11 @@ OBSERVATION_EVIDENCE = [
     "code/electromagnetism/verify_whitney_charged_enclosure.py",
     "code/electromagnetism/test_whitney_charged_enclosure.py",
     "code/electromagnetism/runtime/whitney_charged_enclosure_receipt.json",
+    "paper/tex_fragments/WHITNEY_CHARGED_CHECKPOINT.tex",
+    "code/electromagnetism/whitney_charged_checkpoint.py",
+    "code/electromagnetism/verify_whitney_charged_checkpoint.py",
+    "code/electromagnetism/test_whitney_charged_checkpoint.py",
+    "code/electromagnetism/runtime/whitney_charged_checkpoint_receipt.json",
 ]
 
 POSTDICTION_ARTIFACTS = [
@@ -167,6 +172,8 @@ def test_observation_row_advances_only_the_modal_partial_rung() -> None:
     assert "does not close issue" not in notes
     assert "not authenticated observer activity or quantum-state evolution" in notes
     assert "does not prove nonlinear trajectory convergence or select physical spacetime" in notes
+    assert "all 81 decoded original position/velocity checkpoints" in notes
+    assert "not intermediate probes, continuous observer evolution" in notes
     for required_boundary in (
         "nonnegative under h^2 Lambda <= 4",
         "sharp constant Lambda = 3 + sqrt(5)",
