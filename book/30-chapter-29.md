@@ -54,7 +54,7 @@ Add the three eigenvalues. The three copies of a give three a. The cosine terms 
 
 Add their squares. Each square is a squared, plus twice a times twice b times a cosine, plus four b squared times the square of a cosine. The middle terms cancel by the first line. The last terms come to four b squared times three halves, which is six b squared. Total three a squared plus six b squared.
 
-What a corner supplies is an amplitude, and chapter nineteen's rule for turning an amplitude into a measurable quantity is to square it. Each eigenvalue is therefore the square root of its corner's mass, up to one overall scale that fixes the units and cancels out of any ratio. The square root of a mass is a positive number, so the only responses describing anything that exists are the ones whose three scale factors all come out positive.
+The proposed mass readout squares the three eigenvalues, with an overall scale that fixes the units and cancels out of any ratio. Restricting to the positive chamber makes those eigenvalues the positive square roots used in Koide's relation. This defines a mathematical mass model; identifying it with the observed leptons requires a physical attachment.
 
 Koide's ratio, written Q, is the sum of the eigenvalues' squares divided by the square of their sum. The two lines above have evaluated both of those.
 
@@ -104,6 +104,6 @@ The list has an end, which is what makes an empty search a result: four hundred 
 
 Koide's own model reached past the leptons to the quarks. The quark side did not hold. Two structures built out of entirely different material, a set of subparticles and a twenty-sided solid, keep the charged leptons and stop at the quarks.
 
-The wiring fixes the electric charges to every decimal anyone has measured. It fixes the number of colors at three and the number of families at three. It fixes the balance at the corners of one oriented face to within 72 electron-volts, and prints the value at which the balance dies. It does not hand over the angle by which the weak interaction turns a down quark into a strange quark: 20.9052 against 13.0029 proves that the angle is no axis angle of this solid. Had 13.0029 turned up anywhere on that list, the charges and the family count would have been worth less, because a solid that yields whatever angle is asked of it has yielded nothing.
+On the selected matter representation, the wiring fixes charge ratios and color multiplicity. For the lepton model, equal weights of the two response sectors are an additional balance condition. Combined with the measured electron and muon masses, that condition gives the 72-electron-volt tau interval and a precise comparison that can fail. It does not hand over the angle by which the weak interaction turns a down quark into a strange quark: 20.9052 against 13.0029 proves that the angle is no axis angle of this solid. Had 13.0029 turned up anywhere on that list, the charges and the family count would have been worth less, because a solid that yields whatever angle is asked of it has yielded nothing.
 
 The entries end up on the same line. The Standard Model action combines symmetry constraints, supplied field content and measured parameters. Reading it as a reconstruction means identifying which inputs a proposed deeper theory explains and which require additional premises.

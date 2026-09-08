@@ -102,7 +102,7 @@ Why does the proton refuse to decay the grand-unified way? Because the carrier t
 
 Why is the fine-structure constant near one part in 137? A declared screen map has one fixed point, with diagnostic coupling 137.035660 against the measured 137.035999. Connecting its two readings to one physical carrier and independently determining the transport are necessary for a physical comparison.
 
-Why do the charged-lepton masses satisfy Koide's relation? Because three masses built on the twenty faces sit on a circulant whose positivity confines them to a chamber where the Koide combination takes the value two thirds, which puts the tau inside a window seventy-two electron-volts wide, at 1776.969027 million electron-volts against a measured 1776.93.
+What does the circulant model say about Koide's relation? In its positive chamber, equal weights of the two response sectors give two thirds. With measured electron and muon masses as inputs, this balance condition gives a tau window seventy-two electron-volts wide, centered at 1776.969027 million electron-volts against a measured 1776.93. Positivity alone does not select the balance.
 
 Why does light have two polarizations? Because the central band carries four components, removing the redundancy takes two of them away, and what is left is transverse and two wide.
 
