@@ -1,0 +1,96 @@
+{
+ "schema": "oph.curated_evidence_package.v1",
+ "archive_id": "",
+ "source": {
+  "repository": "https://github.com/muellerberndt/oph-physics-sim",
+  "commit": "uncommitted-working-tree",
+  "working_tree_base_commit": "0cdc4e5ad693422f3f710e79f4513b25c136fc67",
+  "simulator_worktree_clean": false,
+  "producer_files": {
+   "oph_exact/source_net.py": "33a07d51814e29c5d6a0f206543543fc15819422166d00f24809e76042308e14",
+   "oph_exact/verify_source_net_independent.py": "60b9f6ce31662e3491e7e656a902547ef71f2857477101c241c2136bb5675284",
+   "oph_exact/carrier_source_net.py": "9ad6bb389dc2f53e9442370a4d61603576fae9d0ff5810683740c08672f42bd2",
+   "oph_exact/verify_carrier_source_net_independent.py": "b217b8a27eee823045d13937f897c8d5836cbc784911d62e7df2dc55b6fd0030",
+   "oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
+   "tests/test_exact_source_net.py": "69a288437a786e94c3315cd1e31dbb6b8f42bb3be508f5ab322ad2668d8298ff",
+   "tests/test_exact_carrier_source_net.py": "f8ac02ddac472808b18e68737c82befada958b770f5201c165f197817061960f"
+  },
+  "research_repository": "https://github.com/FloatingPragma/observer-patch-holography",
+  "research_commit": "2d942c1e4a3c50d85bfd366f18f0d2f993587c13"
+ },
+ "curated_archive": {
+  "file_count": 5,
+  "total_bytes": 417493,
+  "inventory_sha256": "c200449fd2b387686f2f3256213ef605e50d149b42f1065bbd3ea86a3c6c0dc5",
+  "is_complete_copy_of_original_receipts": true,
+  "selection": "the source-net causal-limit receipt (q = 5 to 55), the carrier realization receipt (q = 5 to 34), the carrier event logs at q = 5 and 8, and the standard-library generator"
+ },
+ "result": {
+  "dimension_3d_family": {
+   "13": 4.15,
+   "21": 3.61,
+   "34": 4.1,
+   "55": 4.09
+  },
+  "ordering_fraction_3d_family": {
+   "13": 0.088,
+   "21": 0.138,
+   "34": 0.092,
+   "55": 0.093
+  },
+  "flat_value": "1/10",
+  "moving_tip_q55": {
+   "ordering_fraction": 0.106,
+   "dimension": 3.93
+  },
+  "controls_q55": {
+   "2d": 3.02,
+   "1d": 2.01
+  },
+  "readback_metric_scale": "1",
+  "provenance_order_equals_layered_order": [
+   5,
+   8,
+   13,
+   21,
+   34
+  ],
+  "theory_replay_agreement_levels": [
+   5,
+   8,
+   13
+  ]
+ },
+ "known_boundaries": [
+  "population, read law, round duration and one event per carrier and round are supplied",
+  "selection by native repairs, physical clock and continuum limit are work in progress",
+  "finite runs at q <= 55 do not demonstrate the asymptotic limit"
+ ],
+ "inventory": [
+  {
+   "path": "build_causal_poset.py",
+   "bytes": 46841,
+   "sha256": "d82750cf95e368db9fee7fafd7905c4d235e62173701184a4a56bc1f33495aeb"
+  },
+  {
+   "path": "carrier_source_net_logs/q5_event_log.json.gz",
+   "bytes": 10915,
+   "sha256": "afc5ad6461788ba27b477104ca95c4d9b927dd4e7c25efc2d0699787971dbd59"
+  },
+  {
+   "path": "carrier_source_net_logs/q8_event_log.json.gz",
+   "bytes": 92768,
+   "sha256": "253ab71d0583dd91324a169cb01617e42c76f88c487bf3f4179f04cd5a8ba17b"
+  },
+  {
+   "path": "carrier_source_net_receipt.json",
+   "bytes": 50549,
+   "sha256": "9c041314985c41bc04c80dc29cd9dd1023020c52e9c07780ee871fdb59ee788c"
+  },
+  {
+   "path": "source_net_causal_limit_receipt.json",
+   "bytes": 216420,
+   "sha256": "f4ba67339fe0cde062d7e9b80a70082be3d842c04992ec8f0e5c8d7523adb77b"
+  }
+ ]
+}

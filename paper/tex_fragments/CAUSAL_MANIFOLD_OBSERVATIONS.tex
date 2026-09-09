@@ -1,0 +1,84 @@
+\subsection{Observations of the causal manifold}
+\label{sec:causal-manifold-observations}
+
+An observer inside the source-record family of
+Section~\ref{sec:source-net-causal-limit} has access to the event order and
+to event cardinalities. This section records what such an observer reads
+from those two inputs at finite regulator, what the carrier stack produces
+of the family itself, and which of the finite statements are theorems.
+
+\paragraph{The finite poset.}
+For a Fibonacci level $q$ the events are the pairs $(j,s)$ of a round $j\le
+K_q=\lceil\sqrt q\,\rceil$ and a site $s\in S_q$, and $(j,s)\preceq(j',t)$
+exactly when $j\le j'$ and the graph distance on the neighbour graph
+satisfies $d(s,t)\le j'-j$. This relation is a partial order, it equals the
+reflexive transitive closure of the one-round reads, every round is an
+antichain, the width equals $|S_q|=q^3$, and every event at round $j$ has
+height $j$
+(\path{Lean/Geometry/SourceNetLayeredOrder.lean}, theorems
+\texttt{layerPrec\_isPartialOrder}, \texttt{layerPrec\_iff\_reflTransGen},
+\texttt{walk\_iff\_walkDist\_le}, \texttt{width\_eq\_card\_sites},
+\texttt{height\_eq\_layer}; the concrete read law of the family is the
+instance \texttt{precedes\_iff\_layerPrec}). The flat reference constants of
+the ordering fraction are exact: the oriented-pair integral of
+Proposition~\ref{cor:source-record-ordering-fraction} equals $T^8/1920$, so
+the fraction equals $1/10$, and the Myrheim--Meyer values in dimensions
+$2$, $3$ and $4$ are $1/2$, $8/35$ and $1/10$
+(\path{Lean/Geometry/OrderingFractionFourDimensional.lean}). The finite
+clock enclosure of Proposition~\ref{prop:source-count-clock-error} is
+formalized in \path{Lean/Time/SourceCountClockEnclosure.lean}.
+
+\paragraph{What the observer reads.}
+On the interior vertical diamond of $K_q$ rounds the inverted Myrheim--Meyer
+dimension reads $2.63$, $2.93$, $4.15$, $3.61$, $4.10$ and $4.09$ at
+$q=5,8,13,21,34,55$, with ordering fractions $0.306$, $0.241$, $0.088$,
+$0.138$, $0.092$ and $0.093$ against the flat value $1/10$; levels with even
+$K_q$ approach the value from below and levels with odd $K_q$ from above.
+The moving-tip diamonds of Proposition~\ref{cor:source-net-general-diamond}
+read $0.250$, $0.135$, $0.121$, $0.115$ and $0.106$ at $q=8,13,21,34,55$,
+dimension $2.89$ to $3.93$. The same read law on the two- and
+one-dimensional golden populations reads dimensions $3.02$ and $2.01$ at
+$q=55$ against the constants $8/35$ and $1/2$, so the readout responds to the
+dimension of the population. The normalized count of the vertical diamond
+against $\pi c^3T^4/24$ reads $0.193$ against $0.198$ at $q=13$, $0.141$
+against $0.147$ at $q=34$ and $0.172$ against $0.177$ at $q=55$. The count
+clock $(|I|/|J|)^{1/4}$ of two nested vertical diamonds reads $1.705$,
+$2.088$ and $1.907$ at $q=13,34,55$ against the model-time ratio $2$. Pair
+counts are exact through $q=34$ and stratified at $q=55$; the structural
+fields at $q=5,8,13$ agree byte for byte with the replay of
+Section~\ref{sec:source-net-causal-limit}. The bounds of
+Proposition~\ref{prop:source-net-alexandrov-volume} exceed the diamond
+volume at these levels, and the finite values above are readings of the
+supplied law, not a demonstration of its limit.
+
+\paragraph{What the carrier stack produces.}
+The family is produced by the carriers themselves. One exact twelve-port
+carrier per site holds the record $z(b)$ as its port loads on the six
+antipodal axes and reads its position through the rank-three response
+$x=2P_{\mathrm{slow}}N$ of the rank-three source metric. The readback metric
+equals the source-axis contraction $s(b)$ with scale exactly one, an identity
+in $\mathbb Q(\sqrt5)$ checked on every pair through $q=21$ and on $10^6$
+seeded pairs at $q=34$. Each carrier decides its neighbours from its own
+readback; the resulting relation equals the family's neighbour graph edge
+for edge at $q=5,8,13,21,34$. The carriers then read one another for $K_q$
+rounds, every read an authenticated read-after-write event, and the
+precedence generated from those events with no declared parent lists equals
+the layered order on the centre diamond at every level, with strict pair
+counts $968$, $4{,}244$, $102{,}990$, $2{,}904{,}889$ and $47{,}881{,}819$. A
+unit intervention at the centre in round zero changes exactly the future
+cone in every round. The operation costs are recorded: reads per round
+$2E+n$ for $E$ edges and $n$ carriers, at $q=34$ a total of $157{,}922{,}880$
+reads and $275{,}128$ writes.
+
+\paragraph{Inference and boundary.}
+Order and count determine conformal geometry and scale under the continuum
+causality hypotheses \cite{hawkingkingmccarthy1976,malament1977}; that is
+the inference the observer makes from the readings above, and the finite
+readings are consistent with flat $1+3$ spacetime at every level examined.
+The population, the read law, the round duration and one counted event per
+carrier and round are supplied. Their selection by accepted native repairs,
+a physical clock, and the continuum limit are work in progress. Isotropy of
+link directions, interval abundance profiles and curvature estimators on the
+family are work in progress. The receipts, the carrier event logs and a
+standard-library generator that rebuilds the poset from the definitions are
+published as the causal-poset evidence package \cite{ophfpe}.

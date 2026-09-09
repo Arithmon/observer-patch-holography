@@ -439,6 +439,23 @@ Mapping between Lean 4 theorems in this project and statements in
   additivity, the y-magnitude readout, and the public phase-sensitive
   instrument/readback attachment with preregistered validation remain open
   under #730. See `B13_EFFECT_CLOSURE_BOUNDARY.md`.
+- Source-net causal poset (`Geometry/SourceNetCausalCone.lean`,
+  `Geometry/SourceNetLayeredOrder.lean`,
+  `Geometry/OrderingFractionFourDimensional.lean`,
+  `Time/SourceCountClockEnclosure.lean`): kernel-clean. A spatial covering
+  constructs every `k`-step read path inside radius `k(a - 2h)` and the
+  triangle inequality bounds every permitted path by `ka`; the layered read
+  order `(j, x) <= (j', y)` iff `j <= j'` and a walk of length `j' - j` is a
+  partial order equal to the reflexive transitive closure of the one-layer
+  reads, is characterized by graph distance, has width equal to the site
+  count and height equal to the layer, and the family's concrete `Precedes`
+  is an instance; the flat oriented-pair integral equals `T^8/1920`, the
+  ordering fraction `1/10`, and the Myrheim--Meyer values `1/2`, `8/35`,
+  `1/10` in dimensions two, three and four; the finite count-clock enclosure
+  and its relative-error form hold. The population, read law and layer
+  duration are inputs; no physical clock, native-repair selection, count
+  limit or manifold reconstruction follows. See
+  `paper/tex_fragments/CAUSAL_MANIFOLD_OBSERVATIONS.tex`.
 - C1 canonical Lorentz module (`Geometry/CanonicalLorentzModule.lean`,
   `Geometry/CelestialNullCone.lean`, `Geometry/ObserverFrameHyperboloid.lean`,
   `Geometry/ObserverRestSpace.lean`, `Geometry/EinsteinTensorBridge.lean`):
