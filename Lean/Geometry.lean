@@ -1,4 +1,6 @@
 import Geometry.SourceNetCausalCone
+import Geometry.SourceNetLayeredOrder
+import Geometry.OrderingFractionFourDimensional
 import Geometry.CanonicalLorentzModule
 import Geometry.CelestialNullCone
 import Geometry.ObserverFrameHyperboloid
@@ -125,4 +127,13 @@ declared Lüders instrument with its typed pinching transport to the committed
 diagonal partition, a declared step-to-clock dictionary, and the first-law
 join of the run-state diagonal; the missing joins are named exactly and the
 common-world row stays owed.
+`Geometry.SourceNetLayeredOrder` proves that the layered read order of an
+arbitrary reflexive read law is a partial order equal to the reflexive
+transitive closure of the one-layer reads, with width the number of sites and
+height the layer index, and identifies the concrete `Precedes` of
+`Geometry.SourceNetCausalCone` with it.  `Geometry.OrderingFractionFourDimensional`
+records the flat-spacetime reference constants of the ordering-fraction
+proposition: the double integral `T⁸ / 1920`, the identity `V² / 20`, the
+fraction `1 / 10`, and the Myrheim-Meyer values at `d = 2, 3, 4`; the count
+convergence itself is analytic and lives in the paper.
 -/

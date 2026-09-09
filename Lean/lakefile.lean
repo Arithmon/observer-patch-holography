@@ -38,7 +38,8 @@ lean_lib «EventAlgebra» where
 lean_lib «OPHTime» where
   srcDir := "."
   roots := #[`Time.TimeOrderLedger, `Time.ObserverHistory,
-    `Time.ClockReadout, `Time.SourceCountClock, `Time.WorldlineRealization,
+    `Time.ClockReadout, `Time.SourceCountClock, `Time.SourceCountClockEnclosure,
+    `Time.WorldlineRealization,
     `Time.ProperTimeCalibration, `Time.ClockComparison]
 
 @[default_target]
