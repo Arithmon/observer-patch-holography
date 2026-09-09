@@ -10,8 +10,8 @@
   "papers": {
     "deriving_standard_model_gauge_structure_from_observer_overlap_consistency": {
       "pdf_path": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf",
-      "sha256": "8b4a61d1cbb10bcf3c75bd1a6ed5f640629a3187caf8661fa62be9cf98115a1a",
-      "size_bytes": 624863
+      "sha256": "34d42fed61e4608e948ca809aec46e4445cc8958daea8f28301d907370293251",
+      "size_bytes": 625505
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
@@ -20,13 +20,13 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "dbf5b0ad029f94ec18bfabbba0656f8f3ea91bb08f885865d0878b9e7ef70e9f",
-      "size_bytes": 464009
+      "sha256": "e372abf26b497122f640eabea818c277f58d1d60bcab786c4fb8ac683f4d0fbe",
+      "size_bytes": 464814
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "cea1ab466158cac2bc4ca465b9ec082bb022407cf8055b570ac2e77fb0a49450",
-      "size_bytes": 890923
+      "sha256": "603cf7d425b3530c0efbf0d984a36219ae3a4f080cb0f6789ad9787075a1e51a",
+      "size_bytes": 891247
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
@@ -40,13 +40,13 @@
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "1c179084c52a594dca80d5bc93b1e7ce5c493817753071efb41185f4f2f5dd80",
-      "size_bytes": 701505
+      "sha256": "a6ee0ca0b0d962e18e4e0837762063b3b778efea959d466f1cbd837f7c2f9f9f",
+      "size_bytes": 710018
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
-      "sha256": "c9a4e2494f14c95b56092f4f87b785f8842df8be310380f6d3b2a94f33172a57",
-      "size_bytes": 435105
+      "sha256": "afd17f8a754ec5fbeea879d49c2f83e183148fcd3752dd6ff442c3d31727c096",
+      "size_bytes": 435314
     }
   },
   "release_id": "r2039",
