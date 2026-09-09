@@ -225,14 +225,14 @@ def test_flagship_simulation_language_matches_actual_custody() -> None:
     flagship = _text(
         "flagship/from_observer_consensus_to_standard_physics.tex"
     )
-    assert "$81{,}920$ finite patch" in flagship
-    assert "$2{,}048$ observer neighborhoods" in flagship
-    assert "same authority-bound terminal hash" in flagship
+    assert "$81{,}920$ exact twelve-port carriers" in flagship
+    assert "one quotient hash equal to the component multiset" in flagship
     assert "imports no simulator code" in flagship
-    assert "$96$ carrier-port coordinates" in flagship
-    assert "ce17921eb7504106fef1ba445e1349b5367aa676" in flagship
-    assert "evidence/icosa_82k_protected_consensus_20260827_r1" in flagship
-    assert "evidence/vertex12_signed_record_feedback_20260827" in flagship
+    assert "closure loop at carrier scale" in flagship
+    assert "icosa_82k_protected_consensus" not in flagship
+    assert "vertex12_signed_record_feedback" not in flagship
+    assert "evidence/exact_federation_L6_canonical_20260909" in flagship
+    assert "evidence/closure_loop" in flagship
     assert "evidence/e6_64k_dense_20260820" not in flagship
     assert "An unpublished local simulator bundle" not in flagship
 

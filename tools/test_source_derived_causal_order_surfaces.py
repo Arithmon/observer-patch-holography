@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ORDER_CLAIM = "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE"
 SPACETIME_CLAIM = "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM"
-HISTORY_CLAIM = "OPH-GR-SOURCE-CAUSAL-HISTORY-FAMILY"
+POSET_PACKAGE = "evidence/source_net_causal_poset"
 
 
 def _json(relative: str) -> dict:
@@ -75,14 +75,13 @@ def test_premise_register_retires_the_old_event_base_and_exposes_continuum() -> 
     assert "code/geometry/event_manifold_reconstruction.py" not in continuum["evidence"]
 
 
-def test_dependency_graph_uses_the_new_two_input_carrier_and_history_control() -> None:
+def test_dependency_graph_uses_the_new_two_input_carrier() -> None:
     graph = _json("claims/dependency_graph.json")
     edges = {(row["from"], row["to"]): row["role"] for row in graph["edges"]}
     assert ("OPH-CONS-D1", ORDER_CLAIM) in edges
     assert (ORDER_CLAIM, SPACETIME_CLAIM) in edges
     assert ("OPH-GR-PORT-RESPONSE-COMPLETION", SPACETIME_CLAIM) in edges
-    assert (ORDER_CLAIM, HISTORY_CLAIM) in edges
-    assert (SPACETIME_CLAIM, HISTORY_CLAIM) in edges
+    assert "OPH-GR-SOURCE-CAUSAL-HISTORY-FAMILY" not in graph["nodes"]
     assert ("OPH-GR-D3-CAP-H3", SPACETIME_CLAIM) not in edges
     assert "OPH-GR-FCC-CAUSET-COMPATIBILITY-CONTROL" not in graph["nodes"]
 
@@ -223,17 +222,12 @@ def test_registry_carries_the_finite_carrier_and_conditional_continuum() -> None
         in carrier["evidence"]
     )
 
-    history = claims[HISTORY_CLAIM]
-    assert "24 to 384 events" in history["statement"]
-    assert "Width is exactly 2" in history["statement"]
-    assert "0.992221496953873" in history["statement"]
-    assert "no admissible global scale" in history["statement"]
-    assert history["claim_class"] == "emitted_artifact"
-    assert (
-        "evidence/source_causal_history_family/source_causal_history_family_publication_projection.json"
-        in history["evidence"]
-    )
+    assert "OPH-GR-SOURCE-CAUSAL-HISTORY-FAMILY" not in claims
     assert "OPH-GR-FCC-CAUSET-COMPATIBILITY-CONTROL" not in claims
+    assert f"{POSET_PACKAGE}/source_net_causal_limit_receipt.json" in carrier["evidence"]
+    assert f"{POSET_PACKAGE}/carrier_source_net_receipt.json" in carrier["evidence"]
+    assert "Lean/Geometry/SourceNetLayeredOrder.lean" in carrier["evidence"]
+    assert "Lean/Geometry/OrderingFractionFourDimensional.lean" in carrier["evidence"]
 
     charts = claims["OPH-GEOMETRY-EVENT-POPULATION-CHART-INTERFACE"]
     assert "no population map" in charts["statement"]
@@ -269,81 +263,42 @@ def test_observation_ledger_carries_exact_lean_gains_without_physical_promotion(
     assert carrier["status"] == "partial"
 
 
-def test_history_receipt_records_positive_custody_and_negative_placement() -> None:
-    receipt = _json(
-        "evidence/source_causal_history_family/source_causal_history_family_publication_projection.json"
-    )
-    assert receipt["schema"] == (
-        "oph.source-causal-history-family-publication-projection.v1"
-    )
-    assert receipt["round_cutoffs"] == [4, 8, 16, 32, 64]
-    assert receipt["INFORMATIONAL_INDEPENDENT_CUTOFF_GENERATION_RECEIPT"] is True
-    assert receipt["all_cutoffs_independently_generated"] is True
-    assert len(receipt["cutoff_run_evidence_sha256s"]) == 5
-    scaling = receipt["scaling_diagnostic"]
-    assert scaling["event_counts"] == [24, 48, 96, 192, 384]
-    assert scaling["widths"] == [2, 2, 2, 2, 2]
-    assert scaling["ordering_fractions"][-1] == 0.992221496953873
-    assert all(
-        level["generated_from_own_cutoff_capture"] is True
-        and level["independent_cutoff_run_evidence_sha256"]
-        == evidence_sha256
-        for level, evidence_sha256 in zip(
-            receipt["levels"],
-            receipt["cutoff_run_evidence_sha256s"],
-            strict=True,
-        )
-    )
-    cone = receipt["prescribed_single_frame_source_port_placement"]
-    assert cone["event_count"] == 24
-    assert cone["comparable_pair_count"] == 244
-    assert cone["incomparable_pair_count"] == 32
-    assert cone["injective_four_coordinate_map"] is False
-    assert cone["precedence_iff_future_causal"] is False
-    assert cone["global_time_scale_interval_nonempty"] is False
-    assert cone["inter_carrier_frame_gluing_source_derived"] is False
-    assert cone["consumed_record_barycentre_rule_source_derived"] is False
-    assert cone["other_source_selected_placements_excluded"] is False
-    assert cone["physical_no_go_for_other_source_selected_placements"] is False
-    assert "not a no-go" in cone["interpretation"]
-    assert receipt["promotion_and_nonclaim_flags"]["physical_promotion_allowed"] is False
-    full_path = ROOT / (
-        "evidence/source_causal_history_family/"
-        "source_causal_history_family_receipt.json"
-    )
-    full_raw = full_path.read_bytes()
-    full_receipt = json.loads(full_raw.decode("ascii"))
-    assert receipt["full_receipt_file_sha256"] == (
-        "sha256:" + hashlib.sha256(full_raw).hexdigest()
-    )
-    assert receipt["full_receipt_report_sha256"] == full_receipt["report_sha256"]
-    verifier = _text(
-        "evidence/source_causal_history_family/verify_source_causal_history_family_projection.py"
-    )
-    assert "reconstructs every cutoff separately" in " ".join(verifier.split())
-    assert "EXPECTED_ORDERING_FRACTIONS" in verifier
+def test_causal_poset_package_carries_the_finite_readings() -> None:
+    family = _json(f"{POSET_PACKAGE}/source_net_causal_limit_receipt.json")
+    assert family["schema"] == "oph.exact.source-net-causal-limit.v1"
+    assert [level["q"] for level in family["levels"]] == [5, 8, 13, 21, 34, 55]
+    assert family["rer_cross_check"]["all_agree"] is True
+    assert family["scope"]["native_repair_selected"] is False
+    assert family["scope"]["physical_clock_or_spacetime_identified"] is False
+    three = {
+        level["q"]: [fam for fam in level["families"] if fam["dimension"] == 3][0]
+        for level in family["levels"]
+    }
+    for q, low, high in ((13, 4.0, 4.3), (34, 4.0, 4.2), (55, 4.0, 4.2)):
+        assert low < three[q]["vertical_intervals"][-1]["myrheim_meyer_dimension"] < high
+    carrier = _json(f"{POSET_PACKAGE}/carrier_source_net_receipt.json")
+    assert carrier["schema"] == "oph.exact.carrier-source-net.v1"
+    assert carrier["readback_metric"]["scale_to_paper_position_s"] == "1"
+    for level in carrier["levels"]:
+        assert level["neighbours"]["equals_source_net_digest"] is True
+        assert level["provenance"]["derived_rank_equals_round"] is True
+        assert level["intervention"]["equals_future_cone_all_rounds"] is True
+    readme = _text(f"{POSET_PACKAGE}/README.md")
+    assert "layerPrec_isPartialOrder" in readme
+    assert "orderingFraction_eq" in readme
+    assert (ROOT / POSET_PACKAGE / "verify_causal_poset_archive.py").is_file()
+    assert (ROOT / POSET_PACKAGE / "build_causal_poset.py").is_file()
 
 
-def test_scientific_registry_keeps_archived_causal_evidence_reachable() -> None:
-    # Current paper exposition may retire superseded experiments. Their
-    # scientific records and independent verifiers remain mandatory archive
-    # evidence; the preceding test preserves the exact historical verdicts.
+def test_scientific_registry_cites_the_causal_poset_package() -> None:
     claims = _claims()
-    history_evidence = claims[HISTORY_CLAIM]["evidence"]
-    assert (
-        "evidence/source_causal_history_family/"
-        "source_causal_history_family_receipt.json"
-    ) in history_evidence
-    assert (
-        "evidence/source_causal_history_family/"
-        "verify_source_causal_history_family_projection.py"
-    ) in history_evidence
+    carrier_evidence = claims[SPACETIME_CLAIM]["evidence"]
+    assert f"{POSET_PACKAGE}/verify_causal_poset_archive.py" in carrier_evidence
+    assert "paper/tex_fragments/CAUSAL_MANIFOLD_OBSERVATIONS.tex" in carrier_evidence
     local_domain_evidence = claims["OPH-GR-FINITE-LOCAL-DOMAIN"]["evidence"]
-    assert "evidence/causet_likeness/causet_likeness_receipt.json" in local_domain_evidence
-    assert (
-        "evidence/causet_likeness/verify_causet_likeness_receipt.py"
-        in local_domain_evidence
-    )
+    assert f"{POSET_PACKAGE}/source_net_causal_limit_receipt.json" in local_domain_evidence
+    assert not any("causet_likeness" in item for item in local_domain_evidence)
+    assert not (ROOT / "evidence/causet_likeness").exists()
 
 
 def test_publication_surfaces_reject_the_retired_gluing_story() -> None:

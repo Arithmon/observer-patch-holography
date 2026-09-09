@@ -1455,52 +1455,45 @@ relabeling), idempotence of the completed dynamics, and refinement
 compatibility where proved. The public object is the protected quotient
 record, not an arbitrary intermediate configuration.
 
-The current public OPH-FPE diagnostic uses the level-six cell rung of the
-geodesic icosahedral refinement tower. It contains $81{,}920$ finite patch
-rows and $122{,}880$ undirected cell adjacencies. Every row has twelve local
-port slots; three route the cell adjacencies and nine remain exposed or
-reserved. A source-bound array assigns one immutable, pairwise-distinct
-integer authority to each row before repair begins. On an inconsistent seam,
-the endpoint with larger authority is preserved and the other endpoint
-receives its unique $S_3$-transported matching label. The gauge link stays
-fixed.
+The public OPH-FPE run of this law uses the level-six cell rung of the
+geodesic icosahedral refinement tower: $81{,}920$ exact twelve-port carriers,
+$983{,}040$ port readings, the thirty seams of every carrier, and one declared
+gluing of ports to neighbouring cells, $2{,}580{,}480$ seams in all. The repair
+primitive is the seam-mean retraction, symmetric between the two sides of a
+seam and conservative, so uniform scheduling gives the repair mean
+$T=I-L/60$ of Theorem~\ref{thm:rank-three} on every carrier. Under the
+integer law, sixteen shuffled schedules from one seeded load terminate in
+$51$ to $79$ sweeps at the balanced class, every unit transfer lowers
+$V=\sum_iN_i^2$ by exactly $2(d-1)$, no accepted move raises $V$, and all
+sixteen return one quotient hash equal to the component multiset fixed by the
+initial totals. Under the real seam-mean law the isolated carriers terminate
+in $26$ or $27$ sweeps at the component means within $10^{-9}$ with one
+terminal hash; on the glued federation the component mean is the unique fixed
+point by linearity and conservation, and a declared budget of $256$ sweeps
+lowers the seam mismatch from $1.5\times10^{7}$ to $17$. The seam-sum form
+rises on $23$ to $41$ percent of the non-wait moves, so the descent functional
+of Section~\ref{sec:architecture} is $V$ and the seam sum is a termination
+diagnostic only. At levels zero to three the same receipts hold in exact
+rational arithmetic, and the per-carrier normalized response kernel read from
+the run equals $4P_{\mathrm{slow}}$ to $10^{-12}$ on isolated carriers; under
+the declared gluing the slow-band share reads $0.91$ at thirty steps and the
+glued-port pattern replaces it at large depth, a property of the gluing
+convention, which is the open cofinal-gluing item. A standalone verifier that
+imports no simulator code rebuilds the component multisets from the primitive
+arrays, replays one schedule from its seed, and recomputes every hash
+\cite{ophsim}.
 
-The archived source contains $102{,}415$ gauge-covariant mismatches. Every
-enabled move removes exactly one. Sixteen shuffled replays each accept
-$102{,}415$ moves, end at zero mismatch, and return the same
-authority-bound terminal hash. The replay checks $512$ shared-node diamonds,
-$512$ disjoint commutations, and $16$ local-frame relabelings without a
-violation. The exact edge-slot argument gives the unique terminal state for
-the fixed authority-decorated source, and the archived port map confirms that
-no routed carrier-port slot belongs to two seams. A standalone verifier that
-imports no simulator code reconstructs $S_3$ from permutations, derives the
-terminal state from the primitive arrays, and recomputes the source,
-quotient, authority, and terminal hashes. The full twelve-coordinate patch
-state is retained. All $81{,}920$ records are committed by cycle eight, and
-$2{,}048$ observer neighborhoods of size $96$ are archived \cite{ophsim}.
-
-This finite normal form is conditional on the authority array. The present
-axioms do not select that array. A fixed realization changes under patch
-relabeling. The kernel is covariant when authority travels with each patch.
-No selection compatible with the refinement maps is established. The
-theorem concerns routed edge slots and does not cover further patch-local
-constraints coupling several slots. The large-run observer rows certify
-record custody and neighborhood readout, with no later record-driven port
-writes.
-
-A separate finite diagnostic verifies literal feedback
-on eight twelve-port carriers. It commits eight full integer
-records and performs one probe, record read, and record-conditioned write on
-each of the $96$ carrier-port coordinates. After a $+1$ probe it applies
-$z_{i,p}\leftarrow z_{i,p}+(b_{i,p}-z_{i,p})$, restores the working
-coordinate exactly, and leaves the record unchanged. Omitting feedback leaves
-the displacement; increasing the read record coordinate by one changes the
-feedback increment from $-1$ to zero. A producer-free verifier recomputes all
-$96$ events, $720$ $A_5$ covariance squares, $96$ idempotence checks, and
-$528$ disjoint commutations. This bounded software self-reading component is
-a separate receipt from the $81{,}920$-row run. The signed source law has no
-axiomatic selection certificate, and neither diagnostic supplies a continuum
-or laboratory realization.
+The self-reading component is a closure loop at carrier scale. From an event
+log alone, with no access to the generator, a fixed recovery returns the
+twelve ports, the thirty seams, the inverse-port pairing at distance three,
+the automorphism group of order $120$ with its rotation subgroup of order
+$60$, the seam-mean rule, the uniform schedule, the rank-three Gram, and the
+Lie split $1+3+8$; the carrier instantiated from that specification returns
+the same invariant vector on two further iterations. The tetrahedral and
+octahedral carriers recover their own specifications, the Gram rank alone
+being three for all three carriers, and the random endpoint-overwrite law
+recovers as nonconservative with a schedule-dependent terminal state and no
+fixed point. Neither receipt supplies a continuum or laboratory realization.
 
 The architecture sits close to distributed agreement in the tradition of
 Lamport, Shostak, and Pease \cite{lamport1982}: patches play the role of
@@ -2083,7 +2076,9 @@ with equal cell volume $L^3/q^3$ and site-assignment error
 $H_q=2\sqrt3 L/q$. For any $h$-covering population in a convex window,
 segment subdivision constructs a $k$-read path whenever
 $d\leq k(a-2h)$; every such path satisfies $d\leq ka$.
-The finite path construction is formalized in Lean.
+The finite path construction, the layered order with its graph-distance
+characterization, width and height, and the flat constants $1/10$, $8/35$
+and $1/2$ are formalized in Lean.
 Here $h_q\leq H_q$ and $H_q/a_q\to0$, so the two cones coalesce.
 The product cell assignment proves count convergence; null boundaries
 have zero volume. The continuum strict-pair integral is
@@ -2095,8 +2090,18 @@ error bounds, and the full argument~\cite{ophEinstein}.
 \begin{boundary}
 This construction supplies a flat effective order and volume for an
 explicit source-record population, neighbour read law and model clock.
-Its finite implementation verifies conservative seam compositions and
-independently replays versioned reads and interventions. Counts exclude
+At finite regulator the family is produced by the carriers themselves: each
+carrier holds its record as port loads, reads its position through the
+rank-three response with the source metric recovered at scale exactly one,
+decides its neighbours from that readback, and the precedence generated from
+the carriers' authenticated reads equals the layered order at every level
+through $q=34$. On the interior diamond the inverted Myrheim--Meyer dimension
+reads $4.15$, $3.61$, $4.10$ and $4.09$ at $q=13,21,34,55$ against $3.0$ and
+$2.0$ for the two- and one-dimensional control populations, the ordering
+fraction reads $0.093$ at $q=55$ against the flat $1/10$, the moving-tip
+diamond reads $0.106$, and the count clock reads $1.91$ against the
+model-time ratio $2$; the spacetime derivation carries the full account
+\cite{ophEinstein}. Counts exclude
 auxiliary read instructions and seam operations. It does not select that law from the
 observer axioms, calibrate a physical clock, or identify its cone with a
 matter action. These are distinct requirements of a physical
@@ -4463,19 +4468,21 @@ record\\
 Repair gap and the conditional Yang--Mills identification & The Yang--Mills
 gap, witness, and repair-gap-chain modules; the collar gap certificate and the
 finite transfer receipt with its test\\
-Protected finite consensus diagnostic & The pinned OPH-FPE source, level-six
-icosahedral configuration and seeds, protected authority, primitive and
-terminal arrays, full mismatch trace and patch state, compressed observer
-rows, producer replay, standalone exact verifier, and public archive\\
-Literal record-feedback diagnostic & Eight full twelve-coordinate records,
-$96$ probe/read/write events, ablation and record-coordinate controls, $A_5$
-covariance and finite confluence rows, producer-free verifier, and a separate
-public archive\\
-Electroweak chart, source-derived causal precursor, and finite local domain &
+Exact federation under the canonical law & The level-six icosahedral
+configuration and seeds, primitive seam arrays, initial and terminal loads,
+per-schedule $V$ ledgers, quotient hashes, per-carrier response kernels,
+standalone verifier, and public archive\\
+Closure loop at carrier scale & The event logs of the canonical, integer,
+overwrite, tetrahedral and octahedral sources, the recovered specifications
+and invariant vectors, producer-free verifier, and public archive\\
+Causal poset & The source-record family receipts at $q\le55$, the carrier
+realization receipts and event logs, the standard-library generator that
+rebuilds the poset from its definitions, checker, and public archive\\
+Electroweak chart and finite local domain &
 Certified contour and second-sheet outputs with fail-closed producer checks;
-the analytic theorem of this manuscript; exact source-order, history-family,
-finite-placement, and local-domain receipts with independent verifiers in the
-simulator repository\\*
+the analytic theorem of this manuscript; the exact source-order and
+local-domain receipts with independent verifiers in the simulator
+repository\\*
 \bottomrule
 \end{longtable}
 }
@@ -4650,8 +4657,8 @@ negative controls accompany the artifacts. Machine-readable claim and
 prediction provenance is available with the artifacts \cite{ophregister}.
 
 The Lean source tree, pinned toolchain, exact verifiers, manifests, receipts,
-negative controls, tests, the curated $81{,}920$-row protected-consensus
-archive, the separate literal-feedback archive, and local-domain evidence are
+negative controls, tests, the level-six exact-federation archive, the
+closure-loop archive, the causal-poset archive, and local-domain evidence are
 identified in Table~\ref{tab:artifact-map}. The complete simulation source is
 maintained in the public simulator repository at the evidence-producing
 revisions \cite{ophsim}.
@@ -4667,8 +4674,8 @@ Four Online Resources accompany this article. Online Resource~1 contains the
 tracked Lean source tree with its pinned toolchain and dependency manifests.
 Online Resource~2 contains the exact-arithmetic certificate closure with its
 receipts, reference manifests, negative controls, and tests. Online Resource~3
-contains the hash-bound finite evidence for the protected-consensus,
-signed-record feedback, and local-domain computations reported here. Online
+contains the hash-bound finite evidence for the exact-federation,
+closure-loop, causal-poset, and local-domain computations reported here. Online
 Resource~4 contains the component preprints named above together with their
 sources. Each archive carries its own manifest, license, and reproduction
 instructions, and each is a snapshot of material that is also public in the
@@ -4744,9 +4751,9 @@ The finite witnesses, simulation configurations, receipts, scientific claim regi
 release manifests supporting this study are available in the public OPH and
 simulation repositories \cite{ophrepo,ophsim}. Individual receipts and their
 bundle documentation provide the source and output provenance for
-computational claims. The artifact map identifies the curated protected
-large-run, the separate literal-feedback result, and the local-domain evidence
-cited in the manuscript. Online Resource~3 supplies that evidence as a
+computational claims. The artifact map identifies the level-six
+exact-federation archive, the closure-loop archive, the causal-poset archive,
+and the local-domain evidence cited in the manuscript. Online Resource~3 supplies that evidence as a
 hash-bound archive.
 
 \noindent\textbf{Code availability.}
@@ -4784,12 +4791,12 @@ receipts, finite certificates, and scientific claim registries.
 \bibitem{ophsim}
 Mueller, B. (2026). OPH physics simulator and reproduction source.
 \url{https://github.com/muellerberndt/oph-physics-sim}.
-Large finite-repair diagnostic revision:
-\url{https://github.com/muellerberndt/oph-physics-sim/tree/ce17921eb7504106fef1ba445e1349b5367aa676}.
-Protected-consensus run-data archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence/icosa_82k_protected_consensus_20260827_r1}.
-Literal signed-record feedback archive:
-\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence/vertex12_signed_record_feedback_20260827}.
+Exact-federation archive:
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence/exact_federation_L6_canonical_20260909}.
+Closure-loop archive:
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence/closure_loop}.
+Causal-poset archive:
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/main/evidence/source_net_causal_poset}.
 Active refinement-readout revision:
 \url{https://github.com/muellerberndt/oph-physics-sim/tree/036b12b608a9ca4c19d69f5e951b3b83a7a51cd8}.
 Finite local-domain revision:

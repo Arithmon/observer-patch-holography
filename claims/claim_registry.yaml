@@ -877,9 +877,14 @@
         "Lean/Geometry/SourceDerivedSpacetimeCarrier.lean",
         "Lean/Geometry/EventPopulationChartInterface.lean",
         "Lean/Geometry/SourceOrderFrameCompatibilityPacket.lean",
-        "evidence/source_causal_history_family/source_causal_history_family_receipt.json",
-        "evidence/source_causal_history_family/source_causal_history_family_publication_projection.json",
-        "evidence/source_causal_history_family/verify_source_causal_history_family_projection.py",
+        "evidence/source_net_causal_poset/source_net_causal_limit_receipt.json",
+        "evidence/source_net_causal_poset/carrier_source_net_receipt.json",
+        "evidence/source_net_causal_poset/build_causal_poset.py",
+        "evidence/source_net_causal_poset/verify_causal_poset_archive.py",
+        "Lean/Geometry/SourceNetLayeredOrder.lean",
+        "Lean/Geometry/OrderingFractionFourDimensional.lean",
+        "Lean/Time/SourceCountClockEnclosure.lean",
+        "paper/tex_fragments/CAUSAL_MANIFOLD_OBSERVATIONS.tex",
         "Lean/Geometry/RefiningLatticeCausalCone.lean",
         "paper/tex_fragments/REFINING_CAUSAL_CONE.tex",
         "code/causal_refinement/refining_cone.py",
@@ -940,16 +945,13 @@
       "novelty_type": "target_clean_finite_local_domain_receipt_plus_geometry_seeded_3p1_provenance_compiler_control",
       "evidence": [
         "paper/screen_microphysics_and_observer_synchronization.tex",
-        "evidence/causet_likeness/causet_likeness_receipt.json",
-        "evidence/causet_likeness/verify_causet_likeness_receipt.py",
         "https://github.com/muellerberndt/oph-physics-sim/blob/550fe77dc67dc8bef2dd8927bcf72ec98cfa3506/oph_fpe/local_domain/stage1_event_complex.py",
         "https://github.com/muellerberndt/oph-physics-sim/blob/550fe77dc67dc8bef2dd8927bcf72ec98cfa3506/data/local_domain/stage4_receipt.json",
-        "https://github.com/muellerberndt/oph-physics-sim/blob/6080f3a4045b7cbd821476a0a8fa0a6b57eeeeab/data/causal_order/causet_likeness_receipt.json",
-        "https://github.com/muellerberndt/oph-physics-sim/blob/6080f3a4045b7cbd821476a0a8fa0a6b57eeeeab/oph_fpe/bulk/verify_causet_likeness_independent.py"
+        "evidence/source_net_causal_poset/source_net_causal_limit_receipt.json"
       ],
       "falsifier": "Canonical-content replay fails; the 24-event control's generated and declared edge sets differ under the frozen canonical projection; a raw writer label without the authenticated read, write, identity, and value witnesses creates an edge; an independent recomputation changes a stated count, inertia, ambiguity rank, deterministic operator evaluation, or frozen interval diagnostic; either coordinate route disagrees with the exact rank identity; the source DAG has a target-aware ancestor; any native interval enters the frozen exploratory four-dimensional band; the geometry-seeded compiler ceases to recover a supplied cover relation or transitive order exactly, any fail-closed mutation is accepted, or its three acceptance channels are conflated; or a seeded control, continuum, or physical conclusion is attributed to the native finite receipt.",
       "scope_if_false": "The finite local-domain artifact is withdrawn. The source-derived finite one-plus-three carrier and the separately conditional continuum, gauge, and matter theorems remain subject to their own premises.",
-      "status": "native_capture_attained_with_exploratory_causet_likeness_negative__geometry_seeded_3p1_provenance_compiler_control_attained",
+      "status": "native_capture_attained__causal_readout_carried_by_the_source_net_causal_poset_package",
       "claim_class": "emitted_artifact",
       "gates": [],
       "premise_dependencies": {
@@ -958,42 +960,6 @@
         "open": [],
         "boundary": [],
         "rationale": "This row certifies one finite captured artifact from capture-specific seam, chart, and counting data while explicitly making no continuum-manifold, Spin, QFT, or laboratory attachment."
-      }
-    },
-    {
-      "claim_id": "OPH-GR-SOURCE-CAUSAL-HISTORY-FAMILY",
-      "statement": "The authenticated 4, 8, 16, 32, and 64-round semantic histories form an exact source-derived order family from 24 to 384 events. Independent generation and replay reconstruct every cutoff's events, parent edges, generated closure, and canonical longest-parent-chain source height without importing declared ancestry; each smaller order is exactly the induced prefix of every larger order, and source sequence is compatible with source height. Width is exactly 2 at every level while ordering fraction rises from 0.8840579710144928 to 0.992221496953873, so this is exact induced-prefix custody rather than a spacetime-density refinement. On the 24-event member, all 30/30 Hasse links are authenticated direct reads and inherit carrier-local source-port labels whose hidden icosahedral reference template supplies normalized future-null representatives. The used-port ranks are 2, 1, and 2 on the three local carriers. A pooled hidden-frame rank of 3 is not invariant under independent registered A5 carrier relabelings, and naive shared-template unit-scale integration is path-dependent. The source-native result therefore supplies no single-carrier local rank-three cone, inter-carrier frame gluing, global integrability, causal-set faithful embedding, manifoldlikeness, dimension, or volume law. In a separate prescribed placement test on that 24-event control, records sit at authenticated icosahedral port anchors and readback or feedback events at arithmetic barycentres of consumed source records, with all carrier identities placed in one stipulated reference port frame. The source-height/timeScale placement has 244 comparable and 32 incomparable unordered pairs, 8 same-height coordinate collisions, and 8 different-height incomparable pairs at zero spatial separation. Its causal lower scale is 1.129775730952839 and its spacelike upper scale is 0, so no admissible global scale exists: the map is noninjective and fails the converse cone-order test. The result proves source-order custody and falsifies this prescribed single-frame source-port placement; it supplies neither source-derived inter-carrier gluing nor a no-go for other placements, and supplies no physical event identification, causal-set faithful embedding, growing-width density family, isotropic links, count-volume calibration, manifoldlikeness, topology, Lorentzian limit, or smooth curvature.",
-      "owner_paper": "paper/screen_microphysics_and_observer_synchronization.tex",
-      "tier": "exact_source_history_custody_with_authenticated_local_null_rays_and_failed_prescribed_faithful_placement",
-      "assumptions": [
-        "authenticated_source_history_family_fixture",
-        "prescribed_single_frame_source_port_placement"
-      ],
-      "imported_results": [
-        "finite_partial_order_closure_and_induced_suborder_algorithms",
-        "finite_Minkowski_cone_order_test"
-      ],
-      "oph_specific_delta": "Every cutoff in the source-selected history family is independently regenerated from authenticated read-after-write provenance, and exact induced-prefix custody and source-height compatibility are proved across cutoffs. Every Hasse link of the 24-event member has an authenticated carrier-local source-port null-ray representative, while independent carrier relabeling and path-dependence controls exclude promotion to a glued rank-three cone. A separate prescribed single-frame source-port placement is tested against an exact two-way cone criterion. The receipt separates positive custody and link-local compatibility from the negative gluing and placement tests, and blocks all of them from being promoted to a physical causal-set continuum.",
-      "novelty_type": "source_derived_order_custody_authenticated_local_null_ray_decoration_and_exact_faithful_placement_test",
-      "evidence": [
-        "paper/screen_microphysics_and_observer_synchronization.tex",
-        "evidence/source_causal_history_family/source_causal_history_family_receipt.json",
-        "evidence/source_causal_history_family/source_causal_history_family_publication_projection.json",
-        "evidence/source_causal_history_family/verify_source_causal_history_family_projection.py",
-        "https://github.com/muellerberndt/oph-physics-sim/blob/6080f3a4045b7cbd821476a0a8fa0a6b57eeeeab/data/causal_order/source_causal_history_family_receipt.json",
-        "https://github.com/muellerberndt/oph-physics-sim/blob/6080f3a4045b7cbd821476a0a8fa0a6b57eeeeab/oph_fpe/bulk/verify_source_causal_history_family_independent.py"
-      ],
-      "falsifier": "Independent replay changes an event, parent edge, generated closure, source height, prefix restriction, width, ordering fraction, Hasse-link count, authenticated local port label, normalized null-ray check, per-carrier used-port rank, independent-relabeling control, path-dependence witness, placement coordinate, collision count, causal lower scale, spacelike upper scale, or final verdict; or exact induced-prefix custody or link-local null-ray decoration is promoted to a spacetime-density refinement, glued rank-three cone, causal-set faithful embedding, dimension, volume, or manifold result; or the failed prescribed placement is generalized to a no-go theorem for all physical refinements.",
-      "scope_if_false": "Only the authenticated history-family custody or prescribed-placement result at the failing clause is withdrawn; the abstract source-derived 1+3 ambient-carrier theorem and the separately conditional physical continuum retain their scopes.",
-      "status": "exact_induced_prefix_custody__authenticated_local_port_null_rays__no_local_rank3_cone_or_frame_gluing__prescribed_single_frame_placement_not_faithful",
-      "claim_class": "emitted_artifact",
-      "gates": [],
-      "premise_dependencies": {
-        "classification": "explicit_non_consumer",
-        "consumed": [],
-        "open": [],
-        "boundary": [],
-        "rationale": "This is a source-native finite receipt and independent replay. It consumes no physical continuum premise and supplies none."
       }
     },
     {

@@ -20,7 +20,6 @@
   "OPH-GR-D4-NULLNET-STANDARDNESS",
   "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
   "OPH-GR-FINITE-LOCAL-DOMAIN",
-  "OPH-GR-SOURCE-CAUSAL-HISTORY-FAMILY",
   "OPH-GR-D4C-LOCAL-STRESS",
   "OPH-GR-D4D-ENTROPY-BRIDGE",
   "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
@@ -1871,16 +1870,6 @@
    "from": "OPH-GR-PORT-RESPONSE-COMPLETION",
    "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
    "role": "supplies the exact positive rank-three FrameQuotient and Gram form used independently in the source one-plus-three carrier R plus FrameQuotient, and the dense conservative record carrier consumed by the conditional metric coarsening and scalar-action construction"
-  },
-  {
-   "from": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE",
-   "to": "OPH-GR-SOURCE-CAUSAL-HISTORY-FAMILY",
-   "role": "supplies the authenticated read-from reconstruction, closure, abstract acyclicity witness, and canonical source-height semantics independently replayed across the finite history family"
-  },
-  {
-   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
-   "to": "OPH-GR-SOURCE-CAUSAL-HISTORY-FAMILY",
-   "role": "supplies the exact source-height/spatial placement and two-way order-cone faithfulness criterion tested by one prescribed finite single-frame source-port placement; the negative ansatz result does not weaken the abstract carrier theorem or exclude other source-selected placements"
   },
   {
    "from": "OPH-COMPUTATION-REPAIR-PROGRAM-BOUNDARY",
