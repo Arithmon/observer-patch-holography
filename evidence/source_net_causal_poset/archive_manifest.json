@@ -1,136 +1,136 @@
 {
-  "schema": "oph.curated_evidence_package.v1",
-  "archive_id": "source_net_causal_poset",
-  "source": {
-    "repository": "https://github.com/muellerberndt/oph-physics-sim",
-    "commit": "uncommitted-working-tree",
-    "working_tree_base_commit": "0cdc4e5ad693422f3f710e79f4513b25c136fc67",
-    "simulator_worktree_clean": false,
-    "producer_files": {
-      "oph_exact/source_net.py": "33a07d51814e29c5d6a0f206543543fc15819422166d00f24809e76042308e14",
-      "oph_exact/verify_source_net_independent.py": "60b9f6ce31662e3491e7e656a902547ef71f2857477101c241c2136bb5675284",
-      "tests/test_exact_source_net.py": "69a288437a786e94c3315cd1e31dbb6b8f42bb3be508f5ab322ad2668d8298ff",
-      "oph_exact/carrier_source_net.py": "9ad6bb389dc2f53e9442370a4d61603576fae9d0ff5810683740c08672f42bd2",
-      "oph_exact/verify_carrier_source_net_independent.py": "b217b8a27eee823045d13937f897c8d5836cbc784911d62e7df2dc55b6fd0030",
-      "tests/test_exact_carrier_source_net.py": "f8ac02ddac472808b18e68737c82befada958b770f5201c165f197817061960f",
-      "oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb"
-    },
-    "research_repository": "https://github.com/FloatingPragma/observer-patch-holography",
-    "research_commit": "2d942c1e4a3c50d85bfd366f18f0d2f993587c13",
-    "research_files_pinned_by_the_receipts": [
-      "code/causal_refinement/source_net_causet.py",
-      "code/causal_refinement/source_net_causet_receipt.json",
-      "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex",
-      "Lean/Geometry/SourceNetCausalCone.lean"
-    ]
+ "schema": "oph.curated_evidence_package.v1",
+ "archive_id": "source_net_causal_poset",
+ "source": {
+  "repository": "https://github.com/muellerberndt/oph-physics-sim",
+  "commit": "6870893aa0c05fb2e8e84d8492802027d2f2c3da",
+  "working_tree_base_commit": "0cdc4e5ad693422f3f710e79f4513b25c136fc67",
+  "simulator_worktree_clean": true,
+  "producer_files": {
+   "oph_exact/source_net.py": "33a07d51814e29c5d6a0f206543543fc15819422166d00f24809e76042308e14",
+   "oph_exact/verify_source_net_independent.py": "60b9f6ce31662e3491e7e656a902547ef71f2857477101c241c2136bb5675284",
+   "tests/test_exact_source_net.py": "69a288437a786e94c3315cd1e31dbb6b8f42bb3be508f5ab322ad2668d8298ff",
+   "oph_exact/carrier_source_net.py": "9ad6bb389dc2f53e9442370a4d61603576fae9d0ff5810683740c08672f42bd2",
+   "oph_exact/verify_carrier_source_net_independent.py": "b217b8a27eee823045d13937f897c8d5836cbc784911d62e7df2dc55b6fd0030",
+   "tests/test_exact_carrier_source_net.py": "f8ac02ddac472808b18e68737c82befada958b770f5201c165f197817061960f",
+   "oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb"
   },
-  "curated_archive": {
-    "file_count": 5,
-    "total_bytes": 417493,
-    "inventory_sha256": "dabfdc40fc21afb38a57163fb69ac6abed522f1b36c364cffac3f8992f182585",
-    "is_complete_copy_of_original_receipts": true,
-    "selection": "the source-net causal-limit receipt (q = 5..55, three families), the carrier source-net receipt (q = 5..34), the two stored carrier event logs (q = 5, 8) and the standalone generator"
-  },
-  "result": {
-    "levels": [
-      5,
-      8,
-      13,
-      21,
-      34,
-      55
-    ],
-    "carrier_levels": [
-      5,
-      8,
-      13,
-      21,
-      34
-    ],
-    "interior_diamond_myrheim_meyer_dimension_3d": [
-      2.634,
-      2.932,
-      4.149,
-      3.612,
-      4.099,
-      4.091
-    ],
-    "ordering_fraction_3d": [
-      0.3063,
-      0.2414,
-      0.0882,
-      0.1383,
-      0.092,
-      0.0926
-    ],
-    "moving_tip_q55": {
-      "ordering_fraction": 0.1057,
-      "standard_error": 0.0015,
-      "dimension": 3.934
-    },
-    "controls_q55_dimension": {
-      "2d": 3.017,
-      "1d": 2.005
-    },
-    "normalized_count_q55": {
-      "count": 0.172,
-      "flat_diamond": 0.1772
-    },
-    "count_clock_relative_deviation": {
-      "q34": 0.0442,
-      "q55": -0.0464
-    },
-    "carrier_realization": {
-      "readback_metric_scale_to_source_metric": 1,
-      "neighbour_digest_equal_at_every_level": true,
-      "provenance_order_equals_layered_order_at_every_level": true,
-      "intervention_support_equals_future_cone": true
-    },
-    "rer_replay_byte_equal_levels": [
-      5,
-      8,
-      13
-    ],
-    "rer_compared_fields": 28,
-    "source_net_receipt_sha256": "sha256:f4ba67339fe0cde062d7e9b80a70082be3d842c04992ec8f0e5c8d7523adb77b",
-    "carrier_receipt_sha256": "sha256:9c041314985c41bc04c80dc29cd9dd1023020c52e9c07780ee871fdb59ee788c"
-  },
-  "known_boundaries": {
-    "population_selected_by_native_repair": false,
-    "read_law_selected_by_native_repair": false,
-    "physical_clock_identified": false,
-    "spacetime_identified": false,
-    "continuum_limit_demonstrated": false,
-    "dimension_statistic_used_as_acceptance": false,
-    "poisson_sprinkling": false,
-    "dynamic_population_under_repairs": false,
-    "isotropy_and_curvature_readouts": false
-  },
-  "inventory": [
-    {
-      "path": "build_causal_poset.py",
-      "bytes": 46841,
-      "sha256": "d82750cf95e368db9fee7fafd7905c4d235e62173701184a4a56bc1f33495aeb"
-    },
-    {
-      "path": "carrier_source_net_logs/q5_event_log.json.gz",
-      "bytes": 10915,
-      "sha256": "afc5ad6461788ba27b477104ca95c4d9b927dd4e7c25efc2d0699787971dbd59"
-    },
-    {
-      "path": "carrier_source_net_logs/q8_event_log.json.gz",
-      "bytes": 92768,
-      "sha256": "253ab71d0583dd91324a169cb01617e42c76f88c487bf3f4179f04cd5a8ba17b"
-    },
-    {
-      "path": "carrier_source_net_receipt.json",
-      "bytes": 50549,
-      "sha256": "9c041314985c41bc04c80dc29cd9dd1023020c52e9c07780ee871fdb59ee788c"
-    },
-    {
-      "path": "source_net_causal_limit_receipt.json",
-      "bytes": 216420,
-      "sha256": "f4ba67339fe0cde062d7e9b80a70082be3d842c04992ec8f0e5c8d7523adb77b"
-    }
+  "research_repository": "https://github.com/FloatingPragma/observer-patch-holography",
+  "research_commit": "2d942c1e4a3c50d85bfd366f18f0d2f993587c13",
+  "research_files_pinned_by_the_receipts": [
+   "code/causal_refinement/source_net_causet.py",
+   "code/causal_refinement/source_net_causet_receipt.json",
+   "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex",
+   "Lean/Geometry/SourceNetCausalCone.lean"
   ]
+ },
+ "curated_archive": {
+  "file_count": 5,
+  "total_bytes": 417493,
+  "inventory_sha256": "5d22333f927f60a141b80768b81b923233ebcc108ddf7bfe3fec70bd8d9f3ddc",
+  "is_complete_copy_of_original_receipts": true,
+  "selection": "the source-net causal-limit receipt (q = 5..55, three families), the carrier source-net receipt (q = 5..34), the two stored carrier event logs (q = 5, 8) and the standalone generator"
+ },
+ "result": {
+  "levels": [
+   5,
+   8,
+   13,
+   21,
+   34,
+   55
+  ],
+  "carrier_levels": [
+   5,
+   8,
+   13,
+   21,
+   34
+  ],
+  "interior_diamond_myrheim_meyer_dimension_3d": [
+   2.634,
+   2.932,
+   4.149,
+   3.612,
+   4.099,
+   4.091
+  ],
+  "ordering_fraction_3d": [
+   0.3063,
+   0.2414,
+   0.0882,
+   0.1383,
+   0.092,
+   0.0926
+  ],
+  "moving_tip_q55": {
+   "ordering_fraction": 0.1057,
+   "standard_error": 0.0015,
+   "dimension": 3.934
+  },
+  "controls_q55_dimension": {
+   "2d": 3.017,
+   "1d": 2.005
+  },
+  "normalized_count_q55": {
+   "count": 0.172,
+   "flat_diamond": 0.1772
+  },
+  "count_clock_relative_deviation": {
+   "q34": 0.0442,
+   "q55": -0.0464
+  },
+  "carrier_realization": {
+   "readback_metric_scale_to_source_metric": 1,
+   "neighbour_digest_equal_at_every_level": true,
+   "provenance_order_equals_layered_order_at_every_level": true,
+   "intervention_support_equals_future_cone": true
+  },
+  "rer_replay_byte_equal_levels": [
+   5,
+   8,
+   13
+  ],
+  "rer_compared_fields": 28,
+  "source_net_receipt_sha256": "sha256:f4ba67339fe0cde062d7e9b80a70082be3d842c04992ec8f0e5c8d7523adb77b",
+  "carrier_receipt_sha256": "sha256:9c041314985c41bc04c80dc29cd9dd1023020c52e9c07780ee871fdb59ee788c"
+ },
+ "known_boundaries": {
+  "population_selected_by_native_repair": false,
+  "read_law_selected_by_native_repair": false,
+  "physical_clock_identified": false,
+  "spacetime_identified": false,
+  "continuum_limit_demonstrated": false,
+  "dimension_statistic_used_as_acceptance": false,
+  "poisson_sprinkling": false,
+  "dynamic_population_under_repairs": false,
+  "isotropy_and_curvature_readouts": false
+ },
+ "inventory": [
+  {
+   "path": "build_causal_poset.py",
+   "bytes": 46841,
+   "sha256": "d82750cf95e368db9fee7fafd7905c4d235e62173701184a4a56bc1f33495aeb"
+  },
+  {
+   "path": "carrier_source_net_logs/q5_event_log.json.gz",
+   "bytes": 10915,
+   "sha256": "afc5ad6461788ba27b477104ca95c4d9b927dd4e7c25efc2d0699787971dbd59"
+  },
+  {
+   "path": "carrier_source_net_logs/q8_event_log.json.gz",
+   "bytes": 92768,
+   "sha256": "253ab71d0583dd91324a169cb01617e42c76f88c487bf3f4179f04cd5a8ba17b"
+  },
+  {
+   "path": "carrier_source_net_receipt.json",
+   "bytes": 50549,
+   "sha256": "755c7721f719dcf6811f602afa108589dce3fb6bacc92530e6958c6b8b358f64"
+  },
+  {
+   "path": "source_net_causal_limit_receipt.json",
+   "bytes": 216420,
+   "sha256": "97c837913b75b2b019428028e114259caedd54345bd5a2efb78abd040f7e11f3"
+  }
+ ]
 }

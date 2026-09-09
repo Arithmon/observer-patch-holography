@@ -125,7 +125,9 @@ def verify_manifest() -> dict:
             "inventory digest mismatch")
     for key, value in manifest["known_boundaries"].items():
         require(value is False, f"known boundary {key} is not recorded as open")
-    require(manifest["source"]["commit"] == "uncommitted-working-tree", "source commit field changed")
+    commit = manifest["source"]["commit"]
+    require(commit == "uncommitted-working-tree" or (len(commit) == 40 and all(c in "0123456789abcdef" for c in commit)),
+            "source commit field is neither the placeholder nor a commit hash")
     return manifest
 
 
