@@ -717,8 +717,74 @@ def _common_source_scalar_control(receipt_path: Path | None = None) -> dict[str,
             "mass one, quantization and model time are declared. Full lattice leakage and "
             "sampled compact tails are bounded. The analytic limit concerns fixed-time "
             "smeared classical and coherent Weyl readouts for bounded Riemann-integrable "
-            "smearings. Field edges fit the causal radius, but their execution and count-clock "
-            "custody are not constructed. This action differs from the radial kernel."),
+            "smearings. The resolved q233 field edges fit the causal radius; that accuracy "
+            "packet does not execute their field reads or attach a count clock. A separate "
+            "q5 execution uses different preparation data. This action differs from the radial kernel."),
+    }
+
+
+def _source_scalar_execution_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_scalar_execution", "verify_source_scalar_execution.py",
+        "source_scalar_execution_receipt.json", receipt_path=receipt_path)
+    traces = packet["traces"]
+    expected = {
+        "verdict": "PASS", "mutable_sites": packet["model"]["mutable_sites"],
+        "executed_times": packet["model"]["steps"], "traces_replayed": len(traces),
+        "events_replayed": sum(len(t["events"]) for t in traces.values()),
+        "dynamic_field_reads_replayed": sum(t["dynamic_field_reads"] for t in traces.values()),
+        "full_mass_norm_error_final": packet["diagnostics"]["comparisons"][-1]["full_mass_norm_discretization_error"],
+        "same_finite_operator_all_modes": True, "old_count_clock_applied": False,
+        "quantum_covariance_or_probability_queried": False,
+    }
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("scalar execution verification projection mismatch")
+    return {
+        "receipt": "code/source_scalar_execution/source_scalar_execution_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "mathematical_replay": True, "all_field_arithmetic_exact": True,
+        "analytic_proof": "paper/tex_fragments/SOURCE_SCALAR_EXECUTION.tex",
+        "observed_postdiction": False, "spatial_continuum_error_certified": False,
+        "field_history_joined_to_causal_count_clock": False,
+        "source_action_population_or_physical_clock_selected": False,
+        "quantum_covariance_or_probability_queried": False,
+        "scope_boundary": (
+            "Protected q5 golden addresses, tensor action, Dirichlet boundary, polynomial "
+            "preparation and model step are supplied. All substeps, exact values, immutable "
+            "versions and actual writers are replayed under two schedules and two preparations. "
+            "The error compares every mode of the same finite continuous-time action at the "
+            "21 executed times. Its state-independent canonical commutator does not replace "
+            "the original vacuum covariance. The q233 continuum accuracy and earlier "
+            "point-event count-clock theorem are not transferred to this history."),
+    }
+
+
+def _cartan_scalar_execution_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "sm_abelian_reduction", "verify_abelian.py", "abelian_receipt.json",
+        receipt_path=receipt_path)
+    if (summary.get("verified") is not True or summary.get("mathematical_replay") is not True
+            or summary.get("continuous_history_error_enclosure") is not False
+            or summary.get("producer_reverse_diagnostic_independently_replayed") is not False
+            or summary.get("events") != sum(len(r["events"]) for r in packet["runs"])):
+        raise SystemExit("Cartan execution must distinguish mathematical replay from custody and diagnostics")
+    return {
+        "receipt": "code/sm_abelian_reduction/abelian_receipt.json", "receipt_pin": pin,
+        "independent_verifier_result": summary, "mathematical_replay": True,
+        "analytic_proof": "paper/tex_fragments/CARTAN_SCALAR_REDUCTION.tex",
+        "exact_symbolic_local_classical_reduction": True,
+        "ideal_split_gauss_preservation": True, "trajectory_values_numerical": True,
+        "continuous_history_error_enclosure": False, "observed_postdiction": False,
+        "source_action_population_or_physical_clock_selected": False,
+        "global_compact_subgroup_or_quantum_truncation": False,
+        "scope_boundary": (
+            "The kinetic-metric-aligned Cartan and upper-Higgs restriction is a local "
+            "classical reduction of the declared action, with a principal-log plaquette "
+            "chart in the discrete extension. Three q5 cohorts retain all local "
+            "read/write operations. Exact symbolic reduction and ideal current/Gauss "
+            "identities are separate from the 60-digit numerical replay of binary64 "
+            "trajectories. The replay supplies no continuous-time error enclosure, "
+            "q233 detector accuracy, global compact subgroup or quantum truncation."),
     }
 
 
@@ -1499,6 +1565,7 @@ def _forced_structure(
         {
             "id": "hypercharge_spectrum",
             "declared_local_action_control": _local_sm_action_control(),
+            "cartan_scalar_execution_control": _cartan_scalar_execution_control(),
             "statement": (
                 f"Inside the declared {component_count}-component "
                 "exterior-response algebra, an exhaustive scan of all "
@@ -1511,7 +1578,10 @@ def _forced_structure(
                 f"representative has multiset {{{field_summary}}}. A separate declared "
                 "flat classical action assembles gauge, Grassmann-Weyl, Higgs and symbolic "
                 "Yukawa terms with local Ward and variational-current controls. This ledger "
-                "checks that packet's custody; its separate full verifier checks the coefficients"
+                "checks that packet's custody; its separate full verifier checks the coefficients. "
+                "A kinetic-aligned local Cartan/Higgs reduction additionally supplies a q5 "
+                "charged execution with variational current and electric feedback, whose "
+                "ideal algebra and numerical operation replay are independently checked"
             ),
             "observed_counterpart": (
                 "Standard Model one-generation hypercharge assignment"
@@ -1520,7 +1590,9 @@ def _forced_structure(
             "match": "exact" if spectrum == sm_spectrum else "MISMATCH",
             "artifact_refs": [_rel("matter_receipt"), _rel("matter_menu"),
                 "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex", "Lean/Screen/LocalGaugeJetAction.lean",
-                "code/sm_local_action/local_action_receipt.json", "code/sm_local_action/verify_local_action.py"],
+                "code/sm_local_action/local_action_receipt.json", "code/sm_local_action/verify_local_action.py",
+                "paper/tex_fragments/CARTAN_SCALAR_REDUCTION.tex", "Lean/Screen/CartanScalarReduction.lean",
+                "code/sm_abelian_reduction/abelian_receipt.json", "code/sm_abelian_reduction/verify_abelian.py"],
             "subset_count": subsets_enumerated,
             "survivor_count": classification["survivor_count"],
             "survivor_dimension": matter["realized_package"]["dimension"],
@@ -2611,6 +2683,7 @@ def _forced_structure(
             "protected_population_control": _protected_population_control(),
             "source_population_quadrature": _source_population_quadrature_control(),
             "common_free_scalar_control": _common_source_scalar_control(),
+            "authenticated_scalar_execution_control": _source_scalar_execution_control(),
             "operational_cone_selection": {
                 "analytic_proof": "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
                 "hypotheses": "nonzero closed convex pointed cone; finite irreducible carrier rotations; one continuous operational boost direction; time orientation",
@@ -2649,6 +2722,9 @@ def _forced_structure(
                 "paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex",
                 "code/source_scalar_packet/source_common_scalar_receipt.json",
                 "code/source_scalar_packet/verify_source_common_scalar.py",
+                "paper/tex_fragments/SOURCE_SCALAR_EXECUTION.tex",
+                "code/source_scalar_execution/source_scalar_execution_receipt.json",
+                "code/source_scalar_execution/verify_source_scalar_execution.py",
                 "Lean/Geometry/MetricKernelEnergy.lean",
                 "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
                 "Lean/Geometry/RefiningLatticeCausalCone.lean",

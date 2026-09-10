@@ -142,7 +142,7 @@ The first term is the carriers. Chapter twenty-five split the twelve dials of th
 
 The second term is matter, carrying chapter twenty-six's fifteen states, three families over. Inside it sits a comparison between a reading here and a reading next door, taken after the reading next door has been run through the dictionary sitting on the seam between them, which is chapter twelve's connection written with derivatives instead of exchange rates. That comparison is the entire content of the phrase "the force acts on matter".
 
-The third term holds the couplings: the channels through which the vector-selecting field touches matter, taken from the same scan over subsets that produced the fifteen states, with strengths that chapter twenty-nine's balance condition fixes for the charged leptons, the third of them inside a window seventy-two electron-volts wide.
+The third term holds the allowed couplings: the channels through which the vector-selecting field touches matter. The representation scan constrains these channels. Their strengths are separate parameters of the local action; the charged-lepton comparison in chapter twenty-nine does not determine the complete physical coupling matrices.
 
 The fourth term belongs to the vector-selecting field itself, chapter twenty-seven's single spin-zero type, which carries no polarization index because a magnitude has no direction for a rotation to mix, and whose vacuum vector has a size of 246.22 billion electron-volts.
 
@@ -151,6 +151,8 @@ Alongside the four sits gravity's term, chapter twenty-four's curvature. On the 
 The prologue promised a distinction between reconstructed structure and the physical assumptions behind each symbol. Chapter fifteen supplies a continuous three-dimensional carrier and finite populations selected by its distances. Chapter twenty-five constrains the local gauge Lie algebra under complete reversible response and internal transport; chapter twenty-seven classifies field candidates under its stated interfaces. These results organize the ingredients of the line. Their common physical realization, the interaction coefficients and the assignment of laboratory units require their own justification. A four-dimensional space of possible event coordinates does not by itself provide a physical clock or make recorded dependencies into signals.
 
 The proposed face-to-family identification supplies three copies of the matter grammar. The local action and its gauge identities are checked at that declared multiplicity; they do not establish its physical realization.
+
+One charged scalar component also has a consistent classical reduction of this action, with both diagonal gauge fields aligned by their kinetic weights. A local execution on 64 prepared spatial sites records a phase disturbance, the resulting current and electric feedback. A gauge transformation of the same preparation leaves the invariant readings unchanged. This calculation uses specified field laws and model time. It supplies a finite dynamical example, without identifying its charged field with a measured particle or computing a quantum history.
 
 ## What a compression costs
 

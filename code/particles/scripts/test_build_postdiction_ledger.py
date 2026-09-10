@@ -1766,3 +1766,89 @@ def test_spatial_and_local_action_enrich_existing_structural_rows(result):
     assert spatial['protected_population_control']['mathematical_replay'] is True
     assert spatial['metric_scalar_continuum']['quantum_continuum_claim'] is False
     assert rows['hypercharge_spectrum']['declared_local_action_control']['mathematical_replay'] is False
+
+
+def test_scalar_execution_projection_uses_full_exact_replay():
+    control = ledger._source_scalar_execution_control()
+    assert control['mathematical_replay'] is True
+    assert control['all_field_arithmetic_exact'] is True
+    summary = control['independent_verifier_result']
+    assert summary['events_replayed'] == 5888
+    assert summary['dynamic_field_reads_replayed'] == 34944
+    assert summary['executed_times'] == 21
+    assert ledger.Fraction(summary['full_mass_norm_error_final'][1]) < ledger.Fraction(1, 100)
+    for key in ('observed_postdiction', 'spatial_continuum_error_certified',
+                'field_history_joined_to_causal_count_clock', 'quantum_covariance_or_probability_queried'):
+        assert control[key] is False
+
+
+def test_scalar_execution_projection_rejects_resealed_wrong_actual_writer(tmp_path):
+    packet = json.loads((ledger.CODE / 'source_scalar_execution/source_scalar_execution_receipt.json').read_bytes())
+    trace = packet['traces']['ascending_baseline']
+    # Both old values are zero, but a real different writer did not write this resource.
+    event = trace['events'][128]
+    assert event['reads'][0][2] == [0, 0]
+    event['reads'][0][2] = [0, 1]
+    previous = '0'*64
+    for event in trace['events']:
+        event['ledger_parent'] = previous
+        raw = (json.dumps({k: event[k] for k in ('id', 'reads', 'write', 'ledger_parent')},
+                          sort_keys=True, separators=(',', ':'), ensure_ascii=True)+'\n').encode('ascii')
+        previous = event['hash'] = hashlib.sha256(raw).hexdigest()
+    trace['final_hash'] = previous
+    path = tmp_path/'false-actual-writer.json'
+    path.write_bytes(json.dumps(packet).encode('ascii'))
+    with pytest.raises(SystemExit, match='read/writer/version/value'):
+        ledger._source_scalar_execution_control(path)
+
+
+def test_scalar_execution_projection_rejects_clock_promotion(tmp_path):
+    packet = json.loads((ledger.CODE / 'source_scalar_execution/source_scalar_execution_receipt.json').read_bytes())
+    packet['scope']['old_count_clock_theorem_applied'] = True
+    path = tmp_path/'false-clock.json'
+    path.write_bytes(json.dumps(packet).encode('ascii'))
+    with pytest.raises(SystemExit, match='scientific scope'):
+        ledger._source_scalar_execution_control(path)
+
+
+def test_cartan_execution_projection_full_replay_is_not_continuous_enclosure():
+    control = ledger._cartan_scalar_execution_control()
+    assert control['mathematical_replay'] is True
+    assert control['exact_symbolic_local_classical_reduction'] is True
+    assert control['trajectory_values_numerical'] is True
+    assert control['continuous_history_error_enclosure'] is False
+    assert control['global_compact_subgroup_or_quantum_truncation'] is False
+    assert control['observed_postdiction'] is False
+    summary = control['independent_verifier_result']
+    assert summary['exact_first_current'] == '2/125'
+    assert summary['exact_first_electric_kick'] == '1/25000'
+    assert summary['events'] == 5678
+    assert summary['producer_reverse_diagnostic_independently_replayed'] is False
+
+
+def test_cartan_execution_projection_rejects_wrong_current_beyond_custody(tmp_path):
+    packet = json.loads((ledger.CODE / 'sm_abelian_reduction/abelian_receipt.json').read_bytes())
+    packet['exact_first_edge_control']['current'] = '0'
+    path = tmp_path/'false-Cartan-current.json'
+    path.write_bytes(json.dumps(packet).encode('ascii'))
+    with pytest.raises(SystemExit, match='exact current witness'):
+        ledger._cartan_scalar_execution_control(path)
+
+
+def test_cartan_execution_projection_rejects_custody_in_place_of_replay(monkeypatch):
+    monkeypatch.setattr(ledger, '_structural_packet', lambda *a, **k: (
+        {}, {'accepted_custody': True, 'mathematical_replay': False}, {}))
+    with pytest.raises(SystemExit, match='distinguish mathematical replay'):
+        ledger._cartan_scalar_execution_control()
+
+
+def test_scalar_and_cartan_executions_preserve_existing_rows(result):
+    rows = {r['id']: r for r in result['sections']['forced_structure']}
+    assert len(rows) == 56
+    spatial = rows['source_derived_finite_one_three_causal_carrier']
+    action = rows['hypercharge_spectrum']
+    assert spatial['authenticated_scalar_execution_control']['mathematical_replay'] is True
+    assert spatial['common_free_scalar_control']['field_history_joined_to_causal_count_clock'] is False
+    assert action['cartan_scalar_execution_control']['mathematical_replay'] is True
+    assert action['declared_local_action_control']['mathematical_replay'] is False
+    assert action['match'] == 'exact'

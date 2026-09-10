@@ -42,6 +42,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
+        "Replay authenticated golden scalar execution and its full-mode time error",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_execution/test_source_scalar_execution.py"],
+    ),
+    (
+        "Replay the consistent Cartan-scalar action, current and Gauss controls",
+        [sys.executable, "-m", "pytest", "-q", "code/sm_abelian_reduction/test_abelian.py"],
+    ),
+    (
         "Replay the golden scalar full-leakage and compact-detector certificate",
         [sys.executable, "-m", "pytest", "-q", "code/source_scalar_packet/test_source_common_scalar.py"],
     ),

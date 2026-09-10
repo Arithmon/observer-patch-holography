@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "release_id": "r2040",
+  "release_id": "r2041",
   "source_commit_policy": "The release commit is supplied by git and the paper release manifest at release packaging time; this working registry is validated against paper/release_info.tex.",
   "claims": [
     {
@@ -1667,12 +1667,13 @@
     },
     {
       "claim_id": "OPH-SM-Q1-LOCAL-G6",
-      "statement": "On a declared finite oriented spin four-complex, a bounded-support action assembled from G6 class-function plaquettes, gauge-covariant differences, invariant Higgs terms, and invariant Yukawa contractions is local and exactly gauge invariant. The standard electroweak tree kernel follows only after a canonical continuum normalization bridge is separately supplied. On a declared flat Lorentzian Spin chart, the registered gauge representations and Higgs/Yukawa intertwiners compose a local action with F=dA+[A,A], covariant scalar and anticommuting Weyl kinetic terms, a supplied scalar potential and all 27 complex family Yukawa coefficients. Exact independent Grassmann arithmetic checks 65 coefficient-labelled sectors and 2295 nonzero monomials while retaining first and symmetric second gauge-parameter jets. Lean proves five noncommutative covariance, trace and spin-sign lemmas; the complete action and variational on-shell matter-current identity are analytic. Geometry, Spin, minimal kinetic law, connection, Higgs/Yukawa inputs, coefficients and their source realization remain declared; no source action, quantum measure or measured coupling is inferred.",
+      "statement": "On a declared finite oriented spin four-complex, a bounded-support action assembled from G6 class-function plaquettes, gauge-covariant differences, invariant Higgs terms, and invariant Yukawa contractions is local and exactly gauge invariant. The standard electroweak tree kernel follows only after a canonical continuum normalization bridge is separately supplied. On a declared flat Lorentzian Spin chart, the registered gauge representations and Higgs/Yukawa intertwiners compose a local action with F=dA+[A,A], covariant scalar and anticommuting Weyl kinetic terms, a supplied scalar potential and all 27 complex family Yukawa coefficients. Exact independent Grassmann arithmetic checks 65 coefficient-labelled sectors and 2295 nonzero monomials while retaining first and symmetric second gauge-parameter jets. Lean proves five noncommutative covariance, trace and spin-sign lemmas; the complete action and variational on-shell matter-current identity are analytic. Geometry, Spin, minimal kinetic law, connection, Higgs/Yukawa inputs, coefficients and their source realization remain declared; no source action, quantum measure or measured coupling is inferred. A local classical consistent reduction sets fermions/color and off-Cartan weak fields to zero, keeps H=(phi,0), and aligns the two Cartan connections by w=K^-1 q/(q^T K^-1 q). Every reduced solution, including Gauss, lifts to the full local classical equations with unrestricted Yukawas. The logarithmic-plaquette discretization requires its smooth identity chart and real unwrapped links; generic kinetic coefficients do not define a compact subgroup or quantum truncation. On the prepared q=5 tensor family, 64 scalar sites, 144 links and 108 plaquettes have recorded local split evolution with phase-intervention and gauge-copy controls. Exact first-edge current 2/125 and electric half-kick 1/25000 coexist with ideal Gauss-preservation identities and independent high-precision replay of binary64 events. No continuous-history numerical enclosure, source-selected current, physical clock or full Standard Model quantum evolution is inferred.",
       "owner_paper": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
       "tier": "conditional_classical_qft_implication",
       "assumptions": [
         "declared_finite_local_G6_action_packet",
-        "declared_flat_spin_local_gauge_jet_action"
+        "declared_flat_spin_local_gauge_jet_action",
+        "declared_local_cartan_scalar_execution"
       ],
       "imported_results": [
         "finite_lattice_gauge_covariance",
@@ -1689,7 +1690,15 @@
         "code/sm_local_action/build_local_action.py",
         "code/sm_local_action/verify_local_action.py",
         "code/sm_local_action/test_local_action.py",
-        "code/sm_local_action/local_action_receipt.json"
+        "code/sm_local_action/local_action_receipt.json",
+        "paper/tex_fragments/CARTAN_SCALAR_REDUCTION.tex",
+        "Lean/Screen/CartanScalarReduction.lean",
+        "code/sm_abelian_reduction/reduction.py",
+        "code/sm_abelian_reduction/pilot.py",
+        "code/sm_abelian_reduction/build_abelian.py",
+        "code/sm_abelian_reduction/verify_abelian.py",
+        "code/sm_abelian_reduction/test_abelian.py",
+        "code/sm_abelian_reduction/abelian_receipt.json"
       ],
       "falsifier": "A term satisfying every declared covariance and invariant-contraction premise changes under a finite G6 gauge transformation, or has support outside its bounded cell neighborhood. The local covariant derivative, curvature jet, Grassmann adjoint, invariant Yukawa contraction or same-action variational current identity fails under its displayed inputs.",
       "scope_if_false": "The QFT-Q1 implication falls; the finite Q0 representation witness and other QFT criteria remain separate.",
@@ -9834,13 +9843,14 @@
     },
     {
       "claim_id": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
-      "statement": "For self-adjoint H_e>=0 and H_h, hbar>0, a linear isometry J and fixed energy projection P=1_[0,E](H_e), assume J Ran(P) lies in D(H_h) and the full target-space residual (H_h J-J H_e)P has norm at most epsilon_H. Unit-interval effects with compressed detector discrepancy at most epsilon_D, initial trace distance at most epsilon_0 and effective-state spectral tail at most eta<1 give probability error at most min(1,epsilon_0+2 sqrt(eta)+|t| epsilon_H/hbar+epsilon_D). The proof retains off-image leakage and energy-cut coherences. A two-level sigma_x evolution has zero compressed generator residual but unit probability error at pi hbar/2. Lean proves the derivative-input Hilbert norm and bounded-effect estimates, vector-tail decomposition and exact two-level trajectory; the unbounded spectral-domain and mixed trace-class proof is analytic. This general theorem alone supplies no numerical accuracy for a Whitney/effective pair. A separate declared mass-lumped tensor action on the actual sorted golden source addresses has positive massive dynamics, canonical full oscillator Fock spaces, an actual nine-mode comparison isometry, full orthogonal frequency leakage bounds and compact disjoint source/detector smearings. At q=233, outward-rational certificates give bounded-effect probability error below 0.050055 and induced detector response above 0.137754 uniformly on model time [0.95,1], including both localization errors. Fixed-band residuals vanish with the maximum source gap and extend by a smearing approximation argument. The mathematical tensor model has 232^3 oscillators, computed through one-dimensional factors, not a full observer-event simulation. Axes, Dirichlet boundary, protected addresses, action, quantization and model time are declared; authenticated field execution, count-clock identification, native source selection, charged interactions and physical comparison remain separate.",
+      "statement": "For self-adjoint H_e>=0 and H_h, hbar>0, a linear isometry J and fixed energy projection P=1_[0,E](H_e), assume J Ran(P) lies in D(H_h) and the full target-space residual (H_h J-J H_e)P has norm at most epsilon_H. Unit-interval effects with compressed detector discrepancy at most epsilon_D, initial trace distance at most epsilon_0 and effective-state spectral tail at most eta<1 give probability error at most min(1,epsilon_0+2 sqrt(eta)+|t| epsilon_H/hbar+epsilon_D). The proof retains off-image leakage and energy-cut coherences. A two-level sigma_x evolution has zero compressed generator residual but unit probability error at pi hbar/2. Lean proves the derivative-input Hilbert norm and bounded-effect estimates, vector-tail decomposition and exact two-level trajectory; the unbounded spectral-domain and mixed trace-class proof is analytic. This general theorem alone supplies no numerical accuracy for a Whitney/effective pair. A separate declared mass-lumped tensor action on the actual sorted golden source addresses has positive massive dynamics, canonical full oscillator Fock spaces, an actual nine-mode comparison isometry, full orthogonal frequency leakage bounds and compact disjoint source/detector smearings. At q=233, outward-rational certificates give bounded-effect probability error below 0.050055 and induced detector response above 0.137754 uniformly on model time [0.95,1], including both localization errors. Fixed-band residuals vanish with the maximum source gap and extend by a smearing approximation argument. The mathematical tensor model has 232^3 oscillators, computed through one-dimensional factors, not a full observer-event simulation. Axes, Dirichlet boundary, protected addresses, action, quantization and model time are declared; authenticated field execution, count-clock identification, native source selection, charged interactions and physical comparison remain separate. A separate exact q=5 execution of the same tensor action retains 64 field sites, four full preparation/intervention and schedule traces, and every one of the 34944 dynamic reads. Its discrete stationary-action recurrence has positive conserved modified energy. An independent all-mode Taylor comparison encloses the final mass-norm temporal error between 0.009539009052 and 0.009539009055 at model time 3/sqrt(5). Its canonical commutator identity is state independent; no quantum covariance or probability is computed. This coarser algebraic preparation inherits no q=233 spatial error. Actual read ancestry differs from the old count-law ancestry, so no count-clock or physical-time attachment follows.",
       "owner_paper": "paper/observers_are_all_you_need.tex",
       "tier": "conditional_energy_window_quantum_probability_error_theorem",
       "assumptions": [
         "self_adjoint_energy_window_full_residual",
         "isometric_preparation_detector_and_tail_comparison",
-        "declared_golden_tensor_scalar_action_and_compact_instruments"
+        "declared_golden_tensor_scalar_action_and_compact_instruments",
+        "declared_golden_scalar_versioned_execution"
       ],
       "imported_results": [
         "spectral_theorem_for_self_adjoint_operators",
@@ -9858,7 +9868,13 @@
         "code/source_scalar_packet/source_scalar_intervals.py",
         "code/source_scalar_packet/verify_source_common_scalar.py",
         "code/source_scalar_packet/test_source_common_scalar.py",
-        "code/source_scalar_packet/source_common_scalar_receipt.json"
+        "code/source_scalar_packet/source_common_scalar_receipt.json",
+        "paper/tex_fragments/SOURCE_SCALAR_EXECUTION.tex",
+        "code/source_scalar_execution/scalar_execution_algebra.py",
+        "code/source_scalar_execution/source_scalar_execution.py",
+        "code/source_scalar_execution/verify_source_scalar_execution.py",
+        "code/source_scalar_execution/test_source_scalar_execution.py",
+        "code/source_scalar_execution/source_scalar_execution_receipt.json"
       ],
       "falsifier": "A state and effect satisfying every stated domain, full-residual, detector and tail hypothesis violate the probability bound; the graph-norm Duhamel argument fails; or the exact two-level trajectory does not exhibit the claimed compressed-residual leakage. The tensor full-residual estimate, Gram isometry, compact-tail bound, outward arithmetic or uniform separated detector inequalities fail; a finite tensor calculation is presented as an authenticated source-selected field history.",
       "scope_if_false": "The comparison theorem or its control falls. Self-adjointness of a separately constructed Hamiltonian and classical continuum bounds retain their independent scopes.",

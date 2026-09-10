@@ -2035,6 +2035,11 @@
    "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
    "to": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
    "role": "Supplies only the golden source-address family for the distinct declared tensor scalar-action instantiation; neither the general comparison theorem nor its finite packet consumes native physical spacetime selection or authenticated field/count-clock identification."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-SM-Q1-LOCAL-G6",
+   "role": "Supplies the prepared golden source-address family for the separate Cartan-scalar execution, not a hypothesis of the generic local classical reduction. The tensor action weights and log-plaquette dynamics are declared; causal-count clock and physical-source identification are not transported."
   }
  ]
 }
