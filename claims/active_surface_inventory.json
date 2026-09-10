@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 373,
+  "surface_count": 378,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -140,6 +140,11 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/MICROPHYSICS_MEASUREMENT_SUPPLEMENT_PORT.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
@@ -225,6 +230,11 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/SOURCE_COUNT_CLOCK.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
@@ -236,6 +246,16 @@
     },
     {
       "path": "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SOURCE_RECORD_PROTECTION.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -1086,6 +1106,11 @@
     },
     {
       "path": "Lean/Screen/LocalFaceMaxwellAction.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/LocalGaugeJetAction.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
     },

@@ -1,0 +1,138 @@
+\subsection{A local gauge-covariant action on the declared matter grammar}
+\label{sec:local-sm-jet-action}
+
+Fix an oriented flat Lorentzian chart with metric
+$\eta=\operatorname{diag}(1,-1,-1,-1)$, its two-component Spin convention,
+and smooth compactly supported variations. These geometric and Spin data
+are inputs. Take the declared algebra
+$\mathfrak{su}(3)\oplus\mathfrak{su}(2)\oplus\mathfrak{u}(1)$ on its
+fundamental, dual and trivial carriers. The exterior grammar supplies
+\[
+ Q:(3,2)_{1/6},\quad u^c:(\bar3,1)_{-2/3},\quad
+ d^c:(\bar3,1)_{1/3},\quad L:(1,2)_{-1/2},\quad e^c:(1,1)_1.
+\]
+The Higgs choice $H:(1,2)_{1/2}$, family multiplicity, minimal
+first-derivative kinetic law, scalar polynomial truncation and Yukawa
+intertwiners are declared. No coupling, mass or Yukawa entry is selected.
+
+Use anti-Hermitian connections, with coupling normalization absorbed into
+their coordinates, and set
+\begin{equation}
+ D_\mu=\partial_\mu+\rho(A_\mu),\qquad
+ F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+[A_\mu,A_\nu].
+ \label{eq:local-sm-covariant-jets}
+\end{equation}
+Fermion values and first derivatives generate a complex exterior algebra.
+Conjugation is the antilinear anti-automorphism exchanging fermions with
+independent conjugate generators and reversing products. Scalar and
+connection coefficients are even. Write
+$\bar\sigma^\mu=(1,-\sigma^1,-\sigma^2,-\sigma^3)$ and $\epsilon_{01}=1$.
+With color index $i$, weak indices $a,b$, spin indices $\alpha,\beta$ and
+family indices $r,s$, define
+\begin{align}
+ T^u_{rs}&=\epsilon_{\alpha\beta}\epsilon_{ab}
+       Q^{ia\alpha}_r H^b (u^c)^{\beta}_{s,i},&
+ T^d_{rs}&=\epsilon_{\alpha\beta}
+       Q^{ia\alpha}_r\overline H_a (d^c)^{\beta}_{s,i},&
+ T^e_{rs}&=\epsilon_{\alpha\beta}
+       L^{a\alpha}_r\overline H_a(e^c)^\beta_s .
+ \label{eq:local-sm-grassmann-yukawa}
+\end{align}
+The superscript $c$ denotes charge conjugation. These are all-left-Weyl
+expressions, not four-component barred expressions with unchanged charges.
+
+\begin{theorem}[Conditional local action composition]
+\label{thm:local-sm-jet-action}
+Under the stated representation, Spin and kinetic assumptions, the density
+\begin{align}
+ \mathcal L={}&\frac12\sum_{s=3,2,1}\kappa_s
+             \operatorname{Tr}(F^s_{\mu\nu}F_s^{\mu\nu})
+       +\sum_{r,\psi}\frac{i}{2}
+          \left[\psi_r^\dagger\bar\sigma^\mu D_\mu\psi_r
+             -(D_\mu\psi_r)^\dagger\bar\sigma^\mu\psi_r\right]\notag\\
+ &+(D_\mu H)^\dagger D^\mu H-m^2H^\dagger H
+          -\lambda(H^\dagger H)^2
+       -\sum_{r,s,\chi=u,d,e}\left(Y^\chi_{rs}T^\chi_{rs}
+                    +\overline{Y^\chi_{rs}}(T^\chi_{rs})^\dagger\right)
+ \label{eq:local-sm-assembled-density}
+\end{align}
+is Grassmann even, Hermitian and invariant under arbitrary infinitesimal
+local gauge transformations. The real $m^2,\lambda$, positive $\kappa_s$
+and complex $Y^\chi_{rs}$ remain free coefficients. The construction
+composes varying-field gauge, scalar and fermion kinetic terms and all
+three Yukawa channels.
+\end{theorem}
+\begin{proof}
+For an anti-Hermitian local parameter $\theta$, set
+$\delta\psi=\rho(\theta)\psi$, $\delta H=\rho_H(\theta)H$ and
+$\delta A_\mu=-\partial_\mu\theta+[\theta,A_\mu]$.
+The product rule gives
+\[
+ \delta(D_\mu\psi)=\rho(\theta)D_\mu\psi,\qquad
+ \delta F_{\mu\nu}=[\theta,F_{\mu\nu}].
+\]
+The first identity cancels the two opposite
+$(\partial_\mu\theta)\psi$ terms. The second uses symmetry of the second
+parameter jet and cancels the first-derivative terms against the
+connection commutators. No equation of motion is used. Cyclic trace
+proves gauge-kinetic invariance; anti-Hermiticity and commutation of
+internal generators with $\bar\sigma^\mu$ prove kinetic invariance. The
+trace forms are ad-invariant, with the free normalizations permitted by
+the invariant-form classification.
+
+The color fundamental--dual pairing and weak determinant tensor are
+invariant. The hypercharge sums are
+$1/6+1/2-2/3=0$, $1/6-1/2+1/3=0$ and $-1/2-1/2+1=0$.
+The supplied Spin epsilon contracts anticommuting Weyl components.
+Each $T^\chi_{rs}$ and its adjoint are gauge neutral, separately for every
+family pair. Every term has even Grassmann degree and the displayed
+conjugate combinations are Hermitian. The symmetrized kinetic expression
+differs from $i\psi^\dagger\bar\sigma^\mu D_\mu\psi$ by a total derivative.
+\end{proof}
+
+\begin{proposition}[Matter current of the same local action]
+\label{prop:local-sm-jet-current}
+For an anti-Hermitian basis element $T_a$, define
+$\delta\mathcal L_{\rm matter}=j_a^\mu\delta A_\mu^a$ with matter jets
+fixed. Then
+\begin{equation}
+ j_a^\mu=i\sum_{r,\psi}\psi_r^\dagger\bar\sigma^\mu\rho_\psi(T_a)\psi_r
+   +(\rho_H(T_a)H)^\dagger D^\mu H
+   +(D^\mu H)^\dagger\rho_H(T_a)H .
+ \label{eq:local-sm-matter-current}
+\end{equation}
+Its covariant divergence vanishes on the matter Euler--Lagrange equations,
+using the dual adjoint connection on the current index.
+\end{proposition}
+\begin{proof}
+Differentiate the two covariant kinetic terms. Anti-Hermiticity doubles
+the fermion contribution in the symmetrized expression; the potential and
+Yukawa tensors have no connection dependence. For a compactly supported
+gauge variation, the matter equations remove matter variations from the
+first variation of the action. Substituting
+$\delta A_\mu=-\partial_\mu\theta+[\theta,A_\mu]$ and integrating by parts
+gives the dual covariant-divergence identity.
+\end{proof}
+
+\paragraph{Exact local checks and scope.}
+The executable fixture retains three families, 900 independent Grassmann
+value, derivative and conjugate generators, and all 27 complex Yukawa
+slots. Connection and scalar jets are exact Gaussian-rational test values,
+not physical coupling constants or measurements. Independent arithmetic
+checks reconstruct the density, retain first and symmetric second jets
+of the gauge parameter, and reject omitted inhomogeneous connection
+terms, omitted curvature commutators, wrong dual color action and mixed
+Yukawa charges. Grassmann anti-commutation is checked separately from
+neutrality. Lean proves the noncommutative first- and second-jet identities,
+the cyclic-trace Ward identity and the spin-sign control. The full action
+and on-shell current argument are analytic, not full Lean formalizations.
+
+The flat chart, Spin interpretation, kinetic choice, Higgs/Yukawa content,
+relative normalizations, family multiplicity and local connection remain
+declared. Identifying the connection with one reconstructed from source
+response histories is separate. There is no source-produced Standard Model
+action or current, broken-vacuum selection, gauge fixing or ghost
+construction, quantum anomaly cancellation from a fermionic measure,
+renormalization, continuum quantum-field existence theorem or numerical
+particle prediction. Global gauge quotient and physical line-spectrum
+attachments remain separate.

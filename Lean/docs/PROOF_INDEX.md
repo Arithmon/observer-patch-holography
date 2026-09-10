@@ -1908,3 +1908,10 @@ When adding a Lean statement that targets a paper item:
 4. Update the completion summary.
 5. Tag the PR with the affected proposition/definition for the cross-audit
    pass (Dula via Grok, Ben via ChatGPT-Pro). Bernhard merges.
+
+
+### Source population and local action
+
+- `Geometry/SourceRecordProtection.lean`: a linear record is invariant under every allowed pair-mean repair exactly when its coefficients agree on every allowed seam. Connected support leaves only total-load multiples. The theorem concerns this linear readout and pure pair-mean class; protected memory, driving and other laws remain available.
+- `Geometry/SourcePopulationQuadrature.lean`: actual Bochner-integral finite-cell transport bounds, disjoint measurable partition quadrature, and a varying-population convergence theorem under vanishing assignment error. Golden arithmetic and the null-boundary interval/pair-count specialization remain analytic.
+- `Screen/LocalGaugeJetAction.lean`: first- and second-jet noncommutative covariance, cyclic-trace Ward cancellation, a Grassmann spin-sign identity, and an inhomogeneous-term control. The full local Standard Model action and variational current proof are analytic on declared geometry, Spin, connection, kinetic and matter inputs.

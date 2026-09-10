@@ -21,9 +21,16 @@
     "code/e9_kinetic/kinetic_form_v1.json",
     "Lean/Screen/GaugeKineticInvariantForms.lean",
     "Lean/Screen/AssembledActionComposition.lean",
-    "Lean/Screen/GaugeSectorBracketCompletion.lean"
+    "Lean/Screen/GaugeSectorBracketCompletion.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "Ad-invariance over each supplied certified compact bracket forces a block-diagonal kinetic form with zero cross terms and one free positive Killing-relative coefficient on the color factor, so the Yang-Mills shape is attained on the classified bracket branches, while the source selection of the bracket, the source-produced action, and the coefficient value are not supplied; an assembled structural action with every coefficient a declared bundle parameter sums this sector with the committed scalar and Yukawa sectors, with the gauge sector carried at the committed invariant-form level on a typed sector carrier (the declared diagonal pairing is exactly its axis restriction and pins the weights, and the committed constraint rows are realized as infinitesimal-invariance rows of exhibited cross-sector generators), and the source-produced action stays open."
+   "boundary": "Ad-invariance over each supplied certified compact bracket forces a block-diagonal kinetic form with zero cross terms and one free positive Killing-relative coefficient on the color factor, so the Yang-Mills shape is attained on the classified bracket branches, while the source selection of the bracket, the source-produced action, and the coefficient value are not supplied; an assembled structural action with every coefficient a declared bundle parameter sums this sector with the committed scalar and Yukawa sectors, with the gauge sector carried at the committed invariant-form level on a typed sector carrier (the declared diagonal pairing is exactly its axis restriction and pins the weights, and the committed constraint rows are realized as infinitesimal-invariance rows of exhibited cross-sector generators), and the source-produced action stays open. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-02",
@@ -42,9 +49,16 @@
     "Lean/Screen/GaugeKineticInvariantForms.lean",
     "Lean/Screen/KineticFormDichotomy.lean",
     "Lean/Screen/AssembledActionComposition.lean",
-    "Lean/Screen/GaugeSectorBracketCompletion.lean"
+    "Lean/Screen/GaugeSectorBracketCompletion.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The one-coefficient Yang-Mills shape on the weak factor rests on the imported classical uniqueness of the invariant form on a compact simple ideal (declared under PR-11), while the certified reduction covers the color-type branches, and the kinetic dichotomy isolates the weak-to-color coefficient ratio that separates the two declared candidate branches (six versus three halves) without selecting either, while the source bracket, the source-produced action, and the coefficient value are not supplied; the declared-parameter assembled structural action includes this sector at the committed invariant-form level on a typed sector carrier, with the declared diagonal pairing exactly its axis restriction, and the source-produced action stays open."
+   "boundary": "The one-coefficient Yang-Mills shape on the weak factor rests on the imported classical uniqueness of the invariant form on a compact simple ideal (declared under PR-11), while the certified reduction covers the color-type branches, and the kinetic dichotomy isolates the weak-to-color coefficient ratio that separates the two declared candidate branches (six versus three halves) without selecting either, while the source bracket, the source-produced action, and the coefficient value are not supplied; the declared-parameter assembled structural action includes this sector at the committed invariant-form level on a typed sector carrier, with the declared diagonal pairing exactly its axis restriction, and the source-produced action stays open. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-03",
@@ -62,9 +76,16 @@
    "evidence": [
     "Lean/Screen/A5OPH.lean",
     "Lean/Screen/Z6Descent.lean",
-    "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex"
+    "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The one-dimensional centre is part of the forced abstract Lie type on the certified carrier and its quadratic kinetic shape carries one free normalization, while the abelian charge lattice is undetermined at carrier level, the hypercharge identification enters through the registered matter grammar, and the global form rests on declared completions."
+   "boundary": "The one-dimensional centre is part of the forced abstract Lie type on the certified carrier and its quadratic kinetic shape carries one free normalization, while the abelian charge lattice is undetermined at carrier level, the hypercharge identification enters through the registered matter grammar, and the global form rests on declared completions. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-04",
@@ -82,9 +103,16 @@
     "code/a5_closure/port_current_inner_certificate.py",
     "code/b14_jacobi/port_dual_metric_selector.certificate.json",
     "Lean/Screen/PortDualMetricSelection.lean",
-    "Lean/Screen/A5OPH.lean"
+    "Lean/Screen/A5OPH.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The forced nonabelian Lie type implies cubic and quartic self-coupling structure once a Yang-Mills kinetic form is written, and the structure constants are pinned only by the measure- and metric-conditional selection of one classified compact family under the declared face-weight and nearest-point rules, while source bracket selection and the composed field-strength action are open."
+   "boundary": "The forced nonabelian Lie type implies cubic and quartic self-coupling structure once a Yang-Mills kinetic form is written, and the structure constants are pinned only by the measure- and metric-conditional selection of one classified compact family under the declared face-weight and nearest-point rules, while source bracket selection and a source-emitted field-strength action remain open. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-05",
@@ -102,9 +130,16 @@
     "code/a5_closure/exterior_sm_completion.py",
     "code/a5_closure/exterior_sm_completion.json",
     "Lean/Screen/ExteriorSelection.lean",
-    "Lean/Screen/ExteriorComponentBridge.lean"
+    "Lean/Screen/ExteriorComponentBridge.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The registered exterior grammar places the quark doublet with hypercharge one sixth inside the unique chiral anomaly-free fifteen-state generation, which fixes the covariant-derivative coupling pattern of the term, while the Dirac kinetic operator, the physical spin lift, and a source-selected matter action are not supplied."
+   "boundary": "The registered exterior grammar places the quark doublet with hypercharge one sixth inside the unique chiral anomaly-free fifteen-state generation, which fixes the covariant-derivative coupling pattern of the term, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-06",
@@ -121,9 +156,16 @@
    "evidence": [
     "code/a5_closure/exterior_sm_completion.py",
     "code/a5_closure/exterior_sm_completion.json",
-    "Lean/Screen/ExteriorSelection.lean"
+    "Lean/Screen/ExteriorSelection.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The up singlet with hypercharge two thirds is an exact component of the same registered-grammar generation, so the covariant coupling pattern is fixed, while the kinetic operator, spin lift, and matter action are not supplied."
+   "boundary": "The up singlet with hypercharge two thirds is an exact component of the same registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-07",
@@ -140,9 +182,16 @@
    "evidence": [
     "code/a5_closure/exterior_sm_completion.py",
     "code/a5_closure/exterior_sm_completion.json",
-    "Lean/Screen/ExteriorSelection.lean"
+    "Lean/Screen/ExteriorSelection.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The down singlet with hypercharge minus one third is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the kinetic operator, spin lift, and matter action are not supplied."
+   "boundary": "The down singlet with hypercharge minus one third is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-08",
@@ -159,9 +208,16 @@
    "evidence": [
     "code/a5_closure/exterior_sm_completion.py",
     "code/a5_closure/exterior_sm_completion.json",
-    "Lean/Screen/ExteriorSelection.lean"
+    "Lean/Screen/ExteriorSelection.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The lepton doublet with hypercharge minus one half is an exact component of the registered-grammar generation, whose displayed anomaly sums cancel, so the covariant coupling pattern is fixed, while the kinetic operator, spin lift, and matter action are not supplied."
+   "boundary": "The lepton doublet with hypercharge minus one half is an exact component of the registered-grammar generation, whose displayed anomaly sums cancel, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-09",
@@ -178,9 +234,16 @@
    "evidence": [
     "code/a5_closure/exterior_sm_completion.py",
     "code/a5_closure/exterior_sm_completion.json",
-    "Lean/Screen/ExteriorSelection.lean"
+    "Lean/Screen/ExteriorSelection.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The electron singlet with hypercharge minus one is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the kinetic operator, spin lift, and matter action are not supplied."
+   "boundary": "The electron singlet with hypercharge minus one is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-10",
@@ -215,9 +278,16 @@
    "open_premises": [],
    "evidence": [
     "code/a5_closure/exterior_sm_completion.json",
-    "Lean/Screen/Z6Descent.lean"
+    "Lean/Screen/Z6Descent.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The scalar doublet enters as the declared Higgs-equals-weak-carrier selection inside the registered grammar and its central weight passes the Z6 kernel arithmetic, while no scalar kinetic term, scalar dynamics, or electroweak-breaking mechanism is derived."
+   "boundary": "The scalar doublet enters as the declared Higgs-equals-weak-carrier selection inside the registered grammar and its central weight passes the Z6 kernel arithmetic, while no scalar kinetic term, scalar dynamics, or electroweak-breaking mechanism is derived. The separate local jet action includes the declared minimal covariant Higgs kinetic term and its same-action variational current. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-12",
@@ -228,9 +298,16 @@
    ],
    "open_premises": [],
    "evidence": [
-    "paper/deriving_the_particle_zoo_from_observer_consistency.tex"
+    "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The renormalizable quadratic-plus-quartic potential, a stable broken branch, and its vacuum attachment are explicitly registered as PR-49. No OPH theorem produces the potential, either coefficient, the vacuum, or the electroweak scale, so this is a declared premise rather than a derived term."
+   "boundary": "The renormalizable quadratic-plus-quartic potential, a stable broken branch, and its vacuum attachment are explicitly registered as PR-49. No OPH theorem produces the potential, either coefficient, the vacuum, or the electroweak scale, so this is a declared premise rather than a derived term. The local jet action retains m^2 and lambda as symbolic supplied coefficients; gauge invariance neither fixes their values nor selects a broken vacuum. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-13",
@@ -249,9 +326,16 @@
     "code/a5_closure/exterior_sm_completion.json",
     "code/particles/flavor/derive_quark_axiom_level_yukawa_moduli_nonidentifiability.py",
     "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
-    "Lean/Screen/WeylYukawaConventions.lean"
+    "Lean/Screen/WeylYukawaConventions.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The registered grammar contains the gauge-invariant line for this coupling among the three one-Higgs invariant lines of the exterior witness, and an exact non-definability theorem leaves a free positive rescaling family of admissible up-type spectra, so no Yukawa matrix, eigenvalue, or texture is derived. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action."
+   "boundary": "The registered grammar contains the gauge-invariant line for this coupling among the three one-Higgs invariant lines of the exterior witness, and an exact non-definability theorem leaves a free positive rescaling family of admissible up-type spectra, so no Yukawa matrix, eigenvalue, or texture is derived. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action. The local jet action composes all family-pair channels using actual color/weak/Spin contractions and Grassmann adjoints, retaining every complex Yukawa entry as an independent coefficient. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-14",
@@ -270,9 +354,16 @@
     "code/a5_closure/exterior_sm_completion.json",
     "code/particles/flavor/derive_quark_axiom_level_yukawa_moduli_nonidentifiability.py",
     "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
-    "Lean/Screen/WeylYukawaConventions.lean"
+    "Lean/Screen/WeylYukawaConventions.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The registered grammar contains the gauge-invariant line for this coupling, and the same exact non-definability theorem leaves a free positive rescaling family of admissible down-type spectra, so no Yukawa matrix, eigenvalue, or texture is derived. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action."
+   "boundary": "The registered grammar contains the gauge-invariant line for this coupling, and the same exact non-definability theorem leaves a free positive rescaling family of admissible down-type spectra, so no Yukawa matrix, eigenvalue, or texture is derived. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action. The local jet action composes all family-pair channels using actual color/weak/Spin contractions and Grassmann adjoints, retaining every complex Yukawa entry as an independent coefficient. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-15",
@@ -293,9 +384,16 @@
     "code/particles/leptons/derive_koide_circulant_identity.py",
     "code/particles/runs/leptons/koide_circulant_identity.json",
     "Lean/ObserverPatchHolography/KoideCirculant.lean",
-    "Lean/Screen/WeylYukawaConventions.lean"
+    "Lean/Screen/WeylYukawaConventions.lean",
+    "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+    "Lean/Screen/LocalGaugeJetAction.lean",
+    "code/sm_local_action/jet_action.py",
+    "code/sm_local_action/build_local_action.py",
+    "code/sm_local_action/verify_local_action.py",
+    "code/sm_local_action/test_local_action.py",
+    "code/sm_local_action/local_action_receipt.json"
    ],
-   "boundary": "The invariant line exists in the registered grammar, and on the declared Koide balance premise an exact circulant identity conditionally pins the charged-lepton spectral invariant to two thirds, while the coupling matrix, the individual mass ratios, the circulant phase, and the physical chiral attachment are not supplied. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action."
+   "boundary": "The invariant line exists in the registered grammar, and on the declared Koide balance premise an exact circulant identity conditionally pins the charged-lepton spectral invariant to two thirds, while the coupling matrix, the individual mass ratios, the circulant phase, and the physical chiral attachment are not supplied. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action. The local jet action composes all family-pair channels using actual color/weak/Spin contractions and Grassmann adjoints, retaining every complex Yukawa entry as an independent coefficient. This does not discharge PR-54 or change the classification of the source-produced sector."
   },
   {
    "id": "SML-16",

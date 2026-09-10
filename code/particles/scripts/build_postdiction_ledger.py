@@ -35,6 +35,8 @@ import hashlib
 import json
 import math
 import re
+import sys
+import types
 from pathlib import Path
 from typing import Any
 
@@ -132,6 +134,8 @@ LEAN_RECEIPTS = {
     / "RefiningLatticeCausalCone.lean",
     "SourceNetCausalCone": REPO / "Lean" / "Geometry" / "SourceNetCausalCone.lean",
     "SourceCountClock": REPO / "Lean" / "Time" / "SourceCountClock.lean",
+    "SourceRecordProtection": REPO / "Lean" / "Geometry" / "SourceRecordProtection.lean",
+    "SourcePopulationQuadrature": REPO / "Lean" / "Geometry" / "SourcePopulationQuadrature.lean",
     "MetricKernelEnergy": REPO / "Lean" / "Geometry" / "MetricKernelEnergy.lean",
     "LorentzOverlapCocycle": REPO / "Lean" / "Geometry"
     / "LorentzOverlapCocycle.lean",
@@ -581,6 +585,168 @@ def _source_net_causal_control(receipt_path: Path | None = None) -> dict[str, An
             "experiment or a physical dimension fit. Spatial populations are nested; "
             "changing radii and ticks do not give induced-prefix histories."
         ),
+    }
+
+
+def _fresh_structural_verifier(path: Path, dependency: str | None = None):
+    """Compile current verifier/helper bytes; restore existing import bindings."""
+    names = [dependency] if dependency else []
+    name = "postdiction_" + path.parent.name + "_" + path.stem
+    names.append(name)
+    saved = {key: sys.modules.get(key) for key in names}
+    try:
+        for key in names:
+            source = path.parent / (key + ".py") if key == dependency else path
+            module = types.ModuleType(key)
+            module.__file__ = str(source)
+            sys.modules[key] = module
+            exec(compile(source.read_bytes(), str(source), "exec"), module.__dict__)
+        return module
+    finally:
+        for key, previous in saved.items():
+            if previous is None:
+                sys.modules.pop(key, None)
+            else:
+                sys.modules[key] = previous
+
+
+def _structural_packet(package: str, verifier_name: str, receipt_name: str,
+                       *, entry: str = "verify", dependency: str | None = None,
+                       receipt_path: Path | None = None):
+    directory = CODE / package
+    verifier = _fresh_structural_verifier(directory / verifier_name, dependency)
+    path = receipt_path or directory / receipt_name
+    raw = path.read_bytes()
+    try:
+        packet = verifier.load(path)
+        summary = getattr(verifier, entry)(packet)
+    except (ValueError, TypeError, KeyError) as exc:
+        raise SystemExit(f"{package} structural certificate rejected: {exc}") from exc
+    if path.read_bytes() != raw:
+        raise SystemExit(package + " receipt changed during verification")
+    return packet, summary, {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+
+
+def _protected_population_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_population", "verify_population.py", "runtime/population_receipt.json",
+        entry="check", receipt_path=receipt_path)
+    if (summary.get("accepted") is not True or summary.get("source_population_produced") is not False
+            or summary.get("persistent_memory_supplied") is not True
+            or any(summary.get(k) != value for k, value in packet["summary"].items())):
+        raise SystemExit("protected population verification projection mismatch")
+    declarations = ("linearRecord_repair_defect", "protects_iff_edge_constant",
+                    "connected_protected_record_factors_through_total",
+                    "active_distinguishing_seam_changes_record")
+    return {
+        "receipt": "code/source_population/runtime/population_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "mathematical_replay": True, "observed_postdiction": False,
+        "lean_receipts": _lean_receipt("SourceRecordProtection",
+            declarations={"SourceRecordProtection": declarations}),
+        "lean_declarations": {"SourceRecordProtection": list(declarations)},
+        "scope_boundary": (
+            "The initial golden population and immutable retained address register are supplied. "
+            "Exact pair-mean operations move live port readbacks; the protected address survives "
+            "only the declared write footprint. This does not produce a persistent spatial "
+            "population, select a routing law or exclude other observer dynamics."),
+    }
+
+
+def _source_population_quadrature_control() -> dict[str, Any]:
+    declarations = ("cell_local_first_moment", "partition_uniform_quadrature",
+                    "partition_quadrature_tendsto", "tent_field_lipschitz",
+                    "constant_detects_mass_error", "misplaced_sample_counterexample")
+    source = "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex"
+    labels = ["prop:source-population-cell-transport", "prop:source-population-local-kernel"]
+    text = (REPO/source).read_text(encoding="utf-8")
+    if any("\\label{" + label + "}" not in text for label in labels):
+        raise SystemExit("source population quadrature theorem missing")
+    return {
+        "source": source, "labels": labels,
+        "lean_receipts": _lean_receipt("SourcePopulationQuadrature",
+            declarations={"SourcePopulationQuadrature": declarations}),
+        "lean_declarations": {"SourcePopulationQuadrature": list(declarations)},
+        "formal_actual_cell_integral_and_quadrature_limit": True,
+        "formal_golden_partition_geometry_or_causal_pair_count_limit": False,
+        "tent_integrand_lipschitz_coefficient": "K",
+        "analytic_radial_quadrature_bound": "60*K*H*(epsilon+H)^3/epsilon^5",
+        "observed_postdiction": False,
+        "scope_boundary": (
+            "Finite measured cells, their actual masses, representatives and vanishing "
+            "assignment distances are hypotheses. Golden geometry and causal pair-count "
+            "limits remain separate analytic arguments. Dual-cell and equal-volume weights "
+            "are distinct finite measures; no physical population law follows."),
+    }
+
+
+def _common_source_scalar_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_scalar_packet", "verify_source_common_scalar.py", "source_common_scalar_receipt.json",
+        dependency="source_scalar_intervals", receipt_path=receipt_path)
+    last = packet["levels"][-1]
+    expected = {
+        "verified": True, "levels": len(packet["levels"]), "resolved_q": last["q"],
+        "full_tensor_oscillators": last["dynamic_oscillators"],
+        "largest_tridiagonal": last["tensor_algorithm_largest_matrix"],
+        "uniform_window": packet["continuum"]["window"],
+        "error_upper": last["graph_vs_compact_continuum_error_upper"][1],
+        "resolved_signal_lower": last["resolved_graph_signal_lower"],
+    }
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("common scalar verification projection mismatch")
+    if not 0 < Fraction(summary["error_upper"]) < Fraction(summary["resolved_signal_lower"]):
+        raise SystemExit("common scalar response does not dominate its certified error")
+    source = "paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex"
+    labels = ["prop:common-scalar-full-leakage", "prop:common-scalar-continuum-limit",
+              "thm:source-common-scalar-response"]
+    text = (REPO/source).read_text(encoding="utf-8")
+    if any("\\label{" + label + "}" not in text for label in labels):
+        raise SystemExit("common scalar analytic theorem missing")
+    return {
+        "receipt": "code/source_scalar_packet/source_common_scalar_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "mathematical_replay": True, "observed_postdiction": False,
+        "analytic_proof": {"source": source, "labels": labels},
+        "analytic_free_scalar_detector_limit": True, "full_continuum_theorem_formalized_in_lean": False,
+        "source_action_population_or_physical_clock_selected": False,
+        "field_history_joined_to_causal_count_clock": False,
+        "interacting_quantum_continuum": False,
+        "scope_boundary": (
+            "Protected golden source addresses, tensor mass-lumped action, Dirichlet cube, "
+            "mass one, quantization and model time are declared. Full lattice leakage and "
+            "sampled compact tails are bounded. The analytic limit concerns fixed-time "
+            "smeared classical and coherent Weyl readouts for bounded Riemann-integrable "
+            "smearings. Field edges fit the causal radius, but their execution and count-clock "
+            "custody are not constructed. This action differs from the radial kernel."),
+    }
+
+
+def _local_sm_action_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, custody, pin = _structural_packet(
+        "sm_local_action", "verify_local_action.py", "local_action_receipt.json",
+        entry="validate_custody", receipt_path=receipt_path)
+    if custody.get("accepted_custody") is not True or custody.get("mathematical_replay") is not False:
+        raise SystemExit("local SM custody must not masquerade as mathematical replay")
+    return {
+        "receipt": "code/sm_local_action/local_action_receipt.json", "receipt_pin": pin,
+        "custody_verifier_result": custody, "mathematical_replay": False,
+        "full_mathematical_verifier": "code/sm_local_action/verify_local_action.py:verify",
+        "observed_postdiction": False,
+        "packet_inventory": {
+            "action_sectors": len(packet["action_coefficients"]),
+            "grassmann_generators": len(packet["generator_labels"]),
+            "local_ward_directions": len(packet["ward_directions"]),
+            "symmetric_second_parameter_jets": len(packet["symmetric_second_parameter_jets"]),
+            "matter_currents": len(packet["matter_current_coefficients"]),
+            "negative_controls": len(packet["negative_controls"]),
+        },
+        "scope_boundary": (
+            "This ledger checks custody, exact encoding and declared hypotheses only. "
+            "The separate full verifier reconstructs all action/current/Ward coefficients. "
+            "The local flat classical action supplies connections, Spin convention, Higgs, "
+            "three families and free parameters; it does not emit a source action, join the "
+            "spatial population or construct a renormalized quantum theory."),
     }
 
 
@@ -1332,6 +1498,7 @@ def _forced_structure(
         },
         {
             "id": "hypercharge_spectrum",
+            "declared_local_action_control": _local_sm_action_control(),
             "statement": (
                 f"Inside the declared {component_count}-component "
                 "exterior-response algebra, an exhaustive scan of all "
@@ -1341,14 +1508,19 @@ def _forced_structure(
                 f"{matter['realized_package']['dimension']} projectors. "
                 "Primitive determinant balance "
                 "fixes the block charges up to conjugation, and the selected "
-                f"representative has multiset {{{field_summary}}}"
+                f"representative has multiset {{{field_summary}}}. A separate declared "
+                "flat classical action assembles gauge, Grassmann-Weyl, Higgs and symbolic "
+                "Yukawa terms with local Ward and variational-current controls. This ledger "
+                "checks that packet's custody; its separate full verifier checks the coefficients"
             ),
             "observed_counterpart": (
                 "Standard Model one-generation hypercharge assignment"
             ),
             "realized_spectrum": spectrum,
             "match": "exact" if spectrum == sm_spectrum else "MISMATCH",
-            "artifact_refs": [_rel("matter_receipt"), _rel("matter_menu")],
+            "artifact_refs": [_rel("matter_receipt"), _rel("matter_menu"),
+                "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex", "Lean/Screen/LocalGaugeJetAction.lean",
+                "code/sm_local_action/local_action_receipt.json", "code/sm_local_action/verify_local_action.py"],
             "subset_count": subsets_enumerated,
             "survivor_count": classification["survivor_count"],
             "survivor_dimension": matter["realized_package"]["dimension"],
@@ -2436,6 +2608,9 @@ def _forced_structure(
             "supplied_law_refinement_control": _refining_causal_control(),
             "declared_source_net_control": _source_net_causal_control(),
             "declared_count_clock_control": _source_count_clock_control(),
+            "protected_population_control": _protected_population_control(),
+            "source_population_quadrature": _source_population_quadrature_control(),
+            "common_free_scalar_control": _common_source_scalar_control(),
             "operational_cone_selection": {
                 "analytic_proof": "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
                 "hypotheses": "nonzero closed convex pointed cone; finite irreducible carrier rotations; one continuous operational boost direction; time orientation",
@@ -2465,6 +2640,15 @@ def _forced_structure(
                 ),
             },
             "artifact_refs": [
+                "Lean/Geometry/SourceRecordProtection.lean",
+                "Lean/Geometry/SourcePopulationQuadrature.lean",
+                "paper/tex_fragments/SOURCE_RECORD_PROTECTION.tex",
+                "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex",
+                "code/source_population/runtime/population_receipt.json",
+                "code/source_population/verify_population.py",
+                "paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex",
+                "code/source_scalar_packet/source_common_scalar_receipt.json",
+                "code/source_scalar_packet/verify_source_common_scalar.py",
                 "Lean/Geometry/MetricKernelEnergy.lean",
                 "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
                 "Lean/Geometry/RefiningLatticeCausalCone.lean",
@@ -2522,7 +2706,13 @@ def _forced_structure(
                 "checks the decoder. A separate analytic finite-rotation/one-boost "
                 "criterion selects the Lorentz cone under operational covariance. "
                 "The same declared scalar action has controlled spacetime-smeared "
-                "boost comparisons for two reference-supplied preparations"
+                "boost comparisons for two reference-supplied preparations. A separate "
+                "protected-address experiment exactly distinguishes immutable records from "
+                "moving live readbacks under pair means. Formal integrated cell estimates "
+                "derive quadrature convergence from vanishing assignment distances. On the "
+                "same prepared golden coordinates, a different local massive Dirichlet "
+                "scalar action has an analytic free-field detector limit and a finite full-Fock "
+                "compact detector response whose exact certified error is smaller than its signal"
             ),
             "observed_counterpart": (
                 "finite causal-set-like order with an effective 1+3 Lorentz "

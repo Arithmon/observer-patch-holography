@@ -1,0 +1,151 @@
+\subsection{Source-population quadrature and detector errors}
+\label{sec:source-population-quadrature}
+
+Cell masses connect a finite source population to an integral on its metric
+carrier. A covering radius controls nearest-point geometry; an assignment
+radius controls quadrature for a specified measure. These radii can differ.
+For example, a golden-orbit point need not lie in its equal-volume permutation
+cell. The estimates below use the actual cell assignment and its measure.
+
+Let $\Omega$ be a metric window with a finite positive Borel measure $\mu$.
+Choose a finite measurable partition $C_i$, representatives $s_i\in\Omega$,
+and masses $v_i=\mu(C_i)$. A measurable convention assigns shared boundaries;
+null modifications do not affect the statements. Representatives need not
+belong to their cells. Let $f$ take values in a real Banach space and be
+integrable on every cell. Set
+\[
+ Qf=\sum_i v_i f(s_i),\qquad
+ D_i=\int_{C_i}d(s_i,x)\,d\mu(x).
+\]
+
+\begin{proposition}[Integrated cell-transport estimate]
+\label{prop:source-population-cell-transport}
+Suppose
+$\|f(s_i)-f(x)\|\le K_i d(s_i,x)$ for almost every $x\in C_i$,
+where $K_i\ge0$ and the displacement is integrable. Then
+\begin{equation}
+ \left\|Qf-\int_\Omega f\,d\mu\right\|
+ \le\sum_i K_i D_i.
+ \label{eq:source-population-first-moment}
+\end{equation}
+If $d(s_i,x)\le H_i$ almost everywhere on $C_i$, the right-hand side is
+at most $\sum_i v_iK_iH_i$. In particular, for a globally $K$-Lipschitz
+function and a uniform assignment bound $H$,
+\begin{equation}
+ \left\|Qf-\int_\Omega f\,d\mu\right\|
+ \le \mu(\Omega)KH.
+ \label{eq:source-population-uniform-quadrature}
+\end{equation}
+For a sequence of such partitions of the same measured window, $H_n\to0$
+therefore gives $Q_nf\to\int_\Omega f\,d\mu$ for each integrable Lipschitz
+test function. Neither nesting nor a fixed number of representatives is
+required.
+\end{proposition}
+\begin{proof}
+The difference equals
+$\sum_i\int_{C_i}[f(s_i)-f(x)]\,d\mu(x)$.
+The norm of a Bochner integral is bounded by the integral of the norm.
+Apply the local Lipschitz bound and sum the resulting inequalities.
+The uniform estimate uses $D_i\le v_iH_i$ and
+$\sum_i v_i=\mu(\Omega)$. Its right-hand side tends to zero under the
+stated refinement. The first-moment coefficient is sharp: on $[0,H]$,
+with Lebesgue measure, one representative at zero and $f(x)=x$, the error
+and displacement integral both equal $H^2/2$.
+\end{proof}
+
+The Lean module \texttt{SourcePopulationQuadrature} proves the actual
+Bochner-integral estimates for finite cell measures, their specialization
+to measurable disjoint partitions, and convergence under a vanishing
+assignment bound. It also checks that a constant detector exposes any
+error in total assigned mass. The source coordinates, partition geometry
+and their displacement bounds must be established for each population.
+These hypotheses are not replaced by an assumed quadrature limit.
+
+For the golden permutation cells of side $L/q$, the established assignment
+bound $H_q=2\sqrt3L/q$ and equal masses $L^3/q^3$ instantiate
+\eqref{eq:source-population-uniform-quadrature}. Product time cells of
+length $\Delta_q$ contribute the independent temporal error
+$TL^3\Delta_q\operatorname{Lip}_t(f)$ on an aligned window of duration
+$T$. The spatial term is $TL^3H_q\operatorname{Lip}_x(f)$.
+An unmatched endpoint layer contributes at most
+$L^3\Delta_q\|f\|_\infty$. This application retains the declared event
+population and time-cell convention; extra routing or bookkeeping events
+cannot be inserted into its density without another count estimate.
+The golden floor/permutation argument, spacetime null-boundary estimates
+and causal ordering-fraction integral are analytic arguments separate from
+the formal cell-transport theorem.
+
+\begin{proposition}[Localized radial-kernel quadrature]
+\label{prop:source-population-local-kernel}
+For $\epsilon>0$, write
+\[
+ w_x(y)=(1-d(x,y)/\epsilon)_+,
+ \qquad g_x(y)=w_x(y)[f(x)-f(y)].
+\]
+If $f$ is a real $K$-Lipschitz function, then $g_x$ is $K$-Lipschitz
+and vanishes outside the closed radius-$\epsilon$ ball about $x$.
+With an assignment map $P(y)=s_i$ on $C_i$ satisfying
+$d(P(y),y)\le H$, where $H\ge0$, its quadrature error obeys
+\begin{equation}
+ \left|\sum_i v_i g_x(s_i)-\int_\Omega g_x(y)\,d\mu(y)\right|
+ \le K\!\int_{\Omega\cap B(x,\epsilon+H)}
+                      d(P(y),y)\,d\mu(y)
+ \le KH\,\mu(\Omega\cap B(x,\epsilon+H)).
+ \label{eq:source-population-local-kernel}
+\end{equation}
+The same statement holds with closed balls; their boundaries are irrelevant
+for Euclidean volume.
+\end{proposition}
+\begin{proof}
+The tent weight lies in $[0,1]$ and satisfies
+$|w_x(y)-w_x(z)|\le d(y,z)/\epsilon$. Order the two weights so that
+$w_x(y)\le w_x(z)$. If both vanish the claim is immediate; otherwise
+$d(x,z)<\epsilon$. The identity
+\[
+ g_x(y)-g_x(z)
+ =w_x(y)[f(z)-f(y)]
+  +[w_x(y)-w_x(z)][f(x)-f(z)]
+\]
+is bounded by
+$Kd(y,z)[w_x(y)+d(x,z)/\epsilon]$. The bracket is at most one because
+$w_x(y)\le w_x(z)=1-d(x,z)/\epsilon$. The same proof with $y,z$
+exchanged covers the other order. If $d(x,y)\ge\epsilon+H$, both kernel terms
+$g_x(y)$ and $g_x(P(y))$ vanish. Integrate the pointwise bound over the
+remaining region. The tent Lipschitz estimates have Lean proofs; the
+displayed support-restricted integral applies the cell-transport argument.
+\end{proof}
+
+For three-dimensional volume, multiplying
+\eqref{eq:source-population-local-kernel} by $45/(\pi\epsilon^5)$ gives
+the quadrature contribution
+$60KH(\epsilon+H)^3/\epsilon^5$ in the scalar operator estimate,
+and hence $480KH/\epsilon^2$ when $H\le\epsilon$.
+Actual local cell masses or integrated displacements can give smaller
+bounds than the enclosing-ball volume. They must be computed or bounded
+for the same assignment. A small fill radius does not justify replacing
+the equal-volume assignment radius. This estimate alone yields no vanishing
+operator error when $H=O(q^{-1})$ and $\epsilon=O(q^{-1/2})$.
+
+\paragraph{Dual cells for a local tensor action.}
+A different supplied action can use sorted source coordinates
+$0=x_0<\cdots<x_N=L$, with interval lengths $\ell_j=x_{j+1}-x_j$.
+Half-interval endpoint weights and interior weights
+$(\ell_{j-1}+\ell_j)/2$ are the masses of the one-dimensional dual cells.
+Their tensor products satisfy the preceding transport theorem. For
+$f\in C^2([0,L])$, linear interpolation on each interval also gives
+the sharper analytic trapezoidal bound
+\[
+ \left|Qf-\int_0^L f(x)\,dx\right|
+ \le\frac{\|f''\|_\infty}{12}\sum_j\ell_j^3
+ \le\frac{L\ell_{\max}^2}{12}\|f''\|_\infty.
+\]
+Indeed the pointwise interpolation error is at most
+$\|f''\|_\infty(x-x_j)(x_{j+1}-x)/2$; integrate it on each interval.
+Successive application in three coordinates gives the tensor bound
+$L^3\ell_{\max}^2\sum_{a=1}^3\|\partial_a^2f\|_\infty/12$.
+This applies to detector products and sampled mode Gram entries with their
+stated derivative bounds. Dual-cell weights and equal-volume source-count
+weights are different finite measures, each with its own comparison to
+volume. The trapezoidal argument does not improve the radial action by
+changing its weights implicitly, and it supplies no source-selection law,
+primitive timing rule or physical calibration.

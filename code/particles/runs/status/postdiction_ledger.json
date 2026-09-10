@@ -549,8 +549,37 @@
       {
         "artifact_refs": [
           "code/a5_closure/receipts/super_tannakian_matter_reference.receipt.json",
-          "code/a5_closure/manifests/matter_menu_spectral_ledger_reference.json"
+          "code/a5_closure/manifests/matter_menu_spectral_ledger_reference.json",
+          "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex",
+          "Lean/Screen/LocalGaugeJetAction.lean",
+          "code/sm_local_action/local_action_receipt.json",
+          "code/sm_local_action/verify_local_action.py"
         ],
+        "declared_local_action_control": {
+          "custody_verifier_result": {
+            "accepted_custody": true,
+            "mathematical_replay": false,
+            "schema": "oph.local_sm_jet_action.v1",
+            "sha256": "4949c2fdd0f44917b4808e52ea59f69574d3cc653cdf5cde30e9e8c91a8bb031"
+          },
+          "full_mathematical_verifier": "code/sm_local_action/verify_local_action.py:verify",
+          "mathematical_replay": false,
+          "observed_postdiction": false,
+          "packet_inventory": {
+            "action_sectors": 65,
+            "grassmann_generators": 900,
+            "local_ward_directions": 60,
+            "matter_currents": 48,
+            "negative_controls": 4,
+            "symmetric_second_parameter_jets": 120
+          },
+          "receipt": "code/sm_local_action/local_action_receipt.json",
+          "receipt_pin": {
+            "bytes": 166492,
+            "sha256": "4949c2fdd0f44917b4808e52ea59f69574d3cc653cdf5cde30e9e8c91a8bb031"
+          },
+          "scope_boundary": "This ledger checks custody, exact encoding and declared hypotheses only. The separate full verifier reconstructs all action/current/Ward coefficients. The local flat classical action supplies connections, Spin convention, Higgs, three families and free parameters; it does not emit a source action, join the spatial population or construct a renormalized quantum theory."
+        },
         "derived_block_charges": {
           "a": -2,
           "b": 3,
@@ -590,7 +619,7 @@
           "1/3": 3,
           "1/6": 6
         },
-        "statement": "Inside the declared 10-component exterior-response algebra, an exhaustive scan of all 1024 subsets selects exactly one unordered charge-conjugate pair of nonempty chiral anomaly-free rank-15 projectors. Primitive determinant balance fixes the block charges up to conjugation, and the selected representative has multiset {Q: 1/6 x6, u_c: -2/3 x3, d_c: 1/3 x3, L: -1/2 x2, e_c: 1 x1}",
+        "statement": "Inside the declared 10-component exterior-response algebra, an exhaustive scan of all 1024 subsets selects exactly one unordered charge-conjugate pair of nonempty chiral anomaly-free rank-15 projectors. Primitive determinant balance fixes the block charges up to conjugation, and the selected representative has multiset {Q: 1/6 x6, u_c: -2/3 x3, d_c: 1/3 x3, L: -1/2 x2, e_c: 1 x1}. A separate declared flat classical action assembles gauge, Grassmann-Weyl, Higgs and symbolic Yukawa terms with local Ward and variational-current controls. This ledger checks that packet's custody; its separate full verifier checks the coefficients",
         "subset_count": 1024,
         "survivor_count": 2,
         "survivor_dimension": 15
@@ -1064,6 +1093,15 @@
       },
       {
         "artifact_refs": [
+          "Lean/Geometry/SourceRecordProtection.lean",
+          "Lean/Geometry/SourcePopulationQuadrature.lean",
+          "paper/tex_fragments/SOURCE_RECORD_PROTECTION.tex",
+          "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex",
+          "code/source_population/runtime/population_receipt.json",
+          "code/source_population/verify_population.py",
+          "paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex",
+          "code/source_scalar_packet/source_common_scalar_receipt.json",
+          "code/source_scalar_packet/verify_source_common_scalar.py",
           "Lean/Geometry/MetricKernelEnergy.lean",
           "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
           "Lean/Geometry/RefiningLatticeCausalCone.lean",
@@ -1086,6 +1124,42 @@
           "code/causal_refinement/test_source_count_clock.py",
           "code/causal_refinement/source_count_clock_receipt.json"
         ],
+        "common_free_scalar_control": {
+          "analytic_free_scalar_detector_limit": true,
+          "analytic_proof": {
+            "labels": [
+              "prop:common-scalar-full-leakage",
+              "prop:common-scalar-continuum-limit",
+              "thm:source-common-scalar-response"
+            ],
+            "source": "paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex"
+          },
+          "field_history_joined_to_causal_count_clock": false,
+          "full_continuum_theorem_formalized_in_lean": false,
+          "independent_verifier_result": {
+            "error_upper": "12513633763/250000000000",
+            "full_tensor_oscillators": 12487168,
+            "largest_tridiagonal": 232,
+            "levels": 4,
+            "resolved_q": 233,
+            "resolved_signal_lower": "34438518047/250000000000",
+            "uniform_window": [
+              "19/20",
+              "1"
+            ],
+            "verified": true
+          },
+          "interacting_quantum_continuum": false,
+          "mathematical_replay": true,
+          "observed_postdiction": false,
+          "receipt": "code/source_scalar_packet/source_common_scalar_receipt.json",
+          "receipt_pin": {
+            "bytes": 15729,
+            "sha256": "c050889ea4b8e46b4635ed6ab7b850f2b8af24f3cfcac51e4a2b349d865ba7de"
+          },
+          "scope_boundary": "Protected golden source addresses, tensor mass-lumped action, Dirichlet cube, mass one, quantization and model time are declared. Full lattice leakage and sampled compact tails are bounded. The analytic limit concerns fixed-time smeared classical and coherent Weyl readouts for bounded Riemann-integrable smearings. Field edges fit the causal radius, but their execution and count-clock custody are not constructed. This action differs from the radial kernel.",
+          "source_action_population_or_physical_clock_selected": false
+        },
         "declared_count_clock_control": {
           "analytic_resolved_timelike_worldline_accumulation": true,
           "analytic_same_family_proper_time_ratio_limit": true,
@@ -1269,7 +1343,69 @@
           "observed_postdiction": false
         },
         "paper_ref": "flagship and spacetime papers, source-derived causal order and finite 1+3 carrier",
-        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations",
+        "protected_population_control": {
+          "independent_verifier_result": {
+            "accepted": true,
+            "active_mean_repairs": 2196,
+            "changed_unordered_metric_relations": 135123,
+            "distinct_live_addresses_after": 2197,
+            "live_addresses_changed": 2196,
+            "metric_check": "all pairs, exact rational sqrt(5) enclosure; no producer import",
+            "operations": 4393,
+            "original_directed_metric_reads_with_self": 294191,
+            "persistent_memory_supplied": true,
+            "protected_addresses_changed": 0,
+            "sites": 2197,
+            "source_population_produced": false,
+            "updated_directed_metric_reads_with_self": 32249
+          },
+          "lean_declarations": {
+            "SourceRecordProtection": [
+              "linearRecord_repair_defect",
+              "protects_iff_edge_constant",
+              "connected_protected_record_factors_through_total",
+              "active_distinguishing_seam_changes_record"
+            ]
+          },
+          "lean_receipts": [
+            "Lean/Geometry/SourceRecordProtection.lean"
+          ],
+          "mathematical_replay": true,
+          "observed_postdiction": false,
+          "receipt": "code/source_population/runtime/population_receipt.json",
+          "receipt_pin": {
+            "bytes": 1892158,
+            "sha256": "8a50298a486bf519f0d38009bd9d659f1c3fbd5dd2554d13d14a47cd03978500"
+          },
+          "scope_boundary": "The initial golden population and immutable retained address register are supplied. Exact pair-mean operations move live port readbacks; the protected address survives only the declared write footprint. This does not produce a persistent spatial population, select a routing law or exclude other observer dynamics."
+        },
+        "source_population_quadrature": {
+          "analytic_radial_quadrature_bound": "60*K*H*(epsilon+H)^3/epsilon^5",
+          "formal_actual_cell_integral_and_quadrature_limit": true,
+          "formal_golden_partition_geometry_or_causal_pair_count_limit": false,
+          "labels": [
+            "prop:source-population-cell-transport",
+            "prop:source-population-local-kernel"
+          ],
+          "lean_declarations": {
+            "SourcePopulationQuadrature": [
+              "cell_local_first_moment",
+              "partition_uniform_quadrature",
+              "partition_quadrature_tendsto",
+              "tent_field_lipschitz",
+              "constant_detects_mass_error",
+              "misplaced_sample_counterexample"
+            ]
+          },
+          "lean_receipts": [
+            "Lean/Geometry/SourcePopulationQuadrature.lean"
+          ],
+          "observed_postdiction": false,
+          "scope_boundary": "Finite measured cells, their actual masses, representatives and vanishing assignment distances are hypotheses. Golden geometry and causal pair-count limits remain separate analytic arguments. Dual-cell and equal-volume weights are distinct finite measures; no physical population law follows.",
+          "source": "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex",
+          "tent_integrand_lipschitz_coefficient": "K"
+        },
+        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations. A separate protected-address experiment exactly distinguishes immutable records from moving live readbacks under pair means. Formal integrated cell estimates derive quadrature convergence from vanishing assignment distances. On the same prepared golden coordinates, a different local massive Dirichlet scalar action has an analytic free-field detector limit and a finite full-Fock compact detector response whose exact certified error is smaller than its signal",
         "supplied_law_refinement_control": {
           "analytic_controlled_causal_limit": true,
           "analytic_interval_volume_limit": true,

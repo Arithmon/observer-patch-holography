@@ -2,16 +2,16 @@
   "book": {
     "built_for_release_id": "r2040",
     "pdf_path": "book/reverse-engineering-reality-book.pdf",
-    "sha256": "98e19f1ac3eb16b073c3aadd40514074e0f7b3be9d026be9b8da3834af4b53c1",
-    "size_bytes": 1342234
+    "sha256": "5128daf9d22c6192651e140596a404a50e34a967488f2a013a86e1f270f85caf",
+    "size_bytes": 1343649
   },
   "extra_papers": {},
   "generated_at": "2026-09-09T00:00:00Z",
   "papers": {
     "deriving_standard_model_gauge_structure_from_observer_overlap_consistency": {
       "pdf_path": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf",
-      "sha256": "e8f91cc6f9c5e5db1c0167cffe94884706fa930810a82a3817d08cf568e6fcd2",
-      "size_bytes": 625492
+      "sha256": "9f3b0ff762df93f884e3abb48d40f60bd1ebab03751a509428d63c69a8b99185",
+      "size_bytes": 634361
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
@@ -20,13 +20,13 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "f2eba9f1161de0a8adfafa6adccc7c834472e327ef860b4aeef991f71bd02c2a",
-      "size_bytes": 464805
+      "sha256": "28b7e03eec9a238ac1b4cfdb40de8051011646d54586ad2ea59b956abf4a2580",
+      "size_bytes": 464130
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "363d0b4ed30f8733ce1ef538b42d66351f1c226a1d1dc26e3a4a8cf686dc4a59",
-      "size_bytes": 891244
+      "sha256": "b32b089a9267eebbfaa4034d10fc5baa81325e9ce716d2aebcc2a318e91fd79d",
+      "size_bytes": 891999
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
@@ -40,8 +40,8 @@
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "05acd591bc840e4b6678b12bc3146020a9f2013e9d5d9692f42b6539b8df345e",
-      "size_bytes": 710055
+      "sha256": "9d33bf00b34172bf15189ac4cd693ed191be27244ffb58d15e6b9922adf41abf",
+      "size_bytes": 747965
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",

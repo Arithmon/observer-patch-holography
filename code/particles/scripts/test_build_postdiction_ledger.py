@@ -1631,3 +1631,138 @@ def test_count_clock_ledger_rejects_forged_evidence(tmp_path, mutation):
     path.write_text(json.dumps(item), encoding="utf-8")
     with pytest.raises(SystemExit, match="count-clock independent replay failed"):
         ledger._source_count_clock_control(path)
+
+
+@pytest.fixture(scope="module")
+def common_scalar_control():
+    return ledger._common_source_scalar_control()
+
+
+def test_source_scalar_control_uses_full_replay_and_exact_packet_bounds(common_scalar_control):
+    control = common_scalar_control
+    packet = json.loads((ledger.REPO / control['receipt']).read_bytes())
+    last = packet['levels'][-1]
+    summary = control['independent_verifier_result']
+    assert summary['resolved_q'] == last['q']
+    assert summary['full_tensor_oscillators'] == last['dynamic_oscillators']
+    assert summary['error_upper'] == last['graph_vs_compact_continuum_error_upper'][1]
+    assert summary['resolved_signal_lower'] == last['resolved_graph_signal_lower']
+    assert ledger.Fraction(summary['error_upper']) < ledger.Fraction(summary['resolved_signal_lower'])
+    assert control['mathematical_replay'] is True
+    assert control['analytic_free_scalar_detector_limit'] is True
+    for key in ('observed_postdiction', 'source_action_population_or_physical_clock_selected',
+                'field_history_joined_to_causal_count_clock', 'interacting_quantum_continuum',
+                'full_continuum_theorem_formalized_in_lean'):
+        assert control[key] is False
+
+
+def test_source_scalar_control_rejects_coherent_error_and_signal_forgery(tmp_path):
+    packet = json.loads((ledger.CODE / 'source_scalar_packet/source_common_scalar_receipt.json').read_bytes())
+    row = packet['levels'][-1]
+    row['graph_vs_compact_continuum_error_upper'] = ['0', '0']
+    row['resolved_graph_signal_lower'] = '1/2'
+    row['graph_compact_induced_response'] = ['-1/2', '-1/2']
+    row['error_smaller_than_resolved_signal'] = True
+    path = tmp_path / 'coherent-scalar-forgery.json'
+    path.write_text(json.dumps(packet), encoding='utf-8')
+    with pytest.raises(SystemExit, match='structural certificate rejected'):
+        ledger._common_source_scalar_control(path)
+
+
+def test_source_quadrature_control_preserves_exact_formal_scope():
+    control = ledger._source_population_quadrature_control()
+    assert control['formal_actual_cell_integral_and_quadrature_limit'] is True
+    assert control['formal_golden_partition_geometry_or_causal_pair_count_limit'] is False
+    assert control['tent_integrand_lipschitz_coefficient'] == 'K'
+    assert 'partition_quadrature_tendsto' in control['lean_declarations']['SourcePopulationQuadrature']
+    assert control['observed_postdiction'] is False
+
+
+def test_protected_population_control_fresh_replay():
+    control = ledger._protected_population_control()
+    packet = json.loads((ledger.REPO / control['receipt']).read_bytes())
+    for key, value in packet['summary'].items():
+        assert control['independent_verifier_result'][key] == value
+    assert control['mathematical_replay'] is True
+    assert control['independent_verifier_result']['source_population_produced'] is False
+    assert control['independent_verifier_result']['persistent_memory_supplied'] is True
+    assert control['observed_postdiction'] is False
+
+
+def test_protected_population_control_rejects_resealed_missing_parent(tmp_path):
+    packet = json.loads((ledger.CODE / 'source_population/runtime/population_receipt.json').read_bytes())
+    next(event for event in packet['events'] if event['op'] == 'pair_mean')['parents'] = []
+    previous = '0' * 64
+    for event in packet['events']:
+        event['previous_hash'] = previous
+        raw = (json.dumps({k:v for k,v in event.items() if k != 'event_hash'},
+                          sort_keys=True, separators=(',', ':'), allow_nan=False) + '\n').encode()
+        previous = event['event_hash'] = hashlib.sha256(raw).hexdigest()
+    packet['final_event_hash'] = previous
+    path = tmp_path / 'resealed-population.json'
+    path.write_text(json.dumps(packet), encoding='utf-8')
+    with pytest.raises(SystemExit, match='read-from parent'):
+        ledger._protected_population_control(path)
+
+
+def test_local_sm_control_labels_custody_only_and_reads_inventory():
+    control = ledger._local_sm_action_control()
+    packet = json.loads((ledger.REPO / control['receipt']).read_bytes())
+    assert control['mathematical_replay'] is False
+    assert control['custody_verifier_result']['mathematical_replay'] is False
+    assert control['packet_inventory']['action_sectors'] == len(packet['action_coefficients'])
+    assert control['packet_inventory']['matter_currents'] == len(packet['matter_current_coefficients'])
+    assert control['observed_postdiction'] is False
+    assert 'accepted' not in control
+
+
+def test_local_sm_control_rejects_quantum_promotion(tmp_path):
+    packet = json.loads((ledger.CODE / 'sm_local_action/local_action_receipt.json').read_bytes())
+    packet['scope']['renormalized_quantum_theory'] = True
+    path = tmp_path / 'promoted-action.json'
+    path.write_text(json.dumps(packet), encoding='utf-8')
+    with pytest.raises(SystemExit, match='scientific scope'):
+        ledger._local_sm_action_control(path)
+
+
+def test_local_sm_control_rejects_custody_as_mathematical_replay(monkeypatch):
+    monkeypatch.setattr(ledger, '_structural_packet', lambda *a, **k: (
+        {}, {'accepted_custody': True, 'mathematical_replay': True}, {}))
+    with pytest.raises(SystemExit, match='masquerade'):
+        ledger._local_sm_action_control()
+
+
+def test_fresh_structural_loader_reloads_same_size_source_and_restores_helper(tmp_path):
+    import types
+    import sys
+    helper = tmp_path / 'isolated_test_helper.py'
+    helper.write_text('VALUE=1\n', encoding='utf-8')
+    verifier = tmp_path / 'check.py'
+    verifier.write_text('from isolated_test_helper import VALUE\n', encoding='utf-8')
+    existing = types.ModuleType('isolated_test_helper')
+    existing.VALUE = 999
+    saved = sys.modules.get('isolated_test_helper')
+    sys.modules['isolated_test_helper'] = existing
+    try:
+        assert ledger._fresh_structural_verifier(verifier, 'isolated_test_helper').VALUE == 1
+        stamp = helper.stat()
+        helper.write_text('VALUE=2\n', encoding='utf-8')
+        import os
+        os.utime(helper, ns=(stamp.st_atime_ns, stamp.st_mtime_ns))
+        assert ledger._fresh_structural_verifier(verifier, 'isolated_test_helper').VALUE == 2
+        assert sys.modules['isolated_test_helper'] is existing
+    finally:
+        if saved is None:
+            sys.modules.pop('isolated_test_helper', None)
+        else:
+            sys.modules['isolated_test_helper'] = saved
+
+
+def test_spatial_and_local_action_enrich_existing_structural_rows(result):
+    rows = {r['id']:r for r in result['sections']['forced_structure']}
+    assert len(rows) == 56
+    spatial = rows['source_derived_finite_one_three_causal_carrier']
+    assert spatial['common_free_scalar_control']['mathematical_replay'] is True
+    assert spatial['protected_population_control']['mathematical_replay'] is True
+    assert spatial['metric_scalar_continuum']['quantum_continuum_claim'] is False
+    assert rows['hypercharge_spectrum']['declared_local_action_control']['mathematical_replay'] is False

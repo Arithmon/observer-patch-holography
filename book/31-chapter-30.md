@@ -134,7 +134,7 @@ The line has four terms in it, written schematically, each standing for a block 
 
 $$\mathcal{L} \;=\; \mathcal{L}_{\text{carry}} \;+\; \mathcal{L}_{\text{matter}} \;+\; \mathcal{L}_{\text{couple}} \;+\; \mathcal{L}_{\text{select}}$$
 
-Four things added together. The chapters behind this one built every symbol in them.
+The representation table supports a local action on specified flat spacetime with a spin convention. Gauge fields, anticommuting fermions and the Higgs field enter one expression, with all three kinds of Yukawa coupling. Gauge identities hold even when the relabeling varies from place to place: its derivatives cancel. The kinetic choice, Higgs terms and coefficients are supplied; connecting this action to the observers' repair records remains a separate requirement.
 
 The script L on the left is a Lagrangian in the sense taught above, with one change of scale. Where the thrown ball had a position and a speed, this one takes a field's value at a place and how fast that value is changing, and its running total runs over all of space and all of time rather than along a single arc.
 
@@ -150,15 +150,15 @@ Alongside the four sits gravity's term, chapter twenty-four's curvature. On the 
 
 The prologue promised a distinction between reconstructed structure and the physical assumptions behind each symbol. Chapter fifteen supplies a continuous three-dimensional carrier and finite populations selected by its distances. Chapter twenty-five constrains the local gauge Lie algebra under complete reversible response and internal transport; chapter twenty-seven classifies field candidates under its stated interfaces. These results organize the ingredients of the line. Their common physical realization, the interaction coefficients and the assignment of laboratory units require their own justification. A four-dimensional space of possible event coordinates does not by itself provide a physical clock or make recorded dependencies into signals.
 
-Those are the same marks somebody else writes on line one. The difference shows up in a single place. Written first, the line has three families in it because three families were found. Written here, it has three because an oriented face has three corners.
+The proposed face-to-family identification supplies three copies of the matter grammar. The local action and its gauge identities are checked at that declared multiplicity; they do not establish its physical realization.
 
 ## What a compression costs
 
 A compression is allowed to be lossy, and the useful ones generally are.
 
-The familiar field Lagrangian is written on a smooth spacetime. A finite system can justify that description through a controlled approximation. On chapter fifteen's selected source records, assign each field value the volume nearest to its point and supply a positive, distance-dependent coupling to nearby values. The resulting finite action has a continuum limit for a smooth scalar wave before it reaches the observing window's boundary. Its field and detector errors have explicit bounds. The geometry need not start as a Cartesian grid.
+A finite system can justify a smooth field description through a controlled approximation. On prepared golden source addresses, one positive nearest-neighbor tensor action gives classical waves and, after canonical quantization, a full oscillator Fock space. The comparison theory is a massive scalar field in a cube with fixed boundary values. Refining the actual source addresses makes smeared classical and coherent quantum readouts converge.
 
-The same finite action also supplies an ordinary Hilbert space after canonical quantization is specified. For positive mass, its independent oscillator modes have Gaussian vacuum states; zero-frequency modes require separate treatment. This joins finite geometry, scalar motion and a quantum state space for one declared model. It does not derive the entire interacting Standard Model or identify that model with physical repair dynamics. A finite approximation can be adequate for a calculation while its physical choice remains a question.
+The same calculation resolves a compact disturbance at a detector confined to a separate slab. At 233 source coordinates per axis, the total probability error stays below 0.050055 while the induced signal exceeds 0.137754 throughout model time from 0.95 to 1. Both spatial localization errors and the omitted spectral comparison modes are controlled. Tensor factorization makes the calculation small; it is not a full observer-network execution. The action, protected address records, quantization and model time remain specified inputs. Their connection to physical repair dynamics and to the count clock remains a further task.
 
 The second loss is sharper, and can be written down exactly.
 

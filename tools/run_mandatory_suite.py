@@ -42,6 +42,18 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
+        "Replay the golden scalar full-leakage and compact-detector certificate",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_packet/test_source_common_scalar.py"],
+    ),
+    (
+        "Replay the local Standard Model jet action and Grassmann Ward controls",
+        [sys.executable, "-m", "pytest", "-q", "code/sm_local_action/test_local_action.py"],
+    ),
+    (
+        "Replay exact protected source-population records and mutation controls",
+        [sys.executable, "-m", "pytest", "-q", "code/source_population/test_population.py"],
+    ),
+    (
         "Execute strict JSON duplicate-key gates",
         [sys.executable, "-m", "pytest", "-q", "tools/test_strict_json.py"],
     ),

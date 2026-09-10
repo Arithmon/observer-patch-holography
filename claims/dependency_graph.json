@@ -2030,6 +2030,11 @@
    "to": "OPH-WHITNEY-CHARGED-INSTRUMENT",
    "role": "supplies the independently verified historical q/v error enclosure for the new decoded-checkpoint triangle bound only",
    "from": "OPH-WHITNEY-CHARGED-ENCLOSURE"
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+   "role": "Supplies only the golden source-address family for the distinct declared tensor scalar-action instantiation; neither the general comparison theorem nor its finite packet consumes native physical spacetime selection or authenticated field/count-clock identification."
   }
  ]
 }

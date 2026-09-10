@@ -1,3 +1,5 @@
+import Geometry.SourceRecordProtection
+import Geometry.SourcePopulationQuadrature
 import Geometry.SourceNetCausalCone
 import Geometry.SourceNetLayeredOrder
 import Geometry.OrderingFractionFourDimensional
