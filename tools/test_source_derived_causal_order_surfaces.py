@@ -3,8 +3,11 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
+
+import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -299,6 +302,79 @@ def test_scientific_registry_cites_the_causal_poset_package() -> None:
     assert f"{POSET_PACKAGE}/source_net_causal_limit_receipt.json" in local_domain_evidence
     assert not any("causet_likeness" in item for item in local_domain_evidence)
     assert not (ROOT / "evidence/causet_likeness").exists()
+
+
+@pytest.fixture
+def causal_archive_checker():
+    path = ROOT / POSET_PACKAGE / "verify_causal_poset_archive.py"
+    spec = importlib.util.spec_from_file_location("causal_archive_checker", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_causal_archive_fresh_metadata_and_poset_replay(causal_archive_checker) -> None:
+    assert causal_archive_checker.main() == 0
+
+
+@pytest.mark.parametrize("mutation", (
+    "family_digest", "carrier_digest", "producer_digest", "missing_producer",
+    "extra_producer", "duplicate_research", "inventory_digest", "total_bytes",
+    "duplicate_inventory", "floating_size",
+))
+def test_causal_archive_rejects_contradictory_metadata(
+    mutation, causal_archive_checker, tmp_path, monkeypatch,
+) -> None:
+    manifest = _json(f"{POSET_PACKAGE}/archive_manifest.json")
+    if mutation in ("family_digest", "carrier_digest"):
+        key = "source_net_receipt_sha256" if mutation == "family_digest" else "carrier_receipt_sha256"
+        manifest["result"][key] = "sha256:" + "0" * 64
+    elif mutation == "producer_digest":
+        manifest["source"]["producer_files"]["tests/test_exact_carrier_source_net.py"] = "0" * 64
+    elif mutation == "missing_producer":
+        del manifest["source"]["producer_files"]["tests/test_exact_carrier_source_net.py"]
+    elif mutation == "extra_producer":
+        manifest["source"]["producer_files"]["oph_exact/invented.py"] = "0" * 64
+    elif mutation == "duplicate_research":
+        paths = manifest["source"]["research_files_pinned_by_the_receipts"]
+        paths.append(paths[0])
+    elif mutation == "inventory_digest":
+        manifest["curated_archive"]["inventory_sha256"] = "0" * 64
+    elif mutation == "total_bytes":
+        manifest["curated_archive"]["total_bytes"] += 1
+    elif mutation == "duplicate_inventory":
+        manifest["inventory"].append(manifest["inventory"][0].copy())
+    else:
+        manifest["inventory"][0]["bytes"] = float(manifest["inventory"][0]["bytes"])
+    candidate = tmp_path / "manifest.json"
+    candidate.write_text(json.dumps(manifest), encoding="utf-8")
+    monkeypatch.setattr(causal_archive_checker, "MANIFEST", candidate)
+    with pytest.raises(SystemExit, match="FAIL:"):
+        causal_archive_checker.main()
+
+
+@pytest.mark.parametrize("mutation", ("conflicting_shared_source", "family_attachment", "log_attachment"))
+def test_causal_archive_rejects_conflicting_receipt_metadata(
+    mutation, causal_archive_checker,
+) -> None:
+    manifest = _json(f"{POSET_PACKAGE}/archive_manifest.json")
+    family = _json(f"{POSET_PACKAGE}/source_net_causal_limit_receipt.json")
+    carrier = _json(f"{POSET_PACKAGE}/carrier_source_net_receipt.json")
+    key = {
+        "conflicting_shared_source": "oph_exact/source_net.py",
+        "family_attachment": "data/exact/source_net_causal_limit_receipt.json",
+        "log_attachment": "data/exact/carrier_source_net_logs/q5_event_log.json.gz",
+    }[mutation]
+    carrier["source_pins"][key] = "0" * 64
+    with pytest.raises(SystemExit, match="FAIL:"):
+        causal_archive_checker.check_metadata(manifest, family, carrier)
+
+
+def test_causal_archive_rejects_duplicate_json_metadata(causal_archive_checker, tmp_path) -> None:
+    path = tmp_path / "duplicate.json"
+    path.write_text('{"commit":"first","commit":"second"}', encoding="utf-8")
+    with pytest.raises(ValueError, match="duplicate key"):
+        causal_archive_checker.strict_json(path)
 
 
 def test_publication_surfaces_reject_the_retired_gluing_story() -> None:

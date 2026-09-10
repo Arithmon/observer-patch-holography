@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Fail-closed checker for the OPH causal poset evidence package.
 
-Standard library and numpy only. Checks every manifest digest, strict JSON
-decoding, the receipt schemas, the nonclaim flags, the cross-check flags of
+Standard library and numpy only. Checks every manifest digest, agreement of
+provenance metadata with the pinned receipts, strict JSON decoding, the
+receipt schemas, the nonclaim flags, the cross-check flags of
 the carrier realization, and rebuilds the poset at q = 5 and q = 8 through
 ``build_causal_poset.py`` (which imports no simulator code).
 """
@@ -37,13 +38,58 @@ def strict_json(path: Path):
     def reject(token: str):
         raise ValueError(f"non-finite numeric token {token!r} in {path.name}")
 
-    return json.loads(path.read_text(encoding="utf-8"), parse_constant=reject)
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"duplicate key {key!r} in {path.name}")
+            result[key] = value
+        return result
+
+    return json.loads(path.read_text(encoding="utf-8"), parse_constant=reject,
+                      object_pairs_hook=unique)
+
+
+def check_metadata(manifest: dict, family: dict, carrier: dict) -> None:
+    """Cross-check descriptive metadata against authenticated archive bytes.
+
+    Commit-to-source authentication is recorded by the curator; this offline
+    check does not contact GitHub or substitute a mutable simulator checkout.
+    """
+    producers = {}
+    research = set()
+    for receipt in (family, carrier):
+        for name, digest in receipt["source_pins"].items():
+            if name.startswith(("oph_exact/", "tests/")):
+                require(name not in producers or producers[name] == digest,
+                        f"conflicting producer pin {name}")
+                producers[name] = digest
+            elif name.startswith("reverse-engineering-reality/"):
+                research.add(name.removeprefix("reverse-engineering-reality/"))
+    require(manifest["source"]["producer_files"] == producers,
+            "producer metadata differs from receipt pins")
+    declared_research = manifest["source"]["research_files_pinned_by_the_receipts"]
+    require(len(declared_research) == len(research) and set(declared_research) == research,
+            "research source census differs from receipt pins")
+    for field, name in (
+        ("source_net_receipt_sha256", "source_net_causal_limit_receipt.json"),
+        ("carrier_receipt_sha256", "carrier_source_net_receipt.json"),
+    ):
+        require(manifest["result"][field] == sha256(HERE / name),
+                f"result receipt digest {field}")
+    for name in ("source_net_causal_limit_receipt.json",
+                 "carrier_source_net_logs/q5_event_log.json.gz",
+                 "carrier_source_net_logs/q8_event_log.json.gz"):
+        require(carrier["source_pins"]["data/exact/" + name] ==
+                sha256(HERE / name).removeprefix("sha256:"),
+                f"carrier attachment digest {name}")
 
 
 def main() -> int:
     manifest = strict_json(MANIFEST)
     require(manifest.get("schema") == "oph.curated_evidence_package.v1", "manifest schema")
     files = {row["path"]: row for row in manifest["inventory"]}
+    require(len(files) == len(manifest["inventory"]), "duplicate inventory path")
     listed = set(files)
     present = {
         p.relative_to(HERE).as_posix()
@@ -52,17 +98,30 @@ def main() -> int:
     }
     control = CONTROL | {"README.md"}
     require(listed | control == present, f"file set mismatch: {sorted(listed ^ (present - control))}")
-    for name, entry in files.items():
+    inventory_lines = []
+    total_bytes = 0
+    for name, entry in sorted(files.items()):
         path = HERE / name
         require(path.is_file(), f"missing {name}")
         require(sha256(path) == "sha256:" + entry["sha256"], f"digest mismatch {name}")
-        require(path.stat().st_size == entry["bytes"], f"size mismatch {name}")
-    require(manifest["curated_archive"]["file_count"] == len(files), "file count")
+        require(type(entry["bytes"]) is int and path.stat().st_size == entry["bytes"],
+                f"size mismatch {name}")
+        total_bytes += entry["bytes"]
+        inventory_lines.append(f"{entry['sha256']}  {entry['bytes']}  {name}\n")
+    curated = manifest["curated_archive"]
+    require(type(curated["file_count"]) is int and curated["file_count"] == len(files),
+            "file count")
+    require(type(curated["total_bytes"]) is int and curated["total_bytes"] == total_bytes,
+            "total byte count")
+    require(curated["inventory_sha256"] ==
+            hashlib.sha256("".join(inventory_lines).encode("utf-8")).hexdigest(),
+            "inventory digest")
 
     family = strict_json(HERE / "source_net_causal_limit_receipt.json")
     carrier = strict_json(HERE / "carrier_source_net_receipt.json")
     require(family["schema"] == "oph.exact.source-net-causal-limit.v1", "family schema")
     require(carrier["schema"] == "oph.exact.carrier-source-net.v1", "carrier schema")
+    check_metadata(manifest, family, carrier)
     for flag in (
         "native_repair_selected",
         "physical_clock_or_spacetime_identified",

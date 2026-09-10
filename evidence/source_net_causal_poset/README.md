@@ -45,7 +45,7 @@ counted event per carrier and round are supplied, as in the source paper.
 | Graph-distance characterization | `(j,s) <= (j',t)` iff `d(s,t) <= j' - j` | proved, `walk_iff_walkDist_le`; concrete bridge `precedes_iff_layerPrec` |
 | Width | equals the site count `q^3` | proved, `width_eq_card_sites`; computed at every `q` |
 | Height | every event at round `j` has height `j` | proved, `height_eq_layer` |
-| Cone sandwich | `k(a - 2h) <= displacement <= k a` on every `k`-round reach | proved, `Lean/Geometry/SourceNetCausalCone.lean`; computed cone checks at every `q` with zero violations |
+| Cone sandwich | `displacement <= k(a - 2h)` implies reachability; reachability implies `displacement <= k a`, for `k >= 1`, an `h`-covering population in a convex window, and `a > 2h` | proved, `Lean/Geometry/SourceNetCausalCone.lean`; computed cone checks at every `q` with zero violations |
 | Interior-diamond dimension, 3D family | 2.63, 2.93, 4.15, 3.61, 4.10, 4.09 at `q = 5, 8, 13, 21, 34, 55` | computed, `vertical_intervals[-1].myrheim_meyer_dimension` |
 | Ordering fraction, 3D family | 0.306, 0.241, 0.088, 0.138, 0.092, 0.093 against the flat value 1/10 | computed; the constant 1/10 is proved, `Lean/Geometry/OrderingFractionFourDimensional.lean`, `orderingFraction_eq` |
 | Layer parity | even `K` approaches 1/10 from below, odd `K` from above | computed |
@@ -59,9 +59,9 @@ counted event per carrier and round are supplied, as in the source paper.
 | Intervention | a `+1` at the centre changes exactly the future cone in every round | computed, `intervention` |
 | Theory replay | 28 structural fields byte-equal to the source paper's replay at `q = 5, 8, 13` | computed, `rer_cross_check` |
 | Operation costs | reads per round `2E + n`; at `q = 34`: 157,922,880 reads, 275,128 writes, 2.40 GB under the declared byte model | computed, `operation_costs` |
-| Order and volume determine conformal geometry and scale | Hawking, King, McCarthy; Malament | declared inference |
+| Continuum reconstruction | On past- and future-distinguishing Lorentzian spacetimes, chronological order determines the conformal geometry; an identified metric volume measure fixes the conformal factor | imported continuum theorem; not a finite-poset existence theorem |
 | Selection of the population and read law by native repairs | | is work in progress |
-| Physical clock, continuum limit | | is work in progress |
+| Physical clock and source-selected continuum | not supplied by these receipts; the declared-family analytic limit is in the source paper | distinct from finite numerical diagnostics |
 | Isotropy of link directions, interval abundance profile, curvature estimators, S2 support wiring readout | | is work in progress |
 
 ## Independent checks

@@ -12,11 +12,11 @@
    "tests/test_exact_source_net.py": "69a288437a786e94c3315cd1e31dbb6b8f42bb3be508f5ab322ad2668d8298ff",
    "oph_exact/carrier_source_net.py": "9ad6bb389dc2f53e9442370a4d61603576fae9d0ff5810683740c08672f42bd2",
    "oph_exact/verify_carrier_source_net_independent.py": "b217b8a27eee823045d13937f897c8d5836cbc784911d62e7df2dc55b6fd0030",
-   "tests/test_exact_carrier_source_net.py": "f8ac02ddac472808b18e68737c82befada958b770f5201c165f197817061960f",
+   "tests/test_exact_carrier_source_net.py": "06939f36e14549db4f4ba51aee67785523ab6db26441fbd6c8eea2d11d4151e7",
    "oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb"
   },
   "research_repository": "https://github.com/FloatingPragma/observer-patch-holography",
-  "research_commit": "2d942c1e4a3c50d85bfd366f18f0d2f993587c13",
+  "research_commit": "af457d6726281e4a979cf9507d6cb2e23088bb13",
   "research_files_pinned_by_the_receipts": [
    "code/causal_refinement/source_net_causet.py",
    "code/causal_refinement/source_net_causet_receipt.json",
@@ -27,7 +27,7 @@
  "curated_archive": {
   "file_count": 5,
   "total_bytes": 417493,
-  "inventory_sha256": "5d22333f927f60a141b80768b81b923233ebcc108ddf7bfe3fec70bd8d9f3ddc",
+  "inventory_sha256": "36259ccf0a624ab7e036b5d08dbf9e9a0d4e5082cf029363b1ee9d01064de999",
   "is_complete_copy_of_original_receipts": true,
   "selection": "the source-net causal-limit receipt (q = 5..55, three families), the carrier source-net receipt (q = 5..34), the two stored carrier event logs (q = 5, 8) and the standalone generator"
  },
@@ -92,8 +92,8 @@
    13
   ],
   "rer_compared_fields": 28,
-  "source_net_receipt_sha256": "sha256:f4ba67339fe0cde062d7e9b80a70082be3d842c04992ec8f0e5c8d7523adb77b",
-  "carrier_receipt_sha256": "sha256:9c041314985c41bc04c80dc29cd9dd1023020c52e9c07780ee871fdb59ee788c"
+  "source_net_receipt_sha256": "sha256:97c837913b75b2b019428028e114259caedd54345bd5a2efb78abd040f7e11f3",
+  "carrier_receipt_sha256": "sha256:755c7721f719dcf6811f602afa108589dce3fb6bacc92530e6958c6b8b358f64"
  },
  "known_boundaries": {
   "population_selected_by_native_repair": false,
