@@ -49,9 +49,43 @@ class CosetCarrierCertificateTests(unittest.TestCase):
                 self.assertEqual(len(generators), 1)
 
     def test_presentation_supplies_exactly_the_carriers(self) -> None:
-        solutions, image = cert.presentation_placements(self.quotient)
+        solutions, image, orders = cert.presentation_placements(self.quotient)
         self.assertEqual(solutions, 120)
         self.assertEqual(image, set(self.built.carriers))
+        self.assertEqual(orders, {(4, 6, 10)})
+
+    def test_free_common_value_adds_only_the_trivial_solution(self) -> None:
+        source = self.quotient.source
+        free = cert.presentation_solutions_any_common_value(source)
+        self.assertEqual(len(free), 121)
+        self.assertEqual([s for s in free if s[0] == source.identity], [(source.identity,) * 4])
+
+    def test_automorphisms_are_enumerated_exhaustively(self) -> None:
+        ((x, y, _z),) = cert.triangle_generators(self.quotient, self.built.carriers[0])
+        pruned = cert.enumerate_automorphisms(self.quotient, x, y)
+        unpruned = cert.enumerate_automorphisms(self.quotient, x, y, prune=False)
+        _, gl2 = cert.gl2_conjugators(self.quotient)
+        self.assertEqual(len(pruned), 120)
+        self.assertEqual(pruned, unpruned)
+        self.assertEqual(pruned, gl2)
+
+    def test_generator_images_with_the_wrong_product_order_do_not_extend(self) -> None:
+        q = self.quotient
+        ((x, y, _z),) = cert.triangle_generators(q, self.built.carriers[0])
+        order = lambda g: cert.element_order(q.mul, q.identity, g)  # noqa: E731
+        bad = next(
+            (x2, y2) for x2 in q.elements for y2 in q.elements
+            if order(x2) == 2 and order(y2) == 3 and order(q.mul(x2, y2)) != 5
+        )
+        self.assertIsNone(cert.automorphism_from_generator_images(q, (x, y), bad))
+
+    def test_klein_four_actions_identify_A5_and_S5(self) -> None:
+        q = self.quotient
+        inner = {tuple(q.mul(q.mul(g, h), q.inv(g)) for h in q.elements) for g in q.elements}
+        ((x, y, _z),) = cert.triangle_generators(q, self.built.carriers[0])
+        automorphisms = cert.enumerate_automorphisms(q, x, y)
+        self.assertEqual(cert.klein_four_action(q, sorted(inner)), (5, 60, True))
+        self.assertEqual(cert.klein_four_action(q, sorted(automorphisms)), (5, 120, False))
 
     def test_every_carrier_relabels_onto_the_committed_packet(self) -> None:
         committed = cert.relabel_faces(self.built.fixture.oriented_faces, range(12))

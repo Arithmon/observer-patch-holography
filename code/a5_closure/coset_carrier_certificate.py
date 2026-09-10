@@ -3,13 +3,16 @@
 supplied binary icosahedral source.
 
 The source manifest declares one finite group, SL(2, F_5), as the exact finite
-representative of the binary icosahedral group 2I.  The identification
-SL(2, 5) = 2I is classical and is cited here without formalization.  The
-verifier:
+representative of the binary icosahedral group 2I.  The verifier checks the
+properties that make it a non-split central extension of A5 by a group of
+order two; the uniqueness of that extension, which completes the
+identification with 2I, is cited in the claim boundary.  The verifier:
 
 * constructs SL(2, F_5) and checks its order, centre {+I, -I}, unique
   involution, perfectness, and binary icosahedral element-order profile;
-* forms the central quotient G of order sixty;
+* forms the central quotient G of order sixty and identifies G with A5 and
+  Aut(G) with S5 through their faithful actions on the five Klein
+  four-subgroups, after enumerating Aut(G) exhaustively;
 * enumerates every placement (C5, C3, C2) of cyclic subgroups of G, 900 in
   all, and builds the coset geometry with vertices G/C5, faces G/C3, edges
   G/C2, and incidence by nonempty coset intersection;
@@ -20,9 +23,9 @@ verifier:
 The local counts are identical for all 900 placements.  Exactly 120
 placements close into the committed oriented carrier.  They are the
 placements admitting generators x, y, z of orders 2, 3, 5 with xyz = 1, and
-they correspond bijectively to the solutions of a^2 = b^3 = c^5 = abc in
-SL(2, F_5).  They form two orbits under inner automorphisms and one orbit
-under all automorphisms of the supplied group.
+they correspond bijectively to the solutions of a^2 = b^3 = c^5 = abc = -I
+in SL(2, F_5).  They form two orbits under inner automorphisms and one orbit
+under Aut(G).
 
 The reconstruction is conditional on the supplied group and factors through
 its central quotient.  It makes no physical selection of the source.
@@ -502,8 +505,8 @@ def classify_placements(quotient: Quotient, subs: Mapping[int, list[frozenset]])
     return verdicts, summary
 
 
-def gl2_conjugators(quotient: Quotient) -> tuple[list[Callable[[Matrix], Matrix]], int]:
-    """Conjugation by GL(2, F_p) on G, with the number of distinct automorphisms it induces."""
+def gl2_conjugators(quotient: Quotient) -> tuple[list[Callable[[Matrix], Matrix]], set[tuple[Matrix, ...]]]:
+    """Conjugation by GL(2, F_p) on G, with the distinct automorphisms it induces as image tables."""
     p = quotient.source.p
     maps, images = [], set()
     for M in itertools.product(range(p), repeat=4):
@@ -518,7 +521,7 @@ def gl2_conjugators(quotient: Quotient) -> tuple[list[Callable[[Matrix], Matrix]
 
         maps.append(conj)
         images.add(tuple(conj(g) for g in quotient.elements))
-    return maps, len(images)
+    return maps, images
 
 
 def orbit_sizes(placements: Sequence[Placement], conjugators: Sequence[Callable[[Matrix], Matrix]]) -> list[int]:
@@ -534,8 +537,9 @@ def orbit_sizes(placements: Sequence[Placement], conjugators: Sequence[Callable[
     return sorted(sizes)
 
 
-def presentation_placements(quotient: Quotient) -> tuple[int, set[Placement]]:
-    """Solutions of a^2 = b^3 = c^5 = abc (= -I) in the source, mapped to placements."""
+def presentation_placements(quotient: Quotient) -> tuple[int, set[Placement], set[tuple[int, int, int]]]:
+    """Solutions of a^2 = b^3 = c^5 = abc = -I in the source, mapped to placements, with the
+    element orders of (a, b, c) that occur."""
     source = quotient.source
     minus = source.minus_identity
     solutions = []
@@ -555,7 +559,106 @@ def presentation_placements(quotient: Quotient) -> tuple[int, set[Placement]]:
         tuple(frozenset(quotient.canon(g) for g in cyclic_subgroup(source.mul, source.identity, w)) for w in (c, b, a))
         for a, b, c in solutions
     }
-    return len(solutions), image
+    orders = {tuple(element_order(source.mul, source.identity, w) for w in s) for s in solutions}
+    return len(solutions), image, orders
+
+
+def presentation_solutions_any_common_value(source: Source) -> list[tuple[Matrix, Matrix, Matrix, Matrix]]:
+    """Every (w, a, b, c) with a^2 = b^3 = c^5 = abc = w, the common value w left free."""
+    out = []
+    for a in source.elements:
+        w = source.mul(a, a)
+        for b in source.elements:
+            if source.mul(b, source.mul(b, b)) != w:
+                continue
+            c = source.mul(source.inv(source.mul(a, b)), w)
+            c5 = c
+            for _ in range(4):
+                c5 = source.mul(c, c5)
+            if c5 == w:
+                out.append((w, a, b, c))
+    return out
+
+
+def word_map(quotient: Quotient, generators: Sequence[Matrix], images: Sequence[Matrix]) -> dict[Matrix, Matrix]:
+    """Send each generator to its image and extend along a breadth-first spanning tree of G."""
+    alpha = {quotient.identity: quotient.identity}
+    queue = [quotient.identity]
+    for g in queue:
+        for s, t in zip(generators, images):
+            h = quotient.mul(g, s)
+            if h not in alpha:
+                alpha[h] = quotient.mul(alpha[g], t)
+                queue.append(h)
+    return alpha
+
+
+def automorphism_from_generator_images(
+    quotient: Quotient, generators: Sequence[Matrix], images: Sequence[Matrix]
+) -> tuple[Matrix, ...] | None:
+    """The automorphism with the given generator images, as its table over the sorted elements,
+    or None when the spanning-tree extension is not a bijective homomorphism."""
+    G = quotient.elements
+    alpha = word_map(quotient, generators, images)
+    if len(alpha) != len(G) or len(set(alpha.values())) != len(G):
+        return None
+    if not all(alpha[quotient.mul(g, h)] == quotient.mul(alpha[g], alpha[h]) for g in G for h in G):
+        return None
+    return tuple(alpha[g] for g in G)
+
+
+def enumerate_automorphisms(quotient: Quotient, x: Matrix, y: Matrix, prune: bool = True) -> set[tuple[Matrix, ...]]:
+    """Every automorphism of G, as its table of images over the sorted elements.
+
+    An automorphism is fixed by its values on the generators x and y, which keep their orders.
+    Every candidate pair is extended along a spanning tree and kept exactly when the extension is a
+    bijective homomorphism, so the size of the automorphism group is an output of the search.  The
+    filter on the order of the product shortens the search; with prune=False every pair of the
+    right orders is tested."""
+    e, G = quotient.identity, quotient.elements
+    require(len(word_map(quotient, (x, y), (x, y))) == len(G), "AUTOMORPHISM_GROUP", "x and y do not generate G")
+    order = {g: element_order(quotient.mul, e, g) for g in G}
+    target = order[quotient.mul(x, y)]
+    found = set()
+    for x2 in G:
+        if order[x2] != order[x]:
+            continue
+        for y2 in G:
+            if order[y2] != order[y] or (prune and order[quotient.mul(x2, y2)] != target):
+                continue
+            table = automorphism_from_generator_images(quotient, (x, y), (x2, y2))
+            if table is not None:
+                found.add(table)
+    return found
+
+
+def permutation_parity(p: Sequence[int]) -> int:
+    seen: set[int] = set()
+    parity = 0
+    for i in range(len(p)):
+        length, j = 0, i
+        while j not in seen:
+            seen.add(j)
+            j = p[j]
+            length += 1
+        if length:
+            parity ^= (length - 1) & 1
+    return parity
+
+
+def klein_four_action(quotient: Quotient, automorphisms: Sequence[tuple[Matrix, ...]]) -> tuple[int, int, bool]:
+    """(number of Klein four-subgroups, distinct permutations induced on them, whether all are even)."""
+    e, G = quotient.identity, quotient.elements
+    involutions = [g for g in G if g != e and quotient.mul(g, g) == e]
+    fours = sorted(
+        {frozenset((e, u, v, quotient.mul(u, v))) for u in involutions for v in involutions
+         if u != v and quotient.mul(u, v) == quotient.mul(v, u)},
+        key=sorted,
+    )
+    position = {g: i for i, g in enumerate(G)}
+    index = {V: i for i, V in enumerate(fours)}
+    permutations = {tuple(index[frozenset(images[position[g]] for g in V)] for V in fours) for images in automorphisms}
+    return len(fours), len(permutations), all(permutation_parity(p) == 0 for p in permutations)
 
 
 # ---------------------------------------------------------------------------
@@ -731,11 +834,13 @@ CHOICE_ACCOUNTING = {
         "incidence count, identically for all 900 placements. They do not determine the global incidence."
     ),
     "relative_placement": (
-        "Exactly 120 of the 900 placements close into the committed carrier. They are the placements "
-        "with generators x, y, z of orders 2, 3, 5 satisfying xyz = 1; they form two orbits of 60 under "
-        "inner automorphisms and one orbit under all automorphisms of the source. The placement is "
-        "therefore unique up to automorphisms of the supplied group, and the presentation "
-        "a^2 = b^3 = c^5 = abc supplies a compatible placement with no further choice."
+        "Exactly 120 of the 900 placements close into the committed carrier: the placements with "
+        "generators x, y, z of orders 2, 3, 5 satisfying xyz = 1. They form one orbit under Aut(G), "
+        "which the verifier enumerates exhaustively (120 automorphisms, each induced by conjugation in "
+        "GL(2, F_5)), and two orbits of 60 under the inner automorphisms, so the placement is unique up "
+        "to automorphisms of G. The presentation a^2 = b^3 = c^5 = abc = -I has exactly 120 solutions in "
+        "the source, one over each compatible placement, so declaring the source by that presentation "
+        "supplies exactly the compatible placements and leaves no further choice modulo automorphisms."
     ),
     "duality": (
         "Twelve ports select the stabilizer of order five: G/C5 has twelve points, G/C3 has twenty, "
@@ -743,9 +848,10 @@ CHOICE_ACCOUNTING = {
     ),
     "orientation": (
         "The construction outputs a coherent orientation, read from the chambers whose three cosets "
-        "share one representative. For every compatible placement, 60 of the 120 graph relabellings "
-        "carry it onto the committed orientedFaces, and a fixture with every face reversed is matched "
-        "through the antipode."
+        "share one representative. For each of the 120 compatible placements the verifier recomputes "
+        "all 120 graph relabellings onto the committed adjacency: 60 carry the orientation onto the "
+        "committed orientedFaces, and the other 60 are exactly those composed with the committed "
+        "antipode, which carry it onto the fully reversed packet."
     ),
     "residual_premise": (
         "The supplied group. The certificate takes SL(2, F_5) as given and makes no selection among "
@@ -754,11 +860,21 @@ CHOICE_ACCOUNTING = {
 }
 
 CLAIM_BOUNDARY = (
-    "Conditional on the supplied group SL(2, F_5), taken as the exact finite representative of the "
-    "binary icosahedral group 2I; that identification is classical and is cited without formalization. "
-    "The reconstruction factors through the central quotient, so it cannot distinguish the source from "
-    "its quotient. It does not select the source group, identify ports with physical objects, or alter "
-    "the declared status of the A1 boundary packet."
+    "Conditional on the supplied group SL(2, F_5). The verifier checks its order, centre {+I, -I}, unique "
+    "involution, perfectness, and element-order profile, and identifies G = S/Z(S) with A5 through the "
+    "faithful action on the five Klein four-subgroups; together these make S a non-split central extension "
+    "of A5 by Z/2. The binary icosahedral group 2I is such an extension as well, since -1 is its only "
+    "involution. The identification of S with 2I rests on one cited fact: the Schur multiplier of A5 is Z/2 "
+    "(J. Schur, J. Reine Angew. Math. 139 (1911) 155-250, doi:10.1515/crll.1911.139.155); since A5 is "
+    "perfect, H^2(A5; Z/2) = Hom(M(A5), Z/2) = Z/2, so A5 has exactly one non-split central extension by "
+    "Z/2. The reconstruction factors through the central quotient, so it cannot distinguish the source from "
+    "its quotient. It does not select the source group, identify ports with physical objects, or alter the "
+    "declared status of the A1 boundary packet. It edits no ledger file: selection-ledger row 4 keeps its "
+    "class, menu, and compression accounting. The certificate supplies a conditional replacement route: if "
+    "SL(2, F_5) is given as the source, the committed boundary complex can be reconstructed from it rather "
+    "than separately supplied. Amending the row's where and receipts entries is a separate change. The binary "
+    "icosahedral double cover derived downstream from the port frame is a downstream result and is not an "
+    "input to this certificate."
 )
 
 
@@ -777,14 +893,33 @@ def construct(manifest: Mapping[str, Any]) -> tuple[Construction, dict[str, Any]
     subs, subgroup_summary = subgroup_data(quotient)
     verdicts, classification = classify_placements(quotient, subs)
     carriers = sorted((t for t, v in verdicts.items() if v == "CARRIER"), key=placement_key)
-    inner = [lambda h, g=g: quotient.mul(quotient.mul(g, h), quotient.inv(g)) for g in quotient.elements]
-    automorphisms, automorphism_count = gl2_conjugators(quotient)
-    require(automorphism_count == 120, "AUTOMORPHISM_GROUP", f"GL(2, F_5) induces {automorphism_count} automorphisms")
+    G = quotient.elements
+    inner = [lambda h, g=g: quotient.mul(quotient.mul(g, h), quotient.inv(g)) for g in G]
+    inner_tables = {tuple(c(h) for h in G) for c in inner}
+    conjugators, gl2_tables = gl2_conjugators(quotient)
+    ((x, y, _z),) = triangle_generators(quotient, carriers[0])
+    automorphism_tables = enumerate_automorphisms(quotient, x, y)
+    require(len(inner_tables) == 60, "AUTOMORPHISM_GROUP", f"{len(inner_tables)} inner automorphisms")
+    require(
+        len(automorphism_tables) == 120 and automorphism_tables == gl2_tables,
+        "AUTOMORPHISM_GROUP",
+        f"{len(automorphism_tables)} automorphisms found; conjugation in GL(2, F_5) induces {len(gl2_tables)}",
+    )
+    require(klein_four_action(quotient, sorted(inner_tables)) == (5, 60, True), "A5_IDENTIFICATION", "G does not act on its Klein four-subgroups as the alternating group")
+    require(klein_four_action(quotient, sorted(automorphism_tables)) == (5, 120, False), "S5_IDENTIFICATION", "Aut(G) does not act on the Klein four-subgroups as the symmetric group")
     inner_sizes = orbit_sizes(carriers, inner)
-    all_sizes = orbit_sizes(carriers, automorphisms)
+    all_sizes = orbit_sizes(carriers, conjugators)
     require(inner_sizes == [60, 60] and all_sizes == [120], "ORBITS", f"orbit sizes {inner_sizes}, {all_sizes}")
-    solutions, image = presentation_placements(quotient)
+    solutions, image, solution_orders = presentation_placements(quotient)
     require(solutions == 120 and image == set(carriers), "PRESENTATION", f"{solutions} solutions, image matches: {image == set(carriers)}")
+    require(solution_orders == {(4, 6, 10)}, "PRESENTATION", f"solution orders {solution_orders}")
+    free = presentation_solutions_any_common_value(source)
+    trivial = (source.identity,) * 4
+    require(
+        Counter(w for w, *_ in free) == Counter({source.minus_identity: 120, source.identity: 1}) and trivial in free,
+        "PRESENTATION",
+        f"{len(free)} solutions with the common value left free",
+    )
     fixture = load_fixture()
     summary = {
         "source": {
@@ -795,19 +930,30 @@ def construct(manifest: Mapping[str, Any]) -> tuple[Construction, dict[str, Any]
             "perfect": True,
             "element_order_profile": {str(k): v for k, v in sorted(BINARY_ICOSAHEDRAL_ORDER_PROFILE.items())},
         },
-        "central_quotient": quotient_summary,
+        "central_quotient": {
+            **quotient_summary,
+            "klein_four_subgroups": 5,
+            "isomorphic_to_A5_by_its_faithful_action_on_the_klein_four_subgroups": True,
+        },
         "subgroups": subgroup_summary,
         "classification": classification,
+        "automorphisms": {
+            "enumerated_exhaustively": len(automorphism_tables),
+            "inner": len(inner_tables),
+            "all_induced_by_conjugation_in_GL2_F5": True,
+            "isomorphic_to_S5_by_the_faithful_action_on_the_klein_four_subgroups": True,
+        },
         "orbits_of_compatible_placements": {
-            "inner_automorphism_group_order": 60,
-            "automorphism_group_order": automorphism_count,
             "orbit_sizes_under_inner_automorphisms": inner_sizes,
             "orbit_sizes_under_all_automorphisms": all_sizes,
         },
         "presentation": {
-            "relation": "a^2 = b^3 = c^5 = abc",
+            "relation": "a^2 = b^3 = c^5 = abc = -I",
             "solutions_in_source": solutions,
+            "element_orders_of_a_b_c": [4, 6, 10],
             "bijective_with_compatible_placements": True,
+            "solutions_with_the_common_value_left_free": len(free),
+            "solutions_with_common_value_I": "only a = b = c = I",
         },
     }
     return Construction(quotient, subs, verdicts, carriers, fixture), summary
@@ -1010,7 +1156,7 @@ def negative_control_payload(manifest: Mapping[str, Any]) -> dict[str, Any]:
                 "mechanism": "the involution of C2 normalizes C5, so every coset edge joins gC5 to gtC5",
             },
             "faces_not_triangles": {"coset_faces_that_are_triangles_of_the_coset_graph": triangle_faces},
-            "every_committed_face_reversed": {"relabelling_exists": reversed_ok, "absorbed_by": "the antipode i -> 11 - i"},
+            "every_committed_face_reversed": {"relabelling_exists": reversed_ok, "absorbed_by": "the committed PortFrameGram.antipode"},
         },
         "classified_larger_families": {
             "subgroup_placements": 900,

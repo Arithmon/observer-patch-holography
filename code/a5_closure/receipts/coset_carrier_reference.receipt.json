@@ -1,4 +1,10 @@
 {
+  "automorphisms": {
+    "all_induced_by_conjugation_in_GL2_F5": true,
+    "enumerated_exhaustively": 120,
+    "inner": 60,
+    "isomorphic_to_S5_by_the_faithful_action_on_the_klein_four_subgroups": true
+  },
   "canonical_placement": {
     "generators_with_xyz_equal_1": {
       "x": [
@@ -241,17 +247,19 @@
       15,
       20
     ],
+    "isomorphic_to_A5_by_its_faithful_action_on_the_klein_four_subgroups": true,
+    "klein_four_subgroups": 5,
     "order": 60,
     "simple": true
   },
   "choice_accounting": {
     "duality": "Twelve ports select the stabilizer of order five: G/C5 has twelve points, G/C3 has twenty, and G/C2 has thirty.",
-    "orientation": "The construction outputs a coherent orientation, read from the chambers whose three cosets share one representative. For every compatible placement, 60 of the 120 graph relabellings carry it onto the committed orientedFaces, and a fixture with every face reversed is matched through the antipode.",
-    "relative_placement": "Exactly 120 of the 900 placements close into the committed carrier. They are the placements with generators x, y, z of orders 2, 3, 5 satisfying xyz = 1; they form two orbits of 60 under inner automorphisms and one orbit under all automorphisms of the source. The placement is therefore unique up to automorphisms of the supplied group, and the presentation a^2 = b^3 = c^5 = abc supplies a compatible placement with no further choice.",
+    "orientation": "The construction outputs a coherent orientation, read from the chambers whose three cosets share one representative. For each of the 120 compatible placements the verifier recomputes all 120 graph relabellings onto the committed adjacency: 60 carry the orientation onto the committed orientedFaces, and the other 60 are exactly those composed with the committed antipode, which carry it onto the fully reversed packet.",
+    "relative_placement": "Exactly 120 of the 900 placements close into the committed carrier: the placements with generators x, y, z of orders 2, 3, 5 satisfying xyz = 1. They form one orbit under Aut(G), which the verifier enumerates exhaustively (120 automorphisms, each induced by conjugation in GL(2, F_5)), and two orbits of 60 under the inner automorphisms, so the placement is unique up to automorphisms of G. The presentation a^2 = b^3 = c^5 = abc = -I has exactly 120 solutions in the source, one over each compatible placement, so declaring the source by that presentation supplies exactly the compatible placements and leaves no further choice modulo automorphisms.",
     "residual_premise": "The supplied group. The certificate takes SL(2, F_5) as given and makes no selection among candidate source groups.",
     "subgroup_orders": "The orders five, three, and two fix the coset sizes 12, 20, and 30 and every local incidence count, identically for all 900 placements. They do not determine the global incidence."
   },
-  "claim_boundary": "Conditional on the supplied group SL(2, F_5), taken as the exact finite representative of the binary icosahedral group 2I; that identification is classical and is cited without formalization. The reconstruction factors through the central quotient, so it cannot distinguish the source from its quotient. It does not select the source group, identify ports with physical objects, or alter the declared status of the A1 boundary packet.",
+  "claim_boundary": "Conditional on the supplied group SL(2, F_5). The verifier checks its order, centre {+I, -I}, unique involution, perfectness, and element-order profile, and identifies G = S/Z(S) with A5 through the faithful action on the five Klein four-subgroups; together these make S a non-split central extension of A5 by Z/2. The binary icosahedral group 2I is such an extension as well, since -1 is its only involution. The identification of S with 2I rests on one cited fact: the Schur multiplier of A5 is Z/2 (J. Schur, J. Reine Angew. Math. 139 (1911) 155-250, doi:10.1515/crll.1911.139.155); since A5 is perfect, H^2(A5; Z/2) = Hom(M(A5), Z/2) = Z/2, so A5 has exactly one non-split central extension by Z/2. The reconstruction factors through the central quotient, so it cannot distinguish the source from its quotient. It does not select the source group, identify ports with physical objects, or alter the declared status of the A1 boundary packet. It edits no ledger file: selection-ledger row 4 keeps its class, menu, and compression accounting. The certificate supplies a conditional replacement route: if SL(2, F_5) is given as the source, the committed boundary complex can be reconstructed from it rather than separately supplied. Amending the row's where and receipts entries is a separate change. The binary icosahedral double cover derived downstream from the port frame is a downstream result and is not an input to this certificate.",
   "classification": {
     "characterizations": {
       "carrier_iff_generators_with_xyz_equal_1": true,
@@ -301,8 +309,6 @@
   "generated_by": "code/a5_closure/coset_carrier_certificate.py",
   "manifest_sha256": "1200dd78e32919bb547ec4453b71c0a14395f2bf04a7c7258f4aa58d39e81506",
   "orbits_of_compatible_placements": {
-    "automorphism_group_order": 120,
-    "inner_automorphism_group_order": 60,
     "orbit_sizes_under_all_automorphisms": [
       120
     ],
@@ -313,8 +319,15 @@
   },
   "presentation": {
     "bijective_with_compatible_placements": true,
-    "relation": "a^2 = b^3 = c^5 = abc",
-    "solutions_in_source": 120
+    "element_orders_of_a_b_c": [
+      4,
+      6,
+      10
+    ],
+    "relation": "a^2 = b^3 = c^5 = abc = -I",
+    "solutions_in_source": 120,
+    "solutions_with_common_value_I": "only a = b = c = I",
+    "solutions_with_the_common_value_left_free": 121
   },
   "reconstruction": {
     "compatible_placements_relabelled": 120,

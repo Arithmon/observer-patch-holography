@@ -2,145 +2,447 @@
 
 ## Result
 
-The A1 twelve-port carrier is the coset geometry of the central quotient of a
-supplied binary icosahedral source, and an exhaustive scan of subgroup
-placements identifies exactly which relative placements reconstruct it.
+This artifact certifies that the A1 twelve-port boundary packet is the coset
+geometry of the central quotient of a supplied binary icosahedral source, and it
+classifies every relative placement of the three stabilizers.
 
-**Theorem (conditional on the supplied group).** Let `S = SL(2, F_5)`, taken as
-the exact finite representative of the binary icosahedral group `2I`, and let
-`G = S/Z(S)`. For cyclic subgroups `C5`, `C3`, `C2` of `G`, form the coset
-geometry with vertices `G/C5`, faces `G/C3`, edges `G/C2`, and incidence
-`gH ~ kK` if and only if `gH ∩ kK` is nonempty.
+> **Source assumption.** The source is the finite group `SL(2, F_5)`, supplied as
+> the exact finite representative of the binary icosahedral group `2I`. No carrier
+> incidence, port label, orientation, or target group is supplied as source data.
 
-(a) All `6 · 10 · 15 = 900` placements have twelve vertices, twenty faces, and
-thirty edges, with five faces and five edges at each vertex, three vertices and
-three edges on each face, and two vertices and two faces on each edge.
+From that source the construction derives:
 
-(b) Exactly 120 placements give a closed, coherently oriented triangulated
-surface. They are the placements admitting generators `x, y, z` of orders
-2, 3, 5 with `xyz = 1`; for each of them that generator choice is unique, and
-they correspond bijectively to the solutions of `a^2 = b^3 = c^5 = abc` in `S`.
+1. the central quotient `G`, identified with `A5`, and its automorphism group,
+   enumerated exhaustively and identified with `S5`;
+2. the coset geometry of each of the 900 placements of cyclic subgroups of
+   orders 5, 3, 2, with the same local incidence counts for all of them;
+3. the exact set of 120 placements that close into a coherently oriented
+   triangulated surface, characterized by the relation `xyz = 1` and by the
+   binary presentation;
+4. an explicit relabelling of every compatible placement onto
+   `PortFrameGram.neighbors`, `CoreAxioms.orientedFaces`, `PortFrameGram.antipode`,
+   and the sixty rows of `A5PortAction.perms`;
+5. typed failures for the other 780 placements, including 180 that agree with
+   the committed packet on all vertex-level data.
 
-(c) The 120 compatible placements form two orbits of 60 under inner
-automorphisms of `G` and a single orbit under `Aut(G)`, which has order 120.
+The theorem number 769.1 refers to the discussion that proposed the construction,
+`FloatingPragma/observer-patch-holography` discussion 769; selection-ledger row 4
+has no owner issue.
 
-(d) Every compatible placement relabels explicitly onto the committed packet:
-the coset edge graph maps onto `PortFrameGram.neighbors`, the coset orientation
-maps onto `CoreAxioms.orientedFaces`, the distance-three partner maps onto the
-antipode `i -> 11 - i`, and the transported action of `G` is exactly the set of
-sixty rows of `A5PortAction.perms`.
-
-## Construction
-
-The source manifest `manifests/coset_carrier_reference.json` declares the
-family and prime of the source group and names the three committed Lean
-declarations used for comparison. A source firewall rejects any source field
-that names target structure. The verifier builds `S` and checks its order, its
-centre `{+I, -I}`, its unique involution, its perfectness, and the binary
-icosahedral element-order profile `1, 1, 20, 30, 24, 20, 24` on the orders
-`1, 2, 3, 4, 5, 6, 10`. It forms `G`, checks the class sizes
-`1, 12, 12, 15, 20` and simplicity, and checks that the preimages of the
-cyclic subgroups of orders 5, 3, 2 are cyclic of orders 10, 6, 4.
-
-Nonempty coset intersection is computed through a shared representative: the
-incident pairs of each relation are exactly `{(xH, xK) : x in G}`. The coset
-orientation is read from the chambers `(xC5, xC2, xC3)` that share one
-representative. The committed adjacency, port rows, and oriented faces are
-parsed directly from `Lean/Screen/PortFrameGram.lean`,
-`Lean/Screen/A5PortAction.lean`, and
-`Lean/ObserverPatchHolography/CoreAxioms.lean`; parsing fails closed, and the
-receipt records a hash of each parsed table.
-
-## Placement classification
-
-Each placement is checked in a fixed order, and the first failure names its
-class.
-
-| Class | Placements | Per `(C5, C3)` pair | Characterization |
-|---|---|---|---|
-| `CARRIER` | 120 | 2 | generators with `xyz = 1` exist |
-| `FACE_BOUNDARY_MISMATCH` | 180 | 3 | edge graph and face vertex sets agree with the committed packet; the coset edge-face incidence disagrees |
-| `FACES_NOT_TRIANGLES` | 300 | 5 | no coset face is a triangle of the coset edge graph |
-| `COLLAPSED_EDGES` | 300 | 5 | `C2` lies in the normalizer of `C5`; the thirty edges fall on six vertex pairs, five each |
-
-Every one of the sixty `(C5, C3)` pairs splits its fifteen involutions the
-same way, so the placement of `C2` carries the whole selection.
-
-The second row is the reason the certificate checks all three incidences. For
-those 180 placements, vertex-level data (the edge graph and the vertex sets of
-the faces) coincide with the committed carrier, and only the edge-face
-relation of the coset geometry differs. In port labels, the coset edge
-`{0, 6}` is coset-incident to the faces `{0, 1, 2}` and `{6, 9, 10}`, while the
-faces containing it are `{0, 3, 6}` and `{0, 4, 6}`. A check restricted to
-vertex-level data accepts 300 placements; the full check accepts 120.
-
-## Choice accounting
-
-The orders five, three, and two fix the coset sizes and every local incidence
-count, identically for all 900 placements, and they do not determine the global
-incidence.
-
-The relative placement is unique up to automorphisms of the supplied group:
-the 120 compatible placements form one orbit under `Aut(G)`. Declaring the
-source by the presentation `a^2 = b^3 = c^5 = abc` supplies a compatible
-placement with no further choice.
-
-Twelve ports select the stabilizer of order five, since `G/C5` has twelve
-points, `G/C3` twenty, and `G/C2` thirty.
-
-The construction outputs a coherent orientation. For every compatible
-placement, 60 of the 120 graph relabellings carry it onto
-`CoreAxioms.orientedFaces`, and the other 60 are exactly those relabellings
-composed with the antipode, which carry it onto the fully reversed packet.
-
-The supplied group is the residual premise. The certificate takes `S` as given
-and makes no selection among candidate source groups.
-
-## Negative controls
-
-`negative_controls/coset_carrier_negative_controls.json` records fifteen typed
-controls, each required to fail with its stated code:
-
-| Control | Code |
-|---|---|
-| declared prime 3, declared prime 7 | `SOURCE_ORDER` |
-| declared family `GL2` | `SOURCE_GROUP` |
-| source field naming target structure | `SOURCE_FIREWALL` |
-| extra source field | `SCHEMA_FIELDS` |
-| comparison declaration swapped | `FIXTURE_DECLARATION` |
-| representative placement of each failing class | `COLLAPSED_EDGES`, `FACES_NOT_TRIANGLES`, `FACE_BOUNDARY_MISMATCH` |
-| carrier with one edge moved to a face that does not contain it | `FACE_BOUNDARY_MISMATCH` |
-| carrier with one edge removed from one face | `FACE_SIDES` |
-| carrier with one chamber moved to another face | `ORIENTATION_INCOHERENT` |
-| committed adjacency with a degree-preserving double edge swap | `RELABEL_ADJACENCY` |
-| committed packet with one face reversed | `RELABEL_ORIENTATION` |
-| committed port rows with one row perturbed | `PORT_ACTION_MISMATCH` |
-
-The bundle also records witnesses for the three failing classes and the
-positive control in which every committed face is reversed.
-
-## Reproduction
+The exact executable receipt is produced by:
 
 ```bash
 python3 code/a5_closure/coset_carrier_certificate.py all
-python3 code/a5_closure/coset_carrier_certificate.py verify \
-  --manifest code/a5_closure/manifests/coset_carrier_reference.json \
-  --receipt code/a5_closure/receipts/coset_carrier_reference.receipt.json
 python3 -m pytest -q code/a5_closure/tests/test_coset_carrier_certificate.py
 ```
 
-The verifier uses the Python standard library and exact integer arithmetic.
-The receipt and the control bundle are byte-identical across runs.
+The verifier uses the Python standard library and exact integer arithmetic. The
+receipt and the control bundle are byte-identical across runs.
 
-## Claim boundary
+---
 
-The result is conditional on the supplied group `SL(2, F_5)`, taken as the
-exact finite representative of `2I`; that identification is classical and is
-cited without formalization. The reconstruction factors through the central
-quotient, so it cannot distinguish the source from its quotient. It does not
-select the source group, identify ports with physical objects, or alter the
-declared status of the A1 boundary packet. Selection-ledger row 4 keeps its
-class, menu, and compression accounting: the declaration moves from the boundary
-complex to the supplied group. The binary icosahedral double cover derived
-downstream from the port frame is independent of this certificate, and this
-certificate does not turn that derivation into a premise.
+## 1. Source packet
+
+### S1. Declared group
+
+The manifest `manifests/coset_carrier_reference.json` declares the family `SL2`
+and the prime `5`. The verifier builds `S = SL(2, F_5)` from these two fields
+alone.
+
+### S2. Comparison fixture
+
+The manifest names three committed Lean declarations: `PortFrameGram.neighbors`,
+`A5PortAction.perms`, and `CoreAxioms.orientedFaces`. They enter the final
+comparison of Lemma 769.8 and no step of the construction.
+
+### S3. Source firewall
+
+A source field that names target structure (icosahedral or dodecahedral words,
+`A5`, ports, vertices, edges, faces, neighbors, orientation, carrier) fails
+closed as `SOURCE_FIREWALL`. An extra source field fails as `SCHEMA_FIELDS`, and
+a comparison declaration other than the three above fails as
+`FIXTURE_DECLARATION`.
+
+## 2. Derived objects
+
+For a placement `P = (C5, C3, C2)` of cyclic subgroups of `G` of orders 5, 3, 2,
+the coset geometry `Gamma(P)` has vertices `V = G/C5`, faces `F = G/C3`, and
+edges `E = G/C2`, with `gH` incident to `kK` exactly when `gH` and `kK`
+intersect. A chamber is a triple `(uC5, uC2, uC3)` of cosets sharing one
+representative `u`; it contributes the directed edge from `uC5` to the other
+vertex of `uC2`, on the face `uC3`. Write `t` for the involution that generates
+`C2`.
+
+## 3. Main theorem
+
+### Theorem 769.1: coset carrier theorem
+
+Let `S = SL(2, F_5)` and `G = S/Z(S)`.
+
+**(a) Local counts.** For all 900 placements, `|V| = 12`, `|F| = 20`, and
+`|E| = 30`; each vertex is incident to five faces and five edges, each face to
+three vertices and three edges, and each edge to two vertices and two faces.
+
+**(b) Compatibility.** `Gamma(P)` is a closed, coherently oriented triangulated
+surface, as an incidence structure on the three coset sets, exactly when `P`
+admits `x` in `C2`, `y` in `C3`, and `z` in `C5`, none the identity, with
+`xyz = 1`. Exactly 120 placements qualify, each with exactly one such generator
+choice.
+
+**(c) Presentation.** The solutions of `a^2 = b^3 = c^5 = abc = -I` in `S` have
+orders 4, 6, 10. There are 120 of them, and sending `(a, b, c)` to the cyclic
+subgroups generated by the images of `c`, `b`, `a` in `G` is a bijection onto the
+compatible placements. With the common value left free there is exactly one
+further solution, `a = b = c = I`.
+
+**(d) Automorphisms.** `Aut(G)` has exactly 120 elements, each induced by
+conjugation in `GL(2, F_5)`. The faithful actions on the five Klein
+four-subgroups of `G` identify `G` with `A5` and `Aut(G)` with `S5`. The
+compatible placements form one orbit under `Aut(G)` and two orbits of 60 under
+the inner automorphisms.
+
+**(e) Reconstruction.** For every compatible placement there is an explicit
+bijection from `V` onto the twelve ports carrying the coset edge graph onto
+`PortFrameGram.neighbors`, the coset orientation onto `CoreAxioms.orientedFaces`,
+the distance-three partner onto the committed `PortFrameGram.antipode`, and the
+action of `G` onto the sixty rows of `A5PortAction.perms`. Of the 120 graph
+relabellings, 60 do this, and the other 60 are exactly their compositions with
+the antipode.
+
+**(f) Failures.** The other 780 placements split into 300 with collapsed edges,
+300 whose faces are not triangles of the coset edge graph, and 180 whose edge
+graph and face vertex sets agree with the committed packet while the coset
+edge-face incidence disagrees.
+
+## 4. Proof
+
+### Lemma 769.2: incidence through a shared representative
+
+For subgroups `H`, `K` of `G` with trivial intersection, the incident pairs are
+exactly `(uH, uK)` for `u` in `G`, and `u` determines the pair uniquely.
+
+*Proof.* `u` lies in `gH` and in `kK` exactly when `uH = gH` and `uK = kK`. If
+`(uH, uK) = (u'H, u'K)`, then `u^-1 u'` lies in the intersection of `H` and `K`,
+so `u = u'`. The coset `uH` meets the cosets `uhK` for `h` in `H`, and these are
+distinct, since `h^-1 h'` in `K` forces `h = h'`. The orders 5, 3, 2 are pairwise
+coprime, so all three intersections are trivial for every placement, and the
+counts of (a) follow.
+
+### Lemma 769.3: the edge-face criterion is the relation `xyz = 1`
+
+The coset edge-face incidence agrees with containment of vertex sets exactly
+when the placement admits the relation `xyz = 1`, and then the generator choice
+is unique.
+
+*Proof.* The base cosets `C5`, `C2`, `C3` contain the identity, so they are
+pairwise incident. The edge `C2 = {1, t}` has vertices `C5` and `tC5`, and the
+face `C3 = {1, y, y^2}` has vertices `C5`, `yC5`, `y^2C5`. Since `t` is outside
+`C5`, the edge lies on the face exactly when `tC5` is `yC5` or `y^2C5`, that is,
+when `t = y'z'` with `y'` in `{y, y^2}` and `z'` in `C5`. Then
+`t y' z' = t^2 = 1`; conversely `t y' z' = 1` gives `y'z' = t^-1 = t`. By Lemma
+769.2 every incident edge-face pair is a translate `(uC2, uC3)` of the base pair,
+and translation preserves containment of vertex sets, so the criterion holds for
+all pairs exactly when it holds for the base pair. The element `t` is fixed; if
+both choices of `y'` worked, then `yC5 = y^2C5`, so `y` would lie in `C5`, which
+its order forbids. The choice of `y'` then fixes `z' = y'^-1 t`.
+
+### Lemma 769.4: collapsed edges
+
+The thirty coset edges fall on six vertex pairs, five edges each, exactly when
+`C2` lies in the normalizer of `C5`.
+
+*Proof.* The edge `uC2` has vertices `uC5` and `utC5`. If `t` normalizes `C5`,
+the five edges `ucC2` with `c` in `C5` share the vertex pair `{uC5, utC5}`,
+since `uctC5 = ut(t^-1 c t)C5 = utC5`. If `t` does not normalize `C5`, the
+subgroups `C5` and `tC5t^-1` are distinct of prime order and meet trivially.
+Suppose `{uC5, utC5} = {u'C5, u'tC5}`. If `u' = uc` with `c` in `C5`, then
+`uctC5 = utC5` puts `c` in `tC5t^-1`, so `c = 1`. If instead `u' = utc` with `c`
+in `C5`, then `u'tC5 = uC5` puts `c` in `tC5t^-1` again, so `u' = ut` and
+`u'C2 = uC2`. By Sylow's theorem the six subgroups of order five are conjugate,
+so the normalizer of `C5` has order 10 and contains five involutions, which is
+the count of collapsed completions of each `(C5, C3)` pair.
+
+### Lemma 769.5: the relation `xyz = 1` closes the surface
+
+*Proof.* Assume `xyz = 1` with `x = t`. Then `x = yz`, so `xC5 = yC5`, and
+`y^-1 = zx`.
+
+*Edges are distinct.* If `x` normalized `C5`, so would `y = xz^-1`, and the
+normalizer of order 10 has no element of order 3. Lemma 769.4 then gives thirty
+distinct vertex pairs.
+
+*Faces are bounded by their sides.* The face `uC3` has the three distinct
+vertices `uC5`, `uyC5`, `uy^2C5`. Its edges `uy^kC2` for `k = 0, 1, 2` have
+vertex pairs `{uy^kC5, uy^k xC5} = {uy^kC5, uy^(k+1)C5}`, the three sides of the
+face.
+
+*Vertex links are cycles.* The faces at the vertex `C5` are `z^kC3` and the edges
+there are `z^kC2`, for `k = 0, ..., 4`. The face `z^kC3` contains the edges
+`z^kC2` and `z^k y^2 C2 = z^(k+1)C2`, since `y^2C2 = y^-1 C2 = zxC2 = zC2`. The
+link of `C5` is therefore one cycle through the five faces and five edges, and
+translation by `G` carries it to every vertex.
+
+*The orientation is coherent.* The chamber of `u` gives the dart from `uC5` to
+`uxC5 = uyC5` on the face `uC3`, so that face is oriented
+`uC5 -> uyC5 -> uy^2C5 -> uC5`. The edge `uC2 = {u, ux}` lies on the faces `uC3`
+and `uxC3`; the chamber of `u` gives the dart from `uC5` to `uxC5` on the first,
+and the chamber of `ux` gives the dart from `uxC5` to `ux^2C5 = uC5` on the
+second, so adjacent faces induce opposite directions on their common edge.
+
+With Lemma 769.3 this shows that each compatible placement is a closed,
+coherently oriented triangulated surface on the three coset sets. The verifier
+checks every clause for all 120 compatible placements, and checks in addition
+that the triangles of each coset edge graph are exactly its faces. The surface is
+connected, since Lemma 769.8 carries its edge graph onto the committed one, and
+its Euler characteristic is `12 - 30 + 20 = 2`, so it is a sphere.
+
+### Lemma 769.6: automorphisms and orbits
+
+*Proof.* Take `x` and `y` from the triple of the first compatible placement.
+They generate `G`: the subgroup they generate contains elements of orders 2, 3,
+and 5, so its order is 30 or 60, and a subgroup of index two would be normal in
+the simple group `G`. An automorphism is fixed by the images of `x` and `y`,
+which keep their orders. For each of the 300 pairs of elements of orders 2 and 3,
+the verifier extends `x -> x'`, `y -> y'` along a breadth-first spanning tree of
+`G` and keeps the extension exactly when it is a bijective homomorphism. Exactly
+120 pairs survive, and the 120 maps are the automorphisms induced by conjugation
+with the 480 matrices of `GL(2, F_5)`; filtering the candidates by the order of
+`x'y'` changes nothing. The five Klein four-subgroups of `G` are permuted
+faithfully, the inner automorphisms giving the 60 even permutations and
+`Aut(G)` giving all 120, which identifies `G` with `A5` and `Aut(G)` with `S5`.
+
+An automorphism that fixes a compatible placement carries its triple
+`(x, y, z)` to a triple of the same placement satisfying the same relation. By
+the uniqueness in Lemma 769.3 it fixes `x` and `y`, so it is the identity.
+`Aut(G)` therefore acts freely on the 120 compatible placements, which form one
+orbit, and the 60 inner automorphisms give two orbits of 60.
+
+### Lemma 769.7: the presentation
+
+*Proof.* A solution `(a, b, c)` of `a^2 = b^3 = c^5 = abc = -I` maps to a triple
+of nonidentity elements of `G` with `x^2 = y^3 = z^5 = xyz = 1`, hence to a
+compatible placement. Conversely, a triple `(x, y, z)` of `G` with `xyz = 1`
+lifts to exactly one solution. Every lift of `x` squares to `-I`, because `-I` is
+the only involution of `S`. Exactly one of the two lifts of `y` cubes to `-I`,
+and exactly one of the two lifts of `z` has fifth power `-I`, because
+`(-w)^n = -w^n` for odd `n`. Replacing the lift of `x` by its negative changes
+the sign of `abc` without changing `a^2`, which fixes that sign. With the
+uniqueness in Lemma 769.3 this gives a bijection between the solutions and the
+compatible placements. The verifier finds 120 solutions, all of orders 4, 6, 10.
+Leaving the common value free, it finds 121 solutions, the extra one being
+`a = b = c = I`.
+
+### Lemma 769.8: relabelling onto the committed packet
+
+*Proof.* The comparison tables are parsed from the Lean sources by declaration
+name, and parsing fails closed. The antipode is pinned by two independent
+checks: the exact declaration `def antipode (i : Fin 12) : Fin 12 := 11 - i` must
+occur in `PortFrameGram.lean`, and the distance-three partner in the parsed
+adjacency must be that map. For each of the 120 compatible placements the
+verifier enumerates the 120 isomorphisms from the coset edge graph onto the
+committed adjacency. It finds that 60 of them carry the coset orientation onto
+`CoreAxioms.orientedFaces` and that the other 60 are exactly their compositions
+with the antipode. It checks that the transported action of `G` is the set of
+sixty `A5PortAction` rows and that the distance-three partner maps onto
+`PortFrameGram.antipode`.
+
+### Completion of Theorem 769.1
+
+(a) is Lemma 769.2. (b) combines Lemmas 769.3 and 769.5 with the count in
+Section 5. (c) is Lemma 769.7, (d) is Lemma 769.6, and (e) is Lemma 769.8. For
+(f), the collapsed class is characterized by Lemma 769.4; the other 480 failures
+lack the relation `xyz = 1`, so they violate the edge-face criterion of Lemma
+769.3, and the verifier records the first check each one fails.
+
+## 5. Exact certificate values
+
+| Quantity | Value |
+|---|---|
+| `S` | order 120, centre `{+I, -I}`, one involution, perfect, order profile 1:1, 2:1, 3:20, 4:30, 5:24, 6:20, 10:24 |
+| `G` | order 60, class sizes 1, 12, 12, 15, 20, simple, five Klein four-subgroups |
+| Cyclic subgroups | 6 of order 5, 10 of order 3, 15 of order 2; preimages cyclic of orders 10, 6, 4 |
+| Placements | 900 |
+| `CARRIER` | 120, two per `(C5, C3)` pair |
+| `FACE_BOUNDARY_MISMATCH` | 180, three per pair |
+| `FACES_NOT_TRIANGLES` | 300, five per pair |
+| `COLLAPSED_EDGES` | 300, five per pair |
+| `Aut(G)` | 120, each induced by conjugation in `GL(2, F_5)`; 60 inner |
+| Orbits of compatible placements | one of 120 under `Aut(G)`; two of 60 under inner automorphisms |
+| Presentation | 120 solutions with common value `-I`, of orders 4, 6, 10; 121 with the value free |
+| Relabellings per compatible placement | 120 graph isomorphisms: 60 onto `orientedFaces`, 60 onto its reversal |
+| Vertex-level check alone | accepts 300 placements; the full check accepts 120 |
+
+The receipt `receipts/coset_carrier_reference.receipt.json` records these values,
+the hashes of the three parsed Lean tables, and the canonical placement with its
+generators, its relabelling, and its oriented faces in port labels.
+
+## 6. Hypothesis-removal classification and negative controls
+
+### N1. Remove the relation `xyz = 1`
+
+The 780 placements without it fail closed as `COLLAPSED_EDGES` (300),
+`FACES_NOT_TRIANGLES` (300), or `FACE_BOUNDARY_MISMATCH` (180). A representative
+of each class is a recorded control.
+
+### N2. Keep only vertex-level data
+
+A check of the edge graph and the vertex sets of the faces that omits the coset
+edge-face incidence accepts 300 placements. The extra 180 form the boundary
+mismatch family. In port labels, the coset edge `{0, 6}` is coset-incident to the
+faces `{0, 1, 2}` and `{6, 9, 10}`, while the faces containing it are `{0, 3, 6}`
+and `{0, 4, 6}`. This family is the reason the certificate compares all three
+incidences.
+
+### N3. Replace the source
+
+Declaring the prime 3 or 7 fails as `SOURCE_ORDER`, and the family `GL2` fails as
+`SOURCE_GROUP`.
+
+### N4. Leak target structure into the source
+
+A source field naming target structure fails as `SOURCE_FIREWALL`, an extra
+source field as `SCHEMA_FIELDS`, and a swapped comparison declaration as
+`FIXTURE_DECLARATION`.
+
+### N5. Corrupt the coset incidence of a compatible placement
+
+Moving one edge onto a face that does not contain it fails as
+`FACE_BOUNDARY_MISMATCH`. Removing one edge from one face fails as `FACE_SIDES`.
+Moving one chamber to another face fails as `ORIENTATION_INCOHERENT`.
+
+### N6. Corrupt the committed comparison fixture
+
+A degree-preserving double edge swap in the adjacency fails as
+`RELABEL_ADJACENCY`, one reversed committed face as `RELABEL_ORIENTATION`, and one
+perturbed port row as `PORT_ACTION_MISMATCH`.
+
+### N7. Reverse every committed face
+
+This fixture is accepted: the relabellings composed with the antipode carry the
+coset orientation onto the reversed packet. The positive control shows that
+orientation costs no premise.
+
+### N8. Remove the product-order filter from the automorphism search
+
+Testing all 300 pairs of generator images of orders 2 and 3 returns the same 120
+automorphisms; the other pairs fail the homomorphism test.
+
+`negative_controls/coset_carrier_negative_controls.json` records fifteen typed
+finite controls with their expected and actual codes, together with the
+witnesses for N1, N2, and N7.
+
+## 7. Formalization-ready finite model
+
+### JSON source schema
+
+```text
+schema
+source.group                        "SL2"
+source.prime                        5
+comparison_fixture.adjacency        Lean/Screen/PortFrameGram.lean, neighbors
+comparison_fixture.port_action      Lean/Screen/A5PortAction.lean, perms
+comparison_fixture.oriented_faces   Lean/ObserverPatchHolography/CoreAxioms.lean, orientedFaces
+```
+
+### Deterministic derived objects
+
+```text
+validate the schema, the source firewall, and the comparison declarations
+build S = SL(2, F_5); check order, centre, involution count, perfectness, order profile
+form G = S/Z(S); check class sizes and simplicity
+enumerate the cyclic subgroups of orders 5, 3, 2 and their preimages in S
+for each of the 900 placements: cosets, incidences, chambers, first failing check
+check the classification counts and the three characterizations
+enumerate Aut(G); compare with conjugation in GL(2, F_5); Klein four-subgroup actions
+compute the orbits of the compatible placements
+enumerate the solutions of the binary presentation
+parse the committed Lean tables; relabel every compatible placement
+emit the receipt and the negative-control bundle
+```
+
+### Lean-facing signatures
+
+`CoreAxioms.BoundaryPacket` and `CarrierUniqueness.BoundaryComplex` store edges
+and faces as sets of ports, so their edge-face incidence is containment by
+definition. The boundary mismatch family agrees with the committed packet on
+exactly that data. A bridge therefore carries the coset edge-face relation as its
+own object and proves that it coincides with containment; after that,
+`CarrierUniqueness.faces_determined` and `counts_forced` apply to the coset
+complex. An interface sketch (not compiled):
+
+```lean
+variable {G : Type*} [Group G] [Fintype G] [DecidableEq G]
+
+structure Placement (G : Type*) [Group G] where
+  C5 : Subgroup G
+  C3 : Subgroup G
+  C2 : Subgroup G
+
+/-- Incidence by nonempty coset intersection, through a shared representative. -/
+def Incident {H K : Subgroup G} (a : G ⧸ H) (b : G ⧸ K) : Prop :=
+  ∃ u : G, (u : G ⧸ H) = a ∧ (u : G ⧸ K) = b
+
+/-- Generators of C2, C3, C5 with xyz = 1. -/
+def TriangleRelation (P : Placement G) : Prop :=
+  ∃ x ∈ P.C2, ∃ y ∈ P.C3, ∃ z ∈ P.C5, x ≠ 1 ∧ y ≠ 1 ∧ z ≠ 1 ∧ x * y * z = 1
+
+/-- Every coset-incident edge-face pair has both vertices of the edge on the face. -/
+def EdgeFaceContainment (P : Placement G) : Prop :=
+  ∀ (e : G ⧸ P.C2) (f : G ⧸ P.C3), Incident e f →
+    ∀ v : G ⧸ P.C5, Incident v e → Incident v f
+
+theorem edgeFaceContainment_iff_triangleRelation (P : Placement G) :
+    EdgeFaceContainment P ↔ TriangleRelation P
+
+/-- A compatible placement with an explicit relabelling yields the committed packet. -/
+def toBoundaryPacket (P : Placement G) (h : TriangleRelation P)
+    (relabel : G ⧸ P.C5 ≃ Fin 12) : OPH.CoreAxioms.BoundaryPacket (G ⧸ P.C5)
+```
+
+The receipt supplies the relabelling tables that instantiate these signatures
+without search inside Lean.
+
+## 8. Acceptance matrix
+
+| Request in discussion 769 | Discharge |
+|---|---|
+| explicit `2I/Z(2I)` to `A5` identification | `S` with its pinned properties; `G` identified with `A5` by the Klein four-subgroup action (Lemma 769.6); the remaining step cited in Section 9 |
+| compatible choices of `C5`, `C3`, `C2` | classification of all 900 placements; compatibility is `xyz = 1` (Lemma 769.3); canonical placement in the receipt |
+| triangular faces, coherent orientation, antipodal pairing | Lemmas 769.3, 769.5, and 769.8, checked for every compatible placement |
+| explicit relabelling into `PortFrameGram` and `A5PortAction` | Lemma 769.8; relabelling table in the receipt |
+| Lean bridge | interface in Section 7; the bridge itself lies outside this certificate |
+| accounting of placement, duality, and orientation choices | Theorem 769.1 (b), (d), (e); choice accounting in the receipt |
+| negative controls for incompatible choices | Section 6; fifteen typed controls |
+| conditionality on the supplied group | Section 9 |
+| verified obstruction or nonuniqueness | the 180-placement boundary mismatch family (N2) |
+| construction and reproduction under `code/a5_closure/` | certificate, manifest, receipt, controls, and tests; commands in the Result section |
+
+## 9. Claim boundary
+
+The result is conditional on the supplied group `SL(2, F_5)`. The verifier checks
+its order, centre, unique involution, perfectness, and element-order profile,
+and identifies `G = S/Z(S)` with `A5`. Together these make `S` a non-split
+central extension of `A5` by `Z/2`. The binary icosahedral group `2I` is such an
+extension as well, since `-1` is its only involution. The identification of `S`
+with `2I` rests on one cited fact: the Schur multiplier of `A5` is `Z/2` (Schur
+1911). Since `A5` is perfect, `H^2(A5; Z/2) = Hom(M(A5), Z/2) = Z/2`, so `A5` has
+exactly one non-split central extension by `Z/2`.
+
+The reconstruction factors through the central quotient, so it cannot
+distinguish the source from its quotient. It does not select the source group,
+identify ports with physical objects, or alter the declared status of the A1
+boundary packet.
+
+This certificate edits no ledger file. Selection-ledger row 4 keeps its class,
+menu, and compression accounting. The certificate supplies a conditional
+replacement route: if `SL(2, F_5)` is given as the source, the committed boundary
+complex can be reconstructed from it rather than separately supplied. Amending
+the row's `where` and `receipts` entries is a separate change.
+
+The binary icosahedral double cover derived downstream from the port frame is a
+downstream result and is not an input to this certificate.
+
+**Reference.** J. Schur, Über die Darstellung der symmetrischen und der
+alternierenden Gruppe durch gebrochene lineare Substitutionen, Journal für die
+reine und angewandte Mathematik 139 (1911), 155-250,
+doi:10.1515/crll.1911.139.155.

@@ -27,7 +27,7 @@
       "mechanism": "the involution of C2 normalizes C5, so every coset edge joins gC5 to gtC5"
     },
     "every_committed_face_reversed": {
-      "absorbed_by": "the antipode i -> 11 - i",
+      "absorbed_by": "the committed PortFrameGram.antipode",
       "relabelling_exists": true
     },
     "faces_not_triangles": {
