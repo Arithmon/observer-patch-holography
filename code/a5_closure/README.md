@@ -18,6 +18,7 @@ python3 echosahedral_selector_certificate.py all  # issue #565 source selector, 
 python3 port_current_inner_certificate.py all     # issue #566 physical port-current algebra, receipt, controls
 python3 super_tannakian_matter_lift_certificate.py all  # issue #314 super-Tannakian matter lift, receipt, controls
 python3 axis_center_descent_certificate.py all    # issue #567 conditional kernel/lattice receipt and physical no-go
+python3 coset_carrier_certificate.py all          # A1 carrier as coset geometry of a supplied SL(2,5) source, 900 placements, receipt, controls
 python3 -m unittest discover -s tests -v    # issue #565/#566/#314/#567 regression and adversarial suites
 python3 a5_compact_lie_classifier.py     # compact-Lie enumeration
 python3 a5_harmonic_decomposition.py     # angular multiplet sequence

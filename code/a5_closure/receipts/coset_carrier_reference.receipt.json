@@ -1,0 +1,369 @@
+{
+  "canonical_placement": {
+    "generators_with_xyz_equal_1": {
+      "x": [
+        1,
+        3,
+        1,
+        4
+      ],
+      "y": [
+        0,
+        1,
+        4,
+        1
+      ],
+      "z": [
+        0,
+        1,
+        4,
+        2
+      ]
+    },
+    "oriented_faces_in_port_labels": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        4
+      ],
+      [
+        0,
+        3,
+        1
+      ],
+      [
+        0,
+        4,
+        6
+      ],
+      [
+        0,
+        6,
+        3
+      ],
+      [
+        1,
+        3,
+        7
+      ],
+      [
+        1,
+        5,
+        2
+      ],
+      [
+        1,
+        7,
+        5
+      ],
+      [
+        2,
+        5,
+        8
+      ],
+      [
+        2,
+        8,
+        4
+      ],
+      [
+        3,
+        6,
+        9
+      ],
+      [
+        3,
+        9,
+        7
+      ],
+      [
+        4,
+        8,
+        10
+      ],
+      [
+        4,
+        10,
+        6
+      ],
+      [
+        5,
+        7,
+        11
+      ],
+      [
+        5,
+        11,
+        8
+      ],
+      [
+        6,
+        10,
+        9
+      ],
+      [
+        7,
+        9,
+        11
+      ],
+      [
+        8,
+        11,
+        10
+      ],
+      [
+        9,
+        10,
+        11
+      ]
+    ],
+    "relabelling": [
+      {
+        "port": 0,
+        "vertex_coset_least_element": [
+          0,
+          1,
+          4,
+          0
+        ]
+      },
+      {
+        "port": 1,
+        "vertex_coset_least_element": [
+          0,
+          1,
+          4,
+          1
+        ]
+      },
+      {
+        "port": 2,
+        "vertex_coset_least_element": [
+          0,
+          2,
+          2,
+          2
+        ]
+      },
+      {
+        "port": 3,
+        "vertex_coset_least_element": [
+          1,
+          4,
+          0,
+          1
+        ]
+      },
+      {
+        "port": 4,
+        "vertex_coset_least_element": [
+          0,
+          2,
+          2,
+          0
+        ]
+      },
+      {
+        "port": 5,
+        "vertex_coset_least_element": [
+          0,
+          2,
+          2,
+          4
+        ]
+      },
+      {
+        "port": 6,
+        "vertex_coset_least_element": [
+          0,
+          1,
+          4,
+          4
+        ]
+      },
+      {
+        "port": 7,
+        "vertex_coset_least_element": [
+          0,
+          1,
+          4,
+          2
+        ]
+      },
+      {
+        "port": 8,
+        "vertex_coset_least_element": [
+          2,
+          3,
+          0,
+          3
+        ]
+      },
+      {
+        "port": 9,
+        "vertex_coset_least_element": [
+          0,
+          1,
+          4,
+          3
+        ]
+      },
+      {
+        "port": 10,
+        "vertex_coset_least_element": [
+          0,
+          2,
+          2,
+          3
+        ]
+      },
+      {
+        "port": 11,
+        "vertex_coset_least_element": [
+          0,
+          2,
+          2,
+          1
+        ]
+      }
+    ]
+  },
+  "central_quotient": {
+    "conjugacy_class_sizes": [
+      1,
+      12,
+      12,
+      15,
+      20
+    ],
+    "order": 60,
+    "simple": true
+  },
+  "choice_accounting": {
+    "duality": "Twelve ports select the stabilizer of order five: G/C5 has twelve points, G/C3 has twenty, and G/C2 has thirty.",
+    "orientation": "The construction outputs a coherent orientation, read from the chambers whose three cosets share one representative. For every compatible placement, 60 of the 120 graph relabellings carry it onto the committed orientedFaces, and a fixture with every face reversed is matched through the antipode.",
+    "relative_placement": "Exactly 120 of the 900 placements close into the committed carrier. They are the placements with generators x, y, z of orders 2, 3, 5 satisfying xyz = 1; they form two orbits of 60 under inner automorphisms and one orbit under all automorphisms of the source. The placement is therefore unique up to automorphisms of the supplied group, and the presentation a^2 = b^3 = c^5 = abc supplies a compatible placement with no further choice.",
+    "residual_premise": "The supplied group. The certificate takes SL(2, F_5) as given and makes no selection among candidate source groups.",
+    "subgroup_orders": "The orders five, three, and two fix the coset sizes 12, 20, and 30 and every local incidence count, identically for all 900 placements. They do not determine the global incidence."
+  },
+  "claim_boundary": "Conditional on the supplied group SL(2, F_5), taken as the exact finite representative of the binary icosahedral group 2I; that identification is classical and is cited without formalization. The reconstruction factors through the central quotient, so it cannot distinguish the source from its quotient. It does not select the source group, identify ports with physical objects, or alter the declared status of the A1 boundary packet.",
+  "classification": {
+    "characterizations": {
+      "carrier_iff_generators_with_xyz_equal_1": true,
+      "collapsed_iff_C2_inside_normalizer_of_C5": true,
+      "xyz_equal_1_generator_choice_unique_on_carriers": true
+    },
+    "local_counts_placement_independent": {
+      "edges_per_face": 3,
+      "edges_per_vertex": 5,
+      "faces_per_edge": 2,
+      "faces_per_vertex": 5,
+      "vertices_per_edge": 2,
+      "vertices_per_face": 3
+    },
+    "per_C5_C3_pair_split_of_the_15_involutions": {
+      "CARRIER": 2,
+      "COLLAPSED_EDGES": 5,
+      "FACES_NOT_TRIANGLES": 5,
+      "FACE_BOUNDARY_MISMATCH": 3
+    },
+    "placement_classes": {
+      "CARRIER": 120,
+      "COLLAPSED_EDGES": 300,
+      "FACES_NOT_TRIANGLES": 300,
+      "FACE_BOUNDARY_MISMATCH": 180
+    }
+  },
+  "comparison_fixture": {
+    "adjacency_sha256": "9db1815d46471b0c5c54e7fad5aae7882a0724b028061db3f289ea13074756a9",
+    "modules": {
+      "adjacency": {
+        "declaration": "neighbors",
+        "module": "Lean/Screen/PortFrameGram.lean"
+      },
+      "oriented_faces": {
+        "declaration": "orientedFaces",
+        "module": "Lean/ObserverPatchHolography/CoreAxioms.lean"
+      },
+      "port_action": {
+        "declaration": "perms",
+        "module": "Lean/Screen/A5PortAction.lean"
+      }
+    },
+    "oriented_faces_sha256": "ef13745b8a1b152ddb3abdeae69da7bfda0dfdf32ec788dd0e856eb3623fc5c0",
+    "port_action_sha256": "645218444213b2fead4efd49323f53169ec3354f95b1e2e18d5ceaaf8fa94cf4"
+  },
+  "generated_by": "code/a5_closure/coset_carrier_certificate.py",
+  "manifest_sha256": "1200dd78e32919bb547ec4453b71c0a14395f2bf04a7c7258f4aa58d39e81506",
+  "orbits_of_compatible_placements": {
+    "automorphism_group_order": 120,
+    "inner_automorphism_group_order": 60,
+    "orbit_sizes_under_all_automorphisms": [
+      120
+    ],
+    "orbit_sizes_under_inner_automorphisms": [
+      60,
+      60
+    ]
+  },
+  "presentation": {
+    "bijective_with_compatible_placements": true,
+    "relation": "a^2 = b^3 = c^5 = abc",
+    "solutions_in_source": 120
+  },
+  "reconstruction": {
+    "compatible_placements_relabelled": 120,
+    "distance_three_partner_equals_committed_antipode": true,
+    "graph_relabellings_per_placement": 120,
+    "orientation_matching_relabellings_per_placement": 60,
+    "oriented_faces_equal_committed": true,
+    "relabellings_onto_the_reversed_packet_are_antipode_compositions": true,
+    "transported_action_equals_committed_port_rotations": true
+  },
+  "schema": "oph.coset_carrier_receipt.v1",
+  "source": {
+    "centre": [
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        4,
+        0,
+        0,
+        4
+      ]
+    ],
+    "element_order_profile": {
+      "1": 1,
+      "10": 24,
+      "2": 1,
+      "3": 20,
+      "4": 30,
+      "5": 24,
+      "6": 20
+    },
+    "group": "SL(2, F_5)",
+    "involutions": 1,
+    "order": 120,
+    "perfect": true
+  },
+  "subgroups": {
+    "C2": 15,
+    "C3": 10,
+    "C5": 6,
+    "placements": 900,
+    "preimages_cyclic_of_orders": [
+      10,
+      6,
+      4
+    ]
+  }
+}

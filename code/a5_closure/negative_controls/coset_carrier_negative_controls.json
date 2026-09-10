@@ -1,0 +1,164 @@
+{
+  "classified_larger_families": {
+    "degree_preserving_swap_used": [
+      [
+        0,
+        1
+      ],
+      [
+        4,
+        8
+      ]
+    ],
+    "placement_classes": {
+      "CARRIER": 120,
+      "COLLAPSED_EDGES": 300,
+      "FACES_NOT_TRIANGLES": 300,
+      "FACE_BOUNDARY_MISMATCH": 180
+    },
+    "placements_passing_all_three_incidences": 120,
+    "placements_passing_vertex_level_checks_only": 300,
+    "subgroup_placements": 900
+  },
+  "countermodel_witnesses": {
+    "collapsed_edges": {
+      "distinct_vertex_pairs": 6,
+      "edges_per_pair": 5,
+      "mechanism": "the involution of C2 normalizes C5, so every coset edge joins gC5 to gtC5"
+    },
+    "every_committed_face_reversed": {
+      "absorbed_by": "the antipode i -> 11 - i",
+      "relabelling_exists": true
+    },
+    "faces_not_triangles": {
+      "coset_faces_that_are_triangles_of_the_coset_graph": 0
+    },
+    "right_graph_and_faces_wrong_boundaries": {
+      "coset_incident_faces_in_port_labels": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          6,
+          9,
+          10
+        ]
+      ],
+      "edge_in_port_labels": [
+        0,
+        6
+      ],
+      "face_vertex_sets_equal_committed_under_that_relabelling": true,
+      "faces_containing_that_edge": [
+        [
+          0,
+          3,
+          6
+        ],
+        [
+          0,
+          4,
+          6
+        ]
+      ],
+      "vertex_graph_isomorphic_to_committed": true
+    }
+  },
+  "discussion": 769,
+  "finite_controls": [
+    {
+      "actual_error": "SOURCE_ORDER",
+      "expected_error": "SOURCE_ORDER",
+      "name": "declared_prime_3",
+      "passed": true
+    },
+    {
+      "actual_error": "SOURCE_ORDER",
+      "expected_error": "SOURCE_ORDER",
+      "name": "declared_prime_7",
+      "passed": true
+    },
+    {
+      "actual_error": "SOURCE_GROUP",
+      "expected_error": "SOURCE_GROUP",
+      "name": "declared_family_GL2",
+      "passed": true
+    },
+    {
+      "actual_error": "SOURCE_FIREWALL",
+      "expected_error": "SOURCE_FIREWALL",
+      "name": "source_names_target_structure",
+      "passed": true
+    },
+    {
+      "actual_error": "SCHEMA_FIELDS",
+      "expected_error": "SCHEMA_FIELDS",
+      "name": "source_extra_field",
+      "passed": true
+    },
+    {
+      "actual_error": "FIXTURE_DECLARATION",
+      "expected_error": "FIXTURE_DECLARATION",
+      "name": "fixture_declaration_swapped",
+      "passed": true
+    },
+    {
+      "actual_error": "COLLAPSED_EDGES",
+      "expected_error": "COLLAPSED_EDGES",
+      "name": "placement_collapsed_edges",
+      "passed": true
+    },
+    {
+      "actual_error": "FACES_NOT_TRIANGLES",
+      "expected_error": "FACES_NOT_TRIANGLES",
+      "name": "placement_faces_not_triangles",
+      "passed": true
+    },
+    {
+      "actual_error": "FACE_BOUNDARY_MISMATCH",
+      "expected_error": "FACE_BOUNDARY_MISMATCH",
+      "name": "placement_face_boundary_mismatch",
+      "passed": true
+    },
+    {
+      "actual_error": "FACE_BOUNDARY_MISMATCH",
+      "expected_error": "FACE_BOUNDARY_MISMATCH",
+      "name": "carrier_edge_face_incidence_corrupted",
+      "passed": true
+    },
+    {
+      "actual_error": "FACE_SIDES",
+      "expected_error": "FACE_SIDES",
+      "name": "carrier_edge_dropped_from_a_face",
+      "passed": true
+    },
+    {
+      "actual_error": "ORIENTATION_INCOHERENT",
+      "expected_error": "ORIENTATION_INCOHERENT",
+      "name": "carrier_chamber_moved_to_another_face",
+      "passed": true
+    },
+    {
+      "actual_error": "RELABEL_ADJACENCY",
+      "expected_error": "RELABEL_ADJACENCY",
+      "name": "committed_adjacency_double_edge_swap",
+      "passed": true
+    },
+    {
+      "actual_error": "RELABEL_ORIENTATION",
+      "expected_error": "RELABEL_ORIENTATION",
+      "name": "committed_face_reversed",
+      "passed": true
+    },
+    {
+      "actual_error": "PORT_ACTION_MISMATCH",
+      "expected_error": "PORT_ACTION_MISMATCH",
+      "name": "committed_port_row_perturbed",
+      "passed": true
+    }
+  ],
+  "manifest_sha256": "1200dd78e32919bb547ec4453b71c0a14395f2bf04a7c7258f4aa58d39e81506",
+  "schema": "oph.coset_carrier_negative_controls.v1"
+}
