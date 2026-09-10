@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 382,
+  "surface_count": 383,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1076,6 +1076,11 @@
     },
     {
       "path": "Lean/Screen/GoldenSectorIrreducibility.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/GoldenSectorPSL2F5Representations.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
     },
