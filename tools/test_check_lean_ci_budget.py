@@ -31,6 +31,21 @@ def test_job_over_thirty_minutes_is_rejected() -> None:
     assert "Lean CI 'build' job exceeds the 30-minute ceiling" in validate(mutated, lakefile)
 
 
+def test_golden_job_over_thirty_minutes_is_rejected() -> None:
+    workflow, lakefile = _inputs()
+    marker = (
+        "  golden_sector_psl2f5:\n"
+        "    name: Golden-sector PSL2F5 representations\n"
+        "    runs-on: ubuntu-latest\n"
+        "    timeout-minutes: 30"
+    )
+    mutated = workflow.replace(marker, marker[:-2] + "31", 1)
+    assert (
+        "Lean CI 'golden_sector_psl2f5' job exceeds the 30-minute ceiling"
+        in validate(mutated, lakefile)
+    )
+
+
 def test_full_lake_cache_is_rejected() -> None:
     workflow, lakefile = _inputs()
     mutated = workflow.replace("            Lean/.lake/build", "            Lean/.lake", 1)
@@ -45,7 +60,34 @@ def test_nonresumable_cache_key_is_rejected() -> None:
     mutated = workflow.replace("-${{ github.run_attempt }}", "")
     errors = validate(mutated, lakefile)
     assert "Lean CI 'build' cache keys must support resumable re-runs" in errors
+    assert "Lean CI 'golden_sector_psl2f5' cache keys must support resumable re-runs" in errors
     assert "Lean CI 'ophgap' cache keys must support resumable re-runs" in errors
+
+
+def test_golden_budget_change_is_rejected() -> None:
+    workflow, lakefile = _inputs()
+    mutated = workflow.replace(
+        "timeout 23m lake build GoldenSectorPSL2F5Representations",
+        "timeout 24m lake build GoldenSectorPSL2F5Representations",
+        1,
+    )
+    assert (
+        "the typed golden-sector bridge must retain its 23-minute resumable budget"
+        in validate(mutated, lakefile)
+    )
+
+
+def test_golden_core_exclusion_is_required() -> None:
+    workflow, lakefile = _inputs()
+    mutated = workflow.replace(
+        "Screen/OPHScreen.lean|Screen/GoldenSectorPSL2F5Representations.lean) continue ;;",
+        "Screen/OPHScreen.lean) continue ;;",
+        1,
+    )
+    assert (
+        "the core Lean build must leave the import-only OPHScreen umbrella and typed golden bridge to their dedicated/nightly lanes"
+        in validate(mutated, lakefile)
+    )
 
 
 def test_duplicate_branch_and_pr_runs_are_rejected() -> None:
