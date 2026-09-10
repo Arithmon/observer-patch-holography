@@ -43,12 +43,14 @@ def validate(workflow: str, lakefile: str) -> list[str]:
 
     try:
         build = _job_block(workflow, "build")
+        golden = _job_block(workflow, "golden_sector_psl2f5")
         ophgap = _job_block(workflow, "ophgap")
     except ValueError as exc:
         errors.append(str(exc))
         return errors
 
-    for name, block in (("build", build), ("ophgap", ophgap)):
+    jobs = (("build", build), ("golden_sector_psl2f5", golden), ("ophgap", ophgap))
+    for name, block in jobs:
         match = re.search(r"(?m)^    timeout-minutes:\s*(\d+)\s*$", block)
         if match is None:
             errors.append(f"Lean CI {name!r} job has no hard timeout")
@@ -67,13 +69,38 @@ def validate(workflow: str, lakefile: str) -> list[str]:
         errors.append("changed Lean modules must retain their 18-minute build budget")
     if re.search(r"(?m)^\s+lake build\s*$", changed_body):
         errors.append("per-change Lean CI must not run an exhaustive default Lake build")
+
+    for excluded in (
+        "Screen/OPHScreen.lean|Screen/GoldenSectorPSL2F5Representations.lean) continue ;;",
+    ):
+        if excluded not in build:
+            errors.append("the core Lean build must leave the import-only OPHScreen umbrella and typed golden bridge to their dedicated/nightly lanes")
+
+    if "Detect Golden-sector PSL2F5-relevant changes" not in golden:
+        errors.append("the typed golden-sector job must remain change-aware")
+    if "timeout 23m lake build GoldenSectorPSL2F5Representations" not in golden:
+        errors.append("the typed golden-sector bridge must retain its 23-minute resumable budget")
+    if "Verify Golden-sector umbrella registration" not in golden:
+        errors.append("the typed golden-sector lane must verify its OPHScreen/Lake registration")
+
     if "timeout 23m lake build OphGap" not in ophgap:
         errors.append("the OphGap build must retain its 23-minute resumable budget")
     if "Detect OphGap-relevant changes" not in ophgap:
         errors.append("the OphGap job must remain change-aware")
-    for name, block in (("build", build), ("ophgap", ophgap)):
+
+    for name, block in jobs:
         if "${{ github.run_attempt }}" not in block:
             errors.append(f"Lean CI {name!r} cache keys must support resumable re-runs")
+
+    for path in (
+        "Lean/Screen/GoldenSectorPSL2F5Representations.lean",
+        "Lean/Screen/OPHScreen.lean",
+        "Lean/lean-toolchain Lean/lakefile.lean Lean/lake-manifest.json",
+        ".github/workflows/lean-ci.yml",
+    ):
+        if path not in golden:
+            errors.append(f"the typed golden-sector change detector is missing {path!r}")
+
     for path in (
         "Lean/OphGap Lean/OphGap.lean",
         "Lean/lean-toolchain Lean/lakefile.lean Lean/lake-manifest.json",
