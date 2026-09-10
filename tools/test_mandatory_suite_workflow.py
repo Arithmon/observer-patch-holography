@@ -57,7 +57,7 @@ def test_workflow_matrix_dispatches_the_entire_selected_suite_once(
 ):
     job = _workflow()["jobs"]["mandatory-shards"]
     assert operating_system in job["strategy"]["matrix"]["os"]
-    assert _shards(job, full) == ([0] if full else [0, 1])
+    assert _shards(job, full) == ([0] if full else list(range(6)))
     actual = []
 
     def record(command, *, cwd):
@@ -73,7 +73,7 @@ def test_workflow_matrix_dispatches_the_entire_selected_suite_once(
         if full:
             assert arguments == ["--full"]
         else:
-            assert arguments == ["--shard-index", str(shard), "--shard-count", "2"]
+            assert arguments == ["--shard-index", str(shard), "--shard-count", "6"]
         monkeypatch.setattr(sys, "argv", ["run_mandatory_suite.py", *arguments])
         runner.main()
     expected = [

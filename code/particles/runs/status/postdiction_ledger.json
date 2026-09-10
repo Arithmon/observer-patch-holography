@@ -1145,6 +1145,9 @@
           "paper/tex_fragments/SOURCE_SCALAR_EXECUTION.tex",
           "code/source_scalar_execution/source_scalar_execution_receipt.json",
           "code/source_scalar_execution/verify_source_scalar_execution.py",
+          "paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex",
+          "code/source_scalar_quantum/quantum_probability_receipt.json",
+          "code/source_scalar_quantum/verify_quantum_probability.py",
           "Lean/Geometry/MetricKernelEnergy.lean",
           "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
           "Lean/Geometry/RefiningLatticeCausalCone.lean",
@@ -1361,6 +1364,77 @@
           "scope_boundary": "The source-axis cube, golden product population, every-neighbor read law, distinguished-event count and model tick are supplied. The analytic limit concerns bounded boundary-null regions and contained timelike diamonds with converging tips. Finite execution replays source records, local writer/value custody and interventions; it is not an asymptotic experiment or a physical dimension fit. Spatial populations are nested; changing radii and ticks do not give induced-prefix histories.",
           "source": "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex",
           "volume_convention": "dt d^3x"
+        },
+        "finite_scalar_quantum_probability_control": {
+          "analytic_proof": "paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex",
+          "field_history_joined_to_causal_count_clock": false,
+          "independent_verifier_result": {
+            "observed_outcomes": false,
+            "parent_events_replayed": 5888,
+            "parent_full_mathematical_replay": true,
+            "quantum_probability_scope": "original finite-action vacuum and coherent momentum preparation; bounded sine effect",
+            "resolved_steps": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              20,
+              21
+            ],
+            "spatial_continuum_error_transfer": false,
+            "step16": {
+              "mean_Qphi": [
+                "413284239023366554218744571690848087397630017536/24074612737250641878516043548583984375",
+                "-255423706731363574074018318640453351625326067712/24074612737250641878516043548583984375"
+              ],
+              "mean_bracket": [
+                "-9657808631/500000000000",
+                "-19315617261/1000000000000"
+              ],
+              "mean_error_upper": "649255643/500000000000",
+              "parent_state_error_upper": "65584509/12500000000",
+              "probability_error_upper": "81088887/100000000000",
+              "reference_response_abs_lower": "8695320397/1000000000000",
+              "resolved_above_total_bound": true,
+              "signal_sign": -1,
+              "split_probability_interval": [
+                "490342191369/1000000000000",
+                "490493790733/1000000000000"
+              ],
+              "split_response_abs_lower": "9506209267/1000000000000",
+              "step": 16,
+              "time_Qphi": [
+                "-16/35",
+                "32/35"
+              ]
+            },
+            "times": 21,
+            "uniform_added_variance_upper": "161633227/250000000000",
+            "verdict": "PASS"
+          },
+          "intermediate_time_error_enclosure": false,
+          "mathematical_replay": true,
+          "observed_postdiction": false,
+          "observed_quantum_outcomes": false,
+          "original_finite_action_vacuum_retained": true,
+          "quantum_covariance_and_bounded_effect_probability": true,
+          "receipt": "code/source_scalar_quantum/quantum_probability_receipt.json",
+          "receipt_pin": {
+            "bytes": 15183,
+            "sha256": "30f5f46f49f08e2898d0213d6c37a49bf511daf9d51d7123498a141257e8e1ac"
+          },
+          "scope_boundary": "This separate extension uses all 64 q5 oscillators, the original finite-action vacuum and its coherent momentum displacement. The same symmetric quantum gates propagate both means and covariance; the squeezed baseline has sine-effect probability one half. Exact rational bounds compare the bounded sine-effect probability with continuous evolution of the same finite action at 21 stored times. The authenticated classical registers carry means, not an attested quantum state or outcome stream. The immutable earlier commutator receipt retains its own negative probability flag. No q233 continuum accuracy, intermediate-time bound, causal count clock or physical units are transferred.",
+          "source_action_population_or_physical_clock_selected": false,
+          "spatial_continuum_error_certified": false
         },
         "hypothesis_boundary": "source height is a canonical ordinal, not a physical clock. The generic cone-inclusion theorem supplies neither its positive time scale nor a spatial readback valued in the rank-three quotient or an edge-speed bound; two-way order--cone faithfulness is the additional converse field of a faithful placement. Event-frame transports are supplied, and the standard-frame constructor is a trivial gauge choice rather than a derivation of physical observer frames. The Boolean diamond is an exact mathematical non-chain control, not empirical evidence of manifoldlikeness. No physical event/link identification, Poisson sprinkling, calibrated density or count--volume law, independent dimension estimator, topology, manifoldlike refinement, uniqueness theorem, continuum convergence, smooth metric, curvature, Einstein equation, observable, decision rule, or prediction is constructed by this finite source theorem. The separate growing-menu control supplies the frame, local move law, mesh, model layer time and event-cell measure. Its cone and interval-volume limits are analytic conditional results, not a source-selected physical manifold, Poisson sprinkling or calibrated density. The finite Lean bounds and replay do not formalize the Riemann-volume argument. The separate metric scalar limit supplies its coarsening, clipped Voronoi masses, radial-kernel force law, inertia and canonical quantization. Its analytic estimate assumes smooth references with an interaction-radius boundary buffer and h/epsilon^2 tending to zero. Five Lean lemmas check finite energy algebra, not the analytic PDE limit or physical source selection. The golden population, cube, all-neighbor read law, model tick and distinguished-event counting are declared. Its raw-count limit is not a native physical calibration, Poisson sprinkling or a finite-run dimension fit. Accepted primitive repairs, field-action agreement and laboratory clock attachment remain separate; neither the analytic volume nor pair-count proof is formalized by the finite Lean path module",
         "id": "source_derived_finite_one_three_causal_carrier",

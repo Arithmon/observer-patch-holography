@@ -46,6 +46,10 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
         [sys.executable, "-m", "pytest", "-q", "code/source_scalar_execution/test_source_scalar_execution.py"],
     ),
     (
+        "Replay original-vacuum scalar probabilities and adversarial controls",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_quantum/test_scalar_quantum_probability.py"],
+    ),
+    (
         "Replay the consistent Cartan-scalar action, current and Gauss controls",
         [sys.executable, "-m", "pytest", "-q", "code/sm_abelian_reduction/test_abelian.py"],
     ),

@@ -759,6 +759,52 @@ def _source_scalar_execution_control(receipt_path: Path | None = None) -> dict[s
     }
 
 
+def _source_scalar_quantum_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_scalar_quantum", "verify_quantum_probability.py",
+        "quantum_probability_receipt.json", receipt_path=receipt_path)
+    if (summary.get("verdict") != "PASS"
+            or summary.get("parent_full_mathematical_replay") is not True
+            or summary.get("parent_events_replayed") != 5888):
+        raise SystemExit("scalar quantum projection requires full authenticated parent replay")
+    expected = {
+        "verdict": "PASS", "times": len(packet["rows"]),
+        "resolved_steps": packet["summary"]["resolved_steps"],
+        "uniform_added_variance_upper": packet["covariance"]["increase_upper"],
+        "step16": packet["rows"][15],
+        "quantum_probability_scope": "original finite-action vacuum and coherent momentum preparation; bounded sine effect",
+        "spatial_continuum_error_transfer": False, "observed_outcomes": False,
+        "parent_full_mathematical_replay": True, "parent_events_replayed": 5888,
+    }
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("scalar quantum verification projection mismatch")
+    row = summary["step16"]
+    if not 0 < Fraction(row["probability_error_upper"]) < Fraction(row["split_response_abs_lower"]):
+        raise SystemExit("scalar quantum response does not dominate its certified error")
+    return {
+        "receipt": "code/source_scalar_quantum/quantum_probability_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "mathematical_replay": True, "quantum_covariance_and_bounded_effect_probability": True,
+        "analytic_proof": "paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex",
+        "original_finite_action_vacuum_retained": True,
+        "observed_postdiction": False, "observed_quantum_outcomes": False,
+        "spatial_continuum_error_certified": False,
+        "intermediate_time_error_enclosure": False,
+        "field_history_joined_to_causal_count_clock": False,
+        "source_action_population_or_physical_clock_selected": False,
+        "scope_boundary": (
+            "This separate extension uses all 64 q5 oscillators, the original finite-action "
+            "vacuum and its coherent momentum displacement. The same symmetric quantum "
+            "gates propagate both means and covariance; the squeezed baseline has sine-effect "
+            "probability one half. Exact rational bounds compare the bounded sine-effect "
+            "probability with continuous evolution of the same finite action at 21 stored "
+            "times. The authenticated classical registers carry means, not an attested "
+            "quantum state or outcome stream. The immutable earlier commutator receipt "
+            "retains its own negative probability flag. No q233 continuum accuracy, "
+            "intermediate-time bound, causal count clock or physical units are transferred."),
+    }
+
+
 def _cartan_scalar_execution_control(receipt_path: Path | None = None) -> dict[str, Any]:
     packet, summary, pin = _structural_packet(
         "sm_abelian_reduction", "verify_abelian.py", "abelian_receipt.json",
@@ -2684,6 +2730,7 @@ def _forced_structure(
             "source_population_quadrature": _source_population_quadrature_control(),
             "common_free_scalar_control": _common_source_scalar_control(),
             "authenticated_scalar_execution_control": _source_scalar_execution_control(),
+            "finite_scalar_quantum_probability_control": _source_scalar_quantum_control(),
             "operational_cone_selection": {
                 "analytic_proof": "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
                 "hypotheses": "nonzero closed convex pointed cone; finite irreducible carrier rotations; one continuous operational boost direction; time orientation",
@@ -2725,6 +2772,9 @@ def _forced_structure(
                 "paper/tex_fragments/SOURCE_SCALAR_EXECUTION.tex",
                 "code/source_scalar_execution/source_scalar_execution_receipt.json",
                 "code/source_scalar_execution/verify_source_scalar_execution.py",
+                "paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex",
+                "code/source_scalar_quantum/quantum_probability_receipt.json",
+                "code/source_scalar_quantum/verify_quantum_probability.py",
                 "Lean/Geometry/MetricKernelEnergy.lean",
                 "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
                 "Lean/Geometry/RefiningLatticeCausalCone.lean",

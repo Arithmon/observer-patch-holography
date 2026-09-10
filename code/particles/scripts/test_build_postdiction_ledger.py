@@ -1852,3 +1852,48 @@ def test_scalar_and_cartan_executions_preserve_existing_rows(result):
     assert action['cartan_scalar_execution_control']['mathematical_replay'] is True
     assert action['declared_local_action_control']['mathematical_replay'] is False
     assert action['match'] == 'exact'
+
+
+def test_scalar_quantum_projection_propagates_original_covariance_with_full_parent():
+    control = ledger._source_scalar_quantum_control()
+    assert control['mathematical_replay'] is True
+    assert control['original_finite_action_vacuum_retained'] is True
+    assert control['quantum_covariance_and_bounded_effect_probability'] is True
+    summary = control['independent_verifier_result']
+    assert summary['parent_full_mathematical_replay'] is True
+    assert summary['parent_events_replayed'] == 5888
+    assert len(summary['resolved_steps']) == 15 and summary['times'] == 21
+    row = summary['step16']
+    assert row['signal_sign'] == -1
+    assert ledger.Fraction(row['probability_error_upper']) < ledger.Fraction(row['split_response_abs_lower'])
+    for key in ('observed_postdiction', 'observed_quantum_outcomes',
+                'spatial_continuum_error_certified', 'intermediate_time_error_enclosure',
+                'field_history_joined_to_causal_count_clock'):
+        assert control[key] is False
+    original = json.loads((ledger.CODE/'source_scalar_execution/source_scalar_execution_receipt.json').read_bytes())
+    assert original['scope']['quantum_covariance_or_probability_queried'] is False
+
+
+def test_scalar_quantum_projection_rejects_omitted_covariance(tmp_path):
+    packet = json.loads((ledger.CODE/'source_scalar_quantum/quantum_probability_receipt.json').read_bytes())
+    packet['covariance']['increase_upper'] = '0'
+    path = tmp_path/'false-stationary-split-vacuum.json'
+    path.write_bytes(json.dumps(packet).encode('ascii'))
+    with pytest.raises(SystemExit, match='original-vacuum probability certificate'):
+        ledger._source_scalar_quantum_control(path)
+
+
+def test_scalar_quantum_projection_rejects_continuum_promotion(tmp_path):
+    packet = json.loads((ledger.CODE/'source_scalar_quantum/quantum_probability_receipt.json').read_bytes())
+    packet['scope']['spatial_continuum_error_transfer'] = True
+    path = tmp_path/'false-continuum-probability.json'
+    path.write_bytes(json.dumps(packet).encode('ascii'))
+    with pytest.raises(SystemExit, match='original-vacuum probability certificate'):
+        ledger._source_scalar_quantum_control(path)
+
+
+def test_scalar_quantum_projection_rejects_arithmetic_only_parent(monkeypatch):
+    monkeypatch.setattr(ledger, '_structural_packet', lambda *a, **k: (
+        {}, {'verdict': 'PASS', 'parent_full_mathematical_replay': False}, {}))
+    with pytest.raises(SystemExit, match='full authenticated parent replay'):
+        ledger._source_scalar_quantum_control()
