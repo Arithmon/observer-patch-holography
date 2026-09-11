@@ -60,14 +60,14 @@
     "registry_finalization_complete": true,
     "target_payloads_registered": false
   },
-  "freeze_id": "sha256:9220df27aca0dcbfa61095d3c7f0618f478d27f43cab8aa4907c302d084c1ffa",
+  "freeze_id": "sha256:0ad30e4c9893ddce2a857444c7c7f6d901d902015ed542c47f39c7601d517155",
   "issue": 647,
   "promotion_rule": "Public-data access, target registration, and scoring stay sealed; issue 639 owns the single physical comparison and the campaign terminates after it. Grammar, ranking, nuisance, exposure, completeness, and direct-N content cannot change while generation is enabled.",
   "schema": "oph.invariant_mining.pregeneration_freeze.v1",
   "source_projection": {
     "bytes": 8500,
     "path": "code/invariant_mining/outputs/source_projection.json",
-    "sha256": "sha256:4d0cf3c1f3efc14d6965edc7b802d0ba0b0b799d9eae8f2c1430f002b08bb07b"
+    "sha256": "sha256:af5ee1f3a9f188e09eb7ba23bc39a7d6c50b8a24df4b046f647b81f857a6c795"
   },
   "status": "GENERATION_ENABLED__COMPARISON_SEALED"
 }

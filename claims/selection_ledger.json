@@ -135,7 +135,7 @@
       "canonical_claim_id": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
       "secondary_claim_ids": [],
       "owner_issues": [],
-      "where": "A1 declares that each finite local carrier has twelve primitive ports with the unlabeled 12-vertex, 30-edge, 20-face, degree-five, coherently oriented boundary complex of the icosahedron. This local boundary architecture is axiom content. The richer Echosahedral lineage, including its counting realization, response law, and physical carrier identification, is separately declared or source-gated and does not follow from the boundary combinatorics alone. Lean `Lean/Screen/PhysicalA5ForcingNoGo.lean` (`noSourceOnlyChargeReconstruction`) proves that the bare total-charge reduct cannot reconstruct even the boundary choice.",
+      "where": "A1 declares that each finite local carrier has twelve primitive ports with the unlabeled 12-vertex, 30-edge, 20-face, degree-five, coherently oriented boundary complex of the icosahedron. This local boundary architecture is axiom content. The richer Echosahedral lineage, including its counting realization, response law, and physical carrier identification, is separately declared or source-gated and does not follow from the boundary combinatorics alone. Lean `Lean/Screen/PhysicalA5ForcingNoGo.lean` (`noSourceOnlyChargeReconstruction`) proves that the bare total-charge reduct cannot reconstruct even the boundary choice. Conditional on a supplied `SL(2, F_5)` source, `code/a5_closure/coset_carrier_certificate.py` reconstructs this boundary complex as the coset geometry of the central quotient and relabels it onto the committed port frame, so the packet is derived rather than separately supplied once that group is given; the certificate does not select the source group (discussion 769).",
       "menu": {
         "size": 3,
         "alternatives": "tetrahedral, octahedral, icosahedral antipodal port families",
@@ -143,7 +143,8 @@
       },
       "compression_input": true,
       "receipts": [
-        "code/a5_closure/echosahedral_selector_certificate.py"
+        "code/a5_closure/echosahedral_selector_certificate.py",
+        "code/a5_closure/coset_carrier_certificate.py"
       ],
       "lean": [
         {
