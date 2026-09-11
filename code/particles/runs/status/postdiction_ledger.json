@@ -1586,7 +1586,7 @@
           "clock_only_uncertainty": true,
           "clock_receipt": {
             "path": "code/source_scalar_clock/source_scalar_clock_receipt.json",
-            "sha256": "823fb469642b9bb9c4a73dd63f81af7dc4973a830a88354a9db2409f97630bbd"
+            "sha256": "60539f8a6e9c788e133fcdaa03b80312a281194d2369a5d3a09e210a8a1e4a06"
           },
           "continuous_split_trajectory_enclosed": false,
           "field_history_joined_to_causal_count_clock": false,
@@ -1687,7 +1687,7 @@
           "receipt": "code/source_scalar_clock_quantum/clock_quantum_receipt.json",
           "receipt_pin": {
             "bytes": 25643,
-            "sha256": "21e09944b1ef9c4fb97ddccf21c99d1b60f51fd04775de6b6f34673314a1f1d0"
+            "sha256": "c29efabfecc67610e3148a12c415466b73e5a73c1b2c5b823262a2da62aad708"
           },
           "record_noise_certifies_quantum_state_error": false,
           "reference_probability_bound_for_every_time_in_each_interval": true,

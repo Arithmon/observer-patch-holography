@@ -13,11 +13,11 @@ SCALAR_SHA='6981fcd4e13fbc33f371224228341a995f34b4733aa70c2ec0b3f6ee5975c7af'
 QUANTUM='code/source_scalar_quantum/quantum_probability_receipt.json'
 QUANTUM_SHA='30f5f46f49f08e2898d0213d6c37a49bf511daf9d51d7123498a141257e8e1ac'
 CLOCK='code/source_scalar_clock/source_scalar_clock_receipt.json'
-CLOCK_SHA='823fb469642b9bb9c4a73dd63f81af7dc4973a830a88354a9db2409f97630bbd'
+CLOCK_SHA='60539f8a6e9c788e133fcdaa03b80312a281194d2369a5d3a09e210a8a1e4a06'
 QVERIFY='code/source_scalar_quantum/verify_quantum_probability.py'
 QVERIFY_SHA='8d49ce32e896f0de0e8783a9ca61bab20591ec6f18911a4827b82833b8541a3c'
 CVERIFY='code/source_scalar_clock/verify_source_scalar_clock.py'
-CVERIFY_SHA='89b866e5584dc1ed2f68a1cb611f900cdf1e8cc437e5a69a3f72f881bc832ba2'
+CVERIFY_SHA='1ca402bd15e171a58b4bb1b00fb1de708807edcdd21e785918e9678d214bf7bc'
 FILES=('code/source_scalar_clock_quantum/clock_quantum.py',
        'code/source_scalar_clock_quantum/verify_clock_quantum.py',
        'code/source_scalar_clock_quantum/test_clock_quantum.py',
