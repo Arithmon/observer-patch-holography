@@ -1,0 +1,124 @@
+# Cosmology postdiction ledger
+
+Generated deterministically by `code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py`; the JSON artifact is `code/cosmology/postdiction_ledger/runtime/cosmology_postdiction_ledger.json` (sha256 `cbf23ddc154496f9a4b482a06a39cfdccde659f5b072f2be03dc5deaba6667c8`, rows digest `6c573dfadf3439daed2016cc36f68e03476b8703036ba7bc542d51258d69eb73`).
+
+This ledger promotes nothing. Every comparison is on seen data; no row is a frozen prediction, a score, or evidence for or against OPH. Every number is read mechanically from `public_inputs.json`, `corpus_inputs.json`, or a pinned parent receipt. Sigma distances are signed as theory minus measurement over the quoted one-sigma uncertainty. The fixed verdict rule is: |sigma| < 2 consistent; 2 <= |sigma| < 3 tension; |sigma| >= 3 exceeds_three_sigma_diagnostic; an upper-bound row is consistent exactly when the theory value lies below the bound; rows without a comparison contract are not_evaluable. The (w0, wa) rows use the two-sided normal equivalent of a two-degree-of-freedom Gaussian Mahalanobis distance.
+
+Row classes:
+
+- `conditional_theorem_postdiction`: value follows from a corpus theorem under named premises and was exposed after the data
+- `shared_baseline`: identical to the standard LambdaCDM or single-field expectation, so agreement supports nothing
+- `closure_candidate_display`: target-informed declared map
+- `fitted_comparison_value`: fitted comparison value with no source value
+- `not_evaluable`: no comparison contract
+
+`discriminates` is true only where the OPH value differs from the generic baseline (the specific n_s value, exact zero running, exact zero tensor amplitude, and w = -1 against thawing).
+
+## Primordial
+
+| quantity | OPH value | premises | measurement (dataset) | sigma | verdict | discriminates | prospective data |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| n_s = 1 - P_C/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_C = 1.6309682094039593 (the CODATA-located comparison pixel) | 0.9649 +/- 0.0042 (Planck 2018 TT,TE,EE+lowE+lensing) | +0.27 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_C/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_C = 1.6309682094039593 (the CODATA-located comparison pixel) | 0.9636 +/- 0.0035 (SPT-3G D1 + Planck) | +0.69 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_C/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_C = 1.6309682094039593 (the CODATA-located comparison pixel) | 0.9684 +/- 0.003 (CMB-SPA (SPT-3G D1 + Planck + ACT DR6)) | -0.79 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_C/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_C = 1.6309682094039593 (the CODATA-located comparison pixel) | 0.951 +/- 0.011 (SPT-3G D1 alone) | +1.37 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_C/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_C = 1.6309682094039593 (the CODATA-located comparison pixel) | 0.9709 +/- 0.0038 (ACT DR6 P-ACT (ACT DR6 + Planck)) | -1.28 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_C/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_C = 1.6309682094039593 (the CODATA-located comparison pixel) | 0.9743 +/- 0.0034 (ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI DR1 BAO)) | -2.43 | tension | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_fwd/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_fwd = 1.630972095858897 (the source closure-map root) | 0.9649 +/- 0.0042 (Planck 2018 TT,TE,EE+lowE+lensing) | +0.27 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_fwd/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_fwd = 1.630972095858897 (the source closure-map root) | 0.9636 +/- 0.0035 (SPT-3G D1 + Planck) | +0.69 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_fwd/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_fwd = 1.630972095858897 (the source closure-map root) | 0.9684 +/- 0.003 (CMB-SPA (SPT-3G D1 + Planck + ACT DR6)) | -0.79 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_fwd/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_fwd = 1.630972095858897 (the source closure-map root) | 0.951 +/- 0.011 (SPT-3G D1 alone) | +1.37 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_fwd/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_fwd = 1.630972095858897 (the source closure-map root) | 0.9709 +/- 0.0038 (ACT DR6 P-ACT (ACT DR6 + Planck)) | -1.28 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - P_fwd/48 (edge-center branch) | 0.966021 | full-collar reserve-generator density P/24 (declared branch input); orientation-half identity giving the half-collar density P/48; continuous dilation cocycle on the source-facing half collar; P = P_fwd = 1.630972095858897 (the source closure-map root) | 0.9743 +/- 0.0034 (ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI DR1 BAO)) | -2.43 | tension | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - e (P_C - varphi) (clock branch, diagnostic) | 0.964841 | clock-branch coordinate theta = e (P - varphi); P = P_C = 1.6309682094039593; e taken as a separate diagnostic hypothesis, not a source-derived coordinate | 0.9649 +/- 0.0042 (Planck 2018 TT,TE,EE+lowE+lensing) | -0.01 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - e (P_C - varphi) (clock branch, diagnostic) | 0.964841 | clock-branch coordinate theta = e (P - varphi); P = P_C = 1.6309682094039593; e taken as a separate diagnostic hypothesis, not a source-derived coordinate | 0.9636 +/- 0.0035 (SPT-3G D1 + Planck) | +0.35 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - e (P_C - varphi) (clock branch, diagnostic) | 0.964841 | clock-branch coordinate theta = e (P - varphi); P = P_C = 1.6309682094039593; e taken as a separate diagnostic hypothesis, not a source-derived coordinate | 0.9684 +/- 0.003 (CMB-SPA (SPT-3G D1 + Planck + ACT DR6)) | -1.19 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - e (P_C - varphi) (clock branch, diagnostic) | 0.964841 | clock-branch coordinate theta = e (P - varphi); P = P_C = 1.6309682094039593; e taken as a separate diagnostic hypothesis, not a source-derived coordinate | 0.951 +/- 0.011 (SPT-3G D1 alone) | +1.26 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - e (P_C - varphi) (clock branch, diagnostic) | 0.964841 | clock-branch coordinate theta = e (P - varphi); P = P_C = 1.6309682094039593; e taken as a separate diagnostic hypothesis, not a source-derived coordinate | 0.9709 +/- 0.0038 (ACT DR6 P-ACT (ACT DR6 + Planck)) | -1.59 | consistent | yes | Simons Observatory; CMB-S4 |
+| n_s = 1 - e (P_C - varphi) (clock branch, diagnostic) | 0.964841 | clock-branch coordinate theta = e (P - varphi); P = P_C = 1.6309682094039593; e taken as a separate diagnostic hypothesis, not a source-derived coordinate | 0.9743 +/- 0.0034 (ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI DR1 BAO)) | -2.78 | tension | yes | Simons Observatory; CMB-S4 |
+| dn_s/dlnk | 0 (exact) | declared source dilation cocycle; scale-natural source embedding transporting refinement to dilation; homogeneous radial source family: exact power law | -0.0045 +/- 0.0067 (Planck 2018 TT,TE,EE+lowE+lensing) | +0.67 | consistent | yes | Simons Observatory; CMB-S4 |
+| dn_s/dlnk | 0 (exact) | declared source dilation cocycle; scale-natural source embedding transporting refinement to dilation; homogeneous radial source family: exact power law | 0.0062 +/- 0.0052 (ACT DR6 P-ACT-LB) | -1.19 | consistent | yes | Simons Observatory; CMB-S4 |
+| r_0.05 (tensor-to-scalar ratio) | 0 (exact) | scalar screen field only; rank-one single-clock primordial source; no orthogonal (transverse-traceless) primordial source | < 0.036 (95 percent CL) (BICEP/Keck through 2018 (BK18) + Planck + WMAP) | n/a | consistent | yes | LiteBIRD (delta r < 0.001 target); CMB-S4 |
+| r (tensor-to-scalar ratio) | 0 (exact) | scalar screen field only; rank-one single-clock primordial source; no orthogonal (transverse-traceless) primordial source | < 0.032 (95 percent CL) (Planck PR4 + BK18 + BAO) | n/a | consistent | yes | LiteBIRD (delta r < 0.001 target); CMB-S4 |
+| r_0.002 (tensor-to-scalar ratio) | 0 (exact) | scalar screen field only; rank-one single-clock primordial source; no orthogonal (transverse-traceless) primordial source | < 0.056 (95 percent CL) (Planck 2018 TT,TE,EE+lowE+lensing + BK15) | n/a | consistent | yes | LiteBIRD (delta r < 0.001 target); CMB-S4 |
+| 100 beta_iso (uncorrelated CDI, n_II = 1, axion I) | 0 (exact) | rank-one single-clock normal form; one common release clock | < 3.5 (95 percent CL) at k = 0.002 Mpc^-1 (Planck 2018 TT,TE,EE+lowE+lensing) | n/a | consistent | no | LiteBIRD; CMB-S4 (bound tightening only; zero is the shared baseline) |
+| 100 beta_iso (uncorrelated CDI, n_II = 1, axion I) | 0 (exact) | rank-one single-clock normal form; one common release clock | < 3.8 (95 percent CL) at k = 0.05 Mpc^-1 (Planck 2018 TT,TE,EE+lowE+lensing) | n/a | consistent | no | LiteBIRD; CMB-S4 (bound tightening only; zero is the shared baseline) |
+| 100 beta_iso (uncorrelated CDI, n_II = 1, axion I) | 0 (exact) | rank-one single-clock normal form; one common release clock | < 3.9 (95 percent CL) at k = 0.1 Mpc^-1 (Planck 2018 TT,TE,EE+lowE+lensing) | n/a | consistent | no | LiteBIRD; CMB-S4 (bound tightening only; zero is the shared baseline) |
+| 100 beta_iso (general three-parameter CDI) | 0 (exact) | rank-one single-clock normal form; one common release clock | < 2.5 (95 percent CL) at k = 0.002 Mpc^-1 (Planck 2018 TT,TE,EE+lowE+lensing) | n/a | consistent | no | LiteBIRD; CMB-S4 (bound tightening only; zero is the shared baseline) |
+| f_NL^local | 0 at the source (transfer not computed) | MaxEnt covariance theorem (Gaussian release); nonlinear transfer of order unity not computed | -0.9 +/- 5.1 (Planck 2018 temperature + polarization (68 percent CL, statistical)) | +0.18 | consistent | no | none scoring; large-scale-structure f_NL programmes tighten a shared-baseline bound |
+| f_NL^equil | 0 at the source (transfer not computed) | MaxEnt covariance theorem (Gaussian release); nonlinear transfer of order unity not computed | -26 +/- 47 (Planck 2018 temperature + polarization (68 percent CL, statistical)) | +0.55 | consistent | no | none scoring; large-scale-structure f_NL programmes tighten a shared-baseline bound |
+| f_NL^ortho | 0 at the source (transfer not computed) | MaxEnt covariance theorem (Gaussian release); nonlinear transfer of order unity not computed | -38 +/- 24 (Planck 2018 temperature + polarization (68 percent CL, statistical)) | +1.58 | consistent | no | none scoring; large-scale-structure f_NL programmes tighten a shared-baseline bound |
+| Omega_K | 0 (exact) | vanishing area-normalized small-loop holonomy; clock-slice flat FLRW branch identification | -0.0106 +/- 0.0065 (Planck 2018 TT,TE,EE+lowE+lensing) | +1.63 | consistent | no | DESI DR3; Euclid |
+| Omega_K | 0 (exact) | vanishing area-normalized small-loop holonomy; clock-slice flat FLRW branch identification | 0.0007 +/- 0.0019 (Planck 2018 TT,TE,EE+lowE+lensing + BAO) | -0.37 | consistent | no | DESI DR3; Euclid |
+| Omega_K | 0 (exact) | vanishing area-normalized small-loop holonomy; clock-slice flat FLRW branch identification | 0.0023 +/- 0.0011 (DESI DR2 BAO + CMB (LambdaCDM + Omega_K)) | -2.09 | tension | no | DESI DR3; Euclid |
+
+## Background and dark energy
+
+| quantity | OPH value | premises | measurement (dataset) | sigma | verdict | discriminates | prospective data |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| (w0, wa) fixed-capacity point | (w0, wa) = (-1, 0) exact | density, continuity, and closed-sector premises of the capacity law; fixed record capacity: d ln N / d ln a = 0; exposure map w(a) = -1 + (1/3) d ln N / d ln a (Lean FixedCapacityWLaw) | w0 = -0.419 +/- 0.205, wa = -1.746 +/- 0.580 (DESI_DR2_BAO+CMB (official DESI DR2 base_w_wa chains)) | +2.61 | tension | yes | DESI DR3; Euclid |
+| (w0, wa) fixed-capacity point | (w0, wa) = (-1, 0) exact | density, continuity, and closed-sector premises of the capacity law; fixed record capacity: d ln N / d ln a = 0; exposure map w(a) = -1 + (1/3) d ln N / d ln a (Lean FixedCapacityWLaw) | w0 = -0.838 +/- 0.055, wa = -0.618 +/- 0.207 (DESI_DR2_BAO+CMB+PantheonPlus (official DESI DR2 base_w_wa chains)) | +2.60 | tension | yes | DESI DR3; Euclid |
+| (w0, wa) fixed-capacity point | (w0, wa) = (-1, 0) exact | density, continuity, and closed-sector premises of the capacity law; fixed record capacity: d ln N / d ln a = 0; exposure map w(a) = -1 + (1/3) d ln N / d ln a (Lean FixedCapacityWLaw) | w0 = -0.666 +/- 0.089, wa = -1.089 +/- 0.294 (DESI_DR2_BAO+CMB+Union3 (official DESI DR2 base_w_wa chains)) | +3.38 | exceeds_three_sigma_diagnostic | yes | DESI DR3; Euclid |
+| (w0, wa) fixed-capacity point | (w0, wa) = (-1, 0) exact | density, continuity, and closed-sector premises of the capacity law; fixed record capacity: d ln N / d ln a = 0; exposure map w(a) = -1 + (1/3) d ln N / d ln a (Lean FixedCapacityWLaw) | w0 = -0.752 +/- 0.057, wa = -0.861 +/- 0.222 (DESI_DR2_BAO+CMB+DESY5 (official DESI DR2 base_w_wa chains)) | +3.93 | exceeds_three_sigma_diagnostic | yes | DESI DR3; Euclid |
+
+Chain diagnostics read from the parent DESI receipt:
+
+- DESI_DR2_BAO+CMB: Mahalanobis squared 9.383; component sigma w0 -2.83, wa +3.01; posterior mass with w(a) >= -1 on 0 <= z <= 2: 7.05e-05; mass with w0 > -1: 0.9979; mass with wa >= 0: 8.54e-04.
+- DESI_DR2_BAO+CMB+PantheonPlus: Mahalanobis squared 9.322; component sigma w0 -2.95, wa +2.99; posterior mass with w(a) >= -1 on 0 <= z <= 2: 1.13e-03; mass with w0 > -1: 0.9988; mass with wa >= 0: 6.29e-04.
+- DESI_DR2_BAO+CMB+Union3: Mahalanobis squared 14.468; component sigma w0 -3.77, wa +3.70; posterior mass with w(a) >= -1 on 0 <= z <= 2: 1.21e-04; mass with w0 > -1: 0.9999; mass with wa >= 0: 3.26e-06.
+- DESI_DR2_BAO+CMB+DESY5: Mahalanobis squared 18.706; component sigma w0 -4.32, wa +3.88; posterior mass with w(a) >= -1 on 0 <= z <= 2: 2.05e-04; mass with w0 > -1: 1.0000; mass with wa >= 0: 0.00e+00.
+
+## Capacity and the cosmological constant
+
+| quantity | OPH value | premises | measurement (dataset) | sigma | verdict | discriminates | prospective data |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Lambda from N = 3.2921e+122 (candidate a) | 1.0959e-52 m^-2 | capacity read as de Sitter horizon entropy in nats: Lambda = 3 pi/(N l_P^2); candidate N from the closure hypothesis (declared, target-informed map); calibration import of hbar, G, and c through l_P | 1.0891e-52 m^-2 (central; no uncertainty attached) (Planck 2018 TT,TE,EE+lowE+lensing base-LambdaCDM centrals) | n/a | not_evaluable | no | DESI DR3; Euclid (background posterior displays only) |
+| Lambda l_P^2 = 3 pi/N, N = 3.2921e+122 (candidate a) | 2.86285e-122 | capacity read as de Sitter horizon entropy in nats: Lambda = 3 pi/(N l_P^2); candidate N from the closure hypothesis (declared, target-informed map); calibration import of hbar, G, and c through l_P | 2.96770e-122 +/- 3.97766e-124 (weighted mean and std) (DESI DR2 BAO + CMB flat base-LambdaCDM chains, sample-level Lambda l_P^2 display) | -2.64 | tension | no | DESI DR3; Euclid (background posterior displays only) |
+| Lambda from N = 3.3001e+122 (candidate b) | 1.0933e-52 m^-2 | capacity read as de Sitter horizon entropy in nats: Lambda = 3 pi/(N l_P^2); candidate N from the closure hypothesis (declared, target-informed map); calibration import of hbar, G, and c through l_P | 1.0891e-52 m^-2 (central; no uncertainty attached) (Planck 2018 TT,TE,EE+lowE+lensing base-LambdaCDM centrals) | n/a | not_evaluable | no | DESI DR3; Euclid (background posterior displays only) |
+| Lambda l_P^2 = 3 pi/N, N = 3.3001e+122 (candidate b) | 2.85591e-122 | capacity read as de Sitter horizon entropy in nats: Lambda = 3 pi/(N l_P^2); candidate N from the closure hypothesis (declared, target-informed map); calibration import of hbar, G, and c through l_P | 2.96770e-122 +/- 3.97766e-124 (weighted mean and std) (DESI DR2 BAO + CMB flat base-LambdaCDM chains, sample-level Lambda l_P^2 display) | -2.81 | tension | no | DESI DR3; Euclid (background posterior displays only) |
+
+Percent residuals, candidate minus comparison over comparison:
+
+- Lambda from N = 3.2921e+122 (candidate a) against Planck 2018 TT,TE,EE+lowE+lensing base-LambdaCDM centrals: +0.62 percent in the constant, -0.62 percent in the capacity coordinate.
+- Lambda l_P^2 = 3 pi/N, N = 3.2921e+122 (candidate a) against DESI DR2 BAO + CMB flat base-LambdaCDM chains, sample-level Lambda l_P^2 display: -3.53 percent in the constant, +3.66 percent in the capacity coordinate.
+- Lambda from N = 3.3001e+122 (candidate b) against Planck 2018 TT,TE,EE+lowE+lensing base-LambdaCDM centrals: +0.38 percent in the constant, -0.38 percent in the capacity coordinate.
+- Lambda l_P^2 = 3 pi/N, N = 3.3001e+122 (candidate b) against DESI DR2 BAO + CMB flat base-LambdaCDM chains, sample-level Lambda l_P^2 display: -3.77 percent in the constant, +3.91 percent in the capacity coordinate.
+
+## Dark sector
+
+| quantity | OPH value | premises | measurement (dataset) | sigma | verdict | discriminates | prospective data |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| a0, SPARC full-RAR fit (Upsilon_disk = 0.5, Upsilon_bulge = 0.7) | open (dictionary a0 = G n^2 c exact; value not derived) | none: fitted comparison value with no source value | 1.1613e-10 +/- 0.0802e-10 m s^-2 (galaxy bootstrap) (SPARC (CDS J/AJ/152/157), unweighted point-level log-residual fit) | n/a | not_evaluable | no | none: no source value to score |
+| a0, SPARC full-RAR fit (Upsilon_disk = 0.4, Upsilon_bulge = 0.7) | open (dictionary a0 = G n^2 c exact; value not derived) | none: fitted comparison value with no source value | 1.4486e-10 +/- 0.1006e-10 m s^-2 (galaxy bootstrap) (SPARC (CDS J/AJ/152/157), unweighted point-level log-residual fit) | n/a | not_evaluable | no | none: no source value to score |
+| a0, SPARC full-RAR fit (Upsilon_disk = 0.6, Upsilon_bulge = 0.7) | open (dictionary a0 = G n^2 c exact; value not derived) | none: fitted comparison value with no source value | 0.9540e-10 +/- 0.0666e-10 m s^-2 (galaxy bootstrap) (SPARC (CDS J/AJ/152/157), unweighted point-level log-residual fit) | n/a | not_evaluable | no | none: no source value to score |
+| a0, published radial acceleration relation fit | open (dictionary a0 = G n^2 c exact; value not derived) | none: fitted comparison value with no source value | 1.2000e-10 +/- 0.0200e-10 (random) +/- 0.2400e-10 (systematic) m s^-2 (SPARC radial acceleration relation (153 galaxies, 2693 points)) | n/a | not_evaluable | no | none: no source value to score |
+| a0, deep-regime fixed-exponent fit (g_bar < 0.3 x 1.2e-10 m s^-2) | open (dictionary a0 = G n^2 c exact; value not derived) | none: fitted comparison value with no source value | 0.8431e-10 m s^-2, 95 percent bootstrap interval [0.7322e-10, 0.9708e-10] (SPARC deep-regime subset, total model g_obs = g_bar + sqrt(g_bar a0)) | n/a | not_evaluable | no | none: no source value to score |
+| a0, deep-regime fixed-exponent fit (g_bar < 0.1 x 1.2e-10 m s^-2) | open (dictionary a0 = G n^2 c exact; value not derived) | none: fitted comparison value with no source value | 0.8750e-10 m s^-2, 95 percent bootstrap interval [0.7390e-10, 1.0379e-10] (SPARC deep-regime subset, total model g_obs = g_bar + sqrt(g_bar a0)) | n/a | not_evaluable | no | none: no source value to score |
+| a0, deep-regime fixed-exponent fit (g_bar < 0.03 x 1.2e-10 m s^-2) | open (dictionary a0 = G n^2 c exact; value not derived) | none: fitted comparison value with no source value | 0.9235e-10 m s^-2, 95 percent bootstrap interval [0.6300e-10, 1.2962e-10] (SPARC deep-regime subset, total model g_obs = g_bar + sqrt(g_bar a0)) | n/a | not_evaluable | no | none: no source value to score |
+| baryonic Tully-Fisher exponent in M_b proportional to v_f^x | 4 (exact) | declared deep-regime scale covariance; quadrature source composition; characterization theorem M_A(r) = r sqrt(M_b a0/G), hence v^4 = G M_b a0 | 3.753 +/- 0.093 (paper display 3.75 +/- 0.10) (SPARC, 123 galaxies with positive catalogued V_flat, Upsilon_disk = 0.5, M_b = 0.5 L_[3.6] + 1.33 M_HI) | +2.66 | tension | no | none: a calibrated errors-in-variables Tully-Fisher likelihood is required before scoring |
+
+Dimensionless ratios with a_dS = c^2 sqrt(Lambda/3) at the Planck-central Lambda and c H0 at H0 = 67.36 km/s/Mpc:
+
+- a0, SPARC full-RAR fit (Upsilon_disk = 0.5, Upsilon_bulge = 0.7): xi = a0/a_dS = 0.2144; a0/(c H0) = 0.1774.
+- a0, SPARC full-RAR fit (Upsilon_disk = 0.4, Upsilon_bulge = 0.7): xi = a0/a_dS = 0.2675; a0/(c H0) = 0.2214.
+- a0, SPARC full-RAR fit (Upsilon_disk = 0.6, Upsilon_bulge = 0.7): xi = a0/a_dS = 0.1762; a0/(c H0) = 0.1458.
+- a0, published radial acceleration relation fit: xi = a0/a_dS = 0.2216; a0/(c H0) = 0.1834.
+- a0, deep-regime fixed-exponent fit (g_bar < 0.3 x 1.2e-10 m s^-2): xi = a0/a_dS = 0.1557; a0/(c H0) = 0.1288.
+- a0, deep-regime fixed-exponent fit (g_bar < 0.1 x 1.2e-10 m s^-2): xi = a0/a_dS = 0.1616; a0/(c H0) = 0.1337.
+- a0, deep-regime fixed-exponent fit (g_bar < 0.03 x 1.2e-10 m s^-2): xi = a0/a_dS = 0.1705; a0/(c H0) = 0.1411.
+
+## Not evaluable
+
+| quantity | OPH value | premises | measurement (dataset) | sigma | verdict | discriminates | prospective data |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| black-hole ringdown integer-k comb (FZ-14) | no comparison contract | none: registered pending owner freeze | none (no event likelihood evaluated) | n/a | not_evaluable | no | post-anchoring gravitational-wave events after the FZ-14 owner freeze |
+| sum of neutrino masses | none (no corpus value) | none | < 0.064 eV (95 percent CL) (DESI DR2 BAO + CMB (LambdaCDM)) | n/a | not_evaluable | no | none: no corpus value |
+| N_eff | none (no corpus value) | none | 2.99 +/- 0.17 (Planck 2018 TT,TE,EE+lowE+lensing + BAO) | n/a | not_evaluable | no | none: no corpus value |
+| N_eff | none (no corpus value) | none | 2.86 +/- 0.13 (ACT DR6 P-ACT-LB) | n/a | not_evaluable | no | none: no corpus value |
+
+## Reproduce
+
+```bash
+python3 code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py --check
+python3 code/cosmology/postdiction_ledger/verify_cosmology_postdiction_ledger_independent.py
+```

@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 387,
+  "surface_count": 391,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -106,6 +106,11 @@
     },
     {
       "path": "paper/tex_fragments/CONSENSUS_TECHNICAL_SUPPLEMENT_PORT.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -251,6 +256,11 @@
     },
     {
       "path": "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -1590,12 +1600,22 @@
       "allowlisted": false
     },
     {
+      "path": "Lean/ObserverPatchHolography/EinsteinBranch/CosmologyLedgerBrackets.lean",
+      "glob": "Lean/ObserverPatchHolography/**/*.lean",
+      "allowlisted": false
+    },
+    {
       "path": "Lean/ObserverPatchHolography/EinsteinBranch/DarkSector.lean",
       "glob": "Lean/ObserverPatchHolography/**/*.lean",
       "allowlisted": false
     },
     {
       "path": "Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean",
+      "glob": "Lean/ObserverPatchHolography/**/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/ObserverPatchHolography/EinsteinBranch/EdgeCenterTiltCocycle.lean",
       "glob": "Lean/ObserverPatchHolography/**/*.lean",
       "allowlisted": false
     },

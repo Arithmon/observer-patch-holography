@@ -39,7 +39,13 @@ transfer equations, declared datasets and covariance, nuisance parameters,
 and a common observable projection. The contracts distinguish source-derived
 quantities, imported inputs and fitted parameters, and account for sample
 overlap and shared calibration. They give a reproducible interface from
-screen and dark-sector models to cosmological data.
+screen and dark-sector models to cosmological data. A retrospective
+comparison ledger with an independent verifier and machine-checked brackets
+records where the receipt-conditional values land on Planck, ACT, SPT,
+BICEP/Keck, DESI and SPARC data: the tilt, running, tensor, isocurvature,
+non-Gaussianity and curvature rows are consistent, the fixed-capacity
+equation of state is in tension with DESI DR2, and every row is on seen
+data.
 \end{abstract}
 
 \section{Comparison Classes}
@@ -56,7 +62,10 @@ an interface without supporting a physical OPH claim.
 \end{enumerate}
 
 The cosmology comparisons in scope are diagnostic or imported. No source-derived
-joint cosmology likelihood exists.
+joint cosmology likelihood exists. The retrospective comparison ledger of
+Section~\ref{sec:ledger} classifies every recorded comparison by these
+classes and by whether the compared value is shared with the standard
+baseline.
 
 The \href{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex}{spacetime construction}
 provides a flat causal-order and normalized count-volume limit for
@@ -136,6 +145,96 @@ scaling checks are diagnostic. Their formulas or inputs are selected with knowle
 the comparison data, omit required covariance or nuisance structure, or lack a
 physical source map. They test numerical paths and conditional formulas and
 do not establish a cosmological prediction.
+
+\section{Retrospective Comparison Ledger}
+\label{sec:ledger}
+
+A deterministic ledger released with these papers records every comparison
+of a conditional cosmological value of the construction with public data. Its
+producer reads the corpus values and the parent receipts, types each public
+measurement once with its citation, and writes one row per comparison with a
+class label; an independent verifier recomputes every row. Every row is on
+seen data. No row is a frozen prediction or a score, and the rule, theory
+minus measurement over the quoted standard deviation, is fixed before any row
+is read. Table~\ref{tab:ledger} summarizes the rows.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{0.12\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.17\textwidth}@{}}
+\toprule
+Quantity & Value & Public measurement and distance & Class \\
+\midrule
+\(n_s\) & \(1-P_\star/48=0.96602\) &
+Planck 2018 \(0.9649\pm0.0042\) (\(+0.27\sigma\)); SPT-3G with Planck
+\(0.9636\pm0.0035\) (\(+0.69\sigma\)); SPT, Planck and ACT
+\(0.9684\pm0.0030\) (\(-0.79\sigma\)); ACT DR6 with Planck
+\(0.9709\pm0.0038\) (\(-1.28\sigma\)); with lensing and BAO
+\(0.9743\pm0.0034\) (\(-2.43\sigma\)) &
+conditional theorem; discriminates \\
+\(\mathrm dn_s/\mathrm d\ln k\) & \(0\) &
+Planck 2018 \(-0.0045\pm0.0067\) (\(+0.67\sigma\)); ACT DR6 with Planck,
+lensing and BAO \(0.0062\pm0.0052\) (\(-1.19\sigma\)) &
+conditional theorem; discriminates only against running of order \(10^{-2}\) \\
+\(r\) & \(0\) &
+BICEP/Keck 2018 \(r_{0.05}<0.036\); the fourth Planck release with BK18 and BAO
+\(r<0.032\); consistent &
+conditional theorem; discriminates against generic slow roll \\
+\(\beta_{\rm iso}\) & \(0\) &
+Planck 2018 uncorrelated CDI \(100\beta_{\rm iso}<3.5,\ 3.8,\ 3.9\) at the
+three reference scales; consistent &
+shared baseline \\
+\(f_{\rm NL}\) & \(0\) at the source &
+Planck 2018 local \(-0.9\pm5.1\) (\(+0.18\sigma\)), equilateral
+\(-26\pm47\), orthogonal \(-38\pm24\) &
+shared baseline \\
+\(\Omega_K\) & \(0\) &
+Planck 2018 with lensing \(-0.0106\pm0.0065\) (\(+1.63\sigma\)); with BAO
+\(0.0007\pm0.0019\) (\(-0.37\sigma\)); DESI DR2 with CMB
+\(0.0023\pm0.0011\) (\(-2.09\sigma\)) &
+shared baseline \\
+\((w_0,w_a)\) & \((-1,0)\) &
+DESI DR2 BAO with CMB \(2.61\sigma\); with Pantheon+ \(2.60\sigma\); with
+Union3 \(3.38\sigma\); with DESY5 \(3.93\sigma\) (Gaussian moment
+diagnostic of the official chains) &
+conditional theorem; tension \\
+\(\Lambda\ell_P^2\) & \(3\pi/N\), \(N=3.29\) and \(3.30\times10^{122}\) &
+Planck-central \(\Lambda\): \(+0.63\) and \(+0.38\) percent; DESI DR2 with
+CMB display \((2.968\pm0.040)\times10^{-122}\): \(-3.5\) and \(-3.8\)
+percent (\(-2.6\) and \(-2.8\sigma\)) &
+closure-candidate display \\
+\(a_0\) & no source value &
+SPARC calibration \(1.161\times10^{-10}\,\mathrm{m\,s^{-2}}\) at
+mass-to-light \(0.5\); ratio to \(c^2\sqrt{\Lambda/3}\) equal to \(0.214\) &
+fitted comparison value \\
+\bottomrule
+\end{tabularx}
+\caption{Rows of the cosmology postdiction ledger. Distances are theory
+minus measurement in units of the quoted standard deviation; bounds are
+consistent when the value lies below the bound. All data are seen.}
+\label{tab:ledger}
+\end{table}
+
+The rows that agree are, with three exceptions, shared with the standard
+baseline and support nothing: zero isocurvature, zero non-Gaussianity at the
+source and zero curvature are the single-field adiabatic expectation, and the
+fixed-capacity point is the \(\Lambda\)CDM null. The exceptions are the exact
+tensor zero, which generic slow-roll inflation does not share and which a
+null at the LiteBIRD design sensitivity would discriminate, the exact zero
+running, which discriminates only against running of order \(10^{-2}\), and
+the specific tilt value, which the seen combinations place between
+\(+0.7\sigma\) and \(-2.4\sigma\). The tensions are the fixed-capacity
+equation of state, at \(2.6\) to \(3.9\sigma\) across the DESI DR2
+combinations under the moment diagnostic and with monotone-branch posterior
+fractions between \(0.007\) and \(0.11\) percent, the curvature value from
+DESI DR2 with CMB at \(2.1\sigma\), and the capacity display against the
+DESI DR2 \(\Lambda\) coordinate at \(2.7\sigma\), while the same candidates
+sit within half a percent of the Planck-central value. These are retrospective
+diagnostics of receipt-conditional values. The freeze proposals for the
+tilt, the tensor zero, and the running and isocurvature zeros, and the
+pending fixed-capacity row, define the only route from this ledger to a
+score: a frozen combination, statistic and thresholds fixed before the
+eligible release.
 
 \section{No-Data-Use Boundary}
 

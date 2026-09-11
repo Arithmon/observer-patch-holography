@@ -58,9 +58,12 @@ fixes a screen amplitude from a primitive collar release law and a spectral
 tilt from an edge-center generator. Physical source dilation and radial
 cross-covariance tomography give two sufficient routes to a unique
 three-dimensional spectrum. Vanishing spatial curvature holonomy identifies
-a flat FLRW branch. These results specify how a finite screen source, its
-clock and release law, and a compatible transport calculation would jointly
-determine cosmological initial data.
+a flat FLRW branch. On the sourced causal order the expansion history is a
+layer-dependent record density: the comoving read law generates the same
+finite order for every scale-factor profile, and the redshift between two
+epochs is the fourth root of a record-count ratio. These results specify how
+a finite screen source, its clock and release law, and a compatible transport
+calculation would jointly determine cosmological initial data.
 \end{abstract}
 
 \section{Scope}
@@ -124,6 +127,10 @@ Amplitude & The conditional theorem fixes \(A_q=2E_q^{\rm src}/d\) and its sourc
 conversion to \(A_\zeta\). A finite collar release law and energy receipt must supply their
 values without CMB data.\\
 Hot start & MaxEnt release into the realized radiation branch with a common release clock.\\
+Expansion history & Conformal invariance of the layered order and the
+\(a^4\) record-density weight of Section~\ref{sec:expansion-record-density};
+the record-production profile is a supplied datum, with the fixed-capacity
+de Sitter profile \(a=-1/(H\eta)\) as one inhabitant.\\
 Acoustic transfer & Declared source functions and a Boltzmann transfer calculation.\\
 \end{longtable}
 
@@ -134,6 +141,19 @@ at \SimEvidenceRepo. For this paper the simulator may emit diagnostic
 screen spectra, observer-screen synchronization receipts, and release-amplitude candidates.  It
 supports an inflation-replacement interpretation only when one finite source supplies the
 primordial growth mode, physical radial lift, transfer calculation, and likelihood inputs.
+
+\section{Expansion as Record Density}
+\label{sec:expansion-record-density}
+
+The spacetime construction supplies a flat causal-order and count-volume
+limit for the conservative golden-record population and the retrospective
+count clock. The following statements transfer that family to a spatially
+flat expanding background. They are exact and machine-checked in the Lean
+module named below; the profile law that selects how many records a comoving
+cell produces per conformal tick is a supplied datum, and no statement below
+derives the Friedmann equation.
+
+\input{../paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex}
 
 \section{Flatness Boundary}
 
@@ -172,6 +192,35 @@ Its premise is a source-emitted full-collar generator density \(P_\star/24\) wit
 orientation-half identity. A finite one-step survival probability is converted through
 \(-\log u/\log b\). The \(e(P_\star-\varphi)\) clock branch is a diagnostic alternative.
 The finite generator and clock receipt is not supplied here.
+
+At the comparison pixel \(P_\star=1.6309682094\), located from the measured
+fine-structure constant, the edge-center value is \(n_s=0.96602\); the forward
+pixel \(1.6309721\) moves it by less than \(10^{-7}\). The retrospective
+comparison with public temperature and polarization data is recorded in the
+cosmology postdiction ledger released with these papers: the value lies
+\(0.27\sigma\) above Planck 2018, \(0.69\sigma\) above SPT-3G with Planck,
+\(0.79\sigma\) below the SPT, Planck and ACT combination, \(1.28\sigma\) below
+ACT DR6 with Planck, and \(2.4\sigma\) below ACT DR6 with Planck, lensing and
+baryon acoustic oscillations. The diagnostic \(e(P_\star-\varphi)\) branch
+gives \(0.96484\). These are seen-data comparisons of a receipt-conditional
+value and select neither branch; a prospective test needs the frozen
+combination, pivot and thresholds of the primordial registration proposal
+released with the ledger. On the same branch the dilation cocycle gives zero
+running, the rank-one single-clock normal form gives zero source-side
+isocurvature, and the scalar screen field emits no transverse-traceless
+source, so the primordial tensor amplitude is zero. Planck 2018 gives a
+running of \(-0.0045\pm0.0067\) and ACT DR6 with Planck, lensing and
+baryon acoustic oscillations \(0.0062\pm0.0052\); BICEP/Keck 2018 bounds
+\(r_{0.05}<0.036\) and the fourth Planck release with BK18 and BAO \(r<0.032\); Planck
+2018 bounds the uncorrelated cold-dark-matter isocurvature fraction at
+\(3.5\) to \(3.9\) percent. The tensor zero and the running zero are the two
+rows on which the branch differs from single-field slow-roll inflation, and
+the tensor row is the one a null at the LiteBIRD design sensitivity would
+discriminate. The exponential form of the survival cocycle and the tilt
+\(P_\star/48\) from the half-collar density, together with the exact
+rational brackets of every comparison above, are machine-checked in the
+Lean modules \texttt{EdgeCenterTiltCocycle} and
+\texttt{CosmologyLedgerBrackets}.
 
 Under the declared source dilation cocycle, the primordial power law
 \[

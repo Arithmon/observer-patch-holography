@@ -1,0 +1,238 @@
+{
+  "schema": "oph.cosmology.postdiction_ledger.corpus_inputs.v1",
+  "policy": {
+    "typed_values": "Each typed value names its source file and an anchor_text that must occur in that file after whitespace normalization; the producer and the verifier both check the anchor.",
+    "parent_receipts": "Values marked as read from a parent receipt are read at build time; the receipt bytes must match the pinned sha256.",
+    "displays": "Entries of kind display are paper-rendered roundings used only as cross-checks against the mechanically read values."
+  },
+  "typed": {
+    "P_C": {
+      "kind": "value",
+      "value": 1.6309682094039593,
+      "symbol": "P_C, the CODATA-located comparison pixel (P_chi = P_C)",
+      "source_file": "extra/fine_structure_constant_derivation.tex",
+      "anchor_text": "P_\\chi=P_{\\mathrm C}=1.630968209403959",
+      "note": "typed to the sixteen decimals of the ledger brief; the paper prints further digits"
+    },
+    "P_fwd": {
+      "kind": "value",
+      "value": 1.630972095858897,
+      "symbol": "P_root, the source closure-map fixed point emitted without the Thomson target",
+      "source_file": "extra/fine_structure_constant_derivation.tex",
+      "anchor_text": "1.630972095858897",
+      "note": "typed to the fifteen decimals of the ledger brief"
+    },
+    "golden_ratio": {
+      "kind": "expression",
+      "expression": "(1 + sqrt(5))/2",
+      "symbol": "varphi",
+      "source_file": "flagship/from_observer_consensus_to_standard_physics.tex",
+      "anchor_text": "$\\varphi=(1+\\sqrt5)/2$ is the golden ratio"
+    },
+    "euler_number": {
+      "kind": "expression",
+      "expression": "exp(1)",
+      "symbol": "e",
+      "source_file": null,
+      "anchor_text": null,
+      "note": "the clock-branch coefficient named in the edge-center theorem as a separate diagnostic hypothesis"
+    },
+    "edge_center_tilt_theorem": {
+      "kind": "statement",
+      "statement": "n_s = 1 - P_star/48 under the full-collar generator density P_star/24 and the orientation-half identity",
+      "label": "thm:oph-p-over-48-tilt",
+      "source_file": "paper/tex_fragments/SCREEN_SPECTRUM_THEOREMS.tex",
+      "anchor_text": "\\begin{theorem}[edge-center tilt and repair-clock reconciliation]"
+    },
+    "clock_branch_diagnostic_alternative": {
+      "kind": "statement",
+      "statement": "theta = e (P_star - varphi) is a diagnostic alternative clock branch",
+      "source_file": "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
+      "anchor_text": "The \\(e(P_\\star-\\varphi)\\) clock branch is a diagnostic alternative."
+    },
+    "clock_branch_paper_display": {
+      "kind": "display",
+      "value": 0.96484,
+      "decimals": 5,
+      "source_file": "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
+      "anchor_text": "The diagnostic \\(e(P_\\star-\\varphi)\\) branch gives \\(0.96484\\)."
+    },
+    "edge_center_paper_display": {
+      "kind": "display",
+      "value": 0.96602,
+      "decimals": 5,
+      "source_file": "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
+      "anchor_text": "the edge-center value is \\(n_s=0.96602\\)"
+    },
+    "zero_running_dilation_cocycle": {
+      "kind": "statement",
+      "statement": "dn_s/dlnk = 0 exactly under the declared source dilation cocycle",
+      "source_file": "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
+      "anchor_text": "the dilation cocycle gives zero running"
+    },
+    "homogeneous_radial_source_family_theorem": {
+      "kind": "statement",
+      "statement": "Delta_zeta^2(k) = A (k/k_star)^(-theta) exactly, the unique member of the one-dimensional source family",
+      "label": "thm:oph-screen-radial-source-family",
+      "source_file": "paper/tex_fragments/SCREEN_SPECTRUM_THEOREMS.tex",
+      "anchor_text": "\\begin{theorem}[homogeneous radial source family]"
+    },
+    "zero_isocurvature_rank_one_single_clock": {
+      "kind": "statement",
+      "statement": "beta_iso = 0 at the source under the rank-one single-clock normal form",
+      "source_file": "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
+      "anchor_text": "the rank-one single-clock normal form gives zero source-side isocurvature"
+    },
+    "zero_tensor_scalar_screen_field": {
+      "kind": "statement",
+      "statement": "r = 0 exactly: the scalar screen field emits no transverse-traceless source",
+      "source_file": "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
+      "anchor_text": "the scalar screen field emits no transverse-traceless source, so the primordial tensor amplitude is zero"
+    },
+    "gaussian_maxent_release": {
+      "kind": "statement",
+      "statement": "f_NL = 0 at the source: the MaxEnt covariance theorem gives a Gaussian release",
+      "source_file": "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
+      "anchor_text": "the MaxEnt covariance theorem"
+    },
+    "flat_branch_small_loop_holonomy": {
+      "kind": "statement",
+      "statement": "Omega_K = 0: vanishing spatial curvature holonomy identifies a flat FLRW branch",
+      "source_file": "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
+      "anchor_text": "Vanishing spatial curvature holonomy identifies a flat FLRW branch"
+    },
+    "fixed_capacity_cpl_point": {
+      "kind": "statement",
+      "statement": "(w0, wa) = (-1, 0) exactly in the CPL plane under fixed record capacity",
+      "source_file": "Lean/ObserverPatchHolography/EinsteinBranch/FixedCapacityWLaw.lean",
+      "anchor_text": "theorem CapacityLaw.cpl_forced_of_constN"
+    },
+    "capacity_candidate_a": {
+      "kind": "value",
+      "value": 3.2921e+122,
+      "symbol": "N (capacity closure candidate, first)",
+      "source_file": "flagship/from_observer_consensus_to_standard_physics.tex",
+      "anchor_text": "$3.2921\\times10^{122}$"
+    },
+    "capacity_candidate_b": {
+      "kind": "value",
+      "value": 3.3001e+122,
+      "symbol": "N (capacity closure candidate, second)",
+      "source_file": "flagship/from_observer_consensus_to_standard_physics.tex",
+      "anchor_text": "$3.3001\\times10^{122}$"
+    },
+    "capacity_lambda_dictionary": {
+      "kind": "statement",
+      "statement": "Lambda = 3 pi / (N l_P^2): the record capacity read as the de Sitter horizon entropy in nats",
+      "source_file": "flagship/from_observer_consensus_to_standard_physics.tex",
+      "anchor_text": "\\Lambda=\\frac{3\\pi}{N\\,\\ell_P^{2}}"
+    },
+    "flagship_lambda_planck_central_display": {
+      "kind": "display",
+      "value": 1.0891e-52,
+      "unit": "m^-2",
+      "source_file": "flagship/from_observer_consensus_to_standard_physics.tex",
+      "anchor_text": "1.0891\\times10^{-52}",
+      "note": "Lambda = 3 Omega_Lambda H0^2/c^2 at the Planck base-LambdaCDM centrals; recomputed here from the public centrals and cross-checked to four significant digits"
+    },
+    "flagship_planck_chain_capacity_coordinate_display": {
+      "kind": "display",
+      "value": 3.3129e+122,
+      "source_file": "flagship/from_observer_consensus_to_standard_physics.tex",
+      "anchor_text": "3.3129\\times10^{122}",
+      "note": "coordinate read back from the weighted Planck chain in the flagship; the ledger recomputes the central-value coordinate from the public centrals instead"
+    },
+    "flagship_capacity_lambda_percent_display": {
+      "kind": "display",
+      "values": [
+        0.62,
+        0.38
+      ],
+      "decimals": 2,
+      "source_file": "flagship/from_observer_consensus_to_standard_physics.tex",
+      "anchor_text": "distances of $+0.62$ and $+0.38$",
+      "note": "flagship percent distances of the candidate Lambda values from the Planck-central Lambda"
+    },
+    "btfr_exponent_four": {
+      "kind": "value",
+      "value": 4,
+      "symbol": "baryonic Tully-Fisher exponent in v^4 = G M_b a_0",
+      "source_file": "flagship/from_observer_consensus_to_standard_physics.tex",
+      "anchor_text": "gives $v^4=GM_ba_0$"
+    },
+    "dark_matter_paper_btfr_exponent_display": {
+      "kind": "display",
+      "value": 3.75,
+      "uncertainty": 0.1,
+      "decimals": 2,
+      "source_file": "cosmology/oph_dark_matter_paper.tex",
+      "anchor_text": "\\(\\log M_b\\) is \\(3.75\\pm0.10\\)"
+    },
+    "a0_dictionary": {
+      "kind": "statement",
+      "statement": "a_0 = G n^2 c with collar density n and per-cut variance constant c; exact, value open",
+      "source_file": "cosmology/oph_dark_matter_paper.tex",
+      "anchor_text": "a_0=G\\,n^2c ."
+    },
+    "dark_matter_paper_full_rar_a0_display": {
+      "kind": "display",
+      "value": 1.1613e-10,
+      "uncertainty": 8.02e-12,
+      "decimals": 4,
+      "unit": "m s^-2",
+      "source_file": "cosmology/oph_dark_matter_paper.tex",
+      "anchor_text": "a_0=(1.1613\\mathbin{\\pm}0.0802)\\times10^{-10}"
+    },
+    "dark_matter_paper_deep_regime_a0_display": {
+      "kind": "display",
+      "values": [
+        8.43e-11,
+        8.75e-11,
+        9.24e-11
+      ],
+      "decimals": 3,
+      "unit": "m s^-2",
+      "source_file": "cosmology/oph_dark_matter_paper.tex",
+      "anchor_text": "a_0=0.843\\times10^{-10},\\quad 0.875\\times10^{-10},\\quad 0.924\\times10^{-10}"
+    },
+    "ringdown_fz14_registration": {
+      "kind": "statement",
+      "statement": "FZ-14 integer-k ringdown comb is registered pending owner freeze; comparison access is forbidden until the contract is anchored",
+      "source_file": "docs/FROZEN_PREDICTION_LADDER.md",
+      "anchor_text": "| FZ-14 | Target-blind build-stage implementation of an imported integer-division Kerr comb continuation"
+    }
+  },
+  "parent_receipts": {
+    "sparc_full_rar_calibration": {
+      "path": "code/cosmology/rar_deep_regime/receipts/sparc_full_rar_calibration.json",
+      "sha256": "204ec809099937ffdb95ba77ae26f1343b49e9378a6c030c6b3494d29f28525f",
+      "schema": "oph.cosmology.sparc_full_rar_calibration.v1",
+      "fields_read": [
+        "/fits/disk_mass_to_light_{0.4,0.5,0.6}/{a0_si_m_per_s2,galaxy_bootstrap_std_si_m_per_s2,n_galaxies,n_points,scatter_dex}",
+        "/reference_literature/{reported_a0_si_m_per_s2,reported_random_uncertainty_si_m_per_s2,reported_systematic_uncertainty_si_m_per_s2}"
+      ]
+    },
+    "sparc_deep_regime_diagnostic": {
+      "path": "code/cosmology/rar_deep_regime/receipts/sparc_deep_regime_diagnostic.json",
+      "sha256": "b52c06698523ada1b8fe6337f61d81b5a0c57421c03453679dccf1872f56f2e9",
+      "schema": "oph.cosmology.rar_deep_regime_diagnostic.v2",
+      "fields_read": [
+        "/deep_radial_acceleration_fraction_sweep/*/{deep_fraction_of_reference_a0,a0_fixed_exponent_m_s2,a0_galaxy_cluster_bootstrap_95pct_m_s2,n_galaxies,n_points}",
+        "/baryonic_tully_fisher/{free_exponent_M_of_V,free_exponent_bootstrap_sd,law_exponent,n_galaxies}",
+        "/law/baryonic_tully_fisher"
+      ]
+    },
+    "official_desi_dr2_fz13_retrospective": {
+      "path": "code/cosmology/fixed_capacity_wlaw/runtime/official_desi_dr2_fz13_retrospective.json",
+      "sha256": "04ce69f561e790a0583f9d96cd4a4289163764110a463309a359d38da9d9cd4d",
+      "schema": "oph.official_desi_dr2_fz13_retrospective.v2",
+      "fields_read": [
+        "/datasets/*/combined/{w0_mean,w0_std,wa_mean,wa_std,w0_wa_covariance,w0_wa_correlation,posterior_mass_w_ge_minus_one_for_0_le_z_le_2,posterior_mass_w0_gt_minus_one,posterior_mass_wa_nonnegative}",
+        "/datasets/*/fixed_capacity_point_gaussian_diagnostic/{mahalanobis_squared,chi2_2dof_survival,two_sided_normal_sigma_equivalent}",
+        "/base_lcdm_capacity_display/combined/Lambda_lP2/{weighted_mean,weighted_std,weighted_step_cdf_quantiles}",
+        "/base_lcdm_capacity_display/combined/{H0_km_s_Mpc,OmegaLambda}/weighted_mean",
+        "/base_lcdm_capacity_display/constants/{Planck_length_m_CODATA_2022_central,speed_of_light_m_s_exact,Mpc_in_m}"
+      ]
+    }
+  }
+}

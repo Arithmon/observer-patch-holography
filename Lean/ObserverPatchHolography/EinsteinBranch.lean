@@ -14,6 +14,8 @@ import ObserverPatchHolography.EinsteinBranch.SparseRecordDefectWitness
 import ObserverPatchHolography.EinsteinBranch.CollarPremiseDerivation
 import ObserverPatchHolography.EinsteinBranch.FiniteCapGeneratorSplit
 import ObserverPatchHolography.EinsteinBranch.FixedCapacityWLaw
+import ObserverPatchHolography.EinsteinBranch.EdgeCenterTiltCocycle
+import ObserverPatchHolography.EinsteinBranch.CosmologyLedgerBrackets
 
 /-!
 # Corrected Einstein-branch formalisation (GitHub #578)

@@ -23,7 +23,13 @@ finite-window bound. The
 [simulator contract](../code/cosmology/SIMULATOR_RADIAL_CONTRACT_330.md)
 specifies the fail-closed evidence split used by finite runs.
 
-The [physical CMB theorem program](physical_cmb_theorem_program.md) specifies the unsupplied physical-event, order-faithful-placement, count--volume, continuum, source, lift, stress, abundance, transfer, and likelihood inputs in one place.
+The [physical CMB theorem program](physical_cmb_theorem_program.md) specifies the supplied and unsupplied physical-event, order-faithful-placement, count--volume, continuum, source, lift, stress, abundance, transfer, and likelihood inputs in one place.
+
+## Expansion, Area Law, and Public Data
+
+On the golden source-record family of the spacetime construction, the expansion history is a record density: the comoving read law generates the same finite causal order for every scale-factor profile, the scale factor enters only as the count weight `a^4` per comoving cell and conformal tick, the count clock reads proper time, and the redshift between two epochs is the fourth root of a record-count ratio ([fragment](../paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex), [Lean](../Lean/Geometry/SourceNetConformalRecordDensity.lean)). The number of unordered read pairs crossing a surface per layer is an exact area law, `(pi/4) n^2 a^4` per unit area, with the Planck-area dictionary `n^2 a^4 = 1/(pi l_P^2)` ([fragment](../paper/tex_fragments/CROSSING_READ_AREA_LAW.tex), [Lean](../Lean/Geometry/CrossingReadAreaLaw.lean), [receipt](../code/causal_refinement/crossing_read_area_law_receipt.json)).
+
+The conditional primordial, background, capacity and dark-sector values are compared with public measurements in the [cosmology postdiction ledger](../code/cosmology/postdiction_ledger/COSMOLOGY_POSTDICTION_LEDGER.md), produced deterministically and checked by an independent verifier, with its brackets machine-checked in [Lean](../Lean/ObserverPatchHolography/EinsteinBranch/CosmologyLedgerBrackets.lean); every row is on seen data and carries its class. Verbatim-ready freeze proposals for the tilt, the tensor zero, and the running and isocurvature zeros are in the [primordial registration proposal](../code/cosmology/primordial_freeze/PRIMORDIAL_REGISTRATION_PROPOSAL.md); every numeric kill cell is an owner slot.
 
 ## Dark-Gravity Structure
 

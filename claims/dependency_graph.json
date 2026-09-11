@@ -230,7 +230,10 @@
   "OPH-QFT-RESTRICTION-NATURALITY",
   "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
   "OPH-SCALAR-ACTION-CLOCK",
-  "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT"
+  "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT",
+  "OPH-COSMO-FLRW-RECORD-DENSITY",
+  "OPH-BH-CROSSING-READ-AREA-LAW",
+  "OPH-COSMO-POSTDICTION-LEDGER"
  ],
  "edges": [
   {
@@ -2062,6 +2065,46 @@
    "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
    "to": "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT",
    "role": "Supplies the separately verified same-action q233 compact spatial/free-Fock comparison and its norm/preparation bounds. The q5 original-vacuum or clock execution data are not transferred to this refinement."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-COSMO-FLRW-RECORD-DENSITY",
+   "role": "supplies the layered read law, the flat causal order and the equal-cell count law of the declared golden family on which the conformal invariance and the sigma^4 record-density weight are stated; it supplies no expansion profile, physical clock or continuum limit"
+  },
+  {
+   "from": "OPH-DE-FIXED-CAPACITY-WLAW",
+   "to": "OPH-COSMO-FLRW-RECORD-DENSITY",
+   "role": "supplies the fixed-capacity branch whose de Sitter history is the profile inhabitant a = -1/(H eta) with record density proportional to (H eta)^(-4); it supplies no derivation of that profile from record production"
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-BH-CROSSING-READ-AREA-LAW",
+   "role": "supplies the layered read law, site density and read radius of the declared golden family whose crossing reads are counted; it supplies no horizon, entropy or Planck-length identification"
+  },
+  {
+   "from": "OPH-BH-CROSSING-READ-AREA-LAW",
+   "to": "OPH-GR-D6-HORIZON-RECORD",
+   "role": "supplies the exact seam-count area law and its Planck-area dictionary on the declared family as a finite counterpart of the horizon-record capacity reading; it supplies no physical horizon, no realized de Sitter branch and no value of N"
+  },
+  {
+   "from": "OPH-COSMO-SCREEN-SPECTRUM",
+   "to": "OPH-COSMO-POSTDICTION-LEDGER",
+   "role": "supplies the conditional tilt, running, tensor and isocurvature values that the primordial rows compare; it supplies no public measurement and no verdict"
+  },
+  {
+   "from": "OPH-DE-FIXED-CAPACITY-WLAW",
+   "to": "OPH-COSMO-POSTDICTION-LEDGER",
+   "role": "supplies the fixed-capacity point (-1, 0) and the official DESI DR2 chain receipt that the dark-energy rows compare under the Gaussian moment diagnostic; it supplies no score"
+  },
+  {
+   "from": "OPH-DM-MATCHED-OBSERVABLE-DIAGNOSTIC",
+   "to": "OPH-COSMO-POSTDICTION-LEDGER",
+   "role": "supplies the fitted a0 receipts and the deep-regime values that the dark-sector rows display with their horizon-scale ratios; no source value of a0 enters"
+  },
+  {
+   "from": "OPH-COSMO-FLRW-RECORD-DENSITY",
+   "to": "OPH-COSMO-POSTDICTION-LEDGER",
+   "role": "supplies the cosmological reading of the count clock under which the ledger's background rows are compared with a spatially flat expanding history; it supplies no measurement"
   }
  ]
 }

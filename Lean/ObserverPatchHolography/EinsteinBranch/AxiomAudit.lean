@@ -8,6 +8,8 @@ import ObserverPatchHolography.EinsteinBranch.SparseRecordDefectWitness
 import ObserverPatchHolography.EinsteinBranch.CollarPremiseDerivation
 import ObserverPatchHolography.EinsteinBranch.FiniteCapGeneratorSplit
 import ObserverPatchHolography.EinsteinBranch.FixedCapacityWLaw
+import ObserverPatchHolography.EinsteinBranch.EdgeCenterTiltCocycle
+import ObserverPatchHolography.EinsteinBranch.CosmologyLedgerBrackets
 import ObserverPatchHolography.Provenance.FiniteCausetCompiler
 import ObserverPatchHolography.Provenance.FiniteCausetCoverCompiler
 import Geometry.SourceOrderEinsteinComposition
@@ -337,5 +339,89 @@ assert_no_sorry decreasingCapacity_w_lt_neg_one
 #print axioms CapacityLaw.cpl_forced_of_constN
 #print axioms powerCapacity_w
 #print axioms decreasingCapacity_w_lt_neg_one
+
+/-! ## Edge-center tilt cocycle and the spectral-index display
+
+The survival cocycle is an input structure (positivity, cocycle law,
+continuity); the exponent, its uniqueness, the generator readout, the
+refinement-semigroup power law, and the edge-center row `n_s = 1 - P / 48`
+are exact consequences.  The comparison pixel is a hypothesis of the
+numeric corollary. -/
+
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.u_zero
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.logHom_apply
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.logHom_continuous
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.log_u_eq
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.u_eq_exp
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.exists_exp
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.exp_unique
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.tilt_eq_of_exp
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.hasDerivAt_zero
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.tilt_eq_of_hasDerivAt
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.tilt_of_hasDerivAt
+assert_no_sorry EdgeCenterTilt.SurvivalCocycle.ofRefinement
+assert_no_sorry EdgeCenterTilt.half_of_full
+assert_no_sorry EdgeCenterTilt.edgeCenter_tilt
+assert_no_sorry EdgeCenterTilt.refinementSemigroup_tilt
+assert_no_sorry EdgeCenterTilt.refinementSemigroup_tilt_unique
+assert_no_sorry EdgeCenterTilt.nS_at_comparison_pixel
+
+/-! ## Cosmology ledger brackets
+
+Closed rational inequalities against literal published values; the `π`
+bounds of Mathlib are the only transcendental input.  The data named are
+seen data and nothing is scored; the DESI moment rows are diagnostics of a
+Gaussian summary of the official chains, and the fixed-capacity point is
+the ΛCDM null. -/
+
+assert_no_sorry CosmologyLedger.withinSigma_iff
+assert_no_sorry CosmologyLedger.outsideSigma_of_below
+assert_no_sorry CosmologyLedger.outsideSigma_of_above
+assert_no_sorry CosmologyLedger.ns_planck2018
+assert_no_sorry CosmologyLedger.ns_spt3g_planck
+assert_no_sorry CosmologyLedger.ns_spt_planck_act
+assert_no_sorry CosmologyLedger.ns_act_pact
+assert_no_sorry CosmologyLedger.ns_act_pactlb
+assert_no_sorry CosmologyLedger.running_planck2018
+assert_no_sorry CosmologyLedger.running_act_pactlb
+assert_no_sorry CosmologyLedger.curvature_planck_bao
+assert_no_sorry CosmologyLedger.curvature_planck_lensing
+assert_no_sorry CosmologyLedger.curvature_desi_dr2_cmb
+assert_no_sorry CosmologyLedger.fnl_planck2018
+assert_no_sorry CosmologyLedger.tensor_zero_below_bk18
+assert_no_sorry CosmologyLedger.tensor_zero_below_pr4
+assert_no_sorry CosmologyLedger.lP_pos
+assert_no_sorry CosmologyLedger.lambdaPlanck_pos
+assert_no_sorry CosmologyLedger.lambda_ratio_within
+assert_no_sorry CosmologyLedger.lambda_capacityLow_within_percent
+assert_no_sorry CosmologyLedger.lambda_capacityHigh_within_percent
+assert_no_sorry CosmologyLedger.lambda_mul_lP_sq
+assert_no_sorry CosmologyLedger.lambda_lP_sq_desi_bracket
+assert_no_sorry CosmologyLedger.lambda_lP_sq_capacityLow_desi
+assert_no_sorry CosmologyLedger.lambda_lP_sq_capacityHigh_desi
+assert_no_sorry CosmologyLedger.aDSsq_bracket
+assert_no_sorry CosmologyLedger.a0_ratio_sq_bracket
+assert_no_sorry CosmologyLedger.a0_band_ratio_sq_bracket
+assert_no_sorry CosmologyLedger.mahal_bao_cmb
+assert_no_sorry CosmologyLedger.mahal_bao_cmb_pantheonplus
+assert_no_sorry CosmologyLedger.mahal_bao_cmb_union3
+assert_no_sorry CosmologyLedger.mahal_bao_cmb_desy5
+assert_no_sorry CosmologyLedger.mahal_bao_cmb_gt_nine
+assert_no_sorry CosmologyLedger.mahal_bao_cmb_pantheonplus_gt_nine
+assert_no_sorry CosmologyLedger.mahal_bao_cmb_union3_gt_nine
+assert_no_sorry CosmologyLedger.mahal_bao_cmb_desy5_gt_nine
+
+#print axioms EdgeCenterTilt.SurvivalCocycle.exists_exp
+#print axioms EdgeCenterTilt.SurvivalCocycle.tilt_of_hasDerivAt
+#print axioms EdgeCenterTilt.edgeCenter_tilt
+#print axioms EdgeCenterTilt.refinementSemigroup_tilt
+#print axioms EdgeCenterTilt.nS_at_comparison_pixel
+#print axioms CosmologyLedger.ns_planck2018
+#print axioms CosmologyLedger.ns_act_pactlb
+#print axioms CosmologyLedger.curvature_desi_dr2_cmb
+#print axioms CosmologyLedger.lambda_capacityLow_within_percent
+#print axioms CosmologyLedger.lambda_lP_sq_capacityLow_desi
+#print axioms CosmologyLedger.a0_ratio_sq_bracket
+#print axioms CosmologyLedger.mahal_bao_cmb
 
 end OPH.EinsteinBranch

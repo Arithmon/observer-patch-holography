@@ -1,0 +1,200 @@
+\section{Seam-count area law on the source family}
+\label{sec:crossing-read-area-law}
+
+The layered read law of the conservative source family supplies a finite
+count that scales with area. Fix a population of constant density $n$,
+sites per unit volume, in a bounded convex window
+$\Omega\subset\mathbb R^3$, a read radius $a$, and the complete-neighbour
+read law: an event at layer $j+1$ reads every event at layer $j$ within
+distance $a$, the same site included. For a plane section
+$\Sigma=\Omega\cap\{x_1=P\}$, a crossing read of one layer is an unordered
+site pair $\{s,t\}$ with $s\neq t$, $\|t-s\|\leq a$, and $s_1<P<t_1$. Each
+such pair is realized in every layer by one read in each direction across
+$\Sigma$, from the lower layer to the upper layer; the ordered read count
+is therefore twice the unordered count, and the unordered count per layer
+is the primary quantity here. A same-site read never crosses a plane, and
+a site with $s_1=P$ belongs to neither side.
+
+\begin{proposition}[Crossing reads per unit area]
+\label{prop:crossing-reads-per-area}
+Let $S_k\subset\Omega$ be finite populations with a partition of $\Omega$
+into cells of common volume $1/n_k$, each cell contained in the ball of
+radius $H_k$ about its site, with read radii $a_k\to0$ and
+$H_k/a_k\to0$. Let $\Sigma=\Omega\cap\{x_1=P\}$ have positive area
+$|\Sigma|$. The number $X_k$ of unordered crossing reads of $\Sigma$ per
+layer satisfies
+\begin{equation}
+ X_k=n_k^2\,|\Sigma|\int_0^{a_k}\frac{\pi(a_k-u)^2(2a_k+u)}{3}\,\dd u\,
+     \bigl(1+o(1)\bigr)
+    =\frac{\pi}{4}\,n_k^2a_k^4\,|\Sigma|\,\bigl(1+o(1)\bigr).
+ \label{eq:crossing-read-density}
+\end{equation}
+The relative error is bounded by a constant multiple of $H_k/a_k+a_k$,
+the constant depending on $\Omega$ and $\Sigma$.
+\end{proposition}
+\begin{proof}
+Write $u(s)=P-s_1$ for the depth of a site below $\Sigma$ and
+$C(s)=\{t\in\Omega:\ t_1>P,\ \|t-s\|\leq a_k\}$, so that
+$X_k=\sum_{0<u(s)\leq a_k}|S_k\cap C(s)|$. The cell of a site $t$ lies in
+$B(t,H_k)$; a cell that meets both $C(s)$ and its complement lies in the
+$2H_k$-collar of $\partial C(s)$. Hence $|S_k\cap C(s)|$ differs from
+$n_k\operatorname{vol}C(s)$ by at most $n_k$ times the volume of that
+collar. The boundary $\partial C(s)$ consists of a spherical cap, a planar
+disc and pieces of $\partial\Omega$, of total area $O(a_k^2)$, so the
+error is $O(n_kH_ka_k^2)$ per site. The slab $0<u(s)\leq a_k$ contains
+$O(n_ka_k|\Sigma|)$ sites, which gives a total error $O(n_k^2H_ka_k^3|\Sigma|)$,
+of relative order $H_k/a_k$.
+
+The function $f(s)=n_k\operatorname{vol}C(s)$ on the slab is bounded by
+$\frac{2\pi}{3}n_ka_k^3$ and is Lipschitz with constant $O(n_ka_k^2)$: its
+depth derivative is $-\pi n_k(a_k^2-u^2)$ and a lateral displacement changes
+$C(s)$ through the faces of $\Omega$ by a set of measure at most $\pi a_k^2$
+per unit displacement. The same cell argument, applied to the slab, bounds
+$\bigl|\sum_{0<u(s)\leq a_k}f(s)-n_k\int_{0<u\leq a_k}f\,\dd^3s\bigr|$ by
+$n_k$ times the Lipschitz constant times $H_k$ times the slab volume, plus
+the contribution of the sites within $H_k$ of the two slab faces; both are
+$O(n_k^2H_ka_k^3|\Sigma|)$, again of relative order $H_k/a_k$.
+
+Finally, for $s$ at lateral distance more than $a_k$ from the relative
+boundary of $\Sigma$ in the plane, $C(s)$ is the untruncated spherical cap
+of $B(s,a_k)$ beyond height $u$, with volume
+\[
+ \int_u^{a_k}\pi(a_k^2-z^2)\,\dd z=\frac{\pi(a_k-u)^2(2a_k+u)}{3}.
+\]
+The truncated sites occupy a lateral collar of area $O(a_k)$ relative to
+$|\Sigma|$, so the integral over the slab equals
+$|\Sigma|\int_0^{a_k}\pi(a_k-u)^2(2a_k+u)/3\,\dd u$ up to a relative error
+$O(a_k)$. The depth integral is $\pi a_k^4/4$.
+\end{proof}
+
+\begin{corollary}[Golden-family value]
+\label{cor:golden-crossing-count}
+For the golden source population $S_q$ of $q^3$ sites in
+$\Omega=[0,L]^3$, $L=2/\sqrt{\varphi+2}$, with $n_q=q^3/L^3$,
+$a_q=L/\sqrt q$ and cell assignment error $H_q=2\sqrt3L/q$, one has
+$n_q^2a_q^4=q^4/L^2$, and the unordered crossing count per layer through
+a full cross-section $\Sigma=\Omega\cap\{x_i=P\}$ is
+\begin{equation}
+ X_q=\frac{\pi q^4}{4}\bigl(1+O(q^{-1/2})\bigr).
+ \label{eq:golden-crossing-count}
+\end{equation}
+For the mid-plane $P=L/2$ the continuum count with the caps truncated by
+the cube is
+\begin{equation}
+ n_q^2\int_{s\in\Omega,\,s_1<L/2}
+ \operatorname{vol}\{t\in\Omega:\ t_1>L/2,\ \|t-s\|\leq a_q\}\,\dd^3s
+ =q^4\left(\frac{\pi}{4}-\frac{8}{15\sqrt q}+\frac1{12\,q}\right).
+ \label{eq:golden-box-corrected}
+\end{equation}
+\end{corollary}
+\begin{proof}
+Here $H_q/a_q=2\sqrt3\,q^{-1/2}$ and $a_q/L=q^{-1/2}$, so
+Proposition~\ref{prop:crossing-reads-per-area} gives
+\eqref{eq:golden-crossing-count}. For \eqref{eq:golden-box-corrected}
+substitute $d=t-s$. For $0<d_1\leq a_q\leq L/2$ and $|d_2|,|d_3|\leq L$,
+the set of $s\in\Omega$ with $s+d\in\Omega$ and $s_1<L/2<s_1+d_1$ has
+volume $d_1(L-|d_2|)(L-|d_3|)$. Over the half ball $d_1>0$,
+$\|d\|\leq a_q$, the moments are $\int d_1=\pi a_q^4/4$,
+$\int d_1|d_2|=4a_q^5/15$ and $\int d_1|d_2||d_3|=a_q^6/12$. Hence the
+count equals $n_q^2a_q^4\bigl(\pi L^2/4-8La_q/15+a_q^2/12\bigr)$, which is
+\eqref{eq:golden-box-corrected} after $n_q^2a_q^4=q^4/L^2$ and
+$a_q=L/\sqrt q$.
+\end{proof}
+
+\begin{proposition}[Area law and the Planck-area dictionary]
+\label{prop:planck-area-dictionary}
+Declare that each crossing read carries one nat of cut entropy across
+$\Sigma$ per layer. In the limit of
+Proposition~\ref{prop:crossing-reads-per-area} the cut entropy is the area
+law
+\begin{equation}
+ \Ent_{\mathrm{cut}}(\Sigma)=\frac{\pi}{4}\,n^2a^4\,|\Sigma| .
+ \label{eq:seam-area-law}
+\end{equation}
+Identifying \eqref{eq:seam-area-law} with $|\Sigma|/(4\ell_P^2)$ fixes
+\begin{equation}
+ n^2a^4=\frac1{\pi\ell_P^2},\qquad
+ \ell_P=\frac1{\sqrt\pi\,n\,a^2},
+ \label{eq:planck-dictionary}
+\end{equation}
+and on the golden family $\ell_P=L/(\sqrt\pi\,q^2)$.
+\end{proposition}
+\begin{proof}
+Equation \eqref{eq:seam-area-law} is \eqref{eq:crossing-read-density} with
+one nat per read. Equating $(\pi/4)n^2a^4$ with $1/(4\ell_P^2)$ and
+solving for $\ell_P^2$ gives \eqref{eq:planck-dictionary}; with
+$n^2a^4=q^4/L^2$ this reads $\ell_P^2=L^2/(\pi q^4)$.
+\end{proof}
+
+\begin{remark}[What is not claimed]
+\label{rem:crossing-not-claimed}
+Equation \eqref{eq:planck-dictionary} is a calibration of the read scale by
+the area coefficient, in the same way that the layer duration $a/c$ is a
+calibration of the clock. No horizon is constructed: $\Sigma$ is a plane
+section of the source window, with the same read law on both sides. The
+nat-per-read reading is a declared dictionary, without a derivation from
+the record channel of the finite ledger. No temperature, no Hawking flux
+and no physical value of $\ell_P$ follow; $L$ is the side of the source
+window, and the family fixes only the ratio $\ell_P/L=1/(\sqrt\pi\,q^2)$.
+Dou and Sorkin~\cite{dousorkin2003} count causal links across a horizon in
+a Poisson-sprinkled causal set and obtain an area law whose coefficient
+depends on the sprinkling; here the population is deterministic, the count
+is exact at every finite $q$, and the coefficient $\pi/4$ in
+\eqref{eq:crossing-read-density} is the exact limit.
+\end{remark}
+
+The depth integral in \eqref{eq:crossing-read-density}, the value
+$(\pi/4)n^2a^4$, the golden identity $n_q^2a_q^4=q^4/L^2$ with the
+cross-section value $\pi q^4/4$, and the dictionary
+\eqref{eq:planck-dictionary} with its golden value $\ell_P^2=L^2/(\pi q^4)$
+are machine-checked in \texttt{Geometry/CrossingReadAreaLaw.lean}
+(\texttt{capVolume\_integral}, \texttt{crossingDensity\_eq},
+\texttt{golden\_crossing\_count}, \texttt{planck\_area\_of\_area\_law},
+\texttt{golden\_planck\_length\_sq}) with the standard axioms only. The
+limit statement of Proposition~\ref{prop:crossing-reads-per-area} is
+analytic and is proved above.
+
+\paragraph{Finite receipt.}
+The exact crossing counts of the golden family at $q=5,8,13,21,34,55$ are
+recorded with an independent verifier. The population and the neighbour
+relation are rebuilt from the definitions, the relation agrees edge for
+edge with the causal-poset evidence package at every level, every side
+decision is exact in $\mathbb Q(\varphi)$, and no site lies on any of the
+five planes $x_1=L/2$, $x_1=L/4$, $x_1=3L/4$, $x_2=L/2$, $x_3=L/2$.
+Table~\ref{tab:crossing-receipt} lists the mid-plane counts. The counts
+across $x_2=L/2$ and $x_3=L/2$ equal the $x_1=L/2$ count at every level,
+as the product population is symmetric under coordinate permutations. At
+$q=34$ the mid-plane count is $907\,080$ against the box-corrected value
+$930\,602.0$, ratio $0.975$, and against the infinite-plane value
+$1\,049\,555.8$, ratio $0.864$; at $q=55$ the count is $6\,496\,004$
+against $6\,542\,684.6$, ratio $0.993$, and against $7\,186\,884.1$, ratio
+$0.904$. The ratio to the box-corrected value is closer to one than the
+ratio to the infinite-plane value at every level; it lies within $0.13$ of
+one at every level and within $0.026$ of one for $q\geq21$, while the
+ratio to the infinite-plane value rises from $0.658$ to $0.904$. The
+residual at fixed $q$ is the finite population itself: the two sides of
+the mid-plane hold $84\,700$ and $81\,675$ sites at $q=55$, and the mean
+number of neighbours of a site, $1459.3$ at $q=55$, compares with the
+cube mean $1461.1$ of $n_q\operatorname{vol}(B(s,a_q)\cap\Omega)$ and with
+the untruncated ball value $1708.6$.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrr}
+\toprule
+$q$ & count & $\pi q^4/4$ & ratio & box-corrected & ratio \\
+\midrule
+5 & 323 & 490.9 & 0.658 & 352.2 & 0.917 \\
+8 & 2\,164 & 3\,217.0 & 0.673 & 2\,487.3 & 0.870 \\
+13 & 17\,754 & 22\,431.8 & 0.791 & 18\,390.1 & 0.965 \\
+21 & 129\,830 & 152\,745.0 & 0.850 & 130\,882.5 & 0.992 \\
+34 & 907\,080 & 1\,049\,555.8 & 0.864 & 930\,602.0 & 0.975 \\
+55 & 6\,496\,004 & 7\,186\,884.1 & 0.904 & 6\,542\,684.6 & 0.993 \\
+\bottomrule
+\end{tabular}
+\caption{Unordered crossing reads per layer across the mid-plane
+$x_1=L/2$ of the golden family, the infinite-plane value $\pi q^4/4$, and
+the box-corrected value \eqref{eq:golden-box-corrected}, with the ratios
+of the count to each.}
+\label{tab:crossing-receipt}
+\end{table}

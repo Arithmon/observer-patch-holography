@@ -2,6 +2,7 @@ import Geometry.SourceRecordProtection
 import Geometry.SourcePopulationQuadrature
 import Geometry.SourceNetCausalCone
 import Geometry.SourceNetLayeredOrder
+import Geometry.SourceNetConformalRecordDensity
 import Geometry.OrderingFractionFourDimensional
 import Geometry.CanonicalLorentzModule
 import Geometry.CelestialNullCone
@@ -45,6 +46,7 @@ import Geometry.SeamStepSpeedLimit
 import Geometry.SourceClockRateAlongWorldlines
 import Geometry.ProperLengthClockedChain
 import Geometry.TimelikeClassForceLaw
+import Geometry.CrossingReadAreaLaw
 
 /-!
 # OPH construction geometry umbrella
@@ -138,4 +140,18 @@ records the flat-spacetime reference constants of the ordering-fraction
 proposition: the double integral `T⁸ / 1920`, the identity `V² / 20`, the
 fraction `1 / 10`, and the Myrheim-Meyer values at `d = 2, 3, 4`; the count
 convergence itself is analytic and lives in the paper.
+`Geometry.SourceNetConformalRecordDensity` proves that positive layer scaling
+of positions and read radius leaves the layered order unchanged, defines the
+constant-physical-density count measure with the FLRW weight `σ ^ 4`,
+sandwiches it between the extreme scales times the flat mass, reads the
+scale-factor ratio and the redshift as fourth roots of count ratios, and
+records the de Sitter profile identities; the profile is a supplied datum and
+no Friedmann equation follows.
+`Geometry.CrossingReadAreaLaw` records the seam-count area law of the
+complete-neighbour read law: the cap-volume depth integral `π a⁴ / 4`, the
+crossing density `(π / 4) n² a⁴` of unordered crossing pairs per unit plane
+area and per layer, the golden-family value `π q⁴ / 4` through a full
+cross-section, and the Planck-area dictionary `ℓ² = 1 / (π n² a⁴)` with its
+golden value `L² / (π q⁴)`; the finite-count convergence is analytic and lives
+in the paper, and no horizon, temperature or physical `ℓ` is identified.
 -/

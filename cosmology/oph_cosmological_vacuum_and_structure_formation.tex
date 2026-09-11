@@ -55,7 +55,12 @@ interpretation. On a separate supplied Whitney action, controlled real-field
 trajectories and a neutral interacting Hilbert space provide explicit matter
 and state constructions. We state the further source and transfer conditions
 that connect such objects to primordial seeds, observer-facing worldlines
-and large-scale structure observables.
+and large-scale structure observables. On the sourced causal order the
+expansion history is a record density; the capacity dictionary
+\(\Lambda\ell_P^2=3\pi/N\) returns the cosmological constant within
+\(0.6\) percent of the Planck-central value from the two closure candidates,
+and the fixed-capacity equation of state \(w=-1\) sits \(2.6\) to
+\(3.9\) standard deviations from the DESI DR2 posterior means.
 \end{abstract}
 
 \section{Scope}
@@ -77,6 +82,29 @@ nondegenerate interval $J$ in the same history. For interior timelike
 diamonds this tends to the proper-time ratio; the readout uses no coordinates,
 timestamps or density. Its reference fixes relative units, while the law
 underlying the limit remains supplied.
+
+The vacuum term of the background has one dictionary on the fixed-capacity
+branch, \(\Lambda\ell_P^2=3\pi/N\). The two closure candidates for the
+capacity, \(3.2921\times10^{122}\) and \(3.3001\times10^{122}\), return
+\(\Lambda=1.0959\times10^{-52}\) and \(1.0933\times10^{-52}\,\mathrm{m^{-2}}\)
+against the Planck-central \(1.0891\times10^{-52}\,\mathrm{m^{-2}}\),
+residuals of \(+0.63\) and \(+0.38\) percent, and sit \(2.6\) and
+\(2.8\) posterior standard deviations below the DESI DR2 with CMB display
+\((2.968\pm0.040)\times10^{-122}\); both brackets are exact rational
+inequalities machine-checked in the Lean module
+\texttt{CosmologyLedgerBrackets}. Both candidates were exposed after the
+data and are target-informed declared maps, so the residual is a diagnostic
+of a frozen formula and carries no predictive weight; a relative capacity
+residual \(\delta\) gives a relative constant residual \(-\delta/(1+\delta)\),
+so the large capacity explains the small scale and not the closeness. On
+the same branch a constant capacity gives \(w=-1\) exactly and a monotone
+capacity gives \(w\ge-1\); the Gaussian moment diagnostic of the official
+DESI DR2 chains places \((-1,0)\) between \(2.6\sigma\) and \(3.9\sigma\)
+from the four default posterior means, with monotone-branch posterior
+fractions between \(0.007\) and \(0.11\) percent, so the fixed branch is
+under tension on seen data and the pending freeze before DESI DR3 is a
+genuine risk commitment. The cosmology postdiction ledger released with
+these papers records these rows with their classes.
 
 On the rank-three source Gram space with a real axis adjoined, a nonzero
 closed convex pointed cone is future or past Lorentzian if the proper
@@ -132,6 +160,33 @@ A cosmological interpretation additionally requires observer-selected
 geometry, physical preparation and units, and a compatible expanding
 background. Those attachments are separate from these matter and state
 theorems.
+
+The golden source population of the spacetime construction carries a second
+matter and state construction on the same population that the causal order
+uses. Its positive source-metric scalar action has a finite-time continuum
+limit with an explicit detector error bound, a canonical quantization whose
+quadratic Hamiltonian has a unique normalized ground state, the original
+action vacuum, and a bounded probability comparison between the split
+evolution of that vacuum with a coherent displacement and the continuous
+evolution of the same finite action, with all sixty-four modes retained at
+\(q=5\). The joint spatial and temporal refinement of one compact detector is
+certified at \(q=233\), with total error below \(0.0501\) against a resolved
+response above \(0.1377\). This is a vacuum state of a finite scalar action on
+the source population, with the population, action and tick supplied. It is
+neither a reflection-positive Euclidean vacuum of a cosmological release law
+nor a source-instantiated triple \((J_r,V_r,a_{t,r})\) in the sense of the
+next section, and it carries no expanding background.
+
+On the same family the expansion history has an exact finite form. The
+layered read law in comoving coordinates is conformally invariant, so the
+flat causal order is the causal order of every spatially flat expanding
+history; the scale factor enters only as the record-density weight \(a^4\)
+per comoving cell and conformal tick, the count clock reads proper time, and
+the redshift between two epochs is the fourth root of a record-count ratio.
+The finite-source cosmology paper states and proves these statements, with
+their Lean module. The record-production profile is a supplied datum; the
+vacuum and fluctuation conditions below concern the field on that background
+and do not select the profile.
 
 \section{Finite Quotient Ensemble Theorem}
 

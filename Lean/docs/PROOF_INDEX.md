@@ -456,6 +456,33 @@ Mapping between Lean 4 theorems in this project and statements in
   duration are inputs; no physical clock, native-repair selection, count
   limit or manifold reconstruction follows. See
   `paper/tex_fragments/CAUSAL_MANIFOLD_OBSERVATIONS.tex`.
+- Seam-count area law (`Geometry/CrossingReadAreaLaw.lean`): kernel-clean.
+  For the complete-neighbour read law with site density `n` and read radius
+  `a`, the cap-volume depth integral is `π a⁴ / 4` (`capVolume_integral`),
+  the crossing density of unordered crossing pairs per unit plane area and
+  per layer is `(π / 4) n² a⁴` (`crossingDensity_eq`), the golden family has
+  `n² a⁴ = q⁴ / L²` and `π q⁴ / 4` crossings through a full cross-section
+  (`golden_crossing_count`), and the Planck-area dictionary
+  `(π / 4) n² a⁴ = 1 / (4 ℓ²)` gives `ℓ² = 1 / (π n² a⁴)`
+  (`planck_area_of_area_law`), on the golden family `ℓ² = L² / (π q⁴)`
+  (`golden_planck_length_sq`). The finite-count convergence is analytic and
+  lives in the paper; no horizon, temperature or physical `ℓ` is identified.
+- Source-net conformal record density
+  (`Geometry/SourceNetConformalRecordDensity.lean`): kernel-clean. Positive
+  scaling of positions and read radius preserves and reflects the ball read
+  law, so the layered order of the physical read law at every layer equals
+  the comoving layered order and, on a population, the family's `Precedes`;
+  the constant-physical-density count measure of an event set factorizes as
+  `sum sigma_j^4 Delta v_s`, the discrete FLRW four-volume weight, lies
+  between `sigma_min^4` and `sigma_max^4` times the flat mass, and the fourth
+  root of a mass ratio lies within the extreme scale ratios of the flat count
+  clock; counts `n = kappa sigma^4` give
+  `(n_0/n_e)^(1/4) = sigma_0/sigma_e = 1 + z`; the de Sitter profile
+  `-1/(H eta)` is positive on `eta < 0`, satisfies
+  `d sigma/d eta = H sigma^2`, and has record density `kappa/(H eta)^4`. The
+  profile is a supplied datum: no source law selects it, and no physical
+  clock, native-repair selection, continuum limit or Friedmann equation
+  follows. See `paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex`.
 - C1 canonical Lorentz module (`Geometry/CanonicalLorentzModule.lean`,
   `Geometry/CelestialNullCone.lean`, `Geometry/ObserverFrameHyperboloid.lean`,
   `Geometry/ObserverRestSpace.lean`, `Geometry/EinsteinTensorBridge.lean`):

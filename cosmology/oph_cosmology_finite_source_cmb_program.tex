@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,mathtools}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs,tabularx}
 \usepackage{enumitem}
 \usepackage{hyperref}
@@ -23,6 +23,12 @@
 \newcommand{\OPH}{\mathrm{OPH}}
 \newcommand{\dd}{\,\mathrm d}
 \newcommand{\pathref}[1]{\nolinkurl{#1}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
 
 \title{Finite-Source Cosmology from Observer-Patch Holography\\
 \large Source, Transfer, and Likelihood Boundaries}
@@ -45,7 +51,15 @@ tilt. Physical dilation and radial cross-covariance tomography provide two
 sufficient uniqueness routes beyond one-shell data. The construction states
 the source, covariant stress, physical scale, Boltzmann transfer and likelihood
 conditions needed to convert these screen quantities into cosmological
-observables.
+observables. On the sourced causal order the expanding background is a
+record density and the redshift is a fourth root of a count ratio. The
+receipt-conditional primordial values, the tilt \(1-P_\star/48=0.96602\),
+zero running, zero source-side isocurvature and zero primordial tensor
+amplitude, are compared with Planck 2018, ACT DR6, SPT-3G and BICEP/Keck
+data in a deterministic ledger with machine-checked brackets: the tilt lies
+within one standard deviation of Planck 2018 and of both SPT-3G
+combinations and 2.4 standard deviations below the ACT DR6 combination with
+lensing and baryon acoustic oscillations.
 \end{abstract}
 
 \section{Claim Boundary}
@@ -121,6 +135,25 @@ requires same-family tensor-curvature convergence or the continuum
 small-ball/null-balance identification; scalar-curvature convergence alone
 is diagnostic. The flat count-clock construction does not supply these
 cosmological attachments or a likelihood.
+
+\subsection{Expansion on the sourced order}
+
+The transfer calculation of Section~\ref{sec:transfer-interface} runs on a
+spatially flat Friedmann background. On the source family that background
+has an exact finite form: the layered read law in comoving coordinates is
+conformally invariant, so the flat causal order of the spacetime construction
+is the causal order of every spatially flat expanding history, and the scale
+factor enters only through the count measure, as the weight \(a^4\) per
+comoving cell and conformal tick that a constant physical event density
+assigns. The count clock then reads proper time, and the redshift between two
+epochs is the fourth root of the ratio of record counts of congruent comoving
+diamonds. The statements are proved in the fragment below and machine-checked
+in the named Lean module. The record-production profile \(a(\eta)\) is a
+supplied datum on this family; deriving it from the source dynamics is the
+sourced-density problem of the spacetime paper, and nothing here supplies the
+Friedmann equation, a physical clock, or the physical scale map.
+
+\input{../paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex}
 
 \subsection{Conditional source spectrum}
 
@@ -217,7 +250,63 @@ one finite source construction that supplies this receipt together with the rele
 stress, clock, freezeout, mode, scale, and radial receipts. Numerical agreement
 with a measured summary does not supply the missing source map.
 
+\section{Comparison with Public Data}
+\label{sec:public-comparison}
+
+The values that the conditional theorems of this paper and its companions
+fix without a dial are compared with public measurements in a deterministic
+ledger released with these papers, with an independent verifier and exact
+rational brackets machine-checked in the Lean module
+\texttt{CosmologyLedgerBrackets}. Every comparison is on seen data and
+carries a class label; the rule, theory minus measurement in units of the
+quoted standard deviation, is fixed before any row is read. The primordial
+rows are the following.
+
+\begin{itemize}[leftmargin=2em]
+\item The tilt \(n_s=1-P_\star/48=0.96602\) at the comparison pixel, with
+a branch spread below \(10^{-7}\), lies \(0.27\sigma\) above Planck 2018
+(\(0.9649\pm0.0042\)), \(0.69\sigma\) above SPT-3G with Planck
+(\(0.9636\pm0.0035\)), \(0.79\sigma\) below the SPT, Planck and ACT
+combination (\(0.9684\pm0.0030\)), \(1.28\sigma\) below ACT DR6 with Planck
+(\(0.9709\pm0.0038\)) and \(2.43\sigma\) below ACT DR6 with Planck, lensing
+and baryon acoustic oscillations (\(0.9743\pm0.0034\)). The value is a
+consequence of the reserve-generator receipt, which is not supplied; the
+comparison records where a receipt-conditional number lands and selects no
+branch.
+\item The running vanishes exactly on the dilation-cocycle branch; Planck
+2018 gives \(-0.0045\pm0.0067\) (\(0.67\sigma\)) and ACT DR6 with Planck,
+lensing and baryon acoustic oscillations gives \(0.0062\pm0.0052\)
+(\(1.19\sigma\)).
+\item The primordial tensor amplitude vanishes exactly, since the source is
+the scalar collar-volume field and no transverse-traceless source is
+emitted; BICEP/Keck 2018 gives \(r_{0.05}<0.036\) and the fourth Planck release with BK18
+and BAO gives \(r<0.032\). Generic slow-roll inflation gives \(r>0\), so this
+row discriminates, and a null at the LiteBIRD design sensitivity below
+\(0.001\) would discriminate against the models it keeps alive.
+\item The source-side isocurvature fraction vanishes on the rank-one
+single-clock branch; Planck 2018 bounds the uncorrelated cold-dark-matter
+fraction at \(3.5\), \(3.8\) and \(3.9\) percent at the three reference
+scales. Zero non-Gaussianity at the source (Planck local
+\(-0.9\pm5.1\)) and zero curvature (Planck with BAO \(0.0007\pm0.0019\);
+DESI DR2 with CMB \(0.0023\pm0.0011\), \(2.1\sigma\)) are shared with the
+adiabatic single-field baseline.
+\end{itemize}
+
+The background rows are the fixed-capacity equation of state
+\((w_0,w_a)=(-1,0)\), which the Gaussian moment diagnostic of the official
+DESI DR2 chains places between \(2.6\sigma\) and \(3.9\sigma\) from the
+posterior means of the four default combinations, a tension recorded with
+the same prominence as the agreements, and the capacity candidates
+\(3.29\times10^{122}\) and \(3.30\times10^{122}\), whose dictionary
+\(\Lambda\ell_P^2=3\pi/N\) returns the cosmological constant within
+\(0.6\) percent of the Planck-central value and \(2.7\sigma\) below the DESI
+DR2 with CMB display. The primordial registration proposal released with the
+ledger states verbatim-ready freeze rows for the tilt, the tensor zero, and
+the running and isocurvature zeros, with every numeric kill cell an owner
+slot, so that the next primary-CMB and B-mode releases can score them.
+
 \section{Transfer Interface}
+\label{sec:transfer-interface}
 
 Given a completed source map, the transfer calculation must declare the
 background species, equations of state, collision terms, recombination model,

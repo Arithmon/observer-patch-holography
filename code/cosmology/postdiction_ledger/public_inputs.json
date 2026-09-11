@@ -1,0 +1,262 @@
+{
+  "schema": "oph.cosmology.postdiction_ledger.public_inputs.v1",
+  "policy": {
+    "typed_once": "Every public measured value used by the ledger is typed exactly once in this file and referenced by id.",
+    "uncertainty_convention": "uncertainty is the quoted 68 percent (one sigma) half-width; upper_bound rows carry confidence_level instead.",
+    "transcription": "provenance_note states how the digits were obtained; no item is flagged for re-verification before a freeze."
+  },
+  "items": {
+    "planck2018_vi_ns": {
+      "quantity": "n_s",
+      "value": 0.9649,
+      "uncertainty": 0.0042,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. VI. Cosmological parameters, A&A 641, A6, arXiv:1807.06209; the same value is quoted in Planck 2018 results. X, arXiv:1807.06211",
+      "provenance_note": "digits verified against the arXiv:1807.06211 abstract (n_s = 0.9649 +/- 0.0042 at 68 percent CL)"
+    },
+    "spt3g_d1_planck_ns": {
+      "quantity": "n_s",
+      "value": 0.9636,
+      "uncertainty": 0.0035,
+      "dataset": "SPT-3G D1 + Planck",
+      "citation": "SPT-3G Collaboration, Camphuis et al. (2025), SPT-3G D1: CMB temperature and polarization power spectra and cosmology, arXiv:2506.20707",
+      "provenance_note": "digits as supplied in the ledger brief from the parameter tables of arXiv:2506.20707; the abstract does not quote n_s"
+    },
+    "cmb_spa_ns": {
+      "quantity": "n_s",
+      "value": 0.9684,
+      "uncertainty": 0.003,
+      "dataset": "CMB-SPA (SPT-3G D1 + Planck + ACT DR6)",
+      "citation": "SPT-3G Collaboration, Camphuis et al. (2025), arXiv:2506.20707",
+      "provenance_note": "digits as supplied in the ledger brief from the parameter tables of arXiv:2506.20707; the abstract does not quote n_s"
+    },
+    "spt3g_d1_alone_ns": {
+      "quantity": "n_s",
+      "value": 0.951,
+      "uncertainty": 0.011,
+      "dataset": "SPT-3G D1 alone",
+      "citation": "SPT-3G Collaboration, Camphuis et al. (2025), arXiv:2506.20707",
+      "provenance_note": "digits as supplied in the ledger brief from the parameter tables of arXiv:2506.20707; the abstract does not quote n_s"
+    },
+    "act_dr6_p_act_ns": {
+      "quantity": "n_s",
+      "value": 0.9709,
+      "uncertainty": 0.0038,
+      "dataset": "ACT DR6 P-ACT (ACT DR6 + Planck)",
+      "citation": "ACT Collaboration, Louis et al. (2025), ACT DR6 power spectra, likelihoods and LambdaCDM parameters, arXiv:2503.14452; companion extended-models paper Calabrese et al. (2025), arXiv:2503.14454",
+      "provenance_note": "digits as supplied in the ledger brief from the LambdaCDM parameter tables of arXiv:2503.14452"
+    },
+    "act_dr6_p_act_lb_ns": {
+      "quantity": "n_s",
+      "value": 0.9743,
+      "uncertainty": 0.0034,
+      "dataset": "ACT DR6 P-ACT-LB (ACT DR6 + Planck + CMB lensing + DESI DR1 BAO)",
+      "citation": "ACT Collaboration, Louis et al. (2025), arXiv:2503.14452; Calabrese et al. (2025), arXiv:2503.14454",
+      "provenance_note": "digits as supplied in the ledger brief from the parameter tables; the arXiv:2503.14452 abstract quotes the rounded n_s = 0.974 +/- 0.003"
+    },
+    "planck2018_running": {
+      "quantity": "dn_s/dlnk",
+      "value": -0.0045,
+      "uncertainty": 0.0067,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. VI, arXiv:1807.06209, Table 5; the same value is quoted in Planck 2018 results. X, arXiv:1807.06211",
+      "provenance_note": "digits confirmed against the published Planck 2018 VI PDF"
+    },
+    "act_dr6_p_act_lb_running": {
+      "quantity": "dn_s/dlnk",
+      "value": 0.0062,
+      "uncertainty": 0.0052,
+      "dataset": "ACT DR6 P-ACT-LB",
+      "citation": "ACT Collaboration, Calabrese et al. (2025), ACT DR6 constraints on extended cosmological models, arXiv:2503.14454",
+      "provenance_note": "digits verified against the arXiv:2503.14454 abstract"
+    },
+    "bk18_r_0p05": {
+      "quantity": "r_0.05",
+      "upper_bound": 0.036,
+      "confidence_level": 0.95,
+      "sigma_r": 0.009,
+      "dataset": "BICEP/Keck through 2018 (BK18) + Planck + WMAP",
+      "citation": "BICEP/Keck Collaboration, Ade et al. (2021), BICEP/Keck XIII, Phys. Rev. Lett. 127, 151301, arXiv:2110.00483",
+      "provenance_note": "digits verified against the arXiv:2110.00483 abstract (r_0.05 < 0.036 at 95 percent confidence; sigma(r) = 0.009)"
+    },
+    "tristram2022_r": {
+      "quantity": "r",
+      "upper_bound": 0.032,
+      "confidence_level": 0.95,
+      "dataset": "Planck PR4 + BK18 + BAO",
+      "citation": "Tristram et al. (2022), Improved limits on the tensor-to-scalar ratio using BICEP and Planck, Phys. Rev. D 105, 083524, arXiv:2112.07961",
+      "provenance_note": "digits verified against the arXiv:2112.07961 abstract (r < 0.032)"
+    },
+    "planck2018_x_r_0p002_bk15": {
+      "quantity": "r_0.002",
+      "upper_bound": 0.056,
+      "confidence_level": 0.95,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing + BK15",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. X. Constraints on inflation, A&A 641, A10, arXiv:1807.06211",
+      "provenance_note": "digits verified against the arXiv:1807.06211 abstract (r_0.002 < 0.056 with BK15)"
+    },
+    "planck2018_x_cdi_axion_i_100beta_klow": {
+      "quantity": "100 beta_iso (uncorrelated CDI, n_II = 1, axion I)",
+      "upper_bound": 3.5,
+      "confidence_level": 0.95,
+      "k_pivot_mpc_inverse": 0.002,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. X, arXiv:1807.06211, Table 14",
+      "provenance_note": "transcribed from Table 14 of the published PDF (pdftotext)"
+    },
+    "planck2018_x_cdi_axion_i_100beta_kmid": {
+      "quantity": "100 beta_iso (uncorrelated CDI, n_II = 1, axion I)",
+      "upper_bound": 3.8,
+      "confidence_level": 0.95,
+      "k_pivot_mpc_inverse": 0.05,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. X, arXiv:1807.06211, Table 14",
+      "provenance_note": "transcribed from Table 14 of the published PDF (pdftotext)"
+    },
+    "planck2018_x_cdi_axion_i_100beta_khigh": {
+      "quantity": "100 beta_iso (uncorrelated CDI, n_II = 1, axion I)",
+      "upper_bound": 3.9,
+      "confidence_level": 0.95,
+      "k_pivot_mpc_inverse": 0.1,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. X, arXiv:1807.06211, Table 14",
+      "provenance_note": "transcribed from Table 14 of the published PDF (pdftotext)"
+    },
+    "planck2018_x_cdi_general_100beta_klow": {
+      "quantity": "100 beta_iso (general three-parameter CDI)",
+      "upper_bound": 2.5,
+      "confidence_level": 0.95,
+      "k_pivot_mpc_inverse": 0.002,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. X, arXiv:1807.06211, Table 14",
+      "provenance_note": "transcribed from Table 14 of the published PDF (pdftotext); the general-CDI k_high bound in the same row is 47"
+    },
+    "planck2018_ix_fnl_local": {
+      "quantity": "f_NL^local",
+      "value": -0.9,
+      "uncertainty": 5.1,
+      "dataset": "Planck 2018 temperature + polarization (68 percent CL, statistical)",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. IX. Constraints on primordial non-Gaussianity, A&A 641, A9, arXiv:1905.05697",
+      "provenance_note": "digits verified against the arXiv:1905.05697 abstract"
+    },
+    "planck2018_ix_fnl_equil": {
+      "quantity": "f_NL^equil",
+      "value": -26,
+      "uncertainty": 47,
+      "dataset": "Planck 2018 temperature + polarization (68 percent CL, statistical)",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. IX, arXiv:1905.05697",
+      "provenance_note": "digits verified against the arXiv:1905.05697 abstract"
+    },
+    "planck2018_ix_fnl_ortho": {
+      "quantity": "f_NL^ortho",
+      "value": -38,
+      "uncertainty": 24,
+      "dataset": "Planck 2018 temperature + polarization (68 percent CL, statistical)",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. IX, arXiv:1905.05697",
+      "provenance_note": "digits verified against the arXiv:1905.05697 abstract"
+    },
+    "planck2018_vi_omegak": {
+      "quantity": "Omega_K",
+      "value": -0.0106,
+      "uncertainty": 0.0065,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. VI, arXiv:1807.06209",
+      "provenance_note": "digits confirmed against the published Planck 2018 VI PDF"
+    },
+    "planck2018_vi_omegak_bao": {
+      "quantity": "Omega_K",
+      "value": 0.0007,
+      "uncertainty": 0.0019,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing + BAO",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. VI, arXiv:1807.06209",
+      "provenance_note": "digits confirmed against the published Planck 2018 VI PDF"
+    },
+    "desi_dr2_cmb_omegak": {
+      "quantity": "Omega_K",
+      "value": 0.0023,
+      "uncertainty": 0.0011,
+      "dataset": "DESI DR2 BAO + CMB (LambdaCDM + Omega_K)",
+      "citation": "DESI Collaboration (2025), DESI DR2 Results II: Measurements of baryon acoustic oscillations and cosmological constraints, arXiv:2503.14738",
+      "provenance_note": "digits as supplied in the ledger brief from the parameter tables of arXiv:2503.14738; the abstract does not quote Omega_K"
+    },
+    "planck2018_vi_h0": {
+      "quantity": "H0",
+      "value": 67.36,
+      "uncertainty": 0.54,
+      "unit": "km s^-1 Mpc^-1",
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing (base LambdaCDM)",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. VI, arXiv:1807.06209, Table 2",
+      "provenance_note": "Table 2 column TT,TE,EE+lowE+lensing; the abstract quotes the rounded H0 = 67.4 +/- 0.5; the same centrals are consumed in code/capacity_readback/planck_posterior/planck_lambda_to_N_propagation.json"
+    },
+    "planck2018_vi_omega_lambda": {
+      "quantity": "Omega_Lambda",
+      "value": 0.6847,
+      "uncertainty": 0.0073,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing (base LambdaCDM)",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. VI, arXiv:1807.06209, Table 2",
+      "provenance_note": "Table 2 column TT,TE,EE+lowE+lensing; the same centrals are consumed in code/capacity_readback/planck_posterior/planck_lambda_to_N_propagation.json"
+    },
+    "codata2022_planck_length": {
+      "quantity": "Planck length l_P",
+      "value": 1.616255e-35,
+      "uncertainty": 1.8e-40,
+      "unit": "m",
+      "dataset": "CODATA 2022 recommended values",
+      "citation": "CODATA 2022, https://physics.nist.gov/cgi-bin/cuu/Value?plkl",
+      "provenance_note": "same central and standard uncertainty as recorded in the parent DESI receipt constants block; the constant uncertainty is not propagated"
+    },
+    "si_speed_of_light": {
+      "quantity": "speed of light c",
+      "value": 299792458,
+      "uncertainty": 0,
+      "unit": "m s^-1",
+      "dataset": "SI (exact by definition)",
+      "citation": "BIPM, The International System of Units (SI), 9th edition (2019)",
+      "provenance_note": "exact defining constant"
+    },
+    "iau2015_megaparsec": {
+      "quantity": "megaparsec",
+      "value": 3.0856775814913673e22,
+      "uncertainty": 0,
+      "unit": "m",
+      "dataset": "IAU 2012 astronomical unit (149597870700 m exact) times 648000/pi",
+      "citation": "IAU 2012 Resolution B2; IAU 2015 Resolution B2",
+      "provenance_note": "the same numeric value is used by the parent SPARC and DESI receipts"
+    },
+    "mcgaugh2016_a0": {
+      "quantity": "a0",
+      "value": 1.2e-10,
+      "uncertainty": 2e-12,
+      "systematic_uncertainty": 2.4e-11,
+      "unit": "m s^-2",
+      "dataset": "SPARC radial acceleration relation (153 galaxies, 2693 points)",
+      "citation": "McGaugh, Lelli and Schombert (2016), Phys. Rev. Lett. 117, 201101, arXiv:1609.05917",
+      "provenance_note": "a0 = 1.20 +/- 0.02 (random) +/- 0.24 (systematic) x 1e-10 m s^-2; the same values are recorded in the parent SPARC receipt reference_literature block"
+    },
+    "desi_dr2_sum_mnu": {
+      "quantity": "sum of neutrino masses",
+      "upper_bound": 0.064,
+      "confidence_level": 0.95,
+      "unit": "eV",
+      "dataset": "DESI DR2 BAO + CMB (LambdaCDM)",
+      "citation": "DESI Collaboration (2025), DESI DR2 Results II, arXiv:2503.14738",
+      "provenance_note": "digits verified against the arXiv:2503.14738 abstract (sum m_nu < 0.064 eV assuming LambdaCDM)"
+    },
+    "planck2018_vi_bao_neff": {
+      "quantity": "N_eff",
+      "value": 2.99,
+      "uncertainty": 0.17,
+      "dataset": "Planck 2018 TT,TE,EE+lowE+lensing + BAO",
+      "citation": "Planck Collaboration (2020), Planck 2018 results. VI, arXiv:1807.06209",
+      "provenance_note": "digits verified against the arXiv:1807.06209 abstract (N_eff = 2.99 +/- 0.17)"
+    },
+    "act_dr6_p_act_lb_neff": {
+      "quantity": "N_eff",
+      "value": 2.86,
+      "uncertainty": 0.13,
+      "dataset": "ACT DR6 P-ACT-LB",
+      "citation": "ACT Collaboration, Calabrese et al. (2025), arXiv:2503.14454",
+      "provenance_note": "digits verified against the arXiv:2503.14454 abstract (N_eff = 2.86 +/- 0.13)"
+    }
+  }
+}

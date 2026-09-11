@@ -9998,6 +9998,139 @@
         "boundary": [],
         "rationale": "This is observable convergence for explicitly supplied finite oscillator models, coherent instruments, refinement law and a declared continuum reference. It constructs neither physical observer preparation nor source-selected laws, clocks, regional interpretation or measured causal order; those excluded physical identifications are not consumed premises."
       }
+    },
+    {
+      "claim_id": "OPH-COSMO-FLRW-RECORD-DENSITY",
+      "statement": "On the declared golden source-record family with the layered complete-neighbour read law, the spatially flat expanding background has an exact finite form. The read law written in comoving coordinates is invariant under every positive layer-dependent rescaling of positions and read radius, so the layered order is the same finite partial order for every scale-factor profile. With a constant physical event density the count measure assigns a comoving cell of volume v at layer j, with conformal tick Delta and scale factor sigma_j, the weight sigma_j^4 Delta v, the four-volume weight of the spatially flat Friedmann metric; an interval on which sigma_min <= sigma_j <= sigma_max has weighted mass between sigma_min^4 and sigma_max^4 times its flat mass, so the count clock (|I|/|J|)^(1/4) reads the proper-time ratio up to the factor sigma_max/sigma_min; for congruent comoving diamonds with uniform cells the fourth root of the count ratio equals the scale-factor ratio, 1 + z = (n_0/n_e)^(1/4); and the de Sitter profile a(eta) = -1/(H eta) on eta < 0 satisfies da/deta = H a^2 with record density proportional to (H eta)^(-4). The record-production profile is a supplied datum: no statement derives the Friedmann equation, a physical clock, a native population selection, or a continuum limit, and spatial curvature kappa != 0 is outside the construction.",
+      "owner_paper": "cosmology/oph_cosmology_finite_source_cmb_program.tex",
+      "tier": "exact_flrw_record_density_form_on_declared_family",
+      "assumptions": [
+        "declared_golden_source_population_read_law_clock_and_count_measure",
+        "supplied_comoving_record_production_profile",
+        "constant_physical_event_density_count_calibration"
+      ],
+      "imported_results": [
+        "conformal_flatness_of_spatially_flat_Friedmann_metrics",
+        "norm_scaling_and_finite_sum_algebra",
+        "real_fourth_root_uniqueness"
+      ],
+      "oph_specific_delta": "Transfers the flat causal-order and count-volume limit of the source-record family to every spatially flat expanding history without changing the finite order: expansion is a layer-dependent record density, the count clock reads proper time, and the redshift is a fourth root of a record-count ratio. The Friedmann equation becomes a law for how many records a comoving cell produces per conformal tick, which the construction does not derive.",
+      "novelty_type": "exact_conformal_order_invariance_with_record_density_expansion_dictionary",
+      "evidence": [
+        "Lean/Geometry/SourceNetConformalRecordDensity.lean",
+        "paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex",
+        "cosmology/oph_cosmology_finite_source_cmb_program.tex",
+        "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
+        "cosmology/physical_cmb_theorem_program.md"
+      ],
+      "falsifier": "The rescaled read law fails to coincide with the comoving read law for a positive profile; the two layered orders differ; the interval-mass factorization or its sandwich fails; the fourth-root count identity fails; the de Sitter profile fails its derivative or density identity; or the profile, the physical clock, the population or a continuum limit is presented as derived.",
+      "scope_if_false": "Only the expansion dictionary on the declared family falls; the flat causal-order and count limits of the source-record family keep their separate scope.",
+      "status": "exact_flrw_record_density_form_attained__record_production_profile_physical_clock_and_continuum_open",
+      "claim_class": "conditional_implication",
+      "gates": [
+        742,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [
+          "PR-16"
+        ],
+        "open": [
+          "PR-15",
+          "PR-52"
+        ],
+        "boundary": []
+      }
+    },
+    {
+      "claim_id": "OPH-BH-CROSSING-READ-AREA-LAW",
+      "statement": "On the layered complete-neighbour read law with site density n and read radius a, the number of unordered one-layer reads crossing a plane converges, under refinement with vanishing covering-to-radius ratio and equal cells, to (pi/4) n^2 a^4 per unit area and per layer, by the cap-volume integral (pi/3) int_0^a (a - u)^2 (2a + u) du = pi a^4/4. For the golden family n^2 a^4 = q^4/L^2, so the crossing count through a full cube cross-section tends to pi q^4/4 per layer with boundary corrections of relative order q^(-1/2), and the finite receipt counts crossing pairs at RECEIPT_Q_RANGE against the infinite-plane and box-corrected predictions. Reading one crossing read per layer as one nat of cut entropy gives the exact area law S_cut = (pi/4) n^2 a^4 |Sigma|; identification with A/(4 l_P^2) fixes the dictionary n^2 a^4 = 1/(pi l_P^2), so the golden family has l_P = L/(sqrt(pi) q^2). No horizon, temperature, Hawking flux or physical Planck length is constructed; the nat-per-read reading is a declared dictionary.",
+      "owner_paper": "cosmology/oph_black_hole_information_ledger.tex",
+      "tier": "exact_seam_count_area_law_on_declared_family",
+      "assumptions": [
+        "declared_golden_source_population_read_law_clock_and_count_measure",
+        "nat_per_crossing_read_cut_entropy_dictionary"
+      ],
+      "imported_results": [
+        "spherical_cap_volume_integral",
+        "causal_set_horizon_link_counting_comparison"
+      ],
+      "oph_specific_delta": "Makes the seam-count reading of horizon entropy an exact theorem of the source-record family: the crossing-read density is an area law with a coefficient fixed by the read law, and matching it to the Bekenstein coefficient is one calibration, the Planck-area dictionary n^2 a^4 = 1/(pi l_P^2). The deterministic family gives an exact limit where causal-set link counting on Poisson sprinklings gives a fluctuating one.",
+      "novelty_type": "exact_crossing_read_area_law_with_planck_area_dictionary",
+      "evidence": [
+        "Lean/Geometry/CrossingReadAreaLaw.lean",
+        "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex",
+        "code/causal_refinement/crossing_read_area_law.py",
+        "code/causal_refinement/verify_crossing_read_area_law.py",
+        "code/causal_refinement/test_crossing_read_area_law.py",
+        "code/causal_refinement/crossing_read_area_law_receipt.json",
+        "cosmology/oph_black_hole_information_ledger.tex"
+      ],
+      "falsifier": "The cap-volume integral identity, the crossing-density formula, the golden specialization or the dictionary algebra fails; the finite crossing counts fail to approach the box-corrected prediction with the stated boundary order; the independent verifier disagrees with the producer; or the seam count is presented as a derived horizon entropy, temperature or physical Planck length.",
+      "scope_if_false": "Only the area-law dictionary on the declared family falls; the finite ledger theorems and the count limits of the source-record family keep their separate scope.",
+      "status": "exact_area_law_and_planck_area_dictionary_attained__horizon_temperature_and_physical_planck_length_open",
+      "claim_class": "conditional_implication",
+      "gates": [
+        729,
+        742
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [
+          "PR-16"
+        ],
+        "open": [
+          "PR-15",
+          "PR-52"
+        ],
+        "boundary": []
+      }
+    },
+    {
+      "claim_id": "OPH-COSMO-POSTDICTION-LEDGER",
+      "statement": "A deterministic cosmology postdiction ledger compares the receipt-conditional cosmological values of the corpus with public measurements on seen data, with one class label per row and the rule, theory minus measurement over the quoted standard deviation, fixed before any row is read: |sigma| < 2 consistent, 2 <= |sigma| < 3 tension, |sigma| >= 3 exceeds the three-sigma diagnostic level, an upper bound consistent exactly when the value lies below it. At the recorded checkpoint the 53 rows read: the tilt n_s = 1 - P_star/48 = 0.966021 at +0.27 sigma from Planck 2018, +0.69 from SPT-3G with Planck, -0.79 from the SPT, Planck and ACT combination, -1.28 from ACT DR6 with Planck and -2.43 from ACT DR6 with Planck, lensing and BAO; zero running at +0.67 (Planck) and -1.19 (ACT); zero tensor amplitude below the BK18, fourth-Planck-release and Planck-BK15 bounds; zero source isocurvature below the Planck bounds; zero source non-Gaussianity within one sigma; zero curvature at +1.63 (Planck with lensing), -0.37 (Planck with BAO) and -2.09 (DESI DR2 with CMB); the fixed-capacity point (-1, 0) at 2.61, 2.60, 3.38 and 3.93 two-sided-normal-equivalent sigma from the four official DESI DR2 combinations under the Gaussian moment diagnostic; the capacity candidates 3.2921e122 and 3.3001e122 within 0.62 and 0.38 percent of the Planck-central cosmological constant and 2.64 and 2.81 posterior standard deviations below the DESI DR2 with CMB display; the fitted a0 values with their ratios to the horizon scale c^2 sqrt(Lambda/3) between 0.156 and 0.268; and the Tully-Fisher exponent 4 against the ordinary-least-squares 3.753 +/- 0.093. Every row is on seen data, no row is a frozen prediction or a score, agreement on shared-baseline rows supports nothing, and the tension rows are recorded with the same prominence as the agreements. Exact rational brackets of the tilt, running, curvature, non-Gaussianity, tensor, cosmological-constant, horizon-ratio and DESI moment rows are machine-checked.",
+      "owner_paper": "cosmology/oph_cosmology_data_likelihood_contracts.tex",
+      "tier": "retrospective_comparison_ledger_with_independent_verifier_and_machine_checked_brackets",
+      "assumptions": [
+        "seen_data_retrospective_comparison_rule",
+        "public_measurement_transcription_provenance"
+      ],
+      "imported_results": [
+        "Planck_2018_ACT_DR6_SPT_3G_BICEP_Keck_DESI_DR2_and_SPARC_public_values",
+        "Gaussian_moment_Mahalanobis_diagnostic"
+      ],
+      "oph_specific_delta": "Puts every cosmological comparison of the corpus on one deterministic surface with a fixed direction-neutral rule, an independent verifier, pinned parent receipts and machine-checked brackets, so that the receipt-conditional values, the shared-baseline rows and the tensions are displayed together and none can be promoted to a score without the frozen protocols of the registration proposals.",
+      "novelty_type": "deterministic_seen_data_comparison_ledger",
+      "evidence": [
+        "code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py",
+        "code/cosmology/postdiction_ledger/verify_cosmology_postdiction_ledger_independent.py",
+        "code/cosmology/postdiction_ledger/test_cosmology_postdiction_ledger.py",
+        "code/cosmology/postdiction_ledger/public_inputs.json",
+        "code/cosmology/postdiction_ledger/corpus_inputs.json",
+        "code/cosmology/postdiction_ledger/runtime/cosmology_postdiction_ledger.json",
+        "code/cosmology/postdiction_ledger/COSMOLOGY_POSTDICTION_LEDGER.md",
+        "code/cosmology/primordial_freeze/PRIMORDIAL_REGISTRATION_PROPOSAL.md",
+        "Lean/ObserverPatchHolography/EinsteinBranch/CosmologyLedgerBrackets.lean",
+        "Lean/ObserverPatchHolography/EinsteinBranch/EdgeCenterTiltCocycle.lean",
+        "cosmology/oph_cosmology_data_likelihood_contracts.tex",
+        "cosmology/oph_cosmology_finite_source_cmb_program.tex",
+        "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex"
+      ],
+      "falsifier": "A ledger row disagrees with a recomputation from the typed public inputs and pinned parent receipts; a public value is transcribed wrongly from its cited source; the verdict rule is applied inconsistently or direction-dependently; a machine-checked bracket fails; or a row is presented as a frozen prediction, a score, or evidence for or against the framework.",
+      "scope_if_false": "Only the failing row or bracket is withdrawn; the conditional theorems the rows compare and the registration proposals keep their separate scope.",
+      "status": "ledger_attained_on_seen_data__no_frozen_row_and_no_score",
+      "claim_class": "empirical_implementation",
+      "gates": [
+        742
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The ledger consumes public measurements and the corpus values carried by other claims; its own content is the comparison rule, the transcription provenance and the verifier, none of which is a canonical derivation premise, and its rows supply no derivation of any compared value."
+      }
     }
   ]
 }
