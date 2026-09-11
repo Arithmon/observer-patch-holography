@@ -1148,6 +1148,17 @@
           "paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex",
           "code/source_scalar_quantum/quantum_probability_receipt.json",
           "code/source_scalar_quantum/verify_quantum_probability.py",
+          "paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex",
+          "Lean/Screen/ActionTimeGram.lean",
+          "Lean/Screen/SourceActionTime.lean",
+          "code/source_scalar_clock/source_scalar_clock_receipt.json",
+          "code/source_scalar_clock/verify_source_scalar_clock.py",
+          "paper/tex_fragments/SOURCE_SCALAR_CLOCK_QUANTUM.tex",
+          "code/source_scalar_clock_quantum/clock_quantum_receipt.json",
+          "code/source_scalar_clock_quantum/verify_clock_quantum.py",
+          "paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex",
+          "code/source_scalar_time_refinement/source_scalar_time_refinement_receipt.json",
+          "code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py",
           "Lean/Geometry/MetricKernelEnergy.lean",
           "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
           "Lean/Geometry/RefiningLatticeCausalCone.lean",
@@ -1438,6 +1449,45 @@
         },
         "hypothesis_boundary": "source height is a canonical ordinal, not a physical clock. The generic cone-inclusion theorem supplies neither its positive time scale nor a spatial readback valued in the rank-three quotient or an edge-speed bound; two-way order--cone faithfulness is the additional converse field of a faithful placement. Event-frame transports are supplied, and the standard-frame constructor is a trivial gauge choice rather than a derivation of physical observer frames. The Boolean diamond is an exact mathematical non-chain control, not empirical evidence of manifoldlikeness. No physical event/link identification, Poisson sprinkling, calibrated density or count--volume law, independent dimension estimator, topology, manifoldlike refinement, uniqueness theorem, continuum convergence, smooth metric, curvature, Einstein equation, observable, decision rule, or prediction is constructed by this finite source theorem. The separate growing-menu control supplies the frame, local move law, mesh, model layer time and event-cell measure. Its cone and interval-volume limits are analytic conditional results, not a source-selected physical manifold, Poisson sprinkling or calibrated density. The finite Lean bounds and replay do not formalize the Riemann-volume argument. The separate metric scalar limit supplies its coarsening, clipped Voronoi masses, radial-kernel force law, inertia and canonical quantization. Its analytic estimate assumes smooth references with an interaction-radius boundary buffer and h/epsilon^2 tending to zero. Five Lean lemmas check finite energy algebra, not the analytic PDE limit or physical source selection. The golden population, cube, all-neighbor read law, model tick and distinguished-event counting are declared. Its raw-count limit is not a native physical calibration, Poisson sprinkling or a finite-run dimension fit. Accepted primitive repairs, field-action agreement and laboratory clock attachment remain separate; neither the analytic volume nor pair-count proof is formalized by the finite Lean path module",
         "id": "source_derived_finite_one_three_causal_carrier",
+        "joint_scalar_time_refinement_control": {
+          "all_modes_and_original_vacuum_covariance_retained": true,
+          "analytic_proof": "paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex",
+          "asymptotic_prearrival_detector_convergence": true,
+          "complete_observer_event_log_executed": false,
+          "finite_q_prearrival_zero_response_certified": false,
+          "full_fock_state_norm_convergence": false,
+          "independent_verifier_result": {
+            "full_spatial_parent_replayed": true,
+            "levels": 4,
+            "nearby_continuum_error_upper": "801245845649/16000000000000",
+            "observer_event_log_executed": false,
+            "q": 233,
+            "same_grid_total_error_upper": "12515651641/250000000000",
+            "split_response_lower": "34436500169/250000000000",
+            "temporal_probability_error_upper": "1008939/125000000000",
+            "time_step": "1/131072",
+            "verdict": "PASS"
+          },
+          "interacting_quantum_continuum": false,
+          "joint_scalar_space_time_detector_limit": true,
+          "mathematical_replay": true,
+          "nearest_in_window_update_readout": true,
+          "observed_postdiction": false,
+          "q5_clock_error_or_preparation_transferred": false,
+          "raw_ancestry_or_count_volume_identified": false,
+          "receipt": "code/source_scalar_time_refinement/source_scalar_time_refinement_receipt.json",
+          "receipt_pin": {
+            "bytes": 7523,
+            "sha256": "a7b8c0a8581968494bf67cde2fd854f624829b9fd58e074ed276d3bf5d211467"
+          },
+          "same_compact_spatial_parent": {
+            "path": "code/source_scalar_packet/source_common_scalar_receipt.json",
+            "sha256": "c050889ea4b8e46b4635ed6ab7b850f2b8af24f3cfcac51e4a2b349d865ba7de",
+            "source_commit": "087d229c4e10dea830e42734b9952f425620bde3"
+          },
+          "scope_boundary": "The same protected golden population, tensor action, original vacuum, coherent momentum preparation and compact detector are supplied. Full-spectrum split errors and the existing spatial detector theorem give a joint observable limit for declared stable time refinements. The q233 certificate bounds mathematical local-update trajectories; no full event history is executed. Nearest in-window sampling extends the reference comparison to the whole target window. The pre-arrival statement is asymptotic and uses finite propagation of the limiting Dirichlet Klein-Gordon equation; it is neither finite-q zero response nor an identification of microscopic read ancestry. The separate q5 clock, field preparation and noise budget are not transported.",
+          "source_action_population_or_physical_clock_selected": false
+        },
         "lean_declarations": {
           "CausalInterval": [
             "finiteCausalSetAxioms"
@@ -1527,6 +1577,124 @@
           },
           "scope_boundary": "The initial golden population and immutable retained address register are supplied. Exact pair-mean operations move live port readbacks; the protected address survives only the declared write footprint. This does not produce a persistent spatial population, select a routing law or exclude other observer dynamics."
         },
+        "reconstructed_clock_quantum_control": {
+          "analytic_proofs": [
+            "paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex",
+            "paper/tex_fragments/SOURCE_SCALAR_CLOCK_QUANTUM.tex"
+          ],
+          "arbitrary_noisy_history_existence_proved": false,
+          "clock_only_uncertainty": true,
+          "clock_receipt": {
+            "path": "code/source_scalar_clock/source_scalar_clock_receipt.json",
+            "sha256": "60539f8a6e9c788e133fcdaa03b80312a281194d2369a5d3a09e210a8a1e4a06"
+          },
+          "continuous_split_trajectory_enclosed": false,
+          "field_history_joined_to_causal_count_clock": false,
+          "hidden_common_stationary_history_required": true,
+          "independent_verifier_result": {
+            "clock_only_uncertainty": true,
+            "full_clock_replay": true,
+            "full_original_quantum_replay": true,
+            "maximum_timing_probability_error_upper": "56163/125000000000",
+            "original_resolved_steps": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              20,
+              21
+            ],
+            "parent_events_replayed": 5888,
+            "physical_clock_identified": false,
+            "resolved_steps": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              20,
+              21
+            ],
+            "step16": {
+              "continuous_probability_interval_for_every_time": [
+                "244765466543/500000000000",
+                "61413131127/125000000000"
+              ],
+              "continuous_response_abs_lower": "1086868873/125000000000",
+              "continuous_response_interval_for_every_time": [
+                "-5234533457/500000000000",
+                "-1086868873/125000000000"
+              ],
+              "layer_value_sha256": "9435bfd36aeb5fb45a4d88e9377df65dde2e600ec509767b96bcc68701d8ed40",
+              "nominal_time_Qphi": [
+                "-16/35",
+                "32/35"
+              ],
+              "original_probability_error_upper": "81088887/100000000000",
+              "reconstructed_layer_index": 17,
+              "recovered_elapsed_time_interval": [
+                "63887405571/62500000000",
+                "1022206518861/1000000000000"
+              ],
+              "signal_sign": -1,
+              "split_probability_interval": [
+                "490342191369/1000000000000",
+                "490493790733/1000000000000"
+              ],
+              "split_response_abs_lower": "9506209267/1000000000000",
+              "step": 16,
+              "time_offset_upper": "250929/62500000000",
+              "timing_probability_error_upper": "369413/1000000000000",
+              "total_probability_error_upper": "811258283/1000000000000",
+              "uniformly_resolved": true
+            },
+            "times": 21,
+            "unresolved_steps": [
+              1,
+              2,
+              3,
+              4,
+              12,
+              19
+            ],
+            "verdict": "PASS"
+          },
+          "lean_receipts": [
+            "Lean/Screen/ActionTimeGram.lean",
+            "Lean/Screen/SourceActionTime.lean"
+          ],
+          "mathematical_replay": true,
+          "observed_postdiction": false,
+          "observed_quantum_outcomes": false,
+          "original_finite_action_vacuum_retained": true,
+          "receipt": "code/source_scalar_clock_quantum/clock_quantum_receipt.json",
+          "receipt_pin": {
+            "bytes": 25643,
+            "sha256": "c29efabfecc67610e3148a12c415466b73e5a73c1b2c5b823262a2da62aad708"
+          },
+          "record_noise_certifies_quantum_state_error": false,
+          "reference_probability_bound_for_every_time_in_each_interval": true,
+          "scope_boundary": "Consumed-writer graph reconstruction supplies complete q5 field configurations. A declared trapezoidal action identifies one positive duration per whole configuration interval, with exact Gram checks and conditional stability. A common hidden stationary history and supplied M-norm record-error budget give elapsed-time intervals, not a proof that arbitrary noisy data admit such a history. The continuous original-vacuum detector is Lipschitz in time. Its comparison with the executed split detector holds at every time in each interval, with the Hamiltonian, vacuum, preparation and detector held fixed. All 21 rows are retained. No preparation/operator error, continuous split trajectory, regional time-slice, q233 spatial accuracy, count-volume clock or physical time is transported. Historical parent receipts retain their original scopes and flags.",
+          "source_action_population_or_physical_clock_selected": false,
+          "spatial_continuum_error_certified": false
+        },
         "source_population_quadrature": {
           "analytic_radial_quadrature_bound": "60*K*H*(epsilon+H)^3/epsilon^5",
           "formal_actual_cell_integral_and_quadrature_limit": true,
@@ -1553,7 +1721,7 @@
           "source": "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex",
           "tent_integrand_lipschitz_coefficient": "K"
         },
-        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations. A separate protected-address experiment exactly distinguishes immutable records from moving live readbacks under pair means. Formal integrated cell estimates derive quadrature convergence from vanishing assignment distances. On the same prepared golden coordinates, a different local massive Dirichlet scalar action has an analytic free-field detector limit and a finite full-Fock compact detector response whose exact certified error is smaller than its signal",
+        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations. A separate protected-address experiment exactly distinguishes immutable records from moving live readbacks under pair means. Formal integrated cell estimates derive quadrature convergence from vanishing assignment distances. On the same prepared golden coordinates, a different local massive Dirichlet scalar action has an analytic free-field detector limit and a finite full-Fock compact detector response whose exact certified error is smaller than its signal. For that action, stable local time refinement converges to the same detector limit; nearest-update readout preserves a resolved finite comparison, and the preparation-induced response vanishes asymptotically before continuum arrival. In a separate 64-site execution, graph-recovered configurations determine positive durations for a supplied action family; conditional timing intervals retain 15 of 21 resolved fixed-state quantum predictions. Neither result identifies a physical clock or selects native field dynamics",
         "supplied_law_refinement_control": {
           "analytic_controlled_causal_limit": true,
           "analytic_interval_volume_limit": true,

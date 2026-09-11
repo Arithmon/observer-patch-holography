@@ -50,6 +50,18 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
         [sys.executable, "-m", "pytest", "-q", "code/source_scalar_quantum/test_scalar_quantum_probability.py"],
     ),
     (
+        "Reconstruct scalar action time from authenticated reads and perturbation bounds",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_clock/test_source_scalar_clock.py"],
+    ),
+    (
+        "Verify the same quantum detector throughout recovered action-time intervals",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_clock_quantum/test_clock_quantum.py"],
+    ),
+    (
+        "Verify joint scalar time and spatial detector refinement with all spectral modes",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_time_refinement/test_source_scalar_time_refinement.py"],
+    ),
+    (
         "Replay the consistent Cartan-scalar action, current and Gauss controls",
         [sys.executable, "-m", "pytest", "-q", "code/sm_abelian_reduction/test_abelian.py"],
     ),
@@ -1101,6 +1113,7 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/particles/leptons/test_koide_balance_comparison_certificate.py",
             "code/particles/scripts/test_build_postdiction_ledger.py",
             "code/a5_closure/tests/test_flux_defect_criterion_certificate.py",
+            "code/a5_closure/tests/test_coset_carrier_certificate.py",
             "code/cosmology/test_edge_center_clock_certificate.py",
             "code/consensus/test_compiled_lattice_settling_certificate.py",
             "code/thermodynamics/test_conditional_repair_certificate.py",

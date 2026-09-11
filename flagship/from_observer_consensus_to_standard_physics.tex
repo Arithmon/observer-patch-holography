@@ -1281,24 +1281,26 @@ curvature tests for that limit
 \cite{benincasadowker2010,dowkerglaser2013}.
 
 A declared tensor scalar action on prepared golden addresses supports
-classical waves, Fock states and bounded smeared detectors. Its field edges
-fit inside the causal read radius. A Gram-corrected isometry and resolvent
-estimates control the full frequency residual, including off-subspace
-leakage. Fixed-band errors vanish as source gaps shrink.
+classical waves, full Fock spaces and bounded smeared detectors. Spatial
+refinement and symmetric local steps $\tau_q=o(h_{\min,q})$ have the same
+massive Dirichlet free-field detector limit for bounded piecewise-continuous
+smearings and coherent momentum preparations; $h_{\min,q}$ is the smallest
+coordinate gap.
 
-A compact coherent preparation in $y_1\le0.45$ and a compact detector in
-$y_1\ge0.55$ resolve a response on the actual golden addresses. For
-$q=233$ and model time $0.95\le s\le1$, outward-rational certificates give
+A compact preparation in $y_1\le0.45$ and detector in $y_1\ge0.55$ give,
+for $q=233$, $\tau=2^{-17}$ and every $s\in[0.95,1]$,
 \[
- |P_{q,c}(s)-P_c(s)|<0.050055,
- \qquad |P_{q,c}(s)-\tfrac12|>0.137754.
+ |P^{\mathrm{step}}_{q,c}(s)-P_c(s)|<0.050078,
+ \qquad |P^{\mathrm{step}}_{q,c}(s)-\tfrac12|>0.137746.
 \]
-The total error includes both localization tails and is smaller than the
-induced signal throughout the window. The spacetime paper proves the
-comparison with the massive Dirichlet continuum field; independent
-arithmetic replays the certificate. Axes, boundary, protected addresses,
-action, quantization and model time are declared. Authentication of the
-field evolution and its identification with the count clock remain separate.
+Here $P^{\mathrm{step}}$ reads the nearest update within the window. The
+error includes full spatial leakage, both localization tails, time stepping
+and original-vacuum covariance change. Exact factor-based certificates
+establish the bounds without executing the tensor history; the spacetime
+paper proves the comparison~\cite{ophEinstein}. Field edges fit the causal
+read radius. Axes, boundary, protected addresses, action, quantization and
+model time are declared; physical clock and count-volume identification
+require their separate hypotheses.
 
 The input-independent compiler separates immutable inputs from its generated federation.
 Generated formula nodes form one federation independent of input, while the

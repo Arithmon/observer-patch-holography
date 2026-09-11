@@ -1897,3 +1897,80 @@ def test_scalar_quantum_projection_rejects_arithmetic_only_parent(monkeypatch):
         {}, {'verdict': 'PASS', 'parent_full_mathematical_replay': False}, {}))
     with pytest.raises(SystemExit, match='full authenticated parent replay'):
         ledger._source_scalar_quantum_control()
+
+
+def test_clock_quantum_projection_retains_all_times_and_historical_scopes(result):
+    rows = {r['id']: r for r in result['sections']['forced_structure']}
+    assert len(rows) == 56
+    spatial = rows['source_derived_finite_one_three_causal_carrier']
+    control = spatial['reconstructed_clock_quantum_control']
+    summary = control['independent_verifier_result']
+    assert summary['times'] == 21
+    assert len(summary['resolved_steps']) == 15
+    assert sorted(summary['resolved_steps'] + summary['unresolved_steps']) == list(range(1, 22))
+    assert control['reference_probability_bound_for_every_time_in_each_interval'] is True
+    assert control['clock_only_uncertainty'] is True
+    assert control['hidden_common_stationary_history_required'] is True
+    row = summary['step16']
+    assert ledger.Fraction(row['total_probability_error_upper']) > ledger.Fraction(row['original_probability_error_upper'])
+    assert ledger.Fraction(row['continuous_response_abs_lower']) > 0
+    for key in ('observed_postdiction', 'record_noise_certifies_quantum_state_error',
+                'arbitrary_noisy_history_existence_proved', 'continuous_split_trajectory_enclosed',
+                'spatial_continuum_error_certified', 'field_history_joined_to_causal_count_clock'):
+        assert control[key] is False
+    assert spatial['finite_scalar_quantum_probability_control']['intermediate_time_error_enclosure'] is False
+    assert spatial['authenticated_scalar_execution_control']['quantum_covariance_or_probability_queried'] is False
+
+
+@pytest.mark.parametrize('missing', ['full_clock_replay', 'full_original_quantum_replay'])
+def test_clock_quantum_projection_requires_both_parent_proofs(monkeypatch, missing):
+    summary = {'verdict': 'PASS', 'full_clock_replay': True,
+               'full_original_quantum_replay': True, 'parent_events_replayed': 5888}
+    summary[missing] = False
+    monkeypatch.setattr(ledger, '_structural_packet', lambda *a, **k: ({}, summary, {}))
+    with pytest.raises(SystemExit, match='both full parent proofs'):
+        ledger._source_scalar_clock_quantum_control()
+
+
+def test_clock_quantum_projection_rejects_forged_physical_clock(tmp_path):
+    packet = json.loads((ledger.CODE/'source_scalar_clock_quantum/clock_quantum_receipt.json').read_bytes())
+    packet['scope']['physical_clock_or_count_volume_identified'] = True
+    path = tmp_path/'false-physical-clock.json'
+    path.write_text(json.dumps(packet), encoding='ascii')
+    with pytest.raises(SystemExit, match='independent all-time-interval quantum comparison'):
+        ledger._source_scalar_clock_quantum_control(path)
+
+
+def test_time_refinement_projection_separates_mathematical_limit_from_execution(result):
+    rows = {r['id']: r for r in result['sections']['forced_structure']}
+    spatial = rows['source_derived_finite_one_three_causal_carrier']
+    control = spatial['joint_scalar_time_refinement_control']
+    summary = control['independent_verifier_result']
+    assert summary['levels'] == 4 and summary['q'] == 233
+    assert ledger.Fraction(summary['time_step']) == ledger.Fraction(1, 2**17)
+    assert ledger.Fraction(summary['nearby_continuum_error_upper']) < ledger.Fraction(summary['split_response_lower'])
+    assert control['joint_scalar_space_time_detector_limit'] is True
+    assert control['asymptotic_prearrival_detector_convergence'] is True
+    assert control['nearest_in_window_update_readout'] is True
+    for key in ('complete_observer_event_log_executed', 'q5_clock_error_or_preparation_transferred',
+                'finite_q_prearrival_zero_response_certified', 'raw_ancestry_or_count_volume_identified',
+                'full_fock_state_norm_convergence', 'observed_postdiction'):
+        assert control[key] is False
+    assert spatial['common_free_scalar_control']['field_history_joined_to_causal_count_clock'] is False
+
+
+def test_time_refinement_projection_rejects_execution_promotion(tmp_path):
+    packet = json.loads((ledger.CODE/'source_scalar_time_refinement/source_scalar_time_refinement_receipt.json').read_bytes())
+    packet['scope']['observer_event_log_executed'] = True
+    path = tmp_path/'false-q233-execution.json'
+    path.write_text(json.dumps(packet), encoding='ascii')
+    with pytest.raises(SystemExit, match='independent time refinement reconstruction'):
+        ledger._source_scalar_time_refinement_control(path)
+
+
+def test_time_refinement_projection_requires_fresh_spatial_proof(monkeypatch):
+    monkeypatch.setattr(ledger, '_structural_packet', lambda *a, **k: (
+        {}, {'verdict': 'PASS', 'full_spatial_parent_replayed': False,
+             'observer_event_log_executed': False}, {}))
+    with pytest.raises(SystemExit, match='full spatial proof'):
+        ledger._source_scalar_time_refinement_control()

@@ -1,0 +1,21 @@
+{
+  "comparison_fixture": {
+    "adjacency": {
+      "declaration": "neighbors",
+      "module": "Lean/Screen/PortFrameGram.lean"
+    },
+    "oriented_faces": {
+      "declaration": "orientedFaces",
+      "module": "Lean/ObserverPatchHolography/CoreAxioms.lean"
+    },
+    "port_action": {
+      "declaration": "perms",
+      "module": "Lean/Screen/A5PortAction.lean"
+    }
+  },
+  "schema": "oph.coset_carrier_source.v1",
+  "source": {
+    "group": "SL2",
+    "prime": 5
+  }
+}
