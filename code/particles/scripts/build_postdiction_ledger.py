@@ -805,6 +805,111 @@ def _source_scalar_quantum_control(receipt_path: Path | None = None) -> dict[str
     }
 
 
+def _source_scalar_clock_quantum_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_scalar_clock_quantum", "verify_clock_quantum.py",
+        "clock_quantum_receipt.json", receipt_path=receipt_path)
+    if (summary.get("verdict") != "PASS"
+            or summary.get("full_clock_replay") is not True
+            or summary.get("full_original_quantum_replay") is not True
+            or type(summary.get("parent_events_replayed")) is not int
+            or summary["parent_events_replayed"] != 5888):
+        raise SystemExit("scalar clock/quantum projection requires both full parent proofs")
+    expected = {
+        "verdict": "PASS", **packet["summary"], "step16": packet["rows"][15],
+        "clock_only_uncertainty": True, "physical_clock_identified": False,
+        "parent_events_replayed": 5888, "full_clock_replay": True,
+        "full_original_quantum_replay": True,
+    }
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("scalar clock/quantum verification projection mismatch")
+    row = summary["step16"]
+    if not 0 < Fraction(row["total_probability_error_upper"]) < Fraction(row["split_response_abs_lower"]):
+        raise SystemExit("scalar clock/quantum response must dominate the combined error")
+    return {
+        "receipt": "code/source_scalar_clock_quantum/clock_quantum_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "clock_receipt": packet["dependencies"]["reconstructed_clock"],
+        "analytic_proofs": ["paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex",
+                            "paper/tex_fragments/SOURCE_SCALAR_CLOCK_QUANTUM.tex"],
+        "lean_receipts": ["Lean/Screen/ActionTimeGram.lean", "Lean/Screen/SourceActionTime.lean"],
+        "mathematical_replay": True, "original_finite_action_vacuum_retained": True,
+        "reference_probability_bound_for_every_time_in_each_interval": True,
+        "clock_only_uncertainty": True,
+        "hidden_common_stationary_history_required": True,
+        "observed_postdiction": False, "observed_quantum_outcomes": False,
+        "record_noise_certifies_quantum_state_error": False,
+        "arbitrary_noisy_history_existence_proved": False,
+        "continuous_split_trajectory_enclosed": False,
+        "spatial_continuum_error_certified": False,
+        "field_history_joined_to_causal_count_clock": False,
+        "source_action_population_or_physical_clock_selected": False,
+        "scope_boundary": (
+            "Consumed-writer graph reconstruction supplies complete q5 field configurations. "
+            "A declared trapezoidal action identifies one positive duration per whole "
+            "configuration interval, with exact Gram checks and conditional stability. "
+            "A common hidden stationary history and supplied M-norm record-error budget "
+            "give elapsed-time intervals, not a proof that arbitrary noisy data admit such "
+            "a history. The continuous original-vacuum detector is Lipschitz in time. "
+            "Its comparison with the executed split detector holds at every time in each "
+            "interval, with the Hamiltonian, vacuum, preparation and detector held fixed. "
+            "All 21 rows are retained. No preparation/operator error, continuous split "
+            "trajectory, regional time-slice, q233 spatial accuracy, count-volume clock "
+            "or physical time is transported. Historical parent receipts retain their "
+            "original scopes and flags."),
+    }
+
+
+def _source_scalar_time_refinement_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_scalar_time_refinement", "verify_source_scalar_time_refinement.py",
+        "source_scalar_time_refinement_receipt.json", receipt_path=receipt_path)
+    if (summary.get("verdict") != "PASS"
+            or summary.get("full_spatial_parent_replayed") is not True
+            or summary.get("observer_event_log_executed") is not False):
+        raise SystemExit("scalar time refinement requires a full spatial proof, not an execution claim")
+    last = packet["levels"][-1]
+    expected = {"verdict": "PASS", "full_spatial_parent_replayed": True,
+                "levels": len(packet["levels"]), "q": last["q"],
+                "time_step": last["time_step"], "observer_event_log_executed": False}
+    for key in ("temporal_probability_error_upper", "same_grid_total_error_upper",
+                "split_response_lower", "nearby_continuum_error_upper"):
+        expected[key] = last[key]
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("scalar time refinement verification projection mismatch")
+    if not 0 < Fraction(last["nearby_continuum_error_upper"]) < Fraction(last["split_response_lower"]):
+        raise SystemExit("scalar time refinement response must dominate all-window error")
+    return {
+        "receipt": "code/source_scalar_time_refinement/source_scalar_time_refinement_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "analytic_proof": "paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex",
+        "same_compact_spatial_parent": packet["parent"],
+        "mathematical_replay": True, "joint_scalar_space_time_detector_limit": True,
+        "all_modes_and_original_vacuum_covariance_retained": True,
+        "asymptotic_prearrival_detector_convergence": True,
+        "finite_q_prearrival_zero_response_certified": False,
+        "nearest_in_window_update_readout": True,
+        "complete_observer_event_log_executed": False,
+        "q5_clock_error_or_preparation_transferred": False,
+        "source_action_population_or_physical_clock_selected": False,
+        "raw_ancestry_or_count_volume_identified": False,
+        "full_fock_state_norm_convergence": False,
+        "interacting_quantum_continuum": False, "observed_postdiction": False,
+        "scope_boundary": (
+            "The same protected golden population, tensor action, original vacuum, "
+            "coherent momentum preparation and compact detector are supplied. Full-spectrum "
+            "split errors and the existing spatial detector theorem give a joint "
+            "observable limit for declared stable time refinements. The q233 certificate "
+            "bounds mathematical local-update trajectories; no full event history is "
+            "executed. Nearest in-window sampling extends the reference comparison to "
+            "the whole target window. The pre-arrival statement is asymptotic and uses "
+            "finite propagation of the limiting Dirichlet Klein-Gordon equation; it "
+            "is neither finite-q zero response nor an identification of microscopic "
+            "read ancestry. The separate q5 clock, field preparation and noise budget "
+            "are not transported."),
+    }
+
+
 def _cartan_scalar_execution_control(receipt_path: Path | None = None) -> dict[str, Any]:
     packet, summary, pin = _structural_packet(
         "sm_abelian_reduction", "verify_abelian.py", "abelian_receipt.json",
@@ -2731,6 +2836,8 @@ def _forced_structure(
             "common_free_scalar_control": _common_source_scalar_control(),
             "authenticated_scalar_execution_control": _source_scalar_execution_control(),
             "finite_scalar_quantum_probability_control": _source_scalar_quantum_control(),
+            "reconstructed_clock_quantum_control": _source_scalar_clock_quantum_control(),
+            "joint_scalar_time_refinement_control": _source_scalar_time_refinement_control(),
             "operational_cone_selection": {
                 "analytic_proof": "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
                 "hypotheses": "nonzero closed convex pointed cone; finite irreducible carrier rotations; one continuous operational boost direction; time orientation",
@@ -2775,6 +2882,17 @@ def _forced_structure(
                 "paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex",
                 "code/source_scalar_quantum/quantum_probability_receipt.json",
                 "code/source_scalar_quantum/verify_quantum_probability.py",
+                "paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex",
+                "Lean/Screen/ActionTimeGram.lean",
+                "Lean/Screen/SourceActionTime.lean",
+                "code/source_scalar_clock/source_scalar_clock_receipt.json",
+                "code/source_scalar_clock/verify_source_scalar_clock.py",
+                "paper/tex_fragments/SOURCE_SCALAR_CLOCK_QUANTUM.tex",
+                "code/source_scalar_clock_quantum/clock_quantum_receipt.json",
+                "code/source_scalar_clock_quantum/verify_clock_quantum.py",
+                "paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex",
+                "code/source_scalar_time_refinement/source_scalar_time_refinement_receipt.json",
+                "code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py",
                 "Lean/Geometry/MetricKernelEnergy.lean",
                 "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
                 "Lean/Geometry/RefiningLatticeCausalCone.lean",
@@ -2838,7 +2956,14 @@ def _forced_structure(
                 "derive quadrature convergence from vanishing assignment distances. On the "
                 "same prepared golden coordinates, a different local massive Dirichlet "
                 "scalar action has an analytic free-field detector limit and a finite full-Fock "
-                "compact detector response whose exact certified error is smaller than its signal"
+                "compact detector response whose exact certified error is smaller than its signal. "
+                "For that action, stable local time refinement converges to the same detector "
+                "limit; nearest-update readout preserves a resolved finite comparison, and "
+                "the preparation-induced response vanishes asymptotically before continuum "
+                "arrival. In a separate 64-site execution, graph-recovered configurations "
+                "determine positive durations for a supplied action family; conditional "
+                "timing intervals retain 15 of 21 resolved fixed-state quantum predictions. "
+                "Neither result identifies a physical clock or selects native field dynamics"
             ),
             "observed_counterpart": (
                 "finite causal-set-like order with an effective 1+3 Lorentz "

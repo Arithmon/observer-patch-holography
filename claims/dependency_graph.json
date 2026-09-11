@@ -228,7 +228,9 @@
   "OPH-WHITNEY-QUANTUM-PACKET",
   "OPH-WHITNEY-CHARGED-ENCLOSURE",
   "OPH-QFT-RESTRICTION-NATURALITY",
-  "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON"
+  "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+  "OPH-SCALAR-ACTION-CLOCK",
+  "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT"
  ],
  "edges": [
   {
@@ -2040,6 +2042,26 @@
    "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
    "to": "OPH-SM-Q1-LOCAL-G6",
    "role": "Supplies the prepared golden source-address family for the separate Cartan-scalar execution, not a hypothesis of the generic local classical reduction. The tensor action weights and log-plaquette dynamics are declared; causal-count clock and physical-source identification are not transported."
+  },
+  {
+   "from": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE",
+   "to": "OPH-SCALAR-ACTION-CLOCK",
+   "role": "Supplies the authenticated consumed-writer relation for finite graph reconstruction; audit-chain serialization is not a field edge."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-SCALAR-ACTION-CLOCK",
+   "role": "Supplies the prepared golden source-address family for this finite scalar instantiation only; no old count-clock or physical cone identification is transferred."
+  },
+  {
+   "from": "OPH-SCALAR-ACTION-CLOCK",
+   "to": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+   "role": "Supplies the recovered elapsed-time intervals for the separate q5 same-detector timing extension only. Neither the general Hilbert-space comparison nor the q233 spatial certificate consumes these intervals."
+  },
+  {
+   "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+   "to": "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT",
+   "role": "Supplies the separately verified same-action q233 compact spatial/free-Fock comparison and its norm/preparation bounds. The q5 original-vacuum or clock execution data are not transferred to this refinement."
   }
  ]
 }

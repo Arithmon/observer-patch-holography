@@ -50,6 +50,18 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
         [sys.executable, "-m", "pytest", "-q", "code/source_scalar_quantum/test_scalar_quantum_probability.py"],
     ),
     (
+        "Reconstruct scalar action time from authenticated reads and perturbation bounds",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_clock/test_source_scalar_clock.py"],
+    ),
+    (
+        "Verify the same quantum detector throughout recovered action-time intervals",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_clock_quantum/test_clock_quantum.py"],
+    ),
+    (
+        "Verify joint scalar time and spatial detector refinement with all spectral modes",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_time_refinement/test_source_scalar_time_refinement.py"],
+    ),
+    (
         "Replay the consistent Cartan-scalar action, current and Gauss controls",
         [sys.executable, "-m", "pytest", "-q", "code/sm_abelian_reduction/test_abelian.py"],
     ),

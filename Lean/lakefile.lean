@@ -111,7 +111,7 @@ lean_lib «OPHScreen» where
     `LocalFaceMaxwellAction, `TemporalMaxwellEvolution,
     `ScaledMaxwellStability, `CertifiedScaledStepInstrument,
     `DispersionArmingInterface, `KogutSusskindFiberRateComparison,
-    `GaugeOrbitQuotientGap, `LocalEnergyBalance, `CarrierModeOscillators, `CarrierModeEquivariance, `GoldenSectorCharacters, `GoldenSectorIrreducibility, `CarrierEvolutionFlow, `SeamChargeContinuity, `NeutralPairCoupledAction, `NeutralPairJointStationaryWitness, `GoldenSectorComplexIrreducibility, `FieldSectorEnergyInnerProduct, `CurlSectorEigenbasis, `CurlStoneClockBridge,
+    `GaugeOrbitQuotientGap, `LocalEnergyBalance, `CarrierModeOscillators, `CarrierModeEquivariance, `GoldenSectorCharacters, `GoldenSectorIrreducibility, `CarrierEvolutionFlow, `SeamChargeContinuity, `NeutralPairCoupledAction, `NeutralPairJointStationaryWitness, `GoldenSectorComplexIrreducibility, `FieldSectorEnergyInnerProduct, `CurlSectorEigenbasis, `CurlStoneClockBridge, `ActionTimeGram, `SourceActionTime,
     `SMStructureAdequacySurface, `SMStructureComposition,
     `MatterGrammarIndexBridge, `ElectroweakBreakingComposition,
     `AssembledActionComposition, `LocalGaugeJetAction, `CartanScalarReduction, `GlobalFormCharacterDescent,

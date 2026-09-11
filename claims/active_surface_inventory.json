@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 382,
+  "surface_count": 387,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -270,12 +270,27 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SOURCE_SCALAR_CLOCK_QUANTUM.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/SOURCE_SCALAR_EXECUTION.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
     {
       "path": "paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -890,6 +905,11 @@
       "allowlisted": false
     },
     {
+      "path": "Lean/Screen/ActionTimeGram.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
       "path": "Lean/Screen/AssembledActionComposition.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
@@ -1361,6 +1381,11 @@
     },
     {
       "path": "Lean/Screen/SerialMaxwellReadout.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/SourceActionTime.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
     },

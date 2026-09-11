@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "release_id": "r2041",
+  "release_id": "r2042",
   "source_commit_policy": "The release commit is supplied by git and the paper release manifest at release packaging time; this working registry is validated against paper/release_info.tex.",
   "claims": [
     {
@@ -9843,7 +9843,7 @@
     },
     {
       "claim_id": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
-      "statement": "For self-adjoint H_e>=0 and H_h, hbar>0, a linear isometry J and fixed energy projection P=1_[0,E](H_e), assume J Ran(P) lies in D(H_h) and the full target-space residual (H_h J-J H_e)P has norm at most epsilon_H. Unit-interval effects with compressed detector discrepancy at most epsilon_D, initial trace distance at most epsilon_0 and effective-state spectral tail at most eta<1 give probability error at most min(1,epsilon_0+2 sqrt(eta)+|t| epsilon_H/hbar+epsilon_D). The proof retains off-image leakage and energy-cut coherences. A two-level sigma_x evolution has zero compressed generator residual but unit probability error at pi hbar/2. Lean proves the derivative-input Hilbert norm and bounded-effect estimates, vector-tail decomposition and exact two-level trajectory; the unbounded spectral-domain and mixed trace-class proof is analytic. This general theorem alone supplies no numerical accuracy for a Whitney/effective pair. A separate declared mass-lumped tensor action on the actual sorted golden source addresses has positive massive dynamics, canonical full oscillator Fock spaces, an actual nine-mode comparison isometry, full orthogonal frequency leakage bounds and compact disjoint source/detector smearings. At q=233, outward-rational certificates give bounded-effect probability error below 0.050055 and induced detector response above 0.137754 uniformly on model time [0.95,1], including both localization errors. Fixed-band residuals vanish with the maximum source gap and extend by a smearing approximation argument. The mathematical tensor model has 232^3 oscillators, computed through one-dimensional factors, not a full observer-event simulation. Axes, Dirichlet boundary, protected addresses, action, quantization and model time are declared; authenticated field execution, count-clock identification, native source selection, charged interactions and physical comparison remain separate. A separate exact q=5 execution of the same tensor action retains 64 field sites, four full preparation/intervention and schedule traces, and every one of the 34944 dynamic reads. Its discrete stationary-action recurrence has positive conserved modified energy. An independent all-mode Taylor comparison encloses the final mass-norm temporal error between 0.009539009052 and 0.009539009055 at model time 3/sqrt(5). Its canonical commutator identity is state independent. A separate original-action-vacuum construction propagates its covariance under the same canonical split gates and bounds a sine-effect probability against continuous evolution of the same finite operator. All 21 times are retained and 15 resolve response above total error; at time 16 sqrt(5)/35 the response magnitude is at least 0.009506209267 and the probability error is at most 0.000810888870. The vacuum, coherent momentum preparation, hbar=1 and detector are supplied, and these expectations do not attest observed outcomes. This coarser algebraic preparation inherits no q=233 spatial error. Actual read ancestry differs from the old count-law ancestry, so no count-clock or physical-time attachment follows.",
+      "statement": "For self-adjoint H_e>=0 and H_h, hbar>0, a linear isometry J and fixed energy projection P=1_[0,E](H_e), assume J Ran(P) lies in D(H_h) and the full target-space residual (H_h J-J H_e)P has norm at most epsilon_H. Unit-interval effects with compressed detector discrepancy at most epsilon_D, initial trace distance at most epsilon_0 and effective-state spectral tail at most eta<1 give probability error at most min(1,epsilon_0+2 sqrt(eta)+|t| epsilon_H/hbar+epsilon_D). The proof retains off-image leakage and energy-cut coherences. A two-level sigma_x evolution has zero compressed generator residual but unit probability error at pi hbar/2. Lean proves the derivative-input Hilbert norm and bounded-effect estimates, vector-tail decomposition and exact two-level trajectory; the unbounded spectral-domain and mixed trace-class proof is analytic. This general theorem alone supplies no numerical accuracy for a Whitney/effective pair. A separate declared mass-lumped tensor action on the actual sorted golden source addresses has positive massive dynamics, canonical full oscillator Fock spaces, an actual nine-mode comparison isometry, full orthogonal frequency leakage bounds and compact disjoint source/detector smearings. At q=233, outward-rational certificates give bounded-effect probability error below 0.050055 and induced detector response above 0.137754 uniformly on model time [0.95,1], including both localization errors. Fixed-band residuals vanish with the maximum source gap and extend by a smearing approximation argument. The mathematical tensor model has 232^3 oscillators, computed through one-dimensional factors, not a full observer-event simulation. Axes, Dirichlet boundary, protected addresses, action, quantization and model time are declared; authenticated field execution, count-clock identification, native source selection, charged interactions and physical comparison remain separate. A separate exact q=5 execution of the same tensor action retains 64 field sites, four full preparation/intervention and schedule traces, and every one of the 34944 dynamic reads. Its discrete stationary-action recurrence has positive conserved modified energy. An independent all-mode Taylor comparison encloses the final mass-norm temporal error between 0.009539009052 and 0.009539009055 at model time 3/sqrt(5). Its canonical commutator identity is state independent. A separate original-action-vacuum construction propagates its covariance under the same canonical split gates and bounds a sine-effect probability against continuous evolution of the same finite operator. All 21 times are retained and 15 resolve response above total error; at time 16 sqrt(5)/35 the response magnitude is at least 0.009506209267 and the probability error is at most 0.000810888870. The vacuum, coherent momentum preparation, hbar=1 and detector are supplied, and these expectations do not attest observed outcomes. This coarser algebraic preparation inherits no q=233 spatial error. Actual read ancestry differs from the old count-law ancestry, so no count-clock or physical-time attachment follows. A separate timing extension keeps the same q5 Hamiltonian, original vacuum, coherent preparation and detector fixed. Its continuous probability is Lipschitz with constant at most one half of the product of the detector and preparation mass norms. For every time in each reconstructed elapsed-action-time interval, the probability error is bounded by the original error plus this constant times the maximum offset from nominal time. At supplied configuration budget 1e-8, the added timing error is at most 0.000000449304; all 21 rows are retained and 15 have uniformly resolved signed responses throughout their respective nonzero intervals. For interval [1.022198489136,1.022206518861], the step16 total error is at most 0.000811258283 and continuous response is at most -0.008694950984 relative to baseline one half. The hidden common stationary history is a conditional clock hypothesis, not inferred from overlapping intervals. No quantum-state, Hamiltonian or detector perturbation error is supplied by the record-noise budget; no continuous split trajectory, physical clock, spatial-continuum error or observed outcomes are inferred.",
       "owner_paper": "paper/observers_are_all_you_need.tex",
       "tier": "conditional_energy_window_quantum_probability_error_theorem",
       "assumptions": [
@@ -9851,7 +9851,10 @@
         "isometric_preparation_detector_and_tail_comparison",
         "declared_golden_tensor_scalar_action_and_compact_instruments",
         "declared_golden_scalar_versioned_execution",
-        "declared_original_scalar_vacuum_and_sine_effect"
+        "declared_original_scalar_vacuum_and_sine_effect",
+        "declared_global_slice_trapezoidal_action_time",
+        "nondegenerate_record_gram_and_conditional_clock_errors",
+        "fixed_quantum_preparation_under_clock_only_uncertainty"
       ],
       "imported_results": [
         "spectral_theorem_for_self_adjoint_operators",
@@ -9880,9 +9883,21 @@
         "code/source_scalar_quantum/quantum_probability.py",
         "code/source_scalar_quantum/verify_quantum_probability.py",
         "code/source_scalar_quantum/test_scalar_quantum_probability.py",
-        "code/source_scalar_quantum/quantum_probability_receipt.json"
+        "code/source_scalar_quantum/quantum_probability_receipt.json",
+        "paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex",
+        "Lean/Screen/ActionTimeGram.lean",
+        "Lean/Screen/SourceActionTime.lean",
+        "code/source_scalar_clock/source_scalar_clock.py",
+        "code/source_scalar_clock/verify_source_scalar_clock.py",
+        "code/source_scalar_clock/test_source_scalar_clock.py",
+        "code/source_scalar_clock/source_scalar_clock_receipt.json",
+        "paper/tex_fragments/SOURCE_SCALAR_CLOCK_QUANTUM.tex",
+        "code/source_scalar_clock_quantum/clock_quantum.py",
+        "code/source_scalar_clock_quantum/verify_clock_quantum.py",
+        "code/source_scalar_clock_quantum/test_clock_quantum.py",
+        "code/source_scalar_clock_quantum/clock_quantum_receipt.json"
       ],
-      "falsifier": "A state and effect satisfying every stated domain, full-residual, detector and tail hypothesis violate the probability bound; the graph-norm Duhamel argument fails; or the exact two-level trajectory does not exhibit the claimed compressed-residual leakage. The tensor full-residual estimate, Gram isometry, compact-tail bound, outward arithmetic or uniform separated detector inequalities fail; a finite tensor calculation is presented as an authenticated source-selected field history. The original-vacuum covariance formula or rational bounded-effect comparison fails for the specified split action.",
+      "falsifier": "A state and effect satisfying every stated domain, full-residual, detector and tail hypothesis violate the probability bound; the graph-norm Duhamel argument fails; or the exact two-level trajectory does not exhibit the claimed compressed-residual leakage. The tensor full-residual estimate, Gram isometry, compact-tail bound, outward arithmetic or uniform separated detector inequalities fail; a finite tensor calculation is presented as an authenticated source-selected field history. The original-vacuum covariance formula or rational bounded-effect comparison fails for the specified split action. A fixed-action detector probability violates the interval-wide Lipschitz comparison for an admissible recovered time, or timing uncertainty is replaced by an unproved state/observable error bound.",
       "scope_if_false": "The comparison theorem or its control falls. Self-adjointness of a separately constructed Hamiltonian and classical continuum bounds retain their independent scopes.",
       "status": "conditional_comparison_and_resolved_golden_free_scalar_response__physical_execution_and_interactions_open",
       "claim_class": "conditional_implication",
@@ -9897,6 +9912,91 @@
         "open": [],
         "boundary": [],
         "rationale": "This is a general comparison implication for supplied mathematical Hilbert models, not an assertion of physical preparation, detectors, clock, source-selected action or their registered realizations."
+      }
+    },
+    {
+      "claim_id": "OPH-SCALAR-ACTION-CLOCK",
+      "statement": "For the complete authenticated q=5 scalar execution, consumed-writer DAG heights and a verified seed-degree distinction recover all 23 configuration layers per trace without step labels or storage order. Two seed classes are incomparable; the older buffer is integrator memory. Across four traces, 5888 writes and 34944 reads are replayed. Supply the positive mass metric, quadratic field operator, resource-to-site map and the trapezoidal discrete action with one positive duration per whole configuration interval. Configuration stationarity at fixed unknown durations, full-vector decomposition and a positive two-direction Gram determinant identify both local positive durations. For the two intervened schedules, 40 exact positive Gram determinants and full residuals give alpha=1 and beta=-1/245, forcing all 21 durations to sqrt(5)/35 without assuming candidate uniformity. For perturbed triples, bounded left-inverse row norms and a contraction margin bound every admissible coefficient pair and duration. With a supplied M-norm budget 1e-8 per configuration and a common hidden fully stationary history, elapsed action time is enclosed by [1.341635903357,1.341645669638]. Overlapping intervals do not prove noisy-history existence. The baseline cannot identify time from its zero field. Lean proves the Gram-independence, coefficient-extraction, positive-duration uniqueness and scalar contraction implications; actual graph reconstruction, variational differentiation and interval arithmetic are independently executable or analytic. Action/quadrature, site pairing, orientation and relative scale are declared. There is no independent site-lapse variation, regional quantum time-slice theorem, source-selected physical clock, physical seconds or causal count-volume identification.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "conditional_authenticated_record_action_time_reconstruction",
+      "assumptions": [
+        "declared_golden_scalar_versioned_execution",
+        "declared_global_slice_trapezoidal_action_time",
+        "nondegenerate_record_gram_and_conditional_clock_errors"
+      ],
+      "imported_results": [
+        "discrete_Euler_Lagrange_variation",
+        "positive_Gram_linear_independence",
+        "left_inverse_operator_norm_and_contraction_bound",
+        "finite_DAG_topological_sort"
+      ],
+      "oph_specific_delta": "Reconstructs complete scalar configurations from their actual versioned consumption graph and identifies the same action durations, with exact nondegeneracy and conditional interval error bounds; supplied source and physical attachments are separated.",
+      "novelty_type": "authenticated_record_action_parameter_identification_and_stability",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex",
+        "Lean/Screen/ActionTimeGram.lean",
+        "Lean/Screen/SourceActionTime.lean",
+        "code/source_scalar_clock/source_scalar_clock.py",
+        "code/source_scalar_clock/verify_source_scalar_clock.py",
+        "code/source_scalar_clock/test_source_scalar_clock.py",
+        "code/source_scalar_clock/source_scalar_clock_receipt.json"
+      ],
+      "falsifier": "Two positive duration pairs satisfy the full configuration equations with independent increment/force vectors but differ; a permitted bounded perturbation violates its duration interval; graph decoding loses an actual read or depends on timestamps; or a receipt passes with a nonzero discarded off-span residual.",
+      "scope_if_false": "The finite record/action-time reconstruction or its conditioning bound fails; unrelated causal/count limits and quantum comparisons keep their own hypotheses.",
+      "status": "conditional_exact_duration_reconstruction_and_bounded_noise_stability__physical_time_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This claim identifies parameters of a supplied discrete mathematical action from fully retained software records. Physical action selection, spacetime attachment, laboratory time and regional algebra generation are expressly excluded conclusions, not antecedents or discharged physical premises."
+      }
+    },
+    {
+      "claim_id": "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT",
+      "statement": "For a finite positive mass-self-adjoint action A>=I, canonical kick-drift-kick gates with step tau, zero initial mean position and coherent momentum v, suppose tau^2||A||<=r0<4 and n tau<=T. With d0=sqrt(1-r0/4)(1+sqrt(1-r0/4)), the full-spectrum displacement error is at most tau^2(||sqrt(A)v||/(4d0)+T||Av||/(12d0)). For the original action vacuum and sine field effect, half the detector norm times this error plus tau^2 sqrt(G0 G1)/(32(1-r0/4)) bounds probability error, including vacuum squeezing. On the same prepared golden tensor action as the compact spatial certificate, h is the minimum adjacent coordinate gap and ||A_q||<=1+12/h^2. Bounded sampled mass norms and tau_q=o(h) make this temporal detector error vanish. With the stated Riemann-integrable compact smearings and existing spatial/free-Fock limit, local time-discrete displacement and coherent field-effect readouts converge to the same massive Dirichlet scalar continuum. A largest dyadic tau_q<=h^2 is a concrete supplied refinement. At q233, h=233-144phi, tau=2^-17 and v=4f_c with detector g_c, exact certificates retain all four spatial levels and bound temporal probability error by 0.000008071512. On every grid time in [0.95,1], total spatial-plus-temporal error is at most 0.050062606564 and split response magnitude is at least 0.137746000676. A nearest update within the window yields reference-time error below 0.050078 at every target time in the whole window. The finite-energy Dirichlet Klein-Gordon propagation bound and joint detector convergence imply asymptotically vanishing induced sine-effect response uniformly on compact intervals before support separation is traversed. This is an operational pre-arrival response statement, not equality with the microscopic ancestry order or a finite-q zero-response claim. The proof concerns mathematical trajectories and full finite Fock constructions; no q233 observer-event history, physical clock, outcome stream, count-volume law, interacting limit, velocity-norm limit or full-Fock state-norm limit is asserted. The action, prepared population, compact instruments, boundary, canonical quantization and stable time refinement are supplied; the q5 clock/preparation/error packet is not transferred.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "conditional_joint_temporal_spatial_scalar_detector_limit",
+      "assumptions": [
+        "declared_golden_tensor_scalar_action_and_compact_instruments",
+        "positive_massive_action_original_vacuum_and_stable_time_refinement"
+      ],
+      "imported_results": [
+        "positive_self_adjoint_spectral_calculus",
+        "Gaussian_coherent_characteristic_function",
+        "Dirichlet_Klein_Gordon_finite_energy_propagation",
+        "bounded_smearing_Riemann_quadrature_and_sine_band_density"
+      ],
+      "oph_specific_delta": "Binds full-spectrum temporal displacement and original-vacuum covariance control to the exact compact instruments of the prepared golden spatial certificate. The resulting same-action local-update detector limit also gives an operational pre-arrival cone statement without identifying raw micro-event ancestry with physical causality.",
+      "novelty_type": "same_source_action_compact_detector_space_time_composition",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex",
+        "code/source_scalar_time_refinement/source_scalar_time_refinement.py",
+        "code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py",
+        "code/source_scalar_time_refinement/test_source_scalar_time_refinement.py",
+        "code/source_scalar_time_refinement/source_scalar_time_refinement_receipt.json",
+        "paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex",
+        "code/source_scalar_packet/source_common_scalar_receipt.json"
+      ],
+      "falsifier": "A retained spectral mode violates the amplitude/phase or original-vacuum variance bound; the minimum-gap action norm estimate fails; an admissible refined detector misses its continuum limit or pre-arrival estimate; a nearest in-window readout violates its stated probability bound; or a certificate imports q5 execution/clock data as q233 evidence.",
+      "scope_if_false": "The joint time/spatial detector composition or its certificate fails. The separately established continuous-time spatial comparison and q5 clock proofs retain their own scopes.",
+      "status": "conditional_local_update_scalar_continuum_detector_limit_and_resolved_certificate__native_physics_excluded",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730,
+        740
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This is observable convergence for explicitly supplied finite oscillator models, coherent instruments, refinement law and a declared continuum reference. It constructs neither physical observer preparation nor source-selected laws, clocks, regional interpretation or measured causal order; those excluded physical identifications are not consumed premises."
       }
     }
   ]
