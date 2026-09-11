@@ -41,7 +41,6 @@ READER_GLOBS = [
     # book's editorial sweep instead.  Everything else the gate checks still applies.
     "claims/*.md",
     "cosmology/**/*.md",
-    "physics-problems/**/*.md",
 ]
 
 STATUS_GLOBS = [

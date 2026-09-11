@@ -131,15 +131,6 @@ sheets, and numerical freezes remain separate producers.
   hadron/derive_stable_channel_cfg_source_measure_payload.py ->
   hadron/derive_stable_channel_sequence_evaluation.py ->
   hadron/derive_stable_channel_groundstate_readout.py`
-- JWST compact-object source-release bridge:
-  `jwst/build_compact_object_source_release_receipts.py`
-  mirrors the JWST compact-object simulator claim ladder in this paper-stack
-  code tree. It is diagnostic only, not a particle prediction and not an OPH
-  confirmation claim.
-- Fractional quotient-sector sandbox:
-  `fractional/build_fractional_quotient_receipts.py`
-  mirrors the fractional exciton/FQAH simulator claim ladder. It is
-  diagnostic only and remains blocked at the material-specific Hamiltonian proof.
 - High-energy messenger coefficient emission:
   `uhe/build_uhe_coefficient_emission_receipts.py`
   mirrors the source-only UHE coefficient-emitter receipt ladder. It freezes the
@@ -452,8 +443,6 @@ python3 neutrino/derive_neutrino_two_parameter_exact_adapter.py
 python3 hadron/derive_runtime_schedule_receipt_n_therm_and_n_sep.py
 python3 hadron/derive_stable_channel_sequence_evaluation.py
 python3 hadron/derive_current_hadron_lane_audit.py
-python3 jwst/build_compact_object_source_release_receipts.py
-python3 fractional/build_fractional_quotient_receipts.py
 python3 scripts/build_results_status_table.py
 python3 scripts/build_exact_fit_surface.py
 python3 scripts/build_exact_nonhadron_mass_bundle.py
@@ -493,8 +482,6 @@ python3 -m pytest \
   hadron/test_runtime_schedule_receipt_n_therm_and_n_sep.py \
   hadron/test_stable_channel_sequence_evaluation.py \
   hadron/test_current_hadron_lane_audit.py \
-  jwst/test_compact_object_source_release_receipts.py \
-  fractional/test_fractional_quotient_receipts.py \
   hierarchy/test_hierarchy_bundle.py \
   uv/test_oph_bd_threshold_spectrum_receipts.py \
   test_results_status_candidate_policy.py \

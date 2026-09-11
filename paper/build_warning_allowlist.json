@@ -266,22 +266,22 @@
       "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
     },
     {
-      "id": "underfull::thinking_as_patch_net_fixed_point_search::thinking_as_patch_net_fixed_point_search.tex::L2770--2771",
+      "id": "underfull::thinking_as_patch_net_fixed_point_search::thinking_as_patch_net_fixed_point_search.tex::L2726--2727",
       "log": "thinking_as_patch_net_fixed_point_search.log",
       "source_file": "thinking_as_patch_net_fixed_point_search.tex",
       "kind": "underfull_hbox",
-      "lines": "2770--2771",
+      "lines": "2726--2727",
       "badness_min": 1082,
       "badness_max": 1082,
       "max_count": 1,
       "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
     },
     {
-      "id": "underfull::thinking_as_patch_net_fixed_point_search::thinking_as_patch_net_fixed_point_search.tex::L2871--2875",
+      "id": "underfull::thinking_as_patch_net_fixed_point_search::thinking_as_patch_net_fixed_point_search.tex::L2827--2831",
       "log": "thinking_as_patch_net_fixed_point_search.log",
       "source_file": "thinking_as_patch_net_fixed_point_search.tex",
       "kind": "underfull_hbox",
-      "lines": "2871--2875",
+      "lines": "2827--2831",
       "badness_min": 1509,
       "badness_max": 1509,
       "max_count": 1,

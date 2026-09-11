@@ -2036,7 +2036,6 @@ def build_derivation_chain() -> list[dict[str, Any]]:
         {
             "step": 1,
             "premise": "P1: declared gauge-invariant quotient ensemble and action",
-            "source_artifact": "physics-problems/hadronic_precision_endpoint.md",
             "receipts": "particles/runs/qcd/hadron_source_backend/qcd_ensemble/",
             "conclusion": (
                 "the source law mu_r^QCD is a declared positive Gibbs measure on the "
@@ -2049,7 +2048,6 @@ def build_derivation_chain() -> list[dict[str, Any]]:
         {
             "step": 2,
             "premise": "P4: reflection positivity and transfer operator (declared, not supplied here)",
-            "source_artifact": "physics-problems/hadronic_precision_endpoint.md",
             "receipts": "particles/runs/qcd/hadron_source_backend/vacuum/",
             "conclusion": (
                 "given a reflection-positive Euclidean slab, the transfer operator's "
@@ -2086,7 +2084,6 @@ def build_derivation_chain() -> list[dict[str, Any]]:
         {
             "step": 5,
             "premise": "P4, P5, P7: positive spectral measure with thresholds (conditional)",
-            "source_artifact": "physics-problems/hadronic_precision_endpoint.md",
             "conclusion": (
                 "under the reflection-positivity/transfer premise the smeared-current "
                 "quadratic spectral measure is positive and locally finite; in finite "
@@ -2578,7 +2575,6 @@ def build_packet() -> dict[str, Any]:
             "nonidentifiability_obstruction": "code/particles/hadron/derive_ward_projected_spectral_measure_obstruction.py",
             "endpoint_reduction_theorem": "code/P_derivation/source_spectral_theorem.py (WardProjectedHadronicSpectralEmission_Q)",
             "downstream_source_transport_validator": "code/P_derivation/thomson_spectral_transport.py",
-            "backend_spec_note": "physics-problems/hadronic_precision_endpoint.md",
             "receipt_bundle": "code/particles/runs/qcd/hadron_source_backend/ (claim: SOURCE_PROTOTYPE_NOT_PROMOTED)",
             "lattice_engine": "code/particles/hadron/lattice_backend/",
             "demonstrator_ensemble": "code/particles/runs/hadron/hybrid_ir_ensembleA_2026-07-16.npz",

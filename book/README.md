@@ -38,10 +38,3 @@ and tectonic.
 Paragraphs are single lines in the source, separated by blank lines, and wrapping is left
 to the renderer. Straight quotes, American spelling. Bold marks a key term at first use
 and is not used for emphasis. There are no em-dashes anywhere, by rule.
-
-## The first edition
-
-The first edition, 114,319 words across 20 chapters, is at `archive/book-v1/`. It is
-superseded rather than deprecated: the second edition rebuilds the argument from the
-ground up, and chapter numbers do not carry across. Anything mapping old references to
-new needs the redirect table in the migration note rather than a numeric correspondence.

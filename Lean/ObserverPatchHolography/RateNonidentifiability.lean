@@ -73,9 +73,8 @@ Hence no function of the declared reading returns the first-locking count
 ## The projection, stated
 
 The projection used here is `Prod.fst`: forget the counter. It is *stipulated by this file*, not
-taken from the repository. The corpus prose at
-`README.md` lines 292--295 and 299--300 and `physics-problems/compact_record_transients.md` line
-73, "a repair eigenvalue is not a physical duration without a clock map", says only that no
+taken from the repository. The corpus statement "a repair eigenvalue is not a physical duration
+without a clock map" says only that no
 *physical clock* has been supplied. It does not say that an adjoined counter is invisible to the
 repository's declared observable, and `RateBridgeObstruction` shows it is not: `OPH.obsMap`
 strictly changes on every accepted repair step. Whatever `Prod.fst` is, it is not `OPH.obsMap`.

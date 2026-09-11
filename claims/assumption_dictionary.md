@@ -239,7 +239,7 @@ Dictionary closure is a fail-closed validator check (issue #512): every assumpti
 | `all_receipt_families_of_D3h_D4_D4b_D4c_D4d_D5a` | Branch entry assumes every named receipt family of the listed Einstein-branch clauses green on one common tower. | specialist derivation papers |
 | `all_reversible_left_action_continuations` | The finite A5 control assumes the reversible left-action continuation family over the declared machine. | Observers synthesis |
 | `biological_instantiation` | The thinking-patch continuation assumes biological cognition instantiates the patch-net interfaces it models. | Thinking note |
-| `blinded_routes` | Hardware protocols assume execution routes blinded to the target statistic. | BLINDED_GENERATIVE_REPAIR_KERNEL, Photonic_fixed-point_consensus_for_SHA-256d_proof_of_work |
+| `blinded_routes` | Hardware protocols assume execution routes blinded to the target statistic. | BLINDED_GENERATIVE_REPAIR_KERNEL |
 | `bounded_interfaces` | The thinking-patch model assumes bounded observer interfaces. | Thinking note |
 | `bounded_observer_patch_federation` | The typed spine assumes a bounded federation of observer patches as the common carrier. | specialist derivation papers |
 | `branch_and_catalogue_coverage_gate` | The selector audit assumes the declared branch and catalogue coverage gate for the candidate class. | String-selector note |
@@ -282,7 +282,6 @@ Dictionary closure is a fail-closed validator check (issue #512): every assumpti
 | `engineering_chart_capacity_factor` | Chi-nu assumes the engineering-chart capacity factor linking device and screen coordinates. | Chi-nu note |
 | `equivalence_maps_preserve_visible_algebras_records_repairs_clocks_and_refinement` | Presentation invariance assumes equivalence maps preserving visible algebras, records, repairs, clocks, and refinement. | Screen microphysics |
 | `ethical_record_reading` | The paradise continuation assumes record reading under the declared ethical constraints. | Paradise paper |
-| `exact_SHA256d_verifier` | The photonic proof-of-work protocol assumes an exact SHA256d verifier. | Photonic_fixed-point_consensus_for_SHA-256d_proof_of_work |
 | `exact_channel_closure` | Modular gearing assumes exact closure of the declared channels. | Screen microphysics |
 | `exact_local_repair` | The Yang-Mills gap argument assumes exact local repair moves on the declared lattice class. | Yang-Mills note |
 | `family_load_normalization` | The hierarchy witness assumes the family normalization of the weak load line. | Particle paper |
@@ -313,7 +312,7 @@ Dictionary closure is a fail-closed validator check (issue #512): every assumpti
 | `inner_action_or_physical_noncentral_five_band` | The compact-Lie trichotomy selects its product branch under an inner icosahedral action or a noncentral five-band premise. A2 supplies the inner-action branch abstractly; executable source reconstruction and laboratory attachment are separate. | specialist derivation papers |
 | `joint_likelihood_contract` | The dark-matter continuation assumes the declared joint likelihood contract. | oph_dark_matter_paper |
 | `kernel_emission_without_global_quotient_choice` | The matter lift assumes matter-kernel emission without a prior global-quotient choice. | specialist derivation papers |
-| `label_shuffle_controls` | Hardware protocols assume label-shuffle negative controls. | BLINDED_GENERATIVE_REPAIR_KERNEL, Photonic_fixed-point_consensus_for_SHA-256d_proof_of_work |
+| `label_shuffle_controls` | Hardware protocols assume label-shuffle negative controls. | BLINDED_GENERATIVE_REPAIR_KERNEL |
 | `mesh_and_coherent_complex_crossratio_receipts` | The geometry producer assumes mesh and coherent complex cross-ratio receipts. | specialist derivation papers |
 | `mismatch_repair` | Assumes declared mismatch-repair moves between overlapping patches. | BLINDED_GENERATIVE_REPAIR_KERNEL, Thinking note |
 | `observer_record_continuation` | The paradise continuation assumes observer-record continuation across the transition. | Paradise paper |
@@ -327,7 +326,7 @@ Dictionary closure is a fail-closed validator check (issue #512): every assumpti
 | `preserved_boundary_sector_map_for_same_boundary_uniqueness` | Consensus same-boundary uniqueness assumes the preserved boundary-sector map. | Consensus paper |
 | `primitive_collar_MaxEnt_release_law` | The cosmological spectrum assumes the primitive collar MaxEnt release law. | SCREEN_SPECTRUM_THEOREMS |
 | `protected_outputs_factor_through_the_declared_quotient` | Presentation invariance assumes protected outputs factor through the declared quotient. | Screen microphysics |
-| `public_receipts` | Hardware protocols assume public, hash-committed receipts. | BLINDED_GENERATIVE_REPAIR_KERNEL, Photonic_fixed-point_consensus_for_SHA-256d_proof_of_work |
+| `public_receipts` | Hardware protocols assume public, hash-committed receipts. | BLINDED_GENERATIVE_REPAIR_KERNEL |
 | `quotient_visible_uniform_density_volume_readout` | The cosmological spectrum assumes a quotient-visible uniform-density volume readout. | SCREEN_SPECTRUM_THEOREMS |
 | `radial_null_window_and_forward_residual_receipts` | The cosmological spectrum assumes radial null-window and forward-residual receipts. | SCREEN_SPECTRUM_THEOREMS |
 | `raw_carrier_family_H_k` | The finite control assumes the raw carrier family H_k of the declared machine. | Observers synthesis |

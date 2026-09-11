@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 391,
+  "surface_count": 388,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -91,11 +91,6 @@
     },
     {
       "path": "paper/tex_fragments/CLOSURE_PRINCIPLE.tex",
-      "glob": "paper/tex_fragments/*.tex",
-      "allowlisted": false
-    },
-    {
-      "path": "paper/tex_fragments/COMPACT_N_CLOSURE_PRO5.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -1786,16 +1781,6 @@
     },
     {
       "path": "Lean/ObserverPatchHolography/Provenance/SemanticEventProvenance.lean",
-      "glob": "Lean/ObserverPatchHolography/**/*.lean",
-      "allowlisted": false
-    },
-    {
-      "path": "Lean/ObserverPatchHolography/QuotientLumpability.lean",
-      "glob": "Lean/ObserverPatchHolography/**/*.lean",
-      "allowlisted": false
-    },
-    {
-      "path": "Lean/ObserverPatchHolography/QuotientLumpabilityRuntimeHarness.lean",
       "glob": "Lean/ObserverPatchHolography/**/*.lean",
       "allowlisted": false
     },

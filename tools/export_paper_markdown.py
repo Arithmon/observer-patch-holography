@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""Export OPH TeX papers to local Markdown copies.
+"""Export OPH TeX papers and essays to local Markdown copies.
 
 The release-tracked flagship, paper, and extra sets share the public release
 banner. Cosmology sources are exported for local research use only and remain
-outside every public release, PDF, and website publication set.
+outside every public release, PDF, and website publication set. Essays from
+``essays/`` carry an essay banner; they are repository material outside the
+paper release manifest. Markdown files written by a previous export whose
+source no longer exists are removed, so the output directory mirrors the
+current source set.
 """
 
 from __future__ import annotations
@@ -22,6 +26,8 @@ PAPER_DIR = REPO_ROOT / "paper"
 EXTRA_DIR = REPO_ROOT / "extra"
 FLAGSHIP_DIR = REPO_ROOT / "flagship"
 COSMOLOGY_DIR = REPO_ROOT / "cosmology"
+ESSAYS_DIR = REPO_ROOT / "essays"
+ESSAY_FIGURE_URL = "https://github.com/FloatingPragma/observer-patch-holography/blob/main/essays/figures"
 DEFAULT_OUT = WORKSPACE_ROOT / "markdown"
 NON_PAPER_TEX = {
     "appendix_B_bft_qecc_extensions.tex",
@@ -37,12 +43,14 @@ DEFAULT_SUPPLEMENTAL_PAPERS = [
 ]
 DEFAULT_EXTRA_PAPERS = sorted(EXTRA_DIR.glob("*.tex"))
 DEFAULT_COSMOLOGY_PAPERS = sorted(COSMOLOGY_DIR.glob("*.tex"))
+DEFAULT_ESSAYS = sorted(ESSAYS_DIR.glob("*.tex"))
 DEFAULT_SOURCES = [
     *DEFAULT_FLAGSHIP_PAPERS,
     *DEFAULT_CORE_PAPERS,
     *DEFAULT_SUPPLEMENTAL_PAPERS,
     *DEFAULT_EXTRA_PAPERS,
     *DEFAULT_COSMOLOGY_PAPERS,
+    *DEFAULT_ESSAYS,
 ]
 BUILD_INFO_NAME = "_build_info.json"
 MARKDOWN_SOURCE_OVERRIDES: dict[Path, Path] = {}
@@ -185,7 +193,7 @@ def postprocess_markdown(text: str) -> str:
 
 
 def ensure_release_banner(
-    text: str, release_tag: str, release_date: str, *, unpublished: bool
+    text: str, release_tag: str, release_date: str, *, unpublished: bool, essay: bool = False
 ) -> str:
     lines = text.lstrip().splitlines()
     cleaned: list[str] = []
@@ -202,7 +210,12 @@ def ensure_release_banner(
             continue
         cleaned.append(line)
     text = "\n".join(cleaned).lstrip()
-    if unpublished:
+    if essay:
+        banner = (
+            "**Essay:** repository essay, outside the paper release.\n"
+            f"**Source snapshot:** `{release_tag}` ({release_date})\n\n"
+        )
+    elif unpublished:
         banner = (
             "**Research status:** Unpublished cosmology working paper.\n"
             f"**Source snapshot:** `{release_tag}` ({release_date})\n\n"
@@ -217,14 +230,33 @@ def strip_trailing_whitespace(text: str) -> str:
     return "\n".join(line.rstrip() for line in text.splitlines()) + trailing_newline
 
 
+def essay_latex_for_markdown(tex: str) -> str:
+    """Unwrap pandoc's ``\\pandocbounded`` image macro and point figures at the public repo.
+
+    The essay sources are pandoc-written LaTeX; pandoc's LaTeX reader expands the
+    ``\\pandocbounded`` wrapper to nothing, which drops every image. The Markdown
+    export directory has no figure copies, so image links resolve to GitHub.
+    """
+    return re.sub(
+        r"\\pandocbounded\{(\\includegraphics(?:\[[^\]]*\])?)\{figures/([^}]+)\}\}",
+        lambda match: f"{match.group(1)}{{{ESSAY_FIGURE_URL}/{match.group(2)}}}",
+        tex,
+    )
+
+
 def export_one(src: Path, dest: Path, pandoc_bin: str, release_tag: str, release_date: str) -> None:
     export_src = MARKDOWN_SOURCE_OVERRIDES.get(src, src)
+    pandoc_stdin = None
     if export_src.is_relative_to(PAPER_DIR):
         pandoc_cwd = PAPER_DIR
-        pandoc_input = str(export_src.relative_to(PAPER_DIR))
+        pandoc_input = [str(export_src.relative_to(PAPER_DIR))]
+    elif export_src.is_relative_to(ESSAYS_DIR):
+        pandoc_cwd = export_src.parent
+        pandoc_input = []
+        pandoc_stdin = essay_latex_for_markdown(export_src.read_text(encoding="utf-8"))
     else:
         pandoc_cwd = export_src.parent
-        pandoc_input = export_src.name
+        pandoc_input = [export_src.name]
     subprocess.run(
         [
             pandoc_bin,
@@ -233,12 +265,14 @@ def export_one(src: Path, dest: Path, pandoc_bin: str, release_tag: str, release
             "-t",
             "gfm",
             "--wrap=none",
-            pandoc_input,
+            *pandoc_input,
             "-o",
             str(dest),
         ],
         check=True,
         cwd=pandoc_cwd,
+        input=pandoc_stdin,
+        text=True,
     )
     text = postprocess_markdown(dest.read_text(encoding="utf-8"))
     text = ensure_release_banner(
@@ -246,6 +280,7 @@ def export_one(src: Path, dest: Path, pandoc_bin: str, release_tag: str, release
         release_tag,
         release_date,
         unpublished=src.is_relative_to(COSMOLOGY_DIR),
+        essay=src.is_relative_to(ESSAYS_DIR),
     )
     dest.write_text(strip_trailing_whitespace(text), encoding="utf-8")
     if not dest.read_text(encoding="utf-8").strip():
@@ -264,17 +299,23 @@ def current_release_metadata() -> tuple[str, str]:
 
 
 def write_build_info(
-    out_dir: Path, generated: list[str], cosmology_exports: list[str], release_tag: str
+    out_dir: Path,
+    generated: list[str],
+    cosmology_exports: list[str],
+    essay_exports: list[str],
+    release_tag: str,
 ) -> None:
     payload = {
         "release_tag": release_tag,
         "source_snapshot": (
             "release-tracked papers from reverse-engineering-reality/flagship, "
             "reverse-engineering-reality/paper, and reverse-engineering-reality/extra; "
-            "unpublished research sources from reverse-engineering-reality/cosmology"
+            "unpublished research sources from reverse-engineering-reality/cosmology; "
+            "essays from reverse-engineering-reality/essays"
         ),
         "generated_files": generated,
         "unpublished_cosmology_exports": cosmology_exports,
+        "essay_exports": essay_exports,
     }
     (out_dir / BUILD_INFO_NAME).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
@@ -288,7 +329,7 @@ def resolve_source(name_or_path: str) -> Path:
             return candidate
 
     basename = candidate.stem if candidate.suffix else name_or_path
-    for directory in (FLAGSHIP_DIR, PAPER_DIR, EXTRA_DIR, COSMOLOGY_DIR):
+    for directory in (FLAGSHIP_DIR, PAPER_DIR, EXTRA_DIR, COSMOLOGY_DIR, ESSAYS_DIR):
         source = directory / f"{basename}.tex"
         if source.is_file():
             return source
@@ -324,17 +365,32 @@ def main() -> int:
         raise SystemExit(f"pandoc not found: {pandoc_bin}")
 
     release_tag, release_date = current_release_metadata()
+    build_info_path = out_dir / BUILD_INFO_NAME
+    previous: list[str] = []
+    if build_info_path.is_file():
+        previous = json.loads(build_info_path.read_text(encoding="utf-8")).get("generated_files", [])
     generated: list[str] = []
     cosmology_exports: list[str] = []
+    essay_exports: list[str] = []
     for src in sources:
         dest = out_dir / f"{src.stem}.md"
         export_one(src, dest, pandoc_bin, release_tag, release_date)
         generated.append(dest.name)
         if src.is_relative_to(COSMOLOGY_DIR):
             cosmology_exports.append(dest.name)
+        if src.is_relative_to(ESSAYS_DIR):
+            essay_exports.append(dest.name)
         print(dest)
 
-    write_build_info(out_dir, generated, cosmology_exports, release_tag)
+    if not args.paper:
+        # Only files a previous export wrote are candidates, so hand-placed files survive.
+        for name in sorted(set(previous) - set(generated)):
+            stale = out_dir / name
+            if stale.is_file() and stale.suffix == ".md":
+                stale.unlink()
+                print(f"removed {stale}")
+
+    write_build_info(out_dir, generated, cosmology_exports, essay_exports, release_tag)
     print(out_dir / BUILD_INFO_NAME)
     return 0
 

@@ -232,14 +232,12 @@
   {
    "step": 1,
    "premise": "P1: declared gauge-invariant quotient ensemble and action",
-   "source_artifact": "physics-problems/hadronic_precision_endpoint.md",
    "receipts": "particles/runs/qcd/hadron_source_backend/qcd_ensemble/",
    "conclusion": "the source law mu_r^QCD is a declared positive Gibbs measure on the gauge quotient at zero density and theta = 0, with refinement maps and no-target-leak controls; a normal form is not a probability law (source-law non-substitution theorem); its physical population is production-lane content (REQUIRED_NOT_POPULATED)"
   },
   {
    "step": 2,
    "premise": "P4: reflection positivity and transfer operator (declared, not supplied here)",
-   "source_artifact": "physics-problems/hadronic_precision_endpoint.md",
    "receipts": "particles/runs/qcd/hadron_source_backend/vacuum/",
    "conclusion": "given a reflection-positive Euclidean slab, the transfer operator's spectral decomposition supplies the Hilbert-space representation used for positivity; reflection positivity is a theorem for the unimproved Wilson action (Osterwalder-Seiler) and is not available at finite spacing for the clover-improved engine, so conclusion C3 stays conditional on this premise and no finite-sample sign check substitutes for it"
   },
@@ -258,7 +256,6 @@
   {
    "step": 5,
    "premise": "P4, P5, P7: positive spectral measure with thresholds (conditional)",
-   "source_artifact": "physics-problems/hadronic_precision_endpoint.md",
    "conclusion": "under the reflection-positivity/transfer premise the smeared-current quadratic spectral measure is positive and locally finite; in finite volume it is the atomic measure rho_Q(s) = sum_n Z_n delta(s - E_n^2), Z_n >= 0, supported above the vacuum from the lowest vector-channel level (C3, C4)"
   },
   {
@@ -1820,7 +1817,6 @@
   "nonidentifiability_obstruction": "code/particles/hadron/derive_ward_projected_spectral_measure_obstruction.py",
   "endpoint_reduction_theorem": "code/P_derivation/source_spectral_theorem.py (WardProjectedHadronicSpectralEmission_Q)",
   "downstream_source_transport_validator": "code/P_derivation/thomson_spectral_transport.py",
-  "backend_spec_note": "physics-problems/hadronic_precision_endpoint.md",
   "receipt_bundle": "code/particles/runs/qcd/hadron_source_backend/ (claim: SOURCE_PROTOTYPE_NOT_PROMOTED)",
   "lattice_engine": "code/particles/hadron/lattice_backend/",
   "demonstrator_ensemble": "code/particles/runs/hadron/hybrid_ir_ensembleA_2026-07-16.npz"

@@ -4206,40 +4206,6 @@
       }
     },
     {
-      "claim_id": "OPH-POW-PHOTONIC",
-      "statement": "The photonic proof-of-work paper defines an exact-verifier test contract for OPH-style candidate enrichment in SHA-256d mining.",
-      "owner_paper": "extra/Photonic_fixed-point_consensus_for_SHA-256d_proof_of_work.tex",
-      "tier": "hardware_evidence_protocol",
-      "assumptions": [
-        "exact_SHA256d_verifier",
-        "blinded_routes",
-        "label_shuffle_controls",
-        "public_receipts"
-      ],
-      "imported_results": [
-        "SHA256d_specification",
-        "ideal_hash_baseline",
-        "proof_of_work_verification"
-      ],
-      "oph_specific_delta": "A physical patch machine proposes candidates whose enrichment is judged only by the exact digital verifier and controls.",
-      "novelty_type": "experimental_protocol",
-      "evidence": [
-        "extra/Photonic_fixed-point_consensus_for_SHA-256d_proof_of_work.tex"
-      ],
-      "falsifier": "Blinded verifier receipts show no enrichment beyond controls, or controls reveal route leakage or operator alignment.",
-      "scope_if_false": "The hardware enrichment branch falls; no cryptographic break or OPH core theorem is implied.",
-      "status": "experimental_protocol",
-      "claim_class": "declared_structure",
-      "gates": [],
-      "premise_dependencies": {
-        "classification": "explicit_non_consumer",
-        "consumed": [],
-        "open": [],
-        "boundary": [],
-        "rationale": "This is an applied SHA-256d hardware test protocol under verifier, blinding, and receipt rules, not a fundamental-physics derivation consuming a canonical PR."
-      }
-    },
-    {
       "claim_id": "OPH-IBM-GENERATIVE-REPAIR",
       "statement": "The completed IBM issue-509 run implements a blinded finite self-reading repair instrument whose complete transition records distinguish the programmed controller from restricted controller, noise, label, and decoy nulls; the frozen archive does not distinguish OPH from standard quantum mechanics.",
       "owner_paper": "code/ibm_quantum_cloud/protocols/BLINDED_GENERATIVE_REPAIR_KERNEL.md",

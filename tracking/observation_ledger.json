@@ -1413,8 +1413,7 @@
       ],
       "premises": [],
       "evidence": [
-        "docs/FROZEN_PREDICTION_LADDER.md",
-        "physics-problems/high_energy_messenger_coefficients.md"
+        "docs/FROZEN_PREDICTION_LADDER.md"
       ],
       "notes": "The candidates sit as resource-deferred register rows under the cosmology and astrophysics lane; any future freeze and comparison belongs to the owning physics lane.",
       "open_premises": []

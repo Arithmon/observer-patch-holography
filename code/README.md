@@ -23,7 +23,6 @@ the theorem or physical carrier named by that branch.
 | [`particles/`](particles/) | Particle carriers, hierarchy, flavor, neutrino, hadron, and current status surfaces |
 | [`P_derivation/`](P_derivation/) | Pixel fixed-point maps, interval contraction, uniqueness, and provenance |
 | [`capacity_readback/`](capacity_readback/) | Finite record-capacity readback and conditional global closure |
-| [`regulator_gluing/`](regulator_gluing/) | Regulator compatibility and refinement evidence |
 | [`ibm_quantum_cloud/`](ibm_quantum_cloud/) | Redacted hardware runs and reproducible benchmark analysis |
 
 ## Supporting Modules
@@ -33,7 +32,6 @@ the theorem or physical carrier named by that branch.
 | [`collar_alignment/`](collar_alignment/) | Boundary-collar alignment checks |
 | [`maxent/`](maxent/) | Finite maximum-entropy reconstruction |
 | [`edge_sectors/`](edge_sectors/) | Edge-sector and transport calculations |
-| [`precision_ledgers/`](precision_ledgers/) | Machine-readable numerical provenance ledgers |
 
 ## Quick Reproduction
 
