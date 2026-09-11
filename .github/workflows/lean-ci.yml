@@ -130,6 +130,8 @@ jobs:
           if [ -n "$base" ] && [[ ! "$base" =~ ^0+$ ]] && git cat-file -e "$base^{commit}"; then
             while IFS= read -r path; do
               [ -n "$path" ] || continue
+              # A module deleted in this change has no target to build.
+              [ -f "$path" ] || continue
               rel="${path#Lean/}"
               case "$rel" in
                 lakefile.lean|*/lakefile.lean) continue ;;
@@ -141,7 +143,7 @@ jobs:
               module="${rel%.lean}"
               module="${module//\//.}"
               targets+=("$module")
-            done < <(git diff --name-only "$base" "$head" -- 'Lean/**/*.lean')
+            done < <(git diff --name-only --diff-filter=d "$base" "$head" -- 'Lean/**/*.lean')
           fi
 
           {
@@ -207,11 +209,17 @@ jobs:
             Lean/ObservableNormalForms/.lake/build
           key: lean-core-v3-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - name: Fail when the time budget expired before completion
+      - name: Fail when the changed-module build did not complete
         if: steps.budget_build.outputs.status != '0'
+        env:
+          BUILD_STATUS: ${{ steps.budget_build.outputs.status }}
         run: |
-          echo "The changed-module Lean build did not complete within its 18-minute budget." >&2
-          echo "Split an oversized change or move an exceptional certificate to a dedicated lane." >&2
+          if [ "$BUILD_STATUS" = "124" ]; then
+            echo "The changed-module Lean build did not complete within its 18-minute budget." >&2
+            echo "Split an oversized change or move an exceptional certificate to a dedicated lane." >&2
+          else
+            echo "The changed-module Lean build failed with exit $BUILD_STATUS; see lake-build.log in the build step." >&2
+          fi
           exit 1
 
       - name: Fail when the artifact build did not complete
