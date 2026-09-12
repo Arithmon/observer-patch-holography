@@ -19,7 +19,6 @@ This directory holds the public diagrams used by the README, papers, book, and O
 
 - [`book_diagrams/`](book_diagrams/) contains the chapter diagrams selected by the book builder.
 - [`french/`](french/) contains localized public figures.
-- [`omega/`](omega/) contains observer-like hardware and compute-loop diagrams.
 - [Book cover](book-cover.svg) is the canonical print-cover source.
 
 The README poster is authored in the workspace-level DAG project and synchronized here as `prediction-chain.svg`; this directory contains the published artifact.
