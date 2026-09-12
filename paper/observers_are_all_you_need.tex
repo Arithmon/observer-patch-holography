@@ -2998,11 +2998,19 @@ twelve-port rotations are then packaged as a typed subgroup of the
 permutations of the twelve ports, with the multiplication and inverse laws
 checked on the actual port permutations, and the pointwise port bridge is
 promoted to a group isomorphism between that port subgroup, the six-axis
-subgroup, and \(PSL(2,\mathbb Z/5)\).  This is not an abstract
-\(PSL(2,5)\simeq A_5\) classification, an identification with the binary
-icosahedral group or McKay \(E_8\), a transport of the golden pieces as typed
-projective-group representations, a selection of \(\varphi\) or a mass law,
-or a physical-rotation statement.
+subgroup, and \(PSL(2,\mathbb Z/5)\).  The two golden pieces are then
+carried as typed representations: the left face action is packaged as a
+linear representation of the port subgroup on the twenty-dimensional face
+space, restricted to either rank-three golden projector image, transported
+along the isomorphism to \(PSL(2,\mathbb Z/5)\), and pulled back through
+the center quotient to \(SL(2,\mathbb Z/5)\), where every central element,
+in particular \(-I\), acts trivially; the row law behind the representation
+is an exact finite-table check against the certified port-group
+multiplication (\path{Lean/Screen/GoldenSectorPSL2F5Representations.lean}).
+This is not an abstract \(PSL(2,5)\simeq A_5\) classification, an
+identification with the binary icosahedral group or McKay \(E_8\), a
+two-dimensional spinor representation of \(SL(2,\mathbb Z/5)\), a
+selection of \(\varphi\) or a mass law, or a physical-rotation statement.
 
 The golden split is exact. On the six-dimensional golden sector, where
 \(N^2-6N+4=0\), the two spectral projectors with eigenvalues

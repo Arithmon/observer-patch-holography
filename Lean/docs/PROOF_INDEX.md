@@ -1234,15 +1234,32 @@ Mapping between Lean 4 theorems in this project and statements in
   committed six-axis generators; and exhaustive preimage witnesses prove
   that its image is exactly `A5SixAxes.L60`, yielding
   `PSL2F5 ≃* SixAxisGroup`.  This does not prove an abstract `PSL(2,5) ≅ A5`
-  classification, identify `SL(2,5)` with `2I`, invoke McKay, transport the
-  golden sectors as typed `PSL2F5` representations, select `φ` or a mass law,
-  or make a physical claim.  The module's port-group section
+  classification, identify `SL(2,5)` with `2I`, invoke McKay, select `φ` or
+  a mass law, or make a physical claim; the typed transport of the golden
+  sectors is the separate module below.  The module's port-group section
   (`OPH.A5PortGroupBridge`, PR #774) packages the sixty committed twelve-port
   rotations as `PortGroup : Subgroup (Equiv.Perm (Fin 12))`, checks the
   multiplication and inverse laws by kernel `decide` on the actual port
   permutations, reuses the certified faithfulness of the antipodal quotient
   for injectivity, and gives `PortGroup ≃* SixAxisGroup` and
   `PSL2F5 ≃* PortGroup`.  The nonclaims above are unchanged.
+- Typed `PSL(2,F5)` representations on the golden pieces
+  (`Screen/GoldenSectorPSL2F5Representations.lean`, PR #785): sorry-free,
+  standard axioms, no `native_decide`.  Recovers the committed port-action
+  row carried by a typed `PortGroup` element and checks, by kernel `decide`
+  on the full sixty-by-sixty table, that row selection respects the
+  certified port-group multiplication.  The existing left face action
+  `leftFace p = pullFace (invPerm p)` is packaged as a
+  `Representation ℝ PortGroup (Fin 20 → ℝ)`, restricted to either golden
+  projector image `W plusCert`, `W minusCert` through the existing
+  `W_invariant` theorem, transported along `PSL2F5 ≃* PortGroup` to typed
+  `PSL2F5` representations on both rank-three pieces, and pulled back
+  through the canonical `SL2F5 → PSL2F5` center quotient.  Every central
+  element of `SL2F5`, in particular `-1`, acts trivially on both pieces.
+  This does not prove `PSL(2,5) ≅ A5`, identify `SL(2,5)` with the binary
+  icosahedral group, construct a faithful two-dimensional spinor
+  representation, invoke McKay, derive or select `φ`, state a mass law, or
+  identify the finite action with physical rotations.
 - Universal cap coupling from icosahedral symmetry
   (`Screen/A5CouplingSymmetry.lean`, #576/#568): 9 / 9 declarations,
   sorry-free, standard axioms. Finite facts by kernel `decide` (caps map to

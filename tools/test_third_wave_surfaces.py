@@ -23,6 +23,7 @@ CLOCK_LEAN = "Lean/Geometry/SourceClockRateAlongWorldlines.lean"
 GOLD_LEAN = "Lean/Screen/GoldenSectorCharacters.lean"
 GOLD_BRIDGE_LEAN = "Lean/Screen/A5PortSixAxesBridge.lean"
 GOLD_PSL_BRIDGE_LEAN = "Lean/Screen/PSL2F5SixAxesBridge.lean"
+GOLD_PSL_REP_LEAN = "Lean/Screen/GoldenSectorPSL2F5Representations.lean"
 
 
 def _registry() -> list[dict]:
@@ -88,7 +89,8 @@ def test_golden_claim_separates_character_and_later_irreducibility_theorems() ->
                   "canonical SL(2,ZMod 5) to PSL(2,ZMod 5) center quotient",
                   "its image is exactly A5SixAxes.L60",
                   "does not identify PSL2F5 with abstract A5",
-                  "nor transport the Golden sectors as typed PSL representations",
+                  "pulls them back through the SL(2,ZMod 5) center quotient",
+                  "every central element, in particular -I, acts trivially",
                   "Identification with the abstract A5 or icosahedral character table remains an inference outside Lean"):
         assert token in statement, token
     scope_if_false = _claim(GOLD_CLAIM)["scope_if_false"]
@@ -124,6 +126,10 @@ def test_lean_modules_carry_headline_declarations() -> None:
                               "sClass_action", "center_eq_plus_minus_one",
                               "center_card_two", "pslToSix_range",
                               "psl_equiv_six_axis_group"),
+        GOLD_PSL_REP_LEAN: ("portRowAt_mul", "facePortRepresentation",
+                            "goldenPortRepresentation", "goldenPSLRepresentation",
+                            "goldenSLRepresentation", "goldenSL_center_trivial",
+                            "goldenSL_neg_one_trivial"),
     }
     for relative_path, tokens in expectations.items():
         text = (ROOT / relative_path).read_text(encoding="utf-8")
@@ -137,6 +143,8 @@ def test_psl_bridge_is_registered_and_exported() -> None:
     umbrella = (ROOT / "Lean/Screen/OPHScreen.lean").read_text(encoding="utf-8")
     assert "`PSL2F5SixAxesBridge" in lake
     assert "import PSL2F5SixAxesBridge" in umbrella
+    assert "`GoldenSectorPSL2F5Representations" in lake
+    assert "import GoldenSectorPSL2F5Representations" in umbrella
 
 
 def test_owner_paper_carries_the_results() -> None:
@@ -145,7 +153,9 @@ def test_owner_paper_carries_the_results() -> None:
                   "two rests per crossing", "SourceClockRateAlongWorldlines",
                   "GoldenSectorCharacters", "PSL2F5SixAxesBridge",
                   "canonical center quotient", "whose kernel is the center",
-                  "yields a faithful action of", "pointwise port bridge is promoted to a group isomorphism"):
+                  "yields a faithful action of", "pointwise port bridge is promoted to a group isomorphism",
+                  "GoldenSectorPSL2F5Representations",
+                  "pulled back through the center quotient"):
         assert token in observers, token
 
 
