@@ -1105,6 +1105,11 @@
       "allowlisted": false
     },
     {
+      "path": "Lean/Screen/GoldenSectorPSL2F5Representations.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
       "path": "Lean/Screen/HolonomyInterference.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
