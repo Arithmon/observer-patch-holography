@@ -16,7 +16,7 @@ ROOT = HERE.parents[1]
 
 
 def canonical(value):
-    return (json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n").encode()
+    return (json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n").encode("utf-8")
 
 
 def digest(value):
@@ -159,7 +159,7 @@ def episode(path, variant, spec):
 
 def target_costs():
     parent = ROOT / "evidence/source_net_causal_poset/carrier_source_net_receipt.json"
-    source = json.loads(parent.read_text())
+    source = json.loads(parent.read_text(encoding="utf-8"))
     rows = []
     for row in source["levels"]:
         if row["q"] in (13, 21):
@@ -169,13 +169,13 @@ def target_costs():
                          "nonself_reads": 2*edges*rounds,
                          "six_event_unicast_transport_lower_bound": 12*edges*rounds,
                          "scope": "Declared compiler target count only; assumes distinct source/destination scratch vertices; excludes routing distance, local reads and commits. Not a full execution or a lower bound for every multicast/compiler design."})
-    return {"source_path": str(parent.relative_to(ROOT)), "source_sha256": hashlib.sha256(parent.read_bytes()).hexdigest(), "rows": rows}
+    return {"source_path": parent.relative_to(ROOT).as_posix(), "source_sha256": hashlib.sha256(parent.read_bytes()).hexdigest(), "rows": rows}
 
 
 def build():
-    spec = json.loads((HERE / "specification.json").read_text())
+    spec = json.loads((HERE / "specification.json").read_text(encoding="utf-8"))
     support_path = ROOT / spec["support"]
-    support = json.loads(support_path.read_text())
+    support = json.loads(support_path.read_text(encoding="utf-8"))
     runs = [episode(path, variant, spec) for path in routes(support, spec["path_lengths"]) for variant in spec["variants"]]
     return {"schema": "oph.source_feedback_transport.receipt.v1", "specification": spec,
             "support_sha256": hashlib.sha256(support_path.read_bytes()).hexdigest(),

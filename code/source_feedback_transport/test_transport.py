@@ -4,11 +4,12 @@ from fractions import Fraction as F
 import hashlib
 import itertools
 import json
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import random
 
 import pytest
 
+import build_transport as producer
 import verify_transport as verifier
 
 HERE = Path(__file__).resolve().parent
@@ -30,6 +31,56 @@ def rehash(run):
 
 def test_independent_complete_replay(packet):
     assert verifier.verify(packet) == {"episodes":16,"events":4928,"hops":740}
+
+
+class WindowsPathView:
+    """Real fixture bytes with Windows relative-path serialization on every OS."""
+
+    def __init__(self, path):
+        self.path = path
+
+    def __truediv__(self, relative):
+        return type(self)(self.path/relative)
+
+    def __fspath__(self):
+        return str(self.path)
+
+    def relative_to(self, root):
+        return PureWindowsPath(*self.path.relative_to(root.path).parts)
+
+    def read_bytes(self):
+        return self.path.read_bytes()
+
+    def read_text(self, *, encoding):
+        # Require an explicit encoding rather than inheriting a Windows locale.
+        assert encoding == "utf-8"
+        return self.path.read_text(encoding=encoding)
+
+
+def test_windows_path_producer_preserves_complete_receipt_bytes(monkeypatch):
+    root = WindowsPathView(producer.ROOT)
+    relative = (root/"evidence/source_net_causal_poset/carrier_source_net_receipt.json").relative_to(root)
+    assert "\\" in str(relative) and "\\" not in relative.as_posix()
+    monkeypatch.setattr(producer,"ROOT",root)
+    assert producer.canonical(producer.build()) == (HERE/"transport_receipt.json").read_bytes()
+
+
+def test_windows_path_verifier_accepts_canonical_receipt(packet,monkeypatch):
+    monkeypatch.setattr(verifier,"ROOT",WindowsPathView(verifier.ROOT))
+    assert verifier.verify(packet) == {"episodes":16,"events":4928,"hops":740}
+
+
+@pytest.mark.parametrize("mutation",["backslash_path","wrong_hash"])
+def test_windows_path_verifier_retains_exact_pin_checks(packet,monkeypatch,mutation):
+    candidate = deepcopy(packet)
+    target = candidate["compiler_targets_not_executed"]
+    if mutation == "backslash_path":
+        target["source_path"] = str(PureWindowsPath(target["source_path"]))
+    else:
+        target["source_sha256"] = "0"*64
+    monkeypatch.setattr(verifier,"ROOT",WindowsPathView(verifier.ROOT))
+    with pytest.raises(ValueError,match="compiler target pin"):
+        verifier.verify(candidate)
 
 
 @pytest.mark.parametrize("mutation",["wrong_mean","remote_capture","stale_read","wrong_version","archive_mutable","fake_parent","missing_reset","extra_reset_dependency","wrong_owner","old_version_relabel"])

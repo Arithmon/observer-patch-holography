@@ -24,7 +24,7 @@ def require(condition, message):
 
 
 def raw(value):
-    return (json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False)+"\n").encode()
+    return (json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False)+"\n").encode("utf-8")
 
 
 def equal(actual, expected, message):
@@ -49,7 +49,7 @@ def parent_census(path):
         return result
     def reject(value):
         raise ValueError("nonfinite parent diagnostic: "+value)
-    return json.loads(path.read_text(),object_pairs_hook=pairs,parse_float=F,parse_constant=reject)
+    return json.loads(path.read_text(encoding="utf-8"),object_pairs_hook=pairs,parse_float=F,parse_constant=reject)
 
 
 def error_budget(depth, initial, export, reset, mean, read, decode):
@@ -222,7 +222,7 @@ def verify(packet=None):
                                   "scope":"Separately bounded additive errors; export includes archive retention/read/write error relative to its retained payload. Mean error bounds the receiver coordinate. Exact deterministic schedule; no measured physical noise limits."},"noise scope/formula")
     source_path = ROOT/"evidence/source_net_causal_poset/carrier_source_net_receipt.json"
     target = packet["compiler_targets_not_executed"]
-    require(target["source_path"] == str(source_path.relative_to(ROOT)) and target["source_sha256"] == hashlib.sha256(source_path.read_bytes()).hexdigest(),"compiler target pin")
+    require(target["source_path"] == source_path.relative_to(ROOT).as_posix() and target["source_sha256"] == hashlib.sha256(source_path.read_bytes()).hexdigest(),"compiler target pin")
     expected_rows = []
     parent_rows = {row["q"]:row for row in parent_census(source_path)["levels"]}
     for q,n,r,e in ((13,2197,4,145997),(21,9261,5,1451292)):
