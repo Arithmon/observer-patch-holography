@@ -12,6 +12,7 @@ MODULE_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(MODULE_DIR))
 
 import coset_carrier_certificate as cert  # noqa: E402
+import sl2f5_port_spin_bridge_certificate as spin_bridge  # noqa: E402
 
 
 class CosetCarrierCertificateTests(unittest.TestCase):
@@ -53,6 +54,14 @@ class CosetCarrierCertificateTests(unittest.TestCase):
         self.assertEqual(solutions, 120)
         self.assertEqual(image, set(self.built.carriers))
         self.assertEqual(orders, {(4, 6, 10)})
+
+    def test_sl2f5_port_spin_bridge_is_mandatory_smoke(self) -> None:
+        bridge = spin_bridge.build_certificate()
+        self.assertEqual(bridge["isomorphism"]["source_elements_mapped"], 120)
+        self.assertEqual(bridge["isomorphism"]["distinct_spin_images"], 120)
+        self.assertEqual(bridge["isomorphism"]["multiplication_checks"], 120 * 120)
+        self.assertEqual(bridge["commuting_cover_square"]["checks"], 120)
+        self.assertTrue(bridge["commuting_cover_square"]["commutes_on_all_source_elements"])
 
     def test_free_common_value_adds_only_the_trivial_solution(self) -> None:
         source = self.quotient.source
