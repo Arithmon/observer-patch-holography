@@ -7,8 +7,12 @@ This certificate composes two independently existing exact constructions:
   quotient, and an explicit quotient action which relabels onto the sixty
   committed twelve-port rotations;
 * ``super_tannakian_matter_lift_certificate.py`` independently reconstructs
-  the exact SU(2) PORT-SPIN-LIFT over Q(sqrt(5)) from those committed port
-  rotations.
+  the exact SU(2) PORT-SPIN-LIFT over Q(sqrt(5)) from the #314 current carrier.
+
+The two constructions use isomorphic but not identical carrier coordinate
+labellings.  The bridge therefore derives an exact orientation-preserving
+carrier relabelling before comparing the sixty-row actions; no row equality is
+assumed across coordinate systems.
 
 The bridge is not inferred from order, element-order profile, or uniqueness of
 a non-split extension.  It chooses one exact presentation triple
@@ -76,6 +80,24 @@ def permutation_compose(left: PortRow, right: PortRow) -> PortRow:
     return tuple(left[right[i]] for i in range(len(left)))
 
 
+def inverse_permutation(p: Sequence[int]) -> PortRow:
+    out = [0] * len(p)
+    for i, image in enumerate(p):
+        out[image] = i
+    return tuple(out)
+
+
+def relabel_port_row(row: PortRow, phi: Sequence[int]) -> PortRow:
+    """Conjugate a permutation from carrier labels to committed labels.
+
+    ``phi`` maps old carrier vertex labels to committed port labels, so the
+    transported row is ``phi ∘ row ∘ phi^{-1}``.
+    """
+
+    inv = inverse_permutation(phi)
+    return tuple(phi[row[inv[j]]] for j in range(len(row)))
+
+
 def source_power(source: c784.Source, value: Matrix, exponent: int) -> Matrix:
     out = source.identity
     for _ in range(exponent):
@@ -139,6 +161,44 @@ def port_action_for_placement(
         )
 
     return source_to_port
+
+
+def current_carrier_relabel(
+    algebra: m314.CurrentAlgebra,
+    fixture: c784.Fixture,
+) -> tuple[PortRow, dict[str, int]]:
+    """Derive an orientation-preserving relabelling of the #314 carrier."""
+
+    isos = c784.graph_isomorphisms(algebra.carrier.adjacency, fixture.adjacency)
+    require(
+        bool(isos),
+        "SPIN_CARRIER_RELABEL",
+        "#314 carrier is not graph-isomorphic to the committed carrier",
+    )
+
+    committed = c784.relabel_faces(fixture.oriented_faces, tuple(range(12)))
+    matching = [
+        tuple(phi)
+        for phi in isos
+        if c784.relabel_faces(algebra.carrier.faces, phi) == committed
+    ]
+    require(
+        bool(matching),
+        "SPIN_CARRIER_ORIENTATION",
+        "no carrier relabelling preserves the committed face orientation",
+    )
+
+    phi = min(matching)
+    transported = {relabel_port_row(tuple(row), phi) for row in algebra.plus}
+    require(
+        transported == set(fixture.port_action),
+        "SPIN_PORT_ACTION",
+        "relabelled PORT-SPIN-LIFT rows differ from the committed port action",
+    )
+    return phi, {
+        "graph_isomorphisms": len(isos),
+        "orientation_matching_relabellings": len(matching),
+    }
 
 
 def build_spin_group_index(
@@ -227,7 +287,7 @@ def row_as_list(row: PortRow) -> list[int]:
 
 
 def build_certificate() -> dict[str, Any]:
-    # --- Canonical source and its exact carrier quotient ----------------------
+    # --- Canonical SL(2,F5) source and its exact committed-port quotient -----
     coset_manifest = c784.load_json(MODULE_DIR / "manifests" / "coset_carrier_reference.json")
     source = c784.build_source(coset_manifest)
     quotient, quotient_summary = c784.central_quotient(source)
@@ -238,12 +298,20 @@ def build_certificate() -> dict[str, Any]:
     source_generators = min(solutions)
     placement = placement_of_solution(quotient, source_generators)
     incidence = c784.build_incidence(quotient, placement)
-    require(c784.classify(incidence) == "CARRIER", "PRESENTATION", "chosen presentation solution is not a carrier placement")
+    require(
+        c784.classify(incidence) == "CARRIER",
+        "PRESENTATION",
+        "chosen presentation solution is not a carrier placement",
+    )
     phi, relabel_summary = c784.relabel(quotient, placement, incidence, fixture)
     source_to_port = port_action_for_placement(quotient, placement, phi)
 
     source_port_rows = {source_to_port(g) for g in source.elements}
-    require(source_port_rows == set(fixture.port_action), "SOURCE_PORT_ACTION", "SL2F5 quotient action differs from the committed port rows")
+    require(
+        source_port_rows == set(fixture.port_action),
+        "SOURCE_PORT_ACTION",
+        "SL2F5 quotient action differs from the committed port rows",
+    )
     source_kernel = [g for g in source.elements if source_to_port(g) == tuple(range(12))]
     require(
         set(source_kernel) == {source.identity, source.minus_identity},
@@ -251,16 +319,36 @@ def build_certificate() -> dict[str, Any]:
         "source-to-port kernel is not exactly {+I,-I}",
     )
 
-    # --- Independently recompute the executable PORT-SPIN-LIFT ---------------
+    # --- Recompute PORT-SPIN-LIFT, then transport its carrier coordinates ----
     matter_manifest = m314.load_json(MODULE_DIR / "manifests" / "super_tannakian_matter_reference.json")
     upstream = m314.load_upstream(matter_manifest, MODULE_DIR)
     algebra = m314.CurrentAlgebra(upstream["current_manifest"], MODULE_DIR)
     spin = m314.spin_lift_certificate(algebra)
-    lifts: Mapping[PortRow, SpinMatrix] = spin["lifts"]
-    require(set(lifts) == set(fixture.port_action), "SPIN_PORT_ACTION", "PORT-SPIN-LIFT rows differ from the committed port action")
+    raw_lifts: Mapping[PortRow, SpinMatrix] = spin["lifts"]
+    require(
+        set(raw_lifts) == {tuple(row) for row in algebra.plus},
+        "SPIN_INTERNAL_ACTION",
+        "PORT-SPIN-LIFT keys differ from the current fixture's own rotation rows",
+    )
+
+    current_phi, current_relabel_summary = current_carrier_relabel(algebra, fixture)
+    lifts: dict[PortRow, SpinMatrix] = {}
+    for raw_row, lift in raw_lifts.items():
+        committed_row = relabel_port_row(tuple(raw_row), current_phi)
+        require(
+            committed_row not in lifts,
+            "SPIN_CARRIER_RELABEL",
+            "carrier relabelling identifies two distinct rotation rows",
+        )
+        lifts[committed_row] = lift
+    require(
+        set(lifts) == set(fixture.port_action),
+        "SPIN_PORT_ACTION",
+        "transported PORT-SPIN-LIFT rows differ from the committed port action",
+    )
     spin_elements, spin_to_port = build_spin_group_index(lifts)
 
-    # --- Match one presentation triple through the eight possible signs ------
+    # --- Match one exact presentation triple through the eight lift signs ----
     a, b, c = source_generators
     generator_rows = (source_to_port(a), source_to_port(b), source_to_port(c))
     require(
@@ -277,7 +365,7 @@ def build_certificate() -> dict[str, Any]:
     )
     signs, spin_generators = choices[0]
 
-    # --- Extend to all 120 elements and prove it is a group isomorphism -------
+    # --- Extend by words, then verify all 120^2 products ----------------------
     source_to_spin = extend_generator_map(source, source_generators, spin_generators)
     image_keys = {m314.matrix_key(matrix) for matrix in source_to_spin.values()}
     require(
@@ -318,11 +406,15 @@ def build_certificate() -> dict[str, Any]:
         "-I does not map to -I2",
     )
 
-    # --- Commuting square to the actual committed twelve-port action ----------
+    # --- Verify the cover square element by element ---------------------------
     square_checks = 0
     for g in source.elements:
         spin_key = m314.matrix_key(source_to_spin[g])
-        require(spin_key in spin_to_port, "SPIN_PORT_MAP", "isomorphism image is not a registered spin lift")
+        require(
+            spin_key in spin_to_port,
+            "SPIN_PORT_MAP",
+            "isomorphism image is not a registered spin lift",
+        )
         require(
             spin_to_port[spin_key] == source_to_port(g),
             "COVER_SQUARE",
@@ -330,9 +422,7 @@ def build_certificate() -> dict[str, Any]:
         )
         square_checks += 1
 
-    spin_kernel_keys = {
-        key for key, row in spin_to_port.items() if row == tuple(range(12))
-    }
+    spin_kernel_keys = {key for key, row in spin_to_port.items() if row == tuple(range(12))}
     require(
         spin_kernel_keys == {m314.matrix_key(identity2), m314.matrix_key(minus_identity2)},
         "SPIN_PORT_KERNEL",
@@ -341,7 +431,7 @@ def build_certificate() -> dict[str, Any]:
 
     return {
         "schema": SCHEMA,
-        "construction": "explicit_generator_correspondence_and_exhaustive_group_check",
+        "construction": "explicit_generator_correspondence_with_derived_carrier_relabelling_and_exhaustive_group_check",
         "source": {
             "group": "SL(2,F5)",
             "order": len(source.elements),
@@ -355,7 +445,11 @@ def build_certificate() -> dict[str, Any]:
         "carrier_bridge": {
             "committed_port_rows": len(source_port_rows),
             "source_to_port_kernel": ["+I", "-I"],
-            "relabel": relabel_summary,
+            "coset_to_committed_relabel": relabel_summary,
+            "current_to_committed_relabel": {
+                **current_relabel_summary,
+                "map": list(current_phi),
+            },
             "chosen_generator_port_rows": [row_as_list(row) for row in generator_rows],
             "source_port_homomorphism_checks": port_homomorphism_checks,
         },
@@ -383,8 +477,8 @@ def build_certificate() -> dict[str, Any]:
         "claim_boundary": {
             "proves": (
                 "an explicit exact group isomorphism from the canonical SL(2,F5) source "
-                "to the executable PORT-SPIN-LIFT, compatible with the common quotient "
-                "onto the committed twelve-port rotation group"
+                "to the executable PORT-SPIN-LIFT, after deriving the coordinate change "
+                "between the #314 carrier labels and the committed Lean port labels"
             ),
             "method_not_used": [
                 "same-order inference",
@@ -412,7 +506,7 @@ def main() -> None:
     encoded = json.dumps(certificate, indent=2, sort_keys=True) + "\n"
     if args.output is not None:
         args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(encoded, encoding="utf-8")
+        args.output.write_text(encoded, encoding="utf-8", newline="\n")
     if args.command == "print" or args.output is None:
         print(encoded, end="")
 
