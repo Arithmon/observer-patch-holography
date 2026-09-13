@@ -136,6 +136,9 @@ LEAN_RECEIPTS = {
     "SourceCountClock": REPO / "Lean" / "Time" / "SourceCountClock.lean",
     "SourceRecordProtection": REPO / "Lean" / "Geometry" / "SourceRecordProtection.lean",
     "SourcePopulationQuadrature": REPO / "Lean" / "Geometry" / "SourcePopulationQuadrature.lean",
+    "GoldenSourceAssignment": REPO / "Lean" / "Geometry" / "GoldenSourceAssignment.lean",
+    "SourceSeamPathTomography": REPO / "Lean" / "Geometry" / "SourceSeamPathTomography.lean",
+    "ScalarRegionalTimeSlice": REPO / "Lean" / "QFT" / "ScalarRegionalTimeSlice.lean",
     "MetricKernelEnergy": REPO / "Lean" / "Geometry" / "MetricKernelEnergy.lean",
     "LorentzOverlapCocycle": REPO / "Lean" / "Geometry"
     / "LorentzOverlapCocycle.lean",
@@ -588,21 +591,27 @@ def _source_net_causal_control(receipt_path: Path | None = None) -> dict[str, An
     }
 
 
-def _fresh_structural_verifier(path: Path, dependency: str | None = None):
+def _fresh_structural_verifier(path: Path, dependency: str | None = None,
+                              dependency_paths: dict[str, Path] | None = None):
     """Compile current verifier/helper bytes; restore existing import bindings."""
-    names = [dependency] if dependency else []
+    dependencies = dict(dependency_paths or {})
+    if dependency:
+        dependencies[dependency] = path.parent / (dependency + ".py")
+    names = list(dependencies)
     name = "postdiction_" + path.parent.name + "_" + path.stem
     names.append(name)
     saved = {key: sys.modules.get(key) for key in names}
+    original_path = sys.path[:]
     try:
         for key in names:
-            source = path.parent / (key + ".py") if key == dependency else path
+            source = dependencies.get(key, path)
             module = types.ModuleType(key)
             module.__file__ = str(source)
             sys.modules[key] = module
             exec(compile(source.read_bytes(), str(source), "exec"), module.__dict__)
         return module
     finally:
+        sys.path[:] = original_path
         for key, previous in saved.items():
             if previous is None:
                 sys.modules.pop(key, None)
@@ -612,9 +621,10 @@ def _fresh_structural_verifier(path: Path, dependency: str | None = None):
 
 def _structural_packet(package: str, verifier_name: str, receipt_name: str,
                        *, entry: str = "verify", dependency: str | None = None,
+                       dependency_paths: dict[str, Path] | None = None,
                        receipt_path: Path | None = None):
     directory = CODE / package
-    verifier = _fresh_structural_verifier(directory / verifier_name, dependency)
+    verifier = _fresh_structural_verifier(directory / verifier_name, dependency, dependency_paths)
     path = receipt_path or directory / receipt_name
     raw = path.read_bytes()
     try:
@@ -659,24 +669,180 @@ def _source_population_quadrature_control() -> dict[str, Any]:
                     "constant_detects_mass_error", "misplaced_sample_counterexample")
     source = "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex"
     labels = ["prop:source-population-cell-transport", "prop:source-population-local-kernel"]
+    golden = ("residue_bijective", "fibonacci_error", "golden_floor", "golden_orbit_eq",
+              "golden_grid_error", "orbit_injective", "tensor_assignment", "site_card",
+              "axisCell_disjoint", "axisCell_cover", "cell_disjoint", "cell_cover",
+              "cell_mass", "golden_quadrature", "golden_quadrature_tendsto",
+              "cube_ae_closed", "golden_quadrature_closed", "sample_outside_assigned_cell",
+              "one_cell_width_counterexample")
     text = (REPO/source).read_text(encoding="utf-8")
     if any("\\label{" + label + "}" not in text for label in labels):
         raise SystemExit("source population quadrature theorem missing")
     return {
         "source": source, "labels": labels,
-        "lean_receipts": _lean_receipt("SourcePopulationQuadrature",
-            declarations={"SourcePopulationQuadrature": declarations}),
-        "lean_declarations": {"SourcePopulationQuadrature": list(declarations)},
+        "lean_receipts": _lean_receipt("SourcePopulationQuadrature", "GoldenSourceAssignment",
+            declarations={"SourcePopulationQuadrature": declarations, "GoldenSourceAssignment": golden}),
+        "lean_declarations": {"SourcePopulationQuadrature": list(declarations),
+                              "GoldenSourceAssignment": list(golden)},
         "formal_actual_cell_integral_and_quadrature_limit": True,
-        "formal_golden_partition_geometry_or_causal_pair_count_limit": False,
+        "formal_golden_partition_geometry": True,
+        "formal_causal_pair_count_limit": False,
+        "golden_assignment_bound": "2*sqrt(3)*L/q",
+        "golden_cell_mass": "L^3/q^3",
+        "golden_lipschitz_integral_error": "L^3*K*(2*sqrt(3)*L/q)",
+        "fixed_globally_lipschitz_detector_convergence": True,
+        "arbitrary_varying_detector_or_indicator_convergence": False,
+        "equal_cell_weights_are_lumped_action_weights": False,
         "tent_integrand_lipschitz_coefficient": "K",
         "analytic_radial_quadrature_bound": "60*K*H*(epsilon+H)^3/epsilon^5",
         "observed_postdiction": False,
         "scope_boundary": (
-            "Finite measured cells, their actual masses, representatives and vanishing "
-            "assignment distances are hypotheses. Golden geometry and causal pair-count "
-            "limits remain separate analytic arguments. Dual-cell and equal-volume weights "
-            "are distinct finite measures; no physical population law follows."),
+            "The general quadrature theorem takes measured cells, masses and assignments "
+            "as hypotheses. The new golden specialization constructs the actual fractional-part "
+            "population, permuted half-open partition, exact Lebesgue cell masses and "
+            "2*sqrt(3)*L/q assignment bound from Fibonacci arithmetic. A sample need not lie "
+            "in its assigned cell. The Bochner integral estimate and limit fix one globally "
+            "Lipschitz detector and its constant. Causal interval indicators, pair-count limits "
+            "and arbitrary varying detectors remain separate. Dual-cell action and equal-volume "
+            "weights are distinct finite measures; no physical population law follows."),
+    }
+
+
+def _source_scalar_regional_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_scalar_regional", "verify_regional_time_slice.py", "regional_time_slice_receipt.json",
+        dependency_paths={"verify_source_scalar_execution":
+                          CODE / "source_scalar_execution/verify_source_scalar_execution.py"},
+        receipt_path=receipt_path)
+    expected = {"verified": True, "region_count": 8, "missing_row_counterexamples": 62,
+                "regions": [{"region": r["name"], "sites": len(r["region_sites"]),
+                    "coordinate_collar_sites": len(r["coordinate_collar_sites"]),
+                    "minimal_linear_collar": r["minimal_linear_collar_dimension"]}
+                    for r in packet["regions"]]}
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("regional scalar independent rank projection mismatch")
+    declarations = ("reconstruct_velocity", "hidden_exterior_perturbation",
+                    "determines_velocity_iff_kernel", "force_readout_suffices",
+                    "no_collar_iff_zero_coupling")
+    source = "paper/tex_fragments/SOURCE_SCALAR_REGIONAL_TIME_SLICE.tex"
+    label = "thm:source-scalar-regional-collar"
+    if "\\label{" + label + "}" not in (REPO/source).read_text(encoding="utf-8"):
+        raise SystemExit("regional scalar analytic theorem missing")
+    return {
+        "receipt": "code/source_scalar_regional/regional_time_slice_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "analytic_proof": {"source": source, "label": label},
+        "lean_receipts": _lean_receipt("ScalarRegionalTimeSlice",
+            declarations={"ScalarRegionalTimeSlice": declarations}),
+        "lean_declarations": {"ScalarRegionalTimeSlice": list(declarations)},
+        "mathematical_replay": True, "exact_minimal_exterior_readout_ranks": True,
+        "kernel_reconstruction_criterion_formalized": True,
+        "weyl_algebra_and_rank_consequences_formalized": False,
+        "all_real_weyl_parameters_are_supplied": True,
+        "classical_record_trace_provides_weyl_access": False,
+        "physical_regional_time_slice": False, "observed_quantum_outcomes": False,
+        "source_action_population_or_physical_clock_selected": False,
+        "observed_postdiction": False,
+        "scope_boundary": (
+            "For the complete supplied finite scalar action, original regional canonical "
+            "Weyl access follows from two field layers and exterior linear readouts C exactly "
+            "when ker C is contained in ker A_R,E. The sharp minimum is rank A_R,E. "
+            "All eight regions and 62 missing-readout controls are independently reconstructed. "
+            "The two-layer fields have nonzero cross-time canonical brackets and define a "
+            "common-unitary sheared net; they need not generate the original site algebra "
+            "without exterior access. Rank/Weyl consequences are analytic; Lean proves the "
+            "linear reconstruction criterion. Arbitrary real Weyl parameters, regions, action, "
+            "quantization and physical attachment remain supplied. No classical record is "
+            "promoted to an operational quantum outcome or physical Cauchy interface."),
+    }
+
+
+def _source_seam_routing_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_routing", "verify_routing.py", "runtime/path_tomography_receipt.json",
+        receipt_path=receipt_path)
+    if type(summary) is not list or len(summary) != 12:
+        raise SystemExit("source routing requires all twelve independently replayed histories")
+    expected = []
+    for ep in packet["episodes"]:
+        cost = ep["cost"]
+        expected.append({"path_edges": cost["path_edges"], "variant": ep["variant"],
+            "seam_means": cost["seam_mean_operations"], "events": cost["all_events"],
+            "source_noise_gain": ep["conditioning"]["source_error_per_uniform_sample_error"],
+            "provenance_edges": sum(len({r["writer"] for r in e["reads"]}) for e in ep["events"])})
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("source routing independent execution projection mismatch")
+    if sum(r["events"] for r in summary) != 1449:
+        raise SystemExit("source routing complete event census changed")
+    for row in summary:
+        previous, gain = 1, 1
+        for _ in range(row["path_edges"]):
+            previous, gain = gain, 2 * gain + previous
+        if Fraction(row["source_noise_gain"]) != gain:
+            raise SystemExit("source routing exact conditioning recurrence mismatch")
+    declarations = ("invert_endpoint", "endpoint_difference", "invert_difference", "decode_encode",
+                    "encode_observations_injective", "encode_lengths", "twice_meanCost", "canonical_hop_decode")
+    source = "paper/tex_fragments/SOURCE_SEAM_PATH_TOMOGRAPHY.tex"
+    label = "thm:source-seam-path-tomography"
+    conditioning_label = "thm:source-seam-exactconditioning"
+    gate_error_label = "cor:source-seam-gateerror"
+    proof_text = (REPO/source).read_text(encoding="utf-8")
+    if any("\\label{" + item + "}" not in proof_text
+           for item in (label, conditioning_label, gate_error_label)):
+        raise SystemExit("source routing analytic theorem missing")
+    return {
+        "receipt": "code/source_routing/runtime/path_tomography_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "analytic_proof": {"source": source, "label": label},
+        "conditioning_analytic_proof": {"source": source, "label": conditioning_label},
+        "uniform_sample_error_gain": {
+            "norm": "infinity", "observation_matrix_norm": 1,
+            "recurrence": "g_0=1, g_1=3, g_d=2*g_(d-1)+g_(d-2)",
+            "closed_form": "((1+sqrt(2))^(d+1)+(1-sqrt(2))^(d+1))/2",
+            "initial_vector_error_bound": "g_d*epsilon",
+            "sharp_for_independent_bounded_sample_errors": True,
+            "all_depths_theorem_formalized": False,
+        },
+        "supplied_gate_sample_and_decoder_error_bound": {
+            "analytic_proof": {"source": source, "label": gate_error_label},
+            "mean_operations": "T=d*(d+1)/2",
+            "initial_vector_error_bound": "g_d*(T*eta+sigma)+delta",
+            "eta": "additive infinity-norm error per complete pair-mean map",
+            "sigma": "sample and protected-memory retention error",
+            "delta": "separately bounded decoding arithmetic error",
+            "initial_state": "actual starting port vector",
+            "sharp_gate_error_bound": False, "all_error_budgets_are_supplied": True,
+            "attained_physical_precision": False, "formalized_in_lean": False,
+        },
+        "lean_receipts": _lean_receipt("SourceSeamPathTomography",
+            declarations={"SourceSeamPathTomography": declarations}),
+        "lean_declarations": {"SourceSeamPathTomography": list(declarations)},
+        "mathematical_replay": True, "canonical_mean_only_destructive_readback": True,
+        "destination_decoder_reads_remote_baselines": False,
+        "all_transport_and_calibration_events_retained": True,
+        "protected_destination_memory_supplied": True,
+        "receipt_noise_bound_includes_dynamical_or_arithmetic_error": False,
+        "full_metric_neighbor_order_refinement": False,
+        "source_population_produced": False,
+        "physical_capacity_or_clock_identified": False, "observed_postdiction": False,
+        "baseline_costs": [ep["cost"] for ep in packet["episodes"] if ep["variant"] == "baseline"],
+        "scope_boundary": (
+            "Recursive suffix calibration uses only canonical pair means and destination-local "
+            "protected samples. It reconstructs original path values and the changed suffix, "
+            "with d(d+1)/2 means, d+1 samples and all 1449 events retained across twelve runs. "
+            "The finite W12 support, isolated schedule, preparations and protected memory are "
+            "declared. Local builder hashes identify the captured source bytes; the simulator "
+            "base checkout commit does not claim those files were committed there. Register "
+            "payload bits exclude metadata, temporary arithmetic and representation overhead. "
+            "The analytic all-depth infinity-norm condition number is g_d, with g_0=1, "
+            "g_1=3 and g_d=2*g_(d-1)+g_(d-2); finite inverse matrices independently verify "
+            "the recorded cases. Its sharp sample-error gain assumes exact dynamics and "
+            "arithmetic. A separate nonsharp analytic bound g_d*(T*eta+sigma)+delta "
+            "allows supplied per-gate, sample/retention and decoding errors, relative to the "
+            "actual initial ports. These all-depth conditioning/error statements are not "
+            "formalized in Lean and assert no attained hardware precision. No repeated "
+            "immutable-version read service, full metric-neighbour refinement, physical precision, "
+            "population production or count-clock attachment follows."),
     }
 
 
@@ -936,6 +1102,57 @@ def _cartan_scalar_execution_control(receipt_path: Path | None = None) -> dict[s
             "identities are separate from the 60-digit numerical replay of binary64 "
             "trajectories. The replay supplies no continuous-time error enclosure, "
             "q233 detector accuracy, global compact subgroup or quantum truncation."),
+    }
+
+
+def _cartan_scalar_continuous_readout_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "sm_abelian_readout", "verify_readout.py", "readout_receipt.json",
+        dependency="rational", receipt_path=receipt_path)
+    if (summary.get("verified") is not True or summary.get("mathematical_replay") is not True
+            or type(summary.get("parent_events")) is not int or summary["parent_events"] != 5678):
+        raise SystemExit("continuous Cartan readout requires full fresh parent replay")
+    maximum = max(Fraction(r["error_upper"]) for r in packet["checkpoints"])
+    expected = {"verified": True, "mathematical_replay": True,
+        "continuous_classical_detector_bound": True,
+        "current_lower": packet["current"]["lower_on_window"],
+        "neighbor_response_lower_at_end": packet["neighbor_response"]["magnitude_lower_at_end"],
+        "completed_checkpoints": 9, "max_checkpoint_intensity_error": str(maximum),
+        "parent_events": 5678, "physical_premise_discharged": False, "observed_postdiction": False}
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("continuous Cartan independent readout projection mismatch")
+    if not (0 < maximum < Fraction(6, 10**6)
+            and Fraction(packet["current"]["lower_on_window"]) > 0
+            and Fraction(packet["electric_feedback"]["lower_at_end"]) > 0):
+        raise SystemExit("continuous Cartan readout error or signal budget failed")
+    source = "paper/tex_fragments/CARTAN_SCALAR_READOUT.tex"
+    label = "thm:cartan-scalar-readout"
+    if "\\label{" + label + "}" not in (REPO/source).read_text(encoding="utf-8"):
+        raise SystemExit("continuous Cartan analytic theorem missing")
+    return {
+        "receipt": "code/sm_abelian_readout/readout_receipt.json", "receipt_pin": pin,
+        "independent_verifier_result": summary,
+        "immutable_execution_parent_sha256": packet["parent_sha256"],
+        "analytic_proof": {"source": source, "label": label},
+        "mathematical_replay": True, "continuous_classical_current_and_readout_bound": True,
+        "decoded_completed_checkpoint_errors": True,
+        "window": packet["window"], "resolved_window": packet["resolved_window"],
+        "current": packet["current"], "electric_feedback": packet["electric_feedback"],
+        "neighbor_response": packet["neighbor_response"],
+        "first_kick_is_exact_time_sample": False,
+        "whole_state_numerical_trajectory_enclosed": False,
+        "quantum_dynamics_or_born_outcomes": False, "full_fermion_generation_executed": False,
+        "source_action_population_or_physical_clock_selected": False, "observed_postdiction": False,
+        "scope_boundary": (
+            "Exact rational first-exit and acceleration-difference estimates bound the nonlinear "
+            "classical current, electric feedback and spatially distinct scalar-intensity response "
+            "for the same supplied 64-site Cartan action through time 1/100. Every initial/completed "
+            "readout is decoded from actual versioned writes and compared to the exact IVP; all "
+            "nine intensity errors are below 6e-6. The ideal gauge copy is handled by exact gauge "
+            "covariance, and binary64 initial values are distinguished from the exact preparation. "
+            "The intermediate half-kick is not a full time sample. The older execution receipt "
+            "retains its numerical-only scope. No full-state enclosure, physical clock, quantum "
+            "outcomes, full fermion evolution or laboratory postdiction is supplied."),
     }
 
 
@@ -1717,6 +1934,7 @@ def _forced_structure(
             "id": "hypercharge_spectrum",
             "declared_local_action_control": _local_sm_action_control(),
             "cartan_scalar_execution_control": _cartan_scalar_execution_control(),
+            "cartan_scalar_continuous_readout_control": _cartan_scalar_continuous_readout_control(),
             "statement": (
                 f"Inside the declared {component_count}-component "
                 "exterior-response algebra, an exhaustive scan of all "
@@ -1732,7 +1950,10 @@ def _forced_structure(
                 "checks that packet's custody; its separate full verifier checks the coefficients. "
                 "A kinetic-aligned local Cartan/Higgs reduction additionally supplies a q5 "
                 "charged execution with variational current and electric feedback, whose "
-                "ideal algebra and numerical operation replay are independently checked"
+                "ideal algebra and numerical operation replay are independently checked. "
+                "A separate exact consumer bounds that action's continuous classical current "
+                "and spatially distinct intensity response, with every completed-checkpoint "
+                "intensity error below 6e-6; this is no observed physical postdiction"
             ),
             "observed_counterpart": (
                 "Standard Model one-generation hypercharge assignment"
@@ -1743,7 +1964,9 @@ def _forced_structure(
                 "paper/tex_fragments/LOCAL_SM_JET_ACTION.tex", "Lean/Screen/LocalGaugeJetAction.lean",
                 "code/sm_local_action/local_action_receipt.json", "code/sm_local_action/verify_local_action.py",
                 "paper/tex_fragments/CARTAN_SCALAR_REDUCTION.tex", "Lean/Screen/CartanScalarReduction.lean",
-                "code/sm_abelian_reduction/abelian_receipt.json", "code/sm_abelian_reduction/verify_abelian.py"],
+                "code/sm_abelian_reduction/abelian_receipt.json", "code/sm_abelian_reduction/verify_abelian.py",
+                "paper/tex_fragments/CARTAN_SCALAR_READOUT.tex",
+                "code/sm_abelian_readout/readout_receipt.json", "code/sm_abelian_readout/verify_readout.py"],
             "subset_count": subsets_enumerated,
             "survivor_count": classification["survivor_count"],
             "survivor_dimension": matter["realized_package"]["dimension"],
@@ -2838,6 +3061,8 @@ def _forced_structure(
             "finite_scalar_quantum_probability_control": _source_scalar_quantum_control(),
             "reconstructed_clock_quantum_control": _source_scalar_clock_quantum_control(),
             "joint_scalar_time_refinement_control": _source_scalar_time_refinement_control(),
+            "regional_scalar_time_slice_control": _source_scalar_regional_control(),
+            "destination_local_seam_readback_control": _source_seam_routing_control(),
             "operational_cone_selection": {
                 "analytic_proof": "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
                 "hypotheses": "nonzero closed convex pointed cone; finite irreducible carrier rotations; one continuous operational boost direction; time orientation",
@@ -2869,6 +3094,15 @@ def _forced_structure(
             "artifact_refs": [
                 "Lean/Geometry/SourceRecordProtection.lean",
                 "Lean/Geometry/SourcePopulationQuadrature.lean",
+                "Lean/Geometry/GoldenSourceAssignment.lean",
+                "Lean/Geometry/SourceSeamPathTomography.lean",
+                "paper/tex_fragments/SOURCE_SEAM_PATH_TOMOGRAPHY.tex",
+                "code/source_routing/runtime/path_tomography_receipt.json",
+                "code/source_routing/verify_routing.py",
+                "Lean/QFT/ScalarRegionalTimeSlice.lean",
+                "paper/tex_fragments/SOURCE_SCALAR_REGIONAL_TIME_SLICE.tex",
+                "code/source_scalar_regional/regional_time_slice_receipt.json",
+                "code/source_scalar_regional/verify_regional_time_slice.py",
                 "paper/tex_fragments/SOURCE_RECORD_PROTECTION.tex",
                 "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex",
                 "code/source_population/runtime/population_receipt.json",
@@ -2953,7 +3187,9 @@ def _forced_structure(
                 "boost comparisons for two reference-supplied preparations. A separate "
                 "protected-address experiment exactly distinguishes immutable records from "
                 "moving live readbacks under pair means. Formal integrated cell estimates "
-                "derive quadrature convergence from vanishing assignment distances. On the "
+                "derive quadrature convergence from vanishing assignment distances. Fibonacci "
+                "arithmetic now constructs the actual golden permutation partition, its exact "
+                "cell masses and fixed-globally-Lipschitz integral convergence in Lean. On the "
                 "same prepared golden coordinates, a different local massive Dirichlet "
                 "scalar action has an analytic free-field detector limit and a finite full-Fock "
                 "compact detector response whose exact certified error is smaller than its signal. "
@@ -2963,7 +3199,15 @@ def _forced_structure(
                 "arrival. In a separate 64-site execution, graph-recovered configurations "
                 "determine positive durations for a supplied action family; conditional "
                 "timing intervals retain 15 of 21 resolved fixed-state quantum predictions. "
-                "Neither result identifies a physical clock or selects native field dynamics"
+                "A sharp kernel criterion also identifies the minimum exterior linear readouts "
+                "needed to reconstruct the original regional canonical algebra from two field "
+                "layers; eight exact regional controls retain every exterior coupling. Separate "
+                "canonical-mean path calibrations reconstruct remote initial data from destination "
+                "samples alone, with all 1449 events and their precision costs retained. "
+                "Their all-depth infinity-norm condition number obeys the exact recurrence "
+                "g_0=1, g_1=3, g_d=2*g_(d-1)+g_(d-2); a separate sufficient bound propagates "
+                "supplied gate, retained-sample and decoding errors. "
+                "These results do not identify a physical clock or select native field dynamics"
             ),
             "observed_counterpart": (
                 "finite causal-set-like order with an effective 1+3 Lorentz "
@@ -3056,7 +3300,18 @@ def _forced_structure(
                 "or a finite-run dimension fit. Accepted primitive repairs, "
                 "field-action agreement and laboratory clock attachment remain "
                 "separate; neither the analytic volume nor pair-count proof is "
-                "formalized by the finite Lean path module"
+                "formalized by the finite Lean path module. The later GoldenSourceAssignment "
+                "module formalizes the spatial golden partition and fixed globally Lipschitz "
+                "Bochner quadrature, not discontinuous causal indicators or pair integrals. "
+                "Regional Weyl reconstruction requires supplied access to all real Weyl "
+                "parameters and proves no operational quantum outcome or physical time slice. "
+                "Destination-local path tomography is destructive and assumes protected memory, "
+                "an isolated declared schedule and exact arithmetic; its sample-error norm does "
+                "not include imperfect dynamics or decoding. A separate analytic bound "
+                "g_d*(T*eta+sigma)+delta includes supplied gate, sample/retention and decoding "
+                "error budgets relative to actual starting ports, without claiming sharpness "
+                "for gate error or attained physical precision. Register-payload counts "
+                "exclude metadata and scratch memory"
             ),
             "paper_ref": (
                 "flagship and spacetime papers, source-derived causal order and "

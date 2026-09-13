@@ -1672,7 +1672,15 @@ def test_source_scalar_control_rejects_coherent_error_and_signal_forgery(tmp_pat
 def test_source_quadrature_control_preserves_exact_formal_scope():
     control = ledger._source_population_quadrature_control()
     assert control['formal_actual_cell_integral_and_quadrature_limit'] is True
-    assert control['formal_golden_partition_geometry_or_causal_pair_count_limit'] is False
+    assert 'formal_golden_partition_geometry_or_causal_pair_count_limit' not in control
+    assert control['formal_golden_partition_geometry'] is True
+    assert control['formal_causal_pair_count_limit'] is False
+    assert control['golden_cell_mass'] == 'L^3/q^3'
+    assert control['golden_assignment_bound'] == '2*sqrt(3)*L/q'
+    assert control['fixed_globally_lipschitz_detector_convergence'] is True
+    assert control['arbitrary_varying_detector_or_indicator_convergence'] is False
+    assert control['equal_cell_weights_are_lumped_action_weights'] is False
+    assert 'golden_quadrature_closed' in control['lean_declarations']['GoldenSourceAssignment']
     assert control['tent_integrand_lipschitz_coefficient'] == 'K'
     assert 'partition_quadrature_tendsto' in control['lean_declarations']['SourcePopulationQuadrature']
     assert control['observed_postdiction'] is False
@@ -1974,3 +1982,128 @@ def test_time_refinement_projection_requires_fresh_spatial_proof(monkeypatch):
              'observer_event_log_executed': False}, {}))
     with pytest.raises(SystemExit, match='full spatial proof'):
         ledger._source_scalar_time_refinement_control()
+
+
+def test_regional_frontier_control_retains_full_exterior_and_weyl_scope():
+    control = ledger._source_scalar_regional_control()
+    report = control['independent_verifier_result']
+    assert report['region_count'] == 8 and report['missing_row_counterexamples'] == 62
+    central = next(r for r in report['regions'] if r['region'] == 'central_cube')
+    assert central == {'region': 'central_cube', 'sites': 8,
+                       'coordinate_collar_sites': 24, 'minimal_linear_collar': 8}
+    assert control['all_real_weyl_parameters_are_supplied'] is True
+    for flag in ('classical_record_trace_provides_weyl_access', 'physical_regional_time_slice',
+                 'observed_quantum_outcomes', 'observed_postdiction',
+                 'weyl_algebra_and_rank_consequences_formalized'):
+        assert control[flag] is False
+
+
+def test_routing_frontier_control_retains_complete_cost_and_noise_scope():
+    control = ledger._source_seam_routing_control()
+    report = control['independent_verifier_result']
+    assert len(report) == 12 and sum(r['events'] for r in report) == 1449
+    last = control['baseline_costs'][-1]
+    assert (last['path_edges'], last['seam_mean_operations'], last['all_events'],
+            last['protected_sample_words'], last['max_rational_storage_bits']) == (24, 300, 351, 25, 111)
+    assert report[-1]['source_noise_gain'] == '1855077841'
+    gain = control['uniform_sample_error_gain']
+    assert gain['sharp_for_independent_bounded_sample_errors'] is True
+    assert gain['all_depths_theorem_formalized'] is False
+    assert control['conditioning_analytic_proof']['label'] == 'thm:source-seam-exactconditioning'
+    bound = control['supplied_gate_sample_and_decoder_error_bound']
+    assert bound['initial_vector_error_bound'] == 'g_d*(T*eta+sigma)+delta'
+    assert bound['all_error_budgets_are_supplied'] is True
+    assert bound['sharp_gate_error_bound'] is False
+    assert bound['attained_physical_precision'] is False
+    assert bound['formalized_in_lean'] is False
+    for row in report:
+        # The Pell recurrence is independently evaluated against the replayed
+        # source row of each finite observation inverse.
+        a, b = 1, 3
+        for _ in range(row['path_edges']):
+            a, b = b, 2 * b + a
+        assert ledger.Fraction(row['source_noise_gain']) == a
+    for flag in ('destination_decoder_reads_remote_baselines',
+                 'receipt_noise_bound_includes_dynamical_or_arithmetic_error',
+                 'full_metric_neighbor_order_refinement', 'observed_postdiction'):
+        assert control[flag] is False
+
+
+def test_charged_frontier_control_is_sibling_of_immutable_execution(result):
+    action = next(r for r in result['sections']['forced_structure'] if r['id'] == 'hypercharge_spectrum')
+    old = action['cartan_scalar_execution_control']
+    new = action['cartan_scalar_continuous_readout_control']
+    assert old['continuous_history_error_enclosure'] is False
+    assert new['continuous_classical_current_and_readout_bound'] is True
+    assert new['immutable_execution_parent_sha256'] == old['receipt_pin']['sha256']
+    assert new['independent_verifier_result']['completed_checkpoints'] == 9
+    assert ledger.Fraction(new['neighbor_response']['magnitude_lower_at_end']) == ledger.Fraction(9, 200000)
+    for flag in ('first_kick_is_exact_time_sample', 'whole_state_numerical_trajectory_enclosed',
+                 'quantum_dynamics_or_born_outcomes', 'observed_postdiction'):
+        assert new[flag] is False
+
+
+@pytest.mark.parametrize('control,relative,mutation', [
+    ('_source_scalar_regional_control', 'source_scalar_regional/regional_time_slice_receipt.json', 'collar'),
+    ('_source_seam_routing_control', 'source_routing/runtime/path_tomography_receipt.json', 'events'),
+    ('_cartan_scalar_continuous_readout_control', 'sm_abelian_readout/readout_receipt.json', 'error'),
+])
+def test_completion_frontier_receipt_forgery_is_replayed(control, relative, mutation, tmp_path):
+    packet = json.loads((ledger.CODE/relative).read_text())
+    if mutation == 'collar':
+        packet['regions'][3]['minimal_linear_collar_dimension'] = 0
+        packet['regions'][3]['no_collar_recovers_original_regional_algebra'] = True
+    elif mutation == 'events':
+        packet['episodes'][-1]['events'].pop()
+    else:
+        packet['checkpoints'][2]['error_upper'] = '0'
+    path = tmp_path/'forged.json'
+    path.write_text(json.dumps(packet))
+    with pytest.raises(SystemExit, match='structural certificate rejected'):
+        getattr(ledger, control)(path)
+
+
+@pytest.mark.parametrize('control,relative', [
+    ('_source_scalar_regional_control', 'source_scalar_regional/verify_regional_time_slice.py'),
+    ('_source_seam_routing_control', 'source_routing/verify_routing.py'),
+    ('_cartan_scalar_continuous_readout_control', 'sm_abelian_readout/verify_readout.py'),
+])
+def test_completion_frontier_uses_fresh_verifier_bytes(control, relative, monkeypatch):
+    path = ledger.CODE/relative
+    original = Path.read_bytes
+    def altered(p):
+        content = original(p)
+        if p == path:
+            content += b"\ndef verify(*args, **kwargs):\n    raise ValueError('fresh frontier byte control')\n"
+        return content
+    monkeypatch.setattr(Path, 'read_bytes', altered)
+    with pytest.raises(SystemExit, match='fresh frontier byte control'):
+        getattr(ledger, control)()
+
+
+def test_regional_frontier_refreshes_parent_import_and_restores_environment(monkeypatch):
+    sentinel = ledger.types.ModuleType('verify_source_scalar_execution')
+    monkeypatch.setitem(ledger.sys.modules, 'verify_source_scalar_execution', sentinel)
+    before = ledger.sys.path[:]
+    assert ledger._source_scalar_regional_control()['mathematical_replay'] is True
+    assert ledger.sys.modules['verify_source_scalar_execution'] is sentinel
+    assert ledger.sys.path == before
+
+
+def test_charged_frontier_rejects_omitted_parent_replay(monkeypatch):
+    monkeypatch.setattr(ledger, '_structural_packet', lambda *a, **k: (
+        {}, {'verified': True, 'mathematical_replay': False, 'parent_events': None}, {}))
+    with pytest.raises(SystemExit, match='full fresh parent replay'):
+        ledger._cartan_scalar_continuous_readout_control()
+
+
+@pytest.mark.parametrize('name', ['golden_floor', 'cell_mass', 'golden_quadrature',
+                                'golden_quadrature_tendsto', 'one_cell_width_counterexample'])
+def test_golden_frontier_requires_actual_lean_declaration(name, monkeypatch, tmp_path):
+    original = ledger.LEAN_RECEIPTS['GoldenSourceAssignment']
+    source = original.read_text().replace('theorem '+name+' ', 'theorem removed_'+name+' ')
+    path = tmp_path/'GoldenSourceAssignment.lean'
+    path.write_text(source)
+    monkeypatch.setitem(ledger.LEAN_RECEIPTS, 'GoldenSourceAssignment', path)
+    with pytest.raises(SystemExit, match='Lean declaration missing'):
+        ledger._source_population_quadrature_control()

@@ -232,7 +232,11 @@
   "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT",
   "OPH-COSMO-FLRW-RECORD-DENSITY",
   "OPH-BH-CROSSING-READ-AREA-LAW",
-  "OPH-COSMO-POSTDICTION-LEDGER"
+  "OPH-COSMO-POSTDICTION-LEDGER",
+  "OPH-GOLDEN-SOURCE-QUADRATURE",
+  "OPH-SCALAR-REGIONAL-COLLAR-RECONSTRUCTION",
+  "OPH-SEAM-PATH-TOMOGRAPHY",
+  "OPH-CARTAN-SCALAR-CONTINUOUS-READOUT"
  ],
  "edges": [
   {
@@ -2099,6 +2103,21 @@
    "from": "OPH-COSMO-FLRW-RECORD-DENSITY",
    "to": "OPH-COSMO-POSTDICTION-LEDGER",
    "role": "supplies the cosmological reading of the count clock under which the ledger's background rows are compared with a spatially flat expanding history; it supplies no measurement"
+  },
+  {
+   "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
+   "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "role": "supplies the actual golden equal-cell Lebesgue quadrature used by the separately analytic spacetime interval and pair-count specialization; no physical continuum premise is discharged"
+  },
+  {
+   "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+   "to": "OPH-SCALAR-REGIONAL-COLLAR-RECONSTRUCTION",
+   "role": "supplies the existing full q5 mass/stiffness canonical split and finite oscillator realization consumed by the regional certificate; its detector error estimates are not transferred"
+  },
+  {
+   "from": "OPH-SM-Q1-LOCAL-G6",
+   "to": "OPH-CARTAN-SCALAR-CONTINUOUS-READOUT",
+   "role": "supplies the local classical Cartan reduction, same finite Hamiltonian and versioned charged parent execution consumed by the continuous IVP/checkpoint comparison"
   }
  ]
 }

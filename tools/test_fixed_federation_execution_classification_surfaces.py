@@ -123,7 +123,8 @@ def test_manuscripts_and_indices_keep_nonclaims_and_order_sharpness() -> None:
     assert "within \\(n\\) attempts" in consensus
     assert "order-sharp" in consensus
     assert "bounded-waste" in flagship
-    assert "linear emitted-node horizon" in flagship
+    assert "Emission-order round robin finishes within its first $n$ attempts" in flagship
+    assert "$n(n+1)/2$, with an emitted family attaining $\\Theta(n^2)$" in flagship
     assert "FixedFederationExecution.lean" in guide
     assert "FixedFederationExecutionEndpoint.lean" in index
     assert "finite `PublicWorld`" in index
@@ -198,4 +199,7 @@ def test_fanout_control_is_wired_and_bounded() -> None:
     flagship = " ".join(
         _text("flagship/from_observer_consensus_to_standard_physics.tex").split()
     )
-    assert "explicit fanout chain attains" in flagship
+    assert (
+        "General well-formed circuits instead admit $2^n-1$ accepted steps, "
+        "attained by a fanout chain"
+    ) in flagship

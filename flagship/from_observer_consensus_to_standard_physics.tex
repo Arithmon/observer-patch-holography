@@ -1302,39 +1302,47 @@ read radius. Axes, boundary, protected addresses, action, quantization and
 model time are declared; physical clock and count-volume identification
 require their separate hypotheses.
 
-The input-independent compiler separates immutable inputs from its generated federation.
-Generated formula nodes form one federation independent of input, while the
-initial record carries immutable input ports.  Every genuine canonical node
-repair lowers a dependency-order rank, every attempt run stabilizes, and
-pathwise weak fairness makes the stable record a consensus with the correct
-output.  Same-input normal endpoints agree on that output through the
-observation-determined normal-form interface.  The historical weak patch-frame
-relation is not strengthened: even its one-member execution can remain fairly
-stuttering forever.
+\begin{theorem}[Sharp regional access cost]
+In the finite Schr\"odinger representation with $\hbar>0$, take a scalar action
+with positive diagonal mass $M$, symmetric stiffness $K$ and a nonzero split step $\tau$. Write
+$q^+=q+\tau M^{-1}p-\tau^2M^{-1}Kq/2$. For a site region $R$ with
+complement $E$, set $B=(M^{-1}K)_{R,E}$. Suppose all real-parameter Weyl
+families of $q_R,q_R^+$ and exterior fields $Cq_E$ are available.
+Their generated von Neumann algebra contains the original local canonical
+algebra exactly when
+\[
+ \ker C\subseteq\ker B.
+\]
+The minimum number of independent exterior linear fields is
+$\operatorname{rank}B$.
+\end{theorem}
+\begin{proof}
+Rescaling $q_R^+$ and removing its local $q_R$ terms yields
+$p_R-(\tau/2)M_RBq_E$. Recovering $p_R$ is equivalent to
+$\operatorname{row}B\subseteq\operatorname{row}C$. If a canonical direction
+lies outside the admitted real span, a Weyl operator in that span's symplectic
+annihilator commutes with the admitted algebra but not that direction's
+full Weyl family. Taking products or weak limits cannot supply it.
+\end{proof}
+Without exterior access, the two field layers generate a common unitary
+shear of the original regional net, with isotony and disjoint commutativity;
+they recover the original site algebra precisely when $B=0$.
+These are linear access counts, not implemented routing costs. Classical
+records do not grant the assumed Weyl access or a physical region assignment
+\cite{ophEinstein}.
 
-The execution classification sharpens this mathematical layer.  Pathwise weak
-fairness on one fixed attempt run is equivalent to eventual stable consensus;
-the reverse is vacuous on the stable consensus tail and gives no recurrence.
-Member and register-site recurrence coincide because generated output
-registers are unique, but recurrence is strictly stronger than tail fairness.
-A state-blind round-robin function is recurrent and bounded-waste and reaches
-the correct output.  Its first \(n\) attempts are exactly the compiler's
-emission-order sweep, the order in which it emits nodes, so it reaches stable
-consensus and the correct output in a linear emitted-node horizon.  The actual compiler's single-consumer structure bounds
-all genuine accepted paths by \(n(n+1)/2\), while an emitted nested-NAND family
-has a consensus path satisfying \(8m+1=n^2+8n\).  This is an order-sharp
-\(\Theta(n^2)\) result in the same node-count metric, not equality of finite
-constants.  Well-formedness alone admits fewer than \(2^n\)
-accepted steps and an explicit fanout chain attains \(2^n-1\), so the
-single-consumer structure is load-bearing for the quadratic bound.  Weak fairness alone has no uniform attempt horizon; bounded-waste
-\(q\) gives the conditional horizon \((q+1)n(n+1)/2\), with round robin
-inhabiting \(q=n-1\); the direct one-cycle theorem is the sharper bound for
-that scheduler.  A neutral ranked-attempt theorem is reused by both this
-fixed route and the adaptive route through distinct adapters and actual Tower
-receivers.  None of these mathematical attempts is a physical computer,
-scheduler source, clock, rate, energy, bandwidth, fee, hardware resource,
-full raw-state uniqueness, or finite \texttt{PublicWorld}
-\cite{ophnormalforms,ophconsensus}.
+The input-independent compiler produces a fixed federation with immutable
+input ports. Genuine node repairs decrease a dependency rank; pathwise weak
+fairness gives stable consensus and the correct output, common to all
+same-input normal endpoints. Emission-order round robin finishes within its
+first $n$ attempts. The compiler's single-consumer structure bounds every
+accepted path by $n(n+1)/2$, with an emitted family attaining
+$\Theta(n^2)$. General well-formed circuits instead admit $2^n-1$ accepted
+steps, attained by a fanout chain. Weak fairness gives no uniform attempt
+horizon; bounded waste $q$ gives $(q+1)n(n+1)/2$. These statements concern
+canonical node repairs: the weak patch-frame relation can stutter fairly
+forever. No physical scheduler, clock, energy or hardware cost follows from
+these operation counts \cite{ophnormalforms,ophconsensus}.
 
 \subsection{Approximate outputs, refinement, and cost}
 

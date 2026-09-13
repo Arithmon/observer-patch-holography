@@ -255,6 +255,9 @@ to its assigned cell, but every coordinate displacement from a point of
 that cell is at most $2L/q$. This proves
 \eqref{eq:golden-source-assignment}, the covering property and the
 Lipschitz estimate by integrating the displacement bound over each cell.
+These spatial arithmetic, partition and quadrature statements have Lean
+proofs in \texttt{GoldenSourceAssignment}; the time-product and null-boundary
+arguments below are analytic.
 Taking products with time cells $[j\Delta_q,(j+1)\Delta_q]$ proves
 convergence of the normalized event measure: for a Lipschitz test function
 on an aligned time window of length $T$, the error is at most

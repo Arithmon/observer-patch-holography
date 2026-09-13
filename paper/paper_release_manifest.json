@@ -2,16 +2,16 @@
   "book": {
     "built_for_release_id": "r2042",
     "pdf_path": "book/reverse-engineering-reality-book.pdf",
-    "sha256": "955cef9a524746a5675174cd64278da84f22c9ded9deac7483dea5d48266fd46",
-    "size_bytes": 1346031
+    "sha256": "85738aded9e1909037e23f4f39c6bf1cfd9f0e6d937201fd71da423c689ba44e",
+    "size_bytes": 1346277
   },
   "extra_papers": {},
   "generated_at": "2026-09-10T00:00:00Z",
   "papers": {
     "deriving_standard_model_gauge_structure_from_observer_overlap_consistency": {
       "pdf_path": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf",
-      "sha256": "672356a7491a7b679bab9126969a04e1efb62b395b6e398c89d4e930756036af",
-      "size_bytes": 645551
+      "sha256": "9ae203f045edbfceef890e4323bfbfe3719ddf5a574d76e8d7955d0c4ce2d694",
+      "size_bytes": 652952
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
@@ -20,8 +20,8 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "7352ce45c3fc0dc50db305cf24178a9b830532cab36809ba869980f623cb88af",
-      "size_bytes": 464344
+      "sha256": "ba3b1c3cc4a807987af3fb9c77170b57d58c8264ff80ccc8d9183e7158395de3",
+      "size_bytes": 465445
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
@@ -40,8 +40,8 @@
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "c17939fd8942cf6340610b26c990503aa4833845f2c242625926d907e6d1e594",
-      "size_bytes": 800735
+      "sha256": "1ee4fb579ab8f8240cfd744d2fe89a2c2f177d8039fd1f72ddfab00003d3d826",
+      "size_bytes": 817472
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",

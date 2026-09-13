@@ -152,7 +152,7 @@ The prologue promised a distinction between reconstructed structure and the phys
 
 The proposed face-to-family identification supplies three copies of the matter grammar. The local action and its gauge identities are checked at that declared multiplicity; they do not establish its physical realization.
 
-One charged scalar component also has a consistent classical reduction of this action, with both diagonal gauge fields aligned by their kinetic weights. A local execution on 64 prepared spatial sites records a phase disturbance, the resulting current and electric feedback. A gauge transformation of the same preparation leaves the invariant readings unchanged. This calculation uses specified field laws and model time. It supplies a finite dynamical example, without identifying its charged field with a measured particle or computing a quantum history.
+One charged scalar component also has a consistent classical reduction of this action, with both diagonal gauge fields aligned by their kinetic weights. A local execution on 64 prepared spatial sites records a phase disturbance, the resulting current and electric feedback. A gauge transformation of the same preparation leaves the invariant readings unchanged. Bounds on the exact continuous evolution also resolve a current and a response at a neighboring detector; at the completed observation times, the certified intensity error is smaller than the final response. This calculation uses specified field laws and model time. It supplies a finite dynamical example, without identifying its charged field with a measured particle or computing a quantum history.
 
 ## What a compression costs
 

@@ -42,6 +42,18 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
+        "Verify regional scalar reconstruction and minimal exterior Weyl access",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_regional/test_regional_time_slice.py"],
+    ),
+    (
+        "Replay destination-local seam routing, full custody and noise bounds",
+        [sys.executable, "-m", "pytest", "-q", "code/source_routing/test_routing.py"],
+    ),
+    (
+        "Verify charged local readout bounds against authenticated records",
+        [sys.executable, "-m", "pytest", "-q", "code/sm_abelian_readout/test_readout.py"],
+    ),
+    (
         "Replay authenticated golden scalar execution and its full-mode time error",
         [sys.executable, "-m", "pytest", "-q", "code/source_scalar_execution/test_source_scalar_execution.py"],
     ),

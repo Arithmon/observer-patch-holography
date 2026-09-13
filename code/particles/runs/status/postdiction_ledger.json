@@ -557,8 +557,70 @@
           "paper/tex_fragments/CARTAN_SCALAR_REDUCTION.tex",
           "Lean/Screen/CartanScalarReduction.lean",
           "code/sm_abelian_reduction/abelian_receipt.json",
-          "code/sm_abelian_reduction/verify_abelian.py"
+          "code/sm_abelian_reduction/verify_abelian.py",
+          "paper/tex_fragments/CARTAN_SCALAR_READOUT.tex",
+          "code/sm_abelian_readout/readout_receipt.json",
+          "code/sm_abelian_readout/verify_readout.py"
         ],
+        "cartan_scalar_continuous_readout_control": {
+          "analytic_proof": {
+            "label": "thm:cartan-scalar-readout",
+            "source": "paper/tex_fragments/CARTAN_SCALAR_READOUT.tex"
+          },
+          "continuous_classical_current_and_readout_bound": true,
+          "current": {
+            "deviation_at_end": "222433/250000000",
+            "initial": "2/125",
+            "lower_on_window": "3777567/250000000"
+          },
+          "decoded_completed_checkpoint_errors": true,
+          "electric_feedback": {
+            "error_at_end": "84853/15000000000",
+            "linear_value_at_end": "1/6250",
+            "lower_at_end": "2315147/15000000000"
+          },
+          "first_kick_is_exact_time_sample": false,
+          "full_fermion_generation_executed": false,
+          "immutable_execution_parent_sha256": "ad6f7baddb69ee3e2ed2e514e0148f3db49466cd2e0dbb6c911de78d318a382a",
+          "independent_verifier_result": {
+            "completed_checkpoints": 9,
+            "continuous_classical_detector_bound": true,
+            "current_lower": "3777567/250000000",
+            "mathematical_replay": true,
+            "max_checkpoint_intensity_error": "2662525292475193185721199/500000000000000000000000000000",
+            "neighbor_response_lower_at_end": "9/200000",
+            "observed_postdiction": false,
+            "parent_events": 5678,
+            "physical_premise_discharged": false,
+            "verified": true
+          },
+          "mathematical_replay": true,
+          "neighbor_response": {
+            "magnitude_lower_at_end": "9/200000",
+            "magnitude_lower_coefficient": "9/20",
+            "magnitude_lower_on_resolved_window": "9/800000",
+            "meaning": "I_intervention(t)-I_baseline(t) <= -(9/20)*t^2 for 0<t<=1/100",
+            "sign": "negative"
+          },
+          "observed_postdiction": false,
+          "quantum_dynamics_or_born_outcomes": false,
+          "receipt": "code/sm_abelian_readout/readout_receipt.json",
+          "receipt_pin": {
+            "bytes": 4137,
+            "sha256": "684af7ca65fc6218426a7496223ae18591c9ec846c168033874409341a23d898"
+          },
+          "resolved_window": [
+            "1/200",
+            "1/100"
+          ],
+          "scope_boundary": "Exact rational first-exit and acceleration-difference estimates bound the nonlinear classical current, electric feedback and spatially distinct scalar-intensity response for the same supplied 64-site Cartan action through time 1/100. Every initial/completed readout is decoded from actual versioned writes and compared to the exact IVP; all nine intensity errors are below 6e-6. The ideal gauge copy is handled by exact gauge covariance, and binary64 initial values are distinguished from the exact preparation. The intermediate half-kick is not a full time sample. The older execution receipt retains its numerical-only scope. No full-state enclosure, physical clock, quantum outcomes, full fermion evolution or laboratory postdiction is supplied.",
+          "source_action_population_or_physical_clock_selected": false,
+          "whole_state_numerical_trajectory_enclosed": false,
+          "window": [
+            "0",
+            "1/100"
+          ]
+        },
         "cartan_scalar_execution_control": {
           "analytic_proof": "paper/tex_fragments/CARTAN_SCALAR_REDUCTION.tex",
           "continuous_history_error_enclosure": false,
@@ -659,7 +721,7 @@
           "1/3": 3,
           "1/6": 6
         },
-        "statement": "Inside the declared 10-component exterior-response algebra, an exhaustive scan of all 1024 subsets selects exactly one unordered charge-conjugate pair of nonempty chiral anomaly-free rank-15 projectors. Primitive determinant balance fixes the block charges up to conjugation, and the selected representative has multiset {Q: 1/6 x6, u_c: -2/3 x3, d_c: 1/3 x3, L: -1/2 x2, e_c: 1 x1}. A separate declared flat classical action assembles gauge, Grassmann-Weyl, Higgs and symbolic Yukawa terms with local Ward and variational-current controls. This ledger checks that packet's custody; its separate full verifier checks the coefficients. A kinetic-aligned local Cartan/Higgs reduction additionally supplies a q5 charged execution with variational current and electric feedback, whose ideal algebra and numerical operation replay are independently checked",
+        "statement": "Inside the declared 10-component exterior-response algebra, an exhaustive scan of all 1024 subsets selects exactly one unordered charge-conjugate pair of nonempty chiral anomaly-free rank-15 projectors. Primitive determinant balance fixes the block charges up to conjugation, and the selected representative has multiset {Q: 1/6 x6, u_c: -2/3 x3, d_c: 1/3 x3, L: -1/2 x2, e_c: 1 x1}. A separate declared flat classical action assembles gauge, Grassmann-Weyl, Higgs and symbolic Yukawa terms with local Ward and variational-current controls. This ledger checks that packet's custody; its separate full verifier checks the coefficients. A kinetic-aligned local Cartan/Higgs reduction additionally supplies a q5 charged execution with variational current and electric feedback, whose ideal algebra and numerical operation replay are independently checked. A separate exact consumer bounds that action's continuous classical current and spatially distinct intensity response, with every completed-checkpoint intensity error below 6e-6; this is no observed physical postdiction",
         "subset_count": 1024,
         "survivor_count": 2,
         "survivor_dimension": 15
@@ -1135,6 +1197,15 @@
         "artifact_refs": [
           "Lean/Geometry/SourceRecordProtection.lean",
           "Lean/Geometry/SourcePopulationQuadrature.lean",
+          "Lean/Geometry/GoldenSourceAssignment.lean",
+          "Lean/Geometry/SourceSeamPathTomography.lean",
+          "paper/tex_fragments/SOURCE_SEAM_PATH_TOMOGRAPHY.tex",
+          "code/source_routing/runtime/path_tomography_receipt.json",
+          "code/source_routing/verify_routing.py",
+          "Lean/QFT/ScalarRegionalTimeSlice.lean",
+          "paper/tex_fragments/SOURCE_SCALAR_REGIONAL_TIME_SLICE.tex",
+          "code/source_scalar_regional/regional_time_slice_receipt.json",
+          "code/source_scalar_regional/verify_regional_time_slice.py",
           "paper/tex_fragments/SOURCE_RECORD_PROTECTION.tex",
           "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex",
           "code/source_population/runtime/population_receipt.json",
@@ -1376,6 +1447,248 @@
           "source": "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex",
           "volume_convention": "dt d^3x"
         },
+        "destination_local_seam_readback_control": {
+          "all_transport_and_calibration_events_retained": true,
+          "analytic_proof": {
+            "label": "thm:source-seam-path-tomography",
+            "source": "paper/tex_fragments/SOURCE_SEAM_PATH_TOMOGRAPHY.tex"
+          },
+          "baseline_costs": [
+            {
+              "active_seam_means": 1,
+              "all_events": 6,
+              "all_register_reads": 6,
+              "all_register_write_records": 7,
+              "calibration_seam_operations": 0,
+              "decoded_output_words": 2,
+              "final_transfer_seam_operations": 1,
+              "initial_port_writes": 2,
+              "local_readbacks": 2,
+              "max_rational_storage_bits": 17,
+              "path_edges": 1,
+              "protected_sample_payload_bits": 29,
+              "protected_sample_words": 2,
+              "seam_mean_operations": 1,
+              "seam_reads": 2,
+              "seam_writes": 2,
+              "written_rational_payload_bits": 119
+            },
+            {
+              "active_seam_means": 10,
+              "all_events": 21,
+              "all_register_reads": 30,
+              "all_register_write_records": 31,
+              "calibration_seam_operations": 6,
+              "decoded_output_words": 5,
+              "final_transfer_seam_operations": 4,
+              "initial_port_writes": 5,
+              "local_readbacks": 5,
+              "max_rational_storage_bits": 30,
+              "path_edges": 4,
+              "protected_sample_payload_bits": 113,
+              "protected_sample_words": 5,
+              "seam_mean_operations": 10,
+              "seam_reads": 20,
+              "seam_writes": 20,
+              "written_rational_payload_bits": 737
+            },
+            {
+              "active_seam_means": 78,
+              "all_events": 105,
+              "all_register_reads": 182,
+              "all_register_write_records": 183,
+              "calibration_seam_operations": 66,
+              "decoded_output_words": 13,
+              "final_transfer_seam_operations": 12,
+              "initial_port_writes": 13,
+              "local_readbacks": 13,
+              "max_rational_storage_bits": 62,
+              "path_edges": 12,
+              "protected_sample_payload_bits": 501,
+              "protected_sample_words": 13,
+              "seam_mean_operations": 78,
+              "seam_reads": 156,
+              "seam_writes": 156,
+              "written_rational_payload_bits": 7113
+            },
+            {
+              "active_seam_means": 300,
+              "all_events": 351,
+              "all_register_reads": 650,
+              "all_register_write_records": 651,
+              "calibration_seam_operations": 276,
+              "decoded_output_words": 25,
+              "final_transfer_seam_operations": 24,
+              "initial_port_writes": 25,
+              "local_readbacks": 25,
+              "max_rational_storage_bits": 111,
+              "path_edges": 24,
+              "protected_sample_payload_bits": 1567,
+              "protected_sample_words": 25,
+              "seam_mean_operations": 300,
+              "seam_reads": 600,
+              "seam_writes": 600,
+              "written_rational_payload_bits": 40429
+            }
+          ],
+          "canonical_mean_only_destructive_readback": true,
+          "conditioning_analytic_proof": {
+            "label": "thm:source-seam-exactconditioning",
+            "source": "paper/tex_fragments/SOURCE_SEAM_PATH_TOMOGRAPHY.tex"
+          },
+          "destination_decoder_reads_remote_baselines": false,
+          "full_metric_neighbor_order_refinement": false,
+          "independent_verifier_result": [
+            {
+              "events": 6,
+              "path_edges": 1,
+              "provenance_edges": 6,
+              "seam_means": 1,
+              "source_noise_gain": "3",
+              "variant": "baseline"
+            },
+            {
+              "events": 6,
+              "path_edges": 1,
+              "provenance_edges": 6,
+              "seam_means": 1,
+              "source_noise_gain": "3",
+              "variant": "source_plus_one"
+            },
+            {
+              "events": 6,
+              "path_edges": 1,
+              "provenance_edges": 6,
+              "seam_means": 1,
+              "source_noise_gain": "3",
+              "variant": "nonsource_minus_one"
+            },
+            {
+              "events": 21,
+              "path_edges": 4,
+              "provenance_edges": 30,
+              "seam_means": 10,
+              "source_noise_gain": "41",
+              "variant": "baseline"
+            },
+            {
+              "events": 21,
+              "path_edges": 4,
+              "provenance_edges": 30,
+              "seam_means": 10,
+              "source_noise_gain": "41",
+              "variant": "source_plus_one"
+            },
+            {
+              "events": 21,
+              "path_edges": 4,
+              "provenance_edges": 30,
+              "seam_means": 10,
+              "source_noise_gain": "41",
+              "variant": "nonsource_minus_one"
+            },
+            {
+              "events": 105,
+              "path_edges": 12,
+              "provenance_edges": 182,
+              "seam_means": 78,
+              "source_noise_gain": "47321",
+              "variant": "baseline"
+            },
+            {
+              "events": 105,
+              "path_edges": 12,
+              "provenance_edges": 182,
+              "seam_means": 78,
+              "source_noise_gain": "47321",
+              "variant": "source_plus_one"
+            },
+            {
+              "events": 105,
+              "path_edges": 12,
+              "provenance_edges": 182,
+              "seam_means": 78,
+              "source_noise_gain": "47321",
+              "variant": "nonsource_minus_one"
+            },
+            {
+              "events": 351,
+              "path_edges": 24,
+              "provenance_edges": 650,
+              "seam_means": 300,
+              "source_noise_gain": "1855077841",
+              "variant": "baseline"
+            },
+            {
+              "events": 351,
+              "path_edges": 24,
+              "provenance_edges": 650,
+              "seam_means": 300,
+              "source_noise_gain": "1855077841",
+              "variant": "source_plus_one"
+            },
+            {
+              "events": 351,
+              "path_edges": 24,
+              "provenance_edges": 650,
+              "seam_means": 300,
+              "source_noise_gain": "1855077841",
+              "variant": "nonsource_minus_one"
+            }
+          ],
+          "lean_declarations": {
+            "SourceSeamPathTomography": [
+              "invert_endpoint",
+              "endpoint_difference",
+              "invert_difference",
+              "decode_encode",
+              "encode_observations_injective",
+              "encode_lengths",
+              "twice_meanCost",
+              "canonical_hop_decode"
+            ]
+          },
+          "lean_receipts": [
+            "Lean/Geometry/SourceSeamPathTomography.lean"
+          ],
+          "mathematical_replay": true,
+          "observed_postdiction": false,
+          "physical_capacity_or_clock_identified": false,
+          "protected_destination_memory_supplied": true,
+          "receipt": "code/source_routing/runtime/path_tomography_receipt.json",
+          "receipt_noise_bound_includes_dynamical_or_arithmetic_error": false,
+          "receipt_pin": {
+            "bytes": 795123,
+            "sha256": "82af29a8c44cd97a7559681de5fae25f2afed8c5833c76f5a057ad50a913abd4"
+          },
+          "scope_boundary": "Recursive suffix calibration uses only canonical pair means and destination-local protected samples. It reconstructs original path values and the changed suffix, with d(d+1)/2 means, d+1 samples and all 1449 events retained across twelve runs. The finite W12 support, isolated schedule, preparations and protected memory are declared. Local builder hashes identify the captured source bytes; the simulator base checkout commit does not claim those files were committed there. Register payload bits exclude metadata, temporary arithmetic and representation overhead. The analytic all-depth infinity-norm condition number is g_d, with g_0=1, g_1=3 and g_d=2*g_(d-1)+g_(d-2); finite inverse matrices independently verify the recorded cases. Its sharp sample-error gain assumes exact dynamics and arithmetic. A separate nonsharp analytic bound g_d*(T*eta+sigma)+delta allows supplied per-gate, sample/retention and decoding errors, relative to the actual initial ports. These all-depth conditioning/error statements are not formalized in Lean and assert no attained hardware precision. No repeated immutable-version read service, full metric-neighbour refinement, physical precision, population production or count-clock attachment follows.",
+          "source_population_produced": false,
+          "supplied_gate_sample_and_decoder_error_bound": {
+            "all_error_budgets_are_supplied": true,
+            "analytic_proof": {
+              "label": "cor:source-seam-gateerror",
+              "source": "paper/tex_fragments/SOURCE_SEAM_PATH_TOMOGRAPHY.tex"
+            },
+            "attained_physical_precision": false,
+            "delta": "separately bounded decoding arithmetic error",
+            "eta": "additive infinity-norm error per complete pair-mean map",
+            "formalized_in_lean": false,
+            "initial_state": "actual starting port vector",
+            "initial_vector_error_bound": "g_d*(T*eta+sigma)+delta",
+            "mean_operations": "T=d*(d+1)/2",
+            "sharp_gate_error_bound": false,
+            "sigma": "sample and protected-memory retention error"
+          },
+          "uniform_sample_error_gain": {
+            "all_depths_theorem_formalized": false,
+            "closed_form": "((1+sqrt(2))^(d+1)+(1-sqrt(2))^(d+1))/2",
+            "initial_vector_error_bound": "g_d*epsilon",
+            "norm": "infinity",
+            "observation_matrix_norm": 1,
+            "recurrence": "g_0=1, g_1=3, g_d=2*g_(d-1)+g_(d-2)",
+            "sharp_for_independent_bounded_sample_errors": true
+          }
+        },
         "finite_scalar_quantum_probability_control": {
           "analytic_proof": "paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex",
           "field_history_joined_to_causal_count_clock": false,
@@ -1447,7 +1760,7 @@
           "source_action_population_or_physical_clock_selected": false,
           "spatial_continuum_error_certified": false
         },
-        "hypothesis_boundary": "source height is a canonical ordinal, not a physical clock. The generic cone-inclusion theorem supplies neither its positive time scale nor a spatial readback valued in the rank-three quotient or an edge-speed bound; two-way order--cone faithfulness is the additional converse field of a faithful placement. Event-frame transports are supplied, and the standard-frame constructor is a trivial gauge choice rather than a derivation of physical observer frames. The Boolean diamond is an exact mathematical non-chain control, not empirical evidence of manifoldlikeness. No physical event/link identification, Poisson sprinkling, calibrated density or count--volume law, independent dimension estimator, topology, manifoldlike refinement, uniqueness theorem, continuum convergence, smooth metric, curvature, Einstein equation, observable, decision rule, or prediction is constructed by this finite source theorem. The separate growing-menu control supplies the frame, local move law, mesh, model layer time and event-cell measure. Its cone and interval-volume limits are analytic conditional results, not a source-selected physical manifold, Poisson sprinkling or calibrated density. The finite Lean bounds and replay do not formalize the Riemann-volume argument. The separate metric scalar limit supplies its coarsening, clipped Voronoi masses, radial-kernel force law, inertia and canonical quantization. Its analytic estimate assumes smooth references with an interaction-radius boundary buffer and h/epsilon^2 tending to zero. Five Lean lemmas check finite energy algebra, not the analytic PDE limit or physical source selection. The golden population, cube, all-neighbor read law, model tick and distinguished-event counting are declared. Its raw-count limit is not a native physical calibration, Poisson sprinkling or a finite-run dimension fit. Accepted primitive repairs, field-action agreement and laboratory clock attachment remain separate; neither the analytic volume nor pair-count proof is formalized by the finite Lean path module",
+        "hypothesis_boundary": "source height is a canonical ordinal, not a physical clock. The generic cone-inclusion theorem supplies neither its positive time scale nor a spatial readback valued in the rank-three quotient or an edge-speed bound; two-way order--cone faithfulness is the additional converse field of a faithful placement. Event-frame transports are supplied, and the standard-frame constructor is a trivial gauge choice rather than a derivation of physical observer frames. The Boolean diamond is an exact mathematical non-chain control, not empirical evidence of manifoldlikeness. No physical event/link identification, Poisson sprinkling, calibrated density or count--volume law, independent dimension estimator, topology, manifoldlike refinement, uniqueness theorem, continuum convergence, smooth metric, curvature, Einstein equation, observable, decision rule, or prediction is constructed by this finite source theorem. The separate growing-menu control supplies the frame, local move law, mesh, model layer time and event-cell measure. Its cone and interval-volume limits are analytic conditional results, not a source-selected physical manifold, Poisson sprinkling or calibrated density. The finite Lean bounds and replay do not formalize the Riemann-volume argument. The separate metric scalar limit supplies its coarsening, clipped Voronoi masses, radial-kernel force law, inertia and canonical quantization. Its analytic estimate assumes smooth references with an interaction-radius boundary buffer and h/epsilon^2 tending to zero. Five Lean lemmas check finite energy algebra, not the analytic PDE limit or physical source selection. The golden population, cube, all-neighbor read law, model tick and distinguished-event counting are declared. Its raw-count limit is not a native physical calibration, Poisson sprinkling or a finite-run dimension fit. Accepted primitive repairs, field-action agreement and laboratory clock attachment remain separate; neither the analytic volume nor pair-count proof is formalized by the finite Lean path module. The later GoldenSourceAssignment module formalizes the spatial golden partition and fixed globally Lipschitz Bochner quadrature, not discontinuous causal indicators or pair integrals. Regional Weyl reconstruction requires supplied access to all real Weyl parameters and proves no operational quantum outcome or physical time slice. Destination-local path tomography is destructive and assumes protected memory, an isolated declared schedule and exact arithmetic; its sample-error norm does not include imperfect dynamics or decoding. A separate analytic bound g_d*(T*eta+sigma)+delta includes supplied gate, sample/retention and decoding error budgets relative to actual starting ports, without claiming sharpness for gate error or attained physical precision. Register-payload counts exclude metadata and scratch memory",
         "id": "source_derived_finite_one_three_causal_carrier",
         "joint_scalar_time_refinement_control": {
           "all_modes_and_original_vacuum_covariance_retained": true,
@@ -1695,15 +2008,132 @@
           "source_action_population_or_physical_clock_selected": false,
           "spatial_continuum_error_certified": false
         },
+        "regional_scalar_time_slice_control": {
+          "all_real_weyl_parameters_are_supplied": true,
+          "analytic_proof": {
+            "label": "thm:source-scalar-regional-collar",
+            "source": "paper/tex_fragments/SOURCE_SCALAR_REGIONAL_TIME_SLICE.tex"
+          },
+          "classical_record_trace_provides_weyl_access": false,
+          "exact_minimal_exterior_readout_ranks": true,
+          "independent_verifier_result": {
+            "missing_row_counterexamples": 62,
+            "region_count": 8,
+            "regions": [
+              {
+                "coordinate_collar_sites": 0,
+                "minimal_linear_collar": 0,
+                "region": "empty",
+                "sites": 0
+              },
+              {
+                "coordinate_collar_sites": 3,
+                "minimal_linear_collar": 1,
+                "region": "corner",
+                "sites": 1
+              },
+              {
+                "coordinate_collar_sites": 6,
+                "minimal_linear_collar": 1,
+                "region": "interior_singleton",
+                "sites": 1
+              },
+              {
+                "coordinate_collar_sites": 24,
+                "minimal_linear_collar": 8,
+                "region": "central_cube",
+                "sites": 8
+              },
+              {
+                "coordinate_collar_sites": 16,
+                "minimal_linear_collar": 16,
+                "region": "left_half",
+                "sites": 32
+              },
+              {
+                "coordinate_collar_sites": 16,
+                "minimal_linear_collar": 4,
+                "region": "interior_line",
+                "sites": 4
+              },
+              {
+                "coordinate_collar_sites": 32,
+                "minimal_linear_collar": 32,
+                "region": "checkerboard",
+                "sites": 32
+              },
+              {
+                "coordinate_collar_sites": 0,
+                "minimal_linear_collar": 0,
+                "region": "whole",
+                "sites": 64
+              }
+            ],
+            "verified": true
+          },
+          "kernel_reconstruction_criterion_formalized": true,
+          "lean_declarations": {
+            "ScalarRegionalTimeSlice": [
+              "reconstruct_velocity",
+              "hidden_exterior_perturbation",
+              "determines_velocity_iff_kernel",
+              "force_readout_suffices",
+              "no_collar_iff_zero_coupling"
+            ]
+          },
+          "lean_receipts": [
+            "Lean/QFT/ScalarRegionalTimeSlice.lean"
+          ],
+          "mathematical_replay": true,
+          "observed_postdiction": false,
+          "observed_quantum_outcomes": false,
+          "physical_regional_time_slice": false,
+          "receipt": "code/source_scalar_regional/regional_time_slice_receipt.json",
+          "receipt_pin": {
+            "bytes": 487976,
+            "sha256": "95e0d3d8b1d8afbdf672d28fd605a2207670f516fee0a6869521aaa9c9d0dd93"
+          },
+          "scope_boundary": "For the complete supplied finite scalar action, original regional canonical Weyl access follows from two field layers and exterior linear readouts C exactly when ker C is contained in ker A_R,E. The sharp minimum is rank A_R,E. All eight regions and 62 missing-readout controls are independently reconstructed. The two-layer fields have nonzero cross-time canonical brackets and define a common-unitary sheared net; they need not generate the original site algebra without exterior access. Rank/Weyl consequences are analytic; Lean proves the linear reconstruction criterion. Arbitrary real Weyl parameters, regions, action, quantization and physical attachment remain supplied. No classical record is promoted to an operational quantum outcome or physical Cauchy interface.",
+          "source_action_population_or_physical_clock_selected": false,
+          "weyl_algebra_and_rank_consequences_formalized": false
+        },
         "source_population_quadrature": {
           "analytic_radial_quadrature_bound": "60*K*H*(epsilon+H)^3/epsilon^5",
+          "arbitrary_varying_detector_or_indicator_convergence": false,
+          "equal_cell_weights_are_lumped_action_weights": false,
+          "fixed_globally_lipschitz_detector_convergence": true,
           "formal_actual_cell_integral_and_quadrature_limit": true,
-          "formal_golden_partition_geometry_or_causal_pair_count_limit": false,
+          "formal_causal_pair_count_limit": false,
+          "formal_golden_partition_geometry": true,
+          "golden_assignment_bound": "2*sqrt(3)*L/q",
+          "golden_cell_mass": "L^3/q^3",
+          "golden_lipschitz_integral_error": "L^3*K*(2*sqrt(3)*L/q)",
           "labels": [
             "prop:source-population-cell-transport",
             "prop:source-population-local-kernel"
           ],
           "lean_declarations": {
+            "GoldenSourceAssignment": [
+              "residue_bijective",
+              "fibonacci_error",
+              "golden_floor",
+              "golden_orbit_eq",
+              "golden_grid_error",
+              "orbit_injective",
+              "tensor_assignment",
+              "site_card",
+              "axisCell_disjoint",
+              "axisCell_cover",
+              "cell_disjoint",
+              "cell_cover",
+              "cell_mass",
+              "golden_quadrature",
+              "golden_quadrature_tendsto",
+              "cube_ae_closed",
+              "golden_quadrature_closed",
+              "sample_outside_assigned_cell",
+              "one_cell_width_counterexample"
+            ],
             "SourcePopulationQuadrature": [
               "cell_local_first_moment",
               "partition_uniform_quadrature",
@@ -1714,14 +2144,15 @@
             ]
           },
           "lean_receipts": [
-            "Lean/Geometry/SourcePopulationQuadrature.lean"
+            "Lean/Geometry/SourcePopulationQuadrature.lean",
+            "Lean/Geometry/GoldenSourceAssignment.lean"
           ],
           "observed_postdiction": false,
-          "scope_boundary": "Finite measured cells, their actual masses, representatives and vanishing assignment distances are hypotheses. Golden geometry and causal pair-count limits remain separate analytic arguments. Dual-cell and equal-volume weights are distinct finite measures; no physical population law follows.",
+          "scope_boundary": "The general quadrature theorem takes measured cells, masses and assignments as hypotheses. The new golden specialization constructs the actual fractional-part population, permuted half-open partition, exact Lebesgue cell masses and 2*sqrt(3)*L/q assignment bound from Fibonacci arithmetic. A sample need not lie in its assigned cell. The Bochner integral estimate and limit fix one globally Lipschitz detector and its constant. Causal interval indicators, pair-count limits and arbitrary varying detectors remain separate. Dual-cell action and equal-volume weights are distinct finite measures; no physical population law follows.",
           "source": "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex",
           "tent_integrand_lipschitz_coefficient": "K"
         },
-        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations. A separate protected-address experiment exactly distinguishes immutable records from moving live readbacks under pair means. Formal integrated cell estimates derive quadrature convergence from vanishing assignment distances. On the same prepared golden coordinates, a different local massive Dirichlet scalar action has an analytic free-field detector limit and a finite full-Fock compact detector response whose exact certified error is smaller than its signal. For that action, stable local time refinement converges to the same detector limit; nearest-update readout preserves a resolved finite comparison, and the preparation-induced response vanishes asymptotically before continuum arrival. In a separate 64-site execution, graph-recovered configurations determine positive durations for a supplied action family; conditional timing intervals retain 15 of 21 resolved fixed-state quantum predictions. Neither result identifies a physical clock or selects native field dynamics",
+        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations. A separate protected-address experiment exactly distinguishes immutable records from moving live readbacks under pair means. Formal integrated cell estimates derive quadrature convergence from vanishing assignment distances. Fibonacci arithmetic now constructs the actual golden permutation partition, its exact cell masses and fixed-globally-Lipschitz integral convergence in Lean. On the same prepared golden coordinates, a different local massive Dirichlet scalar action has an analytic free-field detector limit and a finite full-Fock compact detector response whose exact certified error is smaller than its signal. For that action, stable local time refinement converges to the same detector limit; nearest-update readout preserves a resolved finite comparison, and the preparation-induced response vanishes asymptotically before continuum arrival. In a separate 64-site execution, graph-recovered configurations determine positive durations for a supplied action family; conditional timing intervals retain 15 of 21 resolved fixed-state quantum predictions. A sharp kernel criterion also identifies the minimum exterior linear readouts needed to reconstruct the original regional canonical algebra from two field layers; eight exact regional controls retain every exterior coupling. Separate canonical-mean path calibrations reconstruct remote initial data from destination samples alone, with all 1449 events and their precision costs retained. Their all-depth infinity-norm condition number obeys the exact recurrence g_0=1, g_1=3, g_d=2*g_(d-1)+g_(d-2); a separate sufficient bound propagates supplied gate, retained-sample and decoding errors. These results do not identify a physical clock or select native field dynamics",
         "supplied_law_refinement_control": {
           "analytic_controlled_causal_limit": true,
           "analytic_interval_volume_limit": true,
