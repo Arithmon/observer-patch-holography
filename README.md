@@ -2,7 +2,7 @@
 
 > Reality is the stable public world reconstructed by finite, self-reading observers that compare their overlaps and repair disagreement.
 
-[Book](https://oph-book.floatingpragma.io/) · [Technical paper](flagship/from_observer_consensus_to_standard_physics.pdf) · [Textbooks](https://learn.floatingpragma.io/) · [Simulation](https://simulation.floatingpragma.io/) · [Notebook](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
+[Book](https://oph-book.floatingpragma.io/) · [Technical paper](https://philpapers.org/rec/MUEFOC) · [Textbooks](https://learn.floatingpragma.io/) · [Simulation](https://simulation.floatingpragma.io/) · [Notebook](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
 
 Observer Patch Holography (OPH) builds a theory-of-everything research program
 around one thesis: **observers are primary, and objective reality is
@@ -37,7 +37,7 @@ simulations.
   background. Forty chapters carry the argument from why the problem is hard
   to where the constants come from, with the mathematics left to the
   textbooks and the papers.
-- **The technical paper.** [*From Observer Consensus to Standard Physics*](flagship/from_observer_consensus_to_standard_physics.pdf)
+- **The technical paper.** [*From Observer Consensus to Standard Physics*](https://philpapers.org/rec/MUEFOC)
   gives the primary technical account of the observer-first reconstruction.
 - **The textbooks.** The [OPH textbooks](https://learn.floatingpragma.io/)
   teach the theory the long way, for readers with a physics or computer
@@ -111,7 +111,7 @@ calculations and reproducible simulations:
 The linked papers record each step's precise status. Together, these results
 define a testable path from three observer axioms toward a complete theory.
 The full technical route is the
-[flagship paper](flagship/from_observer_consensus_to_standard_physics.pdf).
+[flagship paper](https://philpapers.org/rec/MUEFOC).
 
 The rest of this README is the architecture behind those results.
 
@@ -328,7 +328,7 @@ them.
 
 | If you want... | Start here |
 | --- | --- |
-| The flagship introduction to OPH | [From Observer Consensus to Standard Physics](flagship/from_observer_consensus_to_standard_physics.pdf) |
+| The flagship introduction to OPH | [From Observer Consensus to Standard Physics](https://philpapers.org/rec/MUEFOC) |
 | The conditional spacetime and Einstein chain | [Recovering Observer Spacetime and Einstein Dynamics](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) |
 | Both Standard Model gauge routes | [Deriving Standard Model Gauge Structure](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) |
 | The finite consensus mechanism | [Reality as a Consensus Protocol](paper/reality_as_consensus_protocol.pdf) |
@@ -369,7 +369,7 @@ cited here.
 ## Explore OPH
 
 - [The book](https://oph-book.floatingpragma.io) (general readers)
-- [The technical paper](flagship/from_observer_consensus_to_standard_physics.pdf)
+- [The technical paper](https://philpapers.org/rec/MUEFOC)
 - [Core paper index](paper/)
 - [Textbooks](https://learn.floatingpragma.io) (physics and computer science)
 - [Interactive simulation](https://simulation.floatingpragma.io)

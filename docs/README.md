@@ -7,7 +7,7 @@ Scientific results live in the papers, Lean library, executable code, and
 evidence artifacts; this directory is not a parallel result-publication layer.
 
 If you are new to OPH, the strongest starting material lives outside this
-directory. The [technical paper](../flagship/from_observer_consensus_to_standard_physics.pdf)
+directory. The [technical paper](https://philpapers.org/rec/MUEFOC)
 states the primary technical account. The [OPH textbooks](https://learn.floatingpragma.io/) work through
 the basic derivations with the math taught along the way. The
 [interactive simulation](https://simulation.floatingpragma.io/) renders real
@@ -15,7 +15,7 @@ run data so you can watch the universe assemble itself.
 
 ## Three Reading Routes
 
-- **First encounter:** the [technical paper](../flagship/from_observer_consensus_to_standard_physics.pdf),
+- **First encounter:** the [technical paper](https://philpapers.org/rec/MUEFOC),
   [textbooks](https://learn.floatingpragma.io/), and the
   [simulation](https://simulation.floatingpragma.io/) above, then the
   repository [README](../README.md) from the three axioms through the twist.

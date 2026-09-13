@@ -2,7 +2,7 @@
 
 > La réalité est le monde public stable reconstruit par des observateurs finis et auto-lecteurs qui comparent leurs recouvrements et réparent leurs désaccords.
 
-[Read in English](README.md) · [Livre](https://oph-book.floatingpragma.io/) · [Article phare](flagship/from_observer_consensus_to_standard_physics.pdf) · [Manuels](https://learn.floatingpragma.io/) · [Simulation](https://simulation.floatingpragma.io/) · [Carnet](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
+[Read in English](README.md) · [Livre](https://oph-book.floatingpragma.io/) · [Article phare](https://philpapers.org/rec/MUEFOC) · [Manuels](https://learn.floatingpragma.io/) · [Simulation](https://simulation.floatingpragma.io/) · [Carnet](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
 
 L’Holographie des parcelles d’observateur, ou OPH, construit un programme de
 recherche pour une théorie du tout autour d’une thèse : **les observateurs
@@ -40,7 +40,7 @@ ou reproduire les simulations.
   en physique. Quarante chapitres conduisent l’argument depuis la difficulté du
   problème jusqu’à l’origine des constantes, en laissant les mathématiques aux
   manuels et aux articles.
-- **L’article phare.** [*From Observer Consensus to Standard Physics*](flagship/from_observer_consensus_to_standard_physics.pdf)
+- **L’article phare.** [*From Observer Consensus to Standard Physics*](https://philpapers.org/rec/MUEFOC)
   donne le compte rendu technique principal de la reconstruction fondée sur les observateurs.
 - **Les manuels.** Les [manuels OPH](https://learn.floatingpragma.io/)
   enseignent la théorie par le chemin long, pour des lecteurs ayant une
@@ -124,7 +124,7 @@ simulations reproductibles :
 Les articles liés donnent le statut précis de chaque étape. Ensemble, ces
 résultats tracent une voie testable des trois axiomes d’observateurs vers une
 théorie physique complète. La voie technique complète est
-l’[article phare](flagship/from_observer_consensus_to_standard_physics.pdf).
+l’[article phare](https://philpapers.org/rec/MUEFOC).
 
 Le reste de ce README présente l’architecture derrière ces résultats.
 
@@ -306,7 +306,7 @@ résultats finis et structurels exacts constituent la partie la plus solide.
 | --- | --- |
 | La chaîne conditionnelle vers l’espace-temps et Einstein | [Espace-temps des observateurs et dynamique d’Einstein](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) |
 | Les deux routes de jauge du Modèle standard | [Structure de jauge du Modèle standard](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) |
-| La synthèse complète | [From Observer Consensus to Standard Physics](flagship/from_observer_consensus_to_standard_physics.pdf) |
+| La synthèse complète | [From Observer Consensus to Standard Physics](https://philpapers.org/rec/MUEFOC) |
 | Le mécanisme de consensus fini | [Reality as a Consensus Protocol](paper/reality_as_consensus_protocol.pdf) |
 | La construction des particules | [Deriving the Particle Zoo](paper/deriving_the_particle_zoo_from_observer_consistency.pdf) |
 | L’identité exacte de Koide dans la chambre positive et l’équilibre tracial fini | [The Positive-Chamber Koide Identity for Icosahedral Face Circulants](extra/koide_identity_from_positive_c3_face_circulants.pdf) |
@@ -391,7 +391,7 @@ briseraient.
 ## Explorer OPH
 
 - [Le livre](https://oph-book.floatingpragma.io) (grand public)
-- [L’article phare](flagship/from_observer_consensus_to_standard_physics.pdf)
+- [L’article phare](https://philpapers.org/rec/MUEFOC)
 - [Index des articles](paper/)
 - [Manuels](https://learn.floatingpragma.io) (physique et informatique)
 - [Simulation interactive](https://simulation.floatingpragma.io)
