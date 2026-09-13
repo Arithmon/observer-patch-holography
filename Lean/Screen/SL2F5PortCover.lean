@@ -84,8 +84,7 @@ theorem slToPort_ker : slToPort.ker = Subgroup.center SL2F5 := by
 
 /-- The cover kernel has exactly two elements. -/
 theorem slToPort_ker_card : Fintype.card slToPort.ker = 2 := by
-  rw [slToPort_ker]
-  exact center_card_two
+  simpa [slToPort_ker] using center_card_two
 
 /-- The nontrivial scalar center element lies over the identity port
 rotation. -/
