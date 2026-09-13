@@ -8,7 +8,7 @@ MODULE_DIR = Path(__file__).resolve().parents[1]
 if str(MODULE_DIR) not in sys.path:
     sys.path.insert(0, str(MODULE_DIR))
 
-import sl2f5_port_spin_bridge_certificate_v2 as bridge  # noqa: E402
+import sl2f5_port_spin_bridge_certificate as bridge  # noqa: E402
 
 
 class SL2F5PortSpinBridgeTests(unittest.TestCase):
