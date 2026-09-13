@@ -137,6 +137,8 @@ LEAN_RECEIPTS = {
     "SourceRecordProtection": REPO / "Lean" / "Geometry" / "SourceRecordProtection.lean",
     "SourcePopulationQuadrature": REPO / "Lean" / "Geometry" / "SourcePopulationQuadrature.lean",
     "GoldenSourceAssignment": REPO / "Lean" / "Geometry" / "GoldenSourceAssignment.lean",
+    "GoldenSourceCountLimit": REPO / "Lean" / "Geometry" / "GoldenSourceCountLimit.lean",
+    "SourceFeedbackTransport": REPO / "Lean" / "Geometry" / "SourceFeedbackTransport.lean",
     "SourceSeamPathTomography": REPO / "Lean" / "Geometry" / "SourceSeamPathTomography.lean",
     "ScalarRegionalTimeSlice": REPO / "Lean" / "QFT" / "ScalarRegionalTimeSlice.lean",
     "MetricKernelEnergy": REPO / "Lean" / "Geometry" / "MetricKernelEnergy.lean",
@@ -675,15 +677,23 @@ def _source_population_quadrature_control() -> dict[str, Any]:
               "cell_mass", "golden_quadrature", "golden_quadrature_tendsto",
               "cube_ae_closed", "golden_quadrature_closed", "sample_outside_assigned_cell",
               "one_cell_width_counterexample")
+    counts = ("partition_count_tendsto", "golden_count_tendsto", "timeCell_cover",
+              "timeCell_disjoint", "eventCell_assignment", "event_weighted_count_tendsto",
+              "sum_eventCell_mass", "event_uniform_weight_error", "event_count_tendsto",
+              "sourceDelta_pos", "sourceDelta_tendsto", "source_event_count_tendsto",
+              "goldenPosition_injective", "eventPosition_injective", "goldenCount_univ",
+              "eventCount_univ", "aligned_endpoint_layer_control")
     text = (REPO/source).read_text(encoding="utf-8")
     if any("\\label{" + label + "}" not in text for label in labels):
         raise SystemExit("source population quadrature theorem missing")
     return {
         "source": source, "labels": labels,
         "lean_receipts": _lean_receipt("SourcePopulationQuadrature", "GoldenSourceAssignment",
-            declarations={"SourcePopulationQuadrature": declarations, "GoldenSourceAssignment": golden}),
+            "GoldenSourceCountLimit", declarations={"SourcePopulationQuadrature": declarations,
+                "GoldenSourceAssignment": golden, "GoldenSourceCountLimit": counts}),
         "lean_declarations": {"SourcePopulationQuadrature": list(declarations),
-                              "GoldenSourceAssignment": list(golden)},
+                              "GoldenSourceAssignment": list(golden),
+                              "GoldenSourceCountLimit": list(counts)},
         "formal_actual_cell_integral_and_quadrature_limit": True,
         "formal_golden_partition_geometry": True,
         "formal_causal_pair_count_limit": False,
@@ -691,7 +701,16 @@ def _source_population_quadrature_control() -> dict[str, Any]:
         "golden_cell_mass": "L^3/q^3",
         "golden_lipschitz_integral_error": "L^3*K*(2*sqrt(3)*L/q)",
         "fixed_globally_lipschitz_detector_convergence": True,
-        "arbitrary_varying_detector_or_indicator_convergence": False,
+        "fixed_measurable_null_frontier_indicator_convergence": True,
+        "formal_actual_source_time_grid_count_limit": True,
+        "source_time_step": "Delta_q=L/(c*sqrt(q))",
+        "source_event_layers": "j=0,...,floor(T/Delta_q), including aligned endpoint",
+        "normalized_source_event_count": "Delta_q*(L^3/q^3)*cardinality",
+        "last_temporal_cell_error_upper": "L^3*Delta_q",
+        "volume_convention": "dt d^3x restricted to [0,T) x [0,L)^3",
+        "arbitrary_varying_detector_convergence": False,
+        "moving_causal_interval_limit_formalized": False,
+        "actual_causal_cone_null_frontier_identified_in_lean": False,
         "equal_cell_weights_are_lumped_action_weights": False,
         "tent_integrand_lipschitz_coefficient": "K",
         "analytic_radial_quadrature_bound": "60*K*H*(epsilon+H)^3/epsilon^5",
@@ -702,9 +721,116 @@ def _source_population_quadrature_control() -> dict[str, Any]:
             "population, permuted half-open partition, exact Lebesgue cell masses and "
             "2*sqrt(3)*L/q assignment bound from Fibonacci arithmetic. A sample need not lie "
             "in its assigned cell. The Bochner integral estimate and limit fix one globally "
-            "Lipschitz detector and its constant. Causal interval indicators, pair-count limits "
-            "and arbitrary varying detectors remain separate. Dual-cell action and equal-volume "
+            "Lipschitz detector and its constant. Actual golden spatial and time-product counts "
+            "now converge on any fixed measurable set with null frontier by dominated convergence, "
+            "without an assumed count or weak-measure limit. Inclusive full-layer weights differ "
+            "from the clipped final time cell by at most L^3*Delta_q. Actual causal-cone null "
+            "frontiers, moving generated intervals, pair-count limits and arbitrary varying "
+            "detectors remain separate. Dual-cell action and equal-volume "
             "weights are distinct finite measures; no physical population law follows."),
+    }
+
+
+def _source_feedback_transport_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_feedback_transport", "verify_transport.py", "transport_receipt.json",
+        dependency_paths={"verify_routing": CODE / "source_routing" / "verify_routing.py"},
+        receipt_path=receipt_path)
+    expected = {"episodes": 16, "events": 4928, "hops": 740}
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("feedback transport complete replay projection mismatch")
+    declarations = ("receive_error_identity", "exact_receive", "unit_signal_gain",
+                    "route_error_identity", "route_error_bound", "bounded_hop_error",
+                    "route_uniform_bound", "sharp_uniform_error", "repeated_exact_hops",
+                    "semantic_projection_sound", "semantic_projection_complete",
+                    "exact_induced_logical_order")
+    source = "paper/tex_fragments/SOURCE_FEEDBACK_TRANSPORT.tex"
+    labels = ["thm:source-feedback-transport", "thm:source-feedback-error"]
+    text = (REPO/source).read_text(encoding="utf-8")
+    if any("\\label{" + label + "}" not in text for label in labels):
+        raise SystemExit("feedback transport analytic theorem missing")
+    return {
+        "receipt": "code/source_feedback_transport/transport_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "analytic_proof": {"source": source, "labels": labels},
+        "lean_receipts": _lean_receipt("SourceFeedbackTransport",
+            declarations={"SourceFeedbackTransport": declarations}),
+        "lean_declarations": {"SourceFeedbackTransport": list(declarations)},
+        "mathematical_replay": True,
+        "semantic_read_from_order_checked_for_all_logical_pairs": True,
+        "all_primitive_events_and_immutable_versions_retained": True,
+        "reusable_classical_transport": True,
+        "copy_reset_factor_two_readout_and_schedule_supplied": True,
+        "source_selected_feedback_or_quantum_operations": False,
+        "full_q13_q21_routed_histories_executed": False,
+        "physical_causal_order_capacity_or_clock_identified": False,
+        "observed_postdiction": False,
+        "noise_contract": packet["noise_contract"],
+        "baseline_costs": [ep["costs"] for ep in packet["episodes"] if ep["variant"] == "baseline"],
+        "compiler_census_not_executed": packet["compiler_targets_not_executed"],
+        "scope_boundary": (
+            "Immutable local record export, protected zero reset and factor-two local readout "
+            "are supplied classical operations. Fixed non-interleaved six-event hops restore "
+            "scratch ports and preserve old versions under the declared interventions. Exact "
+            "writer ancestry gives the induced semantic read-from order, not physical resource, "
+            "scheduler or custody-chain order. The sharp E0+d*(E+Z+2*M+2*R+D) error bound "
+            "assumes separately bounded additive errors; the exact receipt measures no hardware "
+            "noise. The q13/q21 census is an unicast compiler cost calculation, not execution "
+            "of those full routed histories or a universal multicast cost bound. No native "
+            "feedback selection, physical address channel, quantum copying or clock follows."),
+    }
+
+
+def _source_scalar_sequential_instrument_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_scalar_instruments", "verify_sequential_instrument.py",
+        "sequential_instrument_receipt.json", receipt_path=receipt_path)
+    expected = {"verified": True, **packet["summary"], "mathematical_replay": True,
+                "parent_events_replayed": 5888, "physical_outcomes": False,
+                "branch_conditioned_clock": False}
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("sequential instrument requires full fresh parent replay")
+    if (summary["readout_times"] != 21 or summary["prior_pair_brackets"] != 210
+            or len(summary["uniformly_resolved_steps"]) != 15):
+        raise SystemExit("sequential instrument full readout census changed")
+    source = "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex"
+    text = (REPO/source).read_text(encoding="utf-8")
+    labels = ["thm:source-scalar-sequential-instrument", "prop:source-scalar-sequential-comparison"]
+    if any("\\label{" + label + "}" not in text for label in labels):
+        raise SystemExit("sequential instrument analytic theorem missing")
+    return {
+        "receipt": "code/source_scalar_instruments/sequential_instrument_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "analytic_proof": {"source": source, "labels": labels},
+        "mathematical_replay": True,
+        "same_action_vacuum_preparation_and_recovered_clock_intervals": True,
+        "reported_probabilities_are_unconditional_sequential_marginals": True,
+        "reference_has_same_repeated_instrument": True,
+        "backaction_and_all_prior_readout_pairs_included": True,
+        "regional_ghz_gadget_on_scalar_action_graph": True,
+        "regional_gadget": packet["regional_gadget"],
+        "continuous_comparison_rows": packet["rows"],
+        "energy_injected_per_readout_Qphi": packet["energy_injected_per_readout_Qphi"],
+        "total_readout_injected_work_Qphi": packet["total_readout_injected_work_Qphi"],
+        "instrument_and_preparation_laws_supplied": True,
+        "sampled_quantum_outcome_histories": False,
+        "branch_conditioned_clock_reconstructed": False,
+        "pointer_action_graph_identified_with_W12_seams": False,
+        "finite_duration_or_noisy_quantum_gates_certified": False,
+        "instrument_theorems_formalized_in_lean": False,
+        "physical_clock_or_observed_outcomes": False,
+        "observed_postdiction": False,
+        "scope_boundary": (
+            "A supplied centered binary quantum instrument defines a joint classical record "
+            "algebra. All 21 unconditional marginals include backaction from earlier readouts "
+            "and are compared with continuous evolution under the same repeated instrument. "
+            "The exact commutator-cosine factors and inherited clock windows preserve 15 "
+            "resolved slots. No sampled outcomes, independent-trial assumption or branch-clock "
+            "reconstruction is made. A 31-edge GHZ pointer construction uses the scalar action "
+            "graph; it is not W12 routing. Controlled kicks, pointer preparation/reset, "
+            "Born readout, vacuum preparation and clock calibration are supplied. Ideal "
+            "instantaneous gate counts do not enclose duration or noise, select quantum "
+            "operations from OPH, or establish physical outcomes or an interacting continuum."),
     }
 
 
@@ -3063,6 +3189,8 @@ def _forced_structure(
             "joint_scalar_time_refinement_control": _source_scalar_time_refinement_control(),
             "regional_scalar_time_slice_control": _source_scalar_regional_control(),
             "destination_local_seam_readback_control": _source_seam_routing_control(),
+            "reusable_local_feedback_transport_control": _source_feedback_transport_control(),
+            "sequential_scalar_quantum_instrument_control": _source_scalar_sequential_instrument_control(),
             "operational_cone_selection": {
                 "analytic_proof": "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
                 "hypotheses": "nonzero closed convex pointed cone; finite irreducible carrier rotations; one continuous operational boost direction; time orientation",
@@ -3095,6 +3223,14 @@ def _forced_structure(
                 "Lean/Geometry/SourceRecordProtection.lean",
                 "Lean/Geometry/SourcePopulationQuadrature.lean",
                 "Lean/Geometry/GoldenSourceAssignment.lean",
+                "Lean/Geometry/GoldenSourceCountLimit.lean",
+                "Lean/Geometry/SourceFeedbackTransport.lean",
+                "paper/tex_fragments/SOURCE_FEEDBACK_TRANSPORT.tex",
+                "code/source_feedback_transport/transport_receipt.json",
+                "code/source_feedback_transport/verify_transport.py",
+                "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex",
+                "code/source_scalar_instruments/sequential_instrument_receipt.json",
+                "code/source_scalar_instruments/verify_sequential_instrument.py",
                 "Lean/Geometry/SourceSeamPathTomography.lean",
                 "paper/tex_fragments/SOURCE_SEAM_PATH_TOMOGRAPHY.tex",
                 "code/source_routing/runtime/path_tomography_receipt.json",
@@ -3189,7 +3325,9 @@ def _forced_structure(
                 "moving live readbacks under pair means. Formal integrated cell estimates "
                 "derive quadrature convergence from vanishing assignment distances. Fibonacci "
                 "arithmetic now constructs the actual golden permutation partition, its exact "
-                "cell masses and fixed-globally-Lipschitz integral convergence in Lean. On the "
+                "cell masses and fixed-globally-Lipschitz integral convergence in Lean. Actual "
+                "spatial and declared-time-grid counts also converge on fixed measurable sets "
+                "with null frontier; the inclusive final-layer error is at most L^3*Delta_q. On the "
                 "same prepared golden coordinates, a different local massive Dirichlet "
                 "scalar action has an analytic free-field detector limit and a finite full-Fock "
                 "compact detector response whose exact certified error is smaller than its signal. "
@@ -3207,6 +3345,12 @@ def _forced_structure(
                 "Their all-depth infinity-norm condition number obeys the exact recurrence "
                 "g_0=1, g_1=3, g_d=2*g_(d-1)+g_(d-2); a separate sufficient bound propagates "
                 "supplied gate, retained-sample and decoding errors. "
+                "With supplied local copy/reset and factor-two readback, reusable version "
+                "transport instead has unit per-hop signal gain and a sharp linear additive "
+                "error bound; 4928 events retain exact semantic order and old-version reads. "
+                "A separate centered quantum instrument includes all earlier-readout backaction "
+                "in 21 unconditional marginals and retains 15 resolved comparisons against "
+                "continuous evolution under that same repeated instrument. "
                 "These results do not identify a physical clock or select native field dynamics"
             ),
             "observed_counterpart": (
@@ -3302,7 +3446,9 @@ def _forced_structure(
                 "separate; neither the analytic volume nor pair-count proof is "
                 "formalized by the finite Lean path module. The later GoldenSourceAssignment "
                 "module formalizes the spatial golden partition and fixed globally Lipschitz "
-                "Bochner quadrature, not discontinuous causal indicators or pair integrals. "
+                "Bochner quadrature. GoldenSourceCountLimit derives actual fixed continuity-set "
+                "counts for its declared time grid; specific causal null frontiers, moving "
+                "generated intervals and strict-pair integrals remain analytic. "
                 "Regional Weyl reconstruction requires supplied access to all real Weyl "
                 "parameters and proves no operational quantum outcome or physical time slice. "
                 "Destination-local path tomography is destructive and assumes protected memory, "
@@ -3311,7 +3457,13 @@ def _forced_structure(
                 "g_d*(T*eta+sigma)+delta includes supplied gate, sample/retention and decoding "
                 "error budgets relative to actual starting ports, without claiming sharpness "
                 "for gate error or attained physical precision. Register-payload counts "
-                "exclude metadata and scratch memory"
+                "exclude metadata and scratch memory. Reusable transport adds supplied local "
+                "classical export/reset/readout and fixed non-interleaved hops; semantic "
+                "read-from projection is not physical resource order. The repeated quantum "
+                "instrument supplies controlled gates, vacuum preparation, Born readout and "
+                "inherited clock intervals. Its marginals are unconditional, not independent "
+                "samples or branch-conditioned clocks, and its ideal scalar-action-graph "
+                "pointer gadget supplies no W12 quantum routing or gate-duration/noise bound"
             ),
             "paper_ref": (
                 "flagship and spacetime papers, source-derived causal order and "

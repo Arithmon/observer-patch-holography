@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 392,
+  "surface_count": 394,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -250,6 +250,11 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/SOURCE_FEEDBACK_TRANSPORT.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
@@ -301,6 +306,11 @@
     },
     {
       "path": "paper/tex_fragments/SOURCE_SCALAR_REGIONAL_TIME_SLICE.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },

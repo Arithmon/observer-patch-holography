@@ -1198,6 +1198,14 @@
           "Lean/Geometry/SourceRecordProtection.lean",
           "Lean/Geometry/SourcePopulationQuadrature.lean",
           "Lean/Geometry/GoldenSourceAssignment.lean",
+          "Lean/Geometry/GoldenSourceCountLimit.lean",
+          "Lean/Geometry/SourceFeedbackTransport.lean",
+          "paper/tex_fragments/SOURCE_FEEDBACK_TRANSPORT.tex",
+          "code/source_feedback_transport/transport_receipt.json",
+          "code/source_feedback_transport/verify_transport.py",
+          "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex",
+          "code/source_scalar_instruments/sequential_instrument_receipt.json",
+          "code/source_scalar_instruments/verify_sequential_instrument.py",
           "Lean/Geometry/SourceSeamPathTomography.lean",
           "paper/tex_fragments/SOURCE_SEAM_PATH_TOMOGRAPHY.tex",
           "code/source_routing/runtime/path_tomography_receipt.json",
@@ -1760,7 +1768,7 @@
           "source_action_population_or_physical_clock_selected": false,
           "spatial_continuum_error_certified": false
         },
-        "hypothesis_boundary": "source height is a canonical ordinal, not a physical clock. The generic cone-inclusion theorem supplies neither its positive time scale nor a spatial readback valued in the rank-three quotient or an edge-speed bound; two-way order--cone faithfulness is the additional converse field of a faithful placement. Event-frame transports are supplied, and the standard-frame constructor is a trivial gauge choice rather than a derivation of physical observer frames. The Boolean diamond is an exact mathematical non-chain control, not empirical evidence of manifoldlikeness. No physical event/link identification, Poisson sprinkling, calibrated density or count--volume law, independent dimension estimator, topology, manifoldlike refinement, uniqueness theorem, continuum convergence, smooth metric, curvature, Einstein equation, observable, decision rule, or prediction is constructed by this finite source theorem. The separate growing-menu control supplies the frame, local move law, mesh, model layer time and event-cell measure. Its cone and interval-volume limits are analytic conditional results, not a source-selected physical manifold, Poisson sprinkling or calibrated density. The finite Lean bounds and replay do not formalize the Riemann-volume argument. The separate metric scalar limit supplies its coarsening, clipped Voronoi masses, radial-kernel force law, inertia and canonical quantization. Its analytic estimate assumes smooth references with an interaction-radius boundary buffer and h/epsilon^2 tending to zero. Five Lean lemmas check finite energy algebra, not the analytic PDE limit or physical source selection. The golden population, cube, all-neighbor read law, model tick and distinguished-event counting are declared. Its raw-count limit is not a native physical calibration, Poisson sprinkling or a finite-run dimension fit. Accepted primitive repairs, field-action agreement and laboratory clock attachment remain separate; neither the analytic volume nor pair-count proof is formalized by the finite Lean path module. The later GoldenSourceAssignment module formalizes the spatial golden partition and fixed globally Lipschitz Bochner quadrature, not discontinuous causal indicators or pair integrals. Regional Weyl reconstruction requires supplied access to all real Weyl parameters and proves no operational quantum outcome or physical time slice. Destination-local path tomography is destructive and assumes protected memory, an isolated declared schedule and exact arithmetic; its sample-error norm does not include imperfect dynamics or decoding. A separate analytic bound g_d*(T*eta+sigma)+delta includes supplied gate, sample/retention and decoding error budgets relative to actual starting ports, without claiming sharpness for gate error or attained physical precision. Register-payload counts exclude metadata and scratch memory",
+        "hypothesis_boundary": "source height is a canonical ordinal, not a physical clock. The generic cone-inclusion theorem supplies neither its positive time scale nor a spatial readback valued in the rank-three quotient or an edge-speed bound; two-way order--cone faithfulness is the additional converse field of a faithful placement. Event-frame transports are supplied, and the standard-frame constructor is a trivial gauge choice rather than a derivation of physical observer frames. The Boolean diamond is an exact mathematical non-chain control, not empirical evidence of manifoldlikeness. No physical event/link identification, Poisson sprinkling, calibrated density or count--volume law, independent dimension estimator, topology, manifoldlike refinement, uniqueness theorem, continuum convergence, smooth metric, curvature, Einstein equation, observable, decision rule, or prediction is constructed by this finite source theorem. The separate growing-menu control supplies the frame, local move law, mesh, model layer time and event-cell measure. Its cone and interval-volume limits are analytic conditional results, not a source-selected physical manifold, Poisson sprinkling or calibrated density. The finite Lean bounds and replay do not formalize the Riemann-volume argument. The separate metric scalar limit supplies its coarsening, clipped Voronoi masses, radial-kernel force law, inertia and canonical quantization. Its analytic estimate assumes smooth references with an interaction-radius boundary buffer and h/epsilon^2 tending to zero. Five Lean lemmas check finite energy algebra, not the analytic PDE limit or physical source selection. The golden population, cube, all-neighbor read law, model tick and distinguished-event counting are declared. Its raw-count limit is not a native physical calibration, Poisson sprinkling or a finite-run dimension fit. Accepted primitive repairs, field-action agreement and laboratory clock attachment remain separate; neither the analytic volume nor pair-count proof is formalized by the finite Lean path module. The later GoldenSourceAssignment module formalizes the spatial golden partition and fixed globally Lipschitz Bochner quadrature. GoldenSourceCountLimit derives actual fixed continuity-set counts for its declared time grid; specific causal null frontiers, moving generated intervals and strict-pair integrals remain analytic. Regional Weyl reconstruction requires supplied access to all real Weyl parameters and proves no operational quantum outcome or physical time slice. Destination-local path tomography is destructive and assumes protected memory, an isolated declared schedule and exact arithmetic; its sample-error norm does not include imperfect dynamics or decoding. A separate analytic bound g_d*(T*eta+sigma)+delta includes supplied gate, sample/retention and decoding error budgets relative to actual starting ports, without claiming sharpness for gate error or attained physical precision. Register-payload counts exclude metadata and scratch memory. Reusable transport adds supplied local classical export/reset/readout and fixed non-interleaved hops; semantic read-from projection is not physical resource order. The repeated quantum instrument supplies controlled gates, vacuum preparation, Born readout and inherited clock intervals. Its marginals are unconditional, not independent samples or branch-conditioned clocks, and its ideal scalar-action-graph pointer gadget supplies no W12 quantum routing or gate-duration/noise bound",
         "id": "source_derived_finite_one_three_causal_carrier",
         "joint_scalar_time_refinement_control": {
           "all_modes_and_original_vacuum_covariance_retained": true,
@@ -2097,12 +2105,1474 @@
           "source_action_population_or_physical_clock_selected": false,
           "weyl_algebra_and_rank_consequences_formalized": false
         },
+        "reusable_local_feedback_transport_control": {
+          "all_primitive_events_and_immutable_versions_retained": true,
+          "analytic_proof": {
+            "labels": [
+              "thm:source-feedback-transport",
+              "thm:source-feedback-error"
+            ],
+            "source": "paper/tex_fragments/SOURCE_FEEDBACK_TRANSPORT.tex"
+          },
+          "baseline_costs": [
+            {
+              "captures": 5,
+              "exports": 5,
+              "hops": 5,
+              "initialization_events": 7,
+              "largest_written_scalar_bits": 25,
+              "logical_commits": 5,
+              "means": 5,
+              "protected_scalar_registers": 15,
+              "register_reads": 45,
+              "register_writes": 47,
+              "resets": 15,
+              "scratch_scalar_registers": 2,
+              "total_events": 42,
+              "transport_events": 30
+            },
+            {
+              "captures": 18,
+              "exports": 18,
+              "hops": 18,
+              "initialization_events": 13,
+              "largest_written_scalar_bits": 25,
+              "logical_commits": 5,
+              "means": 18,
+              "protected_scalar_registers": 31,
+              "register_reads": 136,
+              "register_writes": 144,
+              "resets": 54,
+              "scratch_scalar_registers": 5,
+              "total_events": 126,
+              "transport_events": 108
+            },
+            {
+              "captures": 54,
+              "exports": 54,
+              "hops": 54,
+              "initialization_events": 29,
+              "largest_written_scalar_bits": 25,
+              "logical_commits": 5,
+              "means": 54,
+              "protected_scalar_registers": 75,
+              "register_reads": 388,
+              "register_writes": 412,
+              "resets": 162,
+              "scratch_scalar_registers": 13,
+              "total_events": 358,
+              "transport_events": 324
+            },
+            {
+              "captures": 108,
+              "exports": 108,
+              "hops": 108,
+              "initialization_events": 53,
+              "largest_written_scalar_bits": 25,
+              "logical_commits": 5,
+              "means": 108,
+              "protected_scalar_registers": 141,
+              "register_reads": 766,
+              "register_writes": 814,
+              "resets": 324,
+              "scratch_scalar_registers": 25,
+              "total_events": 706,
+              "transport_events": 648
+            }
+          ],
+          "compiler_census_not_executed": {
+            "rows": [
+              {
+                "logical_reads": 1176764,
+                "nonself_reads": 1167976,
+                "q": 13,
+                "rounds": 4,
+                "scope": "Declared compiler target count only; assumes distinct source/destination scratch vertices; excludes routing distance, local reads and commits. Not a full execution or a lower bound for every multicast/compiler design.",
+                "sites": 2197,
+                "six_event_unicast_transport_lower_bound": 7007856,
+                "undirected_metric_edges": 145997
+              },
+              {
+                "logical_reads": 14559225,
+                "nonself_reads": 14512920,
+                "q": 21,
+                "rounds": 5,
+                "scope": "Declared compiler target count only; assumes distinct source/destination scratch vertices; excludes routing distance, local reads and commits. Not a full execution or a lower bound for every multicast/compiler design.",
+                "sites": 9261,
+                "six_event_unicast_transport_lower_bound": 87077520,
+                "undirected_metric_edges": 1451292
+              }
+            ],
+            "source_path": "evidence/source_net_causal_poset/carrier_source_net_receipt.json",
+            "source_sha256": "755c7721f719dcf6811f602afa108589dce3fb6bacc92530e6958c6b8b358f64"
+          },
+          "copy_reset_factor_two_readout_and_schedule_supplied": true,
+          "full_q13_q21_routed_histories_executed": false,
+          "independent_verifier_result": {
+            "episodes": 16,
+            "events": 4928,
+            "hops": 740
+          },
+          "lean_declarations": {
+            "SourceFeedbackTransport": [
+              "receive_error_identity",
+              "exact_receive",
+              "unit_signal_gain",
+              "route_error_identity",
+              "route_error_bound",
+              "bounded_hop_error",
+              "route_uniform_bound",
+              "sharp_uniform_error",
+              "repeated_exact_hops",
+              "semantic_projection_sound",
+              "semantic_projection_complete",
+              "exact_induced_logical_order"
+            ]
+          },
+          "lean_receipts": [
+            "Lean/Geometry/SourceFeedbackTransport.lean"
+          ],
+          "mathematical_replay": true,
+          "noise_contract": {
+            "depth_d": "initial_archive_error + d*(export + reset + 2*mean + 2*read + decode)",
+            "per_hop": "export + reset + 2*mean + 2*read + decode",
+            "scope": "Separately bounded additive errors; export includes archive retention/read/write error relative to its retained payload. Mean error bounds the receiver coordinate. Exact deterministic schedule; no measured physical noise limits."
+          },
+          "observed_postdiction": false,
+          "physical_causal_order_capacity_or_clock_identified": false,
+          "receipt": "code/source_feedback_transport/transport_receipt.json",
+          "receipt_pin": {
+            "bytes": 2561339,
+            "sha256": "54b1cbed79cf92b138125d43b71eab343976ddb12e86e375b60d5acb26931119"
+          },
+          "reusable_classical_transport": true,
+          "scope_boundary": "Immutable local record export, protected zero reset and factor-two local readout are supplied classical operations. Fixed non-interleaved six-event hops restore scratch ports and preserve old versions under the declared interventions. Exact writer ancestry gives the induced semantic read-from order, not physical resource, scheduler or custody-chain order. The sharp E0+d*(E+Z+2*M+2*R+D) error bound assumes separately bounded additive errors; the exact receipt measures no hardware noise. The q13/q21 census is an unicast compiler cost calculation, not execution of those full routed histories or a universal multicast cost bound. No native feedback selection, physical address channel, quantum copying or clock follows.",
+          "semantic_read_from_order_checked_for_all_logical_pairs": true,
+          "source_selected_feedback_or_quantum_operations": false
+        },
+        "sequential_scalar_quantum_instrument_control": {
+          "analytic_proof": {
+            "labels": [
+              "thm:source-scalar-sequential-instrument",
+              "prop:source-scalar-sequential-comparison"
+            ],
+            "source": "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex"
+          },
+          "backaction_and_all_prior_readout_pairs_included": true,
+          "branch_conditioned_clock_reconstructed": false,
+          "continuous_comparison_rows": [
+            {
+              "attenuation_difference_upper": "0",
+              "continuous_attenuation_interval": [
+                "1",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "0",
+              "discrete_attenuation_interval": [
+                "1",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "0",
+              "nominal_time_Qphi": [
+                "-1/35",
+                "2/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "63886933101/1000000000000",
+                "63888379899/1000000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "0",
+              "sequential_probability_error_upper": "396647171/1000000000000",
+              "sequential_split_probability_interval": [
+                "1/2",
+                "1/2"
+              ],
+              "sequential_split_response_abs_lower": "0",
+              "signal_sign": 0,
+              "step": 1,
+              "uniformly_resolved": false,
+              "unmeasured_clock_comparison_error_upper": "396647171/1000000000000",
+              "unmeasured_split_response_abs_upper": "0"
+            },
+            {
+              "attenuation_difference_upper": "1914203541/1000000000000000",
+              "continuous_attenuation_interval": [
+                "999998085796459/1000000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "0",
+              "discrete_attenuation_interval": [
+                "124999760739051/125000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "0",
+              "nominal_time_Qphi": [
+                "-2/35",
+                "4/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "15971762673/125000000000",
+                "63888262309/500000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "0",
+              "sequential_probability_error_upper": "532405233/1000000000000",
+              "sequential_split_probability_interval": [
+                "1/2",
+                "1/2"
+              ],
+              "sequential_split_response_abs_lower": "0",
+              "signal_sign": 0,
+              "step": 2,
+              "uniformly_resolved": false,
+              "unmeasured_clock_comparison_error_upper": "532405233/1000000000000",
+              "unmeasured_split_response_abs_upper": "0"
+            },
+            {
+              "attenuation_difference_upper": "382835069/40000000000000",
+              "continuous_attenuation_interval": [
+                "39999617164931/40000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "0",
+              "discrete_attenuation_interval": [
+                "249998047094547/250000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "484391/1000000000000000",
+              "nominal_time_Qphi": [
+                "-3/35",
+                "6/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "191661414849/1000000000000",
+                "23958065519/125000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "14837/25000000000000",
+              "sequential_probability_error_upper": "1637501539/3125000000000",
+              "sequential_split_probability_interval": [
+                "500061038860183/1000000000000000",
+                "1000124017803/2000000000000"
+              ],
+              "sequential_split_response_abs_lower": "61038860183/1000000000000000",
+              "signal_sign": 1,
+              "step": 3,
+              "uniformly_resolved": false,
+              "unmeasured_clock_comparison_error_upper": "523999899/1000000000000",
+              "unmeasured_split_response_abs_upper": "124017803/2000000000000"
+            },
+            {
+              "attenuation_difference_upper": "26798234689/1000000000000000",
+              "continuous_attenuation_interval": [
+                "999973201765311/1000000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "0",
+              "discrete_attenuation_interval": [
+                "999983741683867/1000000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "2611143/500000000000000",
+              "nominal_time_Qphi": [
+                "-4/35",
+                "8/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "63887211469/250000000000",
+                "63888101531/250000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "8607781/1000000000000000",
+              "sequential_probability_error_upper": "418454498781/1000000000000000",
+              "sequential_split_probability_interval": [
+                "50031617949637/100000000000000",
+                "1000642414019/2000000000000"
+              ],
+              "sequential_split_response_abs_lower": "31617949637/100000000000000",
+              "signal_sign": 1,
+              "step": 4,
+              "uniformly_resolved": false,
+              "unmeasured_clock_comparison_error_upper": "418445891/1000000000000",
+              "unmeasured_split_response_abs_upper": "642414019/2000000000000"
+            },
+            {
+              "attenuation_difference_upper": "717806101/12500000000000",
+              "continuous_attenuation_interval": [
+                "12499282193899/12500000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "3240041363/6250000000000",
+              "discrete_attenuation_interval": [
+                "499988049600117/500000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "22120559/1000000000000000",
+              "nominal_time_Qphi": [
+                "-1/7",
+                "2/7"
+              ],
+              "recovered_elapsed_time_interval": [
+                "63887263933/200000000000",
+                "63888049067/200000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "3321703/62500000000000",
+              "sequential_probability_error_upper": "12269226289/31250000000000",
+              "sequential_split_probability_interval": [
+                "978341839569/1953125000000",
+                "500925515391/1000000000000"
+              ],
+              "sequential_split_response_abs_lower": "1779339569/1953125000000",
+              "signal_sign": 1,
+              "step": 5,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "196281047/500000000000",
+              "unmeasured_split_response_abs_upper": "925515391/1000000000000"
+            },
+            {
+              "attenuation_difference_upper": "52638950881/500000000000000",
+              "continuous_attenuation_interval": [
+                "499947361049119/500000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "1384782693139/1000000000000000",
+              "discrete_attenuation_interval": [
+                "24999289601759/25000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "3422399/62500000000000",
+              "nominal_time_Qphi": [
+                "-6/35",
+                "12/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "47915468869/125000000000",
+                "47916015881/125000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "40574761/200000000000000",
+              "sequential_probability_error_upper": "102411826361/200000000000000",
+              "sequential_split_probability_interval": [
+                "31368552614059/62500000000000",
+                "125481757807/250000000000"
+              ],
+              "sequential_split_response_abs_lower": "118552614059/62500000000000",
+              "signal_sign": 1,
+              "step": 6,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "255928129/500000000000",
+              "unmeasured_split_response_abs_upper": "481757807/250000000000"
+            },
+            {
+              "attenuation_difference_upper": "4354667031/25000000000000",
+              "continuous_attenuation_interval": [
+                "24995645332969/25000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "313837310323/125000000000000",
+              "discrete_attenuation_interval": [
+                "249992524187979/250000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "11898839/125000000000000",
+              "nominal_time_Qphi": [
+                "-1/5",
+                "2/5"
+              ],
+              "recovered_elapsed_time_interval": [
+                "447211188897/1000000000000",
+                "447216002103/1000000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "277243363/500000000000000",
+              "sequential_probability_error_upper": "311351587863/500000000000000",
+              "sequential_split_probability_interval": [
+                "50313340165831/100000000000000",
+                "503183290029/1000000000000"
+              ],
+              "sequential_split_response_abs_lower": "313340165831/100000000000000",
+              "signal_sign": 1,
+              "step": 7,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "622148689/1000000000000",
+              "unmeasured_split_response_abs_upper": "3183290029/1000000000000"
+            },
+            {
+              "attenuation_difference_upper": "133989517227/500000000000000",
+              "continuous_attenuation_interval": [
+                "499866010482773/500000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "3586746764941/1000000000000000",
+              "discrete_attenuation_interval": [
+                "199994001812859/200000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "129911779/1000000000000000",
+              "nominal_time_Qphi": [
+                "-8/35",
+                "16/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "511098640919/1000000000000",
+                "511103863081/1000000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "1160805163/1000000000000000",
+              "sequential_probability_error_upper": "677043523163/1000000000000000",
+              "sequential_split_probability_interval": [
+                "63032973786013/125000000000000",
+                "504331701413/1000000000000"
+              ],
+              "sequential_split_response_abs_lower": "532973786013/125000000000000",
+              "signal_sign": 1,
+              "step": 8,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "337941359/500000000000",
+              "unmeasured_split_response_abs_upper": "4331701413/1000000000000"
+            },
+            {
+              "attenuation_difference_upper": "390483165447/1000000000000000",
+              "continuous_attenuation_interval": [
+                "999609516834553/1000000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "825161569713/200000000000000",
+              "discrete_attenuation_interval": [
+                "499984896137203/500000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "73583643/500000000000000",
+              "nominal_time_Qphi": [
+                "-9/35",
+                "18/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "287493054073/500000000000",
+                "574991708853/1000000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "190237253/100000000000000",
+              "sequential_probability_error_upper": "66963854653/100000000000000",
+              "sequential_split_probability_interval": [
+                "100959089279019/200000000000000",
+                "1009743685251/2000000000000"
+              ],
+              "sequential_split_response_abs_lower": "959089279019/200000000000000",
+              "signal_sign": 1,
+              "step": 9,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "333868087/500000000000",
+              "unmeasured_split_response_abs_upper": "9743685251/2000000000000"
+            },
+            {
+              "attenuation_difference_upper": "545527252723/1000000000000000",
+              "continuous_attenuation_interval": [
+                "999454472747277/1000000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "1830098714897/500000000000000",
+              "discrete_attenuation_interval": [
+                "999968807050253/1000000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "33844201/250000000000000",
+              "nominal_time_Qphi": [
+                "-2/7",
+                "4/7"
+              ],
+              "recovered_elapsed_time_interval": [
+                "638873598063/1000000000000",
+                "19964985373/31250000000"
+              ],
+              "sequential_comparison_extra_error_upper": "2367577809/1000000000000000",
+              "sequential_probability_error_upper": "611737113809/1000000000000000",
+              "sequential_split_probability_interval": [
+                "504271934543603/1000000000000000",
+                "50433998081/100000000000"
+              ],
+              "sequential_split_response_abs_lower": "4271934543603/1000000000000000",
+              "signal_sign": 1,
+              "step": 10,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "9521399/15625000000",
+              "unmeasured_split_response_abs_upper": "433998081/100000000000"
+            },
+            {
+              "attenuation_difference_upper": "736939488247/1000000000000000",
+              "continuous_attenuation_interval": [
+                "999263060511753/1000000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "939077165251/500000000000000",
+              "discrete_attenuation_interval": [
+                "499983553221503/500000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "826329/10000000000000",
+              "nominal_time_Qphi": [
+                "-11/35",
+                "22/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "702761106553/1000000000000",
+                "140553467289/200000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "1851287977/1000000000000000",
+              "sequential_probability_error_upper": "594604834977/1000000000000000",
+              "sequential_split_probability_interval": [
+                "502472759165479/1000000000000000",
+                "1005024260489/2000000000000"
+              ],
+              "sequential_split_response_abs_lower": "2472759165479/1000000000000000",
+              "signal_sign": 1,
+              "step": 11,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "592753547/1000000000000",
+              "unmeasured_split_response_abs_upper": "5024260489/2000000000000"
+            },
+            {
+              "attenuation_difference_upper": "484274073939/500000000000000",
+              "continuous_attenuation_interval": [
+                "499515725926061/500000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "0",
+              "discrete_attenuation_interval": [
+                "999964973598071/1000000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "3152981/200000000000000",
+              "nominal_time_Qphi": [
+                "-12/35",
+                "24/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "766648608689/1000000000000",
+                "766655147309/1000000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "10898257/25000000000000",
+              "sequential_probability_error_upper": "2260177479/3125000000000",
+              "sequential_split_probability_interval": [
+                "999099827343/2000000000000",
+                "99911393348081/200000000000000"
+              ],
+              "sequential_split_response_abs_lower": "88606651919/200000000000000",
+              "signal_sign": -1,
+              "step": 12,
+              "uniformly_resolved": false,
+              "unmeasured_clock_comparison_error_upper": "722820863/1000000000000",
+              "unmeasured_split_response_abs_upper": "900172657/2000000000000"
+            },
+            {
+              "attenuation_difference_upper": "622090769073/500000000000000",
+              "continuous_attenuation_interval": [
+                "499377909230927/500000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "302183590289/100000000000000",
+              "discrete_attenuation_interval": [
+                "999962701324261/1000000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "148467731/1000000000000000",
+              "nominal_time_Qphi": [
+                "-13/35",
+                "26/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "207634021743/250000000000",
+                "415271491013/500000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "619059543/125000000000000",
+              "sequential_probability_error_upper": "112030909543/125000000000000",
+              "sequential_split_probability_interval": [
+                "496019490571/1000000000000",
+                "248040958410383/500000000000000"
+              ],
+              "sequential_split_response_abs_lower": "1959041589617/500000000000000",
+              "signal_sign": -1,
+              "step": 13,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "2228237/2500000000",
+              "unmeasured_split_response_abs_upper": "3980509429/1000000000000"
+            },
+            {
+              "attenuation_difference_upper": "1567667897779/1000000000000000",
+              "continuous_attenuation_interval": [
+                "998432332102221/1000000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "3077778345457/500000000000000",
+              "discrete_attenuation_interval": [
+                "39998424352543/40000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "285109441/1000000000000000",
+              "nominal_time_Qphi": [
+                "-2/5",
+                "4/5"
+              ],
+              "recovered_elapsed_time_interval": [
+                "447211773509/500000000000",
+                "894430834979/1000000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "567331119/50000000000000",
+              "sequential_probability_error_upper": "48432115369/50000000000000",
+              "sequential_split_probability_interval": [
+                "4927621007/10000000000",
+                "246437900500853/500000000000000"
+              ],
+              "sequential_split_response_abs_lower": "3562099499147/500000000000000",
+              "signal_sign": -1,
+              "step": 14,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "191459137/200000000000",
+              "unmeasured_split_response_abs_upper": "72378993/10000000000"
+            },
+            {
+              "attenuation_difference_upper": "194283536969/100000000000000",
+              "continuous_attenuation_interval": [
+                "99805716463031/100000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "2071419327099/250000000000000",
+              "discrete_attenuation_interval": [
+                "124994882361657/125000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "382616497/1000000000000000",
+              "nominal_time_Qphi": [
+                "-3/7",
+                "6/7"
+              ],
+              "recovered_elapsed_time_interval": [
+                "191662201643/200000000000",
+                "479159343391/500000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "9078416789/500000000000000",
+              "sequential_probability_error_upper": "456409346289/500000000000000",
+              "sequential_split_probability_interval": [
+                "981308932439/2000000000000",
+                "245400751999513/500000000000000"
+              ],
+              "sequential_split_response_abs_lower": "4599248000487/500000000000000",
+              "signal_sign": -1,
+              "step": 15,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "894661859/1000000000000",
+              "unmeasured_split_response_abs_upper": "18691067561/2000000000000"
+            },
+            {
+              "attenuation_difference_upper": "2317882851/976562500000",
+              "continuous_attenuation_interval": [
+                "974244617149/976562500000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "4335815794037/500000000000000",
+              "discrete_attenuation_interval": [
+                "999958293484417/1000000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "402793547/1000000000000000",
+              "nominal_time_Qphi": [
+                "-16/35",
+                "32/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "63887405571/62500000000",
+                "1022206518861/1000000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "22922925061/1000000000000000",
+              "sequential_probability_error_upper": "834181208061/1000000000000000",
+              "sequential_split_probability_interval": [
+                "490342191369/1000000000000",
+                "98098837440773/200000000000000"
+              ],
+              "sequential_split_response_abs_lower": "1901162559227/200000000000000",
+              "signal_sign": -1,
+              "step": 16,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "811258283/1000000000000",
+              "unmeasured_split_response_abs_upper": "9657808631/1000000000000"
+            },
+            {
+              "attenuation_difference_upper": "286352604747/100000000000000",
+              "continuous_attenuation_interval": [
+                "99713647395253/100000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "697261310049/100000000000000",
+              "discrete_attenuation_interval": [
+                "999958166158279/1000000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "83248637/250000000000000",
+              "nominal_time_Qphi": [
+                "-17/35",
+                "34/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "271521498169/250000000000",
+                "1086094328321/1000000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "11396736733/500000000000000",
+              "sequential_probability_error_upper": "431100003233/500000000000000",
+              "sequential_split_probability_interval": [
+                "61505008463/125000000000",
+                "123041296723261/250000000000000"
+              ],
+              "sequential_split_response_abs_lower": "1958703276739/250000000000000",
+              "signal_sign": -1,
+              "step": 17,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "839406533/1000000000000",
+              "unmeasured_split_response_abs_upper": "994991537/125000000000"
+            },
+            {
+              "attenuation_difference_upper": "427088216283/125000000000000",
+              "continuous_attenuation_interval": [
+                "124572911783717/125000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "3510782590493/1000000000000000",
+              "discrete_attenuation_interval": [
+                "499979058460241/500000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "11868329/62500000000000",
+              "nominal_time_Qphi": [
+                "-18/35",
+                "36/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "1149973498149/1000000000000",
+                "143747766981/125000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "15490966951/1000000000000000",
+              "sequential_probability_error_upper": "951967738951/1000000000000000",
+              "sequential_split_probability_interval": [
+                "990932220581/2000000000000",
+                "123884312417639/250000000000000"
+              ],
+              "sequential_split_response_abs_lower": "1115687582361/250000000000000",
+              "signal_sign": -1,
+              "step": 18,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "234119193/250000000000",
+              "unmeasured_split_response_abs_upper": "9067779419/2000000000000"
+            },
+            {
+              "attenuation_difference_upper": "4036879463989/1000000000000000",
+              "continuous_attenuation_interval": [
+                "995963120536011/1000000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "0",
+              "discrete_attenuation_interval": [
+                "999957587187333/1000000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "3211799/1000000000000000",
+              "nominal_time_Qphi": [
+                "-19/35",
+                "38/35"
+              ],
+              "recovered_elapsed_time_interval": [
+                "606930494447/500000000000",
+                "606934979051/500000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "61140217/200000000000000",
+              "sequential_probability_error_upper": "208582742817/200000000000000",
+              "sequential_split_probability_interval": [
+                "199969709169/400000000000",
+                "24996273007179/50000000000000"
+              ],
+              "sequential_split_response_abs_lower": "3726992821/50000000000000",
+              "signal_sign": -1,
+              "step": 19,
+              "uniformly_resolved": false,
+              "unmeasured_clock_comparison_error_upper": "1042608013/1000000000000",
+              "unmeasured_split_response_abs_upper": "30290831/400000000000"
+            },
+            {
+              "attenuation_difference_upper": "4727875549759/1000000000000000",
+              "continuous_attenuation_interval": [
+                "995272124450241/1000000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "321056213991/100000000000000",
+              "discrete_attenuation_interval": [
+                "249989129672011/250000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "7821903/40000000000000",
+              "nominal_time_Qphi": [
+                "-4/7",
+                "8/7"
+              ],
+              "recovered_elapsed_time_interval": [
+                "638874230763/500000000000",
+                "1277757798469/1000000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "10631286833/500000000000000",
+              "sequential_probability_error_upper": "608072729333/500000000000000",
+              "sequential_split_probability_interval": [
+                "31526669224911/62500000000000",
+                "126124319657/250000000000"
+              ],
+              "sequential_split_response_abs_lower": "276669224911/62500000000000",
+              "signal_sign": 1,
+              "step": 20,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "238976577/200000000000",
+              "unmeasured_split_response_abs_upper": "1124319657/250000000000"
+            },
+            {
+              "attenuation_difference_upper": "5493522428363/1000000000000000",
+              "continuous_attenuation_interval": [
+                "994506477571637/1000000000000000",
+                "1"
+              ],
+              "continuous_sequential_response_abs_lower": "6759917450133/1000000000000000",
+              "discrete_attenuation_interval": [
+                "99995535933779/100000000000000",
+                "1"
+              ],
+              "disturbance_from_unmeasured_split_upper": "92384319/250000000000000",
+              "nominal_time_Qphi": [
+                "-3/5",
+                "6/5"
+              ],
+              "recovered_elapsed_time_interval": [
+                "1341635903357/1000000000000",
+                "670822834819/500000000000"
+              ],
+              "sequential_comparison_extra_error_upper": "9095121849/200000000000000",
+              "sequential_probability_error_upper": "277590831449/200000000000000",
+              "sequential_split_probability_interval": [
+                "254073935803689/500000000000000",
+                "1016556083947/2000000000000"
+              ],
+              "sequential_split_response_abs_lower": "4073935803689/500000000000000",
+              "signal_sign": 1,
+              "step": 21,
+              "uniformly_resolved": true,
+              "unmeasured_clock_comparison_error_upper": "335619637/250000000000",
+              "unmeasured_split_response_abs_upper": "16556083947/2000000000000"
+            }
+          ],
+          "energy_injected_per_readout_Qphi": [
+            "56732803494400",
+            "-35062800836608"
+          ],
+          "finite_duration_or_noisy_quantum_gates_certified": false,
+          "independent_verifier_result": {
+            "branch_conditioned_clock": false,
+            "distinct_positive_separations": 20,
+            "mathematical_replay": true,
+            "parent_events_replayed": 5888,
+            "physical_outcomes": false,
+            "prior_pair_brackets": 210,
+            "readout_times": 21,
+            "uniformly_resolved_steps": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              20,
+              21
+            ],
+            "verified": true
+          },
+          "instrument_and_preparation_laws_supplied": true,
+          "instrument_theorems_formalized_in_lean": false,
+          "mathematical_replay": true,
+          "observed_postdiction": false,
+          "physical_clock_or_observed_outcomes": false,
+          "pointer_action_graph_identified_with_W12_seams": false,
+          "receipt": "code/source_scalar_instruments/sequential_instrument_receipt.json",
+          "receipt_pin": {
+            "bytes": 31631,
+            "sha256": "cc52802cba28f66c8bb9f49f2175dd32a1932262f23759447c289bf203dbf601"
+          },
+          "reference_has_same_repeated_instrument": true,
+          "regional_gadget": {
+            "additional_initial_coherent_preparation_kicks": 16,
+            "binary_record": "XOR of all local pointer outcome bits; bit0 is positive eigenvalue",
+            "coherent_preparation_sites": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "detector_sites": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63
+            ],
+            "fine_record_kraus_factor_squared": "1/2147483648",
+            "fine_records_per_parity": 2147483648,
+            "ghz_cnot_tree": [
+              [
+                32,
+                33
+              ],
+              [
+                32,
+                36
+              ],
+              [
+                32,
+                48
+              ],
+              [
+                33,
+                34
+              ],
+              [
+                33,
+                37
+              ],
+              [
+                33,
+                49
+              ],
+              [
+                36,
+                40
+              ],
+              [
+                36,
+                52
+              ],
+              [
+                34,
+                35
+              ],
+              [
+                34,
+                38
+              ],
+              [
+                34,
+                50
+              ],
+              [
+                37,
+                41
+              ],
+              [
+                37,
+                53
+              ],
+              [
+                40,
+                44
+              ],
+              [
+                40,
+                56
+              ],
+              [
+                35,
+                39
+              ],
+              [
+                35,
+                51
+              ],
+              [
+                38,
+                42
+              ],
+              [
+                38,
+                54
+              ],
+              [
+                41,
+                45
+              ],
+              [
+                41,
+                57
+              ],
+              [
+                44,
+                60
+              ],
+              [
+                39,
+                43
+              ],
+              [
+                39,
+                55
+              ],
+              [
+                42,
+                46
+              ],
+              [
+                42,
+                58
+              ],
+              [
+                45,
+                61
+              ],
+              [
+                43,
+                47
+              ],
+              [
+                43,
+                59
+              ],
+              [
+                46,
+                62
+              ],
+              [
+                47,
+                63
+              ]
+            ],
+            "ideal_operations_per_readout": {
+              "controlled_local_field_kicks": 32,
+              "edge_cnots": 31,
+              "hadamards": 1,
+              "local_pointer_readouts": 32,
+              "parity_decodes": 1,
+              "total": 129,
+              "zero_preparations": 32
+            },
+            "interaction": "exp(-i Z_i tensor m_i*g_i*q_i/2) at each detector site",
+            "local_controlled_field_coefficients_Qphi": [
+              [
+                32,
+                [
+                  "-2267008",
+                  "1401088"
+                ]
+              ],
+              [
+                33,
+                [
+                  "2534592",
+                  "-1566464"
+                ]
+              ],
+              [
+                34,
+                [
+                  "133792",
+                  "-82688"
+                ]
+              ],
+              [
+                35,
+                [
+                  "1267296",
+                  "-783232"
+                ]
+              ],
+              [
+                36,
+                [
+                  "2534592",
+                  "-1566464"
+                ]
+              ],
+              [
+                37,
+                [
+                  "-2833760",
+                  "1751360"
+                ]
+              ],
+              [
+                38,
+                [
+                  "-149584",
+                  "92448"
+                ]
+              ],
+              [
+                39,
+                [
+                  "-1416880",
+                  "875680"
+                ]
+              ],
+              [
+                40,
+                [
+                  "133792",
+                  "-82688"
+                ]
+              ],
+              [
+                41,
+                [
+                  "-149584",
+                  "92448"
+                ]
+              ],
+              [
+                42,
+                [
+                  "-7896",
+                  "4880"
+                ]
+              ],
+              [
+                43,
+                [
+                  "-74792",
+                  "46224"
+                ]
+              ],
+              [
+                44,
+                [
+                  "1267296",
+                  "-783232"
+                ]
+              ],
+              [
+                45,
+                [
+                  "-1416880",
+                  "875680"
+                ]
+              ],
+              [
+                46,
+                [
+                  "-74792",
+                  "46224"
+                ]
+              ],
+              [
+                47,
+                [
+                  "-708440",
+                  "437840"
+                ]
+              ],
+              [
+                48,
+                [
+                  "-21473408",
+                  "13271296"
+                ]
+              ],
+              [
+                49,
+                [
+                  "24008000",
+                  "-14837760"
+                ]
+              ],
+              [
+                50,
+                [
+                  "1267296",
+                  "-783232"
+                ]
+              ],
+              [
+                51,
+                [
+                  "12004000",
+                  "-7418880"
+                ]
+              ],
+              [
+                52,
+                [
+                  "24008000",
+                  "-14837760"
+                ]
+              ],
+              [
+                53,
+                [
+                  "-26841760",
+                  "16589120"
+                ]
+              ],
+              [
+                54,
+                [
+                  "-1416880",
+                  "875680"
+                ]
+              ],
+              [
+                55,
+                [
+                  "-13420880",
+                  "8294560"
+                ]
+              ],
+              [
+                56,
+                [
+                  "1267296",
+                  "-783232"
+                ]
+              ],
+              [
+                57,
+                [
+                  "-1416880",
+                  "875680"
+                ]
+              ],
+              [
+                58,
+                [
+                  "-74792",
+                  "46224"
+                ]
+              ],
+              [
+                59,
+                [
+                  "-708440",
+                  "437840"
+                ]
+              ],
+              [
+                60,
+                [
+                  "12004000",
+                  "-7418880"
+                ]
+              ],
+              [
+                61,
+                [
+                  "-13420880",
+                  "8294560"
+                ]
+              ],
+              [
+                62,
+                [
+                  "-708440",
+                  "437840"
+                ]
+              ],
+              [
+                63,
+                [
+                  "-6710440",
+                  "4147280"
+                ]
+              ]
+            ],
+            "local_pointer_readout_bases": [
+              [
+                32,
+                "Y"
+              ],
+              [
+                33,
+                "X"
+              ],
+              [
+                34,
+                "X"
+              ],
+              [
+                35,
+                "X"
+              ],
+              [
+                36,
+                "X"
+              ],
+              [
+                37,
+                "X"
+              ],
+              [
+                38,
+                "X"
+              ],
+              [
+                39,
+                "X"
+              ],
+              [
+                40,
+                "X"
+              ],
+              [
+                41,
+                "X"
+              ],
+              [
+                42,
+                "X"
+              ],
+              [
+                43,
+                "X"
+              ],
+              [
+                44,
+                "X"
+              ],
+              [
+                45,
+                "X"
+              ],
+              [
+                46,
+                "X"
+              ],
+              [
+                47,
+                "X"
+              ],
+              [
+                48,
+                "X"
+              ],
+              [
+                49,
+                "X"
+              ],
+              [
+                50,
+                "X"
+              ],
+              [
+                51,
+                "X"
+              ],
+              [
+                52,
+                "X"
+              ],
+              [
+                53,
+                "X"
+              ],
+              [
+                54,
+                "X"
+              ],
+              [
+                55,
+                "X"
+              ],
+              [
+                56,
+                "X"
+              ],
+              [
+                57,
+                "X"
+              ],
+              [
+                58,
+                "X"
+              ],
+              [
+                59,
+                "X"
+              ],
+              [
+                60,
+                "X"
+              ],
+              [
+                61,
+                "X"
+              ],
+              [
+                62,
+                "X"
+              ],
+              [
+                63,
+                "X"
+              ]
+            ],
+            "operation_counts_bound_physical_time": false,
+            "pointer_initial_state": "all zero; H on root then the ordered CNOT tree",
+            "readout_count": 21,
+            "root_site": 32,
+            "total_ideal_readout_operations": 2709
+          },
+          "regional_ghz_gadget_on_scalar_action_graph": true,
+          "reported_probabilities_are_unconditional_sequential_marginals": true,
+          "same_action_vacuum_preparation_and_recovered_clock_intervals": true,
+          "sampled_quantum_outcome_histories": false,
+          "scope_boundary": "A supplied centered binary quantum instrument defines a joint classical record algebra. All 21 unconditional marginals include backaction from earlier readouts and are compared with continuous evolution under the same repeated instrument. The exact commutator-cosine factors and inherited clock windows preserve 15 resolved slots. No sampled outcomes, independent-trial assumption or branch-clock reconstruction is made. A 31-edge GHZ pointer construction uses the scalar action graph; it is not W12 routing. Controlled kicks, pointer preparation/reset, Born readout, vacuum preparation and clock calibration are supplied. Ideal instantaneous gate counts do not enclose duration or noise, select quantum operations from OPH, or establish physical outcomes or an interacting continuum.",
+          "total_readout_injected_work_Qphi": [
+            "1191388873382400",
+            "-736318817568768"
+          ]
+        },
         "source_population_quadrature": {
+          "actual_causal_cone_null_frontier_identified_in_lean": false,
           "analytic_radial_quadrature_bound": "60*K*H*(epsilon+H)^3/epsilon^5",
-          "arbitrary_varying_detector_or_indicator_convergence": false,
+          "arbitrary_varying_detector_convergence": false,
           "equal_cell_weights_are_lumped_action_weights": false,
           "fixed_globally_lipschitz_detector_convergence": true,
+          "fixed_measurable_null_frontier_indicator_convergence": true,
           "formal_actual_cell_integral_and_quadrature_limit": true,
+          "formal_actual_source_time_grid_count_limit": true,
           "formal_causal_pair_count_limit": false,
           "formal_golden_partition_geometry": true,
           "golden_assignment_bound": "2*sqrt(3)*L/q",
@@ -2112,6 +3582,7 @@
             "prop:source-population-cell-transport",
             "prop:source-population-local-kernel"
           ],
+          "last_temporal_cell_error_upper": "L^3*Delta_q",
           "lean_declarations": {
             "GoldenSourceAssignment": [
               "residue_bijective",
@@ -2134,6 +3605,25 @@
               "sample_outside_assigned_cell",
               "one_cell_width_counterexample"
             ],
+            "GoldenSourceCountLimit": [
+              "partition_count_tendsto",
+              "golden_count_tendsto",
+              "timeCell_cover",
+              "timeCell_disjoint",
+              "eventCell_assignment",
+              "event_weighted_count_tendsto",
+              "sum_eventCell_mass",
+              "event_uniform_weight_error",
+              "event_count_tendsto",
+              "sourceDelta_pos",
+              "sourceDelta_tendsto",
+              "source_event_count_tendsto",
+              "goldenPosition_injective",
+              "eventPosition_injective",
+              "goldenCount_univ",
+              "eventCount_univ",
+              "aligned_endpoint_layer_control"
+            ],
             "SourcePopulationQuadrature": [
               "cell_local_first_moment",
               "partition_uniform_quadrature",
@@ -2145,14 +3635,20 @@
           },
           "lean_receipts": [
             "Lean/Geometry/SourcePopulationQuadrature.lean",
-            "Lean/Geometry/GoldenSourceAssignment.lean"
+            "Lean/Geometry/GoldenSourceAssignment.lean",
+            "Lean/Geometry/GoldenSourceCountLimit.lean"
           ],
+          "moving_causal_interval_limit_formalized": false,
+          "normalized_source_event_count": "Delta_q*(L^3/q^3)*cardinality",
           "observed_postdiction": false,
-          "scope_boundary": "The general quadrature theorem takes measured cells, masses and assignments as hypotheses. The new golden specialization constructs the actual fractional-part population, permuted half-open partition, exact Lebesgue cell masses and 2*sqrt(3)*L/q assignment bound from Fibonacci arithmetic. A sample need not lie in its assigned cell. The Bochner integral estimate and limit fix one globally Lipschitz detector and its constant. Causal interval indicators, pair-count limits and arbitrary varying detectors remain separate. Dual-cell action and equal-volume weights are distinct finite measures; no physical population law follows.",
+          "scope_boundary": "The general quadrature theorem takes measured cells, masses and assignments as hypotheses. The new golden specialization constructs the actual fractional-part population, permuted half-open partition, exact Lebesgue cell masses and 2*sqrt(3)*L/q assignment bound from Fibonacci arithmetic. A sample need not lie in its assigned cell. The Bochner integral estimate and limit fix one globally Lipschitz detector and its constant. Actual golden spatial and time-product counts now converge on any fixed measurable set with null frontier by dominated convergence, without an assumed count or weak-measure limit. Inclusive full-layer weights differ from the clipped final time cell by at most L^3*Delta_q. Actual causal-cone null frontiers, moving generated intervals, pair-count limits and arbitrary varying detectors remain separate. Dual-cell action and equal-volume weights are distinct finite measures; no physical population law follows.",
           "source": "paper/tex_fragments/SOURCE_POPULATION_QUADRATURE.tex",
-          "tent_integrand_lipschitz_coefficient": "K"
+          "source_event_layers": "j=0,...,floor(T/Delta_q), including aligned endpoint",
+          "source_time_step": "Delta_q=L/(c*sqrt(q))",
+          "tent_integrand_lipschitz_coefficient": "K",
+          "volume_convention": "dt d^3x restricted to [0,T) x [0,L)^3"
         },
-        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations. A separate protected-address experiment exactly distinguishes immutable records from moving live readbacks under pair means. Formal integrated cell estimates derive quadrature convergence from vanishing assignment distances. Fibonacci arithmetic now constructs the actual golden permutation partition, its exact cell masses and fixed-globally-Lipschitz integral convergence in Lean. On the same prepared golden coordinates, a different local massive Dirichlet scalar action has an analytic free-field detector limit and a finite full-Fock compact detector response whose exact certified error is smaller than its signal. For that action, stable local time refinement converges to the same detector limit; nearest-update readout preserves a resolved finite comparison, and the preparation-induced response vanishes asymptotically before continuum arrival. In a separate 64-site execution, graph-recovered configurations determine positive durations for a supplied action family; conditional timing intervals retain 15 of 21 resolved fixed-state quantum predictions. A sharp kernel criterion also identifies the minimum exterior linear readouts needed to reconstruct the original regional canonical algebra from two field layers; eight exact regional controls retain every exterior coupling. Separate canonical-mean path calibrations reconstruct remote initial data from destination samples alone, with all 1449 events and their precision costs retained. Their all-depth infinity-norm condition number obeys the exact recurrence g_0=1, g_1=3, g_d=2*g_(d-1)+g_(d-2); a separate sufficient bound propagates supplied gate, retained-sample and decoding errors. These results do not identify a physical clock or select native field dynamics",
+        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations. A separate protected-address experiment exactly distinguishes immutable records from moving live readbacks under pair means. Formal integrated cell estimates derive quadrature convergence from vanishing assignment distances. Fibonacci arithmetic now constructs the actual golden permutation partition, its exact cell masses and fixed-globally-Lipschitz integral convergence in Lean. Actual spatial and declared-time-grid counts also converge on fixed measurable sets with null frontier; the inclusive final-layer error is at most L^3*Delta_q. On the same prepared golden coordinates, a different local massive Dirichlet scalar action has an analytic free-field detector limit and a finite full-Fock compact detector response whose exact certified error is smaller than its signal. For that action, stable local time refinement converges to the same detector limit; nearest-update readout preserves a resolved finite comparison, and the preparation-induced response vanishes asymptotically before continuum arrival. In a separate 64-site execution, graph-recovered configurations determine positive durations for a supplied action family; conditional timing intervals retain 15 of 21 resolved fixed-state quantum predictions. A sharp kernel criterion also identifies the minimum exterior linear readouts needed to reconstruct the original regional canonical algebra from two field layers; eight exact regional controls retain every exterior coupling. Separate canonical-mean path calibrations reconstruct remote initial data from destination samples alone, with all 1449 events and their precision costs retained. Their all-depth infinity-norm condition number obeys the exact recurrence g_0=1, g_1=3, g_d=2*g_(d-1)+g_(d-2); a separate sufficient bound propagates supplied gate, retained-sample and decoding errors. With supplied local copy/reset and factor-two readback, reusable version transport instead has unit per-hop signal gain and a sharp linear additive error bound; 4928 events retain exact semantic order and old-version reads. A separate centered quantum instrument includes all earlier-readout backaction in 21 unconditional marginals and retains 15 resolved comparisons against continuous evolution under that same repeated instrument. These results do not identify a physical clock or select native field dynamics",
         "supplied_law_refinement_control": {
           "analytic_controlled_causal_limit": true,
           "analytic_interval_volume_limit": true,

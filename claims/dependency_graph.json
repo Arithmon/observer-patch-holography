@@ -236,7 +236,9 @@
   "OPH-GOLDEN-SOURCE-QUADRATURE",
   "OPH-SCALAR-REGIONAL-COLLAR-RECONSTRUCTION",
   "OPH-SEAM-PATH-TOMOGRAPHY",
-  "OPH-CARTAN-SCALAR-CONTINUOUS-READOUT"
+  "OPH-CARTAN-SCALAR-CONTINUOUS-READOUT",
+  "OPH-SOURCE-FEEDBACK-VERSION-TRANSPORT",
+  "OPH-SCALAR-SEQUENTIAL-INSTRUMENT"
  ],
  "edges": [
   {
@@ -2107,7 +2109,7 @@
   {
    "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
    "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
-   "role": "supplies the actual golden equal-cell Lebesgue quadrature used by the separately analytic spacetime interval and pair-count specialization; no physical continuum premise is discharged"
+   "role": "supplies actual golden Lebesgue quadrature and fixed null-frontier spacetime event counts; the moving causal-interval and strict-pair specializations remain analytic and no physical premise is discharged"
   },
   {
    "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
@@ -2118,6 +2120,11 @@
    "from": "OPH-SM-Q1-LOCAL-G6",
    "to": "OPH-CARTAN-SCALAR-CONTINUOUS-READOUT",
    "role": "supplies the local classical Cartan reduction, same finite Hamiltonian and versioned charged parent execution consumed by the continuous IVP/checkpoint comparison"
+  },
+  {
+   "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+   "to": "OPH-SCALAR-SEQUENTIAL-INSTRUMENT",
+   "role": "supplies the full finite scalar action, original preparation, unmeasured probability bounds and conditional reference-clock intervals used in the sequential comparison"
   }
  ]
 }

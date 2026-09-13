@@ -1231,6 +1231,14 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/particles/flavor/test_quark_s3_d12_template_postdiction.py",
         ],
     ),
+    (
+        "Replay reusable local feedback transport and exact semantic version custody",
+        [sys.executable, "-m", "pytest", "-q", "code/source_feedback_transport/test_transport.py"],
+    ),
+    (
+        "Verify sequential quantum instruments, local parity and clock-interval backaction",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_instruments/test_sequential_instrument.py"],
+    ),
 ]
 
 CERTIFICATE_STEPS: list[tuple[str, list[str]]] = [

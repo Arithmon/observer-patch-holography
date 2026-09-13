@@ -1678,7 +1678,16 @@ def test_source_quadrature_control_preserves_exact_formal_scope():
     assert control['golden_cell_mass'] == 'L^3/q^3'
     assert control['golden_assignment_bound'] == '2*sqrt(3)*L/q'
     assert control['fixed_globally_lipschitz_detector_convergence'] is True
-    assert control['arbitrary_varying_detector_or_indicator_convergence'] is False
+    assert 'arbitrary_varying_detector_or_indicator_convergence' not in control
+    assert control['fixed_measurable_null_frontier_indicator_convergence'] is True
+    assert control['formal_actual_source_time_grid_count_limit'] is True
+    assert control['arbitrary_varying_detector_convergence'] is False
+    assert control['moving_causal_interval_limit_formalized'] is False
+    assert control['actual_causal_cone_null_frontier_identified_in_lean'] is False
+    assert control['source_time_step'] == 'Delta_q=L/(c*sqrt(q))'
+    assert control['last_temporal_cell_error_upper'] == 'L^3*Delta_q'
+    assert 'source_event_count_tendsto' in control['lean_declarations']['GoldenSourceCountLimit']
+    assert 'aligned_endpoint_layer_control' in control['lean_declarations']['GoldenSourceCountLimit']
     assert control['equal_cell_weights_are_lumped_action_weights'] is False
     assert 'golden_quadrature_closed' in control['lean_declarations']['GoldenSourceAssignment']
     assert control['tent_integrand_lipschitz_coefficient'] == 'K'
@@ -2049,7 +2058,7 @@ def test_charged_frontier_control_is_sibling_of_immutable_execution(result):
     ('_cartan_scalar_continuous_readout_control', 'sm_abelian_readout/readout_receipt.json', 'error'),
 ])
 def test_completion_frontier_receipt_forgery_is_replayed(control, relative, mutation, tmp_path):
-    packet = json.loads((ledger.CODE/relative).read_text())
+    packet = json.loads((ledger.CODE/relative).read_text(encoding='utf-8'))
     if mutation == 'collar':
         packet['regions'][3]['minimal_linear_collar_dimension'] = 0
         packet['regions'][3]['no_collar_recovers_original_regional_algebra'] = True
@@ -2058,7 +2067,7 @@ def test_completion_frontier_receipt_forgery_is_replayed(control, relative, muta
     else:
         packet['checkpoints'][2]['error_upper'] = '0'
     path = tmp_path/'forged.json'
-    path.write_text(json.dumps(packet))
+    path.write_text(json.dumps(packet), encoding='utf-8')
     with pytest.raises(SystemExit, match='structural certificate rejected'):
         getattr(ledger, control)(path)
 
@@ -2101,9 +2110,118 @@ def test_charged_frontier_rejects_omitted_parent_replay(monkeypatch):
                                 'golden_quadrature_tendsto', 'one_cell_width_counterexample'])
 def test_golden_frontier_requires_actual_lean_declaration(name, monkeypatch, tmp_path):
     original = ledger.LEAN_RECEIPTS['GoldenSourceAssignment']
-    source = original.read_text().replace('theorem '+name+' ', 'theorem removed_'+name+' ')
+    source = original.read_text(encoding='utf-8').replace('theorem '+name+' ', 'theorem removed_'+name+' ')
     path = tmp_path/'GoldenSourceAssignment.lean'
-    path.write_text(source)
+    path.write_text(source, encoding='utf-8')
     monkeypatch.setitem(ledger.LEAN_RECEIPTS, 'GoldenSourceAssignment', path)
     with pytest.raises(SystemExit, match='Lean declaration missing'):
         ledger._source_population_quadrature_control()
+
+
+def test_feedback_transport_control_fresh_complete_replay():
+    control = ledger._source_feedback_transport_control()
+    assert control['independent_verifier_result'] == {'episodes':16,'events':4928,'hops':740}
+    assert control['mathematical_replay'] is True
+    assert control['semantic_read_from_order_checked_for_all_logical_pairs'] is True
+    assert control['baseline_costs'][-1]['protected_scalar_registers'] == 141
+    assert control['baseline_costs'][-1]['scratch_scalar_registers'] == 25
+    assert 'exact_induced_logical_order' in control['lean_declarations']['SourceFeedbackTransport']
+    assert control['copy_reset_factor_two_readout_and_schedule_supplied'] is True
+    for key in ('source_selected_feedback_or_quantum_operations',
+                'full_q13_q21_routed_histories_executed',
+                'physical_causal_order_capacity_or_clock_identified', 'observed_postdiction'):
+        assert control[key] is False
+
+
+@pytest.mark.parametrize('mutation', ['mean', 'capacity', 'physical_scope'])
+def test_feedback_transport_control_rejects_forged_evidence(tmp_path, mutation):
+    packet = json.loads((ledger.CODE/'source_feedback_transport/transport_receipt.json').read_bytes())
+    if mutation == 'mean':
+        run = packet['episodes'][0]
+        event = next(e for e in run['events'] if e['op'] == 'mean')
+        event['writes'][0]['value'] = str(ledger.Fraction(event['writes'][0]['value'])+1)
+        previous = '0'*64
+        for event in run['events']:
+            event['previous_hash'] = previous
+            raw = (json.dumps({k:v for k,v in event.items() if k!='event_hash'},
+                sort_keys=True,separators=(',',':'),allow_nan=False)+'\n').encode()
+            previous = event['event_hash'] = hashlib.sha256(raw).hexdigest()
+        run['event_root'] = previous
+    elif mutation == 'capacity':
+        packet['episodes'][0]['costs']['protected_scalar_registers'] -= 1
+    else:
+        packet['scope'] = 'PHYSICAL_SOURCE_DERIVED_TRANSPORT'
+    path = tmp_path/'transport.json'
+    path.write_text(json.dumps(packet), encoding='utf-8')
+    with pytest.raises(SystemExit, match='structural certificate rejected'):
+        ledger._source_feedback_transport_control(path)
+
+
+def test_sequential_instrument_control_replays_full_parents_and_preserves_scope():
+    control = ledger._source_scalar_sequential_instrument_control()
+    result = control['independent_verifier_result']
+    assert result['mathematical_replay'] is True and result['parent_events_replayed'] == 5888
+    assert result['readout_times'] == 21 and result['prior_pair_brackets'] == 210
+    assert len(result['uniformly_resolved_steps']) == 15
+    assert len(control['continuous_comparison_rows']) == 21
+    assert len(control['regional_gadget']['ghz_cnot_tree']) == 31
+    assert control['reported_probabilities_are_unconditional_sequential_marginals'] is True
+    assert control['reference_has_same_repeated_instrument'] is True
+    for key in ('sampled_quantum_outcome_histories', 'branch_conditioned_clock_reconstructed',
+                'pointer_action_graph_identified_with_W12_seams',
+                'finite_duration_or_noisy_quantum_gates_certified',
+                'instrument_theorems_formalized_in_lean', 'physical_clock_or_observed_outcomes',
+                'observed_postdiction'):
+        assert control[key] is False
+
+
+@pytest.mark.parametrize('mutation', ['error', 'commutator', 'gadget', 'outcome_scope'])
+def test_sequential_instrument_control_rejects_forged_evidence(tmp_path, mutation):
+    packet = json.loads((ledger.CODE/'source_scalar_instruments/sequential_instrument_receipt.json').read_bytes())
+    if mutation == 'error':
+        packet['rows'][-1]['sequential_probability_error_upper'] = '0'
+    elif mutation == 'commutator':
+        packet['cross_time_brackets'][0]['commutator_over_i_Qphi'] = ['0','0']
+    elif mutation == 'gadget':
+        packet['regional_gadget']['ideal_operations_per_readout']['edge_cnots'] -= 1
+    else:
+        packet['scope']['physical_clock_or_observed_outcomes'] = True
+    path = tmp_path/'instrument.json'
+    path.write_text(json.dumps(packet), encoding='utf-8')
+    with pytest.raises(SystemExit, match='structural certificate rejected'):
+        ledger._source_scalar_sequential_instrument_control(path)
+
+
+def test_sequential_instrument_control_rejects_arithmetic_only_replay(monkeypatch):
+    packet = json.loads((ledger.CODE/'source_scalar_instruments/sequential_instrument_receipt.json').read_bytes())
+    summary = {'verified':True,**packet['summary'],'mathematical_replay':False,
+               'parent_events_replayed':None,'physical_outcomes':False,'branch_conditioned_clock':False}
+    monkeypatch.setattr(ledger, '_structural_packet', lambda *a, **k:(packet,summary,{}))
+    with pytest.raises(SystemExit, match='full fresh parent replay'):
+        ledger._source_scalar_sequential_instrument_control()
+
+
+def test_feedback_transport_control_reads_current_verifier_bytes(monkeypatch):
+    original = Path.read_bytes
+    target = ledger.CODE/'source_feedback_transport/verify_transport.py'
+    def altered(path):
+        data = original(path)
+        if path == target:
+            data += b'\ndef verify(packet):\n    raise ValueError("fresh feedback verifier sentinel")\n'
+        return data
+    monkeypatch.setattr(Path, 'read_bytes', altered)
+    with pytest.raises(SystemExit, match='fresh feedback verifier sentinel'):
+        ledger._source_feedback_transport_control()
+
+
+def test_sequential_instrument_control_reads_current_public_verifier_bytes(monkeypatch):
+    original = Path.read_bytes
+    target = ledger.CODE/'source_scalar_instruments/verify_sequential_instrument.py'
+    def altered(path):
+        data = original(path)
+        if path == target:
+            data += b'\ndef verify(packet):\n    raise ValueError("fresh public instrument verifier sentinel")\n'
+        return data
+    monkeypatch.setattr(Path, 'read_bytes', altered)
+    with pytest.raises(SystemExit, match='fresh public instrument verifier sentinel'):
+        ledger._source_scalar_sequential_instrument_control()

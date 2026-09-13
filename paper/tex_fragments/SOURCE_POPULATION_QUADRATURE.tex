@@ -77,8 +77,38 @@ rectangular partition, and derives its equal Lebesgue masses and Euclidean
 assignment bound. For each fixed globally Lipschitz Banach-valued detector,
 it proves the actual golden-population quadrature estimate and its
 refinement limit; the closed and half-open cube integrals agree almost
-everywhere. The spacetime null-boundary interval and strict-pair count
-specializations are analytic arguments.
+everywhere.
+
+\begin{proposition}[Actual event counts on continuity sets]
+\label{prop:source-golden-event-count}
+Fix $T\ge0$, $L,c>0$, $q_n=F_{n+2}$ and
+$\Delta_n=L/(c\sqrt{q_n})$. Let $C_n(B)$ count the distinct points
+$(j\Delta_n,s_n(b))\in B$ with $0\le j\le\lfloor T/\Delta_n\rfloor$
+and $0\le b_i<q_n$. If $B$ is measurable and its frontier is null for
+coordinate volume restricted to $\Omega=[0,T)\times[0,L)^3$, then
+\[
+ \Delta_n\frac{L^3}{q_n^3}\,C_n(B)
+ \longrightarrow \operatorname{vol}(B\cap\Omega).
+\]
+The discrepancy between equal event weights and the corresponding clipped
+time-cell weights is at most $L^3\Delta_n$, including an aligned final
+endpoint layer whose clipped cell is empty.
+\end{proposition}
+\begin{proof}
+On each cell, replace the indicator of $B$ by its value at the assigned
+event. Away from the null frontier these indicators converge pointwise,
+because the assignment distances vanish. They are bounded by one, so
+dominated convergence gives the clipped-cell count limit. The sum of the
+nonnegative equal-weight excesses is at most $L^3\Delta_n$; this also
+bounds the excess over any selected cells. The golden and time-coordinate
+maps are injective, so the label sums are point counts.
+\end{proof}
+These steps, the actual $\Delta_n$ specialization and the endpoint control
+are kernel-checked in \texttt{GoldenSourceCountLimit}. Identifying the
+null frontier of a particular causal region, transferring the estimate to
+moving generated-order intervals and deriving strict-pair limits remain
+separate analytic arguments. Extra routing events require another count
+estimate; the sampling theorem selects no physical measure or clock.
 
 \begin{proposition}[Localized radial-kernel quadrature]
 \label{prop:source-population-local-kernel}
