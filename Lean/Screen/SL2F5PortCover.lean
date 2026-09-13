@@ -82,9 +82,23 @@ theorem slToPort_ker : slToPort.ker = Subgroup.center SL2F5 := by
     change pslToPort (slToPsl A) = 1
     rw [hq, map_one]
 
-/-- The cover kernel has exactly two elements. -/
+/-- The cover kernel has exactly two elements.  We transport cardinality along
+an explicit subtype equivalence rather than rewriting under `Fintype.card`,
+whose inferred subtype instances depend on the subgroup expression. -/
 theorem slToPort_ker_card : Fintype.card slToPort.ker = 2 := by
-  simpa [slToPort_ker] using center_card_two
+  let e : slToPort.ker ≃ Subgroup.center SL2F5 :=
+    { toFun := fun x => ⟨x.1, by
+        rw [← slToPort_ker]
+        exact x.2⟩
+      invFun := fun x => ⟨x.1, by
+        rw [slToPort_ker]
+        exact x.2⟩
+      left_inv := fun x => Subtype.ext (by rfl)
+      right_inv := fun x => Subtype.ext (by rfl) }
+  calc
+    Fintype.card slToPort.ker =
+        Fintype.card (Subgroup.center SL2F5) := Fintype.card_congr e
+    _ = 2 := center_card_two
 
 /-- The nontrivial scalar center element lies over the identity port
 rotation. -/
