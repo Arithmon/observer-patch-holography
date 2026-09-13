@@ -8,7 +8,7 @@ MODULE_DIR = Path(__file__).resolve().parents[1]
 if str(MODULE_DIR) not in sys.path:
     sys.path.insert(0, str(MODULE_DIR))
 
-import sl2f5_port_spin_bridge_certificate as bridge  # noqa: E402
+import sl2f5_port_spin_bridge_certificate_v2 as bridge  # noqa: E402
 
 
 class SL2F5PortSpinBridgeTests(unittest.TestCase):
@@ -54,6 +54,13 @@ class SL2F5PortSpinBridgeTests(unittest.TestCase):
         self.assertEqual(spin["exact_field"], "Q(sqrt(5), i)")
         self.assertTrue(spin["faithful_two_dimensional_complex_representation"])
         self.assertEqual(iso["center_map"], "+I -> +I2; -I -> -I2")
+
+    def test_current_fixture_is_explicitly_relabelled_to_committed_ports(self) -> None:
+        relabel = self.certificate["carrier_bridge"]["current_to_committed_relabel"]
+        self.assertEqual(len(relabel["map"]), 12)
+        self.assertEqual(sorted(relabel["map"]), list(range(12)))
+        self.assertGreater(relabel["graph_isomorphisms"], 0)
+        self.assertGreater(relabel["orientation_matching_relabellings"], 0)
 
 
 if __name__ == "__main__":
