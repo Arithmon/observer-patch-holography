@@ -1276,6 +1276,10 @@ Mapping between Lean 4 theorems in this project and statements in
   `PORT-SPIN-LIFT` or prove `SL2F5 ≃* SpinLiftGroup`; neither layer invokes
   McKay or `E8`, selects `φ`, states a mass law, identifies the finite action
   with physical rotations, or source-selects the current fixture.
+  The separate exact certificate `code/a5_closure/sl2f5_mckay_e8_certificate.py`
+  computes the McKay graph of that spin doublet (affine `E8`, with a Galois
+  control showing the graph type does not select `φ`); it has no Lean
+  counterpart.
 - Universal cap coupling from icosahedral symmetry
   (`Screen/A5CouplingSymmetry.lean`, #576/#568): 9 / 9 declarations,
   sorry-free, standard axioms. Finite facts by kernel `decide` (caps map to
