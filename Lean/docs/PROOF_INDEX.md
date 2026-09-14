@@ -1260,6 +1260,22 @@ Mapping between Lean 4 theorems in this project and statements in
   icosahedral group, construct a faithful two-dimensional spinor
   representation, invoke McKay, derive or select `φ`, state a mass law, or
   identify the finite action with physical rotations.
+- Canonical `SL(2,F5)` cover of the port group
+  (`Screen/SL2F5PortCover.lean`, PR #788): sorry-free, standard axioms, no
+  `native_decide`.  Composes the canonical quotient `SL2F5 → PSL2F5` with
+  `PSL2F5 ≃* PortGroup` into `slToPort : SL2F5 →* PortGroup`, proves it
+  surjective with kernel exactly `Subgroup.center SL2F5`, so `-1` maps to the
+  identity port rotation, and records the cover square definitionally.  The
+  companion exact certificate
+  `code/a5_closure/sl2f5_port_spin_bridge_certificate.py` constructs an
+  explicit isomorphism from `SL(2,F5)` onto the executable conditional
+  `PORT-SPIN-LIFT` of the #314 matter packet: a derived orientation-preserving
+  carrier relabelling, one presentation triple `a^2 = b^3 = c^5 = abc = -I`,
+  the unique passing choice among the eight lift signs, all 14400 products,
+  and the cover square on all 120 elements.  The Lean module does not type
+  `PORT-SPIN-LIFT` or prove `SL2F5 ≃* SpinLiftGroup`; neither layer invokes
+  McKay or `E8`, selects `φ`, states a mass law, identifies the finite action
+  with physical rotations, or source-selects the current fixture.
 - Universal cap coupling from icosahedral symmetry
   (`Screen/A5CouplingSymmetry.lean`, #576/#568): 9 / 9 declarations,
   sorry-free, standard axioms. Finite facts by kernel `decide` (caps map to
