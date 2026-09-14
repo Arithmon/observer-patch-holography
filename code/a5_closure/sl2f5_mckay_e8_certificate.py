@@ -297,7 +297,7 @@ def conjugacy_classes(source: c784.Source) -> list[list[Matrix]]:
             source.mul(source.mul(h, g), source.inv(h))
             for h in source.elements
         }
-        require(cls <= unseen | (set(source.elements) - unseen), "CONJUGACY_CLASS", "internal class error")
+        require(cls <= unseen, "CONJUGACY_CLASS", "conjugacy classes overlap before partition update")
         unseen -= cls
         classes.append(sorted(cls))
     classes.sort(key=lambda cls: (c784.element_order(source.mul, source.identity, cls[0]), len(cls), cls[0]))
