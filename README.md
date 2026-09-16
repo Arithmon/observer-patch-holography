@@ -2,7 +2,7 @@
 
 > Reality is the stable public world reconstructed by finite, self-reading observers that compare their overlaps and repair disagreement.
 
-[Book](https://oph-book.floatingpragma.io/) · [Technical paper](https://philpapers.org/rec/MUEFOC) · [Textbooks](https://learn.floatingpragma.io/) · [Simulation](https://simulation.floatingpragma.io/) · [Notebook](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
+[Website](https://floatingpragma.io/) · [Book](https://oph-book.floatingpragma.io/) · [Technical paper](https://philpapers.org/rec/MUEFOC) · [Textbooks](https://learn.floatingpragma.io/) · [Simulation](https://simulation.floatingpragma.io/) · [Notebook](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
 
 Observer Patch Holography (OPH) builds a theory-of-everything research program
 around one thesis: **observers are primary, and objective reality is
