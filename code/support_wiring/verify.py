@@ -38,6 +38,18 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def read_json(path):
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            require(key not in result, "duplicate JSON key")
+            result[key] = value
+        return result
+    def reject_constant(value):
+        raise ValueError("nonfinite JSON constant: "+value)
+    return json.loads(Path(path).read_text(), object_pairs_hook=unique, parse_constant=reject_constant)
+
+
 def close(actual, expected, label, atol=2e-11):
     require(np.allclose(actual, expected, atol=atol, rtol=2e-11, equal_nan=False), label)
 
@@ -98,11 +110,11 @@ def frame_from_graph(g):
 
 
 def verify_geometry():
-    manifest = json.loads((HERE / "geometry/geometry.json").read_text())
+    manifest = read_json(HERE / "geometry/geometry.json")
     require(manifest["revision"] == "7faa47b5cf00b42f6bf6b3e95ed4f7eb64f4239f", "source revision")
     old_path = ROOT / "code/source_routing/support_w12_l3.json"
     require(digest(old_path) == manifest["l3_original_sha256"], "original L3 pin")
-    old = json.loads(old_path.read_text())
+    old = read_json(old_path)
     geometries, stats = {}, []
     for level in (3, 4, 5):
         path = HERE / f"geometry/geometry_l{level}.npz"
@@ -117,6 +129,10 @@ def verify_geometry():
         centres /= np.linalg.norm(centres, axis=1)[:, None]
         close(centres, g["centres"], "cell centres")
         close(g["areas"].sum(), 4*math.pi, "sphere area")
+        va, vb, vc = verts[faces[:, 0]], verts[faces[:, 1]], verts[faces[:, 2]]
+        area = 2*np.arctan2(abs(np.sum(va*np.cross(vb, vc), axis=1)),
+                           1+np.sum(va*vb+vb*vc+vc*va, axis=1))
+        close(g["areas"], area, "individual spherical triangle areas")
         v_incidence, e_incidence = defaultdict(list), defaultdict(list)
         for cell, face in enumerate(faces):
             for j in range(3):
@@ -159,6 +175,8 @@ def verify_geometry():
             pairs = sorted({(a, b) for cells in inc.values() for a in cells for b in cells if a < b})
             wire = g[wiring]
             require(np.array_equal(wire[:, [0, 2]], pairs), "complete geometric neighbourhood")
+            support = sparse.coo_matrix((np.ones(len(wire)), (wire[:, 0], wire[:, 2])), shape=(c, c)).tocsr()
+            require(sparse.csgraph.connected_components(support, directed=False, return_labels=False) == 1, "connected glued support")
             slots = np.r_[wire[:, 0]*12+wire[:, 1], wire[:, 2]*12+wire[:, 3]]
             require(np.all((wire[:, [1, 3]] >= 0) & (wire[:, [1, 3]] < 12)), "port range")
             require(len(np.unique(slots)) == len(slots), "unique glued port slots")
@@ -197,7 +215,7 @@ def verify_geometry():
 
 
 def verify_trace(directory, geometries):
-    manifest = json.loads((directory / "trace.json").read_text())
+    manifest = read_json(directory / "trace.json")
     binding = {"schema": "oph.support_wiring.trace.v1", "specification_sha256": digest(HERE / "SPECIFICATION.md"),
                "geometry_sha256": digest(HERE / "geometry/geometry.json"), "sweeps_per_level": 4,
                "levels": [3, 4, 5], "numerator_bits": 192, "law": "exact_pair_mean",
@@ -355,7 +373,7 @@ def check_spatial(row, points):
 
 def verify_intervals(output, geometries, replay):
     manifest, parents, owner, phase, positions, checkpoints, _ = replay
-    rows = json.loads((output / "provenance.json").read_text())
+    rows = read_json(output / "provenance.json")
     stored_ids = np.load(output / "interval_members.npz")
     ph, writer = checkpoints[3, 1]
     rb = positions[ph]
@@ -408,7 +426,7 @@ def qphi_sign(a, b):
 
 
 def verify_q13(output, geometry):
-    row = json.loads((output / "q13.json").read_text())
+    row = read_json(output / "q13.json")
     path = output / "q13_reads.npz"
     require(row["trace_sha256"] == digest(path), "q13 trace hash")
     require(row["source_producer_sha256"] == digest(ROOT / "evidence/source_net_causal_poset/build_causal_poset.py"), "q13 definition pin")
@@ -482,7 +500,7 @@ def verify_q13(output, geometry):
 
 
 def verify_controls(output, geometries, kernels=True):
-    rows = json.loads((output / "controls.json").read_text())
+    rows = read_json(output / "controls.json")
     matrices = np.load(output / "kernels.npz")
     require(len(rows) == 9, "all levels and wiring controls")
     for index, row in enumerate(rows):
@@ -555,16 +573,91 @@ def verify_controls(output, geometries, kernels=True):
     return rows
 
 
+def verify_inventory(output):
+    manifest = read_json(output/"archive_manifest.json")
+    require(manifest["schema"] == "oph.support_wiring.archive.v1", "archive schema")
+    actual = {p.relative_to(output).as_posix() for p in output.rglob("*") if p.is_file() and p.name != "archive_manifest.json"}
+    require(set(manifest["artifacts"]) == actual, "complete evidence inventory")
+    for name, pin in manifest["artifacts"].items():
+        require(".." not in Path(name).parts and not Path(name).is_absolute(), "safe archive path")
+        path = output/name
+        require(path.stat().st_size == pin["bytes"] and digest(path) == pin["sha256"], "archive artifact digest: "+name)
+    expected_sources = {p.relative_to(ROOT).as_posix() for p in HERE.rglob("*")
+                        if p.is_file() and "__pycache__" not in p.parts}
+    expected_sources.add(".github/workflows/support-wiring.yml")
+    require(set(manifest["sources"]) == expected_sources, "complete source inventory")
+    for name, pin in manifest["sources"].items():
+        require(digest(ROOT/name) == pin, "source digest: "+name)
+    require(manifest["mirror"] == "evidence/source_net_causal_poset/support_wiring_receipt.json", "mirror location")
+    if output.resolve() == DEFAULT.resolve():
+        require((ROOT/manifest["mirror"]).read_bytes() == (output/"support_wiring_receipt.json").read_bytes(), "byte-exact causal-poset mirror")
+
+
+def verify_receipt(output, stats, replay, intervals, q13, controls):
+    r = read_json(output/"support_wiring_receipt.json")
+    require(r["schema"] == "oph.support_wiring.paired_receipt.v1" and r["issue"] == 776, "paired receipt schema")
+    require(r["specification_sha256"] == digest(HERE/"SPECIFICATION.md"), "receipt specification")
+    require(r["geometry"] == read_json(HERE/"geometry/geometry.json"), "receipt geometry")
+    require(len(r["wiring"]) == len(stats), "wiring census size")
+    for reported, expected in zip(r["wiring"], stats):
+        for key in expected:
+            if key == "global_direction_dot":
+                for moment in ("min", "mean", "max"):
+                    close(reported[key][moment], expected[key][moment], "global antipodal statistic")
+            else:
+                require(reported[key] == expected[key], "wiring statistic: "+key)
+    require(r["provenance_intervals"] == intervals, "receipt provenance readouts")
+    require(r["record_metric_q13"] == q13, "receipt q13 readouts")
+    require(r["canonical_controls"] == controls, "receipt control readouts")
+    manifest = replay[0]
+    execution = {"law": "exact_pair_mean", "events": manifest["events"], "phases": len(manifest["chunks"]),
+                 "mean_actions": replay[-1]["mean_actions"],
+                 "glued_actions": sum(c["event_count"]//2 for c in manifest["chunks"] if c["kind"] == "glued"),
+                 "preparation_writes": 12*1280, "refinement_writes": 12*(5120+20480),
+                 "final_denominator_exponent": replay[-1]["final_exponent"], "final_chain": replay[-1]["final_chain"]}
+    require(r["execution"] == execution, "receipt executed law and census")
+    expected_boundary = {"declared_wiring_port_assignment_schedule_loads_and_joins": True,
+                         "canonical_law_for_every_provenance_seam": True,
+                         "physical_clock": False, "continuum_limit": False, "source_selection": False,
+                         "M1_derived": False, "universal_finite_schedule_confluence": False,
+                         "dimension_is_acceptance_target": False, "port_label_antipodes_imposed_on_gluing": False,
+                         "join_is_commutative_cell_pullback_in_common_port_labels": True}
+    require(r["claim_boundary"] == expected_boundary, "receipt nonclaims")
+    h = r["historical_L6"]
+    baseline = ROOT/"evidence/exact_federation_L6_canonical_20260909"
+    require(h["archive"] == baseline.relative_to(ROOT).as_posix() and h["level"] == 6 and h["carriers"] == 81920, "historical regulator labels")
+    require(set(h["sha256"]) == {p.name for p in baseline.iterdir() if p.is_file()}, "historical file census")
+    for name, pin in h["sha256"].items():
+        require(pin == digest(baseline/name), "historical input pin")
+    kernel = read_json(baseline/"kernel_readout.json")
+    require(h["isolated_kernel_readout"] == kernel["per_cell"][0]["isolated"], "historical isolated kernel readout")
+    require(h["w3_kernel_summary"] == kernel["summary_glued"] and h["kernel_steps"] == kernel["steps"], "historical slow-band comparison")
+    require(h["kernel_sample_count"] == len(kernel["cells"]), "historical sample count")
+    require(h["isolated_n300_max_deviation_from_4P"] == kernel["isolated_max_abs_deviation_from_4_P_slow_at_n_300"], "historical isolated comparison")
+    for field, name in (("canonical_w3", "float_law_port_pair.json"), ("historical_integer_control", "integer_law_port_pair.json")):
+        source = read_json(baseline/name)
+        require(h[field] == {k: source[k] for k in h[field]}, "historical law-labelled comparison")
+    source = read_json(baseline/"float_law_isolated.json")
+    require(h["canonical_isolated"] == {"law": source["law"], "schedules": len(source["schedules"]),
+                                        "sweeps": source["sweeps"], "all_terminated": source["all_terminated"],
+                                        "component_mean_within_1e-9_all": source["component_mean_within_1e-9_all"]}, "historical isolated confluence")
+    print("Verified paired receipt, historical comparisons and causal-poset mirror", flush=True)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--archive", type=Path, default=DEFAULT)
     parser.add_argument("--part", choices=["all", "trace", "kernels"], default="all")
     args = parser.parse_args()
+    if args.part == "all":
+        verify_inventory(args.archive)
     geometries, stats = verify_geometry()
     if args.part != "kernels":
         replay = verify_trace(args.archive / "trace", geometries)
-        verify_intervals(args.archive, geometries, replay)
-        verify_q13(args.archive, geometries[3])
+        intervals = verify_intervals(args.archive, geometries, replay)
+        q13 = verify_q13(args.archive, geometries[3])
     if args.part != "trace":
-        verify_controls(args.archive, geometries)
+        controls = verify_controls(args.archive, geometries)
+    if args.part == "all":
+        verify_receipt(args.archive, stats, replay, intervals, q13, controls)
     print("SUPPORT_WIRING_VERIFIED " + args.part, flush=True)

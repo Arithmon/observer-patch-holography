@@ -4,10 +4,9 @@ import sys
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import experiment as producer
-import readouts
-import verify
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from support_wiring import experiment as producer, readouts, verify
+from support_wiring import check_reproduction
 
 
 def test_exact_dyadic_encoding_and_overflow():
@@ -171,3 +170,75 @@ def test_dimension_references_and_undefined_cases():
     assert readouts.dimension(0) is None
     assert readouts.dimension(-1) is None
     assert readouts.dimension(1.1) is None
+
+
+@pytest.mark.parametrize("mutation", ["matrix", "share", "schedule"])
+def test_kernel_and_confluence_mutations_fail(tmp_path, mutation):
+    import json
+    archive = producer.ARCHIVE
+    rows = json.loads((archive/"controls.json").read_text())
+    matrices = dict(np.load(archive/"kernels.npz"))
+    if mutation == "matrix":
+        key = rows[0]["kernels"][0]["matrix"]
+        matrices[key][0, 0] += .1
+        expected = "independent response Gram"
+    elif mutation == "share":
+        rows[0]["kernels"][0]["slow_share"] += .1
+        expected = "slow-band share"
+    else:
+        rows[0]["confluence"][0]["squared_distance_by_sweep"][1] += 1
+        expected = "finite confluence residuals"
+    np.savez_compressed(tmp_path/"kernels.npz", **matrices)
+    producer.save_json(tmp_path/"controls.json", rows)
+    geometry = {level: dict(np.load(producer.HERE/f"geometry/geometry_l{level}.npz")) for level in (3, 4, 5)}
+    with pytest.raises(ValueError, match=expected):
+        verify.verify_controls(tmp_path, geometry)
+
+
+@pytest.mark.parametrize("mutation", ["writer", "value", "interior"])
+def test_q13_rehashed_mutations_fail(tmp_path, mutation):
+    import json
+    data = dict(np.load(producer.ARCHIVE/"q13_reads.npz"))
+    report = json.loads((producer.ARCHIVE/"q13.json").read_text())
+    if mutation == "writer":
+        data["read_writers"][0] += 1
+        expected = "q13 authenticated previous versions"
+    elif mutation == "value":
+        data["values"][1, 0] += 1
+        expected = "q13 read law"
+    else:
+        report["intervals"][-1]["interior"] = True
+        expected = "q13 interior/clipping flag"
+    np.savez_compressed(tmp_path/"q13_reads.npz", **data)
+    report["trace_sha256"] = producer.sha(tmp_path/"q13_reads.npz")
+    producer.save_json(tmp_path/"q13.json", report)
+    geometry = dict(np.load(producer.HERE/"geometry/geometry_l3.npz"))
+    with pytest.raises(ValueError, match=expected):
+        verify.verify_q13(tmp_path, geometry)
+
+
+@pytest.mark.parametrize("raw, message", [('{'+'"x":1,"x":2}', "duplicate JSON key"),
+                                          ('{'+'"x":NaN}', "nonfinite JSON constant")])
+def test_strict_json_rejects_ambiguous_custody(tmp_path, raw, message):
+    path = tmp_path/"ambiguous.json"
+    path.write_text(raw)
+    with pytest.raises(ValueError, match=message):
+        verify.read_json(path)
+
+
+def test_reproduction_keeps_integer_evidence_exact():
+    check_reproduction.same({"count": 2**60, "readback": .1}, {"count": 2**60, "readback": .1+1e-12})
+    with pytest.raises(ValueError, match="exact field"):
+        check_reproduction.same(2**60, 2**60+1)
+    with pytest.raises(ValueError, match="float"):
+        check_reproduction.same(float("nan"), float("nan"))
+    with pytest.raises(ValueError, match="keys"):
+        check_reproduction.same({"x": 1}, {})
+
+
+def test_reproduction_checks_all_array_payloads(tmp_path):
+    a, b = tmp_path/"a.npz", tmp_path/"b.npz"
+    np.savez(a, counts=np.array([2**60], dtype=np.uint64))
+    np.savez(b, counts=np.array([2**60+1], dtype=np.uint64))
+    with pytest.raises(ValueError, match="array values"):
+        check_reproduction.arrays(a, b)

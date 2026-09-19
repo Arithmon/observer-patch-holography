@@ -16,7 +16,10 @@ from pathlib import Path
 
 import numpy as np
 
-from experiment import ARCHIVE, HERE, ROOT, canonical, save_json, sha
+if __package__:
+    from .experiment import ARCHIVE, HERE, ROOT, canonical, save_json, sha
+else:
+    from experiment import ARCHIVE, HERE, ROOT, canonical, save_json, sha
 
 
 def dimension(f):
