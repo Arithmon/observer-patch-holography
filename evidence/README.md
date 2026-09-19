@@ -33,8 +33,9 @@ papers. Each package states its own replay and claim boundary.
   input pinned by the particle-side source projections.
 - [`particle_simulation_receipts/`](particle_simulation_receipts/) publishes
   the hash-bound report receipts for the calibration-null and direct
-  permutation-transport assays cited by the particle paper. Their upstream
-  raw arrays are not included.
+  permutation-transport assays cited by the particle paper, with a
+  standard-library verifier that replays their recorded verdict logic. Their
+  upstream raw arrays are not included.
 
 Evidence directories are not interchangeable. A carrier count shared by two
 packages does not make one run evidence for the observable tested by another.

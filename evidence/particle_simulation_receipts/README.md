@@ -14,7 +14,16 @@ Consistency*.
   excludes the natural direct carrier tested there, while leaving a future
   source-derived complex lift open.
 
-`manifest.json` binds the archived receipt bytes. The receipts also contain
+`manifest.json` binds the archived receipt bytes.
+`verify_particle_simulation_receipts.py` checks the manifest and inventory,
+the calibration-null audit, and the transport assay, recomputing each state's
+target distances, Haar distance, match flags, and the aggregate verdict from
+the stored singular-value ratios. It uses the standard library only:
+
+```bash
+python3 evidence/particle_simulation_receipts/verify_particle_simulation_receipts.py
+```
+ The receipts also contain
 SHA-256 hashes of their upstream configurations and arrays, but those
 upstream run arrays are not mirrored in this compact package. Consequently
 this is public custody for the printed report values and verdict boundaries,
