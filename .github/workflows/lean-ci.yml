@@ -38,6 +38,9 @@ concurrency:
   group: lean-ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -48,7 +51,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # FZ-11 resolves and hashes its original and repaired proof blobs at
           # their declared commits, then checks the repair is a direct child.
@@ -60,8 +63,15 @@ jobs:
       - name: Install elan
         run: |
           set -euo pipefail
-          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
-            | sh -s -- -y --default-toolchain none
+          # Pinned elan release, verified against its published sha256.
+          elan_version=v4.2.4
+          elan_sha256=42b94d4244e8353142c456ec0e4ca6528fd898a6c604d4059f494e706e431f63
+          cd "$RUNNER_TEMP"
+          curl -sSfL -o elan.tar.gz \
+            "https://github.com/leanprover/elan/releases/download/${elan_version}/elan-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${elan_sha256}  elan.tar.gz" | sha256sum -c -
+          tar xzf elan.tar.gz
+          ./elan-init -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
       - name: Print toolchain
@@ -71,7 +81,7 @@ jobs:
           lake --version
 
       - name: Restore Lake build cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: |
             Lean/.lake/build
@@ -205,7 +215,7 @@ jobs:
           fi
 
       - name: Save Lake build cache
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         if: always()
         with:
           path: |
@@ -241,7 +251,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          if rg -n '^\s*(sorry|admit)\b|:=\s*(sorry|admit)\b' \
+          if rg -n '^\s*(sorry|admit)\b|(:=|\bby|\bexact|\brefine|·)\s*(sorry|admit)\b' \
               . --glob '*.lean' --glob '!**/.lake/**'; then
             echo "Unexpected Lean admission in the umbrella project." >&2
             exit 1
@@ -254,7 +264,16 @@ jobs:
             exit 1
           fi
 
-          if rg -n '^\s*(sorry|admit)\b|:=\s*(sorry|admit)\b' \
+          # Repository-wide: no Lean file declares an axiom. The pattern
+          # matches declaration shape, so docstring lines that begin with
+          # the word "axiom" do not trip it.
+          if rg -n '^\s*(@\[[^]]*\]\s*)?((private|protected|noncomputable|unsafe)\s+)*axiom\s+[^\s:({\[]+\s*[:({\[]' \
+              . --glob '*.lean' --glob '!**/.lake/**'; then
+            echo "Unexpected axiom declaration in the Lean tree." >&2
+            exit 1
+          fi
+
+          if rg -n '^\s*(sorry|admit)\b|(:=|\bby|\bexact|\brefine|·)\s*(sorry|admit)\b' \
               ObservableNormalForms/ObservableNormalForms \
               --glob '*.lean'; then
             echo "Unexpected admission in neutral submission artifact." >&2
@@ -319,7 +338,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
@@ -364,8 +383,15 @@ jobs:
         if: steps.changes.outputs.required == 'true'
         run: |
           set -euo pipefail
-          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
-            | sh -s -- -y --default-toolchain none
+          # Pinned elan release, verified against its published sha256.
+          elan_version=v4.2.4
+          elan_sha256=42b94d4244e8353142c456ec0e4ca6528fd898a6c604d4059f494e706e431f63
+          cd "$RUNNER_TEMP"
+          curl -sSfL -o elan.tar.gz \
+            "https://github.com/leanprover/elan/releases/download/${elan_version}/elan-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${elan_sha256}  elan.tar.gz" | sha256sum -c -
+          tar xzf elan.tar.gz
+          ./elan-init -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
       - name: Print toolchain
@@ -377,7 +403,7 @@ jobs:
 
       - name: Restore Golden-sector build cache
         if: steps.changes.outputs.required == 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: Lean/.lake/build
           key: golden-psl-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
@@ -425,7 +451,7 @@ jobs:
 
       - name: Save Golden-sector build cache
         if: always() && steps.changes.outputs.required == 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: Lean/.lake/build
           key: golden-psl-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
@@ -441,7 +467,7 @@ jobs:
         if: steps.changes.outputs.required == 'true'
         run: |
           set -euo pipefail
-          if rg -n '^\s*(sorry|admit)\b|:=\s*(sorry|admit)\b|^\s*axiom\b|\bby\s+native_decide\b' \
+          if rg -n '^\s*(sorry|admit)\b|(:=|\bby|\bexact|\brefine|·)\s*(sorry|admit)\b|^\s*axiom\b|\bby\s+native_decide\b' \
               Lean/Screen/GoldenSectorPSL2F5Representations.lean; then
             echo "Unexpected proof debt in the typed Golden-sector PSL2F5 bridge." >&2
             exit 1
@@ -457,7 +483,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
@@ -501,8 +527,15 @@ jobs:
         if: steps.changes.outputs.required == 'true'
         run: |
           set -euo pipefail
-          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
-            | sh -s -- -y --default-toolchain none
+          # Pinned elan release, verified against its published sha256.
+          elan_version=v4.2.4
+          elan_sha256=42b94d4244e8353142c456ec0e4ca6528fd898a6c604d4059f494e706e431f63
+          cd "$RUNNER_TEMP"
+          curl -sSfL -o elan.tar.gz \
+            "https://github.com/leanprover/elan/releases/download/${elan_version}/elan-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${elan_sha256}  elan.tar.gz" | sha256sum -c -
+          tar xzf elan.tar.gz
+          ./elan-init -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
       - name: Print toolchain
@@ -514,7 +547,7 @@ jobs:
 
       - name: Restore OphGap build cache
         if: steps.changes.outputs.required == 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: |
             Lean/.lake/build/lib/lean/OphGap
@@ -555,7 +588,7 @@ jobs:
 
       - name: Save OphGap build cache
         if: always() && steps.changes.outputs.required == 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: |
             Lean/.lake/build/lib/lean/OphGap
@@ -575,7 +608,7 @@ jobs:
         if: steps.changes.outputs.required == 'true'
         run: |
           set -euo pipefail
-          if rg -n '^\s*(sorry|admit)\b|:=\s*(sorry|admit)\b|^\s*axiom\b|\bby\s+native_decide\b' \
+          if rg -n '^\s*(sorry|admit)\b|(:=|\bby|\bexact|\brefine|·)\s*(sorry|admit)\b|^\s*axiom\b|\bby\s+native_decide\b' \
               Lean/OphGap.lean Lean/OphGap --glob '*.lean'; then
             echo "Unexpected proof debt in OphGap." >&2
             exit 1
