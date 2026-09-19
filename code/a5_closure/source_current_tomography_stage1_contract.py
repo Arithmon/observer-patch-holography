@@ -89,9 +89,9 @@ def payload() -> dict[str, Any]:
         },
         "ordered_histories": {
             "required": True,
-            "both_composition_orders_per_ordered_port_pair": True,
+            "both_composition_orders_per_unordered_port_pair": True,
             "same_source_packet": True,
-            "minimum_pairs": 12 * 11,
+            "unordered_port_pairs": 12 * 11 // 2,\n            "ordered_compositions": 12 * 11,
             "reason": (
                 "the registered single-generator functional calculus is commutative; "
                 "order-sensitive mixed perturbations are the first source object capable "
@@ -194,7 +194,7 @@ def main() -> int:
         require(gap["nonidentity_rechartings_missing_from_response_words"] == 59,
                 "recharting gap drift")
         contract = result["source_packet_contract"]
-        require(contract["ordered_histories"]["minimum_pairs"] == 132,
+        require(contract["ordered_histories"]["unordered_port_pairs"] == 66\n                and contract["ordered_histories"]["ordered_compositions"] == 132,
                 "ordered-pair contract drift")
         require(result["claim_boundary"]["does_not_consume_conditional_current_fixture"],
                 "fixture firewall failed")
