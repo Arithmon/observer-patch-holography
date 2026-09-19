@@ -26,8 +26,8 @@
  },
  "curated_archive": {
   "file_count": 6,
-  "total_bytes": 496238,
-  "inventory_sha256": "c368ee8a3a5ccfd294663dae3e7de83c03585be212efc22128c7e18e11d3d94a",
+  "total_bytes": 502584,
+  "inventory_sha256": "607fc7e75f5dd409cdcecce7d61b721e528d2b3f4b0944242ceb87e680665633",
   "is_complete_copy_of_original_receipts": true,
   "selection": "the source-net causal-limit receipt (q = 5..55, three families), the carrier source-net receipt (q = 5..34), the two stored carrier event logs (q = 5, 8) and the standalone generator; paired canonical support-wiring diagnostic (#776)"
  },
@@ -142,8 +142,8 @@
   },
   {
    "path": "support_wiring_receipt.json",
-   "bytes": 78745,
-   "sha256": "3d1e901ceee369b8ccce0362a265e283b5c668d8cf229d17daf4a797e4eaa655"
+   "bytes": 85091,
+   "sha256": "f5af550934f621fcd1c39e5e66df8ad2b2b0132f614fec88067f90e452f444af"
   }
  ]
 }

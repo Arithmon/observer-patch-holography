@@ -113,6 +113,28 @@ choice changes any count. The contrast between the routes is measured under
 different laws, event granularities and clocks; it does not isolate wiring as
 the sole cause of the gap, select the metric read law, or derive M1.
 
+The requested second audit added the q13 family's existing lower-dimensional
+scientific controls under an explicit [post-run declaration](../../code/support_wiring/CONTROL_ADDENDUM.md).
+They execute the same metric threshold and read law with one or two spatial
+axes, retaining all writer versions and integer values (316 and 20,196 reads).
+The complete four-lag readouts are in `q13_controls.json` and the paired receipt:
+
+| Spatial axes | Lag | Events N | Strict pairs C | MM dimension | Spatially interior? |
+| --- | ---: | ---: | ---: | ---: | --- |
+| 1 | 1 | 2 | 1 | 1 | Yes |
+| 1 | 2 | 9 | 15 | 2.24012 | Yes |
+| 1 | 3 | 16 | 66 | 1.87199 | Yes |
+| 1 | 4 | 29 | 202 | 2.00658 | **No: clipped** |
+| 2 | 1 | 2 | 1 | 1 | Yes |
+| 2 | 2 | 39 | 75 | 3.98565 | Yes |
+| 2 | 3 | 76 | 986 | 2.47979 | Yes |
+| 2 | 4 | 205 | 4,610 | 3.04457 | **No: clipped** |
+
+Their flat-space reference fractions are 1/2 and 8/35, corresponding to MM
+dimensions 2 and 3. These are comparisons, not acceptance thresholds. Exact
+counts at all eight intervals agree with the historical source family; the
+lag-four agreement with a reference dimension does not remove its clipping.
+
 ## Contract and verification
 
 | Issue requirement | Retained evidence and check |
@@ -121,7 +143,7 @@ the sole cause of the gap, select the metric read law, or derive M1.
 | Wiring, antipodes, pentagonal deficits, W3 comparison | `wiring` in the paired receipt; full incidence, optimal assignment and connectedness checks |
 | Confluence and slow-band share beside historical controls | `controls.json`, `kernels.npz`, `historical_L6`; forward/reverse finite residuals and independent full-field Gram checks |
 | One-level and joined-tower provenance, both placements and growth | `provenance.json`, `interval_members.npz`; reverse descendant count independently reproduces all strict-pair counts |
-| Same q13 readouts | `q13.json`, `q13_reads.npz`; exact metric predicate, complete readback metric identity, versioned read law and counts |
+| Same q13 readouts and scientific controls | `q13.json`, `q13_reads.npz`, `q13_controls.json`, both `q13_control_d*_reads.npz`; exact metric predicates, complete readback metric identities, versioned read laws and counts |
 | Independent verifier, tests, causal-poset mirror | `code/support_wiring/verify.py`, mutation tests, dedicated CI, byte inventory and mirrored receipt |
 
 Run `python code/support_wiring/verify.py` for the full check. The verifier

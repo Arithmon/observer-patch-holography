@@ -4,6 +4,10 @@ The frozen [specification](SPECIFICATION.md) states all inputs, the event
 convention, interval selection and limits. The complete receipt and trace live
 in [`evidence/support_wiring_776/`](../../evidence/support_wiring_776/README.md).
 No unpublished simulator module or #777 implementation is required for replay.
+The [post-run control addendum](CONTROL_ADDENDUM.md) retains the q13 family's
+existing one- and two-dimensional scientific controls beside the primary
+comparison. The `readouts.py q13` command executes all three families; full
+verification and fresh reproduction require every family and its complete tape.
 
 Run the independent checks from the repository root:
 
@@ -16,6 +20,9 @@ python code/support_wiring/verify.py
 The verifier authenticates all files, reconstructs current writers, checks
 every exact mean and refinement copy, computes every writer readback again,
 and derives the order from these reads. It does not import either producer.
+The record-metric tapes require exact integer payloads, array shapes and every
+read offset; fractional values and unused appended reads cannot be silently
+accepted. Historical comparisons require their complete law and result fields.
 It counts comparable pairs using reverse descendant bitsets; the producer
 uses forward ancestor bitsets. Exhaustive small-DAG tests check both against
 a third, Boolean-matrix oracle. Kernel verification uses the full-field

@@ -5,6 +5,54 @@ check. The pre-execution specification is commit `b013a019`. The mapping of
 every requirement to concrete evidence is in README.md. This audit does not
 change the issue's law or accept a target dimension in place of execution.
 
+## Requested second audit and corrections
+
+The second audit re-read the live issue against the implementation, rather
+than treating the first audit or green CI as proof of completeness. It found
+three acceptance gaps and one missing scientific comparison:
+
+* The q13 replay converted stored payloads with `int(...)`. A forged final
+  payload increased by 0.5, stored as floats with a recomputed tape hash, passed.
+  Replay now requires the declared integer dtypes and shapes before arithmetic.
+* An appended read and offset, with the reported count and hash updated, also
+  passed because the appended record was never visited. Replay now checks the
+  complete array census, exact lengths and every offset against the metric
+  graph before checking any per-event read list.
+* Replacing either historical W3 or integer comparison with an empty object
+  passed the receipt's comparison check: it only checked keys still present.
+  The verifier now requires every declared law, budget and result field.
+* The paired receipt included W3/isolated controls but omitted the record-metric
+  family's existing one- and two-dimensional scientific controls. The explicit
+  [post-run addendum](../../code/support_wiring/CONTROL_ADDENDUM.md) declares their
+  execution without changing the frozen original experiment or claiming blind
+  preregistration. Both complete tapes and all eight interval rows are now in
+  the receipt, mirror, independent replay and fresh-reproduction comparison.
+
+The first three findings were demonstrated against the old verifier, not
+inferred from hypothetical failures. Regression tests reject these corruptions
+after resealing their hashes, as well as missing/duplicated control families,
+altered counts, false historical agreement and suppressed clipping flags.
+No committed production payload or original interval count required correction.
+All original W12 trace chunks, geometry, kernels, provenance rows and main q13
+artifacts remain byte-identical to the first PR head.
+
+Both added controls reproduce their archived exact counts. Their lag-four
+dimensions are approximately 2.00658 and 3.04457, but **both are clipped**.
+All smaller intervals remain visible; no agreement with a reference dimension
+is required. The full verification below includes these controls. The targeted
+suite now contains **60 passing tests** (43 support-wiring and 17 source-routing).
+
+Closure assessment: the Objective is the executed canonical L3-L5 architecture;
+Deliverables 1-2 have wiring census, confluence and kernel controls; Deliverable
+3 has authenticated one-level/tower intervals with both placements; Deliverable
+4 now includes the q13 readout and its scientific controls; Deliverable 5 has
+independent replay, mutation tests and the byte-exact mirror. The Exit is met
+by those finite measurements. W12 interior means an order interval with executed
+past/future on the uncut, closed S2 support; q13 additionally reports the exact
+continuum-cube containment test. These are explicitly different interior tests,
+not evidence for a shared physical clock or a continuum dimension. The small
+one-level samples still do not establish a stable 2+1 reading.
+
 ## Corrections and controls carried forward
 
 * **The issue's own prior audit:** the abandoned partial provenance run used
@@ -73,7 +121,7 @@ Executed local gates:
 | Command or comparison | Result |
 | --- | --- |
 | `python code/support_wiring/verify.py` | `SUPPORT_WIRING_VERIFIED all`: all 99 trace chunks, 135 kernel matrices, interval counts, paired receipt and mirror passed |
-| `python -m pytest -q code/support_wiring/test_support_wiring.py code/source_routing/test_routing.py` | 44 passed |
+| `python -m pytest -q code/support_wiring/test_support_wiring.py code/source_routing/test_routing.py` | 60 passed after the requested second audit |
 | Fresh `experiment.py trace`, `readouts.py provenance`, `readouts.py q13`, followed by `verify.py --part trace` | Passed; fresh trace manifest and every chunk hash also byte-identical locally |
 | Historical `exact_federation_L6_canonical_20260909/verify_archive.py` | Passed, including actual integer schedule replay and independent canonical-control checks |
 | `source_net_causal_poset/verify_causal_poset_archive.py` | `CAUSAL_POSET_ARCHIVE_VERIFIED 6 files` |
