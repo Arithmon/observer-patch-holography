@@ -25,8 +25,8 @@
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "cc9487d0ba21a4db5b2606e19617a1764d1f35cdddc862986ccff6c2f878ad50",
-      "size_bytes": 893068
+      "sha256": "9292b3a14529ad193a9e3e310143d6bec4a72965f5c5a550fd977d7ec4966b8f",
+      "size_bytes": 893060
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
