@@ -250,7 +250,54 @@ def test_missing_historical_comparison_fails(tmp_path, field, mutation):
     with pytest.raises(ValueError, match="complete historical law-labelled comparison"):
         verify.verify_receipt(tmp_path, report["wiring"], (manifest, summary),
                               report["provenance_intervals"], report["record_metric_q13"],
-                              report["canonical_controls"])
+                              report["canonical_controls"], report["record_metric_q13_controls"])
+
+
+def test_q13_control_tapes_replay_and_reproduce(tmp_path):
+    controls = verify.read_json(producer.ARCHIVE/"q13_controls.json")
+    geometry = dict(np.load(producer.HERE/"geometry/geometry_l3.npz"))
+    for dim, saved in enumerate(controls["families"], 1):
+        fresh = readouts.record_metric_family(tmp_path, dim)
+        verify.verify_metric_family(tmp_path, geometry, fresh, dim)
+        filename = f"q13_control_d{dim}_reads.npz"
+        check_reproduction.arrays(producer.ARCHIVE/filename, tmp_path/filename)
+        fresh.pop("trace_sha256")
+        saved.pop("trace_sha256")
+        check_reproduction.same(saved, fresh)
+
+
+@pytest.mark.parametrize("mutation, message", [
+    ("missing", "complete q13 control families"),
+    ("duplicate", "complete q13 control families"),
+    ("target", "q13 control comparison boundary"),
+    ("count", "interval counts"),
+    ("historical", "q13 historical interval counts"),
+    ("clipping", "q13 interior/clipping flag"),
+])
+def test_q13_control_mutations_fail(tmp_path, mutation, message):
+    import shutil
+    controls = verify.read_json(producer.ARCHIVE/"q13_controls.json")
+    if mutation == "missing":
+        controls["families"].pop()
+    elif mutation == "duplicate":
+        controls["families"][1] = controls["families"][0]
+    elif mutation == "target":
+        controls["reference_is_acceptance_target"] = True
+    else:
+        row = controls["families"][0]["intervals"][-1]
+        if mutation == "count":
+            row["strict_pairs"] += 1
+        elif mutation == "historical":
+            row["historical_counts_equal"] = False
+        else:
+            row["interior"] = True
+    for dim in (1, 2):
+        name = f"q13_control_d{dim}_reads.npz"
+        shutil.copyfile(producer.ARCHIVE/name, tmp_path/name)
+    producer.save_json(tmp_path/"q13_controls.json", controls)
+    geometry = dict(np.load(producer.HERE/"geometry/geometry_l3.npz"))
+    with pytest.raises(ValueError, match=message):
+        verify.verify_q13_controls(tmp_path, geometry)
 
 
 @pytest.mark.parametrize("raw, message", [('{'+'"x":1,"x":2}', "duplicate JSON key"),

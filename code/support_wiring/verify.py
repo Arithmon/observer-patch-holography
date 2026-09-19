@@ -425,13 +425,12 @@ def qphi_sign(a, b):
                     np.where((u <= 0) & (v <= 0), np.sign(u+v), np.sign(u)*np.sign(u*u-5*v*v)))
 
 
-def verify_q13(output, geometry):
-    row = read_json(output / "q13.json")
-    path = output / "q13_reads.npz"
+def verify_metric_family(output, geometry, row, dim):
+    path = output / ("q13_reads.npz" if dim == 3 else f"q13_control_d{dim}_reads.npz")
     require(row["trace_sha256"] == digest(path), "q13 trace hash")
     require(row["source_producer_sha256"] == digest(ROOT / "evidence/source_net_causal_poset/build_causal_poset.py"), "q13 definition pin")
-    q, n = 13, 2197
-    labels = np.indices((q, q, q)).reshape(3, -1).T
+    q, n = 13, 13**dim
+    labels = np.indices((q,)*dim).reshape(dim, -1).T
     floors = np.asarray([(i+math.isqrt(5*i*i))//2 for i in range(q)])
     integer = -floors[labels]
     a = integer[:, None, :]-integer[None, :, :]
@@ -440,8 +439,8 @@ def verify_q13(output, geometry):
     bb = np.sum(2*a*b+b*b, axis=2)
     relation = qphi_sign(q*aa-1, q*bb) <= 0
     # Readback metric identity for the same source port records; full pair census.
-    ma, mb, mc = integer.T
-    ba, b_b, bc = labels.T
+    ma, mb, mc = np.pad(integer, ((0, 0), (0, 3-dim))).T
+    ba, b_b, bc = np.pad(labels, ((0, 0), (0, 3-dim))).T
     record = np.column_stack([b_b-ma, b_b+ma, bc-mb, bc+mb, ba-mc, ba+mc])
     positive, negative = (0, 1, 4, 5, 8, 9), (3, 2, 7, 6, 11, 10)
     loads = np.zeros((n, 12))
@@ -486,16 +485,22 @@ def verify_q13(output, geometry):
             parents.append(actual)
     require(np.array_equal(z["parent_offsets"][:n+1], np.zeros(n+1)), "q13 initial records do not read")
     require(z["parent_offsets"][-1] == len(z["read_writers"]) == row["reads"], "q13 read count")
-    require((row["q"], row["dimension"], row["sites"], row["rounds"], row["events"]) == (13, 3, n, 4, 5*n), "q13 census")
+    require((row["q"], row["dimension"], row["sites"], row["rounds"], row["events"]) == (13, dim, n, 4, 5*n), "q13 census")
     coords = integer+phi*labels
     centre_axis = min(range(q), key=lambda i: (abs(-floors[i]+phi*i-.5), i))
-    centre = centre_axis*(q*q+q+1)
+    centre = centre_axis*sum(q**i for i in range(dim))
     require(row["centre"] == centre and len(row["intervals"]) == 4, "q13 central tips")
+    historical = read_json(ROOT / "evidence/source_net_causal_poset/source_net_causal_limit_receipt.json")
+    historical_level = next(level for level in historical["levels"] if level["q"] == q)
+    historical_family = next(f for f in historical_level["families"] if f["dimension"] == dim)
     previous = None
     for lag, item in enumerate(row["intervals"], 1):
         require((item["lag"], item["bottom"], item["top"]) == (lag, centre, lag*n+centre), "q13 interval tips")
         members, pairs, height = count_interval(parents, centre, lag*n+centre)
         check_order_row(item, members, pairs, height)
+        old = historical_family["vertical_intervals"][lag-1]
+        require(item["historical_counts_equal"] is True and len(members) == old["inclusive_event_count"]
+                and pairs == old["strict_pair_count"], "q13 historical interval counts")
         require(item["counts_by_layer"] == np.bincount(members//n, minlength=lag+1).tolist(), "q13 layers")
         x, y = -int(floors[centre_axis]), centre_axis
         interior = all(qphi_sign(4*q*(u*u+v*v)-lag*lag, 4*q*(2*u*v+v*v)) >= 0
@@ -507,8 +512,27 @@ def verify_q13(output, geometry):
         else:
             require(item["count_ratio_to_previous"] is None, "q13 initial growth")
         previous = len(members)
-    print("Verified q13 full metric identity, 1,176,764 versioned reads and four interval counts", flush=True)
+    print(f"Verified q13 d={dim} metric identity, {len(z['read_writers']):,} versioned reads and four interval counts", flush=True)
     return row
+
+
+def verify_q13(output, geometry):
+    return verify_metric_family(output, geometry, read_json(output / "q13.json"), 3)
+
+
+def verify_q13_controls(output, geometry):
+    controls = read_json(output / "q13_controls.json")
+    require(controls["schema"] == "oph.support_wiring.q13_controls.v1", "q13 controls schema")
+    require(controls["addendum_sha256"] == digest(HERE / "CONTROL_ADDENDUM.md"), "q13 control declaration")
+    require(controls["historical_receipt_sha256"] == digest(ROOT / "evidence/source_net_causal_poset/source_net_causal_limit_receipt.json"),
+            "q13 control historical pin")
+    require([row["dimension"] for row in controls["families"]] == [1, 2], "complete q13 control families")
+    require(controls["flat_reference_ordering_fractions"] == {"1": "1/2", "2": "8/35"}
+            and controls["flat_reference_mm_dimensions"] == {"1": 2, "2": 3}
+            and controls["reference_is_acceptance_target"] is False, "q13 control comparison boundary")
+    for dim, row in enumerate(controls["families"], 1):
+        verify_metric_family(output, geometry, row, dim)
+    return controls
 
 
 def verify_controls(output, geometries, kernels=True):
@@ -605,7 +629,7 @@ def verify_inventory(output):
         require((ROOT/manifest["mirror"]).read_bytes() == (output/"support_wiring_receipt.json").read_bytes(), "byte-exact causal-poset mirror")
 
 
-def verify_receipt(output, stats, replay, intervals, q13, controls):
+def verify_receipt(output, stats, replay, intervals, q13, controls, q13_controls):
     r = read_json(output/"support_wiring_receipt.json")
     require(r["schema"] == "oph.support_wiring.paired_receipt.v1" and r["issue"] == 776, "paired receipt schema")
     require(r["specification_sha256"] == digest(HERE/"SPECIFICATION.md"), "receipt specification")
@@ -620,6 +644,7 @@ def verify_receipt(output, stats, replay, intervals, q13, controls):
                 require(reported[key] == expected[key], "wiring statistic: "+key)
     require(r["provenance_intervals"] == intervals, "receipt provenance readouts")
     require(r["record_metric_q13"] == q13, "receipt q13 readouts")
+    require(r["record_metric_q13_controls"] == q13_controls, "receipt q13 control readouts")
     require(r["canonical_controls"] == controls, "receipt control readouts")
     manifest = replay[0]
     execution = {"law": "exact_pair_mean", "events": manifest["events"], "phases": len(manifest["chunks"]),
@@ -671,8 +696,9 @@ if __name__ == "__main__":
         replay = verify_trace(args.archive / "trace", geometries)
         intervals = verify_intervals(args.archive, geometries, replay)
         q13 = verify_q13(args.archive, geometries[3])
+        q13_controls = verify_q13_controls(args.archive, geometries[3])
     if args.part != "trace":
         controls = verify_controls(args.archive, geometries)
     if args.part == "all":
-        verify_receipt(args.archive, stats, replay, intervals, q13, controls)
+        verify_receipt(args.archive, stats, replay, intervals, q13, controls, q13_controls)
     print("SUPPORT_WIRING_VERIFIED " + args.part, flush=True)

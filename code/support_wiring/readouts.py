@@ -166,12 +166,12 @@ def provenance(directory, output):
     return rows
 
 
-def q13(output):
+def record_metric_family(output, dim):
     source = ROOT / "evidence/source_net_causal_poset/build_causal_poset.py"
     spec = importlib.util.spec_from_file_location("paired_source_net", source)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    q, dim, rounds = 13, 3, 4
+    q, rounds = 13, 4
     values = module.orbit(q)
     a, b = module.axis_tables(values)
     sites = module.site_coordinates(q, dim)
@@ -187,10 +187,11 @@ def q13(output):
             parents.append((t-1)*n+reads)
     offsets = np.r_[0, np.cumsum([len(p) for p in parents])]
     flat = np.concatenate(parents)
-    np.savez_compressed(output / "q13_reads.npz", indptr=indptr, indices=indices,
+    filename = "q13_reads.npz" if dim == 3 else f"q13_control_d{dim}_reads.npz"
+    np.savez_compressed(output / filename, indptr=indptr, indices=indices,
                         parent_offsets=offsets, read_writers=flat, values=payload)
-    centre = module.centre_axis_label(values)*(q*q+q+1)
-    historical = module.family_row(json.loads((source.parent / "source_net_causal_limit_receipt.json").read_text()), 13, 3)
+    centre = module.centre_axis_label(values)*sum(q**i for i in range(dim))
+    historical = module.family_row(json.loads((source.parent / "source_net_causal_limit_receipt.json").read_text()), 13, dim)
     coordinates = np.asarray([float(x[0]+x[1]*(1+np.sqrt(5))/2) for x in values])[sites]
     rows = []
     previous = None
@@ -210,13 +211,26 @@ def q13(output):
                     "count_ratio_to_previous": None if previous is None else len(ids)/previous})
         previous = len(ids)
         rows.append(row)
-    result = {"q": 13, "dimension": 3, "sites": n, "rounds": 4,
+    result = {"q": 13, "dimension": dim, "sites": n, "rounds": 4,
               "reads": int(len(flat)), "events": len(parents), "centre": centre, "intervals": rows,
-              "source_producer_sha256": sha(source), "trace_sha256": sha(output / "q13_reads.npz"),
+              "source_producer_sha256": sha(source), "trace_sha256": sha(output / filename),
               "law": "v(t+1,i)=1+sum(v(t,j) for metric neighbours j, including i)",
               "granularity": "one write per carrier per layer; distinct from two port writes per seam mean",
               "closed_interval_endpoint_convention": "included; r=1 is reported as d=1, unlike historical null"}
+    return result
+
+
+def q13(output):
+    result = record_metric_family(output, 3)
     save_json(output / "q13.json", result)
+    controls = {"schema": "oph.support_wiring.q13_controls.v1",
+                "addendum_sha256": sha(HERE / "CONTROL_ADDENDUM.md"),
+                "historical_receipt_sha256": sha(ROOT / "evidence/source_net_causal_poset/source_net_causal_limit_receipt.json"),
+                "families": [record_metric_family(output, dim) for dim in (1, 2)],
+                "flat_reference_ordering_fractions": {"1": "1/2", "2": "8/35"},
+                "flat_reference_mm_dimensions": {"1": 2, "2": 3},
+                "reference_is_acceptance_target": False}
+    save_json(output / "q13_controls.json", controls)
     return result
 
 

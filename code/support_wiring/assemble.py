@@ -73,6 +73,7 @@ def assemble(output, mirror=True):
                "specification_sha256": sha(HERE/"SPECIFICATION.md"), "geometry": json.loads((HERE/"geometry/geometry.json").read_text()),
                "wiring": wiring_census(), "canonical_controls": read("controls.json"),
                "provenance_intervals": read("provenance.json"), "record_metric_q13": read("q13.json"),
+               "record_metric_q13_controls": read("q13_controls.json"),
                "historical_L6": historical(),
                "execution": {"law": trace["binding"]["law"], "events": trace["events"], "phases": len(trace["chunks"]),
                              "mean_actions": sum(c["event_count"]//2 for c in trace["chunks"] if c["kind"] in ("intra", "glued")),

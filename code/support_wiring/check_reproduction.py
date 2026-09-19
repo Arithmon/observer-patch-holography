@@ -61,13 +61,17 @@ def compare(fresh, original):
         same({k: v for k, v in a.items() if k not in ("sha256", "previous", "chain")},
              {k: v for k, v in b.items() if k not in ("sha256", "previous", "chain")})
         arrays(original/"trace"/a["file"], fresh/"trace"/b["file"])
-    for name in ("controls.json", "provenance.json", "q13.json"):
+    for name in ("controls.json", "provenance.json", "q13.json", "q13_controls.json"):
         a, b = read(original, name), read(fresh, name)
         if name == "q13.json":
             a.pop("trace_sha256")
             b.pop("trace_sha256")
+        if name == "q13_controls.json":
+            for family in a["families"] + b["families"]:
+                family.pop("trace_sha256")
         same(a, b, name)
-    for name in ("kernels.npz", "interval_members.npz", "q13_reads.npz"):
+    for name in ("kernels.npz", "interval_members.npz", "q13_reads.npz",
+                 "q13_control_d1_reads.npz", "q13_control_d2_reads.npz"):
         arrays(original/name, fresh/name)
     print("SUPPORT_WIRING_FULL_RUN_REPRODUCED", flush=True)
 
