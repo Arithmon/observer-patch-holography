@@ -12,7 +12,7 @@ Add a lane here when it closes, with the successors its closing banner names.
 from __future__ import annotations
 
 CLOSED_LANE_SUCCESSORS: dict[int, tuple[int, ...]] = {
-    # Spacetime adequacy, superseded under completion plan V4: common-world
+    # Spacetime adequacy, superseded in the 2026-09-10 V4 review: common-world
     # integration and the V4 read-law production own its open work.
     728: (740, 777),
     # Mechanics and thermodynamics, closed as bounded conditional milestones:

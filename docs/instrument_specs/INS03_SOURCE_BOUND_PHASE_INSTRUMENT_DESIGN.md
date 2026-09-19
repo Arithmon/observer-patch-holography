@@ -14,8 +14,8 @@ under the owning simulation-instrument lane
 Sources of record for every statement below: the deep audit
 the 2026-08-20 post-r2020 deep audit (findings F1, F2, F4,
 the fastest-discriminating-route list, and the residual-limitations list), the
-plan section "V3.17 post-r2020 deep-audit correction" in
-the V3 completion plan, the RER Lean modules and premise-register rows
+V3.17 post-r2020 deep-audit correction, the RER Lean modules and
+premise-register rows
 cited by name in each section, the simulator surfaces
 `oph_fpe/quantum/phase_operation.py`, `oph_fpe/qm_observer/DESIGN.md`, and
 `oph_fpe/dynamics/source_operator_inventory.py`, and the campaign record
