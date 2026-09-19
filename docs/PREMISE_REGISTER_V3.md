@@ -6,6 +6,8 @@ Every named premise the V3 composition lanes consume appears here exactly once, 
 
 Each evidence path has one explicit primary role: `statement` locates the premise interface, `conditional_consumer` uses that premise in a conditional result, `no_go` proves a source-selection or derivation obstruction, and `external_input` identifies imported mathematics or data. These roles describe evidential function only; they create no implicit reverse-consumer edge or lane ownership.
 
+Retired ids keep their number and are never reused: PR-83 (commit-populated event base), retired when the finite causal carrier was derived from authenticated source order (PR-81, PR-82).
+
 | Row | Premise | Type | Disposition | Consuming lanes |
 | --- | --- | --- | --- | --- |
 | PR-01 | confluent terminating repair contract | `structural_rule` | `axiomatize` | [#728](https://github.com/FloatingPragma/observer-patch-holography/issues/728), [#729](https://github.com/FloatingPragma/observer-patch-holography/issues/729), [#730](https://github.com/FloatingPragma/observer-patch-holography/issues/730), [#732](https://github.com/FloatingPragma/observer-patch-holography/issues/732) |

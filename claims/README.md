@@ -9,6 +9,11 @@ explainers instead.
 README numeric summaries should distinguish source-only rows, empirical closures, compare-only
 rows, and SI convention/display rows.
 
+`claims/claim_registry.yaml` is written as JSON, which YAML 1.2 also accepts.
+The validator parses it as strict JSON and rejects duplicate keys; a YAML loader
+reads the same data but lets a duplicate key through silently, so consumers
+should parse it as JSON.
+
 The registry is part of the working process:
 
 - `claims/axiom_registry.yaml` records the normative three-axiom identities,

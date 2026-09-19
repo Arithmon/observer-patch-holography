@@ -18,6 +18,14 @@ def _register() -> dict:
     return copy.deepcopy(register_tool.load_json(register_tool.REGISTER_PATH))
 
 
+def test_retired_premise_id_cannot_be_reused() -> None:
+    register = _register()
+    register["rows"][-1]["id"] = "PR-83"
+    with pytest.raises(SystemExit, match="retired premise ids must not be reused"):
+        register_tool.validate(register)
+    assert "PR-83" not in {row[0] for row in register_tool.EXPECTED_ROWS}
+
+
 def test_committed_register_validates() -> None:
     rows = register_tool.validate(_register())
     assert [row["id"] for row in rows] == [

@@ -6,8 +6,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import yaml
-
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -25,7 +23,7 @@ LIK_RECEIPT = f"{LIK_DIR}/runtime/joint_likelihood_receipt.json"
 
 
 def _registry() -> list[dict]:
-    return yaml.safe_load((ROOT / "claims/claim_registry.yaml").read_text(
+    return json.loads((ROOT / "claims/claim_registry.yaml").read_text(
         encoding="utf-8"))["claims"]
 
 

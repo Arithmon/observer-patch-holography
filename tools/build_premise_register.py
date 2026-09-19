@@ -513,6 +513,15 @@ EXPECTED_ROWS = (
     ),
 )
 
+# Retired ids keep their number: no later row may reuse one.
+RETIRED_ROWS = {
+    "PR-83": (
+        "commit-populated event base",
+        "retired when the finite causal carrier was derived from authenticated"
+        " source order (PR-81, PR-82)",
+    ),
+}
+
 DISPOSITION_MEANING = {
     "remove": (
         "A remove row is consumed as a declared premise while its derivation "
@@ -575,6 +584,11 @@ def validate(register: dict) -> list[dict]:
         fail("rows must be a list")
     if len(rows) != len(EXPECTED_ROWS):
         fail(f"rows must contain exactly {len(EXPECTED_ROWS)} entries")
+    reused = sorted(
+        row.get("id") for row in rows if isinstance(row, dict) and row.get("id") in RETIRED_ROWS
+    )
+    if reused:
+        fail(f"retired premise ids must not be reused: {reused}")
 
     for index, row in enumerate(rows):
         expected_id, expected_name, expected_type, expected_disposition = EXPECTED_ROWS[
@@ -696,6 +710,14 @@ def render(rows: list[dict]) -> str:
         " obstruction, and `external_input` identifies imported mathematics or"
         " data. These roles describe evidential function only; they create no"
         " implicit reverse-consumer edge or lane ownership."
+    )
+    lines.append("")
+    lines.append(
+        "Retired ids keep their number and are never reused: "
+        + "; ".join(
+            f"{rid} ({name}), {reason}" for rid, (name, reason) in RETIRED_ROWS.items()
+        )
+        + "."
     )
     lines.append("")
     lines.append("| Row | Premise | Type | Disposition | Consuming lanes |")
