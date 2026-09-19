@@ -50,7 +50,7 @@ PREMISE_DEPENDENCY_CLASSIFICATIONS = {
 }
 PREMISE_ID = re.compile(r"^PR-[0-9]{2}$")
 PREMISE_DEPENDENCY_PROJECTION_SHA256 = (
-    "c56ed609cc5cc8a4e2af3ea1986a4d8a6f3f5b6869e6f8f9bf75748e9e90182d"
+    "30aaf8148c0b8faa9495fbe92e2a67b52457a271e7fce8d72b326a6574665516"
 )
 
 # Controlled claim classification (issue #512). `status` stays descriptive
@@ -483,6 +483,14 @@ def check_gates(claim: dict) -> None:
     """
     claim_id = claim["claim_id"]
     gates = claim["gates"]
+    side_channels = sorted(
+        key for key in claim if key != "gates" and "gate" in key.casefold()
+    )
+    require(
+        not side_channels,
+        f"{claim_id}: gate lists belong in `gates`, which every gate invariant "
+        f"reads; found side-channel keys {side_channels}",
+    )
     require(
         isinstance(gates, list)
         and all(isinstance(g, int) and not isinstance(g, bool) and g > 0 for g in gates),
@@ -589,6 +597,17 @@ def main(root: Path = ROOT) -> None:
             canonical_ids=seen,
             one_row_per_claim=one_row_per_claim,
         )
+        if matrix_name == "novelty_matrix.csv":
+            registry_novelty = {claim["claim_id"]: claim["novelty_type"] for claim in claims}
+            drifted = sorted(
+                row["claim_id"]
+                for row in rows
+                if row["novelty_type"] != registry_novelty[row["claim_id"]]
+            )
+            require(
+                not drifted,
+                f"{matrix_path}: novelty_type differs from the claim registry for {drifted}",
+            )
 
     graph = load_json(root / "claims" / "dependency_graph.json")
     raw_nodes = graph.get("nodes", [])

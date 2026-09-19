@@ -353,7 +353,7 @@
         "conflict_serializability_aggregation"
       ],
       "oph_specific_delta": "Authenticates event precedence against the repository's threaded versioned commit semantics instead of trusting writer labels, declared parents, or a supplied execution-rank acyclicity witness; proves canonical source height to be the attained longest authenticated-parent-chain length; and proves that the same authenticated grammar can realize any supplied finite decidable strict transitive relation exactly, with predecessor cardinality deriving the compiler rank. The closure inhabits the literal A1 strict-order interface, the QFT adapter, and the source-native chart interface, exact adapters become verifiers, and the mismatch layer binds injection, write avoidance, and repair to writer-blind seam scores while retaining every physical-spacetime attachment as an explicit gate.",
-      "novelty_type": "source_derived_precedence_with_adapter_exactness_and_orientation_no_go",
+      "novelty_type": "authenticated_source_derived_precedence_with_execution_and_adapter_exactness",
       "evidence": [
         "paper/reality_as_consensus_protocol.tex",
         "Lean/ObserverPatchHolography/Provenance/SemanticEventProvenance.lean",
@@ -557,6 +557,39 @@
         "open": [],
         "boundary": [],
         "rationale": "The finite protected-observation profile consumes paper-local declared scheduler, active-source, target, and endpoint-quotient data rather than a canonical V3 premise row; claim-to-claim ancestry and stronger physical or implementation attachments remain separate."
+      }
+    },
+    {
+      "claim_id": "OPH-CONS-CROSS-SOURCE-ENDPOINT",
+      "statement": "For a repair relation that preserves the protected observation and whose normal forms are exactly the declared consistent set, and for any equivalence relation on that set, two conditions are equivalent: the observation identifies consistent states modulo the equivalence, and normal endpoints reached from possibly different sources with the same observation agree modulo the equivalence. When the equivalence is silent, the condition is injectivity of the induced map from the quotient of the consistent set onto the realized observations; equality recovers ordinary endpoint uniqueness. Same-source confluence, weak normalization, and schedule liveness are separate hypotheses that none of these conditions supplies.",
+      "owner_paper": "extra/observable_normal_forms.tex",
+      "tier": "exact_abstract_rewriting_theorem",
+      "assumptions": [
+        "observation_preserving_repair_relation",
+        "normal_forms_equal_declared_consistent_set",
+        "declared_silent_endpoint_equivalence"
+      ],
+      "imported_results": [
+        "reflexive_transitive_closure_calculus"
+      ],
+      "oph_specific_delta": "Separates cross-source endpoint agreement from same-source confluence, weak normalization, and liveness, and characterizes it exactly as identifiability of consistent states by the protected observation modulo a declared equivalence.",
+      "novelty_type": "exact_cross_source_quantifier_characterization",
+      "evidence": [
+        "extra/observable_normal_forms.tex",
+        "Lean/ObservableNormalForms/ObservableNormalForms/ObserverConfluence.lean",
+        "Lean/ObserverPatchHolography/Bridges/ObservableNormalForms.lean"
+      ],
+      "falsifier": "An observation-preserving repair relation whose normal forms are exactly the consistent set has two sources with the same protected observation whose reachable normal endpoints are inequivalent while the observation identifies consistent states modulo the equivalence, or the converse direction fails.",
+      "scope_if_false": "The cross-source theorem falls; same-source confluence and the finite consensus theorem are separate.",
+      "status": "exact_equivalence_and_silent_quotient_corollary_Lean_proved",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This abstract rewriting characterization quantifies over every observation-preserving relation whose normal forms are the declared consistent set, and it neither selects a source law nor invokes a registered physical bridge."
       }
     },
     {
@@ -2503,7 +2536,7 @@
         "finite_matrix_trace_algebra"
       ],
       "oph_specific_delta": "The second law is not assumed and not derived from strict-descent settlement, which the certified counterexample rules out as an entropy mechanism. Conditionally, the arrow comes from the transition-side instantiation of the same information-projection axiom used on the state side, with a repaired-visible fibre and one shared faithful reference supplied as premises. The exact finite four-law package then follows. The closed #732 milestone packages those receipts conditionally. Source identification of the shared reference, collar, and low-temperature tail remains targeted work under #739, while physical energy and clock units remain the separate empirical import PR-15. These are named receipts rather than hidden premises.",
-      "novelty_type": "conditional_finite_thermodynamic_package_with_two_current_artifact_direct_binding_no_gos",
+      "novelty_type": "conditional_finite_thermodynamic_package_with_scoped_source_negative_controls",
       "evidence": [
         "paper/observers_are_all_you_need.tex",
         "flagship/from_observer_consensus_to_standard_physics.tex",
@@ -2762,7 +2795,7 @@
         "discrete_Legendre_calculus"
       ],
       "oph_specific_delta": "For a supplied positive Markov chain, the representation-level log-transition action is fixed up to the additive-constant and multiplier-rescale gauge, with bare-action multiplier uniqueness under nonconstancy. The machine-checked finite/real obstruction and receipt-gated transfer isolate the exact composition premise. The source-to-Hamiltonian theorem composes one declared bundle, and the committed chain inhabits it for one declared enrichment ansatz; the two-parameter counterfamily proves that the mode rule does not uniquely select the real enrichment beyond that ansatz. The counting/trivial repair identity conditionally realizes only the uniform transition kernel, while scale and initial-law controls prevent it from being promoted to a source-selected complete reference. At the declared empirical target the positive exponential parameter exists uniquely, but the target observable and level are not source-selected. The stationary maximum is a scoped mode/minimizer control, not a general saddle or stationary-phase no-go. The closed composition milestone #731 does not discharge source selection or physical least action; those premise obligations remain under #739.",
-      "novelty_type": "conditional_helpers_with_reference_kernel_and_mode_minimizer_controls__complete_source_reference_open",
+      "novelty_type": "conditional_helpers_with_explicit_two_parameter_enrichment_counterfamily_and_reference_kernel_controls__complete_source_reference_open",
       "evidence": [
         "Lean/Variational/MechanicsAdequacySurface.lean",
         "paper/observers_are_all_you_need.tex",
@@ -2843,7 +2876,7 @@
         "long_wavelength_cosine_expansion"
       ],
       "oph_specific_delta": "The source incidence, antipodal load quotient, response-selected metric carrier and A2/A3-typed uniform internal convolution determine the edge-orbit ray before any eligible FZ-12 comparison payload. The same action supplies a canonical internal Markov/Dirichlet generator and an auxiliary algebraic spectral lift. Exact target-free series arithmetic maps the frozen ray into formal radial and transverse velocity coefficients under a separately named frequency-squared premise. A declared basis-free transverse oscillator completion proves the rank-two degeneracy, exact zero mode, oscillator equation, and vanishing algebraic energy variation without promoting the candidate to a physical photon. Exhaustive synthetic sign-error enumeration calibrates leading-coefficient detection and interval coverage and records that the linked higher-order pair is unresolved in its finite stress law. The exact source theorem stops before physical position, field, clock, scale, frame, physical remainder or readout identification. The externally custody-bound FZ-12 rule keeps those gates open and excludes the prior WMAP class, every FZ-11 exposure, and all pre-freeze comparison data from an edge-branch comparison.",
-      "novelty_type": "exact_source_native_edge_orbit_internal_dirichlet_action_conditional_transverse_oscillator_formal_observation_map_and_frozen_prediction",
+      "novelty_type": "exact_source_native_edge_orbit_dirichlet_action_conditional_transverse_oscillator_formal_map_threshold_envelope_and_frozen_prediction",
       "derived_exact_spatial_symbol": "A separate target-free extension proves M8=(10/3)|k|^8-(8/15)|k|^2 I6(k). For 0<=q<=1 it certifies |lambda_hat-P6|<=(7/388800)q^8, 0<=lambda_hat-P8<=(7/34992000)q^10, and (19/20)q^2<=lambda_hat<=q^2. An exact exhaustive calibration over 4096 Rademacher sign vectors rejects a zero leading coefficient in every replica at synthetic noise scale 1/200; nominal 95 percent intervals cover its injected value in 3904/4096 replicas. The linked higher-order pair reaches 209/4096 detections and is unresolved. These are bounds and finite calibration statements for the mathematical spatial operator. The certificates supply no physical frequency, field, clock, frame, scale, interaction, detector response, nuisance model, experimental sensitivity, or readout attachment.",
       "evidence": [
         "code/a5_fingerprint/seam_current_edge_prediction.py",
@@ -3440,7 +3473,7 @@
         "finite_rotation_fixed_space_linear_algebra"
       ],
       "oph_specific_delta": "OPH makes the W5 orbit-selector gap executable: it separates the exact stabilizer boundary from the unresolved source-derived potential, replaces the finite-seed cubic search by an exhaustive six-pair extremum proof, and exactly classifies all global minimizers of the quartic truncation on both the strict positive domain and the closed simplex. The resulting zero-weight boundary branch keeps the packet viable and isolates regularization, entropy-remainder, source-amplitude, and physical-attachment work.",
-      "novelty_type": "conditional_flavor_orbit_potential_boundary",
+      "novelty_type": "conditional_flavor_orbit_potential_boundary_with_exact_cubic_and_quartic_minimizer_classification",
       "evidence": [
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "extra/koide_identity_from_positive_c3_face_circulants.tex",
@@ -3611,7 +3644,7 @@
         "natural_intertwiner_and_representation_equivalence"
       ],
       "oph_specific_delta": "The registry exposes both the executable source-current gate and the source-identity problem between two mathematically compatible Standard Model routes instead of counting a matching abstract Lie type as a proof that they describe the same physical group.",
-      "novelty_type": "open_source_bound_commuting_square_contract",
+      "novelty_type": "open_source_current_and_commuting_square_contract",
       "evidence": [
         "paper/tex_fragments/UNIFIED_OBSERVER_PHYSICS_SPINE.tex",
         "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
@@ -3761,7 +3794,7 @@
         "Planck_base_LambdaCDM_posterior"
       ],
       "oph_specific_delta": "The candidate pair keeps the conditional finite probability type visible. The exact countermodels separate the local survival theorem from any action on global capacity: no-action, one-class, and six-class-total completions share the same local datum and composition rules but have pairwise different one-cut effects. The registered finite-presence and Poisson rows are exact conditional arithmetic but do not attain target-independent selection, same-quantity construction, or a complete source return map in the source-only preflight. The blocked-event menu remains unselected. Self-reference forces equality only after a stronger source law constructs the same-invariant bridge. It does not select either reserve semantics or identify either expression with cosmic N.",
-      "novelty_type": "target_exposed_two_branch_capacity_diagnostic",
+      "novelty_type": "target_exposed_two_branch_capacity_diagnostic_with_bounded_attachment_nonidentifiability",
       "evidence": [
         "paper/observers_are_all_you_need.tex",
         "paper/screen_microphysics_and_observer_synchronization.tex",
@@ -3823,7 +3856,7 @@
         "standard_electroweak_display_conventions"
       ],
       "oph_specific_delta": "The exact factor four is the representation multiplicity three colored weak doublets plus one lepton doublet. The refinement-natural positive unital isomorphism is the unique abstract normalized map between two declared one-dimensional lines. It supplies neither physical common-load semantics nor a screen-load-to-electroweak-readout intertwiner. The unsupported ratio 24/6 supplies none. The audit also separates the exact declared-map zero-defect identity from a source-produced naturality result by exhibiting zero- and nonzero-defect completions on the same antecedents. For the exact stored CODATA-located pixel decimal and declared finite heat sums (N2=128, N3=64), a uniform contraction below 1/100 on the positive scale strip [7e-18,8e-18] supplies the true implicit scale. Independent interval AD and analytic covariance differentiation certify a strictly decreasing hierarchy residual with opposite endpoint signs on the declared coupling interval. This closes the finite-iterate-to-implicit-definition gap on that strip without selecting the measured pixel or deriving a physical hierarchy.",
-      "novelty_type": "conditional_quantitative_comparison",
+      "novelty_type": "conditional_quantitative_comparison_with_declared_map_identity_boundary",
       "evidence": [
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "code/particles/hierarchy/manifest.json",
@@ -4135,7 +4168,7 @@
         "standard_compact_gauge_language"
       ],
       "oph_specific_delta": "At paper level, exact atomic heat-bath collars plus the finite source-type, positive-rate, and uniform L2 approximate-tensorization receipts give the conditional floor delta_*=c_*/A_*, which transfers to the compact-gauge Hamiltonian only through the separate continuum receipts. The legacy Lean commuting theorem does not derive its positive-rate premise from the separate Lemma 7.2 uniform-fiber result.",
-      "novelty_type": "conditional_problem_solution_implication",
+      "novelty_type": "conditional_problem_solution_implication_with_scoped_finite_transfer_diagnostic",
       "evidence": [
         "extra/yang_mills_gap_clay_problem.tex",
         "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
@@ -4227,7 +4260,7 @@
         "likelihood_and_Bayes_factor_model_comparison"
       ],
       "oph_specific_delta": "A bounded group-mismatch patch reads its own disturbed state, writes a durable descent record, conditions its repair move on that record, and publishes the complete transition and reveal receipts.",
-      "novelty_type": "blinded_hardware_experiment_protocol",
+      "novelty_type": "completed_frozen_engineering_archive",
       "evidence": [
         "code/ibm_quantum_cloud/protocols/BLINDED_GENERATIVE_REPAIR_KERNEL.md",
         "code/ibm_quantum_cloud/programs/generative_repair_kernel.py",
@@ -4239,12 +4272,6 @@
       "status": "completed_and_frozen_non_discriminating_engineering_archive",
       "claim_class": "emitted_artifact",
       "gates": [],
-      "github_gates": [
-        509,
-        325,
-        507,
-        512
-      ],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",
         "consumed": [],
@@ -5104,7 +5131,7 @@
         "discrete_leapfrog_integrator_algebra"
       ],
       "oph_specific_delta": "Conditional on PR-66, adds exact temporal identities over the committed local face action: typed continuity equivalence, Faraday and gauge identities, a conserved staggered quadratic form, zero-current wave recursion, and a neutral-load Coulomb join. It also records the exact unit-step instability, preserving the scaled-update route rather than promoting the packet to stable propagation.",
-      "novelty_type": "exact_OPH_temporal_leapfrog_maxwell_evolution_with_proved_continuity_equivalence_and_static_coulomb_join",
+      "novelty_type": "conditional_temporal_identities_with_exact_unit_step_stability_boundary",
       "evidence": [
         "paper/screen_microphysics_and_observer_synchronization.tex",
         "Lean/Screen/TemporalMaxwellEvolution.lean",
@@ -5186,7 +5213,7 @@
         "povm_effect_calculus"
       ],
       "oph_specific_delta": "Reduces the ideal phase model to one complex state coordinate with every count frequency, in every context, machine-checked as an exact affine function of it, with closed forms for the phase and rotated-3 contexts, characterizes the phase clause in matrix coordinates, and derives a decidable integer receipt window with an exact minimal count mass, so the non-mathematical residue of PR-04, count provenance and preparation/operation production, is the entire remaining content of the row.",
-      "novelty_type": "exact_state_coordinate_reduction_with_decidable_receipt_window",
+      "novelty_type": "exact_static_state_coordinate_reduction_with_decidable_count_window",
       "evidence": [
         "extra/machine_checked_finite_event_algebras.tex",
         "Lean/EventAlgebra/PhaseInstrumentDetermination.lean"
@@ -5269,7 +5296,7 @@
         "finite_table_kernel_checks"
       ],
       "oph_specific_delta": "The electroweak-breaking geometry that the registered scalar and Yukawa premises name is machine-checked on one typed bundle over the committed grammar: one composed theorem proves the exact minimizer shell, the exact one-line stabilizer, the exact three-Goldstone kernel equal to the gauge-image set, the exact broken-direction mass values with the cosine-squared-shaped ratio stated in declared constants, and the exact yuk*vev fermion mass coefficient, and a standalone theorem of the same module proves the exact polynomial ray expansion pinning the second variation to the declared potential, with every declared parameter named rather than implied.",
-      "novelty_type": "composed_symmetry_breaking_inhabitant_on_committed_grammar",
+      "novelty_type": "composed_finite_symmetry_breaking_inhabitant_with_normalization_boundary",
       "evidence": [
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "Lean/Screen/ElectroweakBreakingComposition.lean",
@@ -5451,7 +5478,7 @@
         "complex_exponential_and_derivative_analysis"
       ],
       "oph_specific_delta": "Persistence of a free state, the shape usually assumed for particles, is machine-checked as an exact invariance package of the committed plane-wave flow: shell membership, labels, and unit modulus are constants of the flow and the flow is injective on positive-mass labels, with the missing physical attachments named rather than implied.",
-      "novelty_type": "free_evolution_persistence_packet_from_declared_plane_wave_flow",
+      "novelty_type": "pointwise_plane_wave_modulus_and_phase_covariance_packet",
       "evidence": [
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "Lean/Geometry/FreeEvolutionPersistence.lean",
@@ -5490,7 +5517,7 @@
         "committed_diagonal_CHSH_bound_TsirelsonSaturation"
       ],
       "oph_specific_delta": "The committed source-production surface is made exact as an inductive class and closed by machine check. The classical CHSH ceiling holds on that class only for four jointly record-diagonal readouts, and the separate state-map theorem blocks only the declared Bell-state target under diagonality-preserving production. Slot-local unit-interval readouts relative to the PR-44 split are bounded by the companion product-split separability claim; readouts that are not slot-local with respect to that split, and preparations that write off-diagonal record coherence, are outside both claims.",
-      "novelty_type": "reachability_closure_delimitation_on_counted_source_data",
+      "novelty_type": "reachability_closure_with_target_specific_CHSH_delimitation",
       "evidence": [
         "Lean/EventAlgebra/SourceReachabilityDelimitation.lean",
         "Lean/EventAlgebra/TsirelsonSaturation.lean",
@@ -6024,7 +6051,7 @@
         "matrix_kronecker_and_diagonal_algebra"
       ],
       "oph_specific_delta": "The residual left by the record-layer net morphism packet (which morphisms exist beyond the record layer) is machine-checked as a proved boundary rather than an open question: the diagonal embedding is proved to be the exact homomorphic direction with region-exact membership and expectation intertwining, the committed conditional expectation is proved to be the exact grade ceiling of the projection direction with a committed witness breaking multiplicativity, and both a bare-multiplicativity no-go and an absolute unital-homomorphism no-go are derived from the committed noncommuting witness pair and the committed matrix-factor scalar obstruction, with every hypothesis named.",
-      "novelty_type": "operator_to_record_morphism_boundary_asymmetry_with_two_grade_no_go",
+      "novelty_type": "operator_to_record_morphism_boundary_with_scoped_multiplicative_no_gos",
       "evidence": [
         "paper/reality_as_consensus_protocol.tex",
         "Lean/QFT/OperatorLayerMorphismBoundary.lean",
@@ -7088,7 +7115,7 @@
         "emergent_gravity_square_root_laws"
       ],
       "oph_specific_delta": "Replaces the committed functional-form premise by two independently falsifiable structural premises, one geometric and one consensus-theoretic, and proves that the committed profile with its single constant is their unique common solution. The square-root source dependence, elsewhere an ansatz or an entropic model output, is exactly the additivity of defect variance under independent source composition, and the matching radius and dominance criterion are exact consequences.",
-      "novelty_type": "deep_profile_uniqueness_characterization_from_scale_covariance_and_quadrature_closure",
+      "novelty_type": "deep_profile_characterization_with_explicit_transition_scope",
       "evidence": [
         "Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean",
         "Lean/ObserverPatchHolography/EinsteinBranch/DarkSector.lean",
@@ -7207,7 +7234,7 @@
         "Cauchy_functional_equation_on_positive_reals"
       ],
       "oph_specific_delta": "Reduces the quadrature-composition premise of the deep-profile characterization to variance additivity of independent per-source collar defects on a linear family of nested cuts, and extracts the exact magnitude dictionary a0 = G n^2 c together with the exact non-identifiability of its factors, so the open magnitude question becomes the value of the collar density and the per-cut variance constant.",
-      "novelty_type": "per_cut_variance_composition_with_exact_a0_dictionary_and_factor_non_identifiability",
+      "novelty_type": "continuum_per_cut_composition_dictionary_and_factor_non_identifiability",
       "evidence": [
         "Lean/ObserverPatchHolography/EinsteinBranch/PerCutCollarComposition.lean",
         "Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean",

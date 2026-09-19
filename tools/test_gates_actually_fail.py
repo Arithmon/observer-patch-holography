@@ -449,6 +449,35 @@ def test_claim_gate_rejects_physical_promotion_with_open_work(
     )
 
 
+def test_claim_gate_rejects_gate_side_channel_keys(tmp_path: Path) -> None:
+    root = tmp_path / "claims"
+    registry_path = _write_claim_fixture(root)
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    registry["claims"][0]["gates"] = []
+    registry["claims"][0]["github_gates"] = [42]
+    _write_json(registry_path, registry)
+    mutant = _run(str(CLAIM_CHECKER), str(root))
+    assert mutant.returncode != 0
+    assert "side-channel keys ['github_gates']" in _combined(mutant)
+
+
+def test_claim_gate_rejects_novelty_type_drift_from_registry(tmp_path: Path) -> None:
+    root = tmp_path / "claims"
+    _write_claim_fixture(root)
+    path = root / "claims/novelty_matrix.csv"
+    path.write_text(
+        path.read_text(encoding="utf-8").replace(
+            "mutation control", "stronger unregistered label"
+        ),
+        encoding="utf-8",
+    )
+    mutant = _run(str(CLAIM_CHECKER), str(root))
+    assert mutant.returncode != 0
+    assert "novelty_type differs from the claim registry for ['OPH-FIXTURE-GATE']" in (
+        _combined(mutant)
+    )
+
+
 @pytest.mark.parametrize("matrix", ["novelty_matrix.csv", "falsification_matrix.csv"])
 @pytest.mark.parametrize(
     ("mutation", "diagnostic"),
