@@ -81,7 +81,7 @@ jobs:
       # an exact fixed key would freeze the first (possibly partial) cache
       # forever, because actions/cache never overwrites an existing key.
       - name: Cache the Tectonic bundle
-        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.cache/Tectonic
           key: tectonic-bundle-0.15.0-${{ runner.os }}-${{ github.run_id }}
