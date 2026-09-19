@@ -787,7 +787,13 @@ def test_external_custody_is_verified_when_present_or_explicitly_classified():
     register = live_register()
     fz_tool.validate(register)
     result = fz_tool.verify_external_custody(register)
-    assert result["state"] in {"verified", "external_custody_not_present"}
+    assert result["state"] in {
+        "verified",
+        "external_custody_not_present",
+        "custody_parser_unsupported_on_platform",
+    }
+    if fz_tool.CUSTODY_PARSER_UNSUPPORTED:
+        assert result["state"] != "verified"
     if result["state"] == "verified":
         assert result["fz11_custody_git_history"]["state"] in {
             "verified",
@@ -814,14 +820,10 @@ def test_external_custody_is_verified_when_present_or_explicitly_classified():
             "attestation_state": "calendar_pending",
         }
     else:
-        assert result["fz11_custody_git_history"]["state"] == (
-            "external_custody_not_present"
-        )
-        assert result["fz12_custody_git_history"]["state"] == (
-            "external_custody_not_present"
-        )
+        assert result["fz11_custody_git_history"]["state"] == result["state"]
+        assert result["fz12_custody_git_history"]["state"] == result["state"]
         assert {row["verification"] for row in result["contracts"].values()} == {
-            "external_custody_not_present"
+            result["state"]
         }
 
 
@@ -835,6 +837,8 @@ def test_isolated_clone_reports_external_custody_not_present(tmp_path: Path):
 
 
 def copy_external_custody(tmp_path: Path) -> Path:
+    if fz_tool.CUSTODY_PARSER_UNSUPPORTED:
+        pytest.skip("the official OpenTimestamps client cannot start on Windows")
     custody_root = tmp_path / "custody"
     source = fz_tool.DEFAULT_CUSTODY_ROOT / "falsification"
     if not source.is_dir():

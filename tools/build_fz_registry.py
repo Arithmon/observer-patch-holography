@@ -197,6 +197,11 @@ FZ04_BUILDER_PATH = (
 # Byte-exact copies of the frozen-target custody directories, with their
 # OpenTimestamps proofs, live in this repository so any clone can verify them.
 DEFAULT_CUSTODY_ROOT = ROOT / "evidence" / "custody"
+# The official OpenTimestamps client imports python-bitcoinlib, which loads
+# OpenSSL through ctypes.util.find_library("ssl"). That lookup returns None on
+# Windows, so the client cannot start there; POSIX platforms verify custody and
+# Windows reports the explicit state below.
+CUSTODY_PARSER_UNSUPPORTED = sys.platform == "win32"
 
 SCHEMA = "oph.frozen_prediction_register.v3"
 STATUSES = {
@@ -2167,19 +2172,20 @@ def verify_external_custody(
 ) -> dict[str, Any]:
     contracts = register["external_custody_contracts"]
     custody_base = custody_root / "falsification" / "frozen_targets"
+    unverified_state = None
     if not custody_base.is_dir():
+        unverified_state = "external_custody_not_present"
+    elif CUSTODY_PARSER_UNSUPPORTED:
+        unverified_state = "custody_parser_unsupported_on_platform"
+    if unverified_state is not None:
         return {
-            "state": "external_custody_not_present",
+            "state": unverified_state,
             "custody_root": str(custody_root),
-            "fz11_custody_git_history": {
-                "state": "external_custody_not_present"
-            },
-            "fz12_custody_git_history": {
-                "state": "external_custody_not_present"
-            },
+            "fz11_custody_git_history": {"state": unverified_state},
+            "fz12_custody_git_history": {"state": unverified_state},
             "contracts": {
                 contract_id: {
-                    "verification": "external_custody_not_present",
+                    "verification": unverified_state,
                     "attestation_state": contract["attestation_state"],
                 }
                 for contract_id, contract in contracts.items()
