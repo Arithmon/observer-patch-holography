@@ -144,4 +144,13 @@ theorem relative_error_enclosure {VI VJ dI dJ ηI ηJ τI τJ : ℝ}
 #print axioms finite_clock_enclosure_counts
 #print axioms relative_error_enclosure
 
+-- Time/SourceCountClock.lean is byte-pinned by its source-count-clock receipt,
+-- so the axiom audit of its five public theorems sits here, in the first
+-- module that imports it.
+#print axioms OPH.SourceCountClock.fourth_power_order
+#print axioms OPH.SourceCountClock.fourth_root_unique
+#print axioms OPH.SourceCountClock.common_weight_cancels
+#print axioms OPH.SourceCountClock.volume_ratio_enclosure
+#print axioms OPH.SourceCountClock.clock_enclosure
+
 end OPH.SourceCountClockEnclosure
