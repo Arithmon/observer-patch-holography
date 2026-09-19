@@ -2,9 +2,10 @@
 
 This directory is the canonical publication surface for the main OPH papers. Each paper is kept as a TeX source beside its built PDF.
 
-For a first reading, begin with *Observers Are All You
-Need* for the observer interpretation and the two quantitative closures, then
-use the two technical derivation papers for spacetime and gravity on one side
+For a first reading, begin with the flagship technical paper,
+[*Finite Observer Consensus as a Reconstruction Principle*](../flagship/from_observer_consensus_to_standard_physics.pdf), then
+*Observers Are All You Need* for the observer interpretation and the two
+quantitative closures, then the two technical derivation papers for spacetime and gravity on one side
 and Standard Model gauge structure on the other. The consensus, particle, and screen papers provide the finite
 repair theorem, numerical continuations, and physical carrier architecture.
 The focused [positive-chamber Koide paper](../extra/koide_identity_from_positive_c3_face_circulants.pdf)

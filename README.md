@@ -37,7 +37,7 @@ simulations.
   background. Forty chapters carry the argument from why the problem is hard
   to where the constants come from, with the mathematics left to the
   textbooks and the papers.
-- **The technical paper.** [*From Observer Consensus to Standard Physics*](https://philpapers.org/rec/MUEFOC)
+- **The technical paper.** [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC)
   gives the primary technical account of the observer-first reconstruction.
 - **The textbooks.** The [OPH textbooks](https://learn.floatingpragma.io/)
   teach the theory the long way, for readers with a physics or computer
@@ -236,9 +236,8 @@ system: how much correctable memory the substrate carries. It sits opposite
 $P$, tied to the cosmological constant rather than to the fine-structure
 constant. The capacity program asks whether the public capacity assigned to
 the universe agrees with the capacity reconstructed from within it. Exact
-finite identities supporting that question are machine-checked in Lean; the
-technical papers and [OPH Falsification Program](docs/OPH_FALSIFICATION_PROGRAM.md)
-state the assumptions and tests needed for a physical closure claim.
+finite identities supporting that question are machine-checked in Lean, and
+the [technical papers](paper/) carry the full construction and its tests.
 
 A physical closure of both constants would give a zero-continuous-parameter
 branch with both values returned by the architecture. That physical
@@ -328,7 +327,7 @@ them.
 
 | If you want... | Start here |
 | --- | --- |
-| The flagship introduction to OPH | [From Observer Consensus to Standard Physics](https://philpapers.org/rec/MUEFOC) |
+| The flagship introduction to OPH | [Finite Observer Consensus as a Reconstruction Principle](https://philpapers.org/rec/MUEFOC) |
 | The conditional spacetime and Einstein chain | [Recovering Observer Spacetime and Einstein Dynamics](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) |
 | Both Standard Model gauge routes | [Deriving Standard Model Gauge Structure](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) |
 | The finite consensus mechanism | [Reality as a Consensus Protocol](paper/reality_as_consensus_protocol.pdf) |
@@ -357,7 +356,6 @@ The [paper index](paper/) gives the curated publication map. Focused research PD
 - [`code/`](code): certificates, simulations, particle calculations, and experiments.
 - [`book/`](book): legacy book source and downloadable PDF, retained outside the primary reading path.
 - [`cosmology/`](cosmology): dark-sector and cosmology research.
-- [`physics-problems/`](physics-problems): focused applications and open-problem notes.
 - [`docs/`](docs): stable reader policies and canonical scientific ledgers.
 - [`assets/`](assets): diagrams and public figures.
 
@@ -374,7 +372,7 @@ cited here.
 - [Textbooks](https://learn.floatingpragma.io) (physics and computer science)
 - [Interactive simulation](https://simulation.floatingpragma.io)
 - [Blog](https://blog.floatingpragma.io/)
-- [Study notebook with explainer videos](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
+- [Study notebook with explainer videos](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a) (opens with a Google account)
 - [This README in French](README_FR.md)
 - OPH Sage on [Telegram](https://t.me/HoloObserverBot) and [X](https://x.com/OphSage)
 

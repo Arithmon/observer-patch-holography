@@ -40,7 +40,7 @@ ou reproduire les simulations.
   en physique. Quarante chapitres conduisent l’argument depuis la difficulté du
   problème jusqu’à l’origine des constantes, en laissant les mathématiques aux
   manuels et aux articles.
-- **L’article phare.** [*From Observer Consensus to Standard Physics*](https://philpapers.org/rec/MUEFOC)
+- **L’article phare.** [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC)
   donne le compte rendu technique principal de la reconstruction fondée sur les observateurs.
 - **Les manuels.** Les [manuels OPH](https://learn.floatingpragma.io/)
   enseignent la théorie par le chemin long, pour des lecteurs ayant une
@@ -258,9 +258,8 @@ substrat. Elle fait face à $P$, liée à la constante cosmologique plutôt
 qu’à la constante de structure fine. Le programme de capacité demande si la
 capacité publique attribuée à l’univers s’accorde avec celle reconstruite de
 l’intérieur. Les identités finies qui soutiennent cette question sont
-vérifiées en Lean ; les articles techniques et le
-[programme de falsification OPH](docs/OPH_FALSIFICATION_PROGRAM.md) précisent
-les hypothèses et les tests requis pour une clôture physique.
+vérifiées en Lean, et les [articles techniques](paper/) exposent la
+construction complète et ses tests.
 
 Une clôture physique des deux constantes donnerait une branche sans
 paramètre continu, les deux valeurs étant rendues par l’architecture. Cet
@@ -306,7 +305,7 @@ résultats finis et structurels exacts constituent la partie la plus solide.
 | --- | --- |
 | La chaîne conditionnelle vers l’espace-temps et Einstein | [Espace-temps des observateurs et dynamique d’Einstein](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) |
 | Les deux routes de jauge du Modèle standard | [Structure de jauge du Modèle standard](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) |
-| La synthèse complète | [From Observer Consensus to Standard Physics](https://philpapers.org/rec/MUEFOC) |
+| La synthèse complète | [Finite Observer Consensus as a Reconstruction Principle](https://philpapers.org/rec/MUEFOC) |
 | Le mécanisme de consensus fini | [Reality as a Consensus Protocol](paper/reality_as_consensus_protocol.pdf) |
 | La construction des particules | [Deriving the Particle Zoo](paper/deriving_the_particle_zoo_from_observer_consistency.pdf) |
 | L’identité exacte de Koide dans la chambre positive et l’équilibre tracial fini | [The Positive-Chamber Koide Identity for Icosahedral Face Circulants](extra/koide_identity_from_positive_c3_face_circulants.pdf) |
@@ -384,7 +383,6 @@ briseraient.
 - [`code/`](code) : certificats, simulations, calculs de particules et expériences.
 - [`book/`](book) : source du livre et PDF téléchargeable.
 - [`cosmology/`](cosmology) : recherche sur le secteur sombre et la cosmologie.
-- [`physics-problems/`](physics-problems) : applications ciblées et notes sur des problèmes ouverts.
 - [`docs/`](docs) : politiques stables destinées aux lecteurs et registres scientifiques canoniques.
 - [`assets/`](assets) : diagrammes et figures publiques.
 
@@ -396,7 +394,7 @@ briseraient.
 - [Manuels](https://learn.floatingpragma.io) (physique et informatique)
 - [Simulation interactive](https://simulation.floatingpragma.io)
 - [Blog](https://blog.floatingpragma.io/)
-- [Carnet d’étude avec vidéos explicatives](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
+- [Carnet d’étude avec vidéos explicatives](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a) (s’ouvre avec un compte Google)
 - OPH Sage sur [Telegram](https://t.me/HoloObserverBot) et [X](https://x.com/OphSage)
 
 ## Contribuer
