@@ -791,7 +791,7 @@ def frozen_receipt_crosscheck() -> dict[str, Any]:
             "parent_pins": [
                 {
                     "row": row_id,
-                    "path": str(paths[row_id].relative_to(Path(__file__).parents[2])),
+                    "path": paths[row_id].relative_to(Path(__file__).parents[2]).as_posix(),
                     "bytes": len(raw[row_id]),
                     "sha256": base.tagged_sha256(raw[row_id]),
                 }
