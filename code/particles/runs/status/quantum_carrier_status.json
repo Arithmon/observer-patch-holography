@@ -40,7 +40,7 @@
     }
   ],
   "producer_scope": "Bounded classification of the pinned declared corpus. It proves no exhaustive absence claim outside that projection.",
-  "receipt_sha256": "sha256:70c3be1c66eabc0e3affc721f9ee5a111966fea6ba23f451819424bed23523a3",
+  "receipt_sha256": "sha256:d01f63895a25b22ee7adbd7de6e391ab83cb3906f9914119ae05853fce01f565",
   "rows": [
     {
       "blocking_frontier": [
@@ -317,7 +317,7 @@
   "source_projection_pin": {
     "bytes": 7158,
     "path": "code/particles/manifests/quantum_carrier_status_source_projection.json",
-    "sha256": "sha256:e01e6b46be220ebb62e8cdb0a45c7088781d1fd4e9991d746302e5a51ee14f22"
+    "sha256": "sha256:3d308c5b7a2b8ae2a5969a180d45710ab4f3a3c16e967afe6fbf75918d26dc8f"
   },
   "status": "THREE_ROW_EXPLICIT_NOT_EVALUABLE",
   "target_named_status_rows": true
