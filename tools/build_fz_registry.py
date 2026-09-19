@@ -2861,6 +2861,19 @@ def render(register: dict, rows: list[dict]) -> str:
     )
     lines.append("")
     lines.append(
+        "A freeze fixes a target against data released after its frozen time."
+        " FZ-01's retained targets were frozen on 2026-07-17 at 07:18 UTC, so"
+        " they are forward tests against later releases. Comparisons of the"
+        " same formulas with data published before that time (Planck 2018,"
+        " SPT-3G D1, ACT DR6 and DESI DR2 for the scalar tilt and the w-law)"
+        " are postdictions and are recorded as such in the postdiction ledgers."
+        " The WMAP ILC search dated 2026-07-17 tested an A5 angular template at"
+        " l >= 6. FZ-11 and FZ-12 carry that template's coefficients, so their"
+        " protocols exclude the search's data products; FZ-01's targets are not"
+        " A5 angular templates and the search examined none of them."
+    )
+    lines.append("")
+    lines.append(
         "Finite completion-lane theorem packages are not automatically"
         " prediction rungs. A1, A3, A4, B1, B2, B3, B4, B5, B6, B7, B8, B9, B11/B13, C1, C2, D1, and E1 emit no row here:"
         " each lacks"
