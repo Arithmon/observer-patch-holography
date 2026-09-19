@@ -14,16 +14,16 @@ be updated before a freeze. Retrospective results occupy a separate collection;
 their former reservations cannot also occur as ladder rows. The issue-506
 record is checked against a fresh replay of its canonical producer as well as
 its recomputed payload digest. Committed custody contracts bind the source-side
-FZ-02 receipt and Lean module even in an isolated clone. When the sibling
-oph-meta custody checkout is present, the tool additionally verifies every
+FZ-02 receipt and Lean module. The custody directories themselves are vendored
+byte for byte under ``evidence/custody/``, so every clone verifies each
 manifest artifact, detached OpenTimestamps digest, attestation class, and the
-append-only FZ-02 custody and scientific errata. When it is absent, the tool
-reports ``external_custody_not_present`` explicitly rather than claiming that
-the external artifact set was verified. FZ-11 additionally resolves its
+append-only FZ-02 custody and scientific errata. If that directory is removed,
+the tool reports ``external_custody_not_present`` explicitly rather than
+claiming that the artifact set was verified. FZ-11 additionally resolves its
 original and repaired source commits, hashes the historical receipt and Lean
-blobs, and requires a direct-parent repair. The coordinated root checkout gets
-the same strict history checks for its append-only proof and decision-rule
-repairs. The explicit
+blobs, and requires a direct-parent repair. A custody root that is itself the original custody Git checkout additionally
+gets strict history checks for its append-only proof and decision-rule repairs;
+the vendored copy carries the bytes and timestamps, not that history. The explicit
 ``--verify-fz11-lean`` gate re-elaborates the repaired proof and accepts exactly
 five standard-axiom reports with no ``sorryAx``; it never skips when requested.
 FZ-12 is bound independently to its exact source commit, root custody commit,
@@ -194,7 +194,9 @@ FZ04_BUILDER_PATH = (
     / "alpha_hvp_audit"
     / "build_alpha_hvp_verdict.py"
 )
-DEFAULT_CUSTODY_ROOT = ROOT.parent
+# Byte-exact copies of the frozen-target custody directories, with their
+# OpenTimestamps proofs, live in this repository so any clone can verify them.
+DEFAULT_CUSTODY_ROOT = ROOT / "evidence" / "custody"
 
 SCHEMA = "oph.frozen_prediction_register.v3"
 STATUSES = {
@@ -3055,7 +3057,7 @@ def render(register: dict, rows: list[dict]) -> str:
     lines.append("")
     fz02_contract = register["external_custody_contracts"]["FZ-02"]
     lines.append(
-        "FZ-02 is bound to oph-meta custody commit"
+        "FZ-02 is bound to original custody commit"
         f" `{fz02_contract['custody_commit']}` at"
         f" `{fz02_contract['custody_commit_utc']}` and source commit"
         f" `{fz02_contract['source_commit']}`. Its append-only custody erratum"
@@ -3067,13 +3069,14 @@ def render(register: dict, rows: list[dict]) -> str:
     )
     lines.append("")
     lines.append(
-        "The validator always checks the committed in-repo hash contracts. In"
-        " the coordinated oph-meta workspace it also resolves the sibling"
-        " custody directories, recomputes every manifest and artifact hash,"
-        " checks each detached `.ots` digest, and distinguishes pending calendar"
-        " commitments from Bitcoin block attestations. In an isolated source"
-        " clone it reports `external_custody_not_present`; that classification"
-        " is clean-clone-safe but is not an external-artifact verification."
+        "The custody directories named in the frozen rows are vendored byte for"
+        " byte under `evidence/custody/`, where the custody paths below resolve."
+        " The validator checks the committed in-repo hash contracts, recomputes"
+        " every manifest and artifact hash from those copies, checks each"
+        " detached `.ots` digest, and distinguishes pending calendar commitments"
+        " from Bitcoin block attestations. The original custody commits are"
+        " recorded as provenance; the timestamps anchor the bytes independently"
+        " of any Git history."
         " The local structural check does not contact a Bitcoin node; independent"
         " chain verification remains the job of `ots verify` after an upgrade."
     )

@@ -1,0 +1,27 @@
+{
+  "schema": "oph.fz12.seam_current_edge_prediction.freeze.v1",
+  "frozen_utc": "2026-08-02T11:52:27Z",
+  "source_commit": "bc5595f8dbb2d2886e2a64ddf447f69fbb00eb3f",
+  "source_receipt": "code/a5_fingerprint/runtime/seam_current_edge_prediction_receipt.json",
+  "source_receipt_sha256": "0b8f0f7573f556ef0f47158fe07eca002c5b35790231d1ef2b75518057d12915",
+  "status": "FROZEN_CONDITIONAL_SOURCE_SEAM_EDGE_BRANCH__PHYSICAL_PRODUCER_OPEN__COMPARISON_INELIGIBLE",
+  "operator": "Lambda_a(k,n) = (1/(5 a^2)) sum_{j=1}^{30} [1 - cos(a k w_j.n)]",
+  "coefficients": {
+    "C4_over_a2": "-1/20",
+    "B0_over_a4": "1/840",
+    "B6_over_a4": "-1/12600"
+  },
+  "scale_free_relations": {
+    "B0_over_C4_squared": "10/21",
+    "B6_over_C4_squared": "-2/63",
+    "B6_over_B0": "-1/15"
+  },
+  "harmonic_nulls": [1, 2, 3, 4, 5],
+  "shape": "one normalized A5-invariant rank-six harmonic I6, up to one orientation in SO(3)/A5",
+  "comparison_state": "INELIGIBLE_UNARMED_PHYSICAL_PRODUCER_OPEN",
+  "new_target_or_comparison_data_read": false,
+  "positive_scale_lower_bound_required_for_null": true,
+  "excluded_prior_data": "2026-07-17 WMAP campaign, its CMB likelihood class, all FZ-11 comparison data, and all comparison data seen before this freeze",
+  "fz11_superseded": false,
+  "scope_of_failure": "seam-current edge physical propagation branch; OPH-wide only after a forced and exclusive physical bridge theorem"
+}

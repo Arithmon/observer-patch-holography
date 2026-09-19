@@ -1,0 +1,19 @@
+{
+  "schema": "oph.fz11.decision_rule_erratum_manifest.v1",
+  "created_utc": "2026-07-31T19:02:42Z",
+  "original_prediction_frozen_utc": "2026-07-31T18:13:34Z",
+  "original_source_commit": "66176656dc1143f9ec50ba1a6e409c403545857f",
+  "original_custody_commit": "97202365784ad5bfc96c482b95b429c396afb5bf",
+  "prediction_bytes_changed": false,
+  "comparison_data_read": false,
+  "original_bindings": {
+    "frozen_target_spin_six_primitive_port_prediction_2026-07-31.md": "1e6dfe17cb917a66f729ae21061704137da65e5269cf925ac3ab2f6ae754d737",
+    "spin_six_primitive_port_prediction_frozen_2026-07-31.json": "2c02c74be715539aa83bffc84fb09e0899e659fe6551c8bb12dffc0baa4a0d64",
+    "registration_manifest_2026-07-31.json": "e1533759bd9af051db23163d378bd259c4c76cb88fd79720c67b641e5da4b9c3",
+    "source_prediction_receipt": "8ac97d7c46199717ed031610efdda65c40f6a251e78715d6bc05888d598e66d8"
+  },
+  "append_only_artifacts": {
+    "FZ11_DECISION_RULE_ERRATUM_2026-07-31.md": "d04741b01825db75bef57f6d7887acfa54d6abd5a087aa202da862c43c3a13f7",
+    "fz11_decision_rule_v2_2026-07-31.json": "4c4fb022d5f226d3c42ffb902aaacb653594ebe28729f67413a3535f2ebeacfa"
+  }
+}

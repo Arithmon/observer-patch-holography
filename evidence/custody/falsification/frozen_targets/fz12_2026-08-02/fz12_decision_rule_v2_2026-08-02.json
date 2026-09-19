@@ -1,0 +1,25 @@
+{
+  "schema": "oph.fz12.decision_rule_clarification.v1",
+  "created_utc": "2026-08-02T12:37:49Z",
+  "original_target": "frozen_target_seam_current_edge_prediction_2026-08-02.md",
+  "original_target_sha256": "afaf634dbfce6b5ed99e362d5ba0dec21389cda38c57e2936c3bf298a8c33fb4",
+  "original_snapshot": "seam_current_edge_prediction_frozen_2026-08-02.json",
+  "original_snapshot_sha256": "d6d8f7e299dc8b38efd88c3e27135c5e4ca8eddc7bc11425f0b6844908ef76df",
+  "source_receipt": "code/a5_fingerprint/runtime/seam_current_edge_prediction_receipt.json",
+  "source_receipt_sha256": "0b8f0f7573f556ef0f47158fe07eca002c5b35790231d1ef2b75518057d12915",
+  "prediction_bytes_changed": false,
+  "comparison_data_read": false,
+  "prediction_manifold_changed": false,
+  "admissibility": "Every physical promotion gate is discharged before exposure. A later data release supplies a joint likelihood or full covariance for same-sector C4, isotropic B0, and the complete rank-six vector. The dataset-specific contract fixes the physical sector, carrier and observer frames, SO(3)/A5 orientation profile, boost law, source, medium, gravity and instrument nuisance model, trials accounting, sensitivity floor, validity domain, expansion remainder, calibrated joint coverage, and isolated carrier contribution. A photon test additionally requires equal action on both transverse polarizations.",
+  "fail_at_five_sigma": [
+    "FZ12-R01: isolated intrinsic C4 is positive; no negative-C4 trigger is required",
+    "FZ12-R02: an isolated intrinsic anisotropic coefficient at angular rank one through five is nonzero; no negative-C4 trigger is required",
+    "FZ12-R03: after a resolved negative C4 and adequate sixth-order sensitivity, linked B0, negative B6, or the rigid rotated I6 vector is excluded under calibrated joint coverage",
+    "FZ12-R04: the calibrated joint likelihood excludes the complete admissible linked branch manifold"
+  ],
+  "support": "The zero-coefficient minimal locally Lorentz-invariant Standard Model plus General Relativity baseline is excluded at five standard deviations or more, the complete linked edge manifold agrees within two, named systematic alternatives are rejected, and an independent eligible release replicates the result.",
+  "inconclusive": "A null or non-detection without the registered same-action lower bound and power condition, an underpowered result, inadequate sixth-order sensitivity after negative C4, incomplete covariance, unresolved frame, polarization splitting, or an unisolated carrier contribution.",
+  "null_rule": "A null or non-detection is INCONCLUSIVE unless a pre-exposure same-action, same-sector source theorem fixes a_min > 0 in the comparison units and the preregistered sensitivity and remainder contract lets FZ12-R04 exclude the entire admissible linked manifold, including all a >= a_min in the declared validity domain, at five standard deviations or more. Without that lower bound and power calculation, a null has no verdict. The premise a > 0 alone is insufficient.",
+  "scope_of_failure": "The seam-current edge physical propagation branch; OPH-wide only after a separate theorem proves the branch forced and exclusive.",
+  "excluded_exposure": "The 17 July 2026 WMAP internal-linear-combination campaign, its cosmic-microwave-background likelihood class, every FZ-11 comparison input, and all comparison data inspected before the FZ-12 freeze."
+}

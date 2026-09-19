@@ -1,0 +1,21 @@
+{
+  "schema": "oph.fz12.decision_rule_clarification_manifest.v1",
+  "created_utc": "2026-08-02T12:37:49Z",
+  "original_prediction_frozen_utc": "2026-08-02T11:52:27Z",
+  "original_source_commit": "bc5595f8dbb2d2886e2a64ddf447f69fbb00eb3f",
+  "original_custody_commit": "54b450af0bb5bd0fee4842f5c5f654d08d6baa2d",
+  "prediction_bytes_changed": false,
+  "source_receipt_bytes_changed": false,
+  "comparison_data_read": false,
+  "reason": "Clarify that a null is inconclusive unless a pre-exposure same-action lower bound and preregistered power make the complete admitted manifold excludable by the frozen joint-likelihood rule.",
+  "original_bindings": {
+    "frozen_target_seam_current_edge_prediction_2026-08-02.md": "afaf634dbfce6b5ed99e362d5ba0dec21389cda38c57e2936c3bf298a8c33fb4",
+    "seam_current_edge_prediction_frozen_2026-08-02.json": "d6d8f7e299dc8b38efd88c3e27135c5e4ca8eddc7bc11425f0b6844908ef76df",
+    "registration_manifest_2026-08-02.json": "8ac3c4ac2de3ab3af474ccb494d73d47c3670044c0d112c468d1f9f7f8841f25",
+    "source_prediction_receipt": "0b8f0f7573f556ef0f47158fe07eca002c5b35790231d1ef2b75518057d12915"
+  },
+  "append_only_artifacts": {
+    "FZ12_DECISION_RULE_CLARIFICATION_2026-08-02.md": "b2dab17bb2de9c1a34978748bbd8e9657c2f6f5931315863fbe7004ab2bacc0e",
+    "fz12_decision_rule_v2_2026-08-02.json": "217252c62878576a97f983db109bb18512a29f26b1d17ad086c78ce11f78afa9"
+  }
+}

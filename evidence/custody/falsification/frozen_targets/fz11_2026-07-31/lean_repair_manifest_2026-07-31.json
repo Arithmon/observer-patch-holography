@@ -1,0 +1,23 @@
+{
+  "schema": "oph.fz11_lean_repair_manifest.v1",
+  "repair_utc": "2026-07-31T18:40:42Z",
+  "original_prediction_frozen_utc": "2026-07-31T18:13:34Z",
+  "original_source_commit": "66176656dc1143f9ec50ba1a6e409c403545857f",
+  "repair_source_commit": "05771b773ffaef4be10ae67a72e51cc17e3a38fb",
+  "original_registration_manifest": "registration_manifest_2026-07-31.json",
+  "original_registration_manifest_sha256": "e1533759bd9af051db23163d378bd259c4c76cb88fd79720c67b641e5da4b9c3",
+  "prediction_receipt_sha256": "8ac97d7c46199717ed031610efdda65c40f6a251e78715d6bc05888d598e66d8",
+  "prediction_bytes_changed": false,
+  "new_comparison_data_read": false,
+  "artifacts": {
+    "A5PrimitivePortPrediction_repaired.lean": "cb2e81d0555fa90ee1db6502c7af2d540a785b8567d3310fdd776a21fb5aad4e",
+    "LEAN_PROOF_ERRATUM_2026-07-31.md": "26b6f676081980b5eac79be2d4723815417bfdaf915febaf629a5a358b32f448"
+  },
+  "live_in_repo_artifact": "Lean/Screen/A5PrimitivePortPrediction.lean",
+  "live_in_repo_artifact_sha256": "cb2e81d0555fa90ee1db6502c7af2d540a785b8567d3310fdd776a21fb5aad4e",
+  "verification": {
+    "lean_exit_code": 0,
+    "sorry_ax_present": false,
+    "public_theorem_count": 5
+  }
+}

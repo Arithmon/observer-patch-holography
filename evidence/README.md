@@ -31,6 +31,9 @@ papers. Each package states its own replay and claim boundary.
   theorem-level publication projection and checker. Its causal readout is
   superseded by the causal-poset package; the package stays as the custody
   input pinned by the particle-side source projections.
+- [`custody/`](custody/) holds byte-exact copies of the frozen-prediction
+  custody directories with their OpenTimestamps proofs; the frozen-prediction
+  validator verifies them in every clone.
 - [`particle_simulation_receipts/`](particle_simulation_receipts/) publishes
   the hash-bound report receipts for the calibration-null and direct
   permutation-transport assays cited by the particle paper, with a

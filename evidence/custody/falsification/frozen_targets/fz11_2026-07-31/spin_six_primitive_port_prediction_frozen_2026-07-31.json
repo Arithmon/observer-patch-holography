@@ -1,0 +1,25 @@
+{
+  "schema": "oph.fz11.primitive_port_prediction.freeze.v1",
+  "frozen_utc": "2026-07-31T18:13:34Z",
+  "source_commit": "66176656dc1143f9ec50ba1a6e409c403545857f",
+  "source_receipt": "code/a5_fingerprint/runtime/spin_six_primitive_port_prediction_receipt.json",
+  "source_receipt_sha256": "8ac97d7c46199717ed031610efdda65c40f6a251e78715d6bc05888d598e66d8",
+  "status": "FROZEN_PROSPECTIVE_PRIMITIVE_TWELVE_PORT_BRANCH_PREDICTION__PHYSICAL_COMPARISON_UNARMED",
+  "operator": "omega^2(k,n) = (1/(2 a^2)) sum_{i=1}^{12} [1 - cos(a k u_i.n)]",
+  "coefficients": {
+    "C4_over_a2": "-1/20",
+    "B0_over_a4": "1/840",
+    "B6_over_a4": "2/7875"
+  },
+  "scale_free_relations": {
+    "B6_over_C4_squared": "32/315",
+    "B0_over_C4_squared": "10/21",
+    "B6_over_B0": "16/75"
+  },
+  "harmonic_nulls": [1, 2, 3, 4, 5],
+  "shape": "unique normalized A5-invariant j=6 harmonic I6, up to one orientation in SO(3)/A5",
+  "comparison_state": "UNARMED_PENDING_DATASET_SPECIFIC_PREREGISTRATION",
+  "new_comparison_data_read": false,
+  "excluded_prior_data": "2026-07-17 WMAP ILC A5 template campaign and its CMB likelihood class",
+  "scope_of_failure": "primitive twelve-port physical propagation branch; OPH-wide only after a forced and exclusive bridge theorem"
+}

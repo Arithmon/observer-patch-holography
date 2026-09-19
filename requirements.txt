@@ -15,3 +15,8 @@ PyYAML==6.0.3
 jsonschema==4.26.0
 cryptography==46.0.5
 pytest==9.1.1
+# Frozen-prediction custody (evidence/custody/): `ots info` parses the detached
+# OpenTimestamps proofs locally, without network access.
+opentimestamps-client==0.7.2
+opentimestamps==0.4.5
+python-bitcoinlib==0.12.2

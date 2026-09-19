@@ -1,0 +1,1 @@
+commit 6ff147a5e79145b731173c21d20e65ef8e4f9a90 freezes falsification/frozen_targets/hadronic_closure_target_2026-07-14.json sha256 7cedad0a7281c74ca0fb1105120c991aeab2f3c45bf86adbbfd560c6324fb985

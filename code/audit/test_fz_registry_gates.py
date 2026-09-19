@@ -835,10 +835,10 @@ def test_isolated_clone_reports_external_custody_not_present(tmp_path: Path):
 
 
 def copy_external_custody(tmp_path: Path) -> Path:
-    custody_root = tmp_path / "oph-meta"
+    custody_root = tmp_path / "custody"
     source = fz_tool.DEFAULT_CUSTODY_ROOT / "falsification"
     if not source.is_dir():
-        pytest.skip("sibling oph-meta custody checkout is not present")
+        pytest.skip("vendored custody directory evidence/custody is not present")
     shutil.copytree(source, custody_root / "falsification")
     return custody_root
 
@@ -893,7 +893,7 @@ def test_coordinated_fz11_root_custody_history_is_strict_when_available():
     contract = live_register()["external_custody_contracts"]["FZ-11"]
     directory = fz_tool.DEFAULT_CUSTODY_ROOT / contract["custody_path"]
     if not directory.is_dir():
-        pytest.skip("coordinated oph-meta custody checkout is not present")
+        pytest.skip("custody directory is not present")
     result = fz_tool.verify_fz11_custody_history(
         contract, fz_tool.DEFAULT_CUSTODY_ROOT, directory
     )
@@ -929,7 +929,7 @@ def test_coordinated_fz12_root_custody_history_is_strict_when_available():
     contract = live_register()["external_custody_contracts"]["FZ-12"]
     directory = fz_tool.DEFAULT_CUSTODY_ROOT / contract["custody_path"]
     if not directory.is_dir():
-        pytest.skip("coordinated oph-meta custody checkout is not present")
+        pytest.skip("custody directory is not present")
     result = fz_tool.verify_fz12_custody_history(
         contract, fz_tool.DEFAULT_CUSTODY_ROOT
     )
@@ -958,7 +958,7 @@ def test_coordinated_fz12_root_custody_history_is_strict_when_available():
 def test_historical_custody_does_not_pin_future_live_ots_bytes(tmp_path: Path):
     contract = live_register()["external_custody_contracts"]["FZ-11"]
     if fz_tool.git_checkout_root(fz_tool.DEFAULT_CUSTODY_ROOT) is None:
-        pytest.skip("coordinated oph-meta Git history is not present")
+        pytest.skip("original custody Git history is not present")
     # Historical proofs come from each commit. No live custody proof is read
     # through this deliberately empty directory, so a future in-place OTS
     # upgrade cannot invalidate the original history chain.

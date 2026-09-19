@@ -320,7 +320,12 @@ jobs:
           python3 -m pytest -q code/audit/test_e4_absence_guards.py
 
       - name: Replay FZ-11 primitive-port axiom audit
-        run: python3 tools/build_fz_registry.py --check --verify-fz11-lean
+        # The vendored custody proofs under evidence/custody are parsed with
+        # the official OpenTimestamps client (`ots info`, local only).
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet opentimestamps-client==0.7.2 opentimestamps==0.4.5 python-bitcoinlib==0.12.2
+          python3 tools/build_fz_registry.py --check --verify-fz11-lean
 
       - name: Kernel-check the typed fixed-federation execution audit
         # The typed audit module pins the exact public theorem types of the

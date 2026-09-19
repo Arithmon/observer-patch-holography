@@ -1,0 +1,12 @@
+{
+  "registration": "FZ-02 angular multiplet signature",
+  "frozen_utc": "2026-07-26T09:30:00Z",
+  "tracker_commit": "36e44fcc",
+  "policy": "registered before any comparison data is examined; kill bands frozen with the target; kills publish at confirmation prominence",
+  "artifacts": {
+    "frozen_target_angular_multiplet_signature_2026-07-26.md": "abff4289459a53be63808210b37fd4025af2abf73bc82a2b2a41594953742a57",
+    "fz02_freeze_registry_2026-07-26.json": "bf755a072641eeff3ac000f7abd15f4eb0360175d8fa738a73c31495f98447c4",
+    "a5_angular_multiplet_reference.receipt.json": "93d72fb361d3522145aab7bbf21edabcc4a2d960f87e66629ef831c4662a9e89",
+    "A5AngularMultiplets_pinned.lean": "e18f8874ea1fdf3a0a74289951a5f6d8bce5763eefaba0e3c9360e0dc659d726"
+  }
+}

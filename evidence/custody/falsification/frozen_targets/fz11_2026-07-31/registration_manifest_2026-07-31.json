@@ -1,0 +1,14 @@
+{
+  "registration": "FZ-11 primitive twelve-port spin-six propagation prediction",
+  "frozen_utc": "2026-07-31T18:13:34Z",
+  "source_commit": "66176656dc1143f9ec50ba1a6e409c403545857f",
+  "policy": "prediction frozen before any new comparison data are examined; the related 2026-07-17 WMAP exposure is disclosed and excluded; a dataset-specific comparison remains unarmed",
+  "artifacts": {
+    "frozen_target_spin_six_primitive_port_prediction_2026-07-31.md": "1e6dfe17cb917a66f729ae21061704137da65e5269cf925ac3ab2f6ae754d737",
+    "spin_six_primitive_port_prediction_frozen_2026-07-31.json": "2c02c74be715539aa83bffc84fb09e0899e659fe6551c8bb12dffc0baa4a0d64"
+  },
+  "in_repo_artifacts": {
+    "code/a5_fingerprint/runtime/spin_six_primitive_port_prediction_receipt.json": "8ac97d7c46199717ed031610efdda65c40f6a251e78715d6bc05888d598e66d8",
+    "Lean/Screen/A5PrimitivePortPrediction.lean": "6fbcba24c38aa8c07c6373a577066f74454cc7d580a5ecb69cecaac1f7705f72"
+  }
+}

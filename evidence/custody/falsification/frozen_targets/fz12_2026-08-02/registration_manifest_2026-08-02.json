@@ -1,0 +1,16 @@
+{
+  "registration": "FZ-12 source-seam edge propagation branch",
+  "frozen_utc": "2026-08-02T11:52:27Z",
+  "source_commit": "bc5595f8dbb2d2886e2a64ddf447f69fbb00eb3f",
+  "policy": "the exact edge coefficient manifold and full decision rule are frozen before any new target or comparison data are examined; FZ-11 and every previously exposed comparison data class remain excluded; the physical producer and dataset-specific comparison remain unarmed",
+  "artifacts": {
+    "frozen_target_seam_current_edge_prediction_2026-08-02.md": "afaf634dbfce6b5ed99e362d5ba0dec21389cda38c57e2936c3bf298a8c33fb4",
+    "seam_current_edge_prediction_frozen_2026-08-02.json": "d6d8f7e299dc8b38efd88c3e27135c5e4ca8eddc7bc11425f0b6844908ef76df"
+  },
+  "in_repo_artifacts": {
+    "code/a5_fingerprint/runtime/seam_current_edge_prediction_receipt.json": "0b8f0f7573f556ef0f47158fe07eca002c5b35790231d1ef2b75518057d12915",
+    "Lean/Screen/SeamCurrentCarrierQuotient.lean": "e5f712cbccc5a1462945f0cb511a47064fe10818748498021d5c70ae169a933f",
+    "Lean/Screen/SeamCurrentEdge30Moment.lean": "dca0b721180b8b6a2363105ec9cb35bb9c5f5dca2da4352a9caef3b00129cd01",
+    "Lean/Screen/A5OrbitRaySeparation.lean": "681f214fd1c8b908b12b69c24b4e9805f56c75617dddf1ef193d956554fd1ce2"
+  }
+}

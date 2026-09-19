@@ -1,0 +1,9 @@
+{
+  "artifacts": {
+    "frozen_target_koide_conditional_tau_2026-07-28.md": "1b15fdc304223bc7b4c6e3916e222a67564b6bd6edc128414b66c450b259a5ee",
+    "koide_balance_comparison_frozen_2026-07-28.json": "09efbad8de813790d10671b425daef69429831c58daa212f4be131c61f653898"
+  },
+  "registered_utc": "2026-07-28",
+  "registration": "FZ-10 Koide conditional tau window",
+  "source_commit": "bbc2cebedf190af351fba1eb6c8887fb340eb6bb"
+}

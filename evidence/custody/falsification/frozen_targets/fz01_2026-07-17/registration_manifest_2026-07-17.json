@@ -1,0 +1,15 @@
+{
+  "registration": "forward-test registration 2026-07-17",
+  "frozen_utc": "2026-07-17T07:18:00Z",
+  "tracker_commit": "b9a2da3",
+  "policy": "each target carries its own decision policy, comparator freeze, and kill condition in-file; verdict weight begins at this anchoring; failure permanence applies to every scored outcome",
+  "artifacts": {
+    "fz01_freeze_registry_2026-07-17.json": "8eb71663383aa7927448188e62337ae46ede676d11fad72450c013c2fa570c91",
+    "tracker_section8_pinned_text.md": "54b216b52afe25895552a04b450c3cb33e303802e99618f24361b2bf2b9e0737",
+    "frozen_target_capacity_band_2026-07-17.md": "a4b66fb8aa2e30bf3bb0eea95c7848d8878fca097813bf94ed5d18ffbd1e46dc",
+    "frozen_target_scalar_tilt_2026-07-17.md": "7efdb588224a848c22019dc5dfae6faea30b0f7a3d47ed544313dacfb3032e9a",
+    "frozen_target_acceleration_scale_2026-07-17.md": "d219fb4f5493b6f5b693a9afa365fb54ec0a04f412da5300fd6b94b88a7832c4",
+    "frozen_target_dark_energy_wlaw_2026-07-17.md": "3fc830cf2a43cdf0d55e2acebb826ee952c8db4bbfad1231b8b2d00bea220e39",
+    "frozen_target_integer_k_comb_2026-07-17.md": "f55dc7fb72797da4a2a25d31870c668e39db6e3579bc2f5b09ac6d4b683de2d7"
+  }
+}

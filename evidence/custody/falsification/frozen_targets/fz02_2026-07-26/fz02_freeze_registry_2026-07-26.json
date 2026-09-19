@@ -1,0 +1,68 @@
+{
+  "artifact": "fz02_freeze_registry_2026-07-26.json",
+  "id": "FZ-02",
+  "frozen_utc": "2026-07-26T09:30:00Z",
+  "anchored": false,
+  "anchoring_note": "OpenTimestamps stamps created at registration; calendar attestations upgrade to Bitcoin attestations on a later ots upgrade pass, with the pre-upgrade .ots retained as .ots.bak",
+  "purpose": "Prospective machine-checked test of the icosahedral gauge classification: the angular multiplet signature of the twelve-port screen, frozen at milestone M1 before family-attachment work (#569)",
+  "source_commits": {
+    "reverse-engineering-reality": "36e44fcc (branch main; receipt and Lean module committed with the M1 campaign)",
+    "registry_row": "FZ-02 in plan/OPH_COMPLETION_PLAN.md and docs/FROZEN_PREDICTION_LADDER.md"
+  },
+  "status_vocabulary": [
+    "READY",
+    "GATED",
+    "THEOREM-TARGET",
+    "BUILD",
+    "NOT_EVALUABLE"
+  ],
+  "verdict_vocabulary": [
+    "COMPATIBLE",
+    "FAIL",
+    "INCONCLUSIVE"
+  ],
+  "scoring_rule": "Each row is evaluated only under a dataset declaration, estimator, and tolerance registered before the data is examined; kills publish at confirmation prominence after the audit / re-audit / repair ladder.",
+  "rows": [
+    {
+      "id": "FZ02-R01",
+      "claim": "A5-invariant realizations show the frozen multiplet dimension pattern per level; the l=2 quintet does not split",
+      "status": "READY",
+      "decision_trigger": "resolved splitting of the l=2 quintet under A5-preserving conditions at registered significance -> FAIL"
+    },
+    {
+      "id": "FZ02-R02",
+      "claim": "A5-invariant ensemble covariance at l=2 is scalar",
+      "status": "READY",
+      "decision_trigger": "nonscalar invariant covariance at >= 3 registered sigma -> FAIL"
+    },
+    {
+      "id": "FZ02-R03",
+      "claim": "first nonconstant A5 invariant at l=6, frame-locked to the l=3 block frame",
+      "status": "READY",
+      "decision_trigger": "nonconstant invariant below l=6 at >= 3 registered sigma, or frame misalignment beyond registered tolerance -> FAIL"
+    },
+    {
+      "id": "FZ02-R04",
+      "claim": "face-phase multiplicities (0,1,1,1,2); minimal nontrivial extension is 3 or 3prime; family fiber of that type gives N_g=3 with one CKM phase slot",
+      "status": "THEOREM-TARGET",
+      "decision_trigger": "the #569 attachment lane producing a quotient-visible family fiber that is not the minimal three-dimensional extension kills the face-phase N_g=3 route"
+    }
+  ],
+  "machine_checks": {
+    "executable_receipt": {
+      "file": "a5_angular_multiplet_reference.receipt.json",
+      "receipt_sha256": "d95afcdef548e51f18825053ea74bc23d124672481194cff7282aee91b306b82"
+    },
+    "lean_module": {
+      "file": "A5AngularMultiplets_pinned.lean",
+      "theorems": [
+        "branching_table",
+        "character_table_orthonormal",
+        "first_nonconstant_invariant_at_six",
+        "face_phase_multiplicities"
+      ],
+      "axioms": "standard axioms only, no native_decide"
+    }
+  },
+  "scope_note": "Integer-l rotational branching only; half-integer branching through the binary icosahedral cover is outside this registration."
+}

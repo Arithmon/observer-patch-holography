@@ -1,0 +1,320 @@
+{
+  "artifact": "freeze_registry_draft",
+  "id": "fz01_freeze_registry_2026-07-17",
+  "frozen_utc": "2026-07-17T07:18:00Z",
+  "anchored": false,
+  "anchoring_note": "This artifact carries no verdict weight until the owner anchors it. Anchoring (git commit plus external timestamp, e.g. OpenTimestamps over the commit hash) is the owner action. Until anchored, every row is a proposal; any comparison against data released before the anchor date is retrospective and scores nothing.",
+  "purpose": "FZ-01: hash-pin the freeze-registry shortlist (tracker section 8) as it stands, one row per shortlist entry, with OPH value, measured comparator, decision trigger, and status tag. Converts the program from scoreboard to experiment once anchored.",
+  "constants": {
+    "P_pixel": "1.630968209403959"
+  },
+  "pinned_source": {
+    "file": "/Users/muellerberndt/Projects/oph-meta/oph-physics-sim/docs/OPH_SIGNATURE_EXPERIMENT_TRACKER.md",
+    "section": "## 8. Freeze registry shortlist",
+    "extraction_rule": "exact bytes from the start of the heading '## 8. Freeze registry shortlist' up to, and excluding, the first byte of the heading '## 9. Pro catalog integration'",
+    "byte_range": [
+      73283,
+      75997
+    ],
+    "byte_length": 2714,
+    "line_range": [
+      1035,
+      1072
+    ],
+    "sha256_section8_text": "54b216b52afe25895552a04b450c3cb33e303802e99618f24361b2bf2b9e0737",
+    "sha256_whole_tracker_file": "ace281e69fb7d4612b7f8b60b0c200436c63011e8cc6e0e73183ed6b25d49677",
+    "pinned_copy": "tracker_section8_pinned_text.md",
+    "repo_state": "oph-physics-sim submodule HEAD cce09b822d764e802850cdcb9652513df181e1ca with uncommitted local modifications to docs/OPH_SIGNATURE_EXPERIMENT_TRACKER.md; the pin is over the working-tree bytes, reproducible from the pinned copy"
+  },
+  "status_vocabulary": {
+    "READY": "value and trigger are stated in the tracker; the row freezes as written once the registry is anchored",
+    "GATED": "the row freezes together with a named condition; the condition is part of the frozen claim",
+    "THEOREM-TARGET": "the OPH value exists as an analytic or conditional number; a named theorem or emission receipt must land before the row is a physical prediction; the row freezes with that dependency declared",
+    "BUILD": "no OPH value exists yet; the row pins the obligation and the trigger, and any future value requires a new registration before the trigger data opens",
+    "NOT_EVALUABLE": "no commensurate physical target exists; scoring is forbidden until the named map closes"
+  },
+  "verdict_vocabulary": [
+    "COMPATIBLE",
+    "FAIL",
+    "INCONCLUSIVE"
+  ],
+  "scoring_rule": "Each row is scored once, at its named trigger, against the comparator convention named in the row. Default thresholds where a row does not override them: within 2 sigma COMPATIBLE, beyond 3 sigma FAIL, between INCONCLUSIVE (carried to the next trigger). Hits and kills are recorded in place; a FAIL row stays in the registry as a recorded kill for its branch. No row may be rescored under a different comparator, likelihood combination, or convention without a new registration.",
+  "rows": [
+    {
+      "id": "FZ01-R01",
+      "claim": "Scalar tilt n_s = 1 - P/48",
+      "oph_value": "0.9660214956374175208333 (section 8 prints 0.9660214; full precision from P = 1.630968209403959)",
+      "comparator": {
+        "value": "0.9649",
+        "uncertainty": "0.0042",
+        "source": "Planck 2018 scalar-tilt summary (tracker line 77; OPH_FALSIFICATION_PROGRAM.md line 416)"
+      },
+      "decision_trigger": "next combined-likelihood tilt release: SPT-3G, ACT DR6+, CMB-S4",
+      "status": "READY",
+      "notes": "Two tilt formula candidates are on record in the corpus; the candidate menu, trials count, and combination freeze are declared in FROZEN_TARGET_DRAFT_scalar_tilt_2026-07-17.md, which freezes together with this row."
+    },
+    {
+      "id": "FZ01-R02",
+      "claim": "W/Z physical readout; current chart diagnostics 80.330 / 91.119 / 0.22279 are ineligible",
+      "oph_value": "no physical value frozen",
+      "comparator": {
+        "value": null,
+        "uncertainty": null,
+        "source": "named W/Z release and convention, to be declared at CL-03 closure"
+      },
+      "decision_trigger": "CL-03 full observable map plus theory covariance; otherwise NOT_EVALUABLE",
+      "status": "GATED",
+      "notes": "Gate: CL-03 electroweak physical-readout contract (tracker lines 226, 864-876). The chart numbers are internal prescription diagnostics and may never be scored as masses. Cannot pin a numeric prediction; this row pins the ineligibility ruling itself."
+    },
+    {
+      "id": "FZ01-R03",
+      "claim": "m_H(m_t) criticality relation",
+      "oph_value": "125.72 GeV at measured m_t",
+      "comparator": {
+        "value": "125.13 GeV",
+        "uncertainty": "0.11 GeV",
+        "source": "PDG m_H as transcribed in tracker line 79; the scoring comparator is the PDG value current at the trigger"
+      },
+      "decision_trigger": "PDG update (PDG 2026)",
+      "status": "READY",
+      "notes": "The row is a relation: the criticality curve evaluated at the PDG m_t current at the trigger. The m_t input convention (pole vs MC mass) must be named at anchoring; it is unstated in section 8. Flagged as an ambiguity."
+    },
+    {
+      "id": "FZ01-R04",
+      "claim": "alpha_s(M_Z)",
+      "oph_value": "0.11834",
+      "comparator": {
+        "value": "0.1179",
+        "uncertainty": "0.0009",
+        "source": "world average as transcribed in tracker line 81"
+      },
+      "decision_trigger": "PDG update (PDG 2026)",
+      "status": "READY",
+      "notes": "Current pull +0.5 sigma per tracker."
+    },
+    {
+      "id": "FZ01-R05",
+      "claim": "Lambda_QCD(3)",
+      "oph_value": "334.8 MeV, interval [319, 350] MeV",
+      "comparator": {
+        "value": "338 MeV",
+        "uncertainty": "12 MeV",
+        "source": "FLAG-class average as transcribed in tracker line 82"
+      },
+      "decision_trigger": "FLAG update",
+      "status": "READY",
+      "notes": "Interval target: COMPATIBLE if the FLAG central value sits inside [319, 350] MeV within combined uncertainty; FAIL if excluded at 3 sigma."
+    },
+    {
+      "id": "FZ01-R06",
+      "claim": "Ratio scoreboard (4 ratios, CL-06)",
+      "oph_value": "m_t/m_W = 2.1490; m_H/m_t = 0.72856; m_p/m_e = 1818.4; m_W/m_p = 86.46",
+      "comparator": {
+        "value": "m_t/m_W = 2.1476; m_H/m_t = 0.72497; m_p/m_e = 1836.15; m_W/m_p not printed in the tracker",
+        "uncertainty": "per PDG/CODATA at trigger",
+        "source": "tracker lines 83 and 902-906 (CL-06)"
+      },
+      "decision_trigger": "PDG update (PDG 2026)",
+      "status": "READY",
+      "notes": "Section 8 references CL-06 values without printing them; the four ratios are transcribed here from tracker lines 903-906 and freeze with their lane gates inherited. The measured comparator for m_W/m_p is absent from the tracker text. Flagged as an ambiguity. m_p/m_e sits at -0.97 percent, a live tension carried into the freeze."
+    },
+    {
+      "id": "FZ01-R07",
+      "claim": "Glueball 0++ mass",
+      "oph_value": "1.41 to 1.61 GeV (interval)",
+      "comparator": {
+        "value": "BESIII PWA f0(1500)/f0(1710) assignments",
+        "uncertainty": "per PWA release",
+        "source": "tracker line 1050"
+      },
+      "decision_trigger": "next BESIII PWA",
+      "status": "READY",
+      "notes": "The map from the PWA resonance content to the 0++ glueball mass (which state, or which mixing convention, scores the interval) is unstated in section 8 and must be named at anchoring. Flagged as an ambiguity."
+    },
+    {
+      "id": "FZ01-R08",
+      "claim": "Capacity Lambda (EW branch, provenance clean)",
+      "oph_value": "Lambda l_P^2 = 2.668e-122",
+      "comparator": {
+        "value": "Lambda l_P^2 = 2.845e-122 (Planck display)",
+        "uncertainty": "posterior at trigger",
+        "source": "tracker lines 78, 1142; Planck/DESI Lambda display"
+      },
+      "decision_trigger": "DESI DR3",
+      "status": "READY",
+      "notes": "Frozen with the known +6.6 percent gap declared; the row freezes the EW-branch value as the prediction and the gap as a live tension. A separate corrected-balance capacity band draft exists at proof/nclosure/FROZEN_TARGET_DRAFT_capacity_band_2026-07-17.md and is a distinct registration; the two must never be merged after data."
+    },
+    {
+      "id": "FZ01-R09",
+      "claim": "(w0, wa) dark energy equation of state",
+      "oph_value": "(-1, 0)",
+      "comparator": {
+        "value": "DESI DR3 + SNe (w0, wa) posterior",
+        "uncertainty": "posterior at trigger",
+        "source": "tracker line 1052"
+      },
+      "decision_trigger": "DESI DR3 release",
+      "status": "THEOREM-TARGET",
+      "notes": "Conditional row: freezes together with the fixed-N w-law theorem (DK-01, tracker execution item 5). Without the theorem the row scores as a conditional claim only. DK-01 mock fit (does the capacity gap mimic thawing) is the named pre-registration check."
+    },
+    {
+      "id": "FZ01-R10",
+      "claim": "Sigma m_nu with normal ordering",
+      "oph_value": "0.0588 eV, NO",
+      "comparator": {
+        "value": "DESI DR2+CMB bound ~0.064 eV (current); DESI DR3 + CMB posterior scores the row",
+        "uncertainty": "posterior at trigger",
+        "source": "tracker lines 90, 1053, 1145"
+      },
+      "decision_trigger": "DESI DR3 release",
+      "status": "THEOREM-TARGET",
+      "notes": "Conditional row: freezes with the rank-lane condition (DK-02). Window to the current bound is 0.005 eV; one release cycle decides. A robust cosmological bound below 0.0588 eV is a FAIL for the rank lane."
+    },
+    {
+      "id": "FZ01-R11",
+      "claim": "m_bb (neutrinoless double beta decay effective mass)",
+      "oph_value": "1.5 to 3.7 meV (interval, m1 = 0, NO)",
+      "comparator": {
+        "value": "current bounds KamLAND-Zen/GERDA m_bb < 28-122 meV; LEGEND-1000/nEXO score the row",
+        "uncertainty": "per experiment at trigger",
+        "source": "tracker lines 1005, 1054, 1145"
+      },
+      "decision_trigger": "LEGEND-1000/nEXO first results",
+      "status": "THEOREM-TARGET",
+      "notes": "Conditional row: freezes with the rank-lane condition (DK-02). A 0nubb discovery at LEGEND-1000 sensitivity (far above the interval) kills the rank lane and NO with m1 = 0."
+    },
+    {
+      "id": "FZ01-R12",
+      "claim": "Proton decay",
+      "oph_value": "no signal; tau_gauge = infinity (no leptoquarks, dim-5 forbidden)",
+      "comparator": {
+        "value": "current Super-K bound > 2.4e34 yr (e+ pi0); Hyper-K exposure scores the row",
+        "uncertainty": "per exposure",
+        "source": "tracker lines 1003, 1055"
+      },
+      "decision_trigger": "Hyper-K first exposure years",
+      "status": "READY",
+      "notes": "Null prediction: any confirmed proton decay is a FAIL for the gauge branch. Continued null is COMPATIBLE and is the registered outcome."
+    },
+    {
+      "id": "FZ01-R13",
+      "claim": "Ringdown transition (canonical integer-k Kerr family)",
+      "oph_value": "no value frozen; the historical alpha = 4 branch is VOID/MISATTRIBUTED because alpha = 4 ln(k) with integer k makes alpha = 4 imply k = e",
+      "comparator": {
+        "value": null,
+        "uncertainty": null,
+        "source": "O4/O5 stacked ringdowns, after a new registration"
+      },
+      "decision_trigger": "new source-derived transition and full-likelihood registration before data opening",
+      "status": "BUILD",
+      "notes": "This row pins the obligation: any future ringdown test must freeze an integer-k Kerr transition, nuisance model, selection rule, and full likelihood before looking at outcomes. The historical alpha = 4 numbers are void and may never be repaired by choosing a multiplicity after seeing an event. Cannot pin a numeric prediction."
+    },
+    {
+      "id": "FZ01-R14",
+      "claim": "Cosmic birefringence angle",
+      "oph_value": "0.37501 deg (alpha_U/(2 pi))",
+      "comparator": {
+        "value": "Eskilt-Komatsu beta = 0.342 deg",
+        "uncertainty": "+0.094 / -0.091 deg (current pull +0.35 sigma; 4 expressions tried, declared)",
+        "source": "tracker lines 1057, 1134-1135; LiteBIRD and PR4 reanalyses score the row"
+      },
+      "decision_trigger": "emission theorem (DK-06/07), then LiteBIRD / PR4 release",
+      "status": "THEOREM-TARGET",
+      "notes": "Conditional row: freezes with the emission-theorem condition. The 4-expression trials count from Appendix A is part of the frozen claim and charges any future significance statement."
+    },
+    {
+      "id": "FZ01-R15",
+      "claim": "Dark-siren H0",
+      "oph_value": "67.4 +/- 1 km/s/Mpc",
+      "comparator": {
+        "value": "LVK O5 dark-siren H0 posterior",
+        "uncertainty": "posterior at trigger",
+        "source": "tracker lines 200, 538, 1058"
+      },
+      "decision_trigger": "O5 catalog",
+      "status": "READY",
+      "notes": "Registers the low side of the Hubble tension as the OPH stance, on a dataset independent of both distance ladders."
+    },
+    {
+      "id": "FZ01-R16",
+      "claim": "CMB low-ell IR filter",
+      "oph_value": "(q_IR, t_IR) with ell_IR ~ 32; no frozen numeric amplitude",
+      "comparator": {
+        "value": "Planck low-ell likelihood (unbinned l = 2..29 queued); DK-05 binned wedge: q <= 0.070 at l_IR = 32",
+        "uncertainty": "per likelihood",
+        "source": "tracker lines 384-397 (DK-05 executed), 1059"
+      },
+      "decision_trigger": "source emission theorem, then Planck low-ell scoring",
+      "status": "THEOREM-TARGET",
+      "notes": "Conditional row: the filter parameters carry no frozen numeric values in section 8; only the scale ell_IR ~ 32 is stated. Section 8 prints the parameter pair as (q_IR, t_IR) while the DK-05 entry uses (q, l_IR); the symbol t_IR appears nowhere else in the tracker. Flagged as an ambiguity, likely a typo for l_IR. Cannot pin numeric values."
+    },
+    {
+      "id": "FZ01-R17",
+      "claim": "UHE coefficients (after VN-08)",
+      "oph_value": "no value frozen; real emission values replace the demo fixture",
+      "comparator": {
+        "value": null,
+        "uncertainty": null,
+        "source": "IceCube/Auger/LHAASO, after VN-08 completion"
+      },
+      "decision_trigger": "VN-08 completion",
+      "status": "BUILD",
+      "notes": "This row pins the obligation only. The current demo fixture is ineligible; the NO_UHE_DATA_USE receipt pattern applies. Cannot pin numeric values."
+    },
+    {
+      "id": "FZ01-R18",
+      "claim": "Neutron lifetime beam-bottle stance",
+      "oph_value": "bottle correct (exact SM field content, no dark decay channel)",
+      "comparator": {
+        "value": "next beam remeasurement",
+        "uncertainty": "per publication",
+        "source": "tracker lines 714-715, 1061"
+      },
+      "decision_trigger": "publication of the next beam remeasurement",
+      "status": "READY",
+      "notes": "Stance row, no single numeric: COMPATIBLE if the beam-bottle split resolves toward the bottle value; FAIL if a dark decay channel is established."
+    },
+    {
+      "id": "FZ01-R19",
+      "claim": "Exactly-3 block",
+      "oph_value": "N_nu = 3 exactly; no fourth family, no steriles, no exotics, no extra U(1)",
+      "comparator": {
+        "value": "LEP N_nu = 2.9840 (current, exact 3 at +1.95 sigma); LHC, BEST resolution, N_eff score the row",
+        "uncertainty": "0.0082 (LEP)",
+        "source": "tracker lines 1006, 1062, 1154"
+      },
+      "decision_trigger": "ongoing; scored at each named release",
+      "status": "READY",
+      "notes": "Null block: any confirmed fourth chiral family, sterile oscillation, or light exotic is a FAIL for the branch."
+    },
+    {
+      "id": "FZ01-R20",
+      "claim": "No particle dark matter",
+      "oph_value": "all direct searches null",
+      "comparator": {
+        "value": "LZ full exposure, XLZD",
+        "uncertainty": "per exposure",
+        "source": "tracker line 1063"
+      },
+      "decision_trigger": "ongoing; scored at each named exposure",
+      "status": "GATED",
+      "notes": "Conditional row: freezes with the response-branch condition. A confirmed particle dark matter detection is a FAIL for the response branch."
+    }
+  ],
+  "unpinnable_or_ambiguous": [
+    "FZ01-R02 (W/Z), FZ01-R13 (ringdown), FZ01-R17 (UHE): no numeric OPH value exists; these rows pin obligations and ineligibility rulings only.",
+    "FZ01-R03: the m_t input convention for the criticality curve is unstated in section 8.",
+    "FZ01-R06: section 8 says 'CL-06 values' without printing them; values transcribed from tracker lines 903-906; the measured m_W/m_p comparator is absent from the tracker.",
+    "FZ01-R07: the map from BESIII PWA content to the scored 0++ mass is unstated.",
+    "FZ01-R16: (q_IR, t_IR) symbol mismatch with the DK-05 entry's (q, l_IR); no frozen numeric amplitude."
+  ],
+  "related_drafts": [
+    "FROZEN_TARGET_DRAFT_scalar_tilt_2026-07-17.md (expands FZ01-R01)",
+    "FROZEN_TARGET_DRAFT_acceleration_scale_2026-07-17.md (galaxy acceleration scale; absent from section 8, registered as a standalone draft)"
+  ],
+  "anchoring": {
+    "status": "ots_stamp_submitted",
+    "tracker_commit": "b9a2da3",
+    "note": "verdict weight for every row begins at this anchoring; the workspace draft copies carry none"
+  }
+}
