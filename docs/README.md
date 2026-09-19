@@ -30,6 +30,8 @@ run data so you can watch the universe assemble itself.
 ## Reader Support
 
 - [Common Objections](COMMON_OBJECTIONS.md) answers recurring technical and conceptual criticisms.
+- [Contributed background notes](../contributions/README.md) record standard mathematics that OPH
+  work can reference; they make no OPH claim.
 
 ## Proof And Verification Maps
 
