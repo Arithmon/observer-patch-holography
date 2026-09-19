@@ -16,11 +16,15 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Antimatter.** For every list of matter states there is a mirror list with every charge reversed. The two are one object, and a world built on either gets the same physics with the labels swapped.
 
-**Area law.** A black-hole horizon's entropy is fixed by its area, and suitable gravitational entropy bounds constrain more general regions. The finite observer model separately bounds outside access by boundary records. Equating that count with physical entropy or area requires a realized screen and a calibration.
+**Area law.** The surface around a region fixes how much can be known about the inside of it, and the volume does not come into it. A black-hole horizon, whose entropy is fixed by its area, is the best-known case. Twice the radius buys four times the capacity where counting by volume promises eight.
 
 **Bit.** The answer to one well-chosen yes-or-no question, and the unit anything measured in questions is counted in. Erasing one releases heat, and how much depends on nothing about the device, only on the temperature around it.
 
-**Carrier.** The finite wiring used by the construction: twelve ports at the corners of a twenty-sided solid, thirty seams joining them, twenty triangular faces. It supplies exact structural numbers. Physical constants require their separate carrier and calibration maps.
+**Carrier.** The finite wiring underneath everything: twelve ports at the corners of a twenty-sided solid, thirty seams joining them, twenty triangular faces. The structural numbers of the physics are read off that arrangement.
+
+**Causal diamond.** Everything that happens after one event and before another: two cones joined at the rim. Count the records inside one and you have its four-dimensional volume. Take the fourth root of the ratio of two such counts and you have the ratio of their durations.
+
+**Causal set.** A partial order in which any two related events have only finitely many others between them. The 1987 proposal is that spacetime, looked at finely, is one of these, with the order supplying the light cones and the number of elements supplying volume. The observers' records form one.
 
 **Center.** What commutes with everything else in sight. In an algebra of questions it is where records live, which is why the public world looks classical; in a group of moves it is the moves nobody inside can detect.
 
@@ -30,11 +34,11 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Chirality.** Handedness. A pattern with a heading and a spin either turns the way a right-handed screw advances or turns the other way; a mirror swaps the two cases, and the world treats them differently.
 
-**Collar.** The thin band of patches wrapped around a region's edge, with the region inside it and everything else beyond. When a collar screens, the inside can be rebuilt from the collar alone, and outside access is controlled by data across that band. Turning the count into physical entropy or area requires a separate calibration.
+**Collar.** The thin band of patches wrapped around a region's edge, with the region inside it and everything else beyond. When a collar screens, the inside can be rebuilt from the collar alone, and whatever the outside learns about the inside crosses that band.
 
 **Commensurability.** Whether two observers' readings answer each other at all. The rule saying which of your readings answers which of mine sits on the seam between us.
 
-**Commit.** The write that closes a disagreement: the seam ends up satisfied, the total across it unchanged, and the record of which way the disagreement ran gone. Commits supply informational precedence and irreversibility. Physical elapsed time and clock rate require a separate causal and clock attachment.
+**Commit.** The write that closes a disagreement: the seam ends up satisfied, the total across it unchanged, and the record of which way the disagreement ran gone. Everything anybody calls the passing of time is made of these.
 
 **Commutator.** What you get by doing two operations in both orders and subtracting. Zero means the two questions can be answered together, and anything else is the amount by which they cannot.
 
@@ -136,7 +140,9 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Orbit.** Every place the moves in a group can send one thing. The four corners of a square make one orbit under its eight moves, the four edge midpoints make another, and nothing carries a corner into the second set.
 
-**Order.** A relation between two events saying which depends on which, and only for pairs where an authenticated read-from fact exists. In the twelve-observer wiring, a hundred and twenty seam pairs may compete through a shared observer and three hundred and fifteen are structurally disjoint. The wiring lists possibilities; the certified versions actually read in one history determine its ordered pairs. A clock may then put even incomparable events into a sequence.
+**Order.** A relation between two events saying which came first, and only for the pairs where a chain of reads runs from one to the other. On twelve observers a hundred and twenty pairs of seams share an observer and three hundred and fifteen share nothing. The versions actually read in one history settle which pairs are ordered, and a clock pretends the rest are settled too.
+
+**Ordering fraction.** Of all the pairs of events inside a causal diamond, the share in which one could have influenced the other. It is a half with one direction of space, eight thirty-fifths with two and a tenth with three, which makes it a dimension meter that needs no ruler.
 
 **Overlap rule.** Two accounts have to match where both parties look, and nowhere else. Alice's brown table and Bob's waxy one never have to be reconciled.
 
@@ -156,13 +162,13 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Quotient.** Sweeping up everything that counts as the same into one bundle and working with the bundles. The twelve hours on a clock face are the whole numbers with twelve counting as nothing.
 
-**Rank.** How many rows of a table of numbers are independent of the rest. The candidate position carrier has three directions because the slowest-fading band of comparisons has rank three. Calling it physical space requires a realization map. The two transverse modes of the separately selected Maxwell action branch are likewise not, by themselves, a photon-particle theorem.
+**Rank.** How many rows of a table of numbers are independent of the rest. Space has three directions because the slowest-fading band of comparisons has rank three. Light has two polarizations because the directions perpendicular to its travel make a plane.
 
 **Record.** A write into the protected part of a patch's state, the part later moves may not touch. It reads the same twice, it can be copied to a neighbor, and everything an observer holds onto is made of them.
 
 **Record map.** Takes the full state of a network and hands back the part that survives comparison: every seam entry, and nothing that only one observer could ever have known. What it deletes is exactly what no two parties were in a position to check against each other.
 
-**Refinement.** Describing something at ever finer resolution with no completed infinite object at the end, the way 3, 3.1, 3.14 describes pi and nobody ever holds pi. The carrier completion is smooth in that mathematical sense. Its identification with physical space is a separate claim.
+**Refinement.** Describing something at ever finer resolution with no completed infinite object at the end, the way 3, 3.1, 3.14 describes pi and nobody ever holds pi. Space looks smooth for that reason. The smooth version is a limit nobody occupies.
 
 **Relative entropy.** How many extra questions per state your description costs against the settled one. Zero when the two match, positive when they do not, and nothing done to both of them afterwards pushes it back up.
 

@@ -34,7 +34,7 @@ The second half of that result is even stranger. Put a detector in the apparatus
 
 The bet was worth making because both positions are unacceptable. If the record is erased, quantum mechanics breaks. If it survives, it has to escape from the one place in the universe that nothing escapes from. Three of the most capable physicists alive spent seven years on which of two impossibilities to prefer. At the end of it one of them changed his mind and one of them did not.
 
-**Gravity puts an area ceiling on what a region can hold.** This last one is arithmetic rather than anecdote. A warehouse twice as wide in every direction holds eight times as much. A black-hole horizon behaves differently: double its radius and its entropy grows by four. More general gravitational bounds extend that lesson under their own causal conditions, though an ordinary empty region need not saturate the bound. The observer construction reaches a separate finite boundary count. Calling that count physical entropy or area requires a map to a realized screen and a calibrated exchange rate.
+**Gravity puts an area ceiling on what a region can hold.** This last one is arithmetic rather than anecdote. Ask how much information you can pack into a region of space. Storage scales with volume, obviously: a warehouse twice as wide in every direction holds eight times as much. A black-hole horizon behaves differently. Double its radius and its entropy grows by four. Nobody put this in. It falls out of the thermodynamics of black holes, and the same ceiling holds over regions of empty space that contain no black hole at all.
 
 ## A universe without a manual
 
@@ -46,7 +46,7 @@ And a third habit. Never assume a component you have not found on the board. If 
 
 This book runs that discipline under one aggravating condition, which Galileo's cabin introduced and which never goes away: the engineer is a part. There is no bench to put the machine on.
 
-A reconstruction asks how much physics follows from a smaller starting point. OPH starts with bounded systems that read their boundaries, retain records and repair disagreements with neighbors. Agreement becomes a mathematical constraint. The test is how much familiar physics follows from those constraints, with every extra assumption visible.
+Every theory anyone has written down begins by assuming a great deal: a space for things to be in, a time for them to happen along, a list of fields, a symmetry group, and a page of numbers measured in laboratories and entered by hand. Those assumptions are not idle. They are what makes the equations work. But a component you assumed is a component you will never find. The six symptoms above are all complaints about the arena rather than about the things moving around in it.
 
 The everyday picture of the world is that there is a three-dimensional container, time runs inside it at one rate for everybody, objects occupy positions in it, and physics describes how the objects move.
 
@@ -54,9 +54,9 @@ In 2002 the programmer Joel Spolsky wrote down a rule about descriptions of that
 
 ## One equation at a time
 
-The framework has a name: Observer Patch Holography. Its case is the reach of one observer architecture. Under explicit probability assumptions, the algebra of readable questions supports quantum probabilities. Complete reversible boundary response and internal transport constrain the local symmetries of forces. A supplied matter law supports controlled motion of a real field in a continuum and, at fixed mesh, an interacting quantum state space. Scalar-density and magnetic readouts use the same field reconstruction in both descriptions; quantum probabilities come from the declared Hilbert representation. Objects that ordinary calculations introduce separately become parts of a connected argument.
+The framework is called Observer Patch Holography. It starts with bounded systems that read their boundaries, keep records and repair disagreements with their neighbors, and it treats agreement between them as a mathematical constraint. The algebra of questions such a system can read carries the rules of quantum probability. Complete reversible response at the boundary, together with transport inside it, fixes the local symmetries of the forces. A matter law on the same patches moves a real field through a continuum and, at fixed resolution, gives it an interacting quantum state space, with density and magnetic readings coming out of one field reconstruction in both descriptions. Objects that ordinary calculations introduce separately become parts of one connected argument.
 
-The papers state the assumptions behind each result and supply proofs or calculations that can be repeated independently. Physical claims face a further demand: identify what an instrument would measure and what outcome would refute the claim. Appendix C points to that evidence. This book develops the argument in words, explaining what each step rests on.
+The full version lives outside this book, in papers that carry the theorems and in machine-checked proofs for the parts that bear weight. Appendix C says where all of it sits. None of that is reproduced here, because reproducing it would produce a different book. What follows is the argument without the apparatus, down to the points at which a number falls out with nothing fed in to produce it. Where a step carries real load you will be told what it rests on and where the checkable version can be found.
 
 There are equations in this book, not many, and every one of them is doing work. Each one is introduced by a sentence saying what it is about to say and followed by a sentence saying what it said. Every symbol in it is explained in words on the same page.
 
@@ -74,8 +74,8 @@ What do the units say? If one side of the equals sign is a length and the other 
 
 There is a single line that working physicists write down when somebody asks what the world is made of. It is short enough to fit on a coffee mug, which is where most of the people who have seen it encountered it. Four or five terms, depending on how you group them. Each term is a compression: unfold one and out comes a force, or a family of particles, or the reason anything has mass.
 
-The Standard Model packages an extraordinary range of measurements in that line. Its symmetry and field choices constrain the terms, while experiments supply parameters. A deeper reconstruction must account for those choices as well as reproduce their successful predictions.
+Nobody derives that line. It is written down and then adjusted until it matches experiment. The symmetry group inside it was selected because it matched what the detectors reported. The number of particle families in it is three because experiments have found three. Somewhere between nineteen and twenty-six of the numbers in it were measured in laboratories and typed in. The line is a transcription of those results, and the most successful description of anything human beings have ever produced.
 
-By the last third of this book, you will be able to read that line and ask which parts follow from observer consistency, which require further assumptions, and how the resulting claims can be tested.
+By the last third of this book you will be able to read that line and say where every symbol in it came from.
 
 That is the promise. This prologue makes no other.

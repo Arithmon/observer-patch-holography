@@ -1,4 +1,4 @@
-# 15. Why Does the Position Carrier Have Three Directions?
+# 15. Why Does Space Have Three Directions?
 
 In September 1879 a man left his house in Essex carrying a rack of brass resonators and walked to the parish church to hit a bell.
 
@@ -12,7 +12,7 @@ For a fraction of a second the bell has four voices. The loudest of them are the
 
 You can walk forward, walk sideways, and climb a ladder, and any motion you are capable of is some combination of those three. Three numbers pin a body down and two will not: an air traffic controller is given latitude, longitude and altitude, and losing any one of the three leaves a whole line of places the aircraft could be sitting. A fourth independent number has never been available to anybody. General relativity generalizes the shape of space in every respect except the count of directions, which it takes as a starting datum. Nothing in its field equations prefers three to five or to ten. The same equations take it for granted that the three run smooth, with a place between any two places and no smallest step anywhere in them.
 
-The slow band gives an abstract continuous three-dimensional Euclidean carrier under the stated repair rule and response metric. Its integer records can populate finite regions at a specified resolution. A supplied rule for interactions between nearby records then supports a scalar field whose motion approaches an ordinary continuum wave equation, with an explicit error bound. This construction needs no inserted Cartesian grid. Its population rule and action remain assumptions, and its model time needs a physical interpretation. Chapter seven's authenticated event order is a separate object; matching records to physical signals requires more than adjoining a time axis. The pages below derive the carrier and explain what finite resolution can accomplish.
+It comes out of a bell.
 
 ## Twelve readings and a grid of weights
 
@@ -56,7 +56,7 @@ A rule that commutes with all sixty rotations acts on each uncuttable piece as m
 
 So a rule respecting this wiring, however elaborate its 144 entries look, has at most four distinct answers in it. One for each uncuttable piece.
 
-The two pieces of size three are not copies of each other. The sixty rotations move the directions inside one of them along a different pattern from the other, which is why the two get separate numbers and why the count is four rather than three. Two pieces of size three went into the wiring. The declared carrier branch uses one of them.
+The two pieces of size three are not copies of each other. The sixty rotations move the directions inside one of them along a different pattern from the other, which is why the two get separate numbers and why the count is four rather than three. Two pieces of size three went into the wiring. The world is built on one of them.
 
 ## The three rates
 
@@ -82,13 +82,13 @@ Those are shares of a total that is itself collapsing. After a hundred passes th
 
 Which is Rayleigh's hemispherical bell, with the founder's name filed off. Four voices at the strike, one voice a moment later, and e-flat left in possession of the field.
 
-Observers here are built out of repair records. A repair record is not made in one pass. Chapter nine's graph-local dependency bound is one seam per model event, and the two most distant ports on this wiring sit three seams apart, so a round-trip comparison needs at least six seam events on the declared operational-cost branch. Six passes is longer than the fast band's half-life of 5.4, so more than half the fast content is gone before that comparison can return. This selects the slow candidate carrier band within the finite model; it is not a physical signal-speed derivation.
+Observers here are built out of repair records. A repair record is not made in one pass. Chapter nine's limit on how fast influence travels says one seam per repair, and the two most distant ports on this wiring sit three seams apart, so the quickest possible confirmation between that pair is three repairs out and three back. Six repairs is longer than the fast band's half-life of 5.4 passes, so more than half the fast content is gone before the quickest question this arrangement can ask about itself has its answer back. Any observer inside this arrangement is therefore reading it late, after the fast content has gone, which makes observers built out of repair records slow ears. Over those same six passes the slow band loses a quarter of what it holds and no more.
 
-On the declared operational-cost branch, that settles which content can carry the candidate position readback. Such a readback is a quantity two separated observers can compare and both get the same answer for. The comparison takes rounds to run. Content that has faded to nothing before the comparison completes cannot anchor it: by the time the second observer reports, the quantity it was reporting on has relaxed away. Only the slowest band lasts long enough. Its size is three.
+That settles which content can carry a position. A position is a quantity two separated observers can compare and both get the same answer for. The comparison takes rounds to run. Content that has faded to nothing before the comparison completes cannot anchor anything: by the time the second observer reports, the quantity it was reporting on has relaxed away. Only the slowest band lasts long enough. Its size is three.
 
 The five-dimensional piece is the largest one on the wiring and it loses anyway. Its content halves in 6.6 passes against the slow band's 14.7, and after sixty passes the five directions are holding about a twentieth of what the three are holding. Whatever an observer writes into those five directions has drained most of the way out before a second observer can be told about it. A quantity like that describes nothing that has a place.
 
-That is where the carrier's three comes from. It is the number of independent directions in the one band that outlives every other band, on the declared wiring.
+That is where three comes from. It is the number of independent directions in the one band that outlives every other band, on a wiring that has no alternatives.
 
 ## The table of angles
 
@@ -102,17 +102,17 @@ Those are the angles the twelve ports of chapter fourteen's arrangement stand at
 
 The count of independent directions in a table like that is called its **rank**: how many of the twelve shadows you have to be given before the other shadows are forced. Two will not do it. Four is more than necessary. The rank of that table is three. Every entry in it is 1, or minus 1, or one over the square root of five with a sign in front, so the whole calculation runs in arithmetic built out of the square root of five and nothing anywhere in it is rounded.
 
-That three is the slow band's size arriving a second time, since shadows lying in a three-directional band cannot supply more independent rows than the band has directions. A four-directional carrier built by this mechanism would need a slowest band of size four. The sizes available on this wiring are one, three, three and five.
+That three is the slow band's size arriving a second time, since shadows lying in a three-directional band cannot supply more independent rows than the band has directions. A world with four directions in it would need a slowest band of size four. The sizes available on this wiring are one, three, three and five.
 
 ## Six counters
 
-A three-dimensional carrier space in the abstract has nowhere in it to stand, and getting into it takes whole numbers.
+A three-dimensional space in the abstract has nowhere in it to stand, and getting into it takes whole numbers.
 
 What an observer holds about where it is, at any moment, is a tally. Every comparison it completes through a port adds one to a count. The twelve ports come in six pairs facing opposite ways, and a comparison recorded out through one port is the same event as a comparison recorded inward through the port facing the other way, so the two counts are one count with a sign on it. Twelve ports, six pairs, six running totals, and every one of them a whole number, because a comparison either completed or it did not. Nobody ever made three and a half comparisons. An observer that has completed forty comparisons out through one port and thirty-seven inward through the port facing it holds a 3 on that axis, and five more numbers like it, and that list is everything it has ever known about where it is.
 
 Six whole numbers, dropped into a space with three directions in it. That looks like it should lose information, and on ordinary coordinates it does: six real coordinates fed through the table of angles collapse onto three. On whole numbers it loses nothing. For two different tallies to name the same point, some nonzero collection of whole numbers would have to be flattened by the table, which would make the square root of five rational. It is not. Distinct tallies name distinct points. Different histories can finish with the same tally.
 
-The allowed conservative tallies are dense. Take any point of the three-dimensional band and any positive tolerance, and some finite signed tally lands within it. Some points are reached exactly; every point can be approximated. These are statements about the available records. Which sequences of comparisons the repair dynamics accepts is a separate question.
+What those tallies do instead is fill the space. Take any point of the three-dimensional band and any tolerance you care to name, and some finite tally lands inside that tolerance of it. The landing places can be numbered off one after another the way the fractions can, and they are packed everywhere. Some points are reached exactly. Every point can be approached as closely as anybody likes.
 
 ## Nobody ever holds pi
 
@@ -132,20 +132,20 @@ That is the whole of what "the sum is 1" says. The surprise is in what it does n
 
 The fix for pi is a single operation and it is the operation that built the number line. Take the ratios of whole numbers, which have gaps in them wherever a sequence crowds together without arriving, and add in the limit of every such sequence. What comes out has no gaps left. It is the real numbers: the fractions together with every destination the fractions were pointing at. The name for the operation is **completion**.
 
-Run that operation on the record points inside the three-dimensional band, using the distances the table of angles supplies, and what comes out is an abstract continuous three-dimensional Euclidean completion. The original record points belong to it, just as fractions belong to the real line. Every other point is the limit of a sequence of increasingly accurate records. Physical position, scale and the matching of neighboring observers' frames remain separate identifications.
+Run that operation on the record points inside the three-dimensional band, using the distances the table of angles supplies, and what comes out is continuous three-dimensional space. The record points belong to it, just as fractions belong to the real line. Every other point is the destination of some sequence of ever more accurate records, in the sense that 3.1416 and its successors are a destination.
 
 The sixty rotations come along. Each of them permutes the twelve ports, so each leaves every entry of the table of angles precisely where it was, so each preserves every distance in the completed space. A transformation that preserves all distances is a **rigid motion**: what a machinist does picking up a part and setting it down the other way round, with nothing stretched. The group chapter fourteen counted at sixty elements acts on the space it built as the turns of a rigid body.
 
 ## What holds at a finite resolution
 
-The two limits answer different questions: how strongly the slow band dominates, and how finely records can sample its space.
+Both constructions have a limit in them, and nothing in the world sits at either one. The two limits answer different questions: how strongly the slow band dominates, and how finely records can sample its space.
 
 Run the repair grid any finite number of passes and count the independent directions in what it does. The answer is eleven. Every time, at ten passes and at ten million, because all three bands are present, none of them has reached zero, and a number smaller than another number is not zero. Three appears when the overall size is divided out and the number of passes is allowed to grow: the fast and middle bands vanish against the slow one, and the rank of what survives is three. At any actual number of passes it is eleven.
 
-For spatial sampling, choose a bounded region and a minimum separation between records. Add available records until none can be added without breaking that separation. With a sufficiently dense initial menu, the selected records cover the region with a bounded maximum gap. Their number is bounded above and below by fixed multiples of the inverse cube of the resolution. That familiar cubic scaling follows from the three-dimensional distance metric. The chosen separation and region are additional inputs.
+Space gets sampled at a finite resolution. Choose a region and a minimum separation between records, and keep adding records until no more fit without breaking that separation. Because the tallies are packed everywhere, the records chosen leave no gap wider than a fixed multiple of the separation. Their number grows as the inverse cube of the separation, which is the three directions showing up in a count.
 
-These finite populations support a controlled field model. Give each point a real field value, weight it by the volume nearest to it, and supply a positive interaction between nearby values. One stationary action determines the motion. With sufficiently rapid refinement of the population relative to the shrinking interaction range, the field approaches a continuum wave. Errors in smooth detector readings vanish on a fixed time interval before boundary effects arrive. The theorem concerns this supplied scalar action; it does not identify arbitrary repair traffic with field propagation.
+A field can live on a population like that. Give each record point a real value, weight it by the volume nearest to it, and couple nearby values with a positive interaction. One action, in chapter twelve's sense of the word, then fixes the motion. Refine the population quickly enough compared with the shrinking reach of the interaction and the field approaches an ordinary continuous wave. The error in any smooth reading of it goes to zero over a fixed stretch of time, before anything from the boundary arrives. No grid of little cubes was put in anywhere.
 
-An effective continuum therefore asks for a finite error small enough for the observer's question. It does not require a finite list to contain every real point. Record availability, accepted operations and elapsed physical time are distinct: a tiny displacement obtained by canceling a long sequence need not be quick to execute. Zeno's runner crosses the room because crossing it was never the same act as finishing a list with no last entry.
+A continuum for practical purposes asks for an error small enough for the observer's question. It does not need a finite list to contain every real point. Having a record near a point and getting there quickly are different things: a tiny displacement can be the difference between two long runs of comparisons. Zeno's runner crosses the room because crossing it was never the same act as finishing a list with no last entry.
 
 Which leaves one word doing more work than it has been paid for. Every rate here is per pass. Nine tenths per pass, half in 5.4 passes, 94 percent after sixty. A pass is an event that has finished happening. The shares only mean anything if the events fall into an order. What a pass is, why passes fall into an order at all, and why that order has a preferred way round are three questions a wiring diagram does not answer. Rayleigh's bell rang down and did not ring up.

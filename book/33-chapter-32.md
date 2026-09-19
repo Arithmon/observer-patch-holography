@@ -4,9 +4,11 @@ In September 2006 Lee Smolin published *The Trouble with Physics*. The most usef
 
 A physicist can spend forty years on any one of those five and never need to open the literature of the other four. They have separate conferences, separate journals, separate graduate courses and separate senior figures who do not attend one another's talks. Somebody working on the measurement problem and somebody working on the cosmological constant share about as much technical vocabulary as a cardiologist and a bridge engineer.
 
-OPH approaches these questions through one observer architecture. Records, local agreement and bounded access recur in its constructions of quantum probabilities, geometry and matter. Their common starting point creates opportunities to connect the problems, while each physical conclusion retains its own assumptions.
+They are one problem in five costumes. The list runs longer than five. Every celebrated open problem in physics is a symptom of the same move: a background written down at the top of the page, followed by a question that the background has made unanswerable.
 
-Chapter one's comparisons showed several ways to reconstruct parts of the physical description. The question here is what the observer route contributes. Removing an assumption is useful only when a replacement explains the relevant physics. A successful solution must reach quantities that somebody can measure.
+A background is a set of places for things to be at, a parameter for them to happen along, and the two of them present before anything happens in them. Chapter one called it the arena. Read Smolin's five with the arena in view and each one is a question about the arena rather than about what moves around inside it: how many dimensions it has, what the constants of the things in it are, why one class of event occurring inside it counts as a measurement while the others do not, and what its empty parts weigh. A description that grants itself the arena in its first line has no route to any of that. Four of the five ask what the arena is or what sits in it, and the fifth asks whether the law running on it needs changing at the radius of a galaxy.
+
+Take them one at a time. Name the problem the way its own literature names it. Name the thing assumed underneath it, which is usually so old that nobody lists it among the assumptions. Then take the assumption out and watch what the problem does. Solving a problem leaves an answer behind that somebody can go and measure. Removing an assumption leaves a question that cannot be put into words any more.
 
 ## Ten words Bell wanted banned
 
@@ -16,9 +18,9 @@ His target was a joint. The theory as John von Neumann set it out in 1932 contai
 
 The assumption under the joint is older than the theory and it sits inside the word Bell most wanted removed. To measure is to find out a value that was there beforehand. To disturb is to spoil a value that was there beforehand. Both take for granted a world stocked with definite values and experiments as encounters with them, and the measurement problem is the question of how one encounter manages to be smooth and a jump at once.
 
-In the finite reconstruction, an observer has an algebra of questions and a commuting record layer. The probability theorem concerns assignments to all quantum effects, including weighted questions, that are normalized and additive whenever the sum is another allowed effect. Under those hypotheses, the assignment is the trace against a unique state in every finite dimension. Additivity only on sharp projectors needs the familiar dimension restriction; agreement on a finite set of observed questions is weaker still.
+Take the stocked world out. What an observer has is an algebra of questions, some of which refuse to commute, and a record layer sitting in the part that commutes with everything. Nothing gets disturbed, because nothing was carrying a value to be disturbed. A record gets written. The write is a commit that discards the alternatives it resolved. The odds come with it. Take any assignment of numbers to the observer's questions, the weighted ones as well as the plain yes-or-no ones, that lands between zero and one, gives the certain question the value one, and adds up whenever two questions combine into a third. It is the trace against exactly one state, in every finite dimension. Born put the squaring in a footnote in 1926 because he had noticed that it worked. Additivity forces it. The word Bell wanted removed drops out of the description altogether, and what stands in the place where it was is an operation with a price: a write that cannot be undone, leaving the world less able than it was to say what it used to hold.
 
-An instrument connects those probabilities to records. A nonselective readout can discard distinctions in the reduced description while a larger reversible system retains them. The formal representation does not choose a physical instrument or explain which outcome an observer experiences. Those identifications are additional parts of the physical account.
+The joint Bell objected to turns out to have a home. It falls between the questions that commute and the questions that refuse, it sits in a different place for every observer, and no experiment slides it, because a commit either happened or it did not. The ball out of Robins' musket took one route across the room because one route got written down, in splinters and in a length of ribbon on the floor.
 
 ## Loschmidt's objection
 
@@ -28,9 +30,11 @@ Where it gets smuggled in is a statement about how everything started: an arrang
 
 The assumption sits one line above the fix. The elementary dynamics is blind to direction, so a direction has to be imported from outside the dynamics, and the only place left to import one from is the boundary.
 
-The finite repair construction makes its direction assumptions explicit. A stochastic kernel preserves a supplied reference distribution. With strictly positive initial, reference and output laws, the average exponential of minus entropy production is one, and mean entropy production equals the fall in relative entropy. Detailed balance supplies the stronger relation between forward and reverse transition weights. These are statements about a declared probability model.
+Here the elementary move is a commit. A commit is a write that destroys what it resolved. The forward and reverse weights of any transition differ by exactly the exponential of the entropy produced, an identity between whole-number ratios with nothing approximated anywhere in it. The exponential of minus the entropy produced averages to exactly one, and the mean of the entropy produced equals the fall in relative entropy on the nose. One curve gets averaged in one place, that single step is the only inequality in the argument, and everything on either side of it is an equality.
 
-A commit can retain its inputs in a reversible record, so commits alone do not evade Loschmidt's objection. Physical irreversibility requires the channel, boundary conditions and discarded information to be identified. Thermal heat bounds additionally require the reservoir and energy assumptions of chapter twenty-two. The finite inequality connects to the physical arrow only through those bridges.
+An arrangement at the beginning can bias which configurations are common and which are rare. Making a write reversible is beyond it.
+
+So the asymmetry belongs to the operation, and works on the first repair of a fresh arrangement exactly as it works on the ten billionth. Loschmidt's reversal turns every velocity around and un-writes nothing. The bits the commits threw away have nowhere to come back from.
 
 ## A hundred and twenty orders of magnitude
 
@@ -38,9 +42,9 @@ Add up the zero-point energies of the fields of empty space, cut the sum off at 
 
 The assumption is that empty space carries an energy density, that the density sits in a spacetime which was there first, and that gravity weighs it the way a balance weighs a sack of flour.
 
-The local null-probe route uses light rays. A Lorentz-invariant vacuum stress is a number times the metric, and the metric evaluated twice on a light-ray direction is zero. That route is therefore blind to the metric-proportional term. It derives the local Einstein relation only up to one cosmological constant; it does not set the constant to zero or determine its value.
+Gravity's local probes are light rays. The vacuum's stress is the same everywhere and looks identical to every observer however fast they are moving, which forces it to be a number times the metric, and the metric evaluated twice on a light-ray direction is the interval of a light ray with itself, which is zero. A light ray is blind to any vacuum energy density whatever, however enormous, by the definition of the probe rather than through a cancellation. Every local calculation in physics is assembled out of light cones, so the local data deliver Einstein's equation with one term left open: a single cosmological constant that no light ray can see.
 
-The global branch supplies the missing term. The correctable public-record capacity of the horizon is its entropy, and the count comes to 3.3001 times ten to the hundred and twenty-second, against a weighted expansion coordinate of 3.3129 times ten to the hundred and twenty-second.
+The horizon supplies the missing term. The correctable public-record capacity of the horizon is its entropy, and the count comes to 3.3001 times ten to the hundred and twenty-second, against a weighted expansion coordinate of 3.3129 times ten to the hundred and twenty-second.
 
 ## An ensemble of one
 
@@ -48,7 +52,7 @@ In 1953 Fred Hoyle turned up at the Kellogg Radiation Laboratory at Caltech and 
 
 Shift that level by a fraction of a percent and the reaction that builds carbon inside stars stops working, which makes that level the first exhibit in every account of a universe tuned for its occupants. Take any of the twenty-six measured numbers of the Standard Model, change it on paper and work out what the resulting world does, and for several of them the answer is a world with no chemistry in it. The constants of this one look, from that angle, like settings somebody dialed in.
 
-An argument of that shape needs both a collection of candidates and a probability measure on it. String compactifications supply examples with different particle spectra and parameters. Counting many candidates alone does not determine the probability of a hospitable world; that depends on their physical content and the weights assigned to them.
+An argument of that shape is a probability claim. A probability claim needs two things: a collection to draw from, and a weight on the collection. The collection turned up afterwards. The extra dimensions of a string theory can be curled up in an enormous number of ways, each giving a different set of particles and constants at ordinary energies. A collection that large makes a hospitable world unsurprising, provided the collection is there and somebody supplies the weight.
 
 The structure reads two quantities twice, once from the outside and once from the inside. Both readings describe the same carrier, so consistency gives an equation with the quantity on both sides. The map is a contraction, so it has exactly one fixed point. Its coupling comes to 137.035660 against the measured 137.035999, with the quark cloud holding the difference. There is no ensemble to be improbable in: one world, and one value it allows.
 
@@ -58,9 +62,9 @@ The Higgs boson was measured at 125.20 billion electron-volts, with an uncertain
 
 The assumption is the top of the range. A hierarchy problem is a comparison. A comparison needs two scales, one of which was written into the theory by hand as the place where the description gives out.
 
-The hierarchy branch begins with a named physical-scale identification: a screen cell is assigned Newton's area, 2.61 times ten to the minus seventy square meters. The finite screen count does not derive that meter-valued calibration. Conditional on it and on the branch's coupling and matching premises, the weak scale is obtained from the same solve. The ratio between the two is the exponential of minus two pi divided by four times the coupling at a cell, and that coupling is 0.0411, one part in 24.32. Work the exponential and out comes two parts in ten to the seventeenth, which is the size of the scalar's vacuum vector, 246.22 billion electron-volts, measured against the calibrated cell scale.
+Nothing here is written in by hand. Newton's constant is an area, 2.61 times ten to the minus seventy square meters. That area is one cell of a screen, so the scale at the bottom of the world is a count of cells rather than a number entered on line one. The weak scale comes off the same solve. The ratio between the two is the exponential of minus two pi divided by four times the coupling at a cell, and that coupling is 0.0411, one part in 24.32. Work the exponential and out comes two parts in ten to the seventeenth, which is the size of the scalar's vacuum vector, 246.22 billion electron-volts, measured against the scale of a cell.
 
-A gap of seventeen orders of magnitude is what one number near a twenty-fourth does when it lands in an exponent. Within the calibrated branch, the exponential relation does not introduce a second fitted hierarchy parameter at this step; the physical-scale and matching inputs remain explicit.
+A gap of seventeen orders of magnitude is what one number near a twenty-fourth does when it lands in an exponent. Arranging a gap that size would have taken some effort. Nobody had to.
 
 ## The groups that died in 1894
 
@@ -106,11 +110,11 @@ What does the geometry say about Koide's relation? On one face of the icosahedro
 
 Why does light have two polarizations? Because the central band carries four components, removing the redundancy takes two of them away, and what is left is transverse and two wide.
 
-Why does the position carrier have three directions? Because the twelve readings of a patch split into blocks that fade at different rates under repair, and the slowest block, holding 0.9539 of what it carries per pass against nine tenths and 0.8794 for the others, has rank three. Its interpretation as physical space remains conditional.
+Why does space have three directions? Because the twelve readings of a patch split into blocks that fade at different rates under repair, and the slowest block, holding 0.9539 of what it carries per pass against nine tenths and 0.8794 for the others, has rank three.
 
-Why does the Lorentz module have a limiting cone? Because its determinant has one positive and three negative directions and the celestial sphere is its projective null boundary. Identifying that cone with physical signal propagation, and calibrating its speed, require the separate causal, ruler and clock receipts.
+Why is there a speed limit at all? Because the four numbers of a two-by-two block carry the interval in their determinant, one sign for time against the opposite sign for the three directions of space, and where the determinant vanishes there is a cone whose directions make up an observer's sky. A separation is a count of seams crossed and a duration is a count of repairs committed, and the speed of light is the conversion between the two counts, worked out by each observer from its own books and agreed on because every observer's sky is a sphere.
 
-On the proposed dark-sector branch, missing-mass phenomenology is represented by a repair charge on the collars rather than by an additional particle. The charge persists only if later accepted commits do not write the support needed to clear it; the map from that conditional record defect to a galactic profile, geometry and acceleration law remains a physical premise.
+And the missing mass at galactic scales is a repair charge carried on the collars themselves rather than a particle nobody has caught. It stays because no later commit writes what would clear it, and its profile around a galaxy produces an acceleration law fixing the speed of the outermost stars from the visible mass and one acceleration constant.
 
 ## The empty column
 

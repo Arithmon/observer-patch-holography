@@ -10,7 +10,7 @@ It is easy to read that as an anecdote about eccentric mathematicians and miss w
 
 What they were building has a name. A **formal system** is a set of marks you are allowed to write, a starting position, and a set of moves that turn one arrangement of marks into another. Meaning is absent by construction. The marks stand for nothing, the moves have no reasons, and the system has no idea what it is about. Hand the rules to somebody who shares no language with you and they will apply them correctly.
 
-Such a system makes its starting assumptions explicit. Chapter one introduced a relational observer architecture before assigning physical space or time to it. The question is what that architecture can support. Behind it stands an older question, posed by Leibniz in 1714: why is there something rather than nothing? Nothing, he pointed out, is simpler and easier.
+Which makes it the only kind of object anybody can examine without assuming something first. Chapter one ended by throwing away everything: no space, no fields, no symmetry group, no numbers, no place for events to be. The question is whether anything at all survives that. It has a famous form. Leibniz put it in 1714, in a short piece written for a prince: why is there something rather than nothing? Nothing, he pointed out, is simpler and easier.
 
 ## Two answers that do not work
 
@@ -68,7 +68,7 @@ Suppose a bank's ledger says that an account holds nothing and also says that th
 
 A clerk looking at that does something sensible. They decide one entry is a mistake, or they pay out the hundred and open an investigation, or they go and find the deposit slip. What a clerk does not do is conclude that the account holds nine million pounds. People reason around contradictions all day without much difficulty: two entries that cannot both hold get quarantined, while the rest of the ledger goes on working.
 
-A formal system has no clerk. It has marks and moves, it applies every move that applies, and it has no faculty for deciding which of its own lines is the suspicious one. Applied honestly, the moves take it somewhere no clerk would follow.
+A formal system has no clerk. It has marks and moves, it applies every move that applies, and it has no faculty for deciding which of its own lines is the suspicious one. Applied to the letter, the moves take it somewhere no clerk would follow.
 
 Watch. The ledger says the account holds a hundred pounds. From that alone I may write down a weaker sentence: either the account holds a hundred pounds, or the moon is a biscuit. That step costs nothing, because attaching an alternative to a sentence you already have cannot make it less true. Anybody who accepts the hundred pounds is obliged to accept it.
 

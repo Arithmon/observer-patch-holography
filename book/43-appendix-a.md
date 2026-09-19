@@ -12,9 +12,9 @@ Everything came out of something hot and dense about fourteen billion years ago,
 
 That is two questions welded together, and both halves lean on a first instant seen from outside: a moment when the arrangement switched on, watched by nobody in particular, with observers turning up later as furniture.
 
-The hot dense era is the far end of a reconstruction built from records held inside finite patches. The microwave glow, light-element ratios, galaxy spectra and supernova catalogs are records. The Big Bang names the place where that reconstruction reaches the edge of its evidence. Authenticated commits supply an informational order among recorded events. Calling that order physical cosmic time, or extending it beyond the records, requires the same event, signal and clock attachments as any other spacetime claim.
+The hot dense era is the far end of a reconstruction built from records held inside finite patches. The microwave glow left over from when the plasma stopped being opaque is a record. So are the ratios of the light elements, the spectra of galaxies and the catalogs of supernovae. The Big Bang names the place where the record side of that reconstruction goes dark. As for before, the only ordering there is runs on committed repairs, and where none have committed the word has nothing to be a relation on.
 
-One finite conclusion is immediate: a commit loses information about the disagreement it resolved, independently of where it sits in the record chain. Interpreting this loss as the thermodynamic or cosmological arrow requires a physical state and clock map. The proposed microwave branch makes a separate numerical comparison: $1-1.6309682414/48=0.966021$, while Planck reports $0.9649\pm0.0042$. The grain reaches the microwave sky only if a common physical refinement, radial map, stress source, transfer calculation and likelihood connect the finite screen to that observable. The arithmetic proximity is not a CMB derivation.
+Two things follow. The arrow of time is not inherited from that era, since a commit destroys what it resolved, and does that at the ten billionth repair as thoroughly as at the first. And the early universe is the most constrained object there has ever been: twelve ports, three directions and one way round the arrow, with no earlier record for any of it to have come from. The grain, chapter twenty-eight's number for how fine a distinction a screen supports, shows up on the microwave sky, whose ripples are slightly stronger at large angles than at small ones. A forty-eighth of 1.6309682414 is 0.033979, one minus that is 0.966021, and the Planck satellite measured 0.9649 give or take 0.0042.
 
 ## If none of this is fundamental, why does my car work?
 
@@ -22,7 +22,7 @@ The mechanic balances a wheel using a picture in which the wheel is an object at
 
 Underneath it sits a rule about descriptions: one earns its keep by being the bottom one, so demoting the everyday container to a reading must take something away from the garage.
 
-OPH proposes that the familiar container is a shared reading of observers repairing disagreements. The ordinary picture of one clock rate throughout that container has measured limits. In 1960 Robert Pound and Glen Rebka used the 22.5-meter tower of the Jefferson Physical Laboratory and an iron-57 source to measure the gravitational frequency shift, by 2.56 parts in ten to the fifteenth, give or take 0.25. That tests gravitational redshift; identifying an observer construction with the same physical clock requires its own evidence.
+That container is the coarse-grained, heavily copied reading of a network of observers repairing their disagreements. Taking that reading is what a body does all day. The size of the error in it has been measured. In 1960 Robert Pound and Glen Rebka used the 22.5-meter tower of the Jefferson Physical Laboratory and an iron-57 source to catch a clock in a basement running slow against one on the roof, by 2.56 parts in ten to the fifteenth, give or take 0.25.
 
 So the corrections sit nine decimal places below anything in a workshop. They arrive when the resolution rises. A clock in a navigation satellite runs fast by forty-five microseconds a day and slow by seven, and the correction had to be built into the hardware before the network could find anybody. A wheel balancer reads none of that. The wheel comes back balanced.
 
@@ -38,7 +38,7 @@ The compression is also lossy, by an amount somebody can write down. Add a term 
 
 ## Twelve. Where does a number like that come from?
 
-A patch with twelve ports supplies candidate carriers for the forces and matter and an exact rank-three candidate position readback. Physical identification of those structures requires their separate attachment receipts. A specific small integer sitting at the base of a theory is what a fitted parameter looks like.
+A patch with twelve ports carries the forces, the matter and the three directions. A specific small integer sitting at the base of a theory is what a fitted parameter looks like.
 
 The suspicion assumes the number could have been otherwise, which is what a parameter is: a quantity whose value had to be chosen and can be moved.
 
@@ -52,9 +52,11 @@ Twelve ports, thirty seams, patches wired to neighbors. Draw that on a page and 
 
 The question hands itself a place for free: everything is in something, and a relation needs a room to be a relation in.
 
-Distance here is a count of comparisons. Two patches are far apart when many comparisons separate them. A candidate direction is a pattern in that tally rather than an arrow drawn in a room. On the declared operational-cost branch, a repair operator's twelve readings split into blocks that fade at 0.9539, at exactly nine tenths and at 0.8794 a pass, with only the slowest block surviving enough rounds to carry the candidate position readback; its rank is three. Turning that exact rank-three carrier into physical directions requires the source-causal spacetime attachment.
+Distance here is a count of comparisons. Two patches are far apart when many comparisons separate them. A direction is a pattern in that tally rather than an arrow drawn in a room. The three directions come out of a fading rate. A repair operator's twelve readings split into blocks that fade at 0.9539, at exactly nine tenths and at 0.8794 a pass, with only the slowest block surviving enough rounds to carry a position, and the rank of that block is three.
 
 Turn the question on the room it asks for. A room for the network to sit in would have to be assembled out of comparisons between record-keepers, which is what a network is, and then that room would need a room. What exists is a tally, a rank of three, and observers doing the counting from inside while occupying no position in anything larger.
+
+Spacetime goes the same way. Which record read which is a partial order, and counting that order is enough to find four dimensions in it: inside any small diamond of events a tenth of the pairs are ordered, which is the value for three directions of space and one of time, and the fourth root of a ratio of counts is a ratio of durations. The order needs no room to happen in either.
 
 ## Is the moon there when nobody is looking at it?
 
@@ -72,9 +74,9 @@ No finite exchange of messages between observers recovers a shared present. Then
 
 The word is doing three jobs at once. The question welds them into one object and then finds that object missing.
 
-Committed repairs define a partial order. An irreversible reduction of seven equally likely arrangements to one discards 2.807 bits when no recoverable record remains. Retaining that information keeps the full operation reversible. A faithful state on its declared observable algebra also defines a modular flow. Translating its parameter into clock readings requires a physical identification.
+Order is a partial order on committed repairs, the only global temporal structure there is. Direction comes from the commit, which is an arithmetic loss. Seven possible pasts average into one reading, and 2.807 bits go with them. Flow is what a state makes its own algebra do, one shuffle for each amount of shuffling, extracted from what an observer holds with nothing added.
 
-These constructions need no universal present. Modular flow fixes central records and can be trivial even for distinct states. In the supplied Minkowski-vacuum setting, an ideal uniformly accelerated detector has a stationary thermal response, at about four parts in ten to the twenty-first of a degree per meter per second squared. That temperature uses a physical field, trajectory and time convention.
+A universal present appears nowhere on that list. The part of a person that has been written into a record is the part standing still, because the flow moves only what fails to commute. A record commutes with everything. Read the same flow sideways in empty space and it is a temperature, one that acceleration alone sets, at about four parts in ten to the twenty-first of a degree for every meter per second squared.
 
 ## When exactly does the particle decide?
 
@@ -84,7 +86,7 @@ Asking for the moment assumes a mechanism with a rate and a threshold, sitting i
 
 A record gets written. Between commits, every question about the spreading pattern lives in the part of the algebra where questions refuse to be answered together, and the phase and the frequency are the content. At a commit an entry lands in the center, where everything commutes, and what the plate holds afterward is one more count at one place. Wave and particle differ by how much of the thing has been written down. The plate writes down only the arrival.
 
-The probability theorem fixes the odds on the declared finite space of quantum questions. A normalized assignment that adds on every allowed sum of effects, including effects for uncertain outcomes, is the trace against a single density matrix. This does not determine the physical timing or mechanism of an instrument. An exact-fit counterexample reproduces a supplied count table while belonging to no state: it scores one pair of questions 35/64 where effect additivity demands 143/256.
+So there is no rate to measure and no threshold to find. What gets fixed instead is the odds. Any assignment of numbers to outcomes that lands in the unit interval, gives the certain event one and adds up on every legal sum of questions, blunt ones included, is the trace against a single density matrix, in every finite dimension. Alongside it sits a fake, built to reproduce every count a machine actually produced and belonging to no state at all: it scores one pair of questions 35/64 where adding up demands 143/256.
 
 ## Where does the explaining stop?
 
@@ -102,9 +104,9 @@ Every one of these numbers was measured decades before the arithmetic that lands
 
 The complaint assumes flexibility, and flexibility is countable.
 
-A comparison has to count its adjustable inputs and disclose how its target entered the construction. The grain appears on both sides of a declared closure equation, while the family count uses a specified representation and attachment. Uniqueness inside those choices does not make their physical identification automatic. A prospective test fixes its prediction and decision rule before the qualifying measurement.
+A fit is worthless when it has a dial in it, meaning a quantity somebody turns until the output matches. Count the dials between the wiring and the result and there are none. The grain appears on both sides of its own equation, and the family count is the number of corners on an oriented face. A structure with no continuous freedom either lands on the measured value or misses it in public.
 
-On the supplied horizon-record branch, identifying dark-energy density with the inverse of a selected time-independent capacity gives $w=-1$. The finite causal poset derives neither that density map nor time-independence. Five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect spectra that test constant-dark-energy models. The charged-lepton balance puts the third mass in a window 72 electron-volts wide, sitting 0.43 sigma from the measurement. The proposed missing-generator branch forbids its named proton-decay channel, so one clean event in that channel would end it.
+Dark energy's pressure-to-density ratio is exactly minus one at every epoch, $w=-1$, with no field rolling anywhere to absorb a change. Five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect the spectra that will decide it. The charged-lepton balance puts the third mass in a window 72 electron-volts wide, sitting 0.43 sigma from the measurement, and a three-sigma move ends it. Proton decay through the unified channel is absent rather than slow, so fifty thousand tons of ultrapure water will see nothing in that channel, and a single clean event there ends it.
 
 ## Isn't this what Leibniz said?
 
@@ -162,7 +164,7 @@ The account ends in the words good and evil, a law that addresses every recorded
 
 Subject matter is doing the categorizing: touch those topics and whatever you are doing becomes doctrine.
 
-Every statement here carries something that would contradict it. A measured evolution of $w$ contradicts the time-independent capacity branch. It reaches the fine-structure closure only if the independent same-carrier bridge joining the two closures has been established. One proton decaying through the forbidden unified channel contradicts the missing-generator branch. There is no authority to defer to and no text to accept: the twelve-patch enumeration runs over two thousand and forty-eight states and can be done by hand in an evening.
+Every statement here carries something that would contradict it. A measured evolution of $w$ takes the constant capacity and the fine-structure closure with it. One proton decaying through the unified channel takes the argument about the proton. There is no authority to defer to and no text to accept: the twelve-patch enumeration runs over two thousand and forty-eight states and can be done by hand in an evening.
 
 The traffic has run the other way before. Maupertuis announced least action to the Académie in 1744 and took it for proof of a supreme being, because it looked like the universe economizing, and the economizing turned out to be what taking logarithms of a product of local factors does. The claim about continuation is a statement about a checkpoint: records, accessible state, interfaces and future law. Nothing in the arrangement performs a restoration, so nobody is being offered one.
 
@@ -178,7 +180,7 @@ Only two quantities are open, the horizon and the discount rate. How far ahead t
 
 ## Do I have to accept the ethics to accept the physics?
 
-A reader can want the structural force derivations and the rank-three candidate position carrier, with their stated physical attachment conditions, and want to stop before the part about good and evil, on the ground that a physicist's opinions about conduct are a physicist's opinions.
+A reader can want the derivation of the forces and the three directions and want to stop before the part about good and evil, on the ground that a physicist's opinions about conduct are a physicist's opinions.
 
 The question assumes the join between the two is preference.
 
