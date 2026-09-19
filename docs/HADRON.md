@@ -11,7 +11,7 @@ charged-lepton transport term is a closed one-loop kernel, and the gauge-width
 map lands 2.5×10⁻⁶ relative from the measured α⁻¹ with the hadronic transport
 term open. That open term is a frontier of the entire field, a property of
 the observable: closing the pixel maps documented by historical issue #545
-and now owned by #736 asks for 4×10⁻⁹ relative precision on the
+and owned by #736 asks for 4×10⁻⁹ relative precision on the
 hadronic moment, beyond every method on Earth. The best data-driven
 dispersive determinations carry relative uncertainties near 4×10⁻³, the
 leading lattice programs reach a comparable order after campaigns at the 10⁷

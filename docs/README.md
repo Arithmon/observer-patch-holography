@@ -2,7 +2,8 @@
 
 This directory contains repository policies, reproduction guidance, and
 canonical or generated scientific registers. Research planning and project
-reviews live in the workspace-level `plan/` directory, not here.
+reviews live in the `plan/` directory of the oph-meta planning workspace,
+outside this repository.
 Scientific results live in the papers, Lean library, executable code, and
 evidence artifacts; this directory is not a parallel result-publication layer.
 

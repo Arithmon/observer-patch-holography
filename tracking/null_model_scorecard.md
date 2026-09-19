@@ -35,6 +35,12 @@ The declared grid is an audit probe, not a source-derived, exhaustive,
 or preregistered hypothesis menu. Failure of the trigger therefore grants
 no positive evidential weight.
 
+Threshold provenance: `2.5e-6` is the published OPH-scale
+residual of the gauge-width map, the canonical pair's certified relative
+distance rounded up to two significant figures. It was set together with
+this scan, after that distance was known, so it is not preregistered, and
+the canonical pair itself sits about one percent inside it.
+
 | c₁ | c₂ | Certified inverse-α root (point display) | Absolute-distance enclosure | Relative-distance enclosure | Alias |
 |---|---|---:|---:|---:|---|
 | `φ` | `π` | `137.03566013694657656887273046247087518` | `[0.0003390400396607984320799503862, 0.0003390400671860638224563602811]` | `[2.4740947028297554840249215501949154660849370135432e-6, 2.4740949036913214643912391363874442427308635086218e-6]` |  |

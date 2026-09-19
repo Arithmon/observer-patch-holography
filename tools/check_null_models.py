@@ -1967,6 +1967,12 @@ def render_scorecard(report: Mapping[str, Any]) -> str:
         "or preregistered hypothesis menu. Failure of the trigger therefore grants",
         "no positive evidential weight.",
         "",
+        f"Threshold provenance: `{rule['threshold']}` is the published OPH-scale",
+        "residual of the gauge-width map, the canonical pair's certified relative",
+        "distance rounded up to two significant figures. It was set together with",
+        "this scan, after that distance was known, so it is not preregistered, and",
+        "the canonical pair itself sits about one percent inside it.",
+        "",
         "| c₁ | c₂ | Certified inverse-α root (point display) | Absolute-distance enclosure | Relative-distance enclosure | Alias |",
         "|---|---|---:|---:|---:|---|",
     ]

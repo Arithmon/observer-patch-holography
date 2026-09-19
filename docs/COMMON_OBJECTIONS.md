@@ -49,7 +49,7 @@ with current integration under [#736](https://github.com/FloatingPragma/observer
 maps. The missing
 hadronic term is a frontier for every method on Earth: the payload asks for 4×10⁻⁹
 relative precision on the hadronic moment (see "Why The Hadronic Test Is Hard" in
-[OPH_FALSIFICATION_PROGRAM.md](OPH_FALSIFICATION_PROGRAM.md)). A target-blind
+[HADRON.md](HADRON.md)). A target-blind
 completion under the stated contract is the decisive endpoint test.
 
 Interval evaluation of the closure map
