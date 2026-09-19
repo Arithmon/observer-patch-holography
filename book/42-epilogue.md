@@ -72,7 +72,7 @@ Observers capable of running a repair law is a description of somebody, and call
 24. Why does gravity look like geometry? On a physically faithful smooth limit of the source-derived causal carrier, the stress, entropy, scaling and scale branch yields Einstein geometry. The finite precursor alone does not.
 25. Why exactly these forces? One plus three plus eight, and nothing else survives the arithmetic.
 26. Why this list of matter? Within the declared finite menu and its constraints, two mirror fifteen-state contents survive among 1,024 candidates. Family counting uses additional premises.
-27. What is a particle, what is a wave, and why does it look like both? They are one object read at two record depths, and the unified route to proton decay is exactly absent.
+27. What is a particle, what is a wave, and why does it look like both? They are one object read at two record depths, and on the twelve-port response the unified route to proton decay is exactly absent.
 28. Why 1/137, and why a capacity limit? Declared closure maps connect these questions to consistency. The diagnostic 137.035660 requires a physical carrier and independent transport before comparison with measured 137.035999.
 29. Why do the masses land where they do? The tau is pinned inside a window 72 electron-volts wide, sitting 0.43 sigma from the measurement.
 30. What is a Lagrangian, and why is it the last thing? A running total with one contribution per step and no foresight in it, whose smallest value is the likeliest history.

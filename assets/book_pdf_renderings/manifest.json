@@ -9,15 +9,15 @@
     },
     {
       "source": "assets/pixel-constant.svg",
-      "source_sha256": "9adfa4dbaaae9002b37b91017173191c9077d54447f2174f49ecb0060fe30046",
+      "source_sha256": "3730a0016525fec33e7e424e7741e9bbc5ccc58cc340b6660136b7fe294cf6df",
       "rendering": "assets/book_pdf_renderings/pixel-constant.pdf",
-      "rendering_sha256": "19f87d039214100f2d8e35513600895893dddefa8a0c03caf51933c0e5198c03"
+      "rendering_sha256": "995b7a8a1b4f53924fadf695b678617085017c666444d022392c6696d556ece7"
     },
     {
       "source": "assets/OPH_Unification_Diagram.svg",
-      "source_sha256": "b9857436f0122bebe9b666ed3284c627d32f2ff6bea215744697d5af90afd46f",
+      "source_sha256": "a329d3f4bbec947337d7e70eeddc6727f6fbf16d5597843742ddd657dbcf4185",
       "rendering": "assets/book_pdf_renderings/OPH_Unification_Diagram.pdf",
-      "rendering_sha256": "a79a9f5b1176458f88d96eacab90d95c1ec14c4e7f9d28043e5cd7f9e77fdacd"
+      "rendering_sha256": "f7f55872ecc09c7ffd4b2260c1e685a2d9b6e35dd56b30fe9277871348cb9aba"
     },
     {
       "source": "assets/book_diagrams/boundary-ledger.svg",

@@ -58,17 +58,17 @@ The unknown appears on both sides. Inside the declared map, a trial grain fixes 
 
 Take a calculator again.
 
-The chain from a trial grain down to a coupling is the part a machine does. The number it hands back for a grain of 1.630968209 is 137.036, with the digits past the third deciding the last place. The coupling is its reciprocal, 0.0072973523.
+The chain from a trial grain down to a coupling is the part a machine does. Hand it the grain 1.6309682414 and it hands back 137.03566014. The coupling is the reciprocal, 0.00729737062.
 
-Multiply by the boundary normalization, 1.772453851, and you get 0.012934220.
+Multiply by the boundary normalization, 1.7724538509, and you get 0.0129342527.
 
-Add the entropy balance point, 1.618033989, and you get 1.630968209.
+Add the entropy balance point, 1.6180339887, and you get 1.6309682414.
 
-Which is what was fed in, to the last of the nine decimal places quoted. The equation closes on itself on the back of an envelope, and the whole electromagnetic term, the entire distance between a universe with observers in it and a universe with none, is 0.012934220, about eight parts in a thousand of the grain.
+Which is what was fed in, to the last of the ten decimal places quoted. That grain is the fixed point: the one value at which the outside reading of the cell and the inside reading agree, so the world on each side of the screen matches the other. The equation closes on itself on the back of an envelope, and the whole electromagnetic term, the entire distance between a universe with observers in it and a universe with none, is 0.0129342527, about eight parts in a thousand of the grain.
 
-Run it backwards if you prefer. Subtract 1.618033989 from 1.630968209 and you have 0.012934220. Divide that by 1.772453851 and you have 0.0072973523. Take the reciprocal and 137.036 comes back out, which is the strength of electromagnetism read off the area of one cell of screen.
+Run it backwards if you prefer. Take the balance point away from the grain and 0.0129342527 is left. Divide that by the boundary normalization and you have 0.00729737064. Take the reciprocal and 137.035660 comes back out, which is the strength of electromagnetism read off the area of one cell of screen.
 
-The obvious suspicion about arithmetic like that is the one Eddington earned, and the way to settle it is to count the freedom. A formula with one adjustable exponent in it can be made to hit 137.035999177, and so can a formula with two adjustable anythings, which is why people have been hitting it since the 1930s. There is nothing to adjust here. The golden ratio is forced by the entropy balance and has no dial on it. The square root of pi comes from the shape of the boundary profile, and a Gaussian normalization is whatever it is. The coupling is whatever the forward chain returns for the grain it was handed. Change the boundary factor from 1.772453851 to a round 1.77 and the loop returns 1.630950 instead of 1.630968, and the equation stops closing in the fifth decimal place.
+The obvious suspicion about arithmetic like that is the one Eddington earned, and the way to settle it is to count the freedom. A formula with one adjustable exponent in it can be made to hit 137.035999177, and so can a formula with two adjustable anythings, which is why people have been hitting it since the 1930s. There is nothing to adjust here. The golden ratio is forced by the entropy balance and has no dial on it. The square root of pi comes from the shape of the boundary profile, and a Gaussian normalization is whatever it is. The coupling is whatever the forward chain returns for the grain it was handed. Change the boundary factor from 1.7724538509 to a round 1.77 and the loop returns 1.630950 instead of 1.630968, and the equation stops closing in the fifth decimal place.
 
 The second test is what else the number is on the hook for. An expression that hits one target and produces nothing further is a coincidence with decimals on it, and the literature since the 1930s is full of them. The grain is the coordinate the rest of the numbers are read from: the single coupling the three forces share at the cell scale, which comes out at one part in 24.32, the running masses of the quarks, the scale at which the weak force lives. Move the grain in the ninth decimal place and every one of those moves with it.
 
@@ -84,13 +84,11 @@ The repair is to stop carrying numbers and start carrying pairs of them. Every q
 
 ## The quark cloud
 
-Solve the same equation for the coupling instead of the grain. Subtract the balance point from the grain, divide by the square root of pi, and read the result at the point where laboratories read it.
+The fixed point puts the coupling at 137.035660. The laboratory value is 137.035999. The two differ by two and a half parts per million, and the difference has a definite address.
 
-The certified value is 137.035660. The measured value is 137.035999. They differ by two and a half parts per million.
+The loop is built in two stages. Run it with the cell's own electromagnetic reading alone and it settles at 136.994835, three parts in ten thousand short of the laboratory value. That is the bare root. The weak and strong forces take their share of the cell as well: their combined width has to fit inside a quarter of the grain. Put that shared width inside the loop, so that every pass recomputes it from the grain it is handed, and the fixed point moves to 137.035660. Nothing in the second stage looks at the measured value, and that one step closes more than ninety-nine percent of the distance between the bare root and the laboratory.
 
-The two numbers 137.036 and 137.035660 are different objects. The 137.036 that the chain consumes is the coupling read at the cell. The 137.035660 is the same coupling read one transport step further out, where an experimenter reads it, and the two differ in the fourth decimal place for that reason.
-
-Transport to the laboratory coupling includes the hadronic contribution: the effect of quarks and their interactions on the photon response. This term requires independent physical information and a consistent convention for separating it from the other contributions. Its value and uncertainty must be propagated through the same calculation as the source map.
+What is left is the quark cloud. The laboratory reads the coupling at rest, and a photon at rest is dressed in pairs of quarks flickering in and out, held together by the strong force at energies where that force is too strong to calculate in small steps. The screening that makes the coupling slide with energy runs through those pairs too, and it moves the last digits. Computing that contribution from the same cell, in the same convention as the loop, is work in progress, and it accounts for the whole of the remaining two and a half parts per million. Its value and uncertainty have to be carried through the same calculation as the loop itself.
 
 The narrow certified enclosure proves that numerical error in the fixed-point solve cannot account for the difference between 137.035660 and 137.035999. It does not identify the difference as a physical quark contribution. That identification requires a calculation connecting the same carrier, scale and readout to the laboratory endpoint. Choosing a correction from the gap would use the target to reproduce itself.
 

@@ -25,7 +25,7 @@
   <rect width="100%" height="100%" fill="#ffffff" />
   
   <text x="600" y="50" text-anchor="middle" class="title">THE PIXEL CONSTANT</text>
-  <text x="600" y="80" text-anchor="middle" class="subtitle">Unique outer/inner fixed point for observation</text>
+  <text x="600" y="80" text-anchor="middle" class="subtitle">Self-referential outer/inner fixed point for observation</text>
 
   <g transform="translate(50, 120)">
     <rect width="320" height="450" class="panel-bg" />
@@ -62,17 +62,17 @@
       <text x="0" y="70" class="label">Step B: Close outer/inner map</text>
       <text x="20" y="112" class="math">P = φ + √π / A<tspan dy="5" font-size="14">T</tspan><tspan dy="-5">(P)</tspan></text>
       
-      <text x="0" y="160" class="label">Step C: Unique fixed point</text>
-      <text x="20" y="190" class="math">P* = 1.630968...</text>
+      <text x="0" y="160" class="label">Step C: Fixed point (gauge width)</text>
+      <text x="20" y="190" class="math">P* = 1.6309682414</text>
       
       <rect x="0" y="220" width="280" height="110" class="highlight-box" />
       <text x="140" y="245" text-anchor="middle" class="label">Step D: Read observation strength</text>
       
       <g transform="translate(70, 260)">
-         <text x="-30" y="30" class="math">α(P*) ≈ 1 / 137</text>
+         <text x="-30" y="30" class="math">α(P*) = 1 / 137.035660</text>
       </g>
       
-      <text x="140" y="315" text-anchor="middle" class="body-text" font-style="italic">No empirical selector is inserted.</text>
+      <text x="140" y="315" text-anchor="middle" class="body-text" font-style="italic">Measured α is used only for comparison.</text>
     </g>
   </g>
 
@@ -95,7 +95,7 @@
     </g>
 
     <text x="160" y="340" text-anchor="middle" class="label">Fixed-point value:</text>
-    <text x="160" y="380" text-anchor="middle" class="math-bold">P* ≈ 1.630968</text>
+    <text x="160" y="380" text-anchor="middle" class="math-bold">P* = 1.6309682414</text>
     
     <text x="160" y="420" text-anchor="middle" class="body-text">
       <tspan x="160" dy="0">Outside cell area matches</tspan>
@@ -107,7 +107,7 @@
     P links the simulating-side pixel area to electromagnetic observation in the simulated universe.
   </text>
   <text x="600" y="640" text-anchor="middle" class="body-text" font-size="12">
-    The fine-structure readout follows from the same unique fixed-point closure.
+    The fixed point gives 1/α = 137.035660; the measured 137.035999 also holds the low-energy quark term, open at 2.5 parts per million.
   </text>
 
 </svg>
