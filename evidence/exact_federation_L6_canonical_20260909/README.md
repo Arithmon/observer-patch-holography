@@ -51,10 +51,10 @@ With Python 3 and NumPy installed:
 python3 verify_archive.py
 ```
 
-Output of the run recorded at build time (exit code 2, 0.0 s):
+Output of a run from this directory (exit code 0, Python 3.13, NumPy):
 
 ```text
-/Users/muellerberndt/Projects/oph-meta/oph-physics-sim/.venv/bin/python: can't open file '/Users/muellerberndt/Projects/oph-meta/oph-physics-sim/runs/exact_federation_L6_canonical_20260909/runs/exact_federation_L6_canonical_20260909/verify_archive.py': [Errno 2] No such file or directory
+PASS: 81920 carriers, 2580480 seams, 1 component(s); inventory and primitive digests verified; integer law port_pair 16 schedules in 51..79 sweeps with one multiset hash f384744f479866b9 (schedule 0 replayed from seed 915100 in 38.2 s, terminal vector identical); integer law isolated 16 schedules verified; float port_pair 256 sweeps, Phi 1.50457e+07 -> 17.2672, V ledger exact to 1e-9, 0 violations; float isolated 16 schedules terminated at the component mean; lambda_2 absent; kernels: 64 cells, isolated limit recomputed for carriers [0, 76780] within 1.3e-15, K_300 = 4 P_slow within 2.8e-15; 40.4 s
 ```
 
 ## Known boundaries

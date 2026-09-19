@@ -18,11 +18,9 @@ is a demonstration of the machinery and nothing else. The freeze discipline
 is stated in section H, and the missing custody half is specified in
 `AUTHENTICATED_BINDING_SPEC.md` in this directory.
 
-Governing records: the deep audit
-`plan/audits/RER_POST_R2020_ACTUAL_COMMITS_DEEP_AUDIT_2026-08-24.md`
-(finding F3 and completion item 1), the plan section V3.26 of
-`plan/COMPLETION_PLAN_V3.md` (the INS-03 passage), section C.2 (c) of
-`plan/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md` (source-operation
+Governing records: the 2026-08-24 post-r2020 deep audit (finding F3 and
+completion item 1), section C.2 (c) of
+`docs/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md` (source-operation
 origin), and the v1 contract
 `code/phase_instrument_export/VALIDATOR_CONTRACT.md`. The audit's exact
 judgments are load-bearing here and are repeated where they bind:

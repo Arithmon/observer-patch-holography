@@ -21,4 +21,4 @@ This directory holds the public diagrams used by the README, papers, book, and O
 - [`french/`](french/) contains localized public figures.
 - [Book cover](book-cover.svg) is the canonical print-cover source.
 
-The README poster is authored in the workspace-level DAG project and synchronized here as `prediction-chain.svg`; this directory contains the published artifact.
+The README poster is `prediction-chain.svg`; this directory contains the published artifact.

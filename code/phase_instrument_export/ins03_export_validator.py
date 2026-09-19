@@ -2,8 +2,7 @@
 
 Schema under validation: ``oph.sim.ins03_phase_instrument_export.v1``, the
 simulator-side export specified in section A of
-``plan/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md`` (OPH meta planning
-surface).  In the typed Lean binding interface
+``docs/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md``.  In the typed Lean binding interface
 ``Lean/EventAlgebra/SourceBoundInstrumentInterface.lean``, the current
 placeholder fields are not determined by the committed objects and do not
 authenticate custody.  A richer in-corpus or external data-bearing
@@ -63,7 +62,7 @@ UTF-8 bytes of the canonical serialization of the export object with the
 ``custody_digest_sha256`` field removed, with no trailing line break.  The
 design document names the committed ``canonical_sha256`` of
 ``oph_fpe/core/charged_response.py`` together with the indent-2 canonical
-text and the convention of ``plan/SIM_ALIGNMENT_2026-08-20.md`` (the JSON
+text and the simulator's 2026-08-20 alignment convention (the JSON
 text without a trailing newline).  The committed function re-serializes with
 compact separators, so the two conventions differ on which byte stream is
 hashed; this validator binds the digest to the indent-2 canonical text, and

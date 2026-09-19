@@ -10,10 +10,8 @@ verification hook it names is present in
 UNIMPLEMENTED, failing closed with
 `PRODUCER_AUTHENTICATION_UNIMPLEMENTED` on every invocation.
 
-Governing records: the deep audit
-`plan/audits/RER_POST_R2020_ACTUAL_COMMITS_DEEP_AUDIT_2026-08-24.md`
-(finding F3 and completion item 1), the plan section V3.26 of
-`plan/COMPLETION_PLAN_V3.md`, the v1 contract
+Governing records: the 2026-08-24 post-r2020 deep audit (finding F3 and
+completion item 1, which require authenticated generation semantics), the v1 contract
 `code/phase_instrument_export/VALIDATOR_CONTRACT.md`, and the companion
 `PRIMITIVE_GENERATION_SEMANTICS.md` in this directory.
 

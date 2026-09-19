@@ -1,9 +1,8 @@
 # OPH Policies And Scientific Registers
 
 This directory contains repository policies, reproduction guidance, and
-canonical or generated scientific registers. Research planning and project
-reviews live in the `plan/` directory of the oph-meta planning workspace,
-outside this repository.
+canonical or generated scientific registers. Research planning and task state
+live in this repository's [GitHub issues](https://github.com/FloatingPragma/observer-patch-holography/issues).
 Scientific results live in the papers, Lean library, executable code, and
 evidence artifacts; this directory is not a parallel result-publication layer.
 

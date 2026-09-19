@@ -2,8 +2,7 @@
 
 Schema under validation: `oph.sim.ins03_phase_instrument_export.v1`, the
 simulator-side export interface specified in section A of
-`plan/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md` (OPH meta planning
-surface, outside this repository).  Validator:
+`docs/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md`.  Validator:
 `code/phase_instrument_export/ins03_export_validator.py`.  Owning lanes:
 issues 730 (OL-C5, quantum) and 737 (instrument register).  The typed Lean
 binding interface `Lean/EventAlgebra/SourceBoundInstrumentInterface.lean` is
@@ -104,9 +103,8 @@ codes and exact arithmetic (`fractions.Fraction` plus a minimal exact
 
 Digest convention of record: the design document names the committed
 `canonical_sha256` of `oph_fpe/core/charged_response.py` together with the
-indent-2 canonical text and the convention of
-`plan/SIM_ALIGNMENT_2026-08-20.md` (the JSON text without a trailing
-newline).  The committed function re-serializes its argument with compact
+indent-2 canonical text and the simulator's 2026-08-20 alignment
+convention (the JSON text without a trailing newline).  The committed function re-serializes its argument with compact
 separators before hashing, so the two conventions name different byte
 streams; this contract binds the digest to the indent-2 canonical text,
 the same byte stream the canonical-serialization check pins.

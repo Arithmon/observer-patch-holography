@@ -16,7 +16,7 @@
     "version": "2.4",
     "family": "industry_standard_lattice_qcd",
     "author_distribution": "https://luscher.web.cern.ch/luscher/openQCD/",
-    "location": "oph-meta root, qcd_backend_engine/openQCD-2.4 (outside this repository)",
+    "location": "built outside this repository from the author distribution",
     "build": {
       "machine": "Apple M4, 10 cores, macOS arm64",
       "toolchain": "gcc-16 via open-mpi mpicc wrapper, portable flags (x86 intrinsics defines removed)",

@@ -41,8 +41,7 @@ single-sourced there with their Lean sources cited.
 Self-digests are not custody: the transcript's ``transcript_digest_sha256``
 and the export's ``custody_digest_sha256`` are integrity conveniences that
 whoever edits the content recomputes.  They bind the content to no agent,
-key, time, or execution.  The audit ruling of
-``plan/audits/RER_POST_R2020_ACTUAL_COMMITS_DEEP_AUDIT_2026-08-24.md``
+key, time, or execution.  The 2026-08-24 post-r2020 deep audit ruling
 (finding F3) governs: production, provenance, and custody claims require
 authenticated generation semantics, transcripts, and independent replay,
 and until those exist every such claim fails closed here.

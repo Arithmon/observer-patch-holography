@@ -11,16 +11,14 @@ document binds no one and carries no verdict weight.
 
 ## Sources of record
 
-- Theorem file (source of record for the w-law, its premises P1 through P4,
-  the drift map, and the sign audit):
-  `proof/epic_wins/dk01_wlaw/DK01_FIXED_N_WLAW.md` in the oph-meta
-  metarepository.
+- Theorem (the w-law, its premises P1 through P4, the drift map, and the sign
+  audit): the fixed-capacity w-law package in this directory and its paper
+  section are the source of record.
 - FZ-01 custody path (the anchored 2026-07-17 registration set carries a
   dark-energy w-law target file):
-  `falsification/frozen_targets/fz01_2026-07-17/frozen_target_dark_energy_wlaw_2026-07-17.md`
-  in the oph-meta metarepository. Custody, anchoring state, and any
-  supersession decision for that file are owner matters; this proposal does
-  not alter FZ-01.
+  `evidence/custody/falsification/frozen_targets/fz01_2026-07-17/frozen_target_dark_energy_wlaw_2026-07-17.md`.
+  Custody, anchoring state, and any supersession decision for that file are
+  owner matters; this proposal does not alter FZ-01.
 - Machine-checked surface (this lane):
   `Lean/ObserverPatchHolography/EinsteinBranch/FixedCapacityWLaw.lean`
   (fixed-N w-law, exact drift map, no-phantom bound on the monotone branch,
