@@ -65,7 +65,6 @@ def test_independent_sympy_i6_and_orbit_values() -> None:
     )
     assert vertex_val == 1
 
-    face = (raw[0] + raw[1] + raw[4]) if False else None
     # face: three mutually adjacent vertices (dot 1/sqrt5)
     adj = []
     for i in range(12):

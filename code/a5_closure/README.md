@@ -30,9 +30,18 @@ python3 claim_boundary_certificates.py # exact Q0 fixtures and physical-boundary
 python3 test_audit.py                    # regression suite
 ```
 
-Requires Python 3.11+ and SymPy. The suite exits 0.
+Requires Python 3.11+ and SymPy. The independent cross-check
+`independent_lane_check.py` also needs NumPy. The suite exits 0.
 
 ## What is certified (exact; no floating-point fit, no measured number)
+
+Two scripts in this directory corroborate in floating point and carry none
+of this exactness. `a5_harmonic_decomposition.py` evaluates characters with
+`math.sin` and accepts a multiplicity within `1e-8` of an integer; its exact
+counterpart is the Lean receipt `Lean/Screen/A5AngularMultiplets.lean`.
+`independent_lane_check.py` decides ranks with a `1e-8` tolerance and
+cross-checks the exact Lean modules it names (`A5Commutant`, `A5SixAxes`,
+`TraceBalancedKernel`, `TrichotomyCases`, `UnitSplit12`).
 
 | Object | Statement |
 |---|---|
