@@ -1078,6 +1078,12 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/a5_fingerprint/test_fz12_auger_threshold_diagnostic.py",
             "code/a5_fingerprint/test_carrier_scale_bound_diagnostic.py",
             "code/a5_fingerprint/test_carrier_frequency_speed_certificate.py",
+            "code/a5_fingerprint/test_carrier_class_dispersion_certificate.py",
+            "code/a5_fingerprint/test_differentiator_inventory_certificate.py",
+            "code/a5_fingerprint/test_fz11_decision_rule_v2_sibling.py",
+            # test_fz12_joint_threshold_certificate.py rebuilds its Lean kernel
+            # with lake, so it runs in the nightly full Lean build
+            # (.github/workflows/lean-full-nightly.yml), not in this job.
         ],
     ),
     ("Collect the mandatory scientific suite", [sys.executable, "-m", "pytest", "--collect-only", "-q", "code"]),

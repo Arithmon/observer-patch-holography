@@ -56,6 +56,15 @@ jobs:
         working-directory: Lean
         run: lake build
 
+      - name: Run the FZ-12 joint-threshold certificate suite
+        # The producer replays `lake build SeamCurrentPhotonLeptonThreshold`
+        # and its axiom audit, so it runs after the full build rather than in
+        # the Python-only mandatory suite.
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet pytest==9.1.1 sympy==1.14.0 mpmath==1.3.0
+          python3 -m pytest -q code/a5_fingerprint/test_fz12_joint_threshold_certificate.py
+
       - name: Build the frozen OphGap certificate
         working-directory: Lean
         run: lake build OphGap

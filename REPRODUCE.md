@@ -117,7 +117,9 @@ claim registry, release manifest, scientific-register sync, a clean `--collect-o
 run with zero import errors, and the executed validation fixtures.
 
 Full test execution (`python -m pytest code`) is **not** expected to be green
-from a clean clone, so it is not the documented gate here. Individual scientific
+from a clean clone, so it is not the documented gate here. A bare
+`python -m pytest` collects `code/` only (`testpaths` in `pytest.ini`); the
+regression tests under `tools/` run through the mandatory suite. Individual scientific
 test outcomes are tracked as their own issues, and some are not reproducible
 from the public checkout alone. In particular:
 

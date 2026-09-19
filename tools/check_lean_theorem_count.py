@@ -2,7 +2,8 @@
 """Check the stated Lean theorem-count floor against the library.
 
 The public prose states the size of the Lean library as a lower bound
-("more than 700 theorems and lemmas" / "plus de 700 théorèmes et lemmes")
+("more than N theorems and lemmas" / "plus de N théorèmes et lemmes",
+with N a round hundred)
 so that the sentence stays true as proofs land. This check counts the
 public ``theorem``/``lemma`` declarations under ``Lean/`` and verifies
 every stated floor:
