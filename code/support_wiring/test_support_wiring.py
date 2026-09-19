@@ -195,7 +195,7 @@ def test_kernel_and_confluence_mutations_fail(tmp_path, mutation):
         verify.verify_controls(tmp_path, geometry)
 
 
-@pytest.mark.parametrize("mutation", ["writer", "value", "interior"])
+@pytest.mark.parametrize("mutation", ["writer", "value", "fractional_value", "trailing_read", "offset", "interior"])
 def test_q13_rehashed_mutations_fail(tmp_path, mutation):
     import json
     data = dict(np.load(producer.ARCHIVE/"q13_reads.npz"))
@@ -206,6 +206,18 @@ def test_q13_rehashed_mutations_fail(tmp_path, mutation):
     elif mutation == "value":
         data["values"][1, 0] += 1
         expected = "q13 read law"
+    elif mutation == "fractional_value":
+        data["values"] = data["values"].astype(float)
+        data["values"][4, 0] += .5
+        expected = "q13 exact array format: values"
+    elif mutation == "trailing_read":
+        data["read_writers"] = np.r_[data["read_writers"], np.int32(0)]
+        data["parent_offsets"] = np.r_[data["parent_offsets"], len(data["read_writers"])]
+        report["reads"] += 1
+        expected = "q13 exact array format"
+    elif mutation == "offset":
+        data["parent_offsets"][2198] += 1
+        expected = "q13 complete read offsets"
     else:
         report["intervals"][-1]["interior"] = True
         expected = "q13 interior/clipping flag"
@@ -215,6 +227,30 @@ def test_q13_rehashed_mutations_fail(tmp_path, mutation):
     geometry = dict(np.load(producer.HERE/"geometry/geometry_l3.npz"))
     with pytest.raises(ValueError, match=expected):
         verify.verify_q13(tmp_path, geometry)
+
+
+@pytest.mark.parametrize("field", ["canonical_w3", "historical_integer_control"])
+@pytest.mark.parametrize("mutation", ["empty", "omit_law", "omit_result"])
+def test_missing_historical_comparison_fails(tmp_path, field, mutation):
+    report = verify.read_json(producer.ARCHIVE/"support_wiring_receipt.json")
+    if mutation == "empty":
+        report["historical_L6"][field] = {}
+    elif mutation == "omit_law":
+        del report["historical_L6"][field]["law"]
+    else:
+        key = ("terminated" if field == "canonical_w3" else "quotient_hash_equals_expected_all")
+        del report["historical_L6"][field][key]
+    producer.save_json(tmp_path/"support_wiring_receipt.json", report)
+    manifest = verify.read_json(producer.ARCHIVE/"trace/trace.json")
+    # Exercise the receipt's comparison boundary using the already archived
+    # replay outputs. Full replay is independently executed by CI.
+    summary = {"mean_actions": report["execution"]["mean_actions"],
+               "final_exponent": report["execution"]["final_denominator_exponent"],
+               "final_chain": manifest["final_chain"]}
+    with pytest.raises(ValueError, match="complete historical law-labelled comparison"):
+        verify.verify_receipt(tmp_path, report["wiring"], (manifest, summary),
+                              report["provenance_intervals"], report["record_metric_q13"],
+                              report["canonical_controls"])
 
 
 @pytest.mark.parametrize("raw, message", [('{'+'"x":1,"x":2}', "duplicate JSON key"),

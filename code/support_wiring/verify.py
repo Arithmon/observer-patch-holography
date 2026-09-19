@@ -459,6 +459,18 @@ def verify_q13(output, geometry):
     z = dict(np.load(path))
     ptr = np.r_[0, np.cumsum(relation.sum(axis=1))]
     ids = np.nonzero(relation)[1]
+    # Authenticate the complete typed tape before indexing or doing arithmetic.
+    # int(float_payload) would silently turn an invalid half-integer into a
+    # valid value; unchecked trailing offsets could hide unexecuted reads.
+    shapes = {"indptr": ((n+1,), np.int64), "indices": ((len(ids),), np.int32),
+              "parent_offsets": ((5*n+1,), np.int64),
+              "read_writers": ((4*len(ids),), np.int32), "values": ((5, n), np.int64)}
+    require(set(z) == set(shapes), "q13 complete array census")
+    for name, (shape, dtype) in shapes.items():
+        require(z[name].shape == shape and z[name].dtype == dtype, "q13 exact array format: "+name)
+    expected_offsets = np.r_[np.zeros(n+1, dtype=np.int64),
+                             np.cumsum(np.tile(relation.sum(axis=1), 4))]
+    require(np.array_equal(z["parent_offsets"], expected_offsets), "q13 complete read offsets")
     require(np.array_equal(z["indptr"], ptr) and np.array_equal(z["indices"], ids), "q13 exact metric reads")
     payload = z["values"]
     require(payload.shape == (5, n) and np.array_equal(payload[0], np.arange(1, n+1)), "q13 preparation")
@@ -470,7 +482,7 @@ def verify_q13(output, geometry):
             actual = z["read_writers"][z["parent_offsets"][event]:z["parent_offsets"][event+1]]
             require(np.array_equal(actual, expected), "q13 authenticated previous versions")
             total = 1+sum(int(payload.ravel()[x]) for x in actual)
-            require(int(payload[t, site]) == total, "q13 read law")
+            require(payload[t, site] == total, "q13 read law")
             parents.append(actual)
     require(np.array_equal(z["parent_offsets"][:n+1], np.zeros(n+1)), "q13 initial records do not read")
     require(z["parent_offsets"][-1] == len(z["read_writers"]) == row["reads"], "q13 read count")
@@ -634,9 +646,12 @@ def verify_receipt(output, stats, replay, intervals, q13, controls):
     require(h["w3_kernel_summary"] == kernel["summary_glued"] and h["kernel_steps"] == kernel["steps"], "historical slow-band comparison")
     require(h["kernel_sample_count"] == len(kernel["cells"]), "historical sample count")
     require(h["isolated_n300_max_deviation_from_4P"] == kernel["isolated_max_abs_deviation_from_4_P_slow_at_n_300"], "historical isolated comparison")
+    required_fields = {
+        "canonical_w3": ("law", "sweeps", "attempts", "terminated", "budget", "max_abs_deviation_from_component_mean"),
+        "historical_integer_control": ("law", "sweeps", "unique_quotient_hash_count", "quotient_hash_equals_expected_all")}
     for field, name in (("canonical_w3", "float_law_port_pair.json"), ("historical_integer_control", "integer_law_port_pair.json")):
         source = read_json(baseline/name)
-        require(h[field] == {k: source[k] for k in h[field]}, "historical law-labelled comparison")
+        require(h[field] == {k: source[k] for k in required_fields[field]}, "complete historical law-labelled comparison")
     source = read_json(baseline/"float_law_isolated.json")
     require(h["canonical_isolated"] == {"law": source["law"], "schedules": len(source["schedules"]),
                                         "sweeps": source["sweeps"], "all_terminated": source["all_terminated"],
