@@ -5,8 +5,9 @@ This tool validates it fail-closed and renders
 ``docs/INSTRUMENT_REGISTER_V3.md``; ``--check`` fails when the committed page
 differs byte for byte from the render.
 
-The register holds simulation-instrument designs and frozen instruments. Lane
-#737 owns both the instruments and this register.
+The register holds simulation-instrument designs and frozen instruments
+registered under lane #737. That lane is closed; tools/closed_lanes.py names
+the issue that owns the remaining instrument question.
 A SPECIFIED row is mutable design work, not a preregistration. The register is
 separate from the frozen-prediction ladder: that ladder is reserved for
 physical predictions against external data, and simulation instruments never
@@ -46,6 +47,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import strict_json
+from closed_lanes import CLOSED_LANE_SUCCESSORS
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "claims" / "emergent_instrument_register.json"
@@ -670,6 +672,13 @@ def _issue_link(number: int) -> str:
     return f"[#{number}]({REPO_URL}/issues/{number})"
 
 
+def _closed_note(number: int) -> str:
+    if number not in CLOSED_LANE_SUCCESSORS:
+        return ""
+    owners = ", ".join(_issue_link(n) for n in CLOSED_LANE_SUCCESSORS[number])
+    return f" (closed; open work: {owners})"
+
+
 def _artifact_lines(entries: list[dict], label: str, empty_note: str) -> list[str]:
     if not entries:
         return [f"- {label}: {empty_note}."]
@@ -691,9 +700,10 @@ def render(register: dict, rows: list[dict]) -> str:
     lines.append("")
     lines.append(
         f"One row per simulation-instrument design or frozen instrument of"
-        f" the registered adequacy program. Lane {_issue_link(737)} owns the"
-        f" instruments"
-        f" and this register."
+        f" the registered adequacy program. The instruments were registered"
+        f" under lane {_issue_link(737)}, which is closed; the remaining"
+        f" instrument question belongs to"
+        f" {', '.join(_issue_link(n) for n in CLOSED_LANE_SUCCESSORS[737])}."
         f" Each instrument binds to exactly one row of the observation ledger"
         f" (`docs/OBSERVATION_LEDGER_V3.md`). SPECIFIED is mutable design work,"
         f" not a preregistration or verdict. Only a completed decisive"
@@ -803,7 +813,8 @@ def render(register: dict, rows: list[dict]) -> str:
         lines.append("")
         lines.append(
             f"- Ledger row {row['ledger_row']}; owning lane"
-            f" {_issue_link(row['owning_issue'])}; status `{row['status']}`."
+            f" {_issue_link(row['owning_issue'])}{_closed_note(row['owning_issue'])};"
+            f" status `{row['status']}`."
         )
         lines.append(f"- Specification: `{row['spec_pointer']}`.")
         repository = row["custody_repository"]

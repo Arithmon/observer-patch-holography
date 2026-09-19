@@ -330,6 +330,14 @@ def test_gate_must_be_a_positive_integer(tmp_path, gate):
         checker.main(tmp_path)
 
 
+@pytest.mark.parametrize("closed_lane", [728, 731, 732, 733, 734, 737])
+def test_gate_on_a_closed_lane_fails_closed(tmp_path, closed_lane):
+    write_fixture_repo(tmp_path)
+    edit_registry(tmp_path, lambda r: r["claims"][0].update(gates=[closed_lane]))
+    with pytest.raises(SystemExit, match="gates name closed lanes"):
+        checker.main(tmp_path)
+
+
 @pytest.mark.parametrize(
     ("claim_id", "remaining_gates", "missing_owner"),
     [
@@ -337,7 +345,7 @@ def test_gate_must_be_a_positive_integer(tmp_path, gate):
         ("OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX", [730], 743),
         ("OPH-YM-GAP", [743], 744),
         # The common-world integration owner remains mandatory.
-        ("OPH-UNIFIED-TYPED-SPINE", [728, 729, 730], 740),
+        ("OPH-UNIFIED-TYPED-SPINE", [777, 729, 730], 740),
         ("OPH-HIER-EW", [736, 740, 742], 745),
     ],
 )

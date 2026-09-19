@@ -136,7 +136,7 @@ def test_claim_is_exactly_bounded_and_records_missing_attachments() -> None:
         "paper/screen_microphysics_and_observer_synchronization.tex"
     )
     assert claim["evidence"] == CLAIM_EVIDENCE
-    assert claim["gates"] == [733]
+    assert claim["gates"] == [754]
     assert claim["status"] == (
         "exact_modal_factorization_attained__local_source_produced_physical_Maxwell_open"
     )

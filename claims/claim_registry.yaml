@@ -143,10 +143,10 @@
       "status": "typed_composition_defined_physical_common_tower_open",
       "claim_class": "declared_structure",
       "gates": [
-        728,
+        740,
+        777,
         729,
-        730,
-        740
+        730
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -204,7 +204,8 @@
       "status": "paper_proved_on_declared_branch__A4_Lean_endpoint_attained__source_physical_realization_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -2018,7 +2019,7 @@
       "status": "frozen_prospective_primitive_port_branch__current_source_nonselecting__physical_comparison_unarmed__stronger_bridge_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733,
+        754,
         736,
         742
       ],
@@ -2431,7 +2432,7 @@
       "status": "exact_bounded_five_mode_exterior_and_supplied_weight_character_action_attained__source_and_physical_selection_open",
       "claim_class": "conditional_implication",
       "gates": [
-        734
+        740
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -2571,7 +2572,7 @@
       "status": "finite_four_law_package_attained__current_artifact_linear_intertwiner_and_deterministic_pushforward_no_gos__random_scan_retained_grammar_no_go__replacement_source_refinement_and_physical_calibration_open",
       "claim_class": "conditional_implication",
       "gates": [
-        732
+        739
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -2668,8 +2669,9 @@
       "status": "finite_green_kubo_matrix_remainder_projector_obstruction_and_graph_updates_proved__physical_transport_attachment_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728,
-        732
+        740,
+        777,
+        739
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -2719,7 +2721,8 @@
       "status": "fixed_word_dependency_and_generic_marginal_identities_proved__conditional_e1_operator_cp_diamond_and_support_disjoint_counted_correlation_attained__source_factor_reading_and_nonconstant_realization_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -2758,7 +2761,8 @@
       "status": "conditional_adaptive_cone_no_influence_and_declared_refinement_naturality_proved__source_scheduler_channel_and_physical_attachment_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -2821,7 +2825,7 @@
       "status": "conditional_source_to_hamiltonian_composition_inhabited_for_one_declared_ansatz__real_enrichment_nonidentifiability_strengthened_by_two_parameter_mode_preserving_counterfamily__source_selection_stationary_phase_and_physical_attachments_open",
       "claim_class": "conditional_implication",
       "gates": [
-        731
+        739
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -2921,7 +2925,7 @@
       "status": "exact_source_native_edge_ray_dirichlet_action_conditional_rank_two_transverse_oscillator_formal_observation_map_q_le_one_spatial_remainder_and_exact_synthetic_leading_recovery__higher_order_synthetic_pair_unresolved__fz12_frozen__physical_position_field_clock_frequency_gluing_scale_frame_readout_and_comparison_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733,
+        754,
         736,
         742
       ],
@@ -2967,7 +2971,7 @@
       "status": "exact_modal_factorization_attained__local_source_produced_physical_Maxwell_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -3039,7 +3043,7 @@
       "status": "axiom_forced_abstract_lie_type__compact_locus_classified__three_norm_and_complete_invariant_metric_phase_G_discriminator__source_bracket_and_current_realization_open",
       "claim_class": "conditional_implication",
       "gates": [
-        734,
+        740,
         736
       ],
       "premise_dependencies": {
@@ -3127,7 +3131,7 @@
       "status": "conditional_exact_matter_and_spin_fixture__physical_source_selection_open",
       "claim_class": "conditional_implication",
       "gates": [
-        734,
+        740,
         736
       ],
       "premise_dependencies": {
@@ -3261,7 +3265,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         730,
-        734,
+        740,
         736
       ],
       "premise_dependencies": {
@@ -3556,7 +3560,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         730,
-        734,
+        740,
         736
       ],
       "premise_dependencies": {
@@ -3613,7 +3617,7 @@
       "status": "exact_F_G_three_to_two_and_P_two_to_two_invariant_forms__full_P_and_color_F_constructed_kernel_binding__relative_coefficient_identifiable_but_unselected__source_and_physical_action_open",
       "claim_class": "conditional_implication",
       "gates": [
-        734,
+        740,
         735
       ],
       "premise_dependencies": {
@@ -3656,9 +3660,8 @@
       "claim_class": "declared_structure",
       "gates": [
         730,
-        734,
-        736,
-        740
+        740,
+        736
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -3919,7 +3922,7 @@
       "status": "rate_no_go_and_declared_domain_nonidentifiability_proved__extended_physical_clock_attachment_open",
       "claim_class": "conditional_implication",
       "gates": [
-        732,
+        739,
         736,
         745
       ],
@@ -4137,7 +4140,7 @@
       "status": "declared_finite_diagnostic_without_frozen_receipt_or_independent_validator__conditional_algebra_theorem_separate",
       "claim_class": "declared_structure",
       "gates": [
-        737,
+        776,
         744
       ],
       "premise_dependencies": {
@@ -4467,7 +4470,8 @@
       "status": "substantial_conditional_source_operator_generation_slot_factor_cp_diamond_support_disjoint_counted_correlation_and_constant_tower_packet_attained__source_factor_reading_and_nonconstant_realization_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -4720,7 +4724,8 @@
       "status": "exact_kinematic_mass_shell_attained__physical_energy_and_mass_identification_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -4803,7 +4808,7 @@
       "status": "exact_coulomb_green_and_global_hodge_action_attained__local_curvature_action_and_charge_current_join_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -4955,7 +4960,7 @@
       "status": "exact_quadratic_characterization_and_regular_quartic_nonselection_attained__source_selection_open",
       "claim_class": "conditional_implication",
       "gates": [
-        731
+        739
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -4989,7 +4994,7 @@
       "status": "coherent_envelope_form_attained__source_produced_family_open",
       "claim_class": "conditional_implication",
       "gates": [
-        732
+        739
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -5029,7 +5034,7 @@
       "status": "exact_local_static_face_and_scalar_action_composition_attained__temporal_physical_and_source_attachment_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -5144,7 +5149,7 @@
       "status": "exact_conditional_temporal_identities_attained__declared_unit_step_unstable__derived_stable_physical_evolution_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -5448,7 +5453,8 @@
       "status": "exact_composition_attained__physical_causal_attachment_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -5611,7 +5617,7 @@
       "status": "exact_character_descent_attained__physical_global_form_selection_open",
       "claim_class": "conditional_implication",
       "gates": [
-        734,
+        740,
         739
       ],
       "premise_dependencies": {
@@ -5656,7 +5662,8 @@
       "status": "source_native_interface_with_derived_separation_and_concrete_faithful_placement_constructor_proved__source_selected_general_placement_and_physical_continuum_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -6712,7 +6719,7 @@
       "status": "exact_action_origin_and_sharp_courant_threshold_attained__physical_time_source_and_readout_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -7205,7 +7212,7 @@
       "status": "certified_step_and_design_only_handoff_attained__no_run_authorized_and_physical_attachment_open",
       "claim_class": "conditional_implication",
       "gates": [
-        737,
+        776,
         739
       ],
       "premise_dependencies": {
@@ -7565,7 +7572,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         736,
-        732
+        739
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -7652,7 +7659,7 @@
       "status": "schema_checklist_and_coefficient_slots_typed__data_bearing_evidential_interface_and_every_arming_premise_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733,
+        754,
         742
       ],
       "premise_dependencies": {
@@ -7734,7 +7741,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         730,
-        737
+        776
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -7850,7 +7857,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         730,
-        737
+        776
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -8186,7 +8193,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         729,
-        733
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -8344,7 +8351,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         736,
-        733
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -8543,9 +8550,10 @@
       "status": "equivariance_attained__irreducibility_reading_and_oscillation_identification_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733,
+        754,
         736,
-        728
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -8623,7 +8631,7 @@
       "status": "speed_limit_attained_under_declared_identification__identification_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733,
+        754,
         740,
         736
       ],
@@ -8709,8 +8717,9 @@
       "status": "golden_split_attained__real_and_complex_irreducibility_separately_certified__abstract_psl_cover_certified__abstract_a5_table_and_physical_readings_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733,
-        728
+        754,
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -8787,8 +8796,9 @@
       "status": "real_irreducibility_attained__complex_extension_separately_certified__abstract_and_physical_readings_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733,
-        728
+        754,
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -8869,7 +8879,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         730,
-        733
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -8957,7 +8967,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         740,
-        733
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -8994,8 +9004,9 @@
       "status": "complex_irreducibility_inequivalence_and_real_type_attained__abstract_table_and_physical_readings_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733,
-        728
+        754,
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -9034,7 +9045,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         730,
-        733
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -9073,7 +9084,7 @@
       "status": "full_curl_hilbert_packet_and_selected_finite_stone_interpolation_attained__public_representation_physical_time_and_field_history_join_open",
       "claim_class": "conditional_implication",
       "gates": [
-        733,
+        754,
         730
       ],
       "premise_dependencies": {
@@ -9121,7 +9132,8 @@
       "status": "analytic_real_L2_Maxwell_limit_with_Lean_scalar_bounds__source_history_and_physical_attachment_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728,
+        740,
+        777,
         754
       ],
       "premise_dependencies": {
@@ -9164,7 +9176,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         754,
-        737
+        776
       ],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",
@@ -9206,8 +9218,9 @@
       "status": "exact_finite_cochain_and_time_coefficient_bridge__numeric_nonzero_sourced_volume_residual__physical_refinement_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728,
-        737,
+        740,
+        777,
+        776,
         754
       ],
       "premise_dependencies": {
@@ -9253,8 +9266,9 @@
       "status": "31_Lean_theorems_and_exact_local_24_bound__numeric_68_variation_stationary_history_and_805_event_readback__uninstrumented_64_slab_tail",
       "claim_class": "conditional_implication",
       "gates": [
-        728,
-        737,
+        740,
+        777,
+        776,
         754
       ],
       "premise_dependencies": {
@@ -9299,7 +9313,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         730,
-        737,
+        776,
         754
       ],
       "premise_dependencies": {
@@ -9343,7 +9357,8 @@
       "status": "10_Lean_gauge_interpolation_theorems__paper_global_joint_scalar_Maxwell_ODE_Noether_and_explicit_neutral_charged_data__physical_and_interacting_quantum_selection_open",
       "claim_class": "conditional_implication",
       "gates": [
-        728,
+        740,
+        777,
         754
       ],
       "premise_dependencies": {
@@ -9387,8 +9402,9 @@
       "status": "paper_uniform_Cdelta_action_and_full_first_variation_bound__5_Lean_algebra_lemmas__three_refinement_numerical_controls",
       "claim_class": "conditional_implication",
       "gates": [
-        728,
-        737,
+        740,
+        777,
+        776,
         754
       ],
       "premise_dependencies": {
@@ -9487,7 +9503,7 @@
       "status": "bounded_81_sample_charged_trajectory__all_68_equations_and_13_Gauss_checks__numerical_error_controls_no_serial_custody",
       "claim_class": "conditional_implication",
       "gates": [
-        737,
+        776,
         754,
         740
       ],
@@ -9529,8 +9545,8 @@
       "status": "analytic_invariant_real_quartic_wave_trajectory_convergence_on_uniform_same_domain_refinements__physical_identification_excluded",
       "claim_class": "conditional_implication",
       "gates": [
-        728,
-        740
+        740,
+        777
       ],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",
@@ -9575,7 +9591,7 @@
       "status": "authenticated_internal_software_observer_execution_of_the_same_charged_action__physical_identification_excluded",
       "claim_class": "conditional_implication",
       "gates": [
-        737,
+        776,
         754,
         740
       ],
@@ -9615,9 +9631,9 @@
       "status": "analytic_Jacobi_clock_and_configuration_only_numerical_observer_readout__physical_identification_excluded",
       "claim_class": "conditional_implication",
       "gates": [
-        728,
-        754,
-        740
+        740,
+        777,
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",
@@ -9700,9 +9716,9 @@
       "status": "analytic_fixed_background_complex_magnetic_matter_trajectory_convergence__physical_identification_excluded",
       "claim_class": "conditional_implication",
       "gates": [
-        728,
-        754,
-        740
+        740,
+        777,
+        754
       ],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",

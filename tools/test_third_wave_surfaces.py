@@ -43,9 +43,9 @@ def _collapsed(relative_path: str) -> str:
 
 def test_claims_registered_with_gates() -> None:
     assert _claim(FORCE_CLAIM)["gates"] == [740]
-    assert _claim(SPEED_CLAIM)["gates"] == [733, 740, 736]
+    assert _claim(SPEED_CLAIM)["gates"] == [754, 740, 736]
     assert _claim(CLOCK_CLAIM)["gates"] == [736, 739]
-    assert _claim(GOLD_CLAIM)["gates"] == [733, 728]
+    assert _claim(GOLD_CLAIM)["gates"] == [754, 740, 777]
     for claim_id in (FORCE_CLAIM, SPEED_CLAIM, CLOCK_CLAIM, GOLD_CLAIM):
         assert _claim(claim_id)["premise_dependencies"]["consumed"] == [], claim_id
     for claim_id in (FORCE_CLAIM, SPEED_CLAIM, CLOCK_CLAIM):

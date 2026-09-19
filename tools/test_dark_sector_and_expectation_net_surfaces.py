@@ -58,7 +58,7 @@ def test_all_five_claims_are_registered_with_their_gates() -> None:
         PROFILE_CLAIM: [742, 751],
         PERCUT_CLAIM: [742, 751],
         NET_CLAIM: [730, 743],
-        STEP_CLAIM: [737, 739],
+        STEP_CLAIM: [776, 739],
     }
     for claim_id, expected in gates.items():
         claim = _claim(claim_id)

@@ -14,9 +14,9 @@ Recovery, generalized entropy, stationarity, focusing, source-causal continuum p
 | 6 | Constraint-tangent generalized-entropy stationarity | conditional_open_interface | maxEnt_envelope_identity; failingMaxEntTangent_fails | `test_einstein_closure_receipts.py`; `test_maxent_closure_acceptance.py` | ladder |
 | 7 | Finite cap-profile diagnostics and independent Bisognano-Wichmann identification | conditional_open_interface | kms_profile_receipt; kms_receipt; modular_clock_instrumentation_report.json | `test_modular_clock_instrumentation.py`; `test_quotient_cap_readout.py` | ladder |
 | 8 | Repair conservation and Ward/Bianchi transport | conditional_open_interface | einstein_equation_with_constant_symm; strictManifest_erase_required_fails | `test_einstein_closure_receipts.py` | ladder |
-| 9 | Source-causal continuum attachment and composed small-ball tensor theorem | conditional_open_interface | sourceCarrier_one_three_signature; restFrameEinsteinRelation; constantRadiusData_fails; composedEinsteinBranch | `test_source_derived_causal_order_surfaces.py`; `test_einstein_closure_receipts.py` | [#728](https://github.com/FloatingPragma/observer-patch-holography/issues/728), [#729](https://github.com/FloatingPragma/observer-patch-holography/issues/729) |
+| 9 | Source-causal continuum attachment and composed small-ball tensor theorem | conditional_open_interface | sourceCarrier_one_three_signature; restFrameEinsteinRelation; constantRadiusData_fails; composedEinsteinBranch | `test_source_derived_causal_order_surfaces.py`; `test_einstein_closure_receipts.py` | [#729](https://github.com/FloatingPragma/observer-patch-holography/issues/729), [#740](https://github.com/FloatingPragma/observer-patch-holography/issues/740), [#777](https://github.com/FloatingPragma/observer-patch-holography/issues/777) |
 | 10 | Vacuum and physical tower construction | physical_identification | bare_consensus_not_einstein_complete; baseline_countermodel_receipt | `test_einstein_closure_receipts.py` | [#729](https://github.com/FloatingPragma/observer-patch-holography/issues/729) |
-| 11 | Metrological and source-clock scale attachment | physical_identification | extra_scale_stabilizer_fails; prop:scale-bridge-rescaling-nogo | `test_clock_source_energy_closure_audit.py` | [#732](https://github.com/FloatingPragma/observer-patch-holography/issues/732), [#729](https://github.com/FloatingPragma/observer-patch-holography/issues/729), [#736](https://github.com/FloatingPragma/observer-patch-holography/issues/736) |
+| 11 | Metrological and source-clock scale attachment | physical_identification | extra_scale_stabilizer_fails; prop:scale-bridge-rescaling-nogo | `test_clock_source_energy_closure_audit.py` | [#729](https://github.com/FloatingPragma/observer-patch-holography/issues/729), [#736](https://github.com/FloatingPragma/observer-patch-holography/issues/736), [#739](https://github.com/FloatingPragma/observer-patch-holography/issues/739) |
 
 ## Premise interfaces and assumption tokens per rung
 
@@ -36,5 +36,7 @@ Rungs one and two are delivered by the equal-state-weights and
 optimizer-pushforward receipts, with the cross-refinement tail a
 named interface. Every rung status equals an axiom-registry
 interface class of that rung, and the ladder
-validation fails closed when any reference, test, token, claim, or
-owner issue stops resolving.
+validation fails closed when any reference, test, token, or claim
+stops resolving, or when an owner issue is a closed lane listed in
+`tools/closed_lanes.py`. Issue liveness is read from that list, not
+from GitHub.

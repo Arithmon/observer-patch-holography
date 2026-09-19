@@ -28,6 +28,10 @@ from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from closed_lanes import CLOSED_LANE_SUCCESSORS  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 LADDER_PATH = ROOT / "claims" / "gravity_premise_ladder.json"
 SURFACE_PATH = ROOT / "docs" / "GRAVITY_PREMISE_LADDER.md"
@@ -171,6 +175,11 @@ def validate(ladder: dict) -> list[dict]:
         for issue in row["owner_issues"]:
             if not isinstance(issue, int) or isinstance(issue, bool) or issue <= 0:
                 fail(f"{where}: owner issues must be positive integers")
+            if issue in CLOSED_LANE_SUCCESSORS:
+                fail(
+                    f"{where}: owner issue #{issue} is a closed lane; its open work"
+                    f" belongs to {list(CLOSED_LANE_SUCCESSORS[issue])}"
+                )
         if row["status"] == "physical_identification" and not row["owner_issues"]:
             fail(f"{where}: a pending physical identification requires owner issues")
     return rungs
@@ -243,9 +252,15 @@ def render(ladder: dict, rungs: list[dict]) -> str:
         "interface class of that rung, and the ladder"
     )
     lines.append(
-        "validation fails closed when any reference, test, token, claim, or"
+        "validation fails closed when any reference, test, token, or claim"
     )
-    lines.append("owner issue stops resolving.")
+    lines.append(
+        "stops resolving, or when an owner issue is a closed lane listed in"
+    )
+    lines.append(
+        "`tools/closed_lanes.py`. Issue liveness is read from that list, not"
+    )
+    lines.append("from GitHub.")
     return "\n".join(lines) + "\n"
 
 

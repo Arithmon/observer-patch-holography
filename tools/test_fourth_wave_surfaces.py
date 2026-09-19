@@ -39,8 +39,8 @@ def _collapsed(relative_path: str) -> str:
 
 
 def test_claims_registered_with_gates() -> None:
-    gates = {CHAIN_CLAIM: [736, 739], IRR_CLAIM: [733, 728], BLOCK_CLAIM: [740],
-             FLOW_CLAIM: [730, 733]}
+    gates = {CHAIN_CLAIM: [736, 739], IRR_CLAIM: [754, 740, 777], BLOCK_CLAIM: [740],
+             FLOW_CLAIM: [730, 754]}
     for claim_id, expected in gates.items():
         claim = _claim(claim_id)
         assert claim["gates"] == expected, claim_id

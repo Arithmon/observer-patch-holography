@@ -40,7 +40,7 @@ def _collapsed(relative_path: str) -> str:
 def test_claims_registered_with_gates() -> None:
     assert _claim(TRANS_CLAIM)["gates"] == [740]
     assert _claim(COLLAR_CLAIM)["gates"] == [729, 736]
-    assert _claim(EQUI_CLAIM)["gates"] == [733, 736, 728]
+    assert _claim(EQUI_CLAIM)["gates"] == [754, 736, 740, 777]
     for claim_id in (TRANS_CLAIM, COLLAR_CLAIM, EQUI_CLAIM):
         assert _claim(claim_id)["premise_dependencies"]["consumed"] == [], claim_id
 

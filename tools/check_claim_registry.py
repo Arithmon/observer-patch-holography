@@ -17,6 +17,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from closed_lanes import CLOSED_LANE_SUCCESSORS  # noqa: E402
 
 PAPER_EXTERNAL_REGISTRY_PATTERNS = [
     "claims/claim_registry",
@@ -110,7 +113,7 @@ REQUIRED_V3_TOPIC_GATES_BY_CLAIM: dict[str, frozenset[int]] = {
     "OPH-SM-Q4-RESONANCE-CONTINUATION": frozenset({743}),
     "OPH-A5-PRIMITIVE-PORT-SPIN6": frozenset({742}),
     "OPH-A5-SEAM-CURRENT-EDGE30": frozenset({742}),
-    "OPH-MODAL-MAXWELL-FACTORIZATION-BOUNDARY": frozenset({733}),
+    "OPH-MODAL-MAXWELL-FACTORIZATION-BOUNDARY": frozenset({754}),
     "OPH-FINITE-CONSERVATION-WARD-PRECURSOR": frozenset({743}),
     "OPH-QUARK-REGISTER-CLEBSCH": frozenset({745}),
     "OPH-KOIDE-CIRCULANT-IDENTITY": frozenset({745}),
@@ -499,6 +502,11 @@ def check_gates(claim: dict) -> None:
     require(
         len(gates) == len(set(gates)),
         f"{claim_id}: gates must not repeat GitHub issue numbers",
+    )
+    closed = {gate: CLOSED_LANE_SUCCESSORS[gate] for gate in gates if gate in CLOSED_LANE_SUCCESSORS}
+    require(
+        not closed,
+        f"{claim_id}: gates name closed lanes; move them to their successors {closed}",
     )
     check_required_v3_topic_gates(claim)
     if claim["claim_class"] in PROMOTED_CLASSES:
