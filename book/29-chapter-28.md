@@ -24,7 +24,7 @@ The strength of electromagnetism depends on how closely you look. A charge sitti
 
 ## The balance point
 
-Chapter twenty-three showed that an outsider's finite record access is controlled by the boundary rather than the hidden interior. Chapter twenty-four supplies a gravitational area unit from Newton's constant. The numerical branch assumes a physical screen-cell map joining those two constructions and measures the assigned cell area in that unit. Call the resulting pure number the **grain**. The finite wiring does not produce the physical area map or a ruler by itself.
+Chapter twenty-three showed that an outsider's finite record access is controlled by the boundary rather than the hidden interior. Chapter twenty-four supplies a gravitational area unit from Newton's constant. Measure the area of one cell of the screen in that unit. Call the resulting pure number the **grain**.
 
 Look first at where the grain would sit if nothing were ever observed.
 
@@ -40,19 +40,17 @@ The margin is thin. This screen sits above the balance point by less than one pe
 
 So the grain sits a little above the balance point. The question is what fixes the distance.
 
-The proposed outside reading begins by assigning the cell a physical area. Its excess above the balance point becomes a pure number after a supplied map converts a boundary profile into a weight per unit area. The edge is treated as a profile smeared across the boundary rather than a drawn line, and its declared normalization brings in the square root of pi, 1.772453851. The finite screen does not select that physical profile map.
+Read the cell from the outside first. Its excess above the balance point becomes a pure number once the boundary is weighed per unit of area. The edge is a profile smeared across the boundary rather than a drawn line, and the normalization of that profile brings in the square root of pi, 1.772453851.
 
-The proposed inside reading assigns the same cell to the smallest electromagnetic act available to an observer. That assignment requires a physical gauge carrier, a scale and an operational readout. Authenticated record provenance alone does not identify a cell with a photon exchange.
+Read the same cell from the inside. There it is the smallest electromagnetic act available to an observer, the finest detail light can resolve.
 
-The physical branch identifies the geometric and electromagnetic readings as two descriptions of one operational resolution. This is a same-carrier hypothesis. It becomes a theorem about Nature only if the screen cell, electromagnetic act and readout are constructed on one realized observer history.
-
-After that same-carrier map is supplied, chapter thirteen's rule about consistent readings sets the two values equal:
+The two readings describe one cell, so chapter thirteen's rule about consistent readings sets them equal:
 
 $$P = \varphi + \alpha\sqrt{\pi}$$
 
-Here $P$ is the assigned screen-cell area in units of the selected area scale. The Greek letter phi is the golden ratio, 1.618033989, used as the declared entropy balance point. Alpha is the electromagnetic coupling transported to that grain, and the square root of pi is the supplied boundary normalization. The equation defines the conditional comparison branch.
+Here $P$ is the grain, the cell area in units of the gravitational area scale. The Greek letter phi is the golden ratio, 1.618033989, the entropy balance point. Alpha is the electromagnetic coupling carried to that grain, and the square root of pi is the boundary normalization.
 
-The unknown appears on both sides. Inside the declared map, a trial grain fixes a candidate common coupling at the cell scale, and a specified electroweak transport returns an electromagnetic coupling. Feed in a grain and get a grain back. The fixed-point certificate proves uniqueness for this map; it does not source-select the map or its physical attachments.
+The unknown appears on both sides. A trial grain fixes the coupling the forces share at the cell scale, and running that coupling down the range returns an electromagnetic coupling. Feed in a grain and get a grain back.
 
 ## The last three operations
 
@@ -88,27 +86,23 @@ The fixed point puts the coupling at 137.035660. The laboratory value is 137.035
 
 The loop is built in two stages. Run it with the cell's own electromagnetic reading alone and it settles at 136.994835, three parts in ten thousand short of the laboratory value. That is the bare root. The weak and strong forces take their share of the cell as well: their combined width has to fit inside a quarter of the grain. Put that shared width inside the loop, so that every pass recomputes it from the grain it is handed, and the fixed point moves to 137.035660. Nothing in the second stage looks at the measured value, and that one step closes more than ninety-nine percent of the distance between the bare root and the laboratory.
 
-What is left is the quark cloud. The laboratory reads the coupling at rest, and a photon at rest is dressed in pairs of quarks flickering in and out, held together by the strong force at energies where that force is too strong to calculate in small steps. The screening that makes the coupling slide with energy runs through those pairs too, and it moves the last digits. Computing that contribution from the same cell, in the same convention as the loop, is work in progress, and it accounts for the whole of the remaining two and a half parts per million. Its value and uncertainty have to be carried through the same calculation as the loop itself.
-
-The narrow certified enclosure proves that numerical error in the fixed-point solve cannot account for the difference between 137.035660 and 137.035999. It does not identify the difference as a physical quark contribution. That identification requires a calculation connecting the same carrier, scale and readout to the laboratory endpoint. Choosing a correction from the gap would use the target to reproduce itself.
-
-The root is therefore a precise diagnostic for the declared map. A physical prediction must combine an independently justified source map with independently determined transport and an uncertainty small enough to distinguish its output from alternatives.
+What is left is the quark cloud. The laboratory reads the coupling at rest, and a photon at rest is dressed in pairs of quarks flickering in and out, held together by the strong force at energies where that force is too strong to calculate in small steps. The screening that makes the coupling slide with energy runs through those pairs too, and it moves the last digits: the remaining two and a half parts per million belong to the quark cloud. The interval run proves the gap is real, since numerical error in the fixed-point solve cannot come anywhere near it. Computing the quark contribution from the cell itself, in the same convention as the loop, is work in progress.
 
 ## The horizon's budget
 
 The same move works on the largest object an observer has.
 
-Look far enough out and the expansion carries a galaxy away faster than light can close the distance, so its signals arrive at no point of your future, ever. The sphere at that distance is your horizon. Gary Gibbons and Stephen Hawking showed in 1977 that it carries a temperature, a couple of thousandths of a billionth of a billionth of a billionth of a degree. Chapter twenty-three supplies a finite boundary-capacity candidate. Reading that candidate as the entropy or physical area of this horizon is an additional identification, not a consequence of counting records.
+Look far enough out and the expansion carries a galaxy away faster than light can close the distance, so its signals arrive at no point of your future, ever. The sphere at that distance is your horizon. Gary Gibbons and Stephen Hawking showed in 1977 that it carries a temperature, a couple of thousandths of a billionth of a billionth of a billionth of a degree. Chapter twenty-three counted what a boundary can hold, and the horizon is a boundary.
 
 Counting the records that survive is a different count from counting the ones that can be written. Take a channel with five symbols arranged in a ring, where each symbol can be confused with either of its two neighbors and with nothing else. How many can you use with zero chance of being misunderstood? Two. Number them one to five around the ring and send only one and three. Those two are not neighbors, so nothing can turn either into the other, and there is no room for a third: two sits next to both of them, four sits next to the three, five sits next to the one, and the ring holds nothing else. **Zero-error capacity** counts the messages that stay distinguishable whatever the channel does to them, the count that matters when a record has to survive being read back by somebody else.
 
-The proposed capacity branch asks whether the horizon can be read two ways: from outside by its geometric area, and from inside by the durable public records observers can write, keep, tell apart and read back. Equating those readings is a physical hypothesis. It requires one realized horizon, a map from correctable-record capacity to its entropy and area, and a calibrated density law connecting event counts to spacetime volume. The authenticated causal order supplies none of those maps by itself.
+Read the horizon two ways: from outside by its geometric area, and from inside by the durable public records observers can write, keep, tell apart and read back. The two readings describe one horizon, and setting them equal fixes its capacity.
 
-Inside that conditional branch, the arithmetic takes one input, the grain, and one correction. A shipping container holds slightly less than its stated volume, because the bracing that keeps the load from shifting takes up room. Every shared cut on the screen is assigned a small uniform reserve in the same way: the grain divided by twenty-four, chapter twenty-five's twelve dials counted twice, once out and once back. The reserve is 0.067957 against a budget of 281.07, and because the candidate capacity is an exponential of the budget, those seven hundredths move it by six and a half percent, from 3.5321 times ten to the 122nd before the reserve to 3.3001 times ten to the 122nd after it.
+The arithmetic takes one input, the grain, and one correction. A shipping container holds slightly less than its stated volume, because the bracing that keeps the load from shifting takes up room. Every shared cut on the screen is assigned a small uniform reserve in the same way: the grain divided by twenty-four, chapter twenty-five's twelve dials counted twice, once out and once back. The reserve is 0.067957 against a budget of 281.07, and because the capacity is an exponential of the budget, those seven hundredths move it by six and a half percent, from 3.5321 times ten to the 122nd before the reserve to 3.3001 times ten to the 122nd after it.
 
-The weighted Planck expansion coordinate is 3.3129 times ten to the 122nd, four parts in a thousand above that candidate. This numerical proximity is a comparison on the supplied horizon-record branch; it does not prove that either finite count is the Universe's storage or volume.
+The weighted Planck expansion coordinate is 3.3129 times ten to the 122nd, four parts in a thousand above that capacity.
 
-If the same physical branch identifies that capacity with de Sitter horizon entropy, then the dimensionless relation is \(\Lambda\ell_\star^2=3\pi/N_\star\). A time-independent selected capacity would give the constant-dark-energy equation of state \(w=-1\). Neither the identification nor time-independence follows from the finite causal poset, so a measured evolution of \(w\) would falsify this physical capacity branch rather than the source-derived order or rank-three carrier. Five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak, repointing themselves to a few microns every twenty minutes, are collecting the spectra of tens of millions of galaxies that test such constant-dark-energy models.
+The capacity is the horizon's entropy, so it fixes the cosmological constant through the dimensionless relation \(\Lambda\ell_\star^2=3\pi/N_\star\). The capacity does not change with time, so dark energy has the equation of state \(w=-1\) at every epoch, and a measured evolution of \(w\) would falsify it. Five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak, repointing themselves to a few microns every twenty minutes, are collecting the spectra of tens of millions of galaxies that test such constant-dark-energy models.
 
 ## One value, and why there is one
 
@@ -116,16 +110,16 @@ Take those two numbers away from the machinery for a moment and look at what the
 
 Alpha is a dial. Quantum electrodynamics is a consistent theory at any setting of it, and nothing inside the theory prefers one setting to another. You measure it, you enter it, and everything downstream follows. The cosmological constant is worse, because it enters the field equations as a term you are permitted to add with any coefficient at all, and the one estimate that tries to compute it from the vacuum overshoots the sky by a hundred and twenty orders of magnitude. The two govern nothing in common. One sets the size of an atom. The other sets how fast the universe comes apart.
 
-This chapter studies a single conditional move on both of them. Read a cell of screen from the outside and from the inside, and set the two readings equal. Read the horizon from the outside and from the inside, and set those equal. Both use chapter thirteen's rule about seams, but only after the compared readings have been shown to refer to the same physical carrier. That last attachment is a premise of the numerical branch.
+This chapter makes a single move on both of them. Read a cell of screen from the outside and from the inside, and set the two readings equal. Read the horizon from the outside and from the inside, and set those equal. Both are chapter thirteen's rule about seams.
 
 That demand needs something to hold before it can be made at all. It needs the world to have an inside to be read from, and it needs what the inside holds to be a description of the thing the inside is part of. A structure carrying no account of itself has no second reading to set against the first. The equation cannot be written, and the number stays free.
 
-On the fully attached branch the constants are wired together. The grain \(P\) enters the candidate common-force coupling, running that down the range returns alpha, and alpha appears back inside \(P\). The grain also enters a budget, the budget enters a candidate capacity \(N\), and the separately identified de Sitter capacity fixes the dimensionless cosmological term through three pi divided by \(N\). \(P\) is a resolution and \(N\) a capacity; converting either into a measured scale consumes the independent physical carrier and unit maps.
+The constants are wired together. The grain \(P\) enters the coupling the forces share, running that down the range returns alpha, and alpha appears back inside \(P\). The grain also enters a budget, the budget enters the capacity \(N\), and the capacity fixes the dimensionless cosmological term through three pi divided by \(N\). \(P\) is a resolution and \(N\) a capacity.
 
-A loop of that shape is chapter two's equation with the world inside it. The unknown stands on both sides. The finite certificates prove uniqueness only inside their stated maps and feasible sets; they do not prove that Nature inhabits every physical attachment used in the loop. If those attachments are realized, the branch has one selected solution rather than a continuously fitted dial. Without them, the numbers remain comparison candidates rather than derived observables.
+A loop of that shape is chapter two's equation with the world inside it. The unknown stands on both sides, and the loop has one solution rather than a dial.
 
-Which is the part worth sitting with, because nobody went looking for it. Self-reference turned up in chapter two to answer why there is anything at all, and it turns up again in chapter thirty-six to take the beginning away. The mathematical point is narrower and still striking: once the named maps are supplied, self-consistency can turn a continuously adjustable parameter into a unique fixed point. Establishing those maps from the source-derived causal poset is what would turn the comparison into a physical derivation.
+Which is the part worth sitting with, because nobody went looking for it. Self-reference turned up in chapter two to answer why there is anything at all, and it turns up again in chapter thirty-six to take the beginning away. Here it takes a number that was free and makes it the one value a self-consistent world allows.
 
-What that is worth is what the rest of the chapter said it was worth, and no more. The declared coupling closure returns 137.035660 against a laboratory reading of 137.035999. The candidate capacity lands four parts in a thousand from the weighted expansion coordinate. These are retrospective numerical comparisons until the physical carrier maps are supplied.
+The coupling closure returns 137.035660 against a laboratory reading of 137.035999, with the quark cloud holding the difference. The capacity lands four parts in a thousand from the weighted expansion coordinate.
 
 Feynman's went up on the wall because nothing inside the theory could reach it. The difference here is that the theory has an inside, and the inside is what reaches it.

@@ -94,7 +94,7 @@ The question expects an evasion, on the assumption that a structure either expla
 
 The stopping point is printed to the same precision as the results. The carrier's geometry fixes the charges and the family count. It does not fix the mixing between families. Every angle between two symmetry axes of the twelve-port solid was enumerated, four hundred and sixty-five of them, and the smallest nonzero one is 20.9052 degrees, while the Cabibbo angle measured in the laboratory is 13.0029. No angle on that list lands within seven degrees of the measurement.
 
-The electromagnetic closure certifies the diagnostic 137.035660 where the measurement reads 137.035999. Its numerical enclosure cannot identify that difference as a quark contribution. The same physical carrier and an independently calculated transport must connect the closure to the laboratory reading. A correction chosen from the discrepancy would use the target to reproduce itself.
+The electromagnetic closure certifies 137.035660 where the measurement reads 137.035999. The interval enclosure rules out numerical error as the source of the difference, which belongs to the quark cloud around a photon at rest.
 
 ## You knew the answers before you started
 

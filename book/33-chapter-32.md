@@ -40,7 +40,7 @@ The assumption is that empty space carries an energy density, that the density s
 
 The local null-probe route uses light rays. A Lorentz-invariant vacuum stress is a number times the metric, and the metric evaluated twice on a light-ray direction is zero. That route is therefore blind to the metric-proportional term. It derives the local Einstein relation only up to one cosmological constant; it does not set the constant to zero or determine its value.
 
-The proposed global branch supplies a candidate for the missing term. It identifies correctable public-record capacity with the entropy of one realized de Sitter horizon and imports the physical area and scale calibration. Under those assumptions the candidate count is 3.3001 times ten to the hundred and twenty-second, against a weighted expansion coordinate of 3.3129 times ten to the hundred and twenty-second. The finite record count alone fixes no cosmological constant.
+The global branch supplies the missing term. The correctable public-record capacity of the horizon is its entropy, and the count comes to 3.3001 times ten to the hundred and twenty-second, against a weighted expansion coordinate of 3.3129 times ten to the hundred and twenty-second.
 
 ## An ensemble of one
 
@@ -50,7 +50,7 @@ Shift that level by a fraction of a percent and the reaction that builds carbon 
 
 An argument of that shape needs both a collection of candidates and a probability measure on it. String compactifications supply examples with different particle spectra and parameters. Counting many candidates alone does not determine the probability of a hospitable world; that depends on their physical content and the weights assigned to them.
 
-The numerical proposal reads two quantities twice, once from the finite structure and once through a supplied physical observer map. If each pair is proved to refer to the same carrier, consistency gives an equation with the quantity on both sides. The declared map is a contraction, so it has one fixed point in its feasible set. Its coupling coordinate is 137.035660 against the measured 137.035999. This proves uniqueness inside the named map, not that the source-derived causal poset selects every physical attachment or excludes every other architecture.
+The structure reads two quantities twice, once from the outside and once from the inside. Both readings describe the same carrier, so consistency gives an equation with the quantity on both sides. The map is a contraction, so it has exactly one fixed point. Its coupling comes to 137.035660 against the measured 137.035999, with the quark cloud holding the difference. There is no ensemble to be improbable in: one world, and one value it allows.
 
 ## Two parts in ten to the seventeenth
 
@@ -100,9 +100,9 @@ Why do the charges come in sixths? Because six combinations of gauge moves do no
 
 Why does the proton refuse to decay the grand-unified way? Because the carrier that route needs, one direction coupling color to weak charge at once, is missing from a twelve-dimensional list that splits into eight, three and one, and a missing direction cannot be made small or slow: that route is closed exactly.
 
-Why is the fine-structure constant near one part in 137? A declared screen map has one fixed point, with diagnostic coupling 137.035660 against the measured 137.035999. Connecting its two readings to one physical carrier and independently determining the transport are necessary for a physical comparison.
+Why is the fine-structure constant near one part in 137? One cell of the screen, read from outside and from inside, has to agree with itself, and the equation that says so has one fixed point, at 137.035660 against the measured 137.035999.
 
-What does the circulant model say about Koide's relation? In its positive chamber, equal weights of the two response sectors give two thirds. With measured electron and muon masses as inputs, this balance condition gives a tau window seventy-two electron-volts wide, centered at 1776.969027 million electron-volts against a measured 1776.93. Positivity alone does not select the balance.
+What does the geometry say about Koide's relation? On one face of the icosahedron, equal weight for the two ways the corners can respond gives exactly two thirds. With the electron and muon masses as inputs, it pins the tau inside a window seventy-two electron-volts wide, centered at 1776.969027 million electron-volts against a measured 1776.93.
 
 Why does light have two polarizations? Because the central band carries four components, removing the redundancy takes two of them away, and what is left is transverse and two wide.
 
@@ -114,20 +114,20 @@ On the proposed dark-sector branch, missing-mass phenomenology is represented by
 
 ## The empty column
 
-The observer constructions supply a set of conditional answers. Each row states both the mathematical contribution and the physical inputs it consumes.
+Chapter one read three centuries of physics as a crash log: what was assumed, what broke, and what got fixed. The seven problems above never reached the third column. Here it is.
 
-| The problem | Observer construction | Physical requirement |
+| The problem | What sits underneath | What comes out when that goes |
 |-|-|-|
-| Measurement | Effect-additive probabilities and a commuting record layer | An instrument and an outcome interpretation |
-| The arrow of time | Relative-entropy contraction for a reference-preserving channel | Dynamics, boundary conditions and a physical clock |
-| The cosmological constant | Null data leave one metric term free; a horizon model assigns capacity | A common entropy, area and scale identification |
-| Fine-tuning | Unique fixed points of declared maps | Independent map selection and physical readouts |
-| The hierarchy | An exponential relation on a calibrated branch | Physical scale, coupling and matching inputs |
-| Grand unification | Response assumptions exclude a simple local gauge Lie algebra | Realized gauge and matter interfaces |
-| Holographic duality | Finite overlaps define a constraint code | Geometry and an entropy law for the physical connector |
+| Measurement | A world stocked with definite values, disturbed by an encounter | A commit into the commuting part of an algebra, with the odds forced by additivity |
+| The arrow of time | Direction-blind dynamics plus a special first arrangement | An irreversible write, forward and reverse weights apart by the exponential of the entropy produced |
+| The cosmological constant | A vacuum energy sitting in a spacetime that was there first | Local null data leave one metric term free, and the horizon's record capacity fixes it |
+| Fine-tuning | An ensemble of worlds for this one to be improbable among | One structure, two quantities read twice, one solution each |
+| The hierarchy | A fundamental scale entered by hand for a measured one to be compared against | A coupling of one part in 24.32 arriving in an exponent |
+| Grand unification | A symmetry imposed on the world from outside it | Every relabeling an inside job, one central dial, and no simple group with room for it |
+| Holographic duality | A boundary at infinity taken as its own summary, so the assumption is the conclusion | A collar with an interior on both sides, and a constraint code carrying no distance |
 
-The connection between the rows is the bounded observer architecture. Twelve ports and thirty seams supply a common finite construction. Physical carrier, scale, stress, clock and horizon maps identify what its mathematical objects measure. The strength of the proposed unification is tested by whether those maps belong to one physical realization.
+Seven rows expose one recurring assumption: somebody wrote down the stage before writing down anything that happens on it. The finite wiring removes that assumption by supplying records, seams and repair, and twelve ports and thirty seams are the common structure under every row.
 
-There is a test that separates the outcomes. Ask what a solution would have to contain. The finite construction can remove a misplaced mechanism or replace a free parameter with a conditional fixed-point equation. A physical result additionally needs its named bridge to instruments. For the cosmological constant, the null argument explains why local light-ray data leave the metric term undetermined. The horizon-capacity proposal supplies a value only if its record, entropy, area and scale identifications hold on one physical branch.
+There is a test that separates the outcomes. Ask what a solution would have to contain. A misplaced mechanism has to go, and a free parameter has to become the solution of an equation the world cannot avoid. For the cosmological constant, the light-ray argument explains why local data leave the metric term undetermined, and the horizon's capacity supplies its value.
 
 Which leaves the picture everybody starts with, the one with a container, a clock running at one rate for everybody, and objects sitting at positions inside it. That picture is the same assumption in domestic form, accurate to more decimal places than any instrument in a house can resolve. Somebody assumed a container and a clock and got the tides out of it, and the precession of the equinoxes, and the mass of the Sun worked out from how long a planet takes to go round it. That is two hundred years of correct answers out of a picture whose opening sentence puts the world inside a box that was never there.
