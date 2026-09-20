@@ -269,7 +269,7 @@ def build_receipt() -> dict[str, Any]:
         "status": STATUS,
         "issue": 733,
         "source_contracts": [
-            {"path": str(path.relative_to(ROOT)), "bytes": size,
+            {"path": path.relative_to(ROOT).as_posix(), "bytes": size,
              "sha256": "sha256:" + sha, "role": role}
             for path, size, sha, role in SOURCES],
         "lean_receipts": {"file": "Lean/Screen/LocalFaceMaxwellAction.lean",
