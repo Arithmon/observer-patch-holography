@@ -104,11 +104,22 @@ bounds the excess over any selected cells. The golden and time-coordinate
 maps are injective, so the label sums are point counts.
 \end{proof}
 These steps, the actual $\Delta_n$ specialization and the endpoint control
-are kernel-checked in \texttt{GoldenSourceCountLimit}. Identifying the
-null frontier of a particular causal region, transferring the estimate to
-moving generated-order intervals and deriving strict-pair limits remain
-separate analytic arguments. Extra routing events require another count
-estimate; the sampling theorem selects no physical measure or clock.
+are kernel-checked in \texttt{GoldenSourceCountLimit}. Causal frontiers
+have zero volume by the Fubini argument in \texttt{SourceCausalBoundary}.
+The actual count measure converges on moving generated-order intervals;
+the finite window remains part of the reference volume. Strict-pair counts
+converge to the geometric product measure with the pair endpoint error
+retained. The corresponding proofs are in \texttt{GoldenSourceCausalLimit}
+and \texttt{GoldenSourcePairLimit}.
+
+The actual geometric pair measure is evaluated by the radial integration
+proof in \texttt{FlatDiamond\allowbreak PairIntegral}. For a timelike diamond contained
+in the supplied window, its ordering fraction tends to $1/10$. This final
+normalization is proved in \texttt{FlatDiamond\allowbreak Normalization}.
+The explicit vertical Alexandrov error and general weighted-family limit
+are proved in \texttt{SourceNet\allowbreak VolumeError}; the golden specialization is
+in \texttt{GoldenSource\allowbreak VolumeLimit}. Extra routing events require another
+count estimate. These theorems select no physical measure or clock.
 
 \begin{proposition}[Localized radial-kernel quadrature]
 \label{prop:source-population-local-kernel}

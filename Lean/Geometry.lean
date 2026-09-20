@@ -4,6 +4,10 @@ import Geometry.SourceFeedbackTransport
 import Geometry.SourcePopulationQuadrature
 import Geometry.GoldenSourceAssignment
 import Geometry.GoldenSourceCountLimit
+import Geometry.GoldenSourceCausalLimit
+import Geometry.GoldenSourcePairLimit
+import Geometry.GoldenSourceVolumeLimit
+import Geometry.FlatDiamondNormalization
 import Geometry.SourceNetCausalCone
 import Geometry.SourceNetLayeredOrder
 import Geometry.SourceNetConformalRecordDensity
@@ -142,8 +146,15 @@ height the layer index, and identifies the concrete `Precedes` of
 `Geometry.SourceNetCausalCone` with it.  `Geometry.OrderingFractionFourDimensional`
 records the flat-spacetime reference constants of the ordering-fraction
 proposition: the double integral `T⁸ / 1920`, the identity `V² / 20`, the
-fraction `1 / 10`, and the Myrheim-Meyer values at `d = 2, 3, 4`; the count
-convergence itself is analytic and lives in the paper.
+fraction `1 / 10`, and the Myrheim-Meyer values at `d = 2, 3, 4`.
+`Geometry.GoldenSourceVolumeLimit` proves the actual golden weighted
+Alexandrov-volume limit with the explicit finite error and its exact raw
+count interpretation. `Geometry.GoldenSourceCausalLimit` and
+`Geometry.GoldenSourcePairLimit` prove moving generated-interval and strict-pair
+convergence in the supplied window. `Geometry.FlatDiamondNormalization`
+evaluates the actual geometric pair measure and proves the `1 / 10` limit
+for timelike limiting diamonds contained in that window. The population,
+complete-neighbour read law and coordinate measure/clock remain supplied.
 `Geometry.SourceNetConformalRecordDensity` proves that positive layer scaling
 of positions and read radius leaves the layered order unchanged, defines the
 constant-physical-density count measure with the FLRW weight `σ ^ 4`,

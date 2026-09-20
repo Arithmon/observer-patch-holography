@@ -54,8 +54,9 @@ normed spaces; \path{Lean/Geometry/SourceNetCausalCone.lean} formalizes them.
 The partial order, its equality with the reflexive transitive closure of the
 reads, the graph-distance characterization, and the width and height
 statements are formalized in \path{Lean/Geometry/SourceNetLayeredOrder.lean}.
-The volume estimates below are analytic results for the three-dimensional
-Euclidean repair carrier.
+The volume estimates below concern the three-dimensional Euclidean repair
+carrier. The vertical weighted bound and its family limit are formalized
+below; the separate general moving-tip finite estimate remains analytic.
 
 For model time $\tau=k\Delta$, the two radii in
 \eqref{eq:source-net-cone-sandwich} are
@@ -139,6 +140,20 @@ $\pi c^3T^3\Delta/2$. The inclusive right endpoint contributes zero to
 this reference sum. Summing the spatial errors over $K+1$ layers proves
 \eqref{eq:source-net-volume-error}.
 \end{proof}
+
+The complete finite estimate, with almost-everywhere cell coverage,
+disjointness and assignment, is formalized by
+\path{SourceNetVolumeError.weighted_alexandrov_error} in
+\path{Lean/Geometry/SourceNetVolumeError.lean}.
+The zero-hop endpoint cases and all $K+1$ layers are included.
+The general limit for varying, possibly unequal cell masses is proved by
+\path{SourceNetVolumeError.weighted_alexandrov_tendsto}: it assumes
+$a_n,H_n,h_n/a_n\to0$, $K_n(a_n/c)\to T$ and the eventual interior buffer,
+and derives convergence of the actual weighted generated intervals.
+\path{Lean/Geometry/GoldenSourceVolumeLimit.lean} instantiates the bound
+with the actual golden sites and equal cell masses, proves its exact raw
+count interpretation, and derives the aligned weighted-volume limit as
+$K_n\Delta_n\to T$, under the stated interior buffer.
 
 \begin{proposition}[Interior diamonds with moving tips]
 \label{cor:source-net-general-diamond}
@@ -259,8 +274,24 @@ These spatial arithmetic, partition and quadrature statements have Lean
 proofs in \texttt{GoldenSourceAssignment}. The module
 \texttt{GoldenSourceCountLimit} also proves normalized actual event-count
 convergence on each fixed measurable continuity set for the declared time
-grid, with final-layer discrepancy at most $L^3\Delta_q$. The causal-boundary,
-moving-interval and strict-pair specializations below are analytic.
+grid, with final-layer discrepancy at most $L^3\Delta_q$.
+\texttt{SourceCausalBoundary} proves causal-frontier and pairwise
+null-separation nullity by Fubini. \texttt{SourceNetOrderLimit} derives
+eventual order agreement from actual covering paths.
+\texttt{GoldenSourceCausalLimit.generated\_interval\_count\_tendsto}
+combines this with the actual golden partition to prove count convergence
+for moving generated intervals. Its reference volume is explicitly
+restricted to the supplied time and spatial window; an uncut diamond
+requires the interior hypothesis. \texttt{GoldenSourcePairLimit} proves
+strict generated-pair convergence to the geometric product measure and
+the $N_q(N_q-1)$ normalization.
+\texttt{GoldenSourceVolumeLimit} proves the explicit vertical volume error
+and the aligned weighted count-volume limit.
+\texttt{FlatDiamondNormalization} identifies the uncut interval volume
+and proves the ordering-fraction limit below, with the window containment
+hypothesis explicit. The separate moving-tip finite error estimate
+\eqref{eq:source-net-general-volume-error} remains analytic; moving-tip
+count convergence itself is formalized.
 Taking products with time cells $[j\Delta_q,(j+1)\Delta_q]$ proves
 convergence of the normalized event measure: for a Lipschitz test function
 on an aligned time window of length $T$, the error is at most
@@ -317,6 +348,23 @@ pairs, giving $1/10$. Constant changes of time and volume units cancel in
 the ratio. This is an interval statistic; the same value is not asserted
 for a whole spatial box times a time window.
 \end{proof}
+
+The convergence to the geometric double-indicator measure
+and its $N_q(N_q-1)$ normalization are now kernel-checked in
+\texttt{GoldenSourcePairLimit}. Product endpoint clipping is bounded by
+$L^6\Delta_q(2T+\Delta_q)$.
+\texttt{FlatDiamondVolume} proves the actual spherical section volumes;
+\texttt{FlatLorentzVolume} constructs a determinant-one Lorentz boost,
+proves its causal and measure preservation, and derives the future
+subdiamond volume. \texttt{FlatDiamondPairIntegral} applies Fubini and
+radial integration to the actual pair set, connecting it to the polynomial
+integral checked by \texttt{OrderingFractionFourDimensional}.
+Finally, \path{FlatDiamondNormalization.ordering_fraction_tendsto_one_tenth}
+proves the $1/10$ limit for arbitrary supplied $c>0$ and timelike limiting
+tips, provided their diamond lies in $[0,T]\times[0,L)^3$.
+The null final-time boundary is retained through measure equality.
+These results select no population, read law, physical clock or physical
+measure, and they do not count additional instrument or routing operations.
 
 A sharper finite covering constant is available without changing this
 construction. Sort the one-dimensional orbit as

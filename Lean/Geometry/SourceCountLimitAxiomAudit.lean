@@ -1,0 +1,319 @@
+import Mathlib.Util.AssertNoSorry
+import Geometry.GoldenSourceVolumeLimit
+import Geometry.FlatDiamondNormalization
+
+/-!
+# Issue #782 proof audit
+
+Every public theorem added for the source count/volume and strict-pair limits,
+plus the consumed golden quadrature and site-injectivity interfaces, is checked
+against the standard axiom allowlist. The command rejects admissions, custom
+axioms and compiler-trusted reductions, and prints the complete transitive set.
+-/
+
+open Lean Elab Command in
+elab "audit_source_axioms " n:ident : command => do
+  let name ← liftCoreM <| Lean.Elab.realizeGlobalConstNoOverloadWithInfo n
+  let axioms ← Lean.collectAxioms name
+  let permitted := #[``propext, ``Classical.choice, ``Quot.sound]
+  let unexpected := axioms.filter (fun ax => !permitted.contains ax)
+  unless unexpected.isEmpty do
+    throwError "Source count axiom audit rejected {unexpected.toList}"
+  logInfo m!"'{name}' depends on axioms: {axioms.toList}"
+
+/-- error: Source count axiom audit rejected [sorryAx] -/
+#guard_msgs in
+audit_source_axioms sorryAx
+
+/-- error: Source count axiom audit rejected [Lean.ofReduceBool, Lean.trustCompiler] -/
+#guard_msgs in
+audit_source_axioms Lean.ofReduceBool
+
+audit_source_axioms OPH.SourceNetOrderLimit.layer_gap
+
+audit_source_axioms OPH.SourceNetOrderLimit.inner_layer_gap
+
+audit_source_axioms OPH.SourceNetOrderLimit.eventually_precedes_of_timelike
+
+audit_source_axioms OPH.SourceNetOrderLimit.eventually_not_precedes_of_spacelike
+
+audit_source_axioms OPH.SourceCausalBoundary.continuous_spatialNorm
+
+audit_source_axioms OPH.SourceCausalBoundary.continuous_margin
+
+audit_source_axioms OPH.SourceCausalBoundary.continuous_margin_right
+
+audit_source_axioms OPH.SourceCausalBoundary.continuous_margin_left
+
+audit_source_axioms OPH.SourceCausalBoundary.diamond_measurable
+
+audit_source_axioms OPH.SourceCausalBoundary.time_graph_null
+
+audit_source_axioms OPH.SourceCausalBoundary.future_null
+
+audit_source_axioms OPH.SourceCausalBoundary.past_null
+
+audit_source_axioms OPH.SourceCausalBoundary.future_frontier_null
+
+audit_source_axioms OPH.SourceCausalBoundary.past_frontier_null
+
+audit_source_axioms OPH.SourceCausalBoundary.diamond_frontier_null
+
+audit_source_axioms OPH.SourceCausalBoundary.pair_null
+
+audit_source_axioms OPH.SourceCausalBoundary.diagonal_null
+
+audit_source_axioms OPH.SourceCausalBoundary.source_diamond_count_tendsto
+
+audit_source_axioms OPH.SourceCountTransport.selected_eq
+
+audit_source_axioms OPH.SourceCountTransport.selected_count_tendsto
+
+audit_source_axioms OPH.SourceCountTransport.selected_weight_error
+
+audit_source_axioms OPH.SourceCountTransport.product_weight_discrepancy
+
+audit_source_axioms OPH.SourceCountTransport.eventCell_ae_cover
+
+audit_source_axioms OPH.SourceCountTransport.event_selected_weight_error
+
+audit_source_axioms OPH.SourceCountTransport.constant_weight_count
+
+audit_source_axioms OPH.SourceCountTransport.event_selected_count_tendsto
+
+audit_source_axioms OPH.SourceCountTransport.pairCell_measurable
+
+audit_source_axioms OPH.SourceCountTransport.pairCell_disjoint
+
+audit_source_axioms OPH.SourceCountTransport.pairCell_ae_cover
+
+audit_source_axioms OPH.SourceCountTransport.pair_selected_weight_error
+
+audit_source_axioms OPH.SourceCountTransport.pair_selected_count_tendsto
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.domain_convex
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.population_subset
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.population_covers
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.radius_pos
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.assignment_nonneg
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.assignment_radius_ratio
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.assignment_ratio_tendsto
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.placed_time
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.placed_space
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.generated_eventually_iff
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.assigned_position_tendsto
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.interval_classification_ae
+
+audit_source_axioms OPH.GoldenSourceCausalLimit.generated_interval_count_tendsto
+
+audit_source_axioms OPH.GoldenSourcePairLimit.strictlyGenerated_iff
+
+audit_source_axioms OPH.GoldenSourcePairLimit.pairRegion_measurable
+
+audit_source_axioms OPH.GoldenSourcePairLimit.strict_classification_ae
+
+audit_source_axioms OPH.GoldenSourcePairLimit.pair_classification_ae
+
+audit_source_axioms OPH.GoldenSourcePairLimit.generated_strict_pair_count_tendsto
+
+audit_source_axioms OPH.GoldenSourcePairLimit.eventWeight_pos
+
+audit_source_axioms OPH.GoldenSourcePairLimit.eventWeight_tendsto
+
+audit_source_axioms OPH.GoldenSourcePairLimit.scaled_fraction
+
+audit_source_axioms OPH.GoldenSourcePairLimit.ordering_fraction_tendsto_geometric
+
+audit_source_axioms OPH.FlatDiamondVolume.coordinateBall_measurable
+
+audit_source_axioms OPH.FlatDiamondVolume.coordinateBall_volume
+
+audit_source_axioms OPH.FlatDiamondVolume.coordinateBall_volume_real
+
+audit_source_axioms OPH.FlatDiamondVolume.coordinateBall_compact
+
+audit_source_axioms OPH.FlatDiamondVolume.diamond_closed
+
+audit_source_axioms OPH.FlatDiamondVolume.diamond_subset_box
+
+audit_source_axioms OPH.FlatDiamondVolume.diamond_compact
+
+audit_source_axioms OPH.FlatDiamondVolume.spatialNorm_sub_comm
+
+audit_source_axioms OPH.FlatDiamondVolume.vertical_section
+
+audit_source_axioms OPH.FlatDiamondVolume.sectionVolume_continuous
+
+audit_source_axioms OPH.FlatDiamondVolume.sectionVolume_integral
+
+audit_source_axioms OPH.FlatDiamondVolume.vertical_diamond_volume
+
+audit_source_axioms OPH.FlatDiamondVolume.coordinate_future_null
+
+audit_source_axioms OPH.FlatDiamondVolume.spatialNorm_sub_triangle
+
+audit_source_axioms OPH.FlatDiamondVolume.causal_trans
+
+audit_source_axioms OPH.FlatDiamondVolume.vertical_diamond_subset
+
+audit_source_axioms OPH.FlatDiamondVolume.vertical_diamond_finite
+
+audit_source_axioms OPH.FlatDiamondVolume.full_vertical_diamond_volume
+
+audit_source_axioms OPH.FlatLorentzVolume.dot_self
+
+audit_source_axioms OPH.FlatLorentzVolume.boost_square_identity
+
+audit_source_axioms OPH.FlatLorentzVolume.boost_preserves_square
+
+audit_source_axioms OPH.FlatLorentzVolume.boostMatrix_det
+
+audit_source_axioms OPH.FlatLorentzVolume.boostMatrix_det_one
+
+audit_source_axioms OPH.FlatLorentzVolume.dot_le
+
+audit_source_axioms OPH.FlatLorentzVolume.spatialNorm_nonneg
+
+audit_source_axioms OPH.FlatLorentzVolume.boost_time_pos
+
+audit_source_axioms OPH.FlatLorentzVolume.boost_zero
+
+audit_source_axioms OPH.FlatLorentzVolume.boost_neg
+
+audit_source_axioms OPH.FlatLorentzVolume.boost_future_iff
+
+audit_source_axioms OPH.FlatLorentzVolume.boost_tip
+
+audit_source_axioms OPH.FlatLorentzVolume.split_formula
+
+audit_source_axioms OPH.FlatLorentzVolume.matrix_split
+
+audit_source_axioms OPH.FlatLorentzVolume.boost_measurePreserving
+
+audit_source_axioms OPH.FlatLorentzVolume.boost_sub
+
+audit_source_axioms OPH.FlatLorentzVolume.diamond_boost_preimage
+
+audit_source_axioms OPH.FlatLorentzVolume.tilted_diamond_volume
+
+audit_source_axioms OPH.FlatLorentzVolume.tilted_diamond_volume_of_causal
+
+audit_source_axioms OPH.FlatLorentzVolume.margin_translate
+
+audit_source_axioms OPH.FlatLorentzVolume.diamond_translate_preimage
+
+audit_source_axioms OPH.FlatLorentzVolume.coordinate_sub_preserving
+
+audit_source_axioms OPH.FlatLorentzVolume.causal_diamond_volume
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.closedPairs_measurable
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.closedPairs_section
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.closedPairs_integral
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.closedPairs_polynomial
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.radial_ball_integral
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.vertical_integral
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.vertical_closedPairs_volume
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.vertical_closedPairs_eq_volume_sq
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.closedPairs_preimage
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.boost_causal_iff
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.tilted_closedPairs_eq_volume_sq
+
+audit_source_axioms OPH.FlatDiamondPairIntegral.causal_closedPairs_eq_volume_sq
+
+audit_source_axioms OPH.FlatDiamondNormalization.speed_measurable
+
+audit_source_axioms OPH.FlatDiamondNormalization.speed_map
+
+audit_source_axioms OPH.FlatDiamondNormalization.speed_preimage_real
+
+audit_source_axioms OPH.FlatDiamondNormalization.speed_pair_preimage_real
+
+audit_source_axioms OPH.FlatDiamondNormalization.margin_speed
+
+audit_source_axioms OPH.FlatDiamondNormalization.diamond_speed
+
+audit_source_axioms OPH.FlatDiamondNormalization.closedPairs_eq_volume_sq
+
+audit_source_axioms OPH.FlatDiamondNormalization.timelike_diamond_volume
+
+audit_source_axioms OPH.FlatDiamondNormalization.timelike_diamond_volume_pos
+
+audit_source_axioms OPH.FlatDiamondNormalization.spaceTimeVolume_restrict
+
+audit_source_axioms OPH.FlatDiamondNormalization.unclipped_volume
+
+audit_source_axioms OPH.FlatDiamondNormalization.unclipped_closedPairs
+
+audit_source_axioms OPH.FlatDiamondNormalization.strictPair_volume_eq_closed
+
+audit_source_axioms OPH.FlatDiamondNormalization.generated_interval_count_tendsto_volume
+
+audit_source_axioms OPH.FlatDiamondNormalization.ordering_fraction_tendsto_one_tenth
+
+audit_source_axioms OPH.FlatDiamondError.radial_shell_bound
+
+audit_source_axioms OPH.FlatDiamondError.sectionVolume_lipschitz
+
+audit_source_axioms OPH.FlatDiamondError.interval_first_moment
+
+audit_source_axioms OPH.FlatDiamondError.left_cell_error
+
+audit_source_axioms OPH.FlatDiamondError.left_riemann_error
+
+audit_source_axioms OPH.FlatDiamondError.section_riemann_error
+
+audit_source_axioms OPH.SourceNetVolumeError.covering_constructs_path_zero_or_pos
+
+audit_source_axioms OPH.SourceNetVolumeError.selectedCells_measurable
+
+audit_source_axioms OPH.SourceNetVolumeError.selectedCells_mass
+
+audit_source_axioms OPH.SourceNetVolumeError.mem_selectedCells
+
+audit_source_axioms OPH.SourceNetVolumeError.layerMass_sandwich
+
+audit_source_axioms OPH.SourceNetVolumeError.layer_shell_error
+
+audit_source_axioms OPH.SourceNetVolumeError.section_at_layer
+
+audit_source_axioms OPH.SourceNetVolumeError.weighted_alexandrov_error
+audit_source_axioms OPH.SourceNetVolumeError.weighted_alexandrov_tendsto
+
+audit_source_axioms OPH.GoldenSourceVolumeLimit.alignedVolume_eq_count
+
+audit_source_axioms OPH.GoldenSourceVolumeLimit.golden_weighted_error
+
+audit_source_axioms OPH.GoldenSourceVolumeLimit.assignment_tendsto
+
+audit_source_axioms OPH.GoldenSourceVolumeLimit.eventually_inner_radius
+
+audit_source_axioms OPH.GoldenSourceVolumeLimit.alignedVolume_tendsto
+
+audit_source_axioms OPH.GoldenSourceVolumeLimit.alignedCount_tendsto
+
+audit_source_axioms OPH.GoldenSourceAssignment.golden_quadrature
+
+audit_source_axioms OPH.GoldenSourceAssignment.golden_quadrature_tendsto
+
+audit_source_axioms OPH.GoldenSourceAssignment.site_injective

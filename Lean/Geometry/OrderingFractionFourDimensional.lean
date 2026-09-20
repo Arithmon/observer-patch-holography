@@ -28,8 +28,10 @@ namely `1 / 10`, `1 / 2` and `8 / 35` (`myrheimMeyer_four`,
 `myrheimMeyer_two`, `myrheimMeyer_three`); the `d = 3` value is the `2 + 1`
 reference used by the simulator.
 
-NOT CLAIMED.  The limit itself, the convergence of finite strict-pair counts
-to this continuum integral, is analytic and lives in the paper.  No physical
+SCOPE. The convergence of actual finite strict-pair counts is proved in
+`GoldenSourcePairLimit`; `FlatDiamondPairIntegral` connects this polynomial
+integral to the geometric pair set, and `FlatDiamondNormalization` proves
+the resulting `1/10` limit. This module supplies the polynomial constants. No physical
 clock, no selection of a population by native repair, and no manifold
 reconstruction enter these identities; they are integrals and Gamma-function
 values over `ℝ`.
