@@ -8,6 +8,10 @@ import pathlib
 import re
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+
+from citation_resolution import scan_certificate  # noqa: E402
+
 
 REQUIRED_FACTOR_ORIGIN_KEYS = {
     "dim_su3_adjoint",
@@ -88,6 +92,7 @@ def main(path: str = "certificates/R_m_rep_24_certificate.json") -> int:
     claim_boundary = cert.get("claim_boundary", {})
     acyclicity = cert.get("dependency_acyclicity_note", {})
     primary_theorems = acyclicity.get("primary_theorems_are_independent", {})
+    unresolved = scan_certificate(cert, __file__)
 
     derivation_premises = [step.get("premise", "") for step in derivation_chain]
     source_anchors = [str(step.get("source_artifact", "")) for step in derivation_chain]
@@ -184,9 +189,13 @@ def main(path: str = "certificates/R_m_rep_24_certificate.json") -> int:
         ),
         "tex_sources_use_stable_sections_or_labels_not_line_numbers": (
             not any(re.search(r"\blines?\s+\d", anchor) for anchor in source_anchors)
-            and any("section 'The compact-gauge branch'" in anchor for anchor in source_anchors)
             and any(
-                "section 'The QCD-free hierarchy witness'" in anchor
+                "corollary 'No simple-GUT X/Y gauge channel'" in anchor
+                for anchor in source_anchors
+            )
+            and any(
+                "section 'Local/global resonance continuation for the hierarchy'"
+                in anchor
                 for anchor in source_anchors
             )
             and any("quoted" in anchor for anchor in source_anchors)
@@ -212,11 +221,11 @@ def main(path: str = "certificates/R_m_rep_24_certificate.json") -> int:
             _factor_value(cert, "exponent_denominator") == 48
         ),
         "factor_origin_orientation_cites_corpus": (
-            "compact_proof_of_oph.tex"
+            "paper/deriving_the_particle_zoo_from_observer_consistency.tex"
             in factor_origins.get("orientation_multiplier", {}).get("source_artifact", "")
         ),
         "factor_origin_unoriented_cites_corpus": (
-            "compact_proof_of_oph.tex"
+            "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex"
             in factor_origins.get("unoriented_product_adjoint_dimension", {}).get(
                 "source_artifact", ""
             )
@@ -308,8 +317,11 @@ def main(path: str = "certificates/R_m_rep_24_certificate.json") -> int:
             acceptance.get("factor_origins_documented_for_every_numerical_factor")
             is True
         ),
-        "used_inputs_cite_compact_proof_corpus": any(
-            "compact_proof_of_oph.tex" in entry
+        "every_citation_resolves_in_repository_or_is_marked_external": (
+            unresolved == []
+        ),
+        "used_inputs_cite_product_adjoint_corollary": any(
+            "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex" in entry
             for entry in cert.get("used_inputs", [])
         ),
         "used_inputs_cite_global_repair_tick_cert": any(
@@ -354,7 +366,11 @@ def main(path: str = "certificates/R_m_rep_24_certificate.json") -> int:
             in acyclicity.get("other_branches_are_upstream_only", "")
         ),
     }
-    payload = {"checks": validation, "pass": all(validation.values())}
+    payload = {
+        "checks": validation,
+        "unresolved_citations": unresolved,
+        "pass": all(validation.values()),
+    }
     print(json.dumps(payload, indent=2))
     return 0 if payload["pass"] else 1
 

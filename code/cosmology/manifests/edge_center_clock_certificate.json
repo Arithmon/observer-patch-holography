@@ -49,7 +49,7 @@
     },
     "repair_round_invariant": {
       "artifact": "code/particles/hierarchy/certificates/R_m_rep_24_certificate.json",
-      "artifact_sha256": "sha256:7a459ed1c6456348c475271970b6c7c47ddc7fc01d9faaa4eb8757a2e4bf51fc",
+      "artifact_sha256": "sha256:ab32559252f37177991d6d43d6e9e9133f4c322260e0c74868a935f3456d7215",
       "branch_scope": {
         "cyclic_scheduler_branch": "the global repair cycle visits each oriented primitive exactly once per cycle, so the induced linear shift on the oriented support is a cyclic permutation whose order equals m_rep",
         "product_adjoint_branch": "the active observer-visible current algebra is su(3)+su(2)+u(1), with no extra visible U(1) or mixed X/Y generators; a screen selector, global quotient, and matter-menu completeness are not premises",
@@ -78,7 +78,7 @@
     }
   },
   "artifact": "oph_edge_center_clock_certificate",
-  "artifact_sha256": "sha256:307abea8860ef63789e605286634c90507b6daf51d81e53a3a3d39d64e1c548c",
+  "artifact_sha256": "sha256:d5be867b6e1e61a7f7a24e5ebd040d3cb22a5e5fff9204e2b5b5bebea6343525",
   "branch_boundaries": {
     "e_branch_as_primary": {
       "reason": "the e branch is a diagnostic; selecting it as primary fails closed",

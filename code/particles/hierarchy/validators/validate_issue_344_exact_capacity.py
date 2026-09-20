@@ -8,6 +8,10 @@ import pathlib
 import sys
 from decimal import Decimal
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+
+from citation_resolution import scan_certificate  # noqa: E402
+
 
 def D(value: str) -> Decimal:
     return Decimal(value)
@@ -32,6 +36,7 @@ def main(path: str = "certificates/R_EW_global_capacity_certificate.json") -> in
     source_values = cert.get("source_values", {})
     branch_selection = cert.get("branch_selection", {})
     allowed_inputs = cert.get("allowed_inputs", [])
+    unresolved = scan_certificate(cert, __file__)
 
     p_star_factor = factors.get("P_star_pixel_fixed_point", {})
     alpha_u_factor = factors.get("alpha_U_unification_width", {})
@@ -300,8 +305,15 @@ def main(path: str = "certificates/R_EW_global_capacity_certificate.json") -> in
         "acyclicity_other_branches_upstream_only": (
             "other_remaining_branches_are_upstream_only" in acyclic
         ),
+        "every_citation_resolves_in_repository_or_is_marked_external": (
+            unresolved == []
+        ),
     }
-    payload = {"checks": checks, "pass": all(checks.values())}
+    payload = {
+        "checks": checks,
+        "unresolved_citations": unresolved,
+        "pass": all(checks.values()),
+    }
     print(json.dumps(payload, indent=2))
     return 0 if payload["pass"] else 1
 

@@ -329,6 +329,8 @@ def test_issue_344_exact_capacity_certificate_is_fixed_point_source_record() -> 
 
     assert payload["pass"] is True
     checks = payload["checks"]
+    assert checks["every_citation_resolves_in_repository_or_is_marked_external"] is True
+    assert payload["unresolved_citations"] == []
     assert checks["bridge_residual_zero"] is True
     assert checks["fixed_point_residual_zero"] is True
     assert checks["residual_contracts"] is True
@@ -491,6 +493,8 @@ def test_issue_342_readback_resolution_certificate_is_scope_limited() -> None:
     assert checks["rounded_display_is_diagnostic_only"] is True
     assert checks["scope_is_conjunction_limited"] is True
     assert checks["does_not_promote_full_hierarchy"] is True
+    assert checks["every_citation_resolves_in_repository_or_is_marked_external"] is True
+    assert payload["unresolved_citations"] == []
 
     cert = json.loads((ROOT / "certificates/R_readback_resolution_certificate.json").read_text())
     assert cert["accepted"] is True
@@ -541,8 +545,10 @@ def test_issue_343_m_rep_certificate_derives_twenty_four_rounds() -> None:
     assert checks["consumer_artifacts_keys_complete"] is True
     assert checks["acceptance_criteria_keys_complete"] is True
     assert checks["acceptance_criteria_all_satisfied"] is True
-    assert checks["used_inputs_cite_compact_proof_corpus"] is True
+    assert checks["every_citation_resolves_in_repository_or_is_marked_external"] is True
+    assert checks["used_inputs_cite_product_adjoint_corollary"] is True
     assert checks["certificate_id_v2"] is True
+    assert payload["unresolved_citations"] == []
 
     cert = json.loads((ROOT / "certificates/R_m_rep_24_certificate.json").read_text())
     assert cert["accepted"] is True
@@ -560,12 +566,28 @@ def test_issue_343_m_rep_certificate_derives_twenty_four_rounds() -> None:
     assert chain[0]["premise"].startswith(
         "Observer-visible product-adjoint branch"
     )
-    assert "compact_proof_of_oph.tex" in chain[0]["source_artifact"]
-    assert "section 'The compact-gauge branch'" in chain[0]["source_artifact"]
+    assert (
+        "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex"
+        in chain[0]["source_artifact"]
+    )
+    assert (
+        "corollary 'No simple-GUT X/Y gauge channel'"
+        in chain[0]["source_artifact"]
+    )
     assert "line 482" not in chain[0]["source_artifact"]
     assert "orientation-doubling grammar" in chain[3]["premise"]
-    assert "compact_proof_of_oph.tex" in chain[3]["source_artifact"]
-    assert "section 'The QCD-free hierarchy witness'" in chain[3]["source_artifact"]
+    assert (
+        "paper/deriving_the_particle_zoo_from_observer_consistency.tex"
+        in chain[3]["source_artifact"]
+    )
+    assert (
+        "section 'Local/global resonance continuation for the hierarchy'"
+        in chain[3]["source_artifact"]
+    )
+    assert (
+        "Lean/ObserverPatchHolography/BridgeEquivalence.lean"
+        in chain[3]["source_artifact"]
+    )
     assert (
         chain[6]["premise"]
         == "Specialization of the parametric global repair-tick law"
@@ -581,7 +603,7 @@ def test_issue_343_m_rep_certificate_derives_twenty_four_rounds() -> None:
         factor_origins["orientation_multiplier"]["value"] == 2
     )
     assert (
-        "compact_proof_of_oph.tex"
+        "paper/deriving_the_particle_zoo_from_observer_consistency.tex"
         in factor_origins["orientation_multiplier"]["source_artifact"]
     )
 
@@ -634,6 +656,38 @@ def test_issue_343_m_rep_certificate_derives_twenty_four_rounds() -> None:
     )
     assert (
         acceptance["factor_origins_documented_for_every_numerical_factor"] is True
+    )
+
+
+def test_citation_validator_rejects_a_path_the_repository_lacks(tmp_path) -> None:
+    cert = json.loads((ROOT / "certificates/R_m_rep_24_certificate.json").read_text())
+    dangling = "extra/a_document_the_repository_lacks.tex"
+    assert not (ROOT.parents[2] / dangling).exists()
+    cert["derivation_chain"][0]["source_artifact"] = (
+        f"{dangling}, section 'A retired section', quoted premise"
+    )
+    broken = tmp_path / "R_m_rep_24_certificate_dangling_citation.json"
+    broken.write_text(json.dumps(cert, indent=2) + "\n", encoding="utf-8")
+
+    result = subprocess.run(
+        [sys.executable, "validators/validate_issue_343_m_rep_24.py", str(broken)],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    payload = json.loads(result.stdout)
+
+    assert result.returncode != 0
+    assert payload["pass"] is False
+    assert (
+        payload["checks"]["every_citation_resolves_in_repository_or_is_marked_external"]
+        is False
+    )
+    assert [row["citation"] for row in payload["unresolved_citations"]] == [dangling]
+    assert (
+        payload["unresolved_citations"][0]["location"]
+        == "derivation_chain[0].source_artifact"
     )
 
 

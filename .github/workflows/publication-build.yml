@@ -17,6 +17,7 @@ on:
       - "flagship/**"
       - "extra/**"
       - "cosmology/**"
+      - "essays/**"
       - "book/**"
       - "assets/**"
       - "tools/build_tex_papers.py"
@@ -41,6 +42,7 @@ on:
       - "flagship/**"
       - "extra/**"
       - "cosmology/**"
+      - "essays/**"
       - "book/**"
       - "assets/**"
       - "tools/build_tex_papers.py"
@@ -133,19 +135,41 @@ jobs:
           done
           exit 1
 
+      # The essays compile standalone with the same pinned Tectonic and the same
+      # release-derived SOURCE_DATE_EPOCH as the papers, so their committed PDFs
+      # are reproducible on identical terms.  Retried for the same rate-limited
+      # bundle server.  The anchored warning budget covers the papers and the
+      # book; this step gates byte reproducibility of the essay PDFs.
+      - name: Build every essay PDF
+        run: |
+          SOURCE_DATE_EPOCH="$(PYTHONPATH=tools python -c 'from pathlib import Path; from reproducible_build_env import build_environment; print(build_environment(Path("."))["SOURCE_DATE_EPOCH"])')"
+          export SOURCE_DATE_EPOCH
+          export TZ=UTC
+          for tex in essays/*.tex; do
+            for attempt in 1 2 3; do
+              if (cd essays && tectonic -X compile "$(basename "${tex}")" --keep-logs); then
+                continue 2
+              fi
+              echo "essay build attempt ${attempt} for ${tex} failed; backing off before retry"
+              sleep 90
+            done
+            echo "::error::Essay build failed: ${tex}"
+            exit 1
+          done
+
       - name: Require committed preview artifacts to match the source rebuild
         run: |
           set -o pipefail
-          find paper flagship extra cosmology -maxdepth 1 -type f -name '*.pdf' -print0 \
+          find paper flagship extra cosmology essays -maxdepth 1 -type f -name '*.pdf' -print0 \
             | while IFS= read -r -d '' pdf; do
                 if ! git ls-files --error-unmatch -- "$pdf" >/dev/null 2>&1; then
                   echo "::error::Generated PDF is not committed: $pdf. Inspect it and add it to Git."
                   exit 1
                 fi
               done
-          if ! git diff --quiet -- paper flagship extra cosmology; then
-            echo "::error::The committed PDFs or manifest do not match the source rebuild. No release bump is required. Run 'python3 tools/refresh_paper_release.py --preview' and 'python3 tools/build_book_pdf.py', inspect the PDFs, then commit the rebuilt artifacts."
-            git diff --stat -- paper flagship extra cosmology
+          if ! git diff --quiet -- paper flagship extra cosmology essays; then
+            echo "::error::The committed PDFs or manifest do not match the source rebuild. No release bump is required. Run 'python3 tools/refresh_paper_release.py --preview', 'python3 tools/build_book_pdf.py' and, for an essay, 'cd essays && tectonic -X compile <essay>.tex' under the release SOURCE_DATE_EPOCH, inspect the PDFs, then commit the rebuilt artifacts."
+            git diff --stat -- paper flagship extra cosmology essays
             exit 1
           fi
           if ! cmp --silent "${RUNNER_TEMP}/book-first.pdf" book/reverse-engineering-reality-book.pdf; then
@@ -155,7 +179,7 @@ jobs:
 
       - name: Record first-pass preview hashes
         run: |
-          find paper flagship extra cosmology -maxdepth 1 -type f -name '*.pdf' -print0 \
+          find paper flagship extra cosmology essays -maxdepth 1 -type f -name '*.pdf' -print0 \
             | sort -z \
             | xargs -0 sha256sum > "${RUNNER_TEMP}/papers-first.sha256"
           sha256sum paper/paper_release_manifest.json \
@@ -167,10 +191,16 @@ jobs:
         run: |
           python tools/refresh_paper_release.py --preview
           python tools/build_book_pdf.py --output "${RUNNER_TEMP}/book-second.pdf"
+          SOURCE_DATE_EPOCH="$(PYTHONPATH=tools python -c 'from pathlib import Path; from reproducible_build_env import build_environment; print(build_environment(Path("."))["SOURCE_DATE_EPOCH"])')"
+          export SOURCE_DATE_EPOCH
+          export TZ=UTC
+          for tex in essays/*.tex; do
+            (cd essays && tectonic -X compile "$(basename "${tex}")" --keep-logs)
+          done
 
       - name: Require byte-identical second pass
         run: |
-          find paper flagship extra cosmology -maxdepth 1 -type f -name '*.pdf' -print0 \
+          find paper flagship extra cosmology essays -maxdepth 1 -type f -name '*.pdf' -print0 \
             | sort -z \
             | xargs -0 sha256sum > "${RUNNER_TEMP}/papers-second.sha256"
           sha256sum paper/paper_release_manifest.json \

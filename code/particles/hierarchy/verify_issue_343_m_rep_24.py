@@ -43,7 +43,8 @@ FORBIDDEN_INPUTS = {
 
 
 CORPUS_PRODUCT_ADJOINT_SOURCE = (
-    "extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', "
+    "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, corollary "
+    "'No simple-GUT X/Y gauge channel', "
     "quoted premise: 'Its connected adjoint is (8,1,0)+(1,3,0)+(1,1,0), "
     "excluding mixed (3,2,+/-5/6) generators'; "
     "paper/deriving_the_particle_zoo_from_observer_consistency.tex, section "
@@ -51,13 +52,17 @@ CORPUS_PRODUCT_ADJOINT_SOURCE = (
 )
 
 CORPUS_ORIENTATION_DOUBLING_SOURCE = (
-    "extra/compact_proof_of_oph.tex, section 'The QCD-free hierarchy witness', "
+    "paper/deriving_the_particle_zoo_from_observer_consistency.tex, section "
+    "'Local/global resonance continuation for the hierarchy', "
     "quoted premise: 'reversible orientation doubles the product-adjoint "
-    "dimension: m_rep=2 dim(su(3)+su(2)+u(1))=2(8+3+1)=24'"
+    "dimension: m_rep=2 dim(su(3)+su(2)+u(1))=2(8+3+1)=24'; "
+    "Lean/ObserverPatchHolography/BridgeEquivalence.lean, which declares "
+    "m_rep = 24 and carries the theorem six_eq_mRep_div_betaEW"
 )
 
 CORPUS_UNORIENTED_PRODUCT_ADJOINT_SOURCE = (
-    "extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', "
+    "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, corollary "
+    "'No simple-GUT X/Y gauge channel', "
     "quoted connected-adjoint premise (8,1,0)+(1,3,0)+(1,1,0), whose "
     "unoriented dimension is 8+3+1=12"
 )
@@ -159,8 +164,9 @@ def build_derivation_chain(
                 "the oriented support is the disjoint union of the two oriented primitives over each unoriented generator",
             ],
             "source_artifact": (
-                "extra/compact_proof_of_oph.tex, section 'The QCD-free hierarchy "
-                "witness'; quoted orientation-doubling premise in "
+                "paper/deriving_the_particle_zoo_from_observer_consistency.tex, "
+                "section 'Local/global resonance continuation for the "
+                "hierarchy'; quoted orientation-doubling premise in "
                 "CORPUS_ORIENTATION_DOUBLING_SOURCE"
             ),
             "conclusion": (
@@ -211,10 +217,13 @@ def build_derivation_chain(
                 "the graviton is the dynamical metric branch, not an internal compact-gauge adjoint repair channel",
             ],
             "source_artifact": (
-                "extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', "
-                "quoted exclusion of mixed (3,2,+/-5/6) generators; summary-table "
+                "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, "
+                "corollary 'No simple-GUT X/Y gauge channel', quoted exclusion "
+                "of mixed (3,2,+/-5/6) generators; "
+                "paper/tex_fragments/OBSERVERS_APPENDICES.tex, summary-table "
                 "row 'Gauge-mediated proton-decay boundary', quoted premise: "
-                "'The connected product adjoint has no X/Y generator'"
+                "'The connected product adjoint has no X/Y generator, so the "
+                "standard simple-GUT channel is absent'"
             ),
             "conclusion": (
                 "every nearby round count (m=12 unoriented, m=6 minimal "
@@ -486,9 +495,9 @@ def build_certificate() -> dict[str, Any]:
         "SU(3) adjoint dimension = 8 (compact Lie algebra dim(su(n))=n^2-1 at n=3)",
         "SU(2) adjoint dimension = 3 (compact Lie algebra dim(su(n))=n^2-1 at n=2)",
         "U(1) Lie algebra dimension = 1 (abelian Lie algebra)",
-        "conditional product-adjoint branch (extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', quoted connected-adjoint premise)",
-        "unoriented product-adjoint dimension 8+3+1=12 (extra/compact_proof_of_oph.tex)",
-        "declared reversible orientation-doubling grammar (extra/compact_proof_of_oph.tex, section 'The QCD-free hierarchy witness', quoted m_rep premise)",
+        "conditional product-adjoint branch (paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, corollary 'No simple-GUT X/Y gauge channel', quoted connected-adjoint premise)",
+        "unoriented product-adjoint dimension 8+3+1=12 (paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex)",
+        "declared reversible orientation-doubling grammar (paper/deriving_the_particle_zoo_from_observer_consistency.tex, section 'Local/global resonance continuation for the hierarchy', quoted m_rep premise; Lean/ObserverPatchHolography/BridgeEquivalence.lean)",
         "parametric global repair-tick law |g_*'| = (N_CRC/pi)^(-1/(2*m)) from R_N_global_repair_tick_certificate.json",
     ]
     forbidden_used = sorted(set(used_inputs) & FORBIDDEN_INPUTS)
@@ -692,8 +701,10 @@ def build_certificate() -> dict[str, Any]:
                 "consumed without redundant cross-reference."
             ),
             "other_branches_are_upstream_only": (
-                "The product-adjoint branch (extra/compact_proof_of_oph.tex), "
-                "the reversible orientation-doubling grammar (same), the cyclic "
+                "The product-adjoint branch "
+                "(paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex), "
+                "the reversible orientation-doubling grammar "
+                "(paper/deriving_the_particle_zoo_from_observer_consistency.tex), the cyclic "
                 "scheduler branch (recorded in branch_scope), and the source-side "
                 "fixed point N_CRC^EW(P_*) (R_EW_global_capacity_certificate.json) "
                 "are strictly upstream of this certificate or symbolic only; "

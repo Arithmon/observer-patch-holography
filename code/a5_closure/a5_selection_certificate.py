@@ -26,6 +26,20 @@ PHI = (1 + SQRT5) / 2
 NORM2 = sp.simplify(1 + PHI**2)
 
 
+class CertificateError(RuntimeError):
+    """Fail-closed certificate error with a stable code."""
+
+    def __init__(self, code: str, detail: str) -> None:
+        super().__init__(f"{code}: {detail}")
+        self.code = code
+        self.detail = detail
+
+
+def require(condition: bool, code: str, detail: str) -> None:
+    if not condition:
+        raise CertificateError(code, detail)
+
+
 def vertices() -> list[sp.Matrix]:
     out: list[sp.Matrix] = []
     for s1 in (1, -1):
@@ -67,19 +81,36 @@ def delta(i: int, j: int) -> int:
 
 def payload() -> dict:
     vs = vertices()
-    assert len(vs) == 12
+    require(len(vs) == 12, "VERTEX_COUNT", f"the orbit has {len(vs)} vertices, not twelve")
     norms = [sp.simplify(v.dot(v)) for v in vs]
-    assert all(v == 1 for v in norms)
+    require(
+        all(v == 1 for v in norms),
+        "UNIT_NORMS",
+        "a vertex does not lie on the unit sphere",
+    )
 
     ips = sorted({sp.simplify(vs[i].dot(vs[j])) for i in range(12) for j in range(i + 1, 12)}, key=float)
     expected_ips = [-sp.Integer(1), -1 / SQRT5, 1 / SQRT5]
-    assert all(sp.simplify(a - b) == 0 for a, b in zip(ips, expected_ips))
+    require(
+        len(ips) == len(expected_ips)
+        and all(sp.simplify(a - b) == 0 for a, b in zip(ips, expected_ips, strict=True)),
+        "DISTINCT_INNER_PRODUCTS",
+        f"the distinct inner products are {ips}, not {expected_ips}",
+    )
 
     mean = sp.simplify(sum(vs, sp.zeros(3, 1)) / 12)
-    assert mean == sp.zeros(3, 1)
+    require(
+        mean == sp.zeros(3, 1),
+        "FIRST_MOMENT",
+        "the vertex configuration is not centred",
+    )
 
     m2 = sp.simplify(sum((v * v.T for v in vs), sp.zeros(3, 3)) / 12)
-    assert m2 == sp.eye(3) / 3
+    require(
+        m2 == sp.eye(3) / 3,
+        "SECOND_MOMENT",
+        "the second moment does not equal the uniform S^2 second moment",
+    )
 
     fourth_bad = []
     for i in range(3):
@@ -94,11 +125,19 @@ def payload() -> dict:
                     )
                     if sp.simplify(actual - expected) != 0:
                         fourth_bad.append((i, j, k, l, actual, expected))
-    assert not fourth_bad
+    require(
+        not fourth_bad,
+        "FOURTH_MOMENT",
+        f"{len(fourth_bad)} fourth-moment components miss the uniform S^2 value",
+    )
 
     # Antipodality makes every odd moment vanish exactly.
     antipodal = all(any(sp.simplify(v + w) == sp.zeros(3, 1) for w in vs) for v in vs)
-    assert antipodal
+    require(
+        antipodal,
+        "ANTIPODALITY",
+        "the configuration is not antipodal, so odd moments need not vanish",
+    )
 
     us = axes()
     ps = [sp.simplify(u * u.T) for u in us]
@@ -108,15 +147,31 @@ def payload() -> dict:
     qcoords = sp.Matrix(5, 6, lambda a, i: sp.simplify(sp.trace(basis[a] * qs[i])))
     f2 = sp.simplify(qcoords * qcoords.T)
     qgram = sp.simplify(qcoords.T * qcoords)
-    assert f1 == 2 * sp.eye(3)
-    assert f2 == sp.Rational(4, 5) * sp.eye(5)
-    assert qgram == sp.Rational(4, 5) * sp.eye(6) - sp.Rational(2, 15) * sp.ones(6)
+    require(
+        f1 == 2 * sp.eye(3),
+        "VECTOR_FISHER_FRAME",
+        "the axis projectors do not sum to twice the identity",
+    )
+    require(
+        f2 == sp.Rational(4, 5) * sp.eye(5),
+        "QUADRUPOLE_FISHER_FRAME",
+        "the quadrupole coordinates do not form a tight frame",
+    )
+    require(
+        qgram == sp.Rational(4, 5) * sp.eye(6) - sp.Rational(2, 15) * sp.ones(6),
+        "QUADRUPOLE_GRAM",
+        "the quadrupole Gram matrix does not have the equiangular form",
+    )
 
     dots = sp.Matrix(6, 6, lambda i, j: sp.simplify(us[i].dot(us[j])))
     seidel = sp.Matrix(
         6, 6, lambda i, j: 0 if i == j else sp.simplify(SQRT5 * dots[i, j])
     )
-    assert seidel * seidel == 5 * sp.eye(6)
+    require(
+        seidel * seidel == 5 * sp.eye(6),
+        "SEIDEL_RELATION",
+        "the Seidel matrix does not satisfy S^2 = 5 I_6",
+    )
 
     edges = list(itertools.combinations(range(5), 2))
     switched_solutions = 0
@@ -134,8 +189,16 @@ def payload() -> dict:
                 for a in range(5)
             )
             solution_degree_profiles.add(degrees)
-    assert switched_solutions == 12
-    assert solution_degree_profiles == {(2, 2, 2, 2, 2)}
+    require(
+        switched_solutions == 12,
+        "SEIDEL_SWITCHING_COUNT",
+        f"{switched_solutions} switched Seidel solutions, not twelve",
+    )
+    require(
+        solution_degree_profiles == {(2, 2, 2, 2, 2)},
+        "SEIDEL_SWITCHING_CLASS",
+        "the switched Seidel solutions are not a single five-cycle class",
+    )
 
     return {
         "schema": "A5 icosahedral selection certificate v1",

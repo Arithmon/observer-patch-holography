@@ -9,7 +9,7 @@ listed below.
 The proposed A1-R and A2-R clauses are substantive basis amendments, not
 clarifications of consequences that follow from the current wording. They
 exclude models that satisfy the present A1-A3 basis. Keeping them inside A1
-and A2 would preserve a three-axiom count, but adoption would still require a
+and A2 would preserve a three-axiom count, and adoption would require a
 basis-wide dependency and countermodel audit.
 
 The scalar finite branch has a positive exact result. The thirty primitive
@@ -19,7 +19,7 @@ total-twelve closure class have executable certificates. The full accessible
 algebra, path-law premise, refinement semigroup, protected-sector choice, and
 physical attachment remain outside that result. Lean proves the signed-sector
 minimum-shell formula and the one-, two-, and three-seam progress arithmetic;
-almost-sure shell hitting still consumes the proposed free path law.
+almost-sure shell hitting consumes the proposed free path law.
 
 Lean also proves the finite-word selection implication for an arbitrary
 nonempty finite primitive alphabet. If A1-R has supplied the complete,
@@ -54,7 +54,7 @@ schedule. Several primitive orbits retain relative weights unless the source
 reference counts the complete quotient-visible event identities. With that
 counting reference, their relative masses are fixed by their actual
 cardinalities. A grammar that exposes only orbit names or leaves incidence
-multiplicity unresolved still retains a weighting choice.
+multiplicity unresolved retains a weighting choice.
 
 ## Proposed A1-R clause: complete primitive repair grammar
 
@@ -400,7 +400,7 @@ the full odd-total integer fiber: the pathwise shell is noncentral and the
 transient kernel cannot preserve a faithful state there. The completed
 nearest-balancing macro-event can move several units and is not identified
 with the issue-628 atomic one-unit record move. An instrument-level
-macro-event-to-record-history theorem remains open.
+macro-event-to-record-history theorem is work in progress.
 
 The directed-completion process also repairs a real defect in the earlier
 one-unit settling rule. Difference-one moves are reversible swaps instead of
@@ -532,8 +532,8 @@ removes \(P_0\) and \(P_5\) and yields the compatible two-band formula
 The exact finite port Gram is \(G=4P_-\). This route derives the entire Gram
 projector from discrete repair asymptotics. A1-RG must prove that the complete
 equal-port probe census and the mean repair belong to the same source record
-module. Formal powers of the one-step conditional mean are not yet a theorem
-about an ordered physical repair history.
+module. Formal powers of the one-step conditional mean do not constitute a
+theorem about an ordered physical repair history.
 A2-RC must identify the scale-normalized completed-readback kernel with
 operational distinguishability and must justify the asymptotic completion.
 Slow-mode dominance by itself does not supply those semantic premises.
@@ -549,7 +549,7 @@ does not establish the same space.
 Equal source-counting weights fix the exact isotropic Gram. Strictly positive
 unequal probe weights leave a leading form \(P_-WP_-\) of rank three, so the
 dimension is more robust than the exact port angles. The unit-diagonal
-icosahedral metric still requires the equal-weight source theorem.
+icosahedral metric requires the equal-weight source theorem.
 
 The carrier has an intrinsic coordinate-free presentation inside the
 twelve-port counting space:
@@ -737,7 +737,7 @@ uniqueness of this pair are proved, modulo protected record sectors and a
 common clock scale. Multiple solutions would leave a genuine selector open.
 No measured property of the desired solution may enter either map.
 
-That coupled pair still lives inside one fixed A1 model. Selection of a whole
+That coupled pair lives inside one fixed A1 model. Selection of a whole
 observer universe requires a stronger A2 self-readback closure. Fix a
 protected-record sector \(p\). Let
 \(\mathsf{Model}_{r,p}^{\mathrm{vis}}\) be the source-defined category of
@@ -812,11 +812,11 @@ One conditional finite lemma needed by obligations 7 and 8 is discharged by
 `RepairWordSchedule.lean`: full-simplex KL minimization against source counting
 forces the uniform product family, full support, event-count subset weights,
 and prefix consistency. The source-side statements needed to invoke that
-theorem remain open: the event alphabet must be complete and correctly
-deduplicated, source counting must be the declared A3 reference, and the full
-temporal grammar must prove that every finite word law is feasible. The module
-does not classify admissible word constraints, geometric orbits, or the
-transition action of those words on the repair workspace.
+theorem are work in progress: the event alphabet must be complete and
+correctly deduplicated, source counting must be the declared A3 reference, and
+the full temporal grammar must prove that every finite word law is feasible.
+The module does not classify admissible word constraints, geometric orbits, or
+the transition action of those words on the repair workspace.
 
 1. one common compatible-section repair algebra or module;
 2. complete primitive move grammar on that common workspace;
@@ -852,7 +852,7 @@ physical attachment.
 If adopted and discharged, the proposed clauses remove arbitrary local
 reconciliation maps and, on a single transitive primitive orbit, arbitrary
 seam schedules from a fixed observer model. They do not select the complete
-physical universe by themselves. A1 still describes a class of observer nets, A3
+physical universe by themselves. A1 describes a class of observer nets, A3
 selects inside a fixed model, protected records label fixed sectors, the
 refinement limit is unresolved, and physical field and readout maps remain
 separate.

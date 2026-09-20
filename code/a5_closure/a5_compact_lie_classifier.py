@@ -13,6 +13,20 @@ from functools import lru_cache
 SIMPLE_DIMS = {3: "su(2)", 8: "su(3)", 10: "so(5)=sp(2)"}
 
 
+class CertificateError(RuntimeError):
+    """Fail-closed certificate error with a stable code."""
+
+    def __init__(self, code: str, detail: str) -> None:
+        super().__init__(f"{code}: {detail}")
+        self.code = code
+        self.detail = detail
+
+
+def require(condition: bool, code: str, detail: str) -> None:
+    if not condition:
+        raise CertificateError(code, detail)
+
+
 def partitions(total: int, allowed: tuple[int, ...] = (3, 8, 10)) -> list[tuple[int, ...]]:
     out: list[tuple[int, ...]] = []
     def rec(rem: int, start: int, acc: list[int]) -> None:
@@ -30,8 +44,16 @@ def partitions(total: int, allowed: tuple[int, ...] = (3, 8, 10)) -> list[tuple[
 def payload() -> dict:
     p12 = partitions(12)
     p11 = partitions(11)
-    assert p12 == [(3, 3, 3, 3)]
-    assert p11 == [(3, 8)]
+    require(
+        p12 == [(3, 3, 3, 3)],
+        "SEMISIMPLE_PARTITION_12",
+        f"the compact semisimple dimension-12 partitions are {p12}, not [(3, 3, 3, 3)]",
+    )
+    require(
+        p11 == [(3, 8)],
+        "SEMISIMPLE_PARTITION_11",
+        f"the compact semisimple dimension-11 partitions are {p11}, not [(3, 8)]",
+    )
     return {
         "schema": "A5 inner-action compact closure dimension certificate v1",
         "hypotheses": [
