@@ -9,7 +9,7 @@
     "nonconvex_log_score_ratio": "343/256",
     "support_criterion": "scored_atoms_or_nonnegative_scored_readout_only"
   },
-  "controls_sha256": "5825c597938489439b1162530fc4f57ccf19cdfe9bb4a829dbc28ef5d8520297",
+  "controls_sha256": "8c70f79b5607465d03663ac7922a304b045861d6ddc343dbb401747d4b132f76",
   "noncrossing_seams": 46039,
   "probabilities": [
     {

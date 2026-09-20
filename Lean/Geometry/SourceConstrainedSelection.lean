@@ -43,7 +43,7 @@ theorem entropyTerm_zero_mixture (c y t : ℝ) (hy : 0 < y) (ht : 0 < t) :
   rw [Real.log_mul (ne_of_gt ht) (ne_of_gt hy)]
   ring
 
-/-- The negative t log t gap at one newly populated coordinate dominates
+/-- The negative t log t gap at a coordinate populated by the mixture dominates
 every finite change elsewhere. This is stronger than ordinary convexity. -/
 theorem potential_mixture_gap (weight cost p q : A → ℝ)
     (hw : ∀ j, 0 ≤ weight j) (hp : ∀ j, 0 ≤ p j) (hq : ∀ j, 0 ≤ q j)
@@ -145,7 +145,7 @@ theorem weightedKL_minimizer_support (K : Set (A → ℝ))
     using hmin v hv
 
 /-- A selected zero-probability event made of directly scored cover atoms
-is already excluded by the entire feasible family. No uniformity or IID
+is excluded by the entire feasible family. No uniformity or IID
 assumption is involved. Atoms absent from the entropy cover are not covered. -/
 theorem selected_zero_event_iff (K : Set (A → ℝ))
     (hK : Convex ℝ K) (hKnonneg : ∀ p ∈ K, ∀ i, 0 ≤ p i)
@@ -206,7 +206,7 @@ theorem klTerm_projection_identity (x p r : ℝ) (hp : 0 < p) (hr : 0 < r) :
   ring
 
 /-- An exact affine moment certificate establishes the optimizer on the
-whole feasible family, not merely on a sampled parameter grid. -/
+whole feasible family. -/
 theorem weightedKL_projection_identity (weight reference selected q : A → ℝ)
     (hr : ∀ i, 0 < reference i) (hp : ∀ i, 0 < selected i)
     (hmoment : ∑ i, weight i*(q i-selected i)*Real.log (selected i/reference i)=0) :

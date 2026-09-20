@@ -141,3 +141,30 @@ An intermediate Windows run overlapped the final pinned-file edits and was
 discarded: its stale-fixture failures correctly reported source-pin mismatch.
 The final full run used a stable tree and passed without weakening those
 checks. Future final validation must likewise freeze all pinned inputs first.
+
+## Post-publication audit and CI correction
+
+The acceptance contract, canonical A3 grammar, all 48 theorem statements,
+proof dependencies, independent verifier and CI wiring were reviewed again.
+An additional sweep replaced each of the 789 scalar evidence fields with
+null, resealing history hashes after semantic mutations. All 789 corruptions
+were rejected; unchanged valid evidence passed before and after the sweep.
+The existing suite separately exercises well-typed semantic mutations and
+feasible-but-nonoptimal certificates.
+
+The first mandatory Linux and Windows shard-zero runs exposed three comment
+style violations in `SourceConstrainedSelection.lean`. The local preflight
+had omitted `python tools/check_lean_docstring_style.py`. The comments were
+corrected without changing any definition, theorem statement or proof, and
+the affected source pins were refreshed. The style gate is part of the
+corrected preflight; no checker, frozen runner or scientific result was
+relaxed. The PR description also uses “#777 remains open” without issue-closing
+keyword syntax.
+
+After the correction, all 185 selection tests passed on each platform, the
+full Geometry build and 48-declaration audit passed, and the indirect extra
+axiom probe was rejected. All fourteen checked proof/toolchain inputs matched
+the built tree. The complete Lean comment-style gate passed, as did reader
+style, receipt portability, external-data provenance, registry, theorem-count,
+CI-budget and whitespace checks. The Linux test run emitted one local pytest
+cache-permission warning; every test completed successfully.

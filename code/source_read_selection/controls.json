@@ -193,7 +193,7 @@
   ],
   "pins": {
     "Lean/Geometry/SourceConstrainedRead.lean": "a9136bd2f3a46f95debf20e624b0ba96b484db61cb638ea1b8a8861c43c201c3",
-    "Lean/Geometry/SourceConstrainedSelection.lean": "d543ffce13574f10a6d00b81eeb0d26c76ddf690dbac96d1c72dc95528d23220",
+    "Lean/Geometry/SourceConstrainedSelection.lean": "963ccc5842c43478ef074f4621cac45deb58c5df82559dac1485b83dc97b2a2e",
     "Lean/Geometry/SourceEncodedMemory.lean": "67f98a7bf3d76d1a705a979200169ef4d34b2f8ae5bd4875fee857b2db1fca24",
     "Lean/Geometry/SourceReadSelection.lean": "f43a262d6d3ac46a2471de75e7da237589502949eab56903e1410edda4fdef5d",
     "Lean/Geometry/SourceReadSelectionAxiomAudit.lean": "8dac97f154b552efbbf6079292a784e6cb6733e0c95701d8a697c289c7ebfb6f",
