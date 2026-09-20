@@ -14,9 +14,9 @@ zero-hop endpoint case. No count or volume convergence is an input.
 
 namespace OPH.SourceNetVolumeError
 
-open MeasureTheory Set Real
+open MeasureTheory Set Real Filter
 open OPH.SourceNetCausalCone OPH.SourceCausalBoundary OPH.FlatDiamondVolume OPH.FlatDiamondError
-open scoped BigOperators Classical
+open scoped BigOperators Classical Topology
 
 noncomputable section
 
@@ -227,6 +227,61 @@ theorem weighted_alexandrov_error {ι : Type*} [Fintype ι]
   rw [hTha, hTa]
   ring
 
+/-- General weighted-family convergence from the proved finite estimate.
+Cells need not have equal masses, populations and windows may vary, and
+neither a count limit nor a volume-error hypothesis is supplied. -/
+theorem weighted_alexandrov_tendsto {ι : ℕ → Type*} [∀ n, Fintype (ι n)]
+    (C : (n : ℕ) → ι n → Set Space) (site : (n : ℕ) → ι n → Carrier)
+    (Ω : ℕ → Set Carrier) (a h H : ℕ → ℝ) {c T : ℝ} (hc : 0 < c)
+    (hΩ : ∀ n, Convex ℝ (Ω n)) (hS : ∀ n, range (site n) ⊆ Ω n)
+    (hcover : ∀ n, Covers (Ω n) (range (site n)) (h n))
+    (ha : ∀ n, 0 < a n) (hh : ∀ n, 0 ≤ h n) (hH : ∀ n, 0 ≤ H n)
+    (hC : ∀ n i, MeasurableSet (C n i))
+    (hd : ∀ n, Pairwise (fun i j => AEDisjoint volume (C n i) (C n j)))
+    (hf : ∀ n i, volume (C n i) ≠ ⊤)
+    (hcells : ∀ n, ∀ᵐ y ∂(volume : Measure Space),
+      (WithLp.toLp 2 y : Carrier) ∈ Ω n → ∃ i, y ∈ C n i)
+    (hassign : ∀ n i, ∀ᵐ y ∂(volume : Measure Space),
+      y ∈ C n i → ‖site n i - WithLp.toLp 2 y‖ ≤ H n)
+    (K : ℕ → ℕ) (x : ℕ → Space)
+    (hx : ∀ n, (WithLp.toLp 2 (x n) : Carrier) ∈ range (site n))
+    (hbuffer : ∀ᶠ n in atTop, ∀ y ∈ coordinateBall (x n) ((K n : ℝ) * a n / 2 + H n),
+      (WithLp.toLp 2 y : Carrier) ∈ Ω n)
+    (ha0 : Tendsto a atTop (𝓝 0)) (hH0 : Tendsto H atTop (𝓝 0))
+    (hratio : Tendsto (fun n => h n / a n) atTop (𝓝 0))
+    (hT : Tendsto (fun n => (K n : ℝ) * (a n / c)) atTop (𝓝 T)) :
+    Tendsto (fun n => weightedVolume (C n) (site n) (a n) c (K n) (WithLp.toLp 2 (x n)))
+      atTop (𝓝 (Real.pi * c ^ 3 * T ^ 4 / 24)) := by
+  let δ := fun n => a n / c
+  let Tn := fun n => (K n : ℝ) * δ n
+  let V := fun n => weightedVolume (C n) (site n) (a n) c (K n) (WithLp.toLp 2 (x n))
+  let ref := fun n => Real.pi * c ^ 3 * (Tn n) ^ 4 / 24
+  let err := fun n => 4 * Real.pi * (Tn n + δ n) * (c * Tn n / 2 + H n) ^ 2 *
+      (H n + c * Tn n * (h n / a n)) + Real.pi * c ^ 3 * (Tn n) ^ 3 * δ n / 2
+  have hδ : Tendsto δ atTop (𝓝 0) := by simpa only [zero_div] using ha0.div_const c
+  have hsmall : ∀ᶠ n in atTop, 2 * h n < a n := by
+    filter_upwards [hratio.eventually (gt_mem_nhds (by norm_num : (0 : ℝ) < 1 / 2))] with n hn
+    have hd := (div_lt_iff₀ (ha n)).mp hn
+    linarith
+  have herr : Tendsto err atTop (𝓝 0) := by
+    have hs := (((hT.add hδ).const_mul (4 * Real.pi)).mul
+      ((((hT.const_mul c).div_const 2).add hH0).pow 2)).mul
+        (hH0.add ((hT.const_mul c).mul hratio))
+    have ht := (((hT.pow 3).const_mul (Real.pi * c ^ 3)).mul hδ).div_const 2
+    simpa only [err, Tn, δ, mul_zero, zero_div, add_zero, mul_assoc] using hs.add ht
+  have hdiff : Tendsto (fun n => V n - ref n) atTop (𝓝 0) := by
+    apply tendsto_iff_norm_sub_tendsto_zero.mpr
+    simp only [sub_zero, Real.norm_eq_abs]
+    apply squeeze_zero' (Eventually.of_forall (fun n => abs_nonneg (V n - ref n))) _ herr
+    filter_upwards [hsmall, hbuffer] with n hn hb
+    have he := weighted_alexandrov_error (C n) (site n) (hΩ n) (hS n) (hcover n)
+      (hh n) hn (hH n) hc (hC n) (hd n) (hf n) (hcells n) (hassign n) (K n) (x n) (hx n) hb
+    simpa only [V, ref, err, Tn, δ, mul_div_assoc] using he
+  have href : Tendsto ref atTop (𝓝 (Real.pi * c ^ 3 * T ^ 4 / 24)) :=
+    ((hT.pow 4).const_mul (Real.pi * c ^ 3)).div_const 24
+  simpa only [sub_add_cancel, zero_add] using hdiff.add href
+
+#print axioms weighted_alexandrov_tendsto
 #print axioms weighted_alexandrov_error
 #print axioms layerMass_sandwich
 
