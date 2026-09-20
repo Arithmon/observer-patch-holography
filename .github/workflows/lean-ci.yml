@@ -134,6 +134,7 @@ jobs:
           targets=(
             "Geometry.SourceEncodedMemoryAxiomAudit"
             "Geometry.SourceReusableBusAxiomAudit"
+            "Geometry.SourceNativeUpdatesAxiomAudit"
             "ObserverPatchHolography.EinsteinBranch.AxiomAudit"
             "A5PrimitivePortPrediction"
             "Geometry.SourcePassiveMemoryAxiomAudit"
