@@ -106,7 +106,7 @@ The new source files contain no `sorry`, `axiom` or `native_decide` proofs.
 - `git diff --check` passed. The frozen runner remains SHA-256
   `04bab737fa2d1b7b51c5545242e40c20375eea98d1a41eb0645ba32238360291`.
 
-The two retained JSON artifacts total 156,241 bytes and 3,636 lines. The
+The two retained JSON artifacts now total 156,363 bytes and 3,637 lines. The
 complete representative trace uses one scalar-array event per line. This
 avoids repeating the earlier 200,000-line formatting overhead while retaining
 the evidence needed for deterministic full replay.
@@ -125,3 +125,38 @@ A2's accepted-domain/endogeneity clauses or A3's complete generated constraint
 grammar. A complete qualifying countermodel or positive selection theorem
 remains open. Declaring the desired metric menu as an A3 constraint would
 assume the missing conclusion. M1 and #777/#779/#740 remain open.
+
+## Maintainer-style follow-up audit of #918
+
+The follow-up review re-read the contract, both proof modules, the imported
+compiler/error theorem, producer, verifier, serialization, tests, CI wiring
+and PR claims. Three corrections were needed:
+
+1. **Paper-preview failure:** the 39 added declarations took the repository
+   to 11,022 public Lean declarations. The two README language versions still
+   stated the stale floor 10,900. The canonical theorem-count tool updated
+   both to 11,000 and its check now passes. This changes no paper mathematics,
+   build warning allowance, test tolerance or frozen scientific artifact.
+2. **Missing trust-file pin:** `SourceNativeUpdatesAxiomAudit.lean` imports
+   `SourceReusableBusAxiomAudit.lean`, where the transitive audit command is
+   defined, but the latter file was absent from the new receipt's pin list.
+   An isolated-checkout real-CLI probe demonstrated that changing that file
+   still passed verification. It is now pinned. A recursive local-import
+   coverage test and seven actual source-file tampering cases pass after the
+   fix; all seven first verify their unmodified copied checkout, then require
+   the modified one to fail specifically on source identity. The omission
+   test and affected CLI case were observed failing before the fix.
+3. **Low-precision control:** leaving a half-spacing interval does not by
+   itself prove a decoding error, since an extreme codeword may still decode
+   correctly by saturation. The control now executes the receiver's actual
+   nearest-codeword decision, distinguishing ties from wrong answers. At
+   Q=2^8, the 64 reads contain exactly 12 wrong unambiguous decisions and 16
+   ambiguous ties. The prior bound-based test did not establish that count.
+
+The full focused suites pass **359 tests on Windows and 359 on Linux**,
+including **144 native-update tests**. Standalone native verification and the
+theorem-count check pass. The ideal formulas, noise bounds, decoded results,
+all event tapes and their commitments are unchanged: only the new source pin
+and its dependent artifact identity changed. The 39 previously kernel-checked
+proofs are byte-unchanged. The source-selection and full-family limitations
+above remain in force.

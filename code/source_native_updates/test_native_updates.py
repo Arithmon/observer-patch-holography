@@ -6,6 +6,7 @@ from pathlib import Path
 import ast
 import re
 import shlex
+import shutil
 import subprocess
 import sys
 
@@ -122,6 +123,53 @@ def test_cli_success():
     assert result.returncode == 0, result.stderr
 
 
+def local_proof_import_closure():
+    pending = ["Geometry.SourceNativeUpdatesAxiomAudit"]
+    seen = set()
+    while pending:
+        module = pending.pop()
+        path = "Lean/"+module.replace(".","/")+".lean"
+        if path in seen or not (codec.ROOT/path).is_file():
+            continue
+        seen.add(path)
+        source = (codec.ROOT/path).read_text(encoding="utf-8")
+        pending.extend(word for imports in re.findall(r"^import (.+)$",source,re.M)
+                       for word in imports.split())
+    return seen
+
+
+def test_all_local_proof_dependencies_are_pinned():
+    assert local_proof_import_closure() <= set(codec.PINS)
+
+
+@pytest.mark.parametrize("path", [
+    "Lean/Geometry/SourceReusableBusAxiomAudit.lean",
+    "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean",
+    "Lean/Geometry/SourceBusScaling.lean",
+    "Lean/Geometry/SourceNativeRecords.lean",
+    "Lean/ObserverPatchHolography/ScalarSeamRepair.lean",
+    "Lean/lean-toolchain",
+    codec.SUPPORT,
+])
+def test_real_cli_rejects_source_file_tampering(tmp_path,path):
+    # Use an isolated checkout surface and a fresh interpreter. This changes
+    # actual source bytes, not just a claimed hash in an artifact.
+    paths = set(codec.PINS) | local_proof_import_closure() | {
+        "code/source_native_updates/controls.json", "code/source_native_updates/receipt.json"}
+    for relative in paths:
+        target = tmp_path/relative
+        target.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(codec.ROOT/relative,target)
+    command = [sys.executable,str(tmp_path/"code/source_native_updates/verify.py")]
+    baseline = subprocess.run(command,capture_output=True,text=True,timeout=30)
+    assert baseline.returncode == 0, baseline.stderr
+    target = tmp_path/path
+    target.write_bytes(target.read_bytes()+b"\n")
+    changed = subprocess.run(command,capture_output=True,text=True,timeout=30)
+    assert changed.returncode != 0
+    assert "source pins" in changed.stderr
+
+
 @pytest.mark.parametrize("kind", ["bytes","optimistic_margin","omitted_history","optimistic_cost",
                                       "lost_ancestry","fake_commit","missing_trace","bool_event"])
 def test_cli_rejects_bad_evidence(artifact,tmp_path,kind):
@@ -177,7 +225,7 @@ def test_adversarial_noise_in_full_native_program(payloads):
 
 def test_low_precision_fails_and_actual_decoding_is_wrong():
     q = 2**8
-    wrong = 0
+    wrong = ambiguous = 0
     for a,b in product((F(-3,2),F(-1,2),F(1,2),F(3,2)),repeat=2):
         state = [2*q]*14
         state[:4] = [int((2+a)*q),int((2-a)*q),int((2+b)*q),int((2-b)*q)]
@@ -188,9 +236,18 @@ def test_low_precision_fails_and_actual_decoding_is_wrong():
                 cycle = (k-7)//568
                 report = verify.bounds(cycle,verify.ideal_reads()[cycle],q)
                 assert F(report["margin"]) < 0
-                expected = (a,b,a+b)[report["record"]]/2**report["exponent"]
-                wrong += abs(F(state[12]-state[13],2*q)-expected) >= F(report["half_spacing"])
-    assert wrong > 0
+                expected = (a,b,a+b)[report["record"]]
+                observation = F(state[12]-state[13],2*q)*2**report["exponent"]
+                alphabet = list(map(F,range(-3,4))) if report["record"] == 2 else [F(x,2) for x in (-3,-1,1,3)]
+                candidates = sorted((abs(observation-value),value) for value in alphabet)
+                if candidates[0][0] == candidates[1][0]:
+                    ambiguous += 1
+                else:
+                    wrong += candidates[0][1] != expected
+    # Exceeding half spacing is not itself a decoding failure: saturation
+    # can still recover the correct extreme codeword. Check actual decisions.
+    assert wrong == 12
+    assert ambiguous == 16
 
 
 @pytest.mark.parametrize("n",[0,1,2,3,8,16])

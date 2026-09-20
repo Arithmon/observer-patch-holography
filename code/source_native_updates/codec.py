@@ -11,7 +11,7 @@ PINS = (
     SUPPORT, "Lean/lean-toolchain", "Lean/lakefile.lean", "Lean/lake-manifest.json",
     "Lean/ObserverPatchHolography/ScalarSeamRepair.lean",
     *(f"Lean/Geometry/{name}.lean" for name in (
-        "SourceEncodedMemory", "SourceReusableBus", "SourceBusScaling",
+        "SourceEncodedMemory", "SourceReusableBus", "SourceReusableBusAxiomAudit", "SourceBusScaling",
         "SourceNativeRecords", "SourceNativeUpdatesAxiomAudit")),
     *(f"code/source_native_updates/{name}" for name in (
         "__init__.py", "codec.py", "build.py", "verify.py", "CONTRACT.md")),
