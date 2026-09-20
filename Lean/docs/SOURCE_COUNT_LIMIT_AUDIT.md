@@ -111,6 +111,37 @@ reference/citation/glyph/font problems. Claim-registry validation and all 46
 registry gate tests pass. The theorem-count floor and release-manifest checks
 also pass. These local results do not assert completion of hosted CI.
 
+## Preview artifact correction
+
+The hosted paper-preview run on commit `3bb32cf7` compiled the papers and
+book successfully, but rejected the committed spacetime PDF and its manifest
+entry because they still described the earlier TeX source. The local scratch
+build and manifest validation above did not test source-to-artifact agreement:
+the manifest validator only established agreement with the existing PDF bytes.
+
+Issue #782 explicitly requests paper citations, so the source edits belong in
+this PR. The repository's preview workflow also requires their regenerated
+artifacts. Its correction uses the existing release identifier, not a release
+bump or a change to the warning budget or CI rules:
+
+```sh
+python3 tools/refresh_paper_release.py --preview
+python3 tools/build_book_pdf.py --output /path/to/scratch/book-first.pdf
+cmp /path/to/scratch/book-first.pdf book/reverse-engineering-reality-book.pdf
+```
+
+The workflow then rebuilds both outputs and compares their hashes. Committing
+only TeX edits, or only checking a manifest against stale PDFs, is insufficient.
+
+The local replay with Tectonic 0.15.0 and Pandoc 3.8.3 passes both complete
+builds: all 23 paper PDFs and the book pass their existing warning budgets,
+both manifest validations pass, and the second-pass PDFs and manifest are
+byte-identical to the first pass. The book also matches its committed PDF.
+Only the spacetime PDF and its manifest hash/size entry require updating;
+the visible release remains `r2043`. The changed citation/status paragraphs
+and their page transitions were rendered and visually inspected. Hosted CI
+for the correction is not awaited.
+
 The population, read law, time scale and coordinate measure remain supplied.
 Additional instrument/routing operations require their own measure comparison.
 The result neither selects a physical clock/measure nor proves the M1
