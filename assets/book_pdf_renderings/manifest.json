@@ -15,15 +15,15 @@
     },
     {
       "source": "assets/OPH_Unification_Diagram.svg",
-      "source_sha256": "a329d3f4bbec947337d7e70eeddc6727f6fbf16d5597843742ddd657dbcf4185",
+      "source_sha256": "d9cd077f413e439715beea04efd6d103c5505d9a2777b9be59eb56c36e7d4170",
       "rendering": "assets/book_pdf_renderings/OPH_Unification_Diagram.pdf",
-      "rendering_sha256": "f7f55872ecc09c7ffd4b2260c1e685a2d9b6e35dd56b30fe9277871348cb9aba"
+      "rendering_sha256": "f9e864243f784f11c981c500b44ac3114a94e389393b24849d1073ac986fabbd"
     },
     {
       "source": "assets/book_diagrams/boundary-ledger.svg",
-      "source_sha256": "fb815acaea1a0880a27a3512a48ad839d46ecadc65637f351c2ffdce76ed7ace",
+      "source_sha256": "889f55adcd5563b4704ea566f1255b71c510d1645cdfe95f0af6b6693e3ddc5a",
       "rendering": "assets/book_pdf_renderings/book_diagrams/boundary-ledger.pdf",
-      "rendering_sha256": "ae7ce21d1268d8ff5882ee8e8c521ef615074e092401f7c2eb028729d8b9e6ab"
+      "rendering_sha256": "aa50b22ac0d2340607a23e428e45dfc11fdf8eac8f9d043853c320e0cb38734d"
     },
     {
       "source": "assets/book_diagrams/collar-tripartition.svg",
@@ -141,9 +141,9 @@
     },
     {
       "source": "assets/book_diagrams/synthesis-spine.svg",
-      "source_sha256": "a590af9100d469938a1eb8c41f422919d8b12322d819efc6c7341fe503b8354b",
+      "source_sha256": "ae30bfb1374cc0e1b2d165f4a0eda60e84e9470224741f978620ad5f95a26e45",
       "rendering": "assets/book_pdf_renderings/book_diagrams/synthesis-spine.pdf",
-      "rendering_sha256": "126c415c07758bef0df0805187e4764eaeebee555036488846171dbdae718195"
+      "rendering_sha256": "8cb4f20bcb58f15c109342221f6dfb6b488c355fc5cee40ed0e3492fe192be1e"
     },
     {
       "source": "assets/book_diagrams/tannaka-krein.svg",

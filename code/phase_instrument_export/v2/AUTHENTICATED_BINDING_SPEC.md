@@ -85,7 +85,7 @@ of the v1 module, UTF-8, no trailing line break) of the binding body:
 * `configuration_digest_sha256` covers the run configuration: producer
   module hashes, simulator and RER commit pins, the input inventory, the
   excluded-input set, and the environment record, in the custody shape of
-  design section E of `plan/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md`.
+  design section E of `docs/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md`.
 * `outcomes_digest_sha256` covers the public outcome record manifest of
   design section C.2 (b), recorded before analysis.
 * The `domain` string separates this signature from every other use of
