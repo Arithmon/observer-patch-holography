@@ -41,6 +41,13 @@ def load(path):
                       parse_float=reject, parse_constant=reject)
 
 
+def load_artifact(path):
+    value = load(path)
+    if Path(path).read_bytes() != canonical(value):
+        raise ValueError(f"noncanonical artifact bytes: {Path(path).name}")
+    return value
+
+
 def rational(value):
     if not isinstance(value, str):
         raise ValueError("rational must be a string")

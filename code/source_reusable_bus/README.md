@@ -27,12 +27,16 @@ A global port is `12*carrier + local_port`. The register map is injective:
 The positive path is `1 → 14 → 23 → 45`; the negative path is
 `5 → 40 → 38 → 39`. They have three edges each and no shared port. Every mean
 is checked against [the captured support](../source_routing/support_w12_l3.json),
-including the cross-carrier seams `1–14`, `23–45` and `5–40`. The internal
-paired cells are mathematical coordinates spanning different carriers; the
+including the cross-carrier seams `1–14`, `23–45` and `5–40`. The source and
+receiver carriers are glued neighbours via `5–40`. The internal paired cells
+are mathematical coordinates spanning different carriers; the
 protocol uses no readout or reset between those separated rails. Source and
 receiver operations use rails on their respective carriers. This is one
 embedded route on the declared capture, not a general support compiler or a
 source-selection theorem.
+The 12 counted registers are the active subsystem of a 15,360-port support.
+Other ports are spectators under the supplied schedule; their preparation,
+storage and the physical realization of isolation are outside this accounting.
 
 ## Native export, transport and cleanup
 
@@ -85,8 +89,15 @@ epsilon + E0 + K*(delta + 1/(2Q)) + rho.
 bound on every rail, and `rho=2^-16` bounds terminal error per sampled rail.
 These are assumed allowances, not measured hardware limits or executed
 additional disturbances. The retained integer histories execute rounding.
+One rounded mean can change total scalar load by a grid unit. It is an
+approximation to the exact mean, not another exact native conservation law.
 The general perturbation theorem applies to any implementation satisfying
 the one-step bounds; no physical mechanism combining these errors is derived.
+`program_readout_error` composes native compilation, per-step perturbations,
+two local readout errors and the ideal transfer estimate in one Lean theorem.
+The cleanup contraction applies to balanced ideal amplitudes. A common offset
+on both rails is preserved by means and must remain in the implementation
+error budget; cleanup does not restore an arbitrary raw baseline error.
 
 Four-level decoding is unique when that total is strictly below half the
 level spacing `1/2^(k+4)`. All three reads have a positive certified margin;
@@ -129,6 +140,11 @@ communications framing, codebook/calibration representation, software runtime
 or external audit storage. The retained tapes and exact rational verifier
 workspace are external evidence, not memory created by the source dynamics.
 No full physical-machine capacity bound is claimed.
+The storage and arithmetic widths apply to the retained integer model. The
+receiver width bounds signed integer subtraction and threshold scaling, not
+the Python producer's rational objects or the abstract real perturbation model.
+The verifier derives traffic and encoding counts from the validated tapes,
+ports and read metadata; the receipt retains observed arithmetic maxima too.
 
 The ideal reread has a nonzero coefficient from the other record. Approximate
 cleanup does not erase that raw dependence. Some rounded states can become
@@ -141,7 +157,7 @@ new versions after preparation and performs no arbitrary record writes.
 ## Proof, verification and scope
 
 [SourceReusableBus.lean](../../Lean/Geometry/SourceReusableBus.lean) contains
-24 theorems: compilation into native means, the finite cleanup formula and
+25 theorems: compilation into native means, the finite cleanup formula and
 counts, contraction and composition, retention and receiver errors, readout
 separation, and integer rounding bounds. The downstream audit checks every
 theorem transitively against `propext`, `Classical.choice` and `Quot.sound`,
@@ -151,6 +167,7 @@ and rejects `sorryAx` and compiler-trusted Boolean evaluation.
 checks captured edges, independently rounds exact rational means, reconstructs
 the full ideal linear maps and scrub matrix, and checks all custody and costs.
 Source hashes bind the capture, proofs, contract, toolchain and replay code.
+The command-line verifier rejects noncanonical control and receipt bytes.
 
 ```
 python code/source_reusable_bus/verify.py
@@ -163,6 +180,10 @@ Intentional regeneration uses `build.py`, followed by
 `verify.py --write-receipt`. Both generated artifacts must match their bytes
 on Windows and Linux. Dedicated CI executes the controls on both platforms;
 Lean CI explicitly includes the downstream audit for dependency-only changes.
+Adversarial controls maximize signed error at each of the three reads using
+exact backward coefficient maps, perturb idle registers, and verify the
+common-mode boundary. These controls exercise the declared abstract bounds;
+they are not production histories or measurements of physical noise.
 
 The [contract](CONTRACT.md) and [audit](AUDIT.md) delimit this result. Native
 existence of this finite route does not select the code, scheduler, source

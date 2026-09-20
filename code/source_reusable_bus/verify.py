@@ -132,7 +132,46 @@ def read_bounds(cycle, coefficients):
             "ideal_other_record_influence": coefficients[1-record] != 0}
 
 
-def check_case(case, payloads, maps, scrub_ends):
+def resource_accounting(case, ports, vertices, grid):
+    # Derive counts from the checked execution, and widths from the admitted
+    # range/encoding. These widths are not the Python runtime's memory usage.
+    tape, reads = case["tape"], case["reads"]
+    registers, means = len(ports), len(tape)
+    records = len(case["payloads"])
+    address_bits = (registers-1).bit_length()
+    record_bits = (records-1).bit_length()
+    counter_bits = max(r["use"] for r in reads).bit_length()
+    program_bits = means.bit_length()  # Includes the terminal position.
+    load_limit = 4*grid
+    receiver_limit = load_limit * 2**(max(r["use"] for r in reads)+3)
+    load_bits, adder_bits = load_limit.bit_length(), (2*load_limit).bit_length()
+    receiver_bits = receiver_limit.bit_length()+1  # Signed difference and shift.
+    maxima = {"scalar_units": max(case["initial_units"]+[e[6] for e in tape]),
+              "mean_input_sum": max(e[2]+e[3] for e in tape),
+              "absolute_scaled_receiver_difference": max(
+                  abs(r["local_units"][0]-r["local_units"][1])*2**(r["use"]+3)
+                  for r in reads)}
+    require(maxima["scalar_units"] < 2**load_bits, "scalar encoding overflow")
+    require(maxima["mean_input_sum"] < 2**adder_bits, "mean adder overflow")
+    require(maxima["absolute_scaled_receiver_difference"] < 2**(receiver_bits-1),
+            "receiver arithmetic overflow")
+    resources = {
+        "scalar_registers": registers, "preparation_writes": len(case["initial_units"]),
+        "means": means, "mean_reads": 2*means,
+        "cross_carrier_means": sum(ports[e[0]]//12 != ports[e[1]]//12 for e in tape),
+        "receiver_scalar_samples": sum(len(r["local_units"]) for r in reads),
+        "writes": len(case["initial_units"])+2*means,
+        "scalar_storage_bits_bound": registers*load_bits,
+        "mean_adder_bits_bound": adder_bits, "receiver_arithmetic_bits_bound": receiver_bits,
+        "expanded_local_schedule_bits": 2*address_bits*means,
+        "global_port_map_bits": registers*(vertices-1).bit_length(),
+        "program_counter_bits": program_bits, "version_use_counter_bits": records*counter_bits,
+        "read_schedule_bits": len(reads)*(program_bits+record_bits+counter_bits),
+        "receiver_address_bits": 2*address_bits, "request_record_bits": len(reads)*record_bits}
+    return resources, maxima
+
+
+def check_case(case, payloads, maps, scrub_ends, ports, vertices):
     q = 2**20
     values = [2*q]*12
     for record, amplitude in enumerate(payloads):
@@ -192,25 +231,18 @@ def check_case(case, payloads, maps, scrub_ends):
     codec.equal(case["reads"], reads, "receiver read interface")
     codec.equal(case["final_units"], values, "retained final loads")
     codec.equal(case["final_writers"], writers, "retained final writers")
-    resources = {"scalar_registers": 12, "preparation_writes": 12, "means": 1704,
-                 "mean_reads": 3408, "cross_carrier_means": 729,
-                 "receiver_scalar_samples": 6, "writes": 3420,
-                 "scalar_storage_bits_bound": 276, "mean_adder_bits_bound": 24,
-                 "receiver_arithmetic_bits_bound": 29,
-                 "expanded_local_schedule_bits": 13632, "global_port_map_bits": 168,
-                 "program_counter_bits": 11, "version_use_counter_bits": 4,
-                 "read_schedule_bits": 42, "receiver_address_bits": 8,
-                 "request_record_bits": 3}
+    resources, maxima = resource_accounting(case, ports, vertices, q)
     codec.equal(case["resources"], resources, "resource accounting")
     require(set(case) == {"payloads", "initial_units", "tape", "reads", "final_units",
                           "final_writers", "resources"}, "case fields")
     return {"payloads": list(map(str,payloads)), "reads": audit,
-            "max_observed_rounding_error": str(max_rounding), "resources": resources}
+            "max_observed_rounding_error": str(max_rounding), "resources": resources,
+            "arithmetic_maxima": maxima}
 
 
 def verify(data=None):
     if data is None:
-        data = codec.load(codec.HERE/"controls.json")
+        data = codec.load_artifact(codec.HERE/"controls.json")
     expected_fields = {"schema", "source_sha256", "global_ports", "precision", "baseline",
                        "cleanup_sweeps", "requests", "tape_columns", "assumed_error_bounds",
                        "executions"}
@@ -233,7 +265,8 @@ def verify(data=None):
                     for row in state[4:]), "uniform cleanup coefficient bound")
     payloads = list(product((F(-3,2),F(-1,2),F(1,2),F(3,2)), repeat=2))
     require(len(data["executions"]) == len(payloads), "missing payload history")
-    cases = [check_case(case, pair, maps, scrub_ends)
+    cases = [check_case(case, pair, maps, scrub_ends, data["global_ports"],
+                        support["registered_port_count"])
              for case, pair in zip(data["executions"],payloads)]
     return {"schema":"oph.source_reusable_bus.verified.v1", "source_sha256":codec.pins(),
             "support":support, "scrub_matrix":matrix, "uniform_read_bounds":bounds,
@@ -250,6 +283,6 @@ if __name__ == "__main__":
     if args.write_receipt:
         (codec.HERE/"receipt.json").write_bytes(codec.canonical(result))
     else:
-        codec.equal(codec.load(codec.HERE/"receipt.json"), result, "retained receipt")
+        codec.equal(codec.load_artifact(codec.HERE/"receipt.json"), result, "retained receipt")
     print(f"Verified {len(result['histories'])} histories, {result['retained_means']} means, "
           "captured seams, all writer custody, and positive universal decoding margins.")

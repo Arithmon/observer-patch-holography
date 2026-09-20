@@ -201,6 +201,38 @@ theorem contrast_error (b a p m E : ℝ)
   apply abs_le.mpr
   constructor <;> linarith
 
+/-- Compose native compilation, arbitrary signed per-step error, local readout
+error and an ideal transfer estimate. The error bounds are hypotheses. -/
+theorem program_readout_error (ops : List (Instruction ι)) (receiver : ι)
+    (b reference E δ ρ ε : ℝ) (a : ι → ℝ) (x : ι × Bool → ℝ) (p m : ℝ)
+    (es : List (((ι × Bool) × (ι × Bool)) × ((ι × Bool) → ℝ)))
+    (hword : es.map Prod.fst = compile ops)
+    (hx : Near E x (encode b a))
+    (he : ∀ en ∈ es, ∀ i, |en.2 i| ≤ δ)
+    (hp : |p-noisyRun es x (receiver, false)| ≤ ρ)
+    (hm : |m-noisyRun es x (receiver, true)| ≤ ρ)
+    (hideal : |execute ops a receiver-reference| ≤ ε) :
+    |(p-m)/2-reference| ≤ ε + E + (compile ops).length*δ + ρ := by
+  have hn := noisy_run_bound es x (encode b a) E δ hx he
+  have hlen : es.length = (compile ops).length := by
+    simpa using congrArg List.length hword
+  rw [hlen, hword, program_native] at hn
+  have hpos := abs_add_le (p-noisyRun es x (receiver, false))
+    (noisyRun es x (receiver, false)-(b+execute ops a receiver))
+  have hneg := abs_add_le (m-noisyRun es x (receiver, true))
+    (noisyRun es x (receiver, true)-(b-execute ops a receiver))
+  rw [sub_add_sub_cancel] at hpos hneg
+  have hnp : |noisyRun es x (receiver, false)-(b+execute ops a receiver)| ≤
+      E+(compile ops).length*δ := by simpa [encode] using hn (receiver, false)
+  have hnm : |noisyRun es x (receiver, true)-(b-execute ops a receiver)| ≤
+      E+(compile ops).length*δ := by simpa [encode, sub_eq_add_neg] using hn (receiver, true)
+  have hc := contrast_error b (execute ops a receiver) p m
+    (E+(compile ops).length*δ+ρ) (by linarith) (by linarith)
+  have ht := abs_add_le ((p-m)/2-execute ops a receiver)
+    (execute ops a receiver-reference)
+  rw [sub_add_sub_cancel] at ht
+  linarith
+
 theorem separated_readouts (x y observation radius : ℝ)
     (hsep : 2*radius ≤ |x-y|) (hx : |observation-x| < radius)
     (hy : |observation-y| < radius) : False := by

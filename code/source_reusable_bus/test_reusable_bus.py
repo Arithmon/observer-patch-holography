@@ -2,11 +2,16 @@
 import ast
 from copy import deepcopy
 from fractions import Fraction as F
+from fnmatch import fnmatchcase
 import inspect
 import re
 import shlex
+import shutil
+import subprocess
+import sys
 
 import pytest
+import yaml
 
 from . import build, codec, verify
 
@@ -126,6 +131,8 @@ def test_rounded_resource_bounds_and_identity_steps_are_retained(controls):
     for case in controls["executions"]:
         assert all(0 <= row[6] < 2**23 and row[2]+row[3] < 2**24 for row in case["tape"])
         assert any(row[2] == row[3] == row[6] for row in case["tape"])
+        mass_changes = [2*row[6]-row[2]-row[3] for row in case["tape"]]
+        assert max(map(abs,mass_changes)) == 1  # Rounding is not exact conservation.
     altered = deepcopy(controls)
     tape = altered["executions"][0]["tape"]
     index = next(i for i,row in enumerate(tape) if row[2] == row[3] == row[6])
@@ -188,21 +195,144 @@ def test_every_public_theorem_is_transitively_audited():
     proof=(codec.ROOT/"Lean/Geometry/SourceReusableBus.lean").read_text(encoding="utf-8")
     audit=(codec.ROOT/"Lean/Geometry/SourceReusableBusAxiomAudit.lean").read_text(encoding="utf-8")
     names=re.findall(r"^theorem (\w+)",proof,re.M)
-    assert len(names)==24
+    assert len(names)==25
     covered=re.findall(r"^audit_reusable_bus_axioms OPH.SourceReusableBus\.(\w+)$",audit,re.M)
     assert covered==names
     assert "Lean.collectAxioms" in audit and "Lean.ofReduceBool" in audit and "sorryAx" in audit
 
 
-def test_ci_enforces_audit_on_dependency_changes():
-    workflow=(codec.ROOT/".github/workflows/lean-ci.yml").read_text(encoding="utf-8")
-    targets=workflow.split("targets=(",1)[1].split(")",1)[0]
-    words=shlex.split(targets,comments=True)
+def require_ci_audit_target(workflow):
+    parsed = yaml.load(workflow, Loader=yaml.BaseLoader)
+    selector = next(s["run"] for s in parsed["jobs"]["build"]["steps"]
+                    if s.get("name") == "Detect changed Lean modules")
+    block = re.search(r"(?ms)^targets=\((.*?)^\)", selector)
+    assert block is not None
+    words = shlex.split(block.group(1), comments=True)
     assert "Geometry.SourceReusableBusAxiomAudit" in words
-    dedicated=(codec.ROOT/".github/workflows/source-reusable-bus.yml").read_text(encoding="utf-8")
-    for path in ("code/source_reusable_bus/**", "Lean/Geometry/SourceReusableBus*.lean",
-                 "Lean/Geometry/SourceEncodedMemory.lean", codec.SUPPORT,
-                 "Lean/ObserverPatchHolography/ScalarSeamRepair.lean"):
-        assert dedicated.count(f'"{path}"')==2
-    assert "python -m pytest -q code/source_reusable_bus" in dedicated
-    assert "ubuntu-latest" in dedicated and "windows-latest" in dedicated
+
+
+def test_ci_enforces_audit_on_dependency_changes():
+    require_ci_audit_target((codec.ROOT/".github/workflows/lean-ci.yml").read_text(encoding="utf-8"))
+    dedicated = yaml.load((codec.ROOT/".github/workflows/source-reusable-bus.yml")
+                          .read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
+    for event in ("push", "pull_request"):
+        for path in codec.PIN_PATHS + (".github/workflows/lean-ci.yml", ".gitattributes"):
+            assert any(fnmatchcase(path, pattern) for pattern in dedicated["on"][event]["paths"])
+    job = dedicated["jobs"]["controls"]
+    assert job["strategy"]["matrix"]["os"] == ["ubuntu-latest", "windows-latest"]
+    assert "python -m pytest -q code/source_reusable_bus" in [s.get("run") for s in job["steps"]]
+
+
+@pytest.mark.parametrize("replacement", [
+    '            # "Geometry.SourceReusableBusAxiomAudit"',
+    '            "Geometry.SourceReusableBus"', '',
+])
+def test_ci_guard_rejects_disabled_audit_target(replacement):
+    workflow = (codec.ROOT/".github/workflows/lean-ci.yml").read_text(encoding="utf-8")
+    target = '            "Geometry.SourceReusableBusAxiomAudit"'
+    assert workflow.count(target) == 1
+    with pytest.raises(AssertionError):
+        require_ci_audit_target(workflow.replace(target, replacement))
+
+
+@pytest.mark.parametrize("cycle", range(3))
+@pytest.mark.parametrize("direction", [-1, 1])
+def test_adversarial_signed_errors_on_every_register(cycle, direction):
+    # Backward adjoints give a maximizing disturbance for this read. This
+    # tests the abstract one-step allowance, not a physical noise mechanism
+    # or the production integer rounding rule. Idle rails also receive error.
+    count = 568*cycle+8
+    e0, eta, rho = F(1,2**18), F(1,2**28)+F(1,2**21), F(1,2**16)
+    edges = [verify.operation(k) for k in range(count)]
+    weights = [F(0)]*10+[F(1,2), F(-1,2)]
+    influence = [None]*count
+    for k in reversed(range(count)):
+        influence[k] = weights.copy()
+        u,v = edges[k]
+        weights[u] = weights[v] = (weights[u]+weights[v])/2
+    def signed(w):
+        return direction*(-1 if w < 0 else 1)
+    exact = [F(3,2), F(5,2), F(5,2), F(3,2)]+[F(2)]*8
+    perturbed = [x+e0*signed(w) for x,w in zip(exact, weights)]
+    idle_drift = False
+    for k,(u,v) in enumerate(edges):
+        exact[u] = exact[v] = (exact[u]+exact[v])/2
+        perturbed[u] = perturbed[v] = (perturbed[u]+perturbed[v])/2
+        perturbed = [x+eta*signed(w) for x,w in zip(perturbed, influence[k])]
+        assert max(abs(x-y) for x,y in zip(perturbed, exact)) <= e0+(k+1)*eta
+        idle_drift |= any(i not in (u,v) and abs(perturbed[i]-exact[i]) > e0
+                          for i in range(4))
+    ideal_contrast = (exact[10]-exact[11])/2
+    p, m = perturbed[10]+direction*rho, perturbed[11]-direction*rho
+    error = (p-m)/2-ideal_contrast
+    dual_bound = e0*sum(map(abs,weights))+eta*sum(sum(map(abs,w)) for w in influence)+rho
+    assert error == direction*dual_bound
+    assert dual_bound <= e0+count*eta+rho
+    assert idle_drift
+    use = (1,1,2)[cycle]
+    assert verify.decode_receiver(p,m,use,1) == ("-1/2","1/2","-1/2")[cycle]
+
+
+def test_cleanup_does_not_remove_common_mode_error():
+    # Contraction concerns balanced amplitudes, not arbitrary raw offsets.
+    offset = F(1,2**18)
+    raw = [F(2)+offset]*12
+    for k in range(8,568):
+        u,v = verify.operation(k)
+        raw[u] = raw[v] = (raw[u]+raw[v])/2
+    assert raw[4:] == [2+offset]*8
+    assert offset > offset*F(7,8)**80
+
+
+def test_resource_ledger_counts_actual_edges_and_encoding_limits(controls):
+    case = deepcopy(controls["executions"][0])
+    ports = controls["global_ports"]
+    original,_ = verify.resource_accounting(case,ports,15360,2**20)
+    k = next(k for k,e in enumerate(case["tape"]) if ports[e[0]]//12 != ports[e[1]]//12)
+    case["tape"].pop(k)
+    fewer,_ = verify.resource_accounting(case,ports,15360,2**20)
+    assert fewer["cross_carrier_means"] == original["cross_carrier_means"]-1
+    assert fewer["means"] == original["means"]-1
+    assert fewer["mean_reads"] == original["mean_reads"]-2
+    assert fewer["writes"] == original["writes"]-2
+    case["reads"][0]["local_units"] = [2**30,0]
+    with pytest.raises(ValueError,match="receiver arithmetic overflow"):
+        verify.resource_accounting(case,ports,15360,2**20)
+
+
+@pytest.mark.parametrize("mutation,diagnostic", [
+    ("promoted_receipt", "retained receipt"),
+    ("control_bytes", "noncanonical artifact bytes: controls.json"),
+    ("receipt_bytes", "noncanonical artifact bytes: receipt.json"),
+    ("changed_proof", "source pins"),
+    ("changed_tape", "native mean, rounding, value or consumed writer"),
+])
+def test_real_cli_rejects_tampered_evidence(tmp_path, mutation, diagnostic):
+    for relative in codec.PIN_PATHS + ("code/source_reusable_bus/controls.json",
+                                       "code/source_reusable_bus/receipt.json"):
+        destination = tmp_path/relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(codec.ROOT/relative, destination)
+    command = [sys.executable, str(tmp_path/"code/source_reusable_bus/verify.py")]
+    clean = subprocess.run(command,cwd=tmp_path,capture_output=True,text=True,encoding="utf-8")
+    assert clean.returncode == 0, clean.stderr
+    packet = tmp_path/"code/source_reusable_bus"
+    if mutation == "promoted_receipt":
+        p = packet/"receipt.json"
+        data = codec.load(p)
+        data["physical_M1_derived"] = True
+        p.write_bytes(codec.canonical(data))
+    elif mutation in ("control_bytes", "receipt_bytes"):
+        p = packet/("controls.json" if mutation == "control_bytes" else "receipt.json")
+        p.write_bytes(b" "+p.read_bytes())
+    elif mutation == "changed_proof":
+        p = tmp_path/"Lean/Geometry/SourceReusableBus.lean"
+        p.write_bytes(p.read_bytes()+b"\n-- changed proof input\n")
+    else:
+        p = packet/"controls.json"
+        data = codec.load(p)
+        data["executions"][0]["tape"][0][-1] += 1
+        p.write_bytes(codec.canonical(data))
+    failed = subprocess.run(command,cwd=tmp_path,capture_output=True,text=True,encoding="utf-8")
+    assert failed.returncode != 0
+    assert diagnostic in failed.stderr

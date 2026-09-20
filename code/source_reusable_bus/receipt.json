@@ -1,6 +1,11 @@
 {
   "histories": [
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145984,
+        "mean_input_sum": 5767170,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "-3/2",
@@ -87,6 +92,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145984,
+        "mean_input_sum": 5767168,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "-3/2",
@@ -173,6 +183,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145728,
+        "mean_input_sum": 5767168,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "-3/2",
@@ -259,6 +274,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145728,
+        "mean_input_sum": 5767168,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "-3/2",
@@ -345,6 +365,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145856,
+        "mean_input_sum": 5767170,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "-1/2",
@@ -431,6 +456,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 1048832,
+        "mean_input_sum": 4718594,
+        "scalar_units": 2621440
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "-1/2",
@@ -517,6 +547,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 1048576,
+        "mean_input_sum": 4718592,
+        "scalar_units": 2621440
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "-1/2",
@@ -603,6 +638,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145600,
+        "mean_input_sum": 5767166,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "-1/2",
@@ -689,6 +729,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145600,
+        "mean_input_sum": 5767166,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "1/2",
@@ -775,6 +820,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 1048576,
+        "mean_input_sum": 4718592,
+        "scalar_units": 2621440
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "1/2",
@@ -861,6 +911,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 1048832,
+        "mean_input_sum": 4718594,
+        "scalar_units": 2621440
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "1/2",
@@ -947,6 +1002,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145856,
+        "mean_input_sum": 5767170,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "1/2",
@@ -1033,6 +1093,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145728,
+        "mean_input_sum": 5767168,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "3/2",
@@ -1119,6 +1184,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145728,
+        "mean_input_sum": 5767168,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "3/2",
@@ -1205,6 +1275,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145984,
+        "mean_input_sum": 5767168,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "3/2",
@@ -1291,6 +1366,11 @@
       }
     },
     {
+      "arithmetic_maxima": {
+        "absolute_scaled_receiver_difference": 3145984,
+        "mean_input_sum": 5767170,
+        "scalar_units": 3670016
+      },
       "max_observed_rounding_error": "1/2097152",
       "payloads": [
         "3/2",
@@ -1432,8 +1512,8 @@
   ],
   "source_sha256": {
     "Lean/Geometry/SourceEncodedMemory.lean": "67f98a7bf3d76d1a705a979200169ef4d34b2f8ae5bd4875fee857b2db1fca24",
-    "Lean/Geometry/SourceReusableBus.lean": "0b2b330974863142868fe7e1f485d46d4297b7c47ab1ffb013420229fd32ea52",
-    "Lean/Geometry/SourceReusableBusAxiomAudit.lean": "ffcd6fbf29014002cb5fdf8ff38180130e97ee83bfa0e8006386b9a629e51ada",
+    "Lean/Geometry/SourceReusableBus.lean": "25dc38bdcfe71a4d5860be4e0051dd16bd3083c9bdc8c5befcc162ba421f57d2",
+    "Lean/Geometry/SourceReusableBusAxiomAudit.lean": "2d9fa469d6278f6a8e59fc3a204beea2eca4b597abc56b60675464311c21a6fe",
     "Lean/ObserverPatchHolography/ScalarSeamRepair.lean": "26a8944ff97643cc9b2cf5ac58f6667ff0a443ca9cd81301e94e1cb6b0c9a8ef",
     "Lean/lake-manifest.json": "65c7120947e5a3ad487de7311a46f792f62dd92718e220f82fefbda2d7d3f59d",
     "Lean/lakefile.lean": "fe78b3f4c60ad846ddc93b6c37386cb6c2651ec5c7c4aeb96f0a53cefc955b3b",
@@ -1441,8 +1521,8 @@
     "code/source_reusable_bus/CONTRACT.md": "f8d8dc26a8f9fc4d20c47349b2b7448435a393df0085f3ac6c8385caed7e9718",
     "code/source_reusable_bus/__init__.py": "c875861a738f07eb728aa1067814c87cbffb050331a92dc8c081caba4c1cc6a0",
     "code/source_reusable_bus/build.py": "7b4db0480906139a5cacc0f35de0b32aa4d89c34e8792e055ee247908057e9ee",
-    "code/source_reusable_bus/codec.py": "c14767da7e39ba97ae9c7d94f9bc31f0c84837a09620e76be37a01ad8f1989b1",
-    "code/source_reusable_bus/verify.py": "8225a91c5ef70e270f6dceeeff21c548d0f38e6ae99f7a55013bd0abb8016f7c",
+    "code/source_reusable_bus/codec.py": "1296e9dcfaadebc6915d7f799e14a58e58beb10569b04fd1456f293e6f19b45f",
+    "code/source_reusable_bus/verify.py": "e5fbbe7ee3f4ef77fb4d1cda8f8b6a0f2c565e8a5c1fd4a40e0f6ecf8148a26c",
     "code/source_routing/support_w12_l3.json": "57ec958cb0c26f1614df67b88549bf193213ec3997863d818e462befdeb0f5a4"
   },
   "support": {

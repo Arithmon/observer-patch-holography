@@ -25,8 +25,9 @@ amplitude in `[-3/2,3/2]`; successful decoding is asserted for the four levels.
 
 ## Mathematical and topology checks
 
-The source and receiver are on different actual carriers, 0 and 3. The
-positive route crosses carrier 1. The two intermediate paired cells span
+The source and receiver are on different actual carriers, 0 and 3; these
+carriers are glued neighbours through seam `5–40`. The positive route crosses
+carrier 1. The two intermediate paired cells span
 carriers, so their rails cannot be treated as local reset pairs. The program
 uses only the verified source-side reset edge, followed by paired forward
 sweeps. Removing the physical seam `23–45` makes verification fail.
@@ -45,9 +46,11 @@ absolute coefficient errors, multiplied by the initial amplitude bound.
 
 Integer nearest/even rounding is distinct from exact native pair averaging.
 The formal integer bound gives an error of at most `1/(2Q)` per mean and
-proves that rounded values lie between their integer inputs. The generic
-pair-mean perturbation bound and the contrast lemma propagate one-step
-errors to the receiver. The analytical initial, additional-disturbance and
+proves that rounded values lie between their integer inputs. The theorem
+`program_readout_error` composes native compilation, initial and per-step
+errors, both local readout errors and the ideal transfer estimate. Its
+per-step hypothesis can include rounding plus the additional disturbance.
+The analytical initial, additional-disturbance and
 readout allowances are supplied; the retained execution implements rounding
 only. No experimental hardware validation is inferred.
 
@@ -75,6 +78,12 @@ expanded mean schedule, port mapping and read metadata have explicit encoding
 bounds. These are not a complete physical-machine resource model: controller
 realization, timing, calibration/codebook representation, framing and external
 logging are excluded explicitly. No omitted ancillary register carries payload.
+The widths describe the retained integer model, including a signed integer
+threshold decoder, rather than Python object storage or arbitrary real noise.
+The 12 active registers do not count the spectator ports of the captured
+15,360-port support or supply its isolation. Individual rounded means can
+change total load by a grid unit; exact native conservation is not claimed
+for those approximations.
 
 All addresses and versions refer to two records supplied at initialization.
 The protocol derives their finite read/reuse behavior under an admitted word;
@@ -91,12 +100,48 @@ inputs, writers, codewords, declared errors, precision, resource counts and
 histories are rejected. An identity-valued event cannot be deleted to reduce
 cost. Both generated JSON files are compared byte for byte on each platform.
 
-All 24 public Lean theorems have transitive dependency audits. The audit
+All 25 public Lean theorems have transitive dependency audits. The audit
 accepts only `propext`, `Classical.choice` and `Quot.sound`; built-in controls
 reject `sorryAx` and compiler-trusted Boolean evaluation. An isolated theorem
 depending on an injected axiom was also rejected. The audit is an explicit
 Lean CI target, so dependency-only changes cannot omit it. Test-time parsing
 checks executable target words rather than accepting commented-out entries.
+
+## Maintainer-style follow-up findings
+
+The follow-up review checked proof hypotheses, the actual captured edges,
+operation order, every arithmetic and storage width, receiver inputs and
+error propagation. It found the following evidence gaps and corrected them:
+
+- Resource totals in the verifier were matching literals. The totals were
+  correct, but this was weaker than an independent ledger. Counts now come
+  from the validated tape and topology, widths from the declared encodings,
+  and observed arithmetic maxima are retained. A control deletes a crossing
+  event and checks the resulting traffic counts; an overflow control rejects
+  an oversized receiver intermediate.
+- The aggregate receiver bound was explained by combining separate lemmas.
+  The new `program_readout_error` checks that composition in Lean, including
+  arbitrary signed errors on idle registers and two local readout bounds.
+  The finite route coefficients are independently checked rational evidence;
+  the Python replay itself is not a Lean-verified program.
+- The standalone CLI accepted noncanonical bytes although the CI regeneration
+  test rejected them. The CLI now enforces canonical controls and receipts.
+  Isolated invocations reject altered proof bytes, tapes, promoted receipts
+  and noncanonical bytes after first accepting each untouched copy.
+- CI tests now parse the actual workflow selector and both trigger lists,
+  cover every pinned input, and reject deleted or commented-out audit targets.
+
+Six exact adversarial trajectories choose disturbances by backward receiver
+coefficients, maximizing each read's signed error in both directions. They
+check every intermediate coordinate bound, idle-archive drift and final
+decoding. These are tests of the abstract allowance, not added production
+histories or a physical noise source. A separate control demonstrates that
+cleanup preserves a common-mode offset; that error is not contracted away.
+
+The follow-up does not change the initial payloads, 27,264 retained means,
+read outcomes, declared resource totals, error budgets or decoding margins.
+The receipt gains independently computed arithmetic maxima; source digests
+change with the added theorem and verification code.
 
 The prior encoded-memory, feedback-transport and captured-routing JSON files
 are byte-identical to base `6eca2c8c`. No existing scientific classification,
@@ -107,7 +152,7 @@ runner retains SHA-256
 Local validation:
 
 - `lake build Geometry` succeeds (8427 jobs), including the registered bus
-  audit. The direct bus audit build succeeds with all 24 declarations and
+  audit. The direct bus audit build succeeds with all 25 declarations and
   no warnings in the added modules. The isolated extra-axiom probe fails
   with the expected rejection.
 - All 24 stages of mandatory shard 0 pass on Windows and Linux, including
@@ -115,11 +160,13 @@ Local validation:
   checks. The frozen runner is invoked directly. A Linux-only wrapper maps
   Windows worktree Git metadata to Linux paths for historical-source checks;
   it does not change any repository file or acceptance rule.
-- **199 tests pass on each platform**: 81 reusable-bus controls, 64 encoded
+  Windows reports the existing `custody_parser_unsupported_on_platform`
+  result; Linux verifies external custody. Source-history checks pass on both.
+- **215 tests pass on each platform**: 97 reusable-bus controls, 64 encoded
   memory controls, and 54 mandatory-workflow/Lean-budget regressions. The
   bus suite includes strict byte regeneration and independent receipt replay.
-- The scientific Python suite collects **5332 tests** successfully. This is
-  a collection result, not a claim that all 5332 tests were executed.
+- The scientific Python suite collects **5348 tests** successfully. This is
+  a collection result, not a claim that all 5348 tests were executed.
 - `git diff --check` passes. A virtual merge with the green #914 head
   `f317cfb4` succeeds without conflicts.
 
