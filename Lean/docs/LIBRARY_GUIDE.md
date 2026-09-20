@@ -37,6 +37,19 @@ surface for the OPH consensus layer. Contents:
   averaging over a finite seam family is $I-L/(2|E|)$, hence $I-L/60$ for
   thirty seams. This proves the finite linear branch and does not identify it
   with the universal or physical repair law.
+- A sorry-free Whitney normal-mode construction and naturality package in
+  `Screen/WhitneyNormalModeConstruction.lean` through
+  `Screen/WhitneyConeMassNaturality.lean`. It turns the fixed cone cochain
+  complex and supplied symmetric positive-definite mass forms into a complete
+  positive `Fin 30` frame, then feeds that frame to the existing classical
+  action and polynomial quantum Hamiltonian. Reusable mass-overlap transition
+  and `FrameIsometry` interfaces prove reconstruction, frequency blocking,
+  identity, composition, and full Hamiltonian naturality for general linear
+  mode mixing. `WhitneyMassPremiseInstance.lean` and
+  `WhitneyRotationWitness.lean` provide nonvacuity and non-permutation
+  controls. Numerical mass bytes, Hilbert completion, interacting quantum
+  fields, continuum limits, clocks, and physical state selection are not
+  supplied by this package.
 - A sorry-free finite repair-word information-projection theorem in
   `ObserverPatchHolography/RepairWordSchedule.lean`. On a complete,
   quotient-deduplicated finite event alphabet, KL minimization against source

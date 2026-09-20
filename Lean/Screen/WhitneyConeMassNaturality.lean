@@ -51,7 +51,7 @@ theorem actual_cone_quantumHamiltonian_naturality
     (coneStiffnessWithMass_symm mass₂ mass₂_symm) hbar p
 
 /-- Every admissible frame for the source mass action has exactly thirty modes;
-`Fin 30` is a consequence, not merely a chosen index. -/
+`Fin 30` is derived rather than chosen. -/
 theorem actual_cone_frame_card_eq_thirty
     {i : Type*} [Fintype i] [DecidableEq i]
     (G : PositiveNormalFrame (ι := i) mass₁ (coneStiffnessWithMass mass₂)
