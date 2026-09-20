@@ -44,6 +44,15 @@ import NeutralPairCoupledAction
 import NeutralPairJointStationaryWitness
 import CurlStoneClockBridge
 import SourceActionTime
+import WhitneyNormalModeConstruction
+import WhitneyConeModes
+import WhitneyFrameNaturality
+import WhitneyFrameMorphism
+import WhitneyConeNaturality
+import WhitneyConeMass
+import WhitneyConeMassNaturality
+import WhitneyMassPremiseInstance
+import WhitneyRotationWitness
 import GaugeKineticInvariantForms
 import OrientedFaceBracketSelector
 import ExteriorComponentBridge

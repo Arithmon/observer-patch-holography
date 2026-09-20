@@ -9378,13 +9378,13 @@
     },
     {
       "claim_id": "OPH-WHITNEY-RADIATIVE-QUANTUM",
-      "statement": "For the source-free neutral transverse sector of the same supplied Whitney mass M and stiffness K=C^T M2 C, cone exactness ker K=im D and the finite spectral theorem give a complete positive mass-orthonormal frame of 30 modes. Twenty-four Lean theorems prove the same-action pullback for a supplied complete frame, the full polynomial finite-particle creation/annihilation algebra, canonical position/momentum commutators, occupation energies, quadratic Hamiltonian equality and full-Hamiltonian Heisenberg equations. Canonical bosonic quantization and hbar>0 are imported. The paper's separate analytic proof completes the factorial-weight polynomial domain to l2(N^30), proves the position/momentum closures and the diagonal Hamiltonian with domain sum E_n^2 |psi_n|^2 < infinity self-adjoint, and constructs its strongly continuous unitary group. Reconstructed field operators satisfy the source-free semidiscrete Maxwell equations on the common invariant domain. The positive stable prism step instead has a distinct modified Hamiltonian and phase frequency theta/h. At fixed mesh, bounded positive spectral window and discrete-Legendre-matched canonical initial data, its classical propagator converges to the continuous-time oscillator at order h^2; no uniform operator-norm bound for unbounded quantum generators is asserted. This quantizes the free radiative sector, not the recorded prescribed-charge history or the interacting scalar action. It selects no physical quantum state, Born statistics, hbar, clock, source realization, relativistic local field net or spatial limit.",
+      "statement": "For the source-free neutral transverse sector of the fixed 13-vertex, 42-edge cone, supplied symmetric positive-definite Whitney mass forms M1 and M2 define the constraint D^T M1 A=0 and stiffness K=C^T M2 C. Cone exactness ker C=im D, rank D=12, and the finite spectral theorem construct a complete positive mass-orthonormal frame indexed by Fin 30. Lean proves that this generated frame recovers the existing classical action and polynomial finite-particle quantum Hamiltonian. For any two admissible frames, the mass-overlap transition reconstructs the field, obeys identity and composition, has zero overlap between unequal frequencies, and induces a general linear polynomial substitution intertwining the full Hamiltonian including its zero-point term. Mass-, stiffness-, and constraint-preserving physical-sector isomorphisms satisfy the corresponding two-frame naturality laws. Canonical bosonic quantization and hbar>0 are imported. The paper's separate analytic proof completes the factorial-weight polynomial domain to l2(N^30), proves the position/momentum closures and the diagonal Hamiltonian self-adjoint, and constructs its strongly continuous unitary group. The positive stable prism step instead has a distinct modified Hamiltonian and phase frequency theta/h. This quantizes the free radiative sector, not the recorded prescribed-charge history or the interacting scalar action. It selects no numerical mass matrices, physical quantum state, Born statistics, hbar, clock, source realization, relativistic local field net or spatial limit.",
       "owner_paper": "paper/observers_are_all_you_need.tex",
       "tier": "same_operator_conditional_canonical_quantization_with_polynomial_Lean_core_and_analytic_Hilbert_completion",
       "assumptions": [
         "declared_euclidean_cone_geometry_and_Whitney_metric",
         "declared_source_free_neutral_transverse_Whitney_sector",
-        "supplied_complete_positive_Whitney_normal_frame",
+        "supplied_symmetric_positive_definite_Whitney_mass_forms_M1_and_M2",
         "imported_canonical_bosonic_quantization_and_positive_hbar",
         "fixed_mesh_temporal_limit_with_Legendre_matched_data"
       ],
@@ -9395,18 +9395,26 @@
         "analytic_vector_essential_self_adjointness_and_diagonal_operator_theory",
         "finite_dimensional_symplectic_and_modified_Hamiltonian_calculus"
       ],
-      "oph_specific_delta": "Binds a genuine infinite-occupation canonical quantum representation to the full geometric volume action through the same complete positive normal modes. It separates kernel-checked polynomial identities from the analytic Hilbert proof and separates continuous-time oscillator frequencies from finite-step prism phases. Finite-element diagonalization, CCR, Fock space and canonical quantization are standard imports, not derived OPH quantum physics.",
+      "oph_specific_delta": "Constructs the complete positive 30-mode producer from the actual cone cochain complex and supplied mass pair, binds it to the existing classical and polynomial-quantum consumers, and proves that both descriptions are natural under every admissible frame change and physical-sector isometry. The reusable contribution is the checked mass-spectral, overlap-transition, polynomial-transport and harmonic-obstruction architecture. Finite-dimensional spectral theory, finite-element diagonalization, CCR, Fock space and canonical quantization are standard imports, not derived OPH quantum physics.",
       "novelty_type": "same_Whitney_operator_free_radiative_quantum_representation_with_explicit_quantization_inputs",
       "evidence": [
         "paper/observers_are_all_you_need.tex",
         "paper/tex_fragments/WHITNEY_MAXWELL_DYNAMICS.tex",
         "Lean/Screen/WhitneyQuantumBridge.lean",
+        "Lean/Screen/WhitneyNormalModeConstruction.lean",
+        "Lean/Screen/WhitneyConeModes.lean",
+        "Lean/Screen/WhitneyConeMass.lean",
+        "Lean/Screen/WhitneyFrameNaturality.lean",
+        "Lean/Screen/WhitneyFrameMorphism.lean",
+        "Lean/Screen/WhitneyConeMassNaturality.lean",
+        "Lean/Screen/WhitneyMassPremiseInstance.lean",
+        "Lean/Screen/WhitneyRotationWitness.lean",
         "Lean/Screen/ConeCochainBridge.lean",
         "Lean/Screen/WhitneyMaxwellDynamics.lean"
       ],
-      "falsifier": "The supplied complete frame fails to exhaust the transverse sector or preserve the mass/stiffness action; a polynomial CCR, occupation energy, quadratic Hamiltonian or Heisenberg identity fails; the factorial normalization, analytic-vector bound, diagonal self-adjoint domain or unitary-group construction is invalid; the prism Legendre map or bounded-window temporal estimate has an incorrect coefficient or missing initial-data hypothesis; a charged history, interacting quantum model, physical Born rule or spatial limit is inferred from the free-sector theorem.",
+      "falsifier": "Cone exactness, the 12/30 rank count, or strict constrained stiffness positivity fails; the spectral construction does not produce an exhaustive positive mass-orthonormal frame or the existing action consumer; overlap reconstruction, identity, composition, unequal-frequency blocking, polynomial Hamiltonian naturality, or a physical-sector naturality law fails; a polynomial CCR, occupation energy, quadratic Hamiltonian or Heisenberg identity fails; the factorial normalization, analytic-vector bound, diagonal self-adjoint domain or unitary-group construction is invalid; a charged history, interacting quantum model, physical Born rule or spatial limit is inferred from the free-sector theorem.",
       "scope_if_false": "The same-operator free radiative canonical representation or its temporal comparison fails at the affected mathematical interface. The classical finite-volume dynamics, charged-matter variational construction and separately gated physical quantum attachments retain their own hypotheses.",
-      "status": "24_Lean_polynomial_and_complete_frame_theorems__paper_analytic_Fock_and_self_adjoint_Hamiltonian__canonical_quantization_imported",
+      "status": "Lean_constructed_positive_30_mode_frame_and_full_frame_naturality__paper_analytic_Fock_and_self_adjoint_Hamiltonian__canonical_quantization_imported",
       "claim_class": "conditional_implication",
       "gates": [
         730,
@@ -9418,7 +9426,7 @@
         "consumed": [],
         "open": [],
         "boundary": [],
-        "rationale": "The antecedents are a declared fixed Whitney geometry, its homogeneous neutral transverse sector, a complete positive spectral frame, and explicitly imported canonical bosonic quantization with a positive Planck parameter. Registered source-produced effects, Born statistics, physical quantum instruments and clock attachments are neither used to construct this standard representation nor inferred from it, so no canonical physical premise edge is consumed or discharged."
+        "rationale": "The antecedents are a declared fixed Whitney geometry, its homogeneous neutral transverse sector, supplied symmetric positive-definite mass forms, and explicitly imported canonical bosonic quantization with a positive Planck parameter. Lean constructs the complete positive frame rather than assuming it. Registered source-produced effects, numerical mass-matrix certificates, Born statistics, physical quantum instruments and clock attachments are neither used to construct this representation nor inferred from it, so no canonical physical premise edge is consumed or discharged."
       }
     },
     {

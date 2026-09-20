@@ -247,10 +247,18 @@ the actual mass and stiffness forms.
 
 \path{Lean/Screen/WhitneyQuantumBridge.lean} formalizes the complete
 normal-frame action pullback, polynomial commutation relations, occupation
-energies and Heisenberg identities. Its frame is supplied; existence here
-uses the finite spectral argument above. The Hilbert completion and
-self-adjoint-domain argument are the analytic proof just given, not Lean
-results. This is canonical quantization of the free radiative sector.
+energies and Heisenberg identities. The modules
+\path{Lean/Screen/WhitneyNormalModeConstruction.lean},
+\path{Lean/Screen/WhitneyConeModes.lean}, and
+\path{Lean/Screen/WhitneyConeMass.lean} construct the complete positive
+30-mode frame from the cone cochain maps and supplied symmetric
+positive-definite Whitney mass forms. The frame-naturality modules prove that
+the classical action and the full polynomial Hamiltonian, including the
+zero-point term, are unchanged under mass-overlap transport between any two
+admissible frames; the transition and its polynomial lift obey identity and
+composition. The Hilbert completion and self-adjoint-domain argument are the
+analytic proof just given, not Lean results. This is canonical quantization
+of the free radiative sector.
 The recorded history with nonzero prescribed charge additionally needs an
 affine longitudinal sector and source coupling. Classical readback does
 not select a quantum state, Born statistics, \(\hbar\) or a physical

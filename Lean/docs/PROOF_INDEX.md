@@ -68,6 +68,24 @@ Mapping between Lean 4 theorems in this project and statements in
   $R=I-L/60$ for thirty seams. The theorem does not assert that A1--A3
   select this grammar, that the refinement semigroup commutes, or that the
   finite generator is a physical repair law.
+- Whitney positive modes and frame naturality
+  (`Screen/WhitneyNormalModeConstruction.lean`, `Screen/WhitneyConeModes.lean`,
+  `Screen/WhitneyConeMass.lean`, and the `Whitney*Naturality.lean` modules):
+  sorry-free finite-dimensional spectral and basis-change algebra for the
+  radiative theorem in `paper/tex_fragments/WHITNEY_MAXWELL_DYNAMICS.tex`.
+  Cone exactness gives a 30-dimensional constrained sector; supplied
+  symmetric positive-definite edge and face mass forms produce a complete
+  positive frame consumed by the existing classical-action and polynomial
+  quantum-Hamiltonian theorems. Mass-overlap transitions reconstruct between
+  arbitrary admissible frames, obey identity and composition, cannot mix
+  unequal frequencies, and intertwine the full Hamiltonian including its
+  zero-point term. `WhitneyFrameMorphism.lean` packages the same laws across
+  mass-, stiffness-, and constraint-preserving physical presentations.
+  Sign, reindexing, and a genuine non-permutation equal-frequency rotation
+  are positive controls; stiffness positivity is equivalent to absence of a
+  constrained harmonic mode. The numerical mass-matrix certificates, Hilbert
+  completion, interacting sector, continuum limit, physical clock, and state
+  selection remain outside these Lean results.
 - Finite repair-word schedule selection
   (`ObserverPatchHolography/RepairWordSchedule.lean`): sorry-free
   information-theoretic algebra. If the primitive event type is complete and
