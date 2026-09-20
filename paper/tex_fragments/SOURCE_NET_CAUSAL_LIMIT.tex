@@ -54,8 +54,9 @@ normed spaces; \path{Lean/Geometry/SourceNetCausalCone.lean} formalizes them.
 The partial order, its equality with the reflexive transitive closure of the
 reads, the graph-distance characterization, and the width and height
 statements are formalized in \path{Lean/Geometry/SourceNetLayeredOrder.lean}.
-The volume estimates below are analytic results for the three-dimensional
-Euclidean repair carrier.
+The volume estimates below concern the three-dimensional Euclidean repair
+carrier. The vertical weighted bound and its family limit are formalized
+below; the separate general moving-tip finite estimate remains analytic.
 
 For model time $\tau=k\Delta$, the two radii in
 \eqref{eq:source-net-cone-sandwich} are
@@ -145,6 +146,10 @@ disjointness and assignment, is formalized by
 \path{SourceNetVolumeError.weighted_alexandrov_error} in
 \path{Lean/Geometry/SourceNetVolumeError.lean}.
 The zero-hop endpoint cases and all $K+1$ layers are included.
+The general limit for varying, possibly unequal cell masses is proved by
+\path{SourceNetVolumeError.weighted_alexandrov_tendsto}: it assumes
+$a_n,H_n,h_n/a_n\to0$, $K_n(a_n/c)\to T$ and the eventual interior buffer,
+and derives convergence of the actual weighted generated intervals.
 \path{Lean/Geometry/GoldenSourceVolumeLimit.lean} instantiates the bound
 with the actual golden sites and equal cell masses, proves its exact raw
 count interpretation, and derives the aligned weighted-volume limit as
