@@ -386,4 +386,4 @@ and scientific boundaries relevant to new contributions.
 
 ## License
 
-The repository uses split licensing. All software, including the Lean library, [`code/`](code), and [`tools/`](tools), is licensed under [Apache-2.0](code/LICENSE). Papers, the book, documentation, figures, and data are licensed under [CC BY-NC-SA 4.0](LICENSE). Hardware design files use CERN-OHL-W 2.0. The [LICENSE](LICENSE) file gives the per-directory map.
+The repository uses split licensing. All software, including the Lean library, [`code/`](code), [`tools/`](tools), and the schemas in [`schemas/`](schemas), is licensed under [Apache-2.0](code/LICENSE). Papers, the book, documentation, figures, data, the generated ledgers in [`tracking/`](tracking), and the packaged particle data in [`pdg_data/`](pdg_data) are licensed under [CC BY-NC-SA 4.0](LICENSE); the tabulated values in `pdg_data/` carry their upstream Particle Data Group terms. The [LICENSE](LICENSE) file gives the per-directory map.

@@ -308,13 +308,11 @@ résultats finis et structurels exacts constituent la partie la plus solide.
 | La synthèse complète | [Finite Observer Consensus as a Reconstruction Principle](https://philpapers.org/rec/MUEFOC) |
 | Le mécanisme de consensus fini | [Reality as a Consensus Protocol](paper/reality_as_consensus_protocol.pdf) |
 | La construction des particules | [Deriving the Particle Zoo](paper/deriving_the_particle_zoo_from_observer_consistency.pdf) |
-| L’identité exacte de Koide dans la chambre positive et l’équilibre tracial fini | [The Positive-Chamber Koide Identity for Icosahedral Face Circulants](extra/koide_identity_from_positive_c3_face_circulants.pdf) |
-| La loi exacte de capacité d’un écran fini en espace de Sitter et l’attachement conditionnel du signe du choc | [The de Sitter Time-Advance Sign from a Finite Screen with Fixed Capacity](extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.pdf) |
 | L’architecture de l’écran à douze ports et le théorème fini d’engrenage modulaire | [Federated Echosahedral Screen Microphysics](paper/screen_microphysics_and_observer_synchronization.pdf) |
 | Les preuves exécutables | [`code/`](code) et le [guide de reproduction](REPRODUCE.md) |
 | L’interprétation et la continuation des observateurs | [Paradise as Fixed-Point Consensus](paper/paradise_as_fixed_point_consensus.pdf) |
 
-L’[index des articles](paper/) et l’[index des suppléments](extra/) donnent la carte complète des publications.
+L’[index des articles](paper/) donne la carte éditoriale des publications. Les PDF de recherche ciblés de [`extra/`](extra/) sont destinés aux lecteurs du dépôt et ne font pas partie de la publication.
 
 ## Preuves et éléments de vérification
 
@@ -379,7 +377,7 @@ briseraient.
 ## Guide du dépôt
 
 - [`paper/`](paper) : articles principaux, sources TeX, PDF et métadonnées de version.
-- [`extra/`](extra) : preuve compacte et suppléments mathématiques ciblés.
+- [`extra/`](extra) : suppléments mathématiques ciblés.
 - [`code/`](code) : certificats, simulations, calculs de particules et expériences.
 - [`book/`](book) : source du livre et PDF téléchargeable.
 - [`cosmology/`](cosmology) : recherche sur le secteur sombre et la cosmologie.
@@ -408,4 +406,4 @@ contributions.
 
 ## Licence
 
-Le dépôt utilise des licences séparées par type d’artefact. Tout le logiciel, y compris la bibliothèque Lean, [`code/`](code) et [`tools/`](tools), est publié sous [Apache-2.0](code/LICENSE). Les articles, le livre, la documentation, les figures et les données sont publiés sous [CC BY-NC-SA 4.0](LICENSE). Les fichiers de conception matérielle utilisent la CERN-OHL-W 2.0. Le fichier [LICENSE](LICENSE) donne la carte par répertoire.
+Le dépôt utilise des licences séparées par type d’artefact. Tout le logiciel, y compris la bibliothèque Lean, [`code/`](code), [`tools/`](tools) et les schémas de [`schemas/`](schemas), est publié sous [Apache-2.0](code/LICENSE). Les articles, le livre, la documentation, les figures, les données, les registres générés de [`tracking/`](tracking) et les données de particules empaquetées de [`pdg_data/`](pdg_data) sont publiés sous [CC BY-NC-SA 4.0](LICENSE). Les valeurs tabulées de `pdg_data/` conservent les conditions amont du Particle Data Group. Le fichier [LICENSE](LICENSE) donne la carte par répertoire.
