@@ -171,10 +171,10 @@ python -m pytest -q code/source_encoded_memory
 The new Windows/Linux workflow replays the controls. Lean CI explicitly builds
 the downstream axiom audit even for dependency-only changes. The frozen
 mandatory runner and M1 parent scientific receipts are unchanged. The follow-up
-CI repairs refresh provenance hashes in three Maxwell descendants; their
-scientific payloads and verdicts are unchanged. Updated main also supplies
-the postdiction-ledger repair. See [AUDIT.md](AUDIT.md) for the independent
-revalidation and restored cross-platform artifact-equality assertion.
+Updated main contains the independently revalidated Maxwell and ledger
+provenance repairs; this branch changes none of those scientific receipts.
+See [AUDIT.md](AUDIT.md) for the full mandatory-shard checks and the restored
+cross-platform artifact-equality assertion.
 The CI regression guard reads executable shell words, so a commented-out audit
 target is rejected. Additional test-time controls cover three-cell revisits,
 unrelated records, premature cleanup, common-mode blank offsets and strict

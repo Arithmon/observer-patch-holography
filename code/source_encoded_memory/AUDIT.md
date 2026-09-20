@@ -264,15 +264,60 @@ encoded-memory/CI tests plus all 17 frontier tests with strict byte equality.
 The official postdiction `--check` also passes on both platforms after this
 merge. Repository-wide collection succeeds for **5,251 tests**. The M1 proofs, all
 eleven evidence inputs, both M1 artifacts and the frozen mandatory runner
-remain byte-identical to `460c3b37`. The final PR leaves the postdiction
-ledger byte-identical to this updated main; its only changes to pre-existing
-scientific JSON are the three independently revalidated Maxwell provenance
-hashes described above. No paper or scientific claim status is changed by
-this PR relative to the updated main.
+remain byte-identical to `460c3b37`. At that head, the PR left the postdiction
+ledger byte-identical to main; its only changes to pre-existing scientific
+JSON were the three independently revalidated Maxwell provenance hashes
+described above. No paper or scientific claim status was changed by this
+PR relative to that main.
 
-A fresh virtual merge with #914 at `c6c408b2` now reports a conflict in
+At `db5db973`, a fresh virtual merge with #914 at `c6c408b2` reported a conflict in
 `paper/paper_release_manifest.json` following main's publication rebuild.
-The source, proof and Lean-workflow changes merge cleanly. The earlier
-conflict-free result above describes the earlier baseline, not the current
-publication metadata. This branch does not depend on merging #914, and
-#914's published head is unchanged by this audit.
+The source, proof and Lean-workflow changes merged cleanly. The earlier
+conflict-free result above describes the earlier baseline. This branch does
+not depend on merging #914; at that point its published head was unchanged.
+
+## Hosted-CI failures at `db5db973` and their correction
+
+The completed mandatory run `35507330212` reported six failed checks: shards
+3 and 4 on both operating systems, plus the two summary checks that depend
+on all shards. There were two underlying failures. Lean and encoded-memory
+CI passed. The earlier focused validation after integrating main missed
+these affected mandatory groups; its passing test counts did not establish
+that the whole CI suite passed.
+
+- Shard 3 stopped at the N-closure branch certificate's stale edge-center
+  source hash. Current main's `1f5f4e7d` refreshes that certificate and its
+  three descendants. The official producer was run to a separate candidate
+  path before integration; its bytes exactly match the upstream correction.
+  Comparing all four JSON artifacts finds only digest-leaf changes, with no
+  changed scientific values, types, status flags or verdicts.
+- Shard 4 stopped at four preview regression failures. Main's workflow now
+  checks `essays`, but the tests still asserted the old directory list and
+  built fixtures without that directory. The exact four failures were
+  reproduced locally. The same upstream commit updates both the assertions
+  and executable fixtures to the actual workflow; it removes no gate.
+
+Main `2b03a95c` was integrated, including those fixes and the byte-identical
+Maxwell portability/provenance correction already present on this branch.
+Both complete commands now pass on **Windows and Linux**:
+
+```text
+python tools/run_mandatory_suite.py --shard-index 3 --shard-count 6
+python tools/run_mandatory_suite.py --shard-index 4 --shard-count 6
+```
+
+These runs execute all 24 and 25 stages respectively, including the stages
+that the original failures prevented CI from reaching. The 135 focused
+encoded-memory, frontier and CI-regression tests also pass on each platform.
+All eleven M1 inputs, both retained M1 JSON artifacts and the mandatory
+runner remain byte-identical to the preceding audited head. The current PR
+changes no pre-existing scientific receipt relative to updated main.
+
+The companion #914 was also synchronized with this main. Its conflict was
+limited to the flagship PDF's hash and size in the generated release
+manifest: the older 466169-byte file versus main's 467182-byte rebuild.
+The resolution follows the actual merged PDF bytes and is reproduced by the
+official manifest generator with release-line checks enabled. No PDF or
+paper source was edited to resolve it. Its 14 M1 inputs and retained evidence
+are unchanged; its manifest, passive-memory and strict frontier controls
+pass 127 tests on each platform. This supersedes the earlier conflict report.
