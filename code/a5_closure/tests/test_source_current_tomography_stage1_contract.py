@@ -37,7 +37,8 @@ class SourceCurrentTomographyStage1Tests(unittest.TestCase):
         self.assertTrue(ordered["required"])
         self.assertTrue(ordered["both_composition_orders_per_unordered_port_pair"])
         self.assertTrue(ordered["same_source_packet"])
-        self.assertEqual(ordered["unordered_port_pairs"], 66)\n        self.assertEqual(ordered["ordered_compositions"], 132)
+        self.assertEqual(ordered["unordered_port_pairs"], 66)
+        self.assertEqual(ordered["ordered_compositions"], 132)
 
     def test_first_order_and_mixed_order_gates_are_nontrivial(self) -> None:
         contract = self.payload["source_packet_contract"]
