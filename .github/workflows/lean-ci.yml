@@ -132,6 +132,7 @@ jobs:
           # the exhaustive umbrella build is intentionally nightly-only.
           targets=(
             "Geometry.SourceEncodedMemoryAxiomAudit"
+            "Geometry.SourceReusableBusAxiomAudit"
             "ObserverPatchHolography.EinsteinBranch.AxiomAudit"
             "A5PrimitivePortPrediction"
           )
