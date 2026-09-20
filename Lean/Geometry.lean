@@ -3,6 +3,7 @@ import Geometry.SourceSeamPathTomography
 import Geometry.SourceFeedbackTransport
 import Geometry.SourceEncodedMemoryAxiomAudit
 import Geometry.SourceReusableBusAxiomAudit
+import Geometry.SourceNativeUpdatesAxiomAudit
 import Geometry.SourcePopulationQuadrature
 import Geometry.GoldenSourceAssignment
 import Geometry.GoldenSourceCountLimit

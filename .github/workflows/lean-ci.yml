@@ -127,12 +127,13 @@ jobs:
             head="$GITHUB_SHA"
           fi
 
-          # These two roots provision everything needed by the explicit trust
+          # These roots provision everything needed by the explicit trust
           # replays below. Additional changed modules are compiled directly;
           # the exhaustive umbrella build is intentionally nightly-only.
           targets=(
             "Geometry.SourceEncodedMemoryAxiomAudit"
             "Geometry.SourceReusableBusAxiomAudit"
+            "Geometry.SourceNativeUpdatesAxiomAudit"
             "ObserverPatchHolography.EinsteinBranch.AxiomAudit"
             "A5PrimitivePortPrediction"
           )
