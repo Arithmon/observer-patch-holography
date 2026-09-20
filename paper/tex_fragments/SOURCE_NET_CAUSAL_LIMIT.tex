@@ -259,8 +259,16 @@ These spatial arithmetic, partition and quadrature statements have Lean
 proofs in \texttt{GoldenSourceAssignment}. The module
 \texttt{GoldenSourceCountLimit} also proves normalized actual event-count
 convergence on each fixed measurable continuity set for the declared time
-grid, with final-layer discrepancy at most $L^3\Delta_q$. The causal-boundary,
-moving-interval and strict-pair specializations below are analytic.
+grid, with final-layer discrepancy at most $L^3\Delta_q$.
+\texttt{SourceCausalBoundary} proves causal-frontier and pairwise
+null-separation nullity by Fubini. \texttt{SourceNetOrderLimit} derives
+eventual order agreement from actual covering paths.
+\texttt{GoldenSourceCausalLimit.generated\_interval\_count\_tendsto}
+combines this with the actual golden partition to prove count convergence
+for moving generated intervals. Its reference volume is explicitly
+restricted to the supplied time and spatial window; an uncut diamond
+requires the interior hypothesis. The explicit error and strict-pair
+specializations remain analytic at this stage.
 Taking products with time cells $[j\Delta_q,(j+1)\Delta_q]$ proves
 convergence of the normalized event measure: for a Lipschitz test function
 on an aligned time window of length $T$, the error is at most

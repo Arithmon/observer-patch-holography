@@ -104,10 +104,12 @@ bounds the excess over any selected cells. The golden and time-coordinate
 maps are injective, so the label sums are point counts.
 \end{proof}
 These steps, the actual $\Delta_n$ specialization and the endpoint control
-are kernel-checked in \texttt{GoldenSourceCountLimit}. Identifying the
-null frontier of a particular causal region, transferring the estimate to
-moving generated-order intervals and deriving strict-pair limits remain
-separate analytic arguments. Extra routing events require another count
+are kernel-checked in \texttt{GoldenSourceCountLimit}.
+\texttt{SourceCausalBoundary} proves causal-diamond frontier nullity;
+\texttt{GoldenSourceCausalLimit} transfers the actual count measure to
+moving generated-order intervals, with the finite window retained in the
+reference volume. Strict-pair limits and the explicit Alexandrov error
+remain separate analytic arguments at this stage. Extra routing events require another count
 estimate; the sampling theorem selects no physical measure or clock.
 
 \begin{proposition}[Localized radial-kernel quadrature]

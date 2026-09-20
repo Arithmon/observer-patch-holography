@@ -4,6 +4,7 @@ import Geometry.SourceFeedbackTransport
 import Geometry.SourcePopulationQuadrature
 import Geometry.GoldenSourceAssignment
 import Geometry.GoldenSourceCountLimit
+import Geometry.GoldenSourceCausalLimit
 import Geometry.SourceNetCausalCone
 import Geometry.SourceNetLayeredOrder
 import Geometry.SourceNetConformalRecordDensity
