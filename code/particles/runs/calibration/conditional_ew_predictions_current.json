@@ -1,6 +1,6 @@
 {
  "artifact": "oph_conditional_ew_predictions",
- "generated_utc": "2026-07-16T09:07:10Z",
+ "generated_utc": "2026-09-20T07:47:00Z",
  "row_class": "conditional_on_P_and_repair_selection",
  "guards": {
   "public_promotion_allowed": false,
@@ -101,7 +101,7 @@
    "physical_comparison_status": "COMPARE_ONLY",
    "measured": 125.13,
    "measured_sigma": 0.11,
-   "measured_source": "PDG 2025",
+   "measured_source": "PDG 2026",
    "delta": 0.07747557670501237,
    "delta_over_sigma": 0.7043234245910216,
    "envelope_overlaps_one_sigma_band": true,
@@ -116,7 +116,7 @@
    "physical_comparison_status": "COMPARE_ONLY",
    "measured": 172.1,
    "measured_sigma": 0.6,
-   "measured_source": "PDG 2025 direct-average context row",
+   "measured_source": "PDG 2026 cross-section pole-mass context row",
    "delta": 0.21492450651575723,
    "delta_over_sigma": 0.3582075108595954,
    "envelope_overlaps_one_sigma_band": true,

@@ -46,8 +46,8 @@ P_EMPIRICAL_INTERVAL = (1.631031463127, 1.631051577591)  # Thomson endpoint arti
 D_ALPHA_U_D_P = -10.9905                   # hierarchy certificate derivative (midpoint)
 
 COMPARE_ONLY_REFERENCES = {
-    "mH_gev": (125.13, 0.11, "PDG 2025"),
-    "mt_pole_gev": (172.1, 0.6, "PDG 2025 direct-average context row"),
+    "mH_gev": (125.13, 0.11, "PDG 2026"),
+    "mt_pole_gev": (172.1, 0.6, "PDG 2026 cross-section pole-mass context row"),
     "MW_chart_gev": (
         80.3692,
         0.0133,

@@ -5581,7 +5581,7 @@ def _quark_rows(
                 "fiber (R>0)^2, obtained by granting a candidate-only ordered "
                 "shape law, survives the 2026-07 certified structure set "
                 "(matter receipt #314, port receipt #566, twelve frozen "
-                "selector candidates; input hashes pinned 2026-07-30), so the "
+                "selector candidates, with input hashes pinned at emission), so the "
                 "six source-only absolute masses are non-identifiable from that "
                 "set, by an explicit rescaling symmetry of the registered data. "
                 "Live cuts: a Yukawa-typed source equation through the physical "
@@ -5708,9 +5708,10 @@ def _principal_results(sections: dict[str, Any]) -> list[dict[str, Any]]:
                 f"[{leptons['charged_leptons_koide_conditional_tau']['tau_enclosure_mev_outward'][0]}, "
                 f"{leptons['charged_leptons_koide_conditional_tau']['tau_enclosure_mev_outward'][1]}] MeV, "
                 f"{leptons['charged_leptons_koide_conditional_tau']['distance_sigma']} sigma from "
-                "measurement. The balance premise was abstracted from the "
-                "measured lepton triple, so this is a target-informed "
-                "conditional postdiction with a frozen rejection rule."
+                "measurement. The balance premise is Koide's published "
+                "relation, which the face circulant of the carrier holds as a "
+                "finite structure, so this is a conditional postdiction with a "
+                "frozen rejection rule and a declared premise ancestry."
             ),
         },
         {

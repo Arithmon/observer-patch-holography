@@ -24,15 +24,16 @@ propagates the measured (m_e, m_mu) enclosures through the closed-form
 root at every corner, rounds outward, and compares the resulting tau
 interval with the measured tau mass.
 
-ANCESTRY (declared, read before citing): the balance condition was first
-abstracted from the measured charged triple (Koide, 1981-1983); the
-circulant identity gives it a finite structural home and the finite-GNS
-construction supplies the balanced modulus as a conditional theorem, but
-no source-only derivation of the premise exists in the corpus.  Both
-lanes are therefore conditional/compare-only rows with measured-target
-ancestry on the premise class: lane two is a conditional postdiction of
-one mass from two masses under a premise whose selection history includes
-the third.  No lane is a prospective prediction, and the source-only
+ANCESTRY (declared, read before citing): the balance condition is the
+relation Koide published in 1981-1983, and this corpus takes it from that
+published relation rather than from a fit to the masses.  The positive-
+chamber face circulant of the OPH carrier gives the relation a finite
+structural home, and the finite-GNS construction supplies the balanced
+modulus as a conditional theorem; a source-only derivation of the balance
+value is work in progress.  Both lanes are therefore conditional
+compare-only rows whose premise class carries that published ancestry:
+lane two is a conditional postdiction of one mass from two masses under a
+premise that Koide read off all three.  No lane is a prospective prediction, and the source-only
 charged no-go is unchanged.
 """
 

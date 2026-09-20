@@ -92,7 +92,7 @@
     }
   ],
   "excluded_lane": "hadrons_compute_bound",
-  "generated_utc": "2026-07-29T17:21:23Z",
+  "generated_utc": "2026-09-20T07:47:00Z",
   "status": "conditional_nonhadron_candidates_with_classical_carriers_separated_and_target_anchored_witnesses_withheld",
   "withheld_entries": [
     {

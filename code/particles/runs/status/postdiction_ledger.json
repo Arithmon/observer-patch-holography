@@ -24,7 +24,7 @@
     },
     {
       "id": "koide_conditional_tau_window",
-      "statement": "Under the balanced-circulant and mass-ordering premises the measured electron and muon masses fix the tau mass inside [1776.968991, 1776.969063] MeV, 0.4336 sigma from measurement. The balance premise was abstracted from the measured lepton triple, so this is a target-informed conditional postdiction with a frozen rejection rule."
+      "statement": "Under the balanced-circulant and mass-ordering premises the measured electron and muon masses fix the tau mass inside [1776.968991, 1776.969063] MeV, 0.4336 sigma from measurement. The balance premise is Koide's published relation, which the face circulant of the carrier holds as a finite structure, so this is a conditional postdiction with a frozen rejection rule and a declared premise ancestry."
     },
     {
       "id": "lepton_closure_target",
@@ -400,7 +400,7 @@
         "id": "ew_mH_gev",
         "measured": 125.13,
         "measured_sigma": 0.11,
-        "measured_source": "PDG 2025",
+        "measured_source": "PDG 2026",
         "physical_comparison_status": "COMPARE_ONLY",
         "row_class": "conditional_on_P_and_repair_selection",
         "tier": "T2_conditional",
@@ -418,7 +418,7 @@
         "id": "ew_mt_pole_gev",
         "measured": 172.1,
         "measured_sigma": 0.6,
-        "measured_source": "PDG 2025 direct-average context row",
+        "measured_source": "PDG 2026 cross-section pole-mass context row",
         "physical_comparison_status": "COMPARE_ONLY",
         "row_class": "conditional_on_P_and_repair_selection",
         "tier": "T2_conditional",
@@ -5256,7 +5256,7 @@
         "gluon",
         "graviton"
       ],
-      "receipt_sha256": "sha256:d01f63895a25b22ee7adbd7de6e391ab83cb3906f9914119ae05853fce01f565",
+      "receipt_sha256": "sha256:70c3be1c66eabc0e3affc721f9ee5a111966fea6ba23f451819424bed23523a3",
       "rows": [
         {
           "blocking_frontier": [
@@ -5294,7 +5294,7 @@
         "scientific_owner_issues": [
           736
         ],
-        "statement": "No absolute quark mass is emitted. The two-modulus spread fiber (R>0)^2, obtained by granting a candidate-only ordered shape law, survives the 2026-07 certified structure set (matter receipt #314, port receipt #566, twelve frozen selector candidates; input hashes pinned 2026-07-30), so the six source-only absolute masses are non-identifiable from that set, by an explicit rescaling symmetry of the registered data. Live cuts: a Yukawa-typed source equation through the physical bindings or the family attachment, a new selector under the frozen discipline, or the conditional Higgs/top criticality coordinate",
+        "statement": "No absolute quark mass is emitted. The two-modulus spread fiber (R>0)^2, obtained by granting a candidate-only ordered shape law, survives the 2026-07 certified structure set (matter receipt #314, port receipt #566, twelve frozen selector candidates, with input hashes pinned at emission), so the six source-only absolute masses are non-identifiable from that set, by an explicit rescaling symmetry of the registered data. Live cuts: a Yukawa-typed source equation through the physical bindings or the family attachment, a new selector under the frozen discipline, or the conditional Higgs/top criticality coordinate",
         "tier": "source_only_nonidentifiability_obstruction_transport"
       },
       {

@@ -197,7 +197,7 @@ A matter candidate is a pair (S, M): S a stratum of the classified compact locus
 
 ### PR-13 Koide balance premise
 
-For a positive-chamber face circulant with square-root masses sqrt(m_k) = sqrt(s)*(a + 2*rho*cos(delta + 2*pi*k/3)), the balance premise rho/a = 1/sqrt(2) makes the signed Koide quotient equal 2/3 exactly. The circulant identity is machine-checked in Lean/ObserverPatchHolography/KoideCirculant.lean, and code/particles/leptons/koide_balance_comparison_certificate.py records the declared ancestry: the balance condition was abstracted from the measured charged triple, and no source-only derivation of the premise exists in the corpus.
+For a positive-chamber face circulant with square-root masses sqrt(m_k) = sqrt(s)*(a + 2*rho*cos(delta + 2*pi*k/3)), the balance premise rho/a = 1/sqrt(2) makes the signed Koide quotient equal 2/3 exactly. The circulant identity is machine-checked in Lean/ObserverPatchHolography/KoideCirculant.lean, and code/particles/leptons/koide_balance_comparison_certificate.py records the declared ancestry: the balance condition is the relation Koide published in 1981-1983, and a source-only derivation of the balance value is work in progress.
 
 - Type `selection_rule`; disposition `remove`; consumed by [#735](https://github.com/FloatingPragma/observer-patch-holography/issues/735), [#736](https://github.com/FloatingPragma/observer-patch-holography/issues/736).
 - Evidence: `Lean/ObserverPatchHolography/KoideCirculant.lean` (`conditional_consumer`), `code/particles/leptons/koide_balance_comparison_certificate.py` (`conditional_consumer`), `claims/assumption_dictionary.md` (`statement`).
