@@ -131,6 +131,7 @@ jobs:
           # replays below. Additional changed modules are compiled directly;
           # the exhaustive umbrella build is intentionally nightly-only.
           targets=(
+            "Geometry.SourceEncodedMemoryAxiomAudit"
             "ObserverPatchHolography.EinsteinBranch.AxiomAudit"
             "A5PrimitivePortPrediction"
           )
