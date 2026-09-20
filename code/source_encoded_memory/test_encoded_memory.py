@@ -4,6 +4,9 @@ import importlib
 import importlib.util
 from pathlib import Path
 import re
+import shlex
+import shutil
+import subprocess
 import sys
 
 import pytest
@@ -203,6 +206,64 @@ def test_captured_locality_boundary_with_positive_finder_control():
     assert square_count([[0, 0, 1, 5], [0, 1, 1, 9]]) == 1
 
 
+def require_downstream_audit(workflow):
+    # Read the executable selector, not a matching string elsewhere in YAML.
+    doc = yaml.load(workflow, Loader=yaml.BaseLoader)
+    selector = next(step["run"] for step in doc["jobs"]["build"]["steps"]
+                    if step.get("name") == "Detect changed Lean modules")
+    block = re.search(r"(?ms)^targets=\((.*?)^\)", selector)
+    assert block is not None, "unconditional default target list is missing"
+    # Shell comments are not targets. The old raw-substring guard could be
+    # fooled by commenting out the actual downstream audit line.
+    active = shlex.split(block.group(1), comments=True)
+    assert "Geometry.SourceEncodedMemoryAxiomAudit" in active
+
+
+@pytest.mark.parametrize("replacement", [
+    '            # "Geometry.SourceEncodedMemoryAxiomAudit"',
+    '            "Geometry.SourceEncodedMemory"',
+    '',
+])
+def test_removing_or_commenting_the_ci_audit_target_fails(replacement):
+    workflow = (codec.ROOT/".github/workflows/lean-ci.yml").read_text(encoding="utf-8")
+    original = '            "Geometry.SourceEncodedMemoryAxiomAudit"'
+    assert workflow.count(original) == 1
+    with pytest.raises(AssertionError):
+        require_downstream_audit(workflow.replace(original, replacement))
+
+
+@pytest.mark.parametrize("mutation,diagnostic", [
+    ("promoted_receipt", "retained receipt mismatch"),
+    ("noncanonical_bytes", "noncanonical controls bytes"),
+    ("changed_proof", "source pins mismatch"),
+])
+def test_real_cli_rejects_tampered_artifacts_in_isolation(tmp_path, mutation, diagnostic):
+    # The real entry point must fail, not only an in-memory helper. Copy all
+    # pinned inputs byte for byte; never alter the actual retained artifacts.
+    for relative in codec.PINS + ("code/source_encoded_memory/controls.json",
+                                  "code/source_encoded_memory/receipt.json"):
+        destination = tmp_path/relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(codec.ROOT/relative, destination)
+    command = [sys.executable, str(tmp_path/"code/source_encoded_memory/verify.py")]
+    clean = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, encoding="utf-8")
+    assert clean.returncode == 0, clean.stderr
+    if mutation == "promoted_receipt":
+        p = tmp_path/"code/source_encoded_memory/receipt.json"
+        data = codec.load(p)
+        data["physical_M1_derived"] = True
+        p.write_bytes(codec.canonical(data))
+    elif mutation == "noncanonical_bytes":
+        p = tmp_path/"code/source_encoded_memory/controls.json"
+        p.write_bytes(b" " + p.read_bytes())
+    else:
+        p = tmp_path/"Lean/Geometry/SourceEncodedMemory.lean"
+        p.write_bytes(p.read_bytes() + b"\n-- changed proof input\n")
+    result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, encoding="utf-8")
+    assert result.returncode != 0
+    assert diagnostic in result.stderr
+
+
 def test_no_hidden_untested_theorems_and_downstream_audit():
     lean = codec.ROOT/"Lean"
     proof = (lean/"Geometry/SourceEncodedMemory.lean").read_text(encoding="utf-8")
@@ -218,9 +279,8 @@ def test_no_hidden_untested_theorems_and_downstream_audit():
     assert "audit_encoded_axioms Lean.ofReduceBool" in audit
     assert "import Geometry.SourceEncodedMemoryAxiomAudit" in (lean/"Geometry.lean").read_text(encoding="utf-8")
     workflow = (codec.ROOT/".github/workflows/lean-ci.yml").read_text(encoding="utf-8")
-    default_targets = re.search(r"targets=\((.*?)\n          \)", workflow, re.S).group(1)
     # Dependency-only changes must rerun this importer; changed-file builds do not suffice.
-    assert '"Geometry.SourceEncodedMemoryAxiomAudit"' in default_targets
+    require_downstream_audit(workflow)
 
 
 def test_dedicated_ci_covers_receipts_and_every_input():
