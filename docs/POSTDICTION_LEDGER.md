@@ -203,6 +203,18 @@ The target-named status packet consumes no laboratory comparison value, permits 
 - Reading: one retrospective KNT19 accounting row is arithmetically compatible with the recorded same-scheme interval. The multi-class HVP test is not evaluable because no independent frozen class is present. Containment does not identify the physical source of the gap, select one closure map, construct the same-quantity bridge, or close source-only transport
 - Scientific owner: #736
 
+The closure map of the pixel lane has a certified fixed point in each declared mode, and the lane reads as a chain: the fixed point of the root map, the fixed point of the same map with the unified gauge width, and the term between that second fixed point and the reference value. Each row is compare-only: the CODATA reference sits outside every solve path, and the certificate permits no promotion.
+
+| Closure map | Fixed point `alpha_em^-1` | Enclosure width | `P` | Distance to CODATA | Relative |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| root closure map, unified gauge width absent | `136.994835177` | `7.2e-24` | `1.63097209586` | `-0.041164` | `-3.00e-04` |
+| closure map with the finite-screen unified gauge width on the inverse coupling | `137.035660137` | `7.1e-24` | `1.6309682414` | `-0.000339` | `-2.47e-06` |
+
+- `alpha_inv_closure_root`: alpha -> 1/(alpha_em^-1(m_Z^2;P) + Delta_Th(P)) with P = phi + alpha*sqrt(pi); Delta_Th is the internal Stage-5 structured Thomson continuation with the exact one-loop fermion kernel and quark screening factor 1 - N_c*alpha_3(m_Z;P)/pi. Existence and uniqueness of the fixed point are certified by interval arithmetic with Lipschitz bound `0.0724` at cutoffs `120` and `90`, with the tails bounded.
+- `alpha_inv_closure_gauge_width`: alpha -> 1/(alpha_em^-1(m_Z^2;P) + Delta_Th(P) + alpha_U(P)) with P = phi + alpha*sqrt(pi); the closure-ledger CL-2 mixed map that adds the finite-screen unified gauge width alpha_U(P) to the inverse-alpha readout. Existence and uniqueness of the fixed point are certified by interval arithmetic with Lipschitz bound `0.07235` at cutoffs `120` and `90`, with the tails bounded.
+- The distance from the gauge-width fixed point to the CODATA reference, `0.000339` inverse-alpha units, is the open term of this lane. It carries the hadronic content that the Thomson-endpoint row above accounts for retrospectively, and closing it from the source side is work in progress under the scientific owner #736.
+- Neither closure row is a frozen prediction, and neither is eligible as a blind prediction: both are retrospective comparisons of a certified fixed point against a reference value.
+
 ## Charged leptons
 
 - Closure target (T1_empirical_closure): the anchor-gap value `0.6379` closes the lane exactly on the measured triple (inversion machine-checked); the distance `+0.0070` to the on-shell reference deficit `0.6309` is the unfixed scheme term of the bridge. The certified width floor is the scheme-band ambiguity; no budget is shrunk without the source bridge.

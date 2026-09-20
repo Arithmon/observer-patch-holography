@@ -797,6 +797,90 @@ def test_alpha_row_values_match_endpoint(result):
     assert "historical_context_issues" not in row
 
 
+ALPHA_CLOSURE_ROWS = (
+    ("alpha_inv_closure_root", "thomson_structured_running"),
+    (
+        "alpha_inv_closure_gauge_width",
+        "thomson_structured_running_plus_gauge_width",
+    ),
+)
+
+
+def test_alpha_closure_rows_match_the_contraction_certificate(result):
+    rows = {row["id"]: row for row in result["sections"]["alpha"]}
+    assert set(rows) == {
+        "alpha_inv_thomson_endpoint",
+        "alpha_inv_closure_root",
+        "alpha_inv_closure_gauge_width",
+    }
+    certificate = json.loads(
+        ledger.PARENTS["p_interval_contraction"].read_text(encoding="utf-8")
+    )
+    endpoint = json.loads(ledger.PARENTS["endpoint"].read_text(encoding="utf-8"))
+    measured = float(endpoint["compare_only"]["codata_alpha_inv"])
+    for row_id, mode in ALPHA_CLOSURE_ROWS:
+        row = rows[row_id]
+        block = certificate["modes"][mode]
+        point = block["fixed_point_point_estimate_display_only"]
+        enclosure = block["certified_enclosure"]["alpha_inv"]
+        assert row["mode"] == mode
+        assert row["value_central"] == pytest.approx(float(point["alpha_inv"]))
+        assert row["p_central"] == pytest.approx(float(point["P"]))
+        assert row["value_interval_decimal"] == [
+            str(enclosure["lo"]),
+            str(enclosure["hi"]),
+        ]
+        assert row["enclosure_width_decimal"] == str(enclosure["width"])
+        assert row["measured"] == pytest.approx(measured)
+        assert row["deviation_inv_alpha"] == pytest.approx(
+            row["value_central"] - measured
+        )
+        assert row["relative_deviation"] == pytest.approx(
+            (row["value_central"] - measured) / measured
+        )
+        assert row["tier"] == "T2_conditional"
+        assert row["scientific_owner_issues"] == [736]
+        assert ledger._rel("p_interval_contraction") in row["artifact_refs"]
+
+
+def test_alpha_closure_chain_orders_the_two_maps(result):
+    rows = {row["id"]: row for row in result["sections"]["alpha"]}
+    root = rows["alpha_inv_closure_root"]
+    gauge = rows["alpha_inv_closure_gauge_width"]
+    assert abs(root["relative_deviation"]) > abs(gauge["relative_deviation"])
+    assert abs(gauge["relative_deviation"]) < 3e-6
+    text = ledger._render_md(result)
+    assert "`alpha_inv_closure_root`" in text
+    assert "`alpha_inv_closure_gauge_width`" in text
+    assert f"{abs(gauge['deviation_inv_alpha']):.6f}" in text
+    assert "is work in progress under the scientific owner #736" in text
+
+
+def test_alpha_closure_rows_fail_closed_when_the_certificate_promotes():
+    endpoint = json.loads(ledger.PARENTS["endpoint"].read_text(encoding="utf-8"))
+    certificate = json.loads(
+        ledger.PARENTS["p_interval_contraction"].read_text(encoding="utf-8")
+    )
+    for mutation in (
+        {"promotion_allowed": True},
+        {"exact_alpha_promoted": True},
+    ):
+        payload = deepcopy(certificate)
+        payload.update(mutation)
+        with pytest.raises(SystemExit):
+            ledger._alpha_closure_rows(endpoint, payload)
+    payload = deepcopy(certificate)
+    payload["consumer_policy"]["may_feed_live_particle_predictions"] = True
+    with pytest.raises(SystemExit):
+        ledger._alpha_closure_rows(endpoint, payload)
+    payload = deepcopy(certificate)
+    payload["modes"]["thomson_structured_running"]["banach"][
+        "uniqueness_in_interval"
+    ] = False
+    with pytest.raises(SystemExit):
+        ledger._alpha_closure_rows(endpoint, payload)
+
+
 def test_lepton_rows_match_parents_and_contain_witness(result):
     rows = {r["id"]: r for r in result["sections"]["charged_leptons"]}
     coherent = json.loads(ledger.PARENTS["kappa_coherent"].read_text(encoding="utf-8"))

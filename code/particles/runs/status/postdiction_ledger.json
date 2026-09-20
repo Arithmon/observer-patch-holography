@@ -68,6 +68,72 @@
           136.3670480602512,
           136.39846519336368
         ]
+      },
+      {
+        "artifact_refs": [
+          "code/P_derivation/runtime/p_interval_contraction_certificate_2026-07-14.json",
+          "code/P_derivation/runtime/empirical_thomson_endpoint_current.json"
+        ],
+        "closure_map_description": "root closure map, unified gauge width absent",
+        "deviation_inv_alpha": -0.041163999587070066,
+        "enclosure_width_decimal": "7.1517913485506260871123026520241314126362022560004430307593246781e-24",
+        "id": "alpha_inv_closure_root",
+        "lipschitz_bound": 0.07240056016743157,
+        "map_definition": "alpha -> 1/(alpha_em^-1(m_Z^2;P) + Delta_Th(P)) with P = phi + alpha*sqrt(pi); Delta_Th is the internal Stage-5 structured Thomson continuation with the exact one-loop fermion kernel and quark screening factor 1 - N_c*alpha_3(m_Z;P)/pi",
+        "measured": 137.035999177,
+        "measured_source": "CODATA 2022 via NIST; compare-only, outside the solve path",
+        "mode": "thomson_structured_running",
+        "p_central": 1.6309720958588974,
+        "relative_deviation": -0.00030038821794484344,
+        "row_class": "certified_interval_fixed_point_of_declared_closure_map",
+        "scientific_owner_issues": [
+          736
+        ],
+        "su2_cutoff": 120,
+        "su3_cutoff": 90,
+        "tier": "T2_conditional",
+        "value_central": 136.99483517741294,
+        "value_interval": [
+          136.99483517741294,
+          136.99483517741294
+        ],
+        "value_interval_decimal": [
+          "136.99483517741293729528942588854122858224816259488415982669492046",
+          "136.99483517741293729528943304033257713287424970718681185082633309"
+        ]
+      },
+      {
+        "artifact_refs": [
+          "code/P_derivation/runtime/p_interval_contraction_certificate_2026-07-14.json",
+          "code/P_derivation/runtime/empirical_thomson_endpoint_current.json"
+        ],
+        "closure_map_description": "closure map with the finite-screen unified gauge width on the inverse coupling",
+        "deviation_inv_alpha": -0.0003390400534328819,
+        "enclosure_width_decimal": "7.0872360412571028630801821074690994190426578055519774703247763269e-24",
+        "id": "alpha_inv_closure_gauge_width",
+        "lipschitz_bound": 0.07235443988743846,
+        "map_definition": "alpha -> 1/(alpha_em^-1(m_Z^2;P) + Delta_Th(P) + alpha_U(P)) with P = phi + alpha*sqrt(pi); the closure-ledger CL-2 mixed map that adds the finite-screen unified gauge width alpha_U(P) to the inverse-alpha readout",
+        "measured": 137.035999177,
+        "measured_source": "CODATA 2022 via NIST; compare-only, outside the solve path",
+        "mode": "thomson_structured_running_plus_gauge_width",
+        "p_central": 1.6309682414045266,
+        "relative_deviation": -2.474094803329504e-06,
+        "row_class": "certified_interval_fixed_point_of_declared_closure_map",
+        "scientific_owner_issues": [
+          736
+        ],
+        "su2_cutoff": 120,
+        "su3_cutoff": 90,
+        "tier": "T2_conditional",
+        "value_central": 137.03566013694657,
+        "value_interval": [
+          137.03566013694657,
+          137.03566013694657
+        ],
+        "value_interval_decimal": [
+          "137.03566013694657656887272691885291822794869072208468447786792121",
+          "137.03566013694657656887273400608895948505155380226679194696734026"
+        ]
       }
     ],
     "charged_leptons": [

@@ -53,6 +53,8 @@ PARENTS = {
     "conditional_ew": RUNS / "calibration" / "conditional_ew_predictions_current.json",
     "endpoint": RUNTIME / "empirical_thomson_endpoint_current.json",
     "anchor_bridge": RUNTIME / "anchor_scheme_bridge_current.json",
+    "p_interval_contraction": RUNTIME
+    / "p_interval_contraction_certificate_2026-07-14.json",
     "kappa_rectangle": RUNS / "leptons" / "charged_kappa_interval_from_alpha_transport.json",
     "kappa_coherent": RUNS / "leptons" / "charged_kappa_interval_coherent_closure.json",
     "koide_balance": RUNS / "leptons" / "koide_balance_comparison.json",
@@ -5285,6 +5287,100 @@ def _alpha_rows(
     ]
 
 
+ALPHA_CLOSURE_MODES = (
+    (
+        "alpha_inv_closure_root",
+        "thomson_structured_running",
+        "root closure map, unified gauge width absent",
+    ),
+    (
+        "alpha_inv_closure_gauge_width",
+        "thomson_structured_running_plus_gauge_width",
+        "closure map with the finite-screen unified gauge width on the inverse coupling",
+    ),
+)
+
+
+def _alpha_closure_rows(
+    endpoint: dict[str, Any],
+    contraction: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Compare-only rows for the certified fixed points of the declared closure map.
+
+    The certificate supplies interval-arithmetic existence and uniqueness for
+    each declared map at its stated cutoffs. The rows carry the enclosure, the
+    distance to the CODATA reference, and the owning issue. They consume no
+    measured value on any solve path.
+    """
+    co = endpoint["compare_only"]
+    measured = float(co["codata_alpha_inv"])
+    if (
+        contraction.get("exact_alpha_promoted") is not False
+        or contraction.get("promotion_allowed") is not False
+    ):
+        raise SystemExit(
+            "the P contraction certificate has left its compare-only boundary"
+        )
+    policy = contraction["consumer_policy"]
+    if (
+        policy["may_feed_compare_or_audit_surfaces"] is not True
+        or policy["may_feed_live_particle_predictions"] is not False
+        or policy["hidden_external_alpha_allowed"] is not False
+        or policy["default_thomson_endpoint_allowed"] is not False
+    ):
+        raise SystemExit("the P contraction certificate consumer policy has changed")
+    rows: list[dict[str, Any]] = []
+    for row_id, mode, description in ALPHA_CLOSURE_MODES:
+        block = contraction["modes"][mode]
+        banach = block["banach"]
+        if not (
+            banach["existence"]
+            and banach["contraction"]
+            and banach["uniqueness_in_interval"]
+            and banach["g_maps_interval_into_interior"]
+        ):
+            raise SystemExit(
+                f"the {mode} fixed point lacks certified existence and uniqueness"
+            )
+        enclosure = block["certified_enclosure"]["alpha_inv"]
+        point = block["fixed_point_point_estimate_display_only"]
+        central = float(point["alpha_inv"])
+        rows.append(
+            {
+                "id": row_id,
+                "mode": mode,
+                "closure_map_description": description,
+                "map_definition": block["map_definition"],
+                "value_central": central,
+                "value_interval": [
+                    float(enclosure["lo"]),
+                    float(enclosure["hi"]),
+                ],
+                "value_interval_decimal": [
+                    str(enclosure["lo"]),
+                    str(enclosure["hi"]),
+                ],
+                "enclosure_width_decimal": str(enclosure["width"]),
+                "p_central": float(point["P"]),
+                "measured": measured,
+                "measured_source": co["codata_source"],
+                "deviation_inv_alpha": central - measured,
+                "relative_deviation": (central - measured) / measured,
+                "row_class": "certified_interval_fixed_point_of_declared_closure_map",
+                "tier": "T2_conditional",
+                "lipschitz_bound": float(banach["lipschitz_bound"]),
+                "su2_cutoff": block["su2_cutoff"],
+                "su3_cutoff": block["su3_cutoff"],
+                "artifact_refs": [
+                    _rel("p_interval_contraction"),
+                    _rel("endpoint"),
+                ],
+                "scientific_owner_issues": [736],
+            }
+        )
+    return rows
+
+
 def _lepton_rows(
     surface: dict[str, Any],
     rectangle: dict[str, Any],
@@ -6291,6 +6387,7 @@ def build(
     conditional = _load("conditional_ew")
     endpoint = _load("endpoint")
     bridge = _load("anchor_bridge")
+    contraction = _load("p_interval_contraction")
     rectangle = _load("kappa_rectangle")
     coherent = _load("kappa_coherent")
     koide = _load("koide_balance")
@@ -6328,7 +6425,8 @@ def build(
         "quantum_carrier_status": _quantum_carrier_status_row(
             quantum_carrier_status
         ),
-        "alpha": _alpha_rows(endpoint, bridge, alpha_hvp_verdict),
+        "alpha": _alpha_rows(endpoint, bridge, alpha_hvp_verdict)
+        + _alpha_closure_rows(endpoint, contraction),
         "charged_leptons": _lepton_rows(surface, rectangle, coherent, koide),
         "electroweak": _ew_rows(conditional),
         "quarks": _quark_rows(obstruction, clebsch, selection),
@@ -6480,6 +6578,8 @@ def _render_md(ledger: dict[str, Any]) -> str:
     add("## Fine-structure lane")
     add("")
     for row in s["alpha"]:
+        if row["id"] != "alpha_inv_thomson_endpoint":
+            continue
         lo, hi = row["value_interval"]
         glo, ghi = row["anchor_gap_interval"]
         add(f"- `alpha_em^-1` Thomson endpoint: `{_fmt(row['value_central'], 10)}` "
@@ -6501,6 +6601,63 @@ def _render_md(ledger: dict[str, Any]) -> str:
         add(
             "- Scientific owner: "
             + ", ".join(f"#{i}" for i in row["scientific_owner_issues"])
+        )
+    closure_rows = [
+        row for row in s["alpha"] if row["id"] != "alpha_inv_thomson_endpoint"
+    ]
+    if closure_rows:
+        add("")
+        add(
+            "The closure map of the pixel lane has a certified fixed point in "
+            "each declared mode, and the lane reads as a chain: the fixed point "
+            "of the root map, the fixed point of the same map with the unified "
+            "gauge width, and the term between that second fixed point and the "
+            "reference value. Each row is compare-only: the CODATA reference "
+            "sits outside every solve path, and the certificate permits no "
+            "promotion."
+        )
+        add("")
+        add(
+            "| Closure map | Fixed point `alpha_em^-1` | Enclosure width | "
+            "`P` | Distance to CODATA | Relative |"
+        )
+        add("| --- | ---: | ---: | ---: | ---: | ---: |")
+        for row in closure_rows:
+            width = float(row["enclosure_width_decimal"])
+            add(
+                f"| {row['closure_map_description']} | "
+                f"`{_fmt(row['value_central'], 12)}` | "
+                f"`{_fmt(width, 2)}` | "
+                f"`{_fmt(row['p_central'], 12)}` | "
+                f"`{row['deviation_inv_alpha']:+.6f}` | "
+                f"`{row['relative_deviation']:+.2e}` |"
+            )
+        add("")
+        for row in closure_rows:
+            definition = row["map_definition"].rstrip(". ")
+            add(
+                f"- `{row['id']}`: {definition}. Existence and "
+                "uniqueness of the fixed point are certified by interval "
+                f"arithmetic with Lipschitz bound "
+                f"`{_fmt(row['lipschitz_bound'], 4)}` at cutoffs "
+                f"`{row['su2_cutoff']}` and `{row['su3_cutoff']}`, with the "
+                "tails bounded."
+            )
+        gauge = closure_rows[-1]
+        add(
+            "- The distance from the gauge-width fixed point to the CODATA "
+            f"reference, `{abs(gauge['deviation_inv_alpha']):.6f}` inverse-alpha "
+            "units, is the open term of this lane. It carries the hadronic "
+            "content that the Thomson-endpoint row above accounts for "
+            "retrospectively, and closing it from the source side is work in "
+            "progress under the scientific owner "
+            + ", ".join(f"#{i}" for i in gauge["scientific_owner_issues"])
+            + "."
+        )
+        add(
+            "- Neither closure row is a frozen prediction, and neither is "
+            "eligible as a blind prediction: both are retrospective "
+            "comparisons of a certified fixed point against a reference value."
         )
     add("")
     add("## Charged leptons")
