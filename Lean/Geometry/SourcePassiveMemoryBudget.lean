@@ -68,8 +68,8 @@ def Quiescent : List (ι × ι) → (ι → ℝ) → Prop
   | [], _ => True
   | e :: es, x => x e.1 = x e.2 ∧ Quiescent es x
 
-/-- Equality in the convexity ledger means that every scheduled seam already
-agreed: an exact closed cycle cannot contain a nontrivial pair mean. -/
+/-- Equality in the convexity ledger means that every scheduled seam joins
+equal loads: an exact closed cycle cannot contain a nontrivial pair mean. -/
 theorem quadratic_eq_iff_quiescent (word : List (ι × ι)) (x : ι → ℝ) :
     quadratic (run word x) = quadratic x ↔ Quiescent word x := by
   induction word generalizing x with
@@ -141,8 +141,8 @@ theorem quadratic_afterCopy (a : ℝ) (r : ι → ℝ) :
   ring
 
 omit [DecidableEq ι] in
-/-- This balanced copy passes the old total-load test. The quadratic ledger
-still charges the changed ancillary state, so a reusable catalyst cannot hide
+/-- This balanced copy preserves total load. The quadratic ledger
+charges the changed ancillary state, so a reusable catalyst cannot hide
 the cost by using zero-sum encodings. -/
 theorem copy_total_unchanged (a : ℝ) (r : ι → ℝ) :
     ∑ i, beforeCopy a r i = ∑ i, afterCopy a r i := by

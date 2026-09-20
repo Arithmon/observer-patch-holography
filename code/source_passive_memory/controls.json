@@ -2085,7 +2085,7 @@
   "source_sha256": {
     "Lean/Geometry/SourceNonlinearRecord.lean": "44cf22a856096e607ec550f1f8e86209086b069744aabd70e5d8515159ca5cc0",
     "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean": "36a59efdc625465b00a011b0b4501770c7dc0cd157e56db22de1b7f84bffd1af",
-    "Lean/Geometry/SourcePassiveMemoryBudget.lean": "e05ea52d93e420ae3808969276f1ce046f1d19dea40e96108f663c877f0ed42d",
+    "Lean/Geometry/SourcePassiveMemoryBudget.lean": "1cafe81174689d5724cae862ac1c5d5450ae21bcce1492753e02afad0c03da67",
     "Lean/Geometry/SourcePassiveReset.lean": "ff02617bc66bb8180b86b5d6fade147afe65d1f9ef4d4a0770b64bd3c2349791",
     "Lean/Geometry/SourceRecordProtection.lean": "4c2e3f68673cc0a988ae97dfaf3a4aebc58c18a2849fe4855981fa6f76ce92c8",
     "Lean/ObserverPatchHolography/ScalarSeamRepair.lean": "26a8944ff97643cc9b2cf5ac58f6667ff0a443ca9cd81301e94e1cb6b0c9a8ef",

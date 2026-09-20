@@ -204,3 +204,33 @@ Linux**. The shared mandatory repairs are also covered by complete shard-3
 and shard-4 runs on both platforms in the synchronized #915 worktree; all
 49 stages pass. The M1 hypotheses, mathematical results and bounded exit
 are unchanged.
+
+## Lean comment-style gate repair
+
+On head `13697ba2`, mandatory shard 0 failed on both CI platforms because
+`SourcePassiveMemoryBudget.lean` contained the prohibited progress words
+`already` and `still` in two theorem comments. The local audit had omitted
+this gate. Both comments state their mathematical meaning without those
+words; the style checker, its exclusions and the mandatory runner receive
+no edits.
+
+Masking Lean comments confirms that the executable code is identical to
+`13697ba2`. Regenerating the controls and independently verified receipt
+changes exactly the budget module's source digest in each file. All
+execution values, support data, resource counts and fibre witnesses are
+identical; the other 13 source digests are identical.
+
+Validation of the repair:
+
+- Windows: all 24 stages of mandatory shard 0 pass in one invocation, followed
+  by 58 passive-memory tests and the independent retained-receipt verifier.
+- Linux: the first 23 stages, including the complete Lean style/axiom-coverage
+  gate, pass. The final frozen-prediction stage requires explicit Linux
+  `GIT_DIR` and `GIT_WORK_TREE` paths for this Windows-created worktree; it
+  passes when rerun with that environment, including historical-source and
+  external-custody verification. All 58 passive-memory tests and the retained
+  verifier pass. This environment adjustment changes no repository file.
+- `lake build Geometry.SourcePassiveMemoryAxiomAudit` passes and checks all
+  40 theorem dependencies against the standard-axiom allowlist.
+- `git diff --check` passes. The frozen mandatory runner retains SHA-256
+  `04bab737fa2d1b7b51c5545242e40c20375eea98d1a41eb0645ba32238360291`.
