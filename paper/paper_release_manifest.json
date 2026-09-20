@@ -20,8 +20,8 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "7170f5f4ece87a41ae893cb02660ac2692aef5a45ed759ad3eb26d4c5cabb0a9",
-      "size_bytes": 465618
+      "sha256": "5ee90da3dae512ad15b4b4df97b460c41cdf4839f65de1374340989e82dd76fd",
+      "size_bytes": 466169
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
