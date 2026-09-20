@@ -148,6 +148,9 @@
         729,
         730
       ],
+      "required_topical_gate_owners": [
+        740
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [],
@@ -704,6 +707,7 @@
       "scope_if_false": "The OPH gravity branch falls; fixed-cutoff consensus and purely gauge-sector results do not automatically fall.",
       "status": "proved_on_branch",
       "claim_class": "conditional_implication",
+      "proof_medium": "paper_prose",
       "gates": [],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -747,6 +751,7 @@
       "scope_if_false": "The OPH Lorentz/H3 chart claim falls or must be weakened; finite consensus, compact-gauge reconstruction, and unrelated fixed-cutoff results do not automatically fall.",
       "status": "proved_on_branch",
       "claim_class": "conditional_implication",
+      "proof_medium": "paper_prose",
       "gates": [],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",
@@ -787,6 +792,7 @@
       "scope_if_false": "Record-populated observer-facing H3 localization is weakened or reopened; the cap-normal chart theorem, gauge reconstruction, and Einstein branch do not automatically fall.",
       "status": "conditional_theorem",
       "claim_class": "conditional_implication",
+      "proof_medium": "paper_prose",
       "gates": [],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",
@@ -1285,6 +1291,9 @@
         736,
         742
       ],
+      "required_topical_gate_owners": [
+        742
+      ],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",
         "consumed": [],
@@ -1407,6 +1416,9 @@
         736,
         742
       ],
+      "required_topical_gate_owners": [
+        742
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [],
@@ -1517,6 +1529,9 @@
         729,
         742
       ],
+      "required_topical_gate_owners": [
+        742
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [],
@@ -1554,6 +1569,9 @@
       "claim_class": "conditional_implication",
       "gates": [
         729,
+        742
+      ],
+      "required_topical_gate_owners": [
         742
       ],
       "premise_dependencies": {
@@ -1639,6 +1657,9 @@
         736,
         742
       ],
+      "required_topical_gate_owners": [
+        742
+      ],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",
         "consumed": [],
@@ -1684,6 +1705,10 @@
       "claim_class": "conditional_implication",
       "gates": [
         736,
+        743,
+        745
+      ],
+      "required_topical_gate_owners": [
         743,
         745
       ],
@@ -1744,6 +1769,10 @@
         743,
         745
       ],
+      "required_topical_gate_owners": [
+        743,
+        745
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [],
@@ -1783,6 +1812,9 @@
         730,
         743
       ],
+      "required_topical_gate_owners": [
+        743
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [],
@@ -1817,6 +1849,9 @@
       "claim_class": "conditional_implication",
       "gates": [
         730,
+        743
+      ],
+      "required_topical_gate_owners": [
         743
       ],
       "premise_dependencies": {
@@ -1854,6 +1889,9 @@
         730,
         743
       ],
+      "required_topical_gate_owners": [
+        743
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [],
@@ -1887,6 +1925,9 @@
       "claim_class": "conditional_implication",
       "gates": [
         730,
+        743
+      ],
+      "required_topical_gate_owners": [
         743
       ],
       "premise_dependencies": {
@@ -1924,6 +1965,9 @@
       "gates": [
         730,
         736,
+        743
+      ],
+      "required_topical_gate_owners": [
         743
       ],
       "premise_dependencies": {
@@ -2021,6 +2065,9 @@
       "gates": [
         754,
         736,
+        742
+      ],
+      "required_topical_gate_owners": [
         742
       ],
       "premise_dependencies": {
@@ -2929,6 +2976,9 @@
         736,
         742
       ],
+      "required_topical_gate_owners": [
+        742
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [
@@ -2971,6 +3021,9 @@
       "status": "exact_modal_factorization_attained__local_source_produced_physical_Maxwell_open",
       "claim_class": "conditional_implication",
       "gates": [
+        754
+      ],
+      "required_topical_gate_owners": [
         754
       ],
       "premise_dependencies": {
@@ -3220,6 +3273,9 @@
         729,
         743
       ],
+      "required_topical_gate_owners": [
+        743
+      ],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",
         "consumed": [],
@@ -3321,6 +3377,9 @@
       "gates": [
         745
       ],
+      "required_topical_gate_owners": [
+        745
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [
@@ -3412,6 +3471,9 @@
         736,
         745
       ],
+      "required_topical_gate_owners": [
+        745
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [
@@ -3497,6 +3559,9 @@
       "claim_class": "conditional_implication",
       "gates": [
         736,
+        745
+      ],
+      "required_topical_gate_owners": [
         745
       ],
       "premise_dependencies": {
@@ -3662,6 +3727,9 @@
         730,
         740,
         736
+      ],
+      "required_topical_gate_owners": [
+        740
       ],
       "premise_dependencies": {
         "classification": "explicit_edges",
@@ -3829,6 +3897,9 @@
       "gates": [
         742
       ],
+      "required_topical_gate_owners": [
+        742
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [
@@ -3886,6 +3957,11 @@
         742,
         745
       ],
+      "required_topical_gate_owners": [
+        740,
+        742,
+        745
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [
@@ -3921,9 +3997,13 @@
       "scope_if_false": "The register-rate no-go or conditional charged determinant attachment reopens. The exterior Standard Model representation witness and charged-lepton shape relations remain separate.",
       "status": "rate_no_go_and_declared_domain_nonidentifiability_proved__extended_physical_clock_attachment_open",
       "claim_class": "conditional_implication",
+      "proof_medium": "paper_prose",
       "gates": [
         739,
         736,
+        745
+      ],
+      "required_topical_gate_owners": [
         745
       ],
       "premise_dependencies": {
@@ -4046,6 +4126,9 @@
         736,
         744
       ],
+      "required_topical_gate_owners": [
+        744
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [
@@ -4105,6 +4188,9 @@
       "status": "conditional_continuation_with_seen_data_sensitivity_diagnostics__physical_attachment_certified_numerics_and_calibrated_likelihood_open",
       "claim_class": "declared_structure",
       "gates": [
+        742
+      ],
+      "required_topical_gate_owners": [
         742
       ],
       "premise_dependencies": {
@@ -4193,6 +4279,10 @@
         743,
         744
       ],
+      "required_topical_gate_owners": [
+        743,
+        744
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [],
@@ -4246,6 +4336,7 @@
       "claim_id": "OPH-IBM-GENERATIVE-REPAIR",
       "statement": "The completed IBM issue-509 run implements a blinded finite self-reading repair instrument whose complete transition records distinguish the programmed controller from restricted controller, noise, label, and decoy nulls; the frozen archive does not distinguish OPH from standard quantum mechanics.",
       "owner_paper": "code/ibm_quantum_cloud/protocols/BLINDED_GENERATIVE_REPAIR_KERNEL.md",
+      "owner_medium": "protocol_record",
       "tier": "hardware_experiment_protocol",
       "assumptions": [
         "finite_patch_net",
@@ -4608,6 +4699,9 @@
         730,
         743
       ],
+      "required_topical_gate_owners": [
+        743
+      ],
       "premise_dependencies": {
         "classification": "explicit_edges",
         "consumed": [],
@@ -4647,6 +4741,9 @@
       "status": "exact_direct_power_limit_obstruction_attained__physical_scattering_open",
       "claim_class": "conditional_implication",
       "gates": [
+        743
+      ],
+      "required_topical_gate_owners": [
         743
       ],
       "premise_dependencies": {

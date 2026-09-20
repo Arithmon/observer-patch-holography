@@ -69,6 +69,8 @@ PARENTS = {
     "quantum_carrier_status": RUNS / "status" / "quantum_carrier_status.json",
     "alpha_hvp_verdict": PARTICLES / "alpha_hvp_audit" / "outputs" / "alpha_hvp_class_verdict.json",
     "hadron_payload": RUNS / "hadron" / "empirical_ee_hadronic_spectral_measure.json",
+    "lambda_transmutation": RUNS / "qcd" / "lambda_qcd_source_transmutation.json",
+    "nucleon_external_ratio": RUNS / "hadron" / "nucleon_mass_external_qcd_ratio.json",
     "solver_standby": RUNS / "qcd" / "hadron_source_backend" / "qcd_ensemble" / "solver_on_standby.json",
     "carrier_class_dispersion": CODE / "a5_fingerprint" / "runtime"
     / "carrier_class_dispersion_receipt.json",
@@ -5630,9 +5632,34 @@ def _quark_rows(
     ]
 
 
-def _hadron_rows(payload: dict[str, Any], standby: dict[str, Any]) -> list[dict[str, Any]]:
+def _hadron_rows(
+    payload: dict[str, Any],
+    standby: dict[str, Any],
+    lambda_scale: dict[str, Any],
+    nucleon: dict[str, Any],
+) -> list[dict[str, Any]]:
     integral = payload["integral"]
     norm = integral["normalization"]
+    if (
+        lambda_scale.get("promotion_allowed") is not False
+        or lambda_scale.get("checks_pass") is not True
+        or nucleon.get("promotion_allowed") is not False
+        or nucleon.get("checks_pass") is not True
+    ):
+        raise SystemExit(
+            "a hadronic compare-only receipt has left its declared boundary"
+        )
+    lambda_central = float(lambda_scale["central"]["lambda3_gev"])
+    lambda_interval = [float(v) for v in lambda_scale["lambda3_interval_gev"]]
+    lambda_published = float(
+        lambda_scale["machinery_validation"]["published_compare"]["lambda3_gev"]
+    )
+    nucleon_compare = nucleon["compare_only"]
+    nucleon_central = float(nucleon["prediction"]["m_nucleon_gev_display"])
+    nucleon_interval = [
+        float(v) for v in nucleon["prediction"]["m_nucleon_interval_gev_display"]
+    ]
+    nucleon_measured = float(nucleon_compare["measured_m_proton_gev"])
     return [
         {
             "id": "hadronic_correction_engine",
@@ -5655,6 +5682,55 @@ def _hadron_rows(payload: dict[str, Any], standby: dict[str, Any]) -> list[dict[
             "status": standby["status"],
             "invocation_gate": standby["policy"]["invocation_gate"],
             "artifact_ref": _rel("solver_standby"),
+        },
+        {
+            "id": "lambda_qcd_transmutation_scale",
+            "value_central_gev": lambda_central,
+            "value_interval_gev": lambda_interval,
+            "published_central_gev": lambda_published,
+            "published_source": (
+                "published perturbative determinations of the three-flavor "
+                "scale, compare-only"
+            ),
+            "relative_deviation": (lambda_central - lambda_published)
+            / lambda_published,
+            "row_class": lambda_scale["row_class"],
+            "tier": "T2_conditional",
+            "loop_order": lambda_scale["loop_order"],
+            "declared_external_inputs": (
+                "threshold locations are declared external quark scheme masses, "
+                "and the interval is the swept threshold bracket"
+            ),
+            "claim_boundary": lambda_scale["claim_boundary"],
+            "artifact_refs": [_rel("lambda_transmutation")],
+            "scientific_owner_issues": [736],
+        },
+        {
+            "id": "nucleon_mass_external_ratio",
+            "value_central_gev": nucleon_central,
+            "value_interval_gev": nucleon_interval,
+            "measured_gev": nucleon_measured,
+            "measured_source": "proton mass, compare-only",
+            "relative_deviation": float(
+                nucleon_compare["central_relative_difference"]
+            ),
+            "interval_contains_measured": bool(
+                nucleon_compare["interval_contains_measured"]
+            ),
+            "row_class": nucleon["row_class"],
+            "tier": "T2_conditional",
+            "external_theory_factor": float(
+                nucleon["external_theory_factor"]["R_nucleon_over_lambda3"]
+            ),
+            "external_theory_uncertainty": float(
+                nucleon["external_theory_factor"]["uncertainty"]
+            ),
+            "claim_boundary": nucleon["claim_boundary"],
+            "artifact_refs": [
+                _rel("nucleon_external_ratio"),
+                _rel("lambda_transmutation"),
+            ],
+            "scientific_owner_issues": [736],
         },
     ]
 
@@ -6409,6 +6485,8 @@ def build(
     alpha_hvp_verdict = _load("alpha_hvp_verdict")
     payload = _load("hadron_payload")
     standby = _load("solver_standby")
+    lambda_scale = _load("lambda_transmutation")
+    nucleon_ratio = _load("nucleon_external_ratio")
 
     sections = {
         "forced_structure": _forced_structure(
@@ -6431,7 +6509,9 @@ def build(
         "charged_leptons": _lepton_rows(surface, rectangle, coherent, koide),
         "electroweak": _ew_rows(conditional),
         "quarks": _quark_rows(obstruction, clebsch, selection),
-        "hadrons": _hadron_rows(payload, standby),
+        "hadrons": _hadron_rows(
+            payload, standby, lambda_scale, nucleon_ratio
+        ),
         "neutrinos": [
             {
                 "id": "neutrino_dimensionless_pointer",
@@ -6767,9 +6847,29 @@ def _render_md(ledger: dict[str, Any]) -> str:
                 f"{row['delta_alpha_had_5_MZ']} +- {row['uncertainty_total']}` "
                 f"from `{row['source_compilation']}` "
                 f"(pin factor `{_fmt(row['pin_factor'], 7)}`). {row['policy']}")
-        else:
+        elif row["id"] == "qcd_solver_on_standby":
             add(f"- QCD solver: `{row['status']}`; invocation is gated on the "
                 "source-side parameter emissions recorded in the standby receipt.")
+        elif row["id"] == "lambda_qcd_transmutation_scale":
+            lo, hi = row["value_interval_gev"]
+            add(f"- Transmutation scale ({row['tier']}): `Lambda_QCD^(3) = "
+                f"{_fmt(row['value_central_gev'], 6)}` GeV in "
+                f"`[{_fmt(lo, 6)}, {_fmt(hi, 6)}]` against the published "
+                f"central `{_fmt(row['published_central_gev'], 4)}` GeV "
+                f"(compare-only), `{row['relative_deviation']:+.2%}` relative. "
+                f"{row['declared_external_inputs'].capitalize()}. "
+                f"{row['claim_boundary']}")
+        elif row["id"] == "nucleon_mass_external_ratio":
+            lo, hi = row["value_interval_gev"]
+            inside = "inside" if row["interval_contains_measured"] else "outside"
+            add(f"- Nucleon mass ({row['tier']}): `{_fmt(row['value_central_gev'], 6)}` "
+                f"GeV in `[{_fmt(lo, 6)}, {_fmt(hi, 6)}]` against the measured "
+                f"proton mass `{_fmt(row['measured_gev'], 6)}` GeV "
+                f"(compare-only), `{row['relative_deviation']:+.2%}` relative, "
+                f"with the measured value {inside} the interval. The declared "
+                f"external lattice-theory ratio is "
+                f"`{row['external_theory_factor']}` with uncertainty "
+                f"`{row['external_theory_uncertainty']}`. {row['claim_boundary']}")
     add("")
     add("## Neutrinos")
     add("")

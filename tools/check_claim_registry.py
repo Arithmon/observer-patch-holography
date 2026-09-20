@@ -91,12 +91,60 @@ PINNED_GITHUB_EVIDENCE = re.compile(
     r"https://github\.com/[^/]+/[^/]+/blob/[0-9a-f]{40}/.+"
 )
 
+# Artifact medium of one evidence path, keyed by suffix. An unlisted suffix
+# fails closed: a new artifact kind must say whether it carries a
+# machine-checked proof, an executed run, an emitted record, or prose.
+EVIDENCE_MEDIA_BY_SUFFIX = {
+    ".lean": "machine_checked_proof",
+    ".py": "executed_program",
+    ".json": "emitted_record",
+    ".npz": "emitted_record",
+    ".tex": "paper_prose",
+    ".md": "markdown_prose",
+}
+
+# Media that carry a human-readable argument instead of a machine-checked or
+# executed artifact.
+PROSE_EVIDENCE_MEDIA = {"paper_prose", "markdown_prose"}
+
+# Classes whose row asserts a theorem. `declared_structure` fixes definitions
+# and `emitted_artifact` asserts an artifact's existence and content, so
+# neither one owes a proof medium.
+THEOREM_ASSERTING_CLASSES = {
+    "conditional_implication",
+    "branch_entry",
+    "empirical_implementation",
+    "physical_establishment",
+}
+
+PROOF_MEDIUM_FIELD = "proof_medium"
+PROOF_MEDIUM_VOCABULARY = {"paper_prose"}
+
+# Directory roots whose owner file is a paper source. Every other owner is a
+# protocol or run record and must declare that medium explicitly.
+PAPER_OWNER_ROOTS = ("paper", "extra", "cosmology", "flagship")
+OWNER_MEDIUM_FIELD = "owner_medium"
+OWNER_MEDIUM_VOCABULARY = {"protocol_record"}
+
+REQUIRED_TOPICAL_GATE_OWNERS_FIELD = "required_topical_gate_owners"
+
+# Keys that name gates without being a gate list. Each one states why the key
+# cannot hide a gate from the invariants that read `gates`.
+GATE_SIDE_CHANNEL_ALLOWLIST = {
+    REQUIRED_TOPICAL_GATE_OWNERS_FIELD: (
+        "validated as a sorted subset of `gates` by "
+        "check_topical_gate_owner_projection"
+    ),
+}
+
 # Current V3 topical custody for claim rows whose own statement leaves the
 # corresponding physical attachment open.  This is deliberately an explicit
 # claim-by-claim policy rather than a keyword rule: exact finite helpers and
 # scoped no-go results remain valid without inheriting every downstream lane.
-# When one of these issues is discharged, its claim gates and this policy must
-# be updated together, so ownership cannot disappear as an incidental edit.
+# Every claim named here also declares `required_topical_gate_owners`, and
+# check_topical_gate_owner_projection compares the two surfaces in both
+# directions, so a one-sided edit to either the registry row or this policy
+# fails instead of silently dropping topical ownership.
 REQUIRED_V3_TOPIC_GATES_BY_CLAIM: dict[str, frozenset[int]] = {
     "OPH-UNIFIED-TYPED-SPINE": frozenset({740}),
     "OPH-GR-D6-CAPACITY": frozenset({742}),
@@ -467,6 +515,158 @@ def check_non_consumer_rationale_uniqueness(claims: list[dict]) -> None:
     )
 
 
+def evidence_medium(evidence: str) -> str | None:
+    """Classify one evidence path's artifact medium from the path itself.
+
+    The medium is a property of the artifact kind, so it is read from the
+    suffix instead of from prose. An unlisted suffix returns None and its
+    caller fails closed: a new artifact kind must be classified before it can
+    back a claim.
+    """
+    suffix = Path(evidence.split("#", 1)[0]).suffix.casefold()
+    return EVIDENCE_MEDIA_BY_SUFFIX.get(suffix)
+
+
+def check_evidence_medium(claim: dict) -> bool:
+    """Require a theorem proved in prose to say so on its own row.
+
+    A theorem-asserting row whose entire evidence list is prose has no
+    machine-checked or executed artifact behind it. That row must declare
+    `proof_medium: paper_prose`, and every other row must not: the field would
+    otherwise become an unread annotation that weakens a Lean-backed or
+    run-backed row by attrition. The declaration is returned so the summary
+    line can count the prose-medium theorem rows.
+    """
+    claim_id = claim["claim_id"]
+    evidence = claim["evidence"]
+    require(
+        isinstance(evidence, list) and evidence,
+        f"{claim_id}: evidence must be a nonempty list of artifact paths",
+    )
+    media: list[str] = []
+    for item in evidence:
+        medium = evidence_medium(item)
+        require(
+            medium is not None,
+            f"{claim_id}: evidence artifact medium is unclassified; add the "
+            f"suffix to EVIDENCE_MEDIA_BY_SUFFIX: {item}",
+        )
+        media.append(medium)
+
+    prose_only = all(medium in PROSE_EVIDENCE_MEDIA for medium in media)
+    theorem_asserting = claim["claim_class"] in THEOREM_ASSERTING_CLASSES
+    declared = claim.get(PROOF_MEDIUM_FIELD)
+    if theorem_asserting and prose_only:
+        require(
+            declared is not None,
+            f"{claim_id}: claim_class {claim['claim_class']!r} asserts a theorem "
+            f"whose evidence is prose only, so the row must declare "
+            f"{PROOF_MEDIUM_FIELD}: paper_prose",
+        )
+        require(
+            declared in PROOF_MEDIUM_VOCABULARY,
+            f"{claim_id}: {PROOF_MEDIUM_FIELD} {declared!r} is not in the "
+            f"controlled vocabulary {sorted(PROOF_MEDIUM_VOCABULARY)}",
+        )
+        return True
+    require(
+        declared is None,
+        f"{claim_id}: {PROOF_MEDIUM_FIELD} is admissible only on a "
+        f"theorem-asserting row whose evidence list is prose only; this row is "
+        f"claim_class {claim['claim_class']!r} with media {sorted(set(media))}",
+    )
+    return False
+
+
+def check_owner_medium(claim: dict) -> None:
+    """Keep a non-paper owner from passing as a paper source.
+
+    Owner files under the paper roots are standalone sources. An owner outside
+    them is a protocol or run record, which is admissible only where the claim
+    is the artifact itself, so that row must declare the medium and a
+    paper-owned row must not.
+    """
+    claim_id = claim["claim_id"]
+    owner = claim["owner_paper"]
+    paper_owned = owner.split("/", 1)[0] in PAPER_OWNER_ROOTS
+    declared = claim.get(OWNER_MEDIUM_FIELD)
+    if paper_owned:
+        require(
+            declared is None,
+            f"{claim_id}: owner {owner} is a paper source, so the row must not "
+            f"declare {OWNER_MEDIUM_FIELD}",
+        )
+        return
+    require(
+        declared in OWNER_MEDIUM_VOCABULARY,
+        f"{claim_id}: owner {owner} is outside the paper roots "
+        f"{list(PAPER_OWNER_ROOTS)}, so the row must declare "
+        f"{OWNER_MEDIUM_FIELD}: protocol_record",
+    )
+    require(
+        claim["claim_class"] == "emitted_artifact",
+        f"{claim_id}: {OWNER_MEDIUM_FIELD} {declared!r} is admissible only for "
+        f"claim_class 'emitted_artifact', not {claim['claim_class']!r}",
+    )
+
+
+def check_topical_gate_owner_projection(
+    claims: list[dict], *, check_policy_keys: bool
+) -> None:
+    """Bind the V3 topical-owner policy to the rows it governs.
+
+    The policy map and the registry rows are compared in both directions:
+    a row declaring an owner the policy does not name fails, a row the policy
+    names without the matching declaration fails, and every declared owner must
+    appear in that row's own `gates`. On the live tree a policy key that names
+    no registered claim fails as well, so deleting a governed row cannot leave
+    the policy pointing at nothing.
+    """
+    field = REQUIRED_TOPICAL_GATE_OWNERS_FIELD
+    for claim in claims:
+        claim_id = claim["claim_id"]
+        required = REQUIRED_V3_TOPIC_GATES_BY_CLAIM.get(claim_id)
+        declared = claim.get(field)
+        if required is None:
+            require(
+                declared is None,
+                f"{claim_id}: {field} is declared while the V3 topical-owner "
+                f"policy names no gate for this claim",
+            )
+            continue
+        require(
+            isinstance(declared, list)
+            and all(
+                isinstance(gate, int) and not isinstance(gate, bool) and gate > 0
+                for gate in declared
+            ),
+            f"{claim_id}: {field} must be a list of positive GitHub issue numbers",
+        )
+        require(
+            declared == sorted(set(declared)),
+            f"{claim_id}: {field} must be sorted and must not repeat",
+        )
+        require(
+            set(declared) == set(required),
+            f"{claim_id}: {field} {declared} does not equal the V3 topical-owner "
+            f"policy {sorted(required)}",
+        )
+        outside = sorted(set(declared) - set(claim["gates"]))
+        require(
+            not outside,
+            f"{claim_id}: {field} names gates that are absent from `gates`: "
+            f"{outside}",
+        )
+    if check_policy_keys:
+        registered = {claim["claim_id"] for claim in claims}
+        unregistered = sorted(set(REQUIRED_V3_TOPIC_GATES_BY_CLAIM) - registered)
+        require(
+            not unregistered,
+            "the V3 topical-owner policy names claims that the registry does "
+            f"not contain: {unregistered}",
+        )
+
+
 def check_required_v3_topic_gates(claim: dict) -> None:
     """Keep named V3 topical owners attached until deliberate discharge."""
     claim_id = claim["claim_id"]
@@ -487,7 +687,11 @@ def check_gates(claim: dict) -> None:
     claim_id = claim["claim_id"]
     gates = claim["gates"]
     side_channels = sorted(
-        key for key in claim if key != "gates" and "gate" in key.casefold()
+        key
+        for key in claim
+        if key != "gates"
+        and "gate" in key.casefold()
+        and key not in GATE_SIDE_CHANNEL_ALLOWLIST
     )
     require(
         not side_channels,
@@ -547,6 +751,7 @@ def main(root: Path = ROOT) -> None:
 
     seen: set[str] = set()
     owner_paths: set[str] = set()
+    prose_medium_claims: list[str] = []
     for claim in claims:
         missing = REQUIRED_CLAIM_FIELDS - set(claim)
         require(not missing, f"{claim.get('claim_id', '<missing>')}: missing fields {sorted(missing)}")
@@ -566,6 +771,9 @@ def main(root: Path = ROOT) -> None:
         check_gates(claim)
         check_premise_dependencies(claim, known_premises)
         check_wording(claim)
+        if check_evidence_medium(claim):
+            prose_medium_claims.append(claim_id)
+        check_owner_medium(claim)
         owner = root / claim["owner_paper"]
         require(owner.exists(), f"{claim_id}: owner paper does not exist: {claim['owner_paper']}")
         owner_paths.add(claim["owner_paper"])
@@ -581,6 +789,9 @@ def main(root: Path = ROOT) -> None:
             )
 
     check_non_consumer_rationale_uniqueness(claims)
+    check_topical_gate_owner_projection(
+        claims, check_policy_keys=root.resolve() == ROOT.resolve()
+    )
 
     if root.resolve() == ROOT.resolve():
         actual_projection_sha256 = premise_dependency_projection_sha256(claims)
@@ -645,6 +856,7 @@ def main(root: Path = ROOT) -> None:
     print(
         f"claim registry OK: {len(seen)} claims, {len(owner_paths)} owner papers, "
         f"{gate_count} GitHub gates across {len(gated)} gated claims, "
+        f"{len(prose_medium_claims)} prose-medium theorem rows, "
         f"{premise_edge_count} direct premise edges "
         f"({classification_counts['explicit_edges']} classified consumers/boundaries, "
         f"{classification_counts['explicit_non_consumer']} explicit non-consumers)"

@@ -5235,6 +5235,52 @@
           "production schema branch.flavors const 2+1 (hadron/ward_projected_spectral_measure.schema.json)"
         ],
         "status": "SOLVER_COMPILED_AND_SMOKE_BLOCKED_INVOCATION_GATED_ON_SOURCE_PARAMETERS"
+      },
+      {
+        "artifact_refs": [
+          "code/particles/runs/qcd/lambda_qcd_source_transmutation.json"
+        ],
+        "claim_boundary": "Lambda is the perturbative transmutation scale of the source coupling. Hadron masses additionally require the nonperturbative ratio m_h/Lambda, which this lane does not supply.",
+        "declared_external_inputs": "threshold locations are declared external quark scheme masses, and the interval is the swept threshold bracket",
+        "id": "lambda_qcd_transmutation_scale",
+        "loop_order": "four_loop_beta_with_three_loop_decoupling",
+        "published_central_gev": 0.338,
+        "published_source": "published perturbative determinations of the three-flavor scale, compare-only",
+        "relative_deviation": -0.009422580801896605,
+        "row_class": "conditional_on_P_and_declared_threshold_inputs",
+        "scientific_owner_issues": [
+          736
+        ],
+        "tier": "T2_conditional",
+        "value_central_gev": 0.33481516768895897,
+        "value_interval_gev": [
+          0.31949328977395597,
+          0.34974968299682957
+        ]
+      },
+      {
+        "artifact_refs": [
+          "code/particles/runs/hadron/nucleon_mass_external_qcd_ratio.json",
+          "code/particles/runs/qcd/lambda_qcd_source_transmutation.json"
+        ],
+        "claim_boundary": "This is a conditional hadron mass: source transmutation times a declared external lattice-theory ratio. A source-only hadron mass requires the production hadron backend.",
+        "external_theory_factor": 2.775,
+        "external_theory_uncertainty": 0.105,
+        "id": "nucleon_mass_external_ratio",
+        "interval_contains_measured": true,
+        "measured_gev": 0.93827,
+        "measured_source": "proton mass, compare-only",
+        "relative_deviation": -0.009760420415380278,
+        "row_class": "oph_plus_external_qcd_theory",
+        "scientific_owner_issues": [
+          736
+        ],
+        "tier": "T2_conditional",
+        "value_central_gev": 0.9291120903368612,
+        "value_interval_gev": [
+          0.8231904357670862,
+          1.0425338550769496
+        ]
       }
     ],
     "neutrinos": [

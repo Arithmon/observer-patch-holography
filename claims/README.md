@@ -52,10 +52,29 @@ python3 tools/check_claim_registry.py
 ```
 
 It checks that the registry release ID matches `paper/release_info.tex`, that every claim has an
-owner paper and falsifier, that the novelty/falsification matrices and dependency graph contain
+owner file and falsifier, that the novelty/falsification matrices and dependency graph contain
 every canonical claim ID with no unknown IDs, that the one-row-per-claim novelty and DAG node
 projections have no duplicates, and that paper sources do not depend on direct paths to this
 registry. The falsification matrix may keep several independently scoped rows for one claim.
+
+Three row-level contracts carry their own machine-checked declaration:
+
+- Evidence medium. The artifact medium of every evidence path is read from its suffix, and an
+  unlisted suffix fails closed. A theorem-asserting row (`conditional_implication`,
+  `branch_entry`, `empirical_implementation`, `physical_establishment`) whose entire evidence
+  list is prose declares `proof_medium: paper_prose`; the validator rejects that field on every
+  other row, so a Lean-backed or run-backed row cannot acquire the prose label. An empty
+  evidence list fails.
+- Topical gate owners. Each row that the V3 topical-owner policy in
+  `tools/check_claim_registry.py` names declares `required_topical_gate_owners`, a sorted subset
+  of that row's own `gates`. The validator compares the declaration against the policy in both
+  directions and rejects a policy key that names no registered claim, so a one-sided edit to
+  either surface fails. This field is the one gate-named key admitted outside `gates`; every
+  other gate-named key is rejected as a side channel.
+- Owner medium. An owner file under `paper/`, `extra/`, `cosmology/`, or `flagship/` is a paper
+  source and declares no medium. An owner outside those roots declares
+  `owner_medium: protocol_record`, which is admissible only for
+  `claim_class: emitted_artifact`.
 
 The GitHub workflow runs the validator on registry changes and on public claim-surface changes.
 When a pull request changes paper TeX or the README claim narrative, it must also touch this

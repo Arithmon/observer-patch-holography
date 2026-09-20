@@ -23,7 +23,7 @@ from typing import Any
 
 import pytest
 
-from tools import check_reader_style
+from tools import check_claim_registry, check_reader_style
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -240,8 +240,8 @@ def _write_claim_fixture(root: Path) -> Path:
         "Fixture owner paper.\n",
         encoding="utf-8",
     )
-    (root / "code/witness.txt").write_text(
-        "fixture witness\n",
+    (root / "code/witness.py").write_text(
+        "# fixture witness\n",
         encoding="utf-8",
     )
     (root / "claims/assumption_dictionary.md").write_text(
@@ -268,7 +268,7 @@ def _write_claim_fixture(root: Path) -> Path:
                     "imported_results": ["none"],
                     "oph_specific_delta": "Fixture delta.",
                     "novelty_type": "mutation control",
-                    "evidence": ["code/witness.txt"],
+                    "evidence": ["code/witness.py"],
                     "falsifier": "The declared premise fails.",
                     "scope_if_false": "This fixture only.",
                     "status": "conditional_fixture",
@@ -331,6 +331,24 @@ def _write_public_fixture(root: Path) -> None:
             inputs.add(support["artifact"])
     for relative in sorted(inputs):
         _copy(relative, root)
+    for surface in manifest["comparison_table_surfaces"]:
+        _copy(surface["path"], root)
+    ledger = root / "code/particles/runs/status/postdiction_ledger.json"
+    ledger.parent.mkdir(parents=True, exist_ok=True)
+    _write_json(
+        ledger,
+        {
+            "artifact": "oph_postdiction_ledger",
+            "sections": {
+                "fixture": [
+                    {"id": row["lane"]["row_id"]}
+                    for surface in manifest["comparison_table_surfaces"]
+                    for row in surface["rows"]
+                    if row.get("lane", {}).get("kind") == "ledger"
+                ]
+            },
+        },
+    )
 
     for surface in manifest["surfaces"]:
         path = root / surface["path"]
@@ -528,6 +546,192 @@ def test_claim_matrix_csv_structure_is_checked_before_field_use(
         assert result.returncode != 0, _combined(result)
         assert matrix in _combined(result)
         assert diagnostic in _combined(result)
+
+
+def _live_claims() -> list[dict[str, Any]]:
+    registry = json.loads(
+        (ROOT / "claims/claim_registry.yaml").read_text(encoding="utf-8")
+    )
+    return registry["claims"]
+
+
+def test_claim_gate_requires_a_proof_medium_on_a_prose_only_theorem_row(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "claims"
+    registry_path = _write_claim_fixture(root)
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    registry["claims"][0]["evidence"] = ["paper/owner.tex"]
+    _write_json(registry_path, registry)
+    mutant = _run(str(CLAIM_CHECKER), str(root))
+    assert mutant.returncode != 0
+    assert "must declare proof_medium: paper_prose" in _combined(mutant)
+
+
+def test_claim_gate_rejects_a_proof_medium_on_an_artifact_backed_row(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "claims"
+    registry_path = _write_claim_fixture(root)
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    registry["claims"][0]["proof_medium"] = "paper_prose"
+    _write_json(registry_path, registry)
+    mutant = _run(str(CLAIM_CHECKER), str(root))
+    assert mutant.returncode != 0
+    assert (
+        "proof_medium is admissible only on a theorem-asserting row whose "
+        "evidence list is prose only"
+    ) in _combined(mutant)
+
+
+@pytest.mark.parametrize(
+    ("evidence", "diagnostic"),
+    [
+        (["code/witness.txt"], "evidence artifact medium is unclassified"),
+        ([], "evidence must be a nonempty list of artifact paths"),
+    ],
+)
+def test_claim_gate_rejects_unclassified_and_empty_evidence(
+    tmp_path: Path, evidence: list[str], diagnostic: str
+) -> None:
+    root = tmp_path / "claims"
+    registry_path = _write_claim_fixture(root)
+    (root / "code/witness.txt").write_text("fixture witness\n", encoding="utf-8")
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    registry["claims"][0]["evidence"] = evidence
+    _write_json(registry_path, registry)
+    mutant = _run(str(CLAIM_CHECKER), str(root))
+    assert mutant.returncode != 0
+    assert diagnostic in _combined(mutant)
+
+
+def test_live_prose_medium_rows_fail_closed_without_the_declaration() -> None:
+    declared = [
+        claim
+        for claim in _live_claims()
+        if check_claim_registry.PROOF_MEDIUM_FIELD in claim
+    ]
+    assert declared, "the registry declares no prose-medium theorem row"
+    for claim in declared:
+        stripped = {
+            key: value
+            for key, value in claim.items()
+            if key != check_claim_registry.PROOF_MEDIUM_FIELD
+        }
+        with pytest.raises(SystemExit) as failure:
+            check_claim_registry.check_evidence_medium(stripped)
+        assert "must declare proof_medium: paper_prose" in str(failure.value)
+
+
+def test_live_artifact_backed_rows_reject_the_prose_declaration() -> None:
+    undeclared = [
+        claim
+        for claim in _live_claims()
+        if check_claim_registry.PROOF_MEDIUM_FIELD not in claim
+    ]
+    assert undeclared
+    for claim in undeclared:
+        mutant = dict(claim)
+        mutant[check_claim_registry.PROOF_MEDIUM_FIELD] = "paper_prose"
+        with pytest.raises(SystemExit) as failure:
+            check_claim_registry.check_evidence_medium(mutant)
+        assert "admissible only on a theorem-asserting row" in str(failure.value)
+
+
+def test_claim_gate_requires_owner_medium_for_a_nonpaper_owner(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "claims"
+    registry_path = _write_claim_fixture(root)
+    (root / "code/protocol.md").write_text("Fixture protocol.\n", encoding="utf-8")
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    registry["claims"][0]["owner_paper"] = "code/protocol.md"
+    registry["claims"][0]["claim_class"] = "emitted_artifact"
+    _write_json(registry_path, registry)
+    mutant = _run(str(CLAIM_CHECKER), str(root))
+    assert mutant.returncode != 0
+    assert "must declare owner_medium: protocol_record" in _combined(mutant)
+
+
+def test_claim_gate_rejects_owner_medium_on_a_paper_owned_row(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "claims"
+    registry_path = _write_claim_fixture(root)
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    registry["claims"][0]["owner_medium"] = "protocol_record"
+    _write_json(registry_path, registry)
+    mutant = _run(str(CLAIM_CHECKER), str(root))
+    assert mutant.returncode != 0
+    assert (
+        "is a paper source, so the row must not declare owner_medium"
+        in _combined(mutant)
+    )
+
+
+def _governed_claim(claims: list[dict[str, Any]]) -> dict[str, Any]:
+    field = check_claim_registry.REQUIRED_TOPICAL_GATE_OWNERS_FIELD
+    return next(claim for claim in claims if field in claim)
+
+
+def _ungoverned_claim(claims: list[dict[str, Any]]) -> dict[str, Any]:
+    field = check_claim_registry.REQUIRED_TOPICAL_GATE_OWNERS_FIELD
+    return next(claim for claim in claims if field not in claim)
+
+
+@pytest.mark.parametrize(
+    ("edit", "diagnostic"),
+    [
+        ("drop_declaration", "must be a list of positive GitHub issue numbers"),
+        ("declare_unnamed_row", "policy names no gate for this claim"),
+        ("shrink_declaration", "does not equal the V3 topical-owner policy"),
+        ("drop_owner_from_gates", "names gates that are absent from `gates`"),
+        (
+            "delete_governed_row",
+            "policy names claims that the registry does not contain",
+        ),
+    ],
+)
+def test_topical_owner_projection_rejects_one_sided_edits(
+    edit: str, diagnostic: str
+) -> None:
+    field = check_claim_registry.REQUIRED_TOPICAL_GATE_OWNERS_FIELD
+    claims = [dict(claim) for claim in _live_claims()]
+    governed = _governed_claim(claims)
+    if edit == "drop_declaration":
+        del governed[field]
+    elif edit == "declare_unnamed_row":
+        _ungoverned_claim(claims)[field] = list(governed[field])
+    elif edit == "shrink_declaration":
+        governed[field] = governed[field][:-1]
+    elif edit == "drop_owner_from_gates":
+        governed["gates"] = [
+            gate for gate in governed["gates"] if gate not in governed[field]
+        ]
+    else:
+        claims = [claim for claim in claims if claim is not governed]
+    with pytest.raises(SystemExit) as failure:
+        check_claim_registry.check_topical_gate_owner_projection(
+            claims, check_policy_keys=True
+        )
+    assert diagnostic in str(failure.value)
+
+
+def test_live_topical_owner_projection_matches_the_registry() -> None:
+    field = check_claim_registry.REQUIRED_TOPICAL_GATE_OWNERS_FIELD
+    claims = _live_claims()
+    declared = {
+        claim["claim_id"]: claim[field] for claim in claims if field in claim
+    }
+    assert declared == {
+        claim_id: sorted(gates)
+        for claim_id, gates in (
+            check_claim_registry.REQUIRED_V3_TOPIC_GATES_BY_CLAIM.items()
+        )
+    }
+    check_claim_registry.check_topical_gate_owner_projection(
+        claims, check_policy_keys=True
+    )
 
 
 def test_external_provenance_gate_rejects_a_forged_artifact_pin(

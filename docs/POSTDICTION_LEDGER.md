@@ -244,6 +244,8 @@ W/Z rows are running/tree chart coordinates. The strict one-loop consumer has a 
 
 - Correction engine payload: `Delta alpha_had^(5)(M_Z^2) = 0.027609 +- 0.000112` from `knt19_pinned_piecewise_v1` (pin factor `1.03176`). The published-compilation payload is the correction engine of the fine-structure lane; source-only hadron rows stay suppressed. The resource-deferred QCD backend supplies no source-only result; scientific owner #736 records the bounded particle-output obligation, and source-only QCD remains outside the available resources.
 - QCD solver: `SOLVER_COMPILED_AND_SMOKE_BLOCKED_INVOCATION_GATED_ON_SOURCE_PARAMETERS`; invocation is gated on the source-side parameter emissions recorded in the standby receipt.
+- Transmutation scale (T2_conditional): `Lambda_QCD^(3) = 0.334815` GeV in `[0.319493, 0.34975]` against the published central `0.338` GeV (compare-only), `-0.94%` relative. Threshold locations are declared external quark scheme masses, and the interval is the swept threshold bracket. Lambda is the perturbative transmutation scale of the source coupling. Hadron masses additionally require the nonperturbative ratio m_h/Lambda, which this lane does not supply.
+- Nucleon mass (T2_conditional): `0.929112` GeV in `[0.82319, 1.04253]` against the measured proton mass `0.93827` GeV (compare-only), `-0.98%` relative, with the measured value inside the interval. The declared external lattice-theory ratio is `2.775` with uncertainty `0.105`. This is a conditional hadron mass: source transmutation times a declared external lattice-theory ratio. A source-only hadron mass requires the production hadron backend.
 
 ## Neutrinos
 

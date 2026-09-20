@@ -155,6 +155,13 @@ holds on its stated chart and inherits the open gates recorded in
 [CONDITIONAL_CANDIDATES.md](CONDITIONAL_CANDIDATES.md); none is a promoted
 source-only prediction.
 
+This table is a governed comparison surface. Every row is declared with its
+role and its resolving lane in
+[claims/public_surface_quantitative_claims.json](../../claims/public_surface_quantitative_claims.json),
+and `tools/check_public_surface_claims.py` rejects an undeclared row, an
+undeclared table, an unresolved lane, and a numeric comparison coordinate whose
+row declares no lane.
+
 | Observable | Conditional value | Comparison coordinate | Condition |
 | --- | ---: | --- | --- |
 | `M_W` | `80.37700001539531 GeV` | stale PDG 2025 mass-dependent-width Breit--Wigner coordinate `80.3692 +- 0.0133 GeV` | D10 chart value, conditional on the unemitted QT1--QT5 certificate; no map to the comparison convention and no physical residual or pull |
@@ -162,7 +169,7 @@ source-only prediction.
 | `M_W / M_Z` | `0.8814429457652062` | ratio formed from the stale Breit--Wigner coordinates, `0.8813572` | scale-free coordinate of the same quintet, but not a scheme-independent pole observable |
 | `sin^2 theta_W_eff` | `0.22305833336075578` | `0.22321` in a distinct on-shell comparison convention | same incomplete quintet; no common scheme map, so no residual or pull |
 | `m_H` | `125.1995304097179 GeV` | `125.13 +- 0.11 GeV` | target-anchored fit: the synchronization scale minimizes an objective containing the measured pair; validation of the formula stack, never a prediction |
-| `m_t` | `172.3523553288312 GeV` | `172.1 +- 0.6 GeV` | companion coordinate of the same target-anchored fit |
+| `m_t` | `172.3523553288312 GeV` | `172.1 +- 0.6 GeV` | companion coordinate of the same target-anchored fit; never a prediction |
 | `m_t` (criticality, adopted branch) | `172.629 GeV` | `172.60 +- 0.27 GeV` | double-criticality boundary at the log-midpoint anchor `E_star exp(-pi) P^(-1/6)`, two loops; boundary-scale selection is a theorem modulo two carrier facts CF1/CF2 |
 | `m_H` (criticality, adopted branch) | `125.771 GeV` | `125.13 +- 0.11 GeV` | same branch and gates; tree readout inside the declared matching band |
 | `m_H` at measured `m_t` (relation test) | `125.72 GeV` | `125.13 +- 0.11 GeV` | fit-free curve of the criticality family; tests the m_t to m_H relation independently of the boundary-scale selection |
@@ -172,9 +179,9 @@ source-only prediction.
 | `m_b, m_s, m_d` (Clebsch lane) | `6.03 GeV, 140 MeV, 6.1 MeV` | `4.18 GeV, 93.5 MeV, 4.7 MeV` | rejected conditional register-Clebsch route; the adopted `(b/tau, s/mu, d/e) = (1, 1/3, 3)` assignment is uniquely least-discrepant among six permutations without being source-derived; the absolute values are `44.2%`, `50.3%`, and `30.1%` high |
 | `m_s/m_d` (Clebsch lane) | `22.9743` | FLAG 2024 derived central ratios `19.9438` (`N_f=2+1+1`) and `20.3594` (`N_f=2+1`) | exact at the `mu_U` boundary and protected by common one-loop multiplicative transport; `15.2%` and `12.8%` high, so the declared conditional route is rejected; the matter receipt gives a conditional channel boundary without equating Yukawa coefficients; the unordered weight set is target-free under its declared alphabet and rules; the historically stipulated MCPR model is neither blind nor source-only; no covariance-aware significance is claimed |
 | `sqrt(m_d/m_s)` (Gatto-Sartori-Tonin diagnostic) | `0.2086` | `0.2250` | restatement of the same rejected ratio, not a derived Cabibbo angle; no relative left-handed eigenbasis is supplied, and the simultaneous diagonal register ansatz itself gives the identity CKM matrix |
-| `Lambda_QCD^(3)` | `0.3348 GeV [0.319, 0.350]` | `0.338 +- 0.012 GeV (published)` | dimensional transmutation of the source strong coupling; declared threshold inputs bracket-swept |
-| `m_N` (nucleon) | `0.929 GeV [0.823, 1.043]` | `0.9383 GeV` | source `Lambda_QCD` times a published lattice-theory ratio (`oph_plus_external_qcd_theory`) |
-| `alpha^-1` (root plus public width diagnostic) | `137.035959513608567790...` | `137.035999177` | certified source root plus `alpha_U(P_public)`; physical Thomson transport is work in progress |
+| `Lambda_QCD^(3)` | `0.3348 GeV [0.319, 0.350]` | `0.338 GeV (published central)` | dimensional transmutation of the source strong coupling; declared threshold inputs bracket-swept |
+| `m_N` (nucleon) | `0.929 GeV [0.823, 1.043]` | `0.93827 GeV (measured proton)` | source `Lambda_QCD` times a published lattice-theory ratio (`oph_plus_external_qcd_theory`) |
+| `alpha^-1` (root plus public width diagnostic) | `137.035959513608567790...` | `137.035999177` | certified source root plus `alpha_U(P_public)`; the mixed quantity is a diagnostic of the declared map rather than a physical output; physical Thomson transport is work in progress |
 | `v / E_star` | `2.0199803239725553e-17` | dimensionless | public-endpoint hierarchy packet; the physical normalization of `E_star` is work in progress |
 
 ### Exact flavor boundaries
