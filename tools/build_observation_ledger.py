@@ -484,6 +484,22 @@ def validate(ledger: dict) -> list[dict]:
     return rows
 
 
+def _frozen_target_display(row: dict, frozen_target_by_id: dict[str, dict]) -> str:
+    """Render a row's related freeze targets, each beside its register status.
+
+    The status text is read from ``claims/frozen_prediction_register.json`` at
+    build time rather than copied into the ledger JSON, so a register status
+    change moves this page and ``--check`` reports the surface as stale.
+    """
+
+    targets = row.get("frozen_targets") or []
+    if not targets:
+        return "none"
+    return ", ".join(
+        f"{target} (`{frozen_target_by_id[target]['status']}`)" for target in targets
+    )
+
+
 def _lane_link(lane: int) -> str:
     return f"[#{lane}]({REPO_URL}/issues/{lane})"
 
@@ -493,6 +509,7 @@ def _issue_link(number: int) -> str:
 
 
 def render(rows: list[dict]) -> str:
+    frozen_target_by_id = load_frozen_target_rows()
     lines: list[str] = []
     lines.append("# V3 Observation Ledger")
     lines.append("")
@@ -542,10 +559,13 @@ def render(rows: list[dict]) -> str:
     )
     lines.append("")
     lines.append(
-        "A structural claim whose premises are unregistered is invalid, an"
-        " emergent claim without a preregistered instrument is invalid, and a"
-        " predictive claim without its exact pre-comparison frozen target is"
-        " invalid."
+        "A structural claim whose premises are unregistered is invalid, and an"
+        " emergent claim without a preregistered instrument is invalid. A"
+        " predictive row is invalid when it carries status attained while the"
+        " freeze register holds any target of its fixed row-level contract at a"
+        " status other than frozen or locked, and this builder rejects such a"
+        " row. A predictive row whose contract targets carry any other register"
+        " status takes partial or owed."
     )
     lines.append("")
     lines.append("## Status labels")
@@ -566,9 +586,10 @@ def render(rows: list[dict]) -> str:
     lines.append(
         "Statuses are conservative: a conditional result is conditional, a"
         " declared premise is declared, and postdictions are never"
-        " predictions. Predictive rows name their related FZ register targets;"
-        " an attained predictive row requires the targets specified by its"
-        " fixed row-level contract to be frozen or locked."
+        " predictions. The related freeze targets column names each FZ target"
+        " of a predictive row beside that target's own freeze-register status;"
+        " an attained predictive row requires every target of its fixed"
+        " row-level contract to carry a frozen or locked register status."
     )
 
     for title, lanes in GROUPS:
@@ -589,18 +610,15 @@ def render(rows: list[dict]) -> str:
         lines.append(f"## {title} ({lane_word} {lane_list})")
         lines.append("")
         lines.append(
-            "| Row | Observation | Rung | Status | Lane | Frozen targets | Premises |"
+            "| Row | Observation | Rung | Status | Lane |"
+            " Related freeze targets | Premises |"
             " Open premises | Evidence | Boundary |"
         )
         lines.append(
             "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"
         )
         for row in group_rows:
-            frozen_targets = (
-                ", ".join(row.get("frozen_targets", []))
-                if row.get("frozen_targets")
-                else "none"
-            )
+            frozen_targets = _frozen_target_display(row, frozen_target_by_id)
             premises = ", ".join(row["premises"]) if row["premises"] else "none"
             open_premises = (
                 ", ".join(row["open_premises"]) if row["open_premises"] else "none"

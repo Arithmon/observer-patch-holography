@@ -82,6 +82,58 @@ def test_paper_style_gate_allows_scientific_open_and_identifier_lookalikes() -> 
         ), sample
 
 
+def test_prose_gate_scans_register_docs_and_essays_and_holds_out_allowlist() -> None:
+    scanned = {
+        path.relative_to(ROOT).as_posix()
+        for path in check_reader_style.iter_paths(
+            check_reader_style.READER_GLOBS
+            + check_reader_style.STATUS_GLOBS
+            + check_reader_style.PAPER_GLOBS
+            + check_reader_style.REGISTER_GLOBS
+        )
+    }
+    for required in (
+        "docs/OBSERVATION_LEDGER_V3.md",
+        "docs/PREMISE_REGISTER_V3.md",
+        "docs/CONSTANTS_ANCESTRY_V3.md",
+        "docs/CANONICAL_REPAIR_LAW_RFC.md",
+        "docs/instrument_specs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md",
+        "essays/A-the-universe-is-thinking-itself.tex",
+        "essays/D-methodology-report.tex",
+    ):
+        assert (ROOT / required).is_file(), required
+        assert required in scanned, required
+    for allowlisted in (
+        "docs/STYLE_GUIDE.md",
+        "docs/FROZEN_PREDICTION_LADDER.md",
+    ):
+        assert (ROOT / allowlisted).is_file(), allowlisted
+        assert allowlisted not in scanned, allowlisted
+
+
+def test_prose_gate_keeps_register_identifiers_legal_inside_register_rows() -> None:
+    # The register docs are scanned for banned vocabulary alone.  A row id is
+    # the subject of a register row, so the reader-identifier patterns are
+    # confined to the reader globs.
+    register_paths = {
+        path.relative_to(ROOT).as_posix()
+        for path in check_reader_style.iter_paths(check_reader_style.REGISTER_GLOBS)
+    }
+    reader_paths = {
+        path.relative_to(ROOT).as_posix()
+        for path in check_reader_style.iter_paths(check_reader_style.READER_GLOBS)
+    }
+    assert "docs/OBSERVATION_LEDGER_V3.md" in register_paths
+    assert "docs/OBSERVATION_LEDGER_V3.md" not in reader_paths
+    # The confinement is load-bearing: the register docs carry internal
+    # identifiers the reader patterns match, and the gate passes on them.
+    ledger = (ROOT / "docs/OBSERVATION_LEDGER_V3.md").read_text(encoding="utf-8")
+    assert any(
+        pattern.search(ledger)
+        for pattern, _label in check_reader_style.READER_IDENTIFIER_PATTERNS
+    )
+
+
 def test_main_paper_relevance_diagnostic_preserves_live_rg_routes() -> None:
     text = " ".join(
         (ROOT / "paper/tex_fragments/PAPER.tex")

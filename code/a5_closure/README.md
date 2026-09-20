@@ -27,6 +27,7 @@ python3 a5_harmonic_decomposition.py     # angular multiplet sequence
 python3 bh_log_correction.py             # conditional horizon log-coefficient decision tree
 python3 independent_trichotomy_check.py  # independent re-derivation, trusts nothing above
 python3 claim_boundary_certificates.py # exact Q0 fixtures and physical-boundary controls
+python3 digest_conventions.py            # classify every path-paired pin by the serialization that reproduces it
 python3 test_audit.py                    # regression suite
 ```
 
@@ -251,6 +252,90 @@ verified). At degree one it collapses to bare coupling unification. A physical
 discriminator requires a source-derived polynomial degree, kinetic
 normalization, carrier scale, and complete threshold/RG map. The relation is
 not a forward test.
+
+## Digest conventions on the pins
+
+Three sha256 serializations produce the pins under `manifests/` and
+`receipts/`, and the `sha256:` string prefix names none of the three.
+
+| Convention | Serialization | Defined in |
+|---|---|---|
+| `raw_bytes` | `hashlib.sha256(path.read_bytes())`: the committed file bytes, trailing newline included | `sha256_file` in `baryon_dimension_six_census.py` |
+| `canonical_json` | `hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8"))`: compact, key-sorted, no trailing newline | `sha256_json` in `echosahedral_selector_certificate.py`, imported by `axis_center_descent_certificate.py` and its downstream producers |
+| `canonical_json_self_digest_stripped` | the same compact serialization applied to an artifact body with its own self-digest field deleted | the `global_form_artifact` self-hash check in `axis_center_descent_certificate.py` |
+
+The producers write their JSON files with `indent=2`, `sort_keys=True` and a
+trailing newline, so `raw_bytes` and `canonical_json` are two different digests
+of one file and neither one can be derived from the other.
+
+### The tag names no convention
+
+One file, `receipts/axis_center_descent_reference.receipt.json`, is pinned under
+two of the three conventions, and the tag distinguishes neither. The digests in
+the table below are truncated to their first twelve hex characters.
+
+| Pin site | Value | Convention |
+|---|---|---|
+| `receipts/baryon_dimension_six_census.receipt.json`, `upstream_pins.axis_center_receipt.sha256` | `sha256:c12251507f88…` | `raw_bytes` |
+| `manifests/common_ew_order_unit_carrier_reference.json`, `upstream_pins.global_form_receipt.sha256` | `7c854d56af7b…` | `canonical_json` |
+| `manifests/axis_center_descent_reference.json`, `global_form_artifact_sha256` | `sha256:0bfdacce8a47…` | `canonical_json_self_digest_stripped`, over `manifests/global_form_semantic_artifact.json` |
+
+The field name `sha256` therefore covers two conventions, the `sha256:` prefix
+sits on raw-byte and on self-digest-stripped values alike, and the
+canonical-JSON pins carry no prefix at all. A reader who picks the wrong
+serialization sees a mismatch that reads as a corrupted artifact.
+
+### The convention belongs in the field name
+
+`manifests/directed_seam_repair_reference.json` states its convention in the
+field name itself: its `carrier`, `integer_record_counting_mechanism` and
+`undirected_scheduler` pins sit under `canonical_json_sha256`. That is the
+pattern for new pins, because the name travels with the value when a pin is
+copied out of its manifest.
+
+The label goes in the pin site and never inside an emitted payload. A payload
+field naming its own convention would change the payload bytes and move every
+digest taken over them. The axis-centre descent receipt alone is pinned by raw
+bytes in `receipts/baryon_dimension_six_census.receipt.json` and
+`code/particles/calibration/wz_native_source_packet/outputs/source_parent_inventory.json`,
+and canonically in `manifests/common_ew_order_unit_carrier_reference.json`,
+`manifests/family_band_attachment_reference.json`,
+`manifests/seam_grammar_matter_classification_reference.json` and that same
+source-parent inventory, with path-level references in
+`code/particles/runs/status/postdiction_ledger.json`,
+`claims/selection_ledger.json`, `claims/claim_registry.yaml`,
+`claims/physical_identification_registry.json` and `docs/POSTDICTION_LEDGER.md`.
+
+### Reading a pin back
+
+`digest_conventions.py` resolves a pin against a file by trying all three
+serializations and ignoring both the field name and the tag:
+
+```bash
+python3 digest_conventions.py         # classify every path-paired pin in this package
+python3 digest_conventions.py --json  # the same classification, per pin
+python3 digest_conventions.py \
+  --digest sha256:c12251507f8843c664854da0682717b3a6b437fdc5632679c7fe1d4918c5d2fb \
+  receipts/axis_center_descent_reference.receipt.json
+```
+
+The sweep walks every path-paired pin under `manifests/` and `receipts/` and
+prints the split:
+
+```text
+68 path-paired pins, 0 unreproduced, 0 ambiguous
+  raw_bytes                            8
+  canonical_json                       55
+  canonical_json_self_digest_stripped  5
+```
+
+A declared pin path that resolves under neither the repository root nor this
+directory names a file in an upstream producer checkout; the sweep counts those
+sites and leaves them unclassified instead of guessing a third path base, since
+a basename collision would otherwise classify the wrong file.
+`tests/test_digest_conventions.py` holds the invariants: every located pin
+resolves to exactly one convention, a corrupted pin resolves to none, and the
+three conventions give three different digests for one intact file.
 
 ## Formal status
 

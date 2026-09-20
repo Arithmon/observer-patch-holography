@@ -8,6 +8,10 @@ import pathlib
 import sys
 from decimal import Decimal
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+
+from citation_resolution import scan_certificate  # noqa: E402
+
 
 def decimal(value: str | None, default: str = "0") -> Decimal:
     return Decimal(value if value is not None else default)
@@ -27,6 +31,7 @@ def main(path: str = "certificates/R_readback_resolution_certificate.json") -> i
     acceptance = cert.get("acceptance_criteria_status", {})
     ledger = cert.get("input_ledger", {})
     source_status = cert.get("source_status", {})
+    unresolved = scan_certificate(cert, __file__)
 
     used = set(ledger.get("used_inputs", []))
     forbidden = set(ledger.get("forbidden_inputs", []))
@@ -95,8 +100,15 @@ def main(path: str = "certificates/R_readback_resolution_certificate.json") -> i
             source_status.get("closes_gate") == "finite_readback_resolution"
             and source_status.get("does_not_promote_full_hierarchy_resonance") is True
         ),
+        "every_citation_resolves_in_repository_or_is_marked_external": (
+            unresolved == []
+        ),
     }
-    payload = {"checks": checks, "pass": all(checks.values())}
+    payload = {
+        "checks": checks,
+        "unresolved_citations": unresolved,
+        "pass": all(checks.values()),
+    }
     print(json.dumps(payload, indent=2))
     return 0 if payload["pass"] else 1
 

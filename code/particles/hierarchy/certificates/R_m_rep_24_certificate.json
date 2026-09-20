@@ -78,7 +78,7 @@
         "its adjoint support has no mixed X/Y generators or extra visible U(1)",
         "the screen selector, global group, and matter-menu completeness are not used"
       ],
-      "source_artifact": "extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', quoted premise: 'Its connected adjoint is (8,1,0)+(1,3,0)+(1,1,0), excluding mixed (3,2,+/-5/6) generators'; paper/deriving_the_particle_zoo_from_observer_consistency.tex, section 'Local/global resonance continuation for the hierarchy'",
+      "source_artifact": "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, corollary 'No simple-GUT X/Y gauge channel', quoted premise: 'Its connected adjoint is (8,1,0)+(1,3,0)+(1,1,0), excluding mixed (3,2,+/-5/6) generators'; paper/deriving_the_particle_zoo_from_observer_consistency.tex, section 'Local/global resonance continuation for the hierarchy'",
       "conclusion": "The active product adjoint has dimensions 8, 3, and 1; its support excludes mixed X/Y generators and extra visible U(1) factors."
     },
     {
@@ -99,7 +99,7 @@
         "step 2 (per-factor adjoint dimensions)",
         "the unoriented support dimension is the sum of per-factor adjoint dimensions"
       ],
-      "source_artifact": "extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', quoted connected-adjoint premise (8,1,0)+(1,3,0)+(1,1,0), whose unoriented dimension is 8+3+1=12",
+      "source_artifact": "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, corollary 'No simple-GUT X/Y gauge channel', quoted connected-adjoint premise (8,1,0)+(1,3,0)+(1,1,0), whose unoriented dimension is 8+3+1=12",
       "conclusion": "unoriented product-adjoint repair register has dimension 8 + 3 + 1 = 12"
     },
     {
@@ -110,7 +110,7 @@
         "record-preserving repair requires every primitive repair tick to be paired with its co-oriented verification half (write/check, action/coaction, ket/bra)",
         "for each unoriented adjoint generator a, the alphabet contains exactly two oriented primitive repair ticks a:+ and a:-"
       ],
-      "source_artifact": "extra/compact_proof_of_oph.tex, section 'The QCD-free hierarchy witness', quoted premise: 'reversible orientation doubles the product-adjoint dimension: m_rep=2 dim(su(3)+su(2)+u(1))=2(8+3+1)=24'",
+      "source_artifact": "paper/deriving_the_particle_zoo_from_observer_consistency.tex, section 'Local/global resonance continuation for the hierarchy', quoted premise: 'reversible orientation doubles the product-adjoint dimension: m_rep=2 dim(su(3)+su(2)+u(1))=2(8+3+1)=24'; Lean/ObserverPatchHolography/BridgeEquivalence.lean, which declares m_rep = 24 and carries the theorem six_eq_mRep_div_betaEW",
       "conclusion": "orientation_multiplier = 2 (each unoriented adjoint generator contributes exactly two oriented primitive repair ticks)"
     },
     {
@@ -121,7 +121,7 @@
         "step 4 (orientation multiplier = 2)",
         "the oriented support is the disjoint union of the two oriented primitives over each unoriented generator"
       ],
-      "source_artifact": "extra/compact_proof_of_oph.tex, section 'The QCD-free hierarchy witness'; quoted orientation-doubling premise in CORPUS_ORIENTATION_DOUBLING_SOURCE",
+      "source_artifact": "paper/deriving_the_particle_zoo_from_observer_consistency.tex, section 'Local/global resonance continuation for the hierarchy'; quoted orientation-doubling premise in CORPUS_ORIENTATION_DOUBLING_SOURCE",
       "conclusion": "oriented_support_dimension = m_rep = orientation_multiplier * unoriented_total = 2 * 12 = 24"
     },
     {
@@ -154,7 +154,7 @@
         "step 4 (orientation doubling required by reversible record-preserving repair)",
         "the graviton is the dynamical metric branch, not an internal compact-gauge adjoint repair channel"
       ],
-      "source_artifact": "extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', quoted exclusion of mixed (3,2,+/-5/6) generators; summary-table row 'Gauge-mediated proton-decay boundary', quoted premise: 'The connected product adjoint has no X/Y generator'",
+      "source_artifact": "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, corollary 'No simple-GUT X/Y gauge channel', quoted exclusion of mixed (3,2,+/-5/6) generators; paper/tex_fragments/OBSERVERS_APPENDICES.tex, summary-table row 'Gauge-mediated proton-decay boundary', quoted premise: 'The connected product adjoint has no X/Y generator, so the standard simple-GUT channel is absent'",
       "conclusion": "every nearby round count (m=12 unoriented, m=6 minimal carrier, m=16 color-only doubled, m=22 without U(1), m=24 from single-orientation SU(5), m=48 from doubled SU(5), graviton-augmented support) is rejected on structural grounds; no other branch satisfying the OPH product-adjoint exclusion and orientation-doubling grammar yields a different round count"
     }
   ],
@@ -182,13 +182,13 @@
       "definition": "8 + 3 + 1",
       "role": "unoriented product-adjoint repair-register dimension",
       "source_theorem": "dimension of the conditional observer-visible product adjoint",
-      "source_artifact": "extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', quoted connected-adjoint premise (8,1,0)+(1,3,0)+(1,1,0), whose unoriented dimension is 8+3+1=12"
+      "source_artifact": "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, corollary 'No simple-GUT X/Y gauge channel', quoted connected-adjoint premise (8,1,0)+(1,3,0)+(1,1,0), whose unoriented dimension is 8+3+1=12"
     },
     "orientation_multiplier": {
       "value": 2,
       "role": "doubling from action/coaction (write/verify) reversible repair grammar",
       "source_theorem": "Declared reversible orientation-doubling grammar on the patch-carrier compare/write/verify slice",
-      "source_artifact": "extra/compact_proof_of_oph.tex, section 'The QCD-free hierarchy witness', quoted premise: 'reversible orientation doubles the product-adjoint dimension: m_rep=2 dim(su(3)+su(2)+u(1))=2(8+3+1)=24'"
+      "source_artifact": "paper/deriving_the_particle_zoo_from_observer_consistency.tex, section 'Local/global resonance continuation for the hierarchy', quoted premise: 'reversible orientation doubles the product-adjoint dimension: m_rep=2 dim(su(3)+su(2)+u(1))=2(8+3+1)=24'; Lean/ObserverPatchHolography/BridgeEquivalence.lean, which declares m_rep = 24 and carries the theorem six_eq_mRep_div_betaEW"
     },
     "m_rep": {
       "value": 24,
@@ -213,9 +213,9 @@
   },
   "dependency_artifacts": {
     "global_repair_tick_lemma": "code/particles/hierarchy/certificates/R_N_global_repair_tick_certificate.json",
-    "corpus_product_adjoint_branch": "extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', quoted premise: 'Its connected adjoint is (8,1,0)+(1,3,0)+(1,1,0), excluding mixed (3,2,+/-5/6) generators'; paper/deriving_the_particle_zoo_from_observer_consistency.tex, section 'Local/global resonance continuation for the hierarchy'",
-    "corpus_orientation_doubling": "extra/compact_proof_of_oph.tex, section 'The QCD-free hierarchy witness', quoted premise: 'reversible orientation doubles the product-adjoint dimension: m_rep=2 dim(su(3)+su(2)+u(1))=2(8+3+1)=24'",
-    "corpus_unoriented_product_adjoint": "extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', quoted connected-adjoint premise (8,1,0)+(1,3,0)+(1,1,0), whose unoriented dimension is 8+3+1=12"
+    "corpus_product_adjoint_branch": "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, corollary 'No simple-GUT X/Y gauge channel', quoted premise: 'Its connected adjoint is (8,1,0)+(1,3,0)+(1,1,0), excluding mixed (3,2,+/-5/6) generators'; paper/deriving_the_particle_zoo_from_observer_consistency.tex, section 'Local/global resonance continuation for the hierarchy'",
+    "corpus_orientation_doubling": "paper/deriving_the_particle_zoo_from_observer_consistency.tex, section 'Local/global resonance continuation for the hierarchy', quoted premise: 'reversible orientation doubles the product-adjoint dimension: m_rep=2 dim(su(3)+su(2)+u(1))=2(8+3+1)=24'; Lean/ObserverPatchHolography/BridgeEquivalence.lean, which declares m_rep = 24 and carries the theorem six_eq_mRep_div_betaEW",
+    "corpus_unoriented_product_adjoint": "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, corollary 'No simple-GUT X/Y gauge channel', quoted connected-adjoint premise (8,1,0)+(1,3,0)+(1,1,0), whose unoriented dimension is 8+3+1=12"
   },
   "consumer_artifacts": {
     "global_repair_tick_lemma": "code/particles/hierarchy/certificates/R_N_global_repair_tick_certificate.json",
@@ -230,7 +230,7 @@
     },
     "specialized_corollary_is_a_composition_not_a_circle": "The specialized result |g_*'| = (N_CRC/pi)^(-1/48) is the composition of the two independent primary theorems above. It is recorded in both R_N_global_repair_tick_certificate.json (as the m=m_rep=24 specialization of the parametric law) and R_m_rep_24_certificate.json derivation_chain step 7 (as the specialization at the derived m_rep=24). Recording the composition in both certs is a documentation convenience; neither primary proof feeds back into the other.",
     "umbrella_certificate_resolves_the_composition": "R_local_global_hierarchy_resonance_closeout_335.json composes both R_N_global_repair_tick_certificate.json and R_m_rep_24_certificate.json (and six other prerequisite theorems) as independent dependency artifacts. The umbrella is the canonical place where the -1/48 specialization is consumed without redundant cross-reference.",
-    "other_branches_are_upstream_only": "The product-adjoint branch (extra/compact_proof_of_oph.tex), the reversible orientation-doubling grammar (same), the cyclic scheduler branch (recorded in branch_scope), and the source-side fixed point N_CRC^EW(P_*) (R_EW_global_capacity_certificate.json) are strictly upstream of this certificate or symbolic only; none participate in a cycle. N_CRC^EW from R_EW_global_capacity_certificate.json is referenced only symbolically in the specialized exponent (N_CRC/pi)^(-1/48); no concrete numerical value of N_CRC is used in the m_rep=24 derivation, and R_EW_global_capacity_certificate.json does not depend on this certificate."
+    "other_branches_are_upstream_only": "The product-adjoint branch (paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex), the reversible orientation-doubling grammar (paper/deriving_the_particle_zoo_from_observer_consistency.tex), the cyclic scheduler branch (recorded in branch_scope), and the source-side fixed point N_CRC^EW(P_*) (R_EW_global_capacity_certificate.json) are strictly upstream of this certificate or symbolic only; none participate in a cycle. N_CRC^EW from R_EW_global_capacity_certificate.json is referenced only symbolically in the specialized exponent (N_CRC/pi)^(-1/48); no concrete numerical value of N_CRC is used in the m_rep=24 derivation, and R_EW_global_capacity_certificate.json does not depend on this certificate."
   },
   "negative_controls": [
     {
@@ -294,9 +294,9 @@
     "SU(3) adjoint dimension = 8 (compact Lie algebra dim(su(n))=n^2-1 at n=3)",
     "SU(2) adjoint dimension = 3 (compact Lie algebra dim(su(n))=n^2-1 at n=2)",
     "U(1) Lie algebra dimension = 1 (abelian Lie algebra)",
-    "conditional product-adjoint branch (extra/compact_proof_of_oph.tex, section 'The compact-gauge branch', quoted connected-adjoint premise)",
-    "unoriented product-adjoint dimension 8+3+1=12 (extra/compact_proof_of_oph.tex)",
-    "declared reversible orientation-doubling grammar (extra/compact_proof_of_oph.tex, section 'The QCD-free hierarchy witness', quoted m_rep premise)",
+    "conditional product-adjoint branch (paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex, corollary 'No simple-GUT X/Y gauge channel', quoted connected-adjoint premise)",
+    "unoriented product-adjoint dimension 8+3+1=12 (paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex)",
+    "declared reversible orientation-doubling grammar (paper/deriving_the_particle_zoo_from_observer_consistency.tex, section 'Local/global resonance continuation for the hierarchy', quoted m_rep premise; Lean/ObserverPatchHolography/BridgeEquivalence.lean)",
     "parametric global repair-tick law |g_*'| = (N_CRC/pi)^(-1/(2*m)) from R_N_global_repair_tick_certificate.json"
   ],
   "forbidden_inputs": [

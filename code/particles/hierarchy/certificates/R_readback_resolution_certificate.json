@@ -6,7 +6,7 @@
   "theorem": "finite readback-resolution certificate for the local/global hierarchy bridge",
   "closeout_decision": "Composing the corpus OPH foundational axioms (finite repair Lyapunov+diamond+completeness confluence, stable self-reading observer sector, central record algebra) with the D6 dimensionless area law and the EW-refined exact-capacity Banach contraction certificate, the finite pipeline F_r(N)=Cap_read(Obs(nf_{r,N}(U_{r,N}))) is single-valued at fixed (r,N), the extractor rho_read=sqrt(pi/F_r(N)) is its unique positive-root inverse, and the cofinal refinement F_r -> F together with the lambda=1/2 contraction fixed point N_CRC^EW(P_*)=pi*exp[6*pi/(P_*alpha_U(P_*))]>0 forces rho_read(r,N_CRC^EW) -> rho_star=(N_CRC^EW/pi)^(-1/2) at the quantitative rate sqrt(pi)/(2*C_min^(3/2))*delta_r/(1-lambda). The rounded 3.31e122 cosmological capacity display is recorded in obstruction_record as a diagnostic-only label and rejected as a bridge witness.",
   "definitions": {
-    "finite_initial_object": "U_{r,N} is the finite OPH patch system at fixed cutoff r and capacity coordinate N (extra/compact_proof_of_oph.tex)",
+    "finite_initial_object": "U_{r,N} is the finite OPH patch system at fixed cutoff r and capacity coordinate N (paper/screen_microphysics_and_observer_synchronization.tex, section 'From Spherical Screens to Federated Patch Carriers')",
     "normal_form_map": "nf_{r,N}: U_{r,N} -> n_{r,N} is the unique terminal normal form delivered by the strictly Lyapunov-decreasing finite repair process with the local diamond property and repair completeness (paper/tex_fragments/OBSERVERS_APPENDICES.tex)",
     "observer_sector": "Obs(n_{r,N}) is the non-zero stable self-reading observer sector with a central projector on the physical quotient (paper/tex_fragments/OBSERVERS_SYNTHESIS_SECTIONS.tex)",
     "capacity_register": "C_hat_{r,N}=sum_{c in S_{r,N}} c P_c is the central capacity register on Obs(n_{r,N}); the OPH-stable branch selects a single sharp central eigenvalue (variance zero)",
@@ -98,7 +98,7 @@
       "uses": [
         "finite OPH patch system at fixed cutoff r and capacity coordinate N"
       ],
-      "source_artifact": "extra/compact_proof_of_oph.tex (OPH framework section); paper/tex_fragments/OBSERVERS_SYNTHESIS_SECTIONS.tex",
+      "source_artifact": "paper/screen_microphysics_and_observer_synchronization.tex, section 'From Spherical Screens to Federated Patch Carriers'; paper/tex_fragments/OBSERVERS_SYNTHESIS_SECTIONS.tex",
       "conclusion": "U_{r,N} is a finite, well-defined initial object on which the OPH repair-and-readback pipeline acts."
     },
     {
@@ -145,7 +145,7 @@
         "screen-capacity normalization N = pi*(r/ell)^2",
         "dimensionless reduction N = pi/rho^2"
       ],
-      "source_artifact": "extra/compact_proof_of_oph.tex; reflected in R_N_global_repair_tick_certificate.json (definitions.screen_normalized_radius_coordinate, normalization.screen_capacity_relation)",
+      "source_artifact": "extra/observer_patch_holography_as_string_vacuum_selector.tex, theorem 'Conditional edge-capacity entropy theorem'; reflected in R_N_global_repair_tick_certificate.json (definitions.screen_normalized_radius_coordinate, normalization.screen_capacity_relation)",
       "conclusion": "The positive-root inverse of the D6 area law gives the extractor rho_read(r,N) = sqrt(pi/F_r(N)) as the unique positive solution of N = pi/rho^2 evaluated at N = F_r(N)."
     },
     {
@@ -188,13 +188,13 @@
       "value": "pi",
       "role": "screen-capacity area-law normalization N = pi*(r/ell)^2 = pi/rho^2",
       "source_theorem": "D6 dimensionless area law (corpus axiom)",
-      "source_artifact": "extra/compact_proof_of_oph.tex; reflected in R_N_global_repair_tick_certificate.json (definitions.screen_normalized_radius_coordinate, normalization.screen_capacity_relation)"
+      "source_artifact": "extra/observer_patch_holography_as_string_vacuum_selector.tex, theorem 'Conditional edge-capacity entropy theorem'; reflected in R_N_global_repair_tick_certificate.json (definitions.screen_normalized_radius_coordinate, normalization.screen_capacity_relation)"
     },
     "positive_root_exponent_one_half": {
       "value": "1/2",
       "role": "positive-root inverse rho = sqrt(pi/N) = (N/pi)^(-1/2) of the D6 area law",
       "source_theorem": "positive-root convention on the D6 area law (corpus axiom)",
-      "source_artifact": "extra/compact_proof_of_oph.tex; rho_star=(N_CRC/pi)^(-1/2) in R_N_global_repair_tick_certificate.json"
+      "source_artifact": "extra/observer_patch_holography_as_string_vacuum_selector.tex, theorem 'Conditional edge-capacity entropy theorem'; rho_star=(N_CRC/pi)^(-1/2) in R_N_global_repair_tick_certificate.json"
     },
     "banach_contraction_lambda_one_half": {
       "value": "1/2",
@@ -251,7 +251,7 @@
       "EW_refined_exact_capacity_certificate"
     ],
     "used_artifacts": [
-      "extra/compact_proof_of_oph.tex (OPH framework, screen-capacity readback equation)",
+      "extra/observer_patch_holography_as_string_vacuum_selector.tex, theorem 'Conditional edge-capacity entropy theorem' (screen-capacity readback equation N_scr = pi*R_dS^2/ell_P^2)",
       "paper/tex_fragments/OBSERVERS_SYNTHESIS_SECTIONS.tex (stable self-reading observer sector and capacity register)",
       "paper/tex_fragments/OBSERVERS_APPENDICES.tex (finite repair Lyapunov+diamond+completeness confluence theorem)",
       "code/particles/hierarchy/certificates/R_N_global_repair_tick_certificate.json (D6 area-law normalization)",

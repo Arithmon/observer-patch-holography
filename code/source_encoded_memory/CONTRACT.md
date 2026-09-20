@@ -35,6 +35,10 @@ must check its actual seams; it must not be called a full support embedding or
 a distant route. Initial encoding, accepted schedule, isolation, comparator,
 addresses, versions, precision and physical time remain supplied. No source
 population, physical energy, M1 archive service, amplitude refresh, quantum
-instrument or common-world realization is derived. Existing scientific
+instrument or common-world realization is derived. The M1 parent scientific
 receipts, claim statuses, paper content and the frozen mandatory runner are
-not changed by this research packet.
+not changed by this research packet. The follow-up CI repairs documented in
+[AUDIT.md](AUDIT.md) correct portable serialization and refresh provenance
+hashes in three Maxwell descendants. Their scientific payloads and verdicts
+are unchanged and independently rechecked. Updated main supplies the
+postdiction-ledger repair discussed in that audit.

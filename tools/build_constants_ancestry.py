@@ -142,12 +142,38 @@ def load_premise_types() -> dict[str, str]:
     return {row["id"]: row["type"] for row in rows}
 
 
-def load_ledger_premises() -> dict[str, list[str]]:
+def load_ledger_rows() -> dict[str, dict]:
+    """Index the observation ledger by row id.
+
+    The constants surface reads each owning row's status and lane from the
+    ledger at build time rather than copying either into this register, so a
+    ledger status change moves this page and ``--check`` reports it stale.
+    """
+
     ledger = load_json(OBSERVATION_LEDGER_PATH)
     rows = ledger.get("rows")
     if not isinstance(rows, list) or not rows:
         fail("observation ledger rows must be a nonempty list")
-    return {row["id"]: list(row.get("premises", [])) for row in rows}
+    by_id: dict[str, dict] = {}
+    for row in rows:
+        if not isinstance(row, dict) or not isinstance(row.get("id"), str):
+            fail("observation ledger contains a malformed row")
+        if row["id"] in by_id:
+            fail(f"observation ledger repeats {row['id']}")
+        if not isinstance(row.get("status"), str) or not row["status"]:
+            fail(f"observation ledger row {row['id']} has no status")
+        lane = row.get("lane_issue")
+        if not isinstance(lane, int) or isinstance(lane, bool):
+            fail(f"observation ledger row {row['id']} has no lane issue")
+        by_id[row["id"]] = row
+    return by_id
+
+
+def load_ledger_premises() -> dict[str, list[str]]:
+    return {
+        row_id: list(row.get("premises", []))
+        for row_id, row in load_ledger_rows().items()
+    }
 
 
 def validate_pointer(where: str, label: str, pointer: object, keys: set[str]) -> None:
@@ -382,6 +408,29 @@ def measured_display(row: dict, premise_types: dict[str, str]) -> str:
     return "; ".join(flags) if flags else "none"
 
 
+def pairing_lines(row: dict, ledger_row: dict) -> list[str]:
+    """State an asymmetric constants/ledger status pair on the row that carries it.
+
+    The two statuses classify different objects: the constants status
+    classifies the artifact recorded on this row, while the ledger status
+    records whether a committed receipt qualifies the physical observation. A
+    diagnostic artifact beside an owed ledger row is therefore a truthful pair,
+    and the asymmetry is stated in the row itself instead of the preamble
+    alone.
+    """
+
+    if row["status"] != "diagnostic" or ledger_row["status"] != "owed":
+        return []
+    lane = ledger_row["lane_issue"]
+    return [
+        "Status pairing: this row classifies a diagnostic artifact, and a"
+        " diagnostic artifact promotes nothing, so the physical observation row"
+        f" {row['ledger_row']} carries ledger status `{ledger_row['status']}`."
+        f" Lane [#{lane}]({ISSUE_URL}/{lane}) owns that physical row and the"
+        " receipt that would qualify it."
+    ]
+
+
 def ancestry_lines(row: dict) -> list[str]:
     lines: list[str] = []
     if not row["ancestry"]:
@@ -404,6 +453,7 @@ def ancestry_lines(row: dict) -> list[str]:
 
 def render(rows: list[dict]) -> str:
     premise_types = load_premise_types()
+    ledger_rows = load_ledger_rows()
     lines: list[str] = []
     lines.append("# OPH V3 Constants Ancestry")
     lines.append("")
@@ -431,24 +481,42 @@ def render(rows: list[dict]) -> str:
         " nothing."
     )
     lines.append("")
-    lines.append("| Row | Constants family | Status | Ledger row | Measured input |")
-    lines.append("| --- | --- | --- | --- | --- |")
+    lines.append(
+        "The ledger status column carries the status of the owning"
+        " observation-ledger row, read from"
+        " `tracking/observation_ledger.json` at build time. The two statuses"
+        " classify different objects: the status column classifies the artifact"
+        " a row records, while the ledger status records whether a committed"
+        " receipt qualifies the physical observation, so the two can differ on"
+        " one pair and each row states its own pairing."
+    )
+    lines.append("")
+    lines.append(
+        "| Row | Constants family | Status | Ledger row | Ledger status |"
+        " Measured input |"
+    )
+    lines.append("| --- | --- | --- | --- | --- | --- |")
     for row in rows:
+        ledger_status = ledger_rows[row["ledger_row"]]["status"]
         lines.append(
             f"| {row['id']} | {row['constant']} | `{row['status']}` |"
-            f" {row['ledger_row']} | {measured_display(row, premise_types)} |"
+            f" {row['ledger_row']} | `{ledger_status}` |"
+            f" {measured_display(row, premise_types)} |"
         )
     lines.append("")
 
     lines.append("## Rows")
     lines.append("")
     for row in rows:
+        ledger_row = ledger_rows[row["ledger_row"]]
         lines.append(f"### {row['id']} {row['constant']}")
         lines.append("")
         lines.append(
             f"Status `{row['status']}`; owning observation-ledger row"
-            f" {row['ledger_row']}."
+            f" {row['ledger_row']} at ledger status `{ledger_row['status']}`."
         )
+        for line in pairing_lines(row, ledger_row):
+            lines.append(line)
         if row["diagnostic_import_register_rows"]:
             lines.append(
                 "Diagnostic-only empirical register imports: "

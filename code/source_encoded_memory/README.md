@@ -39,20 +39,30 @@ One mean between either cell's own rails then gives `[b,b]` exactly:
 - Clear the source: the record moves to the target and the old cell is blank.
   It can be visited again later without fresh preparation.
 
-The native words are proved on the full encoded state, allowing other cells
-to hold unrelated amplitudes. During the first mean of a copy the two touched
-cells are not balanced individually; the second mean must complete before
-the specified cleanup. This is a fixed serial protocol, not an arbitrary
-interleaving theorem. Physical writes after initialization are exclusively
+The single-copy and clear words are proved on the full encoded state, allowing
+other cells to hold unrelated amplitudes. During the first mean of a copy the
+two touched cells are not balanced individually; the second mean must complete
+before the specified cleanup. This is a fixed serial protocol, not an arbitrary
+interleaving theorem. Protocol writes after initialization are exclusively
 pair means; all their actual consumed writers and values are retained.
 
 After `n` copy-and-cleanup cycles or `n` moving hops, the remaining amplitude
 is exactly `a/2^n`. The words have `3n` means. Repeated read cycles use four
 scalar registers; a declared route through `k` cells uses `2k`. Revisits are
-allowed when consecutive cells differ. All cells except the current one are
-blank after a moving hop. For repeated reads, the copied target state is
+allowed when consecutive cells differ and the required native edges exist.
+Lean's `GoodWalk` checks only that consecutive cells differ: it is not an
+adjacency or physical-support certificate. The route theorem starts with one
+occupied cell and all other cells blank; support admissibility is separately
+checked for each retained word. All cells except the current one are blank
+after a moving hop. For repeated reads, the copied target state is
 retained in the audit tape **before** its cleanup; no passive observation
 archive is claimed to have been created.
+
+The exact raw-state formulas use the same baseline `b` in source and target.
+Equal target rails at another baseline still represent a logical blank, but
+their common-mode offset survives copy/cleanup. They do not provide the
+specified reset to `[b,b]`. The noise bound accounts for such offsets rather
+than treating logical blankness as a precision refresh.
 
 These logical cycles do not restore the complete analog state. About the
 baseline, its quadratic sum starts at `2a^2` and ends at `2a^2/4^n`; the
@@ -160,7 +170,15 @@ python -m pytest -q code/source_encoded_memory
 
 The new Windows/Linux workflow replays the controls. Lean CI explicitly builds
 the downstream axiom audit even for dependency-only changes. The frozen
-mandatory runner and existing scientific receipts are unchanged.
+mandatory runner and M1 parent scientific receipts are unchanged. The follow-up
+CI repairs refresh provenance hashes in three Maxwell descendants; their
+scientific payloads and verdicts are unchanged. Updated main also supplies
+the postdiction-ledger repair. See [AUDIT.md](AUDIT.md) for the independent
+revalidation and restored cross-platform artifact-equality assertion.
+The CI regression guard reads executable shell words, so a commented-out audit
+target is rejected. Additional test-time controls cover three-cell revisits,
+unrelated records, premature cleanup, common-mode blank offsets and strict
+readout margins; they do not add executions to the retained 626-mean receipt.
 
 ## What remains before M1
 

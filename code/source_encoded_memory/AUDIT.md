@@ -88,7 +88,7 @@ axiom. The in-module negative controls also reject `sorryAx` and
 compiler-trusted Boolean reduction. CI explicitly includes this audit in its
 default target list, so dependency-only changes cannot bypass it.
 
-## Validation and bounded exit
+## Initial validation at `460c3b37` and bounded exit
 
 The complete `lake build Geometry.SourceEncodedMemoryAxiomAudit Geometry`
 passed (8,425 jobs). All 25 new theorem dependencies are within the standard
@@ -107,8 +107,8 @@ The final scope check finds only the fifteen intended new/registration files;
 `git diff --check` passes. A virtual merge with PR #914 also completes without
 conflicts, while #914 remains mergeable and its published head is unchanged.
 
-No existing scientific receipt, paper, claim register or mandatory runner is
-edited. The runner remains byte-identical to updated main, SHA-256
+At that head, no existing scientific receipt, paper, claim register or
+mandatory runner was edited. The runner remains byte-identical to updated main, SHA-256
 `04bab737fa2d1b7b51c5545242e40c20375eea98d1a41eb0645ba32238360291`.
 
 The bounded exit is an explicit native encoded copy/reset/reuse protocol,
@@ -118,3 +118,161 @@ compiler, address/version channel, causal/count-clock and common-world joins
 remain open. The next useful construction is a support-compatible read/write
 gadget with an explicit restoration resource or a finite-resolution payload
 and error budget; it must preserve this accounting rather than assume gain.
+
+## Follow-up audit of published head `460c3b37`
+
+The objective, four deliverables and bounded exit were rechecked against the
+actual Lean statements, producer, independent verifier, retained bytes and
+CI selector. No false mathematical result or incorrect retained execution
+was found. Two review points led to changes:
+
+- The CI regression guard searched the default target block as raw text.
+  Commenting out the audit target still satisfied that assertion, although
+  Bash no longer selected it. The active workflow was correct; its regression
+  test could miss a future removal. The guard now extracts the executable
+  YAML step and parses its active shell words. Commenting out, deleting or
+  replacing the audit target fails. The actual Bash selector was executed on
+  three isolated Git histories changing only `ScalarSeamRepair.lean`, the
+  toolchain or the Lake manifest. Every actual selector retained the audit;
+  every commented-target mutation omitted it.
+- `GoodWalk` is an algebraic consecutive-inequality condition, not graph
+  adjacency. The README now names the separate support-admissibility check
+  and the single-occupied-cell hypothesis of `route_signal`. A rational
+  control demonstrates that an algebraically successful jump can use edges
+  absent from a declared ladder. No topology theorem or full W12 placement
+  is inferred from the route identity.
+
+Nine new independent boundary tests use no producer, verifier or codec. They
+check all 63 walks of up to five hops on three cells for three signed/blank
+amplitudes, preserving an unrelated fourth record; commuting copy means versus
+premature cleanup; an invalid same-cell hop; a blank at a different common
+baseline; an unavailable edge; and both signs strictly below, at and above the
+terminal ambiguity radius. The common-baseline control refutes the exact
+raw reset formula, not logical sign copying at an offset baseline.
+
+Three further tests run the real verifier CLI in isolated byte-identical
+fixtures. Each clean fixture first passes. Promoting the retained M1 status,
+altering canonical control bytes or changing a pinned proof input then causes
+the CLI to fail for the intended reason. These tests do not modify the actual
+scientific artifacts.
+
+The 25 proofs, their actual axiom audit, all eleven pinned inputs, all eight
+retained executions and both scientific JSON files are unchanged by this
+follow-up. The new controls are test-time boundary probes only; the published
+626-mean and 209-copy-state counts retain their original meaning. The M1
+remainder and bounded exit above are unchanged.
+
+## CI integration repairs found during the follow-up audit
+
+CI tested merge `a53c5ad7`, whose parents are main `5b2321d5` and published
+head `460c3b37`. Three mandatory workers failed on two problems inherited
+from that main baseline. The encoded-memory controls and Lean build passed.
+Replaying the stages after the first Windows failure exposed a third
+portability defect that the stopped job had not reached.
+
+1. **Windows artifact newlines.** The Higgs-Yukawa source-frontier generator
+   used platform-default text newlines. Its byte-for-byte determinism test,
+   newly enforced by upstream `b6997e2d`, failed on Windows because the
+   generated artifact contained CRLF while the committed artifact uses LF.
+   The same failure was reproduced locally (one failed, sixteen passed).
+   The generator now explicitly writes LF. The expected artifact and its
+   scientific content are unchanged; the strict byte comparison is retained.
+2. **Stale generated ledger reference on both platforms.** Upstream
+   `b6997e2d` updated the source projection and quantum-carrier receipt but
+   left the postdiction ledger at its earlier receipt hash. The official
+   ledger builder was run to separate candidate paths before changing any
+   retained file. Its complete output differed in exactly one JSON leaf:
+   `sections.quantum_carrier_status.receipt_sha256` changed from
+   `sha256:70c3be1c66eabc0e3affc721f9ee5a111966fea6ba23f451819424bed23523a3`
+   to the independently validated parent's
+   `sha256:21c58bb1c9bae99d157db2f55d85a53ab0e37c55a227c9d374afc8adcd5fe23f`.
+   The full rebuilt JSON was installed with canonical LF. The generated
+   Markdown, all scientific values, verdicts, guards and parent receipts
+   are unchanged. No expected verdict was edited to satisfy a check.
+3. **Windows paths in the Maxwell producer.** After the newline failure was
+   repaired, the next mandatory stage reproduced a mismatch in the local
+   face-Maxwell receipt (one failed, twenty-seven passed). Its only content
+   differences were the four source paths serialized with Windows
+   backslashes, plus the resulting receipt digest. The producer now uses
+   `as_posix()` for those paths. Its existing semantic and canonical-byte
+   checks remain strict; the committed Maxwell receipt is unchanged.
+
+   This producer is itself byte-pinned by the serial Maxwell packet. The
+   broader regression run caught the resulting stale transitive custody;
+   the initial one-file repair was therefore incomplete. The serial,
+   cone-Whitney and Whitney-dynamics descendants were handled in dependency
+   order. The fresh serial producer gives exactly the same executions and
+   one changed source pin. Its complete new output was installed and replayed.
+   Fresh cone and Whitney candidates also passed their independent verifiers.
+   Their floating-point diagnostics vary with numerical execution, so their
+   newly computed parent pins were applied to the original numerical
+   payloads, which were then independently verified again before writing.
+   The existing tolerances, exact arithmetic checks, stability certificates
+   and negative controls were not changed. Each committed descendant differs
+   from `460c3b37` in exactly one provenance-hash leaf; no numerical value,
+   event, source assumption, scope flag or verdict was changed.
+
+At repair commit `06e15c7d`, all four modified JSON artifacts were also
+compared as raw bytes: replacing
+the one old hash with its recomputed value reproduces each complete final
+file exactly. No other byte changed. Searches found no remaining reference
+to any of the three obsolete descendant-file hashes.
+
+These are integration repairs, not additional evidence for M1. The mandatory
+runner, its byte freeze, paper and claim statuses remain unchanged.
+
+## Follow-up validation
+
+The encoded-memory and CI-regression command passes **118 tests on each of
+Windows and Linux**: 64 encoded-memory tests and 54 CI regressions. Replaying
+`Geometry.SourceEncodedMemoryAxiomAudit` succeeds; the 25 proofs and all eleven
+evidence inputs remain byte-identical to the initially audited head. The
+retained verifier still checks eight executions, 626 means and 209 copied
+states. Repository-wide collection now succeeds for 5,228 tests.
+
+The full Linux mandatory shard at index 1 passed all 25 stages. Windows also
+passed its 25 stages, split at a local environment problem: an existing test
+invokes `python3`, but this machine's system alias was unusable. A task-local
+copy of the installed interpreter supplied that executable name for the
+remaining ten stages; no repository test or checker was changed. The five
+Windows shard-0 stages after the Higgs-Yukawa gate passed, including Maxwell
+replay, Lean comment/axiom-block style, claim registry, selection ledger and
+frozen-prediction registry. The Linux shard emitted only pytest cache-access
+warnings; final focused runs use separate task-owned caches.
+
+After the final provenance refresh, the official postdiction `--check`
+passes on both platforms with the same retained ledger and Markdown.
+
+The complete affected integration command then passed **420 tests on Windows
+and 420 on Linux**. It includes all postdiction-ledger regressions, Higgs-Yukawa
+frontier tests, the Coulomb/local-Maxwell tests, and the serial, cone-Whitney
+and Whitney-dynamics replay and mutation suites. This run used the stable
+repaired inputs throughout and clears the earlier transitive-pin failures.
+
+## Integration of main `40a8439d`
+
+Main advanced during the audit. Its generated ledger independently contains
+the same corrected quantum-carrier hash, alongside its own prose changes.
+It also disabled the Windows comparison against the retained Higgs-Yukawa
+artifact. The new main was merged without conflicts, preserving its ledger
+and other changes. The artifact-equality assertion is restored on every
+platform: the corrected LF writer reproduces the expected bytes on Windows
+as well as Linux, so no platform exception is needed.
+
+After integration, **135 focused tests pass on each platform**: the 118
+encoded-memory/CI tests plus all 17 frontier tests with strict byte equality.
+The official postdiction `--check` also passes on both platforms after this
+merge. Repository-wide collection succeeds for **5,251 tests**. The M1 proofs, all
+eleven evidence inputs, both M1 artifacts and the frozen mandatory runner
+remain byte-identical to `460c3b37`. The final PR leaves the postdiction
+ledger byte-identical to this updated main; its only changes to pre-existing
+scientific JSON are the three independently revalidated Maxwell provenance
+hashes described above. No paper or scientific claim status is changed by
+this PR relative to the updated main.
+
+A fresh virtual merge with #914 at `c6c408b2` now reports a conflict in
+`paper/paper_release_manifest.json` following main's publication rebuild.
+The source, proof and Lean-workflow changes merge cleanly. The earlier
+conflict-free result above describes the earlier baseline, not the current
+publication metadata. This branch does not depend on merging #914, and
+#914's published head is unchanged by this audit.

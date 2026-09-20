@@ -54,10 +54,21 @@ CORPUS_PUBLIC_ENDPOINT_PIXEL_SOURCE = "certificates/R_P_public_pixel_certificate
 CORPUS_PIXEL_FULL_PRECISION_SOURCE = "certificates/R_PN_joint_fixed_point_certificate_report.json"
 CORPUS_SOURCE_AUDIT_PIXEL_SOURCE = "certificates/R_P_source_audit_pixel_certificate.json"
 CORPUS_ALPHA_U_KRAWCZYK_SOURCE = "certificates/R_U_krawczyk_certificate.json"
-CORPUS_BETA_EW_D10_SOURCE = "extra/compact_proof_of_oph.tex#D10-transmutation-multiplicity"
+CORPUS_BETA_EW_D10_SOURCE = (
+    "paper/tex_fragments/PARTICLE_TECHNICAL_SUPPLEMENT_PORT.tex, paragraph "
+    "'Declared source packet', stating beta_EW = N_c + 1 = 4; "
+    "paper/tex_fragments/OBSERVERS_SYNTHESIS_SECTIONS.tex, paragraph "
+    "'The alpha_U(P) source proof record', defining N_c = 3 and "
+    "beta_EW := N_c + 1 = 4"
+)
 CORPUS_M_REP_24_SOURCE = "certificates/R_m_rep_24_certificate.json"
 CORPUS_PI_EW_SOURCE = "certificates/R_EW_tick_projection_certificate.json"
-CORPUS_BANACH_SOURCE = "extra/oph_finite_repair_lyapunov.tex#banach-fixed-point"
+CORPUS_BANACH_SOURCE = (
+    "Lean/ObserverPatchHolography/CapacityFixedPoint.lean, theorem "
+    "averagingMap_unique_fixedPt for C(x) = (1-lambda)*x + lambda*K; "
+    "banach_unique_fixedPt records the contraction-mapping principle as an "
+    "external result cited from Mathlib ContractingWith.fixedPoint"
+)
 PUBLIC_ENDPOINT_A_T = "137.035999177"
 
 
