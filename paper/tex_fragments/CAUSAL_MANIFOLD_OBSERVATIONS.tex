@@ -20,13 +20,19 @@ height $j$
 \texttt{walk\_iff\_walkDist\_le}, \texttt{width\_eq\_card\_sites},
 \texttt{height\_eq\_layer}; the concrete read law of the family is the
 instance \texttt{precedes\_iff\_layerPrec}). The flat reference constants of
-the ordering fraction are exact: the oriented-pair integral of
+the ordering fraction are exact: the radial-time double integral of
 Proposition~\ref{cor:source-record-ordering-fraction} equals $T^8/1920$, so
 the fraction equals $1/10$, and the Myrheim--Meyer values in dimensions
 $2$, $3$ and $4$ are $1/2$, $8/35$ and $1/10$
 (\path{Lean/Geometry/OrderingFractionFourDimensional.lean}). The finite
 clock enclosure of Proposition~\ref{prop:source-count-clock-error} is
 formalized in \path{Lean/Time/SourceCountClockEnclosure.lean}.
+The family limit, beyond these finite constants, is proved in
+\path{Lean/Geometry/FlatDiamondNormalization.lean}: actual generated strict
+pair counts have ordering fraction tending to $1/10$ for an interior
+timelike limiting diamond, with the supplied clock, population and read
+law kept explicit. The weighted count-volume limit and its finite error
+are proved in \path{Lean/Geometry/GoldenSourceVolumeLimit.lean}.
 
 \paragraph{What the observer reads.}
 On the interior vertical diamond of $K_q$ rounds the inverted Myrheim--Meyer

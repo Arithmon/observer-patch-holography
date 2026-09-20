@@ -1,0 +1,443 @@
+import Mathlib.Util.AssertNoSorry
+import Geometry.GoldenSourceVolumeLimit
+import Geometry.FlatDiamondNormalization
+
+/-!
+# Issue #782 proof audit
+
+Every public theorem added for the source count/volume and strict-pair limits,
+plus the consumed golden quadrature and site-injectivity interfaces, is checked
+for admissions. The axiom receipts expose the entire transitive proof trust base.
+-/
+
+assert_no_sorry OPH.SourceNetOrderLimit.layer_gap
+#print axioms OPH.SourceNetOrderLimit.layer_gap
+
+assert_no_sorry OPH.SourceNetOrderLimit.inner_layer_gap
+#print axioms OPH.SourceNetOrderLimit.inner_layer_gap
+
+assert_no_sorry OPH.SourceNetOrderLimit.eventually_precedes_of_timelike
+#print axioms OPH.SourceNetOrderLimit.eventually_precedes_of_timelike
+
+assert_no_sorry OPH.SourceNetOrderLimit.eventually_not_precedes_of_spacelike
+#print axioms OPH.SourceNetOrderLimit.eventually_not_precedes_of_spacelike
+
+assert_no_sorry OPH.SourceCausalBoundary.continuous_spatialNorm
+#print axioms OPH.SourceCausalBoundary.continuous_spatialNorm
+
+assert_no_sorry OPH.SourceCausalBoundary.continuous_margin
+#print axioms OPH.SourceCausalBoundary.continuous_margin
+
+assert_no_sorry OPH.SourceCausalBoundary.continuous_margin_right
+#print axioms OPH.SourceCausalBoundary.continuous_margin_right
+
+assert_no_sorry OPH.SourceCausalBoundary.continuous_margin_left
+#print axioms OPH.SourceCausalBoundary.continuous_margin_left
+
+assert_no_sorry OPH.SourceCausalBoundary.diamond_measurable
+#print axioms OPH.SourceCausalBoundary.diamond_measurable
+
+assert_no_sorry OPH.SourceCausalBoundary.time_graph_null
+#print axioms OPH.SourceCausalBoundary.time_graph_null
+
+assert_no_sorry OPH.SourceCausalBoundary.future_null
+#print axioms OPH.SourceCausalBoundary.future_null
+
+assert_no_sorry OPH.SourceCausalBoundary.past_null
+#print axioms OPH.SourceCausalBoundary.past_null
+
+assert_no_sorry OPH.SourceCausalBoundary.future_frontier_null
+#print axioms OPH.SourceCausalBoundary.future_frontier_null
+
+assert_no_sorry OPH.SourceCausalBoundary.past_frontier_null
+#print axioms OPH.SourceCausalBoundary.past_frontier_null
+
+assert_no_sorry OPH.SourceCausalBoundary.diamond_frontier_null
+#print axioms OPH.SourceCausalBoundary.diamond_frontier_null
+
+assert_no_sorry OPH.SourceCausalBoundary.pair_null
+#print axioms OPH.SourceCausalBoundary.pair_null
+
+assert_no_sorry OPH.SourceCausalBoundary.diagonal_null
+#print axioms OPH.SourceCausalBoundary.diagonal_null
+
+assert_no_sorry OPH.SourceCausalBoundary.source_diamond_count_tendsto
+#print axioms OPH.SourceCausalBoundary.source_diamond_count_tendsto
+
+assert_no_sorry OPH.SourceCountTransport.selected_eq
+#print axioms OPH.SourceCountTransport.selected_eq
+
+assert_no_sorry OPH.SourceCountTransport.selected_count_tendsto
+#print axioms OPH.SourceCountTransport.selected_count_tendsto
+
+assert_no_sorry OPH.SourceCountTransport.selected_weight_error
+#print axioms OPH.SourceCountTransport.selected_weight_error
+
+assert_no_sorry OPH.SourceCountTransport.product_weight_discrepancy
+#print axioms OPH.SourceCountTransport.product_weight_discrepancy
+
+assert_no_sorry OPH.SourceCountTransport.eventCell_ae_cover
+#print axioms OPH.SourceCountTransport.eventCell_ae_cover
+
+assert_no_sorry OPH.SourceCountTransport.event_selected_weight_error
+#print axioms OPH.SourceCountTransport.event_selected_weight_error
+
+assert_no_sorry OPH.SourceCountTransport.constant_weight_count
+#print axioms OPH.SourceCountTransport.constant_weight_count
+
+assert_no_sorry OPH.SourceCountTransport.event_selected_count_tendsto
+#print axioms OPH.SourceCountTransport.event_selected_count_tendsto
+
+assert_no_sorry OPH.SourceCountTransport.pairCell_measurable
+#print axioms OPH.SourceCountTransport.pairCell_measurable
+
+assert_no_sorry OPH.SourceCountTransport.pairCell_disjoint
+#print axioms OPH.SourceCountTransport.pairCell_disjoint
+
+assert_no_sorry OPH.SourceCountTransport.pairCell_ae_cover
+#print axioms OPH.SourceCountTransport.pairCell_ae_cover
+
+assert_no_sorry OPH.SourceCountTransport.pair_selected_weight_error
+#print axioms OPH.SourceCountTransport.pair_selected_weight_error
+
+assert_no_sorry OPH.SourceCountTransport.pair_selected_count_tendsto
+#print axioms OPH.SourceCountTransport.pair_selected_count_tendsto
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.domain_convex
+#print axioms OPH.GoldenSourceCausalLimit.domain_convex
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.population_subset
+#print axioms OPH.GoldenSourceCausalLimit.population_subset
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.population_covers
+#print axioms OPH.GoldenSourceCausalLimit.population_covers
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.radius_pos
+#print axioms OPH.GoldenSourceCausalLimit.radius_pos
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.assignment_nonneg
+#print axioms OPH.GoldenSourceCausalLimit.assignment_nonneg
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.assignment_radius_ratio
+#print axioms OPH.GoldenSourceCausalLimit.assignment_radius_ratio
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.assignment_ratio_tendsto
+#print axioms OPH.GoldenSourceCausalLimit.assignment_ratio_tendsto
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.placed_time
+#print axioms OPH.GoldenSourceCausalLimit.placed_time
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.placed_space
+#print axioms OPH.GoldenSourceCausalLimit.placed_space
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.generated_eventually_iff
+#print axioms OPH.GoldenSourceCausalLimit.generated_eventually_iff
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.assigned_position_tendsto
+#print axioms OPH.GoldenSourceCausalLimit.assigned_position_tendsto
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.interval_classification_ae
+#print axioms OPH.GoldenSourceCausalLimit.interval_classification_ae
+
+assert_no_sorry OPH.GoldenSourceCausalLimit.generated_interval_count_tendsto
+#print axioms OPH.GoldenSourceCausalLimit.generated_interval_count_tendsto
+
+assert_no_sorry OPH.GoldenSourcePairLimit.strictlyGenerated_iff
+#print axioms OPH.GoldenSourcePairLimit.strictlyGenerated_iff
+
+assert_no_sorry OPH.GoldenSourcePairLimit.pairRegion_measurable
+#print axioms OPH.GoldenSourcePairLimit.pairRegion_measurable
+
+assert_no_sorry OPH.GoldenSourcePairLimit.strict_classification_ae
+#print axioms OPH.GoldenSourcePairLimit.strict_classification_ae
+
+assert_no_sorry OPH.GoldenSourcePairLimit.pair_classification_ae
+#print axioms OPH.GoldenSourcePairLimit.pair_classification_ae
+
+assert_no_sorry OPH.GoldenSourcePairLimit.generated_strict_pair_count_tendsto
+#print axioms OPH.GoldenSourcePairLimit.generated_strict_pair_count_tendsto
+
+assert_no_sorry OPH.GoldenSourcePairLimit.eventWeight_pos
+#print axioms OPH.GoldenSourcePairLimit.eventWeight_pos
+
+assert_no_sorry OPH.GoldenSourcePairLimit.eventWeight_tendsto
+#print axioms OPH.GoldenSourcePairLimit.eventWeight_tendsto
+
+assert_no_sorry OPH.GoldenSourcePairLimit.scaled_fraction
+#print axioms OPH.GoldenSourcePairLimit.scaled_fraction
+
+assert_no_sorry OPH.GoldenSourcePairLimit.ordering_fraction_tendsto_geometric
+#print axioms OPH.GoldenSourcePairLimit.ordering_fraction_tendsto_geometric
+
+assert_no_sorry OPH.FlatDiamondVolume.coordinateBall_measurable
+#print axioms OPH.FlatDiamondVolume.coordinateBall_measurable
+
+assert_no_sorry OPH.FlatDiamondVolume.coordinateBall_volume
+#print axioms OPH.FlatDiamondVolume.coordinateBall_volume
+
+assert_no_sorry OPH.FlatDiamondVolume.coordinateBall_volume_real
+#print axioms OPH.FlatDiamondVolume.coordinateBall_volume_real
+
+assert_no_sorry OPH.FlatDiamondVolume.coordinateBall_compact
+#print axioms OPH.FlatDiamondVolume.coordinateBall_compact
+
+assert_no_sorry OPH.FlatDiamondVolume.diamond_closed
+#print axioms OPH.FlatDiamondVolume.diamond_closed
+
+assert_no_sorry OPH.FlatDiamondVolume.diamond_subset_box
+#print axioms OPH.FlatDiamondVolume.diamond_subset_box
+
+assert_no_sorry OPH.FlatDiamondVolume.diamond_compact
+#print axioms OPH.FlatDiamondVolume.diamond_compact
+
+assert_no_sorry OPH.FlatDiamondVolume.spatialNorm_sub_comm
+#print axioms OPH.FlatDiamondVolume.spatialNorm_sub_comm
+
+assert_no_sorry OPH.FlatDiamondVolume.vertical_section
+#print axioms OPH.FlatDiamondVolume.vertical_section
+
+assert_no_sorry OPH.FlatDiamondVolume.sectionVolume_continuous
+#print axioms OPH.FlatDiamondVolume.sectionVolume_continuous
+
+assert_no_sorry OPH.FlatDiamondVolume.sectionVolume_integral
+#print axioms OPH.FlatDiamondVolume.sectionVolume_integral
+
+assert_no_sorry OPH.FlatDiamondVolume.vertical_diamond_volume
+#print axioms OPH.FlatDiamondVolume.vertical_diamond_volume
+
+assert_no_sorry OPH.FlatDiamondVolume.coordinate_future_null
+#print axioms OPH.FlatDiamondVolume.coordinate_future_null
+
+assert_no_sorry OPH.FlatDiamondVolume.spatialNorm_sub_triangle
+#print axioms OPH.FlatDiamondVolume.spatialNorm_sub_triangle
+
+assert_no_sorry OPH.FlatDiamondVolume.causal_trans
+#print axioms OPH.FlatDiamondVolume.causal_trans
+
+assert_no_sorry OPH.FlatDiamondVolume.vertical_diamond_subset
+#print axioms OPH.FlatDiamondVolume.vertical_diamond_subset
+
+assert_no_sorry OPH.FlatDiamondVolume.vertical_diamond_finite
+#print axioms OPH.FlatDiamondVolume.vertical_diamond_finite
+
+assert_no_sorry OPH.FlatDiamondVolume.full_vertical_diamond_volume
+#print axioms OPH.FlatDiamondVolume.full_vertical_diamond_volume
+
+assert_no_sorry OPH.FlatLorentzVolume.dot_self
+#print axioms OPH.FlatLorentzVolume.dot_self
+
+assert_no_sorry OPH.FlatLorentzVolume.boost_square_identity
+#print axioms OPH.FlatLorentzVolume.boost_square_identity
+
+assert_no_sorry OPH.FlatLorentzVolume.boost_preserves_square
+#print axioms OPH.FlatLorentzVolume.boost_preserves_square
+
+assert_no_sorry OPH.FlatLorentzVolume.boostMatrix_det
+#print axioms OPH.FlatLorentzVolume.boostMatrix_det
+
+assert_no_sorry OPH.FlatLorentzVolume.boostMatrix_det_one
+#print axioms OPH.FlatLorentzVolume.boostMatrix_det_one
+
+assert_no_sorry OPH.FlatLorentzVolume.dot_le
+#print axioms OPH.FlatLorentzVolume.dot_le
+
+assert_no_sorry OPH.FlatLorentzVolume.spatialNorm_nonneg
+#print axioms OPH.FlatLorentzVolume.spatialNorm_nonneg
+
+assert_no_sorry OPH.FlatLorentzVolume.boost_time_pos
+#print axioms OPH.FlatLorentzVolume.boost_time_pos
+
+assert_no_sorry OPH.FlatLorentzVolume.boost_zero
+#print axioms OPH.FlatLorentzVolume.boost_zero
+
+assert_no_sorry OPH.FlatLorentzVolume.boost_neg
+#print axioms OPH.FlatLorentzVolume.boost_neg
+
+assert_no_sorry OPH.FlatLorentzVolume.boost_future_iff
+#print axioms OPH.FlatLorentzVolume.boost_future_iff
+
+assert_no_sorry OPH.FlatLorentzVolume.boost_tip
+#print axioms OPH.FlatLorentzVolume.boost_tip
+
+assert_no_sorry OPH.FlatLorentzVolume.split_formula
+#print axioms OPH.FlatLorentzVolume.split_formula
+
+assert_no_sorry OPH.FlatLorentzVolume.matrix_split
+#print axioms OPH.FlatLorentzVolume.matrix_split
+
+assert_no_sorry OPH.FlatLorentzVolume.boost_measurePreserving
+#print axioms OPH.FlatLorentzVolume.boost_measurePreserving
+
+assert_no_sorry OPH.FlatLorentzVolume.boost_sub
+#print axioms OPH.FlatLorentzVolume.boost_sub
+
+assert_no_sorry OPH.FlatLorentzVolume.diamond_boost_preimage
+#print axioms OPH.FlatLorentzVolume.diamond_boost_preimage
+
+assert_no_sorry OPH.FlatLorentzVolume.tilted_diamond_volume
+#print axioms OPH.FlatLorentzVolume.tilted_diamond_volume
+
+assert_no_sorry OPH.FlatLorentzVolume.tilted_diamond_volume_of_causal
+#print axioms OPH.FlatLorentzVolume.tilted_diamond_volume_of_causal
+
+assert_no_sorry OPH.FlatLorentzVolume.margin_translate
+#print axioms OPH.FlatLorentzVolume.margin_translate
+
+assert_no_sorry OPH.FlatLorentzVolume.diamond_translate_preimage
+#print axioms OPH.FlatLorentzVolume.diamond_translate_preimage
+
+assert_no_sorry OPH.FlatLorentzVolume.coordinate_sub_preserving
+#print axioms OPH.FlatLorentzVolume.coordinate_sub_preserving
+
+assert_no_sorry OPH.FlatLorentzVolume.causal_diamond_volume
+#print axioms OPH.FlatLorentzVolume.causal_diamond_volume
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.closedPairs_measurable
+#print axioms OPH.FlatDiamondPairIntegral.closedPairs_measurable
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.closedPairs_section
+#print axioms OPH.FlatDiamondPairIntegral.closedPairs_section
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.closedPairs_integral
+#print axioms OPH.FlatDiamondPairIntegral.closedPairs_integral
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.closedPairs_polynomial
+#print axioms OPH.FlatDiamondPairIntegral.closedPairs_polynomial
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.radial_ball_integral
+#print axioms OPH.FlatDiamondPairIntegral.radial_ball_integral
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.vertical_integral
+#print axioms OPH.FlatDiamondPairIntegral.vertical_integral
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.vertical_closedPairs_volume
+#print axioms OPH.FlatDiamondPairIntegral.vertical_closedPairs_volume
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.vertical_closedPairs_eq_volume_sq
+#print axioms OPH.FlatDiamondPairIntegral.vertical_closedPairs_eq_volume_sq
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.closedPairs_preimage
+#print axioms OPH.FlatDiamondPairIntegral.closedPairs_preimage
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.boost_causal_iff
+#print axioms OPH.FlatDiamondPairIntegral.boost_causal_iff
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.tilted_closedPairs_eq_volume_sq
+#print axioms OPH.FlatDiamondPairIntegral.tilted_closedPairs_eq_volume_sq
+
+assert_no_sorry OPH.FlatDiamondPairIntegral.causal_closedPairs_eq_volume_sq
+#print axioms OPH.FlatDiamondPairIntegral.causal_closedPairs_eq_volume_sq
+
+assert_no_sorry OPH.FlatDiamondNormalization.speed_measurable
+#print axioms OPH.FlatDiamondNormalization.speed_measurable
+
+assert_no_sorry OPH.FlatDiamondNormalization.speed_map
+#print axioms OPH.FlatDiamondNormalization.speed_map
+
+assert_no_sorry OPH.FlatDiamondNormalization.speed_preimage_real
+#print axioms OPH.FlatDiamondNormalization.speed_preimage_real
+
+assert_no_sorry OPH.FlatDiamondNormalization.speed_pair_preimage_real
+#print axioms OPH.FlatDiamondNormalization.speed_pair_preimage_real
+
+assert_no_sorry OPH.FlatDiamondNormalization.margin_speed
+#print axioms OPH.FlatDiamondNormalization.margin_speed
+
+assert_no_sorry OPH.FlatDiamondNormalization.diamond_speed
+#print axioms OPH.FlatDiamondNormalization.diamond_speed
+
+assert_no_sorry OPH.FlatDiamondNormalization.closedPairs_eq_volume_sq
+#print axioms OPH.FlatDiamondNormalization.closedPairs_eq_volume_sq
+
+assert_no_sorry OPH.FlatDiamondNormalization.timelike_diamond_volume
+#print axioms OPH.FlatDiamondNormalization.timelike_diamond_volume
+
+assert_no_sorry OPH.FlatDiamondNormalization.timelike_diamond_volume_pos
+#print axioms OPH.FlatDiamondNormalization.timelike_diamond_volume_pos
+
+assert_no_sorry OPH.FlatDiamondNormalization.spaceTimeVolume_restrict
+#print axioms OPH.FlatDiamondNormalization.spaceTimeVolume_restrict
+
+assert_no_sorry OPH.FlatDiamondNormalization.unclipped_volume
+#print axioms OPH.FlatDiamondNormalization.unclipped_volume
+
+assert_no_sorry OPH.FlatDiamondNormalization.unclipped_closedPairs
+#print axioms OPH.FlatDiamondNormalization.unclipped_closedPairs
+
+assert_no_sorry OPH.FlatDiamondNormalization.strictPair_volume_eq_closed
+#print axioms OPH.FlatDiamondNormalization.strictPair_volume_eq_closed
+
+assert_no_sorry OPH.FlatDiamondNormalization.generated_interval_count_tendsto_volume
+#print axioms OPH.FlatDiamondNormalization.generated_interval_count_tendsto_volume
+
+assert_no_sorry OPH.FlatDiamondNormalization.ordering_fraction_tendsto_one_tenth
+#print axioms OPH.FlatDiamondNormalization.ordering_fraction_tendsto_one_tenth
+
+assert_no_sorry OPH.FlatDiamondError.radial_shell_bound
+#print axioms OPH.FlatDiamondError.radial_shell_bound
+
+assert_no_sorry OPH.FlatDiamondError.sectionVolume_lipschitz
+#print axioms OPH.FlatDiamondError.sectionVolume_lipschitz
+
+assert_no_sorry OPH.FlatDiamondError.interval_first_moment
+#print axioms OPH.FlatDiamondError.interval_first_moment
+
+assert_no_sorry OPH.FlatDiamondError.left_cell_error
+#print axioms OPH.FlatDiamondError.left_cell_error
+
+assert_no_sorry OPH.FlatDiamondError.left_riemann_error
+#print axioms OPH.FlatDiamondError.left_riemann_error
+
+assert_no_sorry OPH.FlatDiamondError.section_riemann_error
+#print axioms OPH.FlatDiamondError.section_riemann_error
+
+assert_no_sorry OPH.SourceNetVolumeError.covering_constructs_path_zero_or_pos
+#print axioms OPH.SourceNetVolumeError.covering_constructs_path_zero_or_pos
+
+assert_no_sorry OPH.SourceNetVolumeError.selectedCells_measurable
+#print axioms OPH.SourceNetVolumeError.selectedCells_measurable
+
+assert_no_sorry OPH.SourceNetVolumeError.selectedCells_mass
+#print axioms OPH.SourceNetVolumeError.selectedCells_mass
+
+assert_no_sorry OPH.SourceNetVolumeError.mem_selectedCells
+#print axioms OPH.SourceNetVolumeError.mem_selectedCells
+
+assert_no_sorry OPH.SourceNetVolumeError.layerMass_sandwich
+#print axioms OPH.SourceNetVolumeError.layerMass_sandwich
+
+assert_no_sorry OPH.SourceNetVolumeError.layer_shell_error
+#print axioms OPH.SourceNetVolumeError.layer_shell_error
+
+assert_no_sorry OPH.SourceNetVolumeError.section_at_layer
+#print axioms OPH.SourceNetVolumeError.section_at_layer
+
+assert_no_sorry OPH.SourceNetVolumeError.weighted_alexandrov_error
+#print axioms OPH.SourceNetVolumeError.weighted_alexandrov_error
+
+assert_no_sorry OPH.GoldenSourceVolumeLimit.alignedVolume_eq_count
+#print axioms OPH.GoldenSourceVolumeLimit.alignedVolume_eq_count
+
+assert_no_sorry OPH.GoldenSourceVolumeLimit.golden_weighted_error
+#print axioms OPH.GoldenSourceVolumeLimit.golden_weighted_error
+
+assert_no_sorry OPH.GoldenSourceVolumeLimit.assignment_tendsto
+#print axioms OPH.GoldenSourceVolumeLimit.assignment_tendsto
+
+assert_no_sorry OPH.GoldenSourceVolumeLimit.eventually_inner_radius
+#print axioms OPH.GoldenSourceVolumeLimit.eventually_inner_radius
+
+assert_no_sorry OPH.GoldenSourceVolumeLimit.alignedVolume_tendsto
+#print axioms OPH.GoldenSourceVolumeLimit.alignedVolume_tendsto
+
+assert_no_sorry OPH.GoldenSourceVolumeLimit.alignedCount_tendsto
+#print axioms OPH.GoldenSourceVolumeLimit.alignedCount_tendsto
+
+assert_no_sorry OPH.GoldenSourceAssignment.golden_quadrature
+#print axioms OPH.GoldenSourceAssignment.golden_quadrature
+
+assert_no_sorry OPH.GoldenSourceAssignment.golden_quadrature_tendsto
+#print axioms OPH.GoldenSourceAssignment.golden_quadrature_tendsto
+
+assert_no_sorry OPH.GoldenSourceAssignment.site_injective
+#print axioms OPH.GoldenSourceAssignment.site_injective

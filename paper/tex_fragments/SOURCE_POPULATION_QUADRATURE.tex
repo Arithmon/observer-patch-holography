@@ -110,9 +110,13 @@ are kernel-checked in \texttt{GoldenSourceCountLimit}.
 moving generated-order intervals, with the finite window retained in the
 reference volume. \texttt{GoldenSourcePairLimit} proves strict-pair
 convergence to the geometric product measure, retaining the pair endpoint
-error. Evaluation of the geometric pair integral and the explicit
-Alexandrov error remain analytic at this stage. Extra routing events require another count
-estimate; the sampling theorem selects no physical measure or clock.
+error. \texttt{FlatDiamondPairIntegral} evaluates the actual geometric
+pair measure; \texttt{FlatDiamondNormalization} proves the $1/10$ limit
+for timelike diamonds contained in the supplied window.
+\texttt{SourceNetVolumeError} proves the explicit vertical Alexandrov
+error, and \texttt{GoldenSourceVolumeLimit} specializes it to the golden
+weighted-volume and raw-count limits. Extra routing events require another
+count estimate; these theorems select no physical measure or clock.
 
 \begin{proposition}[Localized radial-kernel quadrature]
 \label{prop:source-population-local-kernel}
