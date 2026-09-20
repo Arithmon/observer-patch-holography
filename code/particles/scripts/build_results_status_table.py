@@ -614,6 +614,15 @@ def load_ledger_entries(path: pathlib.Path) -> Dict[str, Dict[str, Any]]:
     return {entry["id"]: entry for entry in payload["entries"]}
 
 
+def load_ledger_review_date(path: pathlib.Path) -> str:
+    """Return the review date of the curated tier and label source."""
+    payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+    as_of = str(payload.get("as_of", "")).strip()
+    if not as_of:
+        raise SystemExit("the curated status ledger carries no as_of review date")
+    return as_of
+
+
 def _d10_public_mass_pair_allowed(readout: Dict[str, Any]) -> bool:
     mass_pair = dict(readout.get("mass_pair_predictive_candidate", {}))
     return (
@@ -1356,6 +1365,7 @@ def render_markdown(
     surface_state: Dict[str, Any],
     premise_boundaries: Dict[str, Any],
     companion_status_rows: List[Dict[str, Any]],
+    tier_source_review_date: str,
     majorana_rows: Optional[List[Dict[str, Any]]] = None,
 ) -> str:
     majorana_rows = majorana_rows or []
@@ -1386,6 +1396,12 @@ def render_markdown(
         "The photon, gluon, and graviton inventory rows report conditional classical/perturbative carrier-mode branches only. Their hard quadratic mass parameter is zero on the displayed action branch, but no `0 GeV` quantum-particle prediction is emitted and the independent quantization/phase/pole gate remains open.",
         "",
         "Source-only hadron rows are suppressed by default because promotable rows require a real OPH production backend export bundle plus production systematics. Empirical hadron closure values stay in a separate output class with an e+e- source registry and schema. Re-enable local hadron rows only for explicit backend debugging with `--with-hadrons`.",
+        "",
+        "The `Status` and `Status label` columns are curated in "
+        "`code/particles/ledger.yaml`, whose review date is "
+        f"`{tier_source_review_date}`. Every numeric column on this page comes "
+        "from the live run artifacts of this build, so a row pairs a curated "
+        "tier with a current number, and the two carry separate dates.",
         "",
         f"Measured/reference values are pinned from the official {reference_payload['source']['label']} {reference_payload['source']['edition']} machine-readable surface where available, with explicit manual structural-context entries for non-PDG rows such as gluons, graviton, and flavor neutrinos: {reference_payload['source']['api_info_url']}.",
         "",
@@ -1504,6 +1520,7 @@ def main() -> int:
     reference_payload = json.loads(pathlib.Path(args.reference_json).read_text(encoding="utf-8"))
     reference_entries = reference_payload["entries"]
     ledger_entries = load_ledger_entries(pathlib.Path(args.ledger_yaml))
+    tier_source_review_date = load_ledger_review_date(pathlib.Path(args.ledger_yaml))
     prediction = apply_local_candidate_overrides({})
     rows = build_rows(
         prediction,
@@ -1535,6 +1552,7 @@ def main() -> int:
         surface_state=surface_state,
         premise_boundaries=premise_boundaries,
         companion_status_rows=companion_status_rows,
+        tier_source_review_date=tier_source_review_date,
     )
 
     markdown_out = pathlib.Path(args.markdown_out)

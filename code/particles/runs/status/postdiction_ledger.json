@@ -400,7 +400,7 @@
         "id": "ew_mH_gev",
         "measured": 125.13,
         "measured_sigma": 0.11,
-        "measured_source": "PDG 2025",
+        "measured_source": "PDG 2026",
         "physical_comparison_status": "COMPARE_ONLY",
         "row_class": "conditional_on_P_and_repair_selection",
         "tier": "T2_conditional",
@@ -418,7 +418,7 @@
         "id": "ew_mt_pole_gev",
         "measured": 172.1,
         "measured_sigma": 0.6,
-        "measured_source": "PDG 2025 direct-average context row",
+        "measured_source": "PDG 2026 cross-section pole-mass context row",
         "physical_comparison_status": "COMPARE_ONLY",
         "row_class": "conditional_on_P_and_repair_selection",
         "tier": "T2_conditional",
@@ -5294,7 +5294,7 @@
         "scientific_owner_issues": [
           736
         ],
-        "statement": "No absolute quark mass is emitted. The two-modulus spread fiber (R>0)^2, obtained by granting a candidate-only ordered shape law, survives the 2026-07 certified structure set (matter receipt #314, port receipt #566, twelve frozen selector candidates; input hashes pinned 2026-07-30), so the six source-only absolute masses are non-identifiable from that set, by an explicit rescaling symmetry of the registered data. Live cuts: a Yukawa-typed source equation through the physical bindings or the family attachment, a new selector under the frozen discipline, or the conditional Higgs/top criticality coordinate",
+        "statement": "No absolute quark mass is emitted. The two-modulus spread fiber (R>0)^2, obtained by granting a candidate-only ordered shape law, survives the 2026-07 certified structure set (matter receipt #314, port receipt #566, twelve frozen selector candidates, with input hashes pinned at emission), so the six source-only absolute masses are non-identifiable from that set, by an explicit rescaling symmetry of the registered data. Live cuts: a Yukawa-typed source equation through the physical bindings or the family attachment, a new selector under the frozen discipline, or the conditional Higgs/top criticality coordinate",
         "tier": "source_only_nonidentifiability_obstruction_transport"
       },
       {

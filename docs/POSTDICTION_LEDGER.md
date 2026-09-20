@@ -228,8 +228,8 @@ The closure map of the pixel lane has a certified fixed point in each declared m
 
 | Quantity | Conditional central | Envelope | Measured | Delta/sigma | Status |
 | --- | ---: | --- | --- | ---: | --- |
-| `mH_gev` | `125.20748` | `[125.18329, 125.23167]` | `125.13 +- 0.11` (PDG 2025) | `0.704` | compare-only |
-| `mt_pole_gev` | `172.31492` | `[172.27749, 172.35236]` | `172.1 +- 0.6` (PDG 2025 direct-average context row) | `0.358` | compare-only |
+| `mH_gev` | `125.20748` | `[125.18329, 125.23167]` | `125.13 +- 0.11` (PDG 2026) | `0.704` | compare-only |
+| `mt_pole_gev` | `172.31492` | `[172.27749, 172.35236]` | `172.1 +- 0.6` (PDG 2026 cross-section pole-mass context row) | `0.358` | compare-only |
 | `MW_chart_gev` | `80.373315` | `[80.369217, 80.377413]` | chart coordinate | n/a | NOT_EVALUABLE |
 | `MZ_chart_gev` | `91.193124` | `[91.187978, 91.198269]` | chart coordinate | n/a | NOT_EVALUABLE |
 
@@ -237,7 +237,7 @@ W/Z rows are running/tree chart coordinates. The strict one-loop consumer has a 
 
 ## Quarks
 
-- Absolute masses (source_only_nonidentifiability_obstruction_transport): No absolute quark mass is emitted. The two-modulus spread fiber (R>0)^2, obtained by granting a candidate-only ordered shape law, survives the 2026-07 certified structure set (matter receipt #314, port receipt #566, twelve frozen selector candidates; input hashes pinned 2026-07-30), so the six source-only absolute masses are non-identifiable from that set, by an explicit rescaling symmetry of the registered data. Live cuts: a Yukawa-typed source equation through the physical bindings or the family attachment, a new selector under the frozen discipline, or the conditional Higgs/top criticality coordinate (scientific owner #736).
+- Absolute masses (source_only_nonidentifiability_obstruction_transport): No absolute quark mass is emitted. The two-modulus spread fiber (R>0)^2, obtained by granting a candidate-only ordered shape law, survives the 2026-07 certified structure set (matter receipt #314, port receipt #566, twelve frozen selector candidates, with input hashes pinned at emission), so the six source-only absolute masses are non-identifiable from that set, by an explicit rescaling symmetry of the registered data. Live cuts: a Yukawa-typed source equation through the physical bindings or the family attachment, a new selector under the frozen discipline, or the conditional Higgs/top criticality coordinate (scientific owner #736).
 - Down-type register-Clebsch route, rejected (T2_conditional_rejected_candidate): `ms/md = 22.97` against FLAG 2024 (Nf=2+1+1: 19.94, Nf=2+1: 20.36); all six generation assignments are rejected by the retrospective conservative gate. The diagnostic `sqrt(md/ms) = 0.2086` is not a derived Cabibbo angle. Premise: a cross-sector register relation, independent Yukawa coefficient identification, and a physical generation order; the pairing receipt supplies channel compatibility only. The target-free F1/F2 scan fixes only the unordered multiset. All six assignments fail the retrospective conservative FLAG gate. The displayed GST value is sqrt(md/ms) under an assumed texture, not a derived CKM angle; a simultaneous diagonal mass ansatz would instead give the identity CKM matrix.
 
 ## Hadrons
