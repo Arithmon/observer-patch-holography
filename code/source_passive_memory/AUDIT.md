@@ -72,8 +72,9 @@ The initial Linux test attempt needed its temporary parent directory created;
 no scientific receipt was changed to fix that environment setup.
 
 The mandatory runner is checked against its existing frozen source-projection
-hash. The new suite has dedicated Windows/Linux CI. Existing scientific
-receipts, claim registries, paper text and publication artifacts are unchanged.
+hash. The new suite has dedicated Windows/Linux CI. The passive-memory
+derivation changes no existing scientific receipt, claim registry or paper
+text. The later publication-manifest synchronization is recorded below.
 
 ## Follow-up audit of published head `1d93ef54`
 
@@ -140,3 +141,39 @@ are not physical memory resources accounted for by the register count.
 These are local validation results. The reviewed mathematical assumptions and
 bounded exit are stated above; no broader CI or scientific certification is
 inferred from these checks.
+
+## Publication-manifest failure after main advanced
+
+The three failed checks on head `8410f743` (paper preview and mandatory shard 4
+on both platforms) share one cause. Their checkout was GitHub's merge commit
+`2ded83b8`, combining this branch with main `701a1a32`. Upstream commit
+`95263999` had rebuilt the flagship PDF while leaving its preview manifest
+entry stale. The standalone PR head's older PDF and manifest agreed, so the
+earlier branch-only validation did not expose that mismatch.
+
+Main was merged without dropping its changes, and the exact CI failure was
+reproduced locally. The official manifest generator, with preview mode and
+PDF release-line checks enabled, changes just that PDF's hash and byte size:
+`7170f5f4...` / 465618 becomes `5ee90da3...` / 466169. This describes the actual
+upstream PDF; it is not an altered acceptance threshold or a scientific
+receipt reclassification. There is no release bump or new publication.
+
+The complete paper rebuild and warning checks reproduce the existing PDF
+bytes and the corrected manifest. The paper sources, PDF contents, 40 Lean
+proofs, 14 passive-memory input pins and both retained scientific JSON
+artifacts receive no edits as part of this repair.
+
+Local validation of the repaired merge:
+
+- Windows: the complete `tools/run_mandatory_suite.py --shard-index 4
+  --shard-count 6` run passes in standard mode, including the manifest gate
+  that failed on both CI platforms and all subsequent offline gates.
+- Windows: the manifest regressions and passive-memory suite pass together
+  (110 tests). The exact retained-execution verifier also passes.
+- Ubuntu via WSL: all 23 paper PDFs and the canonical book rebuild with the
+  pinned publication tools, pass their warning gates and match the committed
+  PDF bytes. Regenerating the preview manifest reproduces the two-field
+  correction exactly; all 25 source-bound book assets validate.
+- The 14 passive-memory input pins still match, both retained scientific JSON
+  files match published head `8410f743` byte for byte, and `git diff --check`
+  passes.
