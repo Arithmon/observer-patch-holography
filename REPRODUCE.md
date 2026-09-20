@@ -28,6 +28,25 @@ analytic prescribed-magnetic-field continuum theorem, and full-dimensional
 neutral-state preparation. Their separate acceptance rules do not certify
 physical calibration or useful interacting quantum propagation.
 
+## Passive-memory requirements toward M1
+
+The exact nonlinear-record classification, finite native-zero reset bound,
+fresh-zero approximate construction and ancillary quadratic budget have a
+separate retained-evidence verifier:
+
+```sh
+python code/source_passive_memory/verify.py
+python -m pytest -q code/source_passive_memory
+cd Lean
+lake build Geometry.SourcePassiveMemoryAxiomAudit
+```
+
+The [contract and scope](code/source_passive_memory/README.md) distinguish
+native pair-mean executions from equal-image proof witnesses and supplied
+preparations. These controls do not derive M1 or a physical energy/clock.
+The dedicated workflow runs on Windows and Linux; the frozen mandatory
+runner is unchanged.
+
 ## Environment
 
 - CPython 3.12 or newer (verified on 3.12 and 3.13).

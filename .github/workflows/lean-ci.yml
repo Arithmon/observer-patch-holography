@@ -127,12 +127,14 @@ jobs:
             head="$GITHUB_SHA"
           fi
 
-          # These two roots provision everything needed by the explicit trust
-          # replays below. Additional changed modules are compiled directly;
-          # the exhaustive umbrella build is intentionally nightly-only.
+          # Keep downstream trust audits explicit: compiling only a changed
+          # dependency does not rerun an unchanged importer/axiom audit.
+          # Additional changed modules are compiled directly; the exhaustive
+          # umbrella build is intentionally nightly-only.
           targets=(
             "ObserverPatchHolography.EinsteinBranch.AxiomAudit"
             "A5PrimitivePortPrediction"
+            "Geometry.SourcePassiveMemoryAxiomAudit"
           )
           if [ -n "$base" ] && [[ ! "$base" =~ ^0+$ ]] && git cat-file -e "$base^{commit}"; then
             while IFS= read -r path; do

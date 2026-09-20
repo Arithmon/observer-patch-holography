@@ -661,7 +661,11 @@ def main() -> int:
     policy = json.loads(POLICY_PATH.read_text(encoding="utf-8"))
     artifact = build_artifact(policy)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(artifact, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    args.output.write_text(
+        json.dumps(artifact, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
     print(f"saved: {args.output}")
     return 0
 
