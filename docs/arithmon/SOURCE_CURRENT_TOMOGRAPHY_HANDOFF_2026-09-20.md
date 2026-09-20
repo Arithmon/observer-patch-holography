@@ -3,11 +3,11 @@
 ## Repository state
 
 - Base branch SHA: `56c77645a80b06f96c2d99088864c9c945f803f3`
-- Audited upstream SHA: `a197baac23c0dbec3770649f0f488d6df9a41541`
+- Synchronized fork-main SHA: `701a1a328fa9b266a8084f1ed5ee71d2cb824688`
 - Final branch SHA: the commit containing this report; recorded in the external
   handoff because a Git commit cannot contain its own SHA.
-- Commits added by this run: 2 (Stage 1 syntax repair; Stage 2 inventory and
-  integration).
+- Scientific commits: 2 (Stage 1 syntax repair; Stage 2 inventory and claim
+  integration), followed by the fork-main synchronization and custody fix.
 
 ## Primary scientific verdict
 
@@ -19,6 +19,11 @@ source-native perturbation families on the same W12 carrier, both mixed
 composition orders as canonical raw histories, target freedom, and refinement
 provenance. The exact machine verdict is
 `SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT`.
+
+The inventory also commits a canonical 430-path snapshot covering every
+non-cache file below the 13 audited directories. Both verification lanes
+recompute the list and fail if a file is added, removed, or renamed, preventing
+a new candidate surface from remaining silently outside the 21-row inventory.
 
 The strongest registered source packet is reversible but its response-word
 algebra has exact dimension four, is commutative, and contains only the
@@ -61,7 +66,6 @@ would create a new producer and was therefore rejected.
 - `claims/selection_ledger.json`
 - `claims/physical_identification_registry.json`
 - `docs/SELECTION_LEDGER.md` (generated)
-- `tools/run_mandatory_suite.py`
 
 ## Validation performed
 
@@ -86,7 +90,7 @@ Passed:
 - `python3 code/a5_closure/verify_source_current_order_sensitive_inventory.py
   --inventory code/a5_closure/manifests/source_current_order_sensitive_inventory.json`
 - `python3 code/a5_closure/tests/test_source_current_order_sensitive_inventory.py`
-  — 9 tests.
+  — 11 tests, including an audited-directory staleness mutation.
 - `python3 code/a5_closure/issue_566_bracket_space_stage1/test_stage1.py`
   — 6 tests.
 - `python3 code/a5_closure/issue_566_bracket_space_stage2/test_stage2.py`
@@ -111,6 +115,12 @@ Unavailable in the current environment:
   not required and CI is external.
 
 No dependency was installed or duplicated during this run.
+
+The initially proposed Stage 0/1/2 entries were removed from
+`tools/run_mandatory_suite.py`: that file is a pinned `control_artifact` in the
+invariant-mining pre-generation freeze. The freeze was neither regenerated nor
+repinned. Mandatory-runner integration is intentionally deferred to a separate
+upstream-owned custody change.
 
 ## Claim boundary
 

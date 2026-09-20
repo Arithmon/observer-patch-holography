@@ -4,7 +4,7 @@
 
 `SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT`
 
-At upstream baseline `a197baac23c0dbec3770649f0f488d6df9a41541`, the
+At synchronized fork-main baseline `701a1a328fa9b266a8084f1ed5ee71d2cb824688`, the
 bounded repository inventory contains **21 candidate packets and zero
 qualifying packets**. No single audited object is simultaneously source-native,
 port-indexed, reversible, target-free, bound to the same twelve-port carrier,
@@ -34,6 +34,11 @@ from distinct packets are not composited.
 The canonical machine-readable adjudication is
 [`manifests/source_current_order_sensitive_inventory.json`](manifests/source_current_order_sensitive_inventory.json).
 It pins every audited source and the two independent implementations by SHA-256.
+It also freezes the canonical sorted list of every non-cache file below the 13
+audited directories (430 paths at this baseline) and the SHA-256 of that list.
+The producer and independent verifier both fail closed if a file is added,
+removed, or renamed there; a newly committed candidate therefore cannot remain
+silently outside the 21-row adjudication.
 
 ## Independent inventory result
 
@@ -100,5 +105,5 @@ python3 code/a5_closure/tests/test_source_current_order_sensitive_inventory.py
 
 The independent verifier does not import the producer. The mutation suite
 rejects candidate omission, false `QUALIFIES` promotion, source-pin doctoring,
-positive-stage promotion, and any import of the forbidden current fixture into
-the producer.
+positive-stage promotion, audited-tree file-list drift, and any import of the
+forbidden current fixture into the producer.

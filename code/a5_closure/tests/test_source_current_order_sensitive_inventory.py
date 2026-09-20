@@ -105,6 +105,37 @@ class SourceCurrentOrderSensitiveInventoryTests(unittest.TestCase):
         self.assertIn("66 unordered", ordered)
         self.assertIn("132 ordered", ordered)
 
+    def test_audited_file_snapshot_is_canonical_and_current(self) -> None:
+        snapshot = self.committed["audited_file_snapshot"]
+        self.assertEqual(snapshot["directories"], list(producer.AUDITED_DIRECTORIES))
+        self.assertEqual(snapshot["paths"], sorted(set(snapshot["paths"])))
+        self.assertEqual(snapshot["path_count"], len(snapshot["paths"]))
+        self.assertEqual(
+            snapshot["paths_sha256"],
+            producer.canonical_sha256(snapshot["paths"]),
+        )
+        self.assertEqual(snapshot["paths"], producer.audited_file_paths())
+
+    def test_new_file_below_audited_directory_makes_inventory_stale(self) -> None:
+        temporary = tempfile.NamedTemporaryFile(
+            mode="w",
+            prefix="source_current_inventory_staleness_",
+            suffix=".json",
+            dir=REPO_ROOT / "code/source_feedback_transport",
+            encoding="utf-8",
+            delete=False,
+        )
+        with temporary:
+            temporary.write("{}\n")
+        path = Path(temporary.name)
+        self.addCleanup(path.unlink, missing_ok=True)
+        with self.assertRaisesRegex(producer.InventoryError, "INVENTORY_REPLAY"):
+            producer.verify_inventory(self.committed)
+        with self.assertRaisesRegex(
+            independent.VerificationError, "audited file snapshot drift"
+        ):
+            independent.verify(producer.INVENTORY_PATH, REPO_ROOT)
+
     def test_rehashed_false_qualification_is_rejected(self) -> None:
         mutant = copy.deepcopy(self.committed)
         row = next(

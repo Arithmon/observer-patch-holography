@@ -26,7 +26,23 @@ INDEPENDENT_VERIFIER = HERE / "verify_source_current_order_sensitive_inventory.p
 
 SCHEMA = "oph.source_current_order_sensitive_inventory.v1"
 VERDICT = "SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT"
-UPSTREAM_MAIN_SHA = "a197baac23c0dbec3770649f0f488d6df9a41541"
+UPSTREAM_MAIN_SHA = "701a1a328fa9b266a8084f1ed5ee71d2cb824688"
+
+AUDITED_DIRECTORIES = (
+    "code/source_feedback_transport",
+    "code/source_scalar_instruments",
+    "code/source_routing",
+    "code/a5_closure",
+    "code/consensus",
+    "code/refinement",
+    "code/angular_sprint",
+    "Lean/Dynamics",
+    "Lean/Time",
+    "Lean/Screen",
+    "Lean/Geometry",
+    "Lean/InformationProjection",
+    "Lean/Variational",
+)
 
 ALLOWED_CLASSIFICATIONS = {
     "QUALIFIES",
@@ -139,6 +155,42 @@ def source_pin(relative: str) -> dict[str, Any]:
         "path": relative,
         "bytes": path.stat().st_size,
         "sha256": file_sha256(path),
+    }
+
+
+def audited_file_paths() -> list[str]:
+    """Return the canonical repository-file snapshot for the audited trees."""
+
+    paths: set[str] = set()
+    for relative in AUDITED_DIRECTORIES:
+        directory = REPO_ROOT / relative
+        require(
+            directory.is_dir(),
+            "AUDIT_DIRECTORY",
+            f"missing audited directory: {relative}",
+        )
+        for path in directory.rglob("*"):
+            if not path.is_file():
+                continue
+            repo_relative = path.relative_to(REPO_ROOT)
+            if "__pycache__" in repo_relative.parts or path.suffix == ".pyc":
+                continue
+            paths.add(repo_relative.as_posix())
+    return sorted(paths)
+
+
+def audited_file_snapshot() -> dict[str, Any]:
+    paths = audited_file_paths()
+    return {
+        "directories": list(AUDITED_DIRECTORIES),
+        "path_count": len(paths),
+        "paths": paths,
+        "paths_sha256": canonical_sha256(paths),
+        "excluded_runtime_artifacts": ["**/__pycache__/**", "**/*.pyc"],
+        "staleness_rule": (
+            "any added, removed, or renamed non-cache file below an audited "
+            "directory invalidates the committed inventory"
+        ),
     }
 
 
@@ -990,21 +1042,7 @@ def build_inventory() -> dict[str, Any]:
         "target_labels_used": False,
         "audit_scope": {
             "rule": "one candidate packet must satisfy every qualification field; facts from distinct packets are not composited",
-            "directories": [
-                "code/source_feedback_transport",
-                "code/source_scalar_instruments",
-                "code/source_routing",
-                "code/a5_closure",
-                "code/consensus",
-                "code/refinement",
-                "code/angular_sprint",
-                "Lean/Dynamics",
-                "Lean/Time",
-                "Lean/Screen",
-                "Lean/Geometry",
-                "Lean/InformationProjection",
-                "Lean/Variational",
-            ],
+            "directories": list(AUDITED_DIRECTORIES),
             "repository_wide_search_terms": [
                 "port-indexed perturbation",
                 "reversible perturbation",
@@ -1018,6 +1056,7 @@ def build_inventory() -> dict[str, Any]:
                 "refinement provenance",
             ],
         },
+        "audited_file_snapshot": audited_file_snapshot(),
         "qualification_fields": list(QUALIFICATION_FIELDS),
         "source_pins": [source_pin(path) for path in AUDITED_SOURCE_PATHS],
         "implementation_pins": [

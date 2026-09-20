@@ -25,6 +25,22 @@ PRODUCER = HERE / "source_current_order_sensitive_inventory.py"
 SCHEMA = "oph.source_current_order_sensitive_inventory.v1"
 VERDICT = "SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT"
 
+AUDITED_DIRECTORIES = (
+    "code/source_feedback_transport",
+    "code/source_scalar_instruments",
+    "code/source_routing",
+    "code/a5_closure",
+    "code/consensus",
+    "code/refinement",
+    "code/angular_sprint",
+    "Lean/Dynamics",
+    "Lean/Time",
+    "Lean/Screen",
+    "Lean/Geometry",
+    "Lean/InformationProjection",
+    "Lean/Variational",
+)
+
 QUALIFICATION_FIELDS = (
     "source_native",
     "port_indexed",
@@ -187,6 +203,38 @@ def canonical_sha256(value: Any) -> str:
 
 def file_sha256(path: Path) -> str:
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def independently_list_audited_files(repo_root: Path) -> list[str]:
+    paths: set[str] = set()
+    for relative in AUDITED_DIRECTORIES:
+        directory = repo_root / relative
+        check(directory.is_dir(), f"missing audited directory: {relative}")
+        for path in directory.rglob("*"):
+            if not path.is_file():
+                continue
+            repo_relative = path.relative_to(repo_root)
+            if "__pycache__" in repo_relative.parts or path.suffix == ".pyc":
+                continue
+            paths.add(repo_relative.as_posix())
+    return sorted(paths)
+
+
+def verify_audited_file_snapshot(snapshot: Any, repo_root: Path) -> set[str]:
+    check(isinstance(snapshot, Mapping), "audited file snapshot missing")
+    check(snapshot.get("directories") == list(AUDITED_DIRECTORIES), "audit directory drift")
+    paths = snapshot.get("paths")
+    check(
+        isinstance(paths, list)
+        and all(isinstance(path, str) and path for path in paths),
+        "audited file path list",
+    )
+    check(paths == sorted(set(paths)), "audited file paths not canonical")
+    check(snapshot.get("path_count") == len(paths), "audited file path count")
+    check(snapshot.get("paths_sha256") == canonical_sha256(paths), "audited file list hash")
+    current_paths = independently_list_audited_files(repo_root)
+    check(paths == current_paths, "audited file snapshot drift")
+    return set(paths)
 
 
 def verify_pin_rows(rows: Any, repo_root: Path, label: str) -> set[str]:
@@ -391,6 +439,10 @@ def verify(inventory_path: Path, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
         "qualification field schema",
     )
 
+    snapshotted_paths = verify_audited_file_snapshot(
+        inventory.get("audited_file_snapshot"), repo_root
+    )
+
     source_paths = verify_pin_rows(inventory.get("source_pins"), repo_root, "source")
     implementation_paths = verify_pin_rows(
         inventory.get("implementation_pins"), repo_root, "implementation"
@@ -402,6 +454,15 @@ def verify(inventory_path: Path, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
             "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
         },
         "implementation pin set",
+    )
+    check(
+        {
+            path
+            for path in source_paths | implementation_paths
+            if any(path == root or path.startswith(root + "/") for root in AUDITED_DIRECTORIES)
+        }
+        <= snapshotted_paths,
+        "pinned audited file missing from snapshot",
     )
     verify_import_firewall(repo_root / "code/a5_closure/source_current_order_sensitive_inventory.py")
 
