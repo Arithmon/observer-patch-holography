@@ -24,7 +24,7 @@
     },
     {
       "id": "koide_conditional_tau_window",
-      "statement": "Under the balanced-circulant and mass-ordering premises the measured electron and muon masses fix the tau mass inside [1776.968991, 1776.969063] MeV, 0.4336 sigma from measurement. The balance premise was abstracted from the measured lepton triple, so this is a target-informed conditional postdiction with a frozen rejection rule."
+      "statement": "Under the balanced-circulant and mass-ordering premises the measured electron and muon masses fix the tau mass inside [1776.968991, 1776.969063] MeV, 0.4336 sigma from measurement. The balance premise is Koide's published relation, which the face circulant of the carrier holds as a finite structure, so this is a conditional postdiction with a frozen rejection rule and a declared premise ancestry."
     },
     {
       "id": "lepton_closure_target",
@@ -5256,7 +5256,7 @@
         "gluon",
         "graviton"
       ],
-      "receipt_sha256": "sha256:d01f63895a25b22ee7adbd7de6e391ab83cb3906f9914119ae05853fce01f565",
+      "receipt_sha256": "sha256:70c3be1c66eabc0e3affc721f9ee5a111966fea6ba23f451819424bed23523a3",
       "rows": [
         {
           "blocking_frontier": [

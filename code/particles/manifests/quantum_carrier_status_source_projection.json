@@ -154,10 +154,10 @@
         294
       ],
       "pin": {
-        "bytes": 2581,
+        "bytes": 2568,
         "path": "code/particles/runs/qcd/hadron_source_backend/qcd_ensemble/solver_on_standby.json",
         "role": "standby solver with no source spectral output",
-        "sha256": "sha256:c34d637a2b2afe638c5f182eb02edc2e31e994977ae7a2426ec4586351828597"
+        "sha256": "sha256:5357cbc7368bb10f78e75b24fdf57ba42671eb3d4c879955ab0690d7d263d5da"
       },
       "status": "NO_PROMOTED_QCD_SPECTRAL_OUTPUT_ON_DECLARED_LOCAL_PATH"
     }

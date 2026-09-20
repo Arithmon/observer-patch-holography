@@ -56,7 +56,7 @@ Status `postdiction_comparison`; owning observation-ledger row OL-H3.
 
 - Value or enclosure: `code/particles/runs/status/postdiction_ledger.json`. The charged_leptons section carries the certified rows: the Koide conditional tau enclosure under the balanced-circulant and mass-ordering premises, the anchor-gap accounting interval with the recorded scheme term, and the rectangle and coherent kappa intervals with the witness triple inside every interval; decimal enclosures are certified by code/particles/leptons/charged_interval_decimal_certificate.py.
 - Ancestry:
-  - `register_import` (PR-13): Koide balance premise, abstracted from the measured charged triple.
+  - `register_import` (PR-13): Koide balance premise, taken from the relation Koide published.
   - `register_import` (PR-15): clock and energy calibration anchors for the MeV attachment of the mass rows.
   - `register_import` (PR-40): declared payload-coherent anchor-gap premise of the coherent kappa interval closure.
   - `derived`: positive-chamber circulant identity and the machine-checked interval inversion arithmetic.

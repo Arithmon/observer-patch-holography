@@ -129,7 +129,7 @@
       },
       "ancestry": [
         {
-          "input": "Koide balance premise, abstracted from the measured charged triple",
+          "input": "Koide balance premise, taken from the relation Koide published",
           "class": "register_import",
           "register_row": "PR-13"
         },

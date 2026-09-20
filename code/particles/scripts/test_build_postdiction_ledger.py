@@ -976,7 +976,10 @@ def test_principal_results_prioritize_strong_structural_rows(result):
         "koide_conditional_tau_window",
         "lepton_closure_target",
     }
-    assert "target-informed conditional postdiction" in principal[3]["statement"]
+    koide_statement = principal[3]["statement"]
+    assert "conditional postdiction" in koide_statement
+    assert "declared premise ancestry" in koide_statement
+    assert "Koide's published relation" in koide_statement
     wp = next(
         r
         for r in result["sections"]["charged_leptons"]

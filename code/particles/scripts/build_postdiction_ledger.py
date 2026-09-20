@@ -5708,9 +5708,10 @@ def _principal_results(sections: dict[str, Any]) -> list[dict[str, Any]]:
                 f"[{leptons['charged_leptons_koide_conditional_tau']['tau_enclosure_mev_outward'][0]}, "
                 f"{leptons['charged_leptons_koide_conditional_tau']['tau_enclosure_mev_outward'][1]}] MeV, "
                 f"{leptons['charged_leptons_koide_conditional_tau']['distance_sigma']} sigma from "
-                "measurement. The balance premise was abstracted from the "
-                "measured lepton triple, so this is a target-informed "
-                "conditional postdiction with a frozen rejection rule."
+                "measurement. The balance premise is Koide's published "
+                "relation, which the face circulant of the carrier holds as a "
+                "finite structure, so this is a conditional postdiction with a "
+                "frozen rejection rule and a declared premise ancestry."
             ),
         },
         {
