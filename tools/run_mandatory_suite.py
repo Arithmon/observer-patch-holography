@@ -1104,6 +1104,62 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
         ],
     ),
     (
+        "Verify the source-current tomography Stage 0 fail-closed baseline",
+        [
+            sys.executable,
+            "code/a5_closure/source_current_tomography_stage0.py",
+            "verify",
+        ],
+    ),
+    (
+        "Verify the source-current tomography Stage 1 admissibility contract",
+        [
+            sys.executable,
+            "code/a5_closure/source_current_tomography_stage1_contract.py",
+            "verify",
+        ],
+    ),
+    (
+        "Execute the source-current tomography Stage 0 and Stage 1 mutation gates",
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "code/a5_closure/tests/test_source_current_tomography_stage0.py",
+            "code/a5_closure/tests/test_source_current_tomography_stage1_contract.py",
+        ],
+    ),
+    (
+        "Replay the bounded source-current order-sensitive inventory",
+        [
+            sys.executable,
+            "code/a5_closure/source_current_order_sensitive_inventory.py",
+            "verify",
+            "--inventory",
+            "code/a5_closure/manifests/source_current_order_sensitive_inventory.json",
+        ],
+    ),
+    (
+        "Verify the source-current order-sensitive inventory independently",
+        [
+            sys.executable,
+            "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
+            "--inventory",
+            "code/a5_closure/manifests/source_current_order_sensitive_inventory.json",
+        ],
+    ),
+    (
+        "Execute the source-current order-sensitive inventory mutation gates",
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "code/a5_closure/tests/test_source_current_order_sensitive_inventory.py",
+        ],
+    ),
+    (
         "Execute the target-free current bracket search-space gates",
         [
             sys.executable,

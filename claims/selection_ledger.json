@@ -335,7 +335,7 @@
         "OPH-SCREEN-A5-SM-RECOGNITION"
       ],
       "owner_issues": [],
-      "where": "A1 supplies a faithful complete compact twelve-dimensional port response and A2 makes every proper carrier recharting internal to that response. The carrier has one fixed line. Compact classification and the centreless four-factor fixed-space exclusion leave only u(1)+su(2)+su(3). Target-blind readback separately derives R=-J. The charged-double-triplet matrices are an exact declared witness; ordered source tomography and same-current holonomy are open. Conditional on row 4.",
+      "where": "A1 supplies a faithful complete compact twelve-dimensional port response and A2 makes every proper carrier recharting internal to that response. The carrier has one fixed line. Compact classification and the centreless four-factor fixed-space exclusion leave only u(1)+su(2)+su(3). Target-blind readback separately derives R=-J. The charged-double-triplet matrices are an exact declared witness. A bounded inventory of 21 current source/runtime/formal packets finds zero object carrying all required ordered raw W12 perturbation data and refinement provenance; it is a repository-state certificate, not a future no-go. Ordered source tomography and same-current holonomy remain open. Conditional on row 4.",
       "menu": {
         "size": 2,
         "alternatives": "the centreless su(2)^4 branch or the one-centre u(1)+su(2)+su(3) branch after the A1/A2 centre bound",
@@ -344,7 +344,9 @@
       "compression_input": true,
       "receipts": [
         "code/a5_closure/port_current_inner_certificate.py",
-        "code/a5_closure/claim_boundary_certificates.py"
+        "code/a5_closure/claim_boundary_certificates.py",
+        "code/a5_closure/manifests/source_current_order_sensitive_inventory.json",
+        "code/a5_closure/verify_source_current_order_sensitive_inventory.py"
       ],
       "lean": [
         {
@@ -359,7 +361,8 @@
       "negative_controls": [
         "an abelian diagonal response has the same port covariance but fails A2 endogeneity",
         "the scalar seam equalizers close to so(11), not the twelve-dimensional current",
-        "a semantic current-model label cannot satisfy the source gate"
+        "a semantic current-model label cannot satisfy the source gate",
+        "the Stage 2 bounded inventory rejects omitted or misclassified candidates, doctored pins, false qualification, and promotion of positive tomography stages"
       ],
       "paper_anchors": [
         {
