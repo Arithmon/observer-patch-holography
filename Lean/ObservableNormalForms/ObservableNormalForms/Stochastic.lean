@@ -815,7 +815,7 @@ namespace PersistentNoiseControl
 open FiniteMarkovKernel
 
 /-- Fair-coin kernel on `Bool`: at every step, move to `true` or `false`
-with probability `1/2` each, independently of the current state. -/
+with probability `1/2` each, independently of the state. -/
 noncomputable def noisyKernel : FiniteMarkovKernel Bool where
   probability _ _ := 1 / 2
   probability_nonneg := fun _ _ => by norm_num

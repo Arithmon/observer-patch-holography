@@ -143,7 +143,7 @@ theorem composedEinsteinBranch
     A.universalCoupling, heinstein⟩
 
 /-- Bundled form of `composedEinsteinBranch`.  This is the entry point for an
-explicit `EinsteinAdmissibleTower`; it still takes every continuum,
+explicit `EinsteinAdmissibleTower`; it takes every continuum,
 asymptotic, entropy, MaxEnt, manifest, vacuum-reference, coupling, and scale
 premise as data rather than constructing any of them. -/
 theorem composedEinsteinAdmissibleTower

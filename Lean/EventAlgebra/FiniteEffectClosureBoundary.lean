@@ -205,7 +205,7 @@ theorem all_unit_tests_force_closed_unit_ball (q : Spatial)
   nlinarith [Real.sq_sqrt hNormPos.le]
 
 /-- Dense centered tests force the same closed-unit-ball constraint once
-affinity has already been assumed. -/
+affinity has been assumed. -/
 theorem dense_unit_tests_force_closed_unit_ball
     (D : Set CelestialSphere) (hDense : Dense D) (q : Spatial)
     (hTest : ∀ n ∈ D, |spatialDot q n.1| ≤ 1) :

@@ -112,6 +112,53 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "--check-inventory",
         ],
     ),
+    (
+        "Validate reader-facing prose style across papers, essays and registers",
+        [sys.executable, "tools/check_reader_style.py"],
+    ),
+    (
+        "Replay the surface tests that bind claims to their published statements",
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "tools/test_carrier_dynamics_and_profile_likelihood_surfaces.py",
+            "tools/test_carrier_map_and_matched_diagnostic_surfaces.py",
+            "tools/test_dark_sector_and_expectation_net_surfaces.py",
+            "tools/test_finite_two_site_ising_surfaces.py",
+            "tools/test_joint_action_and_arming_surfaces.py",
+            "tools/test_physics_outputs_surfaces.py",
+            "tools/test_source_binding_and_collar_derivation_surfaces.py",
+            "tools/test_source_history_gns_surfaces.py",
+            "tools/test_source_history_three_slot_local_gns_surfaces.py",
+        ],
+    ),
+    (
+        "Replay the Higgs-Yukawa source frontier and its pinned parents",
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "code/particles/hierarchy/higgs_yukawa_source_frontier",
+        ],
+    ),
+    (
+        "Replay the Maxwell-lane receipts against their pinned Lean sources",
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "code/electromagnetism/test_discrete_coulomb_green.py",
+            "code/electromagnetism/test_local_face_maxwell_action.py",
+        ],
+    ),
+    (
+        "Validate Lean comment style and the in-file kernel-axiom audit blocks",
+        [sys.executable, "tools/check_lean_docstring_style.py"],
+    ),
     ("Validate claim registry", [sys.executable, "tools/check_claim_registry.py"]),
     (
         "Validate the selection ledger and its generated surface",

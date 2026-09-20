@@ -29,7 +29,8 @@ def main() -> None:
         raise SystemExit(1)
     print(
         "public quantitative surfaces OK: registry classes, producers, "
-        "comparisons, and README rendering policy resolve"
+        "comparisons, README rendering policy, and every declared "
+        "published-README comparison-table row and lane resolve"
     )
 
 

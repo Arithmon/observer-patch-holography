@@ -63,7 +63,7 @@
 \definecolor{capgray}{gray}{0.38}
 \captionsetup{font={small,color=capgray},labelfont={bf,color=capgray},skip=10pt}
 % Keep the process diagram beside its introduction, without floating across prose.
-% Use the caption package already loaded by the shared caption header.
+% Use the caption package that the shared caption header loads.
 \renewenvironment{figure}[1][]{%
   \par\medskip\noindent\begin{minipage}{\linewidth}%
   \captionsetup{type=figure}%
@@ -159,7 +159,7 @@ Bernhard's contribution begins with the axioms and continues through the
 research. He chooses questions, proposes interpretations, reviews
 intermediate arguments, discards results, modifies the plan, and
 redirects the models. Other contributors participate in criticism,
-technical development, and review. The models can propose the next step,
+technical development, and review. The models can propose what to do next,
 but their proposal does not determine what the programme should believe
 or pursue.
 
@@ -216,8 +216,8 @@ create.
 Different model instances investigate different branches. One may seek a
 direct proof; another may attempt a counterexample; another may
 construct a finite case that reveals a missing hypothesis. A useful
-branch can split again when its proof needs a new lemma. Previously
-established lemmas can be reused by several branches, so the
+branch can split again when its proof needs a new lemma. Established
+lemmas can be reused by several branches, so the
 accumulating structure is a dependency graph rather than a single linear
 argument or a tree with permanently separate limbs.
 
@@ -241,7 +241,7 @@ outputs, requesting audits, and returning objections for further work.
 Tasks can require several rounds of development. Some results are
 recovered manually when an automated exchange fails. A task marked
 complete by a runner records a workflow event; the scientific status
-still depends on the actual proof or evidence produced.
+depends on the actual proof or evidence produced.
 
 \subsection{4. Three forms of checking do different
 work}\label{three-forms-of-checking-do-different-work}
@@ -260,7 +260,7 @@ its axioms and trust assumptions. Reviewing those assumptions is part of
 reviewing the result. The repository separately tracks proofs that use
 native-code evaluation, whose trust requirements extend beyond an
 ordinary proof checked entirely by the kernel. A theorem about a defined
-mathematical object still needs an argument connecting that object to
+mathematical object needs an argument connecting that object to
 the physical system under discussion.
 
 The translation itself is a major checkpoint. A model can prove a weaker
@@ -325,7 +325,7 @@ artifact or a revised claim.
 Bernhard and the other contributors use these findings to steer the
 research. They may ask for a stronger argument, remove a conclusion,
 change the assumptions, or redirect effort toward another branch. A
-failed route can still contribute a useful result by showing exactly why
+failed route can contribute a useful result by showing exactly why
 an attractive approach does not work. Retaining that failure prevents
 the same unsupported claim from reappearing under different wording.
 
@@ -348,7 +348,7 @@ A mathematical theorem, a verified arithmetic certificate, an
 exploratory simulation, and an empirical comparison carry different
 kinds of support. The programme's rule is to state the actual support
 and retain the relevant conditions. An unavailable check leaves the
-corresponding conclusion unsupported; a weaker result can still be
+corresponding conclusion unsupported; a weaker result can be
 reported when its narrower support is explicit.
 
 Prediction requires particular care. A target and decision rule must be

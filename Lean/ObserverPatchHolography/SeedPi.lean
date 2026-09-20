@@ -15,12 +15,12 @@ and the Python certificate records `N = π` as the unique fixed point
 ("the unique solution of `(N/π)^s = N/π` with `s ≠ 1`"). This module proves
 that exact-form claim:
 
-* `capReadback_fixedPt_iff` — for `s ≠ 1` and `N > 0`,
+* `capReadback_fixedPt_iff`: for `s ≠ 1` and `N > 0`,
   `F(N) = N ↔ N = π`.
-* `capReadback_log_coords` — in log coordinates `y = log(N/π)` the readback
+* `capReadback_log_coords`: in log coordinates `y = log(N/π)` the readback
   is the linear map `y ↦ s·y`, i.e. the `CapacityFixedPoint.averagingMap`
   with `λ = 1 − s` toward target `0` (`capReadback_log_coords_averaging`).
-* `linear_branch_no_positive_fixedPt` — the additive CAP-P branches
+* `linear_branch_no_positive_fixedPt`: the additive CAP-P branches
   `F(N) = s·N` with `s < 1` have no positive fixed point.
 
 **Scope warning.** ALGEBRAIC layer only: the map shape is taken from the

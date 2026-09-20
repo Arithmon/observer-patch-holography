@@ -259,7 +259,7 @@ def test_observation_ledger_carries_exact_lean_gains_without_physical_promotion(
     assert compiler in carrier["evidence"]
     assert "attained maximum authenticated-parent-chain length" in order["notes"]
     assert "grammar expressivity" in order["notes"]
-    assert "Exact base order-cone agreement now derives chart separation" in order["notes"]
+    assert "Exact base order-cone agreement derives chart separation" in order["notes"]
     assert "separated one-way realization" in carrier["notes"]
     assert "not source-selected or order-reflecting" in carrier["notes"]
     assert "calibrated count-volume" in carrier["notes"]

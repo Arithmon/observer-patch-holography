@@ -47,6 +47,37 @@ ROLES = {
 }
 
 PUBLIC_SURFACE_GLOBS = ("README.md", "README_FR.md", "docs/**/*.md", "extra/*.md")
+
+# Every published README is swept for comparison tables. Dot directories hold
+# tooling state and the vendored names hold third-party trees, so neither is a
+# published surface of this repository.
+PUBLISHED_README_GLOB = "README*.md"
+VENDORED_DIRECTORY_NAMES = frozenset(
+    {"node_modules", "site-packages", "vendor", "third_party", "__pycache__"}
+)
+LEDGER_RELATIVE = Path("code/particles/runs/status/postdiction_ledger.json")
+COMPARISON_TABLE_SURFACE_RULE = (
+    "every_published_readme_comparison_table_is_declared_row_for_row"
+)
+
+# A table is a governed comparison table when its header names a comparison or
+# external-reference column and the table carries a numeral. Prose numerals,
+# issue numbers, and structural tables stay outside this gate.
+COMPARISON_COLUMN_TERMS = re.compile(
+    r"\b(?:comparison|comparaison|measured|measurement|external|experimental"
+    r"|reference|référence|PDG|CODATA|NIST|FLAG)\b",
+    re.IGNORECASE,
+)
+
+# Lane kinds a declared comparison row may resolve through.
+LANE_KINDS = {"registry_claim", "manifest_row", "ledger"}
+
+# Wording a declared role owes the reader in the row itself.
+ROLE_REQUIRED_WORDING = {
+    "diagnostic": "diagnostic",
+    "rejected_candidate": "rejected",
+    "target_anchored_backsolve": "never a prediction",
+}
 EXTERNAL_HEADER_TERMS = re.compile(
     r"\b(?:PDG|NIST|CODATA|external|measurement|measured|experimental|reference"
     r"|mesure|mesurée|expérimental|référence|comparaison)\b",
@@ -763,6 +794,330 @@ def unmanaged_oph_comparison_tables(root: Path = ROOT) -> list[str]:
     return issues
 
 
+def iter_published_readmes(root: Path) -> list[Path]:
+    """Published README surfaces of this repository."""
+    paths: list[Path] = []
+    for path in root.rglob(PUBLISHED_README_GLOB):
+        if not path.is_file():
+            continue
+        parts = path.relative_to(root).parts
+        if any(part.startswith(".") for part in parts):
+            continue
+        if any(part in VENDORED_DIRECTORY_NAMES for part in parts):
+            continue
+        paths.append(path)
+    return sorted(paths)
+
+
+def _table_cells(line: str) -> list[str]:
+    return [cell.strip() for cell in line.strip().strip("|").split("|")]
+
+
+def comparison_tables(text: str) -> list[dict[str, Any]]:
+    """Locate the governed comparison tables of one surface text.
+
+    A table is governed when its header names a comparison or external
+    reference column and the table carries a numeral. A generated block is
+    produced from manifest rows and compared byte for byte, so tables inside it
+    are outside this sweep.
+    """
+    lines = text.splitlines()
+    offsets: list[int] = []
+    offset = 0
+    for line in lines:
+        offsets.append(offset)
+        offset += len(line) + 1
+    block_start = text.find(BLOCK_START)
+    block_end = text.find(BLOCK_END)
+    tables: list[dict[str, Any]] = []
+    index = 0
+    while index < len(lines):
+        line = lines[index]
+        header_row = (
+            line.lstrip().startswith("|")
+            and index + 1 < len(lines)
+            and _is_markdown_table_separator(lines[index + 1])
+        )
+        if not header_row:
+            index += 1
+            continue
+        end = index + 1
+        while end + 1 < len(lines) and lines[end + 1].lstrip().startswith("|"):
+            end += 1
+        table_text = "\n".join(lines[index : end + 1])
+        inside_generated = (
+            block_start >= 0
+            and block_end >= 0
+            and block_start <= offsets[index] <= block_end
+        )
+        if (
+            COMPARISON_COLUMN_TERMS.search(line)
+            and NUMERIC_TOKEN.search(table_text)
+            and not inside_generated
+        ):
+            tables.append(
+                {
+                    "line": index + 1,
+                    "offset": offsets[index],
+                    "headers": _table_cells(line),
+                    "rows": [
+                        _table_cells(row) for row in lines[index + 2 : end + 1]
+                    ],
+                }
+            )
+        index = end + 1
+    return tables
+
+
+def ledger_row_ids(root: Path) -> set[str]:
+    """Row IDs carried by the postdiction ledger's sections."""
+    try:
+        ledger = load_json(root / LEDGER_RELATIVE)
+    except (OSError, json.JSONDecodeError):
+        return set()
+    identifiers: set[str] = set()
+    sections = ledger.get("sections")
+    if not isinstance(sections, dict):
+        return identifiers
+    for rows in sections.values():
+        if not isinstance(rows, list):
+            continue
+        for row in rows:
+            if isinstance(row, dict) and isinstance(row.get("id"), str):
+                identifiers.add(row["id"])
+    return identifiers
+
+
+def _check_declared_comparison_row(
+    label: str,
+    declaration: dict[str, Any],
+    cells: list[str],
+    comparison_index: int,
+    *,
+    registry: dict[str, dict[str, Any]],
+    manifest_rows: dict[str, dict[str, Any]],
+    ledger_ids: set[str],
+) -> list[str]:
+    """Check one declared comparison row against its rendered cells."""
+    issues: list[str] = []
+    role = declaration.get("role")
+    if role not in ROLES:
+        issues.append(f"{label}: unsupported comparison role {role!r}")
+    required_wording = ROLE_REQUIRED_WORDING.get(role)
+    rendered = " ".join(cells[1:]).casefold()
+    if required_wording is not None and required_wording.casefold() not in rendered:
+        issues.append(
+            f"{label}: role {role!r} requires the row to state {required_wording!r}"
+        )
+    comparison = cells[comparison_index] if comparison_index < len(cells) else ""
+    lane = declaration.get("lane")
+    if lane is None:
+        if NUMERIC_TOKEN.search(comparison):
+            issues.append(
+                f"{label}: a row without a declared lane must carry no numeral in "
+                f"its comparison cell: {comparison!r}"
+            )
+        return issues
+    if not isinstance(lane, dict) or lane.get("kind") not in LANE_KINDS:
+        issues.append(f"{label}: lane kind must be one of {sorted(LANE_KINDS)}")
+        return issues
+    kind = lane["kind"]
+    if kind == "registry_claim":
+        claim_id = lane.get("claim_id")
+        if claim_id not in registry:
+            issues.append(
+                f"{label}: lane names unknown registry claim ID {claim_id!r}"
+            )
+    elif kind == "manifest_row":
+        row_id = lane.get("row_id")
+        manifest_row = manifest_rows.get(row_id)
+        if manifest_row is None:
+            issues.append(f"{label}: lane names unknown manifest row ID {row_id!r}")
+        elif manifest_row.get("role") != role:
+            issues.append(
+                f"{label}: declared role {role!r} differs from the role "
+                f"{manifest_row.get('role')!r} of manifest row {row_id!r}"
+            )
+    else:
+        row_id = lane.get("row_id")
+        if row_id not in ledger_ids:
+            issues.append(
+                f"{label}: ledger lane names no row of "
+                f"{LEDGER_RELATIVE.as_posix()}: {row_id!r}"
+            )
+    return issues
+
+
+def check_comparison_table_surfaces(
+    root: Path,
+    manifest: dict[str, Any],
+    registry: dict[str, dict[str, Any]],
+) -> list[str]:
+    """Bind every governed README comparison table to declared rows.
+
+    The generated block governs the two top-level summary surfaces. Comparison
+    tables live on other published READMEs as well, so each one is declared
+    with its heading, its label and comparison columns, and one entry per
+    rendered row carrying that row's role and the lane its comparison resolves
+    through. An undeclared governed table, a declared row absent from the
+    rendered table, a rendered row that no declaration covers, an unresolved
+    lane, and a numeric comparison without a lane all fail.
+    """
+    issues: list[str] = []
+    scope_policy = manifest.get("scope_policy")
+    if not isinstance(scope_policy, dict):
+        return ["manifest: scope_policy must be an object"]
+    if (
+        scope_policy.get("comparison_table_surface_rule")
+        != COMPARISON_TABLE_SURFACE_RULE
+    ):
+        issues.append(
+            "manifest: comparison_table_surface_rule must be "
+            f"{COMPARISON_TABLE_SURFACE_RULE!r}"
+        )
+    governed = scope_policy.get("governed_surfaces")
+    if (
+        not isinstance(governed, list)
+        or not governed
+        or not all(isinstance(entry, str) and entry for entry in governed)
+    ):
+        issues.append(
+            "manifest: governed_surfaces must be a nonempty list of surface "
+            "descriptions"
+        )
+
+    declarations = manifest.get("comparison_table_surfaces")
+    if not isinstance(declarations, list) or not declarations:
+        issues.append(
+            "manifest: comparison_table_surfaces must be a nonempty list"
+        )
+        declarations = []
+    manifest_rows = {
+        row["row_id"]: row
+        for row in manifest.get("rows", [])
+        if isinstance(row, dict) and isinstance(row.get("row_id"), str)
+    }
+    ledger_ids = ledger_row_ids(root)
+
+    declared_paths: set[str] = set()
+    for index, declaration in enumerate(declarations):
+        label = f"comparison table surface {index}"
+        if not isinstance(declaration, dict):
+            issues.append(f"{label}: declaration must be an object")
+            continue
+        relative = declaration.get("path")
+        if not isinstance(relative, str) or not relative:
+            issues.append(f"{label}: path must be a nonempty string")
+            continue
+        label = f"comparison table surface {relative}"
+        if relative in declared_paths:
+            issues.append(f"{label}: duplicate surface declaration")
+            continue
+        declared_paths.add(relative)
+        surface = root / relative
+        if not surface.is_file():
+            issues.append(f"{label}: declared surface does not exist")
+            continue
+        text = surface.read_text(encoding="utf-8")
+        heading = declaration.get("heading")
+        if not isinstance(heading, str) or heading not in text:
+            issues.append(f"{label}: declared heading {heading!r} is absent")
+            continue
+        heading_offset = text.find(heading)
+        tables = comparison_tables(text)
+        below_heading = [
+            table for table in tables if table["offset"] > heading_offset
+        ]
+        if not below_heading:
+            issues.append(
+                f"{label}: no governed comparison table follows {heading!r}"
+            )
+            continue
+        table = below_heading[0]
+        for other in tables:
+            if other is table:
+                continue
+            issues.append(
+                f"{relative}:{other['line']}: governed comparison table is not "
+                f"declared in {MANIFEST_RELATIVE.as_posix()}"
+            )
+        headers = table["headers"]
+        label_column = declaration.get("label_column")
+        comparison_column = declaration.get("comparison_column")
+        if not headers or label_column != headers[0]:
+            issues.append(
+                f"{label}: declared label column {label_column!r} is not the "
+                f"first rendered column {headers[:1]}"
+            )
+            continue
+        if comparison_column not in headers:
+            issues.append(
+                f"{label}: declared comparison column {comparison_column!r} is "
+                f"not a rendered column {headers}"
+            )
+            continue
+        comparison_index = headers.index(comparison_column)
+        rows = declaration.get("rows")
+        if not isinstance(rows, list) or not rows:
+            issues.append(f"{label}: rows must be a nonempty list")
+            continue
+        if not all(isinstance(row, dict) for row in rows):
+            issues.append(f"{label}: every row declaration must be an object")
+            continue
+        declared_labels = [row.get("label") for row in rows]
+        duplicates = sorted(
+            {
+                str(item)
+                for item in declared_labels
+                if declared_labels.count(item) > 1
+            }
+        )
+        if duplicates:
+            issues.append(f"{label}: duplicate declared row labels: {duplicates}")
+        rendered_by_label = {
+            cells[0]: cells for cells in table["rows"] if cells and cells[0]
+        }
+        for item in declared_labels:
+            if item not in rendered_by_label:
+                issues.append(
+                    f"{label}: declared row {item!r} is absent from the rendered "
+                    "table"
+                )
+        for rendered_label in rendered_by_label:
+            if rendered_label not in declared_labels:
+                issues.append(
+                    f"{label}: rendered row {rendered_label!r} carries no "
+                    "declaration"
+                )
+        for row in rows:
+            cells = rendered_by_label.get(row.get("label"))
+            if cells is None:
+                continue
+            issues.extend(
+                _check_declared_comparison_row(
+                    f"{relative} row {row.get('label')!r}",
+                    row,
+                    cells,
+                    comparison_index,
+                    registry=registry,
+                    manifest_rows=manifest_rows,
+                    ledger_ids=ledger_ids,
+                )
+            )
+
+    for surface in iter_published_readmes(root):
+        relative = surface.relative_to(root).as_posix()
+        if relative in declared_paths:
+            continue
+        text = surface.read_text(encoding="utf-8", errors="ignore")
+        for table in comparison_tables(text):
+            issues.append(
+                f"{relative}:{table['line']}: governed comparison table is not "
+                f"declared in {MANIFEST_RELATIVE.as_posix()}"
+            )
+    return issues
+
+
 def check_repository(root: Path = ROOT) -> list[str]:
     issues, outputs = expected_surface_texts(root)
     if not issues:
@@ -774,4 +1129,7 @@ def check_repository(root: Path = ROOT) -> list[str]:
                     "python tools/build_public_quantitative_section.py"
                 )
     issues.extend(unmanaged_oph_comparison_tables(root))
+    manifest = load_json(root / MANIFEST_RELATIVE)
+    registry, _physical_count = _registry_by_id(root)
+    issues.extend(check_comparison_table_surfaces(root, manifest, registry))
     return issues

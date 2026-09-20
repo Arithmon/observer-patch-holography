@@ -157,9 +157,9 @@
       ],
       "files": [
         {
-          "byte_sha256": "eda5cf5846f632d82f69cbb3222f1c0fdf67d22d02416df09e82375f6ace1e54",
-          "bytes": 13252,
-          "canonical_json_sha256": "3ade48f8d0f770c997ee9bab9d78179285894b5dcf0663f2496e0231b77a64a5",
+          "byte_sha256": "b5c3f6b9b44bb87c7f902cd57a8ba24c6cdaf431e0323ba1b46b32be4e0f1e97",
+          "bytes": 13417,
+          "canonical_json_sha256": "ec52458193d2d6b13a0cd2684908d4d593d936bdc3769fd7cb2c00870bc0a282",
           "path": "code/particles/hierarchy/higgs_yukawa_source_frontier/outputs/higgs_yukawa_source_frontier.json",
           "role": "partial_source_frontier",
           "schema": "oph.higgs_yukawa_source_frontier.v1"
@@ -244,7 +244,7 @@
       "verifier_id": "issue_633_source_clock_frontier"
     }
   ],
-  "conditional_context_digest": "d46344736cb2c6f17de022f9cdfae2617a36b3f4129008fe52aba7fd0191232f",
+  "conditional_context_digest": "7556ff8f36ab0fd30f3296e4ec151facadf3dd51150f7fbc7bc166835a3dcfbe",
   "consumer_contract": {
     "classification": "source_packet_not_ready",
     "common_subject_digest_ready": false,
@@ -296,7 +296,7 @@
     "source_coordinate": "v_chart"
   },
   "finite_parent_bundle_digest": "8efd70ee2b309da9ca18f5c559eef3ecd58db990ea9bf0e2319a331468633072",
-  "inventory_digest": "388ee87212ea16e55bf8dcf816775b54e21a4d0202c1c1fece08bb214429ec38",
+  "inventory_digest": "be8d12bf5cec6458263851ed4a1a9890c0246773d6d291e7296d57d164345a56",
   "policy": {
     "byte_sha256": "c3f91ffd34b773e304d4a4bbac4807edb9bf31b301198cc71610d805fed627d2",
     "bytes": 23778,

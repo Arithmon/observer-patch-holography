@@ -19,7 +19,7 @@ explicit twelve-port matrices rather than assuming it:
 
 * `antipode_readback`: the antipode orbital is the cubic polynomial
   `P = (A³ - 4·A² - 5·A + 10·I) / 10` in the adjacency matrix, entry by
-  entry.  The integral form of this identity is already on record as
+  entry.  The integral form of this identity is on record as
   `Screen/A5IncidenceResponse.lean` (`antipode_polynomial`); here it is
   rederived over `ℚ` from the orbital product table as the input to the
   closure argument (`mulZ_*` kernel checks feed every identity through an
@@ -29,12 +29,12 @@ explicit twelve-port matrices rather than assuming it:
   rational combination of `I, A, A², A³`.
 * `word_in_power_span`, `powers_independent`: every word in the generators
   `{A, P}` lies in the span of `I, A, A², A³`, and those four matrices are
-  `ℚ`-linearly independent — the response-word algebra has dimension exactly
+  `ℚ`-linearly independent: the response-word algebra has dimension exactly
   four, both directions.
 * `word_mul_comm`, `no_nonzero_word_commutator`: the algebra is commutative;
   every commutator of response words vanishes identically.
 * `equivariant_iff_word_span`: the word span is exactly the equivariant
-  commutant of `Screen/A5Commutant.lean` — nothing outside the four-term
+  commutant of `Screen/A5Commutant.lean`: nothing outside the four-term
   span survives equivariance, and every word is equivariant.
 * `no_twelve_independent_span_members`: no twelve members of the word span
   are `ℚ`-linearly independent, so the registered response cannot supply
@@ -49,12 +49,12 @@ NEGATIVE CONTROLS.
   incidence rather than holding vacuously.
 * `elementary_commutator_nonzero`, `comparison_commutator_nonzero`,
   `comparison_not_in_span`: the elementary matrix `E₀₁` has a nonzero
-  commutator with the adjacency and lies outside the word span — the zero
+  commutator with the adjacency and lies outside the word span, the zero
   commutator on the word algebra is a property of the algebra, not of all
   twelve-port matrices.
 * `cube_not_in_three_span`, `antipode_not_quadratic`: `A³` is outside the
   span of `I, A, A²` and the antipode readback admits no polynomial of
-  degree at most two — dimension four and the cubic readback are sharp.
+  degree at most two: dimension four and the cubic readback are sharp.
 
 BOUNDARY.  This file is exact coefficient algebra on the registered
 twelve-port incidence.  It does not construct a compact current bracket,
@@ -576,7 +576,7 @@ theorem broken_readback_fails :
 set_option maxHeartbeats 4000000 in
 set_option maxRecDepth 16384 in
 /-- CONTROL.  On the broken incidence the quartic fails at entry `(0,0)`:
-deleting one edge already destroys the length-four closure of the adjacency
+deleting one edge destroys the length-four closure of the adjacency
 recurrence, so `adjacency_quartic` is not an artifact of the proof method. -/
 theorem broken_quartic_fails :
     ¬ (mulZ aB (mulZ aB (mulZ aB aB)) 0 0 =

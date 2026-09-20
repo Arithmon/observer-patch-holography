@@ -11,7 +11,8 @@ open scoped BigOperators
 # The composed Standard Model structure surface (V3, issue #734)
 
 One citable package for the observation-ledger rows OL-G1 through
-OL-G5: the forced gauge Lie type, the measure-conditional selection of
+OL-G5: the centre and simple-ideal dimension arithmetic, the
+measure-conditional selection of
 the compact family `G`, the exterior one-generation matter selection
 with anomaly cancellation and its parity grading, the `Z6` kernel with
 its conditional global-form status, and the family-band receipts
@@ -65,8 +66,8 @@ derived family triplication.
 Composition across the classification bridge.  The
 measure-conditional selection picks the compact family `G` in the
 classified locus, and the trichotomy forces the dimension data
-`(1, {3, 8})`; the identification of the selected family with the
-forced type passes through the pinned compact-locus classification of
+`(1, {3, 8})`; the identification of the selected family with a
+Lie type passes through the pinned compact-locus classification of
 row PR-11.  The module `Screen/SMStructureComposition.lean` commits
 that reading as the literal table `genericTypeData` and proves the
 composed uniqueness statement on this premise bundle.  The committed
@@ -163,9 +164,9 @@ namespace SMStructurePremiseData
 
 variable (D : SMStructurePremiseData)
 
-/-! ## The forced gauge Lie type (OL-G1) -/
+/-! ## Centre and simple-ideal dimensions (OL-G1) -/
 
-/-- The four-case enumeration behind the forced type: under the
+/-- The four-case enumeration behind the dimension data: under the
 bundled classification inputs the centre-versus-semisimple dimension
 data is abelian, the dimension-six branch, the Standard-Model type,
 or `su(2)^4`.  Re-export of
@@ -178,12 +179,17 @@ theorem centre_semisimple_enumeration :
   OPH.TrichotomyCases.centre_case_enumeration D.centreDim
     D.simpleIdealDims D.centreDim_mem D.simpleIdealDims_mem D.dims_total
 
-/-- **The forced gauge Lie type (OL-G1).**  Under the bundled
-classification inputs the centre dimension is one and the simple-ideal
-dimension multiset is `{3, 8}`.  With the compact-simple dimension
-list of register row PR-11 this dimension data reads as the type
-`u(1) + su(2) + su(3)`; the reading is part of the row PR-11 import,
-and this theorem is dimension arithmetic only.  Re-export of
+/-- **Centre dimension one and simple-ideal dimensions `{3, 8}` (OL-G1).**
+Under the bundled classification inputs the centre dimension is one and
+the simple-ideal dimension multiset is `{3, 8}`.
+
+Statement and proof are arithmetic: the statement compares a natural
+number with `1` and a `Multiset ℕ` with `{3, 8}`, and the proof is the
+arithmetic of those two objects over the bundled membership and total
+hypotheses.  Reading the two numbers as the Lie type
+`u(1) + su(2) + su(3)` consumes the compact-Lie classification import of
+register row PR-11, which enters as a premise rather than as anything
+this theorem proves.  Re-export of
 `OPH.TrichotomyCases.inner_action_selection` at the bundled
 premises. -/
 theorem forced_gauge_type :

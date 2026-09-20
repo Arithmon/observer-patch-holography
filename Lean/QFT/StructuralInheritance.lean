@@ -17,7 +17,7 @@ inheritance claim is made or licensed by anything below.  The row has
 three explicitly labelled parts, and part 2 is half the result, not a
 caveat on part 1.
 
-## Part 1 — PROVABLE: the finite algebraic KMS theorem
+## Part 1: PROVABLE: the finite algebraic KMS theorem
 
 On a finite full matrix block the modular flow at imaginary time is a
 plain product, so no analytic continuation is involved and no KMS
@@ -31,16 +31,16 @@ normalised Gibbs functional `gibbsState H β` divides the trace against
 
 * `gibbsPartition_ne_zero` / `gibbsPartition_pos`: for Hermitian `H`
   the partition trace is a nonzero, indeed positive, complex number, by
-  the Hermitian square root `gibbsSqrt` of the density — no matrix
+  the Hermitian square root `gibbsSqrt` of the density, no matrix
   inverse and no nonsingularity side condition is ever taken;
 * `gibbsState_one`: the Gibbs functional is genuinely normalised;
 * `gibbsState_star_mul_self_nonneg`: the Gibbs functional is positive,
-  so it is a state and not merely a normalised functional;
+  so it is a state rather than a normalised functional;
 * `gibbsState_kms`: the finite KMS boundary identity
   `ω (a * σ_{iβ} b) = ω (b * a)` at the analytic-continuation point
   `z = I * β`, by trace cyclicity and the exponential unit
   `exp (β • H) * exp (-(β • H)) = 1` obtained from `exp_add_of_commute`
-  and `exp_zero` — the `exp_neg`-based-unit route, never `⁻¹`.
+  and `exp_zero`, the `exp_neg`-based-unit route, never `⁻¹`.
 
 The identity itself is algebraic and is stated without a Hermiticity
 hypothesis; Hermiticity is exactly what makes the normalisation and
@@ -50,7 +50,7 @@ verbatim on `ConsensusTower.PrivateAlgebra witnessTower ()`, the E6
 witness tower's private block, which is definitionally
 `Matrix (Fin 2) (Fin 2) ℂ` (`witnessPrivateAlgebra_eq`).
 
-## Part 2 — REFUTABLE: the degeneracy countermodel, net level and public level
+## Part 2: REFUTABLE: the degeneracy countermodel, net level and public level
 
 Part 1 does NOT transfer to the constructed net as genuine thermal
 structure, and this part proves it.
@@ -62,9 +62,9 @@ regional algebra pointwise (`supportGraded_flow_fixes_local`), hence
 preserves the grading (`supportGraded_flow_preserves`), and the KMS
 boundary identity for such a flow holds at the level of algebra
 elements before any state is applied (`supportGraded_kms_degenerate`):
-`a * σ_z b = b * a` for all regional `a`, `b` and ALL complex `z`, not
-only at `z = I * β`.  Consequently EVERY functional whatsoever — not
-just Gibbs states — satisfies the KMS identity for every support-graded
+`a * σ_z b = b * a` for all regional `a`, `b` and ALL complex `z`, beyond
+the point `z = I * β`.  Consequently EVERY functional whatsoever, Gibbs
+states included, satisfies the KMS identity for every support-graded
 Hamiltonian at every complex time
 (`supportGraded_kms_degenerate_functional`,
 `supportGradedNet_regionalExpectation_kms_degenerate`).  The
@@ -90,10 +90,10 @@ records relative to continuous row-stochastic semigroups, the class
 `OPH.Dynamics.positive_unital_iff_stochastic` keeps live, is not
 evaluated here.
 
-## Part 3 — TYPED NON-EVALUABLE EXIT: horizon thermality
+## Part 3: TYPED NON-EVALUABLE EXIT: horizon thermality
 
-The "horizon" half of the KMS/thermality target — Bisognano–Wichmann or
-Hawking–Unruh thermality of a wedge or horizon state — is not
+The "horizon" half of the KMS/thermality target, Bisognano–Wichmann or
+Hawking–Unruh thermality of a wedge or horizon state, is not
 evaluable against the committed carriers, and this module declines it
 rather than approximating it.  The missing types are: no wedge type, no
 horizon type, no bifurcation-surface type, and no boost action exist on
@@ -117,7 +117,7 @@ open OPH.Tower
 open scoped ComplexOrder
 open scoped Matrix
 
-/-! ## Part 1 — the finite algebraic KMS theorem -/
+/-! ## Part 1: the finite algebraic KMS theorem -/
 
 section FiniteKMS
 
@@ -154,7 +154,7 @@ noncomputable def gibbsState (H : Matrix d d ℂ) (β : ℝ) (a : Matrix d d ℂ
   (gibbsDensity H β * a).trace / gibbsPartition H β
 
 /-- The exponential unit, right half: `e^A e^{-A} = 1`.  This is the
-`exp_neg`-based unit of the scope correction — invertibility of the
+`exp_neg`-based unit of the scope correction, invertibility of the
 Gibbs density by construction, with no `⁻¹` and no nonsingularity side
 condition. -/
 theorem matrix_exp_mul_exp_neg (A : Matrix d d ℂ) :
@@ -189,7 +189,7 @@ theorem gibbsSqrt_isHermitian {H : Matrix d d ℂ} (hH : H.IsHermitian)
 
 /-- For Hermitian `H` the partition trace is nonzero: the density is
 the square of its Hermitian square root, so a vanishing trace would
-force the square root — an exponential, hence a unit — to vanish. -/
+force the square root (an exponential, hence a unit) to vanish. -/
 theorem gibbsPartition_ne_zero [Nonempty d] {H : Matrix d d ℂ}
     (hH : H.IsHermitian) (β : ℝ) : gibbsPartition H β ≠ 0 := by
   intro h0
@@ -246,7 +246,7 @@ theorem gibbsState_star_mul_self_nonneg [Nonempty d] {H : Matrix d d ℂ}
   exact div_nonneg hnum hden.le
 
 /-- At the analytic-continuation point `z = I β` the Heisenberg flow is
-the plain product `e^{-βH} b e^{βH}` — the finite-dimensional modular
+the plain product `e^{-βH} b e^{βH}`, the finite-dimensional modular
 flow at imaginary time, with no analytic continuation performed. -/
 theorem heisenbergFlow_kms_point (H b : Matrix d d ℂ) (β : ℝ) :
     heisenbergFlow H b (Complex.I * β) =
@@ -265,8 +265,8 @@ theorem heisenbergFlow_kms_point (H b : Matrix d d ℂ) (β : ℝ) :
 /-- **The finite algebraic KMS theorem.**  The normalised Gibbs
 functional satisfies the KMS boundary identity
 `ω (a σ_{iβ}(b)) = ω (b a)` for the inner Heisenberg flow of `H` at
-inverse temperature `β`.  The identity is algebraic — trace cyclicity
-plus the exponential unit — and holds for every `H`; Hermiticity of `H`
+inverse temperature `β`.  The identity is algebraic, trace cyclicity
+plus the exponential unit, and holds for every `H`; Hermiticity of `H`
 is what additionally makes `gibbsState` a genuine state
 (`gibbsState_one`, `gibbsState_star_mul_self_nonneg`). -/
 theorem gibbsState_kms (H : Matrix d d ℂ) (β : ℝ) (a b : Matrix d d ℂ) :
@@ -324,7 +324,7 @@ theorem privateGibbsState_kms
       gibbsState H β (b * a) :=
   gibbsState_kms H β a b
 
-/-! ## Part 2 — the degeneracy countermodel on the E3 net -/
+/-! ## Part 2: the degeneracy countermodel on the E3 net -/
 
 section DegenerateInheritance
 
@@ -386,7 +386,7 @@ theorem supportGraded_flow_preserves {H : Matrix (Fin 2) (Fin 2) ℂ}
 /-- **The degeneracy theorem.**  On the E3 support-graded net the KMS
 boundary identity for a support-graded Hamiltonian holds at the level
 of algebra elements, for every pair of regional observables and every
-complex time — before any state is applied and with no distinguished
+complex time, before any state is applied and with no distinguished
 inverse temperature.  This is the precise sense in which the
 constructed net inherits KMS structure only degenerately. -/
 theorem supportGraded_kms_degenerate {H a b : Matrix (Fin 2) (Fin 2) ℂ}
@@ -400,7 +400,7 @@ theorem supportGraded_kms_degenerate {H a b : Matrix (Fin 2) (Fin 2) ℂ}
   obtain ⟨g, rfl, -⟩ := hb
   exact diagonal_commute f g
 
-/-- Every functional whatsoever — linear or not, state or not —
+/-- Every functional whatsoever (linear or not, state or not)
 satisfies the KMS identity for every support-graded Hamiltonian at
 every complex time.  A thermality notion satisfied by every functional
 distinguishes nothing; this is the countermodel to any blanket

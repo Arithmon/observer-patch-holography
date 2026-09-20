@@ -68,7 +68,7 @@ def IsPartitionOffDiagonal (part : ProjectivePartition n k)
   partitionPinching part X = 0
 
 /-- **Trace-dependent.** Every wholly sector-off-diagonal matrix is invisible
-to every matrix in the sector-preserving commutant, not only to the central projector
+to every matrix in the sector-preserving commutant, beyond the central projector
 span. -/
 theorem trace_mul_eq_zero_of_partitionOffDiagonal
     (part : ProjectivePartition n k) {X : Matrix (Fin n) (Fin n) ℂ}

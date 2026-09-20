@@ -139,7 +139,7 @@ authenticated read-after-write edges.  Finiteness is supplied by a
 `Fintype EventId` at finite-world use sites rather than hidden in this
 structure.  The executed-history constructor derives the rank from a
 threaded append-only log; arbitrary inhabitants of this abstract interface
-must still provide the certificate.  The rank carries no clock, schedule,
+must provide the certificate.  The rank carries no clock, schedule,
 or physical-time reading. -/
 structure SemanticEventLog (Register : Type u) (Value : Type v)
     (EventId : Type w) [DecidableEq Register] where
@@ -334,7 +334,7 @@ theorem rank_lt_of_generatedBefore {c d : EventId}
   | tail _ hedge ih => exact lt_trans ih (L.rank_lt_of_parent hedge)
 
 /-- Canonical source height strictly increases along the whole generated
-precedence, not only across direct authenticated parents. -/
+precedence, beyond direct authenticated parents. -/
 theorem sourceHeight_lt_of_generatedBefore [Fintype EventId]
     [DecidableEq EventId] [DecidableEq Value] {c d : EventId}
     (h : L.GeneratedBefore c d) : L.sourceHeight c < L.sourceHeight d := by
@@ -469,7 +469,7 @@ def forgedChild : SemanticCommit Unit Bool Bool where
   frame_writer := fun _ _ => rfl
   stamp := by simp
 
-/-- A writer identifier by itself still creates a raw citation, but it is
+/-- A writer identifier by itself creates a raw citation, but it is
 rejected by the authenticated relation because the alleged parent did not
 write the register. -/
 theorem raw_writer_label_is_not_authenticated :

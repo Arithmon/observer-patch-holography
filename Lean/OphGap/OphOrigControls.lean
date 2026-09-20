@@ -38,7 +38,7 @@ theorem edge_collision_permOk_false :
     permOk (newF newT) collidedPermT invPermT edgesT edges.length 0 origEdges = false := by
   decide +kernel
 
-/-- A non-bijective edge reordering is REFUSED (`invPermT` is no longer a left inverse). -/
+/-- A non-bijective edge reordering is REFUSED (`invPermT` fails to be a left inverse). -/
 theorem edge_collision_refused :
     transportCheck n newT oldT origNodes origEdges edges collidedPermT invPermT edgesT = false :=
   transportCheck_false_of_perm edge_collision_permOk_false

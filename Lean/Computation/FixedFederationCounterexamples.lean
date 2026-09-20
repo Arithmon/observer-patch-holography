@@ -164,7 +164,7 @@ theorem singletonCanonical_positive :
     (by simp [NodesWF, forceTrueNode]) singletonCanonicalScheduler singletonStart
     singletonCanonical_pathwiseWeakFair
 
-/-- Count currently failing node observers.  This is deliberately not the
+/-- Count failing node observers.  This is deliberately not the
 well-founded rank for dependency-ordered canonical repair. -/
 def federationDefectCount (L : List Node) (s : State) : Nat :=
   (L.filter fun n => n.obs.ok s = false).length
@@ -281,7 +281,7 @@ theorem globallyEnabledFair_no_go :
   exact ⟨fanoutNodes, fanoutRootScheduler, allFalse, fanoutNodes_wf,
     fanoutRoot_globallyEnabledFair, fanoutRoot_never_consensus_after_start⟩
 
-/-- A still weaker scheduler contract: a node that fails on a tail need only
+/-- A weaker scheduler contract: a node that fails on a tail need only
 have been selected once before that tail began. -/
 def SelectedBeforeFailingTailFair (L : List Node) (sigma : NodeScheduler L)
     (s : State) : Prop :=

@@ -70,7 +70,7 @@ result does not construct or identify the atlas coordinate family. The
 contract does not construct its source event atlas, population, open charts,
 physical cone,
 causal reachability, refinement tower, rods, clocks, or physical spacetime.
-`Geometry.SourceDerivedSpacetimeCarrier` now constructs the finite algebraic
+`Geometry.SourceDerivedSpacetimeCarrier` constructs the finite algebraic
 carrier `ℝ × FrameQuotient` from an independent real axis and the exact
 rank-three source quotient, proves dimension four and one-positive/
 three-negative Lorentz signature, and maps source-unit directions to
@@ -106,7 +106,7 @@ inverse images, in the source unit sphere, of the Einstein branch's
 pre-existing nine-vector coordinate tomography frame.  The distinguished
 nine-set is neither selected by the generated poset/source dynamics nor
 invariant, as a set, under Lorentz or `SO(3)` transformations; only the
-`(1,n)` representative of each already chosen direction is canonical.
+`(1,n)` representative of each chosen direction is canonical.
 Balance on those nine algebraic source directions, together with explicit
 symmetry, Ward, Bianchi, and connectivity on the same finite event carrier,
 derives the all-null balance and one constant metric ambiguity. This minimal
@@ -119,7 +119,7 @@ provenance links or a physical sky, and this finite conditional theorem
 supplies no count--volume law, manifoldlikeness, smooth limit, or physical
 spacetime.  Its `V 3`, `Mat 3`, `eta 3`, and `Fin 4` tensor/step types remain
 the pre-existing Einstein algebra: the new source-carrier theorem proves an
-exact `1+3` algebraic carrier but does not yet identify its finite differences
+exact `1+3` algebraic carrier but does not identify its finite differences
 with those tensor fields.  The generated order is not used to select the
 tensor fields, balance law, or nine algebraic directions.
 The inverse-square shell law carries the Newtonian-limit row: under the

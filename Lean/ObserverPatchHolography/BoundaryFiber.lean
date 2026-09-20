@@ -44,9 +44,9 @@ Consensus Protocol* (Definition `def:tree-packet-domain`):
 endpoint theorem are then discharged for the domain's own repair law
 (`treeRepairAt`, the paper's `T_i`):
 
-* `treeStep_observationPreserving` — accepted tree repairs never write the
+* `treeStep_observationPreserving`: accepted tree repairs never write the
   root, so `B_OPH` is preserved (hypothesis `ObservationPreserving`);
-* `treeStep_completeFor` — a record is a `treeStep` normal form iff it is
+* `treeStep_completeFor`: a record is a `treeStep` normal form iff it is
   `Consistent` (hypothesis `CompleteFor`).
 
 `BOPH_observerEndpointUnique` composes the three through
@@ -165,7 +165,7 @@ theorem packet_eq_root_of_edgeConsistent
           exact hedge.symm.trans (ih (T.parent i) hp)
   exact fun i => main (T.depth i) i le_rfl
 
-/-- **THEOREM — the #304 application gate on the declared domain.** In the
+/-- **THEOREM: the #304 application gate on the declared domain.** In the
     issue's own shape: `u, v ∈ C_OPH` and `B_OPH(u) = B_OPH(v)` imply
     `u ~gauge v`, for every rooted-tree packet net. Consistency propagates
     the root packet through the bulk (`packet_eq_root_of_edgeConsistent`), so

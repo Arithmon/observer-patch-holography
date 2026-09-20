@@ -59,7 +59,7 @@ error or false-discovery control, desired power, and an attrition allowance.
 It must publish the calculation and its inputs; it may not use INS-02 outcome
 estimates. The final preregistration must either keep the complete factorial
 grid or declare a target-blind resource reduction before any outcome is
-inspected. There is no authorization to execute this ladder now.
+inspected. This ladder carries no authorization to execute.
 
 Each fresh master seed forms one block spanning every retained
 carrier-count-by-support-size cell and every matched control. The freeze must
@@ -375,8 +375,8 @@ controlling `FAILED` verdict blocks or demotes OL-A1 to `owed`.
 ## Custody and stopping rule
 
 The final campaign must retain raw feature matrices or sufficient source
-captures for independent observable recomputation, not only derived receipt
-fields. It must pin the exact simulator commit, manifest inventory, code,
+captures for independent observable recomputation; derived receipt fields
+alone are insufficient. It must pin the exact simulator commit, manifest inventory, code,
 configuration, seeds, environment, captures, receipts, and independent
 verifier before comparison. No adaptive seed redraw, optional stopping,
 post-hoc threshold, or selective cell omission is allowed.

@@ -4,7 +4,7 @@ import Geometry.SpatialReadbackSoldering
 /-!
 # Finite source-order/frame compatibility packet
 
-This module composes three already separate finite ingredients:
+This module composes three separate finite ingredients:
 
 * an authenticated semantic log whose reflexive generated order is attached,
   by a supplied source-native chart interface, to the declared future cone;
@@ -23,7 +23,7 @@ construct the algebraic carrier `ℝ × FrameQuotient`, its `(+---)` form,
 and the source-unit future-null map. A spatial placement with source height,
 the explicit scale, edge-speed,
 and converse-support certificates constructs the one-chart cone attachment;
-an arbitrary packet may still supply a larger finite atlas.  None of those
+an arbitrary packet may supply a larger finite atlas.  None of those
 finite algebraic statements identifies a physical sky or signal relation.
 
 **Nonclaims.**  This packet does not identify its algebraic unit sphere with
@@ -48,7 +48,7 @@ universe u v w z
 /-! ## Exact source-direction/celestial bridge -/
 
 /-- Unit directions of the exact source Gram quotient.  This is the unit
-sphere of the proved rank-three carrier, not yet a physical celestial
+sphere of the proved rank-three carrier, and not a physical celestial
 screen. -/
 abbrev SourceUnitDirection :=
   SourceSpatialUnitDirection
@@ -74,7 +74,7 @@ noncomputable def sourceUnitDirectionEquivCelestial :
     simp
 
 /-- Equivalently, every source-unit direction labels exactly one intrinsic
-future-null ray.  This uses the previously proved null-ray/celestial
+future-null ray.  This uses the proved null-ray/celestial
 equivalence and carries no assertion that a provenance edge is a light ray.
 -/
 noncomputable def sourceUnitDirectionEquivFutureNullRay :
@@ -133,7 +133,7 @@ def eventFrame (e : Event) : FrameHyperboloid :=
   (P.standardToEventFrame e).mapFrame standardFrame
 
 /-- The supplied base-chart event frames extended to all charts by the
-already committed overlap cocycle.  Its underlying event-germ atlas is
+committed overlap cocycle.  Its underlying event-germ atlas is
 definitionally the atlas carried by `sourceCharts`. -/
 def frameSoldering : EventFrameSoldering Event Chart :=
   EventFrameSoldering.ofBaseFrame P.sourceCharts.atlas

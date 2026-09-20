@@ -35,7 +35,7 @@ effect/readback compatibility theorem.
 **Count semantics.**  The count literals are a deterministic semantic
 conformance fixture: an external calculator evaluates declared Born weights
 and scales the rational values to integer pairs.  They are neither sampled
-data nor validation.  Inside Lean, `born_matches` is already a field of
+data nor validation.  Inside Lean, `born_matches` is a field of
 `IdealPhasePOVMCountModel`; the theorem
 `attained_counts_cross_multiply_born_fit` only cross-multiplies that assumed
 fit equation.  It proves no generation, minimality, custody, producer

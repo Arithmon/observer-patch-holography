@@ -34,12 +34,12 @@ physical current, assembles the modes into a field, proves locality or
 continuum control, or establishes Lorentz covariance or laboratory readout.
 -/
 
-/-- The real three-coordinate modal carrier already used by the free-vector
+/-- The real three-coordinate modal carrier used by the free-vector
 lift. -/
 abbrev ModalVec3 := FreePhotonVec3
 
 /-- A pair of modal amplitudes.  The names electric/magnetic are intentionally
-not built into the type: physical identification remains open. -/
+not built into the type: physical identification is an open register premise. -/
 abbrev PairedModalState := ModalVec3 × ModalVec3
 
 /-- The exact scalar needed to turn the coordinate cross product into a
@@ -256,7 +256,7 @@ theorem fourierCurl_sq_on_transverse
       ring
 
 /-- The standard opposite-sign Fourier Maxwell-shaped generator:
-`E' = curl B`, `B' = -curl E`.  The prime is still only the supplied
+`E' = curl B`, `B' = -curl E`.  The prime is only the supplied
 auxiliary modal parameter. -/
 noncomputable def maxwellShapedModalGenerator
     (a : ℝ) (k : ModalVec3)

@@ -816,7 +816,7 @@ are the state-side residue).
 **The two halves of the dimension count** ("invariant sector has rank 8,
 the clause-compliant sector only rank 4"), each *proven*, not asserted:
 
-* `closure_E8_eq_invariantPart` : the eight even matrix units `E8` span
+* `closure_evenMatrixUnits_eq_invariantPart` : the eight even matrix units `evenMatrixUnits` span
   the invariant sector `V₊` exactly (both inclusions; the ⊇ direction is
   the load-bearing decomposition: an invariant matrix has vanishing odd
   entries and is an integer combination of the even units).
@@ -829,9 +829,9 @@ the clause-compliant sector only rank 4"), each *proven*, not asserted:
 
 **The universal no-go** (`equivariant_closure_cannot_force`): for EVERY
 family `C` of equivariant channels simultaneously, the full
-invariant-sector family `E8` is a legal `RetainedFamily` with
+invariant-sector family `evenMatrixUnits` is a legal `RetainedFamily` with
 `refineChannels = C` : equivariance forces each channel to preserve the
-invariant sector, which `E8` spans, so refinement closure holds while it
+invariant sector, which `evenMatrixUnits` spans, so refinement closure holds while it
 violates the collar clause (`E0110` is cross-cut and not a flux term). So
 closure under a fixed equivariant channel family, no matter which, cannot
 exclude non-central cross-cut couplings. (Unitality is not even needed by
@@ -874,11 +874,13 @@ theorem IsEquivariantChannel.maps_invariant {Φ : CollarM →+ CollarM}
   rw [mem_invariantPart] at hm ⊢
   rw [← hΦ.2 m, hm]
 
-/-- The eight even matrix units, indexed by pairs of equal parity : the
-    integer basis of the invariant sector. -/
+/-- One matrix unit of the collar block, indexed by a pair of block positions. -/
 private def eUnit (I J : Fin 2 × Fin 2) : CollarM := Matrix.single I J 1
 
-def E8 : Finset CollarM :=
+/-- The eight even matrix units, indexed by pairs of equal parity: the integer
+    basis of the invariant sector.  The numeral counts those units and bears no
+    relation to the exceptional root system of the same name. -/
+def evenMatrixUnits : Finset CollarM :=
   { eUnit ((0 : Fin 2), (0 : Fin 2)) ((0 : Fin 2), (0 : Fin 2)),
     eUnit ((0 : Fin 2), (0 : Fin 2)) ((1 : Fin 2), (1 : Fin 2)),
     eUnit ((1 : Fin 2), (1 : Fin 2)) ((0 : Fin 2), (0 : Fin 2)),
@@ -891,11 +893,11 @@ def E8 : Finset CollarM :=
 /-- The invariant unit that clause-compliant families provably miss. -/
 def E0110 : CollarM := eUnit ((0 : Fin 2), (1 : Fin 2)) ((1 : Fin 2), (0 : Fin 2))
 
-theorem E8_subset_invariant : ∀ e ∈ E8, e ∈ InvariantPart := by
+theorem evenMatrixUnits_subset_invariant : ∀ e ∈ evenMatrixUnits, e ∈ InvariantPart := by
   intro e he
   fin_cases he <;> (rw [mem_invariantPart]; decide)
 
-/-! ### The spanning half: `closure E8 = V₊` -/
+/-! ### The spanning half: `closure evenMatrixUnits = V₊` -/
 
 private theorem cast_mul_apply (c : ℤ) (M : CollarM) (i j : Fin 2 × Fin 2) :
     ((c : CollarM) * M) i j = c * M i j := by
@@ -959,8 +961,8 @@ private theorem invariant_entry_zero {m : CollarM} (hm : uu * m * uu = m)
 
 /-- **Spanning, ⊇ direction (load-bearing):** every invariant matrix is an
     integer combination of the eight even units. -/
-private theorem invariant_mem_closure_E8 {m : CollarM} (hm : uu * m * uu = m) :
-    m ∈ AddSubgroup.closure (E8 : Set CollarM) := by
+private theorem invariant_mem_closure_evenMatrixUnits {m : CollarM} (hm : uu * m * uu = m) :
+    m ∈ AddSubgroup.closure (evenMatrixUnits : Set CollarM) := by
   rw [Matrix.matrix_eq_sum_single m]
   apply sum_mem
   intro I _
@@ -978,17 +980,18 @@ private theorem invariant_mem_closure_E8 {m : CollarM} (hm : uu * m * uu = m) :
         | exact absurd (by decide) hpar
         | decide
 
-theorem closure_E8_le_invariantPart :
-    AddSubgroup.closure (E8 : Set CollarM) ≤ InvariantPart := by
+theorem closure_evenMatrixUnits_le_invariantPart :
+    AddSubgroup.closure (evenMatrixUnits : Set CollarM) ≤ InvariantPart := by
   rw [AddSubgroup.closure_le]
   intro e he
-  exact E8_subset_invariant e (Finset.mem_coe.mp he)
+  exact evenMatrixUnits_subset_invariant e (Finset.mem_coe.mp he)
 
 /-- **The rank-8 half, proven:** the even units span the invariant sector
     exactly. -/
-theorem closure_E8_eq_invariantPart :
-    AddSubgroup.closure (E8 : Set CollarM) = InvariantPart :=
-  le_antisymm closure_E8_le_invariantPart fun _ hm => invariant_mem_closure_E8 hm
+theorem closure_evenMatrixUnits_eq_invariantPart :
+    AddSubgroup.closure (evenMatrixUnits : Set CollarM) = InvariantPart :=
+  le_antisymm closure_evenMatrixUnits_le_invariantPart
+    fun _ hm => invariant_mem_closure_evenMatrixUnits hm
 
 /-! ### The separation half: clause-compliant families miss `E0110` -/
 
@@ -1077,7 +1080,7 @@ theorem E0110_notMem_flux : E0110 ∉ modelLayer.Flux := by
 
 /-- **THEOREM (equivariant-universal no-go).** For EVERY family of
     equivariant channels simultaneously, there is a legal retained family :
-    the full invariant sector `E8` : that is refinement-closed under all of
+    the full invariant sector `evenMatrixUnits` : that is refinement-closed under all of
     them and violates the collar clause. Closure under a fixed equivariant
     channel family, no matter which, cannot force the clause. (The proof
     uses only equivariance, not unitality, so the wider non-unital
@@ -1088,11 +1091,11 @@ theorem equivariant_closure_cannot_force
     (C : Set (CollarM →+ CollarM)) (hC : ∀ Φ ∈ C, IsEquivariantChannel Φ) :
     ∃ F : RetainedFamily modelLayer,
       F.refineChannels = C ∧ ¬ CollarClause modelLayer F := by
-  refine ⟨⟨E8, ?_, ?_, C, ?_⟩, rfl, ?_⟩
+  refine ⟨⟨evenMatrixUnits, ?_, ?_, C, ?_⟩, rfl, ?_⟩
   · -- gauge invariance: even units commute with the boundary algebra
     intro d hd
     apply invariant_of_comm_uu
-    have hinv : uu * d * uu = d := E8_subset_invariant d hd
+    have hinv : uu * d * uu = d := evenMatrixUnits_subset_invariant d hd
     have h1 : uu * d * uu * uu = d * uu := by rw [hinv]
     rw [mul_assoc (uu * d) uu uu, uu_mul_uu, mul_one] at h1
     exact h1
@@ -1140,21 +1143,21 @@ theorem equivariant_closure_cannot_force
       exact mul_mem (Subring.subset_closure (Or.inl ⟨_, rfl⟩))
         (Subring.subset_closure (Or.inr ⟨_, rfl⟩))
   · -- refinement closure: equivariance preserves the invariant sector,
-    -- which E8 spans
+    -- which evenMatrixUnits spans
     intro Φ hΦ d hd
-    have hd' : d ∈ InvariantPart := E8_subset_invariant d hd
+    have hd' : d ∈ InvariantPart := evenMatrixUnits_subset_invariant d hd
     have h2 : Φ d ∈ InvariantPart := (hC Φ hΦ).maps_invariant hd'
-    exact invariant_mem_closure_E8 h2
+    exact invariant_mem_closure_evenMatrixUnits h2
   · -- the clause fails: E0110 is retained, cross-cut, and not a flux term
     intro hclause
-    have hmem : E0110 ∈ E8 := by decide
+    have hmem : E0110 ∈ evenMatrixUnits := by decide
     exact E0110_notMem_flux ((hclause E0110 hmem).1 E0110_crossCut)
 
 /-! ### Axiom audit : the equivariant-universal no-go is admission-free. -/
 #print axioms IsEquivariantChannel
 #print axioms IsEquivariantChannel.maps_invariant
-#print axioms E8_subset_invariant
-#print axioms closure_E8_eq_invariantPart
+#print axioms evenMatrixUnits_subset_invariant
+#print axioms closure_evenMatrixUnits_eq_invariantPart
 #print axioms collarClause_family_misses_invariant_unit
 #print axioms collarClause_family_not_spanning
 #print axioms E0110_crossCut

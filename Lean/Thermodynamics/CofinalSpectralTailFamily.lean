@@ -17,7 +17,7 @@ The interface is deliberately stronger than a renamed directed family:
 * `AmbientCofinality` contains an explicit ambient regulator type, an order
   embedding of the finite-stage index, a cofinality receipt, and a no-maximal
   regulator receipt;
-* `CofinalSpectralTailFamily` combines that interface with the already checked
+* `CofinalSpectralTailFamily` combines that interface with the checked
   coherent spectral-tail family and an explicit strict carrier-growth receipt;
 * `cofinalLadderFamily` is a nonconstant, unbounded-cardinality inhabitant;
 * a generic incompatibility theorem and the two counterexamples at the end
@@ -138,7 +138,7 @@ variable {I : Type u} [Preorder I] {X : I → Type*}
   [∀ r, Fintype (X r)] [∀ r, DecidableEq (X r)] [∀ r, Nonempty (X r)]
   {E : ∀ r, X r → ℝ}
 
-/-- Honest promotion from a coherent family requires both the entire ambient
+/-- Promotion from a coherent family requires both the entire ambient
 cofinality package and a separate data-level carrier-growth receipt. -/
 def ofCoherent (F : CoherentRefinementFamily X E)
     (C : AmbientCofinality I)
@@ -152,7 +152,7 @@ def toCoherent (F : CofinalSpectralTailFamily X E) :
     CoherentRefinementFamily X E :=
   F.family
 
-/-- The uniform spectral envelope still gives one temperature threshold for
+/-- The uniform spectral envelope gives one temperature threshold for
 all stages. -/
 theorem uniform_concentration (F : CofinalSpectralTailFamily X E) :
     ∀ eps : ℝ, 0 < eps → ∃ beta1 : ℝ, ∀ beta : ℝ, beta1 ≤ beta →
@@ -565,7 +565,7 @@ structure FourLawCofinalConclusions {Omega : Type u} [Fintype Omega]
       ∀ r : A.refinement.I,
         offMinMass (A.refinement.E r) beta < eps
   /-- The same bound holds on a genuine cofinal tail of the ambient regulator
-  system, not merely on an unrelated directed index. -/
+  system rather than on an unrelated directed index. -/
   third_cofinal_tail : ∀ eps : ℝ, 0 < eps →
     ∃ beta1 : ℝ, ∀ beta : ℝ, beta1 ≤ beta →
       ∀ a : A.refinement.family.ambient.Regulator,

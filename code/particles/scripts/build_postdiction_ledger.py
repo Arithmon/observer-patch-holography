@@ -69,6 +69,8 @@ PARENTS = {
     "quantum_carrier_status": RUNS / "status" / "quantum_carrier_status.json",
     "alpha_hvp_verdict": PARTICLES / "alpha_hvp_audit" / "outputs" / "alpha_hvp_class_verdict.json",
     "hadron_payload": RUNS / "hadron" / "empirical_ee_hadronic_spectral_measure.json",
+    "lambda_transmutation": RUNS / "qcd" / "lambda_qcd_source_transmutation.json",
+    "nucleon_external_ratio": RUNS / "hadron" / "nucleon_mass_external_qcd_ratio.json",
     "solver_standby": RUNS / "qcd" / "hadron_source_backend" / "qcd_ensemble" / "solver_on_standby.json",
     "carrier_class_dispersion": CODE / "a5_fingerprint" / "runtime"
     / "carrier_class_dispersion_receipt.json",
@@ -2297,7 +2299,7 @@ def _forced_structure(
             ],
             "hypothesis_boundary": (
                 "this is a pointwise Fourier-modal/pseudodifferential "
-                "factorization of an already committed mathematical "
+                "factorization of a committed mathematical "
                 "oscillator. Its momentum-dependent multiplier supplies no "
                 "local position-space operator, real-field assembly or "
                 "opposite-momentum reality pairing, electric/magnetic "
@@ -3326,7 +3328,7 @@ def _forced_structure(
                 "protected-address experiment exactly distinguishes immutable records from "
                 "moving live readbacks under pair means. Formal integrated cell estimates "
                 "derive quadrature convergence from vanishing assignment distances. Fibonacci "
-                "arithmetic now constructs the actual golden permutation partition, its exact "
+                "arithmetic constructs the actual golden permutation partition, its exact "
                 "cell masses and fixed-globally-Lipschitz integral convergence in Lean. Actual "
                 "spatial and declared-time-grid counts also converge on fixed measurable sets "
                 "with null frontier; the inclusive final-layer error is at most L^3*Delta_q. On the "
@@ -3800,7 +3802,7 @@ def _forced_structure(
                 "imply unique reconstruction. The two-observers-as-factors "
                 "reading and region map remain declared. The constant-tower "
                 "transport is on the separate 86/88 carrier. TripleCarrierJoin "
-                "now couples both pair paths, counted states, checkpoints, and "
+                "couples both pair paths, counted states, checkpoints, and "
                 "adjacent-step marginals on one carrier, but supplies no "
                 "regional-net or tower morphism; neither packet is a "
                 "nonconstant source realization. Scientific owner #728 "
@@ -4268,7 +4270,7 @@ def _forced_structure(
                 "by applying a two-dimensional representation to source-realized "
                 "gauge labels, not a source-produced public quantum "
                 "instrument. The celestial countermodel proves that continuity "
-                "and normalized antipodal binary contexts still do not derive "
+                "and normalized antipodal binary contexts do not derive "
                 "affinity; the transverse cubic refutes the displayed finite "
                 "Busch--Gleason interface, and the Pauli-Y pair identifies the "
                 "missing complex tomography direction. The exact phase lift "
@@ -4280,7 +4282,7 @@ def _forced_structure(
                 "phase data. The repair-count bit is a post-hoc diagnostic on a "
                 "locally hash-pinned B12 run; its statistic and designation rule "
                 "were not preregistered, and the phase pairing is an arbitrary "
-                "typed convention. The full-effect theorem still applies only "
+                "typed convention. The full-effect theorem applies only "
                 "after full coexistent-effect additivity is supplied. No physical "
                 "Born derivation, observable, or prediction is emitted. Scientific "
                 "owner #730 records the missing source-earned phase instrument, operational "
@@ -4584,7 +4586,7 @@ def _forced_structure(
                 "resampling law; its equilibrium projection P differs from its "
                 "transition T. The Poisson and tail bounds require centering "
                 "within each protected fibre; a globally centred conserved "
-                "record still has persistent correlation. This is no native "
+                "record has persistent correlation. This is no native "
                 "source attachment and does not overturn the historical "
                 "idempotent-projector obstruction. Scientific "
                 "owners #728, #729, #737, and #739 record the missing source "
@@ -5630,9 +5632,34 @@ def _quark_rows(
     ]
 
 
-def _hadron_rows(payload: dict[str, Any], standby: dict[str, Any]) -> list[dict[str, Any]]:
+def _hadron_rows(
+    payload: dict[str, Any],
+    standby: dict[str, Any],
+    lambda_scale: dict[str, Any],
+    nucleon: dict[str, Any],
+) -> list[dict[str, Any]]:
     integral = payload["integral"]
     norm = integral["normalization"]
+    if (
+        lambda_scale.get("promotion_allowed") is not False
+        or lambda_scale.get("checks_pass") is not True
+        or nucleon.get("promotion_allowed") is not False
+        or nucleon.get("checks_pass") is not True
+    ):
+        raise SystemExit(
+            "a hadronic compare-only receipt has left its declared boundary"
+        )
+    lambda_central = float(lambda_scale["central"]["lambda3_gev"])
+    lambda_interval = [float(v) for v in lambda_scale["lambda3_interval_gev"]]
+    lambda_published = float(
+        lambda_scale["machinery_validation"]["published_compare"]["lambda3_gev"]
+    )
+    nucleon_compare = nucleon["compare_only"]
+    nucleon_central = float(nucleon["prediction"]["m_nucleon_gev_display"])
+    nucleon_interval = [
+        float(v) for v in nucleon["prediction"]["m_nucleon_interval_gev_display"]
+    ]
+    nucleon_measured = float(nucleon_compare["measured_m_proton_gev"])
     return [
         {
             "id": "hadronic_correction_engine",
@@ -5655,6 +5682,55 @@ def _hadron_rows(payload: dict[str, Any], standby: dict[str, Any]) -> list[dict[
             "status": standby["status"],
             "invocation_gate": standby["policy"]["invocation_gate"],
             "artifact_ref": _rel("solver_standby"),
+        },
+        {
+            "id": "lambda_qcd_transmutation_scale",
+            "value_central_gev": lambda_central,
+            "value_interval_gev": lambda_interval,
+            "published_central_gev": lambda_published,
+            "published_source": (
+                "published perturbative determinations of the three-flavor "
+                "scale, compare-only"
+            ),
+            "relative_deviation": (lambda_central - lambda_published)
+            / lambda_published,
+            "row_class": lambda_scale["row_class"],
+            "tier": "T2_conditional",
+            "loop_order": lambda_scale["loop_order"],
+            "declared_external_inputs": (
+                "threshold locations are declared external quark scheme masses, "
+                "and the interval is the swept threshold bracket"
+            ),
+            "claim_boundary": lambda_scale["claim_boundary"],
+            "artifact_refs": [_rel("lambda_transmutation")],
+            "scientific_owner_issues": [736],
+        },
+        {
+            "id": "nucleon_mass_external_ratio",
+            "value_central_gev": nucleon_central,
+            "value_interval_gev": nucleon_interval,
+            "measured_gev": nucleon_measured,
+            "measured_source": "proton mass, compare-only",
+            "relative_deviation": float(
+                nucleon_compare["central_relative_difference"]
+            ),
+            "interval_contains_measured": bool(
+                nucleon_compare["interval_contains_measured"]
+            ),
+            "row_class": nucleon["row_class"],
+            "tier": "T2_conditional",
+            "external_theory_factor": float(
+                nucleon["external_theory_factor"]["R_nucleon_over_lambda3"]
+            ),
+            "external_theory_uncertainty": float(
+                nucleon["external_theory_factor"]["uncertainty"]
+            ),
+            "claim_boundary": nucleon["claim_boundary"],
+            "artifact_refs": [
+                _rel("nucleon_external_ratio"),
+                _rel("lambda_transmutation"),
+            ],
+            "scientific_owner_issues": [736],
         },
     ]
 
@@ -6071,7 +6147,7 @@ def _whitney_coupled_rows() -> list[dict[str, Any]]:
         ("whitney_interacting_quantum", "WHITNEY_INTERACTING_QUANTUM.tex", "thm:whitney-interacting-quantum",
          "For the same interacting finite charged action with nonzero charge, the actual positive kinetic metric gives a smooth Schur metric on the global mean-zero-gauge Coulomb slice R^30 x C^13. Uniform fixed-mesh nodal coercivity gives two-sided polynomial metric bounds and proves that this configuration metric is complete. The declared Laplace--Beltrami operator with nonnegative potential is essentially self-adjoint on compactly supported smooth functions; its unique self-adjoint closure agrees with the Friedrichs realization for the chosen quantization measure and ordering. The residual U(1)-invariant subspace reduces the Hamiltonian and has a dense invariant operator core as well as a form core. An explicit metric-density-corrected Gaussian is exactly normalized, neutral and in the Hamiltonian domain. Independent exact initial-state moment identities provide mathematical observables; no quantum time history is computed.",
          "analytic gauge-reduction, metric-completeness and essential-self-adjointness proof; exact normalized initial state and initial observables; no observed postdiction",
-         "Supplied fixed cone, scalar species/action, nonzero charge, nonnegative mass-squared/quartic coupling, hbar, quantization measure, Laplace--Beltrami ordering and Gaussian width. The Schur complement uses the full coupled kinetic metric, not only the Maxwell block. Essential self-adjointness removes extension ambiguity for this declared operator, not the quantization choices themselves. The metric constants depend on the fixed mesh and couplings and are not uniform continuum-refinement estimates. The analytic proof is not formalized in Lean. The chosen Gaussian is not a derived vacuum or physical preparation. No unique quantization, equivalence to quantization before reduction, continuum interacting QFT, computed quantum-state history, physical Born statistics or laboratory identification is supplied."),
+         "Supplied fixed cone, scalar species/action, nonzero charge, nonnegative mass-squared/quartic coupling, hbar, quantization measure, Laplace--Beltrami ordering and Gaussian width. The Schur complement uses the full coupled kinetic metric, which includes every block beside the Maxwell one. Essential self-adjointness removes extension ambiguity for this declared operator, not the quantization choices themselves. The metric constants depend on the fixed mesh and couplings and are not uniform continuum-refinement estimates. The analytic proof is not formalized in Lean. The chosen Gaussian is not a derived vacuum or physical preparation. No unique quantization, equivalence to quantization before reduction, continuum interacting QFT, computed quantum-state history, physical Born statistics or laboratory identification is supplied."),
         ("whitney_charged_execution", "WHITNEY_CHARGED_EXECUTION.tex", "prop:whitney-charged-symmetric-lift",
          "A five-real-coordinate icosahedrally invariant sector of the same charged action evolves from the nonzero neutral initial data with all 68 full temporal-gauge Euler equations and all 13 Gauss equations checked at 81 samples. The analytic finite-group argument lifts the restricted equations to the full action. The independent verifier reconstructs unrestricted element Jacobians, re-integrates the path and RK4 controls, verifies degree-five quadrature, and rejects omitted-dressing and underintegration controls. Stored classical field readouts include electric cochains, matter fields and local charge.",
          "analytic full variational symmetry lift and numerical charged trajectory with independent replay; no observed postdiction",
@@ -6305,7 +6381,7 @@ def _whitney_completion_rows() -> list[dict[str, Any]]:
          "analytic conditional real-sector continuum trajectory bound; independent finite geometry/Ritz and wave checks; no observed postdiction",
          "Supplied cone and continuum time, scalar species/action, m^2>0, g>=0, real neutral sector, natural Neumann boundary conditions, and an existing C^2_t H^2_x continuum reference. The theorem requires Ritz-compatible initialization. The stored pulse trajectories instead use nodal initialization and verify numerical implementation, not the continuum error bound. No full charged-complex trajectory convergence, numerical interval enclosure, source-selected geometry/matter/clock or empirical comparison is established."),
         ("charged_instrument", "WHITNEY_CHARGED_INSTRUMENT.tex", "prop:whitney-charged-record-restoration", [],
-         "Five computational observer-like patches execute 1782 events with local coordinate/velocity states, ring ports, destructive averaging probes, retained records and feedback. All 405 probe cycles restore their rational registers exactly. Eighty numerical action advances consume previously decoded states; 81 decoded frames reconstruct the same charged action's full fields, with all 68 configuration equations and 13 Gauss equations independently checked. A separate exact consumer freshly verifies the charged IVP enclosure and record replay: all ten decoded q/v coordinates at nominal j/40 checkpoints lie within 10001/10^14 of the exact trajectory. Historical samples remain comparison-only inputs, not instrument evolution inputs.",
+         "Five computational observer-like patches execute 1782 events with local coordinate/velocity states, ring ports, destructive averaging probes, retained records and feedback. All 405 probe cycles restore their rational registers exactly. Eighty numerical action advances consume decoded states; 81 decoded frames reconstruct the same charged action's full fields, with all 68 configuration equations and 13 Gauss equations independently checked. A separate exact consumer freshly verifies the charged IVP enclosure and record replay: all ten decoded q/v coordinates at nominal j/40 checkpoints lie within 10001/10^14 of the exact trajectory. Historical samples remain comparison-only inputs, not instrument evolution inputs.",
          "exact software readback/restoration, replayed numerical fields and separately certified decoded checkpoint errors; no observed postdiction",
          "Supplied symmetry-coordinate patch placement, classical writable registers and records, numerical solver, cone, scalar action, initial data and action step. Hash-pinned replay proves internal software provenance without external attestation. The five patches are computational coordinates, not physical observer locations. Repair counts are operational events; their assignment to model time is supplied. The original numerical residuals are not rigorous trajectory enclosures. The separate checkpoint certificate transfers the historical sample bound by an exact rational triangle inequality; it does not enclose intermediate probe registers, continuous observer evolution, nonlinear field or configuration-clock readouts. No quantum history, continuum trajectory limit or laboratory clock calibration is attached."),
         ("ephemeris_clock", "WHITNEY_EPHEMERIS_CLOCK.tex", "prop:whitney-ephemeris-clock", ["eq:whitney-ephemeris-clock"],
@@ -6409,6 +6485,8 @@ def build(
     alpha_hvp_verdict = _load("alpha_hvp_verdict")
     payload = _load("hadron_payload")
     standby = _load("solver_standby")
+    lambda_scale = _load("lambda_transmutation")
+    nucleon_ratio = _load("nucleon_external_ratio")
 
     sections = {
         "forced_structure": _forced_structure(
@@ -6431,7 +6509,9 @@ def build(
         "charged_leptons": _lepton_rows(surface, rectangle, coherent, koide),
         "electroweak": _ew_rows(conditional),
         "quarks": _quark_rows(obstruction, clebsch, selection),
-        "hadrons": _hadron_rows(payload, standby),
+        "hadrons": _hadron_rows(
+            payload, standby, lambda_scale, nucleon_ratio
+        ),
         "neutrinos": [
             {
                 "id": "neutrino_dimensionless_pointer",
@@ -6767,9 +6847,29 @@ def _render_md(ledger: dict[str, Any]) -> str:
                 f"{row['delta_alpha_had_5_MZ']} +- {row['uncertainty_total']}` "
                 f"from `{row['source_compilation']}` "
                 f"(pin factor `{_fmt(row['pin_factor'], 7)}`). {row['policy']}")
-        else:
+        elif row["id"] == "qcd_solver_on_standby":
             add(f"- QCD solver: `{row['status']}`; invocation is gated on the "
                 "source-side parameter emissions recorded in the standby receipt.")
+        elif row["id"] == "lambda_qcd_transmutation_scale":
+            lo, hi = row["value_interval_gev"]
+            add(f"- Transmutation scale ({row['tier']}): `Lambda_QCD^(3) = "
+                f"{_fmt(row['value_central_gev'], 6)}` GeV in "
+                f"`[{_fmt(lo, 6)}, {_fmt(hi, 6)}]` against the published "
+                f"central `{_fmt(row['published_central_gev'], 4)}` GeV "
+                f"(compare-only), `{row['relative_deviation']:+.2%}` relative. "
+                f"{row['declared_external_inputs'].capitalize()}. "
+                f"{row['claim_boundary']}")
+        elif row["id"] == "nucleon_mass_external_ratio":
+            lo, hi = row["value_interval_gev"]
+            inside = "inside" if row["interval_contains_measured"] else "outside"
+            add(f"- Nucleon mass ({row['tier']}): `{_fmt(row['value_central_gev'], 6)}` "
+                f"GeV in `[{_fmt(lo, 6)}, {_fmt(hi, 6)}]` against the measured "
+                f"proton mass `{_fmt(row['measured_gev'], 6)}` GeV "
+                f"(compare-only), `{row['relative_deviation']:+.2%}` relative, "
+                f"with the measured value {inside} the interval. The declared "
+                f"external lattice-theory ratio is "
+                f"`{row['external_theory_factor']}` with uncertainty "
+                f"`{row['external_theory_uncertainty']}`. {row['claim_boundary']}")
     add("")
     add("## Neutrinos")
     add("")

@@ -26,7 +26,7 @@ operation, or a scientific discharge of register row PR-04.
 data: `synthetic_ideal_phase_fit` below constructs such an inhabitant without
 any producer, run, operation, or receipt input.  Hence ideal fit cannot by
 itself certify source provenance, operational implementation, or PR-04
-discharge.  A genuine operational target still needs source-attached
+discharge.  A genuine operational target needs source-attached
 completely-positive outcome maps, a trace-preserving summed channel,
 effect/readback compatibility, an implemented context-selection and common-
 preparation protocol, producer-bound receipts, and a preregistered statistical
@@ -429,8 +429,8 @@ theorem rhoY_agree_on_diagonal (E : Matrix (Fin 2) (Fin 2) ℂ)
     Matrix.mul_apply, Fin.sum_univ_two, h01, h10]
 
 /-- **(P3) The diagonal context identifies no state.**  Two distinct
-certified fixed-trace states — `(1/2)(1 ± (1/2) σ_x)`, positive semidefinite
-by `rhoXPlus_isState` and `rhoXMinus_isState` — carry identical Born data on
+certified fixed-trace states, `(1/2)(1 ± (1/2) σ_x)`, positive semidefinite
+by `rhoXPlus_isState` and `rhoXMinus_isState`, carry identical Born data on
 every diagonal effect.  No diagonal-only outcome family separates states, so
 a phase-sensitive effect is necessary for full complex tomography: diagonal
 fit equations, however many, close no tomography. -/
@@ -608,7 +608,7 @@ structure IdealPhaseFitData where
   phaseCounts_pos : 0 < phaseCounts.1 + phaseCounts.2
   /-- The committed diagonal frequency is the Born weight of the record
   projector under the declared preparation: the common-preparation receipt
-  for the one context that already has committed counts. -/
+  for the one context that has committed counts. -/
   born_diagonal :
     bornWeight prep (complexifyRealMatrix recordProjector) =
       binaryFrequency (111, 68)
@@ -622,7 +622,7 @@ structure IdealPhaseFitData where
   born_phase : bornWeight prep sourcePhaseLift = binaryFrequency phaseCounts
 
 /-- Assemble the static model from ideal fit data.  This constructor supplies
-the already-declared effect matrices; it does not implement or source-produce
+the declared effect matrices; it does not implement or source-produce
 the corresponding operations. -/
 def modelOfIdealPhaseFitData
     (m : IdealPhaseFitData) : IdealPhasePOVMCountModel where

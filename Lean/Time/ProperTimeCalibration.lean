@@ -4,7 +4,7 @@ import Time.ClockReadout
 /-!
 # D1: proper-time calibration on a supplied affine history
 
-An `AffineTimelikeHistory` already contains the substantive calibration
+An `AffineTimelikeHistory` contains the substantive calibration
 premise: its clock parameter multiplies a future-unit timelike direction in a
 supplied event chart.  Under exactly that premise, the positive clock
 increment is the positive square root selected by the Lorentz interval, is
@@ -104,6 +104,8 @@ def properTimeCalibration :
 
 end AffineTimelikeHistory
 
+#print axioms AffineTimelikeHistory.lorentzQ_displacement_eq_clockIncrement_sq
+#print axioms AffineTimelikeHistory.properTimeBetween_value
 #print axioms AffineTimelikeHistory.properTimeBetween_sq_eq_interval
 #print axioms AffineTimelikeHistory.properTimeBetween_sq_eq_interval_in_chart
 #print axioms AffineTimelikeHistory.properTimeBetween_add

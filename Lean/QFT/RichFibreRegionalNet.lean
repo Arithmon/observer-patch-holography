@@ -21,7 +21,7 @@ the enrichment rule from the payload literals (two ambient indices are
 related exactly when they lie in one realized split fibre of one
 observer); the region lattice; the block regional algebras with isotony,
 locality on declared-disjoint regions (a genuine block-versus-block
-commutation theorem, since two enriched regions are now disjoint), and
+commutation theorem, since two enriched regions are disjoint), and
 the character/block restriction system; the tower and the
 `FiniteCausalObserverNet` instance; and the receipts (noncommutativity at
 all four regions, the constructed two-by-two matrix-unit corner associated with each

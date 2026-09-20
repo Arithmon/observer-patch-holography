@@ -603,7 +603,7 @@ theorem no_three_dim_invariant
 The declared hypothesis of `no_three_dim_invariant` is discharged here.
 The engine is the sharp fiber count of the listed action at the base point
 `0`: the sixty elements distribute over the joint conditions `g 0 = k`,
-`g j = i` with multiplicities forced by sharp 2-transitivity — ten on the
+`g j = i` with multiplicities forced by sharp 2-transitivity, ten on the
 compatible diagonal (`i = k`, `j = 0`), zero on the two mixed cases, two
 otherwise.  A nonzero vector of an invariant subspace is first transported
 by a listed element so that it does not vanish at `0` (`exists_to_zero`);

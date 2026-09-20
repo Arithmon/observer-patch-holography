@@ -1226,7 +1226,7 @@ theorem forward_carrier_complete :
   fin_cases e <;>
     simp [injectionSpec, leftSpec, rightSpec, answerSpec]
 
-/-- The authenticated edge relation, not merely raw citations, is invariant
+/-- The authenticated edge relation, rather than raw citations, is invariant
 under the two independent response serializations. -/
 theorem diamond_authenticated_schedule_invariant (e f : Fin 4) :
     execAuthenticatedParents start

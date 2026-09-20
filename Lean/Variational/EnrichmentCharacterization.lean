@@ -28,7 +28,7 @@ all of it exact finite real algebra with no new premises:
   The parametrization is injective
   (`chainTwoSlot_parameters_injective`): the corner-invisible quadratic
   enrichment space is exactly two-dimensional and the committed
-  counterfamily is complete — there is no third corner-invisible
+  counterfamily is complete: there is no third corner-invisible
   quadratic direction.
 
 * **Residual freedom (E2).**  With the derivative packet
@@ -95,7 +95,7 @@ clause of a declared axiomatization, not a source-produced fact.  In
 particular, no theorem in this module proves that corner invisibility,
 velocity-only, stationarity, single-site minimality, or regular
 momentum inversion is a globally selecting or minimal axiom system;
-the quartic continuation proves that those tested clauses still admit
+the quartic continuation proves that those tested clauses admit
 nonquadratic alternatives.  All
 statements are exact real algebra about the declared grammar around
 the committed two-state mixing chain; no continuum, units, clock, or
@@ -455,7 +455,7 @@ theorem velocityOnly_clause_necessary :
     ring_nf at hval
     linarith
 
-/-! ## E4-ii: quadraticity is necessary — the cubic counterexample -/
+/-! ## E4-ii: quadraticity is necessary, the cubic counterexample -/
 
 /-- A velocity-only cubic corner-invisible sentence:
 `y (y-1) (μ y + ν)`. -/

@@ -125,7 +125,7 @@ theorem twoFactor_weighted_coefficients_identifiable {A B : Type*}
 /--
 Equality of the two *constructed transition kernels* supplies exactly the
 additive cost gauge required above, hence identifies both
-multiplier-weighted coefficients.  This is the law-level theorem; it still
+multiplier-weighted coefficients.  This is the law-level theorem; it
 does not assert that either constructed kernel is the OPH source kernel.
 -/
 theorem twoFactor_kernel_identifies_weighted_coefficients {A B : Type*}

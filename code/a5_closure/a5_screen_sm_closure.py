@@ -13,6 +13,22 @@ from pathlib import Path
 import sympy as sp
 
 HERE = Path(__file__).resolve().parent
+
+
+class CertificateError(RuntimeError):
+    """Fail-closed certificate error with a stable code."""
+
+    def __init__(self, code: str, detail: str) -> None:
+        super().__init__(f"{code}: {detail}")
+        self.code = code
+        self.detail = detail
+
+
+def require(condition: bool, code: str, detail: str) -> None:
+    if not condition:
+        raise CertificateError(code, detail)
+
+
 SQRT5 = sp.sqrt(5)
 PHI = (1 + SQRT5) / 2
 PHIBAR = (1 - SQRT5) / 2
@@ -35,8 +51,11 @@ def decompose(chi: list[sp.Expr]) -> dict[str, int]:
     for name, row in IRREPS.items():
         multiplicity = sp.simplify(inner(chi, row["chi"]))
         if multiplicity != 0:
-            if not multiplicity.is_Integer:
-                raise AssertionError(f"nonintegral multiplicity {name}: {multiplicity}")
+            require(
+                bool(multiplicity.is_Integer),
+                "CHARACTER_MULTIPLICITY",
+                f"nonintegral multiplicity {name}: {multiplicity}",
+            )
             result[name] = int(multiplicity)
     return result
 
@@ -49,7 +68,11 @@ ORBIT_CHARS = {
     "flags_regular_A5": [60, 0, 0, 0, 0],
 }
 ORBIT_DECOMP = {name: decompose(chi) for name, chi in ORBIT_CHARS.items()}
-assert ORBIT_DECOMP["vertices_A5_over_C5"] == {"1": 1, "3": 1, "3prime": 1, "5": 1}
+require(
+    ORBIT_DECOMP["vertices_A5_over_C5"] == {"1": 1, "3": 1, "3prime": 1, "5": 1},
+    "VERTEX_MODULE_DECOMPOSITION",
+    "the vertex orbit module is not 1 + 3 + 3prime + 5",
+)
 
 # Gauge adjoint character under opposite-triplet embeddings.
 chi1 = IRREPS["1"]["chi"]
@@ -57,9 +80,17 @@ chi3 = IRREPS["3"]["chi"]
 chi3p = IRREPS["3prime"]["chi"]
 chi5 = IRREPS["5"]["chi"]
 su3_from_3p = [sp.simplify(x*x-y) for x, y in zip(chi3p, chi1, strict=True)]
-assert decompose(su3_from_3p) == {"3prime": 1, "5": 1}
+require(
+    decompose(su3_from_3p) == {"3prime": 1, "5": 1},
+    "ADJOINT_EMBEDDING_DECOMPOSITION",
+    "the su(3) adjoint character under the opposite triplet is not 3prime + 5",
+)
 sm_char = [sp.simplify(a+b+c) for a, b, c in zip(su3_from_3p, chi3, chi1, strict=True)]
-assert sm_char == ORBIT_CHARS["vertices_A5_over_C5"]
+require(
+    sm_char == ORBIT_CHARS["vertices_A5_over_C5"],
+    "SM_ADJOINT_CHARACTER",
+    "the Standard-Model adjoint character does not equal the vertex orbit character",
+)
 
 # Restriction multiplicities to face C3 and edge C2 stabilizers.
 restrictions: dict[str, dict[str, int]] = {}
@@ -76,7 +107,11 @@ for name, row in IRREPS.items():
     }
 minimal_c3_dim = min(IRREPS[n]["dim"] for n in IRREPS if restrictions[n]["C3_omega"] > 0)
 minimal_c3_irreps = [n for n in IRREPS if restrictions[n]["C3_omega"] > 0 and IRREPS[n]["dim"] == minimal_c3_dim]
-assert minimal_c3_dim == 3 and set(minimal_c3_irreps) == {"3", "3prime"}
+require(
+    minimal_c3_dim == 3 and set(minimal_c3_irreps) == {"3", "3prime"},
+    "MINIMAL_FACE_PHASE_CARRIER",
+    "the dimension-minimal face-C3 phase carriers are not 3 and 3prime",
+)
 
 # Compact-Lie trichotomy.  A group-level A5 action on a compact center torus
 # preserves its integral lattice; hence its real center representation is
@@ -126,11 +161,12 @@ for candidate in center_candidates:
     if lie_type is not None:
         trichotomy.append(row)
 
-assert {row["lie_type"] for row in trichotomy} == {
-    "u(1)^12",
-    "su(2)+su(2)+u(1)^6",
-    "su(3)+su(2)+u(1)",
-}
+require(
+    {row["lie_type"] for row in trichotomy}
+    == {"u(1)^12", "su(2)+su(2)+u(1)^6", "su(3)+su(2)+u(1)"},
+    "COMPACT_LIE_TRICHOTOMY",
+    "the viable compact coefficient-algebra types are not the declared three",
+)
 
 # Degree <=2 adjacency-local kinetic relation.  Let the color triplet share a
 # kinetic coefficient with the rank-5 color band.  For f(A)=a+bA+cA^2 this
@@ -144,7 +180,11 @@ for color_eigenvalue, weak_eigenvalue in [(-r, r), (r, -r)]:
     k1 = sp.simplify(f(5).subs(b_solution))
     k2 = sp.simplify(f(weak_eigenvalue).subs(b_solution))
     k3 = sp.simplify(f(color_eigenvalue).subs(b_solution))
-    assert sp.simplify(k1 - 3*k2 + 2*k3) == 0
+    require(
+        sp.simplify(k1 - 3*k2 + 2*k3) == 0,
+        "DEGREE_TWO_KINETIC_RELATION",
+        f"k1 = 3 k2 - 2 k3 fails at color eigenvalue {color_eigenvalue}",
+    )
     kinetic_relations.append({
         "color_eigenvalue": str(color_eigenvalue),
         "weak_eigenvalue": str(weak_eigenvalue),

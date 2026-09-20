@@ -117,7 +117,7 @@ theorem run_respects_public (hcompat : QuotientCompatible P R)
   | cons m ms ih =>
       exact ih (hcompat.repair_respects_public m hxy)
 
-/-- Completion is representative-independent when enabledness, not merely
+/-- Completion is representative-independent when enabledness, and with it
 the move output, respects public equivalence. -/
 theorem completedSchedule_congr (hcompat : QuotientCompatible P R)
     (schedule : List R.Move) {x y : P.Config}
@@ -416,7 +416,7 @@ theorem local_terminating (seed : OPH.Records C) :
 
 /-- Both the output and the enabledness of every constructed OPH local move
 depend only on `obsMap`.  Thus the labelled local system satisfies the exact
-quotient-compatibility packet, not merely congruence of the composite
+quotient-compatibility packet rather than congruence of the composite
 choice-selected `OPH.Repair`. -/
 noncomputable def localQuotientCompatible (seed : OPH.Records C) :
     QuotientCompatible (presentation C seed) (localSystem C seed) where

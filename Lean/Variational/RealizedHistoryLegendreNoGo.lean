@@ -144,7 +144,7 @@ theorem localAction_chainCurvedLagrangian (a : ℝ)
     chainCurvedLagrangian_corner a (s n.castSucc) (s n.succ)
 
 /-- All constructed enrichments are observationally identical on the full
-finite realized-history carrier, not merely on one selected path. -/
+finite realized-history carrier rather than on one selected path. -/
 theorem chainCurvedLagrangian_realized_indistinguishable (a b : ℝ)
     (s : Fin (N + 1) → Fin 2) :
     localAction (chainCurvedLagrangian a) (chainEmb s)

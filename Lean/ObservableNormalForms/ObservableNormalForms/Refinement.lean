@@ -187,7 +187,7 @@ theorem same_level_implementation_agreement
 points are the restricted approximate output, restricted exact output,
 first anchored normal form, second anchored normal form, second restricted
 exact output, and second restricted approximate output.  All Lipschitz and
-modulus amplification has already been discharged into the five scalar
+modulus amplification has been discharged into the five scalar
 receipts. -/
 theorem anchored_cross_level_metric_core
     {X : Type*} [PseudoMetricSpace X]

@@ -17,7 +17,7 @@ finite matrix interface, both load-bearing identities:
 * `sum K_iab^H K_iab = 1` (normalization), and
 * `partitionAverage X = sum K_iab X K_iab^H` (explicit Kraus form).
 
-Together with the already-proved trace identity for `partitionAverage`, these
+Together with the proved trace identity for `partitionAverage`, these
 are exact Kraus/trace statements.  This file deliberately does not call the
 map completely positive or CPTP: no finite complete-positivity predicate or
 bundled channel interface is introduced here.

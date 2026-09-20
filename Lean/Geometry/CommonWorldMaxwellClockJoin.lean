@@ -29,7 +29,7 @@ not a dynamical, geometric, or physical relation between the components.
 Clause 1, same-index binding (`CarriesJoinedStepIndex`).  The two
 projection identities hold (`join_energy`, `join_stepEvent`), the join is
 the pair of the two committed readings (`join_eq_pair`), and the join is
-injective in the step index (`join_injective`) because its already injective
+injective in the step index (`join_injective`) because its injective
 clock-event projection recovers the index.  At every index the
 joined event differs from the event of the successor index
 (`join_event_ne_succ`), so no inhabitant's join is the successor-shifted

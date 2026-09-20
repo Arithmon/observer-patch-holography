@@ -55,7 +55,7 @@ quotient. Canonical source height enters only through `eventPoint` below. -/
 abbrev SourceSpacetimeCarrier := ℝ × FrameQuotient
 
 /-- Exact source-carrier equivalence to Pauli coordinates.  The spatial map
-is the already proved quotient equivalence, not a new dimension premise. -/
+is the proved quotient equivalence, not a new dimension premise. -/
 noncomputable def sourceSpacetimeEquivHerm2 :
     SourceSpacetimeCarrier ≃ₗ[ℝ] Herm2 :=
   (LinearEquiv.refl ℝ ℝ).prodCongr quotientEquivVec3
@@ -317,7 +317,7 @@ theorem sourceHeight_le_of_sourceCausalLE {e f : Event}
   exact_mod_cast hr
 
 /-- Event separation needs only injectivity of the spatial readback within
-each equal-source-height layer.  Different layers are already separated by
+each equal-source-height layer.  Different layers are separated by
 the positive temporal scale. -/
 theorem eventPoint_injective_of_sameHeightSpatialInjective
     (hsep : ∀ {e f : Event}, L.sourceHeight e = L.sourceHeight f →
@@ -539,7 +539,7 @@ all-pairs cone-support clause by only the genuinely open geometric cases:
   spacelike by a strict squared-distance inequality.
 
 Diagonal pairs follow by reflexivity, reverse-height pairs are excluded by
-future time orientation, and generated pairs are already forward-causal.
+future time orientation, and generated pairs are forward-causal.
 The two supplied clauses remain geometric assumptions; provenance does not
 derive them. -/
 noncomputable def ofIncomparableSpacelike

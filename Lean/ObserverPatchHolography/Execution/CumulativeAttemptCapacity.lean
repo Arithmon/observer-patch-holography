@@ -62,7 +62,7 @@ theorem cumulativeAttemptCost_eq_genuine_add_stutter (C : OPHCarrier)
   simp only [cumulativeAttemptCost, cumulativeStutterCost]
   omega
 
-/-- The number of genuine changes already paid for, plus the mismatch rank
+/-- The number of genuine changes paid for, plus the mismatch rank
 remaining after those attempts, never exceeds the initial mismatch rank. -/
 theorem cumulativeGenuineChangeCost_add_rank_le_initial (C : OPHCarrier)
     (sigma : AdaptiveScheduler C) (x : Records C) (attempts : Nat) :

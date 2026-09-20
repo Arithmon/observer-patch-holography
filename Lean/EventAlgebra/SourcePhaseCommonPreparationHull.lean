@@ -15,14 +15,14 @@ normalized declared Lueders-outcome equality proved by
 `SourcePhaseInstrumentOutcomeBridge`.
 
 The declared run state is not itself one of the generated states, and no
-generated `SourceStep` starts from it.  Moreover, the generated result of
+generated `SourceStep` starts from it.  The generated result of
 every phase event is outside the common support.  Common support therefore
 means pointwise availability of separate one-step cells, not a convexly
 closed state relation, reset or re-preparation rule, or sequential protocol.
 
 This is a finite compatibility theorem, not a source-produced common
 preparation.  The convex coefficients are an exact decomposition of the
-already declared run state; no source rule selects or samples them.  The
+declared run state; no source rule selects or samples them.  The
 twelve generated phase events are not the eight public instrument contexts,
 and no instrument implementation, public outcome, readback, run binding,
 provenance, custody, cross-context additivity, or physical attachment is
@@ -167,7 +167,7 @@ theorem no_sourceStep_starts_at_committedRunState :
   rintro ⟨step, hstep⟩
   exact no_generated_state_eq_committedRunState step.source hstep
 
-/-- After any generated event, the generated result state no longer admits
+/-- After any generated event, the generated result state fails to admit
 all twelve phase events.  Common support is therefore a pointwise one-step
 property, not a reusable or sequential protocol without an added reset or
 re-preparation rule. -/

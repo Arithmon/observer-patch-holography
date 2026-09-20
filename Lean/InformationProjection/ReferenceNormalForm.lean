@@ -18,7 +18,7 @@ the invariance premise is load-bearing.
 Consequently the (reference, action, multiplier) representation of the
 committed law with an independently target-relabeling-invariant Markov reference is unique:
 the reference must be `stepUniformRef` and the action is then the
-log-transition action up to the already-characterized gauge orbit.
+log-transition action up to the characterized gauge orbit.
 
 **Boundary.**  This is a representation-level normal-form theorem: it fixes
 the reference gauge by an invariance property, exactly as a coordinate

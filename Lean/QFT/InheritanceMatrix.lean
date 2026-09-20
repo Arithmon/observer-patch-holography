@@ -8,11 +8,11 @@ import LocalFaceMaxwellAction
 
 This module records the current partial E4 status of completion-plan issue
 `#701` by representing all seven inheritance targets as one first-class
-artifact.  It does not close that issue.  Issue `#701` names seven targets —
+artifact.  It does not close that issue.  Issue `#701` names seven targets,
 CPT,
 spin-statistics, DHR/sector reconstruction, field/action
 reconstruction, KMS/thermality, relative-Cauchy stress response, and
-particle/scattering — and licenses exactly three verdict shapes per
+particle/scattering, and licenses exactly three verdict shapes per
 target: a theorem, a countermodel, or a typed non-evaluable exit.  No
 blanket QFT inheritance claim is allowed, and none is made here.
 
@@ -41,17 +41,17 @@ orphaning the matrix.
 |---|--------|---------------|------------------|
 | 1 | CPT | TYPED NON-EVALUABLE EXIT | No carrier.  `EventRegion` is order-theoretic data of the E1 net with no involution, region reflection, or distinguished vacuum; the claim boundary of `QFT/LocallyCovariantLimit.lean` attaches no Lorentzian reading.  In pinned Mathlib the Tomita conjugation is an explicit TODO (`Mathlib/Analysis/InnerProductSpace/StandardSubspace.lean`, "Define the Tomita conjugation, prove Tomita's theorem, prove the KMS condition"). |
 | 2 | Spin-statistics | TYPED NON-EVALUABLE EXIT | No carrier.  The hom-type `CausalEmbedding` is proof-only and `Subsingleton` (receipt `causalEmbedding_proof_irrelevant` below), so the event-region category is thin and carries no symmetry-group action data, hence no rotation double cover; no spin structure exists in the tree.  `Mathlib/LinearAlgebra/CliffordAlgebra/SpinGroup.lean` exists but nothing connects it to the net; the statistics side is additionally gated on row 3's exit. |
-| 3 | DHR / sector reconstruction | RESTRICTED SURROGATE COLLAPSES + exit (full DHR) | `QFT/SectorInheritance.lean`: every bijective localized endomorphism of the finite constructed net is inner (`privateSector_localized_inner`) and hence equivalent to the identity under the file's declared finite relation; nonvacuity by `sectorWitness_inner`.  This does not construct a DHR category or perform Doplicher–Roberts reconstruction.  The completed colimit now has a mathematical GNS representation induced by coherently selected tower states, but full DHR still lacks a source-selected vacuum representation, a DHR quasi-local net, and transportability. |
-| 4 | Field / action reconstruction | GATED BY DESIGN | Exact finite precursors now include the response-word algebra, the dense global Hodge comparison, the genuinely local face-curvature/static scalar-vector action of `Screen/LocalFaceMaxwellAction.lean`, and the declared-step leapfrog evolution of `Screen/TemporalMaxwellEvolution.lean` with its proved Gauss-continuity equivalence, exact energy balance, and discrete wave law.  The step index is a declared evolution parameter, and the sources are declared histories: no source-selected physical current, physical matter/Spin action, spacetime carrier, physical time, or continuum limit is supplied.  Thus the full field/action reconstruction packet E4 would consume is still not supplied. |
-| 5 | KMS / thermality | PROVABLE (finite core) + REFUTABLE (net) + REFUTABLE (public, continuous automorphism KMS only) + exit (horizon) | `QFT/StructuralInheritance.lean`: the finite algebraic Gibbs-KMS theorem on the witness private block (`privateGibbsState_kms`); the degeneracy countermodel — on the support-graded net every functional is KMS for every grading-preserving flow at every complex time (`supportGradedNet_regionalExpectation_kms_degenerate`); the cited B3 rigidity: every pointwise-continuous group of public star automorphisms is the identity, so KMS relative to any such flow is degenerate (`publicRecord_no_thermal_flow`); classical detailed-balance thermality of public records relative to continuous row-stochastic semigroups is not evaluated.  Horizon thermality is that module's typed exit. |
-| 6 | Relative-Cauchy stress response | TYPED NON-EVALUABLE EXIT | A finite one-step interface exists in `QFT/PathTimeSliceInterface.lean`.  `QFT/TripleCarrierJoin.lean` additionally gives one common state/path/checkpoint carrier and exact marginal intertwining over the 31 actual source transitions.  `QFT/LocallyCovariantLimit.lean` now supplies the order-theoretic E3 Cauchy embedding class `IsCauchyEmbedding`, defined through the net's contravariant restriction maps, with the limit-level time-slice property; its claim boundary attaches no Lorentzian reading.  None of these supplies a regional-net morphism, coherent physical evolution, Lorentzian metric perturbations, or a stress-response derivative. |
+| 3 | DHR / sector reconstruction | RESTRICTED SURROGATE COLLAPSES + exit (full DHR) | `QFT/SectorInheritance.lean`: every bijective localized endomorphism of the finite constructed net is inner (`privateSector_localized_inner`) and hence equivalent to the identity under the file's declared finite relation; nonvacuity by `sectorWitness_inner`.  This does not construct a DHR category or perform Doplicher–Roberts reconstruction.  The completed colimit has a mathematical GNS representation induced by coherently selected tower states, but full DHR lacks a source-selected vacuum representation, a DHR quasi-local net, and transportability. |
+| 4 | Field / action reconstruction | GATED BY DESIGN | Exact finite precursors include the response-word algebra, the dense global Hodge comparison, the genuinely local face-curvature/static scalar-vector action of `Screen/LocalFaceMaxwellAction.lean`, and the declared-step leapfrog evolution of `Screen/TemporalMaxwellEvolution.lean` with its proved Gauss-continuity equivalence, exact energy balance, and discrete wave law.  The step index is a declared evolution parameter, and the sources are declared histories: no source-selected physical current, physical matter/Spin action, spacetime carrier, physical time, or continuum limit is supplied.  Thus the full field/action reconstruction packet E4 would consume is not supplied. |
+| 5 | KMS / thermality | PROVABLE (finite core) + REFUTABLE (net) + REFUTABLE (public, continuous automorphism KMS only) + exit (horizon) | `QFT/StructuralInheritance.lean`: the finite algebraic Gibbs-KMS theorem on the witness private block (`privateGibbsState_kms`); the degeneracy countermodel, on the support-graded net every functional is KMS for every grading-preserving flow at every complex time (`supportGradedNet_regionalExpectation_kms_degenerate`); the cited B3 rigidity: every pointwise-continuous group of public star automorphisms is the identity, so KMS relative to any such flow is degenerate (`publicRecord_no_thermal_flow`); classical detailed-balance thermality of public records relative to continuous row-stochastic semigroups is not evaluated.  Horizon thermality is that module's typed exit. |
+| 6 | Relative-Cauchy stress response | TYPED NON-EVALUABLE EXIT | A finite one-step interface exists in `QFT/PathTimeSliceInterface.lean`.  `QFT/TripleCarrierJoin.lean` additionally gives one common state/path/checkpoint carrier and exact marginal intertwining over the 31 actual source transitions.  `QFT/LocallyCovariantLimit.lean` supplies the order-theoretic E3 Cauchy embedding class `IsCauchyEmbedding`, defined through the net's contravariant restriction maps, with the limit-level time-slice property; its claim boundary attaches no Lorentzian reading.  None of these supplies a regional-net morphism, coherent physical evolution, Lorentzian metric perturbations, or a stress-response derivative. |
 | 7 | Particle / scattering | TYPED NON-EVALUABLE EXIT | No carrier.  Haag–Ruelle theory needs a translation group action on the net, a spectrum condition, and asymptotic limits; `EventRegion` carries no ℝ-action and no energy-momentum object exists in the tree (B9 `#685`, the optional spectral adapter, has no module).  Pinned Mathlib has zero Haag/scattering material. |
 
-Four of the five non-statable rows (1, 2, 6, 7) still lack structures
+Four of the five non-statable rows (1, 2, 6, 7) lack structures
 required by the full target in the tree and in pinned Mathlib; row 4 is
 gated by design on three other bricks.  This is a statement about what
-the committed carriers presently type, not a no-go against extending
-them.  In particular row 6 now has the finite transport-aware precursor and
+the committed carriers type, not a no-go against extending
+them.  In particular row 6 has the finite transport-aware precursor and
 the order-theoretic E3 Cauchy embedding class recorded above, while
 Lorentzian Cauchy geometry, coherent physical evolution and a
 stress-response derivative remain possible construction routes rather
@@ -66,7 +66,7 @@ readouts.  What E4 supplies to F1:
 
 * the finite algebraic Gibbs-KMS theorem on the private block
   (`e4Row5_provable_anchor`), a finite-block algebra fact F1's modular
-  readout may consume as algebra — with no physical temperature, no
+  readout may consume as algebra, with no physical temperature, no
   spacetime, and no vacuum attached;
 * two constraints F1 must respect rather than results it may cite: every
   pointwise-continuous group of public star automorphisms is the identity
@@ -79,10 +79,10 @@ readouts.  What E4 supplies to F1:
   selection structure and may not point at E4 for one.
 
 What E4 withholds from F1: everything in rows 1, 6, and the row-5
-horizon exit.  Row 6 now acknowledges a finite time-indexed
+horizon exit.  Row 6 acknowledges a finite time-indexed
 net-evolution interface and the order-theoretic E3 Cauchy embedding
 class of `QFT/LocallyCovariantLimit.lean`, but the stress readout
-still receives no relative-Cauchy response: the embedding class is
+receives no relative-Cauchy response: the embedding class is
 order-theoretic with no Lorentzian reading, and there is no Lorentzian
 metric or metric perturbation, relative-Cauchy evolution, or stress
 derivative.  No statement of this module or of the two row
@@ -104,12 +104,12 @@ pole, and continuum receipts".  What E4 supplies to H2:
   quantum number from that restricted automorphism class.  Non-bijective
   transportable endomorphisms and full DHR reconstruction are not available.
   Flavor carriers must come from completed source-attached field and matter
-  packets, which row 4 records as not yet delivered despite exact finite
+  packets, which row 4 records as undelivered despite exact finite
   algebraic and global-Hodge precursors.
 
 What E4 withholds from H2: the spin-statistics receipt (row 2 is a
-typed exit — there is no spin structure and the thin category carries
-no action data), the pole/particle receipt (row 7 is a typed exit —
+typed exit, there is no spin structure and the thin category carries
+no action data), the pole/particle receipt (row 7 is a typed exit,
 there is no ℝ-action and no spectrum condition), and the physical or
 norm-completed continuum receipt.  `QFT/LocallyCovariantLimit.lean`
 constructs the algebraic filtered colimit and its order-theoretic local,
@@ -120,7 +120,7 @@ physical Lorentzian attachment.
 The E4 clause of H2's promotion rule is therefore NOT dischargeable
 today, and H2 may not quote E4 as having supplied its quantum receipts
 in general.  H2 physical promotion remains blocked on structure the
-committed carriers do not presently supply.
+committed carriers do not supply.
 
 ## What this module does not license
 
@@ -150,7 +150,7 @@ inductive E4Verdict
 /-- One row of the E4 status matrix: the target, its verdict shape
 (possibly composite, e.g. row 5 is provable core + countermodel +
 exit), the carrying module if one exists, and the citation for the
-verdict — for exit rows, the precise missing structure. -/
+verdict, for exit rows, the precise missing structure. -/
 structure E4Row where
   index : Nat
   target : String
@@ -252,14 +252,14 @@ theorem e4_refutable_rows :
       r.shape.any fun v => v matches .refutable).map (·.index) = [3, 5] := rfl
 
 /-- The rows carrying any theorem-shaped verdict, of either polarity,
-are exactly rows 3 and 5 — two of seven. -/
+are exactly rows 3 and 5, two of seven. -/
 theorem e4_theorem_shaped_rows :
     (e4StatusMatrix.filter fun r =>
       r.shape.any fun v => v matches .provable | .refutable).map (·.index) =
       [3, 5] := rfl
 
-/-- The rows carrying no theorem of either polarity — typed exits and
-the design gate — are exactly rows 1, 2, 4, 6, 7: five of seven. -/
+/-- The rows carrying no theorem of either polarity, typed exits and
+the design gate, are exactly rows 1, 2, 4, 6, 7: five of seven. -/
 theorem e4_exit_or_gated_rows :
     (e4StatusMatrix.filter fun r =>
       r.shape.all fun v => v matches .typedNonEvaluableExit | .gated).map (·.index) =
@@ -280,7 +280,7 @@ exit, restated against its carrying theorem.  These are citations that
 the kernel checks: renaming or weakening any cited declaration breaks
 this module. -/
 
-/-- Row 2 reason receipt: parallel causal embeddings are equal — the
+/-- Row 2 reason receipt: parallel causal embeddings are equal, the
 event-region category is thin, so it carries no nontrivial
 symmetry-group action data, which is why spin-statistics is not
 statable against it.  Cites the `Subsingleton` instance of
@@ -333,7 +333,7 @@ theorem e4Row5_provable_anchor
 /-- Row 5 anchor, net-level refutable half: the A3 selected-state
 regional pairing of the constructed example net satisfies the KMS
 identity for every observer, region, support-graded Hamiltonian, and
-complex time — thermality that distinguishes nothing.  Cites
+complex time, thermality that distinguishes nothing.  Cites
 `supportGradedNet_regionalExpectation_kms_degenerate` of
 `QFT/StructuralInheritance.lean`. -/
 theorem e4Row5_degeneracy_anchor

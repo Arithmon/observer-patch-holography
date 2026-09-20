@@ -97,7 +97,7 @@ theorem OrientedLorentzEquiv.restLinearMap_surjective
   apply Subtype.ext
   simp [OrientedLorentzEquiv.restLinearMap, v]
 
-/-- Rest-space transport is a linear equivalence, not merely a coordinate
+/-- Rest-space transport is a linear equivalence rather than a coordinate
 map. -/
 def OrientedLorentzEquiv.restEquiv (L : OrientedLorentzEquiv)
     (u : FrameHyperboloid) : RestSpace u ≃ₗ[ℝ] RestSpace (L.mapFrame u) :=

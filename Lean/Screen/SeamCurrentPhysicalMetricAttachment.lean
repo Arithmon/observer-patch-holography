@@ -21,7 +21,7 @@ attachment identifies all three objects: the normalized port frame, the
 primitive vertex action, and the seam-current action.  The same attachment
 must also identify one port-dual sector with the physical UV cut-area
 element.  Under that typed same-object premise, the vertex and seam scales
-are no longer independent: both coefficients follow exactly from `aCell` and
+are dependent: both coefficients follow exactly from `aCell` and
 the response-Gram seam norm.
 
 The structure below is an explicit physical-identification record, not an

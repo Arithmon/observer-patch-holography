@@ -5,14 +5,14 @@ import Mathlib
 
 The abstract uniqueness schema behind the capacity readback certificates:
 
-* `averagingMap_unique_fixedPt` — the averaging map
+* `averagingMap_unique_fixedPt`: the averaging map
   `C(x) = (1 − λ)·x + λ·K` with `0 < λ ≤ 1` and constant target `K` has
   exactly one fixed point, namely `K`. This pins the averaging-map argument
   used by the capacity certificates.
-* `banach_unique_fixedPt` — a `ContractingWith`-map on a nonempty complete
+* `banach_unique_fixedPt`: a `ContractingWith`-map on a nonempty complete
   metric space has exactly one fixed point. Cited from Mathlib
   (`ContractingWith.fixedPoint` and its uniqueness lemma), not reproved.
-* `capacity_Icc_unique_fixedPt` — the Banach schema applied to the capacity
+* `capacity_Icc_unique_fixedPt`: the Banach schema applied to the capacity
   map's interval domain: a self-map of `Icc a b` that is Lipschitz on
   `Icc a b` with constant `K < 1` has exactly one fixed point in `Icc a b`.
 

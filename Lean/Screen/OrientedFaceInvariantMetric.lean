@@ -59,7 +59,8 @@ noncomputable def dF2 (β γ δ : ℝ) : ℝ :=
 noncomputable def dG2 (β γ δ : ℝ) : ℝ :=
   ((15 - 3*s5)/2) * β/δ^2 + (15 - 3*s5)/β + (60 - 12*s5)/(11*γ)
 
-/-- Parameterized family distance in one display. -/
+/-- The three tabulated squared distances in one display, indexed by the
+three-element enumeration `CompactFamily`. -/
 noncomputable def squaredDistanceAt (β γ δ : ℝ) : CompactFamily → ℝ
   | .P => dP2 β γ δ
   | .F => dF2 β γ δ
@@ -134,8 +135,10 @@ theorem balanced_dG2_lt_dF2 {β δ : ℝ} (hβ : 0 < β) (hδ : 0 < δ) :
   have h2 : 0 < ((90/11)*s5)/β := by positivity
   linarith
 
-/-- On every sector-balanced invariant carrier metric, `G` is the unique
-nearest classified compact family. -/
+/-- **Nearest of the three tabulated distance forms, balanced sector.**  On
+every sector-balanced invariant carrier metric the tabulated form `dG2` is
+strictly smaller than each of the other two tabulated forms, so `G` is
+strictly nearer than each of the other two labels of `CompactFamily`. -/
 theorem balanced_unique_nearest_G {β δ : ℝ} (hβ : 0 < β) (hδ : 0 < δ)
     (family : CompactFamily) (h : family ≠ .G) :
     dG2 β β δ < squaredDistanceAt β β δ family := by
@@ -192,7 +195,11 @@ theorem box_dG2_lt_dF2 {β γ δ : ℝ} (hβ : 0 < β) (hγ : 0 < γ) (hδ : 0 <
     nlinarith [this, mul_pos hγ hδ]
   linarith
 
-/-- Unique nearest family on the whole phase box, for all `gamma`, `delta`. -/
+/-- **Nearest of the three tabulated distance forms, whole phase box.**  On
+every invariant carrier metric of the declared box `delta ≤ 50*beta` and
+`beta ≤ 6*delta`, for all `gamma`, the tabulated form `dG2` is strictly
+smaller than each of the other two tabulated forms, so `G` is strictly
+nearer than each of the other two labels of `CompactFamily`. -/
 theorem box_unique_nearest_G {β γ δ : ℝ} (hβ : 0 < β) (hγ : 0 < γ) (hδ : 0 < δ)
     (h1 : δ ≤ 50*β) (h2 : β ≤ 6*δ)
     (family : CompactFamily) (h : family ≠ .G) :

@@ -119,7 +119,7 @@
       "uses": [
         "beta_EW = N_c + 1 = 4"
       ],
-      "source_artifact": "extra/compact_proof_of_oph.tex#D10-transmutation-multiplicity",
+      "source_artifact": "paper/tex_fragments/PARTICLE_TECHNICAL_SUPPLEMENT_PORT.tex, paragraph 'Declared source packet', stating beta_EW = N_c + 1 = 4; paper/tex_fragments/OBSERVERS_SYNTHESIS_SECTIONS.tex, paragraph 'The alpha_U(P) source proof record', defining N_c = 3 and beta_EW := N_c + 1 = 4",
       "conclusion": "The electroweak transmutation multiplicity beta_EW = N_c + 1 = 4 is fixed by the D10 transmutation theorem on the SU(N_c=3) colour branch."
     },
     {
@@ -164,7 +164,7 @@
         "lambda in (0,1]",
         "C_EW(P,x) = (1-lambda)*x + lambda*6*pi/(P*alpha_U(P))"
       ],
-      "source_artifact": "extra/oph_finite_repair_lyapunov.tex#banach-fixed-point",
+      "source_artifact": "Lean/ObserverPatchHolography/CapacityFixedPoint.lean, theorem averagingMap_unique_fixedPt for C(x) = (1-lambda)*x + lambda*K; banach_unique_fixedPt records the contraction-mapping principle as an external result cited from Mathlib ContractingWith.fixedPoint",
       "conclusion": "The capacity averaging map C_EW(P_star,.) is Lipschitz with constant 1 - lambda = 1/2 < 1 on the source-side log-capacity coordinate. By the Banach fixed-point theorem the unique fixed point coincides with x_EW(P_star), and the residual contracts by exactly 1 - lambda each iteration. Lambda = 1/2 is recorded as a free averaging parameter; the closed-form fixed point x_EW(P_star) is independent of lambda."
     },
     {
@@ -204,7 +204,7 @@
       "expression": "N_c + 1",
       "role": "electroweak transmutation multiplicity in Pi_EW(P_star,N) = beta_EW*P_star",
       "source_theorem": "D10 transmutation multiplicity",
-      "source_artifact": "extra/compact_proof_of_oph.tex#D10-transmutation-multiplicity"
+      "source_artifact": "paper/tex_fragments/PARTICLE_TECHNICAL_SUPPLEMENT_PORT.tex, paragraph 'Declared source packet', stating beta_EW = N_c + 1 = 4; paper/tex_fragments/OBSERVERS_SYNTHESIS_SECTIONS.tex, paragraph 'The alpha_U(P) source proof record', defining N_c = 3 and beta_EW := N_c + 1 = 4"
     },
     "m_rep_doubled_sm_adjoint_round_count": {
       "value": "24",
@@ -219,7 +219,7 @@
       "role": "appears as 6*pi/P_star in B_EW(P,N) = alpha_U*log(N/pi) - 6*pi/P",
       "source_theorem": "composition of D10 transmutation theorem and representation-to-spectrum theorem",
       "source_artifacts": [
-        "extra/compact_proof_of_oph.tex#D10-transmutation-multiplicity",
+        "paper/tex_fragments/PARTICLE_TECHNICAL_SUPPLEMENT_PORT.tex, paragraph 'Declared source packet', stating beta_EW = N_c + 1 = 4; paper/tex_fragments/OBSERVERS_SYNTHESIS_SECTIONS.tex, paragraph 'The alpha_U(P) source proof record', defining N_c = 3 and beta_EW := N_c + 1 = 4",
         "certificates/R_m_rep_24_certificate.json"
       ]
     },
@@ -231,7 +231,7 @@
       "source_artifacts": [
         "certificates/R_EW_tick_projection_certificate.json",
         "certificates/R_m_rep_24_certificate.json",
-        "extra/compact_proof_of_oph.tex#D10-transmutation-multiplicity"
+        "paper/tex_fragments/PARTICLE_TECHNICAL_SUPPLEMENT_PORT.tex, paragraph 'Declared source packet', stating beta_EW = N_c + 1 = 4; paper/tex_fragments/OBSERVERS_SYNTHESIS_SECTIONS.tex, paragraph 'The alpha_U(P) source proof record', defining N_c = 3 and beta_EW := N_c + 1 = 4"
       ]
     },
     "banach_contraction_lambda_one_half": {
@@ -239,7 +239,7 @@
       "expression": "lambda in (0,1] free averaging parameter; 1 - lambda = 1/2 is the Lipschitz constant",
       "role": "averaging weight in C_EW(P,x) = (1 - lambda)*x + lambda*6*pi/(P*alpha_U(P))",
       "source_theorem": "Banach fixed-point theorem applied to the source-side log-capacity averaging map",
-      "source_artifact": "extra/oph_finite_repair_lyapunov.tex#banach-fixed-point",
+      "source_artifact": "Lean/ObserverPatchHolography/CapacityFixedPoint.lean, theorem averagingMap_unique_fixedPt for C(x) = (1-lambda)*x + lambda*K; banach_unique_fixedPt records the contraction-mapping principle as an external result cited from Mathlib ContractingWith.fixedPoint",
       "note": "the closed-form fixed point x_EW(P_star) = 6*pi/(P_star*alpha_U(P_star)) is independent of lambda; the value 1/2 only sets the contraction rate."
     },
     "factor_pi_in_capacity_normalisation": {
@@ -279,10 +279,10 @@
     "public_endpoint_local_pixel_closure": "certificates/R_P_public_pixel_certificate.json",
     "public_endpoint_local_pixel_full_precision_record": "certificates/R_PN_joint_fixed_point_certificate_report.json",
     "alpha_u_unification_width": "certificates/R_U_krawczyk_certificate.json",
-    "d10_transmutation_theorem_beta_ew": "extra/compact_proof_of_oph.tex#D10-transmutation-multiplicity",
+    "d10_transmutation_theorem_beta_ew": "paper/tex_fragments/PARTICLE_TECHNICAL_SUPPLEMENT_PORT.tex, paragraph 'Declared source packet', stating beta_EW = N_c + 1 = 4; paper/tex_fragments/OBSERVERS_SYNTHESIS_SECTIONS.tex, paragraph 'The alpha_U(P) source proof record', defining N_c = 3 and beta_EW := N_c + 1 = 4",
     "representation_to_spectrum_m_rep_24": "certificates/R_m_rep_24_certificate.json",
     "ew_tick_projection_pi_ew_definition": "certificates/R_EW_tick_projection_certificate.json",
-    "banach_fixed_point_theorem": "extra/oph_finite_repair_lyapunov.tex#banach-fixed-point",
+    "banach_fixed_point_theorem": "Lean/ObserverPatchHolography/CapacityFixedPoint.lean, theorem averagingMap_unique_fixedPt for C(x) = (1-lambda)*x + lambda*K; banach_unique_fixedPt records the contraction-mapping principle as an external result cited from Mathlib ContractingWith.fixedPoint",
     "parallel_source_audit_pixel_branch_witness": "certificates/R_P_source_audit_pixel_certificate.json"
   },
   "consumer_artifacts": {

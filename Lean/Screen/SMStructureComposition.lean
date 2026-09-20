@@ -117,12 +117,14 @@ noncomputable def bundleWeight (D : SMStructurePremiseData)
     (p : Fin 12) : ℝ :=
   ((portDualWeight D.vertexShare D.faceWeight p : ℚ) : ℝ)
 
-/-- Strict nearest-point predicate at the bundled measure: at every
-port, the family is strictly nearer to the pinned face bracket than
-every other classified family under the metric induced by the
-bundled port-dual weight (register rows PR-09 and PR-10; the compact
-locus is conditional on the pinned classification certificate of row
-PR-11). -/
+/-- **Strictly nearest inside the three-label enumeration `CompactFamily`.**
+At every port the label is strictly nearer to the pinned face bracket
+than each of the other two labels of `CompactFamily`, where the three
+distances are the committed literal tables `dP2`, `dF2`, `dG2` read at
+the metric induced by the bundled port-dual weight (register rows PR-09
+and PR-10; the compact locus is conditional on the pinned classification
+certificate of row PR-11).  The quantifier ranges over the three-element
+enumeration and over nothing else. -/
 def StrictlyNearestAt (D : SMStructurePremiseData)
     (family : CompactFamily) : Prop :=
   ∀ p : Fin 12, ∀ other : CompactFamily, other ≠ family →
@@ -137,8 +139,10 @@ theorem strictlyNearestAt_G (D : SMStructurePremiseData) :
   intro p other hother
   exact D.measure_selects_G p other hother
 
-/-- Only `G` is strictly nearest at the bundled measure: two distinct
-strict minimizers at the same port contradict each other. -/
+/-- **`G` is the only strictly nearest label of the three-element
+enumeration `CompactFamily`.** Two distinct strict minimizers among the
+three committed literal distance tables contradict each other at a single
+port, so the label is `G`. -/
 theorem strictlyNearestAt_eq_G (D : SMStructurePremiseData)
     (family : CompactFamily) (h : StrictlyNearestAt D family) :
     family = .G := by
@@ -154,13 +158,15 @@ theorem strictlyNearestAt_eq_G (D : SMStructurePremiseData)
     h 0 .G (Ne.symm hne)
   exact lt_asymm hG hf
 
-/-- **The composed family selection (OL-G1).**  Under the bundle
-there is exactly one classified compact family that is both strictly
-nearest to the pinned face bracket at the bundled port-dual measure
-(rows PR-09, PR-10) and whose committed generic dimension data
-equals the forced classification data of the bundle (row PR-11): the
-family `G`.  The metric clause and the type clause share the single
-witness. -/
+/-- **The composed selection inside the three-label enumeration
+(OL-G1).**  Among the three labels of `CompactFamily` exactly one is
+both strictly nearest to the pinned face bracket at the bundled
+port-dual measure, in the committed literal distance tables (rows PR-09,
+PR-10), and carries committed generic dimension data equal to the
+bundle's classification data (row PR-11): the label `G`.  The metric
+clause and the dimension clause share the single witness.  The
+uniqueness is inside the three-element enumeration and counts no bracket
+point of the continuous family `G`. -/
 theorem composed_family_unique (D : SMStructurePremiseData) :
     ∃! family : CompactFamily,
       StrictlyNearestAt D family ∧
@@ -173,14 +179,16 @@ theorem composed_family_unique (D : SMStructurePremiseData) :
 
 /-! ## The two-mask capstone -/
 
-/-- The composed coarse family-label/mask predicate at a supplied
-pair, relative to the bundle: the family label is strictly
-nearest at the bundled measure and carries the forced generic
-dimension data, and the mask satisfies the register row PR-59
-grammar (nonempty, chiral, anomaly free).  The mask constraints
-mirror the bundle's own PR-59 fields, restated on the supplied mask.
-This predicate deliberately contains no bracket parameter or physical
-matter, global-form, field, current, or action attachment. -/
+/-- **The composed label/mask predicate over the three-label enumeration
+and the 1024-mask grammar.**  The label is one of the three elements of
+`CompactFamily`, strictly nearest in the committed literal distance
+tables at the bundled measure and carrying the committed generic
+dimension data; the mask is one of the 1024 elements of `Fin 1024` and
+satisfies the register row PR-59 grammar (nonempty, chiral, anomaly
+free).  The mask constraints mirror the bundle's own PR-59 fields,
+restated on the supplied mask.  This predicate contains no bracket
+parameter and no physical matter, global-form, field, current, or action
+attachment. -/
 def IsCoarseFamilyMaskCandidate (D : SMStructurePremiseData)
     (family : CompactFamily) (m : Fin 1024) : Prop :=
   StrictlyNearestAt D family
@@ -239,11 +247,13 @@ theorem smStructure_conj_exchanges_masks (D : SMStructurePremiseData) :
 
 /-! ## The composed receipt -/
 
-/-- **The composed Standard Model structure receipt (issue #734).**
+/-- **The composed receipt over the three-label enumeration and the
+1024-mask grammar (issue #734).**
 For every premise bundle `D` (register rows PR-09, PR-10, PR-11, and PR-59):
-exactly one classified compact family is strictly nearest at the
-bundled measure with generic dimension data equal to the bundle's
-forced classification data; that data is `(1, {3, 8})`; the bundled
+exactly one of the three labels of `CompactFamily` is strictly nearest in
+the committed literal distance tables at the bundled measure with generic
+dimension data equal to the bundle's classification data; that data is
+`(1, {3, 8})`; the bundled
 selection mask is one of the two conjugate parity sectors; its
 selected components number fifteen in total dimension; its four
 anomaly forms vanish; it carries the parity grading; and the common

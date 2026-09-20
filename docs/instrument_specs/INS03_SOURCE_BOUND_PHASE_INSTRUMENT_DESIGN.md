@@ -763,11 +763,11 @@ open premises PR-03, PR-64, and PR-65, and PR-04 stays consumed under its
   deterministic replay discharges it.
 - PR-03, operational effect additivity, disposition `remove`: the section C.3
   endpoint on independently produced records can falsify additivity at the
-  witness pair. Removal still requires the operational derivation named in the
+  witness pair. Removal requires the operational derivation named in the
   PR-03 register note, which records that removal "needs a source-produced
   complex-tomographically-complete effect/instrument system with an
   operational theorem deriving noncontextual additivity on all required
-  coexistent sums" and that "removal still needs an operational derivation
+  coexistent sums" and that "removal needs an operational derivation
   beyond context-wise normalization". No endpoint of this instrument supplies
   that derivation. Until it exists, `producedCubicValuation` keeps the row
   load-bearing, per the PR-03 register notes and

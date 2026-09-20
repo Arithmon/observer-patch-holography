@@ -5,7 +5,7 @@ import ObserverPatchHolography.Primitives
 # A cellular-automaton OPH carrier: Rule 90 (issue #304, `Hfib` half)
 
 This module builds a **non-degenerate** OPH carrier out of an additive
-cellular automaton — Wolfram's **Rule 90** (`cell' = left XOR right`) — and
+cellular automaton, Wolfram's **Rule 90** (`cell' = left XOR right`), and
 discharges the boundary-fiber singleton hypothesis `Hfib` on it for a
 *proper information-set* boundary, together with the matching **failure
 witness** and a **non-trivial gauge** exhibit.
@@ -15,7 +15,7 @@ witness** and a **non-trivial gauge** exhibit.
 `demoCarrier` (in `Primitives.lean`) has a single edge whose only consistent
 records are globally constant, so its only `Hfib` witnesses are the trivial
 top (`obsMap` itself, `demoCarrier_Hfib_holds_finerB`) and the seed cell
-(`demoCarrier_Hfib_holds_seed`) — where the seed carries the whole
+(`demoCarrier_Hfib_holds_seed`), where the seed carries the whole
 observable. There is no room for a boundary that is *strictly between* "reads
 nothing" and "reads everything" while identifying the fiber, and none that
 can *fail*.
@@ -28,21 +28,21 @@ seed" ⇔ a valid CA diagram**. Because Rule 90 is *linear over `𝔽₂`*, the
 consistent set is a genuine linear code and the boundary question becomes the
 classical **erasure-correction / information-set** question. On width 3 with
 zero boundary the CA map sends a seed `(a,b,c)` to the row `(b, a⊕c, b)`,
-whose outer cells are **equal** — a built-in redundancy. Hence:
+whose outer cells are **equal**, a built-in redundancy. Hence:
 
-* `rule90_Hfib_good` — reading bottom-row cells `{0,1}` (`rule90BoundaryGood`)
-  **identifies** the fiber: `Hfib` holds. This is a proper information set —
+* `rule90_Hfib_good`: reading bottom-row cells `{0,1}` (`rule90BoundaryGood`)
+  **identifies** the fiber: `Hfib` holds. This is a proper information set,
   coarser than the full observable, and it genuinely consumes consistency
   (the unread outer cell is forced to follow cell 0 via the CA redundancy).
-* `rule90_Hfib_bad_fails` — reading cells `{0,2}` (`rule90BoundaryBad`) reads
+* `rule90_Hfib_bad_fails`: reading cells `{0,2}` (`rule90BoundaryBad`) reads
   the *same* bit twice (`b`,`b`), misses the middle `a⊕c`, and **fails**
   `Hfib`: two consistent diagrams agree on the boundary yet differ observably.
-* `rule90_gauge_nontrivial` — the CA map is *non-injective* (its `𝔽₂`-kernel
+* `rule90_gauge_nontrivial`: the CA map is *non-injective* (its `𝔽₂`-kernel
   is 1-dimensional: `(a,b,c)` and `(a⊕1,b,c⊕1)` share an image), so two
   records with **different seeds** are `gaugeEquiv`. The gauge is real: it
-  contains the CA map's kernel (a kernel-pair exhibit — that inclusion
+  contains the CA map's kernel (a kernel-pair exhibit: that inclusion
   direction is what is machine-checked here).
-* `rule90_no_frustrationFree_repair` — **no** frustration-free local repair
+* `rule90_no_frustrationFree_repair`: **no** frustration-free local repair
   (the `H1 ∧ H2 ∧ H3` binder forms of `Primitives.lean`'s
   `LocalRepairDynamics` section) exists on this carrier: a bottom row with
   unequal outer cells lies outside the Rule-90 image for *every* seed, yet
@@ -51,14 +51,14 @@ whose outer cells are **equal** — a built-in redundancy. Hence:
 
 ## Declared scope
 
-This is the **`Hfib` half** of #304 on a real CA carrier — strictly richer
+This is the **`Hfib` half** of #304 on a real CA carrier, strictly richer
 than `demoCarrier`'s seed tautology (a proper, failable information set + a
 non-trivial gauge). It does **not** supply the `HB` (repair-preserved
 boundary) premise, so it does not by itself instantiate the *joint* `HB ∧
 Hfib` witness that `boundary_fiber_observer_unique`'s doc-comment flags as
 open modeling task. Indeed it never can: `rule90_no_frustrationFree_repair` below
 proves that **no** frustration-free local repair (`H1 ∧ H2 ∧ H3`) exists on
-this carrier at all — the `H1`–`H3` *local*-repair route is closed on this
+this carrier at all, the `H1`–`H3` *local*-repair route is closed on this
 carrier (this does **not** rule out transactional/multi-patch repair, a
 different repair-site carrier, or a relaxed `H2`), and the injectivity
 reading of `Hfib` (#304) is the one that survives. No
@@ -78,7 +78,7 @@ def rule90t (t : Bool × Bool × Bool) : Bool × Bool × Bool :=
 
 /-- The **Rule-90 carrier**: two patches (seed row `false`, next row `true`),
     one edge, interface = a width-3 row (`Bool × Bool × Bool`). The `src`
-    projection applies the CA map; the `tgt` projection is the identity — so
+    projection applies the CA map; the `tgt` projection is the identity, so
     edge-consistency says exactly `next row = Rule90(seed)`, i.e. the record
     is a valid one-step CA diagram. Unit weight, discrete row metric. -/
 def rule90Carrier : OPHCarrier where
@@ -99,12 +99,12 @@ def rule90Carrier : OPHCarrier where
     · rw [if_pos h]; exact ⟨fun _ => h, fun _ => rfl⟩
     · rw [if_neg h]; exact ⟨fun h1 => absurd h1 one_ne_zero, fun h2 => absurd h2 h⟩
 
-/-- **The information-set boundary.** Reads bottom-row cells `{0,1}` — cell 0
+/-- **The information-set boundary.** Reads bottom-row cells `{0,1}`, cell 0
     and the middle cell. Strictly coarser than the full observable `obsMap`. -/
 def rule90BoundaryGood : Records rule90Carrier → Bool × Bool :=
   fun x => ((x true).1, (x true).2.1)
 
-/-- **The deficient boundary.** Reads bottom-row cells `{0,2}` — the two
+/-- **The deficient boundary.** Reads bottom-row cells `{0,2}`, the two
     *outer* cells, which the CA redundancy forces equal, so this reads one bit
     twice and never sees the middle `a⊕c`. -/
 def rule90BoundaryBad : Records rule90Carrier → Bool × Bool :=
@@ -113,7 +113,7 @@ def rule90BoundaryBad : Records rule90Carrier → Bool × Bool :=
 /-- **`Hfib` HOLDS for the information-set boundary `{0,1}` (issue #304).**
     Any two consistent CA diagrams with equal `rule90BoundaryGood` are
     `gaugeEquiv`. The proof genuinely uses consistency: the unread outer cell
-    (cell 2) is not in the boundary, but edge-agreement forces it to equal
+    (cell 2) lies outside the boundary, and edge-agreement forces it to equal
     cell 0 (the Rule-90 redundancy `image = (b, a⊕c, b)`), so the two read
     cells pin the whole bottom row and hence the observable. -/
 theorem rule90_Hfib_good :
@@ -141,7 +141,7 @@ theorem rule90_Hfib_good :
   show (rule90t (x false), x true) = (rule90t (y false), y true)
   rw [hx, hy, hxtrue]
 
-/-- **`Hfib` FAILS for the deficient boundary `{0,2}` — explicit witness.**
+/-- **`Hfib` FAILS for the deficient boundary `{0,2}`: explicit witness.**
     Seed `(0,0,0)` gives bottom `(0,0,0)`; seed `(0,0,1)` gives bottom
     `(0,1,0)`. Both are consistent, both read `(0,0)` on cells `{0,2}`, yet
     their observables differ (`(0,0,0) ≠ (0,1,0)` on the second component), so
@@ -163,11 +163,11 @@ theorem rule90_Hfib_bad_fails :
       congrArg Prod.snd (congrFun hg ())
     exact absurd h2 (by decide)
 
-/-- **The gauge is non-trivial — it contains the CA map's kernel.** Rule 90 on
+/-- **The gauge is non-trivial: it contains the CA map's kernel.** Rule 90 on
     width 3 is non-injective: seeds `(0,0,0)` and `(1,0,1)` both map to the
     zero row (`a⊕c = 0`, `b = 0`). So two consistent records with **different
     seeds** expose the same observable and are `gaugeEquiv`. The unobservable
-    part of the seed — the erasure that `Hfib` correctly quotients away —
+    part of the seed, the erasure that `Hfib` correctly quotients away,
     contains `ker(Rule90)` (a kernel-pair exhibit: that inclusion direction
     is what is machine-checked here). -/
 theorem rule90_gauge_nontrivial :
@@ -183,21 +183,21 @@ theorem rule90_gauge_nontrivial :
   · show obsMap rule90Carrier _ = obsMap rule90Carrier _
     funext e; cases e; rfl
 
-/-- Both outer cells of any Rule-90 image row coincide — each equals the middle
-    seed cell — so a bottom row with **unequal** outer cells lies outside the
+/-- Both outer cells of any Rule-90 image row coincide: each equals the middle
+    seed cell, so a bottom row with **unequal** outer cells lies outside the
     image of `rule90t` for *every* seed. -/
 theorem rule90t_outer_eq (s : Bool × Bool × Bool) :
     (rule90t s).1 = (rule90t s).2.2 := rfl
 
 /-- **No frustration-free local repair exists on this carrier.** There is no
     local move `lr` satisfying the `LocalRepairDynamics` hypotheses of
-    `Primitives.lean` (binder forms verbatim): `H1` — firing at `i` changes
-    patch `i` only; `H2` — the move at `i` fires **iff** some edge incident to
-    `i` is inconsistent; `H3` — after firing at `i`, all edges incident to `i`
+    `Primitives.lean` (binder forms verbatim): `H1`: firing at `i` changes
+    patch `i` only; `H2`: the move at `i` fires **iff** some edge incident to
+    `i` is inconsistent; `H3`: after firing at `i`, all edges incident to `i`
     are consistent. Reason: the record whose bottom row is `(0,0,1)` has
     unequal outer cells, hence its only edge is broken for **every** seed row
     (`rule90t_outer_eq`). `H2` then forces the *seed*-patch move to fire, `H1`
-    pins the bottom row, and `H3` demands a Rule-90 preimage of `(0,0,1)` —
+    pins the bottom row, and `H3` demands a Rule-90 preimage of `(0,0,1)`,
     which cannot exist. The `H1`–`H3` *local*-repair route is closed on this
     carrier (transactional/multi-patch repair, a different repair-site carrier,
     and a relaxed `H2` are **not** ruled out); the injectivity reading of
@@ -236,7 +236,7 @@ theorem rule90_no_frustrationFree_repair :
   -- … while H1 keeps the bottom row untouched (`true ≠ false`).
   have htgt : (lr false x) true = (false, false, true) :=
     (H1 false x true (fun h => Bool.noConfusion h)).trans hxt
-  -- So (0,0,1) would be a Rule-90 image — its outer cells would coincide.
+  -- So (0,0,1) would be a Rule-90 image, and its outer cells would coincide.
   have h02 := rule90t_outer_eq ((lr false x) false)
   rw [hcons, htgt] at h02
   exact absurd h02 (by decide)

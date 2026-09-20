@@ -520,10 +520,11 @@ def test_preview_ci_accepts_same_release_previews_and_rejects_artifact_drift() -
     assert "git diff --quiet --" in workflow
     # Scratch builds must detect stale committed books without overwriting the evidence.
     assert 'cmp --silent "${RUNNER_TEMP}/book-first.pdf" book/reverse-engineering-reality-book.pdf' in workflow
-    assert "git diff --quiet -- paper flagship extra cosmology" in workflow
-    assert workflow.count("find paper flagship extra cosmology -maxdepth") == 3
+    assert "git diff --quiet -- paper flagship extra cosmology essays" in workflow
+    assert workflow.count("find paper flagship extra cosmology essays -maxdepth") == 3
     assert 'git ls-files --error-unmatch -- "$pdf"' in workflow
     assert workflow.count('- "cosmology/**"') == 2
+    assert workflow.count('- "essays/**"') == 2
     assert workflow.count("python tools/refresh_paper_release.py --preview") == 2
     assert workflow.count('python tools/build_book_pdf.py --output "${RUNNER_TEMP}/') == 2
     assert 'diff -u "${RUNNER_TEMP}/book-first.sha256"' in workflow
@@ -599,9 +600,9 @@ def test_actual_preview_artifact_step_rejects_missing_or_stale_commits(
     hooks = tmp_path / "empty-hooks"
     hooks.mkdir()
     git_run("config", "core.hooksPath", hooks.as_posix())
-    for directory in ("paper", "flagship", "extra", "cosmology", "book"):
+    for directory in ("paper", "flagship", "extra", "cosmology", "essays", "book"):
         (repo / directory).mkdir()
-    for directory in ("paper", "flagship", "extra", "cosmology"):
+    for directory in ("paper", "flagship", "extra", "cosmology", "essays"):
         (repo / directory / "existing paper.pdf").write_bytes(b"%PDF-existing\n")
     book = repo / "book/reverse-engineering-reality-book.pdf"
     book.write_bytes(b"%PDF-book\n")

@@ -1,5 +1,5 @@
 /-
-  A5_OPH.lean  —  consolidated, machine-checked corpus
+  A5_OPH.lean: consolidated, machine-checked corpus
 
   PROVENANCE.  Contributed by DULA (external cross-audit lane), built with
   Aristotle against Lean/Mathlib v4.28.0, merged 2026-07-23.  Rebuilt
@@ -65,7 +65,7 @@ universe u v
 open Equiv Equiv.Perm
 
 /- ==================================================================== -/
-/- PART I — A5 has a subgroup of order 6                                -/
+/- PART I: A5 has a subgroup of order 6                                 -/
 /- ==================================================================== -/
 
 namespace A5Order6
@@ -182,7 +182,7 @@ end A5Order6
 
 
 /- ==================================================================== -/
-/- PART II — A5 has no Z6 (and S5 does)                                 -/
+/- PART II: A5 has no Z6 (and S5 does)                                  -/
 /- ==================================================================== -/
 
 /-
@@ -303,7 +303,7 @@ theorem no_embedding_zmod_six
 
 /-! ### Sharpness: the obstruction is about A₅ only, not about ℤ/6 -/
 
-/-- `(01)(234)` has order 6 in S₅ — so `S₅ ⊇ ℤ/6`. It is odd, which is
+/-- `(01)(234)` has order 6 in S₅, so `S₅ ⊇ ℤ/6`. It is odd, which is
     exactly why it misses A₅. -/
 example : orderOf (c[(0 : Fin 5), 1] * c[(2 : Fin 5), 3, 4]) = 6 := by
   set_option maxRecDepth 100000 in
@@ -341,7 +341,7 @@ end A5NoZ6
 
 
 /- ==================================================================== -/
-/- PART III — module iso does not determine a Lie bracket               -/
+/- PART III: module iso does not determine a Lie bracket                -/
 /- ==================================================================== -/
 
 /-
@@ -363,9 +363,9 @@ end A5NoZ6
 
   WHAT IS *NOT* PROVED, AND IS NOT CLAIMED:
       L1.  That ≥ 2 non-isomorphic A₅-equivariant brackets exist on R₁₂.
-           (TRUE on paper — take the zero bracket, and take
+           (TRUE on paper, take the zero bracket, and take
             u(1) ⊕ su(2)[via 3] ⊕ su(3)[via 3′], whose adjoint restricts to
-            1 ⊕ 3 ⊕ 3′ ⊕ 5 ≅ R₁₂ — but Mathlib has no compact real forms
+            1 ⊕ 3 ⊕ 3′ ⊕ 5 ≅ R₁₂, but Mathlib has no compact real forms
             with finite group actions, so it is not formalizable here.)
       L2.  dim Hom_{A₅}(Λ²R₁₂, R₁₂) = 14.  Needs the A₅ character table.
       L3.  Uniqueness of the SM bracket under any stated selection principle.
@@ -484,7 +484,7 @@ end OPHGap
 
 
 /- ==================================================================== -/
-/- PART IV — selection argument: finite core                            -/
+/- PART IV: selection argument: finite core                             -/
 /- ==================================================================== -/
 
 /-
@@ -513,7 +513,8 @@ end OPHGap
          3-dimensional A₅-submodules, but R₁₂ has only 3 and 3′).
          Hence dim Z = 1 and dim[L,L] = 11.   [needs A₅ character theory]
 
-  WHAT THIS FILE PROVES: S2, S3, S4 — the group-theoretic and arithmetic core.
+  WHAT THIS FILE PROVES: S2, S3, S4, which are the group-theoretic and
+  arithmetic core.
   WHAT IT DOES NOT: S1 and S5, which need Lie-theoretic infrastructure
   (reductive decomposition, compact real forms, the classification of compact
   simple Lie algebras) and the A₅ character table.  None of that is in Mathlib.
@@ -666,7 +667,7 @@ end OPHSelection
 
 
 /- ==================================================================== -/
-/- PART V — deriving the central-triviality hypothesis                  -/
+/- PART V: deriving the central-triviality hypothesis                   -/
 /- ==================================================================== -/
 
 /-
@@ -725,7 +726,7 @@ end OPHSelection
 
 namespace OPHInner
 
-/-! ## Part 1 — the centre, and why inner actions fix it
+/-! ## Part 1: the centre, and why inner actions fix it
 
 The centre is defined directly rather than via `LieAlgebra.center`, so that
 step (1) is definitional.  `centre_eq_mathlib` records the agreement.
@@ -766,7 +767,7 @@ theorem centre_smul_mem (r : R) {z : L} (hz : z ∈ centre L) : r • z ∈ cent
 
 /-- **The centre is characteristic.**  Every Lie algebra automorphism maps the
 centre into the centre.  Applied to the A₅-action, this is what makes `Z(g)` an
-A₅-submodule of `R₁₂` — the step used by the enumeration in
+A₅-submodule of `R₁₂`, the step used by the enumeration in
 `OPHSelection.lean`. -/
 theorem centre_invariant (φ : L ≃ₗ⁅R⁆ L) {z : L} (hz : z ∈ centre L) :
     φ z ∈ centre L := by
@@ -777,7 +778,7 @@ theorem centre_invariant (φ : L ≃ₗ⁅R⁆ L) {z : L} (hz : z ∈ centre L) 
 
 /-- The property the reduction delivers: the group acts by automorphisms fixing
 the centre pointwise.  Classically this holds whenever the action is by `Ad(G)`
-with `G` compact connected — steps (2) and (3) of the header. -/
+with `G` compact connected, steps (2) and (3) of the header. -/
 def CentrallyTrivial (G : Type*) [Group G] [MulAction G L] : Prop :=
   ∀ (g : G) (z : L), z ∈ centre L → g • z = z
 
@@ -788,7 +789,7 @@ theorem centre_eq_mathlib : centre L = (LieAlgebra.center R L : Set L) := by
 
 end Centre
 
-/-! ## Part 2 — which group can realize the screen symmetry
+/-! ## Part 2: which group can realize the screen symmetry
 
 A₅ has fifteen involutions; SU(2) has exactly one, namely `−I` (any `g ∈ SU(2)`
 with `g² = I`, `g ≠ I` has both eigenvalues `−1`).  Two involutions suffice for
@@ -875,7 +876,7 @@ end OPHInner
 
 
 /- ==================================================================== -/
-/- PART VI — trichotomy arithmetic, noncentrality, and the Z6 lattice   -/
+/- PART VI: trichotomy arithmetic, noncentrality, and the Z6 lattice    -/
 /- ==================================================================== -/
 
 /-
@@ -889,19 +890,19 @@ end OPHInner
   PART   PAPER STEP                                          STATUS
   ------------------------------------------------------------------------
   I      "no compact semisimple Lie algebra has dimension
-          1, 2, 4, 5 or 7"  — used to kill the centre
+          1, 2, 4, 5 or 7", used to kill the centre
           dimensions 11, 10, 8, 7 and 5 in the trichotomy    proved here
-  II     "[iS, iT] = -2(E₁₂ - E₂₁) ≠ 0" — the rank-five
+  II     "[iS, iT] = -2(E₁₂ - E₂₁) ≠ 0", the rank-five
           band is noncentral for the constructed bracket     proved here
   III    "Λ₊/(Λ₁ ⊕ Λ₅) ≅ ℤ/6ℤ", with A₅-invariance and
           sign reversal under antipodal inversion            proved here
   ------------------------------------------------------------------------
 
-  ALREADY PROVED in the companion file `A5_OPH.lean` (namespace OPHSelection):
-    * `action_trivial_of_card_le_four` — A₅ cannot permute four simple ideals,
+  PROVED in the companion file `A5_OPH.lean` (namespace OPHSelection):
+    * `action_trivial_of_card_le_four`: A₅ cannot permute four simple ideals,
       the step that excludes su(2)^4 in the trichotomy proof;
-    * `sum_eq_eleven`  — 11 = 3 + 8 uniquely  (centre dimension 1);
-    * `sum_eq_twelve`  — 12 = 3+3+3+3 uniquely (centre dimension 0).
+    * `sum_eq_eleven`: 11 = 3 + 8 uniquely  (centre dimension 1);
+    * `sum_eq_twelve`: 12 = 3+3+3+3 uniquely (centre dimension 0).
 
   Together, Parts I–III of this file and those three results cover every
   finite arithmetic and group-theoretic step of the trichotomy proof, plus the
@@ -909,10 +910,10 @@ end OPHInner
 
   WHAT IS *NOT* PROVED HERE, and is not claimed:
     * the classification of compact simple Lie algebras (the source of the
-      dimension list {3, 8, 10, 14, ...}) — not in Mathlib, taken as input;
+      dimension list {3, 8, 10, 14, ...}), not in Mathlib, taken as input;
     * the rationality lemma (the centre is a ℚ-rational A₅-submodule because it
       is the Lie algebra of a torus with an automorphism-preserved integral
-      cocharacter lattice) — this needs the Galois structure of the A₅ character
+      cocharacter lattice): this needs the Galois structure of the A₅ character
       field ℚ(√5) and is a separate project;
     * the source binding of the current bracket, its inner A₅ action, or the
       finite physical interpretation of the six-axis lattice.  Companion
@@ -931,7 +932,7 @@ namespace OPHTrichotomy
 
 open Matrix
 
-/-! ## Part I — dimensions carrying no compact semisimple Lie algebra
+/-! ## Part I: dimensions carrying no compact semisimple Lie algebra
 
 Compact simple Lie algebras of dimension at most 12 have dimension 3 (`su(2)`),
 8 (`su(3)`) or 10 (`so(5)`); the next is 14 (`g₂`).  Taking that list as given,
@@ -1045,7 +1046,7 @@ theorem sum_not_mem_excluded (m : Multiset ℕ) (hm : ∀ d ∈ m, d ∈ SimpleD
   ⟨sum_ne_one m hm, sum_ne_two m hm, sum_ne_four m hm,
    sum_ne_five m hm, sum_ne_seven m hm⟩
 
-/-! ## Part II — the rank-five band is noncentral
+/-! ## Part II: the rank-five band is noncentral
 
 For the constructed bracket on the coefficient space, the paper exhibits
 `S = diag(1,-1,0)` in the 𝟓-band and `T = E₁₂ + E₂₁` in the 𝟑'-band with
@@ -1086,7 +1087,7 @@ theorem quintet_noncentral :
 
 end Noncentral
 
-/-! ## Part III — the screen gluing class `Λ₊ / (Λ₁ ⊕ Λ₅) ≅ ℤ/6`
+/-! ## Part III: the screen gluing class `Λ₊ / (Λ₁ ⊕ Λ₅) ≅ ℤ/6`
 
 Antipodal port pairing gives the even integral load lattice `Λ₊ ≅ ℤ⁶`, with
 `Λ₁` the multiples of the all-ones vector and `Λ₅` the sum-zero sublattice.

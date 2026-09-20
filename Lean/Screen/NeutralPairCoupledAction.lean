@@ -36,8 +36,8 @@ of the two hopping currents and loads.  A closed two-step variation of either
 worldline, with the other worldline and the fields fixed, has exactly the
 existing clock-plus-force-law action difference.  The action is gauge
 invariant under the exact endpoint condition stated below.  Thus the field
-and path variation statements no longer live on actions with independently
-declared background sources.
+and path variation statements live on one action rather than on actions with
+independently declared background sources.
 
 The pair is neutral at every step and its sources obey the committed
 continuity equation.  The explicit crossings of seams `0` and `29` recover
@@ -450,7 +450,7 @@ theorem committedNeutralPairCurrent_eq (h : ℝ) (n : ℕ) :
   rfl
 
 /-- **Non-vacuous joined field stationarity.**  For every finite window,
-the nonzero neutral-pair history already constructed at `h = 1/2` is a
+the nonzero neutral-pair history constructed at `h = 1/2` is a
 stationary point of this same neutral-pair action in both field slots.
 The clock units are arbitrary because they are constant under field
 variation. -/

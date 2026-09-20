@@ -6,7 +6,7 @@ namespace OPH.Thermodynamics
 /-!
 # Common-reference obstruction for the current B12 artifact
 
-The locally hash-pinned B12 run currently supplies two different finite objects.
+The locally hash-pinned B12 run supplies two different finite objects.
 Its state-side conditional-resampling kernel is idempotent, while the
 transition-side recurrent chain has the exact nonstationary eigenvalue
 `665437 / 726948`, strictly between zero and one.  This module records the
@@ -21,7 +21,7 @@ masses `1905 / 16384` and `1906 / 16384`.
 
 Boundary.  These statements reject a nondegenerate dynamic intertwiner and a
 deterministic empirical pushforward for the *current* objects.  They do not
-exclude a newly source-produced random-scan kernel, a different common
+exclude a source-produced random-scan kernel, a different common
 reference, or an independently justified stochastic coupling.  Merely
 inventing such a coupling would not be source evidence.
 -/

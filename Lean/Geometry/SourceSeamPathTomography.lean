@@ -4,7 +4,7 @@ import ObserverPatchHolography.ScalarSeamRepair
 # Destination-local reconstruction through canonical seam means
 
 A declared path is calibrated from its destination backwards. Each calibration
-phase performs one forward sweep through the already calibrated suffix. The
+phase performs one forward sweep through the calibrated suffix. The
 receiver records its own scalar after each phase; remote pre-states are not
 inputs to the decoder. All scalar writes are pair means. The theorem establishes
 finite exact information transport for this schedule, not a selected routing
@@ -25,7 +25,7 @@ def swept (x : ℝ) : List ℝ → List ℝ
   | [] => [x]
   | b :: bs => ((x + b) / 2) :: swept ((x + b) / 2) bs
 
-/-- Invert a sweep when its actual, already calibrated relay pre-states are known. -/
+/-- Invert a sweep when its actual, calibrated relay pre-states are known. -/
 def invert : List ℝ → ℝ → ℝ
   | [], y => y
   | b :: bs, y => 2 * invert bs y - b

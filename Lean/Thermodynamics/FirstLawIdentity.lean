@@ -33,8 +33,17 @@ noncomputable def heatIncrement (dρ H : Matrix (Fin n) (Fin n) ℂ) : ℝ :=
 noncomputable def workIncrement (ρ dH : Matrix (Fin n) (Fin n) ℂ) : ℝ :=
   (Matrix.trace (ρ * dH)).re
 
-/-- **Exact first law.** The energy change across a joint update splits
-into heat, work, and the explicit bilinear cross term. -/
+/-- **Trace bookkeeping split of the internal-energy change.** For
+`U(ρ, H) = Re tr(ρ H)`, the change across a joint update of state and energy
+observable is the sum of three trace terms: `Re tr(dρ H)`, `Re tr(ρ dH)`, and
+the bilinear `Re tr(dρ dH)`.
+
+Statement and proof are trace algebra.  The split follows from bilinearity of
+the trace pairing, and no repair law, protocol, or temperature enters either
+of them.  Reading the first term as heat and the second as work rests on the
+separate energy-clock identification receipt, which supplies an identified
+physical `H` together with a protocol separating controlled changes of `H`
+from changes of state. -/
 theorem firstLaw_split (ρ dρ H dH : Matrix (Fin n) (Fin n) ℂ) :
     internalEnergy (ρ + dρ) (H + dH) - internalEnergy ρ H
       = heatIncrement dρ H + workIncrement ρ dH

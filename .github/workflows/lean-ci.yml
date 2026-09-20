@@ -89,9 +89,6 @@ jobs:
           key: lean-core-v3-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             lean-core-v3-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}-
-            lean-core-v3-${{ runner.os }}-
-            lake2-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}
-            lake2-${{ runner.os }}-
 
       - name: Verify pinned dependency inputs
         working-directory: Lean
@@ -218,7 +215,7 @@ jobs:
 
       - name: Save Lake build cache
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        if: always()
+        if: steps.lean_build.outcome == 'success' || steps.lean_build.outputs.timed_out == 'true'
         with:
           path: |
             Lean/.lake/build
@@ -417,11 +414,6 @@ jobs:
           restore-keys: |
             golden-psl-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-${{ github.run_id }}-
             golden-psl-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-
-            golden-psl-v1-${{ runner.os }}-
-            lean-core-v3-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}-
-            lean-core-v3-${{ runner.os }}-
-            lake2-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}
-            lake2-${{ runner.os }}-
 
       - name: Fetch Mathlib olean cache
         if: steps.changes.outputs.required == 'true'
@@ -457,7 +449,7 @@ jobs:
           fi
 
       - name: Save Golden-sector build cache
-        if: always() && steps.changes.outputs.required == 'true'
+        if: steps.changes.outputs.required == 'true' && (steps.golden_build.outcome == 'success' || steps.golden_build.outputs.timed_out == 'true')
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: Lean/.lake/build
@@ -564,9 +556,6 @@ jobs:
           key: ophgap-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ophgap-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-
-            ophgap-v1-${{ runner.os }}-
-            lake2-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}
-            lake2-${{ runner.os }}-
 
       - name: Fetch Mathlib olean cache
         if: steps.changes.outputs.required == 'true'
@@ -594,7 +583,7 @@ jobs:
           fi
 
       - name: Save OphGap build cache
-        if: always() && steps.changes.outputs.required == 'true'
+        if: steps.changes.outputs.required == 'true' && (steps.ophgap_build.outcome == 'success' || steps.ophgap_build.outputs.timed_out == 'true')
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |

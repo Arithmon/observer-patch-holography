@@ -18,6 +18,20 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 
 
+class CertificateError(RuntimeError):
+    """Fail-closed certificate error with a stable code."""
+
+    def __init__(self, code: str, detail: str) -> None:
+        super().__init__(f"{code}: {detail}")
+        self.code = code
+        self.detail = detail
+
+
+def require(condition: bool, code: str, detail: str) -> None:
+    if not condition:
+        raise CertificateError(code, detail)
+
+
 def q(value: int, denominator: int = 1) -> Fraction:
     return Fraction(value, denominator)
 
@@ -28,7 +42,11 @@ carrier = {
     "C": {"dimension": 3, "su3": "3", "su2": "1", "hypercharge": q(-1, 3)},
     "W": {"dimension": 2, "su3": "1", "su2": "2", "hypercharge": q(1, 2)},
 }
-assert 3 * carrier["C"]["hypercharge"] + 2 * carrier["W"]["hypercharge"] == 0
+require(
+    3 * carrier["C"]["hypercharge"] + 2 * carrier["W"]["hypercharge"] == 0,
+    "CARRIER_TRACE_ZERO",
+    "the carrier hypercharges do not have total trace zero",
+)
 
 
 # The non-vacuum even exterior package M1 = Lambda^2 V + Lambda^4 V.
@@ -46,13 +64,26 @@ fields = {
     },
     "L": {"origin": "Lambda^3 C tensor W", "su3": "1", "su2": "2", "Y": q(-1, 2), "dimension": 2},
 }
-assert sum(row["dimension"] for row in fields.values()) == 15
-assert sum(
-    row["dimension"]
-    for row in fields.values()
-    if row["origin"] in {"C tensor W", "Lambda^2 C", "Lambda^2 W"}
-) == 10
-assert fields["d_c"]["dimension"] + fields["L"]["dimension"] == 5
+require(
+    sum(row["dimension"] for row in fields.values()) == 15,
+    "MATTER_PACKAGE_DIMENSION",
+    "the even exterior matter package is not fifteen-dimensional",
+)
+require(
+    sum(
+        row["dimension"]
+        for row in fields.values()
+        if row["origin"] in {"C tensor W", "Lambda^2 C", "Lambda^2 W"}
+    )
+    == 10,
+    "SECOND_EXTERIOR_POWER_DIMENSION",
+    "the Lambda^2 block of the matter package is not ten-dimensional",
+)
+require(
+    fields["d_c"]["dimension"] + fields["L"]["dimension"] == 5,
+    "FOURTH_EXTERIOR_POWER_DIMENSION",
+    "the Lambda^4 block of the matter package is not five-dimensional",
+)
 
 field_signatures = {
     (row["su3"], row["su2"], row["Y"])
@@ -63,7 +94,11 @@ dual_signatures = {
     (conjugate_su3[row["su3"]], row["su2"], -row["Y"])
     for row in fields.values()
 }
-assert field_signatures.isdisjoint(dual_signatures)
+require(
+    field_signatures.isdisjoint(dual_signatures),
+    "CHIRALITY_DISJOINTNESS",
+    "the matter package shares a signature with its conjugate",
+)
 
 
 # Gauge-invariant one-Higgs Yukawa channels. H = W has Y=+1/2.
@@ -100,8 +135,19 @@ yukawa_invariant_multiplicities = {
     }
     for name, factors in yukawa_factors.items()
 }
-assert set(yukawa_charge_sums.values()) == {q(0)}
-assert all(row == {"su3": 1, "su2": 1} for row in yukawa_invariant_multiplicities.values())
+require(
+    set(yukawa_charge_sums.values()) == {q(0)},
+    "YUKAWA_HYPERCHARGE_SUM",
+    "a one-Higgs Yukawa channel does not have hypercharge sum zero",
+)
+require(
+    all(
+        row == {"su3": 1, "su2": 1}
+        for row in yukawa_invariant_multiplicities.values()
+    ),
+    "YUKAWA_INVARIANT_LINE",
+    "a one-Higgs Yukawa channel does not carry exactly one invariant line",
+)
 
 
 # Exact one-generation anomaly arithmetic in left-handed Weyl convention.
@@ -115,13 +161,25 @@ anomalies = {
     "gravity_squared_U1": sum(row["dimension"] * row["Y"] for row in fields.values()),
     "U1_cubed": sum(row["dimension"] * row["Y"] ** 3 for row in fields.values()),
 }
-assert set(anomalies.values()) == {q(0)}
+require(
+    set(anomalies.values()) == {q(0)},
+    "ANOMALY_CANCELLATION",
+    "a listed perturbative anomaly coefficient is nonzero",
+)
 
 
 # SU(2)-doublet multiplicity: three color copies of Q plus one lepton copy.
 weak_doublet_multiplicity = 3 + 1
-assert weak_doublet_multiplicity == 4
-assert weak_doublet_multiplicity % 2 == 0
+require(
+    weak_doublet_multiplicity == 4,
+    "WEAK_DOUBLET_MULTIPLICITY",
+    "the per-generation weak-doublet multiplicity is not four",
+)
+require(
+    weak_doublet_multiplicity % 2 == 0,
+    "SU2_WITTEN_PARITY",
+    "the weak-doublet multiplicity is odd, so SU(2) Witten parity fails",
+)
 
 
 # Face-stabilizer induction. For A5 irreps (1,3,3',4,5), the character on
@@ -134,26 +192,47 @@ a5_face_phase = {
     "4": {"dimension": 4, "chi_3A": 1},
     "5": {"dimension": 5, "chi_3A": -1},
 }
-for row in a5_face_phase.values():
-    assert (row["dimension"] - row["chi_3A"]) % 3 == 0
+for name, row in a5_face_phase.items():
+    require(
+        (row["dimension"] - row["chi_3A"]) % 3 == 0,
+        "FACE_PHASE_INTEGRALITY",
+        f"the face-phase multiplicity of {name} is nonintegral",
+    )
     row["omega_multiplicity"] = (row["dimension"] - row["chi_3A"]) // 3
 induced_decomposition = {
     name: row["omega_multiplicity"]
     for name, row in a5_face_phase.items()
     if row["omega_multiplicity"]
 }
-assert induced_decomposition == {"3": 1, "3prime": 1, "4": 1, "5": 2}
-assert sum(
-    a5_face_phase[name]["dimension"] * mult
-    for name, mult in induced_decomposition.items()
-) == 20
+require(
+    induced_decomposition == {"3": 1, "3prime": 1, "4": 1, "5": 2},
+    "FACE_PHASE_DECOMPOSITION",
+    "the induced face-phase module is not 3 + 3prime + 4 + 2*5",
+)
+require(
+    sum(
+        a5_face_phase[name]["dimension"] * mult
+        for name, mult in induced_decomposition.items()
+    )
+    == 20,
+    "FACE_PHASE_INDUCED_DIMENSION",
+    "the induced face-phase module is not twenty-dimensional",
+)
 
 
 # Abstract control for the proposed 24-slot deck reduction. This proves only
 # what follows from a declared free action, not that the OPH register carries it.
 abstract_deck_orbits = [list(range(start, start + 6)) for start in range(0, 24, 6)]
-assert len(abstract_deck_orbits) == 4
-assert sorted(x for orbit in abstract_deck_orbits for x in orbit) == list(range(24))
+require(
+    len(abstract_deck_orbits) == 4,
+    "DECK_ORBIT_COUNT",
+    "the declared free Z6 action on 24 slots does not give four orbits",
+)
+require(
+    sorted(x for orbit in abstract_deck_orbits for x in orbit) == list(range(24)),
+    "DECK_ORBIT_PARTITION",
+    "the declared deck orbits do not partition the 24 slots",
+)
 
 
 def frac(value: Fraction) -> str:

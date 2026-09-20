@@ -294,7 +294,7 @@ theorem planarCubicWeight_not_affine :
     Fin.sum_univ_succ, hq0, hq1, hq2] at hw
   norm_num at hw
 
-/-- The consumption interface currently declared in
+/-- The consumption interface declared in
 `InterlockingContexts` is false. -/
 theorem finiteBuschGleasonInterface_false :
     ¬ FiniteBuschGleasonInterface := by

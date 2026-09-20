@@ -9,7 +9,7 @@ The abstract rewriting skeleton used by *Paradise as Fixed-Point Consensus*:
 * Uniqueness of normal forms (schedule independence on a generic ARS)
 * A deterministic-operator specialisation with descent potential
 * A corollary that any fixed point of a repair operator has zero
-  mismatch potential (motivational only — see doc-comment on
+  mismatch potential (motivational only, see doc-comment on
   `fixedPt_zero_potential`)
 
 **Scope warning.** These are generic abstract-rewriting results stated over
@@ -19,7 +19,7 @@ gauge quotient, observer patches, declared observable overlap data, local
 recovery moves). The theorem-grade formalisation of Proposition 4.2 lives
 downstream and is tracked in `PROOF_INDEX.md`.
 
-Source: PR #299 (Aristotle output, verified sorry-free) — relabelled per the
+Source: PR #299 (Aristotle output, verified sorry-free), relabelled per the
 2026-05-18 audit verdict that this is a skeleton, not a Prop 4.2 statement.
 -/
 

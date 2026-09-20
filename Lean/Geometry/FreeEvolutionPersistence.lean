@@ -34,7 +34,7 @@ Nothing here constructs a physical particle, a source-produced state, an
 interaction, a decay rate, a localized wave packet, or a laboratory
 persistence time; the clock and energy calibration anchors, the
 observer-to-physical-spacetime attachment, and the source field and action
-attachment remain open register premises.  This is a formal precursor for
+attachment are open register premises.  This is a formal precursor for
 the particle-persistence observation row, not a physics attainment.
 -/
 

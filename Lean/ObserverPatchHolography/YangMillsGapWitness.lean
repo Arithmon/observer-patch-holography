@@ -1,7 +1,7 @@
 import ObserverPatchHolography.YangMillsGap
 
 /-!
-# Yang–Mills finite repair-gap — witnesses and a noncommuting countermodel
+# Yang–Mills finite repair-gap: witnesses and a noncommuting countermodel
 
 `thm_7_3_finite_gap` (in `ObserverPatchHolography.YangMillsGap`) is a
 legacy/special **commuting-projection conditional**:
@@ -11,24 +11,24 @@ THEN the repair generator dominates `c_* · (I − P₀)` with `c_* > 0` (the fi
 representation gap `Δ_rep ≥ c_* > 0`).
 
 A conditional is empty unless its hypothesis bundle is jointly satisfiable. Nothing in
-the repo currently rules out that the premises (commuting star projections whose
+the repo rules out that the premises (commuting star projections whose
 `noncommProd` equals `P₀`, over a nonempty index set, with positive rates) are jointly
-unsatisfiable — which would make that special conditional vacuous. This file discharges
+unsatisfiable, which would make that special conditional vacuous. This file discharges
 that: it exhibits a concrete complete real inner-product space
 `W := EuclideanSpace ℝ (Fin 1)` and a concrete two-collar family satisfying EVERY
-premise, so `thm_7_3_finite_gap` genuinely **fires** — certifying the
+premise, so `thm_7_3_finite_gap` genuinely **fires**, certifying the
 commuting branch is not vacuous.
-This mirrors the non-vacuity methodology already used for the reconstruction layer in
+This mirrors the non-vacuity methodology used for the reconstruction layer in
 `Primitives.lean` (`demoCarrier_terminates`, `demoCarrier_dir_confluent`): pair the
 abstract theorem with a machine-checked concrete model.
 
-## HONEST SCOPE
+## SCOPE
 
 This is a *minimal* witness.
 
 * The two collars use the degenerate collar projection `E_C = 0` (fixed space
   `{0}`), so the joint fixed projection is `P₀ = 0` (`wP0_eq_zero`) and the gap operator
-  is the full identity `I − P₀ = I` — a genuine **nonzero** positive operator. (Contrast
+  is the full identity `I − P₀ = I`, a genuine **nonzero** positive operator. (Contrast
   the `E_C = 1` choice, which would give the empty gap `I − P₀ = 0`: a vacuous-feeling
   "positive gap on a zero-dimensional complement".)
 * The two rates are **distinct** (`1` and `2`), so `c_* = min = 1` and the resulting
@@ -83,7 +83,7 @@ theorem whc : (↑wS : Set Bool).Pairwise (Function.onFun Commute wEc) := by
 noncomputable def wP0 : W →L[ℝ] W := wS.noncommProd wEc whc
 
 /-- With every collar the zero projection, the joint fixed projection is `0`, so the
-    gap operator `I − P₀` is the full identity `I` — a genuine nonzero positive operator. -/
+    gap operator `I − P₀` is the full identity `I`, a genuine nonzero positive operator. -/
 theorem wP0_eq_zero : wP0 = 0 := by
   simp [wP0, wS, wEc]
 
@@ -96,7 +96,7 @@ theorem whrate : ∀ a ∈ wS, 0 < wRate a := by
     inner-product space: there is a strictly positive `c_*` with
     `c_* · (I − P₀) ≤ L_r^rep`. The premise bundle (nonempty collar family, commuting
     star projections, `noncommProd = P₀`, positive rates) is therefore jointly
-    satisfiable — the special commuting conditional is not vacuous. By `wP0_eq_zero` the gap
+    satisfiable, the special commuting conditional is not vacuous. By `wP0_eq_zero` the gap
     operator `I − P₀ = I` here, and `c_* = min {1, 2} = 1 > 0`. -/
 theorem thm_7_3_finite_gap_nonvacuous :
     ∃ cstar : ℝ, 0 < cstar ∧

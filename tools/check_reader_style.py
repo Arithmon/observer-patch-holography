@@ -5,6 +5,12 @@ The check is intentionally narrow. It enforces the durable rules that should
 not depend on taste: no changelog/progress framing, no common AI-prose tells
 called out in the style guide for this release, no banned h-word, and no internal
 implementation identifiers in paper abstracts.
+
+Banned vocabulary is scanned across the reader surfaces, the papers and the
+essays, and the register pages under ``docs/``. The register pages are held to
+the vocabulary rules alone, so an internal row id inside a register row stays
+legal. ``ALLOWLIST_PATHS`` holds out the two pages whose subject matter is the
+banned vocabulary itself.
 """
 
 from __future__ import annotations
@@ -72,11 +78,31 @@ BOOK_GLOBS = [
 # it catches a paragraph that has genuinely run away, which is what it is for.
 BOOK_PARAGRAPH_MAX_WORDS = 300
 
+# The register and tracking surfaces under docs/ are scanned for banned
+# vocabulary only.  Register rows carry internal row ids by design, so the
+# reader-identifier patterns are deliberately absent from this glob set: an
+# OL-, PR-, or CA- id inside a register row is the point of the row, while an
+# em dash, a progress word, or the banned h-word is a style defect wherever it
+# lands.
+REGISTER_GLOBS = [
+    "docs/**/*.md",
+]
+
 PAPER_GLOBS = [
     "flagship/**/*.tex",
     "paper/**/*.tex",
     "extra/**/*.tex",
     "cosmology/**/*.tex",
+    "essays/**/*.tex",
+]
+
+# Path substrings held out of every scan.  Both entries carry banned
+# vocabulary as their subject matter: the style guide defines the banned
+# words, and the frozen-prediction ladder renders registration-time payload
+# bytes that are immutable by custody rule.
+ALLOWLIST_PATHS = [
+    "docs/STYLE_GUIDE.md",
+    "docs/FROZEN_PREDICTION_LADDER.md",
 ]
 
 PROGRESS_PATTERNS = [
@@ -296,11 +322,18 @@ INFORMAL_IDENTIFIER_PATTERNS = [
 ]
 
 
+def path_allowed(path: Path) -> bool:
+    rel = path.relative_to(ROOT).as_posix()
+    return any(token in rel for token in ALLOWLIST_PATHS)
+
+
 def iter_paths(globs: list[str]) -> list[Path]:
     paths: list[Path] = []
     for pattern in globs:
         paths.extend(ROOT.glob(pattern))
-    return sorted({path for path in paths if path.is_file()})
+    return sorted(
+        {path for path in paths if path.is_file() and not path_allowed(path)}
+    )
 
 
 def line_col(text: str, index: int) -> tuple[int, int]:
@@ -383,7 +416,7 @@ def book_prose_paragraphs(text: str) -> list[tuple[int, str]]:
 def main() -> int:
     issues: list[str] = []
 
-    all_paths = iter_paths(READER_GLOBS + STATUS_GLOBS + PAPER_GLOBS)
+    all_paths = iter_paths(READER_GLOBS + STATUS_GLOBS + PAPER_GLOBS + REGISTER_GLOBS)
     for path in all_paths:
         text = path.read_text(encoding="utf-8", errors="ignore")
         add_matches(

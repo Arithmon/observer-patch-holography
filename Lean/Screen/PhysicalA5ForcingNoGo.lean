@@ -7,7 +7,7 @@ These theorems formalize the exact logical boundary used by the paper.  The
 completion constructors are abstract finite tags, not physical OPH models.
 They prove that a forgetful source interface with two distinct completions has
 no source-only function that reconstructs every completion.  A richer
-observer-like operational packet may still select a completion.
+observer-like operational packet may select a completion.
 -/
 
 namespace OPHPhysicalA5NoGo

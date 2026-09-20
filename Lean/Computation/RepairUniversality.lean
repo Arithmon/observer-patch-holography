@@ -11,7 +11,7 @@ repair move that rewrites inside the patch.  Main statements:
   Boolean function `f` and every input `x` there is an input-specialized
   federation whose declared sweep reaches a satisfying state with output
   `f x`;
-* `consensus_agree` / `compile_output_unique` — consensus states of a
+* `consensus_agree` / `compile_output_unique`: consensus states of a
   compiled federation agree on every program register, so the reached
   consensus output is the unique one;
 * `bar_computes` / `bar_length` state that every formula compiles to a
@@ -19,7 +19,7 @@ repair move that rewrites inside the patch.  Main statements:
   conjugates of a fixed five-cycle, of length at most `4 ^ depth`, whose
   product reads out the formula value.  The file does not type the program
   in `A₅` or prove an even-permutation membership invariant;
-* `word_universality` / `echosahedral_universality` — the packaged
+* `word_universality` / `echosahedral_universality`: the packaged
   universality statements for both engines;
 * kernel `decide` receipts for the SHA-256 primitive functions `Ch` and
   `Maj`, a full-adder sum, and end-to-end federation and word-program runs.
@@ -160,7 +160,7 @@ theorem sweep_consensus (s : State) (L : List Node) (hWF : NodesWF L) :
   exact beq_self_eq_true _
 
 /-- The sweep schedule is a chain of accepted repair steps: every rewrite is
-performed by a currently failing observer inside its own patch. -/
+performed by a failing observer inside its own patch. -/
 theorem sweep_reaches (F : Federation) (s : State) (L : List Node)
     (hsub : ∀ n ∈ L, n.obs ∈ F) : Reaches F s (sweepFrom s L) := by
   induction L generalizing s with

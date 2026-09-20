@@ -7,7 +7,7 @@ The complex-linear functional `M ↦ Tr(ρ M)` attached to a matrix `ρ`:
 
 * it is additive and homogeneous in the observable;
 * it is **positive**: nonnegative on every positive-semidefinite
-  observable (not merely on events);
+  observable, beyond events alone;
 * it is **normalised**: it sends `1` to `1`;
 * the Born weight is its restriction to events
   (`bornWeight_eq_expectation`).

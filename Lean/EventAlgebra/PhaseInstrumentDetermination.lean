@@ -223,7 +223,7 @@ theorem phase_frequency_commutator_form (I : IdealPhasePOVMCountModel)
 phase-count frequency of every inhabitant equals `1/2` minus the
 imaginary part of the free state coordinate.  The count literals of
 the phase context carry exactly one real number of information, and
-that number is already a coordinate of the model state. -/
+that number is a coordinate of the model state. -/
 theorem phase_frequency_eq (I : IdealPhasePOVMCountModel)
     (hcore : I.core = QuantumSurface.committedAlgebraicPhaseCompletion) :
     binaryFrequency (I.counts InstrumentContext.phase) =

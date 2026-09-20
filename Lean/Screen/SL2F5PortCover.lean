@@ -10,7 +10,7 @@ the resulting group-level cover of the actual port action.
 
 The map is surjective, its kernel is exactly the scalar center `{+I,-I}`, and
 therefore the central element `-I` lies over the identity port rotation. The
-commuting square is definitionally the one already certified by the projective
+commuting square is definitionally the one certified by the projective
 and port-group bridges.
 
 This is deliberately only the canonical finite-group cover interface. In
@@ -31,7 +31,7 @@ abbrev SL2F5 := OPH.PSL2F5SixAxesBridge.SL2F5
 abbrev PSL2F5 := OPH.PSL2F5SixAxesBridge.PSL2F5
 abbrev PortGroup := OPH.A5PortGroupBridge.PortGroup
 
-/-- The already-certified projective group isomorphism, exposed as a
+/-- The certified projective group isomorphism, exposed as a
 homomorphism into the committed twelve-port rotation group. -/
 noncomputable def pslToPort : PSL2F5 →* PortGroup :=
   pslEquivPortGroup.toMonoidHom

@@ -44,7 +44,7 @@ read as the path `joinedPath` of joined events, has constant increment
 `stepDuration • frame` (`joinedPath_increment`), is stationary on every
 window (`worldline_clockStationary`), and is the unique stationary path
 with its committed endpoints (`worldline_is_stationary_path`).  This is
-conditional on the chosen quadratic functional and the already declared
+conditional on the chosen quadratic functional and the declared
 endpoints; no theorem source-selects that functional.
 
 (2) The joint action.  `jointAction J N A φ x` is the sum of the committed
@@ -73,7 +73,7 @@ independent of the Maxwell arguments, as exact partial-variation
 independence identities.  The direct-sum action is defined on a product
 configuration and couples nothing: a shared physical carrier and a
 worldline-field coupling producing a Lorentz-force-shaped clause are among
-what the open source-action premise PR-54 still owes.  The four labels of
+what the open source-action premise PR-54 owes.  The four labels of
 `MissingJoin` remain a named checklist, not an exhaustive theorem about
 every physical attachment requirement.
 
@@ -468,8 +468,8 @@ theorem clockStationary_fixed_endpoints (J : MaxwellClockJoinedArchitecture)
 /-- **The worldline is exactly the stationary path with its committed
 endpoints.**  On a positive window, a path carries the committed endpoints
 and stationarity exactly when it agrees with the record's worldline path at
-every window node: the kinematics island's worldline is variational, not
-merely declared. -/
+every window node: the kinematics island's worldline is variational rather
+than declared. -/
 theorem worldline_is_stationary_path (J : MaxwellClockJoinedArchitecture)
     {M : ℕ} (hM : 0 < M) (x : ℕ → Herm2) :
     (x 0 = joinedPath J 0 ∧ x M = joinedPath J M ∧ ClockStationary M x) ↔

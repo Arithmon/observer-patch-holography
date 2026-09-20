@@ -30,7 +30,7 @@ CONTENT.
   four; the local tensor table therefore determines a maximal effective
   quotient but does not select a physical global form.
 * `adjoint_only_kernel_is_full_centre` and
-  `fractional_singlet_kernel_is_trivial`: the two countermodels — without
+  `fractional_singlet_kernel_is_trivial`: the two countermodels, without
   matter every central element survives, and a fractionally charged extra
   tensor kills the whole centre.
 * `hCube_trivial_on_realized_weights` and
@@ -156,7 +156,7 @@ theorem sixAxisToKernel_intertwines_involutions
   exact genPow_neg _
 
 /-- The intertwiner is injective, so the two abstract `ℤ/6` constructions
-are identified, not merely abstractly isomorphic. -/
+are identified rather than abstractly isomorphic. -/
 theorem sixAxisToKernel_injective : Function.Injective sixAxisToKernel := by
   intro a b hab
   have := genPow_injective _ _ hab

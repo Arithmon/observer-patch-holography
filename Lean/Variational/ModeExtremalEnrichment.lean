@@ -362,7 +362,7 @@ theorem chainTwoSlot_modeExtremal_gap (a c x : ℝ)
   ring
 
 /-- Every positive split `a + c = a*` makes the embedded constant-one path a
-real fixed-endpoint single-site minimizer, not only the split `a=a*`, `c=0`
+real fixed-endpoint single-site minimizer, beyond the split `a=a*`, `c=0`
 chosen by the registered one-parameter ansatz. -/
 theorem constOne_twoSlot_realMin (a c : ℝ)
     (hsum : a + c = modeExtremalCurvature) (M : ℕ) {k m : Fin M}
@@ -386,8 +386,8 @@ theorem constOne_twoSlot_realMin (a c : ℝ)
 positive regular velocity curvature `a*/2`, different from `a*`, while keeping
 the exact source corners, constant-one stationarity, and real fixed-endpoint
 single-site minimality at every length.  The derivative packet, strict monotonicity, and
-solver section are included so this is a regular Legendre enrichment, not only
-an action-value counterexample. -/
+solver section are included so this is a regular Legendre enrichment rather
+than an action-value counterexample. -/
 theorem modeExtremal_not_unique_beyond_oneParameter :
     ∃ a c : ℝ,
       0 < a

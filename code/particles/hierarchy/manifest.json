@@ -1,6 +1,6 @@
 {
   "bundle_id": "oph-hierarchy-proof-artifacts-r1473-2026-06-13",
-  "generated_utc": "2026-08-26T14:03:39Z",
+  "generated_utc": "2026-09-20T10:12:31Z",
   "purpose": "Machine-readable artifacts for the OPH electroweak hierarchy proof obligation audit.",
   "source_release_context": "OPH hierarchy source context with issue #332, #335, #337, #338, #342, #343, and #344 hierarchy artifacts, plus the icosahedral screen-sieve theorem. Promotion authority belongs to the independent receipt-promotion registry, not to status booleans inside these subject artifacts.",
   "promotion_authority": {
@@ -79,8 +79,8 @@
     },
     {
       "path": "certificates/R_EW_global_capacity_certificate.json",
-      "sha256": "40b6890472cc5e685db2a70ac658d6ce69a58ef1f22db0c00e070024e5367af0",
-      "bytes": 25128
+      "sha256": "36944b054ec5d1181b0251855a78dfe887415a1f2efd5d3fe310d74846e004ca",
+      "bytes": 26789
     },
     {
       "path": "certificates/R_EW_tick_projection_certificate.json",
@@ -149,8 +149,8 @@
     },
     {
       "path": "certificates/R_m_rep_24_certificate.json",
-      "sha256": "7a459ed1c6456348c475271970b6c7c47ddc7fc01d9faaa4eb8757a2e4bf51fc",
-      "bytes": 22370
+      "sha256": "ab32559252f37177991d6d43d6e9e9133f4c322260e0c74868a935f3456d7215",
+      "bytes": 23556
     },
     {
       "path": "certificates/R_pixel_screen_resonance_summary.json",
@@ -159,8 +159,8 @@
     },
     {
       "path": "certificates/R_readback_resolution_certificate.json",
-      "sha256": "9bc7fb920b7f0496549b749f8cd55b094d23d10c802174a645e0c7f542f16650",
-      "bytes": 20709
+      "sha256": "5be2f9e6452a386250c74c3a14e688db2fa90b1f767accf8949be116df7a7c97",
+      "bytes": 21212
     },
     {
       "path": "certificates/R_screen_sieve_icosahedral_certificate.json",
@@ -214,8 +214,8 @@
     },
     {
       "path": "test_hierarchy_bundle.py",
-      "sha256": "3aa0e5abd5ce7d2951993db6e0f005a742b67ccd7ef6a2c1aedba981c6832886",
-      "bytes": 43329
+      "sha256": "63967415fe1e74984b6a04d34b275078f5064993e6de19b34b5e1538da24d3aa",
+      "bytes": 45317
     },
     {
       "path": "test_interval_witness.py",
@@ -274,18 +274,18 @@
     },
     {
       "path": "validators/validate_issue_342_readback_resolution.py",
-      "sha256": "9571b08d8cb7747ab5c64a72af1778c5dc94904249fa9caa4ace01c92e2176de",
-      "bytes": 4852
+      "sha256": "640649f87f23c8b897e5c56a233b04de8859cbf49a72fd237d6e65dfbb42a666",
+      "bytes": 5212
     },
     {
       "path": "validators/validate_issue_343_m_rep_24.py",
-      "sha256": "17f487f62c721debedcb24f7da1d8d90031b5bffd416a8769b89cedf3cb2f20c",
-      "bytes": 15468
+      "sha256": "c124f92567b9ab3d9e1a3a0af02aa8191b29957a25195fb96c1e83e2439d9bfe",
+      "bytes": 16036
     },
     {
       "path": "validators/validate_issue_344_exact_capacity.py",
-      "sha256": "a750490ad876ce7e918fbcc333625af42c7928112569acfb15f1a16f94700d2a",
-      "bytes": 16401
+      "sha256": "d8b12d6164175148514f5a45a9914d0ec1dca561ffeb25a8416ea01c983ca393",
+      "bytes": 16761
     },
     {
       "path": "validators/validate_joint_fixed_point_certificate.py",
@@ -334,18 +334,18 @@
     },
     {
       "path": "verify_issue_342_readback_resolution.py",
-      "sha256": "b749487ada7b5c6317395cb780fde58e83d56536253ad03c8c38060b8947fd80",
-      "bytes": 29400
+      "sha256": "0d96024ff0470cd316f1a243872fa80e8a54c4468995fdfe9399467dcef19aa8",
+      "bytes": 29813
     },
     {
       "path": "verify_issue_343_m_rep_24.py",
-      "sha256": "33b77d32f2cb2b4c7d6df8ed26a747413b8280383e201a27e593ca63f26fc630",
-      "bytes": 34533
+      "sha256": "b15cddf275130c2b0a98795711810a8f36087f58ef0ff15fda38269db10e5bfb",
+      "bytes": 35389
     },
     {
       "path": "verify_issue_344_exact_capacity.py",
-      "sha256": "79759cfe110079700d9c234ce6073b9389f8d24b55d57f10bf0337cf1f23c410",
-      "bytes": 36053
+      "sha256": "15449ee7d0b3e6c0771e0ff5196bfa026b220cd73d79187fc31a05c43a43c923",
+      "bytes": 36531
     },
     {
       "path": "verify_joint_fixed_point_certificate.py",
@@ -391,6 +391,11 @@
       "path": "certificates/implicit_scale_attachment_receipt.json",
       "sha256": "20a3af02a3f7c8db0181fd414decb2900f47de5ceb987647b7709488c0f74021",
       "bytes": 1995
+    },
+    {
+      "path": "validators/citation_resolution.py",
+      "sha256": "2d14f046a04e54e518841d400678035d4f344042d11858118e9fe13a58d62e8c",
+      "bytes": 4189
     }
   ]
 }

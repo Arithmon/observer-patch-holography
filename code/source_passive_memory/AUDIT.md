@@ -177,3 +177,30 @@ Local validation of the repaired merge:
 - The 14 passive-memory input pins still match, both retained scientific JSON
   files match published head `8410f743` byte for byte, and `git diff --check`
   passes.
+
+## Resolving the later main conflict
+
+After main advanced to `2b03a95c`, #914's earlier flagship manifest correction
+conflicted with the later publication rebuild. The only conflicting hunk
+was the flagship PDF entry in `paper/paper_release_manifest.json`: this
+branch recorded SHA-256 `5ee90da3...` and 466169 bytes, while the actual PDF
+from main has SHA-256 `2deb6f8d...` and 467182 bytes. This was a generated
+metadata conflict, not a conflict between scientific proofs.
+
+Main was merged and the resolution was checked against every merged paper
+PDF's actual hash and size. The official manifest generator was then run in
+preview mode with PDF release-line checks enabled. It reproduces main's
+manifest byte for byte. No paper source or PDF was edited for this resolution.
+
+The merge also includes main's corrected N-closure provenance chain and
+essay-aware preview fixtures. It preserves the already audited LF-writer
+repair from #915, so the Higgs-Yukawa artifact must equal its committed bytes
+on Windows as well as Linux; the Windows-only exception is removed.
+
+All 14 passive-memory input files and both retained scientific artifacts are
+byte-identical to published head `c6c408b2`. The passive-memory, manifest and
+strict frontier regression groups pass **127 tests on Windows and 127 on
+Linux**. The shared mandatory repairs are also covered by complete shard-3
+and shard-4 runs on both platforms in the synchronized #915 worktree; all
+49 stages pass. The M1 hypotheses, mathematical results and bounded exit
+are unchanged.

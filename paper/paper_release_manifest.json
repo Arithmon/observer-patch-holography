@@ -15,23 +15,23 @@
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
-      "sha256": "b6cda28c74a5baff8debdbad796ef62beebd6f58fa46570f1163690310d4341d",
-      "size_bytes": 678701
+      "sha256": "d6360d340627140aae8c531a0522fb95593a20d9dee1275a0145dee698d2f61b",
+      "size_bytes": 680370
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "5ee90da3dae512ad15b4b4df97b460c41cdf4839f65de1374340989e82dd76fd",
-      "size_bytes": 466169
+      "sha256": "2deb6f8dc50a9dc451c12c8711d123130b3f894ee00082cda8ad7c6b9cc458e0",
+      "size_bytes": 467182
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "9292b3a14529ad193a9e3e310143d6bec4a72965f5c5a550fd977d7ec4966b8f",
-      "size_bytes": 893060
+      "sha256": "5a4eb01d643517ec9ba625835a6ac3d6b2544b896da0c6dabac34b929c183930",
+      "size_bytes": 893307
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
-      "sha256": "b0b2cd21e452775f1fcb32f24ab7dd5dc259dda9435c2e3e0f39bf8e69ce10f9",
-      "size_bytes": 171666
+      "sha256": "bcc1753087811ae2197ff41480e5916ee1f4b77a9486d6b02620757b90f8bd2d",
+      "size_bytes": 171767
     },
     "reality_as_consensus_protocol": {
       "pdf_path": "paper/reality_as_consensus_protocol.pdf",

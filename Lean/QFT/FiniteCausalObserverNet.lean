@@ -250,7 +250,7 @@ theorem relaxedRepair_remote_expectation {r : ι} {U V : N.Region r}
 /-- A declared basis factorization carried alongside two disjoint regions.
 The current fields do not identify either regional local algebra with one of
 the two matrix factors, and the marginal theorem below does not use regional
-disjointness.  It is therefore a typed home for the generic B4 helper, not yet
+disjointness.  It is therefore a typed home for the generic B4 helper, and not
 a regional-factor adapter. -/
 structure TensorSplitReceipt (r : ι) (U V : N.Region r) where
   leftDim : ℕ

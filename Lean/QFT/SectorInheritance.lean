@@ -19,7 +19,7 @@ finite type-I witness is inner and therefore equivalent to the identity under
 the finite relation declared below.  No DHR category is constructed, so no
 Doplicher–Roberts gauge group is reconstructed here.
 
-## Part 1 — PROVED: the transported inner-implementation engine
+## Part 1: PROVED: the transported inner-implementation engine
 
 The engine is B3's `OPH.Dynamics.finitePrivateStarAutomorphism_inner`:
 every star-algebra automorphism of the continuous-endomorphism algebra
@@ -34,7 +34,7 @@ the implementing unitary produced through
 `Unitary.linearIsometryEquiv` and the conjugation read back through
 `Unitary.conjStarAlgAut`.
 
-## Part 2 — REFUTABLE SURROGATE: bijective localized endomorphisms
+## Part 2: REFUTABLE SURROGATE: bijective localized endomorphisms
 
 `LocalizedIn ρ U` is the DHR-type localization predicate against the
 E3 example net: the endomorphism `ρ` of the private algebra acts as
@@ -45,7 +45,7 @@ disjointness.  The sector theorem
 localized endomorphism is inner, hence equivalent to the identity under the
 declared finite relation (`supportGraded_localized_sector_trivial`).  The proof
 consumes part 1 and discards the localization hypothesis: over a finite type-I
-block every automorphism whatsoever is already inner.  Thus the restricted
+block every automorphism whatsoever is inner.  Thus the restricted
 class of bijective localized endomorphisms carries no nontrivial equivalence
 class.  This does not cover non-bijective transportable endomorphisms, construct
 their intertwiners, or justify a conclusion about a DHR category or
@@ -65,7 +65,7 @@ regions nonempty; the witness therefore uses a nonempty region.
 
 The row is tied to the finite superselection module: relative to the
 declared two-sector partition `witnessPartition`, the nontrivial
-localized witness is operationally invisible — `sectorWitness X` and
+localized witness is operationally invisible, `sectorWitness X` and
 `X` have identical trace statistics against every matrix of the
 sector-preserving commutant
 (`sectorWitness_operationally_invisible`, via
@@ -76,15 +76,15 @@ surrogate.  It is
 visible to sector-off-diagonal tests (it moves the matrix unit), so
 the commutant restriction is load-bearing, not decorative.
 
-## Part 3 — TYPED NON-EVALUABLE EXIT: full DHR reconstruction
+## Part 3: TYPED NON-EVALUABLE EXIT: full DHR reconstruction
 
-Full DHR sector theory — localized transportable endomorphisms of a
+Full DHR sector theory, localized transportable endomorphisms of a
 quasi-local net in a selected vacuum representation, their
 intertwiner categories, and Doplicher–Roberts reconstruction of a
-compact gauge group — is not evaluable against the committed carriers,
+compact gauge group, is not evaluable against the committed carriers,
 and this module declines it rather than approximating it.  The missing
 types are: `ColimitNormedCompletion.lean`,
-`ColimitGNSRepresentation.lean`, and `ColimitSelectedStateGNS.lean` now
+`ColimitGNSRepresentation.lean`, and `ColimitSelectedStateGNS.lean`
 construct the completed colimit and its mathematical GNS representation from
 a supplied coherent observer family and the tower's compatible selected
 density states, but they construct no
@@ -114,7 +114,7 @@ namespace OPH.QFT
 
 open OPH.Tower
 
-/-! ## Part 1 — the transported inner-implementation engine -/
+/-! ## Part 1: the transported inner-implementation engine -/
 
 /-- **The transported engine.**  Every star-algebra automorphism of a
 finite complex matrix algebra is conjugation by a unitary matrix.
@@ -164,7 +164,7 @@ theorem privateMatrixAutomorphism_inner
       ∀ x, F x = u * x * star u :=
   matrixStarAlgAutomorphism_inner F
 
-/-! ## Part 2 — DHR-type localization against the E3 net -/
+/-! ## Part 2: DHR-type localization against the E3 net -/
 
 /-- DHR-type localization in the region `U`, relative to the E3
 example net: the endomorphism acts as the identity on the regional
@@ -180,7 +180,7 @@ def LocalizedIn
     ∀ b : Matrix (Fin 2) (Fin 2) ℂ,
       b ∈ supportGradedNet.localAlgebra () V → ρ b = b
 
-/-- Honesty receipt for the definitional boundary: because the net's
+/-- Receipt for the definitional boundary: because the net's
 declared disjointness requires both regions nonempty, EVERY
 endomorphism is (vacuously) localized in the empty region.  A sector
 statement quantified over `LocalizedIn ρ ∅` would therefore be about
@@ -204,7 +204,7 @@ def SectorEquivalent
 bijective endomorphism of the private algebra that is DHR-localized in
 a region of the E3 example net is inner: it is conjugation by a
 unitary matrix.  The proof consumes the transported engine and discards the
-localization hypothesis — over a finite type-I block every automorphism
+localization hypothesis, over a finite type-I block every automorphism
 whatsoever is inner.  It therefore collapses the restricted bijective
 surrogate only; no DHR category or reconstructed gauge group follows. -/
 theorem supportGraded_localized_inner
@@ -351,7 +351,7 @@ theorem sectorWitness_ne_id_on :
 
 /-- The sector theorem applied to the nonvacuity witness: the
 nontrivial localized endomorphism is inner, as the theorem asserts of
-every member of its (now demonstrably inhabited) hypothesis class. -/
+every member of its (demonstrably inhabited) hypothesis class. -/
 theorem sectorWitness_inner :
     ∃ u ∈ unitary (Matrix (Fin 2) (Fin 2) ℂ),
       ∀ x, sectorWitness x = u * x * star u :=
@@ -366,7 +366,7 @@ trace statistic against any matrix of the sector-preserving
 commutant.  This ties the explicit witness's collapse in the restricted
 surrogate to the finite superselection module: this localized endomorphism
 carries no charge any sector-preserving readout can see.  It is NOT invisible to
-sector-off-diagonal tests — it negates the off-diagonal matrix unit —
+sector-off-diagonal tests, since it negates the off-diagonal matrix unit,
 so the commutant restriction in
 `EventAlgebra.PartitionOperationallyEquivalent` is load-bearing. -/
 

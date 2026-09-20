@@ -17,8 +17,8 @@ accepted path of length `2 ^ n - 1` from `allFalse` to a consensus state.
 
 The generic bound `canonicalAcceptedSteps_lt_pow` says every well-formed node
 list admits fewer than `2 ^ L.length` canonical accepted steps.  The chain
-family attains `2 ^ n - 1`, so the generic exponential bound is sharp and not
-merely an artifact of the `defectRank` encoding.  Since `fanoutChain 3`
+family attains `2 ^ n - 1`, so the generic exponential bound is sharp rather
+than an artifact of the `defectRank` encoding.  Since `fanoutChain 3`
 violates `AtMostOneDownstreamConsumer`, the quadratic bound of
 `fixedProgram_acceptedSteps_quadratic` cannot be extended to general
 well-formed federations by dropping that hypothesis.
@@ -362,7 +362,7 @@ theorem canonicalAcceptedSteps_lt_pow
   omega
 
 /-- The chain family is outside the hypothesis of the quadratic bound:
-register `0` is read by two later nodes already at size three. -/
+register `0` is read by two later nodes at size three. -/
 theorem fanoutChain_not_single_consumer :
     ¬ AtMostOneDownstreamConsumer (fanoutChain 3) := by
   intro h
@@ -372,7 +372,7 @@ theorem fanoutChain_not_single_consumer :
         = 2 := by decide
   omega
 
-/-- Positive control.  At two nodes the same construction still satisfies
+/-- Positive control.  At two nodes the same construction satisfies
 `AtMostOneDownstreamConsumer`, and its accepted path length `2 ^ 2 - 1 = 3`
 coincides with the triangular budget `triangle 2 = 3`.  The negative control
 below is therefore not an artifact of the construction: the separation begins
@@ -387,11 +387,11 @@ theorem fanoutChain_two_single_consumer :
   · rw [fanoutChain_length]
     decide
 
-/-- At size three the fanout family already realizes more canonical accepted
+/-- At size three the fanout family realizes more canonical accepted
 steps than the triangular budget that `fixedProgram_acceptedSteps_triangle`
 grants to single-consumer programs of the same node count.  This is the exact
 sense in which `AtMostOneDownstreamConsumer` is load-bearing: dropping it
-makes the triangular bound false, not merely unproved. -/
+makes the triangular bound false rather than unproved. -/
 theorem fanoutChain_exceeds_triangle :
     ∃ t : State,
       CanonicalAcceptedSteps (fanoutChain 3) 7 allFalse t ∧
