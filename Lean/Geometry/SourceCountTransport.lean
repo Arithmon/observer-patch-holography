@@ -177,9 +177,116 @@ theorem event_selected_count_tendsto {T L : ℝ} (hT : 0 ≤ T) (hL : 0 < L)
     simpa only [sub_add_cancel, zero_add] using hd.add hw
   simpa only [U, constant_weight_count] using hu
 
+def pairCell (n : ℕ) (T L δ : ℝ)
+    (i : (timeIndex T δ × (Fin 3 → Fin (Nat.fib n))) ×
+      (timeIndex T δ × (Fin 3 → Fin (Nat.fib n)))) :
+      Set ((ℝ × (Fin 3 → ℝ)) × (ℝ × (Fin 3 → ℝ))) :=
+  eventCell n T L δ i.1 ×ˢ eventCell n T L δ i.2
+
+theorem pairCell_measurable (n : ℕ) (T L δ : ℝ) (i) :
+    MeasurableSet (pairCell n T L δ i) :=
+  (eventCell_measurable n T L δ i.1).prod (eventCell_measurable n T L δ i.2)
+
+theorem pairCell_disjoint {n : ℕ} (hn : 0 < n) {T L δ : ℝ}
+    (hL : 0 < L) (hδ : 0 < δ) :
+    Pairwise (fun i j => Disjoint (pairCell n T L δ i) (pairCell n T L δ j)) := by
+  intro i j hij
+  apply disjoint_left.mpr
+  intro x hi hj
+  by_cases h : i.1 = j.1
+  · have hh : i.2 ≠ j.2 := fun hh => hij (Prod.ext h hh)
+    exact disjoint_left.mp (eventCell_disjoint hn hL hδ hh) hi.2 hj.2
+  · exact disjoint_left.mp (eventCell_disjoint hn hL hδ h) hi.1 hj.1
+
+theorem pairCell_ae_cover {n : ℕ} (hn : 0 < n) {T L δ : ℝ}
+    (hL : 0 < L) (hδ : 0 < δ) :
+    ∀ᵐ x ∂(spaceTimeVolume T L).prod (spaceTimeVolume T L), ∃ i,
+      x ∈ pairCell n T L δ i := by
+  letI : IsFiniteMeasure (spaceTimeVolume T L) := spaceTimeVolume_finite T L
+  filter_upwards [Measure.quasiMeasurePreserving_fst.ae (eventCell_ae_cover hn hL hδ),
+    Measure.quasiMeasurePreserving_snd.ae (eventCell_ae_cover hn hL hδ)] with x hx hy
+  obtain ⟨i, hi⟩ := hx
+  obtain ⟨j, hj⟩ := hy
+  exact ⟨(i, j), hi, hj⟩
+
+/-- Uniform full-layer pair weights differ by at most the product mass excess.
+This includes aligned endpoints, T=0, and the coincidence cells. -/
+theorem pair_selected_weight_error {n : ℕ} (hn : 0 < n) {T L δ : ℝ}
+    (hT : 0 ≤ T) (hL : 0 < L) (hδ : 0 < δ)
+    (P : (timeIndex T δ × (Fin 3 → Fin (Nat.fib n))) ×
+      (timeIndex T δ × (Fin 3 → Fin (Nat.fib n))) → Prop) :
+    |(∑ i, (δ * (L ^ 3 / (Nat.fib n : ℝ) ^ 3)) ^ 2 * (if P i then (1 : ℝ) else 0)) -
+      ∑ i, ((spaceTimeVolume T L).prod (spaceTimeVolume T L)).real
+        (pairCell n T L δ i) * (if P i then (1 : ℝ) else 0)| ≤
+      L ^ 6 * δ * (2 * T + δ) := by
+  letI : IsFiniteMeasure (spaceTimeVolume T L) := spaceTimeVolume_finite T L
+  let w : ℝ := δ * (L ^ 3 / (Nat.fib n : ℝ) ^ 3)
+  let v (i : timeIndex T δ × (Fin 3 → Fin (Nat.fib n))) : ℝ :=
+    (spaceTimeVolume T L).real (eventCell n T L δ i)
+  have hm (i) : ((spaceTimeVolume T L).prod (spaceTimeVolume T L)).real
+      (pairCell n T L δ i) = v i.1 * v i.2 := measureReal_prod_prod _ _
+  have hv (i) : v i ≤ w := eventCell_mass_le hn hL hδ i
+  have hv0 (i) : 0 ≤ v i := measureReal_nonneg
+  have hw0 : 0 ≤ w := by dsimp [w]; positivity
+  simp_rw [hm]
+  apply (selected_weight_error (fun _ => w ^ 2) (fun i => v i.1 * v i.2)
+    (fun i => by simpa only [pow_two] using mul_le_mul (hv i.1) (hv i.2) (hv0 i.2) hw0) P).trans
+  have he : (∑ i : (timeIndex T δ × (Fin 3 → Fin (Nat.fib n))) ×
+      (timeIndex T δ × (Fin 3 → Fin (Nat.fib n))), (w ^ 2 - v i.1 * v i.2)) =
+      (∑ _ : timeIndex T δ × (Fin 3 → Fin (Nat.fib n)), w) ^ 2 - (∑ i, v i) ^ 2 := by
+    simpa only [pow_two] using product_weight_discrepancy (fun _ => w) v
+  rw [he]
+  have hvsum : (∑ i, v i) = T * L ^ 3 := sum_eventCell_mass hn hT hL hδ
+  have hwsum : (∑ _ : timeIndex T δ × (Fin 3 → Fin (Nat.fib n)), w) =
+      ((⌊T / δ⌋₊ : ℝ) + 1) * δ * L ^ 3 := sum_uniform_event_weight hn T L δ
+  rw [hvsum, hwsum]
+  have hf := (le_div_iff₀ hδ).mp (Nat.floor_le (div_nonneg hT hδ.le))
+  have hle : ((⌊T / δ⌋₊ : ℝ) + 1) * δ * L ^ 3 ≤ (T + δ) * L ^ 3 := by
+    apply mul_le_mul_of_nonneg_right _ (pow_nonneg hL.le 3)
+    nlinarith
+  have hnon : 0 ≤ ((⌊T / δ⌋₊ : ℝ) + 1) * δ * L ^ 3 := by positivity
+  have hsq := pow_le_pow_left₀ hnon hle 2
+  nlinarith [show ((T + δ) * L ^ 3) ^ 2 - (T * L ^ 3) ^ 2 =
+    L ^ 6 * δ * (2 * T + δ) by ring]
+
+theorem pair_selected_count_tendsto {T L : ℝ} (hT : 0 ≤ T) (hL : 0 < L)
+    (δ : ℕ → ℝ) (hδ : ∀ n, 0 < δ n) (hδ0 : Tendsto δ atTop (𝓝 0))
+    (P : (n : ℕ) →
+      (timeIndex T (δ n) × (Fin 3 → Fin (Nat.fib (n + 2)))) ×
+      (timeIndex T (δ n) × (Fin 3 → Fin (Nat.fib (n + 2)))) → Prop)
+    (A : Set ((ℝ × (Fin 3 → ℝ)) × (ℝ × (Fin 3 → ℝ)))) (hA : MeasurableSet A)
+    (hag : ∀ᵐ x ∂(spaceTimeVolume T L).prod (spaceTimeVolume T L), ∀ᶠ n in atTop,
+      ∀ i, x ∈ pairCell (n + 2) T L (δ n) i → (P n i ↔ x ∈ A)) :
+    Tendsto (fun n => (δ n * (L ^ 3 / (Nat.fib (n + 2) : ℝ) ^ 3)) ^ 2 *
+        (count (P n) : ℝ)) atTop
+      (𝓝 (((spaceTimeVolume T L).prod (spaceTimeVolume T L)).real A)) := by
+  letI : IsFiniteMeasure (spaceTimeVolume T L) := spaceTimeVolume_finite T L
+  let μ := (spaceTimeVolume T L).prod (spaceTimeVolume T L)
+  let U (n : ℕ) : ℝ := ∑ i,
+    (δ n * (L ^ 3 / (Nat.fib (n + 2) : ℝ) ^ 3)) ^ 2 * (if P n i then (1 : ℝ) else 0)
+  let W (n : ℕ) : ℝ := ∑ i, μ.real (pairCell (n + 2) T L (δ n) i) *
+    (if P n i then (1 : ℝ) else 0)
+  have hw : Tendsto W atTop (𝓝 (μ.real A)) :=
+    selected_count_tendsto μ (fun n => pairCell (n + 2) T L (δ n)) P
+      (fun n => pairCell_measurable (n + 2) T L (δ n))
+      (fun n => pairCell_disjoint (by omega : 0 < n + 2) hL (hδ n))
+      (fun n => pairCell_ae_cover (by omega : 0 < n + 2) hL (hδ n)) A hA hag
+  have hd : Tendsto (fun n => U n - W n) atTop (𝓝 0) := by
+    apply tendsto_iff_norm_sub_tendsto_zero.mpr
+    simp only [sub_zero, Real.norm_eq_abs]
+    apply squeeze_zero (fun _ => abs_nonneg _)
+      (fun n => pair_selected_weight_error (by omega : 0 < n + 2) hT hL (hδ n) (P n))
+    simpa using (hδ0.const_mul (L ^ 6)).mul (hδ0.const_add (2 * T))
+  have hu : Tendsto U atTop (𝓝 (μ.real A)) := by
+    simpa only [sub_add_cancel, zero_add] using hd.add hw
+  simpa only [U, constant_weight_count] using hu
+
 #print axioms selected_count_tendsto
 #print axioms selected_weight_error
 #print axioms product_weight_discrepancy
+#print axioms event_selected_count_tendsto
+#print axioms pair_selected_weight_error
+#print axioms pair_selected_count_tendsto
 
 end
 end OPH.SourceCountTransport
