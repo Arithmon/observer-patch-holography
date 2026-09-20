@@ -1,6 +1,24 @@
 # OPH paper content inventory.
 # Purpose: keep each paper's role explicit and move detailed claim tables or
 # sector details to the companion papers that carry them.
+# Scope: the root papers under paper/, the shared fragment they include, and the
+# focused notes under extra/ whose role needs stating beside them. The cosmology
+# set is indexed in cosmology/README.md and the remaining notes in extra/README.md.
+# tools/test_paper_release_manifest.py checks that every path and paper named
+# here resolves to a tracked source.
+
+shared_fragments:
+  paper/tex_fragments/PAPER.tex:
+    role: recovered-core section shared by two derivation papers
+    included_by:
+      - recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency
+      - deriving_standard_model_gauge_structure_from_observer_overlap_consistency
+    branch_switches:
+      - OPHEinsteinDerivationPaper
+      - OPHStandardModelDerivationPaper
+    name_cited_under_pins:
+      - code/a5_closure manifests
+      - one frozen custody record
 
 papers:
   observers_are_all_you_need:

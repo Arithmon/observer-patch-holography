@@ -735,3 +735,34 @@ def test_reproduce_marks_release_channel_integrity_check_as_publication_only() -
         "post-publication integrity check."
     ) in normalized
     assert "Do not use it to validate a same-release preview." in normalized
+
+
+def test_content_inventory_names_only_tracked_sources() -> None:
+    """Every path and paper the content inventory names has to resolve."""
+    import yaml
+
+    inventory = yaml.safe_load(
+        (REPO_ROOT / "paper" / "content_inventory.yml").read_text(encoding="utf-8")
+    )
+    roots = ("paper", "extra", "cosmology", "flagship")
+    for fragment, entry in inventory.get("shared_fragments", {}).items():
+        assert (REPO_ROOT / fragment).is_file(), fragment
+        relative = fragment.split("/", 1)[1]
+        for paper in entry.get("included_by", []):
+            source = next(
+                (
+                    REPO_ROOT / root / f"{paper}.tex"
+                    for root in roots
+                    if (REPO_ROOT / root / f"{paper}.tex").is_file()
+                ),
+                None,
+            )
+            assert source is not None, f"{fragment} included_by: {paper}"
+            assert relative in source.read_text(encoding="utf-8"), (
+                f"{paper} does not input {relative}"
+            )
+    for block in ("papers", "focused_papers"):
+        for name in inventory.get(block, {}) or {}:
+            assert any(
+                (REPO_ROOT / root / f"{name}.tex").is_file() for root in roots
+            ), f"{block}: {name}"
