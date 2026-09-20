@@ -1,4 +1,4 @@
-# SOURCE-CURRENT-TOMOGRAPHY-0 handoff — 2026-09-20
+# SOURCE-CURRENT-TOMOGRAPHY-0 handoff: 2026-09-20
 
 ## Repository state
 
@@ -73,10 +73,10 @@ Passed:
 
 - `python3 code/a5_closure/source_current_tomography_stage0.py verify`
 - `python3 code/a5_closure/tests/test_source_current_tomography_stage0.py`
-  — 6 tests.
+  (6 tests).
 - `python3 code/a5_closure/source_current_tomography_stage1_contract.py verify`
 - `python3 code/a5_closure/tests/test_source_current_tomography_stage1_contract.py`
-  — 7 tests.
+  (7 tests).
 - `python3 code/a5_closure/source_current_capability_certificate.py verify
   --projection code/a5_closure/manifests/source_current_capability_projection.json
   --receipt code/a5_closure/receipts/source_current_capability.receipt.json`
@@ -90,11 +90,11 @@ Passed:
 - `python3 code/a5_closure/verify_source_current_order_sensitive_inventory.py
   --inventory code/a5_closure/manifests/source_current_order_sensitive_inventory.json`
 - `python3 code/a5_closure/tests/test_source_current_order_sensitive_inventory.py`
-  — 11 tests, including an audited-directory staleness mutation.
+  (11 tests, including an audited-directory staleness mutation).
 - `python3 code/a5_closure/issue_566_bracket_space_stage1/test_stage1.py`
-  — 6 tests.
+  (6 tests).
 - `python3 code/a5_closure/issue_566_bracket_space_stage2/test_stage2.py`
-  — 4 tests.
+  (4 tests).
 - `python3 tools/check_claim_registry.py`
 - `python3 tools/build_selection_ledger.py` and `--check`
 - JSON parsing for all three modified registries, Python byte compilation, and
