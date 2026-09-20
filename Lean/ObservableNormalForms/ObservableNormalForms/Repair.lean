@@ -20,7 +20,7 @@ section StrongRepair
 variable {W : Type u} {D : Type v}
 
 /-- A total exact repair into `R` that preserves the protected collar and
-fixes states already in `R`. -/
+fixes states in `R`. -/
 structure StrongRepair (R : Set (W × D)) where
   toFun : W × D → {z : W × D // z ∈ R}
   preservesCollar : ∀ z : W × D, (toFun z).1.2 = z.2

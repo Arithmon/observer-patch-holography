@@ -3,84 +3,81 @@ import ObserverPatchHolography.YangMillsLemma72
 import ObserverPatchHolography.YangMillsProp81
 
 /-!
-# Yang–Mills finite repair-gap — legacy commuting-projection branch
+# Yang–Mills finite repair-gap: the commuting-projection branch
 
-This module preserves a special conditional result from an earlier version of
-B. Müller, *Explaining the Yang–Mills Mass Gap with Observer-Patch Repair
-Dynamics*: a finite-gap assembly for a family of pairwise commuting
-orthogonal projections.  It is **not** a formalisation of the current paper's
-finite-stage theorem, whose collar conditional expectations need not commute
-and whose gap argument instead uses a Dobrushin/approximate-tensorisation
-hypothesis.
+This module carries one conditional result of B. Müller, *Explaining the
+Yang–Mills Mass Gap with Observer-Patch Repair Dynamics*: a finite-gap
+assembly for a family of pairwise commuting orthogonal projections.  It is
+**not** a formalisation of the paper's noncommuting finite-stage theorem,
+whose collar conditional expectations need not commute and whose gap argument
+uses a Dobrushin/approximate-tensorisation hypothesis instead.
 
-## Honest scope (read this first)
+## Scope (read this first)
 
 This module proves an **implication**, nothing more:
 
 > IF the repair generator on a finite collar family has the special structural
-> form assumed here — each collar acts by an orthogonal projection `E_C`, the
-> collars **mutually commute**, their joint fixed space is represented by
-> `P₀`, and there are **finitely many** active collar types each with a
-> **strictly positive** relaxation rate `c_C` (supplied directly to the
-> theorem below) — THEN the
-> finite generator `L_r^rep = ∑_C c_C · (I − E_C)` dominates `c_* · (I − P₀)`
-> with `c_* = min_C c_C > 0` (Proposition 8.1): a strictly positive
-> finite-stage spectral gap.
+> form assumed here, with each collar acting by an orthogonal projection
+> `E_C`, the collars **mutually commuting**, their joint fixed space
+> represented by `P₀`, and **finitely many** active collar types each carrying
+> a **strictly positive** relaxation rate `c_C` (supplied directly to the
+> theorem below), THEN the finite generator `L_r^rep = ∑_C c_C · (I − E_C)`
+> dominates `c_* · (I − P₀)` with `c_* = min_C c_C > 0` (Proposition 8.1): a
+> strictly positive finite-stage spectral gap.
 
 Everything to the left of `THEN` is a **hypothesis** here.  In particular,
-pairwise commutation is not derived from the present Yang–Mills construction
-and is discharged **nowhere** in Lean.  This file proves only the legacy/special
+pairwise commutation is not derived from the Yang–Mills construction and is
+discharged **nowhere** in Lean.  This file proves only the special
 implication `commuting structure ⇒ finite gap`.
 
-The result must not be substituted for, or described as, the current paper's
+The result must not be substituted for, or described as, the paper's
 noncommuting Dobrushin finite-stage theorem.  Nor can it be composed into the
-current continuum receipt merely because both conclusions are called a finite
-gap: doing so would require a separate source-level proof that the current
-collar expectations commute and that this commuting branch satisfies the
-continuum certificate's compatibility hypotheses.  No such bridge is present
-here.
+continuum receipt merely because both conclusions are called a finite gap:
+doing so would require a separate source-level proof that the collar
+expectations commute and that this commuting branch satisfies the continuum
+certificate's compatibility hypotheses.  No such bridge is present here.
 
 One thing is deliberately **NOT** proved and **NOT** claimed:
 
-* `Δ_YM = Δ_rep`. This is Müller's **Assumption 9.2** — the continuum
+* `Δ_YM = Δ_rep`. This is Müller's **Assumption 9.2**, the continuum
   certificate (Schwinger-function convergence, reflection positivity,
   Osterwalder–Schrader reconstruction, non-triviality). It is the genuine open
   problem and is **untouched**. The deliverable here is `Δ_rep`, the
-  finite-stage *representation* gap — **not** the physical Yang–Mills mass gap.
+  finite-stage *representation* gap, and **not** the physical Yang–Mills mass
+  gap.
 
-Two historical ingredients are proved in sibling modules and **imported**
-here (no `sorry`s remain), but they have different status in this API:
+Two ingredients are proved in sibling modules and **imported** here, and they
+carry different status in this API:
 
-* `lemma_7_2` — scalar relaxation on one uniform hidden fiber;
-  proved in `ObserverPatchHolography.YangMillsLemma72` (extracted verbatim from
-  the retired single-file artifact `RepairGap.lean`, Part I — that file is now
-  consolidated into these modules; see git history for the original).  It is
-  re-exported here as a separate conditional theorem, but no theorem in this
-  module bridges its matrix `D` and coefficient `c_F` to the Hilbert-space
-  collar projections and `rate` argument of `thm_7_3_finite_gap`;
-* `prop_8_1`  — commuting-color finite-stage gap (`commuting ⇒ gap`);
-  proved in `ObserverPatchHolography.YangMillsProp81`.
+* `lemma_7_2`: scalar relaxation on one uniform hidden fiber, proved in
+  `ObserverPatchHolography.YangMillsLemma72`.  It is re-exported here as a
+  separate conditional theorem, and as `collar_rate_unique` in the sharper
+  unique-scalar form, while no theorem in this module bridges its matrix `D`
+  and coefficient `c_F` to the Hilbert-space collar projections and `rate`
+  argument of `thm_7_3_finite_gap`;
+* `prop_8_1`: the commuting-color finite-stage gap (`commuting ⇒ gap`), proved
+  in `ObserverPatchHolography.YangMillsProp81`.
 
-This file is the historical **setup + Theorem 7.3 / Lemma 7.4 assembly**.
+This file is the **setup plus the Theorem 7.3 / Lemma 7.4 assembly**.
 `thm_7_3_finite_gap` assembles the directly assumed positive rates with the
 uniform floor and `prop_8_1`; it carries zero `sorry`s and no project-level
 axioms.  It does **not** consume `lemma_7_2`.  A source theorem connecting the
-uniform-fiber relaxation data to the collar-rate argument remains a separate
-bridge obligation.  The conditional continuum chain lives in the sibling
+uniform-fiber relaxation data to the collar-rate argument is a separate bridge
+obligation.  The conditional continuum chain lives in the sibling
 `ObserverPatchHolography.RepairGapChain`.
 
 SCOPE: machine-checked only on the special pairwise-commuting branch: the
 finite representation-gap implication `Δ_rep ≥ c_* > 0` from directly
 assumed positive collar rates (Lemma 7.4 / Prop 8.1 / Thm 7.3 assembly), plus
-the separate conditional Lemma 7.2.  No composition from Lemma 7.2 into the
-rate premise is formalized.  This is neither the current paper's
-noncommuting finite-stage theorem nor a proof of any continuum-certificate
-premise.
+the separate conditional Lemma 7.2 and its unique-scalar sharpening.  No
+composition from Lemma 7.2 into the rate premise is formalized.  This is
+neither the paper's noncommuting finite-stage theorem nor a proof of any
+continuum-certificate premise.
 -/
 
 namespace ObserverPatchHolography.YangMillsGap
 
-/-! ## §7.2 keystone — imported statement (uniform hidden fiber) -/
+/-! ## §7.2 keystone: the imported statement (uniform hidden fiber) -/
 
 /-- `E_F`, the expectation onto the constants of a uniform hidden fiber `F`,
     realised as the matrix `|F|⁻¹ · J` where `J` is the all-ones matrix. -/
@@ -94,8 +91,8 @@ noncomputable def EF (F : Type*) [Fintype F] : Matrix F F ℝ :=
 
     Proved in the sibling keystone module `YangMillsLemma72` via the commutant
     of the permutation representation (`commutant_perm_two_valued` + Schur on
-    the standard rep); discharged here by direct import — this file is the
-    assembly, not the keystone. (The two `EF` definitions are token-identical,
+    the standard rep); discharged here by direct import, since this file is the
+    assembly rather than the keystone. (The two `EF` definitions are token-identical,
     hence definitionally equal.) -/
 theorem lemma_7_2 {F : Type*} [Fintype F] [DecidableEq F]
     (hF : 2 ≤ Fintype.card F) (D : Matrix F F ℝ)
@@ -105,29 +102,48 @@ theorem lemma_7_2 {F : Type*} [Fintype F] [DecidableEq F]
     ∃ cF : ℝ, 0 < cF ∧ D = cF • ((1 : Matrix F F ℝ) - EF F) :=
   ObserverPatchHolography.YangMillsLemma72.lemma_7_2 hF D hPSD hComm hKer
 
-/-- Convenience projection of `lemma_7_2` down to its positivity component.
+/-- **Lemma 7.2, unique-scalar form.** Under the hypotheses of the imported
+    keystone the relaxation rate is more than available: it is the *only*
+    positive scalar with `D = cF • (I − E_F)`.
 
-    **Read the statement, not the proof.** The conclusion `∃ cF, 0 < cF` mentions none of the
-    hypotheses and is provable by `⟨1, by norm_num⟩` alone, so as a *statement* this carries no
-    information: it is a weaker sibling of the re-export directly above, which keeps the real content
-    `D = cF • (1 - EF F)`. The proof does invoke `lemma_7_2`, but a reader auditing statements would
-    be misled by that. Nothing in the assembly consumes this lemma (an earlier docstring claimed it
-    did, which was false); it is retained only as a named entry point for `#print axioms`. Prefer
-    `lemma_7_2` — or the full-strength re-export above — for any real use. -/
-theorem collar_rate_pos {F : Type*} [Fintype F] [DecidableEq F]
+    Existence is `lemma_7_2`.  Uniqueness consumes `|F| ≥ 2`: that hypothesis
+    supplies a pair `a ≠ b` of fiber points, and at such a pair the off-diagonal
+    entry `(I − E_F) a b = −|F|⁻¹` is nonzero, so two scalars agreeing on
+    `cF • (I − E_F)` agree at that entry and hence agree.  On a one-point fiber
+    `I − E_F` vanishes and every positive scalar satisfies the equation, which is
+    exactly what `|F| ≥ 2` excludes. -/
+theorem collar_rate_unique {F : Type*} [Fintype F] [DecidableEq F]
     (hF : 2 ≤ Fintype.card F) (D : Matrix F F ℝ)
     (hPSD : D.PosSemidef)
     (hComm : ∀ σ : Equiv.Perm F, Commute (σ.permMatrix ℝ) D)
     (hKer : ∀ v : F → ℝ, D.mulVec v = 0 ↔ ∃ c : ℝ, v = fun _ => c) :
-    ∃ cF : ℝ, 0 < cF :=
-  let ⟨cF, hpos, _⟩ := lemma_7_2 hF D hPSD hComm hKer
-  ⟨cF, hpos⟩
+    ∃! cF : ℝ, 0 < cF ∧ D = cF • ((1 : Matrix F F ℝ) - EF F) := by
+  obtain ⟨cF, hcF_pos, hcF_eq⟩ := lemma_7_2 hF D hPSD hComm hKer
+  -- `|F| ≥ 2` supplies two distinct fiber points.
+  obtain ⟨a, b, hab⟩ := Fintype.one_lt_card_iff.mp (by omega : 1 < Fintype.card F)
+  have hcard_pos : (0 : ℝ) < (Fintype.card F : ℝ) := by
+    have h : 0 < Fintype.card F := by omega
+    exact_mod_cast h
+  have hEF : EF F a b = ((Fintype.card F : ℝ))⁻¹ := by
+    simp [EF]
+  -- The off-diagonal entry of `I − E_F` is `−|F|⁻¹`, hence nonzero.
+  have hMab : ((1 : Matrix F F ℝ) - EF F) a b ≠ 0 := by
+    rw [Matrix.sub_apply, Matrix.one_apply_ne hab, hEF, zero_sub, neg_ne_zero]
+    exact inv_ne_zero hcard_pos.ne'
+  refine ⟨cF, ⟨hcF_pos, hcF_eq⟩, ?_⟩
+  rintro c ⟨-, hc⟩
+  have hsub : (c - cF) • ((1 : Matrix F F ℝ) - EF F) = 0 := by
+    rw [sub_smul, ← hc, ← hcF_eq, sub_self]
+  have hentry := congrFun (congrFun hsub a) b
+  rw [Matrix.smul_apply, Matrix.zero_apply, smul_eq_mul] at hentry
+  have hzero := (mul_eq_zero.mp hentry).resolve_right hMab
+  linarith
 
 /-! ## Operator setup: a real Hilbert space
 
 (The paper's application is finite-dimensional, whence complete; only
 completeness is consumed by the Loewner/positivity machinery, so we
-hypothesize exactly that — the finite-dimensional case is an instance.) -/
+hypothesize exactly that, and the finite-dimensional case is an instance.) -/
 
 variable {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
   [CompleteSpace E]
@@ -139,7 +155,7 @@ noncomputable def repairGenerator {ι : Type*} (s : Finset ι)
     (Ec : ι → (E →L[ℝ] E)) (rate : ι → ℝ) : E →L[ℝ] E :=
   ∑ a ∈ s, rate a • ((1 : E →L[ℝ] E) - Ec a)
 
-/-! ## §8.1 legacy gap engine — imported commuting-projection statement -/
+/-! ## §8.1 gap engine: the imported commuting-projection statement -/
 
 /-- **Proposition 8.1 (imported).** For a finite family of **mutually commuting**
     orthogonal (star) projections `Ec` whose non-commutative product equals the
@@ -169,9 +185,9 @@ theorem uniform_floor {ι : Type*} (s : Finset ι) (hne : s.Nonempty) (rate : ι
   obtain ⟨a₀, ha₀, hmin⟩ := s.exists_min_image rate hne
   exact ⟨rate a₀, hpos a₀ ha₀, hmin⟩
 
-/-! ## §7.3 legacy assembly — the special commuting finite-gap deliverable -/
+/-! ## §7.3 assembly: the special commuting finite-gap deliverable -/
 
-/-- **Legacy Theorem 7.3 / 7.4 (commuting finite representation gap).** Assume
+/-- **Theorem 7.3 / 7.4 (commuting finite representation gap).** Assume
     each collar rate satisfies `rate a > 0`, then combine Proposition 8.1
     (commuting colors ⇒ constant-rate gap) with the uniform floor (Lemma 7.4):
     the repair generator dominates `c_* · (I − P₀)` with `c_* > 0`.
@@ -182,13 +198,13 @@ theorem uniform_floor {ι : Type*} (s : Finset ι) (hne : s.Nonempty) (rate : ι
     to `Ec` or `rate` and does not consume `lemma_7_2`.
 
     This is `Δ_rep ≥ c_* > 0` only on the special pairwise-commuting branch.
-    It is not the current paper's noncommuting Dobrushin theorem and supplies
-    no premise of the current continuum receipt without an additional
-    compatibility proof.  It says nothing about `Δ_YM`; the continuum bridge
+    It is not the paper's noncommuting Dobrushin theorem and supplies no
+    premise of the continuum receipt without an additional compatibility
+    proof.  It says nothing about `Δ_YM`; the continuum bridge
     is not stated, assumed, or proved here.
 
     Proof shape: `c_* · (I − P₀) ≤ ∑ c_* · (I − E_C) ≤ ∑ c_C · (I − E_C)`, where
-    the first `≤` is Prop 8.1 and the second is rate-monotonicity — each summand
+    the first `≤` is Prop 8.1 and the second is rate-monotonicity: each summand
     grows because `c_C ≥ c_*` (uniform floor) and `I − E_C ⪰ 0` (star
     projection), so the difference is a sum of positive operators. -/
 theorem thm_7_3_finite_gap {ι : Type*} (s : Finset ι) (hne : s.Nonempty)
@@ -228,11 +244,11 @@ theorem thm_7_3_finite_gap {ι : Type*} (s : Finset ι) (hne : s.Nonempty)
 /-! ## Axiom self-audit (build-log visible)
 
 Expected report for every theorem below: exactly
-`[propext, Classical.choice, Quot.sound]` — the three standard Mathlib axioms,
+`[propext, Classical.choice, Quot.sound]`, the three standard Mathlib axioms:
 no `sorryAx`, no project-level axiom. -/
 
 #print axioms lemma_7_2
-#print axioms collar_rate_pos
+#print axioms collar_rate_unique
 #print axioms prop_8_1
 #print axioms uniform_floor
 #print axioms thm_7_3_finite_gap

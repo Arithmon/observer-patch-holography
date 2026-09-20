@@ -5,17 +5,17 @@ import EventAlgebra.Basic
 
 The Lüders update rule for conditioning a state on an event:
 
-* `EventAlgebra.luedersUpdate` — `ρ ↦ (Tr(ρ P))⁻¹ • (P ρ P)`;
+* `EventAlgebra.luedersUpdate`: `ρ ↦ (Tr(ρ P))⁻¹ • (P ρ P)`;
 * the update is again a state whenever the Born weight is nonzero
   (equivalently: has strictly positive real part);
-* **repeatability** — the conditioned state assigns weight `1` to the
+* **repeatability**: the conditioned state assigns weight `1` to the
   conditioning event;
-* **idempotence** — conditioning twice on the same event equals
+* **idempotence**: conditioning twice on the same event equals
   conditioning once;
-* **compatibility** — for commuting events, sequential conditioning
+* **compatibility**: for commuting events, sequential conditioning
   composes to conditioning on the product event, hence is
   order-exchangeable;
-* the **commuting reduction** — when the state commutes with the event,
+* the **commuting reduction**: when the state commutes with the event,
   the update is the normalized block restriction `(Tr(ρ P))⁻¹ • (ρ P)`.
 
 ## Tagging convention

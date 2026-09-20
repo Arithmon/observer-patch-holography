@@ -186,7 +186,7 @@ theorem a3_closes_attached_reciprocal_first_hop
 /-- Strongest composition supported by the current A1 frame and A3 state
 theorems.  The complete directed primitive orbit becomes reciprocal from its
 antipodal spatial realization; A3 fixes its directional weights.  The
-candidate still has to be identified with this direct first-hop action by
+candidate has to be identified with this direct first-hop action by
 `hattach`. -/
 theorem a3_closes_attached_direct_first_hop_on_antipodal_frame
     (K : Set (Fin 12 → ℝ)) (F : (Fin 12 → ℝ) → ℝ)

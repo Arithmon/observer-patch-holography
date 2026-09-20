@@ -17,7 +17,7 @@ interface without adding a source or laboratory identification.
   ranges.  Its kernel is exactly the declared diagonal `ZMod 6` kernel.
 * `selectedMappedMatter` attaches the supplied anomaly-free selection mask
   to that same action.  The selected support is one of the two exterior
-  parity rows, is action-invariant, and still detects exactly the same
+  parity rows, is action-invariant, and detects exactly the same
   kernel.
 
 The finite product, partition, component map, weights, and selection mask

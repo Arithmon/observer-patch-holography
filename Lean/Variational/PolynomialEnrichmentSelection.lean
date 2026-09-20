@@ -108,7 +108,7 @@ discharge of PR-06 and not a physically derived symmetry: no Galilei
 group, no boost action on realized histories, and no invariance of the
 committed source law is constructed, and the physical status of the
 clause is a register-side question.  The committed velocity-only
-clause results of `EnrichmentCharacterization` are unchanged and still
+clause results of `EnrichmentCharacterization` are unchanged and
 required.  The realized-history no-go of `RealizedHistoryLegendreNoGo`
 stays in force.  The full two-slot kernel of the clause is not
 classified here beyond the exhibited members: the quadratics and the

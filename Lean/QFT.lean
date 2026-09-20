@@ -176,12 +176,12 @@ first-order interaction spreading leaves the left regional algebra, and a
 static interaction-deletion control is exact.  An
 explicit failure of selected-state invariance under the regional conditional
 expectation diagnoses that particular expectation; compatible restrictions
-of the global state to the regional algebras still exist.  Thus a finite
+of the global state to the regional algebras exist.  Thus a finite
 regional diamond and ambient dynamics are co-located on the GNS carrier, but
 the result is not a dynamics-preserved regional net.  Source selection,
 physical regions and time, continuum or infinite-volume
 limits, renormalization flow, fields, particles, scattering, detectors, and a
-physical time-slice theorem remain open.
+physical time-slice theorem are open register premises.
 `QFT.SourceHistoryGNSDynamics` closes a different finite attachment gap. The
 exact empirical law and repair-count action of the retained eight-history
 source packet become a diagonal density and positive Hamiltonian on one

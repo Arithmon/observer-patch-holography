@@ -8,7 +8,7 @@ grammar.  Given a finite event type, a decidable relation `R`, and a supplied
 natural-number rank which strictly increases on `R`, it constructs semantic
 commits with one register per event such that authenticated direct parenthood
 is exactly `R`.  Generated precedence is therefore the transitive closure of
-`R`; when `R` is already transitive, generated precedence is exactly `R`.
+`R`; when `R` is transitive, generated precedence is exactly `R`.
 
 The construction uses event `c`'s own register as its source token.  Commit
 `c` writes that register, and commit `d` certifies/read-cites it precisely when
@@ -77,7 +77,7 @@ def commit (d : Event) : SemanticCommit Event Unit Event where
     subst c
     simp [afterState]
 
-/-- The compiler is exact already at the authenticated direct-edge level.
+/-- The compiler is exact at the authenticated direct-edge level.
 For a transitive input `R`, these edges are all supplied strict-order pairs;
 the compiler does not reduce them to Hasse covers. -/
 theorem authenticatedParent_commit_iff (c d : Event) :

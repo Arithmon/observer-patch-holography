@@ -161,7 +161,7 @@ theorem auxiliaryPlaneWave_q_equation (k x : CarrierPoint) :
 
 /-! ## Axiom audit
 
-The lift uses the previously defined equal-source-counting completion
+The lift uses the declared equal-source-counting completion
 generator and ordinary algebra.  A2 and A3 select that generator only under
 the feasibility, naturality, objective, and unique-minimizer premises carried
 by `A2A3DirectedSeamProjection`.  The plane-wave results inherit the disclosed

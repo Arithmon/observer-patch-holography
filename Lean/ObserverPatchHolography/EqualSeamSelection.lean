@@ -34,7 +34,7 @@ The selected expected repair is therefore
 `I - graphLaplacian / (2 * seamCount)`.
 
 This is a theorem with ordinary hypotheses, not a new Lean axiom.  The
-canonical basis does not currently provide the A1-R/A2-R fields.  On a
+canonical basis does not provide the A1-R/A2-R fields.  On a
 refined mesh, carrier A5 symmetry alone need not be transitive on all refined
 edges, so an all-level use additionally needs either a proved single move
 orbit or a source-derived unit-counting reference on the complete refined
@@ -172,7 +172,7 @@ has several move orbits.  The reference is fixed before optimization to one
 unit per registered primitive event.  The objective is nonnegative on the
 feasible set and vanishes there only at that counting reference.
 
-The canonical A1--A3 basis does not currently construct this packet on every
+The canonical A1--A3 basis does not construct this packet on every
 refinement level.  In particular, A5 invariance within each edge orbit does
 not supply its cross-orbit reference field. -/
 structure ExactCountingMoveProjection where

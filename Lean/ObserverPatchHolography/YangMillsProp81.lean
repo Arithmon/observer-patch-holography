@@ -1,16 +1,16 @@
 import Mathlib
 
 /-!
-# Yang–Mills finite repair-gap — Proposition 8.1 (commuting-color spectral gap)
+# Yang–Mills finite repair-gap: Proposition 8.1 (commuting-color spectral gap)
 
 Formalisation of the **finite, real** §8 payoff of B. Müller, *Explaining the
 Yang–Mills Mass Gap with Observer-Patch Repair Dynamics* (r1515):
 
 > **Proposition 8.1.** Let `{Eₐ}_{a∈s}` be a finite family of **mutually
 > commuting** orthogonal (star) projections on a real Hilbert space (the
-> paper's case is finite-dimensional — formalized in the natural generality,
+> paper's case is finite-dimensional, formalized in the natural generality,
 > only completeness is consumed), and let `P₀ = ∏ₐ Eₐ` be their
-> (non-commutative) product — the
+> (non-commutative) product, the
 > orthogonal projection onto the joint fixed space `⋂ₐ Ran Eₐ`.
 > Then for any constant rate `c_* > 0`,
 > `      c_* · (I − P₀)  ≤  ∑ₐ c_* · (I − Eₐ),`
@@ -22,7 +22,7 @@ The mathematical heart is the commuting-projection operator inequality
 proved by induction on the finite index set with the two-projection step
 `two_proj_le`. Everything downstream (`prop_8_1`, `prop_8_1_gap`) is scaling.
 
-## Honest scope (read this first)
+## Scope (read this first)
 
 This is an **implication**, nothing more.  The star-projection, commutation, and
 product-identification clauses are hypotheses here (`hE`, `hc`, `hprod`).  A
@@ -35,7 +35,7 @@ certificate that would bridge them (Müller's **Assumption 9.2**: Schwinger
 convergence, reflection positivity, Osterwalder–Schrader, non-triviality) is the
 genuine open problem and is **untouched, unassumed, unclaimed**.
 
-The core inequality `I − ∏ Eₐ ≤ ∑ (I − Eₐ)` needs **zero** physical input — it is
+The core inequality `I − ∏ Eₐ ≤ ∑ (I − Eₐ)` needs **zero** physical input: it is
 a clean finite-dimensional operator fact on any commuting family of orthogonal
 projections. That fact is the real residue; the "mass gap" is rhetoric around it.
 
@@ -51,7 +51,7 @@ exact ObserverPatchHolography.YangMillsProp81.prop_8_1 s Ec P0 hE hc hprod hcpos
 
 `thm_7_3_finite_gap` then combines this inequality with a uniform floor on
 directly assumed positive collar rates.  It does not consume Lemma 7.2; no Lean
-theorem currently bridges that uniform-fiber matrix coefficient to the collar
+theorem bridges that uniform-fiber matrix coefficient to the collar
 rate argument.
 
 SCOPE: machine-checked here is the commuting-projection inequality and its
@@ -66,7 +66,7 @@ open scoped RealInnerProductSpace
 
 /-! **Real Hilbert space** carrier of the repair generator. In the paper's
 application `E` is finite-dimensional (whence complete), but only completeness
-is actually consumed by the positivity/Loewner machinery — so we hypothesize
+is actually consumed by the positivity/Loewner machinery, so we hypothesize
 exactly `[CompleteSpace E]` and the finite-dimensional case is an instance. -/
 variable {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
   [CompleteSpace E]
@@ -239,7 +239,7 @@ theorem prop_8_1_gap {ι : Type*} (s : Finset ι) (Ec : ι → (E →L[ℝ] E)) 
 /-! ## Axiom self-audit (build-log visible)
 
 Expected report for every theorem below: exactly
-`[propext, Classical.choice, Quot.sound]` — no `sorryAx`, no project axiom. -/
+`[propext, Classical.choice, Quot.sound]`, no `sorryAx`, no project axiom. -/
 
 #print axioms two_proj_le
 #print axioms noncommProd_isStarProjection

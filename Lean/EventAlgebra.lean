@@ -40,25 +40,25 @@ import EventAlgebra.SourcePhaseBornWeightBoundary
 import EventAlgebra.ProductSplitSeparability
 
 /-!
-# Finite projection-event calculus — umbrella root
+# Finite projection-event calculus: umbrella root
 
 A machine-checked Lean 4 development of finite-dimensional matrix algebras
 with projection events over `Matrix (Fin n) (Fin n) ℂ`:
 
-* `EventAlgebra.Basic` — events (Hermitian idempotents), states
+* `EventAlgebra.Basic`: events (Hermitian idempotents), states
   (positive trace-one matrices), Born weights with reality,
   nonnegativity, normalisation, additivity, complement bound, and
   monotonicity;
-* `EventAlgebra.Lueders` — Lüders conditioning: state preservation,
+* `EventAlgebra.Lueders`: Lüders conditioning: state preservation,
   repeatability, idempotence, compatibility for commuting events, the
   commuting reduction, a typed state-update boundary, and the unguarded
   fixed-point characterisation of
   conditioning;
-* `EventAlgebra.PartitionPinching` — a bundled commutant star-subalgebra and
+* `EventAlgebra.PartitionPinching`: a bundled commutant star-subalgebra and
   linear pinching map for arbitrary projective partitions: exact range and
   fixed points, positivity, unitality, trace preservation, the bimodule law,
   Hilbert--Schmidt geometry, uniqueness, and Lüders compatibility;
-* `EventAlgebra.PartitionAverage` — the commutative partition span with
+* `EventAlgebra.PartitionAverage`: the commutative partition span with
   closure, commutativity, and centrality theorems, and the bundled averaging
   expectation onto it: exact range, trace duality, uniqueness, tower laws
   with the pinching, Born-statistics preservation, and the
@@ -76,19 +76,19 @@ with projection events over `Matrix (Fin n) (Fin n) ℂ`:
 * `EventAlgebra.NoBroadcastingAdapter`: the sharp-state no-cloning
   obstruction for a common isometric copier, plus the explicit interface for
   attaching a separate finite mixed-state no-broadcasting theorem;
-* `EventAlgebra.StateExpectation` — the bundled expectation functional
+* `EventAlgebra.StateExpectation`: the bundled expectation functional
   `M ↦ Tr(ρ M)`: positivity, normalisation, and its
   restriction to events (the Born weight);
-* `EventAlgebra.Robertson` — the supplied-state finite Robertson inequality,
+* `EventAlgebra.Robertson`: the supplied-state finite Robertson inequality,
   its ordinary-commutator form, and exact noncommuting saturation and
   zero-variance controls;
-* `EventAlgebra.Superselection` — the exact operational quotient induced by
+* `EventAlgebra.Superselection`: the exact operational quotient induced by
   a supplied partition pinching, including invisibility of every
   cross-sector corner to the complete partition commutant;
-* `EventAlgebra.Tsirelson` — the Tsirelson bound `‖S‖ ≤ 2√2` for CHSH
+* `EventAlgebra.Tsirelson`: the Tsirelson bound `‖S‖ ≤ 2√2` for CHSH
   tuples, proved abstractly in unital C*-rings and instantiated for the
   finite matrix algebras;
-* `EventAlgebra.ExpectationBound` — the state-expectation bound
+* `EventAlgebra.ExpectationBound`: the state-expectation bound
   `‖Tr(ρ M)‖ ≤ ‖M‖` for the L2 operator norm and the state-level CHSH
   corollary for projection events;
 * `EventAlgebra.FiniteBornFrame`: the exact rank gap for the declared
@@ -116,7 +116,7 @@ Born weights of a unique density matrix, with no continuity axiom.
 binary sharp web admits the cube countermodel while explicit unsharp
 trine and calibration contexts exclude that response.  The companion
 `EventAlgebra.FiniteWebBornNoGo` proves that the whole current finite battery
-still admits a transverse cubic non-Born valuation, so it does not supply the
+admits a transverse cubic non-Born valuation, so it does not supply the
 full-effect premise of `FiniteBuschGleason`.
 `EventAlgebra.FrequencyConcentration` proves the exact frequency-operator
 moment and concentration theorems with the uniqueness of the stable

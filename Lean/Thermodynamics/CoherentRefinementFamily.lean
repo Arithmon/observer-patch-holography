@@ -66,7 +66,7 @@ What IS proved here:
   `fourLaws_composed_coherent` conjoins two results.  First it produces
   `FourLawConclusions` through `toAntecedent`, which carries rows PR-07
   and PR-15 over definitionally but fills the old PR-08 field with a
-  newly constructed degenerate constant family.  Separately it proves
+  constructed degenerate constant family.  Separately it proves
   the supplied directed family's envelope, concentration, and
   calibrated-member clauses.  It does not substitute that supplied
   family into the old `FourLawConclusions` type.
@@ -257,7 +257,7 @@ theorem uniform_concentration (F : CoherentRefinementFamily X E) :
 /-- **Retention, general form.** The committed `UniformGapRefinement`
 data yields a coherent family whenever its maps additionally satisfy
 directedness, the two coherence laws, energy compatibility, and ground
-preservation — exactly the content the committed structure does not
+preservation, exactly the content the committed structure does not
 carry. The envelope is the committed bound
 `cardBound * exp (-beta * gapBound)` with threshold `0`. -/
 noncomputable def ofUniformGap (F : UniformGapRefinement X E)
@@ -289,7 +289,7 @@ noncomputable def ofUniformGap (F : UniformGapRefinement X E)
 
 /-- **Retention, constant-carrier form.** The gap and cardinality bounds
 of a `UniformGapRefinement` on a constant family over a directed preorder
-yield a coherent family with newly installed identity refine maps and a
+yield a coherent family with installed identity refine maps and a
 ground datum chosen from `exists_minEnergy`.  This is a degenerate
 constant-carrier witness; it does not preserve arbitrary refine maps from
 the supplied `UniformGapRefinement`. -/

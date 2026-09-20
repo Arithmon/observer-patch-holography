@@ -232,22 +232,20 @@ theorem zeroth_multiplier_unique [Nonempty Ω]
 
 /-! ## First law -/
 
-/-- **First law, exact bookkeeping split.** The internal-energy change
-across a joint update of state and energy observable splits exactly
-into the heat increment, the work increment, and one explicit bilinear
-cross term. This is an algebraic matrix identity with no repair-law
-hypothesis; its diagonal instantiation at the repair step and the
-calibrated energy is the threaded theorem `first_heat_channel`, and
-the general matrix statement carries no repair-law content. Physical
-content additionally requires the calibration row and a protocol
-distinguishing controlled changes of the observable from state
-changes. -/
-theorem first_exact_split {n : ℕ}
-    (ρ dρ H dH : Matrix (Fin n) (Fin n) ℂ) :
-    internalEnergy (ρ + dρ) (H + dH) - internalEnergy ρ H
-      = heatIncrement dρ H + workIncrement ρ dH
-        + (Matrix.trace (dρ * dH)).re :=
-  firstLaw_split ρ dρ H dH
+/-- **Trace bookkeeping split of the internal-energy change.** The
+internal-energy change across a joint update of state and energy
+observable is the sum of three trace terms: the heat increment, the
+work increment, and one explicit bilinear cross term.
+
+Statement and proof are trace algebra, from bilinearity of the trace
+pairing; no repair law, protocol, or temperature enters. The diagonal
+instantiation at the repair step and the calibrated energy is the
+threaded theorem `first_heat_channel`, and this general matrix
+statement carries no repair-law content. Reading the three terms as
+heat and work rests on the separate energy-clock identification
+receipt: the calibration row and a protocol distinguishing controlled
+changes of the observable from changes of state. -/
+alias first_exact_split := firstLaw_split
 
 /-- **First law, modular form with exact remainder.** The entropy
 difference to the declared reference equals the modular-energy
@@ -882,6 +880,7 @@ theorem fourLaws_composed {Ω : Type u} [Fintype Ω] [DecidableEq Ω]
 
 end OPH.Thermodynamics
 
+#print axioms OPH.Thermodynamics.FourLawSurface.repairKernel_def
 #print axioms OPH.Thermodynamics.FourLawSurface.repairKernel_nonneg
 #print axioms OPH.Thermodynamics.FourLawSurface.repairKernel_row_sum
 #print axioms OPH.Thermodynamics.FourLawSurface.repairKernel_stationary

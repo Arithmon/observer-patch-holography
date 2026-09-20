@@ -16,7 +16,7 @@ Umegaki divergence must instead return `∞` when `supp ρ` is not contained in
 `supp σ`.
 
 This module proves that incompatibility exactly.  It is a fail-closed B9
-boundary: the specialized full-support Gibbs-family logarithms already in
+boundary: the specialized full-support Gibbs-family logarithms in
 the repository cannot simply be totalized to discharge B9's support-aware
 finite-matrix contract.
 -/
@@ -98,7 +98,7 @@ theorem binaryBasisZero_ne_zero : binaryBasisZero ≠ 0 := by
   norm_num [binaryBasisZero] at this
 
 /-- Each coordinate projection has unit trace and hence is a density
-matrix, not merely an abstract idempotent. -/
+matrix rather than an abstract idempotent. -/
 theorem binaryCoordinatePartition_proj_trace (i : Fin 2) :
     (binaryCoordinatePartition.proj i).trace = 1 := by
   rw [binaryCoordinatePartition, Matrix.trace_diagonal]

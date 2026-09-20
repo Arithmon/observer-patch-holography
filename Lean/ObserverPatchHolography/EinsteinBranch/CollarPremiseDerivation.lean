@@ -199,7 +199,7 @@ theorem toPerCutCollarModel_V_measured (G n : ℝ) (hG : 0 < G) (hn : 0 < n)
 /-- On modeled masses the additivity of the induced variance function is the
 measured disjoint-union additivity of `compoundVariance_disjUnion`, so the
 `V_additive` field of the induced model is a theorem of independence at every
-modeled mass, not only a property of the linear extension. -/
+modeled mass rather than a property of the linear extension. -/
 theorem toPerCutCollarModel_V_additive_measured (G n : ℝ) (hG : 0 < G)
     (hn : 0 < n) (s t : Finset M.ι) (hst : Disjoint s t) :
     (M.toPerCutCollarModel G n hG hn).V (M.mass s + M.mass t) =

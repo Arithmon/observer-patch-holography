@@ -81,7 +81,7 @@ theorem coordinate_from_base (i : Chart) (e : Event) :
       S.atlas.overlap.act S.base i (S.atlas.coordinate S.base e) :=
   S.atlas.coordinate_overlap (S.total S.base e) (S.total i e)
 
-/-- Exact base-chart order/cone agreement already forces event separation;
+/-- Exact base-chart order/cone agreement forces event separation;
 no independent injectivity field is needed. -/
 theorem separation_base :
     Function.Injective (S.atlas.coordinate S.base) := by

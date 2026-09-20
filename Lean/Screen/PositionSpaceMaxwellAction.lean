@@ -62,7 +62,7 @@ PREMISES.  Every theorem in this file is premise-free finite
 mathematics on the committed seam carrier, EXCEPT for one selection
 remark: the equal-weight inner products `realSeamInner` and
 `realPortInner` used throughout coincide with the PR-20 equal
-seam-counting selection — the same forced equal weight per seam that
+seam-counting selection, the same forced equal weight per seam that
 the register row PR-20 selects for the light-signal surface.  No field
 of any premise bundle and no premise-register row is consumed by any
 proof here; the coincidence is stated so that an instrument lane

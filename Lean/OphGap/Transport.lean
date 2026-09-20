@@ -13,7 +13,7 @@ under hypotheses that are themselves decided by the Lean kernel on the literal d
   a left inverse `oldT`), landing in `0, …, n-1`;
 * an edge reordering `perm : ℕ → ℕ` (with left inverse `invPerm`) carrying each original edge,
   relabelled by `new` and *canonicalised* (endpoints sorted, so orientation is forgotten), onto
-  the equal canonicalised edge of the relabelled list — decided by one linear pass over the
+  the equal canonicalised edge of the relabelled list, decided by one linear pass over the
   lists with `O(log n)` table lookups.
 
 The mathematical content is the quadratic form `x ⬝ Dᵀ D x = ∑_e (σ_e x(tgt e) - x(src e))²`:
@@ -436,7 +436,7 @@ theorem transportCheck_spec {n : Nat} {newT oldT : NTree} {nodes : List Nat} {or
 
 /-- The edge tables give an index equivalence carrying each original edge to its relabelled
 copy. (`perm` is injective because `invPerm` is a left inverse; equal lengths then make it a
-bijection — no surjectivity pass is evaluated.) -/
+bijection: no surjectivity pass is evaluated.) -/
 theorem index_equiv_of_check {n : Nat} {newT oldT : NTree} {nodes : List Nat} {origEs es : List Edge}
     {perm invPerm : NTree} {edgesT : Trie Edge}
     (hT : transportCheck n newT oldT nodes origEs es perm invPerm edgesT = true) :
@@ -549,8 +549,8 @@ by the transport theorem NO `(newT, oldT, es, cyc)` with `check` and `transportC
 true can exist for it. We exhibit the two natural attempts and let the kernel refuse them:
 
 * `sqRelabBij`: the identity relabelling (a genuine bijection of the right vertex set) onto a
-  certified 4-vertex graph with a *different* edge — refused by the multiset check;
-* `sqRelabCollapse`: a non-injective "relabelling" that folds vertex 3 onto vertex 2 —
+  certified 4-vertex graph with a *different* edge, refused by the multiset check;
+* `sqRelabCollapse`: a non-injective "relabelling" that folds vertex 3 onto vertex 2,
   refused by `nodesOk` (no left inverse).
 
 And a 3-vertex certified graph cannot receive the 4-vertex square at all (length check). -/

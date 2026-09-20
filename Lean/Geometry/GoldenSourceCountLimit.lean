@@ -14,7 +14,7 @@ is supplied. Representatives need not lie in their assigned cells.
 
 These results concern a declared mathematical population and coordinate
 measure. They do not select a source population, causal read law or clock,
-and do not yet identify generated-order interval or strict-pair counts.
+and do not identify generated-order interval or strict-pair counts.
 -/
 
 open MeasureTheory Set Filter

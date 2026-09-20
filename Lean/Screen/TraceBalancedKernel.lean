@@ -15,7 +15,7 @@ parameters `(k, l, r) ∈ ℤ/3 × ℤ/2 × ℤ/6` labelling
 
 CONTENT.
 
-* `tensorChar`: the additive character `(k, l, r) ↦ 2k + 3l + r` in `ℤ/6` —
+* `tensorChar`: the additive character `(k, l, r) ↦ 2k + 3l + r` in `ℤ/6`,
   the scalar by which the central element acts on the tensor carrier
   `ℂ³ ⊗ ℂ²` with unit `U(1)` charge; additivity is kernel-checked.
 * `kernel_card`: the kernel has exactly six elements.
@@ -24,7 +24,7 @@ CONTENT.
 * `gen_order_six`: the generator has exact order six.
 * `kernel_third_coordinate_image_card`, `kernel_third_coordinate_surjective`:
   the `U(1)` coordinate takes six distinct values on the six kernel
-  elements and reaches every sixth root — the cover-kernel
+  elements and reaches every sixth root, the cover-kernel
   parametrization `z ↦ (z², z⁻³, z)` on sixth roots of unity, since
   `2r mod 3 = k` and `-3r mod 2 = r mod 2 = l` on multiples of `gen`.
 * `neg_gen_mem`, `neg_kernel_stable`: negation (complex conjugation) fixes
@@ -96,7 +96,7 @@ theorem kernel_third_coordinate_surjective :
     ∀ r : ZMod 6, ∃ c : C, tensorCharFun c = 0 ∧ c.2.2 = r := by
   decide
 
-/-- Negation — complex conjugation on the central parameters — keeps the
+/-- Negation (complex conjugation on the central parameters) keeps the
 generator's inverse in the kernel, matching the signed antipodal sign
 reversal of the screen gluing class. -/
 theorem neg_gen_mem : tensorCharFun (-gen) = 0 := by decide

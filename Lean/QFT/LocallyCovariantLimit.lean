@@ -17,7 +17,7 @@ embedding* between admissible event regions is a regulator refinement
 together with a declared region inclusion of the refined source region
 into the target region.  Composition is the E1 refinement-transitivity
 receipt, so the category structure is a repackaging of fields the net
-already carries, not a new assumption.
+carries, not a new assumption.
 
 `observableFunctor` sends an admissible event region to its declared
 local observable algebra and a causal embedding to the composite of the
@@ -32,9 +32,9 @@ The witness example `supportGradedNet` is a finite causal observer net
 over the E6 witness tower whose regional algebras genuinely vary with
 the region: the empty region carries the scalar algebra and every
 nonempty region carries the full diagonal algebra.  Several committed
-net inhabitants already assign region-dependent algebras — `glueNet`,
+net inhabitants assign region-dependent algebras, `glueNet`,
 `characterCausalNet`, `properMeetNet`, `simEarnedNet`, and
-`sourceRegionalNet` all do — so region dependence is not what is new
+`sourceRegionalNet` all do, so region dependence is not what is new
 here; what this example adds is the nonvacuity receipt phrased through
 the functor.  `observableFunctor_obj_strict` and
 `observableFunctor_map_not_surjective` certify that the functor image of
@@ -191,7 +191,7 @@ theorem observableFunctor_map_eq {N : FiniteCausalObserverNet T}
 
 /-! ## A support-graded inhabitant with genuinely varying local algebras
 
-Region-dependent local algebras are already committed on other net
+Region-dependent local algebras are committed on other net
 inhabitants; what no committed net carries is a machine-checked proper
 inclusion between two of its regional algebras, which is what the
 observable functor needs to be certified nonconstant.  The
@@ -1102,7 +1102,7 @@ theorem colimitHom_ext {φ ψ : TowerColimit T →⋆ₐ[ℂ] B}
 end UniversalProperty
 
 /-- **The refinement-null kernel receipt.**  A finite-level observable dies
-in the colimit exactly when some declared refinement already kills it: the
+in the colimit exactly when some declared refinement kills it: the
 construction quotients by precisely the refinement-null kernel, so
 collapsing bonding maps are absorbed and nothing else is identified with
 zero. -/
@@ -1264,9 +1264,9 @@ theorem limitLocalAlgebra_refine {r s : ι} (hrs : r ≤ s) (U : N.Region r) :
     exact hX'
 
 /-- The colimit is a cocone over the finite-level observable functor: the
-functor's image of a causal embedding — the A3 refinement followed by the
+functor's image of a causal embedding, the A3 refinement followed by the
 isotony inclusion, which is `(observableFunctor N).map f` by
-`observableFunctor_map_eq` — is invisible at the limit. -/
+`observableFunctor_map_eq`, is invisible at the limit. -/
 theorem colimitMk_observableFunctor_map {U V : EventRegion N} (f : U ⟶ V)
     (X : N.localAlgebra U.regulator U.region) :
     colimitMk (((N.localInclusion (CausalEmbedding.emb f)).comp
@@ -1340,8 +1340,8 @@ theorem isCauchyEmbedding_iff {U V : EventRegion N} (f : U ⟶ V) :
     rw [hY, restrict_localInclusion]
 
 /-- **The time-slice property at the limit.**  A Cauchy causal embedding
-induces an equality of limit local algebras, not merely the isotony
-inclusion: at the limit the embedded region already carries every
+induces an equality of limit local algebras rather than the isotony
+inclusion: at the limit the embedded region carries every
 observable of its target. -/
 theorem limitLocalAlgebra_eq_of_isCauchyEmbedding {U V : EventRegion N}
     (f : U ⟶ V) (hf : IsCauchyEmbedding f) :
@@ -1366,7 +1366,7 @@ region. -/
 noncomputable def topToFull : topRegion ⟶ fullRegion :=
   ⟨le_refl (), Finset.singleton_subset_iff.mpr (Finset.mem_insert_self 0 {1})⟩
 
-/-- On the two-site label set any nonempty region already carries the full
+/-- On the two-site label set any nonempty region carries the full
 diagonal algebra, so enlarging the first singleton region to the full
 region adds no observables. -/
 theorem supportDiagonalAlgebra_full_le_singleton :
@@ -1386,7 +1386,7 @@ theorem topToFull_isCauchyEmbedding : IsCauchyEmbedding topToFull := by
   exact supportDiagonalAlgebra_full_le_singleton
 
 /-- **Nontriviality of the Cauchy class.**  The bottom-to-top embedding is
-not Cauchy: the separating projector lies in the top algebra but not in the
+not Cauchy: the separating projector lies in the top algebra and outside the
 bottom algebra, so no restriction can split that inclusion. -/
 theorem bottomToTop_not_isCauchyEmbedding :
     ¬ IsCauchyEmbedding bottomToTop := by
@@ -1738,7 +1738,7 @@ If the target regulator carries an observer, its selected state forces a
 positive dimension, matrix algebras over `ℂ` are simple, and a unital ring
 homomorphism out of a simple ring into a nontrivial ring is injective.  So
 a nontrivial refinement-null kernel is confined to observer-free
-regulators — exactly where `collapsingTower` lives — and the colimit
+regulators, exactly where `collapsingTower` lives, and the colimit
 construction above assumes neither regime. -/
 theorem algebraRefine_injective_of_observer (T : ConsensusTower ι)
     {r s : ι} (hrs : r ≤ s) (ho : Nonempty (T.Observer s)) :

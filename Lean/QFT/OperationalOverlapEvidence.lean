@@ -174,7 +174,7 @@ def recordAtOwnerRegion (W : FiniteEventGeometryWorld A sig S)
 
 /-- E6 cross-observer consumer.  If one active event is visible in two active
 charts owned by distinct operational observers, then its one packet-derived
-record restricts to the same section from the two owner regions.  Moreover,
+record restricts to the same section from the two owner regions, and
 the record is public to both owners and hence fixed by both operational
 self-readback maps.
 

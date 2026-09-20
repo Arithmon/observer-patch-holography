@@ -4,7 +4,7 @@ import QFT.TowerAnchoredCorrelation
 /-!
 # A common carrier for the committed 86/88 and 86/247 paths
 
-The committed quantum surface previously related the `86/88` carrier
+The committed quantum surface relates the `86/88` carrier
 `Fin 13 × Fin 14` and the `86/247` carrier `Fin 13 × Fin 13` only through
 their common observer-86 marginal.  This module constructs an actual common
 finite carrier from the same source rows:
@@ -17,7 +17,7 @@ at each of the same 32 steps.  Its two coordinate projections are genuine
 surjective, noninjective maps, not dimension-changing casts.
 They recover both committed pair paths pointwise.  The source-counted diagonal
 state on the triple carrier has exact partial traces equal to the counted
-states on both pair carriers; on the 86/247 side this is the already committed
+states on both pair carriers; on the 86/247 side this is the committed
 `correlationState`.
 
 The observer-86 checkpoint data are compatible with the same join: after
@@ -46,7 +46,7 @@ is deliberately `Fin 31`: no final-to-first cyclic edge is invented.  This is
 an evolved-data finite compatibility theorem.  It is not physical time, a
 Cauchy surface, a source-selected dynamics, a continuum net, or a discharge
 of PR-52/PR-58.  The slot reading and the common-step assembly remain the
-declared finite postprocessor already present in the imported source modules.
+declared finite postprocessor present in the imported source modules.
 -/
 
 set_option autoImplicit false
@@ -386,7 +386,7 @@ theorem tripleCorrelationState_marginal_88 :
   congr 1
   exact_mod_cast tripleCount_marginal_88 p
 
-/-- Dropping observer 88 recovers the already committed counted 86/247
+/-- Dropping observer 88 recovers the committed counted 86/247
 correlation state exactly. -/
 theorem tripleCorrelationState_marginal_247 :
     ptraceMiddle tripleCorrelationState = correlationState := by
@@ -599,7 +599,7 @@ theorem tripleWalkSliceProjector_marginal_88 (t : Fin 32) :
   rw [ptraceSnd_single_diagonal]
   rfl
 
-/-- The 86/247 marginal of the common slice is exactly the already
+/-- The 86/247 marginal of the common slice is exactly the
 committed pair slice. -/
 theorem tripleWalkSliceProjector_marginal_247 (t : Fin 32) :
     tripleMarginal247 (tripleWalkSliceProjector t) =
@@ -632,7 +632,7 @@ theorem ptraceSnd_tripleStepEvolve (t : Fin 31)
   simp [Equiv.prodCongr_symm]
 
 /-- Partial trace to the 86/247 carrier intertwines the common evolution
-with the already committed 86/247 path-read evolution. -/
+with the committed 86/247 path-read evolution. -/
 theorem ptraceMiddle_tripleStepEvolve (t : Fin 31)
     (M : Matrix TripleCarrier TripleCarrier ℂ) :
     ptraceMiddle (tripleStepEvolve t M) =

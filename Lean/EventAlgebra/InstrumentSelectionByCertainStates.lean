@@ -32,7 +32,7 @@ directions, and instantiates the selection on the committed
 * `FixesCertainStates Φ P`: `Φ σ = σ` for every state `σ` in the committed
   certainty set `certainStates P` (states of Born weight one for `P`).
   This is **certain-state invariance** (no-disturbance on outcome-certain
-  states): a state already certain of the outcome is left unchanged by the
+  states): a state certain of the outcome is left unchanged by the
   outcome operation.  It is a declared operational hypothesis.
 * `NormalizedOutputCertain Φ P`: the component form of the committed
   `PhaseInstrument.Repeatable` (the normalized post-measurement state of
@@ -130,7 +130,7 @@ Nothing here source-selects the outcome events `P k`, the preparation, the
 readback, or producer identity; the normalization `∑ k, P k = 1` of an
 outcome family is not used and not asserted.  The link between
 certain-state invariance and consensus repair (a repair leaves
-already-agreed configurations fixed) is an inference outside Lean: the
+agreed configurations fixed) is an inference outside Lean: the
 `FiniteConditionalRepair` kernel `heatBath` is proved here not to satisfy
 the clause on point laws; the other committed finite kernels and repair
 maps (`ObservableNormalForms.conditionalResamplingKernel`,

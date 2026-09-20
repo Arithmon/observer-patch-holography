@@ -20,12 +20,12 @@ carriers.
   `CPRegionalNet.transport`, exactly as the 86/88 diamond does at
   dimension 182.  One constant consensus-tower stage is built at
   dimension 169 whose commutative public layer is spanned by the
-  reindexed lifted checkpoint partition of observer 86 — the **same**
-  committed `chk86` family the 182-stage consumes — and whose selected
+  reindexed lifted checkpoint partition of observer 86, the **same**
+  committed `chk86` family the 182-stage consumes, and whose selected
   state is the uniform density matrix.  The template's nontriviality
   receipts are carried: every partition member lies in the anchored
   left region, every partition member is proper, and the anchored left
-  region is a proper subalgebra.  Both committed carriers now carry one
+  region is a proper subalgebra.  Both committed carriers carry one
   common tower-anchored construction (`bothCarriers_common_anchoring`).
 * **Hinge agreement.**  Observer 86 is the left observer of both
   committed pairs.  The 86/88 witness's left slot data are read from
@@ -240,8 +240,8 @@ consensus-tower stage (dimensions 182 and 169); on both sides every
 member of the stage's public checkpoint partition lies in the anchored
 left region and the anchored left region is proper.  This removes the
 asymmetry recorded in `QFT.SourceCorrelationCapstone`: the constant-
-tower transport now exists for both committed carriers in the same
-form.  The two carriers are **not** identified — the dimensions 169
+tower transport exists for both committed carriers in the same
+form.  The two carriers are **not** identified: the dimensions 169
 and 182 differ and no map between the anchored nets is constructed. -/
 theorem bothCarriers_common_anchoring :
     (anchoredNet = twoSlotNet.transport ambientEquiv

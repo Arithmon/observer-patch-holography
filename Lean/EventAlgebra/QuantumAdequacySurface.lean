@@ -459,7 +459,7 @@ theorem phase_boundary_summary :
 phase-sensitive projection effect, fixed-trace tomography, the proof that the
 effect is outside every committed phase-free real closure, and the exact
 absence boundary on realized outcomes.  This is algebraic phase completion,
-not an operational instrument; discharging PR-04 still requires a
+not an operational instrument; discharging PR-04 requires a
 source-produced operation and common-preparation outcome receipts. -/
 theorem phase_completion_composed :
     ComplexSourceAlgebraClosure sourcePhaseLift ∧

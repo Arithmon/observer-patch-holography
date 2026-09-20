@@ -52,7 +52,7 @@ theorem portRowAt_zero : portRowAt 0 = List.range 12 := by
 
 set_option maxHeartbeats 8000000 in
 set_option maxRecDepth 16384 in
-/-- The row law agrees with the multiplication table already certified on
+/-- The row law agrees with the multiplication table certified on
 `PortGroup`; this is an exact finite-table check, not an order argument. -/
 theorem portRowAt_mul : ∀ i j : Fin 60,
     portRowAt (portMulIndex i j) = comp (portRowAt i) (portRowAt j) := by

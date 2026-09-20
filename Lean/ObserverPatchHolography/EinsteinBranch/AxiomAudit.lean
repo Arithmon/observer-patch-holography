@@ -116,7 +116,7 @@ assert_no_sorry composedEinsteinAdmissibleTower
 rank-three quotient.  Source height is proved to be the attained maximum
 authenticated-parent-chain length and enters only an event placement.  Every
 finite log has an enumeration-dependent separated forward-causal placement;
-exact two-way order/cone equivalence still requires geometric order reflection. -/
+exact two-way order/cone equivalence requires geometric order reflection. -/
 
 assert_no_sorry OPH.Provenance.SemanticEventLog.sourceHeight_eq
 assert_no_sorry OPH.Provenance.SemanticEventLog.sourceHeight_lt_of_parent

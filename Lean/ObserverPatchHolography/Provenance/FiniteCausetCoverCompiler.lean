@@ -18,7 +18,7 @@ The proof separates two claims:
 
 This matches the logical shape used by the geometry-seeded causal-set control:
 only cover links need be encoded as authenticated reads; transitive causal
-order is reconstructed from them. It is still an expressivity theorem for a
+order is reconstructed from them. It is an expressivity theorem for a
 supplied relation. It does not derive `R`, select a physical event population,
 construct a threaded OPH execution, supply a count--volume law, or establish
 manifoldlikeness or a continuum limit.

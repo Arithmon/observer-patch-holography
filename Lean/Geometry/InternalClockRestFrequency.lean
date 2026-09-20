@@ -25,7 +25,7 @@ mass parameter is a declared hypothesis of each statement.  Nothing here
 constructs a physical clock, a measured frequency, an electron or a Compton
 value, a source-produced state, or an energy readout in laboratory units; the
 clock and energy calibration anchors and the observer-to-physical-spacetime
-attachment remain open register premises.  This is a formal
+attachment are open register premises.  This is a formal
 precursor for the internal-particle-clock observation row, not a physics
 attainment.
 -/

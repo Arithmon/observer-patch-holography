@@ -6,11 +6,11 @@ import Mathlib
 This module develops the elementary theory of finite-dimensional matrix
 algebras equipped with projection events over `Matrix (Fin n) (Fin n) ℂ`:
 
-* `EventAlgebra.IsEvent` — an **event** is a Hermitian idempotent
+* `EventAlgebra.IsEvent`: an **event** is a Hermitian idempotent
   (an orthogonal projection);
-* `EventAlgebra.IsState` — a **state** is a positive-semidefinite matrix of
+* `EventAlgebra.IsState`: a **state** is a positive-semidefinite matrix of
   trace one (a density matrix);
-* `EventAlgebra.bornWeight` — the **Born weight** `Tr(ρ P)` of an event `P`
+* `EventAlgebra.bornWeight`: the **Born weight** `Tr(ρ P)` of an event `P`
   under a state `ρ`, with reality, nonnegativity, normalisation, additivity
   on orthogonal events, the complement bound `≤ 1`, and monotonicity under
   subevents.

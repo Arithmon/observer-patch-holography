@@ -1,7 +1,7 @@
 import Mathlib
 
 /-!
-# Yang–Mills finite repair-gap — Lemma 7.2 (keystone: uniform hidden fiber)
+# Yang–Mills finite repair-gap: Lemma 7.2 (keystone: uniform hidden fiber)
 
 Formalisation of the **finite, real** §7.2 keystone of B. Müller, *Explaining
 the Yang–Mills Mass Gap with Observer-Patch Repair Dynamics* (r1515):
@@ -12,14 +12,14 @@ the Yang–Mills Mass Gap with Observer-Patch Repair Dynamics* (r1515):
 > scalar** multiple of `I − E_F`, where `E_F` is the mean projection.
 
 Proved concretely via the commutant of the permutation representation
-(two-valued form, `commutant_perm_two_valued`) — no algebraically-closed-field
+(two-valued form, `commutant_perm_two_valued`), no algebraically-closed-field
 Schur needed.
 
-## Honest scope (read this first)
+## Scope (read this first)
 
 This is an **implication**, nothing more. `hComm` (full-`S_F` symmetry) and
 `hKer` (kernel = constants) are the paper's *physical modelling assumptions*
-about the relaxation operator's structure — hypotheses here, discharged
+about the relaxation operator's structure, hypotheses here, discharged
 **nowhere** in Lean. This proves "uniform-fiber structure ⇒ scalar relaxation";
 it says **nothing** about `Δ_YM`. The continuum certificate (Müller's
 **Assumption 9.2**: Schwinger convergence, reflection positivity,
@@ -29,7 +29,7 @@ problem and is **untouched, unassumed, unclaimed**.
 ## Integration
 
 Extracted verbatim from the retired single-file artifact `RepairGap.lean`
-(Part I; now consolidated into these modules — see git history).  The assembly
+(Part I; consolidated into these modules, see git history).  The assembly
 module `ObserverPatchHolography.YangMillsGap` re-exports this theorem by direct
 import:
 ```
@@ -37,7 +37,7 @@ exact ObserverPatchHolography.YangMillsLemma72.lemma_7_2 hF D hPSD hComm hKer
 ```
 (the two `EF` definitions are token-identical, hence definitionally equal).
 That re-export is not a composition into `thm_7_3_finite_gap`: the latter takes
-positive collar rates directly and no theorem currently bridges this matrix
+positive collar rates directly and no theorem bridges this matrix
 relaxation and its coefficient to those Hilbert-space collar data.
 
 SCOPE: machine-checked here is the conditional uniform-fiber statement
@@ -130,7 +130,7 @@ theorem commutant_perm_two_valued
     have := hconj σ p q
     rwa [hσp, hσq] at this
 
-/-- **LEMMA 7.2 (keystone).**  Let `D` be positive semidefinite (this already bundles
+/-- **LEMMA 7.2 (keystone).**  Let `D` be positive semidefinite (this bundles
     Hermitian), commuting with the full symmetric group's permutation action, with kernel
     exactly the constants.  Then `D = c_F · (I − E_F)` for some `c_F > 0`.
 
@@ -140,8 +140,8 @@ theorem commutant_perm_two_valued
     * `hPSD`   ⇒ the quadratic form on `e_p − e_q` equals `2(a−b) ≥ 0`, fixing the sign.
     Setting `c_F := a − b` yields `c_F > 0` and `D = c_F · (1 − E_F)` entrywise.
 
-    HONEST: `hComm` and `hKer` are the paper's physical modelling assumptions, hypotheses
-    here — this proves "uniform-fiber structure ⇒ scalar relaxation", nothing about `Δ_YM`. -/
+    SCOPE: `hComm` and `hKer` are the paper's physical modelling assumptions, hypotheses
+    here: this proves "uniform-fiber structure ⇒ scalar relaxation", nothing about `Δ_YM`. -/
 theorem lemma_7_2
     (hF : 2 ≤ Fintype.card F) (D : Matrix F F ℝ)
     (hPSD  : D.PosSemidef)
@@ -215,7 +215,7 @@ theorem lemma_7_2
 /-! ## Axiom self-audit (build-log visible)
 
 Expected report for every theorem below: exactly
-`[propext, Classical.choice, Quot.sound]` — no `sorryAx`, no project axiom. -/
+`[propext, Classical.choice, Quot.sound]`, no `sorryAx`, no project axiom. -/
 
 #print axioms exists_perm_maps_two
 #print axioms perm_conj_invariant

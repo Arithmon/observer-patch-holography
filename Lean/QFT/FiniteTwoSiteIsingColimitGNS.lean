@@ -501,7 +501,7 @@ theorem represented_left_right_locality
     A₀ hA₀ B₀ hB₀).map stageRepresentation
 
 /-- The attached Hamiltonian annihilates the cyclic unit class.  The proof
-uses its star-square, not merely the vanishing one-point expectation. -/
+uses its star-square rather than the vanishing one-point expectation. -/
 theorem representedHamiltonian_cyclicUnit_eq_zero :
     representedHamiltonian cyclicUnit = 0 := by
   have hstarSquare :

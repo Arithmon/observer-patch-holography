@@ -236,7 +236,7 @@ theorem kolmogorov_criterion [Fintype V] (q : V → V → ℝ) (G : SimpleGraph 
 
 A concrete finite connected graph (the complete graph `⊤` on `Fin 3`, i.e. a triangle) with
 strictly positive rates whose oriented triangle `0 → 1 → 2 → 0` has affinity `log 2 ≠ 0`.
-Hence `CycleCondition` fails here — it is not vacuously true — and by `kolmogorov_criterion`
+Hence `CycleCondition` fails here (it is not vacuously true) and by `kolmogorov_criterion`
 this `q` admits no potential and no detailed-balance weight either.  So all three sides of the
 equivalence have real content (none is always true), and the `TFAE` is not degenerate. -/
 

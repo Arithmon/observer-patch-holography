@@ -110,7 +110,7 @@ structure WorldlineRealization {Record : Type u} {Event : Type v}
     causal (eventAt first) (eventAt second)
 
 /-- A real-valued record observable strictly increasing on the supplied
-observer record order.  It is an ordering coordinate, not yet proper time. -/
+observer record order.  It is an ordering coordinate, and not proper time. -/
 structure ClockReadout {Record : Type u}
     (records : ObserverRecordOrder Record) where
   read : Record -> Real

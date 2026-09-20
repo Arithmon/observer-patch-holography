@@ -98,8 +98,8 @@ WHAT IS PROVED.
    history of some coefficient state (`ampere_history_eq_assembled`,
    through the two-step form of the evolution `ampere_step_eq` and its
    uniqueness `ampere_unique`).  So the `h`-step of the assembled flow is
-   the committed scaled Ampere step on every zero-current history, not
-   only on the five listed families of `carrier_flow_five_modes`.  On the
+   the committed scaled Ampere step on every zero-current history, beyond
+   the five listed families of `carrier_flow_five_modes`.  On the
    nineteen nonzero curl modes, the energy-derived positive definite real
    form and Hermitian form of `FieldSectorEnergyInnerProduct` are preserved,
    the complex coordinates have the displayed phase and generator, the

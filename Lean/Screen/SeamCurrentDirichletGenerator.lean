@@ -193,7 +193,7 @@ theorem completionMarkovAverage_restricts_to_d6
   rw [completionPoint_translate]
 
 /-- Complexification of the completion average agrees exactly with the
-previously selected source-counting operator on every dense exact record. -/
+selected source-counting operator on every dense exact record. -/
 theorem completionMarkovAverage_complex_restriction
     (f : Vec3 → ℝ) (p : D6Point) :
     (completionMarkovAverage f (completionPoint p) : ℂ) =

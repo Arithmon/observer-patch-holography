@@ -7,7 +7,7 @@ set_option relaxedAutoImplicit false
 /-!
 # A selected-state GNS representation of the completed observer colimit
 
-A `ConsensusTower` already carries one normalized finite density matrix for
+A `ConsensusTower` carries one normalized finite density matrix for
 each observer, and `CoherentObserverFamily` selects compatible observers
 through the regulator system.  This module uses exactly those two committed
 inputs to descend the finite trace expectations to the filtered colimit,

@@ -1,8 +1,8 @@
 /-
-  RepairGapChain.lean — the OPH → Yang–Mills CONDITIONAL CHAIN, machine-checked.
+  RepairGapChain.lean: the OPH → Yang–Mills CONDITIONAL CHAIN, machine-checked.
 
   Self-contained (core Lean 4, NO Mathlib import), so it compiles + checks standalone
-  with plain `lean` — no heavy Mathlib build required.
+  with plain `lean`, no heavy Mathlib build required.
 
   Formalizes only a LOGICAL IMPLICATION SCHEMA associated with
     B. Müller, "Explaining the Yang–Mills Mass Gap with Observer-Patch Repair Dynamics":
@@ -10,7 +10,7 @@
         ⟹  positive continuum mass gap  Δ_YM ≥ c_* > 0   (Thm 11.1),
         and  Δ_YM = Δ_rep   (§12, exact gap accounting).
 
-  HONEST SCOPE (score-function discipline — do NOT overclaim):
+  SCOPE (score-function discipline, do NOT overclaim):
     * Only the CHAIN is proved here: "IF the certificate holds, the mass gap follows."
     * The certificate's deep analysis (Assumption 9.2 items Y1–Y6: Mosco convergence of
       the transfer forms, OS reconstruction, reflection positivity, the nontriviality
@@ -41,7 +41,7 @@
 
 namespace ObserverPatchHolography.RepairGapChain
 
-/-- Minimal order structure — exactly the two order facts the mass-gap chain uses.
+/-- Minimal order structure, exactly the two order facts the mass-gap chain uses.
     (Kept self-contained instead of importing Mathlib's `Preorder`.) -/
 class GapOrder (α : Type) where
   le : α → α → Prop
@@ -86,7 +86,7 @@ theorem mass_gap {H Lrep : Op α} {c_star zero : α}
   intro x hx
   exact cert.Lrep_gap x ((cert.spec_eq x).mp hx)
 
-/-- The gap is **strictly positive** — the actual "mass gap": every nonzero spectral
+/-- The gap is **strictly positive**, the actual "mass gap": every nonzero spectral
     value of H exceeds 0.  `Spec(H) ∩ (0, c_*) = ∅` with `c_* > 0`. -/
 theorem mass_gap_pos {H Lrep : Op α} {c_star zero : α}
     (cert : Certificate H Lrep c_star zero) :
@@ -138,7 +138,7 @@ example :
 /-! ## Axiom self-audit (build-log visible)
 
 `mass_gap` / `mass_gap_pos` / `gap_eq` are pure logic over the `Certificate`
-hypotheses — expected axiom report: NONE (not even propext). -/
+hypotheses; expected axiom report: NONE (not even propext). -/
 
 #print axioms mass_gap
 #print axioms mass_gap_pos

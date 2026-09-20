@@ -20,7 +20,7 @@ noncomputable section
 /-!
 # Conditional curl-sector Stone and clock bridge
 
-This module compares three already-constructed one-parameter objects without
+This module compares three constructed one-parameter objects without
 identifying them merely because their parameters are all written `t`:
 
 * the energy-derived Hermitian coefficient flow on the nineteen exact curl
@@ -43,7 +43,7 @@ discrete Maxwell steps provided two explicit sufficient calibration hypotheses
 are supplied: the record's step duration equals the Courant step, and its one
 positive mass/rate equals that mode's selected principal-branch frequency.  A
 sharp obstruction shows only that one identical scalar rate cannot equal all
-of those principal-branch frequencies: already the eigenvalue-2 and
+of those principal-branch frequencies: the eigenvalue-2 and
 eigenvalue-3 sectors differ at every positive admissible step.
 
 No physical identification is proved.  The diagonal matrix algebra is a new
@@ -88,7 +88,7 @@ def energySchrodingerVector
 def curlPhase (h t : ℝ) (i : Fin 19) : ℂ :=
   Complex.exp (-Complex.I * ((curlFrequency h i * t : ℝ) : ℂ))
 
-/-- The nineteen-mode coefficient Hamiltonian on one newly constructed full
+/-- The nineteen-mode coefficient Hamiltonian on one constructed full
 matrix block.  It is diagonal in the exact curl eigenbasis. -/
 def curlHamiltonian (h : ℝ) : Matrix (Fin 19) (Fin 19) ℂ :=
   Matrix.diagonal fun i ↦ (curlFrequency h i : ℂ)
@@ -361,7 +361,7 @@ theorem curl_index_not_equiv_committed_private_index :
   have hc := Fintype.card_congr e
   norm_num at hc
 
-/-- The currently committed common-world witness does not carry the new
+/-- The committed common-world witness does not carry the new
 calibration: its declared clock duration is `1`, whereas its certified
 Maxwell step is `1/2`. -/
 theorem committedWitness_not_mode_clock_calibrated (i : Fin 19) :
@@ -371,7 +371,7 @@ theorem committedWitness_not_mode_clock_calibrated (i : Fin 19) :
   norm_num [instrumentedCommittedWitness,
     OPH.ScaledMaxwellStability.demoScaledBundle] at hd
 
-/-- Already the eigenvalue-2 row and eigenvalue-3 row have different lattice
+/-- The eigenvalue-2 row and eigenvalue-3 row have different lattice
 frequencies for every positive step in the full curl window. -/
 theorem curlFrequency_eigen_two_ne_three (h : ℝ) (hh : 0 < h)
     (h4 : h ^ 2 * (3 + Real.sqrt 5) < 4) :

@@ -6,7 +6,7 @@ set_option autoImplicit false
 /-!
 # Source-phase selection to the declared Lüders outcome map
 
-This module joins the generated source-phase semantics to the already declared
+This module joins the generated source-phase semantics to the declared
 Lüders instrument, at the matrix level only.  A generated positive phase
 effect is assigned the declared phase-outcome label `0`, and a generated
 negative phase effect is assigned label `1`.  For every enabled `SourceStep`,

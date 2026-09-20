@@ -13,7 +13,7 @@ satisfies `‖S‖ ≤ 2 √2`.
 
 The proof is the classical square trick:
 
-1. `chsh_mul_self` — the ring identity
+1. `chsh_mul_self`: the ring identity
    `S² = 4·1 − (a₀a₁ − a₁a₀)(b₀b₁ − b₁b₀)`, proved with no norm and no
    star, in a bare ring (sign convention: commutators `[x, y] = xy − yx`,
    and the minus sign in front of the product of commutators);
@@ -41,7 +41,7 @@ produces self-adjoint involutions from events, connecting the two layers.
 ## Tagging convention
 
 As in `EventAlgebra.Basic`.  Everything in this module is **algebra-only**:
-no state, no trace pairing — only ring, star, and norm structure.
+no state, no trace pairing, only ring, star, and norm structure.
 -/
 
 namespace EventAlgebra

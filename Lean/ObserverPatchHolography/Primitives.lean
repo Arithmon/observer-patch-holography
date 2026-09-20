@@ -41,7 +41,7 @@ no `native_decide`, no new axiom; CI checks that `lake build` emits zero
 * `demoCarrier` / `obsMap_demoCarrier_nonconstant` : an explicit two-patch
   carrier and a proof that its `obsMap` separates two records. This makes the
   non-vacuity of `gaugeEquiv`/`consistent_iff_edgeConsistent` an in-file fact
-  (gaugeEquiv is strictly finer than the total relation), not merely an
+  (gaugeEquiv is strictly finer than the total relation) rather than an
   argued universal claim. Adds no `sorry`.
 
 ## The constructed async machinery
@@ -1167,8 +1167,8 @@ theorem demoCarrier_terminates :
     identity record `id = (fun b => b)`, repairing `false` then `true` gives the
     constant `true`, whereas `true` then `false` gives the constant `false` : a
     single record witnessing `lr i (lr j ·) ≠ lr j (lr i ·)`. Hence `demoLR`
-    violates `H4`, so `confluence_of_commute` does not apply to it. This is not
-    merely a failed sufficient condition : `demoLR` is in fact NON-CONFLUENT
+    violates `H4`, so `confluence_of_commute` does not apply to it. This is more
+    than a failed sufficient condition : `demoLR` is in fact NON-CONFLUENT
     (`demoCarrier_not_confluent` below): the two firing orders reach two distinct
     normal forms, so on this carrier there is genuinely no unique objective public
     reality. -/
@@ -1487,7 +1487,7 @@ theorem demoCarrier_dir_observer_unique_under_seed :
 The `#print axioms` outputs below confirm that the boundary-fiber reconstruction theorem
 and all its concrete witnesses depend ONLY on the standard Lean/Mathlib axioms
 (`propext`, `Classical.choice`, `Quot.sound`) : the same footprint as the constructed
-repair layer audited above; the file's formerly-declared `sorry`s are discharged, so the
+repair layer audited above; the file carries no `sorry`, so the
 "machine-checked" claim for observer-reconstruction carries no admissions anywhere. -/
 #print axioms boundary_fiber_observer_unique
 #print axioms boundary_preserved_reduction

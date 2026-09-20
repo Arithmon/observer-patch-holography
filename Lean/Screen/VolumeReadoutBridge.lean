@@ -183,7 +183,7 @@ theorem screenScalarField_eq_zeta_of_ratio {I : Type*}
     (J x) (Jbar x) (zeta x) (hJ x) (hJbar x) (hRatio x)
 
 /-- A common positive factor cancels between two positive-density readouts.
-A native producer must still prove that a physical rechart transforms both
+A native producer must prove that a physical rechart transforms both
 readouts by this same density factor. -/
 theorem screenScalar_common_density_factor
     (J Jbar jacobian : ℝ) (_hJ : 0 < J) (hJbar : 0 < Jbar)

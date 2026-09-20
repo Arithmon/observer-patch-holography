@@ -11,12 +11,12 @@ transitive `A5`-action on the twelve-point homogeneous space
 the finite **orbit / stabilizer / faithfulness** computations for the
 abstract `A5` carrier model:
 
-* `stabilizer_coe_one_eq_H5` — the stabilizer of the base vertex `⟦1⟧`
+* `stabilizer_coe_one_eq_H5`: the stabilizer of the base vertex `⟦1⟧`
   is exactly `H5` (so vertex stabilizers are the order-5 rotation
   subgroups), and `card_stabilizer_coe_one = 5`.
-* `orbit_stabilizer_defectSpace` — the orbit–stabilizer identity on the
+* `orbit_stabilizer_defectSpace`: the orbit–stabilizer identity on the
   twelve vertices: `|A5| = 12 * 5`, i.e. `60 = 12 * 5`.
-* `defectSpace_action_faithful` — the kernel of the action is trivial
+* `defectSpace_action_faithful`: the kernel of the action is trivial
   (`H5.normalCore = ⊥`), because `A5` is simple and `H5` is a proper
   subgroup.
 

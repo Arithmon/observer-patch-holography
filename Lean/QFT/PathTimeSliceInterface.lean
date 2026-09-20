@@ -24,7 +24,7 @@ last and first labels even though the corresponding source-transition counts
 are zero.  That terminal automorphism is a declared bookkeeping closure, not
 a committed source transition.  `sourceGeneratorEvolution` inhabits the corrected
 interface on a constant left region.  The single-projector walk candidate
-still fails generation even after transport, because its evolved generator is
+fails generation even after transport, because its evolved generator is
 again one diagonal projector.  These are finite structural facts only; PR-58
 and PR-52 remain open.
 -/
@@ -581,7 +581,7 @@ theorem walkSlice_generation_fails (t : Fin 32) :
 
 /-- **Transport-aware generation failure.**  Evolving the admitted singleton
 first does not repair the candidate: it becomes the singleton containing the
-next walk projector, which still generates only a diagonal algebra. -/
+next walk projector, which generates only a diagonal algebra. -/
 theorem walkSlice_evolved_generation_fails (t : Fin 32) :
     StarAlgebra.adjoin ℂ
         ((stepEvolve t : Matrix PairIndex247 PairIndex247 ℂ →
@@ -635,7 +635,7 @@ theorem liftedSourceGenerators_generate_left :
   rw [← StarAlgHom.map_adjoin]
   exact obs86_lifted_eq_leftSlot247
 
-/-- After one declared reindexing step, the evolved source generators still
+/-- After one declared reindexing step, the evolved source generators
 generate the next (here also left) regional algebra. -/
 theorem evolvedLiftedSourceGenerators_generate_left (t : Fin 32) :
     StarAlgebra.adjoin ℂ

@@ -184,7 +184,7 @@ theorem canonicalAcceptedStep_wellFounded
 def NodeScheduler (L : List Node) :=
   Nat → State → {n : Node // n ∈ L}
 
-/-- Attempts may stutter when the selected member already accepts. -/
+/-- Attempts may stutter when the selected member accepts. -/
 def attemptRun (L : List Node) : Nat → NodeScheduler L → State → State
   | 0, _sigma, s => s
   | n + 1, sigma, s =>

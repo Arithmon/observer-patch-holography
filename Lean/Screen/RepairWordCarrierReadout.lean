@@ -23,7 +23,7 @@ The resulting universal record module has a dense isometric image in the
 repair-selected three-dimensional carrier.  Its metric completion is
 Euclidean three-space up to the canonical comparison equivalence for abstract
 completions.  This is a local source-carrier theorem.  A physical position
-interpretation still requires the source action to be faithful and A2-RC to
+interpretation requires the source action to be faithful and A2-RC to
 select this response topology for observer readback.  Global overlap and
 refinement gluing, physical scale, time, and field attachment are not proved
 here.

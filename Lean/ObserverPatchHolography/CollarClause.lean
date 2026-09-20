@@ -8,8 +8,8 @@ import ObserverPatchHolography.Primitives
 Issue #544 asks whether overlap-consistent repair on the declared
 fixed-cutoff branch *forces* the central-interface collar clause (the
 named gravity interface in The spacetime and Einstein paper,
-`par:cicclause`): non-central cross-cut couplings excluded, not merely not
-selected. The sharp failure mode is pinned in
+`par:cicclause`): non-central cross-cut couplings excluded rather than left
+unselected. The sharp failure mode is pinned in
 `code/collar_alignment/test_msa_characterizations.py::test_descent_invariant_but_noncentral_interface_breaks_alignment`:
 a `K`-invariant but **non-central** cross-cut coupling that respects the
 boundary symmetry (so it changes no constraint) while breaking entropic
@@ -151,7 +151,7 @@ private theorem choose_eq_of_pred_iff' {α : Sort*} {p q : α → Prop}
   rfl
 
 /-- **The constructed local move is determined by the constraint family** :
-    equal operators, not merely equivalent behaviour. The trigger, the
+    equal operators rather than equivalent behaviour. The trigger, the
     solvability predicate and the classically chosen repaired state all read
     only edge-consistency data, which the two kits share. -/
 theorem localRepair_eq (h : SameConstraintFamily K₁ K₂) :

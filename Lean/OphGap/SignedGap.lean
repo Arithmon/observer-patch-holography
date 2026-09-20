@@ -237,7 +237,7 @@ theorem tri_connected : ∀ v : Fin 3, ∃ s, SignedReach triSrc triTgt triσ 0 
   · exact ⟨1 * triσ 0, SignedReach.fwd 0 (SignedReach.refl 0)⟩
   · exact ⟨1 * triσ 0 * triσ 1, SignedReach.fwd 1 (SignedReach.fwd 0 (SignedReach.refl 0))⟩
 
-/-- Step 3 again, now as a corollary of the general balance theorem. -/
+/-- Step 3 again, as a corollary of the general balance theorem. -/
 theorem triangle_posDef_via_balance : triangleL.PosDef := by
   rw [triangleL_eq_gram]
   exact gram_posDef_of_negative_cycle triSrc triTgt triσ (by decide)
@@ -284,7 +284,7 @@ theorem square_not_posDef :
 
 /-- Switching potential on the square: every signed walk from `u` to `v` has sign
 `p u * p v`, where `p` is the alternating sign. So no closed walk is negative: the
-hypothesis of the balance theorem genuinely fails here, not merely its conclusion. -/
+hypothesis of the balance theorem genuinely fails here, together with its conclusion. -/
 def sqPot : Fin 4 → ℝ := ![1, -1, 1, -1]
 
 theorem sqPot_succ (e : Fin 4) : sqPot (e + 1) = - sqPot e := by

@@ -479,7 +479,7 @@ theorem traceFree_decomposition (B : Mat 3) (hsymm : ∀ i j, B i j = B j i) :
     simp [traceFreeMat, traceFreeCoordsOf, metricCoefficient, eta]
   all_goals first | ring | rw [hsymm]
 
-/-- Vanishing on the nine displayed null directions already forces a
+/-- Vanishing on the nine displayed null directions forces a
 symmetric form to be a metric multiple. -/
 theorem nine_null_directions_determine_mod_metric (B : Mat 3)
     (hsymm : ∀ i j, B i j = B j i)

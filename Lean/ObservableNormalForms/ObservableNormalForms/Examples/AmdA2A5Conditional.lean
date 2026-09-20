@@ -15,11 +15,11 @@ trace-sensitive observations, and strategic predicates separate.
 `A2` and `A5` are labels carried over from the external fixture, kept so the
 model stays traceable to it.  Read off the transition systems below they are:
 
-* `baseline` — immediate acquisition by either caller kind.
-* `a2` — the grace-period variant.  `initiate` moves the active incumbent to a
+* `baseline`: immediate acquisition by either caller kind.
+* `a2`: the grace-period variant.  `initiate` moves the active incumbent to a
   `pending` state, from which `complete` transfers to the buyer and `block`
   returns to the incumbent.  Both caller kinds may acquire, but not atomically.
-* `a5` — the externally-owned-account variant.  A single `acquireEoa` step; no
+* `a5`: the externally-owned-account variant.  A single `acquireEoa` step; no
   contract-originated acquisition trace exists.
 
 Both are mitigations of one threat: `BadFlash` selects exactly the atomic

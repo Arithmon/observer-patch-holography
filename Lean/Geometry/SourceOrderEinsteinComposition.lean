@@ -9,7 +9,7 @@ This module gives a genuinely shared-carrier composition between the finite
 source-order/frame packet and the existing Einstein tensor algebra.  The
 rank-three source quotient supplies an exact two-sphere of unit directions;
 through the proved celestial/null-ray and Pauli-coordinate equivalences those
-directions contain the nine null tomography directions already used by the
+directions contain the nine null tomography directions used by the
 Einstein branch.  Consequently a balance law stated only on those nine exact
 source-unit directions suffices for the finite null-tomography step.  Ward
 and contracted Bianchi identities then make the remaining metric coefficient
@@ -28,8 +28,8 @@ The theorem keeps the source order and tensor fields on the same finite
 `Event` carrier.  The tensor calculation uses the independent source Gram
 quotient's directions, not the generated order; no order-to-field or
 provenance-link-to-direction selection theorem is proved.  The source stack
-now independently constructs a four-dimensional `ℝ × FrameQuotient` carrier
-with `(+---)` signature.  This module does not yet identify that carrier's
+independently constructs a four-dimensional `ℝ × FrameQuotient` carrier
+with `(+---)` signature.  This module does not identify that carrier's
 finite differences with its supplied `V 3`, `Mat 3`, `eta 3`, or `Fin 4`
 tensor/step data.  It also does not prove the source-direction balance, Ward
 or Bianchi identities, connectivity, vacuum reference, Newton-scale
@@ -85,8 +85,8 @@ def sourceTomographyDirections (r : Fin 9) : SourceUnitDirection :=
     (normalizedDirection (tomographyFutureNullVector r))
 
 /-- The canonical `(1,n)` representative of each fixed, coordinate-chosen
-direction is exactly the pre-existing Einstein tomography vector, not merely
-the same projective ray.  The nine-element family itself is not selected by
+direction is exactly the pre-existing Einstein tomography vector rather than
+an element of the same projective ray.  The nine-element family itself is not selected by
 the source order. -/
 theorem sourceNullEinsteinVector_sourceTomographyDirections (r : Fin 9) :
     sourceNullEinsteinVector (sourceTomographyDirections r) =

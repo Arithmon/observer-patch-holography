@@ -242,7 +242,7 @@ theorem singleton_fiber_weakNormalization_confluent
   exact ⟨c, hynf, hznf⟩
 
 /-- Certificate returned by the audited-terminal theorem below.  It records
-not only quiescence, but also preservation of the input observation and the
+quiescence, preservation of the input observation, and the
 precise condition under which the terminal state is semantically consistent. -/
 structure AuditedTerminalCertificate
     (r : Q → Q → Prop) (C : Set Q) (B : Q → 𝓑) (x t : Q) : Prop where

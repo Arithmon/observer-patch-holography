@@ -336,7 +336,7 @@ def fluxSpanC : Subring CollarC where
     module
 
 /-- The flux expectation fixes the flux sector pointwise: every element
-    of `Z(K)` is an actual fixed point, not merely a member of the
+    of `Z(K)` is an actual fixed point rather than a member of the
     range. -/
 theorem EfluxL_fixes_fluxC : ∀ m ∈ FluxC, EfluxL m = m := by
   rintro m ⟨hK, -⟩

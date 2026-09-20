@@ -10,24 +10,24 @@ against semisimple dimension.  This file assembles the finite receipts into
 one statement whose signature carries every mathematical hypothesis
 explicitly, so nothing is hidden inside executable definitions:
 
-* `hdz` — the centre dimension lies in `{0, 1, 5, 6, 7, 11, 12}`: the
+* `hdz`: the centre dimension lies in `{0, 1, 5, 6, 7, 11, 12}`: the
   rational-centre subset-sum receipt (`Screen/A5CharacterField.lean`
   proves this list from Galois stability; the torus/cocharacter step that
   makes the centre rational is a declared classical input).
-* `hm` — every simple-ideal dimension lies in `{3, 8, 10}`: the declared
+* `hm`: every simple-ideal dimension lies in `{3, 8, 10}`: the declared
   compact-simple dimension list below twelve (classification of compact
   simple Lie algebras, declared classical input).
-* `hsum` — centre and semisimple dimensions total twelve: the port-module
+* `hsum`: centre and semisimple dimensions total twelve: the port-module
   dimension.
 
 `centre_case_enumeration` returns exactly four arithmetic survivors.  The
 `dz = 6` survivor is the dimension-six branch, eliminated at the module
 level by `Screen/A5SixAxes.lean` (`no_three_plus_three_split`); feeding
 that elimination in as the explicit premise `hsix` gives the trichotomy
-(`trichotomy_of_branch_elimination`).  Under the inner-action premises —
+(`trichotomy_of_branch_elimination`).  Under the inner-action premises,
 `dz ≤ 1` from the S5 centre receipt (`Screen/A5PortModule.lean`) and
-`dz ≠ 0` from the `su(2)⁴` fixed-space exclusion (declared, Lie-theoretic)
-— the Standard-Model case is the unique survivor
+`dz ≠ 0` from the `su(2)⁴` fixed-space exclusion (declared, Lie-theoretic),
+the Standard-Model case is the unique survivor
 (`inner_action_selection`).
 
 BOUNDARY.  All statements are dimension arithmetic over declared lists;

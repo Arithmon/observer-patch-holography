@@ -11,10 +11,10 @@ set_option autoImplicit false
 
 Issue #730 OL-C3.  Two finite receipts on committed carriers.
 
-1. **Saturation witness.**  A declared four-dimensional state — the
+1. **Saturation witness.**  A declared four-dimensional state: the
    normalized `OPH.Dynamics.maxEntangled 2`, the one entangled object of the
    committed corpus, carried to `Fin 4` along the fixed index equivalence
-   `finProdFinEquiv` — together with four declared projection events (the
+   `finProdFinEquiv`, together with four declared projection events (the
    spectral projections of the two Pauli directions on the left factor and
    of the two `π/4`-rotated directions on the right factor) attains the
    CHSH expectation value `2√2` exactly (`chsh_saturation`).  The four
@@ -39,7 +39,7 @@ Issue #730 OL-C3.  Two finite receipts on committed carriers.
    (`counted_state_diagonal_chsh_le_two`).
 
 What IS proved here: finite matrix algebra over `ℂ` on the carriers
-`Fin 2`, `Fin 2 × Fin 2`, `Fin 4`, and `Fin 13 × Fin 13` — event
+`Fin 2`, `Fin 2 × Fin 2`, `Fin 4`, and `Fin 13 × Fin 13`: event
 certificates, a state certificate (positive semidefinite, trace one), the
 exact expectation value `2√2`, and the exact classical bound `2`.  All of
 it is premise-free finite mathematics given the committed modules it
@@ -48,7 +48,7 @@ imports.
 What is NOT proved (open premises, by register row):
 
 * the saturating state and the four events are DECLARED data of this
-  module; no theorem produces them from committed source runs — source
+  module; no theorem produces them from committed source runs; source
   entangled preparation, physical regions, spacelike separation, and
   instruments stay open (register row PR-52, and the OL-C3 realization
   clause of issue #730);
@@ -310,7 +310,7 @@ def bellSlotInterface : SlotLocalityInterface 2 2 where
   krausComplete := by simp
 
 /-- **Algebra-only.** The slot-lifted CHSH operator of the interface
-witness, on the joint carrier `Fin 2 × Fin 2` — verbatim the operator of
+witness, on the joint carrier `Fin 2 × Fin 2`, verbatim the operator of
 clause 1 of the committed `slot_locality_receipts`. -/
 def chshProd : Matrix (Fin 2 × Fin 2) (Fin 2 × Fin 2) ℂ :=
   (1 - 2 • slotLeft (Fin 2) bellSlotInterface.A₀) *
@@ -551,7 +551,7 @@ private theorem q_commute_left_right (P Q : Matrix (Fin 2) (Fin 2) ℂ) :
   exact (slot_commute ⟨P, rfl⟩ ⟨Q, rfl⟩).eq
 
 /-- **Algebra-only.** Cross-party commutation on `Fin 4`, from the
-committed slot-disjointness theorem `OPH.QFT.slot_commute` — not from
+committed slot-disjointness theorem `OPH.QFT.slot_commute`, not from
 entry computation. -/
 theorem qA₀_qB₀_comm : qA₀ * qB₀ = qB₀ * qA₀ := q_commute_left_right pA₀ pB₀
 
@@ -568,7 +568,7 @@ theorem qA₁_qB₀_comm : qA₁ * qB₀ = qB₀ * qA₁ := q_commute_left_right
 theorem qA₁_qB₁_comm : qA₁ * qB₁ = qB₁ * qA₁ := q_commute_left_right pA₁ pB₁
 
 /-- **Algebra-only.** The CHSH observable on `Fin 4`, in the committed
-event convention `1 - 2P` — the exact operator shape consumed by
+event convention `1 - 2P`, the exact operator shape consumed by
 `matrix_state_tsirelson_bound_of_events`. -/
 def chshObs : Matrix (Fin 4) (Fin 4) ℂ :=
   (1 - 2 • qA₀) * (1 - 2 • qB₀) + (1 - 2 • qA₀) * (1 - 2 • qB₁) +
@@ -627,14 +627,14 @@ theorem chsh_expectation_bound {ρ : Matrix (Fin 4) (Fin 4) ℂ}
 clauses share the same interface witness, the same events, and the same
 declared state:
 
-1. **Upper bound at the witness** — the committed norm-form Tsirelson
+1. **Upper bound at the witness**: the committed norm-form Tsirelson
    bound of `slot_locality_receipts`, cited at `bellSlotInterface`;
-2. **Upper bound for every state** — the committed
+2. **Upper bound for every state**: the committed
    `matrix_state_tsirelson_bound_of_events` at the reindexed witness
    events;
-3. **Exact attainment** — the declared state is a state and its CHSH
+3. **Exact attainment**: the declared state is a state and its CHSH
    expectation equals `2√2` exactly, in value and in modulus;
-4. **Interface identification** — the attaining observable is the
+4. **Interface identification**: the attaining observable is the
    reindexed slot-lifted CHSH operator of the PR-44 interface witness.
 
 Boundary, stated exactly: the state and events are DECLARED data of this
@@ -749,8 +749,8 @@ theorem diagonal_state_chsh_le_two {ι : Type*} [Fintype ι] [DecidableEq ι]
   exact diagonal_chsh_le_two w a₀ a₁ b₀ b₁ hw hsum ha₀ ha₁ hb₀ hb₁
 
 /-- **Trace-dependent.** **The counted-state delimitation.**  The committed
-counted state `OPH.QFT.correlationState` — diagonal in the record basis by
-construction — obeys the classical CHSH bound `2` against every four
+counted state `OPH.QFT.correlationState`, diagonal in the record basis by
+construction, obeys the classical CHSH bound `2` against every four
 diagonal `[-1,1]`-valued readouts.  The committed diagonal record surface
 therefore does not attain the Tsirelson value `2√2` through this fixed-state,
 jointly diagonal readout model.  Only that scoped diagonality is insufficient;

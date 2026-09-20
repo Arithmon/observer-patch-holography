@@ -36,7 +36,7 @@ The proposed repair clauses would discharge only part of this packet:
 * Antipodal spatial realization comes from the finite carrier geometry plus
   the conditional translation adapter, not from A1-R or A2-R alone.
 * Unit quadratic normalization is a separate long-wavelength normalization;
-  neither proposed repair clause currently fixes it.
+  neither proposed repair clause fixes it.
 
 No theorem here adopts A1-R or A2-R, proves their premises from A1--A3,
 identifies a physical field, chooses a time equation or scale, or excludes
