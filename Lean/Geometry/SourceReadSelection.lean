@@ -191,7 +191,7 @@ theorem correct_pair_requires_crossing {R Value : Type*}
                decode (transcript es y readPort) = b) :
     ∃ e ∈ es, ¬ NoCross source e := by
   by_contra h
-  push_neg at h
+  push Not at h
   exact cut_transcript_not_both_correct source readPort hr es h x y hxy decode a b hab correct
 
 /-- At every finite horizon, one enabled noncrossing move supplies a
