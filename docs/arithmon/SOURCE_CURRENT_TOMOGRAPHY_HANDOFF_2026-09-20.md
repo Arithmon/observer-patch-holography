@@ -3,7 +3,7 @@
 ## Repository state
 
 - Base branch SHA: `56c77645a80b06f96c2d99088864c9c945f803f3`
-- Synchronized fork-main SHA: `701a1a328fa9b266a8084f1ed5ee71d2cb824688`
+- Synchronized fork-main SHA: `2b03a95caf5030272f7b426b964e816f650153f8`
 - Final branch SHA: the commit containing this report; recorded in the external
   handoff because a Git commit cannot contain its own SHA.
 - Scientific commits: 2 (Stage 1 syntax repair; Stage 2 inventory and claim
@@ -20,7 +20,7 @@ composition orders as canonical raw histories, target freedom, and refinement
 provenance. The exact machine verdict is
 `SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT`.
 
-The inventory also commits a canonical 430-path snapshot covering every
+The inventory also commits a canonical 432-path snapshot covering every
 non-cache file below the 13 audited directories. Both verification lanes
 recompute the list and fail if a file is added, removed, or renamed, preventing
 a new candidate surface from remaining silently outside the 21-row inventory.

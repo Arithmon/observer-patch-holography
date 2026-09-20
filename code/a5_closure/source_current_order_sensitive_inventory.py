@@ -26,7 +26,7 @@ INDEPENDENT_VERIFIER = HERE / "verify_source_current_order_sensitive_inventory.p
 
 SCHEMA = "oph.source_current_order_sensitive_inventory.v1"
 VERDICT = "SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT"
-UPSTREAM_MAIN_SHA = "701a1a328fa9b266a8084f1ed5ee71d2cb824688"
+UPSTREAM_MAIN_SHA = "2b03a95caf5030272f7b426b964e816f650153f8"
 
 AUDITED_DIRECTORIES = (
     "code/source_feedback_transport",

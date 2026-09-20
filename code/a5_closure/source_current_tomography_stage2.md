@@ -4,7 +4,7 @@
 
 `SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT`
 
-At synchronized fork-main baseline `701a1a328fa9b266a8084f1ed5ee71d2cb824688`, the
+At synchronized fork-main baseline `2b03a95caf5030272f7b426b964e816f650153f8`, the
 bounded repository inventory contains **21 candidate packets and zero
 qualifying packets**. No single audited object is simultaneously source-native,
 port-indexed, reversible, target-free, bound to the same twelve-port carrier,
@@ -35,7 +35,7 @@ The canonical machine-readable adjudication is
 [`manifests/source_current_order_sensitive_inventory.json`](manifests/source_current_order_sensitive_inventory.json).
 It pins every audited source and the two independent implementations by SHA-256.
 It also freezes the canonical sorted list of every non-cache file below the 13
-audited directories (430 paths at this baseline) and the SHA-256 of that list.
+audited directories (432 paths at this baseline) and the SHA-256 of that list.
 The producer and independent verifier both fail closed if a file is added,
 removed, or renamed there; a newly committed candidate therefore cannot remain
 silently outside the 21-row adjudication.

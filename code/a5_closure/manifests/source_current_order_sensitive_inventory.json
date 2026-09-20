@@ -49,7 +49,7 @@
       "**/__pycache__/**",
       "**/*.pyc"
     ],
-    "path_count": 430,
+    "path_count": 432,
     "paths": [
       "Lean/Dynamics/CenterSpectral.lean",
       "Lean/Dynamics/CentralBlocks.lean",
@@ -289,6 +289,7 @@
       "code/a5_closure/common_ew_order_unit_carrier_certificate.py",
       "code/a5_closure/coset_carrier_certificate.md",
       "code/a5_closure/coset_carrier_certificate.py",
+      "code/a5_closure/digest_conventions.py",
       "code/a5_closure/directed_seam_repair_certificate.py",
       "code/a5_closure/echosahedral_selector_certificate.md",
       "code/a5_closure/echosahedral_selector_certificate.py",
@@ -396,6 +397,7 @@
       "code/a5_closure/tests/test_baryon_dimension_six_census.py",
       "code/a5_closure/tests/test_common_ew_order_unit_carrier_certificate.py",
       "code/a5_closure/tests/test_coset_carrier_certificate.py",
+      "code/a5_closure/tests/test_digest_conventions.py",
       "code/a5_closure/tests/test_directed_seam_repair_certificate.py",
       "code/a5_closure/tests/test_echosahedral_selector_certificate.py",
       "code/a5_closure/tests/test_equal_state_weights_certificate.py",
@@ -482,10 +484,10 @@
       "code/source_scalar_instruments/test_sequential_instrument.py",
       "code/source_scalar_instruments/verify_sequential_instrument.py"
     ],
-    "paths_sha256": "sha256:ebbb23b3e3772a98e1ee0c454cdc98c1a36f9b132593f5c88c2e61f14455d882",
+    "paths_sha256": "sha256:648ab1b905256fbbb2d1c14c56b4dde4b7ed769f06c15460d2c1d7682600abe5",
     "staleness_rule": "any added, removed, or renamed non-cache file below an audited directory invalidates the committed inventory"
   },
-  "audited_upstream_main_sha": "701a1a328fa9b266a8084f1ed5ee71d2cb824688",
+  "audited_upstream_main_sha": "2b03a95caf5030272f7b426b964e816f650153f8",
   "candidates": [
     {
       "candidate_id": "registered_adjacency_response",
@@ -1213,7 +1215,7 @@
     {
       "bytes": 51740,
       "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:7943aa551fdd3a3b6b67f5a54fc2a4d7cfd11d5cd5f34bcba94516d055991e0b"
+      "sha256": "sha256:7a8bcdb9b4afa435d62c1a1333c5fd369b461724f745ce12bf6cc4570370b34b"
     },
     {
       "bytes": 22864,
@@ -1221,7 +1223,7 @@
       "sha256": "sha256:443cfd9b6fd049122edf84aadb9efeb92fa2a2b29fc3c2ffa1a757c564078782"
     }
   ],
-  "inventory_sha256": "sha256:654098f5f07aa42344293c5e27a13335f5c47bf08e5d7761aa320b5d193a8610",
+  "inventory_sha256": "sha256:1bfd15e20eaabc371be2516b406d6343a28e1d3791be20468b40e24ee4a48017",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -1420,9 +1422,9 @@
       "sha256": "sha256:9b75c195b047536ba7171bfbeab38f045852c08e4d69e800a0d24deae316d25c"
     },
     {
-      "bytes": 57281,
+      "bytes": 57282,
       "path": "Lean/ObserverPatchHolography/Provenance/HistoryCausalInvariance.lean",
-      "sha256": "sha256:9d7b6b2f07c524d6b06ca999241ed13454be59363a62c01914617bee60d8d3d1"
+      "sha256": "sha256:16f92e06b37afb0e6c381118b35b40d27f06c9206976638b31fb5250f70db956"
     },
     {
       "bytes": 7848,
@@ -1435,9 +1437,9 @@
       "sha256": "sha256:068e91f8f4515d28950dccb0be9bb490328e71fe760b08ac4d90ece180ce141a"
     },
     {
-      "bytes": 5005,
+      "bytes": 4989,
       "path": "Lean/Geometry/SourceSeamPathTomography.lean",
-      "sha256": "sha256:f9b1c0204b57800bf0ed2f3987756e8b998dfc8988cb5f38476ccee5c071a571"
+      "sha256": "sha256:0a4523a315fbfb42f81449bc9e42179b254ec38ef02fdf3f62127abab78a3a83"
     },
     {
       "bytes": 54120,
@@ -1455,9 +1457,9 @@
       "sha256": "sha256:4a83a4dfd2a8696b17b919548ec3ef8139e710c2c6d9ea6abf868885eb221555"
     },
     {
-      "bytes": 29275,
+      "bytes": 29247,
       "path": "Lean/Screen/A5ResponseWordAlgebra.lean",
-      "sha256": "sha256:2b18d030f2f176136fa8f4ad17faf39aaf671a3763fd523dd29fd9af0ab11112"
+      "sha256": "sha256:5575c8e696c6d0b672daa349c650f4d028194b025f1318a6b27b7526286fb0df"
     },
     {
       "bytes": 49884,
@@ -1475,9 +1477,9 @@
       "sha256": "sha256:e741554cd7dd171b92e1c0ccaea28956def866cd826fd6a6036ea8fb87865a67"
     },
     {
-      "bytes": 12640,
+      "bytes": 12634,
       "path": "Lean/Screen/RepairWordCarrierReadout.lean",
-      "sha256": "sha256:4afc0ff8fe547cbf1bbc2fc131ddad6a7a6fb763ca9517ffcaca6735a21bc8bc"
+      "sha256": "sha256:1b8a014942314a283682b88ea47273738333195d5b62112192c92badee4e89b6"
     }
   ],
   "stage": 2,
