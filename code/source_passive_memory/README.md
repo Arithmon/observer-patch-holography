@@ -50,6 +50,14 @@ restricted admissible code spaces, state-dependent menus, protected separate
 components, or stored observation histories. It therefore does not invalidate
 the history-dependent protocol in `SourceSeamPathTomography`.
 
+The scope tests give a concrete restricted-code boundary even on a connected
+three-port graph with every edge available. Take the nonnegative dyadic triples
+of total 1, together with the uniform triple `[1/3,1/3,1/3]`. Means keep dyadics
+dyadic and fix the uniform triple, so the exact-uniform detector is invariant
+on this code and distinguishes equal totals. It is not globally invariant:
+`[2/3,0,1/3]` becomes uniform after one mean. This illustrates the input
+quantifier; it does not select a physical, robust or writable memory code.
+
 ## 2. Exact native-zero reset fails; approximate reset has an explicit cost
 
 If every initial raw load is nonnegative, a register initially containing
@@ -71,6 +79,10 @@ through `(0,m)`. The final source is `a/2^m`; used neighbour `j` retains `a/2^j`
 This costs `m` means, `m` prepared zeros, `m+1` allocated scalar registers,
 `2m` reads and `3m+1` writes including initialization. Preparation is a supplied
 initial condition, counted as assignments, not a derived physical process.
+These counts concern scalar registers and the declared mean operations.
+Writer identifiers, controller/scheduling state, the retained audit archive,
+graph-checking memory and the bit cost of exact rational arithmetic are outside
+that model. No complete machine-memory or finite-precision bound is asserted.
 `SourcePassiveReset.lean` proves the full state, length and finite support of
 this construction; its natural-number indexing never touches beyond `m`.
 
@@ -157,6 +169,8 @@ The 40 Lean theorems are transitively checked against the standard axiom
 allowlist `propext`, `Classical.choice`, `Quot.sound`. The audit rejects
 `sorryAx` and compiler-trusted Boolean reduction as negative controls.
 `Geometry.lean` imports it; Python checks coverage of every new theorem.
+Lean CI also lists the audit as an explicit default target, so changing only
+a dependency still reruns the downstream trust check.
 
 `controls.json` retains all eight executions (65 means), all final ancillas,
 consumed writer identities, rational values, resource counts and six fibre
@@ -166,6 +180,11 @@ and captured-support hashes bind both retained artifacts to their inputs.
 Exact fractions are canonical strings, not floats. The 121 additional small
 words of length at most four exercise prefix conservation and positivity;
 they are regression controls, not the proof of the universal claims.
+
+Separate rational-matrix scope controls check signed-load reset, encoded zero,
+disconnected records and 121 connected restricted-code words. They import
+neither tape engine. They are test-time boundary examples, not additions to
+the eight retained executions or their 65-mean count.
 
 From the repository root:
 
@@ -185,16 +204,33 @@ python -m pytest -q code/source_passive_memory
 ```
 
 The verification command checks the existing receipt by default. The dedicated
-Windows/Linux workflow runs the controls; Lean CI builds the changed modules.
+Windows/Linux workflow runs the controls; Lean CI builds the changed modules
+and the explicit passive-memory axiom-audit target.
 The frozen mandatory runner and its source-projection hashes are preserved.
 
 ## What M1 still needs
 
-This work removes the assumption that nonlinear decoding or changing finite
-ancillas alone can turn unrestricted passive pair means into exact reusable
-feedback. It also derives a finite-error reset implementation and its explicit
-prepared-zero cost. It does not select a source population, memory sector,
-schedule, read law, finite precision or physical clock.
+This work classifies globally invariant readouts, obstructs finite native-zero
+reset of positive nonnegative loads, and bounds a specific balanced-copy
+interface. It also derives a finite-error reset construction with explicit
+prepared-zero cost. Those precise results do not rule out every encoded or
+restricted-code implementation of reusable feedback.
+
+For the currently supplied scalar-feedback route toward M1, the following
+premises remain. The related common-world joins are recorded separately in
+#740; this table does not claim that the present scalar model covers them.
+
+| Premise still supplied | What this work establishes |
+| --- | --- |
+| Selection of the scalar law, support, port assignment and accepted repair menu | Conditional theorems for pair means and a census of one declared capture |
+| Initial source population, address preparation and density/volume interpretation | No production or maintenance law for that population |
+| Admissible memory code, protected values, addresses, versions and retention interface | Only globally invariant state-only records are classified; no physical version/header channel or writable memory sector is derived |
+| Zero/resource preparation, ancillary supply and refresh across repeated hops | Exact residual and consumed-zero counts for a finite prepared star, plus an ancillary Q ledger; no physical preparation or recycling service |
+| Protected export, overwrite, readback, factor-two decoding and cleanup | One reset-error contribution is identified; the supplied feedback grammar is not implemented by the scalar mean word |
+| Local controller, program, interleaving rules and intervention-compatible scheduling | A declared finite word is checked; scheduling, controller storage and physical causal equivalence are not selected |
+| Bounded amplitudes, finite precision, hardware noise and accumulated route error | Exact arithmetic and an input-dependent residual; no hardware error or scalar bit-capacity bound |
+| Physical clock, units, event measure and logical-to-raw history comparison | No conversion of repair counts into time or geometric volume; the earlier raw-count obstruction remains |
+| Same-family field action, matter/current, preparation, quantum instruments and detector realization | No new common-world or quantum join; the prepared scalar controls are separate from those obligations |
 
 A next constructive step must specify an admissible memory encoding or a
 supplied reservoir/driving law, derive its protected read/write behaviour,
