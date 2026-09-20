@@ -179,6 +179,18 @@ def test_axiom_audit_covers_all_theorems():
     assert "import Geometry.SourcePassiveMemoryAxiomAudit" in (codec.ROOT/"Lean/Geometry.lean").read_text(encoding="utf-8")
 
 
+def test_axiom_audit_runs_when_only_a_dependency_changes():
+    workflow = yaml.load((codec.ROOT/".github/workflows/lean-ci.yml").read_text(encoding="utf-8"),
+                         Loader=yaml.BaseLoader)
+    selector = next(step["run"] for step in workflow["jobs"]["build"]["steps"]
+                    if step.get("id") == "changed_modules")
+    # Only explicit default targets run when the audit module itself is absent
+    # from git diff. Importing it into an unchanged umbrella is insufficient.
+    defaults = re.search(r"(?ms)^targets=\(\n(.*?)^\)", selector)
+    assert defaults is not None
+    assert '"Geometry.SourcePassiveMemoryAxiomAudit"' in defaults.group(1)
+
+
 def test_dedicated_ci_preserves_frozen_runner():
     projection = codec.load(codec.ROOT/"code/invariant_mining/outputs/source_projection.json")
     pin = next(p for p in projection["control_documents"] if p["path"] == "tools/run_mandatory_suite.py")
@@ -191,3 +203,4 @@ def test_dedicated_ci_preserves_frozen_runner():
     for trigger in ("push","pull_request"):
         assert "code/source_passive_memory/**" in workflow["on"][trigger]["paths"]
         assert "code/source_routing/support_w12_l3.json" in workflow["on"][trigger]["paths"]
+        assert ".github/workflows/lean-ci.yml" in workflow["on"][trigger]["paths"]

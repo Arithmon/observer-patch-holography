@@ -17,6 +17,7 @@ on:
       - "requirements.txt"
       - ".gitattributes"
       - ".github/workflows/source-passive-memory.yml"
+      - ".github/workflows/lean-ci.yml"
   pull_request:
     paths:
       - "code/source_passive_memory/**"
@@ -32,6 +33,7 @@ on:
       - "requirements.txt"
       - ".gitattributes"
       - ".github/workflows/source-passive-memory.yml"
+      - ".github/workflows/lean-ci.yml"
   workflow_dispatch:
 
 permissions:
