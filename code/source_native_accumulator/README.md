@@ -7,6 +7,10 @@ the two dyadic scales before combining them. The input values remain decodable
 at their updated scales. The accumulator's previous value is retired at each
 start.
 
+[Stored computation](../source_native_programs/README.md) uses two payload
+banks so that computed results can be inputs to subsequent layers, with native
+transfer, retirement and a whole-history precision budget.
+
 The [contract](CONTRACT.md) states the objective, deliverables, exit and retained
 premises. The [derivation](DERIVATION.md) connects the instruction sequence to
 the Lean theorems; the [receipt](receipt.json) records independent replay.
