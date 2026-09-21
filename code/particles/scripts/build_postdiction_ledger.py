@@ -1206,6 +1206,66 @@ def _source_scalar_time_refinement_control(receipt_path: Path | None = None) -> 
     }
 
 
+def _fermion_source_current_control() -> dict[str, Any]:
+    controls = {}
+    for key, verifier, receipt in (
+        ("mean_field", "verify_current.py", "current_receipt.json"),
+        ("quantum_link", "verify_quantum_link.py", "quantum_link_receipt.json"),
+        ("coupled", "verify_coupled.py", "coupled_receipt.json"),
+    ):
+        dependencies = ({"verify_current": CODE / "sm_fermion_current/verify_current.py"}
+                        if key in {"quantum_link", "coupled"} else None)
+        _, summary, pin = _structural_packet(
+            "sm_fermion_current", verifier, receipt, dependency_paths=dependencies)
+        if summary.get("verified") is not True or summary.get("physical_current_attached") is not False:
+            raise SystemExit("fermion current must retain exact replay and physical boundary")
+        if summary.get("operator_Gauss") is not (key == "quantum_link"):
+            raise SystemExit("mean Gauss and dressed quantum Gauss must remain distinct")
+        replay_key = "independent_quantum_state_replay" if key == "quantum_link" else "exact_rational_replay"
+        if summary.get(replay_key) is not True:
+            raise SystemExit("fermion current requires full independent mathematical replay")
+        if key == "quantum_link" and summary.get("exact_continuous_quantum_edge_solution") is not True:
+            raise SystemExit("quantum link requires its independently checked continuous solution")
+        if key == "quantum_link" and summary.get("gauge_constraint_group") != "U1_hypercharge":
+            raise SystemExit("quantum link certifies only the abelian Gauss constraint")
+        if key == "coupled":
+            for flag in ("same_declared_hybrid_action", "electric_to_link_to_matter_feedback",
+                         "nonabelian_expected_first_variations_zero", "Higgs_Yukawa_expected_first_variations_zero"):
+                if summary.get(flag) is not True:
+                    raise SystemExit("coupled current requires replayed action and omitted mean forces")
+            if (summary.get("electric_kinetic") != "fixed_lambda_convex_nonquadratic"
+                    or summary.get("quadratic_Maxwell_kinetic") is not False
+                    or summary.get("global_Z6_quotient_selected") is not False):
+                raise SystemExit("coupled current must retain its regulated cover-action boundary")
+        controls[key] = {
+            "receipt": "code/sm_fermion_current/" + receipt,
+            "receipt_pin": pin,
+            "independent_verifier_result": summary,
+        }
+    return {
+        "controls": controls, "mathematical_replay": True,
+        "analytic_proof": "paper/tex_fragments/FERMION_SOURCE_CURRENT.tex",
+        "coupled_action_proof": "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+        "observed_postdiction": False,
+        "scope_boundary": (
+            "The prepared q5 carrier supports exact finite CAR hypercharge transport. "
+            "Classical electric feedback preserves mean Gauss in the delocalized "
+            "Slater preparation, whose charge variance excludes the operator constraint. "
+            "A separately supplied localized preparation and integer quantum link "
+            "give an invariant flux-dressed sector, operator Gauss and an exact "
+            "continuous one-link current history. Species weights, quantum state, "
+            "action and time are declared. A separate regulated hybrid action adds "
+            "all electric and Wilson factors and actual electric-to-matter feedback. "
+            "Its invariant expectation sector checks all omitted Higgs/Yukawa and "
+            "nonabelian first variations, with one occupied family and two vacua. "
+            "The fixed nonquadratic electric law and direct-product cover do not "
+            "supply the quadratic Maxwell action, global quotient, full quantum "
+            "Gauss, excited nonabelian/Higgs execution, chiral continuum regulation, "
+            "source selection or physical current attachment. None is an observed "
+            "physical postdiction."),
+    }
+
+
 def _cartan_scalar_execution_control(receipt_path: Path | None = None) -> dict[str, Any]:
     packet, summary, pin = _structural_packet(
         "sm_abelian_reduction", "verify_abelian.py", "abelian_receipt.json",
@@ -2065,6 +2125,7 @@ def _forced_structure(
             "declared_local_action_control": _local_sm_action_control(),
             "cartan_scalar_execution_control": _cartan_scalar_execution_control(),
             "cartan_scalar_continuous_readout_control": _cartan_scalar_continuous_readout_control(),
+            "fermion_source_current_control": _fermion_source_current_control(),
             "statement": (
                 f"Inside the declared {component_count}-component "
                 "exterior-response algebra, an exhaustive scan of all "

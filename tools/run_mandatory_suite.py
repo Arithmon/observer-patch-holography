@@ -42,6 +42,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
+        "Verify finite fermionic current, exact continuity and mean Gauss custody",
+        [sys.executable, "-m", "pytest", "-q", "code/sm_fermion_current"],
+    ),
+    (
+        "Verify Maxwell measurement contract, uncertainty and external trust boundaries",
+        [sys.executable, "-m", "pytest", "-q", "code/maxwell_measurement"],
+    ),
+    (
         "Verify native work ambiguity, scalar pressure enclosures and Maxwell thermal stress",
         [sys.executable, "-m", "pytest", "-q", "code/equation_of_state"],
     ),

@@ -10416,8 +10416,7 @@
       "claim_class": "conditional_implication",
       "gates": [
         735,
-        740,
-        780
+        740
       ],
       "premise_dependencies": {
         "classification": "explicit_non_consumer",
@@ -10628,6 +10627,62 @@
         "open": [],
         "boundary": [],
         "rationale": "The Euclidean cone metric, constitutive coefficients, canonical field phase space and separately prepared classical Gaussian ensemble are supplied. Neither PR-15 physical units nor PR-53/PR-54 physical electromagnetic action/current identification is asserted; field-only stress explicitly excludes source, clock and record sectors."
+      }
+    },
+    {
+      "claim_id": "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
+      "statement": "On the supplied q5 golden carrier with 64 sites and 144 oriented links, a finite canonical-anticommutation model retains all five registered multiplets, fifteen internal components and two Spin components. Fifteen orthogonal occupied orbitals form a normalized Slater state. Exact Gaussian-rational Cayley edge factors preserve its projector property and particle number. The same quadratic midpoint link-phase derivative supplies the hypercharge current and classical electric feedback; endpoint charge transfer preserves outgoing-divergence(E) minus expected charge at every site under finite composition. Independent replay checks baseline, local phase intervention and gauge-copy histories, consumed writers and exact values. Initial expected charge is zero, but its local variance is 945/512 in integer-six-hypercharge units, excluding an operator-Gauss-constrained state with sharp classical electric data. The proofs are analytic with exact executable controls. This is a declared semiclassical hypercharge splitting factor, not full nonabelian/Yukawa evolution, a chiral continuum measure, source-selected action or a physical-current attachment. A separate localized preparation quantizes one actual link on l2(Z) and dresses every moved-fermion branch with the matching integer electric flux. Its complete 32768-dimensional one-fermion-per-channel sector is invariant and satisfies abelian operator Gauss branchwise. Commuting channel Hamiltonians give an exact continuous quantum history, with expected electric flux -3 and current 3 sqrt(3) at supplied model time pi/6 for the declared species weights. An independently replayed rational Cayley control has mean flux -18144/7225 and final current 47232/7225. This is one-link hopping and quantum flux exchange, with electric kinetic, plaquette, nonabelian and Yukawa evolution absent; the rotor, localized preparation, species weights and time remain supplied. A separate fixed-lambda regulated hybrid action on the direct-product SU3xSU2xU1 cover couples the finite CAR state to classical electric drift and Wilson plaquette forces. Its convex nonquadratic electric kinetic law is declared, not the quadratic Maxwell law. An invariant expectation-level restriction sets Higgs and nonabelian fields to zero, retains one occupied family and two declared Fock vacua, and checks all omitted first variations with all 27 Yukawa coefficients arbitrary. Exact rational action factors on all 144 links and 108 faces, followed by one partial-word matter return, preserve mean continuity and Gauss. Independent replay checks 3464 events in three action executions and a disabled-drift counterfactual; the nonzero return-current difference certifies actual electric-to-link-to-matter consumption. It supplies no full quantum Gauss, excited nonabelian/Higgs dynamics, global Z6 descent, exact summed-Hamiltonian evolution, continuous-error estimate, source-selected action, physical clock or laboratory current.",
+      "owner_paper": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
+      "tier": "conditional_finite_fermionic_current_and_quantum_constraint",
+      "assumptions": [
+        "declared_finite_CAR_hypercharge_source_current"
+      ],
+      "imported_results": [
+        "finite_CAR_Fock_and_Slater_projector_algebra",
+        "unitary_Cayley_transform_and_quadratic_midpoint_identity"
+      ],
+      "oph_specific_delta": "Binds nonzero fermionic hypercharge transport, exact continuity and mean electric feedback to the existing prepared golden addresses and authenticated observer-like software read/write records. A nonzero exact charge variance prevents mean Gauss conservation from being promoted to a quantum gauge constraint. A separately prepared flux-dressed quantum link repairs the operator constraint within a precisely declared finite invariant sector and supplies a nonzero exact quantum current history on that link. A declared coupled hybrid action closes the electric-to-link-to-matter feedback loop on that carrier, with every omitted Higgs/Yukawa and nonabelian first variation checked at expectation level.",
+      "novelty_type": "same_carrier_finite_fermionic_current_certificate",
+      "evidence": [
+        "paper/tex_fragments/FERMION_SOURCE_CURRENT.tex",
+        "code/sm_fermion_current/current.py",
+        "code/sm_fermion_current/build_current.py",
+        "code/sm_fermion_current/verify_current.py",
+        "code/sm_fermion_current/test_current.py",
+        "code/sm_fermion_current/current_receipt.json",
+        "code/sm_fermion_current/quantum_link.py",
+        "code/sm_fermion_current/build_quantum_link.py",
+        "code/sm_fermion_current/verify_quantum_link.py",
+        "code/sm_fermion_current/test_quantum_link.py",
+        "code/sm_fermion_current/quantum_link_receipt.json",
+        "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+        "code/sm_fermion_current/coupled.py",
+        "code/sm_fermion_current/build_coupled.py",
+        "code/sm_fermion_current/verify_coupled.py",
+        "code/sm_fermion_current/test_coupled.py",
+        "code/sm_fermion_current/coupled_receipt.json"
+      ],
+      "falsifier": "The Cayley factor violates CAR one-body unitarity or occupied-projector normalization, the link-phase derivative differs from the recorded current, exact endpoint continuity or mean Gauss fails, a gauge copy changes invariant records, an actual writer/value is forged, or the stated positive local charge variance vanishes. The dressed sector is not invariant, a nonzero branch violates operator Gauss, the continuous state fails its Hamiltonian equation or the flux/current formulas disagree with independent CAR matrix elements. A coupled factor has the wrong action derivative, a face kick has nonzero divergence, an omitted hybrid first variation is nonzero under its stated hypotheses, or the claimed return-current response fails independent actual-value replay.",
+      "scope_if_false": "The finite fermionic current certificate fails. The registered representation census, earlier zero-fermion scalar action and its separate continuous-readout enclosure are assessed independently.",
+      "status": "exact_coupled_hybrid_current_and_distinct_abelian_quantum_constraint__physical_attachment_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        735,
+        740,
+        745,
+        754
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [],
+        "open": [
+          "PR-47",
+          "PR-52",
+          "PR-54"
+        ],
+        "boundary": [
+          "PR-15"
+        ]
       }
     }
   ]
