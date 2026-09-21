@@ -97,13 +97,13 @@ EXPECTED_PARENT_PINS = [
         "status": "FROZEN_FZ12_SOURCE_AND_CUSTODY_PINNED__NO_COMPARISON_DATA",
     },
     {
-        "bytes": 23814,
+        "bytes": 42281,
         "path": "Lean/Screen/SeamCurrentPhotonLeptonThreshold.lean",
         "role": (
             "kernel-checked leading threshold and equal-share "
             "coefficient-fiber algebra"
         ),
-        "sha256": "sha256:ae5b378d1449aee3bfa3cc6c5bd2f070682d690a3619c190f60e54c4e0cd670c",
+        "sha256": "sha256:1ee4fce48013d9281bf24d395b1b85d275ea744f969cfb0d83d965a323e71ccc",
         "sorry_free": True,
         "theorems": [
             "additive_head_on_implies_leading_threshold",
