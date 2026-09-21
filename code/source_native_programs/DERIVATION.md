@@ -60,9 +60,10 @@ For a captured finite route, its distinct ports and all other live record
 pairs form a finite injective assignment. Extend it to a permutation of the
 countable scalar index set used by the theorem; unused indices have baseline
 loads. Only its finitely supported native word acts. The route checker proves
-the assignment and support conditions as finite computations; this extension
-argument and the compiler induction are analytic identifications, not a Lean
-verification of the Python implementation.
+the assignment and support conditions as finite computations. This scalar
+extension/re-pairing argument remains analytic. The general paired-cell bank
+compiler below has its own kernel-checked induction; it does not identify
+every captured scalar embedding or verify the Python implementation generally.
 
 ## Layer and lifetime induction
 
@@ -86,6 +87,55 @@ The cap is public and derived from `P`; it does not reveal the answer.
 orientation, exponent and cap independently. Native replay uses only scalar
 means after preparation. A separate logical oracle checks publications; it
 never supplies native values or enters the local decoder.
+
+## Kernel-checked bank compiler
+
+`SourceBankMachine` emits `start`, `transfer`, `add` and `retire` instructions
+from finite typed menus. Logical registers 0, 1, 2 and 3 hold the accumulator,
+workspace, retained unit and operand. Two disjoint banks begin at register 4.
+These are logical pair coordinates, not the captured graph's carrier numbers.
+`program_recurrence` derives the iterated recurrence from the instruction
+semantics for arbitrary width, signed initial values, list lengths and layer
+count. `recurrence_bound` propagates public caps even with signed cancellation.
+
+`SourceBankInvariant` proves clean workspace/operand conditions, protected
+input-bank lifetimes and finite support preservation from the compiler.
+`SourceBankLowering` proves each instruction's native implementation and
+reference-state identity. A route annotation is a cell permutation with
+source/destination images and a depth of at least three. Its scratch cells
+must be workspace or outside the supported records. It has no correctness,
+desired-output, arbitrary-word or error-certificate field.
+
+`SourceBankCompiler.native_construction` derives the whole native word and
+error ledger from those geometric annotations. `compiled_publication`
+combines native noisy execution with the actual compiled recurrence and its
+derived cap. The caller does not supply the answer or prove a completed
+`Construction`. `native_word_length` identifies the scalar count exactly with
+the computable `work` function, including alignment and all cleanup repeats.
+
+`SourceBankBusWitness` constructs every required route at depth three using
+explicit finite permutations. Its read bus uses two scratch cells; its write
+bus uses the workspace and one scratch cell. `every_program_native` therefore
+has no route-existence premise. This is a declared star bus, not an embedding
+into W12 and not a replacement for the captured-route certificates.
+
+`SourceBankExecution.finite_execution` combines this witness with the precision
+theorem: for every finite program and public amplitude bound there exist a
+cleanup count and grid exponent such that every execution within the stated
+preparation, per-mean and sampling allowances publishes the requested layered
+recurrence. The choices precede and are independent of the payload. No final
+correctness or strict-margin hypothesis remains. Selection and realization of
+the controller, prepared records and physical instrument are still supplied.
+
+The compact generated `SourceBankControl` checks the captured signed control
+against the same general instruction stream. Kernel reduction checks all 42
+stages, every captured observed scale, each native stage length, their total
+of 1,798,154 means, and the nine signed final output pairs. Six negative
+certificates reject an empty trace, missing/extra stage, wrong instruction,
+undercharged work and wrong scale. `lean_control.py --check` ties the source
+to the complete independently validated plan; changed data cannot silently
+leave a stale theorem. This finite check does not generalize itself to q=3,
+q=13 or q=21, or prove captured scalar re-pairing correct in Lean.
 
 ## Global precision and resources
 
@@ -116,6 +166,18 @@ The decoder returns the unique integer in `[-cap,cap]` intersected with
 `[z-r,z+r]`, or returns no value. `SourceNativeProgramBudget.precision_margin`
 proves a strict singleton margin for the sufficient bounds above. Neither
 the error clock nor `R` resets at a version boundary.
+
+The general Lean existence proof uses deliberately coarse, finite choices.
+Let `C=sum(cleanupCharge)` with charge one for a start and `(d-1)^2` for a
+transfer, and let `E` be the initial scale bound plus the sum of public
+instruction scale charges. `SourceBankCompiler.error_bound` proves
+`error <= A C / 2^k`, while `scales_bound` proves every final scale is at most
+`E`. Choosing `k=ceil(64 * 2^E * A * C)` and then
+`B=ceil(64 * (work(k)+1) * 2^E)` gives the strict whole-word margin through
+`SourceBankPrecision.exists_global_margin`. The power-of-two bounds, exact
+work dependence on `k`, and nonnegative error sum are proved in Lean. These
+existence choices are much larger than the logarithmic Python choices above;
+they establish finite conditional execution, not hardware attainability.
 
 For a stationary menu with `T` layers and `N` sites, let `S=TN`, `H` be the
 total requested reads, `d_in` the largest number of reads of one input in a
@@ -160,6 +222,12 @@ every metric decision, with sufficient finite word/precision bounds. It does
 not execute those large native words. No source-selection, observer-cover,
 physical clock or continuum conclusion follows from the existence of a
 compiled word. The finite controller is supplied, as specified in the contract.
+
+The finite log-recovery result in `evidence/federation_recovery` also applies:
+replaying an observed program does not identify unvisited support topology.
+Its two indistinguishable complete gluings are an identification boundary,
+not a way to infer a W12 embedding from the native histories. The declared
+bus witness and the captured-route evidence therefore remain separate.
 
 | Population | Complete route witnesses | Maximum paired cells | Native execution evidence |
 | --- | ---: | ---: | --- |

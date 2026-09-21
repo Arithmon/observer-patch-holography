@@ -5,6 +5,13 @@ Switching the banks lets later layers use earlier results. Transfers, addition,
 retirement and reuse use supported scalar pair means with finite precision.
 The source has to select the prepared records and temporal controller.
 
+Lean now derives the general bank compiler's recurrence, lifetimes, native
+lowering and finite precision existence. An explicit declared bus discharges
+route existence for arbitrary finite programs. This proves conditional finite
+execution; it does not derive M1 from A1--A3 or embed that bus in the captured
+W12 supports. A separate finite Lean certificate checks the captured signed
+control's 42 instructions, observed scales, work and nine final output pairs.
+
 The [contract](CONTRACT.md) defines acceptance and scope; the
 [derivation](DERIVATION.md) gives the construction and bounds; the
 [family receipt](families_receipt.json) distinguishes complete small native
@@ -16,6 +23,7 @@ From the repository root, set `PYTHONPATH=code` (PowerShell:
 ```text
 python -m source_native_programs.build
 python -m source_native_programs.verify
+python -m source_native_programs.lean_control --check
 python -m pytest -q code/source_native_programs
 python -m source_native_programs.family_build --workdir temp/native-program-witnesses --output temp/native-program-families.json
 python -m source_native_programs.family_verify --workdir temp/native-program-witnesses --families temp/native-program-families.json
