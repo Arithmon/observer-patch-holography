@@ -70,3 +70,25 @@ standalone axiom audit reported only `propext`, `Classical.choice`, and
 `Quot.sound` where required and no `sorryAx`. After the boundary repair, the
 documented hash-generation recipe was rerun and `sha256sum -c HASHES.sha256`
 verified every listed file.
+
+## Refresh receipt: 2026-09-21
+
+`ObservableNormalForms/SchedulerClassObstructions.lean` gained the
+endpoint-uniqueness cut on the coarse fixture (sub-class obstructions at
+layer 3 and layer 1, the merge-then-clear escape witness, the two pricing
+corollaries, and the fine-fixture layer collapse over the class), together
+with the matching proof-index row and README entry. No module was added or
+removed and the manifest, toolchain, and lakefile are unchanged.
+
+With Lean 4.29.1 and the pinned Mathlib revision, the standalone command
+
+```text
+lake build
+Build completed successfully (8265 jobs).
+```
+
+exited 0 on macOS (arm64). The module's `#print axioms` guards report only
+`propext`, `Classical.choice`, and `Quot.sound` for every new theorem and no
+`sorryAx`. `HASHES.sha256` was regenerated afterwards over every listed file;
+the regeneration also refreshed six entries that had lagged earlier edits
+to the listed sources.

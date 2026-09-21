@@ -26,6 +26,15 @@ hitting hypothesis of the committed fine fixture is discharged by the
 committed repair kernel and refuted by an explicit in-class counterexample
 scheduler.
 
+On the committed coarse fixture, whose target admits both shared values from
+two declared sources, the module proves the endpoint-uniqueness cut at class
+strength: no self-update-only scheduler places the coarse behavior in layer
+3, no network-update-only scheduler hits the coarse target from a raised
+flag, an explicit merge-then-clear class member outside both sub-classes
+places the coarse behavior in layer 3, and every in-class scheduler that
+does so spends both shared and private capacity on supported steps.  On the
+fine fixture layer 2 equals layer 3 under every scheduler in the class.
+
 Hypotheses.  The class constraints (mismatch non-increase, single-register
 locality, unit expected capacity) and the capacity-split reading of the two
 registers are architecture declarations, stated as separate named clauses of
@@ -37,7 +46,12 @@ consistent state; a self-update-only scheduler with a positive cross hit; a
 proof that the explicit network-update-only scheduler misses the cross fiber;
 an in-class scheduler with positive cross hit and zero shared cost on every
 supported step; failure of the committed repair kernel to satisfy the class
-constraints.
+constraints; a self-update-only scheduler placing the coarse behavior in
+layer 3; a network-update-only scheduler with a positive coarse hit from a
+raised flag; failure of the merge-then-clear scheduler to satisfy the class
+constraints or to place the coarse behavior in layer 3; an in-class
+scheduler placing the coarse behavior in layer 3 with zero shared cost or
+zero private cost on every supported step.
 
 Nonclaims.  No physical scheduler is selected; the class is a declaration,
 not a derivation.  No biological, cognitive, or behavioral claim is made.
@@ -480,6 +494,386 @@ theorem class_does_not_force_almostSure :
   rw [hone'] at hzero
   norm_num at hzero
 
+/-! ## Endpoint-uniqueness cut: the coarse fixture prices both capacities -/
+
+/-- The committed coarse fixture with the declared scheduler substituted. -/
+def coarseModelOf (A : AdmissibleScheduler) :
+    FixedBehaviorModel Unit State :=
+  { TwoBit.coarseCore with kernel := A.kernel }
+
+/-- The committed fine profile with the declared scheduler substituted.  The
+static observation and rewrite data are unchanged; only the stochastic core
+moves. -/
+def fineProfileOf (A : AdmissibleScheduler) : Profile Bool State where
+  core := fineModelOf A
+  protected_nonempty := ⟨false, by simp [fineModelOf, TwoBit.fineCore]⟩
+  observe := TwoBitRepair.observe
+  consistent := fun q => q ∈ TwoBitRepair.consistent
+  target_iff := by
+    intro b q
+    simp [fineModelOf, TwoBit.fineCore, TwoBit.fineTarget, TwoBit.FineTargetPred,
+      FixedBehaviorModel.IsTarget, TwoBitRepair.consistent, TwoBitRepair.observe,
+      and_comm]
+  initial_observe := by
+    intro b q hb hq
+    have hq' : q = (b, true) := by
+      simpa [fineModelOf, TwoBit.fineCore] using hq
+    subst q
+    rfl
+  rewrite := TwoBitRepair.step
+  rewrite_observe := TwoBitRepair.step_observationPreserving
+  normal_iff_consistent := TwoBitRepair.step_completeFor_consistent
+
+/-- The committed coarse profile with the declared scheduler substituted. -/
+def coarseProfileOf (A : AdmissibleScheduler) : Profile Unit State where
+  core := coarseModelOf A
+  protected_nonempty := ⟨(), by simp [coarseModelOf, TwoBit.coarseCore]⟩
+  observe := TwoBitRepair.coarseObserve
+  consistent := fun q => q ∈ TwoBitRepair.consistent
+  target_iff := by
+    intro b q
+    cases b
+    simp [coarseModelOf, TwoBit.coarseCore, TwoBit.coarseTarget,
+      TwoBit.CoarseTargetPred, FixedBehaviorModel.IsTarget,
+      TwoBitRepair.consistent, TwoBitRepair.coarseObserve]
+  initial_observe := by
+    intro b q hb hq
+    cases b
+    rfl
+  rewrite := TwoBitRepair.step
+  rewrite_observe := by
+    intro q r hqr
+    rfl
+  normal_iff_consistent := TwoBitRepair.step_completeFor_consistent
+
+/-- A step-closed set absorbs every chain that starts inside it. -/
+theorem reflTransGen_mem_of_closed {R : State → State → Prop} (U : Set State)
+    (hclosed : ∀ u ∈ U, ∀ v, R u v → v ∈ U) {x y : State}
+    (h : Relation.ReflTransGen R x y) (hx : x ∈ U) : y ∈ U := by
+  induction h with
+  | refl => exact hx
+  | tail _ hstep ih => exact hclosed _ ih _ hstep
+
+/-- Cut 3 collapses on the fine fixture for every scheduler in the class:
+the target fiber is a singleton and the silent equivalence is equality, so
+layer 2 and layer 3 coincide whatever the kernel. -/
+theorem fine_layer2_eq_layer3_of_class (A : AdmissibleScheduler) :
+    (fineProfileOf A).layer2 = (fineProfileOf A).layer3 := by
+  apply (fineProfileOf A).t5_observableDetermination_collapse
+  intro b c d hc hd
+  have hc' : c.2 = false ∧ c.1 = b := by
+    simpa [fineProfileOf, fineModelOf, TwoBit.fineCore, TwoBit.fineTarget,
+      TwoBit.FineTargetPred, FixedBehaviorModel.IsTarget] using hc
+  have hd' : d.2 = false ∧ d.1 = b := by
+    simpa [fineProfileOf, fineModelOf, TwoBit.fineCore, TwoBit.fineTarget,
+      TwoBit.FineTargetPred, FixedBehaviorModel.IsTarget] using hd
+  change c = d
+  apply Prod.ext
+  · exact hc'.2.trans hd'.2.symm
+  · exact hc'.1.trans hd'.1.symm
+
+/-- Under a self-update-only scheduler every positive coarse endpoint keeps
+the shared register of its source. -/
+theorem selfUpdateOnly_coarse_endpoint_shared (A : AdmissibleScheduler)
+    (hA : SelfUpdateOnly A) {x c : State}
+    (hpos : 0 < (coarseProfileOf A).core.endpointMass () x c) : c.1 = x.1 := by
+  rcases ((coarseProfileOf A).endpoint_pos_iff_path x () c).mp hpos
+    with ⟨n, p, _, hend, hsupp⟩
+  have hchain := (coarseProfileOf A).supportedFinPath_reflTransGen hsupp
+  rw [hend] at hchain
+  refine reflTransGen_mem_of_closed {r : State | r.1 = x.1} ?_ hchain rfl
+  intro u hu v huv
+  rw [Set.mem_setOf_eq] at hu ⊢
+  rw [hA u v huv, hu]
+
+/-- Endpoint-uniqueness obstruction for the whole self-update-only sub-class:
+with positive coarse hits from both declared sources, the two endpoint
+supports differ in the shared register. -/
+theorem selfUpdateOnly_coarse_endpoint_cut (A : AdmissibleScheduler)
+    (hA : SelfUpdateOnly A)
+    (hfalse : 0 < (coarseProfileOf A).core.hit () (false, true))
+    (htrue : 0 < (coarseProfileOf A).core.hit () (true, true)) :
+    ¬ (coarseProfileOf A).core.EndpointUnique () := by
+  intro hU
+  rcases ((coarseProfileOf A).hit_pos_iff_endpoint () (false, true)).mp hfalse
+    with ⟨c, hc⟩
+  rcases ((coarseProfileOf A).hit_pos_iff_endpoint () (true, true)).mp htrue
+    with ⟨d, hd⟩
+  have hmemf : ((false, true) : State) ∈ (coarseProfileOf A).core.initial () := by
+    simp [coarseProfileOf, coarseModelOf, TwoBit.coarseCore]
+  have hmemt : ((true, true) : State) ∈ (coarseProfileOf A).core.initial () := by
+    simp [coarseProfileOf, coarseModelOf, TwoBit.coarseCore]
+  have heq : c = d := hU.2 (false, true) hmemf c hc (true, true) hmemt d hd
+  have hc1 : c.1 = false := selfUpdateOnly_coarse_endpoint_shared A hA hc
+  have hd1 : d.1 = true := selfUpdateOnly_coarse_endpoint_shared A hA hd
+  rw [heq] at hc1
+  rw [hc1] at hd1
+  exact Bool.false_ne_true hd1
+
+/-- Sub-class obstruction at layer 3: no self-update-only scheduler places
+the coarse behavior in layer 3. -/
+theorem selfUpdateOnly_coarse_not_layer3 (A : AdmissibleScheduler)
+    (hA : SelfUpdateOnly A) : () ∉ (coarseProfileOf A).layer3 := by
+  intro h3
+  change (coarseProfileOf A).core.InL3 () at h3
+  have hmemf : ((false, true) : State) ∈ (coarseProfileOf A).core.initial () := by
+    simp [coarseProfileOf, coarseModelOf, TwoBit.coarseCore]
+  have hmemt : ((true, true) : State) ∈ (coarseProfileOf A).core.initial () := by
+    simp [coarseProfileOf, coarseModelOf, TwoBit.coarseCore]
+  have hf := h3.1.2 (false, true) hmemf
+  have ht := h3.1.2 (true, true) hmemt
+  exact selfUpdateOnly_coarse_endpoint_cut A hA
+    (by rw [hf]; norm_num) (by rw [ht]; norm_num) h3.2
+
+/-- Sub-class obstruction at layer 1: every network-update-only scheduler
+misses the coarse target from every state whose private flag is raised. -/
+theorem networkUpdateOnly_coarse_cut (A : AdmissibleScheduler)
+    (hA : NetworkUpdateOnly A) :
+    ∀ q : State, q.2 = true → (coarseProfileOf A).core.hit () q = 0 := by
+  intro q hq
+  show hitProbability A.kernel ((coarseProfileOf A).core.IsTarget ()) q = 0
+  apply hitProbability_eq_zero_on_closed A.kernel
+    ((coarseProfileOf A).core.IsTarget ()) {r : State | r.2 = true}
+  · intro u hu ht
+    rw [Set.mem_setOf_eq] at hu
+    have ht' : u.2 = false := by
+      simpa [coarseProfileOf, coarseModelOf, TwoBit.coarseCore,
+        TwoBit.coarseTarget, TwoBit.CoarseTargetPred,
+        FixedBehaviorModel.IsTarget] using ht
+    rw [hu] at ht'
+    exact Bool.noConfusion ht'
+  · intro u hu v huv
+    rw [Set.mem_setOf_eq] at hu ⊢
+    rw [hA u v huv, hu]
+  · exact hq
+
+/-- Pricing corollary: any in-class scheduler that places the coarse behavior
+in layer 3 spends shared capacity on some supported step. -/
+theorem coarse_layer3_requires_shared_spend (A : AdmissibleScheduler)
+    (h3 : () ∈ (coarseProfileOf A).layer3) :
+    ∃ q r : State, SupportStep A.kernel q r ∧ sharedCost q r = 1 := by
+  by_contra hnone
+  push Not at hnone
+  have hself : SelfUpdateOnly A := by
+    intro q r hqr
+    have hne := hnone q r hqr
+    by_contra hne1
+    exact hne (by simp [sharedCost, hne1])
+  exact selfUpdateOnly_coarse_not_layer3 A hself h3
+
+/-- Pricing corollary: any in-class scheduler that places the coarse behavior
+in layer 3 spends private capacity on some supported step. -/
+theorem coarse_layer3_requires_private_spend (A : AdmissibleScheduler)
+    (h3 : () ∈ (coarseProfileOf A).layer3) :
+    ∃ q r : State, SupportStep A.kernel q r ∧ privateCost q r = 1 := by
+  by_contra hnone
+  push Not at hnone
+  have hnet : NetworkUpdateOnly A := by
+    intro q r hqr
+    have hne := hnone q r hqr
+    by_contra hne1
+    exact hne (by simp [privateCost, hne1])
+  change (coarseProfileOf A).core.InL3 () at h3
+  have hmemf : ((false, true) : State) ∈ (coarseProfileOf A).core.initial () := by
+    simp [coarseProfileOf, coarseModelOf, TwoBit.coarseCore]
+  have hone := h3.1.2 (false, true) hmemf
+  have hzero := networkUpdateOnly_coarse_cut A hnet (false, true) rfl
+  rw [hone] at hzero
+  norm_num at hzero
+
+/-! ### Full-class escape witness: merge the shared record, then clear -/
+
+/-- Deterministic merge-then-clear move: a raised flag first writes the shared
+register to `true`, then clears the private flag; consistent states are
+fixed. -/
+def mergeNext (q : State) : State :=
+  if q.2 = true then (if q.1 = true then (true, false) else (true, true)) else q
+
+def mergeKernel : FiniteMarkovKernel State where
+  probability q r := if r = mergeNext q then 1 else 0
+  probability_nonneg := by
+    intro q r
+    split <;> norm_num
+  probability_sum_one := by
+    intro q
+    simp
+
+theorem mergeKernel_support {q r : State}
+    (h : SupportStep mergeKernel q r) : r = mergeNext q := by
+  by_contra hne
+  simp [SupportStep, mergeKernel, hne] at h
+
+theorem mergeKernel_apply (V : State → ℝ) (q : State) :
+    mergeKernel.apply V q = V (mergeNext q) := by
+  simp [FiniteMarkovKernel.apply, mergeKernel]
+
+/-- The merge-then-clear kernel as a class member: it satisfies all three
+clauses while writing the shared register on one supported step and the
+private register on another. -/
+def mergeScheduler : AdmissibleScheduler where
+  kernel := mergeKernel
+  mismatch_nonincrease := by
+    intro q r hqr
+    rw [mergeKernel_support hqr]
+    rcases q with ⟨b, d⟩
+    cases b <;> cases d <;> norm_num [mergeNext, mismatch]
+  locality := by
+    intro q r hqr
+    rw [mergeKernel_support hqr]
+    rcases q with ⟨b, d⟩
+    cases b <;> cases d <;> simp [mergeNext, LocalMove]
+  capacity_bound := by
+    intro q
+    rw [Finset.sum_eq_single (mergeNext q)]
+    · rcases q with ⟨b, d⟩
+      cases b <;> cases d <;>
+        norm_num [mergeKernel, mergeNext, stepCost, privateCost, sharedCost]
+    · intro r _ hr
+      simp [mergeKernel, hr]
+    · simp
+
+theorem mergeScheduler_not_selfUpdateOnly : ¬ SelfUpdateOnly mergeScheduler := by
+  intro h
+  have hstep : SupportStep mergeScheduler.kernel (false, true) (true, true) := by
+    simp [SupportStep, mergeScheduler, mergeKernel, mergeNext]
+  have hfix := h (false, true) (true, true) hstep
+  exact Bool.noConfusion hfix
+
+theorem mergeScheduler_not_networkUpdateOnly :
+    ¬ NetworkUpdateOnly mergeScheduler := by
+  intro h
+  have hstep : SupportStep mergeScheduler.kernel (true, true) (true, false) := by
+    simp [SupportStep, mergeScheduler, mergeKernel, mergeNext]
+  have hfix := h (true, true) (true, false) hstep
+  exact Bool.noConfusion hfix
+
+theorem merge_coarse_hit_one_true :
+    (coarseProfileOf mergeScheduler).core.hit () (true, true) = 1 := by
+  show hitProbability mergeKernel
+    ((coarseModelOf mergeScheduler).IsTarget ()) (true, true) = 1
+  rw [hitProbability_bellman]
+  have hs : ¬ (coarseModelOf mergeScheduler).IsTarget () (true, true) := by
+    simp [coarseModelOf, TwoBit.coarseCore, TwoBit.coarseTarget,
+      TwoBit.CoarseTargetPred, FixedBehaviorModel.IsTarget]
+  rw [if_neg hs]
+  change mergeKernel.apply
+    (fun z => hitProbability mergeKernel
+      ((coarseModelOf mergeScheduler).IsTarget ()) z) (true, true) = 1
+  rw [mergeKernel_apply]
+  have hnext : mergeNext (true, true) = (true, false) := by simp [mergeNext]
+  rw [hnext, hitProbability_bellman]
+  have ht : (coarseModelOf mergeScheduler).IsTarget () (true, false) := by
+    simp [coarseModelOf, TwoBit.coarseCore, TwoBit.coarseTarget,
+      TwoBit.CoarseTargetPred, FixedBehaviorModel.IsTarget]
+  rw [if_pos ht]
+
+theorem merge_coarse_hit_one_false :
+    (coarseProfileOf mergeScheduler).core.hit () (false, true) = 1 := by
+  show hitProbability mergeKernel
+    ((coarseModelOf mergeScheduler).IsTarget ()) (false, true) = 1
+  rw [hitProbability_bellman]
+  have hs : ¬ (coarseModelOf mergeScheduler).IsTarget () (false, true) := by
+    simp [coarseModelOf, TwoBit.coarseCore, TwoBit.coarseTarget,
+      TwoBit.CoarseTargetPred, FixedBehaviorModel.IsTarget]
+  rw [if_neg hs]
+  change mergeKernel.apply
+    (fun z => hitProbability mergeKernel
+      ((coarseModelOf mergeScheduler).IsTarget ()) z) (false, true) = 1
+  rw [mergeKernel_apply]
+  have hnext : mergeNext (false, true) = (true, true) := by simp [mergeNext]
+  rw [hnext]
+  exact merge_coarse_hit_one_true
+
+/-- Under the merge scheduler every positive coarse endpoint from a
+raised-flag source is the consistent state with shared register `true`. -/
+theorem merge_coarse_endpoint_eq {x c : State} (hx : x.2 = true)
+    (hpos : 0 < (coarseProfileOf mergeScheduler).core.endpointMass () x c) :
+    c = (true, false) := by
+  have htarget := (coarseProfileOf mergeScheduler).endpoint_pos_target hpos
+  have hc2 : c.2 = false := by
+    simpa [coarseProfileOf, coarseModelOf, TwoBit.coarseCore,
+      TwoBit.coarseTarget, TwoBit.CoarseTargetPred,
+      FixedBehaviorModel.IsTarget] using htarget
+  rcases ((coarseProfileOf mergeScheduler).endpoint_pos_iff_path x () c).mp hpos
+    with ⟨n, p, _, hend, hsupp⟩
+  have hchain :=
+    (coarseProfileOf mergeScheduler).supportedFinPath_reflTransGen hsupp
+  rw [hend] at hchain
+  have hmem : c ∈ {r : State | r.1 = true ∨ r.2 = true} := by
+    refine reflTransGen_mem_of_closed {r : State | r.1 = true ∨ r.2 = true}
+      ?_ hchain ?_
+    · intro u hu v huv
+      rw [Set.mem_setOf_eq] at hu ⊢
+      rw [mergeKernel_support huv]
+      rcases u with ⟨b, d⟩
+      cases b <;> cases d <;> simp [mergeNext] at hu ⊢
+    · rw [Set.mem_setOf_eq]
+      exact Or.inr hx
+  rw [Set.mem_setOf_eq] at hmem
+  clear hpos htarget hchain hsupp hend
+  rcases c with ⟨cb, cd⟩
+  cases cb <;> cases cd <;> simp at hc2 hmem ⊢
+
+/-- Full-class escape at layer 3: the merge scheduler places the coarse
+behavior in layer 3, although it lies in neither sub-class. -/
+theorem merge_coarse_layer3 : () ∈ (coarseProfileOf mergeScheduler).layer3 := by
+  change (coarseProfileOf mergeScheduler).core.InL3 ()
+  have hmemt : ((true, true) : State) ∈
+      (coarseProfileOf mergeScheduler).core.initial () := by
+    simp [coarseProfileOf, coarseModelOf, TwoBit.coarseCore]
+  have hinit : ∀ q ∈ (coarseProfileOf mergeScheduler).core.initial (),
+      q.2 = true := by
+    intro q hq
+    have hq' : q = (false, true) ∨ q = (true, true) := by
+      simpa [coarseProfileOf, coarseModelOf, TwoBit.coarseCore] using hq
+    rcases hq' with rfl | rfl <;> rfl
+  have hAS : (coarseProfileOf mergeScheduler).core.AlmostSure () := by
+    intro q hq
+    have hq' : q = (false, true) ∨ q = (true, true) := by
+      simpa [coarseProfileOf, coarseModelOf, TwoBit.coarseCore] using hq
+    rcases hq' with rfl | rfl
+    · exact merge_coarse_hit_one_false
+    · exact merge_coarse_hit_one_true
+  have hpos : 0 < (coarseProfileOf mergeScheduler).core.hit () (true, true) := by
+    rw [merge_coarse_hit_one_true]
+    norm_num
+  refine ⟨⟨⟨⟨by simp [coarseProfileOf, coarseModelOf, TwoBit.coarseCore], ?_⟩,
+    ⟨(true, true), hmemt, hpos⟩⟩, hAS⟩, ?_⟩
+  · exact ⟨(true, false), by
+      simp [coarseProfileOf, coarseModelOf, TwoBit.coarseCore,
+        TwoBit.coarseTarget, TwoBit.CoarseTargetPred,
+        FixedBehaviorModel.IsTarget]⟩
+  · refine ⟨⟨(true, true), hmemt, ?_⟩, ?_⟩
+    · exact ((coarseProfileOf mergeScheduler).hit_pos_iff_endpoint
+        () (true, true)).mp hpos
+    · intro x hx c hc y hy d hd
+      have hc' := merge_coarse_endpoint_eq (hinit x hx) hc
+      have hd' := merge_coarse_endpoint_eq (hinit y hy) hd
+      subst hc'
+      subst hd'
+      exact (coarseProfileOf mergeScheduler).core.silent.iseqv.refl _
+
+/-- Composed receipt for the endpoint-uniqueness cut on the coarse fixture:
+layer 3 is unreachable for the whole self-update-only sub-class, the coarse
+target is unreachable for the whole network-update-only sub-class, an
+explicit class member outside both sub-classes reaches layer 3, and every
+in-class scheduler that reaches layer 3 spends both capacities. -/
+theorem coarse_endpoint_capacity_split_receipt :
+    (∀ A : AdmissibleScheduler, SelfUpdateOnly A →
+      () ∉ (coarseProfileOf A).layer3) ∧
+    (∀ A : AdmissibleScheduler, NetworkUpdateOnly A →
+      ∀ q : State, q.2 = true → (coarseProfileOf A).core.hit () q = 0) ∧
+    (∃ A : AdmissibleScheduler, ¬ SelfUpdateOnly A ∧ ¬ NetworkUpdateOnly A ∧
+      () ∈ (coarseProfileOf A).layer3) ∧
+    (∀ A : AdmissibleScheduler, () ∈ (coarseProfileOf A).layer3 →
+      (∃ q r : State, SupportStep A.kernel q r ∧ sharedCost q r = 1) ∧
+      (∃ q r : State, SupportStep A.kernel q r ∧ privateCost q r = 1)) :=
+  ⟨selfUpdateOnly_coarse_not_layer3, networkUpdateOnly_coarse_cut,
+    ⟨mergeScheduler, mergeScheduler_not_selfUpdateOnly,
+      mergeScheduler_not_networkUpdateOnly, merge_coarse_layer3⟩,
+    fun A h3 => ⟨coarse_layer3_requires_shared_spend A h3,
+      coarse_layer3_requires_private_spend A h3⟩⟩
+
 /-! ## Composed receipt -/
 
 /-- Composed receipt on the declared antecedent bundle: sub-class
@@ -516,5 +910,12 @@ end
 #print axioms class_does_not_force_almostSure
 #print axioms defectInjectionKernel_defect_hit
 #print axioms scheduler_class_composed_receipt
+#print axioms fine_layer2_eq_layer3_of_class
+#print axioms selfUpdateOnly_coarse_not_layer3
+#print axioms networkUpdateOnly_coarse_cut
+#print axioms merge_coarse_layer3
+#print axioms coarse_layer3_requires_shared_spend
+#print axioms coarse_layer3_requires_private_spend
+#print axioms coarse_endpoint_capacity_split_receipt
 
 end ObservableNormalForms.ProtectedObstructions.SchedulerClass
