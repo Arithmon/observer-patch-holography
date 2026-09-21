@@ -1,0 +1,66 @@
+name: Source Read Acceptance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "code/source_read_acceptance/**"
+      - "code/source_routing/support_w12_l3.json"
+      - "Lean/Geometry/SourceReadAcceptance*.lean"
+      - "Lean/Geometry/SourceReadSelection.lean"
+      - "Lean/Geometry/SourceReusableBus*.lean"
+      - "Lean/Geometry/SourceEncodedMemory.lean"
+      - "Lean/ObserverPatchHolography/ScalarSeamRepair.lean"
+      - "Lean/ObserverPatchHolography/RepairWordSchedule.lean"
+      - "Lean/Geometry.lean"
+      - "Lean/lean-toolchain"
+      - "Lean/lakefile.lean"
+      - "Lean/lake-manifest.json"
+      - "docs/AXIOM_REFERENCE.md"
+      - "claims/axiom_registry.yaml"
+      - "requirements.txt"
+      - ".gitattributes"
+      - ".github/workflows/source-read-acceptance.yml"
+      - ".github/workflows/lean-ci.yml"
+  pull_request:
+    paths:
+      - "code/source_read_acceptance/**"
+      - "code/source_routing/support_w12_l3.json"
+      - "Lean/Geometry/SourceReadAcceptance*.lean"
+      - "Lean/Geometry/SourceReadSelection.lean"
+      - "Lean/Geometry/SourceReusableBus*.lean"
+      - "Lean/Geometry/SourceEncodedMemory.lean"
+      - "Lean/ObserverPatchHolography/ScalarSeamRepair.lean"
+      - "Lean/ObserverPatchHolography/RepairWordSchedule.lean"
+      - "Lean/Geometry.lean"
+      - "Lean/lean-toolchain"
+      - "Lean/lakefile.lean"
+      - "Lean/lake-manifest.json"
+      - "docs/AXIOM_REFERENCE.md"
+      - "claims/axiom_registry.yaml"
+      - "requirements.txt"
+      - ".gitattributes"
+      - ".github/workflows/source-read-acceptance.yml"
+      - ".github/workflows/lean-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  controls:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Install pinned dependencies
+        run: pip install -r requirements.txt
+      - name: Replay all stopped histories and adversarial controls
+        run: python -m pytest -q code/source_read_acceptance
