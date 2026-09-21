@@ -50,8 +50,9 @@ fails even after rehashing. Existing tests and evidence are preserved.
 
 ## Scientific boundary
 
-A2 checks meaning on an independently typed accepted domain; it does not
-generate that domain. The singleton theorem derives the greatest sound local
+The [canonical axiom reference](../../docs/AXIOM_REFERENCE.md) assigns the
+accepted domain to A1. A2 checks meaning on that domain; it does not generate
+the domain. The singleton theorem derives the greatest sound local
 partial function for a supplied model. It does not force an observer to run
 that function or supply a physical comparator/publication instrument.
 
