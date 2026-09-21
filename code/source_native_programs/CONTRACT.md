@@ -11,6 +11,8 @@ preparation, all routing and cleanup, arithmetic, and local publication.
 The target recurrence is `v[t+1,i] = 1 + sum(v[t,j] for j in menu[t,i])`.
 Menus are supplied finite lists; duplicates and empty lists have their literal
 sum semantics. Public initial magnitude bounds are independent of payloads.
+The finite bank compiler must derive that recurrence, its lifetimes and its
+native lowering in Lean; correctness of the completed program is not an input.
 
 ## Deliverables
 
@@ -32,6 +34,15 @@ sum semantics. Public initial magnitude bounds are independent of payloads.
 5. Standard-axiom gates, serious semantic mutations, compact evidence,
    deterministic regeneration and CI gates for both finite controls and the
    complete family route/metric certificates.
+6. A general kernel-checked compiler for arbitrary finite typed layers:
+   input preservation, output-bank reuse, native lowering, exact word length,
+   public caps and whole-history error bounds. Finite cleanup/grid precision
+   and an explicit declared bus discharge the route-existence and strict-margin
+   premises in a combined conditional execution theorem.
+7. A finite kernel certificate matching all 42 stages of the captured signed
+   control: logical instructions, every observed scale, per-stage native work
+   and nine final output pairs. Missing/extra stages, wrong instructions,
+   undercharged work and incorrect scales have kernel-checked rejection cases.
 
 ## Exit
 
@@ -42,6 +53,9 @@ reset precision clocks, altered samples/publications, and scope promotion.
 Every added Lean theorem is enumerated by the transitive standard-axiom gate.
 Family receipts distinguish complete native q=3 evaluation from q=13/q=21
 topology certificates and analytic sufficient bounds.
+The generated Lean control certificate must match the validated captured plan
+byte for byte, and must compile using kernel reduction with standard axioms.
+The explicit bus witness must remain distinct from captured W12 evidence.
 
 Deterministic repeated blocks may be accelerated only after executing a
 whole block and checking that its complete touched state is unchanged.
@@ -53,8 +67,10 @@ work directory, not committed as long tapes.
 ## Scientific boundary
 
 M1 remains a supplied structural rule under PR-52. The construction derives
-the data-path operations conditional on a supplied word, placement, protected
-lifetimes, preparation and publication instrument. It does not derive the
+the native word and logical bank lifetimes from supplied request lists and
+geometric routes. Its execution is conditional on prepared records, physical
+protection, a controller realizing that word and a publication instrument.
+It does not derive the
 golden address population, metric menu, temporal controller, observer cover,
 faithful source reference, physical isolation, physical clock or attainable
 precision from A1--A3. The selection criterion and cover obstruction in
@@ -66,10 +82,14 @@ geometric address records. The experiment realizes the same supplied logical
 menu on payloads; it does not preserve address loads in the routing ports or
 derive the menu by reading them during execution.
 
-The Lean construction and its composition are kernel checked. Identification
-of the Python bank compiler with that construction is the explicit induction
-in `DERIVATION.md`, supported by independent finite certificates; no generated
-Lean proof term for the entire captured compiler is claimed. The analytic
+The general paired-cell bank compiler, its recurrence, native lowering and
+finite precision existence are kernel checked. Its explicit star bus proves
+the route premises are inhabited for arbitrary finite programs; that declared
+bus is not a captured W12 support. The 42-stage captured control has a finite
+kernel correspondence certificate for instructions, scales, work and outputs.
+The extension/re-pairing of captured scalar routes and the general Python
+implementation remain analytic identifications in `DERIVATION.md`; a complete
+Lean verification of the captured compiler is not claimed. The analytic
 large-family work bounds are sufficient and expensive. Native event count is
 not assigned a spacetime volume or a physical clock. Host controller work,
 metadata storage, evidence evaluation and the observation instrument remain

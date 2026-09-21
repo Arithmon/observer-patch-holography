@@ -14,7 +14,7 @@ import os
 import pytest
 import yaml
 
-from . import build,check_routes,codec,routes,verify,family_build,family_verify
+from . import build,check_routes,codec,routes,verify,family_build,family_verify,lean_control
 
 
 @pytest.fixture(scope="module")
@@ -266,16 +266,54 @@ def require_ci_gate(source):
 def test_complete_transitive_axiom_inventory_and_ci_gate():
     declarations = set()
     for module in ("SourceNativeShuttle","SourceNativeProgramError","SourceNativeCore",
-                   "SourceNativeStoredProgram","SourceNativeProgramBudget"):
+                   "SourceNativeStoredProgram","SourceNativeProgramBudget",
+                   *(path.stem for path in sorted((codec.ROOT/"Lean/Geometry").glob("SourceBank*.lean")))):
         source = (codec.ROOT/f"Lean/Geometry/{module}.lean").read_text(encoding="utf-8")
-        namespace = re.search(r"^namespace (\S+)",source,re.M).group(1)
-        declarations.update(namespace+"."+name for name in re.findall(r"^(?:theorem|lemma) (\w+)",source,re.M))
         code = re.sub(r"/-.*?-/|--[^\n]*","",source,flags=re.S)
+        namespace = re.search(r"^namespace (\S+)",code,re.M).group(1)
+        declarations.update(namespace+"."+name for name in re.findall(r"^(?:theorem|lemma) (\w+)",code,re.M))
         assert not re.search(r"\b(sorry|admit|axiom|native_decide|unsafe)\b",code)
     audit = (codec.ROOT/"Lean/Geometry/SourceNativeProgramsAxiomAudit.lean").read_text(encoding="utf-8")
     assert set(re.findall(r"^audit_reusable_bus_axioms (\S+)",audit,re.M)) == declarations
     assert "SourceNativeProgramsAxiomAudit" in (codec.ROOT/"Lean/Geometry.lean").read_text(encoding="utf-8")
     require_ci_gate((codec.ROOT/".github/workflows/lean-ci.yml").read_text(encoding="utf-8"))
+
+
+def test_kernel_control_certificate_is_complete_and_current(packet,monkeypatch):
+    def forbidden(*args,**kwargs):
+        raise AssertionError("producer called by kernel control exporter")
+    monkeypatch.setattr(build,"compile_program",forbidden)
+    monkeypatch.setattr(build,"execute",forbidden)
+    monkeypatch.setattr(routes,"generate",forbidden)
+    assert lean_control.TARGET.read_bytes() == lean_control.render(packet)
+    assert len(packet["plan"]["segments"]) == 42
+
+
+@pytest.mark.parametrize("mutation",[
+    changed(["program"],[]),changed(["routes"],[]),changed(["plan","segments"],[]),
+    changed(["plan","segments",0,"blocks",0,"repeat"],1),
+    changed(["plan","segments",1,"polls",-1,"scale"],0),
+    changed(["plan","segments",1,"polls",-1,"version"],[0,1,-1]),
+    changed(["plan","segments",-1,"kind"],"read"),
+    changed(["plan","scalar_means"],0),changed(["cases"],[]),
+    changed(["cases",0,"stored_values"],[]),
+    changed(["cases",0,"stored_values",-1],True),
+    changed(["cases",0,"stored_values",-1],12345),
+])
+def test_kernel_control_cli_rejects_forged_or_stale_correspondence(packet,tmp_path,mutation):
+    # The intact packet must reach and pass the real CLI before an attack.
+    env = dict(os.environ,PYTHONPATH=str(codec.ROOT/"code"))
+    path = tmp_path/"controls.json"
+    command = [sys.executable,"-m","source_native_programs.lean_control",
+               "--controls",str(path),"--check"]
+    path.write_bytes(codec.canonical(packet))
+    good = subprocess.run(command,cwd=codec.ROOT,env=env,capture_output=True,text=True,timeout=120)
+    assert good.returncode == 0,good.stderr
+    forged = deepcopy(packet)
+    mutation(forged)
+    path.write_bytes(codec.canonical(forged))
+    bad = subprocess.run(command,cwd=codec.ROOT,env=env,capture_output=True,text=True,timeout=120)
+    assert bad.returncode != 0,bad.stdout
 
 
 @pytest.mark.parametrize("replacement",['','# "Geometry.SourceNativeProgramsAxiomAudit"',

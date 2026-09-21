@@ -34,6 +34,6 @@ def pins():
         "code/source_read_routing/controls/q3_baseline.json",
         *(f"code/source_native_programs/{name}" for name in (
             "__init__.py", "codec.py", "routes.py", "check_routes.py", "build.py",
-            "verify.py", "family_build.py", "family_verify.py", "CONTRACT.md")),
+            "verify.py", "family_build.py", "family_verify.py", "lean_control.py", "CONTRACT.md")),
     }
     return {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sorted(paths)}
