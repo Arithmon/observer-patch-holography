@@ -316,6 +316,30 @@ def test_kernel_control_cli_rejects_forged_or_stale_correspondence(packet,tmp_pa
     assert bad.returncode != 0,bad.stdout
 
 
+@pytest.mark.parametrize("mutation,reason",[
+    (changed(["m1_derived"],True),"unproved M1 promotion"),
+    (changed(["pins"],{}),"source/proof custody"),
+    (changed(["cases",0,"stored_values",0],12345),"native state, version, observation or work differs"),
+    (changed(["cases",0,"history_sha256"],"0"*64),"native state, version, observation or work differs"),
+])
+def test_kernel_control_cli_authenticates_evidence_outside_projection(packet,tmp_path,mutation,reason):
+    forged = deepcopy(packet)
+    mutation(forged)
+    # These fields do not alter any represented theorem. Projection freshness
+    # alone therefore cannot authenticate the supplied native evidence.
+    assert lean_control.render(forged) == lean_control.render(packet)
+    env = dict(os.environ,PYTHONPATH=str(codec.ROOT/"code"))
+    path = tmp_path/"controls.json"
+    command = [sys.executable,"-m","source_native_programs.lean_control",
+               "--controls",str(path),"--check"]
+    path.write_bytes(codec.canonical(packet))
+    good = subprocess.run(command,cwd=codec.ROOT,env=env,capture_output=True,text=True,timeout=120)
+    assert good.returncode == 0,good.stderr
+    path.write_bytes(codec.canonical(forged))
+    bad = subprocess.run(command,cwd=codec.ROOT,env=env,capture_output=True,text=True,timeout=120)
+    assert bad.returncode != 0 and reason in bad.stderr,bad.stdout+bad.stderr
+
+
 @pytest.mark.parametrize("replacement",['','# "Geometry.SourceNativeProgramsAxiomAudit"',
                                          '"Geometry.SourceNativeStoredProgram"'])
 def test_disabled_ci_axiom_gate_is_rejected(replacement):

@@ -2186,7 +2186,7 @@
   {
    "from": "OPH-NATIVE-REUSABLE-ACCUMULATION",
    "to": "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM",
-   "role": "Supplies supported scale-aligned arithmetic, retained logical inputs and the bounded integer decoder; new transfer, bank lifetime and global residual arguments construct stored later-layer inputs."
+   "role": "Supplies scale-aligned native arithmetic and the bounded integer decoder. The bank compiler derives layered request semantics, clean/lifetime invariants and native lowering; explicit geometric routes and finite error bounds are handled separately."
   },
   {
    "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",

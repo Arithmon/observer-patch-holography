@@ -3,6 +3,8 @@
 This exporter is untrusted. The Lean checker uses the general compiler,
 scale transitions and native word lengths, not Python implementations of
 those functions. Freshness is checked against the complete committed plan.
+Check mode first authenticates and independently replays the native controls,
+including evidence fields omitted from the generated Lean projection.
 The certificate concerns the logical stream, scales and work; physical
 re-pairing of blank scalar ports remains outside this correspondence proof.
 """
@@ -10,7 +12,7 @@ from pathlib import Path
 
 from . import codec
 from .check_routes import check, require
-from .verify import certify_plan
+from .verify import certify_plan, verify
 
 TARGET = codec.ROOT / "Lean/Geometry/SourceBankControl.lean"
 
@@ -127,7 +129,10 @@ def main():
     parser.add_argument("--output", type=Path, default=TARGET)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    content = render(codec.load_artifact(args.controls))
+    packet = codec.load_artifact(args.controls)
+    if args.check:
+        verify(packet)
+    content = render(packet)
     if args.check:
         require(args.output.read_bytes() == content, "stale kernel control certificate")
     else:
