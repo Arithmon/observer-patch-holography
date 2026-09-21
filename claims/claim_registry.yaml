@@ -4668,7 +4668,7 @@
     },
     {
       "claim_id": "OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX",
-      "statement": "Against the committed finite covariant-net carriers, exactly two of seven structural QFT targets carry theorem-shaped finite surrogates. Row 3 proves that every bijective localized endomorphism of the constructed finite witness is inner and hence equivalent to the identity under the declared finite relation; it does not construct a DHR category, cover non-bijective transportable endomorphisms, or reconstruct a gauge group, so full DHR is a typed exit. Row 5 proves a finite private-block Gibbs-KMS identity, but the constructed net-level KMS reading is degenerate and the finite public record algebra admits no nontrivial pointwise-continuous star flow, while horizon thermality is a typed exit. The five other full targets remain unavailable at their registered scope. Rows 1, 2, and 7 are typed non-evaluable exits naming absent CPT, spin-statistics, and scattering carrier structure. Row 4 acknowledges exact response-word, global Hodge, and local finite face-curvature/static scalar-vector action precursors but no temporal, source-attached, spacetime, or continuum field/action reconstruction. Row 6 acknowledges the corrected one-step interface and the common triple-observer state/path/checkpoint carrier with 31 adjacent-step marginal intertwiners, but no regional-net morphism, Cauchy geometry, coherent physical evolution, or stress-response derivative. These are current-carrier boundaries, not no-gos against extending the carriers. The matrix is a partial status artifact and does not close E4 or establish that the constructed net inherits QFT structure.",
+      "statement": "Against the committed finite covariant-net carriers, exactly two of seven structural QFT targets carry theorem-shaped finite surrogates. Row 3 proves that every bijective localized endomorphism of the constructed finite witness is inner and hence equivalent to the identity under the declared finite relation; it does not construct a DHR category, cover non-bijective transportable endomorphisms, or reconstruct a gauge group, so full DHR is a typed exit. Row 5 proves a finite private-block Gibbs-KMS identity, but the constructed net-level KMS reading is degenerate and the finite public record algebra admits no nontrivial pointwise-continuous star flow, while horizon thermality is a typed exit. The five other full targets remain unavailable at their registered scope. Rows 1, 2, and 7 are typed non-evaluable exits naming absent CPT, spin-statistics, and scattering carrier structure. Row 4 acknowledges exact response-word, global Hodge, and local finite face-curvature/static scalar-vector action precursors but no temporal, source-attached, spacetime, or continuum field/action reconstruction. Row 6 acknowledges the corrected one-step interface, the common triple-observer counted-state carrier and the finite noncommutative tensor join with full pair-algebra embeddings and 31 adjacent-step intertwiners. Source-count matrix lifts generate this admitted operator algebra and its evolved image, while full regional-net or tower/refinement compatibility, Cauchy geometry, coherent physical evolution and stress-response derivatives are not supplied. These are current-carrier boundaries, not no-gos against extending the carriers. The matrix is a partial status artifact and does not close E4 or establish that the constructed net inherits QFT structure.",
       "owner_paper": "paper/reality_as_consensus_protocol.tex",
       "tier": "partial_bounded_structural_QFT_status_matrix_with_five_typed_exits",
       "assumptions": [
@@ -4692,7 +4692,9 @@
         "Lean/QFT/PathTimeSliceInterface.lean",
         "Lean/QFT/TripleCarrierJoin.lean",
         "Lean/Screen/PositionSpaceMaxwellAction.lean",
-        "Lean/Screen/LocalFaceMaxwellAction.lean"
+        "Lean/Screen/LocalFaceMaxwellAction.lean",
+        "Lean/QFT/TripleCarrierOperatorJoin.lean",
+        "paper/tex_fragments/TRIPLE_CARRIER_OPERATOR_JOIN.tex"
       ],
       "falsifier": "The kernel-checked matrix does not have exactly seven rows with theorem-shaped finite surrogates exactly at rows 3 and 5 and full-target exits or gates exactly at rows 1, 2, 4, 6, and 7; a row anchor fails; the row-4 local static action or row-6 triple-carrier precursor is omitted or promoted beyond its theorem; innerness of the restricted bijective localized-endomorphism class or either finite KMS counter-reading fails on its declared carrier; or an exit remains unchanged after completed target structure lands in the committed tree.",
       "scope_if_false": "Only the partial E4 status matrix, its restricted finite row-3 or row-5 conclusion, or the affected typed exit falls. No blanket QFT inheritance claim is substituted, and unrelated finite consensus, dynamics, geometry, or gauge packets retain their own statuses.",
@@ -10468,32 +10470,40 @@
     },
     {
       "claim_id": "OPH-SCALAR-SEQUENTIAL-INSTRUMENT",
-      "statement": "A centered pointer instrument on the same supplied 64-mode scalar action realizes the sine effect and defines consistent joint classical record probabilities. Repeated nonselective measurements attenuate each unconditional sine response by the product of cross-time commutator cosines, preserve canonical first moments and inject G0/8 expected energy per readout. Independent exact full-action replay bounds all 21 sequential marginals against the same continuously evolving, repeatedly measured field uniformly over the inherited ordered reference-clock intervals. All 15 resolved slots remain resolved; at step16 the split signal is at least 0.009505812796135, error at most 0.000834181208061 and continuous response magnitude at least 0.008671631588074. A supplied 32-site GHZ circuit on the scalar action graph realizes the instrument with 129 ideal operations per readout. The operator theorem is analytic, not Lean-formalized. Quantum preparation, couplings, entanglement, Born readout and ideal duration are supplied; no branch was sampled, no branch-conditioned clock reconstructed, and no native W12 quantum transport, spatial interacting continuum or physical identification is asserted. With U=exp(-i Z tensor Phi(g)/2), a fresh +X pointer and standard +Y outcome0, K0=(exp(-iPhi/2)-i exp(iPhi/2))/2 and K1 has the plus sign. The nonselective map is the equal mixture of opposite half-Weyl kicks. If d_j<=D_j<=1 and L_j=G0^2 sum_(k<j)(b_j-a_k)^2/8<1, the sequential probability error is at most epsilon_j+max(1-d_j,L_j)*u_j, where u_j bounds the unmeasured split response. Each fine GHZ record of parity s has outcome operator2^(-31/2)K_s, so its parity coarse-graining is the same instrument. The2709 ideal readout operations exclude field evolution and vacuum preparation; the coherent intervention adds16 local Weyl factors.",
+      "statement": "A centered pointer instrument on the same supplied 64-mode scalar action realizes the sine effect and defines consistent joint classical record probabilities. Repeated nonselective measurements attenuate each unconditional sine response by the product of cross-time commutator cosines, preserve canonical first moments and inject G0/8 expected energy per readout. Independent exact full-action replay bounds all 21 sequential marginals against the same continuously evolving, repeatedly measured field uniformly over the inherited ordered reference-clock intervals. All 15 resolved slots remain resolved; at step16 the split signal is at least 0.009505812796135, error at most 0.000834181208061 and continuous response magnitude at least 0.008671631588074. A supplied 32-site GHZ circuit on the scalar action graph realizes the instrument with 129 ideal operations per readout. The operator theorem is analytic, not Lean-formalized. Quantum preparation, couplings, entanglement, Born readout and ideal duration are supplied; no branch was sampled, no branch-conditioned clock reconstructed, and no native W12 quantum transport, spatial interacting continuum or physical identification is asserted. With U=exp(-i Z tensor Phi(g)/2), a fresh +X pointer and standard +Y outcome0, K0=(exp(-iPhi/2)-i exp(iPhi/2))/2 and K1 has the plus sign. The nonselective map is the equal mixture of opposite half-Weyl kicks. If d_j<=D_j<=1 and L_j=G0^2 sum_(k<j)(b_j-a_k)^2/8<1, the sequential probability error is at most epsilon_j+max(1-d_j,L_j)*u_j, where u_j bounds the unmeasured split response. Each fine GHZ record of parity s has outcome operator2^(-31/2)K_s, so its parity coarse-graining is the same instrument. The2709 ideal readout operations exclude field evolution and vacuum preparation; the coherent intervention adds16 local Weyl factors. A separate finite-duration realization keeps the same free scalar Hamiltonian active during rectangular local field-pointer pulses. On the ideal GHZ code its exact forced-oscillator solution is a centered instrument with sinc-averaged smear and a common phase; that phase is not scalar on arbitrary pointer states. A shared pulse width in [1/1000,1/100], pointer-only duration 1/10000, per-declared-fault-location half-diamond error at most 1e-7 and initial trace distance at most 1e-5 leave all fifteen responses resolved. The paired baseline/intervention error includes 2*epsilon0+258*j*epsilon through readout j; the noisy baseline is not fixed to one half. All 2709 fault locations, 21 occupied windows and 210 earlier pairs are retained. At step16 the negative paired response has magnitude at least 0.008235344398222, with total comparison error at most 0.001270468397913. Ideal field work is bounded, while generic channel closeness supplies no noisy-energy bound. Effective equal-time smear may leave the original detector region. Initial preparations, quantum controls, Born readout and the inherited reference clock remain supplied; the sixteen historical coherent preparation factors are not implemented at finite duration by this extension. These are analytic probabilities and uncertainty bounds, not sampled outcomes or a native physical quantum realization.",
       "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
       "tier": "analytic_finite_sequential_quantum_instrument_and_exact_rational_clock_comparison",
       "assumptions": [
         "declared_golden_scalar_versioned_execution",
         "declared_original_scalar_vacuum_and_sine_effect",
         "fixed_quantum_preparation_under_clock_only_uncertainty",
-        "declared_centered_quantum_pointer_and_regional_entangling_operations"
+        "declared_centered_quantum_pointer_and_regional_entangling_operations",
+        "declared_finite_duration_scalar_pointer_and_channel_error_model"
       ],
       "imported_results": [
         "bounded_Kraus_instruments_and_classical_record_prefix_consistency",
         "Weyl_commutator_conjugation_and_centered_random_kicks",
-        "GHZ_parity_readout_and_rational_cosine_lower_bounds"
+        "GHZ_parity_readout_and_rational_cosine_lower_bounds",
+        "finite_forced_oscillator_Weyl_solution",
+        "trace_distance_and_diamond_norm_channel_telescoping"
       ],
-      "oph_specific_delta": "Composes repeated quantum readout, measurement backaction, local detector compilation and recovered reference-clock uncertainty for the same finite scalar action, retaining every measured time and the full operator in an independently checked probability enclosure.",
+      "oph_specific_delta": "Composes repeated quantum readout, backaction, finite pulse duration, declared channel noise and recovered reference-clock uncertainty for one supplied finite scalar action, retaining all readouts and the full operator in independently replayed error bounds.",
       "novelty_type": "same_action_sequential_instrument_and_clock_error_composition",
       "evidence": [
         "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex",
         "code/source_scalar_instruments/sequential_instrument.py",
         "code/source_scalar_instruments/verify_sequential_instrument.py",
         "code/source_scalar_instruments/test_sequential_instrument.py",
-        "code/source_scalar_instruments/sequential_instrument_receipt.json"
+        "code/source_scalar_instruments/sequential_instrument_receipt.json",
+        "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex",
+        "code/source_scalar_finite_instrument/finite_instrument.py",
+        "code/source_scalar_finite_instrument/verify_finite_instrument.py",
+        "code/source_scalar_finite_instrument/test_finite_instrument.py",
+        "code/source_scalar_finite_instrument/finite_instrument_receipt.json"
       ],
-      "falsifier": "The pointer sign gives the wrong effect, Kraus completeness or record-prefix consistency fails, the full-action commutator or cosine attenuation is wrong, any allowed ordered reference-time choice escapes its bound, a graph edge or fine-record parity factor is invalid, a parent is omitted or altered, or unconditional marginals are promoted to observed branches or native physical quantum operations.",
+      "falsifier": "The pointer sign gives the wrong effect, Kraus completeness or record-prefix consistency fails, the full-action commutator or cosine attenuation is wrong, any allowed ordered reference-time choice escapes its bound, a graph edge or fine-record parity factor is invalid, a parent is omitted or altered, or unconditional marginals are promoted to observed branches or native physical quantum operations. The finite pulse differs from its forced-oscillator solution, a pulse phase is incorrectly promoted beyond the GHZ code, an occupied window overlaps, a fault or baseline error is omitted, a retained response loses its certified sign, or probability closeness is promoted to an energy bound.",
       "scope_if_false": "The repeated instrument, regional circuit or sequential comparison fails; the independently certified unmeasured same-action probabilities retain their narrower scope.",
-      "status": "consistent_joint_instrument_and_resolved_sequential_marginals_attained__native_quantum_operations_and_physical_clock_open",
+      "status": "resolved_sequential_readout_with_finite_pulse_and_declared_channel_noise__native_operations_and_physical_attachment_unsupplied",
       "claim_class": "conditional_implication",
       "gates": [
         730,
@@ -10683,6 +10693,51 @@
         "boundary": [
           "PR-15"
         ]
+      }
+    },
+    {
+      "claim_id": "OPH-QUANTUM-TRIPLE-OPERATOR-JOIN",
+      "statement": "On the declared tensor carrier C13 tensor C14 tensor C13 of the committed observer rows (86,88,247), the full 86/88 and 86/247 matrix algebras admit injective unital star embeddings into M2366(C). Their intersection is exactly the full M13(C) observer-86 hinge, of complex dimension 169, and their generated star algebra is all M2366(C). The exclusive second and third tensor factors commute; the two pair algebras overlap noncommutatively. Normalized spectator partial traces are linear left inverses, not multiplicative projections. Ordinary unnormalized density partial traces give the two committed pair states, and their expectations agree with the triple state along both embeddings. For each of the 31 actual adjacent transitions of the 32-row source path, the triple permutation star automorphism intertwines both full pair embeddings for arbitrary matrices, including off-diagonal operators. The complex lifts of the actual source count matrices and the field-label diagonal projectors generate the pair and triple algebras; their jointly evolved images generate the same full triple algebra. These coherent lifts and permutation gates are admitted operator data, not executed quantum operations or a Hamiltonian generated by the count matrix. The empirical triple state is not the uniform tower state and is not invariant under every step. Exact Python replay separately checks 73346 carrier points, all 496 chronological intervals and 18 sparse matrix-unit controls; the universal operator statements are Lean theorems, not conclusions of those finite tests. The tensor amalgam does not add multiplication to the distinct 338-dimensional diagonal pushout and has no claimed universal C*-pushout property. Tensor-slot locality supplies no physical support-disjointness theorem. No full regional-net or tower/refinement morphism, physical clock, source quantum instrument, Cauchy geometry, continuum field theory, or physical time-slice attachment is constructed.",
+      "owner_paper": "paper/observers_are_all_you_need.tex",
+      "tier": "exact_finite_noncommutative_tensor_join_and_admitted_generator_transport",
+      "assumptions": [
+        "committed_source_walk_payload_carriers",
+        "declared_coherent_operator_lifts_and_path_permutation_admission"
+      ],
+      "imported_results": [
+        "finite_matrix_tensor_embeddings_and_partial_trace",
+        "finite_permutation_star_equivalences",
+        "matrix_unit_generation_of_full_matrix_algebras"
+      ],
+      "oph_specific_delta": "Constructs both full source-pair operator embeddings on one explicit triple carrier, with exact noncommutative hinge intersection, state compatibility, all adjacent source-path intertwiners and generation from admitted source-count lifts; preserves the diagonal-quotient obstruction and physical attachment boundaries.",
+      "novelty_type": "exact_source_pair_operator_join_and_transport_on_declared_tensor_carrier",
+      "evidence": [
+        "paper/observers_are_all_you_need.tex",
+        "paper/tex_fragments/TRIPLE_CARRIER_OPERATOR_JOIN.tex",
+        "Lean/QFT/TripleCarrierOperatorJoin.lean",
+        "code/source_operator_join/join.py",
+        "code/source_operator_join/verify.py",
+        "code/source_operator_join/test_join.py",
+        "code/source_operator_join/operator_join_packet.json"
+      ],
+      "falsifier": "An embedding fails its unital star laws or injectivity, the intersection exceeds or misses M13, pair images or admitted source lifts fail generation, a state restriction or normalized retraction is wrong, any adjacent transport square fails for a matrix unit, an interval composition or source pin is invalid, or source counts are promoted to physically executed coherent operators.",
+      "scope_if_false": "Only this finite operator join and admitted-generator transport fail; the separately proved triple counted-state coupling, diagonal pushout and its obstruction, scalar instrument and physical attachment contracts retain their own scopes.",
+      "status": "finite_operator_join_attained__coherent_operations_declared__tower_and_physical_time_attachment_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [
+          "PR-32",
+          "PR-34"
+        ],
+        "open": [
+          "PR-52",
+          "PR-58"
+        ],
+        "boundary": []
       }
     }
   ]

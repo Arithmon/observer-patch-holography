@@ -1304,6 +1304,14 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
         "Verify sequential quantum instruments, local parity and clock-interval backaction",
         [sys.executable, "-m", "pytest", "-q", "code/source_scalar_instruments/test_sequential_instrument.py"],
     ),
+    (
+        "Verify finite-duration quantum instruments, noise margins and retained-record chronology",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_finite_instrument/test_finite_instrument.py"],
+    ),
+    (
+        "Verify the triple-carrier noncommutative operator join",
+        [sys.executable, "-m", "pytest", "-q", "code/source_operator_join/test_join.py"],
+    ),
 ]
 
 CERTIFICATE_STEPS: list[tuple[str, list[str]]] = [

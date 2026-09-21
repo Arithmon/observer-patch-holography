@@ -243,7 +243,8 @@
   "OPH-FINITE-WORK-RESPONSE-NONIDENTIFIABILITY",
   "OPH-GOLDEN-SCALAR-METRIC-PRESSURE",
   "OPH-WHITNEY-MAXWELL-METRIC-PRESSURE",
-  "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT"
+  "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
+  "OPH-QUANTUM-TRIPLE-OPERATOR-JOIN"
  ],
  "edges": [
   {
@@ -2145,6 +2146,11 @@
    "from": "OPH-GAUGE-EXTERIOR-SM-WITNESS",
    "to": "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
    "role": "supplies the registered five multiplets and charges; the finite CAR action and state are separately declared"
+  },
+  {
+   "from": "OPH-QUANTUM-TRIPLE-CARRIER-JOIN",
+   "to": "OPH-QUANTUM-TRIPLE-OPERATOR-JOIN",
+   "role": "Supplies the actual aligned triple path, pair projections, counted states and nonwrapping path permutations; full matrix embeddings and coherent generator admission are separate constructions."
   }
  ]
 }

@@ -177,6 +177,7 @@ LEAN_RECEIPTS = {
     "StructuralNetAdequacySurface": REPO / "Lean" / "QFT"
     / "StructuralNetAdequacySurface.lean",
     "TripleCarrierJoin": REPO / "Lean" / "QFT" / "TripleCarrierJoin.lean",
+    "TripleCarrierOperatorJoin": REPO / "Lean" / "QFT" / "TripleCarrierOperatorJoin.lean",
     "LocalFaceMaxwellAction": LEAN_SCREEN / "LocalFaceMaxwellAction.lean",
     "CofinalSpectralTailFamily": REPO / "Lean" / "Thermodynamics"
     / "CofinalSpectralTailFamily.lean",
@@ -835,6 +836,192 @@ def _source_scalar_sequential_instrument_control(receipt_path: Path | None = Non
             "Born readout, vacuum preparation and clock calibration are supplied. Ideal "
             "instantaneous gate counts do not enclose duration or noise, select quantum "
             "operations from OPH, or establish physical outcomes or an interacting continuum."),
+    }
+
+
+def _source_scalar_finite_instrument_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    packet, summary, pin = _structural_packet(
+        "source_scalar_finite_instrument", "verify_finite_instrument.py",
+        "finite_instrument_receipt.json", receipt_path=receipt_path)
+    expected = {"verified": True, **packet["summary"], "mathematical_replay": True,
+                "parent_events_replayed": 5888, "physical_outcomes": False,
+                "native_quantum_controls": False, "forced_oscillator_identities_verified": True}
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("finite instrument requires forced-oscillator proof and full fresh parent replay")
+    if (summary["readouts"] != 21 or summary["prior_pairs"] != 210
+            or summary["retained_operations"] != 2709
+            or len(summary["resolved_steps"]) != 15
+            or summary["all_parent_resolved_steps_survive"] is not True):
+        raise SystemExit("finite instrument complete response and control census changed")
+    source = "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex"
+    labels = ["prop:source-scalar-finite-pulse", "prop:source-scalar-finite-noise"]
+    text = (REPO/source).read_text(encoding="utf-8")
+    if any("\\label{"+label+"}" not in text for label in labels):
+        raise SystemExit("finite instrument analytic theorem missing")
+    return {
+        "receipt": "code/source_scalar_finite_instrument/finite_instrument_receipt.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "analytic_proof": {"source": source, "labels": labels},
+        "mathematical_replay": True,
+        "continuous_field_evolution_during_supplied_pointer_pulse": True,
+        "finite_duration_and_declared_channel_noise_comparison": True,
+        "baseline_and_intervention_errors_both_retained": True,
+        "parameters": packet["parameters"], "comparison_rows": packet["rows"],
+        "resource_contract": packet["resource_contract"],
+        "physical_clock_or_observed_outcomes": False,
+        "native_quantum_controls": False,
+        "noisy_energy_bound": False,
+        "branch_conditioned_clock": False,
+        "original_equal_time_detector_region_preserved": False,
+        "observed_postdiction": False,
+        "scope_boundary": (
+            "A supplied finite rectangular field-pointer Hamiltonian has an exact forced-oscillator "
+            "reduction on the ideal GHZ code, with a sinc-averaged smear. Complete repeated backaction, "
+            "control windows and paired baseline/intervention channel errors preserve fifteen responses. "
+            "Initial quantum states, control laws, entangling links, Born readout, precision and "
+            "conditional reference-center times remain supplied. The scalar phase is code-restricted; "
+            "generic noise need not preserve energy or first moments. Effective smear can spread beyond "
+            "the local coupling region. No sampled outcomes, native quantum implementation, physical "
+            "clock, noisy branch-clock reconstruction or physical time-slice attachment is established."),
+    }
+
+
+SOURCE_OPERATOR_JOIN_DECLARATIONS = (
+    "operatorJoin88_injective", "operatorJoin247_injective", "operatorJoin86_injective",
+    "operatorJoin_hinge", "operatorJoin_intersection", "operatorJoin_generate_top",
+    "operatorJoin_spectator_locality", "operatorJoin_hinge_noncommuting",
+    "operatorJoin88_retraction", "operatorJoin247_retraction",
+    "operatorJoin88_counted_readout", "operatorJoin247_counted_readout",
+    "operatorJoin88_evolve", "operatorJoin247_evolve",
+    "operatorJoinSource88_generates", "operatorJoinSource247_generates",
+    "operatorJoinAdmitted_generates", "operatorJoinAdmitted_evolved",
+)
+# This exact source was independently kernel checked.  A changed proof needs
+# review before this pin changes; source-name checks alone do not verify Lean.
+SOURCE_OPERATOR_JOIN_LEAN_SHA256 = "6325cd23dff82fe5ab8e37aa0d17df828a643f5c9aa1939fd8d3834bee4457fd"
+
+
+def _source_operator_join_control(receipt_path: Path | None = None) -> dict[str, Any]:
+    """Keep finite Python replay separate from the universal Lean theorems."""
+    lean_path = LEAN_RECEIPTS["TripleCarrierOperatorJoin"]
+    if not lean_path.is_file():
+        raise SystemExit("operator join Lean source missing")
+    lean_bytes = lean_path.read_bytes()
+    if hashlib.sha256(lean_bytes).hexdigest() != SOURCE_OPERATOR_JOIN_LEAN_SHA256:
+        raise SystemExit("operator join audited Lean source changed")
+    lean_refs = _lean_receipt("TripleCarrierOperatorJoin", declarations={
+        "TripleCarrierOperatorJoin": SOURCE_OPERATOR_JOIN_DECLARATIONS})
+    packet, summary, pin = _structural_packet(
+        "source_operator_join", "verify.py", "operator_join_packet.json",
+        receipt_path=receipt_path)
+    expected = {
+        "verdict": "verified_source_operator_join_packet",
+        "source_rows": 32, "actual_transitions": 31,
+        "transition_carrier_points": 73346, "chronological_intervals": 496,
+        "sparse_matrix_unit_witnesses": 18,
+        "lean_kernel_replay_performed": False,
+        "universal_operator_theorems_verified_by_python": False,
+        "physical_adequacy": False, "observed_quantum_outcomes": False,
+    }
+    if json.dumps(summary, sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise SystemExit("operator join replay census or Python/Lean proof boundary changed")
+    if lean_path.read_bytes() != lean_bytes:
+        raise SystemExit("operator join Lean source changed during replay")
+    counts = {tuple(row[:3]): row[3] for row in packet["state"]["triple_counts"]}
+    permutations = packet["transitions"][0]["permutations"]
+    transported = {tuple(permutations[i][q[i]] for i in range(3)): count
+                   for q, count in counts.items()}
+    changed = sorted(q for q in set(counts) | set(transported)
+                     if counts.get(q, 0) != transported.get(q, 0))
+    if not changed:
+        raise SystemExit("operator join empirical-state nonstationarity control missing")
+    witness = changed[0]
+    return {
+        "receipt": "code/source_operator_join/operator_join_packet.json",
+        "receipt_pin": pin, "independent_verifier_result": summary,
+        "source_parent_pins": packet["parents"],
+        "lean_receipts": lean_refs,
+        "lean_declarations": {"TripleCarrierOperatorJoin": list(SOURCE_OPERATOR_JOIN_DECLARATIONS)},
+        "lean_source_evidence": {
+            "source": lean_refs[0], "bytes": len(lean_bytes),
+            "sha256": hashlib.sha256(lean_bytes).hexdigest(),
+            "kernel_replay_performed_by_ledger": False,
+            "universal_proof_requires_separate_Lean_check": True,
+        },
+        "carrier": packet["carrier"],
+        "finite_source_and_permutation_replay": True,
+        "python_sparse_witnesses_prove_universal_generation": False,
+        "observable_inclusions_are_unital_star_homomorphisms": True,
+        "full_hinge_and_joint_generation_are_Lean_theorems": True,
+        "state_marginals_use_unnormalized_partial_trace": True,
+        "observable_retractions_use_normalized_partial_trace": True,
+        "partial_trace_is_multiplicative": False,
+        "counted_state_identified_with_uniform_tower_state": False,
+        "counted_state_invariant_under_transport": False,
+        "nonstationary_state_witness": {
+            "transition": 0, "triple_label": list(witness),
+            "denominator": packet["state"]["denominator"],
+            "before_count": counts.get(witness, 0),
+            "after_count": transported.get(witness, 0),
+        },
+        "coherent_operator_lifts_and_path_permutations_supplied": True,
+        "source_selected_quantum_controls": False,
+        "tower_or_refinement_morphism": False,
+        "physical_time_slice_or_clock": False,
+        "same_carrier_as_scalar64_instrument": False,
+        "observed_postdiction": False,
+        "scope_boundary": (
+            "The admitted complex operator lifts of counted transitions and field projectors "
+            "generate the two pair algebras. Their identity-spectator inclusions have a full M13 "
+            "intersection and generate M2366; these universal statements are proved in the pinned "
+            "Lean module, not by the eighteen Python matrix-unit controls. Python independently "
+            "replays all source rows, nonwrapping permutations and finite interval compositions. "
+            "The shared hinge is noncommutative; only the exclusive spectator factors commute. "
+            "The empirical state restricts to the counted pair states, differs from the supplied "
+            "uniform tower states, and is not invariant under the row-dependent transports. "
+            "Tensor assembly, coherent operator admission and path-read permutation gates remain "
+            "supplied postprocessing. No tower/refinement morphism, physical region or clock, "
+            "quantum outcome, physical time-slice or common scalar-instrument realization follows."),
+    }
+
+
+def _triple_observer_carrier_row() -> dict[str, Any]:
+    declarations = {
+        "TripleCarrierJoin": (
+            "triplePath_projects_88", "triplePath_projects_247",
+            "tripleCorrelationState_marginal_88", "tripleCorrelationState_marginal_247",
+            "tripleCheckpoint_recovers_anchored_88", "tripleCheckpoint_recovers_anchored_247",
+            "tripleMarginals_not_jointly_injective", "tripleCarrier_join_receipt",
+        ),
+        "TripleCarrierOperatorJoin": SOURCE_OPERATOR_JOIN_DECLARATIONS,
+    }
+    return {
+        "id": "triple_observer_carrier_coupling",
+        "statement": (
+            "One explicit (86,88,247) carrier recovers both committed 32-row paths and counted "
+            "pair states, both checkpoint partitions, and both marginal evolutions over exactly "
+            "the 31 adjacent source transitions. The pair operator inclusions have full M13 "
+            "intersection, generate M2366, and intertwine those transitions; admitted operator "
+            "lifts of source generators retain full generation under the declared transport"),
+        "observed_counterpart": "common coupling of the two committed correlation packets",
+        "match": "exact conditional state/path/checkpoint coupling and finite operator join",
+        "full_operator_join_control": _source_operator_join_control(),
+        "lean_declarations": {key: list(value) for key, value in declarations.items()},
+        "lean_receipts": _lean_receipt(*declarations, declarations=declarations),
+        "artifact_refs": [
+            "code/source_operator_join/operator_join_packet.json",
+            "code/source_operator_join/verify.py",
+        ],
+        "hypothesis_boundary": (
+            "The full step alignment, tensor slots and coherent operator lifts are declared, "
+            "and pair marginals do not select the triple coupling uniquely. Observable inclusions "
+            "are unital star homomorphisms; the opposite-direction partial traces are not "
+            "multiplicative. The empirical state is not identified with uniform tower states "
+            "or assumed transport invariant. Universal operator results belong to the Lean "
+            "proof; finite Python controls are not its substitute. No source-selected quantum "
+            "gate, regional-net/tower/refinement morphism, physical region, Cauchy/time-slice "
+            "interpretation, physical clock or scalar64 instrument identification follows"),
+        "paper_ref": "Consensus paper, triple-carrier coupling; observers paper, finite operator join",
     }
 
 
@@ -3256,6 +3443,7 @@ def _forced_structure(
             "destination_local_seam_readback_control": _source_seam_routing_control(),
             "reusable_local_feedback_transport_control": _source_feedback_transport_control(),
             "sequential_scalar_quantum_instrument_control": _source_scalar_sequential_instrument_control(),
+            "finite_duration_scalar_quantum_instrument_control": _source_scalar_finite_instrument_control(),
             "operational_cone_selection": {
                 "analytic_proof": "paper/tex_fragments/OPERATIONAL_CAUSAL_SELECTION.tex",
                 "hypotheses": "nonzero closed convex pointed cone; finite irreducible carrier rotations; one continuous operational boost direction; time orientation",
@@ -3296,6 +3484,9 @@ def _forced_structure(
                 "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex",
                 "code/source_scalar_instruments/sequential_instrument_receipt.json",
                 "code/source_scalar_instruments/verify_sequential_instrument.py",
+                "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex",
+                "code/source_scalar_finite_instrument/finite_instrument_receipt.json",
+                "code/source_scalar_finite_instrument/verify_finite_instrument.py",
                 "Lean/Geometry/SourceSeamPathTomography.lean",
                 "paper/tex_fragments/SOURCE_SEAM_PATH_TOMOGRAPHY.tex",
                 "code/source_routing/runtime/path_tomography_receipt.json",
@@ -3416,6 +3607,9 @@ def _forced_structure(
                 "A separate centered quantum instrument includes all earlier-readout backaction "
                 "in 21 unconditional marginals and retains 15 resolved comparisons against "
                 "continuous evolution under that same repeated instrument. "
+                "An exact finite rectangular pointer pulse keeps field evolution active; "
+                "bounded pulse duration and declared channel noise retain all fifteen responses "
+                "when both baseline and intervention errors and all control windows are counted. "
                 "These results do not identify a physical clock or select native field dynamics"
             ),
             "observed_counterpart": (
@@ -5201,53 +5395,7 @@ def _forced_structure(
                 ),
                 "paper_ref": "Screen microphysics paper, local face action",
             },
-            {
-                "id": "triple_observer_carrier_coupling",
-                "statement": (
-                    "One explicit (86,88,247) carrier recovers both committed "
-                    "32-row paths and counted pair states, both checkpoint "
-                    "partitions, and both marginal evolutions over exactly the "
-                    "31 adjacent source transitions"
-                ),
-                "observed_counterpart": (
-                    "common coupling of the two committed correlation packets"
-                ),
-                "match": "exact conditional state/path/checkpoint coupling",
-                "lean_declarations": {
-                    "TripleCarrierJoin": [
-                        "triplePath_projects_88",
-                        "triplePath_projects_247",
-                        "tripleCorrelationState_marginal_88",
-                        "tripleCorrelationState_marginal_247",
-                        "tripleCheckpoint_recovers_anchored_88",
-                        "tripleCheckpoint_recovers_anchored_247",
-                        "tripleMarginals_not_jointly_injective",
-                        "tripleCarrier_join_receipt",
-                    ]
-                },
-                "lean_receipts": _lean_receipt(
-                    "TripleCarrierJoin",
-                    declarations={
-                        "TripleCarrierJoin": (
-                            "triplePath_projects_88",
-                            "triplePath_projects_247",
-                            "tripleCorrelationState_marginal_88",
-                            "tripleCorrelationState_marginal_247",
-                            "tripleCheckpoint_recovers_anchored_88",
-                            "tripleCheckpoint_recovers_anchored_247",
-                            "tripleMarginals_not_jointly_injective",
-                            "tripleCarrier_join_receipt",
-                        )
-                    },
-                ),
-                "hypothesis_boundary": (
-                    "the full step alignment is declared and the pair marginals "
-                    "do not select it uniquely. The positive trace-preserving "
-                    "marginals are not promoted to CPTP, algebra, regional-net, "
-                    "tower, Cauchy, or physical-time morphisms"
-                ),
-                "paper_ref": "Consensus paper, triple-carrier coupling",
-            },
+            _triple_observer_carrier_row(),
             {
                 "id": "cofinal_spectral_tail_four_law_composition",
                 "statement": (
