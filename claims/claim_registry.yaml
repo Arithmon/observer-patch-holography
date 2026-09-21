@@ -11010,6 +11010,62 @@
         "boundary": [],
         "rationale": "This counterexample compares two supplied finite twelve-port graphs under one declared routing program and complete authenticated software-event encoding. Source-selected physical population, canonical geometric placement, spacetime signal and clock attachment are excluded conclusions, not antecedents; no physical premise is consumed or discharged."
       }
+    },
+    {
+      "claim_id": "OPH-TEMPORAL-NATIVE-RECOVERY",
+      "statement": "For a finite scalar source interface, native pair-mean prefixes generate observation forms without a desired output. A linear meaning is publishable on every feasible observation exactly when it is in the observation-row span; otherwise a kernel perturbation forces every sound policy to abstain. Past observations together with the remaining physical state determine the exact continuation criterion. Every finite connected support with N scalar ports admits a topology-derived native calibration plan whose N receiver-local samples identify the entire initial state, with at most N(N-1)/2 means. No successful route or completed decoder certificate is a premise of this construction. The maximal preservation guard admits a proposed mean exactly when the joint record/state map remains injective on the specified source-record domain. One topology-derived word completes every protected checkpoint even when it occurs amid arbitrary other proposals. For an explicit uniform full proposal alphabet of M identities and a completing block of length B, at most (M^B-1)^k of M^(B*k) proposal words remain incomplete after k disjoint blocks. Rejected proposals retain their attempt cost. An attained convex finite full-history KL minimizer with faithful reference and positive weights permits certain native completion exactly when every feasible history preserves the meaning; a merely state-determining coarse cover is insufficient. For arbitrary meanings on finite independent product records, isolated-coordinate interventions characterize the unique minimal sufficient direct-read set. A complete captured 15360-port topology plan has 425979 means and maximum path length 51; it is not a payload replay. Eight five-port histories separately check native completion and receiver-only decoding. Additional captured controls and exhaustive raw/guarded proposal censuses authenticate erasure, first reads, costs and ambiguity witnesses. The result does not select the M1 radius or meaning, instantiate the full A1 response/endogeneity architecture, derive a canonical IID proposal law, or realize physical guard computation, precision, sample storage, immutable version archives, a clock or the M1 semantic event order.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "kernel_checked_temporal_factorization_connected_native_completion_and_guarded_attempt_counts",
+      "assumptions": [
+        "finite_source_observation_and_checkpoint_interface"
+      ],
+      "imported_results": [
+        "linear_dual_kernel_and_span_factorization",
+        "finite_connected_graph_induction",
+        "constrained_classical_KL_support",
+        "finite_product_function_dependency",
+        "finite_word_counting"
+      ],
+      "oph_specific_delta": "Replaces supplied identification and successful-route premises by native observation kernels, a connected-support completion construction, and a maximal preservation guard with unconditional proposal counts; keeps source selection separate from exact finite recovery.",
+      "novelty_type": "native_temporal_acceptance_continuation_and_guarded_progress",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_TEMPORAL_RECOVERY.tex",
+        "Lean/Geometry/SourceTemporalObservation.lean",
+        "Lean/Geometry/SourceTemporalNative.lean",
+        "Lean/Geometry/SourceTemporalMenu.lean",
+        "Lean/Geometry/SourceTemporalEssential.lean",
+        "Lean/Geometry/SourceTemporalTomography.lean",
+        "Lean/Geometry/SourceTemporalConnected.lean",
+        "Lean/Geometry/SourceTemporalGuard.lean",
+        "Lean/Geometry/SourceTemporalAttempts.lean",
+        "Lean/Geometry/SourceTemporalSelection.lean",
+        "Lean/Geometry/SourceTemporalErasure.lean",
+        "Lean/Geometry/SourceTemporalAcceptanceAxiomAudit.lean",
+        "code/source_temporal_acceptance/CONTRACT.md",
+        "code/source_temporal_acceptance/DERIVATION.md",
+        "code/source_temporal_acceptance/build.py",
+        "code/source_temporal_acceptance/verify.py",
+        "code/source_temporal_acceptance/tomography.py",
+        "code/source_temporal_acceptance/check_tomography.py",
+        "code/source_temporal_acceptance/controls.json",
+        "code/source_temporal_acceptance/receipt.json",
+        "code/source_temporal_acceptance/test_temporal.py"
+      ],
+      "falsifier": "A nonobservable meaning is accepted; a dual witness is visible or trivial; a protected checkpoint loses a required distinction; a topology-valid plan fails to identify the initial state or exceeds its bound; the guard rejects the completing word; the full proposal denominator or rejection cost is reduced; a finite certificate accepts forged rows, paths, samples, work or scope; or the mathematical interface is promoted to full-axiom selection or physical realization.",
+      "scope_if_false": "The finite temporal recovery, guard, counting theorem or retained certificate fails. The distinct stored-bank compiler and supplied geometric read-law results retain their own premises.",
+      "status": "native_continuation_and_guarded_progress_proved__M1_metric_meaning_and_physical_source_selection_unresolved",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The conclusions concern exact scalar observation and continuation on specified finite domains. Connected topology constructs the completing word. The physical source interpretation, metric menu, A3 cover/reference and physical controller, protection, clock and precision are excluded conclusions; PR-52 is neither consumed nor discharged."
+      }
     }
   ]
 }
