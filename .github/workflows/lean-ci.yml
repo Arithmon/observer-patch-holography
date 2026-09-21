@@ -221,7 +221,7 @@ jobs:
 
       - name: Save Lake build cache
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        if: steps.lean_build.outcome == 'success' || steps.lean_build.outputs.timed_out == 'true'
+        if: steps.budget_build.outputs.status == '0' || steps.budget_build.outputs.status == '124'
         with:
           path: |
             Lean/.lake/build
