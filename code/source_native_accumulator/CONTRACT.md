@@ -94,7 +94,7 @@ After `W` total means the normalized radius for a record of scale `e` is
 or workspace is cleared. The local decoder takes only its two samples,
 `e`, `W` and a public integer magnitude bound. It publishes exactly when
 the resulting closed interval has one feasible integer. It abstains on
-empty and ambiguous intervals. Availability requires `2R < 1`; finite
+empty and ambiguous intervals. Availability is guaranteed by `2R < 1`; finite
 precision is not claimed to support indefinitely many episodes.
 
 For `S` episodes, `N` requests and initial scale bound `M`, the proved
@@ -119,5 +119,5 @@ reference/cover, or the complete M1 family.
 
 The [source-selection criterion and cover obstruction](../source_read_selection/README.md)
 remain applicable. This construction supplies arithmetic words
-for a supplied source-derived controller; existence of the words
+for a supplied controller; existence of the words
 does not imply that A1--A3 select them.

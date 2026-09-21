@@ -10430,7 +10430,7 @@
     },
     {
       "claim_id": "OPH-SOURCE-FEEDBACK-VERSION-TRANSPORT",
-      "statement": "With additional local protected-record export, zero reset and factor-two readback, non-interleaved six-event seam hops transmit immutable scalar versions repeatedly and preserve the exact induced semantic value-consumption order of a supplied acyclic program. Four fixed-path intervention variants at depths 1,4,12,24 retain 740 hops and 4928 events, including reads of an old version after a new one and reuse of intersecting scratch. The sharp error bound is E0+d(E+Z+2M+2R+D), conditional on separate additive error limits. Fourteen Lean declarations prove the hop, route, error and finite order-projection results; an independent verifier checks every consumed writer. This is supplied classical feedback, not selection of that law by pair means, quantum copying, physical causal order, or full q13/q21 routed execution. Each d-seam route uses d means, d exports, d captures, 3d resets, 6d events, 7d scalar reads and 7d scalar writes, with protected versions unchanged and scratch reset. Version identity is provided by the fixed compiled schedule and authenticated writers; physical header/address transport is not supplied. At depth24 each five-request episode retains 108 hops,706 events,766 reads,814 writes,141 protected scalar registers and25 scratch registers. The maximum written scalar payload is31 bits, excluding metadata and arithmetic workspace. Pinned q13/q21 logical-read counts imply one-hop lower bounds of7007856 and87077520 transport events for this six-event unicast compiler only; these are not executed full-family routes or lower bounds for alternative compilers.",
+      "statement": "With additional local protected-record export, zero reset and factor-two readback, non-interleaved six-event seam hops transmit immutable scalar versions repeatedly and preserve the exact induced semantic value-consumption order of a supplied acyclic program. Four fixed-path intervention variants at depths 1,4,12,24 retain 740 hops and 4928 events, including reads of an old version after a new one and reuse of intersecting scratch. The sharp error bound is E0+d(E+Z+2M+2R+D), conditional on separate additive error limits. Fourteen Lean declarations prove the hop, route, error and finite order-projection results; an independent verifier checks every consumed writer. This is supplied classical feedback, not selection of that law by pair means, quantum copying, physical causal order, or full q13/q21 routed execution. Each d-seam route uses d means, d exports, d captures, 3d resets, 6d events, 7d scalar reads and 7d scalar writes, with protected versions unchanged and scratch reset. Version identity is provided by the fixed compiled schedule and authenticated writers; physical header/address transport is not supplied. At depth24 each five-request episode retains 108 hops,706 events,766 reads,814 writes,141 protected scalar registers and25 scratch registers. The maximum written scalar payload is31 bits, excluding metadata and arithmetic workspace. Pinned q13/q21 logical-read counts imply one-hop lower bounds of7007856 and87077520 transport events for this six-event unicast compiler only; these are not executed full-family routes or lower bounds for alternative compilers. The separate full-family read-routing claim supplies complete conditional q13/q21 executions; these fixed-path episodes do not themselves implement that family.",
       "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
       "tier": "kernel_checked_local_feedback_transport_and_exact_finite_semantic_custody",
       "assumptions": [
@@ -10454,7 +10454,7 @@
       ],
       "falsifier": "Any hop changes a protected version, delivers the wrong version, consumes a remote scalar, omits an event or writer, fails intervention compatibility on a fixed path, adds a spurious logical ancestor, violates the sharp additive error bound, misstates the pinned census, or promotes supplied classical feedback to native quantum or physical operation.",
       "scope_if_false": "The declared local-feedback compiler, semantic refinement or error certificate fails; other operation classes and the independent destructive tomography theorem retain their own scope.",
-      "status": "repeatable_version_transport_and_semantic_projection_attained_on_supplied_feedback__native_law_and_full_family_execution_open",
+      "status": "repeatable_version_transport_and_semantic_projection_attained_on_supplied_feedback__full_family_execution_outside_fixed_path_package",
       "claim_class": "conditional_implication",
       "gates": [
         740,
@@ -10738,6 +10738,173 @@
           "PR-58"
         ],
         "boundary": []
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
+      "statement": "Under supplied protected versions, local export/reset/factor-two capture, accumulation, complete metric read menus, golden-Morton host placement and fixed pruned-BFS routing, the six-event transport word preserves arbitrary integer initial values and local-commit interventions in the declared finite recurrence. The induced semantic read-from order on publication/commit events equals the logical layered order under the checked edge/path certificates. Lean proves the integer word, history induction and abstract order theorem; native code is independently checked rather than a kernel-verified interpreter. Complete q13/q21 baseline and source-intervention streams are regenerated and replayed against retained decoded phase and whole-stream hashes: 19113548 and 292722053 primitive events per run, 623671202 in total. Every event, consumed writer and resource census is checked. This supports deterministic computational reproducibility, not authenticated historical execution or original compressed-byte custody; retained host RSS is not reproduced by regeneration. The full read, feedback and controller law remains supplied, and no physical time, quantum operation or count-volume measure for relay events follows.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "kernel_checked_conditional_compiler_and_complete_independent_native_replay",
+      "assumptions": [
+        "M1_full_family_read_feedback_and_routing"
+      ],
+      "imported_results": [
+        "finite_dataflow_induction_and_transitive_closure",
+        "exact_affine_feedback",
+        "independent_event_writer_replay"
+      ],
+      "oph_specific_delta": "Instantiates the supplied read program on complete captured-support production families with replay of every intermediate event and conditional semantic-order preservation.",
+      "novelty_type": "explicit_full_family_local_feedback_compiler",
+      "evidence": [
+        "Lean/Geometry/SourceReadRouting.lean",
+        "paper/tex_fragments/SOURCE_READ_ROUTING.tex",
+        "code/source_read_routing/specification.json",
+        "code/source_read_routing/CONTRACT.md",
+        "code/source_read_routing/regenerate.py",
+        "code/source_read_routing/verify.py",
+        "evidence/source_net_causal_poset/routed_read_law/q13_baseline.json",
+        "evidence/source_net_causal_poset/routed_read_law/q13_source.json",
+        "evidence/source_net_causal_poset/routed_read_law/q21_baseline.json",
+        "evidence/source_net_causal_poset/routed_read_law/q21_source.json"
+      ],
+      "falsifier": "A regenerated primitive or consumed writer is incorrect, a full phase or metric read is omitted, an intervention changes the claimed projection, any retained counter/hash fails, or the conditional compiler is promoted to source-selected physical causality.",
+      "scope_if_false": "Only the supplied full-family feedback compilation, semantic projection or receipt accounting fails; independent finite order and continuum results keep their hypotheses.",
+      "status": "full_family_conditional_routing_attained__source_selection_and_physical_attachment_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This finite compiler assumes its complete local feedback, protected memory and metric-read control interface. Its event-order and value theorem does not consume the physical spacetime attachment of PR-52; source selection is a separate obligation."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT",
+      "statement": "For the supplied triangular support refinement, analytic identification and composition of four separately kernel-checked components gives combinatorial diameter D_l <= 4*2^l-1. The composed all-level graph theorem and simulator geometry are not Lean-verified. Captured levels 3,4,5 are compared exactly. Under the preceding-layer/source-at-a-time lifetime discipline, Lean proves a 23C scalar-slot layout with injectivity and logical-store preservation; 14C+9n is an independently enforced finite occupied-host census and an arithmetic corollary, not a Lean occupancy theorem or an optimality bound. All 91272 q3 mapped events preserve operation, scalar value, owner, writer and original port identity; each control uses 16919 physical slots. Applications 91453 and 370069 at q13/q21 are conditional bounds, not mapped production executions or RSS measurements. Precision, metadata, controller and audit-history storage are excluded. If E counts all raw operations and N=(K+1)n distinguished records, E>=3N+13C+5n. Consequently |wN-V|<=epsilon with w>=0 implies |wE-V|>=2V-3epsilon. This whole-window obstruction excludes transferring the same logical weight to every raw operation at positive volume and vanishing error; it neither selects another physical measure nor covers every primitive causal interval. No physical clock or source-selected routing law is derived.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_combinatorial_refinement_kernel_checked_lifetimes_and_finite_mapped_replay",
+      "assumptions": [
+        "M1_full_family_read_feedback_and_routing",
+        "declared_routed_program_lifetimes_and_combinatorial_refinement"
+      ],
+      "imported_results": [
+        "finite_graph_path_lifting",
+        "last_use_register_allocation",
+        "triangle_inequality_for_weighted_counts"
+      ],
+      "oph_specific_delta": "Connects the supplied multicast program to finite safe storage reuse and separates its raw operation count from distinguished logical event measure.",
+      "novelty_type": "conditional_support_storage_and_raw_operation_count_bounds",
+      "evidence": [
+        "Lean/Geometry/SourceRoutingHierarchy.lean",
+        "Lean/Geometry/SourceRoutingStorage.lean",
+        "Lean/Geometry/SourceRoutingBudget.lean",
+        "code/source_routing_refinement/CONTRACT.md",
+        "code/source_routing_refinement/hierarchy.py",
+        "code/source_routing_refinement/storage.py",
+        "code/source_routing_refinement/verify.py",
+        "code/source_routing_refinement/receipt.json"
+      ],
+      "falsifier": "A path bound fails its supplied graph identifications, two live versions alias, a mapped operation/value/owner/writer/port changes, an old retired version is silently served, an excluded storage cost is hidden, or the raw-count inequality fails.",
+      "scope_if_false": "Only the stated support bound, lifetime allocation or whole-window count obstruction fails; the complete archived compiler retains its independent scope.",
+      "status": "conditional_routing_and_live_storage_bounds_attained__physical_measure_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The storage and raw-count statements consume a fixed abstract program, supplied refinement identifications and lifetime discipline. They compare scalar slots and distinguished/raw event counts without using a physical measure, clock or PR-52 attachment."
+      }
+    },
+    {
+      "claim_id": "OPH-NATIVE-LOCAL-SINGLETON-PUBLICATION",
+      "statement": "For a supplied possible-observation model, sound local publication is possible exactly when the compatible payloads form a singleton; the canonical partial policy is maximal and abstains on empty or ambiguous observations. Under declared paired-rail preparation, captured support, isolation, paired checkpoints and bounded errors, native means implement a finite remote read using local samples and public budgets, without exposing the payload or future schedule to the receiver. Independent exhaustive replay covers 174762 histories and 2642144 scalar means with rounded dynamics, actual writers, aborted histories and unconditional work. At horizon 8 the declared uniform word law gives publication probability 7459/65536, abort probability 58077/65536 and expected scalar means 32245/2048, with no wrong publication under the model. Lean checks the singleton, transport, error and finite stopped-history/work statements. Binomial closed forms and infinite ideal expectations are analytic, not listed Lean results, and fixed finite precision is guaranteed only through a declared horizon. Source grammar, the A3 cover/reference and physical comparator are not selected; no complete metric-family service, physical clock or volume measure is supplied.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "kernel_checked_conditional_publication_and_finite_native_stopped_history_replay",
+      "assumptions": [
+        "declared_native_observation_model_schedule_reference_and_publication_interface"
+      ],
+      "imported_results": [
+        "singleton_identifiability_under_partial_observation",
+        "affine_pair_mean_error_propagation",
+        "finite_stopped_history_counting"
+      ],
+      "oph_specific_delta": "Connects the maximal partial decoder to native captured-seam observations and retains all finite schedules, aborts and stopped-work costs.",
+      "novelty_type": "native_local_observational_publication_with_complete_stopped_work",
+      "evidence": [
+        "Lean/Geometry/SourceReadAcceptance.lean",
+        "Lean/Geometry/SourceReadAcceptanceSchedule.lean",
+        "code/source_read_acceptance/CONTRACT.md",
+        "code/source_read_acceptance/build.py",
+        "code/source_read_acceptance/verify.py",
+        "code/source_read_acceptance/controls.json",
+        "code/source_read_acceptance/receipt.json"
+      ],
+      "falsifier": "A feasible local observation permits an incorrect published payload, an ambiguous observation publishes, native replay or first-hit/work counts fail, an aborted history is omitted, or the supplied word reference is promoted to the source A3 cover.",
+      "scope_if_false": "Only the supplied observation model, native finite read or cost certificate fails; no physical outcome or universal source selection was asserted.",
+      "status": "maximal_sound_partial_publication_attained_for_supplied_model__source_grammar_and_instrument_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "Singleton identifiability and the finite native read concern a supplied observation relation, error model and finite schedule reference. They require no observer-to-physical-spacetime premise and do not identify that reference with the source A3 cover."
+      }
+    },
+    {
+      "claim_id": "OPH-NATIVE-REUSABLE-ACCUMULATION",
+      "statement": "After one paired-rail preparation including a unit seed, native scalar pair means implement reusable starts, rectangle reset, scale-aligned addition and a final remote read of 1+sum(requested input values) for arbitrary finite valid request lists. Logical input values are preserved while their raw amplitudes and decoding scales change; the previous mutable accumulator is retired at the next start and is not an immutable archive. For S episodes, N requests and initial scale bound M, Lean proves e<=M+S+2N and W<=6S+N*(8+3*(M+S+2N)); the final read adds scale 4 and 8 means. The bounded integer interval decoder publishes only a unique feasible integer under the whole-word error budget, which does not reset when storage is cleared. At the declared rounded grid Q=2^256, independent replay covers 1280 histories and 78255 means, including signed payloads, all request words through length 7 and 15-episode reuse. Preparation, requests, placement, scale metadata, error limits, scheduling and the publication instrument are supplied. This removes repeated fresh-unit writes and host arithmetic from this interface; it supplies neither immutable committed layers nor a full native q13/q21 compiler, a physical capacity/clock, or source selection of the metric read law.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "kernel_checked_conditional_native_arithmetic_and_bounded_error_publication",
+      "assumptions": [
+        "declared_paired_rail_preparation_requests_and_finite_error_model",
+        "declared_native_observation_model_schedule_reference_and_publication_interface"
+      ],
+      "imported_results": [
+        "balanced_rail_dyadic_encoding",
+        "finite_program_induction",
+        "bounded_integer_interval_decoding"
+      ],
+      "oph_specific_delta": "Implements repeated start/reset/addition and retained logical input values by supported means after one preparation, with scale growth, whole-word error and conditional final publication.",
+      "novelty_type": "native_reusable_arithmetic_with_whole_word_error_accounting",
+      "evidence": [
+        "Lean/Geometry/SourceNativeAccumulator.lean",
+        "Lean/Geometry/SourceAccumulatorProgram.lean",
+        "Lean/Geometry/SourceAccumulatorDecoder.lean",
+        "code/source_native_accumulator/CONTRACT.md",
+        "code/source_native_accumulator/build.py",
+        "code/source_native_accumulator/verify.py",
+        "code/source_native_accumulator/controls.json",
+        "code/source_native_accumulator/receipt.json"
+      ],
+      "falsifier": "A valid finite request program loses a retained input, computes the wrong sum, violates the scale/work or whole-word error bound, publishes an incorrect integer, supplies a free repeated seed/reset, or treats a retired mutable answer as an immutable layer archive.",
+      "scope_if_false": "Only the conditional accumulator program, preservation, cost or decoder theorem fails; other native words and the declared full-family feedback compiler retain their own scopes.",
+      "status": "reusable_logical_accumulation_attained__immutable_layer_archive_and_native_full_family_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The mean-only arithmetic theorem uses declared rail preparations, requests, scales and a bounded-error local decoder. Its logical input preservation and program costs neither consume PR-52 physical attachment nor assert physical publication hardware."
       }
     }
   ]
