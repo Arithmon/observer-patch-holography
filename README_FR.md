@@ -109,10 +109,12 @@ simulations reproductibles :
   de matière conditionnelle à quinze états avec annulation exacte des
   anomalies.
 - **Les constantes comme problèmes de point fixe.** La relation de Koide tient
-  exactement sous une prémisse d’équilibre déclarée, et la valeur issue de la
-  fermeture du pixel, proche de la constante de structure fine mesurée,
-  conserve un statut diagnostique. Ces calculs font des constantes des cibles
-  concrètes de dérivation et de falsification plutôt que des données libres.
+  exactement sous une prémisse d’équilibre déclarée, et la fermeture
+  autocohérente du pixel arrive à 2,5 parties par million de la constante de
+  structure fine mesurée, avec un statut diagnostique tant que l’application
+  de fermeture n’est pas sélectionnée à partir des axiomes. Ces calculs font
+  des constantes des cibles concrètes de dérivation et de falsification plutôt
+  que des données libres.
 - **Vérifié machine et falsifiable.** Plus de 11300 théorèmes Lean sans
   preuve admise, de l’arithmétique rationnelle exacte à la place de la
   confiance en virgule flottante, et des simulations déterministes avec
