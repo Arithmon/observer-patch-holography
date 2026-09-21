@@ -25,3 +25,8 @@ lake build Geometry.SourceReadAcceptanceAxiomAudit
 The verifier reconstructs every stopped history. The retained examples and
 aggregate commitments are not substitutes for replay. The receipt establishes
 a conditional finite read service; it does not classify M1 as derived.
+
+[Native accumulation](../source_native_accumulator/README.md) composes the
+integer singleton policy with repeated native starts, scale-aligned sums,
+retained logical inputs and a final remote read. Its request sequence and
+publication instrument are supplied.
