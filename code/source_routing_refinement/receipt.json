@@ -171,7 +171,7 @@
       "q": 13,
       "rounds": 4,
       "route_length_upper_bound": 63,
-      "scope": "Bounds applied to pinned inherited counters; no new full production replay or measured target peak.",
+      "scope": "Bounds applied to pinned inherited counters; no mapped production execution or measured target peak.",
       "sites": 2197,
       "source_receipt_sha256": "bc4f331a8b2665043a0b2d1238b758806e59104d12254083949bdc0983f7008f"
     },
@@ -184,7 +184,7 @@
       "q": 21,
       "rounds": 5,
       "route_length_upper_bound": 127,
-      "scope": "Bounds applied to pinned inherited counters; no new full production replay or measured target peak.",
+      "scope": "Bounds applied to pinned inherited counters; no mapped production execution or measured target peak.",
       "sites": 9261,
       "source_receipt_sha256": "cf590f86c935cbd1b5d618b38261bd1df858b86a0cc3254cebdb1118a024542b"
     }
@@ -210,6 +210,6 @@
     "code/source_read_routing/verify.py": "63cf3d9716ec8dfa040b99b16f9efbaa265560ca763d032a92bee918746cb371",
     "code/source_routing_refinement/hierarchy.py": "e88b6b4f3e787a4615af5af365d60db43093e99fa7fda6c20297b9892562169d",
     "code/source_routing_refinement/storage.py": "c2a7797e8b8e353e2a8137faef52bb4763eed6d0a5669f3b1b045fb9fe24ff53",
-    "code/source_routing_refinement/verify.py": "324816e72522ef0ba0661898aac4af15cb76fcf56199d8a9e0154d85d9577f71"
+    "code/source_routing_refinement/verify.py": "ec5934e33dae48a37e63a177ce4199008eb5a01c5cafa94a10b1c3ed68ec07c5"
   }
 }

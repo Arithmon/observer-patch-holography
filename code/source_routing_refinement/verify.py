@@ -160,7 +160,7 @@ def production_bounds():
                        "inherited_archived_registers": cost["registers"],
                        "derived_working_slot_upper_bound": 14*C+9*n,
                        "route_length_upper_bound": hierarchy.envelope(level),
-                       "scope": "Bounds applied to pinned inherited counters; no new full production replay or measured target peak."})
+                       "scope": "Bounds applied to pinned inherited counters; no mapped production execution or measured target peak."})
     return result
 
 
