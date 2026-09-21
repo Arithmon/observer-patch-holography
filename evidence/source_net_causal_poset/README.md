@@ -17,6 +17,13 @@ its authenticated provenance order by both local readback and cell centre,
 beside a freshly executed q=13 record-metric trace. Its independent verifier
 and complete artifacts live in that companion package.
 
+The [full routing construction](../../code/source_read_routing/README.md#comparison-with-the-completed-support-wiring-diagnostic)
+checks its L3-L5 support captures against that diagnostic and compares every
+q13 baseline logical value and read-menu entry after full primitive replay.
+This is an agreement of the projected record-metric order under the supplied
+M1 law. It does not equate the canonical-only W12 trajectory with the routed
+history, derive M1, or remove the q13 lag-four clipping flag.
+
 ## Definition
 
 Fix a Fibonacci number `q = F_n` with successor `p = F_{n+1}`, the golden
@@ -42,6 +49,13 @@ ratio `phi`, and `L = 2/sqrt(phi + 2)`.
 
 The population, the read law, the round duration `Delta_q = a_q/c` and one
 counted event per carrier and round are supplied, as in the source paper.
+
+A separate [routed-read extension](routed_read_law/README.md) executes the
+complete q=13/q=21 logical menus on declared W12 L4/L5 support. It retains all
+decoded event commitments and costs and verifies a semantic refinement under a
+supplied local M1 feedback law. The original receipts below remain the
+declared-family records; routing does not derive M1 or turn its
+auxiliary events into spacetime-volume counts.
 
 ## Properties
 
