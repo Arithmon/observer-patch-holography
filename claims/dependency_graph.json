@@ -244,7 +244,11 @@
   "OPH-GOLDEN-SCALAR-METRIC-PRESSURE",
   "OPH-WHITNEY-MAXWELL-METRIC-PRESSURE",
   "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
-  "OPH-QUANTUM-TRIPLE-OPERATOR-JOIN"
+  "OPH-QUANTUM-TRIPLE-OPERATOR-JOIN",
+  "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
+  "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT",
+  "OPH-NATIVE-LOCAL-SINGLETON-PUBLICATION",
+  "OPH-NATIVE-REUSABLE-ACCUMULATION"
  ],
  "edges": [
   {
@@ -2151,6 +2155,26 @@
    "from": "OPH-QUANTUM-TRIPLE-CARRIER-JOIN",
    "to": "OPH-QUANTUM-TRIPLE-OPERATOR-JOIN",
    "role": "Supplies the actual aligned triple path, pair projections, counted states and nonwrapping path permutations; full matrix embeddings and coherent generator admission are separate constructions."
+  },
+  {
+   "from": "OPH-SOURCE-FEEDBACK-VERSION-TRANSPORT",
+   "to": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
+   "role": "Supplies the exact local feedback identity and semantic transport interface; the full metric menu and production routing schedule remain declared."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
+   "role": "Supplies the declared golden metric read family; compiling it does not identify additional raw routing events with its distinguished count-volume population."
+  },
+  {
+   "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
+   "to": "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT",
+   "role": "Supplies the complete event program, retained writer history and production counters to which the conditional lifetime and count bounds apply."
+  },
+  {
+   "from": "OPH-NATIVE-LOCAL-SINGLETON-PUBLICATION",
+   "to": "OPH-NATIVE-REUSABLE-ACCUMULATION",
+   "role": "Supplies the maximal sound singleton publication policy and native final-read error interface; the accumulator adds declared request composition and integer feasibility bounds."
   }
  ]
 }

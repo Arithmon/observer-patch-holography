@@ -22,3 +22,7 @@ temp
 # In-flight producer checkpoints, deleted on completed runs
 /code/particles/calibration/wz_upstream_completion/outputs/certified_wz_contours_checkpoint.json
 /code/particles/calibration/wz_upstream_completion/outputs/certified_second_sheet_poles_checkpoint.json
+
+# Production routing payloads are reproducible outside the retained receipts.
+/evidence/source_net_causal_poset/routed_read_law/*.tape
+/evidence/source_net_causal_poset/routed_read_law/*.input

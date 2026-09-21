@@ -47,6 +47,25 @@ preparations. These controls do not derive M1 or a physical energy/clock.
 The dedicated workflow runs on Windows and Linux; the frozen mandatory
 runner is unchanged.
 
+## M1 routing and live storage
+
+The conditional M1 routing and live-storage refinement has a complete small
+replay and an explicit kernel audit:
+
+```bash
+python code/source_routing_refinement/verify.py
+python -m pytest -q code/source_routing_refinement/test_refinement.py
+cd Lean
+lake build Geometry.SourceRoutingRefinementAxiomAudit
+```
+
+The Python controls run in the dedicated Linux/Windows
+`source-routing-refinement.yml` workflow; the source-frozen mandatory runner
+is preserved byte for byte. See
+[the derivation and scope](code/source_routing_refinement/README.md): the
+23-scalar-slot bound excludes precision, controller and retained audit history,
+and does not derive the supplied feedback law from canonical dynamics.
+
 ## Environment
 
 - CPython 3.12 or newer (verified on 3.12 and 3.13).
@@ -70,11 +89,12 @@ python tools/run_mandatory_suite.py
 
 `requirements.txt` pins the core dependencies. The default command runs the
 complete standard suite. On every push and PR, CI
-(`.github/workflows/mandatory-suite.yml`) runs the same ordered steps in two
+(`.github/workflows/mandatory-suite.yml`) runs the same ordered steps in nine
 isolated partitions on each operating system. Each partition has its own
-clean checkout and the existing 30-minute job limit. Both partitions must
+clean checkout and the existing 30-minute job limit. All nine partitions must
 succeed; a failed, cancelled or skipped partition cannot produce a passing
-aggregate check. The partition commands are:
+aggregate check. The runner also supports other partition counts; a complete
+two-part local replay uses:
 
 ```bash
 python tools/run_mandatory_suite.py --shard-index 0 --shard-count 2

@@ -64,6 +64,34 @@ def test_nonresumable_cache_key_is_rejected() -> None:
     assert "Lean CI 'ophgap' cache keys must support resumable re-runs" in errors
 
 
+def test_stale_core_cache_step_reference_is_rejected() -> None:
+    workflow, lakefile = _inputs()
+    mutated = workflow.replace(
+        "steps.budget_build.outputs.status == '0' || steps.budget_build.outputs.status == '124'",
+        "steps.lean_build.outcome == 'success' || steps.lean_build.outputs.timed_out == 'true'",
+        1,
+    )
+    assert "the core Lean cache must save successful and timed-out builds using the declared budget_build status" in validate(mutated, lakefile)
+
+
+def test_missing_core_build_step_id_is_rejected() -> None:
+    workflow, lakefile = _inputs()
+    mutated = workflow.replace("        id: budget_build\n", "", 1)
+    assert "the core Lean cache must save successful and timed-out builds using the declared budget_build status" in validate(mutated, lakefile)
+
+
+def test_core_cache_must_preserve_timed_out_progress() -> None:
+    workflow, lakefile = _inputs()
+    mutated = workflow.replace(" || steps.budget_build.outputs.status == '124'", "", 1)
+    assert "the core Lean cache must save successful and timed-out builds using the declared budget_build status" in validate(mutated, lakefile)
+
+
+def test_missing_core_cache_save_is_rejected() -> None:
+    workflow, lakefile = _inputs()
+    mutated = workflow.replace("      - name: Save Lake build cache\n", "      - name: Missing cache save\n", 1)
+    assert "the core Lean cache must save successful and timed-out builds using the declared budget_build status" in validate(mutated, lakefile)
+
+
 def test_golden_budget_change_is_rejected() -> None:
     workflow, lakefile = _inputs()
     mutated = workflow.replace(

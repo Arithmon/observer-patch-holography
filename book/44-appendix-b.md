@@ -22,7 +22,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Carrier.** The finite wiring underneath everything: twelve ports at the corners of a twenty-sided solid, thirty seams joining them, twenty triangular faces. The structural numbers of the physics are read off that arrangement.
 
-**Causal diamond.** Everything that happens after one event and before another: two cones joined at the rim. Count the records inside one and you have its four-dimensional volume. Take the fourth root of the ratio of two such counts and you have the ratio of their durations.
+**Causal diamond.** Everything after one event and before another: two cones joined at the rim. In the supplied refining record model, weighted counts approach coordinate volume for timelike diamonds contained in the sampled region. Fourth roots of suitable count ratios approach relative model durations. Extra relay operations are excluded from those counts; physical volume and clock calibration require separate identification.
 
 **Causal set.** A partial order in which any two related events have only finitely many others between them. The 1987 proposal is that spacetime, looked at finely, is one of these, with the order supplying the light cones and the number of elements supplying volume. The observers' records form one.
 

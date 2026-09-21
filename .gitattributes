@@ -18,3 +18,7 @@ evidence/custody/** -text -eol -diff
 code/support_wiring/geometry/*.npz -text -eol -diff
 evidence/support_wiring_776/*.npz -text -eol -diff
 evidence/support_wiring_776/trace/*.npz -text -eol -diff
+# Full routed histories use explicit binary event rows and lossless deltas.
+code/source_read_routing/controls/*.tape -text -eol -diff
+code/source_read_routing/controls/*.input -text -eol -diff
+code/source_routing_refinement/controls/*.tape -text -eol -diff
