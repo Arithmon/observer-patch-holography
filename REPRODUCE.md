@@ -70,11 +70,12 @@ python tools/run_mandatory_suite.py
 
 `requirements.txt` pins the core dependencies. The default command runs the
 complete standard suite. On every push and PR, CI
-(`.github/workflows/mandatory-suite.yml`) runs the same ordered steps in two
+(`.github/workflows/mandatory-suite.yml`) runs the same ordered steps in nine
 isolated partitions on each operating system. Each partition has its own
-clean checkout and the existing 30-minute job limit. Both partitions must
+clean checkout and the existing 30-minute job limit. All nine partitions must
 succeed; a failed, cancelled or skipped partition cannot produce a passing
-aggregate check. The partition commands are:
+aggregate check. The runner also supports other partition counts; a complete
+two-part local replay uses:
 
 ```bash
 python tools/run_mandatory_suite.py --shard-index 0 --shard-count 2

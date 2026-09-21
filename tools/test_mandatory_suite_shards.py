@@ -36,7 +36,7 @@ def dispatch(monkeypatch):
     return invoke, commands
 
 
-@pytest.mark.parametrize("count", [1, 2, 3, 7, len(_standard_steps())])
+@pytest.mark.parametrize("count", [1, 2, 3, 7, 9, len(_standard_steps())])
 def test_all_standard_shards_dispatch_exact_ordered_coverage(dispatch, capsys, count):
     invoke, _ = dispatch
     expected = [command for _, command in _standard_steps()]
