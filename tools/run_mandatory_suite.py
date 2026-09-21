@@ -42,6 +42,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
+        "Verify finite fermionic current, exact continuity and mean Gauss custody",
+        [sys.executable, "-m", "pytest", "-q", "code/sm_fermion_current"],
+    ),
+    (
+        "Verify Maxwell measurement contract, uncertainty and external trust boundaries",
+        [sys.executable, "-m", "pytest", "-q", "code/maxwell_measurement"],
+    ),
+    (
         "Verify native work ambiguity, scalar pressure enclosures and Maxwell thermal stress",
         [sys.executable, "-m", "pytest", "-q", "code/equation_of_state"],
     ),
@@ -1295,6 +1303,14 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
         "Verify sequential quantum instruments, local parity and clock-interval backaction",
         [sys.executable, "-m", "pytest", "-q", "code/source_scalar_instruments/test_sequential_instrument.py"],
+    ),
+    (
+        "Verify finite-duration quantum instruments, noise margins and retained-record chronology",
+        [sys.executable, "-m", "pytest", "-q", "code/source_scalar_finite_instrument/test_finite_instrument.py"],
+    ),
+    (
+        "Verify the triple-carrier noncommutative operator join",
+        [sys.executable, "-m", "pytest", "-q", "code/source_operator_join/test_join.py"],
     ),
 ]
 

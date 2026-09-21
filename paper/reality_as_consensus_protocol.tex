@@ -3008,10 +3008,12 @@ negative control: its evolved singleton is the next diagonal walk projector
 and cannot generate the top regional algebra
 (\texttt{walkSlice\_evolved\_generation\_fails}).
 
-The interface has no multi-step cocycle or group-action law, Cauchy geometry,
-clock, physical time, or source-selected dynamics and therefore implies no
-time-slice theorem. The common carrier joins the source state, path, and
-checkpoint data but supplies no regional-net or tower morphism. The
+The one-step interface has no multi-step cocycle or group-action law, Cauchy
+geometry, clock, physical time, or source-selected dynamics and therefore
+implies no time-slice theorem. The state/path/checkpoint construction by itself
+supplies no regional-net or tower morphism. The operator embeddings described
+below use the same common carrier and admit coherent finite compositions;
+they supply no physical Cauchy interpretation or state-preserving tower map. The
 \(\mathbb Z/2\) slot swap is an internal finite symmetry. The diagonal-layer
 join below carries typed embeddings of both carriers but no physical time,
 causal interpretation, spacetime attachment, regional-net join, or tower join.
@@ -3040,8 +3042,36 @@ adjacent source transitions restrict to the diagonal layer, share the
 observer-86 hinge action, and descend to one join evolution intertwined by
 both embeddings and by the hinge restriction.  The join is a finite linear
 object with declared fiber-uniform sections: no star-algebra amalgamation,
-order structure on the quotient, net morphism, tower morphism, or
-uniqueness claim accompanies it.
+order structure on this quotient, operator-net morphism, tower morphism, or
+uniqueness claim accompanies this linear construction.
+
+\paragraph{Full operator join on the same triple carrier.}
+Adjoining the unused observer's identity gives injective unital star
+homomorphisms from the full \(M_{182}\) and \(M_{169}\) pair algebras
+into \(M_{2366}\). Their images intersect in exactly
+\(M_{13}\otimes I_{14}\otimes I_{13}\) and generate the full triple
+algebra. The shared hinge is noncommutative; only the exclusive observer-88
+and observer-247 factors commute. For example, multiplying the lifted pair
+units \(E_{(a,b),(s,b')}\) and \(E_{(s,c),(a',c')}\) gives the triple
+unit \(E_{(a,b,c),(a',b',c')}\). The full proof appears in
+\emph{Observers Are All You Need}, in the subsection on the noncommutative
+join of retained observer carriers~\cite{ophObservers}.
+
+Both embeddings intertwine all 31 actual adjacent path-read permutations.
+Ordered products supply finite interval composition, with no invented
+terminal-to-initial edge. The lifted source transition operators and field
+projectors, and their evolved images, generate the joint algebra. Ordinary
+partial traces recover the counted pair states and their expectation values;
+normalized partial traces retract the observable embeddings. These reverse
+maps are not multiplicative, and the empirical state is distinct from either
+supplied uniform tower state. The kernel-checked statements are in
+\path{Lean/QFT/TripleCarrierOperatorJoin.lean}. This tensor construction
+does not give multiplication to the 338-dimensional record quotient or
+provide a universal algebraic pushout. Its tensor split and path permutations
+are supplied adapters; physical regions, quantum preparations and outcomes,
+a physical clock, Cauchy geometry and a state-preserving tower/refinement
+morphism are not derived. Observer 86/88 source supports overlap, so tensor
+slot locality does not establish their physical support disjointness.
 
 \paragraph{Record-layer net morphisms for the join.}
 The module \path{Lean/QFT/JoinNetMorphism.lean} equips the join with the
@@ -3070,7 +3100,7 @@ structure through this pushout
 (\texttt{join\_quotient\_mul\_ill\_defined}), and the record layer is
 commutative while the left regional algebra is not, so the
 commutant distinctions of the operator layer collapse under the diagonal
-restriction. The construction defines no operator-layer net morphism, tower
+restriction. This diagonal-quotient construction defines no operator-layer net morphism, tower
 morphism, physical time, causal interpretation, or spacetime attachment.
 
 \paragraph{Operator-layer boundary.}
@@ -4999,6 +5029,13 @@ B.~M\"uller, A.~Osika, M.~Poneder, K.~Xue, B.~Cassie, P.~Nguyen, J.~Kim, D.~Mats
 \emph{From Observer Consensus to Standard Physics},
 2026.\\
 Available at \url{https://wkaxfdgxoqmghwgshymt.supabase.co/storage/v1/object/public/papers/from_observer_consensus_to_standard_physics.pdf}.
+
+\bibitem{ophObservers}
+B.~M\"uller et al.,
+\emph{Observers Are All You Need},
+2026.\\
+Source and compiled paper:
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/observers_are_all_you_need.pdf}.
 
 \bibitem{newman42}
 M.~H.~A.~Newman,
