@@ -11,7 +11,7 @@
     "nonclaim_numeric_contexts": [
       "calendar dates",
       "GitHub issue numbers",
-      "machine-generated theorem and lemma declaration counts (checked by tools/check_lean_theorem_count.py)",
+      "machine-generated theorem and lemma declaration counts: the README lower bound is the largest multiple of 100 strictly below the tracked public declaration count, checked by tools/check_lean_theorem_count.py; this count asserts neither physical establishment nor derivation of M1",
       "file paths and URLs",
       "equation labels and representation dimensions",
       "numbers in prose that do not present an OPH-versus-external quantitative comparison"

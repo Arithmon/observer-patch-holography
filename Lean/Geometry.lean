@@ -10,6 +10,7 @@ import Geometry.SourceReadRouting
 import Geometry.SourceRoutingRefinementAxiomAudit
 import Geometry.SourceReadAcceptanceAxiomAudit
 import Geometry.SourceAccumulatorAxiomAudit
+import Geometry.SourceNativeProgramsAxiomAudit
 import Geometry.SourcePopulationQuadrature
 import Geometry.GoldenSourceAssignment
 import Geometry.GoldenSourceCountLimit

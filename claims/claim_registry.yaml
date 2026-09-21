@@ -10867,7 +10867,7 @@
     },
     {
       "claim_id": "OPH-NATIVE-REUSABLE-ACCUMULATION",
-      "statement": "After one paired-rail preparation including a unit seed, native scalar pair means implement reusable starts, rectangle reset, scale-aligned addition and, under a sufficient whole-word precision margin, a final remote read of 1+sum(requested input values) for arbitrary finite valid request lists. Logical input values are preserved while their raw amplitudes and decoding scales change; the previous mutable accumulator is retired at the next start and is not an immutable archive. For S episodes, N requests and initial scale bound M, Lean proves e<=M+S+2N and W<=6S+N*(8+3*(M+S+2N)); the final read adds scale 4 and 8 means. The bounded integer interval decoder publishes only a unique feasible integer under the whole-word error budget, which does not reset when storage is cleared. At the declared rounded grid Q=2^256, independent replay covers 1280 histories and 78255 means, including signed payloads, all request words through length 7 and 15-episode reuse. Preparation, requests, placement, scale metadata, error limits, scheduling and the publication instrument are supplied. This removes repeated fresh-unit writes and host data addition from this interface; it supplies neither immutable committed layers nor a full native q13/q21 compiler, a physical capacity/clock, or source selection of the metric read law.",
+      "statement": "After one paired-rail preparation including a unit seed, native scalar pair means implement reusable starts, rectangle reset, scale-aligned addition and, under a sufficient whole-word precision margin, a final remote read of 1+sum(requested input values) for arbitrary finite valid request lists. Logical input values are preserved while their raw amplitudes and decoding scales change; the previous mutable accumulator is retired at the next start and is not an immutable archive. For S episodes, N requests and initial scale bound M, Lean proves e<=M+S+2N and W<=6S+N*(8+3*(M+S+2N)); the final read adds scale 4 and 8 means. The bounded integer interval decoder publishes only a unique feasible integer under the whole-word error budget, which does not reset when storage is cleared. At the declared rounded grid Q=2^256, independent replay covers 1280 histories and 78255 means, including signed payloads, all request words through length 7 and 15-episode reuse. Preparation, requests, placement, scale metadata, error limits, scheduling and the publication instrument are supplied. This standalone accumulator removes repeated fresh-unit writes and host data addition from its interface; it supplies neither immutable committed layers nor a full native q13/q21 compiler, a physical capacity/clock, or source selection of the metric read law.",
       "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
       "tier": "kernel_checked_conditional_native_arithmetic_and_bounded_error_publication",
       "assumptions": [
@@ -10893,7 +10893,7 @@
       ],
       "falsifier": "A valid finite request program loses a retained input, computes the wrong sum, violates the scale/work or whole-word error bound, publishes an incorrect integer, supplies a free repeated seed/reset, or treats a retired mutable answer as an immutable layer archive.",
       "scope_if_false": "Only the conditional accumulator program, preservation, cost or decoder theorem fails; other native words and the declared full-family feedback compiler retain their own scopes.",
-      "status": "reusable_logical_accumulation_attained__immutable_layer_archive_and_native_full_family_unsupplied",
+      "status": "reusable_logical_accumulation_attained__standalone_mutable_accumulator_not_a_layer_archive",
       "claim_class": "conditional_implication",
       "gates": [
         740,
@@ -10905,6 +10905,72 @@
         "open": [],
         "boundary": [],
         "rationale": "The mean-only arithmetic theorem uses declared rail preparations, requests, scales and a bounded-error local decoder. Its logical input preservation and program costs neither consume PR-52 physical attachment nor assert physical publication hardware."
+      }
+    },
+    {
+      "claim_id": "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM",
+      "statement": "For supplied balanced-rail preparations, a retained unit and finite typed layer request lists, the abstract two-bank compiler derives its instruction stream, input preservation, record retirement and the decoded recurrence v[t+1,i]=1+sum(v[t,j] for j in menu[t,i]), including repeated and empty requests. Its Lean native lowering accepts geometric route annotations with endpoints and scratch conditions, not a completed correctness certificate. Kernel proofs derive the composed scalar-mean word, public caps, exact scalar work, cumulative cleanup/noise bound and singleton publication. An explicit declared depth-three star bus supplies every required route; finite cleanup and grid exponents chosen before the payload guarantee a strict whole-history margin for every admissible preparation and execution within the stated errors. This bus is not asserted to embed in the captured twelve-port support, and its coarse existence precision is not a hardware attainability result. Logical values survive attenuation through public scale updates; raw amplitudes remain mutable. Preparation, every preceding mean, idle-port disturbances, cleanup residuals and sampling share one budget that never resets at a version boundary. A generated kernel certificate matches all 42 stages of the captured signed control: instructions, every observed scale, native stage work totalling 1798154 means and nine final output pairs. Its byte freshness is checked against the independently validated plan. Captured scalar-port embedding/re-pairing and general identification of the Python compiler remain analytic, not complete kernel verification. Nine signed three-layer histories exercise reuse. Two complete 27-site two-layer golden-menu histories charge 1409653226 means: 292557295 are evaluated and 1117095931 have their exact deterministic rounded effects certified by stationary-block checks, with every repetition retained in the work and error clock. All 45940 paired routes for populations 27, 2197 and 9261 are checked. The larger families have sufficient analytic bounds of 27466293578568192 and 11563547398990878570 means and 11309 and 52720 grid bits; their native words are not replayed. Captured bank placement is separate from the geometric address layout, and the metric menu is supplied rather than recovered by runtime address reads. The result does not select that menu, synthesize a physical controller, identify an observer cover, prove an all-level captured route theorem or raw-event semantic-poset refinement, or establish physical precision, isolation, quantum operation, efficiency, clock or spacetime volume.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "kernel_checked_abstract_bank_compiler_and_finite_control_correspondence_with_captured_route_certificates",
+      "assumptions": [
+        "declared_native_stored_program_banks_and_global_error_budget"
+      ],
+      "imported_results": [
+        "balanced_rail_dyadic_encoding",
+        "finite_program_and_bank_lifetime_induction",
+        "nonexpansive_mean_error_propagation",
+        "bounded_integer_interval_decoding",
+        "deterministic_stationary_block_iteration",
+        "Archimedean_bounds_for_dyadic_precision"
+      ],
+      "oph_specific_delta": "Derives stored computed layers, later reads, record retirement and native scalar-mean words from finite request lists, with exact work and one error ledger; separates a general declared-bus existence theorem, a kernel-checked captured-control projection and finite twelve-port route/execution certificates.",
+      "novelty_type": "conditional_native_stored_computation_with_global_precision_and_route_certificates",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_NATIVE_STORED_PROGRAMS.tex",
+        "Lean/Geometry/SourceNativeShuttle.lean",
+        "Lean/Geometry/SourceNativeCore.lean",
+        "Lean/Geometry/SourceNativeProgramError.lean",
+        "Lean/Geometry/SourceNativeStoredProgram.lean",
+        "Lean/Geometry/SourceNativeProgramBudget.lean",
+        "Lean/Geometry/SourceBankMachine.lean",
+        "Lean/Geometry/SourceBankInvariant.lean",
+        "Lean/Geometry/SourceBankLowering.lean",
+        "Lean/Geometry/SourceBankCompiler.lean",
+        "Lean/Geometry/SourceBankBusWitness.lean",
+        "Lean/Geometry/SourceBankPrecision.lean",
+        "Lean/Geometry/SourceBankExecution.lean",
+        "Lean/Geometry/SourceBankTrace.lean",
+        "Lean/Geometry/SourceBankControl.lean",
+        "Lean/Geometry/SourceNativeProgramsAxiomAudit.lean",
+        "code/source_native_programs/CONTRACT.md",
+        "code/source_native_programs/DERIVATION.md",
+        "code/source_native_programs/build.py",
+        "code/source_native_programs/verify.py",
+        "code/source_native_programs/routes.py",
+        "code/source_native_programs/check_routes.py",
+        "code/source_native_programs/family_build.py",
+        "code/source_native_programs/family_verify.py",
+        "code/source_native_programs/controls.json",
+        "code/source_native_programs/families.json",
+        "code/source_native_programs/receipt.json",
+        "code/source_native_programs/families_receipt.json",
+        "code/source_native_programs/test_programs.py",
+        "code/source_native_programs/lean_control.py"
+      ],
+      "falsifier": "The derived compiler loses a protected logical input, overwrites a live bank version, computes or publishes the wrong integer, omits required cleanup or work, resets its error clock, violates the cumulative margin, fails its declared-bus route or finite-precision theorem, accepts an unsupported or aliased captured route, retains a stale control certificate, accelerates a nonstationary block, misstates a retained certificate, or promotes captured scalar embedding, large-family replay or physical source selection beyond the stated proof scope.",
+      "scope_if_false": "Only the conditional stored-program construction, compiler identification, error bound or finite certificate fails; the isolated accumulator and the separate supplied six-operation routing compiler retain their own hypotheses.",
+      "status": "conditional_abstract_bank_compilation_finite_precision_and_captured_control_correspondence_attained__physical_realization_and_source_selection_supplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The abstract bank compiler derives native words and logical lifetimes from finite request lists and geometric route data; its precision theorem supplies a conditional strict margin on a declared star bus. Captured-support evidence additionally uses checked finite routes and an analytic scalar embedding. Prepared rails, a controller realizing the derived word, protected physical storage and bounded local samples/errors remain supplied. Physical source-selection, observer-cover, signal, capacity and clock identification are excluded conclusions, so neither PR-52 nor another physical premise is consumed or discharged."
       }
     },
     {
