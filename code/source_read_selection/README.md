@@ -202,6 +202,11 @@ to accept successful routes retains the M1 premise.
 The current theorem does not choose between these alternatives, and the
 axioms' entailment or non-entailment of the full M1 law remains unresolved.
 
+[Native read acceptance](../source_read_acceptance/README.md) derives a maximal
+sound local partial decoder for a specified uncertainty model, with native
+error and stopping-work theorems. Its preparation, paired alphabet and A3
+schedule premises are supplied.
+
 ## Reproduction
 
 ```

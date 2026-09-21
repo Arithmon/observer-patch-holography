@@ -70,6 +70,23 @@ def validate(workflow: str, lakefile: str) -> list[str]:
     if re.search(r"(?m)^\s+lake build\s*$", changed_body):
         errors.append("per-change Lean CI must not run an exhaustive default Lake build")
 
+    cache_step = re.search(
+        r"(?ms)^      - name: Save Lake build cache\n"
+        r"(?P<body>.*?)(?=^      - name:)",
+        build,
+    )
+    cache_body = cache_step.group("body") if cache_step else ""
+    cache_condition = (
+        "        if: steps.budget_build.outputs.status == '0' || "
+        "steps.budget_build.outputs.status == '124'"
+    )
+    if (
+        "        id: budget_build" not in changed_body.splitlines()
+        or cache_condition not in cache_body.splitlines()
+        or "uses: actions/cache/save@" not in cache_body
+    ):
+        errors.append("the core Lean cache must save successful and timed-out builds using the declared budget_build status")
+
     for excluded in (
         "Screen/OPHScreen.lean|Screen/GoldenSectorPSL2F5Representations.lean) continue ;;",
     ):
