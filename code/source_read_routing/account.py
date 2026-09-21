@@ -23,7 +23,7 @@ def account(receipt_path, binary, work):
     work.mkdir(parents=True, exist_ok=True)
     error_path, memory_path = work/f"q{q}_{variant}.account.stderr", work/f"q{q}_{variant}.rss"
     input_path = receipt_path.parent/f"q{q}.input"
-    # The native event stream is still produced in full; only its second
+    # The native event stream is produced in full; only its second
     # physical copy is replaced by a byte-for-byte SHA-256 comparison.
     import os
     prefix = ["wsl", "-d", "Ubuntu", "--"] if os.name == "nt" else []
