@@ -389,7 +389,17 @@ def verify(packet, replay_original=True):
     auth = packet["authenticated_observer_fields"]
     if replay_original:
         fresh = original.verify(parent)
-        require(auth["parent_verification"] == fresh, "original source replay summary")
+        recorded = auth["parent_verification"]
+        require(set(recorded) == set(fresh), "original source replay summary census")
+        for key, value in fresh.items():
+            if key in ("gauss_max_abs", "ampere_max_abs"):
+                # Round-off residuals of the parent replay differ by platform;
+                # both the recorded and the fresh value must sit at the
+                # float64 noise floor.
+                require(0.0 <= float(recorded[key]) <= 1e-12 and 0.0 <= float(value) <= 1e-12,
+                        "original source replay residual " + key)
+            else:
+                require(recorded[key] == value, "original source replay summary " + key)
     require(auth["scope"] == "field-only stress from authenticated original sourced readout; excludes source, clock, memory and wall energies", "sourced readout energy boundary")
     require(auth["energy_boundary"] == "instantaneous continuum-time Whitney field energy; not the parent's modified conserved integrator energy", "finite-step energy distinction")
     check_observer(auth["rows"], parent, c, d, base)
