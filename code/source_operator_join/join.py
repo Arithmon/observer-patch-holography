@@ -22,7 +22,7 @@ PARENTS = (
 
 
 def source_rows(root: Path = ROOT) -> list[list[int]]:
-    text = (root / PARENTS[0]).read_text()
+    text = (root / PARENTS[0]).read_text(encoding="utf-8")
     rows = []
     for observer in (86, 88, 247):
         block = text.split(f"def obs{observer} :", 1)[1].split("  cnt :=", 1)[0]
@@ -84,7 +84,7 @@ def produce(root: Path = ROOT) -> dict:
 
 
 def canonical(packet: dict) -> bytes:
-    return (json.dumps(packet, sort_keys=True, indent=2) + "\n").encode()
+    return (json.dumps(packet, sort_keys=True, indent=2) + "\n").encode("utf-8")
 
 
 if __name__ == "__main__":

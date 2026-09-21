@@ -2361,6 +2361,19 @@ def test_finite_instrument_control_requires_operator_and_parent_proof(monkeypatc
         ledger._source_scalar_finite_instrument_control()
 
 
+def test_source_operator_join_control_replays_with_cp1252_default(monkeypatch):
+    expected = ledger._source_operator_join_control()
+    original_read_text = Path.read_text
+
+    def windows_read_text(path, encoding=None, errors=None, **kwargs):
+        return original_read_text(path, encoding=encoding or "cp1252", errors=errors, **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", windows_read_text)
+    with pytest.raises(UnicodeDecodeError):
+        (ledger.REPO / "Lean/QFT/SourceOperatorGeneration.lean").read_text()
+    assert ledger._source_operator_join_control() == expected
+
+
 def test_source_operator_join_control_separates_replay_and_universal_proof():
     row = ledger._triple_observer_carrier_row()
     assert row['id'] == 'triple_observer_carrier_coupling'

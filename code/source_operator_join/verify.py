@@ -48,7 +48,7 @@ def read_source(root: Path) -> tuple[list[list[int]], list[list[list[int]]]]:
     for path, digest in PINS.items():
         require(hashlib.sha256((root / path).read_bytes()).hexdigest() == digest,
                 f"pinned source changed: {path}")
-    text = (root / "Lean/QFT/SourceOperatorGeneration.lean").read_text()
+    text = (root / "Lean/QFT/SourceOperatorGeneration.lean").read_text(encoding="utf-8")
     paths, tables = [], []
     for observer, dimension in zip((86, 88, 247), DIMS):
         block = re.search(rf"def obs{observer}\s*:.*?(?=\n/--)", text, re.S).group()
@@ -191,7 +191,7 @@ def load(path: Path) -> dict:
             require(key not in result, f"duplicate key: {key}")
             result[key] = value
         return result
-    return json.loads(path.read_text(), object_pairs_hook=pairs)
+    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=pairs)
 
 
 if __name__ == "__main__":

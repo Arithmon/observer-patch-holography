@@ -1,6 +1,7 @@
 """False-green controls for source binding, algebra scope and chronology."""
 import hashlib
 import importlib.util
+import json
 from pathlib import Path
 import shutil
 import sys
@@ -36,6 +37,25 @@ def test_committed_packet_reproduces_and_independent_verifier_checks(packet):
     assert result["observed_quantum_outcomes"] is False
     assert result["lean_kernel_replay_performed"] is False
     assert result["universal_operator_theorems_verified_by_python"] is False
+
+
+def test_utf8_source_and_packet_replay_with_cp1252_default(monkeypatch, tmp_path):
+    original_read_text = Path.read_text
+
+    def windows_read_text(path, encoding=None, errors=None, **kwargs):
+        return original_read_text(path, encoding=encoding or "cp1252", errors=errors, **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", windows_read_text)
+    # Confirm that the simulation reaches the actual Windows failure mode.
+    with pytest.raises(UnicodeDecodeError):
+        (producer.ROOT / producer.PARENTS[0]).read_text()
+    packet = producer.produce()
+    assert producer.canonical(packet) == (HERE / "operator_join_packet.json").read_bytes()
+    assert consumer.verify(consumer.load(HERE / "operator_join_packet.json"))["source_rows"] == 32
+    path = tmp_path / "unicode.json"
+    value = {"label": "∀ ψ ∈ ℂ"}
+    path.write_text(json.dumps(value, ensure_ascii=False), encoding="utf-8")
+    assert consumer.load(path) == value
 
 
 def test_missing_adjacent_transition(packet):
@@ -128,7 +148,8 @@ def test_rehashed_changed_parent_is_not_accepted(packet, tmp_path):
         shutil.copyfile(consumer.ROOT / path, target)
     path = "Lean/QFT/SourceOperatorGeneration.lean"
     target = tmp_path / path
-    target.write_text(target.read_text().replace("path := ![1,2,2,7", "path := ![0,2,2,7", 1))
+    target.write_text(target.read_text(encoding="utf-8").replace(
+        "path := ![1,2,2,7", "path := ![0,2,2,7", 1), encoding="utf-8")
     with pytest.raises(consumer.Rejected, match="pinned source changed"):
         consumer.verify(packet, tmp_path)
     packet["parents"][path] = hashlib.sha256(target.read_bytes()).hexdigest()
@@ -138,7 +159,7 @@ def test_rehashed_changed_parent_is_not_accepted(packet, tmp_path):
 
 def test_duplicate_json_key_is_rejected(tmp_path):
     path = tmp_path / "duplicate.json"
-    path.write_text('{"schema": "a", "schema": "b"}')
+    path.write_text('{"schema": "a", "schema": "b"}', encoding="utf-8")
     with pytest.raises(consumer.Rejected, match="duplicate key"):
         consumer.load(path)
 
