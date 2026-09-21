@@ -1,5 +1,5 @@
 import Geometry.SourceReusableBusAxiomAudit
-import Geometry.SourceAccumulatorProgram
+import Geometry.SourceAccumulatorDecoder
 
 /-! Transitive standard-axiom gate for every theorem. -/
 audit_reusable_bus_axioms OPH.SourceNativeAccumulator.shrink_formula
@@ -44,3 +44,10 @@ audit_reusable_bus_axioms OPH.SourceAccumulatorProgram.normalized_error
 audit_reusable_bus_axioms OPH.SourceAccumulatorProgram.program_remote_publication
 audit_reusable_bus_axioms OPH.SourceAccumulatorProgram.grid_margin
 audit_reusable_bus_axioms OPH.SourceAccumulatorProgram.native_recurrence_publication
+audit_reusable_bus_axioms OPH.SourceAccumulatorDecoder.candidate_iff
+audit_reusable_bus_axioms OPH.SourceAccumulatorDecoder.decode_some_iff
+audit_reusable_bus_axioms OPH.SourceAccumulatorDecoder.decode_is_canonical
+audit_reusable_bus_axioms OPH.SourceAccumulatorDecoder.decode_sound
+audit_reusable_bus_axioms OPH.SourceAccumulatorDecoder.decode_available
+audit_reusable_bus_axioms OPH.SourceAccumulatorDecoder.recurrence_bound
+audit_reusable_bus_axioms OPH.SourceAccumulatorDecoder.native_bounded_publication
