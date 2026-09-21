@@ -249,7 +249,8 @@
   "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT",
   "OPH-NATIVE-LOCAL-SINGLETON-PUBLICATION",
   "OPH-NATIVE-REUSABLE-ACCUMULATION",
-  "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION"
+  "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION",
+  "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM"
  ],
  "edges": [
   {
@@ -2181,6 +2182,16 @@
    "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
    "to": "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION",
    "role": "Supplies the complete q3 routed event streams, prepared address records and declared M1 compiler used for the paired gluing comparison; source-selected population, physical geometry and unrestricted law recovery are not inherited."
+  },
+  {
+   "from": "OPH-NATIVE-REUSABLE-ACCUMULATION",
+   "to": "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM",
+   "role": "Supplies supported scale-aligned arithmetic, retained logical inputs and the bounded integer decoder; new transfer, bank lifetime and global residual arguments construct stored later-layer inputs."
+  },
+  {
+   "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
+   "to": "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM",
+   "role": "Supplies captured twelve-port supports and the declared golden metric menus for finite family certificates. The new bank placement and mean-only words do not inherit the older export/reset/capture primitives, prepared-address preservation or exact raw-writer semantic-order refinement."
   }
  ]
 }
