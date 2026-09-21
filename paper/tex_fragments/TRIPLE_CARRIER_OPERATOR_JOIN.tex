@@ -1,0 +1,118 @@
+\subsection{A noncommutative join of the retained observer carriers}
+\label{sec:triple-carrier-operator-join}
+
+The retained observers 86, 88 and 247 have realized label spaces of
+dimensions 13, 14 and 13. Their 32 aligned source rows define one triple
+path \(q_t=(a_t,b_t,c_t)\), \(0\leq t\leq31\), with the two pair paths
+as its coordinate projections. Use the declared tensor reading
+\(H=(\mathbb C^{13}\otimes\mathbb C^{14})\otimes\mathbb C^{13}\),
+and write \(M_n=\operatorname{End}(\mathbb C^n)\). The operator join
+uses this 2366-dimensional carrier; it assigns no multiplication to the
+338-dimensional linear pushout of diagonal records.
+
+\begin{theorem}[Full operator join on the common carrier]
+The maps \(\iota_{88}:M_{182}\to M_{2366}\) and
+\(\iota_{247}:M_{169}\to M_{2366}\), defined by
+\begin{align}
+ \iota_{88}(X)&=X\otimes I_{13},\label{eq:triple-operator-88}\\
+ \iota_{247}(Y)_{(a,b,c),(a',b',c')}
+   &=Y_{(a,c),(a',c')}\delta_{bb'},\label{eq:triple-operator-247}
+\end{align}
+are injective unital star homomorphisms. Their images intersect in exactly
+\(M_{13}\otimes I_{14}\otimes I_{13}\) and generate all of \(M_{2366}\).
+The exclusive observer-88 and observer-247 factors commute. The two
+overlapping pair algebras do not commute.
+\end{theorem}
+\begin{proof}
+Identity-spectator inclusion and coordinate reindexing preserve products,
+adjoints and the identity. Evaluating a fixed spectator diagonal entry proves
+injectivity. If \(\iota_{88}(X)=\iota_{247}(Y)\), evaluation at
+\(c=c'=0\) gives
+\[
+ X_{(a,b),(a',b')}=Z_{a,a'}\delta_{bb'},
+ \qquad Z_{a,a'}=Y_{(a,0),(a',0)}.
+\]
+Thus \(X=Z\otimes I_{14}\), and injectivity forces
+\(Y=Z\otimes I_{13}\). Conversely these two matrices have the same
+triple image. This proves the full \(M_{13}\) intersection, whose complex
+vector dimension is 169.
+
+For any triple indices \(q=(a,b,c)\), \(r=(a',b',c')\), and any hinge
+label \(s\), the pair matrix units obey
+\[
+ \iota_{88}(E_{(a,b),(s,b')})\,
+ \iota_{247}(E_{(s,c),(a',c')})=E_{q,r}.
+\]
+Every triple matrix unit therefore belongs to the generated algebra.
+Operators on the exclusive factors commute by the tensor-product rule.
+The common hinge contains \(E_{01}\) and \(E_{10}\), whose two products
+are the distinct \(E_{00}\) and \(E_{11}\), so the pair algebras cannot
+commute elementwise.
+\end{proof}
+
+\paragraph{Counted states and observable retractions.}
+The empirical state and its pair marginals are
+\[
+ \rho_{ABC}=\frac1{32}\sum_{t=0}^{31}|q_t\rangle\langle q_t|,
+ \qquad \rho_{AB}=\operatorname{Tr}_C\rho_{ABC},\qquad
+ \rho_{AC}=\operatorname{Tr}_B\rho_{ABC}.
+\]
+For arbitrary pair observables, these give
+\begin{align*}
+ \operatorname{Tr}(\rho_{ABC}\iota_{88}(X))
+   &=\operatorname{Tr}(\rho_{AB}X),&
+ \operatorname{Tr}(\rho_{ABC}\iota_{247}(Y))
+   &=\operatorname{Tr}(\rho_{AC}Y).
+\end{align*}
+Observable retractions instead use normalized partial traces:
+\[
+ \frac1{13}\operatorname{Tr}_C\iota_{88}(X)=X,
+ \qquad \frac1{14}\operatorname{Tr}_B\iota_{247}(Y)=Y.
+\]
+These reverse maps are linear, not multiplicative. The density-state
+marginals carry no spectator normalization. The empirical states are
+distinct from the independently supplied uniform tower states; no
+state-preserving tower/refinement morphism follows from these equalities.
+
+\paragraph{Source generators and finite transport.}
+Each observer's counted transition operator and diagonal field projectors
+generate the full matrix algebra on its realized alphabet. Their pair lifts,
+followed by \(\iota_{88}\) and \(\iota_{247}\), therefore generate the
+full triple algebra. This is a family of operators constructed from source
+data, not a history of source-executed quantum gates. A singleton path
+projector does not replace this generating family.
+
+For each \(0\leq t<31\), transpose the two adjacent path labels separately
+in each factor, and let \(U_t\) be the tensor product of the resulting
+permutation matrices. The triple conjugation \(\alpha_t\) and its pair
+conjugations satisfy
+\[
+ \alpha_t\iota_{88}=\iota_{88}\alpha^{88}_t,
+ \qquad \alpha_t\iota_{247}=\iota_{247}\alpha^{247}_t.
+\]
+These identities hold for arbitrary matrices, including off-diagonal
+observables. The evolved source generators generate the full joint algebra
+because \(\alpha_t\) is an automorphism. Set
+\(P_0=I\), \(P_t=U_{t-1}\cdots U_0\), and
+\(U_{s,t}=P_tP_s^{-1}\). Then
+\(U_{r,t}U_{s,r}=U_{s,t}\) for \(s\leq r\leq t\), with exact pair
+projections and path transport. The final-to-initial edge is absent from
+all three transition-count tables and is excluded. The empirical state is
+not invariant under these row-dependent permutations.
+
+The general operator identities, counted-state readouts and evolved
+source generation are kernel checked in
+\path{Lean/QFT/TripleCarrierOperatorJoin.lean}. Independent source and
+permutation replay in \path{code/source_operator_join/} checks all 31
+adjacent transitions and 496 nonempty ordered row intervals; its sparse
+matrix-unit controls are finite examples, separate from the general proofs.
+
+The label extraction is post hoc; the tensor assembly and path-read
+transpositions are supplied adapters. They provide no preregistered physical
+validation.
+Observer 86/88 source supports overlap, so their tensor slots do not prove
+physical support disjointness. This construction supplies no universal
+algebraic pushout, physical region assignment, quantum preparation or outcome
+record, physical clock, source-selected Cauchy geometry or interacting
+continuum limit. It does not identify this carrier with the separate
+64-mode scalar instrument.

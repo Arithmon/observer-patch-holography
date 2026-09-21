@@ -2,8 +2,8 @@
   "book": {
     "built_for_release_id": "r2044",
     "pdf_path": "book/reverse-engineering-reality-book.pdf",
-    "sha256": "97b034cc3cdf4ba1f8e6c1e17dd0c018097215245b8c693f5ec652b4ef2eb078",
-    "size_bytes": 1362239
+    "sha256": "305701abcaede2c99f9ec41d750a1237427053546c6b631a8c4f7a3b4a2cdacf",
+    "size_bytes": 1362543
   },
   "extra_papers": {},
   "generated_at": "2026-09-21T00:00:00Z",
@@ -20,13 +20,13 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "4f19d3c333bdb90523655a141efcdd9f4bf4c285c892a62cd876f0fef986485e",
-      "size_bytes": 446215
+      "sha256": "ec5eeeca281acaeecaf8fec69dec46e6b8dbd1be749af6dcf64f198f921b0fc5",
+      "size_bytes": 446199
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "059a7465f5551e35c38b9b7e470f92b9f29b620e90c16ee7490d6e4348518dc0",
-      "size_bytes": 893818
+      "sha256": "8e21630316278baac73fe2c7b81c35dfc20b828ddcb4ae22d8e7c7491c15832c",
+      "size_bytes": 902400
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
@@ -35,13 +35,13 @@
     },
     "reality_as_consensus_protocol": {
       "pdf_path": "paper/reality_as_consensus_protocol.pdf",
-      "sha256": "35fa70263328f88aa8ca5901587cdc23ee7432419493d4d21878763fa1bf7036",
-      "size_bytes": 510378
+      "sha256": "2d3cded4d73abda21b19e494df2a5683f3101d8737733e32711f2d1dbba59d4d",
+      "size_bytes": 513307
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "3f422e25eb0f89b5900981e6c5da16098f232fb292f64dd481c52e800f3ac4fd",
-      "size_bytes": 869045
+      "sha256": "adb4785feb15bf4105ad0ec952bd5424d60e32c5e3b556078b53cbd74ffd7f6f",
+      "size_bytes": 881672
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",

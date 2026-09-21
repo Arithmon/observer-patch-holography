@@ -1375,6 +1375,9 @@
           "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex",
           "code/source_scalar_instruments/sequential_instrument_receipt.json",
           "code/source_scalar_instruments/verify_sequential_instrument.py",
+          "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex",
+          "code/source_scalar_finite_instrument/finite_instrument_receipt.json",
+          "code/source_scalar_finite_instrument/verify_finite_instrument.py",
           "Lean/Geometry/SourceSeamPathTomography.lean",
           "paper/tex_fragments/SOURCE_SEAM_PATH_TOMOGRAPHY.tex",
           "code/source_routing/runtime/path_tomography_receipt.json",
@@ -1865,6 +1868,762 @@
             "recurrence": "g_0=1, g_1=3, g_d=2*g_(d-1)+g_(d-2)",
             "sharp_for_independent_bounded_sample_errors": true
           }
+        },
+        "finite_duration_scalar_quantum_instrument_control": {
+          "analytic_proof": {
+            "labels": [
+              "prop:source-scalar-finite-pulse",
+              "prop:source-scalar-finite-noise"
+            ],
+            "source": "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex"
+          },
+          "baseline_and_intervention_errors_both_retained": true,
+          "branch_conditioned_clock": false,
+          "comparison_rows": [
+            {
+              "center_time_interval": [
+                "63886933101/1000000000000",
+                "63888379899/1000000000000"
+              ],
+              "each_probability_noise_error_upper": "229/10000000",
+              "finite_duration_sequential_probability_error_upper": "3462362873/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "1913118835577/250000000000000",
+                "3828150091789/500000000000000"
+              ],
+              "noise_locations_through_readout": 129,
+              "noisy_baseline_probability_interval": [
+                "4999771/10000000",
+                "5000229/10000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "499576990466127/1000000000000000",
+                "500423009533873/1000000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "0",
+              "paired_response_noise_error_upper": "229/5000000",
+              "parent_sequential_comparison_error_upper": "396647171/1000000000000",
+              "parent_split_response_abs_lower": "0",
+              "pulse_attenuation_difference_upper": "0",
+              "signal_sign": 0,
+              "step": 1,
+              "total_paired_response_error_upper": "445909533873/1000000000000000",
+              "uniformly_resolved": false,
+              "unmeasured_continuous_response_abs_upper": "396647171/1000000000000"
+            },
+            {
+              "center_time_interval": [
+                "15971762673/125000000000",
+                "63888262309/500000000000"
+              ],
+              "each_probability_noise_error_upper": "179/5000000",
+              "finite_duration_sequential_probability_error_upper": "865590973/250000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "1913118835577/125000000000000",
+                "3828150091789/250000000000000"
+              ],
+              "noise_locations_through_readout": 258,
+              "noisy_baseline_probability_interval": [
+                "2499821/5000000",
+                "2500179/5000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "124857083100777/250000000000000",
+                "125142916899223/250000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "0",
+              "paired_response_noise_error_upper": "179/2500000",
+              "parent_sequential_comparison_error_upper": "532405233/1000000000000",
+              "parent_split_response_abs_lower": "0",
+              "pulse_attenuation_difference_upper": "38251/20000000000000",
+              "signal_sign": 0,
+              "step": 2,
+              "total_paired_response_error_upper": "151866899223/250000000000000",
+              "uniformly_resolved": false,
+              "unmeasured_continuous_response_abs_upper": "532405233/1000000000000"
+            },
+            {
+              "center_time_interval": [
+                "191661414849/1000000000000",
+                "23958065519/125000000000"
+              ],
+              "each_probability_noise_error_upper": "487/10000000",
+              "finite_duration_sequential_probability_error_upper": "3462368477/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "5739356506731/250000000000000",
+                "11484450275367/500000000000000"
+              ],
+              "noise_locations_through_readout": 387,
+              "noisy_baseline_probability_interval": [
+                "4999513/10000000",
+                "5000487/10000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "249742437999613/500000000000000",
+                "500638171762457/1000000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "0",
+              "paired_response_noise_error_upper": "487/5000000",
+              "parent_sequential_comparison_error_upper": "1637501539/3125000000000",
+              "parent_split_response_abs_lower": "61038860183/1000000000000000",
+              "pulse_attenuation_difference_upper": "1912521/200000000000000",
+              "signal_sign": 1,
+              "step": 3,
+              "total_paired_response_error_upper": "624862860957/1000000000000000",
+              "uniformly_resolved": false,
+              "unmeasured_continuous_response_abs_upper": "1172017601/2000000000000"
+            },
+            {
+              "center_time_interval": [
+                "63887211469/250000000000",
+                "63888101531/250000000000"
+              ],
+              "each_probability_noise_error_upper": "77/1250000",
+              "finite_duration_sequential_probability_error_upper": "1731191339/500000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "1913118835577/62500000000000",
+                "3828150091789/125000000000000"
+              ],
+              "noise_locations_through_readout": 516,
+              "noisy_baseline_probability_interval": [
+                "624923/1250000",
+                "625077/1250000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "499832662614911/1000000000000000",
+                "500804723890959/1000000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "0",
+              "paired_response_noise_error_upper": "77/625000",
+              "parent_sequential_comparison_error_upper": "418454498781/1000000000000000",
+              "parent_split_response_abs_lower": "31617949637/100000000000000",
+              "pulse_attenuation_difference_upper": "26775073/1000000000000000",
+              "signal_sign": 1,
+              "step": 4,
+              "total_paired_response_error_upper": "545116881459/1000000000000000",
+              "uniformly_resolved": false,
+              "unmeasured_continuous_response_abs_upper": "1479305801/2000000000000"
+            },
+            {
+              "center_time_interval": [
+                "63887263933/200000000000",
+                "63888049067/200000000000"
+              ],
+              "each_probability_noise_error_upper": "149/2000000",
+              "finite_duration_sequential_probability_error_upper": "1731219249/500000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "1913118835577/50000000000000",
+                "3828150091789/100000000000000"
+              ],
+              "noise_locations_through_readout": 645,
+              "noisy_baseline_probability_interval": [
+                "999851/2000000",
+                "1000149/2000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "250220222089791/500000000000000",
+                "250698046535373/500000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "182972089791/500000000000000",
+              "paired_response_noise_error_upper": "149/1000000",
+              "parent_sequential_comparison_error_upper": "12269226289/31250000000000",
+              "parent_split_response_abs_lower": "1779339569/1953125000000",
+              "pulse_attenuation_difference_upper": "11474971/200000000000000",
+              "signal_sign": 1,
+              "step": 5,
+              "total_paired_response_error_upper": "272538839873/500000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "263615497/200000000000"
+            },
+            {
+              "center_time_interval": [
+                "47915468869/125000000000",
+                "47916015881/125000000000"
+              ],
+              "each_probability_noise_error_upper": "437/5000000",
+              "finite_duration_sequential_probability_error_upper": "3462619413/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "5739356506731/125000000000000",
+                "11484450275367/250000000000000"
+              ],
+              "noise_locations_through_readout": 774,
+              "noisy_baseline_probability_interval": [
+                "2499563/5000000",
+                "2500437/5000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "250646960036863/500000000000000",
+                "251264976489609/500000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "603260036863/500000000000000",
+              "paired_response_noise_error_upper": "437/2500000",
+              "parent_sequential_comparison_error_upper": "102411826361/200000000000000",
+              "parent_split_response_abs_lower": "118552614059/62500000000000",
+              "pulse_attenuation_difference_upper": "105186907/1000000000000000",
+              "signal_sign": 1,
+              "step": 6,
+              "total_paired_response_error_upper": "345160875609/500000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "1219443743/500000000000"
+            },
+            {
+              "center_time_interval": [
+                "447211188897/1000000000000",
+                "447216002103/1000000000000"
+              ],
+              "each_probability_noise_error_upper": "1003/10000000",
+              "finite_duration_sequential_probability_error_upper": "3463025157/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "13391831849039/250000000000000",
+                "26797050642523/500000000000000"
+              ],
+              "noise_locations_through_readout": 903,
+              "noisy_baseline_probability_interval": [
+                "4998997/10000000",
+                "5001003/10000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "502406935457427/1000000000000000",
+                "503909756229883/1000000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "2306635457427/1000000000000000",
+              "paired_response_noise_error_upper": "1003/5000000",
+              "parent_sequential_comparison_error_upper": "311351587863/500000000000000",
+              "parent_split_response_abs_lower": "313340165831/100000000000000",
+              "pulse_attenuation_difference_upper": "5438629/31250000000000",
+              "signal_sign": 1,
+              "step": 7,
+              "total_paired_response_error_upper": "826766200883/1000000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "1902719359/500000000000"
+            },
+            {
+              "center_time_interval": [
+                "511098640919/1000000000000",
+                "511103863081/1000000000000"
+              ],
+              "each_probability_noise_error_upper": "283/2500000",
+              "finite_duration_sequential_probability_error_upper": "3463703641/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "1913118835577/31250000000000",
+                "3828150091789/62500000000000"
+              ],
+              "noise_locations_through_readout": 1032,
+              "noisy_baseline_probability_interval": [
+                "1249717/2500000",
+                "1250283/2500000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "5034700830613/10000000000000",
+                "126281352159951/250000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "33568830613/10000000000000",
+              "paired_response_noise_error_upper": "283/1250000",
+              "parent_sequential_comparison_error_upper": "677043523163/1000000000000000",
+              "parent_split_response_abs_lower": "532973786013/125000000000000",
+              "pulse_attenuation_difference_upper": "133873707/500000000000000",
+              "signal_sign": 1,
+              "step": 8,
+              "total_paired_response_error_upper": "226726806701/250000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "5007584131/1000000000000"
+            },
+            {
+              "center_time_interval": [
+                "287493054073/500000000000",
+                "574991708853/1000000000000"
+              ],
+              "each_probability_noise_error_upper": "1261/10000000",
+              "finite_duration_sequential_probability_error_upper": "866131029/250000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "17218069520193/250000000000000",
+                "34453350826101/500000000000000"
+              ],
+              "noise_locations_through_readout": 1161,
+              "noisy_baseline_probability_interval": [
+                "4998739/10000000",
+                "5001261/10000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "503996243324449/1000000000000000",
+                "252835522848073/500000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "3870143324449/1000000000000000",
+              "paired_response_noise_error_upper": "1261/5000000",
+              "parent_sequential_comparison_error_upper": "66963854653/100000000000000",
+              "parent_split_response_abs_lower": "959089279019/200000000000000",
+              "pulse_attenuation_difference_upper": "19507283/50000000000000",
+              "signal_sign": 1,
+              "step": 9,
+              "total_paired_response_error_upper": "462651535323/500000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "11079157599/2000000000000"
+            },
+            {
+              "center_time_interval": [
+                "638873598063/1000000000000",
+                "19964985373/31250000000"
+              ],
+              "each_probability_noise_error_upper": "139/1000000",
+              "finite_duration_sequential_probability_error_upper": "693012109/200000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "1913118835577/25000000000000",
+                "3828150091789/50000000000000"
+              ],
+              "noise_locations_through_readout": 1290,
+              "noisy_baseline_probability_interval": [
+                "499861/1000000",
+                "500139/1000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "503517732369249/1000000000000000",
+                "252547091492177/500000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "3378732369249/1000000000000000",
+              "paired_response_noise_error_upper": "139/500000",
+              "parent_sequential_comparison_error_upper": "611737113809/1000000000000000",
+              "parent_split_response_abs_lower": "4271934543603/1000000000000000",
+              "pulse_attenuation_difference_upper": "545055737/1000000000000000",
+              "signal_sign": 1,
+              "step": 10,
+              "total_paired_response_error_upper": "446601087177/500000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "2474675173/500000000000"
+            },
+            {
+              "center_time_interval": [
+                "702761106553/1000000000000",
+                "140553467289/200000000000"
+              ],
+              "each_probability_noise_error_upper": "1519/10000000",
+              "finite_duration_sequential_probability_error_upper": "3464649007/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "21044307191347/250000000000000",
+                "42109651009679/500000000000000"
+              ],
+              "noise_locations_through_readout": 1419,
+              "noisy_baseline_probability_interval": [
+                "4998481/10000000",
+                "5001519/10000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "100344557936299/200000000000000",
+                "125815524932121/250000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "314177936299/200000000000000",
+              "paired_response_noise_error_upper": "1519/5000000",
+              "parent_sequential_comparison_error_upper": "594604834977/1000000000000000",
+              "parent_split_response_abs_lower": "2472759165479/1000000000000000",
+              "pulse_attenuation_difference_upper": "29452101/40000000000000",
+              "signal_sign": 1,
+              "step": 11,
+              "total_paired_response_error_upper": "56366842749/62500000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "6209767583/2000000000000"
+            },
+            {
+              "center_time_interval": [
+                "766648608689/1000000000000",
+                "766655147309/1000000000000"
+              ],
+              "each_probability_noise_error_upper": "103/625000",
+              "finite_duration_sequential_probability_error_upper": "3463497909/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "5739356506731/62500000000000",
+                "11484450275367/125000000000000"
+              ],
+              "noise_locations_through_readout": 1548,
+              "noisy_baseline_probability_interval": [
+                "312397/625000",
+                "312603/625000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "498658393380311/1000000000000000",
+                "250224243515797/500000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "0",
+              "paired_response_noise_error_upper": "103/312500",
+              "parent_sequential_comparison_error_upper": "2260177479/3125000000000",
+              "parent_split_response_abs_lower": "88606651919/200000000000000",
+              "pulse_attenuation_difference_upper": "483855499/500000000000000",
+              "signal_sign": -1,
+              "step": 12,
+              "total_paired_response_error_upper": "1056320291189/1000000000000000",
+              "uniformly_resolved": false,
+              "unmeasured_continuous_response_abs_upper": "2345814383/2000000000000"
+            },
+            {
+              "center_time_interval": [
+                "207634021743/250000000000",
+                "415271491013/500000000000"
+              ],
+              "each_probability_noise_error_upper": "1777/10000000",
+              "finite_duration_sequential_probability_error_upper": "3468419043/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "24870544862501/250000000000000",
+                "49765951193257/500000000000000"
+              ],
+              "noise_locations_through_readout": 1677,
+              "noisy_baseline_probability_interval": [
+                "4998223/10000000",
+                "5001777/10000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "494942074875613/1000000000000000",
+                "497159332516153/1000000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "2662967483847/1000000000000000",
+              "paired_response_noise_error_upper": "1777/5000000",
+              "parent_sequential_comparison_error_upper": "112030909543/125000000000000",
+              "parent_split_response_abs_lower": "1959041589617/500000000000000",
+              "pulse_attenuation_difference_upper": "1243106147/1000000000000000",
+              "signal_sign": -1,
+              "step": 13,
+              "total_paired_response_error_upper": "1255115695387/1000000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "4871804229/1000000000000"
+            },
+            {
+              "center_time_interval": [
+                "447211773509/500000000000",
+                "894430834979/1000000000000"
+              ],
+              "each_probability_noise_error_upper": "953/5000000",
+              "finite_duration_sequential_probability_error_upper": "3475199113/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "13391831849039/125000000000000",
+                "26797050642523/250000000000000"
+              ],
+              "noise_locations_through_readout": 1806,
+              "noisy_baseline_probability_interval": [
+                "2499047/5000000",
+                "2500953/5000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "491599383193507/1000000000000000",
+                "494038518508199/1000000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "5770881491801/1000000000000000",
+              "paired_response_noise_error_upper": "953/2500000",
+              "parent_sequential_comparison_error_upper": "48432115369/50000000000000",
+              "parent_split_response_abs_lower": "3562099499147/500000000000000",
+              "pulse_attenuation_difference_upper": "1566312907/1000000000000000",
+              "signal_sign": -1,
+              "step": 14,
+              "total_paired_response_error_upper": "1353317506493/1000000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "1639038997/200000000000"
+            },
+            {
+              "center_time_interval": [
+                "191662201643/200000000000",
+                "479159343391/500000000000"
+              ],
+              "each_probability_noise_error_upper": "407/2000000",
+              "finite_duration_sequential_probability_error_upper": "870560173/250000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "5739356506731/50000000000000",
+                "11484450275367/100000000000000"
+              ],
+              "noise_locations_through_readout": 1935,
+              "noisy_baseline_probability_interval": [
+                "999593/2000000",
+                "1000407/2000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "48953466528623/100000000000000",
+                "61490163116537/125000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "984399383463/125000000000000",
+              "paired_response_noise_error_upper": "407/1000000",
+              "parent_sequential_comparison_error_upper": "456409346289/500000000000000",
+              "parent_split_response_abs_lower": "4599248000487/500000000000000",
+              "pulse_attenuation_difference_upper": "485289027/250000000000000",
+              "signal_sign": -1,
+              "step": 15,
+              "total_paired_response_error_upper": "132330093327/100000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "20480391279/2000000000000"
+            },
+            {
+              "center_time_interval": [
+                "63887405571/62500000000",
+                "1022206518861/1000000000000"
+              ],
+              "each_probability_noise_error_upper": "541/2500000",
+              "finite_duration_sequential_probability_error_upper": "871797463/250000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "1913118835577/15625000000000",
+                "3828150091789/31250000000000"
+              ],
+              "noise_locations_through_readout": 2064,
+              "noisy_baseline_probability_interval": [
+                "1249459/2500000",
+                "1250541/2500000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "489288122971087/1000000000000000",
+                "245774127800889/500000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "4117672199111/500000000000000",
+              "paired_response_noise_error_upper": "541/1250000",
+              "parent_sequential_comparison_error_upper": "834181208061/1000000000000000",
+              "parent_split_response_abs_lower": "1901162559227/200000000000000",
+              "pulse_attenuation_difference_upper": "1185730263/500000000000000",
+              "signal_sign": -1,
+              "step": 16,
+              "total_paired_response_error_upper": "1270468397913/1000000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "5234533457/500000000000"
+            },
+            {
+              "center_time_interval": [
+                "271521498169/250000000000",
+                "1086094328321/1000000000000"
+              ],
+              "each_probability_noise_error_upper": "2293/10000000",
+              "finite_duration_sequential_probability_error_upper": "3487538231/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "32523020204809/250000000000000",
+                "65078551560413/500000000000000"
+              ],
+              "noise_locations_through_readout": 2193,
+              "noisy_baseline_probability_interval": [
+                "4997707/10000000",
+                "5002293/10000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "490945080159303/1000000000000000",
+                "493260174437741/1000000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "6510525562259/1000000000000000",
+              "paired_response_noise_error_upper": "2293/5000000",
+              "parent_sequential_comparison_error_upper": "431100003233/500000000000000",
+              "parent_split_response_abs_lower": "1958703276739/250000000000000",
+              "pulse_attenuation_difference_upper": "715262749/250000000000000",
+              "signal_sign": -1,
+              "step": 17,
+              "total_paired_response_error_upper": "1324287544697/1000000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "8799338829/1000000000000"
+            },
+            {
+              "center_time_interval": [
+                "1149973498149/1000000000000",
+                "143747766981/125000000000"
+              ],
+              "each_probability_noise_error_upper": "1211/5000000",
+              "finite_duration_sequential_probability_error_upper": "3481037351/1000000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "17218069520193/125000000000000",
+                "34453350826101/250000000000000"
+              ],
+              "noise_locations_through_readout": 2322,
+              "noisy_baseline_probability_interval": [
+                "2498789/5000000",
+                "2501211/5000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "247134230757099/500000000000000",
+                "248367449223429/500000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "1511450776571/500000000000000",
+              "paired_response_noise_error_upper": "1211/2500000",
+              "parent_sequential_comparison_error_upper": "951967738951/1000000000000000",
+              "parent_split_response_abs_lower": "1115687582361/250000000000000",
+              "pulse_attenuation_difference_upper": "3413752543/1000000000000000",
+              "signal_sign": -1,
+              "step": 18,
+              "total_paired_response_error_upper": "719924388151/500000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "10940732963/2000000000000"
+            },
+            {
+              "center_time_interval": [
+                "606930494447/500000000000",
+                "606934979051/500000000000"
+              ],
+              "each_probability_noise_error_upper": "2551/10000000",
+              "finite_duration_sequential_probability_error_upper": "693374711/200000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "36349257875963/250000000000000",
+                "72734851743991/500000000000000"
+              ],
+              "noise_locations_through_readout": 2451,
+              "noisy_baseline_probability_interval": [
+                "4997449/10000000",
+                "5002551/10000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "24931139616743/50000000000000",
+                "25061347036561/50000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "0",
+              "paired_response_noise_error_upper": "2551/5000000",
+              "parent_sequential_comparison_error_upper": "208582742817/200000000000000",
+              "parent_split_response_abs_lower": "3726992821/50000000000000",
+              "pulse_attenuation_difference_upper": "2016695119/500000000000000",
+              "signal_sign": -1,
+              "step": 19,
+              "total_paired_response_error_upper": "38914514691/25000000000000",
+              "uniformly_resolved": false,
+              "unmeasured_continuous_response_abs_upper": "2236670181/2000000000000"
+            },
+            {
+              "center_time_interval": [
+                "638874230763/500000000000",
+                "1277757798469/1000000000000"
+              ],
+              "each_probability_noise_error_upper": "67/250000",
+              "finite_duration_sequential_probability_error_upper": "872312861/250000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "1913118835577/12500000000000",
+                "3828150091789/25000000000000"
+              ],
+              "noise_locations_through_readout": 2580,
+              "noisy_baseline_probability_interval": [
+                "124933/250000",
+                "125067/250000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "251469536444233/500000000000000",
+                "50598491333811/100000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "1335536444233/500000000000000",
+              "paired_response_noise_error_upper": "67/125000",
+              "parent_sequential_comparison_error_upper": "608072729333/500000000000000",
+              "parent_split_response_abs_lower": "276669224911/62500000000000",
+              "pulse_attenuation_difference_upper": "472378907/100000000000000",
+              "signal_sign": 1,
+              "step": 20,
+              "total_paired_response_error_upper": "175563471011/100000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "5692161513/1000000000000"
+            },
+            {
+              "center_time_interval": [
+                "1341635903357/1000000000000",
+                "670822834819/500000000000"
+              ],
+              "each_probability_noise_error_upper": "2809/10000000",
+              "finite_duration_sequential_probability_error_upper": "1757583869/500000000000000",
+              "ideal_accumulated_field_work_interval": [
+                "40175495547117/250000000000000",
+                "80391151927569/500000000000000"
+              ],
+              "noise_locations_through_readout": 2709,
+              "noisy_baseline_probability_interval": [
+                "4997191/10000000",
+                "5002809/10000000"
+              ],
+              "noisy_intervention_probability_interval": [
+                "101295100456479/200000000000000",
+                "509950411298483/1000000000000000"
+              ],
+              "noisy_paired_response_abs_lower": "1238920456479/200000000000000",
+              "paired_response_noise_error_upper": "2809/5000000",
+              "parent_sequential_comparison_error_upper": "277590831449/200000000000000",
+              "parent_split_response_abs_lower": "4073935803689/500000000000000",
+              "pulse_attenuation_difference_upper": "5488774169/1000000000000000",
+              "signal_sign": 1,
+              "step": 21,
+              "total_paired_response_error_upper": "1953269324983/1000000000000000",
+              "uniformly_resolved": true,
+              "unmeasured_continuous_response_abs_upper": "19241041043/2000000000000"
+            }
+          ],
+          "continuous_field_evolution_during_supplied_pointer_pulse": true,
+          "finite_duration_and_declared_channel_noise_comparison": true,
+          "independent_verifier_result": {
+            "all_parent_resolved_steps_survive": true,
+            "final_record_availability_interval_at_delta_max": [
+              "1349935903357/1000000000000",
+              "674972834819/500000000000"
+            ],
+            "final_record_availability_interval_uniform_in_delta": [
+              "1345435903357/1000000000000",
+              "674972834819/500000000000"
+            ],
+            "forced_oscillator_identities_verified": true,
+            "mathematical_replay": true,
+            "minimum_episode_separation_lower": "5522263111/125000000000",
+            "minimum_resolved_response_lower": "182972089791/500000000000000",
+            "native_quantum_controls": false,
+            "parent_events_replayed": 5888,
+            "parent_resolved_steps": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              20,
+              21
+            ],
+            "physical_outcomes": false,
+            "prior_pairs": 210,
+            "readouts": 21,
+            "resolved_steps": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              20,
+              21
+            ],
+            "retained_operations": 2709,
+            "verified": true
+          },
+          "mathematical_replay": true,
+          "native_quantum_controls": false,
+          "noisy_energy_bound": false,
+          "observed_postdiction": false,
+          "original_equal_time_detector_region_preserved": false,
+          "parameters": {
+            "duration_max": "1/100",
+            "duration_min": "1/1000",
+            "half_diamond_error_max": "1/10000000",
+            "pointer_operation_duration": "1/10000",
+            "preparation_trace_distance_max": "1/100000"
+          },
+          "physical_clock_or_observed_outcomes": false,
+          "receipt": "code/source_scalar_finite_instrument/finite_instrument_receipt.json",
+          "receipt_pin": {
+            "bytes": 589511,
+            "sha256": "a9e922b62896419bb96ac24d9023c24f1c7f4f0cc40ca84c601ece12577a09ad"
+          },
+          "resource_contract": {
+            "field_vacuum_and_initial_state_preparation_time_excluded": true,
+            "historical_initial_coherent_factor_count_excluded": 16,
+            "maximum_receipt_bytes": 2000000,
+            "occupied_time_per_readout_at_delta_max": "197/10000",
+            "operations_per_readout": 129,
+            "pointer_sites": 32,
+            "preparation_operations_per_readout": 64,
+            "read_and_decode_operations_per_readout": 33,
+            "schedule_is_declared_quantum_control_not_sampled_execution": true,
+            "simultaneous_local_couplings_per_readout": 32,
+            "total_local_bit_slots": 672,
+            "total_operations": 2709,
+            "total_parity_slots": 21
+          },
+          "scope_boundary": "A supplied finite rectangular field-pointer Hamiltonian has an exact forced-oscillator reduction on the ideal GHZ code, with a sinc-averaged smear. Complete repeated backaction, control windows and paired baseline/intervention channel errors preserve fifteen responses. Initial quantum states, control laws, entangling links, Born readout, precision and conditional reference-center times remain supplied. The scalar phase is code-restricted; generic noise need not preserve energy or first moments. Effective smear can spread beyond the local coupling region. No sampled outcomes, native quantum implementation, physical clock, noisy branch-clock reconstruction or physical time-slice attachment is established."
         },
         "finite_scalar_quantum_probability_control": {
           "analytic_proof": "paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex",
@@ -3817,7 +4576,7 @@
           "tent_integrand_lipschitz_coefficient": "K",
           "volume_convention": "dt d^3x restricted to [0,T) x [0,L)^3"
         },
-        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations. A separate protected-address experiment exactly distinguishes immutable records from moving live readbacks under pair means. Formal integrated cell estimates derive quadrature convergence from vanishing assignment distances. Fibonacci arithmetic constructs the actual golden permutation partition, its exact cell masses and fixed-globally-Lipschitz integral convergence in Lean. Actual spatial and declared-time-grid counts also converge on fixed measurable sets with null frontier; the inclusive final-layer error is at most L^3*Delta_q. On the same prepared golden coordinates, a different local massive Dirichlet scalar action has an analytic free-field detector limit and a finite full-Fock compact detector response whose exact certified error is smaller than its signal. For that action, stable local time refinement converges to the same detector limit; nearest-update readout preserves a resolved finite comparison, and the preparation-induced response vanishes asymptotically before continuum arrival. In a separate 64-site execution, graph-recovered configurations determine positive durations for a supplied action family; conditional timing intervals retain 15 of 21 resolved fixed-state quantum predictions. A sharp kernel criterion also identifies the minimum exterior linear readouts needed to reconstruct the original regional canonical algebra from two field layers; eight exact regional controls retain every exterior coupling. Separate canonical-mean path calibrations reconstruct remote initial data from destination samples alone, with all 1449 events and their precision costs retained. Their all-depth infinity-norm condition number obeys the exact recurrence g_0=1, g_1=3, g_d=2*g_(d-1)+g_(d-2); a separate sufficient bound propagates supplied gate, retained-sample and decoding errors. With supplied local copy/reset and factor-two readback, reusable version transport instead has unit per-hop signal gain and a sharp linear additive error bound; 4928 events retain exact semantic order and old-version reads. A separate centered quantum instrument includes all earlier-readout backaction in 21 unconditional marginals and retains 15 resolved comparisons against continuous evolution under that same repeated instrument. These results do not identify a physical clock or select native field dynamics",
+        "statement": "Authenticated read-after-write provenance generates a finite locally finite partial order, and canonical source height obeys the exact longest-parent-path recursion. Independently of that order, an independent real axis and the proved rank-three source Gram quotient define an exact four-dimensional carrier with signature (+---); every source-unit spatial direction gives a future-null vector. A supplied positive time scale and spatial readback use source height only in the event placement. With the parent-edge speed bound, generated precedence maps into the carrier future cone. A separately certified faithful placement upgrades this to two-way order--cone equivalence and constructs the finite source-order/frame packet. The explicit four-event Boolean diamond is a non-chain control whose generated order agrees exactly with its carrier cone order. A separate supplied growing-menu lattice has exact finite inner/outer cone bounds and an analytic controlled cone and interval-volume limit; its local read/write control has 81 events, 794 authenticated edges and width 27. A separate conditional construction selects finite populations from the dense source metric and gives a positive scalar action with an analytic continuum field and detector error bound; physical selection of the coarsening and action is not derived. A declared local-read law on golden-orbit conservative source records has Lean-constructed finite cone bounds and analytic raw-count four-volume and contained-interval ordering-fraction limits, the latter equal to 1/10. Independent exact finite executions use 27, 125, 512 and 2197 sites with equal widths; the sharper q=13 fill gives inner speed at least 75989/250000. On this declared family, fourth roots of authenticated interval-count ratios recover geometric proper-time ratios, uniquely up to units among positive volume-only inertially additive readouts. Exact q=5 replay checks the decoder. A separate analytic finite-rotation/one-boost criterion selects the Lorentz cone under operational covariance. The same declared scalar action has controlled spacetime-smeared boost comparisons for two reference-supplied preparations. A separate protected-address experiment exactly distinguishes immutable records from moving live readbacks under pair means. Formal integrated cell estimates derive quadrature convergence from vanishing assignment distances. Fibonacci arithmetic constructs the actual golden permutation partition, its exact cell masses and fixed-globally-Lipschitz integral convergence in Lean. Actual spatial and declared-time-grid counts also converge on fixed measurable sets with null frontier; the inclusive final-layer error is at most L^3*Delta_q. On the same prepared golden coordinates, a different local massive Dirichlet scalar action has an analytic free-field detector limit and a finite full-Fock compact detector response whose exact certified error is smaller than its signal. For that action, stable local time refinement converges to the same detector limit; nearest-update readout preserves a resolved finite comparison, and the preparation-induced response vanishes asymptotically before continuum arrival. In a separate 64-site execution, graph-recovered configurations determine positive durations for a supplied action family; conditional timing intervals retain 15 of 21 resolved fixed-state quantum predictions. A sharp kernel criterion also identifies the minimum exterior linear readouts needed to reconstruct the original regional canonical algebra from two field layers; eight exact regional controls retain every exterior coupling. Separate canonical-mean path calibrations reconstruct remote initial data from destination samples alone, with all 1449 events and their precision costs retained. Their all-depth infinity-norm condition number obeys the exact recurrence g_0=1, g_1=3, g_d=2*g_(d-1)+g_(d-2); a separate sufficient bound propagates supplied gate, retained-sample and decoding errors. With supplied local copy/reset and factor-two readback, reusable version transport instead has unit per-hop signal gain and a sharp linear additive error bound; 4928 events retain exact semantic order and old-version reads. A separate centered quantum instrument includes all earlier-readout backaction in 21 unconditional marginals and retains 15 resolved comparisons against continuous evolution under that same repeated instrument. An exact finite rectangular pointer pulse keeps field evolution active; bounded pulse duration and declared channel noise retain all fifteen responses when both baseline and intervention errors and all control windows are counted. These results do not identify a physical clock or select native field dynamics",
         "supplied_law_refinement_control": {
           "analytic_controlled_causal_limit": true,
           "analytic_interval_volume_limit": true,
@@ -4598,7 +5357,114 @@
         "statement": "The committed oriented twenty-face incidence has rank 19 and kernel exactly the port gradients. Its local seam Hessian has five nonzero entries per row; gauge invariance and stationary solvability are equivalent to conserved seam current. A separate scalar action has the neutral Green potential as its minimum modulo constants, and the direct-product theorem retains port load and seam current as distinct types"
       },
       {
-        "hypothesis_boundary": "the full step alignment is declared and the pair marginals do not select it uniquely. The positive trace-preserving marginals are not promoted to CPTP, algebra, regional-net, tower, Cauchy, or physical-time morphisms",
+        "artifact_refs": [
+          "code/source_operator_join/operator_join_packet.json",
+          "code/source_operator_join/verify.py"
+        ],
+        "full_operator_join_control": {
+          "carrier": {
+            "common_complex_vector_dimension": 169,
+            "common_full_matrix_dimension": 13,
+            "joint_complex_vector_dimension": 5597956,
+            "observers": [
+              86,
+              88,
+              247
+            ],
+            "pair_dimensions": [
+              182,
+              169
+            ],
+            "slot_dimensions": [
+              13,
+              14,
+              13
+            ],
+            "triple_dimension": 2366
+          },
+          "coherent_operator_lifts_and_path_permutations_supplied": true,
+          "counted_state_identified_with_uniform_tower_state": false,
+          "counted_state_invariant_under_transport": false,
+          "finite_source_and_permutation_replay": true,
+          "full_hinge_and_joint_generation_are_Lean_theorems": true,
+          "independent_verifier_result": {
+            "actual_transitions": 31,
+            "chronological_intervals": 496,
+            "lean_kernel_replay_performed": false,
+            "observed_quantum_outcomes": false,
+            "physical_adequacy": false,
+            "source_rows": 32,
+            "sparse_matrix_unit_witnesses": 18,
+            "transition_carrier_points": 73346,
+            "universal_operator_theorems_verified_by_python": false,
+            "verdict": "verified_source_operator_join_packet"
+          },
+          "lean_declarations": {
+            "TripleCarrierOperatorJoin": [
+              "operatorJoin88_injective",
+              "operatorJoin247_injective",
+              "operatorJoin86_injective",
+              "operatorJoin_hinge",
+              "operatorJoin_intersection",
+              "operatorJoin_generate_top",
+              "operatorJoin_spectator_locality",
+              "operatorJoin_hinge_noncommuting",
+              "operatorJoin88_retraction",
+              "operatorJoin247_retraction",
+              "operatorJoin88_counted_readout",
+              "operatorJoin247_counted_readout",
+              "operatorJoin88_evolve",
+              "operatorJoin247_evolve",
+              "operatorJoinSource88_generates",
+              "operatorJoinSource247_generates",
+              "operatorJoinAdmitted_generates",
+              "operatorJoinAdmitted_evolved"
+            ]
+          },
+          "lean_receipts": [
+            "Lean/QFT/TripleCarrierOperatorJoin.lean"
+          ],
+          "lean_source_evidence": {
+            "bytes": 13869,
+            "kernel_replay_performed_by_ledger": false,
+            "sha256": "6325cd23dff82fe5ab8e37aa0d17df828a643f5c9aa1939fd8d3834bee4457fd",
+            "source": "Lean/QFT/TripleCarrierOperatorJoin.lean",
+            "universal_proof_requires_separate_Lean_check": true
+          },
+          "nonstationary_state_witness": {
+            "after_count": 1,
+            "before_count": 0,
+            "denominator": 32,
+            "transition": 0,
+            "triple_label": [
+              1,
+              4,
+              6
+            ]
+          },
+          "observable_inclusions_are_unital_star_homomorphisms": true,
+          "observable_retractions_use_normalized_partial_trace": true,
+          "observed_postdiction": false,
+          "partial_trace_is_multiplicative": false,
+          "physical_time_slice_or_clock": false,
+          "python_sparse_witnesses_prove_universal_generation": false,
+          "receipt": "code/source_operator_join/operator_join_packet.json",
+          "receipt_pin": {
+            "bytes": 26115,
+            "sha256": "6d45bf9db9d665963cfd03cf1565a0f2e8e7e4c9913eac9e686198dd201f8b8a"
+          },
+          "same_carrier_as_scalar64_instrument": false,
+          "scope_boundary": "The admitted complex operator lifts of counted transitions and field projectors generate the two pair algebras. Their identity-spectator inclusions have a full M13 intersection and generate M2366; these universal statements are proved in the pinned Lean module, not by the eighteen Python matrix-unit controls. Python independently replays all source rows, nonwrapping permutations and finite interval compositions. The shared hinge is noncommutative; only the exclusive spectator factors commute. The empirical state restricts to the counted pair states, differs from the supplied uniform tower states, and is not invariant under the row-dependent transports. Tensor assembly, coherent operator admission and path-read permutation gates remain supplied postprocessing. No tower/refinement morphism, physical region or clock, quantum outcome, physical time-slice or common scalar-instrument realization follows.",
+          "source_parent_pins": {
+            "Lean/QFT/SourceOperatorGeneration.lean": "362d345e9f45ce4f3c40d8b15f4d764e72973fed2e074093ba7515a8eb36512e",
+            "Lean/QFT/TowerAnchoredCorrelation.lean": "cfa4b599dbbba9c2bf380231a872ff9acc0618f0333a2e3a87a0b5893c99663b",
+            "Lean/QFT/TripleCarrierJoin.lean": "4c5000fc76a4e8a45cb05fc39a7f42ec2692ea8e306a25852f15d52832b64e5f"
+          },
+          "source_selected_quantum_controls": false,
+          "state_marginals_use_unnormalized_partial_trace": true,
+          "tower_or_refinement_morphism": false
+        },
+        "hypothesis_boundary": "The full step alignment, tensor slots and coherent operator lifts are declared, and pair marginals do not select the triple coupling uniquely. Observable inclusions are unital star homomorphisms; the opposite-direction partial traces are not multiplicative. The empirical state is not identified with uniform tower states or assumed transport invariant. Universal operator results belong to the Lean proof; finite Python controls are not its substitute. No source-selected quantum gate, regional-net/tower/refinement morphism, physical region, Cauchy/time-slice interpretation, physical clock or scalar64 instrument identification follows",
         "id": "triple_observer_carrier_coupling",
         "lean_declarations": {
           "TripleCarrierJoin": [
@@ -4610,15 +5476,36 @@
             "tripleCheckpoint_recovers_anchored_247",
             "tripleMarginals_not_jointly_injective",
             "tripleCarrier_join_receipt"
+          ],
+          "TripleCarrierOperatorJoin": [
+            "operatorJoin88_injective",
+            "operatorJoin247_injective",
+            "operatorJoin86_injective",
+            "operatorJoin_hinge",
+            "operatorJoin_intersection",
+            "operatorJoin_generate_top",
+            "operatorJoin_spectator_locality",
+            "operatorJoin_hinge_noncommuting",
+            "operatorJoin88_retraction",
+            "operatorJoin247_retraction",
+            "operatorJoin88_counted_readout",
+            "operatorJoin247_counted_readout",
+            "operatorJoin88_evolve",
+            "operatorJoin247_evolve",
+            "operatorJoinSource88_generates",
+            "operatorJoinSource247_generates",
+            "operatorJoinAdmitted_generates",
+            "operatorJoinAdmitted_evolved"
           ]
         },
         "lean_receipts": [
-          "Lean/QFT/TripleCarrierJoin.lean"
+          "Lean/QFT/TripleCarrierJoin.lean",
+          "Lean/QFT/TripleCarrierOperatorJoin.lean"
         ],
-        "match": "exact conditional state/path/checkpoint coupling",
+        "match": "exact conditional state/path/checkpoint coupling and finite operator join",
         "observed_counterpart": "common coupling of the two committed correlation packets",
-        "paper_ref": "Consensus paper, triple-carrier coupling",
-        "statement": "One explicit (86,88,247) carrier recovers both committed 32-row paths and counted pair states, both checkpoint partitions, and both marginal evolutions over exactly the 31 adjacent source transitions"
+        "paper_ref": "Consensus paper, triple-carrier coupling; observers paper, finite operator join",
+        "statement": "One explicit (86,88,247) carrier recovers both committed 32-row paths and counted pair states, both checkpoint partitions, and both marginal evolutions over exactly the 31 adjacent source transitions. The pair operator inclusions have full M13 intersection, generate M2366, and intertwine those transitions; admitted operator lifts of source generators retain full generation under the declared transport"
       },
       {
         "hypothesis_boundary": "strict carrier growth is one sufficient refinement route; the ambient regulator, energy, inverse temperature, repair, source production, and physical continuum meaning remain declared rather than derived",

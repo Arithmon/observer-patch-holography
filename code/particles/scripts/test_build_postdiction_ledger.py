@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from fractions import Fraction
 import hashlib
 import json
 from pathlib import Path
@@ -2312,6 +2313,196 @@ def test_sequential_instrument_control_reads_current_public_verifier_bytes(monke
     monkeypatch.setattr(Path, 'read_bytes', altered)
     with pytest.raises(SystemExit, match='fresh public instrument verifier sentinel'):
         ledger._source_scalar_sequential_instrument_control()
+
+
+def test_finite_instrument_control_retains_noise_baseline_and_physical_boundary():
+    control = ledger._source_scalar_finite_instrument_control()
+    proof = control['independent_verifier_result']
+    assert proof['forced_oscillator_identities_verified'] is True
+    assert proof['parent_events_replayed'] == 5888
+    assert proof['readouts'] == 21 and proof['prior_pairs'] == 210
+    assert proof['retained_operations'] == 2709 and len(proof['resolved_steps']) == 15
+    row = control['comparison_rows'][15]
+    assert Fraction(row['paired_response_noise_error_upper']) == 2*Fraction(row['each_probability_noise_error_upper'])
+    assert Fraction(row['noisy_paired_response_abs_lower']) > Fraction('0.0082353')
+    assert Fraction(row['noisy_baseline_probability_interval'][0]) < Fraction(1, 2)
+    for key in ('physical_clock_or_observed_outcomes', 'native_quantum_controls',
+                'noisy_energy_bound', 'branch_conditioned_clock',
+                'original_equal_time_detector_region_preserved', 'observed_postdiction'):
+        assert control[key] is False
+
+
+@pytest.mark.parametrize('mutation', ['baseline', 'noise', 'schedule', 'energy'])
+def test_finite_instrument_control_rejects_false_precision_or_scope(tmp_path, mutation):
+    packet = json.loads((ledger.CODE/'source_scalar_finite_instrument/finite_instrument_receipt.json').read_bytes())
+    if mutation == 'baseline':
+        packet['rows'][15]['noisy_baseline_probability_interval'] = ['1/2', '1/2']
+    elif mutation == 'noise':
+        packet['rows'][15]['paired_response_noise_error_upper'] = '0'
+    elif mutation == 'schedule':
+        packet['schedule'][0]['operations'].pop()
+    else:
+        packet['scope']['noise_or_total_hardware_energy_bound'] = True
+    path = tmp_path/'finite-instrument.json'
+    path.write_text(json.dumps(packet), encoding='utf-8')
+    with pytest.raises(SystemExit, match='structural certificate rejected'):
+        ledger._source_scalar_finite_instrument_control(path)
+
+
+@pytest.mark.parametrize('missing', ['mathematical_replay', 'forced_oscillator_identities_verified'])
+def test_finite_instrument_control_requires_operator_and_parent_proof(monkeypatch, missing):
+    packet = json.loads((ledger.CODE/'source_scalar_finite_instrument/finite_instrument_receipt.json').read_bytes())
+    summary = {'verified': True, **packet['summary'], 'mathematical_replay': True,
+               'parent_events_replayed': 5888, 'physical_outcomes': False,
+               'native_quantum_controls': False, 'forced_oscillator_identities_verified': True}
+    summary[missing] = False
+    monkeypatch.setattr(ledger, '_structural_packet', lambda *a, **k: (packet, summary, {}))
+    with pytest.raises(SystemExit, match='forced-oscillator proof and full fresh parent replay'):
+        ledger._source_scalar_finite_instrument_control()
+
+
+def test_source_operator_join_control_separates_replay_and_universal_proof():
+    row = ledger._triple_observer_carrier_row()
+    assert row['id'] == 'triple_observer_carrier_coupling'
+    control = row['full_operator_join_control']
+    proof = control['independent_verifier_result']
+    assert proof['transition_carrier_points'] == 73346
+    assert proof['chronological_intervals'] == 496
+    assert proof['actual_transitions'] == 31
+    assert proof['sparse_matrix_unit_witnesses'] == 18
+    assert proof['lean_kernel_replay_performed'] is False
+    assert proof['universal_operator_theorems_verified_by_python'] is False
+    source = control['lean_source_evidence']
+    assert source['kernel_replay_performed_by_ledger'] is False
+    assert source['universal_proof_requires_separate_Lean_check'] is True
+    assert source['sha256'] == hashlib.sha256((ledger.REPO/source['source']).read_bytes()).hexdigest()
+    declarations = row['lean_declarations']['TripleCarrierOperatorJoin']
+    for name in ('operatorJoin_intersection', 'operatorJoin_generate_top',
+                 'operatorJoin88_counted_readout', 'operatorJoin247_counted_readout',
+                 'operatorJoin88_evolve', 'operatorJoin247_evolve',
+                 'operatorJoinAdmitted_generates', 'operatorJoinAdmitted_evolved'):
+        assert name in declarations
+    assert 'tripleCarrier_join_receipt' in row['lean_declarations']['TripleCarrierJoin']
+    assert control['carrier']['common_complex_vector_dimension'] == 169
+    assert control['carrier']['triple_dimension'] == 2366
+    assert control['nonstationary_state_witness'] == {
+        'transition': 0, 'triple_label': [1, 4, 6], 'denominator': 32,
+        'before_count': 0, 'after_count': 1}
+    for key in ('python_sparse_witnesses_prove_universal_generation',
+                'partial_trace_is_multiplicative',
+                'counted_state_identified_with_uniform_tower_state',
+                'counted_state_invariant_under_transport', 'source_selected_quantum_controls',
+                'tower_or_refinement_morphism', 'physical_time_slice_or_clock',
+                'same_carrier_as_scalar64_instrument', 'observed_postdiction'):
+        assert control[key] is False
+
+
+@pytest.mark.parametrize('mutation', ['transition', 'wraparound', 'hinge', 'uniform_state',
+                                    'singleton', 'physical_clock', 'scalar_carrier', 'parent'])
+def test_source_operator_join_control_rejects_forged_packet(tmp_path, mutation):
+    packet = json.loads((ledger.CODE/'source_operator_join/operator_join_packet.json').read_bytes())
+    if mutation == 'transition':
+        packet['transitions'][0]['permutations'][0] = list(range(13))
+    elif mutation == 'wraparound':
+        packet['transitions'].append({'row': 31, 'next_row': 0, 'permutations': []})
+    elif mutation == 'hinge':
+        packet['carrier']['common_complex_vector_dimension'] = 13
+    elif mutation == 'uniform_state':
+        packet['interpretation']['tower_state'] = 'same_as_empirical'
+    elif mutation == 'singleton':
+        packet['interpretation']['admitted_generation'] = 'singleton_path_projector'
+    elif mutation == 'physical_clock':
+        packet['interpretation']['physical_clock'] = True
+    elif mutation == 'scalar_carrier':
+        packet['interpretation']['scalar64_instrument_same_carrier'] = True
+    else:
+        first = next(iter(packet['parents']))
+        packet['parents'][first] = '0'*64
+    path = tmp_path/'operator-join.json'
+    path.write_text(json.dumps(packet), encoding='utf-8')
+    with pytest.raises(SystemExit, match='structural certificate rejected'):
+        ledger._source_operator_join_control(path)
+
+
+@pytest.mark.parametrize(('key', 'value'), [
+    ('transition_carrier_points', 73345), ('chronological_intervals', 495),
+    ('actual_transitions', 32), ('lean_kernel_replay_performed', True),
+    ('universal_operator_theorems_verified_by_python', True),
+    ('physical_adequacy', True), ('observed_quantum_outcomes', True),
+    ('physical_adequacy', 0),
+])
+def test_source_operator_join_control_rejects_incomplete_or_promoted_summary(monkeypatch, key, value):
+    summary = {
+        'verdict': 'verified_source_operator_join_packet', 'source_rows': 32,
+        'actual_transitions': 31, 'transition_carrier_points': 73346,
+        'chronological_intervals': 496, 'sparse_matrix_unit_witnesses': 18,
+        'lean_kernel_replay_performed': False,
+        'universal_operator_theorems_verified_by_python': False,
+        'physical_adequacy': False, 'observed_quantum_outcomes': False,
+    }
+    summary[key] = value
+    monkeypatch.setattr(ledger, '_structural_packet', lambda *a, **k: ({}, summary, {}))
+    with pytest.raises(SystemExit, match='Python/Lean proof boundary'):
+        ledger._source_operator_join_control()
+
+
+def test_source_operator_join_control_reads_current_verifier(monkeypatch):
+    original = Path.read_bytes
+    target = ledger.CODE/'source_operator_join/verify.py'
+    def altered(path):
+        data = original(path)
+        if path == target:
+            data += b'\ndef verify(packet):\n    raise ValueError("fresh operator join verifier sentinel")\n'
+        return data
+    monkeypatch.setattr(Path, 'read_bytes', altered)
+    with pytest.raises(SystemExit, match='fresh operator join verifier sentinel'):
+        ledger._source_operator_join_control()
+
+
+def test_source_operator_join_control_rejects_changed_lean_with_retained_names(monkeypatch):
+    original = Path.read_bytes
+    target = ledger.LEAN_RECEIPTS['TripleCarrierOperatorJoin']
+    def altered(path):
+        data = original(path)
+        if path == target:
+            data += b'\ntheorem counterfeit_join : False := by sorry\n'
+        return data
+    monkeypatch.setattr(Path, 'read_bytes', altered)
+    with pytest.raises(SystemExit, match='audited Lean source changed'):
+        ledger._source_operator_join_control()
+
+
+def test_source_operator_join_control_requires_all_universal_declarations(monkeypatch):
+    original = Path.read_text
+    target = ledger.LEAN_RECEIPTS['TripleCarrierOperatorJoin']
+    def altered(path, *args, **kwargs):
+        text = original(path, *args, **kwargs)
+        if path == target:
+            text = text.replace('theorem operatorJoin_intersection :',
+                                'theorem omitted_operatorJoin_intersection :')
+        return text
+    monkeypatch.setattr(Path, 'read_text', altered)
+    with pytest.raises(SystemExit, match='Lean declaration missing'):
+        ledger._source_operator_join_control()
+
+
+def test_source_operator_join_control_rechecks_lean_after_python_replay(monkeypatch):
+    original_read = Path.read_bytes
+    original_replay = ledger._structural_packet
+    target = ledger.LEAN_RECEIPTS['TripleCarrierOperatorJoin']
+    finished = False
+    def altered(path):
+        data = original_read(path)
+        return data+b'\n' if finished and path == target else data
+    def replay(*args, **kwargs):
+        nonlocal finished
+        result = original_replay(*args, **kwargs)
+        finished = True
+        return result
+    monkeypatch.setattr(Path, 'read_bytes', altered)
+    monkeypatch.setattr(ledger, '_structural_packet', replay)
+    with pytest.raises(SystemExit, match='Lean source changed during replay'):
+        ledger._source_operator_join_control()
 
 
 def test_fermion_controls_keep_mean_and_abelian_quantum_constraints_distinct():
