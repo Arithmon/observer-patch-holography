@@ -6,6 +6,7 @@ from __future__ import annotations
 import copy
 import json
 from pathlib import Path
+import shutil
 import sys
 import tempfile
 import unittest
@@ -36,13 +37,28 @@ class SourceCurrentOrderSensitiveInventoryTests(unittest.TestCase):
         self.addCleanup(Path(temporary.name).unlink, missing_ok=True)
         return Path(temporary.name)
 
+    def copy_required_repository_tree(self, destination: Path) -> None:
+        for relative in producer.AUDITED_DIRECTORIES:
+            shutil.copytree(REPO_ROOT / relative, destination / relative)
+        required_files = {
+            row["path"]
+            for key in ("source_pins", "implementation_pins")
+            for row in self.committed[key]
+        }
+        for relative in sorted(required_files):
+            target = destination / relative
+            if target.exists():
+                continue
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(REPO_ROOT / relative, target)
+
     def test_committed_inventory_replays_and_verifies_independently(self) -> None:
         rebuilt = producer.build_inventory()
         self.assertEqual(rebuilt, self.committed)
         producer.verify_inventory(self.committed)
         report = independent.verify(producer.INVENTORY_PATH, REPO_ROOT)
         self.assertEqual(report["verdict"], producer.VERDICT)
-        self.assertEqual(report["candidate_count"], 21)
+        self.assertEqual(report["candidate_count"], 23)
         self.assertEqual(report["qualifying_candidate_count"], 0)
         self.assertEqual(report["response_algebra_dimension"], 4)
         self.assertEqual(report["proper_recharting_count"], 60)
@@ -89,6 +105,32 @@ class SourceCurrentOrderSensitiveInventoryTests(unittest.TestCase):
         self.assertFalse(fixture["properties"]["source_native"])
         self.assertFalse(fixture["properties"]["target_free"])
 
+        memory = rows["lean_pair_mean_memory_and_reusable_bus"]
+        self.assertEqual(memory["classification"], "IRREVERSIBLE_ONLY")
+        self.assertTrue(memory["properties"]["source_native"])
+        self.assertFalse(memory["properties"]["reversible"])
+        self.assertFalse(memory["properties"]["same_twelve_port_carrier"])
+
+        selected = rows["lean_selected_pair_mean_histories"]
+        self.assertEqual(selected["classification"], "IRREVERSIBLE_ONLY")
+        self.assertFalse(selected["properties"]["raw_histories_serialized"])
+        self.assertFalse(selected["properties"]["both_composition_orders_recorded"])
+
+    def test_integrated_tree_review_is_explicit_and_complete(self) -> None:
+        review = self.committed["integrated_tree_review"]
+        self.assertEqual(review["surface_count"], 40)
+        paths = [row["path"] for row in review["surfaces"]]
+        self.assertEqual(paths, sorted(set(paths)))
+        decisions = {row["decision"] for row in review["surfaces"]}
+        self.assertEqual(
+            decisions,
+            {"NEW_CANDIDATE", "OUTSIDE_REVIEWED_SOURCE_SCOPE"},
+        )
+        self.assertEqual(
+            review["through_upstream_main_sha"],
+            "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9",
+        )
+
     def test_minimal_missing_fields_are_explicit(self) -> None:
         self.assertEqual(
             [row["field"] for row in self.committed["minimal_missing_fields"]],
@@ -108,33 +150,69 @@ class SourceCurrentOrderSensitiveInventoryTests(unittest.TestCase):
     def test_audited_file_snapshot_is_canonical_and_current(self) -> None:
         snapshot = self.committed["audited_file_snapshot"]
         self.assertEqual(snapshot["directories"], list(producer.AUDITED_DIRECTORIES))
-        self.assertEqual(snapshot["paths"], sorted(set(snapshot["paths"])))
-        self.assertEqual(snapshot["path_count"], len(snapshot["paths"]))
+        paths = [row["path"] for row in snapshot["files"]]
+        self.assertEqual(paths, sorted(set(paths)))
+        self.assertEqual(snapshot["file_count"], len(snapshot["files"]))
         self.assertEqual(
-            snapshot["paths_sha256"],
-            producer.canonical_sha256(snapshot["paths"]),
+            snapshot["files_sha256"],
+            producer.canonical_sha256(snapshot["files"]),
         )
-        self.assertEqual(snapshot["paths"], producer.audited_file_paths())
+        self.assertEqual(snapshot["files"], producer.audited_file_records())
+        self.assertEqual(
+            snapshot["exclusion_policy"]["exact_paths"],
+            list(producer.CONTENT_SNAPSHOT_EXACT_EXCLUSIONS),
+        )
 
     def test_new_file_below_audited_directory_makes_inventory_stale(self) -> None:
-        temporary = tempfile.NamedTemporaryFile(
-            mode="w",
-            prefix="source_current_inventory_staleness_",
-            suffix=".json",
-            dir=REPO_ROOT / "code/source_feedback_transport",
-            encoding="utf-8",
-            delete=False,
-        )
-        with temporary:
-            temporary.write("{}\n")
-        path = Path(temporary.name)
-        self.addCleanup(path.unlink, missing_ok=True)
-        with self.assertRaisesRegex(producer.InventoryError, "INVENTORY_REPLAY"):
-            producer.verify_inventory(self.committed)
-        with self.assertRaisesRegex(
-            independent.VerificationError, "audited file snapshot drift"
-        ):
-            independent.verify(producer.INVENTORY_PATH, REPO_ROOT)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.copy_required_repository_tree(root)
+            added = root / "code/source_feedback_transport/unreviewed_candidate.json"
+            added.write_text("{}\n", encoding="utf-8")
+            with self.assertRaisesRegex(
+                independent.VerificationError, "AUDITED_PATH_DRIFT"
+            ):
+                independent.verify(producer.INVENTORY_PATH, root)
+
+    def test_removed_file_below_audited_directory_makes_inventory_stale(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.copy_required_repository_tree(root)
+            (root / "Lean/Dynamics/CenterSpectral.lean").unlink()
+            with self.assertRaisesRegex(
+                independent.VerificationError, "AUDITED_PATH_DRIFT"
+            ):
+                independent.verify(producer.INVENTORY_PATH, root)
+
+    def test_existing_audited_file_content_drift_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.copy_required_repository_tree(root)
+            unchanged = independent.verify(producer.INVENTORY_PATH, root)
+            self.assertEqual(unchanged["verdict"], producer.VERDICT)
+            target = root / "Lean/Dynamics/CenterSpectral.lean"
+            original = target.read_bytes()
+            changed = original.replace(b"theorem", b"Theorem", 1)
+            self.assertEqual(len(changed), len(original))
+            self.assertNotEqual(changed, original)
+            target.write_bytes(changed)
+            with self.assertRaisesRegex(
+                independent.VerificationError, "AUDITED_CONTENT_DRIFT"
+            ) as raised:
+                independent.verify(producer.INVENTORY_PATH, root)
+            self.assertEqual(raised.exception.code, "AUDITED_CONTENT_DRIFT")
+
+    def test_existing_audited_file_byte_count_drift_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.copy_required_repository_tree(root)
+            target = root / "Lean/Dynamics/CenterSpectral.lean"
+            target.write_bytes(target.read_bytes() + b"\n")
+            with self.assertRaisesRegex(
+                independent.VerificationError, "AUDITED_CONTENT_DRIFT"
+            ) as raised:
+                independent.verify(producer.INVENTORY_PATH, root)
+            self.assertEqual(raised.exception.code, "AUDITED_CONTENT_DRIFT")
 
     def test_rehashed_false_qualification_is_rejected(self) -> None:
         mutant = copy.deepcopy(self.committed)

@@ -45,449 +45,2374 @@
       "Lean/InformationProjection",
       "Lean/Variational"
     ],
-    "excluded_runtime_artifacts": [
-      "**/__pycache__/**",
-      "**/*.pyc"
+    "exclusion_policy": {
+      "directory_names": [
+        "__pycache__"
+      ],
+      "exact_paths": [
+        "code/a5_closure/manifests/source_current_order_sensitive_inventory.json"
+      ],
+      "reasons": {
+        "directory_names": "repository cache directories cannot supply reviewed scientific source",
+        "exact_paths": "the generated inventory would otherwise contain its own byte digest",
+        "suffixes": "interpreter cache and build outputs cannot supply reviewed scientific source"
+      },
+      "suffixes": [
+        ".pyc"
+      ]
+    },
+    "file_count": 469,
+    "files": [
+      {
+        "byte_count": 40994,
+        "path": "Lean/Dynamics/CenterSpectral.lean",
+        "sha256": "sha256:7f1a2e57b7dc340b389c0b3dccd7e8c2af819aa1c90c29e08566b591efc3fd31"
+      },
+      {
+        "byte_count": 31201,
+        "path": "Lean/Dynamics/CentralBlocks.lean",
+        "sha256": "sha256:f623766e4a1265edae5b04d819153a4df93dd0e8e860b6f5080f6181010be525"
+      },
+      {
+        "byte_count": 21850,
+        "path": "Lean/Dynamics/ChoiCPTP.lean",
+        "sha256": "sha256:e714886b2394cadc8587a0450b0bc5e2c12448260627cfdb0623e5a3a48489a5"
+      },
+      {
+        "byte_count": 6773,
+        "path": "Lean/Dynamics/ConditionalExpectationGenerator.lean",
+        "sha256": "sha256:2e6e7c5877cc6faedbc4f16fc81c4b8dca649273e6b511c7c08ca59dcf5de477"
+      },
+      {
+        "byte_count": 5463,
+        "path": "Lean/Dynamics/PrivateInner.lean",
+        "sha256": "sha256:05d3ef9300bb4e34ca25031d6c3bfb47b2dcbb065930354eb5a080e96f7f036f"
+      },
+      {
+        "byte_count": 8334,
+        "path": "Lean/Dynamics/ProtectedCharge.lean",
+        "sha256": "sha256:a659a021d3893ee9676f194db0aedb43116318e0b602c62858b9c015e6a50329"
+      },
+      {
+        "byte_count": 10648,
+        "path": "Lean/Dynamics/PublicAutomorphism.lean",
+        "sha256": "sha256:dc566b536cbf42aaf607e032144b7795270ba97ffeaae339165418079f659ede"
+      },
+      {
+        "byte_count": 11314,
+        "path": "Lean/Dynamics/PublicMarkov.lean",
+        "sha256": "sha256:b8b43a4041fcd76eafc64abf39e3c3a5caf1af5da03f260d9572d9cd3da0b8b1"
+      },
+      {
+        "byte_count": 94780,
+        "path": "Lean/Dynamics/StarWedderburn.lean",
+        "sha256": "sha256:103eec6893caf696b4bf0f542543da597397783fe3b56ea6ff0ffa5d857b1be6"
+      },
+      {
+        "byte_count": 36803,
+        "path": "Lean/Dynamics/StoneConverse.lean",
+        "sha256": "sha256:12894f7096df29168643cc6afb87aaafc1f2ccdee968e9de5738f09ab2305849"
+      },
+      {
+        "byte_count": 7760,
+        "path": "Lean/Dynamics/WardLimitManifest.lean",
+        "sha256": "sha256:6bae06ce219aa104014a3094298c3f376586cc54d03223b534b94a95565a6b0d"
+      },
+      {
+        "byte_count": 8360,
+        "path": "Lean/Geometry/CanonicalLorentzModule.lean",
+        "sha256": "sha256:20ad875b95e605ab4e6201c00b1e74ab6dd590d0e5578587d6facdc08c095707"
+      },
+      {
+        "byte_count": 54120,
+        "path": "Lean/Geometry/CarrierDynamicsCompatibility.lean",
+        "sha256": "sha256:d7514938f746d64befca06e31ac6c5121efb5707dbd30f003c8049fc46e08a34"
+      },
+      {
+        "byte_count": 30097,
+        "path": "Lean/Geometry/CausalOrderComposition.lean",
+        "sha256": "sha256:ff6ef987e0337f065253a3b51de916c7f5299304f0d652e34ae738f406fd81a7"
+      },
+      {
+        "byte_count": 4941,
+        "path": "Lean/Geometry/CelestialNullCone.lean",
+        "sha256": "sha256:228316aa8d33b73e94fed99639147f462b6e116351c4765196c34ee1d747cb07"
+      },
+      {
+        "byte_count": 4709,
+        "path": "Lean/Geometry/CelestialSoldering.lean",
+        "sha256": "sha256:8d0ac8a061ea73c09869bfc74c5c60e1204e8a0d825e6fe9a259d4ebad74ecb1"
+      },
+      {
+        "byte_count": 55742,
+        "path": "Lean/Geometry/ChargeFixedInteraction.lean",
+        "sha256": "sha256:6fcea218352851052170f4185d63c9fa9430e43d948b463d88d88904c0f172ef"
+      },
+      {
+        "byte_count": 57142,
+        "path": "Lean/Geometry/CommonWorldInstrumentJoin.lean",
+        "sha256": "sha256:565df0553b4d5103ec052bfde972128ba4578930ad8d7e20d5cafdf39b68c9fe"
+      },
+      {
+        "byte_count": 23796,
+        "path": "Lean/Geometry/CommonWorldIslandBridge.lean",
+        "sha256": "sha256:408a264a97d4d6384541c1907a762d97c153c803707a3a5f9ce0166aa2ef81a0"
+      },
+      {
+        "byte_count": 47222,
+        "path": "Lean/Geometry/CommonWorldJointAction.lean",
+        "sha256": "sha256:3d6c3b8d8b8bc6e21124907d68a06321dd69d359981149f0a350af77dee102fd"
+      },
+      {
+        "byte_count": 33554,
+        "path": "Lean/Geometry/CommonWorldKinematicsWitness.lean",
+        "sha256": "sha256:b0340e3ed73be8daa3719aba78e8700845cfed872fbe7e167d01483d7466c87b"
+      },
+      {
+        "byte_count": 31226,
+        "path": "Lean/Geometry/CommonWorldMaxwellClockJoin.lean",
+        "sha256": "sha256:7fb46a1d131cf92927523e5b8951a2a2d284fe3cd9b41cb4e295a73f62b1a33c"
+      },
+      {
+        "byte_count": 29257,
+        "path": "Lean/Geometry/CompositeMomentumCovariance.lean",
+        "sha256": "sha256:d68bd3aec47347c7b76a10338172fe1ab0b0e771e95f8761d577d6b8f73513ac"
+      },
+      {
+        "byte_count": 7147,
+        "path": "Lean/Geometry/CrossingReadAreaLaw.lean",
+        "sha256": "sha256:3365d62a09a25ed019ecfc2bf86e5466cd2e9ddc5891663f95204f3edbd2562a"
+      },
+      {
+        "byte_count": 34107,
+        "path": "Lean/Geometry/EinsteinBranchInhabitant.lean",
+        "sha256": "sha256:43baee4e02792e7bfc6bbdb7c23553d1d7b931831b838f30eb59b136d147f569"
+      },
+      {
+        "byte_count": 2678,
+        "path": "Lean/Geometry/EinsteinTensorBridge.lean",
+        "sha256": "sha256:4127d2123853830f060e94b0afedcf3f9ed85fa40b734f2100ef3acc2bb6b57f"
+      },
+      {
+        "byte_count": 6417,
+        "path": "Lean/Geometry/EventFrameSoldering.lean",
+        "sha256": "sha256:bdc5257d6d259d63314cc913d4a57db91e71d0ceb8cc73d92bfb3c8d17ed26af"
+      },
+      {
+        "byte_count": 6023,
+        "path": "Lean/Geometry/EventGermDisplacement.lean",
+        "sha256": "sha256:0f5129b2f66cf0eeb3be585fe0fcaf718ee12515fa9eeac96612d1dc82e6ed11"
+      },
+      {
+        "byte_count": 7844,
+        "path": "Lean/Geometry/EventPopulationChartInterface.lean",
+        "sha256": "sha256:68f08212179f5f0e2000fc6aef79d810b6dd27aaa262879304814aa8f6bb5b6d"
+      },
+      {
+        "byte_count": 7084,
+        "path": "Lean/Geometry/FlatDiamondError.lean",
+        "sha256": "sha256:cd6c0a4334f185c528fb5692ee83d5411485153ffe78bf714568aa9442e94325"
+      },
+      {
+        "byte_count": 8376,
+        "path": "Lean/Geometry/FlatDiamondNormalization.lean",
+        "sha256": "sha256:28f2df01078762fc4e73a47ccc3678ffb3644a90486d6a9c1a5d5064f4b26d57"
+      },
+      {
+        "byte_count": 11774,
+        "path": "Lean/Geometry/FlatDiamondPairIntegral.lean",
+        "sha256": "sha256:b08567d1120bdc6fc834e8d22fa3e625be86d5f1019cd9bb66f5cd68a5458b7f"
+      },
+      {
+        "byte_count": 13215,
+        "path": "Lean/Geometry/FlatDiamondVolume.lean",
+        "sha256": "sha256:606664950e8caa745566a90f73239958fbc6f3abc007b9c07fa61b89303c8382"
+      },
+      {
+        "byte_count": 12494,
+        "path": "Lean/Geometry/FlatLorentzVolume.lean",
+        "sha256": "sha256:d94d2241c01efc89377e6da0c5e08b27050d24db7d0814594b1af0913e3cc3b1"
+      },
+      {
+        "byte_count": 22099,
+        "path": "Lean/Geometry/FreeEvolutionPersistence.lean",
+        "sha256": "sha256:25f654f63affdcc454e21aca6a2757ab8347b8a0174c5bed3c1f297c3b837980"
+      },
+      {
+        "byte_count": 22459,
+        "path": "Lean/Geometry/GoldenSourceAssignment.lean",
+        "sha256": "sha256:72eb9474c62c046c524a30ef0da6bb6ff33c40d3a243b7adff2fed905f290b0b"
+      },
+      {
+        "byte_count": 10440,
+        "path": "Lean/Geometry/GoldenSourceCausalLimit.lean",
+        "sha256": "sha256:4a5a844e27d74e690d9c0e4a3185af7076d82f873a4fa087c801b2c3a60ff7f6"
+      },
+      {
+        "byte_count": 23380,
+        "path": "Lean/Geometry/GoldenSourceCountLimit.lean",
+        "sha256": "sha256:0e77b3931b33839749ad4d5c2f01a11ebfd141d64dc9023b341e7ef130ac03b6"
+      },
+      {
+        "byte_count": 9113,
+        "path": "Lean/Geometry/GoldenSourcePairLimit.lean",
+        "sha256": "sha256:e6a0daaa492d99597927980fe5332b1bd5182fb4dc208f23b1fcfb3d841dc218"
+      },
+      {
+        "byte_count": 6777,
+        "path": "Lean/Geometry/GoldenSourceVolumeLimit.lean",
+        "sha256": "sha256:b2693a0d385b0c13b73a4cbd8b963b860955d47c5794c6b4f4bc3e2c46330568"
+      },
+      {
+        "byte_count": 16574,
+        "path": "Lean/Geometry/IntegerKCombInvariance.lean",
+        "sha256": "sha256:fc91dfc3dde9541355679a0a78e2ec8900f944b13b1f8d0eba8edf651badb1a6"
+      },
+      {
+        "byte_count": 20732,
+        "path": "Lean/Geometry/InternalClockRestFrequency.lean",
+        "sha256": "sha256:360bc5881d10d6a8974a068ba75248a889069dbed3a3b3900178b42397909ef6"
+      },
+      {
+        "byte_count": 33645,
+        "path": "Lean/Geometry/InternalEnergyInertia.lean",
+        "sha256": "sha256:48a468bbb8e397abdf512005a87b923f393bf96cc8535b18b03ed42e98d0eb04"
+      },
+      {
+        "byte_count": 7629,
+        "path": "Lean/Geometry/InverseSquareShellLaw.lean",
+        "sha256": "sha256:eaea561833aa72453d23a8e5eb6505cc8509990666e2f20ecb22e2aae78edfeb"
+      },
+      {
+        "byte_count": 5817,
+        "path": "Lean/Geometry/LorentzOverlapCocycle.lean",
+        "sha256": "sha256:c86d3f7eb320490bd944d3c05bb838115c3400e297a0731e311cf4c6b24ef025"
+      },
+      {
+        "byte_count": 7930,
+        "path": "Lean/Geometry/MassShellKinematics.lean",
+        "sha256": "sha256:fc5014a35da01b0ae3a9ac64c43e9669ff7716471aa622d6df3b32944b2919cd"
+      },
+      {
+        "byte_count": 3586,
+        "path": "Lean/Geometry/MetricKernelEnergy.lean",
+        "sha256": "sha256:216c3cc43b4f08bbced4ee3ccc5afcc8085b0efa5c5967a89c00e3abe98031a6"
+      },
+      {
+        "byte_count": 1299,
+        "path": "Lean/Geometry/ObserverFrameHyperboloid.lean",
+        "sha256": "sha256:a15eb2c5629931e1b5498021aa686f7c1bb1921536a84e768d197dddbba9c896"
+      },
+      {
+        "byte_count": 5508,
+        "path": "Lean/Geometry/ObserverRestSpace.lean",
+        "sha256": "sha256:17942dd37eb3a1cdc37ca648f14fab2395ddaa17fa272fa81c97b7d3a88825fd"
+      },
+      {
+        "byte_count": 11392,
+        "path": "Lean/Geometry/OrderingFractionFourDimensional.lean",
+        "sha256": "sha256:ba616fd7cb751b997a9c7b6528f14949fb9e29183c7a33a94c0857b0538e4ab2"
+      },
+      {
+        "byte_count": 39064,
+        "path": "Lean/Geometry/PortChargeMinimalCoupling.lean",
+        "sha256": "sha256:2338d753f57b3fdc3e00a3281eabadaeac020f821ba947dae62572f35fe4d916"
+      },
+      {
+        "byte_count": 39550,
+        "path": "Lean/Geometry/ProperLengthClockedChain.lean",
+        "sha256": "sha256:afb0b801f445017cd5ff61a6ba4d63f363c7f86dc36112aab715abe3fe0a03d6"
+      },
+      {
+        "byte_count": 40445,
+        "path": "Lean/Geometry/ProperTimeInternalAction.lean",
+        "sha256": "sha256:8933451e0b96b0f1a339ca7912dd7e1c26cde321b5144440ee7127fd95a76307"
+      },
+      {
+        "byte_count": 8951,
+        "path": "Lean/Geometry/RefiningLatticeCausalCone.lean",
+        "sha256": "sha256:b8b99907421ccf519235182a5298b0d92fdfd04ba37b6453a5717afe1015b62e"
+      },
+      {
+        "byte_count": 24968,
+        "path": "Lean/Geometry/RestFiberShellTransport.lean",
+        "sha256": "sha256:e2d92fb0d7dab4902868f685aa449ad79636efea5a088b1828c636c0f34b89b3"
+      },
+      {
+        "byte_count": 53357,
+        "path": "Lean/Geometry/ScreenCarrierMapCandidate.lean",
+        "sha256": "sha256:60a95ebdf173f2c2c5bd8bed4ade34e64392299d787c4305ed90e8335e5c2ab1"
+      },
+      {
+        "byte_count": 36109,
+        "path": "Lean/Geometry/SeamStepSpeedLimit.lean",
+        "sha256": "sha256:2ab0d12826b958ad2f25b48d84b2ba8be840d9ce09045670af76825336fed61e"
+      },
+      {
+        "byte_count": 11760,
+        "path": "Lean/Geometry/SourceBusScaling.lean",
+        "sha256": "sha256:d43ddeb9a9ee89d3fb09537886f0be40ad15a223f87ba1536a6efa6059005462"
+      },
+      {
+        "byte_count": 6756,
+        "path": "Lean/Geometry/SourceCausalBoundary.lean",
+        "sha256": "sha256:6963e3f97aab1ce3a1e576552d7a1514b68ba762366a7ea069f9f5179a5bfd63"
+      },
+      {
+        "byte_count": 44006,
+        "path": "Lean/Geometry/SourceClockRateAlongWorldlines.lean",
+        "sha256": "sha256:deb5b45afd402dc6d66982cda69201ca158907f092e072366ffbdf49331211c1"
+      },
+      {
+        "byte_count": 3821,
+        "path": "Lean/Geometry/SourceConstrainedRead.lean",
+        "sha256": "sha256:a9136bd2f3a46f95debf20e624b0ba96b484db61cb638ea1b8a8861c43c201c3"
+      },
+      {
+        "byte_count": 12704,
+        "path": "Lean/Geometry/SourceConstrainedSelection.lean",
+        "sha256": "sha256:963ccc5842c43478ef074f4621cac45deb58c5df82559dac1485b83dc97b2a2e"
+      },
+      {
+        "byte_count": 10981,
+        "path": "Lean/Geometry/SourceCountLimitAxiomAudit.lean",
+        "sha256": "sha256:b274ab219e0ab3fc015765482dd10774ab9441a6aedadaedd3fe425e622cc3e3"
+      },
+      {
+        "byte_count": 14570,
+        "path": "Lean/Geometry/SourceCountTransport.lean",
+        "sha256": "sha256:9ea1f11d437ac86f670b56401ce1ddd8e4f3dc51bd24916d4b0f3edfb3bd2ab1"
+      },
+      {
+        "byte_count": 37085,
+        "path": "Lean/Geometry/SourceDerivedSpacetimeCarrier.lean",
+        "sha256": "sha256:4ce2b74387dd9cbfb19d8204beabdd4e1d1786b7c2941578c74812f97bf86b6f"
+      },
+      {
+        "byte_count": 10911,
+        "path": "Lean/Geometry/SourceEncodedMemory.lean",
+        "sha256": "sha256:67f98a7bf3d76d1a705a979200169ef4d34b2f8ae5bd4875fee857b2db1fca24"
+      },
+      {
+        "byte_count": 2425,
+        "path": "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean",
+        "sha256": "sha256:1c76031f1d522a27043b4e1f27d152a5101d6421cc717afafa2c3d5b5b62e501"
+      },
+      {
+        "byte_count": 7010,
+        "path": "Lean/Geometry/SourceFeedbackTransport.lean",
+        "sha256": "sha256:068e91f8f4515d28950dccb0be9bb490328e71fe760b08ac4d90ece180ce141a"
+      },
+      {
+        "byte_count": 4645,
+        "path": "Lean/Geometry/SourceNativeRecords.lean",
+        "sha256": "sha256:a3db77724671a7b87bcace5ec2d28973c81efc1992e4053c20b039c9a0d3cca0"
+      },
+      {
+        "byte_count": 2688,
+        "path": "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean",
+        "sha256": "sha256:f02e966ea3bcb233ff60c23c5afd9ff9baa6393b0c92b3143ef00a8ccbbc0dfa"
+      },
+      {
+        "byte_count": 7969,
+        "path": "Lean/Geometry/SourceNetCausalCone.lean",
+        "sha256": "sha256:f60b226158516ae0919c5232f896bd12e0a0de59ba4b549c8f76181cbee58f4d"
+      },
+      {
+        "byte_count": 16617,
+        "path": "Lean/Geometry/SourceNetConformalRecordDensity.lean",
+        "sha256": "sha256:f845eaaecd12ec45bdd2128f692d543c72e32c86a4e082b63052f9a79ee7e462"
+      },
+      {
+        "byte_count": 20768,
+        "path": "Lean/Geometry/SourceNetLayeredOrder.lean",
+        "sha256": "sha256:164b2b80dea4ad59e59f36f68839718d26445423655cada56a1d951e0f392cf6"
+      },
+      {
+        "byte_count": 4339,
+        "path": "Lean/Geometry/SourceNetOrderLimit.lean",
+        "sha256": "sha256:ae4b85b08f5adda226f2a983007149dda0aec18e45b1f4da20ad8426281f1193"
+      },
+      {
+        "byte_count": 16691,
+        "path": "Lean/Geometry/SourceNetVolumeError.lean",
+        "sha256": "sha256:e542f11f3505ef605fe486244f0381fa9ec77da330f8f1f2db8e71b6108056a5"
+      },
+      {
+        "byte_count": 5782,
+        "path": "Lean/Geometry/SourceNonlinearRecord.lean",
+        "sha256": "sha256:44cf22a856096e607ec550f1f8e86209086b069744aabd70e5d8515159ca5cc0"
+      },
+      {
+        "byte_count": 20946,
+        "path": "Lean/Geometry/SourceOrderEinsteinComposition.lean",
+        "sha256": "sha256:f11db09374643cabfcb12e6e983af737b044799094e73409f274f020438ecf9d"
+      },
+      {
+        "byte_count": 14152,
+        "path": "Lean/Geometry/SourceOrderFrameCompatibilityPacket.lean",
+        "sha256": "sha256:c242294919a3a1b412aa1fe77a97fadf68c918668342d361de664e3c75a378d9"
+      },
+      {
+        "byte_count": 3626,
+        "path": "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean",
+        "sha256": "sha256:36a59efdc625465b00a011b0b4501770c7dc0cd157e56db22de1b7f84bffd1af"
+      },
+      {
+        "byte_count": 6628,
+        "path": "Lean/Geometry/SourcePassiveMemoryBudget.lean",
+        "sha256": "sha256:1cafe81174689d5724cae862ac1c5d5450ae21bcce1492753e02afad0c03da67"
+      },
+      {
+        "byte_count": 5268,
+        "path": "Lean/Geometry/SourcePassiveReset.lean",
+        "sha256": "sha256:ff02617bc66bb8180b86b5d6fade147afe65d1f9ef4d4a0770b64bd3c2349791"
+      },
+      {
+        "byte_count": 13847,
+        "path": "Lean/Geometry/SourcePopulationQuadrature.lean",
+        "sha256": "sha256:658c7fbd21eeb92f2b094d3ec99c76af53c880c474b06be485c82f5b90b29592"
+      },
+      {
+        "byte_count": 10018,
+        "path": "Lean/Geometry/SourceReadSelection.lean",
+        "sha256": "sha256:f43a262d6d3ac46a2471de75e7da237589502949eab56903e1410edda4fdef5d"
+      },
+      {
+        "byte_count": 4128,
+        "path": "Lean/Geometry/SourceReadSelectionAxiomAudit.lean",
+        "sha256": "sha256:8dac97f154b552efbbf6079292a784e6cb6733e0c95701d8a697c289c7ebfb6f"
+      },
+      {
+        "byte_count": 4558,
+        "path": "Lean/Geometry/SourceRecordProtection.lean",
+        "sha256": "sha256:4c2e3f68673cc0a988ae97dfaf3a4aebc58c18a2849fe4855981fa6f76ce92c8"
+      },
+      {
+        "byte_count": 10086,
+        "path": "Lean/Geometry/SourceReusableBus.lean",
+        "sha256": "sha256:25dc38bdcfe71a4d5860be4e0051dd16bd3083c9bdc8c5befcc162ba421f57d2"
+      },
+      {
+        "byte_count": 2509,
+        "path": "Lean/Geometry/SourceReusableBusAxiomAudit.lean",
+        "sha256": "sha256:2d9fa469d6278f6a8e59fc3a204beea2eca4b597abc56b60675464311c21a6fe"
+      },
+      {
+        "byte_count": 4989,
+        "path": "Lean/Geometry/SourceSeamPathTomography.lean",
+        "sha256": "sha256:0a4523a315fbfb42f81449bc9e42179b254ec38ef02fdf3f62127abab78a3a83"
+      },
+      {
+        "byte_count": 7668,
+        "path": "Lean/Geometry/SourceSelectionControls.lean",
+        "sha256": "sha256:f98f5b7583f0516201d47da82e5a80086f94779d234ae6d0f100049477ea717e"
+      },
+      {
+        "byte_count": 8135,
+        "path": "Lean/Geometry/SpatialReadbackSoldering.lean",
+        "sha256": "sha256:a6fd14dde235fa0e5be58f5748807021a6ecf6bc48596495fb31a14563d5bc08"
+      },
+      {
+        "byte_count": 56865,
+        "path": "Lean/Geometry/TimelikeClassForceLaw.lean",
+        "sha256": "sha256:6c71836ba5f25c30022c55598dc943c1d578a8d3703067597ce2d9eb055c5a5d"
+      },
+      {
+        "byte_count": 44282,
+        "path": "Lean/Geometry/TransportedChargeForceLaw.lean",
+        "sha256": "sha256:7d63a0a44fe14edf70411c92f4a2ed5ec16fb4239d3c57725efd8555fc21f23e"
+      },
+      {
+        "byte_count": 39753,
+        "path": "Lean/Geometry/WorldlineHopTransport.lean",
+        "sha256": "sha256:9684fe569c403efadfdb685f1e4be24fdc977ecf2330a95154625600caeea8c6"
+      },
+      {
+        "byte_count": 25320,
+        "path": "Lean/InformationProjection/GlobalObjective.lean",
+        "sha256": "sha256:b9a2ec564569aec6457906093f0d51ec076ec8b86cedf58476d2ef2d6afae52e"
+      },
+      {
+        "byte_count": 28419,
+        "path": "Lean/InformationProjection/HistoryLaw.lean",
+        "sha256": "sha256:eb1e65efba363a4b475927432d1ead2204c41a8e1be9d386a5425b3d5aa3b623"
+      },
+      {
+        "byte_count": 40021,
+        "path": "Lean/InformationProjection/LogTransitionAction.lean",
+        "sha256": "sha256:372a8c343f978d43c72cda57ecbe8aba62e771ac55fba85bfb6089e026342223"
+      },
+      {
+        "byte_count": 13338,
+        "path": "Lean/InformationProjection/PathGibbs.lean",
+        "sha256": "sha256:2ecd15cdbccd1bc8fb6e799e10011e3f408e0bf92564f67c2d9fc7681ff909eb"
+      },
+      {
+        "byte_count": 8831,
+        "path": "Lean/InformationProjection/ReferenceNormalForm.lean",
+        "sha256": "sha256:462ec812e4eec30df5e5e61b402f48e861ec34db9d44251ec5caf30a48c56fa1"
+      },
+      {
+        "byte_count": 42478,
+        "path": "Lean/InformationProjection/SourceHistoryPacket.lean",
+        "sha256": "sha256:c06fff2418846f8b1ecfeb8f1cbf5d3f4f153dfa8159c98141557d65538e4e0c"
+      },
+      {
+        "byte_count": 11383,
+        "path": "Lean/InformationProjection/SourceReferenceSelection.lean",
+        "sha256": "sha256:5a346b7adb1a2b0b5153a9e1deafe8b3df127bb023c1a08949896882de06dd9c"
+      },
+      {
+        "byte_count": 18569,
+        "path": "Lean/Screen/A2HolonomyBridge.lean",
+        "sha256": "sha256:4a83a4dfd2a8696b17b919548ec3ef8139e710c2c6d9ea6abf868885eb221555"
+      },
+      {
+        "byte_count": 4979,
+        "path": "Lean/Screen/A5AngularBands.lean",
+        "sha256": "sha256:b73b1c30b385133265167b934a02cfe78fffe2048f2c07533d127024c41314e3"
+      },
+      {
+        "byte_count": 11745,
+        "path": "Lean/Screen/A5AngularKernels.lean",
+        "sha256": "sha256:d6992a4a47b0e10b9e66070728bec6b3a24ae81fcb21d4e9c49e5afb5f88a219"
+      },
+      {
+        "byte_count": 7030,
+        "path": "Lean/Screen/A5AngularMultiplets.lean",
+        "sha256": "sha256:e18f8874ea1fdf3a0a74289951a5f6d8bce5763eefaba0e3c9360e0dc659d726"
+      },
+      {
+        "byte_count": 11151,
+        "path": "Lean/Screen/A5CarrierClassBand.lean",
+        "sha256": "sha256:b61a63aefe6a062f4cd86b4b1c0db0fd68419d73cd811ef36b10c951ba0f269a"
+      },
+      {
+        "byte_count": 8260,
+        "path": "Lean/Screen/A5CharacterField.lean",
+        "sha256": "sha256:54d7e8656719308a7a94946f8991f82d724c13972eb2a1c3ae94a30ab028227a"
+      },
+      {
+        "byte_count": 11658,
+        "path": "Lean/Screen/A5Commutant.lean",
+        "sha256": "sha256:799169abb9dedaec2919b8eedff767570deff36caac8e7b386e7e1d30288cf6f"
+      },
+      {
+        "byte_count": 7192,
+        "path": "Lean/Screen/A5CouplingSymmetry.lean",
+        "sha256": "sha256:2920baacbb8e098155e9ad373925ad415f85698344d224d813282eb5af0350f0"
+      },
+      {
+        "byte_count": 16892,
+        "path": "Lean/Screen/A5FamilyBand.lean",
+        "sha256": "sha256:63b425c890b49f49a53858b5a480b993cfee81d92978fa3ed5abf665e48645a6"
+      },
+      {
+        "byte_count": 3113,
+        "path": "Lean/Screen/A5IncidenceResponse.lean",
+        "sha256": "sha256:223a45d6b8eefe23539ef632c03e2e92d6681af6db189cc23ed4c1eb760f4cf3"
+      },
+      {
+        "byte_count": 48740,
+        "path": "Lean/Screen/A5OPH.lean",
+        "sha256": "sha256:9b2fa0c0d45d09d13a0d360d35d033096cfab65169f29827f8b97cbf673656e9"
+      },
+      {
+        "byte_count": 5263,
+        "path": "Lean/Screen/A5OrbitRaySeparation.lean",
+        "sha256": "sha256:681f214fd1c8b908b12b69c24b4e9805f56c75617dddf1ef193d956554fd1ce2"
+      },
+      {
+        "byte_count": 5919,
+        "path": "Lean/Screen/A5PortAction.lean",
+        "sha256": "sha256:5efd9ea0ca2d12f8beb3f20111e80d748984ec0cbef484dd3d7cbb766954f9cc"
+      },
+      {
+        "byte_count": 10474,
+        "path": "Lean/Screen/A5PortModule.lean",
+        "sha256": "sha256:6bd28a569e34b9214085ed9fe8d0cbfb4cbaebf6e0d73c9626e03a28af768f17"
+      },
+      {
+        "byte_count": 5146,
+        "path": "Lean/Screen/A5PortSixAxesBridge.lean",
+        "sha256": "sha256:8c5722cf3968b0f22ec8adc748640756a049fca642038475e0824bfb3df4e903"
+      },
+      {
+        "byte_count": 2541,
+        "path": "Lean/Screen/A5PrimitivePortPrediction.lean",
+        "sha256": "sha256:cb2e81d0555fa90ee1db6502c7af2d540a785b8567d3310fdd776a21fb5aad4e"
+      },
+      {
+        "byte_count": 29247,
+        "path": "Lean/Screen/A5ResponseWordAlgebra.lean",
+        "sha256": "sha256:5575c8e696c6d0b672daa349c650f4d028194b025f1318a6b27b7526286fb0df"
+      },
+      {
+        "byte_count": 43327,
+        "path": "Lean/Screen/A5SixAxes.lean",
+        "sha256": "sha256:3cb47902d1c7110361fcf107d07c39dd948cab2f07f32d8a2ee9130f3e3071ca"
+      },
+      {
+        "byte_count": 3415,
+        "path": "Lean/Screen/ActionTimeGram.lean",
+        "sha256": "sha256:8a546bbe8397dd10df690356be1f148d126943180db79c597d88d237488e5083"
+      },
+      {
+        "byte_count": 30304,
+        "path": "Lean/Screen/AssembledActionComposition.lean",
+        "sha256": "sha256:c368400073a23174dc0f13c2baa44eb23e143080ef71ca582c3a3b326a5b2f9a"
+      },
+      {
+        "byte_count": 22335,
+        "path": "Lean/Screen/B10EdgeCenterAction.lean",
+        "sha256": "sha256:c555f7573d8bf22d7e58397ae3160d56926e641e8b43b2f6d88ebde8b0d1b528"
+      },
+      {
+        "byte_count": 872,
+        "path": "Lean/Screen/B10QuantumLimitations.lean",
+        "sha256": "sha256:450ad1c021528e4d62e79ea978fe0feef84245176dd61a7e9aa80ea68a015fe6"
+      },
+      {
+        "byte_count": 8843,
+        "path": "Lean/Screen/BaryonDimensionSix.lean",
+        "sha256": "sha256:ed19263d88017312363dd04fc46be56372986052ac9940354c9ccf52e2d5da05"
+      },
+      {
+        "byte_count": 5234,
+        "path": "Lean/Screen/BipoSHFrameInvariant.lean",
+        "sha256": "sha256:f29638751a9e2bb7334b3385e167105b9fbb3361071e00fa1f6f80aba5ae337f"
+      },
+      {
+        "byte_count": 6731,
+        "path": "Lean/Screen/BipoSHInverseBoundary.lean",
+        "sha256": "sha256:ed9d761e6c10c28cf8962f79c9c1ecbb356c849c6ca99bbc09a8bdfedcf3100b"
+      },
+      {
+        "byte_count": 2522,
+        "path": "Lean/Screen/BipoSHTransferInvariant.lean",
+        "sha256": "sha256:c20d616bee227a447536f062ed2363c2e7f3cc7689a34717690abf275d14bf74"
+      },
+      {
+        "byte_count": 49884,
+        "path": "Lean/Screen/CarrierEvolutionFlow.lean",
+        "sha256": "sha256:8559b7a5facd5d05c4083a001adc0b5464f44bc49f8b87e3ba5e14244bf2e6cd"
+      },
+      {
+        "byte_count": 11315,
+        "path": "Lean/Screen/CarrierFrequencySpeed.lean",
+        "sha256": "sha256:7403545b04045b68091492e5524943cd8dd56f5ff2176e4236878f395e0c0af9"
+      },
+      {
+        "byte_count": 48149,
+        "path": "Lean/Screen/CarrierModeEquivariance.lean",
+        "sha256": "sha256:fca8f3c1bb4b73a6160824fb89c924912fcd844d3ddc3ccae8d019b81c53877c"
+      },
+      {
+        "byte_count": 48608,
+        "path": "Lean/Screen/CarrierModeOscillators.lean",
+        "sha256": "sha256:ad3fcf328afbb2425dcbb22af3513d21033e528e9a55bc3cd98752533e832abd"
+      },
+      {
+        "byte_count": 30875,
+        "path": "Lean/Screen/CarrierUniqueness.lean",
+        "sha256": "sha256:cc4fa0450ed41f1785e46266ef27478de966a0098a991261d81df495a8bcf024"
+      },
+      {
+        "byte_count": 2796,
+        "path": "Lean/Screen/CartanScalarReduction.lean",
+        "sha256": "sha256:877034ec6c93a3bfcff4929044ad48918ab9dc76ec6859bd128818e4db7ab418"
+      },
+      {
+        "byte_count": 18973,
+        "path": "Lean/Screen/CertifiedScaledStepInstrument.lean",
+        "sha256": "sha256:1a7b2d16da1299d5cbf1a73cbf4b49255f1bca007bf84380ca3d49c5ece78fd4"
+      },
+      {
+        "byte_count": 34591,
+        "path": "Lean/Screen/ChargedCurrentDictionary.lean",
+        "sha256": "sha256:7fb6eb5e6545817d4e5c208caa36f21fa379f218c744ffbb49364e7033436579"
+      },
+      {
+        "byte_count": 4346,
+        "path": "Lean/Screen/CommonEWOrderUnit.lean",
+        "sha256": "sha256:3c9ecde0e9a8d6ee842281e0a95a3e461f33e422f6b12defb8c8dcb308599783"
+      },
+      {
+        "byte_count": 13855,
+        "path": "Lean/Screen/Compact12.lean",
+        "sha256": "sha256:52e8a04cd7b1e04dbc59abd89378ad1de0d894afbb36a7ec8498f1bb83933d7a"
+      },
+      {
+        "byte_count": 11504,
+        "path": "Lean/Screen/ConeCochainBridge.lean",
+        "sha256": "sha256:a458e98437f0084e29d1b6879bf00be58a9148d00c876f484056d81c293c980d"
+      },
+      {
+        "byte_count": 49437,
+        "path": "Lean/Screen/CurlSectorEigenbasis.lean",
+        "sha256": "sha256:1050e9ba8c76babbb466c051153b638919f749069d48ce9f007d4b447dec0c83"
+      },
+      {
+        "byte_count": 18928,
+        "path": "Lean/Screen/CurlStoneClockBridge.lean",
+        "sha256": "sha256:a640a6208a83df5fb5dd19127953ebd5afac63f469a242239dca75ddd8822932"
+      },
+      {
+        "byte_count": 50954,
+        "path": "Lean/Screen/DiscreteCoulombGreen.lean",
+        "sha256": "sha256:a58830d60688b7df505d2c8cbc1ff2290b057f9be055def25db7006fae7bd078"
+      },
+      {
+        "byte_count": 4048,
+        "path": "Lean/Screen/DiscreteGauss.lean",
+        "sha256": "sha256:d276dbb8d1c1fcb9a2dfba64750b93c5a7afda889d30c0e3dbed764fedfd9f55"
+      },
+      {
+        "byte_count": 10514,
+        "path": "Lean/Screen/DiscreteRefinement.lean",
+        "sha256": "sha256:72a9c4df74ef7d0a9583066057e1dee12b3b5403ebb1ede83bfbf128d1f041bc"
+      },
+      {
+        "byte_count": 25588,
+        "path": "Lean/Screen/DispersionArmingInterface.lean",
+        "sha256": "sha256:a15be395ffe6170816f74d19b94c4c11c1b8944607f40cb630ce048bae390bbf"
+      },
+      {
+        "byte_count": 37105,
+        "path": "Lean/Screen/ElectroweakBreakingComposition.lean",
+        "sha256": "sha256:fc99eaaca6b0782595ed24289ee4fd1e9080e8108f81b4d2e6c823da72d9fc3d"
+      },
+      {
+        "byte_count": 4590,
+        "path": "Lean/Screen/ElectroweakPoleScaleQuotient.lean",
+        "sha256": "sha256:9305d115cfc8b35aa8c1179330a7ea3ec60cb1de9c890651cee59bbd9fff76ae"
+      },
+      {
+        "byte_count": 4522,
+        "path": "Lean/Screen/EqualStateWeights.lean",
+        "sha256": "sha256:2709dd13eeb13679dba5aee682035ae02ea124aec1ea8124619889e2e3fbb356"
+      },
+      {
+        "byte_count": 6904,
+        "path": "Lean/Screen/ExteriorComponentBridge.lean",
+        "sha256": "sha256:f33a18a2ab340e4d9862758937c4db8c6abe689fb37a4aa97c4b47e7c624726e"
+      },
+      {
+        "byte_count": 7845,
+        "path": "Lean/Screen/ExteriorSelection.lean",
+        "sha256": "sha256:a83cdeb1b418754796708e26f3a16e16f805df78424fc85d220fd8887cb01d3a"
+      },
+      {
+        "byte_count": 44626,
+        "path": "Lean/Screen/FermionSectorAssembly.lean",
+        "sha256": "sha256:b5b3fae51a8f8d40d7580eddb3bc28429b27f9fe63a655d469b58c880d8433a4"
+      },
+      {
+        "byte_count": 78318,
+        "path": "Lean/Screen/FieldSectorEnergyInnerProduct.lean",
+        "sha256": "sha256:51615fd3ce49abecb74aeb02266c0504f8d5a09f05c624aa86f1f81a5e10bc3e"
+      },
+      {
+        "byte_count": 5236,
+        "path": "Lean/Screen/GaugeKineticInvariantForms.lean",
+        "sha256": "sha256:112f077dd6577847764cddb7711f043c1e316909896312d8315a9b2b0847e31b"
+      },
+      {
+        "byte_count": 31385,
+        "path": "Lean/Screen/GaugeOrbitQuotientGap.lean",
+        "sha256": "sha256:51d63b96a6d7717f6211f37bb0aa537d94d1ad472a130cedc29d7b22f5950885"
+      },
+      {
+        "byte_count": 48158,
+        "path": "Lean/Screen/GaugeSectorBracketCompletion.lean",
+        "sha256": "sha256:5fc02cab7f7c5bbdd5186ddb8bc1094e7f08dcb3f67153123342c246b7dfe2da"
+      },
+      {
+        "byte_count": 12478,
+        "path": "Lean/Screen/GlobalFormCharacterDescent.lean",
+        "sha256": "sha256:1a7293a701cee63a0e124bfb82e045b0099257bafad554fcddc479e0125e1588"
+      },
+      {
+        "byte_count": 33049,
+        "path": "Lean/Screen/GoldenSectorCharacters.lean",
+        "sha256": "sha256:ac5a9d596bce020ce5f38ba5674e62dea6a4b5a3b0290160caecfccd3832122d"
+      },
+      {
+        "byte_count": 40812,
+        "path": "Lean/Screen/GoldenSectorComplexIrreducibility.lean",
+        "sha256": "sha256:f92a0b93b023b9101de6b86c6625829e102950e1995f282b6a0275534f653381"
+      },
+      {
+        "byte_count": 37926,
+        "path": "Lean/Screen/GoldenSectorIrreducibility.lean",
+        "sha256": "sha256:7d733491b56af966196fe40b0886dbfddccd3912b43b9d19876c6c570c0f305e"
+      },
+      {
+        "byte_count": 8455,
+        "path": "Lean/Screen/GoldenSectorPSL2F5Representations.lean",
+        "sha256": "sha256:df2f36f50cf9eee2732315467b68f4962e01464720377ca96645f25cd53f7f59"
+      },
+      {
+        "byte_count": 16653,
+        "path": "Lean/Screen/HolonomyInterference.lean",
+        "sha256": "sha256:78c5f5b334578103eee18888d82e07c341371164bdfbb75d83f9982c86e4d544"
+      },
+      {
+        "byte_count": 5611,
+        "path": "Lean/Screen/KineticFamilyCancellation.lean",
+        "sha256": "sha256:c4d55fc22b3cd542f3aae5d499642b305b2b135898520d8c92c4b35f9fb286c5"
+      },
+      {
+        "byte_count": 6315,
+        "path": "Lean/Screen/KineticFormDichotomy.lean",
+        "sha256": "sha256:fbc2b13d04af47d9c5e2b70ca2c718c95f84caf96fe2c37a00ca086e48af9cea"
+      },
+      {
+        "byte_count": 48897,
+        "path": "Lean/Screen/KogutSusskindFiberRateComparison.lean",
+        "sha256": "sha256:7bde95c46fc1d23a0b22779769a8aaeeaec7a5055dff833c5540e78b2216e8c9"
+      },
+      {
+        "byte_count": 4682,
+        "path": "Lean/Screen/LabeledEventReadout.lean",
+        "sha256": "sha256:214f397fcc075bc991e8709c09ed4cb5736122f08c5b9a11713114272163b56a"
+      },
+      {
+        "byte_count": 21601,
+        "path": "Lean/Screen/LayeredDiscreteGauss.lean",
+        "sha256": "sha256:7329f1e71103762a272effd17e0c328cd4446bc30159a029c83b1dd9f2e37830"
+      },
+      {
+        "byte_count": 27420,
+        "path": "Lean/Screen/LightSignalAdequacySurface.lean",
+        "sha256": "sha256:b546aa3333584561de14c49ab447abef6c49346cfaeed468a3f6b6921f83432b"
+      },
+      {
+        "byte_count": 26202,
+        "path": "Lean/Screen/LightSignalMaxwellComposition.lean",
+        "sha256": "sha256:51b9653299dc3c154cd60d19196b9a56d23baa18092643a90c1e680fb03b3e36"
+      },
+      {
+        "byte_count": 25495,
+        "path": "Lean/Screen/LocalEnergyBalance.lean",
+        "sha256": "sha256:c0c2c640b651d20cab70e99f4a391e8d5320d4b9ba08de3693c67bf7bf161347"
+      },
+      {
+        "byte_count": 32766,
+        "path": "Lean/Screen/LocalFaceMaxwellAction.lean",
+        "sha256": "sha256:c54da8884d3a3d19ed73baab2218378795fa5f8f2681344d545f285a647cf763"
+      },
+      {
+        "byte_count": 2639,
+        "path": "Lean/Screen/LocalGaugeJetAction.lean",
+        "sha256": "sha256:85d8e70dfaee79c46067c0210b042782986f398146f6301803d8bd3d4ee5028d"
+      },
+      {
+        "byte_count": 2819,
+        "path": "Lean/Screen/MagneticMatterStability.lean",
+        "sha256": "sha256:ca1afb629d0951e6d69002ad418b8da0da90e9d902dbbcb613e449b64ce8340e"
+      },
+      {
+        "byte_count": 6000,
+        "path": "Lean/Screen/MatterGrammarIndexBridge.lean",
+        "sha256": "sha256:1f66250458e837de3f45f29a370ed4a4960ea55a4e3d9bdb8be2d1d7f74a4851"
+      },
+      {
+        "byte_count": 14994,
+        "path": "Lean/Screen/ModalMaxwellFactorizationBoundary.lean",
+        "sha256": "sha256:4a2e19016d521a58808378d533b3e1e5b6aafcf1d47f9db418cf0d08a69c626d"
+      },
+      {
+        "byte_count": 28887,
+        "path": "Lean/Screen/NeutralCurrentDictionary.lean",
+        "sha256": "sha256:7347c9a16b3176faba38c90545dadeefcd3b58463f2738be506fe58b32291628"
+      },
+      {
+        "byte_count": 42602,
+        "path": "Lean/Screen/NeutralPairCoupledAction.lean",
+        "sha256": "sha256:38648ef89150fd9b5f3e80e9347a72ec8233bff2adec82dfe9f11fb2389cf3ec"
+      },
+      {
+        "byte_count": 35021,
+        "path": "Lean/Screen/NeutralPairJointStationaryWitness.lean",
+        "sha256": "sha256:0ee70ba206efdf6972717511698ea6fb8d226cc00a024fa62b650cb52c9d4fd1"
+      },
+      {
+        "byte_count": 2176,
+        "path": "Lean/Screen/OPHScreen.lean",
+        "sha256": "sha256:8e72b5cdd3d57f8baf6305995b58b699005ec7f3d395f3a6db44e1d7249781df"
+      },
+      {
+        "byte_count": 10866,
+        "path": "Lean/Screen/OrientedFaceBracketSelector.lean",
+        "sha256": "sha256:19df8f7e546402926b4e3fc3f6528c022247a6628711b41a4c05e3922d35ab33"
+      },
+      {
+        "byte_count": 9673,
+        "path": "Lean/Screen/OrientedFaceInvariantMetric.lean",
+        "sha256": "sha256:887375e22fabf756eebaefd1554604ccbe3a5bde6e13135b729fe27f3de25ec1"
+      },
+      {
+        "byte_count": 25801,
+        "path": "Lean/Screen/PSL2F5SixAxesBridge.lean",
+        "sha256": "sha256:9e39ac6e1b556a3cae0aa33dac261bda8fe67bdff09b0f8b644f256359ceae4c"
+      },
+      {
+        "byte_count": 4044,
+        "path": "Lean/Screen/PhysicalA5ForcingNoGo.lean",
+        "sha256": "sha256:715a18a320bdb36f111a4e6cb87df2553e12d78ab008141297269f62e89ce346"
+      },
+      {
+        "byte_count": 5059,
+        "path": "Lean/Screen/PortDualMetricSelection.lean",
+        "sha256": "sha256:06e64b706cfbf5122681ba41519b81eede603ed67d252bda050316c7f4c4484a"
+      },
+      {
+        "byte_count": 5095,
+        "path": "Lean/Screen/PortFrameGram.lean",
+        "sha256": "sha256:d1cebe56450e7586eed730b52068753ebca3a6563da1453679e87fa7c7b653e3"
+      },
+      {
+        "byte_count": 10437,
+        "path": "Lean/Screen/PortGramA5Isometry.lean",
+        "sha256": "sha256:0cdb1fbd1cf7c5ee1cb5f3ba29207ed50841495904155997501c305fef72ecb7"
+      },
+      {
+        "byte_count": 5232,
+        "path": "Lean/Screen/PortGramRepairBand.lean",
+        "sha256": "sha256:8b48c8fd1e61ddf09f7468a870892a66c1b9b469fdac33597ff26658d9f5c635"
+      },
+      {
+        "byte_count": 20836,
+        "path": "Lean/Screen/PortGramRepairCovariance.lean",
+        "sha256": "sha256:8d96c8a01361a9cfc2f53901d73032041480c93bb50190ab12ac939a7e9a6ad8"
+      },
+      {
+        "byte_count": 32787,
+        "path": "Lean/Screen/PositionSpaceMaxwellAction.lean",
+        "sha256": "sha256:07062608b74c2923311fd08764d74ea80d73afe8abc0edef55a38fc76cb67505"
+      },
+      {
+        "byte_count": 8764,
+        "path": "Lean/Screen/PrimitiveHopSelection.lean",
+        "sha256": "sha256:f2a4598baf4fe96ef0243cd045d71e3dbdc15dcf433b76eebe6a0faf9bd5e33d"
+      },
+      {
+        "byte_count": 4808,
+        "path": "Lean/Screen/PrimitivePortDualMeasure.lean",
+        "sha256": "sha256:4e634d99ccd4df2b05fc7917b61082783158727eb4a55b7c307e1bf32547d3e6"
+      },
+      {
+        "byte_count": 29358,
+        "path": "Lean/Screen/PrimitivePortFrameQuotient.lean",
+        "sha256": "sha256:1edb876e3ccfe61dd2e98473e0398391aa28166b2e330742ae3f034db05e3cfd"
+      },
+      {
+        "byte_count": 7085,
+        "path": "Lean/Screen/PrimitivePortMetricAttachment.lean",
+        "sha256": "sha256:61702f1cd275fa899609c33d8fda085aba846d10f41e5184d582518b58be0a22"
+      },
+      {
+        "byte_count": 14709,
+        "path": "Lean/Screen/PrimitivePortOperatorSelectionBoundary.lean",
+        "sha256": "sha256:fa33de5d1c21d912606fa9cff08445a1d7886f446098ad093820c5e3d5068f85"
+      },
+      {
+        "byte_count": 5585,
+        "path": "Lean/Screen/PrimitivePortScaleBoundary.lean",
+        "sha256": "sha256:44b8ebc491bb0488c96019cd7025478cedb3093da8c624c5738ba6415c8630e5"
+      },
+      {
+        "byte_count": 12238,
+        "path": "Lean/Screen/PrimitivePortTranslationBridge.lean",
+        "sha256": "sha256:e741554cd7dd171b92e1c0ccaea28956def866cd826fd6a6036ea8fb87865a67"
+      },
+      {
+        "byte_count": 11656,
+        "path": "Lean/Screen/QuantumMatterIntegration.lean",
+        "sha256": "sha256:9d2c3ab2519e62b7e7867872ebebfd879e198c30b141c59eb93982c7c4b217c1"
+      },
+      {
+        "byte_count": 3016,
+        "path": "Lean/Screen/QuarkMeanDomain.lean",
+        "sha256": "sha256:94b2ef815049e4ca2ed5fc9c159c8f4d329e856d065e45ada5d713970e7ca8dc"
+      },
+      {
+        "byte_count": 4048,
+        "path": "Lean/Screen/RGRepresentationFrontier.lean",
+        "sha256": "sha256:11c46709746ab754b4a4f6e7ab58bd4cdc37b55ea8db8f9f3cb8f625d3f8995e"
+      },
+      {
+        "byte_count": 6862,
+        "path": "Lean/Screen/RegionalContinuity.lean",
+        "sha256": "sha256:fa00c3aed6580174519e1d828ad81572d7ac7b759a3274dbc60e99761d76bd28"
+      },
+      {
+        "byte_count": 12634,
+        "path": "Lean/Screen/RepairWordCarrierReadout.lean",
+        "sha256": "sha256:1b8a014942314a283682b88ea47273738333195d5b62112192c92badee4e89b6"
+      },
+      {
+        "byte_count": 1641,
+        "path": "Lean/Screen/S2DesignSignature.lean",
+        "sha256": "sha256:f65052472582d6b73caa941b661ae7959de392bb2dce5b5ef9bd133264869a61"
+      },
+      {
+        "byte_count": 3975,
+        "path": "Lean/Screen/SL2F5PortCover.lean",
+        "sha256": "sha256:3bf6a7f5f233ea6effda62f14a700eb49dcd54e40bf207e0693b7f11240641a3"
+      },
+      {
+        "byte_count": 41757,
+        "path": "Lean/Screen/SMStructureAdequacySurface.lean",
+        "sha256": "sha256:6e4907aa2c1fcb6c3a92604f172e4deb7be15e6d75c511c5d3810e824f589bde"
+      },
+      {
+        "byte_count": 15894,
+        "path": "Lean/Screen/SMStructureComposition.lean",
+        "sha256": "sha256:6fa13279c857bb6385890be627327b0a9fe90305256bb31a398ce4cbd92e6b1b"
+      },
+      {
+        "byte_count": 112404,
+        "path": "Lean/Screen/ScaledMaxwellStability.lean",
+        "sha256": "sha256:be4e129ef99445547a765a567a7e197fac38c1e2d6db4d1ddc6763f8cf511b6e"
+      },
+      {
+        "byte_count": 43304,
+        "path": "Lean/Screen/SeamChargeContinuity.lean",
+        "sha256": "sha256:b962b66edd392d28351972653cca9168e369e8d0d53afebea91e47ccd7698cc9"
+      },
+      {
+        "byte_count": 7512,
+        "path": "Lean/Screen/SeamCurrentAuxiliaryOscillatorLift.lean",
+        "sha256": "sha256:ae5f2bca66e2813a9dabcf0806fe12ebfe1a7b4704eb6c32f03829b3d125adfd"
+      },
+      {
+        "byte_count": 19162,
+        "path": "Lean/Screen/SeamCurrentCarrierQuotient.lean",
+        "sha256": "sha256:e5f712cbccc5a1462945f0cb511a47064fe10818748498021d5c70ae169a933f"
+      },
+      {
+        "byte_count": 28929,
+        "path": "Lean/Screen/SeamCurrentDirichletGenerator.lean",
+        "sha256": "sha256:d64d44941531540e00bc506303cc3b43f244da75bdf169aa94463daa5f9f423e"
+      },
+      {
+        "byte_count": 14563,
+        "path": "Lean/Screen/SeamCurrentEdge30Moment.lean",
+        "sha256": "sha256:dca0b721180b8b6a2363105ec9cb35bb9c5f5dca2da4352a9caef3b00129cd01"
+      },
+      {
+        "byte_count": 2968,
+        "path": "Lean/Screen/SeamCurrentEdge30Remainder.lean",
+        "sha256": "sha256:e5d90cf9d84a4b4394355f9704114937268b2bfd32c478c4f93e6c53cd493928"
+      },
+      {
+        "byte_count": 13119,
+        "path": "Lean/Screen/SeamCurrentFreePhotonLift.lean",
+        "sha256": "sha256:5c816286127815938c7c391d1764a67c899ce544b0b2bbb6768388de4fb5699c"
+      },
+      {
+        "byte_count": 28304,
+        "path": "Lean/Screen/SeamCurrentHomogeneousAction.lean",
+        "sha256": "sha256:1539274d87375209aeb583ca1e91e491ca5d166861505efa23f552ab93d9d094"
+      },
+      {
+        "byte_count": 42281,
+        "path": "Lean/Screen/SeamCurrentPhotonLeptonThreshold.lean",
+        "sha256": "sha256:1ee4fce48013d9281bf24d395b1b85d275ea744f969cfb0d83d965a323e71ccc"
+      },
+      {
+        "byte_count": 12774,
+        "path": "Lean/Screen/SeamCurrentPhysicalMetricAttachment.lean",
+        "sha256": "sha256:cc0ee55053cc3971945afe221f82f8062ab7ca8e4577200413a79eae8154143d"
+      },
+      {
+        "byte_count": 8304,
+        "path": "Lean/Screen/SeamMaxwellContinuum.lean",
+        "sha256": "sha256:6755c8c7d2b55610ddaed520a8a272fab4c270130c6ac62a6bcef074ee2d2a41"
+      },
+      {
+        "byte_count": 27901,
+        "path": "Lean/Screen/SeamU1HolonomyClassification.lean",
+        "sha256": "sha256:97a216adff1432cdcc332a1895af066e8df158c98d481a6f4d4bc4016f5bcb8f"
+      },
+      {
+        "byte_count": 5920,
+        "path": "Lean/Screen/SerialMaxwellReadout.lean",
+        "sha256": "sha256:7563219ce5a284db6cf55cfa61e82512661ccc5a122d930b6f04360417983a72"
+      },
+      {
+        "byte_count": 4703,
+        "path": "Lean/Screen/SourceActionTime.lean",
+        "sha256": "sha256:396a08ad89bf28c5d8d6a1aee2552793862b15bf59a54ec0d4017773f5def2ab"
+      },
+      {
+        "byte_count": 30445,
+        "path": "Lean/Screen/TemporalMaxwellEvolution.lean",
+        "sha256": "sha256:5e617c445abd94e87d2edcd7adf210eeff49fd9c161bc9a312eb49525750d647"
+      },
+      {
+        "byte_count": 357,
+        "path": "Lean/Screen/TopThreeKernelFix.lean",
+        "sha256": "sha256:1488c4be3bb2dd6041bb8cb396b7ea6f29a4c10178787e790f9e89ce5eaacf11"
+      },
+      {
+        "byte_count": 5279,
+        "path": "Lean/Screen/TraceBalancedKernel.lean",
+        "sha256": "sha256:a087881c99d871ba8125230fd6a5ec387602e26af10e0bd408e555ce7df5cd4d"
+      },
+      {
+        "byte_count": 6117,
+        "path": "Lean/Screen/TrichotomyCases.lean",
+        "sha256": "sha256:34baf8cbaaf9613140978c68520914a86c3931119eccca23267cae21ba711cf7"
+      },
+      {
+        "byte_count": 2802,
+        "path": "Lean/Screen/UnitSplit12.lean",
+        "sha256": "sha256:56668af60377d0bfee122ee4aa1aee40e8e0503ee67e0a30aff284cc9683bc88"
+      },
+      {
+        "byte_count": 11812,
+        "path": "Lean/Screen/VolumeReadoutBridge.lean",
+        "sha256": "sha256:7b8fa64b597ba418cfc3aafa4044d3ac2e60c9c33dd2495c1378e931ccf706e5"
+      },
+      {
+        "byte_count": 3810,
+        "path": "Lean/Screen/WeylYukawaConventions.lean",
+        "sha256": "sha256:ec896bc9a0055698b62ddf8b69f5df8ea4bf86863d940b5bb02b6225ba6f9ea7"
+      },
+      {
+        "byte_count": 5866,
+        "path": "Lean/Screen/WhitneyChargedMatter.lean",
+        "sha256": "sha256:183a8a9b9899a56a9b6f9078fff2d9487e02c90e38a3ed19d262432e8032b4ce"
+      },
+      {
+        "byte_count": 9992,
+        "path": "Lean/Screen/WhitneyConeMass.lean",
+        "sha256": "sha256:2a0e1b477d7d28ad4025cba1a61cca33902510d0b18badd4e1459516fce3a164"
+      },
+      {
+        "byte_count": 5145,
+        "path": "Lean/Screen/WhitneyConeMassNaturality.lean",
+        "sha256": "sha256:cf70c23d331e571ea0e48d0f023bf3b5ab47db7cc0246034a46c15f98f585661"
+      },
+      {
+        "byte_count": 13177,
+        "path": "Lean/Screen/WhitneyConeModes.lean",
+        "sha256": "sha256:9bb12a18f17500f0a0662daeb1493adb2f095cd40f875a9852cd9ac63694de67"
+      },
+      {
+        "byte_count": 4714,
+        "path": "Lean/Screen/WhitneyConeNaturality.lean",
+        "sha256": "sha256:4035f274c11a41a1f7894c0194fe28a78404cfe2b67d73a8015e2b236530560f"
+      },
+      {
+        "byte_count": 12291,
+        "path": "Lean/Screen/WhitneyFrameMorphism.lean",
+        "sha256": "sha256:77b9156c57ac7b94e44bf61c55161b44bd8b5dcf8786d89eb1fa221bd10d7751"
+      },
+      {
+        "byte_count": 24148,
+        "path": "Lean/Screen/WhitneyFrameNaturality.lean",
+        "sha256": "sha256:4505d0aaf3e2a539162aee85ca720fb8be5887968180eb636ba3080f5a2a9755"
+      },
+      {
+        "byte_count": 2770,
+        "path": "Lean/Screen/WhitneyMassPremiseInstance.lean",
+        "sha256": "sha256:0ffbb5925ecedcefa45acf62febf58590aad31d27c6e3bf9c731be5890278301"
+      },
+      {
+        "byte_count": 21770,
+        "path": "Lean/Screen/WhitneyMaxwellDynamics.lean",
+        "sha256": "sha256:a884dff86e39997e9ebf2fb9544d0b6228fee222553516327214381a0016bbc0"
+      },
+      {
+        "byte_count": 12242,
+        "path": "Lean/Screen/WhitneyNormalModeConstruction.lean",
+        "sha256": "sha256:b28a1baa8b4d88e6bd76902f6c874c156e23f0d73c06cdb47436d79ceebb38c4"
+      },
+      {
+        "byte_count": 19326,
+        "path": "Lean/Screen/WhitneyQuantumBridge.lean",
+        "sha256": "sha256:707a331b338d2c0491caa681700a25000540de14ac5b858dbc2d6198aad41a31"
+      },
+      {
+        "byte_count": 4639,
+        "path": "Lean/Screen/WhitneyRotationWitness.lean",
+        "sha256": "sha256:ecd595c861ba0989b4d310a14d84aa1b8ea5998a019521ba35e58d6bb81501be"
+      },
+      {
+        "byte_count": 4143,
+        "path": "Lean/Screen/WhitneySpatialConsistency.lean",
+        "sha256": "sha256:301425f17f95af6048f92ee054ed843ebd7551c2624baa9a6da39fb0d139aa73"
+      },
+      {
+        "byte_count": 9822,
+        "path": "Lean/Screen/WhitneyTimeBridge.lean",
+        "sha256": "sha256:de99efbefab155230989105c80f8579ae0897c9cd138cba84e6141fc660aaa98"
+      },
+      {
+        "byte_count": 8185,
+        "path": "Lean/Screen/Z6Descent.lean",
+        "sha256": "sha256:3e5c9f8bb842271df9791547464a70bcf2a0071ea187a6254b7cf02309c184f3"
+      },
+      {
+        "byte_count": 2584,
+        "path": "Lean/Screen/Z6Exact.lean",
+        "sha256": "sha256:574663731d964d1454ad59e058a853b2a61bc4cd501d69b3f22d8eb954373eaf"
+      },
+      {
+        "byte_count": 12799,
+        "path": "Lean/Time/ClockComparison.lean",
+        "sha256": "sha256:f8d747b5e8e1d5c325d35e53beada923bcdf1a79ff8c3c0b94b1851dedb20c8d"
+      },
+      {
+        "byte_count": 9382,
+        "path": "Lean/Time/ClockReadout.lean",
+        "sha256": "sha256:bbe0b9d99047a4de4e2bbc5cf01ec026bfa26e6fb63212702a5be8080053266d"
+      },
+      {
+        "byte_count": 3609,
+        "path": "Lean/Time/ObserverHistory.lean",
+        "sha256": "sha256:b475c006acb7c88a850f549cbe7c49adb6884e152ba6eb0fe19f9936d0f32374"
+      },
+      {
+        "byte_count": 4831,
+        "path": "Lean/Time/ProperTimeCalibration.lean",
+        "sha256": "sha256:d1886e271387cbbbe442f3648314a0c7838a792613c82f920e09035e3232c377"
+      },
+      {
+        "byte_count": 2203,
+        "path": "Lean/Time/SourceCountClock.lean",
+        "sha256": "sha256:f44c5c2823b9112711073542bfcd7e42b0e950af88c2c273b362fef2f5077f79"
+      },
+      {
+        "byte_count": 7156,
+        "path": "Lean/Time/SourceCountClockEnclosure.lean",
+        "sha256": "sha256:da28b096de82a7b69d7d48dfef07a6f76e4cf7754a50ab4b86ddf691ef83fb78"
+      },
+      {
+        "byte_count": 18164,
+        "path": "Lean/Time/TimeOrderLedger.lean",
+        "sha256": "sha256:88deb0a144a143330a017fc9fcc743d63584502b56ca659d8b2e0c534b853e5c"
+      },
+      {
+        "byte_count": 10372,
+        "path": "Lean/Time/WorldlineRealization.lean",
+        "sha256": "sha256:fc7bfea1d1f2df8a499aefc04c873732c1c932a511ecf5520306faf071960d36"
+      },
+      {
+        "byte_count": 4981,
+        "path": "Lean/Variational/DiscreteEulerLagrange.lean",
+        "sha256": "sha256:8b01768cd06f95b21724567b1cb111378c9c5272dae054b0f16d66c605cdadc9"
+      },
+      {
+        "byte_count": 10963,
+        "path": "Lean/Variational/DiscreteNoether.lean",
+        "sha256": "sha256:b611f5aed3f01ed279a3917a9be363c758a26a31e4c56db0f7b79a09cd846a28"
+      },
+      {
+        "byte_count": 51308,
+        "path": "Lean/Variational/EnrichmentCharacterization.lean",
+        "sha256": "sha256:9dbe6c4b8eb99cea54fa3ea736c1471c8a0f7ee19b177ff8cb72524aaa2b42f5"
+      },
+      {
+        "byte_count": 2899,
+        "path": "Lean/Variational/FiniteHistoryBridge.lean",
+        "sha256": "sha256:8042b708143d27318ed30364a46934506e7c1ca04f5af4bf9e45c2a0397f25e8"
+      },
+      {
+        "byte_count": 14259,
+        "path": "Lean/Variational/FiniteRealTransfer.lean",
+        "sha256": "sha256:26292323afdb6219ed8fec3bc72791d2e71fed67abf37f65eaf2fcd60b519eff"
+      },
+      {
+        "byte_count": 39554,
+        "path": "Lean/Variational/LegendreBridge.lean",
+        "sha256": "sha256:3df07c5dce65026be090474c0878cf3f7cc62f63e8b8933a540abcc44198cbd4"
+      },
+      {
+        "byte_count": 29190,
+        "path": "Lean/Variational/MechanicsAdequacySurface.lean",
+        "sha256": "sha256:2b76512365b012b77f112cd69fae9f14e25f85499d2a11644963c4b9376793ca"
+      },
+      {
+        "byte_count": 25116,
+        "path": "Lean/Variational/ModeExtremalEnrichment.lean",
+        "sha256": "sha256:69a1f024d082fe5b4fe7a6a2643751fdb7c3c453f0203326e6c6ecef2d7a71fa"
+      },
+      {
+        "byte_count": 47631,
+        "path": "Lean/Variational/PolynomialEnrichmentSelection.lean",
+        "sha256": "sha256:054fde203992d1ae9fc5f2a1388cc3742cb8935886a6e5cc23d9189f0908e0e2"
+      },
+      {
+        "byte_count": 16272,
+        "path": "Lean/Variational/RealizedHistoryLegendreNoGo.lean",
+        "sha256": "sha256:8fe216a6c6c2a735bab06a4fa197b48985c2d940a5d7288e4e64a5611696c125"
+      },
+      {
+        "byte_count": 26814,
+        "path": "Lean/Variational/SourceToHamiltonianComposed.lean",
+        "sha256": "sha256:d968918ff169223c320a7052b9514677924e60f5caa94bc07615f18e4e4ae5f0"
+      },
+      {
+        "byte_count": 7313,
+        "path": "Lean/Variational/StationarySaddleCoverage.lean",
+        "sha256": "sha256:3c0ca8b8fe246b2df56eded22c0f6caf5983cd7bcb02882e548e0f1b04e8a522"
+      },
+      {
+        "byte_count": 15913,
+        "path": "Lean/Variational/TranslationInvariantComposedInstance.lean",
+        "sha256": "sha256:01a0e5a867febc03fa3e84ee6831734b13be19596375e8b13d26fcb7cf78889e"
+      },
+      {
+        "byte_count": 34798,
+        "path": "code/a5_closure/README.md",
+        "sha256": "sha256:6c559ba6ac2bfc52c77728635a5a43a91c90e56d59c7a3761e736329d8cd71f4"
+      },
+      {
+        "byte_count": 37263,
+        "path": "code/a5_closure/a3_scheduler_kernel_certificate.py",
+        "sha256": "sha256:ffadea01ecfa8f35016c07c077f3eeef18035d99ed90ae1a4ec8d877dab27510"
+      },
+      {
+        "byte_count": 4005,
+        "path": "code/a5_closure/a5_compact_lie_classifier.py",
+        "sha256": "sha256:240fcf127805aafcca5acce7556d5e3f96848729d07a80ccad7aba26a47e7dd8"
+      },
+      {
+        "byte_count": 5030,
+        "path": "code/a5_closure/a5_harmonic_decomposition.py",
+        "sha256": "sha256:2ec13671761d90077dc965f9e8fc2d7841fc89f4c6b18186b69f6ccce903fad3"
+      },
+      {
+        "byte_count": 6379,
+        "path": "code/a5_closure/a5_screen_sm_closure.json",
+        "sha256": "sha256:b190f9dcb3b79405d809ed9e1f78fb45a382ab9170a1e8c74afe6dc022134e51"
+      },
+      {
+        "byte_count": 12295,
+        "path": "code/a5_closure/a5_screen_sm_closure.py",
+        "sha256": "sha256:f7f2c39c8cd0a28e9ec68355ea7f7ed4e6caed9d3e673e64d4cb1bde505befb0"
+      },
+      {
+        "byte_count": 8282,
+        "path": "code/a5_closure/a5_selection_certificate.py",
+        "sha256": "sha256:72279a95e0731d614fc17274ea5df1390ca0b6780b3ce5d968a6d55cd55a5b98"
+      },
+      {
+        "byte_count": 58405,
+        "path": "code/a5_closure/axis_center_descent_certificate.py",
+        "sha256": "sha256:d3f3a470f67e6918f7edd8c22b4dd6c953b4d53e49df94322d8929d1914430c8"
+      },
+      {
+        "byte_count": 31728,
+        "path": "code/a5_closure/baryon_dimension_six_census.py",
+        "sha256": "sha256:9dcf355d6db0e82c854a609addfa44266170c1348b8895f9d9a1cec054537110"
+      },
+      {
+        "byte_count": 2556,
+        "path": "code/a5_closure/bh_log_correction.py",
+        "sha256": "sha256:6f7bdab14f4defe7c590e1d451f5e38bb19af8c4a21ef15733fa844015e84f4c"
+      },
+      {
+        "byte_count": 20773,
+        "path": "code/a5_closure/check_common_ew_order_unit_carrier.py",
+        "sha256": "sha256:6a47a97a529670a2cc9bef9edeacc906e9a8294cb7edfd9d370d8c2ab51bc702"
+      },
+      {
+        "byte_count": 11077,
+        "path": "code/a5_closure/claim_boundary_certificates.py",
+        "sha256": "sha256:c0ae090aecb638bac1a9c3538a58bd95a8dda32defe7baac8dc73c93d638d53b"
+      },
+      {
+        "byte_count": 28202,
+        "path": "code/a5_closure/common_ew_order_unit_carrier_certificate.py",
+        "sha256": "sha256:acc1ee4e289cbf45792b4e58f50af0c04037016f987062c0321194414fb9f35d"
+      },
+      {
+        "byte_count": 23355,
+        "path": "code/a5_closure/coset_carrier_certificate.md",
+        "sha256": "sha256:10ccc2e2b841d97a841b5375f84b1f551109fd8b3678a3112cde941195707b94"
+      },
+      {
+        "byte_count": 57751,
+        "path": "code/a5_closure/coset_carrier_certificate.py",
+        "sha256": "sha256:f32f43d624a7b5ba5da2bbc489165c67fe5684abbc0515a73d071e078f6adf58"
+      },
+      {
+        "byte_count": 15379,
+        "path": "code/a5_closure/digest_conventions.py",
+        "sha256": "sha256:5ce97d8b12a67d90c38bab63e1136712da48074cc68dea20f0726c7507ee482d"
+      },
+      {
+        "byte_count": 31647,
+        "path": "code/a5_closure/directed_seam_repair_certificate.py",
+        "sha256": "sha256:928a4ab133b26a2befd2e94227f68a1ee0be1d70f184f3515a5b92655ae52ecd"
+      },
+      {
+        "byte_count": 21675,
+        "path": "code/a5_closure/echosahedral_selector_certificate.md",
+        "sha256": "sha256:3f8dba1689aa6e6f2e87eee21eb50846aca1369aa050c20ae922aa43c89c4d4d"
+      },
+      {
+        "byte_count": 57812,
+        "path": "code/a5_closure/echosahedral_selector_certificate.py",
+        "sha256": "sha256:e140adad7fe3162e38dbe44736669d9ea35f98a94acf90625d09fce9766385f7"
+      },
+      {
+        "byte_count": 36069,
+        "path": "code/a5_closure/equal_state_weights_certificate.py",
+        "sha256": "sha256:f8edc51ad843c01a2769928c623399c247446c6aae71fde90d50ff2facd787ba"
+      },
+      {
+        "byte_count": 5872,
+        "path": "code/a5_closure/exterior_sm_completion.json",
+        "sha256": "sha256:be6ad99ee2ebcabbcf1b09b4048c0fa7a07a135c3d119ebc65ce32f09e02914c"
+      },
+      {
+        "byte_count": 13356,
+        "path": "code/a5_closure/exterior_sm_completion.py",
+        "sha256": "sha256:2763b6c2a8a421f8220097d38e049444eac0afc987595e2cf1504f022fecb299"
+      },
+      {
+        "byte_count": 112493,
+        "path": "code/a5_closure/family_band_attachment_certificate.py",
+        "sha256": "sha256:327a8913f2c725e123c98238c7a8a113f3913d89453d8d3e0e8c0162d733ce2e"
+      },
+      {
+        "byte_count": 95414,
+        "path": "code/a5_closure/flux_defect_criterion_certificate.py",
+        "sha256": "sha256:e3bfc362b525d6f7f0ee27497c077e49836cac67ea3536763cb369767ba50297"
+      },
+      {
+        "byte_count": 3323,
+        "path": "code/a5_closure/gravity_units_corrected.py",
+        "sha256": "sha256:7a3138dde565a7d497b44b2a0bd98a1dd9f3673268a08c8b4010a686b85eae0e"
+      },
+      {
+        "byte_count": 1295,
+        "path": "code/a5_closure/hysteresis_scaling_guard.py",
+        "sha256": "sha256:99cae4e59fc2ed7ea98861bd33927944c7f800415225edf9a9b03ff0ac16e7ed"
+      },
+      {
+        "byte_count": 8652,
+        "path": "code/a5_closure/independent_lane_check.py",
+        "sha256": "sha256:91d1dea924db9195ae1e25f4ea8aa5173427b4dba2a5819df3198a776f337b63"
+      },
+      {
+        "byte_count": 2934,
+        "path": "code/a5_closure/independent_trichotomy_check.py",
+        "sha256": "sha256:7968a2326a837d8d6ca7dbbc14b2e00983341a614313b21997cc0a324fb21a38"
+      },
+      {
+        "byte_count": 72544,
+        "path": "code/a5_closure/issue_566_bracket_space_stage1/a5_alternating_bracket_reynolds_basis.json",
+        "sha256": "sha256:bee15ce78b3dcb2d7ce9da2a817fe27435cad5054765b10f86f29a5a1203c16b"
+      },
+      {
+        "byte_count": 19926,
+        "path": "code/a5_closure/issue_566_bracket_space_stage1/a5_alternating_bracket_space_stage1.receipt.json",
+        "sha256": "sha256:40c4d345e4f82e19aac7a51d71495a4a3a2c2585026352dc1c38424dcc16fa7a"
+      },
+      {
+        "byte_count": 36109,
+        "path": "code/a5_closure/issue_566_bracket_space_stage1/certify.py",
+        "sha256": "sha256:3b351429bfc3e11bafea3c7d7ff2c9708a81ea552f88409f13ff356ee015a3c9"
+      },
+      {
+        "byte_count": 9005,
+        "path": "code/a5_closure/issue_566_bracket_space_stage1/test_stage1.py",
+        "sha256": "sha256:7e20cb947f015b508031553b623c0d35c9a678ce29b1d17fe13bf39284185a63"
+      },
+      {
+        "byte_count": 40412,
+        "path": "code/a5_closure/issue_566_bracket_space_stage1/verify.py",
+        "sha256": "sha256:eb1bf9e0d046e23981a1e7399a4684cea1f7f2b3ea2f80492611f726c284f628"
+      },
+      {
+        "byte_count": 9557,
+        "path": "code/a5_closure/issue_566_bracket_space_stage2/a5_jacobi_stage2.receipt.json",
+        "sha256": "sha256:e84dd8bcf71d0039a225f47aeb85f4e462d9cb70a897d22ffe8cf41e9d310625"
+      },
+      {
+        "byte_count": 535915,
+        "path": "code/a5_closure/issue_566_bracket_space_stage2/a5_jacobi_system_reduction.json",
+        "sha256": "sha256:d45b1bcda5648e4514e12589b004f8a10e9cd5da498d69d17303fa99bc1ac011"
+      },
+      {
+        "byte_count": 103951,
+        "path": "code/a5_closure/issue_566_bracket_space_stage2/certify.py",
+        "sha256": "sha256:9b0283aecc785fb5b35c206a70b340bd3bab2dbc78aded5b022c9502fe674d28"
+      },
+      {
+        "byte_count": 5692,
+        "path": "code/a5_closure/issue_566_bracket_space_stage2/test_stage2.py",
+        "sha256": "sha256:a57f1cc635225902455e0e84e13ddffa0bdfd40c596ef26a1c8ae13263bcc62b"
+      },
+      {
+        "byte_count": 93453,
+        "path": "code/a5_closure/issue_566_bracket_space_stage2/verify.py",
+        "sha256": "sha256:c809abacdc297aaf41926f26a405394c801c5c79e4ea130a05e37f8075fac97f"
+      },
+      {
+        "byte_count": 73335,
+        "path": "code/a5_closure/load_fiber_readback_certificate.py",
+        "sha256": "sha256:d14e5afaeabb4361cb68fe68d15b2d825923e83e9af24e40cfbbb9cb7ab9db87"
+      },
+      {
+        "byte_count": 10927,
+        "path": "code/a5_closure/manifests/a3_scheduler_kernel_reference.json",
+        "sha256": "sha256:85435a4c36bccace0e81fb0bb9476444641a63750067557bb79a006cec8879eb"
+      },
+      {
+        "byte_count": 1224,
+        "path": "code/a5_closure/manifests/axis_center_descent_reference.json",
+        "sha256": "sha256:269f92b088c4cde42a9017d220bcdc8b70d1fc5e6635521827a31428def18dab"
+      },
+      {
+        "byte_count": 2746,
+        "path": "code/a5_closure/manifests/charged_response_pole_residue_artifact.json",
+        "sha256": "sha256:b9aa5c01fe19e73e83334594ba37b1e7908c659dc2aac8ef1e8c9e05cc62b76c"
+      },
+      {
+        "byte_count": 7890,
+        "path": "code/a5_closure/manifests/charged_response_semantic_artifact.json",
+        "sha256": "sha256:e1478527b6ec1c61332a3b86bc35f2b32b0247eba02b34f40030f0b9fea4b75b"
+      },
+      {
+        "byte_count": 12969,
+        "path": "code/a5_closure/manifests/classical_realization_receipt.json",
+        "sha256": "sha256:0071d986e31f9df89c6a06605238d5d10903194e6ffe95f1cc5760e2152caa5a"
+      },
+      {
+        "byte_count": 9252,
+        "path": "code/a5_closure/manifests/clock_unit_verdict.json",
+        "sha256": "sha256:9cc884694cffd9070fba61b859c5e1bb3312e4a939642ecc537300b6a9156e49"
+      },
+      {
+        "byte_count": 10863,
+        "path": "code/a5_closure/manifests/common_ew_order_unit_carrier_reference.json",
+        "sha256": "sha256:3512417a3a7a38bf31c22310ebe15e2d6e313fcde6437a184792c3db36b00516"
+      },
+      {
+        "byte_count": 477,
+        "path": "code/a5_closure/manifests/coset_carrier_reference.json",
+        "sha256": "sha256:e05dda9c639a9e77b1e3f7fcadfd94aa151c7b15d2d10922ef9b7635e98c46f3"
+      },
+      {
+        "byte_count": 10677,
+        "path": "code/a5_closure/manifests/directed_seam_repair_reference.json",
+        "sha256": "sha256:6047567e986036bc07419bb76b014cf383f8576fd270d1c29059ca0492385f16"
+      },
+      {
+        "byte_count": 3646,
+        "path": "code/a5_closure/manifests/echosahedral_federation_reference.json",
+        "sha256": "sha256:12ec97358ade25f919f9981f1cd7c99c2b27aaaaa9ce14bd2320d73a9c1bfc14"
+      },
+      {
+        "byte_count": 9308,
+        "path": "code/a5_closure/manifests/equal_state_weights_reference.json",
+        "sha256": "sha256:284284871107c63bd28e21ba6536a48d6c43e10b3746f76f06fcd7a9435366fc"
+      },
+      {
+        "byte_count": 44009,
+        "path": "code/a5_closure/manifests/family_band_attachment_reference.json",
+        "sha256": "sha256:3a02d02fd3bcd318535348186aad7008c861c7ff3b8c9558f64d36b7ee0eb64b"
+      },
+      {
+        "byte_count": 2404,
+        "path": "code/a5_closure/manifests/flux_defect_criterion_reference.json",
+        "sha256": "sha256:1a5317e2ac1692e59e0b2966b904bde7a5473b49b76ddbec6c8d5133e6cf41e2"
+      },
+      {
+        "byte_count": 9246,
+        "path": "code/a5_closure/manifests/global_form_semantic_artifact.json",
+        "sha256": "sha256:8c30b0128832497c31b21b8d596628ece4f4dd544ed033ba44d91b4675352f4f"
+      },
+      {
+        "byte_count": 36952,
+        "path": "code/a5_closure/manifests/load_fiber_readback_reference.json",
+        "sha256": "sha256:88455c12f6ee5f81704e4c6385253e3df591dbabb6309b1d68855787c9e0c889"
+      },
+      {
+        "byte_count": 8616,
+        "path": "code/a5_closure/manifests/matter_attachment_receipt.json",
+        "sha256": "sha256:f58c6c283cfff1d4c2bb10c0db050fce256bcd5ce17bb4d5bc1fda545c2e799e"
+      },
+      {
+        "byte_count": 21767,
+        "path": "code/a5_closure/manifests/matter_menu_spectral_ledger_reference.json",
+        "sha256": "sha256:5cfdd0d31189d4182c7f4ef8df3a76e835962b7fdf8c4ef500fad15787938131"
+      },
+      {
+        "byte_count": 18209,
+        "path": "code/a5_closure/manifests/multiplicity_window_reference.json",
+        "sha256": "sha256:54cb301235aa49dfc147f7c03f52597f454bdd0643a27efb8c35a680cd6c03d1"
+      },
+      {
+        "byte_count": 1672,
+        "path": "code/a5_closure/manifests/noncentral_seam_reduction_reference.json",
+        "sha256": "sha256:27493b4fb818e4de26378d5ff0df9cdb9b8910d450727542ee0bad7ef081d0dd"
+      },
+      {
+        "byte_count": 1173,
+        "path": "code/a5_closure/manifests/optimizer_pushforward_reference.json",
+        "sha256": "sha256:c781b75047298d28ed481ea11600afd219e7421c2cbf918a36cdeaa4b10ed685"
+      },
+      {
+        "byte_count": 1921,
+        "path": "code/a5_closure/manifests/port_current_response_reference.json",
+        "sha256": "sha256:6293cf69746dcf665197eba9ddda28f568ffb88b311ef45fabf1993bd84c8f74"
+      },
+      {
+        "byte_count": 13141,
+        "path": "code/a5_closure/manifests/record_counting_mechanism_reference.json",
+        "sha256": "sha256:13429664e61008e3d2414fecf758deebb15bfe21eada8cf42e7afc4ef64d7eb3"
+      },
+      {
+        "byte_count": 1449,
+        "path": "code/a5_closure/manifests/response_grammar_completeness_reference.json",
+        "sha256": "sha256:6617ace7306714c107dfbe9cced13a4a15005e35e54408732e7e7c7713af6fc3"
+      },
+      {
+        "byte_count": 1627,
+        "path": "code/a5_closure/manifests/routed_seam_grammar_reference.json",
+        "sha256": "sha256:bf8e983a09aa7ce91b9eeb7491ecf6f65b2a52dee4a4408a32ae3af25f8476a2"
+      },
+      {
+        "byte_count": 5410,
+        "path": "code/a5_closure/manifests/scalar_sector_blindness_reference.json",
+        "sha256": "sha256:86ce5c2cac4106fdd42f90980c1bf451c612d7669d300f271953cbfa87322e3f"
+      },
+      {
+        "byte_count": 12040,
+        "path": "code/a5_closure/manifests/seam_grammar_matter_classification_reference.json",
+        "sha256": "sha256:c04e6debd914fc9fd39b8438d08ff95f169273c63a79be00390dd15a21f24403"
+      },
+      {
+        "byte_count": 15258,
+        "path": "code/a5_closure/manifests/source_current_capability_projection.json",
+        "sha256": "sha256:de57eda6b1d8832106d8c3b8b95b2521b662bd89c16eb12b63cd801cb5161e00"
+      },
+      {
+        "byte_count": 7293,
+        "path": "code/a5_closure/manifests/spin_statistics_semantic_artifact.json",
+        "sha256": "sha256:a757219196e18504488a93ac9dce0d4c599edba96b14f1c7ba52ae95e5b317ff"
+      },
+      {
+        "byte_count": 7121,
+        "path": "code/a5_closure/manifests/stage4_receipt.json",
+        "sha256": "sha256:f491e70b0ce2706f5cf27bc515af71705fbddc2731a6883ccb3743259fc9659b"
+      },
+      {
+        "byte_count": 3597,
+        "path": "code/a5_closure/manifests/super_tannakian_matter_reference.json",
+        "sha256": "sha256:cb627653c332996adcec8f9d501299e0fcb272958b346316946b613253040c59"
+      },
+      {
+        "byte_count": 44292,
+        "path": "code/a5_closure/matter_menu_spectral_ledger_certificate.py",
+        "sha256": "sha256:a5e01681bfd9ddbc3723b3e51adaf933d6009c777aa12fa3a92610313b2a3cd9"
+      },
+      {
+        "byte_count": 35102,
+        "path": "code/a5_closure/multiplicity_window_certificate.py",
+        "sha256": "sha256:11ba7d832d9d203f61752fa8f691f56e36c5eb3058f71752a24a24025c532e4f"
+      },
+      {
+        "byte_count": 4174,
+        "path": "code/a5_closure/negative_controls/coset_carrier_negative_controls.json",
+        "sha256": "sha256:e0659b656d80a37dadcf1c0602bf2cbb09ac045726dc122f338018a0bb4e37f6"
+      },
+      {
+        "byte_count": 4469,
+        "path": "code/a5_closure/negative_controls/issue_311_negative_controls.json",
+        "sha256": "sha256:d5d0582d1ea883142e94bb0c5b23becb5db73283b28d2434610743f612c238ba"
+      },
+      {
+        "byte_count": 5187,
+        "path": "code/a5_closure/negative_controls/issue_314_negative_controls.json",
+        "sha256": "sha256:e097d3ced4dfe7c77a6f8926f34990e2abbd47acbc6cdd9c50b990555c1a2cbf"
+      },
+      {
+        "byte_count": 4757,
+        "path": "code/a5_closure/negative_controls/issue_565_negative_controls.json",
+        "sha256": "sha256:3765355078b30ad8bb04968eb437bd205abe0690203b6b2dc1eac39ec7f834b3"
+      },
+      {
+        "byte_count": 6267,
+        "path": "code/a5_closure/negative_controls/issue_566_negative_controls.json",
+        "sha256": "sha256:b27882f1d515989e0a45f5b9acde973db59e0e6c50d1086f3cfe42381aba8092"
+      },
+      {
+        "byte_count": 2926,
+        "path": "code/a5_closure/negative_controls/issue_567_negative_controls.json",
+        "sha256": "sha256:d95fe47d24d5b7a67b99164fda5b78e04a2253b261ebf599d15feebfb3e023b3"
+      },
+      {
+        "byte_count": 2488,
+        "path": "code/a5_closure/negative_controls/issue_611_negative_controls.json",
+        "sha256": "sha256:6629fffd2fa9591348fcda1acff0f5983ea60f9e4ba27107d2b2a7e1b264096d"
+      },
+      {
+        "byte_count": 2731,
+        "path": "code/a5_closure/negative_controls/issue_613_negative_controls.json",
+        "sha256": "sha256:aee49d77a4e0ebb181f16049afc4373c162ef362940215c8158c52ed0ef1a125"
+      },
+      {
+        "byte_count": 2248,
+        "path": "code/a5_closure/negative_controls/issue_619_negative_controls.json",
+        "sha256": "sha256:958946c1453160d6898551b610b699658a88a2663df17e74a82fbb0fbacf8756"
+      },
+      {
+        "byte_count": 3867,
+        "path": "code/a5_closure/negative_controls/issue_624_negative_controls.json",
+        "sha256": "sha256:da86ffd54982080bc470c494816fa7331627221c2cc8d4456b95137b2578cdd7"
+      },
+      {
+        "byte_count": 106720,
+        "path": "code/a5_closure/noncentral_seam_reduction_certificate.py",
+        "sha256": "sha256:64b227fb7f5ccf5e95ba2faf8faefa28f457b9cd19f822f3a1611ef915de529f"
+      },
+      {
+        "byte_count": 45049,
+        "path": "code/a5_closure/optimizer_pushforward_certificate.py",
+        "sha256": "sha256:65359499c052def99571713aae66d46ca3f385e6796a97d92c0dc08dd50d99e6"
+      },
+      {
+        "byte_count": 29279,
+        "path": "code/a5_closure/port_current_algebra_certificate.md",
+        "sha256": "sha256:1b4ca423e73519b1209c2e97d2042d34a5e1ee37088e8eb91219cb5442c8bf24"
+      },
+      {
+        "byte_count": 119621,
+        "path": "code/a5_closure/port_current_inner_certificate.py",
+        "sha256": "sha256:8ac3f51d08155decc328ebb8c12909bf92f9a50313f14ebc0faf70c0d2513436"
+      },
+      {
+        "byte_count": 5638,
+        "path": "code/a5_closure/receipts/a5_angular_multiplet_reference.receipt.json",
+        "sha256": "sha256:93d72fb361d3522145aab7bbf21edabcc4a2d960f87e66629ef831c4662a9e89"
+      },
+      {
+        "byte_count": 15587,
+        "path": "code/a5_closure/receipts/axis_center_descent_reference.receipt.json",
+        "sha256": "sha256:c12251507f8843c664854da0682717b3a6b437fdc5632679c7fe1d4918c5d2fb"
+      },
+      {
+        "byte_count": 21206,
+        "path": "code/a5_closure/receipts/baryon_dimension_six_census.receipt.json",
+        "sha256": "sha256:8ccf2d76b55289076d0b930cba3b807c155b2a055ca2de85735bcaea168943a7"
+      },
+      {
+        "byte_count": 1209,
+        "path": "code/a5_closure/receipts/common_ew_order_unit_carrier_reference.receipt.json",
+        "sha256": "sha256:be3ea36a7e1cf7232c34fa90b0fa8b2757b47f503dcd37c005bfe4c9b1ee639c"
+      },
+      {
+        "byte_count": 9802,
+        "path": "code/a5_closure/receipts/coset_carrier_reference.receipt.json",
+        "sha256": "sha256:e98c43e27461bfc9f8b455b38d57b687b0639fbb5153b13acc8c4ddaf299de82"
+      },
+      {
+        "byte_count": 15457,
+        "path": "code/a5_closure/receipts/echosahedral_federation_reference.receipt.json",
+        "sha256": "sha256:bffec48f0d11d488fb02b852dd110394148a997b739a366f519fec5f9ac31ca5"
+      },
+      {
+        "byte_count": 36667,
+        "path": "code/a5_closure/receipts/flux_defect_criterion_reference.receipt.json",
+        "sha256": "sha256:fdf93db4b3d7b46013040b88d372aa5e02a7b9aaa63a71a4fa6fb5b68f0b2023"
+      },
+      {
+        "byte_count": 36236,
+        "path": "code/a5_closure/receipts/noncentral_seam_reduction_reference.receipt.json",
+        "sha256": "sha256:2a9ec7df764b5a8b60a4810ef799c49119836b5fd4bbde31a6d35d4f0b337eae"
+      },
+      {
+        "byte_count": 17576,
+        "path": "code/a5_closure/receipts/optimizer_pushforward_reference.receipt.json",
+        "sha256": "sha256:1d6275c9bb6c038ffaa1d30cf8a9cdec253c09aa486b82b05fb64ba0d47604f6"
+      },
+      {
+        "byte_count": 78165,
+        "path": "code/a5_closure/receipts/port_current_inner_reference.receipt.json",
+        "sha256": "sha256:efa206d21f59af5a96006ff283a191418c7f4a8c5f3125fcb42d1e03b1f5289b"
+      },
+      {
+        "byte_count": 9217,
+        "path": "code/a5_closure/receipts/response_grammar_completeness_reference.receipt.json",
+        "sha256": "sha256:7788ef56ddb746759c5ae2b4ef8dcef8029a39f4f16389d471fdb8aa383f1e65"
+      },
+      {
+        "byte_count": 8156,
+        "path": "code/a5_closure/receipts/routed_seam_grammar_reference.receipt.json",
+        "sha256": "sha256:d3af76f303803279a211477d5360af767d4e273ba0ba6569c1f78c35f7a89508"
+      },
+      {
+        "byte_count": 5187,
+        "path": "code/a5_closure/receipts/source_current_capability.receipt.json",
+        "sha256": "sha256:5366eba7f2f512ebacbaf5d30fbe38d90ac6c42ac7a5ba1d84c2117879d95406"
+      },
+      {
+        "byte_count": 38319,
+        "path": "code/a5_closure/receipts/super_tannakian_matter_reference.receipt.json",
+        "sha256": "sha256:528090fb708fb398ec1d385486757c483e2d0b5ad84500592aa61f3b17748ef3"
+      },
+      {
+        "byte_count": 52734,
+        "path": "code/a5_closure/record_counting_mechanism_certificate.py",
+        "sha256": "sha256:6d3ca5ba399b4ee2d0cf015fcc98e24ef40ae94361d27f6e85d9b2b3ee356165"
+      },
+      {
+        "byte_count": 48357,
+        "path": "code/a5_closure/response_grammar_completeness_certificate.py",
+        "sha256": "sha256:5e3f0c52208619a1609fd3c002ed48bdfa480d8adaa92bf2c91b769c5e556338"
+      },
+      {
+        "byte_count": 58576,
+        "path": "code/a5_closure/routed_seam_grammar_certificate.py",
+        "sha256": "sha256:690e9f10601a83424673fe35de4ebd7a7eb31f5ad86ae195696f5b09c3bf9c92"
+      },
+      {
+        "byte_count": 17328,
+        "path": "code/a5_closure/scalar_sector_blindness_certificate.py",
+        "sha256": "sha256:54b9aaea168e7bd4cb44aa2dae2e928368187d9f088c0aae179bb489b2d8f174"
+      },
+      {
+        "byte_count": 24652,
+        "path": "code/a5_closure/seam_grammar_matter_classification_certificate.py",
+        "sha256": "sha256:b90cf063c55043077026f056fbbcfafe43d164a6bb5e8e71dc70e096a2533a10"
+      },
+      {
+        "byte_count": 2873,
+        "path": "code/a5_closure/sl2f5_mckay_e8_certificate.md",
+        "sha256": "sha256:3573c13b39abcf3bb5c9c217c0caca0b5a84b8a5d5000f853dcd4a14c016b265"
+      },
+      {
+        "byte_count": 27051,
+        "path": "code/a5_closure/sl2f5_mckay_e8_certificate.py",
+        "sha256": "sha256:19c3813cc076bed4658bccdeaf800ed622206f7af7f11546be6d7ffd6b599fb8"
+      },
+      {
+        "byte_count": 19338,
+        "path": "code/a5_closure/sl2f5_port_spin_bridge_certificate.py",
+        "sha256": "sha256:4f6ff274384f16ff5ecdd06979e9648b572bc18b8f6c868535f5a977d4e90dce"
+      },
+      {
+        "byte_count": 30357,
+        "path": "code/a5_closure/source_current_capability_certificate.py",
+        "sha256": "sha256:860bd8f99d9c99567e0042b6cb46aead74d483e31ebd70bacc52f5edf22f96b0"
+      },
+      {
+        "byte_count": 68233,
+        "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
+        "sha256": "sha256:b60a15719baeec988a25dcb3d485f446c0e0aa1a430c0dabd228e91cc5239ce7"
+      },
+      {
+        "byte_count": 3552,
+        "path": "code/a5_closure/source_current_tomography_stage0.md",
+        "sha256": "sha256:da78cceddf7497e9a6f1a56a984312551412e336424acd4be119832e24d88ad1"
+      },
+      {
+        "byte_count": 7257,
+        "path": "code/a5_closure/source_current_tomography_stage0.py",
+        "sha256": "sha256:af41fdb16e13ba4089f735e9e8394e8dcd1b130b499eebac3affe33a2a8d3e79"
+      },
+      {
+        "byte_count": 4292,
+        "path": "code/a5_closure/source_current_tomography_stage1.md",
+        "sha256": "sha256:70505ce86551ce58af7b377aeb1328043c101e1e82c2e73422d3731a4bc471d8"
+      },
+      {
+        "byte_count": 8859,
+        "path": "code/a5_closure/source_current_tomography_stage1_contract.py",
+        "sha256": "sha256:3b1665d8a7fc5f62aa23d547cc15cf9d8be629d59d9a03c1e7523e38bfa82e0a"
+      },
+      {
+        "byte_count": 6466,
+        "path": "code/a5_closure/source_current_tomography_stage2.md",
+        "sha256": "sha256:48be2102e26d2b720a1b051ca06dda3f2750bff0f4e53f411cb47b3f9f4bc70b"
+      },
+      {
+        "byte_count": 34067,
+        "path": "code/a5_closure/super_tannakian_matter_lift_certificate.md",
+        "sha256": "sha256:c5f9651620103d6e15d10521066b0556951775023639b50d25837981512a505a"
+      },
+      {
+        "byte_count": 150420,
+        "path": "code/a5_closure/super_tannakian_matter_lift_certificate.py",
+        "sha256": "sha256:f6f3ed3f6d9b9bcfe3fd3c23663e97cb17db512d54c06c008a41e7ef2cc6b1fa"
+      },
+      {
+        "byte_count": 10045,
+        "path": "code/a5_closure/test_audit.py",
+        "sha256": "sha256:f6150a1ccf9c46d5ece349740b5f1384bdaaefa4aff1c38e29a2411e98ad9cf8"
+      },
+      {
+        "byte_count": 8671,
+        "path": "code/a5_closure/tests/test_a3_scheduler_kernel_certificate.py",
+        "sha256": "sha256:39ebba8b06c7dd632697e5a48c7dfd3b7a7b8058f00e5cde0b687b2735fbba1f"
+      },
+      {
+        "byte_count": 9563,
+        "path": "code/a5_closure/tests/test_axis_center_descent_certificate.py",
+        "sha256": "sha256:c9dc8ba60d230b311c6f67577e50908588e26fd679d7956d46b72de87adaa389"
+      },
+      {
+        "byte_count": 7794,
+        "path": "code/a5_closure/tests/test_baryon_dimension_six_census.py",
+        "sha256": "sha256:c06436e18ec528cc5b0d36e1bf81d43c072de7dbb52e47215cc427eaa509ec83"
+      },
+      {
+        "byte_count": 9714,
+        "path": "code/a5_closure/tests/test_common_ew_order_unit_carrier_certificate.py",
+        "sha256": "sha256:e1ee0465710e7f4f3e5d3feb0939b5283b5c736694b5d369fd231cfca2ef6cf5"
+      },
+      {
+        "byte_count": 8695,
+        "path": "code/a5_closure/tests/test_coset_carrier_certificate.py",
+        "sha256": "sha256:d5ce87730be1632abeaf29980bf352f0c637a02532a7cb00cdfbc43c06cfe0e1"
+      },
+      {
+        "byte_count": 11534,
+        "path": "code/a5_closure/tests/test_digest_conventions.py",
+        "sha256": "sha256:ff3c4743340a4f29851a33dfb55792fa2e39341b012fbbb61de625a580d28092"
+      },
+      {
+        "byte_count": 8414,
+        "path": "code/a5_closure/tests/test_directed_seam_repair_certificate.py",
+        "sha256": "sha256:7cabfc15ebb017d463186cf3bda34dc689cf140e55fd7a88cc5b3f47428a2b96"
+      },
+      {
+        "byte_count": 9535,
+        "path": "code/a5_closure/tests/test_echosahedral_selector_certificate.py",
+        "sha256": "sha256:e93a5d1ee641f0694bfc5a3ab07f707e2fec276600f380b80bb2881f82bb4c45"
+      },
+      {
+        "byte_count": 9853,
+        "path": "code/a5_closure/tests/test_equal_state_weights_certificate.py",
+        "sha256": "sha256:01e4f17de7662dbc657a016525ac16a81c731f222b004f5b5a6cea7d5d762e3f"
+      },
+      {
+        "byte_count": 18802,
+        "path": "code/a5_closure/tests/test_family_band_attachment_certificate.py",
+        "sha256": "sha256:025065ee318493c6496e3c1c73cc3c53dde6a101886a1ab1ac8358ea34bb25f2"
+      },
+      {
+        "byte_count": 18389,
+        "path": "code/a5_closure/tests/test_flux_defect_criterion_certificate.py",
+        "sha256": "sha256:da6297d4f55448e33e5b02c1e247fd645daefefbc0e82ecffc50a4d470e579d4"
+      },
+      {
+        "byte_count": 23780,
+        "path": "code/a5_closure/tests/test_load_fiber_readback_certificate.py",
+        "sha256": "sha256:2487bb59e738866fc38308d5c89dc1408dbe98d77d7593ea4f1d1079f79bab35"
+      },
+      {
+        "byte_count": 15901,
+        "path": "code/a5_closure/tests/test_matter_menu_spectral_ledger_certificate.py",
+        "sha256": "sha256:6fe1c0de4a31162a35f685f2942e5fd595b8609051d602e21dce2bebeba57dd6"
+      },
+      {
+        "byte_count": 15289,
+        "path": "code/a5_closure/tests/test_multiplicity_window_certificate.py",
+        "sha256": "sha256:7130dc8178d2630ba22a11b3e07ce809d008946531508501d907d547595e4df6"
+      },
+      {
+        "byte_count": 22573,
+        "path": "code/a5_closure/tests/test_noncentral_seam_reduction_certificate.py",
+        "sha256": "sha256:76a12c0fd82fcf38c23538e39c237644a671441fe61377277e41ae01332b1cbb"
+      },
+      {
+        "byte_count": 11225,
+        "path": "code/a5_closure/tests/test_optimizer_pushforward_certificate.py",
+        "sha256": "sha256:0e4b1ff10df9ae214665946ab1fbc28a26509447db931bdbdff10699fd70a971"
+      },
+      {
+        "byte_count": 19399,
+        "path": "code/a5_closure/tests/test_port_current_inner_certificate.py",
+        "sha256": "sha256:c6d11fbf73131d31676a06ec0e237cf967f7c6632c1d93e7be213f2dc1de11b0"
+      },
+      {
+        "byte_count": 7159,
+        "path": "code/a5_closure/tests/test_record_counting_mechanism_certificate.py",
+        "sha256": "sha256:6865d6d02d81c7ef990a6587adfda0865c277c964b8a097c39ad5be57796ace3"
+      },
+      {
+        "byte_count": 9218,
+        "path": "code/a5_closure/tests/test_response_grammar_completeness_certificate.py",
+        "sha256": "sha256:e9924572580c24e9acef45b21c5a93c584c3b3fc5f07ca9332bf50e1a1ac2c26"
+      },
+      {
+        "byte_count": 11553,
+        "path": "code/a5_closure/tests/test_routed_seam_grammar_certificate.py",
+        "sha256": "sha256:ae8149ff344e5df609ef3e7265d8b7a156ff46700445c92d63eac12e8be25209"
+      },
+      {
+        "byte_count": 5276,
+        "path": "code/a5_closure/tests/test_scalar_sector_blindness_certificate.py",
+        "sha256": "sha256:1633e90d64ef48670feae6d571215c088fb769c4b34fc4bd845fd850c8feef96"
+      },
+      {
+        "byte_count": 5768,
+        "path": "code/a5_closure/tests/test_seam_grammar_matter_classification_certificate.py",
+        "sha256": "sha256:34debbc4a16a47abb7f4f131f9978741d358c532af9de90ad96380951633e3d8"
+      },
+      {
+        "byte_count": 2887,
+        "path": "code/a5_closure/tests/test_sl2f5_mckay_e8_certificate.py",
+        "sha256": "sha256:67081032da8b8550d231cbb59f9d760867ee3f0f462c0585f4e97258dba8a456"
+      },
+      {
+        "byte_count": 2833,
+        "path": "code/a5_closure/tests/test_sl2f5_port_spin_bridge_certificate.py",
+        "sha256": "sha256:a351e888855279df3fb1cfc03042a2ef6103a01ccbaf3ecc7d2e8cd816417f6e"
+      },
+      {
+        "byte_count": 8065,
+        "path": "code/a5_closure/tests/test_source_current_capability_certificate.py",
+        "sha256": "sha256:15b5e07ff026ca12fec6d1b8ac04146adf970a55f54a475c63501cce6b26258a"
+      },
+      {
+        "byte_count": 12199,
+        "path": "code/a5_closure/tests/test_source_current_order_sensitive_inventory.py",
+        "sha256": "sha256:d09c61ad3b645f2f55a64083ff36abc6140324f73c8ff91ef038fe60b79775cd"
+      },
+      {
+        "byte_count": 2867,
+        "path": "code/a5_closure/tests/test_source_current_tomography_stage0.py",
+        "sha256": "sha256:71436fc244313063065c2a2b4d1efe8442cd7ec213f829cbcd104fb6b17baf10"
+      },
+      {
+        "byte_count": 3295,
+        "path": "code/a5_closure/tests/test_source_current_tomography_stage1_contract.py",
+        "sha256": "sha256:eae849d2b00a147b8024f4efa805870c3d9859fa99efd53d007cdf84456ec896"
+      },
+      {
+        "byte_count": 24446,
+        "path": "code/a5_closure/tests/test_super_tannakian_matter_lift_certificate.py",
+        "sha256": "sha256:97d6041b9dfc852c1c0082ea07afb7374c00edc689b5fc5fdc2aacf5ff8bf35f"
+      },
+      {
+        "byte_count": 17420,
+        "path": "code/a5_closure/verify_baryon_dimension_six_census_independent.py",
+        "sha256": "sha256:abb83f17ef1f309ffee0599e63108f01dddeb46ac601b4d5798f978940714910"
+      },
+      {
+        "byte_count": 20870,
+        "path": "code/a5_closure/verify_source_current_capability_independent.py",
+        "sha256": "sha256:1646cc0e77b7efc7dbea77cdfdaeea47a9918b805c1e1aea0791b754a7454a8a"
+      },
+      {
+        "byte_count": 33180,
+        "path": "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
+        "sha256": "sha256:9a9c04c6eaba09bc6c83bec88af730bee61be9c6a4cebaaccc3d979047f2904c"
+      },
+      {
+        "byte_count": 10424,
+        "path": "code/angular_sprint/angular_fingerprint_extension.py",
+        "sha256": "sha256:eda80e5d903a401a6f5c1bf99c84c73207366fc475bf909f46f8abb50fda0e66"
+      },
+      {
+        "byte_count": 34876,
+        "path": "code/angular_sprint/angular_interpolant_certificate.py",
+        "sha256": "sha256:4a0cd3dc721bad08ffe926d9481f9272525ab44eae2e4241d372637ae6dc5543"
+      },
+      {
+        "byte_count": 23558,
+        "path": "code/angular_sprint/electroweak_pole_quotient_certificate.py",
+        "sha256": "sha256:b58755ebd0f2df8efad0b283734fefe1da39dc7e59f8eab9b521822c8a218244"
+      },
+      {
+        "byte_count": 32254,
+        "path": "code/angular_sprint/kinetic_form_selection_certificate.py",
+        "sha256": "sha256:36db6dbd44a2f1d6013965aa2ed0ea9b4939d9ba47c6962352606c1406ae5df9"
+      },
+      {
+        "byte_count": 17300,
+        "path": "code/angular_sprint/kinetic_ray_certificate.py",
+        "sha256": "sha256:1d4ca12ae0faa0172a124b348781b98824d9efeea38859eb20a46ec1becda9ab"
+      },
+      {
+        "byte_count": 30101,
+        "path": "code/angular_sprint/refinement_transfer_certificate.py",
+        "sha256": "sha256:ddc977dd93a56a2c35b083272defd4ff24b483c5922328a8d8e575e56a128194"
+      },
+      {
+        "byte_count": 3309,
+        "path": "code/angular_sprint/runtime/angular_fingerprint_receipt.json",
+        "sha256": "sha256:d8afc7b8ab60bf357b69b4cb1dcea7b7691a0e08ca6f956ac2c87c5d7e2f68c2"
+      },
+      {
+        "byte_count": 14010,
+        "path": "code/angular_sprint/runtime/angular_template_receipt.json",
+        "sha256": "sha256:b7772facf76c7a9e416e0433d6baa1e60c143fa4c63fd3d3d9915a301025a861"
+      },
+      {
+        "byte_count": 12252,
+        "path": "code/angular_sprint/runtime/electroweak_pole_quotient_receipt.json",
+        "sha256": "sha256:6edae85139f7699e36ff89109cbe2ddc68838d1a87acf8099cfc615916a1ec45"
+      },
+      {
+        "byte_count": 8006,
+        "path": "code/angular_sprint/runtime/kinetic_form_selection_receipt.json",
+        "sha256": "sha256:bb086d9b792d87667904f5ab9c5b948bce3c92163a68780af09f1b7c98cf3a9a"
+      },
+      {
+        "byte_count": 6658,
+        "path": "code/angular_sprint/runtime/kinetic_ray_receipt.json",
+        "sha256": "sha256:50e00a87e394085c0e5022c4f299930127b7476d49e85db7b4d8f04d64331edd"
+      },
+      {
+        "byte_count": 7497,
+        "path": "code/angular_sprint/runtime/refinement_transfer_receipt.json",
+        "sha256": "sha256:1aa20d35cb67a231e7b16495dd032f38f9676ed119c8c70c71c8264521c3d412"
+      },
+      {
+        "byte_count": 2773,
+        "path": "code/angular_sprint/test_angular_fingerprint_extension.py",
+        "sha256": "sha256:8a75e8afd0e3c56f49b6dcc6a55bf1bcb061e9513df88e4477a7f04eea3666a1"
+      },
+      {
+        "byte_count": 6646,
+        "path": "code/angular_sprint/test_angular_interpolant_certificate.py",
+        "sha256": "sha256:0faaa3dff6a2d13308c9e3af72f26a360f374ef002340ec52a85c9244a873d0d"
+      },
+      {
+        "byte_count": 10674,
+        "path": "code/angular_sprint/test_electroweak_pole_quotient_certificate.py",
+        "sha256": "sha256:ee4aed7975739f178742df572901f507ec6cfe9f0ebba6d9956ca1548bd596ab"
+      },
+      {
+        "byte_count": 8018,
+        "path": "code/angular_sprint/test_kinetic_form_selection_certificate.py",
+        "sha256": "sha256:50506b3edd9872a093f2da4d2415812d53c4955f3b4cfd35ce743923b27f4ef1"
+      },
+      {
+        "byte_count": 3564,
+        "path": "code/angular_sprint/test_kinetic_ray_certificate.py",
+        "sha256": "sha256:1b239330232bba0fb2be9da781e52b68860156cc2cf5c7cddc7d778dc5af4331"
+      },
+      {
+        "byte_count": 5143,
+        "path": "code/angular_sprint/test_refinement_transfer_certificate.py",
+        "sha256": "sha256:89c7733e39b3d08086f666277f4e7b85b96f36a5966b0aa7330925a7c2148d0a"
+      },
+      {
+        "byte_count": 6583,
+        "path": "code/angular_sprint/test_verify_kinetic_form_selection_independent.py",
+        "sha256": "sha256:88cbed880939cb4ce00e9621539e12ed28443a77a1b29d50e5dd3eed4aa9175f"
+      },
+      {
+        "byte_count": 27888,
+        "path": "code/angular_sprint/verify_electroweak_pole_quotient.py",
+        "sha256": "sha256:07d56dfd9d7f78e55df6f317e0542950908bae332356177263af1274048d2864"
+      },
+      {
+        "byte_count": 27687,
+        "path": "code/angular_sprint/verify_kinetic_form_selection_independent.py",
+        "sha256": "sha256:8507221cee47ceb81dfb9befa63832599648bf90a91d29059b8f625896c0217e"
+      },
+      {
+        "byte_count": 8060,
+        "path": "code/consensus/README.md",
+        "sha256": "sha256:f35f6cabe27ed4d270b1d0b7463f7af502a1409aa118a27ba82b537fd496a5ff"
+      },
+      {
+        "byte_count": 64362,
+        "path": "code/consensus/compiled_lattice_settling_certificate.py",
+        "sha256": "sha256:79eddf4e3abb93a697ca63cce13ccc1e8b5e5c0b18080820f51cf7eaf4d43579"
+      },
+      {
+        "byte_count": 15243,
+        "path": "code/consensus/export_verified_tree_packet_net.py",
+        "sha256": "sha256:67fc696f4fd17b8e007f55fd19a924a40ac505ebded40e5bcfd23ad5219eb433"
+      },
+      {
+        "byte_count": 21767,
+        "path": "code/consensus/manifests/compiled_lattice_settling_reference.json",
+        "sha256": "sha256:cf97f82543006062ea2ceb906c98d132f5cfb24860ad5eba542b6c602f363e7d"
+      },
+      {
+        "byte_count": 11576,
+        "path": "code/consensus/reference_architecture_benchmark_suite.py",
+        "sha256": "sha256:783d829653f1f62070d6e72fd16fa61ff6dcb2797bb5ad08f45b29f5d404b84d"
+      },
+      {
+        "byte_count": 98520,
+        "path": "code/consensus/runs/issue_517_proof_obligations.json",
+        "sha256": "sha256:4d713c0c2904b99226dafe68b2367a661d0f3924e90f1fe174c56cc40f0a4e46"
+      },
+      {
+        "byte_count": 47003,
+        "path": "code/consensus/runs/reference_architecture_benchmark_suite_current.json",
+        "sha256": "sha256:6561c9a77d7d91c3c1ae3896018b749e516fed4b4315945dff511ef692416041"
+      },
+      {
+        "byte_count": 5596,
+        "path": "code/consensus/runs/verified_tree_packet_net_domain.json",
+        "sha256": "sha256:2d5eac8d7dd84eac273ac86b246f95a9fd21035d826e476b7b957ddd6c891b8f"
+      },
+      {
+        "byte_count": 12303,
+        "path": "code/consensus/test_compiled_lattice_settling_certificate.py",
+        "sha256": "sha256:f6d5eb34e668f59c3d85fbd6ec4f607d69ce70b70bb06a184e86f75080e0d5a8"
+      },
+      {
+        "byte_count": 14560,
+        "path": "code/consensus/test_issue_517_proof_obligations.py",
+        "sha256": "sha256:d92bf79d439e25639163d7d326d9a609dd3f85c286ed1ba5d5a076d33bc4a100"
+      },
+      {
+        "byte_count": 2045,
+        "path": "code/consensus/test_reference_architecture_benchmark_suite.py",
+        "sha256": "sha256:a3af2c4f012b366df41e317726d9fbf2db2d2347e27d6152b67c9996acb11f28"
+      },
+      {
+        "byte_count": 4825,
+        "path": "code/consensus/test_transport_from_gluing_obstruction.py",
+        "sha256": "sha256:f0e18dfb007c39559d73442110212b2dd8dc02f75b40be9252fa17fc7edc9235"
+      },
+      {
+        "byte_count": 5996,
+        "path": "code/consensus/test_verified_tree_packet_net.py",
+        "sha256": "sha256:63286f30a48e9c02373563d6efcac6997d63ba89af7367b741143c6201f7d638"
+      },
+      {
+        "byte_count": 3963,
+        "path": "code/consensus/transport_from_gluing.py",
+        "sha256": "sha256:d048f835a6e8dc0dcca8d7edc019e275e214f8a66b56d45937c54b78c20120db"
+      },
+      {
+        "byte_count": 123027,
+        "path": "code/consensus/verify_issue_517_proof_obligations.py",
+        "sha256": "sha256:9c1dba2e61589101914d41f6afa96b4079f7c17d284a5c4b140dad324143866d"
+      },
+      {
+        "byte_count": 39169,
+        "path": "code/refinement/discrete_refinement_certificate.py",
+        "sha256": "sha256:8f133ecc2cd8d5f1b9bdd17ae5e9a05ef5c905bcce659a9f3cf55e740de38e68"
+      },
+      {
+        "byte_count": 28119,
+        "path": "code/refinement/runtime/discrete_refinement_theorem_receipt.json",
+        "sha256": "sha256:bb63ffb6bf85289bb5aae385a1aa5b2793f730c0f960b6c84eedc945a79b3bcc"
+      },
+      {
+        "byte_count": 10986,
+        "path": "code/refinement/test_discrete_refinement_certificate.py",
+        "sha256": "sha256:715e03a9e75e09e3aa328aa439a17338ce0143887b1341444df9ed14c6198737"
+      },
+      {
+        "byte_count": 29013,
+        "path": "code/refinement/verify_discrete_refinement_independent.py",
+        "sha256": "sha256:6d4a7cfb5f0c1a31701b7ab15783460432b03716a80da36a256c8a80802ec230"
+      },
+      {
+        "byte_count": 3970,
+        "path": "code/source_feedback_transport/README.md",
+        "sha256": "sha256:f6e89aed4cf726f459cc8352ac915dc87d3b9d1871e8ad2b79425bed069e9b43"
+      },
+      {
+        "byte_count": 10067,
+        "path": "code/source_feedback_transport/build_transport.py",
+        "sha256": "sha256:4636cd752ea9ed47f03893319904e8950f68d38caf770d46ffbbdb554957322b"
+      },
+      {
+        "byte_count": 783,
+        "path": "code/source_feedback_transport/specification.json",
+        "sha256": "sha256:7cb21154101b5ca7001f6ce6a3ca06a3605150dae0f79dd5fcff196d2d9c6345"
+      },
+      {
+        "byte_count": 10945,
+        "path": "code/source_feedback_transport/test_transport.py",
+        "sha256": "sha256:1a439f0fa4836dcabeeeee88e79873357d0e89454564e9c97d7ca51164c5d73f"
+      },
+      {
+        "byte_count": 2561339,
+        "path": "code/source_feedback_transport/transport_receipt.json",
+        "sha256": "sha256:54b1cbed79cf92b138125d43b71eab343976ddb12e86e375b60d5acb26931119"
+      },
+      {
+        "byte_count": 14978,
+        "path": "code/source_feedback_transport/verify_transport.py",
+        "sha256": "sha256:b6e328a3a67662e92db257abea6ea1283d388a7e72ecc1fe857bf03306d2bc85"
+      },
+      {
+        "byte_count": 4006,
+        "path": "code/source_routing/README.md",
+        "sha256": "sha256:13e16a741b6873b8413c2470b4260bf002946aebb3013abe3f594a579ba31e0c"
+      },
+      {
+        "byte_count": 8150,
+        "path": "code/source_routing/build_routing.py",
+        "sha256": "sha256:0723f55d99afc0c82027559707c294d0895e2919c2d9e3392068861e9ca21a61"
+      },
+      {
+        "byte_count": 1899,
+        "path": "code/source_routing/capture_support.py",
+        "sha256": "sha256:6d3f054a8228594ccdbf0425bc36c569c01fd7646efbc21ecbc59a4018ab55e9"
+      },
+      {
+        "byte_count": 795123,
+        "path": "code/source_routing/runtime/path_tomography_receipt.json",
+        "sha256": "sha256:82af29a8c44cd97a7559681de5fae25f2afed8c5833c76f5a057ad50a913abd4"
+      },
+      {
+        "byte_count": 959,
+        "path": "code/source_routing/specification.json",
+        "sha256": "sha256:fe06b5a4b54cd6e7e239d8f097c0ae1c3a26dff9af45cfed6c567bec2273d7da"
+      },
+      {
+        "byte_count": 130163,
+        "path": "code/source_routing/support_w12_l3.json",
+        "sha256": "sha256:57ec958cb0c26f1614df67b88549bf193213ec3997863d818e462befdeb0f5a4"
+      },
+      {
+        "byte_count": 5894,
+        "path": "code/source_routing/test_routing.py",
+        "sha256": "sha256:71ba3b70a6f10310a5b725353ccbd19d57ffc8c20b3491fdfc22c98c50fb37be"
+      },
+      {
+        "byte_count": 13792,
+        "path": "code/source_routing/verify_routing.py",
+        "sha256": "sha256:8522ffad53c3cc0db462da11c0c54f2a095f5748ad44f77c8cc25f51a418aacc"
+      },
+      {
+        "byte_count": 2344,
+        "path": "code/source_scalar_instruments/README.md",
+        "sha256": "sha256:dc7c5aad0353201b5b265afc6c62b9e17bfce9a83328351046adc23eee1db41c"
+      },
+      {
+        "byte_count": 9997,
+        "path": "code/source_scalar_instruments/sequential_instrument.py",
+        "sha256": "sha256:b9737419f9fd50f8201db2560168ae6f25ea3e20ff9fe28ab3aa848c64daeb15"
+      },
+      {
+        "byte_count": 31631,
+        "path": "code/source_scalar_instruments/sequential_instrument_receipt.json",
+        "sha256": "sha256:cc52802cba28f66c8bb9f49f2175dd32a1932262f23759447c289bf203dbf601"
+      },
+      {
+        "byte_count": 9189,
+        "path": "code/source_scalar_instruments/test_sequential_instrument.py",
+        "sha256": "sha256:1d35ec6ab1594d1f4c2325f03e290b1ee10e97e133a5601ca972155a66797938"
+      },
+      {
+        "byte_count": 13877,
+        "path": "code/source_scalar_instruments/verify_sequential_instrument.py",
+        "sha256": "sha256:0c34c486f2ed28d48550195723eeca2ad71823a46c1db18a8403c9781231d9f9"
+      }
     ],
-    "path_count": 432,
-    "paths": [
-      "Lean/Dynamics/CenterSpectral.lean",
-      "Lean/Dynamics/CentralBlocks.lean",
-      "Lean/Dynamics/ChoiCPTP.lean",
-      "Lean/Dynamics/ConditionalExpectationGenerator.lean",
-      "Lean/Dynamics/PrivateInner.lean",
-      "Lean/Dynamics/ProtectedCharge.lean",
-      "Lean/Dynamics/PublicAutomorphism.lean",
-      "Lean/Dynamics/PublicMarkov.lean",
-      "Lean/Dynamics/StarWedderburn.lean",
-      "Lean/Dynamics/StoneConverse.lean",
-      "Lean/Dynamics/WardLimitManifest.lean",
-      "Lean/Geometry/CanonicalLorentzModule.lean",
-      "Lean/Geometry/CarrierDynamicsCompatibility.lean",
-      "Lean/Geometry/CausalOrderComposition.lean",
-      "Lean/Geometry/CelestialNullCone.lean",
-      "Lean/Geometry/CelestialSoldering.lean",
-      "Lean/Geometry/ChargeFixedInteraction.lean",
-      "Lean/Geometry/CommonWorldInstrumentJoin.lean",
-      "Lean/Geometry/CommonWorldIslandBridge.lean",
-      "Lean/Geometry/CommonWorldJointAction.lean",
-      "Lean/Geometry/CommonWorldKinematicsWitness.lean",
-      "Lean/Geometry/CommonWorldMaxwellClockJoin.lean",
-      "Lean/Geometry/CompositeMomentumCovariance.lean",
-      "Lean/Geometry/CrossingReadAreaLaw.lean",
-      "Lean/Geometry/EinsteinBranchInhabitant.lean",
-      "Lean/Geometry/EinsteinTensorBridge.lean",
-      "Lean/Geometry/EventFrameSoldering.lean",
-      "Lean/Geometry/EventGermDisplacement.lean",
-      "Lean/Geometry/EventPopulationChartInterface.lean",
-      "Lean/Geometry/FreeEvolutionPersistence.lean",
-      "Lean/Geometry/GoldenSourceAssignment.lean",
-      "Lean/Geometry/GoldenSourceCountLimit.lean",
-      "Lean/Geometry/IntegerKCombInvariance.lean",
-      "Lean/Geometry/InternalClockRestFrequency.lean",
-      "Lean/Geometry/InternalEnergyInertia.lean",
-      "Lean/Geometry/InverseSquareShellLaw.lean",
-      "Lean/Geometry/LorentzOverlapCocycle.lean",
-      "Lean/Geometry/MassShellKinematics.lean",
-      "Lean/Geometry/MetricKernelEnergy.lean",
-      "Lean/Geometry/ObserverFrameHyperboloid.lean",
-      "Lean/Geometry/ObserverRestSpace.lean",
-      "Lean/Geometry/OrderingFractionFourDimensional.lean",
-      "Lean/Geometry/PortChargeMinimalCoupling.lean",
-      "Lean/Geometry/ProperLengthClockedChain.lean",
-      "Lean/Geometry/ProperTimeInternalAction.lean",
-      "Lean/Geometry/RefiningLatticeCausalCone.lean",
-      "Lean/Geometry/RestFiberShellTransport.lean",
-      "Lean/Geometry/ScreenCarrierMapCandidate.lean",
-      "Lean/Geometry/SeamStepSpeedLimit.lean",
-      "Lean/Geometry/SourceClockRateAlongWorldlines.lean",
-      "Lean/Geometry/SourceDerivedSpacetimeCarrier.lean",
-      "Lean/Geometry/SourceFeedbackTransport.lean",
-      "Lean/Geometry/SourceNetCausalCone.lean",
-      "Lean/Geometry/SourceNetConformalRecordDensity.lean",
-      "Lean/Geometry/SourceNetLayeredOrder.lean",
-      "Lean/Geometry/SourceOrderEinsteinComposition.lean",
-      "Lean/Geometry/SourceOrderFrameCompatibilityPacket.lean",
-      "Lean/Geometry/SourcePopulationQuadrature.lean",
-      "Lean/Geometry/SourceRecordProtection.lean",
-      "Lean/Geometry/SourceSeamPathTomography.lean",
-      "Lean/Geometry/SpatialReadbackSoldering.lean",
-      "Lean/Geometry/TimelikeClassForceLaw.lean",
-      "Lean/Geometry/TransportedChargeForceLaw.lean",
-      "Lean/Geometry/WorldlineHopTransport.lean",
-      "Lean/InformationProjection/GlobalObjective.lean",
-      "Lean/InformationProjection/HistoryLaw.lean",
-      "Lean/InformationProjection/LogTransitionAction.lean",
-      "Lean/InformationProjection/PathGibbs.lean",
-      "Lean/InformationProjection/ReferenceNormalForm.lean",
-      "Lean/InformationProjection/SourceHistoryPacket.lean",
-      "Lean/InformationProjection/SourceReferenceSelection.lean",
-      "Lean/Screen/A2HolonomyBridge.lean",
-      "Lean/Screen/A5AngularBands.lean",
-      "Lean/Screen/A5AngularKernels.lean",
-      "Lean/Screen/A5AngularMultiplets.lean",
-      "Lean/Screen/A5CarrierClassBand.lean",
-      "Lean/Screen/A5CharacterField.lean",
-      "Lean/Screen/A5Commutant.lean",
-      "Lean/Screen/A5CouplingSymmetry.lean",
-      "Lean/Screen/A5FamilyBand.lean",
-      "Lean/Screen/A5IncidenceResponse.lean",
-      "Lean/Screen/A5OPH.lean",
-      "Lean/Screen/A5OrbitRaySeparation.lean",
-      "Lean/Screen/A5PortAction.lean",
-      "Lean/Screen/A5PortModule.lean",
-      "Lean/Screen/A5PortSixAxesBridge.lean",
-      "Lean/Screen/A5PrimitivePortPrediction.lean",
-      "Lean/Screen/A5ResponseWordAlgebra.lean",
-      "Lean/Screen/A5SixAxes.lean",
-      "Lean/Screen/ActionTimeGram.lean",
-      "Lean/Screen/AssembledActionComposition.lean",
-      "Lean/Screen/B10EdgeCenterAction.lean",
-      "Lean/Screen/B10QuantumLimitations.lean",
-      "Lean/Screen/BaryonDimensionSix.lean",
-      "Lean/Screen/BipoSHFrameInvariant.lean",
-      "Lean/Screen/BipoSHInverseBoundary.lean",
-      "Lean/Screen/BipoSHTransferInvariant.lean",
-      "Lean/Screen/CarrierEvolutionFlow.lean",
-      "Lean/Screen/CarrierFrequencySpeed.lean",
-      "Lean/Screen/CarrierModeEquivariance.lean",
-      "Lean/Screen/CarrierModeOscillators.lean",
-      "Lean/Screen/CarrierUniqueness.lean",
-      "Lean/Screen/CartanScalarReduction.lean",
-      "Lean/Screen/CertifiedScaledStepInstrument.lean",
-      "Lean/Screen/ChargedCurrentDictionary.lean",
-      "Lean/Screen/CommonEWOrderUnit.lean",
-      "Lean/Screen/Compact12.lean",
-      "Lean/Screen/ConeCochainBridge.lean",
-      "Lean/Screen/CurlSectorEigenbasis.lean",
-      "Lean/Screen/CurlStoneClockBridge.lean",
-      "Lean/Screen/DiscreteCoulombGreen.lean",
-      "Lean/Screen/DiscreteGauss.lean",
-      "Lean/Screen/DiscreteRefinement.lean",
-      "Lean/Screen/DispersionArmingInterface.lean",
-      "Lean/Screen/ElectroweakBreakingComposition.lean",
-      "Lean/Screen/ElectroweakPoleScaleQuotient.lean",
-      "Lean/Screen/EqualStateWeights.lean",
-      "Lean/Screen/ExteriorComponentBridge.lean",
-      "Lean/Screen/ExteriorSelection.lean",
-      "Lean/Screen/FermionSectorAssembly.lean",
-      "Lean/Screen/FieldSectorEnergyInnerProduct.lean",
-      "Lean/Screen/GaugeKineticInvariantForms.lean",
-      "Lean/Screen/GaugeOrbitQuotientGap.lean",
-      "Lean/Screen/GaugeSectorBracketCompletion.lean",
-      "Lean/Screen/GlobalFormCharacterDescent.lean",
-      "Lean/Screen/GoldenSectorCharacters.lean",
-      "Lean/Screen/GoldenSectorComplexIrreducibility.lean",
-      "Lean/Screen/GoldenSectorIrreducibility.lean",
-      "Lean/Screen/GoldenSectorPSL2F5Representations.lean",
-      "Lean/Screen/HolonomyInterference.lean",
-      "Lean/Screen/KineticFamilyCancellation.lean",
-      "Lean/Screen/KineticFormDichotomy.lean",
-      "Lean/Screen/KogutSusskindFiberRateComparison.lean",
-      "Lean/Screen/LabeledEventReadout.lean",
-      "Lean/Screen/LayeredDiscreteGauss.lean",
-      "Lean/Screen/LightSignalAdequacySurface.lean",
-      "Lean/Screen/LightSignalMaxwellComposition.lean",
-      "Lean/Screen/LocalEnergyBalance.lean",
-      "Lean/Screen/LocalFaceMaxwellAction.lean",
-      "Lean/Screen/LocalGaugeJetAction.lean",
-      "Lean/Screen/MagneticMatterStability.lean",
-      "Lean/Screen/MatterGrammarIndexBridge.lean",
-      "Lean/Screen/ModalMaxwellFactorizationBoundary.lean",
-      "Lean/Screen/NeutralCurrentDictionary.lean",
-      "Lean/Screen/NeutralPairCoupledAction.lean",
-      "Lean/Screen/NeutralPairJointStationaryWitness.lean",
-      "Lean/Screen/OPHScreen.lean",
-      "Lean/Screen/OrientedFaceBracketSelector.lean",
-      "Lean/Screen/OrientedFaceInvariantMetric.lean",
-      "Lean/Screen/PSL2F5SixAxesBridge.lean",
-      "Lean/Screen/PhysicalA5ForcingNoGo.lean",
-      "Lean/Screen/PortDualMetricSelection.lean",
-      "Lean/Screen/PortFrameGram.lean",
-      "Lean/Screen/PortGramA5Isometry.lean",
-      "Lean/Screen/PortGramRepairBand.lean",
-      "Lean/Screen/PortGramRepairCovariance.lean",
-      "Lean/Screen/PositionSpaceMaxwellAction.lean",
-      "Lean/Screen/PrimitiveHopSelection.lean",
-      "Lean/Screen/PrimitivePortDualMeasure.lean",
-      "Lean/Screen/PrimitivePortFrameQuotient.lean",
-      "Lean/Screen/PrimitivePortMetricAttachment.lean",
-      "Lean/Screen/PrimitivePortOperatorSelectionBoundary.lean",
-      "Lean/Screen/PrimitivePortScaleBoundary.lean",
-      "Lean/Screen/PrimitivePortTranslationBridge.lean",
-      "Lean/Screen/QuantumMatterIntegration.lean",
-      "Lean/Screen/QuarkMeanDomain.lean",
-      "Lean/Screen/RGRepresentationFrontier.lean",
-      "Lean/Screen/RegionalContinuity.lean",
-      "Lean/Screen/RepairWordCarrierReadout.lean",
-      "Lean/Screen/S2DesignSignature.lean",
-      "Lean/Screen/SL2F5PortCover.lean",
-      "Lean/Screen/SMStructureAdequacySurface.lean",
-      "Lean/Screen/SMStructureComposition.lean",
-      "Lean/Screen/ScaledMaxwellStability.lean",
-      "Lean/Screen/SeamChargeContinuity.lean",
-      "Lean/Screen/SeamCurrentAuxiliaryOscillatorLift.lean",
-      "Lean/Screen/SeamCurrentCarrierQuotient.lean",
-      "Lean/Screen/SeamCurrentDirichletGenerator.lean",
-      "Lean/Screen/SeamCurrentEdge30Moment.lean",
-      "Lean/Screen/SeamCurrentEdge30Remainder.lean",
-      "Lean/Screen/SeamCurrentFreePhotonLift.lean",
-      "Lean/Screen/SeamCurrentHomogeneousAction.lean",
-      "Lean/Screen/SeamCurrentPhotonLeptonThreshold.lean",
-      "Lean/Screen/SeamCurrentPhysicalMetricAttachment.lean",
-      "Lean/Screen/SeamMaxwellContinuum.lean",
-      "Lean/Screen/SeamU1HolonomyClassification.lean",
-      "Lean/Screen/SerialMaxwellReadout.lean",
-      "Lean/Screen/SourceActionTime.lean",
-      "Lean/Screen/TemporalMaxwellEvolution.lean",
-      "Lean/Screen/TopThreeKernelFix.lean",
-      "Lean/Screen/TraceBalancedKernel.lean",
-      "Lean/Screen/TrichotomyCases.lean",
-      "Lean/Screen/UnitSplit12.lean",
-      "Lean/Screen/VolumeReadoutBridge.lean",
-      "Lean/Screen/WeylYukawaConventions.lean",
-      "Lean/Screen/WhitneyChargedMatter.lean",
-      "Lean/Screen/WhitneyMaxwellDynamics.lean",
-      "Lean/Screen/WhitneyQuantumBridge.lean",
-      "Lean/Screen/WhitneySpatialConsistency.lean",
-      "Lean/Screen/WhitneyTimeBridge.lean",
-      "Lean/Screen/Z6Descent.lean",
-      "Lean/Screen/Z6Exact.lean",
-      "Lean/Time/ClockComparison.lean",
-      "Lean/Time/ClockReadout.lean",
-      "Lean/Time/ObserverHistory.lean",
-      "Lean/Time/ProperTimeCalibration.lean",
-      "Lean/Time/SourceCountClock.lean",
-      "Lean/Time/SourceCountClockEnclosure.lean",
-      "Lean/Time/TimeOrderLedger.lean",
-      "Lean/Time/WorldlineRealization.lean",
-      "Lean/Variational/DiscreteEulerLagrange.lean",
-      "Lean/Variational/DiscreteNoether.lean",
-      "Lean/Variational/EnrichmentCharacterization.lean",
-      "Lean/Variational/FiniteHistoryBridge.lean",
-      "Lean/Variational/FiniteRealTransfer.lean",
-      "Lean/Variational/LegendreBridge.lean",
-      "Lean/Variational/MechanicsAdequacySurface.lean",
-      "Lean/Variational/ModeExtremalEnrichment.lean",
-      "Lean/Variational/PolynomialEnrichmentSelection.lean",
-      "Lean/Variational/RealizedHistoryLegendreNoGo.lean",
-      "Lean/Variational/SourceToHamiltonianComposed.lean",
-      "Lean/Variational/StationarySaddleCoverage.lean",
-      "Lean/Variational/TranslationInvariantComposedInstance.lean",
-      "code/a5_closure/README.md",
-      "code/a5_closure/a3_scheduler_kernel_certificate.py",
-      "code/a5_closure/a5_compact_lie_classifier.py",
-      "code/a5_closure/a5_harmonic_decomposition.py",
-      "code/a5_closure/a5_screen_sm_closure.json",
-      "code/a5_closure/a5_screen_sm_closure.py",
-      "code/a5_closure/a5_selection_certificate.py",
-      "code/a5_closure/axis_center_descent_certificate.py",
-      "code/a5_closure/baryon_dimension_six_census.py",
-      "code/a5_closure/bh_log_correction.py",
-      "code/a5_closure/check_common_ew_order_unit_carrier.py",
-      "code/a5_closure/claim_boundary_certificates.py",
-      "code/a5_closure/common_ew_order_unit_carrier_certificate.py",
-      "code/a5_closure/coset_carrier_certificate.md",
-      "code/a5_closure/coset_carrier_certificate.py",
-      "code/a5_closure/digest_conventions.py",
-      "code/a5_closure/directed_seam_repair_certificate.py",
-      "code/a5_closure/echosahedral_selector_certificate.md",
-      "code/a5_closure/echosahedral_selector_certificate.py",
-      "code/a5_closure/equal_state_weights_certificate.py",
-      "code/a5_closure/exterior_sm_completion.json",
-      "code/a5_closure/exterior_sm_completion.py",
-      "code/a5_closure/family_band_attachment_certificate.py",
-      "code/a5_closure/flux_defect_criterion_certificate.py",
-      "code/a5_closure/gravity_units_corrected.py",
-      "code/a5_closure/hysteresis_scaling_guard.py",
-      "code/a5_closure/independent_lane_check.py",
-      "code/a5_closure/independent_trichotomy_check.py",
-      "code/a5_closure/issue_566_bracket_space_stage1/a5_alternating_bracket_reynolds_basis.json",
-      "code/a5_closure/issue_566_bracket_space_stage1/a5_alternating_bracket_space_stage1.receipt.json",
-      "code/a5_closure/issue_566_bracket_space_stage1/certify.py",
-      "code/a5_closure/issue_566_bracket_space_stage1/test_stage1.py",
-      "code/a5_closure/issue_566_bracket_space_stage1/verify.py",
-      "code/a5_closure/issue_566_bracket_space_stage2/a5_jacobi_stage2.receipt.json",
-      "code/a5_closure/issue_566_bracket_space_stage2/a5_jacobi_system_reduction.json",
-      "code/a5_closure/issue_566_bracket_space_stage2/certify.py",
-      "code/a5_closure/issue_566_bracket_space_stage2/test_stage2.py",
-      "code/a5_closure/issue_566_bracket_space_stage2/verify.py",
-      "code/a5_closure/load_fiber_readback_certificate.py",
-      "code/a5_closure/manifests/a3_scheduler_kernel_reference.json",
-      "code/a5_closure/manifests/axis_center_descent_reference.json",
-      "code/a5_closure/manifests/charged_response_pole_residue_artifact.json",
-      "code/a5_closure/manifests/charged_response_semantic_artifact.json",
-      "code/a5_closure/manifests/classical_realization_receipt.json",
-      "code/a5_closure/manifests/clock_unit_verdict.json",
-      "code/a5_closure/manifests/common_ew_order_unit_carrier_reference.json",
-      "code/a5_closure/manifests/coset_carrier_reference.json",
-      "code/a5_closure/manifests/directed_seam_repair_reference.json",
-      "code/a5_closure/manifests/echosahedral_federation_reference.json",
-      "code/a5_closure/manifests/equal_state_weights_reference.json",
-      "code/a5_closure/manifests/family_band_attachment_reference.json",
-      "code/a5_closure/manifests/flux_defect_criterion_reference.json",
-      "code/a5_closure/manifests/global_form_semantic_artifact.json",
-      "code/a5_closure/manifests/load_fiber_readback_reference.json",
-      "code/a5_closure/manifests/matter_attachment_receipt.json",
-      "code/a5_closure/manifests/matter_menu_spectral_ledger_reference.json",
-      "code/a5_closure/manifests/multiplicity_window_reference.json",
-      "code/a5_closure/manifests/noncentral_seam_reduction_reference.json",
-      "code/a5_closure/manifests/optimizer_pushforward_reference.json",
-      "code/a5_closure/manifests/port_current_response_reference.json",
-      "code/a5_closure/manifests/record_counting_mechanism_reference.json",
-      "code/a5_closure/manifests/response_grammar_completeness_reference.json",
-      "code/a5_closure/manifests/routed_seam_grammar_reference.json",
-      "code/a5_closure/manifests/scalar_sector_blindness_reference.json",
-      "code/a5_closure/manifests/seam_grammar_matter_classification_reference.json",
-      "code/a5_closure/manifests/source_current_capability_projection.json",
-      "code/a5_closure/manifests/source_current_order_sensitive_inventory.json",
-      "code/a5_closure/manifests/spin_statistics_semantic_artifact.json",
-      "code/a5_closure/manifests/stage4_receipt.json",
-      "code/a5_closure/manifests/super_tannakian_matter_reference.json",
-      "code/a5_closure/matter_menu_spectral_ledger_certificate.py",
-      "code/a5_closure/multiplicity_window_certificate.py",
-      "code/a5_closure/negative_controls/coset_carrier_negative_controls.json",
-      "code/a5_closure/negative_controls/issue_311_negative_controls.json",
-      "code/a5_closure/negative_controls/issue_314_negative_controls.json",
-      "code/a5_closure/negative_controls/issue_565_negative_controls.json",
-      "code/a5_closure/negative_controls/issue_566_negative_controls.json",
-      "code/a5_closure/negative_controls/issue_567_negative_controls.json",
-      "code/a5_closure/negative_controls/issue_611_negative_controls.json",
-      "code/a5_closure/negative_controls/issue_613_negative_controls.json",
-      "code/a5_closure/negative_controls/issue_619_negative_controls.json",
-      "code/a5_closure/negative_controls/issue_624_negative_controls.json",
-      "code/a5_closure/noncentral_seam_reduction_certificate.py",
-      "code/a5_closure/optimizer_pushforward_certificate.py",
-      "code/a5_closure/port_current_algebra_certificate.md",
-      "code/a5_closure/port_current_inner_certificate.py",
-      "code/a5_closure/receipts/a5_angular_multiplet_reference.receipt.json",
-      "code/a5_closure/receipts/axis_center_descent_reference.receipt.json",
-      "code/a5_closure/receipts/baryon_dimension_six_census.receipt.json",
-      "code/a5_closure/receipts/common_ew_order_unit_carrier_reference.receipt.json",
-      "code/a5_closure/receipts/coset_carrier_reference.receipt.json",
-      "code/a5_closure/receipts/echosahedral_federation_reference.receipt.json",
-      "code/a5_closure/receipts/flux_defect_criterion_reference.receipt.json",
-      "code/a5_closure/receipts/noncentral_seam_reduction_reference.receipt.json",
-      "code/a5_closure/receipts/optimizer_pushforward_reference.receipt.json",
-      "code/a5_closure/receipts/port_current_inner_reference.receipt.json",
-      "code/a5_closure/receipts/response_grammar_completeness_reference.receipt.json",
-      "code/a5_closure/receipts/routed_seam_grammar_reference.receipt.json",
-      "code/a5_closure/receipts/source_current_capability.receipt.json",
-      "code/a5_closure/receipts/super_tannakian_matter_reference.receipt.json",
-      "code/a5_closure/record_counting_mechanism_certificate.py",
-      "code/a5_closure/response_grammar_completeness_certificate.py",
-      "code/a5_closure/routed_seam_grammar_certificate.py",
-      "code/a5_closure/scalar_sector_blindness_certificate.py",
-      "code/a5_closure/seam_grammar_matter_classification_certificate.py",
-      "code/a5_closure/sl2f5_mckay_e8_certificate.md",
-      "code/a5_closure/sl2f5_mckay_e8_certificate.py",
-      "code/a5_closure/sl2f5_port_spin_bridge_certificate.py",
-      "code/a5_closure/source_current_capability_certificate.py",
-      "code/a5_closure/source_current_order_sensitive_inventory.py",
-      "code/a5_closure/source_current_tomography_stage0.md",
-      "code/a5_closure/source_current_tomography_stage0.py",
-      "code/a5_closure/source_current_tomography_stage1.md",
-      "code/a5_closure/source_current_tomography_stage1_contract.py",
-      "code/a5_closure/source_current_tomography_stage2.md",
-      "code/a5_closure/super_tannakian_matter_lift_certificate.md",
-      "code/a5_closure/super_tannakian_matter_lift_certificate.py",
-      "code/a5_closure/test_audit.py",
-      "code/a5_closure/tests/test_a3_scheduler_kernel_certificate.py",
-      "code/a5_closure/tests/test_axis_center_descent_certificate.py",
-      "code/a5_closure/tests/test_baryon_dimension_six_census.py",
-      "code/a5_closure/tests/test_common_ew_order_unit_carrier_certificate.py",
-      "code/a5_closure/tests/test_coset_carrier_certificate.py",
-      "code/a5_closure/tests/test_digest_conventions.py",
-      "code/a5_closure/tests/test_directed_seam_repair_certificate.py",
-      "code/a5_closure/tests/test_echosahedral_selector_certificate.py",
-      "code/a5_closure/tests/test_equal_state_weights_certificate.py",
-      "code/a5_closure/tests/test_family_band_attachment_certificate.py",
-      "code/a5_closure/tests/test_flux_defect_criterion_certificate.py",
-      "code/a5_closure/tests/test_load_fiber_readback_certificate.py",
-      "code/a5_closure/tests/test_matter_menu_spectral_ledger_certificate.py",
-      "code/a5_closure/tests/test_multiplicity_window_certificate.py",
-      "code/a5_closure/tests/test_noncentral_seam_reduction_certificate.py",
-      "code/a5_closure/tests/test_optimizer_pushforward_certificate.py",
-      "code/a5_closure/tests/test_port_current_inner_certificate.py",
-      "code/a5_closure/tests/test_record_counting_mechanism_certificate.py",
-      "code/a5_closure/tests/test_response_grammar_completeness_certificate.py",
-      "code/a5_closure/tests/test_routed_seam_grammar_certificate.py",
-      "code/a5_closure/tests/test_scalar_sector_blindness_certificate.py",
-      "code/a5_closure/tests/test_seam_grammar_matter_classification_certificate.py",
-      "code/a5_closure/tests/test_sl2f5_mckay_e8_certificate.py",
-      "code/a5_closure/tests/test_sl2f5_port_spin_bridge_certificate.py",
-      "code/a5_closure/tests/test_source_current_capability_certificate.py",
-      "code/a5_closure/tests/test_source_current_order_sensitive_inventory.py",
-      "code/a5_closure/tests/test_source_current_tomography_stage0.py",
-      "code/a5_closure/tests/test_source_current_tomography_stage1_contract.py",
-      "code/a5_closure/tests/test_super_tannakian_matter_lift_certificate.py",
-      "code/a5_closure/verify_baryon_dimension_six_census_independent.py",
-      "code/a5_closure/verify_source_current_capability_independent.py",
-      "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
-      "code/angular_sprint/angular_fingerprint_extension.py",
-      "code/angular_sprint/angular_interpolant_certificate.py",
-      "code/angular_sprint/electroweak_pole_quotient_certificate.py",
-      "code/angular_sprint/kinetic_form_selection_certificate.py",
-      "code/angular_sprint/kinetic_ray_certificate.py",
-      "code/angular_sprint/refinement_transfer_certificate.py",
-      "code/angular_sprint/runtime/angular_fingerprint_receipt.json",
-      "code/angular_sprint/runtime/angular_template_receipt.json",
-      "code/angular_sprint/runtime/electroweak_pole_quotient_receipt.json",
-      "code/angular_sprint/runtime/kinetic_form_selection_receipt.json",
-      "code/angular_sprint/runtime/kinetic_ray_receipt.json",
-      "code/angular_sprint/runtime/refinement_transfer_receipt.json",
-      "code/angular_sprint/test_angular_fingerprint_extension.py",
-      "code/angular_sprint/test_angular_interpolant_certificate.py",
-      "code/angular_sprint/test_electroweak_pole_quotient_certificate.py",
-      "code/angular_sprint/test_kinetic_form_selection_certificate.py",
-      "code/angular_sprint/test_kinetic_ray_certificate.py",
-      "code/angular_sprint/test_refinement_transfer_certificate.py",
-      "code/angular_sprint/test_verify_kinetic_form_selection_independent.py",
-      "code/angular_sprint/verify_electroweak_pole_quotient.py",
-      "code/angular_sprint/verify_kinetic_form_selection_independent.py",
-      "code/consensus/README.md",
-      "code/consensus/compiled_lattice_settling_certificate.py",
-      "code/consensus/export_verified_tree_packet_net.py",
-      "code/consensus/manifests/compiled_lattice_settling_reference.json",
-      "code/consensus/reference_architecture_benchmark_suite.py",
-      "code/consensus/runs/issue_517_proof_obligations.json",
-      "code/consensus/runs/reference_architecture_benchmark_suite_current.json",
-      "code/consensus/runs/verified_tree_packet_net_domain.json",
-      "code/consensus/test_compiled_lattice_settling_certificate.py",
-      "code/consensus/test_issue_517_proof_obligations.py",
-      "code/consensus/test_reference_architecture_benchmark_suite.py",
-      "code/consensus/test_transport_from_gluing_obstruction.py",
-      "code/consensus/test_verified_tree_packet_net.py",
-      "code/consensus/transport_from_gluing.py",
-      "code/consensus/verify_issue_517_proof_obligations.py",
-      "code/refinement/discrete_refinement_certificate.py",
-      "code/refinement/runtime/discrete_refinement_theorem_receipt.json",
-      "code/refinement/test_discrete_refinement_certificate.py",
-      "code/refinement/verify_discrete_refinement_independent.py",
-      "code/source_feedback_transport/README.md",
-      "code/source_feedback_transport/build_transport.py",
-      "code/source_feedback_transport/specification.json",
-      "code/source_feedback_transport/test_transport.py",
-      "code/source_feedback_transport/transport_receipt.json",
-      "code/source_feedback_transport/verify_transport.py",
-      "code/source_routing/README.md",
-      "code/source_routing/build_routing.py",
-      "code/source_routing/capture_support.py",
-      "code/source_routing/runtime/path_tomography_receipt.json",
-      "code/source_routing/specification.json",
-      "code/source_routing/support_w12_l3.json",
-      "code/source_routing/test_routing.py",
-      "code/source_routing/verify_routing.py",
-      "code/source_scalar_instruments/README.md",
-      "code/source_scalar_instruments/sequential_instrument.py",
-      "code/source_scalar_instruments/sequential_instrument_receipt.json",
-      "code/source_scalar_instruments/test_sequential_instrument.py",
-      "code/source_scalar_instruments/verify_sequential_instrument.py"
-    ],
-    "paths_sha256": "sha256:648ab1b905256fbbb2d1c14c56b4dde4b7ed769f06c15460d2c1d7682600abe5",
-    "staleness_rule": "any added, removed, or renamed non-cache file below an audited directory invalidates the committed inventory"
+    "files_sha256": "sha256:65f67b28cdbb5fa729cb065ef260f719ded1f3fe2238a9994d065f023e85c646",
+    "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
-  "audited_upstream_main_sha": "2b03a95caf5030272f7b426b964e816f650153f8",
+  "audited_upstream_main_sha": "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9",
   "candidates": [
     {
       "candidate_id": "registered_adjacency_response",
@@ -988,6 +2913,91 @@
       ]
     },
     {
+      "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+      "classification": "IRREVERSIBLE_ONLY",
+      "evidence_facts": [
+        "encoded copy and routing attenuate amplitudes by powers of two",
+        "positive nonnegative registers cannot reset exactly under finite pair means",
+        "nontrivial closed pair-mean cycles are excluded by the quadratic defect",
+        "the schedule-dependence witness covers two words on Fin3 rather than all W12 pairs"
+      ],
+      "history_custody": "FORMAL_IRREVERSIBLE_PAIR_MEAN_PROGRAMS",
+      "properties": {
+        "both_composition_orders_recorded": false,
+        "port_indexed": false,
+        "raw_histories_serialized": false,
+        "refinement_provenance_present": false,
+        "reversible": false,
+        "same_twelve_port_carrier": false,
+        "source_native": true,
+        "target_free": true,
+        "twelve_reversible_perturbation_families": false
+      },
+      "qualification_failures": [
+        "port_indexed",
+        "reversible",
+        "both_composition_orders_recorded",
+        "raw_histories_serialized",
+        "same_twelve_port_carrier",
+        "refinement_provenance_present",
+        "twelve_reversible_perturbation_families"
+      ],
+      "rejection_reason": "The programs attenuate, average, clear, and dissipate. Their two-order Fin3 control proves schedule dependence, but they supply neither W12 port families nor the 132 serialized mixed-order histories.",
+      "source_ancestry": "Formal copy, clear, route, cleanup, memory, and arithmetic programs compiled to the scalar pair-mean law.",
+      "source_paths": [
+        "Lean/Geometry/SourceEncodedMemory.lean",
+        "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean",
+        "Lean/Geometry/SourceNonlinearRecord.lean",
+        "Lean/Geometry/SourcePassiveReset.lean",
+        "Lean/Geometry/SourcePassiveMemoryBudget.lean",
+        "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean",
+        "Lean/Geometry/SourceReusableBus.lean",
+        "Lean/Geometry/SourceReusableBusAxiomAudit.lean",
+        "Lean/Geometry/SourceBusScaling.lean",
+        "Lean/Geometry/SourceNativeRecords.lean",
+        "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean"
+      ]
+    },
+    {
+      "candidate_id": "lean_selected_pair_mean_histories",
+      "classification": "IRREVERSIBLE_ONLY",
+      "evidence_facts": [
+        "full-prefix transcripts are formal functions of supplied words",
+        "cut-avoiding selected words obstruct guaranteed remote reads",
+        "cover choice can change selected history support"
+      ],
+      "history_custody": "FORMAL_SELECTED_IRREVERSIBLE_TRANSCRIPTS",
+      "properties": {
+        "both_composition_orders_recorded": false,
+        "port_indexed": false,
+        "raw_histories_serialized": false,
+        "refinement_provenance_present": false,
+        "reversible": false,
+        "same_twelve_port_carrier": false,
+        "source_native": true,
+        "target_free": true,
+        "twelve_reversible_perturbation_families": false
+      },
+      "qualification_failures": [
+        "port_indexed",
+        "reversible",
+        "both_composition_orders_recorded",
+        "raw_histories_serialized",
+        "same_twelve_port_carrier",
+        "refinement_provenance_present",
+        "twelve_reversible_perturbation_families"
+      ],
+      "rejection_reason": "Theorems quantify over abstract finite words and transcripts of destructive pair means. They provide no W12 instance, inverse laws, runtime custody, refinement ancestry, or complete mixed-order family.",
+      "source_ancestry": "Formal finite pair-mean words, prefix transcripts, information-projection selection, and remote-read obstructions.",
+      "source_paths": [
+        "Lean/Geometry/SourceConstrainedRead.lean",
+        "Lean/Geometry/SourceConstrainedSelection.lean",
+        "Lean/Geometry/SourceReadSelection.lean",
+        "Lean/Geometry/SourceReadSelectionAxiomAudit.lean",
+        "Lean/Geometry/SourceSelectionControls.lean"
+      ]
+    },
+    {
       "candidate_id": "lean_source_history_abstractions",
       "classification": "PARTIAL",
       "evidence_facts": [
@@ -1207,23 +3217,271 @@
     "does_not_make_a_physical_current_claim": true,
     "does_not_reject_the_conditional_port_current_fixture": true,
     "does_not_weaken_the_abstract_forced_lie_type_theorem": true,
-    "next_scientific_step": "add and independently review a new source producer containing the minimal missing fields; do not reinterpret existing static or irreversible packets",
-    "stages_3_through_6_not_run": true
+    "missing_packet": "No enumerated candidate supplies the complete reversible ordered-history contract; existing static and irreversible packets do not supply it by composition.",
+    "stages_3_through_6_not_run": true,
+    "verdict_limited_to_enumerated_reviewed_source_scope": true
   },
   "fixture_used_as_reconstruction_oracle": false,
   "implementation_pins": [
     {
-      "bytes": 51740,
+      "bytes": 68233,
       "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:7a8bcdb9b4afa435d62c1a1333c5fd369b461724f745ce12bf6cc4570370b34b"
+      "sha256": "sha256:b60a15719baeec988a25dcb3d485f446c0e0aa1a430c0dabd228e91cc5239ce7"
     },
     {
-      "bytes": 22864,
+      "bytes": 33180,
       "path": "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:443cfd9b6fd049122edf84aadb9efeb92fa2a2b29fc3c2ffa1a757c564078782"
+      "sha256": "sha256:9a9c04c6eaba09bc6c83bec88af730bee61be9c6a4cebaaccc3d979047f2904c"
     }
   ],
-  "inventory_sha256": "sha256:1bfd15e20eaabc371be2516b406d6343a28e1d3791be20468b40e24ee4a48017",
+  "integrated_tree_review": {
+    "from_upstream_main_sha": "2b03a95caf5030272f7b426b964e816f650153f8",
+    "surface_count": 40,
+    "surfaces": [
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/FlatDiamondError.lean",
+        "reason": "Bounds geometric quadrature error; it defines no source perturbation, composition word, inverse, or history."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/FlatDiamondNormalization.lean",
+        "reason": "Normalizes causal-diamond pair volumes; it contains no port-indexed source operation or history custody."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/FlatDiamondPairIntegral.lean",
+        "reason": "Relates geometric pair sets to integrals; it supplies no perturbation family or ordered execution."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/FlatDiamondVolume.lean",
+        "reason": "Proves flat causal-diamond volume identities rather than source operations or response histories."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/FlatLorentzVolume.lean",
+        "reason": "Proves Lorentz-volume and boost identities with no source-current operation packet."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/GoldenSourceCausalLimit.lean",
+        "reason": "Establishes convergence of generated causal order and counts; it does not define reversible port perturbations."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/GoldenSourcePairLimit.lean",
+        "reason": "Establishes strict-pair count limits, not mixed-order source response histories."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/GoldenSourceVolumeLimit.lean",
+        "reason": "Establishes weighted source-volume limits with no perturbation composition or inverse law."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/OrderingFractionFourDimensional.lean",
+        "reason": "The change connects geometric count limits to a scalar ordering fraction and adds no source operation."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceBusScaling.lean",
+        "reason": "Defines conditional copy, clear, sweep, and cleanup words compiled to destructive scalar pair means."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/SourceCausalBoundary.lean",
+        "reason": "Proves null-boundary and fixed-diamond count facts; no source perturbation family is present."
+      },
+      {
+        "candidate_id": "lean_selected_pair_mean_histories",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceConstrainedRead.lean",
+        "reason": "Connects constrained finite word laws to pair-mean transcripts, but only as an abstract irreversible read obstruction."
+      },
+      {
+        "candidate_id": "lean_selected_pair_mean_histories",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceConstrainedSelection.lean",
+        "reason": "Supplies finite information-projection support theorems used by the selected-history packet."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/SourceCountLimitAxiomAudit.lean",
+        "reason": "Audits theorem dependencies for count limits and introduces no source operation or history."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/SourceCountTransport.lean",
+        "reason": "Transports selected finite counts to measure limits; predicates are classifiers rather than perturbation histories."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceEncodedMemory.lean",
+        "reason": "Defines encoded copy, clear, hop, route, and read words whose amplitudes attenuate under pair means."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean",
+        "reason": "Audits the encoded-memory theorem chain and adds no runtime histories or W12 binding."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceNativeRecords.lean",
+        "reason": "Defines native arithmetic records and proves a two-order schedule-dependence example on Fin 3, not the W12 mixed-order suite."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean",
+        "reason": "Audits native bus and record theorems without adding a source-selected runtime packet."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/SourceNetOrderLimit.lean",
+        "reason": "Proves limiting agreement of generated read order away from a null cone, not reversible perturbation histories."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/SourceNetVolumeError.lean",
+        "reason": "Bounds weighted Alexandrov volumes of generated orders and contains no current-tomography operation family."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceNonlinearRecord.lean",
+        "reason": "Classifies state-only records protected by an irreversible pair-mean law."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean",
+        "reason": "Audits passive-memory, reset, and nonlinear-record theorems without supplying histories."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourcePassiveMemoryBudget.lean",
+        "reason": "Its quadratic defect proves nontrivial pair means dissipative and excludes nontrivial closed cycles."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourcePassiveReset.lean",
+        "reason": "Proves positive registers cannot reset exactly under finite nonnegative pair means."
+      },
+      {
+        "candidate_id": "lean_selected_pair_mean_histories",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceReadSelection.lean",
+        "reason": "Defines finite pair-mean words and full prefix transcripts, but not W12 reversible operations or serialized executions."
+      },
+      {
+        "candidate_id": "lean_selected_pair_mean_histories",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceReadSelectionAxiomAudit.lean",
+        "reason": "Audits the constrained-selection and transcript obstruction chain."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceReusableBus.lean",
+        "reason": "Compiles copy and clear instructions to attenuating pair-mean programs with supplied schedules."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceReusableBusAxiomAudit.lean",
+        "reason": "Audits the reusable-bus theorem chain without adding a W12 source instance."
+      },
+      {
+        "candidate_id": "lean_selected_pair_mean_histories",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceSelectionControls.lean",
+        "reason": "Provides finite controls showing cover-dependent support selection, not a reversible current producer."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Screen/OPHScreen.lean",
+        "reason": "The change only imports Whitney modules into the umbrella and adds no theorem or source operation."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Screen/WhitneyConeMass.lean",
+        "reason": "Defines cone mass, constraint, stiffness, and normal frames; these are static field-mode structures."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Screen/WhitneyConeMassNaturality.lean",
+        "reason": "Proves frame naturality for a supplied mass and contains no source perturbation histories."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Screen/WhitneyConeModes.lean",
+        "reason": "Constructs static cone gradients, curls, constraints, and thirty normal modes."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Screen/WhitneyConeNaturality.lean",
+        "reason": "Proves basis-change naturality of cone modes rather than source-operation order sensitivity."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Screen/WhitneyFrameMorphism.lean",
+        "reason": "Defines isometries between modal frames, not port-indexed perturbations or runtime histories."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Screen/WhitneyFrameNaturality.lean",
+        "reason": "Defines overlap-coordinate changes among complete modal frames; the order is basis order, not operation order."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Screen/WhitneyMassPremiseInstance.lean",
+        "reason": "Instantiates a positive counting mass and thirty-mode frame with no source-current producer."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Screen/WhitneyNormalModeConstruction.lean",
+        "reason": "Applies finite-dimensional spectral theory to supplied mass and stiffness forms."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Screen/WhitneyRotationWitness.lean",
+        "reason": "Provides a two-mode rotation control for frame naturality, not source-current histories."
+      }
+    ],
+    "through_upstream_main_sha": "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9"
+  },
+  "inventory_sha256": "sha256:53916fa3b1f5ded1ae8798b2900f9910f80079635b60e30ba2b4252c03cc25b8",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -1252,6 +3510,7 @@
   ],
   "physical_current_source_bridge_attained": false,
   "positive_stages_authorized": false,
+  "previous_inventory_base_sha": "2b03a95caf5030272f7b426b964e816f650153f8",
   "program": "SOURCE-CURRENT-TOMOGRAPHY-0",
   "qualification_fields": [
     "source_native",
@@ -1264,7 +3523,7 @@
     "refinement_provenance_present",
     "twelve_reversible_perturbation_families"
   ],
-  "schema": "oph.source_current_order_sensitive_inventory.v1",
+  "schema": "oph.source_current_order_sensitive_inventory.v2",
   "source_pins": [
     {
       "bytes": 3646,
@@ -1480,15 +3739,95 @@
       "bytes": 12634,
       "path": "Lean/Screen/RepairWordCarrierReadout.lean",
       "sha256": "sha256:1b8a014942314a283682b88ea47273738333195d5b62112192c92badee4e89b6"
+    },
+    {
+      "bytes": 11760,
+      "path": "Lean/Geometry/SourceBusScaling.lean",
+      "sha256": "sha256:d43ddeb9a9ee89d3fb09537886f0be40ad15a223f87ba1536a6efa6059005462"
+    },
+    {
+      "bytes": 3821,
+      "path": "Lean/Geometry/SourceConstrainedRead.lean",
+      "sha256": "sha256:a9136bd2f3a46f95debf20e624b0ba96b484db61cb638ea1b8a8861c43c201c3"
+    },
+    {
+      "bytes": 12704,
+      "path": "Lean/Geometry/SourceConstrainedSelection.lean",
+      "sha256": "sha256:963ccc5842c43478ef074f4621cac45deb58c5df82559dac1485b83dc97b2a2e"
+    },
+    {
+      "bytes": 10911,
+      "path": "Lean/Geometry/SourceEncodedMemory.lean",
+      "sha256": "sha256:67f98a7bf3d76d1a705a979200169ef4d34b2f8ae5bd4875fee857b2db1fca24"
+    },
+    {
+      "bytes": 2425,
+      "path": "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean",
+      "sha256": "sha256:1c76031f1d522a27043b4e1f27d152a5101d6421cc717afafa2c3d5b5b62e501"
+    },
+    {
+      "bytes": 4645,
+      "path": "Lean/Geometry/SourceNativeRecords.lean",
+      "sha256": "sha256:a3db77724671a7b87bcace5ec2d28973c81efc1992e4053c20b039c9a0d3cca0"
+    },
+    {
+      "bytes": 2688,
+      "path": "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean",
+      "sha256": "sha256:f02e966ea3bcb233ff60c23c5afd9ff9baa6393b0c92b3143ef00a8ccbbc0dfa"
+    },
+    {
+      "bytes": 5782,
+      "path": "Lean/Geometry/SourceNonlinearRecord.lean",
+      "sha256": "sha256:44cf22a856096e607ec550f1f8e86209086b069744aabd70e5d8515159ca5cc0"
+    },
+    {
+      "bytes": 3626,
+      "path": "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean",
+      "sha256": "sha256:36a59efdc625465b00a011b0b4501770c7dc0cd157e56db22de1b7f84bffd1af"
+    },
+    {
+      "bytes": 6628,
+      "path": "Lean/Geometry/SourcePassiveMemoryBudget.lean",
+      "sha256": "sha256:1cafe81174689d5724cae862ac1c5d5450ae21bcce1492753e02afad0c03da67"
+    },
+    {
+      "bytes": 5268,
+      "path": "Lean/Geometry/SourcePassiveReset.lean",
+      "sha256": "sha256:ff02617bc66bb8180b86b5d6fade147afe65d1f9ef4d4a0770b64bd3c2349791"
+    },
+    {
+      "bytes": 10018,
+      "path": "Lean/Geometry/SourceReadSelection.lean",
+      "sha256": "sha256:f43a262d6d3ac46a2471de75e7da237589502949eab56903e1410edda4fdef5d"
+    },
+    {
+      "bytes": 4128,
+      "path": "Lean/Geometry/SourceReadSelectionAxiomAudit.lean",
+      "sha256": "sha256:8dac97f154b552efbbf6079292a784e6cb6733e0c95701d8a697c289c7ebfb6f"
+    },
+    {
+      "bytes": 10086,
+      "path": "Lean/Geometry/SourceReusableBus.lean",
+      "sha256": "sha256:25dc38bdcfe71a4d5860be4e0051dd16bd3083c9bdc8c5befcc162ba421f57d2"
+    },
+    {
+      "bytes": 2509,
+      "path": "Lean/Geometry/SourceReusableBusAxiomAudit.lean",
+      "sha256": "sha256:2d9fa469d6278f6a8e59fc3a204beea2eca4b597abc56b60675464311c21a6fe"
+    },
+    {
+      "bytes": 7668,
+      "path": "Lean/Geometry/SourceSelectionControls.lean",
+      "sha256": "sha256:f98f5b7583f0516201d47da82e5a80086f94779d234ae6d0f100049477ea717e"
     }
   ],
   "stage": 2,
   "summary": {
-    "candidate_count": 21,
+    "candidate_count": 23,
     "classification_counts": {
       "COMMUTATIVE_ONLY": 2,
       "DOWNSTREAM_CONTAMINATED": 2,
-      "IRREVERSIBLE_ONLY": 7,
+      "IRREVERSIBLE_ONLY": 9,
       "MISSING_ORDER_INFORMATION": 2,
       "PARTIAL": 2,
       "STATIC_ONLY": 5,
@@ -1514,5 +3853,6 @@
   },
   "target_labels_used": false,
   "verdict": "SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT",
+  "verdict_scope": "The verdict applies only to the explicitly enumerated candidates and reviewed source scope at the audited upstream base.",
   "verifier_command": "python3 code/a5_closure/verify_source_current_order_sensitive_inventory.py --inventory code/a5_closure/manifests/source_current_order_sensitive_inventory.json"
 }

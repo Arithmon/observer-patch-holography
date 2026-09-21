@@ -22,8 +22,10 @@ REPO_ROOT = HERE.parents[1]
 DEFAULT_INVENTORY = HERE / "manifests" / "source_current_order_sensitive_inventory.json"
 PRODUCER = HERE / "source_current_order_sensitive_inventory.py"
 
-SCHEMA = "oph.source_current_order_sensitive_inventory.v1"
+SCHEMA = "oph.source_current_order_sensitive_inventory.v2"
 VERDICT = "SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT"
+PREVIOUS_INVENTORY_BASE_SHA = "2b03a95caf5030272f7b426b964e816f650153f8"
+UPSTREAM_MAIN_SHA = "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9"
 
 AUDITED_DIRECTORIES = (
     "code/source_feedback_transport",
@@ -40,6 +42,12 @@ AUDITED_DIRECTORIES = (
     "Lean/InformationProjection",
     "Lean/Variational",
 )
+
+CONTENT_SNAPSHOT_EXACT_EXCLUSIONS = (
+    "code/a5_closure/manifests/source_current_order_sensitive_inventory.json",
+)
+CONTENT_SNAPSHOT_EXCLUDED_DIRECTORY_NAMES = ("__pycache__",)
+CONTENT_SNAPSHOT_EXCLUDED_SUFFIXES = (".pyc",)
 
 QUALIFICATION_FIELDS = (
     "source_native",
@@ -69,6 +77,8 @@ EXPECTED_CLASSIFICATIONS = {
     "declared_port_current_fixture": "DOWNSTREAM_CONTAMINATED",
     "downstream_kinetic_form_selector": "DOWNSTREAM_CONTAMINATED",
     "generic_transport_from_gluing": "UNRELATED",
+    "lean_pair_mean_memory_and_reusable_bus": "IRREVERSIBLE_ONLY",
+    "lean_selected_pair_mean_histories": "IRREVERSIBLE_ONLY",
     "lean_source_history_abstractions": "PARTIAL",
     "lean_conditional_a2_words": "COMMUTATIVE_ONLY",
     "lean_reversible_flow_models": "MISSING_ORDER_INFORMATION",
@@ -145,6 +155,12 @@ EXPECTED_PROPERTIES = {
         "same_twelve_port_carrier"
     ),
     "generic_transport_from_gluing": expected_properties("target_free"),
+    "lean_pair_mean_memory_and_reusable_bus": expected_properties(
+        "source_native", "target_free"
+    ),
+    "lean_selected_pair_mean_histories": expected_properties(
+        "source_native", "target_free"
+    ),
     "lean_source_history_abstractions": expected_properties("target_free"),
     "lean_conditional_a2_words": expected_properties(
         "port_indexed", "reversible", "target_free", "same_twelve_port_carrier"
@@ -164,14 +180,64 @@ EXPECTED_PROPERTIES = {
     ),
 }
 
+EXPECTED_INTEGRATED_REVIEW = {
+    "Lean/Geometry/FlatDiamondError.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/FlatDiamondNormalization.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/FlatDiamondPairIntegral.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/FlatDiamondVolume.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/FlatLorentzVolume.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/GoldenSourceCausalLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/GoldenSourcePairLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/GoldenSourceVolumeLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/OrderingFractionFourDimensional.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/SourceBusScaling.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourceCausalBoundary.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/SourceConstrainedRead.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
+    "Lean/Geometry/SourceConstrainedSelection.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
+    "Lean/Geometry/SourceCountLimitAxiomAudit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/SourceCountTransport.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/SourceEncodedMemory.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourceNativeRecords.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourceNetOrderLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/SourceNetVolumeError.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/SourceNonlinearRecord.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourcePassiveMemoryBudget.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourcePassiveReset.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourceReadSelection.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
+    "Lean/Geometry/SourceReadSelectionAxiomAudit.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
+    "Lean/Geometry/SourceReusableBus.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourceReusableBusAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+    "Lean/Geometry/SourceSelectionControls.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
+    "Lean/Screen/OPHScreen.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Screen/WhitneyConeMass.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Screen/WhitneyConeMassNaturality.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Screen/WhitneyConeModes.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Screen/WhitneyConeNaturality.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Screen/WhitneyFrameMorphism.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Screen/WhitneyFrameNaturality.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Screen/WhitneyMassPremiseInstance.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Screen/WhitneyNormalModeConstruction.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Screen/WhitneyRotationWitness.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+}
+
 
 class VerificationError(ValueError):
-    pass
+    def __init__(self, message: str, code: str = "VERIFICATION_ERROR") -> None:
+        super().__init__(f"{code}: {message}")
+        self.code = code
 
 
 def check(condition: bool, message: str) -> None:
     if not condition:
         raise VerificationError(message)
+
+
+def check_typed(condition: bool, code: str, message: str) -> None:
+    if not condition:
+        raise VerificationError(message, code)
 
 
 def strict_load(path: Path) -> dict[str, Any]:
@@ -205,7 +271,18 @@ def file_sha256(path: Path) -> str:
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def independently_list_audited_files(repo_root: Path) -> list[str]:
+def snapshot_exclusion_reason(relative: str) -> str | None:
+    path = Path(relative)
+    if relative in CONTENT_SNAPSHOT_EXACT_EXCLUSIONS:
+        return "self_referential_inventory_manifest"
+    if any(part in CONTENT_SNAPSHOT_EXCLUDED_DIRECTORY_NAMES for part in path.parts):
+        return "repository_cache_directory"
+    if path.suffix in CONTENT_SNAPSHOT_EXCLUDED_SUFFIXES:
+        return "repository_cache_or_build_output"
+    return None
+
+
+def independently_snapshot_audited_files(repo_root: Path) -> list[dict[str, Any]]:
     paths: set[str] = set()
     for relative in AUDITED_DIRECTORIES:
         directory = repo_root / relative
@@ -213,28 +290,72 @@ def independently_list_audited_files(repo_root: Path) -> list[str]:
         for path in directory.rglob("*"):
             if not path.is_file():
                 continue
-            repo_relative = path.relative_to(repo_root)
-            if "__pycache__" in repo_relative.parts or path.suffix == ".pyc":
+            repo_relative = path.relative_to(repo_root).as_posix()
+            if snapshot_exclusion_reason(repo_relative) is not None:
                 continue
-            paths.add(repo_relative.as_posix())
-    return sorted(paths)
+            paths.add(repo_relative)
+    return [
+        {
+            "path": relative,
+            "byte_count": (repo_root / relative).stat().st_size,
+            "sha256": file_sha256(repo_root / relative),
+        }
+        for relative in sorted(paths)
+    ]
 
 
 def verify_audited_file_snapshot(snapshot: Any, repo_root: Path) -> set[str]:
     check(isinstance(snapshot, Mapping), "audited file snapshot missing")
     check(snapshot.get("directories") == list(AUDITED_DIRECTORIES), "audit directory drift")
-    paths = snapshot.get("paths")
+    expected_policy = {
+        "exact_paths": list(CONTENT_SNAPSHOT_EXACT_EXCLUSIONS),
+        "directory_names": list(CONTENT_SNAPSHOT_EXCLUDED_DIRECTORY_NAMES),
+        "suffixes": list(CONTENT_SNAPSHOT_EXCLUDED_SUFFIXES),
+        "reasons": {
+            "exact_paths": "the generated inventory would otherwise contain its own byte digest",
+            "directory_names": "repository cache directories cannot supply reviewed scientific source",
+            "suffixes": "interpreter cache and build outputs cannot supply reviewed scientific source",
+        },
+    }
+    check(snapshot.get("exclusion_policy") == expected_policy, "audit exclusion policy drift")
+    files = snapshot.get("files")
     check(
-        isinstance(paths, list)
-        and all(isinstance(path, str) and path for path in paths),
-        "audited file path list",
+        isinstance(files, list)
+        and all(
+            isinstance(row, Mapping)
+            and set(row) == {"path", "byte_count", "sha256"}
+            and isinstance(row.get("path"), str)
+            and bool(row.get("path"))
+            and isinstance(row.get("byte_count"), int)
+            and row.get("byte_count") >= 0
+            and isinstance(row.get("sha256"), str)
+            for row in files
+        ),
+        "audited file content rows",
     )
-    check(paths == sorted(set(paths)), "audited file paths not canonical")
-    check(snapshot.get("path_count") == len(paths), "audited file path count")
-    check(snapshot.get("paths_sha256") == canonical_sha256(paths), "audited file list hash")
-    current_paths = independently_list_audited_files(repo_root)
-    check(paths == current_paths, "audited file snapshot drift")
-    return set(paths)
+    committed_paths = [row["path"] for row in files]
+    check(committed_paths == sorted(set(committed_paths)), "audited file paths not canonical")
+    check(snapshot.get("file_count") == len(files), "audited file count")
+    check(snapshot.get("files_sha256") == canonical_sha256(files), "audited content-list hash")
+    current_files = independently_snapshot_audited_files(repo_root)
+    current_paths = [row["path"] for row in current_files]
+    check_typed(
+        committed_paths == current_paths,
+        "AUDITED_PATH_DRIFT",
+        "audited file snapshot has added, removed, or renamed paths",
+    )
+    for committed, current in zip(files, current_files, strict=True):
+        check_typed(
+            committed["byte_count"] == current["byte_count"],
+            "AUDITED_CONTENT_DRIFT",
+            f"byte-count drift: {committed['path']}",
+        )
+        check_typed(
+            committed["sha256"] == current["sha256"],
+            "AUDITED_CONTENT_DRIFT",
+            f"digest drift: {committed['path']}",
+        )
+    return set(committed_paths)
 
 
 def verify_pin_rows(rows: Any, repo_root: Path, label: str) -> set[str]:
@@ -410,6 +531,30 @@ def independently_check_sources(repo_root: Path) -> dict[str, int]:
     ).read_text(encoding="utf-8")
     check("two serializations of the diamond" in provenance, "Lean serialization boundary")
 
+    encoded_memory = (repo_root / "Lean/Geometry/SourceEncodedMemory.lean").read_text(
+        encoding="utf-8"
+    )
+    check("Copying halves both" in encoded_memory, "encoded-memory attenuation boundary")
+    passive_reset = (repo_root / "Lean/Geometry/SourcePassiveReset.lean").read_text(
+        encoding="utf-8"
+    )
+    check("positive_register_cannot_reset" in passive_reset, "passive-reset boundary")
+    passive_budget = (
+        repo_root / "Lean/Geometry/SourcePassiveMemoryBudget.lean"
+    ).read_text(encoding="utf-8")
+    check("closed_cycle_quiescent" in passive_budget, "closed-cycle boundary")
+    native_records = (repo_root / "Lean/Geometry/SourceNativeRecords.lean").read_text(
+        encoding="utf-8"
+    )
+    check("schedule-selection obstruction" in native_records, "schedule-order boundary")
+    selected_histories = (
+        repo_root / "Lean/Geometry/SourceReadSelection.lean"
+    ).read_text(encoding="utf-8")
+    check(
+        "not impossibility of eventual" in selected_histories,
+        "selected-history scope boundary",
+    )
+
     return {
         "response_algebra_dimension": int(algebra["exact_dimension"]),
         "response_commutator_nonzero_count": int(algebra["commutator_nonzero_count"]),
@@ -424,6 +569,16 @@ def verify(inventory_path: Path, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
     body = {key: value for key, value in inventory.items() if key != "inventory_sha256"}
     check(inventory.get("inventory_sha256") == canonical_sha256(body), "inventory hash")
     check(inventory.get("verdict") == VERDICT, "inventory verdict")
+    check(
+        inventory.get("previous_inventory_base_sha") == PREVIOUS_INVENTORY_BASE_SHA,
+        "previous inventory base",
+    )
+    check(inventory.get("audited_upstream_main_sha") == UPSTREAM_MAIN_SHA, "audited base")
+    check(
+        "explicitly enumerated candidates and reviewed source scope"
+        in inventory.get("verdict_scope", ""),
+        "bounded verdict scope",
+    )
     check(inventory.get("positive_stages_authorized") is False, "positive-stage stop")
     check(
         inventory.get("physical_current_source_bridge_attained") is False,
@@ -442,6 +597,40 @@ def verify(inventory_path: Path, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
     snapshotted_paths = verify_audited_file_snapshot(
         inventory.get("audited_file_snapshot"), repo_root
     )
+
+    integrated_review = inventory.get("integrated_tree_review")
+    check(isinstance(integrated_review, Mapping), "integrated-tree review missing")
+    check(
+        integrated_review.get("from_upstream_main_sha") == PREVIOUS_INVENTORY_BASE_SHA,
+        "integrated-tree review start",
+    )
+    check(
+        integrated_review.get("through_upstream_main_sha") == UPSTREAM_MAIN_SHA,
+        "integrated-tree review end",
+    )
+    surfaces = integrated_review.get("surfaces")
+    check(isinstance(surfaces, list), "integrated-tree review surfaces")
+    check(
+        integrated_review.get("surface_count") == len(EXPECTED_INTEGRATED_REVIEW),
+        "integrated-tree review count",
+    )
+    observed_review: dict[str, tuple[Any, Any]] = {}
+    for row in surfaces:
+        check(isinstance(row, Mapping), "integrated-tree review row")
+        path = row.get("path")
+        check(isinstance(path, str) and path, "integrated-tree review path")
+        check(path not in observed_review, f"duplicate integrated-tree review: {path}")
+        check(
+            isinstance(row.get("reason"), str) and bool(row.get("reason")),
+            f"integrated-tree review reason: {path}",
+        )
+        observed_review[path] = (row.get("decision"), row.get("candidate_id"))
+    check(
+        list(observed_review) == sorted(observed_review),
+        "integrated-tree review order",
+    )
+    check(observed_review == EXPECTED_INTEGRATED_REVIEW, "integrated-tree semantic decisions")
+    check(set(observed_review) <= snapshotted_paths, "reviewed surface missing from snapshot")
 
     source_paths = verify_pin_rows(inventory.get("source_pins"), repo_root, "source")
     implementation_paths = verify_pin_rows(
@@ -531,6 +720,7 @@ def verify(inventory_path: Path, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
     boundary = inventory.get("claim_boundary", {})
     required_false_promotions = (
         "bounded_repository_inventory_only",
+        "verdict_limited_to_enumerated_reviewed_source_scope",
         "does_not_assert_a_no_go_for_future_source_data",
         "does_not_weaken_the_abstract_forced_lie_type_theorem",
         "does_not_reject_the_conditional_port_current_fixture",

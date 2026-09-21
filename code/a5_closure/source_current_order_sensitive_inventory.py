@@ -24,9 +24,10 @@ REPO_ROOT = HERE.parents[1]
 INVENTORY_PATH = HERE / "manifests" / "source_current_order_sensitive_inventory.json"
 INDEPENDENT_VERIFIER = HERE / "verify_source_current_order_sensitive_inventory.py"
 
-SCHEMA = "oph.source_current_order_sensitive_inventory.v1"
+SCHEMA = "oph.source_current_order_sensitive_inventory.v2"
 VERDICT = "SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT"
-UPSTREAM_MAIN_SHA = "2b03a95caf5030272f7b426b964e816f650153f8"
+PREVIOUS_INVENTORY_BASE_SHA = "2b03a95caf5030272f7b426b964e816f650153f8"
+UPSTREAM_MAIN_SHA = "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9"
 
 AUDITED_DIRECTORIES = (
     "code/source_feedback_transport",
@@ -42,6 +43,95 @@ AUDITED_DIRECTORIES = (
     "Lean/Geometry",
     "Lean/InformationProjection",
     "Lean/Variational",
+)
+
+CONTENT_SNAPSHOT_EXACT_EXCLUSIONS = (
+    "code/a5_closure/manifests/source_current_order_sensitive_inventory.json",
+)
+CONTENT_SNAPSHOT_EXCLUDED_DIRECTORY_NAMES = ("__pycache__",)
+CONTENT_SNAPSHOT_EXCLUDED_SUFFIXES = (".pyc",)
+
+INTEGRATED_TREE_REVIEW = (
+    ("Lean/Geometry/FlatDiamondError.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Bounds geometric quadrature error; it defines no source perturbation, composition word, inverse, or history."),
+    ("Lean/Geometry/FlatDiamondNormalization.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Normalizes causal-diamond pair volumes; it contains no port-indexed source operation or history custody."),
+    ("Lean/Geometry/FlatDiamondPairIntegral.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Relates geometric pair sets to integrals; it supplies no perturbation family or ordered execution."),
+    ("Lean/Geometry/FlatDiamondVolume.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Proves flat causal-diamond volume identities rather than source operations or response histories."),
+    ("Lean/Geometry/FlatLorentzVolume.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Proves Lorentz-volume and boost identities with no source-current operation packet."),
+    ("Lean/Geometry/GoldenSourceCausalLimit.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Establishes convergence of generated causal order and counts; it does not define reversible port perturbations."),
+    ("Lean/Geometry/GoldenSourcePairLimit.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Establishes strict-pair count limits, not mixed-order source response histories."),
+    ("Lean/Geometry/GoldenSourceVolumeLimit.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Establishes weighted source-volume limits with no perturbation composition or inverse law."),
+    ("Lean/Geometry/OrderingFractionFourDimensional.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "The change connects geometric count limits to a scalar ordering fraction and adds no source operation."),
+    ("Lean/Geometry/SourceBusScaling.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Defines conditional copy, clear, sweep, and cleanup words compiled to destructive scalar pair means."),
+    ("Lean/Geometry/SourceCausalBoundary.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Proves null-boundary and fixed-diamond count facts; no source perturbation family is present."),
+    ("Lean/Geometry/SourceConstrainedRead.lean", "NEW_CANDIDATE", "lean_selected_pair_mean_histories",
+     "Connects constrained finite word laws to pair-mean transcripts, but only as an abstract irreversible read obstruction."),
+    ("Lean/Geometry/SourceConstrainedSelection.lean", "NEW_CANDIDATE", "lean_selected_pair_mean_histories",
+     "Supplies finite information-projection support theorems used by the selected-history packet."),
+    ("Lean/Geometry/SourceCountLimitAxiomAudit.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Audits theorem dependencies for count limits and introduces no source operation or history."),
+    ("Lean/Geometry/SourceCountTransport.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Transports selected finite counts to measure limits; predicates are classifiers rather than perturbation histories."),
+    ("Lean/Geometry/SourceEncodedMemory.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Defines encoded copy, clear, hop, route, and read words whose amplitudes attenuate under pair means."),
+    ("Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Audits the encoded-memory theorem chain and adds no runtime histories or W12 binding."),
+    ("Lean/Geometry/SourceNativeRecords.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Defines native arithmetic records and proves a two-order schedule-dependence example on Fin 3, not the W12 mixed-order suite."),
+    ("Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Audits native bus and record theorems without adding a source-selected runtime packet."),
+    ("Lean/Geometry/SourceNetOrderLimit.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Proves limiting agreement of generated read order away from a null cone, not reversible perturbation histories."),
+    ("Lean/Geometry/SourceNetVolumeError.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Bounds weighted Alexandrov volumes of generated orders and contains no current-tomography operation family."),
+    ("Lean/Geometry/SourceNonlinearRecord.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Classifies state-only records protected by an irreversible pair-mean law."),
+    ("Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Audits passive-memory, reset, and nonlinear-record theorems without supplying histories."),
+    ("Lean/Geometry/SourcePassiveMemoryBudget.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Its quadratic defect proves nontrivial pair means dissipative and excludes nontrivial closed cycles."),
+    ("Lean/Geometry/SourcePassiveReset.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Proves positive registers cannot reset exactly under finite nonnegative pair means."),
+    ("Lean/Geometry/SourceReadSelection.lean", "NEW_CANDIDATE", "lean_selected_pair_mean_histories",
+     "Defines finite pair-mean words and full prefix transcripts, but not W12 reversible operations or serialized executions."),
+    ("Lean/Geometry/SourceReadSelectionAxiomAudit.lean", "NEW_CANDIDATE", "lean_selected_pair_mean_histories",
+     "Audits the constrained-selection and transcript obstruction chain."),
+    ("Lean/Geometry/SourceReusableBus.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Compiles copy and clear instructions to attenuating pair-mean programs with supplied schedules."),
+    ("Lean/Geometry/SourceReusableBusAxiomAudit.lean", "NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus",
+     "Audits the reusable-bus theorem chain without adding a W12 source instance."),
+    ("Lean/Geometry/SourceSelectionControls.lean", "NEW_CANDIDATE", "lean_selected_pair_mean_histories",
+     "Provides finite controls showing cover-dependent support selection, not a reversible current producer."),
+    ("Lean/Screen/OPHScreen.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "The change only imports Whitney modules into the umbrella and adds no theorem or source operation."),
+    ("Lean/Screen/WhitneyConeMass.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Defines cone mass, constraint, stiffness, and normal frames; these are static field-mode structures."),
+    ("Lean/Screen/WhitneyConeMassNaturality.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Proves frame naturality for a supplied mass and contains no source perturbation histories."),
+    ("Lean/Screen/WhitneyConeModes.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Constructs static cone gradients, curls, constraints, and thirty normal modes."),
+    ("Lean/Screen/WhitneyConeNaturality.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Proves basis-change naturality of cone modes rather than source-operation order sensitivity."),
+    ("Lean/Screen/WhitneyFrameMorphism.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Defines isometries between modal frames, not port-indexed perturbations or runtime histories."),
+    ("Lean/Screen/WhitneyFrameNaturality.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Defines overlap-coordinate changes among complete modal frames; the order is basis order, not operation order."),
+    ("Lean/Screen/WhitneyMassPremiseInstance.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Instantiates a positive counting mass and thirty-mode frame with no source-current producer."),
+    ("Lean/Screen/WhitneyNormalModeConstruction.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Applies finite-dimensional spectral theory to supplied mass and stiffness forms."),
+    ("Lean/Screen/WhitneyRotationWitness.lean", "OUTSIDE_REVIEWED_SOURCE_SCOPE", None,
+     "Provides a two-mode rotation control for frame naturality, not source-current histories."),
 )
 
 ALLOWED_CLASSIFICATIONS = {
@@ -111,6 +201,22 @@ AUDITED_SOURCE_PATHS = (
     "Lean/Screen/OrientedFaceBracketSelector.lean",
     "Lean/Screen/PrimitivePortTranslationBridge.lean",
     "Lean/Screen/RepairWordCarrierReadout.lean",
+    "Lean/Geometry/SourceBusScaling.lean",
+    "Lean/Geometry/SourceConstrainedRead.lean",
+    "Lean/Geometry/SourceConstrainedSelection.lean",
+    "Lean/Geometry/SourceEncodedMemory.lean",
+    "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean",
+    "Lean/Geometry/SourceNativeRecords.lean",
+    "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean",
+    "Lean/Geometry/SourceNonlinearRecord.lean",
+    "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean",
+    "Lean/Geometry/SourcePassiveMemoryBudget.lean",
+    "Lean/Geometry/SourcePassiveReset.lean",
+    "Lean/Geometry/SourceReadSelection.lean",
+    "Lean/Geometry/SourceReadSelectionAxiomAudit.lean",
+    "Lean/Geometry/SourceReusableBus.lean",
+    "Lean/Geometry/SourceReusableBusAxiomAudit.lean",
+    "Lean/Geometry/SourceSelectionControls.lean",
 )
 
 
@@ -158,12 +264,23 @@ def source_pin(relative: str) -> dict[str, Any]:
     }
 
 
-def audited_file_paths() -> list[str]:
-    """Return the canonical repository-file snapshot for the audited trees."""
+def snapshot_exclusion_reason(relative: str) -> str | None:
+    path = Path(relative)
+    if relative in CONTENT_SNAPSHOT_EXACT_EXCLUSIONS:
+        return "self_referential_inventory_manifest"
+    if any(part in CONTENT_SNAPSHOT_EXCLUDED_DIRECTORY_NAMES for part in path.parts):
+        return "repository_cache_directory"
+    if path.suffix in CONTENT_SNAPSHOT_EXCLUDED_SUFFIXES:
+        return "repository_cache_or_build_output"
+    return None
+
+
+def audited_file_records(repo_root: Path = REPO_ROOT) -> list[dict[str, Any]]:
+    """Return canonical content records for every included audited-tree file."""
 
     paths: set[str] = set()
     for relative in AUDITED_DIRECTORIES:
-        directory = REPO_ROOT / relative
+        directory = repo_root / relative
         require(
             directory.is_dir(),
             "AUDIT_DIRECTORY",
@@ -172,24 +289,44 @@ def audited_file_paths() -> list[str]:
         for path in directory.rglob("*"):
             if not path.is_file():
                 continue
-            repo_relative = path.relative_to(REPO_ROOT)
-            if "__pycache__" in repo_relative.parts or path.suffix == ".pyc":
+            repo_relative = path.relative_to(repo_root).as_posix()
+            if snapshot_exclusion_reason(repo_relative) is not None:
                 continue
-            paths.add(repo_relative.as_posix())
-    return sorted(paths)
+            paths.add(repo_relative)
+    return [
+        {
+            "path": relative,
+            "byte_count": (repo_root / relative).stat().st_size,
+            "sha256": file_sha256(repo_root / relative),
+        }
+        for relative in sorted(paths)
+    ]
+
+
+def audited_file_paths(repo_root: Path = REPO_ROOT) -> list[str]:
+    return [row["path"] for row in audited_file_records(repo_root)]
 
 
 def audited_file_snapshot() -> dict[str, Any]:
-    paths = audited_file_paths()
+    files = audited_file_records()
     return {
         "directories": list(AUDITED_DIRECTORIES),
-        "path_count": len(paths),
-        "paths": paths,
-        "paths_sha256": canonical_sha256(paths),
-        "excluded_runtime_artifacts": ["**/__pycache__/**", "**/*.pyc"],
+        "file_count": len(files),
+        "files": files,
+        "files_sha256": canonical_sha256(files),
+        "exclusion_policy": {
+            "exact_paths": list(CONTENT_SNAPSHOT_EXACT_EXCLUSIONS),
+            "directory_names": list(CONTENT_SNAPSHOT_EXCLUDED_DIRECTORY_NAMES),
+            "suffixes": list(CONTENT_SNAPSHOT_EXCLUDED_SUFFIXES),
+            "reasons": {
+                "exact_paths": "the generated inventory would otherwise contain its own byte digest",
+                "directory_names": "repository cache directories cannot supply reviewed scientific source",
+                "suffixes": "interpreter cache and build outputs cannot supply reviewed scientific source",
+            },
+        },
         "staleness_rule": (
-            "any added, removed, or renamed non-cache file below an audited "
-            "directory invalidates the committed inventory"
+            "any added, removed, renamed, or byte-changed included file below "
+            "an audited directory invalidates the committed inventory"
         ),
     }
 
@@ -507,6 +644,28 @@ def audit_source_semantics() -> dict[str, Any]:
         ),
         "Lean/ObserverPatchHolography/Provenance/HistoryCausalInvariance.lean": (
             "two serializations of the diamond",
+        ),
+        "Lean/Geometry/SourceEncodedMemory.lean": (
+            "copying halves both",
+            "no physical gain",
+        ),
+        "Lean/Geometry/SourceNativeRecords.lean": (
+            "schedule-selection obstruction",
+            "different records",
+        ),
+        "Lean/Geometry/SourcePassiveReset.lean": (
+            "positive_register_cannot_reset",
+        ),
+        "Lean/Geometry/SourcePassiveMemoryBudget.lean": (
+            "closed_cycle_quiescent",
+            "no_catalytic_balanced_copy",
+        ),
+        "Lean/Geometry/SourceReadSelection.lean": (
+            "finite-word selection and remote-read obstruction",
+            "not impossibility of eventual",
+        ),
+        "Lean/Geometry/SourceConstrainedRead.lean": (
+            "prevents a guaranteed correct two-input read",
         ),
     }
     for relative, needles in required_text.items():
@@ -866,6 +1025,73 @@ def build_candidates(facts: Mapping[str, Any]) -> list[dict[str, Any]]:
             ("generic path-product API", "no committed current packet"),
         ),
         candidate(
+            "lean_pair_mean_memory_and_reusable_bus",
+            "IRREVERSIBLE_ONLY",
+            (
+                "Lean/Geometry/SourceEncodedMemory.lean",
+                "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean",
+                "Lean/Geometry/SourceNonlinearRecord.lean",
+                "Lean/Geometry/SourcePassiveReset.lean",
+                "Lean/Geometry/SourcePassiveMemoryBudget.lean",
+                "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean",
+                "Lean/Geometry/SourceReusableBus.lean",
+                "Lean/Geometry/SourceReusableBusAxiomAudit.lean",
+                "Lean/Geometry/SourceBusScaling.lean",
+                "Lean/Geometry/SourceNativeRecords.lean",
+                "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean",
+            ),
+            "Formal copy, clear, route, cleanup, memory, and arithmetic programs compiled to the scalar pair-mean law.",
+            "FORMAL_IRREVERSIBLE_PAIR_MEAN_PROGRAMS",
+            properties(
+                source_native=True,
+                port_indexed=False,
+                reversible=False,
+                both_composition_orders_recorded=False,
+                raw_histories_serialized=False,
+                target_free=True,
+                same_twelve_port_carrier=False,
+                refinement_provenance_present=False,
+                twelve_reversible_perturbation_families=False,
+            ),
+            "The programs attenuate, average, clear, and dissipate. Their two-order Fin3 control proves schedule dependence, but they supply neither W12 port families nor the 132 serialized mixed-order histories.",
+            (
+                "encoded copy and routing attenuate amplitudes by powers of two",
+                "positive nonnegative registers cannot reset exactly under finite pair means",
+                "nontrivial closed pair-mean cycles are excluded by the quadratic defect",
+                "the schedule-dependence witness covers two words on Fin3 rather than all W12 pairs",
+            ),
+        ),
+        candidate(
+            "lean_selected_pair_mean_histories",
+            "IRREVERSIBLE_ONLY",
+            (
+                "Lean/Geometry/SourceConstrainedRead.lean",
+                "Lean/Geometry/SourceConstrainedSelection.lean",
+                "Lean/Geometry/SourceReadSelection.lean",
+                "Lean/Geometry/SourceReadSelectionAxiomAudit.lean",
+                "Lean/Geometry/SourceSelectionControls.lean",
+            ),
+            "Formal finite pair-mean words, prefix transcripts, information-projection selection, and remote-read obstructions.",
+            "FORMAL_SELECTED_IRREVERSIBLE_TRANSCRIPTS",
+            properties(
+                source_native=True,
+                port_indexed=False,
+                reversible=False,
+                both_composition_orders_recorded=False,
+                raw_histories_serialized=False,
+                target_free=True,
+                same_twelve_port_carrier=False,
+                refinement_provenance_present=False,
+                twelve_reversible_perturbation_families=False,
+            ),
+            "Theorems quantify over abstract finite words and transcripts of destructive pair means. They provide no W12 instance, inverse laws, runtime custody, refinement ancestry, or complete mixed-order family.",
+            (
+                "full-prefix transcripts are formal functions of supplied words",
+                "cut-avoiding selected words obstruct guaranteed remote reads",
+                "cover choice can change selected history support",
+            ),
+        ),
+        candidate(
             "lean_source_history_abstractions",
             "PARTIAL",
             (
@@ -1020,6 +1246,38 @@ def build_candidates(facts: Mapping[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
+def integrated_tree_review() -> list[dict[str, Any]]:
+    rows = [
+        {
+            "path": path,
+            "decision": decision,
+            "candidate_id": candidate_id,
+            "reason": reason,
+        }
+        for path, decision, candidate_id, reason in INTEGRATED_TREE_REVIEW
+    ]
+    require(
+        [row["path"] for row in rows]
+        == sorted({row["path"] for row in rows}),
+        "INTEGRATED_REVIEW_ORDER",
+        "integrated-tree review paths must be unique and canonical",
+    )
+    require(
+        all(
+            row["decision"]
+            in {
+                "NEW_CANDIDATE",
+                "EXTENDS_EXISTING_CANDIDATE",
+                "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            }
+            for row in rows
+        ),
+        "INTEGRATED_REVIEW_DECISION",
+        "invalid integrated-tree semantic decision",
+    )
+    return rows
+
+
 def build_inventory() -> dict[str, Any]:
     facts = audit_source_semantics()
     candidates = build_candidates(facts)
@@ -1034,8 +1292,13 @@ def build_inventory() -> dict[str, Any]:
         "schema": SCHEMA,
         "program": "SOURCE-CURRENT-TOMOGRAPHY-0",
         "stage": 2,
+        "previous_inventory_base_sha": PREVIOUS_INVENTORY_BASE_SHA,
         "audited_upstream_main_sha": UPSTREAM_MAIN_SHA,
         "verdict": VERDICT,
+        "verdict_scope": (
+            "The verdict applies only to the explicitly enumerated candidates "
+            "and reviewed source scope at the audited upstream base."
+        ),
         "positive_stages_authorized": False,
         "physical_current_source_bridge_attained": False,
         "fixture_used_as_reconstruction_oracle": False,
@@ -1057,6 +1320,12 @@ def build_inventory() -> dict[str, Any]:
             ],
         },
         "audited_file_snapshot": audited_file_snapshot(),
+        "integrated_tree_review": {
+            "from_upstream_main_sha": PREVIOUS_INVENTORY_BASE_SHA,
+            "through_upstream_main_sha": UPSTREAM_MAIN_SHA,
+            "surface_count": len(INTEGRATED_TREE_REVIEW),
+            "surfaces": integrated_tree_review(),
+        },
         "qualification_fields": list(QUALIFICATION_FIELDS),
         "source_pins": [source_pin(path) for path in AUDITED_SOURCE_PATHS],
         "implementation_pins": [
@@ -1120,12 +1389,13 @@ def build_inventory() -> dict[str, Any]:
         ],
         "claim_boundary": {
             "bounded_repository_inventory_only": True,
+            "verdict_limited_to_enumerated_reviewed_source_scope": True,
             "does_not_assert_a_no_go_for_future_source_data": True,
             "does_not_weaken_the_abstract_forced_lie_type_theorem": True,
             "does_not_reject_the_conditional_port_current_fixture": True,
             "does_not_make_a_physical_current_claim": True,
             "stages_3_through_6_not_run": True,
-            "next_scientific_step": "add and independently review a new source producer containing the minimal missing fields; do not reinterpret existing static or irreversible packets",
+            "missing_packet": "No enumerated candidate supplies the complete reversible ordered-history contract; existing static and irreversible packets do not supply it by composition.",
         },
         "verifier_command": (
             "python3 code/a5_closure/verify_source_current_order_sensitive_inventory.py "

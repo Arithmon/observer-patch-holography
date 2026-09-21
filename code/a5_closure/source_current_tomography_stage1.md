@@ -1,4 +1,4 @@
-# SOURCE-CURRENT-TOMOGRAPHY-0 — Stage 1
+# SOURCE-CURRENT-TOMOGRAPHY-0: Stage 1
 
 ## Role of this stage
 
@@ -11,7 +11,7 @@ The upstream packet
 - `source_current_capability.receipt.json`;
 - `verify_source_current_capability_independent.py`
 
-already proves an exact bounded obstruction for the registered source response.
+provides an exact bounded obstruction for the registered source response.
 
 The registered adjacency recurrence and maximal-distance readback generate
 
@@ -31,7 +31,7 @@ Therefore this registered packet cannot by itself provide:
 - nonidentity proper recharting words;
 - same-history projective implementers.
 
-This is a bounded obstruction only. It says nothing against a future
+This is a bounded obstruction only. It does not exclude a separate
 order-sensitive response producer.
 
 ## Exact gap
@@ -47,9 +47,9 @@ recharting words:   60 - 1 = 59 nonidentity elements
 The missing object is not another static invariant. It is **order-sensitive
 source data**.
 
-## Minimal next source packet
+## Admissible source packet
 
-Stage 1 freezes the next admissible packet as follows.
+The admissibility contract has the following fields.
 
 ### Port-indexed reversible perturbations
 
@@ -117,13 +117,13 @@ registered refinement tower.
 
 Stage 1 intentionally permits three outcomes.
 
-### Positive
+### Positive reconstruction
 
 The source histories reconstruct one current equivalence class, modulo the
 declared basis/gauge freedom. Only after that reconstruction may it be
 compared with `PORT-CURRENT-INNER`.
 
-### Non-identifiable
+### Non-identifiability
 
 Two inequivalent current realizations survive the identical source packet.
 The certificate must emit both witnesses and an invariant separating the two
@@ -131,7 +131,7 @@ equivalence classes.
 
 This is a scientifically successful negative result.
 
-### Insufficient
+### Insufficient data
 
 One or more first-order, mixed-order, holonomy or refinement gates fail.
 
@@ -140,8 +140,7 @@ One or more first-order, mixed-order, holonomy or refinement gates fail.
 ```bash
 python3 code/a5_closure/source_current_tomography_stage1_contract.py verify
 
-python3 -m unittest \
-  code.a5_closure.tests.test_source_current_tomography_stage1_contract
+python3 code/a5_closure/tests/test_source_current_tomography_stage1_contract.py
 ```
 
 ## Claim boundary
@@ -151,5 +150,5 @@ This stage:
 - preserves the abstract forced Lie-type theorem;
 - preserves the conditional `PORT-CURRENT-INNER` construction;
 - does not consume that fixture as an oracle;
-- does not assert a no-go theorem for future order-sensitive histories;
+- does not assert a no-go theorem for other order-sensitive histories;
 - does not promote a physical current.
