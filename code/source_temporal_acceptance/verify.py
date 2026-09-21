@@ -25,6 +25,12 @@ def rational(value):
 
 def check_certificate(rows, target, cert):
     """A primal decoder or a normalized null witness exhausts both alternatives."""
+    require(type(target) in (list, tuple) and all(type(v) in (int, F) for v in target),
+            "exact target vector")
+    require(type(rows) in (list, tuple) and all(
+        type(row) in (list, tuple) and len(row) == len(target)
+        and all(type(v) in (int, F) for v in row) for row in rows),
+        "exact rectangular observation matrix")
     require(type(cert) is dict, "certificate object")
     if cert.get("kind") == "decoder":
         require(set(cert) == {"kind", "coefficients", "sample_error_gain"}, "decoder fields")

@@ -89,7 +89,9 @@ matrices, independent of the realized payload. The additional receiver
 sample is determined by the proposed scalar state.
 
 The topology-derived completing word works from every protected checkpoint
-whose record determines the receiver's initial value. Every prefix of that
+whose record determines the receiver's current value. The initial receiver
+sample establishes this hypothesis; retained samples after admitted means
+and unchanged data after rejections maintain it. Every prefix of that
 word is admitted: an erasing prefix would give two equal records and states
 which its common remaining suffix cannot separate, contradicting complete
 recovery. Consequently an occurrence of the completing word among arbitrary

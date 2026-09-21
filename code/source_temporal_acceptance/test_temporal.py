@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
-from itertools import product
+from itertools import combinations, product
 
 import pytest
 
@@ -51,6 +51,32 @@ def test_incompatible_observation_is_not_an_ambiguity():
     with pytest.raises(ValueError, match="visible ambiguity"):
         verify.check_certificate([[F(1), F(0)]], [1, 0],
                                  {"kind": "ambiguity", "perturbation": ["1", "0"]})
+
+
+@pytest.mark.parametrize("rows,target,cert", [
+    ([[1, 42]], [1], {"kind": "decoder", "coefficients": ["1"], "sample_error_gain": "1"}),
+    ([[0, 42]], [1], {"kind": "ambiguity", "perturbation": ["1"]}),
+    ([[]], [1], {"kind": "ambiguity", "perturbation": ["1"]}),
+    ([[1.0]], [1], {"kind": "decoder", "coefficients": ["1"], "sample_error_gain": "1"}),
+    ([[True]], [1], {"kind": "decoder", "coefficients": ["1"], "sample_error_gain": "1"}),
+    ([[1]], [True], {"kind": "decoder", "coefficients": ["1"], "sample_error_gain": "1"}),
+])
+def test_certificate_rejects_ragged_or_inexact_linear_problem(rows, target, cert):
+    with pytest.raises(ValueError, match="exact"):
+        verify.check_certificate(rows, target, cert)
+
+
+def test_zero_dimensional_meaning_is_valid():
+    assert verify.check_certificate([[]], [], {
+        "kind": "decoder", "coefficients": ["0"], "sample_error_gain": "0"})
+
+
+def test_all_small_two_column_problems_agree_with_independent_rank():
+    for entries in product((-1, 0, 1), repeat=4):
+        rows = [list(map(F, entries[:2])), list(map(F, entries[2:]))]
+        for target in product((-1, 0, 1), repeat=2):
+            cert = build.certificate(rows, target)
+            assert verify.check_certificate(rows, target, cert) == verify.identifies_two(rows, target)
 
 
 def test_aggregate_recovery_does_not_certify_individual_reads(packet):
@@ -195,6 +221,65 @@ def test_branching_native_completion_all_basis_vectors(edges, root):
         samples, final, _ = tomography.scalar_run(paths, root, initial)
         recovered, calibrated = check_tomography.recover(root, paths, samples)
         assert recovered == initial and calibrated == final
+
+
+def test_initial_receiver_sample_is_a_necessary_guard_hypothesis():
+    # The whole initial two-port state distinguishes the sources, but a mean
+    # erases their difference unless the receiver's initial sample is retained.
+    columns = []
+    for basis in range(2):
+        initial = {v: F(v == basis) for v in range(2)}
+        samples, _, _ = tomography.scalar_run([[0, 1]], 1, initial)
+        columns.append(samples)
+        recovered, _ = check_tomography.recover(1, [[0, 1]], samples)
+        assert recovered == initial
+    rows = list(zip(*columns))
+    trial_state = [rows[-1], rows[-1]]
+    for target in ((1, 0), (0, 1)):
+        assert verify.identifies_two(rows, target)
+        assert not verify.identifies_two(trial_state, target)
+        assert verify.identifies_two([rows[0]]+trial_state, target)
+
+
+def test_every_connected_four_port_graph_all_receivers_and_basis_states():
+    vertices = set(range(4))
+    possible = list(combinations(range(4), 2))
+    connected = 0
+    for included in product((False, True), repeat=len(possible)):
+        edges = [e for e, yes in zip(possible, included) if yes]
+        graph = {v: set() for v in vertices}
+        for a, b in edges:
+            graph[a].add(b)
+            graph[b].add(a)
+        # Independent finite reachability check, separate from the planner.
+        reached = {0}
+        for _ in vertices:
+            reached |= {b for a in reached for b in graph[a]}
+        if reached != vertices:
+            with pytest.raises(ValueError, match="disconnected"):
+                tomography.plan(graph, 0)
+            continue
+        connected += 1
+        for root in vertices:
+            _, _, paths = tomography.plan(graph, root)
+            work = check_tomography.check_paths(vertices, {frozenset(e) for e in edges}, root, paths)
+            assert work <= 6 and len(paths) == 3
+            for basis in vertices:
+                initial = {v: F(v == basis) for v in vertices}
+                samples, final, _ = tomography.scalar_run(paths, root, initial)
+                recovered, calibrated = check_tomography.recover(root, paths, samples)
+                assert recovered == initial and calibrated == final
+    assert connected == 38
+
+
+def test_single_port_completion_needs_only_the_initial_sample():
+    _, _, paths = tomography.plan({0: set()}, 0)
+    assert paths == []
+    assert check_tomography.check_paths({0}, set(), 0, paths) == 0
+    initial = {0: F(-7, 3)}
+    samples, final, _ = tomography.scalar_run(paths, 0, initial)
+    assert samples == [initial[0]]
+    assert check_tomography.recover(0, paths, samples) == (initial, final)
 
 
 @pytest.mark.parametrize("attack", ["sample", "tree", "cost", "precision", "radius", "replay"])

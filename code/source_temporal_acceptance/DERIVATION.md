@@ -201,8 +201,11 @@ scalar state. The test is a property of the response maps, not of a realized
 payload. `linear_protected_iff` proves its joint-kernel implementation;
 the proposed receiver sample is already a row of the candidate state.
 
-The connected native completing word works from every protected checkpoint,
-including after arbitrary earlier admitted or rejected proposals. Moreover,
+The connected native completing word works from every protected checkpoint
+whose retained record determines its current receiver scalar (`HasRoot`).
+The initial sample establishes this additional hypothesis; each admitted
+mean records the resulting receiver value, and rejection changes neither.
+Thus it holds after arbitrary earlier admitted or rejected proposals. Moreover,
 every prefix of that word is admitted by the guard. Otherwise a rejected
 prefix would erase two source possibilities with equal retained records
 and equal current states; its common remaining suffix could not separate

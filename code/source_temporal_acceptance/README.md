@@ -33,7 +33,9 @@ parts of this scalar interface, not a full A1--A3 instantiation.
 The same criterion gives a maximal preservation guard: admit a proposed
 mean exactly when the proposed joint kernel preserves the source records.
 The Lean proof derives one bounded completing word that this guard accepts
-from every protected checkpoint. An occurrence amid arbitrary other
+from every protected checkpoint whose retained record determines its current
+receiver scalar. The initial receiver sample and each admitted mean's sample
+maintain this hypothesis. An occurrence amid arbitrary other
 proposals therefore completes all records. With an explicitly supplied
 uniform full proposal law, a block of B proposals from M event identities
 gives failure at most `(1-M^(-B))^k` after k blocks. Rejections remain in the

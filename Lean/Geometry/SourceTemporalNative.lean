@@ -44,6 +44,8 @@ theorem wordMap_shift (es : List (P × P)) (b : ℝ) (x : P → ℝ) :
   rw [wordMap_baseline] at h
   exact h
 
+/-- `horizon` counts sample slots, starting with the initial state at slot
+zero. Observations through H executed means therefore use H+1 slots. -/
 def responses (prep : V →ₗ[ℝ] (P → ℝ)) (es : List (P × P))
     (read : R → P) (horizon : ℕ) : (Fin horizon × R) → V →ₗ[ℝ] ℝ :=
   fun slot => (LinearMap.proj (read slot.2)).comp

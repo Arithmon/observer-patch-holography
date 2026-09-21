@@ -61,7 +61,9 @@ A3 cover/reference are not instantiated by this finite interface.
    objective, an imposed public meaning or successful-word postselection.
 10. A maximal preservation guard derived from the current record/state
     kernel, with a proof that the topology-derived completing word is
-    admitted from every protected checkpoint. Prove completion after an
+    admitted from every protected checkpoint whose retained record determines
+    its current receiver scalar (`HasRoot`). Initially sample the receiver;
+    each admitted mean records its updated sample. Prove completion after an
     occurrence among arbitrary other proposals and the exact finite
     full-proposal failure count. Independently replay the guarded attempt
     census, charging rejected proposals and retained samples explicitly.
@@ -81,6 +83,8 @@ altered receiver samples, incorrect work and promotion of topology evidence
 to payload replay. Every new theorem is included in the transitive gate.
 Guard tests reject an admitted erasing move, future-sample publication,
 deleted rejections, forged response rows and omitted rejected-proposal costs.
+Certificate helpers reject ragged matrices and inexact or boolean entries.
+An explicit two-port control checks why the initial receiver sample is needed.
 
 ## Scientific boundary
 

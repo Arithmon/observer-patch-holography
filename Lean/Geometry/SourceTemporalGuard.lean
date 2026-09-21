@@ -7,7 +7,9 @@ The guard admits a proposed seam exactly when retained observations and
 the proposed scalar state distinguish the source record domain. It
 does not query a successful route or a realized payload. Every finite
 connected support has one completing word which the guard accepts from
-every protected checkpoint. Other proposals, including rejected ones,
+every protected checkpoint whose record determines the current receiver
+scalar. Initial sampling and the retained updates maintain this hypothesis.
+Other proposals, including rejected ones,
 remain part of an attempt history. A proposal probability law is separate.
 -/
 
