@@ -248,7 +248,8 @@
   "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
   "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT",
   "OPH-NATIVE-LOCAL-SINGLETON-PUBLICATION",
-  "OPH-NATIVE-REUSABLE-ACCUMULATION"
+  "OPH-NATIVE-REUSABLE-ACCUMULATION",
+  "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION"
  ],
  "edges": [
   {
@@ -2175,6 +2176,11 @@
    "from": "OPH-NATIVE-LOCAL-SINGLETON-PUBLICATION",
    "to": "OPH-NATIVE-REUSABLE-ACCUMULATION",
    "role": "Supplies the maximal sound singleton publication policy and native final-read error interface; the accumulator adds declared request composition and integer feasibility bounds."
+  },
+  {
+   "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
+   "to": "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION",
+   "role": "Supplies the complete q3 routed event streams, prepared address records and declared M1 compiler used for the paired gluing comparison; source-selected population, physical geometry and unrestricted law recovery are not inherited."
   }
  ]
 }
