@@ -202,6 +202,13 @@ to accept successful routes retains the M1 premise.
 The current theorem does not choose between these alternatives, and the
 axioms' entailment or non-entailment of the full M1 law remains unresolved.
 
+[Temporal acceptance](../source_temporal_acceptance/README.md) derives the
+complete linear observation grammar from native prefixes. It characterizes
+the individual-record menu, strengthens the crossing test to an exact
+observability condition, and proves an arbitrary-continuation erasure
+obstruction. Selection of the metric meaning and full A1--A3 interface is
+outside those conditional theorems.
+
 [Native read acceptance](../source_read_acceptance/README.md) derives a maximal
 sound local partial decoder for a specified uncertainty model, with native
 error and stopping-work theorems. Its preparation, paired alphabet and A3
