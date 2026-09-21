@@ -28,9 +28,15 @@
     "code/sm_local_action/build_local_action.py",
     "code/sm_local_action/verify_local_action.py",
     "code/sm_local_action/test_local_action.py",
-    "code/sm_local_action/local_action_receipt.json"
+    "code/sm_local_action/local_action_receipt.json",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "Ad-invariance over each supplied certified compact bracket forces a block-diagonal kinetic form with zero cross terms and one free positive Killing-relative coefficient on the color factor, so the Yang-Mills shape is attained on the classified bracket branches, while the source selection of the bracket, the source-produced action, and the coefficient value are not supplied; an assembled structural action with every coefficient a declared bundle parameter sums this sector with the committed scalar and Yukawa sectors, with the gauge sector carried at the committed invariant-form level on a typed sector carrier (the declared diagonal pairing is exactly its axis restriction and pins the weights, and the committed constraint rows are realized as infinitesimal-invariance rows of exhibited cross-sector generators), and the source-produced action stays open. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector."
+   "boundary": "Ad-invariance over each supplied certified compact bracket forces a block-diagonal kinetic form with zero cross terms and one free positive Killing-relative coefficient on the color factor, so the Yang-Mills shape is attained on the classified bracket branches, while the source selection of the bracket, the source-produced action, and the coefficient value are not supplied; an assembled structural action with every coefficient a declared bundle parameter sums this sector with the committed scalar and Yukawa sectors, with the gauge sector carried at the committed invariant-form level on a typed sector carrier (the declared diagonal pairing is exactly its axis restriction and pins the weights, and the committed constraint rows are realized as infinitesimal-invariance rows of exhibited cross-sector generators), and the source-produced action stays open. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector. In the separately declared coupled hybrid action, identity nonabelian links, zero nonabelian momenta and internally scalar fermion covariance form an invariant expectation-level restriction: every omitted nonabelian mean charge/current and gauge first variation vanishes. The weak local charge variance remains 63/2048 initially; this is not a full quantum Gauss state or an excited nonabelian execution."
   },
   {
    "id": "SML-02",
@@ -64,9 +70,15 @@
     "code/sm_abelian_reduction/build_abelian.py",
     "code/sm_abelian_reduction/verify_abelian.py",
     "code/sm_abelian_reduction/test_abelian.py",
-    "code/sm_abelian_reduction/abelian_receipt.json"
+    "code/sm_abelian_reduction/abelian_receipt.json",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The one-coefficient Yang-Mills shape on the weak factor rests on the imported classical uniqueness of the invariant form on a compact simple ideal (declared under PR-11), while the certified reduction covers the color-type branches, and the kinetic dichotomy isolates the weak-to-color coefficient ratio that separates the two declared candidate branches (six versus three halves) without selecting either, while the source bracket, the source-produced action, and the coefficient value are not supplied; the declared-parameter assembled structural action includes this sector at the committed invariant-form level on a typed sector carrier, with the declared diagonal pairing exactly its axis restriction, and the source-produced action stays open. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector. The local classical Cartan-scalar solution embedding and its declared q=5 action execution retain both weighted Cartan equations and Gauss constraints. The phase intervention gives nonzero variational current and electric feedback, while a true gauge copy preserves invariant readouts. The log-plaquette chart, action weights, population and time are supplied; the binary64 replay is not a continuous-history enclosure. No physical source selection, global compact subgroup or quantum truncation is supplied."
+   "boundary": "The one-coefficient Yang-Mills shape on the weak factor rests on the imported classical uniqueness of the invariant form on a compact simple ideal (declared under PR-11), while the certified reduction covers the color-type branches, and the kinetic dichotomy isolates the weak-to-color coefficient ratio that separates the two declared candidate branches (six versus three halves) without selecting either, while the source bracket, the source-produced action, and the coefficient value are not supplied; the declared-parameter assembled structural action includes this sector at the committed invariant-form level on a typed sector carrier, with the declared diagonal pairing exactly its axis restriction, and the source-produced action stays open. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector. The local classical Cartan-scalar solution embedding and its declared q=5 action execution retain both weighted Cartan equations and Gauss constraints. The phase intervention gives nonzero variational current and electric feedback, while a true gauge copy preserves invariant readouts. The log-plaquette chart, action weights, population and time are supplied; the binary64 replay is not a continuous-history enclosure. No physical source selection, global compact subgroup or quantum truncation is supplied. In the separately declared coupled hybrid action, identity nonabelian links, zero nonabelian momenta and internally scalar fermion covariance form an invariant expectation-level restriction: every omitted nonabelian mean charge/current and gauge first variation vanishes. The weak local charge variance remains 63/2048 initially; this is not a full quantum Gauss state or an excited nonabelian execution."
   },
   {
    "id": "SML-03",
@@ -99,9 +111,15 @@
     "code/sm_abelian_reduction/build_abelian.py",
     "code/sm_abelian_reduction/verify_abelian.py",
     "code/sm_abelian_reduction/test_abelian.py",
-    "code/sm_abelian_reduction/abelian_receipt.json"
+    "code/sm_abelian_reduction/abelian_receipt.json",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The one-dimensional centre is part of the forced abstract Lie type on the certified carrier and its quadratic kinetic shape carries one free normalization, while the abelian charge lattice is undetermined at carrier level, the hypercharge identification enters through the registered matter grammar, and the global form rests on declared completions. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector. The local classical Cartan-scalar solution embedding and its declared q=5 action execution retain both weighted Cartan equations and Gauss constraints. The phase intervention gives nonzero variational current and electric feedback, while a true gauge copy preserves invariant readouts. The log-plaquette chart, action weights, population and time are supplied; the binary64 replay is not a continuous-history enclosure. No physical source selection, global compact subgroup or quantum truncation is supplied."
+   "boundary": "The one-dimensional centre is part of the forced abstract Lie type on the certified carrier and its quadratic kinetic shape carries one free normalization, while the abelian charge lattice is undetermined at carrier level, the hypercharge identification enters through the registered matter grammar, and the global form rests on declared completions. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector. The local classical Cartan-scalar solution embedding and its declared q=5 action execution retain both weighted Cartan equations and Gauss constraints. The phase intervention gives nonzero variational current and electric feedback, while a true gauge copy preserves invariant readouts. The log-plaquette chart, action weights, population and time are supplied; the binary64 replay is not a continuous-history enclosure. No physical source selection, global compact subgroup or quantum truncation is supplied. The separately supplied coupled hybrid action uses a convex fixed-lambda nonquadratic electric law and a charge-one Wilson term on the direct-product cover. Its exact drift/kick execution and mean Gauss do not establish the quadratic Maxwell kinetic term, global quotient descent or physical gauge-field identification."
   },
   {
    "id": "SML-04",
@@ -126,9 +144,15 @@
     "code/sm_local_action/build_local_action.py",
     "code/sm_local_action/verify_local_action.py",
     "code/sm_local_action/test_local_action.py",
-    "code/sm_local_action/local_action_receipt.json"
+    "code/sm_local_action/local_action_receipt.json",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The forced nonabelian Lie type implies cubic and quartic self-coupling structure once a Yang-Mills kinetic form is written, and the structure constants are pinned only by the measure- and metric-conditional selection of one classified compact family under the declared face-weight and nearest-point rules, while source bracket selection and a source-emitted field-strength action remain open. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector."
+   "boundary": "The forced nonabelian Lie type implies cubic and quartic self-coupling structure once a Yang-Mills kinetic form is written, and the structure constants are pinned only by the measure- and metric-conditional selection of one classified compact family under the declared face-weight and nearest-point rules, while source bracket selection and a source-emitted field-strength action remain open. The separate local jet action realizes the gauge kinetic density with varying F=dA+[A,A] and derivative-sensitive Ward cancellation on declared geometry, connection and invariant trace normalization. This does not discharge PR-54 or change the classification of the source-produced sector. In the separately declared coupled hybrid action, identity nonabelian links, zero nonabelian momenta and internally scalar fermion covariance form an invariant expectation-level restriction: every omitted nonabelian mean charge/current and gauge first variation vanishes. The weak local charge variance remains 63/2048 initially; this is not a full quantum Gauss state or an excited nonabelian execution."
   },
   {
    "id": "SML-05",
@@ -159,9 +183,15 @@
     "code/sm_fermion_current/verify_current.py",
     "code/sm_fermion_current/test_current.py",
     "code/sm_fermion_current/quantum_link_receipt.json",
-    "code/sm_fermion_current/verify_quantum_link.py"
+    "code/sm_fermion_current/verify_quantum_link.py",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The registered exterior grammar places the quark doublet with hypercharge one sixth inside the unique chiral anomaly-free fifteen-state generation, which fixes the covariant-derivative coupling pattern of the term, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction."
+   "boundary": "The registered exterior grammar places the quark doublet with hypercharge one sixth inside the unique chiral anomaly-free fifteen-state generation, which fixes the covariant-derivative coupling pattern of the term, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction. A separate fixed-lambda regulated hybrid action on the direct-product SU3xSU2xU1 cover couples the finite CAR state to classical electric drift and Wilson plaquette forces. Its convex nonquadratic electric kinetic law is declared, not the quadratic Maxwell law. An invariant expectation-level restriction sets Higgs and nonabelian fields to zero, retains one occupied family and two declared Fock vacua, and checks all omitted first variations with all 27 Yukawa coefficients arbitrary. Exact rational action factors on all 144 links and 108 faces, followed by one partial-word matter return, preserve mean continuity and Gauss. Independent replay checks 3464 events in three action executions and a disabled-drift counterfactual; the nonzero return-current difference certifies actual electric-to-link-to-matter consumption. It supplies no full quantum Gauss, excited nonabelian/Higgs dynamics, global Z6 descent, exact summed-Hamiltonian evolution, continuous-error estimate, source-selected action, physical clock or laboratory current."
   },
   {
    "id": "SML-06",
@@ -191,9 +221,15 @@
     "code/sm_fermion_current/verify_current.py",
     "code/sm_fermion_current/test_current.py",
     "code/sm_fermion_current/quantum_link_receipt.json",
-    "code/sm_fermion_current/verify_quantum_link.py"
+    "code/sm_fermion_current/verify_quantum_link.py",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The up singlet with hypercharge two thirds is an exact component of the same registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction."
+   "boundary": "The up singlet with hypercharge two thirds is an exact component of the same registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction. A separate fixed-lambda regulated hybrid action on the direct-product SU3xSU2xU1 cover couples the finite CAR state to classical electric drift and Wilson plaquette forces. Its convex nonquadratic electric kinetic law is declared, not the quadratic Maxwell law. An invariant expectation-level restriction sets Higgs and nonabelian fields to zero, retains one occupied family and two declared Fock vacua, and checks all omitted first variations with all 27 Yukawa coefficients arbitrary. Exact rational action factors on all 144 links and 108 faces, followed by one partial-word matter return, preserve mean continuity and Gauss. Independent replay checks 3464 events in three action executions and a disabled-drift counterfactual; the nonzero return-current difference certifies actual electric-to-link-to-matter consumption. It supplies no full quantum Gauss, excited nonabelian/Higgs dynamics, global Z6 descent, exact summed-Hamiltonian evolution, continuous-error estimate, source-selected action, physical clock or laboratory current."
   },
   {
    "id": "SML-07",
@@ -223,9 +259,15 @@
     "code/sm_fermion_current/verify_current.py",
     "code/sm_fermion_current/test_current.py",
     "code/sm_fermion_current/quantum_link_receipt.json",
-    "code/sm_fermion_current/verify_quantum_link.py"
+    "code/sm_fermion_current/verify_quantum_link.py",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The down singlet with hypercharge minus one third is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction."
+   "boundary": "The down singlet with hypercharge minus one third is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction. A separate fixed-lambda regulated hybrid action on the direct-product SU3xSU2xU1 cover couples the finite CAR state to classical electric drift and Wilson plaquette forces. Its convex nonquadratic electric kinetic law is declared, not the quadratic Maxwell law. An invariant expectation-level restriction sets Higgs and nonabelian fields to zero, retains one occupied family and two declared Fock vacua, and checks all omitted first variations with all 27 Yukawa coefficients arbitrary. Exact rational action factors on all 144 links and 108 faces, followed by one partial-word matter return, preserve mean continuity and Gauss. Independent replay checks 3464 events in three action executions and a disabled-drift counterfactual; the nonzero return-current difference certifies actual electric-to-link-to-matter consumption. It supplies no full quantum Gauss, excited nonabelian/Higgs dynamics, global Z6 descent, exact summed-Hamiltonian evolution, continuous-error estimate, source-selected action, physical clock or laboratory current."
   },
   {
    "id": "SML-08",
@@ -255,9 +297,15 @@
     "code/sm_fermion_current/verify_current.py",
     "code/sm_fermion_current/test_current.py",
     "code/sm_fermion_current/quantum_link_receipt.json",
-    "code/sm_fermion_current/verify_quantum_link.py"
+    "code/sm_fermion_current/verify_quantum_link.py",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The lepton doublet with hypercharge minus one half is an exact component of the registered-grammar generation, whose displayed anomaly sums cancel, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction."
+   "boundary": "The lepton doublet with hypercharge minus one half is an exact component of the registered-grammar generation, whose displayed anomaly sums cancel, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction. A separate fixed-lambda regulated hybrid action on the direct-product SU3xSU2xU1 cover couples the finite CAR state to classical electric drift and Wilson plaquette forces. Its convex nonquadratic electric kinetic law is declared, not the quadratic Maxwell law. An invariant expectation-level restriction sets Higgs and nonabelian fields to zero, retains one occupied family and two declared Fock vacua, and checks all omitted first variations with all 27 Yukawa coefficients arbitrary. Exact rational action factors on all 144 links and 108 faces, followed by one partial-word matter return, preserve mean continuity and Gauss. Independent replay checks 3464 events in three action executions and a disabled-drift counterfactual; the nonzero return-current difference certifies actual electric-to-link-to-matter consumption. It supplies no full quantum Gauss, excited nonabelian/Higgs dynamics, global Z6 descent, exact summed-Hamiltonian evolution, continuous-error estimate, source-selected action, physical clock or laboratory current."
   },
   {
    "id": "SML-09",
@@ -287,9 +335,15 @@
     "code/sm_fermion_current/verify_current.py",
     "code/sm_fermion_current/test_current.py",
     "code/sm_fermion_current/quantum_link_receipt.json",
-    "code/sm_fermion_current/verify_quantum_link.py"
+    "code/sm_fermion_current/verify_quantum_link.py",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The electron singlet with hypercharge minus one is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction."
+   "boundary": "The electron singlet with hypercharge minus one is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction. A separate fixed-lambda regulated hybrid action on the direct-product SU3xSU2xU1 cover couples the finite CAR state to classical electric drift and Wilson plaquette forces. Its convex nonquadratic electric kinetic law is declared, not the quadratic Maxwell law. An invariant expectation-level restriction sets Higgs and nonabelian fields to zero, retains one occupied family and two declared Fock vacua, and checks all omitted first variations with all 27 Yukawa coefficients arbitrary. Exact rational action factors on all 144 links and 108 faces, followed by one partial-word matter return, preserve mean continuity and Gauss. Independent replay checks 3464 events in three action executions and a disabled-drift counterfactual; the nonzero return-current difference certifies actual electric-to-link-to-matter consumption. It supplies no full quantum Gauss, excited nonabelian/Higgs dynamics, global Z6 descent, exact summed-Hamiltonian evolution, continuous-error estimate, source-selected action, physical clock or laboratory current."
   },
   {
    "id": "SML-10",
@@ -339,9 +393,15 @@
     "code/sm_abelian_reduction/build_abelian.py",
     "code/sm_abelian_reduction/verify_abelian.py",
     "code/sm_abelian_reduction/test_abelian.py",
-    "code/sm_abelian_reduction/abelian_receipt.json"
+    "code/sm_abelian_reduction/abelian_receipt.json",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The scalar doublet enters as the declared Higgs-equals-weak-carrier selection inside the registered grammar and its central weight passes the Z6 kernel arithmetic, while no scalar kinetic term, scalar dynamics, or electroweak-breaking mechanism is derived. The separate local jet action includes the declared minimal covariant Higgs kinetic term and its same-action variational current. This does not discharge PR-54 or change the classification of the source-produced sector. The local classical Cartan-scalar solution embedding and its declared q=5 action execution retain both weighted Cartan equations and Gauss constraints. The phase intervention gives nonzero variational current and electric feedback, while a true gauge copy preserves invariant readouts. The log-plaquette chart, action weights, population and time are supplied; the binary64 replay is not a continuous-history enclosure. No physical source selection, global compact subgroup or quantum truncation is supplied."
+   "boundary": "The scalar doublet enters as the declared Higgs-equals-weak-carrier selection inside the registered grammar and its central weight passes the Z6 kernel arithmetic, while no scalar kinetic term, scalar dynamics, or electroweak-breaking mechanism is derived. The separate local jet action includes the declared minimal covariant Higgs kinetic term and its same-action variational current. This does not discharge PR-54 or change the classification of the source-produced sector. The local classical Cartan-scalar solution embedding and its declared q=5 action execution retain both weighted Cartan equations and Gauss constraints. The phase intervention gives nonzero variational current and electric feedback, while a true gauge copy preserves invariant readouts. The log-plaquette chart, action weights, population and time are supplied; the binary64 replay is not a continuous-history enclosure. No physical source selection, global compact subgroup or quantum truncation is supplied. The coupled hybrid restriction checks the omitted Higgs and Yukawa first variations: zero Higgs/momentum removes scalar forces, and vanishing anomalous CAR covariance removes every Yukawa source for all 27 arbitrary coefficients. One family is occupied and two remain vacuum. This expectation-level invariance neither determines Yukawa values nor executes an excited Higgs sector."
   },
   {
    "id": "SML-12",
@@ -367,9 +427,15 @@
     "code/sm_abelian_reduction/build_abelian.py",
     "code/sm_abelian_reduction/verify_abelian.py",
     "code/sm_abelian_reduction/test_abelian.py",
-    "code/sm_abelian_reduction/abelian_receipt.json"
+    "code/sm_abelian_reduction/abelian_receipt.json",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The renormalizable quadratic-plus-quartic potential, a stable broken branch, and its vacuum attachment are explicitly registered as PR-49. No OPH theorem produces the potential, either coefficient, the vacuum, or the electroweak scale, so this is a declared premise rather than a derived term. The local jet action retains m^2 and lambda as symbolic supplied coefficients; gauge invariance neither fixes their values nor selects a broken vacuum. This does not discharge PR-54 or change the classification of the source-produced sector. The local classical Cartan-scalar solution embedding and its declared q=5 action execution retain both weighted Cartan equations and Gauss constraints. The phase intervention gives nonzero variational current and electric feedback, while a true gauge copy preserves invariant readouts. The log-plaquette chart, action weights, population and time are supplied; the binary64 replay is not a continuous-history enclosure. No physical source selection, global compact subgroup or quantum truncation is supplied."
+   "boundary": "The renormalizable quadratic-plus-quartic potential, a stable broken branch, and its vacuum attachment are explicitly registered as PR-49. No OPH theorem produces the potential, either coefficient, the vacuum, or the electroweak scale, so this is a declared premise rather than a derived term. The local jet action retains m^2 and lambda as symbolic supplied coefficients; gauge invariance neither fixes their values nor selects a broken vacuum. This does not discharge PR-54 or change the classification of the source-produced sector. The local classical Cartan-scalar solution embedding and its declared q=5 action execution retain both weighted Cartan equations and Gauss constraints. The phase intervention gives nonzero variational current and electric feedback, while a true gauge copy preserves invariant readouts. The log-plaquette chart, action weights, population and time are supplied; the binary64 replay is not a continuous-history enclosure. No physical source selection, global compact subgroup or quantum truncation is supplied. The coupled hybrid restriction checks the omitted Higgs and Yukawa first variations: zero Higgs/momentum removes scalar forces, and vanishing anomalous CAR covariance removes every Yukawa source for all 27 arbitrary coefficients. One family is occupied and two remain vacuum. This expectation-level invariance neither determines Yukawa values nor executes an excited Higgs sector."
   },
   {
    "id": "SML-13",
@@ -395,9 +461,15 @@
     "code/sm_local_action/build_local_action.py",
     "code/sm_local_action/verify_local_action.py",
     "code/sm_local_action/test_local_action.py",
-    "code/sm_local_action/local_action_receipt.json"
+    "code/sm_local_action/local_action_receipt.json",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The registered grammar contains the gauge-invariant line for this coupling among the three one-Higgs invariant lines of the exterior witness, and an exact non-definability theorem leaves a free positive rescaling family of admissible up-type spectra, so no Yukawa matrix, eigenvalue, or texture is derived. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action. The local jet action composes all family-pair channels using actual color/weak/Spin contractions and Grassmann adjoints, retaining every complex Yukawa entry as an independent coefficient. This does not discharge PR-54 or change the classification of the source-produced sector."
+   "boundary": "The registered grammar contains the gauge-invariant line for this coupling among the three one-Higgs invariant lines of the exterior witness, and an exact non-definability theorem leaves a free positive rescaling family of admissible up-type spectra, so no Yukawa matrix, eigenvalue, or texture is derived. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action. The local jet action composes all family-pair channels using actual color/weak/Spin contractions and Grassmann adjoints, retaining every complex Yukawa entry as an independent coefficient. This does not discharge PR-54 or change the classification of the source-produced sector. The coupled hybrid restriction checks the omitted Higgs and Yukawa first variations: zero Higgs/momentum removes scalar forces, and vanishing anomalous CAR covariance removes every Yukawa source for all 27 arbitrary coefficients. One family is occupied and two remain vacuum. This expectation-level invariance neither determines Yukawa values nor executes an excited Higgs sector."
   },
   {
    "id": "SML-14",
@@ -423,9 +495,15 @@
     "code/sm_local_action/build_local_action.py",
     "code/sm_local_action/verify_local_action.py",
     "code/sm_local_action/test_local_action.py",
-    "code/sm_local_action/local_action_receipt.json"
+    "code/sm_local_action/local_action_receipt.json",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The registered grammar contains the gauge-invariant line for this coupling, and the same exact non-definability theorem leaves a free positive rescaling family of admissible down-type spectra, so no Yukawa matrix, eigenvalue, or texture is derived. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action. The local jet action composes all family-pair channels using actual color/weak/Spin contractions and Grassmann adjoints, retaining every complex Yukawa entry as an independent coefficient. This does not discharge PR-54 or change the classification of the source-produced sector."
+   "boundary": "The registered grammar contains the gauge-invariant line for this coupling, and the same exact non-definability theorem leaves a free positive rescaling family of admissible down-type spectra, so no Yukawa matrix, eigenvalue, or texture is derived. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action. The local jet action composes all family-pair channels using actual color/weak/Spin contractions and Grassmann adjoints, retaining every complex Yukawa entry as an independent coefficient. This does not discharge PR-54 or change the classification of the source-produced sector. The coupled hybrid restriction checks the omitted Higgs and Yukawa first variations: zero Higgs/momentum removes scalar forces, and vanishing anomalous CAR covariance removes every Yukawa source for all 27 arbitrary coefficients. One family is occupied and two remain vacuum. This expectation-level invariance neither determines Yukawa values nor executes an excited Higgs sector."
   },
   {
    "id": "SML-15",
@@ -453,9 +531,15 @@
     "code/sm_local_action/build_local_action.py",
     "code/sm_local_action/verify_local_action.py",
     "code/sm_local_action/test_local_action.py",
-    "code/sm_local_action/local_action_receipt.json"
+    "code/sm_local_action/local_action_receipt.json",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "The invariant line exists in the registered grammar, and on the declared Koide balance premise an exact circulant identity conditionally pins the charged-lepton spectral invariant to two thirds, while the coupling matrix, the individual mass ratios, the circulant phase, and the physical chiral attachment are not supplied. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action. The local jet action composes all family-pair channels using actual color/weak/Spin contractions and Grassmann adjoints, retaining every complex Yukawa entry as an independent coefficient. This does not discharge PR-54 or change the classification of the source-produced sector."
+   "boundary": "The invariant line exists in the registered grammar, and on the declared Koide balance premise an exact circulant identity conditionally pins the charged-lepton spectral invariant to two thirds, while the coupling matrix, the individual mass ratios, the circulant phase, and the physical chiral attachment are not supplied. The integer hypercharge cancellation is also kernel-checked in both the all-left-Weyl census and the four-component action chart, including the required singlet charge conjugation; this does not determine a Yukawa coefficient or supply a spacetime fermion action. The local jet action composes all family-pair channels using actual color/weak/Spin contractions and Grassmann adjoints, retaining every complex Yukawa entry as an independent coefficient. This does not discharge PR-54 or change the classification of the source-produced sector. The coupled hybrid restriction checks the omitted Higgs and Yukawa first variations: zero Higgs/momentum removes scalar forces, and vanishing anomalous CAR covariance removes every Yukawa source for all 27 arbitrary coefficients. One family is occupied and two remain vacuum. This expectation-level invariance neither determines Yukawa values nor executes an excited Higgs sector."
   },
   {
    "id": "SML-16",
@@ -483,9 +567,15 @@
    ],
    "evidence": [
     "Lean/Screen/A5FamilyBand.lean",
-    "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex"
+    "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
+    "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
+    "code/sm_fermion_current/coupled.py",
+    "code/sm_fermion_current/build_coupled.py",
+    "code/sm_fermion_current/verify_coupled.py",
+    "code/sm_fermion_current/test_coupled.py",
+    "code/sm_fermion_current/coupled_receipt.json"
    ],
-   "boundary": "Under the added single-band and cost-order selection premises an exact Laplacian-cost theorem selects the rank-three band inside the pinned admissibility window on band dimension (three through five), giving a conditional rank-45 three-generation candidate, while those selection premises are declared rather than derived and the composed three-family matter attachment is open."
+   "boundary": "Under the added single-band and cost-order selection premises an exact Laplacian-cost theorem selects the rank-three band inside the pinned admissibility window on band dimension (three through five), giving a conditional rank-45 three-generation candidate, while those selection premises are declared rather than derived and the composed three-family matter attachment is open. The coupled hybrid action declares three families, with one occupied and two invariant Fock vacua. It proves neither native family selection nor three-family excited dynamics."
   },
   {
    "id": "SML-18",

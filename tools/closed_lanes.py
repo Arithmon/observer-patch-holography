@@ -28,6 +28,9 @@ CLOSED_LANE_SUCCESSORS: dict[int, tuple[int, ...]] = {
     # Simulation instruments, superseded: the remaining instrument question
     # is the support-wiring readout.
     737: (776,),
+    # Conserved current on a declared flat family: physical action selection,
+    # sourced-geometry compatibility and electroweak attachment remain live.
+    780: (735, 740, 745),
 }
 
 

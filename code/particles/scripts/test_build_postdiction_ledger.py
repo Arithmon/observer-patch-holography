@@ -2324,6 +2324,11 @@ def test_fermion_controls_keep_mean_and_abelian_quantum_constraints_distinct():
     assert quantum['operator_Gauss'] is True
     assert quantum['gauge_constraint_group'] == 'U1_hypercharge'
     assert quantum['continuous_point_current'] == '3*sqrt(3)'
+    coupled = control['controls']['coupled']['independent_verifier_result']
+    assert coupled['same_declared_hybrid_action'] is True
+    assert coupled['electric_to_link_to_matter_feedback'] is True
+    assert coupled['quadratic_Maxwell_kinetic'] is False
+    assert coupled['operator_Gauss'] is False
 
 
 @pytest.mark.parametrize('target,key,value', [
@@ -2333,15 +2338,24 @@ def test_fermion_controls_keep_mean_and_abelian_quantum_constraints_distinct():
     ('quantum_link', 'exact_continuous_quantum_edge_solution', False),
     ('quantum_link', 'gauge_constraint_group', 'full_Standard_Model'),
     ('quantum_link', 'physical_current_attached', True),
+    ('coupled', 'electric_to_link_to_matter_feedback', False),
+    ('coupled', 'Higgs_Yukawa_expected_first_variations_zero', False),
+    ('coupled', 'quadratic_Maxwell_kinetic', True),
+    ('coupled', 'global_Z6_quotient_selected', True),
 ])
 def test_fermion_control_rejects_custody_only_and_physical_upgrades(monkeypatch, target, key, value):
     def changed(package, verifier, receipt, **kwargs):
-        which = 'quantum_link' if 'quantum' in verifier else 'mean_field'
+        which = 'coupled' if 'coupled' in verifier else ('quantum_link' if 'quantum' in verifier else 'mean_field')
         summary = {'verified': True, 'physical_current_attached': False,
                    'operator_Gauss': which == 'quantum_link',
                    'exact_rational_replay': True, 'independent_quantum_state_replay': True,
                    'exact_continuous_quantum_edge_solution': True,
-                   'gauge_constraint_group': 'U1_hypercharge'}
+                   'gauge_constraint_group': 'U1_hypercharge',
+                   'same_declared_hybrid_action': True, 'electric_to_link_to_matter_feedback': True,
+                   'nonabelian_expected_first_variations_zero': True,
+                   'Higgs_Yukawa_expected_first_variations_zero': True,
+                   'electric_kinetic': 'fixed_lambda_convex_nonquadratic',
+                   'quadratic_Maxwell_kinetic': False, 'global_Z6_quotient_selected': False}
         if which == target:
             summary[key] = value
         return {}, summary, {}

@@ -756,6 +756,45 @@
         "fermion_source_current_control": {
           "analytic_proof": "paper/tex_fragments/FERMION_SOURCE_CURRENT.tex",
           "controls": {
+            "coupled": {
+              "independent_verifier_result": {
+                "Higgs_Yukawa_expected_first_variations_zero": true,
+                "arbitrary_complex_Yukawa_coefficients": 27,
+                "cohorts": 4,
+                "continuation_events": 1020,
+                "continuous_trajectory_error_bound": false,
+                "declared_families": 3,
+                "electric_kinetic": "fixed_lambda_convex_nonquadratic",
+                "electric_to_link_to_matter_feedback": true,
+                "exact_rational_replay": true,
+                "feedback_current_difference_interval": [
+                  "242747271/1099511627776",
+                  "30343409/137438953472"
+                ],
+                "global_Z6_quotient_selected": false,
+                "links": 144,
+                "mean_Gauss": true,
+                "nonabelian_expected_first_variations_zero": true,
+                "occupied_family": 0,
+                "operator_Gauss": false,
+                "physical_current_attached": false,
+                "plaquettes": 108,
+                "quadratic_Maxwell_kinetic": false,
+                "retained_prefix_events": 2444,
+                "same_declared_hybrid_action": true,
+                "sites": 64,
+                "vacuum_families": [
+                  1,
+                  2
+                ],
+                "verified": true
+              },
+              "receipt": "code/sm_fermion_current/coupled_receipt.json",
+              "receipt_pin": {
+                "bytes": 11161830,
+                "sha256": "90862a6ad6a2d9585b515d030bccfe45305adb54ffabd3fcac6870d08354d850"
+              }
+            },
             "mean_field": {
               "independent_verifier_result": {
                 "continuous_time_error_bound": false,
@@ -812,9 +851,10 @@
               }
             }
           },
+          "coupled_action_proof": "paper/tex_fragments/FERMION_COUPLED_ACTION.tex",
           "mathematical_replay": true,
           "observed_postdiction": false,
-          "scope_boundary": "The prepared q5 carrier supports exact finite CAR hypercharge transport. Classical electric feedback preserves mean Gauss in the delocalized Slater preparation, whose charge variance excludes the operator constraint. A separately supplied localized preparation and integer quantum link give an invariant flux-dressed sector, operator Gauss and an exact continuous one-link current history. Species weights, quantum state, action and time are declared. Electric kinetic, plaquette, nonabelian and Yukawa dynamics, chiral continuum regulation, source selection and physical current attachment are not supplied. Neither packet is an observed physical postdiction."
+          "scope_boundary": "The prepared q5 carrier supports exact finite CAR hypercharge transport. Classical electric feedback preserves mean Gauss in the delocalized Slater preparation, whose charge variance excludes the operator constraint. A separately supplied localized preparation and integer quantum link give an invariant flux-dressed sector, operator Gauss and an exact continuous one-link current history. Species weights, quantum state, action and time are declared. A separate regulated hybrid action adds all electric and Wilson factors and actual electric-to-matter feedback. Its invariant expectation sector checks all omitted Higgs/Yukawa and nonabelian first variations, with one occupied family and two vacua. The fixed nonquadratic electric law and direct-product cover do not supply the quadratic Maxwell action, global quotient, full quantum Gauss, excited nonabelian/Higgs execution, chiral continuum regulation, source selection or physical current attachment. None is an observed physical postdiction."
         },
         "hypothesis_boundary": "the selection is exhaustive inside the declared exterior algebra; completeness beyond that algebra, selection of one charge-conjugate representative, light-sector attachment, family multiplicity, scalar content, and laboratory identification remain separate",
         "id": "hypercharge_spectrum",
