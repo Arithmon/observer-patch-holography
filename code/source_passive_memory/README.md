@@ -4,7 +4,7 @@ This derives three constraints on implementing M1 with the existing scalar
 pair-mean operation. It also gives a sharp approximate reset construction.
 It does **not** derive the protected export, reset service or readback used
 by the current feedback transport. The [contract](CONTRACT.md) fixes this
-bounded objective; [AUDIT.md](AUDIT.md) records the review and validation.
+bounded objective.
 
 The operation is exactly `ScalarSeamRepair.pairAverage`: replace both endpoint
 loads by their arithmetic mean, leaving every other coordinate unchanged.
@@ -56,7 +56,7 @@ of total 1, together with the uniform triple `[1/3,1/3,1/3]`. Means keep dyadics
 dyadic and fix the uniform triple, so the exact-uniform detector is invariant
 on this code and distinguishes equal totals. It is not globally invariant:
 `[2/3,0,1/3]` becomes uniform after one mean. This illustrates the input
-quantifier; it does not select a physical, robust or writable memory code.
+quantifier; it does not select a physical or writable memory code.
 
 ## 2. Exact native-zero reset fails; approximate reset has an explicit cost
 
@@ -104,11 +104,11 @@ This gives a concrete contribution to the existing feedback error ledger:
 with otherwise exact `SourceFeedbackTransport.receive`, receiver residual
 `r` yields output `payload+r`. A cold reset supplies `r=a/2^m` for the stated
 initial receiver load and fresh-zero menu. Export, protected readout, factor-two
-decoding, cleanup and any route-wide resource supply still require their own
+decoding, cleanup and any route-wide resource supply require their own
 implementation. This does not replace the six-event feedback hop with a
 native pair-mean hop.
 
-PR #913's reusable storage bound is conditional on its feedback primitives.
+A reusable storage bound that assumes supplied feedback primitives is conditional on those primitives.
 The consumed zeros here do not establish a native implementation within that
 same reusable register bound.
 
@@ -123,7 +123,7 @@ Q(P_uv x) + (x_u-x_v)^2/2 = Q(x).
 
 `SourcePassiveMemoryBudget.lean` sums these exact losses over an arbitrary
 finite word. Equality of initial and final Q holds exactly when every
-scheduled seam already agrees and every mean is trivial. Consequently an
+scheduled seam joins equal loads and every mean is trivial. Consequently an
 exact cycle restoring the whole finite state cannot contain an active mean.
 This says nothing about a driven open cycle whose environment changes.
 Q is a scalar convexity functional; no physical energy, entropy, work, volume
@@ -158,7 +158,7 @@ The exact nonnegative control uses baseline 4 and `a=1`:
 The ancillary Q falls from 8 to 2; its cost 6 is output Q 2 plus copy loss 4.
 The hypothetical catalytic target `[5,3,5,3,6,2]` has the same total load 24
 but Q 12, exceeding the prepared Q 10. It is an obstruction control, not an
-executed trace. The preparation `[6,2]` already encodes the payload: this is
+executed trace. The preparation `[6,2]` encodes the payload: this is
 **not a copier for an unknown input**. Cleanup resets the *encoded* output
 to `[4,4]`, which illustrates why the native-zero theorem must not be extended
 to all logical reset encodings.
@@ -168,9 +168,9 @@ to all logical reset encodings.
 The 40 Lean theorems are transitively checked against the standard axiom
 allowlist `propext`, `Classical.choice`, `Quot.sound`. The audit rejects
 `sorryAx` and compiler-trusted Boolean reduction as negative controls.
-`Geometry.lean` imports it; Python checks coverage of every new theorem.
-Lean CI also lists the audit as an explicit default target, so changing only
-a dependency still reruns the downstream trust check.
+`Geometry.lean` imports it; Python checks coverage of all 40 theorems.
+Lean CI lists the audit as an explicit default target, so a change to a
+dependency alone reruns the downstream trust check.
 
 `controls.json` retains all eight executions (65 means), all final ancillas,
 consumed writer identities, rational values, resource counts and six fibre
@@ -208,7 +208,7 @@ Windows/Linux workflow runs the controls; Lean CI builds the changed modules
 and the explicit passive-memory axiom-audit target.
 The frozen mandatory runner and its source-projection hashes are preserved.
 
-## What M1 still needs
+## What M1 requires beyond this work
 
 This work classifies globally invariant readouts, obstructs finite native-zero
 reset of positive nonnegative loads, and bounds a specific balanced-copy
@@ -216,11 +216,11 @@ interface. It also derives a finite-error reset construction with explicit
 prepared-zero cost. Those precise results do not rule out every encoded or
 restricted-code implementation of reusable feedback.
 
-For the currently supplied scalar-feedback route toward M1, the following
-premises remain. The related common-world joins are recorded separately in
-#740; this table does not claim that the present scalar model covers them.
+For the supplied scalar-feedback route toward M1, the following premises
+are supplied rather than derived. The related common-world joins are outside
+this table; it does not claim that the present scalar model covers them.
 
-| Premise still supplied | What this work establishes |
+| Supplied premise | What this work establishes |
 | --- | --- |
 | Selection of the scalar law, support, port assignment and accepted repair menu | Conditional theorems for pair means and a census of one declared capture |
 | Initial source population, address preparation and density/volume interpretation | No production or maintenance law for that population |
@@ -230,7 +230,7 @@ premises remain. The related common-world joins are recorded separately in
 | Local controller, program, interleaving rules and intervention-compatible scheduling | A declared finite word is checked; scheduling, controller storage and physical causal equivalence are not selected |
 | Bounded amplitudes, finite precision, hardware noise and accumulated route error | Exact arithmetic and an input-dependent residual; no hardware error or scalar bit-capacity bound |
 | Physical clock, units, event measure and logical-to-raw history comparison | No conversion of repair counts into time or geometric volume; the earlier raw-count obstruction remains |
-| Same-family field action, matter/current, preparation, quantum instruments and detector realization | No new common-world or quantum join; the prepared scalar controls are separate from those obligations |
+| Same-family field action, matter/current, preparation, quantum instruments and detector realization | No common-world or quantum join; the prepared scalar controls are separate from those obligations |
 
 A next constructive step must specify an admissible memory encoding or a
 supplied reservoir/driving law, derive its protected read/write behaviour,
@@ -240,7 +240,6 @@ restriction and the ability to read and rewrite those totals would themselves
 need justification. The existing supplied feedback and quantum heat-bath
 models cannot be relabelled as consequences of the scalar mean law.
 
-Related: the bounded linear obstruction in issue #778, feedback transport on
-main, routing refinements in PR #913, and the remaining source-selection and
-common-world obligations in #779/#740. This research branch starts directly
-from main and closes none of those broader obligations.
+Related: the bounded linear obstruction in `SourceRecordProtection.lean` and
+the feedback transport in `SourceFeedbackTransport.lean`. This work closes
+none of the source-selection or common-world obligations.

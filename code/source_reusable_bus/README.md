@@ -53,8 +53,8 @@ the four bus amplitudes into
 [a1/2, a1/4+a2/2, a1/8+a2/4+a3/2, a1/8+a2/4+a3/2].
 ```
 
-This seven-mean cleanup sweep contracts the maximum ideal bus amplitude by
-at least `7/8`, while leaving both source records untouched. Eighty sweeps
+This seven-mean cleanup sweep reduces the maximum ideal bus amplitude to at
+most `7/8` of its value, while leaving both source records untouched. Eighty sweeps
 bound every bus residual by
 
 ```
@@ -185,9 +185,9 @@ exact backward coefficient maps, perturb idle registers, and verify the
 common-mode boundary. These controls exercise the declared abstract bounds;
 they are not production histories or measurements of physical noise.
 
-The [contract](CONTRACT.md) and [audit](AUDIT.md) delimit this result. Native
+The [contract](CONTRACT.md) delimits this result. Native
 existence of this finite route does not select the code, scheduler, source
 population or feedback law. Scalar amplitudes attenuate and errors accumulate;
 unlimited reuse, immutable scalar archives, versioned commits and general
-metric-neighbour routing are not derived. The q=13/q=21 execution, physical
-clock/count and common-world obligations in #777/#779/#740 are not discharged.
+metric-neighbour routing are not derived. The q=13/q=21 execution and the
+physical clock/count and common-world obligations are not discharged.

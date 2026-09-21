@@ -1,8 +1,9 @@
 # Native sum records and finite-chain cleanup
 
-This packet adds a native write to the captured paired-rail memory of #917
-and proves cleanup bounds for arbitrary finite chain length. It does **not**
-finish M1. The exact objective and exit conditions are in [CONTRACT.md](CONTRACT.md).
+This packet adds a native write to the captured paired-rail memory of
+`code/source_reusable_bus/` and proves cleanup bounds for arbitrary finite
+chain length. It does not derive a general native record service. The exact
+objective and exit conditions are in [CONTRACT.md](CONTRACT.md).
 
 ## A new record is computed, then reused
 
@@ -61,7 +62,7 @@ error `2^-16`. Those three extra error allowances are hypotheses, not
 measured hardware guarantees. The retained histories execute nearest-even
 fixed-point means at Q=`2^20`.
 
-Raw causal ancestry still includes the other records and cleanup operations.
+Raw causal ancestry includes the other records and cleanup operations.
 This is a decoded functional correspondence, not equality of physical causal
 orders or of all induced writer relations. No intermediate operation is
 deleted from the replay or cost.
@@ -100,13 +101,12 @@ scalar means = (1+2n) * (n+1)^2 * k
 ```
 
 This gives polynomial work in chain length and requested binary cleanup
-accuracy. It replaces an exponentially loose sufficient-sweep estimate
-obtained by generalizing the one-sweep unweighted bound. For the existing
-three-edge bus, the older specialized `(7/8)^80` bound remains sharper and
-is still used in the captured experiment.
+accuracy. For the three-edge bus, the specialized `(7/8)^80` bound of
+`SourceReusableBus.lean` is sharper and is the one used in the captured
+experiment.
 
 This theorem does not supply the rail embedding in a general captured graph.
-Forward transport still attenuates its signal by `2^-n`, and repeated export
+Forward transport attenuates its signal by `2^-n`, and repeated export
 further attenuates the source. The general forward-read error theorem and
 `program_readout_error` retain those gains and absolute error terms. Increasing
 cleanup also increases the accumulated noise allowance. Unbounded reuse at
@@ -121,7 +121,7 @@ that range. In particular, nonnegative `1+sum` updates with a self-read cannot
 run indefinitely as raw values on a fixed finite closed scalar store.
 Scaled encodings (including this packet), finite horizons, fresh inputs and
 growing representations are outside that obstruction. It is not an
-impossibility theorem for M1 or logical memory.
+impossibility theorem for logical memory.
 
 The captured path `0--1--14` with loads `(1,3,5)` admits two supported,
 strictly quadratic-energy-decreasing words using the same two edges:
@@ -175,16 +175,14 @@ different control expansion, rounding and decoding implementations. Mutations
 are tested after resealing their commitments, including a different valid
 native program that computes the same sum.
 
-## M1 work still owed
+## Outside this packet
 
-| Obligation | This packet | Remaining work |
+| Obligation | This packet | Not supplied |
 | --- | --- | --- |
 | Native record service | One new sum version and preservation/rereads of old logical values on captured seams | Arbitrary finite record programs, bias generation, many live versions, allocation and commit/abort policy |
 | Scaling | Any supplied finite chain has a polynomial cleanup bound and explicit forward attenuation | General captured rail embeddings, realistic precision/noise/capacity for complete histories |
 | Full-family compilation | Sixteen finite write/read episodes | Complete q=13/q=21 native executions and intervention-preserving operational refinement with all operations counted |
 | Source selection | Exact ambiguity under the candidate mean law; restricted raw-growth obstruction | Derive the controller/read law from the full axioms, or supply a full qualifying non-derivability result |
 
-The new finite construction removes the need to prepare **every** record in
-advance. It does not remove preparation altogether or prove a complete native
-service. No supplied-remainder closure of #777 or transfer of the M1
-derivation obligation is taken.
+The finite construction removes the need to prepare every record in advance.
+It does not remove preparation altogether or prove a complete native service.

@@ -3,9 +3,9 @@ import Geometry.GoldenSourceVolumeLimit
 import Geometry.FlatDiamondNormalization
 
 /-!
-# Issue #782 proof audit
+# Source count-limit axiom audit
 
-Every public theorem added for the source count/volume and strict-pair limits,
+Every public theorem of the source count/volume and strict-pair limit modules,
 plus the consumed golden quadrature and site-injectivity interfaces, is checked
 against the standard axiom allowlist. The command rejects admissions, custom
 axioms and compiler-trusted reductions, and prints the complete transitive set.

@@ -136,6 +136,7 @@ jobs:
             "Geometry.SourceReusableBusAxiomAudit"
             "Geometry.SourceNativeUpdatesAxiomAudit"
             "Geometry.SourceReadSelectionAxiomAudit"
+            "Geometry.SourceCountLimitAxiomAudit"
             "ObserverPatchHolography.EinsteinBranch.AxiomAudit"
             "A5PrimitivePortPrediction"
             "Geometry.SourcePassiveMemoryAxiomAudit"

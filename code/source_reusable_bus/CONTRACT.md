@@ -50,4 +50,4 @@ Logical payload reuse is not immutable scalar storage or unit-gain export.
 Approximate cleanup preserves raw cross-record influence and causal ancestry.
 No full record-metric compiler, physical causal-order identification, clock,
 population production, quantum implementation or common-world join is claimed.
-M1 and the acceptance contracts of #777/#779/#740 are not closed by this packet.
+The M1 acceptance contracts are not closed by this packet.

@@ -18,17 +18,17 @@ need not be feasible. The theorem does not require independent events,
 uniform weights, a full simplex, affine constraints or an interior optimizer
 supplied as a premise.
 
-This is the classical I-projection support property, not a newly discovered
-entropy principle; see Csiszar and Shields,
+This is the classical I-projection support property rather than an entropy
+principle introduced here; see Csiszar and Shields,
 [Information Theory and Statistics: A Tutorial, Theorem 3.1](https://www.renyi.hu/~csiszar/Publications/Information_Theory_and_Statistics%3A_A_Tutorial.pdf).
-The new Lean proof uses convexity of x log x and the exact negative t log t
+The Lean proof uses convexity of x log x and the exact negative t log t
 mixture term at a zero coordinate. `weightedKL` uses Mathlib's `klFun`, and
 its entropy-plus-linear expansion is proved, not postulated.
 
 Two consequences are kernel checked:
 
 * For complete-history atoms, a failure event has zero probability at p*
-  **if and only if every feasible law already gives that event zero mass**.
+  **if and only if every feasible law gives that event zero mass**.
 * The same statement holds for any failure readout that is a nonnegative
   linear combination of the scored cover atoms. With local classical
   entropies, flattening the cover gives those atoms; injectivity alone does
@@ -99,7 +99,7 @@ schedule law, read interface and metadata for both interventions.
 Every word avoiding the cut leaves **the complete exterior readout history**
 identical under the two interventions. This holds for every word length and
 every initial real-valued state, not just the controls below. A decoder may
-know the whole word and retain every exterior sample; it still cannot return
+know the whole word and retain every exterior sample; it cannot return
 both different payloads correctly on that word. Consequently any accepted
 history claimed correct for both inputs must contain a crossing event.
 That condition is necessary, not sufficient for transport.
@@ -121,7 +121,7 @@ When a noncrossing move exists, every prescribed finite horizon has a
 positive-probability obstructing word. The theorem is about a finite deadline.
 It neither proves failure of eventual delivery nor bounds the runtime of a
 source-selected stopping policy. If c>0, the avoidance probability tends to
-zero as H grows; crossing alone still does not prove correct decoding.
+zero as H grows; crossing alone does not prove correct decoding.
 
 ## Captured wiring and exact controls
 
@@ -141,7 +141,8 @@ balanced-input error >= 622941923 / 2147483648 > 29/100.
 
 These are operation-count bounds under the specified random schedule, not
 physical probabilities measured in hardware. H=2,279 is also the event count
-of one #918 experiment, but that experiment deliberately schedules transport;
+of one native-update experiment in `code/source_native_updates/`, which
+deliberately schedules transport;
 its successful readouts are not contradicted by this calculation.
 
 The captured positive control transports a balanced +/-1 payload from ports
@@ -158,7 +159,7 @@ reconstruct every word of lengths zero through six under both +/-1 source
 interventions: **2,186 histories and 12,030 means**. At length three, only
 word (0,1),(1,2),(2,3) succeeds. Conditioning on successful words removes
 26/27 of the schedule mass. It is a different optimization problem; omitted
-attempts and the acceptance mechanism still need M1 resource accounting.
+attempts and the acceptance mechanism need M1 resource accounting.
 
 The toy histories require 24,060 scalar reads and writes each, 8,744 initial
 preparation writes and 2,186 terminal receiver samples. The four captured
@@ -169,16 +170,13 @@ captured federation. Evidence construction, exhaustive verifier work and
 immutable controller storage are separate from those executed operation
 counts. Compact toy commitments are checked by full replay every time.
 
-## Full-axiom selection audit
+## Scope against the full axioms
 
-The [canonical reference](../../docs/AXIOM_REFERENCE.md),
-[repair-law RFC](../../docs/CANONICAL_REPAIR_LAW_RFC.md), original
-[#777 contract](https://github.com/FloatingPragma/observer-patch-holography/issues/777),
-and the audited conditional exit of
-[#663](https://github.com/FloatingPragma/observer-patch-holography/issues/663)
-were checked before constructing this result.
+The [canonical reference](../../docs/AXIOM_REFERENCE.md) and
+[repair-law RFC](../../docs/CANONICAL_REPAIR_LAW_RFC.md) fix the A1--A3
+clauses against which this package is scoped.
 
-| Required object | What is present | Still required for full-axiom promotion |
+| Required object | What is present | Required for full-axiom promotion |
 | --- | --- | --- |
 | A1 architecture and response | A pinned finite support and real scalar transition action | Complete compatible local algebras, source-generated response/completeness, operational interfaces and the refinement tower for this same model |
 | A2 accepted data and endogenous transport | Same-word source interventions and exact exterior locality | A1-typed accepted-record domain, all meaning/naturality diagrams, complete same-response endogenous overlap implementers |
@@ -189,7 +187,7 @@ were checked before constructing this result.
 `CoreAxioms.lean` supplies typed shadows; inhabiting them would not discharge
 the full response, accepted-domain and constraint-completeness clauses. A
 two-word scalar schedule example is likewise not a full-axiom countermodel.
-The new theorem does not silently adopt the RFC's A1-R/A2-R amendments or
+The support theorem does not silently adopt the RFC's A1-R/A2-R amendments or
 insert the desired metric read menu as an A3 constraint.
 
 The next selection obligation is specific: derive the complete temporal
@@ -225,4 +223,4 @@ computed nonzero determinant; and the nonconvex comparison by an exact
 rational log-score ratio. All source files in the local proof dependency
 closure, including the imported audit command, are pinned. Adversarial tests
 reseal modified commitments, invoke the real CLI, corrupt source files and
-test missing/commented CI trust gates. Details are in [AUDIT.md](AUDIT.md).
+test missing/commented CI trust gates.

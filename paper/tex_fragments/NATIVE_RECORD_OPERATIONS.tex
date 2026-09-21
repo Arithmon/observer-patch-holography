@@ -1,0 +1,113 @@
+\subsection{Native scalar records and the selection boundary}
+\label{sec:native-record-operations}
+
+Consider bounded self-reading patches whose scalar ports undergo pair
+averaging, with local readback, retained records and a declared controller.
+The following constructions distinguish operations available in that grammar
+from selection of the controller and its observer interface.
+
+\paragraph{Passive records and reset.}
+On a finite connected support, every state-only function invariant under
+each allowed pair mean on all nonnegative inputs factors through total load on those inputs.
+No continuity or linearity assumption is needed. Indeed, moving a nonnegative
+addend between adjacent coordinates gives two states with the same mean
+image. Invariance identifies their readouts. Moving each addend along a
+path to a fixed root proves the factorization. This equal-image argument
+does not execute inverse repairs. Restricted encodings and recorded
+histories are outside its quantifiers.
+
+A positive raw port initially equal to $a$ retains at least $a/2^m$ after
+$m$ incident means with nonnegative ancillary loads. Fresh zero neighbours
+attain this bound and retain the removed load. Thus finite raw-zero reset
+is impossible in this class. The exact identity
+\[
+ \sum_i x_i^2-\sum_i (P_{uv}x)_i^2=(x_u-x_v)^2/2
+\]
+also excludes an exact closed cycle of the whole register state that contains
+a nontrivial mean, and a full-amplitude copy of a nonzero two-rail balanced
+record, with the original intact, while restoring every ancillary coordinate. This quadratic functional
+has no physical-energy identification. The proofs are in
+\path{Lean/Geometry/SourceNonlinearRecord.lean},
+\path{Lean/Geometry/SourcePassiveReset.lean} and
+\path{Lean/Geometry/SourcePassiveMemoryBudget.lean}.
+
+\paragraph{Encoded copying and reusable reads.}
+Encode a logical sign by $(b+a,b-a)$, with $b\geq |a|$, and prepare a blank
+pair $(b,b)$. Averaging corresponding rails produces two pairs with
+amplitude $a/2$; averaging either pair clears its encoded amplitude.
+Repeated copy-and-clear transport costs $3n$ means and attenuates the signal
+to $a/2^n$. For positive amplitude $a$, if initial sup-norm error is at most
+$E_0$, every rail is disturbed by at most $\delta$ after each mean, and
+readout error is at most $\rho$, the sufficient sign condition is
+\[
+ E_0+3n\delta+\rho<a/2^n;
+\]
+the opposite sign follows by exchanging rails. Nonexpansiveness of pair averaging proves the accumulated-error bound.
+The construction supplies neither amplitude restoration nor an exact
+unit-gain analog archive. Its proofs and independent execution replay are
+in \path{Lean/Geometry/SourceEncodedMemory.lean} and
+\path{code/source_encoded_memory/}.
+
+On twelve ports of a captured 15,360-port support, two prepared records can be read in the
+order $A,B,A$ through a four-cell paired-rail bus. All 16 declared input
+pairs retain their complete histories, totaling 27,264 means. Raw residual
+influence survives cleanup; the finite codebook and positive error margins
+under supplied preparation, rounding, disturbance and readout allowances
+certify the decoded records. A seven-mean extension writes an encoded sum $C=A+B$ at one quarter of the
+input amplitude while halving the old records
+(\path{Lean/Geometry/SourceNativeRecords.lean}), and reads $C,A,C,B$ with
+the record scales tracked explicitly. Independent replay covers all 36,464 means over its 16 input pairs.
+The smallest certified read margin exceeds $0.0032996$ under the stated
+preparation, rounding, disturbance and readout budgets. The complete
+controllers, supported seams, consumed writers and precision controls are
+specified in \path{code/source_reusable_bus/} and
+\path{code/source_native_updates/}.
+
+For a paired-rail chain of $n\geq1$ edges with amplitudes initially bounded by
+$A\geq0$, clear its first pair and sweep the adjacent rail copies forward.
+After $(n+1)^2 k$ sweeps the maximum residual is at most
+\[
+ A\frac{(n+1)^2}{2n+1}\,2^{-k},
+\]
+at a cost of $(1+2n)(n+1)^2 k$ scalar means; archives outside the chain are
+untouched. A weighted sup-norm estimate with weights
+$(n+1)^2-(n-i)^2$ gives one-sweep contraction at most
+$1-(n+1)^{-2}$, and blocks of $(n+1)^2$ sweeps give the displayed bound.
+The zero-edge case is exact clearing. Forward read attenuation is a separate
+cost. \path{Lean/Geometry/SourceBusScaling.lean} proves these statements for an
+abstract paired-rail chain; the rail embedding into a captured support, the
+preparation and the schedule are supplied.
+
+\paragraph{Selection of successful histories.}
+Let $K$ be a convex family of nonnegative finite vectors, with strictly
+positive reference coordinates and entropy weights. If the weighted
+relative entropy attains its minimum at $p_*$, then, as for classical
+information projections, every coordinate positive in any feasible $q$ is
+positive in $p_*$. Mixing a purported zero
+coordinate with $q$ produces a negative $t\log t$ term that dominates the
+change of first order in $t$. Consequently a
+nonnegative failure observable of the scored atoms vanishes at the minimum
+only if it vanishes throughout $K$. Applied with unit weights to complete repair histories,
+a guaranteed remote read requires every feasible schedule to exclude words
+that avoid the source cut: such words leave the exterior transcript
+identical under different source payloads.
+
+This criterion concerns the atoms actually scored. An injective observer
+cover is insufficient to transfer it to every history event. For
+$p=(t,1/2,1/2-t)$, $0\leq t\leq1/2$, and reference
+$r=(1/4,1/4,1/2)$, full-history relative entropy has unique minimizer
+$(1/6,1/2,1/3)$. Scoring the cover $(p_0+p_1,p_2)$ against its pushed-forward
+reference instead gives $(0,1/2,1/2)$. Both covers determine the state on
+this family, but reconstruction of $p_0$ from the coarse cover subtracts
+$1/2$ and is not a nonnegative readout. The support theorem, both minima
+and the native cut argument are proved in
+\path{Lean/Geometry/SourceConstrainedSelection.lean},
+\path{Lean/Geometry/SourceSelectionControls.lean} and
+\path{Lean/Geometry/SourceConstrainedRead.lean}; exact controls are in
+\path{code/source_read_selection/}.
+
+These results neither select the feasible history grammar, reference, cover
+and stopping policy nor derive the complete immutable scalar-read service.
+The finite classical controllers supply no quantum instrument, physical
+precision, clock calibration or count-volume interpretation of their
+additional operations.

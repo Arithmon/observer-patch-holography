@@ -6,8 +6,9 @@ set_option autoImplicit false
 /-!
 # Stability of the generated source-net order away from the null cone
 
-The relation below is the actual all-neighbour path relation, already proved
-equal to the reflexive transitive closure of the layered reads. A supplied
+The relation below is the actual all-neighbour path relation, proved equal in
+`Geometry.SourceNetLayeredOrder` to the reflexive transitive closure of the
+layered reads. A supplied
 covering, read radius and model clock are retained as hypotheses. Event
 positions and times may move. The conclusion is eventual exact agreement
 away from the null cone, not a count limit or a measure assumption.

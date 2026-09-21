@@ -134,8 +134,8 @@ theorem generated_interval_count_tendsto_volume {T L c : ℝ} (hT : 0 ≤ T) (hL
   rw [unclipped_volume p q hbox, timelike_diamond_volume hc p q hpq] at hh
   exact hh
 
-/-- The requested four-dimensional limit for the actual generated strict-pair
-count, with N(N-1) normalization and the supplied positive speed. -/
+/-- The four-dimensional ordering-fraction limit for the actual generated
+strict-pair count, with N(N-1) normalization and the supplied positive speed. -/
 theorem ordering_fraction_tendsto_one_tenth {T L c : ℝ} (hT : 0 ≤ T) (hL : 0 < L)
     (hc : 0 < c) (e f : (n : ℕ) → Label (n + 2) T L c) {p q : Spacetime}
     (he : Tendsto (fun n => position (e n)) atTop (𝓝 p))

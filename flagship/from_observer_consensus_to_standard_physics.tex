@@ -2088,7 +2088,9 @@ segment subdivision constructs a $k$-read path whenever
 $d\leq k(a-2h)$; every such path satisfies $d\leq ka$.
 The finite path construction, the layered order with its graph-distance
 characterization, width and height, and the flat constants $1/10$, $8/35$
-and $1/2$ are formalized in Lean.
+and $1/2$ are formalized in Lean. The golden cell assignment, generated
+interval-count limit, geometric pair measure and normalized $1/10$ limit
+also have Lean proofs, with window containment explicit.
 Here $h_q\leq H_q$ and $H_q/a_q\to0$, so the two cones coalesce.
 The product cell assignment proves count convergence; null boundaries
 have zero volume. The continuum strict-pair integral is
@@ -2105,12 +2107,16 @@ carrier holds its record as port loads, reads its position through the
 rank-three response with the source metric recovered at scale exactly one,
 decides its neighbours from that readback, and the precedence generated from
 the carriers' authenticated reads equals the layered order at every level
-through $q=34$. On the interior diamond the inverted Myrheim--Meyer dimension
+through $q=34$. On the central diamond the inverted Myrheim--Meyer dimension
 reads $4.15$, $3.61$, $4.10$ and $4.09$ at $q=13,21,34,55$ against $3.0$ and
 $2.0$ for the two- and one-dimensional control populations, the ordering
 fraction reads $0.093$ at $q=55$ against the flat $1/10$, the moving-tip
 diamond reads $0.106$, and the count clock reads $1.91$ against the
-model-time ratio $2$; the spacetime derivation carries the full account
+model-time ratio $2$. At every level this outermost diamond extends past
+the sampling window, by at most $1\%$ of its continuum volume at these four
+$q$, so these values read clipped diamonds rather than interior ones; the
+largest interior diamonds, of $K_q-1$ rounds, read $2.83$, $4.38$, $3.55$
+and $3.84$. The spacetime derivation carries the full account
 \cite{ophEinstein}. Counts exclude
 auxiliary read instructions and seam operations. It does not select that law from the
 observer axioms, calibrate a physical clock, or identify its cone with a

@@ -104,22 +104,25 @@ bounds the excess over any selected cells. The golden and time-coordinate
 maps are injective, so the label sums are point counts.
 \end{proof}
 These steps, the actual $\Delta_n$ specialization and the endpoint control
-are kernel-checked in \texttt{GoldenSourceCountLimit}. Causal frontiers
-have zero volume by the Fubini argument in \texttt{SourceCausalBoundary}.
-The actual count measure converges on moving generated-order intervals;
-the finite window remains part of the reference volume. Strict-pair counts
-converge to the geometric product measure with the pair endpoint error
-retained. The corresponding proofs are in \texttt{GoldenSourceCausalLimit}
-and \texttt{GoldenSourcePairLimit}.
+are kernel-checked in \path{Lean/Geometry/GoldenSourceCountLimit.lean}.
+Causal frontiers have zero volume by the Fubini argument in
+\path{Lean/Geometry/SourceCausalBoundary.lean}. The actual count measure
+converges on moving generated-order intervals; the finite window is part of
+the reference volume. Strict-pair counts converge to the geometric product
+measure with the pair endpoint error retained. The corresponding proofs are
+in \path{Lean/Geometry/GoldenSourceCausalLimit.lean} and
+\path{Lean/Geometry/GoldenSourcePairLimit.lean}.
 
-The actual geometric pair measure is evaluated by the radial integration
-proof in \texttt{FlatDiamond\allowbreak PairIntegral}. For a timelike diamond contained
-in the supplied window, its ordering fraction tends to $1/10$. This final
-normalization is proved in \texttt{FlatDiamond\allowbreak Normalization}.
-The explicit vertical Alexandrov error and general weighted-family limit
-are proved in \texttt{SourceNet\allowbreak VolumeError}; the golden specialization is
-in \texttt{GoldenSource\allowbreak VolumeLimit}. Extra routing events require another
-count estimate. These theorems select no physical measure or clock.
+The geometric pair measure is evaluated by Fubini and radial integration in
+\path{Lean/Geometry/FlatDiamondPairIntegral.lean}. For a timelike diamond
+contained in the supplied window, the ordering fraction tends to $1/10$;
+this normalization is proved in
+\path{Lean/Geometry/FlatDiamondNormalization.lean}. The explicit vertical
+Alexandrov error and the general weighted-family limit are proved in
+\path{Lean/Geometry/SourceNetVolumeError.lean}, and the golden
+specialization in \path{Lean/Geometry/GoldenSourceVolumeLimit.lean}. Extra
+routing events require another count estimate. These theorems select no
+physical measure or clock.
 
 \begin{proposition}[Localized radial-kernel quadrature]
 \label{prop:source-population-local-kernel}

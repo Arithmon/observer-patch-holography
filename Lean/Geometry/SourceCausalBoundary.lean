@@ -132,7 +132,7 @@ theorem pair_null (T L : ℝ) {c : ℝ} (hc : c ≠ 0) :
     (isClosed_eq (continuous_margin c) continuous_const).measurableSet
   exact Eventually.of_forall (fun p => future_null T L hc p)
 
-/-- The coincidence diagonal is included in the already proved null relation. -/
+/-- The coincidence diagonal is contained in the null pair relation. -/
 theorem diagonal_null (T L : ℝ) {c : ℝ} (hc : c ≠ 0) :
     ((spaceTimeVolume T L).prod (spaceTimeVolume T L))
       {z : Spacetime × Spacetime | z.1 = z.2} = 0 := by
@@ -141,8 +141,8 @@ theorem diagonal_null (T L : ℝ) {c : ℝ} (hc : c ≠ 0) :
   simp only [mem_setOf_eq] at hz ⊢
   simp [hz, margin, spatialNorm]
 
-/-- Fixed causal diamonds satisfy the old count theorem with no supplied
-null-frontier hypothesis. This does not yet identify generated intervals. -/
+/-- Fixed causal diamonds satisfy the fixed-set count theorem with no supplied
+null-frontier hypothesis. This statement does not identify generated intervals. -/
 theorem source_diamond_count_tendsto {T L c : ℝ} (hT : 0 ≤ T) (hL : 0 < L)
     (hc : 0 < c) (p q : Spacetime) :
     Tendsto (fun n =>

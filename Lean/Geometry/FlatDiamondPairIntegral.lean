@@ -142,7 +142,7 @@ theorem vertical_integral (F : Spacetime → ℝ) (hF : Continuous F)
   rw [integral_indicator measurableSet_Icc, integral_Icc_eq_integral_Ioc,
     ← intervalIntegral.integral_of_le hT]
 
-/-- The geometric pair measure is the previously evaluated polynomial integral. -/
+/-- The geometric pair measure equals the evaluated polynomial integral. -/
 theorem vertical_closedPairs_volume {T : ℝ} (hT : 0 ≤ T) :
     (coordinateVolume.prod coordinateVolume).real (closedPairs 1 (0, 0) (T, 0)) =
       Real.pi ^ 2 * T ^ 8 / 11520 := by

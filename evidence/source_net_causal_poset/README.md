@@ -11,7 +11,7 @@ carrier event logs at `q = 5` and `q = 8` are mirrored under
 `carrier_source_net_logs/`.
 
 The additional [support-wiring receipt](support_wiring_receipt.json) is the
-byte-exact mirror of the [paired #776 diagnostic](../support_wiring_776/README.md).
+byte-exact mirror of the [paired support-wiring diagnostic](../support_wiring_776/README.md).
 It executes canonical seam means on the full L3–L5 W12 architecture and places
 its authenticated provenance order by both local readback and cell centre,
 beside a freshly executed q=13 record-metric trace. Its independent verifier
@@ -53,7 +53,7 @@ counted event per carrier and round are supplied, as in the source paper.
 | Width | equals the site count `q^3` | proved, `width_eq_card_sites`; computed at every `q` |
 | Height | every event at round `j` has height `j` | proved, `height_eq_layer` |
 | Cone sandwich | `displacement <= k(a - 2h)` implies reachability; reachability implies `displacement <= k a`, for `k >= 1`, an `h`-covering population in a convex window, and `a > 2h` | proved, `Lean/Geometry/SourceNetCausalCone.lean`; computed cone checks at every `q` with zero violations |
-| Central-diamond dimension, 3D family | 2.63, 2.93, 4.15, 3.61, 4.10, 4.09 at `q = 5, 8, 13, 21, 34, 55` | computed, `vertical_intervals[-1].myrheim_meyer_dimension`; check `continuum_diamond_inside_cube` before calling a row interior (q=13 is clipped) |
+| Central-diamond dimension, 3D family | 2.63, 2.93, 4.15, 3.61, 4.10, 4.09 at `q = 5, 8, 13, 21, 34, 55` | computed, `vertical_intervals[-1].myrheim_meyer_dimension`; every one of these outermost diamonds has `continuum_diamond_inside_cube = false` (`central_diamond_inside_cube_3d` in the manifest), so none is an interior-diamond reading; the largest interior diamonds, `vertical_intervals[-2]`, read 4.04, 5.02, 2.83, 4.38, 3.55, 3.84 |
 | Ordering fraction, 3D family | 0.306, 0.241, 0.088, 0.138, 0.092, 0.093 against the flat value 1/10 | computed; the constant 1/10 is proved, `Lean/Geometry/OrderingFractionFourDimensional.lean`, `orderingFraction_eq` |
 | Layer parity | even `K` approaches 1/10 from below, odd `K` from above | computed |
 | Moving-tip diamonds (boost) | 0.250, 0.135, 0.121, 0.115, 0.106 at `q = 8, 13, 21, 34, 55`; dimension 2.89, 3.64, 3.77, 3.83, 3.93 | computed, `moving_tip_interval` |
@@ -67,10 +67,10 @@ counted event per carrier and round are supplied, as in the source paper.
 | Theory replay | 28 structural fields byte-equal to the source paper's replay at `q = 5, 8, 13` | computed, `rer_cross_check` |
 | Operation costs | reads per round `2E + n`; at `q = 34`: 157,922,880 reads, 275,128 writes, 2.40 GB under the declared byte model | computed, `operation_costs` |
 | Continuum reconstruction | On past- and future-distinguishing Lorentzian spacetimes, chronological order determines the conformal geometry; an identified metric volume measure fixes the conformal factor | imported continuum theorem; not a finite-poset existence theorem |
-| Selection of the population and read law by native repairs | | is work in progress |
+| Selection of the population and read law by native repairs | | not supplied by these receipts |
 | Physical clock and source-selected continuum | not supplied by these receipts; the declared-family analytic limit is in the source paper | distinct from finite numerical diagnostics |
-| S2 support wiring readout | exact canonical L3–L5 W12 trace, both coordinate placements, W3/isolated controls and paired q=13 counts | computed, [#776 receipt](../support_wiring_776/README.md); finite declared inputs, no source selection or continuum claim |
-| Isotropy of link directions, interval abundance profile, curvature estimators | | is work in progress |
+| S2 support wiring readout | exact canonical L3–L5 W12 trace, both coordinate placements, W3/isolated controls and paired q=13 counts | computed, [support-wiring receipt](../support_wiring_776/README.md); finite declared inputs, no source selection or continuum claim |
+| Isotropy of link directions, interval abundance profile, curvature estimators | | not supplied by these receipts |
 
 ## Independent checks
 

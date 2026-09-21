@@ -50,7 +50,7 @@ All theorem declarations compile without sorry, compiler trust or project
 axioms. The independent verifier reconstructs the entire seam census and
 every finite control. It rejects malformed evidence, changed alphabet,
 cut, horizon, payload, decoder, histories, probability bounds or source
-identity. Dedicated Windows/Linux CI and repository checks pass. Existing
+identity. The package tests and repository gates pass. Existing
 proofs, evidence and frozen tests remain unchanged.
 
 ## Assumptions and boundary
@@ -87,4 +87,4 @@ proves this boundary. No general noncommutative A3 selection theorem is claimed.
 
 No complete A1--A3 countermodel, full native q=13/q=21 history, arbitrary
 record compiler or source-selected controller is supplied. No canonical
-axiom is amended, no missing premise is adopted, and #777 is not closed.
+axiom is amended, no missing premise is adopted, and M1 is not derived.

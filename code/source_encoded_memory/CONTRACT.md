@@ -5,8 +5,8 @@
 Derive a concrete, reusable encoded copy/reset protocol from the existing
 scalar pair mean, without protected export, assignments after initialization,
 payload-dependent ancillas or a supplied raw-zero reset. Charge attenuation
-and give a finite noise margin. This investigates the restricted-code opening
-left by PR #914, not selection of the physical source law.
+and give a finite noise margin. This investigates the restricted-code opening;
+selection of the physical source law is outside its scope.
 
 ## Deliverables
 
@@ -20,7 +20,7 @@ left by PR #914, not selection of the physical source law.
    exact sign preservation with unlimited finite-precision memory.
 4. Independently replayed rational executions, actual writer/value custody,
    operation and storage counts, mutation tests, transitive standard-axiom
-   audit, CI coverage and an explicit self-audit.
+   audit and CI coverage.
 
 ## Exit
 
@@ -35,9 +35,4 @@ must check its actual seams; it must not be called a full support embedding or
 a distant route. Initial encoding, accepted schedule, isolation, comparator,
 addresses, versions, precision and physical time remain supplied. No source
 population, physical energy, M1 archive service, amplitude refresh, quantum
-instrument or common-world realization is derived. The M1 parent scientific
-receipts, claim statuses, paper content and the frozen mandatory runner are
-not changed by this research packet. The follow-up CI repairs documented in
-[AUDIT.md](AUDIT.md) preserve strict portable serialization. Updated main
-supplies the independently revalidated provenance and ledger corrections;
-this branch changes no existing scientific receipt relative to that main.
+instrument or common-world realization is derived.

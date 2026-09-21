@@ -3,7 +3,7 @@
 ## Objective
 
 Determine what exact protected records and reusable feedback can follow from
-the finite scalar pair-mean law already used by the source model. Discharge
+the finite scalar pair-mean law used by the source model. Discharge
 specific implementation premises where possible and identify precise
 obstructions otherwise. Do not select a new physical law by declaration.
 

@@ -3,14 +3,14 @@
 A pair of scalar loads can retain and copy an unknown **logical sign** using
 only the existing pair-mean law, then reset used storage without injecting
 fresh zeros. The price is decreasing amplitude, hence decreasing error
-tolerance. This supplies a concrete restricted-code construction left open by
-PR #914. It does not implement M1's arbitrary scalar archive service.
+tolerance. This is a concrete restricted-code construction. It does not
+implement M1's arbitrary scalar archive service.
 
 The [contract](CONTRACT.md) fixes the objective, deliverables and bounded exit.
-[AUDIT.md](AUDIT.md) records verification and the remaining assumptions.
+The [pull-request record](https://github.com/FloatingPragma/observer-patch-holography/pull/915) holds the verification history.
 `SourceEncodedMemory.lean` has 25 theorems, transitively checked against only
 `propext`, `Classical.choice` and `Quot.sound`. It imports the existing scalar
-law directly, so this branch does not require either #913 or #914 to merge.
+law `pairAverage` from `ScalarSeamRepair.lean` directly.
 
 ## Native protocol and what it preserves
 
@@ -29,7 +29,7 @@ For any unknown amplitude `a`, two native means give
 The first mean couples the positive rails, the second the negative rails.
 Every output and changed source rail is included. The target preparation is
 independent of `a`; neither the schedule nor any auxiliary input knows its
-sign. Both cells now decode the original sign, although neither retains the
+sign. Both cells decode the original sign, although neither retains the
 original analog amplitude. No factor-two write or protected export occurs.
 
 One mean between either cell's own rails then gives `[b,b]` exactly:
@@ -93,7 +93,7 @@ terminal ambiguity does not assert that the conservative accumulated bound
 is attained by every hardware noise model.
 
 For the declared example `|a|=3/2`, `E0=delta=2^-20`, `rho=2^-16`, the sufficient
-test still passes at depth 14 and fails at depth 15. A failed sufficient test
+test passes at depth 14 and fails at depth 15. A failed sufficient test
 means **uncertified**, not an executed bit error. The margin rows are analytic
 controls, separately labelled; they are not noisy execution tapes. Tests also
 execute bounded noisy reuse, with errors on untouched rails.
@@ -133,7 +133,7 @@ rail paths and one reset rung per cell. They are not a captured W12 embedding.
 This support requirement is substantial: the capture has no matching square
 with two local cells in two carriers and both copy edges directly between
 those carriers. That finite fact does not rule out longer encodings, routed
-gadgets or other layouts. A full support compiler remains to be constructed.
+gadgets or other layouts. No full support compiler is supplied.
 
 Each native mean costs two scalar reads and two writes. Initialization costs
 one write per allocated rail. The audit snapshots and mathematical comparisons
@@ -168,19 +168,14 @@ python code/source_encoded_memory/verify.py --write-receipt
 python -m pytest -q code/source_encoded_memory
 ```
 
-The new Windows/Linux workflow replays the controls. Lean CI explicitly builds
-the downstream axiom audit even for dependency-only changes. The frozen
-mandatory runner and M1 parent scientific receipts are unchanged. The follow-up
-Updated main contains the independently revalidated Maxwell and ledger
-provenance repairs; this branch changes none of those scientific receipts.
-See [AUDIT.md](AUDIT.md) for the full mandatory-shard checks and the restored
-cross-platform artifact-equality assertion.
-The CI regression guard reads executable shell words, so a commented-out audit
-target is rejected. Additional test-time controls cover three-cell revisits,
-unrelated records, premature cleanup, common-mode blank offsets and strict
-readout margins; they do not add executions to the retained 626-mean receipt.
+The package tests replay the controls on Linux and Windows and check that
+the Lean CI target list names the axiom-audit module; the guard reads
+executable shell words, so a commented-out target is rejected. Additional
+test-time controls cover three-cell revisits, unrelated records, premature
+cleanup, common-mode blank offsets and strict readout margins; they do not add
+executions to the retained 626-mean receipt.
 
-## What remains before M1
+## Boundary toward M1
 
 This derives native logical copy and logical reset for a supplied balanced
 code and schedule. It gives a possible finite-resolution classical precursor;
@@ -189,7 +184,7 @@ integer accumulators or versioned commits. Arbitrary protected-memory
 invariance is not claimed: averaging the stored cell's own rails erases its
 bit, and copying into an occupied opposite cell can erase both bits.
 
-The remaining obligations include selecting/preparing the code and support,
+The undischarged obligations include selecting/preparing the code and support,
 implementing a physical comparator and address/version channel, compiling the
 protocol across actual carriers, deriving regeneration or budgeting finite
 precision, supporting arbitrary payloads and intervened histories, and joining
@@ -198,5 +193,5 @@ family. Native cleanup consumes the old writers even when its exact encoded
 output is constant; their causal ancestry must not be removed. Existing
 feedback-order and count-volume results do not transfer by changing a label.
 
-No issue, scientific premise, observation row or common-world join is closed
-by this bounded packet. In particular #779 and #740 remain unchanged.
+No scientific premise, observation row or common-world join is closed by
+this bounded packet.

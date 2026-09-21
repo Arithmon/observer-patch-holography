@@ -1,17 +1,17 @@
 # Canonical support wiring beside the record-metric route
 
-This is the paired diagnostic for [#776](https://github.com/FloatingPragma/observer-patch-holography/issues/776).
+This package pairs the S2 support-wiring provenance readout with the record-metric route.
 The [receipt](support_wiring_receipt.json) includes both routes and their
 controls. Its [byte-exact mirror](../source_net_causal_poset/support_wiring_receipt.json)
 is in the causal-poset package. The [frozen specification](../../code/support_wiring/SPECIFICATION.md)
-was committed as `b013a019` before production results. All numbers below are
+precedes the production runs; its hash is bound into the trace chain. All numbers below are
 finite declared-experiment results, not acceptance targets.
 
 ## Executed architecture
 
 The public geometry primitives at revision
-`7faa47b5cf00b42f6bf6b3e95ed4f7eb64f4239f` reproduce every previously captured
-L3 face and W12 port pair. The twelve-port carriers have thirty intra-carrier
+`7faa47b5cf00b42f6bf6b3e95ed4f7eb64f4239f` reproduce every L3 face and W12
+port pair of the committed fixture. The twelve-port carriers have thirty intra-carrier
 seams. Every sweep visits every intra-carrier and glued seam once using exact
 pair means. Four sweeps execute at each of L3, L4, L5, with the committed
 childwise-constant cell pullback between levels, applied to each port label.
@@ -97,7 +97,7 @@ In particular, the small single-level intervals do not establish a stable
 
 The record-metric q=13 route executes **1,176,764 reads** and 10,985 writes,
 with its original neighbour predicate, self reads, preparations and four-layer
-read law. Its exact counts agree with the previously committed family:
+read law. Its exact counts agree with the archived family:
 
 | Lag | Events N | Strict pairs C | Ordering fraction | MM dimension | Spatially interior? |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -106,15 +106,15 @@ read law. Its exact counts agree with the previously committed family:
 | 3 | 360 | 16,966 | 0.262550 | 2.82788 | Yes |
 | 4 | 1,529 | 102,990 | 0.0881646 | 4.14933 | **No: clipped** |
 
-The old q13 receipt already flagged lag four as clipped. Calling its 4.15
+The archived q13 receipt flags lag four as clipped. Calling its 4.15
 estimate an interior result would be incorrect. The lag-one endpoint `r=1`
 is reported as `d=1`; the historical estimator returned null there. Neither
 choice changes any count. The contrast between the routes is measured under
 different laws, event granularities and clocks; it does not isolate wiring as
 the sole cause of the gap, select the metric read law, or derive M1.
 
-The requested second audit added the q13 family's existing lower-dimensional
-scientific controls under an explicit [post-run declaration](../../code/support_wiring/CONTROL_ADDENDUM.md).
+The q13 family's one- and two-dimensional scientific controls were declared
+after the primary run, in the [control addendum](../../code/support_wiring/CONTROL_ADDENDUM.md), and executed under that declaration.
 They execute the same metric threshold and read law with one or two spatial
 axes, retaining all writer versions and integer values (316 and 20,196 reads).
 The complete four-lag readouts are in `q13_controls.json` and the paired receipt:
@@ -155,5 +155,4 @@ commands and the analytic confluence argument are in the code README.
 
 The Exit is the paired receipt and controls above. It is not a target dimension,
 an M1 derivation, a source-selection theorem, a physical clock or a continuum
-limit. The September 10 partial integer-law log and its draft numerical prose
-are not used as evidence.
+limit.

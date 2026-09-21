@@ -79,22 +79,3 @@ Three row-level contracts carry their own machine-checked declaration:
 The GitHub workflow runs the validator on registry changes and on public claim-surface changes.
 When a pull request changes paper TeX or the README claim narrative, it must also touch this
 registry/check surface. That rule keeps the registry from becoming a stale snapshot.
-
-## Native-record theorem-count review (#918)
-
-The README theorem-count floor is mechanically checked by
-`tools/check_lean_theorem_count.py`; declaration counts are explicitly excluded
-from physical quantitative claims by `public_surface_quantitative_claims.json`.
-The 39 declarations in `Lean/Geometry/SourceNativeRecords.lean` and
-`Lean/Geometry/SourceBusScaling.lean` bring the reviewed library to 11,022
-declarations, requiring a public floor of 11,000 in both README languages.
-
-The scientific scope review finds a finite sum-write construction under the
-supplied scalar mean law and a polynomial cleanup bound on a supplied paired
-chain. Preparation, rail embedding, controller, codebook and physical error
-bounds remain inputs. The range obstruction applies to unscaled growing raw
-values; the two-schedule witness is not a full A1--A3 countermodel. These
-results leave the complete native q=13/q=21 compiler and M1 read-law selection
-open. No claim-registry status or physical-identification class is promoted
-by the corrected declaration count. The detailed evidence and limits are in
-`code/source_native_updates/CONTRACT.md` and `code/source_native_updates/AUDIT.md`.

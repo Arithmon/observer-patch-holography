@@ -8,8 +8,8 @@ set_option autoImplicit false
 # Generated-order limits for the actual golden source population
 
 The sites are the fractional golden orbit, not a replacement regular grid.
-The grid is used only for the existing equal-volume cell assignment. The
-read relation is the complete-neighbour path relation at radius L/sqrt(q).
+The grid is used only for the equal-volume cell assignment of
+`Geometry.GoldenSourceAssignment`. The read relation is the complete-neighbour path relation at radius L/sqrt(q).
 All event layers, including the clipped final layer, remain in the counts.
 -/
 

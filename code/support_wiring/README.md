@@ -1,9 +1,9 @@
-# Canonical support-wiring diagnostic (#776)
+# Canonical support-wiring diagnostic
 
 The frozen [specification](SPECIFICATION.md) states all inputs, the event
 convention, interval selection and limits. The complete receipt and trace live
 in [`evidence/support_wiring_776/`](../../evidence/support_wiring_776/README.md).
-No unpublished simulator module or #777 implementation is required for replay.
+No unpublished simulator module is required for replay.
 The [post-run control addendum](CONTROL_ADDENDUM.md) retains the q13 family's
 existing one- and two-dimensional scientific controls beside the primary
 comparison. The `readouts.py q13` command executes all three families; full
