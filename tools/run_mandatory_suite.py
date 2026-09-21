@@ -42,6 +42,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
+        "Verify native work ambiguity, scalar pressure enclosures and Maxwell thermal stress",
+        [sys.executable, "-m", "pytest", "-q", "code/equation_of_state"],
+    ),
+    (
         "Verify regional scalar reconstruction and minimal exterior Weyl access",
         [sys.executable, "-m", "pytest", "-q", "code/source_scalar_regional/test_regional_time_slice.py"],
     ),

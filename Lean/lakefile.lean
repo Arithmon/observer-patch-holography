@@ -56,7 +56,7 @@ lean_lib «OPHComputation» where
 @[default_target]
 lean_lib «OPHThermodynamics» where
   srcDir := "Thermodynamics"
-  roots := #[`FiniteConditionalRepair, `FirstLawIdentity,
+  roots := #[`FiniteConditionalRepair, `FirstLawIdentity, `EquationOfState,
     `GibbsReferenceEnergyIdentification, `ModularEnergyAdditivity,
     `CollarTemperatureReading,
     `FluctuationTheorems, `CapFirstLaw, `EinsteinPremiseLink,

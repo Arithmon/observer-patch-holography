@@ -239,7 +239,10 @@
   "OPH-SEAM-PATH-TOMOGRAPHY",
   "OPH-CARTAN-SCALAR-CONTINUOUS-READOUT",
   "OPH-SOURCE-FEEDBACK-VERSION-TRANSPORT",
-  "OPH-SCALAR-SEQUENTIAL-INSTRUMENT"
+  "OPH-SCALAR-SEQUENTIAL-INSTRUMENT",
+  "OPH-FINITE-WORK-RESPONSE-NONIDENTIFIABILITY",
+  "OPH-GOLDEN-SCALAR-METRIC-PRESSURE",
+  "OPH-WHITNEY-MAXWELL-METRIC-PRESSURE"
  ],
  "edges": [
   {
@@ -2126,6 +2129,16 @@
    "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
    "to": "OPH-SCALAR-SEQUENTIAL-INSTRUMENT",
    "role": "supplies the full finite scalar action, original preparation, unmeasured probability bounds and conditional reference-clock intervals used in the sequential comparison"
+  },
+  {
+   "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+   "to": "OPH-GOLDEN-SCALAR-METRIC-PRESSURE",
+   "role": "Supplies only the existing q5 finite golden scalar action, exact parent histories and original continuous IVP; no q233 spatial probability error or physical clock is transferred."
+  },
+  {
+   "from": "OPH-SERIAL-MAXWELL-READOUT",
+   "to": "OPH-WHITNEY-MAXWELL-METRIC-PRESSURE",
+   "role": "Supplies authenticated decoded field records for the sourced-field pressure readouts; the separate source-free trajectory and Gibbs preparation are not new observer instrument histories."
   }
  ]
 }

@@ -10507,6 +10507,128 @@
         "boundary": [],
         "rationale": "This is a conditional mathematical quantum instrument on an explicitly supplied finite canonical action with supplied states, controlled operations, entanglement, Born readout and reference-time intervals. It does not consume PR-02/PR-03 as source-derived physical representation/readout, or PR-52/PR-58 as physical spacetime/time-slice attachment."
       }
+    },
+    {
+      "claim_id": "OPH-FINITE-WORK-RESPONSE-NONIDENTIFIABILITY",
+      "statement": "For the declared scalar pair-mean primitive, total load is conserved and Q=sum_i x_i^2/2 drops by (x_i-x_j)^2/4 at each repaired seam. An added cumulative-loss record preserves Q+B but is not identified with heat. For Q(x)>0 and V0,V>0, the supplied positive extension H_alpha(x,V)=Q(x)(V/V0)^(-alpha) agrees with Q for every scalar state at V0 while its work ratio, under p=-partial_V H at fixed x and rho=H/V, equals any chosen real alpha. Thus even complete fixed-volume scalar histories and Q on every state do not determine a work ratio within this extension class. The alpha=1/3 and alpha=1/2 positive-pressure extensions are indistinguishable by those state-only data. An added volume-independent energy offset changes rho without changing the pressure derivative. Exact twelve-port traces retain every scheduled repair and quadratic-loss record. These are kernel-checked algebra and a scoped identifiability statement, not an equilibrium equation of state, physical-energy assignment, thermal bath, or no-go against independently justified volume response or richer dynamics.",
+      "tier": "kernel_checked_fixed_volume_work_nonuniqueness_and_exact_scalar_replay",
+      "assumptions": [
+        "declared_scalar_pair_mean_and_unprovided_volume_work"
+      ],
+      "imported_results": [
+        "real_power_differentiation",
+        "finite_quadratic_mean_identity"
+      ],
+      "oph_specific_delta": "Identifies exactly which thermodynamic datum the actual scalar repair histories lack: their extension under volume work. Binds a general work nonuniqueness argument to complete twelve-port repair and loss-record controls without renaming quadratic loss as heat.",
+      "novelty_type": "scoped_native_scalar_work_identifiability_boundary",
+      "evidence": [
+        "paper/tex_fragments/FINITE_EQUATION_OF_STATE.tex",
+        "Lean/Thermodynamics/EquationOfState.lean",
+        "code/equation_of_state/native/native_eos.py",
+        "code/equation_of_state/native/verify_native_eos.py",
+        "code/equation_of_state/native/test_native_eos.py",
+        "code/equation_of_state/native/native_eos_receipt.json"
+      ],
+      "falsifier": "The pair-mean loss identity or replay fails; the positive extensions differ on scalar states at V0, have the wrong volume derivative, or fail to realize distinct ratios; the external loss record is promoted to a native heat bath; or the result is enlarged into a no-go against additional work observables or other dynamics.",
+      "scope_if_false": "The stated scalar work-identifiability argument or exact replay fails. The separately supplied field-action thermodynamics and other native dynamical proposals keep their own assumptions.",
+      "status": "fixed_volume_work_nonuniqueness_attained__physical_energy_work_and_equilibrium_unspecified",
+      "gates": [
+        740
+      ],
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "claim_class": "conditional_implication",
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The conclusion compares explicit mathematical volume extensions of a fixed scalar map and quadratic diagnostic. No registered physical-energy or work identification is assumed: precisely the absence of that extra identification is tested. The external loss accumulator supplies no physical bath."
+      }
+    },
+    {
+      "claim_id": "OPH-GOLDEN-SCALAR-METRIC-PRESSURE",
+      "statement": "For the existing q=5 golden Dirichlet scalar action, a supplied isotropic dilation in fixed reference units gives M_s=s^3 M0, gradient stiffness s K0 and fixed mass m. At fixed original field coordinates and canonical momenta, H_s=K/s^3+sG+s^3U and pV=K-G/3-U. Nonnegative energies imply instantaneous ratio in [-1,1]; the virial condition K=G+U gives [0,1/3]. Exact replay evaluates all 22 stored states in each of four authenticated histories, keeping original action energy distinct from conserved modified split energy. A full-operator sine/cosine Taylor certificate independently encloses same-finite-action continuous pressure at all 22 nominal times. At t=3/sqrt(5), V=1, continuous pressure is in [0.129161530903,0.129161530906], continuous p/rho in [0.467230205001,0.467230205004], and split-minus-continuous pressure in [-0.017284266362,-0.017284266359]. Separately, a supplied zero-chemical-potential canonical Bose ensemble with zero-point subtraction at every scale has omega_j^2=m^2+lambda_j/s^2, E_j=omega_j/(exp(omega_j/T)-1) and p=(sum_j E_j lambda_j/(s^2 omega_j^2))/(3V), equal to its free-energy derivative and mechanical stress. All 64 modes and 36 scale/mass/temperature cases are retained; the massive ratio varies and massless scaling gives1/3. Classical records and continuous pressure are exact/enclosed; thermal spectra and derivatives are independently checked numerical calculations, not interval certificates. Native action, metric work, physical calibration, Bose preparation, thermalization, finite observer capacity, vacuum-pressure prediction and continuum or thermodynamic limit are not established.",
+      "tier": "kernel_checked_metric_work_identity_exact_record_stress_and_continuous_pressure_enclosure_with_numerical_Bose_ensemble",
+      "assumptions": [
+        "declared_golden_scalar_versioned_execution",
+        "declared_scalar_canonical_metric_dilation",
+        "declared_finite_scalar_Bose_thermal_state"
+      ],
+      "imported_results": [
+        "canonical_Hamiltonian_metric_work_and_scalar_virial_identity",
+        "full_spectral_Taylor_remainder_bounds",
+        "finite_harmonic_oscillator_Bose_partition_function"
+      ],
+      "oph_specific_delta": "Attaches independently verified energy and canonical volume stress to every retained state of the existing observer-addressed scalar execution and controls its difference from the same continuous finite action. Adds a separate same-action thermal family while preserving the distinction between supplied equilibrium and transient execution.",
+      "novelty_type": "same_golden_action_record_stress_continuous_error_and_declared_thermal_family",
+      "evidence": [
+        "paper/tex_fragments/FINITE_EQUATION_OF_STATE.tex",
+        "Lean/Thermodynamics/EquationOfState.lean",
+        "code/equation_of_state/scalar/scalar_eos.py",
+        "code/equation_of_state/scalar/verify_scalar_eos.py",
+        "code/equation_of_state/scalar/test_scalar_eos.py",
+        "code/equation_of_state/scalar/scalar_eos_receipt.json",
+        "code/equation_of_state/scalar/continuous_pressure.py",
+        "code/equation_of_state/scalar/verify_continuous_pressure.py",
+        "code/equation_of_state/scalar/test_continuous_pressure.py",
+        "code/equation_of_state/scalar/continuous_pressure_receipt.json"
+      ],
+      "falsifier": "A wrong held-fixed variable or metric scaling changes the work derivative; exact energy, stress or parent read custody fails; the full-operator Taylor remainder or a retained continuous-pressure enclosure fails; massive thermal pressure disagrees with an independently differentiated partition function; any mode or case is omitted; modified energy replaces original H; or transient ratios, finite modes, numerical thermal checks or supplied ensembles are promoted to equilibrium, bounded observer capacity, rigorous intervals or native physics.",
+      "scope_if_false": "The affected scalar metric-pressure or continuous-comparison result fails. The original scalar recurrence, separate quantum readout certificates and unrelated Maxwell or native-work claims retain their independent scopes.",
+      "status": "same_action_transient_and_equilibrium_stress_distinguished_and_verified__native_thermodynamic_attachment_open",
+      "gates": [
+        730,
+        740
+      ],
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "claim_class": "conditional_implication",
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The finite golden action, isotropic metric extension, reference units and independent Bose ensemble are stated as local mathematical inputs. PR-15 physical energy/time calibration and PR-52 native source/population attachment are excluded conclusions, not consumed or discharged premises; the continuous bound refers only to the exact supplied finite IVP."
+      }
+    },
+    {
+      "claim_id": "OPH-WHITNEY-MAXWELL-METRIC-PRESSURE",
+      "statement": "For the supplied three-dimensional Whitney Maxwell action on the complete twelve-port tetrahedral cone, uniform metric dilation gives M_s=sM1 and N_s=N1/s. At fixed edge-integrated potential and canonical momentum, the positive field Hamiltonian scales as H_s=H1/s, giving mean pressure H/(3V). Independent integrated Maxwell stress has the same trace; directional stress can include tension, and zero field energy leaves the ratio undefined. Full geometry reassembly and independent simplex quadrature check work/stress agreement, gauge controls and decoded fields from the existing self-reading instrument. A separate source-free numerical midpoint execution retains 81 canonical states and all 80 Ampere, Faraday, Gauss, energy-balance and nonzero displacement-current checks with zero conduction current. It is not itself a new observer readout instrument. A separately supplied classical Gibbs ensemble on a fixed canonical gauge quotient has 30 positive modes after excluding12 gradient gauge directions, energy30T and pV=10T. Nine scale/temperature cases retain covariance, all field-stress components and free-energy work, independently checked with a different canonical gauge quotient. The numerical calculations are not interval enclosures. The result excludes matter, source, clock, wall and record energies; it establishes neither native repair thermodynamics, Gibbs preparation or thermalization, quantum blackbody behavior, physical units nor a continuum limit.",
+      "tier": "kernel_checked_Maxwell_metric_scaling_with_independent_numerical_field_and_classical_Gibbs_checks",
+      "assumptions": [
+        "declared_Whitney_Maxwell_canonical_metric_work",
+        "declared_classical_Maxwell_Gibbs_quotient"
+      ],
+      "imported_results": [
+        "Whitney_form_metric_scaling_and_Maxwell_stress_tensor",
+        "finite_quadratic_Hamiltonian_midpoint_evolution",
+        "canonical_gauge_reduction_and_Gaussian_partition_integral"
+      ],
+      "oph_specific_delta": "Measures field stress and virtual work on the existing OPH cone and decoded parent fields, and separately evaluates equilibrium of that same finite action with an independently reconstructed canonical measure. Maxwell traceless stress and Gaussian thermodynamics are standard supplied-action consequences, not new physical laws derived from repair.",
+      "novelty_type": "same_cone_canonical_field_work_and_declared_classical_Gibbs_integration",
+      "evidence": [
+        "paper/tex_fragments/FINITE_EQUATION_OF_STATE.tex",
+        "Lean/Thermodynamics/EquationOfState.lean",
+        "code/equation_of_state/maxwell/maxwell_eos.py",
+        "code/equation_of_state/maxwell/verify_maxwell_eos.py",
+        "code/equation_of_state/maxwell/test_maxwell_eos.py",
+        "code/equation_of_state/maxwell/runs/maxwell_eos_receipt.json"
+      ],
+      "falsifier": "Metric reassembly violates the Whitney scaling; virtual work or any stress component disagrees with independent quadrature; a gauge Jacobian or positive physical mode is omitted; the canonical Gibbs determinant gives different pressure; any retained Maxwell update or source parent fails replay; or field-only stress, classical Gibbs preparation and numerical residuals are promoted to complete native thermodynamics, quantum blackbody physics or rigorous trajectory bounds.",
+      "scope_if_false": "The affected finite-cone pressure/Gibbs integration fails. Existing finite Maxwell action/readout and unrelated scalar or work-identifiability statements retain their own assumptions.",
+      "status": "finite_Maxwell_field_and_supplied_classical_Gibbs_pressure_verified__native_equilibrium_and_total_energy_attachment_open",
+      "gates": [
+        740,
+        754
+      ],
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "claim_class": "conditional_implication",
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The Euclidean cone metric, constitutive coefficients, canonical field phase space and separately prepared classical Gaussian ensemble are supplied. Neither PR-15 physical units nor PR-53/PR-54 physical electromagnetic action/current identification is asserted; field-only stress explicitly excludes source, clock and record sectors."
+      }
     }
   ]
 }
