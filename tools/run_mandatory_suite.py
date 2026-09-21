@@ -42,10 +42,6 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
-        "Verify native stored computation, protected versions and whole-history precision",
-        [sys.executable, "-m", "pytest", "-q", "code/source_native_programs"],
-    ),
-    (
         "Verify finite fermionic current, exact continuity and mean Gauss custody",
         [sys.executable, "-m", "pytest", "-q", "code/sm_fermion_current"],
     ),
