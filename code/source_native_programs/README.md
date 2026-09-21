@@ -3,7 +3,7 @@
 Computed integers can be stored in one bank while another bank stays readable.
 Switching the banks lets later layers use earlier results. Transfers, addition,
 retirement and reuse use supported scalar pair means with finite precision.
-The source still has to select the prepared records and temporal controller.
+The source has to select the prepared records and temporal controller.
 
 The [contract](CONTRACT.md) defines acceptance and scope; the
 [derivation](DERIVATION.md) gives the construction and bounds; the

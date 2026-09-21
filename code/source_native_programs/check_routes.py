@@ -65,12 +65,13 @@ def check(rows, sites, level, retain=False):
             (3,4),(5,9),(3,9),(5,4)]
     require(all(tuple(sorted(e)) in allowed for e in core), "unsupported arithmetic core")
     rows = iter(rows)
+    end = object()  # JSON null is a record, never an end-of-stream marker.
     digest = hashlib.sha256()
     total = maximum = count = reversed_ends = 0
     kept = {}
     for carrier in range(1,2*sites+1):
         for direction in ("read","write"):
-            row = next(rows,None)
+            row = next(rows,end)
             length = check_route(row,sites,level,carrier,direction,allowed,protected)
             digest.update((codec.compact(row)+"\n").encode("ascii"))
             count += 1
@@ -79,7 +80,7 @@ def check(rows, sites, level, retain=False):
             reversed_ends += row["pairs"][-1][0] > row["pairs"][-1][1]
             if retain:
                 kept[carrier,direction] = row["pairs"]
-    require(next(rows,None) is None, "extra route witness")
+    require(next(rows,end) is end, "extra route witness")
     summary = {"sites":sites,"level":level,"routes":count,"paired_cells":total,
                "max_paired_cells":maximum,"reversed_endpoints":reversed_ends,
                "routes_sha256":digest.hexdigest(),

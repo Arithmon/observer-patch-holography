@@ -4,6 +4,7 @@ from fractions import Fraction as F
 from fnmatch import fnmatchcase
 from itertools import product
 from pathlib import Path
+import hashlib
 import re
 import shlex
 import subprocess
@@ -91,6 +92,60 @@ def test_resealed_forgeries_rejected_by_real_cli(packet,tmp_path,mutation):
     receipt_path.write_bytes(codec.canonical(receipt))
     result = cli(path,receipt_path)
     assert result.returncode != 0, result.stdout
+
+
+@pytest.mark.parametrize("suffix",[[None],[None,{"ignored":"suffix"}],[False],[{}],[[]],[0]])
+def test_resealed_extra_route_records_rejected_by_real_cli(packet,tmp_path,suffix):
+    assert packet["pins"] == codec.pins(), "baseline custody must be valid before mutation"
+    forged = deepcopy(packet)
+    forged["routes"].extend(suffix)
+    receipt = codec.load_artifact(codec.HERE/"receipt.json")
+    receipt["controls_sha256"] = codec.digest(forged)
+    path,receipt_path = tmp_path/"controls.json",tmp_path/"receipt.json"
+    path.write_bytes(codec.canonical(forged))
+    receipt_path.write_bytes(codec.canonical(receipt))
+    result = cli(path,receipt_path)
+    assert result.returncode != 0 and "extra route witness" in result.stderr
+
+
+@pytest.mark.parametrize("mutation",["null","hidden_suffix","extra_route","missing","duplicate","swap"])
+def test_complete_stream_inventory_rejects_extra_missing_and_reordered_rows(packet,tmp_path,mutation):
+    rows = deepcopy(packet["routes"])
+    path = tmp_path/"routes.jsonl"
+    path.write_bytes("".join(codec.compact(row)+"\n" for row in rows).encode("ascii"))
+    baseline = check_routes.check(check_routes.read_rows(path),2,3)
+    assert baseline["routes"] == 8
+    if mutation == "null":
+        rows.append(None)
+    elif mutation == "hidden_suffix":
+        rows.extend([None,{"ignored":"suffix"}])
+    elif mutation == "extra_route":
+        rows.append(deepcopy(rows[-1]))
+    elif mutation == "missing":
+        rows.pop()
+    elif mutation == "duplicate":
+        rows[-1] = deepcopy(rows[-2])
+    else:
+        rows[-1],rows[-2] = rows[-2],rows[-1]
+    path.write_bytes("".join(codec.compact(row)+"\n" for row in rows).encode("ascii"))
+    with pytest.raises(ValueError):
+        check_routes.check(check_routes.read_rows(path),2,3)
+
+
+def test_family_cli_rejects_null_followed_by_hidden_route_suffix(tmp_path):
+    family = codec.load_artifact(codec.HERE/"families.json")
+    assert family["pins"] == codec.pins(), "baseline family custody must be valid"
+    rows = list(routes.generate(27,3))
+    assert check_routes.check(rows,27,3) == family["routes"][0]
+    path = tmp_path/"routes-27.jsonl"
+    path.write_bytes("".join(codec.compact(row)+"\n" for row in rows+[None,{}]).encode("ascii"))
+    env = dict(os.environ,PYTHONPATH=str(codec.ROOT/"code"))
+    result = subprocess.run([sys.executable,"-m","source_native_programs.family_verify",
+                             "--workdir",str(tmp_path)],cwd=codec.ROOT,env=env,
+                            capture_output=True,text=True,timeout=120)
+    # It must reject the inventory itself, before asking for an execution plan
+    # or later witnesses; an unrelated missing-file error would mask the bug.
+    assert result.returncode != 0 and "extra route witness" in result.stderr
 
 
 @pytest.mark.parametrize("raw",[b"",b"null",b"[]",b"{}",b"true",b'{"x":1,"x":2}',
@@ -200,8 +255,10 @@ def test_complete_metric_is_independent_and_matches_existing_custody(q):
 
 def require_ci_gate(source):
     workflow = yaml.safe_load(source)
-    step = next(s for s in workflow["jobs"]["build"]["steps"] if s.get("id") == "changed_modules")
-    assert "if" not in step
+    job = workflow["jobs"]["build"]
+    assert "if" not in job and not job.get("continue-on-error",False)
+    step = next(s for s in job["steps"] if s.get("id") == "changed_modules")
+    assert "if" not in step and not step.get("continue-on-error",False)
     targets = step["run"].split("targets=(",1)[1].split(")",1)[0]
     assert "Geometry.SourceNativeProgramsAxiomAudit" in shlex.split(targets,comments=True)
 
@@ -212,7 +269,7 @@ def test_complete_transitive_axiom_inventory_and_ci_gate():
                    "SourceNativeStoredProgram","SourceNativeProgramBudget"):
         source = (codec.ROOT/f"Lean/Geometry/{module}.lean").read_text(encoding="utf-8")
         namespace = re.search(r"^namespace (\S+)",source,re.M).group(1)
-        declarations.update(namespace+"."+name for name in re.findall(r"^theorem (\w+)",source,re.M))
+        declarations.update(namespace+"."+name for name in re.findall(r"^(?:theorem|lemma) (\w+)",source,re.M))
         code = re.sub(r"/-.*?-/|--[^\n]*","",source,flags=re.S)
         assert not re.search(r"\b(sorry|admit|axiom|native_decide|unsafe)\b",code)
     audit = (codec.ROOT/"Lean/Geometry/SourceNativeProgramsAxiomAudit.lean").read_text(encoding="utf-8")
@@ -229,17 +286,54 @@ def test_disabled_ci_axiom_gate_is_rejected(replacement):
         require_ci_gate(source.replace('"Geometry.SourceNativeProgramsAxiomAudit"',replacement))
 
 
-def test_workflow_covers_every_pinned_source_and_cannot_skip_family_verification():
-    workflow = yaml.safe_load((codec.ROOT/".github/workflows/source-native-programs.yml").read_text(encoding="utf-8"))
+def require_native_ci_gate(workflow):
     triggers = workflow.get("on",workflow.get(True))
     for event in ("push","pull_request"):
         for path in codec.pins():
             assert any(fnmatchcase(path,g) for g in triggers[event]["paths"]),path
-    for module in ("family_build","family_verify"):
-        assert any(f"source_native_programs.{module}" in step.get("run","") and "if" not in step
-                   for step in workflow["jobs"]["families"]["steps"])
+    for name,commands in {
+        "controls":["python -m pytest -q code/source_native_programs"],
+        "families":[
+            "python -m source_native_programs.family_build --workdir temp/native-program-witnesses --output temp/native-program-families.json",
+            "python -m source_native_programs.family_verify --workdir temp/native-program-witnesses --families temp/native-program-families.json",
+        ],
+    }.items():
+        job = workflow["jobs"][name]
+        assert "if" not in job and not job.get("continue-on-error",False)
+        for command in commands:
+            assert any(step.get("run","").strip() == command and "if" not in step and
+                       not step.get("continue-on-error",False) for step in job["steps"])
+
+
+def test_workflow_covers_every_pinned_source_and_preserves_frozen_runner():
+    workflow = yaml.safe_load((codec.ROOT/".github/workflows/source-native-programs.yml").read_text(encoding="utf-8"))
+    require_native_ci_gate(workflow)
+    projection = codec.load(codec.ROOT/"code/invariant_mining/outputs/source_projection.json")
+    pin = next(p for p in projection["control_documents"] if p["path"] == "tools/run_mandatory_suite.py")
+    assert "sha256:"+hashlib.sha256((codec.ROOT/pin["path"]).read_bytes()).hexdigest() == pin["sha256"]
     for path in codec.pins():
         assert b"\r\n" not in (codec.ROOT/path).read_bytes(),path
+
+
+@pytest.mark.parametrize("job_name",["controls","families"])
+@pytest.mark.parametrize("mutation",["skip_job","allow_job_failure","skip_step","allow_step_failure","swallow_exit"])
+def test_disabled_native_ci_gate_is_rejected(job_name,mutation):
+    workflow = yaml.safe_load((codec.ROOT/".github/workflows/source-native-programs.yml").read_text(encoding="utf-8"))
+    require_native_ci_gate(workflow)
+    job = workflow["jobs"][job_name]
+    step = job["steps"][-1]
+    if mutation == "skip_job":
+        job["if"] = "false"
+    elif mutation == "allow_job_failure":
+        job["continue-on-error"] = True
+    elif mutation == "skip_step":
+        step["if"] = "false"
+    elif mutation == "allow_step_failure":
+        step["continue-on-error"] = True
+    else:
+        step["run"] += " || true"
+    with pytest.raises(AssertionError):
+        require_native_ci_gate(workflow)
 
 
 @pytest.mark.parametrize("key",["scalar_means_upper","grid_bits_sufficient","maximum_scale_upper",
