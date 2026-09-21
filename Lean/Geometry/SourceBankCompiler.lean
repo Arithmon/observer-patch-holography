@@ -19,7 +19,7 @@ open OPH.SourceBankMachine OPH.SourceBankInvariant OPH.SourceBankLowering
 open OPH.SourceNativeShuttle OPH.SourceNativeStoredProgram OPH.SourceEncodedMemory
 open OPH.SourceNativeAccumulator OPH.SourceNativeCore OPH.SourceReusableBus
 
-/-- A route annotation for each transfer in an already determined instruction
+/-- A route annotation for each transfer in the compiled instruction
 stream. No constructor admits a pre-certified arbitrary operation. -/
 inductive Placed : List Op → Type
   | nil : Placed []
