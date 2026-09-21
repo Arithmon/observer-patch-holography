@@ -67,6 +67,14 @@ mean word, and the stated strict error margin, the final local policy returns
 The theorem's hypotheses include the supplied requests and supported-use
 contract; they do not include a source-selection derivation.
 
+The executable decoder intersects its closed error interval with the public
+integer magnitude range. `candidate_iff` and `decode_is_canonical` identify
+its clipped ceiling/floor endpoints with the canonical policy for that exact
+candidate set, including empty and ambiguous sets. `recurrence_bound` obtains
+the public cap from the sum of input magnitude bounds. The composed
+`native_bounded_publication` theorem applies this exact decoder to the noisy
+native recurrence; its magnitude cap does not depend on the desired answer.
+
 ## Resources and scientific boundary
 
 With `S` episodes, `N` additions and initial scale bound `M`, the actual native

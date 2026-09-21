@@ -20,7 +20,10 @@ M1 scale laws, or promote M1 from its retained status.
 2. `SourceAccumulatorProgram.lean` proves whole-program execution, retained
    input semantics, polynomial mean-work and scale bounds, and composition
    with the final native read and local integer publication under an explicit
-   whole-word error margin. `SourceAccumulatorAxiomAudit.lean` checks every
+   whole-word error margin. `SourceAccumulatorDecoder.lean` identifies the
+   clipped floor/ceiling rule with the canonical bounded-candidate policy,
+   derives the public magnitude cap from input bounds, and connects that
+   exact decoder to the native recurrence. `SourceAccumulatorAxiomAudit.lean` checks every
    listed theorem transitively against the standard Lean axioms.
 3. Independent producer and verifier replay the captured W12 L3 seams,
    including every current writer and rounded mean. Complete deterministic
@@ -114,7 +117,7 @@ this interface. It does not derive initial preparation, immutable committed
 layer storage, general routing, a source-selected temporal grammar, its A3
 reference/cover, or the complete M1 family.
 
-The source-selection criterion and cover obstruction established
-in PR #919 remain applicable. This construction supplies arithmetic words
+The [source-selection criterion and cover obstruction](../source_read_selection/README.md)
+remain applicable. This construction supplies arithmetic words
 for a supplied source-derived controller; existence of the words
 does not imply that A1--A3 select them.

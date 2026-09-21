@@ -187,6 +187,27 @@ def test_integer_interval_boundaries(monkeypatch,z,r,bound,want):
     assert verify.decode(plus,minus,0,0,bound) == want
 
 
+@pytest.mark.parametrize("grid",[4,5,19])
+@pytest.mark.parametrize("scale",[0,1,3])
+@pytest.mark.parametrize("count",[0,1,7])
+@pytest.mark.parametrize("bound",[-1,0,1,3])
+def test_clipped_decoder_matches_explicit_feasible_set(monkeypatch,grid,scale,count,bound):
+    # Enumerate candidates directly; do not use floor/ceiling or the producer.
+    # Small grids include wide, overlapping intervals beyond the availability regime.
+    monkeypatch.setattr(build,"G",grid-3)
+    monkeypatch.setattr(verify,"GRID",grid)
+    radius = F((4+5*count)*2**scale,8*(grid-3))
+    for quarter in range(-24,25):
+        obs = F(quarter,4)
+        plus = obs*(grid-3)/2**scale
+        minus = -plus
+        feasible = [k for k in range(-max(bound,0),max(bound,0)+1)
+                    if abs(k)<=bound and abs(obs-k)<=radius]
+        expected = feasible[0] if len(feasible) == 1 else None
+        assert build.publish(plus,minus,scale,count,bound) == expected
+        assert verify.decode(plus,minus,scale,count,bound) == expected
+
+
 @pytest.mark.parametrize("bad",[[],[[0]],[[1]],[[4]],[[True]],[[3.0]],[["3"]]])
 def test_invalid_request_aliases_fail(bad,edges):
     with pytest.raises(ValueError):
@@ -242,7 +263,7 @@ def require_ci_gate(source):
 
 def test_all_new_theorems_have_transitive_axiom_gate():
     declarations = set()
-    for module in ("SourceNativeAccumulator","SourceAccumulatorProgram"):
+    for module in ("SourceNativeAccumulator","SourceAccumulatorProgram","SourceAccumulatorDecoder"):
         source = (codec.ROOT/f"Lean/Geometry/{module}.lean").read_text(encoding="utf-8")
         namespace = re.search(r"^namespace (\S+)",source,re.M).group(1)
         declarations.update(namespace+"."+name for name in re.findall(r"^theorem (\w+)",source,re.M))
