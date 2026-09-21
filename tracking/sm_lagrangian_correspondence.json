@@ -153,9 +153,15 @@
     "code/sm_local_action/build_local_action.py",
     "code/sm_local_action/verify_local_action.py",
     "code/sm_local_action/test_local_action.py",
-    "code/sm_local_action/local_action_receipt.json"
+    "code/sm_local_action/local_action_receipt.json",
+    "paper/tex_fragments/FERMION_SOURCE_CURRENT.tex",
+    "code/sm_fermion_current/current_receipt.json",
+    "code/sm_fermion_current/verify_current.py",
+    "code/sm_fermion_current/test_current.py",
+    "code/sm_fermion_current/quantum_link_receipt.json",
+    "code/sm_fermion_current/verify_quantum_link.py"
    ],
-   "boundary": "The registered exterior grammar places the quark doublet with hypercharge one sixth inside the unique chiral anomaly-free fifteen-state generation, which fixes the covariant-derivative coupling pattern of the term, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector."
+   "boundary": "The registered exterior grammar places the quark doublet with hypercharge one sixth inside the unique chiral anomaly-free fifteen-state generation, which fixes the covariant-derivative coupling pattern of the term, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction."
   },
   {
    "id": "SML-06",
@@ -179,9 +185,15 @@
     "code/sm_local_action/build_local_action.py",
     "code/sm_local_action/verify_local_action.py",
     "code/sm_local_action/test_local_action.py",
-    "code/sm_local_action/local_action_receipt.json"
+    "code/sm_local_action/local_action_receipt.json",
+    "paper/tex_fragments/FERMION_SOURCE_CURRENT.tex",
+    "code/sm_fermion_current/current_receipt.json",
+    "code/sm_fermion_current/verify_current.py",
+    "code/sm_fermion_current/test_current.py",
+    "code/sm_fermion_current/quantum_link_receipt.json",
+    "code/sm_fermion_current/verify_quantum_link.py"
    ],
-   "boundary": "The up singlet with hypercharge two thirds is an exact component of the same registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector."
+   "boundary": "The up singlet with hypercharge two thirds is an exact component of the same registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction."
   },
   {
    "id": "SML-07",
@@ -205,9 +217,15 @@
     "code/sm_local_action/build_local_action.py",
     "code/sm_local_action/verify_local_action.py",
     "code/sm_local_action/test_local_action.py",
-    "code/sm_local_action/local_action_receipt.json"
+    "code/sm_local_action/local_action_receipt.json",
+    "paper/tex_fragments/FERMION_SOURCE_CURRENT.tex",
+    "code/sm_fermion_current/current_receipt.json",
+    "code/sm_fermion_current/verify_current.py",
+    "code/sm_fermion_current/test_current.py",
+    "code/sm_fermion_current/quantum_link_receipt.json",
+    "code/sm_fermion_current/verify_quantum_link.py"
    ],
-   "boundary": "The down singlet with hypercharge minus one third is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector."
+   "boundary": "The down singlet with hypercharge minus one third is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction."
   },
   {
    "id": "SML-08",
@@ -231,9 +249,15 @@
     "code/sm_local_action/build_local_action.py",
     "code/sm_local_action/verify_local_action.py",
     "code/sm_local_action/test_local_action.py",
-    "code/sm_local_action/local_action_receipt.json"
+    "code/sm_local_action/local_action_receipt.json",
+    "paper/tex_fragments/FERMION_SOURCE_CURRENT.tex",
+    "code/sm_fermion_current/current_receipt.json",
+    "code/sm_fermion_current/verify_current.py",
+    "code/sm_fermion_current/test_current.py",
+    "code/sm_fermion_current/quantum_link_receipt.json",
+    "code/sm_fermion_current/verify_quantum_link.py"
    ],
-   "boundary": "The lepton doublet with hypercharge minus one half is an exact component of the registered-grammar generation, whose displayed anomaly sums cancel, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector."
+   "boundary": "The lepton doublet with hypercharge minus one half is an exact component of the registered-grammar generation, whose displayed anomaly sums cancel, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction."
   },
   {
    "id": "SML-09",
@@ -257,9 +281,15 @@
     "code/sm_local_action/build_local_action.py",
     "code/sm_local_action/verify_local_action.py",
     "code/sm_local_action/test_local_action.py",
-    "code/sm_local_action/local_action_receipt.json"
+    "code/sm_local_action/local_action_receipt.json",
+    "paper/tex_fragments/FERMION_SOURCE_CURRENT.tex",
+    "code/sm_fermion_current/current_receipt.json",
+    "code/sm_fermion_current/verify_current.py",
+    "code/sm_fermion_current/test_current.py",
+    "code/sm_fermion_current/quantum_link_receipt.json",
+    "code/sm_fermion_current/verify_quantum_link.py"
    ],
-   "boundary": "The electron singlet with hypercharge minus one is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector."
+   "boundary": "The electron singlet with hypercharge minus one is an exact component of the registered-grammar generation, so the covariant coupling pattern is fixed, while the physical spin lift and source selection of the kinetic operator and matter action are not supplied. The separate local jet action composes the actual anticommuting two-component Weyl covariant kinetic term on the supplied flat Spin chart; local first-parameter-derivative terms cancel exactly. This does not discharge PR-54 or change the classification of the source-produced sector. A separate finite CAR model executes all five multiplets on the prepared q5 carrier with exact hypercharge edge factors and semiclassical electric feedback. It preserves mean charge continuity and Gauss, while the initial local charge variance 945/512 excludes the operator constraint. Spatial hopping, state and clock are declared; nonabelian and Yukawa evolution, chiral continuum regulation and physical attachment are not supplied. A separate localized preparation with an integer electric rotor has a finite invariant flux-dressed sector satisfying abelian quantum Gauss exactly and an explicit continuous one-link current history; the species weights, quantum link and time remain declared, with full gauge and matter evolution outside this construction."
   },
   {
    "id": "SML-10",
