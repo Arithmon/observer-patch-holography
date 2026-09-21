@@ -11066,6 +11066,57 @@
         "boundary": [],
         "rationale": "The conclusions concern exact scalar observation and continuation on specified finite domains. Connected topology constructs the completing word. The physical source interpretation, metric menu, A3 cover/reference and physical controller, protection, clock and precision are excluded conclusions; PR-52 is neither consumed nor discharged."
       }
+    },
+    {
+      "claim_id": "OPH-NATIVE-CHECKPOINT-SELECTION",
+      "statement": "For a specified finite scalar public-record interface, equality of primitive record coordinates is a complete agreement grammar for every generated test. Joint record/state preservation is equivalent to bounded native continuation on connected support with retained receiver sampling. A finite publication deadline gives a full-history constraint face whose faithful inherited-reference KL minimizer is constructed uniquely. Backward native continuation masses define a normalized causal transition kernel whose product is that optimizer; every positive selected history publishes all required records for every preparation intervention, without a selected IID law or successful-word premise. On an isolated calibrated path of d edges with independent unknown records at ports 0 and 1, the analytic sharp bound is 2d-1 means. The shortest histories are exactly Catalan(d-1) two-wave linear extensions, uniformly selected under every positive stationary edge-product reference. Their exact receiver rows give sharp two-sample error gains 2^(d-1) and (d+5)2^(d-2). The finite grammar, continuation, selection, policy, native commutation and response/error algebra are kernel checked; the full path-language classification is analytic. Independent exhaustive controls check 194377 finite schedule words and 1969761 shortest-horizon words, plus all 6918 positive path histories through depth ten. Thirty selected policy trajectories retain nine signed interventions each with all samples and consumed writers. Different deadline optimizers need not be projectively compatible. The public record domain, finite deadline, full move grammar, full-history cover and reference remain explicit inputs; this does not select M1 metric radius, source population, physical instruments or a compatible geometric/semantic-order identification.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "kernel_checked_finite_checkpoint_selection_with_analytic_shortest_native_path_classification",
+      "assumptions": [
+        "declared_native_record_checkpoint_and_history_reference"
+      ],
+      "imported_results": [
+        "connected_native_scalar_recovery",
+        "finite_KL_nonnegativity_and_equality",
+        "finite_weighted_word_recursion",
+        "linear_cut_capacity",
+        "linear_extension_commutation",
+        "Catalan_ballot_counting"
+      ],
+      "oph_specific_delta": "Derives the finite temporal grammar and selected online native read law from public-record constraints; derives a sharp two-wave path order and reference-independent minimal-horizon schedule family rather than supplying a successful word or IID proposal stream.",
+      "novelty_type": "finite_native_checkpoint_selection_and_shortest_two_record_order",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_CHECKPOINT_SELECTION.tex",
+        "Lean/Geometry/SourceCheckpointMeaning.lean",
+        "Lean/Geometry/SourceCheckpointPolicy.lean",
+        "Lean/Geometry/SourceCheckpointEntropy.lean",
+        "Lean/Geometry/SourceCheckpointNative.lean",
+        "Lean/Geometry/SourceCheckpointPipeline.lean",
+        "Lean/Geometry/SourceCheckpointAxiomAudit.lean",
+        "code/source_checkpoint_selection/CONTRACT.md",
+        "code/source_checkpoint_selection/DERIVATION.md",
+        "code/source_checkpoint_selection/build.py",
+        "code/source_checkpoint_selection/verify.py",
+        "code/source_checkpoint_selection/pipeline.py",
+        "code/source_checkpoint_selection/controls.json",
+        "code/source_checkpoint_selection/receipt.json",
+        "code/source_checkpoint_selection/test_checkpoint.py"
+      ],
+      "falsifier": "A positive selected native history fails any public record intervention; the continuation mass omits a history or the online kernel differs from the full-reference projection; a shortest path word violates the sharp bound or classification; the analytic rows or error coefficients fail; the independent verifier accepts forged masses, responses, writers, work or scope; or a supplied checkpoint interface is promoted to canonical A1--A3 selection.",
+      "scope_if_false": "The finite checkpoint construction, analytic path theorem or retained certificate fails. The prior connected recovery and protected-bank compiler keep their separate stated premises.",
+      "status": "finite_checkpoint_policy_and_shortest_path_order_derived__M1_source_metric_and_refinement_selection_open",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "These are mathematical results on a specified finite record and history interface. Physical source-selected records, metric radius, instruments, clock, geometric refinement and immutable-version semantic-order identification are excluded conclusions, not physical antecedents; PR-52 is neither consumed nor discharged."
+      }
     }
   ]
 }
