@@ -105,7 +105,9 @@ implementation refinement, or arbitrary-scheduler invariance is claimed.
   equality at the source distinct from positive transition support.
 - `SchedulerClassObstructions.lean`: a declared finite admissible-scheduler
   class on the standalone two-register carrier, with exact self/network update
-  subclasses, capacity-split controls, and scheduler-quantified obstructions.
+  subclasses, capacity-split controls, scheduler-quantified obstructions, and
+  the endpoint-uniqueness cut on the coarse fixture with a merge-then-clear
+  escape witness.
 - `Functional.lean`: synchronous ranked-dependency settling, fixed-point, and
   uniqueness theorems.
 - `Stochastic.lean`: finite Markov affine-drift iteration and a one-time

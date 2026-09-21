@@ -2257,6 +2257,22 @@ force it. The class is a declaration on this finite carrier: the locality
 and capacity clauses are typed and unconsumed by the obstruction theorems,
 and no scheduler-selection claim is made.
 
+The endpoint-uniqueness cut is quantified the same way on the coarse
+fixture, whose target admits both shared values and whose two declared
+sources carry a raised flag under each shared value. No self-update-only
+scheduler places the coarse behavior in $L_3$: with positive hits from both
+sources, each endpoint support keeps the shared value of its source, so the
+two supports differ. No network-update-only scheduler hits the coarse target
+from a raised flag, since such a scheduler never clears the flag. An explicit
+merge-then-clear class member, which writes the shared register on one
+supported step and clears the private flag on another and so lies in neither
+sub-class, hits from both sources with probability one and places the coarse
+behavior in $L_3$. Every in-class scheduler that does so spends both
+capacities on supported steps. On the fine fixture the target fiber is a
+singleton, so $L_2=L_3$ under every scheduler in the class. Each of the four
+cuts therefore carries a statement quantified over the class or over a
+sub-class on this carrier.
+
 \subsection{Adaptive canonical repair: stutter, fairness, and endpoint promotion}
 
 The declared finite Markov profile above and the repository's canonical
