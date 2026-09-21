@@ -242,7 +242,9 @@
   "OPH-SCALAR-SEQUENTIAL-INSTRUMENT",
   "OPH-FINITE-WORK-RESPONSE-NONIDENTIFIABILITY",
   "OPH-GOLDEN-SCALAR-METRIC-PRESSURE",
-  "OPH-WHITNEY-MAXWELL-METRIC-PRESSURE"
+  "OPH-WHITNEY-MAXWELL-METRIC-PRESSURE",
+  "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
+  "OPH-QUANTUM-TRIPLE-OPERATOR-JOIN"
  ],
  "edges": [
   {
@@ -2139,6 +2141,16 @@
    "from": "OPH-SERIAL-MAXWELL-READOUT",
    "to": "OPH-WHITNEY-MAXWELL-METRIC-PRESSURE",
    "role": "Supplies authenticated decoded field records for the sourced-field pressure readouts; the separate source-free trajectory and Gibbs preparation are not new observer instrument histories."
+  },
+  {
+   "from": "OPH-GAUGE-EXTERIOR-SM-WITNESS",
+   "to": "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
+   "role": "supplies the registered five multiplets and charges; the finite CAR action and state are separately declared"
+  },
+  {
+   "from": "OPH-QUANTUM-TRIPLE-CARRIER-JOIN",
+   "to": "OPH-QUANTUM-TRIPLE-OPERATOR-JOIN",
+   "role": "Supplies the actual aligned triple path, pair projections, counted states and nonwrapping path permutations; full matrix embeddings and coherent generator admission are separate constructions."
   }
  ]
 }

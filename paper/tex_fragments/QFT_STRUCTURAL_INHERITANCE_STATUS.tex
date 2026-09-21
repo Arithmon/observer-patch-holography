@@ -48,12 +48,17 @@ public semigroups untouched
 (\path{Lean/QFT/StructuralInheritance.lean}).  The finite Gibbs identity
 therefore does not establish thermality of the observer net.
 
-The one-step transport interface and the common triple-observer carrier below
-recover exact finite evolution and marginal identities, but they carry no
-Cauchy geometry, multi-step cocycle, physical time, or source-selected
-dynamics (\path{Lean/QFT/PathTimeSliceInterface.lean};
-\path{Lean/QFT/TripleCarrierJoin.lean}).  They therefore imply neither a
-relative-Cauchy stress response nor a physical time-slice theorem.
+The one-step transport interface and common triple-observer carrier below
+give exact finite evolution and marginal identities
+(\path{Lean/QFT/PathTimeSliceInterface.lean};
+\path{Lean/QFT/TripleCarrierJoin.lean}). The full operator embeddings on the
+same carrier share an exact noncommutative hinge and intertwine all 31
+adjacent source-row permutations; ordered products give coherent finite
+interval transport (\path{Lean/QFT/TripleCarrierOperatorJoin.lean}). These
+are supplied tensor and path-read adapters. They carry no Cauchy geometry,
+physical time, source-selected quantum dynamics or state-preserving
+tower/refinement morphism, and imply neither a relative-Cauchy stress
+response nor a physical time-slice theorem.
 
 Natural powers give one exact constraint on a fixed-cutoff scattering
 construction: in every Hausdorff topological group, $g^n\to a$ forces
