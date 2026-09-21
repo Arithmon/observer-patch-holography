@@ -10906,6 +10906,44 @@
         "boundary": [],
         "rationale": "The mean-only arithmetic theorem uses declared rail preparations, requests, scales and a bounded-error local decoder. Its logical input preservation and program costs neither consume PR-52 physical attachment nor assert physical publication hardware."
       }
+    },
+    {
+      "claim_id": "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION",
+      "statement": "In the declared connected finite twelve-port gluing interface for the supplied metric-read program, complete event-log observation does not determine the full gluing graph. Two explicit 1280-carrier graphs have 7650 seams each, the same degree at every carrier and the same occupied carrier-port pairs. A two-switch preserves all 27 source-host breadth-first parent maps and complete queue orders while changing triangle count from 14000 to 13990, so the graphs are nonisomorphic. For each retained baseline, source, branch and scratch variant, native execution on both inputs reproduces the same 22818 event rows and matches the retained decoded stream. Only 86 distinct glued seams are consumed. The first failed full-recovery invariant is complete gluing, witnessed by its triangle count; the finite source, branch and scratch controls do not distinguish the two completions. This counterexample concerns the supplied opcode semantics, control law and complete finite traces. It does not assert two canonical icosphere realizations, universal law nonidentification, failure of every augmented probe protocol, source-selected population or geometry, physical identification, or a cosmic fixed point.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "exact_finite_topology_counterexample_and_complete_native_event_replay",
+      "assumptions": [
+        "M1_full_family_read_feedback_and_routing",
+        "declared_complete_routing_trace_and_finite_port_gluing_interface"
+      ],
+      "imported_results": [
+        "noninjectivity_of_a_finite_observation_map",
+        "triangle_count_is_a_graph_isomorphism_invariant",
+        "deterministic_breadth_first_route_replay"
+      ],
+      "oph_specific_delta": "An explicit degree- and port-preserving switch on the retained level-three routing support preserves all four complete event streams while changing an unobserved gluing invariant.",
+      "novelty_type": "actual_federation_trace_counterexample_to_complete_gluing_recovery",
+      "evidence": [
+        "evidence/federation_recovery/recover.py",
+        "evidence/federation_recovery/topology.py",
+        "evidence/federation_recovery/custody.py",
+        "evidence/federation_recovery/verify.py",
+        "evidence/federation_recovery/test_recovery.py",
+        "evidence/federation_recovery/receipt.json",
+        "paper/tex_fragments/FEDERATION_LOG_RECOVERY.tex"
+      ],
+      "falsifier": "The switched graph violates the declared port interface, degree or connectivity claims; the graphs have equal triangle counts; any source-host BFS map or queue differs; any native event, actual consumed writer or retained variant digest differs; or the log-only decoder consumes the hidden support/input specification.",
+      "scope_if_false": "Only this finite paired-completion counterexample or its log-only recovery boundary fails; the supplied routing compiler, separate carrier-scale loop and physical selection obligations retain their own scopes.",
+      "status": "finite_log_to_gluing_nonidentification_attained__canonical_geometry_and_physical_selection_outside_scope",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This counterexample compares two supplied finite twelve-port graphs under one declared routing program and complete authenticated software-event encoding. Source-selected physical population, canonical geometric placement, spacetime signal and clock attachment are excluded conclusions, not antecedents; no physical premise is consumed or discharged."
+      }
     }
   ]
 }

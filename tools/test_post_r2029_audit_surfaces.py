@@ -228,7 +228,11 @@ def test_flagship_simulation_language_matches_actual_custody() -> None:
     assert "$81{,}920$ exact twelve-port carriers" in flagship
     assert "one quotient hash equal to the component multiset" in flagship
     assert "imports no simulator code" in flagship
-    assert "closure loop at carrier scale" in flagship
+    assert "At carrier scale, recovery from event logs under the declared probe and" in flagship
+    assert "operation grammar returns the twelve ports" in flagship
+    assert "Re-instantiation preserves the invariant vector for two iterations" in flagship
+    assert "Complete federation gluing is not identified" in flagship
+    assert "The alternative is not asserted to belong to the canonical geometric family" in flagship
     assert "icosa_82k_protected_consensus" not in flagship
     assert "vertex12_signed_record_feedback" not in flagship
     assert "evidence/exact_federation_L6_canonical_20260909" in flagship
