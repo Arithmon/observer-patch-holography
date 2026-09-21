@@ -25,8 +25,10 @@ successful route, a supplied optimizer, or an unexplained acceptance label.
    entropy-gap identity, including candidate laws with zero coordinates.
    Its reference is inherited from the full-word reference, not reset to a
    locally uniform distribution after deleting moves.
-5. Compose native feasibility and the selected law. A positive law atom
-   publishes every required record for every preparation intervention;
+5. Compose native feasibility and the selected law. Require that the move
+   alphabet covers the graph edges and contains only permitted moves.
+   A positive law atom uses only that support and publishes every required
+   record for every preparation intervention;
    positive continuation mass excludes irreversible loss. The controller
    works with response maps, not payload values or future samples.
 6. Check exact uniform and tilted-reference controls on the captured
@@ -61,6 +63,8 @@ false transition masses, duplicate JSON keys, floats, scope promotion,
 deleted operations, wrong writers and understated preparation/read/write/
 sample costs. Full-word normalization and all short-tree prefix masses are
 independently checked. No expanded production tapes are committed.
+Zero deadlines, an initial receiver that is a source port, and malformed
+path/target inputs have explicit regression tests.
 
 ## Scientific boundary
 
@@ -69,6 +73,9 @@ The public record map, accepted preparation domain, complete move alphabet,
 retained-sample interface, deadline, full-history entropy cover and faithful
 reference remain supplied. Completeness is for all tests of this record
 map, not all constraints of the complete A1 quantum/response architecture.
+For arbitrary record maps the publication predicate is classical and need
+not be decidable. The executable policy computes it by exact elimination
+for the stated rational linear response and record maps.
 The checkpoint requirement changes the feasible set from the prior IID
 proposal experiment. It is not claimed to follow from canonical A1--A3.
 No failed physical run is erased: the new law is implemented by continuation

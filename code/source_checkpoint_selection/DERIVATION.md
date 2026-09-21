@@ -75,8 +75,11 @@ For a factorized reference with positive move weights a(c,e), define
 
 Here c is a response checkpoint over all source preparations, not the
 realized payload. The controller therefore sees no unknown input or future
-sample. H is computed by enumerating native transitions and checking
-observation kernels. An exact sum theorem identifies H with all native
+sample. In the rational linear controls, H is computed by enumerating
+native transitions and checking observation kernels by exact elimination.
+The general theorem for arbitrary record maps is classical: it defines
+publication over all preparations and supplies no algorithm for deciding
+that predicate. An exact sum theorem identifies H with all native
 continuation words, without omission or duplication. H>0 iff some word
 publishes. The kernel is normalized at every reachable node and its product
 telescopes to Q. Its positive paths are exactly the good histories. This
@@ -91,6 +94,11 @@ normalization, telescoping and support. The native composition proves that
 positive continuation mass retains the public meaning and every positive
 selected word publishes it for all admissible interventions. No IID law or
 fairness assumption about the selected process is needed.
+The final connected composition requires both coverage of the graph edges
+by the alphabet and permission for every alphabet move on that graph. It
+then gives a bounded feasible deadline, a normalized word law, and proof
+that every positive selected word is supported and publishes. Coverage
+alone supplies feasibility but would not exclude extra unsupported moves.
 
 ## Sharp two-record path theorem (analytic)
 
@@ -131,7 +139,7 @@ budget is now saturated. The first crossings F_i must move outward in
 order: if F_i preceded F_(i-1), it would average two zero deviations and
 leave only one effective crossing of that cut. S_0 must follow F_1 when
 d>1; otherwise averaging ports 0 and 1 erases their independent difference
-before any remote sample. For each i>=1, F_(i+1) must precede S_i. Otherwise
+before any remote sample. For 1<=i<=d-2, F_(i+1) must precede S_i. Otherwise
 both crossings of edge i finish before any crossing of i+1. At that time
 the entire downstream region contains only the single scalar held at i+1;
 edge i is exhausted, so a second source direction can never enter. These

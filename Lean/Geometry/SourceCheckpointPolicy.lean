@@ -92,8 +92,8 @@ theorem positive_path_mass (step : S → A → S) (weight : S → A → ℝ)
     exact lt_of_lt_of_le (mul_pos (hw s a) (ih _ h))
       (mass_child_le step weight terminal (fun s a => (hw s a).le) ht as.length s a)
 
-/-- Backward feasibility is not a success oracle: positive mass is exactly
-existence of a native word in the complete finite tree. -/
+/-- Positive mass is exactly existence of a native word in the complete
+finite tree. Decidability of the terminal predicate is a separate question. -/
 theorem mass_positive_iff (step : S → A → S) (weight : S → A → ℝ)
     (terminal : S → ℝ) (hw : ∀ s a, 0 < weight s a) (ht : ∀ s, 0 ≤ terminal s)
     (n : ℕ) (s : S) :
@@ -136,6 +136,7 @@ theorem mass_eq_word_sum (step : S → A → S) (weight : S → A → ℝ)
       pathWeight,finish,mass]
     simp_rw [mul_assoc, ← Finset.mul_sum, ← ih]
 
+omit [Fintype A] in
 theorem pathWeight_positive (step : S → A → S) (weight : S → A → ℝ)
     (hw : ∀ s a, 0 < weight s a) (s : S) (as : List A) :
     0 < pathWeight step weight s as := by

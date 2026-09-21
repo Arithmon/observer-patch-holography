@@ -36,7 +36,7 @@ theorem term_decomposition (p q z : ℝ) (hq : 0 < q) (hz : 0 < z) :
 
 /-- The entropy gap is an explicit sum of nonnegative terms. -/
 theorem objective_decomposition (q p : W → ℝ) (z : ℝ)
-    (hq : ∀ w, 0 < q w) (hp : ∀ w, 0 ≤ p w) (hz : 0 < z)
+    (hq : ∀ w, 0 < q w) (_hp : ∀ w, 0 ≤ p w) (hz : 0 < z)
     (sq : ∑ w, q w = 1) (sp : ∑ w, p w = 1) :
     objective (fun w => z*q w) p =
       (∑ w, q w * klFun (p w/q w)) - Real.log z := by

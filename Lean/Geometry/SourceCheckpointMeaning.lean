@@ -65,6 +65,7 @@ def Viable (meaning : X → R) (c : Checkpoint X P) : Prop :=
 def Published (meaning : X → R) (c : Checkpoint X P) : Prop :=
   Determines c.record meaning
 
+omit [DecidableEq P] in
 theorem published_viable (meaning : X → R) (c : Checkpoint X P)
     (h : Published meaning c) : Viable meaning c := by
   intro x y hr _

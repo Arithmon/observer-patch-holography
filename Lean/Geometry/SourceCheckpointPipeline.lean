@@ -41,11 +41,11 @@ theorem recover_first (k : ℕ) (x y : ℝ) :
   unfold finalSample firstSample
   rw [pow_succ,show 2^(k+2) = (2:ℝ)^k*4 by ring]
   field_simp
-  <;> ring
+  ring
 
 /-- Independent bounded errors in the two informative receiver samples
 have this exact worst-case coefficient. No probabilistic noise model is used. -/
-theorem sample_error_bound (k : ℕ) (e₁ e₂ eps : ℝ) (he : 0 ≤ eps)
+theorem sample_error_bound (k : ℕ) (e₁ e₂ eps : ℝ) (_he : 0 ≤ eps)
     (h₁ : |e₁| ≤ eps) (h₂ : |e₂| ≤ eps) :
     |2^(k+1)*e₂ - ((k+2 : ℝ)*2^k/2)*e₁| ≤ ((k+6 : ℝ)*2^k/2)*eps := by
   have hA : (0:ℝ) ≤ 2^(k+1) := by positivity

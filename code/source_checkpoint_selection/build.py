@@ -25,6 +25,17 @@ def basis(rows):
 
 class Planner:
     def __init__(self, spec):
+        ports, weights, targets = spec["ports"], spec["weights"], spec["targets"]
+        if (type(spec["horizon"]) is not int or spec["horizon"] < 0
+                or type(ports) not in (list, tuple) or len(ports) < 2
+                or not all(type(p) is int and p >= 0 for p in ports)
+                or len(set(ports)) != len(ports)
+                or type(weights) not in (list, tuple) or len(weights) != len(ports)-1
+                or not all(type(w) is int and w > 0 for w in weights)
+                or type(targets) not in (list, tuple)
+                or not all(type(t) in (list, tuple) and len(t) == 2
+                           and all(type(x) in (int, F) for x in t) for t in targets)):
+            raise ValueError("invalid native checkpoint specification")
         self.spec = spec
         self.size = len(spec["ports"])
         self.weights = tuple(spec["weights"])
@@ -33,6 +44,8 @@ class Planner:
 
         @cache
         def mass(left, state, observed):
+            if type(left) is not int or left < 0:
+                raise ValueError("invalid remaining horizon")
             if self.complete(observed):
                 return sum(self.weights)**left
             if not left:
@@ -53,6 +66,10 @@ class Planner:
     def select(self, selector):
         """Each selector chooses a ticket in the exact current integer CDF."""
         state, observed = self.initial, basis((self.initial[-1],))
+        if selector not in ("first", "middle", "last"):
+            raise ValueError("invalid ticket selector")
+        if self.mass(self.spec["horizon"], state, observed) == 0:
+            raise ValueError("infeasible checkpoint")
         word, decisions = [], []
         for left in range(self.spec["horizon"], 0, -1):
             masses = [w*self.mass(left-1, *self.advance(state, observed, a))
@@ -86,8 +103,8 @@ class Planner:
 
 def history(spec, word, decisions):
     ports = spec["ports"]
-    responses = [[F(0), F(0)]]
     state = [[F(i == j) for j in range(2)] for i in range(len(ports))]
+    responses = [state[-1][:]]
     for a in word:
         mean = [(x+y)/2 for x, y in zip(state[a], state[a+1])]
         state[a] = state[a+1] = mean
@@ -118,8 +135,8 @@ def case(spec):
     planner = Planner(spec)
     root_basis = basis((planner.initial[-1],))
     total = planner.mass(spec["horizon"], planner.initial, root_basis)
-    roots = [w*planner.mass(spec["horizon"]-1, *planner.advance(planner.initial, root_basis, a))
-             for a, w in enumerate(planner.weights)]
+    roots = ([w*planner.mass(spec["horizon"]-1, *planner.advance(planner.initial, root_basis, a))
+              for a, w in enumerate(planner.weights)] if spec["horizon"] else [0]*len(planner.weights))
     first = planner.first_distribution()
     histories = [history(spec, *planner.select(s)) for s in ("first", "middle", "last")] if total else []
     return {"spec": spec, "full_word_count": len(planner.weights)**spec["horizon"],

@@ -1,5 +1,4 @@
 """Adversarial verifier and independent full-prefix law checks."""
-import ast
 from copy import deepcopy
 from fractions import Fraction as F
 from itertools import product
@@ -22,9 +21,72 @@ def test_complete_committed_receipt(packet):
 
 
 def test_producer_independence():
-    tree = ast.parse((codec.HERE/"verify.py").read_text())
-    modules = [n.module or "" for n in ast.walk(tree) if isinstance(n, ast.ImportFrom)]
-    assert not any("build" in name or "tomography" in name for name in modules)
+    # A fresh interpreter catches transitive and lazy producer imports too.
+    script = '''
+import importlib.abc
+import sys
+class RejectProducer(importlib.abc.MetaPathFinder):
+    def find_spec(self, fullname, path=None, target=None):
+        if fullname in {"source_checkpoint_selection.build", "source_checkpoint_selection.pipeline",
+                        "source_temporal_acceptance.build"}:
+            raise AssertionError("verifier imported producer: " + fullname)
+sys.meta_path.insert(0, RejectProducer())
+from source_checkpoint_selection import verify
+verify.main()
+'''
+    result = subprocess.run([sys.executable, "-c", script], capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+
+
+@pytest.mark.parametrize("horizon,targets,first", (
+    (0, [[1, 0], [0, 1]], None), (0, [[0, 1]], 0),
+    (1, [[1, 0], [0, 1]], 1), (2, [[1, 0], [0, 1]], 1)))
+def test_source_receiver_and_zero_deadline(horizon, targets, first):
+    spec = {"name": "two-port", "ports": [7, 12], "weights": [3],
+            "targets": targets, "horizon": horizon}
+    planner = build.Planner(spec)
+    item = build.case(spec)
+    assert item["accepted_mass"] == (3**horizon if first is not None else 0)
+    assert verify.check_case(item, spec)["accepted_word_count"] == int(first is not None)
+    if first is None:
+        with pytest.raises(ValueError, match="infeasible"):
+            planner.select("first")
+    else:
+        for selected in item["histories"]:
+            assert selected["responses"][0] == ["0", "1"]
+            assert verify.classify(2, selected["word"], targets) == first
+            for payload in selected["payloads"]:
+                assert F(payload["samples"][0]) == 3+payload["payload"][1]
+                assert payload == verify.scalar_trace(spec, selected["word"], payload["payload"])
+
+
+@pytest.mark.parametrize("field,value", (
+    ("horizon", -1), ("horizon", True), ("horizon", 1.0),
+    ("ports", [0]), ("ports", [0, 0]), ("ports", [0, True]),
+    ("weights", []), ("weights", [0]), ("weights", [-1]), ("weights", [True]),
+    ("targets", [[0, 0, 1]]), ("targets", [[1]]),
+    ("targets", [[True, 0]]), ("targets", [[1.0, 0]])))
+def test_invalid_planner_inputs(field, value):
+    spec = {"ports": [0, 1], "weights": [1], "targets": [[1, 0]], "horizon": 0}
+    spec[field] = value
+    with pytest.raises(ValueError):
+        build.Planner(spec)
+
+
+@pytest.mark.parametrize("size,word,targets", (
+    (1, [], [[1, 0]]), (True, [], [[1, 0]]), (4.0, [], [[1, 0]]),
+    (4, [-1], [[1, 0]]), (4, [3], [[1, 0]]), (4, [True], [[1, 0]]),
+    (4, [1.0], [[1, 0]]), (4, [1, 2], [[0, 0, 1]]),
+    (4, [], [[1]]), (4, [], [[True, 0]]), (4, [], [[0.0, 0]])))
+def test_classifier_rejects_malformed_data(size, word, targets):
+    with pytest.raises(ValueError):
+        verify.classify(size, word, targets)
+
+
+def test_zero_deadline_rejects_unknown_selector():
+    planner = build.Planner({"ports": [0, 1], "weights": [1], "targets": [[0, 1]], "horizon": 0})
+    with pytest.raises(ValueError, match="selector"):
+        planner.select("unknown")
 
 
 @pytest.mark.parametrize("weights", ([1, 1, 1], [2, 3, 5]))

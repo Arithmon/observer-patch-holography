@@ -24,6 +24,11 @@ def determined(pivot, full, targets):
 
 
 def classify(size, word, targets):
+    require(type(size) is int and size >= 2, "path size")
+    require(type(word) in (list, tuple) and all(type(a) is int and 0 <= a < size-1 for a in word),
+            "path word")
+    require(type(targets) in (list, tuple) and all(type(t) in (list, tuple) and len(t) == 2
+            and all(type(x) in (int, F) for x in t) for t in targets), "two-source record grammar")
     # Independent scalar preparations; at step k each entry is scaled by 2**k.
     columns = [[int(i == j) for i in range(size)] for j in range(2)]
     initial = [column[-1] for column in columns]
@@ -63,7 +68,8 @@ def census(spec, prefixes):
             continue
         accepted_count += 1
         first_counts[first] += weight
-        roots[word[0]] += weight
+        if word:
+            roots[word[0]] += weight
         for k in range(h+1):
             prefix = word[:k]
             if prefix in prefix_mass:
@@ -77,7 +83,7 @@ def scalar_trace(spec, word, payload):
     values[ports[0]] += payload[0]
     values[ports[1]] += payload[1]
     writers = {p: -p-1 for p in ports}
-    samples, events = ["3"], []
+    samples, events = [str(values[ports[-1]])], []
     for k, edge in enumerate(word):
         a, b = ports[edge:edge+2]
         after = (values[a]+values[b])/2
