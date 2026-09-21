@@ -125,7 +125,7 @@ cleanup count and grid exponent such that every execution within the stated
 preparation, per-mean and sampling allowances publishes the requested layered
 recurrence. The choices precede and are independent of the payload. No final
 correctness or strict-margin hypothesis remains. Selection and realization of
-the controller, prepared records and physical instrument are still supplied.
+the controller, prepared records and physical instrument are supplied.
 
 The compact generated `SourceBankControl` checks the captured signed control
 against the same general instruction stream. Kernel reduction checks all 42

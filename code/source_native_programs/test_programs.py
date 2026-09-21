@@ -387,6 +387,39 @@ def test_resealed_family_bounds_rejected(packet,key):
         family_verify.check_bound(bound,3,menu,summary)
 
 
+@pytest.mark.parametrize("menu",[
+    [[] for _ in range(27)],
+    [[0]*27 for _ in range(27)],
+    [[(17*i+7*j)%27 for j in range(i%8)] for i in range(27)],
+],ids=["empty","concentrated_duplicate_reads","uneven_fanout"])
+def test_family_bound_covers_actual_compilation_and_full_cleanup_word(menu):
+    witnesses = list(routes.generate(27,3))
+    summary,mapping = check_routes.check(witnesses,27,3,True)
+    plan = build.compile_program([menu,menu],witnesses,28)
+    verify.certify_plan(plan,[menu,menu],mapping)
+    bound = family_build.resource_bound(3,menu,summary["max_paired_cells"])
+    family_verify.check_bound(bound,3,menu,summary)
+    assert plan["maximum_scale"] <= bound["maximum_scale_upper"]
+    assert plan["cleanup_blocks"] <= bound["cleanup_blocks_sufficient"]
+    # Charge the actual emitted blocks at the bound's larger cleanup count.
+    # Comparing only the producer's smaller word would miss an unpaid-cleanup
+    # term in the analytic resource formula.
+    k = bound["cleanup_blocks_sufficient"]
+    steps = 0
+    for stage in plan["segments"]:
+        for block in stage["blocks"]:
+            repeat = block["repeat"]
+            if block["cleanup"]:
+                assert repeat % plan["cleanup_blocks"] == 0
+                repeat = repeat // plan["cleanup_blocks"] * k
+            steps += len(block["edges"]) * repeat
+    assert steps <= bound["scalar_means_upper"]
+    grid = 1 << bound["grid_bits_sufficient"]
+    residual = F(28*plan["cleanup_stages"]*plan["maximum_bus_cells"]**2,1 << k)
+    _,_,radius = verify.local_decode(0,0,plan["maximum_scale"],0,steps,grid,residual)
+    assert 2*radius < 1
+
+
 @pytest.mark.parametrize("field,value",[("source_selected",True),("m1_derived",True),
                                        ("production_native_replay",True),("q3_native_replay",False),
                                        ("routes",[]),("bounds",[]),("pins",{}),

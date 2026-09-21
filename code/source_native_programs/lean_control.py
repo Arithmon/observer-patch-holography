@@ -59,7 +59,7 @@ def render(packet):
     menus = lean_list("!" + lean_list(lean_list(map(str, ss)) for ss in layer) for layer in program)
     read_depths = lean_list(str(len(routes[c,"read"])) for c in range(1,2*n+1))
     write_depths = lean_list(str(len(routes[c,"write"])) for c in range(1,2*n+1))
-    # These are the already checked native publication outputs, not values
+    # These are the checked native publication outputs, not values
     # computed by an additional Python logical-machine implementation.
     payloads = [[a,b] for a in (-2,0,2) for b in (-2,0,2)]
     require(type(packet["cases"]) is list and len(packet["cases"]) == len(payloads), "kernel control cases")

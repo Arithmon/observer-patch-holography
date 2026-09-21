@@ -5,7 +5,7 @@ Switching the banks lets later layers use earlier results. Transfers, addition,
 retirement and reuse use supported scalar pair means with finite precision.
 The source has to select the prepared records and temporal controller.
 
-Lean now derives the general bank compiler's recurrence, lifetimes, native
+Lean derives the general bank compiler's recurrence, lifetimes, native
 lowering and finite precision existence. An explicit declared bus discharges
 route existence for arbitrary finite programs. This proves conditional finite
 execution; it does not derive M1 from A1--A3 or embed that bus in the captured
