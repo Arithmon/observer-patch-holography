@@ -1104,6 +1104,49 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
         ],
     ),
     (
+        "Verify the source-current tomography Stage 0 baseline pins",
+        [sys.executable, "code/a5_closure/source_current_tomography_stage0.py", "verify"],
+    ),
+    (
+        "Verify the source-current tomography Stage 1 admissibility contract",
+        [
+            sys.executable,
+            "code/a5_closure/source_current_tomography_stage1_contract.py",
+            "verify",
+        ],
+    ),
+    (
+        "Replay the Stage 2 order-sensitive source inventory",
+        [
+            sys.executable,
+            "code/a5_closure/source_current_order_sensitive_inventory.py",
+            "verify",
+            "--inventory",
+            "code/a5_closure/manifests/source_current_order_sensitive_inventory.json",
+        ],
+    ),
+    (
+        "Verify the Stage 2 order-sensitive source inventory independently",
+        [
+            sys.executable,
+            "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
+            "--inventory",
+            "code/a5_closure/manifests/source_current_order_sensitive_inventory.json",
+        ],
+    ),
+    (
+        "Execute the source-current tomography mutation gates",
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "code/a5_closure/tests/test_source_current_tomography_stage0.py",
+            "code/a5_closure/tests/test_source_current_tomography_stage1_contract.py",
+            "code/a5_closure/tests/test_source_current_order_sensitive_inventory.py",
+        ],
+    ),
+    (
         "Execute the target-free current bracket search-space gates",
         [
             sys.executable,

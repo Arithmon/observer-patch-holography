@@ -58,11 +58,17 @@ class SourceCurrentOrderSensitiveInventoryTests(unittest.TestCase):
         producer.verify_inventory(self.committed)
         report = independent.verify(producer.INVENTORY_PATH, REPO_ROOT)
         self.assertEqual(report["verdict"], producer.VERDICT)
-        self.assertEqual(report["candidate_count"], 23)
+        self.assertEqual(report["candidate_count"], 29)
         self.assertEqual(report["qualifying_candidate_count"], 0)
         self.assertEqual(report["response_algebra_dimension"], 4)
         self.assertEqual(report["proper_recharting_count"], 60)
         self.assertEqual(report["b14_jacobi_nonzero_count"], 240)
+        self.assertEqual(report["routing_q13_events"], 19113548)
+        self.assertEqual(report["routing_q21_events"], 292722053)
+        self.assertEqual(
+            report["audited_file_count"],
+            self.committed["audited_file_snapshot"]["file_count"],
+        )
 
     def test_stop_condition_is_one_packet_and_fail_closed(self) -> None:
         self.assertEqual(
@@ -108,28 +114,146 @@ class SourceCurrentOrderSensitiveInventoryTests(unittest.TestCase):
         memory = rows["lean_pair_mean_memory_and_reusable_bus"]
         self.assertEqual(memory["classification"], "IRREVERSIBLE_ONLY")
         self.assertTrue(memory["properties"]["source_native"])
+        self.assertTrue(memory["properties"]["raw_histories_serialized"])
         self.assertFalse(memory["properties"]["reversible"])
         self.assertFalse(memory["properties"]["same_twelve_port_carrier"])
 
         selected = rows["lean_selected_pair_mean_histories"]
         self.assertEqual(selected["classification"], "IRREVERSIBLE_ONLY")
-        self.assertFalse(selected["properties"]["raw_histories_serialized"])
+        self.assertTrue(selected["properties"]["raw_histories_serialized"])
+        self.assertFalse(selected["properties"]["reversible"])
         self.assertFalse(selected["properties"]["both_composition_orders_recorded"])
+
+        routing = rows["source_read_routing_full_family"]
+        self.assertEqual(routing["classification"], "IRREVERSIBLE_ONLY")
+        self.assertTrue(routing["properties"]["raw_histories_serialized"])
+        self.assertTrue(routing["properties"]["refinement_provenance_present"])
+        self.assertFalse(routing["properties"]["reversible"])
+        self.assertFalse(routing["properties"]["both_composition_orders_recorded"])
+        self.assertFalse(routing["properties"]["twelve_reversible_perturbation_families"])
+
+        temporal = rows["native_temporal_tomography_and_checkpoint_selection"]
+        self.assertEqual(temporal["classification"], "IRREVERSIBLE_ONLY")
+        self.assertFalse(temporal["properties"]["reversible"])
+        self.assertFalse(temporal["properties"]["both_composition_orders_recorded"])
+
+        programs = rows["native_stored_programs_and_accumulator"]
+        self.assertEqual(programs["classification"], "IRREVERSIBLE_ONLY")
+        self.assertFalse(programs["properties"]["reversible"])
+
+        join = rows["finite_source_operator_join"]
+        self.assertEqual(join["classification"], "STATIC_ONLY")
+        self.assertFalse(join["properties"]["raw_histories_serialized"])
+
+        fermion = rows["fermionic_hypercharge_current_histories"]
+        self.assertEqual(fermion["classification"], "DOWNSTREAM_CONTAMINATED")
+        self.assertFalse(fermion["properties"]["target_free"])
+        self.assertFalse(fermion["properties"]["source_native"])
+
+        maxwell = rows["maxwell_measurement_adapter"]
+        self.assertEqual(maxwell["classification"], "DOWNSTREAM_CONTAMINATED")
+        self.assertFalse(maxwell["properties"]["raw_histories_serialized"])
+
+        richest = self.committed["summary"]["richest_integrated_near_candidate"]
+        self.assertEqual(richest["candidate_id"], "source_read_routing_full_family")
 
     def test_integrated_tree_review_is_explicit_and_complete(self) -> None:
         review = self.committed["integrated_tree_review"]
-        self.assertEqual(review["surface_count"], 40)
+        self.assertEqual(review["surface_count"], 111)
         paths = [row["path"] for row in review["surfaces"]]
         self.assertEqual(paths, sorted(set(paths)))
         decisions = {row["decision"] for row in review["surfaces"]}
         self.assertEqual(
             decisions,
-            {"NEW_CANDIDATE", "OUTSIDE_REVIEWED_SOURCE_SCOPE"},
+            {"NEW_CANDIDATE", "EXTENDS_EXISTING_CANDIDATE"},
+        )
+        self.assertEqual(
+            review["from_upstream_main_sha"],
+            "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9",
         )
         self.assertEqual(
             review["through_upstream_main_sha"],
-            "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9",
+            "afed734528edff214c34d4038a64310544df922d",
         )
+        candidate_ids = {row["candidate_id"] for row in self.committed["candidates"]}
+        for row in review["surfaces"]:
+            self.assertIn(row["candidate_id"], candidate_ids)
+            self.assertTrue(row["reason"])
+        lean_added = {
+            path
+            for path in paths
+            if path.startswith("Lean/Geometry/") and path.endswith(".lean")
+        }
+        self.assertEqual(len(lean_added), 44)
+        self.assertIn("Lean/Geometry/SourceTemporalTomography.lean", lean_added)
+        self.assertIn("Lean/Geometry/SourceReadRouting.lean", lean_added)
+        prior = review["prior_reviews"]
+        self.assertEqual(len(prior), 1)
+        self.assertEqual(prior[0]["surface_count"], 40)
+        self.assertEqual(
+            prior[0]["through_upstream_main_sha"],
+            review["from_upstream_main_sha"],
+        )
+        self.assertIn(
+            "Lean/Screen/WhitneyConeMass.lean",
+            {row["path"] for row in prior[0]["surfaces"]},
+        )
+
+    def test_audit_scope_extension_is_explicit_and_bound(self) -> None:
+        extension = self.committed["audit_scope"]["directories_added_at_this_revision"]
+        directories = [row["directory"] for row in extension]
+        self.assertEqual(directories, list(producer.AUDITED_DIRECTORIES)[13:])
+        self.assertIn("code/source_read_routing", directories)
+        self.assertIn("evidence/source_net_causal_poset/routed_read_law", directories)
+        snapshot_paths = {row["path"] for row in self.committed["audited_file_snapshot"]["files"]}
+        for row in extension:
+            self.assertTrue(row["reason"])
+            self.assertTrue(
+                any(path.startswith(row["directory"] + "/") for path in snapshot_paths),
+                row["directory"],
+            )
+        self.assertIn("code/source_read_routing/specification.json", snapshot_paths)
+        self.assertIn("code/sm_fermion_current/current_receipt.json", snapshot_paths)
+
+    def test_rehashed_scope_extension_omission_is_rejected(self) -> None:
+        mutant = copy.deepcopy(self.committed)
+        mutant["audit_scope"]["directories_added_at_this_revision"].pop()
+        path = self.write_mutant(mutant)
+        with self.assertRaisesRegex(
+            independent.VerificationError, "audit scope extension drift"
+        ):
+            independent.verify(path, REPO_ROOT)
+
+    def test_rehashed_routing_promotion_is_rejected(self) -> None:
+        mutant = copy.deepcopy(self.committed)
+        row = next(
+            row
+            for row in mutant["candidates"]
+            if row["candidate_id"] == "source_read_routing_full_family"
+        )
+        row["properties"] = {field: True for field in mutant["qualification_fields"]}
+        row["qualification_failures"] = []
+        row["classification"] = "QUALIFIES"
+        mutant["summary"]["qualifying_candidate_count"] = 1
+        path = self.write_mutant(mutant)
+        with self.assertRaisesRegex(independent.VerificationError, "classification"):
+            independent.verify(path, REPO_ROOT)
+
+    def test_extended_scope_runtime_content_drift_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.copy_required_repository_tree(root)
+            target = root / "code/source_read_routing/specification.json"
+            original = target.read_bytes()
+            changed = original.replace(b"baseline", b"BASELINE", 1)
+            self.assertEqual(len(changed), len(original))
+            self.assertNotEqual(changed, original)
+            target.write_bytes(changed)
+            with self.assertRaisesRegex(
+                independent.VerificationError, "AUDITED_CONTENT_DRIFT"
+            ) as raised:
+                independent.verify(producer.INVENTORY_PATH, root)
+            self.assertEqual(raised.exception.code, "AUDITED_CONTENT_DRIFT")
 
     def test_minimal_missing_fields_are_explicit(self) -> None:
         self.assertEqual(

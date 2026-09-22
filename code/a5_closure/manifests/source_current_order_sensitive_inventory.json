@@ -13,7 +13,94 @@
       "Lean/Screen",
       "Lean/Geometry",
       "Lean/InformationProjection",
-      "Lean/Variational"
+      "Lean/Variational",
+      "code/source_read_routing",
+      "code/source_routing_refinement",
+      "code/source_native_programs",
+      "code/source_native_accumulator",
+      "code/source_temporal_acceptance",
+      "code/source_read_acceptance",
+      "code/source_checkpoint_selection",
+      "code/source_read_selection",
+      "code/source_encoded_memory",
+      "code/source_passive_memory",
+      "code/source_reusable_bus",
+      "code/source_native_updates",
+      "code/source_scalar_finite_instrument",
+      "code/source_operator_join",
+      "code/sm_fermion_current",
+      "code/maxwell_measurement",
+      "evidence/source_net_causal_poset/routed_read_law"
+    ],
+    "directories_added_at_this_revision": [
+      {
+        "directory": "code/source_read_routing",
+        "reason": "runtime compiler and retained level-three tapes of the full-family routed read histories"
+      },
+      {
+        "directory": "code/source_routing_refinement",
+        "reason": "refinement companion of the routed read histories across support levels three to five"
+      },
+      {
+        "directory": "code/source_native_programs",
+        "reason": "runtime controls and receipts of the stored-program bank compiler formalized under Lean/Geometry"
+      },
+      {
+        "directory": "code/source_native_accumulator",
+        "reason": "runtime replay of native accumulation formalized under Lean/Geometry"
+      },
+      {
+        "directory": "code/source_temporal_acceptance",
+        "reason": "runtime controls of temporal acceptance and native tomography plans on the captured support"
+      },
+      {
+        "directory": "code/source_read_acceptance",
+        "reason": "runtime replay of sound partial readout on captured seams"
+      },
+      {
+        "directory": "code/source_checkpoint_selection",
+        "reason": "runtime census and policy controls of native checkpoint selection on captured seams"
+      },
+      {
+        "directory": "code/source_read_selection",
+        "reason": "runtime controls of the selected-history candidate already classified from its Lean modules"
+      },
+      {
+        "directory": "code/source_encoded_memory",
+        "reason": "runtime controls of the pair-mean memory candidate already classified from its Lean modules"
+      },
+      {
+        "directory": "code/source_passive_memory",
+        "reason": "runtime controls of the pair-mean memory candidate already classified from its Lean modules"
+      },
+      {
+        "directory": "code/source_reusable_bus",
+        "reason": "retained fixed-point tapes of the pair-mean memory candidate already classified from its Lean modules"
+      },
+      {
+        "directory": "code/source_native_updates",
+        "reason": "retained histories of the pair-mean memory candidate already classified from its Lean modules"
+      },
+      {
+        "directory": "code/source_scalar_finite_instrument",
+        "reason": "finite-duration extension of the sequential scalar instrument candidate"
+      },
+      {
+        "directory": "code/source_operator_join",
+        "reason": "operator-algebra join of committed carriers with a noncommuting hinge"
+      },
+      {
+        "directory": "code/sm_fermion_current",
+        "reason": "register-level histories that carry a physical current label and therefore test the source firewall"
+      },
+      {
+        "directory": "code/maxwell_measurement",
+        "reason": "measurement adapter that identifies registers with electromagnetic potentials and therefore tests the source firewall"
+      },
+      {
+        "directory": "evidence/source_net_causal_poset/routed_read_law",
+        "reason": "production run receipts and phase manifests of the routed read histories"
+      }
     ],
     "repository_wide_search_terms": [
       "port-indexed perturbation",
@@ -43,7 +130,24 @@
       "Lean/Screen",
       "Lean/Geometry",
       "Lean/InformationProjection",
-      "Lean/Variational"
+      "Lean/Variational",
+      "code/source_read_routing",
+      "code/source_routing_refinement",
+      "code/source_native_programs",
+      "code/source_native_accumulator",
+      "code/source_temporal_acceptance",
+      "code/source_read_acceptance",
+      "code/source_checkpoint_selection",
+      "code/source_read_selection",
+      "code/source_encoded_memory",
+      "code/source_passive_memory",
+      "code/source_reusable_bus",
+      "code/source_native_updates",
+      "code/source_scalar_finite_instrument",
+      "code/source_operator_join",
+      "code/sm_fermion_current",
+      "code/maxwell_measurement",
+      "evidence/source_net_causal_poset/routed_read_law"
     ],
     "exclusion_policy": {
       "directory_names": [
@@ -61,7 +165,7 @@
         ".pyc"
       ]
     },
-    "file_count": 469,
+    "file_count": 745,
     "files": [
       {
         "byte_count": 40994,
@@ -349,6 +453,66 @@
         "sha256": "sha256:2ab0d12826b958ad2f25b48d84b2ba8be840d9ce09045670af76825336fed61e"
       },
       {
+        "byte_count": 3703,
+        "path": "Lean/Geometry/SourceAccumulatorAxiomAudit.lean",
+        "sha256": "sha256:e05ddc470468e1ef96c60d27012e0f789b71c0ca056c5e35a0f163504e86c1bf"
+      },
+      {
+        "byte_count": 5574,
+        "path": "Lean/Geometry/SourceAccumulatorDecoder.lean",
+        "sha256": "sha256:cb6ca79742f773c1683733403e62ec1c4b753c5912c2e234cb018ff7446d4411"
+      },
+      {
+        "byte_count": 14970,
+        "path": "Lean/Geometry/SourceAccumulatorProgram.lean",
+        "sha256": "sha256:b5d6710c90253a338e08b051816ab581e4890adead899acb65a96b5236f0e7e5"
+      },
+      {
+        "byte_count": 6301,
+        "path": "Lean/Geometry/SourceBankBusWitness.lean",
+        "sha256": "sha256:7a859e1232ce5ccabde63a2fc8b8aecbac2e5f370b8d7442f5ab87337a207689"
+      },
+      {
+        "byte_count": 9859,
+        "path": "Lean/Geometry/SourceBankCompiler.lean",
+        "sha256": "sha256:e494b6c142c094923caea058fcd5288ec629acae8bec6108712f08ea543d7b38"
+      },
+      {
+        "byte_count": 4421,
+        "path": "Lean/Geometry/SourceBankControl.lean",
+        "sha256": "sha256:4c001a63bd2f8eb24e582c69fe805cc973d753097f5edb73100ad108d66fc90f"
+      },
+      {
+        "byte_count": 3838,
+        "path": "Lean/Geometry/SourceBankExecution.lean",
+        "sha256": "sha256:43b2f8b23ddd60f4858b30fe05bed090945811189096824244b499a85310237c"
+      },
+      {
+        "byte_count": 9383,
+        "path": "Lean/Geometry/SourceBankInvariant.lean",
+        "sha256": "sha256:4c8b79c2196458df42940b6ec9f1a2b9b5db8b3b89e7bb52cbdbd7be8ead5f66"
+      },
+      {
+        "byte_count": 8863,
+        "path": "Lean/Geometry/SourceBankLowering.lean",
+        "sha256": "sha256:e2e4a985fea6f96e5c17369b7f9af3461f61d3f42ab5bf00fb4fe1d5ac709342"
+      },
+      {
+        "byte_count": 13476,
+        "path": "Lean/Geometry/SourceBankMachine.lean",
+        "sha256": "sha256:4b50e3d2d59eaa897614422b0719885846c6c8789b6514631849bf4261c11ccc"
+      },
+      {
+        "byte_count": 3472,
+        "path": "Lean/Geometry/SourceBankPrecision.lean",
+        "sha256": "sha256:95aa071ac4a12488d654432dd4623d40b029815f026c10c4929e4aa44d2f283b"
+      },
+      {
+        "byte_count": 1782,
+        "path": "Lean/Geometry/SourceBankTrace.lean",
+        "sha256": "sha256:ee9808232b48f65ede051bdbab53a6ab799549753137d69767a848bb2be464f2"
+      },
+      {
         "byte_count": 11760,
         "path": "Lean/Geometry/SourceBusScaling.lean",
         "sha256": "sha256:d43ddeb9a9ee89d3fb09537886f0be40ad15a223f87ba1536a6efa6059005462"
@@ -357,6 +521,36 @@
         "byte_count": 6756,
         "path": "Lean/Geometry/SourceCausalBoundary.lean",
         "sha256": "sha256:6963e3f97aab1ce3a1e576552d7a1514b68ba762366a7ea069f9f5179a5bfd63"
+      },
+      {
+        "byte_count": 3442,
+        "path": "Lean/Geometry/SourceCheckpointAxiomAudit.lean",
+        "sha256": "sha256:43a38c06ec4c1451fef3fb171fbf7849c593de800dab53cfe0fe0532d3e2d815"
+      },
+      {
+        "byte_count": 4741,
+        "path": "Lean/Geometry/SourceCheckpointEntropy.lean",
+        "sha256": "sha256:3893457a5f380b4f71a541480c0f972b043d57ccd2c0c762ca6c3afcc7bd929f"
+      },
+      {
+        "byte_count": 5321,
+        "path": "Lean/Geometry/SourceCheckpointMeaning.lean",
+        "sha256": "sha256:0a0dbb656ab14dbe4cd843b633597ef70c458f0fb4753a12fe5b42f8fe3965c4"
+      },
+      {
+        "byte_count": 6498,
+        "path": "Lean/Geometry/SourceCheckpointNative.lean",
+        "sha256": "sha256:8abdba34896c4a5e15e8a41c664162d24fc91a5b379d8c57d449f57e9bcfeea4"
+      },
+      {
+        "byte_count": 2867,
+        "path": "Lean/Geometry/SourceCheckpointPipeline.lean",
+        "sha256": "sha256:4fb68247fb7aae86b38d09e0c7fd816204cd87e638b5f2032fead4fe0941f5c3"
+      },
+      {
+        "byte_count": 9512,
+        "path": "Lean/Geometry/SourceCheckpointPolicy.lean",
+        "sha256": "sha256:a4ea55f9b70d485a714e760a2f42a77ce156a2941bca00e2465a5814cc2558ab"
       },
       {
         "byte_count": 44006,
@@ -404,9 +598,44 @@
         "sha256": "sha256:068e91f8f4515d28950dccb0be9bb490328e71fe760b08ac4d90ece180ce141a"
       },
       {
+        "byte_count": 11019,
+        "path": "Lean/Geometry/SourceNativeAccumulator.lean",
+        "sha256": "sha256:48c50892c8d3b754914cd2589f86acf57acf9404f38893d9587d4f759ae0edd9"
+      },
+      {
+        "byte_count": 4477,
+        "path": "Lean/Geometry/SourceNativeCore.lean",
+        "sha256": "sha256:51d4f9b2e4104157a5a53cf5eca0af4cb18a2134a67f4486745417c07c3ab065"
+      },
+      {
+        "byte_count": 2130,
+        "path": "Lean/Geometry/SourceNativeProgramBudget.lean",
+        "sha256": "sha256:b3924be1e88ba3980b77282b08102422d615303a734e958774e6180927d938f1"
+      },
+      {
+        "byte_count": 4562,
+        "path": "Lean/Geometry/SourceNativeProgramError.lean",
+        "sha256": "sha256:34b0eea844c2c04e4b4e66d2134b9ff4e4620a34d83442ec798de594965ed581"
+      },
+      {
+        "byte_count": 8950,
+        "path": "Lean/Geometry/SourceNativeProgramsAxiomAudit.lean",
+        "sha256": "sha256:c8181007fe219f5d2251de2e98d5f61ac1fa64467b311a98c0c57e18a430a42a"
+      },
+      {
         "byte_count": 4645,
         "path": "Lean/Geometry/SourceNativeRecords.lean",
         "sha256": "sha256:a3db77724671a7b87bcace5ec2d28973c81efc1992e4053c20b039c9a0d3cca0"
+      },
+      {
+        "byte_count": 8133,
+        "path": "Lean/Geometry/SourceNativeShuttle.lean",
+        "sha256": "sha256:38a2a3d05c3eb3faa0bc326c5e16e57237f8443ad53e9f91d5c24b66017a1bef"
+      },
+      {
+        "byte_count": 6041,
+        "path": "Lean/Geometry/SourceNativeStoredProgram.lean",
+        "sha256": "sha256:e5b9bd32ccc2fe64462cac48a9fec6c916ab75c2640294e950b4ba0d44079150"
       },
       {
         "byte_count": 2688,
@@ -474,6 +703,26 @@
         "sha256": "sha256:658c7fbd21eeb92f2b094d3ec99c76af53c880c474b06be485c82f5b90b29592"
       },
       {
+        "byte_count": 24421,
+        "path": "Lean/Geometry/SourceReadAcceptance.lean",
+        "sha256": "sha256:51547665d34301af933809205a14f85e8ac0a0170a6a4f3d54d2829b2b9a0781"
+      },
+      {
+        "byte_count": 4590,
+        "path": "Lean/Geometry/SourceReadAcceptanceAxiomAudit.lean",
+        "sha256": "sha256:52f3c484687bf029950cbfdb8514b71b451fd6bb64ff5e736494908bd73d7ee2"
+      },
+      {
+        "byte_count": 6841,
+        "path": "Lean/Geometry/SourceReadAcceptanceSchedule.lean",
+        "sha256": "sha256:986cac3c9ae0e10b3b06ea474cd4ce6f71544b6a627496ac7910d186004a9783"
+      },
+      {
+        "byte_count": 10594,
+        "path": "Lean/Geometry/SourceReadRouting.lean",
+        "sha256": "sha256:82691c7b6a20cb71661d3c37dff7afae077ed6a762c0901330f0dd72f3dfb365"
+      },
+      {
         "byte_count": 10018,
         "path": "Lean/Geometry/SourceReadSelection.lean",
         "sha256": "sha256:f43a262d6d3ac46a2471de75e7da237589502949eab56903e1410edda4fdef5d"
@@ -499,6 +748,26 @@
         "sha256": "sha256:2d9fa469d6278f6a8e59fc3a204beea2eca4b597abc56b60675464311c21a6fe"
       },
       {
+        "byte_count": 3814,
+        "path": "Lean/Geometry/SourceRoutingBudget.lean",
+        "sha256": "sha256:97ccfcecaad82f523ec98bcea486f8f013623a00dc1f63f843244c5bbbec971f"
+      },
+      {
+        "byte_count": 7167,
+        "path": "Lean/Geometry/SourceRoutingHierarchy.lean",
+        "sha256": "sha256:4f44fea21ba572eed14fa4e064e8c1f70fca12ad767c5b41259f83bfe14f9a78"
+      },
+      {
+        "byte_count": 2773,
+        "path": "Lean/Geometry/SourceRoutingRefinementAxiomAudit.lean",
+        "sha256": "sha256:00257ea79be210428384a3943bafafc835066785a592c47da33bfc8a0895e136"
+      },
+      {
+        "byte_count": 4529,
+        "path": "Lean/Geometry/SourceRoutingStorage.lean",
+        "sha256": "sha256:5b09360331a223e016513dee7535d8d80ed20813eac36c86cdeb6300e4582a07"
+      },
+      {
         "byte_count": 4989,
         "path": "Lean/Geometry/SourceSeamPathTomography.lean",
         "sha256": "sha256:0a4523a315fbfb42f81449bc9e42179b254ec38ef02fdf3f62127abab78a3a83"
@@ -507,6 +776,61 @@
         "byte_count": 7668,
         "path": "Lean/Geometry/SourceSelectionControls.lean",
         "sha256": "sha256:f98f5b7583f0516201d47da82e5a80086f94779d234ae6d0f100049477ea717e"
+      },
+      {
+        "byte_count": 7666,
+        "path": "Lean/Geometry/SourceTemporalAcceptanceAxiomAudit.lean",
+        "sha256": "sha256:5af40394bf919f20f99f391448a5ccf95e734c751b3edfecc85d60fe2f42cff3"
+      },
+      {
+        "byte_count": 4700,
+        "path": "Lean/Geometry/SourceTemporalAttempts.lean",
+        "sha256": "sha256:a940ee70bea0772293e0b1e7a7e315000b38d5a7dff45cc19ab38c093bfc2f96"
+      },
+      {
+        "byte_count": 5895,
+        "path": "Lean/Geometry/SourceTemporalConnected.lean",
+        "sha256": "sha256:13cb2a87198d17182d7929ba86d2501c0f7b4fdfb58124f3a5e62aaebb057071"
+      },
+      {
+        "byte_count": 7973,
+        "path": "Lean/Geometry/SourceTemporalErasure.lean",
+        "sha256": "sha256:10ba71ed87379870783857571c656f711a98fdb4d21e48ad0d7a99aa171b7057"
+      },
+      {
+        "byte_count": 3216,
+        "path": "Lean/Geometry/SourceTemporalEssential.lean",
+        "sha256": "sha256:7d8a323e25182e288845056de8723f5764d65b57470d4d8b95a94f9989c156cc"
+      },
+      {
+        "byte_count": 10394,
+        "path": "Lean/Geometry/SourceTemporalGuard.lean",
+        "sha256": "sha256:bef1f82082168c67bca4dc71577ab7cf741d8912c4c06c1988c7527a9b9156d8"
+      },
+      {
+        "byte_count": 3736,
+        "path": "Lean/Geometry/SourceTemporalMenu.lean",
+        "sha256": "sha256:7efa6f003a1a202301b2b221170f9282807fd9984b03b03715e0c49063fef8f5"
+      },
+      {
+        "byte_count": 4496,
+        "path": "Lean/Geometry/SourceTemporalNative.lean",
+        "sha256": "sha256:828e2ad90f8e802de8d6203005705e7f94016e9977910d8c7748fbb828a451dd"
+      },
+      {
+        "byte_count": 6509,
+        "path": "Lean/Geometry/SourceTemporalObservation.lean",
+        "sha256": "sha256:6d22fc3f59676b0f38ebe243f6be23d948d9c18f643d9a7068f0e99959b6ae8c"
+      },
+      {
+        "byte_count": 6755,
+        "path": "Lean/Geometry/SourceTemporalSelection.lean",
+        "sha256": "sha256:f1362658543d75c1e006a075260e6862b668b7e218fd9945c767b5070ebe1e06"
+      },
+      {
+        "byte_count": 13249,
+        "path": "Lean/Geometry/SourceTemporalTomography.lean",
+        "sha256": "sha256:95e7dd2320e472a827add60b914e34549c671d4d04dfdfd95b99c9e090a16400"
       },
       {
         "byte_count": 8135,
@@ -1369,9 +1693,9 @@
         "sha256": "sha256:01a0e5a867febc03fa3e84ee6831734b13be19596375e8b13d26fcb7cf78889e"
       },
       {
-        "byte_count": 34798,
+        "byte_count": 35151,
         "path": "code/a5_closure/README.md",
-        "sha256": "sha256:6c559ba6ac2bfc52c77728635a5a43a91c90e56d59c7a3761e736329d8cd71f4"
+        "sha256": "sha256:864026b9f2db3cd0ed1a89990390a64813938a0bafd34161191d39a1cf575238"
       },
       {
         "byte_count": 37263,
@@ -1909,9 +2233,9 @@
         "sha256": "sha256:860bd8f99d9c99567e0042b6cb46aead74d483e31ebd70bacc52f5edf22f96b0"
       },
       {
-        "byte_count": 68233,
+        "byte_count": 129208,
         "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:b60a15719baeec988a25dcb3d485f446c0e0aa1a430c0dabd228e91cc5239ce7"
+        "sha256": "sha256:6fde99d60b0899083ed37bffcdf5f8f07a4cca5c8e1a9464a3be481fdffa579e"
       },
       {
         "byte_count": 3552,
@@ -1934,9 +2258,9 @@
         "sha256": "sha256:3b1665d8a7fc5f62aa23d547cc15cf9d8be629d59d9a03c1e7523e38bfa82e0a"
       },
       {
-        "byte_count": 6466,
+        "byte_count": 11733,
         "path": "code/a5_closure/source_current_tomography_stage2.md",
-        "sha256": "sha256:48be2102e26d2b720a1b051ca06dda3f2750bff0f4e53f411cb47b3f9f4bc70b"
+        "sha256": "sha256:b6c67206bde1b478c6a52a0149af6d9124f11ecc27405dbd9aaa02dbf3ad5fdc"
       },
       {
         "byte_count": 34067,
@@ -2079,9 +2403,9 @@
         "sha256": "sha256:15b5e07ff026ca12fec6d1b8ac04146adf970a55f54a475c63501cce6b26258a"
       },
       {
-        "byte_count": 12199,
+        "byte_count": 18503,
         "path": "code/a5_closure/tests/test_source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:d09c61ad3b645f2f55a64083ff36abc6140324f73c8ff91ef038fe60b79775cd"
+        "sha256": "sha256:0b7fe5bb2f4b67f589a00c43c20444bb63010a5b2a8309565febb0c917a7108e"
       },
       {
         "byte_count": 2867,
@@ -2109,9 +2433,9 @@
         "sha256": "sha256:1646cc0e77b7efc7dbea77cdfdaeea47a9918b805c1e1aea0791b754a7454a8a"
       },
       {
-        "byte_count": 33180,
+        "byte_count": 57200,
         "path": "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:9a9c04c6eaba09bc6c83bec88af730bee61be9c6a4cebaaccc3d979047f2904c"
+        "sha256": "sha256:5a778846b4f61061fe8d98e3e527b89968c5859e932cf4fc586a384a1bdd0521"
       },
       {
         "byte_count": 10424,
@@ -2294,6 +2618,36 @@
         "sha256": "sha256:9c1dba2e61589101914d41f6afa96b4079f7c17d284a5c4b140dad324143866d"
       },
       {
+        "byte_count": 9032,
+        "path": "code/maxwell_measurement/README.md",
+        "sha256": "sha256:3a8648833947f75ae848f77c3f28807b14d257ad58758a808aaba2efa5612450"
+      },
+      {
+        "byte_count": 4168,
+        "path": "code/maxwell_measurement/contract.py",
+        "sha256": "sha256:895696207740599c38ee049b27714262875ff1a90da21a2e5458fea354bf54a7"
+      },
+      {
+        "byte_count": 16232,
+        "path": "code/maxwell_measurement/test_measurement.py",
+        "sha256": "sha256:57b88f9a842fceaeedd93bf99b0fa972d0e6df840e206d7f820cbb7f939dfa4e"
+      },
+      {
+        "byte_count": 4640,
+        "path": "code/maxwell_measurement/test_voltage_decoder.py",
+        "sha256": "sha256:fd53cf65f7958d41e549b21bcca25d0efbd93167289675dfa459aca0aaa981ca"
+      },
+      {
+        "byte_count": 25951,
+        "path": "code/maxwell_measurement/verify.py",
+        "sha256": "sha256:d96a23683f55f2aec472a2bde2774796469132f7e66f7e7469dfb19a355fd5f7"
+      },
+      {
+        "byte_count": 6654,
+        "path": "code/maxwell_measurement/voltage_decoder.py",
+        "sha256": "sha256:ff0e07a72b13056a780bfe9f18c7b167be355528c00b3dcb72a48542ad7f4ea6"
+      },
+      {
         "byte_count": 39169,
         "path": "code/refinement/discrete_refinement_certificate.py",
         "sha256": "sha256:8f133ecc2cd8d5f1b9bdd17ae5e9a05ef5c905bcce659a9f3cf55e740de38e68"
@@ -2314,9 +2668,199 @@
         "sha256": "sha256:6d4a7cfb5f0c1a31701b7ab15783460432b03716a80da36a256c8a80802ec230"
       },
       {
-        "byte_count": 3970,
+        "byte_count": 4097,
+        "path": "code/sm_fermion_current/README.md",
+        "sha256": "sha256:c2719e863cdfea8f10ff81033b5f0031652c5866c76e8bc4d19e6e609299f314"
+      },
+      {
+        "byte_count": 1870,
+        "path": "code/sm_fermion_current/build_coupled.py",
+        "sha256": "sha256:318606495a03e7f8a2fc33d237905d4fba36d15238173be7d3c4589200cca502"
+      },
+      {
+        "byte_count": 1631,
+        "path": "code/sm_fermion_current/build_current.py",
+        "sha256": "sha256:7488ca085c6afc1a24df5dbb397a764257d0feb3f162c08ae3d6f090fffa2995"
+      },
+      {
+        "byte_count": 1858,
+        "path": "code/sm_fermion_current/build_quantum_link.py",
+        "sha256": "sha256:02476dd3adc0a955f727c0708cba64c8e4a0f10fb30a0d90c9895c5afb8d4b0a"
+      },
+      {
+        "byte_count": 14535,
+        "path": "code/sm_fermion_current/coupled.py",
+        "sha256": "sha256:1e71be3745bd9f61162f2b7a7525e55f0b608ddcb5a60064afa9e73d965892ce"
+      },
+      {
+        "byte_count": 3041,
+        "path": "code/sm_fermion_current/coupled_README.md",
+        "sha256": "sha256:d27293e69fd30c0df6df20c9ee98ce25474114328649788f6f0ec13359480649"
+      },
+      {
+        "byte_count": 11161830,
+        "path": "code/sm_fermion_current/coupled_receipt.json",
+        "sha256": "sha256:90862a6ad6a2d9585b515d030bccfe45305adb54ffabd3fcac6870d08354d850"
+      },
+      {
+        "byte_count": 17000,
+        "path": "code/sm_fermion_current/current.py",
+        "sha256": "sha256:3ddc0be8031081014614cdbcccd775ceb75e5e305607f1ed795c3fe17c8dbbd3"
+      },
+      {
+        "byte_count": 3706044,
+        "path": "code/sm_fermion_current/current_receipt.json",
+        "sha256": "sha256:d4a780d4849d9b5dea1618705b87279597d6aca345a160a20990435929cff8a7"
+      },
+      {
+        "byte_count": 13410,
+        "path": "code/sm_fermion_current/quantum_link.py",
+        "sha256": "sha256:f48ae56a7d6f5cad6892de60f262c68aecd5fdbe277e0e45f8024cf8d40174a7"
+      },
+      {
+        "byte_count": 54500,
+        "path": "code/sm_fermion_current/quantum_link_receipt.json",
+        "sha256": "sha256:0a93ada86ff6349623e7cb039309072a669b6fafa04749e382319b922bd77e62"
+      },
+      {
+        "byte_count": 8395,
+        "path": "code/sm_fermion_current/test_coupled.py",
+        "sha256": "sha256:d99c940a3c0b2d13ee435ac25e6d3c05e8d65154b03a19a66be70cbc19cc23d5"
+      },
+      {
+        "byte_count": 10982,
+        "path": "code/sm_fermion_current/test_current.py",
+        "sha256": "sha256:e20dc40316fd11a4a217a9eabc60df7a48d77131d295c84359e430a2ce762bea"
+      },
+      {
+        "byte_count": 7076,
+        "path": "code/sm_fermion_current/test_quantum_link.py",
+        "sha256": "sha256:e8b39d7963f9e545e0680b4141b3949383f57329f6f95e41e0baefeaa3b53e49"
+      },
+      {
+        "byte_count": 23299,
+        "path": "code/sm_fermion_current/verify_coupled.py",
+        "sha256": "sha256:6c0ef1b56ce5134de4f90cc261f6ab0d5eb00a7e52ed75c3a819dc1dd4af2a8d"
+      },
+      {
+        "byte_count": 22086,
+        "path": "code/sm_fermion_current/verify_current.py",
+        "sha256": "sha256:0abbd53a20f8b323c7ebf2671ae0e552364386c4408367f4205eda441431b2a3"
+      },
+      {
+        "byte_count": 23431,
+        "path": "code/sm_fermion_current/verify_quantum_link.py",
+        "sha256": "sha256:aded5efe71987236e8c09da1afdf5374487b8ee8e6f253feb74d9edb0b8bf894"
+      },
+      {
+        "byte_count": 5713,
+        "path": "code/source_checkpoint_selection/CONTRACT.md",
+        "sha256": "sha256:77374e792b96eafe0ff06c06c2c76702466c8636488fec9f450baf207d304ded"
+      },
+      {
+        "byte_count": 14571,
+        "path": "code/source_checkpoint_selection/DERIVATION.md",
+        "sha256": "sha256:b04bf4e5a1aca8ce3e07cecaff10104e66a24b1be8adfee43f002e85bcc0987e"
+      },
+      {
+        "byte_count": 2580,
+        "path": "code/source_checkpoint_selection/README.md",
+        "sha256": "sha256:0f2c17e740a6d86ea35ab3c522934e5e4823a5f5895b1f93c2303343d3db7332"
+      },
+      {
+        "byte_count": 82,
+        "path": "code/source_checkpoint_selection/__init__.py",
+        "sha256": "sha256:39479afc873c7de5809711c6ff3e61b37a67547acf5becb55323f5f83eff909c"
+      },
+      {
+        "byte_count": 7429,
+        "path": "code/source_checkpoint_selection/build.py",
+        "sha256": "sha256:6f63e53072aee6589c59a8bd80f2c55b7ed781f3168687b29ced2d618567a33b"
+      },
+      {
+        "byte_count": 2904,
+        "path": "code/source_checkpoint_selection/codec.py",
+        "sha256": "sha256:005d7d66c52649cab0a9e0f6ca384181978f951916b7e8386c524c187c5a83ac"
+      },
+      {
+        "byte_count": 125263,
+        "path": "code/source_checkpoint_selection/controls.json",
+        "sha256": "sha256:c40b99759ab5afa7a8ceb2affdc21167c64548d0a11ee319757d3e29385bb142"
+      },
+      {
+        "byte_count": 1757,
+        "path": "code/source_checkpoint_selection/pipeline.py",
+        "sha256": "sha256:c776b4d5a851bc53a31929d539e05b1c97282d4c99b4c85053a71865c524da2c"
+      },
+      {
+        "byte_count": 4308,
+        "path": "code/source_checkpoint_selection/receipt.json",
+        "sha256": "sha256:45b1cbf8b4a620fdedb7da6012e7c9025541bb69623973aca0fe15b2664d6a84"
+      },
+      {
+        "byte_count": 11650,
+        "path": "code/source_checkpoint_selection/test_checkpoint.py",
+        "sha256": "sha256:dbd7c36f6a8b2a66723180831680811b9634442048ad5b91d55c3b1e47d22778"
+      },
+      {
+        "byte_count": 13616,
+        "path": "code/source_checkpoint_selection/verify.py",
+        "sha256": "sha256:471105f5c99c892cd3582d22392f514bc2f7e7b686cfc19d0d501a58b3cac2d9"
+      },
+      {
+        "byte_count": 2015,
+        "path": "code/source_encoded_memory/CONTRACT.md",
+        "sha256": "sha256:a335eed7339cba11d24f6399f5528f638aeb897279f72ce9f0e389ce32af6ee9"
+      },
+      {
+        "byte_count": 10394,
+        "path": "code/source_encoded_memory/README.md",
+        "sha256": "sha256:680c649b33eaca09e04f5983c9e762e8148d1e81c813e3459ae1391f272e9a01"
+      },
+      {
+        "byte_count": 74,
+        "path": "code/source_encoded_memory/__init__.py",
+        "sha256": "sha256:9b4cb2dc72a7cffa3e01b2c10250270f7a60a0ea3a2724c23d043ce876fe1fe3"
+      },
+      {
+        "byte_count": 4627,
+        "path": "code/source_encoded_memory/build.py",
+        "sha256": "sha256:34597b58ea9b566a0022800f2952bdb4e7fd0fe01621b7d6dd8a2912e25350fc"
+      },
+      {
+        "byte_count": 1849,
+        "path": "code/source_encoded_memory/codec.py",
+        "sha256": "sha256:831ae4f9ffa2cfd07917763a9f41d92da11ef93b981127a484361ef8ca35305f"
+      },
+      {
+        "byte_count": 340372,
+        "path": "code/source_encoded_memory/controls.json",
+        "sha256": "sha256:079806a52a4d084e99d5a7b43632a4737e5d0e5479c4b347eca5ecb478291693"
+      },
+      {
+        "byte_count": 1845,
+        "path": "code/source_encoded_memory/receipt.json",
+        "sha256": "sha256:8f3ca0f5a2e16c2764111787c25ccb5ef361c60db6501df4adb2f2ab04aedaf3"
+      },
+      {
+        "byte_count": 12892,
+        "path": "code/source_encoded_memory/test_encoded_memory.py",
+        "sha256": "sha256:9c1a9e1d65d0100806bc35f098397149b927617504b086a51ba3dec1a8a0b5de"
+      },
+      {
+        "byte_count": 4752,
+        "path": "code/source_encoded_memory/test_protocol_boundaries.py",
+        "sha256": "sha256:9c2c2d589c4a9e33f92cb3d570d62d261a1d266fbe3827c41bf699ec024f5b06"
+      },
+      {
+        "byte_count": 8740,
+        "path": "code/source_encoded_memory/verify.py",
+        "sha256": "sha256:661a92986f2f6433c471e751b1c6a804952cb5401955a230526b0b61880445fe"
+      },
+      {
+        "byte_count": 4261,
         "path": "code/source_feedback_transport/README.md",
-        "sha256": "sha256:f6e89aed4cf726f459cc8352ac915dc87d3b9d1871e8ad2b79425bed069e9b43"
+        "sha256": "sha256:44342a6f6c8eae6a05c4d572c0a041ba3f9cbd459a21176b0506cd5579359e26"
       },
       {
         "byte_count": 10067,
@@ -2342,6 +2886,671 @@
         "byte_count": 14978,
         "path": "code/source_feedback_transport/verify_transport.py",
         "sha256": "sha256:b6e328a3a67662e92db257abea6ea1283d388a7e72ecc1fe857bf03306d2bc85"
+      },
+      {
+        "byte_count": 6647,
+        "path": "code/source_native_accumulator/CONTRACT.md",
+        "sha256": "sha256:02d27e0c26845c557913b3c390889605771511c48c8e2364fc31e336eae91dd3"
+      },
+      {
+        "byte_count": 5095,
+        "path": "code/source_native_accumulator/DERIVATION.md",
+        "sha256": "sha256:9ee077687a2c9ad0169bf7aa23818b950def61999e9aec897945257b04d8d9b3"
+      },
+      {
+        "byte_count": 2440,
+        "path": "code/source_native_accumulator/README.md",
+        "sha256": "sha256:00354ff118f7038d453dd0d17d9cbc0dcbb0c8c93d1c24c982bb47ab0bc60a51"
+      },
+      {
+        "byte_count": 62,
+        "path": "code/source_native_accumulator/__init__.py",
+        "sha256": "sha256:ca133c4ad366652b71e2a357f89e631dcb3da2f159eb1ce165e5c4b6f62b7132"
+      },
+      {
+        "byte_count": 6224,
+        "path": "code/source_native_accumulator/build.py",
+        "sha256": "sha256:a8f43d66291616d642d45a616226498e34abc4ebe30b94e099dea55426381303"
+      },
+      {
+        "byte_count": 1308,
+        "path": "code/source_native_accumulator/codec.py",
+        "sha256": "sha256:76024fedf412a26dbd7bfdfdd42f86a30888258881920c51cd18177903c4aa35"
+      },
+      {
+        "byte_count": 47342,
+        "path": "code/source_native_accumulator/controls.json",
+        "sha256": "sha256:1aa2a97a74aa905cacf2c32ea1315a0e25237b8aaa27f769c88f1686f06fa54d"
+      },
+      {
+        "byte_count": 3673,
+        "path": "code/source_native_accumulator/receipt.json",
+        "sha256": "sha256:b90466db12b07aed0083d924084b106c17bfd8a32f2e122cb2aff2c557e095b7"
+      },
+      {
+        "byte_count": 13520,
+        "path": "code/source_native_accumulator/test_accumulator.py",
+        "sha256": "sha256:8b522599b5dcf975212b1b8f3618ac0c77b36e8ce9e869a72c70ac31976c3dda"
+      },
+      {
+        "byte_count": 11873,
+        "path": "code/source_native_accumulator/verify.py",
+        "sha256": "sha256:4463919e84fcf25fe582344a88ff3b400e898fbdd8e49175e14df94d632f27dc"
+      },
+      {
+        "byte_count": 5865,
+        "path": "code/source_native_programs/CONTRACT.md",
+        "sha256": "sha256:d28bec118d7c4156fe1f4faeb4e69ebb6064f825d1241f20e536e7a1975d1cfa"
+      },
+      {
+        "byte_count": 13905,
+        "path": "code/source_native_programs/DERIVATION.md",
+        "sha256": "sha256:e5c632cba6dd6d8b05f308a28ac60dfda1a2a74b91527359892b1d824560c2d8"
+      },
+      {
+        "byte_count": 2067,
+        "path": "code/source_native_programs/README.md",
+        "sha256": "sha256:d2c091cdd0af6532b028f4b48b79258c75341706acfed119eb65f66e20ef961b"
+      },
+      {
+        "byte_count": 72,
+        "path": "code/source_native_programs/__init__.py",
+        "sha256": "sha256:edef3e78e08aca6ced5a3dd80391e1958a73ff6128798b0b3c5955960fa3deaa"
+      },
+      {
+        "byte_count": 10010,
+        "path": "code/source_native_programs/build.py",
+        "sha256": "sha256:f6478570b451bf59b2c40a5c460d9233e8816622d90e43b115c9b3656b0a9251"
+      },
+      {
+        "byte_count": 4891,
+        "path": "code/source_native_programs/check_routes.py",
+        "sha256": "sha256:8e883d1daa28c97dbe5e883c54ac14526e5ea26371ebdbe0325fd95ad5d29470"
+      },
+      {
+        "byte_count": 1748,
+        "path": "code/source_native_programs/codec.py",
+        "sha256": "sha256:d222f04c70b90f9a75e841fdb359a8d343a4a6a2b2fb29ad79fb2763e1731aa3"
+      },
+      {
+        "byte_count": 74146,
+        "path": "code/source_native_programs/controls.json",
+        "sha256": "sha256:a1b496e13686a20934d777bbf561d99d725fa9fd9a4be7ee11e883fac9184055"
+      },
+      {
+        "byte_count": 11152,
+        "path": "code/source_native_programs/families.json",
+        "sha256": "sha256:0eac17ea8811a4a384d34be4b41d50e7669db5b6faefdda25911abc441ede0b2"
+      },
+      {
+        "byte_count": 6288,
+        "path": "code/source_native_programs/families_receipt.json",
+        "sha256": "sha256:301341f9eff59cb872a32fa4bf2f5dcbb12d6efd6fd008ab116ad0af4dd99033"
+      },
+      {
+        "byte_count": 4913,
+        "path": "code/source_native_programs/family_build.py",
+        "sha256": "sha256:9189024f9d101d935ce7155a9d064e382ebdfdfba7f3ba3f225ebbee6cfe2221"
+      },
+      {
+        "byte_count": 8225,
+        "path": "code/source_native_programs/family_verify.py",
+        "sha256": "sha256:31f664a1a50d13f581f81a354b8a57a582f33d12246abad5e61f450104be86d0"
+      },
+      {
+        "byte_count": 6370,
+        "path": "code/source_native_programs/lean_control.py",
+        "sha256": "sha256:4fa9ec03f9446c30d0e0f9255924fce96f9daf969db4c454680c3324f7671ecf"
+      },
+      {
+        "byte_count": 7052,
+        "path": "code/source_native_programs/receipt.json",
+        "sha256": "sha256:7acddae7d85ce7ec8ad973520fa56b54d81168748a85d98bb8672fd6a97ed6f3"
+      },
+      {
+        "byte_count": 6460,
+        "path": "code/source_native_programs/routes.py",
+        "sha256": "sha256:c48b61873b0a297bc3bde72aaaea583570851747097d4676b1d4bf16bd8cd940"
+      },
+      {
+        "byte_count": 22983,
+        "path": "code/source_native_programs/test_programs.py",
+        "sha256": "sha256:50c630b1825ca617698c1232c3b993d1f19aeace9bcebf4000cb8284d9b5b23f"
+      },
+      {
+        "byte_count": 16835,
+        "path": "code/source_native_programs/verify.py",
+        "sha256": "sha256:1bff8782ea31e1e1715f5e8914f8eea17eb07be9341c75c9edda619f5740737c"
+      },
+      {
+        "byte_count": 3296,
+        "path": "code/source_native_updates/CONTRACT.md",
+        "sha256": "sha256:3abb3ce302f3b5224b4e5c77ab12d79084dcb36631592e07d13b0865ad38704e"
+      },
+      {
+        "byte_count": 9511,
+        "path": "code/source_native_updates/README.md",
+        "sha256": "sha256:76ff51eb7755925c1511189477a8d45eb5716b77e03f746303a5568ae42fcbbf"
+      },
+      {
+        "byte_count": 77,
+        "path": "code/source_native_updates/__init__.py",
+        "sha256": "sha256:daaad7e325b0fcd8585da70cdbef013fde9c063aaebdbe902bc5ff9e84751425"
+      },
+      {
+        "byte_count": 3085,
+        "path": "code/source_native_updates/build.py",
+        "sha256": "sha256:71a0ef09ab473fcdcbfd9acb2abd0b030ba5c1a08d48018e067f1a6aca712ca7"
+      },
+      {
+        "byte_count": 2635,
+        "path": "code/source_native_updates/codec.py",
+        "sha256": "sha256:cdde958ff499b6bf635e8d62c58c2f95d89f7acdf1058a0a230580d640b9fa89"
+      },
+      {
+        "byte_count": 127951,
+        "path": "code/source_native_updates/controls.json",
+        "sha256": "sha256:52bf59515de20509948cef45324da66a43028a821aae1ae7daaf1226d45971a4"
+      },
+      {
+        "byte_count": 28412,
+        "path": "code/source_native_updates/receipt.json",
+        "sha256": "sha256:a6c03a5387a66e67f4309a0506df52ea60e0d8ccfad35c91dd004575740cac8d"
+      },
+      {
+        "byte_count": 13867,
+        "path": "code/source_native_updates/test_native_updates.py",
+        "sha256": "sha256:abe7e2507cc9262636376109b700c6058c2dcbbd9371c9a14e14b95866a26b0b"
+      },
+      {
+        "byte_count": 13016,
+        "path": "code/source_native_updates/verify.py",
+        "sha256": "sha256:a9a04acd3e8f932a7f85b64d0193b305ce326d78df146b135da44d9cb4a383ab"
+      },
+      {
+        "byte_count": 2569,
+        "path": "code/source_operator_join/README.md",
+        "sha256": "sha256:3011bd4b6d78613d2ef42fb16e298179c3fc1e67bd37f2f7b52bcc64641bba60"
+      },
+      {
+        "byte_count": 3334,
+        "path": "code/source_operator_join/join.py",
+        "sha256": "sha256:d5e22c98e7a41a71e19205829365692067b043e9e992311d657b24e16811def0"
+      },
+      {
+        "byte_count": 26115,
+        "path": "code/source_operator_join/operator_join_packet.json",
+        "sha256": "sha256:6d45bf9db9d665963cfd03cf1565a0f2e8e7e4c9913eac9e686198dd201f8b8a"
+      },
+      {
+        "byte_count": 6829,
+        "path": "code/source_operator_join/test_join.py",
+        "sha256": "sha256:427dddf74b35e744631cffb4e4a92e203516bdc99bb74d5ccb077fc72bd69d87"
+      },
+      {
+        "byte_count": 9875,
+        "path": "code/source_operator_join/verify.py",
+        "sha256": "sha256:21034010995f96745cb909a3d172aed08056a3a30e00993abba51c8efbce938d"
+      },
+      {
+        "byte_count": 1467,
+        "path": "code/source_passive_memory/CONTRACT.md",
+        "sha256": "sha256:36803498be2123625fe769a15c6ef27bb740e79c372b54c49de47a175bc1c3e7"
+      },
+      {
+        "byte_count": 13723,
+        "path": "code/source_passive_memory/README.md",
+        "sha256": "sha256:3865c3a8afbf7c4fbb3febb941e222c5ced513ac235e8402f6fc192949df6574"
+      },
+      {
+        "byte_count": 69,
+        "path": "code/source_passive_memory/__init__.py",
+        "sha256": "sha256:d0392325dfa2acef28abab41b4e562e0e20fca14794bb1c702822878f68071d6"
+      },
+      {
+        "byte_count": 4563,
+        "path": "code/source_passive_memory/build.py",
+        "sha256": "sha256:3abb7796ad71356d693535abcbd747330234a690209e018bc6f818340e7b32b4"
+      },
+      {
+        "byte_count": 2267,
+        "path": "code/source_passive_memory/codec.py",
+        "sha256": "sha256:d248fbe5a3f9b518bc8e43b9222f761320f67f85e004f9321e31383ca751165e"
+      },
+      {
+        "byte_count": 38658,
+        "path": "code/source_passive_memory/controls.json",
+        "sha256": "sha256:44a6d66300533e185774baf1a17bb9d0a5d0d92208a9ff3751ce8c210cc9eafa"
+      },
+      {
+        "byte_count": 5393,
+        "path": "code/source_passive_memory/receipt.json",
+        "sha256": "sha256:b76c96349c0fd11a358b28f610746331792baa20cb25be1738642f6be357cfcc"
+      },
+      {
+        "byte_count": 8925,
+        "path": "code/source_passive_memory/test_passive_memory.py",
+        "sha256": "sha256:e1b252f15928a77fdd4656d00dff9b2847da75f28d059e8a4c1f1824b7712ca2"
+      },
+      {
+        "byte_count": 2878,
+        "path": "code/source_passive_memory/test_scope_boundaries.py",
+        "sha256": "sha256:894e41bbfed780d4e9cd07d05195fdfac1e4d52bc730330bf344bc06a9875723"
+      },
+      {
+        "byte_count": 10549,
+        "path": "code/source_passive_memory/verify.py",
+        "sha256": "sha256:f501d017c0682ce5de1e82317d2aed2c08f807893a2323a8e70110c1825d1fc5"
+      },
+      {
+        "byte_count": 4321,
+        "path": "code/source_read_acceptance/CONTRACT.md",
+        "sha256": "sha256:1cd966e191f3c34c67b57255536b25f7c6835ff4d23d13fc22c82d426eabe6ed"
+      },
+      {
+        "byte_count": 10973,
+        "path": "code/source_read_acceptance/DERIVATION.md",
+        "sha256": "sha256:ab88d882281b27df3c7c7c9319c294d6adc752a1d850b7f3d7fb9c23f8328c55"
+      },
+      {
+        "byte_count": 1494,
+        "path": "code/source_read_acceptance/README.md",
+        "sha256": "sha256:69edd02e4086a6c55cd6b38c7677bb18fc28d8a41c525886bf52f932c4d79846"
+      },
+      {
+        "byte_count": 76,
+        "path": "code/source_read_acceptance/__init__.py",
+        "sha256": "sha256:3eb3f3c945ecf6b2f4900f915055b4c2bb13d945a0fc1e5fedfa0d0351ee9368"
+      },
+      {
+        "byte_count": 5358,
+        "path": "code/source_read_acceptance/build.py",
+        "sha256": "sha256:078b93c9c7020ebb7abf40dc8d428719d5b332f83050461476cf3eac40b166e0"
+      },
+      {
+        "byte_count": 2605,
+        "path": "code/source_read_acceptance/codec.py",
+        "sha256": "sha256:553a02669e2dc85fdf1dbbc9d34a50b0ded8fe71d60df446c37d38306d826cf6"
+      },
+      {
+        "byte_count": 24786,
+        "path": "code/source_read_acceptance/controls.json",
+        "sha256": "sha256:817fec92fa7e2588d680fea6320237126ad39c3fb74d41266dc42cf13557a944"
+      },
+      {
+        "byte_count": 12565,
+        "path": "code/source_read_acceptance/receipt.json",
+        "sha256": "sha256:55f05059f6b0c3441c29f80c4914dcea3924644ad8c7e9dc00a20b358f480cf7"
+      },
+      {
+        "byte_count": 10398,
+        "path": "code/source_read_acceptance/test_acceptance.py",
+        "sha256": "sha256:f2fdc8cf8170e04395db2c0868d47c5376b821a413a47220399225b7d338358d"
+      },
+      {
+        "byte_count": 12824,
+        "path": "code/source_read_acceptance/verify.py",
+        "sha256": "sha256:c0dca90bdc1630726c75348a1347499fa74c53048e0f39a775d539a63eaf01d1"
+      },
+      {
+        "byte_count": 13940,
+        "path": "code/source_read_routing/CONTRACT.md",
+        "sha256": "sha256:df2d8525517d237a21046658e87ca52df254b8e30e08723fd22888cd4ddac076"
+      },
+      {
+        "byte_count": 4561,
+        "path": "code/source_read_routing/README.md",
+        "sha256": "sha256:666b8556b370aeed1d768ef89d9783e92ba27bc70f1837de38689456dce6d8c4"
+      },
+      {
+        "byte_count": 3785,
+        "path": "code/source_read_routing/account.py",
+        "sha256": "sha256:47b1762c840502ebda52bf96c5101afdccb81fb08b22410052894ba8d629582b"
+      },
+      {
+        "byte_count": 4145,
+        "path": "code/source_read_routing/capture_support.py",
+        "sha256": "sha256:e9b9ac4d0d313e80c8f35488a3f34fb60fdde3b1bc68df4343b2153f551bc91f"
+      },
+      {
+        "byte_count": 9192,
+        "path": "code/source_read_routing/check_control.py",
+        "sha256": "sha256:57be9c8aaa08aba43e1849c504f7cded7a0ebb6e703d288837426b1cf9073b3b"
+      },
+      {
+        "byte_count": 2547,
+        "path": "code/source_read_routing/check_reproduction.py",
+        "sha256": "sha256:6570f211424a84d015858bbdf58c0babe342baeb808f6b8ec5720d7c82b2b525"
+      },
+      {
+        "byte_count": 125336,
+        "path": "code/source_read_routing/controls/q3.input",
+        "sha256": "sha256:b672542f44717bfda0ba6b1a7389d1cc9df3505fce6bcd82eab30d6f8e8b3f08"
+      },
+      {
+        "byte_count": 2509,
+        "path": "code/source_read_routing/controls/q3_baseline.json",
+        "sha256": "sha256:657be19b127d91ad16b1f8f9bab427de351582ba73fed465a26b84bde5d21060"
+      },
+      {
+        "byte_count": 5251,
+        "path": "code/source_read_routing/controls/q3_baseline_phase0.000.tape",
+        "sha256": "sha256:62c46eda0091839a13029f613b08de68e7021d20f2fccfc346f5b89f15e95d2b"
+      },
+      {
+        "byte_count": 339,
+        "path": "code/source_read_routing/controls/q3_baseline_phase0.segment.json",
+        "sha256": "sha256:26228ff3c7811a6152e1b308e4779152c6b68175702fc90116e35095aceb3102"
+      },
+      {
+        "byte_count": 9816,
+        "path": "code/source_read_routing/controls/q3_baseline_phase1.000.tape",
+        "sha256": "sha256:3889b31a9226e23095ac3d65721662421365f158e7e7bcd9599a0efe4351cf01"
+      },
+      {
+        "byte_count": 338,
+        "path": "code/source_read_routing/controls/q3_baseline_phase1.segment.json",
+        "sha256": "sha256:9700eb470431d09ec826542a24d28853f04324d473d26e5c0b2a1f38f708f5dc"
+      },
+      {
+        "byte_count": 3611,
+        "path": "code/source_read_routing/controls/q3_baseline_phase2.000.tape",
+        "sha256": "sha256:35c0c3856e7ee578624ddad085285d682484a041e6a0cc83dbc748d6968cc48a"
+      },
+      {
+        "byte_count": 389,
+        "path": "code/source_read_routing/controls/q3_baseline_phase2.segment.json",
+        "sha256": "sha256:da298db4999b13672f2899ab37c1eb7f110d8d4237e493c1f504f607d7ab163a"
+      },
+      {
+        "byte_count": 2501,
+        "path": "code/source_read_routing/controls/q3_branch.json",
+        "sha256": "sha256:628b23083ad18701e25b9f71ebc455c81986f14ca7a6fa9384c51b053a31c5a7"
+      },
+      {
+        "byte_count": 4817,
+        "path": "code/source_read_routing/controls/q3_branch_phase0.000.tape",
+        "sha256": "sha256:5fe3ddda87ed3fd467bb0cba2d4575dd04daba3cc615f63b45f7f11008976060"
+      },
+      {
+        "byte_count": 388,
+        "path": "code/source_read_routing/controls/q3_branch_phase0.segment.json",
+        "sha256": "sha256:84540e67a6e5ebc5446186c103ecbe60887a6362e972f24a2f93b35f057492dd"
+      },
+      {
+        "byte_count": 892,
+        "path": "code/source_read_routing/controls/q3_branch_phase1.000.tape",
+        "sha256": "sha256:b5380c3097c9c6b78d26ab79aed0b136d1bc87cc4e4a7f573f4f785e3ab38231"
+      },
+      {
+        "byte_count": 386,
+        "path": "code/source_read_routing/controls/q3_branch_phase1.segment.json",
+        "sha256": "sha256:46baced05fb1fa74367a78553237b13d9d05f6ac8730fba4ff15b069914766a9"
+      },
+      {
+        "byte_count": 997,
+        "path": "code/source_read_routing/controls/q3_branch_phase2.000.tape",
+        "sha256": "sha256:b000fe028b7d48aa8109c5e211ba777d38f7d35e3521ce51124c8e284b676fd0"
+      },
+      {
+        "byte_count": 386,
+        "path": "code/source_read_routing/controls/q3_branch_phase2.segment.json",
+        "sha256": "sha256:2cf90dfe47aafddc4421cbbd6e57642b72bc197c19f3e547ce5b9fdcd4da3d50"
+      },
+      {
+        "byte_count": 2505,
+        "path": "code/source_read_routing/controls/q3_scratch.json",
+        "sha256": "sha256:fc89ba5154bc5e7dc46dac7e277a0368a675d64d4ed8cb5a0719741d7958c571"
+      },
+      {
+        "byte_count": 4853,
+        "path": "code/source_read_routing/controls/q3_scratch_phase0.000.tape",
+        "sha256": "sha256:4184bd993fd52696843a554f9e82e1a7141accf3ec6a888fa0fbf92997ec64e2"
+      },
+      {
+        "byte_count": 389,
+        "path": "code/source_read_routing/controls/q3_scratch_phase0.segment.json",
+        "sha256": "sha256:aaae6e5934fa0932273ae9857c4d5532a74aefbced4d787c04054ddb8917cee9"
+      },
+      {
+        "byte_count": 884,
+        "path": "code/source_read_routing/controls/q3_scratch_phase1.000.tape",
+        "sha256": "sha256:d92c81340dbc3d301ec44da5911f841663cae11cb553ee555a7600c9d2e02491"
+      },
+      {
+        "byte_count": 387,
+        "path": "code/source_read_routing/controls/q3_scratch_phase1.segment.json",
+        "sha256": "sha256:e366eb2ec9d0cee9881d1ac7b2b0347faa1a4518aa7affceac645894354ecb06"
+      },
+      {
+        "byte_count": 884,
+        "path": "code/source_read_routing/controls/q3_scratch_phase2.000.tape",
+        "sha256": "sha256:d92c81340dbc3d301ec44da5911f841663cae11cb553ee555a7600c9d2e02491"
+      },
+      {
+        "byte_count": 387,
+        "path": "code/source_read_routing/controls/q3_scratch_phase2.segment.json",
+        "sha256": "sha256:b486f5bb06329923532a3b1743ce9bf5cb9c35724514224da112b9f4e44cc7ff"
+      },
+      {
+        "byte_count": 2501,
+        "path": "code/source_read_routing/controls/q3_source.json",
+        "sha256": "sha256:5f5f04efc1a83f900fd6a334827d43f6a5325cb38de736c32f3a00b7c52efbdd"
+      },
+      {
+        "byte_count": 4826,
+        "path": "code/source_read_routing/controls/q3_source_phase0.000.tape",
+        "sha256": "sha256:123a28ff664e6ac8c9b229ad3603c52b4d11b369987df530c74556abd350af9d"
+      },
+      {
+        "byte_count": 388,
+        "path": "code/source_read_routing/controls/q3_source_phase0.segment.json",
+        "sha256": "sha256:24be3420c47cc1eb14724a9bf2ae97baaef8adff035674f1471529783ccf3727"
+      },
+      {
+        "byte_count": 997,
+        "path": "code/source_read_routing/controls/q3_source_phase1.000.tape",
+        "sha256": "sha256:b000fe028b7d48aa8109c5e211ba777d38f7d35e3521ce51124c8e284b676fd0"
+      },
+      {
+        "byte_count": 386,
+        "path": "code/source_read_routing/controls/q3_source_phase1.segment.json",
+        "sha256": "sha256:d128fd6341a4f3ff1d4b1c1e130226cfb09fba093f8ba53dd833331f851a04b9"
+      },
+      {
+        "byte_count": 1065,
+        "path": "code/source_read_routing/controls/q3_source_phase2.000.tape",
+        "sha256": "sha256:d73abbacfcde64dea5531233f5bcd79a9e312d582c5ca2d6bd5f0b5529a0a4ce"
+      },
+      {
+        "byte_count": 387,
+        "path": "code/source_read_routing/controls/q3_source_phase2.segment.json",
+        "sha256": "sha256:be1f076144d3e7655773f3a91beba527d8aa6b56f16b08de82dd97474f6ccb3c"
+      },
+      {
+        "byte_count": 2636,
+        "path": "code/source_read_routing/native_negative_controls.py",
+        "sha256": "sha256:54b6957d0499e93fe4a8cac3233caa970d5eacb35d8f36f6e8d3e5d1d77b6223"
+      },
+      {
+        "byte_count": 7626,
+        "path": "code/source_read_routing/pack.py",
+        "sha256": "sha256:cec427b0da6b2bcee4ac58f801249e504eaa0b138440b4b4bd50f3f33b2b2579"
+      },
+      {
+        "byte_count": 3484,
+        "path": "code/source_read_routing/prepare.py",
+        "sha256": "sha256:fb52c6bb02e489620c933076f6ca3ffb28865408a2abd8d8036331685c9f5244"
+      },
+      {
+        "byte_count": 9294,
+        "path": "code/source_read_routing/produce.cpp",
+        "sha256": "sha256:182464e7a0960f20fb77dadd085cc043a80b6dcdeff70ecbc946fe49b476c0ca"
+      },
+      {
+        "byte_count": 5505,
+        "path": "code/source_read_routing/regenerate.py",
+        "sha256": "sha256:97acd035ef61a587746b0da6f87c61151694e6bb4055fd269e834c01a70e47e8"
+      },
+      {
+        "byte_count": 2931,
+        "path": "code/source_read_routing/run.py",
+        "sha256": "sha256:037c0d22f237c3ed66309d3f6e09732b89b5c872a7e17a62c7e3ed385f393fa1"
+      },
+      {
+        "byte_count": 1896,
+        "path": "code/source_read_routing/specification.json",
+        "sha256": "sha256:8388c60e6e4ab7236006f25678658e26b24c159f5dbf0229ac4adbdcb431ca24"
+      },
+      {
+        "byte_count": 4075,
+        "path": "code/source_read_routing/support_comparison.py",
+        "sha256": "sha256:4ee2087f707cf2e88cd0f20a776d054b2a494763d9b78282233599d3460d9d3b"
+      },
+      {
+        "byte_count": 569434,
+        "path": "code/source_read_routing/support_w12_l4.json",
+        "sha256": "sha256:1f074442a16c9003454a7e364bbb27af0a6c8c493472ec91120482f718823869"
+      },
+      {
+        "byte_count": 2463007,
+        "path": "code/source_read_routing/support_w12_l5.json",
+        "sha256": "sha256:dcaaf081787b1c04622e4375f35aea7b5d5a69c02139d8abff9725b5d1b2b5ef"
+      },
+      {
+        "byte_count": 4109,
+        "path": "code/source_read_routing/tape.py",
+        "sha256": "sha256:a234baaadec839950d170ce6223fced6a6b07926d69c9d71e15afa982b7a0e6a"
+      },
+      {
+        "byte_count": 8771,
+        "path": "code/source_read_routing/test_read_routing.py",
+        "sha256": "sha256:049200b3dfee8dae66094e464c867b9edf3e43790aaabd8b84457b6dcac3124a"
+      },
+      {
+        "byte_count": 5519,
+        "path": "code/source_read_routing/test_regeneration.py",
+        "sha256": "sha256:cf8006da0a37cd07aa9150358e4889c533d5de6e6f8523eef8850288741a6d15"
+      },
+      {
+        "byte_count": 2940,
+        "path": "code/source_read_routing/test_support_comparison.py",
+        "sha256": "sha256:66f293a00dd1b36cd5e2d8006e2ebaee006a4a952427a31743f9c7b8c63c5784"
+      },
+      {
+        "byte_count": 10697,
+        "path": "code/source_read_routing/verify.cpp",
+        "sha256": "sha256:535f19c358e885954a7f5c26149adf175ce7202e0be4d396d877a9a85cf2c8ed"
+      },
+      {
+        "byte_count": 17584,
+        "path": "code/source_read_routing/verify.py",
+        "sha256": "sha256:63cf3d9716ec8dfa040b99b16f9efbaa265560ca763d032a92bee918746cb371"
+      },
+      {
+        "byte_count": 5474,
+        "path": "code/source_read_selection/CONTRACT.md",
+        "sha256": "sha256:8706ee61d34417d248487ec92c4e3bd101ca6ee25acd821e7eab67b00e5aa6c2"
+      },
+      {
+        "byte_count": 13941,
+        "path": "code/source_read_selection/README.md",
+        "sha256": "sha256:93949ddbbb5452c62a44afc59c09fd4d8716fecffd38c654f021ddf889e35990"
+      },
+      {
+        "byte_count": 69,
+        "path": "code/source_read_selection/__init__.py",
+        "sha256": "sha256:d14b9a8daa4d95123c2164642a287653a68098faf4732cfe8cce0f6f75e9faf2"
+      },
+      {
+        "byte_count": 4525,
+        "path": "code/source_read_selection/build.py",
+        "sha256": "sha256:d179f21713d8d769889ac30ea91bad6dce630c97a8ddb858b9cae3fd777836d8"
+      },
+      {
+        "byte_count": 2571,
+        "path": "code/source_read_selection/codec.py",
+        "sha256": "sha256:82ec5a8ec4f18b06a53ba51f91702a3c78ea8a42b20ab725b15fe1606e0ed8f5"
+      },
+      {
+        "byte_count": 2745,
+        "path": "code/source_read_selection/constraints.py",
+        "sha256": "sha256:59844d5c54cf000e458fde611a4e727d63be3120315373aaaff4cb42980b5934"
+      },
+      {
+        "byte_count": 13619,
+        "path": "code/source_read_selection/controls.json",
+        "sha256": "sha256:edf2f2fab3ec795a0acfcb2ee0eea32b7dba01e0fa6db5ea983216c7515e3b03"
+      },
+      {
+        "byte_count": 2406,
+        "path": "code/source_read_selection/receipt.json",
+        "sha256": "sha256:e1e888d0a4d6e6fe01269c1faf73352361a85bb0649783403c8d9f3a1e00f869"
+      },
+      {
+        "byte_count": 6272,
+        "path": "code/source_read_selection/test_constraints.py",
+        "sha256": "sha256:72e88af8c88f64ee0790c9fe1c15299154a8ef47bcd2d2230a921238a01f7a0a"
+      },
+      {
+        "byte_count": 11712,
+        "path": "code/source_read_selection/test_selection.py",
+        "sha256": "sha256:9362569255707ee0c19bb7e6b2f5bcda0da0bfa9607f2b132e4112bc91d9e1c4"
+      },
+      {
+        "byte_count": 9473,
+        "path": "code/source_read_selection/verify.py",
+        "sha256": "sha256:c5a0d01c55d49e9ab70c1aacae67afd94cbf1e3be6c5136ee9946699e853fc2f"
+      },
+      {
+        "byte_count": 7720,
+        "path": "code/source_read_selection/verify_constraints.py",
+        "sha256": "sha256:14fc33ab96171af1179fa88956427b5ae1b1a157aec5c3d002b09035712eb52f"
+      },
+      {
+        "byte_count": 2907,
+        "path": "code/source_reusable_bus/CONTRACT.md",
+        "sha256": "sha256:c739e0eeeb09a49fb0dc865476f0005c38a93bd338a3617eb9771450c508447d"
+      },
+      {
+        "byte_count": 10079,
+        "path": "code/source_reusable_bus/README.md",
+        "sha256": "sha256:eadc079ff2a5dc2a59a6604489f1cec66706cd88017cbf086e1e4bf7a1de4a70"
+      },
+      {
+        "byte_count": 56,
+        "path": "code/source_reusable_bus/__init__.py",
+        "sha256": "sha256:c875861a738f07eb728aa1067814c87cbffb050331a92dc8c081caba4c1cc6a0"
+      },
+      {
+        "byte_count": 4372,
+        "path": "code/source_reusable_bus/build.py",
+        "sha256": "sha256:7b4db0480906139a5cacc0f35de0b32aa4d89c34e8792e055ee247908057e9ee"
+      },
+      {
+        "byte_count": 1960,
+        "path": "code/source_reusable_bus/codec.py",
+        "sha256": "sha256:1296e9dcfaadebc6915d7f799e14a58e58beb10569b04fd1456f293e6f19b45f"
+      },
+      {
+        "byte_count": 3690261,
+        "path": "code/source_reusable_bus/controls.json",
+        "sha256": "sha256:76f08859849ff1523f501b671e0226252310a03b83303a56bf6395089b1bfc43"
+      },
+      {
+        "byte_count": 42935,
+        "path": "code/source_reusable_bus/receipt.json",
+        "sha256": "sha256:1835cec8e82e27ef15ba095a2cb2dde01613feea86f6af6bda0f7ea70b43535f"
+      },
+      {
+        "byte_count": 16217,
+        "path": "code/source_reusable_bus/test_reusable_bus.py",
+        "sha256": "sha256:68c4b3de49fc5efa59c8a78276e163f92a58e9e9d1d5648eb3858c6d83533063"
+      },
+      {
+        "byte_count": 14400,
+        "path": "code/source_reusable_bus/verify.py",
+        "sha256": "sha256:e5fbbe7ee3f4ef77fb4d1cda8f8b6a0f2c565e8a5c1fd4a40e0f6ecf8148a26c"
       },
       {
         "byte_count": 4006,
@@ -2384,6 +3593,86 @@
         "sha256": "sha256:8522ffad53c3cc0db462da11c0c54f2a095f5748ad44f77c8cc25f51a418aacc"
       },
       {
+        "byte_count": 1766,
+        "path": "code/source_routing_refinement/CONTRACT.md",
+        "sha256": "sha256:f4f1071c037c5d815ac9e2e1d40ac42642b25beb64a6f8242c4640ccffc91562"
+      },
+      {
+        "byte_count": 12901,
+        "path": "code/source_routing_refinement/README.md",
+        "sha256": "sha256:0b695363e380a0d6bfadfae50d0ae7f87e32fd0136a767d8085f3870a04d4a6d"
+      },
+      {
+        "byte_count": 21865,
+        "path": "code/source_routing_refinement/controls/q3_baseline.tape",
+        "sha256": "sha256:8dfc46929b67b293102b35ebaae2f158b35d907abd25502de1d4309f1bb38b8d"
+      },
+      {
+        "byte_count": 21863,
+        "path": "code/source_routing_refinement/controls/q3_branch.tape",
+        "sha256": "sha256:f86b607ba5a7a4fa9f9dbc99a640d3d4e8e247e0d779ede4d415a2c43f571995"
+      },
+      {
+        "byte_count": 21944,
+        "path": "code/source_routing_refinement/controls/q3_scratch.tape",
+        "sha256": "sha256:f968b1c38a0e54ef4a1701ebdfbbdc86ce80717b0e9c2ad71e38d15b2e68411c"
+      },
+      {
+        "byte_count": 21875,
+        "path": "code/source_routing_refinement/controls/q3_source.tape",
+        "sha256": "sha256:44179b48f1d9e43a4e32a3080a439b66ef5d83d9599340b834c27ce9fd962ed5"
+      },
+      {
+        "byte_count": 3513,
+        "path": "code/source_routing_refinement/hierarchy.py",
+        "sha256": "sha256:e88b6b4f3e787a4615af5af365d60db43093e99fa7fda6c20297b9892562169d"
+      },
+      {
+        "byte_count": 8352,
+        "path": "code/source_routing_refinement/receipt.json",
+        "sha256": "sha256:894e4cbf0a90e0f15abd70bb2a6368cd68b22904475cbca35c6bb484df3a5610"
+      },
+      {
+        "byte_count": 12150,
+        "path": "code/source_routing_refinement/storage.py",
+        "sha256": "sha256:c2a7797e8b8e353e2a8137faef52bb4763eed6d0a5669f3b1b045fb9fe24ff53"
+      },
+      {
+        "byte_count": 9769,
+        "path": "code/source_routing_refinement/test_refinement.py",
+        "sha256": "sha256:7cd6256c0039464e187cefb47c7996f7363f6549788cbd306ab54f74b464f601"
+      },
+      {
+        "byte_count": 9927,
+        "path": "code/source_routing_refinement/verify.py",
+        "sha256": "sha256:ec5934e33dae48a37e63a177ce4199008eb5a01c5cafa94a10b1c3ed68ec07c5"
+      },
+      {
+        "byte_count": 2424,
+        "path": "code/source_scalar_finite_instrument/README.md",
+        "sha256": "sha256:025d71489940b8ab30859478124916b08fa9b2dbb2921d42bbc90314790fec00"
+      },
+      {
+        "byte_count": 17330,
+        "path": "code/source_scalar_finite_instrument/finite_instrument.py",
+        "sha256": "sha256:3bc8bbae180e185cf243c31cf9bc90118652ed5431fbb7427c8785ef9c875551"
+      },
+      {
+        "byte_count": 589511,
+        "path": "code/source_scalar_finite_instrument/finite_instrument_receipt.json",
+        "sha256": "sha256:a9e922b62896419bb96ac24d9023c24f1c7f4f0cc40ca84c601ece12577a09ad"
+      },
+      {
+        "byte_count": 10210,
+        "path": "code/source_scalar_finite_instrument/test_finite_instrument.py",
+        "sha256": "sha256:6a5479ac5fc9fb5288e3f8bfdd53c05fa06faa24a1e2e2f691ba7ac36ce2ac29"
+      },
+      {
+        "byte_count": 26196,
+        "path": "code/source_scalar_finite_instrument/verify_finite_instrument.py",
+        "sha256": "sha256:0d9f05296d6dd27fe6d6c53e4b20b2be68f6e9991c0629def53acc345a4a234b"
+      },
+      {
         "byte_count": 2344,
         "path": "code/source_scalar_instruments/README.md",
         "sha256": "sha256:dc7c5aad0353201b5b265afc6c62b9e17bfce9a83328351046adc23eee1db41c"
@@ -2407,12 +3696,207 @@
         "byte_count": 13877,
         "path": "code/source_scalar_instruments/verify_sequential_instrument.py",
         "sha256": "sha256:0c34c486f2ed28d48550195723eeca2ad71823a46c1db18a8403c9781231d9f9"
+      },
+      {
+        "byte_count": 7651,
+        "path": "code/source_temporal_acceptance/CONTRACT.md",
+        "sha256": "sha256:9a85a4f1231aeb22533c33de4bf816a94bae8cfad05199ed45f47c3d93364bc6"
+      },
+      {
+        "byte_count": 20897,
+        "path": "code/source_temporal_acceptance/DERIVATION.md",
+        "sha256": "sha256:b7492a0a3088607f06ac49181c98ed62174f776f52a19442ef6f3981fd0fdf5f"
+      },
+      {
+        "byte_count": 7399,
+        "path": "code/source_temporal_acceptance/README.md",
+        "sha256": "sha256:cd0d298a5c2a644f61094f7f1c2d9c4989fe5f0addb6d570b13ac7f33eb96013"
+      },
+      {
+        "byte_count": 62,
+        "path": "code/source_temporal_acceptance/__init__.py",
+        "sha256": "sha256:d6a3b7025f9f3b127bd04961bd23a92f356e20ab87af729b97854edabf47ffa6"
+      },
+      {
+        "byte_count": 9860,
+        "path": "code/source_temporal_acceptance/build.py",
+        "sha256": "sha256:a91f4792d1f3a5cd35d35cfe15306f679e9fbd9b5300afc523185decb9cc2aed"
+      },
+      {
+        "byte_count": 5792,
+        "path": "code/source_temporal_acceptance/check_tomography.py",
+        "sha256": "sha256:1c3ab13fd05eb6fe3f0ad09cec792e86f971d1afabccbf149bb98935e9d621b4"
+      },
+      {
+        "byte_count": 1970,
+        "path": "code/source_temporal_acceptance/codec.py",
+        "sha256": "sha256:4692d6b019062afce06c5c15321aeee56345e1c2420b880387305e9e7f8cb0c2"
+      },
+      {
+        "byte_count": 26251,
+        "path": "code/source_temporal_acceptance/controls.json",
+        "sha256": "sha256:425112fb7867b61daaf3ce5f4912ffd59f658ec854ad6ffcb9cfb8ebc899cb58"
+      },
+      {
+        "byte_count": 4890,
+        "path": "code/source_temporal_acceptance/receipt.json",
+        "sha256": "sha256:7115f2fafe131c98f5691616728a1136f180cd97a5966554dc7346ffe9026784"
+      },
+      {
+        "byte_count": 15384,
+        "path": "code/source_temporal_acceptance/test_temporal.py",
+        "sha256": "sha256:c9ee2ac84546cbb4cbc456e64268f761d93ddd2666f50404ff6b8eec4563240d"
+      },
+      {
+        "byte_count": 3791,
+        "path": "code/source_temporal_acceptance/tomography.py",
+        "sha256": "sha256:8e3f8b316bcde87a9dea47a894ebb851d96e3693adcacfaa3d1992531c2a63f5"
+      },
+      {
+        "byte_count": 16324,
+        "path": "code/source_temporal_acceptance/verify.py",
+        "sha256": "sha256:16c38369370f8de5ece26604702d22a1e0a5f38a76660b28dc87bf71060cb6fe"
+      },
+      {
+        "byte_count": 1327,
+        "path": "evidence/source_net_causal_poset/routed_read_law/README.md",
+        "sha256": "sha256:85dc0444393c92a728b12d34aaa2a8dbf50222bb49a2c733d6cb4681df8ee7a9"
+      },
+      {
+        "byte_count": 2899,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_baseline.json",
+        "sha256": "sha256:bc4f331a8b2665043a0b2d1238b758806e59104d12254083949bdc0983f7008f"
+      },
+      {
+        "byte_count": 341,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_baseline_phase0.segment.json",
+        "sha256": "sha256:10ba416cb95aadcc374efc84a970f61ffbb9aa0ced143bddc82630d5ed2817b9"
+      },
+      {
+        "byte_count": 346,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_baseline_phase1.segment.json",
+        "sha256": "sha256:b912a6cdce34477f1cc639e9a4f6e7b77675fce4f93e748635404750a2ab5875"
+      },
+      {
+        "byte_count": 397,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_baseline_phase2.segment.json",
+        "sha256": "sha256:8430fb6774b0d48a90cc2902c75818f8b568afeb11ad01db327e2624ec808633"
+      },
+      {
+        "byte_count": 397,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_baseline_phase3.segment.json",
+        "sha256": "sha256:68dc0ace590612b206afdcbf48f8bd7337fa5bcf9ecd1b7493079eddb7e3c67e"
+      },
+      {
+        "byte_count": 397,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_baseline_phase4.segment.json",
+        "sha256": "sha256:9e6af776f8535cc05b32cf56202e4c6154d4f300182f8ae98ced09438da5f165"
+      },
+      {
+        "byte_count": 2887,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_source.json",
+        "sha256": "sha256:a8895d573d7df2bccc6642cedf308972ccc8554bfd57dfb38be415db1bd49ae0"
+      },
+      {
+        "byte_count": 391,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_source_phase0.segment.json",
+        "sha256": "sha256:baf8b0b448011690f4c713761738f628adea0753873af15f4ff2a0672d67a8b6"
+      },
+      {
+        "byte_count": 395,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_source_phase1.segment.json",
+        "sha256": "sha256:93890e32585af215248975587d5f0b4bb6a68a4d96f5ecb350f3522339e6be8c"
+      },
+      {
+        "byte_count": 395,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_source_phase2.segment.json",
+        "sha256": "sha256:d416292b3b38a3a2364b23994dc16078e4b38b2075e2605b2e5808c2b68b39a7"
+      },
+      {
+        "byte_count": 395,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_source_phase3.segment.json",
+        "sha256": "sha256:5feb6ee9304abca019f8e9afd738f450190822357c60e569dda2f335904848d6"
+      },
+      {
+        "byte_count": 395,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_source_phase4.segment.json",
+        "sha256": "sha256:938a3f500c59fffb30ad7aa709f1f25cc1535dd9070754e9993dd2e35093e160"
+      },
+      {
+        "byte_count": 3081,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_baseline.json",
+        "sha256": "sha256:cf590f86c935cbd1b5d618b38261bd1df858b86a0cc3254cebdb1118a024542b"
+      },
+      {
+        "byte_count": 343,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_baseline_phase0.segment.json",
+        "sha256": "sha256:798ee577b634fac8e9ee9d66beb47c0690897127bf2ef1d04665089f11538f2e"
+      },
+      {
+        "byte_count": 1349,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_baseline_phase1.segment.json",
+        "sha256": "sha256:652759c06479d0e8a0d7ec470cf867b456ff2a2e6edaa19021d016baffb415b2"
+      },
+      {
+        "byte_count": 399,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_baseline_phase2.segment.json",
+        "sha256": "sha256:8d4a07a07d7c7db57a30708e2b57da205ed092429e475b944156dff8607413f5"
+      },
+      {
+        "byte_count": 399,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_baseline_phase3.segment.json",
+        "sha256": "sha256:8698849ac6426ffee5815547ae682abd76a166172e2f1d39fc9e888d5bf3ff3b"
+      },
+      {
+        "byte_count": 565,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_baseline_phase4.segment.json",
+        "sha256": "sha256:960afd95cafa9900d286db7e410c49b93ecdd661f2c32a13f21f2bbe9acaf4ee"
+      },
+      {
+        "byte_count": 565,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_baseline_phase5.segment.json",
+        "sha256": "sha256:33e3fc553cb73db00f508644d9ee8e347628a288b87e484d8df236c0e9ea8111"
+      },
+      {
+        "byte_count": 3067,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_source.json",
+        "sha256": "sha256:421992e46c5cacfb6e76ce5c4d3bae3d6b3cab70665118736f185d443572933f"
+      },
+      {
+        "byte_count": 392,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_source_phase0.segment.json",
+        "sha256": "sha256:ae6a4da23756720714911b1aa2c910bdcb3aa95ff0804311eef933fc22a2b998"
+      },
+      {
+        "byte_count": 397,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_source_phase1.segment.json",
+        "sha256": "sha256:4d2cf20e09ca9d7ae19df569788ee3757c37b7b9e11936107cb8b148f46c8e4b"
+      },
+      {
+        "byte_count": 397,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_source_phase2.segment.json",
+        "sha256": "sha256:a0b31024edfcc0a0524f41b0f0423ab71b260f8d6fdbf6f7568f244f0e900d27"
+      },
+      {
+        "byte_count": 397,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_source_phase3.segment.json",
+        "sha256": "sha256:ece09c52258346f1d68331160b2b9ee0e4e4fefd19bad63cb51a7dbdec6b218a"
+      },
+      {
+        "byte_count": 397,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_source_phase4.segment.json",
+        "sha256": "sha256:782fbcff54c3662eebf26fd0bc73091a37deb91997698344e6367b3031b9be8d"
+      },
+      {
+        "byte_count": 397,
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_source_phase5.segment.json",
+        "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:65f67b28cdbb5fa729cb065ef260f719ded1f3fe2238a9994d065f023e85c646",
+    "files_sha256": "sha256:310b43f6f7982966316f7c1467a18b3202fc46a447f8fc6415f2b596766bff7f",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
-  "audited_upstream_main_sha": "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9",
+  "audited_upstream_main_sha": "afed734528edff214c34d4038a64310544df922d",
   "candidates": [
     {
       "candidate_id": "registered_adjacency_response",
@@ -2510,7 +3994,8 @@
       "rejection_reason": "Mean, reset, and export overwrite state under one fixed serial schedule; the logs are transport histories, not reversible current perturbations.",
       "source_ancestry": "Classical feedback episodes over the captured W12 routing support.",
       "source_paths": [
-        "code/source_feedback_transport/transport_receipt.json"
+        "code/source_feedback_transport/transport_receipt.json",
+        "code/source_feedback_transport/README.md"
       ]
     },
     {
@@ -2518,7 +4003,8 @@
       "classification": "IRREVERSIBLE_ONLY",
       "evidence_facts": [
         "sampled_quantum_outcome_histories = false",
-        "source_selected_quantum_operations = false"
+        "source_selected_quantum_operations = false",
+        "finite instrument receipt pins the sequential instrument as parent"
       ],
       "history_custody": "STATIC_INSTRUMENT_WITHOUT_SAMPLED_HISTORIES",
       "properties": {
@@ -2542,10 +4028,12 @@
         "refinement_provenance_present",
         "twelve_reversible_perturbation_families"
       ],
-      "rejection_reason": "The full instrument includes reset/readout, is 64-site rather than W12, and explicitly has no sampled outcome histories or source-selected operations.",
-      "source_ancestry": "Supplied 64-site centered quantum instrument and analytic cross-time brackets.",
+      "rejection_reason": "The full instrument includes reset/readout, is 64-site rather than W12, and explicitly has no sampled outcome histories or source-selected operations; the finite-duration extension certifies pulse bounds on the same supplied action and samples no quantum outcomes.",
+      "source_ancestry": "Supplied 64-site centered quantum instrument, analytic cross-time brackets, and the finite-duration pointer readout that replays it.",
       "source_paths": [
-        "code/source_scalar_instruments/sequential_instrument_receipt.json"
+        "code/source_scalar_instruments/sequential_instrument_receipt.json",
+        "code/source_scalar_finite_instrument/README.md",
+        "code/source_scalar_finite_instrument/finite_instrument_receipt.json"
       ]
     },
     {
@@ -2919,13 +4407,14 @@
         "encoded copy and routing attenuate amplitudes by powers of two",
         "positive nonnegative registers cannot reset exactly under finite pair means",
         "nontrivial closed pair-mean cycles are excluded by the quadratic defect",
-        "the schedule-dependence witness covers two words on Fin3 rather than all W12 pairs"
+        "the schedule-dependence witness covers two words on Fin3 rather than all W12 pairs",
+        "reusable-bus fixed-point tapes = 16 on captured ports of carriers 0, 1 and 3"
       ],
-      "history_custody": "FORMAL_IRREVERSIBLE_PAIR_MEAN_PROGRAMS",
+      "history_custody": "FORMAL_IRREVERSIBLE_PAIR_MEAN_PROGRAMS_WITH_RETAINED_CONTROL_TAPES",
       "properties": {
         "both_composition_orders_recorded": false,
-        "port_indexed": false,
-        "raw_histories_serialized": false,
+        "port_indexed": true,
+        "raw_histories_serialized": true,
         "refinement_provenance_present": false,
         "reversible": false,
         "same_twelve_port_carrier": false,
@@ -2934,16 +4423,14 @@
         "twelve_reversible_perturbation_families": false
       },
       "qualification_failures": [
-        "port_indexed",
         "reversible",
         "both_composition_orders_recorded",
-        "raw_histories_serialized",
         "same_twelve_port_carrier",
         "refinement_provenance_present",
         "twelve_reversible_perturbation_families"
       ],
-      "rejection_reason": "The programs attenuate, average, clear, and dissipate. Their two-order Fin3 control proves schedule dependence, but they supply neither W12 port families nor the 132 serialized mixed-order histories.",
-      "source_ancestry": "Formal copy, clear, route, cleanup, memory, and arithmetic programs compiled to the scalar pair-mean law.",
+      "rejection_reason": "The programs attenuate, average, clear, and dissipate. Their two-order Fin3 control proves schedule dependence, and the runtime tapes execute one supplied request sequence per history across three carriers; they supply neither twelve reversible port families nor the 132 serialized mixed-order histories.",
+      "source_ancestry": "Formal copy, clear, route, cleanup, memory, and arithmetic programs compiled to the scalar pair-mean law, with their runtime controls on captured carriers 0, 1 and 3 of the level-three support.",
       "source_paths": [
         "Lean/Geometry/SourceEncodedMemory.lean",
         "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean",
@@ -2955,7 +4442,23 @@
         "Lean/Geometry/SourceReusableBusAxiomAudit.lean",
         "Lean/Geometry/SourceBusScaling.lean",
         "Lean/Geometry/SourceNativeRecords.lean",
-        "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean"
+        "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean",
+        "code/source_encoded_memory/README.md",
+        "code/source_encoded_memory/CONTRACT.md",
+        "code/source_encoded_memory/controls.json",
+        "code/source_encoded_memory/receipt.json",
+        "code/source_passive_memory/README.md",
+        "code/source_passive_memory/CONTRACT.md",
+        "code/source_passive_memory/controls.json",
+        "code/source_passive_memory/receipt.json",
+        "code/source_reusable_bus/README.md",
+        "code/source_reusable_bus/CONTRACT.md",
+        "code/source_reusable_bus/controls.json",
+        "code/source_reusable_bus/receipt.json",
+        "code/source_native_updates/README.md",
+        "code/source_native_updates/CONTRACT.md",
+        "code/source_native_updates/controls.json",
+        "code/source_native_updates/receipt.json"
       ]
     },
     {
@@ -2964,13 +4467,14 @@
       "evidence_facts": [
         "full-prefix transcripts are formal functions of supplied words",
         "cut-avoiding selected words obstruct guaranteed remote reads",
-        "cover choice can change selected history support"
+        "cover choice can change selected history support",
+        "captured scalar means = 48 with status conditional_obstruction_not_full_axiom_countermodel"
       ],
-      "history_custody": "FORMAL_SELECTED_IRREVERSIBLE_TRANSCRIPTS",
+      "history_custody": "FORMAL_SELECTED_IRREVERSIBLE_TRANSCRIPTS_WITH_CAPTURED_CONTROLS",
       "properties": {
         "both_composition_orders_recorded": false,
-        "port_indexed": false,
-        "raw_histories_serialized": false,
+        "port_indexed": true,
+        "raw_histories_serialized": true,
         "refinement_provenance_present": false,
         "reversible": false,
         "same_twelve_port_carrier": false,
@@ -2979,22 +4483,24 @@
         "twelve_reversible_perturbation_families": false
       },
       "qualification_failures": [
-        "port_indexed",
         "reversible",
         "both_composition_orders_recorded",
-        "raw_histories_serialized",
         "same_twelve_port_carrier",
         "refinement_provenance_present",
         "twelve_reversible_perturbation_families"
       ],
-      "rejection_reason": "Theorems quantify over abstract finite words and transcripts of destructive pair means. They provide no W12 instance, inverse laws, runtime custody, refinement ancestry, or complete mixed-order family.",
-      "source_ancestry": "Formal finite pair-mean words, prefix transcripts, information-projection selection, and remote-read obstructions.",
+      "rejection_reason": "Theorems quantify over abstract finite words and transcripts of destructive pair means, and the captured controls execute two source interventions under one cut. They provide no inverse laws, refinement ancestry, or complete mixed-order family.",
+      "source_ancestry": "Formal finite pair-mean words, prefix transcripts, information-projection selection, and remote-read obstructions, with captured controls on twelve source ports and two receiver ports of the level-three support.",
       "source_paths": [
         "Lean/Geometry/SourceConstrainedRead.lean",
         "Lean/Geometry/SourceConstrainedSelection.lean",
         "Lean/Geometry/SourceReadSelection.lean",
         "Lean/Geometry/SourceReadSelectionAxiomAudit.lean",
-        "Lean/Geometry/SourceSelectionControls.lean"
+        "Lean/Geometry/SourceSelectionControls.lean",
+        "code/source_read_selection/README.md",
+        "code/source_read_selection/CONTRACT.md",
+        "code/source_read_selection/controls.json",
+        "code/source_read_selection/receipt.json"
       ]
     },
     {
@@ -3209,6 +4715,304 @@
         "Lean/Screen/A5ResponseWordAlgebra.lean",
         "Lean/Screen/OrientedFaceBracketSelector.lean"
       ]
+    },
+    {
+      "candidate_id": "source_read_routing_full_family",
+      "classification": "IRREVERSIBLE_ONLY",
+      "evidence_facts": [
+        "q13 retained events = 19113548",
+        "q21 retained events = 292722053",
+        "q13 multicast seam hops = 2972512",
+        "six-event hop word contains resetReceiver and resetSource",
+        "specification.scope.axiomatic_read_law_derived = false and M1 status = retained supplied structural rule",
+        "level-three controls retain complete tapes; production streams are regenerated against phase and whole-stream SHA-256 commitments",
+        "refinement receipt: base diameter 3 and M1_source_selected = false"
+      ],
+      "history_custody": "REGENERATED_EVENT_STREAMS_AGAINST_RETAINED_COMMITMENTS",
+      "properties": {
+        "both_composition_orders_recorded": false,
+        "port_indexed": true,
+        "raw_histories_serialized": true,
+        "refinement_provenance_present": true,
+        "reversible": false,
+        "same_twelve_port_carrier": false,
+        "source_native": true,
+        "target_free": true,
+        "twelve_reversible_perturbation_families": false
+      },
+      "qualification_failures": [
+        "reversible",
+        "both_composition_orders_recorded",
+        "same_twelve_port_carrier",
+        "twelve_reversible_perturbation_families"
+      ],
+      "rejection_reason": "Every hop executes constant resets and a destructive pair mean, and the module proves that closed sum-preserving words cannot reset, so the transport is irreversible by construction. One intervention family, the centre payload +1, is executed in one order per run and the value readouts are proved schedule-independent; no mixed-order pair of perturbations is recorded and no twelve reversible families exist. The histories span thousands of carriers rather than one twelve-port carrier.",
+      "source_ancestry": "Full-family q=13 and q=21 metric-read compiler on captured W12 level-four and level-five supports under the retained M1 read, memory, feedback and control law, with level-three controls and a kernel-checked six-event transport word.",
+      "source_paths": [
+        "code/source_read_routing/CONTRACT.md",
+        "code/source_read_routing/README.md",
+        "code/source_read_routing/specification.json",
+        "code/source_read_routing/controls/q3_baseline.json",
+        "code/source_read_routing/controls/q3_source.json",
+        "code/source_read_routing/controls/q3_branch.json",
+        "code/source_read_routing/controls/q3_scratch.json",
+        "evidence/source_net_causal_poset/routed_read_law/q13_baseline.json",
+        "evidence/source_net_causal_poset/routed_read_law/q13_source.json",
+        "evidence/source_net_causal_poset/routed_read_law/q21_baseline.json",
+        "evidence/source_net_causal_poset/routed_read_law/q21_source.json",
+        "code/source_routing_refinement/README.md",
+        "code/source_routing_refinement/CONTRACT.md",
+        "code/source_routing_refinement/receipt.json",
+        "Lean/Geometry/SourceReadRouting.lean",
+        "Lean/Geometry/SourceRoutingBudget.lean",
+        "Lean/Geometry/SourceRoutingHierarchy.lean",
+        "Lean/Geometry/SourceRoutingRefinementAxiomAudit.lean",
+        "Lean/Geometry/SourceRoutingStorage.lean"
+      ]
+    },
+    {
+      "candidate_id": "native_stored_programs_and_accumulator",
+      "classification": "IRREVERSIBLE_ONLY",
+      "evidence_facts": [
+        "stored-program receipt.dynamic_writes = supported_scalar_pair_means_only",
+        "accumulator receipt.dynamic_scalar_writes = pair_means_only",
+        "accumulator histories replayed = 1280",
+        "stored-program histories = 9",
+        "m1_derived = false in both receipts",
+        "SourceBankBusWitness: star connections are declared graph data"
+      ],
+      "history_custody": "RETAINED_CONTROL_TAPES_WITH_REGENERATED_FAMILIES",
+      "properties": {
+        "both_composition_orders_recorded": false,
+        "port_indexed": true,
+        "raw_histories_serialized": true,
+        "refinement_provenance_present": false,
+        "reversible": false,
+        "same_twelve_port_carrier": false,
+        "source_native": true,
+        "target_free": true,
+        "twelve_reversible_perturbation_families": false
+      },
+      "qualification_failures": [
+        "reversible",
+        "both_composition_orders_recorded",
+        "same_twelve_port_carrier",
+        "refinement_provenance_present",
+        "twelve_reversible_perturbation_families"
+      ],
+      "rejection_reason": "Start, addition, retirement, transfer and cleanup are pair means with retirement and residual clearing, and both receipts restrict dynamic writes to pair means only. The instruction stream is payload-independent and executes one supplied request sequence per history; no inverse law, mixed-order pair family or twelve port families is present, and the declared bus is not embedded in the captured W12 graph.",
+      "source_ancestry": "Native accumulation, shuttle, stored-program and two-bank compiler words built from scalar pair means on captured seams, with a kernel-checked captured control and replayed request families.",
+      "source_paths": [
+        "code/source_native_programs/README.md",
+        "code/source_native_programs/CONTRACT.md",
+        "code/source_native_programs/controls.json",
+        "code/source_native_programs/receipt.json",
+        "code/source_native_programs/families_receipt.json",
+        "code/source_native_accumulator/README.md",
+        "code/source_native_accumulator/CONTRACT.md",
+        "code/source_native_accumulator/controls.json",
+        "code/source_native_accumulator/receipt.json",
+        "Lean/Geometry/SourceAccumulatorAxiomAudit.lean",
+        "Lean/Geometry/SourceAccumulatorDecoder.lean",
+        "Lean/Geometry/SourceAccumulatorProgram.lean",
+        "Lean/Geometry/SourceBankBusWitness.lean",
+        "Lean/Geometry/SourceBankCompiler.lean",
+        "Lean/Geometry/SourceBankControl.lean",
+        "Lean/Geometry/SourceBankExecution.lean",
+        "Lean/Geometry/SourceBankInvariant.lean",
+        "Lean/Geometry/SourceBankLowering.lean",
+        "Lean/Geometry/SourceBankMachine.lean",
+        "Lean/Geometry/SourceBankPrecision.lean",
+        "Lean/Geometry/SourceBankTrace.lean",
+        "Lean/Geometry/SourceNativeAccumulator.lean",
+        "Lean/Geometry/SourceNativeCore.lean",
+        "Lean/Geometry/SourceNativeProgramBudget.lean",
+        "Lean/Geometry/SourceNativeProgramError.lean",
+        "Lean/Geometry/SourceNativeProgramsAxiomAudit.lean",
+        "Lean/Geometry/SourceNativeShuttle.lean",
+        "Lean/Geometry/SourceNativeStoredProgram.lean"
+      ]
+    },
+    {
+      "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+      "classification": "IRREVERSIBLE_ONLY",
+      "evidence_facts": [
+        "temporal controls: full_axiom_instantiation = false",
+        "captured plan native means = 425979 with payload_replay = false",
+        "captured histories = 27",
+        "read-acceptance histories replayed = 174762 with source_contract = conditional_not_source_selected",
+        "checkpoint scope.canonical_axiom_selection = false",
+        "SourceTemporalErasure: permanent loss before the first discriminating observation"
+      ],
+      "history_custody": "RETAINED_CONTROLS_WITH_STRUCTURAL_PLAN_CHECK",
+      "properties": {
+        "both_composition_orders_recorded": false,
+        "port_indexed": true,
+        "raw_histories_serialized": true,
+        "refinement_provenance_present": false,
+        "reversible": false,
+        "same_twelve_port_carrier": false,
+        "source_native": true,
+        "target_free": true,
+        "twelve_reversible_perturbation_families": false
+      },
+      "qualification_failures": [
+        "reversible",
+        "both_composition_orders_recorded",
+        "same_twelve_port_carrier",
+        "refinement_provenance_present",
+        "twelve_reversible_perturbation_families"
+      ],
+      "rejection_reason": "The words are destructive pair means, and the erasure theorem proves permanent loss of a prepared difference after its first mean. The separate and reversed four-mean words on one seam path are a two-order witness for one pair of unknowns, not 132 ordered compositions of twelve reversible families; the large calibration plan is checked structurally without payload replay.",
+      "source_ancestry": "Linear observation grammar, sound partial publication, connected native completion plans and checkpoint selection on the captured 15,360-port level-three support, built from scalar seam means.",
+      "source_paths": [
+        "code/source_temporal_acceptance/README.md",
+        "code/source_temporal_acceptance/CONTRACT.md",
+        "code/source_temporal_acceptance/controls.json",
+        "code/source_temporal_acceptance/receipt.json",
+        "code/source_read_acceptance/README.md",
+        "code/source_read_acceptance/CONTRACT.md",
+        "code/source_read_acceptance/controls.json",
+        "code/source_read_acceptance/receipt.json",
+        "code/source_checkpoint_selection/README.md",
+        "code/source_checkpoint_selection/CONTRACT.md",
+        "code/source_checkpoint_selection/controls.json",
+        "code/source_checkpoint_selection/receipt.json",
+        "Lean/Geometry/SourceCheckpointAxiomAudit.lean",
+        "Lean/Geometry/SourceCheckpointEntropy.lean",
+        "Lean/Geometry/SourceCheckpointMeaning.lean",
+        "Lean/Geometry/SourceCheckpointNative.lean",
+        "Lean/Geometry/SourceCheckpointPipeline.lean",
+        "Lean/Geometry/SourceCheckpointPolicy.lean",
+        "Lean/Geometry/SourceReadAcceptance.lean",
+        "Lean/Geometry/SourceReadAcceptanceAxiomAudit.lean",
+        "Lean/Geometry/SourceReadAcceptanceSchedule.lean",
+        "Lean/Geometry/SourceTemporalAcceptanceAxiomAudit.lean",
+        "Lean/Geometry/SourceTemporalAttempts.lean",
+        "Lean/Geometry/SourceTemporalConnected.lean",
+        "Lean/Geometry/SourceTemporalErasure.lean",
+        "Lean/Geometry/SourceTemporalEssential.lean",
+        "Lean/Geometry/SourceTemporalGuard.lean",
+        "Lean/Geometry/SourceTemporalMenu.lean",
+        "Lean/Geometry/SourceTemporalNative.lean",
+        "Lean/Geometry/SourceTemporalObservation.lean",
+        "Lean/Geometry/SourceTemporalSelection.lean",
+        "Lean/Geometry/SourceTemporalTomography.lean"
+      ]
+    },
+    {
+      "candidate_id": "finite_source_operator_join",
+      "classification": "STATIC_ONLY",
+      "evidence_facts": [
+        "interpretation.overlapping_pair_algebras_commute = false",
+        "interpretation.tensor_assembly = declared",
+        "interpretation.observed_quantum_outcomes = false"
+      ],
+      "history_custody": "DETERMINISTIC_MATHEMATICAL_PACKET",
+      "properties": {
+        "both_composition_orders_recorded": false,
+        "port_indexed": false,
+        "raw_histories_serialized": false,
+        "refinement_provenance_present": false,
+        "reversible": false,
+        "same_twelve_port_carrier": false,
+        "source_native": false,
+        "target_free": true,
+        "twelve_reversible_perturbation_families": false
+      },
+      "qualification_failures": [
+        "source_native",
+        "port_indexed",
+        "reversible",
+        "both_composition_orders_recorded",
+        "raw_histories_serialized",
+        "same_twelve_port_carrier",
+        "refinement_provenance_present",
+        "twelve_reversible_perturbation_families"
+      ],
+      "rejection_reason": "The packet is a static algebra join: the noncommuting hinge is an operator-algebra fact about supplied embeddings, tensor assembly and path-read transpositions are declared postprocessing, and no perturbation family, ordered history or inverse law is executed.",
+      "source_ancestry": "Operator embeddings of two committed pair algebras into the triple-carrier matrix algebra, intertwining 31 retained source-row transitions.",
+      "source_paths": [
+        "code/source_operator_join/README.md",
+        "code/source_operator_join/operator_join_packet.json",
+        "Lean/QFT/TripleCarrierOperatorJoin.lean"
+      ]
+    },
+    {
+      "candidate_id": "fermionic_hypercharge_current_histories",
+      "classification": "DOWNSTREAM_CONTAMINATED",
+      "evidence_facts": [
+        "scope.hypercharge_edge_factors_on_prepared_q5_sites = true",
+        "scope.authenticated_register_read_write_replay = true",
+        "scope.source_selected_action_population_or_clock = false"
+      ],
+      "history_custody": "AUTHENTICATED_REGISTER_REPLAY",
+      "properties": {
+        "both_composition_orders_recorded": false,
+        "port_indexed": false,
+        "raw_histories_serialized": true,
+        "refinement_provenance_present": false,
+        "reversible": true,
+        "same_twelve_port_carrier": false,
+        "source_native": false,
+        "target_free": false,
+        "twelve_reversible_perturbation_families": false
+      },
+      "qualification_failures": [
+        "source_native",
+        "port_indexed",
+        "both_composition_orders_recorded",
+        "target_free",
+        "same_twelve_port_carrier",
+        "refinement_provenance_present",
+        "twelve_reversible_perturbation_families"
+      ],
+      "rejection_reason": "The histories carry gauge, multiplet and hypercharge labels under a supplied action, so the source firewall excludes them; they live on the 64-site carrier rather than the twelve-port carrier and record one baseline, one phase intervention and one gauge copy rather than mixed-order port perturbations.",
+      "source_ancestry": "Declared CAR hopping factors on the 64-site golden carrier with registered multiplets, retaining register read and write histories.",
+      "source_paths": [
+        "code/sm_fermion_current/README.md",
+        "code/sm_fermion_current/coupled_README.md",
+        "code/sm_fermion_current/current_receipt.json",
+        "code/sm_fermion_current/coupled_receipt.json",
+        "code/sm_fermion_current/quantum_link_receipt.json"
+      ]
+    },
+    {
+      "candidate_id": "maxwell_measurement_adapter",
+      "classification": "DOWNSTREAM_CONTAMINATED",
+      "evidence_facts": [
+        "README: no apparatus, physical raw data, frozen experiment or observed result is shipped",
+        "three ordered controls and two gauge executions are schema fields, not retained histories"
+      ],
+      "history_custody": "NO_CAPTURE_SHIPPED",
+      "properties": {
+        "both_composition_orders_recorded": false,
+        "port_indexed": false,
+        "raw_histories_serialized": false,
+        "refinement_provenance_present": false,
+        "reversible": false,
+        "same_twelve_port_carrier": false,
+        "source_native": false,
+        "target_free": false,
+        "twelve_reversible_perturbation_families": false
+      },
+      "qualification_failures": [
+        "source_native",
+        "port_indexed",
+        "reversible",
+        "both_composition_orders_recorded",
+        "raw_histories_serialized",
+        "target_free",
+        "same_twelve_port_carrier",
+        "refinement_provenance_present",
+        "twelve_reversible_perturbation_families"
+      ],
+      "rejection_reason": "No capture, apparatus data or observed result is shipped, and the adapter identifies encoded registers with model electromagnetic potentials, so any capture would enter with a downstream target label.",
+      "source_ancestry": "Capture schema and preregistration contract for a fixed Maxwell emulator with destructive pair-average probes and restoring feedback.",
+      "source_paths": [
+        "code/maxwell_measurement/README.md",
+        "code/maxwell_measurement/contract.py"
+      ]
     }
   ],
   "claim_boundary": {
@@ -3224,264 +5028,939 @@
   "fixture_used_as_reconstruction_oracle": false,
   "implementation_pins": [
     {
-      "bytes": 68233,
+      "bytes": 129208,
       "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:b60a15719baeec988a25dcb3d485f446c0e0aa1a430c0dabd228e91cc5239ce7"
+      "sha256": "sha256:6fde99d60b0899083ed37bffcdf5f8f07a4cca5c8e1a9464a3be481fdffa579e"
     },
     {
-      "bytes": 33180,
+      "bytes": 57200,
       "path": "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:9a9c04c6eaba09bc6c83bec88af730bee61be9c6a4cebaaccc3d979047f2904c"
+      "sha256": "sha256:5a778846b4f61061fe8d98e3e527b89968c5859e932cf4fc586a384a1bdd0521"
     }
   ],
   "integrated_tree_review": {
-    "from_upstream_main_sha": "2b03a95caf5030272f7b426b964e816f650153f8",
-    "surface_count": 40,
-    "surfaces": [
+    "from_upstream_main_sha": "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9",
+    "prior_reviews": [
       {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/FlatDiamondError.lean",
-        "reason": "Bounds geometric quadrature error; it defines no source perturbation, composition word, inverse, or history."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/FlatDiamondNormalization.lean",
-        "reason": "Normalizes causal-diamond pair volumes; it contains no port-indexed source operation or history custody."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/FlatDiamondPairIntegral.lean",
-        "reason": "Relates geometric pair sets to integrals; it supplies no perturbation family or ordered execution."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/FlatDiamondVolume.lean",
-        "reason": "Proves flat causal-diamond volume identities rather than source operations or response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/FlatLorentzVolume.lean",
-        "reason": "Proves Lorentz-volume and boost identities with no source-current operation packet."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/GoldenSourceCausalLimit.lean",
-        "reason": "Establishes convergence of generated causal order and counts; it does not define reversible port perturbations."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/GoldenSourcePairLimit.lean",
-        "reason": "Establishes strict-pair count limits, not mixed-order source response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/GoldenSourceVolumeLimit.lean",
-        "reason": "Establishes weighted source-volume limits with no perturbation composition or inverse law."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/OrderingFractionFourDimensional.lean",
-        "reason": "The change connects geometric count limits to a scalar ordering fraction and adds no source operation."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceBusScaling.lean",
-        "reason": "Defines conditional copy, clear, sweep, and cleanup words compiled to destructive scalar pair means."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/SourceCausalBoundary.lean",
-        "reason": "Proves null-boundary and fixed-diamond count facts; no source perturbation family is present."
-      },
-      {
-        "candidate_id": "lean_selected_pair_mean_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceConstrainedRead.lean",
-        "reason": "Connects constrained finite word laws to pair-mean transcripts, but only as an abstract irreversible read obstruction."
-      },
-      {
-        "candidate_id": "lean_selected_pair_mean_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceConstrainedSelection.lean",
-        "reason": "Supplies finite information-projection support theorems used by the selected-history packet."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/SourceCountLimitAxiomAudit.lean",
-        "reason": "Audits theorem dependencies for count limits and introduces no source operation or history."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/SourceCountTransport.lean",
-        "reason": "Transports selected finite counts to measure limits; predicates are classifiers rather than perturbation histories."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceEncodedMemory.lean",
-        "reason": "Defines encoded copy, clear, hop, route, and read words whose amplitudes attenuate under pair means."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean",
-        "reason": "Audits the encoded-memory theorem chain and adds no runtime histories or W12 binding."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceNativeRecords.lean",
-        "reason": "Defines native arithmetic records and proves a two-order schedule-dependence example on Fin 3, not the W12 mixed-order suite."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean",
-        "reason": "Audits native bus and record theorems without adding a source-selected runtime packet."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/SourceNetOrderLimit.lean",
-        "reason": "Proves limiting agreement of generated read order away from a null cone, not reversible perturbation histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/SourceNetVolumeError.lean",
-        "reason": "Bounds weighted Alexandrov volumes of generated orders and contains no current-tomography operation family."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceNonlinearRecord.lean",
-        "reason": "Classifies state-only records protected by an irreversible pair-mean law."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean",
-        "reason": "Audits passive-memory, reset, and nonlinear-record theorems without supplying histories."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePassiveMemoryBudget.lean",
-        "reason": "Its quadratic defect proves nontrivial pair means dissipative and excludes nontrivial closed cycles."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePassiveReset.lean",
-        "reason": "Proves positive registers cannot reset exactly under finite nonnegative pair means."
-      },
-      {
-        "candidate_id": "lean_selected_pair_mean_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceReadSelection.lean",
-        "reason": "Defines finite pair-mean words and full prefix transcripts, but not W12 reversible operations or serialized executions."
-      },
-      {
-        "candidate_id": "lean_selected_pair_mean_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceReadSelectionAxiomAudit.lean",
-        "reason": "Audits the constrained-selection and transcript obstruction chain."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceReusableBus.lean",
-        "reason": "Compiles copy and clear instructions to attenuating pair-mean programs with supplied schedules."
-      },
-      {
-        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceReusableBusAxiomAudit.lean",
-        "reason": "Audits the reusable-bus theorem chain without adding a W12 source instance."
-      },
-      {
-        "candidate_id": "lean_selected_pair_mean_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceSelectionControls.lean",
-        "reason": "Provides finite controls showing cover-dependent support selection, not a reversible current producer."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Screen/OPHScreen.lean",
-        "reason": "The change only imports Whitney modules into the umbrella and adds no theorem or source operation."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Screen/WhitneyConeMass.lean",
-        "reason": "Defines cone mass, constraint, stiffness, and normal frames; these are static field-mode structures."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Screen/WhitneyConeMassNaturality.lean",
-        "reason": "Proves frame naturality for a supplied mass and contains no source perturbation histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Screen/WhitneyConeModes.lean",
-        "reason": "Constructs static cone gradients, curls, constraints, and thirty normal modes."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Screen/WhitneyConeNaturality.lean",
-        "reason": "Proves basis-change naturality of cone modes rather than source-operation order sensitivity."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Screen/WhitneyFrameMorphism.lean",
-        "reason": "Defines isometries between modal frames, not port-indexed perturbations or runtime histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Screen/WhitneyFrameNaturality.lean",
-        "reason": "Defines overlap-coordinate changes among complete modal frames; the order is basis order, not operation order."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Screen/WhitneyMassPremiseInstance.lean",
-        "reason": "Instantiates a positive counting mass and thirty-mode frame with no source-current producer."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Screen/WhitneyNormalModeConstruction.lean",
-        "reason": "Applies finite-dimensional spectral theory to supplied mass and stiffness forms."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Screen/WhitneyRotationWitness.lean",
-        "reason": "Provides a two-mode rotation control for frame naturality, not source-current histories."
+        "from_upstream_main_sha": "2b03a95caf5030272f7b426b964e816f650153f8",
+        "surface_count": 40,
+        "surfaces": [
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/FlatDiamondError.lean",
+            "reason": "Bounds geometric quadrature error; it defines no source perturbation, composition word, inverse, or history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/FlatDiamondNormalization.lean",
+            "reason": "Normalizes causal-diamond pair volumes; it contains no port-indexed source operation or history custody."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/FlatDiamondPairIntegral.lean",
+            "reason": "Relates geometric pair sets to integrals; it supplies no perturbation family or ordered execution."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/FlatDiamondVolume.lean",
+            "reason": "Proves flat causal-diamond volume identities rather than source operations or response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/FlatLorentzVolume.lean",
+            "reason": "Proves Lorentz-volume and boost identities with no source-current operation packet."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/GoldenSourceCausalLimit.lean",
+            "reason": "Establishes convergence of generated causal order and counts; it does not define reversible port perturbations."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/GoldenSourcePairLimit.lean",
+            "reason": "Establishes strict-pair count limits, not mixed-order source response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/GoldenSourceVolumeLimit.lean",
+            "reason": "Establishes weighted source-volume limits with no perturbation composition or inverse law."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/OrderingFractionFourDimensional.lean",
+            "reason": "The change connects geometric count limits to a scalar ordering fraction and adds no source operation."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceBusScaling.lean",
+            "reason": "Defines conditional copy, clear, sweep, and cleanup words compiled to destructive scalar pair means."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/SourceCausalBoundary.lean",
+            "reason": "Proves null-boundary and fixed-diamond count facts; no source perturbation family is present."
+          },
+          {
+            "candidate_id": "lean_selected_pair_mean_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceConstrainedRead.lean",
+            "reason": "Connects constrained finite word laws to pair-mean transcripts, but only as an abstract irreversible read obstruction."
+          },
+          {
+            "candidate_id": "lean_selected_pair_mean_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceConstrainedSelection.lean",
+            "reason": "Supplies finite information-projection support theorems used by the selected-history packet."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/SourceCountLimitAxiomAudit.lean",
+            "reason": "Audits theorem dependencies for count limits and introduces no source operation or history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/SourceCountTransport.lean",
+            "reason": "Transports selected finite counts to measure limits; predicates are classifiers rather than perturbation histories."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceEncodedMemory.lean",
+            "reason": "Defines encoded copy, clear, hop, route, and read words whose amplitudes attenuate under pair means."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean",
+            "reason": "Audits the encoded-memory theorem chain and adds no runtime histories or W12 binding."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceNativeRecords.lean",
+            "reason": "Defines native arithmetic records and proves a two-order schedule-dependence example on Fin 3, not the W12 mixed-order suite."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean",
+            "reason": "Audits native bus and record theorems without adding a source-selected runtime packet."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/SourceNetOrderLimit.lean",
+            "reason": "Proves limiting agreement of generated read order away from a null cone, not reversible perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/SourceNetVolumeError.lean",
+            "reason": "Bounds weighted Alexandrov volumes of generated orders and contains no current-tomography operation family."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceNonlinearRecord.lean",
+            "reason": "Classifies state-only records protected by an irreversible pair-mean law."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean",
+            "reason": "Audits passive-memory, reset, and nonlinear-record theorems without supplying histories."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePassiveMemoryBudget.lean",
+            "reason": "Its quadratic defect proves nontrivial pair means dissipative and excludes nontrivial closed cycles."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePassiveReset.lean",
+            "reason": "Proves positive registers cannot reset exactly under finite nonnegative pair means."
+          },
+          {
+            "candidate_id": "lean_selected_pair_mean_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceReadSelection.lean",
+            "reason": "Defines finite pair-mean words and full prefix transcripts, but not W12 reversible operations or serialized executions."
+          },
+          {
+            "candidate_id": "lean_selected_pair_mean_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceReadSelectionAxiomAudit.lean",
+            "reason": "Audits the constrained-selection and transcript obstruction chain."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceReusableBus.lean",
+            "reason": "Compiles copy and clear instructions to attenuating pair-mean programs with supplied schedules."
+          },
+          {
+            "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceReusableBusAxiomAudit.lean",
+            "reason": "Audits the reusable-bus theorem chain without adding a W12 source instance."
+          },
+          {
+            "candidate_id": "lean_selected_pair_mean_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceSelectionControls.lean",
+            "reason": "Provides finite controls showing cover-dependent support selection, not a reversible current producer."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Screen/OPHScreen.lean",
+            "reason": "The change only imports Whitney modules into the umbrella and adds no theorem or source operation."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Screen/WhitneyConeMass.lean",
+            "reason": "Defines cone mass, constraint, stiffness, and normal frames; these are static field-mode structures."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Screen/WhitneyConeMassNaturality.lean",
+            "reason": "Proves frame naturality for a supplied mass and contains no source perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Screen/WhitneyConeModes.lean",
+            "reason": "Constructs static cone gradients, curls, constraints, and thirty normal modes."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Screen/WhitneyConeNaturality.lean",
+            "reason": "Proves basis-change naturality of cone modes rather than source-operation order sensitivity."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Screen/WhitneyFrameMorphism.lean",
+            "reason": "Defines isometries between modal frames, not port-indexed perturbations or runtime histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Screen/WhitneyFrameNaturality.lean",
+            "reason": "Defines overlap-coordinate changes among complete modal frames; the order is basis order, not operation order."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Screen/WhitneyMassPremiseInstance.lean",
+            "reason": "Instantiates a positive counting mass and thirty-mode frame with no source-current producer."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Screen/WhitneyNormalModeConstruction.lean",
+            "reason": "Applies finite-dimensional spectral theory to supplied mass and stiffness forms."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Screen/WhitneyRotationWitness.lean",
+            "reason": "Provides a two-mode rotation control for frame naturality, not source-current histories."
+          }
+        ],
+        "through_upstream_main_sha": "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9"
       }
     ],
-    "through_upstream_main_sha": "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9"
+    "surface_count": 111,
+    "surfaces": [
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceAccumulatorAxiomAudit.lean",
+        "reason": "Transitive standard-axiom gate for the accumulator theorems; it adds no operation or history."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceAccumulatorDecoder.lean",
+        "reason": "Bounded integer interval decoder for native accumulation publication; a readout policy, not a perturbation family."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceAccumulatorProgram.lean",
+        "reason": "Finite accumulation programs with retirement and a whole-program error estimate over supplied request lists; pair means only."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceBankBusWitness.lean",
+        "reason": "Declared finite bus discharging the compiler's route premises; its star connections are declared graph data without a W12 embedding."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceBankCompiler.lean",
+        "reason": "End-to-end compilation of finite bank programs from geometric route data; no perturbation family, inverse law or history custody."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceBankControl.lean",
+        "reason": "Generated kernel check of one captured 42-instruction control trace; scalar-port embedding is not asserted."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceBankExecution.lean",
+        "reason": "Finite noisy publication for bank programs on the declared bus; preparation and controller remain hypotheses."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceBankInvariant.lean",
+        "reason": "Workspace, retirement and confinement invariants of the integer bank machine; no ordered perturbation data."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceBankLowering.lean",
+        "reason": "Native lowering of bank instructions to retained-source shuttles with error allowances; retirement and cleanup are destructive."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceBankMachine.lean",
+        "reason": "Integer semantics of a payload-independent instruction stream executed in one supplied request order per program."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceBankPrecision.lean",
+        "reason": "Existence of finite precision for compiled words; no source operation is added."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceBankTrace.lean",
+        "reason": "Row checker for the captured control trace; a finite comparison, not a runtime history producer."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceCheckpointAxiomAudit.lean",
+        "reason": "Transitive standard-axiom gate for checkpoint selection."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceCheckpointEntropy.lean",
+        "reason": "Unique information projection onto a checkpoint face for a named full-history cover; a selection theorem, not an operation family."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceCheckpointMeaning.lean",
+        "reason": "Complete record test grammar and native continuation viability for a supplied record map."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceCheckpointNative.lean",
+        "reason": "Composition of observability, finite feasibility and checkpoint selection; the record interface and deadline remain source obligations."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceCheckpointPipeline.lean",
+        "reason": "Commutation of disjoint means and exact two-sample recovery on the shortest path pipeline; two records on one path, not mixed-order port families."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceCheckpointPolicy.lean",
+        "reason": "Finite checkpoint transition law from backward masses; a policy on a supplied move grammar."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceNativeAccumulator.lean",
+        "reason": "Reusable accumulation in which only scalar pair means write the state and the previous value is retired at each start."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceNativeCore.lean",
+        "reason": "Reset and start words that clear the accumulator to a residual by finite pair means; clearing is irreversible."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceNativeProgramBudget.lean",
+        "reason": "Precision margin and stationary repeated-word evaluation; arithmetic bounds only."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceNativeProgramError.lean",
+        "reason": "Composition of native words with explicit residual bounds; comparison errors, not perturbation families."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceNativeProgramsAxiomAudit.lean",
+        "reason": "Transitive standard-axiom gate for the stored-program theorems."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceNativeShuttle.lean",
+        "reason": "Native transfer into a reusable record with bus cleanup by scalar means; the source is retained at half amplitude."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceNativeStoredProgram.lean",
+        "reason": "Composable stored computation from start, addition, retirement and transfer; neither the word nor the layout is source-selected."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceReadAcceptance.lean",
+        "reason": "Sound partial publication from observational distinguishability and its native threshold realization; no source grammar is derived."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceReadAcceptanceAxiomAudit.lean",
+        "reason": "Transitive standard-axiom gate for read acceptance."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceReadAcceptanceSchedule.lean",
+        "reason": "Finite history counting and stopped native cost on a supplied alphabet; uniform counting laws."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceReadRouting.lean",
+        "reason": "Six-event transport word with constant resets and a destructive pair mean; readouts are proved schedule-independent and closed sum-preserving words cannot reset."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceRoutingBudget.lean",
+        "reason": "Event, read and hop counting bounds for the routing compiler; resource arithmetic without histories."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceRoutingHierarchy.lean",
+        "reason": "Walk diameters, refinement lifting and the base icosahedral diameter three; a support-distance bound, not a perturbation family."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceRoutingRefinementAxiomAudit.lean",
+        "reason": "Transitive standard-axiom gate for the routing refinement theorems."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceRoutingStorage.lean",
+        "reason": "Live logical versions in a 23-slot local store with a retirement discipline; no canonical pair-mean selection follows."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalAcceptanceAxiomAudit.lean",
+        "reason": "Transitive standard-axiom gate for temporal acceptance and native completion."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalAttempts.lean",
+        "reason": "Proposal-count failure bounds under a supplied uniform proposal law; counting, not histories."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalConnected.lean",
+        "reason": "Existence of a complete calibration plan on finite connected support; exact readout existence, not schedule selection."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalErasure.lean",
+        "reason": "Permanent loss of a prepared difference after its first mean; the separate and reversed words on one seam path are a two-order witness for one pair of unknowns."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalEssential.lean",
+        "reason": "Essential coordinates of a finite product meaning; the minimal direct-read set."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalGuard.lean",
+        "reason": "Maximal preservation guard with one universal completing word; proposals remain attempt history under a separate law."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalMenu.lean",
+        "reason": "Essential direct reads versus aggregate observability for a supplied linear meaning."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalNative.lean",
+        "reason": "Linear response forms of pair-mean words under a declared preparation; prefixes retain samples and no target enters."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalObservation.lean",
+        "reason": "Linear acceptance grammar from a finite observation record; spans and kernels, not perturbation composition."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalSelection.lean",
+        "reason": "Exact temporal grammar for a constrained information projection on scored full histories."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "Lean/Geometry/SourceTemporalTomography.lean",
+        "reason": "Native calibrated-path continuation from scalar seam means with no payload in the schedule; paths and incidence are explicit inputs and no metric menu is selected."
+      },
+      {
+        "candidate_id": "maxwell_measurement_adapter",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/maxwell_measurement/README.md",
+        "reason": "Capture schema and preregistration for a Maxwell emulator; no capture or observed result is shipped."
+      },
+      {
+        "candidate_id": "maxwell_measurement_adapter",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/maxwell_measurement/contract.py",
+        "reason": "Draft-and-freeze preregistration producer; a changed implementation invalidates a frozen contract."
+      },
+      {
+        "candidate_id": "fermionic_hypercharge_current_histories",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/sm_fermion_current/README.md",
+        "reason": "Fermionic hypercharge current histories on the 64-site golden carrier with gauge and multiplet labels."
+      },
+      {
+        "candidate_id": "fermionic_hypercharge_current_histories",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/sm_fermion_current/coupled_README.md",
+        "reason": "Coupled electric-link execution of the same labelled current construction."
+      },
+      {
+        "candidate_id": "fermionic_hypercharge_current_histories",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/sm_fermion_current/coupled_receipt.json",
+        "reason": "Receipt of the coupled electric-link execution."
+      },
+      {
+        "candidate_id": "fermionic_hypercharge_current_histories",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/sm_fermion_current/current_receipt.json",
+        "reason": "Authenticated register replay of baseline, phase intervention and gauge copy runs with hypercharge labels."
+      },
+      {
+        "candidate_id": "fermionic_hypercharge_current_histories",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/sm_fermion_current/quantum_link_receipt.json",
+        "reason": "Receipt of the quantized electric link history."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_checkpoint_selection/CONTRACT.md",
+        "reason": "Contract of the checkpoint selection packet."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_checkpoint_selection/README.md",
+        "reason": "Native checkpoint selection on captured W12 seams with census commitments."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_checkpoint_selection/controls.json",
+        "reason": "Twelve controls and ten pipelines; canonical_axiom_selection = false."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_checkpoint_selection/receipt.json",
+        "reason": "Independent receipt of the checkpoint census and pipelines."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_encoded_memory/CONTRACT.md",
+        "reason": "Contract of the encoded memory packet."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_encoded_memory/README.md",
+        "reason": "Runtime controls of encoded copy, clear and reuse with attenuating amplitude."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_encoded_memory/controls.json",
+        "reason": "Captured copy and clear executions on the declared support."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_encoded_memory/receipt.json",
+        "reason": "Independent receipt; physical M1 and comparator are not derived."
+      },
+      {
+        "candidate_id": "source_feedback_transport",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_feedback_transport/README.md",
+        "reason": "Adds a cross-reference paragraph to the full-family compiler; the transport receipt and its classification are the same packet."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_native_accumulator/CONTRACT.md",
+        "reason": "Contract of the accumulator packet."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_native_accumulator/README.md",
+        "reason": "Reusable native accumulation with retirement at each start and a supplied request sequence."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_native_accumulator/controls.json",
+        "reason": "Exhaustive request words, three complete examples and reuse controls; source_selected = false."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_native_accumulator/receipt.json",
+        "reason": "Independent replay of 1,280 histories; dynamic scalar writes are pair means only."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_native_programs/CONTRACT.md",
+        "reason": "Contract of the stored-program packet."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_native_programs/README.md",
+        "reason": "Stored computation from pair means with two payload banks; conditional finite execution without a W12 embedding."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_native_programs/controls.json",
+        "reason": "Captured signed control with nine cases and eight routes; source_selected = false."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_native_programs/families_receipt.json",
+        "reason": "Family receipt separating complete small native executions from large-population route certificates."
+      },
+      {
+        "candidate_id": "native_stored_programs_and_accumulator",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_native_programs/receipt.json",
+        "reason": "Independent replay receipt; dynamic writes are supported scalar pair means only and m1_derived = false."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_native_updates/CONTRACT.md",
+        "reason": "Contract of the native updates packet."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_native_updates/README.md",
+        "reason": "Native sum records with finite-chain cleanup on captured ports."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_native_updates/controls.json",
+        "reason": "Captured write and reread histories."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_native_updates/receipt.json",
+        "reason": "Independent receipt of histories, chain scaling and read bounds."
+      },
+      {
+        "candidate_id": "finite_source_operator_join",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_operator_join/README.md",
+        "reason": "Deterministic operator-join packet of two committed pair algebras; a static noncommuting hinge with declared tensor assembly."
+      },
+      {
+        "candidate_id": "finite_source_operator_join",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_operator_join/operator_join_packet.json",
+        "reason": "Mathematical evidence packet; overlapping_pair_algebras_commute = false and observed_quantum_outcomes = false."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_passive_memory/CONTRACT.md",
+        "reason": "Contract of the passive memory packet."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_passive_memory/README.md",
+        "reason": "Runtime controls of the passive-memory, reset and ancillary-budget obstructions."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_passive_memory/controls.json",
+        "reason": "Four-port equal-image witnesses and connectivity census of the level-three capture."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_passive_memory/receipt.json",
+        "reason": "Independent receipt of the executed means and fibre controls."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_acceptance/CONTRACT.md",
+        "reason": "Contract of the read acceptance packet."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_acceptance/README.md",
+        "reason": "Sound partial readout and a noisy two-payload read on captured seams."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_acceptance/controls.json",
+        "reason": "Exhaustive and example read histories with declared path laws."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_acceptance/receipt.json",
+        "reason": "Independent replay of stopped histories; source_contract = conditional_not_source_selected."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_routing/CONTRACT.md",
+        "reason": "Full-family routing contract; the exit is a conditional compiler theorem with M1 retained as a supplied rule."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_routing/README.md",
+        "reason": "Package front door for the q=13/q=21 routed read compiler and its regeneration commands."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_routing/controls/q3_baseline.json",
+        "reason": "Level-three baseline control receipt with a retained complete compressed tape."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_routing/controls/q3_branch.json",
+        "reason": "Level-three later-commit branch control receipt with a retained complete compressed tape."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_routing/controls/q3_scratch.json",
+        "reason": "Level-three initial-scratch control receipt with a retained complete compressed tape."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_routing/controls/q3_source.json",
+        "reason": "Level-three centre-source intervention control receipt with a retained complete compressed tape."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_read_routing/specification.json",
+        "reason": "Declares M1 as a retained supplied structural rule and records axiomatic_read_law_derived = false."
+      },
+      {
+        "candidate_id": "lean_selected_pair_mean_histories",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_read_selection/CONTRACT.md",
+        "reason": "Contract of the read selection packet."
+      },
+      {
+        "candidate_id": "lean_selected_pair_mean_histories",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_read_selection/README.md",
+        "reason": "Runtime controls of the constrained information-projection read obstruction on the captured level-three support."
+      },
+      {
+        "candidate_id": "lean_selected_pair_mean_histories",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_read_selection/controls.json",
+        "reason": "Captured and toy controls with twelve source ports and two receiver ports."
+      },
+      {
+        "candidate_id": "lean_selected_pair_mean_histories",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_read_selection/receipt.json",
+        "reason": "Independent receipt; status is a conditional obstruction, not a full-axiom countermodel."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_reusable_bus/CONTRACT.md",
+        "reason": "Contract of the reusable bus packet."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_reusable_bus/README.md",
+        "reason": "Repeated record reads between captured carriers 0 and 3 with complete fixed-point tapes."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_reusable_bus/controls.json",
+        "reason": "Sixteen initial payload combinations with complete tapes."
+      },
+      {
+        "candidate_id": "lean_pair_mean_memory_and_reusable_bus",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_reusable_bus/receipt.json",
+        "reason": "Independent receipt of the histories, retained means and uniform read bounds."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_routing_refinement/CONTRACT.md",
+        "reason": "Contract of the routing refinement companion; M1 is not derived from the canonical source."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_routing_refinement/README.md",
+        "reason": "Routing refinement companion: support-distance bound across levels, 23-slot local store and raw-mass obstruction."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_routing_refinement/receipt.json",
+        "reason": "Independent receipt of the refinement hierarchy on the pinned level-three to level-five captures; M1_source_selected = false."
+      },
+      {
+        "candidate_id": "source_scalar_sequential_instrument",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_scalar_finite_instrument/README.md",
+        "reason": "Finite-duration readout certificate replaying the pinned sequential instrument; it samples no quantum outcomes."
+      },
+      {
+        "candidate_id": "source_scalar_sequential_instrument",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/source_scalar_finite_instrument/finite_instrument_receipt.json",
+        "reason": "Receipt of 21 readout slots, 210 earlier-readout pairs and 2,709 declared control operations."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_temporal_acceptance/CONTRACT.md",
+        "reason": "Contract of the temporal acceptance packet."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_temporal_acceptance/README.md",
+        "reason": "Temporal acceptance and complete native continuation on the captured 15,360-port support."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_temporal_acceptance/controls.json",
+        "reason": "Captured, toy, erasure, guarded and tomography controls; the large plan is checked structurally with payload_replay = false."
+      },
+      {
+        "candidate_id": "native_temporal_tomography_and_checkpoint_selection",
+        "decision": "NEW_CANDIDATE",
+        "path": "code/source_temporal_acceptance/receipt.json",
+        "reason": "Independent receipt of 27 captured histories and the native completion plan."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_baseline.json",
+        "reason": "Production run receipt binding inputs, producer source, event census and decoded-stream commitments for the q=13 baseline."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "evidence/source_net_causal_poset/routed_read_law/q13_source.json",
+        "reason": "Production run receipt for the q=13 centre payload +1 intervention."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_baseline.json",
+        "reason": "Production run receipt for the q=21 baseline."
+      },
+      {
+        "candidate_id": "source_read_routing_full_family",
+        "decision": "NEW_CANDIDATE",
+        "path": "evidence/source_net_causal_poset/routed_read_law/q21_source.json",
+        "reason": "Production run receipt for the q=21 centre payload +1 intervention."
+      }
+    ],
+    "through_upstream_main_sha": "afed734528edff214c34d4038a64310544df922d"
   },
-  "inventory_sha256": "sha256:53916fa3b1f5ded1ae8798b2900f9910f80079635b60e30ba2b4252c03cc25b8",
+  "inventory_sha256": "sha256:020dcf7c0679f2857451eb36827a17cfad5f08072e510b93dc6c994e64348366",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -3510,7 +5989,7 @@
   ],
   "physical_current_source_bridge_attained": false,
   "positive_stages_authorized": false,
-  "previous_inventory_base_sha": "2b03a95caf5030272f7b426b964e816f650153f8",
+  "previous_inventory_base_sha": "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9",
   "program": "SOURCE-CURRENT-TOMOGRAPHY-0",
   "qualification_fields": [
     "source_native",
@@ -3819,22 +6298,590 @@
       "bytes": 7668,
       "path": "Lean/Geometry/SourceSelectionControls.lean",
       "sha256": "sha256:f98f5b7583f0516201d47da82e5a80086f94779d234ae6d0f100049477ea717e"
+    },
+    {
+      "bytes": 3703,
+      "path": "Lean/Geometry/SourceAccumulatorAxiomAudit.lean",
+      "sha256": "sha256:e05ddc470468e1ef96c60d27012e0f789b71c0ca056c5e35a0f163504e86c1bf"
+    },
+    {
+      "bytes": 5574,
+      "path": "Lean/Geometry/SourceAccumulatorDecoder.lean",
+      "sha256": "sha256:cb6ca79742f773c1683733403e62ec1c4b753c5912c2e234cb018ff7446d4411"
+    },
+    {
+      "bytes": 14970,
+      "path": "Lean/Geometry/SourceAccumulatorProgram.lean",
+      "sha256": "sha256:b5d6710c90253a338e08b051816ab581e4890adead899acb65a96b5236f0e7e5"
+    },
+    {
+      "bytes": 6301,
+      "path": "Lean/Geometry/SourceBankBusWitness.lean",
+      "sha256": "sha256:7a859e1232ce5ccabde63a2fc8b8aecbac2e5f370b8d7442f5ab87337a207689"
+    },
+    {
+      "bytes": 9859,
+      "path": "Lean/Geometry/SourceBankCompiler.lean",
+      "sha256": "sha256:e494b6c142c094923caea058fcd5288ec629acae8bec6108712f08ea543d7b38"
+    },
+    {
+      "bytes": 4421,
+      "path": "Lean/Geometry/SourceBankControl.lean",
+      "sha256": "sha256:4c001a63bd2f8eb24e582c69fe805cc973d753097f5edb73100ad108d66fc90f"
+    },
+    {
+      "bytes": 3838,
+      "path": "Lean/Geometry/SourceBankExecution.lean",
+      "sha256": "sha256:43b2f8b23ddd60f4858b30fe05bed090945811189096824244b499a85310237c"
+    },
+    {
+      "bytes": 9383,
+      "path": "Lean/Geometry/SourceBankInvariant.lean",
+      "sha256": "sha256:4c8b79c2196458df42940b6ec9f1a2b9b5db8b3b89e7bb52cbdbd7be8ead5f66"
+    },
+    {
+      "bytes": 8863,
+      "path": "Lean/Geometry/SourceBankLowering.lean",
+      "sha256": "sha256:e2e4a985fea6f96e5c17369b7f9af3461f61d3f42ab5bf00fb4fe1d5ac709342"
+    },
+    {
+      "bytes": 13476,
+      "path": "Lean/Geometry/SourceBankMachine.lean",
+      "sha256": "sha256:4b50e3d2d59eaa897614422b0719885846c6c8789b6514631849bf4261c11ccc"
+    },
+    {
+      "bytes": 3472,
+      "path": "Lean/Geometry/SourceBankPrecision.lean",
+      "sha256": "sha256:95aa071ac4a12488d654432dd4623d40b029815f026c10c4929e4aa44d2f283b"
+    },
+    {
+      "bytes": 1782,
+      "path": "Lean/Geometry/SourceBankTrace.lean",
+      "sha256": "sha256:ee9808232b48f65ede051bdbab53a6ab799549753137d69767a848bb2be464f2"
+    },
+    {
+      "bytes": 11019,
+      "path": "Lean/Geometry/SourceNativeAccumulator.lean",
+      "sha256": "sha256:48c50892c8d3b754914cd2589f86acf57acf9404f38893d9587d4f759ae0edd9"
+    },
+    {
+      "bytes": 4477,
+      "path": "Lean/Geometry/SourceNativeCore.lean",
+      "sha256": "sha256:51d4f9b2e4104157a5a53cf5eca0af4cb18a2134a67f4486745417c07c3ab065"
+    },
+    {
+      "bytes": 2130,
+      "path": "Lean/Geometry/SourceNativeProgramBudget.lean",
+      "sha256": "sha256:b3924be1e88ba3980b77282b08102422d615303a734e958774e6180927d938f1"
+    },
+    {
+      "bytes": 4562,
+      "path": "Lean/Geometry/SourceNativeProgramError.lean",
+      "sha256": "sha256:34b0eea844c2c04e4b4e66d2134b9ff4e4620a34d83442ec798de594965ed581"
+    },
+    {
+      "bytes": 8950,
+      "path": "Lean/Geometry/SourceNativeProgramsAxiomAudit.lean",
+      "sha256": "sha256:c8181007fe219f5d2251de2e98d5f61ac1fa64467b311a98c0c57e18a430a42a"
+    },
+    {
+      "bytes": 8133,
+      "path": "Lean/Geometry/SourceNativeShuttle.lean",
+      "sha256": "sha256:38a2a3d05c3eb3faa0bc326c5e16e57237f8443ad53e9f91d5c24b66017a1bef"
+    },
+    {
+      "bytes": 6041,
+      "path": "Lean/Geometry/SourceNativeStoredProgram.lean",
+      "sha256": "sha256:e5b9bd32ccc2fe64462cac48a9fec6c916ab75c2640294e950b4ba0d44079150"
+    },
+    {
+      "bytes": 10594,
+      "path": "Lean/Geometry/SourceReadRouting.lean",
+      "sha256": "sha256:82691c7b6a20cb71661d3c37dff7afae077ed6a762c0901330f0dd72f3dfb365"
+    },
+    {
+      "bytes": 3814,
+      "path": "Lean/Geometry/SourceRoutingBudget.lean",
+      "sha256": "sha256:97ccfcecaad82f523ec98bcea486f8f013623a00dc1f63f843244c5bbbec971f"
+    },
+    {
+      "bytes": 7167,
+      "path": "Lean/Geometry/SourceRoutingHierarchy.lean",
+      "sha256": "sha256:4f44fea21ba572eed14fa4e064e8c1f70fca12ad767c5b41259f83bfe14f9a78"
+    },
+    {
+      "bytes": 2773,
+      "path": "Lean/Geometry/SourceRoutingRefinementAxiomAudit.lean",
+      "sha256": "sha256:00257ea79be210428384a3943bafafc835066785a592c47da33bfc8a0895e136"
+    },
+    {
+      "bytes": 4529,
+      "path": "Lean/Geometry/SourceRoutingStorage.lean",
+      "sha256": "sha256:5b09360331a223e016513dee7535d8d80ed20813eac36c86cdeb6300e4582a07"
+    },
+    {
+      "bytes": 3442,
+      "path": "Lean/Geometry/SourceCheckpointAxiomAudit.lean",
+      "sha256": "sha256:43a38c06ec4c1451fef3fb171fbf7849c593de800dab53cfe0fe0532d3e2d815"
+    },
+    {
+      "bytes": 4741,
+      "path": "Lean/Geometry/SourceCheckpointEntropy.lean",
+      "sha256": "sha256:3893457a5f380b4f71a541480c0f972b043d57ccd2c0c762ca6c3afcc7bd929f"
+    },
+    {
+      "bytes": 5321,
+      "path": "Lean/Geometry/SourceCheckpointMeaning.lean",
+      "sha256": "sha256:0a0dbb656ab14dbe4cd843b633597ef70c458f0fb4753a12fe5b42f8fe3965c4"
+    },
+    {
+      "bytes": 6498,
+      "path": "Lean/Geometry/SourceCheckpointNative.lean",
+      "sha256": "sha256:8abdba34896c4a5e15e8a41c664162d24fc91a5b379d8c57d449f57e9bcfeea4"
+    },
+    {
+      "bytes": 2867,
+      "path": "Lean/Geometry/SourceCheckpointPipeline.lean",
+      "sha256": "sha256:4fb68247fb7aae86b38d09e0c7fd816204cd87e638b5f2032fead4fe0941f5c3"
+    },
+    {
+      "bytes": 9512,
+      "path": "Lean/Geometry/SourceCheckpointPolicy.lean",
+      "sha256": "sha256:a4ea55f9b70d485a714e760a2f42a77ce156a2941bca00e2465a5814cc2558ab"
+    },
+    {
+      "bytes": 24421,
+      "path": "Lean/Geometry/SourceReadAcceptance.lean",
+      "sha256": "sha256:51547665d34301af933809205a14f85e8ac0a0170a6a4f3d54d2829b2b9a0781"
+    },
+    {
+      "bytes": 4590,
+      "path": "Lean/Geometry/SourceReadAcceptanceAxiomAudit.lean",
+      "sha256": "sha256:52f3c484687bf029950cbfdb8514b71b451fd6bb64ff5e736494908bd73d7ee2"
+    },
+    {
+      "bytes": 6841,
+      "path": "Lean/Geometry/SourceReadAcceptanceSchedule.lean",
+      "sha256": "sha256:986cac3c9ae0e10b3b06ea474cd4ce6f71544b6a627496ac7910d186004a9783"
+    },
+    {
+      "bytes": 7666,
+      "path": "Lean/Geometry/SourceTemporalAcceptanceAxiomAudit.lean",
+      "sha256": "sha256:5af40394bf919f20f99f391448a5ccf95e734c751b3edfecc85d60fe2f42cff3"
+    },
+    {
+      "bytes": 4700,
+      "path": "Lean/Geometry/SourceTemporalAttempts.lean",
+      "sha256": "sha256:a940ee70bea0772293e0b1e7a7e315000b38d5a7dff45cc19ab38c093bfc2f96"
+    },
+    {
+      "bytes": 5895,
+      "path": "Lean/Geometry/SourceTemporalConnected.lean",
+      "sha256": "sha256:13cb2a87198d17182d7929ba86d2501c0f7b4fdfb58124f3a5e62aaebb057071"
+    },
+    {
+      "bytes": 7973,
+      "path": "Lean/Geometry/SourceTemporalErasure.lean",
+      "sha256": "sha256:10ba71ed87379870783857571c656f711a98fdb4d21e48ad0d7a99aa171b7057"
+    },
+    {
+      "bytes": 3216,
+      "path": "Lean/Geometry/SourceTemporalEssential.lean",
+      "sha256": "sha256:7d8a323e25182e288845056de8723f5764d65b57470d4d8b95a94f9989c156cc"
+    },
+    {
+      "bytes": 10394,
+      "path": "Lean/Geometry/SourceTemporalGuard.lean",
+      "sha256": "sha256:bef1f82082168c67bca4dc71577ab7cf741d8912c4c06c1988c7527a9b9156d8"
+    },
+    {
+      "bytes": 3736,
+      "path": "Lean/Geometry/SourceTemporalMenu.lean",
+      "sha256": "sha256:7efa6f003a1a202301b2b221170f9282807fd9984b03b03715e0c49063fef8f5"
+    },
+    {
+      "bytes": 4496,
+      "path": "Lean/Geometry/SourceTemporalNative.lean",
+      "sha256": "sha256:828e2ad90f8e802de8d6203005705e7f94016e9977910d8c7748fbb828a451dd"
+    },
+    {
+      "bytes": 6509,
+      "path": "Lean/Geometry/SourceTemporalObservation.lean",
+      "sha256": "sha256:6d22fc3f59676b0f38ebe243f6be23d948d9c18f643d9a7068f0e99959b6ae8c"
+    },
+    {
+      "bytes": 6755,
+      "path": "Lean/Geometry/SourceTemporalSelection.lean",
+      "sha256": "sha256:f1362658543d75c1e006a075260e6862b668b7e218fd9945c767b5070ebe1e06"
+    },
+    {
+      "bytes": 13249,
+      "path": "Lean/Geometry/SourceTemporalTomography.lean",
+      "sha256": "sha256:95e7dd2320e472a827add60b914e34549c671d4d04dfdfd95b99c9e090a16400"
+    },
+    {
+      "bytes": 13940,
+      "path": "code/source_read_routing/CONTRACT.md",
+      "sha256": "sha256:df2d8525517d237a21046658e87ca52df254b8e30e08723fd22888cd4ddac076"
+    },
+    {
+      "bytes": 4561,
+      "path": "code/source_read_routing/README.md",
+      "sha256": "sha256:666b8556b370aeed1d768ef89d9783e92ba27bc70f1837de38689456dce6d8c4"
+    },
+    {
+      "bytes": 1896,
+      "path": "code/source_read_routing/specification.json",
+      "sha256": "sha256:8388c60e6e4ab7236006f25678658e26b24c159f5dbf0229ac4adbdcb431ca24"
+    },
+    {
+      "bytes": 2509,
+      "path": "code/source_read_routing/controls/q3_baseline.json",
+      "sha256": "sha256:657be19b127d91ad16b1f8f9bab427de351582ba73fed465a26b84bde5d21060"
+    },
+    {
+      "bytes": 2501,
+      "path": "code/source_read_routing/controls/q3_source.json",
+      "sha256": "sha256:5f5f04efc1a83f900fd6a334827d43f6a5325cb38de736c32f3a00b7c52efbdd"
+    },
+    {
+      "bytes": 2501,
+      "path": "code/source_read_routing/controls/q3_branch.json",
+      "sha256": "sha256:628b23083ad18701e25b9f71ebc455c81986f14ca7a6fa9384c51b053a31c5a7"
+    },
+    {
+      "bytes": 2505,
+      "path": "code/source_read_routing/controls/q3_scratch.json",
+      "sha256": "sha256:fc89ba5154bc5e7dc46dac7e277a0368a675d64d4ed8cb5a0719741d7958c571"
+    },
+    {
+      "bytes": 2899,
+      "path": "evidence/source_net_causal_poset/routed_read_law/q13_baseline.json",
+      "sha256": "sha256:bc4f331a8b2665043a0b2d1238b758806e59104d12254083949bdc0983f7008f"
+    },
+    {
+      "bytes": 2887,
+      "path": "evidence/source_net_causal_poset/routed_read_law/q13_source.json",
+      "sha256": "sha256:a8895d573d7df2bccc6642cedf308972ccc8554bfd57dfb38be415db1bd49ae0"
+    },
+    {
+      "bytes": 3081,
+      "path": "evidence/source_net_causal_poset/routed_read_law/q21_baseline.json",
+      "sha256": "sha256:cf590f86c935cbd1b5d618b38261bd1df858b86a0cc3254cebdb1118a024542b"
+    },
+    {
+      "bytes": 3067,
+      "path": "evidence/source_net_causal_poset/routed_read_law/q21_source.json",
+      "sha256": "sha256:421992e46c5cacfb6e76ce5c4d3bae3d6b3cab70665118736f185d443572933f"
+    },
+    {
+      "bytes": 12901,
+      "path": "code/source_routing_refinement/README.md",
+      "sha256": "sha256:0b695363e380a0d6bfadfae50d0ae7f87e32fd0136a767d8085f3870a04d4a6d"
+    },
+    {
+      "bytes": 1766,
+      "path": "code/source_routing_refinement/CONTRACT.md",
+      "sha256": "sha256:f4f1071c037c5d815ac9e2e1d40ac42642b25beb64a6f8242c4640ccffc91562"
+    },
+    {
+      "bytes": 8352,
+      "path": "code/source_routing_refinement/receipt.json",
+      "sha256": "sha256:894e4cbf0a90e0f15abd70bb2a6368cd68b22904475cbca35c6bb484df3a5610"
+    },
+    {
+      "bytes": 2067,
+      "path": "code/source_native_programs/README.md",
+      "sha256": "sha256:d2c091cdd0af6532b028f4b48b79258c75341706acfed119eb65f66e20ef961b"
+    },
+    {
+      "bytes": 5865,
+      "path": "code/source_native_programs/CONTRACT.md",
+      "sha256": "sha256:d28bec118d7c4156fe1f4faeb4e69ebb6064f825d1241f20e536e7a1975d1cfa"
+    },
+    {
+      "bytes": 74146,
+      "path": "code/source_native_programs/controls.json",
+      "sha256": "sha256:a1b496e13686a20934d777bbf561d99d725fa9fd9a4be7ee11e883fac9184055"
+    },
+    {
+      "bytes": 7052,
+      "path": "code/source_native_programs/receipt.json",
+      "sha256": "sha256:7acddae7d85ce7ec8ad973520fa56b54d81168748a85d98bb8672fd6a97ed6f3"
+    },
+    {
+      "bytes": 6288,
+      "path": "code/source_native_programs/families_receipt.json",
+      "sha256": "sha256:301341f9eff59cb872a32fa4bf2f5dcbb12d6efd6fd008ab116ad0af4dd99033"
+    },
+    {
+      "bytes": 2440,
+      "path": "code/source_native_accumulator/README.md",
+      "sha256": "sha256:00354ff118f7038d453dd0d17d9cbc0dcbb0c8c93d1c24c982bb47ab0bc60a51"
+    },
+    {
+      "bytes": 6647,
+      "path": "code/source_native_accumulator/CONTRACT.md",
+      "sha256": "sha256:02d27e0c26845c557913b3c390889605771511c48c8e2364fc31e336eae91dd3"
+    },
+    {
+      "bytes": 47342,
+      "path": "code/source_native_accumulator/controls.json",
+      "sha256": "sha256:1aa2a97a74aa905cacf2c32ea1315a0e25237b8aaa27f769c88f1686f06fa54d"
+    },
+    {
+      "bytes": 3673,
+      "path": "code/source_native_accumulator/receipt.json",
+      "sha256": "sha256:b90466db12b07aed0083d924084b106c17bfd8a32f2e122cb2aff2c557e095b7"
+    },
+    {
+      "bytes": 7399,
+      "path": "code/source_temporal_acceptance/README.md",
+      "sha256": "sha256:cd0d298a5c2a644f61094f7f1c2d9c4989fe5f0addb6d570b13ac7f33eb96013"
+    },
+    {
+      "bytes": 7651,
+      "path": "code/source_temporal_acceptance/CONTRACT.md",
+      "sha256": "sha256:9a85a4f1231aeb22533c33de4bf816a94bae8cfad05199ed45f47c3d93364bc6"
+    },
+    {
+      "bytes": 26251,
+      "path": "code/source_temporal_acceptance/controls.json",
+      "sha256": "sha256:425112fb7867b61daaf3ce5f4912ffd59f658ec854ad6ffcb9cfb8ebc899cb58"
+    },
+    {
+      "bytes": 4890,
+      "path": "code/source_temporal_acceptance/receipt.json",
+      "sha256": "sha256:7115f2fafe131c98f5691616728a1136f180cd97a5966554dc7346ffe9026784"
+    },
+    {
+      "bytes": 1494,
+      "path": "code/source_read_acceptance/README.md",
+      "sha256": "sha256:69edd02e4086a6c55cd6b38c7677bb18fc28d8a41c525886bf52f932c4d79846"
+    },
+    {
+      "bytes": 4321,
+      "path": "code/source_read_acceptance/CONTRACT.md",
+      "sha256": "sha256:1cd966e191f3c34c67b57255536b25f7c6835ff4d23d13fc22c82d426eabe6ed"
+    },
+    {
+      "bytes": 24786,
+      "path": "code/source_read_acceptance/controls.json",
+      "sha256": "sha256:817fec92fa7e2588d680fea6320237126ad39c3fb74d41266dc42cf13557a944"
+    },
+    {
+      "bytes": 12565,
+      "path": "code/source_read_acceptance/receipt.json",
+      "sha256": "sha256:55f05059f6b0c3441c29f80c4914dcea3924644ad8c7e9dc00a20b358f480cf7"
+    },
+    {
+      "bytes": 2580,
+      "path": "code/source_checkpoint_selection/README.md",
+      "sha256": "sha256:0f2c17e740a6d86ea35ab3c522934e5e4823a5f5895b1f93c2303343d3db7332"
+    },
+    {
+      "bytes": 5713,
+      "path": "code/source_checkpoint_selection/CONTRACT.md",
+      "sha256": "sha256:77374e792b96eafe0ff06c06c2c76702466c8636488fec9f450baf207d304ded"
+    },
+    {
+      "bytes": 125263,
+      "path": "code/source_checkpoint_selection/controls.json",
+      "sha256": "sha256:c40b99759ab5afa7a8ceb2affdc21167c64548d0a11ee319757d3e29385bb142"
+    },
+    {
+      "bytes": 4308,
+      "path": "code/source_checkpoint_selection/receipt.json",
+      "sha256": "sha256:45b1cbf8b4a620fdedb7da6012e7c9025541bb69623973aca0fe15b2664d6a84"
+    },
+    {
+      "bytes": 13941,
+      "path": "code/source_read_selection/README.md",
+      "sha256": "sha256:93949ddbbb5452c62a44afc59c09fd4d8716fecffd38c654f021ddf889e35990"
+    },
+    {
+      "bytes": 5474,
+      "path": "code/source_read_selection/CONTRACT.md",
+      "sha256": "sha256:8706ee61d34417d248487ec92c4e3bd101ca6ee25acd821e7eab67b00e5aa6c2"
+    },
+    {
+      "bytes": 13619,
+      "path": "code/source_read_selection/controls.json",
+      "sha256": "sha256:edf2f2fab3ec795a0acfcb2ee0eea32b7dba01e0fa6db5ea983216c7515e3b03"
+    },
+    {
+      "bytes": 2406,
+      "path": "code/source_read_selection/receipt.json",
+      "sha256": "sha256:e1e888d0a4d6e6fe01269c1faf73352361a85bb0649783403c8d9f3a1e00f869"
+    },
+    {
+      "bytes": 10394,
+      "path": "code/source_encoded_memory/README.md",
+      "sha256": "sha256:680c649b33eaca09e04f5983c9e762e8148d1e81c813e3459ae1391f272e9a01"
+    },
+    {
+      "bytes": 2015,
+      "path": "code/source_encoded_memory/CONTRACT.md",
+      "sha256": "sha256:a335eed7339cba11d24f6399f5528f638aeb897279f72ce9f0e389ce32af6ee9"
+    },
+    {
+      "bytes": 340372,
+      "path": "code/source_encoded_memory/controls.json",
+      "sha256": "sha256:079806a52a4d084e99d5a7b43632a4737e5d0e5479c4b347eca5ecb478291693"
+    },
+    {
+      "bytes": 1845,
+      "path": "code/source_encoded_memory/receipt.json",
+      "sha256": "sha256:8f3ca0f5a2e16c2764111787c25ccb5ef361c60db6501df4adb2f2ab04aedaf3"
+    },
+    {
+      "bytes": 13723,
+      "path": "code/source_passive_memory/README.md",
+      "sha256": "sha256:3865c3a8afbf7c4fbb3febb941e222c5ced513ac235e8402f6fc192949df6574"
+    },
+    {
+      "bytes": 1467,
+      "path": "code/source_passive_memory/CONTRACT.md",
+      "sha256": "sha256:36803498be2123625fe769a15c6ef27bb740e79c372b54c49de47a175bc1c3e7"
+    },
+    {
+      "bytes": 38658,
+      "path": "code/source_passive_memory/controls.json",
+      "sha256": "sha256:44a6d66300533e185774baf1a17bb9d0a5d0d92208a9ff3751ce8c210cc9eafa"
+    },
+    {
+      "bytes": 5393,
+      "path": "code/source_passive_memory/receipt.json",
+      "sha256": "sha256:b76c96349c0fd11a358b28f610746331792baa20cb25be1738642f6be357cfcc"
+    },
+    {
+      "bytes": 10079,
+      "path": "code/source_reusable_bus/README.md",
+      "sha256": "sha256:eadc079ff2a5dc2a59a6604489f1cec66706cd88017cbf086e1e4bf7a1de4a70"
+    },
+    {
+      "bytes": 2907,
+      "path": "code/source_reusable_bus/CONTRACT.md",
+      "sha256": "sha256:c739e0eeeb09a49fb0dc865476f0005c38a93bd338a3617eb9771450c508447d"
+    },
+    {
+      "bytes": 3690261,
+      "path": "code/source_reusable_bus/controls.json",
+      "sha256": "sha256:76f08859849ff1523f501b671e0226252310a03b83303a56bf6395089b1bfc43"
+    },
+    {
+      "bytes": 42935,
+      "path": "code/source_reusable_bus/receipt.json",
+      "sha256": "sha256:1835cec8e82e27ef15ba095a2cb2dde01613feea86f6af6bda0f7ea70b43535f"
+    },
+    {
+      "bytes": 9511,
+      "path": "code/source_native_updates/README.md",
+      "sha256": "sha256:76ff51eb7755925c1511189477a8d45eb5716b77e03f746303a5568ae42fcbbf"
+    },
+    {
+      "bytes": 3296,
+      "path": "code/source_native_updates/CONTRACT.md",
+      "sha256": "sha256:3abb3ce302f3b5224b4e5c77ab12d79084dcb36631592e07d13b0865ad38704e"
+    },
+    {
+      "bytes": 127951,
+      "path": "code/source_native_updates/controls.json",
+      "sha256": "sha256:52bf59515de20509948cef45324da66a43028a821aae1ae7daaf1226d45971a4"
+    },
+    {
+      "bytes": 28412,
+      "path": "code/source_native_updates/receipt.json",
+      "sha256": "sha256:a6c03a5387a66e67f4309a0506df52ea60e0d8ccfad35c91dd004575740cac8d"
+    },
+    {
+      "bytes": 2424,
+      "path": "code/source_scalar_finite_instrument/README.md",
+      "sha256": "sha256:025d71489940b8ab30859478124916b08fa9b2dbb2921d42bbc90314790fec00"
+    },
+    {
+      "bytes": 589511,
+      "path": "code/source_scalar_finite_instrument/finite_instrument_receipt.json",
+      "sha256": "sha256:a9e922b62896419bb96ac24d9023c24f1c7f4f0cc40ca84c601ece12577a09ad"
+    },
+    {
+      "bytes": 2569,
+      "path": "code/source_operator_join/README.md",
+      "sha256": "sha256:3011bd4b6d78613d2ef42fb16e298179c3fc1e67bd37f2f7b52bcc64641bba60"
+    },
+    {
+      "bytes": 26115,
+      "path": "code/source_operator_join/operator_join_packet.json",
+      "sha256": "sha256:6d45bf9db9d665963cfd03cf1565a0f2e8e7e4c9913eac9e686198dd201f8b8a"
+    },
+    {
+      "bytes": 4097,
+      "path": "code/sm_fermion_current/README.md",
+      "sha256": "sha256:c2719e863cdfea8f10ff81033b5f0031652c5866c76e8bc4d19e6e609299f314"
+    },
+    {
+      "bytes": 3041,
+      "path": "code/sm_fermion_current/coupled_README.md",
+      "sha256": "sha256:d27293e69fd30c0df6df20c9ee98ce25474114328649788f6f0ec13359480649"
+    },
+    {
+      "bytes": 3706044,
+      "path": "code/sm_fermion_current/current_receipt.json",
+      "sha256": "sha256:d4a780d4849d9b5dea1618705b87279597d6aca345a160a20990435929cff8a7"
+    },
+    {
+      "bytes": 11161830,
+      "path": "code/sm_fermion_current/coupled_receipt.json",
+      "sha256": "sha256:90862a6ad6a2d9585b515d030bccfe45305adb54ffabd3fcac6870d08354d850"
+    },
+    {
+      "bytes": 54500,
+      "path": "code/sm_fermion_current/quantum_link_receipt.json",
+      "sha256": "sha256:0a93ada86ff6349623e7cb039309072a669b6fafa04749e382319b922bd77e62"
+    },
+    {
+      "bytes": 9032,
+      "path": "code/maxwell_measurement/README.md",
+      "sha256": "sha256:3a8648833947f75ae848f77c3f28807b14d257ad58758a808aaba2efa5612450"
+    },
+    {
+      "bytes": 4168,
+      "path": "code/maxwell_measurement/contract.py",
+      "sha256": "sha256:895696207740599c38ee049b27714262875ff1a90da21a2e5458fea354bf54a7"
+    },
+    {
+      "bytes": 4261,
+      "path": "code/source_feedback_transport/README.md",
+      "sha256": "sha256:44342a6f6c8eae6a05c4d572c0a041ba3f9cbd459a21176b0506cd5579359e26"
+    },
+    {
+      "bytes": 13869,
+      "path": "Lean/QFT/TripleCarrierOperatorJoin.lean",
+      "sha256": "sha256:6325cd23dff82fe5ab8e37aa0d17df828a643f5c9aa1939fd8d3834bee4457fd"
     }
   ],
   "stage": 2,
   "summary": {
-    "candidate_count": 23,
+    "candidate_count": 29,
     "classification_counts": {
       "COMMUTATIVE_ONLY": 2,
-      "DOWNSTREAM_CONTAMINATED": 2,
-      "IRREVERSIBLE_ONLY": 9,
+      "DOWNSTREAM_CONTAMINATED": 4,
+      "IRREVERSIBLE_ONLY": 12,
       "MISSING_ORDER_INFORMATION": 2,
       "PARTIAL": 2,
-      "STATIC_ONLY": 5,
+      "STATIC_ONLY": 6,
       "UNRELATED": 1
     },
-    "cross_packet_noncomposition": "The reversible four-dimensional response packet and the logged record-repair packet have different primitives and semantics. Combining their complementary fields would be a new producer, not an inventory finding.",
+    "cross_packet_noncomposition": "The reversible four-dimensional response packet, the logged record-repair packet and the regenerated full-family routing packet have different primitives and semantics. Combining their complementary fields would be a new producer, not an inventory finding.",
     "qualifying_candidate_count": 0,
+    "richest_integrated_near_candidate": {
+      "candidate_id": "source_read_routing_full_family",
+      "fatal_failures": [
+        "constant resets and destructive pair means in every hop",
+        "one intervention family in one order per run with schedule-independent readouts",
+        "no twelve reversible perturbation families"
+      ]
+    },
     "richest_logged_near_candidate": {
       "candidate_id": "record_counting_repair_628",
       "fatal_failures": [

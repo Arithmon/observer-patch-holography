@@ -24,8 +24,8 @@ PRODUCER = HERE / "source_current_order_sensitive_inventory.py"
 
 SCHEMA = "oph.source_current_order_sensitive_inventory.v2"
 VERDICT = "SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT"
-PREVIOUS_INVENTORY_BASE_SHA = "2b03a95caf5030272f7b426b964e816f650153f8"
-UPSTREAM_MAIN_SHA = "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9"
+PREVIOUS_INVENTORY_BASE_SHA = "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9"
+UPSTREAM_MAIN_SHA = "afed734528edff214c34d4038a64310544df922d"
 
 AUDITED_DIRECTORIES = (
     "code/source_feedback_transport",
@@ -41,6 +41,43 @@ AUDITED_DIRECTORIES = (
     "Lean/Geometry",
     "Lean/InformationProjection",
     "Lean/Variational",
+    "code/source_read_routing",
+    "code/source_routing_refinement",
+    "code/source_native_programs",
+    "code/source_native_accumulator",
+    "code/source_temporal_acceptance",
+    "code/source_read_acceptance",
+    "code/source_checkpoint_selection",
+    "code/source_read_selection",
+    "code/source_encoded_memory",
+    "code/source_passive_memory",
+    "code/source_reusable_bus",
+    "code/source_native_updates",
+    "code/source_scalar_finite_instrument",
+    "code/source_operator_join",
+    "code/sm_fermion_current",
+    "code/maxwell_measurement",
+    "evidence/source_net_causal_poset/routed_read_law",
+)
+
+EXPECTED_SCOPE_EXTENSION = (
+    "code/source_read_routing",
+    "code/source_routing_refinement",
+    "code/source_native_programs",
+    "code/source_native_accumulator",
+    "code/source_temporal_acceptance",
+    "code/source_read_acceptance",
+    "code/source_checkpoint_selection",
+    "code/source_read_selection",
+    "code/source_encoded_memory",
+    "code/source_passive_memory",
+    "code/source_reusable_bus",
+    "code/source_native_updates",
+    "code/source_scalar_finite_instrument",
+    "code/source_operator_join",
+    "code/sm_fermion_current",
+    "code/maxwell_measurement",
+    "evidence/source_net_causal_poset/routed_read_law",
 )
 
 CONTENT_SNAPSHOT_EXACT_EXCLUSIONS = (
@@ -85,6 +122,12 @@ EXPECTED_CLASSIFICATIONS = {
     "lean_declared_fin12_transport_refinement": "PARTIAL",
     "lean_irreversible_provenance_histories": "IRREVERSIBLE_ONLY",
     "lean_transport_and_current_boundaries": "STATIC_ONLY",
+    "source_read_routing_full_family": "IRREVERSIBLE_ONLY",
+    "native_stored_programs_and_accumulator": "IRREVERSIBLE_ONLY",
+    "native_temporal_tomography_and_checkpoint_selection": "IRREVERSIBLE_ONLY",
+    "finite_source_operator_join": "STATIC_ONLY",
+    "fermionic_hypercharge_current_histories": "DOWNSTREAM_CONTAMINATED",
+    "maxwell_measurement_adapter": "DOWNSTREAM_CONTAMINATED",
 }
 
 
@@ -156,10 +199,10 @@ EXPECTED_PROPERTIES = {
     ),
     "generic_transport_from_gluing": expected_properties("target_free"),
     "lean_pair_mean_memory_and_reusable_bus": expected_properties(
-        "source_native", "target_free"
+        "source_native", "port_indexed", "raw_histories_serialized", "target_free"
     ),
     "lean_selected_pair_mean_histories": expected_properties(
-        "source_native", "target_free"
+        "source_native", "port_indexed", "raw_histories_serialized", "target_free"
     ),
     "lean_source_history_abstractions": expected_properties("target_free"),
     "lean_conditional_a2_words": expected_properties(
@@ -178,50 +221,189 @@ EXPECTED_PROPERTIES = {
     "lean_transport_and_current_boundaries": expected_properties(
         "source_native", "target_free", "same_twelve_port_carrier"
     ),
+    "source_read_routing_full_family": expected_properties(
+        "source_native",
+        "port_indexed",
+        "raw_histories_serialized",
+        "target_free",
+        "refinement_provenance_present",
+    ),
+    "native_stored_programs_and_accumulator": expected_properties(
+        "source_native", "port_indexed", "raw_histories_serialized", "target_free"
+    ),
+    "native_temporal_tomography_and_checkpoint_selection": expected_properties(
+        "source_native", "port_indexed", "raw_histories_serialized", "target_free"
+    ),
+    "finite_source_operator_join": expected_properties("target_free"),
+    "fermionic_hypercharge_current_histories": expected_properties(
+        "reversible", "raw_histories_serialized"
+    ),
+    "maxwell_measurement_adapter": expected_properties(),
 }
 
 EXPECTED_INTEGRATED_REVIEW = {
-    "Lean/Geometry/FlatDiamondError.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/FlatDiamondNormalization.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/FlatDiamondPairIntegral.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/FlatDiamondVolume.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/FlatLorentzVolume.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/GoldenSourceCausalLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/GoldenSourcePairLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/GoldenSourceVolumeLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/OrderingFractionFourDimensional.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/SourceBusScaling.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourceCausalBoundary.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/SourceConstrainedRead.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
-    "Lean/Geometry/SourceConstrainedSelection.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
-    "Lean/Geometry/SourceCountLimitAxiomAudit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/SourceCountTransport.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/SourceEncodedMemory.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourceNativeRecords.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourceNetOrderLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/SourceNetVolumeError.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Geometry/SourceNonlinearRecord.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourcePassiveMemoryBudget.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourcePassiveReset.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourceReadSelection.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
-    "Lean/Geometry/SourceReadSelectionAxiomAudit.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
-    "Lean/Geometry/SourceReusableBus.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourceReusableBusAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
-    "Lean/Geometry/SourceSelectionControls.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
-    "Lean/Screen/OPHScreen.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Screen/WhitneyConeMass.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Screen/WhitneyConeMassNaturality.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Screen/WhitneyConeModes.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Screen/WhitneyConeNaturality.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Screen/WhitneyFrameMorphism.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Screen/WhitneyFrameNaturality.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Screen/WhitneyMassPremiseInstance.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Screen/WhitneyNormalModeConstruction.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
-    "Lean/Screen/WhitneyRotationWitness.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+    "Lean/Geometry/SourceAccumulatorAxiomAudit.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceAccumulatorDecoder.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceAccumulatorProgram.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceBankBusWitness.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceBankCompiler.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceBankControl.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceBankExecution.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceBankInvariant.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceBankLowering.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceBankMachine.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceBankPrecision.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceBankTrace.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceCheckpointAxiomAudit.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceCheckpointEntropy.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceCheckpointMeaning.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceCheckpointNative.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceCheckpointPipeline.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceCheckpointPolicy.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceNativeAccumulator.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceNativeCore.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceNativeProgramBudget.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceNativeProgramError.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceNativeProgramsAxiomAudit.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceNativeShuttle.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceNativeStoredProgram.lean": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "Lean/Geometry/SourceReadAcceptance.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceReadAcceptanceAxiomAudit.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceReadAcceptanceSchedule.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceReadRouting.lean": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "Lean/Geometry/SourceRoutingBudget.lean": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "Lean/Geometry/SourceRoutingHierarchy.lean": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "Lean/Geometry/SourceRoutingRefinementAxiomAudit.lean": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "Lean/Geometry/SourceRoutingStorage.lean": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "Lean/Geometry/SourceTemporalAcceptanceAxiomAudit.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceTemporalAttempts.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceTemporalConnected.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceTemporalErasure.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceTemporalEssential.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceTemporalGuard.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceTemporalMenu.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceTemporalNative.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceTemporalObservation.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceTemporalSelection.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "Lean/Geometry/SourceTemporalTomography.lean": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/maxwell_measurement/README.md": ("NEW_CANDIDATE", 'maxwell_measurement_adapter'),
+    "code/maxwell_measurement/contract.py": ("NEW_CANDIDATE", 'maxwell_measurement_adapter'),
+    "code/sm_fermion_current/README.md": ("NEW_CANDIDATE", 'fermionic_hypercharge_current_histories'),
+    "code/sm_fermion_current/coupled_README.md": ("NEW_CANDIDATE", 'fermionic_hypercharge_current_histories'),
+    "code/sm_fermion_current/coupled_receipt.json": ("NEW_CANDIDATE", 'fermionic_hypercharge_current_histories'),
+    "code/sm_fermion_current/current_receipt.json": ("NEW_CANDIDATE", 'fermionic_hypercharge_current_histories'),
+    "code/sm_fermion_current/quantum_link_receipt.json": ("NEW_CANDIDATE", 'fermionic_hypercharge_current_histories'),
+    "code/source_checkpoint_selection/CONTRACT.md": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_checkpoint_selection/README.md": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_checkpoint_selection/controls.json": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_checkpoint_selection/receipt.json": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_encoded_memory/CONTRACT.md": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_encoded_memory/README.md": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_encoded_memory/controls.json": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_encoded_memory/receipt.json": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_feedback_transport/README.md": ("EXTENDS_EXISTING_CANDIDATE", 'source_feedback_transport'),
+    "code/source_native_accumulator/CONTRACT.md": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "code/source_native_accumulator/README.md": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "code/source_native_accumulator/controls.json": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "code/source_native_accumulator/receipt.json": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "code/source_native_programs/CONTRACT.md": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "code/source_native_programs/README.md": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "code/source_native_programs/controls.json": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "code/source_native_programs/families_receipt.json": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "code/source_native_programs/receipt.json": ("NEW_CANDIDATE", 'native_stored_programs_and_accumulator'),
+    "code/source_native_updates/CONTRACT.md": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_native_updates/README.md": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_native_updates/controls.json": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_native_updates/receipt.json": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_operator_join/README.md": ("NEW_CANDIDATE", 'finite_source_operator_join'),
+    "code/source_operator_join/operator_join_packet.json": ("NEW_CANDIDATE", 'finite_source_operator_join'),
+    "code/source_passive_memory/CONTRACT.md": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_passive_memory/README.md": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_passive_memory/controls.json": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_passive_memory/receipt.json": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_read_acceptance/CONTRACT.md": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_read_acceptance/README.md": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_read_acceptance/controls.json": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_read_acceptance/receipt.json": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_read_routing/CONTRACT.md": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "code/source_read_routing/README.md": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "code/source_read_routing/controls/q3_baseline.json": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "code/source_read_routing/controls/q3_branch.json": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "code/source_read_routing/controls/q3_scratch.json": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "code/source_read_routing/controls/q3_source.json": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "code/source_read_routing/specification.json": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "code/source_read_selection/CONTRACT.md": ("EXTENDS_EXISTING_CANDIDATE", 'lean_selected_pair_mean_histories'),
+    "code/source_read_selection/README.md": ("EXTENDS_EXISTING_CANDIDATE", 'lean_selected_pair_mean_histories'),
+    "code/source_read_selection/controls.json": ("EXTENDS_EXISTING_CANDIDATE", 'lean_selected_pair_mean_histories'),
+    "code/source_read_selection/receipt.json": ("EXTENDS_EXISTING_CANDIDATE", 'lean_selected_pair_mean_histories'),
+    "code/source_reusable_bus/CONTRACT.md": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_reusable_bus/README.md": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_reusable_bus/controls.json": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_reusable_bus/receipt.json": ("EXTENDS_EXISTING_CANDIDATE", 'lean_pair_mean_memory_and_reusable_bus'),
+    "code/source_routing_refinement/CONTRACT.md": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "code/source_routing_refinement/README.md": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "code/source_routing_refinement/receipt.json": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "code/source_scalar_finite_instrument/README.md": ("EXTENDS_EXISTING_CANDIDATE", 'source_scalar_sequential_instrument'),
+    "code/source_scalar_finite_instrument/finite_instrument_receipt.json": ("EXTENDS_EXISTING_CANDIDATE", 'source_scalar_sequential_instrument'),
+    "code/source_temporal_acceptance/CONTRACT.md": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_temporal_acceptance/README.md": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_temporal_acceptance/controls.json": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "code/source_temporal_acceptance/receipt.json": ("NEW_CANDIDATE", 'native_temporal_tomography_and_checkpoint_selection'),
+    "evidence/source_net_causal_poset/routed_read_law/q13_baseline.json": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "evidence/source_net_causal_poset/routed_read_law/q13_source.json": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "evidence/source_net_causal_poset/routed_read_law/q21_baseline.json": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
+    "evidence/source_net_causal_poset/routed_read_law/q21_source.json": ("NEW_CANDIDATE", 'source_read_routing_full_family'),
 }
+
+
+EXPECTED_PRIOR_INTEGRATED_REVIEWS = (
+    (
+        "2b03a95caf5030272f7b426b964e816f650153f8",
+        "2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9",
+        {
+        "Lean/Geometry/FlatDiamondError.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/FlatDiamondNormalization.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/FlatDiamondPairIntegral.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/FlatDiamondVolume.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/FlatLorentzVolume.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/GoldenSourceCausalLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/GoldenSourcePairLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/GoldenSourceVolumeLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/OrderingFractionFourDimensional.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/SourceBusScaling.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourceCausalBoundary.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/SourceConstrainedRead.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
+        "Lean/Geometry/SourceConstrainedSelection.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
+        "Lean/Geometry/SourceCountLimitAxiomAudit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/SourceCountTransport.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/SourceEncodedMemory.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourceNativeRecords.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourceNetOrderLimit.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/SourceNetVolumeError.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Geometry/SourceNonlinearRecord.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourcePassiveMemoryBudget.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourcePassiveReset.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourceReadSelection.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
+        "Lean/Geometry/SourceReadSelectionAxiomAudit.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
+        "Lean/Geometry/SourceReusableBus.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourceReusableBusAxiomAudit.lean": ("NEW_CANDIDATE", "lean_pair_mean_memory_and_reusable_bus"),
+        "Lean/Geometry/SourceSelectionControls.lean": ("NEW_CANDIDATE", "lean_selected_pair_mean_histories"),
+        "Lean/Screen/OPHScreen.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Screen/WhitneyConeMass.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Screen/WhitneyConeMassNaturality.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Screen/WhitneyConeModes.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Screen/WhitneyConeNaturality.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Screen/WhitneyFrameMorphism.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Screen/WhitneyFrameNaturality.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Screen/WhitneyMassPremiseInstance.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Screen/WhitneyNormalModeConstruction.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        "Lean/Screen/WhitneyRotationWitness.lean": ("OUTSIDE_REVIEWED_SOURCE_SCOPE", None),
+        },
+    ),
+)
 
 
 class VerificationError(ValueError):
@@ -555,11 +737,111 @@ def independently_check_sources(repo_root: Path) -> dict[str, int]:
         "selected-history scope boundary",
     )
 
+    routing_spec = strict_load(repo_root / "code/source_read_routing/specification.json")
+    routing_scope = routing_spec.get("scope", {})
+    check(routing_scope.get("full_q13_q21_routed_execution") is True, "routing execution scope")
+    check(routing_scope.get("axiomatic_read_law_derived") is False, "routing read-law derivation boundary")
+    check(
+        routing_spec.get("M1", {}).get("status") == "retained supplied structural rule",
+        "routing M1 status",
+    )
+    routing_events: dict[str, int] = {}
+    for name in ("q13_baseline", "q13_source", "q21_baseline", "q21_source"):
+        run = strict_load(
+            repo_root / f"evidence/source_net_causal_poset/routed_read_law/{name}.json"
+        )
+        check(run.get("schema") == "oph.source_read_routing.run.v1", f"routing run schema: {name}")
+        check(run.get("variant") == name.split("_")[1], f"routing run variant: {name}")
+        routing_events[name] = int(run.get("costs", {}).get("events"))
+    check(routing_events["q13_baseline"] == routing_events["q13_source"], "q13 event census")
+    check(routing_events["q21_baseline"] == routing_events["q21_source"], "q21 event census")
+    routing_lean = (repo_root / "Lean/Geometry/SourceReadRouting.lean").read_text(encoding="utf-8")
+    check("resetReceiver" in routing_lean and "resetSource" in routing_lean, "routing hop resets")
+    check("closed_sum_preserving_word_cannot_reset" in routing_lean, "routing reset obstruction")
+    check("schedule_independent_readouts" in routing_lean, "routing schedule independence")
+    refinement = strict_load(repo_root / "code/source_routing_refinement/receipt.json")
+    check(refinement.get("scope", {}).get("M1_source_selected") is False, "refinement M1 boundary")
+
+    programs = strict_load(repo_root / "code/source_native_programs/receipt.json")
+    accumulator = strict_load(repo_root / "code/source_native_accumulator/receipt.json")
+    check(programs.get("dynamic_writes") == "supported_scalar_pair_means_only", "stored-program writes")
+    check(programs.get("m1_derived") is False, "stored-program M1 boundary")
+    check(accumulator.get("dynamic_scalar_writes") == "pair_means_only", "accumulator writes")
+    check(accumulator.get("m1_derived") is False, "accumulator M1 boundary")
+    bus_witness = (repo_root / "Lean/Geometry/SourceBankBusWitness.lean").read_text(encoding="utf-8")
+    check("declared graph data" in bus_witness, "bank bus W12 embedding boundary")
+
+    temporal_controls = strict_load(repo_root / "code/source_temporal_acceptance/controls.json")
+    captured_plan = temporal_controls.get("tomography", {}).get("captured_plan", {})
+    check(temporal_controls.get("full_axiom_instantiation") is False, "temporal axiom boundary")
+    check(captured_plan.get("payload_replay") is False, "temporal plan payload replay")
+    read_acceptance = strict_load(repo_root / "code/source_read_acceptance/receipt.json")
+    check(
+        read_acceptance.get("source_contract") == "conditional_not_source_selected",
+        "read acceptance source contract",
+    )
+    checkpoint = strict_load(repo_root / "code/source_checkpoint_selection/controls.json")
+    check(
+        checkpoint.get("scope", {}).get("canonical_axiom_selection") is False,
+        "checkpoint axiom selection boundary",
+    )
+    erasure = (repo_root / "Lean/Geometry/SourceTemporalErasure.lean").read_text(encoding="utf-8")
+    check(
+        "Permanent loss before the first discriminating observation" in erasure,
+        "temporal erasure boundary",
+    )
+    tomography = (repo_root / "Lean/Geometry/SourceTemporalTomography.lean").read_text(
+        encoding="utf-8"
+    )
+    check("no metric menu is selected" in tomography, "temporal tomography menu boundary")
+
+    read_selection_controls = strict_load(repo_root / "code/source_read_selection/controls.json")
+    check(read_selection_controls.get("source_ports") == list(range(12)), "read selection ports")
+    reusable_bus = strict_load(repo_root / "code/source_reusable_bus/receipt.json")
+    check(len(reusable_bus.get("histories", [])) == 16, "reusable-bus tape census")
+
+    finite_instrument = strict_load(
+        repo_root / "code/source_scalar_finite_instrument/finite_instrument_receipt.json"
+    )
+    check(
+        "code/source_scalar_instruments/sequential_instrument_receipt.json"
+        in str(finite_instrument.get("parents")),
+        "finite instrument parent pin",
+    )
+
+    operator_join = strict_load(repo_root / "code/source_operator_join/operator_join_packet.json")
+    join_interpretation = operator_join.get("interpretation", {})
+    check(
+        join_interpretation.get("overlapping_pair_algebras_commute") is False,
+        "operator join hinge",
+    )
+    check(join_interpretation.get("tensor_assembly") == "declared", "operator join assembly")
+    check(join_interpretation.get("observed_quantum_outcomes") is False, "operator join outcomes")
+
+    fermion = strict_load(repo_root / "code/sm_fermion_current/current_receipt.json")
+    fermion_scope = fermion.get("scope", {})
+    check(
+        fermion_scope.get("hypercharge_edge_factors_on_prepared_q5_sites") is True,
+        "fermion current label",
+    )
+    check(
+        fermion_scope.get("source_selected_action_population_or_clock") is False,
+        "fermion source-selection boundary",
+    )
+    maxwell_readme = (repo_root / "code/maxwell_measurement/README.md").read_text(encoding="utf-8")
+    check(
+        "No apparatus, physical raw data, frozen experiment or observed result is shipped."
+        in maxwell_readme,
+        "Maxwell adapter shipping boundary",
+    )
+
     return {
         "response_algebra_dimension": int(algebra["exact_dimension"]),
         "response_commutator_nonzero_count": int(algebra["commutator_nonzero_count"]),
         "proper_recharting_count": int(rechart["proper_recharting_count"]),
         "b14_jacobi_nonzero_count": int(b14["jacobi_failure"]["nonzero_count"]),
+        "routing_q13_events": routing_events["q13_baseline"],
+        "routing_q21_events": routing_events["q21_baseline"],
     }
 
 
@@ -597,6 +879,23 @@ def verify(inventory_path: Path, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
     snapshotted_paths = verify_audited_file_snapshot(
         inventory.get("audited_file_snapshot"), repo_root
     )
+    extension = inventory.get("audit_scope", {}).get("directories_added_at_this_revision")
+    check(isinstance(extension, list), "audit scope extension missing")
+    check(
+        [row.get("directory") for row in extension] == list(EXPECTED_SCOPE_EXTENSION),
+        "audit scope extension drift",
+    )
+    check(
+        all(isinstance(row.get("reason"), str) and row.get("reason") for row in extension),
+        "audit scope extension reasons",
+    )
+    check(
+        all(
+            any(path.startswith(directory + "/") for path in snapshotted_paths)
+            for directory in EXPECTED_SCOPE_EXTENSION
+        ),
+        "audit scope extension not bound by the content snapshot",
+    )
 
     integrated_review = inventory.get("integrated_tree_review")
     check(isinstance(integrated_review, Mapping), "integrated-tree review missing")
@@ -631,6 +930,25 @@ def verify(inventory_path: Path, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
     )
     check(observed_review == EXPECTED_INTEGRATED_REVIEW, "integrated-tree semantic decisions")
     check(set(observed_review) <= snapshotted_paths, "reviewed surface missing from snapshot")
+    prior_reviews = integrated_review.get("prior_reviews")
+    check(isinstance(prior_reviews, list), "prior integrated-tree reviews")
+    check(len(prior_reviews) == len(EXPECTED_PRIOR_INTEGRATED_REVIEWS), "prior review count")
+    for prior, (start, end, expected_map) in zip(
+        prior_reviews, EXPECTED_PRIOR_INTEGRATED_REVIEWS, strict=True
+    ):
+        check(isinstance(prior, Mapping), "prior review row")
+        check(prior.get("from_upstream_main_sha") == start, "prior review start")
+        check(prior.get("through_upstream_main_sha") == end, "prior review end")
+        prior_surfaces = prior.get("surfaces")
+        check(isinstance(prior_surfaces, list), "prior review surfaces")
+        check(prior.get("surface_count") == len(expected_map), "prior review count")
+        observed_prior = {
+            row.get("path"): (row.get("decision"), row.get("candidate_id"))
+            for row in prior_surfaces
+            if isinstance(row, Mapping)
+        }
+        check(observed_prior == expected_map, "prior integrated-tree semantic decisions")
+        check(set(observed_prior) <= snapshotted_paths, "prior reviewed surface missing from snapshot")
 
     source_paths = verify_pin_rows(inventory.get("source_pins"), repo_root, "source")
     implementation_paths = verify_pin_rows(
@@ -701,7 +1019,18 @@ def verify(inventory_path: Path, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
         == "record_counting_repair_628",
         "richest near-candidate",
     )
+    integrated_near = summary.get("richest_integrated_near_candidate", {})
+    check(
+        integrated_near.get("candidate_id") == "source_read_routing_full_family",
+        "richest integrated near-candidate",
+    )
+    check(
+        isinstance(integrated_near.get("fatal_failures"), list)
+        and len(integrated_near["fatal_failures"]) == 3,
+        "integrated near-candidate fatal failures",
+    )
     check("different primitives" in summary.get("cross_packet_noncomposition", ""), "no compositing rule")
+    check("routing packet" in summary.get("cross_packet_noncomposition", ""), "routing packet non-compositing")
 
     missing = inventory.get("minimal_missing_fields")
     check(isinstance(missing, list), "minimal missing fields")
@@ -739,6 +1068,9 @@ def verify(inventory_path: Path, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
         "response_algebra_dimension": independent["response_algebra_dimension"],
         "proper_recharting_count": independent["proper_recharting_count"],
         "b14_jacobi_nonzero_count": independent["b14_jacobi_nonzero_count"],
+        "routing_q13_events": independent["routing_q13_events"],
+        "routing_q21_events": independent["routing_q21_events"],
+        "audited_file_count": len(snapshotted_paths),
     }
 
 

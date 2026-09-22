@@ -4,8 +4,8 @@
 
 `SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT`
 
-At upstream baseline `2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9`, the
-bounded repository inventory contains **23 candidate packets and zero
+At upstream baseline `afed734528edff214c34d4038a64310544df922d`, the
+bounded repository inventory contains **29 candidate packets and zero
 qualifying packets**. No single audited object is simultaneously source-native,
 port-indexed, reversible, target-free, bound to the same twelve-port carrier,
 equipped with refinement provenance, and backed by serialized raw histories for
@@ -32,29 +32,44 @@ from distinct packets are not composited.
 8. refinement provenance present;
 9. twelve reversible perturbation families.
 
+## Audited scope and custody
+
 The canonical machine-readable adjudication is
 [`manifests/source_current_order_sensitive_inventory.json`](manifests/source_current_order_sensitive_inventory.json).
 It pins every audited source and the two independent implementations by SHA-256.
-It also freezes a canonical content record for all **469 included files** below
-the 13 audited directories. Each record contains the repository-relative POSIX
-path, byte count, and SHA-256 digest. The producer and independent verifier
-fail closed on added, removed, renamed, or byte-changed files. The only exact
-path exclusion is the generated inventory itself, whose inclusion would create
-a byte-digest self-reference. Python cache directories and bytecode suffixes
-are excluded as repository cache/build outputs.
+It also freezes a canonical content record for all **745 included files** below
+the **30 audited directories**. Each record contains the repository-relative
+POSIX path, byte count, and SHA-256 digest. The producer and independent
+verifier fail closed on added, removed, renamed, or byte-changed files. The only
+exact path exclusion is the generated inventory itself, whose inclusion would
+create a byte-digest self-reference. Python cache directories and bytecode
+suffixes are excluded as repository cache/build outputs.
+
+Seventeen directories join the audited scope at this baseline, each with a
+recorded reason under `audit_scope.directories_added_at_this_revision`. The
+runtime packages `code/source_*` whose protocols are formalized under
+`Lean/Geometry` hold the retained control tapes, replay receipts and captured
+supports of those protocols, so the inventory binds them together with their
+Lean modules instead of classifying the formal half alone. The directory
+`evidence/source_net_causal_poset/routed_read_law` holds the production run
+receipts and phase manifests of the full-family routing histories. The two
+packages that carry a physical current label, `code/sm_fermion_current` and
+`code/maxwell_measurement`, and the operator join `code/source_operator_join`
+join the scope because the source firewall and the static/dynamic boundary are
+decided on their contents rather than on their location in the tree.
 
 ## Independent inventory result
 
 | Classification | Count |
 |---|---:|
 | `COMMUTATIVE_ONLY` | 2 |
-| `DOWNSTREAM_CONTAMINATED` | 2 |
-| `IRREVERSIBLE_ONLY` | 9 |
+| `DOWNSTREAM_CONTAMINATED` | 4 |
+| `IRREVERSIBLE_ONLY` | 12 |
 | `MISSING_ORDER_INFORMATION` | 2 |
 | `PARTIAL` | 2 |
-| `STATIC_ONLY` | 5 |
+| `STATIC_ONLY` | 6 |
 | `UNRELATED` | 1 |
-| **Total** | **23** |
+| **Total** | **29** |
 | **Qualifying** | **0** |
 
 The strongest registered source packet is the adjacency response. Its exact
@@ -63,41 +78,103 @@ serializes no raw runtime histories. The richest logged near-candidate is the
 #628 record-counting repair packet. It has raw logs, the W12 carrier, and three
 coherent refinement maps, but its append-only strict-descent dynamics are
 irreversible and its commutative addition law erases presentation order.
-Combining these packets would define a new producer with different primitives,
-not discover an existing source object.
+
+The richest integrated packet is the full-family routed read compiler
+`source_read_routing_full_family`. It is source-native, port-indexed and
+target-free, carries refinement provenance across support levels three to
+five, retains complete level-three tapes, and regenerates the q=13 and q=21
+event streams against retained phase and whole-stream commitments. Its
+six-event hop executes two constant resets and one destructive pair mean, its
+Lean module proves that closed sum-preserving words cannot reset, one
+intervention family (the centre payload +1) is executed in one order per run,
+and its value readouts are proved schedule-independent. It fails
+reversibility, both composition orders and the twelve-family requirement, and
+its histories span thousands of carriers rather than one twelve-port carrier.
+Combining the response packet, the record-repair packet and the routing packet
+would define a producer with different primitives, not discover an existing
+source object.
 
 Other close surfaces fail for independently pinned reasons: source-routing and
 feedback logs contain destructive averaging/reset operations; the sequential
-instrument is a 64-site supplied model without sampled source histories; the
-issue #566 and B14 packets are static bracket searches or constructions; the
-Lean flows and transport interfaces are conditional, aggregate, or live on the
-wrong carrier and do not instantiate twelve source-selected perturbations with
-132 mixed-order raw histories.
+instrument and its finite-duration extension are supplied 64-site models
+without sampled source histories; the issue #566 and B14 packets are static
+bracket searches or constructions; the Lean flows and transport interfaces are
+conditional, aggregate, or live on the wrong carrier and do not instantiate
+twelve source-selected perturbations with 132 mixed-order raw histories.
 
 ## Integrated-tree review
 
-The 40 files added or materially changed in the audited directories between
-`2b03a95caf5030272f7b426b964e816f650153f8` and the audited baseline have an
-explicit semantic decision in the machine-readable inventory.
+The 44 Lean modules added under `Lean/Geometry` between
+`2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9` and the audited baseline, the
+modified `code/source_feedback_transport/README.md`, and the semantic files of
+the seventeen directories that join the scope have an explicit semantic
+decision in the machine-readable inventory: 111 surfaces, each
+`NEW_CANDIDATE` or `EXTENDS_EXISTING_CANDIDATE`. The 40 decisions of the
+interval from `2b03a95caf5030272f7b426b964e816f650153f8` to
+`2d9bd11bc47c56d88a2fbbca22e3cc1be171d3f9`, including the Whitney and
+count-limit modules classified `OUTSIDE_REVIEWED_SOURCE_SCOPE`, are retained
+under `integrated_tree_review.prior_reviews`.
 
-The pair-mean memory, reusable-bus, native-record, passive-reset, and related
-axiom-audit modules form the candidate
-`lean_pair_mean_memory_and_reusable_bus`. Their copy, clear, route, cleanup,
-and arithmetic words are attenuating or dissipative. The Fin 3
-schedule-dependence witness records two distinct orders, but does not supply
-the W12 family of 132 mixed-order runtime histories.
+Three candidate packets are formed from the added modules.
 
-The constrained selection, read-selection, transcript, control, and axiom-audit
-modules form the candidate `lean_selected_pair_mean_histories`. They quantify
-over abstract finite pair-mean words and prefix transcripts. They supply no
-W12 instance, inverse laws, serialized runtime custody, or refinement ancestry.
+The routing modules (`SourceReadRouting`, `SourceRoutingBudget`,
+`SourceRoutingHierarchy`, `SourceRoutingStorage` and their axiom audit), the
+packages `code/source_read_routing` and `code/source_routing_refinement`, and
+the four production receipts form `source_read_routing_full_family`,
+described above.
 
-The source-count, causal-limit, flat-volume, and ordering-fraction modules are
-measure and convergence theorems without source perturbation operations. The
-Whitney modules concern mass forms, normal modes, frame morphisms, and
-basis-change naturality. Their ordering is modal basis order rather than source
-operation order. These surfaces are `OUTSIDE_REVIEWED_SOURCE_SCOPE` for the
-source-current order-sensitive contract.
+The accumulator, native core, shuttle, stored-program, error, budget and bank
+modules with their two axiom audits, together with `code/source_native_programs`
+and `code/source_native_accumulator`, form
+`native_stored_programs_and_accumulator`. Start, addition, retirement, transfer
+and cleanup are pair means; both receipts restrict dynamic writes to pair means
+only; the instruction stream is payload-independent and executes one supplied
+request order per history; the declared bus is not embedded in the captured
+W12 graph. The packet is `IRREVERSIBLE_ONLY`.
+
+The temporal observation, native, menu, essential, selection, connected,
+tomography, guard, attempts and erasure modules, the read-acceptance modules,
+the checkpoint modules and their three axiom audits, together with
+`code/source_temporal_acceptance`, `code/source_read_acceptance` and
+`code/source_checkpoint_selection`, form
+`native_temporal_tomography_and_checkpoint_selection`. The word tomography in
+`SourceTemporalTomography` names calibrated-path continuation from scalar seam
+means on a connected support: a receiver recovers the initial state from its
+own retained samples, with no payload in the schedule and no metric menu
+selected. The erasure theorem proves permanent loss of a prepared difference
+after its first mean. The separate and reversed words on the seam path
+0, 1, 14, 23, 45 record two orders for one pair of unknowns; they are not 132
+ordered compositions of twelve reversible families. The 425,979-mean
+calibration plan on the 15,360-port level-three support is checked
+structurally without payload replay. The packet is `IRREVERSIBLE_ONLY`.
+
+Four candidates are extended. `lean_pair_mean_memory_and_reusable_bus` gains
+the runtime controls of encoded memory, passive memory, the reusable bus and
+native updates on captured carriers 0, 1 and 3; its port-indexed and
+serialized-history fields are true and its classification is unchanged.
+`lean_selected_pair_mean_histories` gains `code/source_read_selection`, whose
+captured controls use twelve source ports, two receiver ports and 48 scalar
+means; the same two fields are true and the classification is unchanged.
+`source_scalar_sequential_instrument` gains the finite-duration pointer
+readout that replays it; every field is unchanged. `source_feedback_transport`
+gains its README cross-reference; every field is unchanged.
+
+Three candidates are formed outside the pair-mean families.
+`fermionic_hypercharge_current_histories` is an authenticated register replay
+of declared CAR hopping factors on the 64-site golden carrier. Its unitary
+implicit-midpoint and Cayley factors are reversible, but the histories carry
+hypercharge, gauge and multiplet labels under a supplied action, so the source
+firewall classifies the packet `DOWNSTREAM_CONTAMINATED`.
+`maxwell_measurement_adapter` ships a capture schema and preregistration
+contract without any capture or observed result, and identifies encoded
+registers with model electromagnetic potentials; it is
+`DOWNSTREAM_CONTAMINATED`. `finite_source_operator_join` embeds two committed
+pair algebras into the triple-carrier matrix algebra with a noncommuting hinge;
+tensor assembly and path-read transpositions are declared postprocessing and no
+perturbation family or ordered history is executed, so it is `STATIC_ONLY`.
+
+The Lean modules are consumed as reviewed source text and pinned by digest;
+this inventory does not run the Lean kernel.
 
 ## Minimal missing source packet
 
@@ -130,7 +207,13 @@ python3 code/a5_closure/verify_source_current_order_sensitive_inventory.py \
 python3 code/a5_closure/tests/test_source_current_order_sensitive_inventory.py
 ```
 
+The mandatory suite (`python tools/run_mandatory_suite.py`) runs the Stage 0
+and Stage 1 verifications, the Stage 2 replay, the independent verifier and
+the mutation gates.
+
 The independent verifier does not import the producer. The mutation suite
-rejects candidate omission, false `QUALIFIES` promotion, source-pin doctoring,
-positive-stage promotion, audited-tree path drift, audited-file content drift,
-and any import of the forbidden current fixture into the producer.
+rejects candidate omission, false `QUALIFIES` promotion of any candidate
+including the routing packet, source-pin doctoring, positive-stage promotion,
+omission of an audited directory, audited-tree path drift, audited-file
+content drift inside the Lean tree and inside the runtime packages, and any
+import of the forbidden current fixture into the producer.
