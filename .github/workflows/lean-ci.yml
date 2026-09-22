@@ -141,6 +141,7 @@ jobs:
             "Geometry.SourceNativeProgramsAxiomAudit"
             "Geometry.SourceTemporalAcceptanceAxiomAudit"
             "Geometry.SourceCheckpointAxiomAudit"
+            "Geometry.SourcePublicationAxiomAudit"
             "Geometry.SourceCountLimitAxiomAudit"
             "ObserverPatchHolography.EinsteinBranch.AxiomAudit"
             "A5PrimitivePortPrediction"
