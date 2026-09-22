@@ -123,9 +123,15 @@ simulations reproductibles :
   admissibles ; les lignes qui franchissent cette porte s’engagent ainsi à
   l’avance sur ce qui les réfuterait.
 
-Les articles liés donnent le statut précis de chaque étape. Ensemble, ces
-résultats tracent une voie testable des trois axiomes d’observateurs vers une
-théorie physique complète. La voie technique complète est
+Les articles liés donnent le statut précis de chaque étape. Le budget de
+prémisses est déclaré d’emblée : trois axiomes d’observateurs plus environ
+quatre-vingt-quatre prémisses enregistrées — trente-trois à axiomatiser,
+quatre importées, quarante-sept retraits ouverts — avec les hypothèses
+locales de chaque lane consignées dans son registre ; aucune prémisse
+enregistrée n’est encore dérivée des seuls axiomes
+([registre des prémisses](docs/PREMISE_REGISTER_V3.md)). Ensemble, ces
+résultats tracent une voie testable des axiomes joints à ces données
+déclarées vers une théorie physique complète. La voie technique complète est
 l’[article phare](https://philpapers.org/rec/MUEFOC).
 
 Le reste de ce README présente l’architecture derrière ces résultats.
