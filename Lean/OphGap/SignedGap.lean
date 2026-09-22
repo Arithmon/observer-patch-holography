@@ -40,11 +40,15 @@ theorem signedDerivative_mulVec_apply {V E : Type} [Fintype V] [DecidableEq V]
     Finset.mem_univ, if_true]
   ring
 
+#print axioms signedDerivative_mulVec_apply
+
 /-- `x ⬝ (Dᵀ D x) = (D x) ⬝ (D x)` for any rectangular real matrix. -/
 theorem dotProduct_gram_mulVec {V E : Type} [Fintype V] [Fintype E]
     (D : Matrix E V ℝ) (x : V → ℝ) :
     x ⬝ᵥ ((Dᵀ * D) *ᵥ x) = (D *ᵥ x) ⬝ᵥ (D *ᵥ x) := by
   rw [← mulVec_mulVec, dotProduct_mulVec, vecMul_transpose]
+
+#print axioms dotProduct_gram_mulVec
 
 /-- STEP 1 (scout statement, verbatim). -/
 theorem signed_kinetic_identity {V E : Type} [Fintype V] [Fintype E] [DecidableEq V]
@@ -53,6 +57,8 @@ theorem signed_kinetic_identity {V E : Type} [Fintype V] [Fintype E] [DecidableE
       ∑ e, (σ e * x (tgt e) - x (src e)) ^ 2 := by
   rw [dotProduct_gram_mulVec]
   simp only [dotProduct, signedDerivative_mulVec_apply src tgt σ hloop x, sq]
+
+#print axioms signed_kinetic_identity
 
 /-- STEP 2 (scout statement, verbatim). -/
 theorem gram_posDef_of_injective {V E : Type} [Fintype V] [Fintype E] [DecidableEq V]
@@ -75,6 +81,8 @@ theorem gram_posDef_of_injective {V E : Type} [Fintype V] [Fintype E] [Decidable
     · exact hlt
     · exact absurd (dotProduct_self_eq_zero.mp heq.symm) hDx
 
+#print axioms gram_posDef_of_injective
+
 /-- STEP 3: the all-negative triangle, L = D + A (signless Laplacian on an odd cycle).
 This is a CONTROL computation, not evidence about the load-bearing domain. -/
 def triangleL : Matrix (Fin 3) (Fin 3) ℝ :=
@@ -84,6 +92,8 @@ theorem triangle_quadratic_form (x : Fin 3 → ℝ) :
     x ⬝ᵥ (triangleL *ᵥ x) = (x 0 + x 1) ^ 2 + (x 0 + x 2) ^ 2 + (x 1 + x 2) ^ 2 := by
   simp [triangleL, dotProduct, mulVec, Fin.sum_univ_three]
   ring
+
+#print axioms triangle_quadratic_form
 
 /-- STEP 3 (scout statement, verbatim). -/
 theorem triangle_posDef : triangleL.PosDef := by
@@ -104,6 +114,8 @@ theorem triangle_posDef : triangleL.PosDef := by
     have e12 : x 1 + x 2 = 0 := by nlinarith
     ext i
     fin_cases i <;> simp <;> linarith
+
+#print axioms triangle_posDef
 
 /-! ## STEP 4: signed balance to injectivity (the unformalized layer)
 
@@ -130,6 +142,8 @@ theorem kernel_edge_eq {V E : Type} [Fintype V] [DecidableEq V]
   simp only [Pi.zero_apply] at this
   linarith
 
+#print axioms kernel_edge_eq
+
 /-- Transport: a kernel section propagates along signed walks, picking up the sign product.
 Needs `σ e = ±1` so that the forward equation `σ x(tgt) = x(src)` can be inverted. -/
 theorem kernel_transport {V E : Type} [Fintype V] [DecidableEq V]
@@ -147,6 +161,8 @@ theorem kernel_transport {V E : Type} [Fintype V] [DecidableEq V]
     rw [ih] at he
     rcases hσ e with h1 | h1 <;> rw [h1] at he ⊢ <;> linarith
 
+#print axioms kernel_transport
+
 /-- A negative closed walk at `u` kills the section at `u`. -/
 theorem kernel_zero_at_negative_cycle {V E : Type} [Fintype V] [DecidableEq V]
     (src tgt : E → V) (σ : E → ℝ) (hloop : ∀ e, src e ≠ tgt e)
@@ -155,6 +171,8 @@ theorem kernel_zero_at_negative_cycle {V E : Type} [Fintype V] [DecidableEq V]
     {u : V} (hneg : SignedReach src tgt σ u u (-1)) : x u = 0 := by
   have := kernel_transport src tgt σ hloop hσ x hx hneg
   linarith
+
+#print axioms kernel_zero_at_negative_cycle
 
 /-- STEP 4, main theorem. If some vertex `u` carries a negative cycle and every vertex is
 reachable from `u` by a signed walk (i.e. the graph is connected), the kernel of `D` is trivial. -/
@@ -170,6 +188,8 @@ theorem kernel_trivial_of_negative_cycle {V E : Type} [Fintype V] [DecidableEq V
   rw [kernel_transport src tgt σ hloop hσ x hx hs, hu, mul_zero]
   rfl
 
+#print axioms kernel_trivial_of_negative_cycle
+
 /-- STEP 4, injectivity form. -/
 theorem injective_of_negative_cycle {V E : Type} [Fintype V] [DecidableEq V]
     (src tgt : E → V) (σ : E → ℝ) (hloop : ∀ e, src e ≠ tgt e)
@@ -184,6 +204,8 @@ theorem injective_of_negative_cycle {V E : Type} [Fintype V] [DecidableEq V]
   have := kernel_trivial_of_negative_cycle src tgt σ hloop hσ u hneg hconn (x - y) h
   exact sub_eq_zero.mp this
 
+#print axioms injective_of_negative_cycle
+
 /-- STEP 4 ∘ STEP 2: the signed Laplacian of a connected graph with a negative cycle is
 positive definite. -/
 theorem gram_posDef_of_negative_cycle {V E : Type} [Fintype V] [Fintype E] [DecidableEq V]
@@ -194,6 +216,8 @@ theorem gram_posDef_of_negative_cycle {V E : Type} [Fintype V] [Fintype E] [Deci
     ((signedDerivative src tgt σ)ᵀ * signedDerivative src tgt σ).PosDef :=
   gram_posDef_of_injective _ (injective_of_negative_cycle src tgt σ hloop hσ u hneg hconn)
 
+#print axioms gram_posDef_of_negative_cycle
+
 /-- Spectral reading: every eigenvalue of that Laplacian is strictly positive, i.e. the gap
 (least eigenvalue) is positive. -/
 theorem eigenvalues_pos_of_negative_cycle {V E : Type} [Fintype V] [Fintype E] [DecidableEq V]
@@ -203,6 +227,8 @@ theorem eigenvalues_pos_of_negative_cycle {V E : Type} [Fintype V] [Fintype E] [
     (hconn : ∀ v, ∃ s, SignedReach src tgt σ u v s) (i : V) :
     0 < (gram_posDef_of_negative_cycle src tgt σ hloop hσ u hneg hconn).1.eigenvalues i :=
   (gram_posDef_of_negative_cycle src tgt σ hloop hσ u hneg hconn).eigenvalues_pos i
+
+#print axioms eigenvalues_pos_of_negative_cycle
 
 /-! ## The triangle, re-derived through STEP 4 (so step 3 is not the only evidence) -/
 
@@ -218,6 +244,8 @@ theorem triangleL_eq_gram :
     simp [triangleL, signedDerivative, triSrc, triTgt, triσ, Matrix.mul_apply, Fin.sum_univ_three] <;>
     norm_num
 
+#print axioms triangleL_eq_gram
+
 theorem tri_negative_cycle : SignedReach triSrc triTgt triσ 0 0 (-1) := by
   have h1 : SignedReach triSrc triTgt triσ 0 (triTgt 0) (1 * triσ 0) :=
     SignedReach.fwd 0 (SignedReach.refl 0)
@@ -230,6 +258,8 @@ theorem tri_negative_cycle : SignedReach triSrc triTgt triσ 0 0 (-1) := by
   rw [e1, e2] at h3
   exact h3
 
+#print axioms tri_negative_cycle
+
 theorem tri_connected : ∀ v : Fin 3, ∃ s, SignedReach triSrc triTgt triσ 0 v s := by
   intro v
   fin_cases v
@@ -237,11 +267,15 @@ theorem tri_connected : ∀ v : Fin 3, ∃ s, SignedReach triSrc triTgt triσ 0 
   · exact ⟨1 * triσ 0, SignedReach.fwd 0 (SignedReach.refl 0)⟩
   · exact ⟨1 * triσ 0 * triσ 1, SignedReach.fwd 1 (SignedReach.fwd 0 (SignedReach.refl 0))⟩
 
+#print axioms tri_connected
+
 /-- Step 3 again, as a corollary of the general balance theorem. -/
 theorem triangle_posDef_via_balance : triangleL.PosDef := by
   rw [triangleL_eq_gram]
   exact gram_posDef_of_negative_cycle triSrc triTgt triσ (by decide)
     (fun _ => Or.inr rfl) 0 tri_negative_cycle tri_connected
+
+#print axioms triangle_posDef_via_balance
 
 /-! ## NEGATIVE CONTROL: the all-negative square
 
@@ -262,10 +296,14 @@ theorem sqMode_ne_zero : sqMode ≠ 0 := by
   have := congrFun h 0
   simp [sqMode] at this
 
+#print axioms sqMode_ne_zero
+
 theorem sqMode_in_kernel : signedDerivative sqSrc sqTgt sqσ *ᵥ sqMode = 0 := by
   ext e
   fin_cases e <;>
     simp [signedDerivative, sqSrc, sqTgt, sqσ, sqMode, mulVec, dotProduct, Fin.sum_univ_four]
+
+#print axioms sqMode_in_kernel
 
 theorem square_not_injective :
     ¬ Function.Injective fun x : Fin 4 → ℝ => signedDerivative sqSrc sqTgt sqσ *ᵥ x := by
@@ -273,6 +311,8 @@ theorem square_not_injective :
   apply sqMode_ne_zero
   apply hinj
   simp only [sqMode_in_kernel, mulVec_zero]
+
+#print axioms square_not_injective
 
 theorem square_not_posDef :
     ¬ ((signedDerivative sqSrc sqTgt sqσ)ᵀ * signedDerivative sqSrc sqTgt sqσ).PosDef := by
@@ -282,6 +322,8 @@ theorem square_not_posDef :
   rw [star_trivial, dotProduct_gram_mulVec, sqMode_in_kernel] at this
   simp at this
 
+#print axioms square_not_posDef
+
 /-- Switching potential on the square: every signed walk from `u` to `v` has sign
 `p u * p v`, where `p` is the alternating sign. So no closed walk is negative: the
 hypothesis of the balance theorem genuinely fails here, together with its conclusion. -/
@@ -290,8 +332,12 @@ def sqPot : Fin 4 → ℝ := ![1, -1, 1, -1]
 theorem sqPot_succ (e : Fin 4) : sqPot (e + 1) = - sqPot e := by
   fin_cases e <;> simp [sqPot]
 
+#print axioms sqPot_succ
+
 theorem sqPot_sq (v : Fin 4) : sqPot v * sqPot v = 1 := by
   fin_cases v <;> simp [sqPot]
+
+#print axioms sqPot_sq
 
 theorem square_walk_sign {u v : Fin 4} {s : ℝ}
     (h : SignedReach sqSrc sqTgt sqσ u v s) : s = sqPot u * sqPot v := by
@@ -306,10 +352,14 @@ theorem square_walk_sign {u v : Fin 4} {s : ℝ}
     simp only [sqSrc, sqTgt, sqσ, id, sqPot_succ]
     ring
 
+#print axioms square_walk_sign
+
 theorem square_no_negative_cycle (u : Fin 4) : ¬ SignedReach sqSrc sqTgt sqσ u u (-1) := by
   intro h
   have := square_walk_sign h
   rw [sqPot_sq] at this
   norm_num at this
+
+#print axioms square_no_negative_cycle
 
 end GapScout
