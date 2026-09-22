@@ -11117,6 +11117,53 @@
         "boundary": [],
         "rationale": "These are mathematical results on a specified finite record and history interface. Physical source-selected records, metric radius, instruments, clock, geometric refinement and immutable-version semantic-order identification are excluded conclusions, not physical antecedents; PR-52 is neither consumed nor discharged."
       }
+    },
+    {
+      "claim_id": "OPH-REGISTERED-SOURCE-READ-ALGEBRA",
+      "statement": "The registered all-port simulator capture applies local C12 propagation before scalar repair on 6N disjoint port pairs. Every ideal repair word is the projection indexed by its visited pair set; the complete monoid has 2^(6N) maps. Each native thresholded pair commits at most once, giving no committed repair-to-repair edges and saturation after complete coverage. On positive per-carrier normalized preparations, a single receiver with initial samples and complete local history has observation rank 23 for N>=4 after coverage, with coordinate closure including the eleven-known-port normalization case. Balanced hidden preparations give indistinguishable numeric payloads and binary read error 1/2. Actual observer-zero snapshot values, feedback choices and committed writer edges are independently replayed. The native unitary distinguishes equal-intensity states with opposite phase, with gap at least 16359/1073741824 at t=2^-17, and all 144 unitary entries are certified nonzero. The actual next-port feedback fails an order-five icosahedral covariance control. Seven unfiltered captures bind these results to pinned source bytes. Population is configured, support-level changes leave the read operations unchanged, and longer histories saturate rather than refine a spatial graph. Global custody metadata is excluded from the numeric channel; the failure witness belongs to an open preparation interface, not a specified PRNG seed. Complete A1--A3 membership, scored positive failure pullback, physical instruments and M1 population/radius remain unproved.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "kernel_checked_matching_read_algebra_with_analytic_source_and_phase_controls",
+      "assumptions": [
+        "registered_all_port_capture_and_numeric_payload_interface"
+      ],
+      "imported_results": [
+        "disjoint_pair_projection_algebra",
+        "simplex_coordinate_identifiability",
+        "binary_observation_indistinguishability",
+        "matrix_exponential_Taylor_remainder",
+        "finite_classical_KL_support"
+      ],
+      "oph_specific_delta": "Derives the actual registered source-to-numeric-record map, all-word repair limits and phase/feedback obstructions without inserting a successful-read constraint or geometric menu.",
+      "novelty_type": "registered_source_operation_read_classification_and_instrument_obstructions",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_OPERATION_READS.tex",
+        "Lean/Geometry/SourceOperationReads.lean",
+        "Lean/Geometry/SourceOperationReadsAxiomAudit.lean",
+        "code/source_operation_reads/DERIVATION.md",
+        "code/source_operation_reads/README.md",
+        "code/source_operation_reads/verify.py",
+        "code/source_operation_reads/check_live.py",
+        "code/source_operation_reads/simulator_verifier.py",
+        "code/source_operation_reads/test_reads.py",
+        "code/source_operation_reads/capture.json",
+        "code/source_operation_reads/source_snapshot.json",
+        "code/source_operation_reads/receipt.json"
+      ],
+      "falsifier": "A native attempt or observer payload disagrees with independent replay; a skipped seam becomes a committed writer; the all-word projection, normalized rank or balanced hidden witness fails; a forged zero passes the propagator enclosure; the phase or rotation witness fails; source bytes differ from the pinned commit; or the result is promoted to full-axiom membership or M1.",
+      "scope_if_false": "The stated operation-to-read classification or its native binding fails. The separate connected scalar recovery constructions and supplied geometric read laws retain their own premises.",
+      "status": "registered_source_read_algebra_and_instrument_obstructions_proved__full_axiom_membership_and_M1_unresolved",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The conclusions classify a named executable and its explicit open preparation interface. Full A1--A3 membership, positive scored failure pullback, physical instruments, source-selected population and metric radius are excluded conclusions, not physical antecedents. PR-52 is neither consumed nor discharged."
+      }
     }
   ]
 }
