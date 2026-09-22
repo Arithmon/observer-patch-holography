@@ -2,6 +2,9 @@
 from copy import deepcopy
 from decimal import Decimal, localcontext
 from itertools import product
+from functools import lru_cache
+import os
+import shutil
 import subprocess
 import sys
 
@@ -144,6 +147,100 @@ def test_native_specification_validation(weights, horizon):
 def test_population_validation(q, pop):
     with pytest.raises(ValueError):
         build.counts(q, pop)
+
+
+def scalar_leaves(value, path=()):
+    if isinstance(value, dict):
+        for key, child in value.items():
+            yield from scalar_leaves(child, (*path, key))
+    elif isinstance(value, list):
+        for key, child in enumerate(value):
+            yield from scalar_leaves(child, (*path, key))
+    else:
+        yield path, value
+
+
+def test_every_scalar_field_resealed(packet, monkeypatch):
+    # Cache only the independently recomputed expected experiments. Every
+    # forged packet still traverses the actual schema, custody and semantic
+    # comparisons. No expected values come from the producer or the packet.
+    from . import check_exterior, check_locality
+    for module, name in ((codec, "pins"), (verify, "native"), (verify, "geometry"),
+                         (check_exterior, "case"), (check_locality, "interval"),
+                         (check_locality, "stencil")):
+        monkeypatch.setattr(module, name, lru_cache(maxsize=None)(getattr(module, name)))
+    verify.verify(packet)
+    count = 0
+    for path, value in scalar_leaves(packet):
+        if path == ("sha256",):
+            continue  # Resealing would overwrite this edit; tested separately.
+        forged = deepcopy(packet)
+        parent = forged
+        for key in path[:-1]:
+            parent = parent[key]
+        if type(value) is bool:
+            bad = not value
+        elif type(value) is int:
+            bad = value+1
+        elif type(value) is str:
+            bad = value+"!"
+        elif value is None:
+            bad = "not-null"
+        else:
+            raise AssertionError((path, value))
+        parent[path[-1]] = bad
+        forged["sha256"] = codec.digest({k: v for k, v in forged.items() if k != "sha256"})
+        with pytest.raises(ValueError):
+            verify.verify(forged)
+        count += 1
+    assert count > 1000
+    verify.verify(packet)  # Rejections cannot come from poisoning the verifier.
+    print(f"individually rejected {count} resealed scalar-field corruptions")
+
+
+def test_real_cli_rejects_artifacts_and_source_edits(tmp_path, packet):
+    clone = tmp_path/"repository"
+    paths = set(codec.pins()) | {"code/source_publication_selection/controls.json",
+                                "code/source_publication_selection/receipt.json"}
+    for name in paths:
+        destination = clone/name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(codec.ROOT/name, destination)
+    package = clone/"code/source_publication_selection"
+    env = dict(os.environ, PYTHONPATH=str(clone/"code"))
+
+    def run():
+        return subprocess.run([sys.executable, "-m", "source_publication_selection.verify"],
+                              cwd=clone, env=env, capture_output=True, text=True, timeout=90)
+
+    good = run()
+    assert good.returncode == 0, good.stderr
+    assert '"M1_derived":false' in good.stdout
+    changes = []
+    for raw in (b'{}', b'{"x":0,"x":1}', b'{"x":0.5}', b'{"x":NaN}'):
+        changes.append((package/"controls.json", raw, None))
+    forged = deepcopy(packet)
+    forged["native"][0]["potential"] = "1"
+    forged["sha256"] = codec.digest({k: v for k, v in forged.items() if k != "sha256"})
+    changes.append((package/"controls.json", codec.canonical(forged), "native semantics"))
+    receipt = codec.load(package/"receipt.json")
+    receipt["M1_derived"] = True
+    changes.append((package/"receipt.json", codec.canonical(receipt), "receipt"))
+    source = clone/"Lean/Geometry/SourcePublicationPathInvariant.lean"
+    changes.append((source, source.read_bytes()+b'\n-- deliberate source tampering\n', "source pins"))
+    for path, bad, diagnostic in changes:
+        original = path.read_bytes()
+        try:
+            path.write_bytes(bad)
+            result = run()
+            assert result.returncode != 0, (path, result.stdout)
+            assert '"verified_controls_sha256"' not in result.stdout
+            if diagnostic:
+                assert diagnostic in result.stderr
+        finally:
+            path.write_bytes(original)
+    restored = run()
+    assert restored.returncode == 0, restored.stderr
 
 
 @pytest.mark.parametrize("q,population", tuple(product((2, 3, 5), ("golden", "grid"))))

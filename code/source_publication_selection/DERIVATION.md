@@ -58,8 +58,11 @@ n+k information projection is
 This follows by summing every length-k suffix, not by renaming a proposed
 kernel. Its denominator is positive for all sufficiently large k. Monotone
 convergence gives Q_(n+k)[w] -> Q_s[w]. By contrast, an unpublished but
-recoverable prefix has zero weight at its own deadline and positive limiting
-weight. Independent finite-deadline optimization need not be consistent.
+recoverable prefix has zero weight at its own deadline, provided that
+deadline has positive publication mass, and positive limiting weight.
+When the deadline is infeasible there is no conditioned probability law;
+the totalized zero-denominator ratio in Lean is not an optimizer.
+Independent feasible finite-deadline optimizations need not be consistent.
 The cylinder and actual-marginal statements are kernel checked in
 `SourcePublicationLaw`.
 
@@ -112,8 +115,14 @@ sure, not bounded on every infinite word. A selected process can make an
 arbitrarily long sequence of harmless moves. Time-prefix consistency does
 not imply compatibility under changes of regulator, population or meaning.
 
-For rational linear preparations and meanings, finite H_n is computable by
-exact response elimination and finite word enumeration. For k>=1, writing
+For the effective result, require rational matrix descriptions of the
+linear preparation and meaning maps on a finite-dimensional real parameter
+space, an algorithm returning each reachable reference probability as an
+exact rational, and a supplied positive rational eta uniformly below those
+probabilities. Native means and record retention then give rational
+checkpoint maps; publication is decidable by rational kernel elimination.
+Finite H_n is computable by exact elimination and finite word enumeration.
+For k>=1, writing
 theta=(1-delta)^k gives a certified interval
 
     H_(kB)(s) <= h(s) <= min(1, H_(kB)(s)/(1-theta)).
@@ -127,6 +136,15 @@ boundaries and the intervals converge. This is an analytic computability
 argument, not a claim of efficient planning, a physical random source, or
 a bounded-work sampler. The controls have a closed-form potential and need
 no such expensive infinite-state approximation.
+
+These effectiveness hypotheses cannot be dropped from that conclusion.
+For a noncomputable real r strictly between 1/3 and 2/3, choose the constant
+four-port reference p=((1-r)/2,r/2,1/2). It is faithful with known uniform
+lower bound 1/6, and all preparation/record matrices are rational. Section 4
+nevertheless gives h=r, which is not computable. The existence, entropy and
+real-valued tail theorems remain valid for this reference; a rational
+algorithm or sampler does not follow. No such reference is used by the
+executable controls.
 
 ## 4. Exact four-port native law
 
@@ -267,13 +285,16 @@ joint optimizer. Its demand marginal is
 
     Q(m)=pi_m h_m/Z.
 
-Every recoverable demand has positive mass. Consequently this faithful
+Every recoverable demand has positive mass, even when other labels are
+unrecoverable; those zero-potential labels have zero selected mass.
+Consequently this faithful
 common-space completion cannot select one demand exclusively while another
 recoverable demand remains admissible. For equal priors on the two-record
 and aggregate demands in the uniform four-port example, the probabilities
 are 1/3 and 2/3, not exclusive selection of the stronger meaning.
 `SourcePublicationMenu` checks the finite joint marginal, its limiting
-formula, positivity and the exact example. The infinite joint entropy
+formula, positivity with nonnegative competing potentials, and exact
+examples with both recoverable and unrecoverable labels. The infinite joint entropy
 application is analytic. The prior, label algebra and publication constraint
 are explicit extra structure; the theorem is not a non-entailment result
 for every possible full A1--A3 realization.

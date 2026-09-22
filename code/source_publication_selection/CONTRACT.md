@@ -19,6 +19,9 @@ M1's remaining inputs. A conditional scheduling theorem is not full M1.
 3. Connect positive cylinder support to native meaning preservation on
    connected finite support. Derive quantitative completion and approximation
    bounds from topology and a stated lower bound on reference probabilities.
+   Effective rational approximation additionally requires rational matrix
+   preparation/meaning descriptions, an exact rational reference evaluator
+   and a supplied positive rational uniform lower bound.
    Separate the kernel-checked contraction theorem from its analytic native
    instantiation, probability extension and sampling implementation argument.
 4. Derive an exact nontrivial native path law, including the infinite-word
@@ -31,7 +34,8 @@ M1's remaining inputs. A conditional scheduling theorem is not full M1.
 5. Put competing public demands in one declared joint classical algebra.
    Derive their selected marginal, rather than compare unrelated optimization
    problems. Prove that every recoverable demand retains positive mass under
-   a faithful prior. Do not call this chosen common algebra canonical A3.
+   a faithful prior, including menus with unrecoverable competing labels.
+   Do not call this chosen common algebra canonical A3.
 6. Prove an explicit continuum-compatible radius family and its actual
    golden event-count limits. Give a population alternative with the same
    limits. State exactly what additional minimax criterion selects a square
@@ -60,6 +64,9 @@ verification. Resealed false laws, omitted histories or populations, wrong
 radii, changed scope, stale source pins, malformed JSON and altered receipts
 are rejected. Verifier execution succeeds with producer imports blocked.
 Small populations are also checked by direct point-pair enumeration.
+Every scalar evidence field is individually corrupted and resealed. Actual
+CLI tests reject malformed controls, forged receipts and source-file edits
+in an isolated copy, while the unchanged copy succeeds.
 
 The original M1 objective is closed only if an extraction from the complete
 A1 response/record architecture and A2 interpretation proves the required
@@ -75,7 +82,10 @@ complete chosen move alphabet, exact retained receiver samples, faithful
 normalized history reference and eventual-publication constraint are
 declared. The general native completion bound also uses a uniform positive
 lower bound on move probabilities. Generic meanings remain classical;
-effective approximation concerns rational linear preparation/record maps.
+effective approximation additionally needs rational linear maps on an
+explicit real parameter space, an exact rational reference evaluator and
+a known positive rational uniform lower bound. Arbitrary positive real
+references do not imply computability.
 
 The four-port controls are an isolated mathematical path, not a complete
 captured support or a faithful 12-generator response/endogenous holonomy

@@ -130,15 +130,17 @@ theorem own_deadline_zero (step : S → A → S) (weight : S → A → ℝ)
     finitePrefix step weight f s as 0 = 0 := by
   simp only [finitePrefix,mass,hf,mul_zero,zero_div]
 
-/-- Any viable unpublished prefix has zero mass at its own deadline but
-positive mass under the limit law. No arbitrary cutoff fixes this mismatch. -/
+/-- When its own deadline is feasible, a viable unpublished prefix has zero
+mass in that finite law and positive mass in the harmonic cylinder law. -/
 theorem recoverable_prefix_mismatch (step : S → A → S) (weight : S → A → ℝ)
     (hw : ∀ s a, 0 < weight s a) (h : S → ℝ) (f : S → ℝ)
-    (s : S) (hs : 0 < h s) (as : List A)
+    (hn : ∀ s, 0 ≤ f s) (s : S) (hs : 0 < h s) (as : List A)
+    (hm : 0 < mass step weight f as.length s)
     (hf : f (finish step s as) = 0) (hh : 0 < h (finish step s as)) :
-    finitePrefix step weight f s as 0 = 0 ∧ 0 < cylinder step weight h s as :=
-  ⟨own_deadline_zero step weight f s as hf,
-    (cylinder_positive_iff step weight hw h s hs as).mpr hh⟩
+    pathLaw step weight f s as = 0 ∧ 0 < cylinder step weight h s as := by
+  constructor
+  · rw [pathLaw_formula step weight f hw hn s as hm,hf,mul_zero,zero_div]
+  · exact (cylinder_positive_iff step weight hw h s hs as).mpr hh
 
 end
 end OPH.SourcePublicationLaw

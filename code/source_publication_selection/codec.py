@@ -30,7 +30,8 @@ SCOPE = {
 def pins():
     names = {"docs/AXIOM_REFERENCE.md", "claims/axiom_registry.yaml",
              "Lean/lean-toolchain", "Lean/lakefile.lean", "Lean/lake-manifest.json",
-             "code/source_temporal_acceptance/codec.py"}
+             "code/source_temporal_acceptance/codec.py",
+             "code/source_temporal_acceptance/__init__.py"}
     names.update(str(p.relative_to(ROOT)).replace("\\", "/") for p in HERE.iterdir()
                  if p.suffix in (".py", ".md"))
     pending = ["Geometry.SourcePublicationAxiomAudit"]

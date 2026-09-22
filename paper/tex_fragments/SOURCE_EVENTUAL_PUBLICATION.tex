@@ -41,7 +41,8 @@ information projection is
  \frac{R_s[w]H_k(T_w s)}{H_{n+k}(s)}\longrightarrow Q_s[w].
 \]
 An unpublished but recoverable prefix has zero mass at its own deadline
-and positive limiting mass. Thus this limiting construction resolves the
+when that deadline is feasible, and positive limiting mass. An infeasible
+deadline has no conditioned probability law. This limiting construction resolves the
 finite-deadline incompatibility without identifying time restriction with
 regulator refinement.
 
@@ -72,7 +73,10 @@ $\delta=\eta^B$. Published, dead and viable unpublished states give
 The second inequality follows by applying the positive transition operator
 and iterating. Consequently the selected first-publication time satisfies
 $Q(T>kB)\leq(1-\delta)^k$ and $\mathbb E_QT\leq B/\delta$.
-For rational linear records, finite enumeration and elimination compute
+For the effective result, assume rational preparation and meaning matrices
+on a finite-dimensional real parameter space, an exact rational evaluator
+for the reference probabilities and a supplied positive rational uniform
+lower bound $\eta$. Finite enumeration and kernel elimination then compute
 $H_n$ exactly, and
 \[
  H_{kB}\leq h\leq
@@ -81,6 +85,10 @@ $H_n$ exactly, and
 give convergent rational enclosures. Refining these enclosures and random
 bits implements exact transition sampling almost surely. No efficient
 planning bound, fixed physical precision or physical random source follows.
+Positivity alone does not supply effectiveness: the four-port reference
+$((1-r)/2,r/2,1/2)$, for noncomputable $1/3<r<2/3$, has lower bound $1/6$
+but publication potential $h=r$. The real-valued existence and tail results
+do not imply its computability.
 For $N=1$, viability and the initial receiver sample imply publication at
 time zero.
 

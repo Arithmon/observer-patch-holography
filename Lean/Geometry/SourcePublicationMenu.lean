@@ -22,12 +22,22 @@ def selected (prior h : M → ℝ) (m : M) : ℝ :=
   prior m*h m / ∑ j, prior j*h j
 
 omit [Fintype A] in
+theorem selected_positive_of_recoverable (prior h : M → ℝ)
+    (hp : ∀ m, 0 < prior m) (hn : ∀ m, 0 ≤ h m) (m : M) (hm : 0 < h m) :
+    0 < selected prior h m := by
+  have hz : 0 < ∑ j, prior j*h j :=
+    (Finset.single_le_sum (fun j _ => mul_nonneg (hp j).le (hn j))
+      (Finset.mem_univ m)).trans_lt' (mul_pos (hp m) hm)
+  exact div_pos (mul_pos (hp m) hm) hz
+
+omit [Fintype A] in
 theorem selected_positive (prior h : M → ℝ) (hp : ∀ m, 0 < prior m)
     (hh : ∀ m, 0 < h m) (m : M) : 0 < selected prior h m := by
-  have hz : 0 < ∑ j, prior j*h j :=
-    (Finset.single_le_sum (fun j _ => (mul_pos (hp j) (hh j)).le) (Finset.mem_univ m)).trans_lt'
-      (mul_pos (hp m) (hh m))
-  exact div_pos (mul_pos (hp m) (hh m)) hz
+  exact selected_positive_of_recoverable prior h hp (fun j => (hh j).le) m (hh m)
+
+omit [Fintype A] in
+theorem selected_zero_of_unrecoverable (prior h : M → ℝ) (m : M) (hm : h m = 0) :
+    selected prior h m = 0 := by simp [selected,hm]
 
 omit [Fintype A] in
 theorem cannot_exclude_recoverable (prior h : M → ℝ) (hp : ∀ m, 0 < prior m)
@@ -74,6 +84,15 @@ theorem two_meaning_control :
     selected (fun _ : Fin 2 => (1/2 : ℝ)) ![1/2,1] 0 = 1/3 ∧
       selected (fun _ : Fin 2 => (1/2 : ℝ)) ![1/2,1] 1 = 2/3 := by
   norm_num [selected,Fin.sum_univ_two]
+
+/-- An impossible competing label is removed without excluding either
+recoverable label. The all-positive-menu premise is unnecessary. -/
+theorem mixed_meaning_control :
+    selected (fun _ : Fin 3 => (1/3 : ℝ)) ![0,1/2,1] 0 = 0 ∧
+    selected (fun _ : Fin 3 => (1/3 : ℝ)) ![0,1/2,1] 1 = 1/3 ∧
+    selected (fun _ : Fin 3 => (1/3 : ℝ)) ![0,1/2,1] 2 = 2/3 := by
+  have hlast : (![0,1/2,1] : Fin 3 → ℝ) 2 = 1 := rfl
+  norm_num [selected,Fin.sum_univ_three,hlast]
 
 end
 end OPH.SourcePublicationMenu
