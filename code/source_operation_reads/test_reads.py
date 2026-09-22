@@ -30,6 +30,7 @@ def test_retained_receipt_and_observation_limits(packet):
     assert [cases[i]["ideal_real_read_algebra"]["hidden_dimension"] for i in (2, 4, 5)] == [21, 65, 153]
     assert all(r["repair_read_after_write_edges"] == 0 for r in cases)
     assert result["M1_derived"] is result["complete_A1_A3_model"] is False
+    assert [r['terminal_real_projection_rank'] for r in cases] == [40,32,24,24,48,96,24]
 
 
 @pytest.mark.parametrize("path,value", [
@@ -121,3 +122,30 @@ def test_constructed_recovery_keeps_record_cost_and_native_boundary(packet):
         assert row['retained_real_coordinates']==row['linear_archive_minimum']==5*row['carriers']+1
         assert row['exact_input_recovered'] is True
         assert row['native_record_interface'] is False
+
+
+@pytest.mark.parametrize('field', ['initial_hex','final_hex','observer_records'])
+def test_live_bridge_rejects_different_values_even_with_identical_summaries(packet, field):
+    from .check_live import compare_replays
+    changed = deepcopy(packet)
+    values = (changed['cases'][0]['observer_records'][0][4]
+              if field == 'observer_records' else changed['cases'][0][field])
+    values[0] = (float.fromhex(values[0])+2**-30).hex()
+    # Pass the same summary deliberately: numeric reproduction is an
+    # additional gate, not a consequence of rank/provenance summary equality.
+    summary = verify(packet)['native_derivation']
+    with pytest.raises(ValueError,match='live numeric reproduction'):
+        compare_replays(changed,packet,summary,summary)
+
+
+def test_live_bridge_accepts_last_bit_variation_and_checks_source_basis(packet):
+    import math
+    from .check_live import compare_replays
+    summary = verify(packet)['native_derivation']
+    changed = deepcopy(packet)
+    values = changed['cases'][0]['initial_hex']
+    values[0] = math.nextafter(float.fromhex(values[0]),math.inf).hex()
+    compare_replays(changed,packet,summary,summary)
+    changed['quantum']['phase_ports'] = [0,11]
+    with pytest.raises(ValueError,match='live quantum source'):
+        compare_replays(changed,packet,summary,summary)

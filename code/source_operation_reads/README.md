@@ -27,6 +27,10 @@ observer output. It compares exact structure and derived read semantics
 across platforms. Last-bit numerical differences must pass the rational
 unitary enclosure and complete IEEE ledger replay; hashes of floating-point
 expm results are not claimed to be universal across numerical libraries.
+Every initial, final and recorded ledger value must also reproduce within
+absolute 2^-40. This is an explicit cross-platform comparison tolerance,
+not a physical precision claim. Matching only ranks and graph summaries
+does not establish reproduction of the retained numerical preparation.
 
 The formal target is `Geometry.SourceOperationReadsAxiomAudit`. Matching
 composition, all-word dependencies, decoder obstruction and scalar/phase
@@ -45,7 +49,7 @@ To reproduce the retained source revision before the companion is merged:
 ```sh
 git clone https://github.com/MarioPoneder/oph-physics-sim.git
 cd oph-physics-sim
-git checkout 23e8a7504c522bb1fb12e41fb2409a675efe3887
+git checkout 84d46b97b07965406c608e1465bec18b2a308372
 python -m pip install -e ".[test]"
 ```
 
