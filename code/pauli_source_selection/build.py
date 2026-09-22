@@ -149,7 +149,7 @@ def basis_only_control():
 
 
 def build():
-    parent = json.loads((ROOT/PARENT).read_text())
+    parent = json.loads((ROOT/PARENT).read_text(encoding="utf-8"))
     native = source_module()
     edge = parent["geometry"]["edges"][0]
     kappa, step = F(parent["law"]["hopping"]), F(parent["law"]["step"])
@@ -187,7 +187,7 @@ def build():
     sum_effect = combine([(ONE, product(creators[0], annihilators[0])),
                           (ONE, product(annihilators[0], creators[0]))])
     idle = [1-sum_effect[i][i].r/4 for i in range(15)]
-    code = (ROOT/HISTORY).read_text()
+    code = (ROOT/HISTORY).read_text(encoding="utf-8")
     actions = list(map(int, re.search(r"def sourceAction : Fin 8 → ℕ := !\[([^]]+)\]", code).group(1).split(",")))
     return {
         "schema": "oph.pauli_source_selection.v1",
@@ -259,7 +259,7 @@ def main():
     args = parser.parse_args()
     text = json.dumps(build(), indent=2, sort_keys=True)+"\n"
     if args.write:
-        (HERE/"receipt.json").write_text(text)
+        (HERE/"receipt.json").write_text(text, encoding="utf-8")
     else:
         print(text, end="")
 
