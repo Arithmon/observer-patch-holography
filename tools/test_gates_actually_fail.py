@@ -566,6 +566,7 @@ def test_claim_gate_rejects_novelty_type_drift_from_registry(tmp_path: Path) -> 
 
 
 @pytest.mark.parametrize("matrix", ["novelty_matrix.csv", "falsification_matrix.csv"])
+@pytest.mark.parametrize("cell_break", ["\n", "\r\n"])
 @pytest.mark.parametrize(
     ("mutation", "diagnostic"),
     [
@@ -579,7 +580,7 @@ def test_claim_gate_rejects_novelty_type_drift_from_registry(tmp_path: Path) -> 
     ],
 )
 def test_claim_matrix_csv_structure_is_checked_before_field_use(
-    tmp_path: Path, matrix: str, mutation: str, diagnostic: str | None
+    tmp_path: Path, matrix: str, cell_break: str, mutation: str, diagnostic: str | None
 ) -> None:
     root = tmp_path / "claims"
     _write_claim_fixture(root)
@@ -587,7 +588,7 @@ def test_claim_matrix_csv_structure_is_checked_before_field_use(
     with path.open(encoding="utf-8", newline="") as handle:
         headers, body = list(csv.reader(handle))
     # Commas, escaped quotes, and multiline cells are legitimate scientific text.
-    body[-1] += ', including "quoted" detail\nand a second line'
+    body[-1] += ', including "quoted" detail' + cell_break + 'and a second line'
     if matrix == "falsification_matrix.csv":
         # scope_if_false must equal the registry text, so the registry carries
         # the same scientific text and only the CSV structure is under test.
@@ -613,7 +614,9 @@ def test_claim_matrix_csv_structure_is_checked_before_field_use(
         output.write('"unterminated scientific text\n')
     else:
         writer.writerow(body)
-    path.write_text(output.getvalue(), encoding="utf-8")
+    # Preserve the scientific cell text on Windows as well as Unix: translating
+    # embedded LF into CRLF would disagree with the exact registry string.
+    path.write_text(output.getvalue(), encoding="utf-8", newline="")
 
     result = _run(str(CLAIM_CHECKER), str(root))
     if diagnostic is None:
