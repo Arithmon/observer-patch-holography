@@ -1,0 +1,204 @@
+\subsection{Elementary corollaries of the record and screen structure}
+\label{sec:elementary-corollaries}
+
+The finite record algebra, the celestial sphere and the information
+projection carry several textbook laws as direct corollaries. Each is stated
+below with the exact identity it rests on and with the identification it does
+not supply. Exact rational controls for every statement, pinned to this
+section, are part of the repository receipts \cite{ophrepo}.
+
+\paragraph{Repeated reads and the Zeno limit.}
+
+\begin{proposition}[Repeatability and the Zeno limit]
+\label{prop:zeno-limit}
+Let \(\rho\) be a state on the finite accessible algebra of one completed
+slice, \(P\) an event projector with \(w=\operatorname{Tr}(\rho P)>0\), and
+\(\rho_P=P\rho P/w\) the declared L\"uders update. Then
+\(\operatorname{Tr}(\rho_P P)=1\), and the update is idempotent. Let \(H\) be
+a Hermitian generator on the same space, \(U_s=e^{-isH}\), and let the
+observer reread \(P\) after each of \(n\) equal steps of total parameter
+\(t\). For \(\rho\) supported in the range of \(P\), the probability
+\(p_n\) that all \(n\) rereads return \(P\) satisfies
+\[
+ 1-p_n\le \frac{2t^2\|H\|^2}{n},
+\]
+so \(p_n\to1\) as \(n\to\infty\), and the conditioned state converges to
+\(e^{-itPHP}\rho\,e^{itPHP}\).
+\end{proposition}
+
+\begin{proof}
+Repeatability and idempotence are the L\"uders theorems of the finite
+event-algebra library \cite{ophconsensus,ophrepo}. Put \(s=t/n\),
+\(A=PU_sP\) and \(B=Pe^{-isPHP}P\); both are contractions on the range of
+\(P\). For Hermitian \(X\) the exponential series gives
+\(\|e^{-isX}-(1-isX)\|\le s^2\|X\|^2/2\), hence
+\(\|A-B\|\le s^2\|H\|^2/2+s^2\|PHP\|^2/2\le s^2\|H\|^2\). Telescoping,
+\(\|A^n-B^n\|\le n\|A-B\|\le t^2\|H\|^2/n\). The joint probability of
+\(n\) returns is \(p_n=\operatorname{Tr}(A^n\rho A^{n\dagger})\), while
+\(B^n=Pe^{-itPHP}P\) is unitary on the range of \(P\), so
+\(\operatorname{Tr}(B^n\rho B^{n\dagger})=1\). For contractions
+\(|\operatorname{Tr}(X\rho X^\dagger)-\operatorname{Tr}(Y\rho Y^\dagger)|
+\le2\|X-Y\|\), which gives the bound; the convergence of the conditioned
+state follows from the same estimate.
+\end{proof}
+
+A rational control replaces the exponential by the rotation with
+\(\tan(\theta_n/2)=1/n\), so \(\cos\theta_n=(n^2-1)/(n^2+1)\), read through
+a rank-one projector after every step. The survival with reads is
+\(\cos^{2n}\theta_n\), which obeys \(1-\cos^{2n}\theta_n\le4/n\), while the
+survival without reads is \(\cos^2(n\theta_n)\) and stays away from one.
+The step parameter is a flow parameter and \(H\) is supplied; neither is a
+physical clock or a source-selected generator.
+
+\paragraph{Distinguishable records through a port.}
+
+\begin{proposition}[Port capacity]
+\label{prop:port-capacity}
+Let the interface algebra of port \(p\) act on a Hilbert space of dimension
+\(d_p\). A family of states that one read through the port distinguishes
+without error has at most \(d_p\) members. One read therefore carries at most
+\(\log_2 d_p\) bits, and one read of all twelve ports of a carrier at most
+\(\sum_p\log_2 d_p\) bits.
+\end{proposition}
+
+\begin{proof}
+States distinguished without error by one measurement have pairwise
+orthogonal supports, and pairwise orthogonal nonzero vectors are linearly
+independent, so there are at most \(d_p\) of them. The port bound adds over
+the ports because the boundary space is their tensor product.
+\end{proof}
+
+Holevo's bound, an imported result, gives the same ceiling for reads with
+error. Neither statement assigns an energy to a record: the energy of one
+distinction enters only through the clock and energy calibration, and the
+bound itself is a count.
+
+\paragraph{Celestial kinematics.}
+
+\begin{proposition}[Aberration, the null scale factor and rapidity addition]
+\label{prop:celestial-kinematics}
+Let the celestial sphere carry the action of \(SL(2,\mathbb C)\) by M\"obius
+maps of the spacetime and Einstein derivation \cite{ophEinstein}, with stereographic coordinate \(\zeta\), and let each null
+direction carry the null vector \(q=(1,\Omega)\). Realize the Lorentz
+group on Hermitian \(2\times2\) matrices by \(X\mapsto AXA^\dagger\), under
+which \(q\) is the rank-one matrix \(\kappa\kappa^\dagger\) with
+\(\kappa=(1,\zeta)\). For \(A=\bigl(\begin{smallmatrix}a&b\\ c&d\end{smallmatrix}\bigr)\in SL(2,\mathbb C)\):
+\begin{enumerate}
+\item the direction transforms as \(\zeta\mapsto(c+d\zeta)/(a+b\zeta)\);
+\item the time component of \(q\) is multiplied by
+ \(\lambda_A(\zeta)=(|a+b\zeta|^2+|c+d\zeta|^2)/(1+|\zeta|^2)\), and
+ \(\lambda_A\equiv1\) for every \(A\in SU(2)\);
+\item for \(A_k=\operatorname{diag}(k^{-1/2},k^{1/2})\) with \(k>0\), put
+ \(v=(k-1/k)/(k+1/k)\), \(\gamma=(k+1/k)/2\) and
+ \(\cos\theta=(1-|\zeta|^2)/(1+|\zeta|^2)\). Then
+ \(\lambda_{A_k}=\gamma(1-v\cos\theta)\) and the transformed direction obeys
+ \(\cos\theta'=(\cos\theta-v)/(1-v\cos\theta)\);
+\item \(A_{k_1}A_{k_2}=A_{k_1k_2}\), so \(v(k_1k_2)=(v_1+v_2)/(1+v_1v_2)\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+With \(X=\kappa\kappa^\dagger\) the time component is
+\((|\kappa_0|^2+|\kappa_1|^2)/2\) and the axial component is
+\((|\kappa_0|^2-|\kappa_1|^2)/2\), which gives \(\cos\theta\). Under
+\(A\), \(\kappa\mapsto A\kappa=(a+b\zeta,\,c+d\zeta)\), which is (1) and
+(2); \(SU(2)\) preserves \(|\kappa|\). For \(A_k\), \(A\kappa=(k^{-1/2},
+k^{1/2}\zeta)\), so \(\lambda=(1/k+k|\zeta|^2)/(1+|\zeta|^2)\) and
+\(\zeta'=k\zeta\); substituting \(|\zeta|^2=(1-\cos\theta)/(1+\cos\theta)\)
+gives (3). Diagonal matrices multiply entrywise, which is (4).
+\end{proof}
+
+Read with \(\theta\) the angle between the propagation direction of a null
+ray and the axis, and \(v\) the axial velocity of a second frame, (3) is
+the aberration law and \(\lambda\) is the Doppler factor of that frame; (4)
+is the relativistic addition of collinear velocities. The scale factor is a
+statement about the null vector on the declared sphere. It becomes a
+frequency ratio only through the clock calibration and the physical
+spacetime attachment, which this section does not supply.
+
+\paragraph{The canonical distribution as the information projection.}
+
+\begin{proposition}[Gibbs law from one linear constraint]
+\label{prop:gibbs-projection}
+Let \(\tau\) be a faithful reference law on a finite record set, \(E\) a
+real function on it, and \(g_\beta=\tau e^{-\beta E}/Z_\beta\). For every
+law \(p\) with \(\langle E\rangle_p=\langle E\rangle_{g_\beta}\),
+\[
+ D(p\Vert\tau)=D(p\Vert g_\beta)+D(g_\beta\Vert\tau).
+\]
+Hence \(g_\beta\) is the unique minimizer of \(D(\cdot\Vert\tau)\) among
+laws with that expected value: the information projection of the third
+axiom under one linear constraint is the canonical distribution, and
+\(\beta\) is the multiplier of the constraint.
+\end{proposition}
+
+\begin{proof}
+\(\log(g_\beta/\tau)=-\beta E-\log Z_\beta\) is affine in \(E\), so
+\(D(p\Vert\tau)-D(p\Vert g_\beta)=\sum_x p(x)\log(g_\beta/\tau)(x)
+=-\beta\langle E\rangle_p-\log Z_\beta\), which by the constraint equals
+the same expression under \(g_\beta\), namely \(D(g_\beta\Vert\tau)\).
+Uniqueness follows from \(D(p\Vert g_\beta)=0\) only at \(p=g_\beta\).
+\end{proof}
+
+The history-level form of this identity and the exponential form of the
+projected path law are machine-checked in the information-projection
+library \cite{ophrepo}. The energy ledger \(E\) is declared, and \(\beta\)
+is free against the modular Hamiltonian alone; a temperature reading
+consumes the calibration row.
+
+\paragraph{Occupation laws under a declared exchange sector.}
+
+\begin{proposition}[Fermi--Dirac, Bose--Einstein and truncated occupation]
+\label{prop:occupation-laws}
+Consider one mode of energy \(\varepsilon\) at chemical potential \(\mu\)
+and inverse temperature \(\beta\), and put \(x=e^{-\beta(\varepsilon-\mu)}\).
+The Gibbs law of Proposition~\ref{prop:gibbs-projection} on the occupation
+ledger, with weight \(x^n\) for occupation \(n\), has mean occupation
+\(x/(1+x)=1/(e^{\beta(\varepsilon-\mu)}+1)\) when the mode admits the
+occupations \(\{0,1\}\), \(x/(1-x)=1/(e^{\beta(\varepsilon-\mu)}-1)\) when
+it admits every \(n\ge0\) and \(x<1\), and
+\(\sum_{n\le m}nx^n/\sum_{n\le m}x^n\) when it is cut at \(m\); the last
+equals the first at \(m=1\) and increases to the second as \(m\to\infty\).
+\end{proposition}
+
+\begin{proof}
+Geometric sums: \(\sum_{n\ge0}x^n=1/(1-x)\) and
+\(\sum_{n\ge0}nx^n=x/(1-x)^2\); the two-term case and the truncated case
+are the same sums cut off. Monotonicity in \(m\) holds because each added
+term has occupation above the previous mean.
+\end{proof}
+
+The exchange sector is a declared premise of this proposition. Nothing in
+it selects the sector, and the two laws stand as the two admissible sectors
+of one information projection.
+
+\paragraph{Coarse-graining of the record law.}
+
+\begin{proposition}[Record identification does not raise the entropy of the record law]
+\label{prop:record-coarse-graining}
+Let \(r\colon\Sigma\to\Sigma'\) be a map on public records that identifies
+some of them, and let \(p\) be a law on \(\Sigma\) with push-forward
+\(r_*p\). Then \(H(r_*p)\le H(p)\) for the Shannon entropy and
+\(\sum_y(r_*p)(y)^2\ge\sum_x p(x)^2\), with equality in both exactly when
+\(r\) is injective on the support of \(p\). If \(K\) is a stochastic
+repair kernel with stationary law \(\pi\), then
+\(D_f(pK\Vert\pi)\le D_f(p\Vert\pi)\) for every \(f\)-divergence, in
+particular for the relative entropy and the \(\chi^2\) divergence.
+\end{proposition}
+
+\begin{proof}
+\(H(r_*p)=H(p)-H(p\mid r_*p)\) and the conditional entropy is nonnegative,
+vanishing exactly when \(r\) is injective on the support. For the collision
+sum, \((a+b)^2\ge a^2+b^2\) for \(a,b\ge0\), with equality only when one
+vanishes. The kernel statement is the data-processing inequality for
+\(f\)-divergences applied to the pair \((p,\pi)\) with \(\pi K=\pi\).
+\end{proof}
+
+This is a statement about the law of the public records under repair. It
+does not identify that entropy with a thermodynamic entropy; the four-law
+package makes that identification under its declared repair law and
+calibration.
+
+None of the six statements supplies a physical clock, energy, frequency,
+exchange sector or source selection. Their standing in the observation
+ledger is recorded row by row with the premises each consumes.

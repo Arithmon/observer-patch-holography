@@ -1,0 +1,314 @@
+{
+  "celestial": {
+    "boosts": [
+      {
+        "directions": [
+          {
+            "cos_theta": "1",
+            "cos_theta_boosted": "1",
+            "scale": "1/4",
+            "zeta": [
+              "0",
+              "0"
+            ]
+          },
+          {
+            "cos_theta": "4/5",
+            "cos_theta_boosted": "-7/25",
+            "scale": "5/8",
+            "zeta": [
+              "1/3",
+              "0"
+            ]
+          },
+          {
+            "cos_theta": "0",
+            "cos_theta_boosted": "-15/17",
+            "scale": "17/8",
+            "zeta": [
+              "1",
+              "0"
+            ]
+          },
+          {
+            "cos_theta": "-3/5",
+            "cos_theta_boosted": "-63/65",
+            "scale": "13/4",
+            "zeta": [
+              "2",
+              "0"
+            ]
+          },
+          {
+            "cos_theta": "23/49",
+            "cos_theta_boosted": "-43/61",
+            "scale": "61/49",
+            "zeta": [
+              "1/2",
+              "1/3"
+            ]
+          }
+        ],
+        "gamma": "17/8",
+        "k": "4",
+        "velocity": "15/17"
+      },
+      {
+        "directions": [
+          {
+            "cos_theta": "1",
+            "cos_theta_boosted": "1",
+            "scale": "1/9",
+            "zeta": [
+              "0",
+              "0"
+            ]
+          },
+          {
+            "cos_theta": "4/5",
+            "cos_theta_boosted": "-4/5",
+            "scale": "1",
+            "zeta": [
+              "1/3",
+              "0"
+            ]
+          },
+          {
+            "cos_theta": "0",
+            "cos_theta_boosted": "-40/41",
+            "scale": "41/9",
+            "zeta": [
+              "1",
+              "0"
+            ]
+          },
+          {
+            "cos_theta": "-3/5",
+            "cos_theta_boosted": "-323/325",
+            "scale": "65/9",
+            "zeta": [
+              "2",
+              "0"
+            ]
+          },
+          {
+            "cos_theta": "23/49",
+            "cos_theta_boosted": "-113/121",
+            "scale": "121/49",
+            "zeta": [
+              "1/2",
+              "1/3"
+            ]
+          }
+        ],
+        "gamma": "41/9",
+        "k": "9",
+        "velocity": "40/41"
+      }
+    ],
+    "rotation_scales": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "velocity_addition": {
+      "composed": "1295/1297",
+      "v1": "15/17",
+      "v2": "40/41"
+    }
+  },
+  "coarse_graining": {
+    "collision_sum_after": "3/8",
+    "collision_sum_before": "11/32",
+    "kernel_chi_square_after": "1/8",
+    "kernel_chi_square_before": "2",
+    "records": [
+      "1/2",
+      "1/4",
+      "1/8",
+      "1/8"
+    ],
+    "repaired": [
+      "1/2",
+      "1/4",
+      "1/4"
+    ]
+  },
+  "fragment_sha256": "b43abe4b5b9d9bbf414a4e4983b52da3519c773815489a7c2d3e12eb620f4ba6",
+  "lueders_zeno": {
+    "density": [
+      [
+        "1/2",
+        "1/8",
+        "1/8"
+      ],
+      [
+        "1/8",
+        "1/4",
+        "0"
+      ],
+      [
+        "1/8",
+        "0",
+        "1/4"
+      ]
+    ],
+    "event_weight": "3/4",
+    "idempotent": true,
+    "reread_weight": "1",
+    "zeno_sequence": [
+      {
+        "bound_four_over_n": "2",
+        "cos_step": "3/5",
+        "n": 2,
+        "one_minus_survival": "544/625",
+        "survival_with_reads": "81/625",
+        "survival_without_reads": "49/625"
+      },
+      {
+        "bound_four_over_n": "4/3",
+        "cos_step": "4/5",
+        "n": 3,
+        "one_minus_survival": "11529/15625",
+        "survival_with_reads": "4096/15625",
+        "survival_without_reads": "1936/15625"
+      },
+      {
+        "bound_four_over_n": "1",
+        "cos_step": "15/17",
+        "n": 4,
+        "one_minus_survival": "4412866816/6975757441",
+        "survival_with_reads": "2562890625/6975757441",
+        "survival_without_reads": "1003559041/6975757441"
+      },
+      {
+        "bound_four_over_n": "4/5",
+        "cos_step": "12/13",
+        "n": 5,
+        "one_minus_survival": "75941127625/137858491849",
+        "survival_with_reads": "61917364224/137858491849",
+        "survival_without_reads": "21219166224/137858491849"
+      },
+      {
+        "bound_four_over_n": "2/3",
+        "cos_step": "35/37",
+        "n": 6,
+        "one_minus_survival": "3203731497783394656/6582952005840035281",
+        "survival_with_reads": "3379220508056640625/6582952005840035281",
+        "survival_without_reads": "1050720038099156881/6582952005840035281"
+      },
+      {
+        "bound_four_over_n": "4/7",
+        "cos_step": "24/25",
+        "n": 7,
+        "one_minus_survival": "16217182861450552849/37252902984619140625",
+        "survival_with_reads": "21035720123168587776/37252902984619140625",
+        "survival_without_reads": "6076884967439570496/37252902984619140625"
+      },
+      {
+        "bound_four_over_n": "1/2",
+        "cos_step": "63/65",
+        "n": 8,
+        "one_minus_survival": "39953225501919251253885405184/101534516782101416168212890625",
+        "survival_with_reads": "61581291280182164914327485441/101534516782101416168212890625",
+        "survival_without_reads": "16797676489294347389431661569/101534516782101416168212890625"
+      },
+      {
+        "bound_four_over_n": "4/9",
+        "cos_step": "40/41",
+        "n": 9,
+        "one_minus_survival": "38459454231531784356353269521/107178930967531784356353269521",
+        "survival_with_reads": "68719476736000000000000000000/107178930967531784356353269521",
+        "survival_without_reads": "17903061799806444415980673600/107178930967531784356353269521"
+      },
+      {
+        "bound_four_over_n": "2/5",
+        "cos_step": "99/101",
+        "n": 10,
+        "one_minus_survival": "4022831023507359535935504310082280004000/12201900399479668244827490915525641902001",
+        "survival_with_reads": "8179069375972308708891986605443361898001/12201900399479668244827490915525641902001",
+        "survival_without_reads": "2052258972633299535464695738438337862001/12201900399479668244827490915525641902001"
+      },
+      {
+        "bound_four_over_n": "4/11",
+        "cos_step": "60/61",
+        "n": 11,
+        "one_minus_survival": "577243987472154682494075073080422272921/1893461025894826042494075073080422272921",
+        "survival_with_reads": "1316217038422671360000000000000000000000/1893461025894826042494075073080422272921",
+        "survival_without_reads": "320087245601614806331119641229283155600/1893461025894826042494075073080422272921"
+      },
+      {
+        "bound_four_over_n": "1/3",
+        "cos_step": "143/145",
+        "n": 12,
+        "one_minus_survival": "2115159059894691175190281672141788322014131815521024/7461601544304672321765645313826780378818511962890625",
+        "survival_with_reads": "5346442484409981146575363641684992056804380147369601/7461601544304672321765645313826780378818511962890625",
+        "survival_without_reads": "1266255751746506146889031992336747462982005231852929/7461601544304672321765645313826780378818511962890625"
+      }
+    ]
+  },
+  "occupation": [
+    {
+      "boltzmann_factor": "1/3",
+      "bose_einstein": "1/2",
+      "fermi_dirac": "1/4",
+      "truncated_mean_occupation": {
+        "1": "1/4",
+        "10": "44281/88573",
+        "2": "5/13",
+        "3": "9/20"
+      }
+    },
+    {
+      "boltzmann_factor": "1/5",
+      "bose_einstein": "1/4",
+      "fermi_dirac": "1/6",
+      "truncated_mean_occupation": {
+        "1": "1/6",
+        "10": "3051755/12207031",
+        "2": "7/31",
+        "3": "19/78"
+      }
+    },
+    {
+      "boltzmann_factor": "2/3",
+      "bose_einstein": "2",
+      "fermi_dirac": "2/5",
+      "truncated_mean_occupation": {
+        "1": "2/5",
+        "10": "327670/175099",
+        "2": "14/19",
+        "3": "66/65"
+      }
+    }
+  ],
+  "port_bound": {
+    "per_port": [
+      {
+        "dimension": 2,
+        "gram_determinant": "0",
+        "max_distinguishable": 2
+      },
+      {
+        "dimension": 3,
+        "gram_determinant": "0",
+        "max_distinguishable": 3
+      },
+      {
+        "dimension": 4,
+        "gram_determinant": "0",
+        "max_distinguishable": 4
+      },
+      {
+        "dimension": 5,
+        "gram_determinant": "0",
+        "max_distinguishable": 5
+      }
+    ],
+    "twelve_ports_dimension_two_bits_per_read": 12
+  },
+  "schema": "oph.elementary_laws.receipt.v1",
+  "scope": "Exact finite controls for elementary corollaries. No physical clock, energy, frequency, statistics law, or source selection is asserted."
+}

@@ -255,7 +255,10 @@
   "OPH-NATIVE-CHECKPOINT-SELECTION",
   "OPH-NATIVE-EVENTUAL-PUBLICATION",
   "OPH-FINITE-A3-SUPPORT",
-  "OPH-REGISTERED-SOURCE-READ-ALGEBRA"
+  "OPH-REGISTERED-SOURCE-READ-ALGEBRA",
+  "OPH-SPIN-EXCHANGE-SELECTION-BOUNDARY",
+  "OPH-CONDITIONAL-PAULI-SCALAR-Q-SELECTION",
+  "OPH-CONDITIONAL-PAULI-OPERATION-SELECTION"
  ],
  "edges": [
   {
@@ -2217,6 +2220,21 @@
    "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
    "to": "OPH-NATIVE-EVENTUAL-PUBLICATION",
    "role": "Supplies the covering cone and golden assignment/count theorems for explicit radius-family instantiations; their convergence does not select a population or radius."
+  },
+  {
+   "from": "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
+   "to": "OPH-SPIN-EXCHANGE-SELECTION-BOUNDARY",
+   "role": "Supplies the fifteen single-occupation channels and channel-preserving abelian current/feedback class to which the statistics-indistinguishability theorem applies, plus the rational Cayley coefficient comparison. No physical statistics or parent quantum Gauss transfer is inferred."
+  },
+  {
+   "from": "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
+   "to": "OPH-CONDITIONAL-PAULI-SCALAR-Q-SELECTION",
+   "role": "Supplies the signed one-particle hopping matrix and fifteen-channel charge census for the stability-control application. Its assumed CAR is not used to derive exclusion; scalar-q, exact quantum phase/ladder and finite-or-stable full representation hypotheses are independently declared."
+  },
+  {
+   "from": "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
+   "to": "OPH-CONDITIONAL-PAULI-OPERATION-SELECTION",
+   "role": "Supplies only the signed one-particle hopping edge for a separately declared covariant capped-symmetric lift. Neither the parent CAR nor its physical preparation is inherited by the operation theorem or countercontrol."
   }
  ]
 }

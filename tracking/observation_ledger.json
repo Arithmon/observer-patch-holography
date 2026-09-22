@@ -213,6 +213,49 @@
       ]
     },
     {
+      "id": "OL-A5",
+      "target": "Record-count clocks: proper-time ratios and the record-density reading",
+      "rung": "structural",
+      "status": "partial",
+      "lane_issue": 728,
+      "premises": [],
+      "open_premises": [
+        "PR-16",
+        "PR-52"
+      ],
+      "evidence": [
+        "Lean/Time/SourceCountClockEnclosure.lean",
+        "Lean/Geometry/SourceNetConformalRecordDensity.lean",
+        "paper/observers_are_all_you_need.tex",
+        "paper/reality_as_consensus_protocol.tex",
+        "paper/screen_microphysics_and_observer_synchronization.tex"
+      ],
+      "notes": "Fourth roots of inclusive interval-count ratios on fixed interior timelike diamonds recover proper-time ratios up to one reference unit; the finite clock enclosure and its relative-error enclosure are Lean theorems on supplied counts. The conformal record-density family proves that the layered read law in physical coordinates under any positive scale profile is the comoving read law, which is the record-density reading of expansion, and the papers state the proper-time reading of record counts on that basis. No physical event identification, calibrated density, count-volume law, or measured expansion history is attached, so PR-16 and PR-52 stay open; seconds per record consume PR-15 through OL-H8."
+    },
+    {
+      "id": "OL-A6",
+      "target": "Celestial kinematics: aberration, the Doppler factor and rapidity addition",
+      "rung": "structural",
+      "status": "partial",
+      "lane_issue": 728,
+      "premises": [],
+      "open_premises": [
+        "PR-52"
+      ],
+      "evidence": [
+        "paper/tex_fragments/ELEMENTARY_LAW_COROLLARIES.tex",
+        "code/elementary_laws/build.py",
+        "code/elementary_laws/verify.py",
+        "code/elementary_laws/test_elementary_laws.py",
+        "code/elementary_laws/receipt.json",
+        "paper/observers_are_all_you_need.tex",
+        "Lean/Geometry/CanonicalLorentzModule.lean",
+        "Lean/Geometry/ObserverFrameHyperboloid.lean",
+        "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex"
+      ],
+      "notes": "On the declared celestial sphere with its Moebius action, the synthesis paper proves the direction law, the null scale factor (equal to one on SU(2)), the axial forms gamma (1 - v cos theta) and cos theta_boosted = (cos theta - v)/(1 - v cos theta), and rapidity addition v = (v1 + v2)/(1 + v1 v2) from the spinor realization of the Lorentz group. Exact rational controls cover the boosts with k = 4 and k = 9 on five directions, a rational SU(2) rotation with unit scale, and the composed boost. The scale factor is a statement about the null vector on the declared sphere; it becomes a frequency ratio only through the clock calibration (PR-15 via OL-H8) and the physical spacetime attachment PR-52, which stays open. The proposition is analytic, not Lean-formalized; the Lorentz module and frame hyperboloid it acts on are Lean objects."
+    },
+    {
       "id": "OL-B1",
       "target": "Einstein field equations as the effective description",
       "rung": "structural",
@@ -276,9 +319,13 @@
         "Lean/Thermodynamics/HorizonThermalitySurface.lean",
         "code/geometry/runs/h3_kms_finite_diagnostic_projection.json",
         "cosmology/oph_black_hole_information_ledger.tex",
-        "code/geometry/runs/modular_clock_instrumentation_report.json"
+        "code/geometry/runs/modular_clock_instrumentation_report.json",
+        "Lean/Thermodynamics/CollarTemperatureReading.lean",
+        "Lean/Geometry/CrossingReadAreaLaw.lean",
+        "Lean/Geometry/SourceNetConformalRecordDensity.lean",
+        "paper/tex_fragments/PAPER.tex"
       ],
-      "notes": "The cap Clausius inequality and capacity identities compose with the declared repair law as a conditional horizon-thermality-shaped surface; physical temperature consumes the calibration row and a physical horizon dictionary. The compact H3/KMS projection preserves a runtime-bound finite replay instrument, diagnostic geometry scores, a constructed mixed-GNS diagnostic, repeated-rho identity, and native BW payload conformance. Its geometry comparison is not physical-gate eligible, source selection and multiresolution certification are absent, and the physical preflight is negative. It supplies no source-selected spacetime refinement, physical causal attachment, faithful embedding, 3+1-dimensional manifold limit, smooth curvature, or physical temperature. The finite free-fermion ring diagnostic sums all fitting odd ranges at sizes 16,32,64,128. A fixed-nine-range control reverses its apparent profile convergence at size128. Both are numerical finite-cutoff diagnostics; common-cap KMS and Cauchy convergence receipts remain unsupplied, and the observation status is unchanged.",
+      "notes": "The cap Clausius inequality and capacity identities compose with the declared repair law as a conditional horizon-thermality-shaped surface; physical temperature consumes the calibration row and a physical horizon dictionary. The compact H3/KMS projection preserves a runtime-bound finite replay instrument, diagnostic geometry scores, a constructed mixed-GNS diagnostic, repeated-rho identity, and native BW payload conformance. Its geometry comparison is not physical-gate eligible, source selection and multiresolution certification are absent, and the physical preflight is negative. It supplies no source-selected spacetime refinement, physical causal attachment, faithful embedding, 3+1-dimensional manifold limit, smooth curvature, or physical temperature. The finite free-fermion ring diagnostic sums all fitting odd ranges at sizes 16,32,64,128. A fixed-nine-range control reverses its apparent profile convergence at size128. Both are numerical finite-cutoff diagnostics; common-cap KMS and Cauchy convergence receipts remain unsupplied, and the observation status is unchanged. The 2 pi KMS normalization of cap modular flow on the support-visible geometric cap pair (Theorem 4.2 of the main paper) is the Unruh-temperature reading of the branch: the collar reference is thermal at inverse temperature 2 pi in modular units for the boost flow, and the physical temperature consumes PR-15; the collar reference is Lean-proved to be the Gibbs state of its own modular Hamiltonian with beta free against that Hamiltonian alone. The crossing-read area law and the conformal record-density family carry the horizon area law of the record capacity in the same package.",
       "open_premises": []
     },
     {
@@ -321,8 +368,27 @@
       "open_premises": []
     },
     {
+      "id": "OL-B6",
+      "target": "Universality of the gravitational coupling: the weak equivalence form on the Einstein branch",
+      "rung": "structural",
+      "status": "partial",
+      "lane_issue": 729,
+      "premises": [],
+      "open_premises": [
+        "PR-52"
+      ],
+      "evidence": [
+        "Lean/Screen/A5CouplingSymmetry.lean",
+        "Lean/Screen/A5PortAction.lean",
+        "Lean/Screen/PortFrameGram.lean",
+        "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+        "docs/POSTDICTION_LEDGER.md"
+      ],
+      "notes": "A5-invariant readouts have port-independent group-averaged cap sums, so the per-cap ratio of any two averaged readouts is universal with zero spread; this is machine-checked on the twelve-port carrier and is the universality clause of the Einstein-branch coupling law: every source couples to the cap geometry through one coupling. That clause is the structural form of the weak equivalence principle. Geodesic motion of test bodies, physical free fall, and the physical spacetime attachment are not derived, so PR-52 stays open; the branch premises themselves are consumed by OL-B1."
+    },
+    {
       "id": "OL-C1",
-      "target": "Born probabilities and Lüders conditioning",
+      "target": "Born probabilities and L\u00fcders conditioning",
       "rung": "structural",
       "status": "attained",
       "lane_issue": 730,
@@ -592,6 +658,62 @@
         "PR-52",
         "PR-58"
       ]
+    },
+    {
+      "id": "OL-C7",
+      "target": "Uncertainty relations for noncommuting observables",
+      "rung": "structural",
+      "status": "attained",
+      "lane_issue": 730,
+      "premises": [
+        "PR-02"
+      ],
+      "open_premises": [],
+      "evidence": [
+        "Lean/EventAlgebra/Robertson.lean",
+        "Lean/EventAlgebra/PartitionPinching.lean",
+        "docs/POSTDICTION_LEDGER.md"
+      ],
+      "notes": "For a supplied finite density state and two Hermitian observables the ordinary-commutator Robertson inequality holds, with exact saturation by the complex-line control and zero-variance controls under which the commutator readout vanishes; partition pinching separates the commutative record span from the full sector-preserving commutant. The theorem lives on the registered algebra-state representation of public records (PR-02). It asserts nothing about physical position and momentum, which need the calibration row and a source-selected observable pair."
+    },
+    {
+      "id": "OL-C8",
+      "target": "Classical public records: superselection sectors and the no-cloning boundary",
+      "rung": "structural",
+      "status": "attained",
+      "lane_issue": 730,
+      "premises": [
+        "PR-02"
+      ],
+      "open_premises": [],
+      "evidence": [
+        "Lean/EventAlgebra/PartitionAverage.lean",
+        "Lean/EventAlgebra/NoBroadcastingAdapter.lean",
+        "paper/reality_as_consensus_protocol.tex"
+      ],
+      "notes": "The span of a finite projective partition is a commutative star subalgebra inside its own commutant, star-equivalent to functions on the projector labels, so public records commute with every observable they label and split the accessible algebra into superselection sectors. A common linear isometry sharply copies two distinct states from one normalized blank only when they are orthogonal, so records of orthogonal outcomes copy and coherent superpositions do not; that is the pointer-basis reading of einselection without an environment model. Both statements are machine-checked on the registered representation (PR-02). No dynamical decoherence rate, environment, or physical pointer is supplied."
+    },
+    {
+      "id": "OL-C9",
+      "target": "Repeated reads and the Zeno limit",
+      "rung": "structural",
+      "status": "attained",
+      "lane_issue": 730,
+      "premises": [
+        "PR-02",
+        "PR-03"
+      ],
+      "open_premises": [],
+      "evidence": [
+        "Lean/EventAlgebra/Lueders.lean",
+        "paper/tex_fragments/ELEMENTARY_LAW_COROLLARIES.tex",
+        "code/elementary_laws/build.py",
+        "code/elementary_laws/verify.py",
+        "code/elementary_laws/test_elementary_laws.py",
+        "code/elementary_laws/receipt.json",
+        "paper/observers_are_all_you_need.tex"
+      ],
+      "notes": "Repeatability and idempotence of the Lueders update are Lean theorems on the registered representation. The synthesis paper proves the Zeno bound 1 - p_n <= 2 t^2 |H|^2 / n for n rereads of one event under a supplied generator, with convergence of the conditioned state to the projected flow, and an exact rational rotation control shows 1 - cos^(2n)(theta_n) <= 4/n with reads against cos^2(n theta_n) without reads. The step parameter is a flow parameter and the generator is supplied (PR-43 through OL-C2); no physical clock is consumed here, and the bound is analytic, not Lean-formalized."
     },
     {
       "id": "OL-D1",
@@ -881,6 +1003,67 @@
       "open_premises": []
     },
     {
+      "id": "OL-E5",
+      "target": "Canonical distribution as the information projection under one linear constraint",
+      "rung": "structural",
+      "status": "partial",
+      "lane_issue": 732,
+      "premises": [
+        "PR-07"
+      ],
+      "open_premises": [
+        "PR-15"
+      ],
+      "evidence": [
+        "Lean/InformationProjection/PathGibbs.lean",
+        "Lean/InformationProjection/GlobalObjective.lean",
+        "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean",
+        "Lean/Thermodynamics/CollarTemperatureReading.lean",
+        "paper/tex_fragments/ELEMENTARY_LAW_COROLLARIES.tex",
+        "paper/observers_are_all_you_need.tex"
+      ],
+      "notes": "The Pythagorean identity D(p||tau) = D(p||g_beta) + D(g_beta||tau) on the constraint surface makes the Gibbs law the unique third-axiom projection under one linear constraint, with beta the multiplier; the synthesis paper states and proves it. The history-level identity, the minimizer, and the exponential form of the projected path law are Lean theorems, and the exact affine modular-energy law of the Gibbs family is machine-checked. The energy ledger is declared under the repair law with its faithful reference (PR-07); beta is free against the modular Hamiltonian alone, so a temperature reading consumes PR-15, which stays open here."
+    },
+    {
+      "id": "OL-E6",
+      "target": "Information capacity of a patch boundary",
+      "rung": "structural",
+      "status": "attained",
+      "lane_issue": 732,
+      "premises": [],
+      "open_premises": [],
+      "evidence": [
+        "paper/tex_fragments/ELEMENTARY_LAW_COROLLARIES.tex",
+        "code/elementary_laws/build.py",
+        "code/elementary_laws/verify.py",
+        "code/elementary_laws/test_elementary_laws.py",
+        "code/elementary_laws/receipt.json",
+        "paper/observers_are_all_you_need.tex"
+      ],
+      "notes": "At most d_p perfectly distinguishable states pass through a port whose interface acts on a space of dimension d_p, hence at most log2 d_p bits per read and the sum over the twelve ports per carrier read; the argument is the orthogonality of error-free distinguishable supports, with exact Gram-determinant controls for dimensions two to five. Holevo's bound is an imported statement for reads with error. The count assigns no energy to a record; the energy of one distinction enters only through PR-15 (OL-H8). Analytic, not Lean-formalized."
+    },
+    {
+      "id": "OL-E7",
+      "target": "Record coarse-graining: the entropy of the record law under repair",
+      "rung": "structural",
+      "status": "partial",
+      "lane_issue": 732,
+      "premises": [
+        "PR-07"
+      ],
+      "open_premises": [],
+      "evidence": [
+        "paper/tex_fragments/ELEMENTARY_LAW_COROLLARIES.tex",
+        "code/elementary_laws/build.py",
+        "code/elementary_laws/verify.py",
+        "code/elementary_laws/test_elementary_laws.py",
+        "code/elementary_laws/receipt.json",
+        "paper/observers_are_all_you_need.tex",
+        "Lean/Dynamics/PublicMarkov.lean"
+      ],
+      "notes": "Under a record-identifying repair map the Shannon entropy of the public record law does not increase and the collision sum does not decrease, with equality only for injective repair on the support; under a stochastic repair kernel with a stationary law every f-divergence from that law is non-increasing. Exact controls: a four-record merge and a three-state kernel with the uniform law stationary, checked on the collision sum and the chi-square divergence. The thermodynamic identification of the record entropy belongs to the four-law package (OL-E1) under PR-07 and PR-15; this row is the information-theoretic statement alone and is analytic, not Lean-formalized."
+    },
+    {
       "id": "OL-F1",
       "target": "Maxwell-shaped field equations",
       "rung": "structural",
@@ -1114,7 +1297,7 @@
     },
     {
       "id": "OL-G2",
-      "target": "Global gauge group form S(U(3)xU(2)) ≅ (SU(3)xSU(2)xU(1))/Z6",
+      "target": "Global gauge group form S(U(3)xU(2)) \u2245 (SU(3)xSU(2)xU(1))/Z6",
       "rung": "structural",
       "status": "partial",
       "lane_issue": 734,
@@ -1305,9 +1488,24 @@
         "code/sm_fermion_current/build_coupled.py",
         "code/sm_fermion_current/verify_coupled.py",
         "code/sm_fermion_current/test_coupled.py",
-        "code/sm_fermion_current/coupled_receipt.json"
+        "code/sm_fermion_current/coupled_receipt.json",
+        "paper/tex_fragments/SPIN_EXCHANGE_SELECTION_BOUNDARY.tex",
+        "code/spin_exchange/build.py",
+        "code/spin_exchange/verify.py",
+        "code/spin_exchange/receipt.json",
+        "paper/tex_fragments/PAULI_STABILITY_SELECTION.tex",
+        "code/pauli_stability/build.py",
+        "code/pauli_stability/verify.py",
+        "code/pauli_stability/test_pauli_stability.py",
+        "code/pauli_stability/receipt.json",
+        "paper/tex_fragments/PAULI_SOURCE_SELECTION_BOUNDARY.tex",
+        "code/pauli_source_selection/build.py",
+        "code/pauli_source_selection/verify.py",
+        "code/pauli_source_selection/test_pauli_source_selection.py",
+        "code/pauli_source_selection/receipt.json",
+        "flagship/from_observer_consensus_to_standard_physics.tex"
       ],
-      "notes": "The nineteen-row inventory is recorded and one assembled structural action is machine-checked: assembledAction in Lean/Screen/AssembledActionComposition.lean sums a gauge kinetic sector, formed as a declared diagonal pairing on the committed weight space with one declared magnitude per invariant carrier sector, the committed scalar sector (quartic potential plus gauge mass form at the chosen minimum), and the realified committed Yukawa line as one function of one field tuple on one typed premise bundle, with exact sector restrictions, committed constraint-row coefficient invariance, exact global abelian phase invariance at the committed charge balance, exact complex recovery of the Yukawa line, an all-parameters-one inhabitant, and one composed receipt. The assembly is structural and conditional: no spacetime, no field strength two-form, no covariant derivative, no source-produced action (PR-54 open), no measured coefficient, no three families, no global-form, chirality, or Spin attachment (PR-35, PR-36, PR-46, PR-47 open). One typed fermion sector extends the assembled action without modifying it: Lean/Screen/FermionSectorAssembly.lean carries one complex amplitude per committed table row, proves the row-pair form invariant under the charge phase action at every unit phase exactly at committed charge balance, with the invariant mask pairs exactly diagonal, sums the masked diagonal fermion sector with declared per-row coefficients onto the committed action with exact restriction receipts (zero fermion slot and zero coefficients pin the committed action, the fermion slice pins the sector, the three committed sector restrictions persist), identifies the shared Yukawa rows with the committed matter slots at the exact committed mass bilinear coefficient, extends the committed-charge abelian invariance and the parameter census, inhabits the extended bundle over the committed inhabitant, and breaks the invariance receipt at an exhibited charge-imbalanced control pair. The covered-sector list is gauge kinetic at the committed invariant-form level, scalar, Yukawa line, and fermion sector; the fermion coefficients are declared stand-in weights on the PR-47/PR-54 boundary, and no derivative, spacetime carrier, or neutral-current coupling value appears. Lean/Screen/GaugeSectorBracketCompletion.lean upgrades the gauge kinetic sector from the declared diagonal pairing to the committed invariant-form level on a typed sector carrier (one coordinate vector per weighted sector of the committed 3+/3-/5 split): the diagonal pairing is exactly the axis restriction and pins the weights, the completed action embeds the committed action and factors exactly through it at the sector magnitudes, the committed G and F constraint rows are realized exactly as infinitesimal-invariance rows of exhibited cross-sector generators at declared ratio (1, -sqrt 5) with the one-ray mirror collapse restated at the invariance grade, the abelian and committed-charge invariances persist, the parameter census is unchanged at exactly the two declared normal-form parameters, one off-axis carrier witness evaluates outside the axis slice, and the control weight vector (1, 1, 1) breaks the invariance at an exhibited pair with exact value 1 - sqrt 5; the invariance grade is infinitesimal and typed, no gauge group action on the carrier is committed or claimed, and the generator ratio derivation from the pinned bracket tensors stays certificate content. On a declared flat Lorentzian Spin chart, the registered gauge representations and Higgs/Yukawa intertwiners compose a local action with F=dA+[A,A], covariant scalar and anticommuting Weyl kinetic terms, a supplied scalar potential and all 27 complex family Yukawa coefficients. Exact independent Grassmann arithmetic checks 65 coefficient-labelled sectors and 2295 nonzero monomials while retaining first and symmetric second gauge-parameter jets. Lean proves five noncommutative covariance, trace and spin-sign lemmas; the complete action and variational on-shell matter-current identity are analytic. Geometry, Spin, minimal kinetic law, connection, Higgs/Yukawa inputs, coefficients and their source realization remain declared; no source action, quantum measure or measured coupling is inferred. A local classical consistent reduction sets fermions/color and off-Cartan weak fields to zero, keeps H=(phi,0), and aligns the two Cartan connections by w=K^-1 q/(q^T K^-1 q). Every reduced solution, including Gauss, lifts to the full local classical equations with unrestricted Yukawas. The logarithmic-plaquette discretization requires its smooth identity chart and real unwrapped links; generic kinetic coefficients do not define a compact subgroup or quantum truncation. On the prepared q=5 tensor family, 64 scalar sites, 144 links and 108 plaquettes have recorded local split evolution with phase-intervention and gauge-copy controls. Exact first-edge current 2/125 and electric half-kick 1/25000 coexist with ideal Gauss-preservation identities and independent high-precision replay of binary64 events. The parent execution alone supplies no whole-state continuous-history numerical enclosure, source-selected current, physical clock or full Standard Model quantum evolution. A separate exact continuous-IVP certificate for the same q5 classical Cartan action retains positive current through model time 1/100 and gives a distinct neighboring detector intensity response at most -(9/20)t^2. All nine initial/completed decoded checkpoints have continuous-reference error below 6e-6; binary64 data are compared to the exact IVP rather than substituted as its preparation. The exact gauge-copy is controlled by covariance. This supplies selected current/readout bounds, not a whole-state enclosure, full fermion dynamics, quantum outcomes, physical time or a source-selected action/current. A separate finite CAR hypercharge factor retains every multiplet of one generation on the same prepared q5 addresses. Exact midpoint currents drive classical electric momenta and preserve discrete continuity and mean Gauss with independent event replay. Its fifteen occupied orbitals give initial local charge variance 945/512 in integer-six-hypercharge units, so mean conservation is not an operator Gauss state. Nonabelian and Yukawa evolution, continuous-history error, native source selection, physical chirality and laboratory current remain outside this factor; the structural rung and partial status are unchanged. A distinct localized preparation and quantized integer electric link give an exactly invariant 32768-dimensional dressed sector satisfying abelian quantum Gauss branchwise. Its declared commuting one-link Hamiltonian has an exact continuous current history, including expected flux -3 and current 3 sqrt(3) at model time pi/6. This does not add electric kinetic or plaquette evolution, a physical preparation, continuum chirality or measured current; all physical statuses remain unchanged. A separate fixed-lambda regulated hybrid action on the direct-product SU3xSU2xU1 cover couples the finite CAR state to classical electric drift and Wilson plaquette forces. Its convex nonquadratic electric kinetic law is declared, not the quadratic Maxwell law. An invariant expectation-level restriction sets Higgs and nonabelian fields to zero, retains one occupied family and two declared Fock vacua, and checks all omitted first variations with all 27 Yukawa coefficients arbitrary. Exact rational action factors on all 144 links and 108 faces, followed by one partial-word matter return, preserve mean continuity and Gauss. Independent replay checks 3464 events in three action executions and a disabled-drift counterfactual; the nonzero return-current difference certifies actual electric-to-link-to-matter consumption. It supplies no full quantum Gauss, excited nonabelian/Higgs dynamics, global Z6 descent, exact summed-Hamiltonian evolution, continuous-error estimate, source-selected action, physical clock or laboratory current. Physical classifications remain unchanged.",
+      "notes": "The nineteen-row inventory is recorded and one assembled structural action is machine-checked: assembledAction in Lean/Screen/AssembledActionComposition.lean sums a gauge kinetic sector, formed as a declared diagonal pairing on the committed weight space with one declared magnitude per invariant carrier sector, the committed scalar sector (quartic potential plus gauge mass form at the chosen minimum), and the realified committed Yukawa line as one function of one field tuple on one typed premise bundle, with exact sector restrictions, committed constraint-row coefficient invariance, exact global abelian phase invariance at the committed charge balance, exact complex recovery of the Yukawa line, an all-parameters-one inhabitant, and one composed receipt. The assembly is structural and conditional: no spacetime, no field strength two-form, no covariant derivative, no source-produced action (PR-54 open), no measured coefficient, no three families, no global-form, chirality, or Spin attachment (PR-35, PR-36, PR-46, PR-47 open). One typed fermion sector extends the assembled action without modifying it: Lean/Screen/FermionSectorAssembly.lean carries one complex amplitude per committed table row, proves the row-pair form invariant under the charge phase action at every unit phase exactly at committed charge balance, with the invariant mask pairs exactly diagonal, sums the masked diagonal fermion sector with declared per-row coefficients onto the committed action with exact restriction receipts (zero fermion slot and zero coefficients pin the committed action, the fermion slice pins the sector, the three committed sector restrictions persist), identifies the shared Yukawa rows with the committed matter slots at the exact committed mass bilinear coefficient, extends the committed-charge abelian invariance and the parameter census, inhabits the extended bundle over the committed inhabitant, and breaks the invariance receipt at an exhibited charge-imbalanced control pair. The covered-sector list is gauge kinetic at the committed invariant-form level, scalar, Yukawa line, and fermion sector; the fermion coefficients are declared stand-in weights on the PR-47/PR-54 boundary, and no derivative, spacetime carrier, or neutral-current coupling value appears. Lean/Screen/GaugeSectorBracketCompletion.lean upgrades the gauge kinetic sector from the declared diagonal pairing to the committed invariant-form level on a typed sector carrier (one coordinate vector per weighted sector of the committed 3+/3-/5 split): the diagonal pairing is exactly the axis restriction and pins the weights, the completed action embeds the committed action and factors exactly through it at the sector magnitudes, the committed G and F constraint rows are realized exactly as infinitesimal-invariance rows of exhibited cross-sector generators at declared ratio (1, -sqrt 5) with the one-ray mirror collapse restated at the invariance grade, the abelian and committed-charge invariances persist, the parameter census is unchanged at exactly the two declared normal-form parameters, one off-axis carrier witness evaluates outside the axis slice, and the control weight vector (1, 1, 1) breaks the invariance at an exhibited pair with exact value 1 - sqrt 5; the invariance grade is infinitesimal and typed, no gauge group action on the carrier is committed or claimed, and the generator ratio derivation from the pinned bracket tensors stays certificate content. On a declared flat Lorentzian Spin chart, the registered gauge representations and Higgs/Yukawa intertwiners compose a local action with F=dA+[A,A], covariant scalar and anticommuting Weyl kinetic terms, a supplied scalar potential and all 27 complex family Yukawa coefficients. Exact independent Grassmann arithmetic checks 65 coefficient-labelled sectors and 2295 nonzero monomials while retaining first and symmetric second gauge-parameter jets. Lean proves five noncommutative covariance, trace and spin-sign lemmas; the complete action and variational on-shell matter-current identity are analytic. Geometry, Spin, minimal kinetic law, connection, Higgs/Yukawa inputs, coefficients and their source realization remain declared; no source action, quantum measure or measured coupling is inferred. A local classical consistent reduction sets fermions/color and off-Cartan weak fields to zero, keeps H=(phi,0), and aligns the two Cartan connections by w=K^-1 q/(q^T K^-1 q). Every reduced solution, including Gauss, lifts to the full local classical equations with unrestricted Yukawas. The logarithmic-plaquette discretization requires its smooth identity chart and real unwrapped links; generic kinetic coefficients do not define a compact subgroup or quantum truncation. On the prepared q=5 tensor family, 64 scalar sites, 144 links and 108 plaquettes have recorded local split evolution with phase-intervention and gauge-copy controls. Exact first-edge current 2/125 and electric half-kick 1/25000 coexist with ideal Gauss-preservation identities and independent high-precision replay of binary64 events. The parent execution alone supplies no whole-state continuous-history numerical enclosure, source-selected current, physical clock or full Standard Model quantum evolution. A separate exact continuous-IVP certificate for the same q5 classical Cartan action retains positive current through model time 1/100 and gives a distinct neighboring detector intensity response at most -(9/20)t^2. All nine initial/completed decoded checkpoints have continuous-reference error below 6e-6; binary64 data are compared to the exact IVP rather than substituted as its preparation. The exact gauge-copy is controlled by covariance. This supplies selected current/readout bounds, not a whole-state enclosure, full fermion dynamics, quantum outcomes, physical time or a source-selected action/current. A separate finite CAR hypercharge factor retains every multiplet of one generation on the same prepared q5 addresses. Exact midpoint currents drive classical electric momenta and preserve discrete continuity and mean Gauss with independent event replay. Its fifteen occupied orbitals give initial local charge variance 945/512 in integer-six-hypercharge units, so mean conservation is not an operator Gauss state. Nonabelian and Yukawa evolution, continuous-history error, native source selection, physical chirality and laboratory current remain outside this factor; the structural rung and partial status are unchanged. A distinct localized preparation and quantized integer electric link give an exactly invariant 32768-dimensional dressed sector satisfying abelian quantum Gauss branchwise. Its declared commuting one-link Hamiltonian has an exact continuous current history, including expected flux -3 and current 3 sqrt(3) at model time pi/6. This does not add electric kinetic or plaquette evolution, a physical preparation, continuum chirality or measured current; all physical statuses remain unchanged. A separate fixed-lambda regulated hybrid action on the direct-product SU3xSU2xU1 cover couples the finite CAR state to classical electric drift and Wilson plaquette forces. Its convex nonquadratic electric kinetic law is declared, not the quadratic Maxwell law. An invariant expectation-level restriction sets Higgs and nonabelian fields to zero, retains one occupied family and two declared Fock vacua, and checks all omitted first variations with all 27 Yukawa coefficients arbitrary. Exact rational action factors on all 144 links and 108 faces, followed by one partial-word matter return, preserve mean continuity and Gauss. Independent replay checks 3464 events in three action executions and a disabled-drift counterfactual; the nonzero return-current difference certifies actual electric-to-link-to-matter consumption. It supplies no full quantum Gauss, excited nonabelian/Higgs dynamics, global Z6 descent, exact summed-Hamiltonian evolution, continuous-error estimate, source-selected action, physical clock or laboratory current. Physical classifications remain unchanged. The finite spin/exchange boundary shows that a supplied central spin minus sign and the conserved single-occupation current histories do not select CAR over CCR. A separate same-channel two-particle coincidence comparison distinguishes the supplied alternatives using parent-derived rational Cayley coefficients; its preparation, ideal effect and error budgets are declared. It discharges no physical Spin, source-action or measurement premise. A separate analytic conditional theorem derives CAR and Pauli exclusion from a universal real scalar-q law and exact quadratic occupation/phase law, plus either finite full representation dimension or a stable negative-energy creation ladder. The stable three-level truncated-boson countercontrol shows that stability and phase covariance alone do not force exclusion. Physical mode, quantization-class and generator selection are not supplied; the result is spin-independent and does not discharge this physical attachment. A stronger finite-dimensional conditional theorem removes the scalar-q premise: an unscaled Kraus contraction with its exact quadratic unit-phase generator is square-zero, and all-mode linearity gives creation anticommutation. Full mixed CAR needs exhaustive adjoint-paired completeness. A globally covariant total-occupation-two symmetric cutoff preserves the supplied source dynamics and exact phase yet allows double occupation. Normalizing its fields rescales their quadratic phase generator; generic probability conservation therefore does not supply the missing identification. The actual eight-history repair count also fails a single-mode quadratic-occupation rank test. Native field/operation identity and phase normalization remain unearned; neither physical exclusion nor an OPH impossibility theorem is claimed. Under the exact phase law, exclusion conversely implies a partial-isometry contraction, so the new operational identification carries the full selection burden; probability normalization alone has not derived exclusion.",
       "open_premises": [
         "PR-35",
         "PR-36",
@@ -1698,6 +1896,27 @@
         "PR-47",
         "PR-54"
       ]
+    },
+    {
+      "id": "OL-K7",
+      "target": "Occupation laws under a declared exchange sector",
+      "rung": "structural",
+      "status": "partial",
+      "lane_issue": 743,
+      "premises": [],
+      "open_premises": [
+        "PR-47",
+        "PR-52"
+      ],
+      "evidence": [
+        "paper/tex_fragments/ELEMENTARY_LAW_COROLLARIES.tex",
+        "code/elementary_laws/build.py",
+        "code/elementary_laws/verify.py",
+        "code/elementary_laws/test_elementary_laws.py",
+        "code/elementary_laws/receipt.json",
+        "paper/observers_are_all_you_need.tex"
+      ],
+      "notes": "For one mode the Gibbs projection of OL-E5 on the occupation ledger gives the Fermi-Dirac mean occupation on the two-valued sector, the Bose-Einstein mean on the unbounded sector, and the truncated ratio between them, with exact rational controls at three Boltzmann factors and the limits checked. The exchange sector is a declared premise of the proposition and nothing in this row selects it; the spin-statistics connection stays owed (OL-K1), with PR-47 and PR-52 open. Analytic, not Lean-formalized."
     },
     {
       "id": "OL-L1",

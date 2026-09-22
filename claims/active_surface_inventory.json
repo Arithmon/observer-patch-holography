@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 417,
+  "surface_count": 421,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -135,6 +135,11 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/ELEMENTARY_LAW_COROLLARIES.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/FEDERATION_LOG_RECOVERY.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
@@ -216,6 +221,16 @@
     },
     {
       "path": "paper/tex_fragments/PARTICLE_TECHNICAL_SUPPLEMENT_PORT.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/PAULI_SOURCE_SELECTION_BOUNDARY.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/PAULI_STABILITY_SELECTION.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -381,6 +396,11 @@
     },
     {
       "path": "paper/tex_fragments/SOURCE_TEMPORAL_RECOVERY.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SPIN_EXCHANGE_SELECTION_BOUNDARY.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },

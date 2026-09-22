@@ -6204,6 +6204,92 @@
         "physical_comparison_status": "NOT_EVALUABLE",
         "source_selected_physical_continuum": false,
         "statement": "The full 56-real-coordinate interacting Hilbert space admits the explicitly time-dependent neutral trial v(t)=exp(-itV/hbar)f_sigma. Exact global Gaussian moments and analytic coefficient bounds certify its Hilbert-norm distance from the exact Hamiltonian evolution for every time in a declared short interval. The packet supplies five times and four exact phase configurations while keeping the configuration probability density fixed; it does not restrict the quantum state to the classical five-coordinate trajectory."
+      },
+      {
+        "artifact_refs": [
+          "paper/tex_fragments/SPIN_EXCHANGE_SELECTION_BOUNDARY.tex",
+          "code/spin_exchange/receipt.json",
+          "code/spin_exchange/verify.py"
+        ],
+        "hypothesis_boundary": "The same full internal state, preparation, ideal detector and error budgets are supplied. There are no native or laboratory outcomes; operator Gauss of the one-particle parent does not transfer to this new preparation.",
+        "id": "spin_exchange_selection_boundary",
+        "independent_verifier_result": {
+          "arithmetic": "exact rational",
+          "coincidence_gap": "576/625",
+          "verified": true
+        },
+        "match": "conditional statistics-identification boundary and exact finite comparison",
+        "observed_counterpart": "Pauli exclusion (target only; no physical comparison)",
+        "observed_postdiction": false,
+        "paper_ref": "Standard Model gauge paper, exchange and exclusion sections",
+        "physical_spin_statistics_theorem": false,
+        "proof_kind": "analytic_operator_proof_with_finite_executable_controls",
+        "receipt_pin": {
+          "bytes": 9510,
+          "sha256": "863a85e8d434db48dae49db32be14890457764d47e7d964908e4971f6cec165c"
+        },
+        "source_selected_statistics": false,
+        "statement": "A supplied spin lift and conserved single-occupation current histories do not select exchange statistics. A separate same-channel two-particle comparison has exact coincidence probabilities 1, 49/625 and 337/625 for the declared fermionic, bosonic and distinguishable preparations."
+      },
+      {
+        "artifact_refs": [
+          "paper/tex_fragments/PAULI_STABILITY_SELECTION.tex",
+          "code/pauli_stability/receipt.json",
+          "code/pauli_stability/verify.py"
+        ],
+        "hypothesis_boundary": "The quantization class, unit phase law and finite full representation or stable quantum ladder are declared. The source response Hilbert space is not identified with the full matter representation. The theorem is spin independent; truncated bosons and other classes remain outside its premise.",
+        "id": "conditional_pauli_scalar_q_selection",
+        "independent_verifier_result": {
+          "finite_dimensional_q": -1,
+          "q_roots": [
+            -1,
+            1
+          ],
+          "source_premises_derived": false,
+          "stable_signed_full_ladder_q": -1,
+          "verified": true
+        },
+        "match": "analytic conditional exclusion with independently checked finite controls",
+        "observed_counterpart": "Pauli exclusion (target only; no physical comparison)",
+        "observed_postdiction": false,
+        "paper_ref": "Standard Model gauge paper, exchange and exclusion sections",
+        "physical_spin_statistics_theorem": false,
+        "proof_kind": "analytic_operator_proof_with_finite_executable_controls",
+        "receipt_pin": {
+          "bytes": 10405,
+          "sha256": "60468156a30639b267424084943fa6d0b223f2ae6364799aa1447eb7fc3b33a6"
+        },
+        "source_selected_statistics": false,
+        "statement": "A common real scalar-q creation law and exact quadratic occupation/phase law force q in {1,-1}. Finite full representation dimension, or a stable fixed negative-energy ladder, excludes q=1 and yields Pauli exclusion and full canonical anticommutation by polarization."
+      },
+      {
+        "artifact_refs": [
+          "paper/tex_fragments/PAULI_SOURCE_SELECTION_BOUNDARY.tex",
+          "code/pauli_source_selection/receipt.json",
+          "code/pauli_source_selection/verify.py"
+        ],
+        "hypothesis_boundary": "Under the exact phase law contraction is equivalent to exclusion. The field/Kraus identification and exact unit normalization are supplied, not source-derived. General normalized instruments can have an idle outcome and do not force these hypotheses. The finite countercontrol is not a full A1-A3 model or impossibility theorem. Physical Spin, native operation and matter attachment remain unproved.",
+        "id": "conditional_pauli_operation_selection",
+        "independent_verifier_result": {
+          "dimension": 15,
+          "finite_source_controls": true,
+          "normalized_mode_controls": 4,
+          "physical_spin_statistics": false,
+          "source_premises_derived": false,
+          "verified": true
+        },
+        "match": "analytic conditional operation theorem and exact source-bound countercontrols",
+        "observed_counterpart": "Pauli exclusion (target only; no physical comparison)",
+        "observed_postdiction": false,
+        "paper_ref": "Standard Model gauge paper, exchange and exclusion sections",
+        "physical_spin_statistics_theorem": false,
+        "proof_kind": "analytic_operator_proof_with_finite_executable_controls",
+        "receipt_pin": {
+          "bytes": 126386,
+          "sha256": "509b4152b908ad72d33804efe6ddccf4bdd806eaab31dbae6f4cb5ffc67bb223"
+        },
+        "source_selected_statistics": false,
+        "statement": "On a finite positive Hilbert space, an unscaled contraction creation field with its exact quadratic unit-phase law squares to zero. Linearity gives creation anticommutation without a scalar-q premise. An exhaustive adjoint add/remove instrument additionally yields full CAR. A covariant symmetric Fock space capped at total occupation two preserves the supplied one-particle source dynamics and exact phase law but permits double occupation. Making its fields into Kraus contractions rescales the quadratic phase law."
       }
     ],
     "hadrons": [
