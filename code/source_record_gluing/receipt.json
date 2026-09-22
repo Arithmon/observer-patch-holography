@@ -79,7 +79,7 @@
     "Lean/Geometry/SourceReusableBusAxiomAudit.lean": "2d9fa469d6278f6a8e59fc3a204beea2eca4b597abc56b60675464311c21a6fe",
     "Lean/Geometry/SourceSeamPathTomography.lean": "0a4523a315fbfb42f81449bc9e42179b254ec38ef02fdf3f62127abab78a3a83",
     "Lean/Geometry/SourceSelectionControls.lean": "f98f5b7583f0516201d47da82e5a80086f94779d234ae6d0f100049477ea717e",
-    "Lean/Geometry/SourceSelectionLocality.lean": "1a8013e13e4b0441d439ad7628adadecfd6a4e3dda76fbdc8ddcd5fcc74693fe",
+    "Lean/Geometry/SourceSelectionLocality.lean": "2d10e9f991cc1f046c9651288850a41ae7905ccf1173fc896ed0929f88022a5e",
     "Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean": "0a2e24d15cb4cde3a06c08dda1149894e212b202d75f3762bd4d3b402bb35518",
     "Lean/Geometry/SourceStateSelection.lean": "6d26928080991e21f56334afa75dbecb360eba2252d096d9b64a07d1ca664dbd",
     "Lean/Geometry/SourceTemporalAcceptanceAxiomAudit.lean": "5af40394bf919f20f99f391448a5ccf95e734c751b3edfecc85d60fe2f42cff3",
@@ -110,6 +110,6 @@
     "code/source_selection_model/CONTRACT.md": "0eef7e5f703be35bf3fc9fad95e914ac1cdbf5e6ffcdc1505cfb77c089accf0f",
     "code/source_selection_model/RECORD_GLUING.md": "7919b97e9dde9fbd952c2f6bf0dcdcbfc83bdcd45d1a2c83d59250e7ccd7203b",
     "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
-    "paper/tex_fragments/SOURCE_RECORD_GLUING.tex": "eeaf51de4e59a78d501f3a0aca23554add2f47ffda42b1d5753066ed15a7adc4"
+    "paper/tex_fragments/SOURCE_RECORD_GLUING.tex": "89447e65e21d886c2bfc3840ea7582ead77910a6b10d193761bd27782795e878"
   }
 }

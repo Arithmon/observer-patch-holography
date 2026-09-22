@@ -309,7 +309,7 @@
     "Lean/Geometry/SourceEncodedMemory.lean": "67f98a7bf3d76d1a705a979200169ef4d34b2f8ae5bd4875fee857b2db1fca24",
     "Lean/Geometry/SourceReusableBus.lean": "25dc38bdcfe71a4d5860be4e0051dd16bd3083c9bdc8c5befcc162ba421f57d2",
     "Lean/Geometry/SourceReusableBusAxiomAudit.lean": "2d9fa469d6278f6a8e59fc3a204beea2eca4b597abc56b60675464311c21a6fe",
-    "Lean/Geometry/SourceSelectionLocality.lean": "1a8013e13e4b0441d439ad7628adadecfd6a4e3dda76fbdc8ddcd5fcc74693fe",
+    "Lean/Geometry/SourceSelectionLocality.lean": "2d10e9f991cc1f046c9651288850a41ae7905ccf1173fc896ed0929f88022a5e",
     "Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean": "0a2e24d15cb4cde3a06c08dda1149894e212b202d75f3762bd4d3b402bb35518",
     "Lean/ObserverPatchHolography/ScalarSeamRepair.lean": "26a8944ff97643cc9b2cf5ac58f6667ff0a443ca9cd81301e94e1cb6b0c9a8ef",
     "Lean/lake-manifest.json": "65c7120947e5a3ad487de7311a46f792f62dd92718e220f82fefbda2d7d3f59d",
@@ -335,6 +335,6 @@
     "code/source_selection_model/verify.py": "2b9b7dbc81a60fb9172f553c0f8828fba70e44254d33606b977477a5327b1f7c",
     "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
     "docs/AXIOM_REFERENCE.md": "78b803601945f6629816aa2715186876e0020ae67646c05b4b0e2ca44919db88",
-    "paper/tex_fragments/SOURCE_RECORD_GLUING.tex": "eeaf51de4e59a78d501f3a0aca23554add2f47ffda42b1d5753066ed15a7adc4"
+    "paper/tex_fragments/SOURCE_RECORD_GLUING.tex": "89447e65e21d886c2bfc3840ea7582ead77910a6b10d193761bd27782795e878"
   }
 }

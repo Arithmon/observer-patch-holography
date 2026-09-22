@@ -105,8 +105,8 @@ theorem population_not_cube (n q : ℕ) : population n ≠ q ^ 3 := by
       omega
   | succ n => exact population_successor_not_cube n q
 
-/-- Support of a supplied operational classical channel, not just an
-algebraic restriction. A decoder must be right on every possible output. -/
+/-- Support of a supplied operational classical channel.
+A decoder must be right on every possible output. -/
 def Separates (C : State → Output → Prop) : Prop :=
   ∀ x x' y, C x y → C x' y → x = x'
 
