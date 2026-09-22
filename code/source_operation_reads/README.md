@@ -45,13 +45,30 @@ To reproduce the retained source revision before the companion is merged:
 ```sh
 git clone https://github.com/MarioPoneder/oph-physics-sim.git
 cd oph-physics-sim
-git checkout cfe291881fe09accdd6e80600db335b6505adb64
+git checkout 23e8a7504c522bb1fb12e41fb2409a675efe3887
 python -m pip install -e ".[test]"
 ```
 
-The capture is about 72 KB and contains replay inputs, not expanded event
+The capture is 118 KB and contains replay inputs, not expanded event
 tapes. The complete seven-case attempt denominator is retained. CI checks
 both the offline proof artifact and a fresh native execution on Linux and
 Windows. The canonical support criterion used here is already present in
 `source_read_selection`; this contribution does not depend on an unmerged
 stronger theorem.
+
+The [instrument continuation](INSTRUMENT_DERIVATION.md) goes beyond a missing
+receipt: it proves affine obstructions for the native no-op rule and phase
+lift, constructs two CPTP extensions of the ideal scalar repairs, and
+executes a subsequent unitary read that distinguishes them. It derives a
+recurrence influence cone and a 5N+1-dimensional normalized erasure kernel.
+Influence is not promoted to an exact read. A separate algebra-generation
+argument rules out identifying the coherent probes with central records;
+an exact lumpability test rules out carrier-only Markov state for the
+measured extension. These controls do not select a new canonical model.
+
+Two constructive completions prevent that erasure with explicitly added
+records: a minimal 5N+1-coordinate linear difference archive reverses the
+deterministic ideal population means, and retained random-unitary flags
+allow recovery of the quantum input. The latter matches the mean only in
+expectation; its flags alone contain no input information. Neither archive
+is claimed to be present in the native source or to supply a local M1 read.

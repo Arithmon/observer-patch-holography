@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           repository: MarioPoneder/oph-physics-sim
-          ref: cfe291881fe09accdd6e80600db335b6505adb64
+          ref: 23e8a7504c522bb1fb12e41fb2409a675efe3887
           path: simulator
           persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97

@@ -78,7 +78,10 @@ positive per-carrier normalized preparations: change one selected coordinate
 and compensate at another port of that carrier. The selected pair reads
 only the first coordinate and its partner. After every pair has been visited,
 the real terminal projection has rank 6N on the ambient 12N ledger space.
-This rank is not a claim about the dimension of its normalized input image.
+On the per-carrier normalized tangent, its kernel has dimension 5N+1 and
+its image dimension is 6N-1: the antisymmetric endpoint weights are exactly
+flows in the connected carrier incidence kernel. The full proof and explicit
+positive circulation witness are in [the instrument derivation](INSTRUMENT_DERIVATION.md).
 
 The actual thresholded floating-point maps also commute and are idempotent
 on finite nonnegative bounded inputs: each pair is disjoint, a skipped pair
@@ -303,5 +306,10 @@ explicit failure witnesses, phase-closure obstruction, and measured source
 population/refinement behavior. Full M1 would additionally require canonical
 source-family membership and instrument/refinement selection. This work
 neither assumes them nor transfers them into an alleged completed theorem.
-The new simulator contribution adds extraction and verification; it does not
-alter frozen dynamics to manufacture the target geometry.
+The [instrument continuation](INSTRUMENT_DERIVATION.md) proves that the
+native threshold and phase lift are not exact quantum channels on the
+stated density inputs, constructs valid ideal-repair channel extensions,
+and derives their recurrence and erasure limits. It also proves that the
+coherent port probes cannot themselves be A1's central records. The native
+arithmetic is preserved; the recurrent channels are explicit controls and
+are not substituted into the registered driver.

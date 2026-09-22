@@ -39,7 +39,7 @@ def live(simulator):
     for actual, expected in zip(packet["cases"], frozen_packet["cases"]):
         for field in ("carriers", "cycles", "support_level", "seams", "order"):
             check.equal(actual[field], expected[field], "live source structure: "+field)
-    for field in ("cases", "quantum", "M1_derived", "history_extension_is_spatial_refinement"):
+    for field in ("cases", "quantum", "instruments", "M1_derived", "history_extension_is_spatial_refinement"):
         check.equal(result[field], frozen[field], "live derived semantics: "+field)
     print("Live native capture, source custody, complete replay and derived read semantics verified.")
 
