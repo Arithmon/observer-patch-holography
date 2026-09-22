@@ -3,7 +3,8 @@
 The [derivation](DERIVATION.md) removes an arbitrary publication deadline
 and derives a consistent native history law. It also tests the proposed
 selection mechanism on a common demand algebra and on radius/population
-alternatives. The [contract](CONTRACT.md) retains the full M1 exit criterion.
+alternatives. The [contract](CONTRACT.md) states the declared interface and
+scientific boundary.
 
 The [finite-state derivation](STATE_SELECTION.md) addresses A3's actual
 noncommutative local-state objective. It proves maximal feasible support,

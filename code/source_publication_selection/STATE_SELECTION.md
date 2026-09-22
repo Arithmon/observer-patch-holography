@@ -32,7 +32,7 @@ for (1); canonical A3 supplies them for its other purposes.
 
 In particular, if E_bad is the positive failure effect of a required read,
 the selected state makes the read certain exactly when the entire feasible
-family already excludes its failure. The conclusion is about that
+family excludes its failure. The conclusion is about that
 identified effect, not every nonlinear predicate of a state, an unscored
 reconstructed history, or a property of the underlying model space.
 
@@ -181,7 +181,7 @@ with full unitary covariance, cannot be substituted for a derived temporal
 instrument or a preserved version record. The Choi objective is explicitly
 a second, declared process-state problem, not the original ontic problem.
 
-## Consequence for the unchanged M1 exit
+## Consequence for source requirements
 
 For an actual M1 candidate, identify the source-generated finite record
 algebra, the public meaning of a failed required read, its positive effect
@@ -197,9 +197,8 @@ show that the canonical architecture forces or admits any particular one
 of these failure effects. There is no full-axiom independence theorem here.
 The missing source grammar cannot be replaced by a successful-history
 conditioning, a zero in the reference, or an unproved identification of an
-ontic state with a channel. No issue is closed by this theorem, and literal
-M1 is not claimed. The obligations remain in this PR's original exit rather
-than being transferred to a newly proposed issue.
+ontic state with a channel. The theorem does not derive literal M1 or its
+source preparation, record and propagation interfaces.
 
 ## Verification boundary
 

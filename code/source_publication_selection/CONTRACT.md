@@ -1,14 +1,14 @@
 # Eventual publication and the M1 source-selection boundary
 
-## Objective
+## Scientific scope
 
-Investigate the central source-selection theorem, population and radius
-needed for a derivation of M1 from the canonical axioms. Close the temporal
-compatibility gap in the declared native record model, then test whether
-information projection and the established continuum limits actually select
-M1's remaining inputs. A conditional scheduling theorem is not full M1.
+Compatible eventual-publication laws and selection tests are defined for
+the declared native record model. These results concern a specified
+population, preparation, record meaning and move grammar. A derivation of M1
+from the canonical axioms requires their extraction from the complete
+source architecture; conditional scheduling does not supply that extraction.
 
-## Deliverables
+## Constructions and checks
 
 1. Construct eventual publication probability as the increasing limit of
    exhaustive finite native continuation masses. Prove harmonicity, leastness,
@@ -44,7 +44,7 @@ M1's remaining inputs. A conditional scheduling theorem is not full M1.
    that bound from optimizing physical error or canonical A3 entropy.
    Prove what unrestricted reads do to the actual generated order; test
    fixed-grid-stencil failures and distinguish a dispensable exact formula
-   from the still-needed source derivation of local propagation.
+   from the required source derivation of local propagation.
 7. Independently recompute every native word through length eight for three
    references, every prefix-consistency identity, and exact radius-menu
    counts at q=5,13,21 on golden and uniform populations. Include self reads
@@ -54,8 +54,8 @@ M1's remaining inputs. A conditional scheduling theorem is not full M1.
    dynamics versus scalar replay and fraction-free determinant elimination.
    Reconstruct complete-read causal intervals by transitive closure and
    Euclidean grid stencils by exact metric tests and breadth-first search.
-8. Integrate formal proofs, strict semantic verification, adversarial tests,
-   scientific text, paper preview, claim classification and CI gates.
+8. Bind the formal proofs and executable controls to source hashes, strict
+   semantic verification and adversarial tests.
 9. Prove support saturation for the full finite noncommutative A3 objective
    on compatible local-state families, without a global-state or common
    eigenbasis assumption. Derive the exact positive-failure-effect criterion,
@@ -69,7 +69,7 @@ M1's remaining inputs. A conditional scheduling theorem is not full M1.
     Reject forged zero-failure, full-rank, commutation, channel and scope
     claims. Do not promote this channel menu to the full A1 update grammar.
 
-## Exit
+## Verification and scientific boundary
 
 The derived results pass the Lean standard-axiom gate and independent exact
 verification. Resealed false laws, omitted histories or populations, wrong
@@ -80,12 +80,12 @@ Every scalar evidence field is individually corrupted and resealed. Actual
 CLI tests reject malformed controls, forged receipts and source-file edits
 in an isolated copy, while the unchanged copy succeeds.
 
-The original M1 objective is closed only if an extraction from the complete
-A1 response/record architecture and A2 interpretation proves the required
-golden population, public demand and radius, and the actual A3 feasible
-family selects it compatibly with refinement and immutable versions.
-These results do not establish that extraction. The PR must report this
-unmet exit explicitly, not redefine full M1 as deadline-free scheduling.
+Literal M1 requires an extraction from the complete A1 response/record
+architecture and A2 interpretation that proves the required golden
+population, public demand and radius, with selection by the actual A3
+feasible family compatible with refinement and immutable versions.
+These results do not establish that extraction. Deadline-free scheduling
+is a conditional result within the declared interface.
 
 ## Retained premises and boundary
 
@@ -106,11 +106,12 @@ countermodels of full A1--A3. No execution-liveness independence theorem
 for the full canonical basis is asserted. No physical controller, random
 source, precision, storage cost or layer clock is supplied. Time-prefix
 consistency does not prove compatibility across regulator refinements.
-PR-52 and the source-selection obligations of #740/#779 stay unconsumed.
+The source-selected population, read law and physical causal interpretation
+are neither assumptions nor conclusions of these conditional constructions.
 
 The additional finite-state theorem applies to the actual mathematical form
 of A3. Its M1 use requires the source-generated feasible family and a
 positive failure effect in a scored algebra or an actual positive pullback.
 The exact matrix controls instantiate that theorem, not the full axioms.
 The theorem cannot justify assuming a successful-history face or a singular
-reference that already encodes the desired read law.
+reference that encodes the desired read law.

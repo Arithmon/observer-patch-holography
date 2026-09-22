@@ -49,8 +49,8 @@ For h(s)>0 define the finite cylinder and transition laws
 Harmonicity proves normalization and sum_a Q_s[wa]=Q_s[w], including
 zero-mass prefixes. Their product telescopes to Q_s[w]. Positive cylinders
 are exactly the prefixes from which the required meaning remains viable.
-This is the Doob h-transform, not a newly invented probability construction;
-see Levin--Peres--Wilmer, *Markov Chains and Mixing Times*, second edition,
+This is the Doob h-transform; see Levin--Peres--Wilmer,
+*Markov Chains and Mixing Times*, second edition,
 [section 17.6](https://pages.uoregon.edu/dlevin/MARKOV/markovmixing.pdf).
 The source-specific step is constructing h from the native publication
 predicate and proving its viability characterization.
@@ -111,8 +111,8 @@ Apply the positive linear operator P^n and use P^n h=h. Iteration gives
 `SourcePublicationTail` checks the block-to-geometric inference and the
 published/unpublished/dead case split. The native derivation of its uniform
 block hypothesis above is analytic and uses the existing kernel-checked
-connected completion theorem; it is not asserted as a new fully composed
-Lean theorem.
+connected completion theorem. The composed native instantiation is
+analytic.
 
 For a viable initial checkpoint the selected first-publication time obeys
 Q(T>kB)=1-H_(kB)/h <= (1-delta)^k and E_Q T <= B/delta. Publication is almost
@@ -308,7 +308,7 @@ This pinpoints what source selection must prove: the complete A1-generated
 observable/constraint grammar must identify the required demand or exclude
 the competing demands on the actual common algebra. Merely adding a label
 and applying strict convexity or unique information projection does not do
-that. The earlier KL-support theorem supplies the same warning for a fixed
+that. The finite KL-support theorem supplies the same warning for a fixed
 finite model; the present construction includes native continuation masses
 and a compatible infinite-time limit.
 
@@ -338,8 +338,7 @@ existing interval-volume and strict-pair limits under their stated
 boundary-null/contained-diamond hypotheses. For actual golden event counts,
 `SourceRadiusSelection.golden_count_family` instantiates the existing
 general event-count theorem, including the clipped endpoint correction,
-with this duration. It does not rebrand the older arbitrary-duration
-theorem as a new theorem. The positive radius, vanishing radius and mesh
+with this duration. The positive radius, vanishing radius and mesh
 ratio identities are also kernel checked. Null-cone boundary agreement
 and physical clock selection are not conclusions.
 
@@ -377,16 +376,11 @@ A1--A3 countermodels.
 
 ## 8. Where the square root comes from, and what it does not select
 
-The source history is explicit about introducing this parameter. Commit
-`f80d0f90e` introduced the instruction to apply the complete-neighbour law
-with a_q=L/sqrt(q) in `SOURCE_NET_CAUSAL_LIMIT.tex`; commit `f61ef0c0`
-subsequently defined that radius in `GoldenSourceCausalLimit`. Those lines
-choose the scale. They are not an extraction from A1--A3. The following is
-a mathematical explanation of the scale, not a claim about the author's
-unrecorded motivation.
+The complete-neighbour construction in `SOURCE_NET_CAUSAL_LIMIT.tex`
+and `GoldenSourceCausalLimit` uses the supplied radius a_q=L/sqrt(q).
+This choice is not an extraction from A1--A3.
 
-There is a stronger explanation than an arbitrarily proposed balancing
-objective. `SourceNetVolumeError.weighted_alexandrov_error` already bounds
+`SourceNetVolumeError.weighted_alexandrov_error` bounds
 the error of the **actual generated interval**, including the temporal
 quadrature error. Normalize c=1 and a containing observation window to
 T<=1. If both the covering and assignment error are bounded by h<=1,
@@ -398,7 +392,7 @@ hypotheses hold (including 2h<a), its bound is
 
 `SourceRadiusRemoval.normalized_volume_bound` checks the latter inequality
 for every admissible T,a,h. The first inequality is the existing generated
-volume theorem; it is not supplied as new evidence. The a term is the time
+volume theorem. The a term is the time
 quadrature cost, while h/a is the accumulated spatial approximation cost.
 The radius-dependent part of this **certified upper bound** has the unique
 minimizer a=6*sqrt(h), since
@@ -436,7 +430,7 @@ between them is proved, so the balance criterion is not consumed as an axiom.
 
 **The exact formula can be removed from the continuum target; spatial
 causal control cannot simply be deleted from this construction.** Section 7
-already proves that all fixed exponents 0<alpha<1 give the same stated
+proves that all fixed exponents 0<alpha<1 give the same stated
 limits. The radius tends to zero; it is a regulator in those theorems,
 not a surviving fundamental length. That does not imply all finite read
 menus are interchangeable: their counts, timing and records differ.
@@ -473,7 +467,7 @@ Conversely, retaining only a fixed microscopic nearest-neighbour stencil
 does not automatically fix the problem. In a unit cube grid of spacing
 1/q, take radius a=1/q and duration a (c=1). The only one-layer moves are
 self and the six axial neighbours. Reaching (1/2,1/2,0) from zero takes
-q moves and hence time one. At time 3/4 the displacement is already strictly
+q moves and hence time one. At time 3/4 the displacement is strictly
 Euclidean-timelike, since sqrt(1/2)<3/4, but remains unreachable. For every
 q divisible by four, the discrepancy persists under refinement: the
 generated cone is the L1 cone. If a=1/q^2, only self reads remain. The
@@ -487,40 +481,41 @@ These failures explain why the successful family uses separated scales,
 h/a->0 and a->0: enough microscopic directions are available per shrinking
 time step to recover the round cone. They do **not** prove these conditions
 necessary for every conceivable read architecture, or that all radius-free
-architectures fail. The earlier generic `SourceNetLayeredOrder` already
-accepts arbitrary read relations. A source-derived relation could replace
+architectures fail. The generic `SourceNetLayeredOrder` accepts arbitrary
+read relations. A source-derived relation could replace
 the ball rule, provided its actual propagation and counting limits are
 proved. Local transport topology, eventual recoverability and A5 symmetry
-alone have not supplied that join; the scalar action continuum and the
+alone do not establish that join; the scalar action continuum and the
 record-dependency DAG must not be silently identified.
 
 The practical consequence is to separate two targets. Literal finite M1
-still asks for a particular population and read menu. The continuum causal
+requires a particular population and read menu. The continuum causal
 target needs a source-derived propagation law in the appropriate limiting
 class, not a proof that precisely L/sqrt(q) is fundamental. The results
 remove that exact formula as a necessary intermediate claim for the latter
 target. They do not establish membership of the complete A1--A3 source in
-that class, and do not silently revise the original M1 exit criterion.
+that class, or the literal finite M1 population and read menu.
 
-## 10. Full-basis exit and remaining derivation
+## 10. Source-extraction boundary
 
 The compatible temporal law and its native feasibility are derived for a
-stated meaning; their arbitrary deadline and completion-probability oracle
-have been removed. The joint-demand theorem and explicit radius/population
-families show precisely why two proposed routes to central selection do
-not finish it. They do not establish that the full canonical axioms cannot
+stated meaning without an arbitrary deadline or a supplied
+completion-probability oracle. The joint-demand theorem and explicit
+radius/population families show why these two proposed routes to central
+selection do not determine M1. They do not establish that the full canonical axioms cannot
 select M1 by some other mechanism.
 
-A derivation of literal finite M1 still requires an extraction from the complete A1 source
-algebras and faithful response, compatible with endogenous A2 transport,
+A derivation of literal finite M1 requires an extraction from the complete
+A1 source algebras and faithful response, compatible with endogenous A2
+transport,
 that fixes the golden q^3 population, required previous-version record map
 and radius L/sqrt(q). It must identify the actual A3 common feasible space,
 reference and complete temporal constraint grammar, and prove consistency
 under regulator refinement and immutable-version interpretation. Availability
 of a checkpoint is insufficient as a proof of compulsory execution; no
 full-model stationary-execution counterexample is asserted here. The
-physical layer clock is a separate M2 attachment. PR-52 is unconsumed.
+physical layer clock is a separate M2 attachment.
 
-The evidence therefore supports a substantial temporal closure and a
-specific selection-obstruction theorem for the proposed common-space
-mechanism. It does not meet the original full-M1 exit criterion.
+The evidence supports a compatible temporal law and a selection-obstruction
+theorem for the stated common-space mechanism. It does not derive the
+complete M1 source interface.
