@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 414,
+  "surface_count": 415,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -271,6 +271,11 @@
     },
     {
       "path": "paper/tex_fragments/SOURCE_COUNT_CLOCK.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SOURCE_EVENTUAL_PUBLICATION.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },

@@ -102,7 +102,7 @@ calculations and reproducible simulations:
   diagnostic status until the closure map is selected from the axioms. These
   calculations turn constants into concrete derivation and falsification
   targets rather than free inputs.
-- **Machine-checked and falsifiable.** More than 11800 Lean theorems with
+- **Machine-checked and falsifiable.** More than 11900 Lean theorems with
   no admitted proofs, exact rational arithmetic in place of floating-point
   trust, and deterministic simulations with pinned receipts. A
   frozen-prediction ladder requires every armed comparison to bind its kill

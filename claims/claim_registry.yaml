@@ -11117,6 +11117,64 @@
         "boundary": [],
         "rationale": "These are mathematical results on a specified finite record and history interface. Physical source-selected records, metric radius, instruments, clock, geometric refinement and immutable-version semantic-order identification are excluded conclusions, not physical antecedents; PR-52 is neither consumed nor discharged."
       }
+    },
+    {
+      "claim_id": "OPH-NATIVE-EVENTUAL-PUBLICATION",
+      "statement": "For a declared persistent native record interface and normalized faithful reference, finite continuation masses increase to the least harmonic publication potential. Its Doob transform has normalized compatible cylinders and is the limit of actual finite-deadline marginals; an analytic path-space entropy identity proves uniqueness under eventual publication. Connected native completion and a uniform positive reference bound give an explicit geometric tail and effective rational approximation. On an isolated path, ordered two-row minors remain nonnegative and a positive nonadjacent minor survives every finite native word with an explicit factor-two bound. This derives the exact adjacent-two-record eventual law for arbitrary path length. An analytic Cauchy--Binet extension proves permanent full preparation rank for any number of unknown coordinates at nonadjacent vertices, making eventual publication automatic under uniformly positive references. The generic law, finite marginal limit, native viability, block contraction, two-row invariant, joint-demand marginal and radius/count formulas are kernel checked; infinite-path measure/entropy, native block instantiation and the general k-column extension are analytic. A faithful common demand algebra selects prior times continuation mass, retaining every recoverable demand; uniform/golden populations and radii L*q^(-alpha), 0<alpha<1, pass the same stated continuum tests with distinct finite menus. Independent controls replay 29523 publication words and 15128 full-minor path words and count 181217110 ordered geometric pairs. These theorems neither instantiate the complete A1 response/endogenous A2 transport nor extract M1 public meaning, golden population or radius from canonical A3. In the separated-source class every demand depending on the full preparation has publication probability one, so its prior weight is unchanged. A normalized specialization of the existing generated-volume error bound has a unique square-root balance with a bound-dependent coefficient. Removing all spatial read restrictions collapses the generated order and drives actual interval ordering fractions to one; fixed axial grid reads give an L1 cone instead. The exact square-root radius is unnecessary for the stated continuum limits, while a source-derived appropriate local propagation law remains unproved. Eighteen locality controls independently reconstruct interval closure and grid shortest paths.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "kernel_checked_publication_limit_native_path_invariant_and_selection_diagnostics_with_analytic_extensions",
+      "assumptions": [
+        "declared_native_publication_reference_and_geometric_selection_controls"
+      ],
+      "imported_results": [
+        "connected_native_scalar_completion",
+        "finite_checkpoint_KL_projection",
+        "monotone_convergence_and_finite_cylinder_extension",
+        "Doob_h_transform",
+        "Cauchy_Binet_identity",
+        "source_net_covering_cone_and_continuity_set_counts"
+      ],
+      "oph_specific_delta": "Removes arbitrary finite publication deadlines; derives a permanent native response-rank invariant and automatic recovery class without a guard or successful-word restriction; tests common-space demand selection and exact population/radius alternatives rather than equating scheduling or continuum convergence with central source selection.",
+      "novelty_type": "native_eventual_publication_permanent_path_rank_and_source_selection_boundary",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_EVENTUAL_PUBLICATION.tex",
+        "Lean/Geometry/SourcePublicationMass.lean",
+        "Lean/Geometry/SourcePublicationLaw.lean",
+        "Lean/Geometry/SourcePublicationNative.lean",
+        "Lean/Geometry/SourcePublicationTail.lean",
+        "Lean/Geometry/SourcePublicationPath.lean",
+        "Lean/Geometry/SourcePublicationPathInvariant.lean",
+        "Lean/Geometry/SourcePublicationMenu.lean",
+        "Lean/Geometry/SourceRadiusSelection.lean",
+        "Lean/Geometry/SourceRadiusRemoval.lean",
+        "Lean/Geometry/SourcePublicationAxiomAudit.lean",
+        "code/source_publication_selection/CONTRACT.md",
+        "code/source_publication_selection/DERIVATION.md",
+        "code/source_publication_selection/build.py",
+        "code/source_publication_selection/verify.py",
+        "code/source_publication_selection/exterior.py",
+        "code/source_publication_selection/check_exterior.py",
+        "code/source_publication_selection/locality.py",
+        "code/source_publication_selection/check_locality.py",
+        "code/source_publication_selection/controls.json",
+        "code/source_publication_selection/receipt.json",
+        "code/source_publication_selection/test_selection.py"
+      ],
+      "falsifier": "A compatible cylinder or finite marginal has the wrong mass; a native path word violates ordered-minor positivity or the permanent-rank bound; a recovered demand is excluded under the stated faithful joint model; a radius/population count or claimed limit fails; a resealed false semantic packet passes independent verification; or a declared path/meaning/reference is promoted to a full canonical M1 derivation.",
+      "scope_if_false": "The eventual-publication construction, path invariant or specified selection diagnostic fails; prior finite checkpoint, protected-bank and geometric constructions retain their own scopes.",
+      "status": "deadline_free_native_law_and_permanent_path_rank_proved__central_M1_source_extraction_not_established",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The conclusions concern native scalar continuation and exact mathematical selection diagnostics. Eventual publication and path rank are proved within declared interfaces; full source grammar, golden population, particular radius, immutable-version refinement and physical precision/controller are excluded conclusions. This does not consume or discharge PR-52."
+      }
     }
   ]
 }
