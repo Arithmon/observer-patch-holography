@@ -31,6 +31,7 @@ def test_retained_receipt_and_observation_limits(packet):
     assert [cases[i]["ideal_real_read_algebra"]["hidden_dimension"] for i in (2, 4, 5)] == [21, 65, 153]
     assert all(r["repair_read_after_write_edges"] == 0 for r in cases)
     assert result["M1_derived"] is result["complete_A1_A3_model"] is False
+    assert [r['terminal_real_projection_rank'] for r in cases] == [40,32,24,24,48,96,24]
 
 
 @pytest.mark.parametrize("path,value", [
@@ -43,6 +44,18 @@ def test_retained_receipt_and_observation_limits(packet):
     (("quantum", "unitary_hex", 0, 0), ["0x0.0p+0", "0x0.0p+0"]),
     (("quantum", "uniform_snapshot_feedback", "native_next_port"), 0),
     (("scope", "M1_derived"), True),
+    (("instruments", "extensions_selected_by_source"), True),
+    (("instruments", "threshold_output_hex", 1, 0), "0x1.0000000000000p-1"),
+    (("instruments", "phase_lift_coherence_hex", 0, 0), "0x0.0p+0"),
+    (("instruments", "twirl_output_sparse"), []),
+    (("instruments", "next_read_hex", 0), "0x0.0p+0"),
+    (("instruments", "measured_recurrence", 2, "steps", 1, "positive_slot_entries"), 0),
+    (("instruments", "measured_recurrence", 0, "erasure", "inverse_flow_hex"), ["0x0.0p+0"]*48),
+    (("instruments", "retained_flags"), []),
+    (("instruments", "retained_flags", 1, "recovered_digest"), "0"*64),
+    (("instruments", "deterministic_archive", 2, "chord_differences"), []),
+    (("instruments", "deterministic_archive", 2, "tree_seams"), [0]*15),
+    (("instruments", "deterministic_archive", 2, "recovered_sha256"), "0"*64),
     (("cases",), []),
 ])
 def test_resealed_semantic_and_custody_forgery(packet, path, value):
@@ -151,3 +164,50 @@ def test_live_source_alias_rejects_changed_bytes(source_alias):
     (root/canonical).write_bytes(b"class PatchNet: changed = True\n")
     with pytest.raises(ValueError, match="same pinned file"):
         canonicalize_source_aliases(packet, source, root)
+
+
+def test_constructed_channel_family_keeps_the_erasure_and_selection_boundary(packet):
+    result=verify(packet)['native_derivation']
+    assert result['instruments']['extensions_selected_by_source'] is False
+    assert result['quantum']['coordinate_ports_central_in_reversible_closure'] is False
+    for row in result['instruments']['measured_recurrence']:
+        assert row['normalized_first_cycle_kernel_dimension']==5*row['carriers']+1
+        assert row['normalized_first_cycle_image_dimension']==6*row['carriers']-1
+        assert row['carrier_totals_are_Markov_state'] is False
+
+
+def test_constructed_recovery_keeps_record_cost_and_native_boundary(packet):
+    result=verify(packet)['native_derivation']['instruments']
+    assert result['all_flag_words_recover_input_analytically'] is True
+    assert result['retained_flag_bits_per_full_sweep']==24
+    for row in result['deterministic_archive']:
+        assert row['retained_real_coordinates']==row['linear_archive_minimum']==5*row['carriers']+1
+        assert row['exact_input_recovered'] is True
+        assert row['native_record_interface'] is False
+
+
+@pytest.mark.parametrize('field', ['initial_hex','final_hex','observer_records'])
+def test_live_bridge_rejects_different_values_even_with_identical_summaries(packet, field):
+    from .check_live import compare_replays
+    changed = deepcopy(packet)
+    values = (changed['cases'][0]['observer_records'][0][4]
+              if field == 'observer_records' else changed['cases'][0][field])
+    values[0] = (float.fromhex(values[0])+2**-30).hex()
+    # Pass the same summary deliberately: numeric reproduction is an
+    # additional gate, not a consequence of rank/provenance summary equality.
+    summary = verify(packet)['native_derivation']
+    with pytest.raises(ValueError,match='live numeric reproduction'):
+        compare_replays(changed,packet,summary,summary)
+
+
+def test_live_bridge_accepts_last_bit_variation_and_checks_source_basis(packet):
+    import math
+    from .check_live import compare_replays
+    summary = verify(packet)['native_derivation']
+    changed = deepcopy(packet)
+    values = changed['cases'][0]['initial_hex']
+    values[0] = math.nextafter(float.fromhex(values[0]),math.inf).hex()
+    compare_replays(changed,packet,summary,summary)
+    changed['quantum']['phase_ports'] = [0,11]
+    with pytest.raises(ValueError,match='live quantum source'):
+        compare_replays(changed,packet,summary,summary)

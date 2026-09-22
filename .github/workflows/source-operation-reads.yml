@@ -39,13 +39,16 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           repository: MarioPoneder/oph-physics-sim
-          ref: cfe291881fe09accdd6e80600db335b6505adb64
+          ref: 84d46b97b07965406c608e1465bec18b2a308372
           path: simulator
           persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.12"
       - run: pip install -e "./simulator[test]"
+      - name: Pinned simulator regressions and hostile inputs
+        working-directory: simulator
+        run: python -m pytest -q tests/test_primitive_source_reads.py tests/test_ordered_port_response_diagnostic.py tests/test_physical_h3_kms_source_capture.py
       - name: Independent retained evidence and hostile inputs
         working-directory: oph
         env:

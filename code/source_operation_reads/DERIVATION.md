@@ -79,10 +79,17 @@ positive per-carrier normalized preparations: change one selected coordinate
 and compensate at another port of that carrier. The selected pair reads
 only the first coordinate and its partner. After every pair has been visited,
 the real terminal projection has rank 6N on the ambient 12N ledger space.
-This rank is not a claim about the dimension of its normalized input image.
+Before coverage, a word visiting s distinct seams instead has rank 12N-s:
+each visited disjoint pair removes one independent difference. The receipt
+reports that word's rank separately from the full-sweep rank.
+For the full-sweep projection on the per-carrier normalized tangent, the
+kernel has dimension 5N+1 and its image dimension is 6N-1: the antisymmetric
+endpoint weights are exactly
+flows in the connected carrier incidence kernel. The full proof and explicit
+positive circulation witness are in [the instrument derivation](INSTRUMENT_DERIVATION.md).
 
 The actual thresholded floating-point maps also commute and are idempotent
-on finite nonnegative bounded inputs: each pair is disjoint, a skipped pair
+on inputs in [0,1]: each pair is disjoint, a skipped pair
 stays unchanged, and a committed pair has bit-identical endpoints thereafter.
 Their maps need not be linear. The rational rank statements concern the
 ideal real operators; the native binary64 maps are replayed separately.
@@ -175,8 +182,10 @@ operations, not necessarily to a fixed seeded run or the full A1/A2 family.
 
 Encode a hidden bit by these two preparations, keep the executed schedule
 independent of that bit, and assign each bit probability 1/2. Every receiver
-decoder, including a randomized one, then has error probability exactly
-1/2. On the finite classical algebra of the bit and decoded bit, the diagonal
+decoder returning a binary guess, including a randomized one, then has error
+probability exactly 1/2. Allowing abstention or other outputs, counted as
+unsuccessful reads, gives an error lower bound of 1/2. On the finite classical
+algebra of the bit and decoded bit, the diagonal
 effect E_bad=1_{decoded != bit} is positive. A certain read of both values
 requires error zero; this explicit family violates it. With an arbitrary
 prior giving both indistinguishable preparations positive mass, optimal
@@ -299,11 +308,18 @@ silently discharge that missing identification.
 | A2 | Concrete record recomputation and selected interface consistency controls | Every canonical accepted-record constraint, or an endogenous holonomy identification for these operations |
 | A3 | A configured initialization and deterministic scheduler | The complete convex feasible family, positive scored failure pullback, exact canonical reference/cover/weights, or a source-selected temporal instrument |
 
-The finite operation-to-read task exits with a complete algebraic transition
+The proved finite results include a complete algebraic transition
 classification, native and observer replay, normalized recovery criterion,
 explicit failure witnesses, phase-closure obstruction, and measured source
-population/refinement behavior. Full M1 would additionally require canonical
-source-family membership and instrument/refinement selection. This work
-neither assumes them nor transfers them into an alleged completed theorem.
-The new simulator contribution adds extraction and verification; it does not
-alter frozen dynamics to manufacture the target geometry.
+population/refinement behavior. These do not meet the overarching M1
+derivation exit. Canonical source-family membership, the required public
+meaning, population and locality, and instrument/refinement selection remain
+unproved. This work neither assumes them nor establishes that the full
+axioms cannot imply them.
+The [instrument continuation](INSTRUMENT_DERIVATION.md) proves that the
+native threshold and phase lift are not exact quantum channels on the
+stated density inputs, constructs valid ideal-repair channel extensions,
+and derives their recurrence and erasure limits. It also proves that the
+coherent port probes cannot themselves be A1's central records. The native
+arithmetic is preserved; the recurrent channels are explicit controls and
+are not substituted into the registered driver.
