@@ -90,9 +90,10 @@ What is NOT proved here:
 * replacement of the old four-law refinement member by the supplied
   directed family.  The theorem `fourLaws_composed_coherent` is the
   companion conjunction described above;
-* the ground-degeneracy entropy limit (Gibbs entropy tending to
-  `log g0`): no committed normalization or Gibbs-entropy limit lemma
-  exists in the thermodynamics modules, and this file adds none;
+* a refinement-uniform ground-degeneracy entropy limit: the finite,
+  stagewise normalization and `log g0` limit are provided by
+  `GibbsEntropyLimit` and exported through `fourLaws_composed`, but
+  this file proves no entropy limit uniform over the directed family;
 * any identification of `beta` with a physical inverse temperature or
   of the energies with a realized objective: register rows PR-15 and
   PR-07 stay open exactly as recorded in the four-law surface;

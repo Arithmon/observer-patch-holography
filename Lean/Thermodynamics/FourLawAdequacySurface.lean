@@ -1,4 +1,5 @@
 import FiniteConditionalRepair
+import GibbsEntropyLimit
 import FirstLawIdentity
 import FluctuationTheorems
 import StationaryRealization
@@ -761,6 +762,16 @@ structure FourLawConclusions {Ω : Type u} [Fintype Ω] [DecidableEq Ω]
     (push p (repairKernel A.repair) = p ↔
       ∀ y, p y = A.repair.ref y * fiberMass p A.repair.visible y
         / fiberMass A.repair.ref A.repair.visible y)
+  /-- Third law, residual entropy of the calibrated family: the same
+  per-call gap hypotheses give `log g₀`, with zero limit exactly when
+  the ground state is unique. No additional calibration field is assumed. -/
+  third_entropy_limit : ∀ E0 Δ : ℝ, 0 < Δ →
+    (∀ x, A.calib.energy x = E0 ∨ E0 + Δ ≤ A.calib.energy x) →
+    (Finset.univ.filter (fun x => A.calib.energy x = E0)).Nonempty →
+    Filter.Tendsto (gibbsEntropy A.calib.energy) Filter.atTop
+      (nhds (Real.log (groundDegeneracy A.calib.energy E0))) ∧
+    (Filter.Tendsto (gibbsEntropy A.calib.energy) Filter.atTop (nhds 0) ↔
+      groundDegeneracy A.calib.energy E0 = 1)
   /-- Third law, excited-mass bound (rows PR-07 and PR-15). -/
   third_excited_mass_bound : ∀ beta E0 Δ : ℝ, 0 ≤ beta → 0 < Δ →
     (∀ x, A.calib.energy x = E0 ∨ E0 + Δ ≤ A.calib.energy x) →
@@ -856,6 +867,9 @@ theorem fourLaws_composed {Ω : Type u} [Fintype Ω] [DecidableEq Ω]
         arrow_mean_entropy_production_eq_kl_to_repaired A.repair
       arrow_strict := arrow_strict A.repair
       repair_fixed_iff := repair_fixed_iff A.repair
+      third_entropy_limit := fun E0 Δ hΔ hground hne =>
+        ⟨gibbsEntropy_tendsto A.calib.energy E0 Δ hΔ hground hne,
+         gibbsEntropy_tendsto_zero_iff A.calib.energy E0 Δ hΔ hground hne⟩
       third_excited_mass_bound :=
         third_excited_mass_bound A.repair A.calib
       third_excited_mass_threshold :=
