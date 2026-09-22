@@ -394,11 +394,15 @@ unicast bound: multicast can share paths. The per-receiver information cut
 bound applies if each layer's named outputs support independent fresh
 interventions and complete local caches are fixed at that boundary. Correlated
 unintervened histories alone do not justify a fresh entropy-rate bound.
-A fixed bandwidth per receiver, fixed total output memory, or a bounded
-native-event density is consequently incompatible with literal dense
+A fixed bandwidth per receiver or fixed total output memory is consequently
+incompatible with literal dense
 lossless observation at every refinement under those intervention conditions.
 Cofinal growth of hardware/workspace is permitted by RG and LC, but must
 be a physical premise. Distinguished-record volume is not native work.
+A bound on native event counts additionally needs a uniform bound on the
+information carried per event; the duration grade and incidence count alone
+do not provide one. The explicit compiler ledger counts its bit gates, but
+does not identify them with a source's unbounded-arity elementary events.
 A single primitive carrier's central algebra C^12 cannot hold a lossless
 tuple with more than twelve alternatives in one central record. The compiled
 receiver is a growing composite observer/register bank, not one unchanged
