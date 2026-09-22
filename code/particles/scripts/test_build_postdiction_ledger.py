@@ -31,7 +31,7 @@ def whitney_rows():
 @pytest.fixture(scope="module")
 def coupled_whitney_rows(result):
     # New initial-state evidence strengthens its existing quantum row.
-    assert len(result["sections"]["forced_structure"]) == 56
+    assert len(result["sections"]["forced_structure"]) == 59
     names = {"whitney_spatial_consistency", "whitney_interacting_quantum", "whitney_charged_execution"}
     rows = {row["id"]: row for row in result["sections"]["forced_structure"] if row["id"] in names}
     assert set(rows) == names
@@ -531,7 +531,7 @@ def test_refining_causal_projection_requires_finite_lean_bounds(monkeypatch, tmp
 
 def test_source_net_projection_separates_finite_analytic_and_physical_results(result):
     rows = result["sections"]["forced_structure"]
-    assert len(rows) == 56
+    assert len(rows) == 59
     row = next(r for r in rows if r["id"] == "source_derived_finite_one_three_causal_carrier")
     control = row["declared_source_net_control"]
     assert control["analytic_controlled_causal_limit"] is True
@@ -1865,7 +1865,7 @@ def test_fresh_structural_loader_reloads_same_size_source_and_restores_helper(tm
 
 def test_spatial_and_local_action_enrich_existing_structural_rows(result):
     rows = {r['id']:r for r in result['sections']['forced_structure']}
-    assert len(rows) == 56
+    assert len(rows) == 59
     spatial = rows['source_derived_finite_one_three_causal_carrier']
     assert spatial['common_free_scalar_control']['mathematical_replay'] is True
     assert spatial['protected_population_control']['mathematical_replay'] is True
@@ -1949,7 +1949,7 @@ def test_cartan_execution_projection_rejects_custody_in_place_of_replay(monkeypa
 
 def test_scalar_and_cartan_executions_preserve_existing_rows(result):
     rows = {r['id']: r for r in result['sections']['forced_structure']}
-    assert len(rows) == 56
+    assert len(rows) == 59
     spatial = rows['source_derived_finite_one_three_causal_carrier']
     action = rows['hypercharge_spectrum']
     assert spatial['authenticated_scalar_execution_control']['mathematical_replay'] is True
@@ -2006,7 +2006,7 @@ def test_scalar_quantum_projection_rejects_arithmetic_only_parent(monkeypatch):
 
 def test_clock_quantum_projection_retains_all_times_and_historical_scopes(result):
     rows = {r['id']: r for r in result['sections']['forced_structure']}
-    assert len(rows) == 56
+    assert len(rows) == 59
     spatial = rows['source_derived_finite_one_three_causal_carrier']
     control = spatial['reconstructed_clock_quantum_control']
     summary = control['independent_verifier_result']
@@ -2566,3 +2566,49 @@ def test_fermion_control_rejects_custody_only_and_physical_upgrades(monkeypatch,
     monkeypatch.setattr(ledger, '_structural_packet', changed)
     with pytest.raises(SystemExit):
         ledger._fermion_source_current_control()
+
+
+def test_pauli_rows_remain_conditional_and_unobserved(result):
+    rows = {r['id']: r for r in result['sections']['forced_structure']}
+    names = {'spin_exchange_selection_boundary', 'conditional_pauli_scalar_q_selection',
+             'conditional_pauli_operation_selection'}
+    assert names <= rows.keys()
+    for name in names:
+        row = rows[name]
+        assert row['observed_postdiction'] is False
+        assert row['source_selected_statistics'] is False
+        assert row['physical_spin_statistics_theorem'] is False
+        assert row['independent_verifier_result']['verified'] is True
+        raw = (ledger.REPO/row['artifact_refs'][1]).read_bytes()
+        assert row['receipt_pin'] == {'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}
+    assert rows['conditional_pauli_operation_selection']['independent_verifier_result']['source_premises_derived'] is False
+
+
+@pytest.mark.parametrize('package,field,value', [
+    ('spin_exchange', 'physical_spin_statistics_theorem', True),
+    ('pauli_stability', 'physical_spin_statistics_theorem', True),
+    ('pauli_source_selection', 'physical_spin_statistics_theorem', True),
+])
+def test_pauli_ledger_rejects_false_physical_promotion(monkeypatch, package, field, value):
+    original = ledger._structural_packet
+    def forged(name, *args, **kwargs):
+        packet, summary, pin = original(name, *args, **kwargs)
+        if name == package:
+            packet = deepcopy(packet)
+            packet['scope'][field] = value
+        return packet, summary, pin
+    monkeypatch.setattr(ledger, '_structural_packet', forged)
+    with pytest.raises(SystemExit, match='spin-statistics boundary'):
+        ledger._pauli_structure_rows()
+
+
+def test_pauli_ledger_rejects_false_source_derivation(monkeypatch):
+    original = ledger._structural_packet
+    def forged(name, *args, **kwargs):
+        packet, summary, pin = original(name, *args, **kwargs)
+        if name == 'pauli_source_selection':
+            summary = {**summary, 'source_premises_derived': True}
+        return packet, summary, pin
+    monkeypatch.setattr(ledger, '_structural_packet', forged)
+    with pytest.raises(SystemExit, match='field/Kraus identification'):
+        ledger._pauli_structure_rows()

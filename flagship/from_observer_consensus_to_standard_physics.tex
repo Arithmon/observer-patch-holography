@@ -2797,7 +2797,8 @@ mechanisms.
 \begin{boundary}
 The finite response group $G_{\mathrm{packet}}$ and the sector-reconstructed
 group $G_{\mathrm{Tan}}$ arise from different data, and their equality is a
-separate commuting-square premise. The theorem classifies a finite declared
+separate commuting-square premise. Exterior parity does not select physical
+exchange statistics. The theorem classifies a finite declared
 exterior representation and its maximal faithful image; laboratory current
 attachment, physical matter identification, exclusion of extra light sectors,
 scalar attachment, family multiplicity, Yukawa couplings, mixing, masses, and
@@ -3013,52 +3014,55 @@ the closed carrier one hopping charge alone is admissible only at zero charge
 and a join carries a neutral partner or a neutralising background
 (\path{Lean/Screen/SeamChargeContinuity.lean}).
 
-The neutral-partner branch is realized by one finite action on this carrier,
-not by adding independently prescribed background sources after variation.
-Two declared seam-step worldlines carry charges $q$ and $-q$, and the action
-is the source-free Maxwell window functional plus both minimal-coupling terms
-and both clock terms.  For $h\ne0$ it is invariant under gauge functions that
-vanish at the two window endpoints.  Its load is neutral at every step and its
-summed load and current obey the continuity equation identically.  Variation
-of this same action in the two field slots, with the seam-potential endpoints
-fixed, is equivalent to the sourced scaled Amp\`ere equations at $m<N$ and
-Gauss equations at $n<N+1$ for those two worldlines.  A closed two-step
-replacement of either path, with the other path and the fields fixed, gives an
-exact off-shell clock-plus-interaction action difference; this identity is not
-by itself a path equation of motion.  At $q=1$, $h=1/2$, the opposite crossings
-of seams $0$ and $29$ recover the explicit nonzero-current Coulomb-started
-history and make its field-sector stationarity non-vacuous.  The same packet
-fails the declared closed-two-step exchange-stationarity condition in both
-path slots: for every $N\ge1$, delaying either the positive seam-$0$ crossing
-or the negative seam-$29$ crossing while fixing the fields and the other path
-changes the action by $5/12$ for every pair of clock-unit values within the
-fixed quadratic clock-action form.  The two results are charge conjugates, and
-applying both canonical exchanges simultaneously changes the action by
-$5/6$.  These are only the displayed discrete exchanges, not continuum
-first-variation claims or a no-go for other paths, fields, or action shapes.
-That packet does not exhaust the same action.  On the window $N=1$, a second
-exact rational temporal-gauge history at the same $q=1$, $h=1/2$, and the
-same two crossing paths satisfies the sourced Amp\`ere and Gauss equations.
-Every admissible closed two-step replacement of either path has one of four
-intermediate ports.  The two endpoint routes have zero action difference,
-while each triangular detour has clock difference $-4$ and interaction
-difference $+4$.  The same finite action is therefore stationary in both
-field slots and unchanged under every in-window closed two-step replacement
-in either path slot.  Its sources are nonzero and opposite on seams $0$ and
-$29$, and at the separately declared clock unit $\tau=3$ both crossings are
-timelike in the existing Lorentz-module metric
+The neutral-partner branch uses one finite action: two declared seam-step
+worldlines carry charges $q,-q$ and couple minimally to the same Maxwell
+window functional, with declared clock terms. Endpoint-vanishing gauge
+transformations preserve the action; its sources obey continuity, and field
+variation gives the sourced Amp\`ere and Gauss equations. At $q=1$, $h=1/2$,
+the opposite crossings of seams $0,29$ admit two distinct histories. The
+Coulomb-started history is field-stationary but fails the displayed closed
+two-step path exchanges. A second exact rational history on the window $N=1$
+is stationary in both field slots and unchanged under every admissible
+in-window closed two-step replacement of either path. This is a same-action
+existence result, not a minimum, stability or dynamical-selection theorem.
+Both crossings are
+timelike at the separately supplied clock unit $\tau=3$; setting $\tau=h$
+would make them spacelike. The paths, action, preparation and clock remain
+declared, with no laboratory calibration or continuum limit
 (\path{Lean/Screen/NeutralPairCoupledAction.lean},
-\path{Lean/Screen/NeutralPairJointStationaryWitness.lean}).  This supplies an
-exact same-instance stationary inhabitant rather than a source selection.
-The pair, charge, step, field history, action terms, clock unit, and variation
-class remain declared. No minimum, stability, or dynamic-selection theorem
-follows. In particular $\tau=3$ is independent of $h=1/2$;
-setting $\tau=h$ would make a crossing spacelike.  No laboratory-time
-calibration or continuum limit follows.
+\path{Lean/Screen/NeutralPairJointStationaryWitness.lean}). A supplied lattice
+action also has a conserved fermion current, and a separate quantum link
+satisfies abelian Gauss; both assume canonical anticommutation relations.
 
-A supplied lattice action has an invariant hybrid sector with conserved
-fermion current. A separate quantum link satisfies abelian Gauss. Physical
-action selection, state preparation and clock attachment remain unsupplied.
+\paragraph{Exchange statistics and exclusion.}
+The internal exterior algebra is not a derivation of physical Pauli exclusion.
+A supplied spin lift admits both symmetric and antisymmetric two-particle
+sectors; channel-preserving one-particle-per-channel current histories cannot
+distinguish their statistics. The gauge analysis gives a conditional exclusion theorem
+with a precise operational hypothesis \cite{ophGauge}. On a finite positive
+Hilbert space let $C(v)$ be a complex-linear creation family and
+$N_v=C(v)C(v)^\dagger$. If, for every unit mode,
+\[
+ 0\leq N_v\leq I,\qquad [N_v,C(v)]=C(v),
+\]
+then $C(v)^2=0$: in an eigenbasis of $N_v$, a nonzero entry of $C(v)$
+can only raise eigenvalue zero to one. Linearity then gives
+$\{C(v),C(w)\}=0$. Full mixed canonical anticommutation additionally follows
+if $C(v)$ and its adjoint are the exhaustive Kraus operators of a normalized
+add/remove instrument.
+
+Identifying $C(v)^\dagger$ with an unscaled Kraus operator supplies the
+contraction bound. Under
+the exact phase law, square-zero conversely makes $C(v)$ a partial isometry,
+so that bound is equivalent to exclusion within this class. Identifying the
+same native field as a normalized operation and an exact quadratic phase
+raiser therefore carries the selection burden. Finite capacity, covariance
+and stability alone do not supply it: symmetric Fock space capped at total
+occupation two preserves the supplied one-particle dynamics and exact phase
+law while permitting double occupation. Its normalized instrument rescales
+the quadratic phase generator. Thus the conditional theorem supplies an
+operator criterion; the native field/operation identification and physical
+spin--statistics attachment remain underived.
 
 \subsection{The action, and why it is stationary}
 \label{sec:action-least}

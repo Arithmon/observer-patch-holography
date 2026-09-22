@@ -11279,6 +11279,130 @@
       }
     },
     {
+      "claim_id": "OPH-SPIN-EXCHANGE-SELECTION-BOUNDARY",
+      "statement": "For any supplied finite unitary one-particle representation with central action -I and dimension at least two, both symmetric and antisymmetric tensor-square sectors are nonzero invariant representations, with central action +I. The symmetric sector contains a nonzero doubled-mode state and the antisymmetric projection of that state vanishes. Spin-lift data alone therefore do not select exclusion. On the separately supplied sector with one particle per conserved internal channel, CCR and CAR Fock models have an exact tensor-slot intertwiner for channel-preserving quadratic transport and one-body expectations. Identical deterministic classical feedback consequently produces identical densities, currents, mean Gauss residuals and classical records; the retained local charge variance also agrees. This applies to the declared abelian restriction of the fifteen-channel current packet, not to arbitrary nonabelian or Yukawa theories. A separate two-particle preparation in one internal channel uses the e_c parent Cayley coefficients 3/5 and -4i/5. Ideal output coincidence probabilities are 1 for antisymmetric particles, 49/625 for symmetric particles and 337/625 for the distinguishable control, although all three summed port one-body densities are identity after ignoring hidden control labels. Independent creation-polynomial and labelled-tensor calculations verify the 576/625 fermion-boson gap. For squared hidden-state overlap eta the gap is 576 eta/625, with exact controls at eta=0,1/4,1. Under exactly this unitary, preparation trace distance epsilon_p and coincidence-effect operator-norm error epsilon_d bound probability error by epsilon_p+epsilon_d; equal per-model errors strictly below 288/625 preserve separation. These are analytic finite theorems with exact executable controls, not source-selected statistics, authenticated detector outcomes, an A1-A3 impossibility theorem or a relativistic spin-statistics derivation. Parent quantum-link Gauss and state preparation do not transfer to the comparison.",
+      "owner_paper": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
+      "tier": "conditional_finite_spin_exchange_nonidentification_and_coincidence_comparison",
+      "assumptions": [
+        "declared_spin_exchange_comparison"
+      ],
+      "imported_results": [
+        "symmetric_and_exterior_tensor_representations",
+        "canonical_commutation_and_anticommutation_relations",
+        "two_particle_interference_and_trace_distance_effect_bound"
+      ],
+      "oph_specific_delta": "Identifies an exact statistics-identification limit of the prepared OPH current histories, then binds a two-particle comparison outside that preparation class to the same rational Cayley coefficients. The spin/exchange algebra and bunching identities are standard; the contribution is their explicit application to what the finite OPH current evidence can identify.",
+      "novelty_type": "finite_statistics_identification_boundary_with_exact_two_particle_control",
+      "evidence": [
+        "paper/tex_fragments/SPIN_EXCHANGE_SELECTION_BOUNDARY.tex",
+        "code/spin_exchange/build.py",
+        "code/spin_exchange/verify.py",
+        "code/spin_exchange/receipt.json",
+        "code/spin_exchange/test_spin_exchange.py",
+        "flagship/from_observer_consensus_to_standard_physics.tex"
+      ],
+      "falsifier": "A symmetric doubled-mode vector vanishes, the tensor-square action fails to preserve an exchange sector, a channel-preserving single-occupation bilinear lacks the claimed CCR/CAR intertwiner, matched deterministic feedback differs, or the pinned-parent Cayley coefficients, normalized coincidence probabilities, equal one-body densities or conditional probability-error bound fail independent replay. A changed statistics sign, normalization, source pin, internal-state preparation or physical-promotion flag must be rejected.",
+      "scope_if_false": "The finite spin/exchange boundary or coincidence comparison fails. The CAR current results under their supplied statistics, the gauge Lie-type theorem and physical spin-statistics remain separately assessed.",
+      "status": "exact_conditional_boundary_and_two_particle_comparison__physical_statistics_unselected",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730,
+        735
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [],
+        "open": [],
+        "boundary": [
+          "PR-47",
+          "PR-54"
+        ]
+      }
+    },
+    {
+      "claim_id": "OPH-CONDITIONAL-PAULI-SCALAR-Q-SELECTION",
+      "statement": "On a positive Hilbert representation with nonzero finite-dimensional one-particle mode space, complex-linear creation fields and their adjoints on a common dense invariant domain, suppose every unit mode obeys one common real scalar-q law aa†-q a†a=I and the exact occupation/phase relation [a†a,a†]=a†, with a normalized annihilation vacuum. These hypotheses force q in {1,-1}. Either a finite-dimensional full operator representation, or a self-adjoint lower-bounded Hamiltonian with eigenvector vacuum and one exact negative-energy creation ladder, excludes q=1. Consequently every creation field squares to zero, polarization gives full CAR, and the operators extend boundedly. This derives arbitrary-mode Pauli exclusion within the declared quantization class without assuming CAR or Grassmann fields. The supplied current edge h=kappa[[0,K],[K†,0]] has explicit negative eigenmodes; its quantum ladder relation is an additional premise, not a consequence of the one-particle matrix. The fifteen-channel census gives a neutral CAR filled sea of energy -30 kappa and a neutral CCR sequence -15 n kappa for arbitrary n. The empty reference vacuum is not the filled ground state. A three-level truncated boson retains the exact number/phase law, negative generator and bounded energy while admitting double occupation; it violates the universal scalar-q law. Fixed-number restriction, a shift by total particle number, stabilizing interactions and alternative quantization classes remain outside the implication. The theorem is spin-independent. Finite observer response space is not identified with the full physical mode-operator Hilbert space. The source selection of the quantization laws, physical matter carrier and generator is not derived; no physical spin-statistics theorem or A1-A3 impossibility result is asserted. Universal operator statements and the arbitrary-n instability are analytic, with finite exact independently replayed controls.",
+      "owner_paper": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
+      "tier": "analytic_conditional_pauli_selection_with_exact_finite_controls",
+      "assumptions": [
+        "declared_scalar_q_phase_and_finite_or_stable_representation"
+      ],
+      "imported_results": [
+        "adjoint_positivity_on_common_invariant_domain",
+        "polarization_of_sesquilinear_operator_forms",
+        "finite_trace_cyclicity",
+        "canonical_Fock_ladder_and_filled_sea_controls"
+      ],
+      "oph_specific_delta": "Composes a scalar-deformation and quadratic-generator argument with the finite observer-capacity interpretation boundary and the declared OPH signed hopping/census. It derives exclusion conditionally while exposing a stable non-Pauli countermodel that identifies the exact required quantization premise. The oscillator identities, trace obstruction and filled-sea construction are standard mathematics.",
+      "novelty_type": "conditional_exclusion_selection_in_declared_scalar_deformation_class",
+      "evidence": [
+        "paper/tex_fragments/PAULI_STABILITY_SELECTION.tex",
+        "code/pauli_stability/build.py",
+        "code/pauli_stability/verify.py",
+        "code/pauli_stability/test_pauli_stability.py",
+        "code/pauli_stability/receipt.json"
+      ],
+      "falsifier": "The scalar-q and phase identities hold with a positive normalized vacuum but q is neither sign; a finite nonzero representation satisfies exact CCR; a lower-bounded generator admits the nonzero arbitrary-n negative ladder; q=-1 under the stated hypotheses fails square-zero or polarization; the pinned hopping negative mode, census-neutral energy sequence, CAR witness or stable double-occupancy countercontrol fails independent verification; or finite samples are promoted to the universal proof.",
+      "scope_if_false": "The conditional quantization theorem or one exact control fails. The independently proved finite spin/current nonidentification and existing CAR calculations retain their respective assumptions.",
+      "status": "conditional_pauli_exclusion_derived__physical_quantization_and_spin_attachment_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730,
+        735
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [],
+        "open": [],
+        "boundary": [
+          "PR-47",
+          "PR-54"
+        ]
+      }
+    },
+    {
+      "claim_id": "OPH-CONDITIONAL-PAULI-OPERATION-SELECTION",
+      "statement": "On a finite positive Hilbert space let the complex-linear creation family C(v) have adjoints A(v), with N_v=C(v)A(v). For every unit mode assume the unscaled removal operator is a Kraus contraction and [N_v,C(v)]=C(v). The spectrum of N_v lies in [0,1], so C(v) maps only its zero eigenspace to its one eigenspace; hence C(v)^2=0 and polarization gives all creation anticommutation. This removes the scalar-q hypothesis and requires no negative-energy ladder. Under the exact phase law, square-zero conversely makes C a partial isometry, so contraction is equivalent to exclusion; the operational identification bears the full selection burden. Basis and normalized real pair directions suffice to establish creation anticommutation for a linear mode family, while separate basis-mode occupancy records do not suffice. Full mixed CAR additionally follows from an exhaustive adjoint-paired add/remove instrument. The contraction theorem alone permits a vacuum-plus-one-particle model and does not construct ordinary many-particle Fock space. Conversely symmetric Fock space truncated at total occupation two is finite, positive, globally unitary covariant and stable, preserves linear fields, exact quadratic phase and second-quantized source dynamics, yet admits double occupation and violates every scalar-q law. A normalized three-outcome instrument exists there, but its scaled Kraus quadratic effect has phase coefficient 1/4 rather than one. The actual eight-history repair-count spectrum (multiplicities 2,4,2) cannot equal a single A-dagger-A with the exact raising commutator because it would isometrically lower a four-dimensional eigenspace into a two-dimensional one. These are analytic conditional theorems with exact finite independently verified controls. The unscaled field/Kraus identification, phase normalization, common matter carrier and physical Spin attachment are not derived from OPH; no full A1-A3 countermodel or impossibility theorem is claimed.",
+      "owner_paper": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
+      "tier": "analytic_conditional_operation_exclusion_with_exact_source_controls",
+      "assumptions": [
+        "declared_unscaled_field_Kraus_and_exact_quadratic_phase_interface"
+      ],
+      "imported_results": [
+        "finite_Hilbert_spectral_theorem",
+        "quantum_instrument_Kraus_completeness",
+        "symmetric_Fock_compression_and_second_quantization",
+        "polarization_and_finite_rank_obstruction"
+      ],
+      "oph_specific_delta": "Replaces the scalar exchange premise with an operational contraction/phase interface, then isolates the missing source binding using the declared OPH hopping and actual repair-count carrier. The spectral, instrument and Fock mathematics are standard; their role here is a precise source-identification test.",
+      "novelty_type": "conditional_operation_exclusion_and_source_interface_boundary",
+      "evidence": [
+        "paper/tex_fragments/PAULI_SOURCE_SELECTION_BOUNDARY.tex",
+        "code/pauli_source_selection/build.py",
+        "code/pauli_source_selection/verify.py",
+        "code/pauli_source_selection/test_pauli_source_selection.py",
+        "code/pauli_source_selection/receipt.json",
+        "flagship/from_observer_consensus_to_standard_physics.tex"
+      ],
+      "falsifier": "A finite contraction satisfying the exact quadratic unit-phase law has nonzero square; all-mode linearity fails polarization; adjoint-paired exhaustive completeness fails mixed CAR; the capped symmetric control violates its claimed covariance, phase, source-edge lift or positivity; the three-outcome effects fail completeness or their phase rescaling is wrong; the repair-count multiplicities permit the forbidden single-mode rank map; or finite controls are promoted to universal proof or physical source realization.",
+      "scope_if_false": "The conditional operation theorem or its bounded countercontrols fail. The earlier scalar-q theorem and supplied CAR current retain their separate hypotheses.",
+      "status": "conditional_Pauli_without_scalar_q__native_field_operation_and_Spin_attachment_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        730,
+        735
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [],
+        "open": [],
+        "boundary": [
+          "PR-47",
+          "PR-54"
+        ]
+      }
+    },
+    {
       "claim_id": "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
       "statement": "The scalar-seam construction supplies primitive central ports, a complete observable twelve-dimensional response and endogenous proper local chart holonomy, a degree-one all-level spherical refinement, local instruments and an explicit full-coordinate A3 state problem with unique tracial optimizer. Under the stated typed-axiom interpretation, local chart holonomy is distinct from inter-carrier record transport. Every admitted program leaves a remote transcript independent of a private source-port intervention, even with receiver-local memory and stopping. Thus those data-access clauses do not force an intervention-preserving remote record service. Full model membership and all-level refinement are analytic arguments; exact finite response, grammar, instrument and geometry checks and Lean reductions support them but do not formalize the full axioms. This is not a countermodel for a strengthened record-transmitting overlap axiom, the canonical W12 mean source or the registered simulator.",
       "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",

@@ -10,8 +10,8 @@
   "papers": {
     "deriving_standard_model_gauge_structure_from_observer_overlap_consistency": {
       "pdf_path": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf",
-      "sha256": "d2025135b5d9cce5ad53e0472a083ca2eb51a9e4e62e544b31124e2f01b0775f",
-      "size_bytes": 687582
+      "sha256": "e87d335654a8872e6dd95f011ae601f24ac461362485cb6dd0ee4a6b0e5d9fc2",
+      "size_bytes": 728590
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
@@ -20,13 +20,13 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "b05f1edc0d991fd55933e65450c7194afc529d2de1e7e4d65bc8463e18cbc451",
-      "size_bytes": 455808
+      "sha256": "c3ffcb7452ef87922c2e97f475a875598ad25673ac510c80333a7708c656e6dc",
+      "size_bytes": 456183
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "726e26ba01a465ef3892ab66bb94d6ffdc2d8281d2655198f24a5130bdcd729f",
-      "size_bytes": 902357
+      "sha256": "fbd175a06f1eb3864cf87d3e3fd915e240b9257b71cbcfe3035071bef4101162",
+      "size_bytes": 918121
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",

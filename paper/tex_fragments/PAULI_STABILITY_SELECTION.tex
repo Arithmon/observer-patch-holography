@@ -1,0 +1,194 @@
+\subsection{Conditional exclusion from a stable generator and a scalar deformation law}
+\label{sec:pauli-stability-selection}
+
+One can select exclusion without assuming it, provided the quantization
+class and the relation between occupation and dynamics are specified.
+The following theorem permits a real scalar deformation parameter rather
+than declaring either canonical commutation or anticommutation relations.
+Its phase-generator and stability hypotheses are additional physical
+inputs; a finite spin representation alone supplies neither.
+
+\begin{theorem}[Stability selects exclusion within a scalar deformation class]
+\label{thm:pauli-stability-selection}
+Let $\mathcal K$ be a finite-dimensional complex one-particle Hilbert
+space. On a positive Hilbert space $\mathcal F$, let
+$v\mapsto a^\dagger(v)$ be complex-linear, with
+$a(v)$ its adjoint on a common dense invariant domain $\mathcal D$.
+Assume $\mathcal D$ is invariant under these operators and a self-adjoint
+Hamiltonian $H$, and is contained in their domains. Supply:
+\begin{enumerate}
+ \item a common real number $q$ such that, for every unit $v$,
+ \[
+  a(v)a^\dagger(v)-q\,a^\dagger(v)a(v)=I
+ \]
+ on $\mathcal D$;
+ \item the exact occupation/phase law, for every unit $v$,
+ \[
+  N_v=a^\dagger(v)a(v),\qquad [N_v,a^\dagger(v)]=a^\dagger(v);
+ \]
+ \item a normalized $\Omega\in\mathcal D$ with
+ $a(v)\Omega=0$ for all $v$ and $H\Omega=E_0\Omega$;
+ \item a unit mode $v_-$ and $\kappa>0$ such that
+ \[
+  [H,a^\dagger(v_-)]=-\kappa a^\dagger(v_-)
+ \]
+ on $\mathcal D$, and a finite uniform lower bound for $H$.
+\end{enumerate}
+Then $q=-1$, and on $\mathcal D$,
+\[
+ \{a(v),a^\dagger(w)\}=\langle v,w\rangle I,
+ \qquad \{a^\dagger(v),a^\dagger(w)\}=0,
+ \qquad \{a(v),a(w)\}=0.
+\]
+Here the inner product is conjugate-linear in its first argument. In
+particular $(a^\dagger(v))^2=0$ for every mode $v$. The operators extend
+boundedly to $\mathcal F$, where the same relations hold.
+The reference vacuum $\Omega$ is not assumed to be a ground state.
+\end{theorem}
+\begin{proof}
+Fix a unit mode, abbreviate its operators to $a,a^\dagger,N$, and work
+throughout on the common invariant domain. The deformation law gives
+\[
+ Na^\dagger=a^\dagger+q\,a^\dagger N.
+\]
+Comparison with the occupation/phase law yields
+$(q-1)a^\dagger N=0$. The vector $|1\rangle=a^\dagger\Omega$
+has norm one and $N|1\rangle=|1\rangle$. If $q\ne1$, it follows that
+$a^\dagger|1\rangle=0$. Taking its squared norm using the deformation
+law gives $0=1+q$. Thus $q$ is either $1$ or $-1$.
+
+If $q=1$, induction using $aa^\dagger=I+a^\dagger a$ gives
+\[
+ |n\rangle=(a^\dagger)^n\Omega,\qquad
+ \|\,|n\rangle\|^2=n!,\qquad N|n\rangle=n|n\rangle
+\]
+for every integer $n\geq0$. Apply this to $v_-$. The Hamiltonian
+commutator and the vacuum eigenvalue imply
+$H|n\rangle=(E_0-n\kappa)|n\rangle$. All these vectors are nonzero
+and belong to $\mathcal D$, contradicting the lower bound. This is an
+arbitrary-$n$ argument, not a finite occupation scan. Hence $q=-1$.
+
+For any unit mode, the phase identity then gives $a^\dagger N=0$,
+whereas the deformation law gives $Na^\dagger=a^\dagger$. Consequently
+\[
+ 0=a^\dagger Na^\dagger=(a^\dagger)^2.
+\]
+Linearity and scaling extend this square-zero identity to every $v$,
+including $v=0$. Expanding it at $v+w$ proves creation
+anticommutation, and taking adjoints on the dense invariant domain proves
+annihilation anticommutation. The diagonal relation is
+$\{a(v),a^\dagger(v)\}=\|v\|^2I$ for every $v$. Polarization at
+$v+w$ and $v+iw$ gives the mixed relation. Finally, for
+$\psi\in\mathcal D$,
+\[
+ \|a(v)\psi\|^2+\|a^\dagger(v)\psi\|^2
+   =\|v\|^2\|\psi\|^2.
+\]
+Both operators therefore have bounded extensions, and density extends
+their identities to all of $\mathcal F$.
+\end{proof}
+
+\begin{corollary}[Finite-dimensional alternative to the stability hypothesis]
+\label{cor:pauli-finite-capacity-selection}
+Retain the theorem's common scalar deformation law, linear mode fields,
+exact occupation/phase law and normalized annihilation vacuum, with
+$\mathcal K\ne\{0\}$. If $\mathcal F$ itself is nonzero and
+finite-dimensional, the same exclusion
+and CAR conclusions hold without assuming a Hamiltonian or a negative
+ladder.
+\end{corollary}
+\begin{proof}
+A dense linear domain in finite dimension is the whole space. The
+vacuum argument gives $q\in\{1,-1\}$. If $q=1$, the trace of
+$aa^\dagger-a^\dagger a=I$ is both zero and
+$\dim\mathcal F>0$, a contradiction. The square-zero and polarization
+arguments for $q=-1$ require no Hamiltonian.
+\end{proof}
+
+This alternative requires finite dimension of the Hilbert space carrying
+the full creation and annihilation algebra. A finite one-particle mode
+space alone is insufficient.
+A finite observer response space does not by itself identify that
+operator representation with physical matter. Applying the corollary to
+observer finite capacity requires precisely this additional identification,
+as well as the stated deformation and phase laws.
+
+The negative-mode hypothesis has a concrete one-particle instance in the
+supplied finite matter hopping action. For a unitary spin-link matrix $K$
+and $\kappa>0$, its edge matrix is
+\[
+ h_e=\kappa\begin{pmatrix}0&K\\K^\dagger&0\end{pmatrix},
+ \qquad h_e^2=\kappa^2I.
+\]
+For any unit spin vector $\chi$, the vector
+$v_-=(-K\chi,\chi)/\sqrt2$ is normalized and satisfies
+$h_ev_-=-\kappa v_-$. The quantum dynamical law
+$[H,a^\dagger(v)]=a^\dagger(h_ev)$ would therefore supply the
+required ladder. This law is a hypothesis linking the one-particle
+action to its quantization. A one-particle matrix, a measured unitary
+step, or the existence of a spin lift does not establish that law.
+
+There is a finite nonvacuity witness. In ordinary fermionic Fock space
+over the edge modes, take the empty vacuum and
+$H=d\Gamma(h_e)$ with its normal ordering fixed at that vacuum.
+The negative-energy modes can each be occupied once, and the ground
+energy is the sum of all negative one-particle eigenvalues. Filling those
+modes gives the ground state; particles in positive modes and holes in
+filled negative modes both have excitation energy $\kappa$.
+For the two-spin edge with fifteen internal channels of the supplied
+matter census, there are thirty negative modes. Its ground energy is
+$-30\kappa$. With
+\[
+ (d_s)=(6,3,3,2,1),\qquad (q_s)=(1,-4,2,-3,6),
+ \qquad \sum_s d_sq_s=0,
+\]
+the filled ground state has total hypercharge zero. Subtracting its
+constant energy gives a positive excitation Hamiltonian and preserves
+the field commutator. The reference empty vacuum and the filled ground
+state are different vectors.
+
+For comparison, canonical bosonic Fock space on the same fixed edge
+action admits occupation $n$ in one negative mode of every internal
+channel. These states have total hypercharge zero and energy
+$-15n\kappa$. Thus even the globally neutral sector has no uniform
+lower bound. Adding a chemical potential proportional to total
+hypercharge cannot repair this sequence. This neutrality statement does
+not impose local quantum Gauss constraints or nonabelian singlet
+constraints, and is not a claim about a gauge-invariant physical Hilbert
+space.
+
+The hypotheses exclude several concrete alternatives. At fixed total
+particle number the bosonic Hamiltonian is bounded below, so stability
+across all occupation sectors is essential. Replacing the one-particle
+law by $h_e+cI$ with $c\geq\kappa$ stabilizes its full bosonic Fock
+Hamiltonian: its second-quantized change is $cN_{\rm total}$, not a
+constant vacuum-energy subtraction. Positive number interactions can
+also bound the energy, while changing the negative ladder. Neither
+change is ruled out by the theorem. A positive spectral replacement
+such as $|h_e|$ likewise changes the supplied dynamics.
+
+Even the phase law and stability together do not force exclusion.
+On a three-dimensional Hilbert space with basis $|0\rangle,|1\rangle,
+|2\rangle$, set
+\[
+ a^\dagger|0\rangle=|1\rangle,\qquad
+ a^\dagger|1\rangle=\sqrt2|2\rangle,\qquad
+ a^\dagger|2\rangle=0.
+\]
+Then $N=a^\dagger a=\operatorname{diag}(0,1,2)$ satisfies
+$[N,a^\dagger]=a^\dagger$, and $H=-\kappa N$ is bounded below,
+but $(a^\dagger)^2|0\rangle\ne0$. This model violates the scalar
+deformation hypothesis: $aa^\dagger=\operatorname{diag}(1,2,0)$,
+whose middle entry requires $q=1$ while the top entry then contradicts
+$aa^\dagger-qN=I$. A hard occupation cutoff or a more general exchange
+algebra is therefore a genuine alternative outside the stated class.
+
+The theorem is a conditional Pauli-exclusion derivation within a specified
+quantization class. It is insensitive to spin, so it cannot attach
+half-integer spin to fermionic statistics or exclude a different
+quantization class for a different field. The common scalar deformation
+law, linear field structure, exact occupation/phase law, unrestricted
+ladder domain and stable physical generator remain supplied. The finite
+filled-sea construction supplies no continuum vacuum or relativistic
+locality theorem. Deriving these inputs and selecting the physical
+matter action from observer consistency remain separate requirements.

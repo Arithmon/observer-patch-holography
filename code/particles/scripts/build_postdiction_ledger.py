@@ -1393,6 +1393,75 @@ def _source_scalar_time_refinement_control(receipt_path: Path | None = None) -> 
     }
 
 
+def _pauli_structure_rows() -> list[dict[str, Any]]:
+    """Keep conditional exclusion and its countercontrols out of empirical counts."""
+    specifications = (
+        ("spin_exchange", "spin_exchange_selection_boundary",
+         "SPIN_EXCHANGE_SELECTION_BOUNDARY.tex",
+         "A supplied spin lift and conserved single-occupation current histories do not "
+         "select exchange statistics. A separate same-channel two-particle comparison "
+         "has exact coincidence probabilities 1, 49/625 and 337/625 for the declared "
+         "fermionic, bosonic and distinguishable preparations.",
+         "conditional statistics-identification boundary and exact finite comparison",
+         "The same full internal state, preparation, ideal detector and error budgets "
+         "are supplied. There are no native or laboratory outcomes; operator Gauss "
+         "of the one-particle parent does not transfer to this new preparation."),
+        ("pauli_stability", "conditional_pauli_scalar_q_selection",
+         "PAULI_STABILITY_SELECTION.tex",
+         "A common real scalar-q creation law and exact quadratic occupation/phase "
+         "law force q in {1,-1}. Finite full representation dimension, or a stable "
+         "fixed negative-energy ladder, excludes q=1 and yields Pauli exclusion "
+         "and full canonical anticommutation by polarization.",
+         "analytic conditional exclusion with independently checked finite controls",
+         "The quantization class, unit phase law and finite full representation or "
+         "stable quantum ladder are declared. The source response Hilbert space is "
+         "not identified with the full matter representation. The theorem is spin "
+         "independent; truncated bosons and other classes remain outside its premise."),
+        ("pauli_source_selection", "conditional_pauli_operation_selection",
+         "PAULI_SOURCE_SELECTION_BOUNDARY.tex",
+         "On a finite positive Hilbert space, an unscaled contraction creation field "
+         "with its exact quadratic unit-phase law squares to zero. Linearity gives "
+         "creation anticommutation without a scalar-q premise. An exhaustive adjoint "
+         "add/remove instrument additionally yields full CAR. A covariant symmetric "
+         "Fock space capped at total occupation two preserves the supplied one-particle "
+         "source dynamics and exact phase law but permits double occupation. Making "
+         "its fields into Kraus contractions rescales the quadratic phase law.",
+         "analytic conditional operation theorem and exact source-bound countercontrols",
+         "Under the exact phase law contraction is equivalent to exclusion. "
+         "The field/Kraus identification and exact unit normalization are supplied, "
+         "not source-derived. General normalized instruments can have an idle outcome "
+         "and do not force these hypotheses. The finite countercontrol is not a full "
+         "A1-A3 model or impossibility theorem. Physical Spin, native operation and "
+         "matter attachment remain unproved."),
+    )
+    rows = []
+    for package, identifier, fragment, statement, match, boundary in specifications:
+        packet, summary, pin = _structural_packet(package, "verify.py", "receipt.json")
+        if summary.get("verified") is not True:
+            raise SystemExit(package + " independent verification failed")
+        scope = packet["scope"]
+        if scope.get("physical_spin_statistics_theorem") is not False:
+            raise SystemExit(package + " must retain its physical spin-statistics boundary")
+        if package == "pauli_stability" and summary.get("source_premises_derived") is not False:
+            raise SystemExit("Pauli selector cannot promote declared source premises")
+        if package == "pauli_source_selection" and summary.get("source_premises_derived") is not False:
+            raise SystemExit("operation selector cannot promote its field/Kraus identification")
+        rows.append({
+            "id": identifier, "statement": statement,
+            "observed_counterpart": "Pauli exclusion (target only; no physical comparison)",
+            "match": match, "observed_postdiction": False,
+            "source_selected_statistics": False, "physical_spin_statistics_theorem": False,
+            "artifact_refs": ["paper/tex_fragments/" + fragment,
+                              "code/" + package + "/receipt.json",
+                              "code/" + package + "/verify.py"],
+            "receipt_pin": pin, "independent_verifier_result": summary,
+            "hypothesis_boundary": boundary,
+            "proof_kind": "analytic_operator_proof_with_finite_executable_controls",
+            "paper_ref": "Standard Model gauge paper, exchange and exclusion sections",
+        })
+    return rows
+
+
 def _fermion_source_current_control() -> dict[str, Any]:
     controls = {}
     for key, verifier, receipt in (
@@ -6742,6 +6811,7 @@ def build(
     sections["forced_structure"].extend(_whitney_dynamics_rows())
     sections["forced_structure"].extend(_whitney_coupled_rows())
     sections["forced_structure"].extend(_whitney_completion_rows())
+    sections["forced_structure"].extend(_pauli_structure_rows())
     result = {
         "artifact": "oph_postdiction_ledger",
         "generator": "code/particles/scripts/build_postdiction_ledger.py",
