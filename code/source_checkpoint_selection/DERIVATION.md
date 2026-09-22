@@ -1,16 +1,16 @@
 # Native checkpoint selection and the shortest two-record pipeline
 
-The temporal-recovery work proved how to recognize readable records and
-how to preserve their future recoverability. Its probabilistic progress
-result still took a full IID proposal law as a premise. This work derives
-an actual finite schedule distribution from an explicit checkpoint problem
-and then classifies its shortest histories on a whole path family.
+Temporal recovery identifies readable records and conditions that preserve
+their recoverability. Its probabilistic progress theorem assumes a full
+IID proposal law. Finite checkpoint selection instead derives a schedule
+distribution from an explicit publication constraint and classifies its
+shortest histories on a path family.
 
 The result is a mathematical selection theorem for the declared scalar
 interface. It does not prove that canonical A1 supplies this public record
 map, deadline, complete move grammar, reference or entropy cover. In
 particular, imposing successful publication changes the feasible set used
-by the previous unrestricted-proposal experiment.
+by the unrestricted-proposal experiment.
 
 ## Record grammar and continuation
 
@@ -135,7 +135,7 @@ an argument from one favorable payload. Extra edges, relay preparations or
 side channels change the interface and do not inherit this bound.
 
 **Necessity of the precedence constraints at equality.** Every crossing
-budget is now saturated. The first crossings F_i must move outward in
+budget is saturated. The first crossings F_i must move outward in
 order: if F_i preceded F_(i-1), it would average two zero deviations and
 leave only one effective crossing of that cut. S_0 must follow F_1 when
 d>1; otherwise averaging ports 0 and 1 erases their independent difference
@@ -172,7 +172,7 @@ minimal native histories satisfy the cut constraints.
 time-homogeneous edge weights a_i, every shortest successful word has the
 same reference numerator a_0 product_(i=1..d-1) a_i^2. Consequently the
 unique selected law is uniform over these Catalan histories for *every*
-reference in that class. The grammar and deadline are still supplied; no
+reference in that class. The grammar and deadline are supplied; no
 invariance argument is used to choose an arbitrary full A3 reference.
 At a longer deadline the multiplicities vary and this cancellation need
 not hold. The tilted-reference controls demonstrate that boundary.
@@ -225,13 +225,13 @@ tower requires an additional compatibility theorem for the *actual*
 checkpoint/reference family; simply invoking A3 again at each horizon is
 invalid. The same issue is visible on the smaller chain: its five-mean law
 starts on edge 1, while the six-mean law starts on edges 1 and 2 with
-probabilities 19/21 and 2/21. Choosing locally uniformly among still-feasible
+probabilities 19/21 and 2/21. Choosing locally uniformly among feasible
 moves therefore fails to implement the global optimizer.
 
-## What this closes, and what still selects M1
+## Scope and source-selection hypotheses
 
 Within the specified scalar record interface, successful native scheduling
-is no longer a supplied word or an IID occurrence assumption. Its complete
+is derived without a supplied word or an IID occurrence assumption. Its complete
 finite grammar, nonempty feasible domain, unique optimizer, causal policy,
 sharp shortest two-record order and exact costs have explicit derivations.
 The path result covers every length and every positive stationary
@@ -239,14 +239,14 @@ edge-product reference at the minimal deadline, beyond a small simulation.
 
 It does not select which operational records must be public. A1's
 availability of checkpoint interfaces does not entail mandatory publication
-of these two records by this deadline. A2 tests naturality on an already
+of these two records by this deadline. A2 tests naturality on a
 typed accepted domain; it does not choose that domain. Canonical A3 fixes a
 state in its actual supplied feasible space and does not authorize adding
 this terminal constraint. Nor does the isolated path grammar instantiate
 the faithful complete port-response map D, endogenous A2 transports, the
 full constraint grammar, or an actual source-selected entropy cover.
 
-M1 still needs source selection of the public record population and metric
+M1 requires source selection of the public record population and metric
 menu (including L/sqrt(q)), compatible geometric/refinement identification,
 and the link between native computation and the required immutable-version
 semantic order. Physical controller, precision, storage and length

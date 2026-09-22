@@ -80,7 +80,7 @@ attempt-word enumerations are regenerated from commitments.
 Continuation verifiers additionally reject unsupported/repeated paths,
 uncalibrated relays, remote samples, missing ports, forged tree commitments,
 altered receiver samples, incorrect work and promotion of topology evidence
-to payload replay. Every new theorem is included in the transitive gate.
+to payload replay. Every theorem in this package is included in the transitive gate.
 Guard tests reject an admitted erasing move, future-sample publication,
 deleted rejections, forged response rows and omitted rejected-proposal costs.
 Certificate helpers reject ragged matrices and inexact or boolean entries.

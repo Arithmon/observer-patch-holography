@@ -95,7 +95,7 @@ physical sampling instrument are not silently counted as scalar means.
 
 The earlier source path-tomography result supplies a recursive inverse of
 one sweep with known relay values. `SourceTemporalTomography.native_endpoint`
-now proves that this abstract sweep is exactly the coordinate readout of
+proves that this abstract sweep is exactly the coordinate readout of
 the actual pair-mean word on any simple path. Its inverse receives the
 destination sample and the previously calibrated relay values; the remote
 source value is reconstructed, not passed to the decoder.
@@ -153,7 +153,7 @@ Let L be a retained prefix record and M its current complete physical state
 response. A meaning remains recoverable exactly when equal (L,M) data imply
 equal meanings. Necessity follows because no common deterministic future
 can distinguish equal current states with equal past records. Sufficiency
-now has a native construction: execute the connected completion protocol,
+has a native construction: execute the connected completion protocol,
 recover Mx from receiver samples, and interpret f from (Lx,Mx).
 
 For linear preparations and meanings the exact condition is
@@ -174,7 +174,7 @@ kernel-checked `selected_native_completion_iff`: the constructed protocol
 recovers f with certainty under the selected law exactly when every history
 admitted by any feasible law passes the joint-span test.
 
-The word census now separates current publication, pending but recoverable
+The word census separates current publication, pending but recoverable
 records, and permanent loss. After one chain event, one of the three words
 has already erased either individual record, while the other two preserve
 them for completion; none yet delivers either to the receiver. Their sum
@@ -298,7 +298,7 @@ unobserved coordinates one at a time: each replacement is inessential and
 leaves f unchanged. `SourceTemporalEssential` proves both directions and
 the unique minimal set. It does not assume that a finite list of examples
 exhausts the meanings, and it does not apply unchanged to correlated
-admissible preparations. The source's interpretation map still supplies f.
+admissible preparations. The source's interpretation map supplies f.
 
 Aggregate access has a different implication. Observing x_0+x_1 permits
 that sum to be published while neither x_0 nor x_1 is identifiable. Native
@@ -343,9 +343,8 @@ support, while its readout, record domain and continuation interfaces must
 be instantiated. A2 naturality preserves an actual interpretation; it does
 not choose an interpretation from every function of the records. A3 needs
 the actual observable grammar, cover and faithful reference before a policy
-can be read from its optimizer. The present result removes a finite
-native-recovery and temporal-feasibility gap; it does not replace these
-source-selection duties with the existence of a compiler. The full A1
+can be read from its optimizer. The finite native-recovery and temporal-feasibility theorems do not derive
+these source-selection inputs from the existence of a compiler. The full A1
 response/endogeneity receipts are themselves explicitly distinguished from
 the released architectural fixtures in `docs/AXIOM_REFERENCE.md`.
 

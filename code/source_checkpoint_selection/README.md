@@ -4,7 +4,7 @@ This package derives a finite record-publication schedule from native
 observation constraints and an explicit information-projection problem.
 It extends [temporal recovery](../source_temporal_acceptance/README.md).
 
-The main new path result is analytic: with two independent unknown records
+The path classification is analytic: with two independent unknown records
 at ports 0 and 1 of a calibrated path 0--...--d, publishing both at d needs
 exactly **2d-1 means**. The shortest histories form a two-wave precedence
 order with **Catalan(d-1)** linear extensions. Every positive stationary
@@ -25,7 +25,7 @@ histories through depth ten are independently replayed.
 The reference, complete *chosen* move grammar, public record domain,
 deadline and full-history entropy cover are explicit inputs. Source
 selection of those inputs, M1's metric radius, physical precision/control,
-immutable-version semantic order and geometric identification remain open.
+immutable-version semantic order and geometric identification are outside the theorem.
 Optimizers for independently chosen deadlines need not be compatible.
 
 See [CONTRACT.md](CONTRACT.md) for Objective, Deliverables and Exit, and

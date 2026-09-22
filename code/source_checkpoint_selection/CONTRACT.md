@@ -53,7 +53,7 @@ successful route, a supplied optimizer, or an unexplained acceptance label.
 
 ## Exit
 
-All new Lean theorems pass the transitive standard-axiom gate. The producer
+All Lean theorems in this package pass the transitive standard-axiom gate. The producer
 and verifier use independent continuation algorithms: memoized response
 states versus exhaustive integer-scaled scalar experiments and determinant
 tests. Compact controls carry full source pins and a recomputable complete
@@ -78,7 +78,7 @@ not be decidable. The executable policy computes it by exact elimination
 for the stated rational linear response and record maps.
 The checkpoint requirement changes the feasible set from the prior IID
 proposal experiment. It is not claimed to follow from canonical A1--A3.
-No failed physical run is erased: the new law is implemented by continuation
+No failed physical run is erased: the selected law is implemented by continuation
 weights before each mean, and every selected word's full horizon is charged.
 Host planning, exact arithmetic, randomness, sampling and record storage
 are explicit implementation interfaces; their physical costs are not known.
