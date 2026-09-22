@@ -40,5 +40,15 @@ papers. Each package states its own replay and claim boundary.
   standard-library verifier that replays their recorded verdict logic. Their
   upstream raw arrays are not included.
 
+- [`federation_recovery/`](federation_recovery/) tests how much a bounded
+  self-reading federation can infer from its authenticated public event rows
+  alone: the decoder reconstructs the observed population, routes, consumed
+  writers and the finite logical ancestry relation under explicit resource
+  limits, and cannot read the generating support or population specification.
+- [`support_wiring_776/`](support_wiring_776/) pairs the support-wiring
+  provenance readout with the record-metric route. Its receipt carries both
+  routes and their controls, and its byte-exact mirror sits in the
+  causal-poset package.
+
 Evidence directories are not interchangeable. A carrier count shared by two
 packages does not make one run evidence for the observable tested by another.

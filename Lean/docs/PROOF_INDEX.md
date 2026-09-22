@@ -1637,7 +1637,7 @@ math-seat audit (2026-05-19): previous "3+2" undercounted by ≈3×.
 > `EventAlgebra` library (`fluxPartition`,
 > `collarReindex_EfluxL_eq_compressed_pinching`,
 > `EfluxL_absorbs_pinching`): `EfluxL` is the blockwise normalised-trace
-> compression of `pinchingExpectation` : strictly finer than any pinching,
+> compression of `partitionPinching` : strictly finer than any pinching,
 > hence retained rather than replaced. All 41 audited declarations pin at
 > `[propext, Classical.choice, Quot.sound]`; none bear on the
 > Prop 4.2 / Def 4.1 counts.
@@ -1825,7 +1825,7 @@ identity `chsh_mul_self` even avoids `Classical.choice`).
 
 Definitions: `IsEvent` (Hermitian idempotent), `IsState` (PSD, trace one),
 `bornWeight` (`Tr(ρ P)`), `luedersUpdate`, `certainStates`,
-`CenterPartition`, `centerExpectation`, `expectation`.
+`ProjectivePartition`, `partitionPinching`, `partitionAverage`, `commutant`.
 
 `Basic.lean` : events and Born weights (25 lemmas):
 

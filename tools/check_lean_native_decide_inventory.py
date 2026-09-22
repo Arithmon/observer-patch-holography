@@ -22,7 +22,50 @@ EXPECTED = Counter(
     }
 )
 
-NATIVE_LINE_RE = re.compile(r"^\s*native_decide\s*$", re.MULTILINE)
+NATIVE_TOKEN_RE = re.compile(r"\bnative_decide\b")
+
+
+def code_view(text: str) -> str:
+    """Lean source with block comments, line comments and string literals blanked.
+
+    Block comments nest. Blanking keeps every other byte in place, so a match
+    inside a tactic block, a term-mode ``(by native_decide)`` or a one-line
+    ``exact`` counts, while prose that merely names the tactic does not.
+    """
+
+    out: list[str] = []
+    i = 0
+    depth = 0
+    n = len(text)
+    while i < n:
+        two = text[i : i + 2]
+        if depth:
+            if two == "/-":
+                depth += 1
+                i += 2
+            elif two == "-/":
+                depth -= 1
+                i += 2
+            else:
+                i += 1
+            continue
+        if two == "/-":
+            depth = 1
+            i += 2
+            continue
+        if two == "--":
+            end = text.find("\n", i)
+            i = n if end < 0 else end
+            continue
+        if text[i] == '"':
+            j = i + 1
+            while j < n and text[j] != '"':
+                j += 2 if text[j] == "\\" else 1
+            i = min(j + 1, n)
+            continue
+        out.append(text[i])
+        i += 1
+    return "".join(out)
 
 
 def inventory() -> Counter[str]:
@@ -30,7 +73,7 @@ def inventory() -> Counter[str]:
     for path in sorted(LEAN_ROOT.rglob("*.lean")):
         if any(part.startswith(".") for part in path.relative_to(LEAN_ROOT).parts):
             continue
-        count = len(NATIVE_LINE_RE.findall(path.read_text(encoding="utf-8")))
+        count = len(NATIVE_TOKEN_RE.findall(code_view(path.read_text(encoding="utf-8"))))
         if count:
             found[str(path.relative_to(LEAN_ROOT))] = count
     return found

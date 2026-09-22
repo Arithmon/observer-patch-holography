@@ -144,6 +144,7 @@ jobs:
             "Geometry.SourcePublicationAxiomAudit"
             "Geometry.SourceOperationReadsAxiomAudit"
             "Geometry.SourceCountLimitAxiomAudit"
+            "Geometry.SourceRoutingRefinementAxiomAudit"
             "ObserverPatchHolography.EinsteinBranch.AxiomAudit"
             "A5PrimitivePortPrediction"
             "Geometry.SourcePassiveMemoryAxiomAudit"
@@ -457,11 +458,11 @@ jobs:
           timeout 23m lake build GoldenSectorPSL2F5Representations 2>&1 | tee golden-psl-build.log || status=$?
           echo "status=$status" >> "$GITHUB_OUTPUT"
           if [ "$status" -ne 0 ]; then
-            echo "::warning::Golden-sector PSL2F5 bridge stopped with exit $status (124 = time budget reached); progress is cached for the next run"
+            echo "::warning::Golden-sector PSL2F5 bridge stopped with exit $status (124 = time budget reached, progress cached for the next run; any other exit saves no cache)"
           fi
 
       - name: Save Golden-sector build cache
-        if: steps.changes.outputs.required == 'true' && (steps.golden_build.outcome == 'success' || steps.golden_build.outputs.timed_out == 'true')
+        if: steps.changes.outputs.required == 'true' && (steps.golden_build.outputs.status == '0' || steps.golden_build.outputs.status == '124')
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: Lean/.lake/build
@@ -591,11 +592,11 @@ jobs:
           timeout 23m lake build OphGap 2>&1 | tee ophgap-build.log || status=$?
           echo "status=$status" >> "$GITHUB_OUTPUT"
           if [ "$status" -ne 0 ]; then
-            echo "::warning::OphGap stopped with exit $status (124 = time budget reached); progress is cached for the next run"
+            echo "::warning::OphGap stopped with exit $status (124 = time budget reached, progress cached for the next run; any other exit saves no cache)"
           fi
 
       - name: Save OphGap build cache
-        if: steps.changes.outputs.required == 'true' && (steps.ophgap_build.outcome == 'success' || steps.ophgap_build.outputs.timed_out == 'true')
+        if: steps.changes.outputs.required == 'true' && (steps.ophgap_build.outputs.status == '0' || steps.ophgap_build.outputs.status == '124')
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |

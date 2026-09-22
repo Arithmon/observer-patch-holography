@@ -10,5 +10,6 @@ ledgers carries its own provenance row.
 Two properties follow from how the snapshot was exported. Several values (tau,
 Z, top, Higgs) carry the PDG API's floating-point serialization, with more
 digits than the published numerals. The electron row is the CODATA 2022 value
-rather than the PDG average, and the files do not label it. The upstream PDG
+rather than the PDG average, and the files do not label it; the PDG 2026
+listing carries the same numerals, 0.51099895069(16) MeV. The upstream PDG
 edition was not recorded at export time.

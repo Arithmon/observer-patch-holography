@@ -345,7 +345,7 @@ def _write_claim_fixture(root: Path) -> Path:
         "claim_id,mathematical_falsifier,physical_identification_falsifier,"
         "phenomenological_falsifier,scope_if_false\n"
         "OPH-FIXTURE-GATE,premise fails,not applicable,not applicable,"
-        "fixture only\n",
+        "This fixture only.\n",
         encoding="utf-8",
     )
     _write_json(
@@ -531,6 +531,23 @@ def test_claim_gate_rejects_gate_side_channel_keys(tmp_path: Path) -> None:
     assert "side-channel keys ['github_gates']" in _combined(mutant)
 
 
+def test_claim_gate_rejects_scope_drift_from_registry(tmp_path: Path) -> None:
+    root = tmp_path / "claims"
+    _write_claim_fixture(root)
+    path = root / "claims/falsification_matrix.csv"
+    path.write_text(
+        path.read_text(encoding="utf-8").replace(
+            "This fixture only.", "a paraphrase of the scope"
+        ),
+        encoding="utf-8",
+    )
+    mutant = _run(str(CLAIM_CHECKER), str(root))
+    assert mutant.returncode != 0
+    assert "scope_if_false differs from the claim registry for ['OPH-FIXTURE-GATE']" in (
+        _combined(mutant)
+    )
+
+
 def test_claim_gate_rejects_novelty_type_drift_from_registry(tmp_path: Path) -> None:
     root = tmp_path / "claims"
     _write_claim_fixture(root)
@@ -571,6 +588,13 @@ def test_claim_matrix_csv_structure_is_checked_before_field_use(
         headers, body = list(csv.reader(handle))
     # Commas, escaped quotes, and multiline cells are legitimate scientific text.
     body[-1] += ', including "quoted" detail\nand a second line'
+    if matrix == "falsification_matrix.csv":
+        # scope_if_false must equal the registry text, so the registry carries
+        # the same scientific text and only the CSV structure is under test.
+        registry_path = root / "claims" / "claim_registry.yaml"
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+        registry["claims"][0]["scope_if_false"] = body[-1]
+        _write_json(registry_path, registry)
     if mutation == "overflow":
         body.append("silently discarded scope")
     elif mutation == "missing":

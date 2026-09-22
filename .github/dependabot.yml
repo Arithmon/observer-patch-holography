@@ -1,8 +1,13 @@
-# Keeps the commit-SHA pins on third-party Actions current. Each update
-# arrives as a pull request that changes the SHA and its version comment.
+# Keeps the commit-SHA pins on third-party Actions and the version pins in
+# requirements.txt current. Each update arrives as a pull request that
+# changes one pin and its version comment.
 version: 2
 updates:
   - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+  - package-ecosystem: pip
     directory: /
     schedule:
       interval: monthly

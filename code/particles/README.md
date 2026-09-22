@@ -45,8 +45,6 @@ sheets, and numerical freezes remain separate producers.
 - [neutrino](neutrino)
 - [hadron](hadron)
 - [qcd](qcd)
-- [jwst](jwst)
-- [fractional](fractional)
 - [uhe](uhe)
 - [compact_transients](compact_transients)
 - [hierarchy](hierarchy)

@@ -427,8 +427,10 @@ theorem choiMatrix_apply (Φ : CMat n →ₗ[ℂ] CMat n) (p q : Fin n × Fin n)
     choiMatrix Φ p q = Φ (EventAlgebra.matrixUnit p.1 q.1) p.2 q.2 := by
   rw [choiMatrix, amplify_apply, blockOf_maxEntangled]
 
-/-- **Choi direction of Choi's theorem.** Complete positivity forces the
-Choi matrix to be positive semidefinite. -/
+/-- **Forward direction of Choi's theorem.** Complete positivity forces the
+Choi matrix to be positive semidefinite. The converse, that a positive
+semidefinite Choi matrix yields a completely positive map with a Kraus form,
+is not part of this module. -/
 theorem choiMatrix_posSemidef {Φ : CMat n →ₗ[ℂ] CMat n}
     (hΦ : IsCompletelyPositive Φ) : (choiMatrix Φ).PosSemidef :=
   hΦ n (maxEntangled n) (maxEntangled_posSemidef n)

@@ -15,6 +15,22 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RECEIPT_ROOTS = (
     ROOT / "code" / "particles" / "runs",
     ROOT / "claims",
+    ROOT / "evidence",
+)
+# Attested bytes that carry a developer-home path and cannot be rewritten: the
+# anchored FZ-01 registry records where its pinned tracker section lived on the
+# author's machine at freeze time, and its sha256 is fixed by the 2026-07-17
+# OpenTimestamps attestation. The pinned bytes are vendored beside it as
+# tracker_section8_pinned_text.md, and PROVENANCE.md in that directory records
+# the repository reference. Each entry is (repo-relative path, JSON pointer).
+ATTESTED_PATH_ALLOWLIST: frozenset[tuple[str, str]] = frozenset(
+    {
+        (
+            "evidence/custody/falsification/frozen_targets/fz01_2026-07-17/"
+            "fz01_freeze_registry_2026-07-17.json",
+            "/pinned_source/file",
+        ),
+    }
 )
 DEVELOPER_HOME_PATTERNS = (
     re.compile(r"/Users/[^/]+/"),
@@ -66,7 +82,13 @@ def find_violations(paths: Iterable[Path]) -> list[PortabilityViolation]:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
             raise ValueError(f"invalid JSON receipt {path}: {exc}") from exc
+        try:
+            rel = path.resolve().relative_to(ROOT).as_posix()
+        except ValueError:
+            rel = path.as_posix()
         for pointer, value in _walk(payload):
+            if (rel, pointer) in ATTESTED_PATH_ALLOWLIST:
+                continue
             if _is_developer_home_path(value):
                 violations.append(PortabilityViolation(path, pointer, value))
     return violations
@@ -99,7 +121,7 @@ def main() -> int:
         "paths",
         nargs="*",
         type=Path,
-        help="optional receipt files/directories (defaults to particle runs and claims)",
+        help="optional receipt files/directories (defaults to particle runs, claims and evidence)",
     )
     args = parser.parse_args()
     roots = tuple(path.resolve() for path in args.paths) or DEFAULT_RECEIPT_ROOTS

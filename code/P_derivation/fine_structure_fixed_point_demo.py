@@ -14,7 +14,7 @@ FIVE = Decimal(5)  # Represent the discriminant of x^2 - x - 1 = 0.
 PI = Decimal("3.14159265358979323846264338327950288419716939937510582097494459230781640628620899")  # Provide pi for the Gaussian boundary wave width.
 SOURCE_ANCHOR_INV_ALPHA_MZ = Decimal("128.30796547328624820996110874175671618724547618036535646005342169635117784168285644")  # Use the OPH source-chain electroweak anchor a0(P*).
 LEPTON_TRANSPORT_DELTA_INV_ALPHA = Decimal("4.3093978664522040271317438975344894018487156605576773194711528089665680313257906466129")  # Use the OPH exact one-loop charged-lepton transport packet.
-PDG_DELTA_ALPHA_HAD_5_MZ = Decimal("0.02761")  # Use the PDG 2024 electroweak-review hadronic running row by Erler and Ferro-Hernandez.
+PDG_DELTA_ALPHA_HAD_5_MZ = Decimal("0.02761")  # Declared input: the hadronic vacuum-polarization row Delta alpha_had^(5)(M_Z) = 0.02761 of the PDG electroweak review by Erler and Ferro-Hernandez, taken as printed; the PDG global fit carries its own hadronic input, so the row is varied within its stated uncertainty when the endpoint's sensitivity is checked.
 
 
 def main() -> int:  # Keep the script runnable from the command line.

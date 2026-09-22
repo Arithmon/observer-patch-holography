@@ -456,6 +456,7 @@ AXIOM_BLOCK_COMPLETE = [
     "Lean/Thermodynamics/HorizonThermalitySurface.lean",
     "Lean/Thermodynamics/PhysicalCalibrationImport.lean",
     "Lean/Time/ProperTimeCalibration.lean",
+    "Lean/Time/SourceCountClockEnclosure.lean",
     "Lean/Tower/ConsensusTower.lean",
     "Lean/Tower/CumulativeCapacityEndpoint.lean",
     "Lean/Tower/EventGeometryReadout.lean",
@@ -621,6 +622,14 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="list every module carrying a kernel-axiom block with its unaudited count",
     )
+    parser.add_argument(
+        "--pinned-residue",
+        action="store_true",
+        help=(
+            "list the section-1 hits deferred inside the byte-pinned modules; "
+            "they are corrected when the owning artifact is regenerated"
+        ),
+    )
     args = parser.parse_args(argv)
 
     paths = lean_sources()
@@ -630,12 +639,15 @@ def main(argv: list[str] | None = None) -> int:
     pinned = set(PINNED_BYTES_MODULES)
     registry = set(AXIOM_BLOCK_COMPLETE)
     issues: list[str] = []
+    residue: list[str] = []
     seen_registry: set[str] = set()
 
     for path in paths:
         rel = path.relative_to(ROOT).as_posix()
         text = path.read_text(encoding="utf-8", errors="ignore")
-        if rel not in pinned:
+        if rel in pinned:
+            residue.extend(prose_issues(rel, text))
+        else:
             issues.extend(prose_issues(rel, text))
         if rel in registry:
             seen_registry.add(rel)
@@ -650,6 +662,15 @@ def main(argv: list[str] | None = None) -> int:
                 f"{PINNED_BYTES_REASON}"
             )
 
+    if args.pinned_residue:
+        print(
+            f"section-1 hits deferred inside {len(pinned)} byte-pinned modules: "
+            f"{len(residue)}"
+        )
+        for hit in residue:
+            print(f"- {hit}")
+        return 0
+
     if issues:
         print("lean docstring style check failed:")
         for issue in issues:
@@ -658,7 +679,8 @@ def main(argv: list[str] | None = None) -> int:
 
     print(
         f"lean docstring style check OK "
-        f"({len(paths)} modules, {len(pinned)} byte-pinned, "
+        f"({len(paths)} modules, {len(pinned)} byte-pinned carrying "
+        f"{len(residue)} deferred section-1 hit(s), "
         f"{len(registry)} with a complete kernel-axiom block)"
     )
     return 0

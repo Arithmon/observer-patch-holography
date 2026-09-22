@@ -195,7 +195,15 @@ jobs:
           export SOURCE_DATE_EPOCH
           export TZ=UTC
           for tex in essays/*.tex; do
-            (cd essays && tectonic -X compile "$(basename "${tex}")" --keep-logs)
+            for attempt in 1 2 3; do
+              if (cd essays && tectonic -X compile "$(basename "${tex}")" --keep-logs); then
+                continue 2
+              fi
+              echo "essay rebuild attempt ${attempt} for ${tex} failed; backing off before retry"
+              sleep 90
+            done
+            echo "::error::Essay rebuild failed: ${tex}"
+            exit 1
           done
 
       - name: Require byte-identical second pass

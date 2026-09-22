@@ -67,6 +67,6 @@ jobs:
       - name: Validate QFT/WZ theorem oracle
         working-directory: code/particles/calibration/q1_q4_wz_theorem_oracle
         run: |
-          python3 -m pip install sympy==1.13.3
+          python3 -m pip install sympy==1.14.0
           python3 verify_symbolic_q1_q4_wz.py
           python3 -m unittest -v test_theorem_oracle.py
