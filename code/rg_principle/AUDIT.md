@@ -39,8 +39,9 @@ of the unmerged implementation in PR #968.
 
 ## Verification coverage
 
-The reference receipt recomputes all 263 circuits: 442,320 forward, inverse
-and intervention gate executions, 7,880 isolated intermediate interventions,
+The reference receipt recomputes all 263 circuits: 442,496 forward, inverse,
+intervention and boundary-comparison gate executions, 7,880 isolated
+intermediate interventions and 40 paired lowering probes,
 all 1,728 basis units of the copy channel, exact clock/entropy calculations,
 the complete 64-history Toffoli state problem and integer resource controls.
 It stores hashes and counts, not the raw tapes. The checker does not import
@@ -66,3 +67,42 @@ is the native source completion and testing of the proposed clock/refinement
 law, not a withheld step of the stated conditional proofs. No empirical RG
 validation, canonical axiom amendment or complete source-selection theorem
 is asserted by this PR.
+
+## Follow-up audit corrections
+
+The reference receipt previously checked each producer-supplied truth table
+but did not independently enforce the meaning and completeness of its named
+catalog. The checker now specifies all 263 target functions independently,
+rejects duplicates/missing names and rejects coordinated circuit/table
+substitution during receipt recomputation. The retained-copy entry also
+checks its named intermediate writer against a separate boundary contract;
+initial truth-table agreement cannot bypass this check. The additional
+comparison gates and probes are counted.
+
+The copy-channel validator accepts actual submitted sparse Kraus operators
+and rejects dropped, duplicated, source-erasing and wrong-buffer operators.
+An independent producer remains responsible for constructing the candidate.
+
+The tracial-minimum proof requires local references to be restrictions of
+the same joint reference. Faithfulness and traciality without compatibility
+do not suffice: an exact two-reference counterexample has nonzero entropy
+derivative at the proposed joint minimum. The paper and assumption dictionary
+state the compatible-reference premise. The latency argument states its
+nonnegative grading, zero-displacement waits and inheritance of quadratic
+symmetry explicitly. Inner-menu resource bounds are distinguished from the
+all-n bound for the full-radius experiment.
+
+CI exposed two inherited integration failures. The source-operation receipt
+still pinned the old `ChoiCPTP.lean` comment bytes after main's documentation
+correction. A full recomputation changes only that source hash; the native
+derivation and every other receipt field remain identical. The Windows CSV
+fixture translated embedded LF text to CRLF, so the strict registry-scope
+comparison correctly rejected its changed content. The fixture now preserves
+bytes and tests both LF and CRLF cells; the production validator is unchanged.
+
+Local follow-up validation passes 232 affected tests on Windows and 167 on
+Linux, including 67 RG tests. Both the record-gluing and source-operation
+Lean audit targets build. Registry, axiom consistency, reader/Lean style,
+CI-budget and receipt-portability gates pass. The changed paper rebuilds
+with no overfull boxes or reference/citation/glyph/font problems; its preview
+manifest validates and appendix pages 183--186 were visually checked.

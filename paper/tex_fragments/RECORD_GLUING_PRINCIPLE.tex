@@ -29,7 +29,8 @@ The expansion is uniform in direction. Local directional coverage is a
 premise; finitely many rotated directions do not imply it.
 \item Every native dependency, including control, timing and metadata,
 admits refinement into small primitives and waits with the same endpoints
-and elapsed time converging to the original time. A local primitive costs
+and nonnegative elapsed time converging to the original time. Local operations
+and waits have zero displacement. A local primitive costs
 at least $\ell(v)$. Finite programs have exact value-preserving realizations
 with arbitrarily small whole-program overhead. Local interventions at every
 designated intermediate output before publication are preserved while all
@@ -39,6 +40,8 @@ These are LC1--LC3. They constrain all admitted influences, including those
 outside a chosen observation program.
 
 \paragraph{Finite symmetry and the limiting cone.}
+The quadratic form inherits the latency symmetry by dividing
+$\ell(sRv)^2=\ell(sv)^2$ by $s^2$ and taking $s\to0$.
 In an orthonormal icosahedral frame, invariance of a symmetric quadratic form
 under $\operatorname{diag}(1,-1,-1)$ and
 $\operatorname{diag}(-1,1,-1)$ makes its off-diagonal entries zero. The cyclic
@@ -109,7 +112,8 @@ maps. Buffer access, controller transport and readback receive their actual
 local-clock grades.
 
 An explicitly included joint observer and its marginal constraints provide
-a nonempty finite state family. Faithful tracial references and an injective
+a nonempty finite state family. Choose the local references as restrictions
+of the same faithful joint tracial state. These compatible references and an injective
 positive-weight entropy cover give the joint tracial state as the unique
 unconstrained minimum. Independent preparations are interventions or
 constraints, not that unconstrained minimum's selected records. Adding blank
@@ -118,6 +122,10 @@ finite consistency witness. It does not furnish the all-level source-bound
 support, degree-one bridge, operational deletion tests or proof that the
 private response exhausts all admitted reversible source responses. A
 dormant support added to a circuit would not meet those obligations.
+Compatibility matters: on a shared classical bit with two equal-weight
+references $(1/2,1/2)$ and $(3/4,1/4)$, both faithful and tracial, the summed
+entropy derivative at probability $1/2$ is $-\log3$, so the joint reference
+does not minimize that incompatible-reference problem.
 
 There is also a finite process-to-state connection. For $g$ gates on $R$
 bits, $n$ of them independent input bits, let $D=R(g+1)$ and admit all
@@ -169,6 +177,9 @@ independent interventions, hence bandwidth at least $cq^2/(2L)$. This excludes
 its own locally available record from the communication cut.
 Multicast can share transport paths;
 the aggregate statement counts output incidences rather than unicast packets.
+For inner menus, the same cube is included when
+$\eta_q<1-\sqrt3/2$, giving the asymptotic bounds; the all-$n$ constants
+above concern the full-radius experiment.
 The rate bound presumes independent new interventions with prior caches fixed.
 It does not infer a fresh entropy rate from an unperturbed correlated history.
 
@@ -184,9 +195,11 @@ refinement timing and information-capacity constraints.
 
 The complete analytic argument and controls are in
 \ophid{code/rg_principle/DERIVATION.md}.
-The compact receipt independently replays 263 finite circuits, including
-7,880 localized interventions, with every reference gate and work register
-counted. Exact algebra controls cover all 1,728 basis units of the copying
+The compact receipt independently verifies the full named catalog and replays
+263 finite circuits, including 7,880 localized interventions and 40 paired
+intermediate-writer comparisons, with every reference gate and work register
+counted. Coordinated circuit/table substitutions and cached-writer substitutions
+fail verification. Exact algebra controls cover all 1,728 basis units of the copying
 channel. Twelve kernel-checked results and a transitive standard-axiom audit
 are in \ophid{Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean}.
 Finite controls do not replace the analytic all-size arguments or certify a

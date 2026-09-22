@@ -61,7 +61,8 @@ polyhedral effective norm.
 
 **LC3 (complete, time-faithful refinement).** All native dependencies,
 including payload, control, scheduler, timing and metadata, have the same
-position and elapsed-time grading. Every native dependency path with endpoints
+position and nonnegative elapsed-time grading. Local operations and waits
+have zero displacement. Every native dependency path with endpoints
 x,y and elapsed time T has refinements into small local flights/waits/operations
 with maximum displacement tending to zero, the same endpoints, and total
 path time tending to T. Each local primitive flight of displacement v costs at
@@ -84,6 +85,9 @@ translation group does not act faithfully on one finite address set.
 ### Theorem 1: finite symmetry fixes the quadratic clock
 
 Choose an orthonormal icosahedral frame and write Q(v)=v^T H v with H symmetric.
+The quadratic form inherits the latency's symmetry: for every carrier rotation
+R and fixed u, Q(Ru)=lim_(s->0+) ell(s R u)^2/s^2
+=lim_(s->0+) ell(s u)^2/s^2=Q(u).
 Invariance under diag(1,-1,-1) kills H12,H13. Invariance under
 diag(-1,1,-1) kills H23. The cyclic permutation of the three coordinates
 equates the three diagonal entries. Thus H=tau^2 I for tau>0. These rotations
@@ -191,7 +195,8 @@ Functional calculus and the scalar logarithm series give
     D(rho(v)||I/d) = (d/2) Tr(X(v)^2) + O(||v||^3).
 
 The linear term vanishes because Tr X=0. An equivariant X makes this positive
-quadratic form carrier invariant, hence proportional to the trace norm on E
+quadratic form carrier invariant, hence proportional to the squared norm
+induced by the trace inner product on E
 by Theorem 1. This is an entropy susceptibility calculation, not an A3
 minimizer or a clock theorem. The identification
 
@@ -202,7 +207,7 @@ neither fixes alpha nor identifies elapsed time with distinguishability.
 At a nontracial reference a different positive Hessian appears; carrier
 invariance of the reference and perturbation family must be checked.
 The proposed physical content is testable: local latency ratios should tend
-uniformly to one on equal trace-norm displacements, and coarse/fine timings
+uniformly to one on displacements of equal norm for that inner product, and coarse/fine timings
 should agree with LC3. A polyhedral limit or a persistent coarse speedup
 falsifies this particular reduction. A positive quadratic susceptibility
 alone is insufficient experimental evidence for it.
@@ -247,7 +252,8 @@ port responses on one carrier.
 For state consistency one may explicitly include a joint observer with the
 full algebra A and all marginal constraints. Its joint states and restrictions
 form a nonempty compact convex feasible family; the joint tracial state is
-faithful and compatible. With faithful tracial references, a positive-weight
+faithful and compatible. Choose each local reference to be the restriction
+of this same joint tracial state. With these compatible references, a positive-weight
 Umegaki objective and an injective cover including that joint observer, it
 is the unique unconstrained minimum: every term is nonnegative and the joint
 term vanishes only at its reference. Independent port preparation belongs
@@ -256,6 +262,13 @@ minimum. Adding a blank factor, tracing it out, and lifting old operations
 as Phi tensor id gives exact value-level refinement. This argument assumes
 the joint observer in the stated finite model; local overlap compatibility
 alone would not imply a joint extension.
+
+Faithfulness and traciality alone are insufficient to identify the minimum.
+On one shared classical bit, take joint reference (1/2,1/2) and a second
+scored reference (3/4,1/4). Both are faithful and tracial, but the derivative
+of their equal-weight summed relative entropy at probability 1/2 is -log(3).
+Thus the joint reference is not the minimum. The exact control checks this
+incompatible-reference counterexample; compatibility is a required premise.
 
 **What this construction does not certify.** A complete native source must
 also specify the source-bound spherical support and degree-one bridge at
@@ -294,19 +307,26 @@ Toffoli with that extra control, and reset it with NOT. One such control can
 be shared throughout a sequential circuit; setup, cleanup and storage are
 counted. All
 auxiliary bits return to zero. The worst-case construction is exponential;
-no efficient native implementation is asserted. Every gate and register
-appears in the receipt. Gates are self-inverse permutations, so running the
+no efficient native implementation is asserted. Replay retains every gate and
+register; the receipt binds the full program by hash and records its resource
+counts. Gates are self-inverse permutations, so running the
 whole program backwards restores the initial output blanks as well.
 
 This proves the universal finite-function reduction. The executable replay
 enumerates all 256 three-input Boolean functions, selected multiple-output
 functions, and n=0,1,2,4,5 cases; it is a check of that implementation, not
 a replacement for the minterm proof. The verifier independently executes
-the actual gates, compares the declared full truth table, checks clean work,
+the actual gates, checks every named case against a separately specified
+target catalog, compares the full truth table, checks clean work,
 tests inverse execution, and inserts isolated interventions at every gate
 boundary for two diagnostic programs. It must reject invalid register types,
 out-of-range or repeated operands, altered gates, and incomplete evidence.
 Transport of each declared wire remains an LC premise, not a gate theorem.
+The reference catalog rejects omitted, duplicate and substituted functions,
+even if a producer changes its circuit and truth table consistently. Its
+retained-copy diagnostic also compares the designated intermediate writer
+against an independent boundary specification. Those paired comparisons
+and their additional gate executions are included in the resource ledger.
 
 ## Finite entropy selection from actual transition constraints
 
@@ -382,8 +402,10 @@ radius. For n>=2, at least (q-2m)^3 interior receivers each have
 For n>=2, q-2m>=n^2/2 and 2m+1>=n. Therefore at least n^9/8=q^(9/2)/8
 reads occur per layer. A physical horizon L/c contains n layers, giving
 at least n^10/8=q^5/8 read incidences. These lower bounds use a strict inner
-cube, so a vanishing latency overhead or absence of exact null flights does
-not remove them. Nonself reads subtract one per receiver and have the same
+cube. For the inner-menu implementation, this same cube is included once
+eta_q < 1-sqrt(3)/2, so the asymptotic bounds survive vanishing overhead;
+the all-n constants above concern the stated full-radius experiment.
+Nonself reads subtract one per receiver and have the same
 growth. For an incoming communication cut, exclude the receiver's own record:
 the fresh remote tuple needs (2m+1)^3-1 >= n^3-1 >= n^3/2 bits per layer.
 Thus each interior receiver needs at least c*n^4/(2L)=c*q^2/(2L) incoming

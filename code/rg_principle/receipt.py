@@ -11,7 +11,7 @@ if __package__ in (None, ""):
     __package__ = "rg_principle"
 
 from .certificates import algebra_certificate, clock_certificate, resource_certificate, history_certificate
-from .checker import check_program
+from .checker import check_reference_suite
 from .compiler import cases
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -25,8 +25,7 @@ SOURCES += ["Lean/Geometry/RecordGluingPrinciple.lean", "Lean/Geometry/RecordGlu
 def compute():
     return {"schema": "oph-rg-principle-v1", "sources": {
         name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in SOURCES},
-        "circuits": {name: check_program(program, name in ("retained_copy", "clean_conjunction"))
-                     for name, program in cases()},
+        "circuits": check_reference_suite(cases()),
         "clock": clock_certificate(), "algebra": algebra_certificate(), "history": history_certificate(),
         "resources": resource_certificate()}
 
@@ -66,7 +65,8 @@ def main():
         result = verify(args.path)
     print(f"{args.action}: {len(result['circuits'])} circuits; "
           f"{sum(c['executed_gates'] for c in result['circuits'].values())} replayed gates; "
-          f"{sum(c['interventions'] for c in result['circuits'].values())} localized interventions")
+          f"{sum(c['interventions'] for c in result['circuits'].values())} localized interventions; "
+          f"{sum(c['lowering_probes'] for c in result['circuits'].values())} paired lowering probes")
 
 
 if __name__ == "__main__":

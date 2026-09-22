@@ -7,17 +7,71 @@ from itertools import product
 import pytest
 
 from .certificates import algebra_certificate, clock_certificate, resource_certificate, history_certificate
-from .checker import check_boundary_lowering, check_program, decode_is_lossless, execute, history_admissible
+from .checker import (check_boundary_lowering, check_program, decode_is_lossless,
+                      execute, history_admissible, check_reference_suite, check_copy_kraus)
 from .compiler import cases, compile_table
 from .receipt import EVIDENCE, ROOT, compute, verify
+from . import receipt as receipt_module
 
 
 def test_all_finite_reference_functions():
     assert all(len(gate) in (1, 3) for _, program in cases() for gate in program["gates"])
-    results = [check_program(p, name in ("retained_copy", "clean_conjunction")) for name, p in cases()]
+    results = list(check_reference_suite(cases()).values())
     assert len(results) == 263
     assert sum(r["interventions"] for r in results) > 1000
-    assert all(r["executed_gates"] == r["forward_gates"] + r["inverse_gates"] + r["intervention_gates"] for r in results)
+    assert all(r["executed_gates"] == r["forward_gates"] + r["inverse_gates"] +
+               r["intervention_gates"] + r["lowering_gates"] for r in results)
+    assert sum(r["lowering_probes"] for r in results) == 40
+
+
+@pytest.mark.parametrize("mutation", ["empty", "missing", "duplicate", "unknown", "boolean_name",
+                                      "wrong_target", "wrong_shape", "unlowered", "cached_writer"])
+def test_reference_catalog_has_an_independent_semantic_contract(mutation):
+    programs = list(cases())
+    if mutation == "empty": programs = []
+    elif mutation == "missing": programs.pop()
+    elif mutation == "duplicate": programs[-1] = programs[0]
+    elif mutation == "unknown": programs[0] = ("unregistered_case", programs[0][1])
+    elif mutation == "boolean_name": programs[0] = (True, programs[0][1])
+    elif mutation == "wrong_target":
+        programs[1] = ("boolean3_001", compile_table(3, 1, [[0]] * 8))
+        check_program(programs[1][1])  # Internally consistent but not the promised function.
+    elif mutation == "wrong_shape": programs[0] = ("boolean3_000", compile_table(2, 1, [[0]] * 4))
+    elif mutation == "unlowered":
+        programs[-2] = ("retained_copy", {"n": 1, "m": 2, "work": 0,
+                                         "table": [[0, 0], [1, 1]], "gates": [[0, 1], [1, 2]]})
+    else:
+        programs[-2][1]["gates"][2] = [3, 0, 2]
+        check_program(programs[-2][1])  # Same initial truth table, wrong intermediate writer.
+    with pytest.raises(ValueError):
+        check_reference_suite(programs)
+
+
+@pytest.mark.parametrize("mutation", ["wrong_target", "cached_writer"])
+def test_receipt_recomputation_rejects_coordinated_producer_changes(monkeypatch, mutation):
+    programs = list(cases())
+    if mutation == "wrong_target":
+        programs[1] = ("boolean3_001", compile_table(3, 1, [[0]] * 8))
+    else:
+        programs[-2][1]["gates"][2] = [3, 0, 2]
+    monkeypatch.setattr(receipt_module, "cases", lambda: iter(programs))
+    with pytest.raises(ValueError):
+        receipt_module.compute()
+
+
+@pytest.mark.parametrize("mutation", ["empty", "drop", "duplicate", "source", "buffer", "identity", "boolean"])
+def test_copy_channel_checks_actual_submitted_operators(mutation):
+    kraus = [((p, p), (p, b)) for p in range(12) for b in range(12)]
+    assert check_copy_kraus(12, list(reversed(kraus))) == 1728
+    if mutation == "empty": kraus = []
+    elif mutation == "drop": kraus.pop()
+    elif mutation == "duplicate": kraus[-1] = kraus[0]
+    elif mutation == "source": kraus = [((0, p), (p, b)) for p in range(12) for b in range(12)]
+    elif mutation == "buffer": kraus = [((p, (p+1) % 12), (p, b)) for p in range(12) for b in range(12)]
+    elif mutation == "identity": kraus = [((p, b), (p, b)) for p in range(12) for b in range(12)]
+    else: kraus[0] = ((False, 0), (0, 0))
+    with pytest.raises(ValueError):
+        check_copy_kraus(12, kraus)
 
 
 @pytest.mark.parametrize("n", range(6))
@@ -81,6 +135,7 @@ def test_compiler_rejects_incomplete_nonbinary_tables():
 def test_exact_clock_algebra_and_resource_controls():
     assert clock_certificate()["invariant_quadratic_dimension"] == 1
     assert algebra_certificate()["matrix_units_checked"] == 1728
+    assert algebra_certificate()["incompatible_reference_derivative_at_joint_trace"] == "-log(3)"
     assert len(resource_certificate()) == 9
 
 

@@ -109,10 +109,12 @@ def check_boundary_lowering(logical, native):
     n, m, work = validate(logical)
     if validate(native) != (n, m, work) or len(native["gates"]) != len(logical["gates"]):
         raise ValueError("diagnostic requires the same register and boundary interface")
+    gate_executions, probes = 0, 0
     for value in range(2**n):
         start = [int(bool(value & (2**j))) for j in range(n)] + [0] * (m + work)
         left = execute(start, logical["gates"])
         right = execute(start, native["gates"])
+        gate_executions += len(logical["gates"]) + len(native["gates"])
         if left != right:
             raise ValueError("baseline boundary mismatch")
         for boundary, state in enumerate(left):
@@ -121,9 +123,84 @@ def check_boundary_lowering(logical, native):
                 intervened[register] ^= 1
                 a = execute(intervened, logical["gates"][boundary:])[-1]
                 b = execute(intervened, native["gates"][boundary:])[-1]
+                gate_executions += len(logical["gates"][boundary:]) + len(native["gates"][boundary:])
+                probes += 1
                 if a != b:
                     raise ValueError("localized intermediate intervention mismatch")
-    return True
+    return {"executed_gates": gate_executions, "probes": probes}
+
+
+def reference_specs():
+    """The promised catalog's meanings, specified independently of the producer."""
+    specs = {f"boolean3_{mask:03d}": (3, 1, [[int(bit)] for bit in format(mask, "08b")[::-1]])
+             for mask in range(256)}
+    for n in (0, 1, 2, 4, 5):
+        specs[f"multiple_{n}"] = (n, 3, [[value.bit_count() % 2,
+            int(value == 2**n - 1), int(value == 0)] for value in range(2**n)])
+    specs["retained_copy"] = (1, 2, [[0, 0], [1, 1]])
+    specs["clean_conjunction"] = (4, 1, [[0] for _ in range(15)] + [[1]])
+    return specs
+
+
+def check_reference_suite(named_programs):
+    specs, programs = reference_specs(), {}
+    for entry in named_programs:
+        if type(entry) not in (tuple, list) or len(entry) != 2:
+            raise ValueError("named circuit entry required")
+        name, program = entry
+        if type(name) is not str or name not in specs or name in programs:
+            raise ValueError("unknown or duplicate reference case")
+        n, m, _ = validate(program)
+        if (n, m, program["table"]) != specs[name]:
+            raise ValueError("reference case differs from its independent target")
+        if any(len(gate) == 2 for gate in program["gates"]):
+            raise ValueError("reference gate basis must lower CNOT with counted work")
+        programs[name] = program
+    if set(programs) != set(specs):
+        raise ValueError("incomplete reference catalog")
+    # Explicit intermediate-version contract: register 2 consumes register 1.
+    # Initial truth-table agreement cannot certify this named writer.
+    logical_copy = {"n": 1, "m": 2, "work": 1, "table": [[0, 0], [1, 1]],
+                    "gates": [[3], [3, 0, 1], [3, 1, 2], [3]]}
+    lowering = check_boundary_lowering(logical_copy, programs["retained_copy"])
+    result = {}
+    for name, program in programs.items():
+        row = check_program(program, name in ("retained_copy", "clean_conjunction"))
+        row["lowering_gates"] = lowering["executed_gates"] if name == "retained_copy" else 0
+        row["lowering_probes"] = lowering["probes"] if name == "retained_copy" else 0
+        row["executed_gates"] += row["lowering_gates"]
+        result[name] = row
+    return result
+
+
+def check_copy_kraus(d, kraus):
+    """Check a supplied list of unit matrix Kraus entries on C^d tensor M_d."""
+    if type(d) is not int or not 2 <= d <= 12 or type(kraus) is not list or len(kraus) != d*d:
+        raise ValueError("invalid unit-matrix Kraus schema")
+    identity = {(p, b): 0 for p in range(d) for b in range(d)}
+    for entry in kraus:
+        if type(entry) not in (tuple, list) or len(entry) != 2:
+            raise ValueError("invalid Kraus row/column pair")
+        for coordinate in entry:
+            if (type(coordinate) is not tuple or len(coordinate) != 2 or
+                    any(type(i) is not int or not 0 <= i < d for i in coordinate)):
+                raise ValueError("invalid Kraus coordinate")
+        identity[entry[1]] += 1
+    if any(value != 1 for value in identity.values()):
+        raise ValueError("Kraus map is not trace preserving")
+    checked = 0
+    for p in range(d):
+        for a in range(d):
+            for b in range(d):
+                output = {}
+                for row, column in kraus:
+                    if column == (p, a) and column == (p, b):
+                        output[(row, row)] = output.get((row, row), 0) + 1
+                expected = {((p, p), (p, p)): 1} if a == b else {}
+                if output != expected:
+                    raise ValueError("Kraus map fails the retained-copy matrix-unit identity")
+                checked += 1
+    return checked
 
 
 def decode_is_lossless(words, encode, decode):

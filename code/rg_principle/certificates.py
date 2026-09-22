@@ -5,7 +5,7 @@ from fractions import Fraction
 
 import sympy as sp
 
-from .checker import history_admissible
+from .checker import history_admissible, check_copy_kraus
 
 
 def require(condition):
@@ -55,28 +55,21 @@ def algebra_certificate(d=12):
         raise ValueError("reference dimension must be an integer in [2,12]")
     # Sparse Kraus matrix units on C^d tensor M_d: row=(p,p), column=(p,b).
     kraus = [((p, p), (p, b)) for p in range(d) for b in range(d)]
-    identity = {(p, b): 0 for p in range(d) for b in range(d)}
-    for _, column in kraus:
-        identity[column] += 1
-    require(all(value == 1 for value in identity.values()))
-    checked = 0
-    for p, a, b in product(range(d), repeat=3):
-        # Evaluate sum K (e_p tensor E_ab) K* from sparse row/column matching.
-        output = {}
-        for row, column in kraus:
-            if column == (p, a) and column == (p, b):
-                key = (row, row)
-                output[key] = output.get(key, 0) + 1
-        expected = {((p, p), (p, p)): 1} if a == b else {}
-        require(output == expected)
-        checked += 1
+    checked = check_copy_kraus(d, kraus)
     # Off-diagonal buffer effect distinguishes phase; diagonal port copying erases it.
     plus = sp.Matrix([[1, 1], [1, 1]]) / 2
     minus = sp.Matrix([[1, -1], [-1, 1]]) / 2
     require(sp.trace(plus * plus) == 1 and sp.trace(plus * minus) == 0)
+    # Faithful tracial references on a commutative algebra need not be compatible.
+    x = sp.symbols("x", positive=True)
+    score = sum(x*sp.log(x/p) + (1-x)*sp.log((1-x)/(1-p))
+                for p in (sp.Rational(1, 2), sp.Rational(3, 4)))
+    derivative = sp.simplify(sp.diff(score, x).subs(x, sp.Rational(1, 2)))
+    require(derivative == -sp.log(3))
     return {"central_ports": d, "kraus_operators": d*d,
             "matrix_units_checked": checked, "trace_preserving": True,
-            "phase_effect_probabilities": [1, 0]}
+            "phase_effect_probabilities": [1, 0],
+            "incompatible_reference_derivative_at_joint_trace": str(derivative)}
 
 
 def resource_certificate():

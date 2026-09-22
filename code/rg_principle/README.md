@@ -38,9 +38,11 @@ lake build Geometry.RecordGluingPrincipleAxiomAudit
 `receipt.py build` regenerates the compact receipt. It is a summary of full
 recomputation, not an archive of all execution traces. The verifier checks
 source bytes, replays every input of all 263 circuits through a separate
-interpreter, checks retained input, output truth table, clean work and inverse
+interpreter, checks the complete named catalog against independent target
+functions, retained input, output truth table, clean work and inverse
 execution, and runs 7,880 localized intermediate interventions. It executes
-442,320 gates including inverse and intervention replays. Gates and auxiliary
+442,496 gates including inverse and intervention replays and 40 paired
+intermediate-writer lowering probes. Gates and auxiliary
 registers of the reference circuits are counted exactly. These are software
 reference counts, not measurements of a native source compiler.
 
@@ -57,6 +59,8 @@ tests rejection of `sorryAx` and compiler-trust proof shortcuts.
 Adversarial tests include malformed types, incomplete truth tables, dropped
 or retargeted gates, dirty work, cached-writer substitution, additive tuple
 collisions, stale source pins, omitted evidence and forged clock/resource
-claims. The CLI rejects junk under Python optimization as well. The suite
+claims. Coordinated substitutions of both a circuit and its truth table,
+cached-writer substitutions during receipt recomputation, and corrupted
+Kraus operators also fail. The CLI rejects junk under Python optimization as well. The suite
 does not download a simulator, require cloud storage, or infer a theorem from
 a continuum fit.
