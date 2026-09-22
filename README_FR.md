@@ -115,7 +115,7 @@ simulations reproductibles :
   de fermeture n’est pas sélectionnée à partir des axiomes. Ces calculs font
   des constantes des cibles concrètes de dérivation et de falsification plutôt
   que des données libres.
-- **Vérifié machine et falsifiable.** Plus de 11600 théorèmes Lean sans
+- **Vérifié machine et falsifiable.** Plus de 11800 théorèmes Lean sans
   preuve admise, de l’arithmétique rationnelle exacte à la place de la
   confiance en virgule flottante, et des simulations déterministes avec
   reçus épinglés. L’échelle des prédictions gelées exige que toute comparaison

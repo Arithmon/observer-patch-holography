@@ -11,6 +11,8 @@ import Geometry.SourceRoutingRefinementAxiomAudit
 import Geometry.SourceReadAcceptanceAxiomAudit
 import Geometry.SourceAccumulatorAxiomAudit
 import Geometry.SourceNativeProgramsAxiomAudit
+import Geometry.SourceTemporalAcceptanceAxiomAudit
+import Geometry.SourceCheckpointAxiomAudit
 import Geometry.SourcePopulationQuadrature
 import Geometry.GoldenSourceAssignment
 import Geometry.GoldenSourceCountLimit
