@@ -48,7 +48,7 @@ def completion (meaning : X → R) (root : P) (seam : A → P × P)
   eventual (step root seam) weight (terminal meaning) c
 
 /-- Native topology derives positivity of the limiting continuation mass.
-The right side tests retained data and current state, not future outcomes. -/
+The right side tests retained data and the evolving state, not future outcomes. -/
 theorem completion_positive_iff [Fintype P] (G : SimpleGraph P) (hc : G.Connected)
     (meaning : X → R) (root : P) (seam : A → P × P)
     (cover : ∀ e : P × P, G.Adj e.1 e.2 →

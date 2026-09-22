@@ -34,6 +34,13 @@ theorem cannot_exclude_recoverable (prior h : M → ℝ) (hp : ∀ m, 0 < prior 
     (hh : ∀ m, 0 < h m) (m : M) : selected prior h m ≠ 0 :=
   ne_of_gt (selected_positive prior h hp hh m)
 
+omit [Fintype A] in
+/-- If native dynamics publishes every candidate demand almost surely,
+the joint information projection leaves the demand prior unchanged. -/
+theorem automatic_demands_unchanged (prior : M → ℝ) (hp : ∑ m, prior m = 1)
+    (m : M) : selected prior (fun _ => 1) m = prior m := by
+  simp only [selected,mul_one,hp,div_one]
+
 /-- The finite joint information projection's demand marginal tends to
 prior times eventual publication mass, without a supplied deadline. -/
 theorem selected_tendsto (step : S → A → S) (weight : S → A → ℝ)
