@@ -34,7 +34,7 @@ def unique(items):
 
 
 def load(path):
-    return json.loads(Path(path).read_text(), object_pairs_hook=unique)
+    return json.loads(Path(path).read_text(encoding="utf-8"), object_pairs_hook=unique)
 
 
 def plus(x, y):
@@ -296,7 +296,7 @@ def verify(data):
         "occupation_record_probabilities_select_relative_sign": False}, "basis-only control")
     # Source history is the eight binary triples; action counts adjacent changes.
     actions = [int((i >> 2) != ((i >> 1) & 1))+int(((i >> 1) & 1) != (i & 1)) for i in range(8)]
-    source = (ROOT/history).read_text()
+    source = (ROOT/history).read_text(encoding="utf-8")
     declared = list(map(int, re.search(r"def sourceAction : Fin 8 → ℕ := !\[([^]]+)\]", source).group(1).split(",")))
     check(declared == actions, "source repair count")
     dims = [actions.count(i) for i in range(3)]

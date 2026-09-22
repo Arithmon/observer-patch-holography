@@ -138,3 +138,15 @@ def test_zero_padded_matrix_shape_fails_closed(original, location):
     matrix.append([["0", "0"] for _ in range(dimension+1)])
     with pytest.raises(ValueError, match="matrix dimension"):
         verifier.verify(receipt)
+
+
+def test_source_replay_with_windows_default_encoding(monkeypatch):
+    read_text = Path.read_text
+
+    def windows_read_text(path, encoding=None, errors=None):
+        return read_text(path, encoding=encoding or "cp1252", errors=errors)
+
+    monkeypatch.setattr(Path, "read_text", windows_read_text)
+    receipt = producer.build()
+    assert receipt == verifier.load(HERE / "receipt.json")
+    assert verifier.verify(receipt)["verified"]

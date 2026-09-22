@@ -6286,7 +6286,7 @@
         "proof_kind": "analytic_operator_proof_with_finite_executable_controls",
         "receipt_pin": {
           "bytes": 126386,
-          "sha256": "509b4152b908ad72d33804efe6ddccf4bdd806eaab31dbae6f4cb5ffc67bb223"
+          "sha256": "cb42b27d7a5e92f26c249f35000c95bf9f49be24b22a801f46fe9dea0c228835"
         },
         "source_selected_statistics": false,
         "statement": "On a finite positive Hilbert space, an unscaled contraction creation field with its exact quadratic unit-phase law squares to zero. Linearity gives creation anticommutation without a scalar-q premise. An exhaustive adjoint add/remove instrument additionally yields full CAR. A covariant symmetric Fock space capped at total occupation two preserves the supplied one-particle source dynamics and exact phase law but permits double occupation. Making its fields into Kraus contractions rescales the quadratic phase law."
