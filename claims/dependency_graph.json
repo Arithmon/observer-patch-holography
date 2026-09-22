@@ -252,7 +252,10 @@
   "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION",
   "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM",
   "OPH-TEMPORAL-NATIVE-RECOVERY",
-  "OPH-NATIVE-CHECKPOINT-SELECTION"
+  "OPH-NATIVE-CHECKPOINT-SELECTION",
+  "OPH-NATIVE-EVENTUAL-PUBLICATION",
+  "OPH-FINITE-A3-SUPPORT",
+  "OPH-REGISTERED-SOURCE-READ-ALGEBRA"
  ],
  "edges": [
   {
@@ -2199,6 +2202,21 @@
    "from": "OPH-TEMPORAL-NATIVE-RECOVERY",
    "to": "OPH-NATIVE-CHECKPOINT-SELECTION",
    "role": "Supplies observation factorization and topology-derived native continuation. The checkpoint work adds a declared terminal requirement and full-history reference, derives its optimizer and causal policy, and analytically classifies shortest two-record path histories."
+  },
+  {
+   "from": "OPH-NATIVE-CHECKPOINT-SELECTION",
+   "to": "OPH-NATIVE-EVENTUAL-PUBLICATION",
+   "role": "Supplies exhaustive finite continuation masses and the finite entropy projection; the new limit removes the arbitrary deadline and identifies compatible marginals."
+  },
+  {
+   "from": "OPH-TEMPORAL-NATIVE-RECOVERY",
+   "to": "OPH-NATIVE-EVENTUAL-PUBLICATION",
+   "role": "Supplies connected topology completion and native checkpoint viability, used for positivity and uniform completion; physical precision and source meaning are not inherited."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-NATIVE-EVENTUAL-PUBLICATION",
+   "role": "Supplies the covering cone and golden assignment/count theorems for explicit radius-family instantiations; their convergence does not select a population or radius."
   }
  ]
 }

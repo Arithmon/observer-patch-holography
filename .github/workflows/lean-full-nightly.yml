@@ -6,8 +6,9 @@ on:
     - cron: "17 2 * * *"
 
 concurrency:
-  group: lean-full-nightly
-  cancel-in-progress: true
+  # A scheduled main build must not preempt a manual review build.
+  group: lean-full-nightly-${{ github.ref }}
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -33,6 +34,16 @@ jobs:
           ./elan-init -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
+      - name: Restore Lake build cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            Lean/.lake/build
+            Lean/ObservableNormalForms/.lake/build
+          key: lean-core-v3-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            lean-core-v3-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}-
+
       - name: Check zero proof debt and no axiom declarations
         working-directory: Lean
         run: |
@@ -54,7 +65,39 @@ jobs:
 
       - name: Build the complete default target set
         working-directory: Lean
-        run: lake build
+        run: |
+          set -euo pipefail
+          # Record host pressure without process arguments or environment data.
+          python3 -u - <<'PY' &
+          import datetime
+          import pathlib
+          import subprocess
+          import time
+
+          while True:
+              print("Lean host snapshot", datetime.datetime.now(datetime.timezone.utc).isoformat(), flush=True)
+              for command in (["free", "-m"], ["df", "-h", "."]):
+                  subprocess.run(command, check=False, timeout=10)
+              for name in ("/sys/fs/cgroup/memory.events", "/sys/fs/cgroup/memory/memory.failcnt"):
+                  path = pathlib.Path(name)
+                  if path.is_file():
+                      print(name, path.read_text(), flush=True)
+              processes = subprocess.run(["ps", "-eo", "pid,comm,rss", "--sort=-rss"],
+                                         capture_output=True, text=True, check=False, timeout=10)
+              print("\n".join(processes.stdout.splitlines()[:12]), flush=True)
+              time.sleep(60)
+          PY
+          monitor_pid=$!
+          finish() {
+            build_status=$?
+            trap - EXIT
+            kill "$monitor_pid" 2>/dev/null || true
+            wait "$monitor_pid" 2>/dev/null || true
+            exit "$build_status"
+          }
+          trap finish EXIT
+          trap 'echo "Lean build received SIGTERM" >&2; exit 143' TERM
+          lake build
 
       - name: Run the FZ-12 joint-threshold certificate suite
         # The producer replays `lake build SeamCurrentPhotonLeptonThreshold`
@@ -74,3 +117,14 @@ jobs:
         run: |
           lake exe cache get
           lake build
+
+      - name: Save Lake build cache
+        # Completed artifacts may be reused after a failed build; Lake still
+        # checks source/dependency traces. Saving never turns a failure green.
+        if: always() && !cancelled()
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            Lean/.lake/build
+            Lean/ObservableNormalForms/.lake/build
+          key: lean-core-v3-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}

@@ -13,6 +13,8 @@ import Geometry.SourceAccumulatorAxiomAudit
 import Geometry.SourceNativeProgramsAxiomAudit
 import Geometry.SourceTemporalAcceptanceAxiomAudit
 import Geometry.SourceCheckpointAxiomAudit
+import Geometry.SourcePublicationAxiomAudit
+import Geometry.SourceOperationReadsAxiomAudit
 import Geometry.SourcePopulationQuadrature
 import Geometry.GoldenSourceAssignment
 import Geometry.GoldenSourceCountLimit
