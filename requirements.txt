@@ -7,7 +7,7 @@
 # Optional lanes keep their own extras and stay opt-in:
 #   code/ibm_quantum_cloud/requirements-ibm.txt   IBM / Qiskit hardware lane (OPH_RUN_IBM=1)
 #   code/particles/requirements-quantum.txt        qiskit ancillary experiments
-numpy==2.5.1
+numpy==2.5.3
 scipy==1.18.0
 mpmath==1.3.0
 sympy==1.14.0
