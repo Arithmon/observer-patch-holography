@@ -5,6 +5,16 @@ and derives a consistent native history law. It also tests the proposed
 selection mechanism on a common demand algebra and on radius/population
 alternatives. The [contract](CONTRACT.md) retains the full M1 exit criterion.
 
+The [finite-state derivation](STATE_SELECTION.md) addresses A3's actual
+noncommutative local-state objective. It proves maximal feasible support,
+the exact criterion for forcing a positive public failure effect to zero,
+quantitative failure floors, and an explicit bound against a false
+approximate minimum. These are analytic matrix results with kernel-checked
+real reductions. Exact noncommuting matrices and independently reconstructed
+channels test the distinction between a selected state and a selected
+record-preserving process. Neither a global state nor a shared eigenbasis
+is assumed in the general theorem.
+
 From the repository root, with `PYTHONPATH=code`:
 
 ```text

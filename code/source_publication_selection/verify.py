@@ -148,12 +148,14 @@ def geometry(q, population):
 
 
 def verify(packet):
-    if type(packet) is not dict or set(packet) != {"schema", "scope", "source_pins", "native", "paths", "geometry", "locality", "sha256"}:
+    if type(packet) is not dict or set(packet) != {"schema", "scope", "source_pins", "native", "paths", "geometry", "locality", "quantum", "sha256"}:
         raise ValueError("packet fields")
     codec.equal(packet["schema"], 1, "schema")
     codec.equal(packet["scope"], codec.SCOPE, "scope")
     codec.equal(packet["source_pins"], codec.pins(), "source pins")
     codec.equal(packet["sha256"], codec.digest({k: v for k, v in packet.items() if k != "sha256"}), "digest")
+    from . import check_quantum
+    codec.equal(packet["quantum"], check_quantum.expected(), "quantum semantics")
     from . import check_locality
     codec.equal(packet["locality"], {
         "intervals": [check_locality.interval(*s) for s in codec.INTERVAL_CASES],
@@ -176,6 +178,8 @@ def verify(packet):
             "path_words_replayed": sum(sum((N-1)**n for n in range(T+1)) for N, _, T in codec.PATH_CASES),
             "geometry_ordered_pairs_counted": 2*sum(q**6 for q in codec.QS),
             "locality_graphs_reconstructed": len(codec.INTERVAL_CASES)+len(codec.STENCIL_CASES),
+            "noncommuting_segments_checked": len(codec.QUANTUM_CASES),
+            "quantum_channels_reconstructed": 4,
             "complete_prefix_consistency": True, "M1_derived": False}
 
 

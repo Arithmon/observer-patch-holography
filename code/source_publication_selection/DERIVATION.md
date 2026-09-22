@@ -1,5 +1,10 @@
 # Eventual publication, joint demand selection, population and radius
 
+The companion [finite-state proof](STATE_SELECTION.md) treats A3's actual
+noncommutative compatible-family objective. It derives the exact positive
+failure-effect criterion and quantitative witness bounds, without replacing
+ontic state selection by the declared history problem studied below.
+
 ## 1. Constructing the continuation potential
 
 Fix a finite move alphabet A, a deterministic native response checkpoint

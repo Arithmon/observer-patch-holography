@@ -10,6 +10,7 @@ ROOT = HERE.parents[1]
 WEIGHTS = ((1, 1, 1), (1, 2, 3), (5, 2, 1))
 HORIZON = 8
 QS = (5, 13, 21)
+QUANTUM_CASES = ((3, 4, 5), (5, 12, 13), (8, 15, 17))
 INTERVAL_CASES = tuple((N, K) for N in (1, 2, 5, 13) for K in (1, 2, 7))
 STENCIL_CASES = tuple((q, exponent) for q in (4, 8, 12) for exponent in (1, 2))
 PATH_CASES = ((3, (0, 2), 8), (5, (0, 2, 4), 6), (7, (0, 2, 4, 6), 4),
@@ -21,6 +22,7 @@ SCOPE = {
     "geometry": "declared golden and uniform cube populations; ordinary Euclidean distance",
     "radius_exponents": ["1/4", "1/2", "3/4"],
     "locality": "complete-read intervals and fixed Euclidean grid stencils; no full-axiom countermodel",
+    "state_selection": "analytic finite Umegaki support theorem; exact noncommuting state and declared process controls",
     "all_axioms_instantiated": False,
     "meaning_population_radius_selected": False,
     "M1_derived": False,

@@ -56,6 +56,18 @@ M1's remaining inputs. A conditional scheduling theorem is not full M1.
    Euclidean grid stencils by exact metric tests and breadth-first search.
 8. Integrate formal proofs, strict semantic verification, adversarial tests,
    scientific text, paper preview, claim classification and CI gates.
+9. Prove support saturation for the full finite noncommutative A3 objective
+   on compatible local-state families, without a global-state or common
+   eigenbasis assumption. Derive the exact positive-failure-effect criterion,
+   a quantitative failure floor from a feasible witness, and an explicit
+   improvement bound excluding false approximate minima. Treat singular
+   references on their finite-objective face and positive readout pullbacks
+   separately from mere injectivity of the cover. Kernel-check the real
+   inequality reductions and label the matrix entropy proof as analytic.
+10. Independently verify exact noncommuting state controls and quantum
+    channel actions, including the distinct ontic and process optimizers.
+    Reject forged zero-failure, full-rank, commutation, channel and scope
+    claims. Do not promote this channel menu to the full A1 update grammar.
 
 ## Exit
 
@@ -95,3 +107,10 @@ for the full canonical basis is asserted. No physical controller, random
 source, precision, storage cost or layer clock is supplied. Time-prefix
 consistency does not prove compatibility across regulator refinements.
 PR-52 and the source-selection obligations of #740/#779 stay unconsumed.
+
+The additional finite-state theorem applies to the actual mathematical form
+of A3. Its M1 use requires the source-generated feasible family and a
+positive failure effect in a scored algebra or an actual positive pullback.
+The exact matrix controls instantiate that theorem, not the full axioms.
+The theorem cannot justify assuming a successful-history face or a singular
+reference that already encodes the desired read law.

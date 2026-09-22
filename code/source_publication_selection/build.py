@@ -117,11 +117,12 @@ def counts(q, population):
 
 
 def packet():
-    from . import exterior, locality
+    from . import exterior, locality, quantum
     return codec.seal({"schema": 1, "scope": codec.SCOPE, "source_pins": codec.pins(),
                        "native": [native(w, codec.HORIZON) for w in codec.WEIGHTS],
                        "paths": [exterior.case(*spec) for spec in codec.PATH_CASES],
                        "geometry": [counts(q, p) for q in codec.QS for p in ("golden", "grid")],
+                       "quantum": quantum.packet(),
                        "locality": {"intervals": [locality.interval(*s) for s in codec.INTERVAL_CASES],
                                     "stencils": [locality.stencil(*s) for s in codec.STENCIL_CASES]}})
 

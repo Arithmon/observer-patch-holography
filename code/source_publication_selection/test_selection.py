@@ -28,7 +28,7 @@ import importlib.abc
 import sys
 class RejectProducer(importlib.abc.MetaPathFinder):
     def find_spec(self, fullname, path=None, target=None):
-        if fullname in {"source_publication_selection.build", "source_publication_selection.exterior", "source_publication_selection.locality", "source_checkpoint_selection.build",
+        if fullname in {"source_publication_selection.build", "source_publication_selection.exterior", "source_publication_selection.locality", "source_publication_selection.quantum", "source_checkpoint_selection.build",
                         "source_checkpoint_selection.pipeline", "source_temporal_acceptance.build"}:
             raise AssertionError("producer import: " + fullname)
 sys.meta_path.insert(0, RejectProducer())
@@ -41,6 +41,17 @@ verify.main()
 
 @pytest.mark.parametrize("path,value", (
     (("schema",), True), (("schema",), 1.0),
+    (("quantum", "segments", 0, "selected_failure"), "0"),
+    (("quantum", "segments", 1, "commutator"), [["0", "0"], ["0", "0"]]),
+    (("quantum", "segments", 2, "rational_power_floor"), False),
+    (("quantum", "channels", 1, "mismatch"), "0"),
+    (("quantum", "channels", 0, "matrix_unit_images", 0), [["0", "0"], ["0", "1"]]),
+    (("quantum", "zero_mismatch_process_optimizer"), "identity"),
+    (("quantum", "face", "rank"), 3),
+    (("quantum", "singular_reference", "finite_face_rank"), 2),
+    (("quantum", "flip_witness_failure_floor"), "1/2"),
+    (("quantum", "segments"), []),
+    (("quantum", "channels"), []),
     (("locality", "intervals", 0, "events"), True),
     (("locality", "intervals", 11, "ordering_fraction"), "1/10"),
     (("locality", "intervals", 11, "incomparable_pairs"), 0),
@@ -91,7 +102,7 @@ def test_resealed_semantic_forgery(packet, path, value):
         verify.verify(forged)
 
 
-@pytest.mark.parametrize("field", ("native", "paths", "geometry", "locality", "scope", "source_pins", "sha256"))
+@pytest.mark.parametrize("field", ("native", "paths", "geometry", "locality", "quantum", "scope", "source_pins", "sha256"))
 def test_omitted_field(packet, field):
     forged = deepcopy(packet)
     del forged[field]
@@ -164,10 +175,10 @@ def test_every_scalar_field_resealed(packet, monkeypatch):
     # Cache only the independently recomputed expected experiments. Every
     # forged packet still traverses the actual schema, custody and semantic
     # comparisons. No expected values come from the producer or the packet.
-    from . import check_exterior, check_locality
+    from . import check_exterior, check_locality, check_quantum
     for module, name in ((codec, "pins"), (verify, "native"), (verify, "geometry"),
                          (check_exterior, "case"), (check_locality, "interval"),
-                         (check_locality, "stencil")):
+                         (check_locality, "stencil"), (check_quantum, "expected")):
         monkeypatch.setattr(module, name, lru_cache(maxsize=None)(getattr(module, name)))
     verify.verify(packet)
     count = 0
@@ -223,6 +234,10 @@ def test_real_cli_rejects_artifacts_and_source_edits(tmp_path, packet):
     forged["native"][0]["potential"] = "1"
     forged["sha256"] = codec.digest({k: v for k, v in forged.items() if k != "sha256"})
     changes.append((package/"controls.json", codec.canonical(forged), "native semantics"))
+    forged = deepcopy(packet)
+    forged["quantum"]["zero_mismatch_process_optimizer"] = "identity"
+    forged["sha256"] = codec.digest({k: v for k, v in forged.items() if k != "sha256"})
+    changes.append((package/"controls.json", codec.canonical(forged), "quantum semantics"))
     receipt = codec.load(package/"receipt.json")
     receipt["M1_derived"] = True
     changes.append((package/"receipt.json", codec.canonical(receipt), "receipt"))
