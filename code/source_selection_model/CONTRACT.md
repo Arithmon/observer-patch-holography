@@ -32,9 +32,11 @@ operational comparison. A countermodel alone does not meet this objective.
    requirements explicit. Derive its read relation from primitive flights,
    then join it to the covering and count theorems; do not assume an M1 menu.
 8. A source-to-native-order sandwich including controller and auxiliary
-   events, uniform timing error, arbitrary interventions, all resource costs
+   events, uniform timing error, localized initial and intermediate record
+   interventions, all resource costs
    and an explicit comparison of M1 with another regulator of the same law.
-9. Reproducible reference processes with every finite intervention retained,
+9. Reproducible reference processes with every declared initial and first-layer
+   commit intervention retained,
    an independent semantic checker, hostile-input tests and proof audits.
 
 ## Exit

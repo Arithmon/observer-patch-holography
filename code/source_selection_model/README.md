@@ -50,7 +50,10 @@ once each without discarding any intervention. These are exact software
 executions, not laboratory observations.
 
 The support checker covers four levels with 12, 42, 162 and 642 carriers;
-the all-level chain and mesh proofs are analytic. All 431 independent state
+it verifies the five-valent seed and reconstructs every oriented midpoint
+subdivision from incidence. Equal-count non-icosahedral spheres and altered
+fine triangulations are rejected.
+The all-level chain and mesh proofs are analytic. All 431 independent state
 coordinates have positive-state omission witnesses. Scalar, noiseless,
 redundant and invertible-but-noisy channels test exact record decoding.
 Hostile-input tests include actual CLI receipt and source-byte tampering,

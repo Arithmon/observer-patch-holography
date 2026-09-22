@@ -19,15 +19,24 @@ immutable fork, flight, wait, local addition, commit and checkpoint enters
 the stream. The audit log linearizes a parallel process: its line number is
 not elapsed physical time. All arithmetic and squared times are exact.
 
-The baseline and every single-site +1 intervention give 163 executions and
-2,683,568 events. `capture.json` retains their hashes and operation counts
-in about 53 KB; the complete streams are reproducible, not committed as
+The baseline, every single-site initial +1 intervention and every first-layer
+commit +1 intervention give 323 executions and 5,344,106 events. An
+intermediate intervention occurs before that version's sole immutable commit.
+`capture.json` retains their hashes and operation counts in a compact packet;
+the complete streams are reproducible, not committed as
 millions of lines. The independent `check_process.py` imports no producer.
 It reconstructs addresses, legal flights, clock budgets, immutable writers,
 consumed values, local arithmetic, whole-layer completeness and resource
 counts. The live verifier also checks intervention differences against path
 multiplicities extracted from the consumed-writer graph. These linear
 reference experiments do not prove arbitrary microphysical source behavior.
+The reference's additive diagnostic is distinct from the theorem's lossless
+tuple payload, which RG's finite classical maps construct analytically.
+Initial-input equality alone cannot certify ancestry: two distinct stored
+versions can have identical dependence on every initial input. The commit
+interventions test those additional independent directions. The new Lean
+noninterference reduction identifies exactly where the full intermediate
+intervention premise is used to obtain native ancestry.
 
 With `code` on `PYTHONPATH`:
 

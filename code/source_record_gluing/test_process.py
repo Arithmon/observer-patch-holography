@@ -132,8 +132,8 @@ def test_resealed_corrupt_producer_does_not_pass(events, monkeypatch):
     packet["cases"][0]["stream_sha256"] = hashlib.sha256("".join(
         json.dumps(row, separators=(",", ":"))+"\n" for row in events).encode()).hexdigest()
     original = process.execute
-    monkeypatch.setattr(process, "execute", lambda q, layers, intervention:
-                        iter(events) if (q, intervention) == (2, None) else original(q, layers, intervention))
+    monkeypatch.setattr(process, "execute", lambda q, layers, intervention, stage=-1:
+                        iter(events) if (q, intervention) == (2, None) else original(q, layers, intervention, stage))
     with pytest.raises(ValueError, match="unit-flight duration"):
         verify.verify_capture(packet)
 
@@ -168,6 +168,56 @@ def test_all_q2_interventions_have_exact_consumed_path_effects():
             two_hop = sum((-1, i) in baseline["parents"][parent] for parent in baseline["parents"][1, target])
             assert changed["layers"][0][target]-baseline["layers"][0][target] == direct
             assert changed["layers"][1][target]-baseline["layers"][1][target] == two_hop
+
+
+def test_all_intermediate_versions_are_independently_probed():
+    baseline = check_process.check(2, 2, None, process.execute(2, 2))
+    for source in range(8):
+        result = check_process.check(2, 2, source, process.execute(2, 2, source, 0), 0)
+        for target in range(8):
+            assert result["layers"][0][target]-baseline["layers"][0][target] == int(source == target)
+            assert result["layers"][1][target]-baseline["layers"][1][target] == int(
+                (0, source) in baseline["parents"][1, target])
+
+
+@pytest.mark.parametrize("mutation", ["missing", "duplicate", "value", "wrong_site", "late", "bool_stage"])
+def test_commit_intervention_cannot_be_forged(mutation):
+    events = list(process.execute(2, 2, 0, 0))
+    i = index(events, "intervene")
+    stage = 0
+    if mutation == "missing":
+        events.pop(i)
+    elif mutation == "duplicate":
+        events.insert(i, deepcopy(events[i]))
+    elif mutation == "value":
+        events[i][-1] += 1
+    elif mutation == "wrong_site":
+        events[i][2] = 1
+    elif mutation == "late":
+        events[i], events[i+1] = events[i+1], events[i]
+    else:
+        stage = False
+    with pytest.raises(ValueError):
+        check_process.check(2, 2, 0, events, stage)
+
+
+def test_initial_input_agreement_does_not_certify_version_dependencies():
+    # Both versions hold x+1. Replacing a read of a with b agrees on *all*
+    # initial x, but loses the actual a->output dependency. A commit-local
+    # intervention at a distinguishes them without altering b or x.
+    good = lambda x, da, db: (x+1+da, x+1+db, x+1+da)
+    bad = lambda x, da, db: (x+1+da, x+1+db, x+1+db)
+    assert all(good(x, 0, 0) == bad(x, 0, 0) for x in range(-20, 21))
+    assert good(3, 1, 0) != bad(3, 1, 0)
+
+
+def test_unequal_flight_arrivals_must_respect_the_reference_clock():
+    events = list(process.execute(3, 1))
+    i = index(events, "flight")
+    j = next(k for k, row in enumerate(events) if row[0] == "flight" and row[4] != events[i][4])
+    events[i], events[j] = events[j], events[i]
+    with pytest.raises(ValueError, match="arrival chronology"):
+        check_process.check(3, 1, None, events)
 
 
 def test_grid_clock_clearance_and_deleted_rotation_control():
@@ -209,7 +259,7 @@ def test_every_lean_theorem_is_axiom_audited_and_ci_gated():
     source = (ROOT/"Lean/Geometry/SourceRecordGluing.lean").read_text(encoding="utf-8")
     audit = (ROOT/"Lean/Geometry/SourceRecordGluingAxiomAudit.lean").read_text(encoding="utf-8")
     names = re.findall(r"^theorem (\w+)", source, re.M)
-    assert len(names) == 18
+    assert len(names) == 20
     assert {"OPH.SourceRecordGluing."+name for name in names} == set(
         re.findall(r"^audit_reusable_bus_axioms (\S+)$", audit, re.M))
     ci = (ROOT/".github/workflows/lean-ci.yml").read_text(encoding="utf-8")

@@ -237,6 +237,59 @@ theorem lowering_retains_event_count (lower : Instruction → List NativeInstruc
 
 end Lowering
 
+section NativeAncestry
+
+variable {Node Value : Type*}
+
+/-- A time-expanded finite native execution can be represented by updates of
+all node registers; unchanged registers have their own self dependency. -/
+def networkRun (step : ℕ → (Node → Value) → Node → Value) (initial : Node → Value) :
+    ℕ → Node → Value
+  | 0 => initial
+  | n + 1 => step n (networkRun step initial n)
+
+/-- A set closed under every actual dependency remains unchanged when the
+initial intervention is outside it. Controller and metadata nodes must be
+included in `depends`; this is a semantic locality premise, not a value-only
+compiler theorem. -/
+theorem network_closed_region_eq
+    (step : ℕ → (Node → Value) → Node → Value) (depends : Node → Node → Prop)
+    (locality : ∀ n i x y, (∀ j, depends j i → x j = y j) → step n x i = step n y i)
+    (region : Set Node) (closed : ∀ i ∈ region, ∀ j, depends j i → j ∈ region)
+    (x y : Node → Value) (same : ∀ i ∈ region, x i = y i) (n : ℕ) :
+    ∀ i ∈ region, networkRun step x n i = networkRun step y n i := by
+  induction n with
+  | zero => exact same
+  | succ n ih =>
+    intro i hi
+    exact locality n i _ _ (fun j hj => ih j (closed i hi j hj))
+
+/-- A localized record intervention that changes a later read forces native
+ancestry. `ancestry` may contain extra native edges. Its closure, the complete
+dependency factorization and localized intervention are explicit premises. -/
+theorem intervention_forces_native_ancestry
+    (step : ℕ → (Node → Value) → Node → Value)
+    (depends ancestry : Node → Node → Prop)
+    (locality : ∀ n i x y, (∀ j, depends j i → x j = y j) → step n x i = step n y i)
+    (refl : ∀ i, ancestry i i)
+    (trans : ∀ {i j k}, ancestry i j → ancestry j k → ancestry i k)
+    (contains : ∀ i j, depends i j → ancestry i j)
+    (x y : Node → Value) (source target : Node)
+    (localized : ∀ i, i ≠ source → x i = y i) (n : ℕ)
+    (changed : networkRun step x n target ≠ networkRun step y n target) :
+    ancestry source target := by
+  by_contra h
+  apply changed
+  apply network_closed_region_eq step depends locality {i | ancestry i target}
+    (fun i hi j hj => trans (contains j i hj) hi) x y ?_ n target (refl target)
+  intro i hi
+  apply localized i
+  intro heq
+  subst i
+  exact h hi
+
+end NativeAncestry
+
 /-- Finite source preparations use q^3 independently addressable records. -/
 theorem grid_population (q : ℕ) : Fintype.card (Fin 3 → Fin q) = q ^ 3 := by
   simp

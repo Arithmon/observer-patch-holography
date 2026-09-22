@@ -1,11 +1,13 @@
 {
-  "schema": "oph.record-gluing-verification.v1",
+  "schema": "oph.record-gluing-verification.v2",
   "verification_scope": "reference primitive execution and finite identities; RG native realization is proposed",
   "families": [
     {
       "q": 2,
       "population": 8,
-      "attempts": 9,
+      "attempts": 17,
+      "initial_interventions": 8,
+      "commit_interventions": 8,
       "events_per_attempt": 234,
       "reads_per_layer": 32,
       "minimum_squared_clock_margin": "3/20"
@@ -13,7 +15,9 @@
     {
       "q": 3,
       "population": 27,
-      "attempts": 28,
+      "attempts": 55,
+      "initial_interventions": 27,
+      "commit_interventions": 27,
       "events_per_attempt": 2153,
       "reads_per_layer": 279,
       "minimum_squared_clock_margin": "4/63"
@@ -21,16 +25,18 @@
     {
       "q": 5,
       "population": 125,
-      "attempts": 126,
+      "attempts": 251,
+      "initial_interventions": 125,
+      "commit_interventions": 125,
       "events_per_attempt": 20803,
       "reads_per_layer": 2647,
       "minimum_squared_clock_margin": "6/275"
     }
   ],
-  "total_reference_events": 2683568,
+  "total_reference_events": 5344106,
   "source_pins": {
     ".github/workflows/lean-ci.yml": "6898ab9b3b1a4a24c7736bfaf65e3fb66744c65aba2a649dce6d6898d44bb057",
-    ".github/workflows/source-selection-model.yml": "d0401cb4fb6f0c97436b8a189d151f8e78de45c484c2b01125fdf9721c1ff935",
+    ".github/workflows/source-selection-model.yml": "83a97335a8d78649f8ba0758ffeada7ea1ba10d5707d0c6c002ae46e0bb98181",
     "Lean/Geometry.lean": "bb9fd6d8c51cd8203e41fa47541e8c2cfb89df95189dc034e932ab433edb1427",
     "Lean/Geometry/FlatDiamondError.lean": "cd6c0a4334f185c528fb5692ee83d5411485153ffe78bf714568aa9442e94325",
     "Lean/Geometry/FlatDiamondVolume.lean": "606664950e8caa745566a90f73239958fbc6f3abc007b9c07fa61b89303c8382",
@@ -67,8 +73,8 @@
     "Lean/Geometry/SourceReadAcceptance.lean": "51547665d34301af933809205a14f85e8ac0a0170a6a4f3d54d2829b2b9a0781",
     "Lean/Geometry/SourceReadSelection.lean": "f43a262d6d3ac46a2471de75e7da237589502949eab56903e1410edda4fdef5d",
     "Lean/Geometry/SourceReadSelectionAxiomAudit.lean": "8dac97f154b552efbbf6079292a784e6cb6733e0c95701d8a697c289c7ebfb6f",
-    "Lean/Geometry/SourceRecordGluing.lean": "be17fdbbd322b329c0ff55ec3c61385ef6d68d264801edd9cb73b30f21886bbb",
-    "Lean/Geometry/SourceRecordGluingAxiomAudit.lean": "d37f431230626aa4e140e3db617ba10bcc3ed00d1564e5a4c46a1b1e233ed878",
+    "Lean/Geometry/SourceRecordGluing.lean": "d4362da30b09da4bcfcd0ae171ecdc8db08507cc10901ce01758f8123c47c136",
+    "Lean/Geometry/SourceRecordGluingAxiomAudit.lean": "7b69199ab0d246c26087b1f202c13fcece0ccb517f88c6d56ba5bc2ee47874b1",
     "Lean/Geometry/SourceReusableBus.lean": "25dc38bdcfe71a4d5860be4e0051dd16bd3083c9bdc8c5befcc162ba421f57d2",
     "Lean/Geometry/SourceReusableBusAxiomAudit.lean": "2d9fa469d6278f6a8e59fc3a204beea2eca4b597abc56b60675464311c21a6fe",
     "Lean/Geometry/SourceSeamPathTomography.lean": "0a4523a315fbfb42f81449bc9e42179b254ec38ef02fdf3f62127abab78a3a83",
@@ -93,17 +99,17 @@
     "Lean/lean-toolchain": "7dc000621e0046d1aada809e2b7177e64454645cf4c741e9daaf79c99ec2e7a2",
     "code/a5_closure/echosahedral_selector_certificate.py": "e140adad7fe3162e38dbe44736669d9ea35f98a94acf90625d09fce9766385f7",
     "code/a5_closure/port_current_inner_certificate.py": "8ac3f51d08155decc328ebb8c12909bf92f9a50313f14ebc0faf70c0d2513436",
-    "code/source_record_gluing/README.md": "01dfc829c2886e9510ea60c0a2d409654d65c069be72f98586f38a3171a42519",
+    "code/source_record_gluing/README.md": "83e71f8daebe46ba5d271802533f22392f3c2265557d287dbb1b4ecd1cf0bd64",
     "code/source_record_gluing/__init__.py": "e8d91f371dc9306036fb6c10916180f80a662fee56abdb0ae76fbda7486bc440",
-    "code/source_record_gluing/build.py": "9e5fe736a95bcf16b8f269a9e30985675a84127d734c9e0229155c39f8ef0545",
-    "code/source_record_gluing/capture.json": "f1ac64b09b894cab7e2b7ec9a4e30d510f3c5b03f22ff06fc8106e1a03da2c38",
-    "code/source_record_gluing/check_process.py": "f7a6c0cc44db197c5c020d6fd46c8ebbc9d91f8b59164b5e7824fd8ad786eb4b",
-    "code/source_record_gluing/process.py": "bdf1352aa53272d1d495f1b30432125df7f2391766f8a3f61600c05122536d62",
-    "code/source_record_gluing/test_process.py": "41e96a36d2e79cbe60abcc5ed96882abe74eed53a7eff3c433ef0b8ad64b8923",
-    "code/source_record_gluing/verify.py": "ed02408690b2e7f72a180148f9a3ec4566d374c9804794c4b82d94194e4fa9ac",
-    "code/source_selection_model/CONTRACT.md": "226ebbfa0b070b6542f5bfc14af192a075fc3ff9bcaf906a823c63fcd9f1fa5f",
-    "code/source_selection_model/RECORD_GLUING.md": "107b61210616200b35da15460f0dca90c8a47f60d4b3a62792f87af9c13a2ed8",
+    "code/source_record_gluing/build.py": "5ac195227817c223fe22869f7e1ee3ca4d84faf461784f0e5aaa858b05eec330",
+    "code/source_record_gluing/capture.json": "8cecea769b0a978f4fce61f2d26e2e3f55534d75d457aa0a9c5bf57b31e65c9c",
+    "code/source_record_gluing/check_process.py": "2d3664a74cc5f0de891f996d12ad204d33c75744ff9662dbfaadb90b96708b15",
+    "code/source_record_gluing/process.py": "4e39712fe28dda32cd7da37bdf0e50d9d8bd435f1f828d411dc950f20336342f",
+    "code/source_record_gluing/test_process.py": "f0a4c748e6c7650874d76a7a571f665f0d1b0a322fe673016d0093d9449d9112",
+    "code/source_record_gluing/verify.py": "6b32a1791389bf8f3febc79c9af5bab0695eaf9c861b16fe48685edf47d9b40a",
+    "code/source_selection_model/CONTRACT.md": "0eef7e5f703be35bf3fc9fad95e914ac1cdbf5e6ffcdc1505cfb77c089accf0f",
+    "code/source_selection_model/RECORD_GLUING.md": "7919b97e9dde9fbd952c2f6bf0dcdcbfc83bdcd45d1a2c83d59250e7ccd7203b",
     "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
-    "paper/tex_fragments/SOURCE_RECORD_GLUING.tex": "56a7f9385e15b78c5f41e3ba79736a41e22e6b1ddf9822b69aa7fda4d1813dc2"
+    "paper/tex_fragments/SOURCE_RECORD_GLUING.tex": "eeaf51de4e59a78d501f3a0aca23554add2f47ffda42b1d5753066ed15a7adc4"
   }
 }

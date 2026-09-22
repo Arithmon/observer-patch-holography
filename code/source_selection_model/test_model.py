@@ -170,6 +170,35 @@ def test_bad_geometric_bridge_rejected(target):
         geometry.check_tower(rows)
 
 
+def test_nonicosahedral_sphere_with_correct_census_is_rejected():
+    # An edge flip preserves V/E/F, spherical topology and every old chain
+    # and routing check. Its four affected seed valences are 4,4,6,6.
+    faces = geometry.seed()
+    faces.remove((0, 1, 2))
+    faces.remove((0, 3, 1))
+    faces.extend([(2, 0, 3), (2, 3, 1)])
+    count = 12
+    rows = [{"level": 0, "vertices": count, "faces": faces, "coarsen": None}]
+    for level in range(1, 4):
+        count, faces, coarse = geometry.subdivide(count, faces)
+        rows.append({"level": level, "vertices": count, "faces": faces, "coarsen": coarse})
+    with pytest.raises(ValueError, match="icosahedral seed"):
+        geometry.check_tower(rows)
+
+
+def test_fine_edge_flip_cannot_substitute_another_spherical_refinement():
+    rows = geometry.tower()
+    faces = rows[1]["faces"]
+    a, b, c = faces[0]
+    j = next(i for i, f in enumerate(faces) if i != 0 and b in f and c in f)
+    other = faces[j]
+    d = next(v for v in other if v not in (b, c))
+    # The common oriented edge is b -> c in the first face.
+    faces[0], faces[j] = (a, b, d), (a, d, c)
+    with pytest.raises(ValueError, match="midpoint"):
+        geometry.check_tower(rows)
+
+
 def test_checker_does_not_import_response_or_record_producers():
     program = '''
 import importlib.abc, sys

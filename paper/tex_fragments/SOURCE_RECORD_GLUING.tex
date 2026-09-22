@@ -118,6 +118,14 @@ independent record interventions and immutable versions, with every
 intermediate event and its resource bill retained. Realizations commute
 with the declared source refinements.
 \end{enumerate}
+Intervention faithfulness includes local interventions at every designated
+intermediate record output before publication, with all other registers and
+cached copies held fixed. Lowering must commute with insertion of these
+operations and subsequent reads. The version is committed once after its
+intervention. Merely agreeing on final outputs for all initial preparations
+is weaker: two versions can both contain $x+1$, making a substituted read
+indistinguishable until one version alone is perturbed.
+
 The exact version realizes these ideal grades. The vanishing-overhead
 version requires, for every complete finite experiment and every
 $\epsilon>0$, a finite realization with exact record values and endpoint
@@ -184,8 +192,14 @@ retains the sum of their event bills.
 For each bounded horizon, lower the entire finite experiment with uniform
 time error $\epsilon_q\leq\delta_q/q$. Commits need not be perfectly
 simultaneous. Let $P_q$ be the consumed-writer order and $N_q$ full native
-ancestry restricted to those commits. Faithful lowering and complete native
-grading give
+ancestry restricted to those commits. For each consumed-writer edge $u\to v$,
+vary the record at $u$'s output boundary while holding other records fixed.
+The corresponding tuple coordinate read at $v$ changes. If no native path
+connected them, the ancestors of $v$ would form a dependency-closed region
+unchanged by that local intervention. Induction on the native updates would
+leave its read unchanged, a contradiction. This proves $P_q\subseteq N_q$
+using intermediate intervention faithfulness; the value-only compilation
+induction does not prove it. Complete native grading then gives
 \[
  P_q\ \subseteq\ N_q\ \subseteq\ C_c
  \quad\text{at the actual native event assignments.}
@@ -237,16 +251,22 @@ $\delta_q^2=2/(2q+1)$; boundary equality would require
 $(2q+1)m=2q^2$, impossible since $\gcd(2q+1,q)=1$.
 
 The reference prepares, forks, flies, waits, adds locally and commits two
-layers for $q=2,3,5$. Baselines and every single-site intervention retain
-163 executions, totaling 2,683,568 primitive events. Compact commitments
+layers for $q=2,3,5$. Baselines, every single-site initial intervention and
+every first-layer commit intervention retain 323 executions, totaling
+5,344,106 primitive events. Compact commitments
 are checked against live streams and independent semantic replay, including
 all consumed writers and intervention path multiplicities. These are
 executions of RG's reference grammar, not of an asserted native simulator
 implementation. Source pins and hostile-input tests reject forged timing,
 values, missing events and filtered intervention denominators.
+The additive reference diagnostic is distinct from the proof's lossless
+tuple payload, constructed analytically from RG's finite classical maps.
+Its intervention tests certify that each consumed value affects the
+diagnostic; they do not certify arbitrary payload maps or native programs.
 
 The Lean proofs cover the local information bound, the primitive cone and
-its covering paths, the lowering induction, event bills, population size
+its covering paths, the lowering induction, the localized-intervention
+ancestry reduction, event bills, population size
 and margin stability. The full model interpretation and the join from RG
 to native ancestry and counts are analytic. Detailed proofs appear in
 \ophid{code/source_selection_model/RECORD_GLUING.md}.

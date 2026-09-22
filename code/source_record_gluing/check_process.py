@@ -21,12 +21,14 @@ def rational(value):
     return result
 
 
-def check(q, layers, intervention, events):
+def check(q, layers, intervention, events, intervention_stage=-1):
     require(type(q) is int and 2 <= q <= 9, "cutoff")
     require(type(layers) is int and 1 <= layers <= 4, "layer count")
     count = q**3
     require(intervention is None or type(intervention) is int and 0 <= intervention < count,
             "intervention")
+    require(type(intervention_stage) is int and -1 <= intervention_stage < layers and
+            (intervention is not None or intervention_stage == -1), "intervention stage")
     # Independent coordinate decoder, and an integer budget inequality.
     xyz = lambda i: (i//(q*q), (i//q) % q, i % q)
     squared_integer = lambda i, j: sum((a-b)**2 for a, b in zip(xyz(i), xyz(j)))
@@ -50,16 +52,18 @@ def check(q, layers, intervention, events):
     inputs = []
     responses = []
     parents = {}
+    intervened = False
     for event in events:
         require(type(event) is list and event and type(event[0]) is str, "event schema")
         name = event[0]
         lengths = {"prepare": 4, "fork": 5, "flight": 6, "wait": 6,
-                   "accumulate": 7, "commit": 4, "checkpoint": 3}
+                   "accumulate": 7, "intervene": 5, "commit": 4, "checkpoint": 3}
         require(name in lengths and len(event) == lengths[name], "event type/length")
         # Numbers in the event language are actual integers, never booleans.
         integer_fields = {"prepare": [1, 3], "fork": [1, 2, 3, 4],
                           "flight": [1, 2, 3, 5], "wait": [1, 2, 3],
                           "accumulate": [1, 2, 3, 4, 5, 6], "commit": [1, 2, 3],
+                          "intervene": [1, 2, 3, 4],
                           "checkpoint": [1]}
         require(all(type(event[i]) is int for i in integer_fields[name]), "integer event field")
         require(layer < layers or name == "prepare", "events after final checkpoint")
@@ -68,13 +72,13 @@ def check(q, layers, intervention, events):
             require(phase == -1 and layer == 0 and i == len(inputs) and i < count, "preparation coverage")
             require(type(address) is list and all(type(a) is int for a in address) and
                     address == list(xyz(i)), "source address")
-            require(value == i+1+int(intervention == i), "source intervention")
+            require(value == i+1+int(intervention == i and intervention_stage == -1), "source intervention")
             inputs.append(value)
             store[-1, i] = value
         else:
             require(len(inputs) == count and event[1] == layer, "stage lineage")
             next_phase = {"fork": 0, "flight": 1, "wait": 2, "accumulate": 3,
-                          "commit": 3, "checkpoint": 4}[name]
+                          "intervene": 3, "commit": 3, "checkpoint": 4}[name]
             require(phase <= next_phase, "noncausal operation ordering")
             phase = next_phase
             if name in {"fork", "flight", "wait"}:
@@ -111,11 +115,22 @@ def check(q, layers, intervention, events):
                 consumed.add((i, j))
                 read_count[j] += 1
                 parents.setdefault((layer, j), []).append((layer-1, i))
+            elif name == "intervene":
+                _, _, j, before, after = event
+                require(not intervened and layer == intervention_stage and j == intervention,
+                        "declared unique commit intervention")
+                require(0 <= j < count and j not in commits and
+                        read_count[j] == incoming_count[j] and before == sums[j] and after == before+1,
+                        "commit intervention boundary/value")
+                sums[j] = after
+                intervened = True
             elif name == "commit":
                 _, _, j, value = event
                 require(0 <= j < count and j not in commits and value == sums[j], "commit value")
                 require(read_count[j] == incoming_count[j],
                         "complete inferred parent menu")
+                require(not (layer == intervention_stage and j == intervention) or intervened,
+                        "missing commit intervention")
                 store[layer, j] = value
                 commits.add(j)
             else:
@@ -132,10 +147,13 @@ def check(q, layers, intervention, events):
         digest.update((json.dumps(event, separators=(",", ":"))+"\n").encode())
         counters[name] += 1
     require(layer == layers, "truncated process")
-    require(counters == {"prepare": count, "fork": layers*len(offdiag),
-                         "flight": layers*len(offdiag), "wait": layers*len(offdiag),
-                         "accumulate": layers*len(allowed), "commit": layers*count,
-                         "checkpoint": layers}, "whole-operation census")
+    expected_counts = {"prepare": count, "fork": layers*len(offdiag),
+                       "flight": layers*len(offdiag), "wait": layers*len(offdiag),
+                       "accumulate": layers*len(allowed), "commit": layers*count,
+                       "checkpoint": layers}
+    if intervention_stage >= 0:
+        expected_counts["intervene"] = 1
+    require(counters == expected_counts, "whole-operation census")
     return {"sha256": digest.hexdigest(), "events": sum(counters.values()),
             "operation_counts": dict(sorted(counters.items())),
             "reads_per_layer": len(allowed), "source_population": count,

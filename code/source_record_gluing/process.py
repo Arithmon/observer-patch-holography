@@ -8,10 +8,11 @@ from fractions import Fraction as Q
 from itertools import product
 
 
-def execute(q, layers=2, intervention=None):
+def execute(q, layers=2, intervention=None, intervention_stage=-1):
     sites = list(product(range(q), repeat=3))
     delta_squared = Q(2, 2*q+1)
-    state = {(-1, i): i+1+int(intervention == i) for i in range(len(sites))}
+    state = {(-1, i): i+1+int(intervention == i and intervention_stage == -1)
+             for i in range(len(sites))}
     for i in range(len(sites)):
         yield ["prepare", i, list(sites[i]), state[-1, i]]
     # The process comparison is between one primitive flight and the clock,
@@ -45,6 +46,11 @@ def execute(q, layers=2, intervention=None):
                 before = value
                 value += sample
                 yield ["accumulate", layer, source, receiver, sample, before, value]
+            if layer == intervention_stage and receiver == intervention:
+                # Counterfactual perturbation at the logical output boundary,
+                # before its sole immutable commit and any later version read.
+                yield ["intervene", layer, receiver, value, value+1]
+                value += 1
             state[layer, receiver] = value
             yield ["commit", layer, receiver, value]
         yield ["checkpoint", layer, [state[layer, i] for i in range(len(sites))]]

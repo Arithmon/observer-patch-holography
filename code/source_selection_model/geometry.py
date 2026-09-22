@@ -46,6 +46,7 @@ def check_tower(rows):
     """Check chain maps directly, not against the subdivision routine."""
     from collections import Counter
     require = lambda c, m: None if c else (_ for _ in ()).throw(ValueError(m))
+    require(type(rows) is list and len(rows) == 4, "declared tower coverage")
     summaries = []
     previous = None
     for level, row in enumerate(rows):
@@ -68,6 +69,7 @@ def check_tower(rows):
         require(all(n == 1 and directed[(b, a)] == 1 for (a, b), n in directed.items()),
                 "oriented two-face edges")
         edges = {tuple(sorted(e)) for e in directed}
+        neighbors = {i: {b for a, b in directed if a == i} for i in range(count)}
         require(len(edges) == 30*4**level and count-len(edges)+len(faces) == 2, "Euler census")
         # Connected vertex links establish a closed triangulated surface, not
         # merely an Euler characteristic equal to two.
@@ -90,6 +92,24 @@ def check_tower(rows):
             visited = following
         require(len(visited) == count, "support connectedness")
         if previous is not None:
+            # Infer midpoint identities from the submitted incidence, without
+            # calling the subdivision producer or trusting its vertex order.
+            old_count = previous["vertices"]
+            old_edges = {frozenset(e) for f in previous["faces"] for e in combinations(f, 2)}
+            midpoint = {}
+            for v in range(old_count, count):
+                endpoints = frozenset(n for n in neighbors[v] if n < old_count)
+                require(len(endpoints) == 2 and endpoints in old_edges and endpoints not in midpoint,
+                        "unique midpoint of a coarse edge")
+                midpoint[endpoints] = v
+            require(set(midpoint) == old_edges, "complete midpoint coverage")
+            subdivision_faces = {}
+            for a, b, c in previous["faces"]:
+                ab, bc, ca = (midpoint[frozenset(e)] for e in ((a, b), (b, c), (c, a)))
+                for f in ((a, ab, ca), (b, bc, ab), (c, ca, bc), (ab, bc, ca)):
+                    key, sign = oriented_key(f)
+                    subdivision_faces[key] = sign
+            require(dict(chains) == subdivision_faces, "oriented midpoint subdivision")
             coarse = row["coarsen"]
             require(type(coarse) is list and len(coarse) == count and
                     all(type(v) is int and 0 <= v < previous["vertices"] for v in coarse),
@@ -111,7 +131,6 @@ def check_tower(rows):
             require(set(fibers) == set(range(previous["vertices"])), "nonempty refinement fibers")
             members = {i: {j for j, parent in enumerate(coarse) if parent == i}
                        for i in fibers}
-            neighbors = {i: {b for a, b in directed if a == i} for i in range(count)}
             for parent, children in members.items():
                 require(children-{parent} <= neighbors[parent], "connected star fibers")
             coarse_edges = {tuple(sorted(e)) for f in previous["faces"] for e in combinations(f, 2)}
@@ -129,13 +148,13 @@ def check_tower(rows):
             fiber_sizes = sorted(Counter(fibers.values()).items())
         else:
             require(row["coarsen"] is None, "seed coarsening")
+            require(all(len(neighbors[v]) == 5 for v in range(count)), "five-valent icosahedral seed")
             fiber_sizes = []
             routes = 0
         summaries.append({"level": level, "carriers": count, "seams": len(edges),
                           "triple_overlaps": len(faces), "fiber_size_census": fiber_sizes,
                           "tagged_scalar_seam_routes": routes})
         previous = row
-    require(len(rows) == 4, "declared tower coverage")
     return summaries
 
 
