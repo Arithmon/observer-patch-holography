@@ -308,6 +308,45 @@ boundary for two diagnostic programs. It must reject invalid register types,
 out-of-range or repeated operands, altered gates, and incomplete evidence.
 Transport of each declared wire remains an LC premise, not a gate theorem.
 
+## Finite entropy selection from actual transition constraints
+
+There is a direct finite connection between the compiled operations and a
+classical A3 state problem. Fix a program of g gates on R bits, n of them
+independently preparable initial input bits. The ambient history alphabet contains all
+2^D assignments of the R registers at g+1 times, D=R(g+1). Its classical
+algebra is C^(2^D). Impose initial blank-work/output constraints and the
+actual equation for each executed gate. These are linear zero-expectation
+constraints on the indicators of invalid local transitions. They refer to
+the program operations, not its target truth table or success at an M1 read.
+
+Exactly one admissible history h(x) exists per input x, because the update
+rule is deterministic and the full history retains the initial input. Give
+the full input product domain any faithful prior p(x), which need not be a
+product probability law, and all other ambient history coordinates
+independent fair-bit references. Thus Q(h(x))=p(x)/2^(D-n), and the reference
+mass of the admissible family is Z=2^(-(D-n)). For every admissible state P,
+
+    D(P || Q) = D(P_input || p) + (D-n) log(2).
+
+The unique minimizer is consequently P*(h(x))=p(x). This proves exact
+agreement between the finite entropy minimizer and execution from the declared
+input ensemble, using actual gate constraints. No histories are removed
+because they fail a target read. A defective program's defective outputs
+remain in the family and have positive probability for every affected input.
+The exact control enumerates all 64 histories of one Toffoli step, obtains
+four admissible histories, and recovers a nonuniform faithful input prior.
+A hostile target table leaves feasibility unchanged and fails the separate
+functional-correctness check.
+
+The state problem has a faithful reference, a positive weight, a full joint
+observer and its marginal restrictions; the joint observer alone is an
+injective scored cover. The allowed global states are explicitly classical.
+Additional marginal score terms would require separate compatibility with
+this minimizer; their optimum is not silently inherited. This construction
+does not derive the program, the clock, the record constraints or this score
+cover from canonical A1--A3. It closes a finite process/state-consistency
+obligation of the proposed implementation, not the native-source completion.
+
 ## Consequences beyond the M1 limit
 
 ### Theorem 3: lossless reads impose an information cut bound

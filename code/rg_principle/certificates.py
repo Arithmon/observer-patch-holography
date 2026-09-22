@@ -1,8 +1,11 @@
 """Exact finite controls. Analytic quantifiers are proved in DERIVATION.md."""
 
 from itertools import product
+from fractions import Fraction
 
 import sympy as sp
+
+from .checker import history_admissible
 
 
 def require(condition):
@@ -90,3 +93,22 @@ def resource_certificate():
                      "reads_per_receiver": reads, "remote_bits_per_receiver": reads - 1,
                      "read_incidences_per_horizon": n*receivers*reads})
     return rows
+
+
+def history_certificate():
+    # Enumerate the entire two-time, three-register history space, not selected successes.
+    program = {"n": 2, "m": 1, "work": 0, "table": [[0], [0], [0], [1]], "gates": [[0, 1, 2]]}
+    prior = [Fraction(i, 10) for i in range(1, 5)]
+    admitted = []
+    for word in product((0, 1), repeat=6):
+        history = [list(word[:3]), list(word[3:])]
+        if history_admissible(program, history):
+            index = word[0] + 2 * word[1]
+            admitted.append((index, prior[index] / 16))
+    require(len(admitted) == 4 and {i for i, _ in admitted} == set(range(4)))
+    mass = sum(weight for _, weight in admitted)
+    require(mass == Fraction(1, 16))
+    require(all(weight / mass == prior[index] for index, weight in admitted))
+    return {"ambient_histories": 64, "admissible_histories": 4,
+            "reference_mass_of_constraints": str(mass),
+            "selected_input_weights": [str(p) for p in prior]}

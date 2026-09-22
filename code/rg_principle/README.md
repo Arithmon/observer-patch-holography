@@ -14,6 +14,9 @@ The new results are:
 * NOT/Toffoli with clean cofinal classical workspace implement every
   finite classical map. An explicit matrix-algebra witness makes classical
   copying compatible with twelve central ports and usable quantum seams.
+  Actual gate-transition constraints also give a finite classical entropy
+  minimum equal to the executed input ensemble, including defective outputs
+  when the program is defective; feasibility is independent of target success.
 * Lossless independent records impose a transcript-capacity bound. Literal
   dense M1 observation has at least order q^5 read incidences per fixed
   horizon and order q^2 fresh input bandwidth per interior receiver.

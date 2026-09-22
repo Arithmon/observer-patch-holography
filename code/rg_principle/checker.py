@@ -46,6 +46,20 @@ def execute(state, gates):
     return history
 
 
+def history_admissible(program, history):
+    """Feasibility uses actual transitions, never agreement with the target truth table."""
+    n, m, work = validate(program)
+    if type(history) is not list or len(history) != len(program["gates"]) + 1:
+        return False
+    if any(type(state) is not list or len(state) != n + m + work or
+           any(type(bit) is not int or bit not in (0, 1) for bit in state) for state in history):
+        return False
+    if any(history[0][n:]):
+        return False
+    return all(after == step(before, gate) for before, after, gate in
+               zip(history, history[1:], program["gates"]))
+
+
 def check_program(program, interventions=False):
     n, m, work = validate(program)
     traces, intervention_traces = [], []

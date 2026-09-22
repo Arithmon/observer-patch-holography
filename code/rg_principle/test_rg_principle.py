@@ -6,8 +6,8 @@ from itertools import product
 
 import pytest
 
-from .certificates import algebra_certificate, clock_certificate, resource_certificate
-from .checker import check_boundary_lowering, check_program, decode_is_lossless, execute, validate
+from .certificates import algebra_certificate, clock_certificate, resource_certificate, history_certificate
+from .checker import check_boundary_lowering, check_program, decode_is_lossless, execute, history_admissible
 from .compiler import cases, compile_table
 from .receipt import EVIDENCE, ROOT, compute, verify
 
@@ -98,6 +98,18 @@ def test_incoming_cut_excludes_the_locally_available_record():
     assert odd["remote_bits_per_receiver"] < odd["n"]**3
 
 
+def test_history_family_is_defined_by_operations_not_success():
+    program = {"n": 2, "m": 1, "work": 0, "table": [[0], [0], [0], [0]], "gates": [[0, 1, 2]]}
+    history = [[1, 1, 0], [1, 1, 1]]
+    assert history_admissible(program, history)  # Actual Toffoli history remains feasible.
+    with pytest.raises(ValueError, match="truth"):
+        check_program(program)  # It fails the separately stated target table.
+    assert not history_admissible(program, [[1, 1, 0], [1, 1, 0]])
+    assert not history_admissible(program, [[1, 1, 1], [1, 1, 0]])
+    assert not history_admissible(program, [[True, 1, 0], [1, 1, 1]])
+    assert history_certificate()["reference_mass_of_constraints"] == "1/16"
+
+
 @pytest.fixture(scope="module")
 def replay():
     return compute()
@@ -107,7 +119,7 @@ def test_committed_receipt(replay):
     assert verify(EVIDENCE) == replay
 
 
-@pytest.mark.parametrize("mutation", ["empty", "source", "case", "count", "bool", "phase", "clock", "resource", "extra"])
+@pytest.mark.parametrize("mutation", ["empty", "source", "case", "count", "bool", "phase", "clock", "resource", "history", "extra"])
 def test_forged_receipts_rejected(tmp_path, replay, mutation):
     forged = copy.deepcopy(replay)
     if mutation == "empty": forged = {}
@@ -118,6 +130,7 @@ def test_forged_receipts_rejected(tmp_path, replay, mutation):
     elif mutation == "phase": forged["algebra"]["phase_effect_probabilities"] = [0, 0]
     elif mutation == "clock": forged["clock"]["polyhedral_equal_radius_squared_gap"] = "0"
     elif mutation == "resource": forged["resources"][0]["reads_per_receiver"] = 1
+    elif mutation == "history": forged["history"]["selected_input_weights"] = ["1/4"] * 4
     else: forged["physical_source_certified"] = True
     path = tmp_path / "forged.json"
     path.write_text(json.dumps(forged), encoding="utf-8")

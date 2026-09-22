@@ -10,7 +10,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
     __package__ = "rg_principle"
 
-from .certificates import algebra_certificate, clock_certificate, resource_certificate
+from .certificates import algebra_certificate, clock_certificate, resource_certificate, history_certificate
 from .checker import check_program
 from .compiler import cases
 
@@ -27,7 +27,7 @@ def compute():
         name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in SOURCES},
         "circuits": {name: check_program(program, name in ("retained_copy", "clean_conjunction"))
                      for name, program in cases()},
-        "clock": clock_certificate(), "algebra": algebra_certificate(),
+        "clock": clock_certificate(), "algebra": algebra_certificate(), "history": history_certificate(),
         "resources": resource_certificate()}
 
 

@@ -119,6 +119,24 @@ support, degree-one bridge, operational deletion tests or proof that the
 private response exhausts all admitted reversible source responses. A
 dormant support added to a circuit would not meet those obligations.
 
+There is also a finite process-to-state connection. For $g$ gates on $R$
+bits, $n$ of them independent input bits, let $D=R(g+1)$ and admit all
+$2^D$ ambient histories. Initial blanks and actual gate equations define
+the feasible family by linear indicator constraints. Each input $x$ has
+exactly one feasible history $h(x)$. A faithful input prior $p(x)$ with fair
+references on all other history coordinates gives
+$Q(h(x))=p(x)2^{-(D-n)}$. Hence every feasible $P$ satisfies
+\[
+ D(P\Vert Q)=D(P_{\mathrm{input}}\Vert p)+(D-n)\log2.
+\]
+With the full joint history observer as the injective scored cover, the
+unique minimum is $P_*(h(x))=p(x)$, exactly the executed circuit ensemble.
+Feasibility uses actual transitions, not success at the target truth table:
+a defective program retains its defective histories with positive weight.
+This is an explicitly classical finite score problem. Additional scored
+marginals, the program and its physical clock are not selected by this
+identity. The native all-level source obligations remain separate.
+
 \paragraph{Independent motivation and its boundary.}
 Reversible classical computation motivates cleaning auxiliary work after
 copying an answer. Its relation to a transport clock is an extra premise.

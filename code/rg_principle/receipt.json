@@ -16,6 +16,17 @@
     "ports": 12,
     "refined_overhead": "kappa*radius^2/count"
   },
+  "history": {
+    "admissible_histories": 4,
+    "ambient_histories": 64,
+    "reference_mass_of_constraints": "1/16",
+    "selected_input_weights": [
+      "1/10",
+      "1/5",
+      "3/10",
+      "2/5"
+    ]
+  },
   "resources": [
     {
       "interior_receivers": 8,
@@ -95,12 +106,12 @@
     "Lean/Geometry/RecordGluingPrinciple.lean": "e87595ae0ca3c1378a04cfb5b0162fe71b0c61bd5b3515469ae2c3cc39bdffaa",
     "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean": "8518cde0bfb2c02bdc382d713d41ed3632e3bfc227fb3b61bf869461c748491c",
     "code/rg_principle/CONTRACT.md": "217dd830321a514b656d01f6b7841a22dff90e42502fe607e14a669cb136caf4",
-    "code/rg_principle/DERIVATION.md": "ea5ff7ab49bdbc0150bd00fe0326c87e2c456e3f64a7480dede77f447ffbfc23",
-    "code/rg_principle/certificates.py": "466895dc2ea875681839aa461cdf613559c86ccc7a7390dd19067ef234021be0",
-    "code/rg_principle/checker.py": "5acf8a03b5e3c3a3823098b0e24a1267486ded53ba27114c916a7a2b3461f04e",
+    "code/rg_principle/DERIVATION.md": "c8708f2a3199b6072726965f55973ae29c08307f679dec4245d73fba46f709ff",
+    "code/rg_principle/certificates.py": "a692c43dc2dd3620e98ca57547cfa1e9b761183f56cc91eb5bd85d95ac9ba68e",
+    "code/rg_principle/checker.py": "2066f1147be08bcc83e1c761df6700ec8d00a23003f3743f131fd78b96f5199c",
     "code/rg_principle/compiler.py": "042c2840fe0c9b62c551c8dbfed0441f5b9968579f0c05127a433648e2f50e13",
-    "code/rg_principle/receipt.py": "266f16943f379764efe84e4a84fa8c2734fbc4978e2a07008d8b87099c31ade1",
-    "code/rg_principle/test_rg_principle.py": "b5ce46733914f949e083cf55da8c8d60ec4daf99f1edd05ad2b719602823aa36"
+    "code/rg_principle/receipt.py": "967d5d57b5222ec282decb7df52f6994af453b17f4be83eceeb6b97b0096245c",
+    "code/rg_principle/test_rg_principle.py": "090bda179b148368b3fe1739701f91a220f682e27099a9b6167053f1a9672f1f"
   },
   "circuits": {
     "boolean3_000": {"executed_gates": 384, "forward_gates": 192, "gates_per_execution": 24, "inputs": 8, "intervention_gates": 0, "intervention_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945", "interventions": 0, "inverse_gates": 192, "program_sha256": "12f857c7871dd38396bcea4798f627418995de35d79c71cb188b5e6e6a955820", "registers": 5, "trace_sha256": "21184d92425d712dd05fa61850c945e2d15c7cb22bc8abf5e243484dbe1915b0", "work_registers": 1},
