@@ -11401,6 +11401,95 @@
           "PR-54"
         ]
       }
+    },
+    {
+      "claim_id": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+      "statement": "Under LC1--LC3, a positive quadratic expansion of squared local latency and finite tetrahedral carrier covariance force an isotropic infinitesimal clock. Complete time-faithful refinement bounds every native influence by the resulting cone; local directional coverage and finite composition attain all strict timelike deadlines. Exact dilation covariance and continuous rotational symmetry of operations are unnecessary. With independent registers and intervention-faithful finite realization, the existing source-net and cell-count theorems give the operational causal/count limit for any admissible mesoscopic regulator. NOT/Toffoli with clean cofinal classical workspace implement every finite classical map. A finite matrix-algebra construction makes retained classical copying compatible with twelve central ports and quantum seams, with an explicitly included joint observer and tracial entropy minimum. It does not construct a full all-level A1--A3 source or certify native response completeness. Entropy susceptibility supplies a candidate invariant quadratic form but does not supply clock calibration. RG and LC are proposed extensions, not adopted core axioms or verified simulator properties.",
+      "assumptions": [
+        "declared_local_clock_record_composition_and_time_faithful_refinement"
+      ],
+      "imported_results": [
+        "finite_group_invariant_quadratic_forms",
+        "reversible_classical_computation",
+        "source_net_covering_and_cell_count_limits",
+        "finite_matrix_Kraus_and_Umegaki_identities"
+      ],
+      "oph_specific_delta": "Separates the proposed record-gluing law into independently testable obligations, removes exact microscopic scaling and continuous rotation symmetry from its limiting geometry, and connects the remaining regular-clock principle to the existing OPH source-net limit without asserting a native source completion.",
+      "novelty_type": "local_clock_reduction_and_finite_algebra_coherence_of_proposed_record_transport",
+      "falsifier": "The invariant quadratic form is anisotropic, a time-faithfully refined dependency violates the cone bound, strict deadlines cannot be met despite all finite-composition premises, the clean finite-function compiler or copying channel fails exact replay, or finite algebra compatibility is promoted to full A1--A3 membership. Polyhedral clocks and coarse shortcuts are explicit controls for omitted premises.",
+      "scope_if_false": "The reduction of proposed RG or its finite compatibility witness fails. Existing source-net results retain their independently supplied read laws; no core axiom amendment or physical M1 conclusion is inferred.",
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [],
+        "open": [],
+        "boundary": [
+          "PR-52"
+        ]
+      },
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_conditional_theorem_with_exact_controls",
+      "evidence": [
+        "paper/tex_fragments/RECORD_GLUING_PRINCIPLE.tex",
+        "code/rg_principle/DERIVATION.md",
+        "code/rg_principle/CONTRACT.md",
+        "code/rg_principle/compiler.py",
+        "code/rg_principle/checker.py",
+        "code/rg_principle/certificates.py",
+        "code/rg_principle/receipt.py",
+        "code/rg_principle/receipt.json",
+        "code/rg_principle/test_rg_principle.py",
+        "Lean/Geometry/RecordGluingPrinciple.lean",
+        "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean"
+      ],
+      "status": "conditional_reduction_and_resource_bounds_proved__native_source_binding_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ]
+    },
+    {
+      "claim_id": "OPH-RG-INFORMATION-RESOURCE-BOUND",
+      "statement": "Lossless decoding of m independently intervenable d-ary records with all preexisting caches fixed requires a complete finite cut transcript with at least d^m alternatives. For the dense M1 regulator q=n^2, n>=2, an explicit strict interior cube gives at least q^(9/2)/8 read incidences per layer and q^5/8 per horizon L/c. Each interior receiver needs fresh binary input bandwidth at least c*q^2/L under independent layer-boundary interventions. Aggregate incidence counts are not unicast packet counts, and correlated unperturbed histories alone do not imply a fresh entropy rate. These are combinatorial information/resource consequences of the declared read experiment, not energy, thermodynamic, gravitational or matter-dynamics laws.",
+      "assumptions": [
+        "declared_lossless_independent_interventions_and_dense_observation"
+      ],
+      "imported_results": [
+        "finite_pigeonhole_principle",
+        "integer_grid_inner_cube_count"
+      ],
+      "oph_specific_delta": "Exposes the cofinal resource burden of the dense M1 observation protocol independently of its causal/count convergence; separates distinguished record volume, complete transcript capacity and native work.",
+      "novelty_type": "intervention_sensitive_information_cut_and_dense_M1_resource_lower_bounds",
+      "falsifier": "A decoder for every independently varied input tuple is noninjective, the strict interior cube fails inclusion or counting, a bounded complete receiver transcript decodes more independent bits than its alphabet permits, or an incidence lower bound is presented as an unicast or thermodynamic lower bound.",
+      "scope_if_false": "The stated resource obstruction fails. The clock/cone theorem and regulator count convergence retain their separate assumptions.",
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "These are finite decoding and integer-grid inequalities under explicit independent intervention and transcript assumptions. They use no physical event/clock/source identification from PR-16 or PR-52 and establish neither energy nor entropy-production calibration."
+      },
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_conditional_theorem_with_exact_controls",
+      "evidence": [
+        "paper/tex_fragments/RECORD_GLUING_PRINCIPLE.tex",
+        "code/rg_principle/DERIVATION.md",
+        "code/rg_principle/CONTRACT.md",
+        "code/rg_principle/compiler.py",
+        "code/rg_principle/checker.py",
+        "code/rg_principle/certificates.py",
+        "code/rg_principle/receipt.py",
+        "code/rg_principle/receipt.json",
+        "code/rg_principle/test_rg_principle.py",
+        "Lean/Geometry/RecordGluingPrinciple.lean",
+        "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean"
+      ],
+      "status": "conditional_reduction_and_resource_bounds_proved__native_source_binding_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ]
     }
   ]
 }

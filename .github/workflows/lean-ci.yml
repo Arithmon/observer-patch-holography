@@ -132,6 +132,7 @@ jobs:
           # Additional changed modules are compiled directly; the exhaustive
           # umbrella build is intentionally nightly-only.
           targets=(
+            "Geometry.RecordGluingPrincipleAxiomAudit"
             "Geometry.SourceEncodedMemoryAxiomAudit"
             "Geometry.SourceReusableBusAxiomAudit"
             "Geometry.SourceNativeUpdatesAxiomAudit"

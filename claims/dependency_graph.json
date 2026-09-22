@@ -258,7 +258,9 @@
   "OPH-REGISTERED-SOURCE-READ-ALGEBRA",
   "OPH-SPIN-EXCHANGE-SELECTION-BOUNDARY",
   "OPH-CONDITIONAL-PAULI-SCALAR-Q-SELECTION",
-  "OPH-CONDITIONAL-PAULI-OPERATION-SELECTION"
+  "OPH-CONDITIONAL-PAULI-OPERATION-SELECTION",
+  "OPH-RG-LOCAL-CLOCK-REDUCTION",
+  "OPH-RG-INFORMATION-RESOURCE-BOUND"
  ],
  "edges": [
   {
@@ -2235,6 +2237,16 @@
    "from": "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
    "to": "OPH-CONDITIONAL-PAULI-OPERATION-SELECTION",
    "role": "Supplies only the signed one-particle hopping edge for a separately declared covariant capped-symmetric lift. Neither the parent CAR nor its physical preparation is inherited by the operation theorem or countercontrol."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+   "role": "Supplies the covering-path and count-limit mathematics once LC realizes the declared finite read programs; physical source binding is not inherited."
+  },
+  {
+   "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
+   "to": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+   "role": "Supplies cell-assignment count convergence for distinguished regulator records; auxiliary native work is not identified with their volume."
   }
  ]
 }

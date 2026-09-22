@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 421,
+  "surface_count": 422,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -261,6 +261,11 @@
     },
     {
       "path": "paper/tex_fragments/RADIAL_LIFT_THEOREMS_330.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/RECORD_GLUING_PRINCIPLE.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
