@@ -229,6 +229,107 @@ propagation and counting limits were proved. The exact finite M1 menu
 and that continuum target are distinct obligations. None of these
 geometric controls is a full A1--A3 countermodel.
 
+\paragraph{The full finite A3 state problem.}
+Let $\mathcal K$ be A3's nonempty convex family of compatible local states,
+with finite observer cover $\mathcal G$, weights $w_P>0$, faithful local
+references $\tau_P$, and attained objective
+\[
+ F(\rho)=\sum_{P\in\mathcal G}w_P D(\rho_P\Vert\tau_P).
+\]
+The algebras may be noncommutative, and the local family need not extend
+to a global state. Every minimizer $\rho_*$ satisfies
+\begin{equation}
+ \operatorname{supp}\sigma_P\subseteq\operatorname{supp}(\rho_*)_P
+ \quad(\sigma\in\mathcal K,\ P\in\mathcal G).
+ \label{eq:source-state-support}
+\end{equation}
+Thus for every positive effect $E$ in a scored algebra,
+\begin{equation}
+ (\rho_*)_P(E)=0
+ \quad\Longleftrightarrow\quad
+ \sigma_P(E)=0\ \hbox{for every }\sigma\in\mathcal K.
+ \label{eq:source-state-zero}
+\end{equation}
+An actual positive restriction pullback transfers this result to a public
+record; injectivity of a cover alone does not provide that pullback.
+
+For $\rho_t=(1-t)\rho+t\sigma$, $0<t<1$, trace expansion gives
+\begin{align*}
+ &(1-t)D(\rho_P\Vert\tau_P)+tD(\sigma_P\Vert\tau_P)
+          -D((\rho_t)_P\Vert\tau_P)\\
+ &\qquad=(1-t)D(\rho_P\Vert(\rho_t)_P)
+              +tD(\sigma_P\Vert(\rho_t)_P).
+\end{align*}
+The logarithms on the right are restricted to the mixture support,
+which contains both endpoint supports. If $Q$ projects onto the kernel of
+$\rho_P$ and $b=\operatorname{Tr}(Q\sigma_P)>0$, binary measurement data
+processing bounds this gap below by $-tb\log t-tH(b)$, with
+$H(b)=-b\log b-(1-b)\log(1-b)$. All other local gaps are nonnegative.
+Consequently
+\[
+ F(\rho_t)-F(\rho)
+ \leq t\bigl[F(\sigma)-F(\rho)+w_PH(b)\bigr]+tw_Pb\log t.
+\]
+At a minimum the left side is nonnegative, whereas the right side is
+negative for small enough $t$. This proves \eqref{eq:source-state-support}
+without simultaneous diagonalization. Zero expectation of a positive
+effect means it annihilates the state support, proving
+\eqref{eq:source-state-zero}. The imported data-processing theorem is
+Theorem~5.35 of Watrous, \emph{The Theory of Quantum Information},
+\url{https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf}.
+
+On the established common supports, the derivative at $t=0$ gives
+\[
+ \sum_P w_P D(\sigma_P\Vert(\rho_*)_P)
+       \leq F(\sigma)-F(\rho_*).
+\]
+For $b=\sigma_P(E)>0$, binary data processing and
+$d(b\Vert p)\geq-H(b)-b\log p$ therefore imply
+\begin{equation}
+ (\rho_*)_P(E)\geq
+ \exp\!\left[-\frac{F(\sigma)/w_P+H(b)}{b}\right]>0.
+ \label{eq:source-state-failure-floor}
+\end{equation}
+This uses a feasible witness, without solving the optimizer. It is not
+uniform across refinements without uniform witness-cost and weight bounds,
+so it does not exclude an asymptotically vanishing error. For a candidate
+with zero effect probability, set $a=w_Pb$, $C=F(\sigma)+w_PH(b)$.
+The mixture $t=\exp(-1-C/a)$ improves its objective by at least
+$a\exp(-1-C/a)$; an approximation tolerance below this value cannot
+justify the candidate. For singular references, compress to their
+supports and apply the result to the nonempty finite-objective face of
+$\mathcal K$. A zero in a chosen reference can exclude an otherwise
+feasible failure, but its source derivation then requires proof.
+
+\paragraph{A selected state does not determine its record process.}
+Exact noncommuting controls use $R=|0\rangle\langle0|$,
+$S=|v\rangle\langle v|$, rational unit vectors
+$v=(3/5,4/5),(5/13,12/13),(8/17,15/17)$, and reference $I/2$.
+The unitary $\left(\begin{smallmatrix}a&b\\b&-a\end{smallmatrix}\right)$
+exchanges the endpoints, so strict convexity gives the unique midpoint
+optimizer, with determinant $b^2/4>0$ and last-coordinate probability
+$b^2/2$, although that probability is zero at $R$.
+
+Identity and complete depolarization both preserve $I/2$ and are
+covariant under every unitary, but the mismatch probabilities of their
+uniform classical two-time records are zero and $1/2$. On the declared
+common set of normalized channel Choi states with input marginal $I/2$,
+reference $I/4$ selects depolarization. The bit-flip channel is a
+deterministic-failure witness of cost $\log4$, giving the lower bound
+$1/4$ in \eqref{eq:source-state-failure-floor}. Adding the zero-mismatch
+face instead selects $\operatorname{diag}(1/2,0,0,1/2)$, the dephasing
+channel. This preserves classical records while discarding phase; it is
+not the identity quantum channel. This process state space and constraint
+are inputs, not a reconstruction of A1's instruments or a full-axiom
+countermodel. The complete proofs are in
+\path{code/source_publication_selection/STATE_SELECTION.md}.
+
+For an identified positive failure effect, \eqref{eq:source-state-zero}
+settles the finite A3 selection step: it enforces zero failure precisely
+when the source feasible family excludes failure. Establishing
+that family and the meaning of its record effects remains necessary.
+Conditioning on desired success cannot derive those inputs.
+
 \paragraph{Proof and source boundaries.}
 The modules under \path{Lean/Geometry/SourcePublicationAxiomAudit.lean}
 check the continuation potential, compatible cylinders, finite-marginal
@@ -241,6 +342,11 @@ in \path{code/source_publication_selection/} replay complete finite word
 trees and all maximal minors, and certify golden/grid metric counts by
 different exact arithmetic methods. Further controls independently
 reconstruct complete-read interval closure and exact grid-stencil paths.
+The noncommutative support, derivative and quantitative entropy arguments
+are analytic; \path{SourceStateSelection.lean} kernel-checks their real
+inequality reductions, with the matrix gap estimate as an explicit
+hypothesis. It does not formalize Umegaki data processing. Exact matrix
+and channel replay supplies independent regression controls.
 A full A1--A3 extraction of the golden
 population, required immutable-version meaning and particular radius,
 compatible with actual source response, transport and regulator refinement,

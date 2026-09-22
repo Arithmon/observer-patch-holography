@@ -11175,6 +11175,52 @@
         "boundary": [],
         "rationale": "The conclusions concern native scalar continuation and exact mathematical selection diagnostics. Eventual publication and path rank are proved within declared interfaces; full source grammar, golden population, particular radius, immutable-version refinement and physical precision/controller are excluded conclusions. This does not consume or discharge PR-52."
       }
+    },
+    {
+      "claim_id": "OPH-FINITE-A3-SUPPORT",
+      "statement": "For a convex family of compatible finite-algebra local states, positive finite observer weights, faithful local references and an attained weighted Umegaki minimum, every minimizing scored local state contains the support of every corresponding feasible state. No global extending state, common eigenbasis or cover injectivity is used. A positive scored effect has zero selected expectation exactly when every feasible state excludes it; actual positive restriction pullbacks preserve this criterion. The analytic Pythagorean inequality gives a strictly positive failure floor from any feasible witness, without solving the optimizer. An explicit logarithmic mixture improvement excludes a false zero-support approximate minimum below its stated tolerance. Singular references restrict the theorem to the nonempty finite-objective face. The matrix entropy proof is analytic; real inequality reductions are kernel checked. Exact noncommuting rational state segments and four independently reconstructed quantum channels distinguish state selection from temporal record preservation. The Choi control selects depolarization on its full channel family and dephasing on an added zero-mismatch face. Those channels are declared controls, not full A1--A3 countermodels. The actual M1 source feasible family, scored failure effects, population, propagation and immutable-version refinement are not supplied; no regulator-uniform failure floor or full M1 impossibility is claimed.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_finite_noncommutative_A3_support_and_witness_bounds_with_kernel_checked_real_reductions",
+      "assumptions": [
+        "finite_A3_state_problem_and_scored_positive_failure_effect"
+      ],
+      "imported_results": [
+        "finite_Umegaki_nonnegativity_and_data_processing",
+        "relative_entropy_trace_mixture_identity",
+        "finite_matrix_entropy_directional_derivative",
+        "positive_matrix_support_geometry"
+      ],
+      "oph_specific_delta": "Applies noncommutative information-projection geometry directly to the canonical compatible-local-state A3 objective. It gives an exact test and quantitative obstruction for a proposed source-record requirement, rather than substituting a declared schedule simplex for A3.",
+      "novelty_type": "canonical_finite_A3_public_requirement_criterion_and_quantitative_obstruction",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_EVENTUAL_PUBLICATION.tex",
+        "Lean/Geometry/SourceStateSelection.lean",
+        "Lean/Geometry/SourcePublicationAxiomAudit.lean",
+        "code/source_publication_selection/STATE_SELECTION.md",
+        "code/source_publication_selection/CONTRACT.md",
+        "code/source_publication_selection/quantum.py",
+        "code/source_publication_selection/check_quantum.py",
+        "code/source_publication_selection/verify.py",
+        "code/source_publication_selection/test_quantum.py",
+        "code/source_publication_selection/test_selection.py",
+        "code/source_publication_selection/controls.json",
+        "code/source_publication_selection/receipt.json"
+      ],
+      "falsifier": "A finite faithful-reference weighted local Umegaki minimizer omits support present in a feasible state; a positive scored effect violates the zero criterion or witness floor; a singular-reference state is included outside the finite-objective face; the independent verifier accepts forged matrix or process claims; or an ontic optimizer is promoted to a derived M1 instrument without a source map.",
+      "scope_if_false": "The finite A3 support argument, quantitative bound or exact matrix control fails; the earlier native and geometric constructions keep their own stated premises.",
+      "status": "finite_A3_support_and_failure_criterion_proved_analytically__M1_source_grammar_and_effect_extraction_open",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This is a finite mathematical theorem about the A3 objective and scored positive effects. It neither assumes nor concludes physical source selection or causal identification. Applying it to M1 requires a proved source-family and effect extraction, which are excluded conclusions; PR-52 is neither consumed nor discharged."
+      }
     }
   ]
 }

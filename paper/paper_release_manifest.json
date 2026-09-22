@@ -2,8 +2,8 @@
   "book": {
     "built_for_release_id": "r2045",
     "pdf_path": "book/reverse-engineering-reality-book.pdf",
-    "sha256": "d45af142c96384bf291dfe309d45a87a7a8f896dc234ddb725ed195903b08437",
-    "size_bytes": 1368149
+    "sha256": "2f0ef8aa37413da03ddb554689ffa9a8042a4dcb42d46cf308be1ce0be2ccf16",
+    "size_bytes": 1369160
   },
   "extra_papers": {},
   "generated_at": "2026-09-22T00:00:00Z",
@@ -20,8 +20,8 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "08c6fa8fcdc019d30a2767e100201b0e178d4fb38cc7232e735cf587dc869eb9",
-      "size_bytes": 452712
+      "sha256": "7092e7981bda65cad3b45eb60d73f01cfcd123246765be7440d120c5fb338898",
+      "size_bytes": 454413
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
@@ -40,8 +40,8 @@
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "fc9f349d2998d6103c8a3cf0750efca69fc6d5db2687ae520a604f21d18fbcb4",
-      "size_bytes": 972639
+      "sha256": "ea2e5d57c851f6db6eae2d23b27d22d28457d970788caf2593bc3ef539663d37",
+      "size_bytes": 979972
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
