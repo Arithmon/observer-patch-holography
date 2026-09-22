@@ -255,7 +255,9 @@
   "OPH-NATIVE-CHECKPOINT-SELECTION",
   "OPH-NATIVE-EVENTUAL-PUBLICATION",
   "OPH-FINITE-A3-SUPPORT",
-  "OPH-REGISTERED-SOURCE-READ-ALGEBRA"
+  "OPH-REGISTERED-SOURCE-READ-ALGEBRA",
+  "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
+  "OPH-RECORD-GLUING-M1-SUFFICIENCY"
  ],
  "edges": [
   {
@@ -2217,6 +2219,21 @@
    "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
    "to": "OPH-NATIVE-EVENTUAL-PUBLICATION",
    "role": "Supplies the covering cone and golden assignment/count theorems for explicit radius-family instantiations; their convergence does not select a population or radius."
+  },
+  {
+   "from": "OPH-SCREEN-PORT-CURRENT-INNER",
+   "to": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+   "role": "Supplies the intrinsic three-dimensional simple response ideal. RG separately supplies its operational action on transported records."
+  },
+  {
+   "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
+   "to": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+   "role": "Supplies exact golden equal-volume assignment and count convergence for the M1 regulator comparison under RG."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+   "role": "Supplies covering, causal-boundary, interval and strict-pair results joined to primitive execution and native ancestry under the proposed RG law."
   }
  ]
 }
