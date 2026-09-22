@@ -11450,7 +11450,7 @@
     },
     {
       "claim_id": "OPH-RG-INFORMATION-RESOURCE-BOUND",
-      "statement": "Lossless decoding of m independently intervenable d-ary records with all preexisting caches fixed requires a complete finite cut transcript with at least d^m alternatives. For the dense M1 regulator q=n^2, n>=2, an explicit strict interior cube gives at least q^(9/2)/8 read incidences per layer and q^5/8 per horizon L/c. Each interior receiver needs fresh binary input bandwidth at least c*q^2/L under independent layer-boundary interventions. Aggregate incidence counts are not unicast packet counts, and correlated unperturbed histories alone do not imply a fresh entropy rate. These are combinatorial information/resource consequences of the declared read experiment, not energy, thermodynamic, gravitational or matter-dynamics laws.",
+      "statement": "Lossless decoding of m independently intervenable d-ary records with all preexisting caches fixed requires a complete finite cut transcript with at least d^m alternatives. For the dense M1 regulator q=n^2, n>=2, an explicit strict interior cube gives at least q^(9/2)/8 read incidences per layer and q^5/8 per horizon L/c. Each interior receiver needs fresh binary input bandwidth at least c*q^2/(2L) under independent layer-boundary interventions, excluding its own locally available record from the incoming cut. Aggregate incidence counts are not unicast packet counts, and correlated unperturbed histories alone do not imply a fresh entropy rate. These are combinatorial information/resource consequences of the declared read experiment, not energy, thermodynamic, gravitational or matter-dynamics laws.",
       "assumptions": [
         "declared_lossless_independent_interventions_and_dense_observation"
       ],

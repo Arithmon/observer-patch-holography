@@ -345,8 +345,10 @@ reads occur per layer. A physical horizon L/c contains n layers, giving
 at least n^10/8=q^5/8 read incidences. These lower bounds use a strict inner
 cube, so a vanishing latency overhead or absence of exact null flights does
 not remove them. Nonself reads subtract one per receiver and have the same
-growth. Per interior receiver a fresh independent binary tuple needs at
-least n^3 bits per layer, hence at least c*n^4/L=c*q^2/L bits per unit time.
+growth. For an incoming communication cut, exclude the receiver's own record:
+the fresh remote tuple needs (2m+1)^3-1 >= n^3-1 >= n^3/2 bits per layer.
+Thus each interior receiver needs at least c*n^4/(2L)=c*q^2/(2L) incoming
+bits per unit time. Its own locally available bit is not charged as transport.
 
 The aggregate number is a read-incidence/output-size bound, not a network
 unicast bound: multicast can share paths. The per-receiver information cut

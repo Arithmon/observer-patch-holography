@@ -85,6 +85,8 @@ def resource_certificate():
         require(8 * receivers * reads >= n**9)
         require(8 * n * receivers * reads >= n**10)
         require(reads >= n**3)
+        require(2 * (reads - 1) >= n**3)
         rows.append({"n": n, "q": q, "interior_receivers": receivers,
-                     "reads_per_receiver": reads, "read_incidences_per_horizon": n*receivers*reads})
+                     "reads_per_receiver": reads, "remote_bits_per_receiver": reads - 1,
+                     "read_incidences_per_horizon": n*receivers*reads})
     return rows

@@ -91,6 +91,13 @@ def test_lossless_tuple_and_additive_collision():
     assert sum((0, 1)) == sum((1, 0))
 
 
+def test_incoming_cut_excludes_the_locally_available_record():
+    odd = next(row for row in resource_certificate() if row["n"] == 3)
+    assert odd["reads_per_receiver"] == 27
+    assert odd["remote_bits_per_receiver"] == 26
+    assert odd["remote_bits_per_receiver"] < odd["n"]**3
+
+
 @pytest.fixture(scope="module")
 def replay():
     return compute()

@@ -146,8 +146,10 @@ all offsets in $[-m,m]^3$ lie strictly within the radius $L/\sqrt q$.
 At least $(n^2-2m)^3$ interior receivers each consume $(2m+1)^3$ records.
 Thus there are at least $n^9/8=q^{9/2}/8$ read incidences per layer and
 $n^{10}/8=q^5/8$ in a horizon $L/c$. Each interior receiver needs at least
-$n^3$ binary transcript bits per layer under fresh independent interventions,
-hence bandwidth at least $cq^2/L$. Multicast can share transport paths;
+$(2m+1)^3-1\geq n^3/2$ incoming binary transcript bits per layer under fresh
+independent interventions, hence bandwidth at least $cq^2/(2L)$. This excludes
+its own locally available record from the communication cut.
+Multicast can share transport paths;
 the aggregate statement counts output incidences rather than unicast packets.
 The rate bound presumes independent new interventions with prior caches fixed.
 It does not infer a fresh entropy rate from an unperturbed correlated history.

@@ -22,63 +22,72 @@
       "n": 2,
       "q": 4,
       "read_incidences_per_horizon": 432,
-      "reads_per_receiver": 27
+      "reads_per_receiver": 27,
+      "remote_bits_per_receiver": 26
     },
     {
       "interior_receivers": 343,
       "n": 3,
       "q": 9,
       "read_incidences_per_horizon": 27783,
-      "reads_per_receiver": 27
+      "reads_per_receiver": 27,
+      "remote_bits_per_receiver": 26
     },
     {
       "interior_receivers": 1728,
       "n": 4,
       "q": 16,
       "read_incidences_per_horizon": 864000,
-      "reads_per_receiver": 125
+      "reads_per_receiver": 125,
+      "remote_bits_per_receiver": 124
     },
     {
       "interior_receivers": 9261,
       "n": 5,
       "q": 25,
       "read_incidences_per_horizon": 5788125,
-      "reads_per_receiver": 125
+      "reads_per_receiver": 125,
+      "remote_bits_per_receiver": 124
     },
     {
       "interior_receivers": 175616,
       "n": 8,
       "q": 64,
       "read_incidences_per_horizon": 1024192512,
-      "reads_per_receiver": 729
+      "reads_per_receiver": 729,
+      "remote_bits_per_receiver": 728
     },
     {
       "interior_receivers": 3869893,
       "n": 13,
       "q": 169,
       "read_incidences_per_horizon": 110528013973,
-      "reads_per_receiver": 2197
+      "reads_per_receiver": 2197,
+      "remote_bits_per_receiver": 2196
     },
     {
       "interior_receivers": 74618461,
       "n": 21,
       "q": 441,
       "read_incidences_per_horizon": 14511872913741,
-      "reads_per_receiver": 9261
+      "reads_per_receiver": 9261,
+      "remote_bits_per_receiver": 9260
     },
     {
       "interior_receivers": 976191488,
       "n": 32,
       "q": 1024,
       "read_incidences_per_horizon": 1122604592136192,
-      "reads_per_receiver": 35937
+      "reads_per_receiver": 35937,
+      "remote_bits_per_receiver": 35936
     },
     {
       "interior_receivers": 65548320768,
       "n": 64,
       "q": 4096,
       "read_incidences_per_horizon": 1152077285818368000,
-      "reads_per_receiver": 274625
+      "reads_per_receiver": 274625,
+      "remote_bits_per_receiver": 274624
     }
   ],
   "schema": "oph-rg-principle-v1",
@@ -86,12 +95,12 @@
     "Lean/Geometry/RecordGluingPrinciple.lean": "e87595ae0ca3c1378a04cfb5b0162fe71b0c61bd5b3515469ae2c3cc39bdffaa",
     "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean": "8518cde0bfb2c02bdc382d713d41ed3632e3bfc227fb3b61bf869461c748491c",
     "code/rg_principle/CONTRACT.md": "217dd830321a514b656d01f6b7841a22dff90e42502fe607e14a669cb136caf4",
-    "code/rg_principle/DERIVATION.md": "7b323f2d002051d0265099b4a7efbbb90f0c887b40cb2ec8e146204e2317dceb",
-    "code/rg_principle/certificates.py": "489f8f54968c6e5907a7421e0238c90d998315b7bf9a2ea5cd9cd253fa409bc3",
+    "code/rg_principle/DERIVATION.md": "ea5ff7ab49bdbc0150bd00fe0326c87e2c456e3f64a7480dede77f447ffbfc23",
+    "code/rg_principle/certificates.py": "466895dc2ea875681839aa461cdf613559c86ccc7a7390dd19067ef234021be0",
     "code/rg_principle/checker.py": "5acf8a03b5e3c3a3823098b0e24a1267486ded53ba27114c916a7a2b3461f04e",
     "code/rg_principle/compiler.py": "042c2840fe0c9b62c551c8dbfed0441f5b9968579f0c05127a433648e2f50e13",
     "code/rg_principle/receipt.py": "266f16943f379764efe84e4a84fa8c2734fbc4978e2a07008d8b87099c31ade1",
-    "code/rg_principle/test_rg_principle.py": "3ceb7e50a1cd2750af6168a85227f1f9de39b2ac41c6ee03540d720417f52a63"
+    "code/rg_principle/test_rg_principle.py": "b5ce46733914f949e083cf55da8c8d60ec4daf99f1edd05ad2b719602823aa36"
   },
   "circuits": {
     "boolean3_000": {"executed_gates": 384, "forward_gates": 192, "gates_per_execution": 24, "inputs": 8, "intervention_gates": 0, "intervention_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945", "interventions": 0, "inverse_gates": 192, "program_sha256": "12f857c7871dd38396bcea4798f627418995de35d79c71cb188b5e6e6a955820", "registers": 5, "trace_sha256": "21184d92425d712dd05fa61850c945e2d15c7cb22bc8abf5e243484dbe1915b0", "work_registers": 1},
