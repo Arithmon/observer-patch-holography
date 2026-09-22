@@ -11120,9 +11120,9 @@
     },
     {
       "claim_id": "OPH-REGISTERED-SOURCE-READ-ALGEBRA",
-      "statement": "The registered all-port simulator capture applies local C12 propagation before scalar repair on 6N disjoint port pairs. Every ideal repair word is the projection indexed by its visited pair set; the complete monoid has 2^(6N) maps. Each native thresholded pair commits at most once, giving no committed repair-to-repair edges and saturation after complete coverage. On positive per-carrier normalized preparations, a single receiver with initial samples and complete local history has observation rank 23 for N>=4 after coverage, with coordinate closure including the eleven-known-port normalization case. Balanced hidden preparations give indistinguishable numeric payloads and binary read error 1/2. Actual observer-zero snapshot values, feedback choices and committed writer edges are independently replayed. The native unitary distinguishes equal-intensity states with opposite phase, with gap at least 16359/1073741824 at t=2^-17, and all 144 unitary entries are certified nonzero. The actual next-port feedback fails an order-five icosahedral covariance control. Seven unfiltered captures bind these results to pinned source bytes. Population is configured, support-level changes leave the read operations unchanged, and longer histories saturate rather than refine a spatial graph. Global custody metadata is excluded from the numeric channel; the failure witness belongs to an open preparation interface, not a specified PRNG seed. Complete A1--A3 membership, scored positive failure pullback, physical instruments and M1 population/radius remain unproved.",
+      "statement": "The registered all-port simulator capture applies local C12 propagation before scalar repair on 6N disjoint port pairs. Every ideal repair word is the projection indexed by its visited pair set; the complete monoid has 2^(6N) maps. Each native thresholded pair commits at most once, giving no committed repair-to-repair edges and saturation after complete coverage. On positive per-carrier normalized preparations, a single receiver with initial samples and complete local history has observation rank 23 for N>=4 after coverage, with coordinate closure including the eleven-known-port normalization case. Balanced hidden preparations give indistinguishable numeric payloads and binary read error 1/2. Actual observer-zero snapshot values, feedback choices and committed writer edges are independently replayed. The native unitary distinguishes equal-intensity states with opposite phase, with gap at least 16359/1073741824 at t=2^-17, and all 144 unitary entries are certified nonzero. The actual next-port feedback fails an order-five icosahedral covariance control. Seven unfiltered captures bind these results to pinned source bytes. Population is configured, support-level changes leave the read operations unchanged, and longer histories saturate rather than refine a spatial graph. Global custody metadata is excluded from the numeric channel; the failure witness belongs to an open preparation interface, not a specified PRNG seed. Complete A1--A3 membership, scored positive failure pullback, physical instruments and M1 population/radius remain unproved. The native no-op band and phase-preserving lift have explicit affine obstructions on the stated density inputs. Permutation twirling and its dephased version are proved CPTP extensions of the ideal scalar repairs, with identical immediate diagonals and different subsequent native-unitary reads. The coordinate probes and native time translates generate M12, excluding their identification with central port records in that algebra. The measured recurrent extension has exact graph-distance influence support, but erases a 5N+1-dimensional normalized input kernel at its first cycle and fails carrier-only Markov lumpability. Those extensions are declared mathematical controls, not source-selected dynamics; influence is not promoted to exact recovery. Every normalized input can be recovered from its deterministic ideal means and a minimal linear archive of 5N+1 non-tree seam differences. A distinct flagged random-unitary extension recovers all quantum inputs and reproduces means only in expectation; its uniform flags alone carry no input information. Both completions require explicitly added state and global recovery, not an existing native archive or local M1 decoder.",
       "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
-      "tier": "kernel_checked_matching_read_algebra_with_analytic_source_and_phase_controls",
+      "tier": "kernel_checked_matching_reads_CPTP_extensions_and_affine_obstructions_with_analytic_recurrence_erasure",
       "assumptions": [
         "registered_all_port_capture_and_numeric_payload_interface"
       ],
@@ -11131,9 +11131,15 @@
         "simplex_coordinate_identifiability",
         "binary_observation_indistinguishability",
         "matrix_exponential_Taylor_remainder",
-        "finite_classical_KL_support"
+        "finite_classical_KL_support",
+        "Kraus_complete_positivity_and_trace_preservation",
+        "matrix_unit_generation_of_full_algebra",
+        "connected_incidence_cycle_space",
+        "Neumann_series_and_strong_Markov_lumpability",
+        "spanning_tree_incidence_inversion_and_linear_archive_lower_bound",
+        "flagged_random_unitary_recovery"
       ],
-      "oph_specific_delta": "Derives the actual registered source-to-numeric-record map, all-word repair limits and phase/feedback obstructions without inserting a successful-read constraint or geometric menu.",
+      "oph_specific_delta": "Derives the registered numeric read map and distinguishes impossible density-channel promotions from valid but operationally different ideal-repair extensions; derives their influence cone, normalized erasure kernel and carrier-coarsening obstruction without selecting M1 geometry. Constructs minimal linear deterministic difference archives and reversible flagged quantum instruments, with exact independently checked recovery and explicit record costs.",
       "novelty_type": "registered_source_operation_read_classification_and_instrument_obstructions",
       "evidence": [
         "paper/tex_fragments/SOURCE_OPERATION_READS.tex",
@@ -11147,9 +11153,12 @@
         "code/source_operation_reads/test_reads.py",
         "code/source_operation_reads/capture.json",
         "code/source_operation_reads/source_snapshot.json",
-        "code/source_operation_reads/receipt.json"
+        "code/source_operation_reads/receipt.json",
+        "Lean/Geometry/SourceRepairInstrument.lean",
+        "code/source_operation_reads/INSTRUMENT_DERIVATION.md",
+        "paper/tex_fragments/SOURCE_REPAIR_INSTRUMENT.tex"
       ],
-      "falsifier": "A native attempt or observer payload disagrees with independent replay; a skipped seam becomes a committed writer; the all-word projection, normalized rank or balanced hidden witness fails; a forged zero passes the propagator enclosure; the phase or rotation witness fails; source bytes differ from the pinned commit; or the result is promoted to full-axiom membership or M1.",
+      "falsifier": "A native attempt or observer payload disagrees with independent replay; a skipped seam becomes a committed writer; the all-word projection, normalized rank or balanced hidden witness fails; a forged zero passes the propagator enclosure; the phase or rotation witness fails; source bytes differ from the pinned commit; or the result is promoted to full-axiom membership or M1. A Kraus/trace identity, density-ensemble obstruction, normalized kernel count, recurrence support or coarse transition bound fails; a forged trivial circulation is accepted; or an extension control is presented as the native or canonical selected process. The difference archive fails exact recovery or minimal linear dimension, a forged missing archive/branch is accepted, or average repair is equated with deterministic branch repair.",
       "scope_if_false": "The stated operation-to-read classification or its native binding fails. The separate connected scalar recovery constructions and supplied geometric read laws retain their own premises.",
       "status": "registered_source_read_algebra_and_instrument_obstructions_proved__full_axiom_membership_and_M1_unresolved",
       "claim_class": "conditional_implication",
