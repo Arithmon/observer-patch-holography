@@ -88,7 +88,7 @@ That settles which content can carry a position. A position is a quantity two se
 
 The five-dimensional piece is the largest one on the wiring and it loses anyway. Its content halves in 6.6 passes against the slow band's 14.7, and after sixty passes the five directions are holding about a twentieth of what the three are holding. Whatever an observer writes into those five directions has drained most of the way out before a second observer can be told about it. A quantity like that describes nothing that has a place.
 
-That is where three comes from. It is the number of independent directions in the one band that outlives every other band, on a wiring that has no alternatives.
+That is where three comes from in the model. It is the number of independent directions in the one band that outlives every other band, on a wiring that has no alternatives. The band arithmetic above is exact; its preregistered fresh-seed instrument returned FAILED, so the observation ledger records the three-dimensionality row as owed and the match to the world's dimensions is not certified by it.
 
 ## The table of angles
 
@@ -132,7 +132,7 @@ That is the whole of what "the sum is 1" says. The surprise is in what it does n
 
 The fix for pi is a single operation and it is the operation that built the number line. Take the ratios of whole numbers, which have gaps in them wherever a sequence crowds together without arriving, and add in the limit of every such sequence. What comes out has no gaps left. It is the real numbers: the fractions together with every destination the fractions were pointing at. The name for the operation is **completion**.
 
-Run that operation on the record points inside the three-dimensional band, using the distances the table of angles supplies, and what comes out is continuous three-dimensional space. The record points belong to it, just as fractions belong to the real line. Every other point is the destination of some sequence of ever more accurate records, in the sense that 3.1416 and its successors are a destination.
+Run that operation on the record points inside the three-dimensional band, using the distances the table of angles supplies, and what comes out is the model's continuous three-dimensional space. The record points belong to it, just as fractions belong to the real line. Every other point is the destination of some sequence of ever more accurate records, in the sense that 3.1416 and its successors are a destination. Whether the world's space carries the same three is the owed row above.
 
 The sixty rotations come along. Each of them permutes the twelve ports, so each leaves every entry of the table of angles precisely where it was, so each preserves every distance in the completed space. A transformation that preserves all distances is a **rigid motion**: what a machinist does picking up a part and setting it down the other way round, with nothing stretched. The group chapter fourteen counted at sixty elements acts on the space it built as the turns of a rigid body.
 
