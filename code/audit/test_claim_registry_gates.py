@@ -80,7 +80,7 @@ def write_fixture_repo(root: Path) -> None:
     (root / "claims" / "falsification_matrix.csv").write_text(
         "claim_id,mathematical_falsifier,physical_identification_falsifier,"
         "phenomenological_falsifier,scope_if_false\n"
-        "FIX-1,m,p,ph,scope\n",
+        "FIX-1,m,p,ph,Fixture scope.\n",
         encoding="utf-8",
     )
     (root / "claims" / "dependency_graph.json").write_text(
@@ -144,6 +144,17 @@ def test_unknown_dependency_node_fails_closed(tmp_path):
         encoding="utf-8",
     )
     with pytest.raises(SystemExit, match="do not exactly match"):
+        checker.main(tmp_path)
+
+
+def test_falsification_scope_drift_fails_closed(tmp_path):
+    write_fixture_repo(tmp_path)
+    path = tmp_path / "claims" / "falsification_matrix.csv"
+    path.write_text(
+        path.read_text(encoding="utf-8").replace("Fixture scope.", "A paraphrase."),
+        encoding="utf-8",
+    )
+    with pytest.raises(SystemExit, match="scope_if_false differs"):
         checker.main(tmp_path)
 
 

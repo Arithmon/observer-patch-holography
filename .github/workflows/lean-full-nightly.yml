@@ -97,7 +97,11 @@ jobs:
           }
           trap finish EXIT
           trap 'echo "Lean build received SIGTERM" >&2; exit 143' TERM
-          lake build
+          lake build 2>&1 | tee full-build.log
+          if grep -F 'declaration uses `sorry`' full-build.log; then
+            echo "Unexpected Lean proof-debt state in the nightly full build." >&2
+            exit 1
+          fi
 
       - name: Run the FZ-12 joint-threshold certificate suite
         # The producer replays `lake build SeamCurrentPhotonLeptonThreshold`

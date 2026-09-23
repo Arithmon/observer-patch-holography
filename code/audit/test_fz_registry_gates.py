@@ -677,8 +677,11 @@ def test_explicit_fz11_lean_replay_fails_closed_without_lake(
 
 
 @pytest.mark.skipif(
-    shutil.which("lake") is None,
-    reason="the dedicated replay is mandatory in .github/workflows/lean-ci.yml",
+    not fz_tool.fz11_lean_replay_available(),
+    reason=(
+        "the replay needs lake on PATH and Mathlib built under Lean/.lake; "
+        "the dedicated replay is mandatory in .github/workflows/lean-ci.yml"
+    ),
 )
 def test_fz11_lean_replay_when_toolchain_is_available():
     result = fz_tool.verify_fz11_lean_replay()

@@ -105,6 +105,22 @@ def validate(workflow: str, lakefile: str) -> list[str]:
     if "Detect OphGap-relevant changes" not in ophgap:
         errors.append("the OphGap job must remain change-aware")
 
+    for name, block, step in (
+        ("golden_sector_psl2f5", golden, "golden_build"),
+        ("ophgap", ophgap, "ophgap_build"),
+    ):
+        condition = (
+            f"steps.{step}.outputs.status == '0' || "
+            f"steps.{step}.outputs.status == '124'"
+        )
+        if condition not in block:
+            errors.append(
+                f"the {name!r} cache must save only completed or timed-out builds "
+                f"using the declared {step} status"
+            )
+        if "timed_out" in block:
+            errors.append(f"the {name!r} job reads a timed_out output that no step sets")
+
     for name, block in jobs:
         if "${{ github.run_attempt }}" not in block:
             errors.append(f"Lean CI {name!r} cache keys must support resumable re-runs")

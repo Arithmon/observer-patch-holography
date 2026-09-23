@@ -834,6 +834,33 @@ def parse_fz11_axiom_reports(output: str) -> dict[str, list[str]]:
     return reports
 
 
+MATHLIB_OLEAN_CANDIDATES = (
+    ROOT / "Lean" / ".lake" / "packages" / "mathlib" / ".lake" / "build" / "lib"
+    / "lean" / "Mathlib.olean",
+    ROOT / "Lean" / ".lake" / "packages" / "mathlib" / ".lake" / "build" / "lib"
+    / "Mathlib.olean",
+)
+
+
+def mathlib_oleans_built() -> bool:
+    """True when compiled Mathlib oleans exist under the Lean workspace."""
+
+    if any(path.is_file() for path in MATHLIB_OLEAN_CANDIDATES):
+        return True
+    lib = ROOT / "Lean" / ".lake" / "packages" / "mathlib" / ".lake" / "build" / "lib"
+    return lib.is_dir() and next(lib.glob("**/Mathlib.olean"), None) is not None
+
+
+def fz11_lean_replay_available() -> bool:
+    """True when `lake` is on PATH and Mathlib is built, so the replay can elaborate.
+
+    The optional pytest replay uses this; the explicit `--verify-fz11-lean` gate
+    never skips.
+    """
+
+    return shutil.which("lake") is not None and mathlib_oleans_built()
+
+
 def verify_fz11_lean_replay() -> dict[str, Any]:
     """Re-elaborate FZ-11 and verify its five public axiom reports fail-closed."""
 

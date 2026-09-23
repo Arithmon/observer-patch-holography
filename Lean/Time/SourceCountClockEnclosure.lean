@@ -140,13 +140,15 @@ theorem relative_error_enclosure {VI VJ dI dJ ηI ηJ τI τJ : ℝ}
   · exact fourthRoot_mono (div_nonneg h1I.le h1J.le)
       (div_le_div₀ (by linarith) (by linarith) (by linarith) (by linarith))
 
+#print axioms fourthRoot_pow_four
+#print axioms fourthRoot_mono
 #print axioms finite_clock_enclosure
 #print axioms finite_clock_enclosure_counts
 #print axioms relative_error_enclosure
 
 -- Time/SourceCountClock.lean is byte-pinned by its source-count-clock receipt,
--- so the axiom audit of its five public theorems sits here, in the first
--- module that imports it.
+-- so the axiom audit of its five public theorems sits here, in an importing
+-- module.
 #print axioms OPH.SourceCountClock.fourth_power_order
 #print axioms OPH.SourceCountClock.fourth_root_unique
 #print axioms OPH.SourceCountClock.common_weight_cancels

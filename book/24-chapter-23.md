@@ -80,7 +80,7 @@ What Hamming had beyond his list of checks was seven relays bolted in a row on a
 
 Bekenstein's proportionality, with Hawking's quarter in it, runs in both directions. Left to right it prices a horizon: hand it an area and it returns an entropy. Right to left it prices a seam. Measure a horizon in Planck squares, meaning squares one Planck length on a side, take a quarter of the count, and what comes back is the number of seams a cut along that horizon severs. So each of those seams is worth four Planck squares of surface. No seam is worth more than another, because a seam is two ports joined and a connector has nothing printed on it that would make one join wider than the next. There is no such thing as a longer seam.
 
-A count of severed seams and a measurement in square meters are one measurement in two sets of units. The conversion between them is fixed once and holds everywhere in the world. Four Planck squares comes to 1.04 times ten to the minus sixty-ninth of a square meter, putting about 9.6 times ten to the sixty-eighth severed seams in a square meter of boundary.
+A count of severed seams and a measurement in square meters are one measurement in two sets of units, on the program's seam-to-area exchange-rate identification. The conversion between them is fixed once and holds everywhere in the world. Four Planck squares comes to 1.04 times ten to the minus sixty-ninth of a square meter, putting about 9.6 times ten to the sixty-eighth severed seams in a square meter of boundary. The identification itself is a declared exchange rate, and its physical-units row is recorded as not yet evaluable, so the grip on laboratory rulers is declared rather than certified.
 
 That count is what a surface has in place of a material. The area of a horizon is the number of its seams quoted in meters, so it arrives in whole numbers of one small square, the same square on every surface in the world, and no surface carries an area that lands between two of them. Take any region, cut along its boundary, count the seams the cut passes through, multiply by four of those squares, and out comes what a ruler laid against that boundary reports.
 
@@ -92,6 +92,6 @@ Entropy divides the way the seams divide. The number attached to a piece of boun
 
 So the number belongs to the piece rather than to the whole surface, putting a figure on a square you can cover with your hand. Ten centimeters on a side, drawn anywhere on any boundary in the world, and the seams a cut through it severs come to about ten to the sixty-seventh.
 
-A patch reads the seams of its own collar one at a time. A ruler laid along that collar reads the same seams four Planck squares at a time.
+A patch reads the seams of its own collar one at a time. A ruler laid along that collar reads the same seams four Planck squares at a time, on the exchange-rate identification above.
 
 Wheeler's two teacups went in carrying entropy nobody could gather back afterwards. The surface around the hole grew by enough to cover them. That surface is made of no material at all. The only property it has to offer is a size. A count of what somebody would have to be told came out balanced, exactly, against a shape.

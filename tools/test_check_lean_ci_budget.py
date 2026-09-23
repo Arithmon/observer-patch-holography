@@ -31,6 +31,21 @@ def test_job_over_thirty_minutes_is_rejected() -> None:
     assert "Lean CI 'build' job exceeds the 30-minute ceiling" in validate(mutated, lakefile)
 
 
+def test_side_job_cache_guard_must_use_build_status() -> None:
+    workflow, lakefile = _inputs()
+    mutated = workflow.replace(
+        "(steps.golden_build.outputs.status == '0' || steps.golden_build.outputs.status == '124')",
+        "(steps.golden_build.outcome == 'success' || steps.golden_build.outputs.timed_out == 'true')",
+        1,
+    )
+    errors = validate(mutated, lakefile)
+    assert (
+        "the 'golden_sector_psl2f5' cache must save only completed or timed-out builds "
+        "using the declared golden_build status"
+    ) in errors
+    assert "the 'golden_sector_psl2f5' job reads a timed_out output that no step sets" in errors
+
+
 def test_golden_job_over_thirty_minutes_is_rejected() -> None:
     workflow, lakefile = _inputs()
     marker = (

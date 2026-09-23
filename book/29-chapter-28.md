@@ -98,7 +98,7 @@ Counting the records that survive is a different count from counting the ones th
 
 Read the horizon two ways: from outside by its geometric area, and from inside by the durable public records observers can write, keep, tell apart and read back. The two readings describe one horizon, and setting them equal fixes its capacity.
 
-The arithmetic takes one input, the grain, and one correction. A shipping container holds slightly less than its stated volume, because the bracing that keeps the load from shifting takes up room. Every shared cut on the screen is assigned a small uniform reserve in the same way: the grain divided by twenty-four, chapter twenty-five's twelve dials counted twice, once out and once back. The reserve is 0.067957 against a budget of 281.07, and because the capacity is an exponential of the budget, those seven hundredths move it by six and a half percent, from 3.5321 times ten to the 122nd before the reserve to 3.3001 times ten to the 122nd after it.
+The arithmetic takes one input, the grain, and one correction. A shipping container holds slightly less than its stated volume, because the bracing that keeps the load from shifting takes up room. Every shared cut on the screen is assigned a small uniform reserve in the same way: the grain divided by twenty-four, chapter twenty-five's twelve dials counted twice, once out and once back. The reserve is 0.067957 against a budget of 281.03, and because the capacity is an exponential of the budget, those seven hundredths move it by six and a half percent, from 3.5321 times ten to the 122nd before the reserve to 3.3001 times ten to the 122nd after it.
 
 The weighted Planck expansion coordinate is 3.3129 times ten to the 122nd, four parts in a thousand above that capacity.
 

@@ -816,6 +816,19 @@ def main(root: Path = ROOT) -> None:
             canonical_ids=seen,
             one_row_per_claim=one_row_per_claim,
         )
+        if matrix_name == "falsification_matrix.csv":
+            registry_scope = {claim["claim_id"]: claim["scope_if_false"] for claim in claims}
+            drifted_scope = sorted(
+                {
+                    row["claim_id"]
+                    for row in rows
+                    if row["scope_if_false"] != registry_scope[row["claim_id"]]
+                }
+            )
+            require(
+                not drifted_scope,
+                f"{matrix_path}: scope_if_false differs from the claim registry for {drifted_scope}",
+            )
         if matrix_name == "novelty_matrix.csv":
             registry_novelty = {claim["claim_id"]: claim["novelty_type"] for claim in claims}
             drifted = sorted(

@@ -84,15 +84,18 @@ simulations reproductibles :
   mathématique rigoureux entre registres publics et probabilités quantiques.
 - **Les quatre lois de la thermodynamique par la réparation du désaccord.**
   Un seul paquet de théorèmes conditionnels sur la façon dont les
-  observateurs se rééchantillonnent vers le consensus donne les quatre lois,
-  la deuxième apparaissant comme du traitement de données appliqué à la
-  réparation, avec la borne de Landauer en corollaire.
+  observateurs se rééchantillonnent vers le consensus donne la première, la
+  deuxième et la quatrième loi, la deuxième apparaissant comme du
+  traitement de données appliqué à la réparation, avec la borne de Landauer
+  en corollaire. Les clauses de troisième loi restent conditionnelles à une
+  hypothèse d’écart au fondamental par appel que le paquet ne dérive pas.
 - **L’espace et le temps à partir des registres d’observateurs.** La réponse
   de la source fournit une géométrie spatiale à trois dimensions. Avec une
   règle locale de lecture explicite, les registres conservatifs approchent
   la géométrie causale et le volume d’un monde plat à 3+1 dimensions.
-  Le nombre de registres entre événements permet de retrouver des rapports
-  de durées. L’[article sur l’espace-temps](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf)
+  Sous une hypothèse de loi de volume déclarée, le nombre de registres
+  encadre les lectures d’une horloge fournie ; retrouver des rapports de
+  durées à partir des seuls comptes reste ouvert. L’[article sur l’espace-temps](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf)
   expose les preuves et leurs hypothèses ; les [preuves exécutables](code/causal_refinement/)
   permettent de reproduire la construction.
 - **La géométrie des champs sur l’écran à douze ports.** L’écran fini porte
@@ -102,12 +105,13 @@ simulations reproductibles :
 - **Le groupe de jauge du Modèle standard à partir de douze ports.** OPH
   fait un choix architectural au niveau du matériel de simulation : chaque
   parcelle d’observateur porte douze ports de frontière câblés comme les
-  sommets d’un icosaèdre. Un
-  théorème de classification force la réponse complète des ports à avoir le
-  type de Lie de jauge du Modèle standard, sans choisir un groupe dans un
-  catalogue. Une construction finie exhaustive identifie aussi une grammaire
-  de matière conditionnelle à quinze états avec annulation exacte des
-  anomalies.
+  sommets d’un icosaèdre. Un théorème de classification force la famille
+  compacte classifiée à porter le type de Lie de jauge du Modèle standard,
+  les données de dimension discriminantes étant importées d’un certificat
+  validé ; le catalogue classifié compte trois familles et le groupe de
+  jauge physique n’est pas pour autant sélectionné. Une construction finie
+  exhaustive identifie aussi une grammaire de matière conditionnelle à
+  quinze états avec annulation exacte des anomalies.
 - **Les constantes comme problèmes de point fixe.** La relation de Koide tient
   exactement sous une prémisse d’équilibre déclarée, et la fermeture
   autocohérente du pixel arrive à 2,5 parties par million de la constante de
@@ -124,8 +128,10 @@ simulations reproductibles :
   l’avance sur ce qui les réfuterait.
 
 Les articles liés donnent le statut précis de chaque étape. Ensemble, ces
-résultats tracent une voie testable des trois axiomes d’observateurs vers une
-théorie physique complète. La voie technique complète est
+résultats tracent une voie testable des trois axiomes d’observateurs et des
+quatre-vingt-quatre prémisses enregistrées, dont aucune n’est encore dérivée
+des seuls axiomes ([registre des prémisses](docs/PREMISE_REGISTER_V3.md)),
+vers une théorie physique complète. La voie technique complète est
 l’[article phare](https://philpapers.org/rec/MUEFOC).
 
 Le reste de ce README présente l’architecture derrière ces résultats.

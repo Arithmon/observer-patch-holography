@@ -22,7 +22,7 @@ repair relation is unchanged and has an explicit fair-stuttering no-go.
 
 ## Layout
 
-One Lake workspace, seven Lean libraries across their source directories:
+One Lake workspace, nine Lean libraries across their source directories:
 
 ```text
 Lean/
