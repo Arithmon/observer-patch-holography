@@ -75,7 +75,18 @@
       },
       "ordered_reads": 26784,
       "stencil_sha256": "09edf6c06011860956ab14933057cd296dc5888985df625b97f9c5d520035059",
-      "topology": "clipped"
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 1732464,
+        "affine_internal_quadratic": 154656,
+        "affine_quadratic": 1887120,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 6048,
+        "missing_ordered_slots": 6048,
+        "nonzero_diagonal_degree": 18,
+        "scaled_affine_quadratic": "52420/7",
+        "second_norm_moment": 126
+      }
     },
     "12:T:periodic": {
       "bridge": {
@@ -152,7 +163,18 @@
       },
       "ordered_reads": 32832,
       "stencil_sha256": "09edf6c06011860956ab14933057cd296dc5888985df625b97f9c5d520035059",
-      "topology": "periodic"
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 653184,
+        "affine_quadratic": 653184,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 18,
+        "scaled_affine_quadratic": "2592",
+        "second_norm_moment": 126
+      }
     },
     "12:U:clipped": {
       "bridge": {
@@ -229,7 +251,18 @@
       },
       "ordered_reads": 54856,
       "stencil_sha256": "afbf8556fe00850a5f7ddda1c34b1b29b3580eda7eeadc5c85a067b5eb1b02d4",
-      "topology": "clipped"
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 3690644,
+        "affine_internal_quadratic": 221448,
+        "affine_quadratic": 3912092,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 12536,
+        "missing_ordered_slots": 12536,
+        "nonzero_diagonal_degree": 38,
+        "scaled_affine_quadratic": "978023/87",
+        "second_norm_moment": 174
+      }
     },
     "12:U:periodic": {
       "bridge": {
@@ -306,7 +339,18 @@
       },
       "ordered_reads": 67392,
       "stencil_sha256": "afbf8556fe00850a5f7ddda1c34b1b29b3580eda7eeadc5c85a067b5eb1b02d4",
-      "topology": "periodic"
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 1565568,
+        "affine_quadratic": 1565568,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 38,
+        "scaled_affine_quadratic": "130464/29",
+        "second_norm_moment": 174
+      }
     },
     "16:T:clipped": {
       "bridge": {
@@ -383,7 +427,18 @@
       },
       "ordered_reads": 67072,
       "stencil_sha256": "09edf6c06011860956ab14933057cd296dc5888985df625b97f9c5d520035059",
-      "topology": "clipped"
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 5330688,
+        "affine_internal_quadratic": 403968,
+        "affine_quadratic": 5734656,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 10752,
+        "missing_ordered_slots": 10752,
+        "nonzero_diagonal_degree": 18,
+        "scaled_affine_quadratic": "119472/7",
+        "second_norm_moment": 126
+      }
     },
     "16:T:periodic": {
       "bridge": {
@@ -460,7 +515,18 @@
       },
       "ordered_reads": 77824,
       "stencil_sha256": "09edf6c06011860956ab14933057cd296dc5888985df625b97f9c5d520035059",
-      "topology": "periodic"
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 2236416,
+        "affine_quadratic": 2236416,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 18,
+        "scaled_affine_quadratic": "6656",
+        "second_norm_moment": 126
+      }
     },
     "16:U:clipped": {
       "bridge": {
@@ -537,7 +603,18 @@
       },
       "ordered_reads": 137272,
       "stencil_sha256": "afbf8556fe00850a5f7ddda1c34b1b29b3580eda7eeadc5c85a067b5eb1b02d4",
-      "topology": "clipped"
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 11403468,
+        "affine_internal_quadratic": 571368,
+        "affine_quadratic": 11974836,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 22472,
+        "missing_ordered_slots": 22472,
+        "nonzero_diagonal_degree": 38,
+        "scaled_affine_quadratic": "2993709/116",
+        "second_norm_moment": 174
+      }
     },
     "16:U:periodic": {
       "bridge": {
@@ -614,7 +691,18 @@
       },
       "ordered_reads": 159744,
       "stencil_sha256": "afbf8556fe00850a5f7ddda1c34b1b29b3580eda7eeadc5c85a067b5eb1b02d4",
-      "topology": "periodic"
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 5185536,
+        "affine_quadratic": 5185536,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 38,
+        "scaled_affine_quadratic": "324096/29",
+        "second_norm_moment": 174
+      }
     },
     "24:T:clipped": {
       "bridge": {
@@ -691,7 +779,18 @@
       },
       "ordered_reads": 472960,
       "stencil_sha256": "a101d58e3a302f598fe162025e23321e22dfa75a1d92bd475d8c4240d9022d5f",
-      "topology": "clipped"
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 156939200,
+        "affine_internal_quadratic": 11786880,
+        "affine_quadratic": 168726080,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 149120,
+        "missing_ordered_slots": 149120,
+        "nonzero_diagonal_degree": 44,
+        "scaled_affine_quadratic": "21090760/639",
+        "second_norm_moment": 1278
+      }
     },
     "24:T:periodic": {
       "bridge": {
@@ -768,7 +867,18 @@
       },
       "ordered_reads": 622080,
       "stencil_sha256": "a101d58e3a302f598fe162025e23321e22dfa75a1d92bd475d8c4240d9022d5f",
-      "topology": "periodic"
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 75893760,
+        "affine_quadratic": 75893760,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 44,
+        "scaled_affine_quadratic": "1054080/71",
+        "second_norm_moment": 1278
+      }
     },
     "24:U:clipped": {
       "bridge": {
@@ -845,7 +955,18 @@
       },
       "ordered_reads": 722648,
       "stencil_sha256": "355f01299ecd2cb2733cdbf70e6280abd26981c3df3f4decfe2194bf32d31dba",
-      "topology": "clipped"
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 187129180,
+        "affine_internal_quadratic": 12383592,
+        "affine_quadratic": 199512772,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 175912,
+        "missing_ordered_slots": 175912,
+        "nonzero_diagonal_degree": 64,
+        "scaled_affine_quadratic": "49878193/1326",
+        "second_norm_moment": 1326
+      }
     },
     "24:U:periodic": {
       "bridge": {
@@ -922,7 +1043,18 @@
       },
       "ordered_reads": 898560,
       "stencil_sha256": "355f01299ecd2cb2733cdbf70e6280abd26981c3df3f4decfe2194bf32d31dba",
-      "topology": "periodic"
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 91155456,
+        "affine_quadratic": 91155456,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 64,
+        "scaled_affine_quadratic": "3798144/221",
+        "second_norm_moment": 1326
+      }
     }
   },
   "moments": {
@@ -1217,20 +1349,20 @@
       "tick_times_c_over_L": "1/262144"
     }
   },
-  "schema": "oph-m1-interfaces-v1",
+  "schema": "oph-m1-interfaces-v2",
   "sources": {
     ".github/workflows/m1-interfaces.yml": "1445a90d1943e979f216a161aca5feb4c0e54d30f9f53785d8bef7d888e7c908",
-    "Lean/Geometry/M1Interfaces.lean": "20ee7282c44b3cfa9ab95ffb252f7ee8e2b56db8f228e49de4933639efb3f32e",
+    "Lean/Geometry/M1Interfaces.lean": "3c795d1273c0e9f6aac6e985e1f99a89492b6a962e2669a925cef7d46b4686f7",
     "Lean/Geometry/M1InterfacesAxiomAudit.lean": "63988bb1eaf00104545046259ce42a9da117d287841f03eba1e0768c00c85ffb",
-    "code/m1_interfaces/CONTRACT.md": "1d9416d7818b927522902d6575fb965f48702a8d49cdacd30b9813b645623227",
-    "code/m1_interfaces/DERIVATION.md": "2212015a2903877536001f8d0ff79d16fb4ec123c5588bc61a5a3096000740e5",
-    "code/m1_interfaces/README.md": "8ff3f8328c653ca19109ef842ef9e5efaa35f3c3f8d0afcd53ef6fbeef8ca15e",
+    "code/m1_interfaces/CONTRACT.md": "663de4dffede86f6656c3987c3e389da2ca459b9cc8c244ec4b1cd1152075576",
+    "code/m1_interfaces/DERIVATION.md": "a7b1f854ac2873dcdc88a226fcd930f6bcecf09294bdfeca25d452c1437f3bd9",
+    "code/m1_interfaces/README.md": "2437403c1b827e409acf80bf1621285153498fedd835fc47d601821c1606b6bd",
     "code/m1_interfaces/__init__.py": "b47a65ecec1f2195e30c479f2d2dc29e490bd673c1ce750402e8b48797b475de",
-    "code/m1_interfaces/build.py": "b3ff4232586f4d6adbc9a7a689a4aff7a26228e58a556c6409605e7029ace54f",
-    "code/m1_interfaces/check.py": "831c0d09b52bbdc97507242cdb22b9c418afc638fa48d9dba53782f7d8e0b710",
-    "code/m1_interfaces/model.py": "e4957006f696d388fef59d65a0b06eecf7e956827bec66472fe2f1d433ddbd46",
-    "code/m1_interfaces/test_interfaces.py": "1b25b67aeb29a3e961adf0e4d406bfd65361bfdb894bf9dcec7a19a2af07c765",
-    "code/m1_interfaces/verify.py": "fd652924115e573fc205b880ca2436863858005c1157e718df1952c42d803502",
-    "paper/tex_fragments/M1_INTERFACES.tex": "7c8d1e9d98c5ccfbb4dbafbfdeead4a211831a32eec29301fa75f947c78e5854"
+    "code/m1_interfaces/build.py": "447df06904483ba6f68da7db315d52c28c88966b751df5f2768e3aeec289090b",
+    "code/m1_interfaces/check.py": "63dc3e76d0c8e47d9e25feb3e6fdc0d0ea09d21a716eb06652e4e357e1876629",
+    "code/m1_interfaces/model.py": "31024fcda08e6db4ddf2866bbb6f341c0066c2831a2c17d76ad7c449ee17db20",
+    "code/m1_interfaces/test_interfaces.py": "269659e043ba49dbfabb7b5acb8d2763190fbe904f4137a3236541a550fddc2b",
+    "code/m1_interfaces/verify.py": "811218fe883a4d95ab3ace4286bfb028679ff1a0aff7029e885435e068707e10",
+    "paper/tex_fragments/M1_INTERFACES.tex": "49361038a69deab411ad105c016851f7aad8df561d8043720fb35a353a9f0fcc"
   }
 }

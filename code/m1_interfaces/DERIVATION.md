@@ -274,11 +274,23 @@ is present, and every step costs one tick. The route has
 and lies within 2m of its straight segment. Its physical time excess and
 tube width vanish. Zero offsets supply waiting. Strict timelike margins
 give eventual reachability; the radius bound excludes spacelike pairs.
+In the clipped cube, apply this to fixed diamonds compactly contained in
+the spatial cube and the observation time slab. Their positive boundary
+margin keeps the shrinking route tubes inside the actual population.
+On the torus use non-wrapping diamonds; a sufficient condition is a
+Minkowski lift with total time height T satisfying c T<1/2. Any spatially
+translated lift then requires more time than T and cannot add a relation.
 Equal cells of weight (a/c)h^3 and almost-everywhere convergence of generated
-interval and strict-pair indicators then give the flat diamond volume,
-ordering fraction 1/10 and fourth-root count-clock ratios. These measure
-conclusions do not depend on the new short edges. They are not physical
-clock or native execution statements.
+interval and strict-pair indicators give these diamonds' flat volume
+pi c^3 tau^4/24, where tau is the endpoint proper-time separation. Ordered
+strict-pair counts divided by the square of the interval population tend
+to 1/10; fourth-root interval-count ratios recover proper-time ratios.
+Boundary-truncated or wrapping intervals are not covered by those flat
+formulas. For example, at c=1 a time-height-4 interval in a unit-volume
+spatial cube has spacetime volume at most 4, whereas the unbounded flat
+diamond would have volume 256pi/24>4. The boundary restriction is essential.
+These local measure conclusions do not depend on the new short edges.
+They are not physical clock or native execution statements.
 
 The field consequence is stronger than the availability of a separately
 stabilized action. Remove zero, put M2=sum_(v in U)|v|^2 and use exactly
@@ -291,6 +303,20 @@ nearest-neighbor coupling. Cubic symmetry gives exact isotropic second
 moments; the Taylor error is at most a^2 B4/4, where B4 bounds the fourth
 directional derivatives of the test function. Positivity includes the
 fixed-zero exterior boundary terms.
+More explicitly, let b_x count nonzero stencil offsets from x to outside
+the cube. With the equal-cell inner product, the Dirichlet quadratic form is
+
+    <f,A_U f>_h = alpha h^3 [sum_{internal unordered {x,y}}
+                                 (f_x-f_y)^2 + sum_x b_x f_x^2].       (18a)
+
+The matrix diagonal is alpha (|U|-1) at every site; available internal
+neighbors give its off-diagonal entries. The second term is a prescribed
+zero-exterior boundary potential, requiring no outside record. A clipped
+graph Laplacian would omit that term and annihilate the constant vector;
+it is not the Dirichlet operator used below. In contrast, here the constant
+vector has form alpha h^3 sum_x b_x>0. The finite checker compares shifted
+array matrix actions with an independent unordered-edge/absent-slot form
+for the constant vector and f(x,y,z)=3+x+2y-z in integer site coordinates.
 The entropy weights in (1) remain one, distinct from the action normalization.
 Smooth consistency alone would not justify a thermal limit. The full
 spectral analysis is given next.

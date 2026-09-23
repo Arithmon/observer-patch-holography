@@ -24,7 +24,9 @@ def parent_claims():
     selected={
         'OPH-BH-CROSSING-READ-AREA-LAW':'variational_cut_extension_without_physical_entropy_identification',
         'OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM':'named_kinematics_retained_without_native_source_identification'}
-    found={row['claim_id']:row for row in claims if row['claim_id'] in selected}
+    matches=[row for row in claims if row['claim_id'] in selected]
+    check.require(len(matches)==len(selected),'parent claims must occur exactly once')
+    found={row['claim_id']:row for row in matches}
     check.require(set(found)==set(selected),'parent claim catalog')
     return {name:{'original_claim_sha256':check.digest(found[name]),'disposition':meaning}
             for name,meaning in selected.items()}
@@ -32,7 +34,7 @@ def parent_claims():
 
 @lru_cache(maxsize=None)
 def graph(config, family, topology):
-    masks,cuts,reads=check.graph_cuts(config,family,topology)
+    masks,cuts,reads,action=check.graph_cuts(config,family,topology)
     q=config[0]
     vectors=check.stencil(config,family)
     rows={}
@@ -57,7 +59,7 @@ def graph(config, family, topology):
         check.require(rows['residue']['volume_sites']==q**3//2,'residue volume')
     return dict(config=list(config),family=family,topology=topology,
                 stencil_sha256=check.digest(vectors),degree=len(vectors),
-                ordered_reads=reads,masks=rows,
+                ordered_reads=reads,masks=rows,uniform_action=action,
                 bridge=dict(changed_sites=changed,cut_change=cuts['connected']-cuts['localized'],
                             degree_bound=len(vectors)*changed,nearest_neighbor_connected=True))
 
@@ -65,7 +67,7 @@ def graph(config, family, topology):
 def verify(packet):
     check.require(type(packet) is dict and set(packet)=={'schema','sources','parent_claims','scales','moments','graphs'},
                   'exact interface receipt schema')
-    check.require(packet['schema']=='oph-m1-interfaces-v1','interface schema version')
+    check.require(packet['schema']=='oph-m1-interfaces-v2','interface schema version')
     check.require(check.canonical(packet['sources'])==check.canonical(pins()),'source custody mismatch')
     check.require(check.canonical(packet['parent_claims'])==check.canonical(parent_claims()),'parent claim scope mismatch')
     check.require(type(packet['scales']) is dict and set(packet['scales'])=={str(t) for t in range(1,13)},

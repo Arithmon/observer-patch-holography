@@ -204,6 +204,17 @@ at most $a^2B_4/4$, where $B_4$ bounds fourth directional derivatives of
 the test function. No specially
 weighted nearest-neighbor term is added. The uniform coefficient here
 normalizes an action; the crossing entropy weights remain one.
+On the clipped cube the zero-exterior convention includes a boundary
+potential: if $b_x$ counts missing nonzero stencil offsets, then
+\[
+ \langle f,A_Uf\rangle_h=\alpha h^3\left[
+  \sum_{\{x,y\}\,\mathrm{internal}}(f_x-f_y)^2+\sum_x b_x f_x^2\right].
+\]
+Its diagonal is $\alpha(|U|-1)$ at every site. The boundary term uses
+prescribed zero exterior values and requires no outside record. Omitting it
+gives a clipped graph Laplacian with a constant zero mode, rather than the
+Dirichlet operator analyzed here. The finite evidence checks both the
+constant and an affine field against an independent edge-energy formula.
 
 For an integer ball of radius $\rho\ge8$ and principal phase $\theta$,
 an elementary Dirichlet-sum estimate gives
@@ -272,8 +283,15 @@ norms control the momentum-covariance tail, giving the compact Gaussian
 Weyl and Klein--Gordon commutator limits too.
 
 All $T$ paths remain present. Charged coarse interpolation and binary
-corrections give their round causal limit, generated-diamond and strict-pair
-count limits, ordering fraction $1/10$ and count-clock ratios. The free
+corrections give the local round causal limit. Use diamonds compactly
+inside the clipped spatial cube and observation time slab; on the torus,
+use non-wrapping diamonds, for example with time height $T$ satisfying
+$cT<1/2$. The shrinking route tubes then stay inside the relevant patch.
+Their generated-diamond volumes tend to $\pi c^3\tau^4/24$, where $\tau$
+is the endpoint proper-time separation. Ordered strict-pair counts divided
+by squared interval population tend to $1/10$, and fourth-root count ratios
+give proper-time ratios. Truncated and wrapping intervals do not obey these
+unbounded flat-diamond formulas. The free
 response cone agrees in the limit, including observations rounded to the
 declared tick. Exact ODE evolution is not a native layer update: the
 positive normalized trace forbids stable centered leapfrog at $a/c$.

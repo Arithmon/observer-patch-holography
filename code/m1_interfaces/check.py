@@ -156,8 +156,10 @@ def graph_cuts(config, family, topology):
     masks=labels(config)
     cuts={name:0 for name in LABELS}
     reads=edges=0
+    internal=boundary=missing=0
     for i,x in enumerate(product(range(q),repeat=3)):
         targets=set()
+        field=3+x[0]+2*x[1]-x[2]
         for v in vectors:
             y=tuple(a+b for a,b in zip(x,v))
             if topology=='periodic': y=tuple(a%q for a in y)
@@ -169,8 +171,21 @@ def graph_cuts(config, family, topology):
             if i<j:
                 edges+=1
                 for name in LABELS: cuts[name]+=masks[name][i]!=masks[name][j]
+                internal+=(field-(3+y[0]+2*y[1]-y[2]))**2
+        absent=len(vectors)-len(targets)
+        missing+=absent
+        boundary+=absent*field*field
     require(reads==2*edges+q**3,'read/pair census mismatch')
-    return masks,cuts,reads
+    require(missing==q**3*len(vectors)-reads,'missing boundary slot census')
+    require((missing==0)==(topology=='periodic'),'constant-mode boundary control')
+    moment=sum(sum(a*a for a in v) for v in vectors)
+    action=dict(boundary='periodic' if topology=='periodic' else 'fixed_zero_exterior',
+                nonzero_diagonal_degree=len(vectors)-1,second_norm_moment=moment,
+                missing_ordered_slots=missing,constant_quadratic=missing,
+                affine_internal_quadratic=internal,affine_boundary_quadratic=boundary,
+                affine_quadratic=internal+boundary,
+                scaled_affine_quadratic=str(F(6*(internal+boundary),q*moment)))
+    return masks,cuts,reads,action
 
 
 def connected(config, mask):

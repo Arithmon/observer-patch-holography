@@ -35,8 +35,10 @@ The explicit family above has s=2^t and proves both desired limits. It uses
 one common positive action coefficient on every read; no specially weighted
 nearest-neighbor action is needed. The full clipped-box free thermal and
 smooth Gaussian quantum limits follow from its whole-spectrum bound.
-Causal/count limits are retained because every original charged route remains
-available. Logical reads over a fixed horizon grow as q^(71/16), compared
+Causal/count limits on interior, non-wrapping diamonds are retained because
+every original charged route remains available. Boundary-truncated and
+wrapping intervals need their own volumes, not the flat diamond formula.
+Logical reads over a fixed horizon grow as q^(71/16), compared
 with q^5 for the original dense construction, at the same q. The larger
 radius converges more slowly; this is not an equal-accuracy or native cost
 claim. Exact finite M1 tuples and physical source/entropy/horizon attachments
@@ -59,6 +61,10 @@ It rejects duplicate JSON keys, nonfinite numbers, incomplete catalogs,
 booleans substituted for integer evidence, forged cuts, doubled unordered
 counts, false connectivity, missing alias regimes and changed source custody.
 An actual optimized Python invocation rejects a semantic forgery.
+The field boundary control compares actual shifted-array actions with the
+independent unordered-edge energy and fixed-zero exterior potential. It
+rejects substituting a clipped graph Laplacian, which has a constant zero
+mode and does not support the stated Dirichlet gap.
 
 ## Evidence and proof scope
 

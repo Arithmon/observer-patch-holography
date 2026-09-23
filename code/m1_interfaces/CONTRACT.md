@@ -26,12 +26,15 @@ introduced in PR 981; no file or unmerged theorem from that PR is required.
 5. Convergence of finite minimum values and near-minimizers. In a fixed
    interior cube with enough room for the prescribed volume, identify the
    limiting shape and its area constant.
-6. Retain the explicit causal/count construction and positive free-field
+6. Retain the explicit local causal/count construction on interior,
+   non-wrapping diamonds and positive free-field
    limits, account for every added read, and distinguish fixed-population
    incidence savings from equal-accuracy or native resource savings.
    Analyze the uniform read action itself: identify the critical extra-mode
    limit and prove their suppression for the explicit repair, without an
    additional specially weighted nearest-neighbor action.
+   Check the fixed-zero exterior field boundary potential separately from
+   the internal reads; a clipped graph Laplacian is a different operator.
 7. Independent finite cut replay, complete named catalogs, hostile controls,
    proof/source custody, claim registration and publication.
 

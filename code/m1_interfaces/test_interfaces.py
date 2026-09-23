@@ -41,6 +41,7 @@ def test_bad_scale_inputs_fail(value):
     'schema','source','parent_scope','missing_scale','false_threshold','boolean_population',
     'missing_regime','zero_action','hide_alias','wrong_moment','missing_graph','missing_mask',
     'relabel_mask','false_cut','double_count','fake_connectivity','fake_bridge_cost','wrong_boundary',
+    'drop_boundary_action','double_boundary_action','wrong_action_normalization',
 ])
 def test_forged_or_truncated_receipts_fail(packet,mutation):
     bad=deepcopy(packet)
@@ -62,7 +63,15 @@ def test_forged_or_truncated_receipts_fail(packet,mutation):
     elif mutation=='double_count': row['masks']['plane']['cut_pairs']*=2
     elif mutation=='fake_connectivity': row['bridge']['nearest_neighbor_connected']=False
     elif mutation=='fake_bridge_cost': row['bridge']['changed_sites']=0
-    else: bad['graphs']['12:U:clipped']=deepcopy(bad['graphs']['12:U:periodic'])
+    elif mutation=='wrong_boundary': bad['graphs']['12:U:clipped']=deepcopy(bad['graphs']['12:U:periodic'])
+    elif mutation=='drop_boundary_action':
+        action=row['uniform_action']
+        action['constant_quadratic']=0
+        action['affine_boundary_quadratic']=0
+        action['affine_quadratic']=action['affine_internal_quadratic']
+        action['scaled_affine_quadratic']=str(F(6*action['affine_quadratic'],12*action['second_norm_moment']))
+    elif mutation=='double_boundary_action': row['uniform_action']['affine_boundary_quadratic']*=2
+    else: row['uniform_action']['scaled_affine_quadratic']='0'
     with pytest.raises(ValueError): verify.verify(bad)
 
 
@@ -72,13 +81,23 @@ def test_noncanonical_json_rejected(tmp_path,raw):
     with pytest.raises(ValueError): check.strict_load(p)
 
 
-def test_optimized_cli_rejects_a_semantic_forgery(packet,tmp_path):
+@pytest.mark.parametrize('case',['moment','boundary'])
+def test_optimized_cli_rejects_a_semantic_forgery(packet,tmp_path,case):
     bad=deepcopy(packet)
-    bad['moments']['critical']['uniform_alpha_L_squared']='0'
+    if case=='moment':
+        bad['moments']['critical']['uniform_alpha_L_squared']='0'
+        message='false complete moment or alias certificate'
+    else:
+        action=bad['graphs']['12:U:clipped']['uniform_action']
+        action['constant_quadratic']=0
+        action['affine_boundary_quadratic']=0
+        action['affine_quadratic']=action['affine_internal_quadratic']
+        action['scaled_affine_quadratic']=str(F(6*action['affine_quadratic'],12*action['second_norm_moment']))
+        message='false finite cut execution'
     p=tmp_path/'forged.json';p.write_text(json.dumps(bad),encoding='utf-8')
     run=subprocess.run([sys.executable,'-O','-m','m1_interfaces.verify','--receipt',str(p)],cwd=ROOT,
                        env=dict(os.environ,PYTHONPATH=str(ROOT/'code')),capture_output=True,text=True)
-    assert run.returncode!=0 and 'false complete moment or alias certificate' in run.stderr
+    assert run.returncode!=0 and message in run.stderr
 
 
 def test_verifier_cannot_import_producer():
@@ -92,6 +111,15 @@ print(verify.verify(check.strict_load(verify.HERE/'receipt.json')))
     run=subprocess.run([sys.executable,'-c',script],cwd=ROOT,
                        env=dict(os.environ,PYTHONPATH=str(ROOT/'code')),capture_output=True,text=True)
     assert run.returncode==0,run.stdout+run.stderr
+
+
+def test_duplicate_parent_claim_is_rejected(monkeypatch):
+    registry=check.strict_load(ROOT/'claims/claim_registry.yaml')
+    parent=next(row for row in registry['claims'] if row['claim_id']=='OPH-BH-CROSSING-READ-AREA-LAW')
+    registry['claims'].append(deepcopy(parent))
+    monkeypatch.setattr(check,'strict_load',lambda path:registry)
+    with pytest.raises(ValueError,match='parent claims must occur exactly once'):
+        verify.parent_claims()
 
 
 def test_ball_columns_against_complete_small_vector_enumeration():
@@ -150,6 +178,21 @@ def test_exact_cut_change_and_connected_control(packet):
                 row=packet['graphs'][f'{config[0]}:{family}:{topology}']
                 assert abs(row['bridge']['cut_change'])<=row['bridge']['degree_bound']
                 assert row['bridge']['changed_sites']>0
+
+
+def test_uniform_action_matches_independent_edge_form_and_boundary_control(packet):
+    for config in check.CONFIGS:
+        for family in ('T','U'):
+            for topology in ('periodic','clipped'):
+                action=packet['graphs'][f'{config[0]}:{family}:{topology}']['uniform_action']
+                # Producer uses the actual shifted-array matrix action. The
+                # verifier derives the unordered edge energy and absent-slot
+                # diagonal potential independently, without exterior records.
+                assert model.graph_cuts(config,family,topology)[3]==action
+                assert action['affine_quadratic']==action['affine_internal_quadratic']+action['affine_boundary_quadratic']
+                assert (action['constant_quadratic']==0)==(topology=='periodic')
+                assert (action['affine_boundary_quadratic']==0)==(topology=='periodic')
+                assert F(action['scaled_affine_quadratic'])>0
 
 
 def test_all_new_lean_theorems_are_audited_and_built():

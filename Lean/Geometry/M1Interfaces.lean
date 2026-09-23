@@ -26,7 +26,7 @@ def changed (f g : V → Bool) : Finset V :=
 def incident (edges : Finset (V × V)) (v : V) : Finset (V × V) :=
   edges.filter (fun e => e.1 = v ∨ e.2 = v)
 
-/-- Every newly crossing edge touches a changed site. -/
+/-- An edge crossing for f but not g has a changed endpoint. -/
 theorem crossing_cover (edges : Finset (V × V)) (f g : V → Bool) :
     crossing edges f ⊆ crossing edges g ∪ (changed f g).biUnion (incident edges) := by
   intro e he

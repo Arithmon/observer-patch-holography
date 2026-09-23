@@ -108,16 +108,40 @@ def graph_cuts(config, family, topology):
     masks = labels(config)
     arrays = np.stack([masks[name] for name in LABELS])
     counts = np.zeros(len(LABELS), dtype=np.int64)
+    x, y, z = np.indices((q,q,q))
+    field = 3+x+2*y-z
+    action_field = len(vectors)*field.copy()
+    action_constant = np.full_like(field,len(vectors))
+    internal_twice = 0
     for v in vectors:
         if topology == 'periodic':
             other = np.roll(arrays, tuple(-x for x in v), axis=(1,2,3))
             counts += np.count_nonzero(arrays != other, axis=(1,2,3))
+            shifted = np.roll(field,tuple(-x for x in v),axis=(0,1,2))
+            action_field -= shifted
+            action_constant -= 1
+            internal_twice += int(np.sum((field-shifted)**2))
         else:
             left = (slice(None),)+tuple(slice(max(0,-x),min(q,q-x)) for x in v)
             right = (slice(None),)+tuple(slice(max(0,x),min(q,q+x)) for x in v)
             counts += np.count_nonzero(arrays[left] != arrays[right], axis=(1,2,3))
+            source, target = left[1:], right[1:]
+            action_field[source] -= field[target]
+            action_constant[source] -= 1
+            internal_twice += int(np.sum((field[source]-field[target])**2))
     if any(int(x)%2 for x in counts):
         raise ValueError('directed crossing parity')
     reads = q**3*len(vectors) if topology == 'periodic' else sum(
         (q-abs(x))*(q-abs(y))*(q-abs(z)) for x,y,z in vectors)
-    return masks, dict(zip(LABELS, (int(x)//2 for x in counts))), reads
+    total = int(np.sum(field*action_field))
+    moment = sum(sum(x*x for x in v) for v in vectors)
+    action = dict(boundary='periodic' if topology=='periodic' else 'fixed_zero_exterior',
+                  nonzero_diagonal_degree=len(vectors)-1,
+                  second_norm_moment=moment,
+                  missing_ordered_slots=int(np.sum(action_constant)),
+                  constant_quadratic=int(np.sum(action_constant)),
+                  affine_internal_quadratic=internal_twice//2,
+                  affine_boundary_quadratic=total-internal_twice//2,
+                  affine_quadratic=total,
+                  scaled_affine_quadratic=str(F(6*total,q*moment)))
+    return masks, dict(zip(LABELS, (int(x)//2 for x in counts))), reads, action
