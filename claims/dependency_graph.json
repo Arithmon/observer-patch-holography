@@ -262,7 +262,11 @@
   "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
   "OPH-RECORD-GLUING-M1-SUFFICIENCY",
   "OPH-RG-LOCAL-CLOCK-REDUCTION",
-  "OPH-RG-INFORMATION-RESOURCE-BOUND"
+  "OPH-RG-INFORMATION-RESOURCE-BOUND",
+  "OPH-M1-GLOBAL-VACUUM-FIDELITY",
+  "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR",
+  "OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION",
+  "OPH-M1-SPLIT-SIGNAL-CLOCK-OBSTRUCTION"
  ],
  "edges": [
   {
@@ -2264,6 +2268,36 @@
    "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
    "to": "OPH-RG-LOCAL-CLOCK-REDUCTION",
    "role": "Supplies cell-assignment count convergence for distinguished regulator records; auxiliary native work is not identified with their volume."
+  },
+  {
+   "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+   "to": "OPH-M1-GLOBAL-VACUUM-FIDELITY",
+   "role": "Existing finite original-vacuum probability comparisons motivate the all-population question. The Gaussian and time-average arguments are proved here; no broader residual or physical identification is imported."
+  },
+  {
+   "from": "OPH-M1-GLOBAL-VACUUM-FIDELITY",
+   "to": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR",
+   "role": "Supplies the sharp global fidelity threshold, instantiated by explicit degree, moment and trace bounds for every stated sparse level."
+  },
+  {
+   "from": "OPH-RG-INFORMATION-RESOURCE-BOUND",
+   "to": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR",
+   "role": "Keeps reference incidence counts separate from native traffic, implementation and physical time. No native information premise is marked discharged."
+  },
+  {
+   "from": "OPH-M1-GLOBAL-VACUUM-FIDELITY",
+   "to": "OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION",
+   "role": "Uses the same original oscillator vacuum and symplectic convention to distinguish exact preservation from the proved approximate repair."
+  },
+  {
+   "from": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR",
+   "to": "OPH-M1-SPLIT-SIGNAL-CLOCK-OBSTRUCTION",
+   "role": "Supplies the explicit signed gate word and refinement tick. The extremal signal is derived independently of the fidelity estimate."
+  },
+  {
+   "from": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+   "to": "OPH-M1-SPLIT-SIGNAL-CLOCK-OBSTRUCTION",
+   "role": "Its complete native cone implication is incompatible with assigning these attained finite influences the numerical durations. No physical adoption of LC is asserted."
   }
  ]
 }

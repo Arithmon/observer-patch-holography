@@ -21,30 +21,30 @@ dimensionless mode coordinates X=sqrt(omega) Q, Y=P/sqrt(omega), its matrix is
 
     S2(z) = [[1-z^2/2, z], [-z+z^3/4, 1-z^2/2]],   z=tau omega.       (1)
 
-Put r=cuberoot(2), w=1/(2-r), v=-r/(2-r). The fourth-order step is
+Put rho=cuberoot(2), w=1/(2-rho), v=-rho/(2-rho). The fourth-order step is
 
     S4(z)=S2(w z) S2(v z) S2(w z).                                  (2)
 
 This is the standard symmetric composition of Yoshida, not a new integrator.
 The signed middle step is retained. Inverse Hamiltonian gates are declared
 operations, not negative elapsed transport time. Both matrices have the form
-S=[[a,b],[c,a]] and determinant one. Direct multiplication in Q(r) gives
+S=[[a,b],[c,a]] and determinant one. Direct multiplication in Q(rho) gives
 
     a4 = 1-z^2/2+z^4/24+A z^6,
     b4 = z-z^3/6-B0 z^5,
     c4 = -z+z^3/6+C z^5-D z^7,
-    A = 1/48+5r/288+r^2/72,
-    B0 = 1/36+r/36+r^2/48,
-    C = (r+r^2)/144,
-    D = 25/1728+5r/432+r^2/108.                                    (3)
+    A = 1/48+5rho/288+rho^2/72,
+    B0 = 1/36+rho/36+rho^2/48,
+    C = (rho+rho^2)/144,
+    D = 25/1728+5rho/432+rho^2/108.                                    (3)
 
 In particular b4+c4=d4 z^5-D z^7, where
-d4=-1/36-r/48-r^2/72 !=0. For (1), b2+c2=z^3/4 and d2=1/4.
+d4=-1/36-rho/48-rho^2/72 !=0. For (1), b2+c2=z^3/4 and d2=1/4.
 
 For 0<z<=1/10, both steps satisfy b>0, c<0, 0<a<1 and
 0.9 z^2 <= -bc <= 1.1 z^2. For S4,
 z^5/16 <= |b+c| <= z^5/8; for S2 the defect is exactly z^3/4.
-These bounds follow by substituting 1259/1000<r<126/100 into (3),
+These bounds follow by substituting 1259/1000<rho<126/100 into (3),
 bounding the remaining powers by z^2<=1/100. The exact certificate performs
 these rational coefficient bounds. This domain is conservative, not a fitted
 stability limit. Write cos(theta)=a, sin(theta)=sqrt(-bc)>0 and
@@ -225,12 +225,10 @@ Together with (14), this gives the full bounded-effect comparison for the
 declared preparations over each fixed time interval.
 
 For completeness, (19) lies in the proved stability domain at every t>=1.
-The integer ball has at most 27s^3 points for s>=1. The cube
-|v_i|<=floor(K/sqrt(3)) inside B_K, or the simpler cube |v_i|<=K/2,
-gives M2>=m^2 K^5/16 for K divisible by four: use K/4<=v_1<=K/2 and
-|v_2|,|v_3|<=K/4, then include its sign/permutation copies if desired.
-Already this one box has at least K^3/16 points with |v|^2>=K^2/16;
-the conservative bound M2>=m^2 K^5/256 suffices. Also d<=60r^3 for t>=1.
+The integer ball has at most 27s^3 points for s>=1. Retain the box
+K/4<=v_1<=K/2 and |v_2|,|v_3|<=K/4 inside B_K, for K divisible by four.
+It has at least K^3/16 points with |v|^2>=K^2/16, proving the conservative
+bound M2>=m^2 K^5/256. Also d<=60r^3 for t>=1.
 Thus W<=92160 q^(7/16), and tau sqrt(1+2W)
 <=sqrt(184321)/64 * q^(-13/32)<1/10 at q>=2^16.
 
