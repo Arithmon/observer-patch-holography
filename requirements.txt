@@ -8,7 +8,7 @@
 #   code/ibm_quantum_cloud/requirements-ibm.txt   IBM / Qiskit hardware lane (OPH_RUN_IBM=1)
 #   code/particles/requirements-quantum.txt        qiskit ancillary experiments
 numpy==2.5.1
-scipy==1.18.0
+scipy==1.18.1
 mpmath==1.3.0
 sympy==1.14.0
 PyYAML==6.0.3
