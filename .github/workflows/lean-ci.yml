@@ -144,6 +144,7 @@ jobs:
             "Geometry.SourcePublicationAxiomAudit"
             "Geometry.SourceOperationReadsAxiomAudit"
             "Geometry.SourceCountLimitAxiomAudit"
+            "Geometry.M1NecessityAxiomAudit"
             "Geometry.SourceRoutingRefinementAxiomAudit"
             "ObserverPatchHolography.EinsteinBranch.AxiomAudit"
             "A5PrimitivePortPrediction"
