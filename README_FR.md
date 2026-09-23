@@ -85,10 +85,10 @@ simulations reproductibles :
 - **Les quatre lois de la thermodynamique par la réparation du désaccord.**
   Un seul paquet de théorèmes conditionnels sur la façon dont les
   observateurs se rééchantillonnent vers le consensus donne la première, la
-  deuxième et la quatrième loi — la deuxième apparaissant comme du
+  deuxième et la quatrième loi, la deuxième apparaissant comme du
   traitement de données appliqué à la réparation, avec la borne de Landauer
-  en corollaire — les clauses de troisième loi restant conditionnelles à une
-  hypothèse de fosse au sol par appel que le paquet ne dérive pas.
+  en corollaire. Les clauses de troisième loi restent conditionnelles à une
+  hypothèse d’écart au fondamental par appel que le paquet ne dérive pas.
 - **L’espace et le temps à partir des registres d’observateurs.** La réponse
   de la source fournit une géométrie spatiale à trois dimensions. Avec une
   règle locale de lecture explicite, les registres conservatifs approchent
@@ -129,9 +129,9 @@ simulations reproductibles :
 
 Les articles liés donnent le statut précis de chaque étape. Le budget de
 prémisses est déclaré d’emblée : trois axiomes d’observateurs plus environ
-quatre-vingt-quatre prémisses enregistrées — trente-trois à axiomatiser,
-quatre importées, quarante-sept retraits ouverts — avec les hypothèses
-locales de chaque lane consignées dans son registre ; aucune prémisse
+quatre-vingt-quatre prémisses enregistrées (trente-trois à axiomatiser,
+quatre importées, quarante-sept retraits ouverts), avec les hypothèses
+locales de chaque famille consignées dans son registre. Aucune prémisse
 enregistrée n’est encore dérivée des seuls axiomes
 ([registre des prémisses](docs/PREMISE_REGISTER_V3.md)). Ensemble, ces
 résultats tracent une voie testable des axiomes joints à ces données

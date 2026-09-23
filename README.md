@@ -76,10 +76,10 @@ calculations and reproducible simulations:
   mathematical bridge from public records to quantum probability.
 - **The four laws of thermodynamics from disagreement repair.** One
   conditional theorem package about how observers resample toward consensus
-  yields the first, second, and fourth laws — the second as data processing
-  applied to repair and the Landauer bound as a corollary — with the
-  third-law clauses conditional on a stated per-call ground-gap hypothesis
-  that the package does not derive.
+  yields the first, second, and fourth laws, with the second appearing as
+  data processing applied to repair and the Landauer bound as a corollary.
+  The third-law clauses stay conditional on a stated per-call ground-gap
+  hypothesis that the package does not derive.
 - **Space and time from observer records.** The source response supplies a
   three-dimensional spatial geometry. With an explicit local reading rule,
   conservative observer records approach the familiar causal geometry and
@@ -89,6 +89,10 @@ calculations and reproducible simulations:
   [spacetime paper](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf)
   develops the proofs and their assumptions; [executable evidence](code/causal_refinement/)
   lets readers replay the construction.
+- **Field geometry on the twelve-port screen.** The finite screen carries
+  exact Green, Thomson, Gauss, curvature, and gauge-invariance theorems. The
+  same geometry connects port loads, seam data, local curvature, and the
+  operators that repair disagreement.
 - **The Standard Model gauge group from twelve ports.** OPH makes an
   architectural choice at the simulation hardware layer: each observer patch
   has twelve boundary ports wired as the corners of an icosahedron. A
@@ -113,9 +117,9 @@ calculations and reproducible simulations:
 
 The linked papers record each step's precise status. The premise budget is
 declared up front: three observer axioms plus about eighty-four registered
-inputs — thirty-three to axiomatize, four imported, forty-seven open removals
-— together with lane-local assumptions recorded in each family's register;
-no registered premise is yet derived from the axioms alone
+inputs (thirty-three to axiomatize, four imported, forty-seven open
+removals), together with lane-local assumptions recorded in each family's
+register. No registered premise is yet derived from the axioms alone
 ([premise register](docs/PREMISE_REGISTER_V3.md)). Together, these results
 define a testable path from the axioms plus those declared inputs toward a
 complete theory.
