@@ -306,7 +306,7 @@ controls the uniform action's extra modes.
 
 ### An elementary ball-symbol bound
 
-For rho>=8 and principal theta in [-pi,pi]^3, define
+For integer rho>=8 and principal theta in [-pi,pi]^3, define
 D_rho(theta)=sum_(|w|<=rho) [1-cos(theta dot w)]. Then
 
     D_rho(theta) >= (rho^3/49152) min(rho^2 |theta|^2,1). (20)
