@@ -262,7 +262,13 @@
   "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
   "OPH-RECORD-GLUING-M1-SUFFICIENCY",
   "OPH-RG-LOCAL-CLOCK-REDUCTION",
-  "OPH-RG-INFORMATION-RESOURCE-BOUND"
+  "OPH-RG-INFORMATION-RESOURCE-BOUND",
+  "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+  "OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT",
+  "OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION",
+  "OPH-M1-COHERENT-VELOCITY-SEPARATION",
+  "OPH-M1-FINITE-STENCIL-CLOCK-BOUND",
+  "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT"
  ],
  "edges": [
   {
@@ -2264,6 +2270,56 @@
    "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
    "to": "OPH-RG-LOCAL-CLOCK-REDUCTION",
    "role": "Supplies cell-assignment count convergence for distinguished regulator records; auxiliary native work is not identified with their volume."
+  },
+  {
+   "from": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+   "to": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+   "role": "Supplies the proposed complete-cone comparison. The velocity theorem charges a declared quantum flight grammar and does not establish physical LC."
+  },
+  {
+   "from": "OPH-RG-INFORMATION-RESOURCE-BOUND",
+   "to": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+   "role": "Requires actual elapsed time and retained intermediate operations to remain distinct from numerical step labels; no classical capacity assumption is promoted to a quantum source law."
+  },
+  {
+   "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+   "to": "OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT",
+   "role": "The explicit three-axis walk attains the sharp isotropic budget; its complete spectral and thermal analysis is proved independently."
+  },
+  {
+   "from": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+   "to": "OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION",
+   "role": "The complete positive-delay interpretation motivates the finite Hamiltonian exclusion, without claiming the source satisfies LC."
+  },
+  {
+   "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+   "to": "OPH-M1-COHERENT-VELOCITY-SEPARATION",
+   "role": "The positive velocity resolution excludes luminal Pauli and Clifford generators, identifying what the continuum coherent witness does differently."
+  },
+  {
+   "from": "OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION",
+   "to": "OPH-M1-COHERENT-VELOCITY-SEPARATION",
+   "role": "Separates the standard singular continuum field from a bounded autonomous finite-site implementation."
+  },
+  {
+   "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+   "to": "OPH-M1-FINITE-STENCIL-CLOCK-BOUND",
+   "role": "Motivates removing the flight-factorization premise; the matrix-polynomial proof and angular bound are independent and apply to arbitrary finite stencils."
+  },
+  {
+   "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+   "to": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
+   "role": "Equality in the sharp trace budget forces the weighted two-design and its unique minimal tetrahedron."
+  },
+  {
+   "from": "OPH-M1-FINITE-STENCIL-CLOCK-BOUND",
+   "to": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
+   "role": "The explicit tetrahedral process also attains its exact support-polytope speed bound."
+  },
+  {
+   "from": "OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT",
+   "to": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
+   "role": "Uses the same declared Floquet reference convention and all-species thermal comparison; the tetrahedral polynomial and coercivity are independently derived."
   }
  ]
 }

@@ -11581,6 +11581,278 @@
         740,
         779
       ]
+    },
+    {
+      "claim_id": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+      "statement": "For finite words of orthogonal conditional register flights with actual trajectory speed at most c, onsite unitaries and waits, charge every sequential stage duration. Any regular two-dimensional degenerate eigenband has a first-order Pauli velocity matrix M with nuclear norm at most c, regardless of auxiliary internal dimension. Compression of differentiated flight projectors yields a positive operator-valued velocity resolution. Conversely every real untilted M satisfying this bound is attained by singular-axis conditional flights and a wait. Thus an isotropic Weyl speed obeys 3|v|<=c, sharply. A trace witness gives the same isotropic bound for three-component Clifford bands. This is a complete untilted first-order characterization for the declared native-time grammar, not a characterization of joint tilted pairs or arbitrary quantum cellular automata. Admitted independent record flights have speed c.",
+      "assumptions": [
+        "declared_charged_coherent_flight_grammar"
+      ],
+      "imported_results": [
+        "positive_compression_and_Bloch_decomposition",
+        "nuclear_norm_duality_and_singular_value_decomposition"
+      ],
+      "oph_specific_delta": "Decides the entire coherent flight-and-onsite-scattering extension of the proposed classical native transport grammar: a shared isotropic Weyl/Dirac and complete record speed is impossible, and every attainable untilted velocity matrix has an explicit native realization.",
+      "novelty_type": "sharp_native_time_velocity_characterization_and_shared_speed_obstruction",
+      "falsifier": "A differentiated flight word violates the positive velocity resolution, a bounded-speed resolution has nuclear norm greater than c, the singular-axis construction fails to attain a claimed untilted matrix, or uncharged intermediate motion is used to claim saturation.",
+      "scope_if_false": "The complete velocity characterization or its shared-speed consequence fails. No A1--A3 source admission or physical adoption of the declared grammar is asserted.",
+      "status": "analytic_necessary_and_sufficient_untilted_characterization_with_exact_finite_controls",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex",
+        "code/m1_quantum_transport/CONTRACT.md",
+        "code/m1_quantum_transport/DERIVATION.md",
+        "code/m1_quantum_transport/README.md",
+        "code/m1_quantum_transport/model.py",
+        "code/m1_quantum_transport/check.py",
+        "code/m1_quantum_transport/tetra_model.py",
+        "code/m1_quantum_transport/tetra_check.py",
+        "code/m1_quantum_transport/stencil_model.py",
+        "code/m1_quantum_transport/stencil_check.py",
+        "code/m1_quantum_transport/verify.py",
+        "code/m1_quantum_transport/receipt.json",
+        "code/m1_quantum_transport/test_transport.py",
+        "Lean/Geometry/M1QuantumTransport.lean",
+        "Lean/Geometry/M1QuantumTransportAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The velocity theorem is necessary and sufficient for a declared finite flight grammar and regular untilted band; it neither asserts source admission nor adopts LC physically. The complete-cone comparison excludes a proposed identification of clocks and discharges no physical clock or observer-attachment premise."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT",
+      "statement": "The unitary three-axis Pauli walk on the unit three-torus with q divisible by four has actual period 3/(qc), continuum Weyl speed c/3 and explicit fixed-band error at most (2cT/3)aK^2+aK. Its full Bloch matrix has exactly eight zero-quasienergy cones, four of each chirality, and eight pi points. Global coercivity epsilon>=distance(theta,Z)/(8sqrt(3)) proves convergence of the complete normal-ordered free fermion partition function to sixteen times the lattice-momentum sum log(1+exp(-beta(2pi c/3)|n|)), and convergence of energy and entropy. All zero-level degeneracy and every finite mode are counted. The reference fills strictly negative levels of the declared principal Floquet logarithm and leaves zero levels empty; the actual walk preserves it exactly. Exterior-power telescoping gives finite-excitation dynamics about all eight cones. The generally nonlocal quasienergy logarithm is not identified with a derived physical Hamiltonian. Finite local gate demonstrations retain all Fock sectors, fermionic signs, coherent phases and intermediate execution stages.",
+      "assumptions": [
+        "declared_charged_coherent_flight_grammar",
+        "explicit_three_axis_fermionic_walk_and_quasienergy_reference"
+      ],
+      "imported_results": [
+        "unitary_product_Taylor_bounds",
+        "fermionic_exterior_power_lift",
+        "dominated_summation_and_free_fermion_partition_functions"
+      ],
+      "oph_specific_delta": "Provides a fully specified optimal native-time coherent process with complete species and thermal accounting, exposing rather than filtering the gap between its emergent matter speed and the complete record cone.",
+      "novelty_type": "optimal_charged_walk_with_all_species_dynamics_and_thermal_limit",
+      "falsifier": "A zero or pi cone is missing, the native period or error bound is wrong, global coercivity or thermal domination fails, the vacuum or energy reference changes mid-comparison, or fermionic signless evolution passes the independent exterior-power checker.",
+      "scope_if_false": "The explicit optimal process, complete spectral limit or finite execution evidence fails. No single-species limit, interacting-field theory, bounded-strength refinement or physical quasienergy calibration is asserted.",
+      "status": "explicit_optimal_process_and_all_species_limit_with_independent_full_catalog_replay",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex",
+        "code/m1_quantum_transport/CONTRACT.md",
+        "code/m1_quantum_transport/DERIVATION.md",
+        "code/m1_quantum_transport/README.md",
+        "code/m1_quantum_transport/model.py",
+        "code/m1_quantum_transport/check.py",
+        "code/m1_quantum_transport/tetra_model.py",
+        "code/m1_quantum_transport/tetra_check.py",
+        "code/m1_quantum_transport/stencil_model.py",
+        "code/m1_quantum_transport/stencil_check.py",
+        "code/m1_quantum_transport/verify.py",
+        "code/m1_quantum_transport/receipt.json",
+        "code/m1_quantum_transport/test_transport.py",
+        "Lean/Geometry/M1QuantumTransport.lean",
+        "Lean/Geometry/M1QuantumTransportAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The three-axis process, all eight species and fixed quasienergy vacuum are explicitly specified mathematical objects. Their convergence establishes an optimal example for the flight budget, not a native twelve-port source, single-species matter, physical quasienergy calibration or bounded-strength implementation."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION",
+      "statement": "For a bounded autonomous Hamiltonian on a finite tensor product of full matrix factors at distinct fixed sites, exact vanishing of all distinct-site Heisenberg commutators over the positive distance/c delay implies vanishing at every time by analyticity. Each site algebra remains invariant, so H is a sum of onsite terms and a scalar. The same analytic obstruction applies to finite quadratic canonical propagators. For two qubits the sum of squared Hilbert-Schmidt double-commutator norms over all nine Pauli probe pairs equals 256 times the sum of squared interaction coefficients. The sigma_x tensor sigma_x interaction has actual remote-preparation response sin(2t) at arbitrarily small times. Moving register ownership, sampled automata and continuum singular local fields do not meet the fixed finite-site premises.",
+      "assumptions": [
+        "declared_fixed_finite_hamiltonian_site_factors"
+      ],
+      "imported_results": [
+        "analytic_identity_theorem",
+        "inner_derivations_of_full_matrix_algebras",
+        "standard_Hamiltonian_versus_strict_causality_distinction"
+      ],
+      "oph_specific_delta": "Applies the standard exact-delay obstruction to the complete OPH native clock and gives a quantitative basis-complete interaction witness plus explicit preparation and effect, ruling out a finite-Hamiltonian timing repair within its precise scope.",
+      "novelty_type": "native_clock_application_of_strict_delay_rigidity_with_complete_finite_witness",
+      "falsifier": "A finite interacting Hamiltonian satisfies the stated complete positive-delay condition, the local-algebra argument fails, the 256 coefficient is incorrect, or the claimed local preparation has zero response.",
+      "scope_if_false": "The declared finite Hamiltonian timing exclusion or witness fails. Approximate cones, moving modes and continuum fields retain their separate definitions.",
+      "status": "analytic_rigidity_application_with_independent_pauli_and_preparation_controls",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex",
+        "code/m1_quantum_transport/CONTRACT.md",
+        "code/m1_quantum_transport/DERIVATION.md",
+        "code/m1_quantum_transport/README.md",
+        "code/m1_quantum_transport/model.py",
+        "code/m1_quantum_transport/check.py",
+        "code/m1_quantum_transport/tetra_model.py",
+        "code/m1_quantum_transport/tetra_check.py",
+        "code/m1_quantum_transport/stencil_model.py",
+        "code/m1_quantum_transport/stencil_check.py",
+        "code/m1_quantum_transport/verify.py",
+        "code/m1_quantum_transport/receipt.json",
+        "code/m1_quantum_transport/test_transport.py",
+        "Lean/Geometry/M1QuantumTransport.lean",
+        "Lean/Geometry/M1QuantumTransportAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "Analytic rigidity is a theorem about fixed finite tensor factors and an exact-delay hypothesis for all local observables. Its OPH application excludes a finite Hamiltonian repair of a proposed complete clock; it does not establish that physical sources obey the delay hypothesis or consume a microscopic-to-spacetime identification."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-COHERENT-VELOCITY-SEPARATION",
+      "statement": "For a supplied fundamental SU(2) spinor module operationally attached to the three-dimensional response space, a covariant real-linear Hermitian velocity map is gamma times the Pauli vector. The resulting standard continuum Weyl generator with coefficient c has dispersion plus/minus c|k| and current norm at most c times density, giving an exact ct propagation cone. A parity-paired module with an anticommuting mass retains that cone. Luminal Pauli or Clifford velocities cannot admit the positive bounded-speed flight resolution of the declared native grammar, whose trace bound would give 3c<=c. This identifies a precise noncommuting coherent continuum escape, not a finite twelve-port implementation, physical source admission, gauge-spin identification or adopted additional core axiom.",
+      "assumptions": [
+        "declared_operational_fundamental_spinor_module"
+      ],
+      "imported_results": [
+        "SU2_scalar_plus_adjoint_decomposition",
+        "standard_Weyl_Dirac_continuity_equation_and_free_CAR_quantization"
+      ],
+      "oph_specific_delta": "Identifies exactly which coherent velocity structure lies beyond a classical record-flight lift and demonstrates at the continuum operator level how field dispersion and the causal speed can coincide.",
+      "novelty_type": "operational_coherent_velocity_boundary_and_standard_continuum_witness",
+      "falsifier": "A different covariant real-linear two-component velocity map exists under the stated module attachment, the current or propagation bound fails, or luminal Pauli velocities have the prohibited positive bounded-speed resolution.",
+      "scope_if_false": "The stated representation or coherent separation fails. The operational module attachment, microscopic source generator, physical time and refining local instruments are supplied boundaries, not discharged premises.",
+      "status": "analytic_structural_separation_with_standard_continuum_witness_and_exact_current_controls",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex",
+        "code/m1_quantum_transport/CONTRACT.md",
+        "code/m1_quantum_transport/DERIVATION.md",
+        "code/m1_quantum_transport/README.md",
+        "code/m1_quantum_transport/model.py",
+        "code/m1_quantum_transport/check.py",
+        "code/m1_quantum_transport/tetra_model.py",
+        "code/m1_quantum_transport/tetra_check.py",
+        "code/m1_quantum_transport/stencil_model.py",
+        "code/m1_quantum_transport/stencil_check.py",
+        "code/m1_quantum_transport/verify.py",
+        "code/m1_quantum_transport/receipt.json",
+        "code/m1_quantum_transport/test_transport.py",
+        "Lean/Geometry/M1QuantumTransport.lean",
+        "Lean/Geometry/M1QuantumTransportAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The continuum Weyl witness uses a supplied operational fundamental module and its covariant first-order generator. Representation theory and current conservation separate it from the positive flight resolution without deriving the module attachment, quantum source operations, physical clock or interacting matter from A1--A3."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-FINITE-STENCIL-CLOCK-BOUND",
+      "statement": "For any translation-invariant finite-range one-particle unitary U(k)=sum_b exp(-ik.b)K_b on a lattice, the Hermitian directional velocity G(n)=i U(k)* partial_n U(k) lies between min_b(n.b) and max_b(n.b) times the identity. A maximum-principle proof uses the matrix polynomial and its reversal, without positivity of the K_b or a flight decomposition. Compressing to a degenerate two-state band gives u+M closed_unit_ball contained in the convex hull of b/T. If every actual displacement obeys |b|<=cT, an untilted isotropic field speed v obeys N(1-|v|/c)>=2, where N counts nonzero displacement terms. More generally substitute max(0,s_min(M)-|u|) for |v|. Thus fixed finite stencils cannot attain or approach a luminal isotropic limit, even with increasing internal dimension and approximate finite-level isotropy. Approaching relative error eta requires N>=2/eta. Growing N is necessary, not proved sufficient. Exact support-polytope and 1664 directional Loewner controls independently reconstruct the geometry and actual Fourier derivatives.",
+      "assumptions": [
+        "declared_finite_range_unitary_and_exact_native_period"
+      ],
+      "imported_results": [
+        "maximum_principle_for_matrix_polynomials",
+        "support_function_characterization_of_convex_hulls",
+        "spherical_cap_area_and_measure_subadditivity"
+      ],
+      "oph_specific_delta": "Removes the flight-factorization premise from the clock obstruction and proves a quantitative lower bound on the spatial direction resource needed by any proposed luminal unitary refinement.",
+      "novelty_type": "finite_stencil_native_clock_exclusion_and_refinement_direction_lower_bound",
+      "falsifier": "A finite-range unitary violates the directional Loewner bound, its compressed velocity ellipsoid lies outside the displacement hull, or a fixed-N bounded-speed sequence has M approaching c times an orthogonal matrix and tilt approaching zero.",
+      "scope_if_false": "The finite-stencil exclusion or angular resource bound fails. The stronger positively timed flight bound is independently proved; growing-stencil existence and microscopic source admission are not asserted.",
+      "status": "analytic_all_stencil_obstruction_with_exact_polytope_and_velocity_controls",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex",
+        "code/m1_quantum_transport/CONTRACT.md",
+        "code/m1_quantum_transport/DERIVATION.md",
+        "code/m1_quantum_transport/README.md",
+        "code/m1_quantum_transport/model.py",
+        "code/m1_quantum_transport/check.py",
+        "code/m1_quantum_transport/tetra_model.py",
+        "code/m1_quantum_transport/tetra_check.py",
+        "code/m1_quantum_transport/stencil_model.py",
+        "code/m1_quantum_transport/stencil_check.py",
+        "code/m1_quantum_transport/verify.py",
+        "code/m1_quantum_transport/receipt.json",
+        "code/m1_quantum_transport/test_transport.py",
+        "Lean/Geometry/M1QuantumTransport.lean",
+        "Lean/Geometry/M1QuantumTransportAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The finite-stencil theorem applies to an explicitly specified mathematical class and compares its actual displacement support with a proposed exact native period. Its limit exclusion and necessary direction growth do not assert a physical clock calibration, source admission or the existence of a successful growing-stencil replacement."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
+      "statement": "Saturation M=(c/3)I of the declared native flight bound forces each nonzero compressed effect to be rank one, its speed to equal c and its Bloch vector to align with its velocity. The resulting weights and directions have zero first moment and second moment I/3; conversely every such weighted spherical two-design saturates the bound. At least four distinct outcomes are required, and exactly four force equal weights and a regular tetrahedron. The explicit Hermitian conference coin C=S/sqrt(3), C^2=I, followed by four simultaneous tetrahedral flights of length sqrt(3)a has period sqrt(3)a/c, rank-two opposite-chirality bands and speed c/3. Its full quartic characteristic polynomial gives exactly eight zero-quasienergy cones at {0,pi}^3, four of each chirality, plus the retained pi and intermediate bands. Both excitation energies epsilon/T and (pi-epsilon)/T, each twice, enter the complete thermal sums; sin^2(epsilon)=sum sin^2(theta_i)/3 proves the same all-species free thermal limit as the three-axis construction. Exact compressed effects, all finite momentum matrices, full sixteen-dimensional onsite fermionic evolution and actual trajectories are independently checked. Four is a minimum coherent channel count, not a derived observer or central-port population. A direct two-tick identity gives a full four-channel fixed-time error bound (sqrt(3)cT/2)aK^2+(4/sqrt(3))aK, retaining the C^j carrier of the pi band at the original native ticks; removing that carrier creates order-one odd-tick error. In the same walk, empty-register inputs versus local one-particle preparations C|s> give receiver occupation probabilities zero and one at displacement a s and elapsed time sqrt(3)a/c. This attains a native speed-c signal and makes the factor-three difference observable within the complete finite operation family; no uniform continuum energy bound is claimed for these input states and the filled thermal reference is unchanged.",
+      "assumptions": [
+        "declared_charged_coherent_flight_grammar",
+        "explicit_tetrahedral_fermionic_walk_and_quasienergy_reference"
+      ],
+      "imported_results": [
+        "positive_effect_trace_saturation",
+        "weighted_spherical_two_design_frame_identity",
+        "finite_POVM_isometric_dilation",
+        "fermionic_exterior_power_lift_and_free_partition_function",
+        "unitary_Duhamel_product_bound"
+      ],
+      "oph_specific_delta": "Derives the minimum optimal direction geometry rather than selecting it for a successful fit, realizes that geometry with one charged coherent flight, and accounts for the complete spectrum and quantum reference in the same microscopic mathematical process.",
+      "novelty_type": "minimal_native_time_saturation_geometry_and_complete_unitary_realization",
+      "falsifier": "A saturating untilted flight resolution is not a weighted two-design, fewer than four outcomes suffice, a four-outcome optimizer is not tetrahedral, the conference coin or Pauli band identities fail, or omitted high bands are needed to obtain a claimed thermal result.",
+      "scope_if_false": "The saturation classification, minimal tetrahedral process or complete spectral limit fails. This would not establish a twelve-port source realization or erase the independent native-time velocity inequality.",
+      "status": "derived_minimal_optimizer_with_explicit_native_unitary_and_complete_quantum_accounting",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_QUANTUM_TRANSPORT.tex",
+        "code/m1_quantum_transport/CONTRACT.md",
+        "code/m1_quantum_transport/DERIVATION.md",
+        "code/m1_quantum_transport/README.md",
+        "code/m1_quantum_transport/model.py",
+        "code/m1_quantum_transport/check.py",
+        "code/m1_quantum_transport/tetra_model.py",
+        "code/m1_quantum_transport/tetra_check.py",
+        "code/m1_quantum_transport/stencil_model.py",
+        "code/m1_quantum_transport/stencil_check.py",
+        "code/m1_quantum_transport/verify.py",
+        "code/m1_quantum_transport/receipt.json",
+        "code/m1_quantum_transport/test_transport.py",
+        "Lean/Geometry/M1QuantumTransport.lean",
+        "Lean/Geometry/M1QuantumTransportAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The tetrahedral directions are forced by optimality within the declared quantum flight class and are realized by an explicit four-channel coin. This proves a minimal mathematical process and its complete quasienergy accounting, without identifying the channels with central ports, deriving a physical observer population or admitting the process from A1--A3."
+      }
     }
   ]
 }
