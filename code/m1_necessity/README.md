@@ -42,8 +42,8 @@ the original M1 theorems and their physical premise statuses are retained.
 * The same proofs work at q=R^k for every fixed integer k>=2. In particular,
   both a=L/sqrt(q) and a=L*q^(-2/3) give these limits. No successful cone or
   field convergence is assumed in choosing either schedule.
-* The uniform-weight T action has m^3 unwanted low-energy alias modes, despite
-  agreeing on smooth probes. The completed action is the fixed positive
+* The uniform-weight T action has m^3 modes approaching the mass frequency,
+  including m^3-1 extra low-energy modes, despite agreeing on smooth probes. The completed action is the fixed positive
   half-sum of that action and the nearest-neighbor Laplacian, using existing
   reads. It preserves the same continuum normalization and cut statistics,
   and supplies uniform bounds on the entire spectrum.
