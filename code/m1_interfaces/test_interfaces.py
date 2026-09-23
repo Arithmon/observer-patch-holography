@@ -2,6 +2,7 @@
 
 from copy import deepcopy
 from fractions import Fraction as F
+from fnmatch import fnmatchcase
 from itertools import product
 import json
 import os
@@ -12,6 +13,7 @@ import sys
 
 import numpy as np
 import pytest
+import yaml
 
 from . import check, model, verify
 
@@ -204,3 +206,13 @@ def test_all_new_lean_theorems_are_audited_and_built():
     assert '#guard_msgs in\naudit_m1_interfaces Lean.ofReduceBool' in gate
     ci=(ROOT/'.github/workflows/lean-ci.yml').read_text(encoding='utf-8')
     assert re.search(r'^\s*"Geometry.M1InterfacesAxiomAudit"\s*$',ci,re.M)
+
+
+def test_ci_replays_every_pinned_source_change():
+    path=ROOT/'.github/workflows/m1-interfaces.yml'
+    workflow=yaml.load(path.read_text(encoding='utf-8'),Loader=yaml.BaseLoader)
+    dependencies=set(verify.pins()) | {'claims/claim_registry.yaml'}
+    for event in ('push','pull_request'):
+        patterns=workflow['on'][event]['paths']
+        uncovered={source for source in dependencies if not any(fnmatchcase(source,p) for p in patterns)}
+        assert not uncovered,(event,uncovered)

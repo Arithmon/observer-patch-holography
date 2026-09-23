@@ -6,6 +6,8 @@ on:
     paths:
       - "code/m1_interfaces/**"
       - "Lean/Geometry/M1Interfaces*.lean"
+      - "Lean/Geometry/FlatDiamondNormalization.lean"
+      - "Lean/Geometry/OrderingFractionFourDimensional.lean"
       - "paper/tex_fragments/M1_INTERFACES.tex"
       - "claims/claim_registry.yaml"
       - ".github/workflows/m1-interfaces.yml"
@@ -16,6 +18,8 @@ on:
     paths:
       - "code/m1_interfaces/**"
       - "Lean/Geometry/M1Interfaces*.lean"
+      - "Lean/Geometry/FlatDiamondNormalization.lean"
+      - "Lean/Geometry/OrderingFractionFourDimensional.lean"
       - "paper/tex_fragments/M1_INTERFACES.tex"
       - "claims/claim_registry.yaml"
       - ".github/workflows/m1-interfaces.yml"
