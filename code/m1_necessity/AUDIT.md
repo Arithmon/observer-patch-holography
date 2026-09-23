@@ -2,14 +2,19 @@
 
 ## Proof and scientific scope
 
-The starting point is main ba84976ad1195892c68fdd0d74a27ab0c899aeb8.
-No unmerged RG or source-selection code is imported. All existing claim
+The integrated base is main 7f588ea5444c87263e62dd8e30f0805f19d09b9d.
+The prior RG and source-selection PRs are now part of main. All existing claim
 rows and premise dependency classifications are retained unchanged.
 The direct inventory is expanded to the complete registered descendant
-closure of 92 existing claims. Their individual assumptions and edge roles
+closure of 95 existing claims. Their individual assumptions and edge roles
 are retained, while contextual reachability is distinguished from a logical
 M1 premise. No action, quantum, gravitational or empirical claim is silently
 promoted through a transitive dependency.
+
+The integrated RG reduction and information-bound claims remain in the
+inventory. Their proposed local-clock premises and native source boundary
+are retained; only the general finite transcript bound transfers to a
+lossless sparse read experiment. Dense tuple and bandwidth counts do not.
 
 The exit is a completed necessity comparison. The sparse stencils, sites,
 edges, weights, timing and route algorithm are specified before testing.

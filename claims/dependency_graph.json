@@ -259,6 +259,10 @@
   "OPH-SPIN-EXCHANGE-SELECTION-BOUNDARY",
   "OPH-CONDITIONAL-PAULI-SCALAR-Q-SELECTION",
   "OPH-CONDITIONAL-PAULI-OPERATION-SELECTION",
+  "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
+  "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+  "OPH-RG-LOCAL-CLOCK-REDUCTION",
+  "OPH-RG-INFORMATION-RESOURCE-BOUND",
   "OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT",
   "OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY",
   "OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION",
@@ -2239,6 +2243,31 @@
    "from": "OPH-FERMION-HYPERCHARGE-SOURCE-CURRENT",
    "to": "OPH-CONDITIONAL-PAULI-OPERATION-SELECTION",
    "role": "Supplies only the signed one-particle hopping edge for a separately declared covariant capped-symmetric lift. Neither the parent CAR nor its physical preparation is inherited by the operation theorem or countercontrol."
+  },
+  {
+   "from": "OPH-SCREEN-PORT-CURRENT-INNER",
+   "to": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+   "role": "Supplies the intrinsic three-dimensional simple response ideal. RG separately supplies its operational action on transported records."
+  },
+  {
+   "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
+   "to": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+   "role": "Supplies exact golden equal-volume assignment and count convergence for the M1 regulator comparison under RG."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+   "role": "Supplies covering, causal-boundary, interval and strict-pair results joined to primitive execution and native ancestry under the proposed RG law."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+   "role": "Supplies the covering-path and count-limit mathematics once LC realizes the declared finite read programs; physical source binding is not inherited."
+  },
+  {
+   "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
+   "to": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+   "role": "Supplies cell-assignment count convergence for distinguished regulator records; auxiliary native work is not identified with their volume."
   },
   {
    "from": "OPH-GOLDEN-SOURCE-QUADRATURE",

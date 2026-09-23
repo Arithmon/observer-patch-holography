@@ -8,7 +8,8 @@ from .check import canonical, require, strict_load
 ROOT = Path(__file__).resolve().parents[2]
 KEYS = {"declared_golden_source_population_read_law_clock_and_count_measure",
         "M1_full_family_read_feedback_and_routing",
-        "declared_metric_coarsening_voronoi_kernel_scalar_action"}
+        "declared_metric_coarsening_voronoi_kernel_scalar_action",
+        "declared_lossless_independent_interventions_and_dense_observation"}
 EXPECTED = {
     "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM": "named_limits_and_sparse_scalar_action",
     "OPH-COSMO-FLRW-RECORD-DENSITY": "same_weight_identities_and_profile_boundary",
@@ -16,7 +17,8 @@ EXPECTED = {
     "OPH-GOLDEN-SOURCE-QUADRATURE": "analogous_limits_not_golden_arithmetic",
     "OPH-SOURCE-FULL-FAMILY-READ-ROUTING": "finite_routing_not_transferred",
     "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT": "native_resource_counts_not_transferred",
-    "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION": "recorded_architecture_not_transferred"}
+    "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION": "recorded_architecture_not_transferred",
+    "OPH-RG-INFORMATION-RESOURCE-BOUND": "general_information_bound_retained_dense_counts_not_transferred"}
 OWN = {"OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT", "OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY",
        "OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION", "OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION"}
 

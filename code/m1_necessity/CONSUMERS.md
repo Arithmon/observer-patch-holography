@@ -2,14 +2,15 @@
 
 The machine-checked inventory selects every current claim whose assumptions
 directly contain the golden population/read/clock/count law, the complete M1
-routing interface or the metric-kernel scalar action. There are seven such
-claims at main ba84976a. The receipt binds the complete original claim rows.
+routing interface, the metric-kernel scalar action or the dense independent-
+record experiment. There are eight such claims at main 7f588ea5. The receipt
+binds the complete original claim rows.
 Adding or omitting a consumer requires an explicit inventory update, not a
 silently shortened list. The dispositions concern the named results below;
 several registry rows collect much broader mixed-scope conclusions.
 
 The audit also closes the registered dependency graph forward from these
-seven claims: 92 existing rows, including the seven direct consumers, are
+eight claims: 95 existing rows, including the eight direct consumers, are
 enumerated in `downstream.json`. The receipt retains each row's exact
 assumptions, original full-row hash and every internal dependency edge with
 its stated role. A missing row or newly reachable claim fails verification.
@@ -38,6 +39,7 @@ claim-by-claim requirements retained in the receipt:
 | `OPH-SOURCE-FULL-FAMILY-READ-ROUTING` | Every named preceding-layer input, exact protected writer/version values and a supplied native compiler | Not transferred. Removing a one-layer parent changes the finite order and a lossless tuple function. Lower logical degree is not execution of the old full function with fewer reads. |
 | `OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT` | Exact routed operations, auxiliary storage, lifetimes, precision and refinement schedule | Not transferred. The new bounds count logical incidences only. No native event, bit, precision or energy savings follow without a new native compiler and resource audit. |
 | `OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION` | A specific retained operation log and candidate architecture class | Not transferred. The new graph families do not identify the hidden architecture of an old routing log or defeat that finite nonidentification theorem. |
+| `OPH-RG-INFORMATION-RESOURCE-BOUND` | Lossless decoding of independently intervenable records with fixed caches; separately the exact dense metric-neighbor menu for its q^5 incidence and q^2 incoming-bandwidth bounds | The general injective-transcript capacity bound is retained. Dense menu counts remain about the original regulator; sparse incidence counts do not execute its full tuple function or establish native resource savings. |
 
 ## Material qualifications
 

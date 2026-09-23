@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 422,
+  "surface_count": 424,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -270,6 +270,11 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/RECORD_GLUING_PRINCIPLE.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/REFINING_CAUSAL_CONE.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
@@ -336,6 +341,11 @@
     },
     {
       "path": "paper/tex_fragments/SOURCE_READ_ROUTING.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SOURCE_RECORD_GLUING.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },

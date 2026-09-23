@@ -149,13 +149,14 @@
         "OPH-SCREEN-PORT-CURRENT-INNER"
       ],
       "source_anchors": [
-        "code/a5_closure/receipts/port_current_inner_reference.receipt.json"
+        "code/a5_closure/receipts/port_current_inner_reference.receipt.json",
+        "code/a5_closure/manifests/source_current_order_sensitive_inventory.json"
       ],
       "blocking_issues": [
         {
           "number": 734,
           "scope": "unresolved_attachment",
-          "role": "ordered source tomography, bracket reconstruction, and same-current A2 holonomy"
+          "role": "the enumerated reviewed source scope supplies no reversible order-sensitive producer for ordered source tomography, bracket reconstruction, or same-current A2 holonomy"
         },
         {
           "number": 736,

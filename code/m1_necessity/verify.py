@@ -136,7 +136,7 @@ def verify(packet):
             total_events += sum(item["events"] for item in graph.values())
             total_reads += sum(item["reads"] for item in graph.values())
     return {"routes":len(packet["routes"]),"route_steps":total_steps,
-            "executed_events":total_events,"executed_reads":total_reads,"consumer_claims":7,
+            "executed_events":total_events,"executed_reads":total_reads,"consumer_claims":8,
             "downstream_claims":len(downstream['claims']),**balanced_check.verify(packet['balanced'])}
 
 

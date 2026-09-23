@@ -246,6 +246,10 @@
       "disposition": "named_limits_and_sparse_scalar_action",
       "original_claim_sha256": "b8cad9c8fc059e39d3495294f5ca57b9b70b43ebc2243a53a3d0c8c3263da403"
     },
+    "OPH-RG-INFORMATION-RESOURCE-BOUND": {
+      "disposition": "general_information_bound_retained_dense_counts_not_transferred",
+      "original_claim_sha256": "60eed2a9685058639e22625e3113c4ab5b37de110ea77caaa207da987c301bb8"
+    },
     "OPH-SOURCE-FULL-FAMILY-READ-ROUTING": {
       "disposition": "finite_routing_not_transferred",
       "original_claim_sha256": "12f76df2d33082a4c40acc1f0c75d6134b2ce34b10930ebeaa0a619d3f6465c7"
@@ -1583,6 +1587,27 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "1c0f0b1b12aa6442cbc08f6dc76a82d28367df05451e807ee91127f6cf2f44e1"
       },
+      "OPH-RECORD-GLUING-M1-SUFFICIENCY": {
+        "assumptions": [
+          "proposed_response_natural_classical_record_transport_RG"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "51694b3f6a84f12b966b3af7741cc4a8ea51ee2f5dea483ae93bb2310d349399"
+      },
+      "OPH-RG-INFORMATION-RESOURCE-BOUND": {
+        "assumptions": [
+          "declared_lossless_independent_interventions_and_dense_observation"
+        ],
+        "disposition": "general_information_bound_retained_dense_counts_not_transferred",
+        "original_claim_sha256": "60eed2a9685058639e22625e3113c4ab5b37de110ea77caaa207da987c301bb8"
+      },
+      "OPH-RG-LOCAL-CLOCK-REDUCTION": {
+        "assumptions": [
+          "declared_local_clock_record_composition_and_time_faithful_refinement"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "f9546c8fed86e6debe46a0bd4d59f13ebdb5d6d3ce9b487fe2ee53cacf7cad0f"
+      },
       "OPH-SCALAR-ACTION-CLOCK": {
         "assumptions": [
           "declared_golden_scalar_versioned_execution",
@@ -2169,6 +2194,16 @@
         "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM"
       },
       {
+        "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
+        "role": "Supplies exact golden equal-volume assignment and count convergence for the M1 regulator comparison under RG.",
+        "to": "OPH-RECORD-GLUING-M1-SUFFICIENCY"
+      },
+      {
+        "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
+        "role": "Supplies cell-assignment count convergence for distinguished regulator records; auxiliary native work is not identified with their volume.",
+        "to": "OPH-RG-LOCAL-CLOCK-REDUCTION"
+      },
+      {
         "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
         "role": "supplies the layered read law, site density and read radius of the declared golden family whose crossing reads are counted; it supplies no horizon, entropy or Planck-length identification",
         "to": "OPH-BH-CROSSING-READ-AREA-LAW"
@@ -2197,6 +2232,16 @@
         "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
         "role": "Supplies only the golden source-address family for the distinct declared tensor scalar-action instantiation; neither the general comparison theorem nor its finite packet consumes native physical spacetime selection or authenticated field/count-clock identification.",
         "to": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON"
+      },
+      {
+        "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+        "role": "Supplies covering, causal-boundary, interval and strict-pair results joined to primitive execution and native ancestry under the proposed RG law.",
+        "to": "OPH-RECORD-GLUING-M1-SUFFICIENCY"
+      },
+      {
+        "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+        "role": "Supplies the covering-path and count-limit mathematics once LC realizes the declared finite read programs; physical source binding is not inherited.",
+        "to": "OPH-RG-LOCAL-CLOCK-REDUCTION"
       },
       {
         "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
@@ -2994,24 +3039,24 @@
     "Lean/Geometry/FlatDiamondNormalization.lean": "28f2df01078762fc4e73a47ccc3678ffb3644a90486d6a9c1a5d5064f4b26d57",
     "Lean/Geometry/M1Necessity.lean": "2b282b25fe3f82153d2780366b36e6eea8cd4f7685d0e08a9ebd15355062ff98",
     "Lean/Geometry/M1NecessityAxiomAudit.lean": "41f1652a454b94dde7f3a198b4c45badba075a54d13f4ed5a23ac533c3c4f677",
-    "code/m1_necessity/AUDIT.md": "3192c3742eea9405499aaf66d9774535e5648dd3dc599ab7d095e870347a6af4",
+    "code/m1_necessity/AUDIT.md": "90cf7166aa14106193c485f2ea612590ee2a132bde2a4cc9d29e12b5e1e657f3",
     "code/m1_necessity/BALANCED_REPLACEMENT.md": "166af4d120d3dae4f3d077d1160434d4650d7dc5cc7c48d56c8f7f1defb95fce",
-    "code/m1_necessity/CONSUMERS.md": "d6b679e9a7d6e03bcb22f374830ad38ce08d05bbede0f26479093249dc5b2a49",
-    "code/m1_necessity/CONTRACT.md": "0ec1d52d36ed7a09f9148eeeb0cfe37c2bbeb9fef032b0e3ae5868a67529bcff",
+    "code/m1_necessity/CONSUMERS.md": "41edc7da6204ffd206183de2788198525cd5e74164e8c782e37f6dd1482528eb",
+    "code/m1_necessity/CONTRACT.md": "326e30f7c429778b1f12fc2b8c9c70d39759b463770b133f4419cecdaadddf32",
     "code/m1_necessity/DERIVATION.md": "348339016240322a89d65a5db583870f3355f82352d82855735eb9907d2ec7ae",
-    "code/m1_necessity/README.md": "76636a1ea3f183af1860f0736d2f403a52cbe66e43cc18cf2cbd7b005d837078",
+    "code/m1_necessity/README.md": "3c9de6f88fee1aec2890c869401aa891f831f0fe76a7c3be11c4a2ec96c0748d",
     "code/m1_necessity/SPECTRAL_COMPLETION.md": "7a5d98c091d081797ab9994f437e0e8fd97d245ac3677a417540e7366fc75dd4",
     "code/m1_necessity/__init__.py": "a49a6656f96a30bd6343e498a0ca5302dae30515d4cf458d45c172933a0247ac",
-    "code/m1_necessity/audit.py": "ccf6dd637907e40e17c3fa36ed8921b4d22806bcbf62aea5c6633e3340746941",
+    "code/m1_necessity/audit.py": "d6a0df2ca2ab885fa8cb7c527f3a74ac17b748847524f4cec7d8df7a049a50c0",
     "code/m1_necessity/balanced.py": "761bd21d8529d8ef4a114a8fc28d2794cbaff24993cf0074e148207f3a8975a3",
     "code/m1_necessity/balanced_check.py": "336f0d7002d70b31378e15efae865c540bd5c77ed5f8777c67b10fd69205200e",
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
-    "code/m1_necessity/consumers.json": "ae92fb5bb4fdb8d870f539ed1bd37692ab0d0f272f13ac4d117697b94f8e9fc0",
-    "code/m1_necessity/downstream.json": "3ce1ea4eb0470d4fe2673186c812b112fa19439f33aa1f81288d900476a4917c",
+    "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
+    "code/m1_necessity/downstream.json": "8aa179785fc65bc470c645554f0357515f7a9aa4e23bf3724111baaedc9fb9f4",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "fe1d9c2f234d98d8849dd5ce456bbd176db45c09db69c3c2c58729c849d5cce8",
-    "code/m1_necessity/verify.py": "539f62a16fcfe563e185a75ff30db0500ba604b2f05b552482a17dfbc7c8375d",
+    "code/m1_necessity/test_necessity.py": "5b178f3fbc31a0fa640b060add0d47fc48055bff8328d015e5f99e1769ece1d8",
+    "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "10cfccb1d945500e256e791736ef90efff4a1207aebd4fa6ce56dff0d0254426",
     "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex": "22d14e170fa56fd5f341c24a6e0b8256358b80e98f93020384dc613c08823e2a",

@@ -1,0 +1,340 @@
+{
+  "schema": "oph.source-selection-model-finite-evidence.v1",
+  "verification_scope": "finite identities and executions; full model proof is analytic",
+  "response": {
+    "response_rank": 12,
+    "observable_response_rank": 12,
+    "block_diagonal_observable_control_rank": 11,
+    "ordered_brackets": 66,
+    "cayley_factors": 20,
+    "closed_path_actions": 60,
+    "response_naturality_pairs": 720,
+    "path_compositions": 3600
+  },
+  "algebra": {
+    "local_matrix_dimension": 432,
+    "primitive_central_ports": 12,
+    "faithful_representation_dimension": 72,
+    "reference_eigenvalue": "1/72",
+    "scalar_seam_state_dimension": 0,
+    "reset_kraus_operators": 36
+  },
+  "constraint_grammar": {
+    "normalized_state_dimension": 431,
+    "omission_witnesses": 431,
+    "reference_eigenvalue": "1/72",
+    "perturbation_size": "1/288",
+    "perturbed_eigenvalue_lower_bound": "1/96"
+  },
+  "central_channels": {
+    "identity": {
+      "inputs": 12,
+      "outputs": 12,
+      "decoder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "collisions": []
+    },
+    "permutation": {
+      "inputs": 12,
+      "outputs": 12,
+      "decoder": [
+        11,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "collisions": []
+    },
+    "scalar": {
+      "inputs": 12,
+      "outputs": 1,
+      "decoder": null,
+      "collisions": [
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "full_rank_noisy": {
+      "inputs": 12,
+      "outputs": 12,
+      "decoder": null,
+      "collisions": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          1
+        ],
+        [
+          3,
+          0,
+          1
+        ],
+        [
+          4,
+          0,
+          1
+        ],
+        [
+          5,
+          0,
+          1
+        ],
+        [
+          6,
+          0,
+          1
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          8,
+          0,
+          1
+        ],
+        [
+          9,
+          0,
+          1
+        ],
+        [
+          10,
+          0,
+          1
+        ],
+        [
+          11,
+          0,
+          1
+        ]
+      ],
+      "signed_inverse_is_stochastic": false
+    },
+    "redundant_outputs": {
+      "inputs": 12,
+      "outputs": 24,
+      "decoder": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        9,
+        9,
+        10,
+        10,
+        11,
+        11
+      ],
+      "collisions": []
+    }
+  },
+  "support": [
+    {
+      "level": 0,
+      "carriers": 12,
+      "seams": 30,
+      "triple_overlaps": 20,
+      "fiber_size_census": [],
+      "tagged_scalar_seam_routes": 0
+    },
+    {
+      "level": 1,
+      "carriers": 42,
+      "seams": 120,
+      "triple_overlaps": 80,
+      "fiber_size_census": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "tagged_scalar_seam_routes": 382
+    },
+    {
+      "level": 2,
+      "carriers": 162,
+      "seams": 480,
+      "triple_overlaps": 320,
+      "fiber_size_census": [
+        [
+          1,
+          12
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          20
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "tagged_scalar_seam_routes": 1810
+    },
+    {
+      "level": 3,
+      "carriers": 642,
+      "seams": 1920,
+      "triple_overlaps": 1280,
+      "fiber_size_census": [
+        [
+          1,
+          42
+        ],
+        [
+          3,
+          12
+        ],
+        [
+          4,
+          36
+        ],
+        [
+          5,
+          32
+        ],
+        [
+          6,
+          20
+        ],
+        [
+          7,
+          20
+        ]
+      ],
+      "tagged_scalar_seam_routes": 7152
+    }
+  ],
+  "records": {
+    "paired_histories": 144,
+    "local_events": 6912,
+    "source_traces_distinguished": 144,
+    "uniform_guess_success": "1/12",
+    "uniform_guess_failure": "11/12"
+  },
+  "refinement": {
+    "one_step_maps": 3,
+    "composite_fibers": 12,
+    "nonuniform_composite_fibers": 11,
+    "selective_posterior": [
+      "1/4",
+      "3/4"
+    ]
+  },
+  "source_pins": {
+    ".github/workflows/lean-ci.yml": "eb2f7c2c8494bba9ae94097e364ab3fb3dbd8f0f947d9dfe205826462ae2f9f7",
+    ".github/workflows/source-selection-model.yml": "83a97335a8d78649f8ba0758ffeada7ea1ba10d5707d0c6c002ae46e0bb98181",
+    "Lean/Geometry.lean": "90348ce136b57da717a93fb53e8e55297bd13443ad566a992208af18ca1c62b3",
+    "Lean/Geometry/SourceEncodedMemory.lean": "67f98a7bf3d76d1a705a979200169ef4d34b2f8ae5bd4875fee857b2db1fca24",
+    "Lean/Geometry/SourceReusableBus.lean": "25dc38bdcfe71a4d5860be4e0051dd16bd3083c9bdc8c5befcc162ba421f57d2",
+    "Lean/Geometry/SourceReusableBusAxiomAudit.lean": "2d9fa469d6278f6a8e59fc3a204beea2eca4b597abc56b60675464311c21a6fe",
+    "Lean/Geometry/SourceSelectionLocality.lean": "2d10e9f991cc1f046c9651288850a41ae7905ccf1173fc896ed0929f88022a5e",
+    "Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean": "0a2e24d15cb4cde3a06c08dda1149894e212b202d75f3762bd4d3b402bb35518",
+    "Lean/ObserverPatchHolography/ScalarSeamRepair.lean": "26a8944ff97643cc9b2cf5ac58f6667ff0a443ca9cd81301e94e1cb6b0c9a8ef",
+    "Lean/lake-manifest.json": "65c7120947e5a3ad487de7311a46f792f62dd92718e220f82fefbda2d7d3f59d",
+    "Lean/lean-toolchain": "7dc000621e0046d1aada809e2b7177e64454645cf4c741e9daaf79c99ec2e7a2",
+    "claims/axiom_registry.yaml": "4cb54266a5ca93475ce14babac0be2f2a0b23ebcf65fe50686e8c26451cb4669",
+    "code/a5_closure/echosahedral_selector_certificate.py": "e140adad7fe3162e38dbe44736669d9ea35f98a94acf90625d09fce9766385f7",
+    "code/a5_closure/port_current_inner_certificate.py": "8ac3f51d08155decc328ebb8c12909bf92f9a50313f14ebc0faf70c0d2513436",
+    "code/a5_closure/response_grammar_completeness_certificate.py": "5e3f0c52208619a1609fd3c002ed48bdfa480d8adaa92bf2c91b769c5e556338",
+    "code/source_selection_model/CONTRACT.md": "0eef7e5f703be35bf3fc9fad95e914ac1cdbf5e6ffcdc1505cfb77c089accf0f",
+    "code/source_selection_model/DERIVATION.md": "4881f7c7e41b6294d3b164e943952438f09a3aa03041bf152a382d8ff42aba85",
+    "code/source_selection_model/README.md": "c15759f790c3b1be39ee5cfe6eccd346834acdf86788fdf50d13d4bec43d3ff7",
+    "code/source_selection_model/RECORD_GLUING.md": "7919b97e9dde9fbd952c2f6bf0dcdcbfc83bdcd45d1a2c83d59250e7ccd7203b",
+    "code/source_selection_model/__init__.py": "0ef4f07dd260ca06c04365934aa374efff3cfa851e2967d8edf231f76b51080c",
+    "code/source_selection_model/channels.py": "d2bb168af9c2bf5b9d940af30db7d51d03f6b11e4fef5783145f901f554d67f9",
+    "code/source_selection_model/finite_model.py": "baf2567d811298f3d3e1cea55335d1aeb9ab4f66c44d30950f3a0a5ad63e92f7",
+    "code/source_selection_model/geometry.py": "de47ae19dd4ae1677d0cefb0163513f2f1f6d24dfb4dd0264506d0b17fceb843",
+    "code/source_selection_model/grammar.py": "ed420d788794c7a2b2b0c80bd68bd43df390a17dcf6eaab71e86037f3e31284b",
+    "code/source_selection_model/records.json": "c296cab79bc8a97c314642164c5d5070566bfb9c28667e4266b2bdba3d18a427",
+    "code/source_selection_model/records.py": "51c787929b826cb61a23b2fc29c1e2aac2b816e10dde743a05c4d30fc0aabccd",
+    "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
+    "code/source_selection_model/response.py": "c66160a6b6246692e19b32e9b00383c8abca8b493655cf534932bfcd900e8400",
+    "code/source_selection_model/test_model.py": "20470af5055377ab5f16d6a98fde4b7bea4cd2cde524b151b7ce935e8e2ee443",
+    "code/source_selection_model/verify.py": "2b9b7dbc81a60fb9172f553c0f8828fba70e44254d33606b977477a5327b1f7c",
+    "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
+    "docs/AXIOM_REFERENCE.md": "78b803601945f6629816aa2715186876e0020ae67646c05b4b0e2ca44919db88",
+    "paper/tex_fragments/SOURCE_RECORD_GLUING.tex": "89447e65e21d886c2bfc3840ea7582ead77910a6b10d193761bd27782795e878"
+  }
+}

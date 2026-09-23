@@ -11403,6 +11403,186 @@
       }
     },
     {
+      "claim_id": "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
+      "statement": "The scalar-seam construction supplies primitive central ports, a complete observable twelve-dimensional response and endogenous proper local chart holonomy, a degree-one all-level spherical refinement, local instruments and an explicit full-coordinate A3 state problem with unique tracial optimizer. Under the stated typed-axiom interpretation, local chart holonomy is distinct from inter-carrier record transport. Every admitted program leaves a remote transcript independent of a private source-port intervention, even with receiver-local memory and stopping. Thus those data-access clauses do not force an intervention-preserving remote record service. Full model membership and all-level refinement are analytic arguments; exact finite response, grammar, instrument and geometry checks and Lean reductions support them but do not formalize the full axioms. This is not a countermodel for a strengthened record-transmitting overlap axiom, the canonical W12 mean source or the registered simulator.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_typed_axiom_model_with_independent_exact_certificates_and_kernel_checked_information_reduction",
+      "assumptions": [
+        "typed_scalar_seam_source_and_local_chart_overlap_interpretation"
+      ],
+      "imported_results": [
+        "finite_matrix_algebra_and_positive_trace_geometry",
+        "icosahedral_midpoint_refinement",
+        "finite_Umegaki_nonnegativity_and_equality",
+        "local_program_indistinguishability"
+      ],
+      "oph_specific_delta": "Constructs a full-response scalar-seam source and explicitly checks the typed operational, refinement and A3 obligations instead of promoting a scalar toy or the incomplete amplitude simulator to a full-axiom countermodel.",
+      "novelty_type": "typed_source_nonentailment_and_exact_record_channel_obstruction",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_RECORD_GLUING.tex",
+        "code/source_selection_model/CONTRACT.md",
+        "code/source_selection_model/DERIVATION.md",
+        "code/source_selection_model/verify.py",
+        "code/source_selection_model/test_model.py",
+        "code/source_selection_model/response.json",
+        "code/source_selection_model/records.json",
+        "code/source_selection_model/receipt.json",
+        "Lean/Geometry/SourceSelectionLocality.lean",
+        "Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean"
+      ],
+      "falsifier": "A canonical clause requires inter-carrier record transmission or forbids the stated local chart groupoid; the full response, operational refinement or A3 membership argument fails; a remote local program distinguishes independent source labels without an added channel; or forged finite evidence passes verification.",
+      "scope_if_false": "The full-axiom non-entailment claim fails. The separately stated RG sufficiency implication and older named-source theorems retain their own hypotheses.",
+      "status": "analytic_typed_axiom_nonentailment__not_native_simulator_or_unconditional_M1_impossibility",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "A mathematical non-entailment construction for the stated typed axioms, not a physical source selection or a discharge of PR-52. Its full-clause interpretation is explicit and falsifiable."
+      }
+    },
+    {
+      "claim_id": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+      "statement": "Under the A1--A2 complete-response conclusion and the proposed response-natural classical record transport law RG, finite independently prepared record experiments have the round 3+1 causal/count limit. RG supplies a complete graded process realization with protected classical registers, a translated, rotated and positively scaled retained-record flight, finite parallel composition, cofinal workspace, refinement, all native dependency channels and uniform whole-program lowering, including independent localized interventions at intermediate record outputs before publication. Primitive execution derives the round access cone; covering paths and the sandwich between consumed-writer order and full native ancestry give continuity-set, interval and strict-pair limits, including ordering fraction 1/10. M1 golden sampling and radius L/sqrt(q) are one regulator, with an explicit comparison to a rational-grid regulator and positive-overhead timing stability. A compact independently checked additive reference replays every initial and first-layer commit intervention. The proof's lossless tuple experiment is constructed analytically; equality on initial inputs alone is not treated as native ancestry. RG is one substantial proposed operational law with multiple explicit requirements, not derived from A1--A3, adopted as a core axiom, proved minimal or uniquely necessary, or verified in the native simulator. Unique spontaneous microscopic populations, compulsory observer policy, matter dynamics and laboratory calibration are excluded.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_source_law_sufficiency_with_kernel_checked_primitive_cone_lowering_and_exact_reference_execution",
+      "assumptions": [
+        "proposed_response_natural_classical_record_transport_RG"
+      ],
+      "imported_results": [
+        "complete_compact_port_response_Lie_type",
+        "SO3_adjoint_transitivity_and_norm_triangle_inequality",
+        "source_net_covering_path_theorem",
+        "equal_volume_assignment_and_dominated_convergence",
+        "flat_Alexandrov_and_strict_pair_normalization"
+      ],
+      "oph_specific_delta": "Gives one fully specified sufficient source law and joins its primitive operations to native causal ancestry, finite preparations and causal/count limits, while comparing M1 as a regulator rather than assuming its population and metric menu in the law.",
+      "novelty_type": "complete_operational_transport_extension_and_M1_regulator_sufficiency",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_RECORD_GLUING.tex",
+        "code/source_selection_model/CONTRACT.md",
+        "code/source_selection_model/RECORD_GLUING.md",
+        "code/source_record_gluing/README.md",
+        "code/source_record_gluing/process.py",
+        "code/source_record_gluing/check_process.py",
+        "code/source_record_gluing/verify.py",
+        "code/source_record_gluing/test_process.py",
+        "code/source_record_gluing/capture.json",
+        "code/source_record_gluing/receipt.json",
+        "Lean/Geometry/SourceRecordGluing.lean",
+        "Lean/Geometry/SourceRecordGluingAxiomAudit.lean"
+      ],
+      "falsifier": "A source satisfying all of RG violates the derived cone, simultaneous finite preparation/read realization, native-order sandwich or count/interval/pair limits; timing or auxiliary dependencies evade the stated accounting; initial-input equality is substituted for localized intermediate intervention faithfulness; the verifier accepts forged reference histories or filtered interventions; or the conditional theorem is presented as native implementation or derivation of RG from A1--A3.",
+      "scope_if_false": "The proposed-law sufficiency or its finite reference evidence fails. No unconditional canonical M1 derivation, simulator implementation or physical establishment is asserted.",
+      "status": "one_proposed_operational_law_suffices_for_M1_causal_count_regulator_limit__native_RG_not_established",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "An implication under one explicitly proposed source law, not physical branch entry. The theorem closes its operational-regulator conclusion under RG but does not derive or establish RG, so canonical PR-52 is not marked discharged."
+      }
+    },
+    {
+      "claim_id": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+      "statement": "Under LC1--LC3, a positive quadratic expansion of squared local latency and finite tetrahedral carrier covariance force an isotropic infinitesimal clock. Complete time-faithful refinement bounds every native influence by the resulting cone; local directional coverage and finite composition attain all strict timelike deadlines. Exact dilation covariance and continuous rotational symmetry of operations are unnecessary. With independent registers and intervention-faithful finite realization, the existing source-net and cell-count theorems give the operational causal/count limit for any admissible mesoscopic regulator. NOT/Toffoli with clean cofinal classical workspace implement every finite classical map. A finite matrix-algebra construction makes retained classical copying compatible with twelve central ports and quantum seams, with an explicitly included joint observer and compatible marginal references giving its tracial entropy minimum. For a separately declared classical joint-history score problem, initial blanks and actual gate-transition constraints give a unique relative-entropy minimizer equal to the executed faithful input ensemble; target truth-table failures do not alter feasibility. It does not construct a full all-level A1--A3 source or certify native response completeness. Entropy susceptibility supplies a candidate invariant quadratic form but does not supply clock calibration. RG and LC are proposed extensions, not adopted core axioms or verified simulator properties.",
+      "assumptions": [
+        "declared_local_clock_record_composition_and_time_faithful_refinement"
+      ],
+      "imported_results": [
+        "finite_group_invariant_quadratic_forms",
+        "reversible_classical_computation",
+        "source_net_covering_and_cell_count_limits",
+        "finite_matrix_Kraus_and_Umegaki_identities"
+      ],
+      "oph_specific_delta": "Separates the proposed record-gluing law into independently testable obligations, removes exact microscopic scaling and continuous rotation symmetry from its limiting geometry, and connects the remaining regular-clock principle to the existing OPH source-net limit without asserting a native source completion.",
+      "novelty_type": "local_clock_reduction_and_finite_algebra_coherence_of_proposed_record_transport",
+      "falsifier": "The invariant quadratic form is anisotropic, a time-faithfully refined dependency violates the cone bound, strict deadlines cannot be met despite all finite-composition premises, the clean finite-function compiler or copying channel fails exact replay, or finite algebra compatibility is promoted to full A1--A3 membership. Polyhedral clocks and coarse shortcuts are explicit controls for omitted premises.",
+      "scope_if_false": "The reduction of proposed RG or its finite compatibility witness fails. Existing source-net results retain their independently supplied read laws; no core axiom amendment or physical M1 conclusion is inferred.",
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [],
+        "open": [],
+        "boundary": [
+          "PR-52"
+        ]
+      },
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_conditional_theorem_with_exact_controls",
+      "evidence": [
+        "paper/tex_fragments/RECORD_GLUING_PRINCIPLE.tex",
+        "code/rg_principle/DERIVATION.md",
+        "code/rg_principle/CONTRACT.md",
+        "code/rg_principle/compiler.py",
+        "code/rg_principle/checker.py",
+        "code/rg_principle/certificates.py",
+        "code/rg_principle/receipt.py",
+        "code/rg_principle/receipt.json",
+        "code/rg_principle/test_rg_principle.py",
+        "Lean/Geometry/RecordGluingPrinciple.lean",
+        "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean"
+      ],
+      "status": "conditional_reduction_and_resource_bounds_proved__native_source_binding_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ]
+    },
+    {
+      "claim_id": "OPH-RG-INFORMATION-RESOURCE-BOUND",
+      "statement": "Lossless decoding of m independently intervenable d-ary records with all preexisting caches fixed requires a complete finite cut transcript with at least d^m alternatives. For the dense M1 regulator q=n^2, n>=2, an explicit strict interior cube gives at least q^(9/2)/8 read incidences per layer and q^5/8 per horizon L/c. Each interior receiver needs fresh binary input bandwidth at least c*q^2/(2L) under independent layer-boundary interventions, excluding its own locally available record from the incoming cut. Aggregate incidence counts are not unicast packet counts, and correlated unperturbed histories alone do not imply a fresh entropy rate. These are combinatorial information/resource consequences of the declared read experiment, not energy, thermodynamic, gravitational or matter-dynamics laws.",
+      "assumptions": [
+        "declared_lossless_independent_interventions_and_dense_observation"
+      ],
+      "imported_results": [
+        "finite_pigeonhole_principle",
+        "integer_grid_inner_cube_count"
+      ],
+      "oph_specific_delta": "Exposes the cofinal resource burden of the dense M1 observation protocol independently of its causal/count convergence; separates distinguished record volume, complete transcript capacity and native work.",
+      "novelty_type": "intervention_sensitive_information_cut_and_dense_M1_resource_lower_bounds",
+      "falsifier": "A decoder for every independently varied input tuple is noninjective, the strict interior cube fails inclusion or counting, a bounded complete receiver transcript decodes more independent bits than its alphabet permits, or an incidence lower bound is presented as an unicast or thermodynamic lower bound.",
+      "scope_if_false": "The stated resource obstruction fails. The clock/cone theorem and regulator count convergence retain their separate assumptions.",
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "These are finite decoding and integer-grid inequalities under explicit independent intervention and transcript assumptions. They use no physical event/clock/source identification from PR-16 or PR-52 and establish neither energy nor entropy-production calibration."
+      },
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_conditional_theorem_with_exact_controls",
+      "evidence": [
+        "paper/tex_fragments/RECORD_GLUING_PRINCIPLE.tex",
+        "code/rg_principle/DERIVATION.md",
+        "code/rg_principle/CONTRACT.md",
+        "code/rg_principle/compiler.py",
+        "code/rg_principle/checker.py",
+        "code/rg_principle/certificates.py",
+        "code/rg_principle/receipt.py",
+        "code/rg_principle/receipt.json",
+        "code/rg_principle/test_rg_principle.py",
+        "Lean/Geometry/RecordGluingPrinciple.lean",
+        "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean"
+      ],
+      "status": "conditional_reduction_and_resource_bounds_proved__native_source_binding_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ]
+    },
+    {
       "claim_id": "OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT",
       "statement": "For each n>=1, R=2^n and q=R^2, explicitly enumerated cube-face flights rounded toward zero, signed dyadic axis steps and a waiting edge define a cubic-symmetric sparse integer read stencil S of degree at most 24n^2+6n+9 inside the radius-R ball B. A fully charged flight and binary-correction path to displacement d has length between |d|/R and (1+3/n+3/R)|d|/R+3n+2 and stays in an explicit shrinking physical tube. On q^3 grid sites with h=L/q, tick hR/c and equal event weight (hR/c)h^3, this proves strict-margin causal agreement, boundary-null cell counts, actual contained generated-diamond and strict-pair count convergence, ordering fraction 1/10 and fourth-root count-clock ratios. Positive bounded continuous conformal weights preserve the specified mass identities and weighted limits. The same proof works at q=R^k for every fixed integer k>=2, explicitly including radii L/sqrt(q) and L*q^(-2/3). Hence these named limits do not uniquely require complete-neighbor reads, Fibonacci sites or the square-root radius. S uses at most q^3 R (24n^2+6n+9) logical reads over horizon L/c at k=2, versus order q^5 for B. Adjacent-layer edge deletion and a two-preparation input witness show that exact finite orders and lossless dense read tuples are not preserved. The universal geometric and measure arguments are analytic; binary routing and finite algebra have kernel-checked reductions. Actual small software graphs and interventions are independently replayed. No native compiler, physical source selection, exact finite Lorentz covariance, bit/energy saving or laboratory clock is inferred.",
       "tier": "explicit_sparse_family_and_analytic_causal_count_replacement",
