@@ -303,7 +303,7 @@
     ]
   },
   "source_pins": {
-    ".github/workflows/lean-ci.yml": "03813a7057f063ab409b259d759adc6d10d83d2abddc92519a543e02adb780c7",
+    ".github/workflows/lean-ci.yml": "55f4580833a10eee845e380a127e8e191d5261bd6f5030176f55236c98364cc6",
     ".github/workflows/source-selection-model.yml": "83a97335a8d78649f8ba0758ffeada7ea1ba10d5707d0c6c002ae46e0bb98181",
     "Lean/Geometry.lean": "90348ce136b57da717a93fb53e8e55297bd13443ad566a992208af18ca1c62b3",
     "Lean/Geometry/SourceEncodedMemory.lean": "67f98a7bf3d76d1a705a979200169ef4d34b2f8ae5bd4875fee857b2db1fca24",

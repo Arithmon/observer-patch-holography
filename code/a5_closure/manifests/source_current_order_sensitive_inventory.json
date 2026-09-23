@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 831,
+    "file_count": 833,
     "files": [
       {
         "byte_count": 40994,
@@ -421,6 +421,16 @@
         "byte_count": 5817,
         "path": "Lean/Geometry/LorentzOverlapCocycle.lean",
         "sha256": "sha256:c86d3f7eb320490bd944d3c05bb838115c3400e297a0731e311cf4c6b24ef025"
+      },
+      {
+        "byte_count": 4737,
+        "path": "Lean/Geometry/M1QuantumTransport.lean",
+        "sha256": "sha256:326dcb92283a87efb0dcadcb3b9d0a8a036692beb849891a6edc71880379b40c"
+      },
+      {
+        "byte_count": 1695,
+        "path": "Lean/Geometry/M1QuantumTransportAxiomAudit.lean",
+        "sha256": "sha256:40063f13218431c828552d540f28fbebf344b155c677cdd31949899f8124d7ef"
       },
       {
         "byte_count": 7930,
@@ -3870,7 +3880,7 @@
       {
         "byte_count": 9860,
         "path": "code/source_record_gluing/receipt.json",
-        "sha256": "sha256:680b9e5196a59cd8f31cdf11baef21ef7a906b2399d63aa0293b629c34e8fad3"
+        "sha256": "sha256:8a5da711988292b67d18f98277eddf507496f9827839a5fce93664476f05d071"
       },
       {
         "byte_count": 11938,
@@ -4120,7 +4130,7 @@
       {
         "byte_count": 8628,
         "path": "code/source_selection_model/receipt.json",
-        "sha256": "sha256:1da3b83c8ceeef7c1eeeb7eca82342d25f2964cbbfbc1446252fa1f687ec0f23"
+        "sha256": "sha256:3b92798779e05fdcd3c1c8e031308274c1d3f2cfb1e00fae7a6a2de5232d7862"
       },
       {
         "byte_count": 11004,
@@ -4353,7 +4363,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:7d4b4149dbabd40ff16a4ef8715e9424555f7a6020a5e0aec7e369f8cf7ea218",
+    "files_sha256": "sha256:7dee9b44893b503a24f4ff2093ecb74db1e7b3f5bddf18e508091fb2c8d868aa",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
@@ -7128,7 +7138,7 @@
     ],
     "through_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8"
   },
-  "inventory_sha256": "sha256:666ebb33a2604fd9a4d888b8c403fdb8b33362b77daf9845dab4a7648690ccc8",
+  "inventory_sha256": "sha256:8619280eacf8261ae9bd4d00e3f2ac8f252003a31f5fd828b9a7ca11cd4ebe5c",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
