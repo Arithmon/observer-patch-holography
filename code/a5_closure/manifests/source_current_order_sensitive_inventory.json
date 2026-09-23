@@ -32,7 +32,10 @@
       "code/maxwell_measurement",
       "evidence/source_net_causal_poset/routed_read_law",
       "code/source_publication_selection",
-      "code/source_operation_reads"
+      "code/source_operation_reads",
+      "code/source_selection_model",
+      "code/source_record_gluing",
+      "code/rg_principle"
     ],
     "directories_added_since_initial_inventory": [
       {
@@ -110,6 +113,18 @@
       {
         "directory": "code/source_operation_reads",
         "reason": "Registered all-port histories and separately supplied instrument/recovery extensions."
+      },
+      {
+        "directory": "code/source_selection_model",
+        "reason": "declared scalar-seam response witness and record interventions whose explicit generator formula and algebraic jets test the source-native and raw-history requirements"
+      },
+      {
+        "directory": "code/source_record_gluing",
+        "reason": "reference execution of the proposed classical record-transport grammar with an additive diagnostic"
+      },
+      {
+        "directory": "code/rg_principle",
+        "reason": "local-clock reduction controls and finite classical compiler of the proposed record-transport law"
       }
     ],
     "repository_wide_search_terms": [
@@ -159,7 +174,10 @@
       "code/maxwell_measurement",
       "evidence/source_net_causal_poset/routed_read_law",
       "code/source_publication_selection",
-      "code/source_operation_reads"
+      "code/source_operation_reads",
+      "code/source_selection_model",
+      "code/source_record_gluing",
+      "code/rg_principle"
     ],
     "exclusion_policy": {
       "directory_names": [
@@ -177,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 788,
+    "file_count": 831,
     "files": [
       {
         "byte_count": 40994,
@@ -190,9 +208,9 @@
         "sha256": "sha256:f623766e4a1265edae5b04d819153a4df93dd0e8e860b6f5080f6181010be525"
       },
       {
-        "byte_count": 21850,
+        "byte_count": 21988,
         "path": "Lean/Dynamics/ChoiCPTP.lean",
-        "sha256": "sha256:e714886b2394cadc8587a0450b0bc5e2c12448260627cfdb0623e5a3a48489a5"
+        "sha256": "sha256:3c98fb1eae3ec081f712e9fcfd4a0875508faf7a45dda61a1e6a453471253da6"
       },
       {
         "byte_count": 6773,
@@ -443,6 +461,16 @@
         "byte_count": 40445,
         "path": "Lean/Geometry/ProperTimeInternalAction.lean",
         "sha256": "sha256:8933451e0b96b0f1a339ca7912dd7e1c26cde321b5144440ee7127fd95a76307"
+      },
+      {
+        "byte_count": 6477,
+        "path": "Lean/Geometry/RecordGluingPrinciple.lean",
+        "sha256": "sha256:e87595ae0ca3c1378a04cfb5b0162fe71b0c61bd5b3515469ae2c3cc39bdffaa"
+      },
+      {
+        "byte_count": 1720,
+        "path": "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean",
+        "sha256": "sha256:8518cde0bfb2c02bdc382d713d41ed3632e3bfc227fb3b61bf869461c748491c"
       },
       {
         "byte_count": 8951,
@@ -805,6 +833,16 @@
         "sha256": "sha256:8dac97f154b552efbbf6079292a784e6cb6733e0c95701d8a697c289c7ebfb6f"
       },
       {
+        "byte_count": 13813,
+        "path": "Lean/Geometry/SourceRecordGluing.lean",
+        "sha256": "sha256:d4362da30b09da4bcfcd0ae171ecdc8db08507cc10901ce01758f8123c47c136"
+      },
+      {
+        "byte_count": 1522,
+        "path": "Lean/Geometry/SourceRecordGluingAxiomAudit.lean",
+        "sha256": "sha256:7b69199ab0d246c26087b1f202c13fcece0ccb517f88c6d56ba5bc2ee47874b1"
+      },
+      {
         "byte_count": 4558,
         "path": "Lean/Geometry/SourceRecordProtection.lean",
         "sha256": "sha256:4c2e3f68673cc0a988ae97dfaf3a4aebc58c18a2849fe4855981fa6f76ce92c8"
@@ -853,6 +891,16 @@
         "byte_count": 7668,
         "path": "Lean/Geometry/SourceSelectionControls.lean",
         "sha256": "sha256:f98f5b7583f0516201d47da82e5a80086f94779d234ae6d0f100049477ea717e"
+      },
+      {
+        "byte_count": 6253,
+        "path": "Lean/Geometry/SourceSelectionLocality.lean",
+        "sha256": "sha256:2d10e9f991cc1f046c9651288850a41ae7905ccf1173fc896ed0929f88022a5e"
+      },
+      {
+        "byte_count": 1218,
+        "path": "Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean",
+        "sha256": "sha256:0a2e24d15cb4cde3a06c08dda1149894e212b202d75f3762bd4d3b402bb35518"
       },
       {
         "byte_count": 5831,
@@ -1695,9 +1743,9 @@
         "sha256": "sha256:f44c5c2823b9112711073542bfcd7e42b0e950af88c2c273b362fef2f5077f79"
       },
       {
-        "byte_count": 7156,
+        "byte_count": 7207,
         "path": "Lean/Time/SourceCountClockEnclosure.lean",
-        "sha256": "sha256:da28b096de82a7b69d7d48dfef07a6f76e4cf7754a50ab4b86ddf691ef83fb78"
+        "sha256": "sha256:61d64607600babe4b192541a9616c0c2bd1cc3fdc0e3342f9658cbc969f2f23c"
       },
       {
         "byte_count": 18164,
@@ -1777,7 +1825,7 @@
       {
         "byte_count": 35153,
         "path": "code/a5_closure/README.md",
-        "sha256": "sha256:3edc326ca8693ed33ee6706d574492c66126ab57fccf91cc0dcd000b3d11e720"
+        "sha256": "sha256:89bafeabc19de4420dc369a0cba41a38df8239562e12958c121c040e869c02fd"
       },
       {
         "byte_count": 37263,
@@ -2315,9 +2363,9 @@
         "sha256": "sha256:860bd8f99d9c99567e0042b6cb46aead74d483e31ebd70bacc52f5edf22f96b0"
       },
       {
-        "byte_count": 152532,
+        "byte_count": 168813,
         "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:1d6c1c5673c11075efb5a28e628eb611c9b1422833ac4cf771aa9f8e062596bf"
+        "sha256": "sha256:3c987ef8daef4ab5c9fb6f28fd552057b435ad7bb82878ee26c39e78a2a3a73e"
       },
       {
         "byte_count": 3552,
@@ -2340,9 +2388,9 @@
         "sha256": "sha256:13e892346e1fd74ca6512098823398ef1658b2d9c423a2201c748242a70d0b52"
       },
       {
-        "byte_count": 13451,
+        "byte_count": 13878,
         "path": "code/a5_closure/source_current_tomography_stage2.md",
-        "sha256": "sha256:87a31b4528ae4b51499c6e35e25babc21cee8baedefd5bd8ec5fd6ab3d081821"
+        "sha256": "sha256:a9b3cda5fd3a671d6f8bc372e696e6238985576e98f6a97eaf18be75ecb1ff8e"
       },
       {
         "byte_count": 34067,
@@ -2485,9 +2533,9 @@
         "sha256": "sha256:15b5e07ff026ca12fec6d1b8ac04146adf970a55f54a475c63501cce6b26258a"
       },
       {
-        "byte_count": 20923,
+        "byte_count": 21109,
         "path": "code/a5_closure/tests/test_source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:6c0365c547fc098f0d99fa043fc321cb05724d92cd906dc8f90b20d775ad0d84"
+        "sha256": "sha256:d6b06183f229d824f61e02e487f6947864b82ab2eea63f5563b44fdf38811e50"
       },
       {
         "byte_count": 2867,
@@ -2515,9 +2563,9 @@
         "sha256": "sha256:1646cc0e77b7efc7dbea77cdfdaeea47a9918b805c1e1aea0791b754a7454a8a"
       },
       {
-        "byte_count": 64060,
+        "byte_count": 68214,
         "path": "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:0de59d77c93aaee89b337aeee3609b808a96604988d8ab95b9bbcffb141991ef"
+        "sha256": "sha256:94bf2f594007d26763b3b0a3d3596a2cf057d5fd6a6b81d0a7c523df25a35070"
       },
       {
         "byte_count": 10424,
@@ -2750,6 +2798,56 @@
         "sha256": "sha256:6d4a7cfb5f0c1a31701b7ab15783460432b03716a80da36a256c8a80802ec230"
       },
       {
+        "byte_count": 2748,
+        "path": "code/rg_principle/CONTRACT.md",
+        "sha256": "sha256:b2649983cee64be4bfee31c0d4dee142dfc3e75a28f2d93443d940eaaa970126"
+      },
+      {
+        "byte_count": 26703,
+        "path": "code/rg_principle/DERIVATION.md",
+        "sha256": "sha256:cbac40db4c043c8f7c7a62bbb3579e8777f9b6a871cc3ebf17bb00422ea33fc7"
+      },
+      {
+        "byte_count": 3723,
+        "path": "code/rg_principle/README.md",
+        "sha256": "sha256:36bfeaa6963b595303d8a46bd77c138abfb98d8d56d49b02ce6f5362f3003d1c"
+      },
+      {
+        "byte_count": 82,
+        "path": "code/rg_principle/__init__.py",
+        "sha256": "sha256:083e4d3153288807e97ba7e2a4915640fb3f6004a5a390ce6106c299c04dcda2"
+      },
+      {
+        "byte_count": 5186,
+        "path": "code/rg_principle/certificates.py",
+        "sha256": "sha256:382ce451a08a1e055369b56aa4f244634a6ccc13d6c9551ad4b7a178bce6346e"
+      },
+      {
+        "byte_count": 10338,
+        "path": "code/rg_principle/checker.py",
+        "sha256": "sha256:ec2a428e4530e64a570392ed21dc473a80f5a0fc22fdf6fccc7a6ee3d2abf1fc"
+      },
+      {
+        "byte_count": 2694,
+        "path": "code/rg_principle/compiler.py",
+        "sha256": "sha256:042c2840fe0c9b62c551c8dbfed0441f5b9968579f0c05127a433648e2f50e13"
+      },
+      {
+        "byte_count": 139033,
+        "path": "code/rg_principle/receipt.json",
+        "sha256": "sha256:039adf0a329ae279dd4108447974a98d72228cbaa3cb83bdb33228661409094e"
+      },
+      {
+        "byte_count": 3131,
+        "path": "code/rg_principle/receipt.py",
+        "sha256": "sha256:ece62c48447ec3a7f99a824b00c983e73150eb612f0c4745c8c485606e3e49f6"
+      },
+      {
+        "byte_count": 9599,
+        "path": "code/rg_principle/test_rg_principle.py",
+        "sha256": "sha256:692f3fc366eb26e4abfe2c101d80bd81aed4b66cb876fa870ba7bc46a311c1d6"
+      },
+      {
         "byte_count": 4097,
         "path": "code/sm_fermion_current/README.md",
         "sha256": "sha256:c2719e863cdfea8f10ff81033b5f0031652c5866c76e8bc4d19e6e609299f314"
@@ -2818,6 +2916,11 @@
         "byte_count": 7076,
         "path": "code/sm_fermion_current/test_quantum_link.py",
         "sha256": "sha256:e8b39d7963f9e545e0680b4141b3949383f57329f6f95e41e0baefeaa3b53e49"
+      },
+      {
+        "byte_count": 551,
+        "path": "code/sm_fermion_current/test_spin_exchange_integration.py",
+        "sha256": "sha256:221605bfa1de0395b03ab2589bb1baa94e6c47b8a1ee9e5ae13a9aa78a45b779"
       },
       {
         "byte_count": 23299,
@@ -3182,7 +3285,7 @@
       {
         "byte_count": 21547,
         "path": "code/source_operation_reads/receipt.json",
-        "sha256": "sha256:6b0be7aa165b8bf7be64606962c716bf8df68464e1b3d5d2243cfdd0f4dab5fe"
+        "sha256": "sha256:8a788507995e54a5bc44427e14aa808bf875776537b9c2407d7265f69bfc954d"
       },
       {
         "byte_count": 35910,
@@ -3735,6 +3838,51 @@
         "sha256": "sha256:14fc33ab96171af1179fa88956427b5ae1b1a157aec5c3d002b09035712eb52f"
       },
       {
+        "byte_count": 3293,
+        "path": "code/source_record_gluing/README.md",
+        "sha256": "sha256:83e71f8daebe46ba5d271802533f22392f3c2265557d287dbb1b4ecd1cf0bd64"
+      },
+      {
+        "byte_count": 86,
+        "path": "code/source_record_gluing/__init__.py",
+        "sha256": "sha256:e8d91f371dc9306036fb6c10916180f80a662fee56abdb0ae76fbda7486bc440"
+      },
+      {
+        "byte_count": 1589,
+        "path": "code/source_record_gluing/build.py",
+        "sha256": "sha256:5ac195227817c223fe22869f7e1ee3ca4d84faf461784f0e5aaa858b05eec330"
+      },
+      {
+        "byte_count": 114752,
+        "path": "code/source_record_gluing/capture.json",
+        "sha256": "sha256:8cecea769b0a978f4fce61f2d26e2e3f55534d75d457aa0a9c5bf57b31e65c9c"
+      },
+      {
+        "byte_count": 8743,
+        "path": "code/source_record_gluing/check_process.py",
+        "sha256": "sha256:2d3664a74cc5f0de891f996d12ad204d33c75744ff9662dbfaadb90b96708b15"
+      },
+      {
+        "byte_count": 2852,
+        "path": "code/source_record_gluing/process.py",
+        "sha256": "sha256:4e39712fe28dda32cd7da37bdf0e50d9d8bd435f1f828d411dc950f20336342f"
+      },
+      {
+        "byte_count": 9860,
+        "path": "code/source_record_gluing/receipt.json",
+        "sha256": "sha256:680b9e5196a59cd8f31cdf11baef21ef7a906b2399d63aa0293b629c34e8fad3"
+      },
+      {
+        "byte_count": 11938,
+        "path": "code/source_record_gluing/test_process.py",
+        "sha256": "sha256:f0a4c748e6c7650874d76a7a571f665f0d1b0a322fe673016d0093d9449d9112"
+      },
+      {
+        "byte_count": 6998,
+        "path": "code/source_record_gluing/verify.py",
+        "sha256": "sha256:6b32a1791389bf8f3febc79c9af5bab0695eaf9c861b16fe48685edf47d9b40a"
+      },
+      {
         "byte_count": 2907,
         "path": "code/source_reusable_bus/CONTRACT.md",
         "sha256": "sha256:c739e0eeeb09a49fb0dc865476f0005c38a93bd338a3617eb9771450c508447d"
@@ -3923,6 +4071,91 @@
         "byte_count": 13877,
         "path": "code/source_scalar_instruments/verify_sequential_instrument.py",
         "sha256": "sha256:0c34c486f2ed28d48550195723eeca2ad71823a46c1db18a8403c9781231d9f9"
+      },
+      {
+        "byte_count": 3521,
+        "path": "code/source_selection_model/CONTRACT.md",
+        "sha256": "sha256:0eef7e5f703be35bf3fc9fad95e914ac1cdbf5e6ffcdc1505cfb77c089accf0f"
+      },
+      {
+        "byte_count": 32179,
+        "path": "code/source_selection_model/DERIVATION.md",
+        "sha256": "sha256:4881f7c7e41b6294d3b164e943952438f09a3aa03041bf152a382d8ff42aba85"
+      },
+      {
+        "byte_count": 3828,
+        "path": "code/source_selection_model/README.md",
+        "sha256": "sha256:c15759f790c3b1be39ee5cfe6eccd346834acdf86788fdf50d13d4bec43d3ff7"
+      },
+      {
+        "byte_count": 22414,
+        "path": "code/source_selection_model/RECORD_GLUING.md",
+        "sha256": "sha256:7919b97e9dde9fbd952c2f6bf0dcdcbfc83bdcd45d1a2c83d59250e7ccd7203b"
+      },
+      {
+        "byte_count": 72,
+        "path": "code/source_selection_model/__init__.py",
+        "sha256": "sha256:0ef4f07dd260ca06c04365934aa374efff3cfa851e2967d8edf231f76b51080c"
+      },
+      {
+        "byte_count": 3549,
+        "path": "code/source_selection_model/channels.py",
+        "sha256": "sha256:d2bb168af9c2bf5b9d940af30db7d51d03f6b11e4fef5783145f901f554d67f9"
+      },
+      {
+        "byte_count": 7409,
+        "path": "code/source_selection_model/finite_model.py",
+        "sha256": "sha256:baf2567d811298f3d3e1cea55335d1aeb9ab4f66c44d30950f3a0a5ad63e92f7"
+      },
+      {
+        "byte_count": 8197,
+        "path": "code/source_selection_model/geometry.py",
+        "sha256": "sha256:de47ae19dd4ae1677d0cefb0163513f2f1f6d24dfb4dd0264506d0b17fceb843"
+      },
+      {
+        "byte_count": 2638,
+        "path": "code/source_selection_model/grammar.py",
+        "sha256": "sha256:ed420d788794c7a2b2b0c80bd68bd43df390a17dcf6eaab71e86037f3e31284b"
+      },
+      {
+        "byte_count": 8628,
+        "path": "code/source_selection_model/receipt.json",
+        "sha256": "sha256:1da3b83c8ceeef7c1eeeb7eca82342d25f2964cbbfbc1446252fa1f687ec0f23"
+      },
+      {
+        "byte_count": 11004,
+        "path": "code/source_selection_model/records.json",
+        "sha256": "sha256:c296cab79bc8a97c314642164c5d5070566bfb9c28667e4266b2bdba3d18a427"
+      },
+      {
+        "byte_count": 1498,
+        "path": "code/source_selection_model/records.py",
+        "sha256": "sha256:51c787929b826cb61a23b2fc29c1e2aac2b816e10dde743a05c4d30fc0aabccd"
+      },
+      {
+        "byte_count": 96295,
+        "path": "code/source_selection_model/response.json",
+        "sha256": "sha256:226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053"
+      },
+      {
+        "byte_count": 6968,
+        "path": "code/source_selection_model/response.py",
+        "sha256": "sha256:c66160a6b6246692e19b32e9b00383c8abca8b493655cf534932bfcd900e8400"
+      },
+      {
+        "byte_count": 11379,
+        "path": "code/source_selection_model/test_model.py",
+        "sha256": "sha256:20470af5055377ab5f16d6a98fde4b7bea4cd2cde524b151b7ce935e8e2ee443"
+      },
+      {
+        "byte_count": 3733,
+        "path": "code/source_selection_model/verify.py",
+        "sha256": "sha256:2b9b7dbc81a60fb9172f553c0f8828fba70e44254d33606b977477a5327b1f7c"
+      },
+      {
+        "byte_count": 11490,
+        "path": "code/source_selection_model/verify_response.py",
+        "sha256": "sha256:1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e"
       },
       {
         "byte_count": 7651,
@@ -4120,10 +4353,10 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:43a7d436f02c950828bbcb90df1ba091465804554f7fe912a23d27f89760a953",
+    "files_sha256": "sha256:7d4b4149dbabd40ff16a4ef8715e9424555f7a6020a5e0aec7e369f8cf7ea218",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
-  "audited_upstream_main_sha": "543298e06ce41d47f44c7707fdb2c32723cca10e",
+  "audited_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
   "candidates": [
     {
       "candidate_id": "registered_adjacency_response",
@@ -5433,18 +5666,18 @@
   "fixture_used_as_reconstruction_oracle": false,
   "implementation_pins": [
     {
-      "bytes": 152532,
+      "bytes": 168813,
       "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:1d6c1c5673c11075efb5a28e628eb611c9b1422833ac4cf771aa9f8e062596bf"
+      "sha256": "sha256:3c987ef8daef4ab5c9fb6f28fd552057b435ad7bb82878ee26c39e78a2a3a73e"
     },
     {
-      "bytes": 64060,
+      "bytes": 68214,
       "path": "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:0de59d77c93aaee89b337aeee3609b808a96604988d8ab95b9bbcffb141991ef"
+      "sha256": "sha256:94bf2f594007d26763b3b0a3d3596a2cf057d5fd6a6b81d0a7c523df25a35070"
     }
   ],
   "integrated_tree_review": {
-    "from_upstream_main_sha": "afed734528edff214c34d4038a64310544df922d",
+    "from_upstream_main_sha": "543298e06ce41d47f44c7707fdb2c32723cca10e",
     "prior_reviews": [
       {
         "from_upstream_main_sha": "2b03a95caf5030272f7b426b964e816f650153f8",
@@ -6365,272 +6598,537 @@
           }
         ],
         "through_upstream_main_sha": "afed734528edff214c34d4038a64310544df922d"
+      },
+      {
+        "from_upstream_main_sha": "afed734528edff214c34d4038a64310544df922d",
+        "surface_count": 43,
+        "surfaces": [
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceOperationReads.lean",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceOperationReadsAxiomAudit.lean",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePublicationAxiomAudit.lean",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePublicationLaw.lean",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePublicationMass.lean",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePublicationMenu.lean",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePublicationNative.lean",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePublicationPath.lean",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePublicationPathInvariant.lean",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourcePublicationTail.lean",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceRadiusRemoval.lean",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceRadiusSelection.lean",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "declared_flagged_recovery_extensions",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceRepairInstrument.lean",
+            "reason": "Supplied swap branches, retained flags and constrained real-coordinate archive permit conditional global recovery; they are additional interfaces, not registered native operations."
+          },
+          {
+            "candidate_id": "finite_state_process_selection",
+            "decision": "NEW_CANDIDATE",
+            "path": "Lean/Geometry/SourceStateSelection.lean",
+            "reason": "Finite compatible-state optimization and supplied channel controls; no source-selected current, temporal instrument, or native perturbation producer."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/DERIVATION.md",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "declared_flagged_recovery_extensions",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/INSTRUMENT_DERIVATION.md",
+            "reason": "Supplied swap branches, retained flags and constrained real-coordinate archive permit conditional global recovery; they are additional interfaces, not registered native operations."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/README.md",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/__init__.py",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/capture.json",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/check_live.py",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/receipt.json",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/simulator_verifier.py",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/source_snapshot.json",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/test_reads.py",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "registered_operation_read_histories",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_operation_reads/verify.py",
+            "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/CONTRACT.md",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/DERIVATION.md",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/README.md",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "finite_state_process_selection",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/STATE_SELECTION.md",
+            "reason": "Finite compatible-state optimization and supplied channel controls; no source-selected current, temporal instrument, or native perturbation producer."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/__init__.py",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/build.py",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/check_exterior.py",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/check_locality.py",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "finite_state_process_selection",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/check_quantum.py",
+            "reason": "Finite compatible-state optimization and supplied channel controls; no source-selected current, temporal instrument, or native perturbation producer."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/codec.py",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/controls.json",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/exterior.py",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/locality.py",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "finite_state_process_selection",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/quantum.py",
+            "reason": "Finite compatible-state optimization and supplied channel controls; no source-selected current, temporal instrument, or native perturbation producer."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/receipt.json",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "finite_state_process_selection",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/test_quantum.py",
+            "reason": "Finite compatible-state optimization and supplied channel controls; no source-selected current, temporal instrument, or native perturbation producer."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/test_selection.py",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          },
+          {
+            "candidate_id": "native_eventual_publication",
+            "decision": "NEW_CANDIDATE",
+            "path": "code/source_publication_selection/verify.py",
+            "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+          }
+        ],
+        "through_upstream_main_sha": "543298e06ce41d47f44c7707fdb2c32723cca10e"
       }
     ],
     "surface_count": 43,
     "surfaces": [
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceOperationReads.lean",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/RecordGluingPrinciple.lean",
+        "reason": "Proves quadratic isotropy under finite carrier symmetry, graded path and refinement clock bounds, transcript capacity, reversible evaluation and interior-cube inequalities; it defines no port-indexed source perturbation, composition word, inverse or history."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceOperationReadsAxiomAudit.lean",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean",
+        "reason": "Audits the axiom dependencies of the local-clock lemmas and adds no source operation or history."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePublicationAxiomAudit.lean",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/SourceRecordGluing.lean",
+        "reason": "Formalizes the flight/wait grammar, cone, covering join, lowering and localized-intervention ancestry of classical retained records under the proposed RG law; classical register transport supplies no reversible twelve-port perturbation families or mixed-order response histories."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePublicationLaw.lean",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/SourceRecordGluingAxiomAudit.lean",
+        "reason": "Audits the axiom dependencies of the record-gluing theorems and adds no source operation or history."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePublicationMass.lean",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/SourceSelectionLocality.lean",
+        "reason": "Proves the all-program local-transcript obstruction, the exact channel-decoder criterion and the population arithmetic of the scalar-seam model; it contains no port-indexed perturbation family or executed response history."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePublicationMenu.lean",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean",
+        "reason": "Audits the axiom dependencies of the locality theorems and adds no source operation or history."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePublicationNative.lean",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/rg_principle/CONTRACT.md",
+        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePublicationPath.lean",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/rg_principle/DERIVATION.md",
+        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePublicationPathInvariant.lean",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/rg_principle/README.md",
+        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourcePublicationTail.lean",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/rg_principle/__init__.py",
+        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceRadiusRemoval.lean",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/rg_principle/certificates.py",
+        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceRadiusSelection.lean",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/rg_principle/checker.py",
+        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
       },
       {
-        "candidate_id": "declared_flagged_recovery_extensions",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceRepairInstrument.lean",
-        "reason": "Supplied swap branches, retained flags and constrained real-coordinate archive permit conditional global recovery; they are additional interfaces, not registered native operations."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/rg_principle/compiler.py",
+        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
       },
       {
-        "candidate_id": "finite_state_process_selection",
-        "decision": "NEW_CANDIDATE",
-        "path": "Lean/Geometry/SourceStateSelection.lean",
-        "reason": "Finite compatible-state optimization and supplied channel controls; no source-selected current, temporal instrument, or native perturbation producer."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/rg_principle/receipt.json",
+        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/DERIVATION.md",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/rg_principle/receipt.py",
+        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
       },
       {
-        "candidate_id": "declared_flagged_recovery_extensions",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/INSTRUMENT_DERIVATION.md",
-        "reason": "Supplied swap branches, retained flags and constrained real-coordinate archive permit conditional global recovery; they are additional interfaces, not registered native operations."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/rg_principle/test_rg_principle.py",
+        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/README.md",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": "fermionic_hypercharge_current_histories",
+        "decision": "EXTENDS_EXISTING_CANDIDATE",
+        "path": "code/sm_fermion_current/test_spin_exchange_integration.py",
+        "reason": "Integration test binding the labelled fermionic current histories to the spin-exchange boundary; it carries the same downstream physical-current label and supplies no source-native perturbation family."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/__init__.py",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_record_gluing/README.md",
+        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/capture.json",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_record_gluing/__init__.py",
+        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/check_live.py",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_record_gluing/build.py",
+        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/receipt.json",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_record_gluing/capture.json",
+        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/simulator_verifier.py",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_record_gluing/check_process.py",
+        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/source_snapshot.json",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_record_gluing/process.py",
+        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/test_reads.py",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_record_gluing/receipt.json",
+        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
       },
       {
-        "candidate_id": "registered_operation_read_histories",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_operation_reads/verify.py",
-        "reason": "Registered all-port histories with one prescribed native unitary and destructive matching means; full probe algebra does not supply reversible perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_record_gluing/test_process.py",
+        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/CONTRACT.md",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_record_gluing/verify.py",
+        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/DERIVATION.md",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/CONTRACT.md",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/README.md",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/DERIVATION.md",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "finite_state_process_selection",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/STATE_SELECTION.md",
-        "reason": "Finite compatible-state optimization and supplied channel controls; no source-selected current, temporal instrument, or native perturbation producer."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/README.md",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/__init__.py",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/RECORD_GLUING.md",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/build.py",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/__init__.py",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/check_exterior.py",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/channels.py",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/check_locality.py",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/finite_model.py",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "finite_state_process_selection",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/check_quantum.py",
-        "reason": "Finite compatible-state optimization and supplied channel controls; no source-selected current, temporal instrument, or native perturbation producer."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/geometry.py",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/codec.py",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/grammar.py",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/controls.json",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/receipt.json",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/exterior.py",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/records.json",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/locality.py",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/records.py",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "finite_state_process_selection",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/quantum.py",
-        "reason": "Finite compatible-state optimization and supplied channel controls; no source-selected current, temporal instrument, or native perturbation producer."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/response.json",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/receipt.json",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/response.py",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "finite_state_process_selection",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/test_quantum.py",
-        "reason": "Finite compatible-state optimization and supplied channel controls; no source-selected current, temporal instrument, or native perturbation producer."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/test_model.py",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/test_selection.py",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/verify.py",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       },
       {
-        "candidate_id": "native_eventual_publication",
-        "decision": "NEW_CANDIDATE",
-        "path": "code/source_publication_selection/verify.py",
-        "reason": "Conditional publication law and scalar pair-mean histories on a declared connected grammar; no twelve reversible source perturbation families."
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/source_selection_model/verify_response.py",
+        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
       }
     ],
-    "through_upstream_main_sha": "543298e06ce41d47f44c7707fdb2c32723cca10e"
+    "through_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8"
   },
-  "inventory_sha256": "sha256:154bedcb783ac696b8bc082aa0a28976905f645547d6d288fbabda55033bbe26",
+  "inventory_sha256": "sha256:666ebb33a2604fd9a4d888b8c403fdb8b33362b77daf9845dab4a7648690ccc8",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -6659,7 +7157,7 @@
   ],
   "physical_current_source_bridge_attained": false,
   "positive_stages_authorized": false,
-  "previous_inventory_base_sha": "afed734528edff214c34d4038a64310544df922d",
+  "previous_inventory_base_sha": "543298e06ce41d47f44c7707fdb2c32723cca10e",
   "program": "SOURCE-CURRENT-TOMOGRAPHY-0",
   "qualification_fields": [
     "source_native",
@@ -7632,7 +8130,7 @@
     {
       "bytes": 21547,
       "path": "code/source_operation_reads/receipt.json",
-      "sha256": "sha256:6b0be7aa165b8bf7be64606962c716bf8df68464e1b3d5d2243cfdd0f4dab5fe"
+      "sha256": "sha256:8a788507995e54a5bc44427e14aa808bf875776537b9c2407d7265f69bfc954d"
     },
     {
       "bytes": 35910,

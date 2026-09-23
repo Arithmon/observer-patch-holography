@@ -165,30 +165,33 @@ class SourceCurrentOrderSensitiveInventoryTests(unittest.TestCase):
         decisions = {row["decision"] for row in review["surfaces"]}
         self.assertEqual(
             decisions,
-            {"NEW_CANDIDATE"},
+            {"OUTSIDE_REVIEWED_SOURCE_SCOPE", "EXTENDS_EXISTING_CANDIDATE"},
         )
         self.assertEqual(
             review["from_upstream_main_sha"],
-            "afed734528edff214c34d4038a64310544df922d",
+            "543298e06ce41d47f44c7707fdb2c32723cca10e",
         )
         self.assertEqual(
             review["through_upstream_main_sha"],
-            "543298e06ce41d47f44c7707fdb2c32723cca10e",
+            "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
         )
         candidate_ids = {row["candidate_id"] for row in self.committed["candidates"]}
         for row in review["surfaces"]:
-            self.assertIn(row["candidate_id"], candidate_ids)
+            if row["decision"] == "OUTSIDE_REVIEWED_SOURCE_SCOPE":
+                self.assertIsNone(row["candidate_id"])
+            else:
+                self.assertIn(row["candidate_id"], candidate_ids)
             self.assertTrue(row["reason"])
         lean_added = {
             path
             for path in paths
             if path.startswith("Lean/Geometry/") and path.endswith(".lean")
         }
-        self.assertEqual(len(lean_added), 14)
-        self.assertIn("Lean/Geometry/SourceRepairInstrument.lean", lean_added)
-        self.assertIn("Lean/Geometry/SourcePublicationLaw.lean", lean_added)
+        self.assertEqual(len(lean_added), 6)
+        self.assertIn("Lean/Geometry/SourceRecordGluing.lean", lean_added)
+        self.assertIn("Lean/Geometry/RecordGluingPrinciple.lean", lean_added)
         prior = review["prior_reviews"]
-        self.assertEqual(len(prior), 2)
+        self.assertEqual(len(prior), 3)
         self.assertEqual(prior[0]["surface_count"], 40)
         self.assertEqual(
             prior[-1]["through_upstream_main_sha"],

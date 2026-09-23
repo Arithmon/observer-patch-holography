@@ -24,8 +24,8 @@ PRODUCER = HERE / "source_current_order_sensitive_inventory.py"
 
 SCHEMA = "oph.source_current_order_sensitive_inventory.v2"
 VERDICT = "SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT"
-PREVIOUS_INVENTORY_BASE_SHA = 'afed734528edff214c34d4038a64310544df922d'
-UPSTREAM_MAIN_SHA = '543298e06ce41d47f44c7707fdb2c32723cca10e'
+PREVIOUS_INVENTORY_BASE_SHA = '543298e06ce41d47f44c7707fdb2c32723cca10e'
+UPSTREAM_MAIN_SHA = 'ba84976ad1195892c68fdd0d74a27ab0c899aeb8'
 
 AUDITED_DIRECTORIES = (
     "code/source_feedback_transport",
@@ -60,6 +60,9 @@ AUDITED_DIRECTORIES = (
     "evidence/source_net_causal_poset/routed_read_law",
     "code/source_publication_selection",
     "code/source_operation_reads",
+    "code/source_selection_model",
+    "code/source_record_gluing",
+    "code/rg_principle",
 )
 
 EXPECTED_SCOPE_EXTENSION = (
@@ -82,6 +85,9 @@ EXPECTED_SCOPE_EXTENSION = (
     "evidence/source_net_causal_poset/routed_read_law",
     "code/source_publication_selection",
     "code/source_operation_reads",
+    "code/source_selection_model",
+    "code/source_record_gluing",
+    "code/rg_principle",
 )
 
 CONTENT_SNAPSHOT_EXACT_EXCLUSIONS = (
@@ -371,7 +377,7 @@ EXPECTED_PRIOR_BASE_REVIEW = {
 }
 
 
-EXPECTED_INTEGRATED_REVIEW = {'Lean/Geometry/SourceOperationReads.lean': ('NEW_CANDIDATE', 'registered_operation_read_histories'),
+EXPECTED_REVIEW_543298E0 = {'Lean/Geometry/SourceOperationReads.lean': ('NEW_CANDIDATE', 'registered_operation_read_histories'),
  'Lean/Geometry/SourceOperationReadsAxiomAudit.lean': ('NEW_CANDIDATE',
                                                        'registered_operation_read_histories'),
  'Lean/Geometry/SourcePublicationAxiomAudit.lean': ('NEW_CANDIDATE', 'native_eventual_publication'),
@@ -471,7 +477,58 @@ EXPECTED_PRIOR_INTEGRATED_REVIEWS = (
         "afed734528edff214c34d4038a64310544df922d",
         EXPECTED_PRIOR_BASE_REVIEW,
     ),
+    (
+        "afed734528edff214c34d4038a64310544df922d",
+        "543298e06ce41d47f44c7707fdb2c32723cca10e",
+        EXPECTED_REVIEW_543298E0,
+    ),
 )
+
+EXPECTED_INTEGRATED_REVIEW = {
+    'Lean/Geometry/RecordGluingPrinciple.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/SourceRecordGluing.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/SourceRecordGluingAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/SourceSelectionLocality.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/rg_principle/CONTRACT.md': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/rg_principle/DERIVATION.md': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/rg_principle/README.md': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/rg_principle/__init__.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/rg_principle/certificates.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/rg_principle/checker.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/rg_principle/compiler.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/rg_principle/receipt.json': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/rg_principle/receipt.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/rg_principle/test_rg_principle.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/sm_fermion_current/test_spin_exchange_integration.py': ('EXTENDS_EXISTING_CANDIDATE', 'fermionic_hypercharge_current_histories'),
+    'code/source_record_gluing/README.md': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_record_gluing/__init__.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_record_gluing/build.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_record_gluing/capture.json': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_record_gluing/check_process.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_record_gluing/process.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_record_gluing/receipt.json': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_record_gluing/test_process.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_record_gluing/verify.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/CONTRACT.md': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/DERIVATION.md': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/README.md': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/RECORD_GLUING.md': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/__init__.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/channels.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/finite_model.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/geometry.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/grammar.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/receipt.json': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/records.json': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/records.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/response.json': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/response.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/test_model.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/verify.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/source_selection_model/verify_response.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+}
 
 
 class VerificationError(ValueError):

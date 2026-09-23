@@ -2,7 +2,7 @@
 
 ## Result and logical status
 
-RG, proposed in [PR #968](https://github.com/FloatingPragma/observer-patch-holography/pull/968),
+RG, proposed in [RECORD_GLUING.md](../source_selection_model/RECORD_GLUING.md),
 contains distinct assumptions about information, geometry, and implementation.
 It is consistent as a classical process theory, and retained classical copying
 is compatible with twelve-central-port matrix algebras. Neither statement is

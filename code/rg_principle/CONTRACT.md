@@ -8,9 +8,9 @@ requirements by a proved weaker principle, and derive consequences that can
 test the proposal independently of an M1 fit. RG is a proposed additional
 source law; this work does not adopt it as a core axiom.
 
-The follow-up targets main independently of pending PR #968. It restates
-the relevant transport interface and uses the existing source-net results.
-No unmerged code or unpublished simulator implementation is assumed.
+The reduction restates the relevant transport interface of the RG law in
+`../source_selection_model/RECORD_GLUING.md` and uses the existing
+source-net results. No unpublished simulator implementation is assumed.
 
 ## Deliverables
 

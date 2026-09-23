@@ -4,7 +4,7 @@
 
 `SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT`
 
-At upstream baseline `543298e06ce41d47f44c7707fdb2c32723cca10e`, the
+At upstream baseline `ba84976ad1195892c68fdd0d74a27ab0c899aeb8`, the
 bounded repository inventory contains **33 candidate packets and zero
 qualifying packets**. No single audited object is simultaneously source-native,
 port-indexed, reversible, target-free, bound to the same twelve-port carrier,
@@ -37,15 +37,15 @@ from distinct packets are not composited.
 The canonical machine-readable adjudication is
 [`manifests/source_current_order_sensitive_inventory.json`](manifests/source_current_order_sensitive_inventory.json).
 It pins every audited source and the two independent implementations by SHA-256.
-It also freezes a canonical content record for all **788 included files** below
-the **32 audited directories**. Each record contains the repository-relative
+It also freezes a canonical content record for all **831 included files** below
+the **35 audited directories**. Each record contains the repository-relative
 POSIX path, byte count, and SHA-256 digest. The producer and independent
 verifier fail closed on added, removed, renamed, or byte-changed files. The only
 exact path exclusion is the generated inventory itself, whose inclusion would
 create a byte-digest self-reference. Python cache directories and bytecode
 suffixes are excluded as repository cache/build outputs.
 
-Nineteen directories extend the initial thirteen-root scope, each with a
+Twenty-two directories extend the initial thirteen-root scope, each with a
 recorded reason under `audit_scope.directories_added_since_initial_inventory`. The
 runtime packages `code/source_*` whose protocols are formalized under
 `Lean/Geometry` hold the retained control tapes, replay receipts and captured
@@ -56,7 +56,13 @@ receipts and phase manifests of the full-family routing histories. The two
 packages that carry a physical current label, `code/sm_fermion_current` and
 `code/maxwell_measurement`, and the operator join `code/source_operator_join`
 join the scope because the source firewall and the static/dynamic boundary are
-decided on their contents rather than on their location in the tree.
+decided on their contents rather than on their location in the tree. The
+scalar-seam witness `code/source_selection_model`, the record-transport
+reference `code/source_record_gluing` and the local-clock controls
+`code/rg_principle` join the scope because their response generators,
+algebraic jets and classical record flights are the nearest constructions to
+the requested object; each file is reviewed as outside the source-native
+scope with its reason recorded in the integrated-tree review.
 
 ## Independent inventory result
 

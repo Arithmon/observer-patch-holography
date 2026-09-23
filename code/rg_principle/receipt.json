@@ -106,8 +106,8 @@
   "sources": {
     "Lean/Geometry/RecordGluingPrinciple.lean": "e87595ae0ca3c1378a04cfb5b0162fe71b0c61bd5b3515469ae2c3cc39bdffaa",
     "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean": "8518cde0bfb2c02bdc382d713d41ed3632e3bfc227fb3b61bf869461c748491c",
-    "code/rg_principle/CONTRACT.md": "217dd830321a514b656d01f6b7841a22dff90e42502fe607e14a669cb136caf4",
-    "code/rg_principle/DERIVATION.md": "749e0d2f08432f5ba970065ec849ebb90afe0b10973fcc5a972937e0874ff394",
+    "code/rg_principle/CONTRACT.md": "b2649983cee64be4bfee31c0d4dee142dfc3e75a28f2d93443d940eaaa970126",
+    "code/rg_principle/DERIVATION.md": "cbac40db4c043c8f7c7a62bbb3579e8777f9b6a871cc3ebf17bb00422ea33fc7",
     "code/rg_principle/certificates.py": "382ce451a08a1e055369b56aa4f244634a6ccc13d6c9551ad4b7a178bce6346e",
     "code/rg_principle/checker.py": "ec2a428e4530e64a570392ed21dc473a80f5a0fc22fdf6fccc7a6ee3d2abf1fc",
     "code/rg_principle/compiler.py": "042c2840fe0c9b62c551c8dbfed0441f5b9968579f0c05127a433648e2f50e13",

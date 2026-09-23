@@ -2,8 +2,8 @@
 
 [DERIVATION.md](DERIVATION.md) gives the universal analytic arguments and their
 physical premises; [CONTRACT.md](CONTRACT.md) fixes objective, deliverables and
-exit. This is a self-contained follow-up to proposed RG, targeting `main`
-without importing pending PR #968.
+exit. This is a self-contained reduction of the proposed RG law stated in
+`../source_selection_model/RECORD_GLUING.md`.
 
 The new results are:
 
