@@ -265,6 +265,11 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/RECORD_GLUING_PRINCIPLE.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/REFINING_CAUSAL_CONE.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false

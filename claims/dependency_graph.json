@@ -260,7 +260,9 @@
   "OPH-CONDITIONAL-PAULI-SCALAR-Q-SELECTION",
   "OPH-CONDITIONAL-PAULI-OPERATION-SELECTION",
   "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
-  "OPH-RECORD-GLUING-M1-SUFFICIENCY"
+  "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+  "OPH-RG-LOCAL-CLOCK-REDUCTION",
+  "OPH-RG-INFORMATION-RESOURCE-BOUND"
  ],
  "edges": [
   {
@@ -2252,6 +2254,16 @@
    "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
    "to": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
    "role": "Supplies covering, causal-boundary, interval and strict-pair results joined to primitive execution and native ancestry under the proposed RG law."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+   "role": "Supplies the covering-path and count-limit mathematics once LC realizes the declared finite read programs; physical source binding is not inherited."
+  },
+  {
+   "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
+   "to": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+   "role": "Supplies cell-assignment count convergence for distinguished regulator records; auxiliary native work is not identified with their volume."
   }
  ]
 }
