@@ -31,6 +31,16 @@ def test_committed_receipt_and_independent_producer(packet):
     check.same(packet["evidence"], model.candidate(), "producer differs")
 
 
+@pytest.mark.parametrize("scale", [0, 2])
+def test_stability_certificate_is_bound_to_executed_polynomials(monkeypatch, scale):
+    original = check.polynomial_step
+    # Both replacements remain symmetric and symplectic; those tests alone
+    # cannot justify applying the intended step's stability coefficients.
+    monkeypatch.setattr(check, "polynomial_step", lambda weight: original(scale*weight))
+    with pytest.raises(ValueError, match="stability coefficients"):
+        check.exact_algebra.__wrapped__()
+
+
 @pytest.mark.parametrize("order", [2, 4])
 @pytest.mark.parametrize("z_text", ["0.001", "0.01", "0.05", "0.1"])
 def test_explicit_coherent_band_bound(order, z_text):
@@ -119,6 +129,28 @@ def test_inverse_sign_change_is_not_hidden_by_recomputed_outputs(packet, monkeyp
     changed = copy.deepcopy(packet["evidence"])
     changed["programs"]["4"] = model.program(4)
     with pytest.raises(ValueError):
+        check.verify_evidence(changed)
+
+
+def test_stale_writers_rejected_even_with_unchanged_outputs(packet, monkeypatch):
+    original = model.digest
+
+    def stale_digest(records):
+        changed = copy.deepcopy(records)
+        for record in changed:
+            for read in record[3]:
+                read[1] = 0
+        return original(changed)
+
+    monkeypatch.setattr(model, "digest", stale_digest)
+    changed = copy.deepcopy(packet["evidence"])
+    changed["programs"]["4"] = model.program(4)
+    honest = packet["evidence"]["programs"]["4"]
+    forged = changed["programs"]["4"]
+    assert forged["final_q"] == honest["final_q"]
+    assert forged["final_p"] == honest["final_p"]
+    assert forged["trace_sha256"] != honest["trace_sha256"]
+    with pytest.raises(ValueError, match="independent reconstruction"):
         check.verify_evidence(changed)
 
 

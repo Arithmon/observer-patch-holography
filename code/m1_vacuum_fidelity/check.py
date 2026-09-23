@@ -151,14 +151,35 @@ def exact_algebra():
             rows[key] = [[str(x) for x in c.coefficients] for c in coeffs]
         same(rows["a"], rows["d"], "reversibility diagonal mismatch")
         answer[str(order)] = rows
+    certify_stability(answer)
+    return answer
+
+
+def certify_stability(algebra):
+    """Bind rational interval bounds to the actual multiplied gate polynomials."""
     # Rational bounds prove a single domain, not just sampled eigenvalue stability.
     a6 = ONE/48+5*ROOT/288+ROOT**2/72
     b5 = ONE/36+ROOT/36+ROOT**2/48
     c5 = (ROOT+ROOT**2)/144
     d7 = 25*ONE/1728+5*ROOT/432+ROOT**2/108
     defect = ONE/36+ROOT/48+ROOT**2/72
+    expected = {}
+    for order, a, b, c in (
+        ("2", [ONE, ZERO, -ONE/2], [ZERO, ONE], [ZERO, -ONE, ZERO, ONE/4]),
+        ("4", [ONE, ZERO, -ONE/2, ZERO, ONE/24, ZERO, a6],
+         [ZERO, ONE, ZERO, -ONE/6, ZERO, -b5],
+         [ZERO, -ONE, ZERO, ONE/6, ZERO, c5, ZERO, -d7]),
+    ):
+        expected[order] = {
+            name: [[str(x) for x in coefficient.coefficients]
+                   for coefficient in (row+[ZERO]*8)[:8]]
+            for name, row in (("a", a), ("b", b), ("c", c), ("d", a))
+        }
+    same(algebra, expected, "stability coefficients differ from exact gate multiplication")
+    need(b5-c5 == defect, "stability defect is not the actual off-diagonal sum")
     need(0 < a6.interval()[0] < a6.interval()[1] < F(1, 10), "a6 enclosure")
     s = F(1, 100)
+    need(1-s/2 > 0 and 1-s/4 > F(9, 10), "second-order stability domain")
     need(F(1, 24)*s+a6.interval()[1]*s*s < F(1, 2), "a<1 bound")
     b_lo = 1-s/6-b5.interval()[1]*s*s
     c_lo = 1-s/6-c5.interval()[1]*s*s
@@ -168,7 +189,6 @@ def exact_algebra():
     need(b_lo*c_lo > F(9, 10) and c_hi < F(11, 10), "phase bound")
     need(defect.interval()[0] > F(1, 16)
          and defect.interval()[1]+d7.interval()[1]*s < F(1, 8), "nonzero defect bound")
-    return answer
 
 
 def evaluate(coefficients, z):
