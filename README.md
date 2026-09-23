@@ -111,8 +111,14 @@ calculations and reproducible simulations:
   band and custody before the qualifying data are examined, so the rows that
   reach that gate commit in advance to what would refute them.
 
-The linked papers record each step's precise status. Together, these results
-define a testable path from three observer axioms toward a complete theory.
+The linked papers record each step's precise status. The premise budget is
+declared up front: three observer axioms plus about eighty-four registered
+inputs — thirty-three to axiomatize, four imported, forty-seven open removals
+— together with lane-local assumptions recorded in each family's register;
+no registered premise is yet derived from the axioms alone
+([premise register](docs/PREMISE_REGISTER_V3.md)). Together, these results
+define a testable path from the axioms plus those declared inputs toward a
+complete theory.
 The full technical route is the
 [flagship paper](https://philpapers.org/rec/MUEFOC).
 
