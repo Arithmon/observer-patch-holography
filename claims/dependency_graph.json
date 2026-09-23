@@ -262,7 +262,10 @@
   "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
   "OPH-RECORD-GLUING-M1-SUFFICIENCY",
   "OPH-RG-LOCAL-CLOCK-REDUCTION",
-  "OPH-RG-INFORMATION-RESOURCE-BOUND"
+  "OPH-RG-INFORMATION-RESOURCE-BOUND",
+  "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
+  "OPH-M1-VARIATIONAL-AREA-REPAIR",
+  "OPH-M1-UNIFORM-ACTION-SPECTRAL-THRESHOLD"
  ],
  "edges": [
   {
@@ -2264,6 +2267,26 @@
    "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
    "to": "OPH-RG-LOCAL-CLOCK-REDUCTION",
    "role": "Supplies cell-assignment count convergence for distinguished regulator records; auxiliary native work is not identified with their volume."
+  },
+  {
+   "from": "OPH-BH-CROSSING-READ-AREA-LAW",
+   "to": "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
+   "role": "Supplies the fixed-section crossing-area comparison. The counterexample tests varying microscopic partitions; no physical entropy or horizon premise is inherited."
+  },
+  {
+   "from": "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
+   "to": "OPH-M1-VARIATIONAL-AREA-REPAIR",
+   "role": "Identifies the residue defect and necessary short-ball threshold; the repair proves sufficiency, recovery and minimum convergence from the actual added reads."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-M1-VARIATIONAL-AREA-REPAIR",
+   "role": "Supplies the source-net covering and cell-count framework retained by the explicit routes. No native source identification or unique population/radius selection is inherited."
+  },
+  {
+   "from": "OPH-M1-VARIATIONAL-AREA-REPAIR",
+   "to": "OPH-M1-UNIFORM-ACTION-SPECTRAL-THRESHOLD",
+   "role": "Supplies the explicit repaired stencil and shared scale parameter. The uniform-action spectral and thermal arguments are independently proved; crossing and Gibbs entropy remain different observables."
   }
  ]
 }
