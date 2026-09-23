@@ -2,8 +2,8 @@
   "book": {
     "built_for_release_id": "r2045",
     "pdf_path": "book/reverse-engineering-reality-book.pdf",
-    "sha256": "168e4228fc0e4fef978be836c426435629f5f44e8e3c83082f799cc60e0b40b3",
-    "size_bytes": 1372034
+    "sha256": "53014d0e1c429f0218f19a2a2777f8c03cc9b9fc943be9203d9146b9da1f89d6",
+    "size_bytes": 1373284
   },
   "extra_papers": {},
   "generated_at": "2026-09-22T00:00:00Z",

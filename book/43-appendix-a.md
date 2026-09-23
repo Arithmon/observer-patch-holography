@@ -96,7 +96,7 @@ The question expects an evasion, on the assumption that a structure either expla
 
 The stopping point is printed to the same precision as the results. The carrier's geometry fixes the charges and the family count. It does not fix the mixing between families. Every angle between two symmetry axes of the twelve-port solid was enumerated, four hundred and sixty-five of them, and the smallest nonzero one is 20.9052 degrees, while the Cabibbo angle measured in the laboratory is 13.0029. No angle on that list lands within seven degrees of the measurement.
 
-The electromagnetic closure certifies 137.035660 where the measurement reads 137.035999. The interval enclosure rules out numerical error as the source of the difference, which belongs to the quark cloud around a photon at rest.
+The electromagnetic closure certifies 137.035660 where the measurement reads 137.035999. The interval enclosure rules out numerical error as the source of the difference. The registers record the residual as a diagnostic datum until the closure map is selected from the axioms; reading it as the quark cloud around a photon at rest is a hypothesis, not a certified attribution, and the certified Thomson endpoint sits outside the closure interval.
 
 ## You knew the answers before you started
 
@@ -106,7 +106,7 @@ The complaint assumes flexibility, and flexibility is countable.
 
 A fit is worthless when it has a dial in it, meaning a quantity somebody turns until the output matches. Count the dials between the wiring and the result and there are none. The grain appears on both sides of its own equation, and the family count is the number of corners on an oriented face. A structure with no continuous freedom either lands on the measured value or misses it in public.
 
-Dark energy's pressure-to-density ratio is exactly minus one at every epoch, $w=-1$, with no field rolling anywhere to absorb a change. Five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect the spectra that will decide it. The charged-lepton balance puts the third mass in a window 72 electron-volts wide, sitting 0.43 sigma from the measurement, and a three-sigma move ends it. Proton decay through the unified channel is absent rather than slow, so fifty thousand tons of ultrapure water will see nothing in that channel, and a single clean event there ends it.
+In the program's certified fixed-capacity branch, dark energy's pressure-to-density ratio is exactly minus one at every epoch, $w=-1$, with no field rolling anywhere to absorb a change. Whether nature sits on that branch is a declared open item, and the test that would settle it is already standing: five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect the spectra that will decide it.
 
 ## Isn't this what Leibniz said?
 
