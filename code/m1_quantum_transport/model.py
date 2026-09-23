@@ -166,9 +166,9 @@ def basis_gate(state, site, coin):
             if coin[target, source] != 0]
 
 
-def flight_basis(state, sites, retain_sign=True):
+def flight_basis(state, sites, retain_sign=True, direction=1):
     occupied = [i for i in range(2*sites) if state & (1 << i)]
-    moved = [2*((i//2+(1 if i % 2 == 0 else -1)) % sites)+i % 2 for i in occupied]
+    moved = [2*((i//2+direction*(1 if i % 2 == 0 else -1)) % sites)+i % 2 for i in occupied]
     inversions = sum(moved[i] > moved[j] for i in range(len(moved)) for j in range(i+1, len(moved)))
     return sum(1 << i for i in moved), (-1)**inversions if retain_sign else 1
 
@@ -184,6 +184,8 @@ def fock_program(sites, retain_sign=True):
     dimension = 1 << (2*sites)
     columns = []
     traces = []
+    inverse_traces = []
+    roundtrip_columns = []
     for initial in range(dimension):
         state = {initial: s.Integer(1)}
         for stage, (kind, site, coin) in enumerate(instructions):
@@ -196,6 +198,20 @@ def fock_program(sites, retain_sign=True):
             state = {i: x for i, x in out.items() if x != 0}
             traces.append([initial, stage, [[i, pair(x)] for i, x in sorted(state.items())]])
         columns.append([state.get(i, s.Integer(0)) for i in range(dimension)])
+        # Execute the reversed instructions on the actual final state; this is
+        # separate from merely taking an adjoint of the completed Fock matrix.
+        for stage, (kind, site, coin) in enumerate(reversed(instructions)):
+            out = {}
+            for basis, amplitude in state.items():
+                terms = ([flight_basis(basis, sites, retain_sign, direction=-1)] if kind == "flight"
+                         else basis_gate(basis, site, coin.conjugate().T))
+                for target, coefficient in terms:
+                    out[target] = s.expand(out.get(target, 0)+coefficient*amplitude)
+            state = {i: x for i, x in out.items() if x != 0}
+            inverse_traces.append([initial, stage, [[i, pair(x)] for i, x in sorted(state.items())]])
+        if state != {initial: s.Integer(1)}:
+            raise ValueError("executed inverse program failed to return its input")
+        roundtrip_columns.append([state.get(i, s.Integer(0)) for i in range(dimension)])
     unitary = s.Matrix.hstack(*(s.Matrix(x) for x in columns))
     single = [1 << i for i in range(2*sites)]
     one = unitary.extract(single, single)
@@ -204,6 +220,9 @@ def fock_program(sites, retain_sign=True):
                 basis_stage_evaluations=len(instructions)*dimension,
                 one_particle=matrix(one), full_fock_sha256=digest(matrix(unitary)),
                 full_history_sha256=digest(traces),
+                inverse_basis_stage_evaluations=len(inverse_traces),
+                inverse_history_sha256=digest(inverse_traces),
+                roundtrip_sha256=digest(matrix(s.Matrix.hstack(*(s.Matrix(x) for x in roundtrip_columns)))),
                 sector_dimensions=[s.binomial(2*sites, n).__int__() for n in range(2*sites+1)])
 
 

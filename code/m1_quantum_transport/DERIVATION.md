@@ -130,6 +130,12 @@ rows. Its row norms force w_a=1/4, and its off-diagonal products force
 n_a.n_b=-1/3. Therefore a regular tetrahedron with equal weights is the
 unique minimal optimizer up to rotations, chirality and relabeling.
 
+This minimum counts distinct velocity outcomes across the complete word.
+For a single flight their nonzero orthogonal projectors require internal
+dimension at least four. It is not a lower bound of four on the internal
+dimension of a multi-stage word: the three-axis construction below reuses
+two internal channels in three stages and has six velocity outcomes.
+
 An explicit four-channel realization uses b_s=a s_s with
 s_s=(1,1,1),(1,-1,-1),(-1,1,-1),(-1,-1,1). Define
 
@@ -260,8 +266,17 @@ A fixed N excludes even a refinement limit with |v|/c->1. Reaching
 cannot be counted as an extra direction. Growing internal dimension alone
 does not change the bound. Nor is exact finite-level isotropy needed for
 the limiting exclusion: (6g) contains a centered ball of radius
-max(0,s_min(M)-|u|), where s_min is the least singular value. Substitute
-that radius for |v| in (6h). Thus M->cR and u->0 still require N->infinity.
+s_min(M)-|u| whenever this quantity is strictly positive, where s_min is
+the least singular value. Substitute that positive radius for |v| in (6h).
+If it is nonpositive, this argument supplies no positive-radius cap bound;
+the origin need not even belong to the translated ellipsoid. For example
+U(k)=exp(-ik_x)I_2 with T=c=1 has N=1, u=(1,0,0) and M=0.
+Its velocity set is the singleton {u}, so substituting a clamped zero radius
+would incorrectly demand 1>=2. The stationary identity has N=0 and likewise
+cannot be subjected to the positive-radius bound. Both are legitimate
+unitaries, retained as exact scope controls. In an approximately luminal
+sequence M->cR and u->0, the radius is eventually positive and tends to c,
+so the conclusion N->infinity is unchanged.
 For example an eight-corner cubic support has
 inradius a and circumradius sqrt(3)a, so even an endpoint-only timing
 assignment to (7) gives |v|/c<=1/sqrt(3); its actual intermediate flights

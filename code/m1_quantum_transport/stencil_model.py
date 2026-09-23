@@ -60,4 +60,35 @@ def velocities():
 
 
 def candidate():
-    return dict(polytopes=polytopes(), velocities=velocities())
+    return dict(polytopes=polytopes(), velocities=velocities(), tilt_controls=tilt_controls())
+
+
+def tilt_controls():
+    """Differentiate complete unitaries on both sides of the positive-radius scope."""
+    variables = s.symbols('kx ky kz', real=True)
+    origin = dict.fromkeys(variables, 0)
+    result = {}
+    for name, drift, scale in (("stationary", 0, 0), ("translation", 1, 0),
+                               ("tilted_isotropic", 1, 3)):
+        u = s.exp(-I*drift*variables[0])*IDENTITY
+        for i, k in enumerate(variables):
+            u = (s.cos(scale*k)*IDENTITY-I*s.sin(scale*k)*PAULI[i])*u
+        zero = u.subs(origin)
+        generators = [I*zero.conjugate().T*u.diff(k).subs(origin) for k in variables]
+        tilt = s.Matrix([s.trace(a)/2 for a in generators])
+        velocity = s.Matrix([[s.trace(a*p)/2 for p in PAULI] for a in generators])
+        least = min(velocity.singular_values())
+        radius = least-s.sqrt(tilt.dot(tilt))
+        if scale:
+            points = [(drift+scale*x, scale*y, scale*z) for x, y, z in
+                      itertools.product((-1, 1), repeat=3)]
+        else:
+            points = [(drift, 0, 0)]
+        result[name] = dict(period="1", internal_dimension=2,
+                            generators=[matrix(a) for a in generators],
+                            tilt=[str(x) for x in tilt], velocity=[[str(x) for x in row] for row in velocity.tolist()],
+                            nonzero_displacements=sum(any(p) for p in points),
+                            least_singular_value=str(least),
+                            positive_centered_radius=str(radius) if radius > 0 else None,
+                            cap_applies=bool(radius > 0))
+    return result

@@ -323,16 +323,30 @@ def fock(sites):
     full = snapshots[-1]
     need(mul(dagger(one), one) == eye(modes), "one-particle inverse failed")
     need(mul(dagger(full), full) == eye(dimension), "all-sector Fock inverse failed")
+    inverse_snapshots = []
+    inverse_one = one
+    for gate in reversed(matrices):
+        inverse_one = mul(dagger(gate), inverse_one)
+        inverse_snapshots.append(exterior(inverse_one))
+    need(inverse_snapshots[-1] == eye(dimension), "executed all-sector inverse roundtrip failed")
     history = []
+    inverse_history = []
     for initial in range(dimension):
         for stage, snapshot in enumerate(snapshots):
             column = [[i, encoded([[row[initial]]])[0][0]]
                       for i, row in enumerate(snapshot) if row[initial]]
             history.append([initial, stage, column])
+        for stage, snapshot in enumerate(inverse_snapshots):
+            column = [[i, encoded([[row[initial]]])[0][0]]
+                      for i, row in enumerate(snapshot) if row[initial]]
+            inverse_history.append([initial, stage, column])
     return dict(sites=sites, modes=modes, fock_dimension=dimension, local_gates=2*sites+1,
                 flight_stages=2, duration="2", basis_stage_evaluations=len(matrices)*dimension,
                 one_particle=encoded(one), full_fock_sha256=digest(encoded(full)),
                 full_history_sha256=digest(history),
+                inverse_basis_stage_evaluations=len(inverse_history),
+                inverse_history_sha256=digest(inverse_history),
+                roundtrip_sha256=digest(encoded(inverse_snapshots[-1])),
                 sector_dimensions=[math.comb(modes, n) for n in range(modes+1)])
 
 

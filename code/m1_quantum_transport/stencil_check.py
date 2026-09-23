@@ -3,7 +3,7 @@
 from fractions import Fraction as F
 import itertools
 
-from .check import need, digest, Q, Z, J, eye, mat, add, scale, mul, dagger, encoded, native_word
+from .check import need, digest, Q, Z, J, eye, mat, add, scale, mul, dagger, encoded, native_word, trace, SIGMA
 
 
 def support_polytope(points):
@@ -111,4 +111,41 @@ def velocities():
 
 
 def reconstruct():
-    return dict(polytopes=polytopes(), velocities=velocities())
+    return dict(polytopes=polytopes(), velocities=velocities(), tilt_controls=tilt_controls())
+
+
+def tilt_controls():
+    """Reconstruct Fourier moments, independently of symbolic differentiation."""
+    result = {}
+    raw = native_word((0, 1, 2))["kernel"]
+    cube = [(b, [[Z(Q(F(z[0])), Q(F(z[1]))) for z in row] for row in a]) for b, a in raw]
+    for name, kernel in (
+        ("stationary", [([0, 0, 0], eye(2))]),
+        ("translation", [([1, 0, 0], eye(2))]),
+        ("tilted_isotropic", [([1+3*b[0], 3*b[1], 3*b[2]], a) for b, a in cube]),
+    ):
+        zero, moments = mat([[0, 0], [0, 0]]), [mat([[0, 0], [0, 0]]) for _ in range(3)]
+        for b, coefficient in kernel:
+            zero = add(zero, coefficient)
+            for i in range(3):
+                moments[i] = add(moments[i], scale(coefficient, b[i]))
+        need(zero == eye(2), "degenerate scope-control band")
+        generators = [mul(dagger(zero), moment) for moment in moments]
+        tilt = [trace(a)/2 for a in generators]
+        velocity = [[trace(mul(a, p))/2 for p in SIGMA] for a in generators]
+        entries = tilt+[x for row in velocity for x in row]
+        need(all(x.im == Q() and x.re.b == 0 for x in entries), "rational scope control")
+        tilt = [x.re.a for x in tilt]
+        velocity = [[x.re.a for x in row] for row in velocity]
+        need(tilt[1:] == [0, 0] and all(velocity[i][j] == 0 for i in range(3)
+                                      for j in range(3) if i != j), "diagonal scope control")
+        least = min(abs(velocity[i][i]) for i in range(3))
+        radius = least-abs(tilt[0])
+        result[name] = dict(period="1", internal_dimension=2,
+                            generators=[encoded(a) for a in generators],
+                            tilt=[str(x) for x in tilt], velocity=[[str(x) for x in row] for row in velocity],
+                            nonzero_displacements=sum(any(b) for b, _ in kernel),
+                            least_singular_value=str(least),
+                            positive_centered_radius=str(radius) if radius > 0 else None,
+                            cap_applies=radius > 0)
+    return result
