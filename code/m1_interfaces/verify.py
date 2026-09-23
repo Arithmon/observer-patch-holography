@@ -15,6 +15,8 @@ ROOT=HERE.parents[1]
 def pins():
     paths=[p.relative_to(ROOT).as_posix() for p in HERE.iterdir() if p.suffix in ('.py','.md')]
     paths += ['Lean/Geometry/M1Interfaces.lean','Lean/Geometry/M1InterfacesAxiomAudit.lean',
+              'Lean/Geometry/FlatDiamondNormalization.lean',
+              'Lean/Geometry/OrderingFractionFourDimensional.lean',
               'paper/tex_fragments/M1_INTERFACES.tex','.github/workflows/m1-interfaces.yml']
     return {p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sorted(paths)}
 

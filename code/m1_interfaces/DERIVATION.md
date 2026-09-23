@@ -282,9 +282,13 @@ Minkowski lift with total time height T satisfying c T<1/2. Any spatially
 translated lift then requires more time than T and cannot add a relation.
 Equal cells of weight (a/c)h^3 and almost-everywhere convergence of generated
 interval and strict-pair indicators give these diamonds' flat volume
-pi c^3 tau^4/24, where tau is the endpoint proper-time separation. Ordered
-strict-pair counts divided by the square of the interval population tend
-to 1/10; fourth-root interval-count ratios recover proper-time ratios.
+pi c^3 tau^4/24, where tau is the endpoint proper-time separation. The
+oriented strict-pair measure is V^2/20, as proved on main in
+`Lean/Geometry/FlatDiamondNormalization.lean` and
+`Lean/Geometry/OrderingFractionFourDimensional.lean`. Thus, for P counted
+causally ordered pairs and N interval events, P/N^2 tends to 1/20 and the
+ordering fraction 2P/[N(N-1)] tends to 1/10. Fourth-root interval-count
+ratios recover proper-time ratios.
 Boundary-truncated or wrapping intervals are not covered by those flat
 formulas. For example, at c=1 a time-height-4 interval in a unit-volume
 spatial cube has spacetime volume at most 4, whereas the unbounded flat
