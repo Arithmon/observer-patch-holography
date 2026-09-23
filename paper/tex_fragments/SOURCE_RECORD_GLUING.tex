@@ -1,0 +1,278 @@
+\subsection{Source selection and a sufficient record-transport law}
+\label{sec:source-record-gluing}
+
+The source-selection question has two different meanings. A unique finite
+golden population and radius are stronger requirements than a common
+operational causal/count limit. Here we prove a sufficient source law for
+the latter, and compare M1 as one regulator of it. The proposed law is
+\emph{additional} to A1--A3. It is neither adopted as a fourth core axiom
+nor asserted to hold in the registered simulator. Its several substantive
+requirements are stated together; no claim of minimality or unique
+necessity is made.
+
+\paragraph{Why the existing data-access clauses do not supply a channel.}
+There is a scalar-seam construction with a complete port response, rather
+than a response-free scalar toy. At each vertex of the normalized midpoint
+sphere $S_n$ put
+\[
+ \mathcal A_i=\bigoplus_{p=1}^{12}M_6(\mathbb C),\qquad
+ \mathcal R_i=Z(\mathcal A_i)=\mathbb C^{12}.
+\]
+Its twelve block units are primitive central ports. Distinct-carrier seams
+are $\mathbb C$, with scalar inclusion and the unital normalized trace
+$E_i(a)=\sum_p\operatorname{Tr}(a_p)/72$ as visible data restriction.
+Triple restrictions are identities. Local chart overlaps are distinguished
+from these inter-carrier seams. Their proper action groupoid implements
+all sixty carrier rechartings; it does not transmit a private record to
+another carrier.
+
+An exact response on the same accessible internal $\mathbb C^6$ is
+\[
+ D_p=\operatorname{diag}\!\left(
+ \widehat{v_p/2}+iQ_p,\widehat{\sigma(v_p)/2}\right),\qquad
+ Q_p=\frac{v_pv_p^{\mathsf T}}2-\frac{r^2}6 I+\frac1{12}I,
+\]
+where $v_p$ is an icosahedral calculation frame, $r^2=\|v_p\|^2$,
+$\sigma$ is its Galois conjugation and $\widehat v w=v\times w$.
+Even and odd antipodal fields span respectively the six imaginary symmetric
+directions and the two three-dimensional real skew spaces. Thus the
+response is injective, commutator closed and has image
+$\mathfrak u(3)\oplus\mathfrak{so}(3)$. Full $M_6$ effects observe its
+relative block phase; restricting to block-diagonal effects loses one
+observable response direction. For each proper action $a$,
+$U_a=\operatorname{diag}(R_a,\sigma(R_a))$ satisfies
+$U_aD_pU_a^*=D_{ap}$. Executed Cayley factors in the original response span
+realize these matrices, their covariance and their compositions.
+The central permutation is the chart map; an inner automorphism of a
+carrier algebra is not claimed to permute its center.
+
+The admitted instruments are local: central readout, destructive internal
+effect readout into two central ports, requested-block trace reset,
+prediction from a supplied preparation and local conditioning, and in-place
+checkpoint continuation. Only the declared response span generates
+infinitesimal reversible port operations. Irreversible read/reset channels
+have kernels and add no reversible direction. Independent ticks carry no
+record-dependent controller information between carriers.
+
+The open-star nerve is $S_n$, the bridge is the identity and its fundamental
+cycle has degree one. Midpoints coarsen to declared endpoints, transported
+under relabeling; fundamental chains push forward exactly and spherical
+mesh contracts. Coarse local states average their descendant fibers.
+The instrument lift runs independently on every descendant, with each
+branch's own outcomes, then uses one fixed local tag through continuation.
+Selective conditioning updates tag weights; longer refinements use the
+composed weights. The tagged direct-sum experiment is not misidentified
+with the descendants' joint tensor algebra or with a communication channel.
+
+The feasible local-state family is unconstrained except for normalization
+and chart covariance. Its complete grammar contains all $431$ independent
+Hermitian state coordinates per carrier. The declared reference is
+$I_{72}/72$, the cover contains every carrier, and the weight is $1/N_n$.
+The weighted Umegaki objective has the unique tracial minimizer by
+nonnegativity and its equality condition. Every omitted coordinate admits
+two positive trace-one perturbations invisible to the remaining coordinates.
+This is an explicit A3 problem, not invariance used to choose a reference
+among all possible source ontologies.
+
+Induction on every admitted local operation shows that changing an
+independent private source port leaves another carrier's entire local
+transcript unchanged. The induction permits arbitrary receiver-local
+memory and stopping rules, so no decoder of that transcript reads both
+interventions correctly. For a uniform unknown port its success probability
+is at most $1/12$. Hence the stated typed data-access clauses, with local
+chart holonomy distinct from inter-carrier record transport, do not entail
+M1's remote read service. The detailed full-clause interpretation and
+all-level refinement proof are in
+\ophid{code/source_selection_model/DERIVATION.md}; finite receipts do not
+replace that analytic model-membership argument. If reversible overlap
+holonomy is strengthened to require inter-carrier record transport, this
+particular countermodel is excluded by that additional requirement.
+
+\paragraph{Proposed law RG: response-natural classical record transport.}
+The complete-response theorem for A1--A2 gives
+$\mathfrak{su}(3)\oplus\mathfrak{su}(2)\oplus\mathfrak u(1)$ at a complete
+reference carrier. Its unique three-dimensional simple ideal $E$, with
+the response trace form, has connected adjoint action $SO(E)$.
+This is an internal Euclidean response space.
+RG says that the central-record source admits a complete,
+intervention-faithful, refinement-compatible realization of the following
+generated process theory, graded by a source-observable duration:
+\begin{enumerate}
+\item Objects are arbitrary finite independent classical registers at
+addresses in the affine space modeled on $E$. Finite tensor products,
+local preparation, finite deterministic classical maps, nondestructive
+read/copy, discard and retained versions are realizable at finite cutoff.
+Their ideal displacement and local duration are zero. Their actual
+implementations and storage costs are retained.
+\item One retained-record flight has displacement $e$, $\|e\|=1$, and
+duration $\tau>0$. Translation, connected response rotation and positive
+scaling generate actual flights $(\lambda Re,\lambda\tau)$ for
+$R\in SO(E)$ and $\lambda>0$. Waiting preserves the record. These processes
+transmit retained records between carriers.
+\item Sequential and finite parallel composition are realized. Time adds
+on dependency paths; independent branches share elapsed time. Every native
+dependency, including controller, timing and metadata channels, factors
+through the graded local/flight/wait grammar. Conversely every finite
+generated process has an admitted native realization preserving all
+independent record interventions and immutable versions, with every
+intermediate event and its resource bill retained. Realizations commute
+with the declared source refinements.
+\end{enumerate}
+Intervention faithfulness includes local interventions at every designated
+intermediate record output before publication, with all other registers and
+cached copies held fixed. Lowering must commute with insertion of these
+operations and subsequent reads. The version is committed once after its
+intervention. Merely agreeing on final outputs for all initial preparations
+is weaker: two versions can both contain $x+1$, making a substituted read
+indistinguishable until one version alone is perturbed.
+
+The exact version realizes these ideal grades. The vanishing-overhead
+version requires, for every complete finite experiment and every
+$\epsilon>0$, a finite realization with exact record values and endpoint
+addresses, no faster native dependence, and each logical event time in
+$[t,t+\epsilon]$ relative to its ideal schedule. This uniform whole-program
+requirement is part of RG. Nonnegative primitive overheads summing to at
+most $\epsilon$ on every complete path suffice, by induction on the
+earliest-time recurrence using addition and maximum. A fixed error at
+each layer is not a substitute.
+
+RG supplies flat homogeneous operational addresses, record protection,
+cofinal workspace, parallel composability and a physical connection from
+the internal response to record motion. None follows just from internal
+rotation covariance. Translations and scales act on a family of finite
+experiments, possibly changing cutoff; they are not extra infinitesimal
+port generators on one carrier. A proposed implementation must obey
+A1's full response constraint. A3 can select states inside such a source
+but is not used to derive RG or compel a particular observer program.
+
+\begin{proposition}[RG suffices for the operational M1 limit]
+\label{prop:record-gluing-sufficiency}
+Under the complete-response conclusion of A1--A2 and RG, there exist
+cofinal finite independent central-record experiments whose native ancestry
+on their distinguished records has the round $3+1$-dimensional causal
+limit, continuity-set volume counts, Alexandrov interval counts and
+four-dimensional ordering fraction. M1's golden population with
+$q=F_n$ and observation duration $L/(c\sqrt q)$ is one regulator with
+these limits, where $c=1/\tau$. Its finite radius is not a uniquely
+selected microscopic length.
+\end{proposition}
+\begin{proof}
+Each primitive flight has norm $c$ times its duration. The triangle
+inequality bounds every complete native dependency by
+$\|y-x\|\leq c(s-t)$, including paths through auxiliary events.
+Conversely, for $\|v\|\leq cT$, response transitivity rotates $e$ to
+$v/\|v\|$. Scaling by $\|v\|$ and waiting for
+$T-\tau\|v\|$ realizes the read. The zero displacement uses waiting.
+The exact process has precisely the closed round cone; vanishing overhead
+attains every strict timelike read and excludes every spacelike read.
+Finite tensor composition realizes any finite list simultaneously, with
+protected source versions.
+
+In a calculation frame prepare records at
+$x_b=Lb/q$, $b\in\{0,\ldots,q-1\}^3$. RG supplies their joint finite
+preparation, rather than a presumed native carrier census. Half-open cells
+have equal volume $(L/q)^3$ and assignment/covering error
+$h_q\leq\sqrt3L/q$. Choose $\delta_q\to0$ with
+$q\delta_q\to\infty$. Exhaustively observe the preceding population
+within duration $\delta_q$, then commit the consumed source versions.
+The primitive latency calculation derives the complete read menu
+$\|x_b-x_a\|\leq c\delta_q$; this menu is not input to the source law.
+The covering-path theorem constructs a $k$-layer read path whenever
+\[
+ \|y-x\|\leq k(c\delta_q-2h_q),
+ \qquad
+ \text{and every generated path obeys}\quad
+ \|y-x\|\leq kc\delta_q.
+\]
+Independently variable records and retained versions make these actual
+causal dependencies. Compiling a primitive correctly on every input state
+extends to every finite word by induction; concatenating the native words
+retains the sum of their event bills.
+
+For each bounded horizon, lower the entire finite experiment with uniform
+time error $\epsilon_q\leq\delta_q/q$. Commits need not be perfectly
+simultaneous. Let $P_q$ be the consumed-writer order and $N_q$ full native
+ancestry restricted to those commits. For each consumed-writer edge $u\to v$,
+vary the record at $u$'s output boundary while holding other records fixed.
+The corresponding tuple coordinate read at $v$ changes. If no native path
+connected them, the ancestors of $v$ would form a dependency-closed region
+unchanged by that local intervention. Induction on the native updates would
+leave its read unchanged, a contradiction. This proves $P_q\subseteq N_q$
+using intermediate intervention faithfulness; the value-only compilation
+induction does not prove it. Complete native grading then gives
+\[
+ P_q\ \subseteq\ N_q\ \subseteq\ C_c
+ \quad\text{at the actual native event assignments.}
+\]
+Every fixed strict timelike comparison eventually belongs to $P_q$, while
+every fixed spacelike or backwards comparison is eventually excluded from
+$N_q$. Moving two positions by at most $H$ and times by at most $\epsilon$
+changes the causal margin by at most $2H+2c\epsilon$; this tends to zero.
+
+Space and time cells give distinguished-event weight
+$w_q=(L/q)^3\delta_q$. For any bounded continuity set $A$ in the window,
+its pulled-back indicator converges almost everywhere and is bounded by
+one, hence $w_q\#A_q\to\int_A dt\,d^3x$. A clipped terminal layer has
+mass error at most $L^3\delta_q$. For intervals, use the order sandwich
+and the null measure of the endpoint cone boundaries. For strict pairs,
+apply the same argument on the product window to both interval indicators
+and the precedence indicator; the time diagonal is also null. Dominated
+convergence gives the limits for both $P_q$ and $N_q$, without excluding
+additional native edges by assumption. An interior rest diamond of duration
+$T$ has $V=\pi c^3T^4/24$ and oriented-pair measure $V^2/20$.
+Consequently $2\,\#\mathrm{strictPairs}/[N(N-1)]\to1/10$.
+
+For the golden regulator use the proved equal-volume assignment
+with $h_q\leq2\sqrt3L/q$ and $\delta_q=L/(c\sqrt q)$. RG supplies
+the finite preparations and transmissions, and all previous bounds apply.
+The radius $L/\sqrt q=c\delta_q$ is the reach of the chosen observation
+clock. Both regulators thus converge to the same causal/count observables.
+For a $K$-Lipschitz observable, assignment errors $(H,\epsilon)$ change
+its weighted integral by at most $K(H+\epsilon)$ times the window volume,
+plus the clipped endpoint term. Comparing regulators adds their bounds;
+indicator comparisons use null boundary tubes instead.
+\end{proof}
+
+This conclusion concerns a realizable observer probe and its operational
+limit. It neither selects spontaneous execution of that probe nor equates
+its distinguished-event volume with a count of all microscopic repair
+events. It proves no Lorentz covariance of matter, curved geometry or
+laboratory clock calibration. Finite graphs need not be isomorphic, and
+unrelated field dynamics do not inherit equivalence from count convergence.
+
+\paragraph{Finite clearance, verification and deletion controls.}
+The golden squared displacements in units of $L^2$ lie in
+$\mathbb Z[\phi]$. For integer $q>1$ none equals $1/q$: irrationality
+would first force the coefficient of $\phi$ to vanish, leaving an integer
+equal to $1/q$. Thus every admitted nonself golden flight has positive
+finite slack, although controller/commit costs remain charged.
+The rational-grid reference uses $L=c=1$ and
+$\delta_q^2=2/(2q+1)$; boundary equality would require
+$(2q+1)m=2q^2$, impossible since $\gcd(2q+1,q)=1$.
+
+The reference prepares, forks, flies, waits, adds locally and commits two
+layers for $q=2,3,5$. Baselines, every single-site initial intervention and
+every first-layer commit intervention retain 323 executions, totaling
+5,344,106 primitive events. Compact commitments
+are checked against live streams and independent semantic replay, including
+all consumed writers and intervention path multiplicities. These are
+executions of RG's reference grammar, not of an asserted native simulator
+implementation. Source pins and hostile-input tests reject forged timing,
+values, missing events and filtered intervention denominators.
+The additive reference diagnostic is distinct from the proof's lossless
+tuple payload, constructed analytically from RG's finite classical maps.
+Its intervention tests certify that each consumed value affects the
+diagnostic; they do not certify arbitrary payload maps or native programs.
+
+The Lean proofs cover the local information bound, the primitive cone and
+its covering paths, the lowering induction, the localized-intervention
+ancestry reduction, event bills, population size
+and margin stability. The full model interpretation and the join from RG
+to native ancestry and counts are analytic. Detailed proofs appear in
+\ophid{code/source_selection_model/RECORD_GLUING.md}.
+
+Deleting transport gives the scalar-seam control; keeping only axis flights
+gives an $\ell^1$ cone; an ungraded metadata channel defeats the upper
+cone bound; destructive transfer or absent parallel workspace defeats the
+finite experiment. These controls explain the content of the proposed law
+instead of concealing it in a successful M1 schedule.

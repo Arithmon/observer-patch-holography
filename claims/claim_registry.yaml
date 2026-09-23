@@ -11406,6 +11406,97 @@
           "PR-54"
         ]
       }
+    },
+    {
+      "claim_id": "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
+      "statement": "The scalar-seam construction supplies primitive central ports, a complete observable twelve-dimensional response and endogenous proper local chart holonomy, a degree-one all-level spherical refinement, local instruments and an explicit full-coordinate A3 state problem with unique tracial optimizer. Under the stated typed-axiom interpretation, local chart holonomy is distinct from inter-carrier record transport. Every admitted program leaves a remote transcript independent of a private source-port intervention, even with receiver-local memory and stopping. Thus those data-access clauses do not force an intervention-preserving remote record service. Full model membership and all-level refinement are analytic arguments; exact finite response, grammar, instrument and geometry checks and Lean reductions support them but do not formalize the full axioms. This is not a countermodel for a strengthened record-transmitting overlap axiom, the canonical W12 mean source or the registered simulator.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_typed_axiom_model_with_independent_exact_certificates_and_kernel_checked_information_reduction",
+      "assumptions": [
+        "typed_scalar_seam_source_and_local_chart_overlap_interpretation"
+      ],
+      "imported_results": [
+        "finite_matrix_algebra_and_positive_trace_geometry",
+        "icosahedral_midpoint_refinement",
+        "finite_Umegaki_nonnegativity_and_equality",
+        "local_program_indistinguishability"
+      ],
+      "oph_specific_delta": "Constructs a full-response scalar-seam source and explicitly checks the typed operational, refinement and A3 obligations instead of promoting a scalar toy or the incomplete amplitude simulator to a full-axiom countermodel.",
+      "novelty_type": "typed_source_nonentailment_and_exact_record_channel_obstruction",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_RECORD_GLUING.tex",
+        "code/source_selection_model/CONTRACT.md",
+        "code/source_selection_model/DERIVATION.md",
+        "code/source_selection_model/verify.py",
+        "code/source_selection_model/test_model.py",
+        "code/source_selection_model/response.json",
+        "code/source_selection_model/records.json",
+        "code/source_selection_model/receipt.json",
+        "Lean/Geometry/SourceSelectionLocality.lean",
+        "Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean"
+      ],
+      "falsifier": "A canonical clause requires inter-carrier record transmission or forbids the stated local chart groupoid; the full response, operational refinement or A3 membership argument fails; a remote local program distinguishes independent source labels without an added channel; or forged finite evidence passes verification.",
+      "scope_if_false": "The full-axiom non-entailment claim fails. The separately stated RG sufficiency implication and older named-source theorems retain their own hypotheses.",
+      "status": "analytic_typed_axiom_nonentailment__not_native_simulator_or_unconditional_M1_impossibility",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "A mathematical non-entailment construction for the stated typed axioms, not a physical source selection or a discharge of PR-52. Its full-clause interpretation is explicit and falsifiable."
+      }
+    },
+    {
+      "claim_id": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+      "statement": "Under the A1--A2 complete-response conclusion and the proposed response-natural classical record transport law RG, finite independently prepared record experiments have the round 3+1 causal/count limit. RG supplies a complete graded process realization with protected classical registers, a translated, rotated and positively scaled retained-record flight, finite parallel composition, cofinal workspace, refinement, all native dependency channels and uniform whole-program lowering, including independent localized interventions at intermediate record outputs before publication. Primitive execution derives the round access cone; covering paths and the sandwich between consumed-writer order and full native ancestry give continuity-set, interval and strict-pair limits, including ordering fraction 1/10. M1 golden sampling and radius L/sqrt(q) are one regulator, with an explicit comparison to a rational-grid regulator and positive-overhead timing stability. A compact independently checked additive reference replays every initial and first-layer commit intervention. The proof's lossless tuple experiment is constructed analytically; equality on initial inputs alone is not treated as native ancestry. RG is one substantial proposed operational law with multiple explicit requirements, not derived from A1--A3, adopted as a core axiom, proved minimal or uniquely necessary, or verified in the native simulator. Unique spontaneous microscopic populations, compulsory observer policy, matter dynamics and laboratory calibration are excluded.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_source_law_sufficiency_with_kernel_checked_primitive_cone_lowering_and_exact_reference_execution",
+      "assumptions": [
+        "proposed_response_natural_classical_record_transport_RG"
+      ],
+      "imported_results": [
+        "complete_compact_port_response_Lie_type",
+        "SO3_adjoint_transitivity_and_norm_triangle_inequality",
+        "source_net_covering_path_theorem",
+        "equal_volume_assignment_and_dominated_convergence",
+        "flat_Alexandrov_and_strict_pair_normalization"
+      ],
+      "oph_specific_delta": "Gives one fully specified sufficient source law and joins its primitive operations to native causal ancestry, finite preparations and causal/count limits, while comparing M1 as a regulator rather than assuming its population and metric menu in the law.",
+      "novelty_type": "complete_operational_transport_extension_and_M1_regulator_sufficiency",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_RECORD_GLUING.tex",
+        "code/source_selection_model/CONTRACT.md",
+        "code/source_selection_model/RECORD_GLUING.md",
+        "code/source_record_gluing/README.md",
+        "code/source_record_gluing/process.py",
+        "code/source_record_gluing/check_process.py",
+        "code/source_record_gluing/verify.py",
+        "code/source_record_gluing/test_process.py",
+        "code/source_record_gluing/capture.json",
+        "code/source_record_gluing/receipt.json",
+        "Lean/Geometry/SourceRecordGluing.lean",
+        "Lean/Geometry/SourceRecordGluingAxiomAudit.lean"
+      ],
+      "falsifier": "A source satisfying all of RG violates the derived cone, simultaneous finite preparation/read realization, native-order sandwich or count/interval/pair limits; timing or auxiliary dependencies evade the stated accounting; initial-input equality is substituted for localized intermediate intervention faithfulness; the verifier accepts forged reference histories or filtered interventions; or the conditional theorem is presented as native implementation or derivation of RG from A1--A3.",
+      "scope_if_false": "The proposed-law sufficiency or its finite reference evidence fails. No unconditional canonical M1 derivation, simulator implementation or physical establishment is asserted.",
+      "status": "one_proposed_operational_law_suffices_for_M1_causal_count_regulator_limit__native_RG_not_established",
+      "claim_class": "conditional_implication",
+      "gates": [
+        740,
+        779
+      ],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "An implication under one explicitly proposed source law, not physical branch entry. The theorem closes its operational-regulator conclusion under RG but does not derive or establish RG, so canonical PR-52 is not marked discharged."
+      }
     }
   ]
 }

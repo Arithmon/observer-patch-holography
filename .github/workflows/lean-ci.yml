@@ -143,6 +143,8 @@ jobs:
             "Geometry.SourceCheckpointAxiomAudit"
             "Geometry.SourcePublicationAxiomAudit"
             "Geometry.SourceOperationReadsAxiomAudit"
+            "Geometry.SourceSelectionLocalityAxiomAudit"
+            "Geometry.SourceRecordGluingAxiomAudit"
             "Geometry.SourceCountLimitAxiomAudit"
             "Geometry.SourceRoutingRefinementAxiomAudit"
             "ObserverPatchHolography.EinsteinBranch.AxiomAudit"
