@@ -2,8 +2,8 @@
   "book": {
     "built_for_release_id": "r2045",
     "pdf_path": "book/reverse-engineering-reality-book.pdf",
-    "sha256": "168e4228fc0e4fef978be836c426435629f5f44e8e3c83082f799cc60e0b40b3",
-    "size_bytes": 1372034
+    "sha256": "53014d0e1c429f0218f19a2a2777f8c03cc9b9fc943be9203d9146b9da1f89d6",
+    "size_bytes": 1373284
   },
   "extra_papers": {},
   "generated_at": "2026-09-22T00:00:00Z",
@@ -15,8 +15,8 @@
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
-      "sha256": "335d6a5c06e5eb411f48efdea509dadbe4bcf39db24f70f484002ca34421df9d",
-      "size_bytes": 680386
+      "sha256": "b539a297edd04fe6802ee2bab2e3f4cb9c0ee262552c883380f333d7e5db354e",
+      "size_bytes": 680397
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
@@ -25,8 +25,8 @@
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "6b9012f1f2c4e5b651e8c5d89b7c8193adeacb0a269a97f507599e94ba98fdfe",
-      "size_bytes": 918624
+      "sha256": "dd6a2e92d1e73be9962bc8503c0ebdca56da3b329b744237c6fe4f7729a44d47",
+      "size_bytes": 919002
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
@@ -40,13 +40,13 @@
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "d704ee24de4967f5f61e4cd035971e8e16ad4429496c39bbf9e63461d4215457",
-      "size_bytes": 1013845
+      "sha256": "a9a921b8a9b94cd2e5bf9ddbe61c553f659f92cd275129425817c6746558d6db",
+      "size_bytes": 1013838
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
-      "sha256": "07200de6784bb500a65140b1761f11c695a64f8aaf8f5d24d9ec531fded143bd",
-      "size_bytes": 435174
+      "sha256": "18e1db485b3472ccb4e906dc9ef9aba2333896ddbce65f9f2134b9cb58ee5cb2",
+      "size_bytes": 435181
     }
   },
   "release_id": "r2045",

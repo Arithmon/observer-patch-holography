@@ -76,13 +76,17 @@ calculations and reproducible simulations:
   mathematical bridge from public records to quantum probability.
 - **The four laws of thermodynamics from disagreement repair.** One
   conditional theorem package about how observers resample toward consensus
-  yields all four laws, with the second law appearing as data processing
-  applied to repair and the Landauer bound as a corollary.
+  yields the first, second, and fourth laws, with the second appearing as
+  data processing applied to repair and the Landauer bound as a corollary.
+  The third-law clauses stay conditional on a stated per-call ground-gap
+  hypothesis that the package does not derive.
 - **Space and time from observer records.** The source response supplies a
   three-dimensional spatial geometry. With an explicit local reading rule,
   conservative observer records approach the familiar causal geometry and
-  volume of a flat 3+1-dimensional world. Counts of records between events
-  recover elapsed-time ratios. The [spacetime paper](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf)
+  volume of a flat 3+1-dimensional world. Under a stated volume-law
+  hypothesis, record counts enclose a supplied clock's read differences;
+  deriving elapsed-time ratios from counts alone remains open. The
+  [spacetime paper](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf)
   develops the proofs and their assumptions; [executable evidence](code/causal_refinement/)
   lets readers replay the construction.
 - **Field geometry on the twelve-port screen.** The finite screen carries
@@ -92,9 +96,11 @@ calculations and reproducible simulations:
 - **The Standard Model gauge group from twelve ports.** OPH makes an
   architectural choice at the simulation hardware layer: each observer patch
   has twelve boundary ports wired as the corners of an icosahedron. A
-  classification theorem forces the complete port response to have the
-  Standard Model's gauge Lie type, without selecting a gauge group from a
-  catalogue. An exhaustive finite construction also identifies a conditional
+  classification theorem forces the classified compact family to carry the
+  Standard Model's gauge Lie type, with the discriminating dimension data
+  imported from a committed certificate; the classified catalogue has three
+  families, and the physical gauge group is not thereby selected. An
+  exhaustive finite construction also identifies a conditional
   fifteen-state, anomaly-free matter grammar.
 - **Constants as fixed-point problems.** Koide's relation holds exactly under
   a stated balance premise, and the self-consistent pixel closure lands within
@@ -110,7 +116,9 @@ calculations and reproducible simulations:
   reach that gate commit in advance to what would refute them.
 
 The linked papers record each step's precise status. Together, these results
-define a testable path from three observer axioms toward a complete theory.
+define a testable path from three observer axioms plus eighty-four registered
+inputs, none of them yet derived from the axioms alone
+([premise register](docs/PREMISE_REGISTER_V3.md)), toward a complete theory.
 The full technical route is the
 [flagship paper](https://philpapers.org/rec/MUEFOC).
 

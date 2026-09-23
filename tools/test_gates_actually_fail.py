@@ -614,8 +614,9 @@ def test_claim_matrix_csv_structure_is_checked_before_field_use(
         output.write('"unterminated scientific text\n')
     else:
         writer.writerow(body)
-    # Preserve the scientific cell text on Windows as well as Unix: translating
-    # embedded LF into CRLF would disagree with the exact registry string.
+    # newline="" keeps the multiline cell's embedded "\n" out of the platform's
+    # line-ending translation, so the CSV carries the same bytes the registry
+    # JSON escapes and the two agree on every platform.
     path.write_text(output.getvalue(), encoding="utf-8", newline="")
 
     result = _run(str(CLAIM_CHECKER), str(root))

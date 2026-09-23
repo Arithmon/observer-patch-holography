@@ -22,13 +22,13 @@ Take a screwdriver to a screw. One eighth of a turn, repeated, drives the screw 
 
 A smooth continuous change is a flow. The small move whose repetition produces the flow is its **generator**, and the pairing runs both ways: a flow determines its generator, and a generator run out determines the flow. The trip of the screw is a long list of positions. The one turn is a single instruction. The list follows from it.
 
-Every region in this world advances along a clock of its own. Something generates that advance. That something is the region's energy. The energy of a region is the rate at which its records are worked through by repair, counted against that region's own clock.
+Every region in this world advances along a clock of its own. Something generates that advance. That something is the region's energy. The identification is declared rather than derived: it rides on an imported clock-and-energy calibration anchor, and closing the identification against the axioms is an open item in the program's registers.
 
 The word behaves identically wherever physics uses it. What generates turning about an axis is the angular momentum about that axis, and what generates sliding sideways is the momentum in that direction. Advance along a clock has the energy for its generator, and quantum mechanics has run on exactly that definition since the 1920s without ever saying what does the advancing.
 
 A clock of a region's own is the only kind this world has. Chapter ten ran eighty-two thousand patches with no tick anywhere in the machinery, nothing waiting for the next round and nothing counting rounds. What a region has instead is a clock its own state manufactures, out of nothing but what it holds. Two regions worked through at different rates differ in a fact about themselves, since no clock outside them has a setting they could differ in.
 
-A region whose records agree everywhere generates no flow and reports nothing above the floor. A region holding standing disagreement drives its clock hard. The driving rate is the number a calorimeter or a particle detector hands you.
+A region whose records agree everywhere generates no flow and reports nothing above the floor. A region holding standing disagreement drives its clock hard. The driving rate is the number a calorimeter or a particle detector hands you, on the imported calibration above; the reading is exact where the calibration is supplied and the identification is not yet closed.
 
 In ordinary quantum mechanics the energy of a system is the operator somebody writes down for it. You pick an operator called a Hamiltonian to match the system in front of you and fit its constants to measurements. The fitting is done by a person with a pencil. Here the operator is manufactured by the state the region holds. The region holds its state whether or not anybody has written anything about it. Two regions in the same state have the same energy. The pencil never enters.
 
@@ -62,7 +62,7 @@ What he chased was a shape. The water in the heap changed the entire way: each s
 
 The seam network holds patterns of that kind. A bounded set of records reproduces itself after every round of repair, because flattening it would open larger disagreements at the boundary of the set than it closes inside. Repair works on such a pattern at every event and gets nowhere with it, so holding the pattern costs repair work at every event, and what the work buys is the pattern being there for the next one.
 
-Mass is that standing cost: the rate a pattern demands while its records go nowhere. Nothing about a stone on a table is idle. The arrangement that makes it a stone is being re-asserted at every event, at a rate the stone's own clock sets. That rate is what a balance reads off when you put the stone on one.
+Mass is identified with that standing cost: the rate a pattern demands while its records go nowhere. The identification carries the same declared status as the energy identification above. Nothing about a stone on a table is idle. The arrangement that makes it a stone is being re-asserted at every event, at a rate the stone's own clock sets. That rate is what a balance reads off when you put the stone on one.
 
 A pattern of that kind turns its material over, exactly as the heap in the canal did, and the charge falls on the arrangement rather than on whichever records are holding the arrangement at a given event. So the cost is steady while the material under it is not, which is why the proton's mass comes out at 1.0072764665789 atomic mass units, with the uncertainty sitting in the last two of those digits, in every laboratory that has weighed one.
 
