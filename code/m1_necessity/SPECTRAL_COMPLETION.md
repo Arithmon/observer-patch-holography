@@ -162,8 +162,12 @@ compactness argument and does not change the limiting cube.
 Canonically quantize these defined positive-frequency actions on the clipped
 box, allowing mu>=0, in their Gaussian vacuum states and smooth coherent
 displacements of those vacua. Ordered
-spectral convergence with compactness gives convergence of bounded spectral
-functions on sampled smooth smearings. Position covariance uses B^(-1/2),
+spectral convergence with compactness gives convergence of bounded continuous
+spectral functions on sampled smooth smearings. For discontinuous spectral
+projections, the cutoff must lie outside the limiting spectrum; eigenvalue
+convergence alone does not control a jump at a limiting eigenvalue. The
+harmonic functions and inverse-frequency covariance used here are continuous
+on the uniformly gapped spectrum. Position covariance uses B^(-1/2),
 where B=c^2*Ahat+mu^2, and is uniformly bounded by the inverse frequency
 gap just proved. For momentum
 covariance B^(1/2), smooth compact f has uniformly bounded ||Ahat f_n||_h

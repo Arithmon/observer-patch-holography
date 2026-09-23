@@ -264,6 +264,53 @@ def test_balanced_certificate_cannot_hide_geometry_or_work(packet,mutation):
     with pytest.raises(ValueError): balanced_check.verify(candidate)
 
 
+@pytest.mark.parametrize('mutation,message', [
+    ('endpoint', 'balanced endpoint'),
+    ('charged_time', 'balanced charged time bound'),
+    ('tube', 'balanced boundary tube'),
+    ('digest', 'balanced path commitment'),
+])
+def test_balanced_resealed_routes_fail_semantic_checks(packet, mutation, message):
+    candidate = deepcopy(packet['balanced'])
+    row = candidate['routes'][1]
+    assert row['t'] == 1 and row['displacement'] == [255, 0, 0]
+    steps = [tuple(item[1:]) for item in row['instructions'] for _ in range(item[0])]
+    if mutation == 'endpoint':
+        steps.append((1, 0, 0))  # Legal edge, wrong endpoint.
+    elif mutation == 'charged_time':
+        steps = [(0, 0, 0)]*20 + steps  # Legal waits, all inside the tube.
+    elif mutation == 'tube':
+        # Legal radius flights, unchanged endpoint and still within the time
+        # budget; the off-axis excursion alone violates the 2m tube.
+        steps = [(0, 128, 0)] + steps + [(0, -128, 0)]
+        assert len(steps) <= 16
+    assert all(balanced_check.admissible(1, step) for step in steps)
+    point, points = [0, 0, 0], [[0, 0, 0]]
+    for step in steps:
+        point = [x+y for x, y in zip(point, step)]
+        points.append(point)
+    row.update(instructions=[[1, *step] for step in steps], steps=len(steps),
+               points_sha256=check.digest(points))
+    if mutation == 'digest':
+        row['points_sha256'] = '0'*64
+    with pytest.raises(ValueError, match=message):
+        balanced_check.verify(candidate)
+
+
+def test_balanced_routes_at_half_ties_corners_and_all_supported_levels():
+    from random import Random
+    rng = Random(981)
+    for t in range(1, 9):
+        q, m = 1 << (8*t), 1 << (4*t)
+        targets = list(product((-m//2, 0, m//2), repeat=3))
+        targets += list(product((-q+1, q-1), repeat=3))
+        targets += [tuple(rng.randrange(-q+1, q) for _ in range(3)) for _ in range(16)]
+        for target in targets:
+            steps = balanced.route(t, target)
+            result = balanced_check.check_route(t, target, steps)
+            assert result['steps'] == len(steps)
+
+
 def test_balanced_small_complete_pair_census_and_moments():
     # A miniature member of the same generic spaced-ball-plus-dyadic rule.
     q,m,k=16,2,2
