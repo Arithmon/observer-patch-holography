@@ -44,6 +44,6 @@
     "oph_fpe/core/icosahedral.py": true,
     "oph_fpe/core/screen_ports.py": true
   },
-  "run_dir": "/home/ec2-user/runs/L10",
+  "run_dir": "runs/L10",
   "verdict": "PASS"
 }
