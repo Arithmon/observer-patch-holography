@@ -358,6 +358,19 @@ theorem exists_mathematical_fair_scheduler {k : Nat}
 #print axioms roundRobinScheduler_cycle_eq_sweepFrom
 #print axioms fixedRoundRobin_consensus_after_one_cycle
 #print axioms exists_mathematical_fair_scheduler
+#print axioms nodeMemberRecurrent_nodeSiteRecurrent
+#print axioms nodeMemberRecurrent_nodePathwiseWeakFair
+#print axioms nodesWF_registersUnique
+#print axioms nodeSiteRecurrent_nodeMemberRecurrent_of_registersUnique
+#print axioms fixedProgram_nonempty
+#print axioms roundRobinScheduler_prefix_eq_sweepFrom
+#print axioms roundRobinScheduler_memberRecurrent
+#print axioms roundRobinScheduler_selects_within
+#print axioms fixedRoundRobin_cycle_eq_fixedSweep
+#print axioms fixedRoundRobin_output_after_one_cycle
+#print axioms fixedRoundRobin_stable_after_one_cycle
+#print axioms fixedRoundRobin_siteRecurrent
+#print axioms fixedRoundRobin_pathwiseWeakFair
 
 end
 

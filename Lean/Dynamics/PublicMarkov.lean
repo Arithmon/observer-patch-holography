@@ -281,5 +281,19 @@ end ContinuousPermutationFlow
 #print axioms OPH.Dynamics.activeRecord_positive_unital_iff_stochastic
 #print axioms OPH.Dynamics.ContinuousPermutationFlow.toPerm_eq_refl
 #print axioms OPH.Dynamics.ContinuousPermutationFlow.function_action_eq
+#print axioms OPH.Dynamics.recordBasis_pointwiseNonnegative
+#print axioms OPH.Dynamics.sum_smul_recordBasis
+#print axioms OPH.Dynamics.sum_recordBasis
+#print axioms OPH.Dynamics.recordKernel_nonnegative
+#print axioms OPH.Dynamics.apply_recordBasis_eq_recordKernel
+#print axioms OPH.Dynamics.recordKernel_row_sum
+#print axioms OPH.Dynamics.apply_eq_recordKernel_sum
+#print axioms OPH.Dynamics.recordMapOfKernel_apply
+#print axioms OPH.Dynamics.recordMapOfKernel_positive
+#print axioms OPH.Dynamics.recordMapOfKernel_unital
+#print axioms OPH.Dynamics.recordKernel_recordMapOfKernel
+#print axioms OPH.Dynamics.recordMapOfKernel_injective
+#print axioms OPH.Dynamics.recordMapOfKernel_recordKernel
+#print axioms OPH.Dynamics.ContinuousPermutationFlow.apply_eq
 
 end OPH.Dynamics

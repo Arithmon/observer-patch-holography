@@ -1241,3 +1241,21 @@ def test_external_custody_rejects_fz11_decision_artifact_tampering(
     erratum.write_bytes(erratum.read_bytes() + b"\n")
     with pytest.raises(SystemExit, match="decision-rule artifact hash mismatch"):
         fz_tool.verify_external_custody(register, custody_root)
+
+
+def test_fz10_custody_provenance_is_pinned():
+    register = live_register()
+    contract = register["external_custody_contracts"]["FZ-10"]
+    manifest_path = (
+        fz_tool.DEFAULT_CUSTODY_ROOT
+        / contract["custody_path"]
+        / contract["registration_manifest"]
+    )
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["source_commit"] == fz_tool.FZ10_SOURCE_COMMIT
+    assert manifest["registration"] == fz_tool.FZ10_REGISTRATION
+    rendered = fz_tool.render(register, fz_tool.validate(register))
+    assert fz_tool.FZ10_SOURCE_COMMIT in rendered
+    assert fz_tool.FZ10_CUSTODY_COMMIT in rendered
+    assert "FZ-01's kill band names per-target decision policies" in rendered
+    assert "The armed physical population of the ladder is one row, FZ-10." in rendered

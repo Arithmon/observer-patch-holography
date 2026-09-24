@@ -108,6 +108,7 @@ theorem cone_no_sign_fixed_frame :
 #print axioms cone_polynomial_composition
 #print axioms cone_unequal_frequency_overlap_zero
 #print axioms cone_no_sign_fixed_frame
+#print axioms coneMass_symm
 
 end
 

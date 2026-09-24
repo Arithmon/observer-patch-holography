@@ -909,5 +909,36 @@ end PairCut
 #print axioms OPH.Dynamics.exists_minimal_central_resolution_spanning
 #print axioms OPH.Dynamics.minimal_central_resolution_unique
 #print axioms OPH.Dynamics.pairResolutionCutEquiv
+#print axioms OPH.Dynamics.IsCentralIn.mem
+#print axioms OPH.Dynamics.IsCentralIn.commutes
+#print axioms OPH.Dynamics.IsCentralIn.one
+#print axioms OPH.Dynamics.IsCentralIn.zero
+#print axioms OPH.Dynamics.IsCentralIn.add
+#print axioms OPH.Dynamics.IsCentralIn.sub
+#print axioms OPH.Dynamics.IsCentralIn.smul
+#print axioms OPH.Dynamics.IsCentralIn.mul
+#print axioms OPH.Dynamics.IsCentralIn.star
+#print axioms OPH.Dynamics.IsCentralIn.commute
+#print axioms OPH.Dynamics.isCentralProjectionIn_one
+#print axioms OPH.Dynamics.IsCentralProjectionIn.mul
+#print axioms OPH.Dynamics.IsCentralProjectionIn.sub
+#print axioms OPH.Dynamics.mem_centerSubmodule_iff
+#print axioms OPH.Dynamics.mem_centerCorner_iff'
+#print axioms OPH.Dynamics.self_mem_centerCorner
+#print axioms OPH.Dynamics.centerCorner_le
+#print axioms OPH.Dynamics.notMem_centerCorner
+#print axioms OPH.Dynamics.centerCorner_lt
+#print axioms OPH.Dynamics.spectralProjection_mul_of_ne
+#print axioms OPH.Dynamics.isIdempotentElem_spectralProjection
+#print axioms OPH.Dynamics.isSelfAdjoint_spectralProjection
+#print axioms OPH.Dynamics.sum_spectralProjection
+#print axioms OPH.Dynamics.eq_sum_smul_spectralProjection
+#print axioms OPH.Dynamics.spectralProjection_ne_zero
+#print axioms OPH.Dynamics.IsCentralIn.aeval
+#print axioms OPH.Dynamics.isCentralProjectionIn_spectralProjection
+#print axioms OPH.Dynamics.IsCentralIn.mem_span_of_resolution
+#print axioms OPH.Dynamics.isCentralProjectionIn_top_iff
+#print axioms OPH.Dynamics.pair_resolution_eq_one_sub
+#print axioms OPH.Dynamics.pair_resolution_orthogonal
 
 end OPH.Dynamics

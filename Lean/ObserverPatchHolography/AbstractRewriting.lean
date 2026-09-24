@@ -165,3 +165,12 @@ theorem fixedPt_zero_potential
       exact le_antisymm ( le_of_not_gt fun h => hrepair w h hfp ) ( zero_le _ )
 
 end OPH.AbstractRewriting
+
+#print axioms OPH.AbstractRewriting.newman_lemma
+#print axioms OPH.AbstractRewriting.unique_normal_form
+#print axioms OPH.AbstractRewriting.newman_unique_nf
+#print axioms OPH.AbstractRewriting.nf_is_fixedPt
+#print axioms OPH.AbstractRewriting.descent_terminating
+#print axioms OPH.AbstractRewriting.deterministic_locally_confluent
+#print axioms OPH.AbstractRewriting.deterministic_full
+#print axioms OPH.AbstractRewriting.fixedPt_zero_potential

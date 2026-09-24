@@ -223,6 +223,10 @@ theorem cone_same_quantized_energy_with_mass
 #print axioms conePositiveNormalFrameWithMass
 #print axioms cone_same_action_with_mass
 #print axioms cone_same_quantized_energy_with_mass
+#print axioms coneStiffnessWithMass_symm
+#print axioms coneConstraintWithMass_kernel
+#print axioms coneCurl_nonzero_with_mass
+#print axioms coneStiffnessWithMass_preserves_constraint
 
 end
 end OPH.WhitneyConeMass

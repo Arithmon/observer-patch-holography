@@ -755,5 +755,21 @@ end TwoBlockStone
 #print axioms OPH.Dynamics.continuousFlow_fixes_blockProjectionFst
 #print axioms OPH.Dynamics.blockRestrictionFst
 #print axioms OPH.Dynamics.twoBlockStoneConverse_of_continuous
+#print axioms OPH.Dynamics.IsCentralStarProjection.one_sub
+#print axioms OPH.Dynamics.IsCentralStarProjection.mul_cut
+#print axioms OPH.Dynamics.mem_centralCorner_iff
+#print axioms OPH.Dynamics.IsCentralStarProjection.mul_mem_corner
+#print axioms OPH.Dynamics.isCentralStarProjection_blockProjectionFst
+#print axioms OPH.Dynamics.isCentralStarProjection_blockProjectionSnd
+#print axioms OPH.Dynamics.blockProjection_add
+#print axioms OPH.Dynamics.blockProjection_mul
+#print axioms OPH.Dynamics.blockCombination_eq_pair
+#print axioms OPH.Dynamics.blockProjectionFst_ne_zero
+#print axioms OPH.Dynamics.blockProjectionFst_ne_one
+#print axioms OPH.Dynamics.blockProjectionFst_ne_blockProjectionSnd
+#print axioms OPH.Dynamics.apply_fst_pair
+#print axioms OPH.Dynamics.apply_snd_pair
+#print axioms OPH.Dynamics.symm_fixes_blockProjectionFst
+#print axioms OPH.Dynamics.symm_fixes_blockProjectionSnd
 
 end OPH.Dynamics

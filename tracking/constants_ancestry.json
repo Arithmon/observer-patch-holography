@@ -55,7 +55,7 @@
       ],
       "falsifier": {
         "artifact": "docs/POSTDICTION_LEDGER.md",
-        "rule": "The interval-certified enclosures are the kill surface: a failed fixed-point enclosure kills the root, and a source-emitted bridge value outside the recorded same-scheme accounting interval refutes the declared decomposition. PR-37 through PR-39 are registered, but promotion beyond diagnostic also requires their bridge contracts to be inhabited or discharged and the measured-target ancestry to be removed; registration alone never promotes the row."
+        "rule": "The interval-certified enclosures are the kill surface: a failed fixed-point enclosure kills the root, and a source-emitted bridge value outside the recorded same-scheme accounting interval refutes the declared decomposition. PR-37 through PR-39 are registered, but promotion beyond diagnostic also requires their bridge contracts to be inhabited or discharged and the measured-target ancestry to be removed; registration alone never promotes the row. The certified Thomson-endpoint enclosure is a bound kill surface for the endpoint transport as declared: the current certificate records the CODATA witness outside that enclosure, with the hadronic payload required to reach the witness outside the measured payload interval, and that record bars the endpoint row from any status above diagnostic. The endpoint transport falls outright if a same-scheme transport with hadronic vacuum polarization included, computed on the declared maps, also places the witness outside its certified enclosure."
       },
       "diagnostic_import_register_rows": []
     },
@@ -263,7 +263,7 @@
       ],
       "falsifier": {
         "artifact": "docs/POSTDICTION_LEDGER.md",
-        "rule": "The declared boxes are the kill surface for the pole stack: a replay violating a zero-exclusion or pole-box enclosure kills the receipts. The Higgs and top rows die when the measured witness exits the recorded envelope. No physical W or Z pole comparison is defined until a receipt identifies a chart with the physical resonance sheet; the sector stance is owed."
+        "rule": "The declared boxes are the kill surface for the pole stack: a replay violating a zero-exclusion or pole-box enclosure kills the receipts. The Higgs and top rows are compare-only postdictions with a registered fire condition: z is the distance between the recorded central value and the measured central value in units of the measured standard uncertainty, the quantity the postdiction ledger displays for each row, and the recorded envelope is the row's numerical enclosure, not a tolerance. A row dies at z above three, holds COMPATIBLE at z of two or below, and is INCONCLUSIVE with no verdict in between; no z value promotes a row beyond compare-only. No physical W or Z pole comparison is defined until a receipt identifies a chart with the physical resonance sheet; the sector stance is owed."
       },
       "diagnostic_import_register_rows": []
     },

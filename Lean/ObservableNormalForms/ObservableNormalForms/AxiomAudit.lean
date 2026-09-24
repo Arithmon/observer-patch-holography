@@ -233,3 +233,14 @@ open ObservableNormalForms
 #print axioms Examples.AmdA2A5Conditional.a2_pairwise_lt_a5_in_declared_family
 #print axioms Examples.AmdA2A5Conditional.pairwise_does_not_establish_family_minimum
 #print axioms Examples.AmdA2A5Conditional.full_control_activation_satisfiable
+#print axioms repairMargin_pos_of_compact
+#print axioms exact_naturality_from_uniqueness
+#print axioms projective_implementation_bound_from_tower_receipt
+#print axioms Rule90.outer_coordinates_equal
+#print axioms Rule90.mem_range_iff_outer_coordinates_equal
+#print axioms symmetric_two_output_estimate
+#print axioms inverse_bound_of_sensor_enrichment
+#print axioms RankedSynchronousSystem.synchronousEvolve_agrees_through_rank
+#print axioms RankedSynchronousSystem.synchronousStep_fixed
+#print axioms RankedSynchronousSystem.synchronousEvolve_fixed
+#print axioms RankedSynchronousSystem.generatedExtension_unique

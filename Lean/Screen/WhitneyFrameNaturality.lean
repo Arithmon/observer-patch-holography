@@ -598,6 +598,25 @@ theorem quantumHamiltonian_polynomialTransport
 #print axioms weightedNumberOperator_polynomialTransport
 #print axioms frame_frequency_sum_eq
 #print axioms quantumHamiltonian_polynomialTransport
+#print axioms mass_vector_reconstruct
+#print axioms frame_linearIndependent
+#print axioms frameTransition_apply
+#print axioms frameTransition_leftInverse
+#print axioms frameTransition_rightInverse
+#print axioms frameOverlap_frequency_sq
+#print axioms frameOverlap_comp
+#print axioms linearVariable_self
+#print axioms polynomialTransport_linearVariable
+#print axioms weightedNumberOperator_add
+#print axioms weightedNumberOperator_smul
+#print axioms weightedNumberOperator_mul
+#print axioms weightedNumberOperator_X
+#print axioms weightedNumberOperator_zero
+#print axioms weightedNumberOperator_sum
+#print axioms weightedNumberOperator_linearVariable
+#print axioms frameOverlap_column_sq
+#print axioms frameOverlap_row_sq
+#print axioms quantumHamiltonian_eq_weightedNumber
 
 end
 

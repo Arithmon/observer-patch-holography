@@ -465,6 +465,24 @@ example :
 #print axioms settleTail_length
 #print axioms parityBelow_flip
 #print axioms fanoutChainNode_fails_after_lower_repair
+#print axioms parityBelow_congr
+#print axioms fanoutChain_length
+#print axioms fanoutChainNode_mem
+#print axioms fanoutChain_mem_iff
+#print axioms range_pairwise_lt
+#print axioms fanoutChainNode_deps_lt
+#print axioms fanoutChainNode_patch_le
+#print axioms fanoutChainNode_ok_congr
+#print axioms parityBelow_allFalse
+#print axioms fanoutChainNode_fails_allFalse
+#print axioms fanoutChain_settle_valid
+#print axioms canonicalAcceptedSteps_defectRank_budget
+#print axioms fanoutChain_defectRank_allFalse_two
+#print axioms fanoutChain_defectRank_allFalse_three
+#print axioms fanoutChain_defectRank_allFalse_four
+#print axioms settleTail_length_two
+#print axioms settleTail_length_three
+#print axioms settleTail_length_four
 
 end
 

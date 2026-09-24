@@ -72,6 +72,9 @@ theorem countingMassConeFrame_has_thirty_modes :
 #print axioms countingMass₁_pos
 #print axioms countingMass₂_pos
 #print axioms countingMassConeFrame
+#print axioms countingMass₁_symm
+#print axioms countingMass₂_symm
+#print axioms countingMassConeFrame_has_thirty_modes
 
 end
 end OPH.WhitneyMassPremiseInstance

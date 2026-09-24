@@ -34,7 +34,7 @@ The second half of that result is even stranger. Put a detector in the apparatus
 
 The bet was worth making because both positions are unacceptable. If the record is erased, quantum mechanics breaks. If it survives, it has to escape from the one place in the universe that nothing escapes from. Three of the most capable physicists alive spent seven years on which of two impossibilities to prefer. At the end of it one of them changed his mind and one of them did not.
 
-**Gravity puts an area ceiling on what a region can hold.** This last one is arithmetic rather than anecdote. Ask how much information you can pack into a region of space. Storage scales with volume, obviously: a warehouse twice as wide in every direction holds eight times as much. A black-hole horizon behaves differently. Double its radius and its entropy grows by four. Nobody put this in. It falls out of the thermodynamics of black holes, and the same ceiling holds over regions of empty space that contain no black hole at all.
+**Gravity puts an area ceiling on what a region can hold.** This last one is arithmetic rather than anecdote. Ask how much information you can pack into a region of space. Storage scales with volume, obviously: a warehouse twice as wide in every direction holds eight times as much. A black-hole horizon behaves differently. Double its radius and its entropy grows by four. Nobody put this in. It falls out of the thermodynamics of black holes. That the same ceiling holds over regions of empty space that contain no black hole at all is the holographic bound, a conjecture in the literature that this theory takes as its own ceiling; no counterexample to it is known.
 
 ## A universe without a manual
 

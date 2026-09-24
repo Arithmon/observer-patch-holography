@@ -368,3 +368,17 @@ end OPH.Variational
 #print axioms OPH.Variational.chainCurvedVelocitySolver_solves
 #print axioms OPH.Variational.chainCurved_legendreTransform
 #print axioms OPH.Variational.realizedHistory_legendre_nonidentifiability_receipt
+#print axioms OPH.Variational.chainLogLagrangian_affine_fiber
+#print axioms OPH.Variational.chainLogLagrangian_momentum
+#print axioms OPH.Variational.chainLogLagrangian_momentum_iff
+#print axioms OPH.Variational.chainCurvedLagrangian_zero
+#print axioms OPH.Variational.chainCurvedLagrangian_eq
+#print axioms OPH.Variational.chainCurvedLagrangian_corner
+#print axioms OPH.Variational.chainCurvedLagrangian_realized_indistinguishable
+#print axioms OPH.Variational.pathTransitionWeight_chainCurvedLagrangian
+#print axioms OPH.Variational.fin2_curvatureFactor_zero
+#print axioms OPH.Variational.chainEmb_curvatureFactor_zero
+#print axioms OPH.Variational.chainCurvedLagrangian_one_two_midpoint_gap
+#print axioms OPH.Variational.chainCurvedLagrangian_momentum
+#print axioms OPH.Variational.chainCurvedLagrangian_one_ne_two
+#print axioms OPH.Variational.chainCurvedHamiltonian_one_ne_two

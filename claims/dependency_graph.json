@@ -279,7 +279,10 @@
   "OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION",
   "OPH-M1-COHERENT-VELOCITY-SEPARATION",
   "OPH-M1-FINITE-STENCIL-CLOCK-BOUND",
-  "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT"
+  "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
+  "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+  "OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION",
+  "OPH-SM-BARYON-DIMENSION-SIX-CENSUS"
  ],
  "edges": [
   {
@@ -2421,6 +2424,96 @@
    "from": "OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT",
    "to": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
    "role": "Uses the same declared Floquet reference convention and all-species thermal comparison; the tetrahedral polynomial and coercivity are independently derived."
+  },
+  {
+   "from": "OPH-WHITNEY-REAL-CONTINUUM",
+   "to": "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+   "role": "Supplies the controlled real cubic Klein-Gordon continuum limit on the fixed tetrahedral cone that the classification records as a matter construction on a supplied spatial domain; no vacuum, background, or physical preparation is inherited."
+  },
+  {
+   "from": "OPH-WHITNEY-INTERACTING-QUANTUM",
+   "to": "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+   "role": "Supplies the neutral interacting Hilbert space, unique nonnegative self-adjoint Hamiltonian, and Gaussian half-density states that the classification records as states of a finite spatial discretization; no cosmological ground state or continuum quantum field limit is inherited."
+  },
+  {
+   "from": "OPH-WHITNEY-EPHEMERIS-CLOCK",
+   "to": "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+   "role": "Supplies the Jacobi-duration internal model clock on the same autonomous action; observer-selected geometry, physical preparation and units, and an expanding background are outside the inherited content."
+  },
+  {
+   "from": "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT",
+   "to": "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+   "role": "Supplies the original action vacuum of the finite golden-population scalar action with its certified detector error bound, which the classification records as a vacuum of a finite action with population, action, and tick supplied; no reflection-positive Euclidean vacuum or source-instantiated slab triple is inherited."
+  },
+  {
+   "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+   "to": "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+   "role": "Supplies the bounded probability comparison between the split and continuous evolution of the original vacuum with a coherent displacement; no cosmological ground state is inherited."
+  },
+  {
+   "from": "OPH-COSMO-FLRW-RECORD-DENSITY",
+   "to": "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+   "role": "Supplies the record-density expansion history on the sourced causal order as the background on which the vacuum and fluctuation conditions are stated; the classification selects no record-production profile."
+  },
+  {
+   "from": "OPH-COSMO-SCREEN-SPECTRUM",
+   "to": "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+   "role": "Supplies the primordial bridge, physical mode basis, radial-null, positivity, forward-projection, and source-dilation or tomography conditions that the structure-formation requirements name for growth seeds; no source instantiation is inherited."
+  },
+  {
+   "from": "OPH-DE-FIXED-CAPACITY-WLAW",
+   "to": "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+   "role": "Supplies the fixed-capacity dictionary Lambda l_P^2 = 3 pi / N and the w = -1 branch that the companion reports as target-informed diagnostics of a frozen formula; the classification derives no capacity value."
+  },
+  {
+   "from": "OPH-GR-D5",
+   "to": "OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION",
+   "role": "Supplies the conditional Einstein branch whose Lorentzian metric and Friedmann dynamics the transport premises take as supplied geometry; no physical spacetime attachment is inherited."
+  },
+  {
+   "from": "OPH-DE-FIXED-CAPACITY-WLAW",
+   "to": "OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION",
+   "role": "Supplies the capacity closure Lambda l_star^2 = 3 pi / N_star used in the Einstein-branch input with N_star read from measured Lambda; no dark-energy verdict is inherited."
+  },
+  {
+   "from": "OPH-COSMO-SCREEN-SPECTRUM",
+   "to": "OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION",
+   "role": "Supplies the maximum-entropy Gaussian isotropic screen covariance, the conditional tilt, and the radial screen-to-k map whose quantities the reduction converts into transport inputs A_s and n_s; the reduction certifies no initial spectrum."
+  },
+  {
+   "from": "OPH-ALPHA-PIXEL",
+   "to": "OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION",
+   "role": "Supplies the exact root alpha_root of the declared source map used as the U(1) vertex strength; same-scheme transport, target-independent map selection, and the same-quantity bridge are inherited as undischarged conditions."
+  },
+  {
+   "from": "OPH-COSMO-FLRW-RECORD-DENSITY",
+   "to": "OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION",
+   "role": "Supplies the spatially flat expanding history as a record density on the sourced causal order whose count clock the transport background reads; the physical clock calibration is a separate import."
+  },
+  {
+   "from": "OPH-WHITNEY-MAXWELL-DYNAMICS",
+   "to": "OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION",
+   "role": "Supplies the constraint-preserving finite Maxwell evolution on a supplied domain that the free-flow remark sets against the required continuum photon sector; no continuum limit, polarization sector, or record-process lumpability is inherited."
+  },
+  {
+   "from": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
+   "to": "OPH-SM-BARYON-DIMENSION-SIX-CENSUS",
+   "role": "Supplies the pinned one-generation rank-fifteen matter table and its conjugate Weyl fields on which the census is stated; no baryon or lepton label, physical matter lift, or Wilson coefficient is inherited."
+  },
+  {
+   "from": "OPH-GAUGE-D7-D9",
+   "to": "OPH-SM-BARYON-DIMENSION-SIX-CENSUS",
+   "role": "Supplies the axis-centre descent receipt and the diagonal Z6 kernel through which every admitted field descends separately; no global-form selection is inherited."
+  },
+  {
+   "from": "OPH-SM-SIMPLE-GUT-XY-CHANNEL-ABSENCE",
+   "to": "OPH-SM-BARYON-DIMENSION-SIX-CENSUS",
+   "role": "Supplies the product-adjoint exclusion of the simple-GUT X/Y exchange channel whose proton-stability boundary the census makes exact; the census adds the surviving dimension-six operator classes and inherits no lifetime or decay claim."
+  },
+  {
+   "from": "OPH-SM-BARYON-DIMENSION-SIX-CENSUS",
+   "to": "OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION",
+   "role": "Supplies the frozen ten-field Weyl grammar and its left-chirality column that the matter-grammar index dictionary identifies column by column with the selected exterior components; no baryon-violating operator, label, or proton claim is inherited."
   }
  ]
 }

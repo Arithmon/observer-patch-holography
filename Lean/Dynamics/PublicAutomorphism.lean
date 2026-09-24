@@ -272,5 +272,14 @@ end ContinuousPublicStarFlow
 #print axioms OPH.Dynamics.publicStarAutomorphism_is_labelPermutation
 #print axioms OPH.Dynamics.publicStarAutomorphism_labelPermutation_unique
 #print axioms OPH.Dynamics.ContinuousPublicStarFlow.toAut_eq_refl
+#print axioms OPH.Dynamics.starAutomorphism_recordBasis_eq_zero_or_one
+#print axioms OPH.Dynamics.existsUnique_recordBasis_image_eq_one
+#print axioms OPH.Dynamics.publicLabelMap_spec
+#print axioms OPH.Dynamics.eq_publicLabelMap_of_recordBasis_image_eq_one
+#print axioms OPH.Dynamics.starAutomorphism_recordBasis_apply
+#print axioms OPH.Dynamics.starAutomorphism_apply_eq
+#print axioms OPH.Dynamics.publicLabelMap_injective
+#print axioms OPH.Dynamics.ContinuousPublicStarFlow.publicLabelMap_isLocallyConstant
+#print axioms OPH.Dynamics.ContinuousPublicStarFlow.publicLabelMap_eq
 
 end OPH.Dynamics

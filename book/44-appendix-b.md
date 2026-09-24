@@ -20,7 +20,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Bit.** The answer to one well-chosen yes-or-no question, and the unit anything measured in questions is counted in. Erasing one releases heat, and how much depends on nothing about the device, only on the temperature around it.
 
-**Carrier.** The finite wiring underneath everything: twelve ports at the corners of a twenty-sided solid, thirty seams joining them, twenty triangular faces. The structural numbers of the physics are read off that arrangement.
+**Carrier.** The finite wiring of the model: twelve ports at the corners of a twenty-sided solid, thirty seams joining them, twenty triangular faces. The structural numbers of the physics are read off that arrangement.
 
 **Causal diamond.** Everything after one event and before another: two cones joined at the rim. In the supplied refining record model, weighted counts approach coordinate volume for timelike diamonds contained in the sampled region. Fourth roots of suitable count ratios approach relative model durations. Extra relay operations are excluded from those counts; physical volume and clock calibration require separate identification.
 
@@ -38,7 +38,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Commensurability.** Whether two observers' readings answer each other at all. The rule saying which of your readings answers which of mine sits on the seam between us.
 
-**Commit.** The write that closes a disagreement: the seam ends up satisfied, the total across it unchanged, and the record of which way the disagreement ran gone. Everything anybody calls the passing of time is made of these.
+**Commit.** The write that closes a disagreement: the seam ends up satisfied, the total across it unchanged, and the record of which way the disagreement ran gone. In the model, the passing of time is made of these.
 
 **Commutator.** What you get by doing two operations in both orders and subtracting. Zero means the two questions can be answered together, and anything else is the amount by which they cannot.
 
@@ -162,13 +162,13 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Quotient.** Sweeping up everything that counts as the same into one bundle and working with the bundles. The twelve hours on a clock face are the whole numbers with twelve counting as nothing.
 
-**Rank.** How many rows of a table of numbers are independent of the rest. Space has three directions because the slowest-fading band of comparisons has rank three. Light has two polarizations because the directions perpendicular to its travel make a plane.
+**Rank.** How many rows of a table of numbers are independent of the rest. In the model, space has three directions because the slowest-fading band of comparisons has rank three. Light has two polarizations because the directions perpendicular to its travel make a plane.
 
 **Record.** A write into the protected part of a patch's state, the part later moves may not touch. It reads the same twice, it can be copied to a neighbor, and everything an observer holds onto is made of them.
 
 **Record map.** Takes the full state of a network and hands back the part that survives comparison: every seam entry, and nothing that only one observer could ever have known. What it deletes is exactly what no two parties were in a position to check against each other.
 
-**Refinement.** Describing something at ever finer resolution with no completed infinite object at the end, the way 3, 3.1, 3.14 describes pi and nobody ever holds pi. Space looks smooth for that reason. The smooth version is a limit nobody occupies.
+**Refinement.** Describing something at ever finer resolution with no completed infinite object at the end, the way 3, 3.1, 3.14 describes pi and nobody ever holds pi. The model's space looks smooth for that reason. The smooth version is a limit nobody occupies.
 
 **Relative entropy.** How many extra questions per state your description costs against the settled one. Zero when the two match, positive when they do not, and nothing done to both of them afterwards pushes it back up.
 

@@ -288,6 +288,8 @@ theorem polynomialMap_trans
 #print axioms transition_trans
 #print axioms polynomialMap_refl
 #print axioms polynomialMap_trans
+#print axioms reconstruct_mapFrame
+#print axioms transition_apply
 
 end FrameIsometry
 

@@ -206,5 +206,15 @@ theorem simultaneous_relabel_invariance_does_not_force_uniform :
 #print axioms unique_invariant_reference
 #print axioms biasedKernel_not_invariant
 #print axioms simultaneous_relabel_invariance_does_not_force_uniform
+#print axioms row_const_of_relabel_invariant
+#print axioms row_const_iff_uniform
+#print axioms stepUniformRef_is_normal_form
+#print axioms biasedKernel_row_stochastic
+#print axioms biasedKernel_pos
+#print axioms biasedKernel_not_uniform
+#print axioms stayBiasedKernel_row_stochastic
+#print axioms stayBiasedKernel_pos
+#print axioms stayBiasedKernel_simultaneous_invariant
+#print axioms stayBiasedKernel_not_uniform
 
 end OPH.InformationProjection.ReferenceNormalForm

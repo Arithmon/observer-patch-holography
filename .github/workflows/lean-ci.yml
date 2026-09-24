@@ -325,6 +325,54 @@ jobs:
             exit 1
           fi
 
+      - name: Replay companion axiom audits
+        working-directory: Lean
+        # Every companion audit module in the always-built target list above
+        # is elaborated again here. A warm cached build skips an unchanged
+        # module, so its audit_* receipts would otherwise be absent from
+        # lake-build.log; the imports are cached, so only the audit files
+        # themselves elaborate. The Einstein-branch audit and the FZ-11
+        # primitive-port audit have their own replay steps.
+        run: |
+          set -euo pipefail
+          audits=(
+            Geometry/M1InterfacesAxiomAudit.lean
+            Geometry/M1NecessityAxiomAudit.lean
+            Geometry/M1QuantumTransportAxiomAudit.lean
+            Geometry/M1VacuumFidelityAxiomAudit.lean
+            Geometry/RecordGluingPrincipleAxiomAudit.lean
+            Geometry/SourceAccumulatorAxiomAudit.lean
+            Geometry/SourceCheckpointAxiomAudit.lean
+            Geometry/SourceCountLimitAxiomAudit.lean
+            Geometry/SourceEncodedMemoryAxiomAudit.lean
+            Geometry/SourceNativeProgramsAxiomAudit.lean
+            Geometry/SourceNativeUpdatesAxiomAudit.lean
+            Geometry/SourceOperationReadsAxiomAudit.lean
+            Geometry/SourcePassiveMemoryAxiomAudit.lean
+            Geometry/SourcePublicationAxiomAudit.lean
+            Geometry/SourceReadAcceptanceAxiomAudit.lean
+            Geometry/SourceReadSelectionAxiomAudit.lean
+            Geometry/SourceRecordGluingAxiomAudit.lean
+            Geometry/SourceReusableBusAxiomAudit.lean
+            Geometry/SourceRoutingRefinementAxiomAudit.lean
+            Geometry/SourceSelectionLocalityAxiomAudit.lean
+            Geometry/SourceTemporalAcceptanceAxiomAudit.lean
+          )
+          : > companion-audit.log
+          for audit in "${audits[@]}"; do
+            echo "Replaying companion axiom audit: $audit"
+            lake env lean "$audit" 2>&1 | tee -a companion-audit.log
+          done
+          if grep -F 'sorryAx' companion-audit.log; then
+            echo "Unexpected sorryAx in a companion axiom audit." >&2
+            exit 1
+          fi
+          receipts="$(grep -c 'depends on axioms' companion-audit.log || true)"
+          if [ "$receipts" -lt "${#audits[@]}" ]; then
+            echo "Companion axiom audits printed $receipts receipt(s) for ${#audits[@]} audit modules." >&2
+            exit 1
+          fi
+
       - name: Check native_decide trust inventory
         run: python3 tools/check_lean_native_decide_inventory.py
 

@@ -72,6 +72,10 @@ FZ11_RECEIPT_PATH = ROOT / FZ11_RECEIPT_REL
 FZ11_LEAN_REL = "Lean/Screen/A5PrimitivePortPrediction.lean"
 FZ11_SOURCE_COMMIT = "66176656dc1143f9ec50ba1a6e409c403545857f"
 FZ11_CUSTODY_COMMIT = "97202365784ad5bfc96c482b95b429c396afb5bf"
+FZ10_SOURCE_COMMIT = "bbc2cebedf190af351fba1eb6c8887fb340eb6bb"
+FZ10_CUSTODY_COMMIT = "df097d8fe7c38d008a1ba7827f7d573286ae2012"
+FZ10_REGISTRATION = "FZ-10 Koide conditional tau window"
+FZ10_CUSTODY_COMMIT_UTC = "2026-07-28T09:01:08Z"
 FZ11_LEAN_REPAIR_SOURCE_COMMIT = "05771b773ffaef4be10ae67a72e51cc17e3a38fb"
 FZ11_LEAN_REPAIR_CUSTODY_COMMIT = "c35679ab93e4c121fd2d0d51d6e253f9c5bc6257"
 FZ11_DECISION_RULE_CUSTODY_COMMIT = "8cc5261653e37cbca0e6017fcc95a9fe7f649963"
@@ -2243,6 +2247,12 @@ def verify_external_custody(
             fail(
                 f"{contract_id} registration manifest differs from the in-repo contract"
             )
+        if contract_id == "FZ-10":
+            if (
+                manifest.get("registration") != FZ10_REGISTRATION
+                or manifest.get("source_commit") != FZ10_SOURCE_COMMIT
+            ):
+                fail("FZ-10 registration manifest bindings drifted")
         if contract_id == "FZ-11":
             if set(manifest) != {
                 "registration",
@@ -3112,6 +3122,54 @@ def render(register: dict, rows: list[dict]) -> str:
         "block hash metadata. Its append-only scientific erratum marks the"
         " unsupported level-six/level-three frame-lock clause ineligible"
         " pending issue #643. Neither erratum modifies any stamped artifact."
+    )
+    lines.append("")
+    lines.append(
+        "FZ-10 is bound to source commit"
+        f" `{FZ10_SOURCE_COMMIT}`, the commit its vendored registration"
+        " manifest names for the byte copy of the producing artifact, and to"
+        f" original custody commit `{FZ10_CUSTODY_COMMIT}` at"
+        f" `{FZ10_CUSTODY_COMMIT_UTC}`; the row's frozen time is the payload"
+        " generation time recorded in the frozen target statement. The custody"
+        " verifier checks the vendored manifest against that source commit."
+    )
+    lines.append("")
+    lines.append(
+        "FZ-01's kill band names per-target decision policies. The four policies"
+        " are vendored with their registration manifest and OpenTimestamps proofs"
+        " under `evidence/custody/falsification/frozen_targets/fz01_2026-07-17/`,"
+        " and their numeric thresholds are these. Capacity band: N in"
+        " [3.30836, 3.31137] x 10^122, equivalently Lambda l_P^2 in"
+        " [2.84618, 2.84878] x 10^-122, scored in ln N against the band edges on"
+        " the frozen Planck 2018 TT,TE,EE+lowE+lensing Omega_Lambda h^2 posterior;"
+        " the band dies at z > 3 once the posterior width reaches"
+        " sigma_lnN <= 0.01, and the uncorrected bridge value 3.532131543 x 10^122"
+        " is carried as the null alternative. Scalar tilt: the two candidates"
+        " n_s = 1 - P/48 = 0.9660214956 and n_s = 1 - e alpha sqrt(pi) ="
+        " 0.96484114303 (menu size two) are scored per candidate with"
+        " z = |n_s_post - n_s_candidate| / sigma_post, COMPATIBLE at z <= 2, FAIL"
+        " at z > 3, INCONCLUSIVE between, in the frozen scorer order ACT DR6 with"
+        " Planck, SPT-3G with Planck, CMB-S4; the lane fails when both candidates"
+        " fail under one scorer. Acceleration scale: the presence reading"
+        " 1.184737388 x 10^-10 m s^-2 (lambda_c = 1 - P/24) and the Poisson"
+        " reading 1.179018696 x 10^-10 m s^-2 (lambda_c = exp(-P/24)) are scored"
+        " per reading with the same z thresholds against a held-out sub-percent"
+        " a_0 determination, SPARC and SPARC-derived recalibrations being"
+        " ineligible; the branch fails when both readings fail under one scorer."
+        " Dark-energy w-law: the point (w_0, w_a) = (-1, 0) on the frozen"
+        " DESI DR3 + CMB + SNe posterior kills the fixed-N lane when it is"
+        " excluded at more than 3 sigma with a thawing posterior mean, kills the"
+        " fixed-capacity branch outright when evolving w is confirmed at more"
+        " than 5 sigma, passes inside the 1 sigma region, and carries no verdict"
+        " between 1 and 3 sigma. No FZ-01 verdict is registered at current"
+        " precision."
+    )
+    lines.append("")
+    lines.append(
+        "The armed physical population of the ladder is one row, FZ-10. FZ-11 and"
+        " FZ-12 carry exact five-sigma kill bands and an unarmed, ineligible"
+        " physical comparison: they are frozen predictions whose arming requires"
+        " the source-derived attachments their comparison protocols name."
     )
     lines.append("")
     lines.append(

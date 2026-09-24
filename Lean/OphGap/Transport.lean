@@ -610,3 +610,41 @@ theorem triBadPerm_refused :
   decide
 
 end GapScout
+
+#print axioms GapScout.labelled_spec
+#print axioms GapScout.nodesOk_spec
+#print axioms GapScout.endpointsOk_spec
+#print axioms GapScout.sortedOk_tail
+#print axioms GapScout.sortedOk_pairwise
+#print axioms GapScout.sortedOk_nodup
+#print axioms GapScout.edgesTOk_spec
+#print axioms GapScout.permOk_spec
+#print axioms GapScout.edgesTOk_append
+#print axioms GapScout.permOk_append
+#print axioms GapScout.edgesTOk_split
+#print axioms GapScout.permOk_split
+#print axioms GapScout.nodesOk_split
+#print axioms GapScout.endpointsOk_split
+#print axioms GapScout.transportCheck_false_of_len
+#print axioms GapScout.transportCheck_false_of_nodes
+#print axioms GapScout.transportCheck_false_of_perm
+#print axioms GapScout.mem_of_labelled
+#print axioms GapScout.orig_loop_free
+#print axioms GapScout.term_canon
+#print axioms GapScout.sum_map_eq_sum_fin
+#print axioms GapScout.origD_injective
+#print axioms GapScout.origGram_posDef_of_transport
+#print axioms GapScout.transportCheck_spec
+#print axioms GapScout.index_equiv_of_check
+#print axioms GapScout.endpointsIn_of_check
+#print axioms GapScout.hinj_of_check
+#print axioms GapScout.origGram_posDef_of_transportCheck
+#print axioms GapScout.origEigenvaluesPos_of_transportCheck
+#print axioms GapScout.origKernelTrivial_of_transportCheck
+#print axioms GapScout.triPend_check
+#print axioms GapScout.sqRelabBij_refused
+#print axioms GapScout.sqRelabCollapse_refused
+#print axioms GapScout.tri_check
+#print axioms GapScout.sqToTri_refused
+#print axioms GapScout.triPerm_accepted
+#print axioms GapScout.triBadPerm_refused

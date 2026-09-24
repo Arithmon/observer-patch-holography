@@ -46,16 +46,24 @@ measurement convention can absorb the result.
 
 ## Mature Physical Branch Falsifiers
 
-| Claim surface | Result that falsifies the claim | Scope |
-| --- | --- | --- |
-| Charge lattice | A confirmed elementary state on the realized low-energy branch has electric or hypercharge quantum numbers outside the derived quotient lattice. | The realized charge-quantization branch falls. |
-| Color count | A confirmed light Standard Model color carrier requires a fundamental color multiplicity other than three on the claimed realized branch. | The realized $N_c=3$ branch falls. |
-| Chiral generation count | A confirmed fourth light chiral Standard Model generation satisfies the same low-energy branch conditions. | The declared three-generation completion falls. |
-| One-Higgs declared completion | The observed low-energy branch requires an additional elementary Higgs multiplet while satisfying the same declared-branch premises. | The declared one-Higgs completion falls. |
-| Conditional faithful matter image | Under the declared matrix-current fixture, conjugate rank-15 matter-projector contract, anomaly-derived determinant balance, and realized-tensor kernel, the common kernel is not $\mathbb Z_6$ or the maximal faithful image is not $(SU(3)\times SU(2)\times U(1))/\mathbb Z_6$. | The conditional finite matter-image theorem falls. No physical matter-content or global-form selection rule enters this implication; both have separate open gates. |
+| Claim surface | Result that falsifies the claim | Scope | Registry claim rows |
+| --- | --- | --- | --- |
+| Charge lattice | A confirmed elementary state on the realized low-energy branch has electric or hypercharge quantum numbers outside the derived quotient lattice. | The realized charge-quantization branch falls. | `OPH-GAUGE-EXTERIOR-SM-WITNESS`, `OPH-SCREEN-GLOBAL-FORM-CHARACTER-DESCENT` |
+| Color count | A confirmed light Standard Model color carrier requires a fundamental color multiplicity other than three on the claimed realized branch. | The realized $N_c=3$ branch falls. | `OPH-SCREEN-A5-SM-RECOGNITION` |
+| Chiral generation count | A confirmed fourth light chiral Standard Model generation satisfies the same low-energy branch conditions. | The declared three-generation completion falls. | `OPH-SCREEN-A5-SM-RECOGNITION`, `OPH-QUARK-YUKAWA-TWO-MODULUS-NONIDENTIFIABILITY` |
+| One-Higgs declared completion | The observed low-energy branch requires an additional elementary Higgs multiplet while satisfying the same declared-branch premises. | The declared one-Higgs completion falls. | `OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION`, `OPH-GAUGE-EXTERIOR-SM-WITNESS` |
+| Conditional faithful matter image | Under the declared matrix-current fixture, conjugate rank-15 matter-projector contract, anomaly-derived determinant balance, and realized-tensor kernel, the common kernel is not $\mathbb Z_6$ or the maximal faithful image is not $(SU(3)\times SU(2)\times U(1))/\mathbb Z_6$. | The conditional finite matter-image theorem falls. No physical matter-content or global-form selection rule enters this implication; both have separate open gates. | `OPH-GAUGE-D7-D9`, `OPH-SCREEN-A5-SM-RECOGNITION` |
 
 These physical rows test the named realized branch. They do not erase finite
 consensus, normal-form, or unrelated recovery theorems.
+
+The registry claim rows column names the rows of
+[`claims/claim_registry.yaml`](../claims/claim_registry.yaml) whose `falsifier`
+field carries each kill rule. For the four physical rows the same rule is one
+phenomenological row per binding in
+[`claims/falsification_matrix.csv`](../claims/falsification_matrix.csv); the
+conditional matter-image row is carried by the mathematical column of its bound
+rows.
 
 ## Ineligible Surfaces
 

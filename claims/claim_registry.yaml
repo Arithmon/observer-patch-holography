@@ -3422,7 +3422,7 @@
         "code/particles/flavor/derive_quark_spread_fiber_structure_transport_obstruction.py",
         "code/particles/runs/flavor/quark_spread_fiber_structure_transport_obstruction.json"
       ],
-      "falsifier": "Inside the declared scope, a listed structural invariant changes under centered-spread rescaling, the rescaled packages fail an explicitly stated current antecedent, physical equivalence does not distinguish their changed singular values, the restricted shape-law fiber is not the stated free (R_{>0})^2 orbit, or a typed constraint, dynamics, action, or output map included in the registered antecedents separates or excludes every member. A future completion using another carrier, representation, dynamics, or new justified premise lies outside rather than falsifies the current-signature conclusion unless it belongs to those antecedents.",
+      "falsifier": "Inside the declared scope, a listed structural invariant changes under centered-spread rescaling, the rescaled packages fail an explicitly stated current antecedent, physical equivalence does not distinguish their changed singular values, the restricted shape-law fiber is not the stated free (R_{>0})^2 orbit, or a typed constraint, dynamics, action, or output map included in the registered antecedents separates or excludes every member. A future completion using another carrier, representation, dynamics, or new justified premise lies outside rather than falsifies the current-signature conclusion unless it belongs to those antecedents. A confirmed fourth light chiral Standard Model generation satisfies the same low-energy branch conditions; that result is a physical kill of the realized branch carrying the three-generation package and leaves the finite counterfamily theorem standing.",
       "scope_if_false": "Only this current-registered-signature counterfamily or its separately granted restricted shape-fiber clause is retracted. The gauge and matter reconstruction, other flavor representations, source dynamics, orbit selectors, and stronger completions remain separately assessable.",
       "status": "conditional_current_signature_counterfamily_closed__restricted_shape_fiber_exact__candidate_shape_law_unproved_and_rejected__generic_six_scalar_selector_open",
       "claim_class": "conditional_implication",
@@ -3622,7 +3622,7 @@
         "Lean/Screen/A5FamilyBand.lean",
         "code/a5_closure/manifests/matter_attachment_receipt.json"
       ],
-      "falsifier": "The A5 module, compact-Lie trichotomy, inner-action or noncentrality selection, trace-balanced cover, exterior witness, exact band order, rank-three selection, conditional rank-45 tensor arithmetic, anomaly cancellation, chirality grading, diagonal Z6 action, declared local tensor-extension identity, or conditional inherited gap fails under its stated premises, or a promoted physical conclusion omits its current, source-selection, cross-domain transport, matter-pole, continuum, persistence, or laboratory receipt.",
+      "falsifier": "The A5 module, compact-Lie trichotomy, inner-action or noncentrality selection, trace-balanced cover, exterior witness, exact band order, rank-three selection, conditional rank-45 tensor arithmetic, anomaly cancellation, chirality grading, diagonal Z6 action, declared local tensor-extension identity, or conditional inherited gap fails under its stated premises, or a promoted physical conclusion omits its current, source-selection, cross-domain transport, matter-pole, continuum, persistence, or laboratory receipt. A confirmed light Standard Model color carrier requires a fundamental color multiplicity other than three on the claimed realized branch; that result is a physical kill of the realized N_c = 3 branch and leaves the finite theorem standing. A confirmed fourth light chiral Standard Model generation satisfies the same low-energy branch conditions; that result is a physical kill of the declared three-generation table behind the conditional rank-45 family layer on the realized branch and leaves the finite theorem standing.",
       "scope_if_false": "The affected A1/A2 Lie-type theorem or the named conditional source, matter, global-form, and family layer falls. The independent D7-D9 categorical route and unrelated consensus or gravity branches are separately assessable.",
       "status": "axiom_forced_standard_model_lie_type__conditional_matrix_matter_z6_and_rank45_witnesses__source_and_physical_attachments_open",
       "claim_class": "conditional_implication",
@@ -3770,7 +3770,7 @@
         "code/a5_closure/test_audit.py",
         "Lean/Screen/WeylYukawaConventions.lean"
       ],
-      "falsifier": "The exterior decomposition, any displayed hypercharge sum, any listed anomaly coefficient, any one-Higgs singlet multiplicity, or the weak-doublet count differs from the certificate under the stated carrier assumptions.",
+      "falsifier": "The exterior decomposition, any displayed hypercharge sum, any listed anomaly coefficient, any one-Higgs singlet multiplicity, or the weak-doublet count differs from the certificate under the stated carrier assumptions. A confirmed elementary state on the realized low-energy branch has electric or hypercharge quantum numbers outside the derived quotient lattice; that result is a physical kill of the realized charge-quantization branch and leaves the finite certificate theorem standing. The observed low-energy branch requires an additional elementary Higgs multiplet while satisfying the same declared-branch premises; that result is a physical kill of the declared one-Higgs completion on the realized branch and leaves the finite certificate theorem standing.",
       "scope_if_false": "The exterior representation route falls. The abstract A5 coefficient bracket and unrelated consensus or gravity branches survive.",
       "status": "proved_conditional_representation_witness",
       "claim_class": "conditional_implication",
@@ -5409,7 +5409,7 @@
         "Lean/Screen/ElectroweakBreakingComposition.lean",
         "docs/PREMISE_REGISTER_V3.md"
       ],
-      "falsifier": "The claim fails if any bundle instance violates the minimizer characterization, if the stabilizer differs from the single (gY, gW) line, if the second-variation kernel differs from the gauge-image set or from three parameters, if the ray expansion misses the stated exact coefficients, if the broken-direction mass values or their ratio differ from the stated declared-constant forms, if the Yukawa coefficient at the minimum differs from yuk*vev or its vanishing law fails, or if a committed parity sector fails the doublet/singlet charge-balance receipt.",
+      "falsifier": "The claim fails if any bundle instance violates the minimizer characterization, if the stabilizer differs from the single (gY, gW) line, if the second-variation kernel differs from the gauge-image set or from three parameters, if the ray expansion misses the stated exact coefficients, if the broken-direction mass values or their ratio differ from the stated declared-constant forms, if the Yukawa coefficient at the minimum differs from yuk*vev or its vanishing law fails, or if a committed parity sector fails the doublet/singlet charge-balance receipt. The observed low-energy branch requires an additional elementary Higgs multiplet while satisfying the same declared-branch premises; that result is a physical kill of the declared one-Higgs completion on the realized branch and leaves the finite composition theorem standing.",
       "scope_if_false": "Only the composed electroweak-breaking inhabitant falls. The gauge-structure composition, the exterior selection, the index dictionary, and every physical Higgs, mass, or action claim are assessed by their own claims and premises.",
       "status": "conditional_structural_composition_attained__physical_scalar_action_and_yukawa_matrices_open",
       "claim_class": "conditional_implication",
@@ -5714,7 +5714,7 @@
         "Lean/Screen/TraceBalancedKernel.lean",
         "Lean/Screen/SMStructureAdequacySurface.lean"
       ],
-      "falsifier": "The claim fails if some label satisfying the congruence is moved by a kernel element, some label violating it is fixed by every kernel element, some committed table row violates the congruence, the control label descends, the descending count differs from six among thirty-six or some character fibre from six, or some bundled-mask component fails the congruence.",
+      "falsifier": "The claim fails if some label satisfying the congruence is moved by a kernel element, some label violating it is fixed by every kernel element, some committed table row violates the congruence, the control label descends, the descending count differs from six among thirty-six or some character fibre from six, or some bundled-mask component fails the congruence. A confirmed elementary state on the realized low-energy branch has electric or hypercharge quantum numbers outside the derived quotient lattice; that result is a physical kill of the realized charge-quantization branch and leaves the finite character-descent theorem standing.",
       "scope_if_false": "Only the finite character-descent bookkeeping falls. The Z6 kernel receipts, the exterior selection scan, the four-quotient menu, and the registered rows PR-35, PR-46, and PR-59 are assessed by their own claims and premises.",
       "status": "exact_character_descent_attained__physical_global_form_selection_open",
       "claim_class": "conditional_implication",
@@ -12304,6 +12304,142 @@
         "open": [],
         "boundary": [],
         "rationale": "The tetrahedral directions are forced by optimality within the declared quantum flight class and are realized by an explicit four-channel coin. This proves a minimal mathematical process and its complete quasienergy accounting, without identifying the channels with central ports, deriving a physical observer population or admitting the process from A1--A3."
+      }
+    },
+    {
+      "claim_id": "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+      "statement": "On one finite regulator the physical quotient Q_r = Sigma_r/Gamma_r removes presentation data and the normal-form map n_r is a retraction, so the induced map on laws is idempotent and fixes every law supported on the normal-form set: settlement selects no physical probability law, and a finite candidate set inside the normal-form set is determined by normal-form data while no member of it is chosen. An OPH quotient ensemble is a declared quotient-intrinsic base weight m_r and action S_r with law proportional to m_r exp(-S_r); the finite MaxEnt ensemble with named quotient observables has the exponential-family form; exact refinement compatibility of weighted ensembles is equivalent to the fiber-sum identity with a constant factor, and one-step total-variation defects add along the tower. A physical-vacuum interpretation is conditional on source Euclidean slab data (Q_r, m_r^0, J_r, V_r, a_{t,r}) whose symmetric nonnegative conductance, local potential, and slab thickness are derived without the target law or sampler output: on a connected event graph the finite Euclidean Hamiltonian is self-adjoint and bounded below, its Feynman-Kac semigroup is positivity improving, Perron-Frobenius gives a unique positive normalized ground state and the finite vacuum law, and the Doob kernel of the transfer operator is stochastic and detailed-balanced with that law; a continuum interpretation additionally requires reflection positivity or an equivalent reconstruction and refinement compatibility of the transfer family. A simulated field is classified as seed noise, repair jitter, or a conventional reference ensemble unless these finite quotient ensemble conditions hold, and the finite-patch calculation reports separately a tracially pointed quotient, a source-derived Euclidean slab, transfer stability under refinement, schedule invariance of the stationary law, and pathwise invariance under partition changes; a failed condition excludes the physical vacuum classification. The cosmological source construction supplies none of J_r, V_r, and a_{t,r}; a source-instantiated reflection-positive vacuum on the cosmological branch, the bridge from a source-derived vacuum to primordial growth seeds without microwave-background or large-scale-structure data, and physical proto-object worldlines are unsupplied. The Whitney and golden-population matter and state constructions are states of finite discretizations with population, action, and tick supplied, with no expanding background and no cosmological ground state, and a cosmological vacuum additionally requires observer-selected geometry, physical clock calibration, and a compatible expanding background.",
+      "owner_paper": "cosmology/oph_cosmological_vacuum_and_structure_formation.tex",
+      "tier": "conditional_finite_quotient_ensemble_vacuum_classification",
+      "assumptions": [
+        "physical_quotient_and_public_normal_form",
+        "declared_quotient_intrinsic_base_weight_and_action",
+        "source_euclidean_slab_data_derived_without_target_law",
+        "reflection_positive_reconstruction_and_transfer_refinement_compatibility",
+        "supplied_comoving_record_production_profile"
+      ],
+      "imported_results": [
+        "Perron_Frobenius_ground_state_of_positivity_improving_semigroups",
+        "finite_Feynman_Kac_semigroup",
+        "maximum_entropy_exponential_family_solution",
+        "total_variation_triangle_inequality_along_refinement",
+        "Metropolis_Hastings_detailed_balance"
+      ],
+      "oph_specific_delta": "Separates the quotient-visible normal form from a probability law on the finite physical quotient, classifies every simulated field by the presence of a declared quotient-intrinsic action, a source-derived Euclidean slab, and refinement-compatible transfer, and fixes the five separately reported acceptance conditions that a finite-patch vacuum classification has to pass; the classification derives no source law, vacuum, or primordial seed.",
+      "novelty_type": "finite_quotient_ensemble_vacuum_classification_boundary",
+      "evidence": [
+        "cosmology/oph_cosmological_vacuum_and_structure_formation.tex",
+        "paper/tex_fragments/FINITE_QUOTIENT_ENSEMBLE_THEOREMS.tex",
+        "paper/tex_fragments/WHITNEY_REAL_CONTINUUM.tex",
+        "paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex",
+        "paper/tex_fragments/WHITNEY_EPHEMERIS_CLOCK.tex"
+      ],
+      "falsifier": "A retraction onto the normal-form set induces a non-idempotent map on laws or moves a law supported on that set; the fiber-sum identity holds while the pushforward of the fine ensemble differs from the coarse ensemble; a connected source Euclidean slab with symmetric nonnegative conductance yields a Euclidean Hamiltonian that is unbounded below, a semigroup that fails positivity improvement, a ground state that is non-unique or non-positive, or a Doob kernel that fails stochasticity or detailed balance with the vacuum law; or a field failing one of the five acceptance conditions is presented as an OPH physical vacuum.",
+      "scope_if_false": "Only the finite quotient ensemble vacuum classification and its acceptance conditions fall; the Whitney and golden-population matter and state theorems, the record-density expansion dictionary, and the screen-spectrum branch keep their separate scope.",
+      "status": "finite_quotient_ensemble_vacuum_classification_stated__source_euclidean_slab_reflection_positive_vacuum_and_primordial_bridge_unsupplied",
+      "claim_class": "conditional_implication",
+      "proof_medium": "paper_prose",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [],
+        "open": [
+          "PR-15",
+          "PR-52"
+        ],
+        "boundary": []
+      }
+    },
+    {
+      "claim_id": "OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION",
+      "statement": "On a branch whose premises are supplied and none derived, standard general-relativistic photon-baryon Boltzmann transport follows. The supplied premises are: a Lorentzian metric obeying the Einstein equation with G_geom = l_star^2 and Lambda l_star^2 = 3 pi / N_star, N_star read from measured Lambda through a declared capacity-to-scale bridge, whose homogeneous limit is spatially flat Friedmann in conformal Newtonian gauge; photon refinement convergence, meaning quotient lumpability, tightness, convergent initial laws and first conditional moments, vanishing scaled second conditional moments, uniform generator convergence on a frozen test basis to the null-geodesic Hamiltonian field, unique characteristics, and vanishing schedule, refinement, boundary, mass-shell, and measure defects; an electromagnetic U(1) vertex of strength alpha_root together with a positive-energy photon quantization with two transverse states and a positive-residue pole at k^2 = 0; the standard polarized Thomson collision matrix on Stokes brightness; the absolute electron mass as a declared import; and a recombination history from imported atomic data. Under these premises the between-commit record flow satisfies the Liouville equation along null geodesics with collisions supported on record commits, the low-occupancy commit-collision functional is the Thomson functional with sigma_T = (8 pi / 3) alpha^2 / m_e^2 and equal and opposite momentum transfer to the electron-baryon fluid, and the transport reduces to the linear multipole hierarchy, the acoustic and diffusion approximations, and the line-of-sight transfer formula in a common brightness convention; the declared repair-exchange channel Gamma_rec enters the collision term additively and the collar-packet stress rho_A, B_A enters the gravitational source side only, and setting both to zero recovers standard transport. The reduction certifies no initial spectrum, absolute Thomson normalization, recombination history, or likelihood statement; it consumes A_s and n_s as gated inputs whose Gaussian statistically isotropic character is the maximum-entropy screen-covariance theorem; and it reads no Planck data. A physical microwave-background prediction requires a source-level polarized collision bridge, blackbody and thermalization provenance, photon refinement convergence, the numerical transfer test, a physical radial lift, a finite primordial source, active-kernel evidence, and an immutable likelihood contract.",
+      "owner_paper": "cosmology/oph_boltzmann_transport_derivation.tex",
+      "tier": "theorem_conditional_reduction_with_supplied_branch_inputs",
+      "assumptions": [
+        "supplied_einstein_branch_geometry_and_flat_friedmann_background",
+        "de_sitter_capacity_relation_and_constant_lP",
+        "photon_refinement_convergence_condition",
+        "supplied_electromagnetic_vertex_and_photon_pole",
+        "imported_polarized_thomson_collision_matrix",
+        "declared_electron_mass_import",
+        "imported_recombination_history",
+        "gated_initial_spectrum_amplitude_and_tilt_inputs"
+      ],
+      "imported_results": [
+        "Ma_Bertschinger_conformal_Newtonian_gauge_perturbation_equations",
+        "classical_Thomson_cross_section_from_the_soft_QED_vertex",
+        "Wigner_measure_transport_for_the_massless_wave_equation",
+        "martingale_characterization_of_Markov_generator_limits",
+        "Saha_Peebles_recombination_atomic_physics"
+      ],
+      "oph_specific_delta": "Places standard photon-baryon transport on an observer-patch branch as a theorem-conditional reduction with every premise declared as supplied: the record density between commits is Liouville-transported along the null geodesics of the supplied geometry, collisions live on record commits with the recovered vertex, and two declared OPH channels, a number-changing repair-exchange source and a collar-packet stress, are the only linear-order departures from the standard system.",
+      "novelty_type": "theorem_conditional_transport_reduction_with_declared_imports",
+      "evidence": [
+        "cosmology/oph_boltzmann_transport_derivation.tex",
+        "paper/tex_fragments/SCREEN_SPECTRUM_THEOREMS.tex",
+        "paper/tex_fragments/RADIAL_LIFT_THEOREMS_330.tex"
+      ],
+      "falsifier": "A branch satisfying every supplied premise fails the Liouville transport along null geodesics with commit-supported collisions, the low-occupancy commit-collision functional differs from the Thomson functional with the displayed cross-section, the multipole hierarchy, acoustic or diffusion approximation, or line-of-sight formula differs from the standard system at zero declared corrections, an independent hierarchy implementation with identical inputs misses the transfer test tolerances, or a promoted prediction treats the initial spectrum, Thomson normalization, recombination history, or likelihood as certified by this reduction.",
+      "scope_if_false": "Only the conditional transport reduction and its two declared channel interfaces fall; the screen-spectrum, capacity, and record-density results and the standard plasma physics the reduction reproduces keep their separate scope.",
+      "status": "theorem_conditional_reduction_stated_with_all_premises_supplied__photon_refinement_convergence_polarized_collision_bridge_and_transfer_test_unsupplied",
+      "claim_class": "conditional_implication",
+      "proof_medium": "paper_prose",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [
+          "PR-15",
+          "PR-17"
+        ],
+        "open": [
+          "PR-39",
+          "PR-52",
+          "PR-53"
+        ],
+        "boundary": []
+      }
+    },
+    {
+      "claim_id": "OPH-SM-BARYON-DIMENSION-SIX-CENSUS",
+      "statement": "Conditional on the pinned one-generation rank-fifteen matter table with its conjugate Weyl fields, the declared accidental baryon and lepton labels, and the declared local dimension-six grammar in which candidate operators are ordered four-field multisets filtered by exact hypercharge neutrality, color triality, weak parity, Lorentz-chirality parity, and nonzero baryon label, the exhaustive census of the 715 multisets admits eight monomials, paired by Hermitian conjugation into the four classes QQQL, QQ u_R e_R, Q L u_R d_R, and u_R u_R d_R e_R; every admitted row changes B and L by the same signed unit, the diagonal Z6 generator fixes every field separately so the diagonal quotient removes no admitted class, and exact exterior-algebra contractions of each class stay nonzero after the Schouten, Fierz, and identical-field Pauli relations, with global contraction rank four. The census is complete only inside the declared grammar; a right-handed neutrino, additional light scalars, multiple families, and nonlocal operators are outside it. Gauge structure and the diagonal quotient therefore do not prove general proton stability on the declared branch. Without a physical proton state and one low-energy effective action with source-selected Wilson coefficients, renormalization and scale conventions, QCD matrix elements, and decay readout, the census neither proves proton stability nor predicts a lifetime, and it supplies no source coefficient, decay amplitude, or assertion that proton decay occurs.",
+      "owner_paper": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
+      "tier": "exact_finite_operator_census_on_declared_grammar",
+      "assumptions": [
+        "declared_realized_one_generation_one_Higgs_matter_package",
+        "declared_baryon_and_lepton_number_labels",
+        "declared_dimension_six_baryon_operator_grammar",
+        "hypercharge_color_z6_kernel"
+      ],
+      "imported_results": [
+        "Schouten_Fierz_and_Pauli_exterior_algebra_relations",
+        "canonical_dimension_counting_of_Weyl_fields",
+        "standard_one_generation_dimension_six_baryon_operator_classes"
+      ],
+      "oph_specific_delta": "Binds the standard one-generation dimension-six baryon-operator classes to the conditional matter table of the gauge construction through an exhaustive kernel-checked classification of all four-field multisets and an exact Grassmann-algebra rank calculation, so the gauge and diagonal-quotient boundary of proton stability on the declared branch is exact rather than argued by example.",
+      "novelty_type": "exhaustive_conditional_operator_census_with_exact_contraction_rank",
+      "evidence": [
+        "Lean/Screen/BaryonDimensionSix.lean",
+        "Lean/Screen/MatterGrammarIndexBridge.lean",
+        "code/a5_closure/baryon_dimension_six_census.py",
+        "code/a5_closure/verify_baryon_dimension_six_census_independent.py",
+        "code/a5_closure/receipts/baryon_dimension_six_census.receipt.json",
+        "paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex"
+      ],
+      "falsifier": "Inside the declared grammar, a four-field multiset passing the exact charge, triality, weak-parity, and chirality tests is absent from the admitted list, an admitted class has a vanishing contraction span after the exterior-algebra relations, the global contraction rank differs from four, an admitted row violates Delta B = Delta L, or a field fails to descend individually through the diagonal Z6 generator. A promoted claim that treats the census as proton stability, a lifetime, or a decay prediction is outside the theorem rather than a counterexample to it.",
+      "scope_if_false": "Only the conditional dimension-six census and its exact contraction certificate are reopened. The product-adjoint X/Y-channel exclusion, the matter-table selection, and every physical proton, Wilson-coefficient, or lifetime claim are assessed by their own claims and premises.",
+      "status": "exact_conditional_census_and_contraction_rank_attained__baryon_lepton_labels_grammar_completeness_and_proton_attachment_open",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [
+          "PR-55",
+          "PR-56"
+        ],
+        "open": [
+          "PR-57"
+        ],
+        "boundary": []
       }
     }
   ]
