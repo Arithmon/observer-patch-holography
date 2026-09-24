@@ -11581,6 +11581,174 @@
         740,
         779
       ]
+    },
+    {
+      "claim_id": "OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT",
+      "statement": "For each n>=1, R=2^n and q=R^2, explicitly enumerated cube-face flights rounded toward zero, signed dyadic axis steps and a waiting edge define a cubic-symmetric sparse integer read stencil S of degree at most 24n^2+6n+9 inside the radius-R ball B. A fully charged flight and binary-correction path to displacement d has length between |d|/R and (1+3/n+3/R)|d|/R+3n+2 and stays in an explicit shrinking physical tube. On q^3 grid sites with h=L/q, tick hR/c and equal event weight (hR/c)h^3, this proves strict-margin causal agreement, boundary-null cell counts, actual contained generated-diamond and strict-pair count convergence, ordering fraction 1/10 and fourth-root count-clock ratios. Positive bounded continuous conformal weights preserve the specified mass identities and weighted limits. The same proof works at q=R^k for every fixed integer k>=2, explicitly including radii L/sqrt(q) and L*q^(-2/3). Hence these named limits do not uniquely require complete-neighbor reads, Fibonacci sites or the square-root radius. S uses at most q^3 R (24n^2+6n+9) logical reads over horizon L/c at k=2, versus order q^5 for B. Adjacent-layer edge deletion and a two-preparation input witness show that exact finite orders and lossless dense read tuples are not preserved. The universal geometric and measure arguments are analytic; binary routing and finite algebra have kernel-checked reductions. Actual small software graphs and interventions are independently replayed. No native compiler, physical source selection, exact finite Lorentz covariance, bit/energy saving or laboratory clock is inferred.",
+      "tier": "explicit_sparse_family_and_analytic_causal_count_replacement",
+      "assumptions": [
+        "explicit_integer_stencil_comparison_and_equal_cell_measure"
+      ],
+      "imported_results": [
+        "normalization_triangle_inequality",
+        "binary_integer_expansion",
+        "Lebesgue_dominated_convergence",
+        "flat_Alexandrov_volume_and_pair_integral"
+      ],
+      "oph_specific_delta": "Constructs the sparse paths and boundary control instead of assuming successful cone convergence; identifies which named M1 limits survive and supplies distinct proved radius schedules without changing physical premise statuses.",
+      "novelty_type": "explicit_necessity_comparison_for_named_M1_limits",
+      "falsifier": "A defined stencil or charged route violates its radius, endpoint, length or tube bound; generated interval or strict-pair indicators fail the stated almost-everywhere convergence; a listed radius schedule fails its vanishing-error proof; a direct consumer is omitted; or the comparison is promoted to exact finite M1/native/physical equivalence.",
+      "scope_if_false": "The corresponding sparse replacement or inventory conclusion fails; existing golden, complete-neighbor, native routing and physical source-selection results keep their original inputs and scope.",
+      "status": "explicit_sparse_causal_count_and_radius_nonuniqueness_proved__native_physical_selection_separate",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "evidence": [
+        "code/m1_necessity/DERIVATION.md",
+        "code/m1_necessity/CONSUMERS.md",
+        "code/m1_necessity/verify.py",
+        "code/m1_necessity/test_necessity.py",
+        "code/m1_necessity/receipt.json",
+        "Lean/Geometry/M1Necessity.lean",
+        "Lean/Geometry/M1NecessityAxiomAudit.lean",
+        "paper/tex_fragments/M1_NECESSITY.tex"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This comparison constructs integer graphs, equal cells and coordinate measures and proves their mathematical limits. Physical event, source-production, clock, read-instrument and volume identification are excluded conclusions, not antecedents; no physical premise is consumed or discharged."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY",
+      "statement": "For the explicit sparse stencil S, dense radius ball B and axial-enriched stencil A on the same q^3 event sites, clock and weights, all three families have the same proved round causal/count limit. The coordinate-cut crossing counts satisfy X_S<=D_n R q^2 and X_B>=R^4 q^2/32, so X_S/X_B tends to zero. For A, the full axial subset contributes q^2 R(R+1)/2 coordinate crossings and q^2 R(R+1)-qR(R+1)(2R+1)/3 diagonal crossings; sparse extras have explicit vanishing relative bounds. After division by the actual section areas, the diagonal/coordinate crossing-density ratio tends to sqrt(2), whereas the dense cap integral gives one. A has exact sign and coordinate-permutation symmetry. Any common nonzero scalar entropy or Planck-area calibration cancels from the ratio. Thus round causal/count limits and cubic symmetry do not determine isotropic crossing-read entropy under the existing one-nat-per-crossing-pair dictionary. The finite formulas and all-n separation are proved analytically, with kernel-checked algebra and independent exact pair recounts. This is a counterexample to that proposed inference, not a countermodel to all A1--A3 or RG, a contradiction of the dense area theorem, or a claim of measured entropy.",
+      "tier": "explicit_finite_cut_counterexample_and_analytic_anisotropy_limit",
+      "assumptions": [
+        "explicit_integer_stencil_comparison_and_equal_cell_measure",
+        "declared_crossing_pair_comparison_observable"
+      ],
+      "imported_results": [
+        "finite_arithmetic_sums",
+        "rotation_invariant_ball_cap_integral"
+      ],
+      "oph_specific_delta": "Gives two concrete failures of downstream invariance under causal/count-preserving sparsification, including an orientation ratio that a single scalar calibration cannot repair.",
+      "novelty_type": "observable_counterexample_to_M1_kinematic_sufficiency",
+      "falsifier": "A finite cut formula or translated-box correction disagrees with full pair enumeration; the sparse/dense ratio fails to vanish; the axial-enriched density ratio fails to tend to sqrt(2); or a common scalar removes the discrepancy.",
+      "scope_if_false": "The corresponding crossing-observable separation fails; the original complete-neighbor cap theorem and the separately proved sparse causal/count conclusions retain their own hypotheses.",
+      "status": "crossing_count_and_orientation_counterexamples_proved__physical_entropy_identification_not_assumed",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "evidence": [
+        "code/m1_necessity/DERIVATION.md",
+        "code/m1_necessity/CONSUMERS.md",
+        "code/m1_necessity/verify.py",
+        "code/m1_necessity/test_necessity.py",
+        "code/m1_necessity/receipt.json",
+        "Lean/Geometry/M1Necessity.lean",
+        "Lean/Geometry/M1NecessityAxiomAudit.lean",
+        "paper/tex_fragments/M1_NECESSITY.tex"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The objects are explicitly supplied finite graphs, coordinate cuts and an unweighted pair-count statistic. The entropy dictionary is compared as a declared observable, without assuming its physical realization, horizon meaning or measured Planck normalization; no physical premise is an antecedent."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION",
+      "statement": "For each explicit S, A or B stencil, sign and permutation symmetries give an isotropic second moment M2/3. The normalized operator A_V f=6/(h^2 M2) sum_v(f(x)-f(x+hv)), with zero exterior values and v nonzero, has a positive squared-difference energy with the specified boundary terms. Taylor expansion gives |A_V f+Delta f|<=a^2 M4/4 for smooth references, where a=hR and M4 bounds unit-direction fourth derivatives. Exact finite Klein-Gordon evolution from sampled matching initial values and velocities differs from a smooth continuum reference supported away from the boundary through time T by at most c^2 t^2 a^2 L^(3/2) M4/8 in the discrete h^3 norm, with M4 uniform in time; bounded-norm smeared detectors inherit that bound. This explicit different action has vanishing error at M1's square-root scaling and the alternative q=R^k schedules, removing the generic Voronoi quadrature h/a^2 restriction for these actions. Separately, any positive symmetric periodic stencil with nonzero displacements modulo the box, range a and exact isotropic normalization has largest Laplacian eigenvalue at least 6/a^2 by the trace bound. Centered leapfrog at dt=a/c therefore violates its necessary stability bound of four, also for the dense family; nonnegative mass cannot help. Finite moment and stability inequalities have kernel-checked reductions; the spatial, Duhamel and spectral arguments are analytic. The exact semidiscrete evolution is not the layered read program, an interacting quantum or native dynamics result, exact finite causal support, or a no-go for all integrators.",
+      "tier": "explicit_positive_sparse_action_and_analytic_time_step_obstruction",
+      "assumptions": [
+        "explicit_integer_stencil_comparison_and_equal_cell_measure",
+        "declared_normalized_scalar_action_and_smooth_reference"
+      ],
+      "imported_results": [
+        "multivariate_Taylor_remainder",
+        "finite_symmetric_spectral_theorem",
+        "Duhamel_formula",
+        "centered_leapfrog_modal_stability"
+      ],
+      "oph_specific_delta": "Replaces the generic quadrature estimate by exact discrete moments for explicitly constructed sparse actions, proves a finite-time field/detector bound, and identifies the specific obstruction to silently reusing the M1 layer tick.",
+      "novelty_type": "explicit_sparse_action_consistency_and_clock_join_obstruction",
+      "falsifier": "The actual stencil fails isotropy or positive boundary energy; the spatial or Duhamel error exceeds the proved bound with all smoothness and support requirements met; a positive normalized nontrivial periodic stencil satisfies centered-leapfrog stability at a/c; or exact ODE evolution is misidentified with the native layered process.",
+      "scope_if_false": "The corresponding specified-action consistency bound or centered-leapfrog obstruction fails; the separate causal/count construction and original radial-kernel continuum theorem retain their own statements.",
+      "status": "sparse_scalar_limit_and_specific_tick_instability_proved__native_action_and_clock_join_separate",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "evidence": [
+        "code/m1_necessity/DERIVATION.md",
+        "code/m1_necessity/CONSUMERS.md",
+        "code/m1_necessity/verify.py",
+        "code/m1_necessity/test_necessity.py",
+        "code/m1_necessity/receipt.json",
+        "Lean/Geometry/M1Necessity.lean",
+        "Lean/Geometry/M1NecessityAxiomAudit.lean",
+        "paper/tex_fragments/M1_NECESSITY.tex"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This result analyzes a defined finite positive operator, smooth continuum references and one specified numerical integrator. It neither assumes nor establishes a native force law, physical clock, quantum state preparation or matter attachment; no physical premise is used."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION",
+      "statement": "For t>=1, q=2^(8t), m=2^(4t), K=2^(3t) and R=mK, the explicit T stencil contains m times the integer radius-K ball and every signed dyadic axis step below m. Charged rounded coarse paths and binary corrections prove the round causal, generated-diamond, strict-pair, ordering-fraction and count-clock limits. Exact coordinate counts and two-mesh cap estimates prove X_T(Sigma)=(pi*q^4/(4L^2))*area(Sigma)*(1+o(1)) for every fixed positive-area regular planar section cutting the cube interior into two positive-volume parts, with the original one-nat-per-pair coefficient and no directional weight or scalar recalibration. Its radius L*q^(-1/8), degree of order q^(9/8) and fixed-horizon logical reads of order q^(17/4) compare to L/sqrt(q), q^(3/2) and q^5 for the dense family; this fixes q, has slower spatial convergence and claims no equal-accuracy native savings. Any symmetric translation-invariant sub-stencil at the original radius retaining the three coordinate-cut leading counts must retain asymptotically almost all original vectors. The uniform-weight T action is a failed thermal control: m^3 periodic alias modes approach the mass frequency and force divergent fixed-temperature energy. The final specified action is the fixed half-sum of its exact-moment normalized action and the nearest-neighbor Laplacian on existing reads. Every original coupling stays positive; exact continuum normalization, spatial error and crossing counts remain valid. The whole periodic spectrum lies between (2/pi^2)|p|^2 and |p|^2. On the clipped zero-exterior box, discrete-gradient compactness, the positive-form dual inequality and min-max prove convergence of every ordered eigenvalue with multiplicity and the uniform lower bound j^(2/3)/(2L^2). Summable domination proves full free thermal partition, normal-ordered energy and Gibbs entropy limits. Canonical free quantization gives convergence of smooth compact Weyl observables, with controlled momentum covariance tails, and the Klein-Gordon commutator; its limiting response cone agrees with the read/count cone even at rounded declared layer ticks. The clipped box allows nonnegative mass by its proved frequency gap; the periodic oscillator vacuum requires positive mass. Thermal Gibbs entropy and planar crossing entropy are distinct observables, not an inferred horizon bridge. Universal geometry, spectral and quantum arguments are analytic, with kernel-checked finite reductions and independent integer routes/cuts plus complete small-spectrum controls. Exact finite M1 tuples, native quantum execution, interacting/gravitational attachments and physical premise statuses are not replaced.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "explicit_entropy_preserving_sparse_family_and_fixed_radius_lower_bound",
+      "assumptions": [
+        "explicit_entropy_preserving_spaced_ball_family",
+        "explicit_integer_stencil_comparison_and_equal_cell_measure",
+        "declared_crossing_pair_comparison_observable",
+        "declared_normalized_scalar_action_and_smooth_reference",
+        "defined_positive_mass_periodic_free_quantization",
+        "defined_stabilized_free_action_and_quantization"
+      ],
+      "imported_results": [
+        "rounded_lattice_paths_and_binary_corrections",
+        "Lebesgue_dominated_convergence",
+        "ball_cap_integral_and_two_mesh_cell_error",
+        "Taylor_remainder_and_Duhamel",
+        "finite_harmonic_oscillator_Weyl_characteristic_function",
+        "discrete_gradient_L2_compactness",
+        "Dirichlet_form_duality_and_min_max",
+        "summable_bosonic_thermal_bounds",
+        "Klein_Gordon_finite_propagation"
+      ],
+      "oph_specific_delta": "Constructs a sparse family preserving the leading planar crossing observable and spacetime limits; proves a fixed-radius thinning obstruction; detects and fixes its naive action alias defect on the same reads, and proves full free spectral, thermal and smooth local quantum limits.",
+      "novelty_type": "constructive_M1_observable_replacement_with_sharp_radius_tradeoff",
+      "evidence": [
+        "code/m1_necessity/BALANCED_REPLACEMENT.md",
+        "code/m1_necessity/balanced.py",
+        "code/m1_necessity/balanced_check.py",
+        "code/m1_necessity/verify.py",
+        "code/m1_necessity/test_necessity.py",
+        "code/m1_necessity/receipt.json",
+        "Lean/Geometry/M1Necessity.lean",
+        "Lean/Geometry/M1NecessityAxiomAudit.lean",
+        "paper/tex_fragments/M1_NECESSITY.tex",
+        "code/m1_necessity/SPECTRAL_COMPLETION.md"
+      ],
+      "falsifier": "A defined route or cut violates its exact formula or proved bound; a substantial original-radius symmetric stencil thinning preserves the three leading cut counts; the naive alias multiplicity/bound is wrong; the completed positive action violates its whole-spectrum lower bound, Dirichlet min-max limit, thermal domination or smooth Weyl/causal-commutator convergence; a verifier accepts missing stabilizing weights; or fixed-q logical counts are promoted to equal-accuracy native costs or exact finite M1 equivalence.",
+      "scope_if_false": "The corresponding explicit regulator, fixed-radius lower bound or completed free spectral/thermal/quantum comparison fails; the separate S/A counterexamples and historical M1, interacting-action and native-routing contracts retain their own scope.",
+      "status": "explicit_spacetime_planar_crossing_and_complete_free_spectral_thermal_quantum_comparison_proved",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The spaced-ball graph, event weights, positive action and periodic free oscillator quantization are explicitly defined mathematical comparison objects. The theorem derives their observable limits and a sub-stencil lower bound; no physical source, native instrument, interacting field, clock or entropy identification is an antecedent."
+      }
     }
   ]
 }

@@ -262,7 +262,11 @@
   "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
   "OPH-RECORD-GLUING-M1-SUFFICIENCY",
   "OPH-RG-LOCAL-CLOCK-REDUCTION",
-  "OPH-RG-INFORMATION-RESOURCE-BOUND"
+  "OPH-RG-INFORMATION-RESOURCE-BOUND",
+  "OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT",
+  "OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY",
+  "OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION",
+  "OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION"
  ],
  "edges": [
   {
@@ -2264,6 +2268,46 @@
    "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
    "to": "OPH-RG-LOCAL-CLOCK-REDUCTION",
    "role": "Supplies cell-assignment count convergence for distinguished regulator records; auxiliary native work is not identified with their volume."
+  },
+  {
+   "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
+   "to": "OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT",
+   "role": "Supplies the flat diamond and strict-pair measure identities only; the sparse-family path and indicator convergence are proved anew, without inheriting golden finite arithmetic or physical selection."
+  },
+  {
+   "from": "OPH-COSMO-FLRW-RECORD-DENSITY",
+   "to": "OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT",
+   "role": "Supplies the specified fourth-power event-weight identity for comparison; neither profile selection nor physical redshift is inherited."
+  },
+  {
+   "from": "OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT",
+   "to": "OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY",
+   "role": "Supplies the explicit sparse families and their common causal/count limits, against which the cut observable is shown not to be invariant."
+  },
+  {
+   "from": "OPH-BH-CROSSING-READ-AREA-LAW",
+   "to": "OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY",
+   "role": "Supplies the dense rotation-independent cap comparison and declared crossing-pair dictionary; the counterexample does not contradict its complete-neighbor premise."
+  },
+  {
+   "from": "OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT",
+   "to": "OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION",
+   "role": "Supplies explicit stencils and radius schedules only. The normalized scalar action and exact ODE evolution are separately specified and are not the layered read program."
+  },
+  {
+   "from": "OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT",
+   "to": "OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION",
+   "role": "Supplies the strict-margin and cell-count proof method. The spaced-ball route is constructed separately, with its own charged duration and shrinking tube."
+  },
+  {
+   "from": "OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY",
+   "to": "OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION",
+   "role": "Identifies the observable that generic sparse kinematic agreement fails to preserve; the spaced-ball family proves its isotropic leading coefficient without recalibration."
+  },
+  {
+   "from": "OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION",
+   "to": "OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION",
+   "role": "Supplies the exact-moment positive-action and Duhamel arguments for the new cubic-symmetric family, while retaining the separate time-integration obstruction."
   }
  ]
 }
