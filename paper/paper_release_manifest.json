@@ -20,8 +20,8 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "ec0e3f21124e2edd78bc0c9b8bf6a4dc0e272381db29bd67a20e3f4274d40e48",
-      "size_bytes": 456235
+      "sha256": "9e26d8f4401b9cbe3574f759cd956b140e17cdbd14c67aaf59a73aba3acb5ad6",
+      "size_bytes": 457072
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
@@ -40,8 +40,8 @@
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "82e1e1e14266aaa418b450704c1915b78abdac0aabd39b52340c7a488d838a27",
-      "size_bytes": 1135585
+      "sha256": "29f2f30fc4af345551510a6fdfaea094b319034e2e64e702c21d9c838b2faa1f",
+      "size_bytes": 1136182
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
