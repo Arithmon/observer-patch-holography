@@ -1,0 +1,1370 @@
+{
+  "graphs": {
+    "12:T:clipped": {
+      "bridge": {
+        "changed_sites": 2,
+        "cut_change": 24,
+        "degree_bound": 38,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        12,
+        4,
+        1,
+        2
+      ],
+      "degree": 19,
+      "family": "T",
+      "masks": {
+        "ball": {
+          "cut_pairs": 867,
+          "mask_sha256": "fb621b1b9bedea9dadd0a1c544beac5d36e4d67d9e019328a365769ac2417e7e",
+          "ordered_crossing_reads": 1734,
+          "pi_times_normalized_entropy": "289/1728",
+          "volume_sites": 93
+        },
+        "checkerboard": {
+          "cut_pairs": 4752,
+          "mask_sha256": "00d4d99337b66a5e773274a7e5c3360a96f790c5c039ae3d3be2aacd7a6400ca",
+          "ordered_crossing_reads": 9504,
+          "pi_times_normalized_entropy": "11/12",
+          "volume_sites": 864
+        },
+        "connected": {
+          "cut_pairs": 563,
+          "mask_sha256": "7dc58e3f68705b3c55f87742bd596f6d658a5896059b7575b2dcdced688f9d82",
+          "ordered_crossing_reads": 1126,
+          "pi_times_normalized_entropy": "563/5184",
+          "volume_sites": 49
+        },
+        "diagonal": {
+          "cut_pairs": 4536,
+          "mask_sha256": "1fa592e1f3f7e9826add26b0b7b7debb1476ab32f4ce4ea80324b087baf6845d",
+          "ordered_crossing_reads": 9072,
+          "pi_times_normalized_entropy": "7/8",
+          "volume_sites": 864
+        },
+        "localized": {
+          "cut_pairs": 539,
+          "mask_sha256": "6a290e59a7e85f97d66a9ae5e3df0e55f264935974cd36412e0aaff1eed7579e",
+          "ordered_crossing_reads": 1078,
+          "pi_times_normalized_entropy": "539/5184",
+          "volume_sites": 47
+        },
+        "permuted_half": {
+          "cut_pairs": 4895,
+          "mask_sha256": "bd56084a949c11648aca31f03f11c274ecdcff5280f826e82de8326a352537a9",
+          "ordered_crossing_reads": 9790,
+          "pi_times_normalized_entropy": "4895/5184",
+          "volume_sites": 864
+        },
+        "plane": {
+          "cut_pairs": 1008,
+          "mask_sha256": "02e61feeca827bb7cd2aedb87579779813364058af5008a78e6febf129383a99",
+          "ordered_crossing_reads": 2016,
+          "pi_times_normalized_entropy": "7/36",
+          "volume_sites": 864
+        },
+        "residue": {
+          "cut_pairs": 2160,
+          "mask_sha256": "677fe10f93271a40ec264f5d15bf6fd1177e11bfd0ed06624b56ea601450aec6",
+          "ordered_crossing_reads": 4320,
+          "pi_times_normalized_entropy": "5/12",
+          "volume_sites": 864
+        }
+      },
+      "ordered_reads": 26784,
+      "stencil_sha256": "09edf6c06011860956ab14933057cd296dc5888985df625b97f9c5d520035059",
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 1732464,
+        "affine_internal_quadratic": 154656,
+        "affine_quadratic": 1887120,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 6048,
+        "missing_ordered_slots": 6048,
+        "nonzero_diagonal_degree": 18,
+        "scaled_affine_quadratic": "52420/7",
+        "second_norm_moment": 126
+      }
+    },
+    "12:T:periodic": {
+      "bridge": {
+        "changed_sites": 2,
+        "cut_change": 24,
+        "degree_bound": 38,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        12,
+        4,
+        1,
+        2
+      ],
+      "degree": 19,
+      "family": "T",
+      "masks": {
+        "ball": {
+          "cut_pairs": 906,
+          "mask_sha256": "fb621b1b9bedea9dadd0a1c544beac5d36e4d67d9e019328a365769ac2417e7e",
+          "ordered_crossing_reads": 1812,
+          "pi_times_normalized_entropy": "151/864",
+          "volume_sites": 93
+        },
+        "checkerboard": {
+          "cut_pairs": 5184,
+          "mask_sha256": "00d4d99337b66a5e773274a7e5c3360a96f790c5c039ae3d3be2aacd7a6400ca",
+          "ordered_crossing_reads": 10368,
+          "pi_times_normalized_entropy": "1",
+          "volume_sites": 864
+        },
+        "connected": {
+          "cut_pairs": 586,
+          "mask_sha256": "7dc58e3f68705b3c55f87742bd596f6d658a5896059b7575b2dcdced688f9d82",
+          "ordered_crossing_reads": 1172,
+          "pi_times_normalized_entropy": "293/2592",
+          "volume_sites": 49
+        },
+        "diagonal": {
+          "cut_pairs": 6048,
+          "mask_sha256": "1fa592e1f3f7e9826add26b0b7b7debb1476ab32f4ce4ea80324b087baf6845d",
+          "ordered_crossing_reads": 12096,
+          "pi_times_normalized_entropy": "7/6",
+          "volume_sites": 864
+        },
+        "localized": {
+          "cut_pairs": 562,
+          "mask_sha256": "6a290e59a7e85f97d66a9ae5e3df0e55f264935974cd36412e0aaff1eed7579e",
+          "ordered_crossing_reads": 1124,
+          "pi_times_normalized_entropy": "281/2592",
+          "volume_sites": 47
+        },
+        "permuted_half": {
+          "cut_pairs": 6932,
+          "mask_sha256": "bd56084a949c11648aca31f03f11c274ecdcff5280f826e82de8326a352537a9",
+          "ordered_crossing_reads": 13864,
+          "pi_times_normalized_entropy": "1733/1296",
+          "volume_sites": 864
+        },
+        "plane": {
+          "cut_pairs": 2016,
+          "mask_sha256": "02e61feeca827bb7cd2aedb87579779813364058af5008a78e6febf129383a99",
+          "ordered_crossing_reads": 4032,
+          "pi_times_normalized_entropy": "7/18",
+          "volume_sites": 864
+        },
+        "residue": {
+          "cut_pairs": 2592,
+          "mask_sha256": "677fe10f93271a40ec264f5d15bf6fd1177e11bfd0ed06624b56ea601450aec6",
+          "ordered_crossing_reads": 5184,
+          "pi_times_normalized_entropy": "1/2",
+          "volume_sites": 864
+        }
+      },
+      "ordered_reads": 32832,
+      "stencil_sha256": "09edf6c06011860956ab14933057cd296dc5888985df625b97f9c5d520035059",
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 653184,
+        "affine_quadratic": 653184,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 18,
+        "scaled_affine_quadratic": "2592",
+        "second_norm_moment": 126
+      }
+    },
+    "12:U:clipped": {
+      "bridge": {
+        "changed_sites": 2,
+        "cut_change": 32,
+        "degree_bound": 78,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        12,
+        4,
+        1,
+        2
+      ],
+      "degree": 39,
+      "family": "U",
+      "masks": {
+        "ball": {
+          "cut_pairs": 1607,
+          "mask_sha256": "fb621b1b9bedea9dadd0a1c544beac5d36e4d67d9e019328a365769ac2417e7e",
+          "ordered_crossing_reads": 3214,
+          "pi_times_normalized_entropy": "1607/5184",
+          "volume_sites": 93
+        },
+        "checkerboard": {
+          "cut_pairs": 10076,
+          "mask_sha256": "00d4d99337b66a5e773274a7e5c3360a96f790c5c039ae3d3be2aacd7a6400ca",
+          "ordered_crossing_reads": 20152,
+          "pi_times_normalized_entropy": "2519/1296",
+          "volume_sites": 864
+        },
+        "connected": {
+          "cut_pairs": 1215,
+          "mask_sha256": "7dc58e3f68705b3c55f87742bd596f6d658a5896059b7575b2dcdced688f9d82",
+          "ordered_crossing_reads": 2430,
+          "pi_times_normalized_entropy": "15/64",
+          "volume_sites": 49
+        },
+        "diagonal": {
+          "cut_pairs": 7319,
+          "mask_sha256": "1fa592e1f3f7e9826add26b0b7b7debb1476ab32f4ce4ea80324b087baf6845d",
+          "ordered_crossing_reads": 14638,
+          "pi_times_normalized_entropy": "7319/5184",
+          "volume_sites": 864
+        },
+        "localized": {
+          "cut_pairs": 1183,
+          "mask_sha256": "6a290e59a7e85f97d66a9ae5e3df0e55f264935974cd36412e0aaff1eed7579e",
+          "ordered_crossing_reads": 2366,
+          "pi_times_normalized_entropy": "1183/5184",
+          "volume_sites": 47
+        },
+        "permuted_half": {
+          "cut_pairs": 14389,
+          "mask_sha256": "bd56084a949c11648aca31f03f11c274ecdcff5280f826e82de8326a352537a9",
+          "ordered_crossing_reads": 28778,
+          "pi_times_normalized_entropy": "14389/5184",
+          "volume_sites": 864
+        },
+        "plane": {
+          "cut_pairs": 2020,
+          "mask_sha256": "02e61feeca827bb7cd2aedb87579779813364058af5008a78e6febf129383a99",
+          "ordered_crossing_reads": 4040,
+          "pi_times_normalized_entropy": "505/1296",
+          "volume_sites": 864
+        },
+        "residue": {
+          "cut_pairs": 7220,
+          "mask_sha256": "677fe10f93271a40ec264f5d15bf6fd1177e11bfd0ed06624b56ea601450aec6",
+          "ordered_crossing_reads": 14440,
+          "pi_times_normalized_entropy": "1805/1296",
+          "volume_sites": 864
+        }
+      },
+      "ordered_reads": 54856,
+      "stencil_sha256": "afbf8556fe00850a5f7ddda1c34b1b29b3580eda7eeadc5c85a067b5eb1b02d4",
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 3690644,
+        "affine_internal_quadratic": 221448,
+        "affine_quadratic": 3912092,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 12536,
+        "missing_ordered_slots": 12536,
+        "nonzero_diagonal_degree": 38,
+        "scaled_affine_quadratic": "978023/87",
+        "second_norm_moment": 174
+      }
+    },
+    "12:U:periodic": {
+      "bridge": {
+        "changed_sites": 2,
+        "cut_change": 32,
+        "degree_bound": 78,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        12,
+        4,
+        1,
+        2
+      ],
+      "degree": 39,
+      "family": "U",
+      "masks": {
+        "ball": {
+          "cut_pairs": 1646,
+          "mask_sha256": "fb621b1b9bedea9dadd0a1c544beac5d36e4d67d9e019328a365769ac2417e7e",
+          "ordered_crossing_reads": 3292,
+          "pi_times_normalized_entropy": "823/2592",
+          "volume_sites": 93
+        },
+        "checkerboard": {
+          "cut_pairs": 12096,
+          "mask_sha256": "00d4d99337b66a5e773274a7e5c3360a96f790c5c039ae3d3be2aacd7a6400ca",
+          "ordered_crossing_reads": 24192,
+          "pi_times_normalized_entropy": "7/3",
+          "volume_sites": 864
+        },
+        "connected": {
+          "cut_pairs": 1238,
+          "mask_sha256": "7dc58e3f68705b3c55f87742bd596f6d658a5896059b7575b2dcdced688f9d82",
+          "ordered_crossing_reads": 2476,
+          "pi_times_normalized_entropy": "619/2592",
+          "volume_sites": 49
+        },
+        "diagonal": {
+          "cut_pairs": 9504,
+          "mask_sha256": "1fa592e1f3f7e9826add26b0b7b7debb1476ab32f4ce4ea80324b087baf6845d",
+          "ordered_crossing_reads": 19008,
+          "pi_times_normalized_entropy": "11/6",
+          "volume_sites": 864
+        },
+        "localized": {
+          "cut_pairs": 1206,
+          "mask_sha256": "6a290e59a7e85f97d66a9ae5e3df0e55f264935974cd36412e0aaff1eed7579e",
+          "ordered_crossing_reads": 2412,
+          "pi_times_normalized_entropy": "67/288",
+          "volume_sites": 47
+        },
+        "permuted_half": {
+          "cut_pairs": 18332,
+          "mask_sha256": "bd56084a949c11648aca31f03f11c274ecdcff5280f826e82de8326a352537a9",
+          "ordered_crossing_reads": 36664,
+          "pi_times_normalized_entropy": "4583/1296",
+          "volume_sites": 864
+        },
+        "plane": {
+          "cut_pairs": 4320,
+          "mask_sha256": "02e61feeca827bb7cd2aedb87579779813364058af5008a78e6febf129383a99",
+          "ordered_crossing_reads": 8640,
+          "pi_times_normalized_entropy": "5/6",
+          "volume_sites": 864
+        },
+        "residue": {
+          "cut_pairs": 9504,
+          "mask_sha256": "677fe10f93271a40ec264f5d15bf6fd1177e11bfd0ed06624b56ea601450aec6",
+          "ordered_crossing_reads": 19008,
+          "pi_times_normalized_entropy": "11/6",
+          "volume_sites": 864
+        }
+      },
+      "ordered_reads": 67392,
+      "stencil_sha256": "afbf8556fe00850a5f7ddda1c34b1b29b3580eda7eeadc5c85a067b5eb1b02d4",
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 1565568,
+        "affine_quadratic": 1565568,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 38,
+        "scaled_affine_quadratic": "130464/29",
+        "second_norm_moment": 174
+      }
+    },
+    "16:T:clipped": {
+      "bridge": {
+        "changed_sites": 4,
+        "cut_change": 48,
+        "degree_bound": 76,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        16,
+        4,
+        1,
+        2
+      ],
+      "degree": 19,
+      "family": "T",
+      "masks": {
+        "ball": {
+          "cut_pairs": 1842,
+          "mask_sha256": "31fe070aa820352a4a1555ca2d8de3b634df39c713dd008fb6c9f7912ac7ccbe",
+          "ordered_crossing_reads": 3684,
+          "pi_times_normalized_entropy": "921/8192",
+          "volume_sites": 251
+        },
+        "checkerboard": {
+          "cut_pairs": 11520,
+          "mask_sha256": "b3fa8b48a26ee24a3a6111fa5f612b725e8900a3c590e19f0291eb03ef5eb6d2",
+          "ordered_crossing_reads": 23040,
+          "pi_times_normalized_entropy": "45/64",
+          "volume_sites": 2048
+        },
+        "connected": {
+          "cut_pairs": 1106,
+          "mask_sha256": "f284b9f98a640e45f2389f346b7fa2f15c47a90bf98bf885726ed0c2ee5a9977",
+          "ordered_crossing_reads": 2212,
+          "pi_times_normalized_entropy": "553/8192",
+          "volume_sites": 115
+        },
+        "diagonal": {
+          "cut_pairs": 8736,
+          "mask_sha256": "f9f6665316de3f27218a5547f21d7dda834eda52120f89191c077aeb9e4a74a9",
+          "ordered_crossing_reads": 17472,
+          "pi_times_normalized_entropy": "273/512",
+          "volume_sites": 2048
+        },
+        "localized": {
+          "cut_pairs": 1058,
+          "mask_sha256": "5253fb8c98ad1eb0227fe62be0f7458b3652bc8c014f271009c49d303d632d1c",
+          "ordered_crossing_reads": 2116,
+          "pi_times_normalized_entropy": "529/8192",
+          "volume_sites": 111
+        },
+        "permuted_half": {
+          "cut_pairs": 12284,
+          "mask_sha256": "c47de391da7b74c591f628cf9c8fe6417a4b4a924b44d471e24973d505b1a5ab",
+          "ordered_crossing_reads": 24568,
+          "pi_times_normalized_entropy": "3071/4096",
+          "volume_sites": 2048
+        },
+        "plane": {
+          "cut_pairs": 1792,
+          "mask_sha256": "c36f54c5059d366f1e09b12a2d782874ccfcfef74857e6d153d35b619dc5c236",
+          "ordered_crossing_reads": 3584,
+          "pi_times_normalized_entropy": "7/64",
+          "volume_sites": 2048
+        },
+        "residue": {
+          "cut_pairs": 5376,
+          "mask_sha256": "12d77db2448ba28c139343e8c49d67664742bd1be2630f5070aea2370cfe92b4",
+          "ordered_crossing_reads": 10752,
+          "pi_times_normalized_entropy": "21/64",
+          "volume_sites": 2048
+        }
+      },
+      "ordered_reads": 67072,
+      "stencil_sha256": "09edf6c06011860956ab14933057cd296dc5888985df625b97f9c5d520035059",
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 5330688,
+        "affine_internal_quadratic": 403968,
+        "affine_quadratic": 5734656,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 10752,
+        "missing_ordered_slots": 10752,
+        "nonzero_diagonal_degree": 18,
+        "scaled_affine_quadratic": "119472/7",
+        "second_norm_moment": 126
+      }
+    },
+    "16:T:periodic": {
+      "bridge": {
+        "changed_sites": 4,
+        "cut_change": 48,
+        "degree_bound": 76,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        16,
+        4,
+        1,
+        2
+      ],
+      "degree": 19,
+      "family": "T",
+      "masks": {
+        "ball": {
+          "cut_pairs": 1842,
+          "mask_sha256": "31fe070aa820352a4a1555ca2d8de3b634df39c713dd008fb6c9f7912ac7ccbe",
+          "ordered_crossing_reads": 3684,
+          "pi_times_normalized_entropy": "921/8192",
+          "volume_sites": 251
+        },
+        "checkerboard": {
+          "cut_pairs": 12288,
+          "mask_sha256": "b3fa8b48a26ee24a3a6111fa5f612b725e8900a3c590e19f0291eb03ef5eb6d2",
+          "ordered_crossing_reads": 24576,
+          "pi_times_normalized_entropy": "3/4",
+          "volume_sites": 2048
+        },
+        "connected": {
+          "cut_pairs": 1106,
+          "mask_sha256": "f284b9f98a640e45f2389f346b7fa2f15c47a90bf98bf885726ed0c2ee5a9977",
+          "ordered_crossing_reads": 2212,
+          "pi_times_normalized_entropy": "553/8192",
+          "volume_sites": 115
+        },
+        "diagonal": {
+          "cut_pairs": 10752,
+          "mask_sha256": "f9f6665316de3f27218a5547f21d7dda834eda52120f89191c077aeb9e4a74a9",
+          "ordered_crossing_reads": 21504,
+          "pi_times_normalized_entropy": "21/32",
+          "volume_sites": 2048
+        },
+        "localized": {
+          "cut_pairs": 1058,
+          "mask_sha256": "5253fb8c98ad1eb0227fe62be0f7458b3652bc8c014f271009c49d303d632d1c",
+          "ordered_crossing_reads": 2116,
+          "pi_times_normalized_entropy": "529/8192",
+          "volume_sites": 111
+        },
+        "permuted_half": {
+          "cut_pairs": 16088,
+          "mask_sha256": "c47de391da7b74c591f628cf9c8fe6417a4b4a924b44d471e24973d505b1a5ab",
+          "ordered_crossing_reads": 32176,
+          "pi_times_normalized_entropy": "2011/2048",
+          "volume_sites": 2048
+        },
+        "plane": {
+          "cut_pairs": 3584,
+          "mask_sha256": "c36f54c5059d366f1e09b12a2d782874ccfcfef74857e6d153d35b619dc5c236",
+          "ordered_crossing_reads": 7168,
+          "pi_times_normalized_entropy": "7/32",
+          "volume_sites": 2048
+        },
+        "residue": {
+          "cut_pairs": 6144,
+          "mask_sha256": "12d77db2448ba28c139343e8c49d67664742bd1be2630f5070aea2370cfe92b4",
+          "ordered_crossing_reads": 12288,
+          "pi_times_normalized_entropy": "3/8",
+          "volume_sites": 2048
+        }
+      },
+      "ordered_reads": 77824,
+      "stencil_sha256": "09edf6c06011860956ab14933057cd296dc5888985df625b97f9c5d520035059",
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 2236416,
+        "affine_quadratic": 2236416,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 18,
+        "scaled_affine_quadratic": "6656",
+        "second_norm_moment": 126
+      }
+    },
+    "16:U:clipped": {
+      "bridge": {
+        "changed_sites": 4,
+        "cut_change": 80,
+        "degree_bound": 156,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        16,
+        4,
+        1,
+        2
+      ],
+      "degree": 39,
+      "family": "U",
+      "masks": {
+        "ball": {
+          "cut_pairs": 3302,
+          "mask_sha256": "31fe070aa820352a4a1555ca2d8de3b634df39c713dd008fb6c9f7912ac7ccbe",
+          "ordered_crossing_reads": 6604,
+          "pi_times_normalized_entropy": "1651/8192",
+          "volume_sites": 251
+        },
+        "checkerboard": {
+          "cut_pairs": 25020,
+          "mask_sha256": "b3fa8b48a26ee24a3a6111fa5f612b725e8900a3c590e19f0291eb03ef5eb6d2",
+          "ordered_crossing_reads": 50040,
+          "pi_times_normalized_entropy": "6255/4096",
+          "volume_sites": 2048
+        },
+        "connected": {
+          "cut_pairs": 2454,
+          "mask_sha256": "f284b9f98a640e45f2389f346b7fa2f15c47a90bf98bf885726ed0c2ee5a9977",
+          "ordered_crossing_reads": 4908,
+          "pi_times_normalized_entropy": "1227/8192",
+          "volume_sites": 115
+        },
+        "diagonal": {
+          "cut_pairs": 13967,
+          "mask_sha256": "f9f6665316de3f27218a5547f21d7dda834eda52120f89191c077aeb9e4a74a9",
+          "ordered_crossing_reads": 27934,
+          "pi_times_normalized_entropy": "13967/16384",
+          "volume_sites": 2048
+        },
+        "localized": {
+          "cut_pairs": 2374,
+          "mask_sha256": "5253fb8c98ad1eb0227fe62be0f7458b3652bc8c014f271009c49d303d632d1c",
+          "ordered_crossing_reads": 4748,
+          "pi_times_normalized_entropy": "1187/8192",
+          "volume_sites": 111
+        },
+        "permuted_half": {
+          "cut_pairs": 27949,
+          "mask_sha256": "c47de391da7b74c591f628cf9c8fe6417a4b4a924b44d471e24973d505b1a5ab",
+          "ordered_crossing_reads": 55898,
+          "pi_times_normalized_entropy": "27949/16384",
+          "volume_sites": 2048
+        },
+        "plane": {
+          "cut_pairs": 3652,
+          "mask_sha256": "c36f54c5059d366f1e09b12a2d782874ccfcfef74857e6d153d35b619dc5c236",
+          "ordered_crossing_reads": 7304,
+          "pi_times_normalized_entropy": "913/4096",
+          "volume_sites": 2048
+        },
+        "residue": {
+          "cut_pairs": 18396,
+          "mask_sha256": "12d77db2448ba28c139343e8c49d67664742bd1be2630f5070aea2370cfe92b4",
+          "ordered_crossing_reads": 36792,
+          "pi_times_normalized_entropy": "4599/4096",
+          "volume_sites": 2048
+        }
+      },
+      "ordered_reads": 137272,
+      "stencil_sha256": "afbf8556fe00850a5f7ddda1c34b1b29b3580eda7eeadc5c85a067b5eb1b02d4",
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 11403468,
+        "affine_internal_quadratic": 571368,
+        "affine_quadratic": 11974836,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 22472,
+        "missing_ordered_slots": 22472,
+        "nonzero_diagonal_degree": 38,
+        "scaled_affine_quadratic": "2993709/116",
+        "second_norm_moment": 174
+      }
+    },
+    "16:U:periodic": {
+      "bridge": {
+        "changed_sites": 4,
+        "cut_change": 80,
+        "degree_bound": 156,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        16,
+        4,
+        1,
+        2
+      ],
+      "degree": 39,
+      "family": "U",
+      "masks": {
+        "ball": {
+          "cut_pairs": 3302,
+          "mask_sha256": "31fe070aa820352a4a1555ca2d8de3b634df39c713dd008fb6c9f7912ac7ccbe",
+          "ordered_crossing_reads": 6604,
+          "pi_times_normalized_entropy": "1651/8192",
+          "volume_sites": 251
+        },
+        "checkerboard": {
+          "cut_pairs": 28672,
+          "mask_sha256": "b3fa8b48a26ee24a3a6111fa5f612b725e8900a3c590e19f0291eb03ef5eb6d2",
+          "ordered_crossing_reads": 57344,
+          "pi_times_normalized_entropy": "7/4",
+          "volume_sites": 2048
+        },
+        "connected": {
+          "cut_pairs": 2454,
+          "mask_sha256": "f284b9f98a640e45f2389f346b7fa2f15c47a90bf98bf885726ed0c2ee5a9977",
+          "ordered_crossing_reads": 4908,
+          "pi_times_normalized_entropy": "1227/8192",
+          "volume_sites": 115
+        },
+        "diagonal": {
+          "cut_pairs": 16896,
+          "mask_sha256": "f9f6665316de3f27218a5547f21d7dda834eda52120f89191c077aeb9e4a74a9",
+          "ordered_crossing_reads": 33792,
+          "pi_times_normalized_entropy": "33/32",
+          "volume_sites": 2048
+        },
+        "localized": {
+          "cut_pairs": 2374,
+          "mask_sha256": "5253fb8c98ad1eb0227fe62be0f7458b3652bc8c014f271009c49d303d632d1c",
+          "ordered_crossing_reads": 4748,
+          "pi_times_normalized_entropy": "1187/8192",
+          "volume_sites": 111
+        },
+        "permuted_half": {
+          "cut_pairs": 34648,
+          "mask_sha256": "c47de391da7b74c591f628cf9c8fe6417a4b4a924b44d471e24973d505b1a5ab",
+          "ordered_crossing_reads": 69296,
+          "pi_times_normalized_entropy": "4331/2048",
+          "volume_sites": 2048
+        },
+        "plane": {
+          "cut_pairs": 7680,
+          "mask_sha256": "c36f54c5059d366f1e09b12a2d782874ccfcfef74857e6d153d35b619dc5c236",
+          "ordered_crossing_reads": 15360,
+          "pi_times_normalized_entropy": "15/32",
+          "volume_sites": 2048
+        },
+        "residue": {
+          "cut_pairs": 22528,
+          "mask_sha256": "12d77db2448ba28c139343e8c49d67664742bd1be2630f5070aea2370cfe92b4",
+          "ordered_crossing_reads": 45056,
+          "pi_times_normalized_entropy": "11/8",
+          "volume_sites": 2048
+        }
+      },
+      "ordered_reads": 159744,
+      "stencil_sha256": "afbf8556fe00850a5f7ddda1c34b1b29b3580eda7eeadc5c85a067b5eb1b02d4",
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 5185536,
+        "affine_quadratic": 5185536,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 38,
+        "scaled_affine_quadratic": "324096/29",
+        "second_norm_moment": 174
+      }
+    },
+    "24:T:clipped": {
+      "bridge": {
+        "changed_sites": 5,
+        "cut_change": 179,
+        "degree_bound": 225,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        24,
+        4,
+        2,
+        2
+      ],
+      "degree": 45,
+      "family": "T",
+      "masks": {
+        "ball": {
+          "cut_pairs": 21245,
+          "mask_sha256": "e92097f0c78883a9997c612c59561642d0628fe8b23b80efb99e5bcfb635ad1d",
+          "ordered_crossing_reads": 42490,
+          "pi_times_normalized_entropy": "21245/82944",
+          "volume_sites": 895
+        },
+        "checkerboard": {
+          "cut_pairs": 39744,
+          "mask_sha256": "01b4f03742c20ff2f3402bdb60104a1e84250d12ecb2011f20f1bd0ed2647c12",
+          "ordered_crossing_reads": 79488,
+          "pi_times_normalized_entropy": "23/48",
+          "volume_sites": 6912
+        },
+        "connected": {
+          "cut_pairs": 12233,
+          "mask_sha256": "5f9d1fadc83447428179f87cab05c4f80b07ecd00ef60be7645ff16903918b7a",
+          "ordered_crossing_reads": 24466,
+          "pi_times_normalized_entropy": "12233/82944",
+          "volume_sites": 471
+        },
+        "diagonal": {
+          "cut_pairs": 74744,
+          "mask_sha256": "8ea49f1ec10753f611bc8d41abb95e6f0c3d3b6b705528df2012185366f1ae34",
+          "ordered_crossing_reads": 149488,
+          "pi_times_normalized_entropy": "9343/10368",
+          "volume_sites": 6912
+        },
+        "localized": {
+          "cut_pairs": 12054,
+          "mask_sha256": "3570107ca7ceafa640650e6b6a64858f35a17449260f97dfee15085cab6ba4e1",
+          "ordered_crossing_reads": 24108,
+          "pi_times_normalized_entropy": "2009/13824",
+          "volume_sites": 466
+        },
+        "permuted_half": {
+          "cut_pairs": 78096,
+          "mask_sha256": "0306e913066e5e0c6c26ea419a6417a383b3690cf5538549bc5e0cb3afe2b6a6",
+          "ordered_crossing_reads": 156192,
+          "pi_times_normalized_entropy": "1627/1728",
+          "volume_sites": 6912
+        },
+        "plane": {
+          "cut_pairs": 22720,
+          "mask_sha256": "07725fbd7658ba8407678089974109ab9d56bf41f4a4b1d3cdb5af2c801e07d7",
+          "ordered_crossing_reads": 45440,
+          "pi_times_normalized_entropy": "355/1296",
+          "volume_sites": 6912
+        },
+        "residue": {
+          "cut_pairs": 19008,
+          "mask_sha256": "853e842a471552b80162ba8e5c5a2f125249f166c9ab9a43c4b3b45c1e2fb2a1",
+          "ordered_crossing_reads": 38016,
+          "pi_times_normalized_entropy": "11/48",
+          "volume_sites": 6912
+        }
+      },
+      "ordered_reads": 472960,
+      "stencil_sha256": "a101d58e3a302f598fe162025e23321e22dfa75a1d92bd475d8c4240d9022d5f",
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 156939200,
+        "affine_internal_quadratic": 11786880,
+        "affine_quadratic": 168726080,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 149120,
+        "missing_ordered_slots": 149120,
+        "nonzero_diagonal_degree": 44,
+        "scaled_affine_quadratic": "21090760/639",
+        "second_norm_moment": 1278
+      }
+    },
+    "24:T:periodic": {
+      "bridge": {
+        "changed_sites": 5,
+        "cut_change": 180,
+        "degree_bound": 225,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        24,
+        4,
+        2,
+        2
+      ],
+      "degree": 45,
+      "family": "T",
+      "masks": {
+        "ball": {
+          "cut_pairs": 21650,
+          "mask_sha256": "e92097f0c78883a9997c612c59561642d0628fe8b23b80efb99e5bcfb635ad1d",
+          "ordered_crossing_reads": 43300,
+          "pi_times_normalized_entropy": "10825/41472",
+          "volume_sites": 895
+        },
+        "checkerboard": {
+          "cut_pairs": 41472,
+          "mask_sha256": "01b4f03742c20ff2f3402bdb60104a1e84250d12ecb2011f20f1bd0ed2647c12",
+          "ordered_crossing_reads": 82944,
+          "pi_times_normalized_entropy": "1/2",
+          "volume_sites": 6912
+        },
+        "connected": {
+          "cut_pairs": 12462,
+          "mask_sha256": "5f9d1fadc83447428179f87cab05c4f80b07ecd00ef60be7645ff16903918b7a",
+          "ordered_crossing_reads": 24924,
+          "pi_times_normalized_entropy": "2077/13824",
+          "volume_sites": 471
+        },
+        "diagonal": {
+          "cut_pairs": 107136,
+          "mask_sha256": "8ea49f1ec10753f611bc8d41abb95e6f0c3d3b6b705528df2012185366f1ae34",
+          "ordered_crossing_reads": 214272,
+          "pi_times_normalized_entropy": "31/24",
+          "volume_sites": 6912
+        },
+        "localized": {
+          "cut_pairs": 12282,
+          "mask_sha256": "3570107ca7ceafa640650e6b6a64858f35a17449260f97dfee15085cab6ba4e1",
+          "ordered_crossing_reads": 24564,
+          "pi_times_normalized_entropy": "2047/13824",
+          "volume_sites": 466
+        },
+        "permuted_half": {
+          "cut_pairs": 110460,
+          "mask_sha256": "0306e913066e5e0c6c26ea419a6417a383b3690cf5538549bc5e0cb3afe2b6a6",
+          "ordered_crossing_reads": 220920,
+          "pi_times_normalized_entropy": "9205/6912",
+          "volume_sites": 6912
+        },
+        "plane": {
+          "cut_pairs": 54144,
+          "mask_sha256": "07725fbd7658ba8407678089974109ab9d56bf41f4a4b1d3cdb5af2c801e07d7",
+          "ordered_crossing_reads": 108288,
+          "pi_times_normalized_entropy": "47/72",
+          "volume_sites": 6912
+        },
+        "residue": {
+          "cut_pairs": 20736,
+          "mask_sha256": "853e842a471552b80162ba8e5c5a2f125249f166c9ab9a43c4b3b45c1e2fb2a1",
+          "ordered_crossing_reads": 41472,
+          "pi_times_normalized_entropy": "1/4",
+          "volume_sites": 6912
+        }
+      },
+      "ordered_reads": 622080,
+      "stencil_sha256": "a101d58e3a302f598fe162025e23321e22dfa75a1d92bd475d8c4240d9022d5f",
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 75893760,
+        "affine_quadratic": 75893760,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 44,
+        "scaled_affine_quadratic": "1054080/71",
+        "second_norm_moment": 1278
+      }
+    },
+    "24:U:clipped": {
+      "bridge": {
+        "changed_sites": 5,
+        "cut_change": 199,
+        "degree_bound": 325,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        24,
+        4,
+        2,
+        2
+      ],
+      "degree": 65,
+      "family": "U",
+      "masks": {
+        "ball": {
+          "cut_pairs": 24697,
+          "mask_sha256": "e92097f0c78883a9997c612c59561642d0628fe8b23b80efb99e5bcfb635ad1d",
+          "ordered_crossing_reads": 49394,
+          "pi_times_normalized_entropy": "24697/82944",
+          "volume_sites": 895
+        },
+        "checkerboard": {
+          "cut_pairs": 88412,
+          "mask_sha256": "01b4f03742c20ff2f3402bdb60104a1e84250d12ecb2011f20f1bd0ed2647c12",
+          "ordered_crossing_reads": 176824,
+          "pi_times_normalized_entropy": "22103/20736",
+          "volume_sites": 6912
+        },
+        "connected": {
+          "cut_pairs": 16997,
+          "mask_sha256": "5f9d1fadc83447428179f87cab05c4f80b07ecd00ef60be7645ff16903918b7a",
+          "ordered_crossing_reads": 33994,
+          "pi_times_normalized_entropy": "16997/82944",
+          "volume_sites": 471
+        },
+        "diagonal": {
+          "cut_pairs": 87175,
+          "mask_sha256": "8ea49f1ec10753f611bc8d41abb95e6f0c3d3b6b705528df2012185366f1ae34",
+          "ordered_crossing_reads": 174350,
+          "pi_times_normalized_entropy": "87175/82944",
+          "volume_sites": 6912
+        },
+        "localized": {
+          "cut_pairs": 16798,
+          "mask_sha256": "3570107ca7ceafa640650e6b6a64858f35a17449260f97dfee15085cab6ba4e1",
+          "ordered_crossing_reads": 33596,
+          "pi_times_normalized_entropy": "8399/41472",
+          "volume_sites": 466
+        },
+        "permuted_half": {
+          "cut_pairs": 143841,
+          "mask_sha256": "0306e913066e5e0c6c26ea419a6417a383b3690cf5538549bc5e0cb3afe2b6a6",
+          "ordered_crossing_reads": 287682,
+          "pi_times_normalized_entropy": "47947/27648",
+          "volume_sites": 6912
+        },
+        "plane": {
+          "cut_pairs": 27044,
+          "mask_sha256": "07725fbd7658ba8407678089974109ab9d56bf41f4a4b1d3cdb5af2c801e07d7",
+          "ordered_crossing_reads": 54088,
+          "pi_times_normalized_entropy": "6761/20736",
+          "volume_sites": 6912
+        },
+        "residue": {
+          "cut_pairs": 66572,
+          "mask_sha256": "853e842a471552b80162ba8e5c5a2f125249f166c9ab9a43c4b3b45c1e2fb2a1",
+          "ordered_crossing_reads": 133144,
+          "pi_times_normalized_entropy": "16643/20736",
+          "volume_sites": 6912
+        }
+      },
+      "ordered_reads": 722648,
+      "stencil_sha256": "355f01299ecd2cb2733cdbf70e6280abd26981c3df3f4decfe2194bf32d31dba",
+      "topology": "clipped",
+      "uniform_action": {
+        "affine_boundary_quadratic": 187129180,
+        "affine_internal_quadratic": 12383592,
+        "affine_quadratic": 199512772,
+        "boundary": "fixed_zero_exterior",
+        "constant_quadratic": 175912,
+        "missing_ordered_slots": 175912,
+        "nonzero_diagonal_degree": 64,
+        "scaled_affine_quadratic": "49878193/1326",
+        "second_norm_moment": 1326
+      }
+    },
+    "24:U:periodic": {
+      "bridge": {
+        "changed_sites": 5,
+        "cut_change": 200,
+        "degree_bound": 325,
+        "nearest_neighbor_connected": true
+      },
+      "config": [
+        24,
+        4,
+        2,
+        2
+      ],
+      "degree": 65,
+      "family": "U",
+      "masks": {
+        "ball": {
+          "cut_pairs": 25102,
+          "mask_sha256": "e92097f0c78883a9997c612c59561642d0628fe8b23b80efb99e5bcfb635ad1d",
+          "ordered_crossing_reads": 50204,
+          "pi_times_normalized_entropy": "12551/41472",
+          "volume_sites": 895
+        },
+        "checkerboard": {
+          "cut_pairs": 96768,
+          "mask_sha256": "01b4f03742c20ff2f3402bdb60104a1e84250d12ecb2011f20f1bd0ed2647c12",
+          "ordered_crossing_reads": 193536,
+          "pi_times_normalized_entropy": "7/6",
+          "volume_sites": 6912
+        },
+        "connected": {
+          "cut_pairs": 17226,
+          "mask_sha256": "5f9d1fadc83447428179f87cab05c4f80b07ecd00ef60be7645ff16903918b7a",
+          "ordered_crossing_reads": 34452,
+          "pi_times_normalized_entropy": "319/1536",
+          "volume_sites": 471
+        },
+        "diagonal": {
+          "cut_pairs": 120960,
+          "mask_sha256": "8ea49f1ec10753f611bc8d41abb95e6f0c3d3b6b705528df2012185366f1ae34",
+          "ordered_crossing_reads": 241920,
+          "pi_times_normalized_entropy": "35/24",
+          "volume_sites": 6912
+        },
+        "localized": {
+          "cut_pairs": 17026,
+          "mask_sha256": "3570107ca7ceafa640650e6b6a64858f35a17449260f97dfee15085cab6ba4e1",
+          "ordered_crossing_reads": 34052,
+          "pi_times_normalized_entropy": "8513/41472",
+          "volume_sites": 466
+        },
+        "permuted_half": {
+          "cut_pairs": 183284,
+          "mask_sha256": "0306e913066e5e0c6c26ea419a6417a383b3690cf5538549bc5e0cb3afe2b6a6",
+          "ordered_crossing_reads": 366568,
+          "pi_times_normalized_entropy": "45821/20736",
+          "volume_sites": 6912
+        },
+        "plane": {
+          "cut_pairs": 63360,
+          "mask_sha256": "07725fbd7658ba8407678089974109ab9d56bf41f4a4b1d3cdb5af2c801e07d7",
+          "ordered_crossing_reads": 126720,
+          "pi_times_normalized_entropy": "55/72",
+          "volume_sites": 6912
+        },
+        "residue": {
+          "cut_pairs": 76032,
+          "mask_sha256": "853e842a471552b80162ba8e5c5a2f125249f166c9ab9a43c4b3b45c1e2fb2a1",
+          "ordered_crossing_reads": 152064,
+          "pi_times_normalized_entropy": "11/12",
+          "volume_sites": 6912
+        }
+      },
+      "ordered_reads": 898560,
+      "stencil_sha256": "355f01299ecd2cb2733cdbf70e6280abd26981c3df3f4decfe2194bf32d31dba",
+      "topology": "periodic",
+      "uniform_action": {
+        "affine_boundary_quadratic": 0,
+        "affine_internal_quadratic": 91155456,
+        "affine_quadratic": 91155456,
+        "boundary": "periodic",
+        "constant_quadratic": 0,
+        "missing_ordered_slots": 0,
+        "nonzero_diagonal_degree": 64,
+        "scaled_affine_quadratic": "3798144/221",
+        "second_norm_moment": 1326
+      }
+    }
+  },
+  "moments": {
+    "critical": {
+      "coarse": {
+        "axis2": 899331824,
+        "axis4": 1578289029488,
+        "coordinate_cut": 12122074673252925440,
+        "degree": 1097917,
+        "flux": 13174088,
+        "fourth": 7892844132936,
+        "moment": 2697995472
+      },
+      "coordinate_cut": 12178619984117503128,
+      "degree": 2195839,
+      "fine": {
+        "axis2": 899331824,
+        "axis4": 1578289029488,
+        "coordinate_cut": 56544761108763800,
+        "degree": 1097917,
+        "flux": 13174088,
+        "fourth": 7892844132936,
+        "moment": 2697995472
+      },
+      "fourth_norm_moment": 33899507431280051206728,
+      "k": 64,
+      "kind": "critical",
+      "m": 256,
+      "one_alias_eigenvalue_L_squared_bounds": [
+        "862772405663540800/26533830560099373",
+        "7131677087236096/180502248708159"
+      ],
+      "periodic_residue_cut": 28970407357665247232,
+      "pi_times_residue_entropy": "1646777/262144",
+      "q": 65536,
+      "r": 64,
+      "remaining_axis_lengths": [
+        128
+      ],
+      "second_norm_moment": 176818529346768,
+      "uniform_alpha_L_squared": "536870912/3683719361391"
+    },
+    "raw": {
+      "coarse": {
+        "axis2": 899331824,
+        "axis4": 1578289029488,
+        "coordinate_cut": 12122074673252925440,
+        "degree": 1097917,
+        "flux": 13174088,
+        "fourth": 7892844132936,
+        "moment": 2697995472
+      },
+      "coordinate_cut": 12122075768469585920,
+      "degree": 1097965,
+      "fine": {
+        "axis2": 0,
+        "axis4": 0,
+        "coordinate_cut": 0,
+        "degree": 1,
+        "flux": 0,
+        "fourth": 0,
+        "moment": 0
+      },
+      "fourth_norm_moment": 33899507423387314447974,
+      "k": 64,
+      "kind": "raw",
+      "m": 256,
+      "one_alias_eigenvalue_L_squared_bounds": [
+        "0",
+        "137438953472/29469305230677"
+      ],
+      "periodic_residue_cut": 560750930165760,
+      "pi_times_residue_entropy": "255/2097152",
+      "q": 65536,
+      "r": 0,
+      "remaining_axis_lengths": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "second_norm_moment": 176815831384062,
+      "uniform_alpha_L_squared": "4294967296/29469305230677"
+    },
+    "repaired": {
+      "coarse": {
+        "axis2": 899331824,
+        "axis4": 1578289029488,
+        "coordinate_cut": 12122074673252925440,
+        "degree": 1097917,
+        "flux": 13174088,
+        "fourth": 7892844132936,
+        "moment": 2697995472
+      },
+      "coordinate_cut": 13026139204089319752,
+      "degree": 9880701,
+      "fine": {
+        "axis2": 28775618104,
+        "axis4": 202014890140984,
+        "coordinate_cut": 904064530836394312,
+        "degree": 8782785,
+        "flux": 210773380,
+        "fourth": 1010137009937904,
+        "moment": 86326854312
+      },
+      "fourth_norm_moment": 33899508433522606398960,
+      "k": 64,
+      "kind": "repaired",
+      "m": 256,
+      "one_alias_eigenvalue_L_squared_bounds": [
+        "37465039394090992192/53092760201954613",
+        "456373015751426048/361175239469079"
+      ],
+      "periodic_residue_cut": 463495564271298805760,
+      "pi_times_residue_entropy": "52693345/524288",
+      "q": 65536,
+      "r": 128,
+      "remaining_axis_lengths": [],
+      "second_norm_moment": 176902158107304,
+      "uniform_alpha_L_squared": "1073741824/7370923254471"
+    }
+  },
+  "parent_claims": {
+    "OPH-BH-CROSSING-READ-AREA-LAW": {
+      "disposition": "variational_cut_extension_without_physical_entropy_identification",
+      "original_claim_sha256": "acc9bf9ef89a7355d6d851235580f070c5a2f1b3b0ad7f147fdf7c01c4b3b8a9"
+    },
+    "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM": {
+      "disposition": "named_kinematics_retained_without_native_source_identification",
+      "original_claim_sha256": "b8cad9c8fc059e39d3495294f5ca57b9b70b43ebc2243a53a3d0c8c3263da403"
+    }
+  },
+  "scales": {
+    "1": {
+      "added_area_factor": "1/16",
+      "alias_frequency_squared_scale": "32",
+      "compactness_error_factor": "1/16",
+      "k": 64,
+      "m": 256,
+      "q": 65536,
+      "r": 128,
+      "radius": 16384,
+      "spectral_saturation": "16",
+      "t": 1,
+      "tick_times_c_over_L": "1/4"
+    },
+    "10": {
+      "added_area_factor": "1/1099511627776",
+      "alias_frequency_squared_scale": "1125899906842624",
+      "compactness_error_factor": "1/1099511627776",
+      "k": 1152921504606846976,
+      "m": 1208925819614629174706176,
+      "q": 1461501637330902918203684832716283019655932542976,
+      "r": 1180591620717411303424,
+      "radius": 1393796574908163946345982392040522594123776,
+      "spectral_saturation": "1099511627776",
+      "t": 10,
+      "tick_times_c_over_L": "1/1048576"
+    },
+    "11": {
+      "added_area_factor": "1/17592186044416",
+      "alias_frequency_squared_scale": "36028797018963968",
+      "compactness_error_factor": "1/17592186044416",
+      "k": 73786976294838206464,
+      "m": 309485009821345068724781056,
+      "q": 95780971304118053647396689196894323976171195136475136,
+      "r": 151115727451828646838272,
+      "radius": 22835963083295358096932575511191922182123945984,
+      "spectral_saturation": "17592186044416",
+      "t": 11,
+      "tick_times_c_over_L": "1/4194304"
+    },
+    "12": {
+      "added_area_factor": "1/281474976710656",
+      "alias_frequency_squared_scale": "1152921504606846976",
+      "compactness_error_factor": "1/281474976710656",
+      "k": 4722366482869645213696,
+      "m": 79228162514264337593543950336,
+      "q": 6277101735386680763835789423207666416102355444464034512896,
+      "r": 19342813113834066795298816,
+      "radius": 374144419156711147060143317175368453031918731001856,
+      "spectral_saturation": "281474976710656",
+      "t": 12,
+      "tick_times_c_over_L": "1/16777216"
+    },
+    "2": {
+      "added_area_factor": "1/256",
+      "alias_frequency_squared_scale": "1024",
+      "compactness_error_factor": "1/256",
+      "k": 4096,
+      "m": 65536,
+      "q": 4294967296,
+      "r": 16384,
+      "radius": 268435456,
+      "spectral_saturation": "256",
+      "t": 2,
+      "tick_times_c_over_L": "1/16"
+    },
+    "3": {
+      "added_area_factor": "1/4096",
+      "alias_frequency_squared_scale": "32768",
+      "compactness_error_factor": "1/4096",
+      "k": 262144,
+      "m": 16777216,
+      "q": 281474976710656,
+      "r": 2097152,
+      "radius": 4398046511104,
+      "spectral_saturation": "4096",
+      "t": 3,
+      "tick_times_c_over_L": "1/64"
+    },
+    "4": {
+      "added_area_factor": "1/65536",
+      "alias_frequency_squared_scale": "1048576",
+      "compactness_error_factor": "1/65536",
+      "k": 16777216,
+      "m": 4294967296,
+      "q": 18446744073709551616,
+      "r": 268435456,
+      "radius": 72057594037927936,
+      "spectral_saturation": "65536",
+      "t": 4,
+      "tick_times_c_over_L": "1/256"
+    },
+    "5": {
+      "added_area_factor": "1/1048576",
+      "alias_frequency_squared_scale": "33554432",
+      "compactness_error_factor": "1/1048576",
+      "k": 1073741824,
+      "m": 1099511627776,
+      "q": 1208925819614629174706176,
+      "r": 34359738368,
+      "radius": 1180591620717411303424,
+      "spectral_saturation": "1048576",
+      "t": 5,
+      "tick_times_c_over_L": "1/1024"
+    },
+    "6": {
+      "added_area_factor": "1/16777216",
+      "alias_frequency_squared_scale": "1073741824",
+      "compactness_error_factor": "1/16777216",
+      "k": 68719476736,
+      "m": 281474976710656,
+      "q": 79228162514264337593543950336,
+      "r": 4398046511104,
+      "radius": 19342813113834066795298816,
+      "spectral_saturation": "16777216",
+      "t": 6,
+      "tick_times_c_over_L": "1/4096"
+    },
+    "7": {
+      "added_area_factor": "1/268435456",
+      "alias_frequency_squared_scale": "34359738368",
+      "compactness_error_factor": "1/268435456",
+      "k": 4398046511104,
+      "m": 72057594037927936,
+      "q": 5192296858534827628530496329220096,
+      "r": 562949953421312,
+      "radius": 316912650057057350374175801344,
+      "spectral_saturation": "268435456",
+      "t": 7,
+      "tick_times_c_over_L": "1/16384"
+    },
+    "8": {
+      "added_area_factor": "1/4294967296",
+      "alias_frequency_squared_scale": "1099511627776",
+      "compactness_error_factor": "1/4294967296",
+      "k": 281474976710656,
+      "m": 18446744073709551616,
+      "q": 340282366920938463463374607431768211456,
+      "r": 72057594037927936,
+      "radius": 5192296858534827628530496329220096,
+      "spectral_saturation": "4294967296",
+      "t": 8,
+      "tick_times_c_over_L": "1/65536"
+    },
+    "9": {
+      "added_area_factor": "1/68719476736",
+      "alias_frequency_squared_scale": "35184372088832",
+      "compactness_error_factor": "1/68719476736",
+      "k": 18014398509481984,
+      "m": 4722366482869645213696,
+      "q": 22300745198530623141535718272648361505980416,
+      "r": 9223372036854775808,
+      "radius": 85070591730234615865843651857942052864,
+      "spectral_saturation": "68719476736",
+      "t": 9,
+      "tick_times_c_over_L": "1/262144"
+    }
+  },
+  "schema": "oph-m1-interfaces-v2",
+  "sources": {
+    ".github/workflows/m1-interfaces.yml": "59806bb331ba0d6146deb466c26979847adaffa3a8a41f900423a1dc67a7e4a0",
+    "Lean/Geometry/FlatDiamondNormalization.lean": "28f2df01078762fc4e73a47ccc3678ffb3644a90486d6a9c1a5d5064f4b26d57",
+    "Lean/Geometry/M1Interfaces.lean": "3c795d1273c0e9f6aac6e985e1f99a89492b6a962e2669a925cef7d46b4686f7",
+    "Lean/Geometry/M1InterfacesAxiomAudit.lean": "63988bb1eaf00104545046259ce42a9da117d287841f03eba1e0768c00c85ffb",
+    "Lean/Geometry/OrderingFractionFourDimensional.lean": "ba616fd7cb751b997a9c7b6528f14949fb9e29183c7a33a94c0857b0538e4ab2",
+    "code/m1_interfaces/CONTRACT.md": "663de4dffede86f6656c3987c3e389da2ca459b9cc8c244ec4b1cd1152075576",
+    "code/m1_interfaces/DERIVATION.md": "fcef745e78528cda439e38d409526be9e66bd9e70f9d430a917c909762c9edc6",
+    "code/m1_interfaces/README.md": "2437403c1b827e409acf80bf1621285153498fedd835fc47d601821c1606b6bd",
+    "code/m1_interfaces/__init__.py": "b47a65ecec1f2195e30c479f2d2dc29e490bd673c1ce750402e8b48797b475de",
+    "code/m1_interfaces/build.py": "447df06904483ba6f68da7db315d52c28c88966b751df5f2768e3aeec289090b",
+    "code/m1_interfaces/check.py": "63dc3e76d0c8e47d9e25feb3e6fdc0d0ea09d21a716eb06652e4e357e1876629",
+    "code/m1_interfaces/model.py": "31024fcda08e6db4ddf2866bbb6f341c0066c2831a2c17d76ad7c449ee17db20",
+    "code/m1_interfaces/test_interfaces.py": "00cdc40f56cb9aeee13303aa5c2c1dcbc9a84dc6cfdae831be0ead43c893ab45",
+    "code/m1_interfaces/verify.py": "373d19fa7966f04a9488835ff7965079d7741c03c45eb7523a784182e535a1d7",
+    "paper/tex_fragments/M1_INTERFACES.tex": "d46045f4ae2040c42b741995bcf668b6af12164bab42e9cb484ce228c98a52de"
+  }
+}

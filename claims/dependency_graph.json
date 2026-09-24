@@ -266,7 +266,10 @@
   "OPH-M1-SPARSE-CAUSAL-COUNT-REPLACEMENT",
   "OPH-M1-CUT-OBSERVABLE-NONUNIVERSALITY",
   "OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION",
-  "OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION"
+  "OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION",
+  "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
+  "OPH-M1-VARIATIONAL-AREA-REPAIR",
+  "OPH-M1-UNIFORM-ACTION-SPECTRAL-THRESHOLD"
  ],
  "edges": [
   {
@@ -2308,6 +2311,26 @@
    "from": "OPH-M1-SPARSE-ACTION-AND-TICK-OBSTRUCTION",
    "to": "OPH-M1-ENTROPY-PRESERVING-SPARSIFICATION",
    "role": "Supplies the exact-moment positive-action and Duhamel arguments for the new cubic-symmetric family, while retaining the separate time-integration obstruction."
+  },
+  {
+   "from": "OPH-BH-CROSSING-READ-AREA-LAW",
+   "to": "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
+   "role": "Supplies the fixed-section crossing-area comparison. The counterexample tests varying microscopic partitions; no physical entropy or horizon premise is inherited."
+  },
+  {
+   "from": "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
+   "to": "OPH-M1-VARIATIONAL-AREA-REPAIR",
+   "role": "Identifies the residue defect and necessary short-ball threshold; the repair proves sufficiency, recovery and minimum convergence from the actual added reads."
+  },
+  {
+   "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+   "to": "OPH-M1-VARIATIONAL-AREA-REPAIR",
+   "role": "Supplies the source-net covering and cell-count framework retained by the explicit routes. No native source identification or unique population/radius selection is inherited."
+  },
+  {
+   "from": "OPH-M1-VARIATIONAL-AREA-REPAIR",
+   "to": "OPH-M1-UNIFORM-ACTION-SPECTRAL-THRESHOLD",
+   "role": "Supplies the explicit repaired stencil and shared scale parameter. The uniform-action spectral and thermal arguments are independently proved; crossing and Gibbs entropy remain different observables."
   }
  ]
 }

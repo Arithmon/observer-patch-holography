@@ -11749,6 +11749,129 @@
         "boundary": [],
         "rationale": "The spaced-ball graph, event weights, positive action and periodic free oscillator quantization are explicitly defined mathematical comparison objects. The theorem derives their observable limits and a sub-stencil lower bound; no physical source, native instrument, interacting field, clock or entropy identification is an antecedent."
       }
+    },
+    {
+      "claim_id": "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
+      "statement": "For the declared spaced-ball read family T with q=2^(8n), m=2^(4n), K=2^(3n), n>=2, one nat per unordered crossing pair and normalization 4/(pi*q^4), periodic half-residue partitions have exact half volume and normalized entropy 8(m-1)/(pi*m*q), which tends to zero. In the actual clipped cube, residue halves of an interior ball of volume 2v converge weakly to its half indicator and have limiting normalized entropy 2^(-1/3)(36*pi)^(1/3)*v^(2/3), below the Euclidean isoperimetric value. Exact finite volume can be restored at vanishing cost. A one-cell axial bridge gives connected noncompact partitions with the same volume and entropy limits; the connected statement does not assert an exact-volume connected minimum. Thus the fixed smooth-section area law alone does not control arbitrary varying partitions or their minima.",
+      "assumptions": [
+        "declared_spaced_ball_uniform_crossing_functional"
+      ],
+      "imported_results": [
+        "BV_translation_and_periodic_averaging",
+        "Euclidean_isoperimetric_inequality"
+      ],
+      "oph_specific_delta": "Separates fixed-section area from variational area using actual residue partitions of the same sparse read graph, including an interior clipped-box violation and a connected control.",
+      "novelty_type": "explicit_read_cut_noncompactness_and_false_isoperimetric_minimum",
+      "falsifier": "The exact periodic cut count is wrong, residue averaging fails for the clipped ball, cardinality correction has nonvanishing normalized cost, the axial bridge fails connectivity, or a fixed-section theorem is misrepresented as quantifying over varying microscopic partitions.",
+      "scope_if_false": "The stated obstruction to variational equivalence fails. Existing fixed-section area results and the separately proved repair retain their own definitions.",
+      "status": "analytic_counterexample_with_independent_complete_finite_cut_replay",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_INTERFACES.tex",
+        "code/m1_interfaces/CONTRACT.md",
+        "code/m1_interfaces/DERIVATION.md",
+        "code/m1_interfaces/model.py",
+        "code/m1_interfaces/check.py",
+        "code/m1_interfaces/verify.py",
+        "code/m1_interfaces/test_interfaces.py",
+        "code/m1_interfaces/receipt.json",
+        "Lean/Geometry/M1Interfaces.lean",
+        "Lean/Geometry/M1InterfacesAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "A finite-graph and continuum-limit counterexample under a declared crossing observable. It consumes no physical entropy, horizon, event, clock or native-source identification."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-VARIATIONAL-AREA-REPAIR",
+      "statement": "For U=T union the integer short ball B_r, with r<=m/2, the sharp bounded-energy L1 compactness threshold is r/K tending to infinity; bounded subsequences of r/K retain noncompact residue partitions. If also r^4/q^2 tends to zero, the unweighted normalized crossing functional has the full strong-L1 perimeter Gamma limit with binary recovery and exact finite cardinality. The explicit schedule q=2^(16t), m=2^(8t), K=2^(6t), r=2^(7t), t>=1, satisfies both conditions, has degree Theta(q^(21/16)), and preserves the explicit local causal/count limits on interior, non-wrapping diamonds, with Theta(q^(71/16)) read incidences per fixed horizon. Flat diamond volume and ordering fraction do not apply to boundary-truncated or wrapping intervals. Every sequence of exact-volume finite minimizers or normalized o(1) near-minimizers has subsequences converging to continuum perimeter minimizers. In the clipped cube, when the specified volume v admits a ball strictly inside the allowed interior cube, the minimum tends to (36*pi)^(1/3)*v^(2/3) and all limiting minimizers are balls up to translation and null sets. This is a defined mathematical cut problem, not physical horizon selection or an equal-accuracy/native cost comparison.",
+      "assumptions": [
+        "declared_spaced_ball_uniform_crossing_functional",
+        "explicit_short_ball_repair_and_exact_volume_problem"
+      ],
+      "imported_results": [
+        "BV_compactness_and_directional_translation_formula",
+        "cube_BV_Poincare_inequality",
+        "Euclidean_isoperimetric_inequality_and_equality_case",
+        "Gamma_convergence_minimizer_principle"
+      ],
+      "oph_specific_delta": "Proves compactness from the actual atomic read stencil, supplies binary recovery and exact cardinality correction, and constructs an explicit sparse regulator whose entire variational area observable and minimum shapes converge.",
+      "novelty_type": "sharp_discrete_read_compactness_threshold_and_constructive_variational_area_repair",
+      "falsifier": "The read-derived translation or BV bounds fail, the lower bound requires an unstated convergence rate, binary exact-volume recovery has nonvanishing error, bounded-energy sequences fail compactness on the explicit schedule, minima fail convergence, or physical horizon selection is inferred from the declared cut problem.",
+      "scope_if_false": "The variational repair or its minimizer conclusion fails. The fixed-section law, raw cut counterexample and separately established source-law boundaries are not promoted or discharged.",
+      "status": "explicit_repair_compactness_Gamma_limit_and_minimizer_theorem_proved_analytically",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_INTERFACES.tex",
+        "code/m1_interfaces/CONTRACT.md",
+        "code/m1_interfaces/DERIVATION.md",
+        "code/m1_interfaces/model.py",
+        "code/m1_interfaces/check.py",
+        "code/m1_interfaces/verify.py",
+        "code/m1_interfaces/test_interfaces.py",
+        "code/m1_interfaces/receipt.json",
+        "Lean/Geometry/M1Interfaces.lean",
+        "Lean/Geometry/M1InterfacesAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "A theorem about an explicitly constructed graph functional and coordinate volume. No physical premise is consumed or discharged; one-nat crossing weights and the finite volume problem are definitions, not observations."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-UNIFORM-ACTION-SPECTRAL-THRESHOLD",
+      "statement": "For the same U and uniform positive action A=6*q^2/M2 times the sum of read differences, with M2 the full second moment, set s=r/K and take r/m tending to zero. At s tending to gamma in (0,infinity), every fixed alias pair (j,ell) has eigenvalue limit 4*pi^2*(|j|^2+gamma^5*|ell|^2); the full positive-mass thermal partition, normal-ordered energy and Gibbs entropy converge to the oscillator spectrum of two three-tori of side lengths 1 and gamma^(-5/2). This is a regulator spectral multiplicity, not six physical spacetime dimensions. For s tending to infinity the extra sector vanishes and the full three-dimensional thermal limit is recovered; for s tending to zero, including the raw dyadic-only family, the normal-ordered thermal energy diverges. The explicit repair also yields a uniform all-mode bound on the clipped Dirichlet cube, compact form and eigenvalue convergence, full thermal limits for nonnegative mass, and smooth compact vacuum/coherent Weyl and commutator limits without a separately weighted nearest-neighbor coupling. Its Dirichlet action retains diagonal 6*q^2*(|U|-1)/M2 and the fixed-zero exterior boundary potential; a clipped graph Laplacian omitting that potential has a constant zero mode and is not covered by the Dirichlet claim. Exact finite ODE evolution is distinguished from the layer tick, at which centered leapfrog remains unstable.",
+      "assumptions": [
+        "declared_spaced_ball_uniform_crossing_functional",
+        "explicit_short_ball_repair_and_exact_volume_problem",
+        "declared_uniform_read_action_and_Gaussian_quantization"
+      ],
+      "imported_results": [
+        "finite_Fourier_analysis_and_Dirichlet_sums",
+        "minmax_and_closed_form_spectral_convergence",
+        "dominated_convergence_and_Gaussian_quantization"
+      ],
+      "oph_specific_delta": "Derives a shared sharp parameter threshold for geometric compactness and hidden oscillator modes, proves the complete critical product-torus thermal limit, and removes the need for an extra specially weighted local stabilizer in the explicit repair.",
+      "novelty_type": "critical_alias_spectrum_and_uniform_read_action_thermal_completion",
+      "falsifier": "The uniform ball-symbol bound fails anywhere in the Brillouin zone, alias multiplicities or second moments are incorrect, high-frequency tails invalidate the full thermal limits, Dirichlet compactness or recovery fails, a substituted clipped graph Laplacian passes the boundary-energy check, the uniform action needs an unreported coupling, or exact ODE convergence is promoted to native one-tick execution.",
+      "scope_if_false": "The spectral classification or uniform-action completion fails. The crossing statistic remains a separate observable, and no source-derived matter or gravitational dynamics is established.",
+      "status": "analytic_all_mode_and_thermal_limits_with_exact_moment_and_hostile_finite_controls",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_INTERFACES.tex",
+        "code/m1_interfaces/CONTRACT.md",
+        "code/m1_interfaces/DERIVATION.md",
+        "code/m1_interfaces/model.py",
+        "code/m1_interfaces/check.py",
+        "code/m1_interfaces/verify.py",
+        "code/m1_interfaces/test_interfaces.py",
+        "code/m1_interfaces/receipt.json",
+        "Lean/Geometry/M1Interfaces.lean",
+        "Lean/Geometry/M1InterfacesAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "A spectral theorem for a declared uniformly normalized graph action and its canonical Gaussian quantization. It does not identify a native matter carrier, physical thermal entropy with crossing counts, or a calibrated physical clock."
+      }
     }
   ]
 }
