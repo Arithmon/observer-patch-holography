@@ -25,9 +25,9 @@
     ]
   },
   "curated_archive": {
-    "file_count": 36,
-    "total_bytes": 935565,
-    "inventory_sha256": "4975736afe4aed67ada6fa086f9bdb1b459492f62e4bc8a81b3aac567c75dd54",
+    "file_count": 40,
+    "total_bytes": 1095470,
+    "inventory_sha256": "7757b8b4899008820bcfab33a752ec500f84fd11f19a803b12ee1f8a62f54b3a",
     "is_complete_copy_of_original_receipts": true,
     "selection": "Two receipt generations, both byte-exact mirrors of the simulator receipts at their recorded commits: the 2026-09-24 generation (exact all-pairs counts through q=89, carriers through q=89) is the current record; the 2026-09-09 generation is retained under its original names because other packages pin its bytes. The q5/q8 logs and the standalone generator serve both; routed_read_law/ retains small conditional q13/q21 routing receipts and phase commitments whose complete event streams are regenerated and independently replayed."
   },
@@ -204,6 +204,21 @@
       "sha256": "c93cecf2bcc4a30834e61e04a1bceaf9992613a87d5fabf64953582a0839a2e6"
     },
     {
+      "path": "flrw_record_density_readout_2026-09-24.json",
+      "bytes": 43672,
+      "sha256": "aa9fe5a1b3b06ede1baa0e0a93ab297f444a29e7d2b106615e930fc31f2f84c7"
+    },
+    {
+      "path": "flrw_record_density_readout_2026-09-24.py",
+      "bytes": 12367,
+      "sha256": "14ccb68d1b32f2319824b69e002bbd3363eb19045ab93d2da493bf8dc5fbe98d"
+    },
+    {
+      "path": "q144_driver_2026-09-24.py",
+      "bytes": 1270,
+      "sha256": "dad317ba4fa9a6ef260c67ddc183da0a6d5329095bda23c70bf33a0cbad112ad"
+    },
+    {
       "path": "routed_read_law/README.md",
       "bytes": 1327,
       "sha256": "85dc0444393c92a728b12d34aaa2a8dbf50222bb49a2c733d6cb4681df8ee7a9"
@@ -339,6 +354,11 @@
       "sha256": "e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
     },
     {
+      "path": "source_net_causal_limit_q144_sampled_2026-09-24.json",
+      "bytes": 102596,
+      "sha256": "2a3c687272883dc219b1dd7a643f632c0b2e104fde65996321f191c54cb360ee"
+    },
+    {
       "path": "source_net_causal_limit_receipt.json",
       "bytes": 216420,
       "sha256": "97c837913b75b2b019428028e114259caedd54345bd5a2efb78abd040f7e11f3"
@@ -363,6 +383,27 @@
       "scope": "Complete baseline/intervention event regeneration under supplied M1, authenticated against retained phase and whole-stream commitments; no axiomatic read-law derivation, physical clock or count-volume attachment.",
       "payload_storage": "deterministic_regeneration_not_retained_archive",
       "replay_entrypoint": "code/source_read_routing/regenerate.py"
+    },
+    {
+      "kind": "flrw_record_density_readout",
+      "label": "2026-09-24",
+      "file": "flrw_record_density_readout_2026-09-24.json",
+      "generator": "flrw_record_density_readout_2026-09-24.py",
+      "source_receipt": "source_net_causal_limit_receipt_2026-09-24.json",
+      "scope": "The FLRW count measure M_sigma = sum sigma_j^4 n_j read off the per-layer counts of the current generation's vertical diamonds for four supplied profiles (constant, de Sitter, radiation, matter; sigma_0 = 1, sigma_K = 2): sandwich, expanding count clock with enclosure and proper-time ratio, redshift reading between congruent reference diamonds. Every identity of Lean/Geometry/SourceNetConformalRecordDensity holds at every level through q = 89.",
+      "nonclaims": "the profile is a supplied datum; the finite orders are the flat comoving orders; uniform cells and unit tick; no physical clock; no curvature; finite K",
+      "verifier": "check_flrw_readout recomputes every mass, clock, enclosure and redshift reading from the family receipt"
+    },
+    {
+      "kind": "sampled_level_extension",
+      "label": "2026-09-24",
+      "file": "source_net_causal_limit_q144_sampled_2026-09-24.json",
+      "generator": "q144_driver_2026-09-24.py",
+      "q": 144,
+      "fibonacci_index": 12,
+      "scope": "The record-metric lane at q = 144 (2,985,984 sites, twelve rounds) with stratified sampled pair counting on the three-dimensional family (exact-support limit 500,000) and exact counting on the two- and one-dimensional controls; produced on an r7i.16xlarge in 6,291 s (neighbour table of 1.96e10 entries). Readings: ordering fraction 0.0955 +- 0.0002 at K = 12 (even-K ladder 0.0600, 0.0803, 0.0887, 0.0932, 0.0955), Myrheim-Meyer 4.055, largest interior diamond 3.946, moving tip 0.1024 +- 0.0004, count clock 1.959 against 2, controls 3.017 and 2.004.",
+      "nonclaims": "sampled estimates with standard errors, not exact counts; the exact family receipt's claim boundary (q <= 89) is unchanged; the level has no theory replay row (rer_cross_check levels compared is empty)",
+      "verifier": "check_sampled_extension checks schema, level, counting modes, cone probes, clock arithmetic and the even-K ladder"
     }
   ],
   "current_generation": {

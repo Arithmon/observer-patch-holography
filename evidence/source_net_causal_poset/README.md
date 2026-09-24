@@ -132,6 +132,32 @@ CAUSAL_POSET_REBUILT_AND_EQUAL_TO_RECEIPTS
 decoding, the receipt schemas and pins, the nonclaim flags, and runs the
 generator at `q = 5` and `q = 8`.
 
+## Extensions of 2026-09-24
+
+Two receipt-level extensions sit beside the current generation and are checked by the
+package verifier without simulator code:
+
+- `flrw_record_density_readout_2026-09-24.json` (generator
+  `flrw_record_density_readout_2026-09-24.py`): the FLRW count measure
+  `M_sigma = sum sigma_j^4 n_j` read off the per-layer counts of the current generation's
+  vertical diamonds for four supplied scale-factor profiles (constant, de Sitter, radiation,
+  matter, normalised to `sigma_0 = 1` and `sigma_K = 2`). It records the sandwich, the
+  expanding count clock with its enclosure and the proper-time ratio of a comoving worldline,
+  and the redshift reading between congruent reference diamonds at the emission and reception
+  epochs. Every identity of `Lean/Geometry/SourceNetConformalRecordDensity.lean` holds at every
+  level through `q = 89`. The verifier recomputes every mass, clock, enclosure and redshift
+  reading. The profile is a supplied datum; the orders are the flat comoving orders; no
+  physical clock, scale or curvature is attached.
+- `source_net_causal_limit_q144_sampled_2026-09-24.json` (driver
+  `q144_driver_2026-09-24.py`): the record-metric lane at `q = 144` (2,985,984 sites, twelve
+  rounds) with stratified sampled pair counting on the three-dimensional family and exact
+  counting on the controls. Readings: ordering fraction `0.0955 +- 0.0002` at `K = 12`, with
+  the even-`K` ladder `0.0600, 0.0803, 0.0887, 0.0932, 0.0955` at `K = 4, 6, 8, 10, 12`;
+  Myrheim-Meyer dimension `4.055`; largest interior diamond `3.946`; moving tip
+  `0.1024 +- 0.0004`; count clock `1.959` against the model-time ratio `2`; controls `3.017`
+  and `2.004`. These are sampled estimates with standard errors; the exact family receipt and
+  its claim boundary (`q <= 89`) are unchanged, and the level has no theory replay row.
+
 ## Boundary
 
 The population, the read law, the round duration and one counted event per
