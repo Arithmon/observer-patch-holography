@@ -3,33 +3,33 @@
   "archive_id": "source_net_causal_poset",
   "source": {
     "repository": "https://github.com/muellerberndt/oph-physics-sim",
-    "commit": "6870893aa0c05fb2e8e84d8492802027d2f2c3da",
-    "working_tree_base_commit": "0cdc4e5ad693422f3f710e79f4513b25c136fc67",
+    "commit": "6aa6e9f25de732fe4a7f7c51fc6c0c97e8c7217e",
+    "working_tree_base_commit": "6aa6e9f25de732fe4a7f7c51fc6c0c97e8c7217e",
     "simulator_worktree_clean": true,
     "producer_files": {
-      "oph_exact/source_net.py": "33a07d51814e29c5d6a0f206543543fc15819422166d00f24809e76042308e14",
-      "oph_exact/verify_source_net_independent.py": "60b9f6ce31662e3491e7e656a902547ef71f2857477101c241c2136bb5675284",
-      "tests/test_exact_source_net.py": "69a288437a786e94c3315cd1e31dbb6b8f42bb3be508f5ab322ad2668d8298ff",
-      "oph_exact/carrier_source_net.py": "9ad6bb389dc2f53e9442370a4d61603576fae9d0ff5810683740c08672f42bd2",
-      "oph_exact/verify_carrier_source_net_independent.py": "b217b8a27eee823045d13937f897c8d5836cbc784911d62e7df2dc55b6fd0030",
-      "tests/test_exact_carrier_source_net.py": "06939f36e14549db4f4ba51aee67785523ab6db26441fbd6c8eea2d11d4151e7",
-      "oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb"
+      "oph_exact/source_net.py": "7599c955954a913f98906caf30fafb3d8a39c5096ef0240e8a85df4e81604977",
+      "oph_exact/verify_source_net_independent.py": "7d297450f26493824b68778f47a9a6ff3cecb8cedf3d57c44962cf2ae6873b7b",
+      "tests/test_exact_source_net.py": "f335ef8f32e46051fb040cee0bc9a92476688e1427aa04fe7ed22e867ee78470",
+      "oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
+      "oph_exact/carrier_source_net.py": "633fb0020cf8fe823c962a16c2a4be8693fd5424cd61a4c988a6696bf044341d",
+      "oph_exact/verify_carrier_source_net_independent.py": "a64098e79427d8aea9fe2a6ed70946e44f058f3c0169ec8c32c148aa3cde0c94",
+      "tests/test_exact_carrier_source_net.py": "ecd267d1b6c2f33efc7284a90b1fe23477f6ce199d8641ac650ea83e53c510f6"
     },
     "research_repository": "https://github.com/FloatingPragma/observer-patch-holography",
-    "research_commit": "af457d6726281e4a979cf9507d6cb2e23088bb13",
+    "research_commit": "1f37f2e8759be8ce12b9d318a94944db4cd1504a",
     "research_files_pinned_by_the_receipts": [
+      "Lean/Geometry/SourceNetCausalCone.lean",
       "code/causal_refinement/source_net_causet.py",
       "code/causal_refinement/source_net_causet_receipt.json",
-      "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex",
-      "Lean/Geometry/SourceNetCausalCone.lean"
+      "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex"
     ]
   },
   "curated_archive": {
-    "file_count": 33,
-    "total_bytes": 525691,
-    "inventory_sha256": "b0652085dcf2a25dffc8c433468d12b18b0cdf1e32560c85ad1d7708e438b5a0",
+    "file_count": 36,
+    "total_bytes": 935565,
+    "inventory_sha256": "4975736afe4aed67ada6fa086f9bdb1b459492f62e4bc8a81b3aac567c75dd54",
     "is_complete_copy_of_original_receipts": true,
-    "selection": "The source-net and carrier receipts, q5/q8 logs and standalone generator are byte-exact; routed_read_law/ retains small conditional q13/q21 routing receipts and phase commitments whose complete event streams are regenerated and independently replayed."
+    "selection": "Two receipt generations, both byte-exact mirrors of the simulator receipts at their recorded commits: the 2026-09-24 generation (exact all-pairs counts through q=89, carriers through q=89) is the current record; the 2026-09-09 generation is retained under its original names because other packages pin its bytes. The q5/q8 logs and the standalone generator serve both; routed_read_law/ retains small conditional q13/q21 routing receipts and phase commitments whose complete event streams are regenerated and independently replayed."
   },
   "result": {
     "levels": [
@@ -38,14 +38,17 @@
       13,
       21,
       34,
-      55
+      55,
+      89
     ],
     "carrier_levels": [
       5,
       8,
       13,
       21,
-      34
+      34,
+      55,
+      89
     ],
     "central_diamond_myrheim_meyer_dimension_3d": [
       2.634,
@@ -53,20 +56,93 @@
       4.149,
       3.612,
       4.099,
-      4.091
+      4.093,
+      4.071
     ],
     "ordering_fraction_3d": [
       0.3063,
       0.2414,
-      0.0882,
+      0.08816,
       0.1383,
-      0.092,
-      0.0926
+      0.09199,
+      0.09248,
+      0.09419
     ],
+    "count_clock_relative_deviation": {
+      "q34": 0.04423,
+      "q55": -0.0464,
+      "q89": 0.02551
+    },
+    "carrier_realization": {
+      "readback_metric_scale_to_source_metric": "1",
+      "neighbour_digest_equal_at_every_level": true,
+      "provenance_order_equals_layered_order_at_every_level": true,
+      "intervention_support_equals_future_cone": true
+    },
+    "rer_replay_byte_equal_levels": [
+      5,
+      6,
+      7
+    ],
+    "rer_compared_fields": 28,
+    "source_net_receipt_sha256": "sha256:1e8a11162ad772e7f9f9bef4dbe93c17fb0e5cc76fa43833d73f6028d9e920de",
+    "carrier_receipt_sha256": "sha256:c93cecf2bcc4a30834e61e04a1bceaf9992613a87d5fabf64953582a0839a2e6",
+    "central_diamond_inside_cube_3d": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "largest_interior_diamond_myrheim_meyer_dimension_3d": [
+      4.044,
+      5.02,
+      2.828,
+      4.379,
+      3.555,
+      3.84,
+      3.915
+    ],
+    "vertical_pair_counting_3d": {
+      "q5": "exact_all_pairs",
+      "q8": "exact_all_pairs",
+      "q13": "exact_all_pairs",
+      "q21": "exact_all_pairs",
+      "q34": "exact_all_pairs",
+      "q55": "exact_all_pairs",
+      "q89": "exact_all_pairs"
+    },
+    "moving_tip_q8": {
+      "ordering_fraction": 0.25,
+      "dimension": 2.889,
+      "pair_counting": "exact_all_pairs"
+    },
+    "moving_tip_q13": {
+      "ordering_fraction": 0.1349,
+      "dimension": 3.642,
+      "pair_counting": "exact_all_pairs"
+    },
+    "moving_tip_q21": {
+      "ordering_fraction": 0.121,
+      "dimension": 3.772,
+      "pair_counting": "exact_all_pairs"
+    },
+    "moving_tip_q34": {
+      "ordering_fraction": 0.1151,
+      "dimension": 3.833,
+      "pair_counting": "exact_all_pairs"
+    },
     "moving_tip_q55": {
-      "ordering_fraction": 0.1057,
-      "standard_error": 0.0015,
-      "dimension": 3.934
+      "ordering_fraction": 0.1077,
+      "dimension": 3.911,
+      "pair_counting": "exact_all_pairs"
+    },
+    "moving_tip_q89": {
+      "ordering_fraction": 0.1024,
+      "dimension": 3.971,
+      "pair_counting": "exact_all_pairs"
     },
     "controls_q55_dimension": {
       "2d": 3.017,
@@ -76,32 +152,14 @@
       "count": 0.172,
       "flat_diamond": 0.1772
     },
-    "count_clock_relative_deviation": {
-      "q34": 0.0442,
-      "q55": -0.0464
+    "controls_q89_dimension": {
+      "2d": 3.022,
+      "1d": 2.008
     },
-    "carrier_realization": {
-      "readback_metric_scale_to_source_metric": 1,
-      "neighbour_digest_equal_at_every_level": true,
-      "provenance_order_equals_layered_order_at_every_level": true,
-      "intervention_support_equals_future_cone": true
-    },
-    "rer_replay_byte_equal_levels": [
-      5,
-      8,
-      13
-    ],
-    "rer_compared_fields": 28,
-    "source_net_receipt_sha256": "sha256:97c837913b75b2b019428028e114259caedd54345bd5a2efb78abd040f7e11f3",
-    "carrier_receipt_sha256": "sha256:755c7721f719dcf6811f602afa108589dce3fb6bacc92530e6958c6b8b358f64",
-    "central_diamond_inside_cube_3d": [
-      false,
-      false,
-      false,
-      false,
-      false,
-      false
-    ]
+    "normalized_count_q89": {
+      "count": 0.1626,
+      "flat_diamond": 0.1653
+    }
   },
   "known_boundaries": {
     "population_selected_by_native_repair": false,
@@ -121,6 +179,11 @@
       "sha256": "d82750cf95e368db9fee7fafd7905c4d235e62173701184a4a56bc1f33495aeb"
     },
     {
+      "path": "build_causal_poset_2026-09-24.py",
+      "bytes": 48438,
+      "sha256": "7dff92d2342485ce0c90aedc11a1fb465a70fd8958807e6814ac3c8aba07534e"
+    },
+    {
       "path": "carrier_source_net_logs/q5_event_log.json.gz",
       "bytes": 10915,
       "sha256": "afc5ad6461788ba27b477104ca95c4d9b927dd4e7c25efc2d0699787971dbd59"
@@ -134,6 +197,11 @@
       "path": "carrier_source_net_receipt.json",
       "bytes": 50549,
       "sha256": "755c7721f719dcf6811f602afa108589dce3fb6bacc92530e6958c6b8b358f64"
+    },
+    {
+      "path": "carrier_source_net_receipt_2026-09-24.json",
+      "bytes": 77888,
+      "sha256": "c93cecf2bcc4a30834e61e04a1bceaf9992613a87d5fabf64953582a0839a2e6"
     },
     {
       "path": "routed_read_law/README.md",
@@ -276,6 +344,11 @@
       "sha256": "97c837913b75b2b019428028e114259caedd54345bd5a2efb78abd040f7e11f3"
     },
     {
+      "path": "source_net_causal_limit_receipt_2026-09-24.json",
+      "bytes": 283548,
+      "sha256": "1e8a11162ad772e7f9f9bef4dbe93c17fb0e5cc76fa43833d73f6028d9e920de"
+    },
+    {
       "path": "support_wiring_receipt.json",
       "bytes": 85091,
       "sha256": "f5af550934f621fcd1c39e5e66df8ad2b2b0132f614fec88067f90e452f444af"
@@ -290,6 +363,150 @@
       "scope": "Complete baseline/intervention event regeneration under supplied M1, authenticated against retained phase and whole-stream commitments; no axiomatic read-law derivation, physical clock or count-volume attachment.",
       "payload_storage": "deterministic_regeneration_not_retained_archive",
       "replay_entrypoint": "code/source_read_routing/regenerate.py"
+    }
+  ],
+  "current_generation": {
+    "label": "2026-09-24",
+    "family": "source_net_causal_limit_receipt_2026-09-24.json",
+    "carrier": "carrier_source_net_receipt_2026-09-24.json",
+    "family_levels": [
+      5,
+      8,
+      13,
+      21,
+      34,
+      55,
+      89
+    ],
+    "carrier_levels": [
+      5,
+      8,
+      13,
+      21,
+      34,
+      55,
+      89
+    ],
+    "note": "byte-exact mirrors of data/exact/source_net_causal_limit_receipt.json and data/exact/carrier_source_net_receipt.json at the simulator commit in `source`; exact all-pairs counts at every level; carriers through q=89",
+    "generator": "build_causal_poset_2026-09-24.py"
+  },
+  "historical_generations": [
+    {
+      "label": "2026-09-09",
+      "family": "source_net_causal_limit_receipt.json",
+      "carrier": "carrier_source_net_receipt.json",
+      "family_levels": [
+        5,
+        8,
+        13,
+        21,
+        34,
+        55
+      ],
+      "carrier_levels": [
+        5,
+        8,
+        13,
+        21,
+        34
+      ],
+      "source": {
+        "repository": "https://github.com/muellerberndt/oph-physics-sim",
+        "commit": "6870893aa0c05fb2e8e84d8492802027d2f2c3da",
+        "working_tree_base_commit": "0cdc4e5ad693422f3f710e79f4513b25c136fc67",
+        "simulator_worktree_clean": true,
+        "producer_files": {
+          "oph_exact/source_net.py": "33a07d51814e29c5d6a0f206543543fc15819422166d00f24809e76042308e14",
+          "oph_exact/verify_source_net_independent.py": "60b9f6ce31662e3491e7e656a902547ef71f2857477101c241c2136bb5675284",
+          "tests/test_exact_source_net.py": "69a288437a786e94c3315cd1e31dbb6b8f42bb3be508f5ab322ad2668d8298ff",
+          "oph_exact/carrier_source_net.py": "9ad6bb389dc2f53e9442370a4d61603576fae9d0ff5810683740c08672f42bd2",
+          "oph_exact/verify_carrier_source_net_independent.py": "b217b8a27eee823045d13937f897c8d5836cbc784911d62e7df2dc55b6fd0030",
+          "tests/test_exact_carrier_source_net.py": "06939f36e14549db4f4ba51aee67785523ab6db26441fbd6c8eea2d11d4151e7",
+          "oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb"
+        },
+        "research_repository": "https://github.com/FloatingPragma/observer-patch-holography",
+        "research_commit": "af457d6726281e4a979cf9507d6cb2e23088bb13",
+        "research_files_pinned_by_the_receipts": [
+          "code/causal_refinement/source_net_causet.py",
+          "code/causal_refinement/source_net_causet_receipt.json",
+          "paper/tex_fragments/SOURCE_NET_CAUSAL_LIMIT.tex",
+          "Lean/Geometry/SourceNetCausalCone.lean"
+        ]
+      },
+      "result": {
+        "levels": [
+          5,
+          8,
+          13,
+          21,
+          34,
+          55
+        ],
+        "carrier_levels": [
+          5,
+          8,
+          13,
+          21,
+          34
+        ],
+        "central_diamond_myrheim_meyer_dimension_3d": [
+          2.634,
+          2.932,
+          4.149,
+          3.612,
+          4.099,
+          4.091
+        ],
+        "ordering_fraction_3d": [
+          0.3063,
+          0.2414,
+          0.0882,
+          0.1383,
+          0.092,
+          0.0926
+        ],
+        "moving_tip_q55": {
+          "ordering_fraction": 0.1057,
+          "standard_error": 0.0015,
+          "dimension": 3.934
+        },
+        "controls_q55_dimension": {
+          "2d": 3.017,
+          "1d": 2.005
+        },
+        "normalized_count_q55": {
+          "count": 0.172,
+          "flat_diamond": 0.1772
+        },
+        "count_clock_relative_deviation": {
+          "q34": 0.0442,
+          "q55": -0.0464
+        },
+        "carrier_realization": {
+          "readback_metric_scale_to_source_metric": 1,
+          "neighbour_digest_equal_at_every_level": true,
+          "provenance_order_equals_layered_order_at_every_level": true,
+          "intervention_support_equals_future_cone": true
+        },
+        "rer_replay_byte_equal_levels": [
+          5,
+          8,
+          13
+        ],
+        "rer_compared_fields": 28,
+        "source_net_receipt_sha256": "sha256:97c837913b75b2b019428028e114259caedd54345bd5a2efb78abd040f7e11f3",
+        "carrier_receipt_sha256": "sha256:755c7721f719dcf6811f602afa108589dce3fb6bacc92530e6958c6b8b358f64",
+        "central_diamond_inside_cube_3d": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "retained_because": "evidence/support_wiring_776, code/causal_refinement/crossing_read_area_law, code/source_feedback_transport, code/source_native_programs and the particle postdiction ledger pin these bytes and re-hash them in their verifiers; its q=55 pair counts are stratified estimates and its carriers run through q=34",
+      "generator": "build_causal_poset.py"
     }
   ]
 }

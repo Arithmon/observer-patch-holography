@@ -5,7 +5,9 @@ Standard library and numpy only. Checks every manifest digest, agreement of
 provenance metadata with the pinned receipts, strict JSON decoding, the
 receipt schemas, the nonclaim flags, the cross-check flags of
 the carrier realization, and rebuilds the poset at q = 5 and q = 8 through
-``build_causal_poset.py`` (which imports no simulator code).
+each generation's own frozen generator (``build_causal_poset.py`` for
+2026-09-09, ``build_causal_poset_2026-09-24.py`` for the current receipts;
+neither imports simulator code).
 """
 
 from __future__ import annotations
@@ -50,8 +52,8 @@ def strict_json(path: Path):
                       object_pairs_hook=unique)
 
 
-def check_metadata(manifest: dict, family: dict, carrier: dict) -> None:
-    """Cross-check descriptive metadata against authenticated archive bytes.
+def check_metadata(source: dict, result: dict, family: dict, carrier: dict, family_name: str, carrier_name: str) -> None:
+    """Cross-check descriptive metadata of one generation against authenticated archive bytes.
 
     Commit-to-source authentication is recorded by the curator; this offline
     check does not contact GitHub or substitute a mutable simulator checkout.
@@ -66,23 +68,61 @@ def check_metadata(manifest: dict, family: dict, carrier: dict) -> None:
                 producers[name] = digest
             elif name.startswith("reverse-engineering-reality/"):
                 research.add(name.removeprefix("reverse-engineering-reality/"))
-    require(manifest["source"]["producer_files"] == producers,
-            "producer metadata differs from receipt pins")
-    declared_research = manifest["source"]["research_files_pinned_by_the_receipts"]
+    require(source["producer_files"] == producers,
+            f"producer metadata differs from receipt pins ({family_name})")
+    declared_research = source["research_files_pinned_by_the_receipts"]
     require(len(declared_research) == len(research) and set(declared_research) == research,
-            "research source census differs from receipt pins")
-    for field, name in (
-        ("source_net_receipt_sha256", "source_net_causal_limit_receipt.json"),
-        ("carrier_receipt_sha256", "carrier_source_net_receipt.json"),
-    ):
-        require(manifest["result"][field] == sha256(HERE / name),
-                f"result receipt digest {field}")
-    for name in ("source_net_causal_limit_receipt.json",
-                 "carrier_source_net_logs/q5_event_log.json.gz",
-                 "carrier_source_net_logs/q8_event_log.json.gz"):
-        require(carrier["source_pins"]["data/exact/" + name] ==
-                sha256(HERE / name).removeprefix("sha256:"),
+            f"research source census differs from receipt pins ({family_name})")
+    require(result["source_net_receipt_sha256"] == sha256(HERE / family_name), f"result receipt digest {family_name}")
+    require(result["carrier_receipt_sha256"] == sha256(HERE / carrier_name), f"result receipt digest {carrier_name}")
+    require(carrier["source_pins"]["data/exact/source_net_causal_limit_receipt.json"] ==
+            sha256(HERE / family_name).removeprefix("sha256:"),
+            f"carrier attachment digest {family_name}")
+    for name in ("carrier_source_net_logs/q5_event_log.json.gz", "carrier_source_net_logs/q8_event_log.json.gz"):
+        require(carrier["source_pins"]["data/exact/" + name] == sha256(HERE / name).removeprefix("sha256:"),
                 f"carrier attachment digest {name}")
+
+
+def check_generation(label: str, source: dict, result: dict, family_name: str, carrier_name: str,
+                     family_levels: list, carrier_levels: list, generator: str) -> None:
+    family = strict_json(HERE / family_name)
+    carrier = strict_json(HERE / carrier_name)
+    require(family["schema"] == "oph.exact.source-net-causal-limit.v1", f"{label}: family schema")
+    require(carrier["schema"] == "oph.exact.carrier-source-net.v1", f"{label}: carrier schema")
+    check_metadata(source, result, family, carrier, family_name, carrier_name)
+    for flag in (
+        "native_repair_selected",
+        "physical_clock_or_spacetime_identified",
+        "poisson_sprinkling",
+        "finite_runs_demonstrate_asymptotic_limit",
+    ):
+        require(family["scope"].get(flag) is False, f"{label}: family scope flag {flag}")
+    require(family["rer_cross_check"]["all_agree"] is True, f"{label}: theory replay cross-check")
+    require(family["rer_cross_check"]["levels_compared"] == [5, 6, 7], f"{label}: cross-check levels")
+    require([lvl["q"] for lvl in family["levels"]] == family_levels, f"{label}: family levels")
+    for lvl in family["levels"]:
+        for fam in lvl["families"]:
+            vi = fam["vertical_intervals"][-1]
+            require(0.0 < vi["ordering_fraction_float"] < 1.0, f"{label}: ordering fraction range")
+            require(1.0 < vi["myrheim_meyer_dimension"] < 6.0, f"{label}: dimension range")
+            for probe in fam["reachability_probes"]:
+                require(probe["outer_cone_violations"] == 0, f"{label}: outer cone violation")
+                require(probe["certified_inner_cone_misses"] == 0, f"{label}: inner cone miss")
+    require(carrier["readback_metric"]["scale_to_paper_position_s"] == "1", f"{label}: readback scale")
+    require([lvl["q"] for lvl in carrier["levels"]] == carrier_levels, f"{label}: carrier levels")
+    for lvl in carrier["levels"]:
+        require(lvl["neighbours"]["equals_source_net_digest"] is True, f"{label}: neighbour digest q={lvl['q']}")
+        require(lvl["provenance"]["derived_rank_equals_round"] is True, f"{label}: provenance rank q={lvl['q']}")
+        require(lvl["provenance"]["read_relation_equals_neighbour_digest"] is True, f"{label}: read relation q={lvl['q']}")
+        require(lvl["intervention"]["equals_future_cone_all_rounds"] is True, f"{label}: intervention q={lvl['q']}")
+    require(carrier["rer_cross_check"].get("all_agree", carrier["rer_cross_check"].get("agree", True)) is not False,
+            f"{label}: carrier theory cross-check")
+    result_run = subprocess.run(
+        [sys.executable, str(HERE / generator), "--q", "5", "8", "--quiet"],
+        capture_output=True, text=True, check=False)
+    require(result_run.returncode == 0, f"{label}: generator failed: {result_run.stderr[-2000:]}")
+    tail = result_run.stdout.strip().splitlines()[-1] if result_run.stdout.strip() else ""
+    require("CAUSAL_POSET_REBUILT_AND_EQUAL_TO_RECEIPTS" in tail, f"{label}: generator status: {tail[:200]}")
 
 
 def main() -> int:
@@ -117,48 +157,12 @@ def main() -> int:
             hashlib.sha256("".join(inventory_lines).encode("utf-8")).hexdigest(),
             "inventory digest")
 
-    family = strict_json(HERE / "source_net_causal_limit_receipt.json")
-    carrier = strict_json(HERE / "carrier_source_net_receipt.json")
-    require(family["schema"] == "oph.exact.source-net-causal-limit.v1", "family schema")
-    require(carrier["schema"] == "oph.exact.carrier-source-net.v1", "carrier schema")
-    check_metadata(manifest, family, carrier)
-    for flag in (
-        "native_repair_selected",
-        "physical_clock_or_spacetime_identified",
-        "poisson_sprinkling",
-        "finite_runs_demonstrate_asymptotic_limit",
-    ):
-        require(family["scope"].get(flag) is False, f"family scope flag {flag}")
-    require(family["rer_cross_check"]["all_agree"] is True, "theory replay cross-check")
-    require(family["rer_cross_check"]["levels_compared"] == [5, 6, 7], "cross-check levels")
-    require([lvl["q"] for lvl in family["levels"]] == [5, 8, 13, 21, 34, 55], "family levels")
-    for lvl in family["levels"]:
-        for fam in lvl["families"]:
-            vi = fam["vertical_intervals"][-1]
-            require(0.0 < vi["ordering_fraction_float"] < 1.0, "ordering fraction range")
-            require(1.0 < vi["myrheim_meyer_dimension"] < 6.0, "dimension range")
-            for probe in fam["reachability_probes"]:
-                require(probe["outer_cone_violations"] == 0, "outer cone violation")
-                require(probe["certified_inner_cone_misses"] == 0, "inner cone miss")
-
-    require(carrier["readback_metric"]["scale_to_paper_position_s"] == "1", "readback scale")
-    require([lvl["q"] for lvl in carrier["levels"]] == [5, 8, 13, 21, 34], "carrier levels")
-    for lvl in carrier["levels"]:
-        require(lvl["neighbours"]["equals_source_net_digest"] is True, f"neighbour digest q={lvl['q']}")
-        require(lvl["provenance"]["derived_rank_equals_round"] is True, f"provenance rank q={lvl['q']}")
-        require(lvl["provenance"]["read_relation_equals_neighbour_digest"] is True, f"read relation q={lvl['q']}")
-        require(lvl["intervention"]["equals_future_cone_all_rounds"] is True, f"intervention q={lvl['q']}")
-    require(carrier["rer_cross_check"].get("all_agree", carrier["rer_cross_check"].get("agree", True)) is not False, "carrier theory cross-check")
-
-    result = subprocess.run(
-        [sys.executable, str(HERE / "build_causal_poset.py"), "--q", "5", "8", "--quiet"],
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    require(result.returncode == 0, f"generator failed: {result.stderr[-2000:]}")
-    tail = result.stdout.strip().splitlines()[-1] if result.stdout.strip() else ""
-    require("CAUSAL_POSET_REBUILT_AND_EQUAL_TO_RECEIPTS" in tail, f"generator status: {tail[:200]}")
+    current = manifest["current_generation"]
+    check_generation(current["label"], manifest["source"], manifest["result"], current["family"], current["carrier"],
+                     current["family_levels"], current["carrier_levels"], current["generator"])
+    for gen in manifest["historical_generations"]:
+        check_generation(gen["label"], gen["source"], gen["result"], gen["family"], gen["carrier"],
+                         gen["family_levels"], gen["carrier_levels"], gen["generator"])
     print("CAUSAL_POSET_ARCHIVE_VERIFIED", len(files), "files")
     return 0
 

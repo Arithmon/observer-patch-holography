@@ -270,6 +270,19 @@ def test_causal_poset_package_carries_the_finite_readings() -> None:
     family = _json(f"{POSET_PACKAGE}/source_net_causal_limit_receipt.json")
     assert family["schema"] == "oph.exact.source-net-causal-limit.v1"
     assert [level["q"] for level in family["levels"]] == [5, 8, 13, 21, 34, 55]
+    current = _json(f"{POSET_PACKAGE}/source_net_causal_limit_receipt_2026-09-24.json")
+    assert [level["q"] for level in current["levels"]] == [5, 8, 13, 21, 34, 55, 89]
+    assert current["rer_cross_check"]["all_agree"] is True
+    for level in current["levels"]:
+        for fam in level["families"]:
+            assert fam["vertical_pair_counting"] == "exact_all_pairs"
+    q89 = [fam for fam in current["levels"][-1]["families"] if fam["dimension"] == 3][0]
+    assert 4.0 < q89["vertical_intervals"][-1]["myrheim_meyer_dimension"] < 4.2
+    current_carrier = _json(f"{POSET_PACKAGE}/carrier_source_net_receipt_2026-09-24.json")
+    assert [level["q"] for level in current_carrier["levels"]] == [5, 8, 13, 21, 34, 55, 89]
+    for level in current_carrier["levels"]:
+        assert level["provenance"]["derived_rank_equals_round"] is True
+        assert level["intervention"]["equals_future_cone_all_rounds"] is True
     assert family["rer_cross_check"]["all_agree"] is True
     assert family["scope"]["native_repair_selected"] is False
     assert family["scope"]["physical_clock_or_spacetime_identified"] is False
@@ -366,8 +379,11 @@ def test_causal_archive_rejects_conflicting_receipt_metadata(
         "log_attachment": "data/exact/carrier_source_net_logs/q5_event_log.json.gz",
     }[mutation]
     carrier["source_pins"][key] = "0" * 64
+    generation = manifest["historical_generations"][0]
     with pytest.raises(SystemExit, match="FAIL:"):
-        causal_archive_checker.check_metadata(manifest, family, carrier)
+        causal_archive_checker.check_metadata(
+            generation["source"], generation["result"], family, carrier, generation["family"], generation["carrier"],
+        )
 
 
 def test_causal_archive_rejects_duplicate_json_metadata(causal_archive_checker, tmp_path) -> None:
