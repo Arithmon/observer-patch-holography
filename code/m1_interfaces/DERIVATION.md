@@ -283,7 +283,7 @@ translated lift then requires more time than T and cannot add a relation.
 Equal cells of weight (a/c)h^3 and almost-everywhere convergence of generated
 interval and strict-pair indicators give these diamonds' flat volume
 pi c^3 tau^4/24, where tau is the endpoint proper-time separation. The
-oriented strict-pair measure is V^2/20, as proved on main in
+oriented strict-pair measure is V^2/20, as proved in
 `Lean/Geometry/FlatDiamondNormalization.lean` and
 `Lean/Geometry/OrderingFractionFourDimensional.lean`. Thus, for P counted
 causally ordered pairs and N interval events, P/N^2 tends to 1/20 and the

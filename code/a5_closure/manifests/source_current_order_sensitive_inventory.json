@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 833,
+    "file_count": 839,
     "files": [
       {
         "byte_count": 40994,
@@ -423,6 +423,16 @@
         "sha256": "sha256:c86d3f7eb320490bd944d3c05bb838115c3400e297a0731e311cf4c6b24ef025"
       },
       {
+        "byte_count": 5143,
+        "path": "Lean/Geometry/M1Interfaces.lean",
+        "sha256": "sha256:3c795d1273c0e9f6aac6e985e1f99a89492b6a962e2669a925cef7d46b4686f7"
+      },
+      {
+        "byte_count": 1347,
+        "path": "Lean/Geometry/M1InterfacesAxiomAudit.lean",
+        "sha256": "sha256:63988bb1eaf00104545046259ce42a9da117d287841f03eba1e0768c00c85ffb"
+      },
+      {
         "byte_count": 7929,
         "path": "Lean/Geometry/M1Necessity.lean",
         "sha256": "sha256:2b282b25fe3f82153d2780366b36e6eea8cd4f7685d0e08a9ebd15355062ff98"
@@ -431,6 +441,26 @@
         "byte_count": 1950,
         "path": "Lean/Geometry/M1NecessityAxiomAudit.lean",
         "sha256": "sha256:41f1652a454b94dde7f3a198b4c45badba075a54d13f4ed5a23ac533c3c4f677"
+      },
+      {
+        "byte_count": 4737,
+        "path": "Lean/Geometry/M1QuantumTransport.lean",
+        "sha256": "sha256:326dcb92283a87efb0dcadcb3b9d0a8a036692beb849891a6edc71880379b40c"
+      },
+      {
+        "byte_count": 1695,
+        "path": "Lean/Geometry/M1QuantumTransportAxiomAudit.lean",
+        "sha256": "sha256:40063f13218431c828552d540f28fbebf344b155c677cdd31949899f8124d7ef"
+      },
+      {
+        "byte_count": 2509,
+        "path": "Lean/Geometry/M1VacuumFidelity.lean",
+        "sha256": "sha256:7c5b21b93d96edcc4c20e012747a8c2e9489b89bebd912b19d8800257b4c6a7d"
+      },
+      {
+        "byte_count": 1434,
+        "path": "Lean/Geometry/M1VacuumFidelityAxiomAudit.lean",
+        "sha256": "sha256:b17c37b0a000011c5757b9be7c30aa97584bbcc18aa9417f778b879094de86d0"
       },
       {
         "byte_count": 7930,
@@ -1835,7 +1865,7 @@
       {
         "byte_count": 35153,
         "path": "code/a5_closure/README.md",
-        "sha256": "sha256:89bafeabc19de4420dc369a0cba41a38df8239562e12958c121c040e869c02fd"
+        "sha256": "sha256:15093081e54257ed45b943af32a48ad4bf18c651241741a55b9387de56491b79"
       },
       {
         "byte_count": 37263,
@@ -2373,9 +2403,9 @@
         "sha256": "sha256:860bd8f99d9c99567e0042b6cb46aead74d483e31ebd70bacc52f5edf22f96b0"
       },
       {
-        "byte_count": 168813,
+        "byte_count": 171111,
         "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:3c987ef8daef4ab5c9fb6f28fd552057b435ad7bb82878ee26c39e78a2a3a73e"
+        "sha256": "sha256:42bb650fd7e31e69b0517fe0c8b795bb04d38f1de4d07ac5bc43a32c44edf4e9"
       },
       {
         "byte_count": 3552,
@@ -2398,9 +2428,9 @@
         "sha256": "sha256:13e892346e1fd74ca6512098823398ef1658b2d9c423a2201c748242a70d0b52"
       },
       {
-        "byte_count": 13878,
+        "byte_count": 13936,
         "path": "code/a5_closure/source_current_tomography_stage2.md",
-        "sha256": "sha256:a9b3cda5fd3a671d6f8bc372e696e6238985576e98f6a97eaf18be75ecb1ff8e"
+        "sha256": "sha256:8ade3cd9ac823a5e8af14518f63bdf3b3a0b83e33e8914db1ce3bc1ef1ce80f2"
       },
       {
         "byte_count": 34067,
@@ -2543,9 +2573,9 @@
         "sha256": "sha256:15b5e07ff026ca12fec6d1b8ac04146adf970a55f54a475c63501cce6b26258a"
       },
       {
-        "byte_count": 21109,
+        "byte_count": 21068,
         "path": "code/a5_closure/tests/test_source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:d6b06183f229d824f61e02e487f6947864b82ab2eea63f5563b44fdf38811e50"
+        "sha256": "sha256:c1d0c65b42106e93e7a93ffc881f6e1094087837d66f78ef0aefb06f0d3b3499"
       },
       {
         "byte_count": 2867,
@@ -2573,9 +2603,9 @@
         "sha256": "sha256:1646cc0e77b7efc7dbea77cdfdaeea47a9918b805c1e1aea0791b754a7454a8a"
       },
       {
-        "byte_count": 68214,
+        "byte_count": 69096,
         "path": "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:94bf2f594007d26763b3b0a3d3596a2cf057d5fd6a6b81d0a7c523df25a35070"
+        "sha256": "sha256:ce6622cda8d6ac24ad3f7e15cef86d13d19c6dcd8cebe38b748dc17716d022c7"
       },
       {
         "byte_count": 10424,
@@ -3880,7 +3910,7 @@
       {
         "byte_count": 9860,
         "path": "code/source_record_gluing/receipt.json",
-        "sha256": "sha256:ea542b266c18e38eeb3121a0981f0c2f3888efe88ace59946292ccd3d4df3b63"
+        "sha256": "sha256:c4e6571c634fdc17447072cc929e3195e75b41d0c46c7365338d2d40dfdccf05"
       },
       {
         "byte_count": 11938,
@@ -4130,7 +4160,7 @@
       {
         "byte_count": 8628,
         "path": "code/source_selection_model/receipt.json",
-        "sha256": "sha256:1c0b72bc5ec86b99fb647752308b4ed3e4d3675f7800274f33c2aff826eddec0"
+        "sha256": "sha256:cf1c1abcba2054b213367d6a8b0f35386af923db97ddb4f3b2cbf89c08e657cd"
       },
       {
         "byte_count": 11004,
@@ -4363,10 +4393,10 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:66d7394c29e32e4ad0adc14335258290eac0925ee58319b18f3a62e93352ae6c",
+    "files_sha256": "sha256:78aaa258c3a8055a4a558a9b41e02b2950ddef0f4c0e1f2a56ccdf9c9e5cf23a",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
-  "audited_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
+  "audited_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8",
   "candidates": [
     {
       "candidate_id": "registered_adjacency_response",
@@ -5676,18 +5706,18 @@
   "fixture_used_as_reconstruction_oracle": false,
   "implementation_pins": [
     {
-      "bytes": 168813,
+      "bytes": 171111,
       "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:3c987ef8daef4ab5c9fb6f28fd552057b435ad7bb82878ee26c39e78a2a3a73e"
+      "sha256": "sha256:42bb650fd7e31e69b0517fe0c8b795bb04d38f1de4d07ac5bc43a32c44edf4e9"
     },
     {
-      "bytes": 68214,
+      "bytes": 69096,
       "path": "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:94bf2f594007d26763b3b0a3d3596a2cf057d5fd6a6b81d0a7c523df25a35070"
+      "sha256": "sha256:ce6622cda8d6ac24ad3f7e15cef86d13d19c6dcd8cebe38b748dc17716d022c7"
     }
   ],
   "integrated_tree_review": {
-    "from_upstream_main_sha": "543298e06ce41d47f44c7707fdb2c32723cca10e",
+    "from_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
     "prior_reviews": [
       {
         "from_upstream_main_sha": "2b03a95caf5030272f7b426b964e816f650153f8",
@@ -6873,272 +6903,327 @@
           }
         ],
         "through_upstream_main_sha": "543298e06ce41d47f44c7707fdb2c32723cca10e"
+      },
+      {
+        "from_upstream_main_sha": "543298e06ce41d47f44c7707fdb2c32723cca10e",
+        "surface_count": 43,
+        "surfaces": [
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/RecordGluingPrinciple.lean",
+            "reason": "Proves quadratic isotropy under finite carrier symmetry, graded path and refinement clock bounds, transcript capacity, reversible evaluation and interior-cube inequalities; it defines no port-indexed source perturbation, composition word, inverse or history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean",
+            "reason": "Audits the axiom dependencies of the local-clock lemmas and adds no source operation or history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/SourceRecordGluing.lean",
+            "reason": "Formalizes the flight/wait grammar, cone, covering join, lowering and localized-intervention ancestry of classical retained records under the proposed RG law; classical register transport supplies no reversible twelve-port perturbation families or mixed-order response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/SourceRecordGluingAxiomAudit.lean",
+            "reason": "Audits the axiom dependencies of the record-gluing theorems and adds no source operation or history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/SourceSelectionLocality.lean",
+            "reason": "Proves the all-program local-transcript obstruction, the exact channel-decoder criterion and the population arithmetic of the scalar-seam model; it contains no port-indexed perturbation family or executed response history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean",
+            "reason": "Audits the axiom dependencies of the locality theorems and adds no source operation or history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/rg_principle/CONTRACT.md",
+            "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/rg_principle/DERIVATION.md",
+            "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/rg_principle/README.md",
+            "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/rg_principle/__init__.py",
+            "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/rg_principle/certificates.py",
+            "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/rg_principle/checker.py",
+            "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/rg_principle/compiler.py",
+            "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/rg_principle/receipt.json",
+            "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/rg_principle/receipt.py",
+            "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/rg_principle/test_rg_principle.py",
+            "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+          },
+          {
+            "candidate_id": "fermionic_hypercharge_current_histories",
+            "decision": "EXTENDS_EXISTING_CANDIDATE",
+            "path": "code/sm_fermion_current/test_spin_exchange_integration.py",
+            "reason": "Integration test binding the labelled fermionic current histories to the spin-exchange boundary; it carries the same downstream physical-current label and supplies no source-native perturbation family."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_record_gluing/README.md",
+            "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_record_gluing/__init__.py",
+            "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_record_gluing/build.py",
+            "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_record_gluing/capture.json",
+            "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_record_gluing/check_process.py",
+            "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_record_gluing/process.py",
+            "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_record_gluing/receipt.json",
+            "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_record_gluing/test_process.py",
+            "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_record_gluing/verify.py",
+            "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/CONTRACT.md",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/DERIVATION.md",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/README.md",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/RECORD_GLUING.md",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/__init__.py",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/channels.py",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/finite_model.py",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/geometry.py",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/grammar.py",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/receipt.json",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/records.json",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/records.py",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/response.json",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/response.py",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/test_model.py",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/verify.py",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "code/source_selection_model/verify_response.py",
+            "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+          }
+        ],
+        "through_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8"
       }
     ],
-    "surface_count": 43,
+    "surface_count": 8,
     "surfaces": [
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/RecordGluingPrinciple.lean",
-        "reason": "Proves quadratic isotropy under finite carrier symmetry, graded path and refinement clock bounds, transcript capacity, reversible evaluation and interior-cube inequalities; it defines no port-indexed source perturbation, composition word, inverse or history."
+        "path": "Lean/Geometry/M1Interfaces.lean",
+        "reason": "Bounds finite crossing changes, binary volume correction and thin connecting paths and checks the sparse interface scale algebra; it contains no port-indexed source perturbation family or executed response history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean",
-        "reason": "Audits the axiom dependencies of the local-clock lemmas and adds no source operation or history."
+        "path": "Lean/Geometry/M1InterfacesAxiomAudit.lean",
+        "reason": "Audits the axiom dependencies of the interface-scale reductions and adds no source operation or history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/SourceRecordGluing.lean",
-        "reason": "Formalizes the flight/wait grammar, cone, covering join, lowering and localized-intervention ancestry of classical retained records under the proposed RG law; classical register transport supplies no reversible twelve-port perturbation families or mixed-order response histories."
+        "path": "Lean/Geometry/M1Necessity.lean",
+        "reason": "Checks the binary route subroutine, layer obstruction, finite cut algebra and positive-action normalization bounds of the sparse read-family comparison; it defines no port-indexed source perturbation, composition word, inverse or history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/SourceRecordGluingAxiomAudit.lean",
-        "reason": "Audits the axiom dependencies of the record-gluing theorems and adds no source operation or history."
+        "path": "Lean/Geometry/M1NecessityAxiomAudit.lean",
+        "reason": "Audits the axiom dependencies of the sparse read-family reductions and adds no source operation or history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/SourceSelectionLocality.lean",
-        "reason": "Proves the all-program local-transcript obstruction, the exact channel-decoder criterion and the population arithmetic of the scalar-seam model; it contains no port-indexed perturbation family or executed response history."
+        "path": "Lean/Geometry/M1QuantumTransport.lean",
+        "reason": "Proves the dot-product deficit, weighted trace budget and the other finite reductions of the native-time quantum transport theorem; it defines no port-indexed source operation or raw history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean",
-        "reason": "Audits the axiom dependencies of the locality theorems and adds no source operation or history."
+        "path": "Lean/Geometry/M1QuantumTransportAxiomAudit.lean",
+        "reason": "Audits the axiom dependencies of the quantum-transport reductions and adds no source operation or history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/rg_principle/CONTRACT.md",
-        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
+        "path": "Lean/Geometry/M1VacuumFidelity.lean",
+        "reason": "Proves finite symplectic-mode algebra identities for the full-spectrum vacuum fidelity theorem; scalar mode arithmetic supplies no twelve-port perturbation family or mixed-order history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/rg_principle/DERIVATION.md",
-        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/rg_principle/README.md",
-        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/rg_principle/__init__.py",
-        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/rg_principle/certificates.py",
-        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/rg_principle/checker.py",
-        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/rg_principle/compiler.py",
-        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/rg_principle/receipt.json",
-        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/rg_principle/receipt.py",
-        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/rg_principle/test_rg_principle.py",
-        "reason": "Local-clock reduction, finite Boolean compiler, copy-channel and resource controls for the proposed RG law; classical circuits and symbolic controls supply no port-indexed source perturbation histories."
-      },
-      {
-        "candidate_id": "fermionic_hypercharge_current_histories",
-        "decision": "EXTENDS_EXISTING_CANDIDATE",
-        "path": "code/sm_fermion_current/test_spin_exchange_integration.py",
-        "reason": "Integration test binding the labelled fermionic current histories to the spin-exchange boundary; it carries the same downstream physical-current label and supplies no source-native perturbation family."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_record_gluing/README.md",
-        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_record_gluing/__init__.py",
-        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_record_gluing/build.py",
-        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_record_gluing/capture.json",
-        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_record_gluing/check_process.py",
-        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_record_gluing/process.py",
-        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_record_gluing/receipt.json",
-        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_record_gluing/test_process.py",
-        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_record_gluing/verify.py",
-        "reason": "Reference execution of the proposed RG process grammar on classical retained records with an additive diagnostic; it carries no reversible port perturbation families or mixed-order response histories."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/CONTRACT.md",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/DERIVATION.md",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/README.md",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/RECORD_GLUING.md",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/__init__.py",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/channels.py",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/finite_model.py",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/geometry.py",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/grammar.py",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/receipt.json",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/records.json",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/records.py",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/response.json",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/response.py",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/test_model.py",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/verify.py",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
-      },
-      {
-        "candidate_id": null,
-        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "code/source_selection_model/verify_response.py",
-        "reason": "Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope."
+        "path": "Lean/Geometry/M1VacuumFidelityAxiomAudit.lean",
+        "reason": "Audits the axiom dependencies of the vacuum-fidelity reductions and adds no source operation or history."
       }
     ],
-    "through_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8"
+    "through_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8"
   },
-  "inventory_sha256": "sha256:ba3a440aedc92b4dbe28c509fc4985191df8144e1b328be22b3bd42584237235",
+  "inventory_sha256": "sha256:cc865e82c59699ec5640322c0e63dd2e050ade069da9f1829b8e03b978c48138",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -7167,7 +7252,7 @@
   ],
   "physical_current_source_bridge_attained": false,
   "positive_stages_authorized": false,
-  "previous_inventory_base_sha": "543298e06ce41d47f44c7707fdb2c32723cca10e",
+  "previous_inventory_base_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
   "program": "SOURCE-CURRENT-TOMOGRAPHY-0",
   "qualification_fields": [
     "source_native",

@@ -5,8 +5,6 @@
 Determine which conclusions require M1's complete metric-neighbor read law.
 Construct explicit alternative families and prove what they preserve and what
 they change. A proposed physical premise or a finite fit is not the result.
-The integrated base is main 7f588ea5444c87263e62dd8e30f0805f19d09b9d.
-PRs 968 and 977 are included, with their retained information bounds.
 
 ## Deliverables
 

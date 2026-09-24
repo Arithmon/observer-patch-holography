@@ -3,14 +3,14 @@
 The machine-checked inventory selects every current claim whose assumptions
 directly contain the golden population/read/clock/count law, the complete M1
 routing interface, the metric-kernel scalar action or the dense independent-
-record experiment. There are eight such claims at main 7f588ea5. The receipt
+record experiment. There are eight such claims in the bound claim registry. The receipt
 binds the complete original claim rows.
 Adding or omitting a consumer requires an explicit inventory update, not a
 silently shortened list. The dispositions concern the named results below;
 several registry rows collect much broader mixed-scope conclusions.
 
 The audit also closes the registered dependency graph forward from these
-eight claims: 95 existing rows, including the eight direct consumers, are
+eight claims: 108 existing rows, including the eight direct consumers, are
 enumerated in `downstream.json`. The receipt retains each row's exact
 assumptions, original full-row hash and every internal dependency edge with
 its stated role. A missing row or newly reachable claim fails verification.
@@ -69,4 +69,4 @@ claim-by-claim requirements retained in the receipt:
 
 This is the completed necessity decision for these named consumers. The
 positive results and explicit counterexample are the deliverables; a promise
-to derive the missing physical source in a later PR is not part of their proof.
+to derive the missing physical source later is not part of their proof.

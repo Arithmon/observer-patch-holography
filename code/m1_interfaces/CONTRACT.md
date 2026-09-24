@@ -7,8 +7,8 @@ fixed smooth sections also preserves area as a variational observable over
 actual finite site partitions. If it does not, construct and prove a repair
 without selecting edges by the desired outcome or fitting entropy weights.
 
-This work is self-contained on main 9b527a4f. The spaced-ball comparison was
-introduced in PR 981; no file or unmerged theorem from that PR is required.
+The spaced-ball comparison is also introduced in `code/m1_necessity`; no file
+or theorem from that package is required here.
 
 ## Deliverables
 
@@ -50,5 +50,3 @@ The comparison concerns a declared crossing statistic and coordinate volume.
 It does not identify a physical entropy, select a horizon, derive black-hole
 dynamics, implement a native source, or discharge a physical M1/RG premise.
 The original fixed-section theorem remains valid within its stated scope.
-Review logs stay outside the scientific repository, following the maintainer's
-placement correction on PR 977.

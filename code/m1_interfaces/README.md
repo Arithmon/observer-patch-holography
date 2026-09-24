@@ -87,11 +87,10 @@ and exact-volume recovery, minimizer limits, ball-symbol bound and full
 thermal conclusions. Eight Lean reductions prove the finite cut-change
 bound and the normalization/scale algebra, with transitive standard-axiom
 audits. The universal BV, isoperimetric and spectral proofs are analytic.
-`CONTRACT.md` states the objective and exit. Review reports are kept outside
-the scientific checkout in accordance with the maintainer's placement policy.
+`CONTRACT.md` states the objective and exit.
 
-The package is self-contained on main 9b527a4f. PR 981 introduced the
-spaced-ball comparison, but no unmerged code or theorem from it is imported.
+The spaced-ball stencil is defined in full here; nothing is imported from
+`code/m1_necessity`, which introduces the same stencil in its own comparison.
 The existing fixed-section area and source-causal claims keep their complete
 original statements and physical premise classifications. This work proves
 a stronger interface and field comparison without asserting that the

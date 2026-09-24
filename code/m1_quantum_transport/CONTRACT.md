@@ -8,9 +8,10 @@ isotropic light speed as the complete native causal cone. Charge actual
 elapsed time and retain intermediate events. A formal Dirac limit with a
 renamed simulation tick is not a successful completion.
 
-This work starts on main 9b527a4f and builds intellectually on PRs 981--983.
-No unmerged source file is imported. Those results motivate the stronger
-question; they are not premises of the new speed-budget proof.
+This work builds intellectually on the sparse read-family, interface and
+vacuum-fidelity results in `code/m1_necessity`, `code/m1_interfaces` and
+`code/m1_vacuum_fidelity`; no source file is imported from them. Those results
+motivate the stronger question; they are not premises of the new speed-budget proof.
 
 ## Deliverables
 
@@ -55,6 +56,4 @@ The declared mathematical operations are quantum extensions of the previous
 flight grammar. Their admission by a complete twelve-port A1--A3 source is
 not assumed or certified. A coin index is not identified with a central port.
 The source-response attachment, physical energy calibration and interacting
-matter remain outside any claimed completion. Review logs stay outside the
-scientific checkout. Independent local validation is required; CI monitoring
-can be completed in the requested later audit step.
+matter remain outside any claimed completion.

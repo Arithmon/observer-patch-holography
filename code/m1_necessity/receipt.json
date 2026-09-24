@@ -1543,6 +1543,104 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "d739a3423ece46997cbf956c5f322ce096930cd0faf54b19f2be740f84387b5d"
       },
+      "OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT": {
+        "assumptions": [
+          "declared_charged_coherent_flight_grammar",
+          "explicit_three_axis_fermionic_walk_and_quasienergy_reference"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "580f14a239e1119f1f0351defd63969e5d997904050ebbac86511800d265d791"
+      },
+      "OPH-M1-COHERENT-VELOCITY-SEPARATION": {
+        "assumptions": [
+          "declared_operational_fundamental_spinor_module"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "0a0815ce29695ccff06787d3864a598211e13905e40b09b102becce9ac0fccd1"
+      },
+      "OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION": {
+        "assumptions": [
+          "declared_fixed_finite_hamiltonian_site_factors"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "bc8a417b82ecbf12d833717ce05e17bb6cfaca641bb24a01302b31c8b73dc18e"
+      },
+      "OPH-M1-FINITE-STENCIL-CLOCK-BOUND": {
+        "assumptions": [
+          "declared_finite_range_unitary_and_exact_native_period"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "f657526343f225913e40e07369b8d0dec6cc30908824599aa244f3aedd7933b5"
+      },
+      "OPH-M1-GLOBAL-VACUUM-FIDELITY": {
+        "assumptions": [
+          "declared_original_harmonic_vacuum_and_signed_split_program"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "7ab30bdf3ecf4bc3f857a6408c1b5e33e1098f57752140321632e973ff41a8fe"
+      },
+      "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION": {
+        "assumptions": [
+          "declared_spaced_ball_uniform_crossing_functional"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "9648a2642feb7e1bcf46095497bea9b07bed376f22d5163270f9eb57d4d29b40"
+      },
+      "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT": {
+        "assumptions": [
+          "declared_charged_coherent_flight_grammar",
+          "explicit_tetrahedral_fermionic_walk_and_quasienergy_reference"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "65fe63ba0a0264950a161dbcb9cef15e27190cf3fd7a1cbfe2a9f2d3d51d4c2f"
+      },
+      "OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION": {
+        "assumptions": [
+          "declared_scalar_polynomial_symplectic_action_update"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "64b2107511e39358c10d1a4736b01f965d5d770d79264ca6356330fb9e11d58f"
+      },
+      "OPH-M1-QUANTUM-VELOCITY-BUDGET": {
+        "assumptions": [
+          "declared_charged_coherent_flight_grammar"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "5b83d297f35ecc0f4f52610d77661c2e4a450d8a577a4d55c720c4cc868bb74d"
+      },
+      "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR": {
+        "assumptions": [
+          "declared_original_harmonic_vacuum_and_signed_split_program",
+          "explicit_periodic_sparse_and_dense_read_actions"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "50ab861e2797167c9afa29743a98d8f5edfd98e7a460c978b4b66efe47c86200"
+      },
+      "OPH-M1-SPLIT-SIGNAL-CLOCK-OBSTRUCTION": {
+        "assumptions": [
+          "declared_original_harmonic_vacuum_and_signed_split_program",
+          "explicit_periodic_sparse_and_dense_read_actions"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "50c49eaf62fff064f56cd1c78d51a148d203fca0316e14487cf310926ed04bd9"
+      },
+      "OPH-M1-UNIFORM-ACTION-SPECTRAL-THRESHOLD": {
+        "assumptions": [
+          "declared_spaced_ball_uniform_crossing_functional",
+          "explicit_short_ball_repair_and_exact_volume_problem",
+          "declared_uniform_read_action_and_Gaussian_quantization"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "7c09cd4d6a58c6b5bf02c81b059731dda73e756078a78f10f7655254d72107d7"
+      },
+      "OPH-M1-VARIATIONAL-AREA-REPAIR": {
+        "assumptions": [
+          "declared_spaced_ball_uniform_crossing_functional",
+          "explicit_short_ball_repair_and_exact_volume_problem"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "7e0b03a718d283d25a4a11df6c3de8a1de3368327a5ab56d7c79cd3505be7adc"
+      },
       "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM": {
         "assumptions": [
           "declared_native_stored_program_banks_and_global_error_budget"
@@ -1899,6 +1997,11 @@
         "to": "OPH-GR-D6-HORIZON-RECORD"
       },
       {
+        "from": "OPH-BH-CROSSING-READ-AREA-LAW",
+        "role": "Supplies the fixed-section crossing-area comparison. The counterexample tests varying microscopic partitions; no physical entropy or horizon premise is inherited.",
+        "to": "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION"
+      },
+      {
         "from": "OPH-CAL-SI-ANCHOR-IMPORT",
         "role": "supplies a separate declared-duration conversion dictionary; the histogram statistic does not bind or reduce that import and supplies no physical tick process",
         "to": "OPH-QFT-SOURCE-CLOCK-CANDIDATE"
@@ -2225,6 +2328,11 @@
       },
       {
         "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+        "role": "Supplies the source-net covering and cell-count framework retained by the explicit routes. No native source identification or unique population/radius selection is inherited.",
+        "to": "OPH-M1-VARIATIONAL-AREA-REPAIR"
+      },
+      {
+        "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
         "role": "Supplies the covering cone and golden assignment/count theorems for explicit radius-family instantiations; their convergence does not select a population or radius.",
         "to": "OPH-NATIVE-EVENTUAL-PUBLICATION"
       },
@@ -2349,9 +2457,74 @@
         "to": "OPH-GEOMETRY-COMMON-WORLD-INSTRUMENT-JOIN"
       },
       {
+        "from": "OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT",
+        "role": "Uses the same declared Floquet reference convention and all-species thermal comparison; the tetrahedral polynomial and coercivity are independently derived.",
+        "to": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT"
+      },
+      {
+        "from": "OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION",
+        "role": "Separates the standard singular continuum field from a bounded autonomous finite-site implementation.",
+        "to": "OPH-M1-COHERENT-VELOCITY-SEPARATION"
+      },
+      {
+        "from": "OPH-M1-FINITE-STENCIL-CLOCK-BOUND",
+        "role": "The explicit tetrahedral process also attains its exact support-polytope speed bound.",
+        "to": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT"
+      },
+      {
+        "from": "OPH-M1-GLOBAL-VACUUM-FIDELITY",
+        "role": "Uses the same original oscillator vacuum and symplectic convention to distinguish exact preservation from the proved approximate repair.",
+        "to": "OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION"
+      },
+      {
+        "from": "OPH-M1-GLOBAL-VACUUM-FIDELITY",
+        "role": "Supplies the sharp global fidelity threshold, instantiated by explicit degree, moment and trace bounds for every stated sparse level.",
+        "to": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR"
+      },
+      {
+        "from": "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
+        "role": "Identifies the residue defect and necessary short-ball threshold; the repair proves sufficiency, recovery and minimum convergence from the actual added reads.",
+        "to": "OPH-M1-VARIATIONAL-AREA-REPAIR"
+      },
+      {
+        "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+        "role": "The explicit three-axis walk attains the sharp isotropic budget; its complete spectral and thermal analysis is proved independently.",
+        "to": "OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT"
+      },
+      {
+        "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+        "role": "The positive velocity resolution excludes luminal Pauli and Clifford generators, identifying what the continuum coherent witness does differently.",
+        "to": "OPH-M1-COHERENT-VELOCITY-SEPARATION"
+      },
+      {
+        "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+        "role": "Motivates removing the flight-factorization premise; the matrix-polynomial proof and angular bound are independent and apply to arbitrary finite stencils.",
+        "to": "OPH-M1-FINITE-STENCIL-CLOCK-BOUND"
+      },
+      {
+        "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
+        "role": "Equality in the sharp trace budget forces the weighted two-design and its unique minimal tetrahedron.",
+        "to": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT"
+      },
+      {
+        "from": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR",
+        "role": "Supplies the explicit signed gate word and refinement tick. The extremal signal is derived independently of the fidelity estimate.",
+        "to": "OPH-M1-SPLIT-SIGNAL-CLOCK-OBSTRUCTION"
+      },
+      {
+        "from": "OPH-M1-VARIATIONAL-AREA-REPAIR",
+        "role": "Supplies the explicit repaired stencil and shared scale parameter. The uniform-action spectral and thermal arguments are independently proved; crossing and Gibbs entropy remain different observables.",
+        "to": "OPH-M1-UNIFORM-ACTION-SPECTRAL-THRESHOLD"
+      },
+      {
         "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
         "role": "Supplies only the existing q5 finite golden scalar action, exact parent histories and original continuous IVP; no q233 spatial probability error or physical clock is transferred.",
         "to": "OPH-GOLDEN-SCALAR-METRIC-PRESSURE"
+      },
+      {
+        "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+        "role": "Existing finite original-vacuum probability comparisons motivate the all-population question. The Gaussian and time-average arguments are proved here; no broader residual or physical identification is imported.",
+        "to": "OPH-M1-GLOBAL-VACUUM-FIDELITY"
       },
       {
         "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
@@ -2387,6 +2560,31 @@
         "from": "OPH-QFT-SOURCE-RECURRENCE-CLOCK-PRECURSOR",
         "role": "supplies the mean return time that the two declared readings convert",
         "to": "OPH-GEOMETRY-SOURCE-CLOCK-RATE-ALONG-WORLDLINES"
+      },
+      {
+        "from": "OPH-RG-INFORMATION-RESOURCE-BOUND",
+        "role": "Requires actual elapsed time and retained intermediate operations to remain distinct from numerical step labels; no classical capacity assumption is promoted to a quantum source law.",
+        "to": "OPH-M1-QUANTUM-VELOCITY-BUDGET"
+      },
+      {
+        "from": "OPH-RG-INFORMATION-RESOURCE-BOUND",
+        "role": "Keeps reference incidence counts separate from native traffic, implementation and physical time. No native information premise is marked discharged.",
+        "to": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR"
+      },
+      {
+        "from": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+        "role": "The complete positive-delay interpretation motivates the finite Hamiltonian exclusion, without claiming the source satisfies LC.",
+        "to": "OPH-M1-FINITE-HAMILTONIAN-DELAY-OBSTRUCTION"
+      },
+      {
+        "from": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+        "role": "Supplies the proposed complete-cone comparison. The velocity theorem charges a declared quantum flight grammar and does not establish physical LC.",
+        "to": "OPH-M1-QUANTUM-VELOCITY-BUDGET"
+      },
+      {
+        "from": "OPH-RG-LOCAL-CLOCK-REDUCTION",
+        "role": "Its complete native cone implication is incompatible with assigning these attained finite influences the numerical durations. No physical adoption of LC is asserted.",
+        "to": "OPH-M1-SPLIT-SIGNAL-CLOCK-OBSTRUCTION"
       },
       {
         "from": "OPH-SCALAR-ACTION-CLOCK",
@@ -3040,10 +3238,10 @@
     "Lean/Geometry/M1Necessity.lean": "2b282b25fe3f82153d2780366b36e6eea8cd4f7685d0e08a9ebd15355062ff98",
     "Lean/Geometry/M1NecessityAxiomAudit.lean": "41f1652a454b94dde7f3a198b4c45badba075a54d13f4ed5a23ac533c3c4f677",
     "code/m1_necessity/BALANCED_REPLACEMENT.md": "166af4d120d3dae4f3d077d1160434d4650d7dc5cc7c48d56c8f7f1defb95fce",
-    "code/m1_necessity/CONSUMERS.md": "41edc7da6204ffd206183de2788198525cd5e74164e8c782e37f6dd1482528eb",
-    "code/m1_necessity/CONTRACT.md": "326e30f7c429778b1f12fc2b8c9c70d39759b463770b133f4419cecdaadddf32",
-    "code/m1_necessity/DERIVATION.md": "348339016240322a89d65a5db583870f3355f82352d82855735eb9907d2ec7ae",
-    "code/m1_necessity/README.md": "3c9de6f88fee1aec2890c869401aa891f831f0fe76a7c3be11c4a2ec96c0748d",
+    "code/m1_necessity/CONSUMERS.md": "443b7e13df718e9967be6a1c689cb3b0d81d59f5aa2b31d5b3f324d8316acd95",
+    "code/m1_necessity/CONTRACT.md": "f3186f4911ea004fcad0058dbc0a526d359c623d42bdb4bf279fc6dd43ea1670",
+    "code/m1_necessity/DERIVATION.md": "13754829bb642c0e48c4ae8cfb8f69d56baa8de90c36dfcb18ae0ff0a8dcca9c",
+    "code/m1_necessity/README.md": "57bb28dc12ece1b5e09c5b3bb85a7d583f13be6908b3b9b44b128ffcb65bb3ca",
     "code/m1_necessity/SPECTRAL_COMPLETION.md": "1e633dcbe37a26401ef7c81c158f47d164b5ffb03ae6631da4e42b431ea19f54",
     "code/m1_necessity/__init__.py": "a49a6656f96a30bd6343e498a0ca5302dae30515d4cf458d45c172933a0247ac",
     "code/m1_necessity/audit.py": "d6a0df2ca2ab885fa8cb7c527f3a74ac17b748847524f4cec7d8df7a049a50c0",
@@ -3052,12 +3250,12 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "8aa179785fc65bc470c645554f0357515f7a9aa4e23bf3724111baaedc9fb9f4",
+    "code/m1_necessity/downstream.json": "b3105f5f6c5349e7e2d384f4bb181cee2f897e623e24394340c6f8eb4b3b60c9",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "e3536f10c49e623a4f334a5b12ff5b9891911327ef0e8e41a0e66701b742dfaa",
+    "code/m1_necessity/test_necessity.py": "8c578d7bf465c330528b5a70671dbe32b0c3244877a78323ed043ae46e8d1b59",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
-    "paper/tex_fragments/M1_NECESSITY.tex": "10cfccb1d945500e256e791736ef90efff4a1207aebd4fa6ce56dff0d0254426",
+    "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",
     "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex": "22d14e170fa56fd5f341c24a6e0b8256358b80e98f93020384dc613c08823e2a",
     "paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex": "4dc0af010215d1dc29b1e58154dc757ee3c991f65a6db4cc16c5b6fa027782e5"
   }

@@ -27,7 +27,7 @@ def test_complete_reference_execution_and_counts(packet):
     assert {k:actual[k] for k in ('routes','route_steps','executed_events','executed_reads','consumer_claims')} == {
         "routes":298,"route_steps":2215,"executed_events":149760,"executed_reads":13479912,"consumer_claims":8}
     assert actual['balanced_routes']==161 and actual['balanced_steps']>0
-    assert actual['downstream_claims']==95
+    assert actual['downstream_claims']==108
 
 
 @pytest.mark.parametrize("bad", [True,False,0,-1,25,1.0,"2",None])
@@ -406,5 +406,5 @@ def test_all_public_lean_results_have_transitive_audits_and_ci():
     assert {"OPH.M1Necessity."+n for n in names} == set(re.findall(r'^audit_m1_necessity (OPH\.\S+)',gate,re.M))
     assert '#guard_msgs in\naudit_m1_necessity sorryAx' in gate
     assert '#guard_msgs in\naudit_m1_necessity Lean.ofReduceBool' in gate
-    ci = (ROOT/".github/workflows/lean-ci.yml").read_text()
+    ci = (ROOT/".github/workflows/lean-ci.yml").read_text(encoding="utf-8")
     assert re.search(r'^\s*"Geometry.M1NecessityAxiomAudit"\s*$',ci,re.M)

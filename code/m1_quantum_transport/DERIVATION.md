@@ -404,7 +404,7 @@ the one-particle operator error by at most K. Finite smeared CAR covariance
 comparisons follow by spectral projector convergence away from each zero;
 the explicitly specified zero-mode states are compared separately. This
 does not claim global norm convergence between inequivalent infinite seas,
-an interacting theory, or the scalar vacuum theorem of PR 983.
+an interacting theory, or the scalar vacuum theorem of `code/m1_vacuum_fidelity`.
 
 ## 5. Exact delay and fixed finite Hamiltonian sites
 
@@ -501,9 +501,11 @@ a finite exact native-flight law are different physical proposals.
 
 ## 7. Relation to the preceding results and external mathematics
 
-PR 981 separates continuum requirements from M1's finite menu. PR 982 repairs
-interfaces and unwanted scalar spectral modes. PR 983 controls the original
-scalar vacuum but excludes its numerical clock. The present result studies
+The sparse read-family comparison (`code/m1_necessity`) separates continuum
+requirements from M1's finite menu. The interface repair (`code/m1_interfaces`)
+removes microscopic partitions and unwanted scalar spectral modes. The vacuum
+fidelity theorem (`code/m1_vacuum_fidelity`) controls the original scalar vacuum
+but excludes its numerical clock. The present result studies
 a different, exactly unitary finite-dimensional operation family, charges
 its native intermediate motion, characterizes its entire Weyl speed budget
 and retains all of its low-energy species. It does not replace their scalar

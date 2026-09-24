@@ -8,8 +8,8 @@ smooth probes. Prove and repair any ultraviolet vacuum error, using the
 original ground state and energy throughout. Count the actual spatial reads
 and separate simulation duration from a physical transport clock.
 
-This package is independent on main 9b527a4f. The sparse stencil discussed in
-PR 982 is defined again here; no unmerged file or theorem is imported.
+The sparse stencil also used in `code/m1_interfaces` is defined again here;
+no file or theorem from that package is imported.
 
 ## Deliverables
 
@@ -52,4 +52,4 @@ its application to OPH read/cost comparisons. Finite Schrödinger oscillators
 and signed potential/kinetic gates are declared mathematical operations.
 This is not an all-level A1--A3 source, a finite twelve-port implementation,
 an interacting theory, or a derivation of a physical clock. Existing source
-and M1/RG premises remain untouched. Audit logs stay outside the worktree.
+and M1/RG premises remain untouched.

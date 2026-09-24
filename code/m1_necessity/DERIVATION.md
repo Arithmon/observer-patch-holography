@@ -103,7 +103,7 @@ sets are the pair null relation and the diagonal; these have zero product
 measure. Applying the same argument to product cells proves strict-pair count
 convergence. These are the same null-set and volume integrals established in
 `SourceCausalBoundary`, `FlatDiamondVolume`, `FlatDiamondPairIntegral` and
-`FlatDiamondNormalization` on main, applied here after proving the required
+`FlatDiamondNormalization`, applied here after proving the required
 indicator convergence for S and A rather than assuming an all-neighbor path.
 
 An interior timelike diamond of proper duration T has volume pi*c^3*T^4/24.

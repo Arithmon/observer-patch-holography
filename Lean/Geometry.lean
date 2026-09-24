@@ -1,5 +1,9 @@
 import Geometry.SourcePassiveMemoryAxiomAudit
 import Geometry.RecordGluingPrincipleAxiomAudit
+import Geometry.M1NecessityAxiomAudit
+import Geometry.M1InterfacesAxiomAudit
+import Geometry.M1VacuumFidelityAxiomAudit
+import Geometry.M1QuantumTransportAxiomAudit
 import Geometry.SourceRecordProtection
 import Geometry.SourceSeamPathTomography
 import Geometry.SourceFeedbackTransport

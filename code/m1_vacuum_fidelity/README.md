@@ -28,8 +28,8 @@ numerical durations cannot be an RG-compatible complete influence clock at
 the same fixed speed. The quantum fidelity repair and this native-clock
 obstruction are distinct proved results.
 
-This work is standalone on main; the previous sparse construction is fully
-defined again. It proves neither a native A1--A3 implementation nor a physical
+This work is standalone; the sparse construction of `code/m1_interfaces` is
+fully defined again. It proves neither a native A1--A3 implementation nor a physical
 clock. Inverse Hamiltonian gates are explicit operations. The classical
 writer ledger is a reference computation, not a copy of unknown quantum
 states; the quantum map factors into actual commuting two-mode phases and
