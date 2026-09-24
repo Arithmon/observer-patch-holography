@@ -11872,6 +11872,167 @@
         "boundary": [],
         "rationale": "A spectral theorem for a declared uniformly normalized graph action and its canonical Gaussian quantization. It does not identify a native matter carrier, physical thermal entropy with crossing counts, or a calibrated physical clock."
       }
+    },
+    {
+      "claim_id": "OPH-M1-GLOBAL-VACUUM-FIDELITY",
+      "statement": "For the declared positive finite scalar Hamiltonian, original vacuum and symmetric second- or fourth-order kick/drift programs, exact Gaussian formulas give the total produced original particle number, original-Hamiltonian excess energy and global vacuum overlap at every step. For growing populations with sigma^2=Tr(B)/N tending to infinity, lambda_max(B)<=2*sigma^2 and tau*sqrt(lambda_max)<=1/10, fixed-time-interval averages and uniform upper bounds have orders N*tau^(2p)*sigma^(2p) for particle number and negative log vacuum fidelity, and hbar*N*tau^(2p)*sigma^(2p+1) for excess energy, p=2 or 4. Their vanishing is necessary and sufficient for uniform vacuum and energy fidelity, respectively. The lower bounds retain every time in the interval and allow isolated revivals. Vacuum fidelity controls every bounded effect, with an additional explicit fixed-band phase/displacement bound for bounded-energy coherent inputs. No modified vacuum, mode truncation or changed energy reference is used.",
+      "assumptions": [
+        "declared_original_harmonic_vacuum_and_signed_split_program"
+      ],
+      "imported_results": [
+        "Gaussian_metaplectic_and_coherent_state_identities",
+        "Yoshida_symmetric_fourth_order_composition",
+        "finite_geometric_sum_and_spectral_mean_bounds"
+      ],
+      "oph_specific_delta": "Promotes selected smooth-probe agreement to a quantified full-population test of the original quantum state and energy, including matching necessary bounds and a distinction between state-norm and unbounded-energy convergence.",
+      "novelty_type": "full_population_original_vacuum_fidelity_threshold_for_local_read_programs",
+      "falsifier": "The exact Gaussian formula, nonzero squeezing coefficient, stability bounds, real-mode multiplicity or time-average lower bound fails; a modified reference vacuum is silently substituted; or the bounded-input effect theorem is promoted to an unrestricted channel norm bound.",
+      "scope_if_false": "The global quantum-fidelity theorem fails. Existing finite original-vacuum probabilities and physical source/clock premises remain independently scoped.",
+      "status": "analytic_necessary_and_sufficient_thresholds_with_independent_complete_finite_controls",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_VACUUM_FIDELITY.tex",
+        "code/m1_vacuum_fidelity/CONTRACT.md",
+        "code/m1_vacuum_fidelity/DERIVATION.md",
+        "code/m1_vacuum_fidelity/model.py",
+        "code/m1_vacuum_fidelity/check.py",
+        "code/m1_vacuum_fidelity/verify.py",
+        "code/m1_vacuum_fidelity/receipt.json",
+        "code/m1_vacuum_fidelity/test_fidelity.py",
+        "Lean/Geometry/M1VacuumFidelity.lean",
+        "Lean/Geometry/M1VacuumFidelityAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This is an original-state Gaussian error theorem for explicitly declared finite Hamiltonians and signed split operations. Its spectral and stability hypotheses are mathematical and are proved for the application. It neither identifies these oscillators with native source states nor calibrates their duration or energy physically."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR",
+      "statement": "For the explicitly defined periodic sparse stencil U with q=2^(16t), m=2^(8t), K=2^(6t), r=2^(7t), t>=1, and the uniformly normalized positive scalar action B=I+6*q^2/M2 times the read Laplacian, the short ball dominates degree and the spaced ball dominates the second moment: d=Theta(q^(21/16)), M2=Theta(q^(23/8)), and sigma=Theta(q^(7/32)), rather than inverse read radius q^(1/8). The declared fourth-order program at tau=q^(-5/8)/64 is stable at every level and has total original-vacuum excess energy O(q^(-1/32)) and global infidelity O(q^(-1/4)), uniformly in step count. The same tick with the second-order program has fixed-interval mean energy Theta(q^(51/32)). The repair uses Theta(q^(79/16)) ordered reference read incidences. Within the two specified methods, matching energy-tolerance cost bounds are derived for sparse and dense families, with signed stages, intermediate writes and quantum two-mode phase factors counted. The reference writer ledger is not cloning quantum fields, and the simulation substep is not identified with native physical transport time.",
+      "assumptions": [
+        "declared_original_harmonic_vacuum_and_signed_split_program",
+        "explicit_periodic_sparse_and_dense_read_actions"
+      ],
+      "imported_results": [
+        "integer_ball_Riemann_sums",
+        "positive_graph_Laplacian_trace_and_norm_bounds",
+        "global_original_vacuum_fidelity_threshold"
+      ],
+      "oph_specific_delta": "Closes the full-spectrum quantum execution error for a fully specified sparse program and corrects its ultraviolet and precision-dependent read-cost scale without assuming the desired convergence.",
+      "novelty_type": "constructive_sparse_global_quantum_fidelity_repair_and_matched_precision_read_cost",
+      "falsifier": "Degree or second-moment asymptotics are wrong, the explicit tick leaves the proved stability domain, total energy fails to vanish, signed stages or current writer reads are omitted, matched-cost exponents fail, or computational substeps are represented as source-derived faster physical reads.",
+      "scope_if_false": "The explicit global fidelity repair or its cost comparison fails. No physical clock, all-level A1--A3 source or native twelve-port quantum implementation is asserted.",
+      "status": "explicit_all_level_quantum_energy_repair_with_finite_reference_and_moment_evidence",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_VACUUM_FIDELITY.tex",
+        "code/m1_vacuum_fidelity/CONTRACT.md",
+        "code/m1_vacuum_fidelity/DERIVATION.md",
+        "code/m1_vacuum_fidelity/model.py",
+        "code/m1_vacuum_fidelity/check.py",
+        "code/m1_vacuum_fidelity/verify.py",
+        "code/m1_vacuum_fidelity/receipt.json",
+        "code/m1_vacuum_fidelity/test_fidelity.py",
+        "Lean/Geometry/M1VacuumFidelity.lean",
+        "Lean/Geometry/M1VacuumFidelityAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "Every edge, coefficient, quantum gate and simulation tick of the sparse repair is specified, and its global error and reference read counts are derived. This construction does not identify simulation substeps with physical transport or supply finite twelve-port oscillator registers; source and clock premises remain untouched."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION",
+      "statement": "A real scalar polynomial symplectic action update preserving the original positive oscillator vacuum obeys d=a, c=-lambda*b and a(lambda)^2+lambda*b(lambda)^2=1 on each spectral value. When the distinct spectral cardinality exceeds the degree of this polynomial, root counting and degree parity force b=0 and a=+1 or -1. A consistent near-identity update is therefore the identity. The explicit sparse and dense populations have unboundedly many distinct axis-mode eigenvalues, so a fixed number of scalar kick/drift stages cannot preserve their original vacuum exactly and evolve it nontrivially on all refinements. This does not exclude nonpolynomial exact flows, growing-degree interpolation, spatial translations, additional internal fields or other operation grammars.",
+      "assumptions": [
+        "declared_scalar_polynomial_symplectic_action_update"
+      ],
+      "imported_results": [
+        "symplectic_and_energy_inverse_identities",
+        "polynomial_root_counting_and_degree_parity"
+      ],
+      "oph_specific_delta": "Explains why a finite scalar local split needs quantified approximation rather than exact preservation of the supplied action vacuum; states and verifies the spectral-cardinality boundary for the actual read families.",
+      "novelty_type": "fixed_degree_scalar_vacuum_preservation_obstruction_for_refining_read_actions",
+      "falsifier": "A nontrivial real polynomial solution exists despite the spectral-cardinality premise, a declared family has bounded distinct spectra, or the conclusion is extended to an operation grammar outside scalar polynomial action updates.",
+      "scope_if_false": "The stated exact-preservation obstruction fails. The explicit approximate repair and its independent error bounds retain their own proof obligations.",
+      "status": "analytic_exact_preservation_obstruction_with_explicit_family_instantiation",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_VACUUM_FIDELITY.tex",
+        "code/m1_vacuum_fidelity/CONTRACT.md",
+        "code/m1_vacuum_fidelity/DERIVATION.md",
+        "code/m1_vacuum_fidelity/model.py",
+        "code/m1_vacuum_fidelity/check.py",
+        "code/m1_vacuum_fidelity/verify.py",
+        "code/m1_vacuum_fidelity/receipt.json",
+        "code/m1_vacuum_fidelity/test_fidelity.py",
+        "Lean/Geometry/M1VacuumFidelity.lean",
+        "Lean/Geometry/M1VacuumFidelityAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This polynomial preservation obstruction follows from finite canonical algebra and a proved spectral-cardinality property of the declared graph families. It is limited to the scalar polynomial grammar and does not consume any physical locality, observer-to-spacetime attachment, or native operation-completeness premise."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-SPLIT-SIGNAL-CLOCK-OBSTRUCTION",
+      "statement": "For the declared sparse and dense positive scalar stencils, before periodic wrapping the canonical support radii (j+1)*a for the second-order split and (3j+1)*a for the fourth-order split are attained by exact nonzero signals from an initial local position to a final momentum. Cayley-Hamilton, the nonzero leading action coefficient and the unique extreme axial displacement give their exact coefficients. A suitable local coherent displacement and bounded sine effect distinguish the signal in the declared oscillator family. Any faithful realization with a complete influence-speed bound c must charge at least those distances divided by c. On the explicit fourth-order fidelity repair, j=floor(1/(8a)) has attained distance tending to 3/8 while j*tau tends to zero, so no fixed finite c can identify the numerical durations with the LC/RG complete native influence clock. Six complete finite ray executions check the extreme coefficients and zeros outside support. This obstruction is specific to the stated program and full operation family and is compatible with its proved fixed-band quantum fidelity.",
+      "assumptions": [
+        "declared_original_harmonic_vacuum_and_signed_split_program",
+        "explicit_periodic_sparse_and_dense_read_actions"
+      ],
+      "imported_results": [
+        "Cayley_Hamilton_and_Chebyshev_leading_coefficients",
+        "Gaussian_displacement_response",
+        "complete_native_cone_bound_of_local_clock_principle"
+      ],
+      "oph_specific_delta": "Turns the simulation-versus-physical-clock distinction into an attained-signal theorem, identifying the exact timing attachment excluded by the proposed complete native cone law while retaining the global quantum approximation.",
+      "novelty_type": "attained_finite_quantum_signal_front_and_native_clock_identification_obstruction",
+      "falsifier": "The extreme coefficient vanishes, a lower-degree or wrapped path invalidates its uniqueness under the stated bound, the bounded effect cannot distinguish the declared intervention, or the timing exclusion is extended to other operation grammars or only approximate restricted-observer notions of influence.",
+      "scope_if_false": "The attained-front or simulation-clock obstruction fails. The separately established global original-vacuum fidelity repair and existing LC implication retain their own definitions.",
+      "status": "exact_signal_front_and_complete_clock_obstruction_proved_with_independent_ray_controls",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "analytic_theorem_with_independent_finite_controls_and_limited_Lean_reductions",
+      "evidence": [
+        "paper/tex_fragments/M1_VACUUM_FIDELITY.tex",
+        "code/m1_vacuum_fidelity/CONTRACT.md",
+        "code/m1_vacuum_fidelity/DERIVATION.md",
+        "code/m1_vacuum_fidelity/model.py",
+        "code/m1_vacuum_fidelity/check.py",
+        "code/m1_vacuum_fidelity/verify.py",
+        "code/m1_vacuum_fidelity/receipt.json",
+        "code/m1_vacuum_fidelity/test_fidelity.py",
+        "Lean/Geometry/M1VacuumFidelity.lean",
+        "Lean/Geometry/M1VacuumFidelityAxiomAudit.lean"
+      ],
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The exact signal coefficient is a theorem about the specified gate word and read matrix. Comparison with the stated complete-cone implication excludes one proposed numerical-clock identification; it does not assert that LC is physically established, construct a native source, or discharge a physical clock premise."
+      }
     }
   ]
 }
