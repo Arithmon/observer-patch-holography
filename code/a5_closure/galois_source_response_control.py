@@ -14,6 +14,12 @@ import json
 
 ROOT = Path(__file__).resolve().parents[2]
 MODEL = ROOT / "code/source_selection_model"
+SOURCE_PINS = {
+    "DERIVATION.md": "4881f7c7e41b6294d3b164e943952438f09a3aa03041bf152a382d8ff42aba85",
+    "geometry.py": "de47ae19dd4ae1677d0cefb0163513f2f1f6d24dfb4dd0264506d0b17fceb843",
+    "response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
+    "verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
+}
 spec = importlib.util.spec_from_file_location("galois_existing_response_checker", MODEL/"verify_response.py")
 c = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(c)
@@ -136,6 +142,8 @@ def replay(packet, conjugated=False):
 
 
 def verify():
+    c.require(all(hashlib.sha256((MODEL/name).read_bytes()).hexdigest()==digest
+                  for name,digest in SOURCE_PINS.items()),"audited source drift")
     packet = c.strict_load(MODEL/"response.json")
     swapped = conjugate_serialized(packet)
     c.require(conjugate_serialized(swapped)==packet,"Galois involution on full tape")
@@ -147,8 +155,7 @@ def verify():
             "plus":plus,"minus":minus,"literal_block_swap_equals_galois":False,
             "positivity_argument":"Each replay is skew-adjoint and injective over the real embedding; -Tr(X^2)>0 for nonzero X.",
             "bounded_nonselection":True,
-            "source_pins":{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in
-                           [MODEL/"response.json",MODEL/"verify_response.py",MODEL/"DERIVATION.md",MODEL/"geometry.py"]}}
+            "source_pins":SOURCE_PINS}
 
 
 if __name__ == "__main__":

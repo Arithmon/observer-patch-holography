@@ -1,7 +1,7 @@
 """Hostile controls for the explicitly frozen two-frame packet."""
 from copy import deepcopy
 from pathlib import Path
-import importlib.util
+from unittest.mock import patch
 import sys
 import pytest
 
@@ -82,6 +82,31 @@ def test_no_producer_import_in_independent_verifier():
     tree=verifier.ast.parse((BASE/"verify_galois_port_frame_independent.py").read_text())
     imports=[node for node in verifier.ast.walk(tree) if isinstance(node,(verifier.ast.Import,verifier.ast.ImportFrom))]
     assert all("galois_port_frame_certificate" not in verifier.ast.unparse(node) for node in imports)
+
+
+def test_reversed_live_face_input_cannot_keep_degree_convention():
+    # Exercise the producer's mathematical gate, beyond receipt byte pins.
+    reversed_faces=[[a,c,b] for a,b,c in producer.faces()]
+    with patch.object(producer,"faces",return_value=reversed_faces):
+        with pytest.raises(ValueError,match="degree pair"):
+            producer.build()
+
+
+def test_reflection_changes_degree_without_changing_gram():
+    vs=producer.coordinates()
+    reflected=[[-x for x in row] for row in vs]
+    assert [[producer.dot(v,w) for w in vs] for v in vs]==[
+        [producer.dot(v,w) for w in reflected] for v in reflected]
+    assert producer.degree(reflected,producer.faces(),[1,2,4])["degree"]==-1
+
+
+def test_other_order_five_class_changes_trace(packet):
+    p=packet["generator"]
+    square=[p[p[i]] for i in range(12)]
+    vs=producer.coordinates()
+    rotation=producer.mm(producer.transpose([vs[square[i]] for i in range(3)]),
+                         producer.inverse(producer.transpose(vs[:3])))
+    assert sum((rotation[i][i] for i in range(3)),producer.Z)==producer.PHI.sigma()
 
 
 def test_source_response_exchange():

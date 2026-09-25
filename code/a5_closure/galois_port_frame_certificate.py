@@ -5,7 +5,6 @@ The sole mathematical source input is CoreAxioms.orientedFaces.
 """
 from dataclasses import dataclass
 from fractions import Fraction as Q
-from itertools import permutations
 from pathlib import Path
 import hashlib
 import json

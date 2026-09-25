@@ -86,7 +86,7 @@
     {
       "row": 3,
       "selector_id": "icosahedral_screen_selector_port_frame",
-      "label": "Icosahedral screen selector and port frame (A5 action, rank-3 Gram frame)",
+      "label": "Icosahedral oriented action and rank-3 Gram pair (no positive-embedding selection)",
       "class": "forced",
       "conditional_on": [
         "echosahedral_carrier_lineage"
@@ -94,7 +94,7 @@
       "canonical_claim_id": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
       "secondary_claim_ids": [],
       "owner_issues": [],
-      "where": "Issue #565 closure packet: Aut+ isomorphic to A5, full Aut isomorphic to A5 x C2, Gram identity G^2 = 4G with trace 12. Lean: `Lean/Screen/PortFrameGram.lean`, `Lean/Screen/A5PortAction.lean` (kernel `decide`). Conditional on row 4.",
+      "where": "Issue #565 closure packet: Aut+ isomorphic to A5 and full Aut isomorphic to A5 x C2. Both incidence-derived Galois Gram tables satisfy G^2 = 4G, trace 12 and rank three. The forced orientation menu below concerns the automorphism group only; it does not select a real Gram embedding. On the frozen oriented pair, the marked order-five traces are phi and 1-phi, Laplacian modes are 5-sqrt(5) and 5+sqrt(5), abstract edges are shortest and second-shortest chords, and radial degrees are 1 and 7. No source-bound PORT-GRAM-SUPPORT-ATTACHMENT identifies these local maps with the A1 degree-one support bridge. The audited source-response clauses pass under full Galois exchange. Verdict: GALOIS_FRAME_AMBIGUITY_PERSISTS_WITHOUT_SUPPORT_ATTACHMENT. Conditional on row 4; no physical selector or PR-53 discharge.",
       "menu": {
         "size": 2,
         "alternatives": "oriented A5 frame or orientation-forgetting A5 x C2 frame; the orientation receipt fixes the oriented class",
@@ -103,7 +103,11 @@
       "compression_input": true,
       "receipts": [
         "code/a5_closure/echosahedral_selector_certificate.py",
-        "code/a5_closure/a5_selection_certificate.py"
+        "code/a5_closure/a5_selection_certificate.py",
+        "code/a5_closure/galois_port_frame_certificate.md",
+        "code/a5_closure/manifests/galois_port_frame_reference.json",
+        "code/a5_closure/verify_galois_port_frame_independent.py",
+        "code/a5_closure/galois_source_response_control.py"
       ],
       "lean": [
         {
@@ -113,11 +117,17 @@
         {
           "module": "Lean/Screen/A5PortAction.lean",
           "declaration": null
+        },
+        {
+          "module": "Lean/Screen/GaloisPortFrames.lean",
+          "declaration": "galois_exchange"
         }
       ],
       "negative_controls": [
         "forgetting orientation restores A5 x C2",
-        "non-incidence or noncocyclic refinement maps break naturality"
+        "non-incidence or noncocyclic refinement maps break naturality",
+        "fixed square-root sign, omitted conjugate branch, false adjacency/chord identification, face orientation/census changes, wrong-order generator and swapped Laplacian sign are rejected",
+        "unsupported support attachment and imported selected-Gram or downstream numerical targets are rejected"
       ],
       "paper_anchors": [
         {
