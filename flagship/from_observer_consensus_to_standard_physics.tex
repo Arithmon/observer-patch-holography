@@ -1269,10 +1269,24 @@ A supplied scalar action on prepared golden addresses supports classical and
 Fock-space waves. Its massive Dirichlet detector limit survives spatial
 refinement and symmetric local steps; at $q=233$, compact-detector error is
 smaller than the induced signal on a nonzero window without an executed tensor
-history. A separate 64-site instrument retains resolved repeated responses
-with finite pointer duration and bounded control noise \cite{ophEinstein}.
-Axes, boundary, addresses, action, quantum preparation and controls, and model
-time are supplied; physical clock and count-volume attachment remain separate.
+history. On a 64-site action, an authenticated classical history closes a
+further feedback loop: detector probes perturb the local field, retained
+records restore it, and later action updates consume those restored values.
+Its separated intervention response exceeds $0.01576$ throughout a nonzero
+model-time interval, while the combined preparation, record, detector,
+discretization, clock and holding error is below $0.01364$. Routing and
+coefficient arithmetic are exact in this finite model; the error budget
+covers its declared faults.
+
+A quantum instrument on the same action retains resolved repeated responses
+with finite pointer duration and bounded control noise. A local force pulse
+prepares its coherent intervention while the free action remains active;
+for the declared pulse and force errors, the preparation trace-distance
+bound is below $9.389\times10^{-6}$ and fits the instrument's $10^{-5}$
+budget \cite{ophEinstein}. The classical executed history and this conditional
+quantum-control channel have distinct record semantics. Axes, boundary,
+addresses, action, vacuum, quantum controls and model time are supplied;
+physical clock and count-volume attachment remain separate.
 
 \begin{theorem}[Sharp regional access cost]
 In the finite Schr\"odinger representation with $\hbar>0$, take a scalar action
@@ -1596,16 +1610,60 @@ replays one schedule from its seed, and recomputes every hash \cite{ophsim}.
 The same law at the level-ten rung, $20{,}971{,}520$ carriers and
 $660{,}602{,}880$ seams, terminates all sixteen schedules at the balanced
 class in $84$ to $100$ sweeps with the one quotient hash fixed by the loads.
-Across the rungs from six to ten the excess $V-V_{\min}$ contracts by
-$0.82$ per sweep, so the sweeps to the public record grow as
-$4.3\log_2 N-9$; unit transfers equal $1.2555$ times half the $\ell_1$
-distance of the loads to the uniform reading at every rung; and the
-per-carrier response kernels agree across rungs to six digits, so the
-readout is a property of the neighbourhood. The settled record keeps the
-coarse initial imbalance above a settling horizon of a few hundred cells and
-erases it below; the horizon grows with the sweep count while the federation
-grows fourfold per rung. These are finite readings of the declared law on
-the declared gluing.
+Across the tested rungs from six to ten, one initial load per rung gives an
+empirical excess-energy contraction near $0.82$ per sweep and a fitted
+settling time $4.3\log_2 N-9$. These finite fits prove no all-size mixing or
+termination-time bound. The recorded strict-descent count is about $1.2555$
+times half the initial $\ell_1$ deviation from the uniform reading; it
+excludes energy-preserving swaps and is not transported mass. The isolated
+per-carrier response kernels agree across rungs to six digits.
+
+The first-settling configuration retains spatial information that its public
+component multiset does not encode. A controlled readback of all sixteen
+schedules at each of levels eight through ten separates common input memory
+from schedule variance using equal-count ancestral cell groups. At level ten,
+the initial-to-terminal amplitude responses at group sizes $1{,}024$,
+$4{,}096$ and $65{,}536$ are $0.90758$, $0.95232$ and $0.98983$; the respective
+conditional schedule-noise fractions are $1.241\%$, $0.594\%$ and $0.143\%$.
+At the largest group the terminal variance is $11.048$ times the stationary
+fixed-total balanced null. The schedules share one initial load, the groups
+carry no derived physical area, and each snapshot ends the first settling
+sweep. This is finite coarse memory under the declared gluing, without a
+primordial-spectrum identification. The executable statistics and input
+digests are retained in \path{evidence/observer_dynamics_20260925/}.
+
+Stationary continuation supplies a separate constructive fluctuation result.
+For $p$ ports on a connected weighted graph, $0<r<p$ raised occupancies, fair
+integer repair and independent edge-attempt clocks, write
+$z=n-(r/p)\mathbf 1$, $\Pi=I-\mathbf1\mathbf1^\mathsf{T}/p$ and
+$\kappa=r(p-r)/(p(p-1))$. With graph Laplacian $L$ in attempt-rate units,
+the uniform fixed-occupancy law is reversible and
+\[
+ \mathbb E[z(t)z(0)^\mathsf T]
+   =\kappa e^{-|t|L/2}\Pi,\qquad
+ T^{-1/2}\int_0^T Bz(t)\,dt
+   \ \Longrightarrow\ \mathcal N(0,4\kappa BL^+B^\mathsf T).
+\]
+Here $B$ is a fixed linear readout and $L^+$ the mean-zero inverse. The
+finite-state martingale central limit theorem applies at fixed graph; no
+uniform refinement limit is asserted. This constructs a history source from
+local port repair without adding Gaussian site noise. Its occupancy law,
+elapsed-time convention and readout are specified inputs. The theorem does
+not identify this source with a geometric volume perturbation or determine
+the cosmic microwave background amplitude, tilt or expansion history. The
+screen-microphysics analysis gives its proof, finite-window law and locally
+sampled event-record correction.
+
+For the native fixed-geometry repair generator, this boundary is exact:
+any volume scalar depending only on the frozen geometry remains unchanged
+on every repair history. The contrast
+$q=\tfrac13\log(V/V_{\rm ref})$ is therefore identically zero when the
+reference is that same geometry. Record readouts do not repair this absence
+by normalization: on the native isolated twelve-port component, centered
+load and Laplacian load can have the same variance at each port and different
+separated-port covariances. This finite counterexample neither rules out
+other geometric dynamics nor supplies a primordial source; it identifies
+the missing state-to-geometry coupling \cite{ophMicrophysics}.
 
 At carrier scale, recovery from event logs under the declared probe and
 operation grammar returns the twelve ports, thirty seams, inverse pairing,
@@ -2232,7 +2290,14 @@ read $2.83$, $4.38$, $3.55$, $3.84$ and $3.92$. The spacetime derivation carries
 auxiliary read instructions and seam operations. It does not select that law from the
 observer axioms, calibrate a physical clock, or identify its cone with a
 matter action. These are distinct requirements of a physical
-source-causal continuum certificate.
+source-causal continuum certificate. In particular, self-waits make the
+longest history between any related endpoints $K$ layers apart exactly
+$K$ steps. Uniform duration per step therefore gives moving/rest ratio
+one, not $\sqrt{1-\beta^2}$ at nonzero velocity. The ordinal height is
+not thereby an operational proper-time instrument. A volume clock uses a
+different observable and its continuum calibration; finite expanding
+diamonds also require a shrinking-window approximation to read worldline
+proper time.
 Curved limits, topology stability and the common physical field realization
 require their stated additional hypotheses.
 \end{boundary}

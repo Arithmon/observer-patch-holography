@@ -112,10 +112,83 @@ centre diamond, sampled with standard errors, invert to $4.09$, $4.03$ and
 $4.02$ at $q=89$ (the two- and one-dimensional controls to $3.01$, $3.00$,
 $3.01$ and $1.99$, $2.02$, $2.04$); the distribution of $|I(y,z)|/N$ over
 related pairs lies closest to the flat $3+1$ law of $(\tau/T)^4$ among the
-flat laws in two to six dimensions, with a maximum CDF difference of $0.025$;
+flat laws in two to six dimensions, with a maximum cumulative-distribution
+difference of $0.025$ on the declared 25-point grid;
 and over fourteen six-layer diamonds displaced by $L/8$ the $C_3$ dimension
 reads $4.078$ with standard deviation $0.016$ and the count-volume
 coefficient $1.0627$ with standard deviation $0.0013$. Curvature estimators
 are not evaluated. The receipts, the carrier event logs and a
 standard-library generator that rebuilds the poset from the definitions are
 published as the causal-poset evidence package \cite{ophfpe}.
+The chain estimates share samples; their cross-covariances are not retained,
+so these readings do not define independent joint significances. The
+weighted cumulative distribution is a self-normalized ratio estimate and
+its grid maximum is not a continuous Kolmogorov--Smirnov statistic. From
+$q=55$ to $89$ that maximum decreases from $0.07581$ to $0.02473$, whereas
+the central three- and four-chain dimensions change from $4.0321$ to
+$4.0341$ and from $4.0060$ to $4.0166$. Thus convergence is not monotone
+across all diagnostics. At $q=89$ the four-chain count has relative standard
+error about $7.49\%$, and the moving-interval mean normalized subinterval
+size is $0.0117269$, about $23.1\%$ above the flat reference $1/105$.
+
+\paragraph{Exact temporal quadrature control.}
+For continuum spatial balls sampled at $K+1$ equally spaced layers, $K>0$,
+the layer-summed vertical diamond volume divided by its continuum volume is
+\[
+ B_K=\frac{32}{K^4}\sum_{j=0}^{K}\min(j,K-j)^3
+ =\begin{cases}1+4/K^2,&K\text{ even},\\
+ (1-1/K^2)^2,&K\text{ odd}.\end{cases}
+\]
+Indeed, for $K=2m$ the sum is
+$m^3+2\sum_{j=1}^{m-1}j^3=m^2(m^2+1)/2$; for $K=2m+1$ it is
+$2\sum_{j=1}^{m}j^3=m^2(m+1)^2/2$. The sum-of-cubes identity gives the
+displayed formulas. For $J\ge2$, dividing the raw nested count-clock ratio
+by $(B_K/B_J)^{1/4}$ isolates this temporal discretization effect.
+The exact finite sums and both parity factors are proved in
+\path{Lean/Geometry/FiniteLayerQuadrature.lean}.
+\begin{center}
+\begin{tabular}{r rr}
+$q$ & Raw relative error & Layer-corrected relative error\\\hline
+55 & $-4.6395\%$ & $-0.6853\%$\\
+89 & $+2.5509\%$ & $-0.5014\%$\\
+144 & $-2.0289\%$ & $-0.1007\%$
+\end{tabular}
+\end{center}
+The numerical control uses the same count receipts, with no fitted
+parameter. It is exact for continuum balls at discrete layers, not for
+finite graph diamonds. Spatial error and clipping are separate: all these
+outermost diamonds fail the stated finite interior-enclosure hypotheses,
+including $q=144$, whose clipped fraction is $8.9748\times10^{-8}$.
+At $J=1$ the continuum layer volume vanishes and the correction is undefined.
+The residuals therefore establish no physical calibration or uniform
+finite-graph convergence rate.
+
+\paragraph{Uniform history length and interval clocks.}
+For any related pair $K$ layers apart in a read graph with self-waits, a
+strict chain has at most $K$ edges. A shortest spatial path of length
+$d\le K$, padded by $K-d$ waits, attains $K$. Hence a uniform positive
+duration per history edge gives moving/rest clock ratio one at fixed $K$,
+whereas the supplied Minkowski ratio is $\sqrt{1-\beta^2}<1$ for
+$0<|\beta|<1$. Refinement cannot remove this discrepancy at fixed velocity.
+This excludes that clock assignment for this layered family; it says
+nothing about state-dependent durations or independently selected records.
+
+A finite comparison retains all 120 scheduled cases: four golden
+populations $q=8,13,21,34$, five boost targets, three directions, and two
+read laws. There are 89 related pairs and 31 timelike but graph-unrelated
+pairs. At $q=34$ the nine primary moderate-boost Euclidean cases have median
+absolute relative errors $16.290\%$ for uniform history length,
+$2.914\%$ for the raw volume clock and $0.813\%$ after temporal quadrature
+correction. The same corrected instrument on axis-only reads gives
+$16.149\%$ across six related primary pairs; three further failures are
+retained. Actual velocities use the rounded endpoints. At target
+$\beta=0.9$ the Euclidean axis pair is unrelated, and the other two
+directions have corrected errors $-17.19\%$ and $-9.70\%$.
+The comparison tests read laws under supplied geometry. Its moving-diamond
+correction uses continuum intersections of spatial balls, so it is a
+calibration control rather than an intrinsic order-only clock. These
+deterministic errors are not confidence intervals. The specifications,
+witness histories, receipts and independent verifier are retained under
+\path{evidence/observer_dynamics_20260925/sim-analysis/codex/causal/};
+the count and quadrature controls are reproduced by
+\path{code/observer_dynamics/verify.py}.

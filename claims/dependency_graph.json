@@ -282,7 +282,16 @@
   "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
   "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
   "OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION",
-  "OPH-SM-BARYON-DIMENSION-SIX-CENSUS"
+  "OPH-SM-BARYON-DIMENSION-SIX-CENSUS",
+  "OPH-NATIVE-REPAIR-HISTORY-SOURCE",
+  "OPH-SETTLEMENT-SCALE-TRANSFER",
+  "OPH-NATIVE-PORT-TRANSPORT-CONTROLS",
+  "OPH-REFINEMENT-ABSOLUTE-INNOVATION",
+  "OPH-LAYERED-OBSERVER-CLOCK-CONTROLS",
+  "OPH-GOLDEN-FIXED-MODE-FOURIER",
+  "OPH-COMMON-BULK-LOG-COVARIANCE",
+  "OPH-COMMON-HISTORY-FEEDBACK-PACKET",
+  "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION"
  ],
  "edges": [
   {
@@ -2514,6 +2523,16 @@
    "from": "OPH-SM-BARYON-DIMENSION-SIX-CENSUS",
    "to": "OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION",
    "role": "Supplies the frozen ten-field Weyl grammar and its left-chirality column that the matter-grammar index dictionary identifies column by column with the selected exterior components; no baryon-violating operator, label, or proton claim is inherited."
+  },
+  {
+   "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+   "to": "OPH-COMMON-HISTORY-FEEDBACK-PACKET",
+   "role": "Consumes only its explicitly supplied q=5 scalar action and authenticated classical source-history construction; no quantum comparison, source selection or physical realization is inherited."
+  },
+  {
+   "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+   "to": "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION",
+   "role": "Consumes only its explicitly supplied q=5 scalar action and authenticated classical source-history construction; no quantum comparison, source selection or physical realization is inherited."
   }
  ]
 }

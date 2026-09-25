@@ -14,6 +14,12 @@ assets/book_pdf_renderings/**/*.pdf -text -eol
 # OpenTimestamps proofs are verified; never normalize them.
 evidence/custody/** -text -eol -diff
 
+# Preserved simulation producers, data and receipts retain their original bytes.
+evidence/observer_dynamics_20260925/sim-analysis/** -text -eol -diff
+evidence/observer_dynamics_20260925/oph-physics-sim/** -text -eol -diff
+evidence/source_net_causal_poset/manifold_sampled/oph_exact/*.py -text -eol -diff
+evidence/source_net_causal_poset/manifold_sampled/tests/test_exact_source_net_manifold_sampled.py -text -eol -diff
+
 # Issue 776 exact provenance chunks and geometry are byte-hashed binary inputs.
 code/support_wiring/geometry/*.npz -text -eol -diff
 evidence/support_wiring_776/*.npz -text -eol -diff

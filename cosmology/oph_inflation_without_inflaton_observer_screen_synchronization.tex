@@ -241,6 +241,20 @@ A finite run requires \(R_\star\), the radial window, the unrestricted
 null-space report, the forward residual, and the physical scale. The screen theorem proves no
 temperature, polarization, lensing, acoustic-peak, or likelihood statement.
 
+\input{../paper/tex_fragments/NATIVE_COSMOLOGY_SOURCE_BOUNDARY.tex}
+
+\paragraph{Refinement survival does not select a numerical exponent.}
+For every real \(\theta\), \(u_\theta(s)=e^{-\theta s}\) is a
+continuous multiplicative survival cocycle. For \(\theta\ge0\) it also
+obeys \(0<u_\theta(s)\le1\) on \(s\ge0\). Distinct exponents
+therefore inhabit the same cocycle interface; its type alone cannot select
+\(P_\star/48\). The Lean module
+\path{Lean/ObserverPatchHolography/EinsteinBranch/EdgeCenterTiltFreedom.lean}
+checks this freedom against the canonical cocycle definition. Numerical
+tilt selection requires the source generator and its physical
+dilation attachment. Neither nested regression orthogonality nor coarse
+load survival supplies that derivative premise.
+
 \section{Unsupplied Premises}
 
 The same-boundary or low-\(k\) coherence branch has no quotient-language

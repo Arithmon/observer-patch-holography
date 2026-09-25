@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "command": [
+        "-m",
+        "oph_exact.verify_source_net_manifold_sampled_independent",
+        "source_net_manifold_sampled_q55_q89_2026-09-25.json",
+        "--reference-pairs",
+        "-1"
+      ],
+      "output": "MANIFOLD_SAMPLED_VERIFY PASS",
+      "passed": true
+    },
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "manifold_sampled/tests"
+      ],
+      "output": "...........                                                              [100%]\n11 passed in 8.23s",
+      "passed": true
+    }
+  ],
+  "continuum_reference_draws_replayed": true,
+  "manifest_sha256": "40835dfc46da3bff600bc168e14cd6d499e02e12977b29544e2883a5456056c9",
+  "schema": "oph.source-net-manifold-sampled.verification.v1",
+  "scope": "Retained derived arithmetic, seeded continuum reference draws, original source pins, and small exact-order controls. The q55/q89 event samples, joint chain-estimator covariance and weighted-CDF standard errors are not reconstructed.",
+  "verified": true,
+  "verifier_sha256": "f00e69565967310ac913eaec234cca573ea59420a705d429555673e1f50129d2"
+}

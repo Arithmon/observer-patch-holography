@@ -212,6 +212,67 @@ publishes its singular spectrum, null basis, finite-window error, positivity
 check, and forward residual. Temperature and polarization spectra belong to the
 transfer interface.
 
+\input{../paper/tex_fragments/NATIVE_COSMOLOGY_SOURCE_BOUNDARY.tex}
+\input{../paper/tex_fragments/NATIVE_GEOMETRIC_SOURCE_IDENTIFIABILITY.tex}
+
+\subsection{Exact Fourier control for the golden source population}
+The deterministic Cartesian population
+\(x_b=\mathcal L(\{b_1\varphi\},\{b_2\varphi\},\{b_3\varphi\})\),
+\(0\le b_i<q\), has an exact fixed-cube Fourier response. Here
+\(\varphi=(1+\sqrt5)/2\), \(\mathcal L\) is the declared cube size,
+and the integer mode \(n\) has wave vector \(2\pi n/\mathcal L\).
+Its normalized amplitude factors as
+\[
+ F_q(n)=q^{-3}\sum_b e^{2\pi i n\cdot x_b/\mathcal L}
+       =\prod_{j=1}^3 a_q(n_j),\qquad a_q(0)=1,
+\]
+\[
+ a_q(m)=e^{\pi i m\varphi(q-1)}
+       \frac{\sin(\pi mq\varphi)}{q\sin(\pi m\varphi)}
+       \quad(m\ne0).
+\]
+This follows by separating the three finite sums, using integer-mode
+periodicity to remove fractional parts, and evaluating each geometric
+series. For \(q=F_j\), the Fibonacci identity
+\(\varphi F_j-F_{j+1}=(-1)^{j+1}\varphi^{-j}\), with
+\(F_j\varphi^{-j}\to1/\sqrt5\), gives for fixed \(n\)
+with \(h\) nonzero coordinates
+\[
+ q^{4h}|F_q(n)|^2\longrightarrow
+ \prod_{n_a\ne0}\frac{(\pi n_a)^2}{5\sin^2(\pi n_a\varphi)}.
+\]
+The denominator is nonzero by irrationality. The small-angle limit of
+each numerator proves the rate. It concerns fixed integer modes in a
+fixed cube. It is not an infinite-volume hyperuniformity result or a
+primordial tilt. Finite directional power ratios can be large while both
+powers vanish; some finite modes remain above the independent-uniform
+structure-factor reference. The exact formula and independent small-cloud
+checks are preserved in
+\path{evidence/observer_dynamics_20260925/sim-analysis/scripts/codex_golden_fourier.py}
+with the retained numerical receipt. No physical length or curvature
+amplitude is selected by this supplied coordinate population. The Lean
+module \path{Lean/Geometry/GoldenSourceFourier.lean} checks tensor
+factorization, fractional-coordinate phase equality and the finite
+geometric-series identity. The fixed-mode asymptotic argument above is
+analytical, not a claimed formal limit theorem.
+
+\subsection{Common-bulk consistency beyond a single screen}
+A further sufficient uniqueness route uses an unbounded sequence of round
+radii, on one common Euclidean time slice and in one fixed normalization.
+If one homogeneous isotropic generalized bulk covariance has exact screen
+spectra \(C_\ell(R_j)=2\pi A_j/[\ell(\ell+1)]\) for all \(\ell\ge1\),
+then overlapping chord intervals force all \(A_j=A\),
+\(\xi(s)=-A\log s+c\) almost everywhere, and
+\(P_3(k)=2\pi^2A/k^3\) for \(k>0\).
+The radial theorem assumes well-defined restrictions, a locally integrable
+off-diagonal covariance and no contact terms. Removing the dipole retains
+\(c+ds^2\) freedom. A finite family of separate screen marginals does
+not supply the common bulk or unbounded coverage: positive perturbations
+supported beyond the largest measured chord preserve all those marginals.
+The detailed radial theorem and its explicit positive-baseline control
+therefore strengthen the conditional inverse statement without identifying
+the native load record as curvature.
+
 \section{Dark-Sector Interface}
 
 The dark-matter paper proposes anomalous modular charge on overlap collars.

@@ -42,6 +42,26 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
+        "Verify geometric-source identifiability and native history controls",
+        [sys.executable, "-m", "pytest", "-q", "code/native_geometric_source"],
+    ),
+    (
+        "Replay composed field feedback, clock and detector error custody",
+        [sys.executable, "code/common_history_packet/verify.py"],
+    ),
+    (
+        "Reject false common-history, density and quantum-preparation certificates",
+        [sys.executable, "-m", "pytest", "-q", "code/common_history_packet", "code/source_density_geometry", "code/source_scalar_preparation"],
+    ),
+    (
+        "Verify native observer dynamics, retained spectra and clock controls",
+        [sys.executable, "code/observer_dynamics/verify.py"],
+    ),
+    (
+        "Verify sampled causal-manifold arithmetic and mutation controls",
+        [sys.executable, "evidence/source_net_causal_poset/verify_sampled_manifold.py"],
+    ),
+    (
         "Verify finite fermionic current, exact continuity and mean Gauss custody",
         [sys.executable, "-m", "pytest", "-q", "code/sm_fermion_current"],
     ),

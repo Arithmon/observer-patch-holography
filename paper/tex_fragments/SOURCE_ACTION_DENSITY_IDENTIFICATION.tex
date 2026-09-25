@@ -1,0 +1,156 @@
+\subsection{Action measure, record production and geometric density}
+\label{sec:source-action-density-identification}
+
+A supplied scalar response operator contains more information about its
+action measure than an unweighted event count. It still does not identify
+that measure with physical volume. The distinction can be tested on the
+same source-addressed family, with its preparation, protected records,
+read law and model clock kept explicit.
+
+\begin{proposition}[Identification of normalized action measure]
+\label{prop:source-action-measure-identification}
+Let $A$ be a finite real operator whose nonzero off-diagonal support is
+connected. Suppose a positive diagonal matrix $M=\operatorname{diag}(m_i)$
+makes $MA$ symmetric. The equations
+\[
+ m_iA_{ij}=m_jA_{ji},\qquad \sum_i m_i=1
+\]
+determine $m$ uniquely. If the two directed coefficients on every support
+edge are negative, a spanning tree constructs the candidate through
+$m_j/m_i=A_{ij}/A_{ji}$; the remaining edges test consistency.
+\end{proposition}
+\begin{proof}
+For two positive solutions $m,n$, multiplying their edge equations and
+cancelling a nonzero coefficient gives $m_i n_j=m_j n_i$. Thus $m_i/n_i$
+is constant along every path. Connectivity makes the constant global,
+and normalization sets it to one. Tree products produce the candidate;
+positivity and every remaining edge equation certify its extension to
+the whole graph. Multiplying both $M$ and the stiffness $MA$ by one
+positive constant leaves $A$ unchanged, so reciprocity cannot identify
+an absolute action scale.
+\end{proof}
+
+This reconstruction also has a finite conditioning bound. If each
+directed edge coefficient has relative error at most $\epsilon<1$,
+each inferred edge ratio changes by a factor between $r^{-1}$ and $r$,
+where $r=(1+\epsilon)/(1-\epsilon)$. For a tree of depth $d$, the
+root-relative weights change by factors in $[r^{-d},r^d]$. Normalizing
+their sum gives factors in $[r^{-2d},r^{2d}]$. This bounds the tree
+estimate; noisy cycle disagreement remains a model-consistency test.
+
+On the authenticated $q=5$ scalar family, the independent certificate
+recovers all $64$ normalized weights from the directed operator alone,
+checks its $144$ undirected edges, and compares the result with the
+separately reconstructed golden dual-cell quadrature. The tree has depth
+$9$ and $81$ remaining cycle edges. The parent mass vector is used for
+this comparison, not by the reconstruction algorithm. Operator and
+action selection remain supplied inputs.
+
+\paragraph{A production control on the same finite family.}
+Two preparations, with amplitude multipliers $1/2$ and $1$ relative to
+the retained source, give $2{,}944$ independently replayed field writes.
+They have the same response operator and field ancestry; their initial
+energies differ by a factor of four. Local observer records read the
+actual writer, immutable version and value at the same site. Their extra
+read/write operations are charged separately and have no identified
+physical durations. The union of these local certificates is not a
+construction of remote record transport to one observer.
+
+For an interior field-ancestry interval $I$, let
+$v_e=\tau m_{i(e)}$, where $\tau=\sqrt5/35$ is the retained action tick.
+Declare a production multiplier $r>0$ and an integer exposure budget
+$K$. The finite local production rule
+\[
+ n_e=\lfloor Krv_e\rfloor,\qquad
+ \widehat V_r(I)=\frac{1}{Kr}\sum_{e\in I}n_e
+\]
+has the exact deterministic enclosure
+\begin{equation}
+ 0\le \sum_{e\in I}v_e-\widehat V_r(I)
+ <\frac{|I|}{Kr}.
+ \label{eq:source-calibrated-production-error}
+\end{equation}
+The proof sums $0\le Krv_e-n_e<1$. Four controls cross the two source
+strengths with $r=1,2$ at $K=4096$. All $324$ local observer records are
+replayed. Changing $r$ changes raw density while the field order and
+action measure stay fixed; dividing by the declared production law
+recovers the same finite measure within
+\eqref{eq:source-calibrated-production-error}. Neither that production
+law nor the identification of $\tau m_i$ with physical four-volume is
+derived by this test. No Poisson reference or old causal count-clock
+theorem is substituted for the actual field ancestry.
+
+\paragraph{What a specified conformal action adds.}
+Consider the separate control metric
+$g=u(x)(-dt^2+dx^2+dy^2+dz^2)$, with $u>0$, and the canonical massive
+scalar action in these coordinates. Its kinetic weight scales as $u$,
+whereas its metric four-volume scales as $u^2$. In the finite control,
+$M_i(u)=u_iM_i(1)$, each undirected gradient coefficient is multiplied
+by $(u_i+u_j)/2$, the Dirichlet boundary coefficient by its interior
+$u_i$, and the unit-mass potential coefficient by $u_i^2$.
+These terms define one symmetric quadratic action and reproduce the
+original operator at $u=1$.
+
+Reciprocity determines the relative profile $u_i/u_j$ after division by
+the reference weights. The full operator supplies more: at an interior
+site with all six neighbours and the specified unit mass potential,
+\[
+ \sum_j A(u)_{ij}=u_i.
+\]
+Gradient terms cancel in this row sum. It calibrates the common profile
+factor; all eight interior sites provide independent consistency checks.
+Thus no additional value of $u$ is imported into this reconstruction.
+The unit scalar mass and the conformal action class are still essential
+inputs. The controls $u=1$ and $u=1+x/2$ recover both profiles exactly
+while retaining the same nonzero support and hence the same layered
+support order. Their normalized kinetic and four-volume measures differ
+for the nonconstant profile.
+
+For an identified affine control $u=a+bx$, its specified continuum
+metric has scalar curvature
+\[
+ R=-6\Omega^{-3}\Box\Omega
+   =\frac{3b^2}{2u^3},\qquad \Omega=\sqrt u,
+\]
+with signature $(-+++)$ and the displayed curvature convention.
+The nonzero control curvature is obtained through the supplied action
+and metric dictionary, not from an unweighted ordering statistic. No
+law makes either profile respond to the simulated source strength.
+
+\paragraph{Scalar readouts do not determine tensor response.}
+The same finite action also permits a direct comparison of directional
+responses. Write its potential as $V=G_x+G_y+G_z+V_m$, including every
+interior and Dirichlet edge, and consider the retained neighbouring
+configurations $q_-,q$. Their discrete action contribution is
+\[
+ L_d=T_d-\tau V,\qquad
+ T_d=\frac{(q-q_-)^TM(q-q_-)}{2\tau}.
+\]
+The potential uses the right endpoint $q$. Summing these contributions gives the recorded centred update through
+the discrete Euler--Lagrange equation. At fixed configurations, a stretch
+of coordinate axis $k$ by $s$ changes the contribution to
+\[
+ L_d(s)=sT_d-\tau\{s(V-G_k)+G_k/s\},\qquad
+ \left.\frac{dL_d}{d\log s}\right|_{s=1}
+ =T_d-\tau(V-2G_k).
+\]
+An $x/y$ permutation commutes with the complete cubic source operator.
+It preserves $T_d$, $V$, the action measure and the isotropic sum of
+these derivatives, but interchanges unequal directional responses.
+The certificate uses the two retained configurations and independently
+reassembles the stretched-grid action at $s=2$ and $s=1/2$; two thirds
+of their difference equals the displayed derivative exactly. Kinetic
+variation is included. These are finite action responses, with no
+identification of a physical stress source or gravitational coupling.
+
+The connectedness and normalization theorem, common-scale ambiguities,
+finite production-error bound and conformal calibration algebra are
+checked in \path{Lean/Geometry/SourceActionMeasure.lean}. The original
+source histories, exact controls and independent verifier are at
+\path{evidence/source_density_geometry/} and
+\path{code/source_density_geometry/}. They identify a relative action
+measure and a profile within a specified conformal action class. They do
+not select the population, action, clock, production grammar, storage,
+source-to-metric update or physical tensor coupling. Those inputs are
+needed before the recovered quantity can be used as a sourced physical
+volume or an Einstein response.

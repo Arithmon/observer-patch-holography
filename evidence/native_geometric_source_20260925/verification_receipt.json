@@ -1,0 +1,45 @@
+{
+  "finite_controls": [
+    {
+      "configurations": 12,
+      "exact_matrices_checked": 59,
+      "raised": 1
+    },
+    {
+      "configurations": 924,
+      "exact_matrices_checked": 59,
+      "raised": 6
+    }
+  ],
+  "native_custody_checker_sha256": "1e0e9c3623abe9949aef2e32bae454d0f591f0a701e1218096bfbe95c8c5f8df",
+  "receipt_sha256": "eb19060cc0abbdcf9b33ed4c99306f36dc40bf5f3848571643d52ae37e3c972d",
+  "scope": "Exact finite load moments and replayed fixed supplied geometry; no geometric source identification.",
+  "status": "PASS",
+  "trace_controls": [
+    {
+      "attempts": 64,
+      "level": 0,
+      "preparation": "uniform_fixed_total",
+      "swaps": 11
+    },
+    {
+      "attempts": 64,
+      "level": 0,
+      "preparation": "clustered_fixed_total",
+      "swaps": 1
+    },
+    {
+      "attempts": 64,
+      "level": 1,
+      "preparation": "uniform_fixed_total",
+      "swaps": 18
+    },
+    {
+      "attempts": 64,
+      "level": 1,
+      "preparation": "clustered_fixed_total",
+      "swaps": 1
+    }
+  ],
+  "verifier_sha256": "aebed81570ead446fea69b3873c929e7ed832bff3aff71db2911a828d1e95353"
+}

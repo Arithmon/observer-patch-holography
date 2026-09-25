@@ -25,9 +25,9 @@
     ]
   },
   "curated_archive": {
-    "file_count": 44,
-    "total_bytes": 1971639,
-    "inventory_sha256": "5030713a6e9109c74006bf11142b134e4468310e2a6f55eed83d4c535df7c368",
+    "file_count": 57,
+    "total_bytes": 2140244,
+    "inventory_sha256": "8e4106bed4f5be3a413da9a26ef845e157030213879a517ab2327aef1379fbcb",
     "is_complete_copy_of_original_receipts": true,
     "selection": "Two receipt generations, both byte-exact mirrors of the simulator receipts at their recorded commits: the 2026-09-24 generation (exact all-pairs counts through q=89, carriers through q=89) is the current record; the 2026-09-09 generation is retained under its original names because other packages pin its bytes. The q5/q8 logs and the standalone generator serve both; routed_read_law/ retains small conditional q13/q21 routing receipts and phase commitments whose complete event streams are regenerated and independently replayed."
   },
@@ -392,6 +392,71 @@
       "path": "support_wiring_receipt.json",
       "bytes": 85091,
       "sha256": "f5af550934f621fcd1c39e5e66df8ad2b2b0132f614fec88067f90e452f444af"
+    },
+    {
+      "path": "manifold_sampled/README.md",
+      "bytes": 1520,
+      "sha256": "51ba11ee8c82411c140da0f0d490c193020a7c978e4d703e2b4d0ee366345b56"
+    },
+    {
+      "path": "manifold_sampled/manifest.json",
+      "bytes": 2099,
+      "sha256": "40835dfc46da3bff600bc168e14cd6d499e02e12977b29544e2883a5456056c9"
+    },
+    {
+      "path": "manifold_sampled/oph_exact/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "manifold_sampled/oph_exact/source_net.py",
+      "bytes": 53470,
+      "sha256": "7599c955954a913f98906caf30fafb3d8a39c5096ef0240e8a85df4e81604977"
+    },
+    {
+      "path": "manifold_sampled/oph_exact/source_net_manifold_sampled.py",
+      "bytes": 39986,
+      "sha256": "946f36404a6e614f32f14539e9a855f3f1fcd2aefa8f4ccf5d81e22855782709"
+    },
+    {
+      "path": "manifold_sampled/oph_exact/verify_source_net_manifold_sampled_independent.py",
+      "bytes": 8868,
+      "sha256": "1a7f5233fd5800c99a1364556a70582df8d06d5342504d31f3a7a63334d899d3"
+    },
+    {
+      "path": "manifold_sampled/oph_fpe/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "manifold_sampled/oph_fpe/bulk/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "manifold_sampled/oph_fpe/bulk/causet_likeness.py",
+      "bytes": 53076,
+      "sha256": "876e66eda377cfbf69814e81fb42f393ae41537c1adba83c79aff5ab9b0b4aeb"
+    },
+    {
+      "path": "manifold_sampled/tests/test_exact_source_net_manifold_sampled.py",
+      "bytes": 4424,
+      "sha256": "2e7e42c0b046adca75854c3cdd72d156d347354b5cf5afc32401a59788320b70"
+    },
+    {
+      "path": "manifold_sampled/tests/test_retained_receipt_mutations.py",
+      "bytes": 1078,
+      "sha256": "19206f13f623f0ec3bdc27c83942cd0ea9d407b1be72854ed0ada1040e45b4f8"
+    },
+    {
+      "path": "manifold_sampled/verification.json",
+      "bytes": 1174,
+      "sha256": "4395d1647a4ac5a4b78605be1aac590cdced7cc5ab952dab2b0679b1724a93b0"
+    },
+    {
+      "path": "verify_sampled_manifold.py",
+      "bytes": 2910,
+      "sha256": "f00e69565967310ac913eaec234cca573ea59420a705d429555673e1f50129d2"
     }
   ],
   "extensions": [

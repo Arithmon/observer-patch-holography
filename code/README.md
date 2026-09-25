@@ -19,6 +19,11 @@ the theorem or physical carrier named by that branch.
 | --- | --- |
 | [`consensus/`](consensus/) | Finite patch-net repair, schedule independence, and reference-architecture benchmarks |
 | [`geometry/`](geometry/) | Screen incidence, modular clocks, event reconstruction, causal cones, and Einstein-branch receipts |
+| [`observer_dynamics/`](observer_dynamics/) | Native port-repair histories, retained large-run statistics, finite clock controls and conditional observer spectra |
+| [`native_geometric_source/`](native_geometric_source/) | Fixed-chart geometric readout, separated load covariances and source-identification boundaries |
+| [`common_history_packet/`](common_history_packet/) | Same-history local probes, retained records, restoration feedback and useful separated-response error bounds |
+| [`source_scalar_preparation/`](source_scalar_preparation/) | Finite local-force preparation for the supplied scalar quantum instrument |
+| [`source_density_geometry/`](source_density_geometry/) | Relative action measure, local record production and calibrated density/geometry controls |
 | [`a5_closure/`](a5_closure/) | Exact twelve-port $A_5$ coefficient algebra and gauge-closure checks |
 | [`particles/`](particles/) | Particle carriers, hierarchy, flavor, neutrino, hadron, and current status surfaces |
 | [`P_derivation/`](P_derivation/) | Pixel fixed-point maps, interval contraction, uniqueness, and provenance |
