@@ -52,7 +52,7 @@ Normal Forms, the Standard Model Lie Type, and a Route to the Einstein Field Equ
 \begin{document}
 \maketitle
 
-\noindent\textbf{Paper release: \OPHPaperReleaseID}
+\begin{center}\textbf{Paper release: \OPHPaperReleaseID}\end{center}
 
 \begin{center}
 \footnotesize\textbf{Author affiliations:}\\
@@ -1876,6 +1876,45 @@ setting its unit. It reconstructs elapsed duration after the upper endpoint,
 supplies a geometric clock for the declared source family independently of a
 Hamiltonian or oscillator, and identifying a running matter clock with it
 requires their common physical realization.
+
+\paragraph{What the read law fixes and what it leaves free.}
+The declared read law is sufficient for the limit and not necessary
+\cite{ophEinstein}. Explicit sparse stencils with at most $24n^2+6n+9$
+directions at $q=4^n$ give the same flat causal order, count volume
+$\pi c^3T^4/24$, ordering fraction $1/10$ and count clock, while their
+crossing-read entropy across a fixed plane section falls to zero relative to
+the complete-neighbour law, and a coordinate-plus-sparse family makes the
+per-area entropies of two sections differ by a factor $\sqrt2$ in the limit;
+the causal and count limits therefore select no crossing-entropy law. A
+second sparse family with $\Theta(q^{9/8})$ parents per event preserves it
+exactly: every regular plane section $\Sigma$ has crossing entropy
+$\pi q^4|\Sigma|/(4L^2)$ to leading order, one nat per unordered crossing
+pair, and thinning at the original radius cannot retain those counts. The
+crossing functional has a variational limit only with a short-range repair.
+The plain residue partition has vanishing entropy and the sub-isoperimetric
+limit $2^{-1/3}(36\pi)^{1/3}v^{2/3}$; adding reads inside a ball of radius
+$r$ with $r^4/(mq)\to\infty$ and $r^4/q^2\to0$ restores compactness of
+bounded-entropy families and gives the $\Gamma$-limit to Euclidean
+perimeter, and when a ball of volume $v$ fits strictly inside the domain the
+minimum values tend to $(36\pi)^{1/3}v^{2/3}$ with every limiting minimizer
+a ball. On the quantum side, a native flight word of duration $T$ selecting
+a degenerate two-state band has first-order velocity matrix $M$ of nuclear
+norm at most $c$, every such $M$ is attained, isotropic transport therefore
+has speed at most $c/3$, and saturation forces a weighted spherical
+two-design with at least four velocity outcomes, exactly four forcing the
+regular tetrahedron; any finite translation-invariant unitary stencil with
+$N$ displacement terms obeys $N(1-|v|/c)\ge2$, so no finite stencil is
+exactly isotropic at the record-cone speed. For the coherent vacuum of $N$
+modes with mean squared frequency $\sigma^2\to\infty$, the second- and
+fourth-order split steps ($p=2,4$) have time-averaged excitation
+$\Theta(N\tau^{2p}\sigma^{2p})$ and energy error
+$\Theta(\hbar N\tau^{2p}\sigma^{2p+1})$ with matching upper bounds at every
+step, so uniform vacuum fidelity on a fixed interval is equivalent to
+$N\tau^{2p}\sigma^{2p}\to0$; an explicit fourth-order sparse program at
+$\tau=q^{-5/8}/64$ keeps $\Delta E_j=O(q^{-1/32})$ and $1-F_j=O(q^{-1/4})$
+uniformly in the step. These theorems concern the declared regulators.
+Source selection of the read law, a physical clock and a native operation
+grammar remain separate requirements.
 
 %=====================================================================
 \section{Einstein reconstruction}
