@@ -20,13 +20,13 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "9e26d8f4401b9cbe3574f759cd956b140e17cdbd14c67aaf59a73aba3acb5ad6",
-      "size_bytes": 457072
+      "sha256": "64c2d351002b4aa68f1fdc45539228e0e7853aeac4046c4fe6150be96a0086ef",
+      "size_bytes": 417926
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "dd6a2e92d1e73be9962bc8503c0ebdca56da3b329b744237c6fe4f7729a44d47",
-      "size_bytes": 919002
+      "sha256": "4c7bfb7cefe3b768593140c5c03274106103eb6f73c95cbcda04335e0c607f18",
+      "size_bytes": 919817
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
@@ -40,13 +40,13 @@
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "29f2f30fc4af345551510a6fdfaea094b319034e2e64e702c21d9c838b2faa1f",
-      "size_bytes": 1136182
+      "sha256": "e1ac973d33b39d72d5c350d627300d99814fbdfb82aae49f337341a86a8fb68f",
+      "size_bytes": 1137039
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
-      "sha256": "18e1db485b3472ccb4e906dc9ef9aba2333896ddbce65f9f2134b9cb58ee5cb2",
-      "size_bytes": 435181
+      "sha256": "ecb924451c5cb8d33d1da7bb204583b7f22665be94f215d1126d3204d20c5e40",
+      "size_bytes": 435465
     }
   },
   "release_id": "r2045",
