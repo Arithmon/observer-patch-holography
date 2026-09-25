@@ -27,24 +27,8 @@ except ImportError:  # Direct script invocation.
     from archive_adapter import ARCHIVE, SIM, RER, check_manifest, frozen_sources, load, sha
 
 
-SIGN_FREE_VECTORS = ("first_mode_vector",)
-
-
 def compare(old, new, path="", *, rtol=1e-7, atol=1e-8):
-    """Exact structural/rational comparison; tolerance only for floating values.
-
-    A normalized eigenvector of a simple eigenvalue is defined only up to an
-    overall sign, and LAPACK builds may return either. Fields listed in
-    SIGN_FREE_VECTORS therefore compare equal to the recomputation or its
-    negation; every quantity the producers derive from them is even in the
-    vector and is compared exactly as usual.
-    """
-    if isinstance(old, list) and path.rsplit("/", 1)[-1] in SIGN_FREE_VECTORS:
-        try:
-            compare(old, new, path + "[sign]", rtol=rtol, atol=atol)
-        except AssertionError:
-            compare(old, [-x for x in new], path + "[-sign]", rtol=rtol, atol=atol)
-        return
+    """Exact structural/rational comparison; tolerance only for floating values."""
     if isinstance(old, dict):
         if set(old) != set(new):
             raise AssertionError(f"Keys differ at {path}: {set(old) ^ set(new)}")
@@ -60,6 +44,64 @@ def compare(old, new, path="", *, rtol=1e-7, atol=1e-8):
             raise AssertionError(f"Numerical receipt mismatch at {path}: {old} != {new}")
     elif old != new:
         raise AssertionError(f"Receipt mismatch at {path}: {old!r} != {new!r}")
+
+
+class canonical_eigenvector_signs:
+    """Fix the sign convention of symmetric eigensolver output during replay.
+
+    A normalized eigenvector of a simple eigenvalue is defined only up to an
+    overall sign, and LAPACK builds return either sign. The archived producers
+    use the solver's output directly, so a receipt quantity that is odd in a
+    mode vector would change sign between platforms. Inside this context each
+    returned eigenvector is oriented so that its largest-magnitude component
+    is positive, the first such index deciding ties within a relative 1e-9.
+    The archived receipts replay exactly under this convention; the
+    recomputation is then platform independent while the comparison itself
+    stays exact.
+    """
+
+    @staticmethod
+    def _orient(vectors):
+        import numpy as np
+        v = np.array(vectors, copy=True)
+        if v.ndim != 2:
+            return v
+        for j in range(v.shape[1]):
+            column = v[:, j]
+            scale = np.max(np.abs(column)) if column.size else 0.0
+            if scale == 0.0:
+                continue
+            largest = np.flatnonzero(np.abs(column) >= scale * (1 - 1e-9))
+            if column[largest[0]] < 0:
+                v[:, j] = -column
+        return v
+
+    def __enter__(self):
+        import numpy
+        import scipy.linalg
+        self._saved = (scipy.linalg.eigh, numpy.linalg.eigh)
+        scipy_eigh, numpy_eigh = self._saved
+        orient = self._orient
+
+        def scipy_wrapped(*args, **kwargs):
+            result = scipy_eigh(*args, **kwargs)
+            if isinstance(result, tuple) and len(result) == 2:
+                return result[0], orient(result[1])
+            return result
+
+        def numpy_wrapped(*args, **kwargs):
+            result = numpy_eigh(*args, **kwargs)
+            return type(result)(result[0], orient(result[1]))
+
+        scipy.linalg.eigh = scipy_wrapped
+        numpy.linalg.eigh = numpy_wrapped
+        return self
+
+    def __exit__(self, *exc):
+        import numpy
+        import scipy.linalg
+        scipy.linalg.eigh, numpy.linalg.eigh = self._saved
+        return False
 
 
 def replay(relative, function, receipt="receipt.json", excluded=()):
@@ -115,7 +157,7 @@ def main():
     started = time.monotonic()
     inventory = check_manifest()
     results = []
-    with frozen_sources():
+    with frozen_sources(), canonical_eigenvector_signs():
         for source, function, receipt in [
             ("codex/dynamics/stationary_control.py", "build", "stationary_receipt.json"),
             ("codex/inflation/native_history/run.py", "build", "receipt.json"),

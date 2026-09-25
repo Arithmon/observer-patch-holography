@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 848,
+    "file_count": 845,
     "files": [
       {
         "byte_count": 42558,
@@ -2848,21 +2848,6 @@
         "sha256": "sha256:ff0e07a72b13056a780bfe9f18c7b167be355528c00b3dcb72a48542ad7f4ea6"
       },
       {
-        "byte_count": 35,
-        "path": "code/refinement/.ruff_cache/.gitignore",
-        "sha256": "sha256:9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316"
-      },
-      {
-        "byte_count": 261,
-        "path": "code/refinement/.ruff_cache/0.14.4/591452292203214034",
-        "sha256": "sha256:ccfa5770facde85d8d12e625159d6d8921ef6e43f950e441392ac01433ee8c1d"
-      },
-      {
-        "byte_count": 43,
-        "path": "code/refinement/.ruff_cache/CACHEDIR.TAG",
-        "sha256": "sha256:5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae"
-      },
-      {
         "byte_count": 39169,
         "path": "code/refinement/discrete_refinement_certificate.py",
         "sha256": "sha256:8f133ecc2cd8d5f1b9bdd17ae5e9a05ef5c905bcce659a9f3cf55e740de38e68"
@@ -4438,7 +4423,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:ff12828bce28bafdd5e8180b4f6a36393d207d0030c2faf128187a10ece622af",
+    "files_sha256": "sha256:3dde0311e4681502e562bdb692737613b67c0cd04db59672365946dfecbdd6bc",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8",
@@ -7268,7 +7253,7 @@
     ],
     "through_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8"
   },
-  "inventory_sha256": "sha256:64636f718d4ba84cdbd0fe8db90d5e435a4fd9e70f1a3cecd7038f914a3896b7",
+  "inventory_sha256": "sha256:34c9aacab10ad078f583230032f1546da6cd1ec60af45e538c52c39f0774ce3d",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
