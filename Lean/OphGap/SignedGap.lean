@@ -363,29 +363,3 @@ theorem square_no_negative_cycle (u : Fin 4) : ¬ SignedReach sqSrc sqTgt sqσ u
 #print axioms square_no_negative_cycle
 
 end GapScout
-
-#print axioms GapScout.signedDerivative_mulVec_apply
-#print axioms GapScout.dotProduct_gram_mulVec
-#print axioms GapScout.signed_kinetic_identity
-#print axioms GapScout.gram_posDef_of_injective
-#print axioms GapScout.triangle_quadratic_form
-#print axioms GapScout.triangle_posDef
-#print axioms GapScout.kernel_edge_eq
-#print axioms GapScout.kernel_transport
-#print axioms GapScout.kernel_zero_at_negative_cycle
-#print axioms GapScout.kernel_trivial_of_negative_cycle
-#print axioms GapScout.injective_of_negative_cycle
-#print axioms GapScout.gram_posDef_of_negative_cycle
-#print axioms GapScout.eigenvalues_pos_of_negative_cycle
-#print axioms GapScout.triangleL_eq_gram
-#print axioms GapScout.tri_negative_cycle
-#print axioms GapScout.tri_connected
-#print axioms GapScout.triangle_posDef_via_balance
-#print axioms GapScout.sqMode_ne_zero
-#print axioms GapScout.sqMode_in_kernel
-#print axioms GapScout.square_not_injective
-#print axioms GapScout.square_not_posDef
-#print axioms GapScout.sqPot_succ
-#print axioms GapScout.sqPot_sq
-#print axioms GapScout.square_walk_sign
-#print axioms GapScout.square_no_negative_cycle

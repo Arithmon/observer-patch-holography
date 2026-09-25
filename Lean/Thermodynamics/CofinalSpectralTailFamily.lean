@@ -397,6 +397,15 @@ structure FiniteFourLawCore {Omega : Type u} [Fintype Omega]
     (push p (repairKernel D) = p ↔
       ∀ y, p y = D.ref y * fiberMass p D.visible y
         / fiberMass D.ref D.visible y)
+  /-- Finite-stage residual entropy under the same per-call ground-gap
+  hypotheses. This makes no entropy-limit claim uniform over refinement. -/
+  third_entropy_limit : ∀ E0 gap : ℝ, 0 < gap →
+    (∀ x, C.energy x = E0 ∨ E0 + gap ≤ C.energy x) →
+    (Finset.univ.filter (fun x ↦ C.energy x = E0)).Nonempty →
+    Filter.Tendsto (gibbsEntropy C.energy) Filter.atTop
+      (nhds (Real.log (groundDegeneracy C.energy E0))) ∧
+    (Filter.Tendsto (gibbsEntropy C.energy) Filter.atTop (nhds 0) ↔
+      groundDegeneracy C.energy E0 = 1)
   third_excited_mass_bound : ∀ beta E0 gap : ℝ, 0 ≤ beta → 0 < gap →
     (∀ x, C.energy x = E0 ∨ E0 + gap ≤ C.energy x) →
     (Finset.univ.filter (fun x ↦ C.energy x = E0)).Nonempty →
@@ -447,6 +456,7 @@ def FiniteFourLawCore.ofFourLawConclusions {Omega : Type u}
   arrow_mean_ep_eq_kl_to_repaired := H.arrow_mean_ep_eq_kl_to_repaired
   arrow_strict := H.arrow_strict
   repair_fixed_iff := H.repair_fixed_iff
+  third_entropy_limit := H.third_entropy_limit
   third_excited_mass_bound := H.third_excited_mass_bound
   third_excited_mass_threshold := H.third_excited_mass_threshold
   third_no_step_extinguishes := H.third_no_step_extinguishes
@@ -484,6 +494,9 @@ theorem finiteFourLawCore {Omega : Type u} [Fintype Omega]
     arrow_mean_entropy_production_eq_kl_to_repaired D
   arrow_strict := arrow_strict D
   repair_fixed_iff := repair_fixed_iff D
+  third_entropy_limit := fun E0 gap hgap hground hne ↦
+    ⟨gibbsEntropy_tendsto C.energy E0 gap hgap hground hne,
+     gibbsEntropy_tendsto_zero_iff C.energy E0 gap hgap hground hne⟩
   third_excited_mass_bound := third_excited_mass_bound D C
   third_excited_mass_threshold := third_excited_mass_threshold D C
   third_no_step_extinguishes := third_no_step_extinguishes D
