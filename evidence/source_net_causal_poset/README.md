@@ -102,7 +102,9 @@ auxiliary events into spacetime-volume counts.
 | Selection of the population and read law by native repairs | | not supplied by these receipts |
 | Physical clock and source-selected continuum | not supplied by these receipts; the declared-family analytic limit is in the source paper | distinct from finite numerical diagnostics |
 | S2 support wiring readout | exact canonical L3–L5 W12 trace, both coordinate placements, W3/isolated controls and paired q=13 counts | computed, [support-wiring receipt](../support_wiring_776/README.md); finite declared inputs, no source selection or continuum claim |
-| Isotropy of link directions, interval abundance profile, curvature estimators | | not supplied by these receipts |
+| Isotropy of link directions, interval abundance profile | odd multipoles vanish, `l = 4` power 0.036, 0.023, 0.0060, 0.0016 at `q = 8, 13, 21, 34`; intervals of 64 to 1024 events match a flat sprinkling within 14 percent, links and small intervals do not (layered order) | computed at `q <= 34`, [extension of 2026-09-25](#extensions-of-2026-09-25) |
+| Chain counts `C_3`, `C_4` and interval spectrum | dimensions 4.094, 4.034, 4.017 from `C_2`, `C_3`, `C_4` at `q = 89`; interval spectrum closest to the flat `3+1` law, maximum CDF difference 0.025; `C_3` dimension 4.078 +- 0.016 over fifteen diamonds | computed at `q = 55, 89` (sampled, standard errors), [extension of 2026-09-25](#extensions-of-2026-09-25) |
+| Curvature estimators | | not supplied by these receipts |
 
 ## Independent checks
 
@@ -157,6 +159,46 @@ package verifier without simulator code:
   `0.1024 +- 0.0004`; count clock `1.959` against the model-time ratio `2`; controls `3.017`
   and `2.004`. These are sampled estimates with standard errors; the exact family receipt and
   its claim boundary (`q <= 89`) are unchanged, and the level has no theory replay row.
+
+## Extensions of 2026-09-25
+
+Two lanes read the order with more than one number; both are receipts of the simulator with
+independent verifiers and tests there, and the package verifier checks each of them here
+against the exact family receipt (event counts, pair counts, tip sites, edge counts), the
+generator pins and every derived field.
+
+- `manifold_observations_receipt_2026-09-25.json` (generator
+  `manifold_observations_2026-09-25.py`, the simulator module byte for byte; q = 8, 13, 21,
+  34; 722 s): Myrheim-Meyer dimension on interior diamonds of three sizes at the centre and at
+  up to sixteen off-centre tips, moving-tip diamonds at four rapidities, interval-abundance
+  profiles against fixed-count sprinklings of flat diamonds, the Benincasa-Dowker action,
+  link-direction multipoles against a uniform reference (distinct directions counted exactly
+  in `Q(phi)`), count clocks and a refinement trend table; every abundance profile is the
+  exact between-count matrix. At q = 34: the dimension is the same at every off-centre tip of
+  the same size to within 0.04; the four moving-tip diamonds read 0.108 to 0.125 (dimensions
+  3.73 to 3.92) against 0.145 for the five-layer vertical diamond; intervals of 64 to 1024
+  events are as abundant as in a flat sprinkling within 14 percent while links are 23 percent
+  of related pairs against 8.6 percent; the odd
+  multipoles of the link directions vanish and the `l = 4` power falls 0.036, 0.023, 0.0060,
+  0.0016 over the four levels; the controls read 3.01 and 2.00. The family is a layered order,
+  not a sprinkling: links, small intervals and the action read the lattice scale and are
+  controls; the bulk statistics are the ones the limit governs.
+- `source_net_manifold_sampled_q55_q89_2026-09-25.json` (generator
+  `source_net_manifold_sampled_2026-09-25.py`, the simulator module byte for byte; 3,451 s):
+  chain counts `C_2`, `C_3`, `C_4` with standard errors from uniformly drawn events and
+  partners (breadth-first searches with the exact cone pruning of the causal-limit lane), the
+  dimensions they invert to under `C_k = N^(k) chi_k(d)`, and the interval spectrum, the
+  distribution of `|I(y,z)|/N` over related pairs against the continuum `(tau/T)^d` laws in
+  d = 2 to 6, on the centre diamond, the moving-tip diamond and fourteen off-centre diamonds
+  displaced by `L/8`, with the two- and one-dimensional controls. At q = 89 the sampled `C_2`
+  is `5.40e10 +- 0.15e10` against the exact `5.5109e10`; the dimensions from `C_2`, `C_3`,
+  `C_4` are 4.094, 4.034, 4.017 (moving tip 3.88, 3.96, 3.93; controls 3.007, 2.997, 3.014
+  and 1.99, 2.02, 2.04); the spectrum is closest to the flat `3+1` law with maximum CDF
+  difference 0.025 (0.076 at q = 55) and mean 0.0103 against `1/105`; the `C_3` dimension
+  over the fifteen six-layer diamonds is 4.078 with standard deviation 0.016 and the
+  count-volume coefficient 1.0627 with standard deviation 0.0013.
+- `source_net_manifold_sampled_q144_2026-09-25.json`: the same readouts at q = 144 at half
+  the sample sizes, when present; its readings are in the receipt.
 
 ## Boundary
 

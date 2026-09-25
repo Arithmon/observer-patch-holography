@@ -219,6 +219,192 @@ def check_sampled_extension(name: str, generator: str, q: int, fibonacci_index: 
         require(receipt["scope"].get(flag) is False, f"sampled extension scope flag {flag}")
 
 
+def _mm_fraction(d: float) -> float:
+    """Myrheim-Meyer ordering fraction of a flat d-dimensional diamond: Gamma(d+1) Gamma(d/2) / (2 Gamma(3d/2))."""
+    from math import gamma
+    return gamma(d + 1.0) * gamma(d / 2.0) / (2.0 * gamma(1.5 * d))
+
+
+def _mm_dimension(fraction: float):
+    if not (0.0 < fraction < 1.0):
+        return None
+    lo, hi = 1.0, 12.0
+    if fraction >= _mm_fraction(lo) or fraction <= _mm_fraction(hi):
+        return None
+    for _ in range(200):
+        mid = 0.5 * (lo + hi)
+        if _mm_fraction(mid) > fraction:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
+
+
+def _chi(k: int, d: float) -> float:
+    """Meyer's chain coefficient: E C_k = chi_k (rho V)^k in a flat d-diamond; 2 chi_2 is the ordering fraction."""
+    from math import gamma
+    return (1.0 / k) * (gamma(d + 1.0) / 2.0) ** (k - 1) * gamma(d / 2.0) * gamma(float(d)) / (gamma(k * d / 2.0) * gamma((k + 1) * d / 2.0))
+
+
+def _invert_chi(k: int, value: float):
+    if not value > 0.0:
+        return None
+    lo, hi = 1.05, 12.0
+    if value >= _chi(k, lo) or value <= _chi(k, hi):
+        return None
+    for _ in range(200):
+        mid = 0.5 * (lo + hi)
+        if _chi(k, mid) > value:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
+
+
+def _family_by_q(family_receipt: dict, q: int, dim: int = 3):
+    for lv in family_receipt["levels"]:
+        if int(lv["q"]) == q:
+            for fam in lv["families"]:
+                if int(fam["dimension"]) == dim:
+                    return fam
+    return None
+
+
+def check_manifold_observations(name: str, family_name: str, generator: str) -> None:
+    """The manifold-observations receipt (q = 8..34): pins, ranges, arithmetic identities and the tie to the exact family receipt."""
+    receipt = strict_json(HERE / name)
+    require(receipt["schema"] == "oph.exact.manifold-observations.v1", "manifold observations schema")
+    require((HERE / generator).is_file(), "manifold observations generator present")
+    require(receipt["source_pins"]["oph_exact/manifold_observations.py"] == sha256(HERE / generator).removeprefix("sha256:"),
+            "manifold observations generator is the pinned producer")
+    for flag in ("native_repair_selected", "physical_clock_or_spacetime_identified", "finite_runs_demonstrate_asymptotic_limit",
+                 "dimension_statistic_used_as_acceptance", "hawking_king_mccarthy_malament_computed"):
+        require(receipt["scope"].get(flag) is False, f"manifold observations scope flag {flag}")
+    require(receipt["scope"].get("sprinkling_references_are_imported_controls") is True, "manifold observations sprinkling scope")
+    family_receipt = strict_json(HERE / family_name)
+    require([lv["q"] for lv in receipt["levels"]] == [8, 13, 21, 34], "manifold observations levels")
+    trend = {int(r["q"]): r for r in receipt["trend_table"]["three_dimensional_family"]}
+    for lv in receipt["levels"]:
+        q = int(lv["q"])
+        for fam in lv["families"]:
+            dim = int(fam["dimension"])
+            d = dim + 1
+            K = int(fam["layer_steps"])
+            centre = fam["centre_vertical_intervals"]
+            require(len(centre) == K, f"manifold q={q} dim={dim}: centre ladder length")
+            exact_fam = _family_by_q(family_receipt, q, dim)
+            require(exact_fam is not None, f"manifold q={q} dim={dim}: family level present in the exact receipt")
+            for k, row in enumerate(centre, start=1):
+                require(int(row["layers"]) == k, f"manifold q={q} dim={dim}: layer index")
+                ref = exact_fam["vertical_intervals"][k - 1]
+                require(int(row["inclusive_event_count"]) == int(ref["inclusive_event_count"]),
+                        f"manifold q={q} dim={dim} k={k}: event count equals the exact receipt")
+                if "strict_pair_count" in row and "strict_pair_count" in ref:
+                    require(int(row["strict_pair_count"]) == int(ref["strict_pair_count"]),
+                            f"manifold q={q} dim={dim} k={k}: strict pair count equals the exact receipt")
+                f = row["ordering_fraction_float"]
+                if f is not None and row["myrheim_meyer_dimension"] is not None:
+                    require(_near(row["myrheim_meyer_dimension"], _mm_dimension(f), 1e-7), f"manifold q={q} dim={dim} k={k}: dimension inversion")
+            if dim == 3:
+                ab = fam["abundance"]
+                counts = ab["counts"] if ab["mode"].startswith("exact") else ab["counts_estimate"]
+                require(counts[0] > 0 and all(_near(r, c / counts[0], 1e-9) for r, c in zip(ab["ratios"], counts)), f"manifold q={q}: abundance ratios")
+                act = fam["action"]
+                N, N1, N2, N3, N4 = act["N"], act["N_1_links"], act["N_2"], act["N_3"], act["N_4"]
+                require(N == int(ab["event_count"]) and N1 == counts[0] and N2 == counts[1] and N3 == counts[2] and N4 == counts[3], f"manifold q={q}: action counts")
+                bracket = N - N1 + 9 * N2 - 16 * N3 + 8 * N4
+                require(act["bracket"] == bracket and _near(act["action"], _sig12(bracket * 4.0 / 6 ** 0.5), 1e-9)
+                        and _near(act["action_over_N"], _sig12(act["action"] / N), 1e-9), f"manifold q={q}: action arithmetic")
+                ld = fam["link_directions"]
+                powers = ld["power_relative_to_degree_zero"]
+                require(powers[0] < 1e-20 and powers[2] < 1e-20 and powers[3] > 0.0, f"manifold q={q}: odd link multipoles vanish, l = 4 does not")
+                require(ld["directed_link_count"] == 2 * ld["undirected_spatial_edges"] == 2 * int(exact_fam["undirected_spatial_edges"]),
+                        f"manifold q={q}: link count equals the exact receipt's edge count")
+                tr = trend[q]
+                top = centre[K - 1]
+                require(_near(tr["centre_ordering_fraction"], top["ordering_fraction_float"], 1e-12) and
+                        _near(tr["centre_dimension"], top["myrheim_meyer_dimension"], 1e-12) and
+                        _near(tr["absolute_deviation_from_one_tenth"], _sig12(abs(top["ordering_fraction_float"] - 0.1)), 1e-9),
+                        f"manifold q={q}: trend row")
+                require(tr["link_multipole_power_l1_to_l4"] == powers, f"manifold q={q}: trend multipoles")
+                for block in fam["homogeneity"]["sizes"]:
+                    dims = [r["myrheim_meyer_dimension"] for r in block["diamonds"] if r["myrheim_meyer_dimension"] is not None]
+                    summ = block["dimension_summary"]
+                    require(summ["count"] == len(dims) and _near(summ["mean"], _sig12(sum(dims) / len(dims)), 1e-9), f"manifold q={q}: homogeneity summary")
+            else:
+                require(1.0 < centre[K - 1]["myrheim_meyer_dimension"] < 6.0, f"manifold q={q} dim={dim}: control range")
+
+
+def check_manifold_sampled(name: str, family_name: str, sampled_name: str, generator: str, levels: list) -> None:
+    """The sampled chain-count and interval-spectrum receipt: arithmetic identities and the ties to the exact and sampled family receipts."""
+    receipt = strict_json(HERE / name)
+    require(receipt["schema"] == "oph.exact.source-net-manifold-sampled.v1", "manifold sampled schema")
+    require((HERE / generator).is_file(), "manifold sampled generator present")
+    require(receipt["source_pins"]["oph_exact/source_net_manifold_sampled.py"] == sha256(HERE / generator).removeprefix("sha256:"),
+            "manifold sampled generator is the pinned producer")
+    for flag in ("native_repair_selected", "physical_clock_or_spacetime_identified", "finite_runs_demonstrate_asymptotic_limit",
+                 "dimension_statistic_used_as_acceptance", "poisson_sprinkling"):
+        require(receipt["scope"].get(flag) is False, f"manifold sampled scope flag {flag}")
+    require([int(lv["q"]) for lv in receipt["levels"]] == levels, "manifold sampled levels")
+    grid = receipt["spectrum_grid"]
+    refs = receipt["continuum_references"]
+    for key, ref in refs.items():
+        d = int(key)
+        require(_near(ref["ordering_fraction_exact"], _sig12(2.0 * _chi(2, d)), 1e-9) and _near(ref["mean_exact_chi3_over_chi2"], _sig12(_chi(3, d) / _chi(2, d)), 1e-9),
+                f"manifold sampled reference d={d}: closed forms")
+        require(abs(ref["mean"] / (_chi(3, d) / _chi(2, d)) - 1.0) < 0.05 and abs(ref["ordering_fraction_monte_carlo"] / (2 * _chi(2, d)) - 1.0) < 0.02,
+                f"manifold sampled reference d={d}: Monte Carlo against its closed form")
+    family_receipt = strict_json(HERE / family_name)
+    sampled_receipt = strict_json(HERE / sampled_name) if sampled_name else None
+    for lv in receipt["levels"]:
+        q = int(lv["q"])
+        for fam in lv["families"]:
+            dim = int(fam["dimension"])
+            d = dim + 1
+            K = int(fam["layer_steps"])
+            exact_fam = _family_by_q(family_receipt, q, dim)
+            if exact_fam is None and sampled_receipt is not None:
+                exact_fam = _family_by_q(sampled_receipt, q, dim)
+            require(exact_fam is not None, f"manifold sampled q={q} dim={dim}: family level present")
+            rows = list(fam["regions"]) + (fam["homogeneity"]["diamonds"] if fam.get("homogeneity") else [])
+            for row in rows:
+                N = int(row["event_count"])
+                where = f"manifold sampled q={q} dim={dim} {row['region']}"
+                for k in ("2", "3", "4"):
+                    ch = row["chains"][k]
+                    ff = 1
+                    for i in range(int(k)):
+                        ff *= N - i
+                    ratio = ch["count"]["estimate"] / ff if ff > 0 else None
+                    require(_near(ch["count_over_falling_factorial"], _sig12(ratio), 1e-9) if ratio is not None else ch["count_over_falling_factorial"] is None, f"{where}: C{k} ratio")
+                    require(_near(ch["flat_chi"], _sig12(_chi(int(k), d)), 1e-9), f"{where}: chi_{k}")
+                    inv = None if ratio is None else _invert_chi(int(k), ratio)
+                    if inv is None:
+                        require(ch["inverted_dimension"] is None, f"{where}: inverted dimension C{k} undefined")
+                    else:
+                        require(_near(ch["inverted_dimension"], inv, 1e-7), f"{where}: inverted dimension C{k}")
+                sp = row["interval_spectrum"]
+                require(_near(sp["flat_mean_chi3_over_chi2"], _sig12(_chi(3, d) / _chi(2, d)), 1e-9), f"{where}: flat spectrum mean")
+                cdf = sp["cdf_on_grid"]
+                require(len(cdf) == len(grid) and all(a <= b + 1e-12 for a, b in zip(cdf, cdf[1:])), f"{where}: spectrum cdf")
+                dist = {key: max(abs(a - b) for a, b in zip(cdf, ref["cdf_on_grid"])) for key, ref in refs.items()}
+                for key in refs:
+                    require(_near(sp["distance_to_flat_references"][key]["max_cdf_difference_on_grid"], _sig12(dist[key]), 1e-9), f"{where}: distance to d={key}")
+                require(int(sp["closest_flat_spacetime_dimension"]) == int(min(dist, key=lambda k_: dist[k_])), f"{where}: closest dimension")
+                if row["region"] == "centre":
+                    ref = exact_fam["vertical_intervals"][K - 1]
+                    require(N == int(ref["inclusive_event_count"]), f"{where}: event count equals the family receipt")
+                    c2, se = row["chains"]["2"]["count"]["estimate"], row["chains"]["2"]["count"]["standard_error"]
+                    if "strict_pair_count" in ref:
+                        require(abs(c2 - int(ref["strict_pair_count"])) <= 4.0 * se, f"{where}: sampled C_2 within four standard errors of the exact pair count")
+                    else:
+                        est = ref["strict_pair_count_estimate"]
+                        require(abs(c2 - est["value"]) <= 4.0 * (se + est["standard_error"]), f"{where}: sampled C_2 within four standard errors of the sampled pair count")
+                if row["region"] == "moving":
+                    mv = exact_fam["moving_tip_interval"]
+                    require(row["lower_tip_site"] == mv["x_site"] and row["upper_tip_site"] == mv["y_site"] and N == int(mv["inclusive_event_count"]),
+                            f"{where}: moving tips and event count equal the family receipt")
+
 def main() -> int:
     manifest = strict_json(MANIFEST)
     require(manifest.get("schema") == "oph.curated_evidence_package.v1", "manifest schema")
@@ -263,6 +449,10 @@ def main() -> int:
             check_flrw_readout(ext["file"], ext["source_receipt"], ext["generator"])
         elif kind == "sampled_level_extension":
             check_sampled_extension(ext["file"], ext["generator"], int(ext["q"]), int(ext["fibonacci_index"]))
+        elif kind == "manifold_observations":
+            check_manifold_observations(ext["file"], ext["source_receipt"], ext["generator"])
+        elif kind == "manifold_sampled":
+            check_manifold_sampled(ext["file"], ext["source_receipt"], ext.get("sampled_receipt"), ext["generator"], [int(v) for v in ext["levels"]])
     print("CAUSAL_POSET_ARCHIVE_VERIFIED", len(files), "files")
     return 0
 
