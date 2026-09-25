@@ -1032,6 +1032,14 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "c9b1d7e2390c5f911e71e5143a0f277b54a1b0da475f61c779cd5a3121a740cd"
       },
+      "OPH-COMMON-HISTORY-FEEDBACK-PACKET": {
+        "assumptions": [
+          "declared_golden_scalar_versioned_execution",
+          "declared_classical_probe_restore_feedback_error_model"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "ff9b68a4b980b4169e1b8b368b3e5f4525676f096aec2528d9fcc36f0fd3d85e"
+      },
       "OPH-CONE-WHITNEY-BRIDGE": {
         "assumptions": [
           "declared_euclidean_cone_geometry_and_Whitney_metric",
@@ -1754,10 +1762,11 @@
           "declared_original_scalar_vacuum_and_sine_effect",
           "fixed_quantum_preparation_under_clock_only_uncertainty",
           "declared_centered_quantum_pointer_and_regional_entangling_operations",
-          "declared_finite_duration_scalar_pointer_and_channel_error_model"
+          "declared_finite_duration_scalar_pointer_and_channel_error_model",
+          "declared_finite_local_scalar_force_preparation"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "07ba9ce0bc9a0572ec07e5ff1cf807f972e7224eb52006a07012edeb6238878c"
+        "original_claim_sha256": "6ea3795cb57247b57b9a1ae75c114d51693721fc93fc3c211ec74fc181964235"
       },
       "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT": {
         "assumptions": [
@@ -1806,6 +1815,15 @@
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "1a5a66c073a496b5e596e25625461fcfe332caeee6873491765fae0131ea1133"
+      },
+      "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION": {
+        "assumptions": [
+          "declared_golden_scalar_versioned_execution",
+          "connected_negative_response_action_measure",
+          "declared_scalar_conformal_action_and_record_production"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "af2214614c4d6e3feac1673719b8173fe8938340a4edd6f34ec4790f47963206"
       },
       "OPH-SOURCE-FULL-FAMILY-READ-ROUTING": {
         "assumptions": [
@@ -2578,6 +2596,11 @@
       },
       {
         "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+        "role": "Consumes only its explicitly supplied q=5 scalar action and authenticated classical source-history construction; no quantum comparison, source selection or physical realization is inherited.",
+        "to": "OPH-COMMON-HISTORY-FEEDBACK-PACKET"
+      },
+      {
+        "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
         "role": "Supplies the bounded probability comparison between the split and continuous evolution of the original vacuum with a coherent displacement; no cosmological ground state is inherited.",
         "to": "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION"
       },
@@ -2605,6 +2628,11 @@
         "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
         "role": "Supplies the separately verified same-action q233 compact spatial/free-Fock comparison and its norm/preparation bounds. The q5 original-vacuum or clock execution data are not transferred to this refinement.",
         "to": "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT"
+      },
+      {
+        "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+        "role": "Consumes only its explicitly supplied q=5 scalar action and authenticated classical source-history construction; no quantum comparison, source selection or physical realization is inherited.",
+        "to": "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION"
       },
       {
         "from": "OPH-QFT-SOURCE-CLOCK-CANDIDATE",
@@ -3328,10 +3356,10 @@
     "Lean/Geometry/M1Necessity.lean": "2b282b25fe3f82153d2780366b36e6eea8cd4f7685d0e08a9ebd15355062ff98",
     "Lean/Geometry/M1NecessityAxiomAudit.lean": "41f1652a454b94dde7f3a198b4c45badba075a54d13f4ed5a23ac533c3c4f677",
     "code/m1_necessity/BALANCED_REPLACEMENT.md": "166af4d120d3dae4f3d077d1160434d4650d7dc5cc7c48d56c8f7f1defb95fce",
-    "code/m1_necessity/CONSUMERS.md": "13f3226c05c656f80aa5605930bb57ee2b84f4a3b288d3f6f674e459d2f4b8f8",
+    "code/m1_necessity/CONSUMERS.md": "5e178a21be7719c24794fbcab673c4ae6d76a96aa66cab2d69e62663526780d4",
     "code/m1_necessity/CONTRACT.md": "f3186f4911ea004fcad0058dbc0a526d359c623d42bdb4bf279fc6dd43ea1670",
     "code/m1_necessity/DERIVATION.md": "13754829bb642c0e48c4ae8cfb8f69d56baa8de90c36dfcb18ae0ff0a8dcca9c",
-    "code/m1_necessity/README.md": "18fedb207aca4d5128c7f2ad59edd81d4953c7a460c322dfd52d05029669dae2",
+    "code/m1_necessity/README.md": "36878d43d8e0ef5c3bc86b9f32d053f73b0b3fa50f7bbc78b3c2751f3081318a",
     "code/m1_necessity/SPECTRAL_COMPLETION.md": "1e633dcbe37a26401ef7c81c158f47d164b5ffb03ae6631da4e42b431ea19f54",
     "code/m1_necessity/__init__.py": "a49a6656f96a30bd6343e498a0ca5302dae30515d4cf458d45c172933a0247ac",
     "code/m1_necessity/audit.py": "d6a0df2ca2ab885fa8cb7c527f3a74ac17b748847524f4cec7d8df7a049a50c0",
@@ -3340,13 +3368,13 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "5bf888da2621d679e26c1a6e3c892fbb3b8d5e9634d24ec153475b6265a149f7",
+    "code/m1_necessity/downstream.json": "5710313e1e0a07ac866676d12f23d9a79e74a4d5574ae4c8080ca9cbf177279e",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "0f3a4388e63720c9abe9b598ce11014d89ff7dbe8c385228fdf8aa326ec6c670",
+    "code/m1_necessity/test_necessity.py": "8e519a343564db0af304264f545db9faa10d09de2800dc88ad7332b2ebaf8afc",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",
     "paper/tex_fragments/SOURCE_METRIC_SCALAR_CONTINUUM.tex": "22d14e170fa56fd5f341c24a6e0b8256358b80e98f93020384dc613c08823e2a",
-    "paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex": "4dc0af010215d1dc29b1e58154dc757ee3c991f65a6db4cc16c5b6fa027782e5"
+    "paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex": "5bfa80b7aadd55fcc4a008970631230fc86b325b278e399bf330a42f0a3e3f8a"
   }
 }
