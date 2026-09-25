@@ -3540,7 +3540,7 @@
       {
         "byte_count": 366,
         "path": "code/source_publication_selection/receipt.json",
-        "sha256": "sha256:f8ddb44d80134780209426e620f6b60d4dc051d86e4d2222f3e9c3f89d3d0603"
+        "sha256": "sha256:49296bd0ad6e09f9fd7c74f8593146388e3b9ec116f93902671ac28e810a7c2f"
       },
       {
         "byte_count": 3393,
@@ -4438,7 +4438,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:e172a839b930c8828cb648328f49e6128d5df65b0e3f7b96f1b85813712db8f8",
+    "files_sha256": "sha256:ff12828bce28bafdd5e8180b4f6a36393d207d0030c2faf128187a10ece622af",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8",
@@ -7268,7 +7268,7 @@
     ],
     "through_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8"
   },
-  "inventory_sha256": "sha256:d1622e6c3a026f1a77b23462b0cd2e53ddc6738aa676d426d2eb718695e392a0",
+  "inventory_sha256": "sha256:64636f718d4ba84cdbd0fe8db90d5e435a4fd9e70f1a3cecd7038f914a3896b7",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -8365,7 +8365,7 @@
     {
       "bytes": 366,
       "path": "code/source_publication_selection/receipt.json",
-      "sha256": "sha256:f8ddb44d80134780209426e620f6b60d4dc051d86e4d2222f3e9c3f89d3d0603"
+      "sha256": "sha256:49296bd0ad6e09f9fd7c74f8593146388e3b9ec116f93902671ac28e810a7c2f"
     },
     {
       "bytes": 3393,

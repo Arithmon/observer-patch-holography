@@ -27,8 +27,24 @@ except ImportError:  # Direct script invocation.
     from archive_adapter import ARCHIVE, SIM, RER, check_manifest, frozen_sources, load, sha
 
 
+SIGN_FREE_VECTORS = ("first_mode_vector",)
+
+
 def compare(old, new, path="", *, rtol=1e-7, atol=1e-8):
-    """Exact structural/rational comparison; tolerance only for floating values."""
+    """Exact structural/rational comparison; tolerance only for floating values.
+
+    A normalized eigenvector of a simple eigenvalue is defined only up to an
+    overall sign, and LAPACK builds may return either. Fields listed in
+    SIGN_FREE_VECTORS therefore compare equal to the recomputation or its
+    negation; every quantity the producers derive from them is even in the
+    vector and is compared exactly as usual.
+    """
+    if isinstance(old, list) and path.rsplit("/", 1)[-1] in SIGN_FREE_VECTORS:
+        try:
+            compare(old, new, path + "[sign]", rtol=rtol, atol=atol)
+        except AssertionError:
+            compare(old, [-x for x in new], path + "[-sign]", rtol=rtol, atol=atol)
+        return
     if isinstance(old, dict):
         if set(old) != set(new):
             raise AssertionError(f"Keys differ at {path}: {set(old) ^ set(new)}")
