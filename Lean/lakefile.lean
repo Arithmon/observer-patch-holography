@@ -64,7 +64,7 @@ lean_lib «OPHThermodynamics» where
     `PoissonizedRepair, `PoissonizedRepairOperatorExp,
     `LowTemperatureControl, `MixingChainRealization, `CommonObjectBinding,
     `CommonReferenceObstruction, `RepairCurrentOrientation,
-    `FourLawAdequacySurface, `HorizonThermalitySurface,
+    `FourLawAdequacySurface, `GibbsEntropyLimit, `HorizonThermalitySurface,
     `CoherentRefinementFamily, `CofinalSpectralTailFamily,
     `PhysicalCalibrationImport,
     `KolmogorovCriterion]

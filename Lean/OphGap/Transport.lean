@@ -122,9 +122,13 @@ theorem labelled_spec {n : Nat} {newT oldT : NTree} {a : Nat} (h : labelled n ne
     simp [newF, hv, h]
   · simp at h
 
+#print axioms labelled_spec
+
 theorem nodesOk_spec {n : Nat} {newT oldT : NTree} {l : List Nat} (h : nodesOk n newT oldT l = true) :
     ∀ a ∈ l, newF newT a < n ∧ oldT.get (newF newT a) = some a :=
   fun a ha => labelled_spec (List.all_eq_true.mp h a ha)
+
+#print axioms nodesOk_spec
 
 theorem endpointsOk_spec {n : Nat} {newT oldT : NTree} {es : List Edge}
     (h : endpointsOk n newT oldT es = true) :
@@ -132,6 +136,8 @@ theorem endpointsOk_spec {n : Nat} {newT oldT : NTree} {es : List Edge}
   intro e he
   have := List.all_eq_true.mp h e he
   simpa [Bool.and_eq_true, decide_eq_true_eq, and_assoc] using this
+
+#print axioms endpointsOk_spec
 
 theorem sortedOk_tail : ∀ {a : Nat} {l : List Nat}, sortedOk (a :: l) = true →
     sortedOk l = true ∧ ∀ x ∈ l, a < x
@@ -146,12 +152,18 @@ theorem sortedOk_tail : ∀ {a : Nat} {l : List Nat}, sortedOk (a :: l) = true �
     · exact h1
     · exact lt_trans h1 ((sortedOk_tail h2).2 x hx)
 
+#print axioms sortedOk_tail
+
 theorem sortedOk_pairwise : ∀ {l : List Nat}, sortedOk l = true → l.Pairwise (· < ·)
   | [], _ => List.Pairwise.nil
   | _ :: _, h => List.Pairwise.cons (sortedOk_tail h).2 (sortedOk_pairwise (sortedOk_tail h).1)
 
+#print axioms sortedOk_pairwise
+
 theorem sortedOk_nodup {l : List Nat} (h : sortedOk l = true) : l.Nodup :=
   (sortedOk_pairwise h).imp Nat.ne_of_lt
+
+#print axioms sortedOk_nodup
 
 theorem edgesTOk_spec {t : Trie Edge} : ∀ {k : Nat} {l : List Edge}, edgesTOk t k l = true →
     ∀ i (hi : i < l.length), t.get (k + i) = some (canon l[i])
@@ -163,6 +175,8 @@ theorem edgesTOk_spec {t : Trie Edge} : ∀ {k : Nat} {l : List Edge}, edgesTOk 
     | succ i =>
       have := edgesTOk_spec h.2 i (by simpa using hi)
       simpa [Nat.add_assoc, Nat.add_comm 1 i] using this
+
+#print axioms edgesTOk_spec
 
 theorem permOk_spec {new : Nat → Nat} {perm invPerm : NTree} {t : Trie Edge} {m : Nat} :
     ∀ {k : Nat} {l : List Edge}, permOk new perm invPerm t m k l = true →
@@ -184,6 +198,8 @@ theorem permOk_spec {new : Nat → Nat} {perm invPerm : NTree} {t : Trie Edge} {
       refine ⟨j, ?_⟩
       simpa [Nat.add_assoc, Nat.add_comm 1 i] using hj
 
+#print axioms permOk_spec
+
 /-! ### Slicing the checks (each slice is one kernel evaluation in its own module) -/
 
 theorem edgesTOk_append (t : Trie Edge) (l₁ l₂ : List Edge) : ∀ k,
@@ -194,6 +210,8 @@ theorem edgesTOk_append (t : Trie Edge) (l₁ l₂ : List Edge) : ∀ k,
     intro k
     simp only [List.cons_append, edgesTOk, ih, List.length_cons, Bool.and_assoc]
     rw [show k + 1 + es.length = k + (es.length + 1) by omega]
+
+#print axioms edgesTOk_append
 
 theorem permOk_append (new : Nat → Nat) (perm invPerm : NTree) (t : Trie Edge) (m : Nat)
     (l₁ l₂ : List Edge) : ∀ k,
@@ -206,10 +224,14 @@ theorem permOk_append (new : Nat → Nat) (perm invPerm : NTree) (t : Trie Edge)
     simp only [List.cons_append, permOk, ih, List.length_cons, Bool.and_assoc]
     rw [show k + 1 + es.length = k + (es.length + 1) by omega]
 
+#print axioms permOk_append
+
 theorem edgesTOk_split (t : Trie Edge) (k a k' : Nat) (l : List Edge) (la : (l.take a).length = a)
     (hk : k + a = k') (h1 : edgesTOk t k (l.take a) = true) (h2 : edgesTOk t k' (l.drop a) = true) :
     edgesTOk t k l = true := by
   rw [← List.take_append_drop a l, edgesTOk_append, la, hk, h1, h2]; rfl
+
+#print axioms edgesTOk_split
 
 theorem permOk_split (new : Nat → Nat) (perm invPerm : NTree) (t : Trie Edge) (m k a k' : Nat)
     (l : List Edge) (la : (l.take a).length = a) (hk : k + a = k')
@@ -218,10 +240,14 @@ theorem permOk_split (new : Nat → Nat) (perm invPerm : NTree) (t : Trie Edge) 
     permOk new perm invPerm t m k l = true := by
   rw [← List.take_append_drop a l, permOk_append, la, hk, h1, h2]; rfl
 
+#print axioms permOk_split
+
 theorem nodesOk_split (n : Nat) (newT oldT : NTree) (a : Nat) (l : List Nat)
     (h1 : nodesOk n newT oldT (l.take a) = true) (h2 : nodesOk n newT oldT (l.drop a) = true) :
     nodesOk n newT oldT l = true := by
   rw [← List.take_append_drop a l, nodesOk, List.all_append, ← nodesOk, ← nodesOk, h1, h2]; rfl
+
+#print axioms nodesOk_split
 
 theorem endpointsOk_split (n : Nat) (newT oldT : NTree) (a : Nat) (l : List Edge)
     (h1 : endpointsOk n newT oldT (l.take a) = true)
@@ -229,6 +255,8 @@ theorem endpointsOk_split (n : Nat) (newT oldT : NTree) (a : Nat) (l : List Edge
     endpointsOk n newT oldT l = true := by
   rw [← List.take_append_drop a l, endpointsOk, List.all_append, ← endpointsOk, ← endpointsOk, h1, h2]
   rfl
+
+#print axioms endpointsOk_split
 
 /-! ### Refusal through a single failing conjunct (for the controls) -/
 
@@ -238,17 +266,23 @@ theorem transportCheck_false_of_len {n : Nat} {newT oldT : NTree} {nodes : List 
     transportCheck n newT oldT nodes origEs es perm invPerm edgesT = false := by
   unfold transportCheck; rw [h]; rfl
 
+#print axioms transportCheck_false_of_len
+
 theorem transportCheck_false_of_nodes {n : Nat} {newT oldT : NTree} {nodes : List Nat}
     {origEs es : List Edge} {perm invPerm : NTree} {edgesT : Trie Edge}
     (h : nodesOk n newT oldT nodes = false) :
     transportCheck n newT oldT nodes origEs es perm invPerm edgesT = false := by
   unfold transportCheck; rw [h]; simp
 
+#print axioms transportCheck_false_of_nodes
+
 theorem transportCheck_false_of_perm {n : Nat} {newT oldT : NTree} {nodes : List Nat}
     {origEs es : List Edge} {perm invPerm : NTree} {edgesT : Trie Edge}
     (h : permOk (newF newT) perm invPerm edgesT es.length 0 origEs = false) :
     transportCheck n newT oldT nodes origEs es perm invPerm edgesT = false := by
   unfold transportCheck; rw [h]; simp
+
+#print axioms transportCheck_false_of_perm
 
 /-- A labelled id is one of the original carriers: `i ↦ new nodes[i]` is an injection
 `Fin nodes.length → Fin n`, hence (same cardinality) a surjection, and `oldT` then
@@ -275,6 +309,8 @@ theorem mem_of_labelled {n : Nat} {newT oldT : NTree} {nodes : List Nat}
   rw [hv, hold] at h1
   rw [Option.some.inj h1]
   exact List.getElem_mem i.2
+
+#print axioms mem_of_labelled
 
 /-! ## The original graph as a matrix indexed by its own carrier ids -/
 
@@ -303,6 +339,8 @@ theorem orig_loop_free (nodes : List Nat) (es : List Edge) (h : EndpointsIn node
     ∀ e, origSrc nodes es h e ≠ origTgt nodes es h e :=
   fun e heq => (h _ (List.get_mem es e)).2.2 (congrArg Subtype.val heq)
 
+#print axioms orig_loop_free
+
 /-! ## Quadratic-form bookkeeping -/
 
 /-- One summand of the quadratic form, on a potential given by raw id. -/
@@ -316,11 +354,15 @@ theorem term_canon (f : Nat → ℝ) (e : Edge) : term f (canon e) = term f e :=
   · obtain ⟨a, b, s⟩ := e
     cases s <;> simp [term, sgn] <;> ring
 
+#print axioms term_canon
+
 theorem sum_map_eq_sum_fin {α : Type} (l : List α) (g : α → ℝ) :
     (l.map g).sum = ∑ i : Fin l.length, g (l.get i) := by
   have h1 : l.map g = List.ofFn (g ∘ l.get) := by rw [← List.map_ofFn, List.ofFn_get]
   rw [h1, List.sum_ofFn]
   rfl
+
+#print axioms sum_map_eq_sum_fin
 
 /-! ## The transport theorem -/
 
@@ -405,6 +447,8 @@ theorem origD_injective {n : Nat} {nodes : List Nat} {origEs es : List Edge}
   rw [← hy a, hy0]
   rfl
 
+#print axioms origD_injective
+
 /-- TRANSPORT (positive-definiteness form): the ORIGINAL graph's `Dᵀ D` is positive
 definite. -/
 theorem origGram_posDef_of_transport {n : Nat} {nodes : List Nat} {origEs es : List Edge}
@@ -421,6 +465,8 @@ theorem origGram_posDef_of_transport {n : Nat} {nodes : List Nat} {origEs es : L
   have h0 : origD nodes origEs hends *ᵥ (x1 - x2) = 0 := by rw [mulVec_sub, h12, sub_self]
   exact sub_eq_zero.mp (origD_injective new hcheck hends hlt hinj hσ _ h0)
 
+#print axioms origGram_posDef_of_transport
+
 /-! ## From the Boolean certificate to the hypotheses -/
 
 theorem transportCheck_spec {n : Nat} {newT oldT : NTree} {nodes : List Nat} {origEs es : List Edge}
@@ -433,6 +479,8 @@ theorem transportCheck_spec {n : Nat} {newT oldT : NTree} {nodes : List Nat} {or
   unfold transportCheck at hT
   simp only [Bool.and_eq_true, decide_eq_true_eq] at hT
   exact ⟨hT.1.1.1.1.1.1, hT.1.1.1.1.1.2, hT.1.1.1.1.2, hT.1.1.1.2, hT.1.1.2, hT.1.2, hT.2⟩
+
+#print axioms transportCheck_spec
 
 /-- The edge tables give an index equivalence carrying each original edge to its relabelled
 copy. (`perm` is injective because `invPerm` is a left inverse; equal lengths then make it a
@@ -478,6 +526,8 @@ theorem index_equiv_of_check {n : Nat} {newT oldT : NTree} {nodes : List Nat} {o
   rw [Equiv.ofBijective_apply, List.get_eq_getElem]
   exact Option.some.inj hE'
 
+#print axioms index_equiv_of_check
+
 theorem endpointsIn_of_check {n : Nat} {newT oldT : NTree} {nodes : List Nat} {origEs es : List Edge}
     {perm invPerm : NTree} {edgesT : Trie Edge}
     (hT : transportCheck n newT oldT nodes origEs es perm invPerm edgesT = true) :
@@ -488,6 +538,8 @@ theorem endpointsIn_of_check {n : Nat} {newT oldT : NTree} {nodes : List Nat} {o
   exact ⟨mem_of_labelled hlen (sortedOk_nodup hsorted) hN h1,
     mem_of_labelled hlen (sortedOk_nodup hsorted) hN h2, h3⟩
 
+#print axioms endpointsIn_of_check
+
 theorem hinj_of_check {n : Nat} {newT oldT : NTree} {nodes : List Nat}
     (hN : nodesOk n newT oldT nodes = true) :
     ∀ a ∈ nodes, ∀ b ∈ nodes, newF newT a = newF newT b → a = b := by
@@ -495,6 +547,8 @@ theorem hinj_of_check {n : Nat} {newT oldT : NTree} {nodes : List Nat}
   have h1 := (nodesOk_spec hN a ha).2
   rw [hab, (nodesOk_spec hN b hb).2] at h1
   exact (Option.some.inj h1).symm
+
+#print axioms hinj_of_check
 
 /-- THE BRIDGE, fully checked: a passing `check` on the relabelled data plus a passing
 `transportCheck` give positive definiteness for the ORIGINAL graph. -/
@@ -507,6 +561,8 @@ theorem origGram_posDef_of_transportCheck {n : Nat} {newT oldT : NTree} {nodes :
   obtain ⟨_, _, hN, _, _⟩ := transportCheck_spec hT
   exact origGram_posDef_of_transport (newF newT) hcheck _ (fun a ha => (nodesOk_spec hN a ha).1)
     (hinj_of_check hN) (index_equiv_of_check hT)
+
+#print axioms origGram_posDef_of_transportCheck
 
 /-! ## Opaque statement wrappers (same device as `GramPosDef`: keeps the elaborator from
 unfolding an 11,816-edge literal while elaborating the statement). -/
@@ -533,6 +589,8 @@ theorem origEigenvaluesPos_of_transportCheck {n : Nat} {newT oldT : NTree} {node
       (origGram_posDef_of_transportCheck hcheck hT) :=
   fun i => (origGram_posDef_of_transportCheck hcheck hT).eigenvalues_pos i
 
+#print axioms origEigenvaluesPos_of_transportCheck
+
 theorem origKernelTrivial_of_transportCheck {n : Nat} {newT oldT : NTree} {nodes : List Nat}
     {origEs es : List Edge} {cyc : List (Nat × Bool)} {perm invPerm : NTree} {edgesT : Trie Edge}
     (hcheck : check n es cyc = true)
@@ -541,6 +599,8 @@ theorem origKernelTrivial_of_transportCheck {n : Nat} {newT oldT : NTree} {nodes
   obtain ⟨_, _, hN, _, _⟩ := transportCheck_spec hT
   exact origD_injective (newF newT) hcheck _ (fun a ha => (nodesOk_spec hN a ha).1)
     (hinj_of_check hN) (index_equiv_of_check hT)
+
+#print axioms origKernelTrivial_of_transportCheck
 
 /-! ## VACUITY CONTROLS on a graph that is genuinely gapless
 
@@ -564,6 +624,8 @@ def triPendCyc : List (Nat × Bool) := [(0, true), (1, true), (3, false)]
 
 theorem triPend_check : check 4 triPendEs triPendCyc = true := by decide
 
+#print axioms triPend_check
+
 /-- identity tables on `{0,1,2,3}` -/
 def idT4 : NTree :=
   (((Trie.leaf.set 8 0 (some 0)).set 8 1 (some 1)).set 8 2 (some 2)).set 8 3 (some 3)
@@ -580,17 +642,25 @@ def triPendT : Trie Edge :=
 theorem sqRelabBij_refused :
     transportCheck 4 idT4 idT4 sqNodes sqEs triPendEs idT4 idT4 triPendT = false := by decide
 
+#print axioms sqRelabBij_refused
+
 /-- Non-injective vertex map: REFUSED. -/
 theorem sqRelabCollapse_refused :
     transportCheck 4 collapseT4 idT4 sqNodes sqEs triPendEs idT4 idT4 triPendT = false := by decide
+
+#print axioms sqRelabCollapse_refused
 
 /-- The certified triangle on 3 vertices cannot receive a 4-carrier original: REFUSED. -/
 def triEs : List Edge := [(0, 1, true), (1, 2, true), (0, 2, true)]
 def triT : Trie Edge :=
   ((Trie.leaf.set 8 0 (some (0, 1, true))).set 8 1 (some (1, 2, true))).set 8 2 (some (0, 2, true))
 theorem tri_check : check 3 triEs [(0, true), (1, true), (2, false)] = true := by decide
+#print axioms tri_check
+
 theorem sqToTri_refused :
     transportCheck 3 idT4 idT4 sqNodes sqEs triEs idT4 idT4 triT = false := by decide
+
+#print axioms sqToTri_refused
 
 /-- Positive control for the machinery itself: the same triangle, relabelled by a genuine
 permutation `0↦2, 1↦0, 2↦1`, with edges reordered (`0↦0, 1↦2, 2↦1`) and two of them reversed,
@@ -603,48 +673,14 @@ theorem triPerm_accepted :
     transportCheck 3 permT3 permInvT3 [0, 1, 2] triOrigEs triEs swapT3 swapT3 triT = true := by
   decide
 
+#print axioms triPerm_accepted
+
 /-- And the same with a wrong edge permutation (not injective: `1↦0, 2↦0`): REFUSED. -/
 def badPermT3 : NTree := ((Trie.leaf.set 8 0 (some 0)).set 8 1 (some 0)).set 8 2 (some 0)
 theorem triBadPerm_refused :
     transportCheck 3 permT3 permInvT3 [0, 1, 2] triOrigEs triEs badPermT3 swapT3 triT = false := by
   decide
 
-end GapScout
+#print axioms triBadPerm_refused
 
-#print axioms GapScout.labelled_spec
-#print axioms GapScout.nodesOk_spec
-#print axioms GapScout.endpointsOk_spec
-#print axioms GapScout.sortedOk_tail
-#print axioms GapScout.sortedOk_pairwise
-#print axioms GapScout.sortedOk_nodup
-#print axioms GapScout.edgesTOk_spec
-#print axioms GapScout.permOk_spec
-#print axioms GapScout.edgesTOk_append
-#print axioms GapScout.permOk_append
-#print axioms GapScout.edgesTOk_split
-#print axioms GapScout.permOk_split
-#print axioms GapScout.nodesOk_split
-#print axioms GapScout.endpointsOk_split
-#print axioms GapScout.transportCheck_false_of_len
-#print axioms GapScout.transportCheck_false_of_nodes
-#print axioms GapScout.transportCheck_false_of_perm
-#print axioms GapScout.mem_of_labelled
-#print axioms GapScout.orig_loop_free
-#print axioms GapScout.term_canon
-#print axioms GapScout.sum_map_eq_sum_fin
-#print axioms GapScout.origD_injective
-#print axioms GapScout.origGram_posDef_of_transport
-#print axioms GapScout.transportCheck_spec
-#print axioms GapScout.index_equiv_of_check
-#print axioms GapScout.endpointsIn_of_check
-#print axioms GapScout.hinj_of_check
-#print axioms GapScout.origGram_posDef_of_transportCheck
-#print axioms GapScout.origEigenvaluesPos_of_transportCheck
-#print axioms GapScout.origKernelTrivial_of_transportCheck
-#print axioms GapScout.triPend_check
-#print axioms GapScout.sqRelabBij_refused
-#print axioms GapScout.sqRelabCollapse_refused
-#print axioms GapScout.tri_check
-#print axioms GapScout.sqToTri_refused
-#print axioms GapScout.triPerm_accepted
-#print axioms GapScout.triBadPerm_refused
+end GapScout
