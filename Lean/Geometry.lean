@@ -1,4 +1,6 @@
 import Geometry.SourcePassiveMemoryAxiomAudit
+import Geometry.SourceActionMeasure
+import Geometry.NativeGeometricSourceIdentification
 import Geometry.RecordGluingPrincipleAxiomAudit
 import Geometry.M1NecessityAxiomAudit
 import Geometry.M1InterfacesAxiomAudit
@@ -24,6 +26,7 @@ import Geometry.SourceSelectionLocalityAxiomAudit
 import Geometry.SourceRecordGluingAxiomAudit
 import Geometry.SourcePopulationQuadrature
 import Geometry.GoldenSourceAssignment
+import Geometry.GoldenSourceFourier
 import Geometry.GoldenSourceCountLimit
 import Geometry.SourceCountLimitAxiomAudit
 import Geometry.GoldenSourceCausalLimit
@@ -32,6 +35,8 @@ import Geometry.GoldenSourceVolumeLimit
 import Geometry.FlatDiamondNormalization
 import Geometry.SourceNetCausalCone
 import Geometry.SourceNetLayeredOrder
+import Geometry.SourceNetClockSeparation
+import Geometry.FiniteLayerQuadrature
 import Geometry.SourceNetConformalRecordDensity
 import Geometry.OrderingFractionFourDimensional
 import Geometry.CanonicalLorentzModule

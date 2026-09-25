@@ -12,8 +12,9 @@ For a flat source window $W$ and geometric normalization $Z_q$,
  \qquad
  \Psi_{\ell,W}(k)=\int W(dr)j_\ell(kr).
 \]
-The packet below certifies two sufficient uniqueness routes: radial dilation
-and radial tomography. They are not asserted to be exhaustive or mutually
+The packet below certifies sufficient uniqueness routes through radial dilation,
+radial tomography and common-bulk consistency on unbounded radii.
+They are not asserted to be exhaustive or mutually
 exclusive. A source-derived parametric or dynamical law, an injective
 source-restricted basis, analytic or PDE constraints, or another fully typed
 orbit-separating construction remains admissible. A finite prior continuation
@@ -61,6 +62,73 @@ for constants \(a,b\). Legendre completeness gives the first statement.
 Removing \(\ell=0,1\) leaves the span of \(P_0\) and \(P_1\) invisible, which
 gives the second.
 
+
+\textbf{Theorem (one common bulk on unbounded round radii).}
+\label{thm:common-bulk-unbounded-radii}
+Assume one homogeneous isotropic generalized field on a common Euclidean
+three-dimensional time slice, with well-defined spherical restrictions.
+Its covariance is represented off the diagonal by a locally integrable
+radial function \(\xi(s)\), with no additional contact distributions.
+Suppose an unbounded sequence \(R_j\) of round radii has
+\[
+ C_\ell(R_j)=\frac{2\pi A_j}{\ell(\ell+1)},\qquad
+ \ell\ge1,\quad A_j>0,
+\]
+in one common readout normalization. Then all \(A_j=A\), and
+\[
+ \xi(s)=-A\log s+c\quad\text{for almost every }s>0,\qquad
+ P_3(k)=\frac{2\pi^2A}{k^3}\quad(k>0).
+\]
+The ideal field is understood modulo constants, on smooth mean-zero test
+observables; it does not have finite point variance. The covariance
+identity is distributional, with the displayed logarithm as a chosen
+off-diagonal representative. Gaussianity is not
+needed for the covariance conclusion. If the hypotheses concern only
+\(\ell\ge2\), the residual freedom is \(c+ds^2\), representing
+unobserved zero-wave-number or affine data.
+
+\textit{Proof.}
+The identity \(\int_0^\infty j_\ell(x)^2\,dx/x
+=1/[2\ell(\ell+1)]\), or Legendre expansion of the logarithm, identifies
+each mean-zero spherical kernel. Chord restriction and completeness give
+\(\xi(s)=-A_j\log s+c_j\) almost everywhere on \(0<s<2R_j\).
+Every two intervals overlap. Linear independence of \(\log s\) and
+\(1\) forces their coefficients to agree. Unbounded radii cover all
+positive separations; radial Fourier uniqueness gives the stated spectrum
+away from zero. With the dipole removed, use independence of
+\(\log s,1,s^2\) instead. Contact terms are excluded by hypothesis,
+so off-diagonal equality does not hide an extra diagonal distribution.
+\hfill\(\square\)
+
+Separate screen marginals do not establish the common-bulk premise. The
+metrics, time slice, normalization and cross-screen records must be jointly
+compatible. For finitely many radii, unobserved separations allow
+the preceding null-space perturbations; a finite run cannot invoke
+unbounded coverage.
+
+\textbf{Example (positive alternatives to the scale-invariant baseline).}
+For a unit-radius screen set
+\[
+ h(s)=(s-3)^2(4-s)^2\mathbf1_{[3,4]}(s),\qquad
+ H(k)=4\pi\int_3^4s^2h(s)\frac{\sin(ks)}{ks}\,ds.
+\]
+Writing \(g(s)=s h(s)\), both \(g\) and \(g'\) vanish at the support
+endpoints. Two integrations by parts and
+\(\int_3^4|g''(s)|\,ds\le30\) imply
+\( |k^3H(k)|\le120\pi\). Hence
+\[
+ P_\pm(k)=\frac{2\pi^2A}{k^3}\pm\frac{\pi A}{120}H(k)
+ \ \ge\ \frac{\pi^2A}{k^3}>0.
+\]
+Both positive generalized Gaussian covariances restrict to exactly the
+same law as the baseline on the unit sphere, since \(h=0\) for all its
+chord separations. Their bulk covariances differ. This exhibits ambiguity
+around the scale-invariant baseline itself, without permitting a negative
+spectrum. The analytic bound proves positivity for all \(k\); numerical
+quadrature is only a check. The source-pinned radial controls under
+\path{evidence/observer_dynamics_20260925/sim-analysis/codex/necessity/boundary_bulk/}
+check the forward integrals and this perturbation with analytic tail
+bounds, not formal interval arithmetic.
 
 \textbf{Producer theorem (source-refinement orbit to physical dilation).}
 \label{thm:oph330-source-orbit-transfer}

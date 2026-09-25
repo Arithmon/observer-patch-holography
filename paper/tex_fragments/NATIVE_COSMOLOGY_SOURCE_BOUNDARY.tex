@@ -1,0 +1,72 @@
+\subsection{What the native observer records determine}
+\label{subsec:native-cosmology-source-boundary}
+The fair balanced integer repair law supplies an absolute spectrum for a
+specified load readout, without fitting an observed sky. On a connected
+weighted port graph with \(p\) ports and \(r\) raised loads, stationary
+continued repair gives
+\[
+ \operatorname{Cov}(z(t),z(0))=\kappa e^{-|t|L/2}\Pi,\qquad
+ \kappa=\frac{r(p-r)}{p(p-1)},\quad
+ \Pi=I-\mathbf1\mathbf1^{\mathsf T}/p.
+\]
+For the ordinary local average \(f_T=T^{-1}\int_0^Tz(t)\,dt\),
+\[
+ \operatorname{Var}(v_\lambda^{\mathsf T}f_T)
+ =\kappa\frac{2(u-1+e^{-u})}{u^2},\qquad u=\lambda T/2.
+\]
+The fixed-graph fluctuation record
+\(T^{-1/2}\int_0^Tz(t)\,dt\) instead converges to a Gaussian law with
+covariance \(4\kappa L^+\). Incident pre-attempt records, including null
+attempts and centered with the prepared filling, have the same leading
+inverse-Laplacian term with operator correction at most
+\(3\kappa/d_{\min}\), on a common elapsed-time slice. These are
+analytical consequences of actual local port interaction and readback,
+checked by finite-state enumeration and independent moment evolution.
+The detailed proofs and the distinct occupation and event normalizations
+are given in the screen-microphysics companion.
+
+The amplitude is in native load-record units. Occupancy, attempt clock,
+duration, gain and stationary preparation are specified inputs.
+For a centered geometric readout \(q=Bz+g\), orthogonal projection in
+the stationary law gives at every finite duration
+\[
+ C_T(q)=B C_T(z)B^{\mathsf T}+C_T(g),\qquad C_T(g)\succeq0.
+\]
+Thus a future measured collar-volume readout can test its density overlap;
+the load record cannot be substituted for that geometric observable.
+No uniform refinement and long-time limit is asserted. With fixed-area
+equal port weights and a common deterministic filter of bounded \(L^1\)
+gain \(W\), the ensemble mean empirical harmonic pseudo-power satisfies
+\(\widetilde C_\ell=(2\ell+1)^{-1}\sum_m\mathbb E|a_{\ell m}|^2
+\le\pi W^2/(p-1)\), even without exact quadrature. This is not a
+pointwise bound on every sky realization.
+Ordinary averages have \(W=1\); amplified fluctuation records do not have
+uniformly bounded gain as their duration grows.
+
+There are two additional quantitative restrictions. A common deterministic
+temporal filter of stationary density obeys
+\(d\log V/d\log\lambda\ge-1\), so under a separately established
+three-dimensional \(\lambda\propto k^2\) identification it cannot
+produce the required \(k^{-3}\) curvature spectrum. The native port
+operator is also not proved round: at level four the seven-mode band
+splitting is \(14.642\%\), compared with \(0.01561\%\) for a supplied
+round-metric operator. An inverse graph covariance retains its precision's
+anisotropy.
+
+Absolute inherited/fresh/settled covariance has been recovered for all 61
+retained refinement chains and eight group sizes. For unshuffled
+level-eight to level-nine chains at 65,536 carriers per group, the
+inherited-only residual variance is \(2.55666955\times10^{-6}\);
+removing the linear fresh-load response leaves
+\(4.00020779\times10^{-8}\). The first variance times group size is
+\(0.16755\), close to the supplied fresh variance \(1/6\).
+Nested same-location residuals satisfy
+\(\operatorname{Cov}(e_M,e_N)=\operatorname{Var}(e_{\max(M,N)})\);
+this is a projection identity, not a separated-position covariance or
+independence theorem. Group-dependent inherited responses do not supply
+a common refinement generator. The retained sample shares initial fields,
+and fresh reconstruction depends on pinned producer and random-number
+semantics; it supplies neither \(A_s\) nor \(n_s\).
+The specifications, original chain receipts, independent controls and
+absolute-covariance extraction are preserved under
+\path{evidence/observer_dynamics_20260925/sim-analysis/}.

@@ -1,0 +1,161 @@
+\subsection{Conditional scale transfer in the large settled configurations}
+\label{subsec:native-terminal-scale-transfer}
+The retained level-eight through level-ten configurations comprise sixteen
+repair schedules per level, conditional on one initial load field at each
+level. For equal-count ancestral groups, let \(x\) and \(y_s\) be the
+initial and terminal group means, centered with the same group weights.
+The response is \(b_s=\langle x,y_s\rangle/\langle x,x\rangle\).
+For \(S\) schedules define
+\[
+ P_{\rm tot}=\frac1S\sum_s\|y_s\|^2,\quad
+ P_{\rm noise}=\frac1{S-1}\sum_s\|y_s-\bar y\|^2,\quad
+ P_{\rm common}=\frac1{S(S-1)}\sum_{s\ne t}\langle y_s,y_t\rangle.
+\]
+Then \(P_{\rm tot}=P_{\rm noise}+P_{\rm common}\) exactly.
+Conditional independent schedule sampling makes these unbiased estimates
+of schedule variance and squared conditional mean. The finite common-power
+estimate may be negative and is not clipped. For disjoint groups with
+\(m_g\) ports and normalized weights \(a_g\), the uniform balanced
+fixed-total null gives the expected centered group variance
+\(\kappa\sum_g(a_g-a_g^2)/m_g\).
+
+\begin{center}
+\begin{tabular}{r rr}
+\hline
+Carriers per group & Mean level-ten response & Schedule-noise fraction\\
+\hline
+1 & 0.05643 & ---\\
+16 & 0.42876 & ---\\
+64 & 0.66796 & ---\\
+256 & 0.82285 & ---\\
+1,024 & 0.90758 & 1.241\%\\
+4,096 & 0.95232 & 0.594\%\\
+65,536 & 0.98983 & 0.143\%\\
+\hline
+\end{tabular}
+\end{center}
+At the largest group the level-ten terminal variance is \(11.048\) times
+the stationary balanced reference. At 1,024 carriers the noise fraction
+across the three levels remains between \(1.12\%\) and \(1.26\%\).
+These measurements show retained coarse input information and conditional
+schedule variability. Equal ancestral counts are not equal physical areas;
+group size is not a measured wavelength. The stopping artifact is the end
+of the first settling sweep, during which balanced swaps can continue.
+The spatial configuration retains this texture; its public component
+multiset does not encode the spatial placement. These are not independent
+cosmological initial-condition samples or a measured causal horizon.
+
+The estimator, weighting controls, small statistics and 48 terminal-state
+hash cross-pins are preserved in the native-repair evidence package under
+\path{sim-analysis/data/codex_audit_20260925/}. The corresponding producer
+is \path{sim-analysis/scripts/codex_scale_ensemble.py}. Receipt checking
+without the remote arrays verifies provenance and retained statistics;
+recomputing their spatial readback requires those arrays.
+
+\paragraph{Binary port-pattern census.}
+The sixty proper rotations of the twelve-port carrier act on its binary
+occupancy patterns. Burnside's lemma gives the orbit polynomial
+\[
+ \frac{(1+x)^{12}+15(1+x^2)^6+20(1+x^3)^4
+       +24(1+x)^2(1+x^5)^2}{60}.
+\]
+The coefficients for zero through twelve raised ports are
+$1,1,3,5,12,14,24,14,12,5,3,1,1$, totaling 96 rotation orbits.
+Each of four retained schedules at each of levels six, eight, nine and ten
+contains all 96 classes. The census receipts and an independent polynomial
+recalculation accompany the same verifier. This counts local binary
+readout classes, without identifying them as particle species or replacing
+the spatial configuration by its orbit counts.
+
+\subsection{Port transport, internal response and metric sensitivity}
+\label{subsec:native-transport-evidence}
+The same seam law has mean propagator \(e^{-tL/2}\). For \(N\)
+twelve-port carriers, resolved low eigenpairs give \(N\lambda_2\) equal
+to \(0.882851,0.825266,0.817473,0.816553,0.815798\) at levels zero
+through four. Separate level-five through level-seven solves give
+\(0.815612814,0.815530307,0.815499887\); their largest relative
+eigenpair residuals are \(2.92\times10^{-10},2.24\times10^{-9},
+1.18\times10^{-9}\). These are finite floating-point solves, not
+interval bounds on the gap or a proof of a refinement limit.
+
+In orthonormal carrier-mean and internal-port coordinates, write
+\[
+ L=\begin{pmatrix}A&B\\ B^{\mathsf T}&C\end{pmatrix}.
+\]
+Internal connectivity makes \(C\) positive definite. Completing the
+square proves the exact static identity
+\[
+ \min_v\begin{pmatrix}u\\v\end{pmatrix}^{\mathsf T}
+ L\begin{pmatrix}u\\v\end{pmatrix}
+ =u^{\mathsf T}(A-BC^{-1}B^{\mathsf T})u,
+ \qquad v=-C^{-1}B^{\mathsf T}u.
+\]
+At level zero this Schur complement reduces dipole-rate error from
+\(42.9\)--\(44.2\%\) to \(0.348\)--\(0.363\%\), with internal
+stationarity residual \(1.20\times10^{-15}\). It is a zero-frequency
+reduction; exact dynamic elimination replaces \(C^{-1}\) by the
+frequency-dependent resolvent. At level four the first mode has only
+\(1.46\times10^{-5}\) of its squared norm in internal variation,
+yet the naive coordinate-trial rate is about \(50\%\) too large.
+
+Band averages do not establish rotational invariance. At level four the
+relative spread of the seven-mode band is \(14.642\%\) for the actual
+port graph, \(13.115\%\) for unweighted cell adjacency and \(0.01561\%\)
+for a separately supplied round-metric cotangent operator. This exploratory
+metric control is a different operator. Inverting a precision does not
+remove its anisotropy: on the mean-zero space,
+\([L^{-1},U]=-L^{-1}[L,U]L^{-1}\). A heat-trace calculation with bounded
+omitted modes admits a level-two window of screen spectral dimension
+\(1.938\)--\(2.016\); the fixed higher-level eigenpair budgets do not
+resolve the prescribed heat-trace window. This is a boundary-screen
+diffusion diagnostic, not a measurement of bulk spacetime dimension.
+The source-pinned solves and metric controls reside under
+\path{sim-analysis/codex/dynamics/} in the same evidence package.
+
+\subsection{Absolute refinement covariance and nested records}
+\label{subsec:native-refinement-covariance}
+The retained refinement sample contains 61 chains: 18 level-seven to
+level-eight chains, 32 level-eight to level-nine chains, and 11 shuffled
+controls. Four child carriers inherit their parent's twelve-port record;
+independent fresh integer loads are drawn uniformly from \(0,\ldots,4\).
+All 61 retained chains settle. Eight ancestral group sizes give 488
+covariance rows. Let \(x,f,y\) denote centered inherited, fresh and
+settled group means. Seeded reconstruction of \(\operatorname{Var}(f)\),
+the archived variance ratio and the simple and joint normal equations
+recover their absolute covariance matrix. All rows satisfy the retained
+positive-semidefinite and regression checks; 256 independently retained
+parent variances agree to maximum relative error \(4.15\times10^{-13}\).
+Fresh arrays were not independently hashed at production, so that part of
+the reconstruction remains conditional on the pinned producer and random
+number generator semantics, including the shuffled-control permutation.
+
+For unshuffled level-eight to level-nine chains, the mean inherited-only
+residual variance falls from \(0.0108181853\) at four carriers per group
+to \(2.55666955\times10^{-6}\) at 65,536. At the latter scale, removing
+the fitted fresh-load response too leaves \(4.00020779\times10^{-8}\).
+Multiplying the inherited-only variance by group size gives \(0.16755\),
+close to the supplied fresh port-average variance \(2/12=1/6\).
+The joint inherited response at group sizes
+\(256,1024,4096,16384,65536\) is respectively
+\(0.905427,0.956213,0.978740,0.991953,0.994902\).
+The corresponding \(-\log_2 b^2\) values vary from \(0.286815\) to
+\(0.014788\); they are not one common spectral tilt.
+
+For equal nested bins, lift all residuals to the same uniformly selected
+finest bin. If \(e_M\) is the least-squares residual after averaging to
+groups of size \(M\), then
+\[
+ \operatorname{Cov}(e_M,e_N)=\operatorname{Var}(e_{\max(M,N)}).
+\]
+Indeed, averaging a fine residual into a coarse bin differs from the
+coarse residual by a linear combination of the coarse predictors. The
+coarse normal equations make this difference orthogonal to the coarse
+residual. Thus successive scale differences are orthogonal and their
+variances are differences of the residual variances. Orthogonality is
+not independence. This identity concerns the same nested location; it
+does not determine covariance at separated sky positions. Parent schedules
+share initial data, and linear spatial residuals are not innovations
+conditioned on a complete observer history. The original chain receipts,
+absolute extractor and nested transformation are preserved under
+\path{sim-analysis/codex/source_derivation/innovations/} and
+\path{sim-analysis/data/refine_ensemble/} in the native-repair package.

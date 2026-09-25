@@ -1,0 +1,226 @@
+% Analytical finite-graph statements; the accompanying Lean files certify
+% the explicitly identified finite witnesses, not the stochastic limit theorem.
+\subsection{Native stationary repair and absolute record power}
+\label{subsec:native-repair-record-spectrum}
+
+Consider a connected finite undirected port graph with positive edge attempt
+rates \(w_e\), weighted Laplacian \(L\), and \(p\) ports. In a balanced
+integer sector, subtract the common load floor and write
+\[
+ n_i\in\{0,1\},\quad \sum_i n_i=r,\quad 0<r<p,\qquad
+ z=n-\frac rp\mathbf1,\quad
+ \Pi=I-\frac1p\mathbf1\mathbf1^{\mathsf T},\quad
+ \kappa=\frac{r(p-r)}{p(p-1)}.
+\]
+Independent Poisson attempts on edge \(e\) exchange its endpoint loads with
+probability \(1/2\) and otherwise leave them unchanged. This is the fair
+nearest-integer agreement rule continued after first settlement. It is a
+specified observer-like system: bounded local port state, seam interaction,
+readback, and records of local repair attempts. Its stationary history is a
+different observable from a configuration retained at the end of its first
+settling sweep.
+
+\begin{theorem}[Stationary density and occupation records]
+\label{thm:native-stationary-history}
+The uniform law \(\pi\) on the \(r\)-subsets is the unique stationary law.
+The process is reversible, its configuration generator \(G\) obeys
+\(Gz=-Lz/2\), and in stationarity
+\[
+ \mathbb E_\pi[zz^{\mathsf T}]=\kappa\Pi,\qquad
+ \mathbb E_\pi[z(t)z(0)^{\mathsf T}]
+   =\kappa e^{-|t|L/2}\Pi.
+\]
+For each fixed matrix \(B\), at fixed graph and from any initial law,
+\[
+ T^{-1/2}\int_0^T Bz(t)\,dt
+ \ \Longrightarrow\ \mathcal N(0,4\kappa B L^+B^{\mathsf T}).
+\]
+For the literal time average \(f_T=T^{-1}\int_0^Tz(t)\,dt\), its
+stationary variance along a Euclidean-unit eigenvector of positive
+eigenvalue \(\lambda\) is instead
+\[
+ \operatorname{Var}(v^{\mathsf T}f_T)=\kappa h(\lambda T/2),\qquad
+ h(u)=\frac{2(u-1+e^{-u})}{u^2},\quad h(0)=1.
+\]
+\end{theorem}
+\begin{proof}
+Each configuration swap has the same reverse rate. Connectedness makes the
+fixed-occupancy chain irreducible, giving uniform detailed balance and
+uniqueness. Sampling without replacement gives the displayed equal-time
+covariance. The mean swap increment on an oriented edge with incidence
+vector \(b_e\) is \(-b_eb_e^{\mathsf T}z/2\); summing rates proves the
+generator identity, and its semigroup gives the unequal-time covariance.
+On the mean-zero subspace the Poisson solution is \(H=2L^+z\), with
+\(GH=-z\). The time integral is its Dynkin martingale plus a bounded
+endpoint term. Ergodicity identifies the martingale bracket and bounded
+jumps imply its central limit condition; the bracket is equivalently
+\(2\int_0^\infty\kappa e^{-tL/2}\Pi\,dt=4\kappa L^+\).
+Finally, integrating \(\kappa e^{-\lambda|t-s|/2}\) over the observation
+square and dividing by \(T^2\) gives \(h\).
+\end{proof}
+
+This specializes the finite reversible additive-functional limit
+\cite{KipnisVaradhanNative} to the actual repair rule. It does not assert a joint refinement and long-time
+limit. The sector, edge rates, elapsed-time convention, memory duration and
+record gain are declared. In particular, the two normalizations above
+differ by \(\sqrt T\); their powers differ by \(T\). A change of time
+units rescales rates inversely and leaves \(\lambda T\) unchanged.
+
+A specified leaky local record gives a bounded-amplitude alternative:
+\[
+ \dot y_i=z_i-\gamma y_i,\qquad R_\gamma=\sqrt{2\gamma}\,y,
+ \qquad \operatorname{Cov}(R_\gamma)
+   =4\kappa(L+2\gamma I)^{-1}\Pi,\quad \gamma>0.
+\]
+In joint stationarity, \(y_i(t)=\int_0^\infty e^{-\gamma s}z_i(t-s)\,ds\).
+Integrating the same unequal-time covariance proves the formula, and
+\(|y_i|\le\max(r/p,1-r/p)/\gamma\). This is a covariance identity;
+the finite-leak field need not be Gaussian. The leak, output gain and
+stationary preparation are specified, and finite-precision storage or
+saturation requires a separate implementation bound.
+
+\begin{theorem}[Nonlinear readout projection at every finite window]
+For a centered vector-valued current-state readout \(q\), set
+\[
+ B=\kappa^{-1}\mathbb E_\pi[qz^{\mathsf T}],\qquad q=Bz+g.
+\]
+Then \(\mathbb E_\pi[gz^{\mathsf T}]=0\). Writing \(C_T(q)\) for the
+stationary covariance of its time average and \(S=-G\),
+\[
+ C_T(q)=\langle q,h(TS)q^{\mathsf T}\rangle_\pi
+       =B C_T(z) B^{\mathsf T}+C_T(g),\qquad C_T(g)\succeq0.
+\]
+The asymptotic fluctuation covariance is
+\(4\kappa BL^+B^{\mathsf T}+2\langle g,S^+g^{\mathsf T}\rangle_\pi\).
+\end{theorem}
+\begin{proof}
+The components of \(z\) span a \(G\)-invariant subspace. Self-adjointness
+in \(L^2(\pi)\) makes its orthogonal complement invariant too, so the
+cross correlations vanish at every time lag. Spectral integration of the
+observation square gives \(h(TS)\); it is positive. The inverse-generator
+formula follows by integrating the decaying semigroup on centered functions.
+\end{proof}
+
+On all \(\binom{12}{6}=924\) states of the half-filled production carrier,
+\(\kappa=3/11\) and the positive graph eigenvalues are
+\(5-\sqrt5,6,5+\sqrt5\), with multiplicities \(3,5,3\).
+These are graph bands. At unit attempt-rate normalization the port-average
+root mean square of \(f_T\) is respectively
+\(0.497739,0.478409,0.352867,0.141920,0.0459402\) at
+\(T=0.01,0.1,1,10,100\). Independent moment evolution checks the
+absolute finite-window formula for load, local Laplacian drive and a
+centered two-port product; the product has a nonzero orthogonal remainder.
+No geometric volume law is assigned to these test readouts.
+
+\subsection{Locally sampled attempt records}
+\label{subsec:native-event-records}
+Let \(D=\operatorname{diag}(d_i)\), where
+\(d_i=\sum_{e\ni i}w_e\), and let \(D_e\) have diagonal entries
+\(1/d_i\) at the endpoints of \(e\), zero elsewhere. At \emph{every}
+attempt, including null attempts, append the pre-attempt vector \(D_ez\).
+Let \(A_T\) be its accumulated value on a common elapsed-time slice.
+Each port uses its local load, calibrated local attempt rate and the
+prepared filling \(r/p\).
+
+\begin{theorem}[Attempt-record covariance]
+At fixed graph, from any initial law,
+\[
+ T^{-1/2}A_T\Longrightarrow\mathcal N(0,\Sigma_{\rm ev}),\qquad
+ \Sigma_{\rm ev}=4\kappa L^+
+ -\kappa(\Pi D^{-1}+D^{-1}\Pi)+J,
+ \quad J=\kappa\sum_e w_eD_e\Pi D_e.
+\]
+The correction satisfies
+\[
+ \|\Sigma_{\rm ev}-4\kappa L^+\|\le\frac{3\kappa}{d_{\min}},
+ \qquad
+ \left|\frac{v^{\mathsf T}\Sigma_{\rm ev}v}{4\kappa/\lambda}-1\right|
+ \le\frac{3\lambda}{4d_{\min}}
+\]
+for any mean-zero unit eigenvector \(Lv=\lambda v\).
+\end{theorem}
+\begin{proof}
+The conditional reward rate is \(\sum_e w_eD_ez=z\). With
+\(H=2L^+z\), reward plus \(\Delta H\) is a martingale increment.
+The bounded endpoint correction has no effect on the limit. Its stationary
+bracket contains the occupation contribution \(4\kappa L^+\), reward
+square \(J\), and cross bracket
+\(-\kappa L^+LD^{-1}=-\kappa\Pi D^{-1}\) plus its transpose.
+Here \(b_eb_e^{\mathsf T}D_e=b_eb_e^{\mathsf T}D^{-1}\).
+Since \(0\preceq\Pi\preceq I\), one has
+\(0\preceq J\preceq\kappa D^{-1}\). The triangle inequality gives
+the operator bound and its Rayleigh restriction gives the relative bound.
+Finite state space and bounded event marks justify the martingale limit.
+\end{proof}
+
+The counting correction is correlated with subsequent repair. Treating it
+as independent noise is incorrect: the two-port control gives one half
+of the occupation-record variance. Recording successful moves only,
+subtracting a deterministic mean from raw uncentered marks, or stopping
+each patch after its own fixed event count defines a different observable.
+The asymptotic accumulator is unbounded; finite memory requires its own
+storage, reset or saturation law. These qualifications matter when
+attaching the record to a physical observer clock.
+
+\subsection{Temporal filtering and fixed-area normalization}
+\label{subsec:native-filter-boundary}
+For a common deterministic real kernel \(w\in L^2([0,\infty))\), extended
+by zero, let \(\widehat w\) be its Fourier transform. The stationary
+filtered density mode of decay rate \(a=\lambda/2\) has variance
+\[
+ V(\lambda)=\frac\kappa\pi\int_{\mathbb R}
+       |\widehat w(\omega)|^2\frac a{a^2+\omega^2}\,d\omega.
+\]
+Consequently \(\lambda V(\lambda)\) is nondecreasing and, for a nonzero
+kernel, \(-1\le d\log V/d\log\lambda\le1\). Indeed,
+\(a^2/(a^2+\omega^2)\) is nondecreasing in \(a>0\); the logarithmic
+derivative of the Lorentzian lies between \(-1\) and \(1\), and the
+integrated derivative is its positive weighted average. Domination on
+compact positive \(a\)-intervals justifies differentiation. Under a
+separately established three-dimensional metric identification
+\(\lambda\propto k^2\), this common temporal filter cannot generate
+power redder than \(k^{-2}\). It therefore does not supply \(k^{-3}\)
+bulk curvature power. This statement excludes nonlinear, spatially varying,
+adaptive and nonstationary readouts from its scope.
+
+There is also a normalization bound independent of spherical quadrature.
+For arbitrary fixed port directions \(\hat n_i\), define empirical harmonic
+coefficients with weights \(4\pi/p\). If the same deterministic,
+trajectory-independent temporal kernel has \(L^1\) gain at most \(W\),
+then the ensemble mean harmonic pseudo-power obeys
+\[
+ \widetilde C_\ell:=\frac1{2\ell+1}\sum_m\mathbb E|a_{\ell m}|^2
+ \le\frac{4\pi\kappa W^2}{p}
+                  \le\frac{\pi W^2}{p-1}.
+\]
+To see this, stationary covariance and semigroup contraction bound every
+coefficient variance by \(\kappa W^2\|\Pi\alpha_{\ell m}\|^2\).
+The spherical-harmonic addition theorem gives
+\((2\ell+1)^{-1}\sum_m\|\alpha_{\ell m}\|^2=4\pi/p\), even for
+irregular or repeated directions. Ordinary averages have \(W=1\), so
+their fixed-area expected pseudo-power vanishes on refinement. This is
+not a pointwise bound on every realized record. The amplified
+\(T^{-1/2}\) history has growing gain and does not satisfy a uniform
+\(W\) premise. This is a restriction on the specified load record,
+not a theorem that geometric curvature vanishes.
+
+\paragraph{Proof and evidence scope.}
+The canonical native-repair evidence package contains the stationary,
+finite-window, event-mark and filter controls, including all 924 carrier
+states and exact rational four-port witnesses. The finite Lean witnesses
+certify generator conservation and positivity, uniform stationarity,
+density drift, static and Green covariances, a Poisson solution, distinct
+load/drive spectra and the pointwise filter inequality. The probability
+limits and Fourier-integral arguments above are analytical proofs; they
+are not claimed as formalized general stochastic theorems.
+The finite declarations are in
+\path{Lean/Thermodynamics/NativeRepairFourCycle.lean} and
+\path{Lean/Thermodynamics/TemporalFilterMonotonicity.lean}.
+Production
+source pins, specifications, receipts and independent controls reside under
+\path{evidence/observer_dynamics_20260925/sim-analysis/codex/};
+\path{code/observer_dynamics/verify.py} provides their reproduction entry.
+Neither the native density nor its nonlinear test product has been
+identified with the geometric scalar
+\(\frac13\log(J_X/\bar J_X)\). No primordial amplitude, tilt, physical
+time unit, or photon transfer follows from the graph covariance alone.

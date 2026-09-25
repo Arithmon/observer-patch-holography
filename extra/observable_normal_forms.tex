@@ -2468,6 +2468,59 @@ is a mathematical function, not a physical scheduler source.  No physical
 device, finite \texttt{PublicWorld} presentation, clock, rate, energy,
 bandwidth, fee, hardware realization, or raw-state uniqueness is constructed.
 
+\subsection{A settled public class with fluctuating spatial readback}
+The finite conservative port-repair family separates quotient normality
+from quiescence of a richer observable. Its balanced integer sector has
+\(r\) raised loads among \(p\) ports. Every arrangement has the same
+component multiset, while fair repair on a connected seam graph exchanges
+unequal adjacent loads with probability \(1/2\). The quotient readback is
+fixed, but spatial arrangements and their histories can continue
+to change. Consequently, uniqueness of this multiset does not identify a
+unique spatial configuration or a law for a spatial observer readout.
+
+For the centered load \(z=n-(r/p)\mathbf1\), state-independent weighted
+Poisson attempts give a reversible exclusion chain with
+\[
+ Gz=-\tfrac12Lz,\qquad
+ \operatorname{Cov}_\pi(z)=\frac{r(p-r)}{p(p-1)}
+       \left(I-\frac1p\mathbf1\mathbf1^{\mathsf T}\right).
+\]
+Write \(\kappa=r(p-r)/[p(p-1)]\).
+Uniformity on fixed-occupancy configurations follows from symmetric swap
+rates, and graph connectedness gives irreducibility. Thus distinct
+stationary readouts of the same repair system can have distinct spectra.
+For example, the long-history fluctuation of \(z\) has covariance
+\(4\kappa L^+\), whereas that of \(Lz\) has covariance \(4\kappa L\).
+These are different observations of one chain, not conflicting normal
+forms. The finite rational four-port, six-state instance in
+\path{Lean/Thermodynamics/NativeRepairFourCycle.lean} certifies generator,
+stationary, drift, Poisson and covariance identities, including the
+load/drive distinction. The general fixed-graph stochastic limit is an
+analytical theorem of the screen-microphysics companion, not a consequence
+of a normal-form theorem alone.
+
+The large retained configurations give an empirical version of the same
+distinction. There are sixteen schedules at each of levels eight through
+ten, with one common initial load field per level. Consistently centered
+ancestral-group readbacks split terminal power exactly into unbiased
+conditional schedule variance and cross-schedule common power. At level
+ten the initial-to-terminal linear response is \(0.05643\) for individual
+carrier groups and \(0.98983\) for 65,536-carrier groups. The latter
+schedule-noise fraction is \(0.143\%\); its terminal variance is
+\(11.048\) times the stationary balanced null. Coarse spatial information
+therefore survives in these end-of-settling-sweep configurations even when
+their public multisets agree. The observations are conditional on the
+fixed initial fields and stopping rule. They do not make the public
+multiset spatially complete or establish an asymptotic transport law.
+The estimator, receipt pins and independent controls are preserved under
+\path{evidence/observer_dynamics_20260925/sim-analysis/}.
+
+These examples concern observer-like bounded patches with local state,
+ports, record readback and repair. Their lesson for observation design is
+precise: invariance of one published quotient does not determine the
+covariance, memory, geometry or clock of an additional readout. Each extra
+observable requires its own factorization or dynamical argument.
+
 \subsection{Limitations}
 
 The theory assumes a declared meaningful quotient, consistent set, residual, observation metric, and refinement map.  It does not select those objects.  In particular:

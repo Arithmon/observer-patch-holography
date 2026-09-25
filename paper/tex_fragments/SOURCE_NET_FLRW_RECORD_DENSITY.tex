@@ -107,6 +107,45 @@ two such enclosures has the stated endpoint quotient. Continuity of
 $\sigma$ forces $\sigma_{\max}/\sigma_{\min}\to1$ on shrinking diamonds.
 \end{proof}
 
+\begin{proposition}[Finite expanding diamonds need not read proper time]
+\label{flrw:finite-window-clock-counterexample}
+For the supplied radiation profile $\sigma(\eta)=1+\eta$ and comoving
+vertical diamonds starting at $\eta=0$, take conformal durations $1$ and
+$1/2$. Their continuum mass ratio is
+\[
+ \frac{M_\sigma(1)}{M_\sigma(1/2)}=\frac{1516288}{44451}
+ \ne\left(\frac{12}{5}\right)^4
+ =\left(\frac{\tau(1)}{\tau(1/2)}\right)^4.
+\]
+Thus their fourth-root volume clock differs from the proper-time ratio
+even after arbitrarily fine discretization at these fixed durations.
+\end{proposition}
+\begin{proof}
+The common factor $4\pi\rho c^3/3$ cancels from the two integrals
+\[
+ M_\sigma(T)\ \propto\
+ \int_0^{T/2}(1+\eta)^4\eta^3\,d\eta
+ +\int_{T/2}^T(1+\eta)^4(T-\eta)^3\,d\eta.
+\]
+Expanding the polynomials and integrating gives the displayed rational
+ratio. Along the comoving worldline,
+$\tau(T)=\int_0^T(1+\eta)\,d\eta=T+T^2/2$, hence
+$\tau(1)/\tau(1/2)=12/5$. Subtracting fourth powers gives the strictly
+positive rational $25944064/27781875$.
+\end{proof}
+\path{Lean/Geometry/SourceNetClockSeparation.lean} checks the evaluated
+mass polynomial and rational mismatch; the identification of that
+polynomial with the geometric integral is the analytical argument above.
+The resulting relative clock bias is $+0.696366\%$. It is a continuum
+finite-window effect, not a discretization error. For the supplied
+profiles $\sigma(\eta)=(1-\eta/2)^{-1}$ and
+$\sigma(\eta)=[1+(\sqrt2-1)\eta]^2$, independent split quadratures give
+$-1.595321\%$ and $+0.265422\%$ at the same durations. The shrinking-diamond
+hypothesis in Corollary~\ref{flrw:count-clock} is therefore substantive.
+The exact polynomial control and numerical receipts accompany
+\path{code/observer_dynamics/verify.py}. No expansion profile is selected
+by this calculation.
+
 \begin{corollary}[Redshift as a count ratio]
 \label{flrw:redshift}
 Let two congruent comoving diamonds, with the same comoving cells and the

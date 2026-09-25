@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 427,
+  "surface_count": 431,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -200,7 +200,22 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/NATIVE_COSMOLOGY_SOURCE_BOUNDARY.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/NATIVE_RECORD_OPERATIONS.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/NATIVE_REPAIR_FINITE_EVIDENCE.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/NATIVE_REPAIR_RECORD_SPECTRUM.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -1806,6 +1821,11 @@
     },
     {
       "path": "Lean/ObserverPatchHolography/EinsteinBranch/EdgeCenterTiltCocycle.lean",
+      "glob": "Lean/ObserverPatchHolography/**/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/ObserverPatchHolography/EinsteinBranch/EdgeCenterTiltFreedom.lean",
       "glob": "Lean/ObserverPatchHolography/**/*.lean",
       "allowlisted": false
     },

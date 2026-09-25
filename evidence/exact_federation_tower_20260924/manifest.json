@@ -198,7 +198,8 @@
   "reserve/reserve_L9.json": "25b8c52dd30267452bfd04b7858e5a1b2394191fb0eb23c2037bab5f63e4bb0a",
   "reserve/verify_federation_reserve_independent.py": "111fb0c61ac3e7fc3e985d7c12d885486a3484da59f09d54d71aed64512fb997",
   "test_verify_tower.py": "c650b4cfe5e933bb26d43c9023a02b1f304a3517fd479cbfc1b1a7a4200321ee",
-  "verify_tower.py": "0bbe5b6ffafb58ee56d819e1f192cf0766993399a2ed4d5a219fd203ffea728c"
+  "verify_tower.py": "44dfde6e45fef3f07d06f68fac257a4623fc46ea1fed3431e6adc13b013a740e",
+  "test_streamed_expectations.py": "3ec8427a2edd0cce63f6c70ef6a22fc8a6f0d6c113741607d6350a519b5fc95c"
  },
  "levels": [
   5,

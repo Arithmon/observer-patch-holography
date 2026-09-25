@@ -15,6 +15,7 @@ import ObserverPatchHolography.EinsteinBranch.CollarPremiseDerivation
 import ObserverPatchHolography.EinsteinBranch.FiniteCapGeneratorSplit
 import ObserverPatchHolography.EinsteinBranch.FixedCapacityWLaw
 import ObserverPatchHolography.EinsteinBranch.EdgeCenterTiltCocycle
+import ObserverPatchHolography.EinsteinBranch.EdgeCenterTiltFreedom
 import ObserverPatchHolography.EinsteinBranch.CosmologyLedgerBrackets
 
 /-!

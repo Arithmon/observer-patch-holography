@@ -1,0 +1,53 @@
+{
+  "files": {
+    "oph_exact/__init__.py": {
+      "bytes": 0,
+      "role": "namespace packaging",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "oph_exact/source_net.py": {
+      "bytes": 53470,
+      "matches_original_receipt_pin": true,
+      "sha256": "7599c955954a913f98906caf30fafb3d8a39c5096ef0240e8a85df4e81604977"
+    },
+    "oph_exact/source_net_manifold_sampled.py": {
+      "bytes": 39986,
+      "matches_original_receipt_pin": true,
+      "sha256": "946f36404a6e614f32f14539e9a855f3f1fcd2aefa8f4ccf5d81e22855782709"
+    },
+    "oph_exact/verify_source_net_manifold_sampled_independent.py": {
+      "bytes": 8868,
+      "matches_original_receipt_pin": true,
+      "sha256": "1a7f5233fd5800c99a1364556a70582df8d06d5342504d31f3a7a63334d899d3"
+    },
+    "oph_fpe/__init__.py": {
+      "bytes": 0,
+      "role": "namespace packaging",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "oph_fpe/bulk/__init__.py": {
+      "bytes": 0,
+      "role": "namespace packaging",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "oph_fpe/bulk/causet_likeness.py": {
+      "bytes": 53076,
+      "matches_original_receipt_pin": false,
+      "role": "Myrheim-Meyer arithmetic dependency; separately frozen",
+      "sha256": "876e66eda377cfbf69814e81fb42f393ae41537c1adba83c79aff5ab9b0b4aeb"
+    },
+    "tests/test_exact_source_net_manifold_sampled.py": {
+      "bytes": 4424,
+      "matches_original_receipt_pin": true,
+      "sha256": "2e7e42c0b046adca75854c3cdd72d156d347354b5cf5afc32401a59788320b70"
+    },
+    "tests/test_retained_receipt_mutations.py": {
+      "bytes": 1078,
+      "role": "new independent derived-statistic corruption controls",
+      "sha256": "19206f13f623f0ec3bdc27c83942cd0ea9d407b1be72854ed0ada1040e45b4f8"
+    }
+  },
+  "receipt": "../source_net_manifold_sampled_q55_q89_2026-09-25.json",
+  "receipt_sha256": "8dba828403e6d6da9ba16dcec28e53a2271bb26ca68682a70dee17f5d6ae23e0",
+  "schema": "oph.source-net-manifold-sampled.sources.v1"
+}

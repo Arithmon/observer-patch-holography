@@ -10470,7 +10470,7 @@
     },
     {
       "claim_id": "OPH-SCALAR-SEQUENTIAL-INSTRUMENT",
-      "statement": "A centered pointer instrument on the same supplied 64-mode scalar action realizes the sine effect and defines consistent joint classical record probabilities. Repeated nonselective measurements attenuate each unconditional sine response by the product of cross-time commutator cosines, preserve canonical first moments and inject G0/8 expected energy per readout. Independent exact full-action replay bounds all 21 sequential marginals against the same continuously evolving, repeatedly measured field uniformly over the inherited ordered reference-clock intervals. All 15 resolved slots remain resolved; at step16 the split signal is at least 0.009505812796135, error at most 0.000834181208061 and continuous response magnitude at least 0.008671631588074. A supplied 32-site GHZ circuit on the scalar action graph realizes the instrument with 129 ideal operations per readout. The operator theorem is analytic, not Lean-formalized. Quantum preparation, couplings, entanglement, Born readout and ideal duration are supplied; no branch was sampled, no branch-conditioned clock reconstructed, and no native W12 quantum transport, spatial interacting continuum or physical identification is asserted. With U=exp(-i Z tensor Phi(g)/2), a fresh +X pointer and standard +Y outcome0, K0=(exp(-iPhi/2)-i exp(iPhi/2))/2 and K1 has the plus sign. The nonselective map is the equal mixture of opposite half-Weyl kicks. If d_j<=D_j<=1 and L_j=G0^2 sum_(k<j)(b_j-a_k)^2/8<1, the sequential probability error is at most epsilon_j+max(1-d_j,L_j)*u_j, where u_j bounds the unmeasured split response. Each fine GHZ record of parity s has outcome operator2^(-31/2)K_s, so its parity coarse-graining is the same instrument. The2709 ideal readout operations exclude field evolution and vacuum preparation; the coherent intervention adds16 local Weyl factors. A separate finite-duration realization keeps the same free scalar Hamiltonian active during rectangular local field-pointer pulses. On the ideal GHZ code its exact forced-oscillator solution is a centered instrument with sinc-averaged smear and a common phase; that phase is not scalar on arbitrary pointer states. A shared pulse width in [1/1000,1/100], pointer-only duration 1/10000, per-declared-fault-location half-diamond error at most 1e-7 and initial trace distance at most 1e-5 leave all fifteen responses resolved. The paired baseline/intervention error includes 2*epsilon0+258*j*epsilon through readout j; the noisy baseline is not fixed to one half. All 2709 fault locations, 21 occupied windows and 210 earlier pairs are retained. At step16 the negative paired response has magnitude at least 0.008235344398222, with total comparison error at most 0.001270468397913. Ideal field work is bounded, while generic channel closeness supplies no noisy-energy bound. Effective equal-time smear may leave the original detector region. Initial preparations, quantum controls, Born readout and the inherited reference clock remain supplied; the sixteen historical coherent preparation factors are not implemented at finite duration by this extension. These are analytic probabilities and uncertainty bounds, not sampled outcomes or a native physical quantum realization.",
+      "statement": "A centered pointer instrument on the same supplied 64-mode scalar action realizes the sine effect and defines consistent joint classical record probabilities. Repeated nonselective measurements attenuate each unconditional sine response by the product of cross-time commutator cosines, preserve canonical first moments and inject G0/8 expected energy per readout. Independent exact full-action replay bounds all 21 sequential marginals against the same continuously evolving, repeatedly measured field uniformly over the inherited ordered reference-clock intervals. All 15 resolved slots remain resolved; at step16 the split signal is at least 0.009505812796135, error at most 0.000834181208061 and continuous response magnitude at least 0.008671631588074. A supplied 32-site GHZ circuit on the scalar action graph realizes the instrument with 129 ideal operations per readout. The operator theorem is analytic, not Lean-formalized. Quantum preparation, couplings, entanglement, Born readout and ideal duration are supplied; no branch was sampled, no branch-conditioned clock reconstructed, and no native W12 quantum transport, spatial interacting continuum or physical identification is asserted. With U=exp(-i Z tensor Phi(g)/2), a fresh +X pointer and standard +Y outcome0, K0=(exp(-iPhi/2)-i exp(iPhi/2))/2 and K1 has the plus sign. The nonselective map is the equal mixture of opposite half-Weyl kicks. If d_j<=D_j<=1 and L_j=G0^2 sum_(k<j)(b_j-a_k)^2/8<1, the sequential probability error is at most epsilon_j+max(1-d_j,L_j)*u_j, where u_j bounds the unmeasured split response. Each fine GHZ record of parity s has outcome operator2^(-31/2)K_s, so its parity coarse-graining is the same instrument. The2709 ideal readout operations exclude field evolution and vacuum preparation; the coherent intervention adds16 local Weyl factors. A separate finite-duration realization keeps the same free scalar Hamiltonian active during rectangular local field-pointer pulses. On the ideal GHZ code its exact forced-oscillator solution is a centered instrument with sinc-averaged smear and a common phase; that phase is not scalar on arbitrary pointer states. A shared pulse width in [1/1000,1/100], pointer-only duration 1/10000, per-declared-fault-location half-diamond error at most 1e-7 and initial trace distance at most 1e-5 leave all fifteen responses resolved. The paired baseline/intervention error includes 2*epsilon0+258*j*epsilon through readout j; the noisy baseline is not fixed to one half. All 2709 fault locations, 21 occupied windows and 210 earlier pairs are retained. At step16 the negative paired response has magnitude at least 0.008235344398222, with total comparison error at most 0.001270468397913. Ideal field work is bounded, while generic channel closeness supplies no noisy-energy bound. Effective equal-time smear may leave the original detector region. Initial preparations, quantum controls, Born readout and the inherited reference clock remain supplied; the readout-pulse extension alone does not implement the sixteen coherent preparation factors. These are analytic probabilities and uncertainty bounds, not sampled outcomes or a native physical quantum realization. A separate local-force preparation implements those sixteen source factors at finite duration while the same free Hamiltonian stays active. A centered pulse of duration delta prepares, up to phase, free half-window evolution of velocity sinc(delta sqrt(A)/2)v. Its trace error is at most epsilon_vac+epsilon_F/sqrt(2)+delta^2||A v||_M/(24 sqrt(2)); e(t) is a classical force density in the acceleration equation and its integrated mass norm is bounded by epsilon_F. For delta in [1e-4,2e-3] and epsilon_vac,epsilon_F at most 1e-6, the conservative intervention bound is below 9.389e-6 and baseline bound is at most 2e-6. Both fit the separate inherited 1e-5 budgets, preserving all fifteen resolved responses. The schedule charges 16 simultaneous force ports, 48 coefficient reads and 32 on/off writes. The virtual-center state is not the actual midpulse state. The original vacuum, quantization, control law, error bounds and model clock remain supplied, and no quantum outcomes or noisy-energy bound are inferred.",
       "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
       "tier": "analytic_finite_sequential_quantum_instrument_and_exact_rational_clock_comparison",
       "assumptions": [
@@ -10478,7 +10478,8 @@
         "declared_original_scalar_vacuum_and_sine_effect",
         "fixed_quantum_preparation_under_clock_only_uncertainty",
         "declared_centered_quantum_pointer_and_regional_entangling_operations",
-        "declared_finite_duration_scalar_pointer_and_channel_error_model"
+        "declared_finite_duration_scalar_pointer_and_channel_error_model",
+        "declared_finite_local_scalar_force_preparation"
       ],
       "imported_results": [
         "bounded_Kraus_instruments_and_classical_record_prefix_consistency",
@@ -10487,7 +10488,7 @@
         "finite_forced_oscillator_Weyl_solution",
         "trace_distance_and_diamond_norm_channel_telescoping"
       ],
-      "oph_specific_delta": "Composes repeated quantum readout, backaction, finite pulse duration, declared channel noise and recovered reference-clock uncertainty for one supplied finite scalar action, retaining all readouts and the full operator in independently replayed error bounds.",
+      "oph_specific_delta": "Composes repeated quantum readout, backaction, finite pulse duration, declared channel noise and recovered reference-clock uncertainty for one supplied finite scalar action, retaining all readouts and the full operator in independently replayed error bounds. Replaces the ideal instantaneous coherent intervention by a bounded-error finite local force protocol on the same active action.",
       "novelty_type": "same_action_sequential_instrument_and_clock_error_composition",
       "evidence": [
         "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex",
@@ -10499,11 +10500,16 @@
         "code/source_scalar_finite_instrument/finite_instrument.py",
         "code/source_scalar_finite_instrument/verify_finite_instrument.py",
         "code/source_scalar_finite_instrument/test_finite_instrument.py",
-        "code/source_scalar_finite_instrument/finite_instrument_receipt.json"
+        "code/source_scalar_finite_instrument/finite_instrument_receipt.json",
+        "paper/tex_fragments/SOURCE_SCALAR_LOCAL_PREPARATION.tex",
+        "code/source_scalar_preparation/preparation.py",
+        "code/source_scalar_preparation/verify_preparation.py",
+        "code/source_scalar_preparation/test_preparation.py",
+        "code/source_scalar_preparation/preparation_receipt.json"
       ],
-      "falsifier": "The pointer sign gives the wrong effect, Kraus completeness or record-prefix consistency fails, the full-action commutator or cosine attenuation is wrong, any allowed ordered reference-time choice escapes its bound, a graph edge or fine-record parity factor is invalid, a parent is omitted or altered, or unconditional marginals are promoted to observed branches or native physical quantum operations. The finite pulse differs from its forced-oscillator solution, a pulse phase is incorrectly promoted beyond the GHZ code, an occupied window overlaps, a fault or baseline error is omitted, a retained response loses its certified sign, or probability closeness is promoted to an energy bound.",
+      "falsifier": "The pointer sign gives the wrong effect, Kraus completeness or record-prefix consistency fails, the full-action commutator or cosine attenuation is wrong, any allowed ordered reference-time choice escapes its bound, a graph edge or fine-record parity factor is invalid, a parent is omitted or altered, or unconditional marginals are promoted to observed branches or native physical quantum operations. The finite pulse differs from its forced-oscillator solution, a pulse phase is incorrectly promoted beyond the GHZ code, an occupied window overlaps, a fault or baseline error is omitted, a retained response loses its certified sign, or probability closeness is promoted to an energy bound. The centered force pulse has the wrong free-evolution reference or coherent overlap factor, either branch omits its force/vacuum error, or initial-vacuum/control assumptions are hidden.",
       "scope_if_false": "The repeated instrument, regional circuit or sequential comparison fails; the independently certified unmeasured same-action probabilities retain their narrower scope.",
-      "status": "resolved_sequential_readout_with_finite_pulse_and_declared_channel_noise__native_operations_and_physical_attachment_unsupplied",
+      "status": "resolved_sequential_readout_and_finite_local_preparation_under_declared_quantum_controls__native_selection_and_physical_attachment_unsupplied",
       "claim_class": "conditional_implication",
       "gates": [
         730,
@@ -12440,6 +12446,325 @@
           "PR-57"
         ],
         "boundary": []
+      }
+    },
+    {
+      "claim_id": "OPH-NATIVE-REPAIR-HISTORY-SOURCE",
+      "statement": "On a fixed connected weighted port graph with 0<r<p raised occupancies and independent Poisson fair integer-repair attempts, the balanced chain is reversible under uniform fixed occupancy, Gz=-Lz/2 and under that stationary law Cov(z(t),z(0))=kappa exp(-abs(t)L/2)Pi. Stationary ordinary averages have mode variance kappa h(lambda T/2). The fixed-graph occupation CLT has covariance 4 kappa B L+ B^T, and nonlinear readouts split into their density projection and a positive-semidefinite residual. Pre-attempt incident-event records at one common elapsed time have covariance 4 kappa L+ - kappa(Pi D^-1+D^-1 Pi)+J, with correction norm at most 3 kappa/d_min. These general results have analytical proofs and finite exact/numerical controls; NativeRepairFourCycle checks a four-port six-configuration witness, not the general CLT. No geometric source, physical clock, uniform refinement CLT, primordial amplitude or tilt is derived. A geometry-only log-volume contrast against its own fixed reference vanishes for every load-only repair history and every coarse or separated covariance. Twelve-port controls use the actual internal seam graph, equivalently an isolated native carrier, not the full coupled federation covariance. Uniform one-raised and six-raised preparations give absolute covariances and nonlinear residuals. Local equivariant load and seam-drive readouts have unit-trace covariances Pi/11 and L^2/360 with identical diagonals 1/12 but antipodal entries -1/132 and zero. Thus fixed geometry and even equal-variance calibration fail to identify a nontrivial geometric source. The finite-history obstruction and a four-cycle covariance witness are Lean-proved; the twelve-port identities are exact independent enumeration. The separate 240/960-port traces use coupled native routing. No physical collar-volume mapping is assigned to any load readout.",
+      "owner_paper": "paper/screen_microphysics_and_observer_synchronization.tex",
+      "tier": "conditional_analytical_theorem_with_scoped_finite_checks",
+      "assumptions": [
+        "fixed_graph_native_exclusion_history",
+        "fixed_geometry_native_readout_identification_boundary"
+      ],
+      "imported_results": [
+        "Finite symmetric exclusion, reversible Markov semigroups and the additive-functional martingale central limit theorem of Kipnis and Varadhan"
+      ],
+      "oph_specific_delta": "Identifies the actual conservative port-repair generator and normalizes continuous and locally sampled observer records, including their correlated counting correction. Adds a native fixed-geometry obstruction and a same-variance spatial-shape counterexample that distinguishes missing geometric identification from load normalization.",
+      "novelty_type": "conditional_native_application_and_boundary",
+      "evidence": [
+        "paper/tex_fragments/NATIVE_REPAIR_RECORD_SPECTRUM.tex",
+        "Lean/Thermodynamics/NativeRepairFourCycle.lean",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/inflation/native_history/receipt.json",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/source_derivation/native/receipt.json",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/necessity/universality/receipt.json",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/necessity/event_records/receipt.json",
+        "code/observer_dynamics/verify.py",
+        "paper/tex_fragments/NATIVE_GEOMETRIC_SOURCE_IDENTIFIABILITY.tex",
+        "Lean/Geometry/NativeGeometricSourceIdentification.lean",
+        "code/native_geometric_source/build.py",
+        "code/native_geometric_source/verify.py",
+        "code/native_geometric_source/check_native_geometry.py",
+        "code/native_geometric_source/test_source.py",
+        "evidence/native_geometric_source_20260925/spec.json",
+        "evidence/native_geometric_source_20260925/receipt.json",
+        "evidence/native_geometric_source_20260925/verification_receipt.json"
+      ],
+      "falsifier": "A connected fixed-occupancy fair-attempt chain violates stationarity, the density drift, covariance or marked-event bracket under the stated normalization; a witness is promoted to a general machine-checked CLT. A load-only repair changes the supplied geometry, the exact equal-diagonal/different-separation covariance witness fails, or within-carrier covariance is promoted to coupled-federation or physical curvature power.",
+      "scope_if_false": "The stated native repair history source conclusion fails on its declared domain; no unrelated physical branch is thereby established or refuted.",
+      "status": "analytical_result_finite_formal_scope_explicit",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row concerns an explicitly specified finite exclusion generator and its mathematical records. It does not consume the canonical common-reference/repaired-fibre interface of PR-07 or laboratory units of PR-15; those identifications are outside this claim."
+      }
+    },
+    {
+      "claim_id": "OPH-SETTLEMENT-SCALE-TRANSFER",
+      "statement": "All 48 retained level-eight to level-ten first-settling configurations admit a controlled common-input/schedule-noise decomposition. At level ten, ancestral groups of 1024, 4096 and 65536 cells have amplitude responses 0.90758, 0.95232 and 0.98983 and conditional schedule-noise fractions 1.241%, 0.594% and 0.143%. The largest-group variance is 11.048 times the stationary fixed-total null. There is one initial load per rung and sixteen schedules; the cross-schedule estimator is unbiased and can be negative. Spatial memory belongs to configurations, not the component multiset. No physical area, primordial transfer, independent-source significance or all-size logarithmic bound is claimed.",
+      "owner_paper": "paper/screen_microphysics_and_observer_synchronization.tex",
+      "tier": "finite_simulation_readout_with_controls",
+      "assumptions": [
+        "retained_tower_conditional_schedule_ensemble"
+      ],
+      "imported_results": [
+        "Conditional variance decomposition, unbiased cross-replicate power and finite-population sampling covariance"
+      ],
+      "oph_specific_delta": "Separates coarse retained initial information from schedule variation in a large bounded patch system with port readback and local repair.",
+      "novelty_type": "controlled_finite_readout",
+      "evidence": [
+        "paper/tex_fragments/NATIVE_REPAIR_FINITE_EVIDENCE.tex",
+        "evidence/observer_dynamics_20260925/sim-analysis/data/codex_audit_20260925/scale_ensemble.json",
+        "evidence/observer_dynamics_20260925/sim-analysis/scripts/codex_scale_ensemble.py",
+        "code/observer_dynamics/verify.py"
+      ],
+      "falsifier": "An independently reconstructed statistic from the retained sufficient statistics or a terminal-state cross-pin disagrees; unequal-bin weighting or clamping creates the reported scale response.",
+      "scope_if_false": "The stated settlement scale transfer conclusion fails on its declared domain; no unrelated physical branch is thereby established or refuted.",
+      "status": "executed_finite_evidence_no_physical_promotion",
+      "claim_class": "empirical_implementation",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This finite conditional readout makes no assertion about a physical ensemble, area or continuum. Its inputs are the declared simulator configurations rather than any canonical physical premise."
+      }
+    },
+    {
+      "claim_id": "OPH-NATIVE-PORT-TRANSPORT-CONTROLS",
+      "statement": "The pinned production port operator has resolved finite low modes with N lambda_2 approaching 0.8155 on tested rungs. Static Schur reduction lowers the small-control coarse-mode error from roughly 43% to 0.35%; small internal energy alone does not validate naive cell averaging. At level four the seven-mode splitting is 14.642% for actual ports, 13.115% for the unweighted cell graph and 0.01561% for the supplied round-metric control. Reversible lazy finite repair has nonnegative decreasing same-observable stationary autocorrelation; that statement excludes nonlazy, nonstationary and enlarged-state dynamics. These controls supply no Lorentzian matter evolution or round continuum theorem.",
+      "owner_paper": "paper/screen_microphysics_and_observer_synchronization.tex",
+      "tier": "finite_simulation_readout_with_controls",
+      "assumptions": [
+        "pinned_port_transport_and_declared_metric_controls"
+      ],
+      "imported_results": [
+        "Schur complements, spectral approximation and reversible finite-chain spectral decomposition"
+      ],
+      "oph_specific_delta": "Measures the operator used by the observer ports and separates coarse elimination accuracy from anisotropy imposed by gluing.",
+      "novelty_type": "controlled_finite_readout",
+      "evidence": [
+        "paper/tex_fragments/NATIVE_REPAIR_FINITE_EVIDENCE.tex",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/dynamics/receipt.json",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/dynamics/geometry_receipt.json",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/dynamics/stationary_receipt.json",
+        "code/observer_dynamics/verify.py"
+      ],
+      "falsifier": "Resolved mode residuals fail, independent assembly differs from the pinned port operator, or the reduction comparison uses inconsistent normalizations.",
+      "scope_if_false": "The stated native port transport controls conclusion fails on its declared domain; no unrelated physical branch is thereby established or refuted.",
+      "status": "executed_finite_evidence_no_physical_promotion",
+      "claim_class": "empirical_implementation",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "These are fixed-operator mathematical and numerical controls. No physical metric, wave dynamics or calibration is consumed or obtained from a canonical premise."
+      }
+    },
+    {
+      "claim_id": "OPH-REFINEMENT-ABSOLUTE-INNOVATION",
+      "statement": "The 61 retained refine-and-settle chains provide 488 scale measurements. Two-predictor covariance reconstruction conditions the terminal record on the inherited field and the specified fresh uniform integer load. At the largest level-eight to nine groups the inherited-only residual variance is 2.55666955e-6 and the joint residual variance is 4.00020779e-8. Nested same-location covariance and orthogonal increments are derived for the declared projections, not independent innovations or a spatial Fourier spectrum. All retained chains terminate; shared parents preclude independent-universe standard errors. The observed scale-varying attenuation does not establish a common scalar tilt or asymptotic exclusion.",
+      "owner_paper": "cosmology/oph_cosmology_finite_source_cmb_program.tex",
+      "tier": "finite_simulation_readout_with_controls",
+      "assumptions": [
+        "retained_refinement_covariances_and_seed_replay"
+      ],
+      "imported_results": [
+        "Multivariate least squares, covariance Schur complements and nested conditional group projections"
+      ],
+      "oph_specific_delta": "Recovers absolute native load-record units and distinguishes supplied fresh-load variance from a derived primordial source in the repair refinement experiment.",
+      "novelty_type": "controlled_finite_readout",
+      "evidence": [
+        "paper/tex_fragments/NATIVE_REPAIR_FINITE_EVIDENCE.tex",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/source_derivation/innovations/receipt.json",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/source_derivation/innovations/nested_receipt.json",
+        "evidence/observer_dynamics_20260925/sim-analysis/data/refine_ensemble/ensemble_summary.json",
+        "code/observer_dynamics/verify.py"
+      ],
+      "falsifier": "Seed replay or the independent retained parent-variance anchors fail, a reconstructed covariance is not positive semidefinite, or the nested covariance identity fails under its projection assumptions.",
+      "scope_if_false": "The stated refinement absolute innovation conclusion fails on its declared domain; no unrelated physical branch is thereby established or refuted.",
+      "status": "executed_finite_evidence_no_physical_promotion",
+      "claim_class": "empirical_implementation",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row reconstructs finite seeded covariances. No cosmological source-selection, radial attachment or physical fluctuation premise is consumed by the regression identities."
+      }
+    },
+    {
+      "claim_id": "OPH-LAYERED-OBSERVER-CLOCK-CONTROLS",
+      "statement": "In the declared layered graph with self-waits, every related pair K layers apart has maximum strict-history length K, so uniform history ticks give moving/rest ratio one and fail the supplied nonzero-velocity Minkowski comparison. Continuum spatial balls on discrete layers have B_K=1+4/K^2 for even K and (1-1/K^2)^2 for odd K. This control lowers the q144 count-clock discrepancy from -2.0289% to -0.1007% without removing clipping or finite graph errors. All 120 boosted-read cases are retained, including 31 timelike unrelated pairs; moderate-boost medians do not prove finite Lorentz invariance. For sigma=1+eta and durations 1 and 1/2, the continuum volume ratio 1516288/44451 differs from (12/5)^4, so shrinking windows matter. Lean checks finite clock algebra, parity and rational polynomial mismatch; general probability and physical clocks are outside those proofs.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "conditional_analytical_theorem_with_scoped_finite_checks",
+      "assumptions": [
+        "layered_waiting_and_supplied_clock_reference"
+      ],
+      "imported_results": [
+        "Longest-chain bounds in layered orders, the sum-of-cubes identity and integration of causal-diamond volume"
+      ],
+      "oph_specific_delta": "Separates ordinal source height from a duration instrument and identifies an exact temporal quadrature effect and a continuum finite-window obstruction.",
+      "novelty_type": "conditional_native_application_and_boundary",
+      "evidence": [
+        "paper/tex_fragments/CAUSAL_MANIFOLD_OBSERVATIONS.tex",
+        "paper/tex_fragments/SOURCE_NET_FLRW_RECORD_DENSITY.tex",
+        "Lean/Geometry/SourceNetClockSeparation.lean",
+        "Lean/Geometry/FiniteLayerQuadrature.lean",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/causal/receipt.json",
+        "evidence/observer_dynamics_20260925/sim-analysis/data/codex_audit_20260925/causal_cosmology_audit.json",
+        "code/observer_dynamics/verify.py"
+      ],
+      "falsifier": "A layered self-waiting graph violates the maximum-chain bound, a rational layer sum violates the parity expression, the retained all-case comparison fails independent replay, or the finite FLRW polynomial integrals give equal clock ratios.",
+      "scope_if_false": "The stated layered observer clock controls conclusion fails on its declared domain; no unrelated physical branch is thereby established or refuted.",
+      "status": "analytical_result_finite_formal_scope_explicit",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row compares dimensionless candidate instruments within supplied mathematical families; it does not consume empirical laboratory clock anchors in PR-15 or assert the physical continuum certificate PR-16."
+      }
+    },
+    {
+      "claim_id": "OPH-GOLDEN-FIXED-MODE-FOURIER",
+      "statement": "On the fixed cube with q=F_m golden fractional coordinates, the normalized Fourier amplitude at a fixed integer mode factorizes into three finite geometric sums. For h nonzero components, q^(4h)|F_q(n)|^2 tends to the product of (pi n_j)^2/[5 sin^2(pi n_j phi)]. The tensor factorization and geometric-series identity have Lean proofs; the Fibonacci asymptotic is analytical with numerical controls. This is a fixed-mode fixed-volume result, not infinite-volume hyperuniformity, rotational isotropy or a primordial spectrum.",
+      "owner_paper": "cosmology/oph_cosmology_finite_source_cmb_program.tex",
+      "tier": "conditional_analytical_theorem_with_scoped_finite_checks",
+      "assumptions": [
+        "fixed_integer_modes_on_golden_cube"
+      ],
+      "imported_results": [
+        "Finite geometric sums, Cartesian product factorization and Fibonacci approximation to the golden ratio"
+      ],
+      "oph_specific_delta": "Gives exact mode-dependent finite-source suppression and directional controls for the supplied observer-record population.",
+      "novelty_type": "conditional_native_application_and_boundary",
+      "evidence": [
+        "Lean/Geometry/GoldenSourceFourier.lean",
+        "cosmology/oph_cosmology_finite_source_cmb_program.tex",
+        "evidence/observer_dynamics_20260925/sim-analysis/scripts/codex_golden_fourier.py",
+        "evidence/observer_dynamics_20260925/sim-analysis/data/codex_audit_20260925/golden_fourier.json",
+        "code/observer_dynamics/verify.py"
+      ],
+      "falsifier": "Direct finite Fourier summation disagrees with the factorization or a fixed nonzero mode violates the stated Fibonacci asymptotic after its hypotheses are enforced.",
+      "scope_if_false": "The stated golden fixed mode fourier conclusion fails on its declared domain; no unrelated physical branch is thereby established or refuted.",
+      "status": "analytical_result_finite_formal_scope_explicit",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This is a deterministic Fourier theorem for a declared finite point family. Physical source and volume selection, isotropy and cosmological scale identifications are outside its antecedents."
+      }
+    },
+    {
+      "claim_id": "OPH-COMMON-BULK-LOG-COVARIANCE",
+      "statement": "One homogeneous isotropic generalized scalar field on a common Euclidean three-dimensional time slice, with locally integrable radial off-diagonal covariance and no contact distributions, has xi(s)=-A log(s)+c almost everywhere if all mean-zero sphere restrictions on an unbounded sequence of radii have C_l(R)=2 pi A_R/[l(l+1)]. Overlapping chord ranges force one A, giving P3(k)=2 pi^2 A/k^3 for k>0 modulo zero modes. Omitting dipoles allows an additional ds^2 covariance term. Finitely many radii do not suffice: an explicit compact radial bump produces two distinct positive spectral densities with identical unit-sphere restrictions. The proof is analytical; finite certificates check its specified counterexample and no common physical bulk is constructed.",
+      "owner_paper": "cosmology/oph_cosmology_finite_source_cmb_program.tex",
+      "tier": "conditional_analytical_theorem_with_scoped_finite_checks",
+      "assumptions": [
+        "common_bulk_unbounded_spheres_without_contact_terms"
+      ],
+      "imported_results": [
+        "Legendre completeness, radial Fourier uniqueness and positive spectral perturbations in the null space of sphere restriction"
+      ],
+      "oph_specific_delta": "States a sufficient cross-screen compatibility condition and an explicit positive counterexample to inference from a single observed screen.",
+      "novelty_type": "conditional_native_application_and_boundary",
+      "evidence": [
+        "paper/tex_fragments/RADIAL_LIFT_THEOREMS_330.tex",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/necessity/boundary_bulk/receipt.json",
+        "evidence/observer_dynamics_20260925/sim-analysis/codex/necessity/boundary_bulk/certify.py",
+        "code/observer_dynamics/verify.py"
+      ],
+      "falsifier": "Compatible unbounded restrictions admit unequal logarithmic coefficients under the regularity assumptions, or the explicit counterexample loses positivity or changes the unit-sphere covariance.",
+      "scope_if_false": "The stated common bulk log covariance conclusion fails on its declared domain; no unrelated physical branch is thereby established or refuted.",
+      "status": "analytical_result_finite_formal_scope_explicit",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The common bulk and its unbounded compatible screen family are explicit mathematical hypotheses outside the canonical PR inventory, not a physical realization or removal of a cosmological attachment."
+      }
+    },
+    {
+      "claim_id": "OPH-COMMON-HISTORY-FEEDBACK-PACKET",
+      "statement": "On the supplied q=5, 64-site classical scalar action, one authenticated history composes a local average probe, retained record, restoration and later action update. With initial velocity mass-norm error 1e-6, retained half-response error 1e-6, final record error 1e-7 and comparison-time displacement 1e-6 at fixed nominal record selection, the paired causal-held response is at least 0.015766120591 and its total comparison error against the same finite continuous action is at most 0.01363415443425, leaving margin at least 0.00213196615675 throughout [15 tau,17 tau], tau^2=1/245. Source and detector coordinate separation exceeds 3/8. Every declared read/write and source intervention is replayed; four Lean declarations certify the local restoration and accumulated error algebra, not a quantum or physical-world execution. Preparation, action, boundary, routing, exact classical operations and model time are supplied. The specified fault locations leave reset, averaging, restoration and accumulation operations exact. No physical clock, source-selected action, spatial continuum or quantum outcome is inferred.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "conditional_same_history_classical_feedback_with_exact_error_certificate",
+      "assumptions": [
+        "declared_golden_scalar_versioned_execution",
+        "declared_classical_probe_restore_feedback_error_model"
+      ],
+      "imported_results": [
+        "Finite linear recurrence stability and Duhamel error bounds",
+        "Exact classical readback/restoration and interval arithmetic"
+      ],
+      "oph_specific_delta": "Composes local self-readback, retained classical records, restoration and causally effective future field updates in one independently replayed finite history, with signal above its full declared comparison budget.",
+      "novelty_type": "conditional_same_history_observer_feedback_composition",
+      "evidence": [
+        "paper/tex_fragments/COMMON_HISTORY_FEEDBACK_PACKET.tex",
+        "Lean/Screen/CommonHistoryFeedback.lean",
+        "code/common_history_packet/packet.py",
+        "code/common_history_packet/verify.py",
+        "code/common_history_packet/test_common_history_packet.py",
+        "evidence/common_history_packet_20260925/packet.json",
+        "evidence/common_history_packet_20260925/verification.json",
+        "evidence/common_history_packet_20260925/manifest.json"
+      ],
+      "falsifier": "An independently replayed consumed writer or restoration differs, a causal-held intervention changes a supposedly held channel, an allowed fault escapes the declared total bound, or the useful response margin fails anywhere in the stated time interval.",
+      "scope_if_false": "This common-history classical feedback certificate fails; separately verified source-action and quantum-instrument constructions retain their own scopes.",
+      "status": "resolved_bounded_classical_feedback_packet__source_action_clock_quantum_and_physical_identification_unsupplied",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The packet assumes one explicit finite classical scalar action, protected records, exact local operations and a model clock. It does not consume PR-02/PR-03 as a quantum representation/readout, PR-15 as a physical time calibration, or PR-52 as a selected physical source; those identifications remain outside this mathematical execution claim."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION",
+      "statement": "A finite connected response operator with paired strictly negative off-diagonal entries admits at most one normalized positive diagonal symmetrizer. Consistent edge ratios reconstruct that action measure without reading the parent mass vector; exact all-edge reciprocity independently certifies it. On the declared 64-site golden scalar action, 144 edges recover the original normalized mass quadrature. Two source strengths and two declared local record-production rates separate source amplitude, raw record counts and calibrated action measure while retaining their actual source histories and auxiliary operation costs. The finite count discrepancy is strictly less than the number of selected cells divided by the product of production budget and rate. In an explicitly supplied static conformal scalar action class with unit mass potential, the response determines the relative kinetic measure; constitutive action and calibration assumptions distinguish it from metric four-volume. Supplied conformal profiles leave unweighted support order unchanged, while kinetic density scales as u and metric four-volume as u^2. No source-selected production law, universal action scale, physical metric, stress coupling or Einstein response follows from this reconstruction.",
+      "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+      "tier": "conditional_exact_action_measure_reconstruction_and_same_family_controls",
+      "assumptions": [
+        "declared_golden_scalar_versioned_execution",
+        "connected_negative_response_action_measure",
+        "declared_scalar_conformal_action_and_record_production"
+      ],
+      "imported_results": [
+        "Positive diagonal symmetrization and edge-ratio cycle consistency",
+        "Deterministic floor discrepancy bounds and conformal scalar action identities"
+      ],
+      "oph_specific_delta": "Recovers normalized action weights from the actual finite response operator and separates source amplitude, observer-record production, kinetic density and conditional metric volume with authenticated same-family controls.",
+      "novelty_type": "conditional_operator_measure_identification_with_density_controls",
+      "evidence": [
+        "paper/tex_fragments/SOURCE_ACTION_DENSITY_IDENTIFICATION.tex",
+        "Lean/Geometry/SourceActionMeasure.lean",
+        "code/source_density_geometry/produce.py",
+        "code/source_density_geometry/verify.py",
+        "evidence/source_density_geometry/receipt.json",
+        "evidence/source_density_geometry/source_strength_1.json",
+        "evidence/source_density_geometry/source_strength_2.json"
+      ],
+      "falsifier": "A connected consistent response graph has two distinct normalized positive symmetrizers, an edge-ratio or authenticated record replay fails, the finite count enclosure misses its action measure, or conditional kinetic weights are promoted to physical metric volume without the specified constitutive bridge.",
+      "scope_if_false": "The operator-measure identification or its finite density controls fail; independently supplied action and causal-order constructions are not thereby identified or refuted as physical spacetime.",
+      "status": "relative_action_measure_reconstructed__record_production_metric_selection_and_physical_stress_remain_supplied_or_unidentified",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This is an exact reconstruction inside a declared finite scalar action and specified mathematical conformal control family. PR-16 physical count-to-volume realization and PR-52 native source/geometry selection are not antecedents or conclusions; supplied kinetic weights and record-production laws are explicitly distinguished from those physical premises."
       }
     }
   ]

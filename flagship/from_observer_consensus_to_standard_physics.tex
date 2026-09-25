@@ -47,23 +47,19 @@ Normal Forms, the Standard Model Lie Type, and a Route to the Einstein Field Equ
 \normalsize Maarten Antonie Visser\qquad
 \normalsize Kale Arnav Anirudha\\[0.5em]
 \normalsize Brieuc de La Fourni\`ere}
-\date{\OPHPaperReleaseDate}
+\date{\small\OPHPaperReleaseDate\quad\textperiodcentered\quad Paper release: \OPHPaperReleaseID}
 
 \begin{document}
 \maketitle
 
-\begin{center}\textbf{Paper release: \OPHPaperReleaseID}\end{center}
-
 \begin{center}
-\footnotesize\textbf{Author affiliations:}\\
-\begin{tabular}{rl}
-\textsuperscript{1} & Pragma Research Inc.\\
-\textsuperscript{2} & Information Physics Institute\\
-\textsuperscript{3} & EtherWorks\\
-\textsuperscript{4} & Oraclizer Labs
-\end{tabular}\\
+\footnotesize
+\textsuperscript{1}Pragma Research Inc.\quad
+\textsuperscript{2}Information Physics Institute\quad
+\textsuperscript{3}EtherWorks\quad
+\textsuperscript{4}Oraclizer Labs\\
 \textsuperscript{*}Corresponding author:
-\href{mailto:bernhard@floatingpragma.ai}{\nolinkurl{bernhard@floatingpragma.ai}}.
+\href{mailto:bernhard@floatingpragma.ai}{\nolinkurl{bernhard@floatingpragma.ai}}
 \end{center}
 
 \begin{abstract}
@@ -1070,11 +1066,16 @@ type.
 A supplied scalar action on prepared golden addresses supports classical and
 Fock-space waves. Its massive Dirichlet detector limit survives spatial
 refinement and symmetric local steps; at $q=233$, compact-detector error is
-smaller than the induced signal on a nonzero window without an executed tensor
-history. A separate 64-site instrument retains resolved repeated responses
-with finite pointer duration and bounded control noise \cite{ophEinstein}.
-Axes, boundary, addresses, action, quantum preparation and controls, and model
-time are supplied; physical clock and count-volume attachment remain separate.
+smaller than the induced signal on a nonzero window. On a 64-site action an
+authenticated classical history closes a feedback loop, detector probes
+perturbing the field, retained records restoring it and later updates
+consuming the restored values, with separated intervention response above
+$0.01576$ throughout a nonzero model-time interval against a total declared
+error below $0.01364$; a quantum instrument on the same action prepares its
+coherent intervention by a local force pulse within trace distance
+$9.389\times10^{-6}$ of the target \cite{ophEinstein}. Axes, boundary,
+addresses, action, vacuum, controls and model time are supplied; physical
+clock and count-volume attachment remain separate.
 
 The spacetime derivation develops the finite read algebra of this substrate
 and its boundaries \cite{ophEinstein}. In the finite Schr\"odinger
@@ -1245,6 +1246,41 @@ times half the initial $\ell_1$ deviation from the uniform reading; it
 excludes energy-preserving swaps and is not transported mass. The isolated
 per-carrier response kernels agree across rungs to six digits.
 
+The first-settling configuration retains spatial information that its public
+component multiset does not encode. A controlled readback of all sixteen
+schedules at each of levels eight through ten separates common input memory
+from schedule variance using equal-count ancestral cell groups: at level ten
+the initial-to-terminal amplitude responses at group sizes $1{,}024$,
+$4{,}096$ and $65{,}536$ are $0.90758$, $0.95232$ and $0.98983$, the
+conditional schedule-noise fractions $1.241\%$, $0.594\%$ and $0.143\%$, and
+at the largest group the terminal variance is $11.048$ times the stationary
+fixed-total balanced null. The schedules share one initial load, the groups
+carry no derived physical area, and each snapshot ends the first settling
+sweep; this is finite coarse memory under the declared gluing, without a
+primordial-spectrum identification, with the executable statistics and input
+digests retained in \path{evidence/observer_dynamics_20260925/}. Stationary
+continuation supplies a separate constructive fluctuation result. For $p$
+ports on a connected weighted graph, $0<r<p$ raised occupancies, fair integer
+repair and independent edge-attempt clocks, write $z=n-(r/p)\mathbf 1$,
+$\Pi=I-\mathbf1\mathbf1^\mathsf{T}/p$ and $\kappa=r(p-r)/(p(p-1))$; with
+graph Laplacian $L$ in attempt-rate units, the uniform fixed-occupancy law
+is reversible and
+\[
+ \mathbb E[z(t)z(0)^\mathsf T]
+   =\kappa e^{-|t|L/2}\Pi,\qquad
+ T^{-1/2}\int_0^T Bz(t)\,dt
+   \ \Longrightarrow\ \mathcal N(0,4\kappa BL^+B^\mathsf T)
+\]
+for a fixed linear readout $B$, with $L^+$ the mean-zero inverse. The
+finite-state martingale central limit theorem applies at fixed graph, with
+no uniform refinement limit asserted: this constructs a history source from
+local port repair without adding Gaussian site noise, its occupancy law,
+elapsed-time convention and readout are specified inputs, and it does not
+identify this source with a geometric volume perturbation or determine the
+cosmic microwave background amplitude, tilt or expansion history. The
+screen-microphysics analysis gives its proof, finite-window law and locally
+sampled event-record correction.
+
 At carrier scale, recovery from event logs under the declared probe and
 operation grammar returns the twelve ports, thirty seams, inverse pairing,
 automorphism and rotation groups of orders $120$ and $60$, mean rule,
@@ -1311,13 +1347,6 @@ gives $\mathcal B^2=4I-[A_0,A_1][B_0,B_1]$; the two commutator norms are at
 most two, so $\|\mathcal B\|\le2\sqrt2$, and its expectation in $\rho$ gives
 the bound.
 \end{proof}
-
-On the declared binary-icosahedral spinor branch the invariant singlet of the
-incidence-defined twelve-port setting family gives
-$\lvert S_{\mathrm{CHSH}}\rvert=1+3/\sqrt5=2.3416\ldots$, confirmed by an
-independent exact census \cite{ophzoo}; the family is selected by no carrier
-property, so this is an exact projective candidate rather than a physical
-Bell prediction.
 
 \begin{theorem}[Exact Tsirelson saturation and the diagonal boundary]
 \label{thm:tsirelson-saturation}
@@ -1822,8 +1851,10 @@ derivation carries the full account \cite{ophEinstein}. Counts exclude
 auxiliary read instructions and seam operations. The construction does not
 select the read law from the observer axioms, calibrate a physical clock, or
 identify its cone with a matter action. These are distinct requirements of a
-physical
-source-causal continuum certificate.
+physical source-causal continuum certificate. With self-waits, the longest
+history between related endpoints $K$ layers apart has exactly $K$ steps, so
+uniform duration per step gives moving/rest ratio one rather than
+$\sqrt{1-\beta^2}$: the ordinal height is not a proper-time instrument.
 Curved limits, topology stability and the common physical field realization
 require their stated additional hypotheses.
 \end{boundary}
@@ -3390,19 +3421,6 @@ no verdict unless a pre-exposure source theorem for the same action and sector
 supplies \(a_{\min}>0\) and a preregistered power and remainder contract makes
 the entire admitted manifold excludable.
 
-\paragraph{Exposed source-seam diagnostics.}
-Under the external subluminal quadratic convention
-$a=\sqrt{20}/E_{\mathrm{QG},2}$, published time-of-flight bounds give
-conditional photon and clock-sector translations, and the Auger air-shower
-translation reaches $a<0.546\,\ell_P$ only with photon-only Lorentz
-violation, Lorentz-invariant leptons, and a subdominant proton component
-above $10^{19}\,\mathrm{eV}$ \cite{xishu2025,lhaaso2024,auger2022}. That
-lepton premise is load-bearing: a common photon and lepton coefficient
-$\delta=-a^2/20$ changes the pair-production threshold to a machine-checked
-two-branch envelope with transition momentum $k_t=2\sqrt{m_e}(3d)^{-1/4}$,
-which inherits no published photon-only exclusion \cite{ophrepo}. These
-diagnostics derive no scale and carry no evidence weight.
-
 \paragraph{Primitive-port prediction and decision rule.}
 Proposition~\ref{prop:spin-six-prediction} is a frozen prospective
 conditional physical-branch prediction \cite{ophregister}. The minimal
@@ -3563,19 +3581,7 @@ direction can fail the fixed branch, while compatibility with that point
 supports nothing, since it is also the \(\Lambda\)CDM null, and a
 \(w_0w_a\)CDM posterior is a model- and likelihood-dependent projection whose
 comparison requires a post-freeze dataset combination, statistic, thresholds
-and nuisance policy fixed in advance \cite{ophregister}. A hash-checked
-retrospective postprocessing of the official DESI DR2 chains finds
-posterior-weight fractions in the monotone-capacity subset on \(0\le z\le2\)
-between \(0.007\) and \(0.11\) percent across the four default CMB
-combinations \cite{desidr2,ophrepo}; these are retrospective diagnostics,
-not branch probabilities. A conditional local clock bridge, under three
-further physical premises that identify the electroweak closure capacity
-with the same physical \(N\) and the closure relation with an epochwise law,
-combines an outward-rounded implicit-function certificate with the
-optical-clock drift result of Filzinger et al.\ into the local diagnostic
-\(\lvert1+w_0\rvert\le6.94\times10^{-10}\) \cite{filzinger2023,ophdesitter};
-this derives no cosmic tangent and leaves arbitrarily small positive
-capacity drift viable.
+and nuisance policy fixed in advance \cite{ophregister}.
 
 \subsection{A common source, and measurement as a completed record}
 
@@ -4125,11 +4131,6 @@ Mueller, B., Osika, A., Poneder, M., Xue, K., Nguyen, P., and Matscheko, D. (202
 Observer Overlap Consistency}. Public manuscript.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/ff1981be069d3e5fa70d953e27b3786dd4c2b99d/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}
 
-\bibitem{ophzoo}
-Mueller, B., Osika, A., Poneder, M., and Xue, K. (2026).
- \emph{Deriving the Particle Zoo from Observer
-Consistency}. Public manuscript.
-\url{https://github.com/FloatingPragma/observer-patch-holography/blob/7260dc7c4ac05f84c021167f1e095a58998573f1/paper/deriving_the_particle_zoo_from_observer_consistency.pdf}
 
 \bibitem{ophkoide}
 Mueller, B. (2026). \emph{The Positive-Chamber Koide Identity for
@@ -4479,24 +4480,6 @@ and CPT violation.'' 2026 edition, arXiv:0801.0287.
 \url{https://arxiv.org/abs/0801.0287}. Original journal article:
 \url{https://doi.org/10.1103/RevModPhys.83.11}
 
-\bibitem{auger2022}
-Pierre Auger Collaboration (2022). ``Testing effects of Lorentz invariance
-violation in the propagation of astroparticles with the Pierre Auger
-Observatory.'' \emph{Journal of Cosmology and Astroparticle Physics}
-\textbf{01}, 023.
-\url{https://doi.org/10.1088/1475-7516/2022/01/023}
-
-\bibitem{xishu2025}
-Xi, Y., and Shu, F.-W. (2025). ``Constraints on Lorentz invariance violation
-from GRB 221009A using the DisCan method.''
-\emph{Chinese Physics C} \textbf{49}, 125101.
-\url{https://doi.org/10.1088/1674-1137/adfa01}
-
-\bibitem{lhaaso2024}
-LHAASO Collaboration (2024). ``Stringent tests of Lorentz invariance
-violation from LHAASO observations of GRB 221009A.''
-\emph{Physical Review Letters} \textbf{133}, 071501.
-\url{https://doi.org/10.1103/PhysRevLett.133.071501}
 
 \bibitem{desidr2}
 DESI Collaboration (2025). ``DESI DR2 Results II: Measurements of Baryon
@@ -4504,11 +4487,6 @@ Acoustic Oscillations and Cosmological Constraints.'' arXiv:2503.14738.
 \url{https://arxiv.org/abs/2503.14738}. Official chains and checksum manifest:
 \url{https://data.desi.lbl.gov/public/papers/y3/bao-cosmo-params/README.html}
 
-\bibitem{filzinger2023}
-Filzinger, M., et al.\ (2023). ``Improved Limits on the Coupling of Ultralight
-Bosonic Dark Matter to Photons from Optical Atomic Clock Comparisons.''
-\emph{Physical Review Letters} \textbf{130}, 253001.
-\url{https://doi.org/10.1103/PhysRevLett.130.253001}
 
 \bibitem{codata2022}
 Mohr, P.\,J., Newell, D.\,B., Taylor, B.\,N., and Tiesinga, E. (2025).

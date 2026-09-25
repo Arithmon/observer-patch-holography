@@ -28,6 +28,58 @@ analytic prescribed-magnetic-field continuum theorem, and full-dimensional
 neutral-state preparation. Their separate acceptance rules do not certify
 physical calibration or useful interacting quantum propagation.
 
+## Native observer dynamics and retained large-run statistics
+
+The compact [observer-dynamics evidence](evidence/observer_dynamics_20260925/README.md)
+contains the pinned simulator source needed for standalone reproduction:
+
+```sh
+python3 code/observer_dynamics/verify.py
+python3 code/observer_dynamics/verify.py --replay-refinement
+python3 evidence/observer_dynamics_20260925/lean/verify.py --check
+```
+
+The first command checks immutable inputs, recomputes bounded source and
+clock certificates, and runs the numerical and mutation controls. The second
+also reconstructs all 61 refinement fresh-noise streams. The third compiles
+the corresponding Lean modules and checks their axiom receipt. The mandatory
+suite includes the first command. Dependencies and exact interpretation
+boundaries are in [the executable interface](code/observer_dynamics/README.md).
+The large terminal arrays are represented by their retained statistics and
+cross-pins; this command does not replay their microscopic repair histories.
+The conditional CMB comparison retains its supplied source and background.
+
+## Finite source, preparation and common-history interfaces
+
+These four packages check bounded observer-like systems with local state,
+read ports, retained records and declared control operations:
+
+```sh
+python3 code/native_geometric_source/verify.py
+python3 code/common_history_packet/verify.py
+python3 code/source_scalar_preparation/verify_preparation.py
+python3 code/source_density_geometry/verify.py
+```
+
+They respectively test fixed-geometry source identifiability, a classical
+readout/restoration history with a useful complete error bound, finite local
+quantum-state preparation on the supplied scalar action, and relative action
+measure with calibrated density controls. Their package contracts distinguish
+the mathematical operations from source selection and physical calibration.
+The common-history verifier also checks the retained summary and closed
+source/evidence inventory. The preparation certificate specifies a quantum
+control channel; it is not a sampled quantum execution.
+
+The finite algebraic implications can be compiled independently:
+
+```sh
+cd Lean
+lake build Geometry.NativeGeometricSourceIdentification CommonHistoryFeedback Geometry.SourceActionMeasure
+```
+
+The general spectral error estimate and oscillator pulse argument are
+analytical; these finite Lean modules do not formalize those entire proofs.
+
 ## Passive-memory requirements toward M1
 
 The exact nonlinear-record classification, finite native-zero reset bound,

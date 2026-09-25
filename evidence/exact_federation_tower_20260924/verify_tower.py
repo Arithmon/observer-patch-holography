@@ -98,9 +98,23 @@ def slow_band_projector() -> np.ndarray:
 # --- expectations from the loads alone ---------------------------------------------------
 
 
-def expected(level: int, ports: int) -> dict:
-    loads = np.random.default_rng(LOAD_SEED_BASE + level).integers(0, LOAD_MAX + 1, size=ports, dtype=np.int64)
-    total = int(loads.sum())
+def expected(level: int, ports: int, *, chunk_ports: int = 1 << 20) -> dict:
+    """Reconstruct exact load moments and digest with bounded memory.
+
+    Repeated int64 draws consume the same PCG64 stream as the original single
+    call, including odd chunk lengths (checked against the original producer).
+    The default largest numerical array is eight MiB, also at level ten.
+    """
+    if ports <= 0 or chunk_ports <= 0:
+        raise ValueError("Positive port count and chunk size required")
+    rng = np.random.default_rng(LOAD_SEED_BASE + level)
+    total = squared = 0
+    digest = hashlib.sha256()
+    for begin in range(0, ports, chunk_ports):
+        loads = rng.integers(0, LOAD_MAX + 1, size=min(chunk_ports, ports-begin), dtype=np.int64)
+        total += int(loads.sum())
+        squared += int(np.dot(loads, loads))
+        digest.update(loads.astype("<i1").tobytes())
     q, r = divmod(total, ports)
     vc = []
     if ports - r > 0:
@@ -108,11 +122,11 @@ def expected(level: int, ports: int) -> dict:
     if r > 0:
         vc.append([q + 1, r])
     return {
-        "V_initial": int(np.dot(loads, loads)),
+        "V_initial": squared,
         "balanced_minimum": (ports - r) * q * q + r * (q + 1) ** 2,
         "expected_hash": sha256_of({"canonicalizer": "component_multiset", "components": [[ports, vc]]}),
         "mean_minimum": Fraction(total * total, ports),
-        "loads_int8_sha256": hashlib.sha256(loads.astype("<i1").tobytes()).hexdigest(),
+        "loads_int8_sha256": digest.hexdigest(),
         "total": total,
     }
 

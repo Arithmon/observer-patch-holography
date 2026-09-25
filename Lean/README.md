@@ -20,6 +20,46 @@ repairs terminate by a dependency-order rank, while pathwise weak fairness
 upgrades stuttering attempt stabilization to consensus. The historical weak
 repair relation is unchanged and has an explicit fair-stuttering no-go.
 
+The observer-dynamics modules also provide exact finite witnesses for the
+stationary four-cycle repair generator and its Green–Kubo matrix, arbitrary
+survival-cocycle tilt, and a temporal-filter integrand inequality. The geometry
+library checks finite layer-parity quadrature, uniform-read clock separation,
+the rational finite-window conformal-clock control, and finite Fourier
+factorization for the golden orbit. Their precise scopes and source hashes
+are checked by:
+
+```bash
+python3 ../evidence/observer_dynamics_20260925/lean/verify.py --check
+python3 -m pytest -q ../evidence/observer_dynamics_20260925/lean/test_verify.py
+```
+
+The verifier pins the local dependencies and Lake configuration and compares
+compiler version and source commit across platforms. Check mode preserves the
+saved compiler provenance and axiom log. The six mutation tests reject changed
+compilers and proof pins while accepting the same compiler on another
+architecture.
+
+The stochastic central limit theorem, the continuum integral behind the
+conformal-clock polynomial, the fixed-mode Fourier asymptotic and physical
+source identification are analytical statements or remaining assumptions;
+they are not supplied by these finite Lean witnesses.
+
+The source/readout interface modules separate finite implications from their
+physical interpretation:
+
+| Module | Formal scope |
+| --- | --- |
+| [`Geometry/NativeGeometricSourceIdentification.lean`](Geometry/NativeGeometricSourceIdentification.lean) | Fixed geometry along repair histories, zero geometric covariance, unselected volume gain and distinct finite covariance shapes |
+| [`Screen/CommonHistoryFeedback.lean`](Screen/CommonHistoryFeedback.lean) | Exact classical record restoration, its error amplification and finite triangular accumulation |
+| [`Geometry/SourceActionMeasure.lean`](Geometry/SourceActionMeasure.lean) | Normalized action-measure uniqueness, calibration identities, density error bounds and kinetic/metric-volume separation |
+
+The associated observer-like software patches expose local state, ports,
+readback, retained records and supplied control operations. Their executable
+interfaces are indexed in [the reproduction guide](../REPRODUCE.md).
+Finite local-force quantum preparation is an additional analytical certificate
+in [`source_scalar_preparation`](../code/source_scalar_preparation/); it does
+not supply a native vacuum, Born readout or physical clock.
+
 ## Layout
 
 One Lake workspace, nine Lean libraries across their source directories:

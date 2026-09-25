@@ -120,7 +120,7 @@ simulations reproductibles :
   des constantes des cibles concrètes de dérivation plutôt que des données
   libres, avec des encadrements certifiés par intervalles comme surfaces de
   réfutation.
-- **Vérifié machine et falsifiable.** Plus de 12000 théorèmes Lean sans
+- **Vérifié machine et falsifiable.** Plus de 12100 théorèmes Lean sans
   preuve admise, de l’arithmétique rationnelle exacte à la place de la
   confiance en virgule flottante, et des simulations déterministes avec
   reçus épinglés. L’échelle des prédictions gelées exige que toute comparaison
