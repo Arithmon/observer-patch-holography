@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 431,
+  "surface_count": 436,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -96,6 +96,11 @@
     },
     {
       "path": "paper/tex_fragments/CLOSURE_PRINCIPLE.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/COMMON_HISTORY_FEEDBACK_PACKET.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -201,6 +206,11 @@
     },
     {
       "path": "paper/tex_fragments/NATIVE_COSMOLOGY_SOURCE_BOUNDARY.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/NATIVE_GEOMETRIC_SOURCE_IDENTIFIABILITY.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -315,6 +325,11 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/SOURCE_ACTION_DENSITY_IDENTIFICATION.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/SOURCE_CHECKPOINT_SELECTION.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
@@ -411,6 +426,11 @@
     },
     {
       "path": "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/SOURCE_SCALAR_LOCAL_PREPARATION.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -1146,6 +1166,11 @@
     },
     {
       "path": "Lean/Screen/CommonEWOrderUnit.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/CommonHistoryFeedback.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
     },
