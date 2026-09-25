@@ -533,6 +533,11 @@ Z_G(t)&=\sum_R d_R\,\e^{-tC_2(R)},\\
 \sum_R d_R\,\e^{-tC_2(R)}\log d_R.
 \label{eq:ellbar}
 \end{align}
+The displayed evaluations use the representation cutoffs \(N_2=120\) and
+\(N_3=90\). At the closure arguments below, \(t_2\approx1.3\) and
+\(t_3\approx4.7\), the first omitted terms carry weights below
+\(\e^{-4000}\), so the cutoffs are inert at every displayed precision, and
+the interval certificate bounds the tails beyond any finite cutoff.
 
 The heat-kernel source parameters are
 \begin{equation}
@@ -699,7 +704,15 @@ For charged leptons the exponent vector is
 This vector and the normalization below are declared phenomenological transport
 inputs. The OPH axioms do not derive
 \(\bm n_e=(7,4,3)\) or the resulting determinant identity
-\(\det M_e=v(P)^3/(2\,6^{14})\). Every common shift
+\(\det M_e=v(P)^3/(2\,6^{14})\). The electron entry is selected by a
+finite scan: with \(n_\tau=N_g=3\) and \(n_\mu=N_g+1=4\) fixed by the
+generation count, the electron exponent runs over the integers \(5\) to
+\(10\), and the entry with the smallest maximal pairwise logarithmic residual
+between the squared balanced-circulant roots at
+\(\delta=(N_c+1)/(2N_cN_g)\) and the corresponding powers of \(\epsilon=1/6\)
+is kept; the minimizer is \(7\). The scan compares the declared circulant
+roots with the \(\epsilon\) ladder and reads no measured mass, and the
+vector is a declared transport input all the same. Every common shift
 \((7+k,4+k,3+k)\) has the same
 ratio residual while changing the determinant.  The extra factor \(2^{1/6}\)
 below is asserted rather than derived.

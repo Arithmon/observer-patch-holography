@@ -237,3 +237,10 @@ end OPH.SourceReadRouting
 #print axioms OPH.SourceReadRouting.schedule_independent_readouts
 #print axioms OPH.SourceReadRouting.exact_induced_order
 #print axioms OPH.SourceReadRouting.closed_sum_preserving_word_cannot_reset
+#print axioms OPH.SourceReadRouting.feedbackHopValue_eq
+#print axioms OPH.SourceReadRouting.feedbackRoute_eq
+#print axioms OPH.SourceReadRouting.word_preserves_invariant
+#print axioms OPH.SourceReadRouting.reach_trans
+#print axioms OPH.SourceReadRouting.below_trans
+#print axioms OPH.SourceReadRouting.projection_sound
+#print axioms OPH.SourceReadRouting.projection_complete

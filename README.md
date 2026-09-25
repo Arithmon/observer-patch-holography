@@ -106,8 +106,8 @@ calculations and reproducible simulations:
   a stated balance premise, and the self-consistent pixel closure lands within
   2.5 parts per million of the measured fine-structure constant, with
   diagnostic status until the closure map is selected from the axioms. These
-  calculations turn constants into concrete derivation and falsification
-  targets rather than free inputs.
+  calculations turn constants into concrete derivation targets rather than
+  free inputs, with interval-certified enclosures as their kill surfaces.
 - **Machine-checked and falsifiable.** More than 12000 Lean theorems with
   no admitted proofs, exact rational arithmetic in place of floating-point
   trust, and deterministic simulations with pinned receipts. A

@@ -317,3 +317,51 @@ audit_source_axioms OPH.GoldenSourceAssignment.golden_quadrature
 audit_source_axioms OPH.GoldenSourceAssignment.golden_quadrature_tendsto
 
 audit_source_axioms OPH.GoldenSourceAssignment.site_injective
+
+audit_source_axioms OPH.GoldenSourceAssignment.residue_injective
+
+audit_source_axioms OPH.GoldenSourceAssignment.residue_bijective
+
+audit_source_axioms OPH.GoldenSourceAssignment.residue_pos
+
+audit_source_axioms OPH.GoldenSourceAssignment.fibonacci_error
+
+audit_source_axioms OPH.GoldenSourceAssignment.fibonacci_scaled_error
+
+audit_source_axioms OPH.GoldenSourceAssignment.quotient_residue
+
+audit_source_axioms OPH.GoldenSourceAssignment.golden_floor
+
+audit_source_axioms OPH.GoldenSourceAssignment.golden_orbit_eq
+
+audit_source_axioms OPH.GoldenSourceAssignment.golden_grid_error
+
+audit_source_axioms OPH.GoldenSourceAssignment.orbit_injective
+
+audit_source_axioms OPH.GoldenSourceAssignment.coordinate_assignment
+
+audit_source_axioms OPH.GoldenSourceAssignment.tensor_assignment
+
+audit_source_axioms OPH.GoldenSourceAssignment.site_card
+
+audit_source_axioms OPH.GoldenSourceAssignment.axisCell_disjoint
+
+audit_source_axioms OPH.GoldenSourceAssignment.axisCell_cover
+
+audit_source_axioms OPH.GoldenSourceAssignment.cell_measurable
+
+audit_source_axioms OPH.GoldenSourceAssignment.cell_disjoint
+
+audit_source_axioms OPH.GoldenSourceAssignment.cell_cover
+
+audit_source_axioms OPH.GoldenSourceAssignment.cell_mass
+
+audit_source_axioms OPH.GoldenSourceAssignment.cell_measure_finite
+
+audit_source_axioms OPH.GoldenSourceAssignment.cube_ae_closed
+
+audit_source_axioms OPH.GoldenSourceAssignment.golden_quadrature_closed
+
+audit_source_axioms OPH.GoldenSourceAssignment.sample_outside_assigned_cell
+
+audit_source_axioms OPH.GoldenSourceAssignment.one_cell_width_counterexample

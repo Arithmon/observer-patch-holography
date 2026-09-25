@@ -24,6 +24,20 @@ state, and fails when one of those blocks loses coverage.  Modules outside the
 registry are reported by ``--axiom-coverage-report`` with their unaudited count
 and are not failed, so the registry grows by deliberate registration.
 
+A second registry covers companion audit modules.  ``Lean/Geometry/*AxiomAudit.lean``
+and ``ObserverPatchHolography/EinsteinBranch/AxiomAudit.lean`` name the theorems
+of other modules, through ``audit_*`` commands that fail the build on any axiom
+outside the standard allowlist, or through ``#print axioms`` lines.  Each entry
+of ``AXIOM_AUDIT_COMPANIONS`` binds one audit module to the source modules whose
+every public theorem and lemma it must name.  Names are matched on their fully
+qualified form, which the scanner computes from the ``namespace``, ``section``
+and ``end`` commands of the source module; an audit line matches when its
+argument equals that form or is a suffix of it on a component boundary, since an
+audit module may ``open`` a namespace.  ``--axiom-coverage-report`` also lists,
+for every audit module, the source modules it covers with their declared and
+unaudited counts, and the modules that state public theorems without a receipt
+anywhere.
+
 Usage::
 
   python3 tools/check_lean_docstring_style.py
@@ -325,6 +339,25 @@ DECLARATION_RE = re.compile(
 
 PRINT_AXIOMS_RE = re.compile(r"^[ \t]*#print[ \t]+axioms[ \t]+(\S+)", re.MULTILINE)
 
+# One kernel-axiom receipt line: an in-file ``#print axioms`` command, or one
+# of the ``audit_*`` commands that an audit module defines with ``elab`` and
+# that rejects every axiom outside the standard allowlist. Both forms name one
+# constant, and the trailing anchor keeps a command with extra arguments out.
+AUDIT_LINE_RE = re.compile(
+    r"^[ \t]*(?:#print[ \t]+axioms|audit_[A-Za-z0-9_]+)[ \t]+(\S+)[ \t]*$"
+)
+
+# The scope commands that decide how a declaration name is qualified. Lean 4
+# rules: ``namespace A.B`` prepends both components to every later name until
+# the matching ``end A.B``; ``section``, ``noncomputable section`` and a named
+# section open a scope that a later ``end`` closes without changing names; a
+# ``_root_.`` prefix on a declaration escapes the open namespaces.
+SCOPE_RE = re.compile(
+    r"^[ \t]*(?:namespace[ \t]+(?P<namespace>\S+)"
+    r"|(?:noncomputable[ \t]+)?section(?:[ \t]+(?P<section>\S+))?"
+    r"|(?P<end>end)(?:[ \t]+\S+)?)[ \t]*$"
+)
+
 # Modules whose ``#print axioms`` block names every public theorem and lemma in
 # the file. Registration is deliberate: a module joins the list when its block
 # is completed, and section 2 then keeps it complete. Two module families are
@@ -332,12 +365,27 @@ PRINT_AXIOMS_RE = re.compile(r"^[ \t]*#print[ \t]+axioms[ \t]+(\S+)", re.MULTILI
 # and Thermodynamics/FiniteConditionalRepair appear in PINNED_BYTES_MODULES, so
 # their blocks cannot grow without moving a published digest.
 AXIOM_BLOCK_COMPLETE = [
+    "Lean/Computation/FixedFederationComplexity.lean",
+    "Lean/Computation/FixedFederationCounterexamples.lean",
+    "Lean/Computation/FixedFederationExecution.lean",
+    "Lean/Computation/FixedFederationExecutionExamples.lean",
+    "Lean/Computation/FixedFederationFanoutControl.lean",
+    "Lean/Computation/FixedFederationProgress.lean",
+    "Lean/Computation/RepairUniversality.lean",
+    "Lean/Dynamics/CenterSpectral.lean",
+    "Lean/Dynamics/CentralBlocks.lean",
+    "Lean/Dynamics/ChoiCPTP.lean",
     "Lean/Dynamics/ProtectedCharge.lean",
+    "Lean/Dynamics/PublicAutomorphism.lean",
+    "Lean/Dynamics/PublicMarkov.lean",
+    "Lean/Dynamics/StarWedderburn.lean",
     "Lean/Dynamics/StoneConverse.lean",
     "Lean/Dynamics/WardLimitManifest.lean",
     "Lean/EventAlgebra/Basic.lean",
     "Lean/EventAlgebra/ExpectationBound.lean",
     "Lean/EventAlgebra/FiniteBornFrame.lean",
+    "Lean/EventAlgebra/FiniteBuschGleason.lean",
+    "Lean/EventAlgebra/FiniteEffectClosureBoundary.lean",
     "Lean/EventAlgebra/Lueders.lean",
     "Lean/EventAlgebra/NoBroadcastingAdapter.lean",
     "Lean/EventAlgebra/OperationalAdditivityBoundary.lean",
@@ -361,8 +409,13 @@ AXIOM_BLOCK_COMPLETE = [
     "Lean/Geometry/ScreenCarrierMapCandidate.lean",
     "Lean/Geometry/SourceOrderEinsteinComposition.lean",
     "Lean/Geometry/SourceOrderFrameCompatibilityPacket.lean",
+    "Lean/Geometry/SourceReadRouting.lean",
+    "Lean/InformationProjection/HistoryLaw.lean",
+    "Lean/InformationProjection/LogTransitionAction.lean",
     "Lean/InformationProjection/PathGibbs.lean",
+    "Lean/InformationProjection/ReferenceNormalForm.lean",
     "Lean/ObservableNormalForms/ObservableNormalForms/AxiomAudit.lean",
+    "Lean/ObserverPatchHolography/AbstractRewriting.lean",
     "Lean/ObserverPatchHolography/BridgeEquivalence.lean",
     "Lean/ObserverPatchHolography/CapacityClosurePrinciple.lean",
     "Lean/ObserverPatchHolography/CapacityFixedPoint.lean",
@@ -392,6 +445,8 @@ AXIOM_BLOCK_COMPLETE = [
     "Lean/ObserverPatchHolography/SeedPi.lean",
     "Lean/ObserverPatchHolography/YangMillsGap.lean",
     "Lean/ObserverPatchHolography/YangMillsProp81.lean",
+    "Lean/OphGap/SignedGap.lean",
+    "Lean/OphGap/Transport.lean",
     "Lean/QFT/CPRestrictionNet.lean",
     "Lean/QFT/EffectiveQuantumComparison.lean",
     "Lean/QFT/FiniteUnitaryScatteringNoGo.lean",
@@ -400,6 +455,7 @@ AXIOM_BLOCK_COMPLETE = [
     "Lean/QFT/InheritanceMatrixGuards.lean",
     "Lean/QFT/JointInstance.lean",
     "Lean/QFT/PathTimeSliceInterface.lean",
+    "Lean/QFT/RichFibreRegionalNet.lean",
     "Lean/QFT/ScalarRegionalTimeSlice.lean",
     "Lean/QFT/SectorInheritance.lean",
     "Lean/QFT/SourceLinkSquare.lean",
@@ -449,7 +505,16 @@ AXIOM_BLOCK_COMPLETE = [
     "Lean/Screen/TopThreeKernelFix.lean",
     "Lean/Screen/UnitSplit12.lean",
     "Lean/Screen/VolumeReadoutBridge.lean",
+    "Lean/Screen/WhitneyConeMass.lean",
+    "Lean/Screen/WhitneyConeModes.lean",
+    "Lean/Screen/WhitneyConeNaturality.lean",
+    "Lean/Screen/WhitneyFrameMorphism.lean",
+    "Lean/Screen/WhitneyFrameNaturality.lean",
+    "Lean/Screen/WhitneyMassPremiseInstance.lean",
+    "Lean/Screen/WhitneyNormalModeConstruction.lean",
+    "Lean/Screen/WhitneyRotationWitness.lean",
     "Lean/Thermodynamics/CoherentRefinementFamily.lean",
+    "Lean/Thermodynamics/EquationOfState.lean",
     "Lean/Thermodynamics/FirstLawIdentity.lean",
     "Lean/Thermodynamics/FluctuationTheorems.lean",
     "Lean/Thermodynamics/FourLawAdequacySurface.lean",
@@ -467,10 +532,159 @@ AXIOM_BLOCK_COMPLETE = [
     "Lean/Variational/FiniteHistoryBridge.lean",
     "Lean/Variational/MechanicsAdequacySurface.lean",
     "Lean/Variational/ModeExtremalEnrichment.lean",
+    "Lean/Variational/RealizedHistoryLegendreNoGo.lean",
     "Lean/Variational/SourceToHamiltonianComposed.lean",
     "Lean/Variational/StationarySaddleCoverage.lean",
     "Lean/Variational/TranslationInvariantComposedInstance.lean",
 ]
+
+# Companion audit modules and the source modules they audit in full. The key
+# is the audit module, the value lists every source module whose public
+# theorems and lemmas the audit module must all name, on the fully qualified
+# form or a component-boundary suffix of it. A source module joins the list
+# when the audit module names all of its theorems, and section 2 then keeps
+# the list complete, so a theorem added to a listed source module without an
+# audit line fails the check. A source module listed here may also carry its
+# own in-file block; the two registries are independent.
+AXIOM_AUDIT_COMPANIONS: dict[str, list[str]] = {
+    "Lean/Geometry/M1InterfacesAxiomAudit.lean": [
+        "Lean/Geometry/M1Interfaces.lean",
+    ],
+    "Lean/Geometry/M1NecessityAxiomAudit.lean": [
+        "Lean/Geometry/M1Necessity.lean",
+    ],
+    "Lean/Geometry/M1QuantumTransportAxiomAudit.lean": [
+        "Lean/Geometry/M1QuantumTransport.lean",
+    ],
+    "Lean/Geometry/M1VacuumFidelityAxiomAudit.lean": [
+        "Lean/Geometry/M1VacuumFidelity.lean",
+    ],
+    "Lean/Geometry/RecordGluingPrincipleAxiomAudit.lean": [
+        "Lean/Geometry/RecordGluingPrinciple.lean",
+    ],
+    "Lean/Geometry/SourceAccumulatorAxiomAudit.lean": [
+        "Lean/Geometry/SourceAccumulatorDecoder.lean",
+        "Lean/Geometry/SourceAccumulatorProgram.lean",
+        "Lean/Geometry/SourceNativeAccumulator.lean",
+    ],
+    "Lean/Geometry/SourceCheckpointAxiomAudit.lean": [
+        "Lean/Geometry/SourceCheckpointEntropy.lean",
+        "Lean/Geometry/SourceCheckpointMeaning.lean",
+        "Lean/Geometry/SourceCheckpointNative.lean",
+        "Lean/Geometry/SourceCheckpointPipeline.lean",
+        "Lean/Geometry/SourceCheckpointPolicy.lean",
+    ],
+    "Lean/Geometry/SourceCountLimitAxiomAudit.lean": [
+        "Lean/Geometry/FlatDiamondError.lean",
+        "Lean/Geometry/FlatDiamondNormalization.lean",
+        "Lean/Geometry/FlatDiamondPairIntegral.lean",
+        "Lean/Geometry/FlatDiamondVolume.lean",
+        "Lean/Geometry/FlatLorentzVolume.lean",
+        "Lean/Geometry/GoldenSourceAssignment.lean",
+        "Lean/Geometry/GoldenSourceCausalLimit.lean",
+        "Lean/Geometry/GoldenSourcePairLimit.lean",
+        "Lean/Geometry/GoldenSourceVolumeLimit.lean",
+        "Lean/Geometry/SourceCausalBoundary.lean",
+        "Lean/Geometry/SourceCountTransport.lean",
+        "Lean/Geometry/SourceNetOrderLimit.lean",
+        "Lean/Geometry/SourceNetVolumeError.lean",
+    ],
+    "Lean/Geometry/SourceEncodedMemoryAxiomAudit.lean": [
+        "Lean/Geometry/SourceEncodedMemory.lean",
+    ],
+    "Lean/Geometry/SourceNativeProgramsAxiomAudit.lean": [
+        "Lean/Geometry/SourceBankBusWitness.lean",
+        "Lean/Geometry/SourceBankCompiler.lean",
+        "Lean/Geometry/SourceBankControl.lean",
+        "Lean/Geometry/SourceBankExecution.lean",
+        "Lean/Geometry/SourceBankInvariant.lean",
+        "Lean/Geometry/SourceBankLowering.lean",
+        "Lean/Geometry/SourceBankMachine.lean",
+        "Lean/Geometry/SourceBankPrecision.lean",
+        "Lean/Geometry/SourceBankTrace.lean",
+        "Lean/Geometry/SourceNativeCore.lean",
+        "Lean/Geometry/SourceNativeProgramBudget.lean",
+        "Lean/Geometry/SourceNativeProgramError.lean",
+        "Lean/Geometry/SourceNativeShuttle.lean",
+        "Lean/Geometry/SourceNativeStoredProgram.lean",
+    ],
+    "Lean/Geometry/SourceNativeUpdatesAxiomAudit.lean": [
+        "Lean/Geometry/SourceBusScaling.lean",
+        "Lean/Geometry/SourceNativeRecords.lean",
+    ],
+    "Lean/Geometry/SourceOperationReadsAxiomAudit.lean": [
+        "Lean/Geometry/SourceOperationReads.lean",
+        "Lean/Geometry/SourceRepairInstrument.lean",
+    ],
+    "Lean/Geometry/SourcePassiveMemoryAxiomAudit.lean": [
+        "Lean/Geometry/SourceNonlinearRecord.lean",
+        "Lean/Geometry/SourcePassiveMemoryBudget.lean",
+        "Lean/Geometry/SourcePassiveReset.lean",
+    ],
+    "Lean/Geometry/SourcePublicationAxiomAudit.lean": [
+        "Lean/Geometry/SourcePublicationLaw.lean",
+        "Lean/Geometry/SourcePublicationMass.lean",
+        "Lean/Geometry/SourcePublicationMenu.lean",
+        "Lean/Geometry/SourcePublicationNative.lean",
+        "Lean/Geometry/SourcePublicationPath.lean",
+        "Lean/Geometry/SourcePublicationPathInvariant.lean",
+        "Lean/Geometry/SourcePublicationTail.lean",
+        "Lean/Geometry/SourceRadiusRemoval.lean",
+        "Lean/Geometry/SourceRadiusSelection.lean",
+        "Lean/Geometry/SourceStateSelection.lean",
+    ],
+    "Lean/Geometry/SourceReadAcceptanceAxiomAudit.lean": [
+        "Lean/Geometry/SourceReadAcceptance.lean",
+        "Lean/Geometry/SourceReadAcceptanceSchedule.lean",
+    ],
+    "Lean/Geometry/SourceReadSelectionAxiomAudit.lean": [
+        "Lean/Geometry/SourceConstrainedRead.lean",
+        "Lean/Geometry/SourceConstrainedSelection.lean",
+        "Lean/Geometry/SourceReadSelection.lean",
+        "Lean/Geometry/SourceSelectionControls.lean",
+    ],
+    "Lean/Geometry/SourceRecordGluingAxiomAudit.lean": [
+        "Lean/Geometry/SourceRecordGluing.lean",
+    ],
+    "Lean/Geometry/SourceReusableBusAxiomAudit.lean": [
+        "Lean/Geometry/SourceReusableBus.lean",
+    ],
+    "Lean/Geometry/SourceRoutingRefinementAxiomAudit.lean": [
+        "Lean/Geometry/SourceRoutingBudget.lean",
+        "Lean/Geometry/SourceRoutingHierarchy.lean",
+        "Lean/Geometry/SourceRoutingStorage.lean",
+    ],
+    "Lean/Geometry/SourceSelectionLocalityAxiomAudit.lean": [
+        "Lean/Geometry/SourceSelectionLocality.lean",
+    ],
+    "Lean/Geometry/SourceTemporalAcceptanceAxiomAudit.lean": [
+        "Lean/Geometry/SourceTemporalAttempts.lean",
+        "Lean/Geometry/SourceTemporalConnected.lean",
+        "Lean/Geometry/SourceTemporalErasure.lean",
+        "Lean/Geometry/SourceTemporalEssential.lean",
+        "Lean/Geometry/SourceTemporalGuard.lean",
+        "Lean/Geometry/SourceTemporalMenu.lean",
+        "Lean/Geometry/SourceTemporalNative.lean",
+        "Lean/Geometry/SourceTemporalObservation.lean",
+        "Lean/Geometry/SourceTemporalSelection.lean",
+        "Lean/Geometry/SourceTemporalTomography.lean",
+    ],
+    "Lean/ObservableNormalForms/ObservableNormalForms/AxiomAudit.lean": [
+        "Lean/ObservableNormalForms/ObservableNormalForms/Examples/AmdA2A5Conditional.lean",
+        "Lean/ObservableNormalForms/ObservableNormalForms/Examples/Rule90.lean",
+        "Lean/ObservableNormalForms/ObservableNormalForms/Functional.lean",
+        "Lean/ObservableNormalForms/ObservableNormalForms/MechanismVariants.lean",
+        "Lean/ObservableNormalForms/ObservableNormalForms/Refinement.lean",
+        "Lean/ObservableNormalForms/ObservableNormalForms/Repair.lean",
+        "Lean/ObservableNormalForms/ObservableNormalForms/Stability.lean",
+    ],
+    "Lean/ObserverPatchHolography/EinsteinBranch/AxiomAudit.lean": [
+        "Lean/ObserverPatchHolography/EinsteinBranch/Composition.lean",
+    ],
+    "Lean/Time/SourceCountClockEnclosure.lean": [
+        "Lean/Time/SourceCountClock.lean",
+    ],
+}
 
 
 # ---------------------------------------------------------------------------
@@ -543,21 +757,106 @@ def prose_issues(rel: str, text: str) -> list[str]:
 # ---------------------------------------------------------------------------
 
 
+class ModuleScan:
+    """Declarations and kernel-axiom receipt lines of one module.
+
+    ``declared`` lists the fully qualified name of every public theorem and
+    lemma in source order.  ``entries`` lists every receipt line as the
+    argument written and, innermost first, the qualified forms that argument
+    takes under the namespaces open at that line; the last form is the
+    argument itself.
+    """
+
+    __slots__ = ("declared", "entries")
+
+    def __init__(self) -> None:
+        self.declared: list[str] = []
+        self.entries: list[tuple[str, tuple[str, ...]]] = []
+
+    @property
+    def arguments(self) -> set[str]:
+        return {argument for argument, _ in self.entries}
+
+    @property
+    def audited_final(self) -> set[str]:
+        return {argument.split(".")[-1] for argument in self.arguments}
+
+    @property
+    def unique_declared(self) -> list[str]:
+        return list(dict.fromkeys(self.declared))
+
+
+def qualify(prefix: list[str], name: str) -> str:
+    if name.startswith("_root_."):
+        return name[len("_root_.") :]
+    return ".".join([*prefix, name])
+
+
+def scan_module(text: str) -> ModuleScan:
+    """Read declarations and receipt lines from code alone, tracking scope.
+
+    The scope stack holds one entry per open ``namespace`` or section, with
+    the number of name components the entry contributes; ``end`` pops the
+    innermost entry, so a dotted ``namespace A.B`` and its ``end A.B`` stay
+    balanced without comparing the names.
+    """
+
+    scan = ModuleScan()
+    prefix: list[str] = []
+    stack: list[int] = []
+    for line in code_view(text).split("\n"):
+        declaration = DECLARATION_RE.match(line)
+        if declaration:
+            scan.declared.append(qualify(prefix, declaration.group(1)))
+            continue
+        receipt = AUDIT_LINE_RE.match(line)
+        if receipt:
+            argument = receipt.group(1)
+            forms = tuple(
+                dict.fromkeys(
+                    qualify(prefix[:depth], argument)
+                    for depth in range(len(prefix), -1, -1)
+                )
+            )
+            scan.entries.append((argument, forms))
+            continue
+        scope = SCOPE_RE.match(line)
+        if scope is None:
+            continue
+        if scope.group("namespace"):
+            parts = scope.group("namespace").split(".")
+            prefix.extend(parts)
+            stack.append(len(parts))
+        elif scope.group("end"):
+            if stack:
+                count = stack.pop()
+                if count:
+                    del prefix[len(prefix) - count :]
+        else:
+            stack.append(0)
+    return scan
+
+
+def names_audited_by(arguments: set[str], full_name: str) -> bool:
+    """Whether some argument equals ``full_name`` or is a suffix of it on a
+    component boundary."""
+
+    parts = full_name.split(".")
+    return any(".".join(parts[index:]) in arguments for index in range(len(parts)))
+
+
 def audit_block(text: str) -> tuple[list[str], set[str]]:
     """Public declaration names and audited names, read from code alone.
 
     A ``#print axioms`` argument may be fully qualified or bare, so names are
-    compared on their final component. Comparing full names would demand a
-    namespace resolver, and the final component is unique inside one module in
-    every case the corpus contains.
+    compared on their final component. The final component is unique inside
+    one module in every case the corpus contains, and the in-file registry
+    keeps this rule so that no registered module changes status.
     """
 
-    code = code_view(text)
-    declared = [
-        match.group(1).split(".")[-1] for match in DECLARATION_RE.finditer(code)
-    ]
-    audited = {name.split(".")[-1] for name in PRINT_AXIOMS_RE.findall(code)}
-    return declared, audited
+    scan = scan_module(text)
+    declared = [name.split(".")[-1] for name in scan.declared]
+    return declared, scan.audited_final
 
 
 def unaudited_names(text: str) -> list[str]:
@@ -588,16 +887,106 @@ def coverage_issues(rel: str, text: str) -> list[str]:
     ]
 
 
-def coverage_report(paths: list[Path]) -> int:
-    rows: list[tuple[str, int, int, bool]] = []
-    for path in paths:
-        text = path.read_text(encoding="utf-8", errors="ignore")
-        declared, audited = audit_block(text)
-        if not audited:
+def companion_unaudited(audit: ModuleScan, source: ModuleScan) -> list[str]:
+    """Fully qualified public declarations of ``source`` that no receipt line
+    of ``audit`` names."""
+
+    arguments = audit.arguments
+    return [
+        name
+        for name in source.unique_declared
+        if not names_audited_by(arguments, name)
+    ]
+
+
+def companion_issues(scans: dict[str, ModuleScan]) -> list[str]:
+    issues: list[str] = []
+    for audit_rel, source_rels in sorted(AXIOM_AUDIT_COMPANIONS.items()):
+        audit = scans.get(audit_rel)
+        if audit is None:
+            issues.append(
+                f"{audit_rel}:1:1: registered as a companion kernel-axiom audit "
+                "but absent"
+            )
             continue
-        missing = unaudited_names(text)
+        if not audit.entries:
+            issues.append(
+                f"{audit_rel}:1:1: registered as a companion kernel-axiom audit "
+                "but carries no audit line"
+            )
+            continue
+        for source_rel in source_rels:
+            source = scans.get(source_rel)
+            if source is None:
+                issues.append(
+                    f"{audit_rel}:1:1: companion kernel-axiom audit registered for "
+                    f"{source_rel}, which is absent"
+                )
+                continue
+            missing = companion_unaudited(audit, source)
+            if missing:
+                issues.append(
+                    f"{audit_rel}:1:1: companion kernel-axiom audit omits "
+                    f"{len(missing)} public declaration(s) of {source_rel}: "
+                    f"{', '.join(missing)}"
+                )
+    return issues
+
+
+def cross_coverage(scans: dict[str, ModuleScan]) -> dict[str, dict[str, set[str]]]:
+    """``{audit module: {source module: names it audits}}`` across modules.
+
+    Each receipt argument is resolved the way Lean resolves it, innermost
+    open namespace first, against the fully qualified names of the whole
+    corpus; when no qualified form exists the argument is taken as a suffix on
+    a component boundary. Receipts that resolve inside their own module are
+    left out, so the result is the companion relation alone.
+    """
+
+    exact: dict[str, set[str]] = {}
+    by_final: dict[str, list[tuple[str, str]]] = {}
+    for rel, scan in scans.items():
+        for name in scan.unique_declared:
+            exact.setdefault(name, set()).add(rel)
+            by_final.setdefault(name.split(".")[-1], []).append((name, rel))
+
+    out: dict[str, dict[str, set[str]]] = {}
+    for audit_rel, scan in scans.items():
+        for argument, forms in scan.entries:
+            hits: list[tuple[str, str]] = []
+            for form in forms:
+                if form in exact:
+                    hits = [(form, rel) for rel in exact[form]]
+                    break
+            if not hits:
+                hits = [
+                    (name, rel)
+                    for name, rel in by_final.get(argument.split(".")[-1], [])
+                    if name == argument or name.endswith("." + argument)
+                ]
+            for name, source_rel in hits:
+                if source_rel == audit_rel:
+                    continue
+                out.setdefault(audit_rel, {}).setdefault(source_rel, set()).add(name)
+    return out
+
+
+def coverage_report(paths: list[Path]) -> int:
+    scans: dict[str, ModuleScan] = {}
+    for path in paths:
         rel = path.relative_to(ROOT).as_posix()
-        rows.append((rel, len(declared), len(missing), rel in set(AXIOM_BLOCK_COMPLETE)))
+        scans[rel] = scan_module(path.read_text(encoding="utf-8", errors="ignore"))
+
+    # In-file blocks, final-component rule, as the in-file registry sees them.
+    rows: list[tuple[str, int, int, bool]] = []
+    registered_blocks = set(AXIOM_BLOCK_COMPLETE)
+    for rel, scan in scans.items():
+        if not scan.entries:
+            continue
+        declared = [name.split(".")[-1] for name in scan.declared]
+        audited = scan.audited_final
+        missing = list(dict.fromkeys(name for name in declared if name not in audited))
+        rows.append((rel, len(declared), len(missing), rel in registered_blocks))
     registered = sum(1 for row in rows if row[3])
     complete = sum(1 for row in rows if row[2] == 0)
     print(
@@ -607,6 +996,88 @@ def coverage_report(paths: list[Path]) -> int:
     for rel, declared, missing, is_registered in rows:
         mark = "registered" if is_registered else "unregistered"
         print(f"- {rel}: {declared} public declaration(s), {missing} unaudited [{mark}]")
+
+    # Companion audit modules: every module whose receipts resolve into
+    # another module, plus every registered key.
+    covered = cross_coverage(scans)
+    audit_rels = sorted(set(covered) | set(AXIOM_AUDIT_COMPANIONS))
+    registered_pairs = sum(len(value) for value in AXIOM_AUDIT_COMPANIONS.values())
+    print()
+    print(
+        f"companion audit modules: {len(audit_rels)}; "
+        f"registered companion mappings: {registered_pairs}"
+    )
+    for audit_rel in audit_rels:
+        audit = scans.get(audit_rel)
+        sources = set(covered.get(audit_rel, {})) | set(
+            AXIOM_AUDIT_COMPANIONS.get(audit_rel, [])
+        )
+        print(f"- {audit_rel}: {len(sources)} covered module(s)")
+        for source_rel in sorted(sources):
+            source = scans.get(source_rel)
+            if audit is None or source is None:
+                print(f"    {source_rel}: absent")
+                continue
+            declared = len(source.unique_declared)
+            missing = len(companion_unaudited(audit, source))
+            mark = (
+                "registered"
+                if source_rel in AXIOM_AUDIT_COMPANIONS.get(audit_rel, [])
+                else "unregistered"
+            )
+            print(f"    {source_rel}: {declared} declared, {missing} unaudited [{mark}]")
+
+    # Corpus-wide gaps.
+    covered_by_other: dict[str, set[str]] = {}
+    audit_arguments: dict[str, set[str]] = {}
+    for audit_rel, sources in covered.items():
+        for source_rel in sources:
+            covered_by_other.setdefault(source_rel, set()).add(audit_rel)
+            audit_arguments.setdefault(source_rel, set()).update(
+                scans[audit_rel].arguments
+            )
+    uncovered: list[tuple[str, int]] = []
+    partial_alone: list[tuple[str, int, int]] = []
+    residue: list[tuple[str, int, int]] = []
+    for rel, scan in sorted(scans.items()):
+        declared = scan.unique_declared
+        if not declared:
+            continue
+        has_block = bool(scan.entries)
+        companions = covered_by_other.get(rel, set())
+        if not has_block and not companions:
+            uncovered.append((rel, len(declared)))
+        own_final = scan.audited_final
+        foreign = audit_arguments.get(rel, set())
+        missing_anywhere = [
+            name
+            for name in declared
+            if name.split(".")[-1] not in own_final
+            and not names_audited_by(foreign, name)
+        ]
+        if has_block and missing_anywhere and not companions:
+            partial_alone.append((rel, len(declared), len(missing_anywhere)))
+        if missing_anywhere:
+            residue.append((rel, len(declared), len(missing_anywhere)))
+    print()
+    print(
+        f"modules with public theorems and no kernel-axiom receipt from any "
+        f"in-file block or audit module: {len(uncovered)}"
+    )
+    for rel, declared in uncovered:
+        print(f"- {rel}: {declared} public declaration(s)")
+    print()
+    print(
+        f"modules with a partial in-file block and no audit module: "
+        f"{len(partial_alone)}"
+    )
+    for rel, declared, missing in partial_alone:
+        print(f"- {rel}: {declared} public declaration(s), {missing} unaudited")
+    print()
+    print(
+        f"modules with at least one public theorem audited nowhere: "
+        f"{len(residue)} ({sum(row[2] for row in residue)} declaration(s))"
+    )
     return 0
 
 
@@ -620,7 +1091,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--axiom-coverage-report",
         action="store_true",
-        help="list every module carrying a kernel-axiom block with its unaudited count",
+        help=(
+            "list every module carrying a kernel-axiom block with its unaudited "
+            "count, every companion audit module with the modules it covers, and "
+            "the modules without any kernel-axiom receipt"
+        ),
     )
     parser.add_argument(
         "--pinned-residue",
@@ -641,10 +1116,12 @@ def main(argv: list[str] | None = None) -> int:
     issues: list[str] = []
     residue: list[str] = []
     seen_registry: set[str] = set()
+    scans: dict[str, ModuleScan] = {}
 
     for path in paths:
         rel = path.relative_to(ROOT).as_posix()
         text = path.read_text(encoding="utf-8", errors="ignore")
+        scans[rel] = scan_module(text)
         if rel in pinned:
             residue.extend(prose_issues(rel, text))
         else:
@@ -655,6 +1132,7 @@ def main(argv: list[str] | None = None) -> int:
 
     for rel in sorted(registry - seen_registry):
         issues.append(f"{rel}:1:1: registered for full kernel-axiom coverage but absent")
+    issues.extend(companion_issues(scans))
     for rel in sorted(pinned):
         if not (ROOT / rel).is_file():
             issues.append(
@@ -681,7 +1159,9 @@ def main(argv: list[str] | None = None) -> int:
         f"lean docstring style check OK "
         f"({len(paths)} modules, {len(pinned)} byte-pinned carrying "
         f"{len(residue)} deferred section-1 hit(s), "
-        f"{len(registry)} with a complete kernel-axiom block)"
+        f"{len(registry)} with a complete kernel-axiom block, "
+        f"{sum(len(v) for v in AXIOM_AUDIT_COMPANIONS.values())} companion "
+        "audit mapping(s))"
     )
     return 0
 

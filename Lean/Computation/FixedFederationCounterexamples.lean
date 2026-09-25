@@ -391,6 +391,24 @@ theorem fanoutRoot_not_pathwiseWeakFair :
 #print axioms fanoutRoot_not_pathwiseWeakFair
 #print axioms globallyEnabledFair_no_go
 #print axioms selectedBeforeFailingTailFair_no_go
+#print axioms weakNodeAttempt_to_repairStep
+#print axioms weakStutter_isRun
+#print axioms weakStutter_isRepairStepRun
+#print axioms weakStutter_memberFair
+#print axioms weakStutter_siteFair
+#print axioms weakStutter_continuouslyEnabledFair
+#print axioms weakStutter_never_consensus
+#print axioms singletonCanonical_pathwiseWeakFair
+#print axioms fanoutNodes_wf
+#print axioms fanout_root_step
+#print axioms fanoutRoot_run_succ
+#print axioms fanoutAfterRoot_not_consensus
+#print axioms fanoutRoot_never_consensus_after_start
+#print axioms fanoutRoot_globallyEnabledFair
+#print axioms preTail_run_one
+#print axioms preTail_run_add_two
+#print axioms preTailScheduler_selectedBeforeFailingTailFair
+#print axioms preTailScheduler_never_consensus_after_activation
 
 end
 

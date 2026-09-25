@@ -617,6 +617,27 @@ theorem fixedProgram_nodeBoundedWaste_triangle
 #print axioms fixedProgram_acceptedSteps_quadratic
 #print axioms fixedRoundRobin_nodeBoundedWaste
 #print axioms fixedProgram_nodeBoundedWaste_triangle
+#print axioms dependencyOccurrences_nil
+#print axioms dependencyOccurrences_cons
+#print axioms dependencyOccurrences_append
+#print axioms go_dependency_scope
+#print axioms go_dependency_count_eq_zero_of_lt_start
+#print axioms go_dependency_count_eq_zero_of_next_le
+#print axioms go_use_profile
+#print axioms observer_ok_write_eq_of_not_used
+#print axioms linearDefectRank_write_eq_of_not_used
+#print axioms linearDefectRank_write_le_add_length
+#print axioms atMostOneDownstreamConsumer_tail
+#print axioms canonicalAcceptedSteps_rank_budget
+#print axioms linearDefectRank_le_triangle
+#print axioms triangle_double
+#print axioms triangle_eq_closed
+#print axioms fixedProgram_acceptedSteps_triangle
+#print axioms rankedAttemptRun_eq_fixedAttemptRun
+#print axioms fixedProgram_rankedQuiescent_iff_consensus
+#print axioms roundRobinScheduler_boundedWaste
+#print axioms fixedProgram_nodeBoundedWaste_iff_ranked
+#print axioms fixedProgram_nodeBoundedWaste_eventually_consensus
 
 end
 

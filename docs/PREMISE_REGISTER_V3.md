@@ -193,7 +193,7 @@ A matter candidate is a pair (S, M): S a stratum of the classified compact locus
 
 - Type `selection_rule`; disposition `remove`; consumed by [#734](https://github.com/FloatingPragma/observer-patch-holography/issues/734), [#735](https://github.com/FloatingPragma/observer-patch-holography/issues/735).
 - Evidence: `code/b15_matter_freeze/matter_class_freeze_v1.json` (`statement`), `code/b15_matter_freeze/matter_class_freeze_v1.md` (`statement`), `claims/assumption_dictionary.md` (`statement`).
-- Disposition note: Removal needs a source-selection theorem that picks the physical matter module inside the frozen candidate class; grammar changes require a fresh freeze version before any evaluation.
+- Disposition note: Removal needs a source-selection theorem that picks the physical matter module inside the frozen candidate class; grammar changes require a fresh freeze version before any evaluation. The frozen candidate class is consumed at lane level by the matter-freeze evaluation surface under code/b15_matter_freeze, and no registered claim row consumes this premise.
 
 ### PR-13 Koide balance premise
 

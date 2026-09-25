@@ -922,6 +922,45 @@ theorem fixedProgram_sharp_quadratic_certificates :
 #print axioms fixedProgram_negComb_length
 #print axioms combSchedule_length
 #print axioms negComb_size_lowerSteps_identity
+#print axioms recurrenceGapNode0_mem
+#print axioms recurrenceGapNode1_mem
+#print axioms recurrenceGap_consensus
+#print axioms recurrenceGap_run_constant
+#print axioms recurrenceGap_pathwiseWeakFair
+#print axioms recurrenceGap_not_siteRecurrent
+#print axioms recurrenceGap_not_memberRecurrent
+#print axioms delayedRoundRobin_memberRecurrent
+#print axioms delayedRoundRobin_pathwiseWeakFair
+#print axioms recurrenceGapNode0_accepts_allFalse
+#print axioms delayedRoundRobin_run_before
+#print axioms recurrenceGap_allFalse_not_consensus
+#print axioms fixedProgram_negComb
+#print axioms fixedOutReg_negComb
+#print axioms combNodes_length
+#print axioms lowerSteps_double
+#print axioms combBlocks_count
+#print axioms flatten_append_singleton_length
+#print axioms acceptedNodeSchedule_append
+#print axioms runNodeSchedule_append
+#print axioms canonicalAcceptedSteps_trans
+#print axioms acceptedNodeSchedule_steps
+#print axioms combInitial_pair
+#print axioms combInitial_ready
+#print axioms combLeaf_mem
+#print axioms combTrue_mem
+#print axioms combGate_mem
+#print axioms combGate_deps_lt
+#print axioms repairNode_output_flip_of_fails
+#print axioms combGate_fails_after_right_flip
+#print axioms combAcceptedSchedule_valid
+#print axioms combDone_node_accepts
+#print axioms gateTail_length
+#print axioms combBlockNodes_length_zero
+#print axioms combBlockNodes_length_succ
+#print axioms combScheduleFrom_length
+#print axioms combStepCount_shift
+#print axioms combStepCount_diagonal
+#print axioms combAcceptedSchedule_length
 
 end
 

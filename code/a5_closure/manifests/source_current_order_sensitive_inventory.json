@@ -198,19 +198,19 @@
     "file_count": 839,
     "files": [
       {
-        "byte_count": 40994,
+        "byte_count": 42558,
         "path": "Lean/Dynamics/CenterSpectral.lean",
-        "sha256": "sha256:7f1a2e57b7dc340b389c0b3dccd7e8c2af819aa1c90c29e08566b591efc3fd31"
+        "sha256": "sha256:752be4fc3d317f2053caa4f49f5e833e4cd6a9ef3daec93171ae15d777257069"
       },
       {
-        "byte_count": 31201,
+        "byte_count": 32093,
         "path": "Lean/Dynamics/CentralBlocks.lean",
-        "sha256": "sha256:f623766e4a1265edae5b04d819153a4df93dd0e8e860b6f5080f6181010be525"
+        "sha256": "sha256:ab109fdf1f90b33084831976be1a98ce4a18dda68719f2a5ce16390dfe233811"
       },
       {
-        "byte_count": 21988,
+        "byte_count": 23338,
         "path": "Lean/Dynamics/ChoiCPTP.lean",
-        "sha256": "sha256:3c98fb1eae3ec081f712e9fcfd4a0875508faf7a45dda61a1e6a453471253da6"
+        "sha256": "sha256:fb2133fbd3c991b2801be8c90acb82e2aab39af39834eea7b6657c78354c614a"
       },
       {
         "byte_count": 6773,
@@ -228,19 +228,19 @@
         "sha256": "sha256:a659a021d3893ee9676f194db0aedb43116318e0b602c62858b9c015e6a50329"
       },
       {
-        "byte_count": 10648,
+        "byte_count": 11226,
         "path": "Lean/Dynamics/PublicAutomorphism.lean",
-        "sha256": "sha256:dc566b536cbf42aaf607e032144b7795270ba97ffeaae339165418079f659ede"
+        "sha256": "sha256:bee0073112acc3e5eabbbeb09cf65448132a156e08cbe259c94f152d1a6e384d"
       },
       {
-        "byte_count": 11314,
+        "byte_count": 12069,
         "path": "Lean/Dynamics/PublicMarkov.lean",
-        "sha256": "sha256:b8b43a4041fcd76eafc64abf39e3c3a5caf1af5da03f260d9572d9cd3da0b8b1"
+        "sha256": "sha256:0695fb0dfae8a3a7c1a320596322f941660cc74ca46338ce4c03274d4d7048c6"
       },
       {
-        "byte_count": 94780,
+        "byte_count": 96706,
         "path": "Lean/Dynamics/StarWedderburn.lean",
-        "sha256": "sha256:103eec6893caf696b4bf0f542543da597397783fe3b56ea6ff0ffa5d857b1be6"
+        "sha256": "sha256:eb08c41dc8433f0b9bd42748fc090e6747f966809fc0861bf12b8efb1d56b5e8"
       },
       {
         "byte_count": 36803,
@@ -648,9 +648,9 @@
         "sha256": "sha256:963ccc5842c43478ef074f4621cac45deb58c5df82559dac1485b83dc97b2a2e"
       },
       {
-        "byte_count": 10981,
+        "byte_count": 12553,
         "path": "Lean/Geometry/SourceCountLimitAxiomAudit.lean",
-        "sha256": "sha256:b274ab219e0ab3fc015765482dd10774ab9441a6aedadaedd3fe425e622cc3e3"
+        "sha256": "sha256:5c7a9538d410792b1613f965509e360baa95d59dc92bd0373bcc741e43acf2e5"
       },
       {
         "byte_count": 14570,
@@ -858,9 +858,9 @@
         "sha256": "sha256:986cac3c9ae0e10b3b06ea474cd4ce6f71544b6a627496ac7910d186004a9783"
       },
       {
-        "byte_count": 10594,
+        "byte_count": 10969,
         "path": "Lean/Geometry/SourceReadRouting.lean",
-        "sha256": "sha256:82691c7b6a20cb71661d3c37dff7afae077ed6a762c0901330f0dd72f3dfb365"
+        "sha256": "sha256:8da02c84631422e4d16c5c7c1620bb5973f732563fbe6fa7a2c15fa18ef47d23"
       },
       {
         "byte_count": 10018,
@@ -1028,14 +1028,14 @@
         "sha256": "sha256:b9a2ec564569aec6457906093f0d51ec076ec8b86cedf58476d2ef2d6afae52e"
       },
       {
-        "byte_count": 28419,
+        "byte_count": 30197,
         "path": "Lean/InformationProjection/HistoryLaw.lean",
-        "sha256": "sha256:eb1e65efba363a4b475927432d1ead2204c41a8e1be9d386a5425b3d5aa3b623"
+        "sha256": "sha256:6df1f3388d0750460620392b95d25ba0a34602abe2738edec2b311173e884df5"
       },
       {
-        "byte_count": 40021,
+        "byte_count": 42362,
         "path": "Lean/InformationProjection/LogTransitionAction.lean",
-        "sha256": "sha256:372a8c343f978d43c72cda57ecbe8aba62e771ac55fba85bfb6089e026342223"
+        "sha256": "sha256:deccf6a3784e645fedb855aa4ecf339d1e44bea253340871a5eb5a2c117af81b"
       },
       {
         "byte_count": 13338,
@@ -1043,9 +1043,9 @@
         "sha256": "sha256:2ecd15cdbccd1bc8fb6e799e10011e3f408e0bf92564f67c2d9fc7681ff909eb"
       },
       {
-        "byte_count": 8831,
+        "byte_count": 9246,
         "path": "Lean/InformationProjection/ReferenceNormalForm.lean",
-        "sha256": "sha256:462ec812e4eec30df5e5e61b402f48e861ec34db9d44251ec5caf30a48c56fa1"
+        "sha256": "sha256:91fd99e95d087f5374d432dbd141d6de9f4baa8bc142242e48cbdaff32e2b6fc"
       },
       {
         "byte_count": 42478,
@@ -1683,9 +1683,9 @@
         "sha256": "sha256:183a8a9b9899a56a9b6f9078fff2d9487e02c90e38a3ed19d262432e8032b4ce"
       },
       {
-        "byte_count": 9992,
+        "byte_count": 10175,
         "path": "Lean/Screen/WhitneyConeMass.lean",
-        "sha256": "sha256:2a0e1b477d7d28ad4025cba1a61cca33902510d0b18badd4e1459516fce3a164"
+        "sha256": "sha256:a46da2b840644678aa975a3d91af213ba296299578c58af906ef2afd1e06d65b"
       },
       {
         "byte_count": 5145,
@@ -1693,29 +1693,29 @@
         "sha256": "sha256:cf70c23d331e571ea0e48d0f023bf3b5ab47db7cc0246034a46c15f98f585661"
       },
       {
-        "byte_count": 13177,
+        "byte_count": 13630,
         "path": "Lean/Screen/WhitneyConeModes.lean",
-        "sha256": "sha256:9bb12a18f17500f0a0662daeb1493adb2f095cd40f875a9852cd9ac63694de67"
+        "sha256": "sha256:44e718541db75a6d24655fb63d4a27f4130acf550e241d36d6c69176f2f88236"
       },
       {
-        "byte_count": 4714,
+        "byte_count": 4742,
         "path": "Lean/Screen/WhitneyConeNaturality.lean",
-        "sha256": "sha256:4035f274c11a41a1f7894c0194fe28a78404cfe2b67d73a8015e2b236530560f"
+        "sha256": "sha256:a091d6eb5901e531dbd26f8115474b4fb911a63e7b24277c3bb84c351a214408"
       },
       {
-        "byte_count": 12291,
+        "byte_count": 12357,
         "path": "Lean/Screen/WhitneyFrameMorphism.lean",
-        "sha256": "sha256:77b9156c57ac7b94e44bf61c55161b44bd8b5dcf8786d89eb1fa221bd10d7751"
+        "sha256": "sha256:a55611d4b995d935c76830db6b19711b32c59e3afb9c4097d50eca34b0e8416d"
       },
       {
-        "byte_count": 24148,
+        "byte_count": 24920,
         "path": "Lean/Screen/WhitneyFrameNaturality.lean",
-        "sha256": "sha256:4505d0aaf3e2a539162aee85ca720fb8be5887968180eb636ba3080f5a2a9755"
+        "sha256": "sha256:ff4f3d965d6a11c8c378d53e5ec78818a2a2a6e283f41e16c88cbaa0574834ad"
       },
       {
-        "byte_count": 2770,
+        "byte_count": 2893,
         "path": "Lean/Screen/WhitneyMassPremiseInstance.lean",
-        "sha256": "sha256:0ffbb5925ecedcefa45acf62febf58590aad31d27c6e3bf9c731be5890278301"
+        "sha256": "sha256:37ec965f7313936fed73d03e72d9d0f8c8efa2bfd5ecf1fad9642772edc78f82"
       },
       {
         "byte_count": 21770,
@@ -1723,9 +1723,9 @@
         "sha256": "sha256:a884dff86e39997e9ebf2fb9544d0b6228fee222553516327214381a0016bbc0"
       },
       {
-        "byte_count": 12242,
+        "byte_count": 12576,
         "path": "Lean/Screen/WhitneyNormalModeConstruction.lean",
-        "sha256": "sha256:b28a1baa8b4d88e6bd76902f6c874c156e23f0d73c06cdb47436d79ceebb38c4"
+        "sha256": "sha256:31d240480049d623583f2a5febcc590d193873271c9d28b50d7ca2fdfb5134bf"
       },
       {
         "byte_count": 19326,
@@ -1733,9 +1733,9 @@
         "sha256": "sha256:707a331b338d2c0491caa681700a25000540de14ac5b858dbc2d6198aad41a31"
       },
       {
-        "byte_count": 4639,
+        "byte_count": 4736,
         "path": "Lean/Screen/WhitneyRotationWitness.lean",
-        "sha256": "sha256:ecd595c861ba0989b4d310a14d84aa1b8ea5998a019521ba35e58d6bb81501be"
+        "sha256": "sha256:49795427efc85e89b47f3b04a3a327010097d8354f48d6d06c8c5c194d09e1ce"
       },
       {
         "byte_count": 4143,
@@ -1843,9 +1843,9 @@
         "sha256": "sha256:054fde203992d1ae9fc5f2a1388cc3742cb8935886a6e5cc23d9189f0908e0e2"
       },
       {
-        "byte_count": 16272,
+        "byte_count": 17154,
         "path": "Lean/Variational/RealizedHistoryLegendreNoGo.lean",
-        "sha256": "sha256:8fe216a6c6c2a735bab06a4fa197b48985c2d940a5d7288e4e64a5611696c125"
+        "sha256": "sha256:61949514ca6e91b063f03ee236e9101eda72d4d487ff9d2980bea7835d6a7eec"
       },
       {
         "byte_count": 26814,
@@ -3325,7 +3325,7 @@
       {
         "byte_count": 21547,
         "path": "code/source_operation_reads/receipt.json",
-        "sha256": "sha256:8a788507995e54a5bc44427e14aa808bf875776537b9c2407d7265f69bfc954d"
+        "sha256": "sha256:9ece2d406e5daa3f8f4378c12346fb708a8b17e57e95cf281db899cf0deceb38"
       },
       {
         "byte_count": 35910,
@@ -4393,7 +4393,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:78aaa258c3a8055a4a558a9b41e02b2950ddef0f4c0e1f2a56ccdf9c9e5cf23a",
+    "files_sha256": "sha256:95597e1baa119167f4ec900711cd3bd6ac8fea6dc6cefff802273e854ef39772",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8",
@@ -7223,7 +7223,7 @@
     ],
     "through_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8"
   },
-  "inventory_sha256": "sha256:cc865e82c59699ec5640322c0e63dd2e050ade069da9f1829b8e03b978c48138",
+  "inventory_sha256": "sha256:3effb3659af15c36e78f1f665427c72df552e6dbc3f4b928143e208cbb94194e",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -7658,9 +7658,9 @@
       "sha256": "sha256:e5b9bd32ccc2fe64462cac48a9fec6c916ab75c2640294e950b4ba0d44079150"
     },
     {
-      "bytes": 10594,
+      "bytes": 10969,
       "path": "Lean/Geometry/SourceReadRouting.lean",
-      "sha256": "sha256:82691c7b6a20cb71661d3c37dff7afae077ed6a762c0901330f0dd72f3dfb365"
+      "sha256": "sha256:8da02c84631422e4d16c5c7c1620bb5973f732563fbe6fa7a2c15fa18ef47d23"
     },
     {
       "bytes": 3814,
@@ -8225,7 +8225,7 @@
     {
       "bytes": 21547,
       "path": "code/source_operation_reads/receipt.json",
-      "sha256": "sha256:8a788507995e54a5bc44427e14aa808bf875776537b9c2407d7265f69bfc954d"
+      "sha256": "sha256:9ece2d406e5daa3f8f4378c12346fb708a8b17e57e95cf281db899cf0deceb38"
     },
     {
       "bytes": 35910,

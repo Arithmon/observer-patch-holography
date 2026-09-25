@@ -139,3 +139,16 @@ end OPH.EOS
 #print axioms OPH.EOS.scalar_pressure_from_work
 #print axioms OPH.EOS.scalar_virial_ratio_bounds
 #print axioms OPH.EOS.maxwell_reference_ratio
+#print axioms OPH.EOS.extension_agrees
+#print axioms OPH.EOS.extension_positive
+#print axioms OPH.EOS.extension_derivative
+#print axioms OPH.EOS.arbitrary_reference_w
+#print axioms OPH.EOS.distinct_work_ratios_same_history
+#print axioms OPH.EOS.pair_mean_quadratic_drop
+#print axioms OPH.EOS.added_loss_record_conserves
+#print axioms OPH.EOS.scalar_dilation_derivative
+#print axioms OPH.EOS.scalar_stress_bounds
+#print axioms OPH.EOS.scalar_virial_pressure
+#print axioms OPH.EOS.scalar_coordinate_pressure_difference
+#print axioms OPH.EOS.scalar_massless_virial
+#print axioms OPH.EOS.maxwell_dilation_derivative

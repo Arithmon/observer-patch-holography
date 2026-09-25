@@ -332,6 +332,17 @@ theorem cone_same_modes_quantized_energy
 #print axioms conePositiveNormalFrame
 #print axioms cone_same_action_normal_modes
 #print axioms cone_same_modes_quantized_energy
+#print axioms coneGradientLinear_apply
+#print axioms coneCurlLinear_apply
+#print axioms coneGradientKernelApex_bijective
+#print axioms coneGradient_kernel_finrank
+#print axioms cone_exact_l2
+#print axioms coneGradientKernelToRaw_bijective
+#print axioms coneGradientL2_kernel_finrank
+#print axioms coneGradientL2_range_finrank
+#print axioms coneStiffness_symm
+#print axioms coneCurl_nonzero_on_constraint
+#print axioms coneStiffness_preserves_constraint
 
 end
 

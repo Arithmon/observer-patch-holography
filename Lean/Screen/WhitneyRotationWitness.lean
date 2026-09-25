@@ -120,6 +120,9 @@ theorem rotated_quantumHamiltonian_naturality
 #print axioms rotated_overlap_off_diagonal
 #print axioms rotated_classical_action_naturality
 #print axioms rotated_quantumHamiltonian_naturality
+#print axioms span_standardVector
+#print axioms span_rotatedVector
+#print axioms dotMass₂_symm
 
 end
 end OPH.WhitneyRotationWitness

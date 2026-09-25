@@ -2094,5 +2094,41 @@ theorem piBlock_generator_unique_up_to_real_scalar
     (fun t x => hflow t j x)
 
 #print axioms OPH.Dynamics.piBlock_generator_unique_up_to_real_scalar
+#print axioms OPH.Dynamics.IsCentralProjectionIn.isProjectionIn
+#print axioms OPH.Dynamics.IsProjectionIn.absorb_left
+#print axioms OPH.Dynamics.IsProjectionIn.sub
+#print axioms OPH.Dynamics.mem_projCorner_iff
+#print axioms OPH.Dynamics.self_mem_projCorner
+#print axioms OPH.Dynamics.projCorner_le
+#print axioms OPH.Dynamics.notMem_projCorner
+#print axioms OPH.Dynamics.projCorner_lt
+#print axioms OPH.Dynamics.IsProjectionIn.exists_minimal_le
+#print axioms OPH.Dynamics.aeval_mem_of_mem
+#print axioms OPH.Dynamics.commute_aeval_of_commute
+#print axioms OPH.Dynamics.nonempty_of_matrix_ne_zero
+#print axioms OPH.Dynamics.IsMinimalProjectionIn.selfAdjoint_corner_smul
+#print axioms OPH.Dynamics.exists_trace_star_mul_self
+#print axioms OPH.Dynamics.exists_trace_pos_of_projection
+#print axioms OPH.Dynamics.eq_zero_of_star_mul_self_eq_zero
+#print axioms OPH.Dynamics.mem_connectingIdeal_of
+#print axioms OPH.Dynamics.self_mem_connectingIdeal
+#print axioms OPH.Dynamics.mem_of_mem_connectingIdeal
+#print axioms OPH.Dynamics.connectingIdeal_mul_left
+#print axioms OPH.Dynamics.connectingIdeal_mul_right
+#print axioms OPH.Dynamics.connectingIdeal_star
+#print axioms OPH.Dynamics.connectingIdeal_central_absorb
+#print axioms OPH.Dynamics.central_unit_mem_connectingIdeal
+#print axioms OPH.Dynamics.mem_relativeCorner_iff
+#print axioms OPH.Dynamics.mul_unit_of_mem_relativeCorner
+#print axioms OPH.Dynamics.piBlockIndicator_apply
+#print axioms OPH.Dynamics.piBlockProjection_apply
+#print axioms OPH.Dynamics.piBlockProjection_mul_self
+#print axioms OPH.Dynamics.piBlockProjection_central
+#print axioms OPH.Dynamics.starAutomorphism_piBlockProjection_indicator
+#print axioms OPH.Dynamics.mul_piBlockProjection_eq_single
+#print axioms OPH.Dynamics.single_mul_piBlockProjection
+#print axioms OPH.Dynamics.apply_single_of_fixes
+#print axioms OPH.Dynamics.symm_fixes_piBlockProjection
+#print axioms OPH.Dynamics.piBlockRestriction_apply
 
 end OPH.Dynamics

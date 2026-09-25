@@ -104,13 +104,13 @@ Why do the charges come in sixths? Because six combinations of gauge moves do no
 
 Why does the proton refuse to decay the grand-unified way? Because the carrier that route needs, one direction coupling color to weak charge at once, is missing from a twelve-dimensional list that splits into eight, three and one, and a missing direction cannot be made small or slow: that route is closed exactly.
 
-Why is the fine-structure constant near one part in 137? One cell of the screen, read from outside and from inside, has to agree with itself, and the equation that says so has one fixed point, at 137.035660 against the measured 137.035999.
+Why is the fine-structure constant near one part in 137? One cell of the screen, read from outside and from inside, has to agree with itself, and the equation that says so has one fixed point per declared map, at 137.035660 on the map with the shared gauge width inside the loop, against the measured 137.035999, with the residual carried as a diagnostic until the map is selected from the axioms.
 
 What does the geometry say about Koide's relation? On one face of the icosahedron, equal weight for the two ways the corners can respond gives exactly two thirds. With the electron and muon masses as inputs, it pins the tau inside a window seventy-two electron-volts wide, centered at 1776.969027 million electron-volts against a measured 1776.93.
 
 Why does light have two polarizations? Because the central band carries four components, removing the redundancy takes two of them away, and what is left is transverse and two wide.
 
-Why does space have three directions? Because the twelve readings of a patch split into blocks that fade at different rates under repair, and the slowest block, holding 0.9539 of what it carries per pass against nine tenths and 0.8794 for the others, has rank three.
+Why does space have three directions? Because the twelve readings of a patch split into blocks that fade at different rates under repair, and the slowest block, holding 0.9539 of what it carries per pass against nine tenths and 0.8794 for the others, has rank three. The band arithmetic is exact; whether the world's space carries the same three is the row chapter fifteen records as owed.
 
 Why is there a speed limit at all? Because the four numbers of a two-by-two block carry the interval in their determinant, one sign for time against the opposite sign for the three directions of space, and where the determinant vanishes there is a cone whose directions make up an observer's sky. A separation is a count of seams crossed and a duration is a count of repairs committed, and the speed of light is the conversion between the two counts once each carries physical units, worked out by each observer from its own books and agreed on because every observer's sky is a sphere.
 

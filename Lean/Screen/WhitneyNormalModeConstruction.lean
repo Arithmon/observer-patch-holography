@@ -296,6 +296,13 @@ end BilinearMassSpectral
 #print axioms sectorStiffnessOperator_isSymmetric
 #print axioms positiveNormalFrameOfSpectral
 #print axioms positiveNormalFrameOfBilinearSpectral
+#print axioms sectorStiffnessOperator_pairing
+#print axioms ambientStiffnessOperator_pairing
+#print axioms ambientStiffnessOperator_isSymmetric
+#print axioms constrainedStiffnessOperator_coe
+#print axioms constrainedStiffnessOperator_isSymmetric
+#print axioms span_coe_orthonormalBasis
+#print axioms bilinearStiffnessOperator_pairing
 
 end
 

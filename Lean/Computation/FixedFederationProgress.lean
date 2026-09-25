@@ -602,6 +602,38 @@ theorem fixed_federation_universality (k : Nat)
 #print axioms fixed_federation_fair_universality
 #print axioms canonicalAcceptedStep_wellFounded
 #print axioms fixedObserverEndpointUniqueOutput
+#print axioms canonicalAcceptedStep_to_repairStep
+#print axioms isNormalForm_canonicalAcceptedStep_iff_consensus
+#print axioms sweepFrom_reachable_in
+#print axioms sweepFrom_reachable
+#print axioms canonicalAcceptedStep_weaklyNormalizing
+#print axioms defectRank_lt_pow
+#print axioms repairNode_accepts
+#print axioms earlier_observer_unchanged
+#print axioms canonicalAcceptedStep_defectRank_lt
+#print axioms attemptRun_last_step
+#print axioms attemptRun_add
+#print axioms repairNode_eq_self_of_accepts
+#print axioms attemptRun_eq_self_of_consensus
+#print axioms repairNode_ne_self_of_fails
+#print axioms attemptRun_step_rank_le
+#print axioms attemptRun_change_rank_lt
+#print axioms attemptRun_rank_le_initial
+#print axioms attemptRun_reachable
+#print axioms attemptRun_eventually_constant
+#print axioms nodePathwiseWeakFair_eventually_consensus
+#print axioms fixedProgram_wf
+#print axioms fixedProgram_inputSeparated
+#print axioms fixedSweep_carriesInput
+#print axioms fixedSweep_consensus
+#print axioms fixedSweep_output
+#print axioms fixedSweep_reachable
+#print axioms fixedConsensus_output_unique
+#print axioms fixedBoundaryIdentifiesOutput
+#print axioms fixedCanonicalStep_observationPreserving
+#print axioms fixedRepairNode_preservesInputObservation
+#print axioms fixedAttemptRun_preservesInputObservation
+#print axioms fixedCanonicalStep_completeForConsensus
 
 end
 
