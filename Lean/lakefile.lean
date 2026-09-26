@@ -74,7 +74,7 @@ lean_lib «OPHScreen» where
   srcDir := "Screen"
   roots := #[`OPHScreen, `Compact12, `S2DesignSignature,
     `TopThreeKernelFix, `UnitSplit12, `Z6Exact, `PhysicalA5ForcingNoGo,
-    `PortFrameGram, `GaloisPortFrames, `A5PortAction, `A5CouplingSymmetry, `A5OPH,
+    `PortFrameGram, `A5PortAction, `A5CouplingSymmetry, `A5OPH,
     `A2HolonomyBridge, `HolonomyInterference, `A5CharacterField, `A5SixAxes,
     `PSL2F5SixAxesBridge, `GoldenSectorPSL2F5Representations, `SL2F5PortCover,
     `A5PortModule, `A5PortSixAxesBridge, `A5Commutant, `A5ResponseWordAlgebra,

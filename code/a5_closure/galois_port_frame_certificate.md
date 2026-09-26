@@ -275,7 +275,7 @@ Those files are not mathematical inputs of either frame executable.
 python3 -B code/a5_closure/verify_galois_port_frame_independent.py
 python3 -B code/a5_closure/galois_source_response_control.py
 python3 -B -m pytest -q -p no:cacheprovider code/a5_closure/tests/test_galois_port_frame_certificate.py
-(cd Lean && lake build GaloisPortFrames OPHScreen)
+(cd Lean && lake build OPHScreen)
 python3 tools/check_lean_docstring_style.py
 python3 tools/check_axiom_consistency.py
 ```

@@ -2,6 +2,7 @@ import Compact12
 import S2DesignSignature
 import TopThreeKernelFix
 import UnitSplit12
+import GaloisPortFrames
 import Z6Exact
 import A2HolonomyBridge
 import HolonomyInterference
