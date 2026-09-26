@@ -275,6 +275,7 @@ Those files are not mathematical inputs of either frame executable.
 python3 -B code/a5_closure/verify_galois_port_frame_independent.py
 python3 -B code/a5_closure/galois_source_response_control.py
 python3 -B -m pytest -q -p no:cacheprovider code/a5_closure/tests/test_galois_port_frame_certificate.py
+(cd Lean && lake build PortFrameGram)
 (cd Lean && lake build OPHScreen)
 python3 tools/check_lean_docstring_style.py
 python3 tools/check_axiom_consistency.py
@@ -299,7 +300,7 @@ Additional controls reverse the live face input before production, reflect
 the vectors while preserving the Gram, and replace the marked generator by
 its square. These test the orientation and conjugacy-class scope directly.
 
-No paper, core axiom, existing `PortFrameGram` definition, invariant-mining
+No paper, core axiom, historical `PortFrameGram.g5` definition, invariant-mining
 freeze or mandatory-runner registration is changed by this packet.
 
 ## Validation record
@@ -308,8 +309,8 @@ The independent frame replay and the complete source-response exchange
 control pass. The packet's initial 21-test run passes; after adding the
 three orientation/class scope controls, the 22 frame tests pass with the
 two unchanged source tests deselected. This covers all 24 distinct tests.
-The six McKay regression tests also pass. `lake build GaloisPortFrames`
-and `lake build OPHScreen` pass, the latter with 8495 dependency/build jobs
+The six McKay regression tests also pass. `lake build PortFrameGram`
+and `lake build OPHScreen` pass, the latter with 8494 dependency/build jobs
 including cache replays. Each of the twelve theorems in the module has an
 explicit axiom receipt containing only standard Lean axioms.
 
