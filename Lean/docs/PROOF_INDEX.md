@@ -1236,7 +1236,7 @@ Mapping between Lean 4 theorems in this project and statements in
   rank-three conclusion (idempotent `G/4` with trace 3) is the one on-paper
   step. It does **not** derive the icosahedral carrier from OPH axioms,
   construct the `A5` action, or bear on the Prop 4.2 / Def 4.1 counts.
-- Galois port-frame pair (`Screen/PortFrameGram.lean`, namespace `OPH.GaloisPortFrames`): 12 / 12
+- Galois port-frame pair (`Screen/PortGramRepairBand.lean`, namespace `OPH.GaloisPortFrames`): 12 / 12
   theorems, kernel `decide`, standard axioms only. Defines both scaled
   Gram tables from adjacency, proves Galois exchange, symmetry, trace,
   squared-Gram and signed adjacency/Laplacian identities, and identifies

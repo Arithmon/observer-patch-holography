@@ -1463,9 +1463,9 @@
         "sha256": "sha256:0ee70ba206efdf6972717511698ea6fb8d226cc00a024fa62b650cb52c9d4fd1"
       },
       {
-        "byte_count": 2226,
+        "byte_count": 2205,
         "path": "Lean/Screen/OPHScreen.lean",
-        "sha256": "sha256:cbde9d9519b46a58730de4a954ea23f246dc7b0aab888082083c7063c0a4a415"
+        "sha256": "sha256:1d24d32fef139f07137128f3b0a010dd507635e30225cf5af03d504994182055"
       },
       {
         "byte_count": 10866,
@@ -1493,9 +1493,9 @@
         "sha256": "sha256:06e64b706cfbf5122681ba41519b81eede603ed67d252bda050316c7f4c4484a"
       },
       {
-        "byte_count": 11034,
+        "byte_count": 5095,
         "path": "Lean/Screen/PortFrameGram.lean",
-        "sha256": "sha256:16382c2c74c0cfd4b8474877ec46f8501a0b1b4fe8d2af57f3826a6814df7a91"
+        "sha256": "sha256:d1cebe56450e7586eed730b52068753ebca3a6563da1453679e87fa7c7b653e3"
       },
       {
         "byte_count": 10437,
@@ -1503,9 +1503,9 @@
         "sha256": "sha256:0cdb1fbd1cf7c5ee1cb5f3ba29207ed50841495904155997501c305fef72ecb7"
       },
       {
-        "byte_count": 5232,
+        "byte_count": 11171,
         "path": "Lean/Screen/PortGramRepairBand.lean",
-        "sha256": "sha256:8b48c8fd1e61ddf09f7468a870892a66c1b9b469fdac33597ff26658d9f5c635"
+        "sha256": "sha256:75286414b7c33492b40225dd48ca9321cf3a09ecf96b65e254af9bd02421cf72"
       },
       {
         "byte_count": 20836,
@@ -2013,9 +2013,9 @@
         "sha256": "sha256:e3bfc362b525d6f7f0ee27497c077e49836cac67ea3536763cb369767ba50297"
       },
       {
-        "byte_count": 19785,
+        "byte_count": 19899,
         "path": "code/a5_closure/galois_port_frame_certificate.md",
-        "sha256": "sha256:9e32227dd8a30f78ce4137191408e5c83eb45a45c95a7d043c8a6ba2af61fa19"
+        "sha256": "sha256:72e253d48af2e3369b012227a165a784852cd1ebb0e68d7bfc4b580d2ff05fec"
       },
       {
         "byte_count": 9782,
@@ -4453,7 +4453,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:5a8ec48a92254fa6f9d4953ca554a8010ced86ff2767c63ae1c2fabbc6889209",
+    "files_sha256": "sha256:f7fc6d677ae8fbb47e10700edf9f77ed3a3e59be1a0087fc115bae3439b698cc",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8",
@@ -7283,7 +7283,7 @@
     ],
     "through_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8"
   },
-  "inventory_sha256": "sha256:d0661b37277b06af06a7cde45e843bf347c448e03bde0e980821c80f734973ef",
+  "inventory_sha256": "sha256:3844fa40a46f537154c8b5c999082d8f541933e5ac11aac6e2f98c4534856374",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
