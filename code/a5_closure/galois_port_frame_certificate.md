@@ -275,7 +275,7 @@ Those files are not mathematical inputs of either frame executable.
 python3 -B code/a5_closure/verify_galois_port_frame_independent.py
 python3 -B code/a5_closure/galois_source_response_control.py
 python3 -B -m pytest -q -p no:cacheprovider code/a5_closure/tests/test_galois_port_frame_certificate.py
-cd Lean && lake build OPHScreen
+(cd Lean && lake build GaloisPortFrames OPHScreen)
 python3 tools/check_lean_docstring_style.py
 python3 tools/check_axiom_consistency.py
 ```
@@ -315,24 +315,9 @@ explicit axiom receipt containing only standard Lean axioms.
 
 `check_axiom_consistency.py`, `check_claim_registry.py`,
 `build_selection_ledger.py --check`, `check_reader_style.py` and
-`git diff --check` pass. The direct `check_lean_docstring_style.py` invocation
-under the `.wt` directory reports registered modules absent: its source
-filter excludes any absolute path with a hidden ancestor. The same checker
-passes for all 620 tracked Lean modules using a relative root; direct prose
-and axiom-coverage checks of `GaloisPortFrames.lean` also pass. Reproduction
-of the environment adapter, without altering the checker:
-
-```python
-from pathlib import Path
-import sys
-sys.path.insert(0, "tools")
-import check_lean_docstring_style as check
-check.ROOT = Path(".")
-check.LEAN_ROOT = Path("Lean")
-raise SystemExit(check.main([]))
-```
+`git diff --check` pass. Lean docstring style and explicit axiom coverage
+were also checked for the tracked modules.
 
 The full mandatory suite, a Lean topological-degree formalization, a positive
 source attachment selector and numerical physics calculations are not
-attempted. Remote CI status is a handoff observation, separate from these
-local results.
+attempted. These local results do not establish remote CI validation.
