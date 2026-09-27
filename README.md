@@ -205,7 +205,8 @@ a distributed network that computes, and its observers are the neurons: each
 one holds a local state, reads its neighbors, and repairs the disagreements it
 finds, and the public world is the equilibrium the whole network settles into.
 We took that architecture and built a machine learning system that works the
-same way, [Cadence](https://github.com/muellerberndt/cadence). The two projects
+same way, [Cadence](https://github.com/muellerberndt/cadence)
+([paper](https://philpapers.org/rec/MUECAP-2)). The two projects
 complement each other and share many of their theorems.
 
 ## The Twist: The Universe Is Its Own Simulator
@@ -389,7 +390,7 @@ cited here.
 - [Textbooks](https://learn.floatingpragma.io) (physics and computer science)
 - [Interactive simulation](https://simulation.floatingpragma.io)
 - [Blog](https://blog.floatingpragma.io/)
-- [Cadence](https://github.com/muellerberndt/cadence), machine learning built on the same observer patches
+- [Cadence](https://github.com/muellerberndt/cadence), machine learning built on the same observer patches ([paper](https://philpapers.org/rec/MUECAP-2))
 - [Study notebook with explainer videos](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a) (opens with a Google account)
 - [This README in French](README_FR.md)
 - OPH Sage on [Telegram](https://t.me/HoloObserverBot) and [X](https://x.com/OphSage)

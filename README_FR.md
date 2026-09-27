@@ -225,7 +225,8 @@ les neurones : chacun garde un état local, relit ses voisins et répare les
 désaccords qu’il trouve, et le monde public est l’équilibre dans lequel le
 réseau entier se stabilise. Nous avons repris cette architecture pour
 construire un système d’apprentissage automatique qui fonctionne de la même
-manière, [Cadence](https://github.com/muellerberndt/cadence). Les deux projets
+manière, [Cadence](https://github.com/muellerberndt/cadence)
+([article](https://philpapers.org/rec/MUECAP-2)). Les deux projets
 se complètent et partagent de nombreux théorèmes.
 
 ## Le twist : l’univers est son propre simulateur
@@ -410,7 +411,7 @@ briseraient.
 - [Manuels](https://learn.floatingpragma.io) (physique et informatique)
 - [Simulation interactive](https://simulation.floatingpragma.io)
 - [Blog](https://blog.floatingpragma.io/)
-- [Cadence](https://github.com/muellerberndt/cadence), l’apprentissage automatique bâti sur les mêmes parcelles d’observateur
+- [Cadence](https://github.com/muellerberndt/cadence), l’apprentissage automatique bâti sur les mêmes parcelles d’observateur ([article](https://philpapers.org/rec/MUECAP-2))
 - [Carnet d’étude avec vidéos explicatives](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a) (s’ouvre avec un compte Google)
 - OPH Sage sur [Telegram](https://t.me/HoloObserverBot) et [X](https://x.com/OphSage)
 
