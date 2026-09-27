@@ -26,8 +26,8 @@ INDEPENDENT_VERIFIER = HERE / "verify_source_current_order_sensitive_inventory.p
 
 SCHEMA = "oph.source_current_order_sensitive_inventory.v2"
 VERDICT = "SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT"
-PREVIOUS_INVENTORY_BASE_SHA = 'ba84976ad1195892c68fdd0d74a27ab0c899aeb8'
-UPSTREAM_MAIN_SHA = '9b527a4f8d07a21944b56bc3967a739339aff2c8'
+PREVIOUS_INVENTORY_BASE_SHA = '9b527a4f8d07a21944b56bc3967a739339aff2c8'
+UPSTREAM_MAIN_SHA = '4511928b1d4bee6bca5601e309b44595a76f797f'
 
 AUDITED_DIRECTORIES = (
     "code/source_feedback_transport",
@@ -735,6 +735,41 @@ INTEGRATED_TREE_REVIEW_BA84976A = (
      'Declared scalar-seam witness model: its twelve response generators are supplied by an explicit formula on an internal six-dimensional carrier and its ordered brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier; the non-entailment construction lies outside the source-native scope.'),
 )
 
+INTEGRATED_TREE_REVIEW_9B527A4F = (
+    ('Lean/Geometry/M1Interfaces.lean',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Bounds finite crossing changes, binary volume correction and thin connecting paths and checks the sparse interface scale algebra; it contains no port-indexed source perturbation family or executed response history.'),
+    ('Lean/Geometry/M1InterfacesAxiomAudit.lean',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Audits the axiom dependencies of the interface-scale reductions and adds no source operation or history.'),
+    ('Lean/Geometry/M1Necessity.lean',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Checks the binary route subroutine, layer obstruction, finite cut algebra and positive-action normalization bounds of the sparse read-family comparison; it defines no port-indexed source perturbation, composition word, inverse or history.'),
+    ('Lean/Geometry/M1NecessityAxiomAudit.lean',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Audits the axiom dependencies of the sparse read-family reductions and adds no source operation or history.'),
+    ('Lean/Geometry/M1QuantumTransport.lean',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Proves the dot-product deficit, weighted trace budget and the other finite reductions of the native-time quantum transport theorem; it defines no port-indexed source operation or raw history.'),
+    ('Lean/Geometry/M1QuantumTransportAxiomAudit.lean',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Audits the axiom dependencies of the quantum-transport reductions and adds no source operation or history.'),
+    ('Lean/Geometry/M1VacuumFidelity.lean',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Proves finite symplectic-mode algebra identities for the full-spectrum vacuum fidelity theorem; scalar mode arithmetic supplies no twelve-port perturbation family or mixed-order history.'),
+    ('Lean/Geometry/M1VacuumFidelityAxiomAudit.lean',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Audits the axiom dependencies of the vacuum-fidelity reductions and adds no source operation or history.'),
+)
+
 PRIOR_INTEGRATED_TREE_REVIEWS = (
     (
         "2b03a95caf5030272f7b426b964e816f650153f8",
@@ -837,42 +872,64 @@ PRIOR_INTEGRATED_TREE_REVIEWS = (
         "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
         INTEGRATED_TREE_REVIEW_BA84976A,
     ),
+    (
+        "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
+        "9b527a4f8d07a21944b56bc3967a739339aff2c8",
+        INTEGRATED_TREE_REVIEW_9B527A4F,
+    ),
 )
 
 INTEGRATED_TREE_REVIEW = (
-    ('Lean/Geometry/M1Interfaces.lean',
+    ('Lean/Geometry/FiniteLayerQuadrature.lean',
      'OUTSIDE_REVIEWED_SOURCE_SCOPE',
      None,
-     'Bounds finite crossing changes, binary volume correction and thin connecting paths and checks the sparse interface scale algebra; it contains no port-indexed source perturbation family or executed response history.'),
-    ('Lean/Geometry/M1InterfacesAxiomAudit.lean',
+     'Proves exact even and odd finite layer sums for continuum-ball diamond quadrature; it defines no port-indexed source perturbation family, composition word, inverse or history.'),
+    ('Lean/Geometry/GoldenSourceFourier.lean',
      'OUTSIDE_REVIEWED_SOURCE_SCOPE',
      None,
-     'Audits the axiom dependencies of the interface-scale reductions and adds no source operation or history.'),
-    ('Lean/Geometry/M1Necessity.lean',
+     'Factorizes a finite three-axis Fourier sum over a Cartesian golden orbit through geometric-series identities; it supplies no source operation or executed response history.'),
+    ('Lean/Geometry/NativeGeometricSourceIdentification.lean',
      'OUTSIDE_REVIEWED_SOURCE_SCOPE',
      None,
-     'Checks the binary route subroutine, layer obstruction, finite cut algebra and positive-action normalization bounds of the sparse read-family comparison; it defines no port-indexed source perturbation, composition word, inverse or history.'),
-    ('Lean/Geometry/M1NecessityAxiomAudit.lean',
+     'Shows that load-only repairs leave geometry-only readouts fixed and that a diagonal covariance match does not select separated-position entries; it enumerates no port-indexed perturbation family or mixed-order raw history.'),
+    ('Lean/Geometry/SourceActionMeasure.lean',
      'OUTSIDE_REVIEWED_SOURCE_SCOPE',
      None,
-     'Audits the axiom dependencies of the sparse read-family reductions and adds no source operation or history.'),
-    ('Lean/Geometry/M1QuantumTransport.lean',
+     'Relates a supplied linear response operator to its positive diagonal symmetrizers and a record density; the operator is supplied and no source-native perturbation family, composition word or history is executed.'),
+    ('Lean/Geometry/SourceNetClockSeparation.lean',
      'OUTSIDE_REVIEWED_SOURCE_SCOPE',
      None,
-     'Proves the dot-product deficit, weighted trace budget and the other finite reductions of the native-time quantum transport theorem; it defines no port-indexed source operation or raw history.'),
-    ('Lean/Geometry/M1QuantumTransportAxiomAudit.lean',
+     'Derives uniform read-count clock identities from the layered read-chain theorem and evaluates a supplied conformal-window polynomial; it defines no source operation packet or raw history.'),
+    ('Lean/Screen/CommonHistoryFeedback.lean',
      'OUTSIDE_REVIEWED_SOURCE_SCOPE',
      None,
-     'Audits the axiom dependencies of the quantum-transport reductions and adds no source operation or history.'),
-    ('Lean/Geometry/M1VacuumFidelity.lean',
+     'Four lemmas on classical record restoration error and its triangular accumulation; scalar real arithmetic with no twelve-port perturbation family or executed history.'),
+    ('code/a5_closure/galois_port_frame_certificate.md',
      'OUTSIDE_REVIEWED_SOURCE_SCOPE',
      None,
-     'Proves finite symplectic-mode algebra identities for the full-spectrum vacuum fidelity theorem; scalar mode arithmetic supplies no twelve-port perturbation family or mixed-order history.'),
-    ('Lean/Geometry/M1VacuumFidelityAxiomAudit.lean',
+     'Exact certificate of the two Galois-conjugate rank-three port Gram frames from oriented incidence and the audit of the missing support attachment; finite geometry with no port-indexed source perturbation family, composition word, inverse or history.'),
+    ('code/a5_closure/galois_port_frame_certificate.py',
      'OUTSIDE_REVIEWED_SOURCE_SCOPE',
      None,
-     'Audits the axiom dependencies of the vacuum-fidelity reductions and adds no source operation or history.'),
+     'Producer of the Galois port-frame reference: exact quadratic-field linear algebra, rotations and radial degrees from the committed oriented faces; it executes no source operation or response history.'),
+    ('code/a5_closure/galois_source_response_control.py',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Replays the pinned scalar-seam witness response tape under full field conjugation; the twelve response generators remain supplied by formula on the internal six-dimensional carrier and its brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier.'),
+    ('code/a5_closure/manifests/galois_port_frame_reference.json',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Reference output of the Galois port-frame certificate: Gram tables, rotations, coefficient triples and degrees; a finite geometric artifact, not a serialized source history.'),
+    ('code/a5_closure/tests/test_galois_port_frame_certificate.py',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Regression and hostile-control tests of the Galois port-frame certificate; they exercise no source perturbation family or response history.'),
+    ('code/a5_closure/verify_galois_port_frame_independent.py',
+     'OUTSIDE_REVIEWED_SOURCE_SCOPE',
+     None,
+     'Independent replay of the Galois port-frame certificate in the basis 1, phi with Cramer-rule degrees; it executes no source operation or response history.'),
 )
+
 
 
 ALLOWED_CLASSIFICATIONS = {

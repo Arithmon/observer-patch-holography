@@ -1895,7 +1895,7 @@
       {
         "byte_count": 36118,
         "path": "code/a5_closure/README.md",
-        "sha256": "sha256:d5a9bb33df56ccf6d4768f360c9328ad2f66f85f59d4a21aabf14bedf496848d"
+        "sha256": "sha256:4e74761ab92de5ea0bc9c27693bec891930e2901c6d803822532bce0d27187dd"
       },
       {
         "byte_count": 37263,
@@ -2013,9 +2013,9 @@
         "sha256": "sha256:e3bfc362b525d6f7f0ee27497c077e49836cac67ea3536763cb369767ba50297"
       },
       {
-        "byte_count": 19899,
+        "byte_count": 20077,
         "path": "code/a5_closure/galois_port_frame_certificate.md",
-        "sha256": "sha256:72e253d48af2e3369b012227a165a784852cd1ebb0e68d7bfc4b580d2ff05fec"
+        "sha256": "sha256:d984577dff02433978856d89d72a8e17a7c43ad49c870e27c0edeb13486ae25e"
       },
       {
         "byte_count": 9782,
@@ -2023,9 +2023,9 @@
         "sha256": "sha256:05b917898f3a2266ca54c22a9c1b174aa87f374196e4297c8bda1839a8b0452a"
       },
       {
-        "byte_count": 8878,
+        "byte_count": 9387,
         "path": "code/a5_closure/galois_source_response_control.py",
-        "sha256": "sha256:43fa9328911b9ab920becdee7334bac96f082b71343dc8abc6bd73f0d61664fa"
+        "sha256": "sha256:71cfa71dce4080febc61e09b3675f8fc8822294acdbacfbd1f87012e9e0e618d"
       },
       {
         "byte_count": 3323,
@@ -2453,9 +2453,9 @@
         "sha256": "sha256:860bd8f99d9c99567e0042b6cb46aead74d483e31ebd70bacc52f5edf22f96b0"
       },
       {
-        "byte_count": 171111,
+        "byte_count": 175043,
         "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:42bb650fd7e31e69b0517fe0c8b795bb04d38f1de4d07ac5bc43a32c44edf4e9"
+        "sha256": "sha256:e77c3bd7b4498acc7e6030ba6f1ebdfc0b0a9e4f24069902421114ec9ddd8d54"
       },
       {
         "byte_count": 3552,
@@ -2478,9 +2478,9 @@
         "sha256": "sha256:13e892346e1fd74ca6512098823398ef1658b2d9c423a2201c748242a70d0b52"
       },
       {
-        "byte_count": 13936,
+        "byte_count": 14074,
         "path": "code/a5_closure/source_current_tomography_stage2.md",
-        "sha256": "sha256:8ade3cd9ac823a5e8af14518f63bdf3b3a0b83e33e8914db1ce3bc1ef1ce80f2"
+        "sha256": "sha256:42b57aa0c2ab050354d438449d2c5d17b71d617cbd53bb0b2ee538a4c9d7d699"
       },
       {
         "byte_count": 34067,
@@ -2553,9 +2553,9 @@
         "sha256": "sha256:da6297d4f55448e33e5b02c1e247fd645daefefbc0e82ecffc50a4d470e579d4"
       },
       {
-        "byte_count": 5362,
+        "byte_count": 5746,
         "path": "code/a5_closure/tests/test_galois_port_frame_certificate.py",
-        "sha256": "sha256:c29aa9cf92358809b5c1a55fa931b7fda60f4ffb2dd961e98b711414a4c86e66"
+        "sha256": "sha256:ad1dfd22abc67c7539e01d2b5b8eebc0e7516cd2c428bc9a41cb45948b3e7b46"
       },
       {
         "byte_count": 23780,
@@ -2628,9 +2628,9 @@
         "sha256": "sha256:15b5e07ff026ca12fec6d1b8ac04146adf970a55f54a475c63501cce6b26258a"
       },
       {
-        "byte_count": 21068,
+        "byte_count": 21094,
         "path": "code/a5_closure/tests/test_source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:c1d0c65b42106e93e7a93ffc881f6e1094087837d66f78ef0aefb06f0d3b3499"
+        "sha256": "sha256:f635309c59ca9379bce6a7085807d41f2830524e4b4be3ee93ab0e3f96bc41d5"
       },
       {
         "byte_count": 2867,
@@ -2663,9 +2663,9 @@
         "sha256": "sha256:1646cc0e77b7efc7dbea77cdfdaeea47a9918b805c1e1aea0791b754a7454a8a"
       },
       {
-        "byte_count": 69096,
+        "byte_count": 70436,
         "path": "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
-        "sha256": "sha256:ce6622cda8d6ac24ad3f7e15cef86d13d19c6dcd8cebe38b748dc17716d022c7"
+        "sha256": "sha256:5026fcc68adf1365b54cf9fa7bd3ded95cdbe4a33f87b05139ed79125319854d"
       },
       {
         "byte_count": 10424,
@@ -4453,10 +4453,10 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:f7fc6d677ae8fbb47e10700edf9f77ed3a3e59be1a0087fc115bae3439b698cc",
+    "files_sha256": "sha256:094a1144e2dd605fefd71ddae77d0b2c8bb090ffb3d5724416939e6ea28316eb",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
-  "audited_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8",
+  "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
   "candidates": [
     {
       "candidate_id": "registered_adjacency_response",
@@ -5766,18 +5766,18 @@
   "fixture_used_as_reconstruction_oracle": false,
   "implementation_pins": [
     {
-      "bytes": 171111,
+      "bytes": 175043,
       "path": "code/a5_closure/source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:42bb650fd7e31e69b0517fe0c8b795bb04d38f1de4d07ac5bc43a32c44edf4e9"
+      "sha256": "sha256:e77c3bd7b4498acc7e6030ba6f1ebdfc0b0a9e4f24069902421114ec9ddd8d54"
     },
     {
-      "bytes": 69096,
+      "bytes": 70436,
       "path": "code/a5_closure/verify_source_current_order_sensitive_inventory.py",
-      "sha256": "sha256:ce6622cda8d6ac24ad3f7e15cef86d13d19c6dcd8cebe38b748dc17716d022c7"
+      "sha256": "sha256:5026fcc68adf1365b54cf9fa7bd3ded95cdbe4a33f87b05139ed79125319854d"
     }
   ],
   "integrated_tree_review": {
-    "from_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
+    "from_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8",
     "prior_reviews": [
       {
         "from_upstream_main_sha": "2b03a95caf5030272f7b426b964e816f650153f8",
@@ -7228,62 +7228,141 @@
           }
         ],
         "through_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8"
+      },
+      {
+        "from_upstream_main_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
+        "surface_count": 8,
+        "surfaces": [
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/M1Interfaces.lean",
+            "reason": "Bounds finite crossing changes, binary volume correction and thin connecting paths and checks the sparse interface scale algebra; it contains no port-indexed source perturbation family or executed response history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/M1InterfacesAxiomAudit.lean",
+            "reason": "Audits the axiom dependencies of the interface-scale reductions and adds no source operation or history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/M1Necessity.lean",
+            "reason": "Checks the binary route subroutine, layer obstruction, finite cut algebra and positive-action normalization bounds of the sparse read-family comparison; it defines no port-indexed source perturbation, composition word, inverse or history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/M1NecessityAxiomAudit.lean",
+            "reason": "Audits the axiom dependencies of the sparse read-family reductions and adds no source operation or history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/M1QuantumTransport.lean",
+            "reason": "Proves the dot-product deficit, weighted trace budget and the other finite reductions of the native-time quantum transport theorem; it defines no port-indexed source operation or raw history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/M1QuantumTransportAxiomAudit.lean",
+            "reason": "Audits the axiom dependencies of the quantum-transport reductions and adds no source operation or history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/M1VacuumFidelity.lean",
+            "reason": "Proves finite symplectic-mode algebra identities for the full-spectrum vacuum fidelity theorem; scalar mode arithmetic supplies no twelve-port perturbation family or mixed-order history."
+          },
+          {
+            "candidate_id": null,
+            "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+            "path": "Lean/Geometry/M1VacuumFidelityAxiomAudit.lean",
+            "reason": "Audits the axiom dependencies of the vacuum-fidelity reductions and adds no source operation or history."
+          }
+        ],
+        "through_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8"
       }
     ],
-    "surface_count": 8,
+    "surface_count": 12,
     "surfaces": [
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/M1Interfaces.lean",
-        "reason": "Bounds finite crossing changes, binary volume correction and thin connecting paths and checks the sparse interface scale algebra; it contains no port-indexed source perturbation family or executed response history."
+        "path": "Lean/Geometry/FiniteLayerQuadrature.lean",
+        "reason": "Proves exact even and odd finite layer sums for continuum-ball diamond quadrature; it defines no port-indexed source perturbation family, composition word, inverse or history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/M1InterfacesAxiomAudit.lean",
-        "reason": "Audits the axiom dependencies of the interface-scale reductions and adds no source operation or history."
+        "path": "Lean/Geometry/GoldenSourceFourier.lean",
+        "reason": "Factorizes a finite three-axis Fourier sum over a Cartesian golden orbit through geometric-series identities; it supplies no source operation or executed response history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/M1Necessity.lean",
-        "reason": "Checks the binary route subroutine, layer obstruction, finite cut algebra and positive-action normalization bounds of the sparse read-family comparison; it defines no port-indexed source perturbation, composition word, inverse or history."
+        "path": "Lean/Geometry/NativeGeometricSourceIdentification.lean",
+        "reason": "Shows that load-only repairs leave geometry-only readouts fixed and that a diagonal covariance match does not select separated-position entries; it enumerates no port-indexed perturbation family or mixed-order raw history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/M1NecessityAxiomAudit.lean",
-        "reason": "Audits the axiom dependencies of the sparse read-family reductions and adds no source operation or history."
+        "path": "Lean/Geometry/SourceActionMeasure.lean",
+        "reason": "Relates a supplied linear response operator to its positive diagonal symmetrizers and a record density; the operator is supplied and no source-native perturbation family, composition word or history is executed."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/M1QuantumTransport.lean",
-        "reason": "Proves the dot-product deficit, weighted trace budget and the other finite reductions of the native-time quantum transport theorem; it defines no port-indexed source operation or raw history."
+        "path": "Lean/Geometry/SourceNetClockSeparation.lean",
+        "reason": "Derives uniform read-count clock identities from the layered read-chain theorem and evaluates a supplied conformal-window polynomial; it defines no source operation packet or raw history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/M1QuantumTransportAxiomAudit.lean",
-        "reason": "Audits the axiom dependencies of the quantum-transport reductions and adds no source operation or history."
+        "path": "Lean/Screen/CommonHistoryFeedback.lean",
+        "reason": "Four lemmas on classical record restoration error and its triangular accumulation; scalar real arithmetic with no twelve-port perturbation family or executed history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/M1VacuumFidelity.lean",
-        "reason": "Proves finite symplectic-mode algebra identities for the full-spectrum vacuum fidelity theorem; scalar mode arithmetic supplies no twelve-port perturbation family or mixed-order history."
+        "path": "code/a5_closure/galois_port_frame_certificate.md",
+        "reason": "Exact certificate of the two Galois-conjugate rank-three port Gram frames from oriented incidence and the audit of the missing support attachment; finite geometry with no port-indexed source perturbation family, composition word, inverse or history."
       },
       {
         "candidate_id": null,
         "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
-        "path": "Lean/Geometry/M1VacuumFidelityAxiomAudit.lean",
-        "reason": "Audits the axiom dependencies of the vacuum-fidelity reductions and adds no source operation or history."
+        "path": "code/a5_closure/galois_port_frame_certificate.py",
+        "reason": "Producer of the Galois port-frame reference: exact quadratic-field linear algebra, rotations and radial degrees from the committed oriented faces; it executes no source operation or response history."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/a5_closure/galois_source_response_control.py",
+        "reason": "Replays the pinned scalar-seam witness response tape under full field conjugation; the twelve response generators remain supplied by formula on the internal six-dimensional carrier and its brackets are algebraic jets, not raw histories executed by a registered source producer on the twelve-port carrier."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/a5_closure/manifests/galois_port_frame_reference.json",
+        "reason": "Reference output of the Galois port-frame certificate: Gram tables, rotations, coefficient triples and degrees; a finite geometric artifact, not a serialized source history."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/a5_closure/tests/test_galois_port_frame_certificate.py",
+        "reason": "Regression and hostile-control tests of the Galois port-frame certificate; they exercise no source perturbation family or response history."
+      },
+      {
+        "candidate_id": null,
+        "decision": "OUTSIDE_REVIEWED_SOURCE_SCOPE",
+        "path": "code/a5_closure/verify_galois_port_frame_independent.py",
+        "reason": "Independent replay of the Galois port-frame certificate in the basis 1, phi with Cramer-rule degrees; it executes no source operation or response history."
       }
     ],
-    "through_upstream_main_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8"
+    "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:3844fa40a46f537154c8b5c999082d8f541933e5ac11aac6e2f98c4534856374",
+  "inventory_sha256": "sha256:49e89d02cba0fc7e16c602d0260842968e2528f09fcf5c5c5bcf2aad363dfd92",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -7312,7 +7391,7 @@
   ],
   "physical_current_source_bridge_attained": false,
   "positive_stages_authorized": false,
-  "previous_inventory_base_sha": "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
+  "previous_inventory_base_sha": "9b527a4f8d07a21944b56bc3967a739339aff2c8",
   "program": "SOURCE-CURRENT-TOMOGRAPHY-0",
   "qualification_fields": [
     "source_native",

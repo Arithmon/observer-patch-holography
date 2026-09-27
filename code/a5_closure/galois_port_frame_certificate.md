@@ -292,7 +292,9 @@ abstract adjacency, reversed face orientation, omitted/duplicated face,
 relabeled chord, wrong-order generator, Laplacian sign swap, selected-Gram
 input/import, unsupported support theorem and downstream numerical target.
 They also cover forged degree, missing coordinate conjugation, false trace
-and a boundary regular value. Lean proves the compact Gram and eigenvalue
+and a forged direction list; the producer's rejection of a direction on a
+face plane is tested directly, since the verifier pins the three regular
+directions and never reaches its own face-plane gate. Lean proves the compact Gram and eigenvalue
 identities, the marked permutation action and trace pair; degree, PSD and
 rank are executable/mathematical results, not Lean claims in this module.
 
@@ -307,9 +309,9 @@ freeze or mandatory-runner registration is changed by this packet.
 
 The Lean declarations are hosted in `Lean/Screen/PortGramRepairBand.lean` under
 `OPH.GaloisPortFrames`. The independent frame replay and the complete source-response exchange
-control pass. The packet's initial 21-test run passes; after adding the
-three orientation/class scope controls, the 22 frame tests pass with the
-two unchanged source tests deselected. This covers all 24 distinct tests.
+control pass. The 25 tests of `tests/test_galois_port_frame_certificate.py` pass,
+including the two source-response tests; the source control returns the
+counts each replay executed, and its plus/minus comparison reads those.
 The six McKay regression tests also pass. `lake build PortGramRepairBand`
 and `lake build OPHScreen` pass, the latter with 8494 dependency/build jobs
 including cache replays. Each of the twelve theorems in the module has an

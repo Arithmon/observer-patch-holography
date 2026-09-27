@@ -25,7 +25,7 @@ MUTATIONS = [
     "sqrt_sign_fixed", "branch_omitted", "geometric_adjacency", "orientation_reversed",
     "face_removed", "face_duplicated", "chord_relabelled", "wrong_generator_order",
     "laplacian_sign", "selected_gram_source", "unsupported_attachment", "downstream_target",
-    "degree_forged", "galois_coordinate_omitted", "rotation_trace_forged", "regular_value_boundary",
+    "degree_forged", "galois_coordinate_omitted", "rotation_trace_forged", "direction_list_forged",
 ]
 
 
@@ -63,7 +63,7 @@ def test_required_mutations_fail_closed(packet,mutation):
         minus["vectors"]=deepcopy(p["family"]["plus"]["vectors"])
     elif mutation=="rotation_trace_forged":
         minus["rotation_trace"]=["1/2","1/2"]
-    elif mutation=="regular_value_boundary":
+    elif mutation=="direction_list_forged":
         minus["degree_controls"][0]["direction"]=[0,0,1]
     with pytest.raises(ValueError):
         verifier.verify(p)
@@ -92,6 +92,12 @@ def test_reversed_live_face_input_cannot_keep_degree_convention():
             producer.build()
 
 
+def test_producer_rejects_direction_on_face_plane():
+    # The verifier pins the three regular directions, so the face-plane gate is the producer's.
+    with pytest.raises(ValueError,match="direction on a face plane"):
+        producer.degree(producer.coordinates(),producer.faces(),[0,1,3])
+
+
 def test_reflection_changes_degree_without_changing_gram():
     vs=producer.coordinates()
     reflected=[[-x for x in row] for row in vs]
@@ -114,6 +120,7 @@ def test_source_response_exchange():
     result=control.verify()
     assert result["bounded_nonselection"]
     assert result["plus"]==result["minus"]
+    assert result["plus"]["naturality_pairs"]==720 and result["plus"]["compositions"]==3600
     assert not result["literal_block_swap_equals_galois"]
 
 

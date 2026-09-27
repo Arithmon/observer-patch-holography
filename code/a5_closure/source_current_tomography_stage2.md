@@ -37,7 +37,7 @@ from distinct packets are not composited.
 The canonical machine-readable adjudication is
 [`manifests/source_current_order_sensitive_inventory.json`](manifests/source_current_order_sensitive_inventory.json).
 It pins every audited source and the two independent implementations by SHA-256.
-It also freezes a canonical content record for all **839 included files** below
+It also freezes a canonical content record for all **851 included files** below
 the **35 audited directories**. Each record contains the repository-relative
 POSIX path, byte count, and SHA-256 digest. The producer and independent
 verifier fail closed on added, removed, renamed, or byte-changed files. The only
@@ -110,11 +110,13 @@ twelve source-selected perturbations with 132 mixed-order raw histories.
 
 ## Integrated-tree review
 
-The current baseline adds eight Lean modules under `Lean/Geometry` to the
-reviewed scope: the sparse read-family, interface-scale, vacuum-fidelity and
-quantum-transport reductions with their axiom audits. All eight surfaces have
-explicit classifications. The earlier forty-surface, 111-surface and two
-forty-three-surface decisions remain recorded as prior reviews; their
+The current baseline adds twelve surfaces to the reviewed scope: five
+`Lean/Geometry` modules on finite quadrature, golden Fourier sums, geometric
+source identification, action measure and clock separation, one `Lean/Screen`
+module on record restoration, and the six files of the Galois port-frame
+packet in `code/a5_closure`. All twelve surfaces have explicit
+classifications. The earlier forty-surface, 111-surface, two forty-three-surface
+and eight-surface decisions remain recorded as prior reviews; their
 conclusions are not substituted for inspection of these new constructions.
 
 Four additional candidates distinguish the different interfaces.

@@ -57,7 +57,8 @@ def replay(packet, conjugated=False):
         expected.append(tuple(blocks))
     c.require(gs==expected,"conjugated source formula including quadrupole")
     flat = lambda g: [part for b in g for row in b for x in row for part in (x.re,x.im)]
-    c.require(c.rank([flat(g) for g in gs])==12,"response rank twelve")
+    response_rank = c.rank([flat(g) for g in gs])
+    c.require(response_rank==12,"response rank twelve")
     c.require(all(c.star(b)==c.neg(b) for g in gs for b in g),"skew-adjoint source")
     response_rows, restricted_rows = [],[]
     c.require(len(packet["matrix_unit_response_probes"])==12,"tomography coverage")
@@ -71,7 +72,8 @@ def replay(packet, conjugated=False):
         restricted = [b[i][j] for b in g for i in range(3) for j in range(3) if i!=j]
         restricted += [b[i][i]-b[2][2] for b in g for i in range(2)]
         restricted_rows.append([part for x in restricted for part in (x.re,x.im)])
-    c.require(c.rank(response_rows)==12 and c.rank(restricted_rows)==11,"complete/restricted tomography ranks")
+    observable_rank, restricted_rank = c.rank(response_rows), c.rank(restricted_rows)
+    c.require(observable_rank==12 and restricted_rank==11,"complete/restricted tomography ranks")
     pairs = list(combinations(range(12),2))
     c.require(len(packet["ordered_mixed_responses"])==66,"ordered bracket coverage")
     for row,(p,q) in zip(packet["ordered_mixed_responses"],pairs):
@@ -82,13 +84,15 @@ def replay(packet, conjugated=False):
     anti = [vs.index(tuple(-x for x in v)) for v in vs]
     odd = [[gs[p][b][i][j].re-gs[anti[p]][b][i][j].re
             for b in range(2) for i,j in ((0,1),(0,2),(1,2))] for p in range(12) if p<anti[p]]
-    c.require(c.rank(odd)==6,"endogenous rotation logarithms")
+    odd_rank = c.rank(odd)
+    c.require(odd_rank==6,"endogenous rotation logarithms")
     # The six even imaginary symmetric directions fill Sym(3). Together
     # with the six odd directions this is the full closed declared tangent.
     even = [[gs[p][0][i][j].im+gs[anti[p]][0][i][j].im
              for i,j in ((0,0),(1,1),(2,2),(0,1),(0,2),(1,2))]
             for p in range(12) if p<anti[p]]
-    c.require(c.rank(even)==6,"all even symmetric directions")
+    even_rank = c.rank(even)
+    c.require(even_rank==6,"all even symmetric directions")
     phi = c.F5(Q(1,2),Q(1,2))
     arcs = {(i,j) for i in range(12) for j in range(12) if c.dot(original[i],original[j])==phi}
 
@@ -119,6 +123,7 @@ def replay(packet, conjugated=False):
         actions.append(p)
     c.require(len(set(actions))==20,"distinct factors")
     table = {}
+    naturality_pairs = 0
     c.require(len(packet["closed_paths"])==60,"holonomy coverage")
     for row in packet["closed_paths"]:
         p = c.permutation(row["port_action"])
@@ -130,15 +135,19 @@ def replay(packet, conjugated=False):
             perm = tuple(actions[k][i] for i in perm)
         c.require(perm==p and u==c.blocks(row["observed_response"]) and p not in table,"closed-path replay")
         action(u,p)
-        c.require(all(c.bmul(c.bmul(u,gs[i]),tuple(c.star(b) for b in u))==gs[p[i]]
-                      for i in range(12)),"same-response naturality")
+        natural = [c.bmul(c.bmul(u,gs[i]),tuple(c.star(b) for b in u))==gs[p[i]] for i in range(12)]
+        c.require(all(natural),"same-response naturality")
+        naturality_pairs += len(natural)
         table[p] = u
+    compositions = 0
     for g,u in table.items():
         for h,v in table.items():
             c.require(c.bmul(u,v)==table[tuple(g[h[i]] for i in range(12))],"all path compositions")
-    return {"response_rank":12,"observable_rank":12,"restricted_observable_rank":11,
-            "even_symmetric_rank":6,"odd_rotation_rank":6,"brackets":66,
-            "cayley_factors":20,"proper_actions":60,"naturality_pairs":720,"compositions":3600}
+            compositions += 1
+    # Executed counts, not literals: the plus/minus comparison in verify() reads what each replay ran.
+    return {"response_rank":response_rank,"observable_rank":observable_rank,"restricted_observable_rank":restricted_rank,
+            "even_symmetric_rank":even_rank,"odd_rotation_rank":odd_rank,"brackets":len(packet["ordered_mixed_responses"]),
+            "cayley_factors":len(factors),"proper_actions":len(table),"naturality_pairs":naturality_pairs,"compositions":compositions}
 
 
 def verify():

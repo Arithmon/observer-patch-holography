@@ -159,7 +159,7 @@ class SourceCurrentOrderSensitiveInventoryTests(unittest.TestCase):
 
     def test_integrated_tree_review_is_explicit_and_complete(self) -> None:
         review = self.committed["integrated_tree_review"]
-        self.assertEqual(review["surface_count"], 8)
+        self.assertEqual(review["surface_count"], 12)
         paths = [row["path"] for row in review["surfaces"]]
         self.assertEqual(paths, sorted(set(paths)))
         decisions = {row["decision"] for row in review["surfaces"]}
@@ -169,11 +169,11 @@ class SourceCurrentOrderSensitiveInventoryTests(unittest.TestCase):
         )
         self.assertEqual(
             review["from_upstream_main_sha"],
-            "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
+            "9b527a4f8d07a21944b56bc3967a739339aff2c8",
         )
         self.assertEqual(
             review["through_upstream_main_sha"],
-            "9b527a4f8d07a21944b56bc3967a739339aff2c8",
+            "4511928b1d4bee6bca5601e309b44595a76f797f",
         )
         candidate_ids = {row["candidate_id"] for row in self.committed["candidates"]}
         for row in review["surfaces"]:
@@ -187,11 +187,11 @@ class SourceCurrentOrderSensitiveInventoryTests(unittest.TestCase):
             for path in paths
             if path.startswith("Lean/Geometry/") and path.endswith(".lean")
         }
-        self.assertEqual(len(lean_added), 8)
-        self.assertIn("Lean/Geometry/M1Necessity.lean", lean_added)
-        self.assertIn("Lean/Geometry/M1QuantumTransport.lean", lean_added)
+        self.assertEqual(len(lean_added), 5)
+        self.assertIn("Lean/Geometry/SourceActionMeasure.lean", lean_added)
+        self.assertIn("Lean/Geometry/NativeGeometricSourceIdentification.lean", lean_added)
         prior = review["prior_reviews"]
-        self.assertEqual(len(prior), 4)
+        self.assertEqual(len(prior), 5)
         self.assertEqual(prior[0]["surface_count"], 40)
         self.assertEqual(
             prior[-1]["through_upstream_main_sha"],

@@ -24,8 +24,8 @@ PRODUCER = HERE / "source_current_order_sensitive_inventory.py"
 
 SCHEMA = "oph.source_current_order_sensitive_inventory.v2"
 VERDICT = "SOURCE_CURRENT_ORDER_SENSITIVE_OBJECT_NOT_PRESENT"
-PREVIOUS_INVENTORY_BASE_SHA = 'ba84976ad1195892c68fdd0d74a27ab0c899aeb8'
-UPSTREAM_MAIN_SHA = '9b527a4f8d07a21944b56bc3967a739339aff2c8'
+PREVIOUS_INVENTORY_BASE_SHA = '9b527a4f8d07a21944b56bc3967a739339aff2c8'
+UPSTREAM_MAIN_SHA = '4511928b1d4bee6bca5601e309b44595a76f797f'
 
 AUDITED_DIRECTORIES = (
     "code/source_feedback_transport",
@@ -471,6 +471,17 @@ EXPECTED_REVIEW_BA84976A = {
     'code/source_selection_model/verify_response.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
 }
 
+EXPECTED_REVIEW_9B527A4F = {
+    'Lean/Geometry/M1Interfaces.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/M1InterfacesAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/M1Necessity.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/M1NecessityAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/M1QuantumTransport.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/M1QuantumTransportAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/M1VacuumFidelity.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/M1VacuumFidelityAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+}
+
 EXPECTED_PRIOR_INTEGRATED_REVIEWS = (
     (
         "2b03a95caf5030272f7b426b964e816f650153f8",
@@ -533,18 +544,28 @@ EXPECTED_PRIOR_INTEGRATED_REVIEWS = (
         "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
         EXPECTED_REVIEW_BA84976A,
     ),
+    (
+        "ba84976ad1195892c68fdd0d74a27ab0c899aeb8",
+        "9b527a4f8d07a21944b56bc3967a739339aff2c8",
+        EXPECTED_REVIEW_9B527A4F,
+    ),
 )
 
 EXPECTED_INTEGRATED_REVIEW = {
-    'Lean/Geometry/M1Interfaces.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
-    'Lean/Geometry/M1InterfacesAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
-    'Lean/Geometry/M1Necessity.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
-    'Lean/Geometry/M1NecessityAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
-    'Lean/Geometry/M1QuantumTransport.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
-    'Lean/Geometry/M1QuantumTransportAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
-    'Lean/Geometry/M1VacuumFidelity.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
-    'Lean/Geometry/M1VacuumFidelityAxiomAudit.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/FiniteLayerQuadrature.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/GoldenSourceFourier.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/NativeGeometricSourceIdentification.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/SourceActionMeasure.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Geometry/SourceNetClockSeparation.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'Lean/Screen/CommonHistoryFeedback.lean': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/a5_closure/galois_port_frame_certificate.md': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/a5_closure/galois_port_frame_certificate.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/a5_closure/galois_source_response_control.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/a5_closure/manifests/galois_port_frame_reference.json': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/a5_closure/tests/test_galois_port_frame_certificate.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
+    'code/a5_closure/verify_galois_port_frame_independent.py': ('OUTSIDE_REVIEWED_SOURCE_SCOPE', None),
 }
+
 
 
 
