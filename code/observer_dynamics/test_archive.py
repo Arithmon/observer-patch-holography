@@ -44,6 +44,18 @@ def test_receipt_comparison_preserves_exact_claims_and_rejects_large_errors():
     with pytest.raises(AssertionError): compare({"a": 1}, {"a": 1, "b": 2})
 
 
+def test_platform_hash_of_a_floating_array_is_a_note_and_every_other_hash_stays_exact():
+    from . import verify
+    verify.PLATFORM_NOTES.clear()
+    compare({"directions_sha256": "a" * 64, "bounds": [1.0]}, {"directions_sha256": "b" * 64, "bounds": [1.0 + 1e-9]})
+    assert len(verify.PLATFORM_NOTES) == 1 and "directions_sha256" in verify.PLATFORM_NOTES[0]
+    with pytest.raises(AssertionError):  # the derived quantities are still held to tolerance
+        compare({"directions_sha256": "a" * 64, "bounds": [1.0]}, {"directions_sha256": "b" * 64, "bounds": [1.1]})
+    with pytest.raises(AssertionError):  # any other hash stays exact
+        compare({"generator_sha256": "a" * 64}, {"generator_sha256": "b" * 64})
+    verify.PLATFORM_NOTES.clear()
+
+
 def test_crosspins_reject_wrong_terminal_state():
     from .archive_adapter import SIM
     from .retained_measurements import scale_ensemble

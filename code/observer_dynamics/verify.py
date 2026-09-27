@@ -27,8 +27,21 @@ except ImportError:  # Direct script invocation.
     from archive_adapter import ARCHIVE, SIM, RER, check_manifest, frozen_sources, load, sha
 
 
+# A hash a producer takes over the raw bytes of a floating array it computed on the fly (the
+# centres of a geodesic construction, ``directions_sha256``) pins the last bits of that array.
+# numpy's vector kernels are chosen by the CPU's features at run time and differ in their last
+# bits between processor generations: the same runner image, Python and wheels reproduced the
+# archived level-2 hash on one machine and not on another, while every quantity derived from
+# the array agreed to tolerance. Such a key is still compared; a difference is recorded as a
+# platform note instead of a failure, and the derived quantities keep their exact or tolerance
+# comparison, which is the scientific content of the receipt.
+PLATFORM_HASHES = ("directions_sha256",)
+PLATFORM_NOTES: list[str] = []
+
+
 def compare(old, new, path="", *, rtol=1e-7, atol=1e-8):
-    """Exact structural/rational comparison; tolerance only for floating values."""
+    """Exact structural/rational comparison; tolerance only for floating values; a differing
+    hash of a floating array named in PLATFORM_HASHES is a platform note, not a failure."""
     if isinstance(old, dict):
         if set(old) != set(new):
             raise AssertionError(f"Keys differ at {path}: {set(old) ^ set(new)}")
@@ -43,6 +56,9 @@ def compare(old, new, path="", *, rtol=1e-7, atol=1e-8):
         if not math.isclose(old, new, rel_tol=rtol, abs_tol=atol):
             raise AssertionError(f"Numerical receipt mismatch at {path}: {old} != {new}")
     elif old != new:
+        if path.rsplit("/", 1)[-1] in PLATFORM_HASHES:
+            PLATFORM_NOTES.append(f"{path}: archived {old!r}, recomputed {new!r}")
+            return
         raise AssertionError(f"Receipt mismatch at {path}: {old!r} != {new!r}")
 
 
@@ -215,6 +231,7 @@ def main():
              "code_sha256": {p.name: sha(p) for p in sorted(Path(__file__).parent.glob("*.py"))},
              "refinement": innovations, "fresh_noise_rng_replayed": args.replay_refinement,
              "tests": vars(counts), "python": platform.python_version(),
+             "platform_notes": list(PLATFORM_NOTES),
              "verifier_sha256": sha(__file__), "adapter_sha256": sha(Path(__file__).with_name("archive_adapter.py")),
              "elapsed_seconds": time.monotonic() - started,
              "boundaries": ["No microscopic replay of the 48 large terminal arrays or large geometry caches.",
