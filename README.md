@@ -204,10 +204,16 @@ The OPH universe has many obvious similarities with a biological brain. It is
 a distributed network that computes, and its observers are the neurons: each
 one holds a local state, reads its neighbors, and repairs the disagreements it
 finds, and the public world is the equilibrium the whole network settles into.
-We took that architecture and built a machine learning system that works the
-same way, [Cadence](https://github.com/muellerberndt/cadence)
-([paper](https://philpapers.org/rec/MUECAP-2)). The two projects
-complement each other and share many of their theorems.
+
+The same patch net architecture also turns out to be excellent for artificial
+intelligence. [Cadence](https://github.com/muellerberndt/cadence) builds
+brains from observer patches that read themselves. Every decision is the
+equilibrium the network settles into, and the brain learns from local activity
+while it runs, so it can keep learning from an unending stream of experience
+with bounded memory. The paper
+[*Cadence: an architecture for a continuous and efficient stream of intelligence*](https://philpapers.org/rec/MUECAP-2)
+develops the architecture and its experiments. OPH and Cadence complement each
+other and share many of their theorems.
 
 ## The Twist: The Universe Is Its Own Simulator
 

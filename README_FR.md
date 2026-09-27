@@ -223,11 +223,18 @@ L’univers d’OPH présente de nombreuses similitudes évidentes avec un cerve
 biologique. C’est un réseau distribué qui calcule, et ses observateurs en sont
 les neurones : chacun garde un état local, relit ses voisins et répare les
 désaccords qu’il trouve, et le monde public est l’équilibre dans lequel le
-réseau entier se stabilise. Nous avons repris cette architecture pour
-construire un système d’apprentissage automatique qui fonctionne de la même
-manière, [Cadence](https://github.com/muellerberndt/cadence)
-([article](https://philpapers.org/rec/MUECAP-2)). Les deux projets
-se complètent et partagent de nombreux théorèmes.
+réseau entier se stabilise.
+
+La même architecture en réseau de parcelles se révèle aussi excellente pour
+l’intelligence artificielle. [Cadence](https://github.com/muellerberndt/cadence)
+construit des cerveaux à partir de parcelles d’observateur qui se relisent
+elles-mêmes. Chaque décision est l’équilibre dans lequel le réseau se
+stabilise, et le cerveau apprend de son activité locale pendant qu’il
+fonctionne ; il peut donc continuer d’apprendre d’un flux d’expérience sans
+fin, avec une mémoire bornée. L’article
+[*Cadence: an architecture for a continuous and efficient stream of intelligence*](https://philpapers.org/rec/MUECAP-2)
+développe l’architecture et ses expériences. OPH et Cadence se complètent et
+partagent de nombreux théorèmes.
 
 ## Le twist : l’univers est son propre simulateur
 
