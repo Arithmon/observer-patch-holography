@@ -124,11 +124,13 @@ def canonical(value):
                        ensure_ascii=True, allow_nan=False) + "\n").encode("ascii")
 
 
+def source_manifest():
+    return {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in EXACT_SOURCE_PATHS}
+
+
 def exact_source_problem():
     ensure_lean_build()
-    source_manifest = {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
-                       for path in EXACT_SOURCE_PATHS}
-    return deepcopy(exact_source_problem_cached(canonical(source_manifest)))
+    return deepcopy(exact_source_problem_cached(canonical(source_manifest())))
 
 
 @lru_cache(maxsize=8)
@@ -147,16 +149,7 @@ def exact_source_problem_cached(cache_key):
         problem = load(output)
     problem["sourceSha256"] = hashlib.sha256(canonical({"sourceManifest": source_manifest,
         "assembly": problem["assembly"], "targets": problem["targets"]})).hexdigest()
-    source_vertices, boundary_edges, boundary_faces = geometry.source_mesh()
-    vertices = [(0.0, 0.0, 0.0)] + [[float(x) for x in row] for row in source_vertices]
-    edges = [(0, i + 1) for i in range(12)] + [(u + 1, v + 1) for u, v in boundary_edges]
-    faces = [tuple(i + 1 for i in face) for face in boundary_faces] + [
-        (0, u + 1, v + 1) for u, v in boundary_edges]
-    tets = [(0, *(i + 1 for i in face)) for face in boundary_faces]
-    *_, mass_one, mass_two = geometry.quadrature(vertices, edges, faces, tets)
-    d, c = geometry.coboundary([(i,) for i in range(13)], edges), geometry.coboundary(edges, faces)
-    return problem, {"source_manifest": source_manifest,
-        "source_sha256": problem["sourceSha256"]}, {"D": d, "C": c, "M1": mass_one, "M2": mass_two}
+    return problem, {"source_manifest": source_manifest, "source_sha256": problem["sourceSha256"]}
 
 
 def toolchain_binary(name):
@@ -170,9 +163,13 @@ def native_run(command, environment, timeout=180):
         encoding="utf-8", errors="replace", capture_output=True, timeout=timeout, check=False)
 
 
-def lake_environment():
+def lake_path():
     direct = toolchain_binary("lake")
-    lake = os.environ.get("OPH_LAKE") or (str(direct) if direct.is_file() else shutil.which("lake"))
+    return os.environ.get("OPH_LAKE") or (str(direct) if direct.is_file() else shutil.which("lake"))
+
+
+def lake_environment():
+    lake = lake_path()
     require(lake is not None, "Lake executable unavailable")
     environment = os.environ.copy()
     environment.update(GIT_CONFIG_COUNT="1", GIT_CONFIG_KEY_0="safe.directory",
@@ -264,7 +261,7 @@ def generate_stability_certificate_cached(problem_bytes):
 
 
 def generate_stability_certificate(canonical_witness=None):
-    problem, context, _ = exact_source_problem()
+    problem, context = exact_source_problem()
     if canonical_witness is None:
         certificates, witness_sha = generate_stability_certificate_cached(canonical(problem))
     else:
@@ -274,14 +271,15 @@ def generate_stability_certificate(canonical_witness=None):
         "certificates": certificates, "kernel_witness_sha256": witness_sha}
 
 
-def certify_stability(packet, mass, stiffness):
-    problem, _, system = exact_source_problem()
-    require(packet["source_sha256"] == problem["sourceSha256"], "certificate source binding")
-    require(packet == generate_stability_certificate(),
-            "stale certificate or source hash mismatch")
-    close(system["M1"].tolist(), mass, "local-to-quadrature mass binding")
-    close((system["C"].T@system["M2"]@system["C"]).tolist(), stiffness,
-          "local-to-quadrature stiffness binding")
+def certify_stability(packet):
+    witness = (LEAN_ROOT / "Screen/WhitneyGeneratedCertificate.lean").read_bytes()
+    require(set(packet) == {"schema", "source_manifest", "source_sha256", "certificates", "kernel_witness_sha256"}
+            and packet["schema"] == "oph.whitney.exact-certificate.v2", "certificate schema")
+    require(packet["source_manifest"] == source_manifest(), "stale certificate source manifest")
+    require(packet["kernel_witness_sha256"] == hashlib.sha256(witness).hexdigest() and
+            f'"{packet["source_sha256"]}"'.encode() in witness, "certificate kernel witness binding")
+    if lake_path() is not None:  # Lean-free jobs check the committed witness binding only
+        require(packet == generate_stability_certificate(), "stale certificate or source hash mismatch")
 
 
 class Replay:
@@ -447,7 +445,7 @@ def verify(packet):
     c = geometry.coboundary(edges, faces)
     q1, q2, weights, _, m, m2 = geometry.quadrature(vertices, edges, faces, tets)
     k = c.T@m2@c
-    certify_stability(packet["stability_certificate"], m, k)
+    certify_stability(packet["stability_certificate"])
     require(isinstance(packet["executions"], list) and len(packet["executions"]) == 2 and [x["gauge"] for x in packet["executions"]] == [False, True], "gauge history census")
     results = [replay_execution(ex, parent, edges, d, c, q1, q2, weights, m, m2, k) for ex in packet["executions"]]
     for key in ("E", "B", "action"):

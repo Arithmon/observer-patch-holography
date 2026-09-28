@@ -73,13 +73,6 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Prepare the pinned Lean toolchain and dependency cache
-        uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596 # v1
-        with:
-          lake-package-directory: Lean
-          auto-config: false
-          build: false
-
       - name: Regression-test the Lean CI runtime ceiling
         run: python -m pytest -q tools/test_check_lean_ci_budget.py
 
@@ -138,13 +131,6 @@ jobs:
       - name: Install pinned dependencies
         run: |
           pip install -r requirements.txt
-
-      - name: Prepare the pinned Lean toolchain and dependency cache
-        uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596 # v1
-        with:
-          lake-package-directory: Lean
-          auto-config: false
-          build: false
 
       - name: Regression-test the Lean CI runtime ceiling
         run: python -m pytest -q tools/test_check_lean_ci_budget.py

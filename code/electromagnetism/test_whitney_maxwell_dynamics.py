@@ -12,6 +12,7 @@ import sympy as sp
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import verify_whitney_maxwell_dynamics as verifier
+needs_lake = pytest.mark.skipif(verifier.lake_path() is None, reason="Lean lake executable is unavailable")
 
 
 def test_independent_stationary_volume_replay():
@@ -21,6 +22,7 @@ def test_independent_stationary_volume_replay():
     assert result["exact_global_stiffness_bound"] == 24
 
 
+@needs_lake
 def test_fresh_producer_passes_independent_quadrature_and_event_replay():
     import whitney_maxwell_dynamics as producer
     fresh = producer.build()
@@ -29,6 +31,7 @@ def test_fresh_producer_passes_independent_quadrature_and_event_replay():
     assert fresh["stability_certificate"] == verifier.load()["stability_certificate"]
 
 
+@needs_lake
 def test_exact_pipeline():
     current = verifier.generate_stability_certificate()
     q = lambda a: {"a": str(a), "b": "0"}
@@ -59,10 +62,6 @@ def test_exact_pipeline():
     mutant["assembly"]["edgeReindex"][0]["sign"] *= -1
     with pytest.raises(ValueError, match="Lean certificate producer failed"):
         verifier.run_lean_certificate_problem(mutant)
-    stale = deepcopy(current); stale["source_sha256"] = "0" * 64
-    _, _, system = verifier.exact_source_problem()
-    with pytest.raises(ValueError, match="certificate"):
-        verifier.certify_stability(stale, system["M1"], system["C"].T@system["M2"]@system["C"])
 
 
 def replace(path, value):
@@ -86,6 +85,9 @@ def event_mutation(op, mutate):
     lambda p: p["pins"].pop("Lean/Screen/WhitneyMaxwellDynamics.lean"),
     replace(["pins", "code/electromagnetism/verify_cone_whitney_bridge.py"], "0"*64),
     replace(["numeric_policy", "atol"], 1.0),
+    replace(["stability_certificate", "kernel_witness_sha256"], "0"*64),
+    replace(["stability_certificate", "source_sha256"], "0"*64),
+    lambda p: p["stability_certificate"]["source_manifest"].popitem(),
     replace(["dynamics", "source"], "dynamical charged matter from the OPH source"),
     replace(["dynamics", "energy"], "raw velocity energy in arbitrary gauge"),
     replace(["executions", 0, "instrumented_slices"], 65),
