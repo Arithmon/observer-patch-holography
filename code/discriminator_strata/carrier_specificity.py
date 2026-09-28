@@ -21,6 +21,17 @@ interpolation in the quadratic field; exactly the Galois-symmetric sign
 patterns have rational coefficients, and the declared law is recovered
 coefficient-exactly from its sign pattern.
 
+The orientation stratum uses the one orientation-changing operation available
+on a carrier with a unique antipode involution: identifying antipodes. For the
+icosahedron the quotient is the hemi-icosahedron (edge graph K6, the minimal
+triangulation of the real projective plane), the carrier obtained by dropping
+orientation; it joins the menu as a member. Exact rational band projectors
+give the antipode parity of every band, and the published compact-current
+dimension argument (current dimension equal to the port count, one fixed line
+of the transitive A5 action, centre of dimension at most one, inner A5 action)
+is replayed on the twelve ports of the icosahedron and on the six ports of the
+quotient.
+
 The ensemble is a declared bounded menu, the score is a structural
 specificity calibration, and nothing here is a physical forecast. No public
 measurement is read and no comparison is permitted.
@@ -40,7 +51,7 @@ HERE = Path(__file__).resolve().parent
 RUNTIME = HERE / "runtime"
 OUTPUT_PATH = RUNTIME / "carrier_specificity_receipt.json"
 
-SCHEMA = "oph.carrier_specificity_receipt.v1"
+SCHEMA = "oph.carrier_specificity_receipt.v2"
 STATUS = "NAMED_MENU_FINGERPRINT__EXHAUSTIVE_CALIBRATION_OPEN"
 
 
@@ -195,8 +206,41 @@ def complete_bipartite_k66() -> list[tuple[str, str]]:
     return [(a, b) for a in left for b in right]
 
 
+def antipodal_quotient(edges: list[tuple[str, str]], prefix: str) -> list[tuple[str, str]]:
+    """Identify every vertex with its unique antipode and keep the edge image."""
+
+    names = sorted({name for edge in edges for name in edge})
+    index = {name: position for position, name in enumerate(names)}
+    pairing = antipode_pairing(adjacency_matrix(edges))
+    require(pairing is not None, "carrier has no unique antipode involution")
+    classes = sorted({min(v, pairing[v]) for v in range(len(names))})
+    label = {
+        v: f"{prefix}{classes.index(min(v, pairing[v]))}" for v in range(len(names))
+    }
+    quotient = set()
+    for left, right in edges:
+        a, b = label[index[left]], label[index[right]]
+        require(a != b, "antipodal vertices are adjacent")
+        quotient.add((min(a, b), max(a, b)))
+    return sorted(quotient)
+
+
+def hemi_icosahedron() -> list[tuple[str, str]]:
+    """Antipodal quotient of the icosahedron: six port classes, edge graph K6.
+
+    Each of the fifteen quotient edges is the image of one antipodal pair of
+    icosahedral edges. A5 acts on the six classes through its rotation action
+    on the six fivefold axes, so the carrier keeps the icosahedral rotation
+    symmetry and loses the orientation (the quotient surface is the real
+    projective plane).
+    """
+
+    return antipodal_quotient(icosahedron(), "h")
+
+
 ENSEMBLE: dict[str, Callable[[], list[tuple[str, str]]]] = {
     "icosahedron": icosahedron,
+    "hemi_icosahedron": hemi_icosahedron,
     "cuboctahedron": cuboctahedron,
     "truncated_tetrahedron": truncated_tetrahedron,
     "hexagonal_prism": hexagonal_prism,
@@ -448,7 +492,9 @@ def _compositions(total: int, slots: int):
             yield (head, *tail)
 
 
-def antipodal_involution(matrix: list[list[int]]) -> bool:
+def antipode_pairing(matrix: list[list[int]]) -> dict[int, int] | None:
+    """The unique-farthest-vertex pairing, when it is an involutive automorphism."""
+
     size = len(matrix)
     distances = _all_distances(matrix)
     eccentricity = [max(row) for row in distances]
@@ -461,15 +507,21 @@ def antipodal_involution(matrix: list[list[int]]) -> bool:
             if distances[vertex][other] == diameter
         ]
         if len(far) != 1:
-            return False
+            return None
         pairing[vertex] = far[0]
     if any(pairing[pairing[v]] != v or pairing[v] == v for v in range(size)):
-        return False
-    return all(
+        return None
+    if not all(
         matrix[a][b] == matrix[pairing[a]][pairing[b]]
         for a in range(size)
         for b in range(size)
-    )
+    ):
+        return None
+    return pairing
+
+
+def antipodal_involution(matrix: list[list[int]]) -> bool:
+    return antipode_pairing(matrix) is not None
 
 
 def _all_distances(matrix: list[list[int]]) -> list[list[int]]:
@@ -663,6 +715,238 @@ def response_law_family() -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
+# Orientation stratum: antipode parity and the antipodal quotient
+# ---------------------------------------------------------------------------
+
+# Imported classification inputs of the replayed dimension argument. The
+# compact simple Lie algebras of dimension at most twelve are su(2), su(3) and
+# so(5). An inner A5 action on su(2) or su(3) is trivial or factors through an
+# icosahedral SO(3) representation; the adjoint restrictions are 3 and 3 + 5,
+# so the fixed space has dimension 0 or the full factor dimension.
+COMPACT_SIMPLE_DIMENSIONS: dict[str, int] = {"su(2)": 3, "su(3)": 8, "so(5)": 10}
+INNER_A5_FIXED_DIMENSIONS: dict[str, tuple[int, ...]] = {
+    "su(2)": (0, 3),
+    "su(3)": (0, 8),
+}
+
+
+def _polynomial_at_matrix(
+    coefficients: list[Fraction], matrix: list[list[int]]
+) -> list[list[Fraction]]:
+    """Horner evaluation of a polynomial (low to high) at an integer matrix."""
+
+    size = len(matrix)
+    result = [[Fraction(0)] * size for _ in range(size)]
+    for coefficient in reversed(coefficients):
+        result = [
+            [
+                sum(result[i][k] * matrix[k][j] for k in range(size))
+                + (coefficient if i == j else 0)
+                for j in range(size)
+            ]
+            for i in range(size)
+        ]
+    return result
+
+
+def band_projectors(
+    matrix: list[list[int]],
+) -> list[tuple[str, list[list[Fraction]]]]:
+    """Exact spectral projectors: one per rational band, one for the rest.
+
+    For a rational root r of the squarefree minimal polynomial m, the band
+    projector is q(A)/q(r) with q = m/(x - r). The irrational bands together
+    carry the identity minus the rational projectors, which is rational as
+    well; it is labelled ``galois_pair`` when the irrational residual has
+    degree two.
+    """
+
+    size = len(matrix)
+    minimal = minimal_polynomial(matrix)
+    structure = spectral_structure(matrix)
+    projectors: list[tuple[str, list[list[Fraction]]]] = []
+    total = [[Fraction(0)] * size for _ in range(size)]
+    for root in sorted(polynomial_rational_roots(minimal)):
+        quotient = _deflate(minimal, root)
+        scale = _evaluate(quotient, root)
+        require(scale != 0, "repeated root in a minimal polynomial")
+        values = _polynomial_at_matrix(quotient, matrix)
+        projector = [[value / scale for value in row] for row in values]
+        projectors.append((str(root), projector))
+        total = [
+            [a + b for a, b in zip(row_total, row_projector)]
+            for row_total, row_projector in zip(total, projector)
+        ]
+    residual = [
+        [(1 if i == j else 0) - total[i][j] for j in range(size)]
+        for i in range(size)
+    ]
+    if any(value != 0 for row in residual for value in row):
+        label = (
+            "galois_pair"
+            if structure["irrational_residual_degree"] == 2
+            else "irrational_bands"
+        )
+        projectors.append((label, residual))
+    return projectors
+
+
+def _exact_integer(value: Fraction) -> int:
+    require(value.denominator == 1, "projector trace is not an integer")
+    return int(value)
+
+
+def band_dimensions(matrix: list[list[int]]) -> dict[str, int]:
+    size = len(matrix)
+    return {
+        label: _exact_integer(sum(projector[i][i] for i in range(size)))
+        for label, projector in band_projectors(matrix)
+    }
+
+
+def antipode_band_parities(matrix: list[list[int]]) -> list[dict[str, Any]] | None:
+    """Trace of the antipode permutation on every band, or None without one."""
+
+    pairing = antipode_pairing(matrix)
+    if pairing is None:
+        return None
+    size = len(matrix)
+    rows = []
+    for label, projector in band_projectors(matrix):
+        dimension = _exact_integer(sum(projector[i][i] for i in range(size)))
+        trace = _exact_integer(sum(projector[pairing[i]][i] for i in range(size)))
+        if trace == dimension:
+            parity = "even"
+        elif trace == -dimension:
+            parity = "odd"
+        else:
+            parity = "mixed"
+        rows.append(
+            {
+                "band": label,
+                "dimension": dimension,
+                "antipode_trace": trace,
+                "parity": parity,
+            }
+        )
+    return rows
+
+
+def _simple_factor_multisets(total: int, names: list[str]) -> list[tuple[str, ...]]:
+    if total == 0:
+        return [()]
+    multisets = []
+    for position, name in enumerate(names):
+        size = COMPACT_SIMPLE_DIMENSIONS[name]
+        if size <= total:
+            for rest in _simple_factor_multisets(total - size, names[position:]):
+                multisets.append((name, *rest))
+    return multisets
+
+
+def replay_dimension_argument(ports: int) -> dict[str, Any]:
+    """Replay the published compact-current dimension argument on ``ports``.
+
+    Premises, as in the gauge-structure paper: the faithful response gives
+    a compact reductive current algebra g with dim g equal to the port
+    count; the transitive A5 action on the ports leaves one fixed line, so
+    dim g^A5 = 1; the inner A5 action fixes the centre pointwise, so
+    dim Z(g) <= 1. A split into a centre and simple factors is admissible
+    when some choice of inner A5 actions on its factors gives a fixed space
+    of dimension exactly one.
+    """
+
+    require(ports <= 12, "the imported simple-dimension menu covers twelve ports")
+    candidates: list[str] = []
+    admissible: list[str] = []
+    for centre in (0, 1):
+        for factors in _simple_factor_multisets(
+            ports - centre, list(COMPACT_SIMPLE_DIMENSIONS)
+        ):
+            fixed = {centre}
+            for factor in factors:
+                require(
+                    factor in INNER_A5_FIXED_DIMENSIONS,
+                    f"no imported fixed-dimension menu for {factor}",
+                )
+                fixed = {a + b for a in fixed for b in INNER_A5_FIXED_DIMENSIONS[factor]}
+            label = "+".join((["u(1)"] if centre else []) + list(factors))
+            candidates.append(label)
+            if 1 in fixed:
+                admissible.append(label)
+    return {"ports": ports, "candidates": candidates, "admissible": admissible}
+
+
+def antipode_parity_table() -> dict[str, list[dict[str, Any]]]:
+    table = {}
+    for name in sorted(ENSEMBLE):
+        rows = antipode_band_parities(adjacency_matrix(ENSEMBLE[name]()))
+        if rows is not None:
+            table[name] = rows
+    return table
+
+
+def orientation_stratum() -> dict[str, Any]:
+    carrier = adjacency_matrix(icosahedron())
+    parities = antipode_band_parities(carrier)
+    require(parities is not None, "icosahedron antipode involution drift")
+    even = {row["band"]: row["dimension"] for row in parities if row["parity"] == "even"}
+    odd = {row["band"]: row["dimension"] for row in parities if row["parity"] == "odd"}
+    require(
+        all(row["parity"] != "mixed" for row in parities),
+        "an icosahedral band mixes antipode parities",
+    )
+    quotient = adjacency_matrix(hemi_icosahedron())
+    quotient_bands = band_dimensions(quotient)
+    degree = sum(carrier[0])
+    require(
+        all(sum(row) == degree for row in carrier),
+        "icosahedron is not regular",
+    )
+    charge_mode_band = str(degree)
+    return {
+        "carrier": "icosahedron",
+        "antipodal_quotient_member": "hemi_icosahedron",
+        "band_parities": parities,
+        "even_sector_bands": even,
+        "odd_sector_bands": odd,
+        "quotient_bands": quotient_bands,
+        "quotient_bands_equal_even_sector": quotient_bands == even,
+        "galois_pair_parity": next(
+            row["parity"] for row in parities if row["band"] == "galois_pair"
+        ),
+        "charge_mode_band": charge_mode_band,
+        "charge_mode_parity": next(
+            row["parity"] for row in parities if row["band"] == charge_mode_band
+        ),
+        "replayed_dimension_argument": {
+            "icosahedron": replay_dimension_argument(len(carrier)),
+            "hemi_icosahedron": replay_dimension_argument(len(quotient)),
+        },
+        "imported_inputs": {
+            "compact_simple_dimensions": COMPACT_SIMPLE_DIMENSIONS,
+            "inner_a5_fixed_dimensions": {
+                name: list(values) for name, values in INNER_A5_FIXED_DIMENSIONS.items()
+            },
+            "a5_transitive_on_ports_and_on_antipodal_classes": True,
+        },
+        "claim_boundary": (
+            "exact finite statements on the declared carriers: antipode "
+            "parities of the adjacency bands, equality of the quotient "
+            "spectrum with the antipode-even sector, and a replay of the "
+            "published compact-current dimension argument on the imported "
+            "inputs listed here; the hemi-icosahedron is a counterfactual "
+            "ablation outside A1 (it is nonorientable), not an OPH branch; "
+            "reading the antipode-odd sector as charge-conjugation-twisted "
+            "configurations, whose total charge vanishes because the charge "
+            "mode is antipode-even, consumes the orientation-reversal and "
+            "charge-conjugation identification of the sector category and a "
+            "physical charge attachment, neither of which is supplied here"
+        ),
+    }
+
+
+# ---------------------------------------------------------------------------
 # Assembly
 # ---------------------------------------------------------------------------
 
@@ -696,6 +980,8 @@ def build_receipt() -> dict[str, Any]:
         "full_hit_members": full_hits,
         "unique_full_hit": full_hits == ["icosahedron"],
         "response_law_family": laws,
+        "orientation_stratum": orientation_stratum(),
+        "antipode_parity_table": antipode_parity_table(),
         "gauge_stratum_note": (
             "the current-algebra, center-quotient, charge-lattice, and "
             "matter-menu producers consume the twelve-port response "
@@ -705,11 +991,13 @@ def build_receipt() -> dict[str, Any]:
             "declared pipeline"
         ),
         "claim_boundary": (
-            "the ensemble is a declared bounded menu of twelve carriers and "
+            "the ensemble is a declared bounded menu of thirteen carriers and "
             "sixteen response laws; the score calibrates the "
             "orientation-blind spectral and response-law stratum of the "
-            "registered hits and is not a physical forecast; the oriented "
-            "structure, the gauge-side producers beyond their typed "
+            "registered hits and is not a physical forecast; the orientation "
+            "stratum classifies antipode parity on the menu and the antipodal "
+            "quotient of the icosahedron; the oriented structure beyond that "
+            "quotient, the gauge-side producers beyond their typed "
             "precondition rows, and carriers outside the menu are not "
             "classified"
         ),
