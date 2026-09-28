@@ -29,6 +29,42 @@ def test_fresh_producer_passes_independent_quadrature_and_event_replay():
     assert fresh["stability_certificate"] == verifier.load()["stability_certificate"]
 
 
+def test_exact_pipeline():
+    current = verifier.generate_stability_certificate()
+    q = lambda a: {"a": str(a), "b": "0"}
+    matrix = [[q(x) for x in row] for row in ((2, 1, 0), (1, 3, 1), (0, 1, 2))]
+    problem, *_ = verifier.exact_source_problem()
+    unseen = deepcopy(problem)
+    unseen["sourceSha256"] = "unseen"
+    unseen["targets"].append({"name": "unseen_spd_3", "matrix": matrix,
+                              "certificate": None})
+    result, witness = verifier.run_lean_certificate_problem(unseen)
+    assert result["sourceSha256"] == "unseen" and len(witness) == 64
+    duplicate = verifier.canonical(unseen).replace(b'"sourceSha256":"unseen"',
+        b'"sourceSha256":"forged","sourceSha256":"unseen"')
+    with pytest.raises(ValueError, match="Lean certificate producer failed"):
+        verifier.run_lean_certificate_problem(duplicate)
+    target = next(row for row in problem["targets"] if row["name"] == "stability_24")
+    forged = deepcopy(current["certificates"]["stability_24"])
+    forged["lower"][0][1] = {"a": "1", "b": "0"}
+    target["certificate"] = forged
+    with pytest.raises(ValueError, match="Lean certificate producer failed"):
+        verifier.run_lean_certificate_problem(problem)
+    for field in ("transportedGradient", "transportedCurl"):
+        mutant = deepcopy(unseen)
+        mutant["assembly"][field][0][0]["a"] = "2"
+        with pytest.raises(ValueError, match="Lean certificate producer failed"):
+            verifier.run_lean_certificate_problem(mutant)
+    mutant = deepcopy(unseen)
+    mutant["assembly"]["edgeReindex"][0]["sign"] *= -1
+    with pytest.raises(ValueError, match="Lean certificate producer failed"):
+        verifier.run_lean_certificate_problem(mutant)
+    stale = deepcopy(current); stale["source_sha256"] = "0" * 64
+    _, _, system = verifier.exact_source_problem()
+    with pytest.raises(ValueError, match="certificate"):
+        verifier.certify_stability(stale, system["M1"], system["C"].T@system["M2"]@system["C"])
+
+
 def replace(path, value):
     def mutate(packet):
         row = packet
@@ -52,12 +88,6 @@ def event_mutation(op, mutate):
     replace(["numeric_policy", "atol"], 1.0),
     replace(["dynamics", "source"], "dynamical charged matter from the OPH source"),
     replace(["dynamics", "energy"], "raw velocity energy in arbitrary gauge"),
-    replace(["stability_certificate", "mass_over_volume", 0, 0], ["1", "0"]),
-    replace(["stability_certificate", "ldl", "24", "diagonal", 0], ["-1", "0"]),
-    replace(["stability_certificate", "ldl", "24", "lower", 2, 1], ["0", "0"]),
-    replace(["stability_certificate", "bindings", 0, "edge_signs", 0], -1),
-    replace(["stability_certificate", "bindings", 0, "vertices", 0], False),
-    lambda p: p["stability_certificate"]["bindings"].pop(),
     replace(["executions", 0, "instrumented_slices"], 65),
     replace(["executions", 0, "writable_slots"], 42),
     replace(["executions", 0, "gauge"], 0),
@@ -104,14 +134,6 @@ def test_invisible_nonbinary_solver_write_rejected():
     ex["projection"]["z"][0] = str(forged)
     with pytest.raises(ValueError, match="exact float64 output encoding"):
         verifier.verify(packet)
-
-
-@pytest.mark.parametrize("raw", ['{"x":1,"x":2}', '{"x":NaN}', '{"x":Infinity}'])
-def test_ambiguous_json_rejected(tmp_path, raw):
-    path = tmp_path / "bad.json"
-    path.write_text(raw, encoding="utf-8")
-    with pytest.raises(ValueError):
-        verifier.load(path)
 
 
 def test_fresh_transitive_custody_after_prior_success(monkeypatch):

@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 436,
+  "surface_count": 453,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1620,6 +1620,31 @@
       "allowlisted": false
     },
     {
+      "path": "Lean/Screen/WhitneyActualCertificates.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneyAlgebraicLDL.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneyCertificateCLI.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneyCertificatePipeline.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneyCertifiedConsumers.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
       "path": "Lean/Screen/WhitneyChargedMatter.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
@@ -1645,12 +1670,47 @@
       "allowlisted": false
     },
     {
+      "path": "Lean/Screen/WhitneyCurlRow0.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneyCurlRow1.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneyCurlRow2.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneyCurlRow3.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneyExactSourceProblem.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneyFiniteCertificate.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
       "path": "Lean/Screen/WhitneyFrameMorphism.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
     },
     {
       "path": "Lean/Screen/WhitneyFrameNaturality.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneyGeneratedCertificate.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
     },
@@ -1670,12 +1730,37 @@
       "allowlisted": false
     },
     {
+      "path": "Lean/Screen/WhitneyOmittedCellCounterexample.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
       "path": "Lean/Screen/WhitneyQuantumBridge.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
     },
     {
       "path": "Lean/Screen/WhitneyRotationWitness.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneySourceAssembly.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneySourceGeometry.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneySourceNaturality.lean",
+      "glob": "Lean/Screen/*.lean",
+      "allowlisted": false
+    },
+    {
+      "path": "Lean/Screen/WhitneySourceProblemCLI.lean",
       "glob": "Lean/Screen/*.lean",
       "allowlisted": false
     },

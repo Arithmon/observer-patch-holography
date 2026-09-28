@@ -54,6 +54,8 @@ import WhitneyConeMass
 import WhitneyConeMassNaturality
 import WhitneyMassPremiseInstance
 import WhitneyRotationWitness
+import WhitneySourceNaturality
+import WhitneyOmittedCellCounterexample
 import GaugeKineticInvariantForms
 import OrientedFaceBracketSelector
 import ExteriorComponentBridge
