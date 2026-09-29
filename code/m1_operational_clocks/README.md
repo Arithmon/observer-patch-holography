@@ -16,10 +16,12 @@ retains its exact speed-c record. The proof specifies the operation class
 instead of assuming a low-energy state or a successful M1 read law.
 
 Two normalizable mass packets with a controlled finite preparation cutoff
-produce a positive local Ramsey readout with
-frequency `Delta m/gamma`. Both its visibility and its finite-lattice error
+produce a positive local Ramsey readout with a bounded-error comparison to
+the beat law `Delta m/gamma`. Its reference fringe and finite-lattice error
 are derived. A finite parameter example covers an entire moving-clock cycle
-with visibility above 0.74 and probability error below 0.04. Its tiny spacing
+with reference fringe coefficient above 0.7457, probability error below
+0.035153 and **actual probability swing above 0.6753** after every error.
+The finite signal is not assumed exactly monochromatic. Its tiny spacing
 is an analytic existence witness, not an executed huge lattice. The finite
 executions are periodic waveguide packets at four coarser resolutions,
 including all modes of their transverse-constant invariant sector.

@@ -238,8 +238,11 @@ def clock_interval_certificate():
         bound = 4*(e+d+4*alias+2*tail)+8*iv.exp(-1000)+iv.exp(-18)+preparation
         visibility = (1+sigma**2/radius**2)**iv.mpf('-1.5')*iv.exp(-s2*(k2-k1)**2/2)
         need(bound.b < iv.mpf('0.035153'), 'outward clock-error enclosure')
-        need(visibility.a > iv.mpf('0.7457'), 'outward visibility enclosure')
-        return dict(probability_upper='0.035153', visibility_lower='0.7457')
+        need(visibility.a > iv.mpf('0.7457'), 'outward reference fringe enclosure')
+        phase_miss = (m2-m1)*a/(2*iv.sqrt(3)*gamma)
+        swing = visibility*(1-phase_miss**2/4)-2*bound
+        need(swing.a > iv.mpf('0.6753'), 'observable finite-clock contrast')
+        return dict(probability_upper='0.035153', reference_fringe_lower='0.7457', observable_swing_lower='0.6753')
     finally:
         iv.dps = previous
 

@@ -157,7 +157,8 @@ def analytic_clock():
                 preparation_extent=80., preparation_error=preparation,
                 tail_norm=tail, probability_bound=prob_bound,
                 alias_upper_exponent=-1000, ticks_upper=math.ceil(cycle/tau),
-                interval_certificate=dict(probability_upper='0.035153', visibility_lower='0.7457'))
+                interval_certificate=dict(probability_upper='0.035153', reference_fringe_lower='0.7457',
+                                          observable_swing_lower='0.6753'))
 
 
 def packets():

@@ -119,6 +119,8 @@ def test_finite_clock_witness_is_informative(expected):
     assert witness['visibility'] > .74
     assert witness['cycle']/witness['gamma'] == pytest.approx(2*np.pi/.1)
     assert witness['sampling_error'] > 0 and witness['tail_norm'] > 0
+    assert witness['interval_certificate']['observable_swing_lower'] == '0.6753'
+    assert witness['visibility']-2*witness['probability_bound'] > .6753
 
 
 def test_finite_packets_keep_coherence_and_refine(expected):
@@ -222,7 +224,7 @@ def test_compact_smear_signals_vanish_with_resolution():
 MUTATIONS = ['missing_band', 'missing_grid', 'wrong_mode_count', 'wrong_mass', 'wrong_time',
              'wrong_clock', 'hidden_pi', 'erased_phase', 'fake_inverse', 'superluminal',
              'empty_catalog', 'bool_count', 'string_probability', 'extra_key', 'nan', 'infinity',
-             'zero_spacing', 'zero_tail', 'zero_error_bound']
+             'zero_spacing', 'zero_tail', 'zero_error_bound', 'fake_contrast']
 
 
 def corrupt(evidence, name):
@@ -245,6 +247,7 @@ def corrupt(evidence, name):
     elif name == 'zero_spacing': evidence['analytic_clock']['a'] = 0.
     elif name == 'zero_tail': evidence['analytic_clock']['tail_norm'] = 0.
     elif name == 'zero_error_bound': evidence['analytic_clock']['probability_bound'] = 0.
+    elif name == 'fake_contrast': evidence['analytic_clock']['interval_certificate']['observable_swing_lower'] = '0.7457'
     else: raise ValueError(name)
 
 

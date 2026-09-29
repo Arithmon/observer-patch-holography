@@ -351,16 +351,21 @@ V_R = p_R exp(-s^2 |Delta k|^2/2),
 s^2 = sigma^2 R^2/(sigma^2+R^2).                    (7)
 ```
 
+Here V_R is the reference fringe coefficient; the conventional normalized
+visibility of this reference is V_R/p_R. Neither number alone bounds the
+contrast of the finite clock after its error terms are included.
+
 This sign convention follows `<+_theta|Psi>`; changing the detector phase
 convention changes the sign of theta only. Gaussian integration gives (7)
 because `Delta E - Delta k.u = Delta m/gamma`. A single unobservable
 global phase is not being called a clock. The relative phase is read by a
-bounded positive internal interference effect; visibility is explicitly
-nonzero. Truncating the detector to `|x-u t|<=L_d` gives finite extent and
+bounded positive internal interference effect. Truncating the detector to
+`|x-u t|<=L_d` gives finite extent and
 changes every probability by at most `exp(-L_d^2/(2R^2))`. The actual
 continuum probability differs from (7) by at most e plus this truncation
-error. The rest clock has frequency Delta m; the moving clock has frequency
-Delta m/gamma, using the same native time t and speed v.
+error. The rest reference has frequency Delta m; the moving reference has
+frequency Delta m/gamma, using the same native time t and speed v. Actual
+packet reads obey the stated error relative to those laws.
 
 ### Finite lattice error and a constructive parameter choice
 
@@ -445,7 +450,7 @@ For example choose c=3, v=1, m1=100, m2=100.1, u=(0.6,0,0), sigma=10,
 R=100, L_d=600, P=80, a=1e-9, K=max|k_j|+1 and
 `T=2 pi gamma/Delta m+tau` (through the first native tick after one moving
 cycle). Equations (6)--(8a) give an outward-enclosed probability bound below
-0.035153, while V_R exceeds 0.7457. All
+0.035153, while the reference V_R exceeds 0.7457. All
 parameters are finite. The very small lattice spacing is an analytic
 existence witness, not a claimed affordable lattice run. The accompanying
 finite runs use coarser spacings, retain all Fourier modes and report their
@@ -453,6 +458,16 @@ actual probabilities and errors rather than claiming (8) is sharp there.
 The independent checker uses outward interval arithmetic for these strict
 inequalities, with `erfc(x)<=exp(-x^2)/(x sqrt(pi))`; it does not treat a
 rounded point evaluation as a certified enclosure.
+
+There is an actual observable contrast guarantee as well. With theta=0,
+compare time zero and the native tick nearest `pi gamma/Delta m`. Its
+reference phase misses pi by at most `d=Delta m tau/(2 gamma)`. If B is
+the full probability bound, the finite clock's probability swing is at
+least `V_R(1-d^2/4)-2B`, using `cos(d)>=1-d^2/2`. Outward interval
+arithmetic gives a swing **greater than 0.6753** for the example, including
+both finite cutoffs. This is a claim about actual click probabilities.
+The finite packet signal is compared with a sinusoid with explicit error;
+it is not claimed to be an exactly monochromatic clock at finite resources.
 
 More generally any fixed number of readable cycles and error tolerance
 can be achieved with finite parameters: first choose R/sigma and
