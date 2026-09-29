@@ -10,6 +10,8 @@ The main reading route lives in [`paper/`](../paper/). This directory contains f
 
 ## Quantitative And Physical Branches
 
+- [Massive Flights, Resolved Reads and Observable Clocks](MASSIVE_OPERATIONAL_CLOCKS.md) derives the full massive tetrahedral spectrum, a sharp all-band ballistic speed, local read error bounds and a normalizable interference clock at native flight time. The gate family and positive Floquet accounting observable are declared; source admission and physical energy calibration are separate.
+
 - [The Positive-Chamber Koide Identity for Icosahedral Face Circulants](koide_identity_from_positive_c3_face_circulants.pdf) ([source](koide_identity_from_positive_c3_face_circulants.tex)) proves the exact positive-eigenvalue identity \(Q=1/3+(2/3)(|b|/a)^2\) and the conditional finite tracial Gelfand–Naimark–Segal balance. Physical charged-family attachment, phase, and numerical mass ratios are open; the target-informed numerical near-match is diagnostic.
 - [The de Sitter Time-Advance Sign from a Finite Screen with Fixed Capacity](de_sitter_time_advance_sign_from_fixed_screen_capacity.pdf) ([source](de_sitter_time_advance_sign_from_fixed_screen_capacity.tex)) proves the pure-de-Sitter shock normalization, finite entropy maximum, uniform capacity-transfer law, analytic curvature, and line-graph spectrum identity. The time-advance interpretation is conditional on an explicit physical dictionary.
 - [The Fine-Structure Constant as an OPH Pixel Fixed Point](fine_structure_constant_derivation.pdf) ([source](fine_structure_constant_derivation.tex)) develops the local closure calculation and its certificates.
