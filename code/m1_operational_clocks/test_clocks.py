@@ -123,6 +123,22 @@ def test_finite_clock_witness_is_informative(expected):
     assert witness['visibility']-2*witness['probability_bound'] > .6753
 
 
+def test_common_dirac_velocity_is_not_assumed_exact_on_the_lattice():
+    # Different masses at common reference velocity have unequal native
+    # velocities at finite spacing; both approach the reference under refinement.
+    def speed(a, mass):
+        tau = a/np.sqrt(3)
+        k = 1.25*mass*.6
+        s = np.sin(a*k)**2/3
+        omega = np.arccos(np.cos(mass*tau)*np.sqrt(1-s))
+        return (a/tau)*np.cos(mass*tau)*np.sin(2*a*k)/(6*np.sqrt(1-s)*np.sin(omega))
+    coarse = [speed(.1, m) for m in (4., 4.2)]
+    fine = [speed(.001, m) for m in (4., 4.2)]
+    assert abs(coarse[0]-coarse[1]) > 1e-4
+    assert max(abs(x-.6) for x in coarse) > .001
+    assert max(abs(x-.6) for x in fine) < 1e-5
+
+
 def test_finite_packets_keep_coherence_and_refine(expected):
     rows = expected['packets']['rows']
     coarse = max(abs(p-r) for row in rows[:3] for p, r in zip(row['probabilities'], row['rigid']))

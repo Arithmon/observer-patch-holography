@@ -136,10 +136,11 @@ converges weakly to the spectral velocity distribution, supported in the
 ball of radius `v cos(mu)`. To prove this, write the characteristic function
 in momentum space: it contains
 `U(k)^(-n) U(k-xi/(n tau))^n` and the translated initial wavefunction.
+Define phase branches by `U(k)=sum_j exp(-i theta_j(k)) P_j(k)`.
 Away from the finitely many band-crossing points, spectral projectors and
 phases are smooth. Terms with different eigenvalues have projector product
 tending to zero; terms in the same eigenspace tend to the phase
-`exp(i xi.grad(theta)/tau)` with the appropriate sign convention.
+`exp(i xi.grad(theta)/tau)`.
 The integrand is bounded by an L1 function after approximating the initial
 L2 wavefunction by a smooth one; unitarity bounds the approximation error.
 Dominated convergence and the characteristic-function continuity theorem
@@ -298,7 +299,10 @@ k_j = gamma m_j u/v^2,  E_j = gamma m_j.
 
 These momenta are the solutions of the group-velocity equation
 `grad E_m(k)=v^2 k/E_m(k)=u` for the dispersion derived in section 2.
-They are not assigned by a proper-time clock rule.
+They are not assigned by a proper-time clock rule. Their common velocity
+is a Dirac reference velocity: the exact finite-walk velocities need not
+equal u or each other. The full-channel error (1) and detector estimate (8)
+include that finite-spacing drift; equality is not an additional premise.
 
 There is a common unit spinor xi with `H_mj(k_j)xi=E_j xi` and `R xi=xi`,
 since the normalized matrices H/E are identical for both masses and commute
@@ -470,8 +474,9 @@ The finite packet signal is compared with a sinusoid with explicit error;
 it is not claimed to be an exactly monochromatic clock at finite resources.
 
 More generally any fixed number of readable cycles and error tolerance
-can be achieved with finite parameters: first choose R/sigma and
-L_d/R large; choose sigma Delta m small for visibility; increase m1 to
+can be achieved with finite parameters: first choose R/sigma, L_d/R and
+P/sigma large for capture and both cutoff tails; choose sigma Delta m small
+for visibility; increase m1 to
 make (6) small over the chosen cycles; choose r to reduce h; finally
 decrease a to reduce D,A and the aliases. This is an explicit construction,
 not a premise that good clocks exist. It concerns inertial free clocks.
@@ -497,8 +502,14 @@ middle crossings either equal-energy subspace convention gives the same
 energy; the pointwise estimate can be interpreted almost everywhere.
 The sampled fixed Gaussian has uniformly bounded Fourier moments as a
 tends to zero, by its exponentially decaying aliases. Thus (9) is uniform
-under refinement. The actual walk conserves E_a exactly. This argument
-keeps the high-band leakage and charges its full cost.
+under refinement. This also holds for the finite preparation: if g is its
+fixed compact C2 envelope including its plane wave, (3) and the Brillouin
+cube bound `|k|<=sqrt(3)pi/a` give
+`|| |k| (S_a g)^hat || <= || |k| ghat || + sqrt(3)pi A_a(g)/a`.
+The right side is bounded, and `||S_a g||` tends to the nonzero `||g||`.
+Thus both normalized moments in (9) stay bounded for the actual finite
+preparation. The actual walk conserves E_a exactly. This argument keeps
+the high-band leakage and charges its full cost.
 
 In contrast any normalized single-site particle, whatever its internal
 spinor, has
