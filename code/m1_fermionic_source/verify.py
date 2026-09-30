@@ -13,7 +13,7 @@ if __package__ in (None, ''):
 from m1_source_realization import verify as parent
 from .check import exact, keys, need, verify_gadgets, verify_small
 from .experiment_check import (verify_conversions, verify_detector, verify_interaction,
-                               verify_measurements, verify_noise, verify_resolved_reads)
+                               verify_measurements, verify_noise, verify_resolved_reads, verify_weighted_measurements)
 from .geometry_check import verify_budgets, verify_clock_witness, verify_graphs, verify_walks
 from .preparation_check import verify_preparation
 
@@ -22,7 +22,7 @@ HERE = Path(__file__).resolve().parent
 OWN_FILES = ('__init__.py', 'pauli.py', 'model.py', 'circuits.py', 'spatial.py', 'walk.py',
              'preparation.py', 'experiments.py', 'check.py', 'geometry_check.py',
              'preparation_check.py', 'experiment_check.py', 'verify.py', 'build.py',
-             'test_fermionic.py', 'README.md', 'CONTRACT.md')
+             'test_fermionic.py', 'README.md', 'CONTRACT.md', 'AUDIT.md')
 SOURCES = sorted(set(parent.SOURCES + ['code/m1_source_realization/receipt.json']
                     + ['code/m1_fermionic_source/'+p for p in OWN_FILES]
                     + ['extra/FERMIONIC_SOURCE_CLOCKS.md', '.github/workflows/m1-fermionic-source.yml']))
@@ -46,11 +46,12 @@ def claim_pins():
 
 
 def verify_evidence(evidence):
-    keys(evidence, 'small_graphs native_rotations native_measurements geometry preparation '
+    keys(evidence, 'small_graphs native_rotations native_measurements weighted_measurements geometry preparation '
                    'budgets walks conversions resolved_reads detector interaction noise clock_witness')
     cache = verify_small(evidence['small_graphs'])
     verify_gadgets(evidence['native_rotations'])
     verify_measurements(evidence['native_measurements'])
+    verify_weighted_measurements(evidence['weighted_measurements'])
     verify_graphs(evidence['geometry'])
     verify_preparation(evidence['preparation'])
     verify_budgets(evidence['budgets'])

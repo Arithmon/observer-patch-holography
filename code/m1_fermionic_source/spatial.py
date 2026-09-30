@@ -134,20 +134,31 @@ def budgets():
 
 
 def clock_witness():
+    # Conservative binary reports; the independent high-precision checker
+    # verifies the direction and every composed inequality, not just closeness.
+    def up(x):
+        for _ in range(32):
+            x = math.nextafter(x, math.inf)
+        return x
+    def down(x):
+        for _ in range(32):
+            x = math.nextafter(x, 0.)
+        return x
     q, a, c = 2**41, 1e-9, 3.
     r = budget(q, a, c)
     tau = math.sqrt(3)*a/c
     ticks = math.ceil(25*math.pi/tau)
-    packet = 6*12*32*64*r['tree_depth_upper']*r['rotation_time_upper']
-    read = 72*64*r['rotation_time_upper']
-    report = math.sqrt(3)*a*(q-1)/c+64*41*r['event_time']
-    total = r['preparation_time_upper']+packet+ticks*r['wall_tick']+read+report
+    prep, tick = up(r['preparation_time_upper']), up(r['wall_tick'])
+    packet = up(6*12*32*64*r['tree_depth_upper']*r['rotation_time_upper'])
+    read = up(72*64*r['rotation_time_upper'])
+    report = up(math.sqrt(3)*a*(q-1)/c+64*41*r['event_time'])
+    total = up(prep+packet+ticks*tick+read+report)
     # Extend the fixed positive Fock accounting observable with its upper
     # spectral endpoint on invalid-code outcomes. No discarded bad syndrome.
-    energy_range = 32*q**3*math.pi/tau
+    energy_range = up(32*q**3*math.pi/tau)
     error_budget = min(1e-5, .01/energy_range)
-    rate = error_budget/(2*r['noisy_interfaces_upper']*total)
-    failure = rate*r['noisy_interfaces_upper']*total
+    rate = down(error_budget/(2*r['noisy_interfaces_upper']*total))
+    failure = up(rate*r['noisy_interfaces_upper']*total)
     # All elementary quantum events, idle slots and classical OR reports
     # receive retained records. This is a conservative finite allocation.
     setup_ops = (10*r['edge_qubits_upper']+64*48*(38*368+5+4*368)*q**3
@@ -156,13 +167,13 @@ def clock_witness():
     records = setup_ops+quantum_ops+64*q**3
     bits = (records+32*q**3+1).bit_length()
     return dict(workspace_side=q, spacing=a, speed=c, native_tick=tau, ticks=ticks,
-                wall_factor=r['wall_factor'], wall_tick=r['wall_tick'],
-                gauge_preparation_time_upper=r['preparation_time_upper'],
+                wall_factor=r['wall_factor'], wall_tick=tick,
+                gauge_preparation_time_upper=prep,
                 packet_preparation_time_upper=packet, read_time_upper=read,
                 report_time_upper=report, total_exposure_upper=total,
                 noisy_interfaces_upper=r['noisy_interfaces_upper'],
                 accounting_range_upper=energy_range, phase_rate_cap=rate,
-                trace_error_upper=failure, accounting_error_upper=energy_range*failure,
-                swing_lower=.6753-2*failure, wall_beat_frequency=.08/r['wall_factor'],
+                trace_error_upper=failure, accounting_error_upper=up(energy_range*failure),
+                swing_lower=down(.6753-2*failure), wall_beat_frequency=.08/r['wall_factor'],
                 primitive_events_upper=records, record_identifier_bits=bits,
                 central_record_slots_upper=(1+8*bits)*records)

@@ -38,6 +38,8 @@ def native_one(kind, angle=None):
     u = dict(h=H, s=np.diag([1., 1j]), sdg=np.diag([1., -1j]), x=np.array([[0., 1.], [1., 0.]])).get(kind)
     if kind == 'rz':
         u = np.diag(np.exp(1j*angle*np.array([1., -1.])))
+    elif kind == 'ry':
+        u = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
     if u is None:
         raise ValueError('unknown native one-code pulse')
     processor = np.eye(6, dtype=complex)
@@ -101,4 +103,42 @@ def measurements():
         rows.append(dict(qubits=n, word=p.row(), tape=tape,
                          unitary=encode(execute(tape, n+1)), pulses=len(tape),
                          pulse_code_events=2*len(tape)+2))
+    return rows
+
+
+def weighted_program(word, weight, qubits):
+    """QND parity read, actual helper reset, conditional native pulse, read."""
+    if type(weight) not in (int, float) or not np.isfinite(weight) or not 0 <= weight <= 1:
+        raise ValueError('finite acceptance probability in [0,1] required')
+    tape = measurement_tape(word, qubits)
+    return dict(qubits=qubits, word=word.row(), weight=float(weight), qnd_tape=tape,
+                reset_before_acceptance=True,
+                acceptance_angles=[0., float(np.arctan2(np.sqrt(weight), np.sqrt(1-weight)))],
+                outcomes=[[n, b] for n in (0, 1) for b in (0, 1)],
+                pulses_per_path=len(tape)+1, code_events_per_path=2*(len(tape)+1)+8)
+
+
+def execute_weighted(program):
+    n = program['qubits']
+    size = 1 << n
+    qnd = execute(program['qnd_tape'], n+1)
+    maps = []
+    for occupied, accepted in program['outcomes']:
+        data = qnd[occupied*size:(occupied+1)*size, :size]
+        helper = np.eye(2)[:, occupied]
+        if program['reset_before_acceptance']:
+            # The measured helper is |occupied>. This is its explicit
+            # proper-code reset branch |0><occupied|, not a free new ancilla.
+            helper = np.outer(np.eye(2)[:, 0], np.eye(2)[occupied])@helper
+        pulse = native_one('ry', program['acceptance_angles'][occupied])[:2, :2]
+        maps.append((pulse@helper)[accepted]*data)
+    return maps
+
+
+def weighted_measurements():
+    rows = []
+    for p, weight in ((Word(3, 6, 1), .37), (Word(0, 7, 2), .81),
+                      (Word(0, 7), 0.), (Word(0, 7), 1.)):
+        program = weighted_program(p, weight, 3)
+        rows.append(dict(program=program, kraus=[encode(k) for k in execute_weighted(program)]))
     return rows

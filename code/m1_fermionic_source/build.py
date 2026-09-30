@@ -13,7 +13,8 @@ from . import circuits, experiments, model, preparation, spatial, verify, walk
 
 def candidate():
     return dict(small_graphs=model.small_graphs(), native_rotations=circuits.gadgets(),
-                native_measurements=circuits.measurements(), geometry=spatial.graphs(),
+                native_measurements=circuits.measurements(), weighted_measurements=circuits.weighted_measurements(),
+                geometry=spatial.graphs(),
                 preparation=preparation.evidence(), budgets=spatial.budgets(), walks=walk.evidence(),
                 conversions=experiments.conversions(), resolved_reads=experiments.resolved_reads(),
                 detector=experiments.detector(), interaction=experiments.interaction(),

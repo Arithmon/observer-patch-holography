@@ -9,7 +9,8 @@ Bravyi--Kitaev superfast encoding is explicitly credited; its source compiler
 and complete resource/noise account are the result here.
 
 Read the [objective, deliverables and exit](CONTRACT.md) and the
-[all-size proof](../../extra/FERMIONIC_SOURCE_CLOCKS.md).
+[all-size proof](../../extra/FERMIONIC_SOURCE_CLOCKS.md), and the
+[audit findings and contract review](AUDIT.md).
 
 | Deliverable | Result and check |
 | --- | --- |
@@ -35,13 +36,18 @@ not import this package's producer modules. It reconstructs small CAR
 operators from occupation signs; tensor-Pauli matrices from I,X,Z; Fock lifts
 from determinants; spatial walks from a direct reflecting permutation; loop
 corrections from binary Gaussian elimination; and timing/noise budgets with
-70-digit arithmetic. It also replays the parent's source certificate.
+70-digit arithmetic with one-sided checks on the finite clock bounds.
+Weighted detector reads include the native helper reset, conditional pulse
+and all four retained histories, with their quantum outputs checked rather
+than only the aggregate click probability. It also replays the parent's
+source certificate.
 
 The compact receipt contains small matrices, native gate programs and hashes
 of exactly regenerated sparse graph/decoder data. No external raw archive is
 needed. The verifier rejects missing parity blocks, omitted negative outcomes,
 bad loop signs, ordinary swaps, changed complex reads, decoder corruption,
-false vacuum-noise claims, zero time/rate budgets, altered claim/source pins,
+false vacuum-noise claims, zero time/rate budgets, slightly wrong-sided
+numerical bounds, incomplete weighted instruments, altered claim/source pins,
 extra or duplicate JSON fields and nonfinite numbers. Hostile physics tests
 bypass custody to ensure that hashes are not the only defence. CLI rejection
 also runs under `python -O` with producer imports disabled.
@@ -69,7 +75,12 @@ CCG and the declared cofinal drive/event capability retain their existing
 status. There is no new transport axiom and no freely supplied fermionic
 gate set, pure A3 vacuum, instantaneous distributed report or hidden
 postselection. Central classical records are assumed reliable in this stated
-quantum dephasing model and their operations are counted. The construction
+quantum dephasing model and their operations are counted. As in the parent,
+the fixed classical program is distributed in finite charged prehistory
+before quantum preparation; the displayed exposure bound starts with that
+preparation. Quantum hardware is O(q^3), while this conservative retained
+ledger uses O(q^4 log q) central slots at fixed physical volume and horizon.
+The construction
 does not select fermionic statistics, empirical masses/couplings, a physical
 energy standard or a unique microscopic source. The free clock theorem is
 not extended to nonzero density coupling. Odd CAR fields are not identified

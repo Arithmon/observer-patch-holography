@@ -6,6 +6,7 @@ import numpy as np
 
 from .model import Encoding, encode
 from .pauli import Word
+from .circuits import execute_weighted, weighted_program
 
 
 def conversions():
@@ -44,16 +45,17 @@ def detector():
                 u = enc.execute(circuit)@u
                 tapes.append(dict(scalar=encode(scalar), rotations=[dict(word=w.row(), theta=float(t)) for w, t in tape]))
         effect = np.zeros_like(u)
-        instruments = []
+        instruments, programs = [], []
         for i, weight in enumerate(weights):
-            occupation = (np.eye(len(u))-enc.b(i, parity).matrix(enc.m))/2
-            instruments.append((np.sqrt(weight)*occupation,
-                                [np.sqrt(1-weight)*occupation, np.eye(len(u))-occupation]))
+            program = weighted_program(enc.b(i, parity), weight, enc.m)
+            programs.append(program)
+            maps = execute_weighted(program)
+            instruments.append((maps[3], maps[:3]))
         for click, no_click in reversed(instruments):
             effect = click.conj().T@click+sum(k.conj().T@effect@k for k in no_click)
         effect = u.conj().T@effect@u
         rows.append(dict(parity=parity, theta=theta, weights=list(weights), circuits=tapes,
-                         code_effect=encode(iso.conj().T@effect@iso)))
+                         instruments=programs, code_effect=encode(iso.conj().T@effect@iso)))
     return rows
 
 

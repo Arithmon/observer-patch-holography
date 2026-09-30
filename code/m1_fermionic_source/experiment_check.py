@@ -47,6 +47,47 @@ def verify_measurements(rows):
         exact(row['pulse_code_events'], 2*len(row['tape'])+2)
 
 
+def replay_weighted(program, n, raw, weight):
+    keys(program, 'qubits word weight qnd_tape reset_before_acceptance acceptance_angles '
+                  'outcomes pulses_per_path code_events_per_path')
+    exact([program['qubits'], program['word'], program['weight']], [n, raw, weight])
+    exact(program['reset_before_acceptance'], True)
+    exact(program['outcomes'], [[0, 0], [0, 1], [1, 0], [1, 1]])
+    exact(program['acceptance_angles'], [0., math.asin(math.sqrt(weight))])
+    need(type(program['qnd_tape']) is list and 0 < len(program['qnd_tape']) <= 7*n+1, 'weighted QND pulse bound')
+    actual = replay_native(program['qnd_tape'], n+1)
+    p = word(raw, n)
+    identity = np.eye(1 << n)
+    plus, minus = (identity+p)/2, (identity-p)/2
+    close(actual, np.kron(np.eye(2), plus)+np.kron(X, minus), 'weighted QND dilation')
+    # Independent reset/read contraction of every classical-history branch.
+    # The one helper is read, reset to |0>, rotated conditionally, then read.
+    maps = []
+    size = 1 << n
+    expected = [plus, np.zeros_like(plus), math.sqrt(1-weight)*minus, math.sqrt(weight)*minus]
+    for k, (occupied, accepted) in enumerate(program['outcomes']):
+        angle = program['acceptance_angles'][occupied]
+        coefficient = math.sin(angle) if accepted else math.cos(angle)
+        branch = coefficient*actual[occupied*size:(occupied+1)*size, :size]
+        close(branch, expected[k], 'complete weighted measurement branch')
+        maps.append(branch)
+    close(sum(k.conj().T@k for k in maps), identity, 'weighted instrument is trace preserving')
+    exact(program['pulses_per_path'], len(program['qnd_tape'])+1)
+    exact(program['code_events_per_path'], 2*(len(program['qnd_tape'])+1)+8)
+    return maps
+
+
+def verify_weighted_measurements(rows):
+    cases = [(['3', '6', 1], .37), (['0', '7', 2], .81), (['0', '7', 0], 0.), (['0', '7', 0], 1.)]
+    need(type(rows) is list and len(rows) == len(cases), 'weighted measurement catalogue')
+    for row, (raw, weight) in zip(rows, cases):
+        keys(row, 'program kraus')
+        maps = replay_weighted(row['program'], 3, raw, weight)
+        need(type(row['kraus']) is list and len(row['kraus']) == 4, 'every weighted outcome emitted')
+        for emitted, expected in zip(row['kraus'], maps):
+            close(complex_array(emitted, (8, 8)), expected, 'native weighted M6 execution')
+
+
 def graph_operators(n, edges, parity):
     m = len(edges)
     eye = np.eye(1 << m)
@@ -131,7 +172,7 @@ def verify_detector(rows, cache):
         one_particle += w*np.outer(f, f.conj())
     expected = np.eye(16)-exterior(np.eye(4)-one_particle)
     for parity, row in enumerate(rows):
-        keys(row, 'parity theta weights circuits code_effect')
+        keys(row, 'parity theta weights circuits instruments code_effect')
         exact([row['parity'], row['theta'], row['weights']], [parity, theta, weights])
         need(type(row['circuits']) is list and len(row['circuits']) == 4, 'every detector phase and mixer')
         unitary = np.eye(1 << g['m'], dtype=complex)
@@ -140,14 +181,18 @@ def verify_detector(rows, cache):
             modes = [pair[1]] if k % 2 == 0 else pair
             allowed = sum(1 << e for e, ends in enumerate(g['edges']) if any(v in ends for v in modes))
             unitary = replay_rotations(circuit, g['m'], g['loops'], ((1,) if k % 2 == 0 else (6,)), allowed)@unitary
-        # Independent no-click effect is the product of commuting local
-        # occupation factors, including all occupied configurations.
-        no_click = np.eye(len(unitary))
+        need(type(row['instruments']) is list and len(row['instruments']) == 2, 'all local detector instruments')
+        maps = []
         for mode, weight in enumerate(weights):
-            b = (-1 if parity and mode == 0 else 1)*g['b'][mode]
-            occupation = (np.eye(len(unitary))-b)/2
-            no_click = no_click@(np.eye(len(unitary))-weight*occupation)
-        effect = np.eye(len(unitary))-unitary.conj().T@no_click@unitary
+            mask = sum(1 << e for e, ends in enumerate(g['edges']) if mode in ends)
+            raw = ['0', str(mask), 2 if parity and mode == 0 else 0]
+            maps.append(replay_weighted(row['instruments'][mode], g['m'], raw, weight))
+        effect = np.zeros_like(unitary)
+        for local in reversed(maps):
+            # Four retained histories: empty, impossible empty-acceptance,
+            # occupied miss, and click. No renormalization after a failure.
+            effect = local[3].conj().T@local[3]+sum(k.conj().T@effect@k for k in local[:3])
+        effect = unitary.conj().T@effect@unitary
         iso, basis = g['isometries'][parity], g['bases'][parity]
         target = expected[np.ix_(basis, basis)]
         close(iso.conj().T@effect@iso, target, 'full fermionic click effect')

@@ -352,8 +352,20 @@ loads/stores and the parity tag. Ideal commuting measurements need not
 be simultaneous; the coloring provides an executable schedule. Under the
 drive/event scaling of section 4, T_vac=O(qa/c) at fixed physical size.
 Thus deterministic preparation does not secretly require volume times a
-long global loop length in elapsed time. It still requires O(q^3) hardware
-and records and does not provide generic fault tolerance.
+long global loop length in elapsed time. Quantum hardware is O(q^3).
+The conservative ledger retains O(q^4) event records, including padded
+message rounds and idle slots, and O(q^4 log q) central record slots with
+their identifiers at fixed physical volume and observation horizon.
+This construction does not provide generic fault tolerance.
+
+As in the parent, the fixed instruction table and local counter schedules
+are compiled and distributed before blank quantum preparation. That
+classical initialization has finite charged prehistory; no quantum coherence
+is present then. The bounds here cover subsequent quantum exposure and
+do not claim a uniform time bound for arbitrary offline table compilation.
+Dynamic syndrome messages, corrections and the final report are included
+in the displayed schedules. Static identifiers do not require a fresh
+global broadcast at each quantum event.
 
 ## 6. Actual resolved reads and detector
 
@@ -388,10 +400,17 @@ outside the entire native stencil support cone of the experiment.
 
 The clock readout is also realized, including its multi-particle meaning.
 Within each cell, phase and mix each mass pair so that the requested mass
-superposition is one output mode. For weight 0<=w<=1, read that mode with
-the three retained Kraus maps `sqrt(w)n`, `sqrt(1-w)n`, and `I-n`: click,
-occupied miss and empty. A native helper rotation supplies the Bernoulli
-weight. Compose the no-click adjoints, then take the complement. The effect
+superposition is one output mode. For weight 0<=w<=1, first QND-read its
+occupation, reset the measured helper to |0>, then apply its native rotation
+with angle `asin(sqrt(w))` on the occupied branch and zero on the empty
+branch. Read the helper again. Retain all four classical histories
+`(occupation,acceptance)`: their data Kraus maps are respectively `I-n`,
+`0`, `sqrt(1-w)n`, and `sqrt(w)n`. Thus the empty-acceptance history has zero
+map without postselection. Both reads, the reset and the conditional pulse
+have charged positive padded durations, including weights zero and one.
+The verifier replays the full instrument, including its quantum outputs;
+equality of the final click effect alone would not certify those outputs.
+Compose the no-click adjoints, then take the complement. The effect
 on the full Fock space is exactly
 
 ```
@@ -456,8 +475,11 @@ D_trace(actual,ideal) <= lambda R T_total.                  (12)
 
 It also covers idle buffers and temporary excursions outside the gauge code.
 For a fixed positive accounting observable with range E_max, its expectation
-error is at most E_max times (12). Use the parent's positive Floquet magnitude
-on the valid Fock code and assign E_max to invalid-code/bank outcomes. This
+error is at most E_max times (12). Apply the parent's positive Floquet
+prescription to the finite reflecting one-particle walk U_q: second-quantize
+`|i log U_q|/tau` on the valid Fock code, and assign E_max to invalid-code/bank
+outcomes. This is the finite walk's own observable, not a compression of the
+infinite-lattice logarithm. This
 is one fixed finite positive observable; bad syndromes are not dropped.
 It remains a declared accounting reference, not a physical Hamiltonian or
 proof of energy conservation during driven preparation.
@@ -511,7 +533,7 @@ The necessary vacuum obstruction (10) remains q^-3.
 ## 8. Finite analytic clock witness and reproducibility
 
 Use the parent's interval-certified packet: c=3, a=10^-9, masses 100 and
-100.1, reference velocity .6, envelope sigma=10, momentum cutoff 80, detector
+100.1, reference velocity .6, envelope sigma=10, spatial preparation cutoff 80, detector
 scale 100 and extent 600. Its ideal clock swing exceeds .6753 and its beat
 is .08 with dilation factor 1.25. Prepare it by the reversed tree pass in
 section 6, starting with the odd code root. Take q=2^41 and
@@ -535,11 +557,15 @@ The conservative charged ledger gives:
 | E_max=32q^3 pi/tau | 1.852 x 10^48 |
 | Sufficient positive lambda cap | 1.1265 x 10^-102 |
 | Trace-distance allowance | 2.701 x 10^-51 |
-| Extra accounting error | .005 |
+| Extra accounting error | less than .0051 |
 | Clock swing after this error | greater than .6752 |
 
-The certificate computes unrounded values with independent high-precision
-arithmetic and replays the parent's interval bound. The report uses 41
+The verifier recomputes the analytic quantities with independent 70-digit
+arithmetic and replays the parent's interval bound. Binary receipt values
+are rounded conservatively; one-sided checks enforce every reported upper
+or lower bound and their composed exposure, trace-distance and accounting
+inequalities. Relative numerical agreement alone does not certify a bound.
+The report uses 41
 octree stages, length at most sqrt(3)a(q-1) and 64 events per stage. Every
 quantum operation, idle/color slot, setup message and report gets a finite
 retained identifier and enough central record slots. No huge lattice state

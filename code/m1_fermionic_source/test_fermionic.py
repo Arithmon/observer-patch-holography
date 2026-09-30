@@ -42,7 +42,7 @@ def test_rebuilt_physics_matches_receipt(evidence):
     # comparison and never get this absolute floor.
     verify.verify_evidence(evidence)
     verify.verify_evidence(stored['evidence'])
-    arrays = {'state', 'isometry', 'scalar', 'parameter', 'unitary', 'matrix',
+    arrays = {'state', 'isometry', 'scalar', 'parameter', 'unitary', 'matrix', 'kraus',
               'kernel', 'code_effect', 'initial', 'encoded_output', 'output', 'banks'}
     def compare(actual, expected, key=None):
         assert type(actual) is type(expected)
@@ -73,7 +73,7 @@ def test_nondefault_edge_order_and_every_gate(parity):
     enc = model.Encoding(4, [(2, 3), (0, 3), (1, 3), (0, 1), (1, 2)])
     basis, iso = enc.isometry(parity)
     a = [annihilator(4, i) for i in range(4)]
-    for i, j in enc.edges:
+    for i, j in list(enc.edges)+[(j, i) for i, j in enc.edges]:
         gamma_i, gamma_j = a[i]+a[i].conj().T, a[j]+a[j].conj().T
         assert np.allclose(enc.a(i, j).matrix(enc.m)@iso,
                            iso@(-1j*gamma_i@gamma_j)[np.ix_(basis, basis)])
@@ -135,6 +135,35 @@ def test_native_parity_rotation_and_both_instrument_outcomes(raw, theta):
     assert np.allclose(v[:8, :8], (np.eye(8)+p)/2)
     assert np.allclose(v[8:, :8], (np.eye(8)-p)/2)
     assert np.allclose(v.conj().T@v, np.eye(16))
+
+
+@pytest.mark.parametrize('weight', [-.01, 1.01, True, float('nan'), float('inf')])
+def test_invalid_weighted_acceptance(weight):
+    with pytest.raises(ValueError):
+        circuits.weighted_program(Word(0, 7), weight, 3)
+
+
+def test_same_click_effect_cannot_hide_changed_postmeasurement_state(evidence):
+    from .check import complex_array
+    from .experiment_check import verify_weighted_measurements
+    rows = copy.deepcopy(evidence['weighted_measurements'])
+    k = complex_array(rows[0]['kraus'][3], (8, 8))
+    # A data unitary after the click leaves its POVM effect identical but
+    # changes the retained quantum output. Comparing effects alone misses it.
+    wrong = at(Z, 1, 3)@k
+    assert np.allclose(wrong.conj().T@wrong, k.conj().T@k)
+    assert np.linalg.norm(wrong-k) > .5
+    rows[0]['kraus'][3] = model.encode(wrong)
+    with pytest.raises(ValueError):
+        verify_weighted_measurements(rows)
+
+
+def test_occupied_helper_must_be_reset_before_acceptance():
+    program = circuits.weighted_program(Word(0, 3), .37, 2)
+    proper = circuits.execute_weighted(program)
+    program['reset_before_acceptance'] = False
+    wrong = circuits.execute_weighted(program)
+    assert np.linalg.norm(proper[3].conj().T@proper[3]-wrong[3].conj().T@wrong[3]) > .2
 
 
 @pytest.mark.parametrize('q', [1, 2, 3, 4])
@@ -258,6 +287,11 @@ MUTATIONS = [
     (('native_rotations', 0, 'pulse_code_events'), 0),
     (('native_measurements', 0, 'unitary', 0, 0, 0), 0.),
     (('native_measurements', 2, 'tape'), [['h', 0]]),
+    (('weighted_measurements', 0, 'program', 'outcomes'), [[1, 1]]),
+    (('weighted_measurements', 0, 'program', 'reset_before_acceptance'), False),
+    (('weighted_measurements', 0, 'program', 'acceptance_angles'), [0., 0.]),
+    (('weighted_measurements', 0, 'program', 'code_events_per_path'), 0),
+    (('weighted_measurements', 0, 'kraus'), []),
     (('geometry', 1, 'graph_sha256'), '0'*64),
     (('geometry', 1, 'flight_sha256'), '0'*64),
     (('preparation', 1, 'decoder_sha256'), '0'*64),
@@ -275,6 +309,8 @@ MUTATIONS = [
     (('resolved_reads', 0, 'blocks'), []),
     (('resolved_reads', 0, 'kernel', 1, 1), -.123),
     (('detector', 0, 'weights'), [.37, 1.81]),
+    (('detector', 0, 'instruments'), []),
+    (('detector', 1, 'instruments', 0, 'outcomes'), [[0, 0], [1, 0], [1, 1]]),
     (('interaction', 'encoded_output', 0, 0), .7),
     (('interaction', 'circuit', 'rotations', 0, 'theta'), 0.),
     (('noise', 0, 'vacuum_fidelity'), 1.),
@@ -297,6 +333,16 @@ def test_physics_mutations_rejected_even_with_custody_bypassed(evidence, path, v
     target[path[-1]] = value
     with pytest.raises(ValueError):
         verify.verify_evidence(packet)
+
+
+@pytest.mark.parametrize('field,factor', [('wall_tick', 1-1e-11), ('total_exposure_upper', 1-1e-11),
+    ('phase_rate_cap', 1+1e-11), ('trace_error_upper', 1-1e-11),
+    ('accounting_error_upper', 1-1e-11), ('swing_lower', 1+1e-11)])
+def test_nearby_false_bounds_fail_even_inside_replay_tolerance(evidence, field, factor):
+    row = copy.deepcopy(evidence['clock_witness'])
+    row[field] *= factor
+    with pytest.raises(ValueError):
+        geometry_check.verify_clock_witness(row)
 
 
 @pytest.mark.parametrize('text', ['{"x":1,"x":2}', '{"x":NaN}', '{"x":Infinity}', '{"x":-Infinity}'])

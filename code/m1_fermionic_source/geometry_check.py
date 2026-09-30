@@ -273,4 +273,21 @@ def verify_clock_witness(row):
             primitive_events_upper=records, record_identifier_bits=bits,
             central_record_slots_upper=(1+8*bits)*records)
         exact(row, {k: float(v) if isinstance(v, mp.mpf) else v for k, v in expected.items()})
+        # Relative replay tolerance alone must not certify a slightly
+        # overstated probability/rate or understated elapsed-time bound.
+        for name in ('wall_tick', 'gauge_preparation_time_upper', 'packet_preparation_time_upper',
+                     'read_time_upper', 'report_time_upper', 'accounting_range_upper'):
+            need(mp.mpf(row[name]) >= expected[name], 'outward upper bound: '+name)
+        reported_total = (mp.mpf(row['gauge_preparation_time_upper'])
+                          +mp.mpf(row['packet_preparation_time_upper'])+ticks*mp.mpf(row['wall_tick'])
+                          +mp.mpf(row['read_time_upper'])+mp.mpf(row['report_time_upper']))
+        need(mp.mpf(row['total_exposure_upper']) >= reported_total, 'composed exposure upper bound')
+        declared_rate, declared_error = mp.mpf(row['phase_rate_cap']), mp.mpf(row['trace_error_upper'])
+        need(0 < declared_rate <= rate, 'one-sided positive rate cap')
+        need(declared_error >= declared_rate*interfaces*mp.mpf(row['total_exposure_upper']),
+             'composed trace-distance upper bound')
+        need(mp.mpf(row['accounting_error_upper']) >= mp.mpf(row['accounting_range_upper'])*declared_error,
+             'composed accounting upper bound')
+        need(mp.mpf(row['swing_lower']) <= mp.mpf('.6753')-2*declared_error, 'outward visibility lower bound')
+        need(row['accounting_error_upper'] < .0051 and row['swing_lower'] > .6752, 'informative reported certificate')
         need(rate > 0 and energy*trace_error < .01 and expected['swing_lower'] > .6752, 'informative finite source witness')
