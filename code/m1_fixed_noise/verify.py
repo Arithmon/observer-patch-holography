@@ -19,7 +19,7 @@ from .scaling_check import verify as verify_scaling
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 OWN = ('__init__.py', 'algebra.py', 'algebra_check.py', 'recovery.py', 'recovery_check.py',
-       'executor.py', 'noise.py', 'scaling.py', 'scaling_check.py', 'build.py', 'verify.py',
+       'executor.py', 'instrument_check.py', 'noise.py', 'scaling.py', 'scaling_check.py', 'build.py', 'verify.py',
        'test_fixed_noise.py', 'README.md', 'CONTRACT.md')
 SOURCES = sorted(set(parent.SOURCES+['code/m1_fermionic_source/receipt.json']
                     +['code/m1_fixed_noise/'+p for p in OWN]

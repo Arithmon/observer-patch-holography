@@ -124,13 +124,26 @@ the fixed fallback. There is no unbounded retry or missing output channel.
 
 Read all six stabilizers in four rounds. Select the first pair of consecutive
 equal six-bit syndromes; if no pair exists, flag local failure and use the
-zero correction. Later rounds and their
-records remain in the schedule even if agreement occurred earlier. Finally
+zero correction. Later rounds and their records remain in the schedule even
+if agreement occurred earlier. Finally
 apply the selected Pauli correction with padded slots for all seven X and
 all seven Z positions. Every unused qubit has an explicit idle location in
 each slot. There are 16 qubits, 1,262 primitive slots, 18,402 idle locations
 and **19,664 fault locations** in this particular abstract Clifford schedule.
 The native source decomposition charges its additional pulses and events.
+
+The ideal reference instrument is checked independently of Pauli frames.
+Contract the actual cat preparation, verification, controlled-data gates
+and X reads on the full four-qubit active data space. For stabilizer S,
+first-cat read string u and unused-cat environment index v, its Kraus maps
+are `(I + (-1)^popcount(u) S)/8` for v=0 or 15, and zero otherwise.
+All 256 maps sum to a trace-preserving instrument; grouping by read parity
+gives the two projectors `(I +/- S)/2`. Each of the six rejected ideal
+verification maps is zero on every data input. This is an operator check,
+not a sampled logical state or conditioning on a nonzero success probability.
+The other three data qubits are arbitrary spectators. Omitting cat
+preparation, a data coupling or a read, or using the wrong coupling basis,
+fails this check even without relying on an error-propagation census.
 
 A single preparation fault producing a harmful multi-qubit cat X error is
 detected before the cat touches data. A global cat X is harmless modulo the
@@ -154,13 +167,19 @@ Thus ideal recovery has not been used to bless a non-fault-tolerant circuit.
 
 The syndrome-selection rule is invariant under adding the same initial
 syndrome to all four rounds. Its final syndrome defect therefore does not
-depend on that initial syndrome. Together with (4), this establishes the
+depend on that initial syndrome: if the injected propagated Pauli has
+syndrome e and the selected fault-induced read is s, an initial syndrome t
+leaves output syndrome `t XOR e XOR (t XOR s) = e XOR s`.
+The clean-input census puts this in a one-error syndrome subspace. An
+arbitrary state is a superposition over all 64 such initial subspaces;
+complete stabilizer measurement and linearity give the same valid-output
+property. Together with (4), this establishes the
 usual recovery properties on arbitrary inputs, on one-error inputs without
 new faults, and on clean inputs with one fault. Pauli expansion extends the
 argument to arbitrary one-location fault operations. Transversal H, physical
 S-dagger (logical S in this basis), and CNOT preserve one-error propagation
-between blocks; full encoded-basis identities are checked as well. Universal protection also
-uses the verified non-Clifford gadgets cited in section 1; the Clifford
+between blocks; full encoded-basis identities are checked as well. Universal
+protection also uses the verified non-Clifford gadgets cited in section 1; the Clifford
 census is explicitly not an execution of those entire gadgets.
 
 For those fixed universal gadgets, cap each verification supply at two
@@ -169,8 +188,19 @@ a fixed, possibly erroneous local output; a failed supply never acts outside
 its gadget's wires. Ideal verification accepts;
 exhaustion requires at least two faulty attempts. Legitimate ideal positive
 and negative measurement outcomes receive their prescribed feed-forward;
-they are not rejected as preparation failures. Repeated logical
-measurements use bounded schedules with their prescribed corrections.
+they are not rejected as preparation failures. For the repeated nondestructive
+logical measurements, use four padded rounds with the prescribed recovery
+between rounds and the first adjacent agreement. With at most one fault,
+there is at most one disturbed round and one change of the underlying
+eigenvalue, so four rounds suffice. No agreement is a local failure with a
+fixed fallback; it is never an unbounded retry.
+In the non-Clifford preparation, the measured observable is the Hermitian
+`Q=T X T*`, with eigenvalues +/-1. With our convention `S=diag(1,i)`, this
+is `exp(-i pi/4) S X`, not the unphased product S X. Its controlled phase is
+part of the finite native circuit. A negative eigenvalue is corrected by Z;
+both teleportation read outcomes are retained with the required S correction.
+The nominal two-outcome injection channel and these phase conventions are
+checked directly. This does not replace the cited noisy encoded-gadget proof.
 This retains one-fault correctness with a larger finite gadget constant.
 Lower-level failure flags are diagnostic records, not commands to abort the
 whole experiment: an upper code can correct a faulty lower gadget. Only a
@@ -309,6 +339,15 @@ E_q^protected = D_q* (E_q direct-sum E_max(q)).               (10)
 ```
 
 It is positive, bounded by E_max(q), and defined on every noisy input.
+To extend it to the full physical interface space, let P_carrier be the
+tensor product of native qubit-carrier projectors. Apply the complete
+syndrome decoder to `P_carrier rho P_carrier`, and send the complementary
+weight `Tr((I-P_carrier) rho)` to the failure symbol. These two terms sum
+to unit trace on every physical input, including carrier leakage. Crucially,
+P_carrier is not the much smaller error-correcting code projector: all
+correctable syndrome spaces inside the carrier remain decoded normally.
+This supplies an accounting effect on general physical inputs even though
+the specified dephasing and native pulses preserve the carrier.
 Unitality of the adjoint and (9) give
 
 ```

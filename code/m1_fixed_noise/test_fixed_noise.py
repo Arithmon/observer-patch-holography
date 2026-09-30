@@ -12,7 +12,7 @@ import sys
 import numpy as np
 import pytest
 
-from . import algebra, algebra_check, build, executor, recovery, recovery_check, verify
+from . import algebra, algebra_check, build, executor, instrument_check, recovery, recovery_check, verify
 
 
 @pytest.fixture(scope='module')
@@ -112,6 +112,51 @@ def test_initial_syndrome_translation_preserves_selection(responses):
             assert next(i for i in range(1, 4) if changed[i] == changed[i-1]) == selected
 
 
+def test_ideal_recovery_on_every_syndrome_subspace():
+    for s in range(64):
+        result = executor.execute(incoming=recovery.correction(s))
+        assert result['residual'] == (0, 0)
+        assert result['syndrome_history'] == [s]*4
+
+
+def test_full_quantum_syndrome_instrument(responses):
+    instrument_check.check_program(responses[0])
+
+
+@pytest.mark.parametrize('change', ['cat_h', 'coupling', 'basis', 'cat_read'])
+def test_quantum_instrument_rejects_wrong_ideal_circuit(responses, change):
+    tape = copy.deepcopy(responses[0])
+    if change == 'cat_h':
+        index = next(i for i, g in enumerate(tape) if g[:2] == ['h', [7]])
+        tape.pop(index)
+    elif change in ('coupling', 'basis'):
+        index = next(i for i, (op, qs, _) in enumerate(tape)
+                     if op == 'cx' and qs[0] == 7 and qs[1] < 7)
+        if change == 'coupling':
+            tape.pop(index)
+        else:
+            tape[index][0] = 'cz'
+    else:
+        index = next(i for i, g in enumerate(tape) if g[:2] == ['mz', [7]])
+        tape.pop(index)
+    with pytest.raises(ValueError):
+        instrument_check.check_program(tape)
+
+
+@pytest.mark.parametrize('kwargs', [
+    {'fault': (-1, [1])}, {'fault': (999999, [1])}, {'fault': (True, [1])},
+    {'fault': (0., [1])}, {'fault': (0, [])}, {'fault': (0, [1, 2])},
+    {'fault': (0, [True])}, {'fault': (0, [-1])}, {'fault': (0, [4])},
+    {'fault': (0, [0])}, {'fault': (0, [1.])}, {'fault': [0]},
+    {'faults': [(0, [1]), (0, [2])]}, {'fault': (0, [1]), 'faults': [(0, [2])]},
+    {'faults': {0: [1]}}, {'incoming': (128, 0)}, {'incoming': (0, -1)},
+    {'incoming': (True, 0)}, {'incoming': (0,)}, {'config': dict(recovery.CONFIG, rounds=True)},
+])
+def test_adaptive_replay_rejects_invalid_fault_requests(kwargs):
+    with pytest.raises(ValueError):
+        executor.execute(**kwargs)
+
+
 def test_decoder_corrects_nonpauli_channel_with_spectator():
     code, maps = algebra_check.check_decoder(algebra.decoder())
     gamma, bit = .23, 1 << 4
@@ -146,6 +191,32 @@ def test_full_encoded_basis_transversal_clifford_identities():
     assert np.allclose(pair_code[physical_cx], pair_code[:, logical_cx])
 
 
+def test_nonclifford_reference_keeps_both_outcomes_and_controlled_phase(evidence):
+    raw = np.array(evidence['interfaces']['t'])
+    t = raw[..., 0]+1j*raw[..., 1]
+    x, z, s = np.array([[0., 1.], [1., 0.]]), np.diag([1., -1.]), np.diag([1., 1j])
+    q = t@x@t.conj().T
+    assert np.allclose(q, q.conj().T) and np.allclose(q@q, np.eye(2))
+    assert np.allclose(q, np.exp(-1j*np.pi/4)*s@x)
+    assert not np.allclose(s@x, (s@x).conj().T)
+    plus = t@np.ones(2)/np.sqrt(2)
+    minus = z@plus
+    assert np.allclose(q@plus, plus) and np.allclose(q@minus, -minus)
+    assert np.allclose(z@minus, plus)
+    cx = np.eye(4)[[0, 1, 3, 2]]
+    output = cx@np.kron(np.eye(2), plus[:, None])
+    first, second = output[[0, 2]], output[[1, 3]]
+    branches = [first, s@second]
+    assert np.allclose(sum(k.conj().T@k for k in branches), np.eye(2))
+    for k in branches:
+        relative = t.conj().T@k
+        assert np.allclose(relative, np.eye(2)*np.trace(relative)/2)
+    # Omitting feed-forward leaves the same read probabilities but corrupts
+    # the unconditional quantum channel.
+    wrong_fidelity = sum(abs(np.trace(t.conj().T@k)/2)**2 for k in (first, second))
+    assert np.isclose(wrong_fidelity, .75)
+
+
 def test_same_syndrome_probabilities_do_not_certify_logical_output(evidence):
     bad = copy.deepcopy(evidence['decoder'])
     # Logical Z after every branch leaves all branch probabilities and
@@ -163,6 +234,30 @@ def test_native_gate_and_memory_boundaries(evidence):
     assert evidence['accounting']['after_encoding_corrected_fidelity'] == 1.
     assert evidence['scaling']['levels'][2]['accounting_q_degree'] == 0
     assert evidence['scaling']['levels'][3]['accounting_q_degree'] < 0
+
+
+def test_full_native_carrier_extension_charges_complement_without_postselection(evidence):
+    raw = np.array(evidence['accounting']['logical_effect'])
+    effect = raw[..., 0]+1j*raw[..., 1]
+    # Three output dimensions: logical qubit plus an orthogonal failure.
+    keep = np.zeros((3, 6))
+    keep[:2, :2] = np.eye(2)
+    branches = [keep]
+    for q in range(2, 6):
+        failure = np.zeros((3, 6))
+        failure[2, q] = 1
+        branches.append(failure)
+    assert np.allclose(sum(k.T@k for k in branches), np.eye(6))
+    output_effect = np.eye(3, dtype=complex)
+    output_effect[:2, :2] = effect
+    physical = sum(k.T@output_effect@k for k in branches)
+    expected = np.eye(6, dtype=complex)
+    expected[:2, :2] = effect
+    assert np.allclose(physical, expected)
+    state = np.array([1., 0., 1., 0., 0., 0.])/np.sqrt(2)
+    actual = np.vdot(state, physical@state).real
+    assert np.isclose(actual, .5*effect[0, 0].real+.5)
+    assert not np.isclose(actual, effect[0, 0].real)
 
 
 MUTATIONS = [

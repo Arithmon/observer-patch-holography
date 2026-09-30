@@ -146,10 +146,12 @@ def replay(config):
 
 
 def verify_recovery(row):
+    from .instrument_check import check_program
     need(type(row) is dict, 'recovery object')
     required = dict(rounds=4, candidates=2, verification=[[0, 1], [1, 2], [2, 3]])
     need(row.get('config') == required, 'complete bounded recovery schedule')
     expected = replay(required)
+    check_program(canonical(required)[0])
     need(not expected['failures'], 'independent single-fault recovery proof')
     need(row == expected, 'complete recovery evidence replay')
     # Reject booleans-as-integers and noncanonical numeric spellings too.

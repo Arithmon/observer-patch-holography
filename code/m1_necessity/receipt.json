@@ -1892,7 +1892,7 @@
           "declared_fault_protected_source_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "55c6b9cb12653c82eabf73ef9ab293e7d23c1faacde28a393e0eb6971abd5dd8"
+        "original_claim_sha256": "c066f43d75aee7fdca65d37a612ee4eda77a67f89a4e3f044e13f7fe4c93f31e"
       },
       "OPH-SOURCE-FULL-FAMILY-READ-ROUTING": {
         "assumptions": [
@@ -1915,7 +1915,7 @@
           "declared_fault_protected_source_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "f9dfab6b13c6a816bcb45d8ebf9fb6aed2f9039094ca22c7211319562a9210f8"
+        "original_claim_sha256": "e129bd312fca98c3700fc077c188cfa550785db1d40e2f1dc6534a2d2f054320"
       },
       "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT": {
         "assumptions": [

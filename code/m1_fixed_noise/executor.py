@@ -5,13 +5,26 @@ first is rejected. Measurement parity is independent of the random even
 cat-read string, so a representative even string suffices for Pauli frames.
 """
 
-from .recovery import CHECKS, CONFIG, correction
+from .recovery import CHECKS, CONFIG, correction, program
 
 
 def execute(fault=None, incoming=(0, 0), config=CONFIG, faults=()):
-    injected = dict(faults)
-    if fault is not None:
-        injected[fault[0]] = fault[1]
+    tape, _, _ = program(config)
+    if (type(incoming) not in (tuple, list) or len(incoming) != 2
+            or any(type(v) is not int or not 0 <= v < 128 for v in incoming)
+            or type(faults) not in (tuple, list)):
+        raise ValueError('seven-qubit Pauli input and explicit fault list required')
+    injected = {}
+    for entry in list(faults)+([] if fault is None else [fault]):
+        if type(entry) not in (tuple, list) or len(entry) != 2:
+            raise ValueError('fault index and exact Pauli labels required')
+        index, labels = entry
+        if (type(index) is not int or not 0 <= index < len(tape) or index in injected
+                or type(labels) not in (tuple, list) or len(labels) != len(tape[index][1])
+                or any(type(label) is not int or not 0 <= label < 4 for label in labels)
+                or not any(labels)):
+            raise ValueError('unique in-range location and nonidentity supported Pauli required')
+        injected[index] = labels
     x, z = incoming
     index, records, rejected = 0, [], []
     def location(op, qs):

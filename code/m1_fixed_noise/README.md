@@ -45,6 +45,11 @@ propagates output sensitivities backward, constructs code projectors,
 replays every decoder branch and evaluates driven channels by a different
 matrix-exponential algorithm. A direct adaptive executor checks branch
 selection. Mutation controls bypass source hashes to test physical rejection.
+An independent contraction of the ideal quantum circuit checks all 256
+Kraus maps of each of the six cat instruments, on every active data input.
+Deliberately broken preparations, couplings and reads fail that check.
+Adaptive replay rejects missing, out-of-range, duplicate and malformed
+fault requests rather than silently treating them as a clean execution.
 
 ## Scope and costs
 
