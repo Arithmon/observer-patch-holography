@@ -147,7 +147,7 @@ frozen prediction files were changed.
 | `A5FamilyBand.lean` | BYTE-PINNED-PARENT | audited snapshot SHA-256 `63b425c890b49f49a53858b5a480b993cfee81d92978fa3ed5abf665e48645a6`; also referenced by `sm_fermion_current` receipts |
 | `PortGramRepairBand.lean` | BYTE-PINNED-PARENT | audited snapshot SHA-256 `75286414b7c33492b40225dd48ca9321cf3a09ecf96b65e254af9bd02421cf72`; read only, unchanged |
 | `PortGramRepairCovariance.lean` | BYTE-PINNED-PARENT | audited snapshot SHA-256 `8d96c8a01361a9cfc2f53901d73032041480c93bb50190ab12ac939a7e9a6ad8`; read only, unchanged |
-| `A5PortAction.lean` | ACTIVE-INVENTORY-ONLY | present in `claims/active_surface_inventory.json`; no byte pin found in the inspected source-current snapshot |
+| `A5PortAction.lean` | BYTE-PINNED-PARENT | audited by `source_current_order_sensitive_inventory.json`, SHA-256 `5efd9ea0ca2d12f8beb3f20111e80d748984ec0cbef484dd3d7cbb766954f9cc`; read only, unchanged |
 | `record_counting_mechanism_reference.json` | BYTE-PINNED-PARENT | canonical hash consumed by the directed seam receipt; raw hash also appears in the source-order inventory |
 | `record_counting_mechanism_certificate.py` | GENERATED-SURFACE | producer for the pinned #628 manifest; imported by the directed seam producer |
 | claim registries, selection ledger, and papers | FROZEN/PREDICTION for this discovery scope | explicitly excluded from edits by runbook |
