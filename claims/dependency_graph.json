@@ -298,7 +298,10 @@
   "OPH-M1-OBSERVABLE-MASS-CLOCK",
   "OPH-SOURCE-COHERENT-CODE-COMPLETION",
   "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
-  "OPH-SOURCE-COMPILED-MASS-CLOCK"
+  "OPH-SOURCE-COMPILED-MASS-CLOCK",
+  "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+  "OPH-SOURCE-ENCODED-FERMION-CLOCK",
+  "OPH-SOURCE-FERMIONIC-VACUUM-NOISE"
  ],
  "edges": [
   {
@@ -2595,6 +2598,46 @@
    "role": "Supplies the full one-particle walk and fixed positive Floquet observable used for the phase-noise ultraviolet test; no physical energy calibration is inherited.",
    "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
    "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+  },
+  {
+   "role": "Supplies the existing native response, complete proper-code interfaces and constructed support; fermionic encoding and preparation are proved here.",
+   "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+   "to": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION"
+  },
+  {
+   "role": "Supplies the explicitly proposed CCG coherent transport service, without granting a freely variable code basis.",
+   "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
+   "to": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION"
+  },
+  {
+   "role": "Supplies the edge encoding and independent cycle constraints on which the physical vacuum-noise obstruction is proved.",
+   "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+   "to": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE"
+  },
+  {
+   "role": "Supplies the all-sector gates, deterministic local preparation and complete number instruments.",
+   "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+   "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+  },
+  {
+   "role": "Supplies the full-interface noise estimate, including off-code intermediate pulses and gauge preparation; the unencoded sector bound is not reused.",
+   "from": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
+   "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+  },
+  {
+   "role": "Supplies the prior source-clock target and charged-control conventions; its vacuum/one-particle restriction is removed by this separate fermionic compiler.",
+   "from": "OPH-SOURCE-COMPILED-MASS-CLOCK",
+   "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+  },
+  {
+   "role": "Supplies the all-state resolved CAR norm bound, transferred by the explicit source isometry at macrostep endpoints.",
+   "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
+   "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+  },
+  {
+   "role": "Supplies the finite analytic clock interval certificate and one-particle effect, with its full Fock instrument and all setup/report latency implemented here.",
+   "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
+   "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
   }
  ]
 }

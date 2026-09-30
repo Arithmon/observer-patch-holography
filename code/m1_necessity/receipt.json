@@ -1866,12 +1866,40 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "4232e5a316f0defc03a488fc0f7839e34a779b41c59c28f10b65fd518f04ec3c"
       },
+      "OPH-SOURCE-ENCODED-FERMION-CLOCK": {
+        "assumptions": [
+          "declared_proper_code_source_completion",
+          "proposed_coherent_code_gluing_CCG",
+          "declared_massive_tetrahedral_process",
+          "declared_smooth_local_car_operations",
+          "declared_two_mass_clock_preparation",
+          "declared_encoded_fermionic_clock_budget"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "c59e48670b10311bf7c6a61c706eff709e7c6288cfe69b6341ea140abcdd1df6"
+      },
+      "OPH-SOURCE-FERMIONIC-VACUUM-NOISE": {
+        "assumptions": [
+          "declared_encoded_fermionic_clock_budget"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "d4d138ef085ab03eb9f410c5f680931be2971faf02406d49b4e1f20855450de7"
+      },
       "OPH-SOURCE-FULL-FAMILY-READ-ROUTING": {
         "assumptions": [
           "M1_full_family_read_feedback_and_routing"
         ],
         "disposition": "finite_routing_not_transferred",
         "original_claim_sha256": "12f76df2d33082a4c40acc1f0c75d6134b2ce34b10930ebeaa0a619d3f6465c7"
+      },
+      "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION": {
+        "assumptions": [
+          "declared_proper_code_source_completion",
+          "proposed_coherent_code_gluing_CCG",
+          "declared_encoded_fermionic_clock_budget"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "02f6c0accca76a05748e66e3a197dccf008e5b278be882331e9c3672f524c335"
       },
       "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT": {
         "assumptions": [
@@ -2637,6 +2665,11 @@
         "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
       },
       {
+        "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
+        "role": "Supplies the finite analytic clock interval certificate and one-particle effect, with its full Fock instrument and all setup/report latency implemented here.",
+        "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+      },
+      {
         "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
         "role": "The explicit three-axis walk attains the sharp isotropic budget; its complete spectral and thermal analysis is proved independently.",
         "to": "OPH-M1-CHARGED-WEYL-SPECTRAL-LIMIT"
@@ -2660,6 +2693,11 @@
         "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
         "role": "Supplies the sampled full-vector bound used in the actual local clock detector comparison; source admission and physical energy are not inherited.",
         "to": "OPH-M1-OBSERVABLE-MASS-CLOCK"
+      },
+      {
+        "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
+        "role": "Supplies the all-state resolved CAR norm bound, transferred by the explicit source isometry at macrostep endpoints.",
+        "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
       },
       {
         "from": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR",
@@ -2813,8 +2851,23 @@
       },
       {
         "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+        "role": "Supplies the existing native response, complete proper-code interfaces and constructed support; fermionic encoding and preparation are proved here.",
+        "to": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION"
+      },
+      {
+        "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
         "role": "Supplies the declared proper-code interfaces to which the general finite channel theorem is applied; accepted complementary read data are stated explicitly.",
         "to": "OPH-SOURCE-TWO-BASIS-A3-SELECTION"
+      },
+      {
+        "from": "OPH-SOURCE-COMPILED-MASS-CLOCK",
+        "role": "Supplies the prior source-clock target and charged-control conventions; its vacuum/one-particle restriction is removed by this separate fermionic compiler.",
+        "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+      },
+      {
+        "from": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
+        "role": "Supplies the full-interface noise estimate, including off-code intermediate pulses and gauge preparation; the unencoded sector bound is not reused.",
+        "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
       },
       {
         "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
@@ -2832,9 +2885,24 @@
         "to": "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT"
       },
       {
+        "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+        "role": "Supplies the all-sector gates, deterministic local preparation and complete number instruments.",
+        "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+      },
+      {
+        "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+        "role": "Supplies the edge encoding and independent cycle constraints on which the physical vacuum-noise obstruction is proved.",
+        "to": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE"
+      },
+      {
         "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
         "role": "Supplies coherent transfer under two read tables and the exact-Z A3 noise semigroup; its rate remains declared data.",
         "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+      },
+      {
+        "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
+        "role": "Supplies the explicitly proposed CCG coherent transport service, without granting a freely variable code basis.",
+        "to": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION"
       },
       {
         "from": "OPH-THERMO-GIBBS-REFERENCE-ENERGY-IDENTIFICATION",
@@ -3456,7 +3524,7 @@
     "code/m1_necessity/CONSUMERS.md": "5e178a21be7719c24794fbcab673c4ae6d76a96aa66cab2d69e62663526780d4",
     "code/m1_necessity/CONTRACT.md": "f3186f4911ea004fcad0058dbc0a526d359c623d42bdb4bf279fc6dd43ea1670",
     "code/m1_necessity/DERIVATION.md": "13754829bb642c0e48c4ae8cfb8f69d56baa8de90c36dfcb18ae0ff0a8dcca9c",
-    "code/m1_necessity/README.md": "fdcd27e3e72726c4d32f90c1d8283a9cd7c11fbe113372658025582d1c47bb35",
+    "code/m1_necessity/README.md": "0fdeb60d78443bbf114a944f6b62f7ce904ac924577b3f925a803f33bb261ea0",
     "code/m1_necessity/SPECTRAL_COMPLETION.md": "1e633dcbe37a26401ef7c81c158f47d164b5ffb03ae6631da4e42b431ea19f54",
     "code/m1_necessity/__init__.py": "a49a6656f96a30bd6343e498a0ca5302dae30515d4cf458d45c172933a0247ac",
     "code/m1_necessity/audit.py": "d6a0df2ca2ab885fa8cb7c527f3a74ac17b748847524f4cec7d8df7a049a50c0",
@@ -3465,9 +3533,9 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "a317ab1c69de810c891b67b3db80a223d8c23530e5d23dd54fa1b7d33ba9a630",
+    "code/m1_necessity/downstream.json": "791696857ad423540111c40b958fe72d540988af20c993a2e4f143082cb3a571",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "2f048e06dfae27a63093d7e5bc0e26b03e03a57544e633be17c9b47c013bce2f",
+    "code/m1_necessity/test_necessity.py": "127b47f2924af42d5852eec00b808b9b5f51d087ffb2d59844d4cbb2b924d142",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",

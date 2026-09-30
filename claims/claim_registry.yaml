@@ -13078,6 +13078,151 @@
         "boundary": [],
         "rationale": "This row realizes a declared clock experiment in an explicit source family under the proposed CCG service. It charges its actual schedule, but does not use or discharge the premise-register physical time/energy calibration or action-to-spacetime identifications."
       }
+    },
+    {
+      "claim_id": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+      "statement": "The existing coherent proper-code source with its stated CCG service realizes the full even CAR algebra on every occupation sector, with both parity blocks, using the standard Bravyi-Kitaev edge-qubit encoding. Native M6 pulses and complete proper-code instruments implement its signed Pauli rotations, fermionic mode swaps, QND number reads and quartic density phases. All loop-measurement outcomes are corrected; an explicit local cycle basis and causal prefix decoder prepare the reflecting clock graph in diameter-bounded wall time under the stated drive scaling. Code growth preserves unknown entangled inputs by a charged instrument, separately from physical-factor refinement. A computed two-fermion density interaction has non-Slater one-body density and CHSH value 2 sqrt(2). No odd field is asserted to be a commuting local qubit observable and fermionic statistics are not selected by the axioms.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_encoded_fermionic_clock_budget"
+      ],
+      "imported_results": [
+        "Bravyi_Kitaev_superfast_encoding",
+        "finite_CAR_and_exterior_algebra",
+        "stabilizer_measurement_and_Givens_synthesis"
+      ],
+      "oph_specific_delta": "Closes the source construction gap for fermionic signs, all occupation sectors, deterministic local preparation and actual interacting/read instruments without adding a new transport service.",
+      "novelty_type": "proper_code_fermion_compiler_with_causal_all_syndrome_preparation",
+      "falsifier": "A parity block, loop sign, occupation intertwiner, native instrument, local decoder, conversion map or density circuit fails; an outcome is omitted; preparation requires uncharged global processing; or an ordering change is applied to states without observables.",
+      "scope_if_false": "The constructed all-sector source realization fails. The standard encoding is credited prior work, and physical statistics or unique source selection are not claimed.",
+      "owner_paper": "extra/FERMIONIC_SOURCE_CLOCKS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/FERMIONIC_SOURCE_CLOCKS.md",
+        "code/m1_fermionic_source/CONTRACT.md",
+        "code/m1_fermionic_source/README.md",
+        "code/m1_fermionic_source/model.py",
+        "code/m1_fermionic_source/circuits.py",
+        "code/m1_fermionic_source/preparation.py",
+        "code/m1_fermionic_source/spatial.py",
+        "code/m1_fermionic_source/walk.py",
+        "code/m1_fermionic_source/experiments.py",
+        "code/m1_fermionic_source/check.py",
+        "code/m1_fermionic_source/preparation_check.py",
+        "code/m1_fermionic_source/geometry_check.py",
+        "code/m1_fermionic_source/experiment_check.py",
+        "code/m1_fermionic_source/verify.py",
+        "code/m1_fermionic_source/receipt.json",
+        "code/m1_fermionic_source/test_fermionic.py"
+      ],
+      "status": "proved_for_explicit_coherent_source_with_all_sector_replay",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row constructs the even CAR representation, native circuits and deterministic preparation inside the existing declared coherent source. Its encoding and algebra statements do not consume the premise-register physical source, statistics or continuum identification requirements."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-ENCODED-FERMION-CLOCK",
+      "statement": "On a finite reflecting workspace with degree at most twelve, the proper-code fermionic compiler implements the even-observable action of the two-mass tetrahedral walk exactly in both parity blocks at arbitrary occupation, returns its blank bank, and realizes the resolved CAR number instruments and the bounded click effect I-Gamma(I-F). A conflict-free 64-color schedule charges 464 Pauli rotations per cell per macrostep, every native pulse, flight, code event, gauge/packet preparation and final report. With native drive pi c/a and event time a/c the conservative wall factor is 20534513.36899866, independent of volume and cutoff. Isometric transfer preserves the named resolved-read bound for every Fock state and ancilla at macrostep endpoints. The finite analytic clock witness, not a giant executed simulation, retains swing greater than .6752 with a declared positive full-interface noise cap and fixed positive accounting observable. Laboratory time/energy, mass selection and the free clock law under nonzero density coupling are not established.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_massive_tetrahedral_process",
+        "declared_smooth_local_car_operations",
+        "declared_two_mass_clock_preparation",
+        "declared_encoded_fermionic_clock_budget"
+      ],
+      "imported_results": [
+        "exterior_functor_composition",
+        "operational_mass_clock_error_certificate",
+        "channel_contractivity_and_spectral_range_bound"
+      ],
+      "oph_specific_delta": "Replaces the vacuum/one-particle source compiler by an all-sector fermionic implementation with complete detector semantics, causal setup and a uniform charged wall-time rescaling.",
+      "novelty_type": "all_sector_source_clock_and_resolved_instrument_realization",
+      "falsifier": "A full spatial matrix entry or blank-bank column fails; ordinary swaps are accepted as fermionic flights; the detector exceeds one; a shared processor or message has zero charged duration; or the finite trace/accounting and visibility bounds fail.",
+      "scope_if_false": "The named all-sector clock realization or its error ledger fails. No empirical calibration, practical hardware performance or interacting relativistic continuum is asserted.",
+      "owner_paper": "extra/FERMIONIC_SOURCE_CLOCKS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/FERMIONIC_SOURCE_CLOCKS.md",
+        "code/m1_fermionic_source/CONTRACT.md",
+        "code/m1_fermionic_source/README.md",
+        "code/m1_fermionic_source/model.py",
+        "code/m1_fermionic_source/circuits.py",
+        "code/m1_fermionic_source/preparation.py",
+        "code/m1_fermionic_source/spatial.py",
+        "code/m1_fermionic_source/walk.py",
+        "code/m1_fermionic_source/experiments.py",
+        "code/m1_fermionic_source/check.py",
+        "code/m1_fermionic_source/preparation_check.py",
+        "code/m1_fermionic_source/geometry_check.py",
+        "code/m1_fermionic_source/experiment_check.py",
+        "code/m1_fermionic_source/verify.py",
+        "code/m1_fermionic_source/receipt.json",
+        "code/m1_fermionic_source/test_fermionic.py"
+      ],
+      "status": "proved_for_explicit_coherent_source_with_all_sector_replay",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row realizes the specified free clock and resolved instruments on the constructed source, with explicit setup and wall time. It neither consumes nor discharges registered physical time calibration, energy calibration or empirical source-selection premises."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
+      "statement": "Independent physical edge-qubit dephasing with phase-flip probability p=(1-exp(-lambda T))/2 damages the encoded empty vacuum by at least 1-(1-p)^r, where r is the encoding graph cycle rank. On the finite clock graph r=31q^3-3q^2+1, so a nonzero fixed-volume wait requires lambda=O(a^3) for nonvanishing vacuum fidelity and lambda=o(a^3) for fidelity converging to one. The unencoded occupation-sector noise bound therefore cannot be transferred to the edge encoding, even at zero fermion number. A separate full-interface diamond-norm estimate lambda R T bounds the complete noisy circuit including active M6 processors, visitor/helper buffers, temporary off-code states and preparation, with all outcomes retained. Reliable counted central classical records are part of this specified quantum-noise model; no generic fault-tolerance threshold is claimed. At fixed physical volume and observation time, the charged schedule gives uniform exposure and a sufficient noisy approximation with lambda_q=lambda_0 q^-8, state error O(q^-5) and extra full-Fock accounting error O(q^-1); these sufficient rate and drive capabilities are declared, not physically selected.",
+      "assumptions": [
+        "declared_encoded_fermionic_clock_budget"
+      ],
+      "imported_results": [
+        "Pauli_dephasing_semigroup",
+        "independent_error_syndromes",
+        "diamond_norm_telescoping"
+      ],
+      "oph_specific_delta": "Identifies the physical noise cost of local fermion encoding and supplies a valid source-wide error budget instead of copying a particle-number estimate to gauge qubits.",
+      "novelty_type": "encoded_vacuum_noise_obstruction_and_full_interface_bound",
+      "falsifier": "The chord syndrome columns are not independent; an emitted vacuum fidelity violates the lower bound; a noisy active interface is omitted from R; or the full channel error exceeds the stated telescoping estimate.",
+      "scope_if_false": "The physical-interface noise obstruction or sufficient error budget fails. Engineered logical noise and ideal terminal vacuum correction are distinct channels and are not excluded.",
+      "owner_paper": "extra/FERMIONIC_SOURCE_CLOCKS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/FERMIONIC_SOURCE_CLOCKS.md",
+        "code/m1_fermionic_source/CONTRACT.md",
+        "code/m1_fermionic_source/README.md",
+        "code/m1_fermionic_source/model.py",
+        "code/m1_fermionic_source/circuits.py",
+        "code/m1_fermionic_source/preparation.py",
+        "code/m1_fermionic_source/spatial.py",
+        "code/m1_fermionic_source/walk.py",
+        "code/m1_fermionic_source/experiments.py",
+        "code/m1_fermionic_source/check.py",
+        "code/m1_fermionic_source/preparation_check.py",
+        "code/m1_fermionic_source/geometry_check.py",
+        "code/m1_fermionic_source/experiment_check.py",
+        "code/m1_fermionic_source/verify.py",
+        "code/m1_fermionic_source/receipt.json",
+        "code/m1_fermionic_source/test_fermionic.py"
+      ],
+      "status": "proved_for_explicit_coherent_source_with_all_sector_replay",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row is a finite-channel obstruction and error bound for the explicitly specified physical-interface dephasing model. It makes no identification of that declared rate, noise process or accounting reference with laboratory data and consumes no physical premise-register branch."
+      }
     }
   ]
 }
