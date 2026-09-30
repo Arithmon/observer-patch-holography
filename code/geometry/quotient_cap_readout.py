@@ -21,14 +21,22 @@ names below are descriptive and carry no LaTeX label in the .tex sources:
   triple reconstruct the celestial embedding, cap normals `n_C` are produced
   from boundary circles by the round-cap-normal formula, and the residuals
   shrink under refinement;
-* the underdetermination countermodels of Theorem 4.3c: four repair systems
+* the underdetermination countermodels of Theorem 4.3c: six repair systems
   with one rewrite signature `(3, 1)` (patches in the seed record, repair
-  steps) over S^2, T^2 (Csaszar torus), the 2-skeleton of the boundary of
-  the 4-simplex, and a wedge of two spheres, distinguished only by the
-  receipts.  They show that confluence alone does not select topology,
-  dimension, or modular normalization; no orientation-framing or MGNS-state
-  countermodel is built here, and the receipt set is one sufficient
-  certificate whose semantic minimality stays open.
+  steps) over S^2, T^2 (Csaszar torus), RP^2 (hemi-icosahedron), the Klein
+  bottle, the 2-skeleton of the boundary of the 4-simplex, and a wedge of
+  two spheres, distinguished only by the receipts.  They show that
+  confluence alone does not select topology, orientability, dimension, or
+  modular normalization.  On a connected closed surface the orientability
+  clause of the spherical-incidence receipt follows from chi = 2 by the
+  classification of surfaces, so both nonorientable systems also fail that
+  receipt at its Euler clause;
+* an orientation-framing countermodel: the two coherent orientations of the
+  S^2 system share every confluence-level datum, and a mirror pair of
+  embeddings carries complex-conjugate cross-ratios, so the framing enters
+  only through its separately typed receipt.  No MGNS-state countermodel is
+  built here, and the receipt set is one sufficient certificate whose
+  semantic minimality is unproved.
 """
 
 from __future__ import annotations
@@ -101,6 +109,54 @@ def wedge_of_two_spheres() -> list[tuple[int, int, int]]:
     return tris + second
 
 
+def real_projective_plane() -> list[tuple[int, int, int]]:
+    """The hemi-icosahedron: the antipodal quotient of `icosahedron()`.
+
+    Antipodal vertex pairs of the icosahedron become six vertices and
+    antipodal face pairs become ten triangles. The edge graph is the
+    complete graph K6 and chi = 1: the vertex-minimal triangulation of the
+    real projective plane, a closed nonorientable surface.
+    """
+    tris, coords = icosahedron()
+    n = len(coords)
+    antipode = [int(np.argmin(np.linalg.norm(coords + coords[i], axis=1))) for i in range(n)]
+    classes = sorted({min(i, antipode[i]) for i in range(n)})
+    label = {i: classes.index(min(i, antipode[i])) for i in range(n)}
+    quotient = sorted({tuple(sorted(label[v] for v in t)) for t in tris})
+    assert len(classes) == 6 and len(quotient) == 10
+    return quotient
+
+
+def klein_bottle() -> list[tuple[int, int, int]]:
+    """A nine-vertex Klein bottle from a 3 x 3 grid with a glide identification.
+
+    The plane modulo the translation (x, y) -> (x, y + 3) and the glide
+    reflection (x, y) -> (x + 3, -y) is a Klein bottle. Each unit square is
+    cut by one diagonal whose direction alternates with the column; the
+    glide has an odd shift and reflects y, so it maps the diagonal pattern to
+    itself and the triangulation descends to the quotient: 9 vertices,
+    27 edges, 18 triangles, chi = 0. The vertex-minimal Klein bottle has 8
+    vertices; this closed form is used because it can be checked by hand.
+    """
+    m = n = 3
+
+    def vertex(x: int, y: int) -> int:
+        sheet, column = divmod(x, m)
+        return column * n + ((-1) ** sheet * y) % n
+
+    tris = []
+    for x, y in itertools.product(range(m), range(n)):
+        a, b = vertex(x, y), vertex(x + 1, y)
+        c, d = vertex(x, y + 1), vertex(x + 1, y + 1)
+        if x % 2 == 0:
+            tris += [(a, b, d), (a, c, d)]
+        else:
+            tris += [(a, b, c), (b, c, d)]
+    tris = [tuple(sorted(t)) for t in tris]
+    assert len(set(tris)) == 18
+    return tris
+
+
 # ---------------------------------------------------------------------------
 # finite transactional quotient repair system
 # ---------------------------------------------------------------------------
@@ -156,7 +212,7 @@ class RepairSystem:
     def rewrite_signature(self) -> tuple[int, int]:
         """Confluence-level invariant: (#patches touched by conflict, #steps).
 
-        Isomorphic across all four countermodel systems by construction: the
+        Isomorphic across all six countermodel systems by construction: the
         conflict component is a single record with three patches everywhere.
         """
         rec = self.records[self.seed_record]
@@ -304,7 +360,13 @@ def spherical_incidence_receipt(K: IncidenceComplex) -> bool:
 
 
 def classify_surface(K: IncidenceComplex) -> str:
-    """Topology-production step of Theorem 4.3c: classification by receipts."""
+    """Topology-production step of Theorem 4.3c: classification by receipts.
+
+    Orientability and Euler characteristic fix a connected closed surface up
+    to homeomorphism: the orientable surface of genus g has chi = 2 - 2g, and
+    the nonorientable surface with k crosscaps has chi = 2 - k (k = 1 is the
+    real projective plane, k = 2 the Klein bottle).
+    """
     if not is_connected(K):
         return "DISCONNECTED"
     if not is_closed_surface(K):
@@ -317,7 +379,52 @@ def classify_surface(K: IncidenceComplex) -> str:
         return "T2"
     if orientable:
         return f"GENUS_{(2 - chi) // 2}"
-    return "NONORIENTABLE"
+    if chi == 1:
+        return "RP2"
+    if chi == 0:
+        return "KLEIN_BOTTLE"
+    return f"NONORIENTABLE_GENUS_{2 - chi}"
+
+
+# ---------------------------------------------------------------------------
+# orientation framing (separately typed receipt of Theorem 4.3c)
+# ---------------------------------------------------------------------------
+
+def reverse_orientation(oriented: list[tuple[int, int, int]]) -> list[tuple[int, int, int]]:
+    """The opposite framing: every oriented triangle with its cycle reversed."""
+    return [(b, a, c) for a, b, c in oriented]
+
+
+def orientation_is_coherent(oriented: list[tuple[int, int, int]]) -> bool:
+    """Every edge is traversed exactly once in each direction."""
+    if not oriented or any(len(set(t)) != 3 for t in oriented):
+        return False
+    if len({frozenset(t) for t in oriented}) != len(oriented):
+        return False
+    directed: dict[tuple[int, int], int] = {}
+    for a, b, c in oriented:
+        for x, y in ((a, b), (b, c), (c, a)):
+            directed[(x, y)] = directed.get((x, y), 0) + 1
+    return all(
+        count == 1 and directed.get((y, x)) == 1
+        for (x, y), count in directed.items()
+    )
+
+
+def is_outward_framing(oriented: list[tuple[int, int, int]], coords: np.ndarray) -> bool:
+    """The framing agrees with the outward normals of an embedding star-shaped about the origin."""
+    if not orientation_is_coherent(oriented):
+        return False
+    if coords.ndim != 2 or coords.shape[1] != 3 or not np.isfinite(coords).all():
+        return False
+    if any(v < 0 or v >= len(coords) for t in oriented for v in t):
+        return False
+    for a, b, c in oriented:
+        normal = np.cross(coords[b] - coords[a], coords[c] - coords[a])
+        signed_volume = float(np.dot(normal, coords[a] + coords[b] + coords[c]))
+        if not np.isfinite(signed_volume) or signed_volume <= 0.0:
+            return False
+    return True
 
 
 # ---------------------------------------------------------------------------

@@ -7,6 +7,7 @@ Each test verifies one clause of The spacetime and Einstein paper's
 
 from __future__ import annotations
 
+import itertools
 import random
 import sys
 from pathlib import Path
@@ -31,16 +32,21 @@ from quotient_cap_readout import (  # noqa: E402
     incidence_complex,
     is_closed_surface,
     is_connected,
+    is_outward_framing,
+    klein_bottle,
     kms_receipt,
     minkowski,
     mobius_normalize,
     normal_form_records,
     orient,
+    orientation_is_coherent,
     produced_cap_normal,
     readout_from_system,
+    real_projective_plane,
     reconstruct_from_cross_ratios,
     refinement_is_simplicial,
     refinement_subdivide,
+    reverse_orientation,
     spherical_incidence_receipt,
     stereographic,
 )
@@ -51,11 +57,22 @@ def build_systems() -> dict[str, RepairSystem]:
     return {
         "S2": RepairSystem(ico),
         "T2": RepairSystem(csaszar_torus()),
+        "RP2": RepairSystem(real_projective_plane()),
+        "KLEIN": RepairSystem(klein_bottle()),
         "S3": RepairSystem(boundary_4_simplex_2_skeleton()),
         "WEDGE": RepairSystem(
             [tuple(t) for t in __import__("quotient_cap_readout").wedge_of_two_spheres()]
         ),
     }
+
+
+def cyclic_classes(oriented: list[tuple[int, int, int]]) -> set[tuple[int, int, int]]:
+    """Oriented triangles as cyclic orders, rotated to start at the least label."""
+    out = set()
+    for t in oriented:
+        i = t.index(min(t))
+        out.add(t[i:] + t[:i])
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -133,6 +150,8 @@ def test_topology_production_and_underdetermination():
         verdicts[name] = (spherical_incidence_receipt(k), classify_surface(k))
     assert verdicts["S2"] == (True, "S2")
     assert verdicts["T2"] == (False, "T2")
+    assert verdicts["RP2"] == (False, "RP2")
+    assert verdicts["KLEIN"] == (False, "KLEIN_BOTTLE")
     assert verdicts["S3"][0] is False
     assert verdicts["S3"][1] == "NOT_A_CLOSED_SURFACE"
     assert verdicts["WEDGE"][0] is False
@@ -153,6 +172,90 @@ def test_euler_characteristics_and_surface_clauses():
 
     k_s3 = incidence_complex(boundary_4_simplex_2_skeleton())
     assert not is_closed_surface(k_s3)  # every edge lies in three triangles
+
+
+def test_nonorientable_countermodels_realize_rp2_and_klein_bottle():
+    k_rp2 = incidence_complex(real_projective_plane())
+    assert (len(k_rp2.vertices), len(k_rp2.edges), len(k_rp2.triangles)) == (6, 15, 10)
+    assert euler_characteristic(k_rp2) == 1
+    assert is_closed_surface(k_rp2) and is_connected(k_rp2)
+    assert orient(k_rp2) is None
+    # antipodal quotient of the icosahedron: the edge graph is K6
+    assert k_rp2.edges == {frozenset(p) for p in itertools.combinations(range(6), 2)}
+
+    k_kb = incidence_complex(klein_bottle())
+    assert (len(k_kb.vertices), len(k_kb.edges), len(k_kb.triangles)) == (9, 27, 18)
+    assert euler_characteristic(k_kb) == 0
+    assert is_closed_surface(k_kb) and is_connected(k_kb)
+    assert orient(k_kb) is None
+
+
+def test_vertex_defect_budget_matches_euler_characteristic():
+    # on a closed triangulated surface, sum_v (6 - deg v) = 6 chi: twelve
+    # degree-five vertices on S^2, six on RP^2, zero net defect on T^2 and K
+    for name in ("S2", "T2", "RP2", "KLEIN"):
+        k = readout_from_system(build_systems()[name])
+        degree = {v: sum(1 for e in k.edges if v in e) for v in k.vertices}
+        assert sum(6 - d for d in degree.values()) == 6 * euler_characteristic(k), name
+    k_rp2 = incidence_complex(real_projective_plane())
+    assert all(sum(1 for e in k_rp2.edges if v in e) == 5 for v in k_rp2.vertices)
+
+
+def test_orientability_clause_is_implied_at_euler_characteristic_two():
+    # classification of closed surfaces: a connected closed surface with
+    # chi = 2 is the sphere, so the orientability clause of the spherical
+    # incidence receipt never fails alone, on any countermodel or on one
+    # refinement stage of it
+    for name, system in build_systems().items():
+        records = normal_form_records(system, system.repair())
+        coarse = incidence_complex(records)
+        fine = incidence_complex(refinement_subdivide(records)[0])
+        for k in (coarse, fine):
+            if is_connected(k) and is_closed_surface(k) and euler_characteristic(k) == 2:
+                assert orient(k) is not None, name
+    for name in ("RP2", "KLEIN"):
+        k = readout_from_system(build_systems()[name])
+        assert orient(k) is None and euler_characteristic(k) != 2, name
+
+
+def test_orientation_framing_is_not_selected_by_confluence():
+    ico, coords = icosahedron()
+    first, second = RepairSystem(ico), RepairSystem(list(ico))
+    assert first.rewrite_signature() == second.rewrite_signature()
+    assert first.repair() == second.repair()
+    k_first, k_second = readout_from_system(first), readout_from_system(second)
+    assert complexes_equal(k_first, k_second)
+    assert spherical_incidence_receipt(k_first) and spherical_incidence_receipt(k_second)
+
+    # the S^2 normal form carries two coherent framings, fixed by the
+    # cyclic order of one triangle; they disagree on every triangle
+    framing = orient(k_first)
+    opposite = reverse_orientation(framing)
+    assert orientation_is_coherent(framing) and orientation_is_coherent(opposite)
+    assert len(cyclic_classes(framing)) == len(cyclic_classes(opposite)) == 20
+    assert not cyclic_classes(framing) & cyclic_classes(opposite)
+
+    # a mirror pair of embeddings selects opposite framings
+    mirror = coords * np.array([1.0, -1.0, 1.0])
+    outward = framing if is_outward_framing(framing, coords) else opposite
+    assert is_outward_framing(outward, coords)
+    assert not is_outward_framing(outward, mirror)
+    assert is_outward_framing(reverse_orientation(outward), mirror)
+
+    # and carries complex-conjugate oriented cross-ratio data
+    theta = 0.3
+    rot = np.array(
+        [[1, 0, 0],
+         [0, np.cos(theta), -np.sin(theta)],
+         [0, np.sin(theta), np.cos(theta)]]
+    )
+    pts = coords @ rot.T
+    gauge = (0, 1, 2)
+    direct = reconstruct_from_cross_ratios(pts, gauge)
+    mirrored = reconstruct_from_cross_ratios(pts * np.array([1.0, -1.0, 1.0]), gauge)
+    finite = [i for i in range(len(pts)) if i != gauge[2]]
+    assert all(abs(mirrored[i] - np.conj(direct[i])) < 1e-9 for i in finite)
+    assert max(abs(direct[i].imag) for i in finite) > 1e-3
 
 
 def test_wrong_beta_kms_receipt_separates():
@@ -246,3 +349,27 @@ def test_cap_normal_residual_shrinks_under_refinement():
         residuals.append(np.linalg.norm(produced_cap_normal(pts) - expected))
     assert residuals[0] > residuals[1] > residuals[2]
     assert residuals[2] < 1e-3
+
+
+def test_orientation_helpers_reject_malformed_and_nonfinite_frames():
+    triangles, coords = icosahedron()
+    framing = orient(incidence_complex(triangles))
+    if not is_outward_framing(framing, coords):
+        framing = reverse_orientation(framing)
+    assert is_outward_framing(framing, coords)
+    malformed = [
+        [],
+        framing[:-1],
+        framing + [framing[0]],
+        reverse_orientation(framing[:1]) + framing[1:],
+        [(0, 0, 1)],
+    ]
+    for candidate in malformed:
+        assert not orientation_is_coherent(candidate)
+        assert not is_outward_framing(candidate, coords)
+    for value in (np.nan, np.inf, -np.inf):
+        corrupt = coords.copy()
+        corrupt[0, 0] = value
+        assert not is_outward_framing(framing, corrupt)
+    assert not is_outward_framing(framing, coords[:, :2])
+    assert not is_outward_framing(framing, coords[:-1])
