@@ -1849,6 +1849,23 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "af2214614c4d6e3feac1673719b8173fe8938340a4edd6f34ec4790f47963206"
       },
+      "OPH-SOURCE-COHERENT-CODE-COMPLETION": {
+        "assumptions": [
+          "declared_proper_code_source_completion"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "39d9dad48247e5fc93b0c4f8e0b72de26b250654f2e93ffb4fa16a7ce6b5536d"
+      },
+      "OPH-SOURCE-COMPILED-MASS-CLOCK": {
+        "assumptions": [
+          "declared_proper_code_source_completion",
+          "proposed_coherent_code_gluing_CCG",
+          "declared_two_mass_clock_preparation",
+          "declared_source_clock_control_and_noise_budget"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "d8cba1d457919a7b9dc49259876e58f95f288e25a3abddfa43805b88e27f2d0e"
+      },
       "OPH-SOURCE-FULL-FAMILY-READ-ROUTING": {
         "assumptions": [
           "M1_full_family_read_feedback_and_routing"
@@ -1863,6 +1880,13 @@
         ],
         "disposition": "native_resource_counts_not_transferred",
         "original_claim_sha256": "e79d27aec2a4f883419ad20748c2a4f0fe12eed3c95687ff1c328bb19c5409b0"
+      },
+      "OPH-SOURCE-TWO-BASIS-A3-SELECTION": {
+        "assumptions": [
+          "declared_code_channel_agreement_and_tracial_reference"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "d7c9053154d59e8cf43271e604aa06d8bb28ead2453ec0ea6c1788531562baea"
       },
       "OPH-THERMO-COLLAR-TEMPERATURE-READING": {
         "assumptions": [
@@ -2593,6 +2617,11 @@
         "to": "OPH-M1-RESOLVED-LOCAL-READ-CONE"
       },
       {
+        "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+        "role": "Supplies the full one-particle walk and fixed positive Floquet observable used for the phase-noise ultraviolet test; no physical energy calibration is inherited.",
+        "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+      },
+      {
         "from": "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
         "role": "Identifies the residue defect and necessary short-ball threshold; the repair proves sufficiency, recovery and minimum convergence from the actual added reads.",
         "to": "OPH-M1-VARIATIONAL-AREA-REPAIR"
@@ -2601,6 +2630,11 @@
         "from": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
         "role": "Supplies the charged tetrahedral coin, complete parent spectrum and native duration; the massive spectrum and all-band bound are proved for the explicit doubled process.",
         "to": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM"
+      },
+      {
+        "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
+        "role": "Supplies the bounded finite one-particle clock signal and sampled preparation/detector estimates. Source gates, preparation program and positive control time are supplied here; arbitrary Fock-sector claims are not transferred.",
+        "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
       },
       {
         "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
@@ -2698,6 +2732,11 @@
         "to": "OPH-GEOMETRY-SOURCE-CLOCK-RATE-ALONG-WORLDLINES"
       },
       {
+        "from": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+        "role": "Supplies the proposed classical RG service being completed and separated from noncentral transport; no quantum service is inherited.",
+        "to": "OPH-SOURCE-COHERENT-CODE-COMPLETION"
+      },
+      {
         "from": "OPH-RG-INFORMATION-RESOURCE-BOUND",
         "role": "Requires actual elapsed time and retained intermediate operations to remain distinct from numerical step labels; no classical capacity assumption is promoted to a quantum source law.",
         "to": "OPH-M1-QUANTUM-VELOCITY-BUDGET"
@@ -2768,6 +2807,16 @@
         "to": "OPH-WZ-STRICT-1L-POLE-MAP"
       },
       {
+        "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+        "role": "Supplies the native single-qubit and entangling response controls and full physical code instruments in the named source.",
+        "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+      },
+      {
+        "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+        "role": "Supplies the declared proper-code interfaces to which the general finite channel theorem is applied; accepted complementary read data are stated explicitly.",
+        "to": "OPH-SOURCE-TWO-BASIS-A3-SELECTION"
+      },
+      {
         "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
         "role": "Supplies the complete q3 routed event streams, prepared address records and declared M1 compiler used for the paired gluing comparison; source-selected population, physical geometry and unrestricted law recovery are not inherited.",
         "to": "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION"
@@ -2781,6 +2830,11 @@
         "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
         "role": "Supplies the complete event program, retained writer history and production counters to which the conditional lifetime and count bounds apply.",
         "to": "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT"
+      },
+      {
+        "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
+        "role": "Supplies coherent transfer under two read tables and the exact-Z A3 noise semigroup; its rate remains declared data.",
+        "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
       },
       {
         "from": "OPH-THERMO-GIBBS-REFERENCE-ENERGY-IDENTIFICATION",
@@ -3402,7 +3456,7 @@
     "code/m1_necessity/CONSUMERS.md": "5e178a21be7719c24794fbcab673c4ae6d76a96aa66cab2d69e62663526780d4",
     "code/m1_necessity/CONTRACT.md": "f3186f4911ea004fcad0058dbc0a526d359c623d42bdb4bf279fc6dd43ea1670",
     "code/m1_necessity/DERIVATION.md": "13754829bb642c0e48c4ae8cfb8f69d56baa8de90c36dfcb18ae0ff0a8dcca9c",
-    "code/m1_necessity/README.md": "46271f65966cb2f561e9157a0a7c2b7485243a31c825efdd21c42870fd8ca9a8",
+    "code/m1_necessity/README.md": "fdcd27e3e72726c4d32f90c1d8283a9cd7c11fbe113372658025582d1c47bb35",
     "code/m1_necessity/SPECTRAL_COMPLETION.md": "1e633dcbe37a26401ef7c81c158f47d164b5ffb03ae6631da4e42b431ea19f54",
     "code/m1_necessity/__init__.py": "a49a6656f96a30bd6343e498a0ca5302dae30515d4cf458d45c172933a0247ac",
     "code/m1_necessity/audit.py": "d6a0df2ca2ab885fa8cb7c527f3a74ac17b748847524f4cec7d8df7a049a50c0",
@@ -3411,9 +3465,9 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "b7ea94333cdf7a37d524a2e9d3579b50f2ad260565d32ff47ff502857f3372c7",
+    "code/m1_necessity/downstream.json": "a317ab1c69de810c891b67b3db80a223d8c23530e5d23dd54fa1b7d33ba9a630",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "cc3aa38473c42561e21cd6e81d772a7b5ea615a34faba246bf0761dc46975f84",
+    "code/m1_necessity/test_necessity.py": "2f048e06dfae27a63093d7e5bc0e26b03e03a57544e633be17c9b47c013bce2f",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",

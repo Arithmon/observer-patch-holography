@@ -12955,6 +12955,129 @@
         "boundary": [],
         "rationale": "The clock is constructed from supplied masses and quantum gates in native flight time, and its proper-time factor is a conclusion of that construction. It does not use a physical proper-time premise or discharge the registered source, physical timing or continuum-identification premises."
       }
+    },
+    {
+      "claim_id": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+      "statement": "The named active M6 twelve-port response has sum D_p=diag(i I3,0), exact native single-qubit controls and an encoded controlled-Z. A proper-code instrument with explicit complement failure, sender reset and receiver overwrite preserves code entanglement without being reversible on the full carrier algebra. A private-buffer net with within-fibre process links over the normalized spherical support has explicit degree-one bridge, retained-factor refinement and the original complete response and endogenous chart transport. Its classical RG completion with A3-selected dephasing is a full named A1--A3 source with no unknown quantum communication from product inputs, even with adaptive classical feedback and stopping. Its coherent-code completion exists when both complementary read tables are accepted. CCG is a proposed extra requirement, not a consequence of classical RG or a newly adopted core axiom.",
+      "assumptions": [
+        "declared_proper_code_source_completion"
+      ],
+      "imported_results": [
+        "finite_CPTP_instruments",
+        "entanglement_breaking_channel_characterization",
+        "simplicial_chain_maps"
+      ],
+      "oph_specific_delta": "Replaces an appended gate family with the existing exact source response and completes the full-algebra/support obligations for classical and coherent code services.",
+      "novelty_type": "active_source_control_and_complete_classical_coherent_completions",
+      "falsifier": "A source control fails exact reconstruction; a hidden buffer or central-sector reversible direction is admitted; a code instrument loses valid entanglement or hides failure; the factor or degree-one refinement fails; or a permitted classical protocol beats the complementary-test bound.",
+      "scope_if_false": "The named source completion or transport independence result fails; unique empirical source selection is not asserted.",
+      "owner_paper": "extra/COHERENT_SOURCE_CLOCKS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/COHERENT_SOURCE_CLOCKS.md",
+        "code/m1_source_realization/CONTRACT.md",
+        "code/m1_source_realization/README.md",
+        "code/m1_source_realization/model.py",
+        "code/m1_source_realization/circuits.py",
+        "code/m1_source_realization/topology.py",
+        "code/m1_source_realization/check.py",
+        "code/m1_source_realization/verify.py",
+        "code/m1_source_realization/receipt.json",
+        "code/m1_source_realization/test_source.py"
+      ],
+      "status": "proved_for_named_source_family_with_explicit_additional_coherence_requirement",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row constructs two explicitly typed mathematical source completions and proves their model membership and difference. It does not consume a physical timing, continuum or field-identification premise from the premise register."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
+      "statement": "For every finite d, computational and Fourier read fidelities of a CPTP code channel obey F_e>=F_Z+F_X-1. Exact agreement in both tables forces the identity including on entangled inputs. With only exact computational agreement the full feasible family is the correlation-matrix Schur family and the tracial Choi A3 problem uniquely selects complete dephasing. With errors e_Z,e_X below 1-1/d, the unique optimizer is a product-distribution Weyl channel with half diamond error e_Z+e_X-e_Z e_X. The exact-Z phase-rate family composes under time subdivision. All entanglement-breaking transport has complementary-test mean at most (1+1/d)/2. These are transition-object statements, not consequences of a stationary ontic entropy optimizer.",
+      "assumptions": [
+        "declared_code_channel_agreement_and_tracial_reference"
+      ],
+      "imported_results": [
+        "Hofmann_complementary_classical_fidelities",
+        "Bell_twirl_and_entropy_subadditivity",
+        "Choi_channel_correspondence"
+      ],
+      "oph_specific_delta": "Solves the full source code-channel selection problem under one versus two accepted read tables, including noisy optimizers and time refinement, with an operationally testable extra coherence requirement.",
+      "novelty_type": "source_read_agreement_entropy_optimizer_and_refinement_semigroup",
+      "falsifier": "A feasible channel violates the fidelity inequality; another channel has lower relative entropy than the stated optimizer; code entanglement is not preserved at zero errors; or fixed-time subdivision changes the rate-selected channel.",
+      "scope_if_false": "The code-channel selection theorem fails. The complementary-fidelity identity is credited to prior work and is not claimed as an OPH discovery.",
+      "owner_paper": "extra/COHERENT_SOURCE_CLOCKS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/COHERENT_SOURCE_CLOCKS.md",
+        "code/m1_source_realization/CONTRACT.md",
+        "code/m1_source_realization/README.md",
+        "code/m1_source_realization/model.py",
+        "code/m1_source_realization/circuits.py",
+        "code/m1_source_realization/topology.py",
+        "code/m1_source_realization/check.py",
+        "code/m1_source_realization/verify.py",
+        "code/m1_source_realization/receipt.json",
+        "code/m1_source_realization/test_source.py"
+      ],
+      "status": "proved_for_named_source_family_with_explicit_additional_coherence_requirement",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This finite channel theorem explicitly declares its object type, accepted read constraints and reference. It does not infer transition selection from the ontic optimizer or discharge a physical process-selection premise."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-COMPILED-MASS-CLOCK",
+      "statement": "In the named coherent-code source completion, native M6 pulses, proper pack/unpack and graded register flights realize the massive tetrahedral walk exactly on vacuum and one-particle states. For two masses each macrostep charges 48 pulses, 128 code events and 16 flights per cell. Positive overhead h=kappa tau rescales both matter speed and beat frequency by 1/(1+kappa). A complete octree prepares the finite sampled packet with all zero branches allocated. The charged finite analytic witness has probability swing greater than .6752 after preparation, control, detector and phase-noise errors; its huge finite lattice is not claimed executed. Exact-Z phase noise has sector half-diamond error at most 2 lambda T independent of vacuum population, but bounded fixed Floquet accounting energy during a nonzero wait requires lambda=O(a); lambda=o(a) suffices for vanishing extra cost. Ordinary occupation flights do not implement fermionic signs on arbitrary many-particle states. The result does not select masses, a physical energy standard or a unique microscopic source.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_two_mass_clock_preparation",
+        "declared_source_clock_control_and_noise_budget"
+      ],
+      "imported_results": [
+        "finite_quantum_circuit_synthesis",
+        "operational_mass_clock_error_certificate",
+        "channel_contractivity_and_spectral_range_bound"
+      ],
+      "oph_specific_delta": "Supplies the source-level clock compiler and finite preparation instead of assuming the gates, charges physical control durations, and separates signal stability from ultraviolet accounting-energy stability.",
+      "novelty_type": "native_source_clock_compiler_with_charged_timing_and_noise_energy_scaling",
+      "falsifier": "Any full spatial matrix entry or preparation leaf fails replay; a sender/receiver or vacuum register is omitted; the finite signal or time budget fails; phase-noise cost exceeds the sector estimate; fixed-rate noise has bounded refinement energy; or fermionic multi-particle claims are transferred from one-particle agreement.",
+      "scope_if_false": "The named source-clock construction fails. CCG, drive capability and declared experimental parameters are explicit; laboratory admission, arbitrary many-particle dynamics and source uniqueness are not established.",
+      "owner_paper": "extra/COHERENT_SOURCE_CLOCKS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/COHERENT_SOURCE_CLOCKS.md",
+        "code/m1_source_realization/CONTRACT.md",
+        "code/m1_source_realization/README.md",
+        "code/m1_source_realization/model.py",
+        "code/m1_source_realization/circuits.py",
+        "code/m1_source_realization/topology.py",
+        "code/m1_source_realization/check.py",
+        "code/m1_source_realization/verify.py",
+        "code/m1_source_realization/receipt.json",
+        "code/m1_source_realization/test_source.py"
+      ],
+      "status": "proved_for_named_source_family_with_explicit_additional_coherence_requirement",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row realizes a declared clock experiment in an explicit source family under the proposed CCG service. It charges its actual schedule, but does not use or discharge the premise-register physical time/energy calibration or action-to-spacetime identifications."
+      }
     }
   ]
 }

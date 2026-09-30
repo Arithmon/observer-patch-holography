@@ -295,7 +295,10 @@
   "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION",
   "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
   "OPH-M1-RESOLVED-LOCAL-READ-CONE",
-  "OPH-M1-OBSERVABLE-MASS-CLOCK"
+  "OPH-M1-OBSERVABLE-MASS-CLOCK",
+  "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+  "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
+  "OPH-SOURCE-COMPILED-MASS-CLOCK"
  ],
  "edges": [
   {
@@ -2557,6 +2560,41 @@
    "role": "Supplies the sampled full-vector bound used in the actual local clock detector comparison; source admission and physical energy are not inherited.",
    "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
    "to": "OPH-M1-OBSERVABLE-MASS-CLOCK"
+  },
+  {
+   "role": "Supplies the exact active M6 response, same-response chart words and spherical support; buffer/coherence completeness is proved anew, not inherited from scalar seams.",
+   "from": "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
+   "to": "OPH-SOURCE-COHERENT-CODE-COMPLETION"
+  },
+  {
+   "role": "Supplies the proposed classical RG service being completed and separated from noncentral transport; no quantum service is inherited.",
+   "from": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
+   "to": "OPH-SOURCE-COHERENT-CODE-COMPLETION"
+  },
+  {
+   "role": "Supplies the declared proper-code interfaces to which the general finite channel theorem is applied; accepted complementary read data are stated explicitly.",
+   "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+   "to": "OPH-SOURCE-TWO-BASIS-A3-SELECTION"
+  },
+  {
+   "role": "Supplies the native single-qubit and entangling response controls and full physical code instruments in the named source.",
+   "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+   "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+  },
+  {
+   "role": "Supplies coherent transfer under two read tables and the exact-Z A3 noise semigroup; its rate remains declared data.",
+   "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
+   "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+  },
+  {
+   "role": "Supplies the bounded finite one-particle clock signal and sampled preparation/detector estimates. Source gates, preparation program and positive control time are supplied here; arbitrary Fock-sector claims are not transferred.",
+   "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
+   "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+  },
+  {
+   "role": "Supplies the full one-particle walk and fixed positive Floquet observable used for the phase-noise ultraviolet test; no physical energy calibration is inherited.",
+   "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+   "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
   }
  ]
 }

@@ -66,13 +66,16 @@ def spatial():
     rows = []
     for q, a, mass in itertools.product((2, 3), (.07, .013), (.7, 1.1)):
         u = execute(q, a, mass)
+        tape = instructions(a, mass)
+        pulses = sum(kind != 'flight' for kind, _, _ in tape)
+        flights = 8*sum(kind == 'flight' for kind, _, _ in tape)
         size = len(u)
         probe = np.exp(1j*np.arange(size)**2/17)/np.sqrt(size)
         out = probe.copy()
         for _ in range(3):
             out = u@out
-        rows.append(dict(q=q, a=a, mass=mass, modes=size, instructions=25,
-                         pulses_per_cell=24, code_events_per_cell=64, flights_per_cell=8,
+        rows.append(dict(q=q, a=a, mass=mass, modes=size, instructions=len(tape),
+                         pulses_per_cell=pulses, code_events_per_cell=2*(pulses+flights), flights_per_cell=flights,
                          column_norms=np.sum(abs(u)**2, axis=0).tolist(),
                          three_step_probe=encode(out)))
     return rows
@@ -165,8 +168,12 @@ def resource_witness():
     side = 2**math.ceil(math.log2(2*(90+a)/a))
     depth = side.bit_length()-1
     # 48 pulses, 96 pack/unpack and 32 departure/arrival events per tick.
-    omega = 96*math.pi/(overhead*tau)
-    service = overhead*tau/256
+    tapes = instructions(a, 100.)+instructions(a, 100.1)
+    pulse_count = sum(kind != 'flight' for kind, _, _ in tapes)
+    flight_count = 8*sum(kind == 'flight' for kind, _, _ in tapes)
+    code_count = 2*(pulse_count+flight_count)
+    omega = 2*pulse_count*math.pi/(overhead*tau)
+    service = overhead*tau/(2*code_count)
     # Seven split rotations per tree level, then 15 internal rotations and
     # 16 phases at each leaf, all branches performed in parallel.
     prep_layers = 7*depth+31
@@ -193,8 +200,8 @@ def resource_witness():
                 mode_buffers=32*workspace_side**3+16*(side**3-1)//7,
                 active_processors=workspace_side**3+(side**3-1)//7,
                 record_identifier_bits=identifier_bits, central_record_slots_upper=record_bound,
-                pulses_per_cell_tick=48, code_events_per_cell_tick=128,
-                register_flights_per_cell_tick=16, drive_norm_bound=omega,
+                pulses_per_cell_tick=pulse_count, code_events_per_cell_tick=code_count,
+                register_flights_per_cell_tick=flight_count, drive_norm_bound=omega,
                 code_event_time=service, preparation_time=prep_time,
                 run_time=run_time, read_time=read_time,
                 matter_speed=1/(1+overhead), clock_velocity=.6/(1+overhead),
