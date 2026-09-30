@@ -16,6 +16,7 @@ import hashlib
 import json
 import subprocess
 import sys
+from fractions import Fraction
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -356,6 +357,15 @@ def check_manifold_sampled(name: str, family_name: str, sampled_name: str, gener
                 f"manifold sampled reference d={d}: Monte Carlo against its closed form")
     family_receipt = strict_json(HERE / family_name)
     sampled_receipt = strict_json(HERE / sampled_name) if sampled_name else None
+    builder = receipt.get("graph_builder")
+    if builder is not None:
+        require(sampled_name is not None and builder["reference_receipt_sha256"] == sha256(HERE / sampled_name).removeprefix("sha256:"),
+                "manifold sampled graph builder names the archived sampled family receipt")
+        (q_built,) = [int(lv["q"]) for lv in receipt["levels"]]
+        require(builder["neighbors_including_wait_sha256"] == _family_by_q(sampled_receipt, q_built, 3)["neighbors_including_wait_sha256"],
+                "manifold sampled graph builder neighbour digest equals the sampled family receipt")
+        require(all(row["identical_to_sequential_build"] is True for row in builder["small_q_identity_checks"]),
+                "manifold sampled graph builder small-q identity checks")
     for lv in receipt["levels"]:
         q = int(lv["q"])
         for fam in lv["families"]:
@@ -399,7 +409,7 @@ def check_manifold_sampled(name: str, family_name: str, sampled_name: str, gener
                         require(abs(c2 - int(ref["strict_pair_count"])) <= 4.0 * se, f"{where}: sampled C_2 within four standard errors of the exact pair count")
                     else:
                         est = ref["strict_pair_count_estimate"]
-                        require(abs(c2 - est["value"]) <= 4.0 * (se + est["standard_error"]), f"{where}: sampled C_2 within four standard errors of the sampled pair count")
+                        require(abs(c2 - float(Fraction(est["value"]))) <= 4.0 * (se + est["standard_error"]), f"{where}: sampled C_2 within four standard errors of the sampled pair count")
                 if row["region"] == "moving":
                     mv = exact_fam["moving_tip_interval"]
                     require(row["lower_tip_site"] == mv["x_site"] and row["upper_tip_site"] == mv["y_site"] and N == int(mv["inclusive_event_count"]),

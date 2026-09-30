@@ -197,8 +197,17 @@ generator pins and every derived field.
   difference 0.025 (0.076 at q = 55) and mean 0.0103 against `1/105`; the `C_3` dimension
   over the fifteen six-layer diamonds is 4.078 with standard deviation 0.016 and the
   count-volume coefficient 1.0627 with standard deviation 0.0013.
-- `source_net_manifold_sampled_q144_2026-09-25.json`: the same readouts at q = 144 at half
-  the sample sizes, when present; its readings are in the receipt.
+- `source_net_manifold_sampled_q144_2026-09-25.json` (same generator; 13,188 s): the same
+  readouts at q = 144 at half the sample sizes. The three-dimensional site graph was built
+  chunk-parallel with the module's per-chunk arithmetic; its neighbour digest equals the
+  sampled q = 144 family receipt, and the chunked build equals the sequential build at
+  q = 21 and 34. The sampled `C_2` of the centre diamond (4,605,145 events) is
+  `9.95e11 +- 0.38e11` against the sampled strict pair count `1.0128e12 +- 0.0025e12`; the
+  dimensions from `C_2`, `C_3`, `C_4` are 4.076, 4.016, 3.971 (moving tip 3.99, 4.00, 4.03;
+  controls 3.04, 3.02, 3.00 and 2.00, 2.01, 2.03); the spectrum is closest to the flat `3+1`
+  law with maximum CDF difference 0.032; the `C_3` dimension over the fifteen eight-layer
+  diamonds is 4.061 with standard deviation 0.045 and the count-volume coefficient 1.0224
+  with standard deviation 0.0027.
 
 ## Boundary
 

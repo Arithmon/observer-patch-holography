@@ -25,9 +25,9 @@
     ]
   },
   "curated_archive": {
-    "file_count": 57,
-    "total_bytes": 2140244,
-    "inventory_sha256": "8e4106bed4f5be3a413da9a26ef845e157030213879a517ab2327aef1379fbcb",
+    "file_count": 58,
+    "total_bytes": 2232783,
+    "inventory_sha256": "0c6fac6fad936dafdfd598b5b5ef930e305316d6cb2c033ca43f23336cbabfb4",
     "is_complete_copy_of_original_receipts": true,
     "selection": "Two receipt generations, both byte-exact mirrors of the simulator receipts at their recorded commits: the 2026-09-24 generation (exact all-pairs counts through q=89, carriers through q=89) is the current record; the 2026-09-09 generation is retained under its original names because other packages pin its bytes. The q5/q8 logs and the standalone generator serve both; routed_read_law/ retains small conditional q13/q21 routing receipts and phase commitments whose complete event streams are regenerated and independently replayed."
   },
@@ -389,6 +389,11 @@
       "sha256": "8dba828403e6d6da9ba16dcec28e53a2271bb26ca68682a70dee17f5d6ae23e0"
     },
     {
+      "path": "source_net_manifold_sampled_q144_2026-09-25.json",
+      "bytes": 92539,
+      "sha256": "a3ca8a2b743631a75f9d6433ab4d12f0536763698d56ca3fb8e8ec505ba210b4"
+    },
+    {
       "path": "support_wiring_receipt.json",
       "bytes": 85091,
       "sha256": "f5af550934f621fcd1c39e5e66df8ad2b2b0132f614fec88067f90e452f444af"
@@ -520,6 +525,20 @@
       "scope": "Chain counts C_2, C_3, C_4 and the interval spectrum of the centre diamond, the moving-tip diamond of the causal-limit lane and fourteen off-centre diamonds displaced by L/8, at q = 55 and 89 (4,000 / 3,000 / 800 uniformly drawn events per region, one uniformly drawn partner each, breadth-first searches with the causal-limit lane's exact cone pruning; 3,451 s on an r7i.16xlarge with 56 workers), with the two- and one-dimensional golden controls. Readings at q = 89 (1,081,730 events): the sampled C_2 is 5.40e10 +- 0.15e10 against the exact strict pair count 5.5109e10; the dimensions inverted from C_2, C_3, C_4 are 4.094, 4.034, 4.017 (moving tip 3.88, 3.96, 3.93; controls 3.007, 2.997, 3.014 and 1.99, 2.02, 2.04); the distribution of |I(y,z)|/N over related pairs is closest to the flat 3+1 law of (tau/T)^4 among the flat laws in two to six dimensions, with maximum CDF difference 0.025 (0.076 at q = 55) and mean 0.0103 against 1/105; over fourteen six-layer diamonds plus the centre the C_3 dimension is 4.078 with standard deviation 0.016 and the count-volume coefficient 1.0627 with standard deviation 0.0013.",
       "nonclaims": "sampled estimates with standard errors from declared seeds, not exact counts (exact enumeration only at q <= 8 in the tests); flat-diamond expectations are comparison values of the declared limit; the family is a layered order, not a sprinkling; no physical clock, spacetime, curvature or continuum limit",
       "verifier": "check_manifold_sampled checks the generator pin, the scope flags, the flat coefficients and their inversions, the spectrum distances and closest dimension, the continuum references against their closed forms, the centre and moving event counts and tip sites against the family receipts, and the sampled C_2 against the exact (or sampled) strict pair count"
+    },
+    {
+      "kind": "manifold_sampled",
+      "label": "2026-09-25",
+      "file": "source_net_manifold_sampled_q144_2026-09-25.json",
+      "generator": "source_net_manifold_sampled_2026-09-25.py",
+      "source_receipt": "source_net_causal_limit_receipt_2026-09-24.json",
+      "sampled_receipt": "source_net_causal_limit_q144_sampled_2026-09-24.json",
+      "levels": [
+        144
+      ],
+      "scope": "The same chain counts and interval spectra at q = 144 at half the q = 55, 89 sample sizes (4,605,145 events in the centre diamond; 13,188 s on an r7i.16xlarge). The three-dimensional site graph was built chunk-parallel with the per-chunk arithmetic of the pinned module; its neighbour digest equals the sampled q = 144 family receipt and the chunked build equals the sequential build at q = 21 and 34. Readings: the sampled C_2 is 9.95e11 +- 0.38e11 against the sampled strict pair count 1.0128e12 +- 0.0025e12; the dimensions inverted from C_2, C_3, C_4 are 4.076, 4.016, 3.971 (moving tip 3.99, 4.00, 4.03; controls 3.04, 3.02, 3.00 and 2.00, 2.01, 2.03); the centre spectrum is closest to the flat 3+1 law with maximum CDF difference 0.032; over fourteen eight-layer diamonds plus the centre the C_3 dimension is 4.061 with standard deviation 0.045 and the count-volume coefficient 1.0224 with standard deviation 0.0027.",
+      "nonclaims": "sampled estimates with standard errors from declared seeds, not exact counts; the reference pair count at q = 144 is itself a sampled estimate; the chunk-parallel graph driver is not retained, its output is tied to the archived receipt by the neighbour digest; flat-diamond expectations are comparison values of the declared limit; the family is a layered order, not a sprinkling; no physical clock, spacetime, curvature or continuum limit",
+      "verifier": "check_manifold_sampled runs the q = 55, 89 checks at q = 144 against the sampled family receipt, and checks that the graph builder names that receipt by digest, that its neighbour digest equals the receipt's, and that the small-q identity checks hold"
     }
   ],
   "current_generation": {
