@@ -1,324 +1,109 @@
 # Observer Patch Holography
 
-> Reality is the stable public world reconstructed by finite, self-reading observers that compare their overlaps and repair disagreement.
+**Physics from the records observers can share.**
 
-[Website](https://floatingpragma.io/) · [Book](https://oph-book.floatingpragma.io/) · [Technical paper](https://philpapers.org/rec/MUEFOC) · [Textbooks](https://learn.floatingpragma.io/) · [Simulation](https://simulation.floatingpragma.io/) · [Notebook](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a)
+[Physics preprint](https://philpapers.org/rec/MUEFOC) · [Pragma Research](https://floatingpragma.io/research/) · [Cadence](https://floatingpragma.io/cadence/) · [Français](README_FR.md)
 
-Observer Patch Holography (OPH) builds a theory-of-everything research program
-around one thesis: **observers are primary, and objective reality is
-emergent.** Its observers are bounded systems with local state, boundaries,
-readback, records and ways to repair disagreement.
+Observer Patch Holography (OPH) investigates whether familiar physics can be
+reconstructed from bounded observers that reach agreement. An observer patch
+has local state, a boundary with ports, readback, records, and feedback for
+repairing disagreement. Within the model, facts become public when records
+survive comparison across overlapping patches.
 
-The case for OPH is how much one architecture connects. Consistent records
-support quantum probabilities. Complete reversible boundary response and
-internal observer transport fix the local symmetry pattern of the known
-forces. A supplied matter law supports controlled continuum motion of a real
-field and, on a finite mesh, an interacting quantum state space. These
-constructions connect objects that ordinary physics calculations introduce
-separately. Each result comes with explicit assumptions and a proof or
-reproducible calculation, giving the proposed unification a concrete route
-from internal consistency to physical tests.
+This repository contains the scientific work behind that idea: papers,
+machine-checked proofs and executable models. It connects finite agreement
+with quantum probability, spatial geometry and the symmetry pattern of the
+known forces, with a conditional route to Einstein dynamics. Each construction
+states the assumptions it consumes. Establishing a common physical
+realization requires measurements that distinguish the proposed models.
 
-Three axioms govern the observer architecture and how observers reach
-consensus. Two self-consistency programs then seek fixed points for the pixel
-constant $P$ and the capacity $N$, turning the fine-structure and cosmological
-constants into sharp reconstruction targets rather than fitted inputs.
+## Start here
 
-## Start Here
-
-The starting question is what an observer can establish from inside the
-world. OPH turns agreement between bounded observers into mathematical
-constraints, then follows those constraints toward familiar physics.
-You can follow the argument in the book, inspect its proofs, or replay the
-simulations.
-
-- **The book.** [*Reverse Engineering Reality*](https://oph-book.floatingpragma.io/)
-  is the general-audience account, written for readers with no physics
-  background. Forty chapters carry the argument from why the problem is hard
-  to where the constants come from, with the mathematics left to the
-  textbooks and the papers.
-- **The technical paper.** [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC)
-  gives the primary technical account of the observer-first reconstruction.
-- **The textbooks.** The [OPH textbooks](https://learn.floatingpragma.io/)
-  teach the theory the long way, for readers with a physics or computer
-  science background. Every basic derivation is worked in full,
-  with the required math built up as you go. Volume one covers the
-  computational substrate and the consensus machinery; volume two connects
-  that machinery to classical physics. Each is readable online or as a PDF.
-- **The simulation.** The [interactive visualizations](https://simulation.floatingpragma.io/)
-  render real data from the repair dynamics. They expose finite settling,
-  signature tests, and candidate carrier structure, with each finite receipt
-  available for direct inspection.
-
-The rest of this README is the technical entrance to the repository.
-
-Two ledgers carry the quantitative record. The
-[postdiction ledger](docs/POSTDICTION_LEDGER.md) is the compare-only
-scoreboard: every certified comparison against a measured value,
-with its premises and input ancestry stated on the row. The
-[frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) is the forward
-instrument: it records each row's actual custody status and requires an armed
-prediction to bind its stance and kill band before qualifying comparison data
-are examined.
+| To explore… | Start with… |
+| --- | --- |
+| The main physics argument | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
+| The proofs and reproducible calculations | [Lean library](Lean/) and [reproduction guide](REPRODUCE.md) |
+| The related work on learning machines | [Cadence](https://floatingpragma.io/cadence/) and [interactive demos](https://floatingpragma.io/demos/) |
+| Explanations for a general audience | [Pragma Research blog](https://blog.floatingpragma.io/) |
 
 ## One Architecture, All Of Physics
 
-OPH starts from bounded observers: finite systems that read parts of
-themselves and their neighbors, keep records, and repair disagreement. From
-that compact starting point, it develops a common reconstruction program for
-quantum theory, thermodynamics, spacetime, fields, matter, and the constants
-of nature. The repository combines machine-checked theorems with exact
-calculations and reproducible simulations:
+The research program connects these parts of physics through one observer
+architecture, with separate assumptions stated for each result.
 
-- **Quantum structure from observer records.** Finite event algebras support
-  Born representation, Lüders conditioning, and exact Tsirelson results,
-  including a Bell-state construction that attains 2√2. This gives a rigorous
-  mathematical bridge from public records to quantum probability.
-- **The four laws of thermodynamics from disagreement repair.** One
-  conditional theorem package about how observers resample toward consensus
-  yields the first, second, and fourth laws, with the second appearing as
-  data processing applied to repair and the Landauer bound as a corollary.
-  The third-law clauses stay conditional on a stated per-call ground-gap
-  hypothesis that the package does not derive.
-- **Space and time from observer records.** The source response supplies a
-  three-dimensional spatial geometry. With an explicit local reading rule,
-  conservative observer records approach the familiar causal geometry and
-  volume of a flat 3+1-dimensional world. Under a stated volume-law
-  hypothesis, record counts enclose a supplied clock's read differences;
-  deriving elapsed-time ratios from counts alone remains open. The
-  [spacetime paper](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf)
-  develops the proofs and their assumptions; [executable evidence](code/causal_refinement/)
-  lets readers replay the construction.
-- **Field geometry on the twelve-port screen.** The finite screen carries
-  exact Green, Thomson, Gauss, curvature, and gauge-invariance theorems. The
-  same geometry connects port loads, seam data, local curvature, and the
-  operators that repair disagreement.
-- **The Standard Model gauge group from twelve ports.** OPH makes an
-  architectural choice at the simulation hardware layer: each observer patch
-  has twelve boundary ports wired as the corners of an icosahedron. A
-  classification theorem forces the classified compact family to carry the
-  Standard Model's gauge Lie type, with the discriminating dimension data
-  imported from a committed certificate; the classified catalogue has three
-  families, and the physical gauge group is not thereby selected. An
-  exhaustive finite construction also identifies a conditional
-  fifteen-state, anomaly-free matter grammar.
+- **Agreement between observers.** Under the stated termination and
+  consistency conditions, local repairs reach a protected public record
+  independent of their order. The finite theorems describe agreement,
+  stability and refinement.
+- **Quantum probability.** Finite event algebras support the Born probability
+  rule, Lüders conditioning and exact Tsirelson results, including a Bell-state
+  construction that attains 2√2. These are mathematical results on the stated
+  event-algebra branch.
+- **Geometry and the known forces.** A twelve-port response construction
+  supplies a three-dimensional spatial readback. Complete reversible response
+  and internal observer transport force the Standard Model gauge Lie type
+  under the stated hypotheses. A supplied matter representation gives an
+  anomaly-free fifteen-state generation; its physical realization and the
+  global gauge group require additional structure.
+- **Spacetime and gravity.** Declared source and reading laws support
+  controlled causal-geometry constructions. The Einstein-equation implication
+  assumes a common physical realization with the stated stress, entropy,
+  continuum and scale data.
+- **Classical and quantum matter.** A supplied charged-scalar/Maxwell action
+  supports controlled nonlinear continuum motion in its real sector and an
+  interacting quantum state space on a fixed mesh. Selecting the action from
+  observer histories and identifying it with physical matter are separate
+  requirements.
 - **Constants as fixed-point problems.** Koide's relation holds exactly under
-  a stated balance premise, and the self-consistent pixel closure lands within
-  2.5 parts per million of the measured fine-structure constant, with
-  diagnostic status until the closure map is selected from the axioms. These
-  calculations turn constants into concrete derivation targets rather than
-  free inputs, with interval-certified enclosures as their kill surfaces.
-- **Machine-checked and falsifiable.** More than 12300 Lean theorems with
-  no admitted proofs, exact rational arithmetic in place of floating-point
-  trust, and deterministic simulations with pinned receipts. A
-  frozen-prediction ladder requires every armed comparison to bind its kill
-  band and custody before the qualifying data are examined, so the rows that
-  reach that gate commit in advance to what would refute them.
+  a stated balance premise. The fine-structure calculation certifies a root
+  of a declared closure map and carries diagnostic status. The capacity
+  program asks whether the public capacity assigned to the universe agrees
+  with the capacity reconstructed from within it. Connecting these
+  constructions to measured constants requires physical identification.
 
-The linked papers record each step's precise status. Together, these results
-define a testable path from three observer axioms plus eighty-four registered
-inputs, none of them yet derived from the axioms alone
-([premise register](docs/PREMISE_REGISTER_V3.md)), toward a complete theory.
-The full technical route is the
-[flagship paper](https://philpapers.org/rec/MUEFOC).
-
-The rest of this README is the architecture behind those results.
-
-## The Three Axioms
-
-The whole construction stands on three core axioms. The canonical statements
-live in [the axiom reference](docs/AXIOM_REFERENCE.md) and the machine
-registry `claims/axiom_registry.yaml`; the papers include the shared formal
-basis.
-
-1. **A1: Oriented twelve-port observer screen.** There exists an observer
-   patch net on an oriented spherical screen. At every finite resolution,
-   each local carrier has twelve primitive boundary ports forming the
-   vertices of an oriented triangular boundary with 30 edges and 20 faces,
-   combinatorially the boundary of an icosahedron. Carriers join through
-   typed seams and coherent triple overlaps, refine to an oriented spherical
-   support, and expose local state, readback, records, repair moves, and
-   checkpoints. Formally: for every regulator $r$ there is a typed object
-   $\mathfrak N_r=(\mathcal P_r,\mathcal A_r,\mathcal R_r,\mathcal I_r,\mathcal U_r,\mathcal C_r,N_r,S_r,b_r)$
-   whose carriers carry twelve
-   primitive central port projections and the exact boundary packet
-   $K=(P,E,F,o)$, joined by seam algebras into a nerve with a degree-one
-   bridge to the oriented spherical support, all commuting with refinement.
-   The local carrier, the federation of carriers, and the global $S^2$
-   support stay typed and distinct throughout the corpus.
-2. **A2: Observer agreement.** Observers operating on the screen agree on
-   the meaning of the data they jointly interpret. Formally: the
-   interpretation map $\mathcal J_r$ from observer-accessible data to
-   operational meanings is natural with respect to every visible overlap
-   restriction, recharting, seam translation, higher-overlap map, federation
-   map, and refinement map on accepted public data. No patch sees the whole universe;
-   a fact becomes public only when it survives comparison across overlaps.
-3. **A3: Conditional maximum randomness.** Everything that observer
-   agreement leaves unconstrained is maximally random. Formally: the
-   realized state is the information projection of an exact reference family
-   onto the convex set of compatible local state families satisfying the
-   finite observer-visible constraints. The finite A1-generated observer
-   cover is state-determining on that feasible set, and its exact weights are
-   strictly positive:
-   $\rho_r=\arg\min_{\rho\in\mathcal K_r}\sum_P w_{r,P} D(\rho_{r,P}\Vert\tau_{r,P})$.
-
-None of the axioms contains a gauge group, a particle list, a recovery law,
-or a rule that selects field content or multiplicity; A3 selects one state
-inside one fixed feasible space and nothing else. Collar recovery,
-generalized-entropy structure, and
-sector completions enter as named interfaces and declarations at the results
-that consume them, each classified as an exact theorem, an exact result
-inside a named finite realization, a discovery-level observation, a declared
-open interface, an independence result with countermodels, a physical
-identification, or a withdrawn claim.
-
-Everything else in the repository is the working-out of what these three
-axioms force, and of exactly how much further structure each physical
-conclusion consumes.
-
-## The Idea In Plain Language
-
-OPH asks: **what is the smallest kind of system capable of having a world at
-all?**
-
-The answer is an observer patch. It need not be a person. It is any
-bounded physical or computational system that has a local state, a boundary,
-memory, the ability to read part of itself and its neighbors, and a way to
-repair disagreement. No patch sees the whole universe. A fact becomes
-objective only when it can be written, compared across overlaps, recovered
-after further evolution, and retained as part of the public record.
-
-OPH treats this process as the mechanism that selects a public physical world.
-The theory has no external ruler, master clock, preferred observer,
-or list of adjustable physical constants. “Zero dials” means zero fitted
-continuous theory values. The finite observer contract and each discrete
-branch condition remain visible.
-
-“Observer” is a structural role. A human mind, an organism, an instrument, or a
-software process can instantiate it when it has the required state, boundary,
-records, readback, and repair loop. OPH does not claim that human thoughts
-manufacture reality. It claims that a world with no possible local perspective,
-record, or self-consistent readback lacks public physics.
-
-The OPH universe has many obvious similarities with a biological brain. It is
-a distributed network that computes, and its observers are the neurons: each
-one holds a local state, reads its neighbors, and repairs the disagreements it
-finds, and the public world is the equilibrium the whole network settles into.
-
-The same patch net architecture also turns out to be excellent for artificial
-intelligence. [Cadence](https://github.com/muellerberndt/cadence) builds
-brains from observer patches that read themselves. Every decision is the
-equilibrium the network settles into, and the brain learns from local activity
-while it runs, so it can keep learning from an unending stream of experience
-with bounded memory. The paper
-[*Cadence: Deep Recursive Settlement Networks*](https://philpapers.org/rec/MUECAP-2)
-develops the architecture and its experiments. OPH and Cadence complement each
-other and share many of their theorems.
-
-## The Twist: The Universe Is Its Own Simulator
-
-Everything above stands on the three axioms together with the stated
-premises and named interfaces of each result; none of it uses the hypothesis
-of this section. The hypothesis is itself
-an indirect consequence of consistency: something that exists with no outside
-support must be capable of creating itself. A completely consistent
-observer-built reality must therefore evolve observers, and those observers
-eventually build the hardware the reality runs on. The simulated universe and
-the simulating universe turn out to be the same system. The patches,
-computation, records, and resulting world all belong to one closed loop; no
-external computer or programmer appears in the formal construction. The
-organizing equation of that closure is
-
-$$
-T(\mathfrak U_{\mathrm{OPH}})=\mathfrak U_{\mathrm{OPH}}:
-$$
-
-the universe as a fixed point of its own observer-accessible readback and
-repair process.
-
-If the loop closes, the two quantities that describe the simulator cannot
-be arbitrary. Both become fixed-point problems, and both can be computed.
-
-**The resolution.** $P$ is the local pixel ratio: the observation cell's
-size in natural units, informally the universe's resolution. Closure
-requires the cell to agree with the observation process it supports. Two
-declared trial maps express that requirement, the canonical one reading
-
-$$
-\boxed{P_\star=\varphi+\frac{\sqrt\pi}{A_T(P_\star)}},
-$$
-
-and each map has one exact interval-certified root. Through the declared
-branch that root lands close to the measured fine-structure constant. A physical prediction needs a map selected without using the
-measured constant, proof that its two sides read one quantity, and
-same-scheme transport to the Thomson limit, so the match carries diagnostic
-status; the exact construction and its assumptions are stated in the
-[technical papers](paper/).
-
-**The capacity.** $N$ is the public-record capacity of the whole observer
-system: how much correctable memory the substrate carries. It sits opposite
-$P$, tied to the cosmological constant rather than to the fine-structure
-constant. The capacity program asks whether the public capacity assigned to
-the universe agrees with the capacity reconstructed from within it. Exact
-finite identities supporting that question are machine-checked in Lean, and
-the [technical papers](paper/) carry the full construction and its tests.
-
-A physical closure of both constants would give a zero-continuous-parameter
-branch with both values returned by the architecture. That physical
-attachment is open. The fixed-point theorems certify roots of declared
-maps; they do not turn an observed basin or target-defined coordinate into
-a physical derivation, and reading $N$ from the universe leaves every
-consequence of the three axioms intact.
-
-Under full closure, the loop answers the last question a theory of
-everything can be asked: why anything exists, and why it is the way it is.
-The universe is the unique structure consistent with reading itself into
-existence.
+The [main preprint](https://philpapers.org/rec/MUEFOC) develops these connections
+and their precise scope. The [paper index](paper/) provides the specialist
+accounts, including thermodynamics, field geometry and fixed-point
+constructions for the constants.
 
 <!-- PUBLIC-QUANTITATIVE-CLAIMS:BEGIN -->
 <!-- Quantitative table suppressed while physical_establishment count is zero. -->
 <!-- PUBLIC-QUANTITATIVE-CLAIMS:END -->
 
-## Technical status
+## From observer patches to learning machines
 
-The case above is the reader-facing summary. Exact premises, comparison
-ancestry, and falsification rules live in the [technical papers](paper/) and
-the [OPH Falsification Program](docs/OPH_FALSIFICATION_PROGRAM.md). The exact
-finite and structural results are the strongest part of the stack.
+[Cadence](https://github.com/muellerberndt/cadence) makes the settling idea
+executable as a learning architecture. Its bounded software patches carry
+local state and readback, with feedback that repairs prediction errors.
+Flat input-only, ordinary state-coupled and recursive observer layouts share
+the settlement rule.
 
-## Why Take The Claim Seriously?
+The [Cadence preprint](https://philpapers.org/rec/MUECAP-2) describes the
+architecture and experiments. Its computational case rests on learning
+behavior and measured resource use. [Pragma Research](https://floatingpragma.io/)
+connects this work to embodied AI.
 
-A successful theory of everything should explain why facts that appear
-unrelated arrive as one package. OPH returns exact dimensions, compact Lie
-types, conditional global quotients, charge assignments, anomaly
-cancellations, representation multiplicities, and fixed-point equations from
-one typed carrier, overlap, and repair architecture. Two separate routes
-reach the Standard Model Lie type: the local icosahedral theorem forces it
-on the carrier, and the compact-sector route reaches it on its declared
-Standard Model packet, with a common physical source identity as an open
-test. That shared dependence is the main case that OPH describes one
-physical world rather than a collection of coincidences.
+## Evidence you can inspect
 
-## Evidence You Can Inspect
+The [Lean library](Lean/) contains more than 12300 public theorems and lemmas
+with no admitted proofs. Exact certificates and reproducible simulations
+accompany the mathematical arguments. The companion
+[physics simulator](https://github.com/muellerberndt/oph-physics-sim) provides
+executable observer dynamics and retained evidence.
 
-The evidence comes in several complementary forms, and agreement among them
-is more informative than another numerical match produced by another
-adjustable model:
+The [axiom reference](docs/AXIOM_REFERENCE.md) and
+[premise register](docs/PREMISE_REGISTER_V3.md) state the mathematical inputs.
+The [postdiction ledger](docs/POSTDICTION_LEDGER.md) records comparisons with
+measured values and their input ancestry; the
+[frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) records tests whose
+conditions must be fixed before the comparison data are examined.
+The [falsification program](docs/OPH_FALSIFICATION_PROGRAM.md) gives the
+observations that would refute particular claims.
 
-- hand proofs in the TeX papers;
-- interval and uniqueness certificates for declared numerical maps;
-- finite carrier and hierarchy receipts;
-- particle, geometry, dark-sector, and quantum-hardware code;
-- a small-scale simulation harness that supplies receipts where the hand proofs
-  and the Lean development do not reach, in the companion
-  [oph-physics-sim](https://github.com/muellerberndt/oph-physics-sim) repository;
-- a claim registry connecting prose claims to artifacts.
+### Reproduce the finite core
 
-## Validate The Finite Core
-
-The shortest independent validation checks the claim graph, the exact twelve-port
-algebra, public-record capacity, the reversible $N$ packet, and finite
-consensus:
+After setting up the dependencies in [REPRODUCE.md](REPRODUCE.md), check the
+claim graph and selected finite algebra, record-capacity and consensus results:
 
 ```bash
 python3 tools/check_claim_registry.py
@@ -330,39 +115,10 @@ python3 -m pytest -q \
   code/consensus/test_verified_tree_packet_net.py
 ```
 
-The [reproduction guide](REPRODUCE.md) gives the clean-clone setup and the
-fuller finite-core lane, which adds the two W/Z convention and
-survival-boundary calibration tests.
+The reproduction guide describes the wider checks and the scope of each
+evidence family.
 
-## The Falsification Boundary
-
-The reconstruction runs from the three axioms toward a public quantum
-theory, event geometry, an effective macroscopic spacetime description, and
-the Standard Model Lagrangian. The papers distinguish exact finite theorems,
-conditional physical implications, and empirical attachments, with a scope
-note on every claim. A mismatch with the Standard Model at any step is an
-allowed outcome that the protocol may not tune away.
-
-The [OPH Falsification Program](docs/OPH_FALSIFICATION_PROGRAM.md) lists
-the mature claims together with the exact observations that would break
-them.
-
-## Choose A Reading Path
-
-| If you want... | Start here |
-| --- | --- |
-| The flagship introduction to OPH | [Finite Observer Consensus as a Reconstruction Principle](https://philpapers.org/rec/MUEFOC) |
-| The conditional spacetime and Einstein chain | [Recovering Observer Spacetime and Einstein Dynamics](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) |
-| Both Standard Model gauge routes | [Deriving Standard Model Gauge Structure](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) |
-| The finite consensus mechanism | [Reality as a Consensus Protocol](paper/reality_as_consensus_protocol.pdf) |
-| The particle construction | [Deriving the Particle Zoo](paper/deriving_the_particle_zoo_from_observer_consistency.pdf) |
-| The twelve-port screen architecture and finite modular-gearing theorem | [Federated Echosahedral Screen Microphysics](paper/screen_microphysics_and_observer_synchronization.pdf) |
-| Supporting evidence | [`code/`](code) and the [reproduction guide](REPRODUCE.md) |
-| Observer continuation and interpretation | [Paradise as Fixed-Point Consensus](paper/paradise_as_fixed_point_consensus.pdf) |
-
-The [paper index](paper/) gives the curated publication map. Focused research PDFs remain in [`extra/`](extra/) for repository readers and are not part of the publication release.
-
-## Dependency Map
+## Reconstruction map
 
 <p align="center">
   <a href="assets/prediction-chain.svg" target="_blank" rel="noopener noreferrer">
@@ -372,42 +128,24 @@ The [paper index](paper/) gives the curated publication map. Focused research PD
 
 <p align="center"><sub>The OPH reconstruction map connects observer records, three-dimensional source geometry, causal order, clocks, fields and quantum states. Each arrow names a mathematical connection; the papers state the assumptions that join them into an effective physical description.</sub></p>
 
-## Repository Guide
+## Repository guide
 
-- [`flagship/`](flagship): the primary standalone OPH paper, its TeX source, and release PDF.
-- [`paper/`](paper): core papers, TeX sources, PDFs, and release metadata.
-- [`extra/`](extra): repository-only focused research PDFs.
-- [`code/`](code): certificates, simulations, particle calculations, and experiments.
-- [`book/`](book): legacy book source and downloadable PDF, retained outside the primary reading path.
-- [`cosmology/`](cosmology): dark-sector and cosmology research.
-- [`docs/`](docs): stable reader policies and canonical scientific ledgers.
-- [`assets/`](assets): diagrams and public figures.
-
-The simulation source is maintained in the companion
-[oph-physics-sim](https://github.com/muellerberndt/oph-physics-sim)
-repository, which produces the simulation receipts and evidence artifacts
-cited here.
-
-## Explore OPH
-
-- [The book](https://oph-book.floatingpragma.io) (general readers)
-- [The technical paper](https://philpapers.org/rec/MUEFOC)
-- [Core paper index](paper/)
-- [Textbooks](https://learn.floatingpragma.io) (physics and computer science)
-- [Interactive simulation](https://simulation.floatingpragma.io)
-- [Blog](https://blog.floatingpragma.io/)
-- [Cadence](https://github.com/muellerberndt/cadence), machine learning built on the same observer patches ([paper](https://philpapers.org/rec/MUECAP-2))
-- [Study notebook with explainer videos](https://notebook.google.com/notebook/d5249760-6ce8-44a0-927b-ccf90402711a) (opens with a Google account)
-- [This README in French](README_FR.md)
-- OPH Sage on [Telegram](https://t.me/HoloObserverBot) and [X](https://x.com/OphSage)
+| Path | Contents |
+| --- | --- |
+| [`flagship/`](flagship/) | Main standalone physics paper, TeX source and PDF |
+| [`paper/`](paper/) | Core papers and publication index |
+| [`Lean/`](Lean/) | Machine-checked mathematical development |
+| [`code/`](code/) and [`evidence/`](evidence/) | Executable models, certificates and reproduction evidence |
+| [`extra/`](extra/) and [`cosmology/`](cosmology/) | Focused mathematical and physical research |
+| [`book/`](book/) | *Reverse Engineering Reality*, source and downloadable book |
+| [`docs/`](docs/) | Reader policies and scientific ledgers |
 
 ## Contribute
 
-OPH welcomes proofs, counterexamples, simulations, independent reviews, and readable
-explanations. The [reproduction guide](REPRODUCE.md) rebuilds the certificates
-and checks from a clean clone, while the
-[selection ledger](docs/SELECTION_LEDGER.md) states the exact theorem premises
-and scientific boundaries relevant to new contributions.
+OPH welcomes proofs, counterexamples, simulations, independent reviews and
+readable explanations. Start with the [reproduction guide](REPRODUCE.md) and
+the [selection ledger](docs/SELECTION_LEDGER.md), which states the premises
+and scientific boundaries relevant to contributions.
 
 ## License
 
