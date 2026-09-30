@@ -1618,7 +1618,7 @@
           "declared_massive_tetrahedral_process"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "0c61b0c8f380ddbd8e608306c9820b4a324120475ff8abe4d6a654727cb1f71b"
+        "original_claim_sha256": "aa86fdc9f83229d1b8a916a43269a439a55cd15a44e65cf288fcc763826003c2"
       },
       "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION": {
         "assumptions": [
@@ -1641,7 +1641,7 @@
           "declared_two_mass_clock_preparation"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "44aa9e17e428523da427e1b7de4fca4a2bb12f1b33a011e04a24f918d8f0d0d1"
+        "original_claim_sha256": "7747b137d17abf46b44560e4f3255dce8927f0ce6e4e24daa797308b5b77d5ed"
       },
       "OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION": {
         "assumptions": [
@@ -1663,7 +1663,7 @@
           "declared_smooth_local_car_operations"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "17b13d7f579a096c2a0ca0a35ba48e5dd0b862bc2813d5d6caabbcda06230939"
+        "original_claim_sha256": "ccc342d79f96b43c9e37c59d7d3db4ca2cf470cd3ffa240c8fa629ff1638adec"
       },
       "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR": {
         "assumptions": [
@@ -1985,7 +1985,7 @@
           "declared_numeric_volume_evolution_and_exact_register_encoding"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "f86393440315d272a2976cc98055a299583b3c2f8807784f2fe2e89c23a6a619"
+        "original_claim_sha256": "0b642f2f8fd56fb18a14253693acb2f158c91a599e4dba1cffc28cfba8fa97be"
       },
       "OPH-WHITNEY-MAXWELL-METRIC-PRESSURE": {
         "assumptions": [
@@ -2018,12 +2018,11 @@
         "assumptions": [
           "declared_euclidean_cone_geometry_and_Whitney_metric",
           "declared_source_free_neutral_transverse_Whitney_sector",
-          "supplied_symmetric_positive_definite_Whitney_mass_forms_M1_and_M2",
           "imported_canonical_bosonic_quantization_and_positive_hbar",
           "fixed_mesh_temporal_limit_with_Legendre_matched_data"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "03918a24077abc57a9d536d400797cf193da7c91d89f581792fa0b8ed272f7ad"
+        "original_claim_sha256": "7b991e148955cd995b74906f88c93c6a9ec1de266b37caa548a0def71ae61b65"
       },
       "OPH-WHITNEY-REAL-CONTINUUM": {
         "assumptions": [
