@@ -8,17 +8,15 @@ proves a strict global stiffness bound for the supplied geometric mesh.
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass
 from fractions import Fraction as Q
 import hashlib
-import itertools
 import json
 from pathlib import Path
 
 import numpy as np
-import sympy as sp
 
 import verify_cone_whitney_bridge as parent_verifier
+import verify_whitney_maxwell_dynamics as exact_certifier
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
@@ -27,6 +25,7 @@ OUTPUT = HERE / "runtime/whitney_maxwell_dynamics_receipt.json"
 SCHEMA = "oph.whitney_maxwell_dynamics.v1"
 PIN_PATHS = [
     "Lean/Screen/WhitneyMaxwellDynamics.lean",
+    "Lean/Screen/WhitneyGeneratedCertificate.lean",
     "code/electromagnetism/runtime/cone_whitney_bridge_receipt.json",
     "code/electromagnetism/verify_cone_whitney_bridge.py",
     "code/electromagnetism/whitney_maxwell_dynamics.py",
@@ -48,135 +47,6 @@ def qfloat(value):
     value = float(value)
     require(np.isfinite(value), "nonfinite solver result")
     return Q.from_float(value)
-
-
-@dataclass(frozen=True)
-class Quadratic:
-    """Exact a+b*sqrt(5); all arithmetic and positivity tests are rational."""
-    a: Q = Q(0)
-    b: Q = Q(0)
-
-    @staticmethod
-    def cast(x):
-        return x if isinstance(x, Quadratic) else Quadratic(Q(x), Q(0))
-
-    def __add__(self, other):
-        other = self.cast(other)
-        return Quadratic(self.a+other.a, self.b+other.b)
-
-    __radd__ = __add__
-
-    def __neg__(self):
-        return Quadratic(-self.a, -self.b)
-
-    def __sub__(self, other):
-        return self + -self.cast(other)
-
-    def __rsub__(self, other):
-        return self.cast(other) + -self
-
-    def __mul__(self, other):
-        other = self.cast(other)
-        return Quadratic(self.a*other.a+5*self.b*other.b,
-                         self.a*other.b+self.b*other.a)
-
-    __rmul__ = __mul__
-
-    def __truediv__(self, other):
-        other = self.cast(other)
-        norm = other.a**2-5*other.b**2
-        require(norm != 0, "zero quadratic divisor")
-        return self*Quadratic(other.a/norm, -other.b/norm)
-
-    def __rtruediv__(self, other):
-        return self.cast(other)/self
-
-    def positive(self):
-        if self.b == 0:
-            return self.a > 0
-        if self.a >= 0 and self.b > 0:
-            return True
-        if self.a <= 0 and self.b < 0:
-            return False
-        if self.a > 0:
-            return self.a**2 > 5*self.b**2
-        return 5*self.b**2 > self.a**2
-
-    def encoded(self):
-        return [str(self.a), str(self.b)]
-
-
-def exact_ldl(matrix):
-    n = len(matrix)
-    lower = [[Quadratic.cast(int(i == j)) for j in range(n)] for i in range(n)]
-    diagonal = []
-    for i in range(n):
-        pivot = matrix[i][i]-sum(lower[i][k]*lower[i][k]*diagonal[k] for k in range(i))
-        require(pivot.positive(), "nonpositive exact LDL pivot")
-        diagonal.append(pivot)
-        for j in range(i+1, n):
-            lower[j][i] = (matrix[j][i]-sum(lower[j][k]*lower[i][k]*diagonal[k]
-                                          for k in range(i)))/pivot
-    for i in range(n):
-        for j in range(n):
-            require(sum(lower[i][k]*diagonal[k]*lower[j][k] for k in range(n)) == matrix[i][j], "LDL identity")
-    return {"lower": [[x.encoded() for x in row] for row in lower],
-            "diagonal": [x.encoded() for x in diagonal], "positive_pivots": True}
-
-
-def local_stability_certificate(parent):
-    """The positive volume factor is divided out of both local forms."""
-    phi = Quadratic(Q(1, 2), Q(1, 2))
-    # The three rays from the central apex have Gram matrix 2I+phi*11^T.
-    inv = [[Quadratic.cast(Q(int(i == j), 2))-phi/(2*(2+3*phi))
-            for j in range(3)] for i in range(3)]
-    g = [[Quadratic() for _ in range(4)] for _ in range(4)]
-    for i in range(3):
-        for j in range(3):
-            g[i+1][j+1] = inv[i][j]
-    for i in range(1, 4):
-        g[0][i] = g[i][0] = -sum(g[j][i] for j in range(1, 4))
-    g[0][0] = sum(g[i][j] for i in range(1, 4) for j in range(1, 4))
-    pairs = list(itertools.combinations(range(4), 2))
-    mass, stiffness = [], []
-    for i, j in pairs:
-        mr, kr = [], []
-        for k, l in pairs:
-            mr.append(((1+int(i == k))*g[j][l]-(1+int(i == l))*g[j][k]
-                       -(1+int(j == k))*g[i][l]+(1+int(j == l))*g[i][k])/20)
-            kr.append(4*(g[i][k]*g[j][l]-g[i][l]*g[j][k]))
-        mass.append(mr)
-        stiffness.append(kr)
-    bindings = []
-    edges = [tuple(e) for e in parent["mesh"]["edges"]]
-    symbolic = [sp.Matrix([sp.sympify(x) for x in row]) for row in parent["mesh"]["vertices_exact"]]
-    for tet in parent["mesh"]["tetrahedra"]:
-        rays = [symbolic[tet[i]]-symbolic[tet[0]] for i in range(1, 4)]
-        for i in range(3):
-            for j in range(3):
-                require(sp.simplify(rays[i].dot(rays[j])-(2*int(i == j)+(1+sp.sqrt(5))/2)) == 0,
-                        "exact tetrahedral congruence")
-        ids, signs = [], []
-        for i, j in pairs:
-            edge = (tet[i], tet[j])
-            if edge in edges:
-                ids.append(edges.index(edge)); signs.append(1)
-            else:
-                ids.append(edges.index(edge[::-1])); signs.append(-1)
-        bindings.append({"vertices": tet, "edge_indices": ids, "edge_signs": signs})
-    certificates = {}
-    for bound in (24, 48):
-        form = [[bound*mass[i][j]-stiffness[i][j] for j in range(6)] for i in range(6)]
-        certificates[str(bound)] = exact_ldl(form)
-    return {"field": "a+b*sqrt(5), encoded as [a,b] rational strings",
-            "normalization": "each local matrix divided by its positive tetrahedron volume",
-            "local_edges": [list(p) for p in pairs],
-            "gradient_gram": [[x.encoded() for x in row] for row in g],
-            "mass_over_volume": [[x.encoded() for x in row] for row in mass],
-            "stiffness_over_volume": [[x.encoded() for x in row] for row in stiffness],
-            "bindings": bindings, "ldl": certificates,
-            "global_consequence": "K<24M; h=1/2 implies M-h^2*K/12>M/2",
-            "field_bounds": "zero-current intervals: E^T M E<=4H and B^T M2 B<=16H; no potential bound"}
 
 
 def load_parent():
@@ -383,7 +253,8 @@ def scalar_controls():
 
 def build():
     parent, d, c, m, m2, k, replay = load_parent()
-    stability = local_stability_certificate(parent)
+    stability = exact_certifier.generate_stability_certificate(
+        exact_certifier.LEAN_ROOT / "Screen/WhitneyGeneratedCertificate.lean")
     executions = [instrument(parent, d, c, m, m2, k, gauge) for gauge in (False, True)]
     tail = continuation(executions[0], parent, d, c, m, m2, k)
     for ex in executions:

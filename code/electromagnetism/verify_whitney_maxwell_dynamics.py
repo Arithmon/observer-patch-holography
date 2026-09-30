@@ -3,22 +3,26 @@
 The dynamics producer is never imported. Source simplices and spacetime
 quadrature come from the previous independent cone verifier. Linear solves
 are checked through equations, including every scalar and radial variation.
-The exact local bound is reconstructed from source coordinates and its LDL
-identity is checked symbolically; rational intervals certify pivot signs.
+Lean reconstructs the exact local bound and checks its Q(sqrt(5)) LDL witness.
 """
 from __future__ import annotations
 
+import ast
+from copy import deepcopy
 from fractions import Fraction as Q
+from functools import lru_cache
 import hashlib
 import importlib.util
 import itertools
 import json
-from math import isqrt
+import os
 from pathlib import Path
 import re
+import shutil
+import subprocess
+import tempfile
 
 import numpy as np
-import sympy as sp
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
@@ -28,8 +32,28 @@ if _geometry_spec is None or _geometry_spec.loader is None:
 geometry = importlib.util.module_from_spec(_geometry_spec)
 _geometry_spec.loader.exec_module(geometry)
 OUTPUT = HERE / "runtime/whitney_maxwell_dynamics_receipt.json"
+LEAN_ROOT = ROOT / "Lean"
+EXACT_SOURCE_PATHS = (
+    "Lean/Screen/SeamCurrentCarrierQuotient.lean",
+    "Lean/ObserverPatchHolography/CoreAxioms.lean",
+    "Lean/Screen/SeamCurrentEdge30Moment.lean",
+    "Lean/Screen/ConeCochainBridge.lean",
+    "Lean/Screen/WhitneyFiniteCertificate.lean",
+    "Lean/Screen/WhitneyAlgebraicLDL.lean",
+    "Lean/Screen/WhitneyCertificatePipeline.lean",
+    "Lean/Screen/WhitneyCertificateCLI.lean",
+    "Lean/Screen/WhitneyExactSourceProblem.lean",
+    "Lean/Screen/WhitneySourceProblemCLI.lean",
+    "Lean/Screen/WhitneySourceGeometry.lean",
+    "Lean/Screen/WhitneySourceAssembly.lean",
+    "Lean/Screen/WhitneyCertifiedConsumers.lean",
+    "Lean/Screen/WhitneySourceNaturality.lean",
+    "code/electromagnetism/whitney_maxwell_dynamics.py",
+    "code/electromagnetism/verify_whitney_maxwell_dynamics.py",
+)
 PINS = {
     "Lean/Screen/WhitneyMaxwellDynamics.lean",
+    "Lean/Screen/WhitneyGeneratedCertificate.lean",
     "code/electromagnetism/runtime/cone_whitney_bridge_receipt.json",
     "code/electromagnetism/verify_cone_whitney_bridge.py",
     "code/electromagnetism/whitney_maxwell_dynamics.py",
@@ -97,85 +121,235 @@ def exact_mv(matrix, vector):
     return [sum((int(a)*v for a, v in zip(row, vector, strict=True)), Q(0)) for row in matrix]
 
 
-def certify_stability(packet, vertices, edges, tets, mass, stiffness):
-    require(set(packet) == {"field", "normalization", "local_edges", "gradient_gram",
-        "mass_over_volume", "stiffness_over_volume", "bindings", "ldl",
-        "global_consequence", "field_bounds"}, "stability schema")
-    require(packet["field"] == "a+b*sqrt(5), encoded as [a,b] rational strings", "exact field")
-    require(packet["normalization"] == "each local matrix divided by its positive tetrahedron volume", "local normalization")
-    pairs = list(itertools.combinations(range(4), 2))
-    require(packet["local_edges"] == [list(x) for x in pairs], "local edges")
-    require(all(type(x) is int for pair in packet["local_edges"] for x in pair), "local edge integer types")
-    xyz = sp.Matrix([vertices[v] for v in tets[0]])
-    affine = sp.ones(4, 1).row_join(xyz)
-    grad = affine.inv()[1:, :].T.applyfunc(sp.simplify)
-    gram = (grad*grad.T).applyfunc(sp.simplify)
-    local_m, local_k = sp.zeros(6), sp.zeros(6)
-    for e, (i, j) in enumerate(pairs):
-        for f, (k, l) in enumerate(pairs):
-            local_m[e, f] = sp.simplify(((1+(i == k))*gram[j, l]-(1+(i == l))*gram[j, k]
-                -(1+(j == k))*gram[i, l]+(1+(j == l))*gram[i, k])/20)
-            local_k[e, f] = sp.simplify(4*(gram[i, k]*gram[j, l]-gram[i, l]*gram[j, k]))
+def canonical(value):
+    return (json.dumps(value, sort_keys=True, separators=(",", ":"),
+                       ensure_ascii=True, allow_nan=False) + "\n").encode("ascii")
 
-    def scalar(value):
-        require(isinstance(value, list) and len(value) == 2, "quadratic field encoding")
-        return sp.Rational(rational(value[0]))+sp.sqrt(5)*sp.Rational(rational(value[1]))
 
-    def matrix(value, n):
-        require(isinstance(value, list) and len(value) == n and all(isinstance(r, list) and len(r) == n for r in value), "exact matrix shape")
-        return sp.Matrix([[scalar(x) for x in row] for row in value])
-
-    def equal(a, b, name):
-        require(a.shape == b.shape and all(sp.expand(x) == 0 for x in a-b), name)
-
-    equal(matrix(packet["gradient_gram"], 4), gram, "source-coordinate gradient Gram")
-    equal(matrix(packet["mass_over_volume"], 6), local_m, "exact local mass")
-    equal(matrix(packet["stiffness_over_volume"], 6), local_k, "exact local curl energy")
-    require(set(packet["ldl"]) == {"24", "48"}, "bound census")
-    denominator = 10**50
-    floor_root = isqrt(5*denominator**2)
-    low, high = Q(floor_root, denominator), Q(floor_root+1, denominator)
-    require(low*low < 5 < high*high, "rational square-root enclosure")
-    for bound, cert in packet["ldl"].items():
-        require(set(cert) == {"lower", "diagonal", "positive_pivots"}, "LDL schema")
-        lower = matrix(cert["lower"], 6)
-        require(isinstance(cert["diagonal"], list) and len(cert["diagonal"]) == 6, "pivot census")
-        diagonal = sp.diag(*[scalar(x) for x in cert["diagonal"]])
-        require(all(lower[i, i] == 1 and all(lower[i, j] == 0 for j in range(i+1, 6)) for i in range(6)), "unit lower triangular")
-        equal(lower*diagonal*lower.T, int(bound)*local_m-local_k, "exact LDL identity")
-        for aa, bb in cert["diagonal"]:
-            a, b = rational(aa), rational(bb)
-            require(min(a+b*low, a+b*high) > 0, "strict exact pivot sign")
-        require(cert["positive_pivots"] is True, "pivot assertion")
-    require(isinstance(packet["bindings"], list) and len(packet["bindings"]) == 20, "local binding census")
-    assembled_m, assembled_k = np.zeros((42, 42)), np.zeros((42, 42))
+def source_paths():
+    paths = set(EXACT_SOURCE_PATHS) | {"Lean/lakefile.lean", "Lean/lean-toolchain", "Lean/lake-manifest.json"}
+    pending = ["WhitneySourceProblemCLI", "WhitneySourceNaturality", "WhitneyOmittedCellCounterexample"]
     seen = set()
-    for tet, binding in zip(tets, packet["bindings"], strict=True):
-        require(set(binding) == {"vertices", "edge_indices", "edge_signs"}, "binding schema")
-        require(binding["vertices"] == list(tet), "tetrahedron identity")
-        require(all(type(x) is int for x in binding["vertices"]), "tetrahedron integer types")
-        txyz = sp.Matrix([vertices[v] for v in tet])
-        rays = txyz[1:, :]-sp.ones(3, 1)*txyz[0, :]
-        first_rays = xyz[1:, :]-sp.ones(3, 1)*xyz[0, :]
-        equal((rays*rays.T).applyfunc(sp.simplify), (first_rays*first_rays.T).applyfunc(sp.simplify), "exact simplex congruence")
-        volume = sp.simplify(abs(rays.det())/6)
-        require(volume > 0, "positive simplex volume")
-        ids, signs = [], []
-        for i, j in pairs:
-            pair = (tet[i], tet[j])
-            sign = 1 if pair in edges else -1
-            ids.append(edges.index(pair if sign == 1 else pair[::-1])); signs.append(sign)
-        require(all(type(x) is int for x in binding["edge_indices"]+binding["edge_signs"]), "binding integer types")
-        require(binding["edge_indices"] == ids and binding["edge_signs"] == signs, "signed edge assembly")
-        seen.update(ids)
-        orientation = np.outer(signs, signs)
-        assembled_m[np.ix_(ids, ids)] += float(volume)*np.array(local_m, dtype=float)*orientation
-        assembled_k[np.ix_(ids, ids)] += float(volume)*np.array(local_k, dtype=float)*orientation
-    require(seen == set(range(42)), "global positive definiteness coverage")
-    close(assembled_m.tolist(), mass, "local-to-quadrature mass binding")
-    close(assembled_k.tolist(), stiffness, "local-to-quadrature stiffness binding")
-    require(packet["global_consequence"] == "K<24M; h=1/2 implies M-h^2*K/12>M/2", "global strict bound")
-    require(packet["field_bounds"] == "zero-current intervals: E^T M E<=4H and B^T M2 B<=16H; no potential bound", "field coercivity scope")
+    directories = [LEAN_ROOT] + [LEAN_ROOT / path for path in
+        re.findall(r'srcDir\s*:=\s*"([^"]+)"', (LEAN_ROOT / "lakefile.lean").read_text())]
+    while pending:
+        name = pending.pop()
+        if name in seen or name == "WhitneyGeneratedCertificate":
+            continue  # The generated witness is separately pinned, avoiding a hash cycle.
+        seen.add(name)
+        relative = Path(name.replace(".", "/") + ".lean")
+        for directory in dict.fromkeys(directories):
+            path = directory / relative
+            if path.is_file():
+                paths.add(path.relative_to(ROOT).as_posix())
+                pending.extend(re.findall(r"^import\s+(\S+)", path.read_text(encoding="utf-8"), re.M))
+                break
+    return sorted(paths)
+
+
+def source_manifest():
+    return {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in source_paths()}
+
+
+def exact_source_problem():
+    ensure_lean_build()
+    return deepcopy(exact_source_problem_cached(canonical(source_manifest())))
+
+
+@lru_cache(maxsize=8)
+def exact_source_problem_cached(cache_key):
+    source_manifest = json.loads(cache_key)
+    manifest_sha = hashlib.sha256(canonical(source_manifest)).hexdigest()
+    command, environment = lean_environment()
+    with tempfile.TemporaryDirectory(prefix="oph-whitney-source-") as directory:
+        output, driver = Path(directory) / "problem.json", Path(directory) / "driver.lean"
+        driver.write_text("import WhitneySourceProblemCLI\n" +
+            f"#eval OPH.WhitneySourceProblemCLI.emitSourceProblem {json.dumps(manifest_sha)} " +
+            f"{json.dumps(str(output))}\n", encoding="utf-8")
+        run = native_run([*command, str(driver)], environment)
+        require(run.returncode == 0 and output.is_file(),
+                "Lean source decoder failed: " + (run.stdout + run.stderr)[-2000:])
+        problem = load(output)
+    problem["sourceSha256"] = hashlib.sha256(canonical({"sourceManifest": source_manifest,
+        "assembly": problem["assembly"], "targets": problem["targets"]})).hexdigest()
+    return problem, {"source_manifest": source_manifest, "source_sha256": problem["sourceSha256"]}
+
+
+def toolchain_binary(name):
+    toolchain = (LEAN_ROOT / "lean-toolchain").read_text(encoding="utf-8").strip()
+    home = Path(os.environ.get("ELAN_HOME", Path.home() / ".elan"))
+    return home / "toolchains" / toolchain.replace("/", "--").replace(":", "---") / "bin" / (name + (".exe" if os.name == "nt" else ""))
+
+
+def native_run(command, environment, timeout=180):
+    return subprocess.run(command, cwd=LEAN_ROOT, env=environment, text=True,
+        encoding="utf-8", errors="replace", capture_output=True, timeout=timeout, check=False)
+
+
+def lake_path():
+    direct = toolchain_binary("lake")
+    return os.environ.get("OPH_LAKE") or (str(direct) if direct.is_file() else shutil.which("lake"))
+
+
+def lake_environment():
+    lake = lake_path()
+    require(lake is not None, "Lake executable unavailable")
+    environment = os.environ.copy()
+    environment.update(GIT_CONFIG_COUNT="1", GIT_CONFIG_KEY_0="safe.directory",
+                       GIT_CONFIG_VALUE_0="*")
+    return lake, environment
+
+
+def lean_environment():
+    lake, environment = lake_environment()
+    return [lake, "env", "lean"], environment
+
+
+def lake_build(targets):
+    lake, environment = lake_environment()
+    return native_run([lake, "build", *targets], environment, 1500)
+
+
+def lean_source_key():
+    return tuple(hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
+                 for path in source_paths() if path.endswith(".lean"))
+
+
+@lru_cache(maxsize=8)
+def ensure_lean_build_cached(source_key):
+    run = lake_build(("WhitneySourceProblemCLI", "WhitneyCertificateCLI"))
+    require(run.returncode == 0, "Lean source build failed: " +
+            (run.stdout + run.stderr)[-4000:])
+
+
+def ensure_lean_build():
+    key = lean_source_key()
+    ensure_lean_build_cached(key)
+    require(key == lean_source_key(), "Lean source changed during native build")
+
+
+@lru_cache(maxsize=8)
+def ensure_lean_consumers(source_key, witness_sha):
+    targets = ("WhitneySourceGeometry", "WhitneySourceAssembly",
+        "WhitneyCurlRow0", "WhitneyCurlRow1", "WhitneyCurlRow2", "WhitneyCurlRow3",
+        "WhitneyCertifiedConsumers", "WhitneySourceNaturality",
+        "WhitneyOmittedCellCounterexample")
+    run = lake_build(targets)
+    require(run.returncode == 0, "Lean source consumer build failed: " +
+            (run.stdout + run.stderr)[-4000:])
+    require(source_key == lean_source_key(), "Lean source changed during consumer build")
+
+
+def run_lean_certificate_problem(problem, canonical_witness=None):
+    ensure_lean_build()
+    command, environment = lean_environment()
+    with tempfile.TemporaryDirectory(prefix="oph-whitney-certificate-") as directory:
+        root = Path(directory)
+        problem_path, result_path = root / "problem.json", root / "result.json"
+        witness_path, driver_path = root / "witness.lean", root / "driver.lean"
+        problem_path.write_bytes(problem if isinstance(problem, bytes) else canonical(problem))
+        driver_path.write_text(
+            "import WhitneyCertificateCLI\n" +
+            f"#eval OPH.WhitneyCertificateCLI.run {json.dumps(str(problem_path))} " +
+            f"{json.dumps(str(result_path))} {json.dumps(str(witness_path))}\n",
+            encoding="utf-8")
+        first = native_run([*command, str(driver_path)], environment)
+        require(first.returncode == 0 and result_path.is_file() and witness_path.is_file(),
+                "Lean certificate producer failed: " +
+                (first.stdout + first.stderr)[-2000:])
+        second = native_run([*command, str(witness_path)], environment)
+        require(second.returncode == 0, "Lean kernel certificate check failed: " +
+                (second.stdout + second.stderr)[-2000:])
+        result = load(result_path)
+        require(result.get("schema") == "oph.whitney.exact-certificate.v1", "Lean result schema")
+        if not isinstance(problem, bytes):
+            require(result.get("sourceSha256") == problem["sourceSha256"], "Lean result binding")
+        witness_bytes = witness_path.read_bytes()
+        if canonical_witness is not None:
+            destination = Path(canonical_witness)
+            destination.write_bytes(witness_bytes)
+            if destination.resolve() == (LEAN_ROOT / "Screen/WhitneyGeneratedCertificate.lean").resolve():
+                ensure_lean_consumers(lean_source_key(), hashlib.sha256(witness_bytes).hexdigest())
+        return result, hashlib.sha256(witness_bytes).hexdigest()
+
+
+@lru_cache(maxsize=8)
+def generate_stability_certificate_cached(problem_bytes):
+    problem = json.loads(problem_bytes)
+    result, witness_sha = run_lean_certificate_problem(problem)
+    require([row["name"] for row in result["targets"]] ==
+            [row["name"] for row in problem["targets"]], "certificate target order")
+    certificates = {row["name"]: row["certificate"] for row in result["targets"]}
+    return certificates, witness_sha
+
+
+def generate_stability_certificate(canonical_witness=None):
+    problem, context = exact_source_problem()
+    if canonical_witness is None:
+        certificates, witness_sha = generate_stability_certificate_cached(canonical(problem))
+    else:
+        result, witness_sha = run_lean_certificate_problem(problem, canonical_witness)
+        certificates = {row["name"]: row["certificate"] for row in result["targets"]}
+    return {"schema": "oph.whitney.exact-certificate.v2", **context,
+        "certificates": certificates, "kernel_witness_sha256": witness_sha}
+
+
+def certify_stability(packet):
+    """Without Lake, check committed witness custody; Lean CI supplies kernel replay."""
+    witness = (LEAN_ROOT / "Screen/WhitneyGeneratedCertificate.lean").read_bytes()
+    require(set(packet) == {"schema", "source_manifest", "source_sha256", "certificates", "kernel_witness_sha256"}
+            and packet["schema"] == "oph.whitney.exact-certificate.v2", "certificate schema")
+    require(packet["source_manifest"] == source_manifest(), "stale certificate source manifest")
+    require(packet["kernel_witness_sha256"] == hashlib.sha256(witness).hexdigest(), "certificate kernel witness binding")
+    def declaration(name):
+        matches = re.findall(rb"^def " + name.encode() + rb" : String := (.+)$", witness, re.M)
+        require(len(matches) == 1, "kernel witness declaration " + name)
+        return json.loads(matches[0])
+    require(declaration("sourceSha256") == packet["source_sha256"], "certificate source hash binding")
+    targets = []
+    for name in ("edge_mass", "face_mass", "stability_24", "stability_48"):
+        matches = re.findall(rb"^def " + name.encode() + rb"Data : Array \(Array \(Array ScalarData\)\) := (.+)$", witness, re.M)
+        require(len(matches) == 1, "kernel witness numeric payload " + name)
+        matrix, lower, (diagonal,) = ast.literal_eval(matches[0].decode().replace("#[", "["))
+        def scalar(value):
+            a, ad, b, bd = value
+            require(all(type(x) is int for x in value) and ad > 0 and bd > 0, "exact numeric payload")
+            return {"a": str(Q(a, ad)), "b": str(Q(b, bd))}
+        rows = lambda values: [[scalar(z) for z in row] for row in values]
+        targets.append({"name": name, "matrix": rows(matrix),
+                        "certificate": {"lower": rows(lower), "diagonal": [scalar(z) for z in diagonal]}})
+    require({row["name"]: row["certificate"] for row in targets} == packet["certificates"],
+            "kernel witness certificate payload binding")
+    if lake_path() is not None:
+        require(packet == generate_stability_certificate(), "stale certificate or source hash mismatch")
+        ensure_lean_consumers(lean_source_key(), packet["kernel_witness_sha256"])
+    return {row["name"]: row["matrix"] for row in targets}
+
+
+def check_exact_quadrature(targets, vertices, edges, faces, tets, mass, face_mass, stiffness):
+    """Compare kernel-bound exact local forms with independent float quadrature."""
+    def matrix(name):
+        return np.array([[float(rational(z["a"])) + np.sqrt(5)*float(rational(z["b"]))
+                          for z in row] for row in targets[name]])
+    local_m, local_f = matrix("edge_mass"), matrix("face_mass")
+    local_k = 24*local_m-matrix("stability_24")
+    assembled = [np.zeros_like(mass), np.zeros_like(face_mass), np.zeros_like(stiffness)]
+    for tet in tets:
+        xyz = np.asarray([vertices[v] for v in tet], dtype=float)
+        volume = abs(np.linalg.det(xyz[1:]-xyz[0]))/6
+        for output, local, cells, degree in zip(assembled, (local_m, local_f, local_k),
+                                              (edges, faces, edges), (2, 3, 2), strict=True):
+            ids, signs = [], []
+            for simplex in itertools.combinations(tet, degree):
+                candidates = [(i, cell) for i, cell in enumerate(cells) if set(cell) == set(simplex)]
+                require(len(candidates) == 1, "exact assembly simplex census")
+                index, cell = candidates[0]
+                permutation = [simplex.index(v) for v in cell]
+                parity = sum(a > b for i, a in enumerate(permutation) for b in permutation[i+1:])
+                ids.append(index); signs.append((-1)**parity)
+            output[np.ix_(ids, ids)] += volume*local*np.outer(signs, signs)
+    for actual, expected, name in zip(assembled, (mass, face_mass, stiffness), ("mass", "face mass", "stiffness"), strict=True):
+        close(actual.tolist(), expected, "exact-to-quadrature " + name)
 
 
 class Replay:
@@ -341,7 +515,8 @@ def verify(packet):
     c = geometry.coboundary(edges, faces)
     q1, q2, weights, _, m, m2 = geometry.quadrature(vertices, edges, faces, tets)
     k = c.T@m2@c
-    certify_stability(packet["stability_certificate"], vertices, edges, tets, m, k)
+    targets = certify_stability(packet["stability_certificate"])
+    check_exact_quadrature(targets, vertices, edges, faces, tets, m, m2, k)
     require(isinstance(packet["executions"], list) and len(packet["executions"]) == 2 and [x["gauge"] for x in packet["executions"]] == [False, True], "gauge history census")
     results = [replay_execution(ex, parent, edges, d, c, q1, q2, weights, m, m2, k) for ex in packet["executions"]]
     for key in ("E", "B", "action"):
