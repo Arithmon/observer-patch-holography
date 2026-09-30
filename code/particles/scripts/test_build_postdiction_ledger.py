@@ -1147,7 +1147,10 @@ def test_whitney_quantum_keeps_paper_hilbert_proof_and_free_sector(whitney_rows)
     boundary = row["hypothesis_boundary"]
     for qualification in (
         "Canonical quantization and hbar are imported",
-        "Lean assumes a complete positive normal frame",
+        "Lean constructs the complete positive normal frame",
+        "certified mass forms of the supplied geometry",
+        "separate naturality proofs",
+        "no common local/global policy is established",
         "Hilbert completion, operator closures and temporal convergence are paper proofs",
         "zero-charge source-free radiative sector",
         "not quantization of the prescribed-charge episode or interacting matter action",
@@ -1155,6 +1158,12 @@ def test_whitney_quantum_keeps_paper_hilbert_proof_and_free_sector(whitney_rows)
         "no uniform operator-norm quantum error",
     ):
         assert qualification in boundary
+    assert {
+        "Lean/Screen/WhitneySourceGeometry.lean",
+        "Lean/Screen/WhitneySourceAssembly.lean",
+        "Lean/Screen/WhitneyCertifiedConsumers.lean",
+        "Lean/Screen/WhitneySourceNaturality.lean",
+    } <= set(row["artifact_refs"])
     assert "independent_verifier_result" not in row
 
 

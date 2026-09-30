@@ -5661,6 +5661,14 @@
         "artifact_refs": [
           "paper/observers_are_all_you_need.tex",
           "paper/tex_fragments/WHITNEY_MAXWELL_DYNAMICS.tex",
+          "Lean/Screen/WhitneyFiniteCertificate.lean",
+          "Lean/Screen/WhitneyAlgebraicLDL.lean",
+          "Lean/Screen/WhitneySourceGeometry.lean",
+          "Lean/Screen/WhitneySourceAssembly.lean",
+          "Lean/Screen/WhitneyCertifiedConsumers.lean",
+          "Lean/Screen/WhitneySourceNaturality.lean",
+          "Lean/Screen/WhitneyGeneratedCertificate.lean",
+          "Lean/Screen/WhitneyOmittedCellCounterexample.lean",
           "code/electromagnetism/runtime/whitney_maxwell_dynamics_receipt.json",
           "code/electromagnetism/whitney_maxwell_dynamics.py",
           "code/electromagnetism/verify_whitney_maxwell_dynamics.py",
@@ -5669,7 +5677,7 @@
         "certificate_scope": "NUMERIC_STATIONARY_FINITE_VOLUME_MAXWELL__EXACT_CLASSICAL_READBACK__EXACT_LOCAL_STABILITY_BOUND",
         "continuum_convergence_established": false,
         "finite_element_stationarity": "numerically verified for all 68 free coefficients per gauge history",
-        "hypothesis_boundary": "Supplied Euclidean cone, constitutive metric, h=1/2, changed initial electric field, prescribed impulse source covectors, dense software evolution and exact writable classical ports. Float64 trajectory with 1e-9 comparison tolerances is not an interval trajectory certificate. Only three slices per gauge are instrumented. Finite-element stationarity is not arbitrary-test continuum stationarity; no physical clock, spatial refinement, laboratory evidence or new prediction.",
+        "hypothesis_boundary": "Supplied Euclidean cone, constitutive interpretation, h=1/2, changed initial electric field, prescribed impulse source covectors, dense software evolution and exact writable classical ports. Exact mass positivity and the stability bound are derived for that geometry, not physical source selection. The local signed-coordinate certificate policy and global real face-order policy are separately proved; their bundle establishes no common local/global transport. Lean-free checks authenticate the committed witness payload and source closure plus numerical agreement; full kernel and consumer replay requires Lean. Float64 trajectory with 1e-9 comparison tolerances is not an interval trajectory certificate. Only three slices per gauge are instrumented. Finite-element stationarity is not arbitrary-test continuum stationarity; no physical clock, spatial refinement, laboratory evidence or new prediction.",
         "id": "whitney_maxwell_dynamics",
         "independent_verifier_result": {
           "continuation_slabs": 64,
@@ -5709,15 +5717,23 @@
         "observed_postdiction": false,
         "paper_ref": "observers synthesis, whitney maxwell dynamics",
         "physical_comparison_status": "NOT_EVALUABLE",
-        "statement": "Full-metric prism action yields a unique next finite volume potential, preserves the initial Gauss residual under source continuity, and obeys an exact work identity. Positive-mode boundedness has the sharp window 0<h^2 lambda<12; stable initial-value dynamics can have a singular fixed-endpoint problem at h^2 lambda=3. An exact local Q(sqrt5) certificate gives K<24M on the supplied cone. A new Gauss-projected numerical history has two 805-event gauge representatives, all 68 action derivatives verified, exact serial readback restoration and a separately identified 64-slab numerical continuation."
+        "statement": "Full-metric prism action yields a unique next finite volume potential, preserves the initial Gauss residual under source continuity, and obeys an exact work identity. Positive-mode boundedness has the sharp window 0<h^2 lambda<12; stable initial-value dynamics can have a singular fixed-endpoint problem at h^2 lambda=3. Lean derives the exact Q(sqrt5) Whitney mass forms from the committed supplied coordinates and signed incidence, proves their assembled positivity and K<24M, and supplies the existing stability consumer. Certificate payloads are bound to a kernel witness, while independent numerical quadrature checks the signed assembled forms. A separately Gauss-projected numerical history has two 805-event gauge representatives, all 68 action derivatives verified, exact serial readback restoration and a separately identified 64-slab numerical continuation."
       },
       {
         "artifact_refs": [
           "paper/observers_are_all_you_need.tex",
-          "paper/tex_fragments/WHITNEY_MAXWELL_DYNAMICS.tex"
+          "paper/tex_fragments/WHITNEY_MAXWELL_DYNAMICS.tex",
+          "Lean/Screen/WhitneyFiniteCertificate.lean",
+          "Lean/Screen/WhitneyAlgebraicLDL.lean",
+          "Lean/Screen/WhitneySourceGeometry.lean",
+          "Lean/Screen/WhitneySourceAssembly.lean",
+          "Lean/Screen/WhitneyCertifiedConsumers.lean",
+          "Lean/Screen/WhitneySourceNaturality.lean",
+          "Lean/Screen/WhitneyGeneratedCertificate.lean",
+          "Lean/Screen/WhitneyOmittedCellCounterexample.lean"
         ],
         "continuum_convergence_established": false,
-        "hypothesis_boundary": "Canonical quantization and hbar are imported. Lean assumes a complete positive normal frame; the paper constructs it by the finite spectral theorem for the supplied mesh. Hilbert completion, operator closures and temporal convergence are paper proofs. This is the zero-charge source-free radiative sector, not quantization of the prescribed-charge episode or interacting matter action. sqrt(lambda) and finite-step theta/h are distinct; no uniform operator-norm quantum error, spatial continuum limit, selected Born statistics or physical clock is supplied.",
+        "hypothesis_boundary": "Canonical quantization and hbar are imported. Lean constructs the complete positive normal frame from the certified mass forms of the supplied geometry. The local exact signed-coordinate certificate transport and global real face-order transport have separate naturality proofs; no common local/global policy is established. Hilbert completion, operator closures and temporal convergence are paper proofs. This is the zero-charge source-free radiative sector, not quantization of the prescribed-charge episode or interacting matter action. sqrt(lambda) and finite-step theta/h are distinct; no uniform operator-norm quantum error, spatial continuum limit, selected Born statistics or physical clock is supplied.",
         "id": "whitney_radiative_quantum",
         "lean_declarations": {
           "WhitneyQuantumBridge": [
@@ -5739,7 +5755,7 @@
         "observed_postdiction": false,
         "paper_ref": "observers synthesis, whitney radiative quantum",
         "physical_comparison_status": "NOT_EVALUABLE",
-        "statement": "The same geometric mass/stiffness action has a thirty-dimensional homogeneous transverse sector. A complete mass-orthonormal spectral frame pulls its source-free continuous-time action back to ordinary oscillators. Canonical bosonic quantization with supplied positive hbar gives exact polynomial CCR, occupation energies and Heisenberg equations. The paper constructs the factorial-weight Hilbert completion l2(N^30), self-adjoint diagonal Hamiltonian and strongly continuous unitary flow. A separate exact Legendre map identifies the stable prism-step modified oscillator Hamiltonian and a second-order classical temporal limit at fixed bounded spectrum."
+        "statement": "The same geometric mass/stiffness action has a thirty-dimensional homogeneous transverse sector. Lean derives the concrete positive mass forms from the committed supplied cone geometry and constructs a complete mass-orthonormal positive spectral frame that pulls its source-free continuous-time action back to ordinary oscillators. The derived frame supplies the existing classical-action and polynomial-quantum consumers. Canonical bosonic quantization with supplied positive hbar gives exact polynomial CCR, occupation energies and Heisenberg equations. The paper constructs the factorial-weight Hilbert completion l2(N^30), self-adjoint diagonal Hamiltonian and strongly continuous unitary flow. A separate exact Legendre map identifies the stable prism-step modified oscillator Hamiltonian and a second-order classical temporal limit at fixed bounded spectrum."
       },
       {
         "artifact_refs": [

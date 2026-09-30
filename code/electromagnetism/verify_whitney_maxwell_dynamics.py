@@ -181,7 +181,7 @@ def toolchain_binary(name):
     return home / "toolchains" / toolchain.replace("/", "--").replace(":", "---") / "bin" / (name + (".exe" if os.name == "nt" else ""))
 
 
-def native_run(command, environment, timeout=180):
+def native_run(command, environment, timeout=600):
     return subprocess.run(command, cwd=LEAN_ROOT, env=environment, text=True,
         encoding="utf-8", errors="replace", capture_output=True, timeout=timeout, check=False)
 

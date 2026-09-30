@@ -1718,9 +1718,9 @@
         "sha256": "sha256:79600dbd5a3a8b2e2f1bffa1c1af4e3a6139c24544ce391b7a7794336c350358"
       },
       {
-        "byte_count": 14623,
+        "byte_count": 15600,
         "path": "Lean/Screen/WhitneyCertificateCLI.lean",
-        "sha256": "sha256:75c1622fc63e6edf754efeb807b9d5ae7268e14cb9a78e755c9809ba4a6fa05c"
+        "sha256": "sha256:47307422a45efc30afcb716893ab0929771ed819b3460c122b8375309946286b"
       },
       {
         "byte_count": 8401,
@@ -1798,9 +1798,9 @@
         "sha256": "sha256:ff4f3d965d6a11c8c378d53e5ec78818a2a2a6e283f41e16c88cbaa0574834ad"
       },
       {
-        "byte_count": 16390,
+        "byte_count": 22150,
         "path": "Lean/Screen/WhitneyGeneratedCertificate.lean",
-        "sha256": "sha256:c868eb7baf8c4e0fc5c9a03effd3e855eb09d0d6a94a9f76e34ee6a6d396ef5a"
+        "sha256": "sha256:e556c9510612da48911c942ffbccd8f2a805e3f6543079893dbe9ecd6787a62a"
       },
       {
         "byte_count": 2893,
@@ -1843,9 +1843,9 @@
         "sha256": "sha256:0bfbbc9f03f73baef16d655e0320b8c417a0b4037baa39c1d23328517c2325b9"
       },
       {
-        "byte_count": 20036,
+        "byte_count": 20202,
         "path": "Lean/Screen/WhitneySourceNaturality.lean",
-        "sha256": "sha256:468a000bafd1e73feac00fd261095a91d3dd7b86d72bc4b90eb130bddc96fff2"
+        "sha256": "sha256:ff1fcb4b1e233ab54c4afb4f1e894170475faad0023001afca99fba22c34803f"
       },
       {
         "byte_count": 2024,
@@ -4538,7 +4538,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:1647507dd027675a3c20be0f808553d32091a6b6a888bd4a9d137ae5d7a36fb2",
+    "files_sha256": "sha256:d69eb37e661441b886ce79a71d6d19c569859d8243d7edfd6bffba29e4701a40",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7447,7 +7447,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:3dde8a3903a1e083440f8b0f2f4f409d605c48c0020a006933e8f37b9f93e752",
+  "inventory_sha256": "sha256:2885cc68b4811ad333d7441f53060527410b180201f228f36710d444ef52868e",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

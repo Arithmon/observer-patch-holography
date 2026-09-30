@@ -81,6 +81,16 @@ OBSERVATION_EVIDENCE = [
     "code/electromagnetism/verify_whitney_charged_checkpoint.py",
     "code/electromagnetism/test_whitney_charged_checkpoint.py",
     "code/electromagnetism/runtime/whitney_charged_checkpoint_receipt.json",
+    "Lean/Screen/WhitneyFiniteCertificate.lean",
+    "Lean/Screen/WhitneyAlgebraicLDL.lean",
+    "Lean/Screen/WhitneyCertificatePipeline.lean",
+    "Lean/Screen/WhitneyExactSourceProblem.lean",
+    "Lean/Screen/WhitneySourceGeometry.lean",
+    "Lean/Screen/WhitneySourceAssembly.lean",
+    "Lean/Screen/WhitneyCertifiedConsumers.lean",
+    "Lean/Screen/WhitneySourceNaturality.lean",
+    "Lean/Screen/WhitneyGeneratedCertificate.lean",
+    "Lean/Screen/WhitneyOmittedCellCounterexample.lean",
 ]
 
 POSTDICTION_ARTIFACTS = [

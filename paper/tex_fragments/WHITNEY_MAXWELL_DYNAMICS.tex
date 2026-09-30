@@ -108,9 +108,14 @@ Every tetrahedron has three apex rays with Gram matrix
 Divide each local Whitney mass and curl-energy matrix by its positive
 tetrahedron volume. Exact arithmetic in \(\mathbb Q(\sqrt5)\) gives an
 \(LDL^{\mathsf T}\) factorization of \(24M_T-K_T\) with strictly
-positive diagonal. An independent verifier reconstructs the barycentric
-gradients from the supplied vertex coordinates, checks the matrix identity
-and encloses \(\sqrt5\) between rational bounds to certify each sign.
+positive diagonal. The Lean construction decodes the committed coordinates and signed incidence
+tables, derives barycentric gradients and exact local mass forms, and checks
+the factorization with a proved sign decision in \(\mathbb Q(\sqrt5)\).
+Its finite-dimensional checker is sound and admits a certificate for every
+positive-definite matrix over that field. The emitted witness binds the
+certificate payload to the kernel-checked definitions. Independent numerical
+quadrature reconstructs the global forms and checks their agreement with
+the exact local forms after signed assembly.
 The twenty signed local-to-global edge maps cover every global edge, so
 assembly proves \(K<24M\), without a floating-point eigenvalue bound.
 At \(h=1/2\), therefore,
@@ -123,6 +128,15 @@ on a source-free interval. The magnetic estimate also holds at the other
 endpoint of each slab: use
 \(B_n=\overline B_n+hCE_n/2\) and
 \(h^2E_n^{\mathsf T}KE_n\leq6E_n^{\mathsf T}ME_n\).
+The source-derived positive mass forms also construct the complete
+thirty-mode frame used by the classical action and polynomial quantum
+Hamiltonian. Signed local-coordinate changes transport exact certificate
+existence, and the global face-order permutation separately preserves the
+real action, constraint and quantum consumers. These are two proved
+reexpression policies; their collection in one bundle supplies no theorem
+identifying them as one local/global runtime transport. Source-manifest and
+payload checks in a Lean-free environment authenticate the committed
+witness; replaying the kernel and consumer proofs requires Lean.
 The factorization is an exact algebraic certificate; the trajectory below
 is a separate numerical calculation.
 
