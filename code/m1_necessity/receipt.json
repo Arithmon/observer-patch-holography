@@ -1854,7 +1854,7 @@
           "declared_proper_code_source_completion"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "39d9dad48247e5fc93b0c4f8e0b72de26b250654f2e93ffb4fa16a7ce6b5536d"
+        "original_claim_sha256": "0102697bf57e6dce10cef8adde0e740a19c613d92d6f897f66d17e7bb08d4136"
       },
       "OPH-SOURCE-COMPILED-MASS-CLOCK": {
         "assumptions": [
@@ -1864,7 +1864,7 @@
           "declared_source_clock_control_and_noise_budget"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "d8cba1d457919a7b9dc49259876e58f95f288e25a3abddfa43805b88e27f2d0e"
+        "original_claim_sha256": "4232e5a316f0defc03a488fc0f7839e34a779b41c59c28f10b65fd518f04ec3c"
       },
       "OPH-SOURCE-FULL-FAMILY-READ-ROUTING": {
         "assumptions": [
@@ -1886,7 +1886,7 @@
           "declared_code_channel_agreement_and_tracial_reference"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "d7c9053154d59e8cf43271e604aa06d8bb28ead2453ec0ea6c1788531562baea"
+        "original_claim_sha256": "965abbbe2b724425cc61e8874f069ce5fd4b4dacacf09d1b421d65b07f28395b"
       },
       "OPH-THERMO-COLLAR-TEMPERATURE-READING": {
         "assumptions": [

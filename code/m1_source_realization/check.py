@@ -32,7 +32,7 @@ def same(actual, expected, path='evidence'):
         # Only numerical matrix entries/eigenvalue zeros and residuals have
         # an absolute tolerance. Positive physical scales cannot become zero.
         absolute = any(x in path for x in ('eigenvalues', 'matrix_unit_images', 'diagonal',
-            'three_step_probe', 'amplitudes', '.output', 'concurrence', 'error'))
+            'three_step_probe', 'amplitudes', '.output', '_effect', '.effect', 'concurrence', 'error'))
         tol = 2e-10 if absolute else (2e-9*abs(expected) if expected else 1e-12)
         need(abs(actual-expected) <= tol, f'{path}: mismatch {actual} != {expected}')
     else:
@@ -219,6 +219,27 @@ def expected_noise():
     return rows
 
 
+def expected_readouts():
+    rows = []
+    for theta, weight in itertools.product((-.4, 0., 1.2), (0., .37, 1.)):
+        # Direct target observable, not the producer's circuit or instruments.
+        effect = np.zeros((17, 17), complex)
+        clicks = []
+        psi = np.array([complex(math.cos(j*j/17), math.sin(j*j/17)) for j in range(17)])/math.sqrt(17)
+        phase = complex(math.cos(theta), math.sin(theta))
+        for j in range(8):
+            a, b = 1+j, 9+j
+            effect[a, a] = effect[b, b] = weight/2
+            effect[a, b], effect[b, a] = weight*phase.conjugate()/2, weight*phase/2
+            clicks.append(float(weight*abs(psi[a]+phase.conjugate()*psi[b])**2/2))
+        rows.append(dict(theta=theta, weight=weight, effect=encoded(effect),
+                         first_click_probabilities=clicks, no_click_trace=1-sum(clicks),
+                         pulses=16, buffer_events=16, code_events=48,
+                         classical_effect=encoded(np.diag([0.]+[weight/2]*16).astype(complex)),
+                         classical_probability=weight*8/17))
+    return rows
+
+
 def expected_resources():
     clock_interval_certificate()  # Parent's analytic signal, not a copied success flag.
     with mp.workdps(65):
@@ -232,8 +253,17 @@ def expected_resources():
         depth = side.bit_length()-1
         omega, event = 96*mp.pi/(h*tau), h*tau/256
         layer = mp.pi/omega+2*event
-        preparation = a*mp.sqrt(3)*(side-1)/6+(7*depth+31)*layer+(2*depth+2)*event
-        read = 16*layer+event
+        # One processor serializes eight departures, while eight different
+        # child processors receive concurrently. Readout loads all eight
+        # measured modes separately. The exact integer ledger is checked too:
+        # a large preparation flight must not mask omitted tiny service times.
+        schedule = dict(blank_events_per_processor=64, seed_events=2,
+                        departures_per_tree_node=8, arrivals_per_child=1,
+                        preparation_pulses_on_path=7*depth+31,
+                        preparation_events_on_path=23*depth+128,
+                        readout_pulses=16, readout_buffer_events=16)
+        preparation = a*mp.sqrt(3)*(side-1)/6+(7*depth+31)*layer+(9*depth+66)*event
+        read = 16*layer+16*event
         run = ticks*tick
         noise = 2*rate*(preparation+read+run)
         size = 1
@@ -246,7 +276,8 @@ def expected_resources():
         while 2**bits < total:
             bits += 1
         records = (1+8*bits)*(4*buffers+4*pulses+4*flights+(256*ticks+100)*size**3)
-        result = dict(a=a, c=c, overhead_fraction=h, phase_rate=rate, flight_tick=tau, wall_tick=tick,
+        result = dict(a=a, c=c, overhead_fraction=h, phase_rate=rate, serial_schedule=schedule,
+            flight_tick=tau, wall_tick=tick,
             ticks=ticks, preparation_side_cells=side, preparation_leaves=side**3, preparation_depth=depth,
             preparation_pulses=32*side**3-1, preparation_flights=8*(side**3-1)//7,
             workspace_side_cells=size, mode_buffers=32*size**3+16*(side**3-1)//7,
@@ -297,7 +328,7 @@ def verify_topology(rows):
 
 def verify_evidence(packet):
     need(type(packet) is dict and packet.keys() == {'controls', 'channels', 'instruments', 'entangler', 'coin',
-                                                  'spatial', 'preparations', 'noise', 'resources', 'topology'}, 'evidence schema')
+                         'spatial', 'preparations', 'readouts', 'noise', 'resources', 'topology'}, 'evidence schema')
     verify_controls(packet['controls'])
     same(packet['channels'], expected_channels(), 'channels')
     same(packet['instruments'], expected_instruments(), 'instruments')
@@ -305,6 +336,7 @@ def verify_evidence(packet):
     verify_coin(packet['coin'])
     same(packet['spatial'], expected_spatial(), 'spatial')
     same(packet['preparations'], expected_preparations(), 'preparations')
+    same(packet['readouts'], expected_readouts(), 'readouts')
     same(packet['noise'], expected_noise(), 'noise')
     same(packet['resources'], expected_resources(), 'resources')
     verify_topology(packet['topology'])

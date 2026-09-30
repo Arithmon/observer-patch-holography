@@ -3,6 +3,7 @@
 import itertools
 import json
 import math
+from numbers import Real
 from pathlib import Path
 
 import numpy as np
@@ -80,7 +81,14 @@ def classical_fidelity(kraus, basis):
 
 
 def selected_channel(d, ez, ex):
-    # These rows exercise the nontrivial regime below the uninformative threshold.
+    if type(d) is not int or d < 2:
+        raise ValueError('channel dimension must be an integer at least two')
+    if any(isinstance(e, (bool, np.bool_)) or not isinstance(e, Real) or not math.isfinite(e)
+           or not 0 <= e <= 1 for e in (ez, ex)):
+        raise ValueError('agreement errors must be finite probabilities')
+    # Once a fidelity bound is weaker than uniform guessing, entropy is
+    # maximized at uniformity rather than by saturating the loose bound.
+    ez, ex = min(ez, (d-1)/d), min(ex, (d-1)/d)
     p = np.array([1-ez]+[ez/(d-1)]*(d-1))
     q = np.array([1-ex]+[ex/(d-1)]*(d-1))
     return [np.sqrt(p[a]*q[b])*weyl(d, a, b) for a in range(d) for b in range(d)]
@@ -111,6 +119,8 @@ def code_transfer_kraus(d, keep_phase=True):
     The complement is an explicit failure flag. It is neither postselected
     away nor represented as a reversible map of the whole six-level source.
     """
+    if type(d) is not int or d not in (2, 4) or type(keep_phase) is not bool:
+        raise ValueError('the source interface admits only qubit and pair proper codes')
     out = []
     if keep_phase:
         k = np.zeros((d+1, 6), complex)

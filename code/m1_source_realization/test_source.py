@@ -228,6 +228,129 @@ def test_uncharged_identity_instruction_is_detected(monkeypatch):
         check.same(circuits.resource_witness(), check.expected_resources(), 'resources')
 
 
+@pytest.mark.parametrize('theta,weight', [(-.4, 0.), (0., .37), (1.2, 1.)])
+def test_full_readout_instrument_and_detector_effect(theta, weight):
+    unitary = circuits.detector_unitary(theta)
+    assert np.linalg.norm(unitary.conj().T@unitary-np.eye(17)) < 1e-13
+    for mode in range(8):
+        click, rest = circuits.destructive_read(mode, weight)
+        ks = (click, *rest)
+        assert np.linalg.norm(sum(k.conj().T@k for k in ks)-np.eye(17)) < 1e-14
+        vacuum = np.zeros(17)
+        vacuum[0] = 1
+        assert np.linalg.norm(click@vacuum) == 0
+    actual = next(r for r in circuits.readouts() if r['theta'] == theta and r['weight'] == weight)
+    expected = next(r for r in check.expected_readouts() if r['theta'] == theta and r['weight'] == weight)
+    check.same(actual, expected, 'readout')
+    effect = check.matrix(actual['effect'], (17, 17))
+    values = np.linalg.eigvalsh(effect)
+    assert min(values) > -1e-13 and max(values) <= 1+1e-13
+    assert sum(actual['first_click_probabilities'])+actual['no_click_trace'] == pytest.approx(1)
+
+
+@pytest.mark.parametrize('field,bad', [('blank_events_per_processor', 1),
+    ('seed_events', 1), ('departures_per_tree_node', 1), ('readout_buffer_events', 1),
+    ('preparation_events_on_path', 672)])
+def test_missing_serial_operations_fail_even_when_total_float_time_is_close(candidate, field, bad):
+    p = copy.deepcopy(candidate)
+    p['resources']['serial_schedule'][field] = bad
+    with pytest.raises(ValueError):
+        check.verify_evidence(p)
+
+
+def test_missed_readout_mode_and_reversed_phase_fail(candidate):
+    for field in ('first_click_probabilities', 'effect'):
+        p = copy.deepcopy(candidate)
+        if field == 'first_click_probabilities':
+            p['readouts'][1][field][-1] = 0.
+        else:
+            p['readouts'][1][field][1][9][1] *= -1
+        with pytest.raises(ValueError):
+            check.verify_evidence(p)
+
+
+def test_classical_source_loses_the_same_ramsey_readout_phase():
+    psi = np.zeros(17, complex)
+    psi[1] = psi[9] = 1/np.sqrt(2)
+    probabilities = []
+    for theta in (0., np.pi/2, np.pi):
+        classical = circuits.classical_detector_effect(theta, 1.)
+        assert np.linalg.norm(classical-np.diag([0.]+[.5]*16)) < 1e-13
+        assert np.vdot(psi, classical@psi).real == pytest.approx(.5)
+        transformed = circuits.detector_unitary(theta)@psi
+        probabilities.append(float(sum(abs(transformed[1:9])**2)))
+    assert probabilities == pytest.approx([1., .5, 0.])
+
+
+@pytest.mark.parametrize('mutation', ['discard_no_click', 'classical_coherence', 'classical_probability'])
+def test_readout_outcome_and_classical_ablation_cannot_be_faked(candidate, mutation):
+    p = copy.deepcopy(candidate)
+    row = p['readouts'][1]
+    if mutation == 'discard_no_click':
+        row['no_click_trace'] = 0.
+    elif mutation == 'classical_coherence':
+        row['classical_effect'] = copy.deepcopy(row['effect'])
+    else:
+        row['classical_probability'] = 1.
+    with pytest.raises(ValueError):
+        check.verify_evidence(p)
+
+
+def test_basis_resets_are_explicit_cptp_interventions_not_ontic_optimizers():
+    for level in (0, 1):
+        ks = [np.outer(np.eye(6)[level], np.eye(6)[j]) for j in range(6)]
+        assert np.array_equal(sum(k.T@k for k in ks), np.eye(6))
+        for i, j in itertools.product(range(6), repeat=2):
+            unit = np.zeros((6, 6))
+            unit[i, j] = 1
+            assert np.array_equal(model.act(ks, unit), (i == j)*np.diag(np.eye(6)[level]))
+        assert all(np.linalg.matrix_rank(k) == 1 for k in ks)
+
+
+@pytest.mark.parametrize('bad', [True, 1, 3, 5, 6, 7, 2., '2', None])
+def test_unsupported_source_codes_cannot_bypass_properness(bad):
+    with pytest.raises(ValueError):
+        model.code_transfer_kraus(bad)
+
+
+@pytest.mark.parametrize('d', [2, 3, 4])
+def test_loose_a3_bounds_select_uniformity_instead_of_saturating(d):
+    ks = model.selected_channel(d, 1., .99)
+    assert np.linalg.norm(model.choi(ks)-np.eye(d*d)/(d*d)) < 1e-13
+
+
+@pytest.mark.parametrize('bad', [-.01, 1.01, float('nan'), float('inf'), True, '0'])
+def test_invalid_agreement_bounds_fail(bad):
+    with pytest.raises(ValueError):
+        model.selected_channel(2, bad, 0.)
+    with pytest.raises(ValueError):
+        model.selected_channel(2, 0., bad)
+
+
+@pytest.mark.parametrize('groups', [1, 2, 4, 8])
+def test_phase_generator_on_vacuum_plus_one_particle_has_no_population_factor(groups):
+    modes = 2*groups
+    size = modes+1
+    rng = np.random.default_rng(610+groups)
+    raw = rng.normal(size=(size, size))+1j*rng.normal(size=(size, size))
+    rho = raw@raw.conj().T
+    rho /= np.trace(rho)
+    actual = np.zeros_like(rho)
+    for g in range(groups):
+        labels = np.zeros(size, int)
+        labels[1+2*g:3+2*g] = (1, 2)
+        actual += (labels[:, None] == labels[None, :])*rho-rho
+    one = np.diag([0.]+[1.]*modes)
+    diagonal = np.diag(np.diag(one@rho@one))
+    grouped = np.zeros_like(rho)
+    for g in range(groups):
+        p = np.zeros_like(rho)
+        p[1+2*g, 1+2*g] = p[2+2*g, 2+2*g] = 1
+        grouped += p@rho@p
+    assert np.linalg.norm(actual-(diagonal+grouped-one@rho-rho@one)) < 1e-13
+    assert np.sum(abs(np.linalg.eigvalsh(actual)))/2 <= 2+1e-13
+
+
 @pytest.mark.parametrize('mutation', [
     'control', 'phase', 'missing_coin_phase', 'dephasing_as_identity', 'drop_failure',
     'missing_modes', 'bad_flight', 'prep_hole', 'fixed_noise', 'retime', 'free_gates',

@@ -92,6 +92,17 @@ essential to this construction.
 
 A code request is a fixed isometry V:C^d -> C^6, with d=2 or d=4.
 Its ordered computational basis is part of the calibrated interface.
+The local calibration/preparation interfaces are explicit interventions,
+not ontic entropy optimizers. In particular the reset/seed maps on the
+processor have Kraus operators |b><j|, j=0,...,5, with b=0 or 1.
+Their adjoint products sum to I6 and their output is |b><b| for every input.
+They are rank-one, irreversible operations. The sender reset in a code move
+is the b=0 map. Local destructive binary readback uses effects E and I-E
+and a fixed reset output; its retained outcome is never postselected.
+These finite instruments extend the source's local preparation/readback
+interface. A pure blank is not claimed to follow from the unconstrained
+tracial A3 minimum.
+
 Packing |a>|b> into |2a+b> and unpacking are fixed coordinate identifications.
 They do not permit an arbitrary input-dependent change of quantum basis.
 Changing a source chart transports V, the state and every effect together;
@@ -99,9 +110,13 @@ it does not execute a free active gate. All nontrivial rotations in the
 clock circuit use the response pulses of section 1.
 
 Let P=VV*. The full source instrument first distinguishes P from 1-P.
-On the valid code it applies a declared CPTP code channel T and writes its
-output into a receiver whose previous contents are discarded. The sender
-is reset. On the complement it emits a retained failure flag and a fixed
+On the valid code it applies the fixed code-service channel T and writes its
+output into a receiver whose previous contents are discarded. The full
+CPTP family below is the transition-selection domain; T is its selected
+service, not an arbitrary per-instruction gate argument. In the exact
+coherent completion T is identity, and in the classical completion it is
+dephasing. The program cannot choose an extra unitary through this slot.
+The sender is reset. On the complement it emits a retained failure flag and a fixed
 output. For the identity code channel an explicit decoder into a code plus
 failure space has Kraus operators
 
@@ -166,6 +181,19 @@ transcript cannot repair the lost rank. Thus randomization, feedback and
 external controllers cannot turn the proper-code service into an omitted
 full-carrier reversible direction. The claim is about CPTP reversibility,
 not mere injectivity of a state-tomography map.
+
+At a fixed finite cutoff, the same distinction survives channel limits.
+In quantum dimension D, a Kraus family of rank at most D-1 has fidelity
+with any full-space unitary Choi state at most (D-1)/D, by
+|Tr(U* K)|^2 <= rank(K) Tr(K* K). A finite admitted program is a sum of
+untouched branches proportional to original response unitaries and
+rank-deficient touched branches. Convergence to a unitary forces the latter
+weight to zero. The original U(3) times SO(3) response group is compact, and
+a unitary is an extreme channel, so a unitary limit of the remaining
+mixtures still belongs to that group. Weakening an irreversible operation
+or taking a limit cannot silently supply a new full-carrier response.
+This argument is at fixed cutoff; it does not identify a growing encoded
+logical algebra with one primitive response tangent.
 
 The processor is active, rather than an unused guard. It loads every private
 buffer, supplies every native gate and executes readback/repair. Nevertheless
@@ -360,8 +388,8 @@ about its optimizer is transferred from the stationary ontic state.
 
 ## 4. What agreement and maximum randomness select
 
-Let Z={|j>} be a computational basis of C^d and X its discrete Fourier
-basis. For a trace-preserving code channel T put
+Let d>=2, Z={|j>} be a computational basis of C^d and X its discrete
+Fourier basis. For a trace-preserving code channel T put
 
 ```
 J_T=(id tensor T)(|Omega><Omega|),   |Omega>=sum_j |j,j>/sqrt(d),
@@ -616,12 +644,20 @@ elapsed preparation time:
 
 ```
 T_prep <= sqrt(3) a (N-1)/(2c)
-          + (7 log2 N+31)(pi/Omega+2 eta) + (2 log2 N+2) eta.
+          + (7 log2 N+31)(pi/Omega+2 eta) + (9 log2 N+66) eta.
 ```
 
-The last term charges parallel departure/arrival at every tree level,
-initial blank preparation and the seed. For support
-inside radius P+sigma, choose the least dyadic Na >= 2(P+sigma+a). The flight
+There is one active processor per cell or tree node. At each tree level
+it must perform eight departures **serially**; the eight child processors
+then receive concurrently, costing one arrival time on each path. Initial
+blank preparation serially loads and resets at most 32 buffers per
+processor (64 events), and preparing/storing the one root excitation costs
+two more events. Those are the 9 log2 N+66 events in the last term.
+The gate pack/unpack events are already in the middle term. The resulting
+path has 7 log2 N+31 pulses and 23 log2 N+128 non-pulse events. The emitted
+integer schedule is checked separately from the much larger flight time,
+so an omitted tiny local operation cannot hide within a floating tolerance.
+For support inside radius P+sigma, choose the least dyadic Na >= 2(P+sigma+a). The flight
 term is less than 2 sqrt(3)(P+sigma+a)/c, independent of leaf count. All
 branches and their native events count as resources. The small executable
 octrees include entire zero subtrees; they are checks of this construction,
@@ -654,15 +690,57 @@ An adaptive replacement must charge its new dependencies by the same rule.
 The counter schedule is an external control of the experiment, not an
 independently derived physical time standard.
 
-After the native clock duration, allow sixteen local gate layers and a
-read event for the interference measurement. Freeze the walk at the last macrostep and label the sample with that
-endpoint; the known positive measurement latency is retained separately.
-Local outcomes become available after the read events, not at the sample
-timestamp. Reports can then travel to a collector; for the witness
-below, collection from a radius-600 detector costs at most sqrt(3)600/c
-using the containing cube. This delays availability of the report; it does
-not alter the already recorded local outcome. Source data do not assert an
-instantaneous distributed aggregate.
+### Serial physical readout, including no-click outputs
+
+After the native clock duration, freeze the walk and apply eight phase
+pulses followed by eight native two-mode rotations between corresponding
+mass modes. The first output amplitude in spin mode j is
+(psi_(1,j)+exp(-i theta) psi_(2,j))/sqrt(2). There is still one processor at
+each cell: load each of the eight first-output buffers separately, then
+perform its destructive weighted occupation read. These are sixteen buffer
+events in addition to the 32 pack/unpack events for the sixteen pulses.
+
+On vacuum plus the one-particle sector, let |0> denote vacuum and |j> the
+currently read mode after this basis change. With detector weight 0<=w<=1,
+the actual destructive instrument is
+
+```
+C_j = sqrt(w) |0><j|,                 click,
+M_j = sqrt(1-w) |0><j|,               no click, consumed mode,
+O_j = I-|j><j|,                      no click, excitation elsewhere.
+```
+
+C_j* C_j+M_j* M_j+O_j* O_j=I. Keep both no-click branches; their probability
+is not discarded or used to renormalize the next read. This is the reduced
+payload map of a proper load followed by a local destructive binary effect
+read on M6, with the processor reset and the classical outcome retained.
+Distinct measured modes are orthogonal. Propagating the read effects
+backwards through all the no-click instruments therefore gives exactly
+
+```
+E_clock = (w/2) sum_j (|1,j>+exp(i theta)|2,j>)
+                           (<1,j|+exp(-i theta)<2,j|).
+```
+
+Its eigenvalues lie in [0,1] on this sector and its vacuum block is zero.
+Thus the actual serial source read implements the parent detector, including
+spectator entanglement, rather than merely reading a fitted phase. Across
+cells the sum is still an effect on the global at-most-one-particle sector;
+at most one click occurs. The executable controls reconstruct the entire
+17-dimensional effect and every first-click probability independently.
+
+The positive measurement duration is consequently
+
+```
+T_read = 16 pi/Omega + 48 eta.
+```
+
+Label the sample with the last macrostep endpoint and retain this measurement
+latency separately. Outcomes become available after their read events.
+Reports can then travel to a collector; for the witness below, collection
+from the radius-600 detector costs at most sqrt(3)600/c using its containing
+cube. This delays availability of the report without changing the recorded
+local outcome. No instantaneous distributed aggregate is asserted.
 
 ## 7. Noise that preserves the signal can still fail the energy test
 
@@ -697,6 +775,34 @@ limit covers phase noise during bounded pulses. Preparation, storage,
 flights and readout therefore add at most 2 lambda T_exposure to any outcome
 probability, with no conditioning on an error-free trajectory.
 
+Destructive readout can remove the particle, so its intermediate payload
+space also contains vacuum. The linear bound in (7) extends to this whole
+space, including vacuum/particle coherence and reference entanglement.
+Write P_j=|j><j|, P_g=sum_(j in g) P_j and P=sum_j P_j. The generator of
+independent fixed-basis group dephasing, with rate lambda, is
+
+```
+L(rho) = lambda [sum_j P_j rho P_j + sum_g P_g rho P_g - P rho - rho P].
+```
+
+Each of the first two completely positive maps has diamond norm at most
+one, because its adjoint sends I to P<=I. Left and right multiplication by
+P each have norm at most one. Hence ||L||_diamond<=4 lambda; integrating
+the CPTP semigroup gives (1/2)||exp(tL)-id||_diamond<=2 lambda t, independently
+of the number of empty registers. Interleaving the complete read instruments
+and retaining their outcome flags preserves this bound by contractivity.
+This supplies the readout step without incorrectly applying the exact-N=1
+convex-mixture identity to a larger Hilbert space.
+
+During initial blanking the payload need not yet lie in the at-most-one-
+particle space. That does not invoke the sector bound: each local reset
+erases its incoming state, and subsequent phase noise fixes the prepared
+computational vacuum. After all blanks and the basis-state seed are ready,
+the entire payload is exactly in the declared sector. Their positive time
+is retained in the exposure upper bound as a conservative excess; no
+population-independent estimate is assumed for arbitrary uninitialized
+many-particle states.
+
 The qualification exact-Z is necessary. With independent occupation flips
 of probability p on M blank registers, the probability of leaving vacuum is
 1-(1-p)^M. Its dependence on population is real. Applying (7) to the general
@@ -724,8 +830,13 @@ still large. Conversely (7) and the spectral range give
 |Tr E_a(rho_noisy-rho_ideal)| <= (pi/tau) 2 lambda T_exposure.       (8)
 ```
 
-For bounded total exposure, lambda=o(a) makes this extra cost vanish. These
-energy statements apply before the destructive final measurement. They do
+For bounded total exposure, lambda=o(a) makes this extra cost vanish. For a finite workspace, use the compression of the parent's fixed E_a to
+that workspace's one-particle subspace. Before readout the native forward
+cone lies inside it, so the embedded state and its accounting expectation
+are exactly those of the infinite-lattice experiment. Compression preserves
+the upper spectral bound and all the stated single-site expectations; a
+periodic logarithm is not silently substituted for the fixed observable.
+These energy statements apply before the destructive final measurement. They do
 not confuse mode energy with the control apparatus's energy. Positive
 timing overhead multiplies the corresponding wall-time accounting by
 1/(1+kappa) if that convention is used; no laboratory identification follows.
@@ -753,11 +864,22 @@ preparation, flight, native control and readout costs have all been charged.
 The enormous finite witness is an analytic existence construction, not a
 claim that its lattice or hardware has been simulated or is practical.
 
-For the alternative classical source, averaging the four complementary
-input tests cannot exceed 3/4; there is no coherent unknown-register service
-to run this compiler. This is the decisive controlled distinction. Native
-local interference is still possible in that model, so the conclusion is
-not that all classical-gluing sources have no clocks of any kind.
+For the alternative classical source, run the same detector instructions,
+replacing every code service by its A3-selected dephasing channel. The
+phase-stage code accesses erase the inter-mass matrix entries before the
+mass mixers. Each mixer then sends either input occupation to its measured
+output with probability 1/2. Propagating the actual serial read instruments
+backwards gives E_classical=(w/2) P_one, independent of theta. The executable
+comparison checks this full effect, not only its value on a chosen state.
+For the equal two-mass superposition the coherent detector probabilities
+at theta=0, pi/2, pi are 1, 1/2, 0; the classical completion gives 1/2 at
+all three settings. Thus this source implementation loses the same clock
+diagnostic when its code services are dephased.
+
+The all-program statement is separate: averaging the four complementary
+unknown-input tests cannot exceed 3/4. Native local interference is still
+possible in that model, so neither conclusion says that every clock of
+every classical-gluing source is impossible.
 
 ## 8. What is closed and what is not promoted
 

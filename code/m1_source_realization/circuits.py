@@ -160,6 +160,117 @@ def noise():
     return rows
 
 
+def detector_instructions(theta):
+    """One active processor: phases, mass mixers, then serial load/read."""
+    mix = native_pair(np.array([[1., 1.], [-1., 1.]])/np.sqrt(2))
+    return ([('phase', [j+8], np.exp(-1j*theta)) for j in range(8)]
+            + [('pair', [j, j+8], mix) for j in range(8)]
+            + [(kind, [j], None) for j in range(8) for kind in ('load', 'read')])
+
+
+def detector_unitary(theta):
+    """Vacuum plus all sixteen one-particle modes, with native six-level gates."""
+    out = np.eye(17, dtype=complex)
+    for kind, ports, pulse in detector_instructions(theta):
+        if kind == 'phase':
+            out[ports[0]+1] *= pulse
+        elif kind == 'pair':
+            lifted = np.zeros((6, 17), complex)
+            lifted[2], lifted[1] = out[ports[0]+1], out[ports[1]+1]
+            lifted = pulse@lifted
+            out[ports[0]+1], out[ports[1]+1] = lifted[2], lifted[1]
+    return out
+
+
+def destructive_read(mode, weight):
+    """Click and two no-click Kraus branches; the loaded mode is erased."""
+    click = np.zeros((17, 17), complex)
+    click[0, mode+1] = np.sqrt(weight)
+    missed = np.zeros_like(click)
+    missed[0, mode+1] = np.sqrt(1-weight)
+    outside = np.eye(17, dtype=complex)
+    outside[mode+1, mode+1] = 0
+    return click, (missed, outside)
+
+
+def classical_detector_effect(theta, weight):
+    """Replay the same detector with A3-selected dephasing at every code use."""
+    tape = detector_instructions(theta)
+    effect = np.zeros((17, 17), complex)
+    for kind, ports, pulse in reversed(tape):
+        if kind == 'read':
+            click, rest = destructive_read(ports[0], weight)
+            effect = click.conj().T@click+sum(k.conj().T@effect@k for k in rest)
+        elif kind in ('phase', 'pair'):
+            labels = np.zeros(17, int)
+            for j, port in enumerate(ports):
+                labels[port+1] = j+1
+            # Delta_Z on the local proper code, with a single shared vacuum
+            # label for all untouched modes. The dual equals Delta_Z itself.
+            mask = labels[:, None] == labels[None, :]
+            effect *= mask  # unpack
+            u = np.eye(17, dtype=complex)
+            if kind == 'phase':
+                u[ports[0]+1, ports[0]+1] = pulse
+            else:
+                indices = [p+1 for p in ports]
+                u[np.ix_(indices, indices)] = pulse[np.ix_([2, 1], [2, 1])]
+            effect = (u.conj().T@effect@u)*mask  # pulse, then pack in reverse
+        else:
+            # The destructive occupation read following this load is already
+            # diagonal in that code, so its own load dephasing fixes it.
+            labels = np.zeros(17, int)
+            labels[ports[0]+1] = 1
+            effect *= labels[:, None] == labels[None, :]
+    return effect
+
+
+def readouts():
+    rows = []
+    for theta, weight in itertools.product((-.4, 0., 1.2), (0., .37, 1.)):
+        unitary = detector_unitary(theta)
+        psi = np.exp(1j*np.arange(17)**2/17)/np.sqrt(17)
+        rho = unitary@np.outer(psi, psi.conj())@unitary.conj().T
+        clicks = []
+        tape = detector_instructions(theta)
+        read_modes = [ports[0] for kind, ports, _ in tape if kind == 'read']
+        effect = np.zeros((17, 17), complex)
+        for mode in reversed(read_modes):
+            click, rest = destructive_read(mode, weight)
+            effect = click.conj().T@click+sum(k.conj().T@effect@k for k in rest)
+        effect = unitary.conj().T@effect@unitary
+        for mode in read_modes:
+            click, rest = destructive_read(mode, weight)
+            clicks.append(float(np.trace(click@rho@click.conj().T).real))
+            rho = sum(k@rho@k.conj().T for k in rest)
+        pulses = sum(kind in ('phase', 'pair') for kind, _, _ in tape)
+        accesses = sum(kind in ('load', 'read') for kind, _, _ in tape)
+        classical = classical_detector_effect(theta, weight)
+        rows.append(dict(theta=theta, weight=weight, effect=encode(effect), first_click_probabilities=clicks,
+                         no_click_trace=float(np.trace(rho).real), pulses=pulses,
+                         buffer_events=accesses, code_events=2*pulses+accesses,
+                         classical_effect=encode(classical),
+                         classical_probability=float(np.vdot(psi, classical@psi).real)))
+    return rows
+
+
+def serial_schedule(depth):
+    """Critical-path events; distinct processors can execute in parallel."""
+    blank = [(kind, j) for j in range(32) for kind in ('load', 'reset')]
+    seed = [('prepare', 0), ('store', 0)]
+    depart = [('depart', j) for j in range(8)]
+    # Eight different child processors each receive once, concurrently.
+    arrival_path = [('arrive', 0)]
+    detector = detector_instructions(0.)
+    return dict(blank_events_per_processor=len(blank), seed_events=len(seed),
+                departures_per_tree_node=len(depart), arrivals_per_child=len(arrival_path),
+                preparation_pulses_on_path=7*depth+31,
+                preparation_events_on_path=len(blank)+len(seed)+2*(7*depth+31)
+                                           +depth*(len(depart)+len(arrival_path)),
+                readout_pulses=sum(k in ('phase', 'pair') for k, _, _ in detector),
+                readout_buffer_events=sum(k in ('load', 'read') for k, _, _ in detector))
+
+
 def resource_witness():
     a, c, overhead, rate = 1e-9, 3., .01, 1e-14
     tau = math.sqrt(3)*a/c
@@ -176,12 +287,12 @@ def resource_witness():
     service = overhead*tau/(2*code_count)
     # Seven split rotations per tree level, then 15 internal rotations and
     # 16 phases at each leaf, all branches performed in parallel.
-    prep_layers = 7*depth+31
+    schedule = serial_schedule(depth)
+    prep_layers = schedule['preparation_pulses_on_path']
     layer_time = math.pi/omega+2*service
     prep_flight = math.sqrt(3)*a*(side-1)/2/c
-    prep_time = prep_flight+prep_layers*layer_time+(2*depth+2)*service
-    # Eight mass-beam rotations, phases, local read and record timestamp.
-    read_time = 16*layer_time+service
+    prep_time = prep_flight+prep_layers*math.pi/omega+schedule['preparation_events_on_path']*service
+    read_time = schedule['readout_pulses']*layer_time+schedule['readout_buffer_events']*service
     run_time = ticks*wall_tick
     exposure = prep_time+run_time+read_time
     probability_noise = 2*rate*exposure
@@ -191,7 +302,7 @@ def resource_witness():
     identifier_bits = (1+buffers+prep_pulses+prep_flights+ticks*workspace_side**3).bit_length()
     record_bound = (1+8*identifier_bits)*(4*buffers+4*prep_pulses+4*prep_flights
                      +(256*ticks+100)*workspace_side**3)
-    return dict(a=a, c=c, overhead_fraction=overhead, phase_rate=rate,
+    return dict(a=a, c=c, overhead_fraction=overhead, phase_rate=rate, serial_schedule=schedule,
                 flight_tick=tau, wall_tick=wall_tick, ticks=ticks,
                 preparation_side_cells=side, preparation_leaves=side**3,
                 preparation_depth=depth, preparation_pulses=side**3-1+31*side**3,
@@ -213,4 +324,5 @@ def resource_witness():
 
 
 def candidate():
-    return dict(spatial=spatial(), preparations=preparations(), noise=noise(), resources=resource_witness())
+    return dict(spatial=spatial(), preparations=preparations(), readouts=readouts(),
+                noise=noise(), resources=resource_witness())
