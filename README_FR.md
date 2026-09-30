@@ -232,7 +232,7 @@ elles-mêmes. Chaque décision est l’équilibre dans lequel le réseau se
 stabilise, et le cerveau apprend de son activité locale pendant qu’il
 fonctionne ; il peut donc continuer d’apprendre d’un flux d’expérience sans
 fin, avec une mémoire bornée. L’article
-[*Cadence: an architecture for a continuous and efficient stream of intelligence*](https://philpapers.org/rec/MUECAP-2)
+[*Cadence: Deep Recursive Settlement Networks*](https://philpapers.org/rec/MUECAP-2)
 développe l’architecture et ses expériences. OPH et Cadence se complètent et
 partagent de nombreux théorèmes.
 

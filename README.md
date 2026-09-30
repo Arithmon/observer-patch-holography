@@ -211,7 +211,7 @@ brains from observer patches that read themselves. Every decision is the
 equilibrium the network settles into, and the brain learns from local activity
 while it runs, so it can keep learning from an unending stream of experience
 with bounded memory. The paper
-[*Cadence: an architecture for a continuous and efficient stream of intelligence*](https://philpapers.org/rec/MUECAP-2)
+[*Cadence: Deep Recursive Settlement Networks*](https://philpapers.org/rec/MUECAP-2)
 develops the architecture and its experiments. OPH and Cadence complement each
 other and share many of their theorems.
 
