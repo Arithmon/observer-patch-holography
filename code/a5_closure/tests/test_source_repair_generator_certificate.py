@@ -1,42 +1,73 @@
+import copy
+import json
 import sys
 import unittest
 from fractions import Fraction
 from pathlib import Path
-P=Path(__file__).resolve().parents[1];sys.path.insert(0,str(P))
+
+P=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(P))
 import source_repair_generator_certificate as cert
 import verify_source_repair_generator_independent as independent
 
 class GeneratorBoundaryTests(unittest.TestCase):
- def test_face_reconstruction_and_group_classification(self):
-  c=cert.classify();v=independent.audit()
-  self.assertEqual((len(c["edges"]),len(c["group"]),c["invariant_dimension"]),(30,60,1))
+ @classmethod
+ def setUpClass(cls):
+  cls.carrier=json.loads(cert.MANIFEST.read_text())
+  cls.receipts={"a3":json.loads(cert.A3_PATH.read_text()),"directed":json.loads(cert.DIRECTED_PATH.read_text()),"repair":json.loads(cert.REPAIR_PATH.read_text())}
+
+ def test_independent_graph_orbits_invariant_dimension_and_generator_pair(self):
+  p=cert.classify();v=independent.audit()
+  self.assertEqual((len(p["edges"]),len(p["group"]),p["invariant_dimension"]),(30,60,1))
   self.assertEqual(v["edge_orbit_sizes"],[30])
- def test_weighted_laplacian_conservative_and_supported(self):
-  c=cert.classify();L=cert.laplacian(12,c["edges"],[Fraction(1)]*30)
-  self.assertTrue(all(sum(row)==0 for row in L))
-  self.assertEqual(sum(x!=0 for i,row in enumerate(L) for j,x in enumerate(row) if i!=j),60)
- def test_two_positive_laws_same_relation_distinct_generator(self):
-  c=cert.classify();u=[Fraction(1)]*30;b=[Fraction(2 if i==0 else 1) for i in range(30)]
-  self.assertNotEqual(cert.laplacian(12,c["edges"],u),cert.laplacian(12,c["edges"],b))
-  self.assertTrue(all(x>0 for x in b))
- def test_deleted_edge_and_duplicate_edge_controls(self):
-  c=cert.classify();e=c["edges"]
-  self.assertEqual(len(set(e[:-1])),29)
-  self.assertEqual(len(e+[e[0]]),31)
-  self.assertNotEqual(set(e[:-1]),set(e))
- def test_distance_two_and_broken_weight_controls(self):
-  c=cert.classify();e=c["edges"];adj=[set() for _ in range(12)]
-  for u,v in e:adj[u].add(v);adj[v].add(u)
-  d2=next((u,v) for u in range(12) for v in range(u+1,12) if v not in adj[u] and adj[u]&adj[v])
-  self.assertNotIn(d2,e)
-  w=[Fraction(1)]*30;w[0]=Fraction(0)
-  self.assertFalse(all(x>0 for x in w))
- def test_invariance_rank_rejects_split_orbit(self):
-  c=cert.classify();self.assertEqual(c["invariant_dimension"],1)
-  self.assertEqual(len(c["edge_orbits"]),1)
- def test_source_boundary_is_explicit(self):
-  out=cert.certificate()
-  self.assertFalse(out["proposal_source_audit"]["reference_source_derived_from_issue_628_relation"])
-  self.assertEqual(out["proposal_source_audit"]["full_integer_state_generator_binding"],"not established")
+  self.assertTrue(v["uniform_and_biased_laws"]["nonproportional"])
+
+ def test_conservation_and_exact_seam_support(self):
+  e=cert.classify()["edges"];u=[Fraction(1)]*30;b=[Fraction(2 if i==0 else 1) for i in range(30)]
+  Lu=cert.laplacian(12,e,u);Lb=cert.laplacian(12,e,b)
+  self.assertTrue(all(sum(r)==0 for L in (Lu,Lb) for r in L))
+  supp=lambda L:{(i,j) for i in range(12) for j in range(12) if i!=j and L[i][j]}
+  expected={(a,b) for a,b in e}|{(b,a) for a,b in e}
+  self.assertEqual(supp(Lu),expected);self.assertEqual(supp(Lb),expected)
+  self.assertFalse(independent.proportional(Lb,Lu))
+
+ def test_deleted_face_duplicate_face_and_reversed_face_are_rejected(self):
+  m=copy.deepcopy(self.carrier);m["carrier"]["oriented_faces"].pop()
+  with self.assertRaises(ValueError):cert.classify(m)
+  m=copy.deepcopy(self.carrier);m["carrier"]["oriented_faces"][1]=m["carrier"]["oriented_faces"][0][:]
+  with self.assertRaises(ValueError):cert.classify(m)
+  m=copy.deepcopy(self.carrier);a,b,c=m["carrier"]["oriented_faces"][0];m["carrier"]["oriented_faces"][0]=[a,c,b]
+  with self.assertRaises(ValueError):cert.classify(m)
+
+ def test_deleted_duplicate_and_distance_two_serialized_edges_are_rejected(self):
+  m=copy.deepcopy(self.carrier);m["carrier"]["edges"].pop()
+  with self.assertRaises(ValueError):cert.classify(m)
+  m=copy.deepcopy(self.carrier);m["carrier"]["edges"].append(m["carrier"]["edges"][0][:])
+  with self.assertRaises(ValueError):cert.classify(m)
+  m=copy.deepcopy(self.carrier);edges=m["carrier"]["edges"]
+  adj={x:set() for x in m["carrier"]["ports"]}
+  for a,b in edges:adj[a].add(b);adj[b].add(a)
+  d2=next((a,b) for a in m["carrier"]["ports"] for b in m["carrier"]["ports"] if a<b and b not in adj[a] and adj[a]&adj[b])
+  edges[-1]=list(d2)
+  with self.assertRaises(ValueError):cert.classify(m)
+
+ def test_receipt_pins_self_digests_and_scope_fail_closed(self):
+  self.assertEqual(len(cert.read_receipts()["receipts"]),3)
+  self.assertEqual(len(independent.verify_receipts()),3)
+  m=copy.deepcopy(self.receipts);m["directed"]["uniform_s1_channel"]["sector"]="all integer states"
+  self._redigest(m["directed"])
+  with self.assertRaises(ValueError):cert.read_receipts(m)
+  with self.assertRaises(AssertionError):independent.verify_receipts(m)
+  m=copy.deepcopy(self.receipts);m["a3"]["a3_selection"]["selected_kernel_probability_per_seam"]="1/29"
+  self._redigest(m["a3"])
+  with self.assertRaises(ValueError):cert.read_receipts(m)
+  with self.assertRaises(AssertionError):independent.verify_receipts(m)
+  m=copy.deepcopy(self.receipts);m["directed"]["verdict"]["full_self_readback_and_universe_selection"]="exact"
+  self._redigest(m["directed"])
+  with self.assertRaises(ValueError):cert.read_receipts(m)
+  with self.assertRaises(AssertionError):independent.verify_receipts(m)
+
+ def _redigest(self,doc):
+  doc["manifest_sha256"]=cert.canonical_digest({k:v for k,v in doc.items() if k!="manifest_sha256"})
 
 if __name__=="__main__":unittest.main()

@@ -1,11 +1,22 @@
-# OPH source repair generator selection: bounded decision
+# Independent executable audit of the #628 proposal-law boundary
 
 Date: 2026-09-30
 Baseline: `FloatingPragma/observer-patch-holography` `upstream/main` at
 `0c914ccd1c5ce16c7ef3058808a36c56ae9405bd`.
 Branch: `arithmon/source-repair-gram-selection-0`.
 
-## Finding
+## Contribution and finding
+
+This packet does not claim the conditional uniformity theorem as a new
+discovery. Upstream already has `EqualSeamSelection.lean`,
+`SeamCurrentHomogeneousAction.lean`, and `docs/CANONICAL_REPAIR_LAW_RFC.md`.
+They establish the conditional A2/A3 route from a supplied complete move
+simplex, natural objective and unique minimizer to uniform source counting;
+the RFC states that its A1-R/A2-R strengthening is proposed and not adopted.
+The contribution here is an independent executable audit of the exact
+#628-to-proposal boundary, the positive biased countermodel for the #628
+relation alone, and receipt-checked scope for the connection to the frozen
+Galois pair.
 
 The #628 repair relation fixes admissible local conservative unit transfers,
 but does not assign probabilities to the thirty seams. Distinct positive
@@ -15,8 +26,9 @@ local conservative generator has one rate parameter and is
 `L = c(5I-A)`, `c >= 0`; if `c > 0`, the certified rank-three `P3` band is
 uniquely slowest and the frozen positive Gram table is `G_plus = 4 P3`.
 
-There is also an existing, narrower scheduler result. #614 selects `1/30` per
-seam by A3 relative-entropy projection **from an explicitly uniform move
+The existing, narrower scheduler result is checked from its inputs at
+runtime. #614 selects `1/30` per seam by A3 relative-entropy projection
+**from an explicitly uniform move
 reference** on its named reference carrier. The #628/#614 directed-seam
 receipt composes the resulting uniform directed orbit with opposite balanced
 placements and proves `I - Delta/60` on the total-load-one sector. It does not
@@ -96,6 +108,17 @@ full-state native dynamics claim is a source-bound identification of that
 proposal/linearized generator with the complete #628 repair process; A5
 invariance by itself classifies the weights but does not provide this binding.
 
+```text
+#628 fixes the admissible repair relation.
+#614 fixes the uniform one-step law relative to its declared uniform reference.
+The directed receipt binds the two on the S=1 expected channel.
+No source theorem currently identifies that channel with the complete nonlinear
+#628 integer repair process.
+```
+
+If that binding is supplied, the existing spectral chain selects `P3`, hence
+`G_plus` inside the frozen Galois pair.
+
 | Link | Status |
 |---|---|
 | Face incidence to 12/30/degree-five graph and proper A5 edge transitivity | PROVED (independent executable reconstruction) |
@@ -107,18 +130,24 @@ invariance by itself classifies the weights but does not provide this binding.
 | General-rate covariance limit and independent Galois negative replay | NOT ATTEMPTED |
 | A1 support attachment / PR-53 | NOT PRESENT / open |
 
-The seven standalone tests exercise incidence, independent orbit/rank
-reconstruction, conservation/support, a positive biased countermodel, and
-basic edge/zero-rate mutation checks. The full twenty-control hostile suite,
-all-mode normalized-kernel replay, and a Lean formalization were not
-attempted. No registries, papers, Lean files, generated surfaces or frozen
-prediction files were changed.
+The standalone tests exercise incidence, independent orbit/rank and generator
+reconstruction, receipt digests and parent pins, and actual mutations of
+faces, serialized seams, the #614 probability and directed-receipt scope
+flags. They reject deleted or duplicated faces/edges, a reversed oriented
+face, a distance-two seam, and forged receipt claims. The full twenty-control
+hostile suite, all-mode normalized-kernel replay, and a Lean formalization
+were not attempted. No registries, papers, Lean files, generated surfaces or
+frozen prediction files were changed.
 
 ## Custody audit (candidates were read, none edited)
 
 | Candidate | Classification | Evidence |
 |---|---|---|
-| `PortGramRepairBand.lean`, `PortGramRepairCovariance.lean`, `A5PortAction.lean`, `PortFrameGram.lean`, `A5FamilyBand.lean` | ACTIVE-INVENTORY-ONLY | present in `claims/active_surface_inventory.json`; claim/proof index references; no direct byte hash pin found in the searched consumers |
+| `PortFrameGram.lean` | BYTE-PINNED-PARENT | audited snapshot SHA-256 `d1cebe56450e7586eed730b52068753ebca3a6563da1453679e87fa7c7b653e3`; snapshot checked by `verify_source_current_order_sensitive_inventory.py` |
+| `A5FamilyBand.lean` | BYTE-PINNED-PARENT | audited snapshot SHA-256 `63b425c890b49f49a53858b5a480b993cfee81d92978fa3ed5abf665e48645a6`; also referenced by `sm_fermion_current` receipts |
+| `PortGramRepairBand.lean` | BYTE-PINNED-PARENT | audited snapshot SHA-256 `75286414b7c33492b40225dd48ca9321cf3a09ecf96b65e254af9bd02421cf72`; read only, unchanged |
+| `PortGramRepairCovariance.lean` | BYTE-PINNED-PARENT | audited snapshot SHA-256 `8d96c8a01361a9cfc2f53901d73032041480c93bb50190ab12ac939a7e9a6ad8`; read only, unchanged |
+| `A5PortAction.lean` | ACTIVE-INVENTORY-ONLY | present in `claims/active_surface_inventory.json`; no byte pin found in the inspected source-current snapshot |
 | `record_counting_mechanism_reference.json` | BYTE-PINNED-PARENT | canonical hash consumed by the directed seam receipt; raw hash also appears in the source-order inventory |
 | `record_counting_mechanism_certificate.py` | GENERATED-SURFACE | producer for the pinned #628 manifest; imported by the directed seam producer |
 | claim registries, selection ledger, and papers | FROZEN/PREDICTION for this discovery scope | explicitly excluded from edits by runbook |
@@ -140,4 +169,5 @@ python3 -B code/a5_closure/verify_source_repair_generator_independent.py
 python3 -B code/a5_closure/tests/test_source_repair_generator_certificate.py
 ```
 
-Seven tests passed. No Lean build or CI run was performed.
+Five test methods passed, including the mutation controls listed above. No
+Lean build or CI run was performed.
