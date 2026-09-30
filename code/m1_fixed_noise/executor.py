@@ -8,7 +8,10 @@ cat-read string, so a representative even string suffices for Pauli frames.
 from .recovery import CHECKS, CONFIG, correction
 
 
-def execute(fault=None, incoming=(0, 0), config=CONFIG):
+def execute(fault=None, incoming=(0, 0), config=CONFIG, faults=()):
+    injected = dict(faults)
+    if fault is not None:
+        injected[fault[0]] = fault[1]
     x, z = incoming
     index, records, rejected = 0, [], []
     def location(op, qs):
@@ -29,8 +32,8 @@ def execute(fault=None, incoming=(0, 0), config=CONFIG):
         elif op == 'r':
             x &= ~(1 << qs[0])
             z &= ~(1 << qs[0])
-        if fault is not None and index == fault[0]:
-            for q, label in zip(qs, fault[1]):
+        if index in injected:
+            for q, label in zip(qs, injected[index]):
                 x ^= (label & 1) << q
                 z ^= (label >> 1) << q
         index += 1
@@ -86,5 +89,8 @@ def execute(fault=None, incoming=(0, 0), config=CONFIG):
     for op in ('correct_x', 'correct_z'):
         for q in range(7):
             step(op, [q])
+    # Even exhaustion leaves a complete local quantum output. At a lower
+    # concatenation level its flag is diagnostic, not an application abort.
     return dict(residual=None if abort else (x & 127, z & 127),
+                continued_frame=(x & 127, z & 127), local_failure=bool(abort),
                 syndrome_history=records, candidate_rejections=rejected, locations=index)

@@ -1885,6 +1885,15 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "d4d138ef085ab03eb9f410c5f680931be2971faf02406d49b4e1f20855450de7"
       },
+      "OPH-SOURCE-FIXED-RATE-PROTECTED-READS": {
+        "assumptions": [
+          "declared_proper_code_source_completion",
+          "proposed_coherent_code_gluing_CCG",
+          "declared_fault_protected_source_schedule"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "55c6b9cb12653c82eabf73ef9ab293e7d23c1faacde28a393e0eb6971abd5dd8"
+      },
       "OPH-SOURCE-FULL-FAMILY-READ-ROUTING": {
         "assumptions": [
           "M1_full_family_read_feedback_and_routing"
@@ -1900,6 +1909,13 @@
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "02f6c0accca76a05748e66e3a197dccf008e5b278be882331e9c3672f524c335"
+      },
+      "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION": {
+        "assumptions": [
+          "declared_fault_protected_source_schedule"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "f9dfab6b13c6a816bcb45d8ebf9fb6aed2f9039094ca22c7211319562a9210f8"
       },
       "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT": {
         "assumptions": [
@@ -2851,6 +2867,11 @@
       },
       {
         "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+        "role": "Supplies complete native proper-code operations, finite per-owner inventories and cofinal charged control capability; no reliable recovery service is added.",
+        "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
+      },
+      {
+        "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
         "role": "Supplies the existing native response, complete proper-code interfaces and constructed support; fermionic encoding and preparation are proved here.",
         "to": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION"
       },
@@ -2865,9 +2886,19 @@
         "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
       },
       {
+        "from": "OPH-SOURCE-ENCODED-FERMION-CLOCK",
+        "role": "Supplies the full prepared clock/read programs, finite accounting reference and padded source schedule; protection and fixed-rate operational convergence are proved separately.",
+        "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
+      },
+      {
         "from": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
         "role": "Supplies the full-interface noise estimate, including off-code intermediate pulses and gauge preparation; the unencoded sector bound is not reused.",
         "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+      },
+      {
+        "from": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
+        "role": "Supplies the unprotected raw-vacuum obstruction, retained rather than misread as an obstruction to corrected operational outputs.",
+        "to": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION"
       },
       {
         "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
@@ -2893,6 +2924,11 @@
         "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
         "role": "Supplies the edge encoding and independent cycle constraints on which the physical vacuum-noise obstruction is proved.",
         "to": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE"
+      },
+      {
+        "from": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
+        "role": "Specifies complete decoded observables and abort accounting; does not transfer raw fidelity or unweighted native counts.",
+        "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
       },
       {
         "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
@@ -3524,7 +3560,7 @@
     "code/m1_necessity/CONSUMERS.md": "5e178a21be7719c24794fbcab673c4ae6d76a96aa66cab2d69e62663526780d4",
     "code/m1_necessity/CONTRACT.md": "f3186f4911ea004fcad0058dbc0a526d359c623d42bdb4bf279fc6dd43ea1670",
     "code/m1_necessity/DERIVATION.md": "13754829bb642c0e48c4ae8cfb8f69d56baa8de90c36dfcb18ae0ff0a8dcca9c",
-    "code/m1_necessity/README.md": "0fdeb60d78443bbf114a944f6b62f7ce904ac924577b3f925a803f33bb261ea0",
+    "code/m1_necessity/README.md": "ab430db5007bb59a3da7230f1554895f73d11d76429ca2bafae2391231fedc8c",
     "code/m1_necessity/SPECTRAL_COMPLETION.md": "1e633dcbe37a26401ef7c81c158f47d164b5ffb03ae6631da4e42b431ea19f54",
     "code/m1_necessity/__init__.py": "a49a6656f96a30bd6343e498a0ca5302dae30515d4cf458d45c172933a0247ac",
     "code/m1_necessity/audit.py": "d6a0df2ca2ab885fa8cb7c527f3a74ac17b748847524f4cec7d8df7a049a50c0",
@@ -3533,9 +3569,9 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "791696857ad423540111c40b958fe72d540988af20c993a2e4f143082cb3a571",
+    "code/m1_necessity/downstream.json": "fc8e38fbc2b269f0526ffcc535ef4d17219f346d0b13858e4603187cefb81df2",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "127b47f2924af42d5852eec00b808b9b5f51d087ffb2d59844d4cbb2b924d142",
+    "code/m1_necessity/test_necessity.py": "1c1cd7c95f8aebcf9769deb600b6a4b7bc0b993ab701ac91bf7f8940b38bd177",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",

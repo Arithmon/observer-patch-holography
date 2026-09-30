@@ -13223,6 +13223,101 @@
         "boundary": [],
         "rationale": "This row is a finite-channel obstruction and error bound for the explicitly specified physical-interface dephasing model. It makes no identification of that declared rate, noise process or accounting reference with laboratory data and consumes no physical premise-register branch."
       }
+    },
+    {
+      "claim_id": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
+      "statement": "For every fixed finite positive rate of the declared independent full-interface dephasing, the existing CCG source admits a protected refinement of its prepared fermionic experiments and encoded-input read channels. Continuous driven noise has a local stochastic fault decomposition. Complete bounded recovery retains all ancilla attempts and aborts; the independently checked seven-qubit circuit has 19,664 locations and correctable output for all 65,328 one-location Pauli faults. The credited constructive universal concatenation theorem, including non-Clifford gadgets, finite gate synthesis and four levels give decoded logical/named-record error O(q^-12 log^6(2q)) and additional positive accounting error O(q^-8 log^6(2q)). Parallel block flights and a charged polylogarithmic increase of local drive preserve finite propagation speed and a uniform wall-time rescaling. Universal library constants remain symbolic; no numerical full-machine threshold or perfect unknown raw-input encoder is claimed.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_fault_protected_source_schedule"
+      ],
+      "imported_results": [
+        "concatenated_universal_accuracy_theorem_AGP",
+        "constructive_Solovay_Kitaev_synthesis",
+        "CSS_code_and_Pauli_error_basis",
+        "Poisson_unravelling_of_dephasing"
+      ],
+      "oph_specific_delta": "Discharges the decreasing-physical-noise requirement for the named operational source refinement by checking native-noise hypotheses, bounded recovery and the causal control schedule; no reliable recovery or error-free software state is granted as a service.",
+      "novelty_type": "fixed_rate_operational_source_refinement_with_charged_fault_protection",
+      "falsifier": "A native full-interface fault is nonlocal or uncounted; a single recovery fault produces an uncorrectable output; a retry is unbounded or an abort is postselected; universal gadget hypotheses fail; local control or block flight requires uncharged time; or the derived operational/accounting majorants do not vanish.",
+      "scope_if_false": "The fixed-rate protected realization or its operational bounds fail. The credited threshold theorem, the prior unprotected source and the raw-vacuum obstruction are not contradicted.",
+      "owner_paper": "extra/FIXED_RATE_SOURCE_READS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "code/m1_fixed_noise/CONTRACT.md",
+        "code/m1_fixed_noise/README.md",
+        "code/m1_fixed_noise/__init__.py",
+        "code/m1_fixed_noise/algebra.py",
+        "code/m1_fixed_noise/algebra_check.py",
+        "code/m1_fixed_noise/build.py",
+        "code/m1_fixed_noise/executor.py",
+        "code/m1_fixed_noise/noise.py",
+        "code/m1_fixed_noise/recovery.py",
+        "code/m1_fixed_noise/recovery_check.py",
+        "code/m1_fixed_noise/scaling.py",
+        "code/m1_fixed_noise/scaling_check.py",
+        "code/m1_fixed_noise/test_fixed_noise.py",
+        "code/m1_fixed_noise/verify.py",
+        "code/m1_fixed_noise/receipt.json",
+        "extra/FIXED_RATE_SOURCE_READS.md"
+      ],
+      "status": "proved_for_declared_cofinal_source_with_imported_universal_fault_tolerance",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row proves operational stability inside a declared CCG source with a specified independent noise model and paid cofinal controls. It does not identify a physical microscopic source, select statistics or parameters, or consume and discharge the premise-register empirical source and energy requirements."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
+      "statement": "For the protected source, global raw code fidelity can vanish at fixed physical noise while decoded logical reads converge. Choosing one independent nonzero syndrome column in each of N lowest-level blocks bounds raw code probability by (1-p_Z)^N; at a fixed-rate a/c wait and N=Theta(q^3), p_Z=Theta(q^-1). A complete decoder defines the positive physical accounting observable D*(E direct-sum E_max), retaining every syndrome and charging aborts; its error is bounded by E_max times the decoded channel error. Exact seven-qubit phase-noise enumeration separates raw entangled fidelity from decoded phase error. Auxiliary diagnoses remain in the history but are not claimed close to noiseless records. Noise on arbitrary unencoded unknown inputs before redundancy is added has an unavoidable error and is not hidden inside a free encoder.",
+      "assumptions": [
+        "declared_fault_protected_source_schedule"
+      ],
+      "imported_results": [
+        "complete_quantum_error_correction_instruments",
+        "CPTP_contractivity",
+        "positive_unital_adjoint_and_spectral_range_bound"
+      ],
+      "oph_specific_delta": "Separates the actual read/accounting requirement from an excessive whole-device fidelity requirement without discarding bad syndromes, erasing aborts or transferring unweighted native event counts.",
+      "novelty_type": "raw_state_and_corrected_observable_separation_in_the_source",
+      "falsifier": "The decoder is not trace preserving on all syndromes; a supposedly corrected quantum output changes; the pulled-back effect is not positive and bounded; raw syndrome fidelity is identified with operational success; auxiliary or abort records are discarded; or raw-input encoding noise is falsely corrected.",
+      "scope_if_false": "The operational/raw separation or accounting comparison fails. This would not establish physical energy calibration or a noise threshold for a different source.",
+      "owner_paper": "extra/FIXED_RATE_SOURCE_READS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "code/m1_fixed_noise/CONTRACT.md",
+        "code/m1_fixed_noise/README.md",
+        "code/m1_fixed_noise/__init__.py",
+        "code/m1_fixed_noise/algebra.py",
+        "code/m1_fixed_noise/algebra_check.py",
+        "code/m1_fixed_noise/build.py",
+        "code/m1_fixed_noise/executor.py",
+        "code/m1_fixed_noise/noise.py",
+        "code/m1_fixed_noise/recovery.py",
+        "code/m1_fixed_noise/recovery_check.py",
+        "code/m1_fixed_noise/scaling.py",
+        "code/m1_fixed_noise/scaling_check.py",
+        "code/m1_fixed_noise/test_fixed_noise.py",
+        "code/m1_fixed_noise/verify.py",
+        "code/m1_fixed_noise/receipt.json",
+        "extra/FIXED_RATE_SOURCE_READS.md"
+      ],
+      "status": "proved_for_declared_cofinal_source_with_imported_universal_fault_tolerance",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row is an explicit finite-channel and asymptotic noise comparison. It neither assigns physical energy or entropy to error records nor resolves premise-register microscopic selection and continuum-identification requirements."
+      }
     }
   ]
 }

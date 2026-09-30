@@ -301,7 +301,9 @@
   "OPH-SOURCE-COMPILED-MASS-CLOCK",
   "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
   "OPH-SOURCE-ENCODED-FERMION-CLOCK",
-  "OPH-SOURCE-FERMIONIC-VACUUM-NOISE"
+  "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
+  "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
+  "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION"
  ],
  "edges": [
   {
@@ -2638,6 +2640,26 @@
    "role": "Supplies the finite analytic clock interval certificate and one-particle effect, with its full Fock instrument and all setup/report latency implemented here.",
    "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
    "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+  },
+  {
+   "role": "Supplies the full prepared clock/read programs, finite accounting reference and padded source schedule; protection and fixed-rate operational convergence are proved separately.",
+   "from": "OPH-SOURCE-ENCODED-FERMION-CLOCK",
+   "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
+  },
+  {
+   "role": "Supplies complete native proper-code operations, finite per-owner inventories and cofinal charged control capability; no reliable recovery service is added.",
+   "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+   "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
+  },
+  {
+   "role": "Supplies the unprotected raw-vacuum obstruction, retained rather than misread as an obstruction to corrected operational outputs.",
+   "from": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
+   "to": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION"
+  },
+  {
+   "role": "Specifies complete decoded observables and abort accounting; does not transfer raw fidelity or unweighted native counts.",
+   "from": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
+   "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
   }
  ]
 }
