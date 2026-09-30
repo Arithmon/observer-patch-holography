@@ -12807,6 +12807,126 @@
         "boundary": [],
         "rationale": "This is an exact reconstruction inside a declared finite scalar action and specified mathematical conformal control family. PR-16 physical count-to-volume realization and PR-52 native source/geometry selection are not antecedents or conclusions; supplied kinetic weights and record-production laws are explicitly distinguished from those physical premises."
       }
+    },
+    {
+      "claim_id": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+      "statement": "The explicit eight-channel walk exp(-i m tau beta) diag(F C,C F*) uses one parallel tetrahedral flight of duration tau=sqrt(3)a/c and local coins. Its complete eigenphases are plus/minus omega and plus/minus(pi-omega), each twice, with cos(omega)=cos(m tau) sqrt(1-sum sin(a k_i)^2/3), for 0<m tau<pi/2. It retains eight low-mass Dirac valleys and all middle/high bands. A full-channel native-time operator error, including odd-tick carriers and leakage, is proved. Every smooth band has sharp group-speed supremum (c/3)cos(m tau); the fixed-spacing ballistic velocity distribution of every fixed normalized one-particle preparation is supported in that ball. The positive observable E_a=|i log U|/tau has a fixed empty Fock vacuum, commutes with the walk and gives a full thermal limit with 32 massive excitation factors per continuum momentum. It is not identified with the signed generator or physical energy.",
+      "assumptions": [
+        "declared_charged_coherent_flight_grammar",
+        "declared_massive_tetrahedral_process"
+      ],
+      "imported_results": [
+        "Clifford_algebra",
+        "unitary_product_commutator_bound",
+        "spectral_characteristic_function_limit",
+        "dominated_summation"
+      ],
+      "oph_specific_delta": "Connects the optimal charged tetrahedral process to massive dynamics and proves an all-band ballistic speed bound stronger than a low-energy fit, while preserving the exact faster one-flight record and all finite modes.",
+      "novelty_type": "charged_massive_extension_with_full_spectrum_and_sharp_ballistic_speed",
+      "falsifier": "An executed gate, band multiplicity, coercive thermal estimate, full-channel error or all-band velocity bound fails; a fixed-preparation ballistic limit has weight outside the stated ball; or a changed reference or uncharged flight is needed.",
+      "scope_if_false": "The explicit massive-process or ballistic theorem fails. No A1--A3 source admission, interacting matter or physical quasienergy calibration is asserted.",
+      "owner_paper": "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+        "code/m1_operational_clocks/CONTRACT.md",
+        "code/m1_operational_clocks/README.md",
+        "code/m1_operational_clocks/model.py",
+        "code/m1_operational_clocks/check.py",
+        "code/m1_operational_clocks/verify.py",
+        "code/m1_operational_clocks/receipt.json",
+        "code/m1_operational_clocks/test_clocks.py"
+      ],
+      "status": "proved_for_explicit_process_with_independent_complete_mode_replay",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row constructs and analyzes an explicit quantum walk in the declared timed-flight grammar. It neither consumes nor discharges native source selection, physical clock calibration, or the action-to-spacetime premises in the premise register."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
+      "statement": "For the massive tetrahedral walk, actual samples of an eight-component H2 envelope obey an explicit full-vector Dirac comparison with alias bound (a/pi)^2 sqrt(4pi^2+pi^4/45) times the second Fourier moment. Compactly supported normalized CAR number reads and phase encodings separated outside the v=c/3 field cone have a state- and spectator-ancilla-uniform influence bound, vanishing as O(sqrt(a)) at fixed duration and envelope resolution. The actual operations are spatially local; no low-energy state or hard momentum-projected detector is assumed. Finite products obey the sum bound. A single-site preparation retains a perfect speed-c record and has a divergent lower cost in the same positive Floquet accounting observable. The result does not cover arbitrary cell-resolving encoders or derive physical energy from that observable.",
+      "assumptions": [
+        "declared_massive_tetrahedral_process",
+        "declared_smooth_local_car_operations"
+      ],
+      "imported_results": [
+        "Sobolev_sampling_and_Poisson_summation",
+        "Dirac_current_finite_propagation",
+        "CAR_norm_identity",
+        "Duhamel_conjugation_bound"
+      ],
+      "oph_specific_delta": "Replaces an assumed detector comparison by a proved sampling bound for actual local operations, distinguishing the exact native cone from a uniformly controlled resolved read interface in the same process.",
+      "novelty_type": "state_uniform_spatial_resolution_interface_with_surviving_native_record",
+      "falsifier": "The alias constant or full-vector comparison fails, a declared separated CAR encoding exceeds the uniform influence bound, a hard nonlocal projection is substituted for a local operation, or the perfect native record or its stated accounting cost cannot be reproduced.",
+      "scope_if_false": "The specified resolved read interface fails. There is no assertion that this restricted operation algebra exhausts physical OPH observations or that final matter energy restricts arbitrary controllers.",
+      "owner_paper": "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+        "code/m1_operational_clocks/CONTRACT.md",
+        "code/m1_operational_clocks/README.md",
+        "code/m1_operational_clocks/model.py",
+        "code/m1_operational_clocks/check.py",
+        "code/m1_operational_clocks/verify.py",
+        "code/m1_operational_clocks/receipt.json",
+        "code/m1_operational_clocks/test_clocks.py"
+      ],
+      "status": "proved_for_explicit_process_with_independent_complete_mode_replay",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The result bounds a fully specified CAR operation class in the explicit walk. Its compact support, smoothness and resolution are declared apparatus data, not assumed successful M1 behavior or a claimed physical admission of the apparatus by the source axioms."
+      }
+    },
+    {
+      "claim_id": "OPH-M1-OBSERVABLE-MASS-CLOCK",
+      "statement": "Two explicit massive walks prepared around momenta with common Dirac reference group velocity u and normalizable Gaussian envelopes with a controlled finite preparation cutoff give a positive local mass-interference readout with a bounded-error comparison to the beat law Delta m/gamma, gamma=(1-|u|^2/v^2)^(-1/2), in actual native flight time with v=c/3. The derivation supplies the packet dispersion error, Gaussian visibility, full-lattice evolution and detector sampling errors, finite detector truncation, and a bounded Fock click effect. A finite parameter witness covers an entire moving cycle with reference fringe coefficient greater than 0.7457, probability error below 0.035153, and actual click-probability swing greater than 0.6753 after all errors. Arbitrarily prescribed finite cycle count and accuracy have a constructive finite parameter choice. R=+1 preparations have uniformly bounded cost in the fixed positive Floquet observable, including high-band leakage. Complete-mode periodic waveguide runs independently reproduce finite readouts and reversed evolution; they are not represented as the tiny-spacing analytic witness. No proper-time accrual law is assumed. Distributed report latency, source admission, mass selection, physical energy calibration and accelerated clocks are outside the clock-frequency claim.",
+      "assumptions": [
+        "declared_massive_tetrahedral_process",
+        "declared_two_mass_clock_preparation"
+      ],
+      "imported_results": [
+        "standard_Dirac_dispersion_and_mass_interference",
+        "Gaussian_Fourier_moments",
+        "positive_operator_measurement",
+        "Poisson_summation"
+      ],
+      "oph_specific_delta": "Supplies a readable clock with the same effective speed as the resolved matter cone, with finite constructive errors, actual flight durations and a fixed accounting reference, instead of postulating proper-time accrual.",
+      "novelty_type": "constructive_normalizable_native_time_clock_with_readout_and_energy_bounds",
+      "falsifier": "The common spinor, beat phase, visibility, dispersion error, sampled detector bound or finite-energy estimate fails; the informative witness is outside its domain; dephased labels retain the claimed clock signal; or the independently executed finite packets fail replay.",
+      "scope_if_false": "The explicit free inertial clock or its error certificate fails. No autonomous twelve-port source, physical energy scale, zero-latency aggregate report or interacting/accelerated clock is certified.",
+      "owner_paper": "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+        "code/m1_operational_clocks/CONTRACT.md",
+        "code/m1_operational_clocks/README.md",
+        "code/m1_operational_clocks/model.py",
+        "code/m1_operational_clocks/check.py",
+        "code/m1_operational_clocks/verify.py",
+        "code/m1_operational_clocks/receipt.json",
+        "code/m1_operational_clocks/test_clocks.py"
+      ],
+      "status": "proved_for_explicit_process_with_independent_complete_mode_replay",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The clock is constructed from supplied masses and quantum gates in native flight time, and its proper-time factor is a conclusion of that construction. It does not use a physical proper-time premise or discharge the registered source, physical timing or continuum-identification premises."
+      }
     }
   ]
 }

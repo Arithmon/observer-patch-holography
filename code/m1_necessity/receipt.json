@@ -1612,6 +1612,14 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "7ab30bdf3ecf4bc3f857a6408c1b5e33e1098f57752140321632e973ff41a8fe"
       },
+      "OPH-M1-MASSIVE-FLIGHT-SPECTRUM": {
+        "assumptions": [
+          "declared_charged_coherent_flight_grammar",
+          "declared_massive_tetrahedral_process"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "0c61b0c8f380ddbd8e608306c9820b4a324120475ff8abe4d6a654727cb1f71b"
+      },
       "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION": {
         "assumptions": [
           "declared_spaced_ball_uniform_crossing_functional"
@@ -1627,6 +1635,14 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "65fe63ba0a0264950a161dbcb9cef15e27190cf3fd7a1cbfe2a9f2d3d51d4c2f"
       },
+      "OPH-M1-OBSERVABLE-MASS-CLOCK": {
+        "assumptions": [
+          "declared_massive_tetrahedral_process",
+          "declared_two_mass_clock_preparation"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "44aa9e17e428523da427e1b7de4fca4a2bb12f1b33a011e04a24f918d8f0d0d1"
+      },
       "OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION": {
         "assumptions": [
           "declared_scalar_polynomial_symplectic_action_update"
@@ -1640,6 +1656,14 @@
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "5b83d297f35ecc0f4f52610d77661c2e4a450d8a577a4d55c720c4cc868bb74d"
+      },
+      "OPH-M1-RESOLVED-LOCAL-READ-CONE": {
+        "assumptions": [
+          "declared_massive_tetrahedral_process",
+          "declared_smooth_local_car_operations"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "17b13d7f579a096c2a0ca0a35ba48e5dd0b862bc2813d5d6caabbcda06230939"
       },
       "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR": {
         "assumptions": [
@@ -2560,9 +2584,24 @@
         "to": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR"
       },
       {
+        "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+        "role": "Supplies the explicit massive walk, full-channel dynamics and fixed positive accounting observable; mass interference and the clock error are constructed directly.",
+        "to": "OPH-M1-OBSERVABLE-MASS-CLOCK"
+      },
+      {
+        "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+        "role": "Supplies the full-channel dynamic error and native record; actual local sampled CAR read errors are derived without assuming low-energy state selection.",
+        "to": "OPH-M1-RESOLVED-LOCAL-READ-CONE"
+      },
+      {
         "from": "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
         "role": "Identifies the residue defect and necessary short-ball threshold; the repair proves sufficiency, recovery and minimum convergence from the actual added reads.",
         "to": "OPH-M1-VARIATIONAL-AREA-REPAIR"
+      },
+      {
+        "from": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
+        "role": "Supplies the charged tetrahedral coin, complete parent spectrum and native duration; the massive spectrum and all-band bound are proved for the explicit doubled process.",
+        "to": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM"
       },
       {
         "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
@@ -2583,6 +2622,11 @@
         "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
         "role": "Equality in the sharp trace budget forces the weighted two-design and its unique minimal tetrahedron.",
         "to": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT"
+      },
+      {
+        "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
+        "role": "Supplies the sampled full-vector bound used in the actual local clock detector comparison; source admission and physical energy are not inherited.",
+        "to": "OPH-M1-OBSERVABLE-MASS-CLOCK"
       },
       {
         "from": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR",
@@ -3359,7 +3403,7 @@
     "code/m1_necessity/CONSUMERS.md": "5e178a21be7719c24794fbcab673c4ae6d76a96aa66cab2d69e62663526780d4",
     "code/m1_necessity/CONTRACT.md": "f3186f4911ea004fcad0058dbc0a526d359c623d42bdb4bf279fc6dd43ea1670",
     "code/m1_necessity/DERIVATION.md": "13754829bb642c0e48c4ae8cfb8f69d56baa8de90c36dfcb18ae0ff0a8dcca9c",
-    "code/m1_necessity/README.md": "36878d43d8e0ef5c3bc86b9f32d053f73b0b3fa50f7bbc78b3c2751f3081318a",
+    "code/m1_necessity/README.md": "46271f65966cb2f561e9157a0a7c2b7485243a31c825efdd21c42870fd8ca9a8",
     "code/m1_necessity/SPECTRAL_COMPLETION.md": "1e633dcbe37a26401ef7c81c158f47d164b5ffb03ae6631da4e42b431ea19f54",
     "code/m1_necessity/__init__.py": "a49a6656f96a30bd6343e498a0ca5302dae30515d4cf458d45c172933a0247ac",
     "code/m1_necessity/audit.py": "d6a0df2ca2ab885fa8cb7c527f3a74ac17b748847524f4cec7d8df7a049a50c0",
@@ -3368,9 +3412,9 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "5710313e1e0a07ac866676d12f23d9a79e74a4d5574ae4c8080ca9cbf177279e",
+    "code/m1_necessity/downstream.json": "b7ea94333cdf7a37d524a2e9d3579b50f2ad260565d32ff47ff502857f3372c7",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "8e519a343564db0af304264f545db9faa10d09de2800dc88ad7332b2ebaf8afc",
+    "code/m1_necessity/test_necessity.py": "cc3aa38473c42561e21cd6e81d772a7b5ea615a34faba246bf0761dc46975f84",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",

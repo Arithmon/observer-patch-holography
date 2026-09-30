@@ -292,7 +292,10 @@
   "OPH-GOLDEN-FIXED-MODE-FOURIER",
   "OPH-COMMON-BULK-LOG-COVARIANCE",
   "OPH-COMMON-HISTORY-FEEDBACK-PACKET",
-  "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION"
+  "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION",
+  "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+  "OPH-M1-RESOLVED-LOCAL-READ-CONE",
+  "OPH-M1-OBSERVABLE-MASS-CLOCK"
  ],
  "edges": [
   {
@@ -2534,6 +2537,26 @@
    "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
    "to": "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION",
    "role": "Consumes only its explicitly supplied q=5 scalar action and authenticated classical source-history construction; no quantum comparison, source selection or physical realization is inherited."
+  },
+  {
+   "role": "Supplies the charged tetrahedral coin, complete parent spectrum and native duration; the massive spectrum and all-band bound are proved for the explicit doubled process.",
+   "from": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
+   "to": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM"
+  },
+  {
+   "role": "Supplies the full-channel dynamic error and native record; actual local sampled CAR read errors are derived without assuming low-energy state selection.",
+   "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+   "to": "OPH-M1-RESOLVED-LOCAL-READ-CONE"
+  },
+  {
+   "role": "Supplies the explicit massive walk, full-channel dynamics and fixed positive accounting observable; mass interference and the clock error are constructed directly.",
+   "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+   "to": "OPH-M1-OBSERVABLE-MASS-CLOCK"
+  },
+  {
+   "role": "Supplies the sampled full-vector bound used in the actual local clock detector comparison; source admission and physical energy are not inherited.",
+   "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
+   "to": "OPH-M1-OBSERVABLE-MASS-CLOCK"
   }
  ]
 }

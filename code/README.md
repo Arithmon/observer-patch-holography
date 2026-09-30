@@ -24,6 +24,7 @@ the theorem or physical carrier named by that branch.
 | [`common_history_packet/`](common_history_packet/) | Same-history local probes, retained records, restoration feedback and useful separated-response error bounds |
 | [`source_scalar_preparation/`](source_scalar_preparation/) | Finite local-force preparation for the supplied scalar quantum instrument |
 | [`source_density_geometry/`](source_density_geometry/) | Relative action measure, local record production and calibrated density/geometry controls |
+| [`m1_operational_clocks/`](m1_operational_clocks/) | Massive charged flights, all-band speed bounds, resolved local reads and an observable moving clock |
 | [`a5_closure/`](a5_closure/) | Exact twelve-port $A_5$ coefficient algebra and gauge-closure checks |
 | [`particles/`](particles/) | Particle carriers, hierarchy, flavor, neutrino, hadron, and current status surfaces |
 | [`P_derivation/`](P_derivation/) | Pixel fixed-point maps, interval contraction, uniqueness, and provenance |
