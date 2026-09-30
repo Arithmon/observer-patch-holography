@@ -226,3 +226,65 @@ def test_explicit_utf8_file_reads(monkeypatch):
         return original(path, *args, **kwargs)
     monkeypatch.setattr(Path, "read_text", windows_default)
     assert verifier.verify(verifier.load())["field_variations_per_history"] == 68
+
+@pytest.mark.parametrize("mutation", [
+    lambda p: p.update(certificates={}),
+    lambda p: p["certificates"]["stability_24"]["diagonal"][0].update(a="-999", b="0"),
+])
+def test_lean_free_certificate_payload_mutation_rejected(monkeypatch, mutation):
+    monkeypatch.setattr(verifier, "lake_path", lambda: None)
+    packet = deepcopy(verifier.load()["stability_certificate"])
+    mutation(packet)
+    with pytest.raises(ValueError, match="payload binding"):
+        verifier.certify_stability(packet)
+
+
+def test_exact_forms_match_independent_quadrature(monkeypatch):
+    monkeypatch.setattr(verifier, "lake_path", lambda: None)
+    targets = verifier.certify_stability(verifier.load()["stability_certificate"])
+    vertices, boundary_edges, boundary_faces = verifier.geometry.source_mesh()
+    vertices = [(0, 0, 0)] + vertices
+    edges = [(0, u+1) for u in range(12)] + [(u+1, v+1) for u, v in boundary_edges]
+    faces = [tuple(u+1 for u in face) for face in boundary_faces] + [(0, u+1, v+1) for u, v in boundary_edges]
+    tets = [(0, *(u+1 for u in face)) for face in boundary_faces]
+    *_, mass, face_mass = verifier.geometry.quadrature(vertices, edges, faces, tets)
+    curl = verifier.geometry.coboundary(edges, faces)
+    stiffness = curl.T @ face_mass @ curl
+    verifier.check_exact_quadrature(targets, vertices, edges, faces, tets, mass, face_mass, stiffness)
+    with pytest.raises(ValueError, match="exact-to-quadrature mass"):
+        verifier.check_exact_quadrature(targets, vertices, edges, faces, tets, 2*mass, face_mass, stiffness)
+    with pytest.raises(ValueError, match="exact-to-quadrature"):
+        verifier.check_exact_quadrature(targets, vertices, edges, faces, tets[1:], mass, face_mass, stiffness)
+
+
+@needs_lake
+def test_payload_rewrite_fails_kernel_even_with_rehashed_receipt(tmp_path):
+    import ast
+    import re
+    witness = (verifier.LEAN_ROOT / "Screen/WhitneyGeneratedCertificate.lean").read_text()
+    match = re.search(r"^def edge_massData : .+ := (.+)$", witness, re.M)
+    payload = ast.literal_eval(match[1].replace("#[", "["))
+    payload[2][0][0] = (-999, 1, 0, 1)
+    forged = repr(payload).replace("[", "#[")
+    witness = witness[:match.start(1)] + forged + witness[match.end(1):]
+    path = tmp_path / "forged.lean"
+    path.write_text(witness)
+    command, environment = verifier.lean_environment()
+    result = verifier.native_run([*command, str(path)], environment)
+    assert result.returncode != 0 and "decide" in result.stdout
+
+@pytest.mark.parametrize("relative", ["Lean/Screen/WhitneyCurlRow3.lean", "Lean/Screen/LocalFaceMaxwellAction.lean"])
+def test_transitive_consumer_source_mutation_rejected_without_lake(monkeypatch, relative):
+    read = Path.read_bytes
+    changed = verifier.ROOT / relative
+    monkeypatch.setattr(verifier, "lake_path", lambda: None)
+    monkeypatch.setattr(Path, "read_bytes", lambda path: read(path) + (b"\n-- mutation\n" if path == changed else b""))
+    with pytest.raises(ValueError, match="stale certificate source manifest"):
+        verifier.certify_stability(verifier.load()["stability_certificate"])
+
+@pytest.mark.parametrize("raw", ['{"x":1,"x":2}', '{"x":1,"x":1}', '{"x":NaN}', '{"x":Infinity}'])
+def test_ambiguous_json_rejected(tmp_path, raw):
+    path = tmp_path / "bad.json"
+    path.write_text(raw, encoding="utf-8")
+    with pytest.raises(ValueError):
+        verifier.load(path)

@@ -7,11 +7,13 @@ Lean reconstructs the exact local bound and checks its Q(sqrt(5)) LDL witness.
 """
 from __future__ import annotations
 
+import ast
 from copy import deepcopy
 from fractions import Fraction as Q
 from functools import lru_cache
 import hashlib
 import importlib.util
+import itertools
 import json
 import os
 from pathlib import Path
@@ -124,8 +126,29 @@ def canonical(value):
                        ensure_ascii=True, allow_nan=False) + "\n").encode("ascii")
 
 
+def source_paths():
+    paths = set(EXACT_SOURCE_PATHS) | {"Lean/lakefile.lean", "Lean/lean-toolchain", "Lean/lake-manifest.json"}
+    pending = ["WhitneySourceProblemCLI", "WhitneySourceNaturality", "WhitneyOmittedCellCounterexample"]
+    seen = set()
+    directories = [LEAN_ROOT] + [LEAN_ROOT / path for path in
+        re.findall(r'srcDir\s*:=\s*"([^"]+)"', (LEAN_ROOT / "lakefile.lean").read_text())]
+    while pending:
+        name = pending.pop()
+        if name in seen or name == "WhitneyGeneratedCertificate":
+            continue  # The generated witness is separately pinned, avoiding a hash cycle.
+        seen.add(name)
+        relative = Path(name.replace(".", "/") + ".lean")
+        for directory in dict.fromkeys(directories):
+            path = directory / relative
+            if path.is_file():
+                paths.add(path.relative_to(ROOT).as_posix())
+                pending.extend(re.findall(r"^import\s+(\S+)", path.read_text(encoding="utf-8"), re.M))
+                break
+    return sorted(paths)
+
+
 def source_manifest():
-    return {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in EXACT_SOURCE_PATHS}
+    return {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in source_paths()}
 
 
 def exact_source_problem():
@@ -189,7 +212,7 @@ def lake_build(targets):
 
 def lean_source_key():
     return tuple(hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
-                 for path in EXACT_SOURCE_PATHS if path.endswith(".lean"))
+                 for path in source_paths() if path.endswith(".lean"))
 
 
 @lru_cache(maxsize=8)
@@ -272,14 +295,61 @@ def generate_stability_certificate(canonical_witness=None):
 
 
 def certify_stability(packet):
+    """Without Lake, check committed witness custody; Lean CI supplies kernel replay."""
     witness = (LEAN_ROOT / "Screen/WhitneyGeneratedCertificate.lean").read_bytes()
     require(set(packet) == {"schema", "source_manifest", "source_sha256", "certificates", "kernel_witness_sha256"}
             and packet["schema"] == "oph.whitney.exact-certificate.v2", "certificate schema")
     require(packet["source_manifest"] == source_manifest(), "stale certificate source manifest")
-    require(packet["kernel_witness_sha256"] == hashlib.sha256(witness).hexdigest() and
-            f'"{packet["source_sha256"]}"'.encode() in witness, "certificate kernel witness binding")
-    if lake_path() is not None:  # Lean-free jobs check the committed witness binding only
+    require(packet["kernel_witness_sha256"] == hashlib.sha256(witness).hexdigest(), "certificate kernel witness binding")
+    def declaration(name):
+        matches = re.findall(rb"^def " + name.encode() + rb" : String := (.+)$", witness, re.M)
+        require(len(matches) == 1, "kernel witness declaration " + name)
+        return json.loads(matches[0])
+    require(declaration("sourceSha256") == packet["source_sha256"], "certificate source hash binding")
+    targets = []
+    for name in ("edge_mass", "face_mass", "stability_24", "stability_48"):
+        matches = re.findall(rb"^def " + name.encode() + rb"Data : Array \(Array \(Array ScalarData\)\) := (.+)$", witness, re.M)
+        require(len(matches) == 1, "kernel witness numeric payload " + name)
+        matrix, lower, (diagonal,) = ast.literal_eval(matches[0].decode().replace("#[", "["))
+        def scalar(value):
+            a, ad, b, bd = value
+            require(all(type(x) is int for x in value) and ad > 0 and bd > 0, "exact numeric payload")
+            return {"a": str(Q(a, ad)), "b": str(Q(b, bd))}
+        rows = lambda values: [[scalar(z) for z in row] for row in values]
+        targets.append({"name": name, "matrix": rows(matrix),
+                        "certificate": {"lower": rows(lower), "diagonal": [scalar(z) for z in diagonal]}})
+    require({row["name"]: row["certificate"] for row in targets} == packet["certificates"],
+            "kernel witness certificate payload binding")
+    if lake_path() is not None:
         require(packet == generate_stability_certificate(), "stale certificate or source hash mismatch")
+        ensure_lean_consumers(lean_source_key(), packet["kernel_witness_sha256"])
+    return {row["name"]: row["matrix"] for row in targets}
+
+
+def check_exact_quadrature(targets, vertices, edges, faces, tets, mass, face_mass, stiffness):
+    """Compare kernel-bound exact local forms with independent float quadrature."""
+    def matrix(name):
+        return np.array([[float(rational(z["a"])) + np.sqrt(5)*float(rational(z["b"]))
+                          for z in row] for row in targets[name]])
+    local_m, local_f = matrix("edge_mass"), matrix("face_mass")
+    local_k = 24*local_m-matrix("stability_24")
+    assembled = [np.zeros_like(mass), np.zeros_like(face_mass), np.zeros_like(stiffness)]
+    for tet in tets:
+        xyz = np.asarray([vertices[v] for v in tet], dtype=float)
+        volume = abs(np.linalg.det(xyz[1:]-xyz[0]))/6
+        for output, local, cells, degree in zip(assembled, (local_m, local_f, local_k),
+                                              (edges, faces, edges), (2, 3, 2), strict=True):
+            ids, signs = [], []
+            for simplex in itertools.combinations(tet, degree):
+                candidates = [(i, cell) for i, cell in enumerate(cells) if set(cell) == set(simplex)]
+                require(len(candidates) == 1, "exact assembly simplex census")
+                index, cell = candidates[0]
+                permutation = [simplex.index(v) for v in cell]
+                parity = sum(a > b for i, a in enumerate(permutation) for b in permutation[i+1:])
+                ids.append(index); signs.append((-1)**parity)
+            output[np.ix_(ids, ids)] += volume*local*np.outer(signs, signs)
+    for actual, expected, name in zip(assembled, (mass, face_mass, stiffness), ("mass", "face mass", "stiffness"), strict=True):
+        close(actual.tolist(), expected, "exact-to-quadrature " + name)
 
 
 class Replay:
@@ -445,7 +515,8 @@ def verify(packet):
     c = geometry.coboundary(edges, faces)
     q1, q2, weights, _, m, m2 = geometry.quadrature(vertices, edges, faces, tets)
     k = c.T@m2@c
-    certify_stability(packet["stability_certificate"])
+    targets = certify_stability(packet["stability_certificate"])
+    check_exact_quadrature(targets, vertices, edges, faces, tets, m, m2, k)
     require(isinstance(packet["executions"], list) and len(packet["executions"]) == 2 and [x["gauge"] for x in packet["executions"]] == [False, True], "gauge history census")
     results = [replay_execution(ex, parent, edges, d, c, q1, q2, weights, m, m2, k) for ex in packet["executions"]]
     for key in ("E", "B", "action"):

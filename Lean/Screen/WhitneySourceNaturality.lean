@@ -324,10 +324,12 @@ def runtimeStability24Reexpression :
     rw [OPH.WhitneyExactSourceProblem.runtimeTarget_stability24_transport]
     rfl
 
-/-- The checked certificate is the only supplied member.  All three transport
-views below are definitions of the one runtime signed-source policy, rather
-than independently selectable fields, so inconsistent transport mixing is not
-representable. -/
+/-- A checked local stability certificate packaged with two fixed, independently
+proved reexpressions: the local signed runtime permutation and the global
+Python face-order convention.  These have different carriers and are not one
+coordinate policy.  No theorem here identifies the local permutation with the
+global face-order map; the global consumer results follow from the separately
+certified source masses. -/
 structure CertifiedLawfulWhitneyReexpression where
   sourceCertificate : Certificate 6
   sourceCertificate_checked :

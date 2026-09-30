@@ -263,6 +263,16 @@ def certifyTarget (target : WireTarget) : Except String WireCertifiedTarget := d
   else
     throw s!"generated certificate failed trusted checker: {target.name}"
 
+abbrev ScalarData := Int × Nat × Int × Nat
+
+def scalarData (z : Q5) : ScalarData := (z.re.num, z.re.den, z.im.num, z.im.den)
+
+def targetData {n : Nat} (matrix : Matrix (Fin n) (Fin n) Q5)
+    (certificate : Certificate n) : Array (Array (Array ScalarData)) :=
+  #[Array.ofFn (fun i => Array.ofFn (fun j => scalarData (matrix i j))),
+    Array.ofFn (fun i => Array.ofFn (fun j => scalarData (certificate.factor i j))),
+    #[Array.ofFn (fun i => scalarData (certificate.diagonal i))]]
+
 def identifier (value : String) : String :=
   value.foldl (fun out c => if c.isAlphanum then out.push c else out.push '_') ""
 
@@ -285,7 +295,7 @@ def certificateLiteral (certificate : RuntimeCertificate) : String :=
 def renderWitness (sourceSha256 : String)
     (targets : Array (WireTarget × Array (Array Q5) × RuntimeCertificate)) : String :=
   let header := "import WhitneyCertificateCLI\n\nset_option autoImplicit false\n" ++
-    "set_option maxHeartbeats 8000000\nset_option maxRecDepth 8192\n\n" ++
+    "set_option maxHeartbeats 8000000\nset_option maxRecDepth 32768\n\n" ++
     "open OPH.WhitneyFiniteCertificate\nopen OPH.WhitneyAlgebraicLDL\n" ++
     "open OPH.WhitneyCertificatePipeline\nopen OPH.WhitneyCertificateCLI\n\n" ++
     "namespace OPH.WhitneyGeneratedCertificate\n\n" ++
@@ -303,7 +313,13 @@ def renderWitness (sourceSha256 : String)
       "  decide +kernel\n" ++
       s!"theorem {name}_posDef : (evalMatrix {name}Matrix).PosDef :=\n" ++
       s!"  checkLDL_sound {name}_checked\n" ++
-      s!"#print axioms {name}_checked\n#print axioms {name}_posDef\n\n") ""
+      s!"#print axioms {name}_checked\n#print axioms {name}_posDef\n" ++
+      s!"def {name}Data : Array (Array (Array ScalarData)) := " ++
+      arrayLiteral (#[rows, certificate.lower, #[certificate.diagonal]].map (fun matrix =>
+        arrayLiteral (matrix.map (fun row => arrayLiteral (row.map (fun z =>
+          s!"({z.re.num}, {z.re.den}, {z.im.num}, {z.im.den})")))))) ++ "\n" ++
+      s!"theorem {name}Data_bound : {name}Data = targetData {name}Matrix {name}Certificate := by\n" ++
+      "  decide +kernel\n" ++ s!"#print axioms {name}Data_bound\n\n") ""
   header ++ body ++ "end OPH.WhitneyGeneratedCertificate\n"
 
 def run (input output witness : System.FilePath) : IO Unit := do
