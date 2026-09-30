@@ -91,8 +91,9 @@ accompany the mathematical arguments. The companion
 [physics simulator](https://github.com/muellerberndt/oph-physics-sim) provides
 executable observer dynamics and retained evidence.
 
-The [axiom reference](docs/AXIOM_REFERENCE.md) and
-[premise register](docs/PREMISE_REGISTER_V3.md) state the mathematical inputs.
+The [axiom reference](docs/AXIOM_REFERENCE.md) states the three core axioms;
+the [premise register](docs/PREMISE_REGISTER_V3.md) records the additional
+mathematical inputs.
 The [postdiction ledger](docs/POSTDICTION_LEDGER.md) records comparisons with
 measured values and their input ancestry; the
 [frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) records tests whose

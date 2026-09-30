@@ -99,9 +99,10 @@ reproductibles accompagnent les arguments mathématiques. Le
 associé fournit une dynamique exécutable des observateurs et les éléments
 de vérification conservés.
 
-La [référence des axiomes](docs/AXIOM_REFERENCE.md) et le
-[registre des prémisses](docs/PREMISE_REGISTER_V3.md) énoncent les données
-mathématiques de départ. Le [registre des postdictions](docs/POSTDICTION_LEDGER.md)
+La [référence des axiomes](docs/AXIOM_REFERENCE.md) énonce les trois axiomes
+fondamentaux ; le [registre des prémisses](docs/PREMISE_REGISTER_V3.md)
+consigne les données mathématiques supplémentaires.
+Le [registre des postdictions](docs/POSTDICTION_LEDGER.md)
 consigne les comparaisons avec des valeurs mesurées et l’origine de leurs
 entrées ; l’[échelle des prédictions gelées](docs/FROZEN_PREDICTION_LADDER.md)
 consigne les tests dont les conditions doivent être fixées avant l’examen
