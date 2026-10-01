@@ -303,7 +303,9 @@
   "OPH-SOURCE-ENCODED-FERMION-CLOCK",
   "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
   "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
-  "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION"
+  "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
+  "OPH-SOURCE-NOISY-CONTROL-HISTORIES",
+  "OPH-SOURCE-LIVE-RECORD-PROTECTION"
  ],
  "edges": [
   {
@@ -2660,6 +2662,21 @@
    "role": "Specifies complete decoded observables and abort accounting; does not transfer raw fidelity or unweighted native counts.",
    "from": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
    "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
+  },
+  {
+   "role": "Supplies the proper-code noise decomposition, protected output convention and charged cofinal source; reliable runtime classical control is removed here.",
+   "from": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
+   "to": "OPH-SOURCE-NOISY-CONTROL-HISTORIES"
+  },
+  {
+   "role": "Supplies the native complete classical services and cofinal finite inventory; noisy archive maintenance is proved separately.",
+   "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+   "to": "OPH-SOURCE-LIVE-RECORD-PROTECTION"
+  },
+  {
+   "role": "Supplies actual noisy public export and live record maintenance, with every retained lifetime and terminal boundary counted.",
+   "from": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
+   "to": "OPH-SOURCE-NOISY-CONTROL-HISTORIES"
   }
  ]
 }
