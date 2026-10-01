@@ -2423,9 +2423,9 @@
         "sha256": "sha256:8ac3f51d08155decc328ebb8c12909bf92f9a50313f14ebc0faf70c0d2513436"
       },
       {
-        "byte_count": 15014,
+        "byte_count": 15018,
         "path": "code/a5_closure/port_gram_support_attachment.md",
-        "sha256": "sha256:1ad5dbc40021e81d66851bba4a38925b199869d8353b9ef4da6b3e96b81ef51d"
+        "sha256": "sha256:0ae59bd7a44bd3cadac0332728f396f70970df2823ed1f30d33398c2b42ce0e4"
       },
       {
         "byte_count": 19739,
@@ -4573,7 +4573,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:2bd11d99bdb7a062c389e1a0584fcef45bd17b3eedd5b1b232154ce087e5fe64",
+    "files_sha256": "sha256:4001efb116a24c6e61ba2d21a66612b63dc2c9a022f5a5ad17c3abcbee0d4bb9",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7482,7 +7482,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:1eb02585c9ac5bc47ef84d4d3009531f91e2451c5fb6b9ee1dc93e8e2b70e854",
+  "inventory_sha256": "sha256:4f5d24f8c672e69fa3f970fa21df4f279c6d5b58e97839a9954c3db599e5d9f6",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
