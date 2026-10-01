@@ -17,7 +17,7 @@ cryptography==50.0.1
 pytest==9.1.1
 # Archived observer-dynamics controls import the simulator graph/plot modules;
 # the pinned CAMB interpolator is exercised without running transfer evolution.
-matplotlib==3.10.8
+matplotlib==3.11.2
 networkx==3.6.1
 camb==1.6.6
 # Frozen-prediction custody (evidence/custody/): `ots info` parses the detached
