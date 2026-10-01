@@ -26,9 +26,9 @@ PARENTS = (CERT, TRUNK, TARGET, SCORECARD, PACKAGE + "paper_math.py")
 
 
 def build(root: Path = ROOT) -> dict:
-    cert = json.loads((root / CERT).read_text())
-    trunk = json.loads((root / TRUNK).read_text())
-    target = json.loads((root / TARGET).read_text())["inverse_fine_structure_constant"]["value"]
+    cert = json.loads((root / CERT).read_text(encoding="utf-8"))
+    trunk = json.loads((root / TRUNK).read_text(encoding="utf-8"))
+    target = json.loads((root / TARGET).read_text(encoding="utf-8"))["inverse_fine_structure_constant"]["value"]
     ctx = PaperMathContext(precision=60, su2_cutoff=0, su3_cutoff=0)
     rows = []
     with localcontext() as work:
@@ -65,7 +65,7 @@ def build(root: Path = ROOT) -> dict:
             "relative_printed_pair_defect": str(+(abs(root_from_p - inverse_readout) / inverse_readout)),
             "reported_alpha_fixed_point_residual": fixed["alpha_fixed_point_residual"],
         })
-    text = (root / SCORECARD).read_text().split("## W3a:", 1)[1].split("\n## ", 1)[0]
+    text = (root / SCORECARD).read_text(encoding="utf-8").split("## W3a:", 1)[1].split("\n## ", 1)[0]
     substitutions = []
     for line in text.splitlines():
         fields = re.findall(r"`([^`]*)`", line)
@@ -119,7 +119,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUT)
     args = parser.parse_args()
-    args.output.write_text(json.dumps(build(), indent=2, sort_keys=True) + "\n")
+    args.output.write_text(json.dumps(build(), indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {args.output}")
 
 

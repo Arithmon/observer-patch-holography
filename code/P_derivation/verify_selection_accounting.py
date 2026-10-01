@@ -36,9 +36,9 @@ def verify(data: dict, root: Path = ROOT) -> None:
     require(set(data["inputs"]) == names, "source inventory changed")
     for name in names:
         require(data["inputs"][name] == hashlib.sha256((root / name).read_bytes()).hexdigest(), f"source digest changed: {name}")
-    cert = json.loads((root / CERT).read_text())
-    trunk = json.loads((root / TRUNK).read_text())
-    target_fixture = json.loads((root / TARGET).read_text())
+    cert = json.loads((root / CERT).read_text(encoding="utf-8"))
+    trunk = json.loads((root / TRUNK).read_text(encoding="utf-8"))
+    target_fixture = json.loads((root / TARGET).read_text(encoding="utf-8"))
     target_text = target_fixture["inverse_fine_structure_constant"]["value"]
     require(target_fixture["claim_status"] == "compare_only_empirical_input", "target promoted")
     require(data["comparison_target"] == {"value": target_text, "role": "compare_only_empirical_input"}, "target changed")
@@ -96,7 +96,7 @@ def verify(data: dict, root: Path = ROOT) -> None:
     accounting = data["substitution_accounting"]
     require(set(accounting) == {"source_role", "rows", "label_count", "distinct_numeric_pair_count", "distinct_alternative_count", "relative_threshold", "certified_alternative_hits"}, "substitution schema changed")
     require(accounting["source_role"] == "imported_previously_certified_scorecard_rows_not_a_new_root_solve", "substitution evidence scope changed")
-    section = (root / SCORECARD).read_text().split("## W3a:", 1)[1].split("\n## ", 1)[0]
+    section = (root / SCORECARD).read_text(encoding="utf-8").split("## W3a:", 1)[1].split("\n## ", 1)[0]
     expected_rows = []
     for line in section.splitlines():
         cells = [part.strip().strip("`") for part in line.split("|")[1:-1]]
@@ -153,7 +153,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("path", nargs="?", type=Path, default=ROOT / BASE / "runtime/selection_accounting.json")
     args = parser.parse_args()
-    verify(json.loads(args.path.read_text()))
+    verify(json.loads(args.path.read_text(encoding="utf-8")))
     print("SELECTION_ACCOUNTING_VALID: 7 exponent candidates; 2 certified roots + 1 approximate output; 48 substitution labels / 42 distinct pairs; no null probability")
 
 

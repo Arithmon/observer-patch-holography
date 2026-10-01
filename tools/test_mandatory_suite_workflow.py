@@ -1,6 +1,7 @@
 """Replay the workflow's shard routing and its fail-closed status aggregate."""
 from __future__ import annotations
 
+from collections import Counter
 import json
 import os
 from pathlib import Path
@@ -17,6 +18,11 @@ from tools import run_mandatory_suite as runner
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github/workflows/mandatory-suite.yml"
+ADDITIONAL_EVIDENCE_TESTS = (
+    "code/P_derivation/test_selection_accounting.py",
+    "code/P_derivation/test_printed_pair_identity.py",
+    "evidence/source_net_causal_poset/manifold_refinement/test_verify.py",
+)
 
 
 def _workflow():
@@ -48,6 +54,79 @@ def _arguments(job, full, shard):
     )
     assert match, "unsupported mandatory command expression"
     return shlex.split(match[1] if full else match[2].format(shard))
+
+
+def _evidence_dispatch(job, shard=None):
+    """Read actual workflow commands; reject collection-only or partial execution."""
+    dispatched = []
+    for step in job["steps"]:
+        for command in step.get("run", "").splitlines():
+            if not any(path in command for path in ADDITIONAL_EVIDENCE_TESTS):
+                continue
+            assert not step.get("continue-on-error")
+            if step.get("if"):
+                assert shard is not None, "nightly evidence must be unconditional"
+                assert step["if"] == "matrix.shard == 0"
+                if shard != 0:
+                    continue
+            arguments = shlex.split(command)
+            assert arguments[:4] == ["python", "-m", "pytest", "-q"]
+            assert arguments[4:]
+            # Only whole test files are allowed: no -k selection, collect-only,
+            # shell success fallback, or ignored mutation tests.
+            assert all(path in ADDITIONAL_EVIDENCE_TESTS for path in arguments[4:])
+            assert all((ROOT / path).is_file() for path in arguments[4:])
+            dispatched.extend(arguments[4:])
+    return dispatched
+
+
+def _assert_evidence_coverage(workflow, full, operating_system):
+    job = workflow["jobs"]["mandatory-shards"]
+    assert operating_system in job["strategy"]["matrix"]["os"]
+    dispatched = [
+        path for shard in _shards(job, full)
+        for path in _evidence_dispatch(job, shard)
+    ]
+    assert Counter(dispatched) == Counter(ADDITIONAL_EVIDENCE_TESTS)
+    assert Counter(_evidence_dispatch(workflow["jobs"]["mandatory-full"])) == (
+        Counter(ADDITIONAL_EVIDENCE_TESTS)
+    )
+
+
+@pytest.mark.parametrize("full", [False, True])
+@pytest.mark.parametrize("operating_system", ["ubuntu-latest", "windows-latest"])
+def test_new_evidence_executes_once_per_os_and_in_nightly(full, operating_system):
+    _assert_evidence_coverage(_workflow(), full, operating_system)
+
+
+@pytest.mark.parametrize("job_name", ["mandatory-shards", "mandatory-full"])
+@pytest.mark.parametrize(
+    "mutation", ["omit_test", "duplicate", "collect_only", "skip", "allow_failure"]
+)
+def test_new_evidence_coverage_rejects_false_green_routes(job_name, mutation):
+    workflow = _workflow()
+    job = workflow["jobs"][job_name]
+    step = _step(job, "Verify additional scientific evidence")
+    if mutation == "omit_test":
+        step["run"] = step["run"].replace(ADDITIONAL_EVIDENCE_TESTS[-1], "")
+    elif mutation == "duplicate":
+        job["steps"].append(dict(step))
+    elif mutation == "collect_only":
+        step["run"] += " --collect-only"
+    elif mutation == "skip":
+        step["if"] = "false"
+    else:
+        step["continue-on-error"] = "true"
+    with pytest.raises(AssertionError):
+        _assert_evidence_coverage(workflow, False, "ubuntu-latest")
+
+
+def test_new_evidence_cannot_be_repeated_on_every_push_shard():
+    workflow = _workflow()
+    step = _step(workflow["jobs"]["mandatory-shards"], "Verify additional scientific evidence")
+    del step["if"]
+    with pytest.raises(AssertionError):
+        _assert_evidence_coverage(workflow, False, "ubuntu-latest")
 
 
 @pytest.mark.parametrize("full", [False, True])
@@ -107,7 +186,10 @@ def test_each_worker_has_a_fresh_complete_checkout_and_the_runtime_ceiling():
     )
     for step in job["steps"]:
         assert not step.get("continue-on-error")
-        assert not step.get("if")
+        if step.get("name") == "Verify additional scientific evidence":
+            assert step["if"] == "matrix.shard == 0"
+        else:
+            assert not step.get("if")
     assert not any("download-artifact@" in step.get("uses", "") for step in job["steps"])
 
 
