@@ -13,6 +13,23 @@ therefore built directly from the equations stated in:
 
 ## What is implemented
 
+`selection_accounting.py` records the finite exponent search, the two
+interval-certified map roots, the distinct approximate compressed output,
+and the imported constant-substitution scorecard. It preserves their
+different support classes. The map concerns bounded observer-like patches
+with local state, ports, readback, records and repair; this accounting does
+not establish their physical identification. `verify_selection_accounting.py`
+independently checks the exponent residuals, imported evidence custody,
+numerical classifications and a two-measure counterexample showing that
+output counts do not determine a chance probability. The owning interval
+verifiers remain responsible for the imported root enclosures.
+
+```bash
+python3 code/P_derivation/selection_accounting.py
+python3 -O code/P_derivation/verify_selection_accounting.py
+python3 -m pytest -q code/P_derivation/test_selection_accounting.py
+```
+
 For a trial pixel constant `P`, the code reproduces the paper D10 forward map:
 
 1. `M_U(P) = E_P * exp(-2*pi) * P^(1/6)`

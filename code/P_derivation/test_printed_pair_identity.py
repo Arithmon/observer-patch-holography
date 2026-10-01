@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-"""CI check for closure-ledger row CL-6: the printed-pair identity.
+"""Check exact output pairs and expose the archived approximate counterexample.
 
-Every runtime artifact that prints a closure pair must satisfy
+A converged runtime artifact that claims an exact closure pair must satisfy
 
     alpha_root = (P - phi) / sqrt(pi),    alpha_root = 1 / alpha_inv,
 
 because ``P`` is defined by the outer equation ``P = phi + alpha*sqrt(pi)``.
-An unconverged solver run prints a probe-side ``P`` and a map-side
-``alpha_inv`` that disagree at the truncation depth of the run; row CL-6
-recorded exactly that defect. The artifacts are regenerated at solver
-precision 100 with enough outer bisection iterations that the identity holds
-far below the stated tolerance.
+The full report has a converged pair. The frozen compressed trunk instead
+retains an 18-digit, 12-iteration approximate candidate with a nonzero
+fixed-point residual. Its bytes are source-pinned by later evidence; test
+its residual accounting and non-promotion rather than falsely certifying it.
 
 Stated tolerance: relative defect <= 1e-30 (at least 30 significant digits).
 """
@@ -61,27 +60,34 @@ def test_decimal_pi_matches_independent_mpmath_pi() -> None:
     assert ours.startswith(independent[:118])
 
 
-def test_trunk_printed_pair_identity() -> None:
+def test_archived_trunk_discloses_approximate_pair_and_matching_residual() -> None:
     payload = json.loads(TRUNK.read_text(encoding="utf-8"))
     fixed_point = payload["fixed_point_candidate"]
     defect = _relative_identity_defect(fixed_point["P"], fixed_point["alpha_inv"])
-    assert defect <= RELATIVE_TOLERANCE
+    assert payload["claim_status"] == "compressed_candidate_trunk_not_final_particle_root"
+    assert payload["consumer_policy"]["may_feed_live_particle_predictions"] is False
+    assert payload["source_report_precision"] == 18
+    assert Decimal("5e-6") < defect < Decimal("6e-6")
 
-    # The probe-side alpha printed next to the pair must agree with the
-    # map-side root at the same tolerance.
+    # The nonzero map-minus-probe residual must explain the pair mismatch.
+    # 1e-28 covers the decimal display rounding of this archived artifact;
+    # it is not an accepted fixed-point error or a certification tolerance.
     with localcontext() as ctx:
         ctx.prec = WORK_PRECISION
         alpha = Decimal(fixed_point["alpha"])
         alpha_root = Decimal(1) / Decimal(fixed_point["alpha_inv"])
-        assert abs(alpha - alpha_root) / alpha_root <= RELATIVE_TOLERANCE
-
-    # The artifact's own phi and sqrt(pi) strings match independent values.
-    phi, sqrt_pi = _constants()
-    closed_form = payload["closed_form_candidate"]
-    with localcontext() as ctx:
-        ctx.prec = WORK_PRECISION
-        assert abs(Decimal(closed_form["phi"]) - phi) / phi <= Decimal("1e-30")
-        assert abs(Decimal(closed_form["sqrt_pi"]) - sqrt_pi) / sqrt_pi <= Decimal("1e-30")
+        residual = Decimal(fixed_point["alpha_fixed_point_residual"])
+        assert Decimal("3e-8") < residual < Decimal("4e-8")
+        assert abs((alpha_root - alpha) - residual) < Decimal("1e-28")
+        assert abs(defect - residual / alpha_root) < Decimal("1e-25")
+        # Check the archive's own constants at one unit of their last printed
+        # decimal place, without promoting those displays to exact constants.
+        phi, sqrt_pi = _constants()
+        for key, independent in (("phi", phi), ("sqrt_pi", sqrt_pi)):
+            displayed = Decimal(payload["closed_form_candidate"][key])
+            last_place = Decimal(1).scaleb(displayed.as_tuple().exponent)
+            assert last_place <= Decimal("1e-28")
+            assert abs(displayed - independent) <= last_place
 
 
 def test_full_report_printed_pair_identity() -> None:

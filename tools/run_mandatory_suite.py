@@ -62,6 +62,14 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
         [sys.executable, "evidence/source_net_causal_poset/verify_sampled_manifold.py"],
     ),
     (
+        "Verify complete finite-manifold refinement accounting and corruption controls",
+        [sys.executable, "-m", "pytest", "-q", "evidence/source_net_causal_poset/manifold_refinement/test_verify.py"],
+    ),
+    (
+        "Verify finite alpha selection accounting and certified versus approximate outputs",
+        [sys.executable, "-m", "pytest", "-q", "code/P_derivation/test_selection_accounting.py", "code/P_derivation/test_printed_pair_identity.py"],
+    ),
+    (
         "Verify finite fermionic current, exact continuity and mean Gauss custody",
         [sys.executable, "-m", "pytest", "-q", "code/sm_fermion_current"],
     ),

@@ -94,9 +94,10 @@ writes by $704{,}969$ carriers over ten rounds.
 
 \paragraph{Inference and boundary.}
 Order and count determine conformal geometry and scale under the continuum
-causality hypotheses \cite{hawkingkingmccarthy1976,malament1977}; that is
-the inference the observer makes from the readings above, and the finite
-readings are consistent with flat $1+3$ spacetime at every level examined.
+causality hypotheses \cite{hawkingkingmccarthy1976,malament1977}.
+The finite readings above compare a supplied family with flat reference
+values; they do not establish those reconstruction hypotheses or a
+statistical acceptance of flat $1+3$ spacetime.
 The population, the read law, the round duration and one counted event per
 carrier and round are supplied. Their selection by accepted native repairs,
 a physical clock, and the continuum limit are separate conditions rather than
@@ -107,29 +108,60 @@ $0.04$; the odd multipoles of the link directions vanish by the two-way reads
 and the $l=4$ power falls from $0.036$ to $0.0016$ over the four levels; the
 abundance of intervals of $64$ to $1024$ events matches a flat sprinkling
 within $14$ percent while links and small intervals do not, as a layered order
-requires. At $q=55$ and $89$ the chain counts $C_2$, $C_3$, $C_4$ of the
-centre diamond, sampled with standard errors, invert to $4.09$, $4.03$ and
-$4.02$ at $q=89$ (the two- and one-dimensional controls to $3.01$, $3.00$,
-$3.01$ and $1.99$, $2.02$, $2.04$); the distribution of $|I(y,z)|/N$ over
-related pairs lies closest to the flat $3+1$ law of $(\tau/T)^4$ among the
-flat laws in two to six dimensions, with a maximum cumulative-distribution
-difference of $0.025$ on the declared 25-point grid;
-and over fourteen six-layer diamonds displaced by $L/8$ the $C_3$ dimension
-reads $4.078$ with standard deviation $0.016$ and the count-volume
-coefficient $1.0627$ with standard deviation $0.0013$. Curvature estimators
-are not evaluated. The receipts, the carrier event logs and a
-standard-library generator that rebuilds the poset from the definitions are
-published as the causal-poset evidence package \cite{ophfpe}.
-The chain estimates share samples; their cross-covariances are not retained,
-so these readings do not define independent joint significances. The
-weighted cumulative distribution is a self-normalized ratio estimate and
-its grid maximum is not a continuous Kolmogorov--Smirnov statistic. From
-$q=55$ to $89$ that maximum decreases from $0.07581$ to $0.02473$, whereas
-the central three- and four-chain dimensions change from $4.0321$ to
-$4.0341$ and from $4.0060$ to $4.0166$. Thus convergence is not monotone
-across all diagnostics. At $q=89$ the four-chain count has relative standard
-error about $7.49\%$, and the moving-interval mean normalized subinterval
-size is $0.0117269$, about $23.1\%$ above the flat reference $1/105$.
+requires. Sampled chain counts and interval spectra are retained at
+$q=55,89,144$. For the central diamond, the three inverted dimensions,
+the maximum CDF difference $D_{25}$ on the declared 25-point grid, and
+the interval-mean deviation from the exact flat value $1/105$ are:
+\begin{center}
+\begingroup
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{r rrr rr}
+$q$ & $d(C_2)$ & $d(C_3)$ & $d(C_4)$ & $D_{25}$ & Mean deviation\\\hline
+55 & 4.09590 & 4.03210 & 4.00605 & 0.075810 & $+5.0739\%$\\
+89 & 4.09437 & 4.03413 & 4.01664 & 0.024725 & $+8.5836\%$\\
+144 & 4.07556 & 4.01605 & 3.97098 & 0.032342 & $-20.9353\%$
+\end{tabular}
+\endgroup
+\end{center}
+Here $D_{25}$ compares the weighted source CDF with the retained seeded
+Monte Carlo flat reference, which has its own sampling uncertainty.
+It is not an exact continuum CDF distance or a continuous
+Kolmogorov--Smirnov statistic. The absolute interval-mean discrepancy grows
+at both refinements, while $D_{25}$ first falls and then rises. Uniform
+monotone improvement of the retained point estimates therefore fails.
+This descriptive result neither establishes nor statistically rejects
+asymptotic convergence.
+
+The accompanying comparison retains all 96 regions across the three
+levels and the three spatial dimensions, including every moving and
+off-centre region, both lower-dimensional controls, and comparisons with
+the five sampled flat references in spacetime dimensions two through six.
+At $q=89$ the moving-interval mean is $23.13\%$ above $1/105$; at $q=144$
+it is $15.60\%$ below it. The $q=144$ moving-diamond dimensions are
+$3.99045$, $3.99998$ and $4.03391$. Over the fourteen off-centre diamonds
+and their central reference, the $q=89$ three-chain dimension has mean
+$4.078$ and spatial standard deviation $0.016$; these are regional
+dispersion statistics, not an error on a common dimension.
+
+Marginal chain-count standard errors are retained historical estimates;
+their cross-covariances and the uncertainty of the self-normalized
+interval mean and CDF are unavailable. They cannot support independent
+joint significances, an uncertainty-qualified refinement test or a
+numerical interval-mean error bound. The central four-chain relative
+standard error is about $7.49\%$ at $q=89$ and $10.56\%$ at $q=144$,
+whose source sampling uses half as many draws. The original large-run
+draws and the chunk-parallel $q=144$ driver are not retained. Its neighbour
+digest agrees with the archived family receipt, with recorded sequential
+versus chunked identities at $q=21,34$; these ties do not reproduce the
+missing computation. The independently checked arithmetic comparison in
+\path{evidence/source_net_causal_poset/manifold_refinement/} exposes
+signed deviations, available marginal errors and missing uncertainty.
+A statistical decision
+requires a declared bounded control, retained joint sufficient statistics,
+reference uncertainty and complete driver custody. Curvature estimators
+are not evaluated. The supplied population, read law and clock, and the
+separate small clock controls below, retain their stated boundaries.
 
 \paragraph{Exact temporal quadrature control.}
 For continuum spatial balls sampled at $K+1$ equally spaced layers, $K>0$,

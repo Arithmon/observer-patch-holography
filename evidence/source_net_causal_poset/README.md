@@ -103,7 +103,7 @@ auxiliary events into spacetime-volume counts.
 | Physical clock and source-selected continuum | not supplied by these receipts; the declared-family analytic limit is in the source paper | distinct from finite numerical diagnostics |
 | S2 support wiring readout | exact canonical L3–L5 W12 trace, both coordinate placements, W3/isolated controls and paired q=13 counts | computed, [support-wiring receipt](../support_wiring_776/README.md); finite declared inputs, no source selection or continuum claim |
 | Isotropy of link directions, interval abundance profile | odd multipoles vanish, `l = 4` power 0.036, 0.023, 0.0060, 0.0016 at `q = 8, 13, 21, 34`; intervals of 64 to 1024 events match a flat sprinkling within 14 percent, links and small intervals do not (layered order) | computed at `q <= 34`, [extension of 2026-09-25](#extensions-of-2026-09-25) |
-| Chain counts `C_3`, `C_4` and interval spectrum | dimensions 4.094, 4.034, 4.017 from `C_2`, `C_3`, `C_4` at `q = 89`; interval spectrum closest to the flat `3+1` law, maximum CDF difference 0.025; `C_3` dimension 4.078 +- 0.016 over fifteen diamonds | computed at `q = 55, 89` (sampled, standard errors), [extension of 2026-09-25](#extensions-of-2026-09-25) |
+| Chain counts `C_2`, `C_3`, `C_4` and interval spectrum | central dimensions 4.076, 4.016, 3.971 at `q = 144`; central 25-point CDF distances 0.075810, 0.024725, 0.032342 at `q = 55, 89, 144` | sampled point estimates, no uniform monotone improvement or joint statistical decision; complete [refinement interface](manifold_refinement/README.md) retains all regions and controls |
 | Curvature estimators | | not supplied by these receipts |
 
 ## Independent checks
@@ -208,6 +208,16 @@ generator pins and every derived field.
   law with maximum CDF difference 0.032; the `C_3` dimension over the fifteen eight-layer
   diamonds is 4.061 with standard deviation 0.045 and the count-volume coefficient 1.0224
   with standard deviation 0.0027.
+
+The [refinement interface](manifold_refinement/README.md) combines these retained
+sampled receipts in one generated per-statistic table. It separates analytic
+chain/mean references from sampled CDF/moment references, exposes reported
+marginal errors and unavailable covariance, and retains all 96 regions and all
+120 outcomes of the separate small clock control. Its verifier is included in
+the archive check. The q144 graph driver and original large-run draws remain
+unavailable; archive arithmetic verification does not reconstruct them. The
+descriptive failure of uniform monotone improvement is not a significance
+test or a rejection of continuum convergence.
 
 ## Boundary
 

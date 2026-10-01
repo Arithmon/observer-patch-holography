@@ -34,6 +34,8 @@ def main() -> int:  # Keep the script runnable from the command line.
         fixed_point_residual = +(pixel - (phi + sqrt_pi / alpha_inv_endpoint))  # Check the OPH pixel fixed-point equation.
         coupling_residual = +(alpha_from_pixel - alpha_from_endpoint)  # Check that inside wave width equals outside detuning.
         print("OPH fine-structure fixed-point demo with PDG/CERN hadron input")  # Label the run as the no-target-input calculation.
+        print("Supplied non-certified inputs: anchor agreement 27 significant digits; lepton packet agreement 25.")
+        print("The longer decimal displays expose arithmetic; they do not certify physical or numerical accuracy.")
         print(f"phi                                  = {phi}")  # Print the golden-ratio OPH screen balance.
         print(f"sqrt(pi)                             = {sqrt_pi}")  # Print the Gaussian boundary wave factor.
         print(f"OPH source anchor a0(P*)              = {SOURCE_ANCHOR_INV_ALPHA_MZ}")  # Print the OPH electroweak source anchor.

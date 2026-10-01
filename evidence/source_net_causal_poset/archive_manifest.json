@@ -25,9 +25,9 @@
     ]
   },
   "curated_archive": {
-    "file_count": 58,
-    "total_bytes": 2232783,
-    "inventory_sha256": "0c6fac6fad936dafdfd598b5b5ef930e305316d6cb2c033ca43f23336cbabfb4",
+    "file_count": 64,
+    "total_bytes": 4677615,
+    "inventory_sha256": "6af5c25e72f7a4274b51e5a822676b3ffe74d1173fcfb6db4b35ccbc87df2953",
     "is_complete_copy_of_original_receipts": true,
     "selection": "Two receipt generations, both byte-exact mirrors of the simulator receipts at their recorded commits: the 2026-09-24 generation (exact all-pairs counts through q=89, carriers through q=89) is the current record; the 2026-09-09 generation is retained under its original names because other packages pin its bytes. The q5/q8 logs and the standalone generator serve both; routed_read_law/ retains small conditional q13/q21 routing receipts and phase commitments whose complete event streams are regenerated and independently replayed."
   },
@@ -462,6 +462,36 @@
       "path": "verify_sampled_manifold.py",
       "bytes": 2910,
       "sha256": "f00e69565967310ac913eaec234cca573ea59420a705d429555673e1f50129d2"
+    },
+    {
+      "path": "manifold_refinement/README.md",
+      "sha256": "6929915f909763544a561ecfc56c7323ab63225de8fbadda4d488d5088f2460c",
+      "bytes": 2737
+    },
+    {
+      "path": "manifold_refinement/build.py",
+      "sha256": "aa7d0cd6b7e87cc05e28e0683f926912606311e0cef2aa91ac388c30e29de117",
+      "bytes": 9920
+    },
+    {
+      "path": "manifold_refinement/receipt.json",
+      "sha256": "f9bd6c13c25b123f8d1165f8fe3eca7daa8aec97c2c2aff5d5e5959b80be7687",
+      "bytes": 1886101
+    },
+    {
+      "path": "manifold_refinement/refinement.csv",
+      "sha256": "c79dec6ad5936f604ae2305f5692cfd755ed09df3cb806918447ebd6c6cd41f8",
+      "bytes": 528282
+    },
+    {
+      "path": "manifold_refinement/test_verify.py",
+      "sha256": "a240af86a469ab147ee7df3cc4371f480c81776477c78c5481bb9bdbbce33b2c",
+      "bytes": 3485
+    },
+    {
+      "path": "manifold_refinement/verify.py",
+      "sha256": "171fa977fc9c9e4bf5268c25e4db91664e2afd293912cce15d376f6c3b412193",
+      "bytes": 14307
     }
   ],
   "extensions": [
@@ -539,6 +569,20 @@
       "scope": "The same chain counts and interval spectra at q = 144 at half the q = 55, 89 sample sizes (4,605,145 events in the centre diamond; 13,188 s on an r7i.16xlarge). The three-dimensional site graph was built chunk-parallel with the per-chunk arithmetic of the pinned module; its neighbour digest equals the sampled q = 144 family receipt and the chunked build equals the sequential build at q = 21 and 34. Readings: the sampled C_2 is 9.95e11 +- 0.38e11 against the sampled strict pair count 1.0128e12 +- 0.0025e12; the dimensions inverted from C_2, C_3, C_4 are 4.076, 4.016, 3.971 (moving tip 3.99, 4.00, 4.03; controls 3.04, 3.02, 3.00 and 2.00, 2.01, 2.03); the centre spectrum is closest to the flat 3+1 law with maximum CDF difference 0.032; over fourteen eight-layer diamonds plus the centre the C_3 dimension is 4.061 with standard deviation 0.045 and the count-volume coefficient 1.0224 with standard deviation 0.0027.",
       "nonclaims": "sampled estimates with standard errors from declared seeds, not exact counts; the reference pair count at q = 144 is itself a sampled estimate; the chunk-parallel graph driver is not retained, its output is tied to the archived receipt by the neighbour digest; flat-diamond expectations are comparison values of the declared limit; the family is a layered order, not a sprinkling; no physical clock, spacetime, curvature or continuum limit",
       "verifier": "check_manifold_sampled runs the q = 55, 89 checks at q = 144 against the sampled family receipt, and checks that the graph builder names that receipt by digest, that its neighbour digest equals the receipt's, and that the small-q identity checks hold"
+    },
+    {
+      "kind": "manifold_refinement_reconciliation",
+      "file": "manifold_refinement/receipt.json",
+      "generator": "manifold_refinement/build.py",
+      "table": "manifold_refinement/refinement.csv",
+      "verifier": "manifold_refinement/verify.py",
+      "levels": [
+        55,
+        89,
+        144
+      ],
+      "scope": "Arithmetic reconciliation of all 96 retained sampled regions and dimensional controls, all five sampled flat references, reported marginal chain errors, missing joint/ratio/CDF uncertainty, and all 120 outcomes of the separate q8/q13/q21/q34 clock control. No new sampled execution.",
+      "nonclaims": "Descriptive failure of uniform monotone point-estimate improvement, not statistical rejection of continuum convergence, recovered raw draws, recovered q144 driver, physical population/read-law selection or clock calibration."
     }
   ],
   "current_generation": {

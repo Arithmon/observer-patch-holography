@@ -12,6 +12,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import build_premise_register as register_tool
+import check_claim_registry as claim_tool
 
 
 def _register() -> dict:
@@ -46,6 +47,30 @@ def test_intro_keeps_register_scientific_and_explains_evidence_roles() -> None:
     assert "maintained as a scientific register" in rendered
     assert "implicit reverse-consumer edge" in rendered
     assert "premise-discharge queue" not in rendered
+
+
+def test_intro_accounts_for_valid_result_specific_assumptions() -> None:
+    """A valid no-PR consumer still has hypotheses outside the PR inventory."""
+    root = Path(__file__).resolve().parents[1]
+    registry = claim_tool.load_json(root / "claims" / "claim_registry.yaml")
+    claim = next(
+        row for row in registry["claims"]
+        if row["claim_id"] == "OPH-DE-FIXED-CAPACITY-WLAW"
+    )
+    assert claim["premise_dependencies"]["classification"] == "explicit_non_consumer"
+    claim_tool.check_premise_dependencies(claim, claim_tool.premise_ids(root))
+    assert "fixed_or_monotone_capacity_branch" in claim["assumptions"]
+    assert set(claim["assumptions"]) <= claim_tool.dictionary_tokens(root)
+
+    introduction = register_tool.render(register_tool.validate(_register())).split(
+        "| Row |", 1
+    )[0]
+    assert "canonical PR-numbered premises" in introduction
+    assert "result-specific assumptions" in introduction.lower()
+    assert "claims/claim_registry.yaml" in introduction
+    assert "claims/assumption_dictionary.md" in introduction
+    assert "Every named premise the V3 composition lanes consume appears here" not in introduction
+    assert "A premise used by a lane theorem and absent from this register" not in introduction
 
 
 def test_check_mode_passes_on_committed_artifacts() -> None:

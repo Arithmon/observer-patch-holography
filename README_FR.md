@@ -100,8 +100,10 @@ associé fournit une dynamique exécutable des observateurs et les éléments
 de vérification conservés.
 
 La [référence des axiomes](docs/AXIOM_REFERENCE.md) énonce les trois axiomes
-fondamentaux ; le [registre des prémisses](docs/PREMISE_REGISTER_V3.md)
-consigne les données mathématiques supplémentaires.
+fondamentaux ; le [registre des prémisses](docs/PREMISE_REGISTER_V3.md) et le
+[registre des résultats](claims/claim_registry.yaml) consignent les prémisses
+supplémentaires et les hypothèses propres à chaque résultat, y compris les
+identifications physiques et les données empiriques.
 Le [registre des postdictions](docs/POSTDICTION_LEDGER.md)
 consigne les comparaisons avec des valeurs mesurées et l’origine de leurs
 entrées ; l’[échelle des prédictions gelées](docs/FROZEN_PREDICTION_LADDER.md)

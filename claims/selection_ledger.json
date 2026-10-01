@@ -300,7 +300,7 @@
       "owner_issues": [
         736
       ],
-      "where": "Each candidate closure map is declared before evaluation; the interval certificate proves exactly one fixed point per declared map on its analytic domain (Standard Model gauge derivation, certificate C1). The two registered maps have disjoint certified contraction fixed points. Neither map is source-selected, and no pinned parent constructs detuning and return as readings of one invariant. Same-scheme Thomson transport is a separate receipt. A third, code-side evaluation of the same loop, the compressed P-closure trunk (`code/P_derivation/runtime/p_closure_trunk_current.json`: P = 1.6309721049, inverse coupling 136.9940207), adds a structured low-energy running layer without the hadronic payload. It is a non-promoting candidate that may not feed predictions; the frozen source-only preflight gate pins its bytes as evidence that the P side is not promotable. Promoting or retiring it is owned by #736. Declared map history: the bare source map (inverse coupling 136.994835), the self-consistent gauge-width map (137.035660) and the compressed trunk (136.9940207) are the three maps the corpus has declared and interval-certified, in that order; the ledger records this sequence as the map-form search history, so a look-elsewhere accounting for the pixel closure counts three declared map forms beside the forty-eight constant substitutions of the null-model scorecard.",
+      "where": "Two declared mathematical closure maps have disjoint interval-certified contraction fixed points on their analytic domains (Standard Model gauge derivation, certificate C1). Neither map is source-selected, and no pinned parent constructs detuning and return as readings of one invariant. Same-scheme Thomson transport is a separate receipt. A third code-side output, the compressed P-closure trunk (`code/P_derivation/runtime/p_closure_trunk_current.json`: P = 1.6309721049, inverse coupling 136.9940207), adds a structured low-energy running layer without the hadronic payload. This is an approximate candidate, not an interval-certified fixed point; its printed-pair identity has relative defect about 5.2452e-6. It may not feed predictions. The frozen source-only preflight pins its bytes as evidence that the P side is not promotable; promotion or retirement remains owned by #736. The retained history therefore contains two certified roots (inverse couplings 136.994835 and 137.035660) and one approximate output (136.9940207). Separately, the retrospective constant-substitution scorecard contains 48 labels representing 42 distinct numerical pairs, including the declared pair and 41 alternatives. The selection-accounting receipt independently reconciles these counts, the seven electron-exponent candidates 5 through 11, and the certification boundary. Neither this retained history nor the substitution grid is an exhaustive, precomparison map-form menu. Counts and numerical coverage do not identify a chance probability without a sampling measure and selection rule, as the receipt demonstrates with two probability measures on the same outputs.",
       "menu": {
         "size": null,
         "alternatives": "per declared map; the map space has no finite alternative enumeration, so the row is a theorem antecedent and not a compression-menu input",
@@ -309,7 +309,9 @@
       "compression_input": false,
       "receipts": [
         "code/closure_preflight/outputs/source_only_closure_preflight.json",
-        "code/closure_preflight/verify_source_only_closure_preflight_independent.py"
+        "code/closure_preflight/verify_source_only_closure_preflight_independent.py",
+        "code/P_derivation/runtime/selection_accounting.json",
+        "code/P_derivation/verify_selection_accounting.py"
       ],
       "lean": [
         {

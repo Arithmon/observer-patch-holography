@@ -92,8 +92,10 @@ accompany the mathematical arguments. The companion
 executable observer dynamics and retained evidence.
 
 The [axiom reference](docs/AXIOM_REFERENCE.md) states the three core axioms;
-the [premise register](docs/PREMISE_REGISTER_V3.md) records the additional
-mathematical inputs.
+the [premise register](docs/PREMISE_REGISTER_V3.md) and
+[claim registry](claims/claim_registry.yaml) record additional premises and
+result-specific assumptions, including physical identifications and empirical
+inputs.
 The [postdiction ledger](docs/POSTDICTION_LEDGER.md) records comparisons with
 measured values and their input ancestry; the
 [frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) records tests whose

@@ -463,6 +463,9 @@ def main() -> int:
             check_manifold_observations(ext["file"], ext["source_receipt"], ext["generator"])
         elif kind == "manifold_sampled":
             check_manifold_sampled(ext["file"], ext["source_receipt"], ext.get("sampled_receipt"), ext["generator"], [int(v) for v in ext["levels"]])
+        elif kind == "manifold_refinement_reconciliation":
+            require(ext["verifier"] == "manifold_refinement/verify.py", "refinement verifier interface")
+            subprocess.run([sys.executable, "-O", str(HERE / ext["verifier"])], check=True)
     print("CAUSAL_POSET_ARCHIVE_VERIFIED", len(files), "files")
     return 0
 
