@@ -19,10 +19,14 @@ Boolean services, resets and cofinal finite inventory/control capability of
 [the source construction](COHERENT_SOURCE_CLOCKS.md). Extend its independent
 Poisson dephasing by a fixed finite local jump rate mu, allowing bit errors
 in stored records and faults during Boolean operations. On quantum carriers
-the additional jumps preserve the native coordinate codes and have bounded
-support; a bit flip is an example. A jump during a gate may corrupt all that
-gate's operands. A shared fault corrupting an unbounded number of owners is
-outside this specified local model. Rates lambda,mu do not decrease with q.
+the additional jumps preserve the native coordinate codes; a bit flip is an
+example. A jump acts on a stored carrier or the operands of one native service,
+and may corrupt all that service's operands. Disjoint carrier-time/service
+groups have independent Poisson drivers. Thus a hit belongs to one counted
+circuit location, including its bounded native helpers. Bounded spatial range
+alone would not imply this condition: a common burst hitting two simultaneous
+locations has probability O(p), not O(p^2), and is outside this independent
+rate model. Rates lambda,mu do not decrease with q.
 
 Use **Aharonov and Ben-Or**, [quant-ph/9906129](https://arxiv.org/abs/quant-ph/9906129),
 Theorem 4 and sections 7.1--7.6: their CSS computation-code construction
@@ -107,19 +111,32 @@ remain charged constants in the existence bounds.
 
 ## 2. Exact causal history compiler
 
-For a finite primitive instrument with operators K_y and
-`sum_y K_y* K_y = I`, use the local isometry
+For a finite primitive instrument, a public outcome y may combine several
+private Kraus branches alpha. Write
+`Phi_y(rho)=sum_alpha K_(y,alpha) rho K_(y,alpha)*`, with
+`sum_(y,alpha) K_(y,alpha)* K_(y,alpha)=I`. Its channel dilation is
 
 ```
-V psi = sum_y K_y psi tensor |y>_R tensor |y>_E.             (1)
+V psi = sum_(y,alpha) K_(y,alpha) psi
+          tensor |y>_R tensor |y,alpha>_E.                  (1)
 ```
 
-Discard E through the charged discard/reset service. R is now a classical
-logical register, possibly correlated with the application state and an
-arbitrary reference. For computational-basis reads this is two CNOTs and a
-discard. Other fixed-arity source instruments have a finite Stinespring
-completion on blank registers. The original complete proper-code complement
-and abort outcomes are included; no successful subchannel is renormalized.
+Tracing E leaves a classical public R, possibly correlated with the application
+and an arbitrary reference. The private alpha is not a new public record or
+feedback input. Coherently adding the K_(y,alpha) for one y would generally
+change the channel and is forbidden.
+
+On the accessible proper-code logical registers, implement the finite
+Stinespring completion on blanks and discard E through the charged service.
+For computational-basis reads this is two CNOTs and a discard. The dilation
+of a native full-M6 extension is a channel representation, not permission to
+perform a reversible operation on its inaccessible complement. That complement
+retains the original complete CPTP transfer/reset service and its public failure
+outcome. Prepared source inputs and the specified code-preserving jumps keep
+the protected computation in its native coordinate codes. This construction
+does not promise protected encoding of arbitrary full-M6 input states. The
+complete extension is nevertheless checked, rather than silently dropping its
+failure branches or renormalizing its successful subchannel.
 
 A later classical Boolean instruction is made reversible on fresh workspace
 using NOT, CNOT and Toffoli; copy its answer before discarding scratch. A
@@ -134,15 +151,16 @@ abort commands. The fixed finite imported gadgets have no unbounded retry.
 discarded registers gives exactly
 
 ```
-sum_h |h><h|_R tensor K_h rho K_h*,                         (2)
+sum_h |h><h|_R tensor Phi_h(rho),                           (2)
 ```
 
-where K_h is the original ordered product of branch operators. Proof: (1)
+where Phi_h is the original ordered composition of the outcome CP maps,
+including the interventions selected by the preceding public labels. Proof: (1)
 gives the first cut. A Boolean permutation maps diagonal register blocks to
 diagonal blocks; its retained copies prevent the merging of distinct histories.
 A controlled channel acts on each block by its corresponding branch. Applying
-(1) appends the next outcome and kills only cross-outcome coherences. These
-facts prove the induction, also after tensoring with any reference identity.
+(1) appends the next outcome and sums its private Kraus branches incoherently.
+These facts prove the induction, also after tensoring with any reference identity.
 They prove equality of causal instruments, not just terminal probabilities.
 An intervention at a cut may be any declared logical channel controlled by
 the public label; a finite intervention program is compiled and charged by
@@ -162,6 +180,17 @@ entire Choi matrices, including the abort register and all input coherences.
 Deleting the environmental copy, changing feedback, or removing a Toffoli
 phase fails these tests. The analytic induction, not these three examples,
 establishes (2) at arbitrary size.
+
+The additional native checks use the parent's actual coherent code transfers
+for both proper-code dimensions d=2,4. Their success operator is the identity
+on the d-dimensional code; the 6-d complementary basis inputs all reset to
+one failure state with **one shared public failure label**. The independent
+oracle checks all 36 input matrix units, including code/complement coherences.
+It rejects missing failure branches, coherently merged private branches,
+residual coherence between public success and failure, and a TP map with the
+wrong failure output. A grouped qubit-reset instrument with subsequent public
+feedback is checked on every input matrix unit too. Unitary changes of the
+private Kraus basis leave the channel test unchanged, as they should.
 
 ## 3. A noisy public archive with a proved refresh circuit
 
@@ -216,8 +245,12 @@ n; private-lane locality, not a favorable fault sample, proves the lemma.
 
 The exhaustive n=5 replay covers both labels, all zero/one-error inputs and
 every nonidentity output corruption of each reset, copy, comparator and idle:
-**8,100 cases**, with 6,365 clean outputs and 1,735 one-error outputs. Two
-initial input-idle faults added to one old error give a concrete failure.
+**8,100 cases**, with 6,365 clean outputs and 1,735 one-error outputs. Both
+implementations also track the maximum error count of the old public word
+after every location: 1,130 cases reach zero, 6,090 reach one, and 880 reach
+two wrong input bits; none loses its live majority. Two initial input-idle
+faults added to one old error give a concrete failure with three wrong live
+inputs and all five output bits wrong.
 There is no assertion that two faults must always fail. Larger-instance tests
 also apply multiple faults; the arbitrary-r statement is the proof above.
 
@@ -340,6 +373,11 @@ refresh per coarse a/c interval, including during long block flights.
 The Poisson no-hit decomposition used in the parent now gives
 `p <= C_native (lambda+mu) a/c` for every gate, read, reset, flight and idle
 location. Internal slots are shorter; using a/c only enlarges the bound.
+For every specified finite set S of locations the disjoint-group construction
+gives `Pr(all S faulty)<=p^|S|`. Later propagation of a fault through an ideal
+gate does not mark that later gate faulty; the spread and archive proofs count
+that propagation explicitly. This is the local stochastic hypothesis needed
+in both (3) and the imported quantum theorem.
 Classical comparators have fixed native decompositions; their internal scratch
 and faults are included in C_native. Code-preserving jumps avoid an unhandled
 quantum leakage channel. Complete complementary effects remain present for

@@ -80,7 +80,9 @@ def execute(ops, qubits=7, inputs=2):
 def candidate():
     from .archive import evidence
     from .computation_code import candidate as code_candidate
+    from .instruments import candidate as instrument_candidate
     return {'cases': [{'angles': list(angles), 'tape': tape(*angles)} for angles in CASES],
+            'native_instruments': instrument_candidate(),
             'computation_code': code_candidate(),
             'toffoli': toffoli(0, 1, 2),
             'archive': evidence(),

@@ -26,7 +26,7 @@ def locations(program):
     return [op for layer in program['layers'] for op in layer]
 
 
-def run(program, input_mask, fault=None):
+def run(program, input_mask, fault=None, include_live=False):
     n = program['length']
     if program != schedule(n):
         raise ValueError('run expects the complete generated refresh schedule')
@@ -35,6 +35,8 @@ def run(program, input_mask, fault=None):
         raise ValueError('integer wire indices required')
     if type(input_mask) is not int or not 0 <= input_mask < 1 << n:
         raise ValueError('input word outside archive length')
+    if type(include_live) is not bool:
+        raise ValueError('Boolean live-trace option required')
     ops = locations(program)
     if fault is not None:
         if type(fault) not in (tuple, list) or len(fault) != 2:
@@ -44,6 +46,9 @@ def run(program, input_mask, fault=None):
                 or not 1 <= mask < 1 << (len(ops[i])-1)):
             raise ValueError('fault location or mask outside circuit')
     state = input_mask
+    word_mask = (1 << n)-1
+    label_word = word_mask if input_mask.bit_count() > n//2 else 0
+    max_live_wrong = (input_mask ^ label_word).bit_count()
     for index, op in enumerate(ops):
         name, a, *rest = op
         if name == 'reset':
@@ -57,22 +62,28 @@ def run(program, input_mask, fault=None):
         if fault is not None and index == fault[0]:
             for k, bit in enumerate(op[1:]):
                 state ^= ((fault[1] >> k & 1) << bit)
-    return sum((state >> q & 1) << j for j, q in enumerate(program['outputs']))
+        if include_live:
+            max_live_wrong = max(max_live_wrong, ((state & word_mask) ^ label_word).bit_count())
+    output = sum((state >> q & 1) << j for j, q in enumerate(program['outputs']))
+    return (output, max_live_wrong) if include_live else output
 
 
 def census(program):
     n = program['length']
     histogram = [0]*(n+1)
+    live_histogram = [0]*(n+1)
     inputs = [0]+[1 << i for i in range(n)]
     for logical in (0, 1):
         target = ((1 << n)-1)*logical
         for error in inputs:
             for loc, op in enumerate(locations(program)):
                 for fault in range(1, 1 << (len(op)-1)):
-                    wrong = (run(program, target ^ error, (loc, fault)) ^ target).bit_count()
+                    output, live_wrong = run(program, target ^ error, (loc, fault), include_live=True)
+                    wrong = (output ^ target).bit_count()
                     histogram[wrong] += 1
+                    live_histogram[live_wrong] += 1
     return dict(locations=len(locations(program)), single_fault_cases=sum(histogram),
-                output_error_histogram=histogram)
+                output_error_histogram=histogram, live_input_error_histogram=live_histogram)
 
 
 def evidence():

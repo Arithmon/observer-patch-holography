@@ -15,6 +15,7 @@ from scipy.linalg import expm
 
 from . import archive, archive_check, circuits, independent as check, verify
 from . import computation_code, computation_code_check
+from . import instruments, instrument_check
 
 
 @pytest.fixture(scope='module')
@@ -88,6 +89,99 @@ def test_toffoli_phase_error_hidden_from_truth_tables_is_rejected():
         check.verify_toffoli(tape)
 
 
+def test_grouped_native_complement_retains_exact_full_channel(evidence):
+    instrument_check.verify(evidence['native_instruments'])
+
+
+@pytest.mark.parametrize('d', [2, 4])
+@pytest.mark.parametrize('mutation', ['omit_failure', 'coherent_failures',
+                                     'public_coherence', 'wrong_reset'])
+def test_wrong_native_complements_fail_without_custody(d, mutation):
+    row = instruments.candidate()[0 if d == 2 else 1]
+    v = instrument_check.decode_matrix(row).reshape(7-d, 2, d+1, 6)
+    if mutation == 'omit_failure':
+        v[1:] = 0
+    elif mutation == 'coherent_failures':
+        v[1] += v[2]
+        v[2] = 0
+    elif mutation == 'public_coherence':
+        # Still an isometry, but the public success/failure register is no
+        # longer classical on inputs coherent across code and complement.
+        v[0] += v[1]
+        v[1] = 0
+    else:
+        # A TP instrument with the correct failure probability but wrong
+        # conditional output must also be rejected.
+        v[1, 1, 0, d] = v[1, 1, d, d]
+        v[1, 1, d, d] = 0
+    flat = v.reshape(-1, 6)
+    if mutation in ('public_coherence', 'wrong_reset'):
+        np.testing.assert_allclose(flat.conj().T @ flat, np.eye(6), atol=1e-14)
+    with pytest.raises(ValueError, match='native'):
+        instrument_check.check_dilation(flat, d)
+
+
+def test_grouped_reset_and_public_feedback_on_all_input_coherences():
+    # One reset outcome contains two private Kraus branches. The other outcome
+    # leaves the input unchanged. A later X is controlled only by public y.
+    reset = [np.array([[1, 0], [0, 0]]), np.array([[0, 1], [0, 0]])]
+    groups = [[np.sqrt(.3)*k for k in reset], [np.sqrt(.7)*np.eye(2)]]
+    v = instruments.dilate(groups).reshape(3, 4, 2)
+    feedback = np.block([[np.array([[0, 1], [1, 0]]), np.zeros((2, 2))],
+                         [np.zeros((2, 2)), np.eye(2)]])
+    for i in range(2):
+        for j in range(2):
+            actual = sum(np.outer(k[:, i], k[:, j].conj()) for k in v)
+            actual = feedback @ actual @ feedback.conj().T
+            expected = np.zeros((4, 4))
+            if i == j:
+                expected[1, 1] = .3
+            expected[2+i, 2+j] = .7
+            np.testing.assert_allclose(actual, expected, atol=1e-14)
+    # Reset branches may be rotated within their private environment without
+    # changing the observable instrument. The verifier checks the channel,
+    # not an arbitrary choice of Kraus representation.
+    native = instruments.candidate()[0]
+    w = instrument_check.decode_matrix(native).reshape(5, 6, 6)
+    a, b = w[1].copy(), w[2].copy()
+    w[1], w[2] = (a+b)/np.sqrt(2), (a-b)/np.sqrt(2)
+    instrument_check.check_dilation(w.reshape(-1, 6), 2)
+
+
+@pytest.mark.parametrize('groups', [None, [], [[]], ([],), [[np.eye(2)*.9]],
+                                    [[np.eye(2), np.eye(3)]], [[np.ones(2)]],
+                                    [[np.eye(2, dtype=bool)]], [[np.array([[np.nan]])]],
+                                    [[np.array([[np.inf]])]], [[np.array([['1']])]],
+                                    [[np.eye(17)]], [[np.eye(1)/np.sqrt(33)]*33]])
+def test_incomplete_or_malformed_instruments_rejected(groups):
+    with pytest.raises(ValueError):
+        instruments.dilate(groups)
+
+
+@pytest.mark.parametrize('field,value', [('code_dimension', True), ('code_dimension', 3),
+                                       ('environment', 4), ('real', []), ('extra', 1)])
+def test_native_instrument_schema_is_strict(field, value):
+    rows = instruments.candidate()
+    rows[0][field] = value
+    with pytest.raises(ValueError):
+        instrument_check.verify(rows)
+
+
+@pytest.mark.parametrize('value', [True, '0', None, float('nan'), float('inf')])
+def test_native_instrument_matrix_rejects_non_numeric_entries(value):
+    rows = instruments.candidate()
+    rows[0]['real'][0][0] = value
+    with pytest.raises(ValueError):
+        instrument_check.verify(rows)
+
+
+@pytest.mark.parametrize('indices', [[], [0], [1, 0], [0, 0], [0, 1, 1]])
+def test_native_instrument_catalog_is_complete(indices):
+    rows = instruments.candidate()
+    with pytest.raises(ValueError):
+        instrument_check.verify([rows[i] for i in indices])
+
+
 @pytest.mark.parametrize('op', [[], ['unknown', 0], ['cx', 1, 1], ['cx', -1, 2],
                                ['h', True], ['h', 0, 1], ['ry', 0, float('nan')],
                                ['ry', 0, float('inf')], ['ry', 0, True]])
@@ -101,7 +195,9 @@ def test_malformed_quantum_tapes(op):
 def test_archive_independent_full_fault_census(evidence):
     archive_check.verify(evidence['archive'])
     assert evidence['archive']['census'] == dict(
-        locations=515, single_fault_cases=8100, output_error_histogram=[6365, 1735, 0, 0, 0, 0])
+        locations=515, single_fault_cases=8100,
+        output_error_histogram=[6365, 1735, 0, 0, 0, 0],
+        live_input_error_histogram=[1130, 6090, 880, 0, 0, 0])
 
 
 @pytest.mark.parametrize('n', [5, 9, 13])
@@ -117,8 +213,9 @@ def test_general_refresh_with_multiple_old_errors_and_multiple_faults(n):
             inputs[int(i)] ^= 1
         faults = [(int(i), int(rng.integers(1, 1 << (len(ops[int(i)])-1))))
                   for i in rng.choice(len(ops), r, replace=False)]
-        result = archive_check.run(p, inputs, faults)
+        result, live_wrong = archive_check.run(p, inputs, faults, include_live=True)
         assert sum(x != bit for x in result) <= r
+        assert live_wrong <= 2*r
 
 
 def test_two_fault_witness_is_not_vacuously_accepted():
@@ -127,7 +224,26 @@ def test_two_fault_witness_is_not_vacuously_accepted():
     # The initial input already has one error. Two different initial idles
     # corrupt two more source bits before any voter copies them.
     faults = [(ops.index(['idle', bit]), 1) for bit in (1, 2)]
-    assert archive_check.run(p, [1, 0, 0, 0, 0], faults) == [1]*5
+    result, live_wrong = archive_check.run(p, [1, 0, 0, 0, 0], faults, include_live=True)
+    assert result == [1]*5
+    assert live_wrong == 3
+
+
+@pytest.mark.parametrize('option', [0, 1, None, 'yes'])
+def test_live_trace_option_is_not_silently_coerced(option):
+    p = archive.schedule(5)
+    with pytest.raises(ValueError):
+        archive.run(p, 0, include_live=option)
+    with pytest.raises(ValueError):
+        archive_check.run(p, [0]*5, include_live=option)
+
+
+def test_false_live_census_fails_independent_replay(evidence):
+    row = copy.deepcopy(evidence['archive'])
+    row['census']['live_input_error_histogram'][0] += 1
+    row['census']['live_input_error_histogram'][1] -= 1
+    with pytest.raises(ValueError, match='exact fault census'):
+        archive_check.verify(row)
 
 
 @pytest.mark.parametrize('mutation', ['idle', 'shared', 'missing_voter', 'duplicate_wire', 'output', 'sort'])
@@ -270,7 +386,7 @@ def test_optimized_replay_with_producers_disabled(tmp_path):
 import sys
 class Block:
     def find_spec(self, fullname, path=None, target=None):
-        if fullname in ('m1_noisy_records.circuits', 'm1_noisy_records.archive', 'm1_noisy_records.build', 'm1_noisy_records.computation_code'):
+        if fullname in ('m1_noisy_records.circuits', 'm1_noisy_records.archive', 'm1_noisy_records.build', 'm1_noisy_records.computation_code', 'm1_noisy_records.instruments'):
             raise RuntimeError('producer called')
 sys.meta_path.insert(0, Block())
 from m1_noisy_records import verify

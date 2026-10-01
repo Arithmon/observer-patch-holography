@@ -11,8 +11,11 @@ Use the existing proper-code/CCG capability, not a new reliable controller axiom
 
 1. An exact causal instrument compiler, with independent full-channel checks
    of adaptive measurements, Boolean decisions, feedback and retained aborts.
+   Distinguish public outcomes from private Kraus branches; preserve the
+   native transfer's complete complement without adding reversible full-M6 control.
 2. A concrete classical archive circuit, including every live-wire idle,
    arbitrary-size fault proof and exhaustive small-instance adversarial replay.
+   Check the live input majority throughout refresh, as well as the new word.
 3. A protected-to-public record interface that does not encode an already
    corrupted bare bit or broadcast an unprotected decision to an entire block.
 4. A credited measurement-free universal protection construction, a charged

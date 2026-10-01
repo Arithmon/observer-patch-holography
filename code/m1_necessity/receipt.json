@@ -1908,7 +1908,7 @@
           "declared_noisy_control_source_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "524c49d66e5b01c8c68d0ebc7cd5ddf103dbbc27b5e1e733c65f9d579e377bb0"
+        "original_claim_sha256": "863bb2bf830ecea4472eef42da4d7b0fd1679e54e41599cc48f442f20da078a3"
       },
       "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION": {
         "assumptions": [
@@ -1926,7 +1926,7 @@
           "declared_noisy_control_source_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "ac45b0ba262e56fbf070a36e15abbeda41072c45ee62d4cde4f0e2c161e4cb83"
+        "original_claim_sha256": "2e8a440f73ee7c7e0f97925769b4670263e99409b447d30e500da6aed0dda3a3"
       },
       "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION": {
         "assumptions": [

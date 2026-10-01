@@ -13323,7 +13323,7 @@
     },
     {
       "claim_id": "OPH-SOURCE-NOISY-CONTROL-HISTORIES",
-      "statement": "The declared proper-code CCG source admits a cofinal realization of its prepared fermionic clock/read programs without reliable runtime classical feedback. An exact causal instrument compiler retains all outcome and abort branches, and the credited measurement-free Aharonov-Ben-Or construction protects all decisions and working records. The explicit punctured RM(5,11) CSS code has parameters [[2047,1,63]], with a proved distance and independently checked generator algebra; its 31-error correction exceeds the conservative composed spread bound 16. Disjoint noisy export islands and an explicitly maintained noisy classical archive preserve the joint public coded history. For fixed finite independent local dephasing and bit-fault rates, five fixed quantum protection levels, logarithmic archive words and paid local controls give joint decoded quantum/history error O(q^-20 log^16(2q)) and additional positive accounting error O(q^-16 log^16(2q)). Active lifetime volume is O(q^5 log^16(2q)), including named records, resets and idles; retained passive diagnostics increase total physical storage-time volume to O(q^6 log^25(2q)). Their unused local noise cannot affect the active reduced state. The finite source and external circuit schedule remain declared; no numerical full-machine threshold, bare-output guarantee or A1-A3 source selection is asserted.",
+      "statement": "The declared proper-code CCG source admits a cofinal realization of its prepared fermionic clock/read programs without reliable runtime classical feedback. An exact causal instrument compiler retains all public outcome and abort branches, including grouped private Kraus indices in the complete native complement, and the credited measurement-free Aharonov-Ben-Or construction protects all decisions and working records. The explicit punctured RM(5,11) CSS code has parameters [[2047,1,63]], with a proved distance and independently checked generator algebra; its 31-error correction exceeds the conservative composed spread bound 16. Disjoint noisy export islands and an explicitly maintained noisy classical archive preserve the joint public coded history. For fixed finite independent local dephasing and bit-fault rates, five fixed quantum protection levels, logarithmic archive words and paid local controls give joint decoded quantum/history error O(q^-20 log^16(2q)) and additional positive accounting error O(q^-16 log^16(2q)). Active lifetime volume is O(q^5 log^16(2q)), including named records, resets and idles; retained passive diagnostics increase total physical storage-time volume to O(q^6 log^25(2q)). Their unused local noise cannot affect the active reduced state. The finite source and external circuit schedule remain declared; no numerical full-machine threshold, bare-output guarantee or A1-A3 source selection is asserted.",
       "assumptions": [
         "declared_proper_code_source_completion",
         "proposed_coherent_code_gluing_CCG",
@@ -13352,6 +13352,8 @@
         "code/m1_noisy_records/computation_code.py",
         "code/m1_noisy_records/computation_code_check.py",
         "code/m1_noisy_records/independent.py",
+        "code/m1_noisy_records/instruments.py",
+        "code/m1_noisy_records/instrument_check.py",
         "code/m1_noisy_records/test_records.py",
         "code/m1_noisy_records/verify.py",
         "code/m1_noisy_records/receipt.json",
@@ -13370,7 +13372,7 @@
     },
     {
       "claim_id": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
-      "statement": "For n=4r+1 noisy classical archive bits, the explicit private-voter refresh circuit maps at most r initial errors plus at most r arbitrary faulty service locations to at most r output errors, while the old word retains correct majority throughout the cycle. It uses n(n+2) live service bits before bounded native helper expansion and 2+n+n(n-1)/2 layers with every idle counted. The n=5 circuit has 515 locations and passes all 8100 single-fault cases with zero or one old error; two faults have an explicit failure witness. With r=ceil(log2(2q)), local fault strength O(q^-1) and all record lifetimes counted, joint export/maintenance error is superpolynomially small. Fixed unmaintained repetition fails for a growing whole history, and any naked final bit exposed for h has worst-case flip error at least (1-exp(-2 mu h))/2. Statistical majority decoding is explicit and is not an ideal physical feedback gate.",
+      "statement": "For n=4r+1 noisy classical archive bits, the explicit private-voter refresh circuit maps at most r initial errors plus at most r arbitrary faulty service locations to at most r output errors, while the old word retains correct majority throughout the cycle. It uses n(n+2) live service bits before bounded native helper expansion and 2+n+n(n-1)/2 layers with every idle counted. The n=5 circuit has 515 locations and passes all 8100 single-fault cases with zero or one old error, checking the live input majority after every location as well as final outputs; two faults have an explicit failure witness. With r=ceil(log2(2q)), local fault strength O(q^-1) and all record lifetimes counted, joint export/maintenance error is superpolynomially small. Fixed unmaintained repetition fails for a growing whole history, and any naked final bit exposed for h has worst-case flip error at least (1-exp(-2 mu h))/2. Statistical majority decoding is explicit and is not an ideal physical feedback gate.",
       "assumptions": [
         "declared_proper_code_source_completion",
         "proposed_coherent_code_gluing_CCG",
@@ -13399,6 +13401,8 @@
         "code/m1_noisy_records/computation_code.py",
         "code/m1_noisy_records/computation_code_check.py",
         "code/m1_noisy_records/independent.py",
+        "code/m1_noisy_records/instruments.py",
+        "code/m1_noisy_records/instrument_check.py",
         "code/m1_noisy_records/test_records.py",
         "code/m1_noisy_records/verify.py",
         "code/m1_noisy_records/receipt.json",

@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 OWN = ('__init__.py', 'circuits.py', 'independent.py', 'archive.py', 'archive_check.py',
        'computation_code.py', 'computation_code_check.py',
+       'instruments.py', 'instrument_check.py',
        'build.py', 'verify.py', 'test_records.py', 'README.md', 'CONTRACT.md')
 SOURCES = sorted(set(parent.SOURCES+['code/m1_fixed_noise/receipt.json']+
                     ['code/m1_noisy_records/'+p for p in OWN]+

@@ -54,11 +54,12 @@ def validate(program):
     return flat
 
 
-def run(program, inputs, faults=()):
+def run(program, inputs, faults=(), include_live=False):
     flat = validate(program)
     need(type(inputs) is list and len(inputs) == program['length'] and
          all(type(x) is int and x in (0, 1) for x in inputs), 'binary input')
     need(type(faults) in (tuple, list), 'fault list')
+    need(type(include_live) is bool, 'Boolean live-trace option')
     by_location = {}
     for pair in faults:
         need(type(pair) in (list, tuple) and len(pair) == 2, 'fault pair')
@@ -68,6 +69,8 @@ def run(program, inputs, faults=()):
         need(i not in by_location, 'duplicate fault location')
         by_location[i] = mask
     state = inputs+[0]*(program['width']-len(inputs))
+    logical = int(sum(inputs) > len(inputs)//2)
+    max_live_wrong = sum(x != logical for x in inputs)
     for j, op in enumerate(flat):
         name, a, *rest = op
         if name == 'reset':
@@ -81,7 +84,10 @@ def run(program, inputs, faults=()):
         mask = by_location.get(j, 0)
         for bit, q in enumerate(op[1:]):
             state[q] = (state[q]+(mask >> bit & 1)) % 2
-    return [state[q] for q in program['outputs']]
+        if include_live:
+            max_live_wrong = max(max_live_wrong, sum(x != logical for x in state[:len(inputs)]))
+    output = [state[q] for q in program['outputs']]
+    return (output, max_live_wrong) if include_live else output
 
 
 def verify(row):
@@ -89,22 +95,26 @@ def verify(row):
     p = row['program']
     ops = validate(p)
     need(p['length'] == 5, 'frozen exhaustive census size')
-    keys(row['census'], 'locations single_fault_cases output_error_histogram')
+    keys(row['census'], 'locations single_fault_cases output_error_histogram live_input_error_histogram')
     histogram = [0]*6
+    live_histogram = [0]*6
     for logical in (0, 1):
         for error in range(-1, 5):
             bits = [logical ^ (i == error) for i in range(5)]
             need(run(p, bits) == [logical]*5, 'no-fault recovery')
             for j, op in enumerate(ops):
                 for mask in range(1, 1 << (len(op)-1)):
-                    result = run(p, bits, [(j, mask)])
+                    result, live_wrong = run(p, bits, [(j, mask)], include_live=True)
                     histogram[sum(x != logical for x in result)] += 1
+                    live_histogram[live_wrong] += 1
     need(not any(histogram[2:]), 'one old error plus one fresh fault must remain correctable')
+    need(not any(live_histogram[3:]), 'old public majority must stay correct throughout refresh')
     expected = dict(locations=len(ops), single_fault_cases=sum(histogram),
-                    output_error_histogram=histogram)
+                    output_error_histogram=histogram, live_input_error_histogram=live_histogram)
     need(row['census'] == expected and all(type(row['census'][k]) is int
          for k in ('locations', 'single_fault_cases')) and
-         all(type(x) is int for x in row['census']['output_error_histogram']), 'exact fault census')
+         all(type(x) is int for name in ('output_error_histogram', 'live_input_error_histogram')
+             for x in row['census'][name]), 'exact fault census')
 
 
 def log_failure_majorant(q, rate_constant=1.):
