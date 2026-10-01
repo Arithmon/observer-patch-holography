@@ -29,6 +29,10 @@ Finite evidence includes:
   estimate, its exact rational bounds, and the combined six-level resource
   and convergence calculation; recursive replay of the computation code,
   adaptive instruments and 8,100 archive fault cases from the merged parent.
+- A coherent counterexample to an additive bad-region norm bound, with the
+  required intersection terms and disjoint location ownership checked. The
+  joint-history proof derives its product bound explicitly and counts every
+  physical interval once, including export-to-refresh handoffs.
 
 ```sh
 PYTHONPATH=code python -m m1_leakage.build

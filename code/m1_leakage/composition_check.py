@@ -2,7 +2,36 @@
 
 from fractions import Fraction
 import math
-from .format import close, integer, keys, need, number
+import numpy as np
+from .format import close, integer, keys, need, number, unpack
+
+
+def verify_unions(rows):
+    need(type(rows) is list and len(rows) == 2, 'coherent union countercontrols')
+    for row, theta in zip(rows, (.4, .9)):
+        keys(row, 'theta regions required_faults bad_operator local_bad_norm joint_bad_norm naive_sum product_majorant')
+        close(number(row['theta']), theta, 'frozen coherent angle')
+        need(type(row['regions']) is list and len(row['regions']) == 2, 'region ownership')
+        seen = set()
+        for positions, expected in zip(row['regions'], ([0, 1], [2, 3])):
+            need(type(positions) is list and all(type(x) is int for x in positions)
+                 and positions == expected and not seen.intersection(positions), 'disjoint native locations')
+            seen.update(positions)
+        need(type(row['required_faults']) is list and row['required_faults'] == [2, 2]
+             and all(type(x) is int for x in row['required_faults']), 'region thresholds')
+        z = complex(math.cos(theta), math.sin(theta))
+        # Whole-region identity: actual U^2 minus the doubly faulty part is
+        # G=2U-I. The four-location bad union is U^4-G^2, not B1+B2.
+        diagonal = z**4-(2*z-1)**2
+        close(unpack(row['bad_operator'], (2, 2)), np.diag([diagonal, diagonal.conjugate()]),
+              'complete coherent bad-region union')
+        beta = 2-2*math.cos(theta)
+        total = 2*beta*math.sqrt(1+math.sin(theta)**2)
+        bound = 2*beta+beta*beta
+        for field, value in (('local_bad_norm', beta), ('joint_bad_norm', total),
+                             ('naive_sum', 2*beta), ('product_majorant', bound)):
+            close(number(row[field]), value, 'coherent union '+field)
+        need(total > 2*beta+1e-3 and total <= bound, 'naive additive norm bound must fail')
 
 
 def pascal(n):
@@ -20,9 +49,10 @@ def fraction(row):
 
 
 def verify(row):
-    keys(row, 'tails archive_tail quantum_level quantum_fault_power amplitude_decay_denominator '
+    keys(row, 'tails coherent_unions archive_tail quantum_level quantum_fault_power amplitude_decay_denominator '
          'active_locations quantum_q_degree synthesis_request_locations synthesis_per_gate_decay '
          'joint_decay accounting_decay resources model archive_normalization')
+    verify_unions(row['coherent_unions'])
     catalog = ((1, 1, 2), (5, 2, 8), (9, 3, 16), (13, 4, 32), (24, 6, 64))
     need(type(row['tails']) is list and len(row['tails']) == len(catalog), 'complete coherent-tail catalog')
     for item, (v, m, den) in zip(row['tails'], catalog):

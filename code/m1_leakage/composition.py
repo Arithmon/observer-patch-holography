@@ -1,7 +1,33 @@
 """Norm-tail and lifetime evidence for composition with noisy public records."""
 
 from fractions import Fraction
+import itertools
 import math
+import numpy as np
+from .format import pack
+
+
+def coherent_unions():
+    rows = []
+    for theta in (.4, .9):
+        u = np.diag([np.exp(1j*theta), np.exp(-1j*theta)])
+        fault = u-np.eye(2)
+        bad = np.zeros((2, 2), complex)
+        # Enumerate actual ordered fault paths. Regions own separate native
+        # locations; each is bad only if both of its locations are faulty.
+        for mask in itertools.product((0, 1), repeat=4):
+            if not (all(mask[:2]) or all(mask[2:])):
+                continue
+            term = np.eye(2, dtype=complex)
+            for hit in mask:
+                term = (fault if hit else np.eye(2))@term
+            bad += term
+        beta = float(np.linalg.norm(fault@fault, 2))
+        rows.append(dict(theta=theta, regions=[[0, 1], [2, 3]], required_faults=[2, 2],
+                         bad_operator=pack(bad), local_bad_norm=beta,
+                         joint_bad_norm=float(np.linalg.norm(bad, 2)),
+                         naive_sum=2*beta, product_majorant=(1+beta)**2-1))
+    return rows
 
 
 def candidate():
@@ -25,7 +51,7 @@ def candidate():
         log_u = 4*math.log(log_2q)-log_q/2
         log_bound = 5*log_q+8*math.log(log_2q)+math.exp(log_u)+(r+1)*log_u
         budgets.append(dict(log2_q=power, r=r, word_length=4*r+1, log_tail_bound=log_bound))
-    return dict(tails=tails, archive_tail=budgets,
+    return dict(tails=tails, coherent_unions=coherent_unions(), archive_tail=budgets,
                 quantum_level=6, quantum_fault_power=64, amplitude_decay_denominator=2,
                 active_locations=[5, 16], quantum_q_degree=-27,
                 synthesis_request_locations=[4, 8], synthesis_per_gate_decay=24,

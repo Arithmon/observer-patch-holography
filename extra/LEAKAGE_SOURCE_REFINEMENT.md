@@ -159,6 +159,11 @@ every idle, and use contractivity again. The finite native decomposition
 has a fixed number of components, which enlarges the constant. For fixed
 bounded Gamma and the charged service/flight horizon h<=C a/c, the resulting
 channel error delta is O(q^-1).
+This bound must cover the complete service, including its outcome register.
+An additional error intrinsic to a transfer, read or reset event must enter
+delta with the same O(q^-1) bound in this branch. It cannot be omitted as an
+instantaneous event. A constant error per event belongs instead to the
+fixed-strength regime of section 5, with its stated threshold hypothesis.
 
 Unlike dephasing, amplitude damping generally has **no positive ideal-channel
 weight**. For damping probability gamma in (0,1), its two qubit Kraus maps are
@@ -419,11 +424,63 @@ sums and bound the protected bad part separately. Conditioning the noise
 on protected success would invalidate the argument. Small total bad norm
 bounds the decoded channel error by a constant times that norm, including
 arbitrary references; no division by an acceptance probability occurs.
-Sequential regions can be grouped at the first violation of the archive
-invariant. Equivalently, inclusion-exclusion gives a factor exponential in
-the sum of their bad-norm bounds; it is absorbed into a fixed constant on
-the cofinal tail where that sum tends to zero. No probabilistic union bound
-on hypothetical independent coherent faults is being used.
+
+For clarity, the passage from individual regions to the joint history needs
+more than adding their norms. Partition the native fault locations among
+protected computation rectangles, disjoint export islands grouped by word,
+and archive refresh cycles. A flight or wait belongs to exactly one such
+service interval. At the export/first-refresh boundary assign the terminal
+read to its island and the subsequent input wait to the first refresh;
+do not charge the same physical fault to both. Different words have separate
+lanes; consecutive cycles use disjoint time intervals, even when they reuse
+the same bits. Quantum copying and its correction are protected locations,
+not export-island locations.
+
+For this combined construction use the computation-code parent's disjoint
+leading-correction/gate rectangles. Their sparse-fault induction tolerates
+one bad child rectangle and needs at least two to become bad. A recursively
+bad level-k rectangle therefore contains at least 2^k distinct faulty native
+locations, by induction on disjoint children. At fixed k=6 its native size
+V_Q is a fixed library constant. We may conservatively declare a rectangle
+bad whenever it contains 64 faults: this includes all non-sparse rectangles.
+Equation (14) bounds that larger set by
+`beta_Q <= exp(V_Q eta) (V_Q eta)^64 = O(eta^64)`.
+This deliberately loose count uses no numerical hardware threshold and no
+seven-qubit recovery property. Its constant can be very large. The underlying
+good-path correctness is the credited computation-code result with the
+distance/spread margin specified above.
+
+More generally let region i own V_i locations and require m_i faults to be
+declared bad, and let beta_i be the majorant in (14). For any specified set
+I of bad regions, multiply their marked-set expansions. Disjoint ownership
+makes every union of selected native sets have size equal to the sum of
+their sizes. The local-noise bound then gives
+`||F(all regions in I bad)|| <= product_(i in I) beta_i`.
+This is a norm bound on a sum of paths; it asserts no statistical
+independence of their decoded outputs. Inclusion-exclusion for the union
+of bad regions now yields
+
+```
+||B_any|| <= product_i (1+beta_i)-1
+          <= exp(sum_i beta_i)-1 = O(sum_i beta_i)         (14a)
+```
+
+when the sum tends to zero. This treats protected failures, export failures
+and all refresh failures together, without conditioning one noise family on
+the absence of another. Every remaining path preserves the decoded logical
+instrument and the live-majority invariant. Isometry normalization converts
+the small bad norm to channel error with a fixed factor. All of these
+comparisons allow a reference entangled with the application.
+
+The evidence includes a countercontrol to a naive additive norm argument.
+Take four phase gates U=exp(i theta Z), ideal identity, and F=U-I. Two
+successive two-location regions are each declared bad only for two faults.
+Their individual bad norm is beta=||F^2||=2-2 cos(theta). The exact union is
+`U^4-(2U-I)^2`, whose norm is `2 beta sqrt(1+sin(theta)^2)`.
+It exceeds 2 beta for nonzero small theta, while staying below
+`(1+beta)^2-1`. The low-fault part is not a positive probabilistic event.
+Direct path enumeration and an independent closed-form reconstruction check
+this witness, including the disjointness of the declared regions.
 
 Take r=ceil(log2(2q)), as in the parent. Classical fault probability O(q^-1)
 has a dilation fault amplitude O(q^-1/2), and (8) gives the same bound for

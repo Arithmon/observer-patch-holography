@@ -1908,7 +1908,7 @@
           "declared_full_interface_noise_and_leakage_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "3f854ce615d51419d00d5981901f55467508b1ca58c6499ec2ce412dab4c1067"
+        "original_claim_sha256": "dd2e4e37b4a9a4a4d3537eb5b24f6f8a20cc5827c6407b2fa49a0e8dcae9392b"
       },
       "OPH-SOURCE-LIVE-RECORD-PROTECTION": {
         "assumptions": [

@@ -406,3 +406,69 @@ def test_corrected_leakage_preserves_actual_adaptive_histories_and_aborts(kind):
         for r1 in (0, 1):
             begin = 4*(4*r0+8*r1+16*r0*r1)
             assert np.trace(output[begin:begin+16, begin:begin+16]).real > .01
+
+
+@pytest.mark.parametrize('d', [2, 4])
+def test_private_kraus_basis_changes_preserve_public_instruments(d):
+    groups = interfaces.reduction(d)
+    count = 6-d
+    basis = np.exp(2j*np.pi*np.outer(np.arange(count), np.arange(count))/count)/math.sqrt(count)
+    groups[1] = [sum(basis[i, j]*groups[1][j] for j in range(count)) for i in range(count)]
+    interface_check.check_groups([[pack(k) for k in group] for group in groups], d)
+
+
+def test_cross_public_kraus_rotation_fails_even_with_identical_unflagged_channel():
+    original = interfaces.reduction(2)
+    groups = copy.deepcopy(original)
+    a, b = groups[0][0].copy(), groups[1][0].copy()
+    groups[0][0], groups[1][0] = (a+b)/math.sqrt(2), (a-b)/math.sqrt(2)
+    for i in range(6):
+        for j in range(6):
+            np.testing.assert_allclose(interface_check.image(sum(groups, []), i, j),
+                                       interface_check.image(sum(original, []), i, j), atol=1e-14)
+    with pytest.raises(ValueError, match='complete flagged reduction'):
+        interface_check.check_groups([[pack(k) for k in group] for group in groups], 2)
+
+
+@pytest.mark.parametrize('mutation', ['overlap', 'boolean', 'missing_region', 'wrong_threshold',
+                                     'naive_sum', 'positive_mixture', 'changed_operator', 'missing_case'])
+def test_coherent_union_countercontrols_reject_invalid_shortcuts(evidence, mutation):
+    rows = copy.deepcopy(evidence['composition']['coherent_unions'])
+    row = rows[0]
+    if mutation == 'overlap':
+        row['regions'][1] = [1, 2]
+    elif mutation == 'boolean':
+        row['regions'][0][0] = False
+    elif mutation == 'missing_region':
+        row['regions'].pop()
+    elif mutation == 'wrong_threshold':
+        row['required_faults'][0] = 1
+    elif mutation == 'naive_sum':
+        row['product_majorant'] = row['naive_sum']
+    elif mutation == 'positive_mixture':
+        row['joint_bad_norm'] = row['naive_sum']
+    elif mutation == 'changed_operator':
+        row['bad_operator'] = pack(np.eye(2)*row['local_bad_norm'])
+    else:
+        rows.pop()
+    with pytest.raises(ValueError):
+        composition_check.verify_unions(rows)
+
+
+def test_joint_coherent_fault_norm_needs_intersection_terms(evidence):
+    rows = evidence['composition']['coherent_unions']
+    composition_check.verify_unions(rows)
+    assert all(row['joint_bad_norm'] > row['naive_sum'] for row in rows)
+    assert all(row['joint_bad_norm'] <= row['product_majorant'] for row in rows)
+
+
+def test_disjoint_sparse_rectangles_require_four_faults_at_two_levels():
+    # Finite control of the combinatorial induction, not an execution of the
+    # imported computation-code gadgets. Three children at each of two levels.
+    bad_weights = []
+    for mask in range(1 << 9):
+        bad_children = sum(((mask >> (3*i)) & 7).bit_count() >= 2 for i in range(3))
+        if bad_children >= 2:
+            bad_weights.append(mask.bit_count())
+    assert min(bad_weights) == 4
+    assert max(bad_weights) == 9
