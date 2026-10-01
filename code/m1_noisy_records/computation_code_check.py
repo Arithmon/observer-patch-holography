@@ -1,7 +1,6 @@
 """Independent truth-table intersection construction and GF(2) checks."""
 
 import hashlib
-import itertools
 import math
 from .independent import keys, need
 

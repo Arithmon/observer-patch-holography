@@ -109,7 +109,7 @@ def verify(row):
 
 def log_failure_majorant(q, rate_constant=1.):
     """Log upper bound only: no invented full-library threshold constant."""
-    integer(q, 2, 10**100)
+    need(type(q) is int and q >= 2, 'integer refinement q >= 2')
     need(type(rate_constant) in (int, float) and math.isfinite(rate_constant)
          and rate_constant > 0, 'positive finite illustrative constant')
     r = (2*q-1).bit_length()  # ceil(log2(2q)), without floating rounding.

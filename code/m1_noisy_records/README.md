@@ -33,8 +33,10 @@ instructions and counts, not a large expanded fault tape. Verification under
 circuits are regression tests. Illustrative noise constants are never called
 a measured or derived full-machine threshold.
 
-The archive increases the safe complete location bound to
-O(q^5 log^16 q). Five constant quantum protection levels and logarithmic
+The archive increases the safe active location bound to O(q^5 log^16 q).
+Retained passive protection diagnostics bring total physical storage-time
+volume to O(q^6 log^25 q); they do not feed back into the computation.
+Five constant quantum protection levels and logarithmic
 classical words yield joint operational error O(q^-20 log^16 q), with paid
 cofinal controls. Bare terminal bits, unprotected external controllers and
 unknown raw-input encoders do not inherit that bound. The fixed source and

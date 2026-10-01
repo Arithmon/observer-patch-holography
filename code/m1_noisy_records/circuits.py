@@ -72,6 +72,8 @@ def candidate():
             'budget': {'record_bits_q_degree': 4, 'record_bits_log_degree': 8,
                        'depth_q_degree': 1, 'depth_log_degree': 8,
                        'volume_q_degree': 5, 'volume_log_degree': 16,
+                       'diagnostic_bits_q_degree': 5, 'diagnostic_bits_log_degree': 17,
+                       'physical_volume_q_degree': 6, 'physical_volume_log_degree': 25,
                        'levels': 5, 'fault_power': 32,
                        'fault_error_q_degree': -27, 'synthesis_per_gate_q_degree': -24,
                        'synthesis_error_q_degree': -20, 'accounting_q_degree': 4,

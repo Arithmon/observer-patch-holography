@@ -180,9 +180,23 @@ bits. Allocate n private n-bit voter lanes and n blank output bits.
    designate the output word as the current archive word. Reuse old workspace
    with charged resets. Count idles on every live input, workspace and output.
 
-There are `W=n(n+2)` live bits and
+For an explicit comparator, start two local blank bits c,d, apply
+`Toffoli(a,b;c)`, then `CNOT(a;d), CNOT(b;d), CNOT(c;d)`. They hold AND and OR.
+Expose c,d as the next two lane values; old a,b are local garbage and can be
+reset with their outcomes retained. The finite test executes these gates on
+all four inputs using the independently checked native Toffoli decomposition.
+Helpers and resets remain in the lane and enlarge native counts by a fixed
+factor. They never touch a shared archive input.
+
+There are `W=n(n+2)` live service bits, up to this fixed native helper factor, and
 `D=2+n+n(n-1)/2` layers. The number of service locations is at most
 `V=W D=O(n^4)`. The implemented n=5 circuit has exactly 515 locations.
+Pad the start of each cycle to its coarse period: the first-layer input idles
+include the entire wait, and each private reset location includes its preceding
+wait and reset. Their no-hit probability is bounded using that whole interval.
+This accounts for storage between refreshes without an uncounted pause. The
+two input/output banks alternate by a fixed schedule; the designation is not
+a mutable unprotected selection bit.
 
 **Refresh lemma.** If at most r service locations are faulty, at the end at
 most r output bits are wrong. Throughout the cycle the old input word still
@@ -275,9 +289,9 @@ All archive lanes refresh in parallel, locally, with depth O(log^2 q).
 Keeping every named record and conservative padding therefore gives
 
 ```
-live wires W_q <= C_W q^4 log^8(2q),
+live active wires W_q <= C_W q^4 log^8(2q),
 scheduled depth D_q <= C_D q log^8(2q),
-complete spacetime locations M_q <= C_M q^5 log^16(2q).      (5)
+active spacetime locations M_q <= C_M q^5 log^16(2q).        (5)
 ```
 
 The extra q in volume is essential: old records persist for O(q) coarse
@@ -285,7 +299,23 @@ periods. The quantum-only O(q^4) ledger cannot be reused. Five levels of the
 fixed universal protection library add finite constant factors; the logarithmic
 classical archive, all resets and all idle intervals are already in (5).
 Bounds intentionally overcount workspace and idles. Fresh-blank/reset events
-are bounded by the same volume; no entropy-erasure energy is inferred.
+are bounded by the same active volume; no entropy-erasure energy is inferred.
+
+There is a second lifetime cost. Native protection and refresh services emit
+their own diagnostic/version records, in addition to the named source history.
+Store them in separate passive central carriers, with at most O(log q) bits
+per service for its identifiers. Their total inventory is
+`R_diag=O(M_q log q)=O(q^5 log^17 q)`. Keeping every one to the final cut and
+counting its idles gives **total physical storage-time volume
+O(q^6 log^25 q)**. These diagnostic bits are noisy; their distribution is not
+claimed equal to noiseless diagnostics. They are never consulted by control
+or by the named archive's refresh. Local TP noise on an unused factor cannot
+change the active reduced state, even if the factors are correlated. Therefore
+they enter the physical resource ledger but need not enter the operational
+bad-event union in (7). This is a proved no-feedback distinction, not omission
+of their exposure. Do not protect every protection diagnostic recursively:
+that would be a different, potentially unbounded requirement. Idle storage
+noise does not itself emit a new explicit program record at every instant.
 
 Allocate separate processors for simultaneous lanes and islands. Let B_q be
 the actual longest local compiled depth, including native decompositions and
@@ -297,7 +327,8 @@ local cluster radius <= c eta_q/128.                       (6)
 ```
 
 Local shared processors are serialized; separate processors operate in
-parallel. Finite per-owner inventories can grow as in (5); no bounded spatial
+parallel. Finite per-owner inventories include (5) and the passive diagnostic
+carriers just counted; no bounded spatial
 density of hardware is being assumed. Parallel constituents of an encoded
 flight cross the original link once, with recovery at its endpoints. Each
 flight still takes at least its length/c. No archive service introduces a

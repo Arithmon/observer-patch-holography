@@ -129,7 +129,8 @@ def verify_toffoli(tape):
 
 def verify_budget(row):
     fields = ('record_bits_q_degree record_bits_log_degree depth_q_degree depth_log_degree '
-              'volume_q_degree volume_log_degree levels fault_power fault_error_q_degree '
+              'volume_q_degree volume_log_degree diagnostic_bits_q_degree diagnostic_bits_log_degree '
+              'physical_volume_q_degree physical_volume_log_degree levels fault_power fault_error_q_degree '
               'synthesis_per_gate_q_degree synthesis_error_q_degree accounting_q_degree '
               'total_error_q_degree accounting_error_q_degree')
     keys(row, fields)
@@ -146,6 +147,9 @@ def verify_budget(row):
     synthesis = row['record_bits_q_degree'] + row['synthesis_per_gate_q_degree']
     noise = volume-power
     for name, expected in [('volume_q_degree', volume), ('volume_log_degree', 16),
+                           ('diagnostic_bits_q_degree', volume), ('diagnostic_bits_log_degree', 17),
+                           ('physical_volume_q_degree', volume+row['depth_q_degree']),
+                           ('physical_volume_log_degree', 17+row['depth_log_degree']),
                            ('fault_power', power), ('fault_error_q_degree', noise),
                            ('synthesis_error_q_degree', synthesis),
                            ('total_error_q_degree', max(noise, synthesis)),
