@@ -18,6 +18,20 @@ FACES_PATH = ROOT / "Lean/ObserverPatchHolography/CoreAxioms.lean"
 GEOMETRY_PATH = ROOT / "code/source_selection_model/geometry.py"
 RECEIPT_PATH = ROOT / "code/m1_source_realization/receipt.json"
 DEGREE_VERIFIER = ROOT / "code/a5_closure/verify_galois_port_frame_independent.py"
+PINNED_SOURCE_SHA256 = {
+    "Lean/ObserverPatchHolography/CoreAxioms.lean": "addcea08fe55c0ccc3edbeb90ebd9df4b640c96bd20e9755417bcdb84f093fe4",
+    "code/source_selection_model/geometry.py": "de47ae19dd4ae1677d0cefb0163513f2f1f6d24dfb4dd0264506d0b17fceb843",
+    "code/source_selection_model/DERIVATION.md": "4881f7c7e41b6294d3b164e943952438f09a3aa03041bf152a382d8ff42aba85",
+    "code/m1_source_realization/topology.py": "7319da3f7e9544cf334f7cf152b1aff350f822b2ace0bc786b5bef53e0429f14",
+    "code/m1_source_realization/receipt.json": "b55a2ca00c094f2d6e5e55306e20181e52431ef4ad75f0f6c8ea1e2066b6dc54",
+    "code/m1_source_realization/README.md": "3e9c15b939925607e2fe498fff93111cc332591f039871f72ea86295e57c735b",
+    "Lean/Geometry/ScreenCarrierMapCandidate.lean": "60a95ebdf173f2c2c5bd8bed4ade34e64392299d787c4305ed90e8335e5c2ab1",
+    "Lean/Screen/PortGramRepairBand.lean": "75286414b7c33492b40225dd48ca9321cf3a09ecf96b65e254af9bd02421cf72",
+    "code/a5_closure/galois_port_frame_certificate.py": "05b917898f3a2266ca54c22a9c1b174aa87f374196e4297c8bda1839a8b0452a",
+    "code/a5_closure/galois_port_frame_certificate.md": "d984577dff02433978856d89d72a8e17a7c43ad49c870e27c0edeb13486ae25e",
+    "code/a5_closure/verify_galois_port_frame_independent.py": "0b805033eb3e7c27c812a2d0919504796f73980d5d6d75f23dd68925045fbbea",
+    "code/a5_closure/manifests/galois_port_frame_reference.json": "455085536262ad942918ab541bd0a14784d682bb428fa25deabd55f400993a6f",
+}
 
 
 def need(value, label):
@@ -127,6 +141,9 @@ def verify_support(tower):
 
 
 def verify():
+    source_hashes = {path: hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
+                     for path in PINNED_SOURCE_SHA256}
+    need(source_hashes == PINNED_SOURCE_SHA256, "pinned attachment corpus drift")
     local = read_local()
     seed = read_geometry_seed()
     packet = json.loads(RECEIPT_PATH.read_text())
@@ -147,6 +164,30 @@ def verify():
     sample = group[0]
     images = {tuple(g[sample[v]] for v in range(12)) for g in group}
     need(len(images) == 60, "free transitive group action")
+    # Independently inspect the fixed level-zero source row. Its larger fibre
+    # and sole process link mark support vertex zero, reducing its proper
+    # rechart stabilizer from A5 to C5.
+    row = tower[0]
+    fibres, carriers, links = row["fibres"], row["carriers"], row["process_links"]
+    carrier_index = {tuple(pair): i for i, pair in enumerate(carriers)}
+    decorated = []
+    for p in group:
+        if any(fibres[v] != fibres[p[v]] for v in range(12)):
+            continue
+        action = [carrier_index[(p[v], slot)] for v, slot in carriers]
+        moved = {tuple(sorted((action[i], action[j]))) for i, j in links}
+        if moved == {tuple(sorted(pair)) for pair in links}:
+            decorated.append(p)
+    need(len(decorated) == 5, "fixed full-row proper automorphism stabilizer")
+    maps = {tuple(p) for p in group}
+    remaining, quotient_orbits = set(maps), 0
+    while remaining:
+        p = next(iter(remaining))
+        orbit = {tuple(g[p[v]] for v in range(12)) for g in decorated}
+        need(orbit <= maps and len(orbit) == 5, "marked-support action on seed maps")
+        remaining -= orbit
+        quotient_orbits += 1
+    need(quotient_orbits == 12, "fixed-mark quotient orbit count")
     support_levels = verify_support(tower)
 
     # Degree data comes from the separately maintained independent Galois
@@ -162,6 +203,9 @@ def verify():
     return {"verified": True, "seed_relation": "literal oriented equality",
             "candidate_count": 60, "exact_chain_pushforwards": 60,
             "stabilizer_size": 1, "orbit_count": 1, "support_levels": support_levels,
+            "fixed_full_support_row_aut_size": len(decorated),
+            "raw_maps_mod_fixed_mark_aut_orbits": quotient_orbits,
+            "host_mark_orbit_size_under_A5": 12,
             "degree_receipt_sha256": verifier_sha, "local_degrees": degrees,
             "producer_candidate_list_consumed": False}
 
