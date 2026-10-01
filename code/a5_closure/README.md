@@ -23,6 +23,8 @@ python3 sl2f5_port_spin_bridge_certificate.py verify  # exact SL(2,F5) to PORT-S
 python3 sl2f5_mckay_e8_certificate.py verify         # exact McKay graph of the certified spin doublet: affine E8, Galois control
 python3 verify_galois_port_frame_independent.py    # incidence-derived two-frame geometry and exact degrees 1/7
 python3 galois_source_response_control.py          # bounded non-selection under complete source-law conjugation
+python3 source_repair_generator_certificate.py     # exact seam-law classification and source-receipt boundary
+python3 verify_source_repair_generator_independent.py  # independent incidence, invariant-weight and receipt checks
 python3 source_current_tomography_stage0.py verify    # source-current tomography Stage 0 baseline pins
 python3 source_current_tomography_stage1_contract.py verify  # Stage 1 admissibility contract
 python3 source_current_order_sensitive_inventory.py all      # Stage 2 bounded inventory and certificate
@@ -39,6 +41,13 @@ python3 test_audit.py                    # regression suite
 
 Requires Python 3.11+ and SymPy. The independent cross-check
 `independent_lane_check.py` also needs NumPy. The suite exits 0.
+
+The source-repair checks consume the observer-like patch's local port
+incidence, record-conserving repair relation and scheduler/readback receipts.
+They distinguish an invariant linear seam generator from the full nonlinear
+integer repair process; their conditional band result does not select a
+physical proposal law. Run their mutation controls with
+`python3 -m unittest discover -s tests -p test_source_repair_generator_certificate.py`.
 
 ## What is certified (exact; no floating-point fit, no measured number)
 

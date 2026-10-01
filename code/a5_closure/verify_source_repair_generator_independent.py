@@ -66,10 +66,17 @@ def verify_receipts(receipts=None):
  if "proposal_law" in mech or "proposal_weights" in mech:raise AssertionError("#628 acquired proposal-law data; reassess source conclusion")
  return {k:{"schema":d["schema"],"raw_sha256":hashlib.sha256(RECEIPTS[k].read_bytes()).hexdigest(),"canonical_json_sha256":digest(d)} for k,d in docs.items()}
 
-def audit():
- c=json.loads(MANIFEST.read_text())["carrier"]; lab=c["ports"];ix={x:i for i,x in enumerate(lab)}
+def audit(doc=None):
+ c=(json.loads(MANIFEST.read_text()) if doc is None else doc)["carrier"]; lab=c["ports"];ix={x:i for i,x in enumerate(lab)}
+ if len(lab)!=12 or len(ix)!=12:raise AssertionError("twelve distinct port labels required")
  fs=[tuple(ix[x] for x in f) for f in c["oriented_faces"]]
  es={tuple(sorted(z)) for a,b,d in fs for z in ((a,b),(b,d),(d,a))};n=len(lab)
+ # Both incidence representations belong to the input certificate. Rebuilding
+ # a valid graph from faces must not hide corruption of the serialized seams.
+ serialized=c["edges"]
+ if not isinstance(serialized,list) or any(not isinstance(e,list) or len(e)!=2 for e in serialized):raise AssertionError("serialized seam shape mismatch")
+ seams=[tuple(sorted((ix[a],ix[b]))) for a,b in serialized]
+ if len(seams)!=30 or len(set(seams))!=30 or set(seams)!=es:raise AssertionError("serialized seams differ from oriented faces")
  A=[set() for _ in lab]
  for a,b in es:A[a].add(b);A[b].add(a)
  face={ck(f) for f in fs}; perms=[];m={};used=set()

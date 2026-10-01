@@ -42,14 +42,17 @@ class GeneratorBoundaryTests(unittest.TestCase):
  def test_deleted_duplicate_and_distance_two_serialized_edges_are_rejected(self):
   m=copy.deepcopy(self.carrier);m["carrier"]["edges"].pop()
   with self.assertRaises(ValueError):cert.classify(m)
+  with self.assertRaises(AssertionError):independent.audit(m)
   m=copy.deepcopy(self.carrier);m["carrier"]["edges"].append(m["carrier"]["edges"][0][:])
   with self.assertRaises(ValueError):cert.classify(m)
+  with self.assertRaises(AssertionError):independent.audit(m)
   m=copy.deepcopy(self.carrier);edges=m["carrier"]["edges"]
   adj={x:set() for x in m["carrier"]["ports"]}
   for a,b in edges:adj[a].add(b);adj[b].add(a)
   d2=next((a,b) for a in m["carrier"]["ports"] for b in m["carrier"]["ports"] if a<b and b not in adj[a] and adj[a]&adj[b])
   edges[-1]=list(d2)
   with self.assertRaises(ValueError):cert.classify(m)
+  with self.assertRaises(AssertionError):independent.audit(m)
 
  def test_receipt_pins_self_digests_and_scope_fail_closed(self):
   self.assertEqual(len(cert.read_receipts()["receipts"]),3)

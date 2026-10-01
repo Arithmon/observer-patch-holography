@@ -1164,6 +1164,7 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/a5_closure/tests/test_source_current_tomography_stage0.py",
             "code/a5_closure/tests/test_source_current_tomography_stage1_contract.py",
             "code/a5_closure/tests/test_source_current_order_sensitive_inventory.py",
+            "code/a5_closure/tests/test_source_repair_generator_certificate.py",
         ],
     ),
     (
