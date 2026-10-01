@@ -60,6 +60,9 @@ jobs:
         if: github.event_name == 'push' || github.event_name == 'pull_request'
         run: python tools/run_mandatory_suite.py --certificate-smoke-only
 
+      - name: Verify source repair generators and hostile incidence controls
+        run: python -m pytest -q code/a5_closure/tests/test_source_repair_generator_certificate.py
+
       - name: Execute the exhaustive exact certificate suites
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: python tools/run_mandatory_suite.py --certificates-only

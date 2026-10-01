@@ -31,6 +31,18 @@ def test_committed_receipt(candidate):
     check.same(packet['evidence'], candidate)
 
 
+@pytest.mark.parametrize('roundoff', [-1.8656162355304537e-17, 1.8656162355304537e-17])
+def test_coin_matrix_roundoff_does_not_relax_physical_scales(roundoff):
+    path = 'evidence.coin.stages[2].matrix[0][0][1]'
+    check.same(0., roundoff, path)
+    check.same(roundoff, 0., path)
+    with pytest.raises(ValueError):
+        check.same(0., 1e-8, path)
+    for field in ('phase_rate', 'code_event_time'):
+        with pytest.raises(ValueError):
+            check.same(0., 1e-14, 'evidence.resources.'+field)
+
+
 def test_parent_source_ordered_response_and_charts():
     verify_response.verify(verify_response.strict_load(verify.ROOT/'code/source_selection_model/response.json'))
 

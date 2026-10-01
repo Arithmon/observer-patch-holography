@@ -32,7 +32,7 @@ def same(actual, expected, path='evidence'):
         # Only numerical matrix entries/eigenvalue zeros and residuals have
         # an absolute tolerance. Positive physical scales cannot become zero.
         absolute = any(x in path for x in ('eigenvalues', 'matrix_unit_images', 'diagonal',
-            'three_step_probe', 'amplitudes', '.output', '_effect', '.effect', 'concurrence', 'error'))
+            'three_step_probe', 'amplitudes', '.output', '.matrix[', '_effect', '.effect', 'concurrence', 'error'))
         tol = 2e-10 if absolute else (2e-9*abs(expected) if expected else 1e-12)
         need(abs(actual-expected) <= tol, f'{path}: mismatch {actual} != {expected}')
     else:
