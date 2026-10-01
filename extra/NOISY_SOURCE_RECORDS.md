@@ -421,11 +421,15 @@ for h after its last corrective operation. For the two possible intended
 labels, any preceding preparation followed by this binary symmetric channel
 has worst-case error at least pi(h). Its output distinguishability contracts
 by `1-2pi(h)`; data processing prevents a preceding encoder from increasing
-it beyond one. Thus an uncoded last bit cannot inherit (9). With h=a/c its
+it beyond one. Thus (9) cannot be transferred to a bare bit without bounding
+its final exposure. With h=a/c its
 floor is Theta(q^-1), although the coded public record has (9). This is why
 majority is an explicitly specified read statistic and is never smuggled in
 as a perfect physical feedback gate. No architecture can promise a perfectly
 reliable final naked bit under this noise model.
+Faster terminal service can reduce the floor if its extra control cost is
+charged; this is not an absolute prohibition on asymptotically reliable bare
+outputs under a different terminal schedule.
 
 The operational gain for OPH is therefore precise: the exhibited microscopic
 process can supply the same causal reads, fermionic dynamics and clock outputs

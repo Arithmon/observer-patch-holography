@@ -33,6 +33,22 @@ def tape(theta, phi, alpha):
 
 def execute(ops, qubits=7, inputs=2):
     """Forward state-vector/isometry execution (little-endian qubits)."""
+    if (type(qubits) is not int or type(inputs) is not int or
+            not 0 <= inputs <= qubits or not 1 <= qubits or qubits+inputs > 20):
+        raise ValueError('finite executor dimensions')
+    if type(ops) is not list or not 0 < len(ops) <= 1024:
+        raise ValueError('bounded nonempty tape required')
+    for op in ops:
+        if type(op) is not list or len(op) < 2 or op[0] not in ('h', 't', 'tdg', 'ry', 'cx', 'cz'):
+            raise ValueError('unknown or malformed gate')
+        if len(op) != (3 if op[0] in ('cx', 'cz', 'ry') else 2):
+            raise ValueError('gate arity')
+        operands = op[1:] if op[0] in ('cx', 'cz') else op[1:2]
+        if (any(type(q) is not int or not 0 <= q < qubits for q in operands)
+                or len(set(operands)) != len(operands)):
+            raise ValueError('distinct valid operands required')
+        if op[0] == 'ry' and (type(op[2]) not in (int, float) or not math.isfinite(op[2])):
+            raise ValueError('finite angle required')
     state = np.zeros((2**qubits, 2**inputs), complex)
     state[:2**inputs] = np.eye(2**inputs)
     for op in ops:

@@ -94,6 +94,8 @@ def test_toffoli_phase_error_hidden_from_truth_tables_is_rejected():
 def test_malformed_quantum_tapes(op):
     with pytest.raises(ValueError):
         check.isometry([op])
+    with pytest.raises(ValueError):
+        circuits.execute([op])
 
 
 def test_archive_independent_full_fault_census(evidence):
@@ -153,6 +155,25 @@ def test_archive_structural_corruptions_fail_before_census(mutation):
 def test_no_silent_discard_of_trash_faults(faults):
     with pytest.raises(ValueError):
         archive_check.run(archive.schedule(5), [0]*5, faults)
+    with pytest.raises(ValueError):
+        archive.run(archive.schedule(5), 0, faults[0] if len(faults) == 1 else faults)
+
+
+@pytest.mark.parametrize('word', [-1, 32, True, 1.0])
+def test_producer_rejects_invalid_initial_words(word):
+    with pytest.raises(ValueError):
+        archive.run(archive.schedule(5), word)
+
+
+def test_producer_rejects_numerically_equal_malformed_schedule():
+    p = archive.schedule(5)
+    p['width'] = float(p['width'])
+    with pytest.raises(ValueError):
+        archive.run(p, 0)
+    p = archive.schedule(5)
+    p['layers'][1][0][1] = False
+    with pytest.raises(ValueError):
+        archive.run(p, 0)
 
 
 def test_all_resource_entries_are_load_bearing(evidence):

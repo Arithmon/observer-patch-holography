@@ -27,8 +27,24 @@ def locations(program):
 
 
 def run(program, input_mask, fault=None):
+    n = program['length']
+    if program != schedule(n):
+        raise ValueError('run expects the complete generated refresh schedule')
+    if (type(program['width']) is not int or any(type(q) is not int for q in program['outputs'])
+            or any(type(q) is not int for layer in program['layers'] for op in layer for q in op[1:])):
+        raise ValueError('integer wire indices required')
+    if type(input_mask) is not int or not 0 <= input_mask < 1 << n:
+        raise ValueError('input word outside archive length')
+    ops = locations(program)
+    if fault is not None:
+        if type(fault) not in (tuple, list) or len(fault) != 2:
+            raise ValueError('fault must be a location and nonzero operand mask')
+        i, mask = fault
+        if (type(i) is not int or not 0 <= i < len(ops) or type(mask) is not int
+                or not 1 <= mask < 1 << (len(ops[i])-1)):
+            raise ValueError('fault location or mask outside circuit')
     state = input_mask
-    for index, op in enumerate(locations(program)):
+    for index, op in enumerate(ops):
         name, a, *rest = op
         if name == 'reset':
             state &= ~(1 << a)
