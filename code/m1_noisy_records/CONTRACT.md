@@ -18,6 +18,8 @@ Use the existing proper-code/CCG capability, not a new reliable controller axiom
 4. A credited measurement-free universal protection construction, a charged
    source schedule, and all-size noise, history and accounting bounds. Count
    maintenance over each record's entire lifetime and the fresh blank supply.
+   Specify a computation code and prove its distance exceeds the complete
+   correction-and-gate spread, rather than transferring the smaller old code.
 5. Explicit terminal-output and unmaintained-history counterbounds; strict
    independent evidence replay, hostile mutations, claim registration and CI.
 

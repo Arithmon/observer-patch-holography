@@ -63,7 +63,9 @@ def execute(ops, qubits=7, inputs=2):
 
 def candidate():
     from .archive import evidence
+    from .computation_code import candidate as code_candidate
     return {'cases': [{'angles': list(angles), 'tape': tape(*angles)} for angles in CASES],
+            'computation_code': code_candidate(),
             'toffoli': toffoli(0, 1, 2),
             'archive': evidence(),
             'export': {'copies': 5, 'tape': [['cx', 1, j] for j in range(2, 7)]},

@@ -200,7 +200,9 @@ def verify_export(row):
 
 def verify_evidence(evidence):
     from .archive_check import verify as verify_archive
-    keys(evidence, 'cases toffoli archive export budget terminal')
+    from .computation_code_check import verify as verify_code
+    keys(evidence, 'cases computation_code toffoli archive export budget terminal')
+    verify_code(evidence['computation_code'])
     cases = ((.37, -.61, .43), (math.pi/2, math.pi/3, -math.pi/4), (-.83, .29, 1.17))
     need(type(evidence['cases']) is list and len(evidence['cases']) == len(cases), 'complete cases')
     for row, angles in zip(evidence['cases'], cases):
