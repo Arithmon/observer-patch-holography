@@ -159,7 +159,7 @@ The tests cover the following controls. Local/support/both proper `A5` relabelin
 ```text
 BASELINE_SHA: 800ed61ac9fb21d61f206a0240c8b3717c3af945
 FIRST_PACKET_COMMIT: cbed1a163c7dcc43a3f2bc2002ad5204c59e833c
-BRANCH_HEAD: see final handoff (hardening commit)
+BRANCH_HEAD: 45a02efd107df7c557b20a339920b344e82e535c
 
 LOCAL_SEED: CoreAxioms.orientedFaces; 20 ordered faces; coherent positive orientation; 30 edges; fundamental cycle is their integer sum
 GLOBAL_SUPPORT_SEED: m1_source_realization/receipt.json level 0; 20 faces; same ordered orientation; designated cycle is the selected section image
