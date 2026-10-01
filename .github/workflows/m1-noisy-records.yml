@@ -1,0 +1,51 @@
+name: M1 Noisy Records
+
+on:
+  push:
+    branches: [main]
+    paths: &inputs
+      - "code/m1_noisy_records/**"
+      - "extra/NOISY_SOURCE_RECORDS.md"
+      - ".github/workflows/m1-noisy-records.yml"
+      - "code/m1_fixed_noise/**"
+      - "extra/FIXED_RATE_SOURCE_READS.md"
+      - ".github/workflows/m1-fixed-noise.yml"
+      - "code/m1_fermionic_source/**"
+      - "extra/FERMIONIC_SOURCE_CLOCKS.md"
+      - "code/m1_source_realization/**"
+      - "extra/COHERENT_SOURCE_CLOCKS.md"
+      - "code/source_selection_model/**"
+      - "code/a5_closure/port_current_inner_certificate.py"
+      - "code/m1_operational_clocks/check.py"
+      - "extra/MASSIVE_OPERATIONAL_CLOCKS.md"
+      - "claims/claim_registry.yaml"
+      - "claims/axiom_registry.yaml"
+      - "docs/AXIOM_REFERENCE.md"
+      - "requirements.txt"
+      - ".gitattributes"
+      - ".github/workflows/m1-source-realization.yml"
+      - ".github/workflows/m1-fermionic-source.yml"
+  pull_request:
+    paths: *inputs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  controls:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Install pinned dependencies
+        run: pip install -r requirements.txt
+      - name: Replay noisy control, live archive and hostile controls
+        run: python -m pytest -q code/m1_noisy_records
