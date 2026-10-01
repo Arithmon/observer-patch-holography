@@ -22,7 +22,7 @@ HERE = Path(__file__).resolve().parent
 OWN_FILES = ('__init__.py', 'pauli.py', 'model.py', 'circuits.py', 'spatial.py', 'walk.py',
              'preparation.py', 'experiments.py', 'check.py', 'geometry_check.py',
              'preparation_check.py', 'experiment_check.py', 'verify.py', 'build.py',
-             'test_fermionic.py', 'README.md', 'CONTRACT.md', 'AUDIT.md')
+             'test_fermionic.py', 'README.md', 'CONTRACT.md')
 SOURCES = sorted(set(parent.SOURCES + ['code/m1_source_realization/receipt.json']
                     + ['code/m1_fermionic_source/'+p for p in OWN_FILES]
                     + ['extra/FERMIONIC_SOURCE_CLOCKS.md', '.github/workflows/m1-fermionic-source.yml']))

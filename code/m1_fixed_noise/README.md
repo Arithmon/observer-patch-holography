@@ -1,5 +1,9 @@
 # Fixed physical noise, corrected source reads
 
+Protection operates within an observer-like self-reading patch system:
+local state and ports support readback, retained records and corrective
+feedback, with public evidence bundles for the complete noisy instruments.
+
 This package builds on the [all-sector fermionic source](../m1_fermionic_source/README.md).
 It removes the need for a decreasing physical dephasing rate in that source's
 constructed operational refinement. Four levels of error correction, finite

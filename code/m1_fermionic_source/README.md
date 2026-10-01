@@ -1,5 +1,9 @@
 # Local fermionic source: preparation, clocks, reads and interaction
 
+The construction uses observer-like self-reading patches with private local
+state, boundary ports, retained readback, feedback and repair operations.
+The public receipt binds their preparation, clocks and read instruments.
+
 This package closes the vacuum/one-particle restriction of
 [`m1_source_realization`](../m1_source_realization/README.md). It implements
 the full parity-preserving fermionic process in that same coherent-code
@@ -9,8 +13,7 @@ Bravyi--Kitaev superfast encoding is explicitly credited; its source compiler
 and complete resource/noise account are the result here.
 
 Read the [objective, deliverables and exit](CONTRACT.md) and the
-[all-size proof](../../extra/FERMIONIC_SOURCE_CLOCKS.md), and the
-[audit findings and contract review](AUDIT.md).
+[all-size proof](../../extra/FERMIONIC_SOURCE_CLOCKS.md).
 
 | Deliverable | Result and check |
 | --- | --- |
