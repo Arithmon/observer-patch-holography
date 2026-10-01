@@ -13418,6 +13418,114 @@
         "boundary": [],
         "rationale": "This row proves a finite classical archive fault lemma and readout counterbounds. Its explicitly specified bit-noise law and coded output convention supply no physical energy, source-selection or continuum-identification premise."
       }
+    },
+    {
+      "claim_id": "OPH-SOURCE-EXPANDER-LIVE-ARCHIVE",
+      "statement": "An explicit powered Margulis-Gabber-Galil graph supplies a noisy central-bit archive whose degree and refresh depth are independent of record size N. The private-voter circuit retains all shared-input idles, uses only bounded native Boolean services, and touches at most one shared input per faulty location. For at most floor(N/16) old errors and floor(N/64) arbitrary faulty locations, spectral contraction bounds new errors by 29N/576 and preserves the old public majority throughout the cycle. The complete cycle has at most C_A N locations for a fixed native constant, giving an exponentially small bad-cycle norm at fixed positive subthreshold local fault amplitude. Independent exact graph certificates and 91740 native single-fault experiments retain the failures of weaker unpowered circuits. The fixed degree 8^12 is large and no optimized physical threshold is inferred.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_fixed_strength_public_record_source"
+      ],
+      "imported_results": [
+        "Margulis_Gabber_Galil_absolute_spectral_bound",
+        "Reed_majority_logic_decoding",
+        "measurement_free_computation_code_theorem_Aharonov_Ben_Or",
+        "noisy_leakage_reduction_Aliferis_Terhal",
+        "Stinespring_continuity_Kretschmann_Schlingemann_Werner",
+        "constructive_Solovay_Kitaev_synthesis"
+      ],
+      "oph_specific_delta": "Replaces the growing all-to-all public voter circuit by a proved constant-degree live refresh with a fixed nonzero elementary-noise interval and charged physical fault ownership.",
+      "novelty_type": "fixed_strength_live_public_source_records",
+      "falsifier": "The labelled graph differs from the credited expander, edge multiplicities are lost, a faulty location touches two shared inputs or private voters, an idle is omitted, or the live and output error inequalities fail.",
+      "scope_if_false": "The stated fixed-strength archive or joined source construction fails. Source selection, an autonomous clock and physical energy remain separate declarations, not consequences of these bounds.",
+      "owner_paper": "extra/FIXED_STRENGTH_PUBLIC_RECORDS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "code/m1_expander_archive/__init__.py",
+        "code/m1_expander_archive/format.py",
+        "code/m1_expander_archive/graphs.py",
+        "code/m1_expander_archive/graph_check.py",
+        "code/m1_expander_archive/circuit.py",
+        "code/m1_expander_archive/circuit_check.py",
+        "code/m1_expander_archive/decoder.py",
+        "code/m1_expander_archive/decoder_check.py",
+        "code/m1_expander_archive/bounds.py",
+        "code/m1_expander_archive/bounds_check.py",
+        "code/m1_expander_archive/export.py",
+        "code/m1_expander_archive/export_check.py",
+        "code/m1_expander_archive/verify.py",
+        "code/m1_expander_archive/build.py",
+        "code/m1_expander_archive/test_archive.py",
+        "code/m1_expander_archive/README.md",
+        "code/m1_expander_archive/CONTRACT.md",
+        "code/m1_expander_archive/receipt.json",
+        "extra/FIXED_STRENGTH_PUBLIC_RECORDS.md"
+      ],
+      "status": "proved_for_explicit_cofinal_source_with_credited_expander_and_computation_code_results",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row proves an explicit graph, Boolean refresh invariant and local-noise tail bound for a declared central-bit archive. Its graph and fault ownership supply no microscopic source selection, physical energy scale or empirical premise-register branch."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY",
+      "statement": "The declared proper-code CCG source admits convergent joint decoded quantum outputs and live public coded histories at fixed nonzero subthreshold elementary quantum and classical error strength. A staged protected-to-public decoder has error bounded uniformly in the growing concatenation depth, avoiding a shared raw export bottleneck. The actual punctured RM(5,11) classical record decoder corrects every error set through weight 31 by a proved majority-logic and two-fill puncture algorithm; independent full-size executions retain a 32-error wrong-label witness and a complete failure fallback. Native complete transfer/reset implements noisy local leakage reduction, including its private complement branches. Combining the explicit expander archive with the credited measurement-free computation-code construction gives O(log log q) quantum levels, O(log q) public words, joint error O(q^-20 log^(16+2kappa)(2q)) and additional positive accounting error O(q^-16 log^(16+2kappa)(2q)). Complete diagnostic storage-time is O(q^6 log^(25+3kappa)(2q)); all local controls, resets, waiting intervals, parallel block flights and record lifetimes are charged. A fixed nonzero Markov erasure/bit-flip process inhabits the admitted noise interval. The source, external schedule and logical accounting reference remain declared; no numerical full-machine threshold, autonomous clock, physical energy calibration or A1-A3 source selection is asserted.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_fixed_strength_public_record_source"
+      ],
+      "imported_results": [
+        "Margulis_Gabber_Galil_absolute_spectral_bound",
+        "Reed_majority_logic_decoding",
+        "measurement_free_computation_code_theorem_Aharonov_Ben_Or",
+        "noisy_leakage_reduction_Aliferis_Terhal",
+        "Stinespring_continuity_Kretschmann_Schlingemann_Werner",
+        "constructive_Solovay_Kitaev_synthesis"
+      ],
+      "oph_specific_delta": "Joins fixed-strength full-carrier quantum noise, faulty runtime control and live public records in one source construction, with an actual computation-code record decoder and a uniform staged-export bound.",
+      "novelty_type": "fixed_strength_live_public_source_records",
+      "falsifier": "The puncture decoder fails within radius 31, an export stage is unprotected at growing size, coherent fault norms are treated as probabilities, a native complement branch or named abort is omitted, the joint noise interval is empty, or the claimed error and lifetime bounds fail.",
+      "scope_if_false": "The stated fixed-strength archive or joined source construction fails. Source selection, an autonomous clock and physical energy remain separate declarations, not consequences of these bounds.",
+      "owner_paper": "extra/FIXED_STRENGTH_PUBLIC_RECORDS.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "code/m1_expander_archive/__init__.py",
+        "code/m1_expander_archive/format.py",
+        "code/m1_expander_archive/graphs.py",
+        "code/m1_expander_archive/graph_check.py",
+        "code/m1_expander_archive/circuit.py",
+        "code/m1_expander_archive/circuit_check.py",
+        "code/m1_expander_archive/decoder.py",
+        "code/m1_expander_archive/decoder_check.py",
+        "code/m1_expander_archive/bounds.py",
+        "code/m1_expander_archive/bounds_check.py",
+        "code/m1_expander_archive/export.py",
+        "code/m1_expander_archive/export_check.py",
+        "code/m1_expander_archive/verify.py",
+        "code/m1_expander_archive/build.py",
+        "code/m1_expander_archive/test_archive.py",
+        "code/m1_expander_archive/README.md",
+        "code/m1_expander_archive/CONTRACT.md",
+        "code/m1_expander_archive/receipt.json",
+        "extra/FIXED_STRENGTH_PUBLIC_RECORDS.md"
+      ],
+      "status": "proved_for_explicit_cofinal_source_with_credited_expander_and_computation_code_results",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row joins the declared proper-code source to a staged public decoder and noisy archive, under a specified fixed-strength channel model and charged schedule. The construction does not identify its controls, accounting or source with a physically selected microscopic process or an empirical premise-register branch."
+      }
     }
   ]
 }

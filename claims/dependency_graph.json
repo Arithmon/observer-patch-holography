@@ -305,7 +305,9 @@
   "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
   "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
   "OPH-SOURCE-NOISY-CONTROL-HISTORIES",
-  "OPH-SOURCE-LIVE-RECORD-PROTECTION"
+  "OPH-SOURCE-LIVE-RECORD-PROTECTION",
+  "OPH-SOURCE-EXPANDER-LIVE-ARCHIVE",
+  "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY"
  ],
  "edges": [
   {
@@ -2677,6 +2679,26 @@
    "role": "Supplies actual noisy public export and live record maintenance, with every retained lifetime and terminal boundary counted.",
    "from": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
    "to": "OPH-SOURCE-NOISY-CONTROL-HISTORIES"
+  },
+  {
+   "role": "Supplies the central-bit interpretation, private-voter fault ownership and live-bank handoff. The new explicit graph replaces its all-to-all fanout and shrinking-error bound.",
+   "from": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
+   "to": "OPH-SOURCE-EXPANDER-LIVE-ARCHIVE"
+  },
+  {
+   "role": "Supplies a live public archive with fixed-degree native service count and an exponential bad-cycle bound at fixed subthreshold strength.",
+   "from": "OPH-SOURCE-EXPANDER-LIVE-ARCHIVE",
+   "to": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY"
+  },
+  {
+   "role": "Supplies the exact causal instrument compiler, actual computation code, protected classical feedback and source lifetime ledger; a staged record decoder and growing protection replace its fixed-level export.",
+   "from": "OPH-SOURCE-NOISY-CONTROL-HISTORIES",
+   "to": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY"
+  },
+  {
+   "role": "Supplies complete proper-code transfer and reset services from which the noisy full-carrier reduction is derived without a new reversible M6 operation.",
+   "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+   "to": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY"
   }
  ]
 }
