@@ -165,6 +165,41 @@ def test_indexed_compiler_keeps_both_operands_in_one_service():
                     assert circuit.operation(17, power, layer, operand) == op
 
 
+@pytest.mark.parametrize('power', [1, 2, 12])
+def test_indexed_compiler_matches_independent_walks_and_sort_rows(power):
+    rng = random.Random(314159+power)
+    m, n, d = 17, 289, 8**power
+    maps = graph_check.expected_maps(m)
+    width = n*(d+2)
+    for _ in range(48):
+        word, source = rng.randrange(d), rng.randrange(n)
+        voter, remainder = source, word
+        for _ in range(power):
+            voter = maps[remainder % 8][voter]
+            remainder //= 8
+        expected = ['copy', source, n+d*voter+word]
+        assert circuit.operation(m, power, word+1, source) == expected
+        assert circuit.operation(m, power, word+1, expected[2]) == expected
+    # Construct layer numbers from bubble rows, independently of the
+    # compiler's binary-search inversion of a triangular number.
+    rows = {0, 1, d//2, d-2} | {rng.randrange(d-1) for _ in range(48)}
+    for row in rows:
+        count = d-1-row
+        for position in {0, count-1, rng.randrange(count)}:
+            layer = d+1+row*(2*d-row-1)//2+position
+            voter = rng.randrange(n)
+            first = n+d*voter+position
+            expected = ['sort', first, first+1]
+            assert circuit.operation(m, power, layer, first) == expected
+            assert circuit.operation(m, power, layer, first+1) == expected
+            for idle in (voter, width-1, n+d*((voter+1) % n)+d-1):
+                # The last private bit participates only in the first row's
+                # final comparator; choose a shared/output idle in that case.
+                if idle >= n and idle < n*(d+1) and position == d-2:
+                    continue
+                assert circuit.operation(m, power, layer, idle) == ['idle', idle]
+
+
 @pytest.mark.parametrize('mutation', ['missing', 'idle', 'bool', 'wrong_wire'])
 def test_full_degree_index_controls_reject_mutations(evidence, mutation):
     rows = copy.deepcopy(evidence['circuit']['indexed'])
@@ -305,6 +340,21 @@ def test_staged_decoder_countercontrols_are_binding(evidence, mutation):
         rows[-1]['unitary'] = pack(np.eye(2))
     with pytest.raises(ValueError):
         export_check.verify_stages(rows)
+
+
+@pytest.mark.parametrize('stage', range(3, 8))
+@pytest.mark.parametrize('factor', [0, -1, .5, 2])
+def test_tiny_nonzero_decoder_terms_cannot_be_erased(evidence, stage, factor):
+    rows = copy.deepcopy(evidence['export']['stages'])
+    rows[-1]['strengths'][stage] *= factor
+    with pytest.raises(ValueError, match='positive recursive stage strength'):
+        export_check.verify_stages(rows)
+
+
+def test_small_roundoff_in_nonzero_decoder_terms_is_allowed(evidence):
+    rows = copy.deepcopy(evidence['export']['stages'])
+    rows[-1]['strengths'] = [value*(1+1e-13) for value in rows[-1]['strengths']]
+    export_check.verify_stages(rows)
 
 
 @pytest.mark.parametrize('mutation', ['drop', 'no_leak', 'distance', 'zero_noise'])

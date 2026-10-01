@@ -138,7 +138,8 @@ Use a joint local fault expansion on the complete scheduled services. For
 any specified set S, the sum F(S) of paths faulty on S, with all other
 locations unrestricted, satisfies `||F(S)||<=eta^|S|`. Fresh-environment
 Markov channels uniformly close to the ideal complete services supply this
-condition: Stinespring continuity gives eta<=C sqrt(delta) for diamond error
+condition: [Stinespring continuity](https://arxiv.org/abs/quant-ph/0605009)
+gives eta<=C sqrt(delta) for diamond error
 delta, including the public outcome register. The mathematical environment
 alignment grants no physical environment control. Classical stochastic
 channels have such a dilation too. Marginal error rates of an unspecified
@@ -205,6 +206,21 @@ The proof covers every error set through weight 31. Two independent engines
 execute the full-size code; a 32-error wrong-label example shows why the
 radius cannot be silently extended.
 
+The classical decoder also has the required quantum-record meaning. Let
+C_a be the punctured codewords whose missing-point value is a, and let H_a
+span the computational basis words within distance 31 of C_a. Distance 63
+makes H_0 and H_1 orthogonal. A reversible implementation computes the
+decoder label in a fresh register while retaining its input and workspace.
+On H_a it therefore has the form `|psi> -> |a> W_a|psi>`, with W_a an
+isometry. This identity extends linearly with an arbitrary spectator. Every
+operator on at most 31 sites sends an encoded |a> into H_a: expand it in
+Paulis, whose X supports change at most those sites and whose Z supports
+only change amplitudes. Discarding the private workspace thus preserves the
+conditional spectator state and returns a with certainty. This argument
+does not assume that damaged inputs are classical strings or that their
+errors are independent. Dephasing the logical record before export is
+essential; the procedure is not a coherent decoder of an unknown qubit.
+
 Let S bound a full leading-correction/gate rectangle. Use disjoint rectangles
 of the computation-code construction, not overlapping seven-qubit recoveries.
 Its sparse-path induction tolerates one faulty child; two are conservatively
@@ -222,12 +238,30 @@ inferred from the finite seven-qubit Clifford census.
 
 Decode a level-k probe **one level at a time**. At stage j, execute a fixed
 complete one-level record decoder with level-(j-1) protected operations.
+For j>1, first run a separate level-(j-1) protected identity/correction on
+each of its 2047 child blocks, before any decoder gate couples children.
 It outputs a level-(j-1) record; discard its private syndrome/workspace only
 after the stage. Proceed through j=k,...,1, then perform the bare native read.
 The stage includes its storage, correction and transfer. It never contacts
 another export island or R. Standard preparations and the finite logical
 decoder use the parent's exact universal library, so there is no fixed
 approximation error inserted at every stage.
+
+This entry correction uses the computation code's total correction property
+(the cited construction's section 4.8 and the second assertion of Lemma 8):
+even an arbitrary child input becomes sparsely close to some encoded qubit
+when its correction path is good. It acts separately on each child. The
+incoming block's at most 31 problematic children therefore become arbitrary
+logical inputs at those same positions, while its other children keep their
+correct logical state. The parent's spread bound of 16 fits inside that
+radius. Representing all children by ideal inner decoders now puts the input
+in H_a, so the preceding support argument applies. The remaining protected
+decoder circuit operates on sparsely encoded children and leaves a sparsely
+encoded output, supplying the next stage's invariant. For j=1 there are no
+inner blocks to correct. All entry corrections are counted in S_D. Omitting
+them would incorrectly apply the protected-gate simulation theorem to
+possibly non-sparse child inputs. Existing correctable input damage is not
+counted as a new fault or required to be absent.
 
 Let S_D bound the number of lower-level rectangles in one decoding stage,
 including its idles. The sum of their bad strengths is bounded uniformly:
@@ -299,8 +333,9 @@ corrected locally, not turned into an application-wide rejection.
 
 For completeness, unions of coherent bad regions need an intersection
 argument. Assign every physical location to one protected rectangle, one
-export stage or one archive cycle. In particular the terminal read belongs
-to export and the subsequent waiting interval to the first refresh. Ancillas
+export stage or one archive cycle. The terminal read and any wait before
+archive activation belong to export. Waiting after activation belongs to
+the first refresh. Ancillas
 and different archive words have separate lanes. Within a region use (6);
 between disjoint regions the joint marked bound is the product. For their
 bad majorants beta_i, inclusion-exclusion gives

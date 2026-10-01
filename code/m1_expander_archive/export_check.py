@@ -41,7 +41,10 @@ def verify_stages(rows):
         # Closed form, not the producer's recurrence or matrix products.
         strengths = [.05**(2**j)/2 for j in range(k)]
         for a, b in zip(row['strengths'], strengths):
-            close(number(a), b, 'recursive stage strength')
+            # Higher-level terms are far below a matrix-entry absolute
+            # tolerance. They must remain positive and relatively accurate.
+            need(number(a) > 0 and math.isclose(a, b, rel_tol=2e-12, abs_tol=0),
+                 'positive recursive stage strength')
         angle = sum(strengths)
         expected = np.array([[math.cos(angle), -1j*math.sin(angle)],
                              [-1j*math.sin(angle), math.cos(angle)]])

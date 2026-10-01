@@ -45,6 +45,10 @@ unmerged PR's files to verify its evidence.
 - Exact tail coefficients, integer refinement ceilings and lifetime exponents
   are independently reconstructed. Coherent staged-channel controls contrast
   the uniform decoder bound with an unprotected serial error floor.
+  Relative checks retain even the smallest positive stage terms; replacing
+  them by zero, negative values or incorrect multiples is rejected. Full-degree
+  schedule tests independently reconstruct random walks and bubble-sort row
+  boundaries, rather than only checking agreement between operand lookups.
 - A complete full-M6 erasure channel and a classical bit-flip channel give a
   concrete fixed nonzero noise family inside the derived interval. Every
   matrix unit and the quantum dilation-distance bound are checked.
