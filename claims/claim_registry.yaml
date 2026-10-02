@@ -13418,6 +13418,110 @@
         "boundary": [],
         "rationale": "This row proves a finite classical archive fault lemma and readout counterbounds. Its explicitly specified bit-noise law and coded output convention supply no physical energy, source-selection or continuum-identification premise."
       }
+    },
+    {
+      "claim_id": "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION",
+      "statement": "The declared proper-code source implements a complete flagged local leakage-reduction channel R_d(rho)=V_d* rho V_d+Tr((I-P_d)rho)|0><0| for d=2,4, using its existing transfer and reset services. Private complement Kraus indices retain one public failure label. The independent finite controls check every full-M6 matrix unit and both complete two-carrier native gate instruments on all 1296 input matrix units. Composing local reduction with the complete seven-qubit decoder corrects every single-carrier code-to-M6 channel, including reference correlations; 26880 exact scalar branch identities span all such errors. The complete physical accounting decoder reduces each carrier locally rather than aborting on any raw carrier leak. Reduction faults are counted, diagnostics are retained, and no reversible full-M6 command or ideal unknown-input encoder is added.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_full_interface_noise_and_leakage_schedule"
+      ],
+      "imported_results": [
+        "complete_quantum_error_correction_instruments",
+        "CPTP_contractivity",
+        "positive_unital_adjoint_and_spectral_range_bound"
+      ],
+      "oph_specific_delta": "Instantiates noisy leakage reduction inside the existing non-reversible source interfaces and supplies exact full-interface correction and accounting identities, without discarding complement outcomes.",
+      "novelty_type": "native_leakage_and_general_noise_source_refinement",
+      "falsifier": "A native reduction or pair-gate channel differs on any input matrix unit; a private Kraus index is exposed as a public outcome; a scalar decoder branch fails; a noisy reduction is assumed perfect; or a correctable local leak is treated as a necessary global abort.",
+      "scope_if_false": "The stated native leakage or general-noise refinement fails. No conclusion follows about unique microscopic source selection, a laboratory energy scale or an autonomous physical clock.",
+      "owner_paper": "extra/LEAKAGE_SOURCE_REFINEMENT.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "code/m1_leakage/__init__.py",
+        "code/m1_leakage/format.py",
+        "code/m1_leakage/interfaces.py",
+        "code/m1_leakage/interface_check.py",
+        "code/m1_leakage/noise.py",
+        "code/m1_leakage/noise_check.py",
+        "code/m1_leakage/correction.py",
+        "code/m1_leakage/correction_check.py",
+        "code/m1_leakage/composition.py",
+        "code/m1_leakage/composition_check.py",
+        "code/m1_leakage/scaling.py",
+        "code/m1_leakage/scaling_check.py",
+        "code/m1_leakage/build.py",
+        "code/m1_leakage/verify.py",
+        "code/m1_leakage/test_leakage.py",
+        "code/m1_leakage/README.md",
+        "code/m1_leakage/CONTRACT.md",
+        "code/m1_leakage/receipt.json",
+        "extra/LEAKAGE_SOURCE_REFINEMENT.md"
+      ],
+      "status": "proved_for_explicit_cofinal_source_with_imported_leakage_and_general_noise_fault_tolerance",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row proves a complete transfer/reset channel identity and single-carrier correction inside the declared proper-code source. It consumes its source interfaces and decoder, not a premise-register identification of microscopic physics or the logical accounting observable with physical energy."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT",
+      "statement": "For the existing prepared fermionic source experiments and encoded inputs, complete native leakage reduction permits general bounded full-interface Markov dissipation or gate-local coherent common-bath coupling. A diamond-generator bound and credited Stinespring continuity give a conservative Markov fault amplitude O(q^-1/2), requiring five fixed levels for the stated accounting bound; fixed bounded coherent coupling gives O(q^-1) amplitude and four levels suffice. With credited leakage/general-noise universal protection, the decoded quantum/named-history error is O(q^-12 log^6(2q)) and additional positive accounting error is O(q^-8 log^6(2q)). Fixed nonzero native per-location strength below the symbolic threshold also admits these bounds with O(log log q) levels; a charged polylogarithmic inventory and drive increase preserves parallel causal block flights and a uniform wall-time rescaling. Lifetime accounting includes retained diagnostics. Amplitude damping has no positive ideal-channel mixture component, and fixed fractional pulse error does not vanish merely by accelerating control. Composition with the merged measurement-free computation code and noisy public archive also removes reliable runtime classical control for fixed bounded full-interface Markov quantum generators and fixed local classical Poisson faults. A marked-location norm-tail identity replaces the stochastic archive bound; six fixed quantum protection levels give joint decoded/live-history error O(q^-20 log^16(2q)), accounting error O(q^-16 log^16(2q)), and complete diagnostic storage-time O(q^6 log^25(2q)). The separate fixed-per-operation/common-bath variants retain their classical-control convention. The source, static schedule and accounting reference remain declared; neither physical identification nor a numerical native threshold is inferred.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_full_interface_noise_and_leakage_schedule"
+      ],
+      "imported_results": [
+        "leakage_reduction_and_accuracy_theorem_Aliferis_Terhal",
+        "local_non_Markovian_accuracy_theorem_AGP",
+        "Stinespring_continuity_Kretschmann_Schlingemann_Werner",
+        "constructive_Solovay_Kitaev_synthesis",
+        "measurement_free_computation_code_and_general_noise_fault_paths_Aharonov_Ben_Or"
+      ],
+      "oph_specific_delta": "Removes code-preserving dephasing and shrinking elementary quantum error from the constructed source refinement, while explicitly proving native noise translation, required protection levels and causal lifetime costs. Composes with the existing noisy runtime-control and live-history construction using a proved norm tail, its actual computation code and full storage ledger.",
+      "novelty_type": "native_leakage_and_general_noise_source_refinement",
+      "falsifier": "A generator-to-channel or channel-to-amplitude bound fails; leakage escapes the bounded gate box; the published universal gadget hypotheses fail; five-level Markov accounting or growing-level suppression does not converge; a reset, diagnostic lifetime or block-flight duration is omitted; or fixed relative drive error is falsely removed by acceleration. The marked-location multiplicity identity, combined six-level protection budget or live archive invariant fails under its declared fixed-rate model.",
+      "scope_if_false": "The stated native leakage or general-noise refinement fails. No conclusion follows about unique microscopic source selection, a laboratory energy scale or an autonomous physical clock.",
+      "owner_paper": "extra/LEAKAGE_SOURCE_REFINEMENT.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "code/m1_leakage/__init__.py",
+        "code/m1_leakage/format.py",
+        "code/m1_leakage/interfaces.py",
+        "code/m1_leakage/interface_check.py",
+        "code/m1_leakage/noise.py",
+        "code/m1_leakage/noise_check.py",
+        "code/m1_leakage/correction.py",
+        "code/m1_leakage/correction_check.py",
+        "code/m1_leakage/composition.py",
+        "code/m1_leakage/composition_check.py",
+        "code/m1_leakage/scaling.py",
+        "code/m1_leakage/scaling_check.py",
+        "code/m1_leakage/build.py",
+        "code/m1_leakage/verify.py",
+        "code/m1_leakage/test_leakage.py",
+        "code/m1_leakage/README.md",
+        "code/m1_leakage/CONTRACT.md",
+        "code/m1_leakage/receipt.json",
+        "extra/LEAKAGE_SOURCE_REFINEMENT.md"
+      ],
+      "status": "proved_for_explicit_cofinal_source_with_imported_leakage_and_general_noise_fault_tolerance",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row proves robustness and composition of specified source programs under explicit local noise and control bounds, including noisy runtime records in the fixed-rate Markov case. These apparatus inputs remain declared; no premise-register branch selects them, an autonomous clock, a physical energy scale or an empirical microscopic source."
+      }
     }
   ]
 }
