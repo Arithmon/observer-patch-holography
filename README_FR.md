@@ -81,9 +81,10 @@ constructions de points fixes pour les constantes.
 [Cadence](https://github.com/muellerberndt/cadence) rend l’idée de stabilisation
 exécutable sous forme d’architecture d’apprentissage. Ses parcelles logicielles
 bornées portent un état local et une capacité de relecture, avec une
-rétroaction qui répare les erreurs de prédiction. Les architectures plates
-lisant seulement les entrées, celles couplées par les états et celles à
-observateurs récursifs partagent la même règle de stabilisation.
+rétroaction qui répare les erreurs de prédiction. Son cerveau par
+défaut, le Système 1, apprend par l’expérience comme les cerveaux animaux, et
+non par rétropropagation. Des observateurs optionnels, le Système 2, ajoutent
+une rétroaction récursive au sein de la même stabilisation.
 
 L’[article Cadence](https://philpapers.org/rec/MUECAP-2) décrit l’architecture
 et les expériences. Son évaluation repose sur le comportement

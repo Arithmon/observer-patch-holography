@@ -75,8 +75,9 @@ constructions for the constants.
 [Cadence](https://github.com/muellerberndt/cadence) makes the settling idea
 executable as a learning architecture. Its bounded software patches carry
 local state and readback, with feedback that repairs prediction errors.
-Flat input-only, ordinary state-coupled and recursive observer layouts share
-the settlement rule.
+Its default brain, System 1, learns from experience as animal brains do and
+not by backpropagation. Optional System 2 observers add recursive feedback
+inside the same settlement.
 
 The [Cadence preprint](https://philpapers.org/rec/MUECAP-2) describes the
 architecture and experiments. Its computational case rests on learning
