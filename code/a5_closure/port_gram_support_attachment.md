@@ -1,10 +1,6 @@
-# OPH Port-Gram support attachment audit
+# OPH Port-Gram support attachment
 
-Date: 2026-10-01
-Baseline branch: `FloatingPragma/observer-patch-holography main`
-Synchronized baseline SHA: `800ed61ac9fb21d61f206a0240c8b3717c3af945`
-Work branch: `arithmon/port-gram-support-attachment-0`
-Scope: finite source attachment only; no physical orientation, scale, metric, or PR-53 conclusion.
+This package compares the local oriented boundary of an observer-like self-reading patch with the spherical support of its federation. Each patch has local state, twelve ports, readback records and feedback or repair operations; the public evidence consists of an exact certificate and independent replay. Its scope is finite source attachment, without a physical orientation, scale or metric identification.
 
 ## Verdict
 
@@ -14,25 +10,19 @@ The local oriented boundary and the global degree-one support both exist. Their 
 
 Secondary: **`SEED_ATTACHMENT_FAMILY_CLASSIFIED`** and **`SEED_ATTACHMENT_SET_IS_A5_TORSOR`**. These classify the raw oriented seed maps only. Every seed candidate pushes the local fundamental cycle to the designated support cycle as an exact integer chain. No source-provided common local refinement tower or local-to-global oriented homotopy was found in the pinned audit corpus.
 
-## Custody audit before edits
+## Reproduction and source scope
 
-Only four new files were added. No existing candidate file, receipt, claim, paper, or Lean declaration was edited. The candidate audit was:
+From the repository root:
 
-| Candidate | Classification | Custody evidence |
-|---|---|---|
-| `Lean/ObserverPatchHolography/CoreAxioms.lean` | BYTE-PINNED-PARENT | Consumed by the Galois packet; exact expected SHA-256 is frozen and checked fail-closed. |
-| `Lean/Geometry/ScreenCarrierMapCandidate.lean` | ACTIVE-INVENTORY-ONLY | Present in the current order-sensitive source snapshot; its comments explicitly limit local refinement to same-face barycentric scaling. |
-| `Lean/Screen/PortGramRepairBand.lean` | ACTIVE-INVENTORY-ONLY | Present in the current order-sensitive source snapshot; no support bridge is declared there. |
-| `code/source_selection_model/geometry.py` | BYTE-PINNED-PARENT | Exact expected SHA-256 is frozen and checked fail-closed. |
-| `code/source_selection_model/DERIVATION.md` | BYTE-PINNED-PARENT | Exact expected SHA-256 is frozen and checked fail-closed. |
-| `code/m1_source_realization/topology.py` | BYTE-PINNED-PARENT | SHA-256 pinned by the source-realization verifier. |
-| `code/m1_source_realization/receipt.json` | GENERATED-SURFACE | Executable evidence packet; its complete evidence was replayed by `verify.py`. |
-| `code/m1_source_realization/README.md` | BYTE-PINNED-PARENT | SHA-256 pinned by the source-realization verifier. |
-| `code/a5_closure/galois_port_frame_certificate.py` | ACTIVE-INVENTORY-ONLY | Present in the order-sensitive source snapshot; producer output independently replayed. |
-| `code/a5_closure/galois_port_frame_certificate.md` | ACTIVE-INVENTORY-ONLY | Present in the order-sensitive source snapshot; records the absent interface. |
-| `code/a5_closure/manifests/galois_port_frame_reference.json` | GENERATED-SURFACE | Generated certificate reference; not modified. |
+```bash
+python3 code/a5_closure/port_gram_support_attachment_certificate.py --json
+python3 -O code/a5_closure/verify_port_gram_support_attachment_independent.py
+python3 -m pytest -q code/a5_closure/tests/test_port_gram_support_attachment.py
+```
 
-There were no `UNKNOWN` classifications among the listed candidates. The attachment verdict is bounded to the byte-pinned corpus listed in `source_pins` in the certificate; any byte drift fails closed and requires a fresh audit. All edits are new files under `code/a5_closure/`.
+The producer emits the complete 60-member seed family and its exact chain checks. The independent verifier reconstructs the finite result without importing the producer or reading that candidate list, and invokes the separately pinned independent Galois verifier for the radial degrees. It verifies the mathematical result rather than accepting an externally supplied attachment report.
+
+Both implementations pin the twelve source files listed in their `PINNED_SOURCE_SHA256` constants. Those bytes include the local boundary, source geometry and derivation, source-realization topology and receipt, carrier-map boundary, and Galois evidence. The attachment-absence statement applies only to this explicitly listed corpus. Changed bytes fail verification and require a renewed source analysis; a matching hash fixes the analyzed text but does not itself prove that no attachment is declared.
 
 ## Reconstructed source data
 
@@ -79,7 +69,7 @@ Status: **`NO_ATTACHMENT_FOUND_IN_PINNED_AUDITED_CORPUS`**. The audited corpus i
 
 Evidence: the source-clock completion constructs a nerve over the support, chooses a section, and transports the selected program host under presentation changes. It also says each primitive carrier has its own twelve-port boundary, independently of the federation nerve. No declaration or theorem in the pinned corpus maps a local port label to a support vertex. The identical integers `0..11` and identical triples establish presentation equality; they do not establish object identity or a natural transformation.
 
-No branch-specific Galois datum, shortest-chord ranking, trace, repair selection, dynamic PR #999 selector, or empirical target was used to generate or rank the attachments. The full 60-member family is emitted by `port_gram_support_attachment_certificate.py --json`.
+No branch-specific Galois datum, shortest-chord ranking, trace, repair selection, dynamic repair-law selector, or empirical target was used to generate or rank the attachments. The full 60-member family is emitted by `port_gram_support_attachment_certificate.py --json`.
 
 ## Exact seed attachment family
 
@@ -115,7 +105,7 @@ The degree-one global support is independently present, but no source-bound map 
 
 Conditional statement only: if an attachment is chosen and both maps are verified continuous maps from the same oriented `S²` to the same oriented `S²` with the shared orientation convention, degree classifies their homotopy classes. Under those additional premises the global degree-one map and `radial_plus` have the same degree, while `radial_minus` has degree 7 and cannot be homotopic to it. The source has not supplied the attachment and common realization premises, so this is **`CONDITIONAL_SUPPORT_SELECTOR`**, not a source theorem and not `G_PLUS_SELECTED_BY_SOURCE_SUPPORT_DEGREE`.
 
-The runbook's positive outcome and selector are not emitted. The result is not an incompatibility obstruction: no seed candidate fails its cycle test. The missing datum is a source-selected port-to-support map, together with its refinement extension and realized oriented homotopy.
+The result is not an incompatibility obstruction: no seed candidate fails its cycle test. The missing datum is a source-selected port-to-support map, together with its refinement extension and realized oriented homotopy.
 
 ## Hostile controls
 
@@ -136,15 +126,15 @@ The tests cover the following controls. Local/support/both proper `A5` relabelin
 13. Break a refinement square.
 14. Omit the minus branch.
 15. Import `G_plus` as attachment target data.
-16. Import the PR #999 dynamic selector.
+16. Import the dynamic repair-law selector.
 17. Promote integer label coincidence to source provenance.
 18. Substitute graph isomorphism for oriented chain equality.
 19. Claim homotopy from degree before checking the sphere/orientation premises.
 20. Claim PR-53 discharge.
 
-## Claim adjudication and next route
+## Interpretation boundaries
 
-| Claim | Result | Route |
+| Claim | Result | Additional requirement |
 |---|---|---|
 | Local and global seeds are literally the same oriented presentation. | ESTABLISHED | Exact list equality and edge/cycle census. |
 | Pinned audited corpus chooses a local-port to support map. | NO_ATTACHMENT_FOUND_IN_PINNED_AUDITED_CORPUS | Add a source theorem or source datum that selects the map without downstream branch data. |
@@ -153,35 +143,3 @@ The tests cover the following controls. Local/support/both proper `A5` relabelin
 | Local radial map is homotopic to the realized global support map. | NOT PRESENT | First bind `h_r`, then supply the same oriented-sphere realization and continuity/homotopy proof. |
 | Degree one selects `G_plus` in the frozen pair. | CONDITIONAL only | Requires the missing source-bound attachment premises. |
 | PR-53 is discharged. | NO; unchanged | No physical direction, metric or scale follows from this finite support audit. |
-
-## Final handoff
-
-```text
-BASELINE_SHA: 800ed61ac9fb21d61f206a0240c8b3717c3af945
-FIRST_PACKET_COMMIT: cbed1a163c7dcc43a3f2bc2002ad5204c59e833c
-BRANCH_HEAD: 45a02efd107df7c557b20a339920b344e82e535c
-
-LOCAL_SEED: CoreAxioms.orientedFaces; 20 ordered faces; coherent positive orientation; 30 edges; fundamental cycle is their integer sum
-GLOBAL_SUPPORT_SEED: m1_source_realization/receipt.json level 0; 20 faces; same ordered orientation; designated cycle is the selected section image
-SEED_RELATION: literal equality
-SOURCE_BINDING: no attachment found in explicitly listed byte-pinned corpus
-ADMISSIBLE_ATTACHMENTS: raw seed family 60; Aut+(K_i)=A5; one free transitive orbit; raw stabilizer 1; fixed decorated support-row Aut+=C5 (order 5); quotient has 12 orbits; presentation-equivalence action on maps undeclared
-CYCLE_PUSHFORWARD: exact designated chain for all 60
-REFINEMENT_COMPATIBILITY: seed level only; extension absent
-GLOBAL_SUPPORT_DEGREE: 1 (source bridge chain degree; no local realization binding)
-LOCAL_PLUS_DEGREE: 1
-LOCAL_MINUS_DEGREE: 7
-HOMOTOPY_RESULT: plus conditional on shared oriented S2 and source attachment; minus conditionally excluded by degree 7; neither source-bound comparison is established
-TARGET_FIREWALL: passed
-PRIMARY_VERDICT: SUPPORT_ATTACHMENT_REMAINS_UNSELECTED
-SECONDARY_SELECTOR_RESULT: SEED_ATTACHMENT_FAMILY_CLASSIFIED; SEED_ATTACHMENT_SET_IS_A5_TORSOR; CONDITIONAL_SUPPORT_SELECTOR
-RESIDUAL_MISSING_DATUM: selected port-to-support map, refinement extension and common oriented realization/homotopy
-PR53_STATUS: unchanged; not discharged
-PROVED: seed literal equality; source support chain degree one at levels 0–3; exact cycle pushforward for 60 seed candidates; local degrees 1 and 7
-CONDITIONAL: degree-classification selector if a source attachment and shared oriented S2 realization are later supplied
-NOT_PRESENT_IN_PINNED_CORPUS: source-selected attachment; natural refinement extension; source-bound homotopy
-NOT_ATTEMPTED: Lean formalization; PR #999 comparison beyond firewall; physical interpretation
-BYTE_PINNED_PARENT_CHANGED: NO
-TESTS_ACTUALLY_RUN: attachment producer; independent attachment verifier; 25 attachment tests; existing independent Galois verifier; source-realization receipt verifier; source-current inventory all/verify and independent verifier; mandatory shard 8/9 passed; mandatory shard 9/9 reached the final certificate suite, then was interrupted after about eight minutes without new output at 30% progress
-CI_STATUS: targeted checks PASS; shard 8/9 PASS; shard 9/9 INCOMPLETE (final three-axiom campaign certificate suite interrupted; preceding steps passed). No --full mode or heavy pool was run.
-```

@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 454,
+  "surface_count": 457,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -235,6 +235,16 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/NOISY_NATIVE_RECORD_SUMMARY.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/NOISY_NATIVE_SOURCE_REFINEMENT.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/OBSERVERS_APPENDICES.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
@@ -286,6 +296,11 @@
     },
     {
       "path": "paper/tex_fragments/PHYSICAL_SCALE_BRIDGE_THEOREMS.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/PORT_SUPPORT_ATTACHMENT.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },

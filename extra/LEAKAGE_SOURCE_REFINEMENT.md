@@ -45,7 +45,7 @@ These operations are physical finite CPTP services with counted durations.
 Their faults, including a wrong flag or a leaked reset output, are ordinary
 faults of the whole reduction service. They are never assumed reliable.
 Sections 1--6 retain the fixed-rate parent's classical-control convention.
-Section 7 composes this construction with the now merged
+Section 7 composes this construction with the
 [noisy-record compiler](NOISY_SOURCE_RECORDS.md) and removes that runtime
 convention for fixed bounded quantum generators and classical fault rates.
 
@@ -355,11 +355,11 @@ Only the named logical marginal obeys (10). The extra leakage/repair records
 can distinguish the noisy apparatus from an ideal one. They remain in
 separate central carriers and never instruct an unprotected global abort.
 Unknown raw-state encoding, physical source/parameter selection, autonomous
-clock generation and calibration of physical energy remain outside the exit.
+clock generation and calibration of physical energy are not supplied.
 
 ## 7. One construction with leakage, noisy control and a live public archive
 
-The [merged noisy-record result](NOISY_SOURCE_RECORDS.md) uses independent
+The [noisy-record construction](NOISY_SOURCE_RECORDS.md) uses independent
 code-preserving jumps. We now replace its quantum-noise restriction by the
 full-interface Markov generators of section 3, while retaining its fixed
 finite local classical Poisson fault rate. The quantum services have fresh

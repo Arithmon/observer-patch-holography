@@ -1,15 +1,16 @@
 # Full-interface leakage and general-noise source refinement
 
 This package removes code preservation from the quantum-noise assumptions of
-the merged constructed source. Its existing complete failure/reset services
+the declared source. Its existing complete failure/reset services
 provide noisy leakage reduction. The [proof](../../extra/LEAKAGE_SOURCE_REFINEMENT.md)
 also permits a fixed nonzero elementary error below the credited threshold:
 growing concatenation depth replaces the parent's decreasing per-location
 error, with the additional local drive, inventory and lifetime costs charged.
-It also composes with the merged noisy-record compiler: general Markov
+It also composes with the noisy-record compiler: general Markov
 quantum noise, native leakage, noisy runtime control and a live noisy public
 archive coexist in one constructed process at fixed finite physical rates.
-The [contract](CONTRACT.md) states the objective, deliverables and exit.
+The [contract](CONTRACT.md) states the scope, evidence requirements and
+interpretation of these self-reading source patches and their retained records.
 
 Finite evidence includes:
 
@@ -28,7 +29,7 @@ Finite evidence includes:
 - A coherent fault-tail identity replacing the archive's probabilistic
   estimate, its exact rational bounds, and the combined six-level resource
   and convergence calculation; recursive replay of the computation code,
-  adaptive instruments and 8,100 archive fault cases from the merged parent.
+  adaptive instruments and 8,100 archive fault cases from that construction.
 - A coherent counterexample to an additive bad-region norm bound, with the
   required intersection terms and disjoint location ownership checked. The
   joint-history proof derives its product bound explicitly and counts every

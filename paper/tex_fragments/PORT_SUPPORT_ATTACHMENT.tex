@@ -1,0 +1,58 @@
+\paragraph{Local ports and the spherical support.}
+A degree-one federation bridge and each carrier's local twelve-port boundary
+are separate data. In the declared source construction, the local oriented
+icosahedral boundary \(K\) and the level-zero support \(S_0\) have the same
+ordered face table. Let \(s_0:S_0\to N_0\) be the designated section of the
+nerve projection \(b_0:N_0\to S_0\), and set
+\(z_0=(s_0)_*[S_0]\).
+
+\begin{proposition}[Oriented seed attachments]
+\label{prop:port-support-seed-attachments}
+The maps \(h_0=s_0\circ p\), where \(p:K\to S_0\) ranges over
+orientation-preserving simplicial isomorphisms, form a set of sixty elements
+with a free transitive \(A_5\) action. Every such map satisfies
+\[
+ (h_0)_*[K]=z_0
+\]
+as an integer chain. For the fixed source row with fibre sizes
+\((2,1,\ldots,1)\), the designated section and the process link within the
+double fibre, the proper support relabelings preserving this decoration
+form \(C_5\). Their action on the sixty maps has twelve orbits.
+\end{proposition}
+
+\begin{proof}
+The shared oriented face table supplies an isomorphism, so every other one
+is its composite with a proper automorphism of the icosahedron. These
+automorphisms form \(A_5\), of order sixty. Composition acts freely and
+transitively. Each automorphism permutes the twenty oriented triangles,
+giving \(p_*[K]=[S_0]\) exactly; composing with the section proves the
+chain identity. The double fibre singles out one support vertex. Its
+stabilizer consists of the five rotations around that vertex and preserves
+the section and process link. This subgroup acts freely on the seed maps,
+so every orbit has five elements and there are \(60/5=12\) orbits.
+\end{proof}
+
+The twelve orbits refer to this fixed marked presentation. They do not
+classify physical alternatives or equivalence after jointly transporting
+the source decoration and local port charts. Exact enumeration and a
+separate reconstruction check the sixty maps and their chain images in
+\path{code/a5_closure/port_gram_support_attachment_certificate.py} and
+\path{code/a5_closure/verify_port_gram_support_attachment_independent.py}.
+The support checks also verify \((b_r)_*z_r=[S_r]\) and the section/coarsening
+squares at four stages with \(12,42,162,642\) support vertices.
+
+This seed classification does not supply a source-selected attachment.
+The analyzed source definitions prescribe each local boundary independently
+of the federation nerve. The local carrier construction scales barycentric
+coordinates within a single face, whereas the support tower uses midpoint
+subdivision and fibre coarsening. Those data do not specify a common local
+incidence tower and a refinement-commuting family \(h_r\).
+
+The two local Galois radial maps have degrees one and seven. A comparison
+with the degree-one support bridge requires a source-bound attachment and
+continuous realizations as maps between the same oriented \(S^2\), with
+the same orientation convention. Under these hypotheses degree classifies
+their homotopy classes: the degree-one radial map is homotopic to the
+support composite, and the degree-seven map cannot. The equality of seed
+tables alone supplies neither those hypotheses nor a physical direction,
+metric or scale.

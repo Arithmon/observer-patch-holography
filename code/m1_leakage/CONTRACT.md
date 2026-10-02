@@ -1,6 +1,6 @@
-# Native leakage protection: objective, deliverables and exit
+# Native leakage-protection contract
 
-## Objective
+## Scope
 
 Remove native-code preservation and independent dephasing from the quantum
 noise requirements of the constructed fermionic clock/read source. Implement
@@ -8,7 +8,7 @@ leakage reduction through its existing complete proper-code interfaces, with
 no noiseless leakage detector, selected successful branch or new reversible
 full-M6 operation. Preserve the actual named instruments and charged clocks.
 
-## Deliverables
+## Evidence requirements
 
 1. A complete flagged leakage-reduction instrument for the qubit and pair
    codes, and its composition into a native two-qubit gate. Check every input
@@ -24,13 +24,13 @@ full-M6 operation. Preserve the actual named instruments and charged clocks.
    enough levels for accounting, all local service times, parallel block
    flights, resets, auxiliary records and storage lifetimes charged.
 5. Compact reproducible evidence; producer-free verification and physical,
-   structural and custody mutations; registered claims and platform CI.
-6. Compose with the merged noisy-record construction so full-interface Markov
+   structural and custody mutations.
+6. Compose with the noisy-record construction so full-interface Markov
    quantum noise and noisy runtime control/public archives occur in one
    process. Replace its stochastic-tail proof by a norm-tail argument, use
    its actual larger computation code, and retain the full lifetime ledger.
 
-## Exit
+## Acceptance and interpretation
 
 For the existing prepared source programs and already encoded inputs, prove
 convergence of decoded quantum outputs, named read histories and positive
@@ -38,7 +38,7 @@ accounting under fixed bounded full-interface Markov generators, or bounded
 local coherent common-bath noise. Also establish convergence at a fixed
 nonzero per-location strength below the credited threshold, using a stated
 growing redundancy schedule and retaining the source's causal time bound.
-For fixed bounded Markov quantum generators and the merged parent's fixed
+For fixed bounded Markov quantum generators and the noisy-record construction's fixed
 local classical fault rates, also prove the joint live coded-history result
 without a reliable runtime classical controller.
 
@@ -47,6 +47,6 @@ leakage and syndrome records remain physically present but do not themselves
 abort the computation. The source, CCG capability, static schedule and
 accounting reference remain declared. Reliable classical control is retained
 in the separate fixed-error/common-bath variants; it is removed in the
-combined fixed-rate Markov construction. This PR selects neither a source
+combined fixed-rate Markov construction. This construction selects neither a source
 nor physical energy from A1--A3, grants no unknown raw-input encoder, and
 does not determine a numerical native-machine threshold.

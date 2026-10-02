@@ -9,12 +9,11 @@ export error stays bounded as quantum protection grows. Together these give
 convergent quantum outputs and live public histories at a fixed nonzero
 elementary error strength.
 
-This note is based on merged main and is self-contained with respect to the
-native reduction and fault-norm estimates. It also composes with the native
-leakage analysis of [PR #1007](https://github.com/FloatingPragma/observer-patch-holography/pull/1007).
-The construction does not require that separate branch to be present when
-its evidence is replayed. Source selection, the external schedule and the
-logical accounting reference retain their declared status.
+The native reduction and fault-norm estimates follow below from the complete
+transfer/reset services and the
+[noisy leakage-reduction theorem of Aliferis and Terhal](https://arxiv.org/abs/quant-ph/0511065).
+Source selection, the external schedule and the logical accounting reference
+retain their declared status.
 
 ## 1. An explicit bounded-degree voter graph
 
@@ -318,7 +317,7 @@ one M6 carrier and remains an internal part of that two-operand gate box.
 Pack, pulse, unpack, flag and reset faults belong to the box. There is no
 extra reversible full-M6 command or third data operand. The complete flagged
 channels for both codes are checked on every M6 matrix unit in the evidence.
-The native proper-code source in main supplies the required transfer/reset.
+The [native proper-code source](COHERENT_SOURCE_CLOCKS.md) supplies the required transfer/reset.
 The noisy finite apparatus approximates that reference. Generic leakage or
 coherent drift is not promoted to a new controllable source generator, and
 the perturbed device is not asserted to obey the reference's exact response
