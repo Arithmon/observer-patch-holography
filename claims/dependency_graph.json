@@ -309,7 +309,10 @@
     "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION",
     "OPH-SOURCE-GENERAL-NOISE-REFINEMENT",
     "OPH-SOURCE-EXPANDER-LIVE-ARCHIVE",
-    "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY"
+    "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY",
+    "OPH-SOURCE-SEA-GENERATOR",
+    "OPH-SOURCE-LOCAL-SEA-LIMIT",
+    "OPH-SOURCE-SEA-CLOCK"
   ],
   "edges": [
     {
@@ -2731,6 +2734,46 @@
       "role": "Supplies complete proper-code transfer and reset services from which the noisy full-carrier reduction is derived without a new reversible M6 operation.",
       "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
       "to": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY"
+    },
+    {
+      "role": "Supplies the actual massive walk, specified principal branch and complete spectral partition limit; the filled reference changes the vacuum interpretation.",
+      "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+      "to": "OPH-SOURCE-SEA-GENERATOR"
+    },
+    {
+      "role": "Supplies the all-sector CAR source compiler and actual reflecting flight; no periodic source link is substituted.",
+      "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+      "to": "OPH-SOURCE-SEA-GENERATOR"
+    },
+    {
+      "role": "Supplies both endpoint gaps and the negative-energy projection; weighted resolvents establish its local reflecting limit.",
+      "from": "OPH-SOURCE-SEA-GENERATOR",
+      "to": "OPH-SOURCE-LOCAL-SEA-LIMIT"
+    },
+    {
+      "role": "Supplies state-independent compact resolved-read commutator and sampling bounds; these transfer to the new quasi-free state.",
+      "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
+      "to": "OPH-SOURCE-LOCAL-SEA-LIMIT"
+    },
+    {
+      "role": "Supplies the actual positive excitation generator and filled reference; complete preparation remains explicitly charged.",
+      "from": "OPH-SOURCE-SEA-GENERATOR",
+      "to": "OPH-SOURCE-SEA-CLOCK"
+    },
+    {
+      "role": "Supplies the blocking and finite-boundary covariance estimates used by the informative clock bound.",
+      "from": "OPH-SOURCE-LOCAL-SEA-LIMIT",
+      "to": "OPH-SOURCE-SEA-CLOCK"
+    },
+    {
+      "role": "Supplies massive packet dynamics and phase estimates; a new resolved-mode detector is proved separately instead of transferring the old visibility.",
+      "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
+      "to": "OPH-SOURCE-SEA-CLOCK"
+    },
+    {
+      "role": "Supplies fixed-strength protection and live records; new schedules and lifetime exponents account for the much longer filled-sea preparation.",
+      "from": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY",
+      "to": "OPH-SOURCE-SEA-CLOCK"
     }
   ]
 }
