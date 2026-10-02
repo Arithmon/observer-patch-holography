@@ -41,14 +41,21 @@ def packets():
             y = (x-speed*time+length/2) % length-length/2
             env = np.exp(-y*y/(4*sigma*sigma))
             env /= np.linalg.norm(env)
-            probes = [np.fft.fft(env[:, None]*np.exp(1j*k*x[:, None])*xi/np.sqrt(2), axis=0, norm='ortho') for k in central]
+            # Rigid translation moves the carrier as well as the envelope.
+            # Keeping exp(i*k*x) instead reads gamma*Delta m, not Delta m/gamma.
+            probes = [np.fft.fft(env[:, None]*np.exp(1j*k*y[:, None])*xi/np.sqrt(2), axis=0, norm='ortho') for k in central]
+            lab = [np.fft.fft(env[:, None]*np.exp(1j*k*x[:, None])*xi/np.sqrt(2), axis=0, norm='ortho') for k in central]
             background = float(sum(np.einsum('ni,nij,nj->', z.conj(), p, z).real for z, p in zip(probes, ps)))
             overlaps = [np.vdot(f, z) for f, z in zip(probes, evolved)]
             probs = [float(background+abs(overlaps[0]+np.exp(-1j*theta)*overlaps[1])**2) for theta in (0., np.pi/2)]
+            lab_bg = float(sum(np.einsum('ni,nij,nj->', z.conj(), p, z).real for z, p in zip(lab, ps)))
+            lab_overlaps = [np.vdot(f, z) for f, z in zip(lab, evolved)]
+            lab_probs = [float(lab_bg+abs(lab_overlaps[0]+np.exp(-1j*theta)*lab_overlaps[1])**2) for theta in (0., np.pi/2)]
             rows.append(dict(sites=count, a=a, ticks=ticks, time=float(time), blocked=blocked,
-                             background=background, probabilities=probs, energy=energy,
+                             background=background, probabilities=probs, lab_probabilities=lab_probs, energy=energy,
                              norm=float(sum(np.vdot(z, z).real for z in evolved)),
-                             rigid=[float((1+np.cos((masses[1]-masses[0])*time/gamma+theta))/2) for theta in (0., np.pi/2)]))
+                             rigid=[float((1+np.cos((masses[1]-masses[0])*time/gamma+theta))/2) for theta in (0., np.pi/2)],
+                             lab_rigid=[float((1+np.cos((masses[1]-masses[0])*time*gamma+theta))/2) for theta in (0., np.pi/2)]))
     return dict(length=length, sigma=sigma, velocity=speed, masses=list(masses),
                 transverse='constant normalized torus mode; finite control only', rows=rows)
 

@@ -1996,7 +1996,7 @@
           "declared_fixed_strength_public_record_source"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "fa44f487635ae26dfbc2893f94c000739bab7adb01e6932a32c477c583bb8094"
+        "original_claim_sha256": "1d9d49afecf5c1fb384815ac9f9808de1837fd88685ce4efb8878f384dd8b57e"
       },
       "OPH-SOURCE-SEA-GENERATOR": {
         "assumptions": [
@@ -2005,7 +2005,7 @@
           "declared_filled_source_vacuum_and_read_program"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "44ddba70da1ed6623ed9403f4d19f9edbbca5ecc3a69a8a1a08f9a0bc56d2c88"
+        "original_claim_sha256": "f0311aed1b8badc3ffcbc49925747677036309b7216b9deb9b69a46cbd4254e7"
       },
       "OPH-SOURCE-TWO-BASIS-A3-SELECTION": {
         "assumptions": [

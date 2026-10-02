@@ -17,7 +17,7 @@ The actual finite controls have deliberately separate roles:
 | Reflecting boundary | Complete compiled operators on 1, 8 and 27 cells, both masses, all central covariance columns |
 | Vacuum limit | 24 full eight-component projections, both carrier/valley labels, including the rejected ordinary-Dirac high-band replacement |
 | Preparation/read | Four-mode source graph, routed rotations, both even/odd preparations, every loop syndrome, both returned QND outcomes and all spectators |
-| Packet read | 256, 512 and 1024-site periodic controls, four times, two read phases, all Fourier modes, explicit sea background and excitation energy |
+| Packet read | 256, 512 and 1024-site periodic controls, four times, two read phases, all Fourier modes, explicit sea background and excitation energy; whole-pattern translation compared with the wrong laboratory-anchored probe |
 | Analytic witness | Outward interval bound for a compact three-dimensional reflecting experiment, including normalization, tails and boundary margin |
 | Noise/resources | Exact integer schedules and polynomial exponents for the long preparation and complete diagnostic lifetime |
 
@@ -47,7 +47,10 @@ The checker imports no producer. It reconstructs the logarithm using two
 Hermitian eigensystems instead of a complex Schur decomposition; constructs
 Fock generators directly from occupation bits; replays actual edge-code
 rotations and the native QND helper; propagates packet states by binary
-powers instead of eigensystem powers; and checks interval and integer bounds.
+powers instead of eigensystem powers; translates probes with a Fourier
+multiplier instead of copying the position-space carrier formula; and checks
+interval and integer bounds. The complete QND channel's excitation-energy
+change is also bounded on the full Fock space, retaining both outcomes.
 Tests block producer imports under `python -O`, reject structural and semantic
 corruptions, and accept occupied-orbital gauge changes and isometry phases.
 Every positive scalar parameter uses a relative comparison, including tiny

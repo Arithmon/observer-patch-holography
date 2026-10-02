@@ -175,11 +175,11 @@ Taylor expansion of the *one-step* walk gives
   <= (m tau+sqrt(3)a|k|)^2/(2 tau) =: z_a(k).               (8)
 ```
 
-To see the cancellation, put `B=diag(k.s)` and
-`A=diag(B,-CBC)`. The first derivative of U at a=0 is
-`-i [m tau beta+a A] R`; its anti-Hermitian part averages A with RAR,
-which is precisely tau R H_m. The second derivative of the product of
-the mass and flight unitaries is bounded by `(m tau+sqrt(3)a|k|)^2`.
+To see the cancellation, put `B=diag(k.s)` and `A=diag(B,-CBC)` and
+expand the dimensionless path `U(s)=exp(-is mu beta)exp(-is aA)R` at s=0.
+Its first derivative is `-i [m tau beta+a A] R`; the anti-Hermitian part
+averages A with RAR, which gives tau R H_m. Its second derivative in s
+is bounded by `(m tau+sqrt(3)a|k|)^2` throughout 0<=s<=1.
 The integral Taylor remainder gives (8) without an exponential prefactor.
 
 For self-adjoint X,Y gapped by g, the same sign resolvent integral gives
@@ -247,6 +247,26 @@ We retain compactly supported full CAR modes; projecting a field onto Q and
 then pretending it is a compact local field would not preserve that proof.
 General cell-scale operations and the R=-1 chart need not have bounded cost.
 
+The complete QND read itself also has a controlled excitation cost. Let
+`D_f(rho)=N_f rho N_f+(I-N_f)rho(I-N_f)` and `V=I-2N_f`. Then
+`D_f(rho)=(rho+V rho V)/2`. CAR and the quadratic generator give
+`[H_sea,N_f]=c(hf)*c(f)-c(f)*c(hf)`, whose norm is at most `2||hf||`.
+Consequently
+
+```
+||D_f*(H_sea)-H_sea|| <= 2||hf||,
+sum_b Pr(b) E[H_sea|b] <= E[H_sea]+2||hf||.               (10a)
+```
+
+The stronger functional-calculus bound
+`||hf||<=pi ||(I-U)f||/(2tau)` is uniform for the same fixed smooth R=+1
+mode class. Thus the complete read has finite mean excitation energy,
+including both outcomes, for any finite-energy input. This does not bound
+energy conditioned on an outcome whose probability tends to zero, or the
+intermediate drive work of the mode-gathering circuit. The finite controls
+check the full Fock energy-change operator and both weighted branches.
+Zero-probability branches contribute zero in the weighted expression.
+
 ## 6. A clock that is read above the filled background
 
 The old many-site `I-Gamma(I-F)` click detector cannot simply be reused:
@@ -258,18 +278,23 @@ source records, with no vacuum subtraction or postselection.
 
 Take the parent's two masses, common velocity u, `v=c/3`,
 `gamma=(1-|u|^2/v^2)^-1/2`, `k_j=gamma m_j u/v^2`, and common normalized
-spinor xi in R=+1 with `H_mj(k_j)xi=gamma m_j xi`. Let g_j(t) be a normalized
-Gaussian envelope of width sigma centred at ut, times `exp(i k_j.x) xi`,
-in mass block j. Use the parent's finite smooth cutoff to radius P and
-sample on the actual lattice, normalizing the resulting modes. The target
+spinor xi in R=+1 with `H_mj(k_j)xi=gamma m_j xi`. Define the probe by rigid
+spatial translation of its entire initial mode, `g_j(t)=T_(ut) g_j(0)`:
+its Gaussian envelope of width sigma is centred at ut and its carrier is
+`exp(i k_j.(x-ut)) xi`, in mass block j. Use the parent's finite smooth
+cutoff to radius P and translate that cutoff with the entire mode. Sample
+on the actual lattice, normalizing the resulting modes. The target
 read mode is
 
 ```
 f_theta(t)=(g_1(t)+exp(i theta) g_2(t))/sqrt(2).
 ```
 
-The mode shapes contain translation and the fixed plane waves, but not the
-unknown relative clock phase. Prepare the Slater state with covariance
+This is a translated spatial pattern, specified by the detector center;
+it does not insert the evolving relative clock phase into the read kernel.
+Translating only the envelope while retaining `exp(i k_j.x)` is a different
+instrument. The distinction is essential and is retained as a negative
+control below. Prepare the Slater state with covariance
 
 ```
 C_0=P+|chi><chi|,    chi=Q f_0(0)/||Q f_0(0)||.             (11)
@@ -298,10 +323,20 @@ the difference from the rigid translated state by
 e(T)=sqrt(3)v/(m_min sigma)+sqrt(15) T v^2/(8 m_min sigma^2).
 ```
 
-The rigid relative phase is `Delta m t/gamma`. The reference probability
+For the rigid packet, evolution contributes `exp(-i E_j t)` with
+`E_j=gamma m_j`. The overlap with the fully translated probe contributes
+`exp(i k_j.u t)`, so the measured relative phase is
+`[Delta E-Delta k.u]t=Delta m t/gamma`. The reference probability
 for this resolved-mode read is `(1+cos(Delta m t/gamma+theta))/2`.
 It has unit swing; its detector is different from the parent's pointwise
 weighted detector and we do not reuse that detector's visibility.
+The envelope-only laboratory-anchored probe instead measures `Delta E t`,
+or `gamma Delta m t`. At the finest executed periodic control near t=20,
+the corrected theta=0 probability is about 0.00615, compared with 0.61674
+for the laboratory-anchored probe. Its proper-time reference is about
+0.00081. Independent replay translates by the Fourier multiplier
+`exp(-i k.ut)` rather than copying the producer's position-space formula,
+and rejects substituting the laboratory-anchored probabilities.
 
 Let d be the parent's complete lattice dynamic error through T on |k|<=K,
 A its sampling error, T_K its Fourier-tail norm, and b_cut a bound on each
@@ -449,6 +484,35 @@ channels* while increasing every particle and hole cost by 2pi/tau.
 Both normal-ordered excitation Hamiltonians are positive. Thus positivity,
 the chosen sea, and all integer-time channels together still do not fix
 the energy scale of individual excitations. Their partition functions differ.
+
+The shift of *every* mode would violate the uniform finite-energy smooth-read
+property proved above. A stronger counterexample respects that property.
+Set `Pi_hi=1_(|h|>pi/(2tau))` and
+`h_UV=h+(2pi/tau) sign(h) Pi_hi`. This again has the same U and P, but
+changes only the high-band particle and hole costs. Since
+`2pi/tau<=4|h|` on that band,
+
+```
+|h| <= |h_UV| <= 5|h|,    ||h_UV f|| <= 5||hf||.          (16)
+```
+
+Its normal-ordered Fock generator satisfies the same inequalities relative
+to H_sea. Thus every finite-energy input and the complete QND bound survive
+with uniform constants. For any fixed smooth mode in the established class,
+
+```
+<f,(|h_UV|-|h|)f>=(2pi/tau)||Pi_hi f||^2
+                  <=(8tau/pi)||hf||^2 -> 0.              (17)
+```
+
+The low band is unchanged, while the shifted high-band contribution to the
+fixed-temperature thermodynamic limit is no larger than the already vanishing
+one in (5). The local vacuum, all integer-time reads and the proved infrared
+energy limits therefore coincide, despite different finite ultraviolet energy
+assignments. This strengthened counterexample preserves the actual energy
+class established here; it does not rely solely on dropping that requirement.
+It concerns stroboscopic data and does not assert that a static interpolation
+reproduces the independently supplied native pulse micromotion.
 
 The new result is an exact positive **stroboscopic** generator of the source
 experiment, a local vacuum limit and finite-energy, readable excitations.

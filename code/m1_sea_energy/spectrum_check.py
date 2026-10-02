@@ -61,6 +61,22 @@ def fock_check(u, h, p, tau):
     close(shifted, h, 'principal reconstruction cannot detect integer branch')
     need(np.logaddexp(0, -abs(np.linalg.eigvalsh(same_sea_branch))).sum()
          < np.logaddexp(0, -abs(ev)).sum()/2, 'partition functions distinguish branch')
+    # A shift confined to the high band also retains the finite-energy read
+    # class and the low-energy limit: |h| <= |h_uv| <= 5|h| uniformly in tau.
+    values, vectors = np.linalg.eigh(h)
+    high = (vectors*(abs(values) > np.pi/(2*tau)))@vectors.conj().T
+    uv = h+2*np.pi/tau*sign@high
+    uv_values, uv_vectors = np.linalg.eigh(uv)
+    uv_p = uv_vectors[:, uv_values < 0]@uv_vectors[:, uv_values < 0].conj().T
+    close(uv_p, p, 'UV branch keeps the same sea')
+    close(expm(-1j*tau*uv), u, 'UV branch keeps the actual source step')
+    absolute, uv_absolute = sign@h, sign@uv
+    need(np.linalg.eigvalsh(uv_absolute-absolute).min() >= -1e-8
+         and np.linalg.eigvalsh(5*absolute-uv_absolute).min() >= -1e-8,
+         'UV branch preserves uniform finite-energy bounds')
+    need(np.linalg.norm((uv-h)@(np.eye(8)-high)) < 1e-8, 'low band unchanged')
+    need(np.logaddexp(0, -tau*abs(uv_values)).sum()
+         < np.logaddexp(0, -tau*abs(ev)).sum()-.01, 'distinct finite UV energy assignment')
 
 
 def verify_blocks(rows):

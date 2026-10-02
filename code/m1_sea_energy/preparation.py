@@ -50,6 +50,7 @@ def case(rank, gauge=None):
     z = np.exp(2j*np.pi*np.outer(np.arange(4), np.arange(4))/4)/2
     z = np.exp(.17j*np.arange(4)**2)[:, None]*z
     target = z[:, :rank]@z[:, :rank].conj().T
+    h = (z*np.array([-2., -1., .9, 1.4]))@z.conj().T
     if gauge is not None:
         z = z@gauge
     parity = rank % 2
@@ -58,6 +59,8 @@ def case(rank, gauge=None):
     prepared = execute_rows(enc, gates)@iso[:, basis.index((1 << rank)-1)]
     f = np.array([1., .3j, -.4+.2j, .1], complex)
     f /= np.linalg.norm(f)
+    reflected = np.eye(4)-2*np.outer(f, f.conj())
+    mean_read_energy = float(np.trace(h@(target+reflected@target@reflected)/2).real+3)
     read = [circuit_row(enc, [i, j], g, enc.su2(i, j, g, parity)) for i, j, g in mode_rotation(enc, f)]
     gathering = execute_rows(enc, read)
     qnd = measurement_tape(enc.b(0, parity), enc.m)
@@ -76,6 +79,7 @@ def case(rank, gauge=None):
                 orbitals=pack(z), covariance=pack(target), basis=basis, isometry=pack(iso),
                 gates=gates, branches=branches, kernel=pack(f), read=read, qnd=qnd,
                 kraus=[pack(k) for k in maps], probabilities=[float(np.vdot(k@prepared, k@prepared).real) for k in maps],
+                mean_read_energy=mean_read_energy,
                 pulse_rotations=sum(len(g['rotations']) for g in gates)+2*sum(len(g['rotations']) for g in read))
 
 

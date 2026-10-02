@@ -6,6 +6,7 @@ import numpy as np
 from m1_fermionic_source.check import annihilator, at, X, Z, word, exterior
 from m1_fermionic_source.experiment_check import replay_native, replay_rotations
 from .format import keys, need, exact, close, unpack, real_vector
+from .spectrum_check import occupations
 
 
 def replay(rows, parity, iso, basis, edges, loops):
@@ -33,7 +34,7 @@ def replay(rows, parity, iso, basis, edges, loops):
 
 
 def verify_case(row, rank):
-    keys(row, 'rank vertices edges parity orbitals covariance basis isometry gates branches kernel read qnd kraus probabilities pulse_rotations')
+    keys(row, 'rank vertices edges parity orbitals covariance basis isometry gates branches kernel read qnd kraus probabilities mean_read_energy pulse_rotations')
     edges = [[0, 1], [0, 2], [0, 3], [1, 2]]
     parity = rank % 2
     basis = [s for s in range(16) if s.bit_count() % 2 == parity]
@@ -115,6 +116,19 @@ def verify_case(row, rank):
     close(probabilities[1], np.vdot(f, p@f), 'Slater covariance is actual click probability')
     close(sum(probabilities), 1., 'no postselection')
     need(.01 < probabilities[1] < .99, 'nontrivial filled-background read')
+    # Native Kraus maps and a direct occupation Hamiltonian test the *read's*
+    # excitation cost, not only the energy of the prepared input state.
+    h = (reference*np.array([-2., -1., .9, 1.4]))@reference.conj().T
+    energy = occupations(h)+3*identity
+    change = number@energy@number+(identity-number)@energy@(identity-number)-energy
+    need(np.linalg.norm(change, 2) <= 2*np.linalg.norm(h@f)+1e-10, 'full Fock QND energy-change bound')
+    encoded_energy = iso@energy[np.ix_(basis, basis)]@iso.conj().T
+    weighted = [float(np.vdot(unpack(k, (16, 16))@target, encoded_energy@unpack(k, (16, 16))@target).real)
+                for k in row['kraus']]
+    need(min(weighted) >= -1e-10, 'both nonnegative branch energies retained')
+    exact(row['mean_read_energy'], float(sum(weighted)))
+    need(sum(weighted) <= np.vdot(expected, energy@expected).real+2*np.linalg.norm(h@f)+1e-10,
+         'complete mean energy, without postselection')
     count = sum(len(g['rotations']) for g in row['gates'])+2*sum(len(g['rotations']) for g in row['read'])
     exact(row['pulse_rotations'], count)
     # Old any-occupied-mode detector can be completely blinded by the sea.

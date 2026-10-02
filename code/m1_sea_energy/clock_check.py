@@ -38,7 +38,7 @@ def verify_packets(row):
         need(0 < blocked < .1 and energy > 0, 'genuine sea background and positive added particle')
         for offset, target in enumerate((0., 4., 10., 20.)):
             item = rows[4*index+offset]
-            keys(item, 'sites a ticks time blocked background probabilities energy norm rigid')
+            keys(item, 'sites a ticks time blocked background probabilities lab_probabilities energy norm rigid lab_rigid')
             ticks = round(target/tau)
             time = ticks*tau
             exact([item['sites'], item['a'], item['ticks'], item['time']], [count, a, ticks, float(time)])
@@ -46,14 +46,34 @@ def verify_packets(row):
             y = (x-.6*time+32) % 64-32
             e = np.exp(-(y/6)**2)
             e /= np.linalg.norm(e)
-            probes = [np.fft.fft(e[:, None]*np.exp(1j*k*x[:, None])*xi/np.sqrt(2), axis=0, norm='ortho') for k in (3., 3.15)]
+            # Apply the translation operator in momentum space, independently
+            # of the producer's shifted carrier/envelope formula in position.
+            translation = np.exp(-1j*2*np.pi*np.fft.fftfreq(count, d=a)*.6*time)
+            probes = [translation[:, None]*z for z in initial]
+            lab = [np.fft.fft(e[:, None]*np.exp(1j*k*x[:, None])*xi/np.sqrt(2), axis=0, norm='ortho') for k in (3., 3.15)]
             bg = float(sum(np.einsum('ni,nij,nj->', z.conj(), p, z).real for z, p in zip(probes, ps)))
             overlaps = [np.vdot(f, z) for f, z in zip(probes, evolved)]
             expected = [float(bg+abs(overlaps[0]+np.exp(-1j*t)*overlaps[1])**2) for t in (0., np.pi/2)]
             for key, value in [('blocked', blocked), ('background', bg), ('energy', energy), ('norm', 1.)]:
                 exact(item[key], float(value))
             close(real_vector(item['probabilities'], 2), expected, 'complete sea-read probabilities')
-            exact(item['rigid'], [float((1+np.cos(.2*time/1.25+t))/2) for t in (0., np.pi/2)])
+            # Derive the reference phase from E-k*u, not an assumed clock rate.
+            proper_gap = (5.25-3.15*.6)-(5.-3.*.6)
+            rigid = [float((1+np.cos(proper_gap*time+t))/2) for t in (0., np.pi/2)]
+            exact(item['rigid'], rigid)
+            lab_bg = sum(np.einsum('ni,nij,nj->', z.conj(), p, z).real for z, p in zip(lab, ps))
+            lab_overlaps = [np.vdot(f, z) for f, z in zip(lab, evolved)]
+            lab_expected = [float(lab_bg+abs(lab_overlaps[0]+np.exp(-1j*t)*lab_overlaps[1])**2) for t in (0., np.pi/2)]
+            lab_rigid = [float((1+np.cos((5.25-5.)*time+t))/2) for t in (0., np.pi/2)]
+            close(real_vector(item['lab_probabilities'], 2), lab_expected, 'retained laboratory-anchored read control')
+            exact(item['lab_rigid'], lab_rigid)
+            if count == 1024:
+                # Scope: an executed finite regression, separate from the much
+                # finer three-dimensional analytic witness. Reject the old read.
+                need(max(abs(a-b) for a, b in zip(expected, rigid)) < .08, 'finite comoving clock agrees with its phase law')
+                need(max(abs(a-b) for a, b in zip(lab_expected, lab_rigid)) < .08, 'laboratory control has a different phase law')
+                if target == 20.:
+                    need(abs(lab_expected[0]-rigid[0]) > .5, 'wrong probe is not a proper-time clock')
             need(all(-1e-10 <= p <= 1+1e-10 for p in expected), 'physical bounded binary effect')
             if ticks == 0:
                 close(expected[0], 1., 'deterministic initial click')

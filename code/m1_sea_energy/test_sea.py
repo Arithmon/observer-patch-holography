@@ -104,12 +104,15 @@ MUTATIONS = [
     (('preparation', 0, 'kraus'), []),
     (('preparation', 0, 'kraus', 1, 0, 0, 0), .71),
     (('preparation', 0, 'probabilities'), [0., 1.]),
+    (('preparation', 0, 'mean_read_energy'), 0.),
     (('preparation', 0, 'pulse_rotations'), 0),
     (('clock', 'packets', 'rows'), []),
     (('clock', 'packets', 'rows', 0, 'background'), 0.),
     (('clock', 'packets', 'rows', 0, 'blocked'), 0.),
     (('clock', 'packets', 'rows', 0, 'energy'), -1.),
     (('clock', 'packets', 'rows', 0, 'probabilities'), [1., 0.]),
+    (('clock', 'packets', 'rows', 1, 'lab_probabilities'), [1., 0.]),
+    (('clock', 'packets', 'rows', 1, 'lab_rigid'), [1., 0.]),
     (('clock', 'packets', 'rows', 0, 'norm'), .5),
     (('clock', 'witness', 'a'), 0.),
     (('clock', 'witness', 'boundary_error'), 0.),
@@ -226,6 +229,40 @@ def test_fock_density_matches_phase_energy_formula():
 
 def test_clock_witness_is_an_interval_certificate():
     assert clock_check.interval_certificate() == dict(probability_upper='0.038', observable_swing_lower='0.923')
+
+
+def test_old_envelope_only_probe_fails_the_corrected_read_contract(evidence):
+    old = deepcopy(evidence['clock'])
+    for row in old['packets']['rows']:
+        row['probabilities'] = row['lab_probabilities'][:]
+    with pytest.raises(ValueError, match='complete sea-read probabilities'):
+        clock_check.verify(old)
+
+
+def test_finite_clock_control_distinguishes_both_phase_laws(evidence):
+    rows = evidence['clock']['packets']['rows']
+    final = rows[-1]
+    assert final['sites'] == 1024
+    assert abs(final['probabilities'][0]-final['rigid'][0]) < .006
+    assert abs(final['lab_probabilities'][0]-final['rigid'][0]) > .6
+    assert abs(final['lab_probabilities'][0]-final['lab_rigid'][0]) < .025
+
+
+def test_uv_branch_shift_preserves_smooth_energy_and_its_limit():
+    from m1_operational_clocks.check import gates, frames
+    _, _, _, carrier, _ = frames()
+    f = (np.eye(8)+carrier)[:, 0]
+    f /= np.linalg.norm(f)
+    for a in (.2, .1, .05, .025):
+        tau = a/np.sqrt(3)
+        h, p = spectrum_check.sea(gates([.3, -.4, .7], a, .7, 3.), tau)
+        ev, z = np.linalg.eigh(h)
+        high = (z*(abs(ev) > np.pi/(2*tau)))@z.conj().T
+        uv = h+2*np.pi/tau*(np.eye(8)-2*p)@high
+        excess = float((2*np.pi/tau)*np.vdot(high@f, high@f).real)
+        assert 0 < excess <= (8*tau/np.pi)*np.linalg.norm(h@f)**2
+        assert np.linalg.norm(uv@f) <= 5*np.linalg.norm(h@f)
+        assert np.linalg.norm(h@f) < 2.
 
 
 def test_ci_covers_every_pinned_input_on_both_platforms():
