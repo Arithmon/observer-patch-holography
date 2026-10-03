@@ -3780,7 +3780,12 @@ The same-label left-handed selector surface closes to the singleton
 on the selected quark sheet. It does not break the independent positive-rescaling action on the two
 sector profiles.
 
-\subsection{Emitted quark rows}
+\subsection{Source-selected quark rows}
+
+The following table concerns source-selected physical masses. A separate
+conditional numerical construction, with its flavor law and mass-chart
+attachments assumed explicitly, is given in
+Section~\ref{quark-conditional-fixed-p}.
 
 \begin{table}[h]
 \centering
@@ -4590,6 +4595,174 @@ Gatto--Sartori--Tonin texture estimate formed from the same rejected mass
 ratio. The branch supplies no up/down Yukawa-matrix pair or relative
 left-handed eigenbasis, so the display is not an independent Cabibbo
 prediction.
+
+\subsection{Conditional six-mass construction at independently fixed \(P\)}
+\label{quark-conditional-fixed-p}
+
+A fixed flavor-response ansatz gives six numerical mass coordinates once
+its physical interpretation is assumed. Its usefulness is that the
+assumptions can be separated from the forward arithmetic and tested
+individually. It is not a source-only derivation: the rational coefficient
+and module assignments were chosen with knowledge of the observed spectrum.
+Absence of quark reference values in the forward evaluator does not make
+that discovery independent of the targets.
+
+Here the pixel input is fixed solely by the measured electromagnetic
+coupling and the golden ratio,
+\[
+ P=\varphi+\sqrt\pi\,\alpha
+   =1.630968209403959\ldots,\qquad
+ \alpha^{-1}=137.035999177.
+\]
+The electromagnetic value is an external calibration~\cite{codata2022};
+this equation does not independently predict it. No quark exponent pattern
+or mass-dependent electromagnetic closure is used to set \(P\).
+The declared finite-heat gauge branch is recomputed at this same \(P\),
+giving
+\[
+ \alpha_U=0.04112433619563048\ldots,\qquad
+ \frac{v}{E_\star}=P^{-1/2}e^{-\pi/(2\alpha_U)}
+ =2.019980323972526\ldots\times10^{-17}.
+\]
+An external calibration supplies the absolute unit
+\(E_\star=1.220890\times10^{19}\,\mathrm{GeV}\).
+The resulting coordinate is \(v=246.6173778\,\mathrm{GeV}\).
+Ratios to \(v\) and \(E_\star\) are distinguished from the conversion to GeV.
+
+For an explicit statement of the conditional law, put
+\[
+ w=\pi\alpha_U,\quad \tau=P/4-w/5,\quad r=e^{-3\tau},\quad
+ \rho=\frac3{2+r},\quad x=\frac{r-1}{r+1},
+\]
+and let \(\operatorname{ctr}\) subtract a vector's arithmetic mean.
+Define \(L=\operatorname{ctr}(-1,x,1)\) and
+\(Q=\operatorname{ctr}(1,x^2,1)\). The two mean parameters and two
+linear response coefficients are
+\[
+\begin{aligned}
+ \mu_u&=3P+\frac{79w}{15}+\frac{w^2}{29},&
+ \mu_d&=2P+\frac{4w}{15}-\frac{w^2}{432},\\
+ a_u&=3P+\frac{29w}{5}+\frac{w^2}{22},&
+ a_d&=2P+\frac{33w}{32}+\frac{w^2}{420}.
+\end{aligned}
+\]
+The remaining coefficients are
+\[
+\begin{aligned}
+ b_u&=\frac{a_u(-\rho x+\rho-x-1)}{(1+\rho)(x^2-1)}-\frac{w\rho}{10},\\
+ b_d&=\frac{a_d(-\rho x-\rho-x+1)}{(1+\rho)(x^2-1)}-\frac w4,\\
+ A&=\frac1{2(1+\rho-x^2)},\qquad
+ B=\frac1{2(1-x^2-x^2/(1+\rho))},\\
+ \sigma&=(\mu_u+\mu_d)/2,\qquad \eta=(\mu_u-\mu_d)/2,\\
+ \delta_g&=\frac{P}{1008}+\frac{w^2}{432}-\frac{w^2}{1584},\qquad
+ \frac{g_{\rm ch}}v=2e^{-2\pi+\delta_g}.
+\end{aligned}
+\]
+Componentwise exponentiation then defines the ordered triples
+\[
+ \frac{(m_u,m_c,m_t)}v
+ =\frac{g_{\rm ch}}v e^{-A\sigma+B\eta+a_uL+b_uQ},\qquad
+ \frac{(m_d,m_s,m_b)}v
+ =\frac{g_{\rm ch}}v e^{-A\sigma-B\eta+a_dL+b_dQ}.
+\]
+
+The physical hypotheses are substantial. The response carrier
+\(F=G\oplus V_{\rm std}\), the eight composite module incidences of
+dimensions \(29,432,22,32,840,1008,432,1584\), and their projectors,
+ranks, orientations and signs must be the physical ones. Full unitary
+isotropy, the Gaussian two-cumulant response, its signed terms, the
+displayed heat and affine readout laws, and minimization of the declared
+residual functional are assumed. A count-only 24-slot register additionally
+needs a physical nonsinglet family attachment. The response relabeling
+action \(F|_{S_3}=\mathbf1\oplus\mathbf2\oplus\mathbf2\) is not the
+geometric restriction \(\mathbf3|_{D_3}=\mathrm{sign}\oplus\mathbf2\);
+the regular heat carrier and the physical family representation need an
+explicit attachment. The transmutation normalization and each mass scheme
+below are also hypotheses. None follows merely from the existence of
+these finite modules or from \(P\) and the icosahedron.
+
+\begin{center}
+\begin{tabular}{llll}
+\hline
+Quark & Conditional coordinate & Assumed chart & PDG comparison\\
+\hline
+\(u\) & \(2.15896\,\mathrm{MeV}\) & \(\overline{\mathrm{MS}}(2\,\mathrm{GeV})\) & \(2.16\pm0.07\,\mathrm{MeV}\)\\
+\(d\) & \(4.71104\,\mathrm{MeV}\) & \(\overline{\mathrm{MS}}(2\,\mathrm{GeV})\) & \(4.70\pm0.07\,\mathrm{MeV}\)\\
+\(s\) & \(93.0701\,\mathrm{MeV}\) & \(\overline{\mathrm{MS}}(2\,\mathrm{GeV})\) & \(93.5\pm0.8\,\mathrm{MeV}\)\\
+\(c\) & \(1.272260\,\mathrm{GeV}\) & \(\overline{\mathrm{MS}}(m_c)\) & \(1.2730\pm0.0046\,\mathrm{GeV}\)\\
+\(b\) & \(4.189458\,\mathrm{GeV}\) & \(\overline{\mathrm{MS}}(m_b)\) & \(4.183\pm0.007\,\mathrm{GeV}\)\\
+\(t\) & \(172.0645\,\mathrm{GeV}\) & pole-extraction coordinate & \(172.4\pm0.7\,\mathrm{GeV}\)\\
+\hline
+\end{tabular}
+\end{center}
+All six coordinates fall within these individual quoted ranges~\cite{pdg2025quarks}.
+The five running-mass ranges are quoted at 90\% confidence; the top
+summary row does not state that same confidence convention. The top
+attachment assumes a pole-extraction chart, without deriving its physical
+pole or extraction matching. The table is a set of mixed native charts,
+not one common-scale Yukawa matrix. Its printed digits describe arithmetic,
+not a quantified theory uncertainty.
+
+The same fixed law gives
+\[
+ \frac{m_u}{m_d}=0.45827670,\qquad
+ \frac{m_s}{(m_u+m_d)/2}=27.09465908.
+\]
+The second ratio is outside the PDG range \(27.33^{+0.18}_{-0.14}\).
+Its marginal differences from FLAG's \(N_f=2+1+1\) value \(27.227(81)\)
+and \(N_f=2+1\) value \(27.42(12)\)
+are respectively about \(-1.63\) and \(-2.71\) quoted standard
+uncertainties~\cite{flag2024}. These comparisons overlap in experimental
+and lattice information. They are retained alongside the individual
+mass agreements, with no joint likelihood or theory error supplied.
+QCD/QED separation and flavor-threshold matching of the assumed chart to
+these lattice conventions are additional physical requirements.
+A fixed lower-order control omits the four \(w^2\) terms in
+\(\mu_u,\mu_d,a_u,a_d\) and all of \(\delta_g\); it is evaluated and
+compared without selecting between branches by agreement. The executable
+specification, independent heat-equation and log-spectrum checks, and
+complete comparison are in
+\path{code/particles/flavor/conditional_quark_mass_replay.py} and
+\path{code/particles/runs/flavor/conditional_quark_mass_comparison.json}.
+The result is a reproducible conditional numerical construction informed
+by known masses, rather than six independently predicted observations.
+
+\paragraph{A separate conditional top calculation.}
+A criticality ansatz provides a second route that consumes neither the
+six-mass flavor law nor quark targets in its forward calculation. With the
+same \(P\) and gauge boundary, assume
+\[
+ \mu_b=E_\star e^{-\pi}P^{-1/6},\qquad
+ \lambda(\mu_b)=\beta_\lambda(\mu_b)=0,
+\]
+choose the weak perturbative Yukawa root, and run to
+\(\mu=y_t(\mu)v/\sqrt2\). The two-loop criticality equation also has
+a large positive root; weak-root selection is an explicit hypothesis.
+In the Standard Model five-coupling truncation
+\((g_1,g_2,g_3,y_t,\lambda)\), with all other Yukawas zero, the
+coupled two-loop equations~\cite{buttazzo2013} give approximately
+\(162.0595\,\mathrm{GeV}\) in this running-mass coordinate, compared
+with the PDG cross-section extraction
+\(m_t(m_t)=162.5^{+2.1}_{-1.5}\,\mathrm{GeV}\)~\cite{pdg2025quarks}.
+An independently implemented integrator and hypercharge convention check
+the forward result.
+
+The three-loop QCD conversion gives a pole proxy of
+\(171.7516\,\mathrm{GeV}\). The one-loop route gives
+\(157.8983\,\mathrm{GeV}\) and \(167.4083\,\mathrm{GeV}\), respectively;
+two-loop Yukawa/quartic running with one-loop gauges gives
+\(162.8813\,\mathrm{GeV}\) and \(172.6439\,\mathrm{GeV}\).
+These shifts are truncation diagnostics, not a confidence interval.
+The finite-heat gauge branch uses the coefficients \((33/5,1,-3)\)
+as a declared low-boundary recipe; the subsequent Standard Model transport
+does not establish a common threshold-complete unification history.
+Identifying its fixed \(v\) coordinate with a renormalized electroweak
+mass convention requires a further matching hypothesis. Finite
+electroweak, tadpole, and complex-pole matching are not supplied, so the
+QCD proxy is not a certified physical pole prediction. Boundary-scale
+selection and criticality also remain physical assumptions. The three
+routes and numerical residuals are retained in
+\path{code/particles/runs/calibration/conditional_top_fixed_p.json}.
 
 \subsection{Strong-CP branch}\label{quark-family-strong-cp-boundary}
 
@@ -7360,6 +7533,18 @@ S.~Navas et al. (Particle Data Group),
 \emph{CKM Quark-Mixing Matrix},
 Review of Particle Physics 2024, Sec.~12.2.2, revised May 31, 2024.
 \url{https://pdg.lbl.gov/2024/reviews/rpp2024-rev-ckm-matrix.pdf}
+
+\bibitem{pdg2025quarks}
+S.~Navas et al. (Particle Data Group),
+\emph{Review of Particle Physics}, Phys. Rev. D \textbf{110}, 030001 (2024),
+2025 update, quark summary table.
+\url{https://pdg.lbl.gov/2025/tables/rpp2025-sum-quarks.pdf}
+
+\bibitem{buttazzo2013}
+D.~Buttazzo et al.,
+\emph{Investigating the near-criticality of the Higgs boson},
+JHEP \textbf{12} (2013) 089, Appendix B.
+\url{https://arxiv.org/abs/1307.3536}
 
 \bibitem{pdg2026}
 Particle Data Group,

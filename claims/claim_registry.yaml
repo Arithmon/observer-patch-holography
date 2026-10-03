@@ -13792,6 +13792,90 @@
         "boundary": [],
         "rationale": "This row constructs an informative complete QND read over an explicitly prepared sea and charges its longer noisy source lifetime. Masses, reference preparation, timing, supplied-program capability and fixed-strength local noise remain declared; the interval and resource proof neither assumes nor establishes an empirical premise-register branch or autonomous physical clock."
       }
+    },
+    {
+      "claim_id": "OPH-QUARK-CONDITIONAL-FIXED-P-REPLAY",
+      "statement": "The frozen full RSCC law, evaluated at P=phi+sqrt(pi)/137.035999177 with one coherent D10 gauge/transmutation packet and the external E_star=1.220890e19 GeV unit, emits native mass coordinates (u,d,s,c,b,t) approximately (0.002158958,0.004711035,0.093070061,1.272260,4.189458,172.064527) GeV. The light entries carry assumed MSbar charts at 2 GeV, charm and bottom assumed MSbar self-scale charts, and top an assumed pole coordinate. No quark reference mass is read by the producer, but the frozen formula, module incidences and signs have target-informed ancestry. The fixed lower-order ablation remains a control. A separate retrospective comparison places all six full-law coordinates inside the individual PDG 2025 quoted ranges, while m_s/mean(m_u,m_d)=27.094659 lies below its quoted PDG range; all scheduled FLAG ratio comparisons remain present. Neither joint model acceptance, a common-scale Yukawa matrix, a physical pole derivation, a source-selected flavor law nor new blind predictive evidence is asserted.",
+      "owner_paper": "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
+      "tier": "conditional_retrospective_numerical_construction",
+      "assumptions": [
+        "measured_alpha_and_external_energy_unit",
+        "declared_fixed_P_D10_gauge_transmutation",
+        "frozen_RSCC_response_module_and_readout_hypotheses",
+        "conditional_RSCC_mass_chart_and_family_attachment"
+      ],
+      "imported_results": [
+        "finite_group_heat_kernel_and_centered_log_spectrum_algebra",
+        "CODATA_2022_inverse_fine_structure_calibration",
+        "PDG_2025_and_FLAG_2024_native_chart_comparison_values"
+      ],
+      "oph_specific_delta": "Replays the existing target-informed RSCC law at the independently alpha-calibrated P with a coherent scale packet, explicit source and chart hypotheses, independent numerical verification and retained adverse ratio comparisons.",
+      "novelty_type": "conditional_fixed_P_retrospective_mass_chart_replay",
+      "evidence": [
+        "code/particles/flavor/conditional_quark_mass_spec.json",
+        "code/particles/flavor/conditional_quark_mass_replay.py",
+        "code/particles/flavor/verify_conditional_quark_mass_replay.py",
+        "code/particles/flavor/test_conditional_quark_mass_replay.py",
+        "code/particles/flavor/test_verify_conditional_quark_mass_replay.py",
+        "code/particles/runs/flavor/conditional_quark_mass_replay.json",
+        "code/particles/flavor/compare_conditional_quark_masses.py",
+        "code/particles/flavor/test_compare_conditional_quark_masses.py",
+        "code/particles/data/pdg_2025_conditional_quark_comparison.json",
+        "code/particles/data/flag_2024_light_quark_ratio_fixture.json",
+        "code/particles/runs/flavor/conditional_quark_mass_comparison.json"
+      ],
+      "falsifier": "Independent reconstruction disagrees with the pinned equations or source packet; a runtime mass target or target-closed P enters the producer; a coefficient, sign, unit or chart changes silently; the historical control is selected by agreement; or a scheduled adverse comparison is omitted.",
+      "scope_if_false": "The stated frozen numerical replay or its comparison fails. Its physical carrier, response law, normalization and mass-chart attachments remain hypotheses; no general OPH mass theorem or independent validation follows from the replay.",
+      "status": "reproduced_conditional_target_informed_native_chart_coordinates_with_comparison_limits",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row asserts the emitted coordinates of a completely specified retrospective RSCC law and the content of its separate comparison, not the physical realization of that law. Its declared response carrier, signed cumulants, family attachment and mass charts are explicit input hypotheses. Neither the physical scalar-action normalization nor the complete physical Yukawa-matrix premise is consumed or discharged by evaluating these formulas."
+      }
+    },
+    {
+      "claim_id": "OPH-TOP-CONDITIONAL-FIXED-P-CRITICALITY",
+      "statement": "At the same measured-alpha P and external E_star=1.220890e19 GeV calibration, the declared logarithmic-midpoint boundary mu/E_star=exp(-pi)*P^(-1/6), lambda=beta_lambda=0 and the lowest positive perturbative Yukawa root yield a conditional top coordinate without consuming a quark-mass target or RSCC template. Fully coupled two-loop top-only transport anchored to the declared D10 low-scale gauge packet gives a running mass coordinate about 162.05945 GeV, a three-loop QCD-only pole proxy about 171.75164 GeV and a tree Higgs proxy about 124.91142 GeV. One-loop and hybrid two-loop controls remain separate; the hybrid-to-coupled running-coordinate shift is about 0.822 GeV. The boundary functional, criticality, root branch, top-only truncation and readout are hypotheses. The constant transmutation v coordinate lacks the finite electroweak mass/tadpole matching bridge, so no physical MSbar or pole prediction, all-six-mass result, blind prediction, certified numerical enclosure or quantified theory uncertainty is asserted.",
+      "owner_paper": "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
+      "tier": "conditional_numerical_RGE_coordinate",
+      "assumptions": [
+        "measured_alpha_and_external_energy_unit",
+        "declared_fixed_P_D10_gauge_transmutation",
+        "declared_top_log_midpoint_criticality_and_root",
+        "declared_top_only_RGE_and_mass_coordinate_readout"
+      ],
+      "imported_results": [
+        "Standard_Model_two_loop_beta_functions_top_only_specialization",
+        "three_loop_QCD_running_to_pole_mass_expansion",
+        "CODATA_2022_inverse_fine_structure_calibration",
+        "numerical_ODE_and_root_finding"
+      ],
+      "oph_specific_delta": "Separates a fixed-P criticality calculation from quark-template closure and exposes the change from hybrid to fully coupled two-loop transport while retaining physical matching and boundary selection as hypotheses.",
+      "novelty_type": "conditional_fixed_P_top_criticality_coordinate",
+      "evidence": [
+        "code/particles/calibration/conditional_top_fixed_p_spec.json",
+        "code/particles/calibration/conditional_top_fixed_p.py",
+        "code/particles/calibration/verify_conditional_top_fixed_p.py",
+        "code/particles/calibration/test_conditional_top_fixed_p.py",
+        "code/particles/calibration/sm_two_loop_rge_engine.py",
+        "code/particles/runs/calibration/conditional_top_fixed_p.json"
+      ],
+      "falsifier": "Independent beta-function, heat-packet, root or transport reconstruction disagrees; the wrong positive polynomial branch is called unique; a quark target enters P or the boundary; numerical controls fail; or the QCD proxy is presented as a matched physical pole.",
+      "scope_if_false": "The specified criticality coordinate or its numerical implementation fails. The RSCC replay remains a separate construction; no source-selected criticality, physical quark-mass attachment or all-six-mass model is established by this calculation.",
+      "status": "reproduced_conditional_fixed_P_top_coordinate_with_separate_transport_controls",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row records the numerical output of supplied criticality, scale, perturbative-root and top-only transport hypotheses. It neither uses a source-selected Higgs/Yukawa action nor identifies the constant transmutation coordinate with a matched electroweak mass convention. Therefore it does not consume or discharge the physical scalar-action or physical Yukawa-matrix premises; those physical identifications are outside the emitted-coordinate claim."
+      }
     }
   ]
 }

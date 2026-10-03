@@ -23,6 +23,10 @@ ADDITIONAL_EVIDENCE_TESTS = (
     "code/P_derivation/test_printed_pair_identity.py",
     "evidence/source_net_causal_poset/manifold_refinement/test_verify.py",
     "code/particles/flavor/test_full_entropy_w5_selector.py",
+    "code/particles/flavor/test_conditional_quark_mass_replay.py",
+    "code/particles/flavor/test_verify_conditional_quark_mass_replay.py",
+    "code/particles/flavor/test_compare_conditional_quark_masses.py",
+    "code/particles/calibration/test_conditional_top_fixed_p.py",
 )
 
 
