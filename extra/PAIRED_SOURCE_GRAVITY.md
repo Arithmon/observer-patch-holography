@@ -229,8 +229,10 @@ Use for EVERY member the same physical interpretation and test-probe action:
     S_clock = -mc^2 integral d(tau),    S_photon = Maxwell[g].              (11)
 
 The proper detector clock is the clock of (11); laboratory coordinate time is
-not substituted for it. Pointlike identical two-level clocks have local gap
-Delta m and coordinate phase rate exp(-u) Delta m. The earlier native clock
+not substituted for it. Pointlike identical two-level clocks with a local
+energy gap Delta E have proper angular frequency Delta E/hbar and coordinate
+phase rate exp(-u) Delta E/hbar. For a rest-mass gap Delta m, Delta E=c^2 Delta m.
+These shared factors cancel in the frequency ratio. The earlier native clock
 is an implementation capability for such a declared phase; its spacetime
 and physical-unit identification is not a consequence of this extension.
 

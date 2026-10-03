@@ -3704,7 +3704,7 @@
     "code/source_scalar_execution/scalar_execution_algebra.py": "6cd1e44f9c0c5559f447db8db9499a843084424424145e371ad3be388fe92a67",
     "code/source_scalar_execution/source_scalar_execution_receipt.json": "6981fcd4e13fbc33f371224228341a995f34b4733aa70c2ec0b3f6ee5975c7af",
     "code/source_scalar_execution/verify_source_scalar_execution.py": "c03892572732bbf7d019e721d19b6a249b445e2dc30f54d3c237be938cf88d42",
-    "extra/PAIRED_SOURCE_GRAVITY.md": "2ce18540e57e47b0f7312e5f6e60b9baa59809f3b5cd0bdc0d39304faef9da14",
+    "extra/PAIRED_SOURCE_GRAVITY.md": "e2541215b503235ef199dcb3c7320e1d8c3fca79eb3c6feeca895436e7e99dea",
     "requirements.txt": "3277500ae738ab064baacbb01233ebf165319d162534c80bbb727599634223f4"
   }
 }
