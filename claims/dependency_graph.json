@@ -317,7 +317,10 @@
     "OPH-TOP-CONDITIONAL-FIXED-P-CRITICALITY",
     "OPH-QUARK-SOURCE-W5-RESPONSE-CONSTRAINTS",
     "OPH-QUARK-NATIVE-REPAIR-FLAVOR-CONSTRAINTS",
-    "OPH-TOP-POSITIVE-CAPACITY-BAND"
+    "OPH-TOP-POSITIVE-CAPACITY-BAND",
+    "OPH-QUARK-CONDITIONAL-RECORD-RENEWAL",
+    "OPH-QUARK-EXTERIOR-HIGGS-RESPONSE",
+    "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING"
   ],
   "edges": [
     {
@@ -2789,6 +2792,26 @@
       "from": "OPH-TOP-CONDITIONAL-FIXED-P-CRITICALITY",
       "to": "OPH-TOP-POSITIVE-CAPACITY-BAND",
       "role": "Supplies the independent-alpha gauge packet and declared criticality/transport coordinate; the capacity theorem removes equality of the two anchor weights and retains the midpoint as one control."
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-QUARK-CONDITIONAL-RECORD-RENEWAL",
+      "role": "Supplies the pinned finite port incidence and record-transfer grammar. The added atomic preparation protocol is declared separately, and no physical selection of that protocol is inherited."
+    },
+    {
+      "from": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
+      "to": "OPH-QUARK-EXTERIOR-HIGGS-RESPONSE",
+      "role": "Supplies the exact declared exterior carrier, CAR construction and invariant up/down channel types. Their normalized full-doublet tensors are reconstructed without selecting physical coefficients."
+    },
+    {
+      "from": "OPH-SCREEN-A5-SM-RECOGNITION",
+      "to": "OPH-QUARK-EXTERIOR-HIGGS-RESPONSE",
+      "role": "Supplies the conditional rank-three family tensor attachment consumed by the bounded direct-contraction calculation, without identifying its family-blind restriction as the full physical action."
+    },
+    {
+      "from": "OPH-TOP-CONDITIONAL-FIXED-P-CRITICALITY",
+      "to": "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING",
+      "role": "Supplies the independent-alpha gauge packet and midpoint criticality boundary. The explicit Landau-VEV identification and external-SM mass matching are new conditional steps, not inherited source theorems."
     }
   ]
 }

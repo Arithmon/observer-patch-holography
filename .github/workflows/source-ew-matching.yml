@@ -1,0 +1,47 @@
+name: Source Electroweak Matching
+
+on:
+  pull_request:
+    paths:
+      - 'code/P_derivation/**'
+      - 'code/particles/calibration/**'
+      - 'code/particles/runs/calibration/**'
+      - '.github/workflows/source-ew-matching.yml'
+      - 'requirements.txt'
+  push:
+    branches: [main]
+    paths:
+      - 'code/P_derivation/**'
+      - 'code/particles/calibration/**'
+      - 'code/particles/runs/calibration/**'
+      - '.github/workflows/source-ew-matching.yml'
+      - 'requirements.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pinned-smdr-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout research source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Checkout pinned matching library
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: davidgrobertson/SMDR
+          ref: 5c4dd92c918cadb7f91ad3795694f8398b5c287a
+          path: .smdr-replay
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Independently verify source, VEV, one-loop matching and conventions
+        run: python -m pytest -q code/particles/calibration/test_conditional_top_fixed_p.py code/particles/calibration/test_source_ew_vev_matching.py code/particles/calibration/test_verify_source_ew_vev_matching.py code/particles/calibration/test_compare_source_ew_vev_matching.py
+      - name: Rebuild and execute every retained multiloop matching control
+        run: python code/particles/calibration/source_ew_vev_matching.py --smdr-dir .smdr-replay --build --refresh --check --cc gcc

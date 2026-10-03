@@ -13994,6 +13994,124 @@
         "boundary": [],
         "rationale": "This row proves an implication about declared two-anchor costs and a supplied perturbative RGE coordinate. It deliberately does not assume a physically selected Higgs/Yukawa action, realized anchor records or finite electroweak matching. The mathematical range therefore consumes no physical scalar-action or complete physical Yukawa-matrix premise and discharges neither."
       }
+    },
+    {
+      "claim_id": "OPH-QUARK-CONDITIONAL-RECORD-RENEWAL",
+      "statement": "On all 6,077 settled signed integer count configurations projected to relative heights on the twelve-port icosahedron, add or remove one record at a uniformly chosen port with equal sign probability, then complete native strict-descent repair using fresh uniform seam proposals before the next event. Under this explicitly supplied renewal protocol the exact finite chain has 136 proper-rotation orbits, is irreducible with period two, and has one positive stationary law. A single defect follows a strictly monotone path in the original settled heights and needs at most three accepted repairs. Exact stationary balance gives mean accepted repairs 11/24, uniform total-residue weights 1/12, mean geometric quadrupole zero, mean tr(Q^2) approximately 1.46476386118 and isotropic quadrupole covariance approximately 0.292952772236 I5. Exact nonzero stationary current excludes detailed balance, and the radial fourth moment differs from its isotropic Gaussian value. The law fixes all 31 individual quadrupole spectral weights, but every equivariant family operator averaged in the rotation-invariant law is scalar, including nonlinear readouts. The unprojected total is an unbiased walk on the integers with no normalizable stationary distribution. Relative-height projection is a readout, not a claim that distinct protected totals are physically equivalent. P does not select the event alphabet, fresh driving schedule or physical response, and no source-selected vacuum, quark-Higgs coupling, mass scale or mass prescription is derived.",
+      "tier": "exact_conditional_driven_relative_record_state",
+      "assumptions": [
+        "fixed_icosahedral_integer_record_carrier",
+        "conditional_uniform_seam_count_scheduler",
+        "declared_atomic_record_renewal_and_relative_readout"
+      ],
+      "imported_results": [
+        "finite_irreducible_periodic_Markov_chain_stationarity",
+        "exact_rational_linear_algebra",
+        "finite_group_invariant_operator_averaging"
+      ],
+      "oph_specific_delta": "Replaces an arbitrary settled-state mixture by the unique exactly computed law of one explicit native-record renewal protocol, including nonzero stationary currents, non-Gaussian moments and the protected-total limitation.",
+      "novelty_type": "conditional_native_record_renewal_stationary_law",
+      "evidence": [
+        "code/particles/flavor/native_record_renewal_spec.json",
+        "code/particles/flavor/native_record_renewal.py",
+        "code/particles/flavor/verify_native_record_renewal.py",
+        "code/particles/flavor/test_native_record_renewal.py",
+        "code/particles/runs/flavor/native_record_renewal.json"
+      ],
+      "falsifier": "Independent complete-state or orbit enumeration differs; the single-defect rule, transition probabilities, irreducibility, period or exact stationary equation fails; the stated moments or stationary currents differ; or the relative-state law is promoted to a stationary protected total or source-selected physical vacuum.",
+      "scope_if_false": "The stated finite driven relative-state calculation fails. Native settling alone permits many endpoint preparations; a physical record-production law, interacting matter response, absolute normalization and mass prescription remain separate.",
+      "status": "exact_conditional_renewal_law_and_independent_stationary_check",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row proves a finite driven count-chain statement after an explicit atomic preparation and full-settlement protocol. It does not consume a physical vacuum, thermal preparation, Higgs action or Yukawa-matrix premise. The protected total is expressly outside the stationary readout, and the specified driving protocol is not asserted to follow from physical source selection."
+      },
+      "owner_paper": "paper/deriving_the_particle_zoo_from_observer_consistency.tex"
+    },
+    {
+      "claim_id": "OPH-QUARK-EXTERIOR-HIGGS-RESPONSE",
+      "statement": "On the declared trace-balanced exterior carrier C3 plus C2, top-form wedge and dual-Higgs contraction reconstruct the complete all-left-Weyl up/down tensors for H=(h0,h1): U=I_color tensor (h1,-h0) and D=I_color tensor (-conjugate(h0),-conjugate(h1)). Independent CAR reconstruction and exact weak and hypercharge identities give Udagger U=Ddagger D=norm(H)^2 I3 and Udagger D=0 for arbitrary complex H. The color commutant is one-dimensional, so the traceless internal color response is not a family mass operator. In the bounded direct-contraction model containing only I_family tensor O_matter operators, the two vertices are g_u I3 and g_d I3, and this form survives products, adjoints, inverses, family-blind Schur elimination and positive kinetic normalization. The channel coefficients remain unselected. After conversion to the four-component Dirac convention, canonical normalization is Z_Q^(-1/2) Y_q Z_q^(-1/2)/sqrt(Z_H); the corresponding all-left formula has a transposed left factor. Conditionally setting both fermion kinetic matrices to R>0 and the Dirac vertex to g_q R cancels R and cannot create a hierarchy. A complex Hermitian control distinguishes this from an incorrect Weyl transpose. The full Higgs derivative of a Schur-complement kernel is stated and checked, but no source-selected interacting Higgs-dependent kernel, physical kinetic metric, quark mass or mass prescription is emitted.",
+      "tier": "exact_exterior_gauge_tensors_and_conditional_kinetic_response",
+      "assumptions": [
+        "declared_exterior_Higgs_tensor_and_family_blind_action",
+        "declared_Dirac_kinetic_normalization_and_same_source_kernel"
+      ],
+      "imported_results": [
+        "exterior_algebra_and_CAR",
+        "SU3_and_SU2_intertwiner_identities",
+        "positive_Hermitian_kinetic_normalization",
+        "Schur_complement_differentiation"
+      ],
+      "oph_specific_delta": "Computes both Higgs components on the committed exterior carrier and checks precisely which source response can survive the color Ward identity and physical kinetic normalization, exposing the required family-sensitive interaction derivative.",
+      "novelty_type": "exact_full_doublet_exterior_response_and_normalization_boundary",
+      "evidence": [
+        "code/particles/flavor/exterior_higgs_response_spec.json",
+        "code/particles/flavor/exterior_higgs_response_certificate.py",
+        "code/particles/flavor/verify_exterior_higgs_response.py",
+        "code/particles/flavor/test_exterior_higgs_response.py",
+        "code/particles/runs/flavor/exterior_higgs_response.json"
+      ],
+      "falsifier": "Independent CAR coefficients, full-doublet Ward identities or color commutant differ; a family-blind algebra operation creates a nonidentity family factor; the declared Dirac metric cancellation or noncommuting Schur derivative fails; or Weyl and Dirac coefficient conventions are mixed.",
+      "scope_if_false": "The finite tensor identity or conditional normalization result fails. The bounded direct-contraction model is not every admissible source interaction; its unselected scalar couplings and missing family-sensitive Higgs derivative cannot be promoted to physical mass selection.",
+      "status": "exact_full_doublet_response_and_kinetic_convention_controls_verified",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The claim evaluates declared finite exterior tensors and if-then normalization identities, including a bounded family-blind operator algebra. It neither assumes nor discharges a physical scalar action or a complete source-selected Yukawa matrix. CAR inner products, physical kinetic coefficients and Dirac versus Weyl field conventions are explicitly distinguished."
+      },
+      "owner_paper": "paper/deriving_the_particle_zoo_from_observer_consistency.tex"
+    },
+    {
+      "claim_id": "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING",
+      "statement": "Take the independent-alpha, externally calibrated energy-unit gauge packet and midpoint top-criticality branch, and impose the new finite attachment v_Landau_MSbar(Q0)=v_source_chart at the source running-Z coordinate Q0. In the Standard Model truncation with every non-top Yukawa zero, transport the same full boundary with two-loop running, including v and the Higgs quadratic parameter, and perform pinned SMDR matching with a two-loop Goldstone-resummed effective-potential minimum. At Q0 the declared primary orders give approximate complex-pole masses top 170.6255 GeV and Higgs 124.8803 GeV, running-width Breit-Wigner coordinates W 79.8622 GeV and Z 90.5905 GeV, and local charged-current coefficient 1.1827834e-5 GeV^-2. The forward matching producer NaN-poisons all 41 upstream experimental globals and the hadronic alpha input, and consumes no quark-mass or electroweak target. A separate retrospective PDG comparison retains all 57 scheduled descriptive rows across the nine scale/order settings, with the primary scale and matching order fixed beforehand; it supplies no standardized residuals, joint likelihood or success classification. The fixed empirical finite-muon correction is subtracted, so this massless-muon truncation emits a local coefficient rather than a muon lifetime. Matching orders and scales Q0,2Q0,4Q0 are retained with the same transported VEV rather than reanchoring it. This computes an explicit conditional mass prescription but does not derive the VEV attachment, full flavor sector or source vacuum; it is not a blind prediction or a successful joint fit. Matching-order and scale controls are not confidence intervals or complete theory uncertainties.",
+      "tier": "conditional_source_chart_to_SM_pole_matching_calculation",
+      "assumptions": [
+        "measured_alpha_and_external_energy_unit",
+        "declared_fixed_P_D10_gauge_transmutation",
+        "declared_top_log_midpoint_criticality_and_root",
+        "declared_source_Landau_vev_and_top_only_SM_matching"
+      ],
+      "imported_results": [
+        "Standard_Model_two_loop_beta_functions_and_effective_potential",
+        "SMDR_1_3_complex_pole_and_local_charged_current_matching",
+        "TSIL_and_3VIL_loop_integral_evaluation",
+        "complex_pole_to_running_width_Breit_Wigner_conversion"
+      ],
+      "oph_specific_delta": "Replaces an unspecified mass-chart interpretation with one reproducible finite Landau-VEV attachment and a complete transported matching calculation, while preserving the resulting electroweak tensions and the absence of a full flavor model.",
+      "novelty_type": "conditional_explicit_source_vev_to_pole_matching",
+      "evidence": [
+        "code/particles/calibration/source_ew_vev_matching_spec.json",
+        "code/particles/calibration/source_ew_vev_matching.py",
+        "code/particles/calibration/verify_source_ew_vev_matching.py",
+        "code/particles/calibration/verify_source_ew_top_pole.py",
+        "code/particles/runs/calibration/source_ew_vev_matching.json",
+        "code/particles/calibration/test_source_ew_vev_matching.py",
+        "code/particles/calibration/compare_source_ew_vev_matching.py",
+        "code/particles/calibration/source_ew_comparison_targets.json",
+        "code/particles/calibration/test_compare_source_ew_vev_matching.py",
+        "code/particles/runs/calibration/source_ew_vev_matching_comparison.json"
+      ],
+      "falsifier": "Independent boundary transport, pole matching or local charged-current reconstruction disagrees; a target-bearing input enters the runtime; the VEV is reanchored at an alternate scale; the Weyl/Dirac or complex-pole/Breit-Wigner conventions are mixed; or numerical scale variation is presented as a physical uncertainty interval.",
+      "scope_if_false": "The declared finite chart attachment or its numerical matching fails. A source-selected Higgs action, complete nonzero light-quark sector and physical vacuum remain unproved; this conditional calculation does not validate the separate retrospective six-mass replay.",
+      "status": "explicit_conditional_Landau_vev_matching_with_retained_joint_tensions",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row records a numerical matching calculation after supplying the finite Landau-gauge VEV and gauge-coupling identifications and a top-only chiral action. It does not assert those physical identifications follow from source dynamics. No physical normalization or full Yukawa premise is consumed or discharged merely by evaluating the declared external-SM matching map."
+      },
+      "owner_paper": "paper/deriving_the_particle_zoo_from_observer_consistency.tex"
     }
   ]
 }

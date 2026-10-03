@@ -4835,6 +4835,151 @@ clock must not be inferred from this bound. The finite enumeration,
 matching identities and exact moment checks are reproduced by
 \path{code/particles/flavor/verify_native_repair_flavor_constraints.py}.
 
+\paragraph{A conditional driven record state.}
+A definite probability law for the relative record state follows from an
+additional preparation protocol using the source's existing atomic events.
+After each complete settlement, choose one of the twenty-four signed port
+events $(i,s)$, $s=\pm1$, uniformly, append that event, and settle again using
+fresh uniform seam proposals. The choice of this renewal protocol is a
+hypothesis; it is not a consequence of the source grammar merely admitting
+the events. No mass target, fitted orbit weight, or physical time scale enters.
+
+If $N$ is settled, the state during repair after this event has the form
+$N+s e_j$. A repair is possible exactly along a seam from $j$ to $k$ with
+$s(N_j-N_k)=1$, and moves the single defect from $j$ to $k$. Thus a particle
+walks strictly downhill in the original integer heights, and a hole strictly
+uphill. The graph diameter is three, so at most three repairs occur.
+Every accepted move has actual source--sink difference two. Rejected
+proposals change waiting counts but not the uniform choice among admissible
+neighbors.
+
+Normalize heights by subtracting their minimum. On the resulting $6,077$
+settled relative configurations the protocol defines a finite Markov kernel
+with $66,192$ nonzero entries. Removing a record at a global maximum leaves
+the state settled. Repeating reaches the zero representative, and reversing
+these direct events gives positive-probability paths back. The kernel is
+therefore irreducible. Every renewal flips the parity of the total residue,
+and each direct edge has a two-cycle, so its period is exactly two. There is
+a unique positive stationary distribution and Ces\`aro convergence; ordinary
+stepwise convergence from one parity class is not claimed.
+
+Proper rotations give $136$ orbits and a strongly lumped kernel with $1,000$
+nonzero entries. The unique orbit weights are computed as exact rational
+numbers and independently certified on every one of the $6,077$ states.
+Their total-residue marginal is $1/12$ on each residue modulo twelve.
+The law also respects sign reversal. For the centered count quadrupole,
+\[
+ Q(N)=\sum_iN_i\left(n_i n_i^{\mathsf T}-\tfrac13I\right),
+ \qquad
+ \mathbb E_\pi Q=0,
+ \qquad
+ \mathbb E_\pi[Q\otimes Q]
+ =\frac{\mathbb E_\pi\operatorname{tr}Q^2}{5}\,I_5.
+\]
+The independently checked moments are
+\[
+ \mathbb E_\pi\operatorname{tr}Q^2\simeq1.4647638612,
+ \qquad
+ \mathbb E_\pi(\operatorname{tr}Q^2)^2\simeq2.8795832702.
+\]
+All odd centered-count moments vanish. In particular,
+$\mathbb E_\pi\operatorname{tr}Q^3=0$. The radial fourth-moment difference
+from a centered isotropic five-dimensional Gaussian is
+\[
+ \mathbb E_\pi(\operatorname{tr}Q^2)^2
+ -\frac75\bigl(\mathbb E_\pi\operatorname{tr}Q^2\bigr)^2
+ \simeq-0.1241631665\ne0.
+\]
+These are moments of the declared record law; they cannot be transferred to
+an independently postulated physical response without its identification.
+
+There is also an exact cost identity. Write
+$W(N)=\sum_i(N_i-S/12)^2$. A uniform signed preparation increases $W$ by
+$11/12$ on average. Each accepted one-defect repair decreases it by two.
+Since $W$ is bounded on the relative state space, stationarity gives
+\[
+ \boxed{\mathbb E_\pi[\text{accepted repairs per preparation}]=\frac{11}{24}.}
+\]
+The stationary process is not reversible. For example, the transition from
+$e_{11}$ to $e_{10}+e_{11}$ has probability $1/20$, its reverse has probability
+$1/6$, and the exact stationary edge flows are unequal. This is a driven
+stationary record law, not an identified thermal equilibrium or quantum
+vacuum.
+
+Only shift-invariant observables have this stationary law. The unquotiented
+protected total performs an unbiased walk on $\mathbb Z$ and has no
+normalizable stationary distribution. Subtracting a common height is a
+readout projection, not a physical gauge identification of different total
+records. Any Higgs or mass normalization depending on the mean count
+requires that additional physical input. Likewise, averaging an
+$A_5$-equivariant $\operatorname{End}(P_3)$ readout gives a scalar by
+irreducibility, even for a nonlinear readout. The distribution of individual
+sampled spectra is not the spectrum of that averaged operator. The renewal
+law fixes the orbit weights conditionally; it supplies no
+quark--Higgs map or mass scheme by itself.
+
+
+\paragraph{The full exterior Higgs response and its kinetic normalization.}
+Let the declared matter carrier be $C\oplus W=\mathbb C^3\oplus\mathbb C^2$,
+with orthonormal exterior monomials, and write $H=h_0e_3+h_1e_4$.
+The normalized top-form contractions
+\[
+ B_u(Q,H,u^c)=[Q\wedge H\wedge u^c]_5,\qquad
+ B_d(Q,\overline H,d^c)=[(\iota_{\overline H}Q)\wedge d^c]_5
+\]
+give, in the ordered color and weak basis,
+\[
+ U(H)=I_C\otimes\binom{h_1}{-h_0},\qquad
+ D(H)=I_C\otimes\binom{-\overline h_0}{-\overline h_1}.
+\]
+Here the sign convention for $d^c$ can be absorbed into its independently
+supplied channel coefficient.  Exact exterior and independent creation-operator
+calculations give
+\[
+ U^\dagger U=D^\dagger D=\|H\|^2I_C,\qquad U^\dagger D=0.
+\]
+Thus the full doublet, including its charged direction, has unit-magnitude
+color Clebsches.  The channel coefficients $g_u,g_d$ are not determined by
+normalizing these invariant tensors.  Color covariance forces the color
+intertwiner to be a scalar identity; the traceless three- and five-dimensional
+parts of the internal color current cannot be read as family masses.
+
+On the conditional family attachment $F\otimes M$, restricting every supplied
+operator to $I_F\otimes A$ gives $Y_u=g_uI_F$ and $Y_d=g_dI_F$.
+This restriction is preserved by products, adjoints, inverses, positive
+functional calculus, and elimination of heavy modes with a family-independent
+block decomposition.  It is a precisely bounded direct-contraction model,
+not a classification of every source interaction.  It produces no hierarchy.
+After converting the all-left Weyl coefficients to the four-component Dirac
+Yukawa convention, a local chiral action with positive, Higgs-independent
+kinetic matrices has normalized vertex
+\[
+ Y_{q,\mathrm{can}}=
+ Z_Q^{-1/2}Y_q Z_q^{-1/2}/\sqrt{Z_H}.
+\]
+Here $Z_q$ is the right-handed kinetic metric.  For a literal all-left
+bilinear the left normalization factor instead carries a transpose;
+the two coefficient conventions must not be mixed.
+Consequently a proposed record matrix $R>0$ with
+$Z_Q=Z_q=R$ and $Y_q=g_qR$ cancels from the vertex:
+$Y_{q,\mathrm{can}}=g_qI_F/\sqrt{Z_H}$.
+Equivalently, $\det(pR-hg_qR)=\det(R)(p-hg_q)^3$.
+This is a conditional identity; no source selection of $Y_q=g_qR$ is assumed.
+An interacting source completion must therefore emit a Higgs derivative
+that is distinguishable from its kinetic metric, together with the common
+state and normalization.  For a differentiable quadratic kernel with blocks
+$A,B,C,D$, that derivative after eliminating an invertible heavy block is
+\[
+ \partial_H(A-BD^{-1}C)=
+ A_H-B_HD^{-1}C-BD^{-1}C_H+BD^{-1}D_HD^{-1}C.
+\]
+The finite carrier construction does not supply this Higgs-dependent
+source kernel or a physical mass prescription.
+
+The independent finite replays are
+\path{code/particles/flavor/verify_native_record_renewal.py}
+and \path{code/particles/flavor/verify_exterior_higgs_response.py}.
+
 \subsection{Conditional six-mass construction at independently fixed \(P\)}
 \label{quark-conditional-fixed-p}
 
@@ -5137,6 +5282,100 @@ This lies between zero and one on the proved one-loop branch, but no
 source-derived finite range of $r_v$ is supplied. The capacity band
 therefore constrains the stated mass coordinate, not an unconditionally
 matched physical top mass.
+
+\subsection{Explicit electroweak matching of a conditional source boundary}
+\label{quark-source-ew-matching}
+
+A definite finite matching calculation becomes possible after making the
+vacuum convention explicit. Retain the independently fixed $P$, the finite-heat
+gauge packet and the equal-capacity criticality boundary above. At the
+pre-existing source running-$Z$ coordinate, impose the additional identification
+\[
+ Q_0=91.59609090\,\mathrm{GeV},\qquad
+ v_{\mathrm{Landau},\overline{\mathrm{MS}}}(Q_0)
+ =v_{\rm chart}=246.61737777\,\mathrm{GeV}.
+\]
+The source gauge coordinates are identified with the full Standard Model
+$\overline{\mathrm{MS}}$ couplings at $Q_0$. Neither identification is a
+source-selection theorem. In particular, $Q_0$ is not replaced by a measured
+$Z$ mass or by a top-dependent scale. The two-loop criticality trajectory gives
+\[
+ (g_Y,g_2,g_3,y_t,\lambda)_{Q_0}
+ \simeq(0.35681261,\,0.65151015,\,1.21944839,\,0.96238089,\,0.14002413).
+\]
+All other Yukawas vanish, as in the original top-only calculation. This is a
+declared chiral truncation, not a complete physical flavor model.
+
+Use the Landau-gauge minimum of the Goldstone-resummed effective potential
+to define the running vacuum, with
+$V=m^2H^\dagger H+\lambda(H^\dagger H)^2$.
+The finite matching and renormalization-group functions are imported from
+SMDR~\cite{MartinRobertsonSMDR,MartinTopPole}. The minimum fixes $m^2(Q_0)$;
+at tree, one-loop and two-loop orders its values are approximately
+$-8516.29$, $-8271.04$ and $-8373.75\,\mathrm{GeV}^2$.
+The same boundary is transported to $Q_0,2Q_0,4Q_0$ with two-loop running,
+including the vacuum anomalous dimension. Thus
+\[
+ v(Q_0),v(2Q_0),v(4Q_0)
+ \simeq246.61738,\,244.72892,\,243.08648\,\mathrm{GeV}.
+\]
+Reimposing $v=v_{\rm chart}$ at each evaluation scale would change the model.
+The intermediate $y_tv/\sqrt2$ is a full-Standard-Model running parameter
+in this convention, not the pure-QCD short-distance top mass.
+
+The pole convention is $s=(M-i\Gamma/2)^2$. For comparison with the
+running-width Breit--Wigner convention used for $W$ and $Z$, write
+$\delta=\Gamma^2/(4M^2)$; then
+\[
+ M_{\rm BW}=\frac{M(1+\delta)}{\sqrt{1-\delta}},\qquad
+ \Gamma_{\rm BW}=\frac{\Gamma(1+\delta)}{(1-\delta)^{3/2}}.
+\]
+The top calculation retains both expansion methods and all zero-, one- and
+two-loop controls. Its designated value includes four-loop pure QCD and
+two-loop remaining contributions; the boson and charged-current values use
+two-loop matching. No measured top mass, boson mass or Fermi constant is
+used to set a boundary or choose an evaluation scale.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Quantity & $Q_0$ & $2Q_0$ & $4Q_0$\\
+\midrule
+$M_t$ (GeV) & 170.62553 & 170.59650 & 170.60124\\
+$M_H$ (GeV) & 124.88031 & 124.78766 & 124.68169\\
+$M_{W,\rm BW}$ (GeV) & 79.86215 & 79.87044 & 79.86794\\
+$M_{Z,\rm BW}$ (GeV) & 90.59047 & 90.59651 & 90.59763\\
+$10^5G_F^{\rm local}$ ($\mathrm{GeV}^{-2}$)
+ & 1.1827834 & 1.1825618 & 1.1826107\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Here $G_F^{\rm local}$ denotes the local charged-current coefficient in
+the zero-muon truncation. The matching implementation's fixed empirical
+finite-muon correction is removed algebraically; a massless-muon model
+does not predict an operational muon lifetime. Experimental-reference
+globals are disabled in the forward calculation. Independent Python
+calculations reproduce the running vacuum, one-loop charged-current
+coefficient, one-loop top complex pole and one-loop potential minimum. The full
+multiloop table is separately reproduced with the pinned C implementation;
+a stored numerical digest supplies integrity, not an independent derivation
+of its multiloop integrals.
+
+This calculation tests the additional identification. At $Q_0$ the $W$ and
+$Z$ Breit--Wigner masses lie approximately $0.51$ and $0.60\,\mathrm{GeV}$ below
+their measured values, while the local charged-current coefficient is
+about $1.41$ percent above the conventional Fermi constant. These differences
+are retained along with the top and Higgs comparisons. The transported
+scale controls are not confidence intervals, and the chiral truncation,
+matching uncertainty and physical source normalization do not have a
+complete error budget. No joint acceptance or statistical significance is
+assigned. The result therefore supplies a conditional finite matching map
+and a quantitative constraint on the vacuum/gauge attachment, rather than
+confirming that attachment. Since zero Yukawas remain zero under the
+stated perturbative transport, this top-only branch cannot generate the
+five lighter quark masses. It also does not establish the mixed-chart
+attachment of the separate six-mass ansatz.
 
 \subsection{Strong-CP branch}\label{quark-family-strong-cp-boundary}
 
@@ -8008,6 +8247,16 @@ P. A. Grassi, B. A. Kniehl, and A. Sirlin,
 \emph{Width and partial widths of unstable particles in the light of the
 Nielsen identities},
 Physical Review D \textbf{65}, 085001 (2002), arXiv:hep-ph/0109228.
+
+\bibitem{MartinRobertsonSMDR}
+S. P. Martin and D. G. Robertson,
+\emph{Standard Model parameters in the tadpole-free pure
+$\overline{\mathrm{MS}}$ scheme}, arXiv:1907.02500.
+
+\bibitem{MartinTopPole}
+S. P. Martin,
+\emph{Top-quark pole mass in the tadpole-free MS-bar scheme},
+arXiv:1604.01134.
 
 \end{thebibliography}
 
