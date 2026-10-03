@@ -57,6 +57,43 @@ def test_nonlinear_source_and_schedule_controls_are_real(packet):
         assert len(set(item['chains'].values())) == 4
 
 
+def test_coercivity_does_not_imply_a_normalizable_gibbs_law():
+    # A smooth confining energy tending to infinity still has a divergent
+    # partition function. This defeats the tempting but false generalization.
+    x, limit = sp.symbols('x limit', real=True, positive=True)
+    energy = sp.log(1+x*x)/2
+    assert sp.limit(energy, x, sp.oo) == sp.oo
+    partition = 2*sp.integrate(sp.exp(-energy), (x, 0, limit))
+    assert sp.simplify(partition-2*sp.asinh(limit)) == 0
+    assert sp.limit(partition, limit, sp.oo) == sp.oo
+    # The actual one-coordinate resting-source term instead has a Gaussian
+    # lower bound after adding j, for every positive stiffness and source.
+    stiffness, j = sp.symbols('stiffness j', positive=True)
+    resting = stiffness*x*x/2+j*(sp.exp(-x)-1)
+    assert sp.simplify(resting+j-stiffness*x*x/2) == j*sp.exp(-x)
+
+
+def test_compact_density_has_only_the_claimed_regularity():
+    r = sp.symbols('r', real=True)
+    density = (1-r*r)**2  # zero continuation beyond the unit source radius
+    assert density.subs(r, 1) == sp.diff(density, r).subs(r, 1) == 0
+    assert sp.diff(density, r, 2).subs(r, 1) != 0
+
+
+def test_finite_optical_separation_cannot_be_hidden_by_consistent_errors(packet):
+    evidence = deepcopy(packet['evidence'])
+    state = evidence['source'][0]
+    reads = evidence['observables']['finite_reads'][0]
+    state['error_intervals'][1] = ['0', '1/1000']
+    eps_u, eps_w = [F(a[1]) for a in state['error_intervals']]
+    for read in reads['optical']:
+        read['log_stationary_error'] = str(abs(1+read['gamma'])*eps_u+eps_w)
+    # Keep every propagated error internally consistent; rejection must be
+    # the scientific failure to resolve the pair, not custody or bookkeeping.
+    with pytest.raises(ValueError, match='stationary optical intervals must be disjoint'):
+        observable_check.verify(verify.data(), evidence['observables'], evidence['source'])
+
+
 @pytest.mark.parametrize('attack', ['clock', 'redshift_sign', 'metric', 'normalization', 'target', 'tensor',
                                   'drop_branch', 'sample_clock', 'source_writer', 'error',
                                   'nonlinear_ray', 'systematic', 'physical', 'boolean'])

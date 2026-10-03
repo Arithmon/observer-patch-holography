@@ -16,8 +16,8 @@ source coupling `j exp(-u)`, with identical proper-time coupling for sources
 and clocks. Yet the same universal metric/photon dictionary gives bending
 amplitude `(1+gamma)/2` relative to GR. The conformal gamma=-1 source bends
 no light, exactly; gamma=1 gives the Einstein coefficient. Positivity and
-symmetry do not choose between them. Physical exterior `G_ij=0` selects
-gamma=1 in this class; scalar vacuum and the linear Ward identity do not.
+symmetry do not choose between them. Linearized physical exterior `G_ij=0`
+selects gamma=1 in this class; scalar vacuum and the linear Ward identity do not.
 
 The scalar support and twelve-port Gram addresses are inherited from the
 existing source implementation. The additional fields, massless source
@@ -66,8 +66,8 @@ That agreement uses the supplied metric/probe law and is not independent
 evidence selecting OPH's physical source. The exact gamma=-1 zero-bending
 alternative demonstrates the unresolved prediction before any data fitting.
 
-Exact finite residuals, outward exponential intervals, a smooth compact
-source, a continuum consistency estimate and a nonlinear asymptotic ray
+Exact finite residuals, outward exponential intervals, a compact source
+with a C^3 potential, a continuum consistency estimate and a nonlinear asymptotic ray
 remainder are provided. The last is not relabelled as a finite-observer
 VLBA error budget. Original resonance counts, visibilities and likelihoods
 are not available in this packet. Its completed exit is the constructive

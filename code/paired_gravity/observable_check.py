@@ -17,6 +17,8 @@ def algebra():
     need(sp.simplify(S[0, 0]-S[0, 1]**2/S[1, 1]-1) == 0, 'fixed Schur complement')
     need(sp.simplify(S.inv()[0, 0]-1) == 0, 'complete Gaussian marginal')
     need(sp.simplify(S.inv()[1, 0]-g) == 0, 'cross response')
+    need(sp.expand(E+j*j/2-((u-j)**2+k*(v-g*u)**2)/2) == 0,
+         'sourced energy is positive above its common minimum')
     # Reconstruct linearized curvature from h rather than checking copied coefficients.
     t, x, y, z = sp.symbols('t x y z', real=True)
     coordinates = (t, x, y, z)
@@ -33,6 +35,7 @@ def algebra():
     scalar = sum(eta[a]*ricci[a, a] for a in range(4))
     einstein = ricci-sp.diag(*eta)*scalar/2
     lap = lambda f: sum(sp.diff(f, q, 2) for q in (x, y, z))
+    need(sp.simplify(scalar-2*lap(U)+4*lap(V)) == 0, 'linear scalar curvature')
     need(sp.simplify(einstein[0, 0]+2*lap(V)) == 0, 'temporal curvature')
     for a in range(1, 4):
         for b in range(1, 4):
@@ -43,12 +46,28 @@ def algebra():
         need(sp.simplify(sum(sp.diff(einstein[a, b], coordinates[a]) for a in range(1, 4))) == 0,
              'linear Ward identity for every constitutive member')
     r, mu, R = sp.symbols('r mu R', positive=True)
+    exterior = mu/sp.sqrt(x*x+y*y+z*z)
+    exterior_scalar = scalar.subs({U: exterior, V: g*exterior}).doit()
+    need(sp.simplify(exterior_scalar) == 0, 'scalar vacuum does not select gamma')
+    for a in range(1, 4):
+        for b in range(1, 4):
+            axis = einstein[a, b].subs({U: exterior, V: g*exterior}).doit().subs({x: r, y: 0, z: 0})
+            expected = (1-g)*mu/r**3*((2 if a == 1 else -1) if a == b else 0)
+            need(sp.simplify(axis-expected) == 0, 'nonzero exterior tensor selects gamma one')
     rho = 105*mu/(8*R**3)*(1-r*r/R**2)**2
     interior = mu/(16*R)*(35-35*(r/R)**2+21*(r/R)**4-5*(r/R)**6)
-    need(sp.simplify(-sp.diff(r*r*sp.diff(interior, r), r)/r**2-rho) == 0, 'smooth source produces its potential')
+    need(sp.simplify(sp.integrate(r*r*rho, (r, 0, R))-mu) == 0, 'independently normalized source mass')
+    need(sp.simplify(-sp.diff(r*r*sp.diff(interior, r), r)/r**2-rho) == 0, 'compact source produces its potential')
     for n in range(4):
         need(sp.simplify(sp.diff(interior, r, n).subs(r, R)-sp.diff(mu/r, r, n).subs(r, R)) == 0,
              'source boundary matching through third derivative')
+    # Exact optical integrals complement the separate numerical-coordinate replay.
+    need(sp.simplify(sp.diff(z/sp.sqrt(1+z*z), z)-(1+z*z)**sp.Rational(-3, 2)) == 0,
+         'exact straight-ray optical primitive')
+    need(sp.limit(z/sp.sqrt(1+z*z), z, sp.oo)-sp.limit(z/sp.sqrt(1+z*z), z, -sp.oo) == 2,
+         'exact complete linear deflection integral')
+    need(sp.simplify(sp.diff(t/sp.sqrt(2-t*t), t)-2/(2-t*t)**sp.Rational(3, 2)) == 0,
+         'exact derivative of nonlinear ray at zero strength')
     return True
 
 
@@ -128,6 +147,12 @@ def verify(data, row, sources):
             equal([optical['gamma'], optical['exponent'], optical['log_stationary_error']],
                   [g, str(length_log-lapse_log), str(abs(g+1)*eps_u+eps_w)], 'common source metric and error')
             exp_encloses(optical['index'], length_log-lapse_log)
+        # The actual finite read resolves the conformal and Einstein coefficients;
+        # a nominal branch difference hidden inside solver errors is insufficient.
+        conformal, einstein = actual['optical'][0], actual['optical'][2]
+        need(rational(conformal['exponent'])+rational(conformal['log_stationary_error']) <
+             rational(einstein['exponent'])-rational(einstein['log_stationary_error']),
+             'stationary optical intervals must be disjoint')
     need(4*F(500, 499)**2+6*F(500, 499)**3 < 11, 'uniform nonlinear second-derivative bound')
     need(type(row['nonlinear_rays']) is list and len(row['nonlinear_rays']) == 4, 'nonlinear ray census')
     for actual, p in zip(row['nonlinear_rays'], (F(0), F(1, 10**6), F(1, 10**4), F(1, 1000))):
