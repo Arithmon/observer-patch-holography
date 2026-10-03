@@ -26,7 +26,7 @@ K = 1.0 / (16.0 * math.pi**2)
 ROOT = HERE.parents[2]
 SPEC = HERE / 'source_ew_vev_matching_spec.json'
 OUT = ROOT / 'code/particles/runs/calibration/source_ew_vev_matching.json'
-REVIEWED_SPEC_SHA256 = '438bdfb0f57fd1dae2b04672db166b7a598f644357626a2ea64313a2a60b8140'
+REVIEWED_SPEC_SHA256 = 'edc9be3eba98cb4b06da54854c5ed8c268fd53c5f6dc0dafb1124b4bd551f466'
 REVIEWED_C_SOURCE_SHA256 = 'b36f333bf227e069d8ffea2410b793ab5847a49d5e30df2222f07eb074e85805'
 
 

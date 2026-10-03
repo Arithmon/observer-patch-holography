@@ -98,13 +98,14 @@ def make_receipt(inputs,forward):
     return {'schema':'oph.source_ew_vev_matching.v1','inputs':inputs,'specification':spec,'scope':spec['scope'],'source_pins':source_pins(),'forward':forward}
 
 
-def compare(expected,actual,path='root'):
+def compare(expected,actual,path='root',*,matching_order=None):
     if isinstance(expected,dict):
         if not isinstance(actual,dict) or expected.keys()!=actual.keys(): raise ValueError(f'{path}: key mismatch')
-        for k in expected: compare(expected[k],actual[k],f'{path}/{k}')
+        order=expected.get('matching_order',matching_order)
+        for k in expected: compare(expected[k],actual[k],f'{path}/{k}',matching_order=order)
     elif isinstance(expected,list):
         if not isinstance(actual,list) or len(expected)!=len(actual):raise ValueError(f'{path}: list mismatch')
-        for i,(a,b) in enumerate(zip(expected,actual)):compare(a,b,f'{path}/{i}')
+        for i,(a,b) in enumerate(zip(expected,actual)):compare(a,b,f'{path}/{i}',matching_order=matching_order)
     elif isinstance(expected,bool) or not isinstance(expected,(int,float)):
         if expected!=actual: raise ValueError(f'{path}: metadata mismatch')
     elif isinstance(actual,bool) or not isinstance(actual,(int,float)) or not math.isfinite(actual):
@@ -116,6 +117,11 @@ def compare(expected,actual,path='root'):
         atol=2e-7 if ('_GeV' in path or '/m2' in path or '/mt_MSbar' in path) else 2e-10
         if 'GF_removed_' in path:atol=2e-20
         elif 'GF_' in path:atol=2e-14
+        elif matching_order==2 and '/top_' in path and path.endswith('/width_GeV'):
+            # Only the two-loop top absorptive parts show a sub-keV spread
+            # between native 64- and 80-bit long-double implementations.
+            # This is a replay budget, not a certified physical error bar.
+            atol=load_spec()['calculation']['two_loop_top_width_replay_atol_GeV']
         if not math.isclose(expected,actual,rel_tol=2e-8,abs_tol=atol):
             raise ValueError(f'{path}: numerical mismatch {expected} versus {actual}')
 

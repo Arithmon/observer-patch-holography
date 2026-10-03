@@ -2014,11 +2014,11 @@
   "source_pins": {
     "code/particles/calibration/compare_source_ew_vev_matching.py": "3e2a901d824f0b1c5eb9a832d89067b96143c054868ebc728e55366c253ccb9b",
     "code/particles/calibration/source_ew_comparison_targets.json": "4c740d14565123a8fc8534c004309ccc986ae86efb5523917339c4dc7152cc83",
-    "code/particles/calibration/source_ew_vev_matching_spec.json": "438bdfb0f57fd1dae2b04672db166b7a598f644357626a2ea64313a2a60b8140",
+    "code/particles/calibration/source_ew_vev_matching_spec.json": "edc9be3eba98cb4b06da54854c5ed8c268fd53c5f6dc0dafb1124b4bd551f466",
     "code/particles/calibration/verify_source_ew_top_pole.py": "2080cf67ab7a24913635a36e3b002f9b2e024d48e6d5a402825f87d4a6e1582a",
-    "code/particles/calibration/verify_source_ew_vev_matching.py": "bce046c0db1093a9310ec8700d809db3b47e7a8daeaeaa75e3c7e26140b84d07",
+    "code/particles/calibration/verify_source_ew_vev_matching.py": "c80c2fb73e9565cf9a4315083a314a7b23d3485f4eacc38ca074c83edf90b5ab",
     "code/particles/data/pdg_2025_conditional_quark_comparison.json": "503f043ec8581b48e1a8ae184c97e7676dd5e84198ad18f2781d1bf7e32156a5",
-    "code/particles/runs/calibration/source_ew_vev_matching.json": "55b6231c2dd4be5e8a096bda6fdbf1520cf42d4dd57e3a01e8d307bf667a4a71"
+    "code/particles/runs/calibration/source_ew_vev_matching.json": "16ab0acad008760fd681d34e8a655d32e43dd06c204725876c54ec5a5896a8e4"
   },
   "sources": {
     "constants": {

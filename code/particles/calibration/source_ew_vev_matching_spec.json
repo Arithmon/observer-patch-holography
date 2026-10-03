@@ -45,7 +45,8 @@
     "empirical_globals": "All41 upstream SMDR_*EXPT* globals and Delta_alpha_had_5_MZ are NaN-poisoned; no input/reference-model loader, fit, ALT mass routine, or experimental-scale convenience routine is called.",
     "primary_GF_order": 2,
     "primary_boson_order": 2,
-    "working_mt_MSbar": "Full-SM Landau-gauge running quantity yt(Q)*v(Q)/sqrt(2), not a pure-QCD MSbar mass or directly the PDG cross-section extracted mass."
+    "working_mt_MSbar": "Full-SM Landau-gauge running quantity yt(Q)*v(Q)/sqrt(2), not a pure-QCD MSbar mass or directly the PDG cross-section extracted mass.",
+    "two_loop_top_width_replay_atol_GeV": 1e-06
   },
   "upstream": {
     "repository": "https://github.com/davidgrobertson/SMDR",
@@ -76,7 +77,7 @@
     "theory_uncertainty_quantified": false,
     "scale_controls_are_confidence_interval": false
   },
-  "precision_boundary": "Printed digits diagnose deterministic arithmetic. Matching-order and transported-scale shifts are controls, not statistical confidence intervals or a complete theory uncertainty. Pole top mass has the usual nonperturbative ambiguity; no Monte Carlo mass identification is made.",
+  "precision_boundary": "Printed digits diagnose deterministic arithmetic. Matching-order and transported-scale shifts are controls, not statistical confidence intervals or a complete theory uncertainty. Pole top mass has the usual nonperturbative ambiguity; no Monte Carlo mass identification is made. The two-loop top-width cross-platform replay budget is 1 keV; it measures computational reproducibility, not a certified numerical enclosure or physical uncertainty. Other quantity tolerances are unchanged.",
   "retained_forward_payload": {
     "sha256": "192d7f907397e61ba21c4f248bc0a6fb4803faed18ed5320c52d64162fb40216",
     "role": "Integrity binding of the retained numerical receipt, not independent multiloop verification; fresh pinned-SMDR replay compares all numbers with platform-tolerant tolerances."

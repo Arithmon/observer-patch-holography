@@ -513,9 +513,9 @@
   },
   "source_pins": {
     "code/particles/calibration/sm_two_loop_rge_engine.py": "5cf4dec530fa9bc51905507c8cf50ea38e90cfa6f488cfebb2367c5fec915d97",
-    "code/particles/calibration/source_ew_vev_matching.py": "08525276b0d61d40bb1da5dd8db97743b8472b8d12640fbc9e49937862e16a1a",
+    "code/particles/calibration/source_ew_vev_matching.py": "2ce235d3956026c7b7b2d55cef4e5ed40821fe0785f218dc5992c3dc5a9f1b95",
     "code/particles/calibration/source_ew_vev_matching_smdr.c": "b36f333bf227e069d8ffea2410b793ab5847a49d5e30df2222f07eb074e85805",
-    "code/particles/calibration/source_ew_vev_matching_spec.json": "438bdfb0f57fd1dae2b04672db166b7a598f644357626a2ea64313a2a60b8140",
+    "code/particles/calibration/source_ew_vev_matching_spec.json": "edc9be3eba98cb4b06da54854c5ed8c268fd53c5f6dc0dafb1124b4bd551f466",
     "code/particles/runs/calibration/conditional_top_fixed_p.json": "e027f9225efec2497080995cfc7e435e2e37536815715a9e02aca6cf6d4d47fe"
   },
   "specification": {
@@ -546,6 +546,7 @@
         0,
         1
       ],
+      "two_loop_top_width_replay_atol_GeV": 1e-06,
       "working_mt_MSbar": "Full-SM Landau-gauge running quantity yt(Q)*v(Q)/sqrt(2), not a pure-QCD MSbar mass or directly the PDG cross-section extracted mass."
     },
     "hypotheses": {
@@ -558,7 +559,7 @@
       "transport": "The same Q0 boundary is transported to every evaluation scale, including v and m2; v is never reanchored at alternate scales.",
       "vev_attachment": "v_Landau_MSbar(Q0)=v_source_chart; this finite normalization and reference-scale identification is a new conditional physical attachment, not a source theorem."
     },
-    "precision_boundary": "Printed digits diagnose deterministic arithmetic. Matching-order and transported-scale shifts are controls, not statistical confidence intervals or a complete theory uncertainty. Pole top mass has the usual nonperturbative ambiguity; no Monte Carlo mass identification is made.",
+    "precision_boundary": "Printed digits diagnose deterministic arithmetic. Matching-order and transported-scale shifts are controls, not statistical confidence intervals or a complete theory uncertainty. Pole top mass has the usual nonperturbative ambiguity; no Monte Carlo mass identification is made. The two-loop top-width cross-platform replay budget is 1 keV; it measures computational reproducibility, not a certified numerical enclosure or physical uncertainty. Other quantity tolerances are unchanged.",
     "retained_forward_payload": {
       "role": "Integrity binding of the retained numerical receipt, not independent multiloop verification; fresh pinned-SMDR replay compares all numbers with platform-tolerant tolerances.",
       "sha256": "192d7f907397e61ba21c4f248bc0a6fb4803faed18ed5320c52d64162fb40216"

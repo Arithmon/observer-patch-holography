@@ -118,3 +118,32 @@ def test_no_empirical_loader_or_alt_evaluator_called():
     assert 'source_ew_poison.h' in source
     assert '0.00000051862L/(sqrtl(2)*SMDR_v*SMDR_v)' in source
     assert 'SMDR_RGeval_SM(q,2)' in source
+
+
+@pytest.mark.parametrize('row_index,channel,linux_width', [
+    (5, 'top_method1', 1.3079294776870154),
+    (8, 'top_method0', 1.1822835492905803),
+    (8, 'top_QCD4_EW2', 1.3287015496076546),
+])
+def test_two_loop_top_width_platform_replay(receipt, row_index, channel, linux_width):
+    # Independent x86_64 Linux/Clang execution of the same pinned SMDR source.
+    expected = receipt['forward']['rows'][row_index]
+    actual = deepcopy(expected)
+    actual[channel]['width_GeV'] = linux_width
+    producer.compare(expected, actual, f'root/forward/rows/{row_index}')
+
+
+@pytest.mark.parametrize('order,channel,field,expected,delta', [
+    (2, 'top_method1', 'width_GeV', 1.3, 2e-6),
+    (1, 'top_method1', 'width_GeV', 1.3, 6e-7),
+    (0, 'top_method1', 'width_GeV', 0.0, 6e-7),
+    (2, 'W', 'width_GeV', 2.1, 6e-7),
+    (2, 'top_method1', 'mass_GeV', 170.0, 4e-6),
+    (2, 'working', 'gY', .35, 1e-7),
+])
+def test_top_width_budget_does_not_relax_other_controls(order, channel, field, expected, delta):
+    old = {'matching_order': order, channel: {field: expected}}
+    new = deepcopy(old)
+    new[channel][field] += delta
+    with pytest.raises(ValueError, match='numerical mismatch'):
+        producer.compare(old, new, 'root/forward/rows/0')
