@@ -1250,7 +1250,6 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/a5_closure/tests/test_seam_grammar_matter_classification_certificate.py",
             "code/a5_closure/tests/test_family_band_attachment_certificate.py",
             "code/particles/flavor/test_entropy_w5_shape_certificate.py",
-            "code/particles/flavor/test_full_entropy_w5_selector.py",
             "code/particles/leptons/test_koide_balance_comparison_certificate.py",
             "code/particles/scripts/test_build_postdiction_ledger.py",
             "code/a5_closure/tests/test_flux_defect_criterion_certificate.py",

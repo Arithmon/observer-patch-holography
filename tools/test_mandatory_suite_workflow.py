@@ -22,6 +22,7 @@ ADDITIONAL_EVIDENCE_TESTS = (
     "code/P_derivation/test_selection_accounting.py",
     "code/P_derivation/test_printed_pair_identity.py",
     "evidence/source_net_causal_poset/manifold_refinement/test_verify.py",
+    "code/particles/flavor/test_full_entropy_w5_selector.py",
 )
 
 
