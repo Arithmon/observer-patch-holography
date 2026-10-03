@@ -13630,6 +13630,160 @@
         "boundary": [],
         "rationale": "This row joins the declared proper-code source to a staged public decoder and noisy archive, under a specified fixed-strength channel model and charged schedule. The construction does not identify its controls, accounting or source with a physically selected microscopic process or an empirical premise-register branch."
       }
+    },
+    {
+      "claim_id": "OPH-SOURCE-SEA-GENERATOR",
+      "statement": "For the actual massive source walk, including its reflecting finite cubes, beta U0 beta=U0* implies gaps at both Floquet endpoints when 0<m tau<pi/2. Filling the negative modes of the principal signed logarithm h gives H_sea=dGamma(h)-Tr(hP) I>=0, a unique finite ground state and exactly the original integer-time Fock channels in every parity sector. Particle and hole excitation energies are |e|, so the complete finite partition function equals the previous positive accounting partition function, with all bands and valleys retained. Replacing h by |h| in the old occupations changes those channels. Two explicit integer spectral branch changes preserve the step while changing the ground state or retaining the same sea and shifting every excitation cost; positivity and integer-time reads therefore do not uniquely calibrate physical energy. A further shift confined to the high band preserves the same vacuum, all integer-time channels, uniform smooth-mode energy bounds and the infrared energy and thermodynamic limits, while changing finite ultraviolet costs.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_filled_source_vacuum_and_read_program"
+      ],
+      "imported_results": [
+        "CAR_particle_hole_normal_ordering",
+        "Slater_determinants_and_Givens_preparation",
+        "gapped_weighted_resolvent_method",
+        "quasifree_Wick_determinants"
+      ],
+      "oph_specific_delta": "Extends the earlier edge-sea example to the actual reflected source walk, its complete Fock dynamics and a concrete branch-identification obstruction.",
+      "novelty_type": "filled_source_vacuum_and_readable_positive_generator",
+      "falsifier": "The reflecting gap identity, full Fock phase identity, ground-state positivity, all-band partition function or alternative-branch counterexample fails.",
+      "scope_if_false": "The specified filled-source construction or bound fails. The previous empty-vacuum experiments remain separate. No A1-A3 source selection, autonomous schedule, unique laboratory energy or interacting-vacuum stability is asserted.",
+      "owner_paper": "extra/SOURCE_SEA_ENERGY.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "code/m1_sea_energy/__init__.py",
+        "code/m1_sea_energy/format.py",
+        "code/m1_sea_energy/spectrum.py",
+        "code/m1_sea_energy/spectrum_check.py",
+        "code/m1_sea_energy/preparation.py",
+        "code/m1_sea_energy/preparation_check.py",
+        "code/m1_sea_energy/clock.py",
+        "code/m1_sea_energy/clock_check.py",
+        "code/m1_sea_energy/bounds.py",
+        "code/m1_sea_energy/bounds_check.py",
+        "code/m1_sea_energy/verify.py",
+        "code/m1_sea_energy/build.py",
+        "code/m1_sea_energy/test_sea.py",
+        "code/m1_sea_energy/README.md",
+        "code/m1_sea_energy/CONTRACT.md",
+        "code/m1_sea_energy/receipt.json",
+        "extra/SOURCE_SEA_ENERGY.md"
+      ],
+      "status": "proved_for_declared_massive_source_and_explicit_filled_vacuum_experiment",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row derives a normal-ordered positive generator for the specified massive source step and proves two Floquet branch counterexamples. The principal logarithm and filled reference are construction inputs, so the result consumes no empirical premise-register branch and does not calibrate apparatus energy or select a microscopic source."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-LOCAL-SEA-LIMIT",
+      "statement": "The gapped massive source walk has a quantitative local filled-vacuum limit. A weighted-resolvent estimate bounds the action of the difference between infinite and reflected negative-energy projections on modes at flight-distance r from the changed boundary by 4 exp(-r log(1+delta/2))/delta, delta=sin(m tau). The full eight-component low-momentum covariance tends to (I-R H_m/E)/2, with opposite Dirac filling in the high carrier band; it is not an ordinary Dirac sea on all eight components. Compact H2 resolved modes and their fixed finite CAR polynomials converge locally, using a physical boundary margin O(log q), without claiming global sea-vector fidelity. Existing resolved local phase operations have explicit positive excitation costs uniformly bounded on smooth R=+1 kernels, and the existing state-independent CAR read-cone bounds remain applicable.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_filled_source_vacuum_and_read_program"
+      ],
+      "imported_results": [
+        "CAR_particle_hole_normal_ordering",
+        "Slater_determinants_and_Givens_preparation",
+        "gapped_weighted_resolvent_method",
+        "quasifree_Wick_determinants"
+      ],
+      "oph_specific_delta": "Proves local spectral-vacuum control for the actual reflecting compiler rather than importing a periodic vacuum or removing the high band.",
+      "novelty_type": "filled_source_vacuum_and_readable_positive_generator",
+      "falsifier": "The weighted resolvent or projection estimate fails; a high band is discarded; global fidelity is inferred from local covariance; or the stated compact-mode energy bound is violated.",
+      "scope_if_false": "The specified filled-source construction or bound fails. The previous empty-vacuum experiments remain separate. No A1-A3 source selection, autonomous schedule, unique laboratory energy or interacting-vacuum stability is asserted.",
+      "owner_paper": "extra/SOURCE_SEA_ENERGY.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "code/m1_sea_energy/__init__.py",
+        "code/m1_sea_energy/format.py",
+        "code/m1_sea_energy/spectrum.py",
+        "code/m1_sea_energy/spectrum_check.py",
+        "code/m1_sea_energy/preparation.py",
+        "code/m1_sea_energy/preparation_check.py",
+        "code/m1_sea_energy/clock.py",
+        "code/m1_sea_energy/clock_check.py",
+        "code/m1_sea_energy/bounds.py",
+        "code/m1_sea_energy/bounds_check.py",
+        "code/m1_sea_energy/verify.py",
+        "code/m1_sea_energy/build.py",
+        "code/m1_sea_energy/test_sea.py",
+        "code/m1_sea_energy/README.md",
+        "code/m1_sea_energy/CONTRACT.md",
+        "code/m1_sea_energy/receipt.json",
+        "extra/SOURCE_SEA_ENERGY.md"
+      ],
+      "status": "proved_for_declared_massive_source_and_explicit_filled_vacuum_experiment",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row proves spectral-projection decay and local quasi-free convergence for the declared reflecting walk and compact resolved modes. It uses the explicit free walk gaps rather than a physical-vacuum, interacting-stability or source-selection premise, and supplies no empirical premise-register branch entry."
+      }
+    },
+    {
+      "claim_id": "OPH-SOURCE-SEA-CLOCK",
+      "statement": "The declared source admits a deterministically prepared filled sea with one additional finite-energy coherent particle and a complete resolved-mode QND clock read whose entire complex probe pattern is rigidly translated. The measured phase is (Delta E-Delta k.u)t=Delta m t/gamma; translating only the envelope gives the different laboratory rate gamma Delta m. The complete QND channel increases mean excitation energy by at most 2||hf||, retaining both weighted outcomes. Its actual click probability is <f,Pf>+|<f,U^n chi>|^2, retaining the filled background and both outcomes. A finite compact three-dimensional reflecting witness has outward-certified probability error below 0.038 and native-tick swing above 0.923. Source-edge rotations and routed Slater preparation cost O(M^3) native rotations; M=O(q^3 log^3(2q)) with the proved collar. Including synthesis, the longer prehistory, complete diagnostics and fixed-strength archive gives joint instrument error O(q^-55 log^(36+2kappa)(2q)), excitation-energy error O(q^-51 log^(39+2kappa)(2q)) and storage-time O(q^27 log^(55+3kappa)(2q)). All native outcomes and aborts remain retained. The large analytic witness is not claimed to have been simulated; independent finite packet and source-circuit controls have separately stated scopes.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "proposed_coherent_code_gluing_CCG",
+        "declared_filled_source_vacuum_and_read_program",
+        "declared_fixed_strength_public_record_source"
+      ],
+      "imported_results": [
+        "CAR_particle_hole_normal_ordering",
+        "Slater_determinants_and_Givens_preparation",
+        "gapped_weighted_resolvent_method",
+        "quasifree_Wick_determinants",
+        "measurement_free_computation_code_theorem_Aharonov_Ben_Or",
+        "Margulis_Gabber_Galil_absolute_spectral_bound",
+        "constructive_Solovay_Kitaev_synthesis"
+      ],
+      "oph_specific_delta": "Joins a positive signed-walk excitation generator, a locally controlled filled vacuum and an informative source read, paying for preparation and its fixed-strength noisy lifetime.",
+      "novelty_type": "filled_source_vacuum_and_readable_positive_generator",
+      "falsifier": "A preparation syndrome or read branch is filtered; the background is subtracted and called a probability; the resolved instrument fails on a spectator; the finite interval is uninformative; or the extended preparation, routing and diagnostic lifetime bounds fail.",
+      "scope_if_false": "The specified filled-source construction or bound fails. The previous empty-vacuum experiments remain separate. No A1-A3 source selection, autonomous schedule, unique laboratory energy or interacting-vacuum stability is asserted.",
+      "owner_paper": "extra/SOURCE_SEA_ENERGY.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "code/m1_sea_energy/__init__.py",
+        "code/m1_sea_energy/format.py",
+        "code/m1_sea_energy/spectrum.py",
+        "code/m1_sea_energy/spectrum_check.py",
+        "code/m1_sea_energy/preparation.py",
+        "code/m1_sea_energy/preparation_check.py",
+        "code/m1_sea_energy/clock.py",
+        "code/m1_sea_energy/clock_check.py",
+        "code/m1_sea_energy/bounds.py",
+        "code/m1_sea_energy/bounds_check.py",
+        "code/m1_sea_energy/verify.py",
+        "code/m1_sea_energy/build.py",
+        "code/m1_sea_energy/test_sea.py",
+        "code/m1_sea_energy/README.md",
+        "code/m1_sea_energy/CONTRACT.md",
+        "code/m1_sea_energy/receipt.json",
+        "extra/SOURCE_SEA_ENERGY.md"
+      ],
+      "status": "proved_for_declared_massive_source_and_explicit_filled_vacuum_experiment",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row constructs an informative complete QND read over an explicitly prepared sea and charges its longer noisy source lifetime. Masses, reference preparation, timing, supplied-program capability and fixed-strength local noise remain declared; the interval and resource proof neither assumes nor establishes an empirical premise-register branch or autonomous physical clock."
+      }
     }
   ]
 }

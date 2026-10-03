@@ -1946,6 +1946,15 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "02f6c0accca76a05748e66e3a197dccf008e5b278be882331e9c3672f524c335"
       },
+      "OPH-SOURCE-LOCAL-SEA-LIMIT": {
+        "assumptions": [
+          "declared_proper_code_source_completion",
+          "proposed_coherent_code_gluing_CCG",
+          "declared_filled_source_vacuum_and_read_program"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "685b245e2a2600148663afa0a19bcb6c7fb38f5ec8724caae66d55f4dbeff031"
+      },
       "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION": {
         "assumptions": [
           "declared_proper_code_source_completion",
@@ -1978,6 +1987,25 @@
         ],
         "disposition": "native_resource_counts_not_transferred",
         "original_claim_sha256": "e79d27aec2a4f883419ad20748c2a4f0fe12eed3c95687ff1c328bb19c5409b0"
+      },
+      "OPH-SOURCE-SEA-CLOCK": {
+        "assumptions": [
+          "declared_proper_code_source_completion",
+          "proposed_coherent_code_gluing_CCG",
+          "declared_filled_source_vacuum_and_read_program",
+          "declared_fixed_strength_public_record_source"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "1d9d49afecf5c1fb384815ac9f9808de1837fd88685ce4efb8878f384dd8b57e"
+      },
+      "OPH-SOURCE-SEA-GENERATOR": {
+        "assumptions": [
+          "declared_proper_code_source_completion",
+          "proposed_coherent_code_gluing_CCG",
+          "declared_filled_source_vacuum_and_read_program"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "f0311aed1b8badc3ffcbc49925747677036309b7216b9deb9b69a46cbd4254e7"
       },
       "OPH-SOURCE-TWO-BASIS-A3-SELECTION": {
         "assumptions": [
@@ -2720,6 +2748,11 @@
         "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
       },
       {
+        "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+        "role": "Supplies the actual massive walk, specified principal branch and complete spectral partition limit; the filled reference changes the vacuum interpretation.",
+        "to": "OPH-SOURCE-SEA-GENERATOR"
+      },
+      {
         "from": "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION",
         "role": "Identifies the residue defect and necessary short-ball threshold; the repair proves sufficiency, recovery and minimum convergence from the actual added reads.",
         "to": "OPH-M1-VARIATIONAL-AREA-REPAIR"
@@ -2738,6 +2771,11 @@
         "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
         "role": "Supplies the finite analytic clock interval certificate and one-particle effect, with its full Fock instrument and all setup/report latency implemented here.",
         "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+      },
+      {
+        "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
+        "role": "Supplies massive packet dynamics and phase estimates; a new resolved-mode detector is proved separately instead of transferring the old visibility.",
+        "to": "OPH-SOURCE-SEA-CLOCK"
       },
       {
         "from": "OPH-M1-QUANTUM-VELOCITY-BUDGET",
@@ -2768,6 +2806,11 @@
         "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
         "role": "Supplies the all-state resolved CAR norm bound, transferred by the explicit source isometry at macrostep endpoints.",
         "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+      },
+      {
+        "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
+        "role": "Supplies state-independent compact resolved-read commutator and sampling bounds; these transfer to the new quasi-free state.",
+        "to": "OPH-SOURCE-LOCAL-SEA-LIMIT"
       },
       {
         "from": "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR",
@@ -2985,6 +3028,11 @@
         "to": "OPH-SOURCE-NOISY-CONTROL-HISTORIES"
       },
       {
+        "from": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY",
+        "role": "Supplies fixed-strength protection and live records; new schedules and lifetime exponents account for the much longer filled-sea preparation.",
+        "to": "OPH-SOURCE-SEA-CLOCK"
+      },
+      {
         "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
         "role": "Supplies the complete q3 routed event streams, prepared address records and declared M1 compiler used for the paired gluing comparison; source-selected population, physical geometry and unrestricted law recovery are not inherited.",
         "to": "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION"
@@ -3025,6 +3073,16 @@
         "to": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE"
       },
       {
+        "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+        "role": "Supplies the all-sector CAR source compiler and actual reflecting flight; no periodic source link is substituted.",
+        "to": "OPH-SOURCE-SEA-GENERATOR"
+      },
+      {
+        "from": "OPH-SOURCE-LOCAL-SEA-LIMIT",
+        "role": "Supplies the blocking and finite-boundary covariance estimates used by the informative clock bound.",
+        "to": "OPH-SOURCE-SEA-CLOCK"
+      },
+      {
         "from": "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION",
         "role": "Supplies native complete reduction and single-carrier correction identities; noisy reductions and full gadget hypotheses remain charged.",
         "to": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT"
@@ -3048,6 +3106,16 @@
         "from": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
         "role": "Supplies the complete syndrome decoder and declared accounting reference; the full-carrier extension is changed to correct leakage locally.",
         "to": "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION"
+      },
+      {
+        "from": "OPH-SOURCE-SEA-GENERATOR",
+        "role": "Supplies both endpoint gaps and the negative-energy projection; weighted resolvents establish its local reflecting limit.",
+        "to": "OPH-SOURCE-LOCAL-SEA-LIMIT"
+      },
+      {
+        "from": "OPH-SOURCE-SEA-GENERATOR",
+        "role": "Supplies the actual positive excitation generator and filled reference; complete preparation remains explicitly charged.",
+        "to": "OPH-SOURCE-SEA-CLOCK"
       },
       {
         "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
@@ -3679,7 +3747,7 @@
     "code/m1_necessity/CONSUMERS.md": "5e178a21be7719c24794fbcab673c4ae6d76a96aa66cab2d69e62663526780d4",
     "code/m1_necessity/CONTRACT.md": "f3186f4911ea004fcad0058dbc0a526d359c623d42bdb4bf279fc6dd43ea1670",
     "code/m1_necessity/DERIVATION.md": "13754829bb642c0e48c4ae8cfb8f69d56baa8de90c36dfcb18ae0ff0a8dcca9c",
-    "code/m1_necessity/README.md": "0228f77881fc91796b6c1a39dd2f04b2606d219cef37d8c54ec62d8f3abc394a",
+    "code/m1_necessity/README.md": "2b2c66e14383a45a2b8e7d4e25dd85a3e37bcf591bd178b6b631e7fb7c38cba5",
     "code/m1_necessity/SPECTRAL_COMPLETION.md": "1e633dcbe37a26401ef7c81c158f47d164b5ffb03ae6631da4e42b431ea19f54",
     "code/m1_necessity/__init__.py": "a49a6656f96a30bd6343e498a0ca5302dae30515d4cf458d45c172933a0247ac",
     "code/m1_necessity/audit.py": "d6a0df2ca2ab885fa8cb7c527f3a74ac17b748847524f4cec7d8df7a049a50c0",
@@ -3688,9 +3756,9 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "0849f450b1a5a003ad642703381ac9d3d34bf8ea9195a41825ce20a02c5e1b1b",
+    "code/m1_necessity/downstream.json": "250102780ac5eccdcbdff35da21d203af2b5316692e5583c9799bdd8a42345ec",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "b9a346e979a8b7a5490c81b6054a216062d9a859c57fe40f1f4375de9ba0519e",
+    "code/m1_necessity/test_necessity.py": "d946a902a7144b1d0a76c5cc37d63285c17b8a8d0741728f0098b6019cbd5a43",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",
