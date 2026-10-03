@@ -5427,7 +5427,7 @@ orbits at \(r=r_c\), and the simple-spectrum multiplicity-two orbit for
 \(\sqrt{24}\le r<\sqrt{60}\), the strict problem has no attained minimum;
 its infimum lies on the boundary.
 
-That boundary is a viable route, not a no-go. On the closed probability
+The quartic truncation also admits a simple-spectrum boundary branch. On the closed probability
 simplex the global minimizer above \(\sqrt{24}\) has four pair weights zero
 and two weights
 \(b_\pm=3\pm\tfrac12\sqrt{r^2-24}\). Its quadrupole spectrum is proportional
@@ -5442,11 +5442,91 @@ It reaches the compare-only central charged-lepton ratio
 \(r=5.061326\ldots\). This is not a prediction: eight of twelve port
 probabilities then vanish, the Taylor expansion about the uniform record is
 least controlled there, no source emits \(r\), and the physical
-quadrupole-to-log-mass attachment is not supplied. Thus the strict full-support
-quartic minima are conditionally excluded as the observed shape, while the
-closed boundary, positive regularizations approaching it, higher entropy
-orders, the full entropy, and other source-derived potentials remain live
+quadrupole-to-log-mass attachment is not supplied. The strict full-support
+quartic minima are conditionally excluded as the observed shape. The
+closed boundary remains a minimum of that truncated objective
 (\path{code/particles/runs/flavor/entropy_w5_shape_certificate.json}).
+
+\paragraph{Full relative entropy at fixed pair norm.}
+The untruncated uniform-reference objective gives a sharper answer for the
+same six-pair model. Set
+\[
+ p_i=\frac{1+r a_i}{6},\qquad
+ \sum_i p_i=1,\qquad
+ \sum_i p_i^2=\frac16+\frac{r^2}{72},\qquad p_i\geq0,
+\]
+and minimize \(D(p\Vert\mathbf1/6)=\sum_i p_i\log(6p_i)\), with
+\(0\log0=0\). Pairing the equal antipodal port probabilities leaves this
+divergence unchanged. For every \(0<r\leq\sqrt{60}\), all global minima are
+the six permutations of
+\[
+ p_{\rm high}=\frac{1+5r/\sqrt{60}}6,\qquad
+ p_{\rm low}=\frac{1-r/\sqrt{60}}6
+ \quad\hbox{(five entries)}.
+\]
+This is the standard maximum-Shannon-entropy branch at fixed index of
+coincidence~\cite{harremoesTopsoe2001}; its implication for the icosahedral
+quadrupole is the application here.
+
+For completeness, compactness gives a minimum. At an interior extremum
+with \(0<r<\sqrt{60}\), the two constraint gradients are independent, and
+stationarity gives
+\(\log p_i+1=\lambda+2\mu p_i\). Strict concavity of
+\(\log x-2\mu x\) allows at most two positive roots \(x<y\).
+If the larger root occurs twice, the variation exchanging those two
+coordinates is tangent to both constraints, while its constrained Hessian
+coefficient is negative:
+\[
+ \frac1y-2\mu
+ =\frac1y-\frac{\log y-\log x}{y-x}<0.
+\]
+Thus an interior minimum has one high and five low entries, and the two
+constraints give the displayed values.
+
+No nonvertex boundary point minimizes the full objective. If its positive
+coordinates include two unequal values, adding a new weight
+\(\epsilon>0\) at a zero coordinate and adjusting those two values by
+\(O(\epsilon)\) preserves both constraints, by the implicit function
+theorem. The change in the objective is
+\(\epsilon\log\epsilon+O(\epsilon)<0\). If instead the support consists
+of \(k\geq2\) equal weights \(1/k\), replace those weights by
+\((1-\epsilon)/k\), add the new weight \(\epsilon\), and add and subtract
+\(\delta\) at two old coordinates, where
+\[
+ \delta^2=\frac\epsilon k-\frac{k+1}{2k}\epsilon^2.
+\]
+The perturbed weights stay positive for sufficiently small \(\epsilon\),
+both constraints hold exactly, and the old-coordinate contribution changes
+by \(O(\epsilon)\); the same negative leading term excludes this boundary
+point. At \(r=\sqrt{60}\), purity is one and only the six vertices are
+feasible. At \(r=0\), the distribution is uniform and does not select a
+normalized direction \(a\).
+
+For \(r>0\), every selected normalized port direction has pair values
+\((5,-1,-1,-1,-1,-1)/\sqrt{60}\), up to permutation. With six unit
+antipodal-axis representatives \(n_i\), the forward twelve-port map is
+\(Q(a)=2\sum_i a_i(n_i n_i^{\mathsf T}-I/3)\); its normalization obeys
+\(n_i^{\mathsf T}Q(a)n_i=8a_i/5\). Its spectrum is
+\[
+ \operatorname{spec}Q(a)
+ =\left(-\frac2{\sqrt{15}},-\frac2{\sqrt{15}},\frac4{\sqrt{15}}\right).
+\]
+The six branches are the antipodal vertex axes; each has the order-ten
+dihedral stabilizer \(D_5\) in the rotational icosahedral group
+(the \(C_5\)-axis terminology names its fivefold axis).
+The perturbation quadrupole \(Q(ra)=rQ(a)\) is zero at \(r=0\) and
+has a repeated eigenvalue at every positive feasible amplitude. Consequently,
+no amplitude rule \(r=r(P)\) rescues three distinct family masses through
+an attachment that reads only these quadrupole eigenvalues and treats
+equal eigenvalues equally. This excludes that uniform-reference,
+fixed-norm full-entropy selector with that readout, including its closed
+boundary; it does not exclude OPH, other references or constraints,
+different actions, or different physical readouts. The quartic boundary
+formula remains valid for its own objective; its two-positive-weight branch
+does not minimize the full entropy, although both objectives share the pure
+endpoint. Neither a physical mass attachment nor numerical quark
+masses follow from this result
+(\path{code/particles/runs/flavor/full_entropy_w5_selector.json}).
 
 The finite theorem does not supply an effective action on \(W_5\) with a
 unique simple-spectrum minimizing orbit. The invariant algebra has one
@@ -7254,6 +7334,13 @@ C. A. Brannen,
 \emph{The Lepton Masses},
 preprint, 2006.
 \url{http://brannenworks.com/MASSES2.pdf}
+
+\bibitem{harremoesTopsoe2001}
+P. Harremo\"es and F. Tops\o e,
+\emph{Inequalities between entropy and index of coincidence derived from
+information diagrams},
+IEEE Transactions on Information Theory \textbf{47}, 2944--2960 (2001).
+\url{https://doi.org/10.1109/18.959272}
 
 \bibitem{antusch2025running}
 S. Antusch, K. Hinze, and S. Saad,

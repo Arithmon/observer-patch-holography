@@ -3573,20 +3573,23 @@
     },
     {
       "claim_id": "OPH-W5-STABILISER-POTENTIAL-BOUNDARY",
-      "statement": "In W5=Sym^2_0(R^3) with the real A5 rotation action, the C3- and C5-fixed loci are one-dimensional and every nonzero fixed point has a doubly degenerate spectrum. The C2-fixed locus is three-dimensional, hence projective dimension two after overall scaling, and admits simple-spectrum points. Thus stabilizer symmetry alone does not select two charged-family mass ratios: a predictive simple-spectrum orbit requires a specific screen-derived A5-invariant potential or other independently fixed dynamical input. On the twelve-port realization, a W5 vector is exactly six antipodal-pair values with zero sum and fixed square sum. The leading cubic entropy functional has global maximum 2/sqrt(15) on the C5 orbit and exact double quadrupole eigenvalue. For the quartic-truncated entropy candidate, exact stationarity, saddle, and face certificates classify every global minimizer. With r_c=(32 sqrt(15)-20 sqrt(6))/27, the strict positive domain selects the degenerate multiplicity-one orbit below r_c, ties it with the simple-spectrum multiplicity-two golden orbit at r_c, selects the golden orbit up to sqrt(24), and has no attained minimum from sqrt(24) to sqrt(60). On the closed simplex, that high-amplitude infimum is attained by a support-two boundary branch with four zero antipodal-pair weights. Its quadrupole gap ratio R=2d/(3-d), d=sqrt((r^2-15)/5), continuously reaches the compare-only charged-lepton ratio at target-attached r approximately 5.061326. Thus the strict full-support quartic route is conditionally excluded only after the separate mass attachment, while the closed boundary, positive regularizations, higher/full entropy, source-amplitude selection, and other potentials remain viable. No physical charged-mass prediction or packet-wide impossibility is claimed.",
+      "statement": "In W5=Sym^2_0(R^3) with the real A5 rotation action, the C3- and C5-fixed loci are one-dimensional and every nonzero fixed point has a doubly degenerate spectrum. The C2-fixed locus is three-dimensional, hence projective dimension two after overall scaling, and admits simple-spectrum points. Thus stabilizer symmetry alone does not select two charged-family mass ratios: a predictive simple-spectrum orbit requires a specific screen-derived A5-invariant potential or other independently fixed dynamical input. On the twelve-port realization, a W5 vector is exactly six antipodal-pair values with zero sum and fixed square sum. The leading cubic entropy functional has global maximum 2/sqrt(15) on the C5 orbit and exact double quadrupole eigenvalue. For the quartic-truncated entropy candidate, exact stationarity, saddle, and face certificates classify every global minimizer. With r_c=(32 sqrt(15)-20 sqrt(6))/27, the strict positive domain selects the degenerate multiplicity-one orbit below r_c, ties it with the simple-spectrum multiplicity-two golden orbit at r_c, selects the golden orbit up to sqrt(24), and has no attained minimum from sqrt(24) to sqrt(60). On the closed simplex, that high-amplitude infimum is attained by a support-two boundary branch with four zero antipodal-pair weights. Its quadrupole gap ratio R=2d/(3-d), d=sqrt((r^2-15)/5), continuously reaches the compare-only charged-lepton ratio at target-attached r approximately 5.061326. The quartic boundary formula remains valid for that truncated objective. For the full uniform-reference divergence D(p||1/6), p_i=(1+r a_i)/6, at fixed purity sum p_i^2=1/6+r^2/72, every global minimizer for 0<r<=sqrt(60) has one high weight (1+5r/sqrt(60))/6 and five low weights (1-r/sqrt(60))/6. At r=0 the uniform distribution does not select a normalized a direction. The six minimizing branches are antipodal vertex axes with D5 stabilizer; their normalized quadrupole spectrum is (-2,-2,4)/sqrt(15). Therefore no feasible amplitude law r(P) yields three distinct family masses through an attachment depending only on these eigenvalues and treating equal eigenvalues equally. This excludes the stated full-entropy mechanism with that readout, including its closed boundary, but not other reference states, constraints, actions, physical readouts, or OPH. No numerical quark or charged-family mass prediction is emitted.",
       "owner_paper": "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
-      "tier": "exact_W5_stabiliser_cubic_extremum_and_quartic_global_minimizer_boundary__full_entropy_source_amplitude_and_physical_attachment_open",
+      "tier": "exact_W5_stabiliser_cubic_quartic_and_full_uniform_reference_entropy_minimizer_boundary__source_mass_attachment_open",
       "assumptions": [
         "W5_real_symmetric_traceless_A5_representation",
-        "simple_spectrum_W5_orbit_requirement"
+        "simple_spectrum_W5_orbit_requirement",
+        "uniform_reference_and_fixed_pair_norm_for_full_entropy_candidate",
+        "quadrupole_eigenvalue_readout_if_interpreted_as_family_masses"
       ],
       "imported_results": [
         "real_A5_representation_W5",
         "symmetric_matrix_spectral_theorem",
-        "finite_rotation_fixed_space_linear_algebra"
+        "finite_rotation_fixed_space_linear_algebra",
+        "Shannon_entropy_at_fixed_index_of_coincidence_Harremoes_Topsoe_2001_DOI_10.1109_18.959272"
       ],
-      "oph_specific_delta": "OPH makes the W5 orbit-selector gap executable: it separates the exact stabilizer boundary from the unresolved source-derived potential, replaces the finite-seed cubic search by an exhaustive six-pair extremum proof, and exactly classifies all global minimizers of the quartic truncation on both the strict positive domain and the closed simplex. The resulting zero-weight boundary branch keeps the packet viable and isolates regularization, entropy-remainder, source-amplitude, and physical-attachment work.",
-      "novelty_type": "conditional_flavor_orbit_potential_boundary_with_exact_cubic_and_quartic_minimizer_classification",
+      "oph_specific_delta": "Applies the standard fixed-purity Shannon entropy extremum to the six antipodal icosahedral pairs. An analytic stationary, constrained-Hessian, and boundary-descent proof selects only the six D5 axis branches for the full uniform-reference objective at every positive feasible amplitude; their exact quadrupoles have a double eigenvalue. Thus the support-two branch of the separately valid quartic truncation does not rescue this full-entropy family-mass mechanism for any r(P). The stabilizer, cubic, and quartic results retain their bounded scopes, and alternative source actions and physical readouts remain separately assessable.",
+      "novelty_type": "icosahedral_application_of_standard_fixed_purity_entropy_extremum_with_exact_quadrupole_degeneracy",
       "evidence": [
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "extra/koide_identity_from_positive_c3_face_circulants.tex",
@@ -3598,11 +3601,16 @@
         "code/particles/leptons/test_charged_entropic_branch_no_go.py",
         "code/particles/runs/leptons/charged_entropic_branch_no_go.json",
         "code/particles/flavor/entropy_w5_shape_certificate.py",
-        "code/particles/runs/flavor/entropy_w5_shape_certificate.json"
+        "code/particles/runs/flavor/entropy_w5_shape_certificate.json",
+        "code/particles/flavor/full_entropy_w5_selector.py",
+        "code/particles/flavor/full_entropy_w5_selector_spec.json",
+        "code/particles/flavor/verify_full_entropy_w5_selector.py",
+        "code/particles/flavor/test_full_entropy_w5_selector.py",
+        "code/particles/runs/flavor/full_entropy_w5_selector.json"
       ],
-      "falsifier": "For the declared W5 action, a stabilizer fixed-locus statement fails, the six-pair reduction or cubic extremum formula fails, a three-coordinate-value quartic stationary point supplies an unaccounted local minimum, a face beats the certified candidates, the strict or closed global-minimizer classification fails, the boundary energy or quadrupole spectrum is wrong, or the packet is presented as globally excluded despite its support-two boundary branch.",
-      "scope_if_false": "A failed stabilizer, cubic, or quartic identity reopens only that bounded selector result. Even if all stated identities hold, they do not select the amplitude, control the entropy remainder at zero weights, prove the full-entropy selector, attach W5 eigenvalues to charged masses, or rule out other source-derived potentials, regularizations, dynamics, or flavor representations.",
-      "status": "exact_fixed_locus_cubic_extremum_and_quartic_global_minimizer_classification_attained__boundary_reentry_keeps_full_entropy_source_amplitude_and_physical_attachment_open",
+      "falsifier": "For the declared W5 action, a stabilizer fixed-locus statement, cubic identity, quartic global-minimizer classification, or quartic boundary formula fails; a feasible full-entropy point has lower divergence than the stated one-high-five-low branch or a distinct minimum exists; a constrained-Hessian or boundary-descent step fails; an exact selected quadrupole has simple spectrum; or r=0 is incorrectly claimed to select a normalized direction. Promoting the bounded selector exclusion to OPH-wide impossibility or the computation to numerical mass evidence also violates the claim.",
+      "scope_if_false": "Only the affected stabilizer, cubic, quartic, or fixed-norm uniform-reference full-entropy result is reopened. The standard entropy theorem is credited prior work. No source amplitude, reference or norm constraint, physical family attachment, absolute scale, or numerical mass is derived. Other references, constraints, actions, dynamics, flavor representations, and physical readouts lie outside the full-entropy exclusion.",
+      "status": "exact_stabiliser_cubic_quartic_and_full_entropy_minimizer_classifications__uniform_reference_fixed_norm_quadrupole_mass_mechanism_excluded__no_numerical_mass_output",
       "claim_class": "conditional_implication",
       "gates": [
         736,
