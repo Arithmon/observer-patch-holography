@@ -28,6 +28,8 @@ def verify(row):
         need(all(type(x) is int and 0 < x <= 2**50 for x in item.values()), 'bounded schedule integers')
         exact([item['q'], item['ell']], [2**power, power+1])
         ell, k, m = item['ell'], item['levels'], item['word_side']
+        # Bound the supplied exponent before constructing its power of two.
+        need(k <= (64*ell).bit_length(), 'bounded quantum exponent')
         need(2**(k-1) < 64*ell <= 2**k == item['quantum_power'], 'minimal quantum ceiling')
         need((m-1)**2 < 4096*ell <= m*m == item['word_bits'], 'minimal archive ceiling')
         need(2*2**k >= 128*ell and m*m >= 32*128*ell, 'both fixed-strength decays')

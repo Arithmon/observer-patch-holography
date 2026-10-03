@@ -1970,27 +1970,34 @@ The source also supports a joint noisy implementation with faulty runtime
 feedback and a maintained public archive. Complete transfer/reset channels
 reduce full six-dimensional carrier leakage locally before error correction;
 private Kraus branches, public outcomes and aborts are retained. For fixed
-bounded Markov generator norms and local classical fault rates, exposures
-$O(q^{-1})$ and intrinsic event errors $O(q^{-1})$ bound the complete-service
-error by $O(q^{-1})$; six fixed protection levels give
-decoded-output/history error
-$O(q^{-20}\log^{16}(2q))$. A stronger construction works at fixed nonzero
-subthreshold elementary error strength: a powered expander refreshes public
-words of size $O(\log q)$, while staged decoding exports from
-$O(\log\log q)$ quantum protection levels. Its joint error is
-$O(q^{-20}\log^{16+2\kappa}(2q))$ and its positive logical-accounting
-error is $O(q^{-16}\log^{16+2\kappa}(2q))$, with fixed library-overhead
-constant $\kappa$. Full diagnostic storage-time costs
-$O(q^6\log^{25+3\kappa}(2q))$. These bounds use imported fault-tolerance
-and expander theorems; finite executable controls verify the native
-interfaces, full-size record decoder, graph certificates and fault controls.
-The arbitrary-size archive invariant has an analytical proof.
-The construction has a positive
-noise interval, with very large constants, rather than a measured hardware
-threshold. Its external schedule, cofinal controls, resets and inventory
-remain explicit. Decoded convergence supplies neither autonomous time nor a
-physical action/clock identification, and does not equate raw event counts
-with the unprotected reference \cite{ophEinstein}.
+nonzero subthreshold elementary error strength, a powered expander refreshes
+$O(\log q)$-bit words and staged decoding exports from
+$O(\log\log q)$ protection levels. In the empty-vacuum experiment the joint
+error is $O(q^{-20}\log^{16+2\kappa}(2q))$ and diagnostic storage-time costs
+$O(q^6\log^{25+3\kappa}(2q))$, with fixed library constant $\kappa$.
+These are conditional bounds using imported fault-tolerance and expander
+theorems and a joint local fault-norm hypothesis. Finite executable controls
+check interfaces, decoding and faults; the arbitrary-size archive proof is
+analytical, with large constants and no measured hardware threshold.
+
+In a separate filled-vacuum experiment, the same reflecting massive walk has
+spectral gaps at $+1$ and $-1$. Filling the negative modes of its principal
+signed logarithm $h$ gives the positive excitation generator
+$H_{\rm sea}=\mathrm d\Gamma(h)-\operatorname{Tr}(hP)I$, where
+$P=\mathbf1_{h<0}$. It generates exactly the original integer-time Fock
+channels. Local covariances converge with both carrier bands retained.
+For the stated smooth carrier kernels, local operations and complete number
+reads have uniformly bounded mean excitation cost. A translated-mode read
+retains the occupied background and has a
+finite analytical probability-error bound below $0.038$ and swing above
+$0.923$; the corresponding enormous apparatus is not simulated.
+The longer deterministic sea preparation raises storage-time to
+$O(q^{27}\log^{55+3\kappa}(2q))$, with joint protected error
+$O(q^{-55}\log^{36+2\kappa}(2q))$. An explicit high-band Floquet shift
+preserves the vacuum, integer-time channels and infrared energy limits
+while changing ultraviolet costs. Source admission, external scheduling,
+growing controls and physical energy calibration remain hypotheses;
+neither construction supplies autonomous time or drive work \cite{ophEinstein}.
 
 %=====================================================================
 \section{Einstein reconstruction}

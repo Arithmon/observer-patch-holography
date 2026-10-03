@@ -1,11 +1,15 @@
 # A filled source vacuum, positive excitation energy and readable clocks
 
-The source now protects quantum outputs and actual public records at fixed
-nonzero subthreshold error strength. Its positive observable
-`dGamma(|i log U|/tau)` was deliberately kept separate from the generator
-of its walk. This note closes that mathematical separation for a new,
-explicitly prepared filled-vacuum experiment. It does not rename the old
-empty-vacuum experiment or identify a Floquet branch with laboratory energy.
+The declared coherent-code source consists of bounded self-reading patches
+with local state, ports, readback, feedback or repair operations, and public
+record banks. Its quantum outputs and records admit protection at fixed
+nonzero subthreshold error strength. The positive observable
+`dGamma(|i log U|/tau)` differs from the signed generator of its walk.
+An explicitly prepared filled-vacuum experiment instead has a positive
+excitation generator with the same integer-time channels. The empty-vacuum
+experiment remains separate; neither identifies a Floquet branch with
+laboratory energy. The accompanying evidence bundle independently replays
+finite operators, complete instruments and the stated quantitative bounds.
 
 The starting points are the [massive walk](MASSIVE_OPERATIONAL_CLOCKS.md),
 its [all-sector source compiler](FERMIONIC_SOURCE_CLOCKS.md), and
@@ -523,6 +527,5 @@ interactions are not ruled out by the free gap or ground-state theorem.
 This boundary is demonstrated by the two branch controls, rather than
 hidden in a generic appeal to a stable physical vacuum.
 
-The [contract](../code/m1_sea_energy/CONTRACT.md) is met by these constructed
-objects and quantitative estimates. A1--A3 source selection, an autonomous
-clock and empirical energy calibration retain their existing status.
+A1--A3 do not select the supplied source, preparation program or native time
+unit. An autonomous clock and empirical energy calibration are not derived.

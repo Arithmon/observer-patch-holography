@@ -1,5 +1,9 @@
 # Filled source vacuum and energy
 
+The declared source uses bounded observer-like self-reading patches: local
+states, ports, readback, feedback or repair operations, and public record
+banks. The receipt and independent checker form its public evidence bundle.
+
 The [derivation](../../extra/SOURCE_SEA_ENERGY.md) connects the actual massive
 walk to a positive excitation generator on a deterministically prepared
 filled vacuum. It proves boundary and local continuum control, a finite-energy

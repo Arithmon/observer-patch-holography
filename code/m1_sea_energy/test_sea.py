@@ -197,6 +197,16 @@ def test_positive_small_inputs_use_relative_checks(x):
         exact(x, 1e-10)
 
 
+@pytest.mark.parametrize('levels', [64, 2**20])
+def test_protection_exponent_is_bounded_before_exponentiation(evidence, levels):
+    row = deepcopy(evidence['bounds'])
+    row['schedules'][0]['levels'] = levels
+    # Keep even a regressed implementation's test allocation small, while
+    # requiring rejection at the guard before the ceiling calculation.
+    with pytest.raises(ValueError, match='bounded quantum exponent'):
+        bounds_check.verify(row)
+
+
 def test_boundary_weighted_resolvent_estimate_on_actual_walk():
     u = spectrum_check.closed_walk(3, .13)
     k = (u.conj().T-u)/(2j)
