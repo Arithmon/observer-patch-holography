@@ -44,4 +44,6 @@ jobs:
       - name: Independently verify source, VEV, one-loop matching and conventions
         run: python -m pytest -q code/particles/calibration/test_conditional_top_fixed_p.py code/particles/calibration/test_source_ew_vev_matching.py code/particles/calibration/test_verify_source_ew_vev_matching.py code/particles/calibration/test_compare_source_ew_vev_matching.py
       - name: Rebuild and execute every retained multiloop matching control
-        run: python code/particles/calibration/source_ew_vev_matching.py --smdr-dir .smdr-replay --build --refresh --check --cc gcc
+        # GCC spends over 18 minutes optimizing the upstream effpot.c alone.
+        # Clang preserves the library's precision and all replay controls.
+        run: python code/particles/calibration/source_ew_vev_matching.py --smdr-dir .smdr-replay --build --refresh --check --cc clang
