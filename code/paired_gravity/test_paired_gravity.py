@@ -2,6 +2,7 @@
 from copy import deepcopy
 from fractions import Fraction as F
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -189,5 +190,6 @@ for f in [lambda: semantic(data(),p['evidence']['observables'],p['evidence']['so
 print('producer-free optimized replay and rejections passed')
 '''
     result = subprocess.run([sys.executable, '-O', '-c', script], cwd=verify.ROOT,
+                            env={**os.environ, 'PYTHONPATH': str(verify.ROOT/'code')},
                             capture_output=True, text=True, timeout=300)
     assert result.returncode == 0, result.stdout+result.stderr
