@@ -2016,9 +2016,9 @@
     "code/particles/calibration/source_ew_comparison_targets.json": "4c740d14565123a8fc8534c004309ccc986ae86efb5523917339c4dc7152cc83",
     "code/particles/calibration/source_ew_vev_matching_spec.json": "438bdfb0f57fd1dae2b04672db166b7a598f644357626a2ea64313a2a60b8140",
     "code/particles/calibration/verify_source_ew_top_pole.py": "2080cf67ab7a24913635a36e3b002f9b2e024d48e6d5a402825f87d4a6e1582a",
-    "code/particles/calibration/verify_source_ew_vev_matching.py": "6ffd334b1dddfa150595bbe8a56232b8b501bc762513060ca50ae00e500383cc",
+    "code/particles/calibration/verify_source_ew_vev_matching.py": "bce046c0db1093a9310ec8700d809db3b47e7a8daeaeaa75e3c7e26140b84d07",
     "code/particles/data/pdg_2025_conditional_quark_comparison.json": "503f043ec8581b48e1a8ae184c97e7676dd5e84198ad18f2781d1bf7e32156a5",
-    "code/particles/runs/calibration/source_ew_vev_matching.json": "5b5d5e4481f66bdcc23a9b9c864d3e1d70cf7bbc42a83167482c4ddf3398bc3a"
+    "code/particles/runs/calibration/source_ew_vev_matching.json": "55b6231c2dd4be5e8a096bda6fdbf1520cf42d4dd57e3a01e8d307bf667a4a71"
   },
   "sources": {
     "constants": {

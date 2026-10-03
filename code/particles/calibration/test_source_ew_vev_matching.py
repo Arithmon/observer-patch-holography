@@ -1,7 +1,7 @@
 """Target isolation, finite matching conventions, and numerical guard tests."""
 from copy import deepcopy
 import json
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import sys
 import math
 
@@ -13,6 +13,21 @@ import verify_source_ew_top_pole as top
 
 @pytest.fixture(scope='module')
 def receipt():return json.loads(producer.RECEIPT.read_text())
+
+
+@pytest.mark.parametrize('implementation', ['producer', 'independent_verifier'])
+def test_windows_relative_paths_preserve_receipt_keys(receipt, monkeypatch, implementation):
+    import verify_source_ew_vev_matching as independent
+    original = Path.relative_to
+    # Exercise native Windows separators while reading the same real files.
+    def windows_relative(path, *args, **kwargs):
+        return PureWindowsPath(*original(path, *args, **kwargs).parts)
+    with monkeypatch.context() as patch:
+        patch.setattr(Path, 'relative_to', windows_relative)
+        if implementation == 'producer':
+            assert producer.source_pins() == receipt['source_pins']
+        else:
+            assert independent.verify(receipt)['matching_rows_checked'] == 9
 
 
 def test_top_and_tadpole_reconstructed_independently(receipt):

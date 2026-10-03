@@ -51,7 +51,7 @@ def build_inputs(source=None):
 
 def source_pins():
     paths=[Path(__file__),SPEC,C_SOURCE,RGE,ROOT/load_spec()['source_receipt']]
-    return {str(p.relative_to(ROOT)):sha(p) for p in paths}
+    return {p.relative_to(ROOT).as_posix():sha(p) for p in paths}
 
 
 def check_upstream(path):

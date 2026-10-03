@@ -220,7 +220,7 @@ def verify(receipt):
     paths = [HERE/'source_ew_vev_matching.py', SPEC,
              HERE/'source_ew_vev_matching_smdr.c',
              HERE/'sm_two_loop_rge_engine.py', source]
-    pins = {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+    pins = {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
             for path in paths}
     same_structure(receipt['source_pins'], pins)
     require(pins['code/particles/calibration/source_ew_vev_matching_smdr.c']
