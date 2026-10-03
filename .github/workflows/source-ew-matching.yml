@@ -46,4 +46,75 @@ jobs:
       - name: Rebuild and execute every retained multiloop matching control
         # GCC spends over 18 minutes optimizing the upstream effpot.c alone.
         # Clang preserves the library's precision and all replay controls.
-        run: python code/particles/calibration/source_ew_vev_matching.py --smdr-dir .smdr-replay --build --refresh --check --cc clang
+        run: |
+          mkdir -p .source-ew-diagnostics
+          python code/particles/calibration/source_ew_vev_matching.py --smdr-dir .smdr-replay --build --refresh --output .source-ew-diagnostics/fresh-receipt.json --cc clang
+      - name: Record all numerical deltas and enforce unchanged validation
+        run: |
+          python - <<'PY'
+          import json
+          import math
+          from pathlib import Path
+          import sys
+
+          sys.path.insert(0, 'code/particles/calibration')
+          import source_ew_vev_matching as producer
+
+          fresh_path = Path('.source-ew-diagnostics/fresh-receipt.json')
+          cached = json.loads(producer.RECEIPT.read_text())
+          fresh = json.loads(fresh_path.read_text())
+          numbers, failures = [], []
+
+          def inspect(expected, actual, path='root'):
+              if isinstance(expected, dict) and isinstance(actual, dict):
+                  if expected.keys() != actual.keys():
+                      failures.append({'path': path, 'error': 'key mismatch',
+                                       'expected_keys': sorted(expected),
+                                       'actual_keys': sorted(actual)})
+                  for key in sorted(expected.keys() & actual.keys()):
+                      inspect(expected[key], actual[key], f'{path}/{key}')
+                  return
+              if isinstance(expected, list) and isinstance(actual, list):
+                  if len(expected) != len(actual):
+                      failures.append({'path': path, 'error': 'list length mismatch',
+                                       'expected_length': len(expected),
+                                       'actual_length': len(actual)})
+                  for index, (old, new) in enumerate(zip(expected, actual)):
+                      inspect(old, new, f'{path}/{index}')
+                  return
+              error = None
+              try:
+                  producer.compare(expected, actual, path)
+              except ValueError as exc:
+                  error = str(exc)
+                  failures.append({'path': path, 'error': error,
+                                   'expected': expected, 'actual': actual})
+              if all(isinstance(value, (int, float)) and not isinstance(value, bool)
+                     and math.isfinite(value) for value in (expected, actual)):
+                  delta = actual - expected
+                  numbers.append({'path': path, 'expected': expected, 'actual': actual,
+                                  'signed_delta': delta, 'absolute_delta': abs(delta),
+                                  'relative_delta': delta / expected if expected else None,
+                                  'current_tolerance_passed': error is None})
+
+          inspect(cached, fresh)
+          report = {'schema': 'oph.source_ew_replay_diagnostics.v1',
+                    'retained_receipt': producer.RECEIPT.relative_to(producer.ROOT).as_posix(),
+                    'fresh_receipt': fresh_path.as_posix(),
+                    'numeric_leaf_count': len(numbers), 'mismatch_count': len(failures),
+                    'numeric_deltas': numbers, 'mismatches': failures,
+                    'tolerances': 'Unmodified source_ew_vev_matching.compare; diagnostics do not relax validation.'}
+          Path('.source-ew-diagnostics/numeric-deltas.json').write_text(
+              json.dumps(report, indent=2, sort_keys=True, allow_nan=False) + '\n')
+          producer.compare(cached, fresh)
+          producer.validate_cached(cached)
+          print('Fresh source EW replay and retained receipt validation: PASS')
+          PY
+      - name: Preserve fresh receipt and numerical diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: source-ew-matching-diagnostics
+          path: .source-ew-diagnostics/*.json
+          include-hidden-files: true
+          if-no-files-found: warn
