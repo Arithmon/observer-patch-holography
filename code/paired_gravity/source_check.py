@@ -1,7 +1,16 @@
 """Independent primitive Gram reconstruction, exact local replay and barrier."""
 from fractions import Fraction as F
-from source_scalar_execution import verify_source_scalar_execution as parent
+import importlib.util
+import sys
+from pathlib import Path
 from .format import need, keys, equal, rational, digest
+
+# This verifier is standalone; never import the producer's arithmetic module.
+_spec = importlib.util.spec_from_file_location('_paired_gravity_independent_scalar',
+    Path(__file__).resolve().parents[2]/'code/source_scalar_execution/verify_source_scalar_execution.py')
+parent = importlib.util.module_from_spec(_spec)
+sys.modules[_spec.name] = parent
+_spec.loader.exec_module(parent)
 
 
 def model():

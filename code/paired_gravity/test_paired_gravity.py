@@ -170,13 +170,23 @@ def test_custody_rejects_new_claim_or_source(packet, tmp_path):
 
 def test_optimized_verifier_without_producer_imports():
     script = '''
-import sys, importlib.abc
+import sys, importlib.abc, importlib.machinery
+from pathlib import Path
 class Block(importlib.abc.MetaPathFinder):
     def find_spec(self, fullname, path=None, target=None):
         if fullname in {'paired_gravity.source','paired_gravity.observables','paired_gravity.build',
                         'source_scalar_execution.scalar_execution_algebra'}:
             raise RuntimeError('producer imported: '+fullname)
 sys.meta_path.insert(0, Block())
+original_exec = importlib.machinery.SourceFileLoader.exec_module
+blocked_files = {Path(p).resolve() for p in [
+    'code/paired_gravity/source.py','code/paired_gravity/observables.py',
+    'code/paired_gravity/build.py','code/source_scalar_execution/scalar_execution_algebra.py']}
+def checked_exec(loader, module):
+    if Path(loader.path).resolve() in blocked_files:
+        raise RuntimeError('producer file loaded: '+loader.path)
+    return original_exec(loader, module)
+importlib.machinery.SourceFileLoader.exec_module = checked_exec
 from paired_gravity.verify import verify, data
 from paired_gravity.observable_check import verify as semantic
 from paired_gravity.format import rational
@@ -192,4 +202,24 @@ print('producer-free optimized replay and rejections passed')
     result = subprocess.run([sys.executable, '-O', '-c', script], cwd=verify.ROOT,
                             env={**os.environ, 'PYTHONPATH': str(verify.ROOT/'code')},
                             capture_output=True, text=True, timeout=300)
+    assert result.returncode == 0, result.stdout+result.stderr
+
+
+def test_legacy_module_import_order_is_preserved():
+    script = '''
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path('code/source_scalar_execution').resolve()))
+import source_scalar_execution as legacy
+from paired_gravity import source, source_check
+if sys.modules['source_scalar_execution'] is not legacy:
+    raise RuntimeError('legacy producer was replaced')
+rows, mass = source.data()
+if len(rows) != 64 or len(source_check.model()) != 64:
+    raise RuntimeError('primitive support not reconstructed')
+print('legacy producer and independent package imports coexist')
+'''
+    result = subprocess.run([sys.executable, '-c', script], cwd=verify.ROOT,
+                            env={**os.environ, 'PYTHONPATH': str(verify.ROOT/'code')},
+                            capture_output=True, text=True, timeout=60)
     assert result.returncode == 0, result.stdout+result.stderr

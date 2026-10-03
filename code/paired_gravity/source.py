@@ -1,12 +1,21 @@
 """Candidate producer: use the committed operator, execute every local update."""
 import json
+import importlib.util
+import sys
 from fractions import Fraction as F
 from pathlib import Path
-from source_scalar_execution.scalar_execution_algebra import Q, parse, rational_bounds
 from .format import digest
 from .observables import exp_bounds
 
 ROOT = Path(__file__).resolve().parents[2]
+# Legacy callers also import source_scalar_execution.py as a top-level module.
+# Load this exact producer dependency without changing their module namespace.
+_spec = importlib.util.spec_from_file_location('_paired_gravity_producer_algebra',
+    ROOT/'code/source_scalar_execution/scalar_execution_algebra.py')
+_algebra = importlib.util.module_from_spec(_spec)
+sys.modules[_spec.name] = _algebra
+_spec.loader.exec_module(_algebra)
+Q, parse, rational_bounds = _algebra.Q, _algebra.parse, _algebra.rational_bounds
 DEN = 2**36
 SWEEPS = 32
 GAMMAS = (-1, 0, 1, 2)
