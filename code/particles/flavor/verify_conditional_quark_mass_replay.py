@@ -15,8 +15,11 @@ import ast
 import hashlib
 import json
 import math
+from fractions import Fraction
 from pathlib import Path
 from typing import Any
+
+import verify_source_w5_response_constraints as source_w5
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
@@ -288,11 +291,21 @@ HISTORY = [
     "code/particles/runs/flavor/quark_rscc_completion_candidate_audit.json",
 ]
 NUMERIC_INPUTS = ["code/P_derivation/codata_2022_alpha_fixture.json",
-                  "code/particles/flavor/conditional_quark_mass_spec.json"]
+                  "code/particles/flavor/conditional_quark_mass_spec.json",
+                  "code/particles/runs/flavor/source_w5_response_constraints.json",
+                  "code/particles/flavor/source_w5_response_constraints_spec.json",
+                  "code/a5_closure/manifests/echosahedral_federation_reference.json",
+                  "code/a5_closure/manifests/a3_scheduler_kernel_reference.json",
+                  "code/a5_closure/manifests/record_counting_mechanism_reference.json"]
+RESPONSE_CODE_PATHS = ["code/particles/flavor/source_w5_response_constraints.py",
+                       "code/particles/flavor/verify_source_w5_response_constraints.py",
+                       "code/a5_closure/source_repair_generator_certificate.py"]
+RESPONSE_CONTRACT = {'physical_boundary': 'The dimensions and normalized native projector traces are certified. Choosing the face-axis background, Casimir-line common-exposure readout, scalar budget assignment and its physical quark attachment remains conditional. Composite modules, signed responses and Gaussian/contraction laws are not selected by these coefficients.', 'projection': {'centered_fraction': '4/5', 'common_exposure': '4/15', 'family_dimension': 5, 'line_complement_dimension': 4, 'scalar_fraction': '1/5'}, 'receipt': 'code/particles/runs/flavor/source_w5_response_constraints.json'}
+
 PRODUCER = "code/particles/flavor/conditional_quark_mass_replay.py"
 GAUGE = "code/P_derivation/paper_math.py"
 STATEMENT_HASHES = {
-    "hypotheses": "822591ea9896ce0596b643ace40fca97c702d745561cd75d6d6ab2394e62293a",
+    "hypotheses": "51a8a0dc8c959237c76296f2113b04ecbca50beef7229eaa88f31b3bdb56abac",
     "equations": "2df54fbe8650d0839023afbdddecf5172cc6134820c819ba6e20608dbf04543f",
 }
 
@@ -319,7 +332,8 @@ def check_producer_inputs(source: str) -> None:
         return "<module>"
 
     allowed_imports = {"__future__", "argparse", "copy", "hashlib", "importlib.util",
-                       "json", "pathlib", "sys", "typing", "mpmath"}
+                       "json", "pathlib", "sys", "typing", "mpmath", "fractions",
+                       "verify_source_w5_response_constraints"}
     read_text_receivers = set()
     read_count = byte_count = parse_count = 0
     dynamic_loader_calls = []
@@ -338,7 +352,8 @@ def check_producer_inputs(source: str) -> None:
                 receiver = ast.unparse(node.func.value)
                 require(receiver in {"path", "ALPHA_PATH", "args.out"},
                         "unreviewed numerical input read")
-                require(owner(node) == ("main" if receiver == "args.out" else "load_spec"),
+                allowed_owners = {"main"} if receiver == "args.out" else ({"load_spec", "load_source_response"} if receiver == "path" else {"load_spec"})
+                require(owner(node) in allowed_owners,
                         "historical or hidden data parsed outside input loader")
                 read_text_receivers.add(receiver)
                 read_count += 1
@@ -348,7 +363,7 @@ def check_producer_inputs(source: str) -> None:
                 byte_count += 1
             if name == "loads":
                 require(isinstance(node.func.value, ast.Name) and node.func.value.id == "json"
-                        and owner(node) == "load_spec" and len(node.args) == 1
+                        and owner(node) in {"load_spec", "load_source_response"} and len(node.args) == 1
                         and ast.unparse(node.args[0]) in {"path.read_text()", "ALPHA_PATH.read_text()"},
                         "historical or observed target parsed as numerical input")
                 parse_count += 1
@@ -358,7 +373,7 @@ def check_producer_inputs(source: str) -> None:
                 dynamic_loader_calls.append(node)
     require(read_text_receivers == {"path", "ALPHA_PATH", "args.out"},
             "reviewed producer read surface changed")
-    require((read_count, byte_count, parse_count) == (3, 1, 2),
+    require((read_count, byte_count, parse_count) == (4, 1, 3),
             "reviewed producer input surface changed")
     require(len(dynamic_loader_calls) == 1, "gauge loader ancestry changed")
 
@@ -396,10 +411,11 @@ def verify_payload(payload: dict[str, Any], *, repo: Path = REPO) -> dict[str, A
     model = payload["model"]
     require(set(model) == {"primary", "control", "charts", "coefficient_menu", "equations",
                            "gauge_solver", "numeric_input_paths", "historical_law_paths",
-                           "precision_boundary"}, "unknown model field or hidden selector")
+                           "precision_boundary", "source_response"}, "unknown model field or hidden selector")
     expected_model = {"primary": "full_rscc", "control": "lower_order_ablation_not_selected",
                       "charts": CHARTS, "coefficient_menu": MENU, "gauge_solver": GAUGE_SOLVER,
                       "numeric_input_paths": NUMERIC_INPUTS, "historical_law_paths": HISTORY,
+                      "source_response": RESPONSE_CONTRACT,
                       "precision_boundary": "Printed digits are deterministic numerical output, not certified accuracy, model error or calibration uncertainty."}
     for key, value in expected_model.items():
         require(model[key] == value, f"model selection, chart or ancestry changed: {key}")
@@ -410,7 +426,7 @@ def verify_payload(payload: dict[str, Any], *, repo: Path = REPO) -> dict[str, A
         check_spectrum(payload[name], p, source_values["alpha_U"],
                        source_values["v_over_E_star"], energy, full)
     pins = payload["source_pins"]
-    require(set(pins) == {PRODUCER, GAUGE, *NUMERIC_INPUTS, *HISTORY},
+    require(set(pins) == {PRODUCER, GAUGE, *NUMERIC_INPUTS, *HISTORY, *RESPONSE_CODE_PATHS},
             "unexpected source ancestry, target input, or missing source pin")
     for relative, digest in pins.items():
         require(isinstance(digest, str) and len(digest) == 64,
@@ -420,18 +436,36 @@ def verify_payload(payload: dict[str, Any], *, repo: Path = REPO) -> dict[str, A
     spec = json.loads((repo / NUMERIC_INPUTS[1]).read_text())
     require(set(spec) == {"schema", "claim_class", "status", "calibrations", "structural_counts",
                           "charts", "guards", "hypotheses", "coefficient_menu", "equations",
-                          "gauge_solver", "source_cache", "historical_law_sha256"},
+                          "gauge_solver", "source_cache", "historical_law_sha256", "source_response"},
             "spec hidden input")
     projections = {"schema": SCHEMA, "claim_class": CLAIM, "status": STATUS,
                    "calibrations": CALIBRATIONS, "structural_counts": COUNTS,
                    "charts": CHARTS, "guards": GUARDS, "hypotheses": payload["hypotheses"],
                    "coefficient_menu": MENU, "equations": model["equations"],
                    "gauge_solver": GAUGE_SOLVER, "source_cache": packet,
+                   "source_response": RESPONSE_CONTRACT,
                    "historical_law_sha256": {path: pins[path] for path in HISTORY}}
     require(spec == projections, "spec and independently checked receipt disagree")
     fixture = json.loads((repo / NUMERIC_INPUTS[0]).read_text())
     require(fixture["inverse_fine_structure_constant"]["value"] == "137.035999177",
             "independent alpha calibration drift")
+    source_certificate = json.loads((repo / NUMERIC_INPUTS[2]).read_text())
+    source_w5.verify(source_certificate, repo=repo)
+    carrier, color = source_certificate["carrier"], source_certificate["color"]
+    dimension = carrier["dimension"]
+    projection = {"family_dimension": dimension,
+                  "line_complement_dimension": dimension-1,
+                  "scalar_fraction": str(Fraction(1,dimension)),
+                  "centered_fraction": str(Fraction(dimension-1,dimension)),
+                  "common_exposure": str(Fraction(3*3-1,2*3)/dimension)}
+    require(projection == RESPONSE_CONTRACT["projection"], "independent source coefficient projection")
+    require(color["normalized_trace"] == projection["common_exposure"]
+            and carrier["D3_line_complement_dimension"] == projection["line_complement_dimension"],
+            "source certificate projection mismatch")
+    require(str(Fraction(dimension)+Fraction(projection["common_exposure"])) == MENU["mean_u_linear"]
+            and projection["common_exposure"] == MENU["mean_d_linear"]
+            and str(Fraction(dimension)+Fraction(projection["centered_fraction"])) == MENU["a_u_linear"],
+            "certified coefficients do not match the unchanged law")
     producer_text = (repo / PRODUCER).read_text()
     check_producer_inputs(producer_text)
     check_gauge_call_graph(producer_text, (repo / GAUGE).read_text())

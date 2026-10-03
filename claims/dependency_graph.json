@@ -314,7 +314,10 @@
     "OPH-SOURCE-LOCAL-SEA-LIMIT",
     "OPH-SOURCE-SEA-CLOCK",
     "OPH-QUARK-CONDITIONAL-FIXED-P-REPLAY",
-    "OPH-TOP-CONDITIONAL-FIXED-P-CRITICALITY"
+    "OPH-TOP-CONDITIONAL-FIXED-P-CRITICALITY",
+    "OPH-QUARK-SOURCE-W5-RESPONSE-CONSTRAINTS",
+    "OPH-QUARK-NATIVE-REPAIR-FLAVOR-CONSTRAINTS",
+    "OPH-TOP-POSITIVE-CAPACITY-BAND"
   ],
   "edges": [
     {
@@ -2776,6 +2779,16 @@
       "role": "Supplies fixed-strength protection and live records; new schedules and lifetime exponents account for the much longer filled-sea preparation.",
       "from": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY",
       "to": "OPH-SOURCE-SEA-CLOCK"
+    },
+    {
+      "from": "OPH-QUARK-SOURCE-W5-RESPONSE-CONSTRAINTS",
+      "to": "OPH-QUARK-CONDITIONAL-FIXED-P-REPLAY",
+      "role": "Supplies the independently checked source carrier dimension, complement rank and normalized trace coefficients consumed by the fixed replay; physical response and the remaining target-informed assignments stay hypotheses."
+    },
+    {
+      "from": "OPH-TOP-CONDITIONAL-FIXED-P-CRITICALITY",
+      "to": "OPH-TOP-POSITIVE-CAPACITY-BAND",
+      "role": "Supplies the independent-alpha gauge packet and declared criticality/transport coordinate; the capacity theorem removes equality of the two anchor weights and retains the midpoint as one control."
     }
   ]
 }

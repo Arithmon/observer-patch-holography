@@ -188,3 +188,14 @@ def test_verifier_imports_neither_producer_nor_gauge_solver():
             imports.append(node.module or "")
     assert not any("conditional_quark_mass_replay" in name or "paper_math" in name
                    for name in imports)
+
+
+@pytest.mark.parametrize("key,value", [("family_dimension",6),("line_complement_dimension",3),("scalar_fraction","1/6"),("centered_fraction","3/5"),("common_exposure","4/5")])
+def test_certified_source_projection_corruption_fails(receipt,key,value):
+    receipt["model"]["source_response"]["projection"][key]=value
+    with pytest.raises(ValueError):check.verify_payload(receipt)
+
+
+def test_source_response_cannot_be_promoted_to_selected_flavor(receipt):
+    receipt["model"]["source_response"]["physical_boundary"]="All physical readouts selected by repair dynamics"
+    with pytest.raises(ValueError):check.verify_payload(receipt)

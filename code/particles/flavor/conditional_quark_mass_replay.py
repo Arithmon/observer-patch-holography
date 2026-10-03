@@ -19,17 +19,38 @@ import copy
 import hashlib
 import importlib.util
 import json
+from fractions import Fraction
 from pathlib import Path
 import sys
 from typing import Any
 
 import mpmath as mp
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from verify_source_w5_response_constraints import verify as verify_w5_constraints
+
 ROOT = Path(__file__).resolve().parents[3]
 SPEC_PATH = Path(__file__).with_name("conditional_quark_mass_spec.json")
 OUT_PATH = ROOT / "code/particles/runs/flavor/conditional_quark_mass_replay.json"
 ALPHA_PATH = ROOT / "code/P_derivation/codata_2022_alpha_fixture.json"
 GAUGE_PATH = ROOT / "code/P_derivation/paper_math.py"
+RESPONSE_PATH = ROOT / "code/particles/runs/flavor/source_w5_response_constraints.json"
+RESPONSE_DEPENDENCIES = [
+    "code/particles/flavor/source_w5_response_constraints.py",
+    "code/particles/flavor/source_w5_response_constraints_spec.json",
+    "code/particles/flavor/verify_source_w5_response_constraints.py",
+    "code/a5_closure/manifests/echosahedral_federation_reference.json",
+    "code/a5_closure/manifests/a3_scheduler_kernel_reference.json",
+    "code/a5_closure/manifests/record_counting_mechanism_reference.json",
+    "code/a5_closure/source_repair_generator_certificate.py",
+]
+RESPONSE_CONTRACT = {
+    "receipt": "code/particles/runs/flavor/source_w5_response_constraints.json",
+    "projection": {"family_dimension": 5, "line_complement_dimension": 4,
+                   "scalar_fraction": "1/5", "centered_fraction": "4/5",
+                   "common_exposure": "4/15"},
+    "physical_boundary": "The dimensions and normalized native projector traces are certified. Choosing the face-axis background, Casimir-line common-exposure readout, scalar budget assignment and its physical quark attachment remains conditional. Composite modules, signed responses and Gaussian/contraction laws are not selected by these coefficients.",
+}
 HISTORICAL_PATHS = [
     "code/particles/flavor/quark_rscc_completion_candidate.py",
     "code/particles/flavor/verify_quark_rscc_module_arithmetic.py",
@@ -61,17 +82,17 @@ GUARDS = {
     "controls_used_for_model_selection": False,
 }
 HYPOTHESES = {
-    "H1_family_response_carrier": "F=G+V_std is the physical family-response carrier; its minimality and source selection are assumed.",
+    "H1_family_response_carrier": "The physical response is identified with the native A5-irreducible W5 and a supplied face-axis D3 background. Its restriction F=1+2+2 and dimensions5,4 are certified; this physical identification and background are assumed.",
     "H2_module_incidence": "The eight declared composite module incidences are the physical channels.",
-    "H3_effects_and_signs": "The effect projectors, ranks, orientations and all sector-dependent signs are physical.",
-    "H4_cumulant_law": "Full unitary isotropy and Gaussian two-cumulant truncation are the response laws; negative terms also require the signed-response law.",
+    "H3_effects_and_signs": "The remaining composite effect ranks, orientations and sector signs are physical. The common exposure specifically uses the normalized quadratic color-Casimir observable on the native D3 line, not a rank-four invariant color projector; that physical response choice is assumed.",
+    "H4_cumulant_law": "A5 symmetry suffices for normalized trace on native W5. Isotropy on the composite modules, Gaussian two-cumulant truncation and the order of color contraction versus nonlinear response remain hypotheses; negative terms require a separate signed-response law.",
     "H5_family_attachment": "The count-only 24-slot register has an additional physical family non-singlet attachment.",
     "H6_readout_laws": "The frozen heat-time, even-response, L/Q log-spectrum and affine-mean equations are the physical readout laws.",
     "H7_residual_selection": "The declared residual functional is physically minimized; this is not inferred from the existence of its mathematical minimum.",
     "H8_chart_attachment": "The six native coordinates have exactly the declared light-MSbar, heavy-self-scale and top-pole charts; a physical top pole and extraction relation are not derived.",
     "H9_normalization": "The D10 transmutation law supplies v/E_star and the external E_star GeV calibration supplies the absolute unit.",
     "H10_gauge_trunk": "The finite SU(2)/SU(3) heat closure, one-loop coefficients (33/5,1,-3), tree weak fixed point and beta_EW=4 define the declared D10 branch.",
-    "H11_representation_attachment": "The response/relabeling S3 is not silently identified with the A5-triplet subgroup action: F=1+2+2 and the regular 0,3,6 heat carrier require a physical attachment.",
+    "H11_representation_attachment": "The selected D3 group heat law is represented faithfully by six conjugation channels on native W5, without an added regular submodule. Selecting this background, transposition-only jumps and the physical heat/three-generation readout remains assumed; it is not the native full-seam generator or the A5-triplet restriction.",
     "H12_ordering": "Increasing entries of the up/down output vectors label (u,c,t)/(d,s,b); no CKM or right-family frame is inferred.",
 }
 MENU = {
@@ -113,11 +134,12 @@ def load_spec(path: Path = SPEC_PATH) -> dict[str, Any]:
     spec = json.loads(path.read_text())
     expected = {"schema", "claim_class", "status", "calibrations", "structural_counts",
                 "charts", "guards", "hypotheses", "coefficient_menu", "equations",
-                "gauge_solver", "source_cache", "historical_law_sha256"}
+                "gauge_solver", "source_cache", "historical_law_sha256", "source_response"}
     require(set(spec) == expected, "unexpected spec field or hidden input")
     for key, value in {"schema": SCHEMA, "claim_class": CLAIM, "status": STATUS,
                        "structural_counts": COUNTS, "charts": CHARTS, "guards": GUARDS,
-                       "hypotheses": HYPOTHESES, "coefficient_menu": MENU, "equations": EQUATIONS}.items():
+                       "hypotheses": HYPOTHESES, "coefficient_menu": MENU, "equations": EQUATIONS,
+                       "source_response": RESPONSE_CONTRACT}.items():
         require(spec[key] == value, f"frozen {key} changed")
     require(spec["calibrations"] == {
         "alpha_inverse": {"value": "137.035999177", "role": "external_measured_calibration"},
@@ -197,16 +219,36 @@ def refresh_source_packet(spec: dict[str, Any]) -> dict[str, str]:
     return packet
 
 
+def load_source_response(path: Path = RESPONSE_PATH) -> dict[str, Any]:
+    certificate = json.loads(path.read_text())
+    verify_w5_constraints(certificate)
+    carrier, color = certificate["carrier"], certificate["color"]
+    projection = {"family_dimension": carrier["dimension"],
+                  "line_complement_dimension": carrier["D3_line_complement_dimension"],
+                  "scalar_fraction": carrier["normalized_native_projector_weights"][0],
+                  "centered_fraction": carrier["normalized_native_projector_weights"][1],
+                  "common_exposure": color["normalized_trace"]}
+    require(projection == RESPONSE_CONTRACT["projection"], "source-response coefficient projection changed")
+    return projection
+
+
 def _fmt(value: mp.mpf) -> str:
     return mp.nstr(value, 40)
 
 
-def evaluate_law(packet: dict[str, str], *, full: bool, energy: str) -> dict[str, Any]:
+def evaluate_law(packet: dict[str, str], *, full: bool, energy: str, response: dict[str, Any]) -> dict[str, Any]:
     with mp.workdps(80):
         p, alpha, v, unit = map(_number, (packet["P"],packet["alpha_U"],packet["v_over_E_star"],energy))
-        w=mp.pi*alpha; tau=p/4-w/5; r=mp.exp(-3*tau); rho=3/(2+r); x=(r-1)/(r+1)
-        mean_u=3*p+mp.mpf(79)*w/15; mean_d=2*p+mp.mpf(4)*w/15
-        a_u=3*p+mp.mpf(29)*w/5; a_d=2*p+mp.mpf(33)*w/32; delta_g=mp.mpf(0)
+        def rational(value):
+            q = Fraction(value)
+            return mp.mpf(q.numerator)/q.denominator
+        nf = response["family_dimension"]; f0 = response["line_complement_dimension"]
+        scalar = rational(response["scalar_fraction"])
+        centered = rational(response["centered_fraction"])
+        exposure = rational(response["common_exposure"])
+        w=mp.pi*alpha; tau=p/f0-w*scalar; r=mp.exp(-3*tau); rho=3/(2+r); x=(r-1)/(r+1)
+        mean_u=3*p+(nf+exposure)*w; mean_d=2*p+exposure*w
+        a_u=3*p+(nf+centered)*w; a_d=2*p+mp.mpf(33)*w/32; delta_g=mp.mpf(0)
         if full:
             mean_u+=w*w/29; mean_d-=w*w/432; a_u+=w*w/22; a_d+=w*w/420
             delta_g=p/1008+w*w/432-w*w/1584
@@ -235,6 +277,7 @@ def evaluate_law(packet: dict[str, str], *, full: bool, energy: str) -> dict[str
 
 def build_payload(*, spec_path: Path = SPEC_PATH, refresh_source: bool = False) -> dict[str, Any]:
     spec=load_spec(spec_path)
+    response=load_source_response()
     packet=copy.deepcopy(spec["source_cache"])
     verify_source_packet(packet,spec)
     if refresh_source:
@@ -242,7 +285,7 @@ def build_payload(*, spec_path: Path = SPEC_PATH, refresh_source: bool = False) 
         require(fresh==packet,"fresh gauge solve differs from frozen source cache")
     energy=spec["calibrations"]["E_star_GeV"]["value"]
     source_paths=[Path(__file__).resolve(),spec_path.resolve(),ALPHA_PATH,GAUGE_PATH]
-    source_paths += [ROOT/rel for rel in HISTORICAL_PATHS]
+    source_paths += [ROOT/rel for rel in HISTORICAL_PATHS+RESPONSE_DEPENDENCIES]+[RESPONSE_PATH]
     return {"schema":SCHEMA,"claim_class":CLAIM,"status":STATUS,
             "inputs":{**copy.deepcopy(spec["calibrations"]),
                       "P":{"value":packet["P"],"definition":"phi+sqrt(pi)/alpha_inverse"},
@@ -251,11 +294,13 @@ def build_payload(*, spec_path: Path = SPEC_PATH, refresh_source: bool = False) 
             "model":{"primary":"full_rscc","control":"lower_order_ablation_not_selected",
                      "charts":CHARTS,"coefficient_menu":MENU,"equations":EQUATIONS,
                      "gauge_solver":spec["gauge_solver"],
-                     "numeric_input_paths":[ALPHA_PATH.relative_to(ROOT).as_posix(),SPEC_PATH.relative_to(ROOT).as_posix()],
+                     "source_response":RESPONSE_CONTRACT,
+                     "numeric_input_paths":[ALPHA_PATH.relative_to(ROOT).as_posix(),SPEC_PATH.relative_to(ROOT).as_posix(),
+                                            RESPONSE_PATH.relative_to(ROOT).as_posix()]+[p for p in RESPONSE_DEPENDENCIES if p.endswith(".json")],
                      "historical_law_paths":HISTORICAL_PATHS,
                      "precision_boundary":"Printed digits are deterministic numerical output, not certified accuracy, model error or calibration uncertainty."},
-            "full_rscc":evaluate_law(packet,full=True,energy=energy),
-            "lower_order_control":evaluate_law(packet,full=False,energy=energy),
+            "full_rscc":evaluate_law(packet,full=True,energy=energy,response=response),
+            "lower_order_control":evaluate_law(packet,full=False,energy=energy,response=response),
             "hypotheses":HYPOTHESES,"guards":GUARDS,
             "source_pins":{p.relative_to(ROOT).as_posix():sha(p) for p in source_paths}}
 

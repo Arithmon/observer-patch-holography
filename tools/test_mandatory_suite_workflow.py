@@ -27,6 +27,9 @@ ADDITIONAL_EVIDENCE_TESTS = (
     "code/particles/flavor/test_verify_conditional_quark_mass_replay.py",
     "code/particles/flavor/test_compare_conditional_quark_masses.py",
     "code/particles/calibration/test_conditional_top_fixed_p.py",
+    "code/particles/flavor/test_source_w5_response_constraints.py",
+    "code/particles/flavor/test_native_repair_flavor_constraints.py",
+    "code/particles/calibration/test_top_positive_capacity_band.py",
 )
 
 

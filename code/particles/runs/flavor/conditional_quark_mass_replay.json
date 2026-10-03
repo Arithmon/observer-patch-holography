@@ -79,12 +79,12 @@
   },
   "hypotheses": {
     "H10_gauge_trunk": "The finite SU(2)/SU(3) heat closure, one-loop coefficients (33/5,1,-3), tree weak fixed point and beta_EW=4 define the declared D10 branch.",
-    "H11_representation_attachment": "The response/relabeling S3 is not silently identified with the A5-triplet subgroup action: F=1+2+2 and the regular 0,3,6 heat carrier require a physical attachment.",
+    "H11_representation_attachment": "The selected D3 group heat law is represented faithfully by six conjugation channels on native W5, without an added regular submodule. Selecting this background, transposition-only jumps and the physical heat/three-generation readout remains assumed; it is not the native full-seam generator or the A5-triplet restriction.",
     "H12_ordering": "Increasing entries of the up/down output vectors label (u,c,t)/(d,s,b); no CKM or right-family frame is inferred.",
-    "H1_family_response_carrier": "F=G+V_std is the physical family-response carrier; its minimality and source selection are assumed.",
+    "H1_family_response_carrier": "The physical response is identified with the native A5-irreducible W5 and a supplied face-axis D3 background. Its restriction F=1+2+2 and dimensions5,4 are certified; this physical identification and background are assumed.",
     "H2_module_incidence": "The eight declared composite module incidences are the physical channels.",
-    "H3_effects_and_signs": "The effect projectors, ranks, orientations and all sector-dependent signs are physical.",
-    "H4_cumulant_law": "Full unitary isotropy and Gaussian two-cumulant truncation are the response laws; negative terms also require the signed-response law.",
+    "H3_effects_and_signs": "The remaining composite effect ranks, orientations and sector signs are physical. The common exposure specifically uses the normalized quadratic color-Casimir observable on the native D3 line, not a rank-four invariant color projector; that physical response choice is assumed.",
+    "H4_cumulant_law": "A5 symmetry suffices for normalized trace on native W5. Isotropy on the composite modules, Gaussian two-cumulant truncation and the order of color contraction versus nonlinear response remain hypotheses; negative terms require a separate signed-response law.",
     "H5_family_attachment": "The count-only 24-slot register has an additional physical family non-singlet attachment.",
     "H6_readout_laws": "The frozen heat-time, even-response, L/Q log-spectrum and affine-mean equations are the physical readout laws.",
     "H7_residual_selection": "The declared residual functional is physically minimized; this is not inferred from the existence of its mathematical minimum.",
@@ -265,10 +265,26 @@
     ],
     "numeric_input_paths": [
       "code/P_derivation/codata_2022_alpha_fixture.json",
-      "code/particles/flavor/conditional_quark_mass_spec.json"
+      "code/particles/flavor/conditional_quark_mass_spec.json",
+      "code/particles/runs/flavor/source_w5_response_constraints.json",
+      "code/particles/flavor/source_w5_response_constraints_spec.json",
+      "code/a5_closure/manifests/echosahedral_federation_reference.json",
+      "code/a5_closure/manifests/a3_scheduler_kernel_reference.json",
+      "code/a5_closure/manifests/record_counting_mechanism_reference.json"
     ],
     "precision_boundary": "Printed digits are deterministic numerical output, not certified accuracy, model error or calibration uncertainty.",
-    "primary": "full_rscc"
+    "primary": "full_rscc",
+    "source_response": {
+      "physical_boundary": "The dimensions and normalized native projector traces are certified. Choosing the face-axis background, Casimir-line common-exposure readout, scalar budget assignment and its physical quark attachment remains conditional. Composite modules, signed responses and Gaussian/contraction laws are not selected by these coefficients.",
+      "projection": {
+        "centered_fraction": "4/5",
+        "common_exposure": "4/15",
+        "family_dimension": 5,
+        "line_complement_dimension": 4,
+        "scalar_fraction": "1/5"
+      },
+      "receipt": "code/particles/runs/flavor/source_w5_response_constraints.json"
+    }
   },
   "schema": "oph.conditional_quark_mass_replay.v1",
   "source_packet": {
@@ -284,11 +300,19 @@
   "source_pins": {
     "code/P_derivation/codata_2022_alpha_fixture.json": "e5a967c2895c51ce11574da0d5fda9630b05d9162335a1e9e06da12cfecc9930",
     "code/P_derivation/paper_math.py": "bda031185dca55e54f4c6c0c020e9fac2e2ba5db5193998135f294898af620b8",
-    "code/particles/flavor/conditional_quark_mass_replay.py": "9972b2b97aeb5c0d97b7f58f240b7e0e95c58a32e32c0c0aeba0c04c90f6cf09",
-    "code/particles/flavor/conditional_quark_mass_spec.json": "77538d1e814fad9e3ddf8a6dbd54bd3ac8bbdf884ee7447f69d4d34bf999250e",
+    "code/a5_closure/manifests/a3_scheduler_kernel_reference.json": "85435a4c36bccace0e81fb0bb9476444641a63750067557bb79a006cec8879eb",
+    "code/a5_closure/manifests/echosahedral_federation_reference.json": "12ec97358ade25f919f9981f1cd7c99c2b27aaaaa9ce14bd2320d73a9c1bfc14",
+    "code/a5_closure/manifests/record_counting_mechanism_reference.json": "13429664e61008e3d2414fecf758deebb15bfe21eada8cf42e7afc4ef64d7eb3",
+    "code/a5_closure/source_repair_generator_certificate.py": "894e9eef09cfee4f698f6ed0677eb1a32abea9f5999d655599b067caf54770c2",
+    "code/particles/flavor/conditional_quark_mass_replay.py": "b83a2b55e40bbcf64574d40c538a888122218d2eb38e43eecab19dc84b059612",
+    "code/particles/flavor/conditional_quark_mass_spec.json": "7dac1a6000395790f7dd156837c11c43f3a5ca56c8fe9313add1c50a8df654e8",
     "code/particles/flavor/quark_rscc_completion_candidate.py": "c2703016b69a5617e2f057254fa655f141eeb596d3f1f178071d417dee2106d2",
+    "code/particles/flavor/source_w5_response_constraints.py": "40d5ac5a177700d2cd6e71a3e2c9870c164dae8e41b83d68325633d2be015b45",
+    "code/particles/flavor/source_w5_response_constraints_spec.json": "71a112358ff9e24efa843cfebec96678b0c9d90e428467ce080f5da8642bcb00",
     "code/particles/flavor/verify_quark_rscc_module_arithmetic.py": "403e6db0dca07fa877b32eef542ffb02a0103fdf51a9ff7b15096211cc9efb55",
-    "code/particles/runs/flavor/quark_rscc_completion_candidate_audit.json": "49746ade49d84a759957784ecaae24bb50e54ed5ec9d849cf49914c40844849a"
+    "code/particles/flavor/verify_source_w5_response_constraints.py": "4db545ee5aa6a576c549b9eacc97eb98d83e3753312458f78c7f95a6374d4d59",
+    "code/particles/runs/flavor/quark_rscc_completion_candidate_audit.json": "49746ade49d84a759957784ecaae24bb50e54ed5ec9d849cf49914c40844849a",
+    "code/particles/runs/flavor/source_w5_response_constraints.json": "79d0a239517300cd39307bb529b7fc77cc066200b921805fc302084ea19ec685"
   },
   "status": "conditional_forward_replay_not_source_selected_or_independent_prediction"
 }

@@ -497,10 +497,10 @@
     "code/particles/data/flag_2024_light_quark_ratio_fixture.json": "82df19655fa2db8973376f0b5627729189c40f40042d38bfdc0f08bd1dce3e78",
     "code/particles/data/pdg_2025_conditional_quark_comparison.json": "503f043ec8581b48e1a8ae184c97e7676dd5e84198ad18f2781d1bf7e32156a5",
     "code/particles/flavor/compare_conditional_quark_masses.py": "c7a4f03acdf90d99fb27ead5e6b52010408917fcb9239398a549280ddb45cd10",
-    "code/particles/flavor/conditional_quark_mass_spec.json": "77538d1e814fad9e3ddf8a6dbd54bd3ac8bbdf884ee7447f69d4d34bf999250e",
-    "code/particles/flavor/verify_conditional_quark_mass_replay.py": "66c366b291c3ec83792f91f35b0fbe1c08adc244d3d152cab5032014632c0257",
+    "code/particles/flavor/conditional_quark_mass_spec.json": "7dac1a6000395790f7dd156837c11c43f3a5ca56c8fe9313add1c50a8df654e8",
+    "code/particles/flavor/verify_conditional_quark_mass_replay.py": "e6f1f91b3970987fe712c8a56e5e8e4301c62ca9a0a053f8c36dd82260a52e86",
     "code/particles/runs/calibration/conditional_top_fixed_p.json": "e027f9225efec2497080995cfc7e435e2e37536815715a9e02aca6cf6d4d47fe",
-    "code/particles/runs/flavor/conditional_quark_mass_replay.json": "fbdf707bcb1d8ae8b005ba2994d52d1422327fa20662a9722a7f3752b2523ed1"
+    "code/particles/runs/flavor/conditional_quark_mass_replay.json": "995f370724d79fd3922f24f5bb49a28734dcda7f7b12ebce86bdeec6f726b0a2"
   },
   "sources": {
     "flag": {

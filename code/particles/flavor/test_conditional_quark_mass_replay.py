@@ -88,7 +88,11 @@ def test_reject_source_packet_mass_injection(spec):
 def test_replay_has_no_numeric_read_from_historical_or_comparison_data(monkeypatch):
     original = Path.read_text
     seen = set()
-    allowed = {replay.SPEC_PATH.resolve(), replay.ALPHA_PATH.resolve()}
+    allowed = {replay.SPEC_PATH.resolve(), replay.ALPHA_PATH.resolve(), replay.RESPONSE_PATH.resolve(),
+               (replay.ROOT/"code/particles/flavor/source_w5_response_constraints_spec.json").resolve(),
+               (replay.ROOT/"code/particles/flavor/source_w5_response_constraints.py").resolve(),
+               (replay.ROOT/"code/a5_closure/manifests/a3_scheduler_kernel_reference.json").resolve(),
+               (replay.ROOT/"code/a5_closure/manifests/record_counting_mechanism_reference.json").resolve()}
     def guarded(path, *args, **kwargs):
         resolved = path.resolve()
         assert resolved in allowed, f"undeclared numeric read: {resolved}"
@@ -102,3 +106,16 @@ def test_replay_has_no_numeric_read_from_historical_or_comparison_data(monkeypat
 
 def test_receipt_matches_computation(payload):
     assert json.loads(replay.OUT_PATH.read_text()) == payload
+
+
+@pytest.mark.parametrize("key,value", [("family_dimension",6),("line_complement_dimension",3),("scalar_fraction","1/6"),("centered_fraction","3/5"),("common_exposure","4/5")])
+def test_certified_source_projection_is_fixed(spec,tmp_path,key,value):
+    changed=copy.deepcopy(spec);changed["source_response"]["projection"][key]=value
+    path=tmp_path/"spec.json";path.write_text(json.dumps(changed))
+    with pytest.raises(ValueError):replay.load_spec(path)
+
+
+def test_tampered_source_certificate_is_not_used(tmp_path):
+    cert=json.loads(replay.RESPONSE_PATH.read_text());cert["color"]["normalized_trace"]="4/5"
+    path=tmp_path/"source.json";path.write_text(json.dumps(cert))
+    with pytest.raises(ValueError):replay.load_source_response(path)
