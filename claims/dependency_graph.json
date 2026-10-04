@@ -323,7 +323,9 @@
     "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING",
     "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION",
     "OPH-MCKAY-INDEPENDENT-GOLDEN-FIELD-CONTROL",
-    "OPH-DARK-SOURCE-DYNAMICS-LENSING"
+    "OPH-DARK-SOURCE-DYNAMICS-LENSING",
+    "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+    "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION"
   ],
   "edges": [
     {
@@ -2825,6 +2827,36 @@
       "from": "OPH-DM-CONT",
       "to": "OPH-DARK-SOURCE-DYNAMICS-LENSING",
       "role": "identifies the scalar anomalous-charge and linear-mass interface whose missing relativistic stress closure is tested; does not derive physical admission of the alternatives"
+    },
+    {
+      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+      "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+      "role": "Supplies the full named axiom-model, native controls, proper instruments and unchanged refinement used by the two source-conditioned policies."
+    },
+    {
+      "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
+      "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+      "role": "Supplies the same code-transition optimizer in both policies, without optimizing transport programs."
+    },
+    {
+      "from": "OPH-FINITE-A3-SUPPORT",
+      "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+      "role": "Supplies the faithful A3 support theorem applied to an explicit same-algebra program-record effect and feasible clock-equivalent branches."
+    },
+    {
+      "from": "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION",
+      "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+      "role": "Identifies the earlier spatial-response freedom; model membership and the metric-free finite detector distinction are proved separately here."
+    },
+    {
+      "from": "OPH-ALPHA-PIXEL",
+      "to": "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
+      "role": "Supplies the declared mathematical maps and physical endpoint boundary to be independently audited; no source-selection or theory-error premise is discharged."
+    },
+    {
+      "from": "OPH-KOIDE-CIRCULANT-IDENTITY",
+      "to": "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
+      "role": "Supplies the exact positive-chamber balance identity and historical premise ancestry. The independent conditional mass replay does not inherit a physical Yukawa attachment."
     }
   ]
 }

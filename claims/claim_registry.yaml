@@ -14240,6 +14240,95 @@
         "boundary": [],
         "rationale": "This finite explicit comparison supplies classical spherical Einstein geometry and its stress tensor, and tests the phenomenological dark-sector interface outside the canonical derivation-premise register. It neither consumes a physical OPH source/metric attachment nor claims microscopic admission of the competing tensors or empirical branch establishment."
       }
+    },
+    {
+      "claim_id": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+      "statement": "In the existing coherent proper-code source satisfying its stated A1-A3 model clauses, two fixed source-conditioned native coin policies share a grounded Dirichlet source, the entire stationary-clock channel and zero-source speed calibration. They introduce no new primitive reversible direction. With all flights, reflections and service time charged, an exact five-site receiver experiment gives probabilities 1/4 and 1/[4(1+s)^4] at source strength s>0. An exact full-band identity preserves the homogeneous zero-momentum mass phase while changing finite-momentum dispersion. The native three-dimensional finite word has principal speed v=2a cos(theta)/T; common rest lapse A=1/(1+u) leaves this spatial-response function undetermined. Both policies preserve the inherited typed A3 problems, and a same-algebra faithful A3 problem admitting both program records cannot give the flat record zero weight using common clock constraints alone. The result establishes non-entailment inside an admitted source, not physical Maxwell photons, Einstein source selection or a property of the integer-repair simulator.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "constructed_common_source_clock_and_native_transport_policies"
+      ],
+      "imported_results": [
+        "finite_CPTP_instruments",
+        "Clifford_principal_symbol",
+        "unitary_product_Taylor_bound",
+        "finite_faithful_relative_entropy_support"
+      ],
+      "oph_specific_delta": "Discharges the source-admissibility gap in a clock/spatial nonselection argument using reconstructed twelve-port pulses, unchanged full source interfaces, actual paid register flights and an exact finite local detector distinction; a separate metric family is not assumed to be an axiom model.",
+      "novelty_type": "admitted_source_process_nonentailment_with_exact_finite_read",
+      "falsifier": "A compiled instruction leaves the inherited grammar; full response or refinement is enlarged; stationary clock channels differ; a flight or report is uncharged; or independent complete-channel replay contradicts the exact rational detector gap.",
+      "scope_if_false": "The source-process membership, finite read separation or principal-symbol calculation fails. No physical source/action, photon identification, universal stress law or parent gravity closure is asserted.",
+      "owner_paper": "extra/SOURCE_GRAVITY_ADMISSIBILITY.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/SOURCE_GRAVITY_ADMISSIBILITY.md",
+        "code/source_gravity_admissibility/CONTRACT.md",
+        "code/source_gravity_admissibility/README.md",
+        "code/source_gravity_admissibility/model.py",
+        "code/source_gravity_admissibility/check.py",
+        "code/source_gravity_admissibility/verify.py",
+        "code/source_gravity_admissibility/build.py",
+        "code/source_gravity_admissibility/receipt.json",
+        "code/source_gravity_admissibility/test_admissibility.py"
+      ],
+      "status": "proved_nonselection_in_an_existing_admissible_source_with_exact_finite_separation",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This mathematical countermodel reuses a constructed full-axiom source and its proposed coherent transport service to disprove clock-to-spatial entailment. It does not consume a physically selected matter source, electromagnetic interpretation or physical premise-register branch; its finite operational probability gap does not need those identifications."
+      }
+    },
+    {
+      "claim_id": "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
+      "statement": "Independent simultaneous dimensionless reconstruction reproduces both retained certified alpha/P roots and separates the converged asymptotic map from its historical approximate trunk and measured-alpha-consuming mixed diagnostic. An independent implicit balanced-Q solve reproduces the ordered tau output and 72 eV outward input-box window. Analytic covariance-agnostic first-order sensitivity bounds and a same-data reference comparison show exact observational equivalence to the Koide relation and one constraint relative to a free tau mass. The historical PDG measurement gives FZ-10 INCONCLUSIVE. A bounded three-candidate audit selects canonical FZ-10 and delivers a concrete future-release contract with NOT_READY status: no eligible untouched dataset, admission dossier or external registration evidence is claimed. No new natural outcome, global chance probability, physical mass selection or alpha theory error is inferred.",
+      "owner_paper": "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
+      "tier": "independent_quantitative_reproduction_and_bounded_natural_comparison_readiness",
+      "assumptions": [
+        "declared_alpha_maps_and_balanced_ordered_tau_relation",
+        "historical_reference_inputs_and_FZ10_comparison_contract"
+      ],
+      "imported_results": [
+        "one_loop_gauge_running_and_vacuum_polarization",
+        "positive_circulant_Koide_identity",
+        "positive_semidefinite_covariance_Cauchy_bounds",
+        "same_observation_model_likelihood_equivalence"
+      ],
+      "oph_specific_delta": "Independently checks the actual OPH numerical quantities, prevents measured-endpoint and approximation conflation, proves the selected tau observable cannot discriminate OPH from the identical Koide relation, and supplies a complete outcome-blind release contract and precise readiness exit.",
+      "novelty_type": "independent_postdiction_reproduction_and_reference_discrimination_audit",
+      "evidence": [
+        "extra/INDEPENDENT_POSTDICTION_COMPARISON.md",
+        "code/independent_postdictions/replay.py",
+        "code/independent_postdictions/verify.py",
+        "code/independent_postdictions/inner_check.py",
+        "code/independent_postdictions/receipt.json",
+        "code/independent_postdictions/protocol.json",
+        "code/independent_postdictions/catalogue_discovery.json",
+        "code/independent_postdictions/test_reproduction.py"
+      ],
+      "falsifier": "Independent roots or source equations disagree; the tau branch or input enclosure differs; the covariance bound or same-law reference equivalence fails; unknown trials acquire a chance probability; policy corruption or hostile evidence is accepted; or exposed/synthetic outcomes are promoted to natural evidence.",
+      "scope_if_false": "The independent reproduction or comparison contract fails. This audit does not select the physical alpha readout or source mass action, replace canonical FZ-10, establish an eligible dataset, or close the calibration/source parents.",
+      "status": "independent_reproduction_complete__bounded_FZ10_data_release_contract_NOT_READY",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [
+          "PR-13",
+          "PR-17",
+          "PR-37"
+        ],
+        "open": [],
+        "boundary": [
+          "PR-14",
+          "PR-38",
+          "PR-39",
+          "PR-50"
+        ]
+      }
     }
   ]
 }
