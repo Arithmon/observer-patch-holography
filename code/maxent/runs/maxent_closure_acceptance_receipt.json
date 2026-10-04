@@ -21,14 +21,14 @@
         "coarse": 6
       },
       "induced_map_R_multipliers": [
-        -0.36570009854342267,
-        0.32931350170322293
+        -0.36570009854342306,
+        0.3293135017032229
       ],
-      "moment_matching_residual": 3.279676236287591e-13,
-      "duhamel_hessian_min_eigenvalue": 2.2928720275360988,
-      "closure_defect_nats": 0.00018189324934492213,
-      "trace_norm_residual": 0.01588760389443024,
-      "pinsker_residual_bound": 0.019073187952983746,
+      "moment_matching_residual": 3.289766924176629e-13,
+      "duhamel_hessian_min_eigenvalue": 2.292872027536099,
+      "closure_defect_nats": 0.0001818932493438119,
+      "trace_norm_residual": 0.01588760389442992,
+      "pinsker_residual_bound": 0.019073187952925535,
       "counts_match_displayed_dimension": true,
       "projection_unique": true,
       "residual_bound_holds": true
@@ -52,14 +52,14 @@
         "coarse": 8
       },
       "induced_map_R_multipliers": [
-        -0.36564998277153327,
-        0.32884472036811857
+        -0.3656499827715348,
+        0.32884472036811885
       ],
-      "moment_matching_residual": 5.978733960281817e-14,
+      "moment_matching_residual": 5.924389742880348e-14,
       "duhamel_hessian_min_eigenvalue": 3.0626262143830596,
-      "closure_defect_nats": 0.00025049078018479776,
-      "trace_norm_residual": 0.014028884754533174,
-      "pinsker_residual_bound": 0.02238261737084373,
+      "closure_defect_nats": 0.00025049078018568594,
+      "trace_norm_residual": 0.014028884754533719,
+      "pinsker_residual_bound": 0.02238261737088341,
       "counts_match_displayed_dimension": true,
       "projection_unique": true,
       "residual_bound_holds": true
@@ -84,13 +84,13 @@
       "coarse": 6
     },
     "induced_map_R_multipliers": [
-      1.0696477834063956e-17,
-      0.39999999999999963
+      -3.63611474475773e-17,
+      0.40000000000000074
     ],
-    "moment_matching_residual": 2.220446049250313e-16,
-    "duhamel_hessian_min_eigenvalue": 2.5669163582435375,
+    "moment_matching_residual": 9.036560719766055e-16,
+    "duhamel_hessian_min_eigenvalue": 2.56691635824353,
     "closure_defect_nats": 0.0,
-    "trace_norm_residual": 8.788594662152371e-16,
+    "trace_norm_residual": 9.805591461878082e-16,
     "pinsker_residual_bound": 0.0,
     "counts_match_displayed_dimension": true,
     "projection_unique": true,

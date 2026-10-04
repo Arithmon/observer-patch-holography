@@ -11,6 +11,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -58,7 +59,7 @@ def test_aligned_states_satisfy_all_characterizations_and_are_markov():
         blocks = random_aligned_blocks(rng)
         assert is_ec_aligned(blocks), "item 4 must hold for aligned states"
         assert modular_splitting_defect(blocks) < 1e-8, "item 2 must hold"
-        assert takesaki_defect(blocks, rng) < 1e-8, "item 3 must hold"
+        assert takesaki_defect(blocks) < 1e-8, "item 3 must hold"
         assert collar_cmi(blocks) < 1e-8, "alignment must imply exact Markovianity"
 
 
@@ -69,7 +70,7 @@ def test_generic_states_fail_all_characterizations_consistently():
         blocks = random_generic_blocks(rng)
         e_defect = entropic_alignment_defect(blocks)
         m_defect = modular_splitting_defect(blocks)
-        t_defect = takesaki_defect(blocks, rng)
+        t_defect = takesaki_defect(blocks)
         assert e_defect > 1e-3
         assert m_defect > 1e-3
         assert t_defect > 1e-3
@@ -111,7 +112,7 @@ def test_gibbs_with_central_interface_is_aligned():
     blocks = gibbs_blocks(hams, central_energies)
     assert is_ec_aligned(blocks, tol=1e-8)
     assert modular_splitting_defect(blocks) < 1e-8
-    assert takesaki_defect(blocks, rng) < 1e-8
+    assert takesaki_defect(blocks) < 1e-8
     assert collar_cmi(blocks) < 1e-8
 
 
@@ -128,7 +129,7 @@ def test_gibbs_with_noncentral_cross_cut_coupling_breaks_alignment():
     blocks = gibbs_blocks([(coupled, dims)], [0.0])
     assert entropic_alignment_defect(blocks) > 1e-3
     assert modular_splitting_defect(blocks) > 1e-3
-    assert takesaki_defect(blocks, rng) > 1e-3
+    assert takesaki_defect(blocks) > 1e-3
     assert collar_cmi(blocks) > 1e-6
 
 
@@ -170,7 +171,7 @@ def test_bell_smoothing_is_excluded_from_central_interface_gibbs_class():
         # faithful, so the modular criteria are defined -- and they fail:
         assert modular_splitting_defect(blocks) > 1e-2, \
             "log rho must keep a cross-cut term outside M_L + M_R"
-        assert takesaki_defect(blocks, rng) > 1e-2, \
+        assert takesaki_defect(blocks) > 1e-2, \
             "no rho-preserving conditional expectation onto M_L exists"
         # the entropic witness of the exclusion:
         i_a_br = mutual_information(rho, list(dims), [0], [2])
@@ -553,3 +554,35 @@ if __name__ == "__main__":
     import pytest
 
     raise SystemExit(pytest.main([__file__, "-v"]))
+
+
+@pytest.mark.parametrize("blocks", (
+    [], [(0,np.eye(16)/16,(2,2,2,2))], [(-1,np.eye(16)/16,(2,2,2,2))],
+    [(1,np.eye(16),(2,2,2,2))], [(1,np.diag([1.1,-.1]),(1,1,1,2))],
+    [(1,np.eye(16)/16,(2,2,2,3))], [(1,np.eye(16)/16,(True,2,2,4))],
+    [(1,np.full((16,16),np.nan),(2,2,2,2))],
+))
+def test_invalid_alignment_evidence_is_not_vacuously_certified(blocks):
+    for check in (is_ec_aligned,collar_cmi,entropic_alignment_defect,
+                  modular_splitting_defect,takesaki_defect,embed_blocks):
+        with pytest.raises(ValueError):
+            check(blocks)
+
+
+def test_takesaki_check_cannot_be_disabled_by_zero_samples():
+    blocks=random_generic_blocks(np.random.default_rng(100))
+    assert takesaki_defect(blocks) > .1
+    with pytest.raises(TypeError):
+        takesaki_defect(blocks,n_probes=0)
+
+
+def test_gibbs_sector_count_and_common_energy_shift():
+    sectors=[(np.zeros((2,2)),(1,1,1,2))]*2
+    with pytest.raises(ValueError,match="per nonempty sector"):
+        gibbs_blocks(sectors,[0])
+    blocks=gibbs_blocks(sectors,[1000,1001])
+    assert blocks[0][0]/blocks[1][0] == pytest.approx(np.e)
+    assert sum(p for p,_,_ in blocks) == pytest.approx(1)
+    assert modular_splitting_defect(blocks) < 1e-12
+    with pytest.raises(ValueError,match="underflow"):
+        gibbs_blocks(sectors,[0,1000])

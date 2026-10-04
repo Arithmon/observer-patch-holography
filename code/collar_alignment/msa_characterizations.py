@@ -24,7 +24,20 @@ Bell-pair counterexample showing that I(A:D|B) = 0 alone implies none of 1-4.
 
 from __future__ import annotations
 
+import sys
+from math import prod
+from pathlib import Path
+
 import numpy as np
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from quantum_information import (
+    conditional_mutual_information as _conditional_mutual_information,
+    density_matrix, dimensions, direct_sum_state,
+    faithful_log as logm_psd, mutual_information, partial_trace, probabilities,
+    one_sided_projection as _one_sided_projection, von_neumann_entropy,
+)
 
 LN2 = float(np.log(2.0))
 
@@ -37,51 +50,13 @@ def dagger(m: np.ndarray) -> np.ndarray:
     return m.conj().T
 
 
-def partial_trace(rho: np.ndarray, dims: list[int], keep: list[int]) -> np.ndarray:
-    """Trace out all subsystems not in `keep` (indices into `dims`)."""
-    n = len(dims)
-    keep = sorted(keep)
-    rho = rho.reshape(dims + dims)
-    traced = [i for i in range(n) if i not in keep]
-    for count, t in enumerate(sorted(traced, reverse=True)):
-        cur_n = n - count
-        rho = np.trace(rho, axis1=t, axis2=t + cur_n)
-    d = int(np.prod([dims[k] for k in keep])) if keep else 1
-    return rho.reshape(d, d)
+def conditional_mutual_information(rho, dims, part_a, part_b, part_d):
+    """Preserve the collar's historical D-subsystem keyword."""
+    return _conditional_mutual_information(rho,dims,part_a,part_b,part_d)
 
 
-def von_neumann_entropy(rho: np.ndarray) -> float:
-    evals = np.linalg.eigvalsh(rho)
-    evals = evals[evals > 1e-14]
-    return float(-np.sum(evals * np.log(evals)))
-
-
-def mutual_information(rho: np.ndarray, dims: list[int],
-                       part_x: list[int], part_y: list[int]) -> float:
-    s_x = von_neumann_entropy(partial_trace(rho, dims, part_x))
-    s_y = von_neumann_entropy(partial_trace(rho, dims, part_y))
-    s_xy = von_neumann_entropy(partial_trace(rho, dims, sorted(part_x + part_y)))
-    return s_x + s_y - s_xy
-
-
-def conditional_mutual_information(rho: np.ndarray, dims: list[int],
-                                   part_a: list[int], part_b: list[int],
-                                   part_d: list[int]) -> float:
-    """I(A:D|B) = S(AB) + S(BD) - S(B) - S(ABD)."""
-    s_ab = von_neumann_entropy(partial_trace(rho, dims, sorted(part_a + part_b)))
-    s_bd = von_neumann_entropy(partial_trace(rho, dims, sorted(part_b + part_d)))
-    s_b = von_neumann_entropy(partial_trace(rho, dims, part_b))
-    s_abd = von_neumann_entropy(
-        partial_trace(rho, dims, sorted(part_a + part_b + part_d)))
-    return s_ab + s_bd - s_b - s_abd
-
-
-def logm_psd(rho: np.ndarray) -> np.ndarray:
-    """Matrix logarithm of a faithful density matrix."""
-    evals, vecs = np.linalg.eigh(rho)
-    if np.min(evals) <= 0.0:
-        raise ValueError("state is not faithful; log rho undefined")
-    return (vecs * np.log(evals)) @ dagger(vecs)
+def one_sided_projection(k, d_left, d_right):
+    return _one_sided_projection(k,d_left,d_right)
 
 
 # ---------------------------------------------------------------------------
@@ -91,30 +66,44 @@ def logm_psd(rho: np.ndarray) -> np.ndarray:
 Block = tuple[float, np.ndarray, tuple[int, int, int, int]]
 
 
+def validated_blocks(blocks):
+    """Reject empty, malformed or unnormalized block families before scoring."""
+    if not isinstance(blocks, (list, tuple)) or not blocks:
+        raise ValueError("nonempty collar block family required")
+    if any(not isinstance(b, (list, tuple)) or len(b) != 3 for b in blocks):
+        raise ValueError("a collar block needs weight, state and four dimensions")
+    probabilities([b[0] for b in blocks])
+    out = []
+    for p, rho, dims in blocks:
+        dims = dimensions(dims)
+        a = density_matrix(rho)
+        if len(dims) != 4 or prod(dims) != len(a):
+            raise ValueError("four collar dimensions must match each block")
+        out.append((p, a, dims))
+    return out
+
+
 def block_dims(block: Block) -> list[int]:
     return list(block[2])
 
 
 def embed_blocks(blocks: list[Block]) -> tuple[np.ndarray, list[np.ndarray]]:
     """Direct-sum embedding; returns (rho_full, center projectors P_alpha)."""
-    sizes = [b[1].shape[0] for b in blocks]
-    total = sum(sizes)
-    rho = np.zeros((total, total), dtype=complex)
-    projectors = []
-    offset = 0
-    for (p, rho_a, _), size in zip(blocks, sizes):
-        rho[offset:offset + size, offset:offset + size] = p * rho_a
-        proj = np.zeros((total, total))
-        proj[offset:offset + size, offset:offset + size] = np.eye(size)
+    blocks = validated_blocks(blocks)
+    rho = direct_sum_state([b[0] for b in blocks], [b[1] for b in blocks])
+    projectors, offset = [], 0
+    for _, state, _ in blocks:
+        proj = np.zeros_like(rho)
+        proj[offset:offset+len(state), offset:offset+len(state)] = np.eye(len(state))
         projectors.append(proj)
-        offset += size
+        offset += len(state)
     return rho, projectors
 
 
 def collar_cmi(blocks: list[Block]) -> float:
     """I(A:D|B) of the blockwise state; entropies add over blocks."""
     total = 0.0
-    for p, rho_a, dims in blocks:
+    for p, rho_a, dims in validated_blocks(blocks):
         if p <= 0.0:
             continue
         d = list(dims)
@@ -131,7 +120,7 @@ def collar_cmi(blocks: list[Block]) -> float:
 def entropic_alignment_defect(blocks: list[Block]) -> float:
     """max_alpha I(A bL^alpha : bR^alpha D); zero iff EC-aligned (item 4)."""
     worst = 0.0
-    for p, rho_a, dims in blocks:
+    for p, rho_a, dims in validated_blocks(blocks):
         if p <= 0.0:
             continue
         d = list(dims)
@@ -140,6 +129,8 @@ def entropic_alignment_defect(blocks: list[Block]) -> float:
 
 
 def is_ec_aligned(blocks: list[Block], tol: float = 1e-9) -> bool:
+    if isinstance(tol, bool) or not np.isfinite(tol) or tol <= 0:
+        raise ValueError("alignment tolerance must be finite and positive")
     return entropic_alignment_defect(blocks) < tol
 
 
@@ -147,23 +138,13 @@ def is_ec_aligned(blocks: list[Block], tol: float = 1e-9) -> bool:
 # characterization 2: modular splitting  log rho in M_L + M_R
 # ---------------------------------------------------------------------------
 
-def one_sided_projection(k: np.ndarray, d_left: int, d_right: int) -> np.ndarray:
-    """Hilbert-Schmidt projection of K onto B(H_L) (x) 1 + 1 (x) B(H_R)."""
-    k4 = k.reshape(d_left, d_right, d_left, d_right)
-    k_l = np.trace(k4, axis1=1, axis2=3) / d_right       # Tr_R K / d_R
-    k_r = np.trace(k4, axis1=0, axis2=2) / d_left        # Tr_L K / d_L
-    trace_part = np.trace(k) / (d_left * d_right)
-    return (np.kron(k_l, np.eye(d_right)) + np.kron(np.eye(d_left), k_r)
-            - trace_part * np.eye(d_left * d_right))
-
-
 def modular_splitting_defect(blocks: list[Block]) -> float:
     """max_alpha || log rho^alpha - Proj_{M_L + M_R}(log rho^alpha) ||_inf.
 
     Zero iff log rho in M_L + M_R blockwise (item 2). Requires faithful blocks.
     """
     worst = 0.0
-    for p, rho_a, dims in blocks:
+    for p, rho_a, dims in validated_blocks(blocks):
         if p <= 0.0:
             continue
         d_a, d_l, d_r, d_d = dims
@@ -177,33 +158,32 @@ def modular_splitting_defect(blocks: list[Block]) -> float:
 # characterization 3: Takesaki commutator criterion
 # ---------------------------------------------------------------------------
 
-def takesaki_defect(blocks: list[Block], rng: np.random.Generator | None = None,
-                    n_probes: int = 8) -> float:
-    """max over blocks/probes of the off-subalgebra part of [log rho, x (x) 1].
+def takesaki_defect(blocks: list[Block]) -> float:
+    """Complete matrix-unit test of the Takesaki commutator criterion.
 
-    Zero iff Ad rho^{it} preserves B(H_{A bL}) (x) 1 for all t, i.e. iff a
-    rho-preserving conditional expectation onto M_L exists (item 3, via the
-    derivative form of Takesaki's criterion used in the paper proof).
+    Every matrix unit E_ij of the left factor is tested. By complex
+    linearity, vanishing on this basis is equivalent to vanishing for all
+    left observables. No sample count or random seed can weaken the check.
+    The returned maximum is a finite-basis diagnostic, not a proof about
+    exact zeros inferred from floating-point tolerances.
     """
-    if rng is None:
-        rng = np.random.default_rng(7)
     worst = 0.0
-    for p, rho_a, dims in blocks:
-        if p <= 0.0:
+    for p, rho_a, dims in validated_blocks(blocks):
+        if p == 0:
             continue
         d_a, d_l, d_r, d_d = dims
-        dl_tot, dr_tot = d_a * d_l, d_r * d_d
+        dl_tot, dr_tot = d_a*d_l, d_r*d_d
         k = logm_psd(rho_a)
-        for _ in range(n_probes):
-            x = rng.normal(size=(dl_tot, dl_tot)) + 1j * rng.normal(size=(dl_tot, dl_tot))
-            x = (x + dagger(x)) / 2.0
-            x_full = np.kron(x, np.eye(dr_tot))
-            comm = k @ x_full - x_full @ k
-            # component of comm orthogonal to B(H_L) (x) 1
-            comm4 = comm.reshape(dl_tot, dr_tot, dl_tot, dr_tot)
-            comm_l = np.trace(comm4, axis1=1, axis2=3) / dr_tot
-            resid = comm - np.kron(comm_l, np.eye(dr_tot))
-            worst = max(worst, float(np.linalg.norm(resid, ord=2)))
+        for i in range(dl_tot):
+            for j in range(dl_tot):
+                x = np.zeros((dl_tot, dl_tot))
+                x[i, j] = 1
+                x_full = np.kron(x, np.eye(dr_tot))
+                comm = k @ x_full - x_full @ k
+                comm4 = comm.reshape(dl_tot, dr_tot, dl_tot, dr_tot)
+                comm_l = np.trace(comm4, axis1=1, axis2=3)/dr_tot
+                resid = comm - np.kron(comm_l, np.eye(dr_tot))
+                worst = max(worst, float(np.linalg.norm(resid, ord=2)))
     return worst
 
 
@@ -268,14 +248,35 @@ def bell_counterexample() -> list[Block]:
 def gibbs_blocks(hamiltonians: list[tuple[np.ndarray, tuple[int, int, int, int]]],
                  central_energies: list[float], beta: float = 1.0) -> list[Block]:
     """Gibbs state of H = oplus_alpha (H^alpha + e_alpha P_alpha) at inverse temp beta."""
-    unnorm = []
+    if not hamiltonians or len(hamiltonians) != len(central_energies):
+        raise ValueError("one central energy is required per nonempty sector")
+    if isinstance(beta,bool) or not np.isfinite(beta):
+        raise ValueError("finite real inverse temperature required")
+    spectra = []
     for (h_a, dims), e_a in zip(hamiltonians, central_energies):
+        dims = dimensions(dims)
+        h_a = np.asarray(h_a,dtype=complex)
+        if (len(dims) != 4 or h_a.shape != (prod(dims),)*2
+                or not np.all(np.isfinite(h_a)) or not np.isfinite(e_a)
+                or np.linalg.norm(h_a-dagger(h_a),ord="fro") > 1e-12):
+            raise ValueError("finite Hermitian sector Hamiltonian and matching dimensions required")
         evals, vecs = np.linalg.eigh(h_a)
-        block = (vecs * np.exp(-beta * (evals + e_a))) @ dagger(vecs)
-        unnorm.append((block, dims))
-    z_total = sum(np.trace(b).real for b, _ in unnorm)
-    return [(float(np.trace(b).real / z_total), b / np.trace(b).real, dims)
-            for b, dims in unnorm]
+        energies = beta*(evals+e_a)
+        if not np.all(np.isfinite(energies)):
+            raise ValueError("sector energies exceed finite numerical range")
+        spectra.append((energies,vecs,dims))
+    # One common shift preserves relative central probabilities. Independent
+    # per-sector shifts would silently change those probabilities.
+    shift = min(e.min() for e,_,_ in spectra)
+    terms = []
+    for energies,vecs,dims in spectra:
+        weights = np.exp(-(energies-shift))
+        if np.any(weights == 0):
+            raise ValueError("Gibbs sector underflow; faithful-state precision is insufficient")
+        terms.append((weights,vecs,dims))
+    z_total = sum(w.sum() for w,_,_ in terms)
+    return [(float(w.sum()/z_total), (v*(w/w.sum()))@dagger(v), dims)
+            for w,v,dims in terms]
 
 
 def one_sided_hamiltonian(rng: np.random.Generator,
