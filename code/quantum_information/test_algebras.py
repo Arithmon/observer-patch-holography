@@ -114,6 +114,14 @@ def test_standardness_does_not_allocate_the_full_left_regular_representation(mon
     assert standard.subalgebra_separating(rho,[4,4,4],[0,2])
 
 
+@pytest.mark.parametrize("bad", ([0.,0.],[1.,1.],[np.nan,0.],[True,False],
+                                  [1e308+1e308j,1e308-1e308j]))
+def test_separation_rejects_invalid_reference_vectors(bad):
+    with np.errstate(over="ignore",invalid="ignore"):
+        with pytest.raises(ValueError):
+            separation_modulus([np.eye(2)],bad)
+
+
 @pytest.mark.parametrize("bad", ([],[np.eye(2),np.eye(2)], [np.diag([1.,-1.])],
     [np.eye(2),np.array([[0.,1.],[0.,0.]])],
     [np.eye(2),np.array([[0.,1.],[1.,0.]]),np.diag([1.,-1.])],

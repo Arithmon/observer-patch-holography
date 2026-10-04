@@ -86,7 +86,8 @@ def separation_modulus(basis, omega):
     if (raw.shape != (len(orthogonal[0]),) or raw.dtype.kind not in "iufc"
             or not np.all(np.isfinite(raw))):
         raise ValueError("finite reference vector on the operator space required")
-    if abs(np.vdot(raw, raw) - 1) > 1e-12:
+    squared_norm = np.vdot(raw, raw)
+    if not np.isfinite(squared_norm) or abs(squared_norm - 1) > 1e-12:
         raise ValueError("reference vector must be normalized")
     action = np.column_stack([b @ raw for b in orthogonal])
     if action.shape[1] > action.shape[0]:
