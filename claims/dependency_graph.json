@@ -320,7 +320,8 @@
     "OPH-TOP-POSITIVE-CAPACITY-BAND",
     "OPH-QUARK-CONDITIONAL-RECORD-RENEWAL",
     "OPH-QUARK-EXTERIOR-HIGGS-RESPONSE",
-    "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING"
+    "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING",
+    "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION"
   ],
   "edges": [
     {
@@ -2812,6 +2813,11 @@
       "from": "OPH-TOP-CONDITIONAL-FIXED-P-CRITICALITY",
       "to": "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING",
       "role": "Supplies the independent-alpha gauge packet and midpoint criticality boundary. The explicit Landau-VEV identification and external-SM mass matching are new conditional steps, not inherited source theorems."
+    },
+    {
+      "role": "Supplies the actual positive source action support and distinguishes its action measure from record multiplicity; the new massless two-field constitutive and physical probe maps are explicitly supplied.",
+      "from": "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION",
+      "to": "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION"
     }
   ]
 }
