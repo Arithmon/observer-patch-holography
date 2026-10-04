@@ -216,7 +216,9 @@ is faithful, Q is exactly the support of \(\Gamma\). On Q, the right
 logarithms still cancel, and the compressed left logarithms define an
 observable in B after extending it by zero outside Q. Equality of its
 expectations proves (1). No logarithm of zero or assumed invertibility of
-the marginal is needed.
+the marginal is needed. The reference term is \(Q(\log\rho)Q\); it must
+not be replaced by the logarithm of \(Q\rho Q\). The two differ when Q
+does not commute with \(\rho\), a case included in the regression suite.
 
 Every \(\tau\) in the same B fiber has the same \(\Gamma\). Equation (1)
 then proves that \(\Gamma\) is its unique minimum, since
@@ -336,6 +338,11 @@ to infinity or a Boolean to disable checks. Invalid states, singular
 references, dependent bases, empty families, omitted/zero/negative rates,
 nonfinite matrices, diagnostic overflow and unresolved Gram matrices fail
 explicitly. Validation remains active under optimized Python.
+Vector norms are evaluated in complex128 arithmetic before checking
+normalization. At audit commit df1d99e5, the int64 vector \((2^{32},1)\)
+had a wrapped squared norm of one and was incorrectly accepted; float32
+could also round the squared norm of \((1,10^{-4})\) to one. Regression
+controls reject both, along with unsigned-integer and complex64 variants.
 These guards are not interval arithmetic: deviations below the declared
 tolerance can pass. In particular, intersection dimension and spectral gaps
 are numerical diagnostics, not exact certificates. Almost coincident
@@ -364,6 +371,9 @@ Gram eigenvalues, weighted partial traces, independent Choi blocks, SciPy
 matrix logarithms, exact rational controls and adversarial supplied maps.
 A central-sector test includes a pure state with cross-sector coherence
 and a singular completed marginal, checking (1) against scalar logarithms.
+Separate controls treat a singular marginal whose support does not commute
+with the reference, and noncommuting repairs preserving a complex nontracial
+reference after a global unitary change of coordinates.
 Run the live consumers and the new tests with the pinned requirements:
 
 ~~~text

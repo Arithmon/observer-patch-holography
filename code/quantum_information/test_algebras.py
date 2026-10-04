@@ -115,7 +115,11 @@ def test_standardness_does_not_allocate_the_full_left_regular_representation(mon
 
 
 @pytest.mark.parametrize("bad", ([0.,0.],[1.,1.],[np.nan,0.],[True,False],
-                                  [1e308+1e308j,1e308-1e308j]))
+                                  [1e308+1e308j,1e308-1e308j],
+                                  np.array([2**32,1],dtype=np.int64),
+                                  np.array([2**32,1],dtype=np.uint64),
+                                  np.array([1.,1e-4],dtype=np.float32),
+                                  np.array([1.,1e-4j],dtype=np.complex64)))
 def test_separation_rejects_invalid_reference_vectors(bad):
     with np.errstate(over="ignore",invalid="ignore"):
         with pytest.raises(ValueError):

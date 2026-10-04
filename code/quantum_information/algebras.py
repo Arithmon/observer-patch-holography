@@ -86,6 +86,9 @@ def separation_modulus(basis, omega):
     if (raw.shape != (len(orthogonal[0]),) or raw.dtype.kind not in "iufc"
             or not np.all(np.isfinite(raw))):
         raise ValueError("finite reference vector on the operator space required")
+    # Validate in the arithmetic used by the action. Integer dot products can
+    # wrap to one, and low-precision dot products can erase a nonunit norm.
+    raw = raw.astype(complex)
     squared_norm = np.vdot(raw, raw)
     if not np.isfinite(squared_norm) or abs(squared_norm - 1) > 1e-12:
         raise ValueError("reference vector must be normalized")

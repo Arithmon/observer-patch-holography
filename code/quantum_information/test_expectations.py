@@ -373,6 +373,62 @@ def test_huge_finite_maps_cannot_pass_after_diagnostic_overflow():
             expectation_diagnostics(np.eye(4)*1e200,algebra,I/2)
 
 
+def test_boundary_entropy_identity_does_not_commute_support_with_reference():
+    algebra,rho,right,s = nontracial_factor_case()
+    pure_left = np.diag([1.,0.])
+    input_right = np.diag([.4,.6])
+    sigma = np.kron(pure_left,input_right)
+    gamma = np.kron(pure_left,right)
+    support = np.kron(pure_left,I)
+    assert np.linalg.norm(support@rho-rho@support) > .05
+    assert np.allclose(apply_map(s,sigma,dual=True),gamma,atol=1e-14)
+    left = np.array([[.6,.1j],[-.1j,.4]])
+    retained = -float(logm(left)[0,0].real)
+    removed = float(np.trace(input_right@(logm(input_right)-logm(right))).real)
+    # The support compression uses Q log(rho) Q, not log(Q rho Q).
+    # Their difference is nonzero even though the entropy identity holds.
+    assert abs(retained+np.log(left[0,0].real)) > .01
+    assert relative_entropy(gamma,rho) == pytest.approx(retained,abs=1e-13)
+    assert relative_entropy(sigma,gamma) == pytest.approx(removed,abs=1e-13)
+    assert relative_entropy(sigma,rho) == pytest.approx(retained+removed,abs=1e-13)
+
+
+def test_nontracial_repair_generator_after_complex_unitary_recharting():
+    # Two noncommuting dephasings on R, with the entire left algebra retained.
+    # A complex global rechart makes the GNS weight nontrivial and tests the
+    # weighted similarity transform, which a tracial example cannot exercise.
+    left = np.array([[.6,.1j],[-.1j,.4]])
+    rho = np.kron(left,I/2)
+    n = .6*X+.8*Z
+    primitives = []
+    algebras = []
+    for axis in (Z,n):
+        u = np.kron(I,axis)
+        primitives.append(linear_matrix(lambda a,u=u:(a+u@a@u)/2,4))
+        algebras.append(FiniteAlgebra(
+            [np.kron(a,b) for a in matrix_units(2) for b in (I,axis)]))
+    generator,report = repair_generator(primitives,algebras,rho,[.5,.5])
+    expected = np.repeat([0.,.1,.9,1.],4)
+    assert np.allclose(np.sort(np.linalg.eigvals(-generator).real),expected,atol=1e-13)
+    assert report["intersection_dimension"] == 4
+    assert report["gap"] == pytest.approx(.1,abs=1e-13)
+    u = expm(.27j*(np.kron(X,Y)+.3*np.kron(Y,Z)))
+    rechart = linear_matrix(lambda a:u@a@u.conj().T,4)
+    changed = [rechart@s@rechart.conj().T for s in primitives]
+    changed_algebras = [FiniteAlgebra([u@b@u.conj().T for b in a.basis])
+                       for a in algebras]
+    result,changed_report = repair_generator(
+        changed,changed_algebras,u@rho@u.conj().T,[.5,.5])
+    assert np.allclose(result,rechart@generator@rechart.conj().T,atol=2e-13)
+    assert changed_report["intersection_dimension"] == 4
+    assert changed_report["gap"] == pytest.approx(.1,abs=1e-13)
+    t = .7
+    channel = expm(t*result)
+    assert np.linalg.eigvalsh(choi_matrix(channel,4))[0] > -1e-13
+    assert np.allclose(apply_map(channel,u@rho@u.conj().T,dual=True),
+                       u@rho@u.conj().T,atol=1e-13)
+
+
 def test_validation_survives_optimized_python():
     import os
     from pathlib import Path
@@ -381,12 +437,13 @@ def test_validation_survives_optimized_python():
 
     program = '''
 import numpy as np
-from quantum_information.algebras import FiniteAlgebra
+from quantum_information.algebras import FiniteAlgebra, separation_modulus
 from quantum_information.expectations import expectation_diagnostics, repair_generator
 i = np.eye(2)
 z = np.diag([1.,-1.])
 a = FiniteAlgebra([i,z])
 checks = [lambda: FiniteAlgebra([i,z,np.array([[0.,1.],[1.,0.]])]),
+          lambda: separation_modulus([i],np.array([2**32,1],dtype=np.int64)),
           lambda: expectation_diagnostics(np.full((4,4),np.nan),a,i/2),
           lambda: expectation_diagnostics(np.zeros((4,4)),a,i/2,tol=np.inf),
           lambda: repair_generator([np.zeros((4,4))],[a],i/2,[1.])]
