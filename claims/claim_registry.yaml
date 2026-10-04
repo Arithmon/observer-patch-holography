@@ -14329,6 +14329,44 @@
           "PR-50"
         ]
       }
+    },
+    {
+      "claim_id": "OPH-FIXED-DISPERSION-FEASIBILITY",
+      "statement": "For the specified fixed-scale edge cosine photon shell and either Lorentz-invariant leptons or the explicitly hypothesized shared massive shell, a direction-uniform analytic sandwich bounds the full three-dimensional pair-production threshold within 1e-13 eV of its optimized leading expression on hard momenta 1e17 through 1e20 eV, with the stated final-momentum cutoff. Thirty independently replayed exact-shell collinear witnesses check the arithmetic without replacing the global proof. The shared branch has an asymmetric threshold above its transition. The exact chord identity forbids shared-shell vacuum electron radiation and photon pair decay; the photon-only branch has an all-direction hard vacuum-emission witness at electron momentum 3e17 eV. These kinematic results do not determine interaction rates, photon flux, shower response or a statistical exclusion, and do not arm or amend FZ-12.",
+      "owner_paper": "docs/research/DISPERSION_FEASIBILITY.md",
+      "tier": "bounded_fixed_hypothesis_kinematic_feasibility",
+      "assumptions": [
+        "fixed_edge_frequency_scale_and_additive_kinematics",
+        "specified_LI_or_shared_massive_shell_and_validity_cutoff"
+      ],
+      "imported_results": [
+        "Lorentz_violating_asymmetric_threshold_kinematics",
+        "cosine_Taylor_inequalities_and_convex_minimization",
+        "complex_chord_cocycle_and_triangle_inequality"
+      ],
+      "oph_specific_delta": "Controls the exact directional cosine law and small outgoing leg in the proposed fixed-scale dispersion test, distinguishes its lepton controls and provides a concrete shower-response consistency check. It credits the established threshold mechanism and supplies no OPH physical-field selection or empirical result.",
+      "novelty_type": "bounded_physical_hypothesis_feasibility_and_exact_symbol_error_control",
+      "evidence": [
+        "docs/research/DISPERSION_FEASIBILITY.md",
+        "code/dispersion_feasibility/README.md",
+        "code/dispersion_feasibility/kinematics.py",
+        "code/dispersion_feasibility/bounds.py",
+        "code/dispersion_feasibility/check.py",
+        "code/dispersion_feasibility/report.json",
+        "code/dispersion_feasibility/test_feasibility.py"
+      ],
+      "falsifier": "A support moment, global variational sandwich, small-leg exclusion, remainder bound or vacuum-channel inequality fails; an independently reconstructed witness violates conservation or stationarity; hostile inputs pass; or kinematic feasibility is promoted to a flux or empirical verdict.",
+      "scope_if_false": "The bounded fixed-hypothesis feasibility result fails. The immutable dispersion registrations, source-symbol mathematics and separate physical model selection retain their stated scope.",
+      "status": "exact_symbol_kinematics_controlled__interaction_response_and_rejection_test_not_established",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This feasibility calculation explicitly hypothesizes physical frequency, scale, frame, species shells and additive kinematics. It reuses a mathematical edge support without consuming or discharging canonical physical source-identification premises. It claims neither a full interacting model nor empirical establishment."
+      }
     }
   ]
 }
