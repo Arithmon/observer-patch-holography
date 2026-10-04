@@ -1,0 +1,92 @@
+\subsection{Calibrated clocks and an undetermined light-deflection coefficient}
+\label{sec:paired-source-gravity}
+
+The source action measure and a readable scalar clock do not by themselves
+select the spatial gravitational response. A constructive comparison uses
+the grounded massless stiffness $K=M(\mathsf A-I)>0$ on the same prepared
+golden addresses, with two real fields $u,v$ and an identical source $j$.
+The constitutive law, source preparation, update program and physical probe
+dictionary are declared. They are not consequences of the three axioms.
+
+\begin{proposition}[Two-field clock nonidentifiability]
+For every $\kappa>0$ and $\gamma\in\mathbb R$, let
+\begin{equation}
+ E_{\gamma,\kappa}(u,v;j)=\frac12 u^{\mathsf T}Ku
+ +\frac\kappa2(v-\gamma u)^{\mathsf T}K(v-\gamma u)-j^{\mathsf T}u.
+ \label{eq:paired-source-energy}
+\end{equation}
+Every positive symmetric two-field edge matrix whose clock Schur complement
+equals one has this form. The unique stationary fields satisfy
+$u=K^{-1}j$ and $v=\gamma u$. The entire clock susceptibility, Gaussian
+clock marginal at any fixed positive inverse temperature, and clock
+dynamics under the kinetic form
+$[\dot u^{\mathsf T}M\dot u+\kappa\dot w^{\mathsf T}M\dot w]/2$,
+where $w=v-\gamma u$, agree throughout this family for matching clock
+initial data.
+\end{proposition}
+\begin{proof}
+For an edge matrix $S>0$, set $\kappa=S_{22}$ and
+$\gamma=-S_{12}/S_{22}$. Its normalized Schur complement gives
+$S_{11}=1+\kappa\gamma^2$. The change to $u,w$ has determinant one and
+separates two positive quadratic forms. Completing the square gives the
+common minimum $-j^{\mathsf T}K^{-1}j/2$ and a nonnegative excess energy.
+Stationarity, Gaussian integration and the separated kinetic equations
+then give the stated identities.
+\end{proof}
+
+The same separation works for any common $C^2$ clock energy $H(u;j)$ with
+a finite Gibbs partition. Coercivity alone does not imply that partition
+condition. In particular, the resting-source energy
+$H=u^{\mathsf T}Ku/2+\sum_i j_i(e^{-u_i}-1)$, $j_i\ge0$, has positive
+Hessian, a unique minimum and a Gaussian lower bound ensuring integrability.
+Its stationary equation $Ku=j e^{-u}$ therefore preserves the spatial
+ambiguity with the same proper-time coupling used for probe clocks.
+
+Use one metric and one universal matter/Maxwell dictionary for every member:
+\begin{equation}
+ ds^2=-e^{-2u}c^2dt^2+e^{2v}d\mathbf x^2,
+ \qquad S_{\mathrm{clock}}=-mc^2\int d\tau,
+ \qquad S_{\mathrm{photon}}=S_{\mathrm{Maxwell}}[g].
+ \label{eq:paired-source-metric}
+\end{equation}
+An identical local gap $\Delta E$ has coordinate phase rate
+$e^{-u}\Delta E/\hbar$, with $\Delta E=c^2\Delta m$ for a rest-mass gap.
+Static exchange gives $\nu_r/\nu_e=e^{u_r-u_e}$, independent of $\gamma$.
+The optical index is $n=e^{u+v}$. For a calibrated exterior field
+$u=\mu/r$, $\mu=GM/c^2$, the infinity-to-infinity first-order deflection is
+$2(1+\gamma)\mu/b$ for fixed finite $\gamma$ in the weak-field limit
+$|u|,|\gamma u|\ll1$. The member $\gamma=-1$ is conformal and has exactly
+zero bending, while $\gamma=1$ has the Einstein weak-field coefficient.
+The linearized exterior tensor is
+\[
+ G_{ij}=(\partial_i\partial_j-\delta_{ij}\Delta)(u-v).
+\]
+For a nonzero compact source, $G_{ij}=0$ selects $\gamma=1$ in this class.
+All members have zero linearized exterior scalar curvature and a
+divergence-free linearized Einstein tensor. Scalar vacuum and Ward balance
+therefore do not supply this selector. The exponential $\gamma=1$ metric
+is not asserted to solve the full nonlinear vacuum Einstein equation.
+
+Sixteen independently replayed local histories cover both source laws,
+strengths, schedules and transverse seeds. Actual final writers feed clock
+and optical-index reads. Exact residuals and a maximum-principle barrier
+enclose the stationary fields, and the conformal and Einstein optical
+intervals are disjoint in every history. A compact $C^1$ density with a
+$C^3$ potential gives a controlled continuum sequence. For rays whose
+actual closest approach lies outside the source and
+$0\le p=(1+\gamma)\mu/r_{\min}\le10^{-3}$, direct differentiation of the
+exact optical integral gives $|\theta(p)-2p|\le11p^2$.
+Numerical quadrature supplies a separate check, not a certified quadrature
+enclosure or a finite-observer radio error budget.
+
+The retrospective measurement comparison retains the Pound--Snider static
+redshift result and all four overlapping Fomalont solar-radio reductions,
+including their measurement conventions and statistical errors. The bounded
+redshift systematic is kept separate. These compressed published results
+are not independent repetitions or a likelihood fit of raw observations.
+The same-input general-relativistic reference is evaluated without a fitted
+per-channel normalization. The construction identifies a missing physical
+tensor condition; it supplies no selected constitutive law, source-to-stress
+identification, physical calibration or autonomous apparatus history
+(\path{code/paired_gravity/README.md} and
+\path{extra/PAIRED_SOURCE_GRAVITY.md}).

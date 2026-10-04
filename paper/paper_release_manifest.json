@@ -15,13 +15,13 @@
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
-      "sha256": "488378aba7da03be6504da711740a94029dd05951d67b91e13b5389c6a60e265",
-      "size_bytes": 743424
+      "sha256": "7f9775773c5e9c93147890be641778fc29727d0e8ec498923583819c0ae1fc5c",
+      "size_bytes": 745831
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "43e483fefa3dc7ad81a0136404b67095397f9f6f17c4c15b3acb0b6c698722e9",
-      "size_bytes": 423183
+      "sha256": "28cb27076f8bf176f7b1a552e23eb3fb0a2ce40cdc6dde7984c3ebb89358a57a",
+      "size_bytes": 427329
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
@@ -40,13 +40,13 @@
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "c585a5f200cd83fb00482ff6bd71ef1c43a5046e2d05162312b87c4eedfaccd3",
-      "size_bytes": 1222044
+      "sha256": "722fcbe434ffcd2a0b559d4f275468a74ac8751dce3701c6c21806b069851880",
+      "size_bytes": 1228707
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
-      "sha256": "4f2fe004cea816116e4819ae28e7ea401c771bc38ac3e3d486eba0b286c5c254",
-      "size_bytes": 481382
+      "sha256": "db433b3ff8333675c10783c7bab1bbb528ae098bc2f915d4333db0bc5cfcd226",
+      "size_bytes": 483272
     }
   },
   "release_id": "r2047",

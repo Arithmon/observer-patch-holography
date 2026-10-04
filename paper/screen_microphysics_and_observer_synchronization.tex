@@ -3801,6 +3801,32 @@ threshold \(4\), so growing modes exist. The timestep-scaled continuation
 with the sharp threshold is the next proposition.
 \end{proof}
 
+\paragraph{An independent golden character-field control.}
+The standard $H_4$ coordinate families give $120$ unit quaternions over
+$\mathbb Q(\sqrt5)$. Direct enumeration checks their group law, inverses
+and center $\{1,-1\}$, and the canonical quaternion-to-complex-matrix map
+gives a faithful determinant-one doublet with character norm one.
+Symmetric powers, exact character inner products, constituent subtraction
+and field conjugation recover the complete irreducible system, with
+dimensions $1,2,2,3,3,4,5,6,4$ and squared-dimension sum $120$.
+Tensoring with the doublet gives a nine-vertex, eight-edge tree whose
+dimension vector is a $2$-eigenvector. An independently encoded affine
+$E_8$ tree admits an explicit isomorphism to this derived graph.
+
+A second arithmetic implementation constructs the carrier by closure from
+two generators and reconstructs its conjugacy classes, characters and
+fusion. A nonrational trace generates the exact character field
+$\mathbb Q(\sqrt5)$; the matrix coefficient field is
+$\mathbb Q(\sqrt5,i)$. Conjugating $\sqrt5$ while fixing $i$ gives a distinct
+faithful irreducible doublet. Its recomputed fusion graph also has affine
+$E_8$ type, so this graph type does not select between $\varphi$ and
+$1-\varphi$. Comparison with the separately frozen
+$\mathrm{SL}(2,\mathbb F_5)$ reconstruction confirms these finite
+invariants. This is an exact executable corroboration; it supplies neither
+an explicit isomorphism between the two group carriers, a Lean proof of
+finite character theory, nor a physical embedding selector
+(\path{code/a5_closure/mckay_golden_field_certificate.md}).
+
 \begin{proposition}[Action origin and sharp stability of the step-scaled evolution]
 \label{prop:scaled-maxwell-stability}
 Fix a real step \(h>0\) and set \(E_n=-(A_{n+1}-A_n)/h-d\phi_n\), \(B_n=CA_n\).
