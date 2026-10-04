@@ -2977,6 +2977,14 @@ def render(register: dict, rows: list[dict]) -> str:
         " regenerate. The standing register was established under issue #607."
     )
     lines.append("")
+    lines.append(
+        "The table below shows the registered targets and their proof-file"
+        " state. Expand a record for its full content and decision rule."
+    )
+    lines.append("")
+    lines.append("<details>")
+    lines.append("<summary>Scope, exposure and historical classification</summary>")
+    lines.append("")
     lines.append(register["policy"])
     lines.append("")
     lines.append(
@@ -3070,10 +3078,58 @@ def render(register: dict, rows: list[dict]) -> str:
         " not mirror them."
     )
     lines.append("")
-    lines.append("| Freeze | Content | Status | Frozen (UTC) | Owner | Kill band |")
-    lines.append("| --- | --- | --- | --- | --- | --- |")
+    lines.append("</details>")
+    lines.append("")
+    lines.append("## Register at a glance")
+    lines.append("")
+    lines.append(
+        "The short labels below are for navigation. Each record retains its"
+        " complete registered content and decision rule below the table."
+    )
+    lines.append("")
+    lines.append("| Freeze | Topic | Registered state | Frozen (UTC) |")
+    lines.append("| --- | --- | --- | --- |")
     active_rows = [row for row in rows if row["status"] != "superseded_void"]
     superseded_rows = [row for row in rows if row["status"] == "superseded_void"]
+    topic_labels = {
+        "FZ-01": "Four retained cosmology targets",
+        "FZ-02": "A5 angular invariants",
+        "FZ-03": "Neutrino ordering and mixing",
+        "FZ-05": "Direct record-count closure",
+        "FZ-07": "Dark-sector RAR/BTFR scatter",
+        "FZ-08": "DESI dark-energy evolution",
+        "FZ-09": "Vacuum birefringence",
+        "FZ-10": "Conditional tau-mass window",
+        "FZ-11": "Primitive-port dispersion",
+        "FZ-12": "Seam-edge dispersion",
+        "FZ-13": "Fixed global capacity (conditional)",
+        "FZ-14": "Integer-division Kerr comb",
+        "FZ-15": "Edge-center scalar tilt (conditional)",
+    }
+    if {row["id"] for row in active_rows} != set(topic_labels):
+        fail("ladder navigation labels must cover exactly the active rows")
+    state_labels = {
+        "frozen_attested": "Bitcoin proof stored",
+        "frozen_stamped_upgrade_pending": "Calendar proof stored",
+        "registered_pending_freeze": "Pending registration",
+        "resource_deferred": "Deferred",
+    }
+    for row in active_rows:
+        frozen = row["frozen_utc"] or "—"
+        lines.append(
+            f"| [{row['id']}](#{row['id'].lower()}) | {topic_labels[row['id']]} |"
+            f" {state_labels[row['status']]} | {frozen} |"
+        )
+    lines.append("")
+    lines.append(
+        "“Calendar proof stored” describes the committed `.ots` file."
+        " It does not establish whether the calendar has since anchored that"
+        " commitment in a Bitcoin block. A later `ots upgrade` adds the block"
+        " proof to the `.ots` file; chain verification is a separate step."
+    )
+    lines.append("")
+    lines.append("## Registered records")
+    lines.append("")
     for row in active_rows:
         if row["owning_issue"] is None:
             owner = row["milestone"]
@@ -3099,12 +3155,27 @@ def render(register: dict, rows: list[dict]) -> str:
             frozen = "not a valid freeze"
         else:
             frozen = "to freeze"
-        lines.append(
-            f"| {row['id']} | {row['content']} | {row['status']} | {frozen} |"
-            f" {owner} | {row['kill_band']} |"
-        )
+        lines.append(f"### {row['id']}")
+        lines.append("")
+        lines.append(f"- **Registered state:** `{row['status']}`")
+        lines.append(f"- **Frozen (UTC):** {frozen}")
+        lines.append(f"- **Registration-era owner:** {owner}")
+        lines.append("")
+        lines.append("<details>")
+        lines.append("<summary>Full content and decision rule</summary>")
+        lines.append("")
+        lines.append("**Content**")
+        lines.append("")
+        lines.append(row["content"])
+        lines.append("")
+        lines.append("**Kill band**")
+        lines.append("")
+        lines.append(row["kill_band"])
+        lines.append("")
+        lines.append("</details>")
+        lines.append("")
     lines.append("")
-    lines.append("### Current structural landing and prediction boundary")
+    lines.append("## Current structural landing and prediction boundary")
     lines.append("")
     lines.append(
         "The local face-curvature action and separate scalar Coulomb minimum"
