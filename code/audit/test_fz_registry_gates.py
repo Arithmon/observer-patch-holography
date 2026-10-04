@@ -31,6 +31,25 @@ def test_live_register_validates_and_surface_is_current():
     assert rendered == committed
 
 
+def test_bitcoin_upgrade_receipt_binds_historical_proofs_and_blocks(tmp_path):
+    from verify_bitcoin_upgrade_receipt import RECEIPT, verify, verify_block
+
+    audit = verify()
+    assert len(audit["proofs"]) == 23
+    assert set(audit["packages"]) == {"FZ-02", "FZ-10", "FZ-11", "FZ-12"}
+    assert audit["full_chain_independently_verified"] is False
+
+    changed = tmp_path / "upgrade_audit.json"
+    changed.write_bytes(RECEIPT.read_bytes() + b"\n")
+    with pytest.raises(ValueError, match="receipt bytes differ"):
+        verify(changed)
+
+    height, block = next(iter(audit["blocks"].items()))
+    changed_block = dict(block, merkle_root="0" * 64)
+    with pytest.raises(ValueError, match="Merkle root mismatch"):
+        verify_block(height, changed_block)
+
+
 def test_ladder_excludes_the_retrospective_fz04_reservation():
     rows = fz_tool.validate(live_register())
     assert [row["id"] for row in rows] == [

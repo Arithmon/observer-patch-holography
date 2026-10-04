@@ -1,0 +1,307 @@
+{
+  "blocks": {
+    "959672": {
+      "best_chain_reported_by": [
+        "https://blockstream.info/api",
+        "https://mempool.space/api"
+      ],
+      "block_hash": "0000000000000000000163333e0bda1c0fe7975845603498b757b4b65d1c88f1",
+      "block_time_utc": "2026-07-26T07:53:17Z",
+      "header_hex": "00204b2bb4209ec4bc3d74709aeb97aebffa6b2a9fa7cb4a8e05010000000000000000009694a8714b7179b7d3ea968daf465b86ece609cea1bb367e846473019534c2a0edbc656ad43a0217ca9aafa9",
+      "header_pow_valid": true,
+      "merkle_root": "a0c23495017364847e36bba1ce09e6ec865b46af8d96ead3b779714b71a89496"
+    },
+    "959955": {
+      "best_chain_reported_by": [
+        "https://blockstream.info/api",
+        "https://mempool.space/api"
+      ],
+      "block_hash": "00000000000000000001f6eca17b4ccd76731d6db542581ef38235ca82920290",
+      "block_time_utc": "2026-07-28T09:40:48Z",
+      "header_hex": "004001205558adc58ed63c86b7a0f074b17f6e6334429d2dfe8601000000000000000000dc0eaf55d7af1aaf0459909d22bce7f3a8c38a921bb03e3e1d7a88fee45e30122079686ad43a02174f885289",
+      "header_pow_valid": true,
+      "merkle_root": "12305ee4fe887a1d3e3eb01b928ac3a8f3e7bc229d905904af1aafd755af0edc"
+    },
+    "960448": {
+      "best_chain_reported_by": [
+        "https://blockstream.info/api",
+        "https://mempool.space/api"
+      ],
+      "block_hash": "0000000000000000000089044778ac4faa5206eac82d5f2efce5e94fa92113fa",
+      "block_time_utc": "2026-07-31T18:48:12Z",
+      "header_hex": "00e06c20830b7b8a28d93c88dd4e605822ae9f457080811ef8c701000000000000000000c552520de04f3aab33ffcd051b92b0b765069393cbfdc696183d325f41e16c39eced6c6ad43a0217c689813d",
+      "header_pow_valid": true,
+      "merkle_root": "396ce1415f323d1896c6fdcb93930665b7b0921b05cdff33ab3a4fe00d5252c5"
+    },
+    "960455": {
+      "best_chain_reported_by": [
+        "https://blockstream.info/api",
+        "https://mempool.space/api"
+      ],
+      "block_hash": "000000000000000000002c49426ae377f7571dd86dbf8733a2a813d9b8a083cf",
+      "block_time_utc": "2026-07-31T19:53:13Z",
+      "header_hex": "00e0ff3f2879f3cf09478b1a11202b24559b6cb1a10aeb49ac5501000000000000000000750266ed987bac18e31719883e3a1ea66e7472b714daf1aac2742f817dfe5c6829fd6c6ad43a02177fb3862f",
+      "header_pow_valid": true,
+      "merkle_root": "685cfe7d812f74c2aaf1da14b772746ea61e3a3e881917e318ac7b98ed660275"
+    },
+    "960730": {
+      "best_chain_reported_by": [
+        "https://blockstream.info/api",
+        "https://mempool.space/api"
+      ],
+      "block_hash": "000000000000000000007c9a18775e5aed936c9f42fc16a97c25c96f0639cd27",
+      "block_time_utc": "2026-08-02T12:25:33Z",
+      "header_hex": "0040042008c73633ca08b18d37daab625357fc02190c3632706201000000000000000000cd01302e2c86cb5c68a499193b74c6ea5dcae8db71bb2973006a1b89a12c24c73d376f6ad43a0217d0783fdd",
+      "header_pow_valid": true,
+      "merkle_root": "c7242ca1891b6a007329bb71dbe8ca5deac6743b1999a4685ccb862c2e3001cd"
+    },
+    "960736": {
+      "best_chain_reported_by": [
+        "https://blockstream.info/api",
+        "https://mempool.space/api"
+      ],
+      "block_hash": "0000000000000000000235f0d3260114222ec722c84a76f7b0e0fd71f079db9f",
+      "block_time_utc": "2026-08-02T13:59:04Z",
+      "header_hex": "00608b2b4fa9a826a65b353ab709730a7061e06440827af095a3010000000000000000009f3b328b9f4fbda68a5f70440ee466e40edea5fe2a4df513d570553e3862f52f284d6f6ad43a021734f501f2",
+      "header_pow_valid": true,
+      "merkle_root": "2ff562383e5570d513f54d2afea5de0ee466e40e44705f8aa6bd4f9f8b323b9f"
+    }
+  },
+  "checked_at_utc": "2026-10-04T11:41:58Z",
+  "explorers": [
+    "https://blockstream.info/api",
+    "https://mempool.space/api"
+  ],
+  "full_chain_independently_verified": false,
+  "original_custody_commit": "0f7aa44259f53e4f5a1f4cd4904758039975755e",
+  "ots_client": "opentimestamps-client v0.7.2",
+  "packages": {
+    "FZ-02": {
+      "manifest_anchor_height": 959672,
+      "proof_count": 5
+    },
+    "FZ-10": {
+      "manifest_anchor_height": 959955,
+      "proof_count": 3
+    },
+    "FZ-11": {
+      "manifest_anchor_height": 960448,
+      "proof_count": 9
+    },
+    "FZ-12": {
+      "manifest_anchor_height": 960730,
+      "proof_count": 6
+    }
+  },
+  "proofs": [
+    {
+      "artifact_sha256": "e18f8874ea1fdf3a0a74289951a5f6d8bce5763eefaba0e3c9360e0dc659d726",
+      "height": 959672,
+      "merkle_root": "a0c23495017364847e36bba1ce09e6ec865b46af8d96ead3b779714b71a89496",
+      "original_proof": "falsification/frozen_targets/fz02_2026-07-26/A5AngularMultiplets_pinned.lean.ots",
+      "original_proof_sha256": "f4bd803296807071e315d2729d957e1461c37273c4804f2cd6b31d2d6969faa6",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz02_2026-07-26/A5AngularMultiplets_pinned.lean.ots",
+      "upgraded_proof_sha256": "d11371e0207964dd425af0edfcc7dbe1ca52f684c7938220f62544e4511983ec"
+    },
+    {
+      "artifact_sha256": "93d72fb361d3522145aab7bbf21edabcc4a2d960f87e66629ef831c4662a9e89",
+      "height": 959672,
+      "merkle_root": "a0c23495017364847e36bba1ce09e6ec865b46af8d96ead3b779714b71a89496",
+      "original_proof": "falsification/frozen_targets/fz02_2026-07-26/a5_angular_multiplet_reference.receipt.json.ots",
+      "original_proof_sha256": "f4a9124a7ed56c80b8e20abfe0a16de3568a5bb935f21b321317f2d60c02c2cf",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz02_2026-07-26/a5_angular_multiplet_reference.receipt.json.ots",
+      "upgraded_proof_sha256": "7eba8400fa676b9a6527635cf352600bc7832bb9c294de8f42c5cdec9e497bb7"
+    },
+    {
+      "artifact_sha256": "abff4289459a53be63808210b37fd4025af2abf73bc82a2b2a41594953742a57",
+      "height": 959672,
+      "merkle_root": "a0c23495017364847e36bba1ce09e6ec865b46af8d96ead3b779714b71a89496",
+      "original_proof": "falsification/frozen_targets/fz02_2026-07-26/frozen_target_angular_multiplet_signature_2026-07-26.md.ots",
+      "original_proof_sha256": "89f499b05c739a3b4149ae7f44649f518fef6a1f30a3600e9161c363bc57c99a",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz02_2026-07-26/frozen_target_angular_multiplet_signature_2026-07-26.md.ots",
+      "upgraded_proof_sha256": "958cfa57944df55120123234fd97ebfc143bef18a863d8feb27af683f96ab85a"
+    },
+    {
+      "artifact_sha256": "bf755a072641eeff3ac000f7abd15f4eb0360175d8fa738a73c31495f98447c4",
+      "height": 959672,
+      "merkle_root": "a0c23495017364847e36bba1ce09e6ec865b46af8d96ead3b779714b71a89496",
+      "original_proof": "falsification/frozen_targets/fz02_2026-07-26/fz02_freeze_registry_2026-07-26.json.ots",
+      "original_proof_sha256": "03f8e2d3fcd6da328320db6cbb280a0403a2557de3398e30937f51f14e7aff51",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz02_2026-07-26/fz02_freeze_registry_2026-07-26.json.ots",
+      "upgraded_proof_sha256": "73fd7840a8e50123dbc9402e07e648b209cdaaa2e86d9ff6a72380181c2749f1"
+    },
+    {
+      "artifact_sha256": "278dedcabe9b242b21a1f0ea0d0ceb8899dd279acf9b579eb0c5bae8af858ddf",
+      "height": 959672,
+      "merkle_root": "a0c23495017364847e36bba1ce09e6ec865b46af8d96ead3b779714b71a89496",
+      "original_proof": "falsification/frozen_targets/fz02_2026-07-26/registration_manifest_2026-07-26.json.ots",
+      "original_proof_sha256": "3b8bc9c7a18efcf24aa347746d7eb40410a1603e3a817b9e9c94e066d8b21cd9",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz02_2026-07-26/registration_manifest_2026-07-26.json.ots",
+      "upgraded_proof_sha256": "6a7ac17fd3f9c7b153682b82db465a07e2b7e73946b13c52eaaa4b2e951e62e4"
+    },
+    {
+      "artifact_sha256": "1b15fdc304223bc7b4c6e3916e222a67564b6bd6edc128414b66c450b259a5ee",
+      "height": 959955,
+      "merkle_root": "12305ee4fe887a1d3e3eb01b928ac3a8f3e7bc229d905904af1aafd755af0edc",
+      "original_proof": "falsification/frozen_targets/fz10_2026-07-28/frozen_target_koide_conditional_tau_2026-07-28.md.ots",
+      "original_proof_sha256": "bf33da43623b3d5ed40a1e29824ae6b515edfda12b0041cdbe68cc59fc60f5ab",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz10_2026-07-28/frozen_target_koide_conditional_tau_2026-07-28.md.ots",
+      "upgraded_proof_sha256": "d5c2f4e84e87e949e6b0c126481a0ab736da0d4e0a537c494b5218614f43ced3"
+    },
+    {
+      "artifact_sha256": "09efbad8de813790d10671b425daef69429831c58daa212f4be131c61f653898",
+      "height": 959955,
+      "merkle_root": "12305ee4fe887a1d3e3eb01b928ac3a8f3e7bc229d905904af1aafd755af0edc",
+      "original_proof": "falsification/frozen_targets/fz10_2026-07-28/koide_balance_comparison_frozen_2026-07-28.json.ots",
+      "original_proof_sha256": "895a85fc284cbf2fd409eddc786870fb1f53a75d3ceb687bd0c329b7ff169cbc",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz10_2026-07-28/koide_balance_comparison_frozen_2026-07-28.json.ots",
+      "upgraded_proof_sha256": "2cd66b290fa8f6e895d352ee63908f01baba925056f625f2b8002d3a01b4879e"
+    },
+    {
+      "artifact_sha256": "5c2e2750931b28cb9f1fbcc9c5ccbc53b99d05dd238aa7b0b06312c4c20fb79d",
+      "height": 959955,
+      "merkle_root": "12305ee4fe887a1d3e3eb01b928ac3a8f3e7bc229d905904af1aafd755af0edc",
+      "original_proof": "falsification/frozen_targets/fz10_2026-07-28/registration_manifest_2026-07-28.json.ots",
+      "original_proof_sha256": "85fea018fd1c6a6ae29614ff71c3eda320325392cbf8b2d0bb06e0593747a9fe",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz10_2026-07-28/registration_manifest_2026-07-28.json.ots",
+      "upgraded_proof_sha256": "df847c411ba6200066b1ad9d0cffe2156c9c0946520abb676854149e60f181c4"
+    },
+    {
+      "artifact_sha256": "cb2e81d0555fa90ee1db6502c7af2d540a785b8567d3310fdd776a21fb5aad4e",
+      "height": 960455,
+      "merkle_root": "685cfe7d812f74c2aaf1da14b772746ea61e3a3e881917e318ac7b98ed660275",
+      "original_proof": "falsification/frozen_targets/fz11_2026-07-31/A5PrimitivePortPrediction_repaired.lean.ots",
+      "original_proof_sha256": "cca68671d3706865d3d54debf74f01cbce3b45d285dea744d66c68c54953b2a3",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz11_2026-07-31/A5PrimitivePortPrediction_repaired.lean.ots",
+      "upgraded_proof_sha256": "3683fb94b5c18af7deb25b5eb5361a9589841b6c364e5ca0909eb290fe8270c7"
+    },
+    {
+      "artifact_sha256": "d04741b01825db75bef57f6d7887acfa54d6abd5a087aa202da862c43c3a13f7",
+      "height": 960455,
+      "merkle_root": "685cfe7d812f74c2aaf1da14b772746ea61e3a3e881917e318ac7b98ed660275",
+      "original_proof": "falsification/frozen_targets/fz11_2026-07-31/FZ11_DECISION_RULE_ERRATUM_2026-07-31.md.ots",
+      "original_proof_sha256": "b85838e49484d384de0ecf415f19daf9b248aa215bd9cfbd04888e5faf08a49f",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz11_2026-07-31/FZ11_DECISION_RULE_ERRATUM_2026-07-31.md.ots",
+      "upgraded_proof_sha256": "27851f2c0e21e9c8fbb79ec1f4b116374792170bbc46ede107855eae154873fc"
+    },
+    {
+      "artifact_sha256": "26b6f676081980b5eac79be2d4723815417bfdaf915febaf629a5a358b32f448",
+      "height": 960455,
+      "merkle_root": "685cfe7d812f74c2aaf1da14b772746ea61e3a3e881917e318ac7b98ed660275",
+      "original_proof": "falsification/frozen_targets/fz11_2026-07-31/LEAN_PROOF_ERRATUM_2026-07-31.md.ots",
+      "original_proof_sha256": "0c99c0bf41af57c3b8311fee84d801b20f0095d052d713cb6d729a2432d87707",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz11_2026-07-31/LEAN_PROOF_ERRATUM_2026-07-31.md.ots",
+      "upgraded_proof_sha256": "e1c3449755aa62fec64a0eff3f7cbfc572fea41fac4b78d6560859113a20f606"
+    },
+    {
+      "artifact_sha256": "724ef8d0d2f024152e72e2189d41149b329ab3f6bea0235be5a2183fd57e2786",
+      "height": 960455,
+      "merkle_root": "685cfe7d812f74c2aaf1da14b772746ea61e3a3e881917e318ac7b98ed660275",
+      "original_proof": "falsification/frozen_targets/fz11_2026-07-31/decision_rule_erratum_manifest_2026-07-31.json.ots",
+      "original_proof_sha256": "09bb4300779d006318c32159f10aa3af2858dd32134ee90251400994105b995d",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz11_2026-07-31/decision_rule_erratum_manifest_2026-07-31.json.ots",
+      "upgraded_proof_sha256": "d5c2d4e71f7fc3d1f5ada005f6f8965905a1e356bf6b08f2c5ece71e4e2d377a"
+    },
+    {
+      "artifact_sha256": "1e6dfe17cb917a66f729ae21061704137da65e5269cf925ac3ab2f6ae754d737",
+      "height": 960448,
+      "merkle_root": "396ce1415f323d1896c6fdcb93930665b7b0921b05cdff33ab3a4fe00d5252c5",
+      "original_proof": "falsification/frozen_targets/fz11_2026-07-31/frozen_target_spin_six_primitive_port_prediction_2026-07-31.md.ots",
+      "original_proof_sha256": "4b4d8c17d4ffdcbc739ec777ab2e6324dec96e1c754df71b653b1de4b0ab1bec",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz11_2026-07-31/frozen_target_spin_six_primitive_port_prediction_2026-07-31.md.ots",
+      "upgraded_proof_sha256": "c17e474e0afe5ccdd23a170bdc7239edafe7868bdc38b851649bbed23c50aeb5"
+    },
+    {
+      "artifact_sha256": "4c4fb022d5f226d3c42ffb902aaacb653594ebe28729f67413a3535f2ebeacfa",
+      "height": 960455,
+      "merkle_root": "685cfe7d812f74c2aaf1da14b772746ea61e3a3e881917e318ac7b98ed660275",
+      "original_proof": "falsification/frozen_targets/fz11_2026-07-31/fz11_decision_rule_v2_2026-07-31.json.ots",
+      "original_proof_sha256": "8348c62493ae1950d17150308ca2f2e2532d12a225e17b201995b7b041230574",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz11_2026-07-31/fz11_decision_rule_v2_2026-07-31.json.ots",
+      "upgraded_proof_sha256": "647f42ae68997789322254d9c685c29de7d9c248f4e2e79666b8bd080a743397"
+    },
+    {
+      "artifact_sha256": "52b919222f5ced78fcc80e4a29e761980b609c7b05b6ab080cd741aefaa5301c",
+      "height": 960455,
+      "merkle_root": "685cfe7d812f74c2aaf1da14b772746ea61e3a3e881917e318ac7b98ed660275",
+      "original_proof": "falsification/frozen_targets/fz11_2026-07-31/lean_repair_manifest_2026-07-31.json.ots",
+      "original_proof_sha256": "56c3538ba17e8145cadd0313f8311b3698c1eb9b961698f15cf20a5add1077ab",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz11_2026-07-31/lean_repair_manifest_2026-07-31.json.ots",
+      "upgraded_proof_sha256": "2dfc1ea0984db669fcce500503e0dd30bd28e5b01a29940a9682f742deb79eea"
+    },
+    {
+      "artifact_sha256": "e1533759bd9af051db23163d378bd259c4c76cb88fd79720c67b641e5da4b9c3",
+      "height": 960448,
+      "merkle_root": "396ce1415f323d1896c6fdcb93930665b7b0921b05cdff33ab3a4fe00d5252c5",
+      "original_proof": "falsification/frozen_targets/fz11_2026-07-31/registration_manifest_2026-07-31.json.ots",
+      "original_proof_sha256": "1b8f703d7fb4953984fd85ebfc9dabab3007b49ecace73759d4925b62a8c84d0",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz11_2026-07-31/registration_manifest_2026-07-31.json.ots",
+      "upgraded_proof_sha256": "27f0ecfb39b4528721466cbd55c0146d50ada321953b5c314112975e1d6fd832"
+    },
+    {
+      "artifact_sha256": "2c02c74be715539aa83bffc84fb09e0899e659fe6551c8bb12dffc0baa4a0d64",
+      "height": 960448,
+      "merkle_root": "396ce1415f323d1896c6fdcb93930665b7b0921b05cdff33ab3a4fe00d5252c5",
+      "original_proof": "falsification/frozen_targets/fz11_2026-07-31/spin_six_primitive_port_prediction_frozen_2026-07-31.json.ots",
+      "original_proof_sha256": "7e5df7a36ae176d13b1f640eebb7a34f66ec4a9614b411b6d10ffe4e2fa46f98",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz11_2026-07-31/spin_six_primitive_port_prediction_frozen_2026-07-31.json.ots",
+      "upgraded_proof_sha256": "7155c62d17120d0cc0c2c78c3df6b2a050075456c0f8aa550b1046ddeefb4893"
+    },
+    {
+      "artifact_sha256": "b2dab17bb2de9c1a34978748bbd8e9657c2f6f5931315863fbe7004ab2bacc0e",
+      "height": 960736,
+      "merkle_root": "2ff562383e5570d513f54d2afea5de0ee466e40e44705f8aa6bd4f9f8b323b9f",
+      "original_proof": "falsification/frozen_targets/fz12_2026-08-02/FZ12_DECISION_RULE_CLARIFICATION_2026-08-02.md.ots",
+      "original_proof_sha256": "2ce65988fd26bb2c65adb45ec046cf1f93f0f8afa3f0f424307015e1486df438",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz12_2026-08-02/FZ12_DECISION_RULE_CLARIFICATION_2026-08-02.md.ots",
+      "upgraded_proof_sha256": "0016b61d7e6a99b091be7813a4d23365cb2535f51fdeeb81c313cf3633b1ec2e"
+    },
+    {
+      "artifact_sha256": "afaf634dbfce6b5ed99e362d5ba0dec21389cda38c57e2936c3bf298a8c33fb4",
+      "height": 960730,
+      "merkle_root": "c7242ca1891b6a007329bb71dbe8ca5deac6743b1999a4685ccb862c2e3001cd",
+      "original_proof": "falsification/frozen_targets/fz12_2026-08-02/frozen_target_seam_current_edge_prediction_2026-08-02.md.ots",
+      "original_proof_sha256": "37f593cfd122a8552bdcc26b4657e640686202f9254ff172e1ec1d3b9d9f3ebe",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz12_2026-08-02/frozen_target_seam_current_edge_prediction_2026-08-02.md.ots",
+      "upgraded_proof_sha256": "7b5266b2666bbf53438ee8c366b0d83c1abe47ce30da61938b663aea9b312496"
+    },
+    {
+      "artifact_sha256": "61ba3e3e1e47b0e59f3777e0ec502b01de103d6636e205811e88372c900ebb1f",
+      "height": 960736,
+      "merkle_root": "2ff562383e5570d513f54d2afea5de0ee466e40e44705f8aa6bd4f9f8b323b9f",
+      "original_proof": "falsification/frozen_targets/fz12_2026-08-02/fz12_decision_rule_manifest_2026-08-02.json.ots",
+      "original_proof_sha256": "b9ceff0e80399d300ca3f4a068a98059170c0354399bb9ea9a18b5cefc76c3ce",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz12_2026-08-02/fz12_decision_rule_manifest_2026-08-02.json.ots",
+      "upgraded_proof_sha256": "bf0e5c0d18071d6be749e49c9bfc15d640092b9ce2fe2d6b7987e3de350d3bfa"
+    },
+    {
+      "artifact_sha256": "217252c62878576a97f983db109bb18512a29f26b1d17ad086c78ce11f78afa9",
+      "height": 960736,
+      "merkle_root": "2ff562383e5570d513f54d2afea5de0ee466e40e44705f8aa6bd4f9f8b323b9f",
+      "original_proof": "falsification/frozen_targets/fz12_2026-08-02/fz12_decision_rule_v2_2026-08-02.json.ots",
+      "original_proof_sha256": "fd40028c4409210e99d1e7293ca69c7bbd9adbe717ae188dc4799f81ae9e60da",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz12_2026-08-02/fz12_decision_rule_v2_2026-08-02.json.ots",
+      "upgraded_proof_sha256": "fe397ab3975a6a6f7c96fd245ce2f3db4c01be835f3c994feaf88f89d7a95410"
+    },
+    {
+      "artifact_sha256": "8ac3c4ac2de3ab3af474ccb494d73d47c3670044c0d112c468d1f9f7f8841f25",
+      "height": 960730,
+      "merkle_root": "c7242ca1891b6a007329bb71dbe8ca5deac6743b1999a4685ccb862c2e3001cd",
+      "original_proof": "falsification/frozen_targets/fz12_2026-08-02/registration_manifest_2026-08-02.json.ots",
+      "original_proof_sha256": "9cac21c17d6b599d443f127aba9b4f023481223a1735c1504398e9aba6411f7b",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz12_2026-08-02/registration_manifest_2026-08-02.json.ots",
+      "upgraded_proof_sha256": "14a50f1de9947a2ff7e683c42fc6c98ea896c21552e9203f3c5a1030207f41de"
+    },
+    {
+      "artifact_sha256": "d6d8f7e299dc8b38efd88c3e27135c5e4ca8eddc7bc11425f0b6844908ef76df",
+      "height": 960730,
+      "merkle_root": "c7242ca1891b6a007329bb71dbe8ca5deac6743b1999a4685ccb862c2e3001cd",
+      "original_proof": "falsification/frozen_targets/fz12_2026-08-02/seam_current_edge_prediction_frozen_2026-08-02.json.ots",
+      "original_proof_sha256": "f43d953352aba4bad1f153137c0c5bd3812ac0870640b902ea64f23eabfabafe",
+      "upgraded_proof": "bitcoin_upgrades_2026-10-04/fz12_2026-08-02/seam_current_edge_prediction_frozen_2026-08-02.json.ots",
+      "upgraded_proof_sha256": "f7a745059ed36bcd993abe4edbd711c60ed6a8b5eea4bc9fd497c94f941c7f2e"
+    }
+  ],
+  "schema": "oph.legacy_bitcoin_proof_upgrade.v1",
+  "verification_method": "explorer-assisted: two Esplora API reports agree at each height; OTS operation root, raw header hash and proof of work checked locally"
+}

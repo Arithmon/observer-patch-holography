@@ -55,6 +55,10 @@ except ModuleNotFoundError:  # Support importlib loading from repository tests.
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import strict_json
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from verify_bitcoin_upgrade_receipt import RECEIPT as BITCOIN_UPGRADE_RECEIPT
+from verify_bitcoin_upgrade_receipt import verify as verify_bitcoin_upgrade_receipt
+
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "claims" / "frozen_prediction_register.json"
 FROZEN_ROWS_BOOTSTRAP_REVISION = "68663e9e52a3931c322676a127dd0af144a01de3"
@@ -2967,7 +2971,10 @@ def verify_external_custody(
     }
 
 
-def render(register: dict, rows: list[dict]) -> str:
+def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = None) -> str:
+    if bitcoin_upgrades is None:
+        bitcoin_upgrades = load_json(BITCOIN_UPGRADE_RECEIPT)
+    upgraded_rows = set(bitcoin_upgrades["packages"])
     lines: list[str] = []
     lines.append("# The frozen-prediction ladder")
     lines.append("")
@@ -2978,8 +2985,8 @@ def render(register: dict, rows: list[dict]) -> str:
     )
     lines.append("")
     lines.append(
-        "The table below shows the registered targets and their proof-file"
-        " state. Expand a record for its full content and decision rule."
+        "The table below shows the registered targets and the current proof-file"
+        " custody. Expand a record for its full content and decision rule."
     )
     lines.append("")
     lines.append("<details>")
@@ -3087,7 +3094,7 @@ def render(register: dict, rows: list[dict]) -> str:
         " complete registered content and decision rule below the table."
     )
     lines.append("")
-    lines.append("| Freeze | Topic | Registered state | Frozen (UTC) |")
+    lines.append("| Freeze | Topic | Current proof custody | Frozen (UTC) |")
     lines.append("| --- | --- | --- | --- |")
     active_rows = [row for row in rows if row["status"] != "superseded_void"]
     superseded_rows = [row for row in rows if row["status"] == "superseded_void"]
@@ -3116,17 +3123,23 @@ def render(register: dict, rows: list[dict]) -> str:
     }
     for row in active_rows:
         frozen = row["frozen_utc"] or "—"
+        proof_state = (
+            "Bitcoin proof added (explorer-assisted)"
+            if row["id"] in upgraded_rows
+            else state_labels[row["status"]]
+        )
         lines.append(
             f"| [{row['id']}](#{row['id'].lower()}) | {topic_labels[row['id']]} |"
-            f" {state_labels[row['status']]} | {frozen} |"
+            f" {proof_state} | {frozen} |"
         )
     lines.append("")
     lines.append(
-        "“Calendar proof stored” describes the committed `.ots` file."
-        " It does not establish whether the calendar has since anchored that"
-        " commitment in a Bitcoin block. A later `ots upgrade` on a copy can"
-        " add the block proof; chain verification and an append-only custody"
-        " update are separate steps."
+        "“Calendar proof stored” describes the committed `.ots` file without"
+        " a Bitcoin block attestation. “Bitcoin proof added (explorer-assisted)”"
+        " means an upgraded copy is committed with its original file binding"
+        " and Bitcoin block header checked, and two public explorers reported"
+        " the block on the best chain. Independent full-node verification has"
+        " not been run for those upgrades."
     )
     lines.append("")
     lines.append("## Registered records")
@@ -3242,6 +3255,12 @@ def render(register: dict, rows: list[dict]) -> str:
     lines.append("")
     lines.append("## Custody and attestation")
     lines.append("")
+    lines.append(
+        "The custody statements below preserve their registration-time wording."
+        " Later proof upgrades appear in the dated receipt below; they do not"
+        " change a target, decision rule, freeze time, or scientific verdict."
+    )
+    lines.append("")
     for row in rows:
         if row["status"] in FROZEN_STATUSES:
             attestation = str(row["attestation"]).rstrip(".")
@@ -3251,9 +3270,37 @@ def render(register: dict, rows: list[dict]) -> str:
                 f" Comparison protocol: {row['comparison_protocol']}"
             )
     lines.append("")
+    lines.append("## Later Bitcoin proof upgrades")
+    lines.append("")
+    lines.append(
+        "The [2026-10-04 upgrade receipt]"
+        "(../evidence/custody/bitcoin_upgrades_2026-10-04/upgrade_audit.json)"
+        " records the original and upgraded proof hashes, file digests, earliest"
+        " attesting blocks, block headers and explorer observations. Every"
+        " archived `.ots` file remains unchanged. The official OpenTimestamps"
+        " client parsed all upgraded paths; local checks recomputed their file"
+        " bindings, block-header hashes, Merkle roots and proof of work."
+        " Blockstream and mempool.space reported the same blocks on the best"
+        " chain. This is explorer-assisted evidence, not independent Bitcoin"
+        " full-node verification."
+    )
+    lines.append("")
+    lines.append("| Freeze | Upgraded proofs | Manifest anchor (Bitcoin height) |")
+    lines.append("| --- | ---: | ---: |")
+    for row_id in sorted(upgraded_rows):
+        summary = bitcoin_upgrades["packages"][row_id]
+        height = summary["manifest_anchor_height"]
+        block_hash = bitcoin_upgrades["blocks"][str(height)]["block_hash"]
+        lines.append(
+            f"| {row_id} | {summary['proof_count']} |"
+            f" [{height}](https://blockstream.info/block/{block_hash}) |"
+        )
+    lines.append("")
     lines.append("## Custody verification contracts")
     lines.append("")
-    lines.append("| Contract | Rows | Required attestation state | External custody |")
+    lines.append("The states in this table are the original registration requirements.")
+    lines.append("")
+    lines.append("| Contract | Rows | Registration-time attestation | External custody |")
     lines.append("| --- | --- | --- | --- |")
     state_labels = {
         "bitcoin_attested": "Bitcoin block attestation present",
@@ -3385,7 +3432,8 @@ def main() -> int:
     )
     lean_replay = verify_fz11_lean_replay() if args.verify_fz11_lean else None
     custody = verify_external_custody(register)
-    surface = render(register, rows)
+    bitcoin_upgrades = verify_bitcoin_upgrade_receipt()
+    surface = render(register, rows, bitcoin_upgrades)
     if args.check:
         committed = (
             SURFACE_PATH.read_text(encoding="utf-8") if SURFACE_PATH.is_file() else ""

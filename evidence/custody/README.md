@@ -8,6 +8,17 @@ for every stamped file. Historical packages were vendored byte for byte;
 later registrations are appended in their own dated directories.
 `.ots.bak` files retain proofs before their Bitcoin upgrade.
 
+The append-only `bitcoin_upgrades_2026-10-04/` directory holds upgraded
+copies of all 23 archived FZ-02, FZ-10, FZ-11 and FZ-12 proofs. Its
+`upgrade_audit.json` binds each copy to the unchanged original proof and
+artifact and records six Bitcoin block headers. Run
+`python3 tools/verify_bitcoin_upgrade_receipt.py` to check those bindings,
+OpenTimestamps paths, header hashes, Merkle roots and proof of work offline.
+Two public explorers reported these blocks on the best chain when checked;
+this is explorer-assisted verification, not a Bitcoin full-node check.
+With a configured Bitcoin Core node, independently verify an individual
+copy using `ots verify -f <original-artifact> <upgraded-proof.ots>`.
+
 `python3 tools/build_fz_registry.py --check` recomputes every manifest and
 artifact hash from these copies, parses each proof with the official client
 (`ots info`, local only) and checks its digest and attestation class. To check
