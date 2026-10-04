@@ -128,6 +128,13 @@ order:
   reproduces both certified alpha roots and the conditional tau window, verified by
   [`code/independent_postdictions`](../code/independent_postdictions/).
 
+**Existing-theory audit and simplification.**
+
+- [Finite-state entropy and sector labels](../code/quantum_information/README.md)
+  records the entropy and collar audit, gives the direct-sum form of the finite
+  A3 objective, and documents the shared implementation and corrected
+  Markov-state, alignment and MaxEnt checks.
+
 ## Instrument Specifications
 
 - [INS-03 source-bound phase-sensitive readout](instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md)
