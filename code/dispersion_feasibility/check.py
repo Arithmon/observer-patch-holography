@@ -6,10 +6,13 @@ No producer import, empirical likelihood or promotion of a frozen protocol.
 import itertools
 import json
 from pathlib import Path
+import re
 
 import mpmath as mp
 
 from .bounds import verify_budget
+
+DECIMAL = re.compile(r"[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE]([+-]?[0-9]+))?")
 
 
 def require(condition, message):
@@ -19,6 +22,11 @@ def require(condition, message):
 
 def decimal(value):
     require(isinstance(value, str) and len(value) < 100, "invalid decimal field")
+    match = DECIMAL.fullmatch(value)
+    require(match is not None, "invalid decimal field")
+    # Bound the representation before invoking arbitrary-precision arithmetic.
+    # This comfortably includes the diagnostics from all allowed precisions.
+    require(abs(int(match.group(1) or "0")) <= 1000, "decimal exponent outside report range")
     try:
         result = mp.mpf(value)
     except (ValueError, TypeError):
@@ -85,6 +93,8 @@ def check(packet):
             p, q = share*(k-eps), (1-share)*(k-eps)
             residual = energy(p,m)+energy(q,m)-energy(k,0)-energy(eps,0)
             require(abs(residual) < mp.mpf("1e-29"), "energy conservation")
+            # Internal solve diagnostic; the serialized witness is checked
+            # independently above at its own (35-digit) rounding tolerance.
             require(abs(decimal(row["energy_residual_eV"])) < mp.mpf("1e-35"), "reported residual")
             slope_difference = mp.diff(lambda r: energy(r,m),p)-mp.diff(lambda r: energy(r,m),q)
             require(abs(slope_difference) < mp.mpf("1e-40"), "stationarity")

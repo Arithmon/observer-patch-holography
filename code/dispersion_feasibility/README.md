@@ -24,6 +24,10 @@ explicit path. It imports no producer, reconstructs the thirty directions by a
 different formula, and verifies energy conservation, stationarity, positive
 collinear curvature and the analytic bracket. Numerical witnesses are not
 global optimization certificates; the proof supplies the global bound.
+The report's residual field is the producer's internal solve diagnostic, not
+the residual of its rounded output: the checker recomputes conservation from
+the 35-digit serialized witness to `1e-29 eV`. Decimal fields have bounded
+length and exponent and reject fraction expressions and nonfinite values.
 
 This contribution occupies one bounded feasibility session. Numerical work is
 limited to 15 cumulative local CPU minutes, with no cloud run, flux transport,

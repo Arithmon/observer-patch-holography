@@ -84,6 +84,30 @@ def test_equal_share_shortcut_fails():
         assert equal/actual > 990
 
 
+def test_energy_conserving_stationary_maximum_is_rejected():
+    # A fake symmetric "threshold" can conserve energy and be stationary.
+    # Above the bifurcation it is a maximum in the sharing direction.
+    packet = check.load(REPORT)
+    row = next(r for r in packet["witnesses"] if
+               r["variant"] == "photon_electron_positron" and
+               r["hard_momentum_eV"] == "10000000000000000000.0" and
+               r["direction"] == [1, 0, 0])
+    with mp.workdps(90):
+        momentum, m = mp.mpf("1e19"), k.number(k.MASS_EV)
+        a, d = mp.sqrt(k.number(k.A2)), k.number(k.D)
+        dots = k.projections((1, 0, 0), 90)
+        hard_correction = k.shell(momentum, 0, a, dots)[1]
+        def residual(s):
+            return (2*k.shell((momentum-s)/2, m, a, dots)[1]
+                    - hard_correction - k.shell(s, 0, a, dots)[1] - 2*s)
+        soft = mp.findroot(residual, m*m/momentum+3*d*momentum**3/16)
+        assert abs(residual(soft)) < mp.mpf("1e-60")
+        row.update(collinear_soft_energy_eV=mp.nstr(k.shell(soft,0,a,dots)[0],35),
+                   outgoing_small_fraction="0.5", energy_residual_eV="0")
+    with pytest.raises(ValueError, match="stationary point is not a minimum"):
+        check.check(packet)
+
+
 def test_photon_only_hard_emission_and_shared_shell_stability():
     with mp.workdps(80):
         a,m = mp.sqrt(k.number(k.A2)),k.number(k.MASS_EV)
@@ -120,6 +144,11 @@ def test_chord_cocycle_and_massive_triangle():
     lambda p: p["witnesses"][0].update(leading_soft_eV="0"),
     lambda p: p["witnesses"][0].update(collinear_soft_energy_eV="0"),
     lambda p: p["witnesses"][0].update(collinear_soft_energy_eV="NaN"),
+    lambda p: p["witnesses"][0].update(collinear_soft_energy_eV="inf"),
+    lambda p: p["witnesses"][0].update(outgoing_small_fraction="1/2"),
+    lambda p: p["witnesses"][0].update(energy_residual_eV="1/0"),
+    lambda p: p["witnesses"][0].update(energy_residual_eV="1e-1001"),
+    lambda p: p["witnesses"][0].update(leading_soft_eV="1e100000000000000000000"),
     lambda p: p["witnesses"][0].update(outgoing_small_fraction="0.1"),
     lambda p: p["witnesses"][0].update(direction=[True,0,0]),
     lambda p: p["witnesses"][0].update(variant="universal_all_fields"),
