@@ -1849,6 +1849,14 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "af2214614c4d6e3feac1673719b8173fe8938340a4edd6f34ec4790f47963206"
       },
+      "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION": {
+        "assumptions": [
+          "declared_proper_code_source_completion",
+          "constructed_common_source_clock_and_native_transport_policies"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "524257107acd639838259c56b09de2a109232cc08eeed974d791c7e13e99cc04"
+      },
       "OPH-SOURCE-COHERENT-CODE-COMPLETION": {
         "assumptions": [
           "declared_proper_code_source_completion"
@@ -2971,6 +2979,11 @@
       },
       {
         "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+        "role": "Supplies the full named axiom-model, native controls, proper instruments and unchanged refinement used by the two source-conditioned policies.",
+        "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION"
+      },
+      {
+        "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
         "role": "Supplies the native single-qubit and entangling response controls and full physical code instruments in the named source.",
         "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
       },
@@ -3110,6 +3123,11 @@
         "to": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT"
       },
       {
+        "from": "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION",
+        "role": "Identifies the earlier spatial-response freedom; model membership and the metric-free finite detector distinction are proved separately here.",
+        "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION"
+      },
+      {
         "from": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
         "role": "Specifies complete decoded observables and abort accounting; does not transfer raw fidelity or unweighted native counts.",
         "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
@@ -3128,6 +3146,11 @@
         "from": "OPH-SOURCE-SEA-GENERATOR",
         "role": "Supplies the actual positive excitation generator and filled reference; complete preparation remains explicitly charged.",
         "to": "OPH-SOURCE-SEA-CLOCK"
+      },
+      {
+        "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
+        "role": "Supplies the same code-transition optimizer in both policies, without optimizing transport programs.",
+        "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION"
       },
       {
         "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
@@ -3768,7 +3791,7 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "889f01a0023156823a3388097cc8cdb76ae427f2a8c2e2cb609220857c14a1ec",
+    "code/m1_necessity/downstream.json": "d198d18b72ac6b8bbe161691abc313ccbdf973d4584beab50146228efb474f84",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
     "code/m1_necessity/test_necessity.py": "2bce1ff77c34308671691f5b4acba0ea3e82a3f80ef18d7c6dc1b0af98e6c29f",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",

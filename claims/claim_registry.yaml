@@ -14200,6 +14200,47 @@
         "boundary": [],
         "rationale": "This row records independently executed finite quaternion and character arithmetic on an explicitly supplied H4 coordinate carrier. It consumes no physical mode, source current, spinor attachment, matter identification or Einstein-branch premise, and the frozen external comparison is a control rather than a derivation input."
       }
+    },
+    {
+      "claim_id": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+      "statement": "In the existing coherent proper-code source satisfying its stated A1-A3 model clauses, two fixed source-conditioned native coin policies share a grounded Dirichlet source, the entire stationary-clock channel and zero-source speed calibration. They introduce no new primitive reversible direction. With all flights, reflections and service time charged, an exact five-site receiver experiment gives probabilities 1/4 and 1/[4(1+s)^4] at source strength s>0. The native three-dimensional finite word has principal speed v=2a cos(theta)/T; common rest lapse A=1/(1+u) leaves this spatial-response function undetermined. Both policies preserve the inherited typed A3 problems, and a same-algebra faithful A3 problem admitting both program records cannot give the flat record zero weight using common clock constraints alone. The result establishes non-entailment inside an admitted source, not physical Maxwell photons, Einstein source selection or a property of the integer-repair simulator.",
+      "assumptions": [
+        "declared_proper_code_source_completion",
+        "constructed_common_source_clock_and_native_transport_policies"
+      ],
+      "imported_results": [
+        "finite_CPTP_instruments",
+        "Clifford_principal_symbol",
+        "unitary_product_Taylor_bound",
+        "finite_faithful_relative_entropy_support"
+      ],
+      "oph_specific_delta": "Discharges the source-admissibility gap in a clock/spatial nonselection argument using reconstructed twelve-port pulses, unchanged full source interfaces, actual paid register flights and an exact finite local detector distinction; a separate metric family is not assumed to be an axiom model.",
+      "novelty_type": "admitted_source_process_nonentailment_with_exact_finite_read",
+      "falsifier": "A compiled instruction leaves the inherited grammar; full response or refinement is enlarged; stationary clock channels differ; a flight or report is uncharged; or independent complete-channel replay contradicts the exact rational detector gap.",
+      "scope_if_false": "The source-process membership, finite read separation or principal-symbol calculation fails. No physical source/action, photon identification, universal stress law or parent gravity closure is asserted.",
+      "owner_paper": "extra/SOURCE_GRAVITY_ADMISSIBILITY.md",
+      "tier": "analytic_theorem_with_independent_finite_controls",
+      "evidence": [
+        "extra/SOURCE_GRAVITY_ADMISSIBILITY.md",
+        "code/source_gravity_admissibility/CONTRACT.md",
+        "code/source_gravity_admissibility/README.md",
+        "code/source_gravity_admissibility/model.py",
+        "code/source_gravity_admissibility/check.py",
+        "code/source_gravity_admissibility/verify.py",
+        "code/source_gravity_admissibility/build.py",
+        "code/source_gravity_admissibility/receipt.json",
+        "code/source_gravity_admissibility/test_admissibility.py"
+      ],
+      "status": "proved_nonselection_in_an_existing_admissible_source_with_exact_finite_separation",
+      "claim_class": "conditional_implication",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This mathematical countermodel reuses a constructed full-axiom source and its proposed coherent transport service to disprove clock-to-spatial entailment. It does not consume a physically selected matter source, electromagnetic interpretation or physical premise-register branch; its finite operational probability gap does not need those identifications."
+      }
     }
   ]
 }
