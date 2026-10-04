@@ -85,7 +85,10 @@ then regenerate.
 ## Research Notes
 
 Each note states a construction, theorem or audit in Markdown; the code
-package named with it verifies the note and pins it in its receipt.
+package named with it verifies the note and pins it by path and SHA-256 in its
+receipt. A change to a note therefore rebuilds that receipt in the same commit.
+New notes go in this folder; `extra/` holds TeX papers only, and the claim
+registry check rejects Markdown notes there.
 
 **Clocks and source realization.** These notes build on one another in this
 order:

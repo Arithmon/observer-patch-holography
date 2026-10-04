@@ -136,14 +136,20 @@ de chaque famille de preuves.
 | [`code/`](code/) et [`evidence/`](evidence/) | Modèles exécutables, certificats et éléments de reproduction |
 | [`extra/`](extra/) et [`cosmology/`](cosmology/) | Articles de recherche mathématique et physique spécialisés |
 | [`book/`](book/) | *Reverse Engineering Reality*, source et livre téléchargeable |
-| [`docs/`](docs/) | Références canoniques, registres scientifiques, notes de recherche et politiques |
+| [`docs/`](docs/) | Références canoniques : axiomes, prédictions gelées, postdictions et critères de réfutation |
+| [`docs/registers/`](docs/registers/) | Registres générés des prémisses, observations, instruments et sélections |
+| [`docs/research/`](docs/research/) | Notes de recherche en Markdown, chacune vérifiée par un module de code |
+| [`docs/policies/`](docs/policies/) | Politiques de données, de preuves matérielles et de rédaction |
 
 ## Contribuer
 
 OPH accueille les preuves, contre-exemples, simulations, revues indépendantes
 et explications lisibles. Commencez par le [guide de reproduction](REPRODUCE.md)
 et le [registre de sélection](docs/registers/SELECTION_LEDGER.md), qui énonce les
-prémisses et les frontières scientifiques utiles aux contributions.
+prémisses et les frontières scientifiques utiles aux contributions. Un article
+TeX va dans [`extra/`](extra/). Une note de recherche en Markdown va dans
+[`docs/research/`](docs/research/) et nomme le module de code qui la vérifie ;
+`extra/` ne contient aucune note en Markdown.
 
 ## Des parcelles d’observateur aux machines apprenantes
 
