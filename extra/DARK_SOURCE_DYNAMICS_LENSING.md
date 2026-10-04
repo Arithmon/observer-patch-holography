@@ -11,10 +11,10 @@ geometry. It is not the earlier freedom to choose a non-Einstein spatial
 response: here the same Einstein equation holds in every alternative.
 
 We also obtain a positive result: an exact joint observable reconstructs the
-missing source parameter in the flat-rotation annulus, with sharp bounds under
-specified stress restrictions. For a general spherical system, the full
-rotation and scattering profiles determine the remaining metric function by
-an Abel inverse. Thus the missing information is a radial stress/density
+missing source parameter in the flat-rotation annulus when the ray's winding
+is known, with sharp bounds under specified stress restrictions. For a general
+spherical system, the full rotation and unwrapped scattering profiles
+determine the remaining metric function by an Abel inverse. Thus the missing information is a radial stress/density
 closure, not two independently adjustable lensing and rotation laws.
 
 These are completed mathematical results on the Einstein branch, not a new
@@ -44,7 +44,7 @@ Use areal radius and geometrical units G=c=1:
     A=exp(2ν), B=(1-2m/r)^(-1),
     T in a static orthonormal frame = diag(ρ,p_r,p_t,p_t).
 
-The cosmological constant is zero in this finite isolated-system model.
+The cosmological constant is zero in this isolated-system model.
 There is no radial energy flux. Let u=rν'. Timelike circular geodesics have
 local speed squared u, independently of B, for 0<u<1. Radial stability requires
 (r²u/(1-u))'>0; in particular every constant-u orbit used below is stable.
@@ -75,7 +75,9 @@ missing function. Nor does a fitted Newtonian dynamical mass automatically
 equal the Einstein mass m.
 
 In SI units m=G M/c², u=v_c²/c², ρ_geom=G ρ_mass/c² and
-p_geom=G p_SI/c⁴. The density-profile coefficient κ below therefore gives
+p_geom=G p_SI/c⁴.
+Here ρ_mass denotes total mass-equivalent energy density, including kinetic
+energy, rather than just rest-mass density. The coefficient κ gives
 M(r)=κ c²r/G. If identified with the paper's anomalous deep profile,
 κ=√(G M_b a_0)/c². That identification uses a source-supplied a_0;
 the measured speed does not separately derive it. No H0 or Λ normalization
@@ -85,7 +87,7 @@ through the Newtonian transition.
 
 ## 2. Full flat-annulus classification
 
-Fix 0<u<1, r0≤r≤R, and
+Fix 0<u<1, 0<r0<R, r0≤r≤R, and
 
     A(r)=A(R)(r/R)^(2u),  m(r)=κr,  0<κ<1/2.
 
@@ -124,7 +126,7 @@ p_t/ρ=u(1-2u)/2; it is a small-stress approximation at u≪1, not an
 exact zero-pressure Einstein source. Under (4), the weak-field relation is
 κ/u∈[1/2,1]+O(u), not a unique mass coefficient.
 
-### What a genuinely cold particle source would add
+### What a cold particle source would add
 
 There is a physically motivated restriction stronger than dominant energy.
 For a nonnegative distribution of massive particles in the static frame,
@@ -180,8 +182,10 @@ the density; the theorem quantifies what that missing evidence would buy.
 
 A ray has turning radius r0 and both endpoints on the shell r=R. Its
 impact parameter is b=r0/√A(r0). Define s=(r0/R)^(1-u) and
-θ=acos(s). The angle measured by either endpoint's static orthonormal
-frame has sin Ψ=s. The angular sweep of the ray is exactly
+θ=acos(s). The acute angle with the radial line measured by either endpoint's
+static orthonormal frame is Ψ=asin(s). Relative to the outward radial direction,
+the incoming source angle is π-Ψ and the outgoing receiver angle is Ψ.
+The unwrapped angular sweep along the ray is exactly
 
     Δφ = 2θ / [(1-u)√(1-2κ)].
 
@@ -192,8 +196,10 @@ angle by the endpoint-angle convention
     α = Δφ + 2Ψ - π
       = 2θ {1/[(1-u)√(1-2κ)] - 1}.                     (6)
 
-This operational comparison specifies both endpoint angles and central
-azimuthal separation; it is zero in the flat reference. No infinite
+This is the endpoint-angle convention of
+[Ishihara et al.](https://arxiv.org/abs/1604.08308), with the angular sweep
+retained along the path. This operational comparison specifies both endpoint
+angles and the unwrapped central azimuthal separation; it is zero in the flat reference. No infinite
 isothermal halo, asymptotic flatness of the annulus, exterior cutoff or
 cosmological thin-lens distance is smuggled into (6). For astrophysical
 images one must supply the exterior and observer/source geometry separately.
@@ -203,8 +209,24 @@ endpoints of (4) or (5) gives exact sharp lensing intervals. Conversely,
 
     κ = (1 - [2θ/((1-u)(α+2θ))]^2)/2.                  (7)
 
-Thus a joint exact measurement in this model fixes κ, p_r/ρ and p_t/ρ;
-no second fit amplitude is available. For r0/R→0 followed by u→0,
+Thus a joint exact measurement with known winding in this model fixes κ,
+p_r/ρ and p_t/ρ; no second fit amplitude is available. Positions alone only
+give angular separation modulo 2π. The winding qualification is essential:
+at u=1/5 and r0/R=2^(-5/4), set
+
+    κ_n = (1-25/[36(2n+1)²])/2,    n=0,1,2,... .         (7a)
+
+These distinct dominant-energy sources all have Ψ=π/6 and the same
+endpoint azimuthal difference π modulo 2π, while their unwrapped sweeps
+are (2n+1)π and α=(2n+1/3)π. The receipt verifies n=0,1,2 exactly;
+the displayed identity proves the complete family. Unknown winding
+therefore precludes a unique inverse from those endpoint data. Conversely,
+all retained nonnegative-pressure rays have u≤1/5, so
+Δφ<π√(1+2u)/(1-u)≤π√35/4<2π. They have zero full winding.
+The stronger global scattering inverse below likewise requires unwrapped
+branch-resolved scattering data, not just an observed angle modulo 2π.
+
+For r0/R→0 followed by u→0,
 the nonnegative-pressure interval gives α/u→[3π/2,2π]. Its upper/lower
 ratio tends to 4/3. This is a limit of the explicitly defined local
 observable, not a claim about an isolated infinite flat-rotation galaxy.
@@ -302,6 +324,14 @@ and ε=10^-6. This is a certified observable difference at finite strength,
 including all ray tails (which cancel exactly), not merely a leading-order
 coefficient or a floating-point sign test.
 
+A separate independent numerical check integrates the actual lapse
+ν(r)-ν(1/2) and both radial metrics in (10), with the difference of square
+roots rationalized to avoid cancellation. It gives approximately
+1.09172226528319×10^-6 and 1.06941244667967×10^-10 radians at the two
+strengths, strictly inside their respective exact enclosures. Precision
+refinement is tested. These numerical values are controls; the inequalities
+(9)--(11a), not quadrature accuracy, certify the result.
+
 ## 5. What a joint measurement determines in the general system
 
 For a regular asymptotically flat spherical geometry with 0≤u<1, define
@@ -311,7 +341,7 @@ the optical radius x=r/√A and
 
 Assume differentiability and decay sufficient for the following Abel
 integrals and their derivative to converge. This holds for (8). The exact
-scattering law and inverse are
+unwrapped scattering law and inverse are
 
     α(b)=2b∫_b^∞ [Q(x)-1]/[x√(x²-b²)] dx,
     Q(x)=1-x²/π ∫_x^∞ [d(α(b)/b)/db]/√(b²-x²) db.     (12)
@@ -390,3 +420,30 @@ mutations bypass hash custody; the CLI is also exercised with assertions
 disabled and producer imports blocked. Historical receipts and physical
 premise classifications are not rewritten to turn this result into source
 selection.
+
+## 8. Maintainer-style audit findings
+
+The inverse was audited against the entire stated parameter domain, not only
+the weak-field numerical controls. This exposed an omitted qualification:
+angles modulo a full turn do not determine the unwrapped ray sweep. Equation
+(7a) now gives exact, dominant-energy counterexamples, and the theorem,
+registry and receipt specify known winding. The retained weak-field catalogue
+has no full winding by a separate bound. The degenerate endpoint r0=R is
+excluded explicitly, and source/receiver angle orientations are fixed.
+
+The global result was also checked directly at the metric level. The verifier
+integrates the common lapse from the actual mass function and rationalizes
+the difference between the two radial metrics. Both source strengths agree
+with the exact enclosures, and independent precision refinement tests the
+numerical control. A deliberately incompatible enclosure fails that control
+even when the analytic-certificate checker is bypassed. Exact global energy
+and bending inequalities remain the proof; the new quadrature supplies a
+distinct implementation check.
+
+The closure audit retains the source-identification boundary: dominant energy
+is not a microscopic OPH admission theorem, a kinetic moment inequality is
+not a distribution-function existence proof, and complete unwrapped data is
+stronger than measured finite images. The issue's explicit bounded
+underdetermination exit is satisfied; its full physical-source and likelihood
+requirements remain open. The new claim's contextual M1 ancestry carries its
+own assumptions without transferring dense-radius premises.

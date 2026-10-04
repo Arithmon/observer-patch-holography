@@ -14203,7 +14203,7 @@
     },
     {
       "claim_id": "OPH-DARK-SOURCE-DYNAMICS-LENSING",
-      "statement": "On the declared static spherical Einstein interface, linear enclosed mass and constant circular speed admit an exact one-parameter conserved anisotropic stress family. Dominant energy and nonnegative pressures give sharp mass and finite-endpoint bending intervals; a joint rotation/bending inverse determines the mass coefficient. A positive massive-particle velocity-moment cap yields a tighter necessary tensor interval and exactly enclosed relative bending bounds; global kinetic distribution existence is not inferred. A separate regular asymptotically flat finite-mass family has identical lapse, rotation and exterior metric but different null deflection, with exact positive rational lower and upper bounds and global dominant-energy proof. Complete scattering and rotation profiles reconstruct the remaining spherical metric function through an Abel inverse under the stated regularity and decay conditions. This completes the bounded macroscopic underdetermination test, not a microscopic collar-source realization, matter stability proof, natural-data comparison, source-selected normalization or closure of the full dark-sector issue.",
+      "statement": "On the declared static spherical Einstein interface, linear enclosed mass and constant circular speed admit an exact one-parameter conserved anisotropic stress family. Dominant energy and nonnegative pressures give sharp mass and finite-endpoint bending intervals; a joint rotation/bending inverse with known ray winding determines the mass coefficient. Exact controls retain the ambiguity from endpoint data modulo a full turn; the weak nonnegative-pressure catalogue has zero full winding. A positive massive-particle velocity-moment cap yields a tighter necessary tensor interval and exactly enclosed relative bending bounds; global kinetic distribution existence is not inferred. A separate regular asymptotically flat finite-mass family has identical lapse, rotation and exterior metric but different null deflection, with exact positive rational lower and upper bounds and global dominant-energy proof. Complete unwrapped scattering and rotation profiles reconstruct the remaining spherical metric function through an Abel inverse under the stated regularity and decay conditions. This completes the bounded macroscopic underdetermination test, not a microscopic collar-source realization, matter stability proof, natural-data comparison, source-selected normalization or closure of the full dark-sector issue.",
       "owner_paper": "extra/DARK_SOURCE_DYNAMICS_LENSING.md",
       "tier": "exact_spherical_source_interface_test",
       "assumptions": [
@@ -14223,6 +14223,7 @@
         "code/dark_source_lensing/CONTRACT.md",
         "code/dark_source_lensing/model.py",
         "code/dark_source_lensing/check.py",
+        "code/dark_source_lensing/global_ray.py",
         "code/dark_source_lensing/verify.py",
         "code/dark_source_lensing/test_lensing.py",
         "code/dark_source_lensing/receipt.json"

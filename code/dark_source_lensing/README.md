@@ -4,8 +4,12 @@ The [derivation](../../extra/DARK_SOURCE_DYNAMICS_LENSING.md) answers the
 bounded dynamics/lensing target of #751. Even with the Einstein equation and
 dominant energy, the released scalar anomalous-charge interface does not
 fix a joint prediction. The certificate includes sharp flat-annulus stress
-and lensing bounds, an exact joint inverse, and a regular finite-mass pair
+and lensing bounds, an exact joint inverse with a known ray winding, and a regular finite-mass pair
 with identical rotation and exterior but strictly different bending.
+
+Strong rays with unknown winding give distinct masses with identical endpoint
+angles and positions. Three exact controls retain that ambiguity. All of the
+weak nonnegative-pressure controls have zero full winding, proved separately.
 
 The global separation is at least `81/351232000` radians for the declared
 dimensionless strength `epsilon=1/100`. This is a mathematical source pair,
@@ -38,7 +42,8 @@ python -m pytest -q code/dark_source_lensing
 
 The producer uses closed-form pressures and ray integrals. The verifier
 rebuilds the Einstein tensor identities and directly integrates a different
-ray variable and the Abel inverse. Global admissibility and ray separation
+ray variable and the Abel inverse. It also reconstructs the full regular-pair
+lapse and radial metrics and integrates their actual ray difference. Global admissibility and ray separation
 are proved with exact rational bounds; decimal ray and transform controls
 are numerical comparisons, not interval proofs. See the
 [objective and exit](CONTRACT.md) for the physical boundary. No natural data,

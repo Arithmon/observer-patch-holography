@@ -10,7 +10,7 @@ The main reading route lives in [`paper/`](../paper/). This directory contains f
 
 ## Quantitative And Physical Branches
 
-- [One Anomalous Source for Dynamics and Lensing](DARK_SOURCE_DYNAMICS_LENSING.md) derives sharp spherical stress/bending bounds and a joint inverse. Regular finite-mass Einstein sources can share the entire rotation curve and exterior while giving provably different lensing. This tests the dark-sector density interface; physical collar stress and normalization remain unselected.
+- [One Anomalous Source for Dynamics and Lensing](DARK_SOURCE_DYNAMICS_LENSING.md) derives sharp spherical stress/bending bounds and a joint inverse with known ray winding. Regular finite-mass Einstein sources can share the entire rotation curve and exterior while giving provably different lensing. This tests the dark-sector density interface; physical collar stress and normalization remain unselected.
 
 - [Massive Flights, Resolved Reads and Observable Clocks](MASSIVE_OPERATIONAL_CLOCKS.md) derives the full massive tetrahedral spectrum, a sharp all-band ballistic speed, local read error bounds and a normalizable interference clock at native flight time. The gate family and positive Floquet accounting observable are declared; source admission and physical energy calibration are separate.
 

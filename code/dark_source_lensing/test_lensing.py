@@ -8,7 +8,7 @@ import sys
 from fractions import Fraction as F
 import mpmath
 import pytest
-from . import check, model, verify
+from . import check, global_ray, model, verify
 from .format import decimal, load, rational
 
 
@@ -29,6 +29,7 @@ def test_committed_receipt_and_independent_replay(evidence):
     (('interpretation', 'numeric_controls'), 'rigorous_intervals'),
     (('annulus', 0, 'u'), '1/100'),
     (('annulus', 0, 'R_over_r0'), True),
+    (('annulus', 0, 'R_over_r0'), 1),
     (('annulus', 0, 'branch'), 'zero_radial'),
     (('annulus', 0, 'kappa'), '1/2'),
     (('annulus', 0, 'radial_ratio'), '0'),
@@ -37,6 +38,11 @@ def test_committed_receipt_and_independent_replay(evidence):
     (('annulus', 0, 'sweep'), '3.141592653589793'),
     (('annulus', 0, 'inferred_kappa'), '0'),
     (('annulus', 26, 'alpha'), '0'),
+    (('winding_controls', 1, 'turns'), 0),
+    (('winding_controls', 1, 'sweep_over_pi'), '1'),
+    (('winding_controls', 1, 'alpha_over_pi'), '1/3'),
+    (('winding_controls', 1, 'reduced_sweep_over_pi'), '3'),
+    (('winding_controls', 1, 'kappa'), '11/72'),
     (('cold_bounds', 0, 'lower'), '0'),
     (('cold_bounds', 8, 'upper'), '1/2'),
     (('kinetic_bounds', 0, 'speed_squared_cap'), '0'),
@@ -75,7 +81,7 @@ def test_resealed_semantic_corruption_rejected(evidence, path, value):
         check.verify(packet)
 
 
-@pytest.mark.parametrize('field', ['annulus', 'cold_bounds', 'kinetic_bounds', 'global_samples', 'abel'])
+@pytest.mark.parametrize('field', ['annulus', 'winding_controls', 'cold_bounds', 'kinetic_bounds', 'global_samples', 'abel'])
 @pytest.mark.parametrize('mode', ['omit', 'duplicate', 'reverse'])
 def test_complete_case_catalogues(evidence, field, mode):
     packet = copy.deepcopy(evidence)
@@ -94,6 +100,44 @@ def test_wrong_side_tiny_enclosure_rejected(evidence):
     row['integral_lower'] = str(F(row['integral_lower'])+F(1, 10**18))
     with pytest.raises(ValueError, match='outward'):
         check.verify_ray_enclosure(row)
+
+
+def test_unknown_winding_retains_distinct_mass_solutions(evidence):
+    rows = evidence['winding_controls']
+    check.verify_winding(rows)
+    assert len({r['kappa'] for r in rows}) == 3
+    assert len({r['endpoint_angle_over_pi'] for r in rows}) == 1
+    assert len({r['reduced_sweep_over_pi'] for r in rows}) == 1
+    assert [F(r['sweep_over_pi']) % 2 for r in rows] == [1, 1, 1]
+
+
+@pytest.mark.parametrize('epsilon', [F(1, 100), F(1, 10**6)])
+def test_full_source_ray_precision_refinement(epsilon):
+    ctx = mpmath.mp.clone()
+    ctx.dps = 60
+    coarse = ctx.mpf(global_ray.bending_difference(epsilon, 32))
+    fine = ctx.mpf(global_ray.bending_difference(epsilon, 48))
+    assert abs(coarse-fine) < abs(fine)*ctx.mpf('1e-22')
+
+
+def test_full_ray_control_rejects_wrong_geometric_enclosure(evidence):
+    # Bypass the exact-bound checker to challenge this independent integral control.
+    rows = copy.deepcopy(evidence['global_ray_enclosure']['rows'])
+    rows[0]['upper'] = str(F(rows[0]['lower'])+F(1, 10**20))
+    with pytest.raises(ValueError, match='full-source null integral'):
+        global_ray.verify_enclosures(rows)
+
+
+@pytest.mark.parametrize('epsilon', [F(0), F(-1), F(1), 0.01, True, None])
+def test_ray_integrator_rejects_out_of_domain_strength(epsilon):
+    with pytest.raises(ValueError, match='strength domain'):
+        global_ray.bending_difference(epsilon)
+
+
+def test_cached_integrator_does_not_accept_wrong_precision_type():
+    global_ray.bending_difference(F(1, 100), 40)
+    with pytest.raises(ValueError, match='precision'):
+        global_ray.bending_difference(F(1, 100), 40.0)
 
 
 def test_slightly_wrong_bending_is_not_rounded_away(evidence):
@@ -159,6 +203,13 @@ def test_strict_json(tmp_path, raw):
     path = tmp_path/'bad.json'
     path.write_text(raw, encoding='ascii')
     with pytest.raises(ValueError):
+        load(path)
+
+
+def test_oversized_receipt_is_rejected(tmp_path):
+    path = tmp_path/'oversized.json'
+    path.write_bytes(b' '*250_001)
+    with pytest.raises(ValueError, match='size limit'):
         load(path)
 
 

@@ -49,7 +49,8 @@ def decimal(ctx, raw):
 
 def load(path):
     need(Path(path).stat().st_size <= 250_000, 'receipt size limit')
-    raw = Path(path).read_bytes()
+    with Path(path).open('rb') as stream:
+        raw = stream.read(250_001)
     need(len(raw) <= 250_000, 'receipt size limit')
     def pairs(items):
         result = {}

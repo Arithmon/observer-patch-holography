@@ -1,5 +1,5 @@
 {
-  "claim": "f3f18b91ea410c79e6b4a34fbe4b5dbfd854bf8172b518deb5be0f6bf75a6891",
+  "claim": "aeba684c12b2ecc74b1f373ac68894b245c73fdac9a3d1e11e6ecc6261279149",
   "evidence": {
     "abel": [
       {
@@ -869,6 +869,44 @@
         "u": "1/5",
         "upper_kappa": "1/7"
       }
+    ],
+    "winding_controls": [
+      {
+        "alpha_over_pi": "1/3",
+        "endpoint_angle_over_pi": "1/6",
+        "kappa": "11/72",
+        "r0_over_R": "2^(-5/4)",
+        "radial_ratio": "-1/11",
+        "reduced_sweep_over_pi": "1",
+        "sweep_over_pi": "1",
+        "tangential_ratio": "1/11",
+        "turns": 0,
+        "u": "1/5"
+      },
+      {
+        "alpha_over_pi": "7/3",
+        "endpoint_angle_over_pi": "1/6",
+        "kappa": "299/648",
+        "r0_over_R": "2^(-5/4)",
+        "radial_ratio": "-289/299",
+        "reduced_sweep_over_pi": "1",
+        "sweep_over_pi": "3",
+        "tangential_ratio": "1/299",
+        "turns": 1,
+        "u": "1/5"
+      },
+      {
+        "alpha_over_pi": "13/3",
+        "endpoint_angle_over_pi": "1/6",
+        "kappa": "35/72",
+        "r0_over_R": "2^(-5/4)",
+        "radial_ratio": "-173/175",
+        "reduced_sweep_over_pi": "1",
+        "sweep_over_pi": "5",
+        "tangential_ratio": "1/875",
+        "turns": 2,
+        "u": "1/5"
+      }
     ]
   },
   "schema": "oph-dark-source-lensing-v1",
@@ -877,16 +915,17 @@
     ".github/workflows/dark-source-lensing.yml": "90d7ecf4d1caeb06add68928fa21ace4c76efc8e4699bae81dd134bd0012855b",
     "Lean/ObserverPatchHolography/EinsteinBranch/DarkSector.lean": "c906ec23c74f4734d9897ace5db103066460a043cffecea59d4139db52657c38",
     "Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean": "eee963c058398a79741b07670e5ec7d4676118ac2aa72030eca54ce87ea64cfa",
-    "code/dark_source_lensing/CONTRACT.md": "477c8c41e0b93d0ebee428da734535b984e9b7b3479514b1c3866b3e323e6137",
-    "code/dark_source_lensing/README.md": "a22140b98f1fe148c756815f2642b7e627dcdf5d54a93744c51b2cc20d4666df",
+    "code/dark_source_lensing/CONTRACT.md": "e97942be6ba44e01e7458f308133950dd3064f1134451016c54ea1063f39b91c",
+    "code/dark_source_lensing/README.md": "060cdaf3986b0135916a6d4d5de470173783b4ae2e047a347d12ad2ba2ffda9d",
     "code/dark_source_lensing/__init__.py": "62dba0a56d72ba6862637dd4fb527e9bffcda59272d1cfe6e423c91237c0f7bf",
     "code/dark_source_lensing/build.py": "efd525341d1cd2d414ee617dc8d7227cc09667b1c4fe3a5eab49ffc68881a38c",
-    "code/dark_source_lensing/check.py": "5d4ed15758e82eb471c8087311259ce833742afada32da9ee26b51ae31f8f06a",
-    "code/dark_source_lensing/format.py": "8967f09de3b27d9c67b3df1e3fa88559dcb1eb4d94db4aa482f2b3b3079f9be3",
-    "code/dark_source_lensing/model.py": "5467e55a2a9ab902cd66fc0bf7a9a97a39b772a215ba4607eaf979bf1c600d09",
-    "code/dark_source_lensing/test_lensing.py": "3c3da8789859de25bf388050680f48c27d0a96c7c4d65338b550bc84040ffafe",
-    "code/dark_source_lensing/verify.py": "a6b7c0471a90bcd4ca86908a7ecb3cff9efa54300215bd27ed1d1993f20c130e",
-    "extra/DARK_SOURCE_DYNAMICS_LENSING.md": "3bc98c05ae65a224f35a214034ce33b2b7fb685d06156772d04feb8f500d41ae",
+    "code/dark_source_lensing/check.py": "8e8626be297514b7369f99a32882d03c32fcf3cc7e67a49264dd62f192a620f2",
+    "code/dark_source_lensing/format.py": "537430ec5c4d893d5d320ee76c792e2ae9cb2fb05d674f28cdc208ca5cbc1999",
+    "code/dark_source_lensing/global_ray.py": "95fa1dc409e2c2a862b2fabe2a7b1ad8cd6e9106fcee55a88895b0821b7039a4",
+    "code/dark_source_lensing/model.py": "b35b9dd611f1b1ccd3d208961a2ab4dda5deb5751808a0f7a200e63bfe7a766c",
+    "code/dark_source_lensing/test_lensing.py": "a98a8630a8d63b8124d41144e928acd3101871bc47fba136e46d10b42936f922",
+    "code/dark_source_lensing/verify.py": "3571301883b564709cba685e69a44b6c218d1c6e8c49111c6dca481a1690b626",
+    "extra/DARK_SOURCE_DYNAMICS_LENSING.md": "16a57c1fe2b3db474420348e78b13dc08ed56c1b0abae980947ffdd6f145af2b",
     "requirements.txt": "f116bec13d89a098f6523a26eede8280021585a32ec3294fc3f7174d6cd0ec09"
   }
 }

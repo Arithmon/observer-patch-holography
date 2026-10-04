@@ -3,6 +3,7 @@ from fractions import Fraction as F
 from functools import lru_cache
 import mpmath
 import sympy as s
+from . import global_ray
 from .format import decimal, equal, keys, need, rational
 
 
@@ -48,7 +49,7 @@ def close(ctx, actual, expected, label):
 
 
 def verify(packet):
-    keys(packet, 'annulus cold_bounds kinetic_bounds abel global_bounds global_samples global_ray_enclosure interpretation')
+    keys(packet, 'annulus cold_bounds kinetic_bounds abel global_bounds global_samples global_ray_enclosure winding_controls interpretation')
     equal(packet['interpretation'], dict(result='macroscopic_source_underdetermined',
           physical_promotion=False, natural_data_used=False, full_issue_751_closed=False,
           numeric_controls='high_precision_not_interval_proofs'), 'scientific boundary')
@@ -81,6 +82,7 @@ def verify(packet):
                         return 2/ctx.sqrt(q*(1-2*K))
                     return 2*z/ctx.sqrt((1-2*K)*ctx.expm1(q*z*z))
                 sweep = 2*ctx.quad(integrand, [0, ctx.sqrt(ctx.log(ratio))])
+                need(0 < sweep < 2*ctx.pi, 'retained annulus ray has no full winding')
                 endpoint = ctx.asin(ctx.exp((U-1)*ctx.log(ratio)))
                 alpha = sweep+2*endpoint-ctx.pi
                 close(ctx, row['sweep'], sweep, 'integrated null sweep')
@@ -90,6 +92,7 @@ def verify(packet):
                 inferred = (1-1/recovered_B)/2
                 close(ctx, row['inferred_kappa'], inferred, 'joint inverse')
                 close(ctx, row['inferred_kappa'], K, 'original mass recovered')
+    verify_winding(packet['winding_controls'])
     cold = packet['cold_bounds']
     need(type(cold) is list and len(cold) == 9, 'complete coldness census')
     cursor = 0
@@ -141,7 +144,32 @@ def verify(packet):
     equal({k:str(v) for k, v in values.items()}, {k:str(v) for k, v in expected.items()},
           'exact global certificate including nonzero gap')
     verify_ray_enclosure(packet['global_ray_enclosure'])
+    global_ray.verify_enclosures(packet['global_ray_enclosure']['rows'])
     verify_abel(ctx, packet['abel'])
+
+
+def verify_winding(rows):
+    need(type(rows) is list and len(rows) == 3, 'complete winding catalogue')
+    for n, row in enumerate(rows):
+        keys(row, 'turns u r0_over_R endpoint_angle_over_pi reduced_sweep_over_pi sweep_over_pi alpha_over_pi kappa radial_ratio tangential_ratio')
+        equal([row['turns'], row['u'], row['r0_over_R'], row['endpoint_angle_over_pi']],
+              [n, '1/5', '2^(-5/4)', '1/6'], 'fixed winding geometry')
+        k = rational(row['kappa'])
+        sweep = rational(row['sweep_over_pi'])
+        need(0 < k < F(1, 2) and sweep == 2*n+1, 'unwrapped ray sweep')
+        # theta=pi/3; squaring the null-geodesic law is exact with positive roots.
+        need(sweep*sweep*(1-F(1, 5))**2*(1-2*k) == F(4, 9),
+             'winding branch null equation')
+        equal(row['reduced_sweep_over_pi'], str(sweep-2*n), 'same endpoint azimuth modulo 2pi')
+        equal(row['alpha_over_pi'], str(sweep+F(1, 3)-1), 'unwrapped finite bending')
+        P = (1-2*k)/5-k
+        T = (1-2*k)/50
+        need(abs(P) <= k and abs(T) <= k, 'winding source obeys dominant energy')
+        equal(row['radial_ratio'], str(P/k), 'winding radial stress')
+        equal(row['tangential_ratio'], str(T/k), 'winding tangential stress')
+    # On the nonnegative-pressure catalogue u<=1/5, even the maximal sweep
+    # is <2pi: (1+2u)/(1-u)^2 <=35/16 <4.
+    need(F(35, 16) < 4, 'weak-catalogue branch bound')
 
 
 def verify_ray_enclosure(row):

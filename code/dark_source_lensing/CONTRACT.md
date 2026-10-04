@@ -16,6 +16,8 @@ charge relabelled as a complete stress tensor does not meet this objective.
 2. Compute a finite-endpoint null observable and inverse on that same metric.
    Retain endpoint geometry and exact errors rather than using an infinite
    nonisolated halo as a physical thin lens.
+   Specify the winding branch; retain exact ambiguity controls if only the
+   endpoint positions modulo a full turn are supplied.
 3. Construct a regular, asymptotically flat, finite-mass pair with identical
    rotation and exterior, conserved dominant-energy sources and provably
    different lensing. Prove the conditions globally, not on a sampled grid.

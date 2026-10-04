@@ -1112,7 +1112,7 @@
           "declared_spherical_Einstein_source_and_null_observable"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "f3f18b91ea410c79e6b4a34fbe4b5dbfd854bf8172b518deb5be0f6bf75a6891"
+        "original_claim_sha256": "aeba684c12b2ecc74b1f373ac68894b245c73fdac9a3d1e11e6ecc6261279149"
       },
       "OPH-DE-FIXED-CAPACITY-WLAW": {
         "assumptions": [

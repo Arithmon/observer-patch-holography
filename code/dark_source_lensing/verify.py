@@ -9,7 +9,7 @@ from .format import digest, equal, keys, load, need
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 CLAIM = 'OPH-DARK-SOURCE-DYNAMICS-LENSING'
-OWN = ('__init__.py', 'format.py', 'model.py', 'check.py', 'verify.py', 'build.py',
+OWN = ('__init__.py', 'format.py', 'model.py', 'check.py', 'global_ray.py', 'verify.py', 'build.py',
        'test_lensing.py', 'README.md', 'CONTRACT.md')
 SOURCES = ['code/dark_source_lensing/'+p for p in OWN]+[
     'extra/DARK_SOURCE_DYNAMICS_LENSING.md', '.github/workflows/dark-source-lensing.yml',

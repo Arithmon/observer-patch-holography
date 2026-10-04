@@ -48,6 +48,15 @@ def build():
                                 sqrt_low_kappa=[str(a0), str(a1)],
                                 sqrt_high_kappa=[str(b0), str(b1)],
                                 bending_ratio_lower=str(lower), bending_ratio_upper=str(upper)))
+    winding = []
+    for n in range(3):
+        u = F(1, 5)
+        k = (1-F(25, 36*(2*n+1)**2))/2
+        winding.append(dict(turns=n, u=str(u), r0_over_R='2^(-5/4)',
+                            endpoint_angle_over_pi='1/6', reduced_sweep_over_pi='1',
+                            sweep_over_pi=str(F(2*n+1)), alpha_over_pi=str(2*n+F(1, 3)),
+                            kappa=str(k), radial_ratio=str(u/k-1-2*u),
+                            tangential_ratio=str(u*u*(1-2*k)/(2*k))))
     controls = []
     # Q(x)-1 = sum c_p/x^p. All entries are transform controls, not matter sources.
     for terms in (((1, F(1, 3)),), ((2, F(2, 5)),), ((3, F(3, 7)),),
@@ -90,7 +99,7 @@ def build():
                                 u=str(u), density_scaled=str(R), radial_scaled=str(P),
                                 tangential_scaled=str(T)))
     return dict(annulus=rows, cold_bounds=cold, kinetic_bounds=kinetic, abel=controls, global_bounds=bounds,
-                global_samples=samples, global_ray_enclosure=enclosure,
+                global_samples=samples, global_ray_enclosure=enclosure, winding_controls=winding,
                 interpretation=dict(result='macroscopic_source_underdetermined',
                                     physical_promotion=False, natural_data_used=False,
                                     full_issue_751_closed=False,
