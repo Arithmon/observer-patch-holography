@@ -550,12 +550,6 @@ def test_noncentral_coupling_passes_small_cmi_budget():
     assert msd_vals[2] > 10.0 * cmi_vals[2]
 
 
-if __name__ == "__main__":
-    import pytest
-
-    raise SystemExit(pytest.main([__file__, "-v"]))
-
-
 @pytest.mark.parametrize("blocks", (
     [], [(0,np.eye(16)/16,(2,2,2,2))], [(-1,np.eye(16)/16,(2,2,2,2))],
     [(1,np.eye(16),(2,2,2,2))], [(1,np.diag([1.1,-.1]),(1,1,1,2))],
@@ -592,3 +586,24 @@ def test_gibbs_normalization_cannot_erase_a_sector():
     sectors=[(np.zeros((1,1)),(1,1,1,1))]*4
     with pytest.raises(ValueError,match="underflow"):
         gibbs_blocks(sectors,[0,0,0,745])
+
+
+def test_gibbs_sector_reconstruction_cannot_erase_a_faithful_direction():
+    x=np.array([[0.,1.],[1.,0.]])
+    with pytest.raises(ValueError,match="faithful"):
+        gibbs_blocks([(30*x,(1,1,1,2))],[0])
+
+
+@pytest.mark.parametrize("bad", (1j,1+0j,np.bool_(True),True,np.nan,np.inf,[1.]))
+def test_gibbs_and_alignment_reject_nonreal_or_nonscalar_parameters(bad):
+    sectors=[(np.zeros((2,2)),(1,1,1,2))]*2
+    with pytest.raises(ValueError,match="finite real scalar"):
+        gibbs_blocks(sectors,[0,1],beta=bad)
+    with pytest.raises(ValueError,match="finite real scalar"):
+        gibbs_blocks(sectors,[0,bad])
+    with pytest.raises(ValueError,match="finite real scalar"):
+        is_ec_aligned([(1,np.eye(2)/2,(1,1,1,2))],tol=bad)
+
+
+if __name__ == "__main__":
+    raise SystemExit(pytest.main([__file__, "-v"]))

@@ -42,6 +42,26 @@ def test_contained_singular_support_and_zero_probability_terms():
         faithful_log(tau)
 
 
+@pytest.mark.parametrize("p", ([.5,.25,.25,0], [.25,.25,.25,.25]))
+def test_rotated_singular_support_never_returns_a_false_rank_answer(p):
+    # Every entry is exactly representable. In the first case support is
+    # contained and D=.25*log(2); the second has genuine support escape.
+    # LAPACK may report the zero eigenvalue with either sign. It must either
+    # resolve the correct result or refuse the ambiguous numerical support.
+    h = np.array([[1,1,1,1],[1,-1,1,-1],[1,1,-1,-1],[1,-1,-1,1]])/2
+    rho = h@np.diag(p)@h.T
+    tau = h@np.diag([.25,.5,.25,0])@h.T
+    try:
+        result = relative_entropy(rho,tau)
+    except ValueError as error:
+        assert "support is numerically unresolved" in str(error)
+    else:
+        if p[-1] == 0:
+            assert result == pytest.approx(.25*np.log(2),abs=1e-14)
+        else:
+            assert np.isinf(result)
+
+
 def test_small_positive_eigenvalues_are_not_deleted_or_floored():
     rho = np.diag([1.,1e-20])  # trace rounds to one at this precision
     assert von_neumann_entropy(rho) == pytest.approx(-1e-20*np.log(1e-20),rel=1e-14,abs=0)
@@ -118,6 +138,18 @@ def test_direct_sum_entropy_and_relative_entropy_chain_rules():
     assert relative_entropy(rho,tau) == pytest.approx(expected_d,abs=1e-14)
     # Unequal weights carry their own KL term: omitting it is not a simplification.
     assert np.dot(p,np.log(p/q)) > .1
+
+
+def test_direct_sum_cannot_erase_a_positive_sector_by_underflow():
+    tiny = np.nextafter(0.,1.)
+    with pytest.raises(ValueError,match="underflow"):
+        direct_sum_state([1.,tiny],[np.ones((1,1)),np.eye(2)/2])
+    # An explicitly zero sector is allowed; a representable tiny one is kept.
+    assert np.array_equal(direct_sum_state([1.,0.],[np.ones((1,1)),np.eye(2)/2]),
+                          np.diag([1.,0.,0.]))
+    rho = direct_sum_state([1.,tiny],[np.ones((1,1))]*2)
+    assert rho[1,1] == tiny
+    assert np.isinf(relative_entropy(rho,np.diag([1.,0.])))
 
 
 def test_a3_flagged_reduction_does_not_assume_a_global_extension():

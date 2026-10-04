@@ -14,6 +14,16 @@ import numpy as np
 ATOL = 1e-12
 
 
+def finite_real_scalar(value, name="value"):
+    raw = np.asarray(value)
+    if raw.ndim != 0 or raw.dtype.kind not in "iuf" or not np.isfinite(raw):
+        raise ValueError(f"{name} must be a finite real scalar")
+    result = float(raw)
+    if not np.isfinite(result):
+        raise ValueError(f"{name} exceeds finite numerical range")
+    return result
+
+
 def dimensions(dims):
     if not isinstance(dims, (list, tuple)) or not dims:
         raise ValueError("nonempty subsystem dimensions required")
@@ -60,6 +70,29 @@ def density_matrix(value):
     return _spectrum(value)[0]
 
 
+def _unresolved_positive_spectrum(a, eigenvalues):
+    # A coordinate-diagonal input directly supplies its spectrum. For a
+    # dense eigensolve, positive values on the roundoff scale do not resolve
+    # rank. Refusing that case does not remove or floor an eigenvalue.
+    roundoff = 8 * np.finfo(float).eps * len(a) * np.linalg.norm(a, ord="fro")
+    return (np.any(a != np.diag(np.diag(a)))
+            and np.any((eigenvalues > 0) & (eigenvalues <= roundoff)))
+
+
+def _require_faithful(a, eigenvalues):
+    if eigenvalues[0] <= 0:
+        raise ValueError("state is not faithful; full matrix logarithm undefined")
+    if _unresolved_positive_spectrum(a, eigenvalues):
+        raise ValueError("faithful-state support is numerically unresolved")
+
+
+def faithful_density_matrix(value):
+    """Validate a state whose full support is resolved at this precision."""
+    a, eigenvalues, _ = _spectrum(value)
+    _require_faithful(a, eigenvalues)
+    return a
+
+
 def _indices(indices, count):
     if not isinstance(indices, (list, tuple)):
         raise ValueError("subsystem indices must be a list or tuple")
@@ -102,20 +135,19 @@ def shannon_entropy(values):
 
 def faithful_log(rho):
     """Logarithm on the full algebra; a singular state has no such log."""
-    _, eigenvalues, vectors = _spectrum(rho)
-    if eigenvalues[0] <= 0:
-        raise ValueError("state is not faithful; full matrix logarithm undefined")
+    a, eigenvalues, vectors = _spectrum(rho)
+    _require_faithful(a, eigenvalues)
     return (vectors * np.log(eigenvalues)) @ vectors.conj().T
 
 
 def relative_entropy(rho, sigma):
     """Umegaki D(rho || sigma), with +infinity on detected support escape.
 
-Zero eigenvalues of sigma remain zero. A nonzero numerical component of
-rho in its computed kernel gives infinity, even if small; there is no
-support-leakage tolerance that can silently turn infinity into a finite
-answer. Near singularity, roundoff can prevent reliable support decisions;
-use exact or higher-precision support data for an exact-support theorem.
+Zero eigenvalues of sigma remain zero. Resolved support escape gives
+infinity, even if small; unresolved numerical rank or kernel cancellation
+raises instead of inventing either a finite answer or infinity. No leakage
+is rounded away. Exact-support theorems still need independently certified
+support data; these guards are numerical diagnostics, not rank proofs.
 """
     a, eig_a, _ = _spectrum(rho)
     b, eig_b, vec_b = _spectrum(sigma)
@@ -123,9 +155,26 @@ use exact or higher-precision support data for an exact-support theorem.
         raise ValueError("relative entropy requires the same algebra")
     if np.array_equal(a, b):
         return 0.0
+    # Dense eigensolvers can turn a true zero into a tiny positive number.
+    # Reject that ambiguous rank instead of treating it as faithful. A
+    # coordinate-diagonal reference has its spectrum directly in the input,
+    # so even subnormal positive entries need no such rank inference.
+    if _unresolved_positive_spectrum(b, eig_b):
+        raise ValueError("reference support is numerically unresolved")
     kernel = vec_b[:, eig_b == 0]
-    if kernel.size and np.any(a @ kernel != 0):
-        return float("inf")
+    if kernel.size:
+        if np.any(b @ kernel != 0):
+            raise ValueError("reference support is numerically unresolved")
+        leakage = a @ kernel
+        if np.any(leakage != 0):
+            # Cancellation in a matrix product is not a support witness.
+            # This scales with the terms of each product, so a tiny but
+            # explicit diagonal support violation remains detectable.
+            error_scale = (8 * np.finfo(float).eps * len(a)
+                           * (np.abs(a) @ np.abs(kernel)))
+            if np.all(np.abs(leakage) <= error_scale):
+                raise ValueError("relative-entropy support is numerically unresolved")
+            return float("inf")
     positive_a = eig_a[eig_a > 0]
     positive_b = eig_b > 0
     v = vec_b[:, positive_b]
@@ -165,7 +214,12 @@ def direct_sum_state(weights, states):
     offset = 0
     for weight, block in zip(p, blocks):
         end = offset + len(block)
-        out[offset:end, offset:end] = weight * block
+        scaled = weight * block
+        if weight > 0 and (
+                np.any((block.real != 0) & (scaled.real == 0))
+                or np.any((block.imag != 0) & (scaled.imag == 0))):
+            raise ValueError("direct-sum block underflow; precision is insufficient")
+        out[offset:end, offset:end] = scaled
         offset = end
     return out
 

@@ -23,9 +23,35 @@ Positive eigenvalues are no longer discarded below `1e-14` or replaced by a
 in Hermiticity, normalization and negative eigenvalues. Accepted Hermiticity
 roundoff is symmetrized and negative spectral roundoff is set to zero for
 spectral calculations. Inputs are never implicitly normalized. No positive
-support leakage is rounded away to make relative entropy finite. Near a
-singular matrix, an eigensolver can still misidentify rank: exact-support
-claims require exact or separately certified support data.
+support leakage is rounded away to make relative entropy finite. Relative
+entropy rejects unresolved support: a dense reference with positive
+eigenvalues on the eigensolver roundoff scale, a computed kernel that does
+not annihilate its reference, or leakage indistinguishable from matrix-product
+cancellation. It neither assigns false infinity nor drops that leakage to
+force a finite answer. A diagonal reference supplies its spectrum directly;
+explicit positive entries as small as `1e-310` remain supported. These are
+numerical guards, not a rank certificate: exact-support claims still require
+exact or separately certified support data.
+
+The follow-up audit of this refactor retains four additional controls:
+
+- A real Hadamard change of basis applied to spectra `(.5,.25,.25,0)` and
+  `(.25,.5,.25,0)` preserves common support and gives `D=.25*log(2)`.
+  Kernel roundoff previously returned infinity. The routine now returns the
+  correct value when support is resolved or raises an explicit support error.
+  A companion state with mass in the missing direction must give infinity
+  or the same explicit uncertainty error, never a finite divergence.
+- A smallest positive binary64 sector weight multiplying `I_2/2` vanished.
+  Direct sums now reject component underflow; explicit zero sectors and
+  representable tiny sectors remain valid.
+- Complex central energies or inverse temperatures produced complex weights
+  that were silently cast to real sector probabilities. The scalar validators
+  now reject complex, Boolean, nonfinite and nonscalar inputs, including
+  convergence and alignment tolerances.
+- For `H=30 X`, both Gibbs eigenweights are positive, but reconstruction of
+  the dense matrix erases the smaller direction. Gibbs states, sector blocks
+  and Duhamel covariance now validate the reconstructed faithful state too.
+  Diagonal controls preserve the same small probability when representable.
 
 ## One normal form for the finite A3 objective
 

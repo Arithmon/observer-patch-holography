@@ -44,7 +44,8 @@ import numpy as np
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from quantum_information import (
-    density_matrix, faithful_log, partial_trace, relative_entropy as _relative_entropy,
+    faithful_density_matrix, finite_real_scalar, partial_trace,
+    relative_entropy as _relative_entropy,
 )
 
 HERE = Path(__file__).resolve().parent
@@ -121,7 +122,7 @@ def gibbs_state(constraints: list[np.ndarray], lam: np.ndarray) -> tuple[np.ndar
     if np.any(probs == 0):
         raise ValueError("normalized Gibbs spectrum underflow; precision is insufficient")
     rho = (vectors * probs) @ vectors.conj().T
-    return rho, log_z
+    return faithful_density_matrix(rho), log_z
 
 
 def decimate(rho: np.ndarray, n_sites: int) -> np.ndarray:
@@ -159,6 +160,7 @@ def duhamel_covariance(constraints: list[np.ndarray], lam: np.ndarray) -> np.nda
     ]
     if np.any(probs == 0):
         raise ValueError("Gibbs spectrum underflow; faithful-state precision is insufficient")
+    faithful_density_matrix(rho)
     logp = np.log(probs)
     pi, pj = np.meshgrid(probs, probs, indexing="ij")
     li, lj = np.meshgrid(logp, logp, indexing="ij")
@@ -183,15 +185,15 @@ def i_projection(
     Requires a faithful target and constraints independent modulo identity.
     Returns (lambda*, final gradient norm); failure to converge raises.
     """
-    sigma = density_matrix(sigma)
-    faithful_log(sigma)
+    sigma = faithful_density_matrix(sigma)
     constraints = [np.asarray(s,dtype=complex) for s in constraints]
     ham = constrained_hamiltonian(constraints, np.zeros(len(constraints)))
     if ham.shape != sigma.shape:
         raise ValueError("target and constraints must use the same algebra")
     if independent_operator_count(constraints) != len(constraints):
         raise ValueError("constraints must be independent modulo identity")
-    if isinstance(tol, bool) or not np.isfinite(tol) or tol <= 0:
+    tol = finite_real_scalar(tol, "convergence tolerance")
+    if tol <= 0:
         raise ValueError("finite positive convergence tolerance required")
     if type(max_iter) is not int or max_iter <= 0:
         raise ValueError("positive integer iteration budget required")

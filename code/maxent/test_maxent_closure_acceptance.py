@@ -73,14 +73,6 @@ def test_full_acceptance_run_passes() -> None:
     assert results["all_checks_pass"], results["checks"]
 
 
-if __name__ == "__main__":
-    for name, fn in sorted(globals().items()):
-        if name.startswith("test_") and callable(fn):
-            fn()
-            print(f"PASS  {name}")
-    print("all tests passed")
-
-
 @pytest.mark.parametrize("lam", ([.5], [.5,.2,.1], [np.nan,.2], [True,False]))
 def test_gibbs_cannot_silently_drop_or_corrupt_constraints(lam):
     constraints=global_sum_constraints(3)
@@ -127,3 +119,24 @@ def test_finite_inputs_cannot_overflow_into_a_nan_state():
 def test_gibbs_normalization_cannot_erase_a_subnormal_positive_weight():
     with pytest.raises(ValueError,match="underflow"):
         gibbs_state([np.diag([0.,0.,0.,745.])],np.array([1.]))
+
+
+def test_gibbs_reconstruction_cannot_erase_a_faithful_direction():
+    # Neither exp(-60) nor its normalization underflows. Adding it to the
+    # dominant rotated eigenspace loses it when the dense state is formed.
+    x=np.array([[0.,1.],[1.,0.]])
+    for operation in (gibbs_state,duhamel_covariance):
+        with pytest.raises(ValueError,match="faithful"):
+            operation([x],np.array([30.]))
+    rho,_=gibbs_state([np.diag([0.,60.])],np.array([1.]))
+    assert rho[1,1] == pytest.approx(np.exp(-60),rel=1e-14,abs=0)
+
+
+@pytest.mark.parametrize("bad", (1j,1+0j,np.bool_(True),True,np.nan,np.inf,[1.]))
+def test_projection_rejects_nonreal_or_nonscalar_tolerance(bad):
+    with pytest.raises(ValueError,match="finite real scalar"):
+        i_projection(np.eye(2)/2,[np.diag([1.,-1.])],tol=bad)
+
+
+if __name__ == "__main__":
+    raise SystemExit(pytest.main([__file__, "-v"]))

@@ -21,14 +21,14 @@
         "coarse": 6
       },
       "induced_map_R_multipliers": [
-        -0.36570009854342306,
-        0.3293135017032229
+        -0.365700098543423,
+        0.32931350170322277
       ],
-      "moment_matching_residual": 3.289766924176629e-13,
-      "duhamel_hessian_min_eigenvalue": 2.292872027536099,
-      "closure_defect_nats": 0.0001818932493438119,
-      "trace_norm_residual": 0.01588760389442992,
-      "pinsker_residual_bound": 0.019073187952925535,
+      "moment_matching_residual": 3.286354107921576e-13,
+      "duhamel_hessian_min_eigenvalue": 2.2928720275361014,
+      "closure_defect_nats": 0.0001818932493433678,
+      "trace_norm_residual": 0.015887603894430075,
+      "pinsker_residual_bound": 0.019073187952902252,
       "counts_match_displayed_dimension": true,
       "projection_unique": true,
       "residual_bound_holds": true
@@ -58,7 +58,7 @@
       "moment_matching_residual": 5.924389742880348e-14,
       "duhamel_hessian_min_eigenvalue": 3.0626262143830596,
       "closure_defect_nats": 0.00025049078018568594,
-      "trace_norm_residual": 0.014028884754533719,
+      "trace_norm_residual": 0.014028884754533715,
       "pinsker_residual_bound": 0.02238261737088341,
       "counts_match_displayed_dimension": true,
       "projection_unique": true,
@@ -84,13 +84,13 @@
       "coarse": 6
     },
     "induced_map_R_multipliers": [
-      -3.63611474475773e-17,
-      0.40000000000000074
+      6.612349413083079e-17,
+      0.40000000000000063
     ],
-    "moment_matching_residual": 9.036560719766055e-16,
-    "duhamel_hessian_min_eigenvalue": 2.56691635824353,
+    "moment_matching_residual": 1.3554841079649082e-15,
+    "duhamel_hessian_min_eigenvalue": 2.5669163582435335,
     "closure_defect_nats": 0.0,
-    "trace_norm_residual": 9.805591461878082e-16,
+    "trace_norm_residual": 1.0153266495319523e-15,
     "pinsker_residual_bound": 0.0,
     "counts_match_displayed_dimension": true,
     "projection_unique": true,

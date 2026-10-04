@@ -34,7 +34,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from quantum_information import (
     conditional_mutual_information as _conditional_mutual_information,
-    density_matrix, dimensions, direct_sum_state,
+    density_matrix, dimensions, direct_sum_state, faithful_density_matrix, finite_real_scalar,
     faithful_log as logm_psd, mutual_information, partial_trace, probabilities,
     one_sided_projection as _one_sided_projection, von_neumann_entropy,
 )
@@ -129,7 +129,8 @@ def entropic_alignment_defect(blocks: list[Block]) -> float:
 
 
 def is_ec_aligned(blocks: list[Block], tol: float = 1e-9) -> bool:
-    if isinstance(tol, bool) or not np.isfinite(tol) or tol <= 0:
+    tol = finite_real_scalar(tol, "alignment tolerance")
+    if tol <= 0:
         raise ValueError("alignment tolerance must be finite and positive")
     return entropic_alignment_defect(blocks) < tol
 
@@ -250,10 +251,10 @@ def gibbs_blocks(hamiltonians: list[tuple[np.ndarray, tuple[int, int, int, int]]
     """Gibbs state of H = oplus_alpha (H^alpha + e_alpha P_alpha) at inverse temp beta."""
     if not hamiltonians or len(hamiltonians) != len(central_energies):
         raise ValueError("one central energy is required per nonempty sector")
-    if isinstance(beta,bool) or not np.isfinite(beta):
-        raise ValueError("finite real inverse temperature required")
+    beta = finite_real_scalar(beta, "inverse temperature")
     spectra = []
     for (h_a, dims), e_a in zip(hamiltonians, central_energies):
+        e_a = finite_real_scalar(e_a, "central energy")
         dims = dimensions(dims)
         h_a = np.asarray(h_a,dtype=complex)
         if (len(dims) != 4 or h_a.shape != (prod(dims),)*2
@@ -277,7 +278,7 @@ def gibbs_blocks(hamiltonians: list[tuple[np.ndarray, tuple[int, int, int, int]]
     z_total = sum(w.sum() for w,_,_ in terms)
     if any(np.any(w/z_total == 0) for w,_,_ in terms):
         raise ValueError("normalized Gibbs sector underflow; precision is insufficient")
-    return [(float(w.sum()/z_total), (v*(w/w.sum()))@dagger(v), dims)
+    return [(float(w.sum()/z_total), faithful_density_matrix((v*(w/w.sum()))@dagger(v)), dims)
             for w,v,dims in terms]
 
 
