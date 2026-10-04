@@ -127,8 +127,8 @@ def von_neumann_entropy(rho):
     return float(-np.sum(positive * np.log(positive)))
 
 
-def shannon_entropy(values):
-    p = probabilities(values)
+def shannon_entropy(ps):
+    p = probabilities(ps)
     positive = p[p > 0]
     return float(-np.sum(positive * np.log(positive)))
 

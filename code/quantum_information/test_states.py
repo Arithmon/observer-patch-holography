@@ -68,6 +68,16 @@ def test_small_positive_eigenvalues_are_not_deleted_or_floored():
     assert relative_entropy(np.diag([0.,1.]),np.diag([1.,1e-310])) == pytest.approx(-np.log(1e-310))
 
 
+def test_legacy_entropy_and_collar_keyword_arguments_are_preserved():
+    from geometry.einstein_closure_receipts import shannon_entropy as edge_shannon
+    from collar_alignment.msa_characterizations import (
+        conditional_mutual_information as collar_cmi, one_sided_projection,
+    )
+    assert edge_shannon(ps=[.25,.75]) == pytest.approx(-.25*np.log(.25)-.75*np.log(.75))
+    assert abs(collar_cmi(rho=np.eye(8)/8,dims=[2,2,2],part_a=[0],part_b=[1],part_d=[2])) < 1e-14
+    assert np.array_equal(one_sided_projection(k=np.eye(4),d_left=2,d_right=2),np.eye(4))
+
+
 @pytest.mark.parametrize("bad", (
     np.diag([1.1,-.1]), np.eye(2), np.zeros((0,0)), np.ones((2,3)),
     np.array([[.5,.2],[0,.5]]), np.diag([np.nan,1]), np.diag([np.inf,0]),
