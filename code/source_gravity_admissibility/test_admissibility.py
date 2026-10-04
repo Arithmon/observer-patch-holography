@@ -44,6 +44,50 @@ def test_every_three_dimensional_native_column(policy):
     assert np.linalg.norm(actual-expected) < 6e-12
 
 
+@pytest.mark.parametrize('axis', range(3))
+@pytest.mark.parametrize('policy', ('flat', 'curved'))
+def test_varying_source_generator_keeps_gradient_term(axis, policy):
+    # Manufactured smooth data test the local expansion, not a new source
+    # solution or physical photon. The central output is two flights away
+    # from its inputs and cannot encounter the reflecting endpoints.
+    x = .37
+    momenta = np.array([.4, -.6, .8, -.3])
+    weights = np.array([1., 2., -1., .5])/2.5
+    psi = lambda y: weights*np.exp(1j*momenta*y)
+    source = lambda y: .5+.2*np.sin(y)
+    lapse = 1/(1+source(x))
+    r = lapse*lapse/2 if policy == 'curved' else .5
+    dr = -.2*np.cos(x)*lapse**3 if policy == 'curved' else 0.
+    q = np.sqrt(1-r*r)
+    dq = -r*dr/q
+    alpha, beta = check.ALPHA[axis], check.BETA
+    c = 2*r*(r*alpha+1j*q*beta@alpha)
+    dc = 4*r*dr*alpha+2j*(dr*q+r*dq)*beta@alpha
+    # T=4a pays two flights and a 2a service budget. H is derived from
+    # the differential expression, independently of the pulse compiler.
+    without_gradient = .7*lapse*beta@psi(x)-.25j*c@(1j*momenta*psi(x))
+    generator = without_gradient-.125j*dc@psi(x)
+    errors, omitted = [], []
+    for a in (.001, .0005, .00025):
+        elapsed = 4*a
+        coordinates = x+a*np.arange(-4, 5)
+        values = [F(str(source(y))) for y in coordinates]
+        state = np.concatenate([psi(y) for y in coordinates])
+        native = model.execute((9,), values, policy, [axis],
+                               F(str(.7*elapsed/np.pi)))
+        output = (native@state)[16:20]
+        errors.append(np.linalg.norm(output-psi(x)+1j*elapsed*generator))
+        omitted.append(np.linalg.norm(output-psi(x)+1j*elapsed*without_gradient))
+    # Halving a quarters the retained remainder; an omitted first-order
+    # source-gradient contribution cannot satisfy the same test.
+    assert all(.24 < later/earlier < .26 for earlier, later in zip(errors, errors[1:]))
+    if policy == 'curved':
+        assert omitted[-1] > 10*errors[-1]
+        assert .45 < omitted[-1]/omitted[-2] < .55
+    else:
+        assert omitted == errors
+
+
 def mutate(e, name):
     if name == 'source': e['line'][6]['source'][2] = '1/10'
     elif name == 'boundary': e['line'][6]['source'][0] = '1/100'

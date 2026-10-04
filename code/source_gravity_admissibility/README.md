@@ -46,6 +46,9 @@ Complete clock matrices and small-spacing Fourier matrices test the
 channel and principal-symbol calculations. The exact one-axis massive
 dispersion is also checked at 36 parameter settings with all four bands;
 the velocity freedom is present before a continuum approximation.
+An inhomogeneous native-word regression also checks the required
+Hermitian gradient term and the quadratic local expansion error in all
+three Clifford directions; removing that term fails the control.
 Only the named receiver
 read is a local physical report; full-matrix comparisons are software
 checks, not an observer pooling spatial quantum states instantaneously.

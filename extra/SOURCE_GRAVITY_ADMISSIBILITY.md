@@ -325,12 +325,34 @@ exp(-i T H), hence ||U-exp(-i T H)||<=L^2. A telescoping product gives
 bounded k,m, this tends to zero linearly in T when a/T is fixed. This
 proves the stated homogeneous dynamics limit, not just a derivative fit.
 
-For smooth varying coefficients the same local principal symbol holds;
-derivatives of theta and A contribute lower-order transport terms, not
-another characteristic cone. This follows by Taylor expansion of each
-translated smooth spinor and coefficient. Bounds require bounded spatial
-derivatives on the region in question. It is not a uniform geometrical
-optics estimate for the finite detector (8).
+For smooth varying coefficients, the lower-order term can be calculated
+explicitly. Acting on a smooth spinor, write
+
+    S_j psi = psi - a alpha_j partial_j psi + O(a^2),
+    C_j = alpha_j + R alpha_j R*,
+    R alpha_j (partial_j R*) = (1/2) partial_j C_j.
+
+The last identity uses R=exp(i theta beta) and {beta,alpha_j}=0. Hence
+the actual two-flight word, including its intermediate source writer, is
+
+    W_j psi = psi - a [C_j partial_j psi
+                       + (1/2)(partial_j C_j) psi] + O(a^2).
+
+With V_j=(a/T) C_j=v alpha'_j, the local differential generator is
+
+    H psi = m A beta psi
+            - i sum_j [V_j partial_j psi + (1/2)(partial_j V_j) psi].
+
+The gradient term makes this expression formally Hermitian on compactly
+supported spinors in the coordinate counting limit. It is generally
+nonzero and must not be discarded from the dynamics. It has differential
+order zero, so the principal cone is still (9). The mass multiplication
+adds no derivative of A at this order. The local one-step remainder is
+O(a^2) for fixed a/T and bounded second spatial derivatives of the
+coefficients and spinor. The regression test executes the native words
+on a varying profile in all three Clifford directions, checks quadratic
+one-step error, and detects omission of this gradient term. This is not
+a uniform geometrical-optics estimate for the finite detector (8).
 
 Calibrate once at u=0, where v_0=a/T. If a static isotropic metric is used
 to encode **both** the massive rest frequency and this principal cone,

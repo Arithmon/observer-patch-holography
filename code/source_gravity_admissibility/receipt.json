@@ -9,12 +9,12 @@
     "code/m1_source_realization/check.py": "fa466a0c2727355a60c5e318ee359ca07bf5eb8d0d67cf7bd4d765606e18a5d9",
     "code/m1_source_realization/model.py": "c0089ba890db76ca9dc055c29800a328a3b6800dbb000247f38621288c5c03b2",
     "code/source_gravity_admissibility/CONTRACT.md": "20106fe2e80430221378d1ca2f33ee0bf9c262f2820dc4609428a94a3af589fa",
-    "code/source_gravity_admissibility/README.md": "318bef52698e7920c3eda4563224bc7d2655b475a1b870c264ace80c0058eeb8",
+    "code/source_gravity_admissibility/README.md": "7f4fb21491ad79ce73344006c11407f2a8e67b8966c379240d264b31e97b70a1",
     "code/source_gravity_admissibility/__init__.py": "9ac7a42527f951d4ea7e0f90e5d81832ca8609b61f6957ac6a3777ebe2eba8ab",
     "code/source_gravity_admissibility/build.py": "5b3e44fc43132fc1ace7bbaf0329b45f1133b2f3960264dd8df8ce3e901fdb25",
     "code/source_gravity_admissibility/check.py": "a81c75b05771a9bd1120030e2cbdc4750e1024339f949db530e83835648318ac",
     "code/source_gravity_admissibility/model.py": "720be90acd33b63f036b23f5b33f6faa00f17076e277c7c817670781cf024610",
-    "code/source_gravity_admissibility/test_admissibility.py": "85ca52b2843a407d63faf691d4f4127575b0968a31e32ff0ecaa58dfee7cf4bf",
+    "code/source_gravity_admissibility/test_admissibility.py": "7719f09a21891e6efa351532593a45d30b964f5aa638a2b17da1f5934336cc72",
     "code/source_gravity_admissibility/verify.py": "274aa84397440288a6c94d6a7becb0bb1044954e094eb8c972d6fea17a90590a",
     "code/source_publication_selection/STATE_SELECTION.md": "7dc5a3955828d2dbf7ce0ac967ccf560451f5cc7c84bd07176eb93495147212a",
     "code/source_selection_model/DERIVATION.md": "4881f7c7e41b6294d3b164e943952438f09a3aa03041bf152a382d8ff42aba85",
@@ -23,7 +23,7 @@
     "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
     "docs/AXIOM_REFERENCE.md": "78b803601945f6629816aa2715186876e0020ae67646c05b4b0e2ca44919db88",
     "extra/COHERENT_SOURCE_CLOCKS.md": "3daa10fa2fe85979c55e72e8dee18649d80d276b85db4654fa2d5097c98b5557",
-    "extra/SOURCE_GRAVITY_ADMISSIBILITY.md": "4ba3cbb7611601a0d3ee37078cc49a576b1b0dc61ac635662138596bc0616c54",
+    "extra/SOURCE_GRAVITY_ADMISSIBILITY.md": "3a26d3d640a35d342d88bdc6c2338b10e7cacba9cbe653feb3972c95d525d097",
     "requirements.txt": "3277500ae738ab064baacbb01233ebf165319d162534c80bbb727599634223f4"
   },
   "evidence": {
