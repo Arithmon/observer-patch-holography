@@ -322,7 +322,8 @@
     "OPH-QUARK-EXTERIOR-HIGGS-RESPONSE",
     "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING",
     "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION",
-    "OPH-MCKAY-INDEPENDENT-GOLDEN-FIELD-CONTROL"
+    "OPH-MCKAY-INDEPENDENT-GOLDEN-FIELD-CONTROL",
+    "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION"
   ],
   "edges": [
     {
@@ -2819,6 +2820,16 @@
       "role": "Supplies the actual positive source action support and distinguishes its action measure from record multiplicity; the new massless two-field constitutive and physical probe maps are explicitly supplied.",
       "from": "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION",
       "to": "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION"
+    },
+    {
+      "from": "OPH-ALPHA-PIXEL",
+      "to": "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
+      "role": "Supplies the declared mathematical maps and physical endpoint boundary to be independently audited; no source-selection or theory-error premise is discharged."
+    },
+    {
+      "from": "OPH-KOIDE-CIRCULANT-IDENTITY",
+      "to": "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
+      "role": "Supplies the exact positive-chamber balance identity and historical premise ancestry. The independent conditional mass replay does not inherit a physical Yukawa attachment."
     }
   ]
 }
