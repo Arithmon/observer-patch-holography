@@ -103,13 +103,6 @@ Formalization status is deliberately split:
 
 ## Finite Repair-Projection Receipt
 
-The [finite algebra and repair audit](../quantum_information/ALGEBRAS_AND_REPAIR.md)
-extends the recognition problem to supplied matrix-algebra maps. Its
-classical control starts from an independently specified transition table
-and recovers the weighted fiber rule below. Constructing a conditional
-expectation from its desired range is still not evidence that a source
-transition implements it.
-
 For the finite conditional-expectation claim, use the identifications
 
 ```text
