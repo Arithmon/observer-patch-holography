@@ -31,13 +31,20 @@ def test_live_register_validates_and_surface_is_current():
     assert rendered == committed
 
 
-def test_bitcoin_upgrade_receipt_binds_historical_proofs_and_blocks(tmp_path):
-    from verify_bitcoin_upgrade_receipt import RECEIPT, verify, verify_block
+def test_bitcoin_upgrade_receipt_binds_historical_proofs_and_blocks(tmp_path, monkeypatch):
+    import verify_bitcoin_upgrade_receipt as proof_tool
+
+    RECEIPT = proof_tool.RECEIPT
+    verify = proof_tool.verify
+    verify_block = proof_tool.verify_block
 
     audit = verify()
     assert len(audit["proofs"]) == 23
     assert set(audit["packages"]) == {"FZ-02", "FZ-10", "FZ-11", "FZ-12"}
     assert audit["full_chain_independently_verified"] is False
+
+    monkeypatch.setattr(proof_tool, "ots_client", lambda: None)
+    assert verify()["packages"] == audit["packages"]
 
     changed = tmp_path / "upgrade_audit.json"
     changed.write_bytes(RECEIPT.read_bytes() + b"\n")

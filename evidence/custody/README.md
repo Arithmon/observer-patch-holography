@@ -13,7 +13,9 @@ copies of all 23 archived FZ-02, FZ-10, FZ-11 and FZ-12 proofs. Its
 `upgrade_audit.json` binds each copy to the unchanged original proof and
 artifact and records six Bitcoin block headers. Run
 `python3 tools/verify_bitcoin_upgrade_receipt.py` to check those bindings,
-OpenTimestamps paths, header hashes, Merkle roots and proof of work offline.
+header hashes, Merkle roots and proof of work offline. Where the official
+OpenTimestamps client is installed, the checker also replays every proof path;
+other platforms check its fixed byte hash, file digest and Bitcoin marker.
 Two public explorers reported these blocks on the best chain when checked;
 this is explorer-assisted verification, not a Bitcoin full-node check.
 With a configured Bitcoin Core node, independently verify an individual
