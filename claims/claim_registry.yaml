@@ -14202,6 +14202,46 @@
       }
     },
     {
+      "claim_id": "OPH-DARK-SOURCE-DYNAMICS-LENSING",
+      "statement": "On the declared static spherical Einstein interface, linear enclosed mass and constant circular speed admit an exact one-parameter conserved anisotropic stress family. Dominant energy and nonnegative pressures give sharp mass and finite-endpoint bending intervals; a joint rotation/bending inverse with known ray winding determines the mass coefficient. Exact controls retain the ambiguity from endpoint data modulo a full turn; the weak nonnegative-pressure catalogue has zero full winding. A positive massive-particle velocity-moment cap yields a tighter necessary tensor interval and exactly enclosed relative bending bounds; global kinetic distribution existence is not inferred. A separate regular asymptotically flat finite-mass family has identical lapse, rotation and exterior metric but different null deflection, with exact positive rational lower and upper bounds and global dominant-energy proof. Complete unwrapped scattering and rotation profiles reconstruct the remaining spherical metric function through an Abel inverse under the stated regularity and decay conditions. This completes the bounded macroscopic underdetermination test, not a microscopic collar-source realization, matter stability proof, natural-data comparison, source-selected normalization or closure of the full dark-sector issue.",
+      "owner_paper": "extra/DARK_SOURCE_DYNAMICS_LENSING.md",
+      "tier": "exact_spherical_source_interface_test",
+      "assumptions": [
+        "declared_spherical_Einstein_source_and_null_observable"
+      ],
+      "imported_results": [
+        "spherical_Einstein_equations",
+        "anisotropic_stress_conservation",
+        "circular_and_null_geodesics",
+        "Abel_integral_inversion",
+        "positive_massive_particle_stress_moments"
+      ],
+      "oph_specific_delta": "Tests the dark-sector scalar-charge and linear-mass interface against a same-source dynamics/lensing consumer. Supplies sharp stress-dependent observable bounds and a regular fixed-exterior counterexample; isolates the physical density or radial-stress closure needed before a rotation calibration can predict lensing. No new gravitational law or anomaly-to-stress selection is claimed.",
+      "novelty_type": "explicit_source_interface_counterexample_and_joint_observable_bounds",
+      "evidence": [
+        "extra/DARK_SOURCE_DYNAMICS_LENSING.md",
+        "code/dark_source_lensing/CONTRACT.md",
+        "code/dark_source_lensing/model.py",
+        "code/dark_source_lensing/check.py",
+        "code/dark_source_lensing/global_ray.py",
+        "code/dark_source_lensing/verify.py",
+        "code/dark_source_lensing/test_lensing.py",
+        "code/dark_source_lensing/receipt.json"
+      ],
+      "falsifier": "An Einstein component, conservation identity, sharp endpoint, ray integral, inverse or global energy/separation bound fails; a singular shell or changed exterior enters the global pair; semantic corruption is accepted; or the supplied macroscopic alternatives are promoted to physical OPH sources or observational evidence.",
+      "scope_if_false": "The scoped joint-observable certificate fails; the parent conditional anomaly statements and earlier source-selection results retain their separately stated scope.",
+      "status": "exact_macroscopic_underdetermination_and_joint_interface_verified__physical_source_selection_open",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This finite explicit comparison supplies classical spherical Einstein geometry and its stress tensor, and tests the phenomenological dark-sector interface outside the canonical derivation-premise register. It neither consumes a physical OPH source/metric attachment nor claims microscopic admission of the competing tensors or empirical branch establishment."
+      }
+    },
+    {
       "claim_id": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
       "statement": "In the existing coherent proper-code source satisfying its stated A1-A3 model clauses, two fixed source-conditioned native coin policies share a grounded Dirichlet source, the entire stationary-clock channel and zero-source speed calibration. They introduce no new primitive reversible direction. With all flights, reflections and service time charged, an exact five-site receiver experiment gives probabilities 1/4 and 1/[4(1+s)^4] at source strength s>0. An exact full-band identity preserves the homogeneous zero-momentum mass phase while changing finite-momentum dispersion. The native three-dimensional finite word has principal speed v=2a cos(theta)/T; common rest lapse A=1/(1+u) leaves this spatial-response function undetermined. Both policies preserve the inherited typed A3 problems, and a same-algebra faithful A3 problem admitting both program records cannot give the flat record zero weight using common clock constraints alone. The result establishes non-entailment inside an admitted source, not physical Maxwell photons, Einstein source selection or a property of the integer-repair simulator.",
       "assumptions": [

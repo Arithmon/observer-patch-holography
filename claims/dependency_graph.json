@@ -323,6 +323,7 @@
     "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING",
     "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION",
     "OPH-MCKAY-INDEPENDENT-GOLDEN-FIELD-CONTROL",
+    "OPH-DARK-SOURCE-DYNAMICS-LENSING",
     "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
     "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION"
   ],
@@ -2821,6 +2822,11 @@
       "role": "Supplies the actual positive source action support and distinguishes its action measure from record multiplicity; the new massless two-field constitutive and physical probe maps are explicitly supplied.",
       "from": "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION",
       "to": "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION"
+    },
+    {
+      "from": "OPH-DM-CONT",
+      "to": "OPH-DARK-SOURCE-DYNAMICS-LENSING",
+      "role": "identifies the scalar anomalous-charge and linear-mass interface whose missing relativistic stress closure is tested; does not derive physical admission of the alternatives"
     },
     {
       "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
