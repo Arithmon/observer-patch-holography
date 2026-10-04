@@ -149,8 +149,15 @@ def test_workflow_matrix_dispatches_the_entire_selected_suite_once(
 ):
     job = _workflow()["jobs"]["mandatory-shards"]
     assert operating_system in job["strategy"]["matrix"]["os"]
-    assert _shards(job, full) == ([0] if full else list(range(9)))
+    assert _shards(job, full) == ([0] if full else list(range(10)))
     actual = []
+    # These complete command groups exhausted the 30-minute Windows budget
+    # when the nine-shard layout put both in its last worker.
+    expensive_markers = (
+        "code/a5_fingerprint/test_a5_multipole_fixed_point_certificate.py",
+        "code/a5_closure/tests/test_equal_state_weights_certificate.py",
+    )
+    assigned_workers = {marker: [] for marker in expensive_markers}
 
     def record(command, *, cwd):
         assert cwd == ROOT
@@ -165,14 +172,22 @@ def test_workflow_matrix_dispatches_the_entire_selected_suite_once(
         if full:
             assert arguments == ["--full"]
         else:
-            assert arguments == ["--shard-index", str(shard), "--shard-count", "9"]
+            assert arguments == ["--shard-index", str(shard), "--shard-count", "10"]
         monkeypatch.setattr(sys, "argv", ["run_mandatory_suite.py", *arguments])
+        start = len(actual)
         runner.main()
+        for command in actual[start:]:
+            for marker in expensive_markers:
+                if marker in command:
+                    assigned_workers[marker].append(shard)
     expected = [
         command for title, command in runner.MANDATORY_STEPS
         if full or title not in runner.HEAVY_STEP_TITLES
     ]
     assert actual == expected  # Exact ordered multiplicity, including repeats.
+    assert all(len(owners) == 1 for owners in assigned_workers.values())
+    if not full:
+        assert len({owners[0] for owners in assigned_workers.values()}) == 2
 
 
 def test_each_worker_has_a_fresh_complete_checkout_and_the_runtime_ceiling():
