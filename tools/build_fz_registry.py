@@ -3124,8 +3124,9 @@ def render(register: dict, rows: list[dict]) -> str:
     lines.append(
         "“Calendar proof stored” describes the committed `.ots` file."
         " It does not establish whether the calendar has since anchored that"
-        " commitment in a Bitcoin block. A later `ots upgrade` adds the block"
-        " proof to the `.ots` file; chain verification is a separate step."
+        " commitment in a Bitcoin block. A later `ots upgrade` on a copy can"
+        " add the block proof; chain verification and an append-only custody"
+        " update are separate steps."
     )
     lines.append("")
     lines.append("## Registered records")

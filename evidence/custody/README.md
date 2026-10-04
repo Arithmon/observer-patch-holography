@@ -26,15 +26,24 @@ An OpenTimestamps calendar receives a randomized hash commitment, rather
 than the document. Public calendars batch commitments into Bitcoin without
 requiring a wallet or a payment from the registrant. The initial `.ots`
 receipt can contain pending calendar attestations. Once inclusion is
-available, upgrade the proof with the official client:
+available, upgrade a copy with the official client. The registry currently
+pins the original calendar-pending `.ots` files, so an in-place upgrade in
+this directory would fail its custody check:
 
 ```sh
-ots upgrade registration_manifest_2026-10-04.json.ots
-ots verify registration_manifest_2026-10-04.json.ots
+proof_check_dir=$(mktemp -d)
+cp registration_manifest_2026-10-04.json "$proof_check_dir/"
+cp registration_manifest_2026-10-04.json.ots "$proof_check_dir/"
+ots upgrade "$proof_check_dir/registration_manifest_2026-10-04.json.ots"
+ots verify "$proof_check_dir/registration_manifest_2026-10-04.json.ots"
 ```
 
-Run these beside the unchanged manifest and retain the earlier proof.
-Upgrading changes the proof, not the target, protocol or manifest. The
+Run these from the relevant package directory. If the calendar reports
+"pending confirmation," retain the original proof and try upgrading again
+later; there is no need to stamp the files a second time. Once independently
+verified, publish the upgraded proof and its verification record as an
+append-only custody update. The original target, protocol, manifest and
+calendar proof stay fixed. Upgrading changes only the copied proof. The
 Python client's independent chain verification requires a Bitcoin Core
 node (a pruned node is sufficient); verification using public block
 explorers must be identified as explorer-assisted. `ots info` alone parses

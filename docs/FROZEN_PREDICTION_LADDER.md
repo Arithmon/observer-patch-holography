@@ -39,7 +39,7 @@ The short labels below are for navigation. Each record retains its complete regi
 | [FZ-14](#fz-14) | Integer-division Kerr comb | Pending registration | — |
 | [FZ-15](#fz-15) | Edge-center scalar tilt (conditional) | Calendar proof stored | 2026-10-04T08:23:35Z |
 
-“Calendar proof stored” describes the committed `.ots` file. It does not establish whether the calendar has since anchored that commitment in a Bitcoin block. A later `ots upgrade` adds the block proof to the `.ots` file; chain verification is a separate step.
+“Calendar proof stored” describes the committed `.ots` file. It does not establish whether the calendar has since anchored that commitment in a Bitcoin block. A later `ots upgrade` on a copy can add the block proof; chain verification and an append-only custody update are separate steps.
 
 ## Registered records
 
