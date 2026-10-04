@@ -135,7 +135,7 @@ def verify(receipt_path: Path = RECEIPT) -> dict:
         directories = list(base.glob(f"{row.lower().replace('-', '')}_*"))
         require(len(directories) == 1, f"{row} original package missing or ambiguous")
         expected.update(
-            f"falsification/frozen_targets/{proof.relative_to(base)}"
+            f"falsification/frozen_targets/{proof.relative_to(base).as_posix()}"
             for proof in directories[0].glob("*.ots")
         )
     actual = [item.get("original_proof") for item in audit["proofs"]]
@@ -156,7 +156,7 @@ def verify(receipt_path: Path = RECEIPT) -> dict:
         old = CUSTODY / original_rel
         artifact = CUSTODY / original_rel.removesuffix(".ots")
         relative_inside = Path(original_rel).relative_to("falsification/frozen_targets")
-        new_rel = f"bitcoin_upgrades_2026-10-04/{relative_inside}"
+        new_rel = f"bitcoin_upgrades_2026-10-04/{relative_inside.as_posix()}"
         require(item["upgraded_proof"] == new_rel, f"upgraded path drifted: {original_rel}")
         new = CUSTODY / new_rel
         require(old.is_file() and new.is_file() and artifact.is_file(), f"missing proof or artifact: {original_rel}")
