@@ -247,6 +247,26 @@ def symbols():
     return rows
 
 
+def bands():
+    rows = []
+    for strength, policy, momentum_pi, mass_pi in itertools.product(
+            ('0', '1/10', '1/5'), POLICIES, ('0', '1/7', '1/3'), ('0', '1/11')):
+        lapse = 1/(1+F(strength))
+        r = F(1, 2)*(lapse**2 if policy == 'curved' else 1)
+        theta = math.acos(float(r))
+        rotation = phase_matrix([theta*b for b in (1, 1, -1, -1)])
+        basis = native_basis(0)
+        p = math.pi*float(F(momentum_pi))
+        flight = basis@phase_matrix([-p*b for b in (1, 1, -1, -1)])@basis.conj().T
+        mu = math.pi*float(F(mass_pi)*lapse)
+        matrix = phase_matrix([-mu*b for b in (1, 1, -1, -1)])@rotation@flight@rotation.conj().T@flight
+        rows.append(dict(strength=strength, policy=policy, momentum_pi=momentum_pi, mass_pi=mass_pi,
+                         matrix=encode(matrix.reshape(-1)),
+                         band_cosine=float(np.trace(matrix).real/4),
+                         eigenphases=sorted(np.angle(np.linalg.eigvals(matrix)).tolist())))
+    return rows
+
+
 def candidate():
     rows = []
     for strength, axis, policy in itertools.product(STRENGTHS, range(3), POLICIES):
@@ -259,15 +279,18 @@ def candidate():
                          cosine=[str(F(1, 2)/(1+u)**(2 if policy == 'curved' else 0)) for u in values],
                          clock_ratio=str(1/(1+s)),
                          result=encode(result), click=float(sum(abs(result[12:16])**2)),
+                         receiver=[3], report_to=[1],
                          exact_click=str(F(1, 4)/(1+s)**(4 if policy == 'curved' else 0)),
                          ledger=ledger((5,), [axis])))
     cubes = []
     for strength, policy, mass in itertools.product(('1/10', '1/5'), POLICIES, ('0', '1/7')):
         values = profile((3, 3, 3), F(strength))
         unitary = execute((3, 3, 3), values, policy, [0, 1, 2], F(mass))
+        result = unitary@initial((3, 3, 3))
         cubes.append(dict(strength=strength, policy=policy, mass_pi=mass,
                           source=list(map(str, values)),
-                          result=encode(unitary@initial((3, 3, 3))),
+                          result=encode(result), receiver=[2, 0, 0], report_to=[0, 0, 0],
+                          click=float(sum(abs(result[72:76])**2)),
                           ledger=ledger((3, 3, 3), [0, 1, 2])))
     # Exact finite budgets, chosen before comparing approximate executions.
     robustness = []
@@ -280,4 +303,4 @@ def candidate():
     return dict(controls=control_data(), instruments=instruments(),
                 basis_words=word_packet(), line=rows, cube=cubes, robustness=robustness,
                 clocks=clock_evidence(), symbols=symbols(),
-                timelines=[timeline(axes) for axes in ([0], [1], [2], [0, 1, 2])])
+                timelines=[timeline(axes) for axes in ([0], [1], [2], [0, 1, 2])], bands=bands())

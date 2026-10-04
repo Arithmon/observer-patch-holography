@@ -241,6 +241,11 @@ then returned by a charged classical flight; the same deadline applies to
 both laws. No pooled simulator log serves as an instantaneous detector.
 The complement failure effect is retained with probability zero for this
 explicit valid preparation; it is not discarded from the channel.
+The five-site receiver is at site 3 and returns its record to site 1,
+distance two. The three-dimensional corroborating executions instead
+read the receiver at (2,0,0) and return to (0,0,0), also distance two.
+Their complete output vectors are independent software diagnostics; only
+the specified local occupation effect is the receiver's quantum read.
 
 Equation (8), together with (4), is the nonselection witness. It is a
 finite source-operation/read theorem, not a fit, assumed dispersion or
@@ -262,6 +267,34 @@ robustness statement needs no ray or continuum error estimate.
 
 ## 5. What spatial geometry is and is not reconstructed
 
+There is also an exact dispersion statement before taking any limit. On
+one homogeneous axis set p=a k, r=cos theta, q=sin theta, and mu=m T A.
+The Clifford identities give
+
+    W = (1-2r^2 sin^2 p) I
+        -i [2r cos p sin p alpha' + 2rq sin^2 p beta].     (9a)
+
+Multiplication by the native mass phase shows that the complete four-mode
+characteristic polynomial of U_m is
+
+    [z^2 - 2 f z + 1]^2,
+    f = cos(mu)(1-2r^2 sin^2 p) - 2rq sin(mu) sin^2 p.   (9b)
+
+In particular U_m(0)=exp(-i mu beta) exactly, independent of r, while
+its nonzero-momentum spectrum depends on r. With m=0 a signed band phase
+is omega(p)=2 arcsin(r sin p), so away from branch crossings
+
+    d(omega/T)/dk = (2ar/T) cos p / sqrt(1-r^2 sin^2 p).  (9c)
+
+At k=0 this is 2ar/T, and its absolute value never exceeds 2ar/T for
+0<r<1. Thus the clock-equivalent velocity difference is present in the
+finite-duration unitary itself. It is not an artefact of truncating a
+continuum series. Both eigenvalue multiplicities and the entire symbol
+are retained in the certificate, including nonzero mass. No selected
+Floquet logarithm is being equated to a physical stress tensor or
+unwrapped laboratory energy; the earlier energy-interpolation boundary
+is unaffected.
+
 For constant u, W_j(0)=I. Differentiating the *actual* word (5) at k=0 gives
 
     W_j = I - 2 i a k_j cos theta alpha'_j + O((a k_j)^2),
@@ -281,6 +314,16 @@ generators X_l after conjugating out the fixed R factors; the certificate
 tests a stricter unitary telescoping bound without the exponential. All
 finite quasienergies and all input modes remain; (9) describes only the
 stated long-wavelength branch.
+
+More explicitly let L=|m T A|+2a sum_j |k_j|. The second derivative of
+the product with every small exponent scaled by t has norm at most L^2:
+each differentiated factor is bounded by its generator norm and all
+remaining factors are unitary. Taylor's integral remainder gives
+||U-I+i T H|| <= L^2/2. Since ||T H||<=L, the same bound applies to
+exp(-i T H), hence ||U-exp(-i T H)||<=L^2. A telescoping product gives
+||U^N-exp(-i N T H)||<=N L^2. At fixed physical elapsed time N T and
+bounded k,m, this tends to zero linearly in T when a/T is fixed. This
+proves the stated homogeneous dynamics limit, not just a derivative fit.
 
 For smooth varying coefficients the same local principal symbol holds;
 derivatives of theta and A contribute lower-order transport terms, not
@@ -311,8 +354,18 @@ strictly below the upper endpoint avoid derivative singularities. Thus
 clock calibration leaves a **function**, not just one fitted constant,
 undetermined in this source.
 
-For the same disclosed continuum limit of (1), a spherical exterior has
-u=mu/r. Equation (11) then gives, at first weak-field order, respectively
+For the spherical gravity interpretation, the continuum source scaling
+must also be stated. The common three-dimensional finite-difference
+action is (a/2) sum_edges (u_i-u_j)^2 - a^3 sum_i rho_i u_i,
+so its Euler equation is K u=a^2 rho. It approximates the separately
+disclosed continuum action integral (|grad u|^2/2-rho u) d^3x, with
+Dirichlet grounding taken to infinity. Keeping an unscaled point-record
+strength fixed while changing a would not keep the same physical mu.
+For a smooth compact spherical rho, the continuum equation -Delta u=rho
+and decay at infinity give exterior u=mu/r, mu=integral rho/(4 pi).
+This source normalization is common to both policies; it is not a derived
+laboratory stress map or an input to the exact finite counterexample.
+Equation (11) then gives, at first weak-field order, respectively
 zero and 4mu/b bending of the principal rays, whereas the clock shift is
 the same at that order and exactly identical under (3). This is the
 gamma=-1 versus gamma=1 spatial-response distinction of the preceding
@@ -367,10 +420,30 @@ It is a functional condition over source strengths, not one normalization
 that a clock experiment can determine. The exact local statistic
 P(site 3)=cos^2 theta(u_2) independently measures this response and is a
 falsifier of (12). Because cos theta is positive on this family, it
-determines theta without the sign ambiguity of a general interferometer.
+determines theta on the specified arccos branch 0<theta<pi/2, without
+claiming to determine all possible signed coin angles outside this family.
 Source-conditioned propagation measurements, or a separately justified
 physical action principle that implies (12), can remove the freedom.
 Simply declaring (12) to be A3, equivalence, or covariance cannot.
+
+The finite read also gives a positive reconstruction statement within this
+specified family. If p(u) is the receiver probability in (8)'s protocol,
+then v(u)/v_0=2 sqrt(p(u)), B(u)=A(u)/(2 sqrt(p(u))) and
+n(u)=1/(2 sqrt(p(u))). These are identified functions when the clock and
+source-conditioned local transport reads are supplied, without assuming
+a metric beforehand. A finite list of strengths does not determine an
+arbitrary function between them. These reads would be additional physical
+information, not a second optical fit hidden in a clock-only prediction.
+
+In the two-policy selector test, write Delta=P_flat-P_curved>0. An exact
+additional constraint P=P_curved forces the flat-label weight to zero
+because P-P_curved=p_flat Delta. A tolerance epsilon instead gives only
+p_flat<=epsilon/Delta. This is the exact selection cost; finite precision
+must not be promoted into an exclusion of every competing policy. More
+generally positive probability bounds p_minus<=p(u)<=p_plus and lapse
+bounds A_minus<=A(u)<=A_plus give the monotone metric interval
+[A_minus/(2 sqrt(p_plus)), A_plus/(2 sqrt(p_minus))]. No laboratory
+probabilities or confidence levels are fabricated here.
 
 This result does not adopt (12) as a new axiom or pretend that it has been
 independently motivated. It identifies exactly where an additional law

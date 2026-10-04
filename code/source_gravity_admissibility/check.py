@@ -189,13 +189,15 @@ def expected_ledger(shape, axes):
 
 
 def line_case(row, expected, words):
-    keys(row, 'strength axis policy source cosine clock_ratio result click exact_click ledger')
+    keys(row, 'strength axis policy source cosine clock_ratio result click exact_click ledger receiver report_to')
     strength, axis, policy = expected
     same([row['strength'], row['axis'], row['policy']], [strength, axis, policy], 'line case census')
     s = F(strength)
     values = source_check(row['source'], (5,), s)
     same(row['cosine'], [str(F(1, 2)/(1+u)**(2 if policy == 'curved' else 0)) for u in values])
     same(row['clock_ratio'], str(1/(1+s)), 'common clock normalization')
+    same(row['receiver'], [3], 'fixed local detector address')
+    same(row['report_to'], [1], 'fixed returned record address')
     matrix = closed((5,), values, policy, [axis], words=words)
     state = np.zeros(20, complex)
     state[4:8] = basis(axis)[:, 0]
@@ -211,7 +213,7 @@ def line_case(row, expected, words):
 
 
 def cube_case(row, expected, words):
-    keys(row, 'strength policy mass_pi source result ledger')
+    keys(row, 'strength policy mass_pi source result ledger receiver report_to click')
     strength, policy, mass = expected
     same([row['strength'], row['policy'], row['mass_pi']], [strength, policy, mass], 'cube case census')
     values = source_check(row['source'], (3, 3, 3), F(strength))
@@ -220,6 +222,9 @@ def cube_case(row, expected, words):
     psi = np.array([complex(math.cos(j*j/17), math.sin(j*j/17)) for j in range(108)])/math.sqrt(108)
     actual = decode(row['result'], 108)
     need(np.linalg.norm(actual-matrix@psi) < 3e-12, 'complete 3D finite evolution')
+    same(row['receiver'], [2, 0, 0], 'fixed local cube detector')
+    same(row['report_to'], [0, 0, 0], 'fixed cube report geometry')
+    same(row['click'], float(sum(abs((matrix@psi)[72:76])**2)), 'local cube probability')
     same(row['ledger'], expected_ledger((3, 3, 3), [0, 1, 2]), 'three-dimensional timing')
 
 
@@ -318,8 +323,34 @@ def check_timelines(rows, basis_words):
         same(row['returned_record_ready'], str(time+3))
 
 
+def check_bands(rows):
+    cases = list(itertools.product(('0', '1/10', '1/5'), ('flat', 'curved'),
+                                   ('0', '1/7', '1/3'), ('0', '1/11')))
+    need(type(rows) is list and len(rows) == len(cases), 'all finite bands and masses')
+    for row, (strength, policy, momentum, mass) in zip(rows, cases):
+        keys(row, 'strength policy momentum_pi mass_pi matrix band_cosine eigenphases')
+        same([row['strength'], row['policy'], row['momentum_pi'], row['mass_pi']],
+             [strength, policy, momentum, mass], 'unfiltered finite spectrum census')
+        lapse = 1/(1+F(strength))
+        r = float(F(1, 2)*(lapse**2 if policy == 'curved' else 1))
+        q = math.sqrt(1-r*r)
+        p, mu = math.pi*float(F(momentum)), math.pi*float(F(mass)*lapse)
+        prime = r*ALPHA[0]+1j*q*BETA@ALPHA[0]
+        w = (1-2*r*r*math.sin(p)**2)*I-1j*(
+            2*r*math.cos(p)*math.sin(p)*prime+2*r*q*math.sin(p)**2*BETA)
+        expected = (math.cos(mu)*I-1j*math.sin(mu)*BETA)@w
+        actual = decode(row['matrix'], 16).reshape(4, 4)
+        need(np.linalg.norm(actual-expected) < 2e-12, 'exact finite Clifford word')
+        f = math.cos(mu)*(1-2*r*r*math.sin(p)**2)-2*r*q*math.sin(mu)*math.sin(p)**2
+        need(-1 <= f <= 1, 'finite unitary band domain')
+        same(row['band_cosine'], f, 'untruncated massive dispersion')
+        omega = math.acos(f)
+        same(row['eigenphases'], [-omega, -omega, omega, omega], 'every band multiplicity')
+        need(np.linalg.norm(actual@actual-2*f*actual+I) < 3e-12, 'full matrix minimal polynomial')
+
+
 def verify_evidence(packet):
-    keys(packet, 'controls instruments basis_words line cube robustness clocks symbols timelines')
+    keys(packet, 'controls instruments basis_words line cube robustness clocks symbols timelines bands')
     verify_controls(packet['controls'])
     same(packet['instruments'], expected_instruments(), 'complete inherited physical instruments')
     words = verify_words(packet['basis_words'])
@@ -340,4 +371,5 @@ def verify_evidence(packet):
     same(packet['robustness'], robust, 'exact separated error intervals')
     clock_cases(packet['clocks'])
     symbol_cases(packet['symbols'])
+    check_bands(packet['bands'])
     return True

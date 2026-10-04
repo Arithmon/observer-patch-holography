@@ -16,7 +16,7 @@ def render(packet):
     text = json.dumps(head, indent=2, sort_keys=True)[:-2]+',\n  "evidence": {\n'
     parts = []
     for key, value in evidence.items():
-        if key in ('line', 'cube', 'clocks', 'symbols', 'robustness', 'timelines'):
+        if key in ('line', 'cube', 'clocks', 'symbols', 'robustness', 'timelines', 'bands'):
             encoded = '[\n'+',\n'.join('      '+json.dumps(row, sort_keys=True, allow_nan=False) for row in value)+'\n    ]'
         else:
             encoded = json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False)

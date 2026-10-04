@@ -39,7 +39,15 @@ def claim_pin():
     data = json.loads((ROOT/'claims/claim_registry.yaml').read_text(encoding='utf-8'))
     rows = [r for r in data['claims'] if r['claim_id'] == CLAIM]
     need(len(rows) == 1, 'one scientific claim')
-    return hashlib.sha256(canonical(rows[0])).hexdigest()
+    # Bind the consumed definitions, without invalidating this receipt when
+    # an unrelated assumption is added elsewhere in the shared dictionary.
+    lines = (ROOT/'claims/assumption_dictionary.md').read_text(encoding='utf-8').splitlines()
+    definitions = {}
+    for name in rows[0]['assumptions']:
+        found = [line for line in lines if line.startswith('| `'+name+'` |')]
+        need(len(found) == 1, 'one definition for each consumed assumption')
+        definitions[name] = found[0]
+    return hashlib.sha256(canonical(dict(claim=rows[0], assumptions=definitions))).hexdigest()
 
 
 def load(path):

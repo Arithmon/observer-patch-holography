@@ -1855,7 +1855,7 @@
           "constructed_common_source_clock_and_native_transport_policies"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "524257107acd639838259c56b09de2a109232cc08eeed974d791c7e13e99cc04"
+        "original_claim_sha256": "e20e0fcd0272819a550b138f59370e7795ce074993af475a0d8dd62e8cb8d40c"
       },
       "OPH-SOURCE-COHERENT-CODE-COMPLETION": {
         "assumptions": [
@@ -3793,7 +3793,7 @@
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
     "code/m1_necessity/downstream.json": "d198d18b72ac6b8bbe161691abc313ccbdf973d4584beab50146228efb474f84",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "2bce1ff77c34308671691f5b4acba0ea3e82a3f80ef18d7c6dc1b0af98e6c29f",
+    "code/m1_necessity/test_necessity.py": "1da20ad80f28b7b96cb9e906fc9593fece56d9a0bcc94021a0de8c3da0970b3a",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",

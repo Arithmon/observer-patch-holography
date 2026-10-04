@@ -84,6 +84,11 @@ def mutate(e, name):
     elif name == 'zero_pulse_time': e['timelines'][0]['stages'][0]['action_done'] = e['timelines'][0]['stages'][0]['load_done']
     elif name == 'past_report': e['timelines'][0]['returned_record_ready'] = '0'
     elif name == 'retargeted_controller': e['timelines'][0]['stages'][0]['instruction']['coefficient'] = '0'
+    elif name == 'dropped_band': e['bands'][2]['eigenphases'].pop()
+    elif name == 'massless_substitution': e['bands'][3]['band_cosine'] = e['bands'][2]['band_cosine']
+    elif name == 'wrong_finite_phase': e['bands'][2]['matrix'][1][1] += .01
+    elif name == 'distant_unpaid_report': e['cube'][0]['report_to'] = [0, 2, 2]
+    elif name == 'moved_detector': e['line'][7]['receiver'] = [1]
     else: raise ValueError(name)
 
 
@@ -92,7 +97,8 @@ ATTACKS = ('source boundary zero_source clock clock_matrix clock_boolean pulse_o
            'dropped_cube_mode cube_source cube_clock empty_registers_free uncharged_reflections zero_service '
            'instantaneous_report lost_failure_events missing_strength duplicated_case weaker_error bad_gap '
            'unpaid_symbol_time inserted_metric wrong_velocity unbounded_remainder symbol_phase unknown_field '
-           'nan boolean_axis noncanonical_fraction hidden_stage zero_pulse_time past_report retargeted_controller').split()
+           'nan boolean_axis noncanonical_fraction hidden_stage zero_pulse_time past_report retargeted_controller '
+           'dropped_band massless_substitution wrong_finite_phase distant_unpaid_report moved_detector').split()
 
 
 @pytest.mark.parametrize('attack', ATTACKS)
@@ -161,6 +167,19 @@ def test_source_custody_rejects_changed_inputs(packet, tmp_path):
     path.write_text(json.dumps(row), encoding='ascii')
     with pytest.raises(ValueError, match='source custody'):
         verify.verify(path)
+
+
+def test_custody_binds_assumption_meaning(tmp_path, monkeypatch):
+    original = verify.claim_pin()
+    folder = tmp_path/'claims'
+    folder.mkdir()
+    (folder/'claim_registry.yaml').write_bytes((verify.ROOT/'claims/claim_registry.yaml').read_bytes())
+    text = (verify.ROOT/'claims/assumption_dictionary.md').read_text(encoding='utf-8')
+    marker = '| `constructed_common_source_clock_and_native_transport_policies` | '
+    assert marker in text
+    (folder/'assumption_dictionary.md').write_text(text.replace(marker, marker+'Altered hypothesis. '), encoding='utf-8')
+    monkeypatch.setattr(verify, 'ROOT', tmp_path)
+    assert verify.claim_pin() != original
 
 
 def test_checker_imports_no_producer():
