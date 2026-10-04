@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 474,
+  "surface_count": 475,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -986,6 +986,11 @@
     },
     {
       "path": "docs/research/DARK_SOURCE_DYNAMICS_LENSING.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/DISPERSION_FEASIBILITY.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },
