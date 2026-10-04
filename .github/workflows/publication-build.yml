@@ -91,7 +91,7 @@ jobs:
             tectonic-bundle-0.15.0-${{ runner.os }}-
 
       - name: Install pinned Tectonic
-        uses: wtfjoke/setup-tectonic@eb29fd68b7d3f76011906b6e45ea4320c8de5d2f # v4.0.5
+        uses: wtfjoke/setup-tectonic@5e1ba6e10229bd876c6594189bdab1a62b9d0b1c # v4.0.6
         with:
           tectonic-version: "0.15.0"
 
