@@ -1,7 +1,8 @@
 """Independent replay and hostile controls; no synthetic physical evidence."""
 import ast
 from copy import deepcopy
-from decimal import Decimal
+from decimal import Decimal, Inexact, ROUND_DOWN, localcontext
+from fractions import Fraction
 import inspect
 import json
 from pathlib import Path
@@ -50,9 +51,10 @@ def test_implementation_independence():
 
 @pytest.mark.parametrize('field', ['P', 'alpha_inverse', 'alpha_U', 'mZ_over_v',
                                    'anchor_inverse', 'lepton_transport', 'unscreened_quark_transport'])
-def test_false_alpha_numbers_are_rejected_even_with_valid_other_fields(packet, field):
+@pytest.mark.parametrize('index', [0, 1, 2], ids=['structured', 'gauge_width', 'asymptotic'])
+def test_false_alpha_numbers_are_rejected_even_with_valid_other_fields(packet, field, index):
     row = deepcopy(packet['calculations']['alpha'])
-    row['rows'][0][field] = str(Decimal(row['rows'][0][field])+Decimal('.00001'))
+    row['rows'][index][field] = str(Decimal(row['rows'][index][field])+Decimal('.00001'))
     with pytest.raises(ValueError):
         verify.verify_alpha(row)
 
@@ -144,6 +146,66 @@ def test_rounded_center_cannot_silently_kill_entire_window():
     assert result['window_robust_verdict'] == 'FAIL'
 
 
+def test_decisions_are_independent_of_callers_decimal_settings():
+    data = dict(value='1776.93', sigma='0.09', unit='MeV')
+    expected = comparison.compare(data)
+    expected_ratio = comparison.reference_log_likelihood_ratios('1776.93', '0.09', '1776.969027')
+    with localcontext() as hostile:
+        hostile.prec, hostile.Emin, hostile.Emax = 3, -2, 2
+        hostile.rounding = ROUND_DOWN
+        hostile.traps[Inexact] = True
+        assert comparison.compare(data) == expected
+        assert comparison.reference_log_likelihood_ratios('1776.93', '0.09', '1776.969027') == expected_ratio
+        assert hostile.prec == 3 and hostile.traps[Inexact]
+        with pytest.raises(ValueError):
+            comparison.number('1000000000000.0000000000000000001')
+
+
+def test_frozen_thresholds_against_independent_exact_rational_interval_oracle():
+    center, lo, hi = map(Fraction, ('1776.969027', '1776.968991', '1776.969063'))
+    gate = Fraction('0.045')
+    def text(value):
+        with localcontext(comparison.arithmetic_context()):
+            return format(Decimal(value.numerator)/Decimal(value.denominator), 'f')
+    count = 0
+    for uncertainty in ('1e-30', '0.000001', '0.045', '0.04500001', '0.1', '101', '100000000'):
+        sigma = Fraction(uncertainty)
+        for pivot in (center, lo, hi):
+            for multiple in (-3, -2, 0, 2, 3):
+                for epsilon in (-Fraction('1e-60'), Fraction(0), Fraction('1e-60')):
+                    y = pivot+multiple*sigma+epsilon
+                    if y <= 0:
+                        continue
+                    # Invert each acceptance interval using exact rational arithmetic.
+                    expected = ('FAIL' if not y-3*sigma <= center <= y+3*sigma else
+                                'COMPATIBLE' if sigma <= gate and y-2*sigma <= center <= y+2*sigma else
+                                'INCONCLUSIVE')
+                    robust = ('FAIL' if hi < y-3*sigma or lo > y+3*sigma else
+                              'COMPATIBLE' if sigma <= gate and y-2*sigma <= lo <= hi <= y+2*sigma else
+                              'INCONCLUSIVE')
+                    actual = comparison.compare(dict(value=text(y), sigma=text(sigma), unit='MeV'))
+                    assert actual['frozen_center_verdict'] == expected
+                    assert actual['window_robust_verdict'] == robust
+                    count += 1
+    assert count == 297
+
+
+def test_comparison_data_cannot_change_the_forward_outputs(fresh, monkeypatch, tmp_path):
+    inputs = verify.load(verify.HERE/'inputs.json')
+    inputs['codata']['alpha_inverse']['value'] = '140'
+    inputs['tau']['value'] = '1800'
+    (tmp_path/'inputs.json').write_text(json.dumps(inputs), encoding='utf-8')
+    monkeypatch.setattr(build, 'HERE', tmp_path)
+    replay.alpha_replay.cache_clear()  # Cached roots must not conceal input leakage.
+    alternate = build.calculations()
+    assert alternate['alpha'] == fresh['alpha']
+    for field in ('central_mev', 'corners_mev', 'outward_mev', 'excluded_small_root_mev', 'jacobian'):
+        assert alternate['tau'][field] == fresh['tau'][field]
+    assert alternate['comparison_diagnostics'] != fresh['comparison_diagnostics']
+    assert alternate['measured_pixel_diagnostic'] != fresh['measured_pixel_diagnostic']
+    assert alternate['historical_tau'] != fresh['historical_tau']
+
+
 @pytest.mark.parametrize('field,value', [
     ('unit', 'GeV'), ('unit', None), ('value', 'NaN'), ('value', 'Infinity'),
     ('value', float('nan')), ('value', True), ('value', '0'), ('value', '-1'),
@@ -224,7 +286,8 @@ def test_rebuilt_custody_cannot_loosen_reviewed_policy(monkeypatch, name, field,
     with pytest.raises(ValueError): verify.verify_policy()
 
 
-@pytest.mark.parametrize('attack', ['outcome_fields', 'hide_failed_query', 'drop_positive_control', 'add_candidate'])
+@pytest.mark.parametrize('attack', ['outcome_fields', 'hide_failed_query', 'drop_positive_control',
+                                   'add_candidate', 'change_title_keeping_keyword', 'change_date'])
 def test_discovery_does_not_accept_outcomes_or_launder_failed_search(monkeypatch, attack):
     original = verify.load
     def modified(path):
@@ -234,10 +297,29 @@ def test_discovery_does_not_accept_outcomes_or_launder_failed_search(monkeypatch
             elif attack == 'hide_failed_query': data['queries'].pop(0)
             elif attack == 'drop_positive_control':
                 data['queries'][3]['rows'] = [r for r in data['queries'][3]['rows'] if r['id'] != '2663717']
-            else: data['queries'][1]['rows'][0]['id'] = '123'
+            elif attack == 'add_candidate': data['queries'][1]['rows'][0]['id'] = '123'
+            elif attack == 'change_title_keeping_keyword':
+                data['queries'][1]['rows'][1]['titles'][0]['title'] = 'Measurement testing the Koide relation'
+            else: data['queries'][1]['rows'][0]['preprint_date'] = '2026-10-04'
         return data
     monkeypatch.setattr(verify, 'load', modified)
     with pytest.raises(ValueError): verify.verify_policy()
+
+
+def test_widening_historical_certificate_cannot_pass_by_rebuilding_custody(packet, monkeypatch, tmp_path):
+    path = verify.ROOT/verify.CERT
+    archive = verify.load(path)
+    for mode in archive['modes'].values():
+        mode['certified_enclosure']['alpha_inv'] = dict(lo='0', hi='1000')
+    forged = json.dumps(archive).encode('utf-8')
+    original = Path.read_bytes
+    monkeypatch.setattr(Path, 'read_bytes', lambda p: forged if p == path else original(p))
+    copied = deepcopy(packet)
+    copied['sources'] = verify.pins()
+    target = tmp_path/'forged-reference.json'
+    target.write_text(json.dumps(copied), encoding='utf-8')
+    with pytest.raises(ValueError, match='immutable historical evidence'):
+        verify.verify(target)
 
 
 @pytest.mark.parametrize('raw', [b'{"x":1,"x":2}', b'{"x":NaN}', b'{"x":Infinity}',

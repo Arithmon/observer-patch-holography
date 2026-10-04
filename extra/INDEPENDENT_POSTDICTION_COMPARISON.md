@@ -277,7 +277,7 @@ authenticity and undisclosed exposure cannot be established by an offline JSON
 checker; they require externally inspectable evidence before admission.
 
 Use the immutable FZ-10 center, window and historical input calibration.
-Do not reanchor to a later CODATA edition. The ordered numbered-bullet rule is:
+Do not reanchor to a later CODATA edition. The rule applies the listed cases:
 distance above three reported standard uncertainties -> FAIL; otherwise distance
 at most two uncertainties and sigma at most `0.045 MeV` -> COMPATIBLE; otherwise
 INCONCLUSIVE. The first FAIL bullet is unconditional; the precision condition
@@ -323,3 +323,39 @@ execution. Synthetic controls are tests of code, never observations of nature.
 
 This closes the finite reproduction/readiness task, not the experimental test,
 physical mass-selection theorem, alpha endpoint attachment, or M1 source law.
+
+## 7. Maintainer-style audit
+
+The audit rechecked the dimensionless running and kernel normalization against
+the primary producer, the two tau roots and monotonic derivatives, the scope of
+the covariance inequalities, the same-law likelihood argument, every #1011 exit
+criterion, and the canonical FZ-10 rule. No central value or scientific conclusion
+changed. The mathematical evidence is a fresh numerical reconstruction plus
+analytic arguments; it does not replace the inherited interval proof or certify
+physical input ancestry by numerical agreement.
+
+Two implementation weaknesses were reproduced and corrected. Setting a caller's
+Decimal `Inexact` trap made a valid historical comparison raise, and a low caller
+precision could make the standalone decimal parser round an out-of-range value
+onto the accepted limit. A complete local arithmetic context and exact `copy_abs`
+bound check now isolate both behaviors. The test suite checks the correction
+under hostile caller precision, rounding, exponent limits and traps. A separate
+exact-rational interval oracle checks 297 scheduled threshold and window cases,
+including equality, tiny displacements on both sides, very small uncertainties
+and coarse measurements; these controls assert no physical outcome.
+
+Scientific mutation coverage includes all three alpha maps, all tau enclosure
+corners and derivatives, and a cold-cache rebuild after independently changing
+the synthetic measured-alpha and measured-tau inputs. The forward alpha roots
+and electron/muon-derived tau output remain unchanged, while the historical
+comparison fields and explicitly target-consuming mixed diagnostic change.
+
+The reviewed discovery classification is now bound to its exact metadata
+snapshot, rather than relying on the presence of a keyword such as Koide.
+Substituting a measurement-like title while keeping that keyword is rejected.
+The inherited interval certificate's digest is checked separately from
+rebuildable custody: widening its bounds and rebuilding the packet still fails.
+Neither hash check establishes catalogue completeness or authenticates a new
+experimental dataset. If metadata itself exposes a result, the protocol records
+that exposure and retains the first candidate with blocked admission. All
+historical frozen artifacts and canonical prediction rows remain unchanged.

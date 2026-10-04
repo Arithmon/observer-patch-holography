@@ -3,7 +3,7 @@
 No imports from this packet's root solver, emitter, decision code or either
 historical producer. A custody match alone never accepts scientific evidence.
 """
-from decimal import Decimal, localcontext
+from decimal import Decimal
 import hashlib
 import itertools
 import json
@@ -38,7 +38,18 @@ SOURCES = ['code/independent_postdictions/'+p for p in OWN]+[
 
 # Normative, reviewed contracts: rebuilding a receipt cannot loosen these.
 # A policy change must separately update this review pin and its explanation.
-POLICY_PINS = {'protocol.json': '11a1f804c29005b737ec25076ddd47fcffdcbe3d1dd7936d8f46c2c64cf447f7', 'inputs.json': '0cd8c7944a48c790fb9f499cf874471d30a73ed1aabaadbc471b2c2746be61cb'}
+POLICY_PINS = {
+    'protocol.json': '7802a3dec6293d6979f51903aa93ae319d2f60f801f66755e859c4e938be8316',
+    'inputs.json': '0cd8c7944a48c790fb9f499cf874471d30a73ed1aabaadbc471b2c2746be61cb',
+    # Human classification is of this exact historical metadata, not a
+    # keyword classifier that can safely label a later catalogue response.
+    'catalogue_discovery.json': '84a021209fa5e7d9cb4971ac3df86dda4b8e655e2e0e955932a0aec168806059',
+}
+HISTORICAL_PINS = {
+    CERT: '20ab213f836fbe95149d4b40ba57aa144038580a0acb899322f4b72d963c2ad6',
+    FROZEN+'koide_balance_comparison_frozen_2026-07-28.json':
+        '09efbad8de813790d10671b425daef69429831c58daa212f4be131c61f653898',
+}
 
 
 def need(condition, message):
@@ -130,6 +141,9 @@ def numeric(c, value):
 
 
 def verify_policy():
+    for name, digest in HISTORICAL_PINS.items():
+        need(hashlib.sha256((ROOT/name).read_bytes()).hexdigest() == digest,
+             'immutable historical evidence')
     for name, digest in POLICY_PINS.items():
         need(hashlib.sha256(canonical(load(HERE/name))).hexdigest() == digest,
              'reviewed policy or reference-data contract changed')
@@ -168,9 +182,6 @@ def verify_policy():
     control = [r for r in snapshot['queries'][3]['rows'] if r['id'] == '2663717']
     need(len(control) == 1 and any(a['value'] == '2305.19116' for a in control[0]['arxiv_eprints']),
          'historical measurement positive control')
-    frozen = ROOT/FROZEN/'koide_balance_comparison_frozen_2026-07-28.json'
-    need(hashlib.sha256(frozen.read_bytes()).hexdigest() ==
-         '09efbad8de813790d10671b425daef69429831c58daa212f4be131c61f653898', 'immutable FZ-10 artifact')
 
 
 def close(c, actual, expected, tolerance='1e-35'):

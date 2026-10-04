@@ -51,3 +51,7 @@ mass values or uncertainties. An eligible outcome requires the dataset
 and public protocol version to be locked before opening those fields.
 No paid data, apparatus, hardware, cloud work or long simulation is part
 of this task. Historical FZ-10/FZ-11 bytes and OTS proofs remain immutable.
+
+A metadata field is not a guarantee of blindness. If a title or snippet itself
+reveals a result, log that exposure and retain the release for nomination; an
+exposed first candidate blocks admission instead of advancing to a later one.

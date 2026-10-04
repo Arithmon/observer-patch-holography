@@ -44,7 +44,9 @@ as a measurement or bypass NOT_READY. All controls in tests are synthetic.
 The decimal interface accepts magnitudes up to `1e12`, at most 80 fractional
 places, and standard uncertainties at least `1e-30 MeV`. Within that arithmetic
 domain the 110-digit context makes threshold arithmetic exact; rounded division
-is display-only. Coarse uncertainties remain valid inputs, including above
+is display-only. Precision, rounding, exponent limits and traps are isolated
+from caller settings. An independent rational interval oracle checks 297
+scheduled center/window boundary cases. Coarse uncertainties remain valid inputs, including above
 `100 MeV`; they are not a selection filter. An unsupported numerical format or
 range needs a reviewed implementation update before evaluation, never silent
 rounding or substitution of another dataset.
@@ -57,6 +59,11 @@ PYTHONPATH=code python -m independent_postdictions.fetch_catalogue new_snapshot.
 
 The checked snapshot includes unsuccessful literal-tau queries, the broader
 query, and a historical positive control. Its conclusion is bounded discovery,
-not exhaustive absence of measurements. The contract and historical input
-semantics have separate review pins; blindly rebuilding custody cannot loosen
-them. Historical freezes, canonical prediction rows and OTS proofs are unchanged.
+not exhaustive absence of measurements. The contract, historical inputs and
+exact classified catalogue snapshot have separate review pins; blindly
+rebuilding custody cannot loosen them. The inherited interval certificate also
+has an immutable digest: its bounds cannot be widened during a packet rebuild.
+These controls bind the audited material, not the truth of an external index or
+an experiment's exposure declaration. Metadata titles can reveal outcomes;
+unexpected exposure must be recorded and blocks the first candidate's admission.
+Historical freezes, canonical prediction rows and OTS proofs are unchanged.

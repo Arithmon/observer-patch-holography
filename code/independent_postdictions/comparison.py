@@ -1,6 +1,13 @@
 """Decimal decision arithmetic for the existing FZ-10 rule, not a new freeze."""
-from decimal import Decimal, localcontext
+from decimal import (Context, Decimal, DivisionByZero, InvalidOperation, Overflow,
+                     ROUND_HALF_EVEN, localcontext)
 import re
+
+
+def arithmetic_context():
+    # Isolate precision, exponent limits, rounding and traps from caller state.
+    return Context(prec=110, Emin=-999, Emax=999, rounding=ROUND_HALF_EVEN,
+                   traps=[InvalidOperation, DivisionByZero, Overflow])
 
 
 def number(value):
@@ -10,14 +17,14 @@ def number(value):
     # At most 13 integer and 80 fractional places: the 110-digit context then
     # computes every subtraction and threshold product exactly. Division is
     # display-only and does not decide the verdict.
-    if not result.is_finite() or abs(result) > Decimal('1e12') or result.as_tuple().exponent < -80:
+    if not result.is_finite() or result.copy_abs() > Decimal('1e12') or result.as_tuple().exponent < -80:
         raise ValueError('finite bounded observable required')
     return result
 
 
-def verdict(value, sigma, center=Decimal('1776.969027')):
-    distance = abs(value-center)
-    # The numbered FAIL bullet is unconditional; the precision gate belongs
+def _center_verdict(value, sigma):
+    distance = abs(value-Decimal('1776.969027'))
+    # The first FAIL bullet is unconditional; the precision gate belongs
     # to COMPATIBLE. "Every other outcome" is the third, residual category.
     if distance > 3*sigma:
         return 'FAIL'
@@ -29,8 +36,7 @@ def verdict(value, sigma, center=Decimal('1776.969027')):
 def compare(payload):
     if type(payload) is not dict or payload.keys() != {'value', 'sigma', 'unit'} or payload['unit'] != 'MeV':
         raise ValueError('exact measured-value schema and MeV required')
-    with localcontext() as c:
-        c.prec = 110
+    with localcontext(arithmetic_context()):
         value, sigma = number(payload['value']), number(payload['sigma'])
         if value <= 0 or not Decimal('1e-30') <= sigma:
             raise ValueError('positive physical mass and bounded nonzero standard uncertainty required')
@@ -42,7 +48,7 @@ def compare(payload):
         interval_verdict = ('FAIL' if dmin > 3*sigma else
                             'COMPATIBLE' if dmax <= 2*sigma and sigma <= Decimal('.045') else
                             'INCONCLUSIVE')
-        return dict(frozen_center_verdict=verdict(value, sigma),
+        return dict(frozen_center_verdict=_center_verdict(value, sigma),
                     distance_mev=str(d), distance_over_reported_sigma=str(d/sigma),
                     window_robust_verdict=interval_verdict,
                     interpretation='conditional balanced-mass relation; no OPH-versus-Koide discrimination')
@@ -51,8 +57,7 @@ def compare(payload):
 def reference_log_likelihood_ratios(value, sigma, prediction):
     # Normal-error illustration only. No null tail area, fitted selector
     # penalty or Bayes factor against the free-mass model is asserted.
-    with localcontext() as c:
-        c.prec = 110
+    with localcontext(arithmetic_context()):
         y, s, p = map(number, (value, sigma, prediction))
         if y <= 0 or p <= 0 or not Decimal('1e-30') <= s:
             raise ValueError('positive masses and bounded nonzero standard uncertainty')
