@@ -2,7 +2,7 @@
 
 The machine-readable register is ``claims/emergent_instrument_register.json``.
 This tool validates it fail-closed and renders
-``docs/INSTRUMENT_REGISTER_V3.md``; ``--check`` fails when the committed page
+``docs/registers/INSTRUMENT_REGISTER_V3.md``; ``--check`` fails when the committed page
 differs byte for byte from the render.
 
 The register holds simulation-instrument designs and frozen instruments
@@ -52,11 +52,11 @@ from closed_lanes import CLOSED_LANE_SUCCESSORS
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "claims" / "emergent_instrument_register.json"
 LEDGER_PATH = ROOT / "tracking" / "observation_ledger.json"
-SURFACE_PATH = ROOT / "docs" / "INSTRUMENT_REGISTER_V3.md"
+SURFACE_PATH = ROOT / "docs" / "registers" / "INSTRUMENT_REGISTER_V3.md"
 
 SCHEMA = "oph.emergent_instrument_register.v5"
 ISSUE = 737
-GENERATED_SURFACE = "docs/INSTRUMENT_REGISTER_V3.md"
+GENERATED_SURFACE = "docs/registers/INSTRUMENT_REGISTER_V3.md"
 REPO_URL = "https://github.com/FloatingPragma/observer-patch-holography"
 
 STATUSES = (
@@ -705,7 +705,7 @@ def render(register: dict, rows: list[dict]) -> str:
         f" instrument question belongs to"
         f" {', '.join(_issue_link(n) for n in CLOSED_LANE_SUCCESSORS[737])}."
         f" Each instrument binds to exactly one row of the observation ledger"
-        f" (`docs/OBSERVATION_LEDGER_V3.md`). SPECIFIED is mutable design work,"
+        f" (`docs/registers/OBSERVATION_LEDGER_V3.md`). SPECIFIED is mutable design work,"
         f" not a preregistration or verdict. Only a completed decisive"
         f" instrument explicitly selected by the ledger-control lineage can"
         f" apply its declared consequence to the bound ledger row."
@@ -887,7 +887,7 @@ def main(argv: list[str] | None = None) -> int:
         committed = SURFACE_PATH.read_bytes() if SURFACE_PATH.is_file() else b""
         if committed != surface:
             print(
-                "instrument register: docs/INSTRUMENT_REGISTER_V3.md is stale;"
+                "instrument register: docs/registers/INSTRUMENT_REGISTER_V3.md is stale;"
                 " run python tools/build_instrument_register.py",
                 file=sys.stderr,
             )

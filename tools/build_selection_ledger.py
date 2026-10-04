@@ -3,7 +3,7 @@
 The machine-readable ledger is ``claims/selection_ledger.json``. This tool
 validates it fail-closed against the claim registry, the physical-identification
 selector menus, the Lean corpus, and the paper anchors, then renders
-``docs/SELECTION_LEDGER.md`` from it. The rendered
+``docs/registers/SELECTION_LEDGER.md`` from it. The rendered
 page is a generated surface: ``--check`` fails when the committed page differs
 from the render, and the mandatory suite runs that check.
 
@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = ROOT / "claims" / "selection_ledger.json"
 REGISTRY_PATH = ROOT / "claims" / "claim_registry.yaml"
 IDENTIFICATION_PATH = ROOT / "claims" / "physical_identification_registry.json"
-SURFACE_PATH = ROOT / "docs" / "SELECTION_LEDGER.md"
+SURFACE_PATH = ROOT / "docs" / "registers" / "SELECTION_LEDGER.md"
 
 SCHEMA = "oph.selection_ledger.v1"
 CLASSES = ("forced", "exposed_premise", "open")
@@ -715,7 +715,7 @@ def main() -> int:
         )
         if committed != surface:
             print(
-                "selection ledger: docs/SELECTION_LEDGER.md is stale; run "
+                "selection ledger: docs/registers/SELECTION_LEDGER.md is stale; run "
                 "python tools/build_selection_ledger.py",
                 file=sys.stderr,
             )

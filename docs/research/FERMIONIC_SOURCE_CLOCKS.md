@@ -575,7 +575,7 @@ practical performance or an empirical prediction. In particular, (10) and
 the global accounting budget prevent a claim of population-independent
 physical robustness.
 
-The package [code/m1_fermionic_source](../code/m1_fermionic_source/README.md)
+The package [code/m1_fermionic_source](../../code/m1_fermionic_source/README.md)
 contains the exact GF(2) decoder, source circuits, finite executions and
 independent verifier. It checks fermions from occupation signs and exterior
 minors; it does not trust producer Pauli arithmetic. Local-cycle preparation

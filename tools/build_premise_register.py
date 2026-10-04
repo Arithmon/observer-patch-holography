@@ -1,7 +1,7 @@
 """Build and validate the V3 premise register surface (issue #727).
 
 The machine-readable register is ``tracking/premise_register.json``. This tool
-validates it fail-closed and renders ``docs/PREMISE_REGISTER_V3.md``;
+validates it fail-closed and renders ``docs/registers/PREMISE_REGISTER_V3.md``;
 ``--check`` fails when the committed page differs byte-for-byte from the
 render.
 
@@ -25,7 +25,7 @@ import strict_json
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "tracking" / "premise_register.json"
-SURFACE_PATH = ROOT / "docs" / "PREMISE_REGISTER_V3.md"
+SURFACE_PATH = ROOT / "docs" / "registers" / "PREMISE_REGISTER_V3.md"
 
 SCHEMA = "oph.premise_register.v3"
 ISSUE = 727
@@ -692,8 +692,8 @@ def render(rows: list[dict]) -> str:
         " types, intended dispositions, consuming lanes, statements, and evidence"
         " paths. It is not an exhaustive list of the hypotheses of every result."
         " Result-specific assumptions and imported results are declared in the"
-        " [claim registry](../claims/claim_registry.yaml), with named assumptions"
-        " defined in the [assumption dictionary](../claims/assumption_dictionary.md)."
+        " [claim registry](../../claims/claim_registry.yaml), with named assumptions"
+        " defined in the [assumption dictionary](../../claims/assumption_dictionary.md)."
         " Claim-registry validation rejects unknown premise references, missing"
         " per-claim premise classifications, and undefined assumption names. An"
         " explicit non-consumer of these canonical rows can require its"
@@ -793,7 +793,7 @@ def main() -> int:
         committed = SURFACE_PATH.read_bytes() if SURFACE_PATH.is_file() else b""
         if committed != surface:
             print(
-                "premise register: docs/PREMISE_REGISTER_V3.md is stale; run "
+                "premise register: docs/registers/PREMISE_REGISTER_V3.md is stale; run "
                 "python tools/build_premise_register.py",
                 file=sys.stderr,
             )

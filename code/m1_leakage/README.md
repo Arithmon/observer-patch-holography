@@ -2,7 +2,7 @@
 
 This package removes code preservation from the quantum-noise assumptions of
 the declared source. Its existing complete failure/reset services
-provide noisy leakage reduction. The [proof](../../extra/LEAKAGE_SOURCE_REFINEMENT.md)
+provide noisy leakage reduction. The [proof](../../docs/research/LEAKAGE_SOURCE_REFINEMENT.md)
 also permits a fixed nonzero elementary error below the credited threshold:
 growing concatenation depth replaces the parent's decreasing per-location
 error, with the additional local drive, inventory and lifetime costs charged.

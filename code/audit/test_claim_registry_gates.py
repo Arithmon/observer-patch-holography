@@ -100,6 +100,33 @@ def test_clean_fixture_passes(tmp_path):
     checker.main(tmp_path)
 
 
+def test_markdown_note_in_extra_fails_closed(tmp_path):
+    write_fixture_repo(tmp_path)
+    (tmp_path / "extra" / "README.md").write_text("# Papers\n", encoding="utf-8")
+    (tmp_path / "extra" / "NOTE.md").write_text("# A note\n", encoding="utf-8")
+    with pytest.raises(SystemExit, match="extra/NOTE.md: extra/ holds TeX papers"):
+        checker.main(tmp_path)
+
+
+def test_docs_research_owner_is_a_paper_source(tmp_path):
+    write_fixture_repo(tmp_path)
+    (tmp_path / "docs" / "research").mkdir(parents=True)
+    (tmp_path / "docs" / "research" / "NOTE.md").write_text("# A note\n", encoding="utf-8")
+
+    def own_by_note(registry):
+        registry["claims"][0]["owner_paper"] = "docs/research/NOTE.md"
+
+    edit_registry(tmp_path, own_by_note)
+    checker.main(tmp_path)
+
+    def declare_medium(registry):
+        registry["claims"][0]["owner_medium"] = "protocol_record"
+
+    edit_registry(tmp_path, declare_medium)
+    with pytest.raises(SystemExit, match="is a paper source, so the row must not"):
+        checker.main(tmp_path)
+
+
 def test_duplicate_registry_object_key_fails_closed(tmp_path):
     write_fixture_repo(tmp_path)
     path = tmp_path / "claims" / "claim_registry.yaml"

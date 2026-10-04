@@ -25,8 +25,8 @@
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "15a743e9c7e0d6faa6bf2d6feb88a38dffaf98caa58f6142cfbb1aa1825d360e",
-      "size_bytes": 928492
+      "sha256": "871846b4f3f02e9da1ee8d1d508bbba5b357e04e378eeb6099ff55c6b8120cc4",
+      "size_bytes": 928578
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
@@ -35,18 +35,18 @@
     },
     "reality_as_consensus_protocol": {
       "pdf_path": "paper/reality_as_consensus_protocol.pdf",
-      "sha256": "e7d90c426197af6cb2d0265f7fc6d479852007bc160e28a501f0c62a33c6ebae",
-      "size_bytes": 517106
+      "sha256": "771490f35cfe8a3c17178300af9c0461254c79cefea0557692b88542028d270a",
+      "size_bytes": 517166
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "722fcbe434ffcd2a0b559d4f275468a74ac8751dce3701c6c21806b069851880",
-      "size_bytes": 1228707
+      "sha256": "fa9c351ce0f872b7c779d182e68fe6cf8069806508021016518801618812dad4",
+      "size_bytes": 1229008
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
-      "sha256": "db433b3ff8333675c10783c7bab1bbb528ae098bc2f915d4333db0bc5cfcd226",
-      "size_bytes": 483272
+      "sha256": "29b0e2b982a09410213dd553d4cc0757b6b5895be91e2c3e565c42e1f48c8e5b",
+      "size_bytes": 483350
     }
   },
   "release_id": "r2047",

@@ -1,6 +1,6 @@
 # Admissible source processes with identical clocks and different transport
 
-The [proof](../../extra/SOURCE_GRAVITY_ADMISSIBILITY.md) strengthens the
+The [proof](../../docs/research/SOURCE_GRAVITY_ADMISSIBILITY.md) strengthens the
 previous two-field comparison: these are actual words in the existing
 coherent twelve-port source, whose A1--A3 membership was constructed
 previously. One stationary source and the entire resting-clock channel

@@ -1,5 +1,5 @@
 {
-  "claim": "01786109a2e945c8ed0195d961a5325895b2944e77ff754ed26c082dcbb2cb81",
+  "claim": "1bc7b40e548a5eecd21cd128f48fd6aaf87f9be072741ed57c02708af941d263",
   "evidence": {
     "observables": {
       "branches": [
@@ -3690,7 +3690,7 @@
     "Lean/Screen/SeamCurrentCarrierQuotient.lean": "e5f712cbccc5a1462945f0cb511a47064fe10818748498021d5c70ae169a933f",
     "code/paired_gravity/CONTRACT.md": "c5d2b06d3cd91ea2ff2ce3a3e3f7b0a79c27ec13231e595d1598395f95b275cc",
     "code/paired_gravity/DATA.md": "47df8171f1e3835313d170a1f22a93894e0f60b9b069f509f4d5a0e2eff6895e",
-    "code/paired_gravity/README.md": "6b2c4bbced3d8aecd808888b8b04e3343ddb7e7b222560fc9769c76a4e61e30a",
+    "code/paired_gravity/README.md": "323003014588c969a1736aa87cffea72e3ff9cd02d66c65e1fd1388e8d7f4c5d",
     "code/paired_gravity/__init__.py": "0feb0cf1c8b2d94b18989d7c9234f124a404dbcf256e94bd80a3075297ce01c3",
     "code/paired_gravity/build.py": "12a3e7ce2eda4e3df24fd76c4be439267c250d08f85bdf3fa770dffc12003dc6",
     "code/paired_gravity/format.py": "97abc275a240f1643fcc9e4831bbe10f0589a7a376bb45c5a2b48af7e7c3136a",
@@ -3700,11 +3700,11 @@
     "code/paired_gravity/source.py": "a1f5d7f53eb48205cc2622fc04c51d7be398f94479cd3ba1b6eb499a9372b417",
     "code/paired_gravity/source_check.py": "e212edcbdfcc0cc83c21c3bcf89b54f94767b02c3b7c4bacd3c96e9c6ffc2742",
     "code/paired_gravity/test_paired_gravity.py": "6d582594807cac7d1f5400db3f232d677442d662eef2f4174a92fe6e850e0806",
-    "code/paired_gravity/verify.py": "9c13fffbb8911b96f4c56bde6584614115af002b1e1ba0da5e514ae8cd10bf95",
+    "code/paired_gravity/verify.py": "099db0cad40c03142c2f1daed719bc4d5fc99feaa76e2fc1f1c0f31bc952f865",
     "code/source_scalar_execution/scalar_execution_algebra.py": "6cd1e44f9c0c5559f447db8db9499a843084424424145e371ad3be388fe92a67",
     "code/source_scalar_execution/source_scalar_execution_receipt.json": "6981fcd4e13fbc33f371224228341a995f34b4733aa70c2ec0b3f6ee5975c7af",
     "code/source_scalar_execution/verify_source_scalar_execution.py": "c03892572732bbf7d019e721d19b6a249b445e2dc30f54d3c237be938cf88d42",
-    "extra/PAIRED_SOURCE_GRAVITY.md": "b1163e67b499a3b68da205068f7fb17800eefc30aeaa17db36cbec735ab53685",
+    "docs/research/PAIRED_SOURCE_GRAVITY.md": "b1163e67b499a3b68da205068f7fb17800eefc30aeaa17db36cbec735ab53685",
     "requirements.txt": "f116bec13d89a098f6523a26eede8280021585a32ec3294fc3f7174d6cd0ec09"
   }
 }

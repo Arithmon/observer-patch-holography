@@ -13,7 +13,7 @@ in the named reads, clock and positive accounting at fixed finite rate.
 OPH retains its three-axiom basis. This result uses the already proposed CCG
 source and its declared cofinal control capability; it does not promote CCG,
 a microscopic source or a noise model into a consequence of A1--A3.
-Read the [contract](CONTRACT.md) and the [proof](../../extra/FIXED_RATE_SOURCE_READS.md).
+Read the [contract](CONTRACT.md) and the [proof](../../docs/research/FIXED_RATE_SOURCE_READS.md).
 
 ## Concrete results
 

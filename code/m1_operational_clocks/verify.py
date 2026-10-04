@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 SOURCES = [f'code/m1_operational_clocks/{p}' for p in
            ('__init__.py', 'model.py', 'check.py', 'verify.py', 'build.py', 'test_clocks.py', 'README.md', 'CONTRACT.md')]
-SOURCES += ['extra/MASSIVE_OPERATIONAL_CLOCKS.md', '.github/workflows/m1-operational-clocks.yml',
+SOURCES += ['docs/research/MASSIVE_OPERATIONAL_CLOCKS.md', '.github/workflows/m1-operational-clocks.yml',
             'code/m1_quantum_transport/tetra_model.py', 'code/m1_quantum_transport/tetra_check.py',
             'code/m1_quantum_transport/DERIVATION.md', 'requirements.txt', '.gitattributes']
 CLAIMS = ('OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT', 'OPH-M1-MASSIVE-FLIGHT-SPECTRUM',

@@ -86,7 +86,7 @@ associé fournit une dynamique exécutable des observateurs et les éléments
 de vérification conservés.
 
 La [référence des axiomes](docs/AXIOM_REFERENCE.md) énonce les trois axiomes
-fondamentaux ; le [registre des prémisses](docs/PREMISE_REGISTER_V3.md) et le
+fondamentaux ; le [registre des prémisses](docs/registers/PREMISE_REGISTER_V3.md) et le
 [registre des résultats](claims/claim_registry.yaml) consignent les prémisses
 supplémentaires et les hypothèses propres à chaque résultat, y compris les
 identifications physiques et les données empiriques.
@@ -134,16 +134,22 @@ de chaque famille de preuves.
 | [`paper/`](paper/) | Articles principaux et index des publications |
 | [`Lean/`](Lean/) | Développement mathématique vérifié par machine |
 | [`code/`](code/) et [`evidence/`](evidence/) | Modèles exécutables, certificats et éléments de reproduction |
-| [`extra/`](extra/) et [`cosmology/`](cosmology/) | Recherches mathématiques et physiques spécialisées |
+| [`extra/`](extra/) et [`cosmology/`](cosmology/) | Articles de recherche mathématique et physique spécialisés |
 | [`book/`](book/) | *Reverse Engineering Reality*, source et livre téléchargeable |
-| [`docs/`](docs/) | Politiques de lecture et registres scientifiques |
+| [`docs/`](docs/) | Références canoniques : axiomes, prédictions gelées, postdictions et critères de réfutation |
+| [`docs/registers/`](docs/registers/) | Registres générés des prémisses, observations, instruments et sélections |
+| [`docs/research/`](docs/research/) | Notes de recherche en Markdown, chacune vérifiée par un module de code |
+| [`docs/policies/`](docs/policies/) | Politiques de données, de preuves matérielles et de rédaction |
 
 ## Contribuer
 
 OPH accueille les preuves, contre-exemples, simulations, revues indépendantes
 et explications lisibles. Commencez par le [guide de reproduction](REPRODUCE.md)
-et le [registre de sélection](docs/SELECTION_LEDGER.md), qui énonce les
-prémisses et les frontières scientifiques utiles aux contributions.
+et le [registre de sélection](docs/registers/SELECTION_LEDGER.md), qui énonce les
+prémisses et les frontières scientifiques utiles aux contributions. Un article
+TeX va dans [`extra/`](extra/). Une note de recherche en Markdown va dans
+[`docs/research/`](docs/research/) et nomme le module de code qui la vérifie ;
+`extra/` ne contient aucune note en Markdown.
 
 ## Des parcelles d’observateur aux machines apprenantes
 

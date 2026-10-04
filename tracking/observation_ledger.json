@@ -290,7 +290,7 @@
         "Lean/Geometry/SourceOrderEinsteinComposition.lean",
         "Lean/ObserverPatchHolography/EinsteinBranch/Composition.lean",
         "Lean/ObserverPatchHolography/EinsteinBranch/RegisterSurface.lean",
-        "docs/GRAVITY_PREMISE_LADDER.md",
+        "docs/registers/GRAVITY_PREMISE_LADDER.md",
         "Lean/Geometry/EinsteinBranchInhabitant.lean",
         "Lean/Screen/LocalEnergyBalance.lean",
         "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean",
@@ -532,7 +532,7 @@
       "evidence": [
         "Lean/Locality.lean",
         "Lean/EventAlgebra/SlotLocalitySurface.lean",
-        "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+        "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
         "code/m1_operational_clocks/model.py",
         "code/m1_operational_clocks/check.py",
         "code/m1_operational_clocks/verify.py",
@@ -693,7 +693,7 @@
         "code/source_scalar_preparation/verify_preparation.py",
         "code/source_scalar_preparation/test_preparation.py",
         "code/source_scalar_preparation/preparation_receipt.json",
-        "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+        "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
         "code/m1_operational_clocks/model.py",
         "code/m1_operational_clocks/check.py",
         "code/m1_operational_clocks/verify.py",
@@ -1546,7 +1546,7 @@
       "premises": [],
       "evidence": [
         "tracking/sm_lagrangian_correspondence.json",
-        "docs/SM_LAGRANGIAN_CORRESPONDENCE.md",
+        "docs/registers/SM_LAGRANGIAN_CORRESPONDENCE.md",
         "Lean/Screen/AssembledActionComposition.lean",
         "Lean/Screen/FermionSectorAssembly.lean",
         "Lean/Screen/GaugeSectorBracketCompletion.lean",
@@ -1725,7 +1725,7 @@
       "premises": [],
       "evidence": [
         "code/particles/hadron/derive_empirical_ward_projected_spectral_measure.py",
-        "docs/HADRON.md"
+        "docs/policies/HADRON.md"
       ],
       "notes": "The existing Ward-projected surface transforms the flagged empirical PR-14 payload and is not a source-side hadron-spectrum computation. Issue #744 owns the physical QCD action, nonperturbative and continuum controls, spectrum readout, and comparison contract.",
       "open_premises": [
@@ -1777,7 +1777,7 @@
         "code/electromagnetism/verify_whitney_ephemeris_clock.py",
         "code/electromagnetism/test_whitney_ephemeris_clock.py",
         "code/electromagnetism/runtime/whitney_ephemeris_clock_receipt.json",
-        "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+        "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
         "code/m1_operational_clocks/model.py",
         "code/m1_operational_clocks/check.py",
         "code/m1_operational_clocks/verify.py",
@@ -1978,7 +1978,7 @@
         "Lean/Geometry/InternalClockRestFrequency.lean",
         "Lean/Geometry/MassShellKinematics.lean",
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
-        "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+        "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
         "code/m1_operational_clocks/model.py",
         "code/m1_operational_clocks/check.py",
         "code/m1_operational_clocks/verify.py",
@@ -2070,7 +2070,7 @@
       "lane_issue": 744,
       "premises": [],
       "evidence": [
-        "docs/HADRON.md"
+        "docs/policies/HADRON.md"
       ],
       "notes": "The current hadron surface is a transformation of a pinned empirical transport packet, not a source-side nonperturbative QCD computation. A production action, continuum and volume controls, chiral treatment, statistics, and exact verifier are owed.",
       "open_premises": [

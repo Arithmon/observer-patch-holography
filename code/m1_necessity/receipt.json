@@ -1022,7 +1022,7 @@
           "corpus_clock_cesium_identification_premise"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "a4cd43eef29d8965e302c5b7fc112b9e1922ebaffb1d70513315e27f86922fd5"
+        "original_claim_sha256": "9bd62f14336d8e5ddacc79a21729bfe36b8cd8438524e17d0121d9dabe591b08"
       },
       "OPH-CARTAN-SCALAR-CONTINUOUS-READOUT": {
         "assumptions": [
@@ -1106,6 +1106,13 @@
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "7b8b6e20b72feece48c148ad3535b1c02abf400973231338b1e19bf14b70de1f"
+      },
+      "OPH-DARK-SOURCE-DYNAMICS-LENSING": {
+        "assumptions": [
+          "declared_spherical_Einstein_source_and_null_observable"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "976c390358e5284625c99d62b23344172ab759a39662d24744c8689f2fa8ed08"
       },
       "OPH-DE-FIXED-CAPACITY-WLAW": {
         "assumptions": [
@@ -1296,7 +1303,7 @@
           "physical_clock_and_spacetime_attachment_deferred"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "34219e711b987c3a103c239fe0020e366d5c3383224f37fc86581b8f898e55a4"
+        "original_claim_sha256": "692b417c89a3020b2619e46732af492af831782ea5d3692eac71496fcf2ab5df"
       },
       "OPH-GEOMETRY-COMMON-WORLD-JOINT-ACTION": {
         "assumptions": [
@@ -1618,7 +1625,7 @@
           "declared_massive_tetrahedral_process"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "aa86fdc9f83229d1b8a916a43269a439a55cd15a44e65cf288fcc763826003c2"
+        "original_claim_sha256": "2d395ec2a866d446f32525994c6ac53c16b4c59ce7d2ceb03a32fd64acf971ec"
       },
       "OPH-M1-MICROSCOPIC-CUT-OBSTRUCTION": {
         "assumptions": [
@@ -1641,7 +1648,7 @@
           "declared_two_mass_clock_preparation"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "7747b137d17abf46b44560e4f3255dce8927f0ce6e4e24daa797308b5b77d5ed"
+        "original_claim_sha256": "fa19cdbc73bc0696adf356ead93b22136171517698aef6e34503a3f928771238"
       },
       "OPH-M1-POLYNOMIAL-VACUUM-OBSTRUCTION": {
         "assumptions": [
@@ -1663,7 +1670,7 @@
           "declared_smooth_local_car_operations"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "ccc342d79f96b43c9e37c59d7d3db4ca2cf470cd3ffa240c8fa629ff1638adec"
+        "original_claim_sha256": "5f6f2f0d84fb8118e126ca39c38f87956f383c034fe8d818035ce36295845a3a"
       },
       "OPH-M1-SPARSE-QUANTUM-TICK-REPAIR": {
         "assumptions": [
@@ -1855,14 +1862,14 @@
           "constructed_common_source_clock_and_native_transport_policies"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "e20e0fcd0272819a550b138f59370e7795ce074993af475a0d8dd62e8cb8d40c"
+        "original_claim_sha256": "c7a2b380ab8d3fceb8cba43526b0b9da28740eab490b3a12992134a55e726021"
       },
       "OPH-SOURCE-COHERENT-CODE-COMPLETION": {
         "assumptions": [
           "declared_proper_code_source_completion"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "0102697bf57e6dce10cef8adde0e740a19c613d92d6f897f66d17e7bb08d4136"
+        "original_claim_sha256": "96987f6b3b6ca75d66e159f545c15e6a421e8123a90788c3fe9c4bf931f05efc"
       },
       "OPH-SOURCE-COMPILED-MASS-CLOCK": {
         "assumptions": [
@@ -1872,7 +1879,7 @@
           "declared_source_clock_control_and_noise_budget"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "4232e5a316f0defc03a488fc0f7839e34a779b41c59c28f10b65fd518f04ec3c"
+        "original_claim_sha256": "09adf2fd5a5be9680702281a5c5aaefc4f3138981c098c9d0272f6bd6835645f"
       },
       "OPH-SOURCE-ENCODED-FERMION-CLOCK": {
         "assumptions": [
@@ -1884,7 +1891,7 @@
           "declared_encoded_fermionic_clock_budget"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "c59e48670b10311bf7c6a61c706eff709e7c6288cfe69b6341ea140abcdd1df6"
+        "original_claim_sha256": "029635d40338fac9c4c56094c6bad00e10734e210769774367e59b6f6c9d83c8"
       },
       "OPH-SOURCE-EXPANDER-LIVE-ARCHIVE": {
         "assumptions": [
@@ -1893,14 +1900,14 @@
           "declared_fixed_strength_public_record_source"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "37c3170766b47dccb15291ba89cdbb8ec595b8827e9a4844224da9030812f4c0"
+        "original_claim_sha256": "adf5aabd88959d3be093587d874281858eeebede1784dd0974afa2f96496e730"
       },
       "OPH-SOURCE-FERMIONIC-VACUUM-NOISE": {
         "assumptions": [
           "declared_encoded_fermionic_clock_budget"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "d4d138ef085ab03eb9f410c5f680931be2971faf02406d49b4e1f20855450de7"
+        "original_claim_sha256": "1d7fafedfc0f074ab74589909fb2918fd2f98b9e5aab8d5dac72c88bc65d1d93"
       },
       "OPH-SOURCE-FIXED-RATE-PROTECTED-READS": {
         "assumptions": [
@@ -1909,7 +1916,7 @@
           "declared_fault_protected_source_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "c066f43d75aee7fdca65d37a612ee4eda77a67f89a4e3f044e13f7fe4c93f31e"
+        "original_claim_sha256": "2e86b440661154c929ca44ba78b748fe435fd15bcf31ac369c60a7cecb8a818c"
       },
       "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY": {
         "assumptions": [
@@ -1918,7 +1925,7 @@
           "declared_fixed_strength_public_record_source"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "2fe38e6720002ee4ad011fde92f6578a8cd6acc2efbfc1d54e2cbd549727c8a2"
+        "original_claim_sha256": "4d3a0a10fc7cd49dddc6f4f4f1223dc2c955130366efb4186f677295f0fbd8fc"
       },
       "OPH-SOURCE-FULL-FAMILY-READ-ROUTING": {
         "assumptions": [
@@ -1934,7 +1941,7 @@
           "declared_full_interface_noise_and_leakage_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "dd2e4e37b4a9a4a4d3537eb5b24f6f8a20cc5827c6407b2fa49a0e8dcae9392b"
+        "original_claim_sha256": "5b6bafac3c038248e7c394573bbfbca4f43da656206b13fa6993bfede6ad40ec"
       },
       "OPH-SOURCE-LIVE-RECORD-PROTECTION": {
         "assumptions": [
@@ -1943,7 +1950,7 @@
           "declared_noisy_control_source_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "863bb2bf830ecea4472eef42da4d7b0fd1679e54e41599cc48f442f20da078a3"
+        "original_claim_sha256": "10ddf20051b84efe17dde4aa451dc6d96b3d7bfe2c394c46922c7ffad4e5fdeb"
       },
       "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION": {
         "assumptions": [
@@ -1952,7 +1959,7 @@
           "declared_encoded_fermionic_clock_budget"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "02f6c0accca76a05748e66e3a197dccf008e5b278be882331e9c3672f524c335"
+        "original_claim_sha256": "ccda076a1a8f2441a58c400d60f28149f6e8ac81784cddabe0fc7575a52477a6"
       },
       "OPH-SOURCE-LOCAL-SEA-LIMIT": {
         "assumptions": [
@@ -1961,7 +1968,7 @@
           "declared_filled_source_vacuum_and_read_program"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "685b245e2a2600148663afa0a19bcb6c7fb38f5ec8724caae66d55f4dbeff031"
+        "original_claim_sha256": "3fb0357008e7bf5d29321cc356100b0d66b8f21c86c220d6772fd73bd86363ed"
       },
       "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION": {
         "assumptions": [
@@ -1970,7 +1977,7 @@
           "declared_full_interface_noise_and_leakage_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "1586ea592a7292ae517b6ecbb8918ea8c5dfeee8cbb59495549a1b130a7a34ff"
+        "original_claim_sha256": "c5d9aa4396841a0f02c841a94c20209d50aa30248d745c5e83c2971499b7110c"
       },
       "OPH-SOURCE-NOISY-CONTROL-HISTORIES": {
         "assumptions": [
@@ -1979,21 +1986,21 @@
           "declared_noisy_control_source_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "2e8a440f73ee7c7e0f97925769b4670263e99409b447d30e500da6aed0dda3a3"
+        "original_claim_sha256": "02a242419a530c2da4ba8307d0a5f19c481e57d14c9ff753e0e676e98645168b"
       },
       "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION": {
         "assumptions": [
           "declared_calibrated_two_field_gravity_source_and_probe_dictionary"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "01786109a2e945c8ed0195d961a5325895b2944e77ff754ed26c082dcbb2cb81"
+        "original_claim_sha256": "1bc7b40e548a5eecd21cd128f48fd6aaf87f9be072741ed57c02708af941d263"
       },
       "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION": {
         "assumptions": [
           "declared_fault_protected_source_schedule"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "e129bd312fca98c3700fc077c188cfa550785db1d40e2f1dc6534a2d2f054320"
+        "original_claim_sha256": "1a9a55a1249672afc8579210d571a4a4ed07813d84cd5467484b979faa863c40"
       },
       "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT": {
         "assumptions": [
@@ -2011,7 +2018,7 @@
           "declared_fixed_strength_public_record_source"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "1d9d49afecf5c1fb384815ac9f9808de1837fd88685ce4efb8878f384dd8b57e"
+        "original_claim_sha256": "85e0240ac3761ec2c19455da85e12ac1fe46e158fcfb54615f4f820a881c2838"
       },
       "OPH-SOURCE-SEA-GENERATOR": {
         "assumptions": [
@@ -2020,14 +2027,14 @@
           "declared_filled_source_vacuum_and_read_program"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "f0311aed1b8badc3ffcbc49925747677036309b7216b9deb9b69a46cbd4254e7"
+        "original_claim_sha256": "893705121689f7afac0df48c853cae5d7021a0a8125cf2aa8449b8368991e839"
       },
       "OPH-SOURCE-TWO-BASIS-A3-SELECTION": {
         "assumptions": [
           "declared_code_channel_agreement_and_tracial_reference"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "965abbbe2b724425cc61e8874f069ce5fd4b4dacacf09d1b421d65b07f28395b"
+        "original_claim_sha256": "1bdcb7073ee99db537436e2518ea01f0055223df14d859c90f45e0ca824efa8c"
       },
       "OPH-THERMO-COLLAR-TEMPERATURE-READING": {
         "assumptions": [
@@ -2311,6 +2318,11 @@
         "from": "OPH-DM-COLLAR-SATURATION",
         "role": "supplies the envelope delimitation the mechanism complements: the envelope forces no defect, the record model forces one on sparse cuts; neither claim consumes the other's hypotheses",
         "to": "OPH-DM-SPARSE-DEFECT-MECHANISM"
+      },
+      {
+        "from": "OPH-DM-CONT",
+        "role": "identifies the scalar anomalous-charge and linear-mass interface whose missing relativistic stress closure is tested; does not derive physical admission of the alternatives",
+        "to": "OPH-DARK-SOURCE-DYNAMICS-LENSING"
       },
       {
         "from": "OPH-DM-CONT",
@@ -3779,10 +3791,10 @@
     "Lean/Geometry/M1Necessity.lean": "2b282b25fe3f82153d2780366b36e6eea8cd4f7685d0e08a9ebd15355062ff98",
     "Lean/Geometry/M1NecessityAxiomAudit.lean": "41f1652a454b94dde7f3a198b4c45badba075a54d13f4ed5a23ac533c3c4f677",
     "code/m1_necessity/BALANCED_REPLACEMENT.md": "166af4d120d3dae4f3d077d1160434d4650d7dc5cc7c48d56c8f7f1defb95fce",
-    "code/m1_necessity/CONSUMERS.md": "5e178a21be7719c24794fbcab673c4ae6d76a96aa66cab2d69e62663526780d4",
+    "code/m1_necessity/CONSUMERS.md": "6c7e26b449ec41b0c17581be79534640813a3e5fbba5e374eefe5f9c8741e046",
     "code/m1_necessity/CONTRACT.md": "f3186f4911ea004fcad0058dbc0a526d359c623d42bdb4bf279fc6dd43ea1670",
     "code/m1_necessity/DERIVATION.md": "13754829bb642c0e48c4ae8cfb8f69d56baa8de90c36dfcb18ae0ff0a8dcca9c",
-    "code/m1_necessity/README.md": "939b756634312bc2cba38d6b5656d9b5df2763f0fc199885b4de5aa2f47655ac",
+    "code/m1_necessity/README.md": "c2d3569b61cbf52f83d4f9b772cdeb2e15b811e52105b532bea16b961b46bc8b",
     "code/m1_necessity/SPECTRAL_COMPLETION.md": "1e633dcbe37a26401ef7c81c158f47d164b5ffb03ae6631da4e42b431ea19f54",
     "code/m1_necessity/__init__.py": "a49a6656f96a30bd6343e498a0ca5302dae30515d4cf458d45c172933a0247ac",
     "code/m1_necessity/audit.py": "d6a0df2ca2ab885fa8cb7c527f3a74ac17b748847524f4cec7d8df7a049a50c0",
@@ -3791,9 +3803,9 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "d198d18b72ac6b8bbe161691abc313ccbdf973d4584beab50146228efb474f84",
+    "code/m1_necessity/downstream.json": "22ab7fb4f3856f9dc9daeac8032f5441077ca65515631735bd5f33a1714df0f0",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "1da20ad80f28b7b96cb9e906fc9593fece56d9a0bcc94021a0de8c3da0970b3a",
+    "code/m1_necessity/test_necessity.py": "bcd6203c0f480b286ebdd033e7f45b7711ce977fa745aae1decf423b172643e8",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",

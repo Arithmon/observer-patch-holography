@@ -13,7 +13,7 @@ CLAIM = 'OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION'
 OWN = ('__init__.py', 'model.py', 'check.py', 'verify.py', 'build.py',
        'test_admissibility.py', 'README.md', 'CONTRACT.md')
 SOURCES = ['code/source_gravity_admissibility/'+p for p in OWN]+[
-    'extra/SOURCE_GRAVITY_ADMISSIBILITY.md',
+    'docs/research/SOURCE_GRAVITY_ADMISSIBILITY.md',
     '.github/workflows/source-gravity-admissibility.yml',
     'code/source_selection_model/response.json',
     'code/source_selection_model/verify_response.py',
@@ -21,7 +21,7 @@ SOURCES = ['code/source_gravity_admissibility/'+p for p in OWN]+[
     'code/source_selection_model/RECORD_GLUING.md',
     'code/m1_source_realization/model.py', 'code/m1_source_realization/check.py',
     'code/a5_closure/port_current_inner_certificate.py',
-    'extra/COHERENT_SOURCE_CLOCKS.md',
+    'docs/research/COHERENT_SOURCE_CLOCKS.md',
     'code/source_publication_selection/STATE_SELECTION.md',
     'docs/AXIOM_REFERENCE.md', 'claims/axiom_registry.yaml',
     'requirements.txt', '.gitattributes']

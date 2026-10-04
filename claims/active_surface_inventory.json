@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 459,
+  "surface_count": 474,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -881,88 +881,163 @@
     },
     {
       "path": "docs/AXIOM_REFERENCE.md",
-      "glob": "docs/*.md",
+      "glob": "docs/**/*.md",
       "allowlisted": true
     },
     {
       "path": "docs/CANONICAL_REPAIR_LAW_RFC.md",
-      "glob": "docs/*.md",
+      "glob": "docs/**/*.md",
       "allowlisted": false
     },
     {
       "path": "docs/COMMON_OBJECTIONS.md",
-      "glob": "docs/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/CONSTANTS_ANCESTRY_V3.md",
-      "glob": "docs/*.md",
+      "glob": "docs/**/*.md",
       "allowlisted": false
     },
     {
       "path": "docs/FROZEN_PREDICTION_LADDER.md",
-      "glob": "docs/*.md",
+      "glob": "docs/**/*.md",
       "allowlisted": true
     },
     {
-      "path": "docs/GRAVITY_PREMISE_LADDER.md",
-      "glob": "docs/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/HADRON.md",
-      "glob": "docs/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/HARDWARE_EVIDENCE_BUNDLE_H.md",
-      "glob": "docs/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/INSTRUMENT_REGISTER_V3.md",
-      "glob": "docs/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/OBSERVATION_LEDGER_V3.md",
-      "glob": "docs/*.md",
-      "allowlisted": false
-    },
-    {
       "path": "docs/OPH_FALSIFICATION_PROGRAM.md",
-      "glob": "docs/*.md",
+      "glob": "docs/**/*.md",
       "allowlisted": false
     },
     {
       "path": "docs/POSTDICTION_LEDGER.md",
-      "glob": "docs/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/PREMISE_REGISTER_V3.md",
-      "glob": "docs/*.md",
+      "glob": "docs/**/*.md",
       "allowlisted": false
     },
     {
       "path": "docs/README.md",
-      "glob": "docs/*.md",
+      "glob": "docs/**/*.md",
       "allowlisted": false
     },
     {
-      "path": "docs/SELECTION_LEDGER.md",
-      "glob": "docs/*.md",
+      "path": "docs/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md",
+      "glob": "docs/**/*.md",
       "allowlisted": false
     },
     {
-      "path": "docs/SM_LAGRANGIAN_CORRESPONDENCE.md",
-      "glob": "docs/*.md",
+      "path": "docs/instrument_specs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md",
+      "glob": "docs/**/*.md",
       "allowlisted": false
     },
     {
-      "path": "docs/STYLE_GUIDE.md",
-      "glob": "docs/*.md",
+      "path": "docs/instrument_specs/OL_A1_SIGNATURE_REPLICATION_SPEC.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/policies/HADRON.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/policies/HARDWARE_EVIDENCE_BUNDLE_H.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/policies/STYLE_GUIDE.md",
+      "glob": "docs/**/*.md",
       "allowlisted": true
+    },
+    {
+      "path": "docs/registers/CONSTANTS_ANCESTRY_V3.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/registers/GRAVITY_PREMISE_LADDER.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/registers/INSTRUMENT_REGISTER_V3.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/registers/OBSERVATION_LEDGER_V3.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/registers/PREMISE_REGISTER_V3.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/registers/SELECTION_LEDGER.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/registers/SM_LAGRANGIAN_CORRESPONDENCE.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/COHERENT_SOURCE_CLOCKS.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/DARK_SOURCE_DYNAMICS_LENSING.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/FERMIONIC_SOURCE_CLOCKS.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/FIXED_RATE_SOURCE_READS.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/FIXED_STRENGTH_PUBLIC_RECORDS.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/INDEPENDENT_POSTDICTION_COMPARISON.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/LEAKAGE_SOURCE_REFINEMENT.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/NOISY_SOURCE_RECORDS.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/PAIRED_SOURCE_GRAVITY.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/SOURCE_GRAVITY_ADMISSIBILITY.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/SOURCE_SEA_ENERGY.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
     },
     {
       "path": "claims/axiom_registry.yaml",

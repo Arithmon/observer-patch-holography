@@ -1,7 +1,7 @@
 """Build and validate the V3 constants ancestry surface (issue #736).
 
 The machine-readable register is ``tracking/constants_ancestry.json``. This
-tool validates it fail-closed and renders ``docs/CONSTANTS_ANCESTRY_V3.md``;
+tool validates it fail-closed and renders ``docs/registers/CONSTANTS_ANCESTRY_V3.md``;
 ``--check`` fails when the committed page differs byte-for-byte from the
 render.
 
@@ -33,7 +33,7 @@ import strict_json
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "tracking" / "constants_ancestry.json"
-SURFACE_PATH = ROOT / "docs" / "CONSTANTS_ANCESTRY_V3.md"
+SURFACE_PATH = ROOT / "docs" / "registers" / "CONSTANTS_ANCESTRY_V3.md"
 PREMISE_REGISTER_PATH = ROOT / "tracking" / "premise_register.json"
 OBSERVATION_LEDGER_PATH = ROOT / "tracking" / "observation_ledger.json"
 
@@ -571,7 +571,7 @@ def main() -> int:
         committed = SURFACE_PATH.read_bytes() if SURFACE_PATH.is_file() else b""
         if committed != surface:
             print(
-                "constants ancestry: docs/CONSTANTS_ANCESTRY_V3.md is stale; "
+                "constants ancestry: docs/registers/CONSTANTS_ANCESTRY_V3.md is stale; "
                 "run python tools/build_constants_ancestry.py",
                 file=sys.stderr,
             )

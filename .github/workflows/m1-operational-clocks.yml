@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths: &inputs
       - "code/m1_operational_clocks/**"
-      - "extra/MASSIVE_OPERATIONAL_CLOCKS.md"
+      - "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md"
       - "code/m1_quantum_transport/tetra_model.py"
       - "code/m1_quantum_transport/tetra_check.py"
       - "code/m1_quantum_transport/DERIVATION.md"

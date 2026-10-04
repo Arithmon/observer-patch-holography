@@ -96,13 +96,15 @@ PAPER_GLOBS = [
     "essays/**/*.tex",
 ]
 
-# Path substrings held out of every scan.  Both entries carry banned
-# vocabulary as their subject matter: the style guide defines the banned
+# Path substrings held out of every scan.  The style guide defines the banned
 # words, and the frozen-prediction ladder renders registration-time payload
-# bytes that are immutable by custody rule.
+# bytes that are immutable by custody rule.  The Markdown research notes in
+# docs/research/ are outside the reader-style scope: their verifier receipts
+# pin the exact prose, and the paper globs below cover only TeX research.
 ALLOWLIST_PATHS = [
-    "docs/STYLE_GUIDE.md",
+    "docs/policies/STYLE_GUIDE.md",
     "docs/FROZEN_PREDICTION_LADDER.md",
+    "docs/research/",
 ]
 
 PROGRESS_PATTERNS = [

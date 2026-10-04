@@ -368,7 +368,7 @@ def build_payload() -> dict[str, Any]:
             "quark_running_mass_scheme_convention_obstruction": (
                 "code/particles/runs/flavor/quark_running_mass_scheme_convention_obstruction.json"
             ),
-            "hadron_policy": "docs/HADRON.md",
+            "hadron_policy": "docs/policies/HADRON.md",
             "empirical_ee_hadrons_source_registry": (
                 "code/particles/hadron/empirical_ee_hadrons_sources.yaml"
             ),
@@ -527,7 +527,7 @@ def build_payload() -> dict[str, Any]:
         "hadron_policy": {
             "source_only_hadron_predictions_emitted": False,
             "empirical_hadron_closure_allowed_for_display": True,
-            "policy_artifact": "docs/HADRON.md",
+            "policy_artifact": "docs/policies/HADRON.md",
             "source_registry": EMPIRICAL_EE_REGISTRY.relative_to(ROOT).as_posix(),
             "empirical_payload_schema": EMPIRICAL_EE_SCHEMA.relative_to(ROOT).as_posix(),
             "reason": (

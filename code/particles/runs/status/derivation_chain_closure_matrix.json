@@ -419,7 +419,7 @@
       "chain": "hadrons",
       "claim_level": "source_only_absent_empirical_rows_separate",
       "evidence_artifacts": [
-        "docs/HADRON.md",
+        "docs/policies/HADRON.md",
         "code/particles/hadron/empirical_ee_hadrons_sources.yaml",
         "code/particles/hadron/empirical_ee_hadronic_spectral_measure.schema.json"
       ],

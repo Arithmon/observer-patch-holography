@@ -206,7 +206,7 @@ def test_cli_fails_under_optimization(packet, tmp_path):
 
 def test_source_custody_rejects_changed_inputs(packet, tmp_path):
     row = copy.deepcopy(packet)
-    row['sources']['extra/COHERENT_SOURCE_CLOCKS.md'] = '0'*64
+    row['sources']['docs/research/COHERENT_SOURCE_CLOCKS.md'] = '0'*64
     path = tmp_path/'changed-source.json'
     path.write_text(json.dumps(row), encoding='ascii')
     with pytest.raises(ValueError, match='source custody'):

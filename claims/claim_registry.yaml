@@ -4871,7 +4871,7 @@
       "evidence": [
         "paper/observers_are_all_you_need.tex",
         "Lean/Geometry/MassShellKinematics.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the Lorentz square of the scaled frame vector differs from the squared mass parameter, the squared scalar coordinate differs from the squared mass parameter plus the spatial squared norm, the rest characterization or standard-frame identity fails, an oriented Lorentz map changes the Lorentz square, or a future null vector violates the zero-mass identity.",
       "scope_if_false": "Only the kinematic mass-shell packet falls. The canonical Lorentz module, frame hyperboloid, soldering contract, and every physical energy, clock, or mass identification are assessed by their own claims and premises.",
@@ -4913,7 +4913,7 @@
       "evidence": [
         "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
         "Lean/Screen/LayeredDiscreteGauss.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the generic regional divergence identity, depth-bounded charge identity, shell total, inverse-square per-edge formula, scale-free identity, chain witness, global steady-source obstruction, unbounded-shell obstruction, or fixed twelve-port bridge fails under its stated hypotheses.",
       "scope_if_false": "Only the premise-complete discrete shell precursor and its finite-carrier boundary fall. The continuum shell theorem, completion carrier, Einstein composition, and physical Newtonian identification remain independently assessed.",
@@ -5296,7 +5296,7 @@
         "Lean/Screen/TemporalMaxwellEvolution.lean",
         "code/electromagnetism/runtime/local_face_maxwell_action_receipt.json",
         "code/electromagnetism/verify_local_face_maxwell_action_independent.py",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The bounded conditional result fails if Faraday's law does not follow from the staggered definitions, Gauss propagation along the declared Ampere law is not equivalent to the typed continuity equation, the staggered quadratic-form balance has an extra remainder, gauge transformation changes the declared fields or recurrence, a zero-current static solution fails the neutral-load Coulomb join, the zero-current recursion fails, or the reported unstable spectral modes and exact timestep bound are incorrect.",
       "scope_if_false": "Only the temporal evolution layer falls. The static local face action, the Coulomb-Green receipts, the Hodge comparison, and every physical propagation, source, or readout attachment retain their separately stated scopes.",
@@ -5419,7 +5419,7 @@
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "Lean/Geometry/InternalClockRestFrequency.lean",
         "Lean/Geometry/MassShellKinematics.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the rest phase differs from mass times the proper-time coordinate, the rotation law or oriented-chart invariance fails, a period exists off the 2 pi over mass lattice for nonzero mass, a spatial gradient on the de Broglie phase or a temporal rate on the plane-wave phase differs from the momentum or scalar coordinate, the zero-mass clock advances or has a fundamental period, an oriented chart brings a future null vector to vanishing spatial coordinates, or a positive-shell vector escapes the frame parameterization.",
       "scope_if_false": "Only the internal-clock formal precursor falls. The kinematic mass-shell packet, the canonical Lorentz module, and every physical clock, frequency, or mass identification are assessed by their own claims and premises.",
@@ -5459,7 +5459,7 @@
       "evidence": [
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "Lean/Screen/ElectroweakBreakingComposition.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if any bundle instance violates the minimizer characterization, if the stabilizer differs from the single (gY, gW) line, if the second-variation kernel differs from the gauge-image set or from three parameters, if the ray expansion misses the stated exact coefficients, if the broken-direction mass values or their ratio differ from the stated declared-constant forms, if the Yukawa coefficient at the minimum differs from yuk*vev or its vanishing law fails, or if a committed parity sector fails the doublet/singlet charge-balance receipt. The observed low-energy branch requires an additional elementary Higgs multiplet while satisfying the same declared-branch premises; that result is a physical kill of the declared one-Higgs completion on the realized branch and leaves the finite composition theorem standing.",
       "scope_if_false": "Only the composed electroweak-breaking inhabitant falls. The gauge-structure composition, the exterior selection, the index dictionary, and every physical Higgs, mass, or action claim are assessed by their own claims and premises.",
@@ -5546,7 +5546,7 @@
         "Lean/Screen/AssembledActionComposition.lean",
         "Lean/Screen/GaugeKineticInvariantForms.lean",
         "Lean/Screen/ElectroweakBreakingComposition.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if any sector restriction differs from the committed sector functional, if the assembled gauge coefficients violate the committed G constraint row, if the F-row collapse fails to be one ray, if the abelian phase action at the committed charge balance changes the assembled value, if the complex recovery evaluation differs from the imaginary part of the committed line, or if the base tuple evaluates to a nonzero value.",
       "scope_if_false": "Only the assembly falls. The committed gauge invariant-form receipts, the electroweak-breaking composition, the exterior selection grammar, and every physical action, coupling, and family claim are assessed by their own claims and premises.",
@@ -5600,7 +5600,7 @@
         "Lean/QFT/RichFibreRegionalNet.lean",
         "Lean/QFT/FiniteCausalObserverNet.lean",
         "Lean/Geometry/CanonicalLorentzModule.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if either direction of the order equivalence fails at any pair of committed regions, if the vertex assignment identifies two distinct committed regions, if a declared-disjoint pair has causally related images, if an oriented Lorentz map or affine cocycle transition breaks the equivalence, or if the cone relation violates a partial-order law.",
       "scope_if_false": "Only the composition packet falls. The committed nets, the canonical Lorentz module, the null-cone representation, and every physical spacetime or causal attachment are assessed by their own claims and premises.",
@@ -5642,7 +5642,7 @@
       "evidence": [
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "Lean/Geometry/FreeEvolutionPersistence.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the declared flow violates the one-parameter group law, if an evolved plane-wave state differs from a global-phase multiple of the same-momentum plane wave at some parameter, if a phase readout of the evolved state differs from the unchanged label coordinate, if the evolved state has modulus other than one or vanishes at some event, if two distinct positive-mass labels yield equal evolved states at some parameter, if the flow phase along the state's own frame differs from the internal clock, or if the zero-mass degeneracy or null-branch statements fail.",
       "scope_if_false": "Only the free-evolution persistence packet falls. The canonical Lorentz module, the mass-shell packet, the internal-clock packet, and every physical particle, decay, or persistence-time identification are assessed by their own claims and premises.",
@@ -5682,7 +5682,7 @@
         "Lean/EventAlgebra/SourceReachabilityDelimitation.lean",
         "Lean/EventAlgebra/TsirelsonSaturation.lean",
         "Lean/EventAlgebra/ProductSplitSeparability.lean",
-        "docs/OBSERVATION_LEDGER_V3.md"
+        "docs/registers/OBSERVATION_LEDGER_V3.md"
       ],
       "falsifier": "The claim fails if any enumerated operation maps a record-law state outside the record law, if any reachable state exceeds CHSH value 2 against jointly record-diagonal readouts, if the class fails to contain the committed counted state, or if the declared saturating state is record-diagonal. The corpus-level delimitation reading fails if the corpus commits an operation on the counted states outside the enumerated class whose output carries off-diagonal record coherence.",
       "scope_if_false": "Only this reachability delimitation falls. The declared saturation witness, the diagonal bound, the counted states, and the slot interface are assessed by their own claims and premises.",
@@ -5722,7 +5722,7 @@
       "evidence": [
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "Lean/EventAlgebra/PauliMinimalCoupling.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the Clifford square identity fails for some triple over some complex algebra, the cross collapse differs from i q B k under the hypothesis, the Pauli square coefficient differs from q, a commuting triple yields a nonvanishing spin term or fails the hypothesis at B = 0, the Pauli-triple inhabitant violates the commutation hypothesis at q = 2 or has vanishing spin term, or some scalar c distinct from 2 satisfies the inhabitant identity.",
       "scope_if_false": "Only the Pauli minimal-coupling square packet falls. The committed Pauli-matrix material, the Tsirelson and Robertson packets, and every physical field, moment, or laboratory identification are assessed by their own claims and premises.",
@@ -5809,7 +5809,7 @@
         "Lean/Geometry/SourceDerivedSpacetimeCarrier.lean",
         "Lean/Geometry/SourceOrderFrameCompatibilityPacket.lean",
         "Lean/Geometry/CausalOrderComposition.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the source-native interface reintroduces a population map, auxiliary precedence, or independent separation field; exact base order-cone agreement fails to imply base and transported-chart injectivity; generated order and supplied cone order fail to agree in any chart; a chart changes an interval; an authenticated parent edge leaves the future cone; the concrete within-height separation and increasing-height incomparable-spacelike hypotheses fail to construct an order-faithful placement; an order-faithful rank-spatial placement fails to construct the interface or derive two-way cone faithfulness; the finite result is mislabeled as a causal-set faithful embedding without density; or a conditional finite interface is promoted to a physical continuum.",
       "scope_if_false": "Only the source-native chart interface or order-faithful-placement constructor falls at the failing clause. The authenticated order, exact source carrier, algebraic Lorentz module, and every physical clock or continuum identification retain their own scopes.",
@@ -5851,7 +5851,7 @@
         "Lean/Screen/FermionSectorAssembly.lean",
         "Lean/Screen/AssembledActionComposition.lean",
         "Lean/Screen/ElectroweakBreakingComposition.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the row-pair invariance holds at a committed-mask pair with unbalanced committed charges or fails at a balanced pair, if any restriction receipt differs from the committed functional, if the shared-row identification misses the committed mass bilinear coefficient, if the census equality fails on agreeing parameter lists, or if the exhibited control pair fails to break invariance.",
       "scope_if_false": "Only the fermion-sector extension falls. The committed assembled action, the electroweak-breaking composition, the exterior selection grammar, and every physical fermion, coupling, family, and neutral-current claim are assessed by their own claims and premises.",
@@ -6001,7 +6001,7 @@
         "Lean/Geometry/RestFiberShellTransport.lean",
         "Lean/Geometry/InverseSquareShellLaw.lean",
         "Lean/Geometry/SpatialReadbackSoldering.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the boost-shear map at some declared frame is not a linear equivalence onto the rest space or violates the exact metric pullback, if the pulled-back radial readout differs from the carrier norm, if a transported strength value at a nonzero rest vector differs from charge/(4 pi r^2) with r the rest radius, if the exponent read on the rest-space dimension differs from dimension minus one, if an oriented Lorentz chart transport changes the strength field, or if the composed screen-chain identity fails for some pair of integer record controls.",
       "scope_if_false": "The rest-fiber transport step of the Newtonian-limit row loses its receipt; the committed shell law on the carrier, the rest-space theory, the candidate screen bridge, and the Einstein composition are assessed by their own claims.",
@@ -6043,7 +6043,7 @@
       "evidence": [
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "Lean/Screen/NeutralCurrentDictionary.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the committed infinitesimal action is not diagonal with the row-1 slot couplings on a neutral direction, if any mixing identity fails, if any slot's normalized photon coupling differs from e times q6EM/6 or its normalized Z coupling differs from gZ times (t3Six/6 - (q6EM/6) sinSqW), if two slots with different electric-charge entries get equal photon couplings at positive declared constants, or if a zero-charge slot gets a nonzero photon coupling or a zero Z coupling.",
       "scope_if_false": "Only the neutral-coupling dictionary falls. The electroweak-breaking composition, the exterior selection grammar, the index dictionary, and every physical current, mixing-angle, decay, or flavor claim are assessed by their own claims and premises.",
@@ -6171,7 +6171,7 @@
       "evidence": [
         "paper/observers_are_all_you_need.tex",
         "Lean/EventAlgebra/OperationalAdditivityBoundary.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if a trace or coexistent-sum enumeration identity is wrong, a fixture frequency differs from the declared Born weight, the countermodel leaves [0,1] or violates its stated complement/context-additivity properties, or it satisfies full additivity or Born form after all.",
       "scope_if_false": "Only the additivity-boundary packet falls. The finite Busch-Gleason theorem, static count fixture, and PR-03, PR-64, and PR-65 register rows are assessed separately.",
@@ -6260,7 +6260,7 @@
       "evidence": [
         "paper/observers_are_all_you_need.tex",
         "Lean/Geometry/CommonWorldIslandBridge.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the composed dictionary violates the metric identity at some frame and quotient pair, differs from the committed candidate readback at the standard frame, fails the source-chain or radius identity, if the extended record is uninhabited over the committed inhabitant, if any clause of the composed receipt fails at the antecedent bundle, or if the doubled dictionary satisfies the metric clause at the exhibited class.",
       "scope_if_false": "Only the cross-island dictionary and its extended witness fall. The base two-island witness, the rest-fiber shell transport, the screen Gram quotient, and every physical attachment premise are assessed by their own claims and register rows.",
@@ -6305,7 +6305,7 @@
         "Lean/Screen/GaugeSectorBracketCompletion.lean",
         "Lean/Screen/AssembledActionComposition.lean",
         "Lean/Screen/GaugeKineticInvariantForms.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the axis evaluation differs from the committed diagonal pairing, the sector-magnitude factorization fails, either cross-generator invariance row differs from its committed constraint row, the one-ray collapse fails, any restriction receipt differs from the committed functional, the census equality fails on agreeing parameter lists, the exhibited control pair fails to break invariance, or the off-axis witness lies in the axis slice.",
       "scope_if_false": "Only the invariant-form-level completion falls. The committed assembled action, the invariant-form constraint receipts, the electroweak-breaking composition, and every physical action, coupling, and family claim are assessed by their own claims and premises.",
@@ -6352,7 +6352,7 @@
       "evidence": [
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "Lean/Screen/ChargedCurrentDictionary.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if either charged direction is not orthogonal to both committed neutral directions, if the charged plane is not exactly the orthogonal complement of the neutral plane, if the raising or lowering closed form differs from the strict shift with coefficient gW, if the derived normalization differs from sqrt 2, if a nonzero charged coupling exists off the committed partner pairs or vanishes on one at positive gW, if a nonzero coupling fails to step the committed electric charge by exactly six sixths, if a photon-commutator eigenvalue differs from i gZ e up to sign, or if the charged or ladder commutator lands off the committed neutral span or third-weak action with the stated exact coefficients.",
       "scope_if_false": "Only the charged-coupling dictionary falls. The neutral-current dictionary, the electroweak-breaking composition, the exterior selection grammar, and every physical current, decay, Fermi-limit, or flavor claim are assessed by their own claims and premises.",
@@ -6776,7 +6776,7 @@
         "Lean/EventAlgebra/ProductSplitSeparability.lean",
         "Lean/EventAlgebra/SourceReachabilityDelimitation.lean",
         "Lean/EventAlgebra/TsirelsonSaturation.lean",
-        "docs/OBSERVATION_LEDGER_V3.md"
+        "docs/registers/OBSERVATION_LEDGER_V3.md"
       ],
       "falsifier": "The claim fails if a record-law state on some product carrier fails to be a finite convex combination of product states of the two slots, if a record-law state and four unit-interval settings, two in each slot, give a slot-local CHSH trace of modulus above 2, if the conjugated counter-witness settings fail cross-wing commutation or the unit-interval condition or give a trace other than 2*sqrt(2), if the conjugated left setting lies in a slot, or if any receipt clause fails.",
       "scope_if_false": "Only this separability bound and its hypothesis identification fall. The reachability delimitation, the saturation witness, the diagonal bound, and the slot interface are assessed by their own claims and premises.",
@@ -6866,7 +6866,7 @@
         "Lean/Screen/ScaledMaxwellStability.lean",
         "Lean/Screen/TemporalMaxwellEvolution.lean",
         "code/electromagnetism/runtime/local_face_maxwell_action_receipt.json",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if the exact window-action expansion has a remainder beyond the stated quadratic term, if either stationarity equivalence fails in either direction, if the scaled balance identity has an extra term, if the lower bound or either strict-window energy bound fails, if the boundary generalized mode lacks unbounded electric energy, if the iff threshold fails, if an eigenmode history fails the scaled evolution, if either explicit eigenvector identity fails, if some seam field has |C v|^2 > (3 + sqrt(5)) |v|^2, if any integer-table decision check is false, or if the theorem is reported as bounding the gauge potential.",
       "scope_if_false": "Only the scaled-action and stability layer falls. The unit-step conditional identities, the static local face action, the Coulomb-Green receipts, and every physical propagation, source, or readout attachment retain their separately stated scopes.",
@@ -6912,7 +6912,7 @@
       "evidence": [
         "paper/observers_are_all_you_need.tex",
         "Lean/Geometry/CommonWorldInstrumentJoin.lean",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "The claim fails if some certified bundle has Courant constant below 5 or unit step, if the Lüders diagonal channel differs from the diagonal pinching at some matrix, if the witness state or run state moves under that channel, if the swap-twisted instrument satisfies the pinching identity at the run state, if the step clock fails the exponential or period law, if successive step events are causally unordered, if the zero or negative step fails to break its clause, if the reference law differs from the run-state diagonal, if the first-law clause fails on a mass-zero variation, or if the extended record is uninhabited over the committed inhabitant.",
       "scope_if_false": "Only the four joins and their extended witness fall. The bridged witness, the scaled stability packet, the Lueders instrument, the internal-clock packet, and the Einstein-branch inhabitant are assessed by their own claims and register rows.",
@@ -7718,7 +7718,7 @@
       "evidence": [
         "Lean/Thermodynamics/PhysicalCalibrationImport.lean",
         "paper/observers_are_all_you_need.tex",
-        "docs/PREMISE_REGISTER_V3.md"
+        "docs/registers/PREMISE_REGISTER_V3.md"
       ],
       "falsifier": "An anchor literal differs from the SI definition, the uniqueness of the anchor structure fails, a conversion or round-trip identity fails, a composition receipt fails on its committed surface, or the non-forcing receipt fails.",
       "scope_if_false": "Only the typed import layer falls. The register row's import disposition and the committed clock algebra remain separately assessed.",
@@ -7805,7 +7805,7 @@
       "evidence": [
         "Lean/Screen/DispersionArmingInterface.lean",
         "code/electromagnetism/fz12_arming/PREMISE_ROW_PROPOSALS.md",
-        "docs/PREMISE_REGISTER_V3.md",
+        "docs/registers/PREMISE_REGISTER_V3.md",
         "claims/frozen_prediction_register.json"
       ],
       "falsifier": "A checklist field misstates its protocol clause; a coefficient or control-support identity fails; the mock-record packaging equivalence fails; the ratios uniquely select a scale despite holding for every positive scale; or any statement promotes a stipulated placeholder to physical eligibility, custody, premise discharge, or a scored comparison.",
@@ -12855,10 +12855,10 @@
       "novelty_type": "charged_massive_extension_with_full_spectrum_and_sharp_ballistic_speed",
       "falsifier": "An executed gate, band multiplicity, coercive thermal estimate, full-channel error or all-band velocity bound fails; a fixed-preparation ballistic limit has weight outside the stated ball; or a changed reference or uncharged flight is needed.",
       "scope_if_false": "The explicit massive-process or ballistic theorem fails. No A1--A3 source admission, interacting matter or physical quasienergy calibration is asserted.",
-      "owner_paper": "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+      "owner_paper": "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
-        "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+        "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
         "code/m1_operational_clocks/CONTRACT.md",
         "code/m1_operational_clocks/README.md",
         "code/m1_operational_clocks/model.py",
@@ -12897,10 +12897,10 @@
       "novelty_type": "state_uniform_spatial_resolution_interface_with_surviving_native_record",
       "falsifier": "The alias constant or full-vector comparison fails, a declared separated CAR encoding exceeds the uniform influence bound, a hard nonlocal projection is substituted for a local operation, or the perfect native record or its stated accounting cost cannot be reproduced.",
       "scope_if_false": "The specified resolved read interface fails. There is no assertion that this restricted operation algebra exhausts physical OPH observations or that final matter energy restricts arbitrary controllers.",
-      "owner_paper": "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+      "owner_paper": "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
-        "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+        "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
         "code/m1_operational_clocks/CONTRACT.md",
         "code/m1_operational_clocks/README.md",
         "code/m1_operational_clocks/model.py",
@@ -12939,10 +12939,10 @@
       "novelty_type": "constructive_normalizable_native_time_clock_with_readout_and_energy_bounds",
       "falsifier": "The common spinor, beat phase, visibility, dispersion error, sampled detector bound or finite-energy estimate fails; the informative witness is outside its domain; dephased labels retain the claimed clock signal; or the independently executed finite packets fail replay.",
       "scope_if_false": "The explicit free inertial clock or its error certificate fails. No autonomous twelve-port source, physical energy scale, zero-latency aggregate report or interacting/accelerated clock is certified.",
-      "owner_paper": "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+      "owner_paper": "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
-        "extra/MASSIVE_OPERATIONAL_CLOCKS.md",
+        "docs/research/MASSIVE_OPERATIONAL_CLOCKS.md",
         "code/m1_operational_clocks/CONTRACT.md",
         "code/m1_operational_clocks/README.md",
         "code/m1_operational_clocks/model.py",
@@ -12979,10 +12979,10 @@
       "novelty_type": "active_source_control_and_complete_classical_coherent_completions",
       "falsifier": "A source control fails exact reconstruction; a hidden buffer or central-sector reversible direction is admitted; a code instrument loses valid entanglement or hides failure; the factor or degree-one refinement fails; or a permitted classical protocol beats the complementary-test bound.",
       "scope_if_false": "The named source completion or transport independence result fails; unique empirical source selection is not asserted.",
-      "owner_paper": "extra/COHERENT_SOURCE_CLOCKS.md",
+      "owner_paper": "docs/research/COHERENT_SOURCE_CLOCKS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
-        "extra/COHERENT_SOURCE_CLOCKS.md",
+        "docs/research/COHERENT_SOURCE_CLOCKS.md",
         "code/m1_source_realization/CONTRACT.md",
         "code/m1_source_realization/README.md",
         "code/m1_source_realization/model.py",
@@ -13019,10 +13019,10 @@
       "novelty_type": "source_read_agreement_entropy_optimizer_and_refinement_semigroup",
       "falsifier": "A feasible channel violates the fidelity inequality; another channel has lower relative entropy than the stated optimizer; code entanglement is not preserved at zero errors; or fixed-time subdivision changes the rate-selected channel.",
       "scope_if_false": "The code-channel selection theorem fails. The complementary-fidelity identity is credited to prior work and is not claimed as an OPH discovery.",
-      "owner_paper": "extra/COHERENT_SOURCE_CLOCKS.md",
+      "owner_paper": "docs/research/COHERENT_SOURCE_CLOCKS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
-        "extra/COHERENT_SOURCE_CLOCKS.md",
+        "docs/research/COHERENT_SOURCE_CLOCKS.md",
         "code/m1_source_realization/CONTRACT.md",
         "code/m1_source_realization/README.md",
         "code/m1_source_realization/model.py",
@@ -13062,10 +13062,10 @@
       "novelty_type": "native_source_clock_compiler_with_charged_timing_and_noise_energy_scaling",
       "falsifier": "Any full spatial matrix entry or preparation leaf fails replay; a sender/receiver or vacuum register is omitted; the finite signal or time budget fails; phase-noise cost exceeds the sector estimate; fixed-rate noise has bounded refinement energy; or fermionic multi-particle claims are transferred from one-particle agreement.",
       "scope_if_false": "The named source-clock construction fails. CCG, drive capability and declared experimental parameters are explicit; laboratory admission, arbitrary many-particle dynamics and source uniqueness are not established.",
-      "owner_paper": "extra/COHERENT_SOURCE_CLOCKS.md",
+      "owner_paper": "docs/research/COHERENT_SOURCE_CLOCKS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
-        "extra/COHERENT_SOURCE_CLOCKS.md",
+        "docs/research/COHERENT_SOURCE_CLOCKS.md",
         "code/m1_source_realization/CONTRACT.md",
         "code/m1_source_realization/README.md",
         "code/m1_source_realization/model.py",
@@ -13104,10 +13104,10 @@
       "novelty_type": "proper_code_fermion_compiler_with_causal_all_syndrome_preparation",
       "falsifier": "A parity block, loop sign, occupation intertwiner, native instrument, local decoder, conversion map or density circuit fails; an outcome is omitted; preparation requires uncharged global processing; or an ordering change is applied to states without observables.",
       "scope_if_false": "The constructed all-sector source realization fails. The standard encoding is credited prior work, and physical statistics or unique source selection are not claimed.",
-      "owner_paper": "extra/FERMIONIC_SOURCE_CLOCKS.md",
+      "owner_paper": "docs/research/FERMIONIC_SOURCE_CLOCKS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
-        "extra/FERMIONIC_SOURCE_CLOCKS.md",
+        "docs/research/FERMIONIC_SOURCE_CLOCKS.md",
         "code/m1_fermionic_source/CONTRACT.md",
         "code/m1_fermionic_source/README.md",
         "code/m1_fermionic_source/model.py",
@@ -13155,10 +13155,10 @@
       "novelty_type": "all_sector_source_clock_and_resolved_instrument_realization",
       "falsifier": "A full spatial matrix entry or blank-bank column fails; ordinary swaps are accepted as fermionic flights; the detector exceeds one; a shared processor or message has zero charged duration; or the finite trace/accounting and visibility bounds fail.",
       "scope_if_false": "The named all-sector clock realization or its error ledger fails. No empirical calibration, practical hardware performance or interacting relativistic continuum is asserted.",
-      "owner_paper": "extra/FERMIONIC_SOURCE_CLOCKS.md",
+      "owner_paper": "docs/research/FERMIONIC_SOURCE_CLOCKS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
-        "extra/FERMIONIC_SOURCE_CLOCKS.md",
+        "docs/research/FERMIONIC_SOURCE_CLOCKS.md",
         "code/m1_fermionic_source/CONTRACT.md",
         "code/m1_fermionic_source/README.md",
         "code/m1_fermionic_source/model.py",
@@ -13201,10 +13201,10 @@
       "novelty_type": "encoded_vacuum_noise_obstruction_and_full_interface_bound",
       "falsifier": "The chord syndrome columns are not independent; an emitted vacuum fidelity violates the lower bound; a noisy active interface is omitted from R; or the full channel error exceeds the stated telescoping estimate.",
       "scope_if_false": "The physical-interface noise obstruction or sufficient error budget fails. Engineered logical noise and ideal terminal vacuum correction are distinct channels and are not excluded.",
-      "owner_paper": "extra/FERMIONIC_SOURCE_CLOCKS.md",
+      "owner_paper": "docs/research/FERMIONIC_SOURCE_CLOCKS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
-        "extra/FERMIONIC_SOURCE_CLOCKS.md",
+        "docs/research/FERMIONIC_SOURCE_CLOCKS.md",
         "code/m1_fermionic_source/CONTRACT.md",
         "code/m1_fermionic_source/README.md",
         "code/m1_fermionic_source/model.py",
@@ -13250,7 +13250,7 @@
       "novelty_type": "fixed_rate_operational_source_refinement_with_charged_fault_protection",
       "falsifier": "A native full-interface fault is nonlocal or uncounted; a single recovery fault produces an uncorrectable output; a retry is unbounded or an abort is postselected; universal gadget hypotheses fail; local control or block flight requires uncharged time; or the derived operational/accounting majorants do not vanish.",
       "scope_if_false": "The fixed-rate protected realization or its operational bounds fail. The credited threshold theorem, the prior unprotected source and the raw-vacuum obstruction are not contradicted.",
-      "owner_paper": "extra/FIXED_RATE_SOURCE_READS.md",
+      "owner_paper": "docs/research/FIXED_RATE_SOURCE_READS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_fixed_noise/CONTRACT.md",
@@ -13269,7 +13269,7 @@
         "code/m1_fixed_noise/test_fixed_noise.py",
         "code/m1_fixed_noise/verify.py",
         "code/m1_fixed_noise/receipt.json",
-        "extra/FIXED_RATE_SOURCE_READS.md"
+        "docs/research/FIXED_RATE_SOURCE_READS.md"
       ],
       "status": "proved_for_declared_cofinal_source_with_imported_universal_fault_tolerance",
       "claim_class": "conditional_implication",
@@ -13297,7 +13297,7 @@
       "novelty_type": "raw_state_and_corrected_observable_separation_in_the_source",
       "falsifier": "The decoder is not trace preserving on all syndromes; a supposedly corrected quantum output changes; the pulled-back effect is not positive and bounded; raw syndrome fidelity is identified with operational success; auxiliary or abort records are discarded; or raw-input encoding noise is falsely corrected.",
       "scope_if_false": "The operational/raw separation or accounting comparison fails. This would not establish physical energy calibration or a noise threshold for a different source.",
-      "owner_paper": "extra/FIXED_RATE_SOURCE_READS.md",
+      "owner_paper": "docs/research/FIXED_RATE_SOURCE_READS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_fixed_noise/CONTRACT.md",
@@ -13316,7 +13316,7 @@
         "code/m1_fixed_noise/test_fixed_noise.py",
         "code/m1_fixed_noise/verify.py",
         "code/m1_fixed_noise/receipt.json",
-        "extra/FIXED_RATE_SOURCE_READS.md"
+        "docs/research/FIXED_RATE_SOURCE_READS.md"
       ],
       "status": "proved_for_declared_cofinal_source_with_imported_universal_fault_tolerance",
       "claim_class": "conditional_implication",
@@ -13347,7 +13347,7 @@
       "novelty_type": "noisy_control_and_live_public_history_realization",
       "falsifier": "A complete Choi matrix differs, an abort is postselected, published computation-code spread hypotheses fail, a shared raw control or export fault is treated as independent, a record lifetime is omitted, or a claimed majorant does not vanish.",
       "scope_if_false": "The stated noisy-control/history realization or its record bounds fail; physical source selection and clock or energy calibration remain separate.",
-      "owner_paper": "extra/NOISY_SOURCE_RECORDS.md",
+      "owner_paper": "docs/research/NOISY_SOURCE_RECORDS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_noisy_records/CONTRACT.md",
@@ -13365,7 +13365,7 @@
         "code/m1_noisy_records/test_records.py",
         "code/m1_noisy_records/verify.py",
         "code/m1_noisy_records/receipt.json",
-        "extra/NOISY_SOURCE_RECORDS.md"
+        "docs/research/NOISY_SOURCE_RECORDS.md"
       ],
       "status": "proved_for_explicit_cofinal_source_with_imported_measurement_free_fault_tolerance",
       "claim_class": "conditional_implication",
@@ -13396,7 +13396,7 @@
       "novelty_type": "noisy_control_and_live_public_history_realization",
       "falsifier": "A refresh fault touches two shared input positions, an unmarked voter sees a wrong majority, an idle is omitted, a raw shared export decision is hidden, or the terminal contraction and joint-history bounds are violated.",
       "scope_if_false": "The stated noisy-control/history realization or its record bounds fail; physical source selection and clock or energy calibration remain separate.",
-      "owner_paper": "extra/NOISY_SOURCE_RECORDS.md",
+      "owner_paper": "docs/research/NOISY_SOURCE_RECORDS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_noisy_records/CONTRACT.md",
@@ -13414,7 +13414,7 @@
         "code/m1_noisy_records/test_records.py",
         "code/m1_noisy_records/verify.py",
         "code/m1_noisy_records/receipt.json",
-        "extra/NOISY_SOURCE_RECORDS.md"
+        "docs/research/NOISY_SOURCE_RECORDS.md"
       ],
       "status": "proved_for_explicit_cofinal_source_with_imported_measurement_free_fault_tolerance",
       "claim_class": "conditional_implication",
@@ -13444,7 +13444,7 @@
       "novelty_type": "native_leakage_and_general_noise_source_refinement",
       "falsifier": "A native reduction or pair-gate channel differs on any input matrix unit; a private Kraus index is exposed as a public outcome; a scalar decoder branch fails; a noisy reduction is assumed perfect; or a correctable local leak is treated as a necessary global abort.",
       "scope_if_false": "The stated native leakage or general-noise refinement fails. No conclusion follows about unique microscopic source selection, a laboratory energy scale or an autonomous physical clock.",
-      "owner_paper": "extra/LEAKAGE_SOURCE_REFINEMENT.md",
+      "owner_paper": "docs/research/LEAKAGE_SOURCE_REFINEMENT.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_leakage/__init__.py",
@@ -13465,7 +13465,7 @@
         "code/m1_leakage/README.md",
         "code/m1_leakage/CONTRACT.md",
         "code/m1_leakage/receipt.json",
-        "extra/LEAKAGE_SOURCE_REFINEMENT.md"
+        "docs/research/LEAKAGE_SOURCE_REFINEMENT.md"
       ],
       "status": "proved_for_explicit_cofinal_source_with_imported_leakage_and_general_noise_fault_tolerance",
       "claim_class": "conditional_implication",
@@ -13497,7 +13497,7 @@
       "novelty_type": "native_leakage_and_general_noise_source_refinement",
       "falsifier": "A generator-to-channel or channel-to-amplitude bound fails; leakage escapes the bounded gate box; the published universal gadget hypotheses fail; five-level Markov accounting or growing-level suppression does not converge; a reset, diagnostic lifetime or block-flight duration is omitted; or fixed relative drive error is falsely removed by acceleration. The marked-location multiplicity identity, combined six-level protection budget or live archive invariant fails under its declared fixed-rate model.",
       "scope_if_false": "The stated native leakage or general-noise refinement fails. No conclusion follows about unique microscopic source selection, a laboratory energy scale or an autonomous physical clock.",
-      "owner_paper": "extra/LEAKAGE_SOURCE_REFINEMENT.md",
+      "owner_paper": "docs/research/LEAKAGE_SOURCE_REFINEMENT.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_leakage/__init__.py",
@@ -13518,7 +13518,7 @@
         "code/m1_leakage/README.md",
         "code/m1_leakage/CONTRACT.md",
         "code/m1_leakage/receipt.json",
-        "extra/LEAKAGE_SOURCE_REFINEMENT.md"
+        "docs/research/LEAKAGE_SOURCE_REFINEMENT.md"
       ],
       "status": "proved_for_explicit_cofinal_source_with_imported_leakage_and_general_noise_fault_tolerance",
       "claim_class": "conditional_implication",
@@ -13551,7 +13551,7 @@
       "novelty_type": "fixed_strength_live_public_source_records",
       "falsifier": "The labelled graph differs from the credited expander, edge multiplicities are lost, a faulty location touches two shared inputs or private voters, an idle is omitted, or the live and output error inequalities fail.",
       "scope_if_false": "The stated fixed-strength archive or joined source construction fails. Source selection, an autonomous clock and physical energy remain separate declarations, not consequences of these bounds.",
-      "owner_paper": "extra/FIXED_STRENGTH_PUBLIC_RECORDS.md",
+      "owner_paper": "docs/research/FIXED_STRENGTH_PUBLIC_RECORDS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_expander_archive/__init__.py",
@@ -13572,7 +13572,7 @@
         "code/m1_expander_archive/README.md",
         "code/m1_expander_archive/CONTRACT.md",
         "code/m1_expander_archive/receipt.json",
-        "extra/FIXED_STRENGTH_PUBLIC_RECORDS.md"
+        "docs/research/FIXED_STRENGTH_PUBLIC_RECORDS.md"
       ],
       "status": "proved_for_explicit_cofinal_source_with_credited_expander_and_computation_code_results",
       "claim_class": "conditional_implication",
@@ -13605,7 +13605,7 @@
       "novelty_type": "fixed_strength_live_public_source_records",
       "falsifier": "The puncture decoder fails within radius 31, an export stage is unprotected at growing size, coherent fault norms are treated as probabilities, a native complement branch or named abort is omitted, the joint noise interval is empty, or the claimed error and lifetime bounds fail.",
       "scope_if_false": "The stated fixed-strength archive or joined source construction fails. Source selection, an autonomous clock and physical energy remain separate declarations, not consequences of these bounds.",
-      "owner_paper": "extra/FIXED_STRENGTH_PUBLIC_RECORDS.md",
+      "owner_paper": "docs/research/FIXED_STRENGTH_PUBLIC_RECORDS.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_expander_archive/__init__.py",
@@ -13626,7 +13626,7 @@
         "code/m1_expander_archive/README.md",
         "code/m1_expander_archive/CONTRACT.md",
         "code/m1_expander_archive/receipt.json",
-        "extra/FIXED_STRENGTH_PUBLIC_RECORDS.md"
+        "docs/research/FIXED_STRENGTH_PUBLIC_RECORDS.md"
       ],
       "status": "proved_for_explicit_cofinal_source_with_credited_expander_and_computation_code_results",
       "claim_class": "conditional_implication",
@@ -13657,7 +13657,7 @@
       "novelty_type": "filled_source_vacuum_and_readable_positive_generator",
       "falsifier": "The reflecting gap identity, full Fock phase identity, ground-state positivity, all-band partition function or alternative-branch counterexample fails.",
       "scope_if_false": "The specified filled-source construction or bound fails. The previous empty-vacuum experiments remain separate. No A1-A3 source selection, autonomous schedule, unique laboratory energy or interacting-vacuum stability is asserted.",
-      "owner_paper": "extra/SOURCE_SEA_ENERGY.md",
+      "owner_paper": "docs/research/SOURCE_SEA_ENERGY.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_sea_energy/__init__.py",
@@ -13676,7 +13676,7 @@
         "code/m1_sea_energy/README.md",
         "code/m1_sea_energy/CONTRACT.md",
         "code/m1_sea_energy/receipt.json",
-        "extra/SOURCE_SEA_ENERGY.md"
+        "docs/research/SOURCE_SEA_ENERGY.md"
       ],
       "status": "proved_for_declared_massive_source_and_explicit_filled_vacuum_experiment",
       "claim_class": "conditional_implication",
@@ -13707,7 +13707,7 @@
       "novelty_type": "filled_source_vacuum_and_readable_positive_generator",
       "falsifier": "The weighted resolvent or projection estimate fails; a high band is discarded; global fidelity is inferred from local covariance; or the stated compact-mode energy bound is violated.",
       "scope_if_false": "The specified filled-source construction or bound fails. The previous empty-vacuum experiments remain separate. No A1-A3 source selection, autonomous schedule, unique laboratory energy or interacting-vacuum stability is asserted.",
-      "owner_paper": "extra/SOURCE_SEA_ENERGY.md",
+      "owner_paper": "docs/research/SOURCE_SEA_ENERGY.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_sea_energy/__init__.py",
@@ -13726,7 +13726,7 @@
         "code/m1_sea_energy/README.md",
         "code/m1_sea_energy/CONTRACT.md",
         "code/m1_sea_energy/receipt.json",
-        "extra/SOURCE_SEA_ENERGY.md"
+        "docs/research/SOURCE_SEA_ENERGY.md"
       ],
       "status": "proved_for_declared_massive_source_and_explicit_filled_vacuum_experiment",
       "claim_class": "conditional_implication",
@@ -13761,7 +13761,7 @@
       "novelty_type": "filled_source_vacuum_and_readable_positive_generator",
       "falsifier": "A preparation syndrome or read branch is filtered; the background is subtracted and called a probability; the resolved instrument fails on a spectator; the finite interval is uninformative; or the extended preparation, routing and diagnostic lifetime bounds fail.",
       "scope_if_false": "The specified filled-source construction or bound fails. The previous empty-vacuum experiments remain separate. No A1-A3 source selection, autonomous schedule, unique laboratory energy or interacting-vacuum stability is asserted.",
-      "owner_paper": "extra/SOURCE_SEA_ENERGY.md",
+      "owner_paper": "docs/research/SOURCE_SEA_ENERGY.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/m1_sea_energy/__init__.py",
@@ -13780,7 +13780,7 @@
         "code/m1_sea_energy/README.md",
         "code/m1_sea_energy/CONTRACT.md",
         "code/m1_sea_energy/receipt.json",
-        "extra/SOURCE_SEA_ENERGY.md"
+        "docs/research/SOURCE_SEA_ENERGY.md"
       ],
       "status": "proved_for_declared_massive_source_and_explicit_filled_vacuum_experiment",
       "claim_class": "conditional_implication",
@@ -14131,7 +14131,7 @@
       "novelty_type": "source_class_nonidentifiability_with_paired_gravity_comparison",
       "falsifier": "A positive normalized two-field coefficient escapes the classification; clock marginals differ at the same source; local replay or error bounds fail; the common metric produces another read law; or the primary measurement chart is mis-transcribed.",
       "scope_if_false": "The calibrated two-field source classification, finite replay or measurement chart fails. No physical A1-A3 source selection, Einstein branch or parent gravity closure is asserted; #729/#779 retain physical stress and spatial-response selection, #736 calibration and #740 common history.",
-      "owner_paper": "extra/PAIRED_SOURCE_GRAVITY.md",
+      "owner_paper": "docs/research/PAIRED_SOURCE_GRAVITY.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
         "code/paired_gravity/CONTRACT.md",
@@ -14148,7 +14148,7 @@
         "code/paired_gravity/source_check.py",
         "code/paired_gravity/test_paired_gravity.py",
         "code/paired_gravity/verify.py",
-        "extra/PAIRED_SOURCE_GRAVITY.md"
+        "docs/research/PAIRED_SOURCE_GRAVITY.md"
       ],
       "status": "constructed_nonidentifiability_on_declared_source_class_with_retrospective_compressed_comparison",
       "claim_class": "conditional_implication",
@@ -14202,6 +14202,46 @@
       }
     },
     {
+      "claim_id": "OPH-DARK-SOURCE-DYNAMICS-LENSING",
+      "statement": "On the declared static spherical Einstein interface, linear enclosed mass and constant circular speed admit an exact one-parameter conserved anisotropic stress family. Dominant energy and nonnegative pressures give sharp mass and finite-endpoint bending intervals; a joint rotation/bending inverse with known ray winding determines the mass coefficient. Exact controls retain the ambiguity from endpoint data modulo a full turn; the weak nonnegative-pressure catalogue has zero full winding. A positive massive-particle velocity-moment cap yields a tighter necessary tensor interval and exactly enclosed relative bending bounds; global kinetic distribution existence is not inferred. A separate regular asymptotically flat finite-mass family has identical lapse, rotation and exterior metric but different null deflection, with exact positive rational lower and upper bounds and global dominant-energy proof. Complete unwrapped scattering and rotation profiles reconstruct the remaining spherical metric function through an Abel inverse under the stated regularity and decay conditions. This completes the bounded macroscopic underdetermination test, not a microscopic collar-source realization, matter stability proof, natural-data comparison, source-selected normalization or closure of the full dark-sector issue.",
+      "owner_paper": "docs/research/DARK_SOURCE_DYNAMICS_LENSING.md",
+      "tier": "exact_spherical_source_interface_test",
+      "assumptions": [
+        "declared_spherical_Einstein_source_and_null_observable"
+      ],
+      "imported_results": [
+        "spherical_Einstein_equations",
+        "anisotropic_stress_conservation",
+        "circular_and_null_geodesics",
+        "Abel_integral_inversion",
+        "positive_massive_particle_stress_moments"
+      ],
+      "oph_specific_delta": "Tests the dark-sector scalar-charge and linear-mass interface against a same-source dynamics/lensing consumer. Supplies sharp stress-dependent observable bounds and a regular fixed-exterior counterexample; isolates the physical density or radial-stress closure needed before a rotation calibration can predict lensing. No new gravitational law or anomaly-to-stress selection is claimed.",
+      "novelty_type": "explicit_source_interface_counterexample_and_joint_observable_bounds",
+      "evidence": [
+        "docs/research/DARK_SOURCE_DYNAMICS_LENSING.md",
+        "code/dark_source_lensing/CONTRACT.md",
+        "code/dark_source_lensing/model.py",
+        "code/dark_source_lensing/check.py",
+        "code/dark_source_lensing/global_ray.py",
+        "code/dark_source_lensing/verify.py",
+        "code/dark_source_lensing/test_lensing.py",
+        "code/dark_source_lensing/receipt.json"
+      ],
+      "falsifier": "An Einstein component, conservation identity, sharp endpoint, ray integral, inverse or global energy/separation bound fails; a singular shell or changed exterior enters the global pair; semantic corruption is accepted; or the supplied macroscopic alternatives are promoted to physical OPH sources or observational evidence.",
+      "scope_if_false": "The scoped joint-observable certificate fails; the parent conditional anomaly statements and earlier source-selection results retain their separately stated scope.",
+      "status": "exact_macroscopic_underdetermination_and_joint_interface_verified__physical_source_selection_open",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This finite explicit comparison supplies classical spherical Einstein geometry and its stress tensor, and tests the phenomenological dark-sector interface outside the canonical derivation-premise register. It neither consumes a physical OPH source/metric attachment nor claims microscopic admission of the competing tensors or empirical branch establishment."
+      }
+    },
+    {
       "claim_id": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
       "statement": "In the existing coherent proper-code source satisfying its stated A1-A3 model clauses, two fixed source-conditioned native coin policies share a grounded Dirichlet source, the entire stationary-clock channel and zero-source speed calibration. They introduce no new primitive reversible direction. With all flights, reflections and service time charged, an exact five-site receiver experiment gives probabilities 1/4 and 1/[4(1+s)^4] at source strength s>0. An exact full-band identity preserves the homogeneous zero-momentum mass phase while changing finite-momentum dispersion. The native three-dimensional finite word has principal speed v=2a cos(theta)/T; common rest lapse A=1/(1+u) leaves this spatial-response function undetermined. Both policies preserve the inherited typed A3 problems, and a same-algebra faithful A3 problem admitting both program records cannot give the flat record zero weight using common clock constraints alone. The result establishes non-entailment inside an admitted source, not physical Maxwell photons, Einstein source selection or a property of the integer-repair simulator.",
       "assumptions": [
@@ -14218,10 +14258,10 @@
       "novelty_type": "admitted_source_process_nonentailment_with_exact_finite_read",
       "falsifier": "A compiled instruction leaves the inherited grammar; full response or refinement is enlarged; stationary clock channels differ; a flight or report is uncharged; or independent complete-channel replay contradicts the exact rational detector gap.",
       "scope_if_false": "The source-process membership, finite read separation or principal-symbol calculation fails. No physical source/action, photon identification, universal stress law or parent gravity closure is asserted.",
-      "owner_paper": "extra/SOURCE_GRAVITY_ADMISSIBILITY.md",
+      "owner_paper": "docs/research/SOURCE_GRAVITY_ADMISSIBILITY.md",
       "tier": "analytic_theorem_with_independent_finite_controls",
       "evidence": [
-        "extra/SOURCE_GRAVITY_ADMISSIBILITY.md",
+        "docs/research/SOURCE_GRAVITY_ADMISSIBILITY.md",
         "code/source_gravity_admissibility/CONTRACT.md",
         "code/source_gravity_admissibility/README.md",
         "code/source_gravity_admissibility/model.py",
@@ -14240,6 +14280,54 @@
         "open": [],
         "boundary": [],
         "rationale": "This mathematical countermodel reuses a constructed full-axiom source and its proposed coherent transport service to disprove clock-to-spatial entailment. It does not consume a physically selected matter source, electromagnetic interpretation or physical premise-register branch; its finite operational probability gap does not need those identifications."
+      }
+    },
+    {
+      "claim_id": "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
+      "statement": "Independent simultaneous dimensionless reconstruction reproduces both retained certified alpha/P roots and separates the converged asymptotic map from its historical approximate trunk and measured-alpha-consuming mixed diagnostic. An independent implicit balanced-Q solve reproduces the ordered tau output and 72 eV outward input-box window. Analytic covariance-agnostic first-order sensitivity bounds and a same-data reference comparison show exact observational equivalence to the Koide relation and one constraint relative to a free tau mass. The historical PDG measurement gives FZ-10 INCONCLUSIVE. A bounded three-candidate audit selects canonical FZ-10 and delivers a concrete future-release contract with NOT_READY status: no eligible untouched dataset, admission dossier or external registration evidence is claimed. No new natural outcome, global chance probability, physical mass selection or alpha theory error is inferred.",
+      "owner_paper": "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
+      "tier": "independent_quantitative_reproduction_and_bounded_natural_comparison_readiness",
+      "assumptions": [
+        "declared_alpha_maps_and_balanced_ordered_tau_relation",
+        "historical_reference_inputs_and_FZ10_comparison_contract"
+      ],
+      "imported_results": [
+        "one_loop_gauge_running_and_vacuum_polarization",
+        "positive_circulant_Koide_identity",
+        "positive_semidefinite_covariance_Cauchy_bounds",
+        "same_observation_model_likelihood_equivalence"
+      ],
+      "oph_specific_delta": "Independently checks the actual OPH numerical quantities, prevents measured-endpoint and approximation conflation, proves the selected tau observable cannot discriminate OPH from the identical Koide relation, and supplies a complete outcome-blind release contract and precise readiness exit.",
+      "novelty_type": "independent_postdiction_reproduction_and_reference_discrimination_audit",
+      "evidence": [
+        "docs/research/INDEPENDENT_POSTDICTION_COMPARISON.md",
+        "code/independent_postdictions/replay.py",
+        "code/independent_postdictions/verify.py",
+        "code/independent_postdictions/inner_check.py",
+        "code/independent_postdictions/receipt.json",
+        "code/independent_postdictions/protocol.json",
+        "code/independent_postdictions/catalogue_discovery.json",
+        "code/independent_postdictions/test_reproduction.py"
+      ],
+      "falsifier": "Independent roots or source equations disagree; the tau branch or input enclosure differs; the covariance bound or same-law reference equivalence fails; unknown trials acquire a chance probability; policy corruption or hostile evidence is accepted; or exposed/synthetic outcomes are promoted to natural evidence.",
+      "scope_if_false": "The independent reproduction or comparison contract fails. This audit does not select the physical alpha readout or source mass action, replace canonical FZ-10, establish an eligible dataset, or close the calibration/source parents.",
+      "status": "independent_reproduction_complete__bounded_FZ10_data_release_contract_NOT_READY",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [
+          "PR-13",
+          "PR-17",
+          "PR-37"
+        ],
+        "open": [],
+        "boundary": [
+          "PR-14",
+          "PR-38",
+          "PR-39",
+          "PR-50"
+        ]
       }
     }
   ]

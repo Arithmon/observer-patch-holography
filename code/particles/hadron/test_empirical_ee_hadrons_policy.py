@@ -10,7 +10,7 @@ import yaml
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-POLICY = ROOT.parents[0] / "docs" / "HADRON.md"
+POLICY = ROOT.parents[0] / "docs" / "policies" / "HADRON.md"
 REGISTRY = ROOT / "particles" / "hadron" / "empirical_ee_hadrons_sources.yaml"
 SCHEMA = ROOT / "particles" / "hadron" / "empirical_ee_hadronic_spectral_measure.schema.json"
 

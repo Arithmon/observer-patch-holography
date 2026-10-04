@@ -207,7 +207,12 @@ mandatory collection unless explicitly enabled:
 The mandatory suite is **collectable and executable** from a clean clone. The
 acceptance bar for this path is a green `python tools/run_mandatory_suite.py`:
 claim registry, release manifest, scientific-register sync, a clean `--collect-only`
-run with zero import errors, and the executed validation fixtures.
+run with zero import errors, and the executed validation fixtures. The generated
+registers live in `docs/registers/`; the first line of each page names its JSON
+source and the `tools/build_*.py` generator, and the suite fails when a committed
+page differs from its regeneration. Each research note in `docs/research/` is
+pinned by path and SHA-256 in the receipt of the code lane that verifies it, so a
+change to a note rebuilds that receipt in the same commit.
 
 Full test execution (`python -m pytest code`) is **not** expected to be green
 from a clean clone, so it is not the documented gate here. A bare
