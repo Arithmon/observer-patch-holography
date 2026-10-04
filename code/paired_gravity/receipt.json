@@ -3690,7 +3690,7 @@
     "Lean/Screen/SeamCurrentCarrierQuotient.lean": "e5f712cbccc5a1462945f0cb511a47064fe10818748498021d5c70ae169a933f",
     "code/paired_gravity/CONTRACT.md": "c5d2b06d3cd91ea2ff2ce3a3e3f7b0a79c27ec13231e595d1598395f95b275cc",
     "code/paired_gravity/DATA.md": "47df8171f1e3835313d170a1f22a93894e0f60b9b069f509f4d5a0e2eff6895e",
-    "code/paired_gravity/README.md": "035d90759a569e99f3b73a3d932081c0786ac007e2f5300c95a96951bb1eb6b1",
+    "code/paired_gravity/README.md": "6b2c4bbced3d8aecd808888b8b04e3343ddb7e7b222560fc9769c76a4e61e30a",
     "code/paired_gravity/__init__.py": "0feb0cf1c8b2d94b18989d7c9234f124a404dbcf256e94bd80a3075297ce01c3",
     "code/paired_gravity/build.py": "12a3e7ce2eda4e3df24fd76c4be439267c250d08f85bdf3fa770dffc12003dc6",
     "code/paired_gravity/format.py": "97abc275a240f1643fcc9e4831bbe10f0589a7a376bb45c5a2b48af7e7c3136a",
@@ -3704,7 +3704,7 @@
     "code/source_scalar_execution/scalar_execution_algebra.py": "6cd1e44f9c0c5559f447db8db9499a843084424424145e371ad3be388fe92a67",
     "code/source_scalar_execution/source_scalar_execution_receipt.json": "6981fcd4e13fbc33f371224228341a995f34b4733aa70c2ec0b3f6ee5975c7af",
     "code/source_scalar_execution/verify_source_scalar_execution.py": "c03892572732bbf7d019e721d19b6a249b445e2dc30f54d3c237be938cf88d42",
-    "extra/PAIRED_SOURCE_GRAVITY.md": "e2541215b503235ef199dcb3c7320e1d8c3fca79eb3c6feeca895436e7e99dea",
+    "extra/PAIRED_SOURCE_GRAVITY.md": "b1163e67b499a3b68da205068f7fb17800eefc30aeaa17db36cbec735ab53685",
     "requirements.txt": "3277500ae738ab064baacbb01233ebf165319d162534c80bbb727599634223f4"
   }
 }

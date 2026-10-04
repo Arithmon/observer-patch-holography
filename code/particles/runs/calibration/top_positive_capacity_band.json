@@ -247,7 +247,7 @@
     "code/P_derivation/codata_2022_alpha_fixture.json": "e5a967c2895c51ce11574da0d5fda9630b05d9162335a1e9e06da12cfecc9930",
     "code/P_derivation/paper_math.py": "bda031185dca55e54f4c6c0c020e9fac2e2ba5db5193998135f294898af620b8",
     "code/particles/calibration/sm_two_loop_rge_engine.py": "5cf4dec530fa9bc51905507c8cf50ea38e90cfa6f488cfebb2367c5fec915d97",
-    "code/particles/calibration/top_positive_capacity_band.py": "51b4a13f1944843bb2baa96d21518a31f3817d4aa71bcee87462a0c348d9ba93",
+    "code/particles/calibration/top_positive_capacity_band.py": "ab78391ecc028351da4605ccb4cfdb83c4830abc98f8a42029d27349ff740add",
     "code/particles/calibration/top_positive_capacity_band_spec.json": "fda35fc4b193454fbaf7738f747b02ba29972d13feefd3a69becd5701192977d"
   },
   "specification": {

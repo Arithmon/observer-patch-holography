@@ -105,11 +105,47 @@ def explicit_e8_map_valid(mapping, nodes, edges) -> bool:
 
 def exact_character_norm(table, label: str) -> Fraction:
     total = Fraction(0)
+    irrational = Fraction(0)
     order = sum(row["size"] for row in table)
     for row in table:
         a, b = parse_q5(row["characters"][label])
         total += row["size"] * (a*a + 5*b*b)
+        irrational += row["size"] * 2*a*b
+    if irrational:
+        raise ValueError("character norm has a nonzero sqrt(5) component")
     return total / order
+
+def exact_fusion_from_table(table, labels, doublet):
+    """Reconstruct both tensor multiplicity matrices from exact real characters."""
+    def multiply(x, y):
+        a,b=x; c,d=y
+        return a*c+5*b*d, a*d+b*c
+    order = sum(row["size"] for row in table)
+    result = []
+    for left in labels:
+        row_result = []
+        for right in labels:
+            rational, irrational = Fraction(0), Fraction(0)
+            for row in table:
+                chars = row["characters"]
+                a,b=multiply(multiply(parse_q5(chars[doublet]),parse_q5(chars[left])),parse_q5(chars[right]))
+                rational += row["size"]*a
+                irrational += row["size"]*b
+            multiplicity = rational/order
+            if irrational or multiplicity.denominator != 1 or multiplicity < 0:
+                raise ValueError("tensor multiplicity is not a nonnegative exact integer")
+            row_result.append(multiplicity.numerator)
+        result.append(row_result)
+    return result
+
+def edges_from_fusion(labels, matrix):
+    edges = []
+    for i,left in enumerate(labels):
+        for j,right in enumerate(labels):
+            if matrix[i][j] not in (0,1) or matrix[i][j]!=matrix[j][i] or (i==j and matrix[i][j]):
+                raise ValueError("reconstructed fusion graph is not simple and symmetric")
+            if i<j and matrix[i][j]:edges.append([left,right])
+    return sorted(edges)
 
 def trace_kernel_is_trivial(table, label: str) -> bool:
     trace_two = [row for row in table if parse_q5(row["characters"][label]) == (Fraction(2), Fraction(0))]
@@ -173,6 +209,16 @@ def verify() -> dict:
     oph_galois = oph["galois_control"]
     oph_spin = oph_mckay["tensor_doublet"]
     oph_conj = oph_galois["conjugate_doublet"]
+    oph_labels = oph_mckay["node_order"]
+    if set(oph_labels)!=set(oph_dims) or len(oph_labels)!=len(oph_dims):
+        raise ValueError("OPH fusion label order does not enumerate the irreducibles")
+    oph_base_fusion = exact_fusion_from_table(oph_table,oph_labels,oph_spin)
+    oph_conjugate_fusion = exact_fusion_from_table(oph_table,oph_labels,oph_conj)
+    if oph_base_fusion!=oph_mckay["fusion_matrix"] or oph_conjugate_fusion!=oph_galois["fusion_matrix"]:
+        raise ValueError("OPH fusion receipt disagrees with exact character-table reconstruction")
+    if (edges_from_fusion(oph_labels,oph_base_fusion)!=oph_mckay["edges"]
+            or edges_from_fusion(oph_labels,oph_conjugate_fusion)!=oph_galois["edges"]):
+        raise ValueError("OPH edge receipts disagree with reconstructed fusion matrices")
 
     # Recheck exact character norms and kernel witnesses from OPH's raw table,
     # rather than accepting booleans copied into the crossover fixture.

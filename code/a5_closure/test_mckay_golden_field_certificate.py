@@ -187,4 +187,55 @@ class ExactMcKayCertificateTests(unittest.TestCase):
         self.assertFalse(self.verified["trust_boundary"]["koide_used"])
         self.assertFalse(self.verified["trust_boundary"]["experimental_data_used"])
 
+    def test_37_contradictory_receipt_assertions_fail_closed(self):
+        changes=(
+            ("schema", None, "wrong-schema"),
+            ("faithful_doublet", "faithful", False),
+            ("faithful_doublet", "irreducible", False),
+            ("galois_conjugate_fusion", "doublet_faithful", False),
+            ("galois_conjugate_fusion", "fusion_recomputed", False),
+            ("golden_character_field", "field_exactly", "Q"),
+            ("golden_embedding", "sigma_phi_equals_psi", False),
+            ("sl2f5_cross_identification", "explicit_isomorphism", True),
+            ("claim_boundary", None, ["physical particle identification"]),
+        )
+        for section,key,value in changes:
+            with self.subTest(section=section,key=key):
+                bad=copy.deepcopy(self.raw)
+                if key is None:bad[section]=value
+                else:bad[section][key]=value
+                with self.assertRaises(ValueError):verifier.verify(bad)
+
+    def test_38_corrupted_graph_metadata_fails_replay(self):
+        bad=copy.deepcopy(self.raw)
+        bad["fusion"]["edge_count"]=0
+        bad["galois_conjugate_fusion"]["edges"]=[]
+        bad["galois_conjugate_fusion"]["same_labeled_graph"]=True
+        with self.assertRaises(ValueError):verifier.verify(bad)
+
+    def test_39_trace_witness_must_match_its_group_element(self):
+        bad=copy.deepcopy(self.raw)
+        bad["golden_character_field"]["nonrational_trace_witness"]["quaternion"]=["1","0","0","0"]
+        with self.assertRaises(ValueError):verifier.verify(bad)
+
+    def test_40_corrupted_irrep_completeness_fails_replay(self):
+        bad=copy.deepcopy(self.raw)
+        bad["irreducibles"]["count"]=8
+        bad["irreducibles"]["sum_squared_dimensions"]=119
+        with self.assertRaises(ValueError):verifier.verify(bad)
+
+    def test_41_producer_derives_data_without_reading_external_artifacts(self):
+        with patch("builtins.open",side_effect=AssertionError("external file read")), \
+                patch.object(Path,"read_text",side_effect=AssertionError("external text read")), \
+                patch.object(Path,"read_bytes",side_effect=AssertionError("external bytes read")):
+            fresh=producer.main_certificate()
+        self.assertEqual(fresh["fusion"]["matrix"],self.raw["fusion"]["matrix"])
+
+    def test_42_nonfaithful_matrix_map_rejected_by_representation_checks(self):
+        identity=((producer.c5(producer.ONE),producer.c5(producer.ZERO)),
+                  (producer.c5(producer.ZERO),producer.c5(producer.ONE)))
+        with patch.object(producer,"matrix_of_quaternion",return_value=identity):
+            with self.assertRaisesRegex(ValueError,"FAITHFUL"):
+                producer.exact_representation_checks(self.elements,producer.conjugacy_classes(self.elements))
+
 if __name__=="__main__":unittest.main()

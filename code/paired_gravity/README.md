@@ -22,7 +22,7 @@ selects gamma=1 in this class; scalar vacuum and the linear Ward identity do not
 The scalar support and twelve-port Gram addresses are inherited from the
 existing source implementation. The additional fields, massless source
 action, supplied update program and physical interpretation are hypotheses,
-not a new claim of native integer-repair admission or A1-A3 source selection.
+not a claim of native integer-repair admission or A1-A3 source selection.
 The actual finite detectors consume versioned local source records; their
 numerical clock and optical-index reads are not raw solar observations.
 
@@ -87,9 +87,9 @@ nonidentifiability theorem, not a positive end-to-end physical postdiction.
 | Negative exit | Constructed nonidentifiability, with the exact exterior tensor selector and obligations below |
 
 The scientific parent [#729](https://github.com/FloatingPragma/observer-patch-holography/issues/729)
-still owns physical curvature/stress matching and the Einstein branch;
+owns physical curvature/stress matching and the Einstein branch;
 [#779](https://github.com/FloatingPragma/observer-patch-holography/issues/779)
-still owns selection of the source's spatial response or a justified exterior
+owns selection of the source's spatial response or a justified exterior
 vacuum/null-stress condition. [#736](https://github.com/FloatingPragma/observer-patch-holography/issues/736)
 retains mass/clock/unit calibration; [#740](https://github.com/FloatingPragma/observer-patch-holography/issues/740)
 retains their common physical history and

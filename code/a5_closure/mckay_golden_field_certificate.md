@@ -1,6 +1,6 @@
 # Exact McKay / golden-character-field certificate
 
-This packet ports the independent Arithmon reconstruction into the OPH repository as a reproducible cross-framework record. In K7-Lean, it replaces the historical arithmetic shadow `phi_path_mckay` with exact executable evidence. This OPH copy preserves the original Arithmon receipts and keeps OPH strictly as a frozen external comparator.
+This packet ports the independent Arithmon reconstruction into the OPH repository as a reproducible cross-framework record. For K7-Lean, it supplements the historical arithmetic shadow `phi_path_mckay` with exact executable evidence. This OPH copy preserves the original Arithmon receipts and keeps OPH strictly as a frozen external comparator.
 
 ## Construction and independent replay
 
@@ -46,3 +46,7 @@ This is independent exact agreement on the listed invariants. It does not produc
 ## Proof boundary
 
 This is an exact executable certificate with an independent replay, not a Lean-native reconstruction of finite representation theory. No OPH data is a derivation input; no Koide, observable, experimental data, physical-particle identification or real-embedding selector is used. The old `phi_path_mckay` proposition remains unchanged and is only an arithmetic shadow; its documentation points here for the actual finite construction. The result establishes the golden character field and the Galois nonselection boundary, not a physical choice of `phi`.
+
+The H4 coordinate construction uses the golden quadratic field as its coefficient model. The trace witness proves that the representation's character field is exactly that field; it does not derive a preferred golden ratio from OPH axioms or from the affine-E8 graph alone. Relative to OPH's existing `sl2f5_mckay_e8_certificate.py`, this packet adds an independent quaternion construction and character reconstruction, corroborating the established affine-E8 and Galois nonselection results.
+
+The original Arithmon receipts remain byte-frozen for the historical cross-control. The OPH maintainer replay additionally checks contradictory schema, representation and scope assertions, the supplied quaternion trace witness, graph metadata and irreducible completeness. Newly generated reference output therefore includes these additional checks; it is not expected to be byte-identical to the frozen reference receipt.

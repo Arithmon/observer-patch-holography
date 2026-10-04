@@ -42,6 +42,12 @@ def require(ok, message):
         raise ValueError(message)
 
 
+def source_pins():
+    """Keep receipt path keys identical on POSIX and Windows."""
+    return {p.relative_to(REPO).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in PIN_PATHS}
+
+
 def reviewed_spec():
     require(hashlib.sha256(SPEC.read_bytes()).hexdigest() == REVIEWED_SPEC_SHA256,
             'unreviewed specification, input or promotion change')
@@ -193,7 +199,7 @@ def build_payload():
                 proof_checks=proof_checks,one_loop_monotone_band_endpoints=[capacity_rows[0]['mass_coordinate'],capacity_rows[-1]['mass_coordinate']],
                 one_loop_controls=capacity_rows,coupled_two_loop_controls=coupled,
                 numerical_interpretation=spec['uncertainty'],
-                source_pins={str(p.relative_to(REPO)):hashlib.sha256(p.read_bytes()).hexdigest() for p in PIN_PATHS})
+                source_pins=source_pins())
 
 
 if __name__=='__main__':

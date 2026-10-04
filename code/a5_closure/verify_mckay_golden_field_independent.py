@@ -181,7 +181,39 @@ def coordinate_set_digest(group):
  rows=sorted([qkey(x) for x in group])
  return hashlib.sha256(json.dumps(rows,separators=(",",":")).encode()).hexdigest()
 
+def check_receipt_contract(raw):
+ """Reject contradictory scope and representation assertions before replay."""
+ if raw["schema"]!="arithmon.mckay_golden_field.raw.v1":raise ValueError("unexpected producer receipt schema")
+ expected={
+  "source_group":{"closure":True,"inverse_closure":True,"center":["+1","-1"]},
+  "faithful_doublet":{"dimension":2,"faithful":True,"irreducible":True,"determinant_one":True,
+      "central_minus_one_action":"-I_2","coefficient_field":"Q(sqrt(5), i)","character_norm":1},
+  "irreducibles":{"orthonormal":True,"hardcoded_character_table":False,"hardcoded_dimension_list":False},
+  "galois_conjugate_fusion":{"automorphism":"sqrt(5)->-sqrt(5); i fixed","dimension":2,
+      "doublet_distinct":True,"representation_homomorphism":True,"determinant_one":True,
+      "faithful":True,"irreducible":True,"sigma_fixes_i":True,"doublet_irreducible":True,
+      "doublet_faithful":True,"fusion_recomputed":True},
+  "golden_character_field":{"all_traces_in_Qsqrt5":True,"field_exactly":"Q(sqrt(5))"},
+  "golden_embedding":{"phi":rtext(PHI),"psi":rtext(rgalois(PHI)),"sigma_phi_equals_psi":True},
+  "sl2f5_cross_identification":{"explicit_isomorphism":False,"not_identified_by_order_alone":True},
+ }
+ for section,fields in expected.items():
+  for key,value in fields.items():
+   actual=raw[section][key]
+   if actual!=value or (isinstance(value,bool) and type(actual) is not bool):
+    raise ValueError(f"contradictory producer assertion: {section}.{key}")
+ boundary=["no OPH derivation input","no Koide input","no experimental data",
+           "no physical particle identification","no real embedding selector"]
+ if raw["claim_boundary"]!=boundary:raise ValueError("producer receipt claim boundary changed")
+ if raw["primary_verdict"]!="EXACT_DATA_DERIVED_GRAPH_IDENTIFICATION_PENDING":
+  raise ValueError("producer receipt verdict changed")
+
+def graph_receipt_matches(report,matrix,info):
+ return (report["matrix"]==matrix and all(report[key]==value for key,value in info.items())
+         and report["dimension_vector_eigenvalue"]==(2 if info["dimension_vector_2_eigenvector"] else None))
+
 def verify(raw):
+ check_receipt_contract(raw)
  G,gens=generated_group()
  if len(G)!=120:raise ValueError(f"generator closure has {len(G)} elements, expected the standard 2I order 120")
  if group_center(G)!={ID,MINUS}:raise ValueError("generator-closure center is not +/-1")
@@ -193,6 +225,9 @@ def verify(raw):
  if rint(cin(chi,chi,G),"spin norm")!=1:raise ValueError("faithful doublet character not irreducible")
  if chi[ID]!=(F(2),F(0)):raise ValueError("spin dimension mismatch")
  if chi[MINUS]!=(F(-2),F(0)):raise ValueError("central -1 action mismatch")
+ # For these finite unit-quaternion representations, trace two is equivalent
+ # to the identity matrix. Recheck both kernels instead of emitting an unchecked flag.
+ if {g for g in G if chi[g]==(F(2),F(0))}!={ID}:raise ValueError("spin doublet has nontrivial kernel")
  classes=conjugacy(G)
  sizes=sorted(len(cl) for cl in classes)
  irreps,labels,dims=reconstruct_irreps(G,chi)
@@ -200,6 +235,7 @@ def verify(raw):
  chis=sigchar(chi)
  if ceq(chi,chis,G):raise ValueError("Galois doublet is not distinct")
  if rint(cin(chis,chis,G),"Galois spin norm")!=1:raise ValueError("Galois doublet is reducible")
+ if {g for g in G if chis[g]==(F(2),F(0))}!={ID}:raise ValueError("Galois doublet has nontrivial kernel")
  Ms,ds=fusion(G,irreps,chis);gs=graph_info(Ms,ds)
  # Exact golden field generation from a trace witness with nonzero sqrt(5) coefficient.
  witnesses=[(g,v) for g,v in chi.items() if v[1]!=0]
@@ -211,7 +247,12 @@ def verify(raw):
  if rgalois(PHI)!=phi_minus:raise ValueError("sigma(phi) != 1-phi")
  iso=isomorphisms(gi["edges"],AFFINE_E8_EDGES,9)
  isos=isomorphisms(gs["edges"],AFFINE_E8_EDGES,9)
- if raw["golden_character_field"]["witness_minimal_polynomial"] != quadratic_minpoly_text(w):
+ witness=raw["golden_character_field"]["nonrational_trace_witness"]
+ witness_group={tuple(rtext(x) for x in q):q for q in G}
+ raw_witness=witness_group.get(tuple(witness["quaternion"]))
+ if raw_witness is None or chi[raw_witness][1]==0 or witness["trace"]!=rtext(chi[raw_witness]):
+  raise ValueError("producer trace witness is not a matching nonrational group trace")
+ if raw["golden_character_field"]["witness_minimal_polynomial"] != quadratic_minpoly_text(chi[raw_witness]):
   raise ValueError("producer receipt has an unverified trace minimal polynomial")
  raw_checks={
   "group_order":raw["source_group"]["order"]==len(G),
@@ -220,10 +261,14 @@ def verify(raw):
   "class_count":raw["conjugacy_classes"]["count"]==len(classes),
   "class_sizes":raw["conjugacy_classes"]["sizes"]==sizes,
   "irrep_dimensions":raw["irreducibles"]["dimensions"]==dims,
+  "irrep_completeness":raw["irreducibles"]["count"]==len(irreps) and raw["irreducibles"]["sum_squared_dimensions"]==sum(d*d for d in dims),
   "fusion_matrix":raw["fusion"]["matrix"]==M,
   "galois_fusion_matrix":raw["galois_conjugate_fusion"]["matrix"]==Ms,
+  "fusion_graph_metadata":graph_receipt_matches(raw["fusion"],M,gi),
+  "galois_graph_metadata":graph_receipt_matches(raw["galois_conjugate_fusion"],Ms,gs),
+  "galois_labeled_graph":raw["galois_conjugate_fusion"]["same_labeled_graph"]==(M==Ms),
   "trace_field_containment":raw["golden_character_field"]["all_traces_in_Qsqrt5"],
-  "trace_field_generation":raw["golden_character_field"]["nonrational_trace_witness"]["trace"]==rtext(w),
+  "trace_field_generation":True,
  }
  if not all(raw_checks.values()):raise ValueError("producer receipt disagrees with independent reconstruction: "+str([k for k,v in raw_checks.items() if not v]))
  if not iso or not isos:raise ValueError("derived McKay graph failed explicit affine-E8 graph isomorphism")

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import copy
 import importlib.util
 import json
 from pathlib import Path
@@ -79,6 +80,30 @@ class McKayCrossControlTests(unittest.TestCase):
                 cross, "FIXTURE_PATH", fixture_path
             ):
                 cross.verify()
+
+    def test_05_norm_rejects_erased_irrational_component(self):
+        # The rational part of this square is one, but its sqrt(5) part is nonzero.
+        table=[{"size":1,"characters":{"bad":"-1/9 + 4/9*sqrt(5)"}}]
+        with self.assertRaisesRegex(ValueError,"sqrt"):
+            cross.exact_character_norm(table,"bad")
+
+    def test_06_both_oph_fusions_are_reconstructed_from_the_character_table(self):
+        fixture=json.loads(cross.FIXTURE_PATH.read_text())
+        oph=json.loads((cross.ROOT/fixture["oph"]["raw_receipt_path"]).read_text())
+        labels=oph["mckay"]["node_order"]
+        for report,label in ((oph["mckay"],oph["mckay"]["tensor_doublet"]),
+                             (oph["galois_control"],oph["galois_control"]["conjugate_doublet"])):
+            matrix=cross.exact_fusion_from_table(oph["character_table"],labels,label)
+            self.assertEqual(matrix,report["fusion_matrix"])
+            self.assertEqual(cross.edges_from_fusion(labels,matrix),report["edges"])
+
+    def test_07_corrupted_character_table_fails_exact_multiplicity_gate(self):
+        fixture=json.loads(cross.FIXTURE_PATH.read_text())
+        oph=json.loads((cross.ROOT/fixture["oph"]["raw_receipt_path"]).read_text())
+        table=copy.deepcopy(oph["character_table"])
+        table[0]["characters"][oph["mckay"]["tensor_doublet"]]="3"
+        with self.assertRaises(ValueError):
+            cross.exact_fusion_from_table(table,oph["mckay"]["node_order"],oph["mckay"]["tensor_doublet"])
 
 if __name__ == "__main__":
     unittest.main()

@@ -25,7 +25,7 @@ mass term and put K=M(A-I). Thus
     q^T K q = sum_edges c_ij (q_i-q_j)^2 + sum_boundary c_ib q_i^2.
 
 Every coefficient is positive. The interior support is connected and touches
-the Dirichlet boundary, so K is positive definite. This is a new massless
+the Dirichlet boundary, so K is positive definite. This is a massless
 source response on the existing spatial support, not a claim that the parent's
 massive field was massless. Its coordinates and conserved twelve-port addresses
 are inherited; its constitutive law and clock remain specified inputs.
@@ -159,7 +159,7 @@ carrier shell-law theorem. The coupling G, the mass readout and physical
 position identification are retained inputs. They are not fixed by the
 calculated native quasienergy. A finite outer Dirichlet radius L subtracts
 mu/L from u; differences of u and gradients are unchanged. Absolute units
-still need the same reference convention.
+need the same reference convention.
 
 For a refinement control, use the nonnegative compact C^1 density
 `rho_m=105 M(1-r^2/R^2)^2/(32 pi R^3)` inside the ball and zero outside.
@@ -232,7 +232,7 @@ The proper detector clock is the clock of (11); laboratory coordinate time is
 not substituted for it. Pointlike identical two-level clocks with a local
 energy gap Delta E have proper angular frequency Delta E/hbar and coordinate
 phase rate exp(-u) Delta E/hbar. For a rest-mass gap Delta m, Delta E=c^2 Delta m.
-These shared factors cancel in the frequency ratio. The earlier native clock
+These shared factors cancel in the frequency ratio. The native clock
 is an implementation capability for such a declared phase; its spacetime
 and physical-unit identification is not a consequence of this extension.
 
@@ -302,8 +302,8 @@ compressed first-order-template comparison, not a reanalysis with our full
 nonlinear metric and the original station geometry.
 
 The conformal gamma=-1 member is directly continuous with the supplied
-conformal action control already present in the source/action-density work.
-The difference is now that a positive local source action actually produces
+conformal action control in the source/action-density work.
+A positive local source action produces
 the profile. It remains a declared constitutive extension, not a derived
 physical source law. The other members use exactly the same calibration,
 source, boundary, reference clock and universal matter/photon dictionary.
@@ -329,7 +329,7 @@ prohibiting the extra exterior scalar stress
 selects gamma=1. Positivity, symmetry, scalar reciprocity, the calibrated
 Newtonian force and every u-only statistical test do not imply it.
 
-Every member already has vanishing linearized exterior scalar curvature
+Every member has vanishing linearized exterior scalar curvature
 and a divergence-free linearized Einstein tensor. The latter is a geometric
 identity, not an independent source selector. A scalar vacuum check or Ward
 identity therefore cannot replace the physical exterior tensor condition.
@@ -358,7 +358,7 @@ The consumed inputs and uncertainties have different, explicit statuses:
 
 | Input or error | Status in this result |
 | --- | --- |
-| Twelve-port addresses, Gram metric, positive scalar support | Reconstructed from the existing primitive tables; no new A1-A3 physical selection asserted |
+| Twelve-port addresses, Gram metric, positive scalar support | Reconstructed from the existing primitive tables; no A1-A3 physical selection asserted |
 | Massless two-field action, boundary and static source | Declared constitutive class; both linear and proper-time source laws retained |
 | G, c, source mass/strength, positions and time units | Shared calibration/empirical inputs, not native quasienergy identifications |
 | gamma and kappa | Residual universal constitutive freedom; kappa>0, no per-channel fit |
@@ -384,7 +384,7 @@ solver errors, not just a difference between nominal branch labels.
 The evidence package records published compressed measurements, the original
 source URLs/versions and file digests, all transcribed numerical alternatives,
 and the exposure history. All comparisons are retrospective. It independently
-maps (12)–(15) into the measurement conventions; it does not claim a new fit of
+maps (12)–(15) into the measurement conventions; it does not claim a fit of
 the original photon counts, radio visibilities, satellite orbits or clocks.
 Its uncertainty treatment and the distinction between a reported standard
 deviation and a systematic bound are specified in `code/paired_gravity/DATA.md`.
@@ -409,4 +409,4 @@ maximum principle, gravitational clock shifts and the PPN light-bending
 coefficient are standard. The result here composes them on the existing
 source-addressed action, proves equivalence of the entire calibrated u
 response/statistics across the constitutive family, and identifies a concrete
-physical consumer and selector. It does not claim a new theory of lensing.
+physical consumer and selector. It does not claim a distinct theory of lensing.

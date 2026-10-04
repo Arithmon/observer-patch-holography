@@ -2,7 +2,7 @@
 import copy
 import importlib.util
 import json
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import sys
 
 import pytest
@@ -198,3 +198,13 @@ def test_verifier_does_not_import_producer_or_beta_engine():
         elif isinstance(node,verifier.ast.ImportFrom):imports.append(node.module)
     assert not set(imports)&{'top_positive_capacity_band','conditional_top_fixed_p','paper_math',
                              'sm_two_loop_rge_engine','derive_d11_criticality_boundary_scan'}
+
+
+def test_windows_producer_pins_match_canonical_receipt(receipt, monkeypatch):
+    original = Path.relative_to
+
+    def windows_relative(path, *args, **kwargs):
+        return PureWindowsPath(*original(path, *args, **kwargs).parts)
+
+    monkeypatch.setattr(Path, "relative_to", windows_relative)
+    assert producer.source_pins() == receipt["source_pins"]

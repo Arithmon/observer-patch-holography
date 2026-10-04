@@ -14160,6 +14160,46 @@
         "boundary": [],
         "rationale": "This scoped source-class nonidentifiability theorem supplies its constitutive and probe dictionary and does not assume or establish physical premise-register branch entry. In particular physical stress matching, source/geometry selection and clock/unit calibration remain parent obligations, not hypotheses smuggled into the mathematical comparison."
       }
+    },
+    {
+      "claim_id": "OPH-MCKAY-INDEPENDENT-GOLDEN-FIELD-CONTROL",
+      "statement": "Independent exact H4 coordinate enumeration and two-generator quaternion closure reconstruct the same 120-element carrier, faithful determinant-one doublet, complete irreducible character system, character field Q(sqrt(5)) and affine-E8 fusion graph. The Galois-conjugate faithful doublet has a separately recomputed affine-E8 fusion graph. A frozen external SL(2,F5) reconstruction agrees on the listed structural invariants. This executable corroboration verifies the character field on a supplied H4 carrier, whose coordinates are supplied over Q(sqrt(5)); it does not derive the carrier or field from OPH axioms, select a real embedding, construct an explicit isomorphism between the quaternion and SL(2,F5) groups, or identify physical particles.",
+      "owner_paper": "paper/screen_microphysics_and_observer_synchronization.tex",
+      "tier": "independent_exact_arithmetic_corroboration",
+      "assumptions": [
+        "declared_H4_quaternion_carrier_and_exact_character_reconstruction"
+      ],
+      "imported_results": [
+        "standard_H4_600_cell_coordinates",
+        "quaternion_matrix_representation",
+        "finite_group_character_orthogonality",
+        "symmetric_power_character_recurrence"
+      ],
+      "oph_specific_delta": "Supplies an independently implemented quaternionic cross-control of the existing finite McKay and Galois boundary, with separate carrier enumeration and generator closure and no physical promotion.",
+      "novelty_type": "independent_exact_reconstruction_and_external_cross_control",
+      "evidence": [
+        "code/a5_closure/mckay_golden_field_certificate.py",
+        "code/a5_closure/verify_mckay_golden_field_independent.py",
+        "code/a5_closure/verify_mckay_golden_field_cross_control.py",
+        "code/a5_closure/test_mckay_golden_field_certificate.py",
+        "code/a5_closure/test_mckay_golden_field_cross_control.py",
+        "code/a5_closure/receipts/arithmon_mckay_golden_field_certificate.json",
+        "code/a5_closure/receipts/arithmon_mckay_golden_field_reference.json",
+        "code/a5_closure/receipts/arithmon_mckay_golden_field_cross_control.json",
+        "code/a5_closure/mckay_golden_field_certificate.md"
+      ],
+      "falsifier": "Carrier closure, the representation or exact character reconstruction fails; the golden witness does not generate the trace field; either recomputed fusion graph fails its explicit affine-E8 comparison; the cross-control accepts corrupted raw evidence; or the result is promoted to physical embedding selection or an unproved group isomorphism.",
+      "scope_if_false": "The independent corroboration fails. The separately certified OPH golden-sector and SL(2,F5) constructions are assessed on their own evidence.",
+      "status": "independent_exact_quaternion_reconstruction_and_frozen_structural_cross_control_verified",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row records independently executed finite quaternion and character arithmetic on an explicitly supplied H4 coordinate carrier. It consumes no physical mode, source current, spinor attachment, matter identification or Einstein-branch premise, and the frozen external comparison is a control rather than a derivation input."
+      }
     }
   ]
 }
