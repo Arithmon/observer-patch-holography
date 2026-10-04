@@ -1107,6 +1107,13 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "7b8b6e20b72feece48c148ad3535b1c02abf400973231338b1e19bf14b70de1f"
       },
+      "OPH-DARK-SOURCE-DYNAMICS-LENSING": {
+        "assumptions": [
+          "declared_spherical_Einstein_source_and_null_observable"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "f3f18b91ea410c79e6b4a34fbe4b5dbfd854bf8172b518deb5be0f6bf75a6891"
+      },
       "OPH-DE-FIXED-CAPACITY-WLAW": {
         "assumptions": [
           "fixed_or_monotone_capacity_branch",
@@ -2303,6 +2310,11 @@
         "from": "OPH-DM-COLLAR-SATURATION",
         "role": "supplies the envelope delimitation the mechanism complements: the envelope forces no defect, the record model forces one on sparse cuts; neither claim consumes the other's hypotheses",
         "to": "OPH-DM-SPARSE-DEFECT-MECHANISM"
+      },
+      {
+        "from": "OPH-DM-CONT",
+        "role": "identifies the scalar anomalous-charge and linear-mass interface whose missing relativistic stress closure is tested; does not derive physical admission of the alternatives",
+        "to": "OPH-DARK-SOURCE-DYNAMICS-LENSING"
       },
       {
         "from": "OPH-DM-CONT",
@@ -3768,9 +3780,9 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "889f01a0023156823a3388097cc8cdb76ae427f2a8c2e2cb609220857c14a1ec",
+    "code/m1_necessity/downstream.json": "ba7bda44aa3fe92b02d328ef1a60f9846d18004878fdca9d3a060c491ee6c1a3",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "2bce1ff77c34308671691f5b4acba0ea3e82a3f80ef18d7c6dc1b0af98e6c29f",
+    "code/m1_necessity/test_necessity.py": "f85d2d85d3af9b213099fa90fbd18d5cb37fcd04159ed5d009a051b2a4d11f22",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",
