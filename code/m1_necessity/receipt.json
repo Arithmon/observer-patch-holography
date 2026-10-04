@@ -1978,7 +1978,7 @@
           "declared_calibrated_two_field_gravity_source_and_probe_dictionary"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "11a891ba8194fa64abcf731a19c465c4748d757a84069bfd9a129aa964931e61"
+        "original_claim_sha256": "01786109a2e945c8ed0195d961a5325895b2944e77ff754ed26c082dcbb2cb81"
       },
       "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION": {
         "assumptions": [
