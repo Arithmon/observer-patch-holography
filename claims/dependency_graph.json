@@ -323,6 +323,7 @@
     "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING",
     "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION",
     "OPH-MCKAY-INDEPENDENT-GOLDEN-FIELD-CONTROL",
+    "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
     "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION"
   ],
   "edges": [
@@ -2820,6 +2821,26 @@
       "role": "Supplies the actual positive source action support and distinguishes its action measure from record multiplicity; the new massless two-field constitutive and physical probe maps are explicitly supplied.",
       "from": "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION",
       "to": "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION"
+    },
+    {
+      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+      "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+      "role": "Supplies the full named axiom-model, native controls, proper instruments and unchanged refinement used by the two source-conditioned policies."
+    },
+    {
+      "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
+      "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+      "role": "Supplies the same code-transition optimizer in both policies, without optimizing transport programs."
+    },
+    {
+      "from": "OPH-FINITE-A3-SUPPORT",
+      "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+      "role": "Supplies the faithful A3 support theorem applied to an explicit same-algebra program-record effect and feasible clock-equivalent branches."
+    },
+    {
+      "from": "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION",
+      "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+      "role": "Identifies the earlier spatial-response freedom; model membership and the metric-free finite detector distinction are proved separately here."
     },
     {
       "from": "OPH-ALPHA-PIXEL",
