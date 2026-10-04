@@ -143,9 +143,9 @@ python tools/run_mandatory_suite.py
 complete standard suite. Its FZ-11 Lean replay test runs only when `lake` is
 on `PATH` and Mathlib's oleans exist under `Lean/.lake`; on a clone without a
 built Mathlib it is skipped, and the dedicated Lean CI lane replays it. On every push and PR, CI
-(`.github/workflows/mandatory-suite.yml`) runs the same ordered steps in nine
+(`.github/workflows/mandatory-suite.yml`) runs the same ordered steps in ten
 isolated partitions on each operating system. Each partition has its own
-clean checkout and the existing 30-minute job limit. All nine partitions must
+clean checkout and the existing 30-minute job limit. All ten partitions must
 succeed; a failed, cancelled or skipped partition cannot produce a passing
 aggregate check. The runner also supports other partition counts; a complete
 two-part local replay uses:
