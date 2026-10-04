@@ -28,6 +28,9 @@ the vendored copy carries the bytes and timestamps, not that history. The explic
 five standard-axiom reports with no ``sorryAx``; it never skips when requested.
 FZ-12 is bound independently to its exact source commit, root custody commit,
 canonical source receipt, declared physical-promotion gates, and frozen snapshot.
+The October 4 FZ-13/FZ-15 additions retain that historical bootstrap and bind
+their complete conditional targets and protocols to separate stamped snapshots;
+they do not alter historical frozen rows or establish their physical premises.
 """
 
 from __future__ import annotations
@@ -56,6 +59,20 @@ ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "claims" / "frozen_prediction_register.json"
 FROZEN_ROWS_BOOTSTRAP_REVISION = "68663e9e52a3931c322676a127dd0af144a01de3"
 FROZEN_ROWS_BOOTSTRAP_GIT_BLOB_SHA1 = "731ff48c6005a0d2b3930c1d33a6f00c2dd3e345"
+# Append-only October 4 extension. The V3 row schema is unchanged; the original
+# bootstrap still binds every historical frozen/void row. New conditional
+# cosmology rows are bound separately to their externally stamped snapshots.
+COSMOLOGY_FREEZE_SCHEMA = "oph.conditional_cosmology_freeze.v1"
+COSMOLOGY_FREEZE_PINS = {
+    "FZ-13": {
+        "snapshot_sha256": "60ae0827d652a5434046b5ce8ceb536cf75bdd0ced6b19e8e1005c3ed3d5fb89",
+        "manifest_sha256": "d95e68b703661bad49f99839244bece3c4d449447e20e72ed4113a047c0d2f5d",
+    },
+    "FZ-15": {
+        "snapshot_sha256": "150f9f6f771bbde5ec0c3548756a83d8ab3499d9ff8c0e0364388883ccead1d8",
+        "manifest_sha256": "f2ab98661a5b14ae781991a0c269dcd12f7376761ecd3cac381d5246ede9d149",
+    },
+}
 SURFACE_PATH = ROOT / "docs" / "FROZEN_PREDICTION_LADDER.md"
 FZ02_RECEIPT_PATH = (
     ROOT
@@ -951,11 +968,13 @@ def validate_custody_contracts(
     register: dict, rows_by_id: dict[str, dict]
 ) -> dict[str, dict]:
     contracts = register.get("external_custody_contracts")
-    expected_contracts = {"FZ-01", "FZ-02", "FZ-10", "FZ-11", "FZ-12"}
+    expected_contracts = {
+        "FZ-01", "FZ-02", "FZ-10", "FZ-11", "FZ-12", "FZ-13", "FZ-15"
+    }
     if not isinstance(contracts, dict) or set(contracts) != expected_contracts:
         fail(
             "external_custody_contracts must contain exactly FZ-01, FZ-02, "
-            "FZ-10, FZ-11, and FZ-12"
+            "FZ-10, FZ-11, FZ-12, FZ-13, and FZ-15"
         )
 
     claimed_rows: set[str] = set()
@@ -1816,9 +1835,10 @@ def validate_frozen_rows_bootstrap(rows: list[dict]) -> None:
     """Bind frozen and void rows to their immutable V3-bootstrap payload.
 
     Pending and resource-deferred rows remain editable until a freeze occurs.
-    A rewrite of a frozen or superseded row needs a reviewed bootstrap-pin
-    and schema migration with a replacement scientific freeze certificate;
-    it cannot hide behind an old hash.
+    The October 4 append-only extension admits exactly FZ-13 and FZ-15 under
+    separate immutable custody pins. It does not repin or rewrite the original
+    bootstrap. A new freeze must obtain its own reviewed certificate; changing
+    status or content cannot silently add it to the historical population.
     """
 
     where = "frozen-row V3 bootstrap"
@@ -1849,15 +1869,77 @@ def validate_frozen_rows_bootstrap(rows: list[dict]) -> None:
     historical_immutable = [
         row for row in historical_rows if row.get("status") in immutable_statuses
     ]
-    current_immutable = [
-        row for row in rows if row.get("status") in immutable_statuses
-    ]
+    historical_ids = {row["id"] for row in historical_immutable}
+    current_immutable = [row for row in rows if row.get("id") in historical_ids]
     if historical_immutable != current_immutable:
         fail(
             f"{where}: frozen or void rows differ from the immutable bootstrap; "
-            "perform a reviewed bootstrap-pin and schema migration with a "
-            "replacement scientific freeze certificate"
+            "the append-only extension cannot rewrite historical frozen rows"
         )
+    added_immutable = {
+        row["id"] for row in rows
+        if row.get("status") in immutable_statuses and row["id"] not in historical_ids
+    }
+    if added_immutable != set(COSMOLOGY_FREEZE_PINS):
+        fail("frozen-row extension must contain exactly the registered FZ-13 and FZ-15 freezes")
+
+
+def validate_cosmology_freezes(register: dict, rows_by_id: dict[str, dict]) -> None:
+    """Bind the new row and complete protocol to the accepted custody bytes.
+
+    A content hash alone cannot protect a comparison rule. The full snapshot
+    contains the complete register row and structured protocol, and its fixed
+    digest prevents a changed rule from being concealed by rebuilding custody.
+    The independently fixed manifest digest also protects the human target.
+    """
+
+    for row_id, pins in COSMOLOGY_FREEZE_PINS.items():
+        where = f"{row_id} conditional cosmology freeze"
+        contract = register["external_custody_contracts"][row_id]
+        expected_path = f"falsification/frozen_targets/{row_id.lower().replace('-', '')}_2026-10-04"
+        if (
+            contract["rows"] != [row_id]
+            or contract["custody_path"] != expected_path
+            or contract["registration_manifest"] != "registration_manifest_2026-10-04.json"
+        ):
+            fail(f"{where}: custody identity drifted")
+        if contract["registration_manifest_sha256"] != pins["manifest_sha256"]:
+            fail(f"{where}: immutable manifest pin drifted")
+        if contract["artifact_sha256"].get("frozen_prediction.json") != pins["snapshot_sha256"]:
+            fail(f"{where}: immutable snapshot pin drifted")
+        snapshot_path = DEFAULT_CUSTODY_ROOT / expected_path / "frozen_prediction.json"
+        if not snapshot_path.is_file() or sha256_file(snapshot_path) != pins["snapshot_sha256"]:
+            fail(f"{where}: immutable snapshot bytes drifted")
+        snapshot = load_json(snapshot_path)
+        if set(snapshot) != {"schema", "row", "protocol"} or snapshot["schema"] != COSMOLOGY_FREEZE_SCHEMA:
+            fail(f"{where}: snapshot schema drifted")
+        if snapshot["row"] != rows_by_id[row_id]:
+            fail(f"{where}: register row differs from immutable snapshot")
+        row = rows_by_id[row_id]
+        if row["content_sha256"] != sha256_bytes(row["content"].encode("utf-8")):
+            fail(f"{where}: content hash does not bind the exact content text")
+        if not isinstance(snapshot["protocol"], dict) or not snapshot["protocol"]:
+            fail(f"{where}: complete structured protocol is required")
+        if "OWNER SLOT" in json.dumps(snapshot["protocol"]):
+            fail(f"{where}: unresolved protocol owner slot")
+        verify_cosmology_source_artifacts(snapshot["protocol"], where)
+
+
+def verify_cosmology_source_artifacts(protocol: dict, where: str) -> None:
+    """Verify the freeze's historical source bytes without pinning live files."""
+
+    commit = protocol.get("source_commit")
+    if not isinstance(commit, str) or re.fullmatch(r"[0-9a-f]{40}", commit) is None:
+        fail(f"{where}: source_commit must be a full historical commit")
+    pins = validate_hash_mapping(protocol.get("source_artifacts"), f"{where}.source_artifacts")
+    if not pins:
+        fail(f"{where}: source artifacts are required")
+    for relative, digest in pins.items():
+        if ".." in Path(relative).parts:
+            fail(f"{where}: source artifact path must stay inside the repository")
+        payload = read_commit_blob(ROOT, commit, relative, where)
+        if sha256_bytes(payload) != digest:
+            fail(f"{where}: historical source artifact hash mismatch: {relative}")
 
 
 def validate(register: dict) -> list[dict]:
@@ -1888,7 +1970,7 @@ def validate(register: dict) -> list[dict]:
             f"rows: {sorted(overlap)}"
         )
     allocated = sorted(set(seen_ids) | former_reservations)
-    expected_allocated = [f"FZ-{index:02d}" for index in range(1, 15)]
+    expected_allocated = [f"FZ-{index:02d}" for index in range(1, 16)]
     if allocated != expected_allocated:
         fail(
             "ladder rows and explicitly retired reservations must account for "
@@ -2009,6 +2091,7 @@ def validate(register: dict) -> list[dict]:
             f"receipt hash {live_hash}"
         )
     validate_frozen_rows_bootstrap(rows)
+    validate_cosmology_freezes(register, rows_by_id)
     return rows
 
 
@@ -2894,6 +2977,14 @@ def render(register: dict, rows: list[dict]) -> str:
         " regenerate. The standing register was established under issue #607."
     )
     lines.append("")
+    lines.append(
+        "The table below shows the registered targets and their proof-file"
+        " state. Expand a record for its full content and decision rule."
+    )
+    lines.append("")
+    lines.append("<details>")
+    lines.append("<summary>Scope, exposure and historical classification</summary>")
+    lines.append("")
     lines.append(register["policy"])
     lines.append("")
     lines.append(
@@ -2987,10 +3078,59 @@ def render(register: dict, rows: list[dict]) -> str:
         " not mirror them."
     )
     lines.append("")
-    lines.append("| Freeze | Content | Status | Frozen (UTC) | Owner | Kill band |")
-    lines.append("| --- | --- | --- | --- | --- | --- |")
+    lines.append("</details>")
+    lines.append("")
+    lines.append("## Register at a glance")
+    lines.append("")
+    lines.append(
+        "The short labels below are for navigation. Each record retains its"
+        " complete registered content and decision rule below the table."
+    )
+    lines.append("")
+    lines.append("| Freeze | Topic | Registered state | Frozen (UTC) |")
+    lines.append("| --- | --- | --- | --- |")
     active_rows = [row for row in rows if row["status"] != "superseded_void"]
     superseded_rows = [row for row in rows if row["status"] == "superseded_void"]
+    topic_labels = {
+        "FZ-01": "Four retained cosmology targets",
+        "FZ-02": "A5 angular invariants",
+        "FZ-03": "Neutrino ordering and mixing",
+        "FZ-05": "Direct record-count closure",
+        "FZ-07": "Dark-sector RAR/BTFR scatter",
+        "FZ-08": "DESI dark-energy evolution",
+        "FZ-09": "Vacuum birefringence",
+        "FZ-10": "Conditional tau-mass window",
+        "FZ-11": "Primitive-port dispersion",
+        "FZ-12": "Seam-edge dispersion",
+        "FZ-13": "Fixed global capacity (conditional)",
+        "FZ-14": "Integer-division Kerr comb",
+        "FZ-15": "Edge-center scalar tilt (conditional)",
+    }
+    if {row["id"] for row in active_rows} != set(topic_labels):
+        fail("ladder navigation labels must cover exactly the active rows")
+    state_labels = {
+        "frozen_attested": "Bitcoin proof stored",
+        "frozen_stamped_upgrade_pending": "Calendar proof stored",
+        "registered_pending_freeze": "Pending registration",
+        "resource_deferred": "Deferred",
+    }
+    for row in active_rows:
+        frozen = row["frozen_utc"] or "—"
+        lines.append(
+            f"| [{row['id']}](#{row['id'].lower()}) | {topic_labels[row['id']]} |"
+            f" {state_labels[row['status']]} | {frozen} |"
+        )
+    lines.append("")
+    lines.append(
+        "“Calendar proof stored” describes the committed `.ots` file."
+        " It does not establish whether the calendar has since anchored that"
+        " commitment in a Bitcoin block. A later `ots upgrade` on a copy can"
+        " add the block proof; chain verification and an append-only custody"
+        " update are separate steps."
+    )
+    lines.append("")
+    lines.append("## Registered records")
+    lines.append("")
     for row in active_rows:
         if row["owning_issue"] is None:
             owner = row["milestone"]
@@ -3016,12 +3156,27 @@ def render(register: dict, rows: list[dict]) -> str:
             frozen = "not a valid freeze"
         else:
             frozen = "to freeze"
-        lines.append(
-            f"| {row['id']} | {row['content']} | {row['status']} | {frozen} |"
-            f" {owner} | {row['kill_band']} |"
-        )
+        lines.append(f"### {row['id']}")
+        lines.append("")
+        lines.append(f"- **Registered state:** `{row['status']}`")
+        lines.append(f"- **Frozen (UTC):** {frozen}")
+        lines.append(f"- **Registration-era owner:** {owner}")
+        lines.append("")
+        lines.append("<details>")
+        lines.append("<summary>Full content and decision rule</summary>")
+        lines.append("")
+        lines.append("**Content**")
+        lines.append("")
+        lines.append(row["content"])
+        lines.append("")
+        lines.append("**Kill band**")
+        lines.append("")
+        lines.append(row["kill_band"])
+        lines.append("")
+        lines.append("</details>")
+        lines.append("")
     lines.append("")
-    lines.append("### Current structural landing and prediction boundary")
+    lines.append("## Current structural landing and prediction boundary")
     lines.append("")
     lines.append(
         "The local face-curvature action and separate scalar Coulomb minimum"
@@ -3166,8 +3321,12 @@ def render(register: dict, rows: list[dict]) -> str:
     )
     lines.append("")
     lines.append(
-        "The armed physical population of the ladder is one row, FZ-10. FZ-11 and"
-        " FZ-12 carry exact five-sigma kill bands and an unarmed, ineligible"
+        "FZ-10 retains its existing armed physical comparison. The October 4"
+        " FZ-13 and FZ-15 registrations add specified conditional branch tests:"
+        " their fixed-capacity and reserve-generator premises are hypotheses,"
+        " not newly established OPH derivations. Eligibility is determined by"
+        " each complete frozen protocol, and no comparison has been scored."
+        " FZ-11 and FZ-12 carry exact five-sigma kill bands and an unarmed, ineligible"
         " physical comparison: they are frozen predictions whose arming requires"
         " the source-derived attachments their comparison protocols name."
     )

@@ -1,0 +1,97 @@
+{
+  "protocol": {
+    "ancestry": "FZ-01 continues to contain its two-candidate menu and original decision rule. FZ-15 independently fixes only the edge-center branch for one new future comparison; failure here does not retroactively fail the full FZ-01 menu, and compatibility does not erase selection history. FZ-16/17 remain unadopted proposals.",
+    "anchor_eligibility": "The earliest public numerical constraint for the selected new release, including preprints and public slides, must postdate BOTH publication of this exact package and its earliest independently verified Bitcoin attestation. Until that attestation is obtained the package is calendar-stamped and comparison is not eligible. An earlier result is ineligible even if the authors had not read it. Record publication URLs, dates, actual proof verification and file hashes before scoring.",
+    "authorization": "Owner explicitly authorized sound OPH freezes in the 2026-10-04 conversation following the audit of issues 1025 and 1026.",
+    "comparison_access": "No eligible future numerical constraints or posterior chains were accessed in preparing this registration. Public release metadata was checked; all pre-registration public numerical results remain exposed retrospective evidence.",
+    "credible_mass_inner": 0.9544997361036416,
+    "credible_mass_outer": 0.9973002039367398,
+    "dataset": {
+      "baseline_resolution": "Use only the single official baseline SO+Planck primary-CMB combination named in the release methods, with its published priors, tau treatment and neutrino convention. If the combination or baseline is absent or ambiguous, record UNAVAILABLE. Do not choose between SO-only, SO+Planck and external-data extensions using results.",
+      "components": [
+        "SO LAT primary TT/TE/EE spectra",
+        "Planck primary-CMB large-scale complement in the uniquely designated official SO+Planck baseline"
+      ],
+      "data_reuse": "Planck has already been examined; the future SO+Planck joint analysis is prospective but not a wholly independent held-out replication. Standard lensing of primary spectra is part of the imported transfer, not the excluded reconstructed-lensing likelihood.",
+      "excluded_additions": [
+        "BAO",
+        "SNe",
+        "SH0ES",
+        "reconstructed CMB-lensing likelihood",
+        "ACT/SPT likelihoods",
+        "weak-lensing surveys"
+      ],
+      "model": "baseline spatially flat six-parameter power-law LambdaCDM; adiabatic scalars, running=0, no primordial tensor parameter, k*=0.05 Mpc^-1",
+      "new_release": "first official SO LAT primary-CMB cosmological-parameter release after both custody events"
+    },
+    "direction_policy": "All tests and numerical/systematic gates are direction-neutral. No freezing/thawing-quadrant veto, display-bias exemption or target-dependent nuisance expansion is permitted.",
+    "execution_boundary": "Registration authorizes neither a new simulation campaign nor new spending. It fixes a future postprocessing comparison. No current empirical score is emitted.",
+    "exposure": [
+      "Planck 2018 and later pre-anchor Planck products",
+      "ACT DR6",
+      "SPT-3G D1 and every pre-anchor joint combination",
+      "both FZ-01 tilt candidates and the unsuccessful finite-repair-clock diagnostic",
+      "P_C calibration through the measured alpha coordinate; branch chosen after historical cosmology comparisons"
+    ],
+    "missing_product_rule": "No alternate experiment or combination is a fallback. If the specified first release omits the required model/product, has no uniquely designated baseline, or is withdrawn, record UNAVAILABLE with the reason. Do not silently advance to another release. A later prospective registration must retain this history.",
+    "multiple_targets": "FZ-13 and FZ-15 are two separately reported registered endpoints. No combined significance, multiplicative evidence or best-of-two success claim is authorized. Historical candidate menus remain disclosed.",
+    "numerical_stability": "For diagnostics only, after burn-in and multiplicity expansion set n=2*floor(min_j(chain_length_j)/2) and use the last n ordered draws of each chain, splitting each into equal halves. Full native draw counts still define all posterior estimates and subset verdicts. Undefined or insufficient n yields INCONCLUSIVE. Require official convergence acceptance, at least four chains, and rank-normalized split and folded Rhat<=1.01 on every target coordinate (and the pooled radial-score scalar for FZ-13). Require pooled quantile-indicator ESS>=20000 at every probability used for the proposed verdict. Use the localized-ESS and rank/folding method of Vehtari et al., Bayesian Analysis 2021, arXiv:1903.08008v5, retaining ordered repeats; the usual 5%/95% tail ESS is not a substitute. Undefined diagnostics fail this gate. Compute the nominal verdict on pooled samples, each separate chain and every leave-one-chain-out pool; all must give the same non-INCONCLUSIVE verdict. Otherwise emit INCONCLUSIVE. For FZ-13 each subset recomputes its own mean, covariance, radii and quantiles; diagnostic radial series use the full pooled mean and covariance. This is a declared numerical stability gate, not a Monte Carlo confidence interval or a coverage theorem.",
+    "outcome_policy": "FAIL rejects the exact registered branch together with its named physical and comparison premises; it does not identify which premise failed or reject every OPH model. COMPATIBLE means survival only, with no source-derivation or OPH-specific confirmation credit. Between the frozen credible boundaries, unstable numerics or protocol failure yield INCONCLUSIVE; a missing prescribed product yields UNAVAILABLE. Publish all outcomes with equal prominence and exact inputs. Independent audit checks implementation and measurement assumptions; it may append a correction but may not silently retune the prediction or scoring rule.",
+    "parameter_changes": "No tolerance may be widened after observing the comparison. A changed calibration, physical premise, transfer law or source branch is a new exposed model requiring a new registration. The numerical constants are exact commitments inside the restricted candidate; this does not assert negligible error for a future completed OPH derivation.",
+    "posterior_conventions": "Import the collaboration baseline priors, complete likelihood, foreground/instrument/systematic nuisance model and documented burn-in. Marginalize all non-target parameters with that published analysis. Use the entire prescribed chain set, not a Gaussian summary or digitized contour. Report model, priors and data reuse with the verdict; this is posterior compatibility conditional on that analysis, not a frequentist p-value, Bayes factor or framework discovery significance.",
+    "premises": [
+      "The reserve-generator receipt has full-collar infinitesimal density P/24 and the edge-facing orientation-half/coarea identity, giving tilt exponent theta=P/48. The finite physical reserve-generator receipt is not supplied by this freeze.",
+      "The source dilation cocycle, physical scale-natural mode embedding and primordial-curvature identification transport the exponent into the dimensionless primordial-curvature power Delta_zeta^2(k) proportional to (k/k*)^(-theta). These identifications are conditional.",
+      "The compared branch is the adiabatic scalar power-law branch in standard flat six-parameter LambdaCDM, with running=0, standard primordial transfer/recombination and no primordial tensor contribution to this scalar comparator. This baseline choice does not establish a separate OPH r=0 prediction.",
+      "P is the exact inherited calibration coordinate printed here, chosen with historical alpha and CMB exposure. It is not inferred from the new release, and the competing forward-map or e(P-phi) branch may not replace it.",
+      "A_s, optical depth, other cosmological parameters and foreground/instrument nuisance parameters are marginalized using the published baseline, not predicted by this target."
+    ],
+    "quantile_definition": "Q(p)=inf{x:F_weighted(x)>=p}, the left-continuous inverse of the empirical weighted CDF, with no interpolation. Means and covariance use normalized positive sample weights; covariance divides by total weight, not an unbiased finite-sample correction.",
+    "release_lock": "Use only the first eligible official release specified below, and its first complete public posterior-chain version. No result-dependent choice of release, likelihood, pipeline, nuisance model, prior or compilation; no optional stopping across later releases. Official corrections are appended alongside the original result and do not erase exposure or confer independent-replication credit.",
+    "sample_representation": "Require at least four independent ordered MCMC chains. Raw draws or documented positive-integer multiplicity compression are allowed, with repeats restored for autocorrelation diagnostics. Use official burn-in removal; if absent, discard the first half of each chain by expanded draw count. Reject nonfinite samples, negative/zero weights, unsupported noninteger importance weights and ambiguous chain ordering as INCONCLUSIVE. Preserve native relative draw counts when pooling.",
+    "scientific_class": "conditional OPH branch test; physical premises and established-physics comparison model disclosed; not a source-complete derivation or an OPH-wide test",
+    "source_artifacts": {
+      "code/cosmology/primordial_freeze/PRIMORDIAL_REGISTRATION_PROPOSAL.md": "ddddb5f2b9fbd9ac9c041b437cd96e98e67123571bbd458e9a8c19ba832332dc",
+      "paper/tex_fragments/PRIMORDIAL_BRIDGE_THEOREMS.tex": "685c2a749155414cad80a052aeb0db6a07408ba8c23f1260335bdd6b2e30926c",
+      "paper/tex_fragments/SCREEN_SPECTRUM_THEOREMS.tex": "c02eb4b71ec1f260bf266447d378e0c0c23148e39167b1bc0e66912edc83f510"
+    },
+    "source_commit": "9a01fbe89bab53ccc93af66859baf51f16f348c9",
+    "statistic": {
+      "compatible": "Q(0.0227501319481792) <= n_s* <= Q(0.9772498680518208)",
+      "coordinate": "n_s",
+      "definition": "Use the exact rational prediction against the empirical weighted equal-tail intervals. Q is the stated noninterpolated weighted quantile.",
+      "fail": "n_s* < Q(0.0013498980316301) or n_s* > Q(0.9986501019683699)",
+      "otherwise": "INCONCLUSIVE",
+      "quantile_ess_probabilities_for_compatible": [
+        0.0227501319481792,
+        0.9772498680518208
+      ],
+      "quantile_ess_probabilities_for_fail": [
+        0.0013498980316301,
+        0.9986501019683699
+      ]
+    },
+    "target": {
+      "P_exact": "16309682094039593/10000000000000000",
+      "additional_theory_width": "none inside this explicitly exact conditional model; not an error estimate for unproved physical attachments",
+      "n_s_decimal_display": "0.96602149563741751458",
+      "n_s_exact": "463690317905960407/480000000000000000",
+      "pivot_Mpc_inverse": "0.05",
+      "relation": "n_s=1-P/48"
+    }
+  },
+  "row": {
+    "attestation": "OpenTimestamps calendar commitments bind the target, complete protocol snapshot and registration manifest. Bitcoin upgrade and chain verification are pending at registration. frozen_utc is author-declared; only the verified block anchors externally provable existence. No comparison before publication and verified anchoring.",
+    "comparison_protocol": "First eligible official Simons Observatory LAT primary-CMB parameter release: the uniquely designated baseline SO LAT plus Planck primary TT/TE/EE flat six-parameter power-law LambdaCDM posterior at k*=0.05 Mpc^-1. Use the first complete official ordered chains and the anchored protocol in evidence/custody/falsification/frozen_targets/fz15_2026-10-04/frozen_prediction.json. No BAO, SNe, reconstructed-lensing likelihood, alternate experiment or later-release fallback. Eligibility starts after publication and verified Bitcoin anchoring; Planck reuse and all existing ACT/SPT/Planck exposure remain disclosed.",
+    "content": "Conditional edge-center OPH primordial branch: the declared full-collar density P/24, orientation-half identity, reserve-generator/dilation law, scale-natural embedding into physical primordial-curvature modes, and standard CMB transfer give n_s=1-P/48. Fix the inherited CODATA-calibrated coordinate P=16309682094039593/10000000000000000 exactly, hence n_s=463690317905960407/480000000000000000 = 0.96602149563741751458... at k*=0.05 Mpc^-1. This is an exposed, calibration-conditional branch commitment, not a source-complete prediction. Its physical generator/embedding remains a hypothesis. The FZ-01 two-candidate menu remains intact; no substitution of its clock alternative or of P_fwd is allowed.",
+    "content_sha256": "733fa7168c476ad3e921d7b44832c76930a4222098afc43596dd8034f717a3e8",
+    "custody": "evidence/custody/falsification/frozen_targets/fz15_2026-10-04: frozen_prediction.json, target.md, registration_manifest_2026-10-04.json and detached OpenTimestamps proofs. The package is append-only and source ancestry is pinned in the snapshot.",
+    "frozen_utc": "2026-10-04T08:23:35Z",
+    "id": "FZ-15",
+    "kill_band": "FZ15-R01 FAIL when the fixed n_s lies outside the weighted equal-tail 0.9973002039367398 posterior credible interval; COMPATIBLE inside the 0.9544997361036416 interval; otherwise INCONCLUSIVE. At least four ordered chains, official convergence, rank/folded split Rhat<=1.01, ESS>=20000 at the actual relevant tail probabilities and identical pooled/per-chain/leave-one-out verdicts are required. Missing specified product is UNAVAILABLE. These are posterior compatibility rules, not frequentist sigma claims; failure rejects the named branch and survival does not validate the missing source derivation.",
+    "milestone": "one eligible post-anchor cosmological comparison; conditional branch only",
+    "owning_issue": 1025,
+    "status": "frozen_stamped_upgrade_pending"
+  },
+  "schema": "oph.conditional_cosmology_freeze.v1"
+}

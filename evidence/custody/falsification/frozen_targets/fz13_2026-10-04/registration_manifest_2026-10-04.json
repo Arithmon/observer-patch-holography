@@ -1,0 +1,9 @@
+{
+  "artifacts": {
+    "frozen_prediction.json": "60ae0827d652a5434046b5ce8ceb536cf75bdd0ced6b19e8e1005c3ed3d5fb89",
+    "target.md": "b7648e51a505ea50ea0494e366f0e65e82811180b1b5bc50b20d565fc9f02366"
+  },
+  "registered_utc": "2026-10-04T08:23:35Z",
+  "registration": "FZ-13: Fixed global capacity and the dark-energy equation of state",
+  "source_commit": "9a01fbe89bab53ccc93af66859baf51f16f348c9"
+}

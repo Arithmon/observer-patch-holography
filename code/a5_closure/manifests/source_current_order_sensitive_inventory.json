@@ -2875,12 +2875,12 @@
       {
         "byte_count": 3309,
         "path": "code/angular_sprint/runtime/angular_fingerprint_receipt.json",
-        "sha256": "sha256:d8afc7b8ab60bf357b69b4cb1dcea7b7691a0e08ca6f956ac2c87c5d7e2f68c2"
+        "sha256": "sha256:a38b25d22373da3f5a1b07e18ecbb9983fb11f3a64914c0788330e024afdfef8"
       },
       {
         "byte_count": 14010,
         "path": "code/angular_sprint/runtime/angular_template_receipt.json",
-        "sha256": "sha256:b7772facf76c7a9e416e0433d6baa1e60c143fa4c63fd3d3d9915a301025a861"
+        "sha256": "sha256:be91ffc17b2862229d77d81cb7d2860760c1d94a226f375843453c2d6d1661db"
       },
       {
         "byte_count": 12252,
@@ -4628,7 +4628,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:887cdcf3a85e7610d8e5a5c5f88405457f93a7948d5d985721c9ad2b23e8c7e6",
+    "files_sha256": "sha256:1b1a141ba1aeb6de99a84878e922853c6f9ab6faeafaa2ae15b4c4ebece7ddc1",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7537,7 +7537,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:b54da9e540edd460a7ccacfba0f68130596eca98915341ef0790cc87c22e65b5",
+  "inventory_sha256": "sha256:96eaffdbaeee430ff0bd5b2562561199858d8f92953a25a4206187c6b6227c05",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

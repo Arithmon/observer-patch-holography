@@ -1,5 +1,15 @@
 # FZ-13 registration proposal: fixed-capacity dark-energy w-law, pre-DESI-DR3
 
+The fixed-capacity branch was adopted with a complete, separately dated
+protocol on 2026-10-04. The operative registration is
+[FZ-13's target](../../../evidence/custody/falsification/frozen_targets/fz13_2026-10-04/target.md)
+and its adjacent `frozen_prediction.json` and timestamped manifest. It fixes
+one future DESI DR3 comparison, uses direction-neutral posterior credible
+regions and grants no distinctive OPH confirmation credit. The monotone
+alternative is not scored by that registration. The original proposal below
+is retained as historical ancestry; its open owner slots are not operative
+terms of the adopted freeze.
+
 Status: PROPOSAL. This document is referenced by a
 `registered_pending_freeze` index row, but that listing is not a scientific
 freeze and claims no frozen or scored prediction. Adoption of the completed

@@ -101,9 +101,9 @@
     "Lean/Screen/A5PrimitivePortPrediction.lean": "6fbcba24c38aa8c07c6373a577066f74454cc7d580a5ecb69cecaac1f7705f72",
     "code/a5_fingerprint/runtime/spin_six_primitive_port_prediction_receipt.json": "8ac97d7c46199717ed031610efdda65c40f6a251e78715d6bc05888d598e66d8"
    },
+   "prediction_file": "spin_six_primitive_port_prediction_frozen_2026-07-31.json",
    "registration_manifest": "registration_manifest_2026-07-31.json",
    "registration_manifest_sha256": "e1533759bd9af051db23163d378bd259c4c76cb88fd79720c67b641e5da4b9c3",
-   "prediction_file": "spin_six_primitive_port_prediction_frozen_2026-07-31.json",
    "rows": [
     "FZ-11"
    ],
@@ -142,6 +142,34 @@
    ],
    "source_commit": "bc5595f8dbb2d2886e2a64ddf447f69fbb00eb3f",
    "target_file": "frozen_target_seam_current_edge_prediction_2026-08-02.md"
+  },
+  "FZ-13": {
+   "artifact_sha256": {
+    "frozen_prediction.json": "60ae0827d652a5434046b5ce8ceb536cf75bdd0ced6b19e8e1005c3ed3d5fb89",
+    "target.md": "b7648e51a505ea50ea0494e366f0e65e82811180b1b5bc50b20d565fc9f02366"
+   },
+   "attestation_state": "calendar_pending",
+   "custody_path": "falsification/frozen_targets/fz13_2026-10-04",
+   "in_repo_artifact_sha256": {},
+   "registration_manifest": "registration_manifest_2026-10-04.json",
+   "registration_manifest_sha256": "d95e68b703661bad49f99839244bece3c4d449447e20e72ed4113a047c0d2f5d",
+   "rows": [
+    "FZ-13"
+   ]
+  },
+  "FZ-15": {
+   "artifact_sha256": {
+    "frozen_prediction.json": "150f9f6f771bbde5ec0c3548756a83d8ab3499d9ff8c0e0364388883ccead1d8",
+    "target.md": "f80ce2d633032ae1510e0b86ea79f1193b8e7303b77bf7fe60abfbdc3b5a01e3"
+   },
+   "attestation_state": "calendar_pending",
+   "custody_path": "falsification/frozen_targets/fz15_2026-10-04",
+   "in_repo_artifact_sha256": {},
+   "registration_manifest": "registration_manifest_2026-10-04.json",
+   "registration_manifest_sha256": "f2ab98661a5b14ae781991a0c269dcd12f7376761ecd3cac381d5246ede9d149",
+   "rows": [
+    "FZ-15"
+   ]
   }
  },
  "generated_surface": "docs/FROZEN_PREDICTION_LADDER.md",
@@ -306,17 +334,17 @@
    "status": "frozen_stamped_upgrade_pending"
   },
   {
-   "attestation": null,
-   "comparison_protocol": "no comparison protocol is frozen; the proposed protocol uses only post-freeze published DESI DR3 and Euclid w0waCDM posteriors, treats them as model- and likelihood-dependent CPL projections rather than direct capacity measurements, excludes DESI DR1, DR2, and every pre-freeze contour as seen data, and requires a fully specified direction-neutral nuisance and fallback policy before anchoring; it awaits the owner's freeze and is recorded in code/cosmology/fixed_capacity_wlaw/FZ13_REGISTRATION_PROPOSAL.md",
-   "content": "Conditional fixed-capacity dark-energy model-discrimination stance, not an independent derivation of fixed capacity: under the DK-01 density, continuity, and closed-sector premises, fixed N implies (w0, wa) = (-1, 0) exactly in the CPL plane with zero continuous freedom within that branch; monotone nondecreasing N implies w(a) >= -1 at every scored epoch; and the exact conditional exposure map is w(a) = -1 + (1/3) d ln N / d ln a. These are algebraic consequences machine-checked in Lean/ObserverPatchHolography/EinsteinBranch/FixedCapacityWLaw.lean; the theorem does not derive the physical premises.",
-   "content_sha256": null,
-   "custody": null,
-   "frozen_utc": null,
+   "attestation": "OpenTimestamps calendar commitments bind the target, complete protocol snapshot and registration manifest. Bitcoin upgrade and chain verification are pending at registration. frozen_utc is author-declared; only the verified block anchors externally provable existence. No comparison before publication and verified anchoring.",
+   "comparison_protocol": "First eligible official DESI DR3 BAO cosmology release: flat w0waCDM, all DR3 BAO tracers, the uniquely designated collaboration baseline CMB likelihood combination and Pantheon+ supernovae. Use the first complete official ordered posterior chains and the anchored protocol in evidence/custody/falsification/frozen_targets/fz13_2026-10-04/frozen_prediction.json. No alternate SNe compilation, external dataset, independent OPH refit or later-release fallback. Eligibility starts after publication and verified Bitcoin anchoring; old DESI/CMB/SNe data remain exposed and their reuse is disclosed.",
+   "content": "Conditional fixed-global-capacity OPH branch: with N(a)>0 constant for all a>0, rho_DE=kappa/N with constant positive kappa, fixed physical constants and a separately conserved dark sector obeying the standard FRW continuity equation, w(a)=-1 and (w0,wa)=(-1,0) exactly in CPL. Global fixed capacity and the physical density/continuity interpretation are declared hypotheses, not consequences of finite local screens. This registration scores only the fixed branch; monotone capacity is not an alternative that may rescue it. The prediction coincides with LambdaCDM and survival earns no distinctive OPH support.",
+   "content_sha256": "9eb9f4210b4a269672c3b80b1b7db4a9eb183a48d6595bf352a64cfc2b54b095",
+   "custody": "evidence/custody/falsification/frozen_targets/fz13_2026-10-04: frozen_prediction.json, target.md, registration_manifest_2026-10-04.json and detached OpenTimestamps proofs. The package is append-only and source ancestry is pinned in the snapshot.",
+   "frozen_utc": "2026-10-04T08:23:35Z",
    "id": "FZ-13",
-   "kill_band": "none frozen; the corrected proposal makes exclusion of (-1, 0) a fixed-branch failure regardless of posterior-mean quadrant and tests the monotone branch against the full CPL set satisfying w(a) >= -1 on a frozen scored range. The already-seen display-bias mock supplies no direction-specific veto. Compatibility with (-1, 0) earns no OPH confirmation credit because it is also the standard LambdaCDM null. The release combination, scored range, statistic, thresholds, fallbacks, and direction-neutral systematics policy remain owner slots, so the row is not anchorable before they are fixed prior to comparison.",
-   "milestone": "pre-DESI-DR3 freeze",
-   "owning_issue": 742,
-   "status": "registered_pending_freeze"
+   "kill_band": "FZ13-R01 FAIL when (-1,0) lies outside the empirical covariance-centered 0.9973002039367398 posterior credible ellipsoid; COMPATIBLE inside its 0.9544997361036416 ellipsoid; otherwise INCONCLUSIVE. Full covariance and empirical radial quantiles are required, not a Gaussian sigma conversion. At least four ordered chains, official convergence, rank/folded split Rhat<=1.01, actual-threshold quantile ESS>=20000 and identical pooled/per-chain/leave-one-out verdicts are required. Missing specified product is UNAVAILABLE; failed numerical gates are INCONCLUSIVE. Direction-neutral; no OPH-wide or distinctive confirmation claim.",
+   "milestone": "one eligible post-anchor cosmological comparison; conditional branch only",
+   "owning_issue": 1025,
+   "status": "frozen_stamped_upgrade_pending"
   },
   {
    "attestation": null,
@@ -330,6 +358,19 @@
    "milestone": "pre-comparison freeze for post-anchoring gravitational-wave events",
    "owning_issue": 729,
    "status": "registered_pending_freeze"
+  },
+  {
+   "attestation": "OpenTimestamps calendar commitments bind the target, complete protocol snapshot and registration manifest. Bitcoin upgrade and chain verification are pending at registration. frozen_utc is author-declared; only the verified block anchors externally provable existence. No comparison before publication and verified anchoring.",
+   "comparison_protocol": "First eligible official Simons Observatory LAT primary-CMB parameter release: the uniquely designated baseline SO LAT plus Planck primary TT/TE/EE flat six-parameter power-law LambdaCDM posterior at k*=0.05 Mpc^-1. Use the first complete official ordered chains and the anchored protocol in evidence/custody/falsification/frozen_targets/fz15_2026-10-04/frozen_prediction.json. No BAO, SNe, reconstructed-lensing likelihood, alternate experiment or later-release fallback. Eligibility starts after publication and verified Bitcoin anchoring; Planck reuse and all existing ACT/SPT/Planck exposure remain disclosed.",
+   "content": "Conditional edge-center OPH primordial branch: the declared full-collar density P/24, orientation-half identity, reserve-generator/dilation law, scale-natural embedding into physical primordial-curvature modes, and standard CMB transfer give n_s=1-P/48. Fix the inherited CODATA-calibrated coordinate P=16309682094039593/10000000000000000 exactly, hence n_s=463690317905960407/480000000000000000 = 0.96602149563741751458... at k*=0.05 Mpc^-1. This is an exposed, calibration-conditional branch commitment, not a source-complete prediction. Its physical generator/embedding remains a hypothesis. The FZ-01 two-candidate menu remains intact; no substitution of its clock alternative or of P_fwd is allowed.",
+   "content_sha256": "733fa7168c476ad3e921d7b44832c76930a4222098afc43596dd8034f717a3e8",
+   "custody": "evidence/custody/falsification/frozen_targets/fz15_2026-10-04: frozen_prediction.json, target.md, registration_manifest_2026-10-04.json and detached OpenTimestamps proofs. The package is append-only and source ancestry is pinned in the snapshot.",
+   "frozen_utc": "2026-10-04T08:23:35Z",
+   "id": "FZ-15",
+   "kill_band": "FZ15-R01 FAIL when the fixed n_s lies outside the weighted equal-tail 0.9973002039367398 posterior credible interval; COMPATIBLE inside the 0.9544997361036416 interval; otherwise INCONCLUSIVE. At least four ordered chains, official convergence, rank/folded split Rhat<=1.01, ESS>=20000 at the actual relevant tail probabilities and identical pooled/per-chain/leave-one-out verdicts are required. Missing specified product is UNAVAILABLE. These are posterior compatibility rules, not frequentist sigma claims; failure rejects the named branch and survival does not validate the missing source derivation.",
+   "milestone": "one eligible post-anchor cosmological comparison; conditional branch only",
+   "owning_issue": 1025,
+   "status": "frozen_stamped_upgrade_pending"
   }
  ],
  "schema": "oph.frozen_prediction_register.v3"

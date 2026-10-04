@@ -47,6 +47,7 @@ def test_ladder_excludes_the_retrospective_fz04_reservation():
         "FZ-12",
         "FZ-13",
         "FZ-14",
+        "FZ-15",
     ]
     result = live_register()["retrospective_results"][0]
     assert result["id"] == "RR-506-ALPHA-HVP"
@@ -99,6 +100,90 @@ def test_generic_frozen_row_cannot_be_rewritten_behind_old_hash():
     assert row["content_sha256"] == original_hash
     with pytest.raises(SystemExit, match="immutable bootstrap"):
         fz_tool.validate(register)
+
+
+@pytest.mark.parametrize("row_id", ["FZ-13", "FZ-15"])
+@pytest.mark.parametrize("field", ["content", "comparison_protocol", "kill_band", "custody"])
+def test_new_cosmology_row_cannot_change_behind_old_hash(row_id, field):
+    register = live_register()
+    row = next(item for item in register["rows"] if item["id"] == row_id)
+    row[field] += "; post-comparison revision"
+    with pytest.raises(SystemExit, match="differs from immutable snapshot"):
+        fz_tool.validate(register)
+
+
+@pytest.mark.parametrize("row_id", ["FZ-13", "FZ-15"])
+def test_new_cosmology_rebuilt_custody_cannot_conceal_changed_protocol(row_id, tmp_path):
+    register = live_register()
+    contract = register["external_custody_contracts"][row_id]
+    original = fz_tool.DEFAULT_CUSTODY_ROOT / contract["custody_path"] / "frozen_prediction.json"
+    snapshot = json.loads(original.read_text(encoding="utf-8"))
+    snapshot["protocol"]["post_exposure_override"] = "discard an unfavorable release"
+    destination = tmp_path / contract["custody_path"] / "frozen_prediction.json"
+    destination.parent.mkdir(parents=True)
+    destination.write_text(json.dumps(snapshot), encoding="utf-8")
+    contract["artifact_sha256"]["frozen_prediction.json"] = fz_tool.sha256_file(destination)
+    # Rebuilding the contract's hash cannot replace the accepted snapshot pin.
+    rows = {row["id"]: row for row in register["rows"]}
+    with pytest.raises(SystemExit, match="immutable snapshot pin drifted"):
+        fz_tool.validate_cosmology_freezes(register, rows)
+
+
+@pytest.mark.parametrize("row_id", ["FZ-13", "FZ-15"])
+def test_new_cosmology_manifest_pin_is_immutable(row_id):
+    register = live_register()
+    register["external_custody_contracts"][row_id]["registration_manifest_sha256"] = "0" * 64
+    rows = {row["id"]: row for row in register["rows"]}
+    with pytest.raises(SystemExit, match="immutable manifest pin drifted"):
+        fz_tool.validate_cosmology_freezes(register, rows)
+
+
+@pytest.mark.parametrize("row_id", ["FZ-13", "FZ-15"])
+def test_new_cosmology_snapshot_bytes_are_checked(row_id, tmp_path, monkeypatch):
+    register = live_register()
+    for candidate in fz_tool.COSMOLOGY_FREEZE_PINS:
+        contract = register["external_custody_contracts"][candidate]
+        relative = Path(contract["custody_path"]) / "frozen_prediction.json"
+        destination = tmp_path / relative
+        destination.parent.mkdir(parents=True)
+        shutil.copyfile(fz_tool.DEFAULT_CUSTODY_ROOT / relative, destination)
+        if candidate == row_id:
+            destination.write_bytes(destination.read_bytes() + b" ")
+    monkeypatch.setattr(fz_tool, "DEFAULT_CUSTODY_ROOT", tmp_path)
+    rows = {row["id"]: row for row in register["rows"]}
+    with pytest.raises(SystemExit, match="immutable snapshot bytes drifted"):
+        fz_tool.validate_cosmology_freezes(register, rows)
+
+
+@pytest.mark.parametrize("row_id", ["FZ-13", "FZ-15"])
+def test_new_cosmology_source_pins_bind_historical_blobs(row_id):
+    register = live_register()
+    contract = register["external_custody_contracts"][row_id]
+    snapshot_path = fz_tool.DEFAULT_CUSTODY_ROOT / contract["custody_path"] / "frozen_prediction.json"
+    protocol = json.loads(snapshot_path.read_text(encoding="utf-8"))["protocol"]
+    fz_tool.verify_cosmology_source_artifacts(protocol, row_id)
+    first_path = next(iter(protocol["source_artifacts"]))
+    protocol["source_artifacts"][first_path] = "0" * 64
+    with pytest.raises(SystemExit, match="historical source artifact hash mismatch"):
+        fz_tool.verify_cosmology_source_artifacts(protocol, row_id)
+
+
+def test_historical_bootstrap_cannot_drop_or_demote_frozen_rows():
+    for remove in (True, False):
+        rows = copy.deepcopy(live_register()["rows"])
+        if remove:
+            rows = [row for row in rows if row["id"] != "FZ-10"]
+        else:
+            next(row for row in rows if row["id"] == "FZ-10")["status"] = "registered_pending_freeze"
+        with pytest.raises(SystemExit, match="immutable bootstrap"):
+            fz_tool.validate_frozen_rows_bootstrap(rows)
+
+
+def test_bootstrap_extension_does_not_allow_unregistered_new_freezes():
+    rows = copy.deepcopy(live_register()["rows"])
+    next(row for row in rows if row["id"] == "FZ-03")["status"] = "standing_frozen"
+    with pytest.raises(SystemExit, match="exactly the registered FZ-13 and FZ-15"):
+        fz_tool.validate_frozen_rows_bootstrap(rows)
 
 
 def test_fz11_is_a_frozen_unarmed_branch_prediction():
@@ -463,8 +548,9 @@ def test_pending_owners_are_current_and_frozen_owners_are_historical():
         "FZ-10": 546,
         "FZ-11": 655,
         "FZ-12": 666,
-        "FZ-13": 742,
+        "FZ-13": 1025,
         "FZ-14": 729,
+        "FZ-15": 1025,
     }
     rendered = fz_tool.render(register, fz_tool.validate(register))
     assert "[#745](https://github.com" in rendered
@@ -1258,4 +1344,5 @@ def test_fz10_custody_provenance_is_pinned():
     assert fz_tool.FZ10_SOURCE_COMMIT in rendered
     assert fz_tool.FZ10_CUSTODY_COMMIT in rendered
     assert "FZ-01's kill band names per-target decision policies" in rendered
-    assert "The armed physical population of the ladder is one row, FZ-10." in rendered
+    assert "FZ-10 retains its existing armed physical comparison." in rendered
+    assert "FZ-13 and FZ-15 registrations add specified conditional branch tests" in rendered

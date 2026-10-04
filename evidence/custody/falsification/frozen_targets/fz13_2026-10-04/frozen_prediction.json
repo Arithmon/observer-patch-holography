@@ -1,0 +1,100 @@
+{
+  "protocol": {
+    "ancestry": "FZ-01 historical w-law bytes and scoring rules remain immutable. This separately dated registration replaces neither their exposure nor their outcome. FZ-13 was previously only a proposal; the fixed branch is now adopted with a completed direction-neutral protocol. The formerly proposed monotone branch is not scored.",
+    "anchor_eligibility": "The earliest public numerical constraint for the selected new release, including preprints and public slides, must postdate BOTH publication of this exact package and its earliest independently verified Bitcoin attestation. Until that attestation is obtained the package is calendar-stamped and comparison is not eligible. An earlier result is ineligible even if the authors had not read it. Record publication URLs, dates, actual proof verification and file hashes before scoring.",
+    "authorization": "Owner explicitly authorized sound OPH freezes in the 2026-10-04 conversation following the audit of issues 1025 and 1026.",
+    "comparison_access": "No eligible future numerical constraints or posterior chains were accessed in preparing this registration. Public release metadata was checked; all pre-registration public numerical results remain exposed retrospective evidence.",
+    "credible_mass_inner": 0.9544997361036416,
+    "credible_mass_outer": 0.9973002039367398,
+    "dataset": {
+      "baseline_resolution": "Baseline is selected only by the collaboration methods designation, not its posterior values. It must be unique. Freeze the official filenames and hashes before calculating a score. Multiple incompatible baseline designations or no exact Pantheon+ product yield UNAVAILABLE.",
+      "components": [
+        "all DESI DR3 BAO tracers",
+        "the single CMB combination explicitly designated fiducial/baseline in that first DR3 cosmology methods release",
+        "Pantheon+ SNe distances, without SH0ES absolute-distance/H0 calibration"
+      ],
+      "data_reuse": "DR3 overlaps earlier DESI observations; CMB and Pantheon+ are already public. This is a prospective test of a future combined analysis, not a wholly independent held-out dataset.",
+      "excluded_additions": [
+        "DESY5",
+        "Union3",
+        "SH0ES H0 prior",
+        "full-shape galaxy constraints",
+        "weak-lensing surveys",
+        "other BAO releases or OPH-selected combinations"
+      ],
+      "model": "flat w0waCDM (CPL), with w0 and wa allowed to vary for comparison",
+      "new_release": "DESI DR3 BAO cosmology, first official public numerical release after both custody events"
+    },
+    "direction_policy": "All tests and numerical/systematic gates are direction-neutral. No freezing/thawing-quadrant veto, display-bias exemption or target-dependent nuisance expansion is permitted.",
+    "execution_boundary": "Registration authorizes neither a new simulation campaign nor new spending. It fixes a future postprocessing comparison. No current empirical score is emitted.",
+    "exposure": [
+      "DESI DR1 and DR2 and their prior chain audit",
+      "all pre-anchor public CPL contours",
+      "Planck and ACT CMB likelihoods",
+      "Pantheon+, DESY5 and Union3 historical comparisons",
+      "the prior display-bias mock; no direction-dependent exemption is retained"
+    ],
+    "missing_product_rule": "No alternate experiment or combination is a fallback. If the specified first release omits the required model/product, has no uniquely designated baseline, or is withdrawn, record UNAVAILABLE with the reason. Do not silently advance to another release. A later prospective registration must retain this history.",
+    "multiple_targets": "FZ-13 and FZ-15 are two separately reported registered endpoints. No combined significance, multiplicative evidence or best-of-two success claim is authorized. Historical candidate menus remain disclosed.",
+    "numerical_stability": "For diagnostics only, after burn-in and multiplicity expansion set n=2*floor(min_j(chain_length_j)/2) and use the last n ordered draws of each chain, splitting each into equal halves. Full native draw counts still define all posterior estimates and subset verdicts. Undefined or insufficient n yields INCONCLUSIVE. Require official convergence acceptance, at least four chains, and rank-normalized split and folded Rhat<=1.01 on every target coordinate (and the pooled radial-score scalar for FZ-13). Require pooled quantile-indicator ESS>=20000 at every probability used for the proposed verdict. Use the localized-ESS and rank/folding method of Vehtari et al., Bayesian Analysis 2021, arXiv:1903.08008v5, retaining ordered repeats; the usual 5%/95% tail ESS is not a substitute. Undefined diagnostics fail this gate. Compute the nominal verdict on pooled samples, each separate chain and every leave-one-chain-out pool; all must give the same non-INCONCLUSIVE verdict. Otherwise emit INCONCLUSIVE. For FZ-13 each subset recomputes its own mean, covariance, radii and quantiles; diagnostic radial series use the full pooled mean and covariance. This is a declared numerical stability gate, not a Monte Carlo confidence interval or a coverage theorem.",
+    "outcome_policy": "FAIL rejects the exact registered branch together with its named physical and comparison premises; it does not identify which premise failed or reject every OPH model. COMPATIBLE means survival only, with no source-derivation or OPH-specific confirmation credit. Between the frozen credible boundaries, unstable numerics or protocol failure yield INCONCLUSIVE; a missing prescribed product yields UNAVAILABLE. Publish all outcomes with equal prominence and exact inputs. Independent audit checks implementation and measurement assumptions; it may append a correction but may not silently retune the prediction or scoring rule.",
+    "parameter_changes": "No tolerance may be widened after observing the comparison. A changed calibration, physical premise, transfer law or source branch is a new exposed model requiring a new registration. The numerical constants are exact commitments inside the restricted candidate; this does not assert negligible error for a future completed OPH derivation.",
+    "posterior_conventions": "Import the collaboration baseline priors, complete likelihood, foreground/instrument/systematic nuisance model and documented burn-in. Marginalize all non-target parameters with that published analysis. Use the entire prescribed chain set, not a Gaussian summary or digitized contour. Report model, priors and data reuse with the verdict; this is posterior compatibility conditional on that analysis, not a frequentist p-value, Bayes factor or framework discovery significance.",
+    "premises": [
+      "N is the global capacity appearing in the cosmological density, constant for all scale factors a>0, including the expansion history used by the CMB likelihood. Finiteness of each local screen is not this hypothesis.",
+      "rho_DE(a)=kappa/N(a), with constant kappa>0 and constant physical constants/calibration; no repair-rate drift or hidden time-dependent prefactor.",
+      "The dark-energy sector is separately conserved: d ln rho_DE/d ln a=-3(1+w); no energy exchange or additional dark-energy component.",
+      "Standard GR/FRW background, standard matter/radiation/neutrino and recombination treatment, and the collaboration flat-CPL physical measurement interpretation are imported. A posterior in that model is not a direct measurement of N.",
+      "The comparison grants no freedom in (w0,wa); other cosmological and nuisance parameters retain the published likelihood priors and are marginalized."
+    ],
+    "quantile_definition": "Q(p)=inf{x:F_weighted(x)>=p}, the left-continuous inverse of the empirical weighted CDF, with no interpolation. Means and covariance use normalized positive sample weights; covariance divides by total weight, not an unbiased finite-sample correction.",
+    "release_lock": "Use only the first eligible official release specified below, and its first complete public posterior-chain version. No result-dependent choice of release, likelihood, pipeline, nuisance model, prior or compilation; no optional stopping across later releases. Official corrections are appended alongside the original result and do not erase exposure or confer independent-replication credit.",
+    "sample_representation": "Require at least four independent ordered MCMC chains. Raw draws or documented positive-integer multiplicity compression are allowed, with repeats restored for autocorrelation diagnostics. Use official burn-in removal; if absent, discard the first half of each chain by expanded draw count. Reject nonfinite samples, negative/zero weights, unsupported noninteger importance weights and ambiguous chain ordering as INCONCLUSIVE. Preserve native relative draw counts when pooling.",
+    "scientific_class": "conditional OPH branch test; physical premises and established-physics comparison model disclosed; not a source-complete derivation or an OPH-wide test",
+    "source_artifacts": {
+      "Lean/ObserverPatchHolography/EinsteinBranch/FixedCapacityWLaw.lean": "af9370c79bd0a18f6c8a9eee5bb9e3fe5f94fe04c6bf377c2d12eb4fef1f5e00",
+      "code/cosmology/fixed_capacity_wlaw/FZ13_REGISTRATION_PROPOSAL.md": "d3b6376d1f63d01b57ce9bf8dcc2391aa7af9696f11f0b2682a16f9bd983998e"
+    },
+    "source_commit": "9a01fbe89bab53ccc93af66859baf51f16f348c9",
+    "statistic": {
+      "additional_diagnostic_coordinates": [
+        "radial d_i^2 with full pooled mu and Sigma"
+      ],
+      "compatible": "d_*^2 <= Q_d(0.9544997361036416)",
+      "coordinates": [
+        "w0",
+        "wa"
+      ],
+      "definition": "For each sample theta_i compute pooled weighted mean mu and full covariance Sigma. Require finite positive-definite Sigma. Let d_i^2=(theta_i-mu)^T Sigma^-1 (theta_i-mu), and d_*^2=((-1,0)-mu)^T Sigma^-1 ((-1,0)-mu). Credible ellipsoid E_p consists of theta with corresponding d^2<=Q_d(p). This empirical-mass ellipsoid need not be a highest-density region and requires no Gaussian posterior assumption.",
+      "fail": "d_*^2 > Q_d(0.9973002039367398)",
+      "otherwise": "INCONCLUSIVE",
+      "quantile_ess_probabilities_for_compatible": [
+        0.9544997361036416
+      ],
+      "quantile_ess_probabilities_for_fail": [
+        0.9973002039367398
+      ]
+    },
+    "target": {
+      "cpl_definition": "w(a)=w0+wa*(1-a)",
+      "domain": "all a>0",
+      "w0": -1,
+      "w_of_a": "-1",
+      "wa": 0
+    }
+  },
+  "row": {
+    "attestation": "OpenTimestamps calendar commitments bind the target, complete protocol snapshot and registration manifest. Bitcoin upgrade and chain verification are pending at registration. frozen_utc is author-declared; only the verified block anchors externally provable existence. No comparison before publication and verified anchoring.",
+    "comparison_protocol": "First eligible official DESI DR3 BAO cosmology release: flat w0waCDM, all DR3 BAO tracers, the uniquely designated collaboration baseline CMB likelihood combination and Pantheon+ supernovae. Use the first complete official ordered posterior chains and the anchored protocol in evidence/custody/falsification/frozen_targets/fz13_2026-10-04/frozen_prediction.json. No alternate SNe compilation, external dataset, independent OPH refit or later-release fallback. Eligibility starts after publication and verified Bitcoin anchoring; old DESI/CMB/SNe data remain exposed and their reuse is disclosed.",
+    "content": "Conditional fixed-global-capacity OPH branch: with N(a)>0 constant for all a>0, rho_DE=kappa/N with constant positive kappa, fixed physical constants and a separately conserved dark sector obeying the standard FRW continuity equation, w(a)=-1 and (w0,wa)=(-1,0) exactly in CPL. Global fixed capacity and the physical density/continuity interpretation are declared hypotheses, not consequences of finite local screens. This registration scores only the fixed branch; monotone capacity is not an alternative that may rescue it. The prediction coincides with LambdaCDM and survival earns no distinctive OPH support.",
+    "content_sha256": "9eb9f4210b4a269672c3b80b1b7db4a9eb183a48d6595bf352a64cfc2b54b095",
+    "custody": "evidence/custody/falsification/frozen_targets/fz13_2026-10-04: frozen_prediction.json, target.md, registration_manifest_2026-10-04.json and detached OpenTimestamps proofs. The package is append-only and source ancestry is pinned in the snapshot.",
+    "frozen_utc": "2026-10-04T08:23:35Z",
+    "id": "FZ-13",
+    "kill_band": "FZ13-R01 FAIL when (-1,0) lies outside the empirical covariance-centered 0.9973002039367398 posterior credible ellipsoid; COMPATIBLE inside its 0.9544997361036416 ellipsoid; otherwise INCONCLUSIVE. Full covariance and empirical radial quantiles are required, not a Gaussian sigma conversion. At least four ordered chains, official convergence, rank/folded split Rhat<=1.01, actual-threshold quantile ESS>=20000 and identical pooled/per-chain/leave-one-out verdicts are required. Missing specified product is UNAVAILABLE; failed numerical gates are INCONCLUSIVE. Direction-neutral; no OPH-wide or distinctive confirmation claim.",
+    "milestone": "one eligible post-anchor cosmological comparison; conditional branch only",
+    "owning_issue": 1025,
+    "status": "frozen_stamped_upgrade_pending"
+  },
+  "schema": "oph.conditional_cosmology_freeze.v1"
+}
