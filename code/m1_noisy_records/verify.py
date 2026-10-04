@@ -16,7 +16,7 @@ OWN = ('__init__.py', 'circuits.py', 'independent.py', 'archive.py', 'archive_ch
        'build.py', 'verify.py', 'test_records.py', 'README.md', 'CONTRACT.md')
 SOURCES = sorted(set(parent.SOURCES+['code/m1_fixed_noise/receipt.json']+
                     ['code/m1_noisy_records/'+p for p in OWN]+
-                    ['extra/NOISY_SOURCE_RECORDS.md', '.github/workflows/m1-noisy-records.yml']))
+                    ['docs/research/NOISY_SOURCE_RECORDS.md', '.github/workflows/m1-noisy-records.yml']))
 CLAIMS = ('OPH-SOURCE-NOISY-CONTROL-HISTORIES', 'OPH-SOURCE-LIVE-RECORD-PROTECTION')
 
 

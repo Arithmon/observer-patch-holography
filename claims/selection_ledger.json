@@ -1,7 +1,7 @@
 {
   "schema": "oph.selection_ledger.v1",
   "issue": 554,
-  "generated_surface": "docs/SELECTION_LEDGER.md",
+  "generated_surface": "docs/registers/SELECTION_LEDGER.md",
   "classes": [
     "forced",
     "exposed_premise",
@@ -139,7 +139,7 @@
       "menu": {
         "size": 3,
         "alternatives": "tetrahedral, octahedral, icosahedral antipodal port families",
-        "enumeration_source": "docs/SELECTION_LEDGER.md row 4 declaration; Cohn-Kumar and tomography cross-checks in The Standard Model gauge paper"
+        "enumeration_source": "docs/registers/SELECTION_LEDGER.md row 4 declaration; Cohn-Kumar and tomography cross-checks in The Standard Model gauge paper"
       },
       "compression_input": true,
       "receipts": [

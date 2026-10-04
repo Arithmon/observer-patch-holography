@@ -86,7 +86,7 @@ associé fournit une dynamique exécutable des observateurs et les éléments
 de vérification conservés.
 
 La [référence des axiomes](docs/AXIOM_REFERENCE.md) énonce les trois axiomes
-fondamentaux ; le [registre des prémisses](docs/PREMISE_REGISTER_V3.md) et le
+fondamentaux ; le [registre des prémisses](docs/registers/PREMISE_REGISTER_V3.md) et le
 [registre des résultats](claims/claim_registry.yaml) consignent les prémisses
 supplémentaires et les hypothèses propres à chaque résultat, y compris les
 identifications physiques et les données empiriques.
@@ -134,15 +134,15 @@ de chaque famille de preuves.
 | [`paper/`](paper/) | Articles principaux et index des publications |
 | [`Lean/`](Lean/) | Développement mathématique vérifié par machine |
 | [`code/`](code/) et [`evidence/`](evidence/) | Modèles exécutables, certificats et éléments de reproduction |
-| [`extra/`](extra/) et [`cosmology/`](cosmology/) | Recherches mathématiques et physiques spécialisées |
+| [`extra/`](extra/) et [`cosmology/`](cosmology/) | Articles de recherche mathématique et physique spécialisés |
 | [`book/`](book/) | *Reverse Engineering Reality*, source et livre téléchargeable |
-| [`docs/`](docs/) | Politiques de lecture et registres scientifiques |
+| [`docs/`](docs/) | Références canoniques, registres scientifiques, notes de recherche et politiques |
 
 ## Contribuer
 
 OPH accueille les preuves, contre-exemples, simulations, revues indépendantes
 et explications lisibles. Commencez par le [guide de reproduction](REPRODUCE.md)
-et le [registre de sélection](docs/SELECTION_LEDGER.md), qui énonce les
+et le [registre de sélection](docs/registers/SELECTION_LEDGER.md), qui énonce les
 prémisses et les frontières scientifiques utiles aux contributions.
 
 ## Des parcelles d’observateur aux machines apprenantes

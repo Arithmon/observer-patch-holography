@@ -469,4 +469,4 @@ family supplies protected quantum behaviour, faulty decisions and a live
 public archive at fixed subthreshold error strength. The additional expander
 theorem is mathematical input, not a new OPH axiom. Source/CCG capability,
 external scheduling and physical energy calibration retain the boundaries
-stated in the [contract](../code/m1_expander_archive/CONTRACT.md).
+stated in the [contract](../../code/m1_expander_archive/CONTRACT.md).

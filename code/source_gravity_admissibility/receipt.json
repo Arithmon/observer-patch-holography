@@ -1,5 +1,5 @@
 {
-  "claim": "f1cf50568c710260e4fa320ccb3c5f1722f63b9bacaae177d13d22ced6300b96",
+  "claim": "32a0af7d3701a63ee584535adb65ba4d625e9d84e4ea2215ff805adb241c218e",
   "schema": "oph-source-gravity-admissibility-v1",
   "sources": {
     ".gitattributes": "6e183699c4fd7b701e27930eb9c19c20f253de786a24c3ae7e734a5fde1462a2",
@@ -9,21 +9,21 @@
     "code/m1_source_realization/check.py": "fa466a0c2727355a60c5e318ee359ca07bf5eb8d0d67cf7bd4d765606e18a5d9",
     "code/m1_source_realization/model.py": "c0089ba890db76ca9dc055c29800a328a3b6800dbb000247f38621288c5c03b2",
     "code/source_gravity_admissibility/CONTRACT.md": "20106fe2e80430221378d1ca2f33ee0bf9c262f2820dc4609428a94a3af589fa",
-    "code/source_gravity_admissibility/README.md": "7f4fb21491ad79ce73344006c11407f2a8e67b8966c379240d264b31e97b70a1",
+    "code/source_gravity_admissibility/README.md": "a0c975f30b3949d7a80b42eb72b61b2b8732191ba448c6b0d354d6315a2bcfa8",
     "code/source_gravity_admissibility/__init__.py": "9ac7a42527f951d4ea7e0f90e5d81832ca8609b61f6957ac6a3777ebe2eba8ab",
     "code/source_gravity_admissibility/build.py": "5b3e44fc43132fc1ace7bbaf0329b45f1133b2f3960264dd8df8ce3e901fdb25",
     "code/source_gravity_admissibility/check.py": "a81c75b05771a9bd1120030e2cbdc4750e1024339f949db530e83835648318ac",
     "code/source_gravity_admissibility/model.py": "720be90acd33b63f036b23f5b33f6faa00f17076e277c7c817670781cf024610",
-    "code/source_gravity_admissibility/test_admissibility.py": "7719f09a21891e6efa351532593a45d30b964f5aa638a2b17da1f5934336cc72",
-    "code/source_gravity_admissibility/verify.py": "274aa84397440288a6c94d6a7becb0bb1044954e094eb8c972d6fea17a90590a",
+    "code/source_gravity_admissibility/test_admissibility.py": "30401577d86e166f13b7f51bd3a69a70b093d237b54ba5c70e79ddaed6e2d805",
+    "code/source_gravity_admissibility/verify.py": "981967f976b25dc5378ef3396ee89e7d8dc9975e083df5f74db92e20a6509620",
     "code/source_publication_selection/STATE_SELECTION.md": "7dc5a3955828d2dbf7ce0ac967ccf560451f5cc7c84bd07176eb93495147212a",
     "code/source_selection_model/DERIVATION.md": "4881f7c7e41b6294d3b164e943952438f09a3aa03041bf152a382d8ff42aba85",
     "code/source_selection_model/RECORD_GLUING.md": "7919b97e9dde9fbd952c2f6bf0dcdcbfc83bdcd45d1a2c83d59250e7ccd7203b",
     "code/source_selection_model/response.json": "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
     "code/source_selection_model/verify_response.py": "1aaa22195b7241aaf61f0bda60940907f2416f406c53f81ebb3418005d95900e",
     "docs/AXIOM_REFERENCE.md": "78b803601945f6629816aa2715186876e0020ae67646c05b4b0e2ca44919db88",
-    "extra/COHERENT_SOURCE_CLOCKS.md": "3daa10fa2fe85979c55e72e8dee18649d80d276b85db4654fa2d5097c98b5557",
-    "extra/SOURCE_GRAVITY_ADMISSIBILITY.md": "b03c75a884c1bdd4279baf7e16c80ead19c4b4830bf45b25d26f5a8a475087bc",
+    "docs/research/COHERENT_SOURCE_CLOCKS.md": "3daa10fa2fe85979c55e72e8dee18649d80d276b85db4654fa2d5097c98b5557",
+    "docs/research/SOURCE_GRAVITY_ADMISSIBILITY.md": "ae7728831afce36377d6a879b2bed9d164af51541fe8a43628a74072ca33f77f",
     "requirements.txt": "f116bec13d89a098f6523a26eede8280021585a32ec3294fc3f7174d6cd0ec09"
   },
   "evidence": {

@@ -27,7 +27,7 @@ executions are periodic waveguide packets at four coarser resolutions,
 including all modes of their transverse-constant invariant sector.
 
 Read [the contract](CONTRACT.md) and the full
-[analytic derivation](../../extra/MASSIVE_OPERATIONAL_CLOCKS.md).
+[analytic derivation](../../docs/research/MASSIVE_OPERATIONAL_CLOCKS.md).
 The quantum gate family, graph, native speed and masses are declared inputs;
 A1--A3 source admission and physical energy calibration are not derived.
 The operator proofs are analytic, not claimed Lean formalizations.

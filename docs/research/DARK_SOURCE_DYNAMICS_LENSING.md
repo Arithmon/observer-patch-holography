@@ -18,7 +18,7 @@ determine the remaining metric function by an Abel inverse. Thus the missing inf
 closure, not two independently adjustable lensing and rotation laws.
 
 These are completed mathematical results on the Einstein branch, not a new
-microscopic collar model. The [dark-sector paper](../cosmology/oph_dark_matter_paper.tex)
+microscopic collar model. The [dark-sector paper](../../cosmology/oph_dark_matter_paper.tex)
 and `DarkSector.lean` supply a scalar modular-charge interface and a
 conditional linear enclosed-mass law. They do not select the relativistic
 stress law or its normalization. We do not claim the alternatives below are
@@ -403,7 +403,7 @@ not a claimed ready prediction or a new prospective freeze.
 
 ## 7. Reproduction and adversarial checks
 
-The [package](../code/dark_source_lensing/README.md) produces a compact
+The [package](../../code/dark_source_lensing/README.md) produces a compact
 receipt. Exact symbolic checks compare independently reconstructed angular
 Einstein components, conservation, orbit stability, the bump endpoints and
 global rational bounds. Numerical controls compare closed-form ray sweeps

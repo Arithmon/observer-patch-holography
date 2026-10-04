@@ -6,8 +6,8 @@ window are independently reproduced. The selected prospective route is the
 existing FZ-10 target, owned by #546. No new natural outcome has been evaluated,
 no new prediction registry is created, and no source-selection parent is closed.
 
-The executable evidence is [the independent packet](../code/independent_postdictions/README.md).
-Its [contract](../code/independent_postdictions/CONTRACT.md) fixes the bounded
+The executable evidence is [the independent packet](../../code/independent_postdictions/README.md).
+Its [contract](../../code/independent_postdictions/CONTRACT.md) fixes the bounded
 three-candidate menu and records that the first replay preceded ranking.
 Its receipt retains the approximate and less successful rows, not just the
 closest endpoint. These are independent implementations by the same assistant,

@@ -1,6 +1,6 @@
 # One source for dynamics and lensing
 
-The [derivation](../../extra/DARK_SOURCE_DYNAMICS_LENSING.md) answers the
+The [derivation](../../docs/research/DARK_SOURCE_DYNAMICS_LENSING.md) answers the
 bounded dynamics/lensing target of #751. Even with the Einstein equation and
 dominant energy, the released scalar anomalous-charge interface does not
 fix a joint prediction. The certificate includes sharp flat-annulus stress

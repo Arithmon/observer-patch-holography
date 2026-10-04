@@ -4,7 +4,7 @@ This package completes the **constructive negative exit of issue #1013** on
 an explicit positive local two-field source-action class. It supplies an
 analytic classification, actual finite source histories, independent replay
 and a retrospective comparison to published gravitational measurements.
-The [derivation](../../extra/PAIRED_SOURCE_GRAVITY.md) states the theorem and
+The [derivation](../../docs/research/PAIRED_SOURCE_GRAVITY.md) states the theorem and
 its scope; [CONTRACT.md](CONTRACT.md) fixes the objective and exit.
 
 After normalizing its clock susceptibility, every positive two-field edge

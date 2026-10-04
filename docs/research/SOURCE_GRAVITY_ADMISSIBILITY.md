@@ -30,7 +30,7 @@ is kept separate from the finite proof.
 
 Use the finite net and directed completion of
 [Coherent source clocks, sections 1--5](COHERENT_SOURCE_CLOCKS.md), which
-extends the explicit [scalar-seam axiom model](../code/source_selection_model/DERIVATION.md).
+extends the explicit [scalar-seam axiom model](../../code/source_selection_model/DERIVATION.md).
 At each carrier the algebra is C^12 tensor M_6 tensor its finite private
 buffers. The twelve central projections remain primitive. The complete
 primitive response is the reconstructed image
@@ -414,7 +414,7 @@ fixed algebra. Condition on the same source and probe preparations and
 all the common stationary-clock data. Those clock effects have equal
 expectations on both labels by (4); neither branch is excluded. The
 actual positive effect reading the flat label has value one in a feasible
-state. The inherited [finite A3 support theorem](../code/source_publication_selection/STATE_SELECTION.md)
+state. The inherited [finite A3 support theorem](../../code/source_publication_selection/STATE_SELECTION.md)
 therefore assigns it strictly positive probability at any attained A3
 minimum with faithful references and a scored positive pullback for this
 record. This statement does not require a uniform optimizer. In the
@@ -480,8 +480,8 @@ matter/photon identification; our admissibility theorem does not close it.
 
 ## Reproduction and attribution
 
-See [the finite contract](../code/source_gravity_admissibility/CONTRACT.md)
-and [execution instructions](../code/source_gravity_admissibility/README.md).
+See [the finite contract](../../code/source_gravity_admissibility/CONTRACT.md)
+and [execution instructions](../../code/source_gravity_admissibility/README.md).
 The independent checker validates exact source solutions, twelve-port
 controls, full reflected-channel matrices, the analytic finite detector
 gap, common clocks, a complete error ledger and the Clifford expansion.

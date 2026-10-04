@@ -37,7 +37,7 @@ ACTIVE_GLOBS = [
     "extra/observable_normal_forms.tex",
     "cosmology/*.tex",
     "book/*.md",
-    "docs/*.md",
+    "docs/**/*.md",
     "claims/*.yaml",
     "claims/*.md",
     "claims/*.json",
@@ -50,7 +50,7 @@ ACTIVE_GLOBS = [
 # Path substrings excluded as archives, provenance, or non-active records.
 ALLOWLIST_PATHS = [
     "docs/AXIOM_REFERENCE.md",       # defines the retired principles
-    "docs/STYLE_GUIDE.md",
+    "docs/policies/STYLE_GUIDE.md",
     "claims/axiom_registry.yaml",    # names the retired principles
     "claims/frozen_prediction_register.json",  # frozen custody bytes
     "docs/FROZEN_PREDICTION_LADDER.md",        # rendered from frozen rows

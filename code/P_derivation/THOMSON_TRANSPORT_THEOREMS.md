@@ -278,7 +278,7 @@ and it carries `external_input_used=true`, `promotion_allowed=false`, and
 purpose is to keep the displayed numerical surface coherent while the
 nonperturbative Ward-projected source spectral payload remains absent. The
 empirical row uses a separate `e+e- -> hadrons` payload class through the
-policy in `../../docs/HADRON.md`.
+policy in `../../docs/policies/HADRON.md`.
 
 The endpoint package also evaluates the same question at the pixel obtained by
 the outer equation from the CODATA/NIST comparison value:

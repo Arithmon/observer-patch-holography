@@ -16,7 +16,7 @@ OWN = ('__init__.py', 'format.py', 'graphs.py', 'graph_check.py', 'circuit.py',
        'README.md', 'CONTRACT.md')
 SOURCES = sorted(set(parent.SOURCES+['code/m1_noisy_records/receipt.json']+
                      ['code/m1_expander_archive/'+p for p in OWN]+
-                     ['extra/FIXED_STRENGTH_PUBLIC_RECORDS.md', '.github/workflows/m1-expander-archive.yml']))
+                     ['docs/research/FIXED_STRENGTH_PUBLIC_RECORDS.md', '.github/workflows/m1-expander-archive.yml']))
 CLAIMS = ('OPH-SOURCE-EXPANDER-LIVE-ARCHIVE', 'OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY')
 
 

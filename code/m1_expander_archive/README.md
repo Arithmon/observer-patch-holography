@@ -1,7 +1,7 @@
 # Fixed-strength public records
 
 Read the [contract](CONTRACT.md) and
-[proof](../../extra/FIXED_STRENGTH_PUBLIC_RECORDS.md). The construction replaces
+[proof](../../docs/research/FIXED_STRENGTH_PUBLIC_RECORDS.md). The construction replaces
 the growing all-to-all refresh with an explicit bounded-degree expander
 circuit. A fixed positive fraction of arbitrary faulty locations preserves
 the live old majority and leaves a correctable new word. The quantum export

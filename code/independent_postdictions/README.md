@@ -4,7 +4,7 @@ Fresh numerical implementations reproduce the two certified alpha/P roots and
 the balanced, ordered tau interval. The selected prospective target is canonical
 FZ-10; readiness is **NOT_READY**. No held-out physical measurement is evaluated.
 
-See [the derivations and exit audit](../../extra/INDEPENDENT_POSTDICTION_COMPARISON.md),
+See [the derivations and exit audit](../../docs/research/INDEPENDENT_POSTDICTION_COMPARISON.md),
 [execution contract](CONTRACT.md), and [future-release protocol](protocol.json).
 
 From the repository root, with Python 3.12 and `requirements.txt` installed:

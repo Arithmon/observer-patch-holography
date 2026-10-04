@@ -1,5 +1,5 @@
 {
-  "claim": "aeba684c12b2ecc74b1f373ac68894b245c73fdac9a3d1e11e6ecc6261279149",
+  "claim": "976c390358e5284625c99d62b23344172ab759a39662d24744c8689f2fa8ed08",
   "evidence": {
     "abel": [
       {
@@ -916,7 +916,7 @@
     "Lean/ObserverPatchHolography/EinsteinBranch/DarkSector.lean": "c906ec23c74f4734d9897ace5db103066460a043cffecea59d4139db52657c38",
     "Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean": "eee963c058398a79741b07670e5ec7d4676118ac2aa72030eca54ce87ea64cfa",
     "code/dark_source_lensing/CONTRACT.md": "e97942be6ba44e01e7458f308133950dd3064f1134451016c54ea1063f39b91c",
-    "code/dark_source_lensing/README.md": "060cdaf3986b0135916a6d4d5de470173783b4ae2e047a347d12ad2ba2ffda9d",
+    "code/dark_source_lensing/README.md": "9ceaa7a3d20d3f2d2dbb6624222c368a3802d679794a4d991bba5cc4461a8d16",
     "code/dark_source_lensing/__init__.py": "62dba0a56d72ba6862637dd4fb527e9bffcda59272d1cfe6e423c91237c0f7bf",
     "code/dark_source_lensing/build.py": "efd525341d1cd2d414ee617dc8d7227cc09667b1c4fe3a5eab49ffc68881a38c",
     "code/dark_source_lensing/check.py": "8e8626be297514b7369f99a32882d03c32fcf3cc7e67a49264dd62f192a620f2",
@@ -924,8 +924,8 @@
     "code/dark_source_lensing/global_ray.py": "95fa1dc409e2c2a862b2fabe2a7b1ad8cd6e9106fcee55a88895b0821b7039a4",
     "code/dark_source_lensing/model.py": "b35b9dd611f1b1ccd3d208961a2ab4dda5deb5751808a0f7a200e63bfe7a766c",
     "code/dark_source_lensing/test_lensing.py": "a98a8630a8d63b8124d41144e928acd3101871bc47fba136e46d10b42936f922",
-    "code/dark_source_lensing/verify.py": "3571301883b564709cba685e69a44b6c218d1c6e8c49111c6dca481a1690b626",
-    "extra/DARK_SOURCE_DYNAMICS_LENSING.md": "16a57c1fe2b3db474420348e78b13dc08ed56c1b0abae980947ffdd6f145af2b",
+    "code/dark_source_lensing/verify.py": "b08b8acf1e2d8d776b7ff587bac906e1bb67a33196589f529322d33b8c34d978",
+    "docs/research/DARK_SOURCE_DYNAMICS_LENSING.md": "07e40553ff6cec55d3929749daecf1bfde72317a7f33159fbf1db24b429cd2df",
     "requirements.txt": "f116bec13d89a098f6523a26eede8280021585a32ec3294fc3f7174d6cd0ec09"
   }
 }

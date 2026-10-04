@@ -10,7 +10,7 @@ not consequences of this engineering result.
 
 The new ingredients are an exact instrument translation, a protected-to-public
 interface, an arbitrary-size archive fault proof, and a lifetime resource
-ledger. The executable checks are in [m1_noisy_records](../code/m1_noisy_records/README.md).
+ledger. The executable checks are in [m1_noisy_records](../../code/m1_noisy_records/README.md).
 
 ## 1. What changes, and which standard theorem is imported
 

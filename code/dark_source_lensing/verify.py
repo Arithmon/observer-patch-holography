@@ -12,7 +12,7 @@ CLAIM = 'OPH-DARK-SOURCE-DYNAMICS-LENSING'
 OWN = ('__init__.py', 'format.py', 'model.py', 'check.py', 'global_ray.py', 'verify.py', 'build.py',
        'test_lensing.py', 'README.md', 'CONTRACT.md')
 SOURCES = ['code/dark_source_lensing/'+p for p in OWN]+[
-    'extra/DARK_SOURCE_DYNAMICS_LENSING.md', '.github/workflows/dark-source-lensing.yml',
+    'docs/research/DARK_SOURCE_DYNAMICS_LENSING.md', '.github/workflows/dark-source-lensing.yml',
     'requirements.txt', '.gitattributes',
     'Lean/ObserverPatchHolography/EinsteinBranch/DarkSector.lean',
     'Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean']

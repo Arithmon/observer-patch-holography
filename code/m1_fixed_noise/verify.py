@@ -23,7 +23,7 @@ OWN = ('__init__.py', 'algebra.py', 'algebra_check.py', 'recovery.py', 'recovery
        'test_fixed_noise.py', 'README.md', 'CONTRACT.md')
 SOURCES = sorted(set(parent.SOURCES+['code/m1_fermionic_source/receipt.json']
                     +['code/m1_fixed_noise/'+p for p in OWN]
-                    +['extra/FIXED_RATE_SOURCE_READS.md', '.github/workflows/m1-fixed-noise.yml']))
+                    +['docs/research/FIXED_RATE_SOURCE_READS.md', '.github/workflows/m1-fixed-noise.yml']))
 CLAIMS = ('OPH-SOURCE-FIXED-RATE-PROTECTED-READS', 'OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION')
 
 

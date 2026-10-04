@@ -3,7 +3,7 @@
 
 Two independent sections run over the Lean sources under ``Lean/``.
 
-**Section 1, comment prose.**  ``docs/STYLE_GUIDE.md`` binds code comments to
+**Section 1, comment prose.**  ``docs/policies/STYLE_GUIDE.md`` binds code comments to
 the same two constraints it binds prose to: state the exact research status,
 and avoid machine-generated prose mannerisms.  ``tools/check_reader_style.py``
 enforces that vocabulary on Markdown and TeX surfaces.  A Lean module docstring
@@ -109,7 +109,7 @@ PROSE_EXEMPTIONS: list[tuple[str, int, str]] = []
 # Progress narration. Comments state what a module proves, not what the project
 # did to it. The list mirrors PROGRESS_PATTERNS in tools/check_reader_style.py.
 #
-# "used to" is deliberately absent, although docs/STYLE_GUIDE.md bans it in
+# "used to" is deliberately absent, although docs/policies/STYLE_GUIDE.md bans it in
 # prose. In Lean comments the phrase is almost always the instrumental sense:
 # "the lemma used to close the goal", "the tactic used to discharge the side
 # condition". Matching it would flag correct mathematical prose on nearly every
@@ -211,7 +211,7 @@ AI_TELL_PATTERNS: list[tuple[re.Pattern[str], str]] = [
 ]
 
 # The banned h-word, in any case, assembled so the word itself never appears in
-# this file. docs/STYLE_GUIDE.md: the word never appears in any surface.
+# this file. docs/policies/STYLE_GUIDE.md: the word never appears in any surface.
 H_WORD_PATTERN: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"\b" + "hon" + "est" + r"\w*\b", re.IGNORECASE), "banned h-word"),
 ]

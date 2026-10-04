@@ -17,7 +17,7 @@ OWN = ('__init__.py', 'format.py', 'spectrum.py', 'spectrum_check.py', 'preparat
 SOURCES = sorted(set(protected.SOURCES+clocks.SOURCES+
                     ['code/m1_expander_archive/receipt.json', 'code/m1_operational_clocks/receipt.json']+
                     ['code/m1_sea_energy/'+name for name in OWN]+
-                    ['extra/SOURCE_SEA_ENERGY.md', '.github/workflows/m1-sea-energy.yml']))
+                    ['docs/research/SOURCE_SEA_ENERGY.md', '.github/workflows/m1-sea-energy.yml']))
 CLAIMS = ('OPH-SOURCE-SEA-GENERATOR', 'OPH-SOURCE-LOCAL-SEA-LIMIT', 'OPH-SOURCE-SEA-CLOCK')
 
 

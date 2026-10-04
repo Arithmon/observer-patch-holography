@@ -28,7 +28,7 @@ def _local_artifact(path: str) -> dict[str, str]:
     }
 
 
-FIXTURE_FREEZE = [_local_artifact("docs/STYLE_GUIDE.md")]
+FIXTURE_FREEZE = [_local_artifact("docs/policies/STYLE_GUIDE.md")]
 FIXTURE_RECEIPTS = [_local_artifact("docs/AXIOM_REFERENCE.md")]
 
 

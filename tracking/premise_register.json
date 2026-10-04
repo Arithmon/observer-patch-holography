@@ -335,19 +335,19 @@
       "name": "hadronic transport packet",
       "type": "empirical_import",
       "disposition": "import",
-      "statement": "The hadronic vacuum-polarization and spectral input is a pinned empirical payload built from the e+e- hadronic compilation registered in code/particles/hadron/empirical_ee_hadrons_sources.yaml (KNT19, arXiv:1911.00367, per docs/HADRON.md), consumed by the Ward-projected hadron lane and the alpha(m_Z) anchor transport as a flagged import. The registry carries a nonperturbative-QCD barrier policy: the payload is compare and transport data and is never promoted to a source-only theorem.",
+      "statement": "The hadronic vacuum-polarization and spectral input is a pinned empirical payload built from the e+e- hadronic compilation registered in code/particles/hadron/empirical_ee_hadrons_sources.yaml (KNT19, arXiv:1911.00367, per docs/policies/HADRON.md), consumed by the Ward-projected hadron lane and the alpha(m_Z) anchor transport as a flagged import. The registry carries a nonperturbative-QCD barrier policy: the payload is compare and transport data and is never promoted to a source-only theorem.",
       "consuming_lanes": [
         729,
         736
       ],
       "evidence": [
         "code/particles/hadron/empirical_ee_hadrons_sources.yaml",
-        "docs/HADRON.md",
+        "docs/policies/HADRON.md",
         "code/particles/alpha_hvp_audit/"
       ],
       "evidence_roles": {
         "code/particles/hadron/empirical_ee_hadrons_sources.yaml": "external_input",
-        "docs/HADRON.md": "external_input",
+        "docs/policies/HADRON.md": "external_input",
         "code/particles/alpha_hvp_audit/": "conditional_consumer"
       },
       "notes": "A source-side hadronic computation would replace the pinned payload; the packet is permanent as compare and transport data and is flagged wherever consumed."

@@ -22,7 +22,7 @@ OWN = ('__init__.py', 'format.py', 'interfaces.py', 'interface_check.py',
        'test_leakage.py', 'README.md', 'CONTRACT.md')
 SOURCES = sorted(set(parent.SOURCES+['code/m1_noisy_records/receipt.json']
                     +['code/m1_leakage/'+p for p in OWN]
-                    +['extra/LEAKAGE_SOURCE_REFINEMENT.md', '.github/workflows/m1-leakage.yml']))
+                    +['docs/research/LEAKAGE_SOURCE_REFINEMENT.md', '.github/workflows/m1-leakage.yml']))
 CLAIMS = ('OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION', 'OPH-SOURCE-GENERAL-NOISE-REFINEMENT')
 
 

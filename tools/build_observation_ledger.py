@@ -6,7 +6,7 @@ rung, a conservative status, the owning composition lane, the premise-register
 rows the current status consumes, and evidence links. This tool validates the
 ledger fail-closed (exact key set, rung and status enums, lane range, premise
 ids drawn from the fixed register, evidence paths resolving to committed
-files) and renders ``docs/OBSERVATION_LEDGER_V3.md`` from it. The rendered
+files) and renders ``docs/registers/OBSERVATION_LEDGER_V3.md`` from it. The rendered
 page is a generated surface: ``--check`` fails when the committed page differs
 byte for byte from the render.
 """
@@ -24,7 +24,7 @@ from closed_lanes import CLOSED_LANE_SUCCESSORS
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = ROOT / "tracking" / "observation_ledger.json"
-SURFACE_PATH = ROOT / "docs" / "OBSERVATION_LEDGER_V3.md"
+SURFACE_PATH = ROOT / "docs" / "registers" / "OBSERVATION_LEDGER_V3.md"
 PREMISE_REGISTER_PATH = ROOT / "tracking" / "premise_register.json"
 FROZEN_REGISTER_PATH = ROOT / "claims" / "frozen_prediction_register.json"
 
@@ -703,7 +703,7 @@ def main(argv: list[str] | None = None) -> int:
         committed = SURFACE_PATH.read_bytes() if SURFACE_PATH.is_file() else b""
         if committed != surface:
             print(
-                "observation ledger: docs/OBSERVATION_LEDGER_V3.md is stale;"
+                "observation ledger: docs/registers/OBSERVATION_LEDGER_V3.md is stale;"
                 " run python tools/build_observation_ledger.py",
                 file=sys.stderr,
             )

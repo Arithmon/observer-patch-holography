@@ -157,6 +157,6 @@ P = 1.63096820940395932487927984778...
 
 from the outer equation. This row class is OPH plus empirical hadron closure,
 with a separate `e+e- -> hadrons` payload class for the empirical hadronic
-endpoint contribution through the policy in `../../docs/HADRON.md`. The source-audit
+endpoint contribution through the policy in `../../docs/policies/HADRON.md`. The source-audit
 payload remains recorded in the runtime ledgers and theorem contract files. It
 cannot satisfy the source-spectral theorem gate.

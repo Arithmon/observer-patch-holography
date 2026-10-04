@@ -166,5 +166,5 @@ Target-anchored empirical-closure diagnostics; the compare-only witness triple l
 
 - Source-only hadron predictions emitted: `False`
 - Empirical hadron closure allowed for display: `True`
-- Policy artifact: `docs/HADRON.md`
+- Policy artifact: `docs/policies/HADRON.md`
 - Reason: Source-only hadron outputs require a working OPH hadron backend. Empirical hadron closure values stay in a separate output class; the e+e- spectral payload has a source registry and schema.

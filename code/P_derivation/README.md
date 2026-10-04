@@ -69,7 +69,7 @@ canonical audit surface for the simplified chain, but it is not the certified
 particle root. Source-only promotion requires a populated source spectral
 measure payload, same-scheme remainder, and an interval-level fixed-point
 certificate. The public display row can also use the OPH plus empirical hadron
-closure surface defined in `../../docs/HADRON.md`.
+closure surface defined in `../../docs/policies/HADRON.md`.
 
 ## Terms
 
@@ -370,7 +370,7 @@ residues, current normalization, continuum/chiral/finite-volume/current-matching
 budgets, a spectral pushforward, quadrature and tail bounds, and a directed
 interval fixed-point certificate. The corpus has a schema and contract
 for that payload. The empirical hadron closure path uses a separate
-`e+e- -> hadrons` payload class through the policy in `../../docs/HADRON.md`.
+`e+e- -> hadrons` payload class through the policy in `../../docs/policies/HADRON.md`.
 
 `EMPIRICAL_HADRON_SCHEME_BRIDGE.md` records the direct PDG/CERN
 `Delta alpha_had^(5)(M_Z)` diagnostic. Raw PDG/CERN hadronic-running values are

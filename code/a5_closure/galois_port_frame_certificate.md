@@ -24,7 +24,7 @@ The exact baseline above pins every surface in this inventory.
 | `code/source_selection_model/DERIVATION.md` | `USES_BOTH_GALOIS_EMBEDDINGS` | Section 2 places `v_p` and `sigma(v_p)` in the same response; section 1 distinguishes each local boundary from the global triangulation. |
 | `Lean/Screen/A5FamilyBand.lean` | `USES_BOTH_GALOIS_EMBEDDINGS` | Exact `3`/`3'` projectors and costs; `family_band_selected` derives the positive-cost minimizer conditional on its admitted cost comparison. It does not derive an A1 geometric attachment. |
 | `claims/selection_ledger.json` (baseline row 3) | `CONSUMES_PRESELECTED_FRAME` | The row cites the positive Gram identity while its two-element menu concerns orientation-preserving versus full automorphisms, not the two Gram branches. |
-| `docs/SELECTION_LEDGER.md` (baseline row 3) | `CONSUMES_PRESELECTED_FRAME` | Generated projection of that row; the menus must not be conflated. |
+| `docs/registers/SELECTION_LEDGER.md` (baseline row 3) | `CONSUMES_PRESELECTED_FRAME` | Generated projection of that row; the menus must not be conflated. |
 
 The repository search included `Lean`, `code`, `docs` and `claims`, querying
 Galois/conjugation, Gram/support links, degree and support-map declarations.
@@ -192,7 +192,7 @@ and degree-one coarsening; sections 1 and 4 of `DERIVATION.md` use `N_n=S_n`
 and `b_n=id`. Each carrier has a separate local twelve-port boundary and
 six-dimensional response. The positive geometric support chart in that
 construction does not remove its conjugate local response component.
-`PR-53` in `docs/PREMISE_REGISTER_V3.md` records no physical discharge
+`PR-53` in `docs/registers/PREMISE_REGISTER_V3.md` records no physical discharge
 from carrier maps, finite cone constructions or supplied refinements. Its
 finite geometric receipts are not a theorem identifying the A1 bridge with
 these local Gram rays. `PortGramRepairBand` and the covariance limit supply

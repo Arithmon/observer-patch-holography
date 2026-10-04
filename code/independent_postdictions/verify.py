@@ -33,7 +33,7 @@ SOURCES = ['code/independent_postdictions/'+p for p in OWN]+[
     'paper/deriving_the_particle_zoo_from_observer_consistency.tex',
     FROZEN+'frozen_target_koide_conditional_tau_2026-07-28.md',
     FROZEN+'koide_balance_comparison_frozen_2026-07-28.json',
-    'extra/INDEPENDENT_POSTDICTION_COMPARISON.md',
+    'docs/research/INDEPENDENT_POSTDICTION_COMPARISON.md',
     '.github/workflows/independent-postdictions.yml', 'requirements.txt', '.gitattributes']
 
 # Normative, reviewed contracts: rebuilding a receipt cannot loosen these.

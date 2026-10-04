@@ -270,7 +270,7 @@ def build_payload() -> dict[str, Any]:
                 "hadron closure uses a separate e+e- payload class."
             ),
             "evidence_artifacts": [
-                "docs/HADRON.md",
+                "docs/policies/HADRON.md",
                 "code/particles/hadron/empirical_ee_hadrons_sources.yaml",
                 "code/particles/hadron/empirical_ee_hadronic_spectral_measure.schema.json",
             ],

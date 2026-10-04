@@ -120,9 +120,10 @@ THEOREM_ASSERTING_CLASSES = {
 PROOF_MEDIUM_FIELD = "proof_medium"
 PROOF_MEDIUM_VOCABULARY = {"paper_prose"}
 
-# Directory roots whose owner file is a paper source. Every other owner is a
-# protocol or run record and must declare that medium explicitly.
-PAPER_OWNER_ROOTS = ("paper", "extra", "cosmology", "flagship")
+# Directory roots whose owner file is a paper source: the TeX paper folders and
+# the research notes in docs/research. Every other owner is a protocol or run
+# record and must declare that medium explicitly.
+PAPER_OWNER_ROOTS = ("paper", "extra", "cosmology", "flagship", "docs/research")
 OWNER_MEDIUM_FIELD = "owner_medium"
 OWNER_MEDIUM_VOCABULARY = {"protocol_record"}
 
@@ -365,6 +366,22 @@ def check_standalone_papers(root: Path) -> None:
                 )
 
 
+def check_extra_holds_papers(root: Path) -> None:
+    """Keep extra/ for TeX papers; Markdown research notes live in docs/research/."""
+    folder = root / "extra"
+    if not folder.is_dir():
+        return
+    stray = sorted(
+        path.relative_to(root).as_posix()
+        for path in folder.rglob("*.md")
+        if path.relative_to(folder).as_posix() != "README.md"
+    )
+    require(
+        not stray,
+        f"{', '.join(stray)}: extra/ holds TeX papers; move Markdown research notes to docs/research/",
+    )
+
+
 def dictionary_tokens(root: Path) -> set[str]:
     """Assumption tokens with a canonical dictionary row (backtick-quoted)."""
     text = (root / "claims" / "assumption_dictionary.md").read_text(encoding="utf-8")
@@ -588,7 +605,7 @@ def check_owner_medium(claim: dict) -> None:
     """
     claim_id = claim["claim_id"]
     owner = claim["owner_paper"]
-    paper_owned = owner.split("/", 1)[0] in PAPER_OWNER_ROOTS
+    paper_owned = any(owner.startswith(root + "/") for root in PAPER_OWNER_ROOTS)
     declared = claim.get(OWNER_MEDIUM_FIELD)
     if paper_owned:
         require(
@@ -746,6 +763,7 @@ def main(root: Path = ROOT) -> None:
     claims = registry.get("claims", [])
     require(isinstance(claims, list) and claims, "claim registry has no claims")
     check_standalone_papers(root)
+    check_extra_holds_papers(root)
     defined_tokens = dictionary_tokens(root)
     known_premises = premise_ids(root)
 

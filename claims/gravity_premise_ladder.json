@@ -1,7 +1,7 @@
 {
   "schema": "oph.gravity_premise_ladder.v1",
   "issue": 618,
-  "generated_surface": "docs/GRAVITY_PREMISE_LADDER.md",
+  "generated_surface": "docs/registers/GRAVITY_PREMISE_LADDER.md",
   "policy": "Recovery, generalized entropy, stationarity, focusing, source-causal continuum promotion, curvature identification, vacuum choice, and metrological scale are named interfaces or theorem targets rather than axioms. Every rung carries a typed premise packet, a theorem or countermodel, and a deletion or mutation test; no rung is promoted from A2 naturality or A3 optimization alone; the exact finite one-plus-three precursor, continuum limit, smooth-curvature interpretation, and physical identification stay distinct; an open or independent rung does not erase the exact finite gravity mathematics below it.",
   "rungs": [
     {

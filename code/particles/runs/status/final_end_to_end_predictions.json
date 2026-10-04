@@ -344,7 +344,7 @@
   "hadron_policy": {
     "empirical_hadron_closure_allowed_for_display": true,
     "empirical_payload_schema": "particles/hadron/empirical_ee_hadronic_spectral_measure.schema.json",
-    "policy_artifact": "docs/HADRON.md",
+    "policy_artifact": "docs/policies/HADRON.md",
     "reason": "Source-only hadron outputs require a working OPH hadron backend. Empirical hadron closure values stay in a separate output class; the e+e- spectral payload has a source registry and schema.",
     "source_only_hadron_predictions_emitted": false,
     "source_registry": "particles/hadron/empirical_ee_hadrons_sources.yaml"
@@ -827,7 +827,7 @@
     "empirical_ee_hadronic_spectral_measure_schema": "code/particles/hadron/empirical_ee_hadronic_spectral_measure.schema.json",
     "empirical_ee_hadrons_source_registry": "code/particles/hadron/empirical_ee_hadrons_sources.yaml",
     "exact_nonhadron": "code/particles/exact_nonhadron_masses.json",
-    "hadron_policy": "docs/HADRON.md",
+    "hadron_policy": "docs/policies/HADRON.md",
     "hierarchy_ew_capacity": "code/particles/hierarchy/certificates/R_EW_global_capacity_certificate.json",
     "hierarchy_higgs_naturality": "code/particles/hierarchy/issue_332_rg_naturality_certificate.json",
     "hierarchy_local_global_resonance": "code/particles/hierarchy/certificates/R_local_global_hierarchy_resonance_closeout_335.json",

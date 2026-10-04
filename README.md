@@ -79,7 +79,7 @@ accompany the mathematical arguments. The companion
 executable observer dynamics and retained evidence.
 
 The [axiom reference](docs/AXIOM_REFERENCE.md) states the three core axioms;
-the [premise register](docs/PREMISE_REGISTER_V3.md) and
+the [premise register](docs/registers/PREMISE_REGISTER_V3.md) and
 [claim registry](claims/claim_registry.yaml) record additional premises and
 result-specific assumptions, including physical identifications and empirical
 inputs.
@@ -126,15 +126,15 @@ evidence family.
 | [`paper/`](paper/) | Core papers and publication index |
 | [`Lean/`](Lean/) | Machine-checked mathematical development |
 | [`code/`](code/) and [`evidence/`](evidence/) | Executable models, certificates and reproduction evidence |
-| [`extra/`](extra/) and [`cosmology/`](cosmology/) | Focused mathematical and physical research |
+| [`extra/`](extra/) and [`cosmology/`](cosmology/) | Focused mathematical and physical research papers |
 | [`book/`](book/) | *Reverse Engineering Reality*, source and downloadable book |
-| [`docs/`](docs/) | Reader policies and scientific ledgers |
+| [`docs/`](docs/) | Canonical references, scientific registers, research notes and policies |
 
 ## Contribute
 
 OPH welcomes proofs, counterexamples, simulations, independent reviews and
 readable explanations. Start with the [reproduction guide](REPRODUCE.md) and
-the [selection ledger](docs/SELECTION_LEDGER.md), which states the premises
+the [selection ledger](docs/registers/SELECTION_LEDGER.md), which states the premises
 and scientific boundaries relevant to contributions.
 
 ## From observer patches to learning machines

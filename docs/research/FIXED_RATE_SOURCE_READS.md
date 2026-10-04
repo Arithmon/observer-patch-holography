@@ -424,7 +424,7 @@ The new syndrome and control events also change raw event counts. No equality
 of microscopic event rates or entropy coefficients with the unprotected
 representation follows from the named-output bound.
 
-The code in [m1_fixed_noise](../code/m1_fixed_noise/README.md) provides the
+The code in [m1_fixed_noise](../../code/m1_fixed_noise/README.md) provides the
 complete decoder, continuous M6 checks, bounded recovery, independent fault
 census, adaptive controls and hostile tests. Its receipt is compact and binds
 the proof, parent evidence, verifier and scoped claims. There is no asserted

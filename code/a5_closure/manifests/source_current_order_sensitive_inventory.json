@@ -2098,9 +2098,9 @@
         "sha256": "sha256:e3bfc362b525d6f7f0ee27497c077e49836cac67ea3536763cb369767ba50297"
       },
       {
-        "byte_count": 20077,
+        "byte_count": 20097,
         "path": "code/a5_closure/galois_port_frame_certificate.md",
-        "sha256": "sha256:d984577dff02433978856d89d72a8e17a7c43ad49c870e27c0edeb13486ae25e"
+        "sha256": "sha256:f1927c1481c87411443d42c1d48f0667a3c5cf7221a01f6a05f576dd51b13b44"
       },
       {
         "byte_count": 9782,
@@ -2445,7 +2445,7 @@
       {
         "byte_count": 19739,
         "path": "code/a5_closure/port_gram_support_attachment_certificate.py",
-        "sha256": "sha256:d28816dc7018d408c28bd2d19119646a45b1ce24bdd0437022d4bb5588f686d9"
+        "sha256": "sha256:6d165e0f80d85fd52f7b8e19ecfde87f7aa64d8b7a6396bf8c7ada5170d361cd"
       },
       {
         "byte_count": 5638,
@@ -2825,7 +2825,7 @@
       {
         "byte_count": 10368,
         "path": "code/a5_closure/verify_port_gram_support_attachment_independent.py",
-        "sha256": "sha256:0254905f043516546dad455ad91b8848e815df7f83256c552a056a29c388a6e3"
+        "sha256": "sha256:771a3ca9838ee46dc4a129c4c1a44459ecf3d66e27c27eacfc41bc78980fb733"
       },
       {
         "byte_count": 20870,
@@ -4628,7 +4628,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:6e0a6c28ceab89629cba2b6bc9944310fd44a75fb72abba2aaeb5e222286cbe5",
+    "files_sha256": "sha256:887cdcf3a85e7610d8e5a5c5f88405457f93a7948d5d985721c9ad2b23e8c7e6",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7537,7 +7537,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:01693fecf444bf96e3d2231cff7758d6b17fd5336cdc9908c492b9a68324c41c",
+  "inventory_sha256": "sha256:b54da9e540edd460a7ccacfba0f68130596eca98915341ef0790cc87c22e65b5",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

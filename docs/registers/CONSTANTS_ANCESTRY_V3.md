@@ -107,7 +107,7 @@ Diagnostic-only empirical register imports: PR-14. These inputs classify or cons
   - `register_import` (PR-14): hadronic transport packet: the pinned measured e+e- hadronic compilation, compare and transport data under the nonperturbative-QCD barrier policy.
   - `derived`: Ward-projected spectral-measure export arithmetic with positivity and requadrature receipts.
   - `external_mathematics`: dispersion relation and optical-theorem identities behind the empirical closure.
-- Evidence: `code/particles/hadron/empirical_ee_hadrons_sources.yaml`, `code/particles/hadron/derive_empirical_ward_projected_spectral_measure.py`, `docs/HADRON.md`, `docs/POSTDICTION_LEDGER.md`.
+- Evidence: `code/particles/hadron/empirical_ee_hadrons_sources.yaml`, `code/particles/hadron/derive_empirical_ward_projected_spectral_measure.py`, `docs/policies/HADRON.md`, `docs/POSTDICTION_LEDGER.md`.
 - Falsifier (`code/particles/hadron/empirical_ee_hadrons_sources.yaml`): The payload is pinned: a requadrature difference above the recorded tolerance or a positivity failure on the exported grids kills the export. The packet is never promoted to a source-only theorem; replacement requires a source-side hadronic computation, and the standby QCD solver stays invocation-gated on source-side parameter emissions.
 
 ### CA-07 neutrino stance

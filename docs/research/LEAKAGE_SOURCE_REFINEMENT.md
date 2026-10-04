@@ -535,5 +535,5 @@ The combined result removes both native-code preservation and reliable
 runtime records from a single constructed read/clock process. It retains
 the source/CCG capability, external schedule and declared logical accounting;
 none is relabeled as a consequence of A1--A3. The executable
-[package](../code/m1_leakage/README.md) separates exact identities, numerical
+[package](../../code/m1_leakage/README.md) separates exact identities, numerical
 controls, new composition estimates and credited all-size results.

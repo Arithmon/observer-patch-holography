@@ -1,7 +1,7 @@
 """Build and validate the gravity premise-elimination ladder (issue #618).
 
 The machine-readable ladder is ``claims/gravity_premise_ladder.json``. This
-tool validates it fail-closed and renders ``docs/GRAVITY_PREMISE_LADDER.md``;
+tool validates it fail-closed and renders ``docs/registers/GRAVITY_PREMISE_LADDER.md``;
 ``--check`` fails when the committed page differs from the render, and the
 mandatory suite runs that check.
 
@@ -34,7 +34,7 @@ from closed_lanes import CLOSED_LANE_SUCCESSORS  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 LADDER_PATH = ROOT / "claims" / "gravity_premise_ladder.json"
-SURFACE_PATH = ROOT / "docs" / "GRAVITY_PREMISE_LADDER.md"
+SURFACE_PATH = ROOT / "docs" / "registers" / "GRAVITY_PREMISE_LADDER.md"
 AXIOM_REGISTRY_PATH = ROOT / "claims" / "axiom_registry.yaml"
 CLAIM_REGISTRY_PATH = ROOT / "claims" / "claim_registry.yaml"
 ASSUMPTION_PATH = ROOT / "claims" / "assumption_dictionary.md"
@@ -277,7 +277,7 @@ def main() -> int:
         )
         if committed != surface:
             print(
-                "gravity premise ladder: docs/GRAVITY_PREMISE_LADDER.md is stale; "
+                "gravity premise ladder: docs/registers/GRAVITY_PREMISE_LADDER.md is stale; "
                 "run python tools/build_gravity_ladder.py",
                 file=sys.stderr,
             )

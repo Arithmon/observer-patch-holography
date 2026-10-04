@@ -13,7 +13,7 @@ OWN = ('__init__.py', 'format.py', 'source.py', 'source_check.py', 'observables.
        'README.md', 'CONTRACT.md', 'DATA.md', 'measurements.json')
 SOURCES = ['code/paired_gravity/'+p for p in OWN]+[
     'requirements.txt', '.gitattributes',
-    'extra/PAIRED_SOURCE_GRAVITY.md', '.github/workflows/paired-gravity.yml',
+    'docs/research/PAIRED_SOURCE_GRAVITY.md', '.github/workflows/paired-gravity.yml',
     'code/source_scalar_execution/source_scalar_execution_receipt.json',
     'code/source_scalar_execution/scalar_execution_algebra.py',
     'code/source_scalar_execution/verify_source_scalar_execution.py',

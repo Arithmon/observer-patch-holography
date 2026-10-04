@@ -30,14 +30,14 @@ The registry is part of the working process:
   `docs/FROZEN_PREDICTION_LADDER.md`.
 - `claims/emergent_instrument_register.json` records scientific simulation and
   measurement instruments; `tools/build_instrument_register.py` validates it
-  and renders `docs/INSTRUMENT_REGISTER_V3.md`.
+  and renders `docs/registers/INSTRUMENT_REGISTER_V3.md`.
 - `claims/selection_ledger.json` and
   `claims/physical_identification_registry.json` record scientific selection
   classes and physical-identification boundaries; `tools/build_selection_ledger.py`
-  validates them and renders `docs/SELECTION_LEDGER.md`.
+  validates them and renders `docs/registers/SELECTION_LEDGER.md`.
 - `claims/gravity_premise_ladder.json` records the gravity premise-elimination
   rungs; `tools/build_gravity_ladder.py` validates it and renders
-  `docs/GRAVITY_PREMISE_LADDER.md`.
+  `docs/registers/GRAVITY_PREMISE_LADDER.md`.
 - `claims/public_surface_quantitative_claims.json` controls quantitative
   statements on public summary surfaces and is checked by
   `tools/check_public_surface_claims.py`.

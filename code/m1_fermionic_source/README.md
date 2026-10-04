@@ -13,7 +13,7 @@ Bravyi--Kitaev superfast encoding is explicitly credited; its source compiler
 and complete resource/noise account are the result here.
 
 Read the [objective, deliverables and exit](CONTRACT.md) and the
-[all-size proof](../../extra/FERMIONIC_SOURCE_CLOCKS.md).
+[all-size proof](../../docs/research/FERMIONIC_SOURCE_CLOCKS.md).
 
 | Deliverable | Result and check |
 | --- | --- |

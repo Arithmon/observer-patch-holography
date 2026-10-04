@@ -25,7 +25,7 @@ OWN_FILES = ('__init__.py', 'pauli.py', 'model.py', 'circuits.py', 'spatial.py',
              'test_fermionic.py', 'README.md', 'CONTRACT.md')
 SOURCES = sorted(set(parent.SOURCES + ['code/m1_source_realization/receipt.json']
                     + ['code/m1_fermionic_source/'+p for p in OWN_FILES]
-                    + ['extra/FERMIONIC_SOURCE_CLOCKS.md', '.github/workflows/m1-fermionic-source.yml']))
+                    + ['docs/research/FERMIONIC_SOURCE_CLOCKS.md', '.github/workflows/m1-fermionic-source.yml']))
 CLAIMS = ('OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION', 'OPH-SOURCE-ENCODED-FERMION-CLOCK',
           'OPH-SOURCE-FERMIONIC-VACUUM-NOISE')
 

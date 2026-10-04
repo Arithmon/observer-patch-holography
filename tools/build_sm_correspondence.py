@@ -4,7 +4,7 @@ Issue #735's headline deliverable: one row per term of the textbook Standard
 Model term-and-sector inventory, each classified by what OPH supplies. The
 machine-readable table is ``tracking/sm_lagrangian_correspondence.json``.
 This tool validates it fail-closed and renders
-``docs/SM_LAGRANGIAN_CORRESPONDENCE.md``; ``--check`` fails when the
+``docs/registers/SM_LAGRANGIAN_CORRESPONDENCE.md``; ``--check`` fails when the
 committed page differs from the render.
 
 Fail-closed rules: row ids and term labels match the exact ordered nineteen-row
@@ -30,7 +30,7 @@ import strict_json
 
 ROOT = Path(__file__).resolve().parents[1]
 TABLE_PATH = ROOT / "tracking" / "sm_lagrangian_correspondence.json"
-SURFACE_PATH = ROOT / "docs" / "SM_LAGRANGIAN_CORRESPONDENCE.md"
+SURFACE_PATH = ROOT / "docs" / "registers" / "SM_LAGRANGIAN_CORRESPONDENCE.md"
 PREMISE_REGISTER_PATH = ROOT / "tracking" / "premise_register.json"
 
 SCHEMA = "oph.sm_lagrangian_correspondence.v2"
@@ -365,7 +365,7 @@ def main(argv: list[str] | None = None) -> int:
         committed = SURFACE_PATH.read_bytes() if SURFACE_PATH.is_file() else b""
         if committed != surface.encode("utf-8"):
             print(
-                "sm correspondence: docs/SM_LAGRANGIAN_CORRESPONDENCE.md is"
+                "sm correspondence: docs/registers/SM_LAGRANGIAN_CORRESPONDENCE.md is"
                 " stale; run python tools/build_sm_correspondence.py",
                 file=sys.stderr,
             )
