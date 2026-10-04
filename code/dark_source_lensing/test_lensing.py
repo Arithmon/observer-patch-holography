@@ -39,6 +39,11 @@ def test_committed_receipt_and_independent_replay(evidence):
     (('annulus', 26, 'alpha'), '0'),
     (('cold_bounds', 0, 'lower'), '0'),
     (('cold_bounds', 8, 'upper'), '1/2'),
+    (('kinetic_bounds', 0, 'speed_squared_cap'), '0'),
+    (('kinetic_bounds', 0, 'lower_kappa'), '0'),
+    (('kinetic_bounds', 8, 'bending_ratio_lower'), '1'),
+    (('kinetic_bounds', 8, 'bending_ratio_upper'), '0'),
+    (('kinetic_bounds', 8, 'sqrt_low_kappa'), ['1', '1']),
     (('global_samples', 4, 'm'), '0'),
     (('global_samples', 4, 'u'), '1'),
     (('global_samples', 5, 'density_scaled'), '0'),
@@ -70,7 +75,7 @@ def test_resealed_semantic_corruption_rejected(evidence, path, value):
         check.verify(packet)
 
 
-@pytest.mark.parametrize('field', ['annulus', 'cold_bounds', 'global_samples', 'abel'])
+@pytest.mark.parametrize('field', ['annulus', 'cold_bounds', 'kinetic_bounds', 'global_samples', 'abel'])
 @pytest.mark.parametrize('mode', ['omit', 'duplicate', 'reverse'])
 def test_complete_case_catalogues(evidence, field, mode):
     packet = copy.deepcopy(evidence)
@@ -121,6 +126,19 @@ def test_cold_limit_needs_tangential_support():
         assert (1-2*k)*u*u/(2*k) == u/2 > 0
         # Newtonian identification retains tension instead of silently setting it to zero.
         assert ((1-2*u)*u-u)/u == -2*u
+
+
+def test_kinetic_threshold_and_endpoint_classification():
+    for u in (F(i, 19) for i in range(1, 19)):
+        for cap in (F(0), u/2, u, (1+u)/2):
+            lower = u*(1+u)/(1+2*u+2*u*u+cap)
+            upper = u/(1+2*u)
+            assert (lower <= upper) == (cap >= u)
+            for k in (lower, upper, (lower+upper)/2, lower/2, (upper+F(1, 2))/2):
+                radial = u-(1+2*u)*k
+                tangential = (1-2*k)*u*u/2
+                allowed = radial >= 0 and tangential >= 0 and radial+2*tangential <= cap*k
+                assert allowed == (lower <= k <= upper)
 
 
 @pytest.mark.parametrize('value', [True, 1, 0.1, None, [], 'NaN', 'Inf', '1/0', '2/4', '+1', '00', '1e999999'])

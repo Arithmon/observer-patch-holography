@@ -59,6 +59,13 @@ p_r'=-(ρ+p_r)ν'+2(p_t-p_r)/r. Direct substitution in the angular
 Einstein equation gives the same expression; the checker uses that angular
 equation rather than assuming the conservation identity.
 
+The explicit countermodels set the baryonic stress to zero and use geodesic
+test probes without backreaction. Their length and strength are declared
+model inputs, not estimates for a named galaxy. This isolates the scalar
+dark-source inference; a comparison with a real disk must restore its
+baryonic geometry and jointly model both channels. Each countermodel has
+one metric and one conserved tensor for all probes.
+
 Given A, **one function m remains**. Conversely, given A and physical ρ on
 the full radial domain plus the central mass constant, m'=4πr²ρ fixes m,
 then (1) fixes both pressures and B. One cannot hold both this complete
@@ -116,6 +123,58 @@ Newtonian identification κ=u instead has p_r/ρ=-2u and
 p_t/ρ=u(1-2u)/2; it is a small-stress approximation at u≪1, not an
 exact zero-pressure Einstein source. Under (4), the weak-field relation is
 κ/u∈[1/2,1]+O(u), not a unique mass coefficient.
+
+### What a genuinely cold particle source would add
+
+There is a physically motivated restriction stronger than dominant energy.
+For a nonnegative distribution of massive particles in the static frame,
+T^(ab)=∫ f p^a p^b d³p/p^0. Hence the principal pressures are
+nonnegative and
+
+    p_r+2p_t = ∫ f p^0 |v|² d³p ≤ δρ                  (2a)
+
+if every occupied speed obeys |v|²≤δ<1 (a bound on the corresponding
+energy-weighted second moment suffices). Opposite directions remove net
+flux without affecting this inequality. This is a standard kinetic-matter
+restriction; it does not follow from the scalar modular charge or from
+homogeneous comoving a^-3 dilution. An anomalous medium need not be a
+massive-particle gas, so imposing (2a) is a substantive source test.
+
+For (2), (2a) and nonnegative pressures are equivalent at the tensor level to
+
+    u(1+u)/(1+2u+2u²+δ) ≤ κ ≤ u/(1+2u),   δ≥u.        (2b)
+
+The interval is empty if δ<u. Its fractional mass width is exactly
+
+    (κ_max-κ_min)/κ_max = (δ-u)/(1+2u+2u²+δ).           (2c)
+
+Proof: the pressure trace scaled by 4πr² is
+u+u²-(1+2u+2u²)κ. Its upper inequality gives the lower endpoint
+in (2b); p_r≥0 gives the upper one. Subtracting them gives (2c).
+These inequalities imply the dominant energy bounds. At δ=u they select
+p_r=0 and p_t/ρ=u/2. For δ=C u with fixed C≥1, the relative mass
+ambiguity is at most (C-1)u. The exact bending interval follows by (6),
+using these same endpoints with no independent light-deflection parameter.
+
+The certificate supplies rational outward bounds on the ratio
+α(κ_min)/α(κ_max), obtained by squaring rational square-root brackets,
+not by trusting a rounded decimal. The endpoint geometry cancels from this
+ratio. At u=10^-6 and δ=2u the fractional bending spread is about
+5×10^-7, while the nonnegative-pressure-only family allows about 25%
+relative to its upper bending endpoint. Thus a demonstrated cold stress
+law would almost eliminate this ambiguity in a weak field. Large slip is
+not an automatic prediction of the anomalous-density proposal.
+
+Equation (2b) is an exhaustive **tensor-level** restriction, not a proof that
+every point is realized by a global stationary collisionless distribution.
+The zero-radial endpoint has the standard
+[Einstein-cluster interpretation](https://arxiv.org/abs/0705.1756) as an
+isotropically oriented circular-orbit ensemble: each occupied particle has speed squared
+u, radial pressure zero and two equal tangential stresses ρu/2. General
+distribution-function existence and matter perturbation stability are not
+needed for, and do not follow from, this necessary-bound theorem. Physical
+OPH promotion requires deriving the stress restriction or directly deriving
+the density; the theorem quantifies what that missing evidence would buy.
 
 ## 3. An exact finite-endpoint lensing observable and its inverse
 
@@ -292,6 +351,9 @@ joint dark-sector test. The constructive output (3)--(7) states precisely
 which lensing ranges would follow from three distinct source classes:
 dominant energy alone, nonnegative pressures, or a declared radial coldness
 bound. Changing class after seeing a mismatch is a new candidate. The
+additional positive-particle moment bound (2b) makes this criterion useful
+for a cold-matter reference: its speed budget must come from the same
+source/state and cannot be selected separately in the lensing channel. The
 pressureless-radial branch has the same leading joint signal as ordinary
 cold gravitating matter; that agreement by itself is not OPH-specific
 evidence.

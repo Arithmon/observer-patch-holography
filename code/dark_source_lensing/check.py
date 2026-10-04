@@ -48,7 +48,7 @@ def close(ctx, actual, expected, label):
 
 
 def verify(packet):
-    keys(packet, 'annulus cold_bounds abel global_bounds global_samples global_ray_enclosure interpretation')
+    keys(packet, 'annulus cold_bounds kinetic_bounds abel global_bounds global_samples global_ray_enclosure interpretation')
     equal(packet['interpretation'], dict(result='macroscopic_source_underdetermined',
           physical_promotion=False, natural_data_used=False, full_issue_751_closed=False,
           numeric_controls='high_precision_not_interval_proofs'), 'scientific boundary')
@@ -104,6 +104,7 @@ def verify(packet):
             need((1+2*u+eta)*lo == u and (1+2*u-eta)*hi == u,
                  'sharp coldness endpoints')
             need(u/(2+2*u) <= lo <= hi < F(1, 2), 'coldness inside dominant energy')
+    verify_kinetic(packet['kinetic_bounds'])
     r, e, t, mass, speed, R, P, T = symbolic_identities()
     samples = packet['global_samples']
     need(type(samples) is list and len(samples) == 15, 'complete global sample census')
@@ -168,6 +169,38 @@ def verify_ray_enclosure(row):
         equal(item['epsilon'], str(e), 'enclosed source strength')
         equal(item['lower'], str(e*lo/5), 'global bending lower enclosure')
         equal(item['upper'], str(e*hi*F(539, 2000)), 'global bending upper enclosure')
+
+
+def verify_kinetic(rows):
+    need(type(rows) is list and len(rows) == 9, 'complete kinetic census')
+    cursor = 0
+    for u in (F(1, 10**6), F(1, 100), F(1, 5)):
+        for cap in (u, 2*u, F(1, 2)):
+            row = rows[cursor]
+            cursor += 1
+            keys(row, 'u speed_squared_cap lower_kappa upper_kappa mass_fractional_width sqrt_low_kappa sqrt_high_kappa bending_ratio_lower bending_ratio_upper')
+            equal([row['u'], row['speed_squared_cap']], [str(u), str(cap)], 'fixed kinetic inputs')
+            lo, hi = rational(row['lower_kappa']), rational(row['upper_kappa'])
+            # Independent endpoint equalities: trace cap below, zero radial pressure above.
+            need(u*(1+u)-(1+2*u+2*u*u)*lo == cap*lo, 'kinetic lower trace equality')
+            need(u-(1+2*u)*hi == 0, 'kinetic upper radial equality')
+            need(u/(2+2*u) <= lo <= hi < F(1, 2), 'kinetic bound inside dominant energy')
+            width = (cap-u)/(1+2*u+2*u*u+cap)
+            equal(row['mass_fractional_width'], str(width), 'exact kinetic mass width')
+            need((hi-lo)/hi == width, 'mass width identity')
+            intervals = []
+            for name, target in (('sqrt_low_kappa', 1/(1-2*lo)), ('sqrt_high_kappa', 1+2*u)):
+                values = row[name]
+                need(type(values) is list and len(values) == 2, 'two root endpoints')
+                a, b = map(rational, values)
+                # No square root evaluation or producer's integer square root is used.
+                need(0 < a <= b and a*a <= target <= b*b and b-a <= F(1, 10**18),
+                     'outward exact squared-root bounds')
+                intervals.append((a, b))
+            (a0, a1), (b0, b1) = intervals
+            need(a0 > 1-u and b0 > 1-u, 'strict positive bending denominators')
+            equal(row['bending_ratio_lower'], str((a0-(1-u))/(b1-(1-u))), 'kinetic lensing lower enclosure')
+            equal(row['bending_ratio_upper'], str(min(F(1), (a1-(1-u))/(b0-(1-u)))), 'kinetic lensing upper enclosure')
 
 
 def verify_abel(ctx, rows):

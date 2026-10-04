@@ -16,6 +16,13 @@ annulus also admits a continuum of nonnegative-pressure sources with the
 same circular speed. Supplying the complete physical density and central
 mass would remove the freedom; a fitted Newtonian mass is not that input.
 
+A positive massive-particle source with a proved velocity-moment cap is much
+more restrictive: its mass interval and resulting lensing interval are
+derived exactly. At circular speed squared `u=10^-6` and moment cap `2u`,
+the allowed fractional bending spread is about `5e-7`. The receipt encloses
+that ratio by exact rational arithmetic. This identifies a specific piece
+of source evidence that would make the joint comparison predictive.
+
 These are classical continuum stress/metric models. They supply no new
 bounded observer-patch implementation, quantum instrument or simulator
 history. The public receipt is computational evidence for the mathematical

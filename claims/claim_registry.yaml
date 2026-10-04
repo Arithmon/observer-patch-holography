@@ -14203,7 +14203,7 @@
     },
     {
       "claim_id": "OPH-DARK-SOURCE-DYNAMICS-LENSING",
-      "statement": "On the declared static spherical Einstein interface, linear enclosed mass and constant circular speed admit an exact one-parameter conserved anisotropic stress family. Dominant energy and nonnegative pressures give sharp mass and finite-endpoint bending intervals; a joint rotation/bending inverse determines the mass coefficient. A separate regular asymptotically flat finite-mass family has identical lapse, rotation and exterior metric but different null deflection, with an exact positive rational lower bound and global dominant-energy proof. Complete scattering and rotation profiles reconstruct the remaining spherical metric function through an Abel inverse under the stated regularity and decay conditions. This completes the bounded macroscopic underdetermination test, not a microscopic collar-source realization, matter stability proof, natural-data comparison, source-selected normalization or closure of the full dark-sector issue.",
+      "statement": "On the declared static spherical Einstein interface, linear enclosed mass and constant circular speed admit an exact one-parameter conserved anisotropic stress family. Dominant energy and nonnegative pressures give sharp mass and finite-endpoint bending intervals; a joint rotation/bending inverse determines the mass coefficient. A positive massive-particle velocity-moment cap yields a tighter necessary tensor interval and exactly enclosed relative bending bounds; global kinetic distribution existence is not inferred. A separate regular asymptotically flat finite-mass family has identical lapse, rotation and exterior metric but different null deflection, with exact positive rational lower and upper bounds and global dominant-energy proof. Complete scattering and rotation profiles reconstruct the remaining spherical metric function through an Abel inverse under the stated regularity and decay conditions. This completes the bounded macroscopic underdetermination test, not a microscopic collar-source realization, matter stability proof, natural-data comparison, source-selected normalization or closure of the full dark-sector issue.",
       "owner_paper": "extra/DARK_SOURCE_DYNAMICS_LENSING.md",
       "tier": "exact_spherical_source_interface_test",
       "assumptions": [
@@ -14213,7 +14213,8 @@
         "spherical_Einstein_equations",
         "anisotropic_stress_conservation",
         "circular_and_null_geodesics",
-        "Abel_integral_inversion"
+        "Abel_integral_inversion",
+        "positive_massive_particle_stress_moments"
       ],
       "oph_specific_delta": "Tests the dark-sector scalar-charge and linear-mass interface against a same-source dynamics/lensing consumer. Supplies sharp stress-dependent observable bounds and a regular fixed-exterior counterexample; isolates the physical density or radial-stress closure needed before a rotation calibration can predict lensing. No new gravitational law or anomaly-to-stress selection is claimed.",
       "novelty_type": "explicit_source_interface_counterexample_and_joint_observable_bounds",

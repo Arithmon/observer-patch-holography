@@ -1,5 +1,6 @@
 """Closed-form producer; no natural observations or fitted parameters."""
 from fractions import Fraction as F
+from math import isqrt
 import mpmath
 
 
@@ -29,6 +30,24 @@ def build():
             cold.append(dict(u=str(u), eta=str(eta),
                              lower=str(max(u/(2*(1+u)), u/(1+2*u+eta))),
                              upper=str(min(F(1, 2), u/(1+2*u-eta)))))
+    kinetic = []
+    def root_interval(q):
+        scale = 10**18
+        a = isqrt(q.numerator*scale*scale//q.denominator)
+        return F(a, scale), F(a+1, scale)
+    for u in (F(1, 10**6), F(1, 100), F(1, 5)):
+        for cap in (u, 2*u, F(1, 2)):
+            lo = u*(1+u)/(1+2*u+2*u*u+cap)
+            hi = u/(1+2*u)
+            a0, a1 = root_interval(1/(1-2*lo))
+            b0, b1 = root_interval(1+2*u)
+            lower = (a0-(1-u))/(b1-(1-u))
+            upper = min(F(1), (a1-(1-u))/(b0-(1-u)))
+            kinetic.append(dict(u=str(u), speed_squared_cap=str(cap), lower_kappa=str(lo),
+                                upper_kappa=str(hi), mass_fractional_width=str((hi-lo)/hi),
+                                sqrt_low_kappa=[str(a0), str(a1)],
+                                sqrt_high_kappa=[str(b0), str(b1)],
+                                bending_ratio_lower=str(lower), bending_ratio_upper=str(upper)))
     controls = []
     # Q(x)-1 = sum c_p/x^p. All entries are transform controls, not matter sources.
     for terms in (((1, F(1, 3)),), ((2, F(2, 5)),), ((3, F(3, 7)),),
@@ -70,7 +89,7 @@ def build():
             samples.append(dict(r=str(r), t=str(t), m=str(m0+t*e*h),
                                 u=str(u), density_scaled=str(R), radial_scaled=str(P),
                                 tangential_scaled=str(T)))
-    return dict(annulus=rows, cold_bounds=cold, abel=controls, global_bounds=bounds,
+    return dict(annulus=rows, cold_bounds=cold, kinetic_bounds=kinetic, abel=controls, global_bounds=bounds,
                 global_samples=samples, global_ray_enclosure=enclosure,
                 interpretation=dict(result='macroscopic_source_underdetermined',
                                     physical_promotion=False, natural_data_used=False,

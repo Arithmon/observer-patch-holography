@@ -1,5 +1,5 @@
 {
-  "claim": "5d5668372251d9cf25e0ccf22f0c62b79c2c45f1914f10a743cb813b05748429",
+  "claim": "f3f18b91ea410c79e6b4a34fbe4b5dbfd854bf8172b518deb5be0f6bf75a6891",
   "evidence": {
     "abel": [
       {
@@ -714,7 +714,162 @@
       "numeric_controls": "high_precision_not_interval_proofs",
       "physical_promotion": false,
       "result": "macroscopic_source_underdetermined"
-    }
+    },
+    "kinetic_bounds": [
+      {
+        "bending_ratio_lower": "1999999500000/1999999500001",
+        "bending_ratio_upper": "1",
+        "lower_kappa": "1/1000002",
+        "mass_fractional_width": "0",
+        "speed_squared_cap": "1/1000000",
+        "sqrt_high_kappa": [
+          "2000001999999/2000000000000",
+          "1000000999999500001/1000000000000000000"
+        ],
+        "sqrt_low_kappa": [
+          "2000001999999/2000000000000",
+          "1000000999999500001/1000000000000000000"
+        ],
+        "u": "1/1000000",
+        "upper_kappa": "1/1000002"
+      },
+      {
+        "bending_ratio_lower": "1999998500003/1999999500001",
+        "bending_ratio_upper": "166666541667/166666625000",
+        "lower_kappa": "1000001/1000004000002",
+        "mass_fractional_width": "500000/500002000001",
+        "speed_squared_cap": "1/500000",
+        "sqrt_high_kappa": [
+          "2000001999999/2000000000000",
+          "1000000999999500001/1000000000000000000"
+        ],
+        "sqrt_low_kappa": [
+          "1000000999998500003/1000000000000000000",
+          "250000249999625001/250000000000000000"
+        ],
+        "u": "1/1000000",
+        "upper_kappa": "1/1000002"
+      },
+      {
+        "bending_ratio_lower": "1666667111110/1999999500001",
+        "bending_ratio_upper": "1666667111111/1999999500000",
+        "lower_kappa": "1000001/1500002000002",
+        "mass_fractional_width": "249999500000/750001000001",
+        "speed_squared_cap": "1/2",
+        "sqrt_high_kappa": [
+          "2000001999999/2000000000000",
+          "1000000999999500001/1000000000000000000"
+        ],
+        "sqrt_low_kappa": [
+          "100000066666711111/100000000000000000",
+          "1000000666667111111/1000000000000000000"
+        ],
+        "u": "1/1000000",
+        "upper_kappa": "1/1000002"
+      },
+      {
+        "bending_ratio_lower": "19950493836207795/19950493836207796",
+        "bending_ratio_upper": "1",
+        "lower_kappa": "1/102",
+        "mass_fractional_width": "0",
+        "speed_squared_cap": "1/100",
+        "sqrt_high_kappa": [
+          "201990098767241559/200000000000000000",
+          "252487623459051949/250000000000000000"
+        ],
+        "sqrt_low_kappa": [
+          "201990098767241559/200000000000000000",
+          "252487623459051949/250000000000000000"
+        ],
+        "u": "1/100",
+        "upper_kappa": "1/102"
+      },
+      {
+        "bending_ratio_lower": "19853415882041491/19950493836207796",
+        "bending_ratio_upper": "19853415882041492/19950493836207795",
+        "lower_kappa": "101/10402",
+        "mass_fractional_width": "50/5201",
+        "speed_squared_cap": "1/50",
+        "sqrt_high_kappa": [
+          "201990098767241559/200000000000000000",
+          "252487623459051949/250000000000000000"
+        ],
+        "sqrt_low_kappa": [
+          "1009853415882041491/1000000000000000000",
+          "252463353970510373/250000000000000000"
+        ],
+        "u": "1/100",
+        "upper_kappa": "1/102"
+      },
+      {
+        "bending_ratio_lower": "16710815808922689/19950493836207796",
+        "bending_ratio_upper": "477451880254934/570014109605937",
+        "lower_kappa": "101/15202",
+        "mass_fractional_width": "2450/7601",
+        "speed_squared_cap": "1/2",
+        "sqrt_high_kappa": [
+          "201990098767241559/200000000000000000",
+          "252487623459051949/250000000000000000"
+        ],
+        "sqrt_low_kappa": [
+          "1006710815808922689/1000000000000000000",
+          "100671081580892269/100000000000000000"
+        ],
+        "u": "1/100",
+        "upper_kappa": "1/102"
+      },
+      {
+        "bending_ratio_lower": "383215956619923208/383215956619923209",
+        "bending_ratio_upper": "1",
+        "lower_kappa": "1/7",
+        "mass_fractional_width": "0",
+        "speed_squared_cap": "1/5",
+        "sqrt_high_kappa": [
+          "147901994577490401/125000000000000000",
+          "1183215956619923209/1000000000000000000"
+        ],
+        "sqrt_low_kappa": [
+          "147901994577490401/125000000000000000",
+          "1183215956619923209/1000000000000000000"
+        ],
+        "u": "1/5",
+        "upper_kappa": "1/7"
+      },
+      {
+        "bending_ratio_lower": "358817130895614114/383215956619923209",
+        "bending_ratio_upper": "358817130895614115/383215956619923208",
+        "lower_kappa": "6/47",
+        "mass_fractional_width": "5/47",
+        "speed_squared_cap": "2/5",
+        "sqrt_high_kappa": [
+          "147901994577490401/125000000000000000",
+          "1183215956619923209/1000000000000000000"
+        ],
+        "sqrt_low_kappa": [
+          "579408565447807057/500000000000000000",
+          "231763426179122823/200000000000000000"
+        ],
+        "u": "1/5",
+        "upper_kappa": "1/7"
+      },
+      {
+        "bending_ratio_lower": "348912529307605731/383215956619923209",
+        "bending_ratio_upper": "87228132326901433/95803989154980802",
+        "lower_kappa": "4/33",
+        "mass_fractional_width": "5/33",
+        "speed_squared_cap": "1/2",
+        "sqrt_high_kappa": [
+          "147901994577490401/125000000000000000",
+          "1183215956619923209/1000000000000000000"
+        ],
+        "sqrt_low_kappa": [
+          "1148912529307605731/1000000000000000000",
+          "287228132326901433/250000000000000000"
+        ],
+        "u": "1/5",
+        "upper_kappa": "1/7"
+      }
+    ]
   },
   "schema": "oph-dark-source-lensing-v1",
   "sources": {
@@ -722,16 +877,16 @@
     ".github/workflows/dark-source-lensing.yml": "90d7ecf4d1caeb06add68928fa21ace4c76efc8e4699bae81dd134bd0012855b",
     "Lean/ObserverPatchHolography/EinsteinBranch/DarkSector.lean": "c906ec23c74f4734d9897ace5db103066460a043cffecea59d4139db52657c38",
     "Lean/ObserverPatchHolography/EinsteinBranch/DeepProfileClosure.lean": "eee963c058398a79741b07670e5ec7d4676118ac2aa72030eca54ce87ea64cfa",
-    "code/dark_source_lensing/CONTRACT.md": "6f7fd7835a6622873f68c6bd6c524b634c83296cc9bf113bf04b4b9d5a761ec2",
-    "code/dark_source_lensing/README.md": "4657e3039333fc15a10c42293758132a94211ff00c293471d319bf3a4721b7b4",
+    "code/dark_source_lensing/CONTRACT.md": "477c8c41e0b93d0ebee428da734535b984e9b7b3479514b1c3866b3e323e6137",
+    "code/dark_source_lensing/README.md": "a22140b98f1fe148c756815f2642b7e627dcdf5d54a93744c51b2cc20d4666df",
     "code/dark_source_lensing/__init__.py": "62dba0a56d72ba6862637dd4fb527e9bffcda59272d1cfe6e423c91237c0f7bf",
     "code/dark_source_lensing/build.py": "efd525341d1cd2d414ee617dc8d7227cc09667b1c4fe3a5eab49ffc68881a38c",
-    "code/dark_source_lensing/check.py": "12812d16f9f20d29962218cb6b49e1521b074b6fb27ca50493c9786409291fea",
+    "code/dark_source_lensing/check.py": "5d4ed15758e82eb471c8087311259ce833742afada32da9ee26b51ae31f8f06a",
     "code/dark_source_lensing/format.py": "8967f09de3b27d9c67b3df1e3fa88559dcb1eb4d94db4aa482f2b3b3079f9be3",
-    "code/dark_source_lensing/model.py": "cce7210ba2749c0dc77d4da72674fc44fe25679b7d4cff2962b32cd62fcc51ad",
-    "code/dark_source_lensing/test_lensing.py": "b3f671fe645502cb05eeaffb628a1fd7616c464ba27d2825fac0bbf1990374ea",
+    "code/dark_source_lensing/model.py": "5467e55a2a9ab902cd66fc0bf7a9a97a39b772a215ba4607eaf979bf1c600d09",
+    "code/dark_source_lensing/test_lensing.py": "3c3da8789859de25bf388050680f48c27d0a96c7c4d65338b550bc84040ffafe",
     "code/dark_source_lensing/verify.py": "a6b7c0471a90bcd4ca86908a7ecb3cff9efa54300215bd27ed1d1993f20c130e",
-    "extra/DARK_SOURCE_DYNAMICS_LENSING.md": "65f194085df74b0586be98245206e8e08ac8d19c9850e75875bc6516a3befef9",
+    "extra/DARK_SOURCE_DYNAMICS_LENSING.md": "3bc98c05ae65a224f35a214034ce33b2b7fb685d06156772d04feb8f500d41ae",
     "requirements.txt": "f116bec13d89a098f6523a26eede8280021585a32ec3294fc3f7174d6cd0ec09"
   }
 }

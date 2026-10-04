@@ -21,6 +21,9 @@ charge relabelled as a complete stress tensor does not meet this objective.
    different lensing. Prove the conditions globally, not on a sampled grid.
 4. Identify how complete joint observables reconstruct the missing source
    information and which source restriction would narrow the prediction.
+   Quantify the stronger necessary stress bound for positive massive-particle
+   distributions with a velocity-moment cap; do not identify comoving dilution
+   with such a cap or claim distribution-function existence from tensor bounds.
 5. Supply independent replay, compact receipts, semantic mutation tests and
    claim custody. Credit standard GR and distinguish analytic proofs from
    high-precision numerical controls.
