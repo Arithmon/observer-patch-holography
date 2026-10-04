@@ -127,6 +127,7 @@ def test_report_promotions_fail_semantic_replay(packet, monkeypatch, section, fi
     ('.135', '.045', 'INCONCLUSIVE'), ('.135000000000000000001', '.045', 'FAIL'),
     ('0', '.045000000000000001', 'INCONCLUSIVE'),
     ('.301', '.1', 'FAIL'), ('0', '.09', 'INCONCLUSIVE'),
+    ('0', '101', 'INCONCLUSIVE'), ('400', '101', 'FAIL'),
     ('-.135000000000000000001', '.045', 'FAIL')])
 def test_exact_frozen_rule_edges(offset, sigma, expected):
     value = str(Decimal('1776.969027')+Decimal(offset))
@@ -147,7 +148,7 @@ def test_rounded_center_cannot_silently_kill_entire_window():
     ('unit', 'GeV'), ('unit', None), ('value', 'NaN'), ('value', 'Infinity'),
     ('value', float('nan')), ('value', True), ('value', '0'), ('value', '-1'),
     ('value', '1e999'), ('value', '9'*91), ('sigma', '0'), ('sigma', '-1'),
-    ('sigma', '.045'), ('sigma', '1e-999'), ('sigma', '101'), ('sigma', 0.045)])
+    ('sigma', '.045'), ('sigma', '1e-999'), ('value', '1e-81'), ('sigma', 0.045)])
 def test_invalid_observation_fails_closed(field, value):
     # Leading-dot strings are deliberately outside the canonical decimal grammar.
     payload = dict(value='1776.969027', sigma='0.045', unit='MeV')

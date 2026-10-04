@@ -41,6 +41,14 @@ a physical dataset. `comparison.compare` implements arithmetic only; callers
 must first meet the external admission contract. It does not mark input JSON
 as a measurement or bypass NOT_READY. All controls in tests are synthetic.
 
+The decimal interface accepts magnitudes up to `1e12`, at most 80 fractional
+places, and standard uncertainties at least `1e-30 MeV`. Within that arithmetic
+domain the 110-digit context makes threshold arithmetic exact; rounded division
+is display-only. Coarse uncertainties remain valid inputs, including above
+`100 MeV`; they are not a selection filter. An unsupported numerical format or
+range needs a reviewed implementation update before evaluation, never silent
+rounding or substitution of another dataset.
+
 Optional metadata discovery, **only when separately needed**, writes a new file:
 
 ```sh

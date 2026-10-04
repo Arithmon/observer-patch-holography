@@ -7,7 +7,10 @@ def number(value):
     if type(value) is not str or len(value) > 90 or re.fullmatch(r'-?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]{1,3})?', value) is None:
         raise ValueError('bounded decimal string required')
     result = Decimal(value)
-    if not result.is_finite() or abs(result) > Decimal('1e12'):
+    # At most 13 integer and 80 fractional places: the 110-digit context then
+    # computes every subtraction and threshold product exactly. Division is
+    # display-only and does not decide the verdict.
+    if not result.is_finite() or abs(result) > Decimal('1e12') or result.as_tuple().exponent < -80:
         raise ValueError('finite bounded observable required')
     return result
 
@@ -29,7 +32,7 @@ def compare(payload):
     with localcontext() as c:
         c.prec = 110
         value, sigma = number(payload['value']), number(payload['sigma'])
-        if value <= 0 or not Decimal('1e-30') <= sigma <= Decimal('100'):
+        if value <= 0 or not Decimal('1e-30') <= sigma:
             raise ValueError('positive physical mass and bounded nonzero standard uncertainty required')
         center = Decimal('1776.969027')
         low, high = Decimal('1776.968991'), Decimal('1776.969063')
@@ -51,6 +54,6 @@ def reference_log_likelihood_ratios(value, sigma, prediction):
     with localcontext() as c:
         c.prec = 110
         y, s, p = map(number, (value, sigma, prediction))
-        if y <= 0 or p <= 0 or not Decimal('1e-30') <= s <= Decimal('100'):
+        if y <= 0 or p <= 0 or not Decimal('1e-30') <= s:
             raise ValueError('positive masses and bounded nonzero standard uncertainty')
         return dict(oph_to_koide='0', twice_log_free_mass_to_balanced=str(((y-p)/s)**2))
