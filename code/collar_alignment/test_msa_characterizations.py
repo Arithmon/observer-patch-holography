@@ -586,3 +586,9 @@ def test_gibbs_sector_count_and_common_energy_shift():
     assert modular_splitting_defect(blocks) < 1e-12
     with pytest.raises(ValueError,match="underflow"):
         gibbs_blocks(sectors,[0,1000])
+
+
+def test_gibbs_normalization_cannot_erase_a_sector():
+    sectors=[(np.zeros((1,1)),(1,1,1,1))]*4
+    with pytest.raises(ValueError,match="underflow"):
+        gibbs_blocks(sectors,[0,0,0,745])

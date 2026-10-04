@@ -48,6 +48,9 @@ sum_P w_P D(rho_P || tau_P) = W D(R(rho) || T).
 
 Both sides are infinite in exactly the same support-escape cases. This is
 an identity for the existing finite A3 data; it adds no new physical premise.
+For a nonempty cover W is positive. If an empty cover is permitted, its
+injectivity already forces K to be a singleton and the objective is zero;
+there is then no remaining optimization to encode.
 R is affine, so optimizing on K is equivalent to optimizing on its image
 R(K). The A3 cover's injectivity makes the correspondence one-to-one.
 The weights, references and compatible feasible image must still be retained;
@@ -116,7 +119,7 @@ actual CMI; it cannot assume the label exists as a physical repair.
 | --- | --- |
 | Null-net standardness, #524 | Fixes the general multi-sector constructor. The published single-sector modular-locality and nonlocal-Gibbs controls still pass. |
 | Collar alignment, #543 | Replaces sampled commutators with a complete basis and rejects vacuous/invalid families. The Bell counterexample remains Markov but not aligned. |
-| MaxEnt closure, #539 | Preserves the multiplier counts, nonclosure example and exact product-subfamily control while enforcing their input and convergence premises. |
+| MaxEnt closure, #539 | Preserves the multiplier counts, nonclosure example and exact product-subfamily control while enforcing their input and convergence premises. The live receipt is regenerated; its numerical changes are at roundoff scale. |
 | Einstein closure, #526–#528/#503/#578 | Reuses the same central-label entropy identity. The first-law and normalization-countermodel tests still pass. |
 
 The shared helpers are one implementation, not four independent calculations.

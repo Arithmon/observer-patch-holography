@@ -117,7 +117,10 @@ def gibbs_state(constraints: list[np.ndarray], lam: np.ndarray) -> tuple[np.ndar
     if np.any(weights == 0):
         raise ValueError("Gibbs spectrum underflow; faithful-state precision is insufficient")
     log_z = math.log(weights.sum()) - energies.min()
-    rho = (vectors * (weights / weights.sum())) @ vectors.conj().T
+    probs = weights/weights.sum()
+    if np.any(probs == 0):
+        raise ValueError("normalized Gibbs spectrum underflow; precision is insufficient")
+    rho = (vectors * probs) @ vectors.conj().T
     return rho, log_z
 
 

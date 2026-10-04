@@ -122,3 +122,8 @@ def test_legacy_relative_entropy_keyword_order_is_preserved():
 def test_finite_inputs_cannot_overflow_into_a_nan_state():
     with pytest.raises(ValueError,match="numerical range"):
         gibbs_state([np.diag([1e308,0.])],np.array([1e308]))
+
+
+def test_gibbs_normalization_cannot_erase_a_subnormal_positive_weight():
+    with pytest.raises(ValueError,match="underflow"):
+        gibbs_state([np.diag([0.,0.,0.,745.])],np.array([1.]))

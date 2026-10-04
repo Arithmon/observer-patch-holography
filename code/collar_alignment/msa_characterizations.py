@@ -275,6 +275,8 @@ def gibbs_blocks(hamiltonians: list[tuple[np.ndarray, tuple[int, int, int, int]]
             raise ValueError("Gibbs sector underflow; faithful-state precision is insufficient")
         terms.append((weights,vecs,dims))
     z_total = sum(w.sum() for w,_,_ in terms)
+    if any(np.any(w/z_total == 0) for w,_,_ in terms):
+        raise ValueError("normalized Gibbs sector underflow; precision is insufficient")
     return [(float(w.sum()/z_total), (v*(w/w.sum()))@dagger(v), dims)
             for w,v,dims in terms]
 
