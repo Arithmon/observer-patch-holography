@@ -97,8 +97,11 @@ constant to zero. Hence u=s K^(-1)e_o uniquely. The maximum principle gives
 u>=0. Equation (1) is a fixed, disclosed source law, not something claimed
 to be selected by A3. A classical rational controller can solve this finite
 system from its source record s and publish the resulting local records
-through RG before preparation of either probe. Publication, source loading
-and all waiting are charged. They occur identically in both candidates.
+through RG before preparation of either probe. Both candidates use the
+same finite preparation and publication protocol. Its earlier computation,
+source loading and waiting lie outside the reported probe ledger, which
+starts from the supplied stationary source; this receipt does not certify
+their full preparation cost.
 No source value is inferred from the desired detector answer.
 
 The primary finite instance is the five-site interval with endpoints
@@ -120,8 +123,9 @@ A with A(0)=1. The resting code clock has the native phase channel
 Each clock qubit can run continuously on the native generator
 i(E_11-E_22) in its active M6 processor; two co-located copies give the
 displayed twofold degeneracy. Packing and preparation precede the
-interrogation interval, and readout follows it. These costs are common
-and recorded separately. The clock may run on its own processor throughout
+interrogation interval, and readout follows it. These common preparation
+costs are outside the reported probe ledger. The clock may run on its own
+processor throughout
 all probe service and waits: t is physical elapsed interrogation time,
 not a count of only successful flights. The finite certificate also
 reconstructs the same endpoint matrix by its native phase factors.
