@@ -14241,6 +14241,54 @@
         "boundary": [],
         "rationale": "This mathematical countermodel reuses a constructed full-axiom source and its proposed coherent transport service to disprove clock-to-spatial entailment. It does not consume a physically selected matter source, electromagnetic interpretation or physical premise-register branch; its finite operational probability gap does not need those identifications."
       }
+    },
+    {
+      "claim_id": "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
+      "statement": "Independent simultaneous dimensionless reconstruction reproduces both retained certified alpha/P roots and separates the converged asymptotic map from its historical approximate trunk and measured-alpha-consuming mixed diagnostic. An independent implicit balanced-Q solve reproduces the ordered tau output and 72 eV outward input-box window. Analytic covariance-agnostic first-order sensitivity bounds and a same-data reference comparison show exact observational equivalence to the Koide relation and one constraint relative to a free tau mass. The historical PDG measurement gives FZ-10 INCONCLUSIVE. A bounded three-candidate audit selects canonical FZ-10 and delivers a concrete future-release contract with NOT_READY status: no eligible untouched dataset, admission dossier or external registration evidence is claimed. No new natural outcome, global chance probability, physical mass selection or alpha theory error is inferred.",
+      "owner_paper": "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
+      "tier": "independent_quantitative_reproduction_and_bounded_natural_comparison_readiness",
+      "assumptions": [
+        "declared_alpha_maps_and_balanced_ordered_tau_relation",
+        "historical_reference_inputs_and_FZ10_comparison_contract"
+      ],
+      "imported_results": [
+        "one_loop_gauge_running_and_vacuum_polarization",
+        "positive_circulant_Koide_identity",
+        "positive_semidefinite_covariance_Cauchy_bounds",
+        "same_observation_model_likelihood_equivalence"
+      ],
+      "oph_specific_delta": "Independently checks the actual OPH numerical quantities, prevents measured-endpoint and approximation conflation, proves the selected tau observable cannot discriminate OPH from the identical Koide relation, and supplies a complete outcome-blind release contract and precise readiness exit.",
+      "novelty_type": "independent_postdiction_reproduction_and_reference_discrimination_audit",
+      "evidence": [
+        "extra/INDEPENDENT_POSTDICTION_COMPARISON.md",
+        "code/independent_postdictions/replay.py",
+        "code/independent_postdictions/verify.py",
+        "code/independent_postdictions/inner_check.py",
+        "code/independent_postdictions/receipt.json",
+        "code/independent_postdictions/protocol.json",
+        "code/independent_postdictions/catalogue_discovery.json",
+        "code/independent_postdictions/test_reproduction.py"
+      ],
+      "falsifier": "Independent roots or source equations disagree; the tau branch or input enclosure differs; the covariance bound or same-law reference equivalence fails; unknown trials acquire a chance probability; policy corruption or hostile evidence is accepted; or exposed/synthetic outcomes are promoted to natural evidence.",
+      "scope_if_false": "The independent reproduction or comparison contract fails. This audit does not select the physical alpha readout or source mass action, replace canonical FZ-10, establish an eligible dataset, or close the calibration/source parents.",
+      "status": "independent_reproduction_complete__bounded_FZ10_data_release_contract_NOT_READY",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [
+          "PR-13",
+          "PR-17",
+          "PR-37"
+        ],
+        "open": [],
+        "boundary": [
+          "PR-14",
+          "PR-38",
+          "PR-39",
+          "PR-50"
+        ]
+      }
     }
   ]
 }

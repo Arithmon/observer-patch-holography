@@ -323,7 +323,8 @@
     "OPH-EW-CONDITIONAL-SOURCE-VEV-MATCHING",
     "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION",
     "OPH-MCKAY-INDEPENDENT-GOLDEN-FIELD-CONTROL",
-    "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION"
+    "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
+    "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION"
   ],
   "edges": [
     {
@@ -2840,6 +2841,16 @@
       "from": "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION",
       "to": "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
       "role": "Identifies the earlier spatial-response freedom; model membership and the metric-free finite detector distinction are proved separately here."
+    },
+    {
+      "from": "OPH-ALPHA-PIXEL",
+      "to": "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
+      "role": "Supplies the declared mathematical maps and physical endpoint boundary to be independently audited; no source-selection or theory-error premise is discharged."
+    },
+    {
+      "from": "OPH-KOIDE-CIRCULANT-IDENTITY",
+      "to": "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
+      "role": "Supplies the exact positive-chamber balance identity and historical premise ancestry. The independent conditional mass replay does not inherit a physical Yukawa attachment."
     }
   ]
 }
