@@ -23,7 +23,7 @@ PINNED_SOURCE_SHA256 = {
     "code/source_selection_model/geometry.py": "de47ae19dd4ae1677d0cefb0163513f2f1f6d24dfb4dd0264506d0b17fceb843",
     "code/source_selection_model/DERIVATION.md": "4881f7c7e41b6294d3b164e943952438f09a3aa03041bf152a382d8ff42aba85",
     "code/m1_source_realization/topology.py": "7319da3f7e9544cf334f7cf152b1aff350f822b2ace0bc786b5bef53e0429f14",
-    "code/m1_source_realization/receipt.json": "b55a2ca00c094f2d6e5e55306e20181e52431ef4ad75f0f6c8ea1e2066b6dc54",
+    "code/m1_source_realization/receipt.json": "629e17e1eedebc44751a2992354ba92b79d08c85d94764cc1dddaa29071585de",
     "code/m1_source_realization/README.md": "3e9c15b939925607e2fe498fff93111cc332591f039871f72ea86295e57c735b",
     "Lean/Geometry/ScreenCarrierMapCandidate.lean": "60a95ebdf173f2c2c5bd8bed4ade34e64392299d787c4305ed90e8335e5c2ab1",
     "Lean/Screen/PortGramRepairBand.lean": "75286414b7c33492b40225dd48ca9321cf3a09ecf96b65e254af9bd02421cf72",

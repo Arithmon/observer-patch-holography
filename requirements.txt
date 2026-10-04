@@ -13,7 +13,7 @@ mpmath==1.3.0
 sympy==1.14.0
 PyYAML==6.0.3
 jsonschema==4.26.0
-cryptography==50.0.1
+cryptography==50.0.2
 pytest==9.1.1
 # Archived observer-dynamics controls import the simulator graph/plot modules;
 # the pinned CAMB interpolator is exercised without running transfer evolution.

@@ -11,3 +11,10 @@ updates:
     directory: /
     schedule:
       interval: monthly
+    ignore:
+      # CAMB is pinned to the version of the archived observer-dynamics
+      # evidence: its interpolation control runs only under the CAMB recorded
+      # in the frozen spec.json (1.6.6), and the verifier fails on a skipped
+      # control. A newer CAMB belongs in a separate environment for new
+      # transfer runs, not in this replay pin.
+      - dependency-name: camb

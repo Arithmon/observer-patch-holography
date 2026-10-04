@@ -2445,7 +2445,7 @@
       {
         "byte_count": 19739,
         "path": "code/a5_closure/port_gram_support_attachment_certificate.py",
-        "sha256": "sha256:d42df098c9cacff3630934c33bb2714517b6d0970ea647495ba222c1d95938c5"
+        "sha256": "sha256:d28816dc7018d408c28bd2d19119646a45b1ce24bdd0437022d4bb5588f686d9"
       },
       {
         "byte_count": 5638,
@@ -2825,7 +2825,7 @@
       {
         "byte_count": 10368,
         "path": "code/a5_closure/verify_port_gram_support_attachment_independent.py",
-        "sha256": "sha256:c4d64eea177dc25d5813df2d35a211c8cfc6639c209942232c53cc5d46ee8a96"
+        "sha256": "sha256:0254905f043516546dad455ad91b8848e815df7f83256c552a056a29c388a6e3"
       },
       {
         "byte_count": 20870,
@@ -4628,7 +4628,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:fb18d8d9e904227b498896e49c48097fd0581204279c059c5f5746a715f9edaf",
+    "files_sha256": "sha256:6e0a6c28ceab89629cba2b6bc9944310fd44a75fb72abba2aaeb5e222286cbe5",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7537,7 +7537,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:b55b2c0c41b6711ddeb83d02a6d1140824abd6c14af9009d09ffdf76f4468b74",
+  "inventory_sha256": "sha256:01693fecf444bf96e3d2231cff7758d6b17fd5336cdc9908c492b9a68324c41c",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
