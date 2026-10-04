@@ -1,0 +1,9 @@
+{
+  "artifacts": {
+    "frozen_prediction.json": "150f9f6f771bbde5ec0c3548756a83d8ab3499d9ff8c0e0364388883ccead1d8",
+    "target.md": "f80ce2d633032ae1510e0b86ea79f1193b8e7303b77bf7fe60abfbdc3b5a01e3"
+  },
+  "registered_utc": "2026-10-04T08:23:35Z",
+  "registration": "FZ-15: The conditional edge-center scalar spectral index",
+  "source_commit": "9a01fbe89bab53ccc93af66859baf51f16f348c9"
+}

@@ -1,5 +1,16 @@
 # FZ-15 to FZ-17 registration proposal: primordial branch, pre-SO/CMB-S4/LiteBIRD
 
+FZ-15 alone was adopted with a complete, separately dated protocol on
+2026-10-04. Its operative
+[target](../../../evidence/custody/falsification/frozen_targets/fz15_2026-10-04/target.md)
+and adjacent `frozen_prediction.json` fix the inherited calibration coordinate,
+one future SO LAT plus Planck primary-CMB comparison, the physical hypotheses
+and the numerical decision rules. FZ-16 and FZ-17 remain unadopted proposals.
+The absence of an emitted tensor source alone does not exclude initial or
+homogeneous tensor modes and does not establish an observable `r=0` target.
+The original proposal below is retained as historical ancestry; its open
+owner slots and alternative experiments are not terms of the FZ-15 freeze.
+
 Status: PROPOSAL. Nothing in this document is a freeze, a frozen prediction,
 or a score. Adoption of the cells below as register rows, anchoring, the
 numeric kill-band cells, the `content_sha256`, the `frozen_utc` stamp, and the

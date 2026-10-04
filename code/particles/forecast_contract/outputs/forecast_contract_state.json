@@ -404,11 +404,11 @@
    "surface": "FZ-12"
   },
   {
-   "classification": "ACTIVE_REGISTER_ROW__REGISTERED_PENDING_FREEZE",
-   "forecast_use": "Use only under the live registered comparison protocol: no comparison protocol is frozen; the proposed protocol uses only post-freeze published DESI DR3 and Euclid w0waCDM posteriors, treats them as model- and likelihood-dependent CPL projections rather than direct capacity measurements, excludes DESI DR1, DR2, and every pre-freeze contour as seen data, and requires a fully specified direction-neutral nuisance and fallback policy before anchoring; it awaits the owner's freeze and is recorded in code/cosmology/fixed_capacity_wlaw/FZ13_REGISTRATION_PROPOSAL.md",
-   "owning_issue": 742,
+   "classification": "ACTIVE_REGISTER_ROW__FROZEN_STAMPED_UPGRADE_PENDING",
+   "forecast_use": "Use only under the live registered comparison protocol: First eligible official DESI DR3 BAO cosmology release: flat w0waCDM, all DR3 BAO tracers, the uniquely designated collaboration baseline CMB likelihood combination and Pantheon+ supernovae. Use the first complete official ordered posterior chains and the anchored protocol in evidence/custody/falsification/frozen_targets/fz13_2026-10-04/frozen_prediction.json. No alternate SNe compilation, external dataset, independent OPH refit or later-release fallback. Eligibility starts after publication and verified Bitcoin anchoring; old DESI/CMB/SNe data remain exposed and their reuse is disclosed.",
+   "owning_issue": 1025,
    "registry_kind": "active_register",
-   "registry_status": "registered_pending_freeze",
+   "registry_status": "frozen_stamped_upgrade_pending",
    "surface": "FZ-13"
   },
   {
@@ -418,6 +418,14 @@
    "registry_kind": "active_register",
    "registry_status": "registered_pending_freeze",
    "surface": "FZ-14"
+  },
+  {
+   "classification": "ACTIVE_REGISTER_ROW__FROZEN_STAMPED_UPGRADE_PENDING",
+   "forecast_use": "Use only under the live registered comparison protocol: First eligible official Simons Observatory LAT primary-CMB parameter release: the uniquely designated baseline SO LAT plus Planck primary TT/TE/EE flat six-parameter power-law LambdaCDM posterior at k*=0.05 Mpc^-1. Use the first complete official ordered chains and the anchored protocol in evidence/custody/falsification/frozen_targets/fz15_2026-10-04/frozen_prediction.json. No BAO, SNe, reconstructed-lensing likelihood, alternate experiment or later-release fallback. Eligibility starts after publication and verified Bitcoin anchoring; Planck reuse and all existing ACT/SPT/Planck exposure remain disclosed.",
+   "owning_issue": 1025,
+   "registry_kind": "active_register",
+   "registry_status": "frozen_stamped_upgrade_pending",
+   "surface": "FZ-15"
   },
   {
    "classification": "RETROSPECTIVE_RESULT__RETROSPECTIVE_NOT_EVALUABLE",
@@ -473,7 +481,7 @@
   "candidate_inventory_sha256": "sha256:12c8a569a92f265f0b033a9df4b20fa59adce6c05b8d63d918e81ce553731752",
   "contract_schema_sha256": "sha256:518ca92a84a073f25f0e967e8b4cedf92f7243d56d6c9e10c958cbe9a460ae62",
   "forecast_freeze_policy_sha256": "sha256:ae9508d362de40dec25c2935d96606ce3cb4d9d7d40f255b6c00576abeb9b2c5",
-  "frozen_prediction_register_sha256": "sha256:679ef85a35141ef5074d3fc629c04cb13f07ec942e35a19040ac68c864c8c9e7",
+  "frozen_prediction_register_sha256": "sha256:c0c46e3f7ff870263176d61b99b5e77152af84059b5d0bd1b9d5c7fdccaf0006",
   "module_sha256": "sha256:27cf76a626733e58c5246d13d87cb8ce0904b954f63887fd03d7c73399441a35"
  },
  "potential_upgrade_routes": {
@@ -497,5 +505,5 @@
   "rule": "This C1 draft orders its static seed rows by candidate_class, integer selection_priority, and candidate_id. It is not the C3 ranking contract. Before any C3 candidate generation or evaluation, a successor policy must pin the complete issue-647 grammar, numerical weights, eligibility, tie breaker, skip policy, exposure class, direct-N non-reentry rule, and campaign-wide one-comparison stop.",
   "status": "DRAFT_UNFROZEN"
  },
- "state_sha256": "sha256:6032d1aeec465cd17aeaa40773ff4a9fca4ff124898258493d338180c5a7b1ff"
+ "state_sha256": "sha256:c624297bd467cd4179f68ec0dad2c9ef19f4b3a26f6bea077bab8aded2a27e0c"
 }

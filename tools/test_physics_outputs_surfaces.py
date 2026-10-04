@@ -73,19 +73,25 @@ def test_cal_claim_carries_anchor_exactness_and_import_boundary() -> None:
     assert deps["open"] == ["PR-15"]
 
 
-def test_frozen_register_rows_pending_with_owner_slots() -> None:
+def test_frozen_register_distinguishes_pending_and_completed_protocols() -> None:
     register = json.loads((ROOT / "claims/frozen_prediction_register.json"
                            ).read_text(encoding="utf-8"))
     rows = {r["id"]: r for r in register["rows"]}
-    for fz, issue in (("FZ-13", 742), ("FZ-14", 729)):
+    for fz, issue in (("FZ-14", 729),):
         row = rows[fz]
         assert row["status"] == "registered_pending_freeze", fz
         assert row["owning_issue"] == issue, fz
         assert row["frozen_utc"] is None and row["content_sha256"] is None, fz
         assert "owner" in row["kill_band"], fz
-    assert "DESI DR1 and DR2" in rows["FZ-13"]["comparison_protocol"] or \
-        "DESI DR1 and DR2" in rows["FZ-13"]["content"] or \
-        "seen data" in rows["FZ-13"]["comparison_protocol"]
+    for fz in ("FZ-13", "FZ-15"):
+        row = rows[fz]
+        assert row["status"] == "frozen_stamped_upgrade_pending", fz
+        assert row["frozen_utc"] and row["content_sha256"], fz
+        assert "OWNER SLOT" not in row["kill_band"], fz
+    custody = register["external_custody_contracts"]["FZ-13"]["custody_path"]
+    snapshot = json.loads((ROOT / "evidence/custody" / custody / "frozen_prediction.json").read_text(encoding="utf-8"))
+    assert any("DESI DR1 and DR2" in item for item in snapshot["protocol"]["exposure"])
+    assert "exposed" in rows["FZ-13"]["comparison_protocol"]
     assert "GW150914" in rows["FZ-14"]["comparison_protocol"]
 
 
