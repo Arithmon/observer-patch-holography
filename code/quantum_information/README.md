@@ -192,3 +192,14 @@ amend A1–A3, prove a physical Markov collar, promote the gravity branch, or
 complete the separate model-selection issues #1025/#1026. Frozen evidence and
 archived simulator copies retain their historical bytes; this shared module
 governs the live consumers named above.
+
+The [collar information-budget audit](../collar_alignment/INFORMATION_BUDGET.md)
+repairs entropy-subtraction false zeros in mutual and conditional mutual
+information. Exact reductions, stable classical remainders and guarded
+quantum evaluation preserve small correlations. `is_markov_exact` decides
+zero CMI for the supplied finite matrix using exact relative-modular moments
+when simpler certificates do not suffice. The same audit resolves fixed-cut
+alignment into four nonnegative terms and proves that their weighted total
+is the relative-entropy projection cost onto the declared aligned family.
+For trace-roundoff inputs, MI uses the homogeneous convention `T I(rho/T)`;
+unresolved precision, indefinite states and nonzero output underflow raise.
