@@ -413,3 +413,34 @@ def test_checked_report_replays_with_scoped_verdicts():
     assert not actual["verdicts"]["lie_closure_rate_certified"]
     assert all(r["all_even_ranges"] for r in actual["lie_closure"])
     json.dumps(actual, allow_nan=False)
+
+
+@pytest.mark.parametrize("scale", [1e-320, 1e-310])
+def test_subnormal_complex_packet_preserves_its_direction(scale):
+    ha = np.array([[0., 0, 1], [0, 1, 0], [1, 0, 0]])
+    packet = np.array([scale, complex(0, scale)])
+    r = modular_subspace_diagnostic(ha, np.zeros((2, 2)), 0.4, packet)
+    # The first component alone couples to the third through a Pauli X block.
+    expected = np.sin(0.4) ** 2 / 2
+    assert np.isfinite(r["leakage_plus"])
+    assert r["leakage_plus"] == pytest.approx(expected, rel=1e-14, abs=0)
+    json.dumps(r, allow_nan=False)
+
+
+def test_subnormal_complex_nonhermitian_input_cannot_bypass_validation():
+    from null_net_receipts import _matrix
+    h = np.array([[0, 1e-320], [0, 0]], dtype=complex)
+    with pytest.raises(ValueError, match="Hermitian"):
+        _matrix(h, hermitian=True)
+
+
+@pytest.mark.parametrize("measured", [[2**53, 2**53+1], [float(2**60), 2**60+1]])
+def test_shape_fit_rejects_lossy_input_promotion(measured):
+    with pytest.raises(ValueError, match="binary64"):
+        _shape_fit(measured, [1, 1])
+
+
+def test_shape_fit_retains_a_resolved_tiny_residual():
+    r = _shape_fit([1, 1e-200], [1, 0])
+    assert r["normalization_alpha"] == 1
+    assert r["relative_residual"] == pytest.approx(1e-200, rel=1e-14, abs=0)
