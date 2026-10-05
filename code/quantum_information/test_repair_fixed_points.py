@@ -135,3 +135,26 @@ def test_missing_reference_data_cannot_validate_a_repair(entry):
             expectation_diagnostics(channel, algebra, reference)
         else:
             repair_generator([channel], [algebra], reference, [1.])
+
+
+@pytest.mark.parametrize("entry", ('single', 'repeated', 'generator'))
+def test_near_identity_is_not_an_exact_common_identity(entry):
+    # The off-diagonal entry proves I is absent from this one-dimensional
+    # span. Its numerical identity/closure defects are nevertheless tiny.
+    algebra = FiniteAlgebra([I+1e-14*X])
+    with pytest.raises(ValueError, match="exact common identity"):
+        if entry == 'generator':
+            channel = state_preserving_expectation(algebra, I/2)
+            repair_generator([channel], [algebra], I/2, [1.])
+        else:
+            algebra_intersection([algebra]*(1 if entry == 'single' else 2))
+
+
+def test_identity_may_be_an_exact_linear_combination_of_supplied_columns():
+    # An identity membership guard must solve for its coefficients, not
+    # require an explicit identity column or trace-normalized generators.
+    algebra = FiniteAlgebra([3*I+2*Z, 2*I+3*Z])
+    common = algebra_intersection([algebra, FiniteAlgebra([I, Z])])
+    assert common.dimension == 2
+    for value in (I, Z):
+        assert np.allclose(common.project(value), value, rtol=0, atol=2e-14)
