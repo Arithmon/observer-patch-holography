@@ -2656,7 +2656,8 @@
         "code/b20_random_scan/preflight_random_scan.py",
         "code/b20_random_scan/runtime/b20_preflight_certificate.json",
         "code/b20_random_scan/validate_random_scan.py",
-        "code/b20_random_scan/test_b20_preflight.py"
+        "code/b20_random_scan/test_b20_preflight.py",
+        "book/23-chapter-22.md"
       ],
       "falsifier": "The package fails if any exact statement fails: a feasible state beating the exponential family in the constrained projection, a fibre-supported law beating the conditional row, a stochastic kernel with stationary reference increasing relative entropy, a fibre-measurable charge moved by the kernel, a reference-preserving step violating the integral or detailed fluctuation identities, an asymmetric equilibrium time-lagged correlation under detailed balance, a state pair violating the exact-remainder cap first law, an excited Gibbs mass above the gap bound, or a partition whose pinching lacks the Kraus completeness. The physical reading fails at any of the five receipts: the weighted local objectives have no global representation; the two optimizers require distinct source references; the source collar fails to equal the conditional-resampling kernel on the complete repaired-visible fibre (property-only validation certifies only the weaker stationary H-theorem branch); physical energy-clock calibration contradicts the finite modular split; or no uniform low-temperature spectral-tail control on a coherent cofinal family exists for the claimed continuum third law. The current finite gap-plus-cardinality structure is sufficient but not necessary for that final receipt.",
       "scope_if_false": "A failed exact identity falls within the conditional thermodynamic completion package. Failure of a bounded B12 or B20 negative control belongs to OPH-THERMO-SOURCE-REALIZATION-AUDIT and may reopen a source route without falsifying the exact conditional four-law theorem. The consensus normal-form theorems, the event-algebra library, and the modular cap identities are assessed by their own claims. No frozen prediction row depends on this package.",
@@ -8657,7 +8658,11 @@
         "Lean/Thermodynamics/CollarTemperatureReading.lean",
         "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean",
         "Lean/ObserverPatchHolography/CollarStates.lean",
-        "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex"
+        "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+        "book/22-chapter-21.md",
+        "code/quantum_information/gibbs.py",
+        "code/quantum_information/test_gibbs.py",
+        "code/collar_alignment/test_gibbs_energy_origins.py"
       ],
       "falsifier": "The collar weights differ from the Gibbs state of K at one, the rescaling identity fails, the two-declaration inhabitant fails, a dictionary direction fails, the entropy identity fails, a KMS identity fails, or the module is presented as deriving a temperature or as identifying the collar weights with the record reference.",
       "scope_if_false": "Only the collar reading falls. The Gibbs ledger reading and the collar states are separately assessed.",
