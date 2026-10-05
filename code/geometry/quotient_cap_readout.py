@@ -48,16 +48,26 @@ from numbers import Integral, Real
 
 import numpy as np
 
-from conformal_readout import (
-    cross_ratio, cross_ratio_receipts, fit_cap, mobius_normalize,
-    produced_cap_normal, reconstruct_from_cross_ratios, stereographic,
-)
-
-from finite_incidence import (
-    IncidenceComplex, certify_midpoint_subdivision, complexes_equal,
-    complexes_isomorphic_under, dimension, euler_characteristic,
-    incidence_complex, refinement_is_simplicial, validate_complex, validate_records,
-)
+if __package__:
+    from .conformal_readout import (
+        cross_ratio, cross_ratio_receipts, fit_cap, mobius_normalize,
+        produced_cap_normal, reconstruct_from_cross_ratios, stereographic,
+    )
+    from .finite_incidence import (
+        IncidenceComplex, certify_midpoint_subdivision, complexes_equal,
+        complexes_isomorphic_under, dimension, euler_characteristic,
+        incidence_complex, refinement_is_simplicial, validate_complex, validate_records,
+    )
+else:
+    from conformal_readout import (
+        cross_ratio, cross_ratio_receipts, fit_cap, mobius_normalize,
+        produced_cap_normal, reconstruct_from_cross_ratios, stereographic,
+    )
+    from finite_incidence import (
+        IncidenceComplex, certify_midpoint_subdivision, complexes_equal,
+        complexes_isomorphic_under, dimension, euler_characteristic,
+        incidence_complex, refinement_is_simplicial, validate_complex, validate_records,
+    )
 
 TOL = 1e-9
 
