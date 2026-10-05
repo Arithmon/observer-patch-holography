@@ -20,6 +20,8 @@ def _finite(value, name):
 
 
 def _numeric(value, name, *, real=False):
+    if np.ma.is_masked(value):
+        raise ValueError(f"{name} must not contain masked or missing values")
     # Check mixed Python containers before NumPy coerces True to 1.
     if isinstance(value, (list, tuple)):
         for part in value:

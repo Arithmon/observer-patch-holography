@@ -224,6 +224,8 @@ from quantum_information import gibbs_sectors
 bad = [lambda: gibbs_sectors([], []),
        lambda: gibbs_sectors([[[0., 1e-200], [0., 0.]]], [0.], 1e200),
        lambda: gibbs_sectors([np.eye(2)], [True]),
+       lambda: gibbs_sectors([np.eye(2)], [np.ma.masked]),
+       lambda: gibbs_sectors([np.ma.array(np.eye(2), mask=True)], [0.]),
        lambda: gibbs_sectors([np.diag([0.,1000.])], [0.])]
 for call in bad:
     try: call()

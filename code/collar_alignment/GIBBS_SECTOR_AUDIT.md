@@ -30,6 +30,15 @@ consistent diagnostics of that wrong state could not validate the physics.
 Follow-up controls also reject integer or extended-precision conversion
 that erases an energy gap, such as the literal integers `2**53,2**53+1`.
 
+The maintainer-style follow-up audit reproduced eight further failures at
+`04be28c4`: NumPy masked inputs were converted to their hidden payloads.
+Missing Hamiltonian entries, central energies, beta, MaxEnt multipliers,
+targets and tolerance were accepted. A masked central energy became zero
+and changed the sector probabilities. The shared numeric and scalar
+validators now reject missing data before array conversion; a masked-array
+container with no missing entries remains valid. Failing tests again
+precede the repair, including a positive control for that valid container.
+
 ## One Gibbs problem, with the center retained
 
 Let the declared finite algebra be the direct sum of matrix algebras on
@@ -136,8 +145,10 @@ primitives. These two consumers are not independent verification oracles.
    checks alone would miss a positive direction lost at global normalization.
 
 Input conversion must preserve every numeric component exactly in binary64;
-mixed Boolean/string inputs and lossy integer or extended-precision inputs
-raise. This strengthens the shared MaxEnt validator as well. No precision
+masked values, mixed Boolean/string inputs and lossy integer or
+extended-precision inputs raise. This strengthens the shared MaxEnt
+validator as well. The finite scalar validator also rejects missing
+parameters at its other callers. No precision
 rule can recover a diagonal splitting the caller already rounded away while
 forming `1e20 I+diag(1,-1)`; the routine evaluates the actual supplied array.
 Underflow and unresolved dense-state support raise instead of clipping
@@ -179,8 +190,8 @@ The existing two-platform finite-quantum-information CI workflow discovers
 both files and also runs `code/quantum_information`, `code/collar_alignment`,
 `code/geometry` and `code/maxent` together.
 
-Local validation after incorporating main `07067bf1`: all 773 affected
-tests pass on Linux; Windows passes 767 with six skips for unavailable
+Local validation after the missing-data repair: all 782 affected
+tests pass on Linux; Windows passes 776 with six skips for unavailable
 extended precision. Both runs treat warnings as errors. Claim registry,
 axiom consistency, reader style, the generated gravity ladder, clean-export
 public surfaces and the Linux Lean proof inventory also pass.
@@ -192,3 +203,15 @@ receipt in six floating-point fields: the largest entropy difference is
 zero (the bound takes a square root). Those pre-existing platform differences
 are not attributed to this refactor; all nonnumeric fields agree. The
 stored receipt remains unchanged.
+
+The follow-up audit also ran the original controls against ten deliberately
+broken implementations in isolated exports: erased interactions, dropped
+central energies, equal sector masses, missing partition functions, rounded
+offset cancellation, accepted non-Hermiticity, accepted lossy conversion,
+omitted joint-underflow checks, floored local support and reversed beta.
+Every variant failed the controls. Independent 120-digit Pauli calculations
+covered 160 signed-temperature/unit/origin cases, with maximum absolute
+error `4.44e-16`. Of 88 diagonal support-boundary cases compared at 180
+digits, 79 returned positive masses with maximum absolute error `2.22e-16`
+and nine raised precision errors. These are bounded numerical audit checks,
+not a proof of uniform floating-point accuracy over all inputs.
