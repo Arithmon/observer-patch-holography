@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Numerical verification of the Markov-split alignment (MSA) characterizations.
 
-Implements the objects of The spacetime and Einstein paper's Proposition `prop:msachar`
-(operational characterizations of Markov-split alignment) and Corollary
-`cor:msareduction` (axiom-side reduction), introduced for paper-audit issue 001
-(GitHub #543).
+Implements the finite alignment objects introduced for paper-audit issue 001
+(GitHub #543), historically labelled `prop:msachar` and `cor:msareduction`.
+Those labels are absent from the reorganized active spacetime paper. The
+finite Gibbs connection and numerical scope are in GIBBS_SECTOR_AUDIT.md.
 
 Collar model: H = oplus_alpha  H_A (x) H_{bL^alpha} (x) H_{bR^alpha} (x) H_D.
 A state is represented blockwise as a list of (weight, block density matrix,
@@ -35,6 +35,7 @@ if __package__ in (None, ""):
 from quantum_information import (
     conditional_mutual_information as _conditional_mutual_information,
     density_matrix, dimensions, direct_sum_state, faithful_density_matrix, finite_real_scalar,
+    gibbs_sectors,
     faithful_log as logm_psd, mutual_information, partial_trace, probabilities,
     one_sided_projection as _one_sided_projection, von_neumann_entropy,
 )
@@ -248,38 +249,25 @@ def bell_counterexample() -> list[Block]:
 
 def gibbs_blocks(hamiltonians: list[tuple[np.ndarray, tuple[int, int, int, int]]],
                  central_energies: list[float], beta: float = 1.0) -> list[Block]:
-    """Gibbs state of H = oplus_alpha (H^alpha + e_alpha P_alpha) at inverse temp beta."""
-    if not hamiltonians or len(hamiltonians) != len(central_energies):
+    """Faithful direct-sum Gibbs state, retaining relative sector partition functions.
+
+    Scalar origins cannot change alignment within a sector. See
+    GIBBS_SECTOR_AUDIT.md for the energy/log-state identity and precision scope.
+    """
+    if not isinstance(hamiltonians, (list, tuple)) or not hamiltonians:
         raise ValueError("one central energy is required per nonempty sector")
-    beta = finite_real_scalar(beta, "inverse temperature")
-    spectra = []
-    for (h_a, dims), e_a in zip(hamiltonians, central_energies):
-        e_a = finite_real_scalar(e_a, "central energy")
+    operators, shapes = [], []
+    for entry in hamiltonians:
+        if not isinstance(entry, (list, tuple)) or len(entry) != 2:
+            raise ValueError("a Hamiltonian and four subsystem dimensions are required")
+        operator, dims = entry
         dims = dimensions(dims)
-        h_a = np.asarray(h_a,dtype=complex)
-        if (len(dims) != 4 or h_a.shape != (prod(dims),)*2
-                or not np.all(np.isfinite(h_a)) or not np.isfinite(e_a)
-                or np.linalg.norm(h_a-dagger(h_a),ord="fro") > 1e-12):
-            raise ValueError("finite Hermitian sector Hamiltonian and matching dimensions required")
-        evals, vecs = np.linalg.eigh(h_a)
-        energies = beta*(evals+e_a)
-        if not np.all(np.isfinite(energies)):
-            raise ValueError("sector energies exceed finite numerical range")
-        spectra.append((energies,vecs,dims))
-    # One common shift preserves relative central probabilities. Independent
-    # per-sector shifts would silently change those probabilities.
-    shift = min(e.min() for e,_,_ in spectra)
-    terms = []
-    for energies,vecs,dims in spectra:
-        weights = np.exp(-(energies-shift))
-        if np.any(weights == 0):
-            raise ValueError("Gibbs sector underflow; faithful-state precision is insufficient")
-        terms.append((weights,vecs,dims))
-    z_total = sum(w.sum() for w,_,_ in terms)
-    if any(np.any(w/z_total == 0) for w,_,_ in terms):
-        raise ValueError("normalized Gibbs sector underflow; precision is insufficient")
-    return [(float(w.sum()/z_total), faithful_density_matrix((v*(w/w.sum()))@dagger(v)), dims)
-            for w,v,dims in terms]
+        if len(dims) != 4 or np.shape(operator) != (prod(dims),)*2:
+            raise ValueError("sector Hamiltonian and subsystem dimensions must match")
+        operators.append(operator)
+        shapes.append(dims)
+    return [(p, state, dims) for (p, state), dims in
+            zip(gibbs_sectors(operators, central_energies, beta), shapes)]
 
 
 def one_sided_hamiltonian(rng: np.random.Generator,

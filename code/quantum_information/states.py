@@ -15,6 +15,8 @@ ATOL = 1e-12
 
 
 def finite_real_scalar(value, name="value"):
+    if np.ma.is_masked(value):
+        raise ValueError(f"{name} must not be masked or missing")
     raw = np.asarray(value)
     if raw.ndim != 0 or raw.dtype.kind not in "iuf" or not np.isfinite(raw):
         raise ValueError(f"{name} must be a finite real scalar")
