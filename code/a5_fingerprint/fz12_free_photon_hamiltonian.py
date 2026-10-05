@@ -174,9 +174,15 @@ def unit_edge_directions() -> np.ndarray:
 
 
 def lambda_hat(q: np.ndarray | float, projections: np.ndarray) -> np.ndarray:
+    """Evaluate the exact symbol without subtracting nearly equal cosines.
+
+    The half-angle form retains the quadratic long-wavelength limit even
+    when ``cos(q * projection)`` would round to one in binary64.
+    """
+
     values = np.asarray(q, dtype=np.float64)
-    return 6.0 * np.mean(
-        1.0 - np.cos(values[..., np.newaxis] * projections), axis=-1
+    return 12.0 * np.mean(
+        np.sin(values[..., np.newaxis] * projections / 2.0) ** 2, axis=-1
     )
 
 
