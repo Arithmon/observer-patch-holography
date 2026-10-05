@@ -30,9 +30,18 @@ Implements finite-stage witnesses for The spacetime and Einstein paper's subsect
 from __future__ import annotations
 
 import itertools
+import sys
+from pathlib import Path
 
 import numpy as np
-from scipy.linalg import expm, logm
+from scipy.linalg import expm
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from quantum_information import (
+    conditional_mutual_information, density_matrix, dimensions, direct_sum_state,
+    faithful_log, one_sided_projection, partial_trace, probabilities, von_neumann_entropy,
+)
 
 TOL = 1e-9
 
@@ -54,33 +63,15 @@ def site_op(op: np.ndarray, site: int, n: int) -> np.ndarray:
     return kron(*[op if i == site else I2 for i in range(n)])
 
 
-def partial_trace(rho: np.ndarray, dims: list[int], keep: list[int]) -> np.ndarray:
-    n = len(dims)
-    keep = sorted(keep)
-    rho = rho.reshape(dims + dims)
-    traced = [i for i in range(n) if i not in keep]
-    for cnt, i in enumerate(sorted(traced, reverse=True)):
-        rho = np.trace(rho, axis1=i, axis2=i + n - cnt)
-        n_now = n - cnt  # bookkeeping only
-        del n_now
-    d = int(np.prod([dims[i] for i in keep])) if keep else 1
-    return rho.reshape(d, d)
-
-
-def von_neumann_entropy(rho: np.ndarray) -> float:
-    evals = np.linalg.eigvalsh(rho)
-    evals = evals[evals > 1e-14]
-    return float(-np.sum(evals * np.log(evals)))
-
-
 # ---------------------------------------------------------------------------
 # stagewise standardness (finite part of thm:null-net-standardness)
 # ---------------------------------------------------------------------------
 
 def gns_vector(rho: np.ndarray) -> np.ndarray:
     """Omega = vec(sqrt(rho)) in H (x) H; the algebra acts as a (x) 1."""
+    rho = density_matrix(rho)
     evals, vecs = np.linalg.eigh(rho)
-    evals = np.clip(evals, 0.0, None)
+    evals = np.maximum(evals, 0.0)
     sqrt_rho = vecs @ np.diag(np.sqrt(evals)) @ vecs.conj().T
     return sqrt_rho.reshape(-1)
 
@@ -166,45 +157,38 @@ def commutant_cyclicity_implies_separating(d: int, seed: int = 7) -> tuple[bool,
 
 def markov_chain_state(dims_a: int, dims_bl: int, dims_br: int, dims_c: int,
                        weights: list[float], seed: int = 11) -> np.ndarray:
-    """Exact quantum Markov state rho = sum_k p_k rho^k_{A bL} (x) rho^k_{bR C}
-    on A (x) (bL (x) bR) (x) C (single-block collar factorization per k, with
-    the direct sum realized as classical mixing on a block label carried by
-    the collar; here one block suffices for the locality receipt, several
-    weights give the general mixed case on aligned supports)."""
+    """Exact Markov state with the sector label retained in the collar.
+
+    Output tensor order is A, (sector x bL), bR, C; the second dimension is
+    len(weights)*dims_bl. For one sector this is the historical tensor order.
+    Ordinary mixing after discarding the sector label need not be Markov.
+    """
+    da, dl, dr, dc = dimensions((dims_a, dims_bl, dims_br, dims_c))
+    weights = probabilities(weights)
     rng = np.random.default_rng(seed)
 
-    def random_state(d: int) -> np.ndarray:
-        m = rng.normal(size=(d, d)) + 1j * rng.normal(size=(d, d))
-        rho = m @ m.conj().T + 0.1 * np.eye(d)
-        return rho / np.trace(rho)
+    def random_state(d):
+        m = rng.normal(size=(d, d)) + 1j*rng.normal(size=(d, d))
+        rho = m @ m.conj().T + 0.1*np.eye(d)
+        return rho/np.trace(rho)
 
-    total = None
-    for w in weights:
-        left = random_state(dims_a * dims_bl)
-        right = random_state(dims_br * dims_c)
-        term = w * np.kron(left, right)
-        total = term if total is None else total + term
-    return total / np.trace(total)
+    sectors = [np.kron(random_state(da*dl), random_state(dr*dc)) for _ in weights]
+    # Direct sum is ordered (sector,A,bL,bR,C); put the retained label in B.
+    count = len(weights)
+    rho = direct_sum_state(weights, sectors).reshape((count,da,dl,dr,dc)*2)
+    order = (1,0,2,3,4,6,5,7,8,9)
+    size = count*da*dl*dr*dc
+    return rho.transpose(order).reshape(size,size)
 
 
 def modular_hamiltonian(rho: np.ndarray) -> np.ndarray:
-    return -logm(rho + 1e-300 * np.eye(rho.shape[0]))
+    return -faithful_log(rho)
 
 
 def one_sided_split_defect(k_matrix: np.ndarray, d_left: int, d_right: int) -> float:
-    """Distance of K to h_L (x) 1 + 1 (x) h_R (the Markov split of the theorem):
-    zero iff K contains no cross terms between the two factors."""
-    d = d_left * d_right
-    k = k_matrix.reshape(d_left, d_right, d_left, d_right)
-    h_l = np.trace(k, axis1=1, axis2=3) / d_right
-    h_r = np.trace(k, axis1=0, axis2=2) / d_left
-    trace_part = np.trace(k_matrix) / d
-    split = (
-        np.kron(h_l - np.trace(h_l) / d_left * np.eye(d_left), np.eye(d_right))
-        + np.kron(np.eye(d_left), h_r - np.trace(h_r) / d_right * np.eye(d_right))
-        + trace_part * np.eye(d)
-    )
-    return float(np.linalg.norm(k_matrix - split, 2))
+    """Distance to the one-sided sum in one declared tensor-product sector."""
+    split = one_sided_projection(k_matrix,d_left,d_right)
+    return float(np.linalg.norm(k_matrix-split,2))
 
 
 def markov_modular_split_receipt(seed: int = 11, beta: float = 1.0,
@@ -287,12 +271,8 @@ def endpoint_coupling_norm(k_matrix: np.ndarray, n: int) -> float:
 
 def collar_cmi(rho: np.ndarray, dims: list[int], a: list[int], b: list[int],
                c: list[int]) -> float:
-    """I(A:C|B) = S(AB) + S(BC) - S(B) - S(ABC)."""
-    s_ab = von_neumann_entropy(partial_trace(rho, dims, a + b))
-    s_bc = von_neumann_entropy(partial_trace(rho, dims, b + c))
-    s_b = von_neumann_entropy(partial_trace(rho, dims, b))
-    s_abc = von_neumann_entropy(partial_trace(rho, dims, a + b + c))
-    return float(s_ab + s_bc - s_b - s_abc)
+    """I(A:C|B), with valid, disjoint subsystem indices."""
+    return conditional_mutual_information(rho, dims, a, b, c)
 
 
 def gibbs_nonlocality_witness(beta: float = 1.0, g: float = 1.0) -> dict[str, float]:

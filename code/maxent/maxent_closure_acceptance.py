@@ -36,9 +36,17 @@ from __future__ import annotations
 
 import json
 import math
+import sys
 from pathlib import Path
 
 import numpy as np
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from quantum_information import (
+    faithful_density_matrix, finite_real_scalar, partial_trace,
+    relative_entropy as _relative_entropy,
+)
 
 HERE = Path(__file__).resolve().parent
 
@@ -78,38 +86,55 @@ def independent_operator_count(operators: list[np.ndarray]) -> int:
     return int(np.linalg.matrix_rank(gram, tol=1e-9)) - 1
 
 
+def constrained_hamiltonian(constraints, lam):
+    """Reject missing multipliers and invalid observables before summing."""
+    if not constraints:
+        raise ValueError("nonempty constraint family required")
+    multipliers = np.asarray(lam)
+    if (multipliers.shape != (len(constraints),) or multipliers.dtype.kind not in "iuf"
+            or not np.all(np.isfinite(multipliers))):
+        raise ValueError("one finite real multiplier is required per constraint")
+    operators = [np.asarray(s, dtype=complex) for s in constraints]
+    shape = operators[0].shape
+    if len(shape) != 2 or shape[0] == 0 or shape[0] != shape[1]:
+        raise ValueError("square constraint operators required")
+    for s in operators:
+        if (s.shape != shape or not np.all(np.isfinite(s))
+                or np.linalg.norm(s-s.conj().T, ord="fro") > 1e-12):
+            raise ValueError("constraints must be finite Hermitian operators on one algebra")
+    with np.errstate(over="ignore",invalid="ignore"):
+        ham = sum(l*s for l,s in zip(multipliers,operators))
+    if not np.all(np.isfinite(ham)):
+        raise ValueError("constraint combination exceeds finite numerical range")
+    return ham
+
+
 def gibbs_state(constraints: list[np.ndarray], lam: np.ndarray) -> tuple[np.ndarray, float]:
     """omega(lambda) = exp(-sum_a lambda_a S_a)/Z and log Z, via eigendecomposition."""
-    ham = sum(l * s for l, s in zip(lam, constraints))
+    ham = constrained_hamiltonian(constraints, lam)
     energies, vectors = np.linalg.eigh(ham)
     shifted = energies - energies.min()
     weights = np.exp(-shifted)
+    if np.any(weights == 0):
+        raise ValueError("Gibbs spectrum underflow; faithful-state precision is insufficient")
     log_z = math.log(weights.sum()) - energies.min()
-    rho = (vectors * (weights / weights.sum())) @ vectors.conj().T
-    return rho, log_z
+    probs = weights/weights.sum()
+    if np.any(probs == 0):
+        raise ValueError("normalized Gibbs spectrum underflow; precision is insufficient")
+    rho = (vectors * probs) @ vectors.conj().T
+    return faithful_density_matrix(rho), log_z
 
 
 def decimate(rho: np.ndarray, n_sites: int) -> np.ndarray:
     """Partial trace over the odd sites of a ring, keeping sites 0, 2, 4, ..."""
-    if n_sites % 2:
+    if type(n_sites) is not int or n_sites <= 0 or n_sites % 2:
         raise ValueError("decimation channel needs an even number of fine sites")
-    tensor = rho.reshape([2] * (2 * n_sites))
-    for site in reversed(range(1, n_sites, 2)):
-        tensor = np.trace(tensor, axis1=site, axis2=site + tensor.ndim // 2)
-    kept = n_sites // 2
-    return tensor.reshape(2**kept, 2**kept)
+    return partial_trace(rho, [2]*n_sites, list(range(0,n_sites,2)))
 
 
 def relative_entropy(sigma: np.ndarray, rho: np.ndarray) -> float:
-    """D(sigma || rho) in nats; both states are full rank in this model."""
-    sig_e, sig_v = np.linalg.eigh(sigma)
-    rho_e, rho_v = np.linalg.eigh(rho)
-    sig_e = np.clip(sig_e.real, 1e-300, None)
-    rho_e = np.clip(rho_e.real, 1e-300, None)
-    log_rho = (rho_v * np.log(rho_e)) @ rho_v.conj().T
-    entropy_term = float(np.sum(sig_e * np.log(sig_e)))
-    cross_term = float(np.real(np.trace(sigma @ log_rho)))
-    return entropy_term - cross_term
+    """D(sigma || rho); preserve the historical keyword-argument convention."""
+    return _relative_entropy(sigma,rho)
 
 
 def trace_norm(delta: np.ndarray) -> float:
@@ -123,7 +148,7 @@ def duhamel_covariance(constraints: list[np.ndarray], lam: np.ndarray) -> np.nda
     operators together with the identity are linearly independent, which is the strict
     convexity input of the I-projection lemma.
     """
-    ham = sum(l * s for l, s in zip(lam, constraints))
+    ham = constrained_hamiltonian(constraints, lam)
     energies, vectors = np.linalg.eigh(ham)
     shifted = energies - energies.min()
     probs = np.exp(-shifted)
@@ -133,7 +158,10 @@ def duhamel_covariance(constraints: list[np.ndarray], lam: np.ndarray) -> np.nda
         vectors.conj().T @ (s - np.real(np.trace(rho @ s)) * np.eye(s.shape[0])) @ vectors
         for s in constraints
     ]
-    logp = np.log(np.clip(probs, 1e-300, None))
+    if np.any(probs == 0):
+        raise ValueError("Gibbs spectrum underflow; faithful-state precision is insufficient")
+    faithful_density_matrix(rho)
+    logp = np.log(probs)
     pi, pj = np.meshgrid(probs, probs, indexing="ij")
     li, lj = np.meshgrid(logp, logp, indexing="ij")
     with np.errstate(divide="ignore", invalid="ignore"):
@@ -154,8 +182,21 @@ def i_projection(
     The objective is log Z(lambda') + sum_a lambda'_a <S_a>_sigma (strictly convex); its
     gradient is the moment mismatch <S_a>_sigma - <S_a>_{omega(lambda')} and its Hessian
     is the Duhamel covariance, so the minimizer is the moment-matching multiplier vector.
-    Returns (lambda*, final gradient norm).
+    Requires a faithful target and constraints independent modulo identity.
+    Returns (lambda*, final gradient norm); failure to converge raises.
     """
+    sigma = faithful_density_matrix(sigma)
+    constraints = [np.asarray(s,dtype=complex) for s in constraints]
+    ham = constrained_hamiltonian(constraints, np.zeros(len(constraints)))
+    if ham.shape != sigma.shape:
+        raise ValueError("target and constraints must use the same algebra")
+    if independent_operator_count(constraints) != len(constraints):
+        raise ValueError("constraints must be independent modulo identity")
+    tol = finite_real_scalar(tol, "convergence tolerance")
+    if tol <= 0:
+        raise ValueError("finite positive convergence tolerance required")
+    if type(max_iter) is not int or max_iter <= 0:
+        raise ValueError("positive integer iteration budget required")
     targets = np.array([float(np.real(np.trace(sigma @ s))) for s in constraints])
 
     def objective(lam: np.ndarray) -> float:
@@ -177,7 +218,10 @@ def i_projection(
         lam = lam + scale * step
     rho, _ = gibbs_state(constraints, lam)
     moments = np.array([float(np.real(np.trace(rho @ s))) for s in constraints])
-    return lam, float(np.linalg.norm(targets - moments))
+    residual = float(np.linalg.norm(targets - moments))
+    if not np.isfinite(residual) or residual >= tol:
+        raise RuntimeError("information projection did not converge within its budget")
+    return lam, residual
 
 
 def run_lattice_pair(n_fine: int, lam_fine: np.ndarray) -> dict:

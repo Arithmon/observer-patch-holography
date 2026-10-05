@@ -32,9 +32,18 @@ Implements finite witnesses for The spacetime and Einstein paper's subsection
 from __future__ import annotations
 
 import itertools
+import sys
+from pathlib import Path
 
 import numpy as np
 from scipy.linalg import expm, logm
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from quantum_information import (
+    density_matrix, dimensions, direct_sum_state, probabilities, shannon_entropy,
+    von_neumann_entropy as entropy,
+)
 
 ETA = np.diag([-1.0, 1.0, 1.0, 1.0])
 
@@ -136,23 +145,11 @@ def random_faithful(dim: int, rng: np.random.Generator) -> np.ndarray:
 def blockwise_state(ps: list[float], bulk_states: list[np.ndarray],
                     edge_dims: list[int]) -> np.ndarray:
     """Build oplus_a p_a (rho_bulk,a tensor I_edge,a / d_a)."""
+    edge_dims = dimensions(edge_dims)
     if not (len(ps) == len(bulk_states) == len(edge_dims)):
         raise ValueError("ps, bulk_states, and edge_dims must have equal length")
-    if any(d <= 0 for d in edge_dims):
-        raise ValueError("edge dimensions must be positive")
-
-    blocks = [
-        p * np.kron(rho_bulk, np.eye(d_edge) / d_edge)
-        for p, rho_bulk, d_edge in zip(ps, bulk_states, edge_dims)
-    ]
-    dim = sum(b.shape[0] for b in blocks)
-    out = np.zeros((dim, dim), dtype=complex)
-    i = 0
-    for b in blocks:
-        d = b.shape[0]
-        out[i:i + d, i:i + d] = b
-        i += d
-    return out
+    return direct_sum_state(ps, [np.kron(density_matrix(rho), np.eye(d)/d)
+                                for rho, d in zip(bulk_states, edge_dims)])
 
 
 def central_z(bulk_dims: list[int], edge_dims: list[int],
@@ -171,28 +168,20 @@ def central_z(bulk_dims: list[int], edge_dims: list[int],
     return out
 
 
-def entropy(rho: np.ndarray) -> float:
-    evals = np.linalg.eigvalsh(rho)
-    evals = evals[evals > 1e-14]
-    return float(-np.sum(evals * np.log(evals)))
-
-
-def shannon_entropy(ps: list[float]) -> float:
-    probabilities = np.asarray(ps, dtype=float)
-    positive = probabilities[probabilities > 0.0]
-    return float(-np.sum(positive * np.log(positive)))
-
-
 def bulk_entropy(ps: list[float], bulk_states: list[np.ndarray]) -> float:
     """H(p) + sum_a p_a S(rho_bulk,a), including the central Shannon term."""
-    return shannon_entropy(ps) + sum(
-        p * entropy(rho_bulk) for p, rho_bulk in zip(ps, bulk_states)
-    )
+    ps = probabilities(ps)
+    if len(ps) != len(bulk_states):
+        raise ValueError("one bulk state is required per sector weight")
+    return shannon_entropy(ps) + sum(p*entropy(rho) for p,rho in zip(ps,bulk_states))
 
 
 def edge_entropy(ps: list[float], edge_dims: list[int]) -> float:
-    """sum_a p_a log d_a; the Shannon term belongs to ``bulk_entropy``."""
-    return float(np.dot(np.asarray(ps, dtype=float), np.log(edge_dims)))
+    """sum_a p_a log d_a; the Shannon term belongs to bulk_entropy."""
+    ps, edge_dims = probabilities(ps), dimensions(edge_dims)
+    if len(ps) != len(edge_dims):
+        raise ValueError("one edge dimension is required per sector weight")
+    return float(np.dot(ps,np.log(edge_dims)))
 
 
 def first_law_receipt(z_weights: list[float] | None = None,

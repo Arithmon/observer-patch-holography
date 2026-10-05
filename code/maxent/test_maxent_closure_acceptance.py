@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -72,9 +73,70 @@ def test_full_acceptance_run_passes() -> None:
     assert results["all_checks_pass"], results["checks"]
 
 
+@pytest.mark.parametrize("lam", ([.5], [.5,.2,.1], [np.nan,.2], [True,False]))
+def test_gibbs_cannot_silently_drop_or_corrupt_constraints(lam):
+    constraints=global_sum_constraints(3)
+    for operation in (gibbs_state,duhamel_covariance):
+        with pytest.raises(ValueError):
+            operation(constraints,np.asarray(lam))
+
+
+def test_projection_rejects_nonunique_parameters_and_invalid_target():
+    identity=np.eye(2)
+    with pytest.raises(ValueError,match="independent"):
+        i_projection(identity/2,[identity,identity])
+    with pytest.raises(ValueError):
+        i_projection(np.diag([1.1,-.1]),[np.diag([1.,-1.])])
+
+
+def test_projection_budget_does_not_return_an_unconverged_minimizer():
+    constraints=global_sum_constraints(3)
+    sigma,_=gibbs_state(constraints,np.array([.7,.4]))
+    with pytest.raises(RuntimeError,match="converge"):
+        i_projection(sigma,constraints,max_iter=1)
+    with pytest.raises(ValueError):
+        i_projection(sigma,constraints,max_iter=0)
+
+
+def test_gibbs_underflow_is_not_silently_regularized():
+    for operation in (gibbs_state,duhamel_covariance):
+        with pytest.raises(ValueError,match="underflow"):
+            operation([np.diag([0.,1.])],np.array([1000.]))
+
+
+def test_legacy_relative_entropy_keyword_order_is_preserved():
+    state,reference=np.diag([.8,.2]),np.diag([.3,.7])
+    expected=.8*np.log(.8/.3)+.2*np.log(.2/.7)
+    assert relative_entropy(sigma=state,rho=reference) == pytest.approx(expected)
+    assert abs(relative_entropy(sigma=reference,rho=state)-expected) > .01
+
+
+def test_finite_inputs_cannot_overflow_into_a_nan_state():
+    with pytest.raises(ValueError,match="numerical range"):
+        gibbs_state([np.diag([1e308,0.])],np.array([1e308]))
+
+
+def test_gibbs_normalization_cannot_erase_a_subnormal_positive_weight():
+    with pytest.raises(ValueError,match="underflow"):
+        gibbs_state([np.diag([0.,0.,0.,745.])],np.array([1.]))
+
+
+def test_gibbs_reconstruction_cannot_erase_a_faithful_direction():
+    # Neither exp(-60) nor its normalization underflows. Adding it to the
+    # dominant rotated eigenspace loses it when the dense state is formed.
+    x=np.array([[0.,1.],[1.,0.]])
+    for operation in (gibbs_state,duhamel_covariance):
+        with pytest.raises(ValueError,match="faithful"):
+            operation([x],np.array([30.]))
+    rho,_=gibbs_state([np.diag([0.,60.])],np.array([1.]))
+    assert rho[1,1] == pytest.approx(np.exp(-60),rel=1e-14,abs=0)
+
+
+@pytest.mark.parametrize("bad", (1j,1+0j,np.bool_(True),True,np.nan,np.inf,[1.]))
+def test_projection_rejects_nonreal_or_nonscalar_tolerance(bad):
+    with pytest.raises(ValueError,match="finite real scalar"):
+        i_projection(np.eye(2)/2,[np.diag([1.,-1.])],tol=bad)
+
+
 if __name__ == "__main__":
-    for name, fn in sorted(globals().items()):
-        if name.startswith("test_") and callable(fn):
-            fn()
-            print(f"PASS  {name}")
-    print("all tests passed")
+    raise SystemExit(pytest.main([__file__, "-v"]))

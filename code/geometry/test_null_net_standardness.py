@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -109,7 +110,7 @@ def test_gibbs_nonlocality_witness():
 
 def test_reduced_modular_hamiltonian_is_defined():
     rho = markov_chain_state(2, 2, 2, 2, weights=[0.5, 0.5], seed=3)
-    rho_i = partial_trace(rho, [2, 2, 2, 2], keep=[0, 1])
+    rho_i = partial_trace(rho, [2, 4, 2, 2], keep=[0, 1])
     k_i = modular_hamiltonian(rho_i)
     assert np.allclose(k_i, k_i.conj().T, atol=1e-9)
 
@@ -125,3 +126,47 @@ def test_assembly_lie_algebra_receipts():
     assert r["linearity"] < 1e-9             # dependent null families assemble
     assert r["dual_cone_inside_min"] > 0.0   # future cone dual positivity
     assert r["dual_cone_outside_min"] < 0.0  # spacelike vectors excluded
+
+
+@pytest.mark.parametrize("dims,weights,seed", (
+    ((2,2,2,2),[.5,.5],3), ((2,1,3,2),[.2,.3,.5],11),
+))
+def test_multiple_markov_sectors_retain_their_collar_label(dims,weights,seed):
+    from null_net_standardness import collar_cmi
+    rho=markov_chain_state(*dims,weights=weights,seed=seed)
+    da,dl,dr,dc=dims
+    count=len(weights)
+    assert rho.shape==(count*da*dl*dr*dc,)*2
+    assert abs(collar_cmi(rho,[da,count*dl,dr,dc],[0],[1,2],[3])) < 1e-12
+    # Reproduce the former bug by actually tracing out the label.
+    erased=partial_trace(rho,[da,count,dl,dr,dc],[0,2,3,4])
+    assert collar_cmi(erased,list(dims),[0],[1,2],[3]) > 1e-3
+
+
+@pytest.mark.parametrize("weights", ([],[-.5,1.5],[0,0],[.5,.6],[float('nan')]))
+def test_markov_constructor_rejects_invalid_sector_weights(weights):
+    with pytest.raises(ValueError):
+        markov_chain_state(2,2,2,2,weights=weights)
+
+
+def test_modular_hamiltonian_cannot_floor_singular_reference():
+    with pytest.raises(ValueError,match="faithful"):
+        modular_hamiltonian(np.diag([1.,0.]))
+
+
+
+def test_multisector_markov_split_is_blockwise_not_a_global_product():
+    from collar_alignment.msa_characterizations import modular_splitting_defect, takesaki_defect
+    from null_net_standardness import collar_cmi
+    weights=[.5,.5]
+    rho=markov_chain_state(2,2,2,2,weights,seed=3)
+    tensor=rho.reshape((2,2,2,2,2)*2)  # A,J,bL,bR,C, then the bra indices
+    blocks=[]
+    for j,p in enumerate(weights):
+        block=tensor[:,j,:,:,:,:,j,:,:,:].reshape(16,16)/p
+        blocks.append((p,block,(2,2,2,2)))
+    assert abs(collar_cmi(rho,[2,4,2,2],[0],[1,2],[3])) < 1e-12
+    assert modular_splitting_defect(blocks) < 1e-12
+    assert takesaki_defect(blocks) < 1e-12
+    # Forgetting the central decomposition changes the question being checked.
+    assert one_sided_split_defect(modular_hamiltonian(rho),8,4) > .1
