@@ -444,3 +444,90 @@ def test_shape_fit_retains_a_resolved_tiny_residual():
     r = _shape_fit([1, 1e-200], [1, 0])
     assert r["normalization_alpha"] == 1
     assert r["relative_residual"] == pytest.approx(1e-200, rel=1e-14, abs=0)
+
+
+@pytest.mark.parametrize("scale", [np.nextafter(0., 1.), 1e-320, 1e-200, 1., 1e200, 1.7e308])
+def test_complex_packet_magnitude_and_global_phase_do_not_change_leakage(scale):
+    ha = np.array([[0., 0, 1], [0, 1, 0], [1, 0, 0]])
+    packet = np.array([complex(scale, scale), complex(scale, -scale)])
+    r = modular_subspace_diagnostic(ha, np.zeros((2, 2)), 0.4, packet)
+    expected = np.sin(0.4) ** 2 / 2
+    assert r["leakage_plus"] == pytest.approx(expected, rel=1e-14, abs=0)
+    assert r["leakage_minus"] == pytest.approx(expected, rel=1e-14, abs=0)
+    json.dumps(r, allow_nan=False)
+
+
+def test_subnormal_hermitian_generator_survives_reciprocal_time_scaling():
+    # The imaginary Pauli generator tests complex validation and flow, with
+    # a matrix scale below the reciprocal-overflow threshold.
+    h = np.array([[0, -1j * 1e-310], [1j * 1e-310, 0]])
+    r = modular_subspace_diagnostic(h, np.zeros((1, 1)), 1e308, [1])
+    expected = np.sin(1e-310 * 1e308) ** 2
+    assert r["max_subspace_leakage_plus"] == pytest.approx(expected, rel=1e-14, abs=0)
+    assert r["max_subspace_leakage_minus"] == pytest.approx(expected, rel=1e-14, abs=0)
+
+
+def test_packet_with_unresolvable_component_range_is_rejected():
+    with pytest.raises(ValueError, match="dynamic range"):
+        modular_subspace_diagnostic(np.eye(3), np.eye(2), 1, [1e-300, 1e300])
+
+
+@pytest.mark.parametrize("value", [2**53 + 1, True, float("inf"), float("nan")])
+def test_numeric_components_cannot_hide_invalid_data_in_complex_arrays(value):
+    with pytest.raises(ValueError):
+        embed([[value, 1j], [-1j, 0]], 3)
+    with pytest.raises(ValueError):
+        modular_subspace_diagnostic(np.eye(3), np.eye(2), 1, [value, 1j])
+
+
+def test_shape_result_replays_returned_coefficient_against_original_samples():
+    # Rounded subnormal alpha is not the mathematical minimizer. Its returned
+    # residual must include this representational error.
+    m, g = [1e-20, 2e-20], [1e300, 2e300]
+    r = _shape_fit(m, g)
+    error = sum((Fraction(x) - Fraction(r["normalization_alpha"])*Fraction(y))**2
+                for x, y in zip(m, g))
+    exact = error / sum(Fraction(x)**2 for x in m)
+    assert exact == Fraction(r["relative_residual_squared_exact"])
+    assert r["relative_residual"] > 1e-5
+    assert r["relative_residual"] == pytest.approx(float(exact)**0.5, rel=2e-15, abs=0)
+
+
+def test_shape_fit_against_high_precision_independent_projection():
+    import mpmath as mp
+    rng = np.random.default_rng(1044)
+    with mp.workdps(400):
+        for exponent in (-300, -100, 0, 100, 300):
+            for _ in range(4):
+                m = rng.normal(size=9) * 10.**exponent
+                g = rng.normal(size=9)
+                r = _shape_fit(m, g)
+                mv, gv = mp.matrix(m.tolist()), mp.matrix(g.tolist())
+                alpha = float(mp.fdot(mv, gv) / mp.fdot(gv, gv))
+                error = mv - mp.mpf(alpha) * gv
+                residual = float(mp.norm(error) / mp.norm(mv))
+                assert r["normalization_alpha"] == alpha
+                assert r["relative_residual"] == pytest.approx(residual, rel=2e-15, abs=0)
+
+
+def test_shape_display_does_not_supply_the_acceptance_boundary():
+    # Equal-scale subnormal normalizations are valid, and the exact replay
+    # remains available even when a displayed norm rounds at a threshold.
+    r = _shape_fit([1., np.nextafter(1., 2.)], [1., 1.])
+    assert Fraction(r["relative_residual_squared_exact"]) > 0
+    assert r["relative_residual"] > 0
+    with pytest.raises(ValueError):
+        _shape_fit([1e300, 1e-300], [1e300, 0])
+
+
+def test_finite_trend_and_displayed_zero_cannot_manufacture_closure(monkeypatch):
+    import null_net_receipts as module
+    # Inject false-looking printed residuals. Assembly must consume the
+    # independently exact shape decision, and cannot promote any rate.
+    def fake_lie(n):
+        return {"n_ring": n, "relative_residual": 0.,
+                "shape_below_two_percent": False}
+    monkeypatch.setattr(module, "lie_closure_receipt", fake_lie)
+    r = instrument_null_net((32,))
+    assert not r["verdicts"]["lie_closure_percent_level"]
+    assert not r["verdicts"]["lie_closure_rate_certified"]

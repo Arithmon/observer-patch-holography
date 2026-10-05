@@ -31,10 +31,12 @@ if __package__:
     from .modular_clock_instrumentation import (
         _validate_ring, arc_entanglement_hamiltonian, ring_correlation_value,
     )
+    from .null_tomography import _real_array, _sqrt_fraction
 else:
     from modular_clock_instrumentation import (
         _validate_ring, arc_entanglement_hamiltonian, ring_correlation_value,
     )
+    from null_tomography import _real_array, _sqrt_fraction
 
 HERE = Path(__file__).resolve().parent
 REPORT_PATH = HERE / "runs" / "null_net_receipt_report.json"
@@ -51,22 +53,44 @@ def _rings(rings: tuple[int, ...]) -> tuple[int, ...]:
     return rings
 
 
+def _numeric_array(value, name: str) -> np.ndarray:
+    """Reuse exact binary64 validation before mixed input can be promoted."""
+    raw = np.asarray(value, dtype=object)
+    if any(isinstance(x, (bool, np.bool_)) or not isinstance(
+            x, (int, float, complex, np.integer, np.floating, np.complexfloating))
+           for x in raw.flat):
+        raise ValueError(f"{name} must contain finite real or complex binary64 data")
+    if not any(isinstance(x, (complex, np.complexfloating)) for x in raw.flat):
+        return _real_array(raw, name)
+    result = np.empty(raw.shape, dtype=complex)
+    result.real = _real_array([x.real for x in raw.flat], name).reshape(raw.shape)
+    result.imag = _real_array([x.imag for x in raw.flat], name).reshape(raw.shape)
+    return result
+
+
+def _scaled_components(value: np.ndarray) -> tuple[np.ndarray, float]:
+    """Scale real components directly; complex division can overflow at 1e-320."""
+    scale = float(max(np.max(np.abs(value.real)), np.max(np.abs(value.imag))))
+    if scale == 0:
+        return value.copy(), scale
+    if np.iscomplexobj(value):
+        scaled = np.empty_like(value)
+        scaled.real, scaled.imag = value.real / scale, value.imag / scale
+    else:
+        scaled = value / scale
+    if (np.any((value.real != 0) & (scaled.real == 0))
+            or np.any((value.imag != 0) & (scaled.imag == 0))):
+        raise ValueError("component dynamic range is unresolved in binary64")
+    return scaled, scale
+
+
 def _matrix(value: np.ndarray, *, hermitian: bool = False) -> np.ndarray:
-    value = np.asarray(value)
+    value = _numeric_array(value, "matrix")
     if (value.ndim != 2 or value.shape[0] != value.shape[1]
-            or value.shape[0] == 0 or value.dtype.kind not in "fciu"
-            or not np.all(np.isfinite(value))):
+            or value.shape[0] == 0):
         raise ValueError("expected a finite numeric square matrix")
-    try:
-        with np.errstate(over="raise", invalid="raise"):
-            value = np.asarray(value, dtype=complex if np.iscomplexobj(value) else float)
-    except (FloatingPointError, OverflowError) as exc:
-        raise ValueError("matrix is outside the binary64 range") from exc
-    scale = float(np.max(np.abs(value)))
-    if not np.isfinite(scale):
-        raise ValueError("matrix magnitude is not representable")
-    if hermitian and scale:
-        normalized = value / scale
+    if hermitian:
+        normalized, _ = _scaled_components(value)
         if np.max(np.abs(normalized - normalized.conj().T)) > 64 * np.finfo(float).eps:
             raise ValueError("matrix must be Hermitian")
     return value
@@ -193,19 +217,16 @@ def modular_subspace_diagnostic(h_a: np.ndarray, h_b: np.ndarray,
         raise ValueError("B must be a nonempty proper subspace of A")
     if isinstance(t_mod, (bool, np.bool_)) or not isinstance(t_mod, Real):
         raise ValueError("modular time must be finite and positive")
-    t_mod = float(t_mod)
+    t_mod = float(_real_array(t_mod, "modular time"))
     if not np.isfinite(t_mod) or t_mod <= 0:
         raise ValueError("modular time must be finite and positive")
-    packet = np.asarray(packet)
-    if (packet.shape != (mb,) or packet.dtype.kind not in "fciu"
-            or not np.all(np.isfinite(packet))):
+    packet = _numeric_array(packet, "packet")
+    if packet.shape != (mb,):
         raise ValueError("packet must be a finite vector in B")
-    packet = np.asarray(packet, dtype=complex)
-    size = float(np.max(np.abs(packet)))
-    if not np.isfinite(size) or size == 0:
+    packet, size = _scaled_components(packet)
+    if size == 0:
         raise ValueError("packet must have a representable nonzero norm")
-    packet = packet / size
-    packet /= np.linalg.norm(packet)
+    packet = packet / np.linalg.norm(packet)
     h_b = embed(h_b, ma)
     rows = []
     for sign in (1, -1):
@@ -288,34 +309,27 @@ def momentum_profile(comm: np.ndarray, rmax: int | None = None) -> tuple[np.ndar
 
 
 def _shape_fit(measured: np.ndarray, target: np.ndarray) -> dict:
-    measured, target = np.asarray(measured), np.asarray(target)
-    if (measured.ndim != 1 or measured.size < 2 or target.shape != measured.shape
-            or measured.dtype.kind not in "fiu" or target.dtype.kind not in "fiu"
-            or not np.all(np.isfinite(measured)) or not np.all(np.isfinite(target))):
+    measured = _real_array(measured, "measured shape")
+    target = _real_array(target, "target shape")
+    if measured.ndim != 1 or measured.size < 2 or target.shape != measured.shape:
         raise ValueError("shape fit requires at least two finite real paired samples")
-    try:
-        with np.errstate(over="raise", invalid="raise"):
-            measured, target = measured.astype(float), target.astype(float)
-    except (FloatingPointError, OverflowError) as exc:
-        raise ValueError("shape samples are outside the binary64 range") from exc
-    sm, st = float(np.max(np.abs(measured))), float(np.max(np.abs(target)))
-    if sm == 0 or st == 0:
+    m, g = list(map(Fraction, measured)), list(map(Fraction, target))
+    mm, gg = sum(x*x for x in m), sum(x*x for x in g)
+    if mm == 0 or gg == 0:
         raise ValueError("zero signal or target cannot support a shape fit")
-    m, g = measured / sm, target / st
-    alpha_scaled = float(np.dot(m, g) / np.dot(g, g))
-    # Avoid an overflowing/underflowing scale ratio when the final alpha is
-    # representable. Replay the RETURNED coefficient in normalized units.
+    exact_alpha = sum(x*y for x, y in zip(m, g)) / gg
+    # The fit is one scalar, so exact products are cheap. Replay the returned
+    # coefficient on the original samples, including subnormal differences.
     try:
-        alpha = float(Fraction(sm) * Fraction(alpha_scaled) / Fraction(st))
-        replay_weight = float(Fraction(alpha) * Fraction(st) / Fraction(sm))
+        alpha = float(exact_alpha)
     except OverflowError as exc:
         raise ValueError("shape normalization is numerically unresolved") from exc
-    if alpha == 0 and alpha_scaled != 0:
+    if alpha == 0 and exact_alpha != 0:
         raise ValueError("shape normalization is numerically unresolved")
-    residual = float(np.linalg.norm(m - replay_weight * g) / np.linalg.norm(m))
-    if not np.isfinite(alpha) or not np.isfinite(residual):
-        raise ValueError("shape fit is numerically unresolved")
-    return {"relative_residual": residual, "normalization_alpha": alpha}
+    squared = sum((x - Fraction(alpha)*y)**2 for x, y in zip(m, g)) / mm
+    return {"relative_residual": _sqrt_fraction(squared),
+            "relative_residual_squared_exact": str(squared),
+            "normalization_alpha": alpha}
 
 
 def lie_closure_receipt(n_ring: int, rmax: int | None = None) -> dict:
@@ -356,7 +370,10 @@ def lie_closure_receipt(n_ring: int, rmax: int | None = None) -> dict:
     return {
         "n_ring": n_ring, "scope": "normalized scalar envelope fit only",
         "rmax": rmax, "all_even_ranges": rmax is None,
-        "fit_sample_count": len(idx), **fitted,
+        "fit_sample_count": len(idx),
+        "relative_residual": fitted["relative_residual"],
+        "normalization_alpha": fitted["normalization_alpha"],
+        "shape_below_two_percent": Fraction(fitted["relative_residual_squared_exact"]) < Fraction(1, 50)**2,
         "relative_residual_unresummed_control": control["relative_residual"],
         "relative_residual_r8_control": old["relative_residual"],
         "omitted_envelope_bound_max": float(np.max(tail[idx])),
@@ -387,7 +404,8 @@ def instrument_null_net(rings: tuple[int, ...] = (16, 32, 64)) -> dict:
         "packet_asymmetry_min_ratio": min(ratios) if all(r is not None for r in ratios) else None,
         "packet_direction_consistent": len(signs) == 1 and None not in signs,
         "lie_closure_residuals": lie_res,
-        "lie_closure_percent_level": bool(lie_res) and all(r < 0.02 for r in lie_res),
+        "lie_closure_percent_level": bool(lie) and all(
+            row["shape_below_two_percent"] for row in lie),
         "lie_closure_residuals_decreasing": len(lie_res) > 1 and all(a > b for a, b in zip(lie_res, lie_res[1:])),
         "lie_closure_rate_certified": False,
     }

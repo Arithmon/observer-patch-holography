@@ -103,9 +103,10 @@ For `x=pi/N<=pi/8`, `x-x^3/6<=sin x<=x`. Therefore
 
 The second inequality uses `3<pi<22/7` and monotonicity in the nonnegative
 argument a. `B_N` is an exact rational, tends to zero, and is less than
-`3/N` for N>=8. For example, `a_N<2/N^2` makes the latter inequality
-equivalent to `a_N(2N/3+3)<1`, which already holds at N=8 and decreases
-thereafter. Consequently `|E_N-E_M|<=B_N+B_M<3/N+3/M`. This controls every
+`3/N` for N>=8. The latter inequality is equivalent to
+`a_N(2N/3+3)<1`; using `a_N<2/N^2` bounds its left side by
+`4/(3N)+6/N^2`, already below one at N=8 and decreasing thereafter.
+Consequently `|E_N-E_M|<=B_N+B_M<3/N+3/M`. This controls every
 allowed pair, not only a sampled decreasing sequence. In particular,
 stages above `6/epsilon` are Cauchy to epsilon for this observable.
 
@@ -229,6 +230,46 @@ rate or an operator relation. Empty sample families cannot pass, fewer than
 two fit coordinates or zero/nonfinite signals are rejected, and no finite
 trend is promoted to a convergence-rate certificate.
 
+## Numerical follow-up audit
+
+An adversarial review of PR head `e732046f` found two additional failure
+classes, reproduced by six failing regression cases before their repair:
+
+* Dividing a complex packet by a subnormal scale, such as `1e-320`, can
+  overflow NumPy's internal reciprocal and return NaN leakage. The same
+  operation in the Hermitian check produced NaN comparisons, admitting
+  `[[0,1e-320],[0,0]]` as a complex Hermitian matrix.
+* Input promotion converted the unequal integers `2^53` and `2^53+1` into
+  equal doubles, yielding a falsely perfect scalar fit. Squaring the
+  residual of `measured=[1,1e-200]`, `target=[1,0]` also returned zero
+  although its relative norm is representable near `1e-200`.
+
+The repair scales the real and imaginary components separately. It supports
+packets from the smallest binary64 subnormal through components of magnitude
+`1.7e308`, including complex magnitudes that overflow if formed directly.
+Unresolvable component dynamic ranges fail explicitly. The Hermitian guard
+uses a `64*eps` tolerance after component scaling and the flow retains its
+separate numerical unitarity check; neither tolerance proves an exact identity.
+
+Input validation and rational-norm conversion reuse the audited primitives
+in `null_tomography.py`. They inspect original sequence elements before
+promotion, reject booleans, nonfinite values and lossy conversion, and retain
+representable small results. For the one-scalar shape fit, compute the exact
+rational least-squares coefficient of the supplied binary samples, round
+that coefficient once, and replay the **returned** coefficient against the
+original samples. Both squared residual and squared measured norm are
+computed exactly. The diagnostic threshold compares their ratio directly
+to `(1/50)^2`; it never compares an underflowed or rounded displayed norm.
+The displayed norm is still a numerical square root. The exact ratio concerns
+the given binary samples, not eigensolver, envelope-construction or continuum
+error. An unrepresentable nonzero coefficient or norm is rejected.
+
+Independent 400-digit projection controls cover twenty scaled data sets;
+analytic Pauli evolution checks the subnormal complex flow. The rounded
+subnormal-coefficient regression separately checks that representation error
+is included in the returned residual. The default ring conclusions and
+reported precision-level agreement remain unchanged after these repairs.
+
 ## Contract, custody and downstream impact
 
 The public function names and report path remain for existing callers, but
@@ -245,7 +286,8 @@ Ring families must be nonempty, valid and strictly increasing. Full report
 rings are divisible by eight; the standalone covariance and bond helpers
 also accept multiples of four. Lie fits require N>=32 and divisibility by
 eight. Invalid or unresolved numerical inputs fail; JSON rejects NaN and
-infinity. Modular generators retain the supplied model and 120-digit
+infinity. Matrix, packet, time and fit inputs must be exactly representable
+as finite real or complex binary64 components. Modular generators retain the supplied model and 120-digit
 eigendecomposition, rounded to binary64. No physical clock is attached.
 
 `claims/claim_registry.yaml` cites this report under
@@ -284,9 +326,9 @@ nonfinite inputs, and full schema/numerical replay of the generated report.
 The proofs above supply the general statements; finite tests support their
 implementation and do not substitute for those proofs.
 
-Local validation on the final implementation: **688 Linux tests passed;
-683 Windows tests passed with five expected extended-exponent platform
-skips**, with warnings treated as errors. The null-net module has 71 tests.
+Local validation after the follow-up audit: **710 Linux tests passed;
+705 Windows tests passed with five expected extended-exponent platform
+skips**, with warnings treated as errors. The null-net module has 93 tests.
 Claim-registry, axiom-consistency and reader-style checks pass. The unchanged
 Lean trust-inventory checker passes on Linux; on Windows it reports a path
 separator mismatch (`Screen\\...` versus `Screen/...`), not a changed proof
