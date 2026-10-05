@@ -51,10 +51,12 @@ def _scaled(a, scale):
 
 
 def _observables(constraints):
-    """Return S_a = offset_a I + scale_a C_a with bounded traceless C_a.
+    """Return S_a = (anchor_a + mean_a) I + scale_a C_a.
 
 Subtract a diagonal anchor before scaling: a huge scalar must neither erase
 off-diagonal entries nor dominate the Hermiticity check on the variation.
+Retain the anchor and remaining mean separately until all scalar energies
+are summed: other anchors can cancel and expose a much smaller mean.
 """
     if not isinstance(constraints, (list, tuple)) or not constraints:
         raise ValueError("nonempty constraint family required")
@@ -77,7 +79,7 @@ off-diagonal entries nor dominate the Hermiticity check on the variation.
         if scale == 0:
             centered.append(b)
             scales.append(1.)
-            offsets.append(anchor)
+            offsets.append((anchor, 0.))
             continue
         b = _scaled(b, scale)
         if np.linalg.norm(b-b.conj().T) > 1e-12:
@@ -87,7 +89,7 @@ off-diagonal entries nor dominate the Hermiticity check on the variation.
         b[np.diag_indices(d)] -= mean
         centered.append(b)
         scales.append(scale)
-        offsets.append(_finite(anchor + scale*mean, "observable offset"))
+        offsets.append((anchor, _finite(scale*mean, "observable offset")))
     return centered, np.array(scales), np.array(offsets)
 
 
@@ -116,12 +118,12 @@ def _hamiltonian_parts(constraints, lam):
     lam = _multipliers(lam, len(centered))
     with np.errstate(over="ignore", invalid="ignore"):
         coefficients = _finite(lam*scales, "scaled multipliers")
-        terms = _finite(lam*offsets, "scalar energy")
+        terms = _finite(lam[:, None]*offsets, "scalar energy")
     if (np.any((lam != 0) & (coefficients == 0))
-            or np.any((lam != 0) & (offsets != 0) & (terms == 0))):
+            or np.any((lam[:, None] != 0) & (offsets != 0) & (terms == 0))):
         raise ValueError("Hamiltonian coefficient underflow; precision is insufficient")
     try:
-        shift = math.fsum(terms)
+        shift = math.fsum(terms.flat)
     except OverflowError as exc:
         raise ValueError("scalar energy exceeds finite numerical range") from exc
     return _combination(centered, coefficients), shift, centered, scales

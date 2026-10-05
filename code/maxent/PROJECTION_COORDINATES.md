@@ -171,7 +171,11 @@ established function names and retains the legacy keyword conventions.
   traceless variation. A diagonal anchor is subtracted before normalization,
   so a large scalar cannot erase an independently stored off-diagonal term.
   The scalar is excluded from thermal diagonalization and restored only to
-  `log Z`. This does not recover diagonal differences already lost in the
+  `log Z`. Keep the diagonal anchor and the remaining mean as separate
+  summands until compensated accumulation of all scalar energies; otherwise
+  cancelling large identity offsets can erase a representable small energy
+  origin and change `log Z` even when the Gibbs state is correct. This does
+  not recover diagonal differences already lost in the
   caller's input representation.
 - The real traceless Hermitian coordinates use Helmert diagonal components
   and the real/imaginary upper triangle. SVD stays inside that space; it
