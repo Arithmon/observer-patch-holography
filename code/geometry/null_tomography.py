@@ -5,7 +5,7 @@ representative k/k[0], in a fixed observer frame. A fit is a finite linear-
 algebra diagnostic, not a derivation of local stress or unsampled charges.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from fractions import Fraction
 import math
 
@@ -17,20 +17,22 @@ _EPS = np.finfo(float).eps
 
 def _real_array(value, name):
     try:
-        original = np.asarray(value)
-        if original.dtype.kind not in "iuf" or not np.all(np.isfinite(original)):
+        # Inspect elements BEFORE NumPy promotes mixed integer/float sequences.
+        # Otherwise [2**60, 2**60+1, 0.] has already lost its differing bit.
+        original = np.asarray(value, dtype=object)
+        if any(isinstance(x, (bool, np.bool_)) or not isinstance(
+                x, (int, float, np.integer, np.floating)) for x in original.flat):
             raise ValueError
         with np.errstate(over="ignore", under="ignore", invalid="ignore"):
             result = original.astype(float)
-        if (not np.all(np.isfinite(result))
-                or np.any((original != 0) & (result == 0))):
+        if not np.all(np.isfinite(result)):
             raise ValueError
-        # Comparisons after NumPy's int-to-float promotion can hide lost bits.
-        if original.dtype.kind in "iu":
-            if any(int(x) != int(y) for x, y in zip(original.flat, result.flat)):
+        for x, y in zip(original.flat, result.flat):
+            if isinstance(x, (int, np.integer)):
+                if int(x) != int(y):
+                    raise ValueError
+            elif x != y:
                 raise ValueError
-        elif np.any(result.astype(original.dtype) != original):
-            raise ValueError
     except (TypeError, ValueError, OverflowError) as exc:
         raise ValueError(f"{name} must contain exactly representable finite real binary64 data") from exc
     return result
@@ -65,6 +67,19 @@ def _rounded_fraction(value):
     return result
 
 
+def _sqrt_fraction(value):
+    """Scale an exact squared norm before taking its numerical square root."""
+    if not value:
+        return 0.
+    exponent = (value.numerator.bit_length() - value.denominator.bit_length()) // 2
+    scale = Fraction(2)**exponent
+    return _rounded_fraction(Fraction(math.sqrt(float(value / scale**2))) * scale)
+
+
+def _quadratic(t, k):
+    return sum(k[i] * t[i][j] * k[j] for i in range(4) for j in range(4))
+
+
 def null_vector(direction):
     """Return (1,n) for a finite, nonzero spatial direction of any scale."""
     d = _real_array(direction, "direction")
@@ -92,7 +107,7 @@ def _rays(null_dirs):
     for k in normalized:
         if abs(_norm(k[1:]) - 1.) > 64 * _EPS:
             raise ValueError("each ray must be Minkowski-null")
-    return normalized, times
+    return normalized, times, rays
 
 
 def _tensor(t_matrix):
@@ -156,7 +171,7 @@ def charges_of(t_matrix, null_dirs):
     charges = []
     for ray in np.asarray(null_dirs, dtype=float):
         k = list(map(Fraction, ray))
-        q = sum(k[i] * exact_t[i][j] * k[j] for i in range(4) for j in range(4))
+        q = _quadratic(exact_t, k)
         charges.append(_rounded_fraction(q))
     return np.array(charges)
 
@@ -164,10 +179,11 @@ def charges_of(t_matrix, null_dirs):
 def eta_project_out(t_matrix):
     """Remove the metric component in the Frobenius inner product."""
     t = _tensor(t_matrix)
-    # Divide before summing to avoid overflow in the trace.
-    coefficient = math.fsum(np.diag(t) * np.diag(ETA) / 4)
-    with np.errstate(over="ignore"):
-        return _finite(t - coefficient * ETA, "trace-free tensor")
+    # Dividing the summands first would erase a subnormal metric coefficient.
+    signs = (-1, 1, 1, 1)
+    coefficient = sum(Fraction(t[i, i]) * signs[i] for i in range(4)) / 4
+    return np.array([[_rounded_fraction(Fraction(t[i, j]) - (
+        coefficient * signs[i] if i == j else 0)) for j in range(4)] for i in range(4)])
 
 
 def tomography_directions():
@@ -181,17 +197,41 @@ def tomography_directions():
 class NullTomographyFit:
     """Finite normalized least-squares diagnostic, never a physical source.
 
-    Floating-point singular values/bounds are estimates, not interval proofs.
-    witness is the unit residual direction (zero if the residual is zero).
+    Singular values/bounds are estimates. Acceptance separately replays the
+    returned tensor with exact rational arithmetic on the original inputs.
+    witness is the numerical unit residual direction (zero for zero residual).
     Its design defect reports how nearly it satisfies A.T @ witness = 0.
     """
 
-    tensor: np.ndarray
+    _tensor: np.ndarray = field(repr=False)
     residual_norm: float
-    singular_values: np.ndarray
-    witness: np.ndarray
+    _singular_values: np.ndarray = field(repr=False)
+    _witness: np.ndarray = field(repr=False)
     witness_design_defect: float
     witness_charge: float
+    _residual_squared: Fraction = field(repr=False)
+
+    def __post_init__(self):
+        # A frozen dataclass alone leaves its arrays writable. Immutable bytes
+        # prevent both in-place edits and re-enabling NumPy's WRITEABLE flag.
+        for name in ("_tensor", "_singular_values", "_witness"):
+            array = getattr(self, name)
+            readonly = np.frombuffer(array.tobytes(), dtype=float).reshape(array.shape)
+            object.__setattr__(self, name, readonly)
+
+    @property
+    def tensor(self):
+        # Each access has separate shape/dtype metadata as well as immutable
+        # backing storage. NumPy permits metadata edits on read-only arrays.
+        return self._tensor.view()
+
+    @property
+    def singular_values(self):
+        return self._singular_values.view()
+
+    @property
+    def witness(self):
+        return self._witness.view()
 
     @property
     def noise_amplification(self):
@@ -208,13 +248,14 @@ class NullTomographyFit:
                                   / Fraction(float(self.singular_values[-1])))
 
     def require_consistent(self, *, error_budget):
-        """Require distance to the sampled tensor image <= explicit budget.
+        """Replay the returned tensor against original inputs within the budget.
 
-        Budget includes any measurement and numerical allowance. There is
-        no hidden absolute tolerance and no inference about unsampled rays.
+        Compare exact rational squared residual and budget, including solve
+        and normalization roundoff. A failure can mean numerical resolution
+        is insufficient; it alone does not prove nonexistence of a better fit.
         """
-        if self.residual_norm > _budget(error_budget):
-            raise ValueError("charges violate a dependent-family relation beyond the error budget")
+        if self._residual_squared > Fraction(_budget(error_budget))**2:
+            raise ValueError("returned tensor exceeds the consistency error budget")
         return self.tensor.copy()
 
 
@@ -225,14 +266,14 @@ def fit_null_charges(charges, null_dirs):
     k/k[0] and q/k[0]**2, making them independent of these ray representatives.
     Rank uses 64*eps*max(n,9)*s_max. No rank-deficient pseudoinverse is returned.
     """
-    rays, times = _rays(null_dirs)
-    q = _real_array(charges, "charges")
-    if q.shape != (len(rays),):
+    rays, times, raw_rays = _rays(null_dirs)
+    raw_q = _real_array(charges, "charges")
+    if raw_q.shape != (len(rays),):
         raise ValueError("one scalar charge is required per null ray")
     if len(rays) < 9:
         raise ValueError("tomography requires at least nine independent null rays")
-    q = np.array([_rounded_fraction(Fraction(x) / Fraction(t)**2)
-                  for x, t in zip(q, times)])
+    exact_q = [Fraction(x) / Fraction(t)**2 for x, t in zip(raw_q, times)]
+    q = np.array([_rounded_fraction(x) for x in exact_q])
     basis = tracefree_basis()
     a = _design(rays, basis)
     u, s, vt = np.linalg.svd(a, full_matrices=False)
@@ -243,21 +284,27 @@ def fit_null_charges(charges, null_dirs):
     if np.any((q != 0) & (y == 0)):
         raise ValueError("charge dynamic range is unresolved in binary64")
     coefficients = vt.T @ ((u.T @ y) / s)
-    residual = y - a @ coefficients
-    residual_size = _norm(residual)
-    witness = residual / residual_size if residual_size else np.zeros(len(q))
     with np.errstate(over="ignore", under="ignore", invalid="ignore"):
         tensor_unit = np.einsum("a,aij->ij", coefficients, basis)
         tensor = tensor_unit * scale
-        residual_norm = residual_size * scale
-        witness_charge = float(witness @ y) * scale
     _finite(tensor, "reconstructed tensor")
-    _finite([residual_norm, witness_charge], "residual diagnostics")
-    if (np.any((tensor_unit != 0) & (tensor == 0)) and scale
-            or (residual_size and scale and residual_norm == 0)):
+    if scale and np.any((tensor_unit != 0) & (tensor == 0)):
         raise ValueError("tomography result is outside binary64 range")
+
+    # Acceptance concerns the returned binary tensor and ORIGINAL raw data,
+    # not an intermediate factorization or rounded normalized inputs.
+    exact_t = [[Fraction(x) for x in row] for row in tensor]
+    residual = []
+    for reading, ray in zip(raw_q, raw_rays):
+        k = list(map(Fraction, ray))
+        residual.append((Fraction(reading) - _quadratic(exact_t, k)) / k[0]**2)
+    squared = sum((r*r for r in residual), Fraction(0))
+    residual_norm = _sqrt_fraction(squared)
+    witness = (np.array([float(r / Fraction(residual_norm)) for r in residual])
+               if residual_norm else np.zeros(len(q)))
+    witness_charge = _rounded_fraction(sum(Fraction(w)*x for w, x in zip(witness, exact_q)))
     return NullTomographyFit(tensor, float(residual_norm), s, witness,
-                             _norm(a.T @ witness), witness_charge)
+                             _norm(a.T @ witness), witness_charge, squared)
 
 
 def reconstruct_from_charges(charges, null_dirs):
@@ -267,4 +314,4 @@ def reconstruct_from_charges(charges, null_dirs):
     consistency. Nonunit ray representatives now use normalized residuals.
     """
     fit = fit_null_charges(charges, null_dirs)
-    return fit.tensor, fit.residual_norm
+    return fit.tensor.copy(), fit.residual_norm
