@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -19,6 +20,7 @@ from null_net_receipts import (  # noqa: E402
     nti_receipt,
     separating_modulus_receipt,
     weak_additivity_receipt,
+    correlation_matrix,
 )
 
 
@@ -91,3 +93,37 @@ def test_instrumented_null_net_verdicts():
     # the rate clause must be recorded as open in the report
     assert any("convergence rate" in p or "rate" in p
                for p in report["receipts_pending"])
+
+
+def test_full_ring_covariance_is_the_independent_fourier_projector():
+    n = 16
+    momenta = (2 * np.arange(n) + 1) * np.pi / n
+    occupied = momenta[np.cos(momenta) > 0]
+    modes = np.exp(1j * np.outer(np.arange(n), occupied)) / np.sqrt(n)
+    expected = modes @ modes.conj().T
+    actual = correlation_matrix(n)
+    np.testing.assert_allclose(actual, expected, atol=3e-15)
+    np.testing.assert_allclose(actual @ actual, actual, atol=3e-15)
+
+
+def test_packet_asymmetry_cannot_witness_half_sided_inclusion():
+    from scipy.linalg import expm
+    from modular_clock_instrumentation import arc_entanglement_hamiltonian
+    h = arc_entanglement_hamiltonian(16, 8)
+    leakage = [np.linalg.norm(expm(1j * t * h)[4:, :4], 2) ** 2
+               for t in (0.12, -0.12)]
+    assert min(leakage) > 0.65
+    assert leakage[0] == pytest.approx(leakage[1], abs=1e-14)
+    assert not instrument_null_net((16,))["receipts_witnessed"][
+        "hsm_compression_one_particle"]
+
+
+def test_single_stage_cannot_supply_mixed_gns_or_an_empty_closure_witness():
+    report = instrument_null_net((16,))
+    assert not report["verdicts"]["lie_closure_percent_level"]
+    assert not report["receipts_witnessed"]["mixed_gns_cauchy"]
+
+
+def test_lie_fit_rejects_a_cutoff_that_erases_the_signal():
+    with pytest.raises(ValueError, match="cutoff|rmax"):
+        lie_closure_receipt(32, rmax=0)
