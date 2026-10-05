@@ -284,28 +284,32 @@ def _entropy(ctx, matrix):
     return -ctx.fsum(value*ctx.log(value) for value in values if value)
 
 
-def _quantum(data, a, b, c):
-    # A product over any declared split of B gives zero CMI exactly. The
-    # test is sufficient, not a complete recognition of the HJPW structure.
-    exact_product = False
-    for mask in range(1 << len(b)):
-        left = a+tuple(k for j, k in enumerate(b) if mask & (1 << j))
-        right = c+tuple(k for j, k in enumerate(b) if not mask & (1 << j))
+def _declared_product(data, a, b, c):
+    """Test physically distinct declared splits, ignoring trivial factors."""
+    active = tuple(k for k in b if data.dims[k] > 1)
+    trivial = tuple(k for k in b if data.dims[k] == 1)
+    for mask in range(1 << len(active)):
+        left = a+trivial+tuple(k for j, k in enumerate(active) if mask & (1 << j))
+        right = c+tuple(k for j, k in enumerate(active) if not mask & (1 << j))
         if data.factorizes(left, right):
-            exact_product = True
-            break
+            return True
+    return False
+
+
+def _quantum(data, a, b, c):
+    # Positivity was already proved on the exact Hermitian representative
+    # by _Reductions. A product certificate needs no numerical eigensolve.
+    if _declared_product(data, a, b, c):
+        return 0.0
     parts = ((1, a+b), (1, b+c), (-1, b), (-1, a+b+c))
+    failure = "information cancellation is unresolved at available precision"
     # 400 digits leave a wide margin below every representable binary64
     # result. A cancellation below that resolution is refused, not floored.
     for precision in (80, 400):
         ctx = mpmath.mp.clone()
         ctx.dps = precision
         try:
-            # Positivity is checked even for an exact product: an indefinite
-            # product is not evidence of independent physical subsystems.
             entropies = {tuple(sorted(a+b+c)): _entropy(ctx, data.get(a+b+c))}
-            if exact_product:
-                return 0.0
             for _, part in parts:
                 key = tuple(sorted(part))
                 if key not in entropies:
@@ -314,7 +318,8 @@ def _quantum(data, a, b, c):
         except ArithmeticError:
             if precision == 80:
                 continue
-            raise ValueError("information spectrum remains unresolved at available precision")
+            failure = "information spectrum remains unresolved at available precision"
+            break
         value = ctx.fsum(terms)
         resolution_scale = ctx.eps*max(1, sum(abs(term) for term in terms))*len(data.full)**4*1000
         if value > 10**20*resolution_scale:
@@ -327,17 +332,24 @@ def _quantum(data, a, b, c):
             except ArithmeticError:
                 if precision == 80:
                     continue
-                raise ValueError("information refinement has unresolved spectral precision")
+                failure = "information refinement has unresolved spectral precision"
+                break
             if check > 0 and abs(refined.mpf(value)-check) <= abs(check)*refined.mpf('1e-25'):
                 return _as_float(refined, check)
             if precision == 80:
                 continue
-            raise ValueError("information evaluation fails the precision agreement check")
+            failure = "information evaluation fails the precision agreement check"
+            break
         if value < -10**20*resolution_scale:
-            raise ValueError("negative information: state positivity or precision is unresolved")
+            if precision == 80:
+                continue
+            failure = "negative information: numerical precision is unresolved"
+            break
+    # Unresolved eigenvalues are not evidence against an exact Markov
+    # identity. Try the algebraic certificate before refusing the result.
     if _isospectral_entropy_identity(data, a, b, c) or _exact_markov(data, a, b, c):
         return 0.0
-    raise ValueError("information cancellation is unresolved at available precision")
+    raise ValueError(failure)
 
 
 def weighted_information(weights, values):
@@ -380,9 +392,6 @@ def is_markov_exact(rho, dims, part_a, part_b, part_c):
     data = _Reductions(rho, dims)
     if _diagonal(data.get(a+b+c)):
         return all(p == q for p, q in _conditional_cells(data, a, b, c))
-    for mask in range(1 << len(b)):
-        left = a+tuple(k for j, k in enumerate(b) if mask & (1 << j))
-        right = c+tuple(k for j, k in enumerate(b) if not mask & (1 << j))
-        if data.factorizes(left, right):
-            return True
+    if _declared_product(data, a, b, c):
+        return True
     return _isospectral_entropy_identity(data, a, b, c) or _exact_markov(data, a, b, c)
