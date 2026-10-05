@@ -19,7 +19,7 @@ DYN_LEAN = "Lean/Geometry/CarrierDynamicsCompatibility.lean"
 ENL_LEAN = "Lean/QFT/EnlargedTargetRecordEmbedding.lean"
 QUO_LEAN = "Lean/Screen/GaugeOrbitQuotientGap.lean"
 LIK_DIR = "code/cosmology/rar_deep_regime/joint_likelihood"
-LIK_RECEIPT = f"{LIK_DIR}/runtime/joint_likelihood_receipt.json"
+LIK_RECEIPT = f"{LIK_DIR}/runtime/joint_likelihood_fixed_frame_receipt.json"
 
 
 def _registry() -> list[dict]:
@@ -70,7 +70,7 @@ def test_objective_claim_is_conditional_and_direction_neutral() -> None:
     statement = _claim(LIK_CLAIM)["statement"]
     for token in ("penalized profile objective exists",
                   "not confidence intervals",
-                  "7.943e-11 at rho=0 to 5.821e-11",
+                  "8.035e-11 at rho=0 to 5.821e-11",
                   "neither denominator is an effective degrees-of-freedom theorem",
                   "disconnected threshold components",
                   "only partially paired",
@@ -86,7 +86,7 @@ def test_likelihood_receipt_matches_quoted_numbers() -> None:
     deep = receipt["subset_results"]["deep_f_0p1"]
     assert deep["n_points"] == 960 and deep["n_galaxies"] == 115
     by_rho = {row["rho"]: row for row in deep["per_rho"]}
-    assert abs(by_rho[0.0]["a0_objective_min_m_s2"] - 7.94e-11) < 0.02e-11
+    assert abs(by_rho[0.0]["a0_objective_min_m_s2"] - 8.035e-11) < 0.02e-11
     assert abs(by_rho[0.6]["a0_objective_min_m_s2"] - 5.82e-11) < 0.02e-11
     assert receipt["calibration"]["confidence_interval_claim"] is False
     assert receipt["calibration"]["coverage_calibration_open"] is True
@@ -136,7 +136,7 @@ def test_likelihood_package_files_exist() -> None:
     for name in ("joint_rar_likelihood.py",
                  "verify_joint_likelihood_independent.py",
                  "test_joint_rar_likelihood.py",
-                 "runtime/joint_likelihood_receipt.json",
+                 "runtime/joint_likelihood_fixed_frame_receipt.json",
                  "LIKELIHOOD_CONVENTIONS.md"):
         assert (base / name).exists(), name
     conventions = _collapsed(f"{LIK_DIR}/LIKELIHOOD_CONVENTIONS.md")

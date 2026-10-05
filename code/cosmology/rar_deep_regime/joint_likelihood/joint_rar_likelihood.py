@@ -56,12 +56,16 @@ Likelihood.  Per galaxy, the residual vector u_k = (v_obs_k(i) -
 v_model_k(a0, U, d)) / (e_Vobs_k sin(i_cat)/sin(i)) enters the
 equal-correlation Gaussian block
 
-    -2 ln L = [sum u_k^2 - w (sum u_k)^2] / (1 - rho) + 2 n ln s(i) + const,
+    -2 ln L = [sum u_k^2 - w (sum u_k)^2] / (1 - rho) + const,
     w = rho / (1 + (n-1) rho),   s(i) = sin(i_cat)/sin(i),
 
-the closed form of u^T R^-1 u for R = (1-rho) I + rho J, with the
-i-dependent variance normalization retained and a0-independent constants
-dropped.  The correlation rho is a declared family parameter scanned over a
+the closed form of u^T R^-1 u for R = (1-rho) I + rho J. The data measure
+is the fixed catalogue velocity frame, with mean v_model/s(i) and errors
+e_Vobs. If evaluated instead at v_obs(i) = s(i) v_obs_cat, the density must
+be multiplied by the change-of-variables Jacobian s(i)^n. It cancels the
+s(i)^(-n) Gaussian normalization, so no 2 n ln s(i) term remains. Only
+constants independent of a0 and every profiled nuisance are dropped at
+fixed rho.  The correlation rho is a declared family parameter scanned over a
 fixed grid; a full covariance calibration for SPARC rotation curves is open,
 so the a0 contour is reported separately at every declared rho value and no
 single rho is selected.
@@ -130,10 +134,10 @@ from typing import Any
 
 import numpy as np
 
-SCHEMA = "oph.cosmology.joint_rar_btfr_penalized_profile_objective.v2"
+SCHEMA = "oph.cosmology.joint_rar_btfr_penalized_profile_objective.v3"
 HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data"
-RECEIPT_PATH = HERE / "runtime" / "joint_likelihood_receipt.json"
+RECEIPT_PATH = HERE / "runtime" / "joint_likelihood_fixed_frame_receipt.json"
 
 KPC_M = 3.0856775814913673e19
 KM = 1.0e3
@@ -357,11 +361,13 @@ def galaxy_block_stats(
     log10_a0_grid: np.ndarray,
     grids: dict[str, Any],
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, int]:
-    """S1, S2, and variance-normalization arrays on the nuisance grid.
+    """S1, S2, and fixed-frame normalization arrays on the nuisance grid.
 
     Returns S1[a,u,j,l] = sum_k u_k^2, S2[a,u,j,l] = (sum_k u_k)^2, and
-    varlog[l] = 2 n ln s(i_l), with combos whose baryonic squared speed is
-    nonpositive at any point set to S1 = +inf so the profile skips them.
+    varlog[l] = 0 (the density uses the fixed catalogue data measure), with
+    combos whose baryonic squared speed is nonpositive at any point set to
+    S1 = +inf so the profile skips them. The zero array retains the helper
+    interface; corrected-velocity normalization and Jacobian cancel exactly.
     """
     r_m = gal["rad_kpc"][mask] * KPC_M
     gas = gal["gas_term"][mask]
@@ -389,7 +395,9 @@ def galaxy_block_stats(
     S1 = np.empty((n_a0, n_u, n_d, n_i))
     S2 = np.empty((n_a0, n_u, n_d, n_i))
     sin_cat = math.sin(math.radians(gal["meta"]["inclination_deg"]))
-    varlog = np.empty(n_i)
+    # Fixed catalogue data measure: the corrected-velocity Jacobian s**n
+    # cancels the Gaussian normalization s**(-n).
+    varlog = np.zeros(n_i)
     for j, d in enumerate(d_grid):
         v_model = np.sqrt(d * m0)
         for l, i_val in enumerate(i_grid):
@@ -397,7 +405,6 @@ def galaxy_block_stats(
             u = (vobs * s - v_model) / (ev * s)
             S1[:, :, j, l] = (u * u).sum(axis=2)
             S2[:, :, j, l] = u.sum(axis=2) ** 2
-            varlog[l] = 2.0 * npts * math.log(s)
     S1[:, ~valid_u, :, :] = np.inf
     return S1, S2, varlog, npts
 
@@ -805,6 +812,12 @@ def run(
 
     receipt: dict[str, Any] = {
         "schema": SCHEMA,
+        "superseded_receipt": {
+            "path": "code/cosmology/rar_deep_regime/joint_likelihood/runtime/joint_likelihood_receipt.json",
+            "sha256": "6c74e6777b0b4752ec173c364907dfafba02a3669741af5421d098aac14d088b",
+            "replay_git_commit": "9582fdc384b8613a640f83c67571ab638b0899e0",
+            "reason": "v2 omitted the inclination change-of-variables Jacobian; its objective and fitted summaries are historical",
+        },
         "scope": (
             "labeled_postdiction_penalized_profile_objective_declared_conventions_"
             "fixed_absolute_cuts"
@@ -851,9 +864,11 @@ def run(
         },
         "error_model": {
             "per_point": (
-                "Gaussian in velocity with sigma = e_Vobs sin(i_cat)/sin(i); "
-                "the 2 n ln s(i) variance-normalization term is kept in the "
-                "penalized objective and a0-independent constants are dropped"
+                "Gaussian in the fixed catalogue velocity frame with sigma = e_Vobs "
+                "and mean = v_model sin(i)/sin(i_cat); equivalently corrected "
+                "velocities and errors both scale by s(i), whose density Jacobian "
+                "cancels the 2 n ln s(i) normalization term; only constants "
+                "independent of a0 and every profiled nuisance are dropped at fixed rho"
             ),
             "intra_galaxy_covariance": (
                 "equal-correlation block R = (1-rho) I + rho J per galaxy, "
