@@ -200,12 +200,12 @@ def algebra_intersection(algebras):
         raise ValueError("nonempty family of finite algebras required")
     if any(a.size != algebras[0].size for a in algebras):
         raise ValueError("intersection requires a common operator space")
-    from .operator_spans import intersect_columns, numerical_basis
+    from .operator_spans import contains_identity, intersect_columns, numerical_basis
     common = algebras[0]._exact_columns()
     for algebra in algebras[1:]:
         common = intersect_columns(common, algebra._exact_columns())
     d = algebras[0].size
-    if not common.shape[1]:
+    if not contains_identity(common, d):
         raise ValueError("supplied spans have no exact common identity; intersection is unresolved")
     result = FiniteAlgebra(numerical_basis(common, d))
     # Preserve exact output across repeated intersections; converting this

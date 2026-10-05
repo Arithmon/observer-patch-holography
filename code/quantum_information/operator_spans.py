@@ -20,6 +20,12 @@ def intersect_columns(left, right):
     return left.matmul(coefficients)
 
 
+def contains_identity(columns, size):
+    """Test exact membership, allowing any coefficients in the given basis."""
+    identity = exact_columns([np.eye(size)])
+    return columns.hstack(identity).rank() == columns.shape[1]
+
+
 def numerical_basis(columns, size):
     entries = columns.to_Matrix()
     result = []

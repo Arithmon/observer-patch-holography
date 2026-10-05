@@ -158,3 +158,18 @@ def test_identity_may_be_an_exact_linear_combination_of_supplied_columns():
     assert common.dimension == 2
     for value in (I, Z):
         assert np.allclose(common.project(value), value, rtol=0, atol=2e-14)
+
+
+def test_rounded_unitary_chart_is_numerical_evidence_not_exact_identity():
+    from scipy.linalg import expm
+    from quantum_information.test_expectations import nontracial_factor_case, linear_matrix
+    y = np.array([[0., -1j], [1j, 0.]])
+    algebra, rho, _, channel = nontracial_factor_case()
+    u = expm(.27j*(np.kron(X,y)+.3*np.kron(y,Z)))
+    chart = linear_matrix(lambda a: u@a@u.conj().T, 4)
+    rounded = FiniteAlgebra([u@b@u.conj().T for b in algebra.basis])
+    transformed = chart@channel@chart.conj().T
+    reference = u@rho@u.conj().T
+    assert expectation_diagnostics(transformed, rounded, reference)['passed']
+    with pytest.raises(ValueError, match="exact common identity"):
+        repair_generator([transformed], [rounded], reference, [1.])

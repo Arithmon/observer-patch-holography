@@ -8,7 +8,7 @@ decaying mode by classifying that mode as an exact fixed point.
 
 ## Reproduction and changed verdict
 
-Let `X,Z` be Pauli matrices, `rho=I/2`, and take the two observable algebras
+Let `X,Z` be Pauli matrices, `rho=I/2`, e a real tilt, and take the two observable algebras
 `span(I,Z)` and `span(I,Z+e X)`. Give each reference-preserving expectation
 rate `1/2`. Comparing off-diagonal entries proves that their intersection
 is the scalars for every nonzero `e`. The two-dimensional diagonal algebra
@@ -27,6 +27,14 @@ intersection calculation gives the correct dimension down to the smallest
 positive binary64 tilt. The existing gap routine now refuses an unresolved
 positive mode instead of excluding it and reporting the next eigenvalue.
 It does not replace a supplied rounded channel by an ideal channel.
+
+The maintainer-style audit also reproduced acceptance of the nonunital span
+`span(I+1e-14 X)`, including a repair report with gap approximately one.
+Its nonzero off-diagonal entry proves that it cannot contain I. Commit
+`cf5c37a0` records three failures before adding an exact identity-membership
+check. A nonempty span is insufficient: appending the identity column must
+leave its exact rank unchanged. A positive control supplies I only as a
+linear combination of columns, so the guard cannot require a literal I.
 
 ## Exact intersection, without a numerical rank cutoff
 
@@ -60,6 +68,14 @@ retain their stated tolerances. An unresolved numerical output basis or
 an intersection without a common identity is rejected. Exact elimination
 is intended for the existing small finite witnesses and can cost more
 than a floating singular-value calculation.
+
+This stricter boundary rejects some rounded coordinate changes that still
+pass the numerical expectation diagnostics. A regression retains that
+distinction. The existing nontracial repair and clock-scaling tests now use
+an exactly representable entangling complex unitary (controlled phase
+after `H tensor H`) and unrounded source generators. Their spectrum,
+covariance, complete positivity and stationarity assertions are retained.
+No tolerance is enlarged to recover acceptance of the rounded input.
 
 The shared numeric conversion now checks operators and references before
 array coercion. Masks, mixed Boolean entries and lossy conversions cannot
@@ -111,10 +127,10 @@ converges to `I/2`. At e=0, Z is exactly conserved and the gap on the
 remaining complement is g. This discontinuity in the dimension of the
 fixed algebra is why omitting the small mode changes the conclusion.
 
-For the initial state `(I+z0 Z)/2`, its later Z expectation is exactly
+For the initial state `(I+z0 Z)/2`, with real `|z0| <= 1`, its later Z expectation is exactly
 
 ```text
-z(t)/z0 = w_minus exp(-lambda_minus t) + w_plus exp(-lambda_plus t),
+z(t) = z0 [w_minus exp(-lambda_minus t) + w_plus exp(-lambda_plus t)],
 w_minus = (lambda_plus-B_ZZ)/r,
 w_plus  = (B_ZZ-lambda_minus)/r.
 ```
@@ -198,7 +214,7 @@ the complete slow-memory witness above. It is not a new physical law.
 PYTHONPATH=code python -m pytest -q code/quantum_information code/collar_alignment code/geometry code/maxent -W error
 ```
 
-The PR adds **45 cases**. Independent controls compare all four exact
+The PR adds **50 cases**. Independent controls compare all four exact
 superoperator eigenvalues, construct Choi matrices directly from matrix-unit
 actions, evolve positive states with a separate matrix exponential, and
 check the near-zero lifetime formula at private 80-digit precision.
@@ -206,16 +222,17 @@ Other controls cover tensor intersections in every input order, genuinely
 complex common observables, changes of basis units, rational intersections
 whose numerical output cannot be reused as exact input, and missing data.
 
-Full affected suites: **827 passed on Linux; 821 passed on Windows with six
+Full affected suites: **832 passed on Linux; 826 passed on Windows with six
 existing extended-precision skips**, with warnings treated as errors.
-Ten isolated mutations were rejected by the 45 new cases:
+Eleven isolated mutations were rejected by the 50 new cases:
 
 | Deliberate defect | Failing cases |
 | --- | ---: |
-| Restore the old rank-threshold intersection | 12 |
+| Restore the old rank-threshold intersection | 16 |
+| Accept a nonempty span without an exact identity | 4 |
 | Ignore the final algebra | 24 |
 | Conjugate the supplied complex span | 1 |
-| Drop entries below `1e-12` | 12 |
+| Drop entries below `1e-12` | 15 |
 | Conjugate the nullspace coefficients | 3 |
 | Discard exact output before a later intersection | 1 |
 | Strip operator masks and conversion checks | 7 |
