@@ -25,6 +25,7 @@ from quotient_cap_readout import (  # noqa: E402
     complexes_equal,
     complexes_isomorphic_under,
     cross_ratio,
+    cross_ratio_receipts,
     csaszar_torus,
     euler_characteristic,
     gauge_relabel,
@@ -251,8 +252,8 @@ def test_orientation_framing_is_not_selected_by_confluence():
     )
     pts = coords @ rot.T
     gauge = (0, 1, 2)
-    direct = reconstruct_from_cross_ratios(pts, gauge)
-    mirrored = reconstruct_from_cross_ratios(pts * np.array([1.0, -1.0, 1.0]), gauge)
+    direct = reconstruct_from_cross_ratios(cross_ratio_receipts(pts, gauge), gauge)
+    mirrored = reconstruct_from_cross_ratios(cross_ratio_receipts(pts * np.array([1.0, -1.0, 1.0]), gauge), gauge)
     finite = [i for i in range(len(pts)) if i != gauge[2]]
     assert all(abs(mirrored[i] - np.conj(direct[i])) < 1e-9 for i in finite)
     assert max(abs(direct[i].imag) for i in finite) > 1e-3
@@ -280,7 +281,7 @@ def test_cross_ratio_reconstruction_of_celestial_embedding():
     )
     pts = coords @ rot.T
     gauge = (0, 1, 2)
-    reconstructed = reconstruct_from_cross_ratios(pts, gauge)
+    reconstructed = reconstruct_from_cross_ratios(cross_ratio_receipts(pts, gauge), gauge)
     zs = [stereographic(p) for p in pts]
     g1, g2, g3 = (zs[i] for i in gauge)
     for i, z in enumerate(zs):
@@ -317,7 +318,7 @@ def test_produced_cap_normal_matches_paper_formula():
          + np.sin(alpha) * (np.cos(t) * basis[0] + np.sin(t) * basis[1])
          for t in angles]
     )
-    n_c = produced_cap_normal(pts)
+    n_c = produced_cap_normal(pts, interior_point=c)
     expected = np.concatenate(
         ([np.cos(alpha) / np.sin(alpha)], c / np.sin(alpha))
     )
@@ -346,7 +347,7 @@ def test_cap_normal_residual_shrinks_under_refinement():
         )
         pts += noise * rng.normal(size=pts.shape)
         pts /= np.linalg.norm(pts, axis=1, keepdims=True)
-        residuals.append(np.linalg.norm(produced_cap_normal(pts) - expected))
+        residuals.append(np.linalg.norm(produced_cap_normal(pts, interior_point=c, max_residual=5 * noise) - expected))
     assert residuals[0] > residuals[1] > residuals[2]
     assert residuals[2] < 1e-3
 
