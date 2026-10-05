@@ -253,7 +253,7 @@ def projection_diagnostics(sigma, constraints, lam):
     bound is a floating-point evaluation of the proved inequality, not an
     outward-rounded certificate; see the note for numerical limitations.
     """
-    sigma = faithful_density_matrix(sigma)
+    sigma = faithful_density_matrix(_numeric(sigma, "target"))
     basis, transform, scales, rank = _coordinates(constraints)
     if rank != len(constraints):
         raise ValueError("constraints must be independent modulo identity; rank is unresolved")
@@ -262,13 +262,13 @@ def projection_diagnostics(sigma, constraints, lam):
     lam = _multipliers(lam, len(constraints))
     rho, _ = gibbs_state(constraints, lam)
     gradient = _moments(sigma-rho, basis)
-    residual = float(np.linalg.norm(gradient))
+    residual = math.hypot(*gradient)
     theta = transform @ (lam*scales)
     d = len(sigma)
     mu = float(np.linalg.eigvalsh(sigma)[0])
     # Coercivity gives ||theta_*|| <= R. Convexity then bounds f-f_*.
     radius = math.log(d)*math.sqrt((d-1)/d)/mu
-    bound = float(_finite(residual*(np.linalg.norm(theta)+radius), "optimality bound"))
+    bound = float(_finite(residual*(math.hypot(*theta)+radius), "optimality bound"))
     centered, scales, _ = _observables(constraints)
     with np.errstate(over="ignore", invalid="ignore"):
         raw = _finite(_moments(sigma-rho, centered)*scales, "raw moment residual")
@@ -286,7 +286,7 @@ def project_information(sigma, constraints, tol=1e-11, max_iter=200):
     No Hessian ridge, artificial support floor or discarded constraint is used.
     The returned original multipliers are replayed before acceptance.
     """
-    sigma = faithful_density_matrix(sigma)
+    sigma = faithful_density_matrix(_numeric(sigma, "target"))
     tol = finite_real_scalar(tol, "convergence tolerance")
     if not 0 < tol <= 1e-6:
         raise ValueError("convergence tolerance must lie in (0, 1e-6]")
@@ -307,7 +307,7 @@ def project_information(sigma, constraints, tol=1e-11, max_iter=200):
     theta = np.zeros(rank)
     for iteration in range(max_iter+1):
         base, gradient, _, probs, vectors = evaluate(theta)
-        norm = np.linalg.norm(gradient)
+        norm = math.hypot(*gradient)
         if norm < tol:
             with np.errstate(over="ignore", under="ignore", invalid="ignore"):
                 lam = np.linalg.solve(transform, theta)/scales
@@ -336,9 +336,11 @@ def project_information(sigma, constraints, tol=1e-11, max_iter=200):
                 continue
             value, new_gradient = candidate[:2]
             roundoff = 16*np.finfo(float).eps*max(1., abs(base))
-            if (value <= base+1e-4*factor*descent
+            armijo = base+1e-4*factor*descent
+            # Equality with base after rounding is not objective decrease.
+            if ((value < base and value <= armijo)
                     or (abs(value-base) <= roundoff
-                        and np.linalg.norm(new_gradient) < norm/2)):
+                        and math.hypot(*new_gradient) < norm/2)):
                 theta = theta + factor*step
                 accepted = True
                 break

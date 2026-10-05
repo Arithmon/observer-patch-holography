@@ -181,7 +181,9 @@ established function names and retains the legacy keyword conventions.
 - Newton uses the actual Kubo--Mori Hessian with no ridge. The logarithmic
   mean uses `expm1` to avoid cancellation. A line search reduces trials that
   leave resolved faithful support; it raises on exhaustion. An objective
-  change below roundoff is accepted only with a halved gradient norm.
+  change with no resolved strict Armijo decrease is accepted only with a
+  halved gradient norm. Residual norms use scaled `hypot` accumulation so
+  a representable error cannot disappear by squaring its components.
 - Conversion overflow, erased nonzero components, malformed observables,
   mixed Boolean inputs, unrepresentable output covariance, unresolved
   support and exhausted iteration budgets raise explicit exceptions.
@@ -243,3 +245,25 @@ The second command intentionally regenerates only the live #539 receipt.
 The existing Windows/Linux quantum-information workflow runs the entire
 expanded suite. The mandatory #539 acceptance tests consume the new
 diagnostics as well as the original scientific checks.
+
+## Maintainer-style audit follow-up
+
+The audit reproduced a false convergence in the first PR head: for target
+`I/2 + 5e-201 X`, the invariant residual is `1e-200/sqrt(2)`, but the direct
+sum-of-squares norm underflowed to zero. A requested tolerance of `1e-250`
+then accepted the unchanged maximally mixed state and reported a zero error
+bound. Both the independent diagnostic and the solve now use `hypot`; the
+diagnostic retains the nonzero error, and the solve explicitly rejects the
+unresolved tolerance. A rounded-to-zero Armijo decrement no longer passes
+the line search as objective progress. The retained tests failed before
+these corrections. The existence, uniqueness and error-bound proofs are
+unchanged; this repairs evaluation of their numerical premise.
+
+The same audit found that target matrices reached the shared state validator
+before the conversion guards used for observables and multipliers. A Linux
+extended-precision target with nonzero real or imaginary coherence `1e-400`
+was therefore converted into the maximally mixed state and reported as an
+exact numerical match. Both projection entry points now guard target
+conversion too, rejecting erased components and mixed Boolean values before
+the existing faithful-state checks. The extended-range regressions run on
+Linux and skip explicitly on platforms without that numeric type.

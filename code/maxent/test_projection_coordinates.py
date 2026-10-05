@@ -65,6 +65,24 @@ def test_small_raw_gradient_cannot_claim_convergence_in_wrong_units():
     np.testing.assert_allclose(result.state, target, atol=1e-12, rtol=0)
 
 
+def test_invariant_norm_cannot_square_a_resolved_residual_to_zero():
+    # The off-diagonal input is representable even though its square is not.
+    # The analytic HS projection has norm 1e-200/sqrt(2).
+    target = I/2 + 5e-201*X
+    report = projection_diagnostics(target, [X], [0.])
+    assert report.normalized_residual == pytest.approx(1e-200/np.sqrt(2), rel=1e-14, abs=0)
+    assert report.optimality_gap_bound > 0
+    assert report.trace_distance_bound > 0
+
+
+def test_unresolved_tiny_tolerance_cannot_accept_a_false_zero_gradient():
+    target = I/2 + 5e-201*X
+    # Thermal reconstruction cannot resolve this correction at float64
+    # precision. It must fail explicitly rather than claim convergence.
+    with pytest.raises(RuntimeError, match="converge"):
+        project_information(target, [X], tol=1e-250, max_iter=2)
+
+
 @pytest.mark.parametrize("scale", [1e-300, 1e-200, 1e200, 1e300])
 def test_extreme_representable_units_do_not_square_into_a_rank_cutoff(scale):
     result = project_information((I + .4*Z)/2, [scale*Z])
@@ -230,6 +248,28 @@ def test_fail_closed_on_iteration_budget_and_unusable_tolerance():
 def test_diagnostics_reject_singular_targets_instead_of_extrapolating_faithful_theorem():
     with pytest.raises(ValueError, match="faithful"):
         projection_diagnostics(np.diag([1., 0.]), [Z], [1.])
+
+
+def test_target_booleans_are_rejected_before_coercion():
+    target = [[.5, False], [0., .5]]
+    for operation in [lambda: project_information(target, [Z]),
+                      lambda: projection_diagnostics(target, [Z], [0.])]:
+        with pytest.raises(ValueError, match="Booleans"):
+            operation()
+
+
+@pytest.mark.parametrize("imaginary", [False, True])
+def test_extended_target_cannot_lose_a_nonzero_moment_on_conversion(imaginary):
+    if np.finfo(np.longdouble).maxexp <= np.finfo(float).maxexp:
+        pytest.skip("extended exponent range unavailable on this platform")
+    target = np.eye(2, dtype=np.clongdouble)/2
+    coherence = np.longdouble('1e-400')*(np.clongdouble(1j) if imaginary else 1)
+    target[0, 1], target[1, 0] = coherence, coherence.conjugate()
+    constraint = Y if imaginary else X
+    for operation in [lambda: project_information(target, [constraint]),
+                      lambda: projection_diagnostics(target, [constraint], [0.])]:
+        with pytest.raises(ValueError, match="conversion"):
+            operation()
 
 
 @pytest.mark.parametrize("candidate", [[0., 0.], [.2, -.7], [-3., 1.], [.01, .02]])
