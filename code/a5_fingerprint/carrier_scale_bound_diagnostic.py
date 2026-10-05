@@ -40,10 +40,14 @@ stays the discriminating fingerprint for any resolved anisotropy, and
 the consumed limit is isotropic while the FZ-11 kill bands are
 anisotropic-shape statements, so this consumption is disjoint from
 every registered kill direction.
-Off-stencil members of the invariant class change the order-one
-isotropic coefficient, so the bound is exact on the declared branch and
-order-of-magnitude on the class. Ladder row FZ-11 and the issue #639
-comparison budget are untouched.
+For the positive-weight class with unrestricted radii, the normalized
+coefficient is ``C4 = -(a^2/20)(mu4/mu2)``, where
+``mu_m = sum_s w_s |O_s| r_s^m``. The same limit bounds the effective length
+``a_eff = a sqrt(mu4/mu2)``; it supplies no class-wide bound on ``a`` without
+a radius contract. Even a single-radius member has ``a_eff = a r`` with
+arbitrary positive ``r``. Rescaling ``a`` and all radii inversely preserves
+the full normalized symbol. Ladder row FZ-11 and the issue #639 comparison
+budget are untouched.
 """
 
 from __future__ import annotations
@@ -153,10 +157,10 @@ def build_receipt() -> dict[str, Any]:
         ],
         "declared_premises": {
             "branch": (
-                "equal-weight stencil member of the invariant class; "
-                "off-stencil members change the order-one isotropic "
-                "coefficient, so the class-level bound is "
-                "order-of-magnitude"
+                "equal-weight unit-radius stencil member of the invariant "
+                "class; the numerical bound on a requires this radius "
+                "normalization. Unrestricted positive radii leave no "
+                "class-wide bound on a"
             ),
             "sector": (
                 "photon-sector assignment of the carrier dispersion; the "
@@ -216,8 +220,24 @@ def build_receipt() -> dict[str, Any]:
                 "stronger published linear bounds impose no constraint"
             ),
             "subluminal_branch_matches": True,
+            "general_positive_weight_class": {
+                "radial_moments": "mu_m = sum_s w_s |O_s| r_s^m",
+                "leading_coefficient": "C4 = -(a^2/20)(mu4/mu2)",
+                "constrained_length": "a_eff = a sqrt(mu4/mu2)",
+                "identification": "a_eff = sqrt(20)/E_QG2",
+                "single_radius": "a_eff = a r",
+                "rescaling_degeneracy": (
+                    "a -> s a and r_s -> r_s/s for s>0 preserve every "
+                    "physical displacement a r_s and the full normalized symbol"
+                ),
+                "bound_on_a_without_radius_contract": False,
+            },
         },
         "bound": {
+            "scope": (
+                "a on the declared unit-radius branch; a_eff for the "
+                "general positive-weight class"
+            ),
             "carrier_scale_upper_bound_m": sci(a_m),
             "planck_length_headroom": sci(headroom),
             "reading": (
