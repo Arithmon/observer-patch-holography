@@ -123,7 +123,8 @@ authority. In particular, roundoff on a consistent family can produce a tiny
 residual with an unreliable normalized witness. The exact replay establishes
 the returned tensor's finite error budget; it does not certify SVD optimality,
 an inverse error bound or the physical interpretation. Result arrays are
-backed by immutable bytes so they cannot be edited under an already checked
+backed by immutable bytes and exposed through separate array views so neither
+their values nor shape/dtype metadata can be edited under an already checked
 residual. Acceptance and the legacy wrapper return independent writable copies.
 
 Malformed data, complex or nonfinite entries, lossy conversion to binary64,
@@ -146,6 +147,10 @@ binary64 budgets, against an independent exact contraction.
 The same audit checks mixed-type conversion before NumPy promotion and
 computes the metric projection exactly before rounding: dividing each trace
 summand first previously erased a minimum-subnormal metric coefficient.
+A separate 120-digit QR solver checks thirty families across three sample
+counts, three charge scales and individually rescaled past/future rays. It
+builds the coordinate matrix directly from the bilinear form, without the
+producer's basis, SVD or charge evaluator.
 
 The existing `reconstruct_from_charges` remains a **diagnostic** returning
 `(tensor, residual)` and can report an inconsistent full-rank family. Its

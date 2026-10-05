@@ -203,10 +203,10 @@ class NullTomographyFit:
     Its design defect reports how nearly it satisfies A.T @ witness = 0.
     """
 
-    tensor: np.ndarray
+    _tensor: np.ndarray = field(repr=False)
     residual_norm: float
-    singular_values: np.ndarray
-    witness: np.ndarray
+    _singular_values: np.ndarray = field(repr=False)
+    _witness: np.ndarray = field(repr=False)
     witness_design_defect: float
     witness_charge: float
     _residual_squared: Fraction = field(repr=False)
@@ -214,10 +214,24 @@ class NullTomographyFit:
     def __post_init__(self):
         # A frozen dataclass alone leaves its arrays writable. Immutable bytes
         # prevent both in-place edits and re-enabling NumPy's WRITEABLE flag.
-        for name in ("tensor", "singular_values", "witness"):
+        for name in ("_tensor", "_singular_values", "_witness"):
             array = getattr(self, name)
             readonly = np.frombuffer(array.tobytes(), dtype=float).reshape(array.shape)
             object.__setattr__(self, name, readonly)
+
+    @property
+    def tensor(self):
+        # Each access has separate shape/dtype metadata as well as immutable
+        # backing storage. NumPy permits metadata edits on read-only arrays.
+        return self._tensor.view()
+
+    @property
+    def singular_values(self):
+        return self._singular_values.view()
+
+    @property
+    def witness(self):
+        return self._witness.view()
 
     @property
     def noise_amplification(self):

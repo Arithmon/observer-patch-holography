@@ -1,12 +1,14 @@
 """Adversarial and independent controls for finite null tomography."""
 
 import sys
+import warnings
 from fractions import Fraction
 from pathlib import Path
 
 import numpy as np
 import pytest
 import sympy as sp
+import mpmath as mp
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from einstein_closure_receipts import (
@@ -323,6 +325,15 @@ def test_result_arrays_cannot_change_the_source_under_an_already_checked_residua
             array.flat[0] = 1.
         with pytest.raises(ValueError):
             array.setflags(write=True)
+        # NumPy's read-only flag does not freeze array metadata. Such edits to
+        # a public view must not affect the stored source or its diagnostics.
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", DeprecationWarning)
+            array.shape = (array.size,)
+            array.dtype = np.uint8
+    assert fit.tensor.shape == (4, 4) and fit.tensor.dtype == np.dtype(float)
+    assert fit.singular_values.shape == (9,) and fit.singular_values.dtype == np.dtype(float)
+    assert fit.witness.shape == (9,) and fit.witness.dtype == np.dtype(float)
     returned = fit.require_consistent(error_budget=0)
     returned[0, 0] = 1.
     np.testing.assert_array_equal(fit.require_consistent(error_budget=0), np.zeros((4, 4)))
@@ -363,3 +374,31 @@ def test_metric_projection_cannot_silently_drop_unrepresentable_components():
     t[0, 0] = np.nextafter(0., 1.)
     with pytest.raises(ValueError, match="range"):
         eta_project_out(t)
+
+
+@pytest.mark.parametrize("seed", range(30))
+def test_independent_high_precision_qr_reconstruction(seed):
+    # Build the nine-coordinate tensor map directly, with exact normalization
+    # of the original binary inputs at 120 digits; do not use the SVD producer's
+    # basis/design or its charge evaluator. Include inconsistent families.
+    count = (9, 12, 17)[seed % 3]
+    units = (1e-100, 1., 1e100)[(seed // 3) % 3]
+    rays = np.array(generic_null_directions(count, seed=seed + 100))
+    weights = np.exp2(np.linspace(-120, 120, count).astype(int)) * (-1.)**np.arange(count)
+    rays *= weights[:, None]
+    charges = np.random.default_rng(seed + 50).normal(size=count) * units * weights**2
+    with mp.workdps(120):
+        rows, readings = [], []
+        for raw, charge in zip(rays, charges):
+            a, b, c, d = [mp.mpf(float(z)) / mp.mpf(float(raw[0])) for z in raw]
+            rows.append([a*a+d*d, 2*a*b, 2*a*c, 2*a*d, b*b-d*d,
+                         2*b*c, 2*b*d, c*c-d*d, 2*c*d])
+            readings.append(mp.mpf(float(charge)) / mp.mpf(float(raw[0]))**2 / mp.mpf(units))
+        x, _ = mp.qr_solve(mp.matrix(rows), mp.matrix(readings))
+        expected = np.array([[x[0], x[1], x[2], x[3]], [x[1], x[4], x[5], x[6]],
+                             [x[2], x[5], x[7], x[8]],
+                             [x[3], x[6], x[8], x[0]-x[4]-x[7]]], dtype=float)
+    fit = fit_null_charges(charges, rays)
+    relative = np.linalg.norm(fit.tensor / units - expected) / np.linalg.norm(expected)
+    assert relative < 2e-12
+    fit.require_consistent(error_budget=fit.residual_norm * 1.01)
