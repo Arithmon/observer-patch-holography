@@ -220,3 +220,16 @@ def test_repair_does_not_claim_confluence_outside_one_defect_family():
     for records, seed in (([], 0), ([(0,)], 0), (TETRA_BOUNDARY, True), (TETRA_BOUNDARY, -1)):
         with pytest.raises(ValueError):
             RepairSystem(records, seed_record=seed)
+
+
+@pytest.mark.parametrize('records', [[(0,), (1,)], [(0, 0, 1)], [(False, 1)], []])
+def test_repair_revalidates_consumed_records_after_mutation(records):
+    system = RepairSystem([(0, 1)])
+    system.records[:] = records
+    with pytest.raises(ValueError):
+        system.repair()
+
+
+def test_repair_does_not_ignore_a_caller_supplied_initial_state():
+    with pytest.raises(TypeError):
+        RepairSystem([(0, 1)], state={0: 'invalid', 1: 1})

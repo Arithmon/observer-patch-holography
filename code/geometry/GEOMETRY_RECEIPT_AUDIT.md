@@ -41,6 +41,22 @@ a resolved plane and spacelike normalization, an explicit side witness, and
 a declared residual budget. Radius clipping and silent sign selection are
 absent.
 
+The maintainer-style audit of commit `2dff2c9c` also reproduced a conversion
+failure: on platforms with extended-exponent floating types, the finite
+coordinate `1e400` became infinity when cast to binary64 and satisfied the
+infinity gauge check. A nonzero `1e-400` could similarly become a zero gauge
+entry. Validation checks the original components and rejects conversion
+overflow or erased nonzero components. Mixed Boolean coordinate lists are
+rejected before array coercion. The wider-exponent regression executes on
+Linux; Windows skips it when its `longdouble` has the binary64 range.
+
+Record supports are validated whenever repair consumes them, including after
+mutation. Support validation does not construct an exponentially larger face
+closure merely to check labels. A caller-supplied initial-state argument is
+rejected instead of silently overwritten by the fixture seed. These input
+corrections preserve the theorem premises and the retained cyclic-tower
+receipt, which reproduces exactly without artifact changes.
+
 ## The support-to-incidence theorem
 
 For a finite family of nonempty record supports R, define

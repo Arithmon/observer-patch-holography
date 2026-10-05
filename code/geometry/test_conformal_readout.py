@@ -270,3 +270,34 @@ def test_scalar_kms_agreement_does_not_supply_a_physical_clock():
     for supplied_beta in (1., 2., 2*np.pi, 10.):
         assert kms_receipt(supplied_beta, beta_target=supplied_beta)
     assert not kms_receipt(1.)
+
+
+def test_mixed_boolean_coordinates_are_not_coerced_to_gauge_or_sphere_data():
+    with pytest.raises(ValueError):
+        cr.reconstruct_from_cross_ratios([False, True, np.inf, 2], (0, 1, 2))
+    with pytest.raises(ValueError):
+        cr.fit_cap([[True, 0, 0], [0, 1, 0], [0, 0, 1]], interior_point=[-1, 0, 0])
+    with pytest.raises(ValueError):
+        cr.stereographic([True, 0, 0])
+
+
+@pytest.mark.skipif(np.finfo(np.longdouble).max <= np.finfo(float).max,
+                    reason='platform has no wider-exponent float type')
+def test_extended_precision_finite_coordinate_cannot_become_the_infinity_gauge():
+    huge = np.longdouble('1e400')
+    tiny = np.longdouble('1e-400')
+    assert np.isfinite(huge) and tiny != 0
+    with np.errstate(over='ignore', under='ignore', invalid='ignore'):
+        for data in (np.array([0, 1, huge, 2], dtype=np.longdouble),
+                     np.array([tiny, 1, np.inf, 2], dtype=np.longdouble)):
+            with pytest.raises(ValueError):
+                cr.reconstruct_from_cross_ratios(data, (0, 1, 2))
+        with pytest.raises(ValueError):
+            cr.cross_ratio(huge, 2, 3, 4)
+        with pytest.raises(ValueError):
+            cr.cross_ratio(tiny, 2, 3, 4)
+        with pytest.raises(ValueError):
+            cr.stereographic(np.array([tiny, 0, 1], dtype=np.longdouble))
+        fit = cr.fit_cap(circle(0.7), interior_point=[0, 0, 1])
+        with pytest.raises(ValueError):
+            fit.direction_error_bound(tiny)

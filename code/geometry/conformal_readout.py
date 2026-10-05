@@ -21,9 +21,15 @@ def _real_array(value, shape_tail):
         raise ValueError('finite real coordinates are required')
     if any(size is not None and a.shape[i] != size for i, size in enumerate(shape_tail)):
         raise ValueError('coordinate shape mismatch')
-    a = np.asarray(a, dtype=float)
+    if not isinstance(value, np.ndarray) and any(
+            isinstance(x, (bool, np.bool_)) for x in np.asarray(value, dtype=object).flat):
+        raise ValueError('Boolean coordinates are not real coordinate data')
+    raw = a
+    a = np.asarray(raw, dtype=float)
     if not np.isfinite(a).all():
         raise ValueError('coordinates must be finite')
+    if np.any((raw != 0) & (a == 0)):
+        raise ValueError('coordinate component underflow during binary64 conversion')
     return a
 
 
@@ -37,16 +43,18 @@ def sphere_points(points):
 def _projective(z):
     if isinstance(z, (bool, np.bool_)) or not isinstance(z, Complex) or np.ndim(z) != 0:
         raise ValueError('a complex projective coordinate is required')
+    raw_real, raw_imag = z.real, z.imag
+    # Check the original components before binary64 conversion can erase them.
+    if raw_real == float('inf') and raw_imag == 0:
+        return np.array([1, 0], dtype=complex)
     try:
         z = complex(z)
     except (TypeError, ValueError, OverflowError) as exc:
         raise ValueError('invalid projective coordinate') from exc
-    if np.isnan(z.real) or np.isnan(z.imag) or np.isinf(z.imag):
-        raise ValueError('invalid projective coordinate')
-    if np.isinf(z.real):
-        if z.imag != 0 or z.real < 0:
-            raise ValueError('infinity uses the canonical coordinate +inf+0j')
-        return np.array([1, 0], dtype=complex)
+    if not np.isfinite(z):
+        raise ValueError('invalid coordinate or binary64 conversion overflow')
+    if (raw_real != 0 and z.real == 0) or (raw_imag != 0 and z.imag == 0):
+        raise ValueError('coordinate component underflow during binary64 conversion')
     scale = max(1, abs(z.real), abs(z.imag))
     return np.array([z / scale, 1 / scale], dtype=complex)
 
@@ -89,7 +97,7 @@ def mobius_normalize(z, g1, g2, g3):
 
 def stereographic(p):
     """North-pole stereographic coordinate with a stable second chart."""
-    x, y, z = sphere_points(np.asarray(p)[None, :])[0]
+    x, y, z = sphere_points(_real_array(p, (3,))[None, :])[0]
     if x == 0 and y == 0 and z > 0:
         return complex(np.inf, 0)
     if z > 0:
@@ -132,11 +140,14 @@ def reconstruct_from_cross_ratios(values, gauge):
     data = np.asarray(values)
     if data.ndim != 1 or data.dtype.kind not in 'iufc' or len(data) < 3:
         raise ValueError('a numeric vector of cross-ratio receipts is required')
+    if not isinstance(values, np.ndarray) and any(isinstance(z, (bool, np.bool_)) for z in values):
+        raise ValueError('Boolean coordinates are not cross-ratio receipts')
     gauge = _gauge(gauge, len(data))
     projective = [_projective(z) for z in data]
-    result = np.asarray(data, dtype=complex).copy()
-    if result[gauge[0]] != 0 or result[gauge[1]] != 1 or result[gauge[2]] != complex(np.inf, 0):
+    if (data[gauge[0]] != 0 or data[gauge[1]] != 1
+            or data[gauge[2]].real != float('inf') or data[gauge[2]].imag != 0):
         raise ValueError('gauge receipts must be exactly 0, 1, infinity')
+    result = np.asarray(data, dtype=complex).copy()
     if any(abs(_det(projective[i], projective[j])) <= ROUND
            for i in range(len(data)) for j in range(i)):
         raise ValueError('distinct receipt points coincide or are unresolved')
@@ -180,7 +191,10 @@ def _budget(value, upper=0.1):
     if (isinstance(value, (bool, np.bool_)) or not isinstance(value, Real)
             or not np.isfinite(value) or value < 0 or (upper is not None and value > upper)):
         raise ValueError('a finite nonnegative residual budget is required')
-    return float(value)
+    result = float(value)
+    if not np.isfinite(result) or (value != 0 and result == 0):
+        raise ValueError('residual budget cannot be represented in binary64')
+    return result
 
 
 def fit_cap(boundary_points, *, interior_point, max_residual=1e-10):

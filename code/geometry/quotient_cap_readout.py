@@ -56,7 +56,7 @@ from conformal_readout import (
 from finite_incidence import (
     IncidenceComplex, certify_midpoint_subdivision, complexes_equal,
     complexes_isomorphic_under, dimension, euler_characteristic,
-    incidence_complex, refinement_is_simplicial, validate_complex,
+    incidence_complex, refinement_is_simplicial, validate_complex, validate_records,
 )
 
 TOL = 1e-9
@@ -186,20 +186,23 @@ class RepairSystem:
 
     records: list[tuple[int, ...]]
     seed_record: int = 0
-    state: dict[int, int] = field(default_factory=dict)
+    state: dict[int, int] = field(default_factory=dict, init=False)
 
     def __post_init__(self) -> None:
-        incidence_complex(self.records)
-        if (not self.records or any(len(rec) < 2 for rec in self.records)
-                or not isinstance(self.seed_record, Integral)
-                or isinstance(self.seed_record, (bool, np.bool_))
-                or not 0 <= self.seed_record < len(self.records)):
-            raise ValueError("repair fixture requires nonsingleton records and a valid seed")
+        self._validate_records()
         patches = sorted({p for rec in self.records for p in rec})
         self.state = {p: 0 for p in patches}
         # seed the conflict: flip the highest-label patch of the seed record
         bad = max(self.records[self.seed_record])
         self.state[bad] = 1
+
+    def _validate_records(self) -> None:
+        validate_records(self.records)
+        if (not self.records or any(len(rec) < 2 for rec in self.records)
+                or not isinstance(self.seed_record, Integral)
+                or isinstance(self.seed_record, (bool, np.bool_))
+                or not 0 <= self.seed_record < len(self.records)):
+            raise ValueError("repair fixture requires nonsingleton records and a valid seed")
 
     def conflicted_records(self) -> list[int]:
         return [
@@ -209,6 +212,7 @@ class RepairSystem:
 
     def repair(self, schedule: list[int] | None = None) -> dict[int, int]:
         """Run transactional repair; return the quotient normal form."""
+        self._validate_records()
         order = list(schedule) if schedule is not None else list(range(len(self.records)))
         if (len(order) != len(self.records)
                 or any(not isinstance(k, Integral) or isinstance(k, (bool, np.bool_)) for k in order)
@@ -477,7 +481,7 @@ def refinement_subdivide(records: list[tuple[int, ...]]) -> tuple[list[tuple[int
     K = incidence_complex(records)
     if not K.triangles or any(len(rec) != 3 for rec in records):
         raise ValueError("subdivision producer requires nonempty triangular records")
-    next_label = max(K.vertices) + 1
+    next_label = int(max(K.vertices)) + 1
     midpoint: dict[frozenset, int] = {}
     projection: dict[int, int] = {v: v for v in K.vertices}
     for e in sorted(K.edges, key=lambda e: tuple(sorted(e))):

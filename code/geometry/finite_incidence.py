@@ -52,16 +52,22 @@ def simplices(k: IncidenceComplex) -> set[frozenset]:
             | k.edges | k.triangles | k.higher_simplices)
 
 
-def incidence_complex(records: list[tuple[int, ...]]) -> IncidenceComplex:
-    """Every nonempty subset of a record's support is a simplex."""
+def validate_records(records: list[tuple[int, ...]]) -> None:
+    """Validate support labels without allocating their simplicial closure."""
     if not isinstance(records, (list, tuple)):
         raise ValueError("records must be a finite sequence")
-    faces: set[frozenset] = set()
     for record in records:
         if (not isinstance(record, (list, tuple)) or not record
                 or not all(_label(v) for v in record)
                 or len(set(record)) != len(record)):
             raise ValueError("each record needs distinct integer patch labels")
+
+
+def incidence_complex(records: list[tuple[int, ...]]) -> IncidenceComplex:
+    """Every nonempty subset of a record's support is a simplex."""
+    validate_records(records)
+    faces: set[frozenset] = set()
+    for record in records:
         for size in range(1, len(record) + 1):
             faces.update(frozenset(f) for f in itertools.combinations(record, size))
     return IncidenceComplex(
