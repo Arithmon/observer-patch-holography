@@ -168,6 +168,13 @@ The follow-up [MaxEnt coordinate audit](../maxent/PROJECTION_COORDINATES.md)
 fixes dependence on observable units, basis and scalar energy origins, and
 connects its invariant stopping error to a bound on the true optimum. It
 retains the nonzero coarse-graining closure defect.
+
+The [sector Gibbs audit](../collar_alignment/GIBBS_SECTOR_AUDIT.md) extends
+that energy-origin repair to collars. It shares observable decomposition
+and thermal diagonalization with MaxEnt, retains relative sector partition
+functions, and prevents a large scalar origin from manufacturing alignment.
+The audit proves the finite interaction/log-state identity and separates
+center-probability error from conditional-state error in relative entropy.
 Independent controls use explicit index contraction, scalar closed forms,
 SciPy matrix logarithms, complete classical enumeration and known product/Bell
 states. Tests include malformed matrices, missing sectors, invalid tensor

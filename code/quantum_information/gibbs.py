@@ -166,5 +166,3 @@ def gibbs_sectors(hamiltonians, central_energies, beta=1.):
                        for p, spectrum in zip(probabilities, spectra))):
             raise ValueError("normalized Gibbs sector underflow; precision is insufficient")
     return [(float(p), state) for p, state in zip(probabilities, states)]
-
-

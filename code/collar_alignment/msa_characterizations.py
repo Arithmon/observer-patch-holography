@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Numerical verification of the Markov-split alignment (MSA) characterizations.
 
-Implements the objects of The spacetime and Einstein paper's Proposition `prop:msachar`
-(operational characterizations of Markov-split alignment) and Corollary
-`cor:msareduction` (axiom-side reduction), introduced for paper-audit issue 001
-(GitHub #543).
+Implements the finite alignment objects introduced for paper-audit issue 001
+(GitHub #543), historically labelled `prop:msachar` and `cor:msareduction`.
+Those labels are absent from the reorganized active spacetime paper. The
+finite Gibbs connection and numerical scope are in GIBBS_SECTOR_AUDIT.md.
 
 Collar model: H = oplus_alpha  H_A (x) H_{bL^alpha} (x) H_{bR^alpha} (x) H_D.
 A state is represented blockwise as a list of (weight, block density matrix,

@@ -73,3 +73,33 @@ def test_small_units_cannot_hide_a_nonhermitian_hamiltonian():
 def test_sector_operator_cannot_be_silently_coerced(bad):
     with pytest.raises(ValueError):
         gibbs_blocks([(bad, (1, 1, 1, 2))], [0])
+
+
+@pytest.mark.parametrize("beta", [-.7, .3, 1.1])
+def test_logarithmic_interaction_identity_with_noncommuting_local_terms(beta):
+    from scipy.linalg import expm
+    y = np.array([[0., -1j], [1j, 0.]])
+    z = np.diag([1., -1.])
+    ham = .31*np.kron(X, np.eye(2))+.23*np.kron(np.eye(2), y)+.17*np.kron(X, z)
+    expected = expm(-beta*ham)
+    expected /= np.trace(expected)
+    blocks = gibbs_blocks([(ham, DIMS)], [1e20], beta)
+    np.testing.assert_allclose(blocks[0][1], expected, atol=2e-15, rtol=0)
+    # Partial traces remove precisely the X tensor Z term; its norm is .17.
+    assert modular_splitting_defect(blocks) == pytest.approx(abs(beta)*.17, abs=4e-15)
+    assert not is_ec_aligned(blocks)
+
+
+def test_zero_beta_alignment_does_not_imply_one_sided_hamiltonian():
+    blocks = gibbs_blocks([(XX, DIMS)], [1e20], beta=0)
+    np.testing.assert_allclose(blocks[0][1], np.eye(4)/4, atol=0, rtol=0)
+    assert is_ec_aligned(blocks)
+    assert modular_splitting_defect(blocks) == 0
+    assert takesaki_defect(blocks) == 0
+
+
+def test_small_positive_sector_weight_cannot_remove_its_alignment_defect():
+    blocks = gibbs_blocks([(np.zeros((4, 4)), DIMS), (XX, DIMS)], [0., 100.], .4)
+    assert 0 < blocks[1][0] < 1e-16
+    assert modular_splitting_defect(blocks) == pytest.approx(.4, abs=3e-15)
+    assert not is_ec_aligned(blocks)

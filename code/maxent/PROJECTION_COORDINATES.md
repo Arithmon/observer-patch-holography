@@ -166,6 +166,11 @@ already-declared faithful-target input.
 `information_projection.py` separates the generic inference operation from
 the Ising acceptance fixture. `maxent_closure_acceptance.py` reexports the
 established function names and retains the legacy keyword conventions.
+Observable decomposition and thermal diagonalization now live in
+`quantum_information/gibbs.py`, shared with the
+[sector Gibbs constructor](../collar_alignment/GIBBS_SECTOR_AUDIT.md).
+Its input conversion rejects any lost numeric component, including integer
+energy gaps rounded away on conversion to binary64.
 
 - Each observable is decomposed into a scalar offset and a bounded
   traceless variation. A diagonal anchor is subtracted before normalization,

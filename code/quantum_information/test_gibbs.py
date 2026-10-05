@@ -98,6 +98,21 @@ def test_relative_central_energy_changes_weight_but_not_conditional_state():
         np.testing.assert_allclose(rho, (I-np.tanh(.3)*X)/2, atol=2e-15, rtol=0)
 
 
+@pytest.mark.parametrize("seed", range(4))
+def test_independent_sector_basis_changes_preserve_probabilities(seed):
+    rng = np.random.default_rng(seed)
+    hams, transformed, unitaries = [X+.3*Z, .7*Y+.2*Z], [], []
+    expected = matrix_gibbs(block_diag(hams[0], hams[1]+.5*I), .6)
+    for h in hams:
+        u, _ = np.linalg.qr(rng.normal(size=(2, 2))+1j*rng.normal(size=(2, 2)))
+        transformed.append(u@h@u.conj().T)
+        unitaries.append(u)
+    actual = embedded(gibbs_sectors(transformed, [0., .5], .6))
+    change = block_diag(*unitaries)
+    np.testing.assert_allclose(actual, change@expected@change.conj().T,
+                               atol=3e-15, rtol=0)
+
+
 def test_splitting_and_permuting_a_direct_sum_sector_preserves_full_state():
     operators = [X, .5*Y, .7*Z]
     separate = gibbs_sectors(operators, [0., 0., .3], .8)
@@ -162,6 +177,18 @@ def test_lossy_integer_parameter_cannot_change_relative_energies(which):
     with pytest.raises(ValueError, match="conversion"):
         gibbs_sectors([X, X], [2**53, 2**53+1] if which == "central" else [0., 0.],
                        2**53+1 if which == "beta" else 1.)
+
+
+def test_extended_precision_conversion_cannot_erase_a_level_gap():
+    if np.finfo(np.longdouble).eps >= np.finfo(float).eps:
+        pytest.skip("extended mantissa precision unavailable on this platform")
+    one = np.longdouble(1)
+    small_gap = np.finfo(np.longdouble).eps
+    ham = np.diag([one, one+small_gap])
+    for call in [lambda: gibbs_sectors([ham], [0.], 1/float(small_gap)),
+                 lambda: gibbs_state([ham], [1/float(small_gap)])]:
+        with pytest.raises(ValueError, match="conversion"):
+            call()
 
 
 @pytest.mark.parametrize("case", ["spectrum", "sector", "joint", "dense"])

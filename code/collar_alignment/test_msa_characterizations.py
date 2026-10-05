@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Tests for the MSA characterization package (paper-audit issue 001, GitHub #543).
 
-Each test verifies one clause of The spacetime and Einstein paper's Proposition `prop:msachar`
-or Corollary `cor:msareduction`.
+Tests cover the finite clauses historically labelled `prop:msachar` and
+`cor:msareduction`; these labels are not in the reorganized active paper.
 """
 
 from __future__ import annotations
