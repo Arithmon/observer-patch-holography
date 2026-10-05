@@ -8,17 +8,18 @@ spectra retain the support restrictions of the shared state library.
 from fractions import Fraction
 import math
 
+import mpmath
 import numpy as np
 
 from .algebras import resolved_state_spectrum
 from .gibbs import _finite, _numeric, _observables, _parameter, _scaled, _thermal
 from .states import (
-    density_matrix, dimensions, faithful_density_matrix, faithful_log, relative_entropy,
+    density_matrix, dimensions, faithful_density_matrix, relative_entropy,
 )
 
 
 def _rounded(value, name):
-    """Round one exact binary64 accumulation, refusing lost nonzero results."""
+    """Convert a real scalar to binary64, refusing lost nonzero results."""
     try:
         result = float(value)
     except OverflowError as exc:
@@ -57,6 +58,85 @@ def _norm(value):
     return _finite(math.hypot(*value.real.flat, *value.imag.flat), "operator norm")
 
 
+def _log_parts(value):
+    """Return log(sigma)=centered+origin*I without losing small coherences.
+
+    A binary64 eigensolve of sigma can erase its variation around I/n while
+    still resolving faithful support. Diagonalize the scalar-subtracted
+    matrix in a private multiprecision context, and evaluate log1p of its
+    eigenvalue ratios before restoring the scalar origin. A 400-digit floor
+    covers the binary64 subnormal output range and guard digits: checking
+    only first/quadratic input scales can invent noise in a higher-order
+    response along a longer coherent path. Larger component ranges increase
+    the precision further.
+    The result is still floating numerical data, not an interval certificate.
+    """
+    a = faithful_density_matrix(_numeric(value, "reference state"))
+    components = [abs(float(v)) for part in (a.real, a.imag) for v in part.flat if v]
+    spread = math.log10(max(components))-math.log10(min(components))
+    ctx = mpmath.mp.clone()
+    ctx.dps = max(400, 2*math.ceil(spread)+60)
+    matrix = ctx.matrix([[ctx.mpc(float(z.real), float(z.imag)) for z in row] for row in a])
+    size = len(a)
+    anchor = ctx.re(ctx.fsum(matrix[i, i] for i in range(size)))/size
+    # Preserve exact coordinate blocks. Diagonalizing a degenerate direct
+    # sum as one dense matrix can create tiny numerical entries between
+    # blocks where functional calculus is identically zero. This uses exact
+    # nonzero adjacency, never a numerical cutoff on a small coherence.
+    remaining = set(range(size))
+    correction = ctx.zeros(size)
+    while remaining:
+        component = [min(remaining)]
+        remaining.remove(component[0])
+        for i in component:
+            neighbors = sorted(j for j in remaining if a[i, j] != 0)
+            component.extend(neighbors)
+            remaining.difference_update(neighbors)
+        block = ctx.matrix([[matrix[i, j] for j in component] for i in component])
+        energies, vectors = ctx.eighe(block-anchor*ctx.eye(len(component)))
+        if any(anchor+e <= 0 for e in energies):
+            raise ValueError("reference support is not resolved at this precision")
+        corrections = [ctx.log1p(e/anchor) for e in energies]
+        local = vectors*ctx.diag(corrections)*vectors.H
+        for i, row in enumerate(component):
+            for j, col in enumerate(component):
+                correction[row, col] = local[i, j]
+    mean = ctx.re(ctx.fsum(correction[i, i] for i in range(size)))/size
+    centered = np.zeros_like(a)
+    exact_powers = None
+
+    def rounded_entry(value, i, j, imaginary=False):
+        nonlocal exact_powers
+        if value and float(value) == 0:
+            # Distinguish a genuinely unrepresentable component from MP
+            # roundoff at an exact algebraic zero. For Hermitian A, log(A)
+            # is a real polynomial in A of degree < size. If the selected
+            # real/imaginary entry vanishes on every centered power, its
+            # logarithm entry is exactly zero. No small value is floored.
+            import sympy as sp
+            if exact_powers is None:
+                exact = sp.Matrix([[sp.Rational(float(z.real))+sp.I*sp.Rational(float(z.imag))
+                                    for z in row] for row in a])
+                power = sp.eye(size)
+                exact_powers = []
+                for _ in range(size):
+                    exact_powers.append(power-sp.trace(power)*sp.eye(size)/size)
+                    power = (power*exact).expand()
+            part = sp.im if imaginary else sp.re
+            if all(part(power[i, j]).expand() == 0 for power in exact_powers):
+                return 0.
+        return _rounded(value, "centered logarithm")
+
+    for i in range(size):
+        centered[i, i] = rounded_entry(ctx.re(correction[i, i])-mean, i, i)
+        for j in range(i):
+            v = (correction[i, j]+ctx.conj(correction[j, i]))/2
+            centered[i, j] = complex(rounded_entry(ctx.re(v), i, j),
+                                     rounded_entry(ctx.im(v), i, j, imaginary=True))
+            centered[j, i] = centered[i, j].conjugate()
+    return centered, _rounded(ctx.log(anchor)+mean, "logarithm origin")
+
+
 def _tangent(value, size):
     raw = _numeric(value, "tangent")
     centered = _centered(raw)  # shared Hermiticity/shape validation
@@ -75,9 +155,9 @@ def entropy_tangent(sigma, tangent):
     Trace roundoff up to 64 eps ||D||_HS is explicitly projected out; larger
     violations raise, including small tangents with a large relative trace.
     """
-    log_sigma = faithful_log(_numeric(sigma, "reference state"))
+    log_sigma, _ = _log_parts(sigma)
     direction = _tangent(tangent, len(log_sigma))
-    return -_pairing(_centered(log_sigma), direction)
+    return -_pairing(log_sigma, direction)
 
 
 def first_law_diagnostic(sigma, generator):
@@ -88,12 +168,12 @@ def first_law_diagnostic(sigma, generator):
     Zero residual has no nonzero witness. Returned witness defects quantify
     floating-point trace/norm error; no threshold declares a theorem proved.
     """
-    log_sigma = faithful_log(_numeric(sigma, "reference state"))
+    log_sigma, _ = _log_parts(sigma)
     k = _centered(generator)
     if k.shape != log_sigma.shape:
         raise ValueError("generator and reference must use the same algebra")
     with np.errstate(over="ignore", invalid="ignore"):
-        residual = _centered(_finite(k + _centered(log_sigma), "response residual"))
+        residual = _centered(_finite(k + log_sigma, "response residual"))
     defect = _norm(residual)
     witness = _scaled(residual, defect) if defect else np.zeros_like(residual)
     return {
@@ -119,12 +199,12 @@ def finite_entropy_balance(rho, sigma):
     a = density_matrix(_numeric(rho, "source state"))
     resolved_state_spectrum(a)
     b = density_matrix(_numeric(sigma, "reference state"))
-    log_b = faithful_log(b)
+    log_b, log_origin = _log_parts(b)
     if a.shape != b.shape:
         raise ValueError("source and reference must use the same algebra")
-    linear = -_pairing(log_b, a, b)
-    divergence = relative_entropy(a, b)
     trace_difference = _pairing(np.eye(len(a)), a, b)
+    linear = math.fsum((-_pairing(log_b, a, b), -log_origin*trace_difference))
+    divergence = relative_entropy(a, b)
     remainder = math.fsum((divergence, -trace_difference))
     if not np.array_equal(a, b) and remainder <= 0:
         raise ValueError("finite entropy remainder is not resolved at this precision")
@@ -191,6 +271,15 @@ def gibbs_entropy_response(observable, lam):
     var = _rounded(variance, "energy variance")
     if var <= 0:
         raise ValueError("energy coordinate has no resolved nonzero variance")
-    ds = _rounded(-Fraction(lam)*variance, "entropy derivative")
+    entropy_derivative = -Fraction(lam)*variance
+    ds = _rounded(entropy_derivative, "entropy derivative")
+    for value, rounded in ((variance, var), (entropy_derivative, ds)):
+        if abs(Fraction(rounded)-value) > Fraction(8*np.finfo(float).eps)*abs(value):
+            raise ValueError("Gibbs tangent components are not resolved at this precision")
+    # A nonzero subnormal is representable but may have very few accurate
+    # bits. Do not report a different slope after separately rounding ds/dt.
+    slope = _finite(ds/(-var), "entropy slope")
+    if abs(Fraction(float(slope))-Fraction(lam)) > Fraction(16*np.finfo(float).eps)*abs(Fraction(lam)):
+        raise ValueError("Gibbs tangent ratio is not resolved at this precision")
     return {"state": rho, "energy_variance": var, "dt_dlambda": -var,
-            "ds_dlambda": ds, "ds_dt": _finite(ds/(-var), "entropy slope")}
+            "ds_dlambda": ds, "ds_dt": slope}
