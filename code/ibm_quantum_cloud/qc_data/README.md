@@ -24,6 +24,17 @@ tomography count dictionaries or reconstructed density matrices. Petz recovery
 was calculated offline from the reconstruction; it was not executed as a QPU
 recovery circuit.
 
+The frozen Stage 1 summaries use squared Uhlmann fidelity for `petz_fidelity`
+but root fidelity for `fawzi_renner_fidelity_lower_bound`. Those numbers must
+not be compared directly. The bound in the squared convention is the square
+of the archived bound: `2**(-cmi_bits)`. For the exact GHZ reference, it is
+`0.5`, while the archived root bound is approximately `0.7071`. The current
+analysis code uses squared fidelity for both fields and records the convention
+and scope explicitly. The [Fawzi--Renner theorem](https://arxiv.org/abs/1410.0664)
+guarantees the existence of a recovery channel; it does not generally certify
+the particular unrotated Petz map used here. The frozen JSON files retain their
+original values.
+
 ## Z3
 
 - `z3/ibm_marrakesh_summary.json`

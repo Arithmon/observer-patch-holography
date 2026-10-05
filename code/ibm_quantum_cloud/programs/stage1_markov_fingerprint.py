@@ -6,16 +6,14 @@ import itertools
 import json
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import numpy as np
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, transpile
-from qiskit.circuit.random import random_circuit
-from qiskit.quantum_info import DensityMatrix, Statevector
-from qiskit_aer import AerSimulator
-from qiskit_ibm_runtime import SamplerV2
 from scipy.linalg import eigh
 
-from ibm_runtime_common import ensure_dir, get_service, write_json
+# Numerical recovery diagnostics do not require the optional circuit/cloud SDKs.
+if TYPE_CHECKING:
+    from qiskit import QuantumCircuit
 
 
 PAULI_MATRICES = {
@@ -36,6 +34,8 @@ def qiskit_density_to_q0_order(rho: np.ndarray, num_qubits: int) -> np.ndarray:
 
 
 def circuit_density_q0_order(circuit: QuantumCircuit) -> np.ndarray:
+    from qiskit.quantum_info import DensityMatrix, Statevector
+
     rho = DensityMatrix(Statevector.from_instruction(circuit)).data
     return qiskit_density_to_q0_order(rho, circuit.num_qubits)
 
@@ -97,6 +97,7 @@ def matrix_inv_sqrt_psd(rho: np.ndarray, cutoff: float = 1e-10) -> np.ndarray:
 
 
 def state_fidelity(rho: np.ndarray, sigma: np.ndarray) -> float:
+    """Squared Uhlmann fidelity, ``||sqrt(rho) sqrt(sigma)||_1**2``."""
     sqrt_rho = matrix_sqrt_psd(project_to_physical_density_matrix(rho))
     inner = sqrt_rho @ project_to_physical_density_matrix(sigma) @ sqrt_rho
     evals = np.linalg.eigvalsh((inner + inner.conj().T) / 2.0)
@@ -146,7 +147,14 @@ def petz_recovery(rho_abc: np.ndarray) -> np.ndarray:
 
 
 def fawzi_renner_fidelity_lower_bound(cmi_bits: float) -> float:
-    return float(2 ** (-max(cmi_bits, 0.0) / 2.0))
+    """Lower bound on optimal *squared* recovery fidelity.
+
+    Fawzi--Renner (https://arxiv.org/abs/1410.0664, Eq. 3) uses root
+    fidelity >= 2**(-I/2). Squaring matches ``state_fidelity`` here.
+    The theorem guarantees a B -> BC recovery channel; it does not certify
+    this benchmark's particular unrotated Petz map at nonzero CMI.
+    """
+    return float(2 ** (-max(cmi_bits, 0.0)))
 
 
 def basis_rotation(circuit: QuantumCircuit, qubit: int, basis: str) -> None:
@@ -166,6 +174,8 @@ def measurement_bases(num_qubits: int) -> list[str]:
 
 
 def add_measurement_basis(circuit: QuantumCircuit, basis_q0: str) -> QuantumCircuit:
+    from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+
     qreg = QuantumRegister(circuit.num_qubits, "q")
     creg = ClassicalRegister(circuit.num_qubits, "c")
     measured = QuantumCircuit(qreg, creg, name=f"{circuit.name}__{basis_q0}")
@@ -223,6 +233,8 @@ def reconstruct_density_matrix(
 
 
 def build_structured_family(theta: float) -> QuantumCircuit:
+    from qiskit import QuantumCircuit
+
     qc = QuantumCircuit(3, name=f"structured_theta_{theta:.2f}")
     qc.h(1)
     qc.cx(1, 0)
@@ -232,6 +244,8 @@ def build_structured_family(theta: float) -> QuantumCircuit:
 
 
 def build_ghz() -> QuantumCircuit:
+    from qiskit import QuantumCircuit
+
     qc = QuantumCircuit(3, name="ghz_control")
     qc.h(0)
     qc.cx(0, 1)
@@ -240,6 +254,9 @@ def build_ghz() -> QuantumCircuit:
 
 
 def build_random_control(seed: int, depth: int) -> QuantumCircuit:
+    from qiskit import QuantumCircuit
+    from qiskit.circuit.random import random_circuit
+
     random_qc = random_circuit(3, depth=depth, max_operands=2, measure=False, seed=seed)
     qc = QuantumCircuit(3, name=f"random_seed_{seed}")
     qc.compose(random_qc, inplace=True)
@@ -286,10 +303,12 @@ def analyze_state(rho: np.ndarray) -> dict:
     fidelity = state_fidelity(rho, recovered)
     return {
         "cmi_bits": cmi_bits,
+        "fidelity_convention": "squared_uhlmann",
         "petz_fidelity": fidelity,
         "petz_trace_distance": trace_distance(rho, recovered),
         "petz_observable_mismatch": low_weight_observable_mismatch(rho, recovered),
         "fawzi_renner_fidelity_lower_bound": fawzi_renner_fidelity_lower_bound(cmi_bits),
+        "fawzi_renner_bound_scope": "optimal_recovery_over_B_to_BC_channels",
     }
 
 
@@ -301,6 +320,12 @@ def run_sampler(
     credentials_file: Path,
     backend_name: str | None,
 ) -> tuple[dict, str | None]:
+    from qiskit import transpile
+    from qiskit_aer import AerSimulator
+    from qiskit_ibm_runtime import SamplerV2
+
+    from ibm_runtime_common import get_service
+
     if mode == "local":
         backend = AerSimulator()
         service = None
@@ -380,6 +405,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    from ibm_runtime_common import ensure_dir, write_json
+
     mode = "local" if args.local_testing else args.mode
     outdir = ensure_dir(args.outdir)
 

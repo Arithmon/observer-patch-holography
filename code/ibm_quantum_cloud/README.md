@@ -81,10 +81,11 @@ different assessments:
 
 Imagine three neighboring pieces of a system, called A, B, and C. If B carries
 almost all of the information needed to connect A with C, then the full state
-is close to a local Markov chain. The benchmark measures this with:
+can be approximately recovered from AB by acting on B. The benchmark measures
+this with:
 
 - **conditional mutual information (CMI):** lower is more locally Markovian;
-- **Petz recovery fidelity:** closer to `1` means a standard recovery map,
+- **Petz recovery fidelity (squared Uhlmann convention):** closer to `1` means a standard recovery map,
   computed from the reconstructed state, rebuilds the full three-part state
   more accurately from overlapping local pieces.
 
@@ -110,6 +111,10 @@ All three preregistered qualitative fingerprint checks returned `true` on both
 backends. The provider jobs are `d6t4da6sh9gc73di7720` and
 `d6t4ejngtkcc73cm8l6g`; the public derived reconstruction summaries are in
 [`qc_data/stage1/`](qc_data/stage1/).
+
+The archived Fawzi--Renner bounds use root fidelity while these recovery
+measurements use squared fidelity. See the [archive correction note](qc_data/README.md#stage-1-markov--recoverability)
+for the conversion and the theorem's scope over possible recovery channels.
 
 #### How strong is it?
 
