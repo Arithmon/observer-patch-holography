@@ -4,9 +4,9 @@
 Implements finite witnesses for The spacetime and Einstein paper's subsection
 `subsec:einstein-branch-closure`:
 
-* null tomography (Theorem `thm:null-tomography`): exact reconstruction of the
+* null tomography (Theorem `thm:null-tomography`): reconstruction of the
   eta-trace-free part of a symmetric tensor from null-null charges over nine
-  or more directions, the eta-ambiguity, and the countermodel of
+  or more resolved independent directions, the eta-ambiguity, and the countermodel of
   Proposition `prop:no-local-stress-countermodel`: directional charges that
   violate one dependent-family linearity relation admit no rank-two source
   (irreducible least-squares residual);
@@ -31,7 +31,6 @@ Implements finite witnesses for The spacetime and Einstein paper's subsection
 
 from __future__ import annotations
 
-import itertools
 import sys
 from pathlib import Path
 
@@ -45,63 +44,15 @@ from quantum_information import (
     von_neumann_entropy as entropy,
 )
 
-ETA = np.diag([-1.0, 1.0, 1.0, 1.0])
+from geometry.null_tomography import (
+    ETA, charges_of, design_matrix, eta_project_out, fit_null_charges,
+    null_vector, reconstruct_from_charges, sym_basis, tomography_directions,
+)
 
 
 # ---------------------------------------------------------------------------
 # null tomography (thm:null-tomography)
 # ---------------------------------------------------------------------------
-
-def null_vector(direction: np.ndarray) -> np.ndarray:
-    d = np.asarray(direction, dtype=float)
-    return np.concatenate(([1.0], d / np.linalg.norm(d)))
-
-
-def sym_basis() -> list[np.ndarray]:
-    """Basis of the ten-dimensional space of symmetric 4x4 matrices."""
-    basis = []
-    for i in range(4):
-        for j in range(i, 4):
-            m = np.zeros((4, 4))
-            m[i, j] = m[j, i] = 1.0
-            basis.append(m)
-    return basis
-
-
-def design_matrix(null_dirs: list[np.ndarray]) -> np.ndarray:
-    """Rows: the linear functionals T -> T(k,k) in the sym_basis coordinates."""
-    basis = sym_basis()
-    rows = []
-    for k in null_dirs:
-        rows.append([float(k @ b @ k) for b in basis])
-    return np.array(rows)
-
-
-def charges_of(t_matrix: np.ndarray, null_dirs: list[np.ndarray]) -> np.ndarray:
-    return np.array([float(k @ t_matrix @ k) for k in null_dirs])
-
-
-def reconstruct_from_charges(charges: np.ndarray,
-                             null_dirs: list[np.ndarray]) -> tuple[np.ndarray, float]:
-    """Least-squares tensor from null charges; returns (T_hat, residual).
-
-    The eta-direction is in the kernel of the design map (eta(k,k)=0), so the
-    minimum-norm solution fixes the eta-component to zero: T is recovered
-    exactly up to phi * eta, which is the classified ambiguity.
-    """
-    a = design_matrix(null_dirs)
-    coef, *_ = np.linalg.lstsq(a, charges, rcond=None)
-    basis = sym_basis()
-    t_hat = sum(c * b for c, b in zip(coef, basis))
-    residual = float(np.linalg.norm(a @ coef - charges))
-    return t_hat, residual
-
-
-def eta_project_out(t_matrix: np.ndarray) -> np.ndarray:
-    """Remove the eta-component in the Frobenius sense (the null-invisible part)."""
-    coeff = float(np.sum(t_matrix * ETA)) / float(np.sum(ETA * ETA))
-    return t_matrix - coeff * ETA
-
 
 def generic_null_directions(n: int, seed: int = 2) -> list[np.ndarray]:
     rng = np.random.default_rng(seed)
@@ -109,26 +60,34 @@ def generic_null_directions(n: int, seed: int = 2) -> list[np.ndarray]:
 
 
 def tomography_receipt(seed: int = 2) -> dict[str, float]:
-    """Exact reconstruction of consistent charges; irreducible residual for a
-    family violating one dependent linearity relation."""
+    """Resolved reconstruction on the Lean frame plus three audit directions.
+
+    A violated relation has a replayable left-null witness. Numerical error
+    budgets concern this sampled family only, not a physical stress source.
+    """
     rng = np.random.default_rng(seed)
-    dirs = generic_null_directions(12, seed=seed)
+    dirs = list(tomography_directions()) + generic_null_directions(3, seed=seed)
     m = rng.normal(size=(4, 4))
     t_true = (m + m.T) / 2.0
     charges = charges_of(t_true, dirs)
-    t_hat, residual = reconstruct_from_charges(charges, dirs)
+    fit = fit_null_charges(charges, dirs)
+    t_hat = fit.require_consistent(error_budget=1e-12 * np.linalg.norm(charges))
     out = {
-        "consistent_residual": residual,
+        "consistent_residual": fit.residual_norm,
         "tracefree_error": float(
             np.linalg.norm(eta_project_out(t_hat) - eta_project_out(t_true))
         ),
         "design_rank": int(np.linalg.matrix_rank(design_matrix(dirs))),
+        "smallest_singular_value": float(fit.singular_values[-1]),
+        "noise_amplification": fit.noise_amplification,
     }
     # countermodel: violate one linearity relation by bumping one charge
     bad = charges.copy()
     bad[0] += 1.0
-    _, bad_residual = reconstruct_from_charges(bad, dirs)
-    out["inconsistent_residual"] = bad_residual
+    bad_fit = fit_null_charges(bad, dirs)
+    out["inconsistent_residual"] = bad_fit.residual_norm
+    out["inconsistent_witness_charge"] = bad_fit.witness_charge
+    out["inconsistent_witness_design_defect"] = bad_fit.witness_design_defect
     return out
 
 
