@@ -13,6 +13,14 @@ completion is an affine quantum repair. It includes independent recognition
 of supplied conditional expectations and a noncommuting repair convergence
 proof.
 
+`expectations.repair_generator` accepts rates in any common clock unit.
+Its identity and spectral-resolution checks use the generator divided by
+`max(rates)`; the returned generator, gap and defect magnitudes retain the
+input rate units. The report's `rate_scale` is this divisor, and `tolerance`
+applies to defect magnitudes divided by it. Unresolved relative gaps, lost
+positive rates, and unrepresentable rescaled generators still raise; a small
+absolute rate alone does not imply poor numerical resolution.
+
 ## Audit findings and corrections
 
 The audit used main commit `0f7aa44259f53e4f5a1f4cd4904758039975755e`.

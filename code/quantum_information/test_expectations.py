@@ -208,11 +208,78 @@ def test_noncommuting_repairs_have_exact_intersection_and_gap():
         assert np.linalg.norm(output-I/2) <= np.exp(-.1*t)*np.linalg.norm(state-I/2)+1e-13
 
 
-def test_almost_parallel_repairs_cannot_invent_a_large_gap():
+@pytest.mark.parametrize("clock", [1e-20, 1., 1e20])
+def test_almost_parallel_repairs_cannot_invent_a_large_gap(clock):
     a1,a2 = FiniteAlgebra([I,Z]),FiniteAlgebra([I,Z+1e-8*X])
     s1,s2 = (state_preserving_expectation(a,I/2) for a in (a1,a2))
     with pytest.raises(ValueError,match="gap.*unresolved"):
-        repair_generator([s1,s2],[a1,a2],I/2,[.5,.5])
+        repair_generator([s1,s2],[a1,a2],I/2,[.5*clock,.5*clock])
+
+
+@pytest.mark.parametrize("clock", [1e-250, 1e-20, 1., 1e20, 1e250])
+def test_repair_clock_units_preserve_noncommuting_spectrum_and_evolution(clock):
+    # Independent Bloch calculation: two equally weighted dephasings about
+    # Z and (3X+4Z)/5 have decay rates (1/10, 9/10, 1), times clock.
+    n = .6*X + .8*Z
+    algebras = [FiniteAlgebra([I, axis]) for axis in (Z, n)]
+    maps = [linear_matrix(lambda a, axis=axis: (a+axis@a@axis)/2, 2)
+            for axis in (Z, n)]
+    generator, report = repair_generator(maps, algebras, I/2, [.5*clock]*2)
+    assert report["intersection_dimension"] == 1
+    assert report["gap"]/clock == pytest.approx(.1, abs=1e-14)
+    assert np.allclose(np.linalg.eigvalsh(-generator/clock),
+                       [0., .1, .9, 1.], rtol=0, atol=1e-14)
+    bloch_generator = (np.outer([0., 0., 1.], [0., 0., 1.])
+                       + np.outer([.6, 0., .8], [.6, 0., .8]))/2 - np.eye(3)
+    bloch = np.array([.3, .2, .4])
+    state = (I + sum(v*a for v, a in zip(bloch, (X, Y, Z))))/2
+    evolved_bloch = expm(.7*bloch_generator) @ bloch
+    expected = (I + sum(v*a for v, a in zip(evolved_bloch, (X, Y, Z))))/2
+    actual = apply_map(expm((.7/clock)*generator), state, dual=True)
+    assert np.allclose(actual, expected, rtol=0, atol=1e-14)
+
+
+@pytest.mark.parametrize("clock", [1e-20, 1e20])
+def test_clock_units_preserve_nontracial_recharted_repair(clock):
+    algebra, rho, _, channel = nontracial_factor_case()
+    u = expm(.27j*(np.kron(X,Y)+.3*np.kron(Y,Z)))
+    chart = linear_matrix(lambda a: u@a@u.conj().T, 4)
+    changed_algebra = FiniteAlgebra([u@a@u.conj().T for a in algebra.basis])
+    generator, report = repair_generator(
+        [chart@channel@chart.conj().T], [changed_algebra],
+        u@rho@u.conj().T, [clock])
+    assert report["gap"]/clock == pytest.approx(1., abs=1e-13)
+    assert np.allclose(generator/clock, chart@channel@chart.conj().T-np.eye(16),
+                       rtol=0, atol=1e-13)
+
+
+def test_repair_rate_range_cannot_erase_a_primitive_or_overflow_generator():
+    algebras = [FiniteAlgebra([I, axis]) for axis in (Z, X)]
+    maps = [linear_matrix(lambda a, axis=axis: (a+axis@a@axis)/2, 2)
+            for axis in (Z, X)]
+    for rates in ([1e-308, 1e308], [1.7e308, 1.7e308]):
+        with np.errstate(over="ignore", invalid="ignore", under="ignore"):
+            with pytest.raises(ValueError):
+                repair_generator(maps, algebras, I/2, rates)
+
+
+def test_subnormal_clock_cannot_change_a_resolved_slow_decay_rate():
+    # The normalized generator has a resolved gap, but rounding its physical
+    # entries changes the decay of Z from 1.5e-323 to 2e-323. That is not an
+    # admissible representation just because its error is below user tol.
+    algebras = [FiniteAlgebra([I, axis]) for axis in (Z, X)]
+    maps = [np.diag([1., 0., 0., 1.]), (np.eye(4)+np.kron(X, X))/2]
+    with pytest.raises(ValueError, match="underflow"):
+        repair_generator(maps, algebras, I/2, [1e-313, 1.5e-323])
+
+
+def test_exact_single_dephasing_supports_a_representable_subnormal_clock():
+    clock = np.nextafter(0., 1.)
+    channel = np.diag([1., 0., 0., 1.])
+    generator, report = repair_generator(
+        [channel], [FiniteAlgebra([I, Z])], I/2, [clock])
+    assert np.array_equal(generator.real, np.diag([0., -clock, -clock, 0.]))
+    assert report["gap"] == clock
 
 
 @pytest.mark.parametrize("bad", ([],[0.],[1.,0.],[-1.],[True],[1j],[np.nan],[np.inf],
