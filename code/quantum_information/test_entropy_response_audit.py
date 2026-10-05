@@ -125,3 +125,15 @@ def test_large_neighboring_edge_dimensions_do_not_have_equal_logarithms(power):
 def test_unrepresentable_relative_dimension_mismatch_cannot_pass_as_zero():
     with pytest.raises(ValueError, match="resolved|precision"):
         central_normalization_diagnostic([2**1100, 2**1100+1], [0., 0.])
+
+
+def test_nearly_matching_dimension_ratio_and_supplied_energy_keep_the_residual():
+    import mpmath as mp
+    denominator = 2**400
+    with mp.workdps(220):
+        target = mp.e*denominator
+        numerator = int(target)
+        # Independent exp(1) construction; avoid subtracting nearby logs.
+        expected = float(mp.log1p((target-numerator)/numerator))
+    report = central_normalization_diagnostic([denominator, numerator], [0., 1.])
+    assert report["all_sector_transfer_defect"] == pytest.approx(expected, rel=3e-14, abs=0)

@@ -229,7 +229,19 @@ def central_normalization_diagnostic(edge_dims, z_weights):
     z = _numeric(z_weights, "central weights", real=True)
     if z.shape != (len(dims),):
         raise ValueError("one central weight is required per edge dimension")
-    errors = [Fraction(float(v))-Fraction(math.log(d)) for v, d in zip(z, dims)]
+    # Compare relative coefficients before rounding. Separately rounded
+    # log(d) values coincide for distinct large integers such as 2**60 and
+    # 2**60+1. Removing the z origin first also preserves small mismatches
+    # beside a huge common central energy.
+    ctx = mpmath.mp.clone()
+    ctx.dps = max(80, 2*math.ceil(max(d.bit_length() for d in dims)*math.log10(2))+60)
+    base, origin = dims[0], ctx.mpf(float(z[0]))
+    errors = []
+    for value, dimension in zip(z, dims):
+        delta = dimension-base
+        log_ratio = (ctx.log1p(ctx.mpf(delta)/base) if 2*abs(delta) <= base
+                     else ctx.log(dimension)-ctx.log(base))
+        errors.append(ctx.mpf(float(value))-origin-log_ratio)
     hi, lo = max(range(len(dims)), key=errors.__getitem__), min(range(len(dims)), key=errors.__getitem__)
     witness = np.zeros(len(dims))
     if errors[hi] != errors[lo]:

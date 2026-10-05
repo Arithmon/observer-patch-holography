@@ -287,3 +287,19 @@ plus reinstating the binary64 reference log, reducing log precision,
 accepting poorly resolved Gibbs components, flooring log underflow, and
 discarding small reference coherences. The latter five caused 24, 2, 1, 1
 and 20 assertion failures respectively.
+
+A final center-boundary audit reproduced four more failures: distinct edge
+dimensions `2^60` and `2^60+1` (also at powers 500 and 1000) had identical
+rounded logarithms and falsely passed at `z=(0,0)`. Their mismatch is
+`log1p(2^-power)`. At power 1100 the true mismatch is unrepresentable and
+must raise, not pass as zero. The diagnostic now subtracts the common
+central-energy origin first and evaluates relative dimension logarithms
+in a private context whose precision follows the integer bit lengths.
+A fifth control uses a ratio of large integers approaching `exp(1)` and
+checks its small residual against an independent exponential construction.
+
+The final totals are **904 Linux tests passed**, **898 Windows tests passed
+with six existing skips**, and **32 maintainer-audit cases**. All **15**
+isolated mutants fail against the 106 shared-response/audit controls.
+Reinstating separately rounded dimension logs causes five failures;
+reducing the relative-dimension precision to 80 digits causes one.
