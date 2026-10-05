@@ -1,6 +1,7 @@
 """Adversarial and independent controls for finite null tomography."""
 
 import sys
+from fractions import Fraction
 from pathlib import Path
 
 import numpy as np
@@ -117,7 +118,7 @@ def test_exact_cubic_countermodel_and_dependent_family_witness(exact_frame):
     assert abs(fit.witness @ expected_witness) == pytest.approx(1., abs=2e-14)
     assert fit.witness_design_defect < 2e-14
     assert fit.witness_charge == pytest.approx(fit.residual_norm, rel=2e-14)
-    with pytest.raises(ValueError, match="dependent-family"):
+    with pytest.raises(ValueError, match="consistency error budget"):
         fit.require_consistent(error_budget=fit.residual_norm / 2)
     fit.require_consistent(error_budget=fit.residual_norm * 1.01)
 
@@ -150,7 +151,7 @@ def test_tiny_and_large_inconsistent_charges_cannot_pass_by_norm_underflow(scale
     assert fit.residual_norm / scale == pytest.approx(1 / np.sqrt(2), rel=2e-14)
     assert fit.witness_charge / scale == pytest.approx(1 / np.sqrt(2), rel=2e-14)
     assert fit.witness_design_defect < 2e-14
-    with pytest.raises(ValueError, match="dependent-family"):
+    with pytest.raises(ValueError, match="consistency error budget"):
         fit.require_consistent(error_budget=scale / 4)
 
 
@@ -284,3 +285,81 @@ def test_nonzero_noise_bound_cannot_underflow_to_zero():
     assert fit.noise_amplification < .5
     with pytest.raises(ValueError, match="range"):
         fit.tensor_error_bound(np.nextafter(0., 1.))
+
+
+def exact_returned_residual_squared(tensor, charges, rays):
+    """Independent contraction of ORIGINAL inputs and returned binary tensor."""
+    total = Fraction(0)
+    for q, k in zip(charges, rays):
+        value = sum(Fraction(float(tensor[i, j])) * Fraction(float(k[i]))
+                    * Fraction(float(k[j])) for i in range(4) for j in range(4))
+        residual = (Fraction(float(q)) - value) / Fraction(float(k[0]))**2
+        total += residual**2
+    return total
+
+
+def test_consistency_acceptance_replays_the_returned_tensor_not_intermediate_coefficients():
+    rays = np.array(generic_null_directions(12, seed=23))
+    m = np.random.default_rng(23).normal(size=(4, 4))
+    q = charges_of(m + m.T, rays)
+    fit = fit_null_charges(q, rays)
+    exact = exact_returned_residual_squared(fit.tensor, q, rays)
+    actual = float(sp.sqrt(sp.Rational(exact.numerator, exact.denominator)))
+    assert fit.residual_norm == pytest.approx(actual, rel=3e-15, abs=0)
+    # Check both sides against exact rational arithmetic, not a producer flag.
+    for budget in (actual * .99, actual * 1.01, np.nextafter(actual, 0.),
+                   np.nextafter(actual, np.inf)):
+        if exact > Fraction(budget)**2:
+            with pytest.raises(ValueError, match="budget"):
+                fit.require_consistent(error_budget=budget)
+        else:
+            fit.require_consistent(error_budget=budget)
+
+
+def test_result_arrays_cannot_change_the_source_under_an_already_checked_residual():
+    fit = fit_null_charges(np.zeros(9), tomography_directions())
+    for array in (fit.tensor, fit.singular_values, fit.witness):
+        with pytest.raises(ValueError):
+            array.flat[0] = 1.
+        with pytest.raises(ValueError):
+            array.setflags(write=True)
+    returned = fit.require_consistent(error_budget=0)
+    returned[0, 0] = 1.
+    np.testing.assert_array_equal(fit.require_consistent(error_budget=0), np.zeros((4, 4)))
+    legacy, _ = reconstruct_from_charges(np.zeros(9), tomography_directions())
+    legacy[0, 0] = 1.  # Preserve the legacy wrapper's writable return value.
+
+
+@pytest.mark.parametrize("prefix", [0., np.float32(0.), True])
+def test_mixed_python_sequence_cannot_erase_an_integer_before_validation(prefix):
+    data = [prefix, 2**60, 2**60 + 1, 0., 0., 0., 0., 0., 0.]
+    with pytest.raises(ValueError, match="binary64"):
+        fit_null_charges(data, tomography_directions())
+
+
+@pytest.mark.parametrize("scale", [1e-200, 1., 1e200])
+def test_exact_acceptance_includes_raw_ray_and_charge_normalization_roundoff(scale):
+    rays = tomography_directions() * 3.7
+    q = np.linspace(-3., 4., 9) * scale
+    fit = fit_null_charges(q, rays)
+    exact = exact_returned_residual_squared(fit.tensor, q, rays)
+    actual = float(sp.sqrt(sp.Rational(exact.numerator, exact.denominator)))
+    assert fit.residual_norm == pytest.approx(actual, rel=3e-15, abs=0)
+    for budget in (np.nextafter(actual, 0.), np.nextafter(actual, np.inf)):
+        if exact > Fraction(budget)**2:
+            with pytest.raises(ValueError, match="budget"):
+                fit.require_consistent(error_budget=budget)
+        else:
+            fit.require_consistent(error_budget=budget)
+
+
+@pytest.mark.parametrize("scale", [np.nextafter(0., 1.), 1e-320, 1., 1e308])
+def test_metric_projection_removes_exact_metric_even_at_subnormal_units(scale):
+    np.testing.assert_array_equal(eta_project_out(scale * ETA), np.zeros((4, 4)))
+
+
+def test_metric_projection_cannot_silently_drop_unrepresentable_components():
+    t = np.zeros((4, 4))
+    t[0, 0] = np.nextafter(0., 1.)
+    with pytest.raises(ValueError, match="range"):
+        eta_project_out(t)
