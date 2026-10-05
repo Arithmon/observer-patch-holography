@@ -344,12 +344,16 @@ had a wrapped squared norm of one and was incorrectly accepted; float32
 could also round the squared norm of \((1,10^{-4})\) to one. Regression
 controls reject both, along with unsigned-integer and complex64 variants.
 These guards are not interval arithmetic: deviations below the declared
-tolerance can pass. In particular, intersection dimension and spectral gaps
-are numerical diagnostics, not exact certificates. Almost coincident
-algebras can have arbitrarily small gaps. The routine uses a machine-scale
-rank threshold, rejects unresolved positive gaps, and retains a 1e-8-angle
-negative control; sub-resolution distinctions still need exact input or
-certified enclosures. A numerical construction is not a source-law receipt.
+tolerance can pass. Channel conditions and spectral gaps remain numerical
+diagnostics. The [fixed-point audit](REPAIR_FIXED_POINTS.md) replaces the
+old intersection rank threshold with exact elimination on the retained
+supplied spans. It fixes a false dimension-two conserved algebra and
+order-one gap for two distinct, almost parallel qubit repairs. Their true
+slow mode has rate of order the squared angle and must not be deleted from
+the complement. Unresolved positive gaps still raise. The follow-up derives
+the complete finite spectrum and record lifetime, and keeps exact span
+data separate from its numerical basis. A numerical construction is not
+a source-law receipt.
 
 | Existing component | Effect of this audit |
 | --- | --- |
