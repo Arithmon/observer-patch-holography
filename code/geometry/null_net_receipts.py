@@ -2,8 +2,9 @@
 """Finite Gaussian null-net diagnostics, with explicit limits on their scope.
 
 The supplied anti-periodic half-filled ring has a Fourier-projector covariance.
-Proper arcs have faithful reduced states. Site coverage and finite relative
-commutant dimensions are algebraic facts, not scaling-limit standardness.
+Arcs of at most half the ring have faithful reduced states. Site coverage and
+finite relative commutant dimensions are algebraic facts, not scaling-limit
+standardness.
 
 One smeared bond expectation has an explicit limit and a uniform error bound.
 This does not supply mixed-GNS convergence for all observables. Chiral packet

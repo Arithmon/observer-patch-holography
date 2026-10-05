@@ -252,7 +252,8 @@ eigendecomposition, rounded to binary64. No physical clock is attached.
 `OPH-GR-E2E-BRANCH-ENTRY`, already classified as a conditional composition
 with open nonemptiness. Its null-net claim explicitly says finite
 one-particle diagnostics do not instantiate the scaling-limit receipts.
-The spacetime paper, flagship theorem 4.3d and book use common-GNS
+The spacetime paper (including Theorem 4.3d in the shared technical fragment),
+flagship and book use common-GNS
 standardness, cofinal relative-commutant cyclicity, actual half-sided
 inclusions and modular-intersection premises. This repair supplies none of
 those stronger premises and changes none of their theorem statements.
