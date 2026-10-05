@@ -325,7 +325,8 @@
     "OPH-MCKAY-INDEPENDENT-GOLDEN-FIELD-CONTROL",
     "OPH-DARK-SOURCE-DYNAMICS-LENSING",
     "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
-    "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION"
+    "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
+    "OPH-FIXED-DISPERSION-FEASIBILITY"
   ],
   "edges": [
     {
@@ -2857,6 +2858,11 @@
       "from": "OPH-KOIDE-CIRCULANT-IDENTITY",
       "to": "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
       "role": "Supplies the exact positive-chamber balance identity and historical premise ancestry. The independent conditional mass replay does not inherit a physical Yukawa attachment."
+    },
+    {
+      "from": "OPH-A5-SEAM-CURRENT-EDGE30",
+      "to": "OPH-FIXED-DISPERSION-FEASIBILITY",
+      "role": "Reuses the exact edge symbol as a declared physical hypothesis for a bounded kinematic check; physical attachment, interactions and frozen comparison permissions are not transferred."
     }
   ]
 }

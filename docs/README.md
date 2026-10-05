@@ -124,6 +124,10 @@ order:
 
 **Independent comparison.**
 
+- [Can the fixed edge dispersion support the proposed photon test?](research/DISPERSION_FEASIBILITY.md)
+  bounds the exact pair-production thresholds and distinguishes vacuum emission
+  in two specified lepton controls, verified by
+  [`code/dispersion_feasibility`](../code/dispersion_feasibility/).
 - [Independent alpha/tau reproduction and the first bounded natural comparison](research/INDEPENDENT_POSTDICTION_COMPARISON.md)
   reproduces both certified alpha roots and the conditional tau window, verified by
   [`code/independent_postdictions`](../code/independent_postdictions/).
