@@ -52,6 +52,9 @@ def test_consistent_charges_reconstruct_tracefree_part_exactly():
 def test_inconsistent_charges_have_irreducible_residual():
     r = tomography_receipt()
     assert r["inconsistent_residual"] > 0.1
+    assert abs(r["inconsistent_witness_charge"] - r["inconsistent_residual"]) < 1e-11
+    assert r["inconsistent_witness_design_defect"] < 1e-11
+    assert abs(r["noise_amplification"] * r["smallest_singular_value"] - 1) < 1e-14
 
 
 def test_eta_ambiguity_is_exactly_the_reconstruction_freedom():
