@@ -10,8 +10,8 @@
   "papers": {
     "deriving_standard_model_gauge_structure_from_observer_overlap_consistency": {
       "pdf_path": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf",
-      "sha256": "3486ad7ff07057c7a22be9bfe39e01fccd511697512776deeb69227bf7e9f801",
-      "size_bytes": 737125
+      "sha256": "3eb0d73aaf4b8ca6b9a6b674c2591fe20b56fa66b9d1f464b9d67604c37b2960",
+      "size_bytes": 737103
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
@@ -20,8 +20,8 @@
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
-      "sha256": "76b4c1da5794e7cb953401f3aea1351bbadfcf29a1f7b06fa89a8f76681958b8",
-      "size_bytes": 427369
+      "sha256": "7d0431dcbcb8445f9a07566e9257379c4cdb62ebc3326e30935bc245b66a7bed",
+      "size_bytes": 427351
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
@@ -40,8 +40,8 @@
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "4be431145b20af4b0715a895740988e1d5a156f35ce1b55c5405ed97ff458311",
-      "size_bytes": 1233682
+      "sha256": "e68cb09f2850887dace01e51c6b50608f066ae22904896c53da393d9c62a6e98",
+      "size_bytes": 1233667
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
