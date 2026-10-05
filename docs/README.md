@@ -112,6 +112,10 @@ order:
 
 **Gravity and the dark sector.**
 
+- [Finite geometry: support, refinement and oriented caps](../code/geometry/GEOMETRY_RECEIPT_AUDIT.md)
+  audits the geometry readout, preserves higher-dimensional joint support,
+  certifies midpoint subdivisions, and reconstructs oriented caps from
+  explicit conformal data and a side witness.
 - [What a calibrated source clock does and does not fix about light bending](research/PAIRED_SOURCE_GRAVITY.md)
   proves that the calibrated clock-field response does not select the
   light-deflection coefficient, verified by [`code/paired_gravity`](../code/paired_gravity/).
