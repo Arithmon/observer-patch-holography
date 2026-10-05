@@ -22,6 +22,17 @@ for Essays on Gravitation. It argues that gravity cannot be added to quantum fie
 because it is the geometry the fields are written on, and reaches Einstein's equation from
 finite observers that must agree, using Jacobson's thermodynamic derivation.
 
+**Scientific reading notice (5 October 2026).** Essay E's submitted source and PDF
+are preserved as historical artifacts; this notice is not a revised submission.
+Read its claims with the current [flagship paper](../flagship/from_observer_consensus_to_standard_physics.pdf).
+Classical conditional resampling does not by itself establish quantum Petz recovery;
+a consensus fixed point does not by itself establish stationarity of geometric
+generalized entropy; and defining an observer does not discharge the physical
+event, clock, stress, area and continuum identifications. Nine null readings
+reconstruct a supplied symmetric tensor modulo the metric, but do not establish
+that arbitrary directional readings form physical stress. The current paper
+retains these identifications as explicit premises, not demonstrated physics.
+
 ## Build
 
 Figures for A to D are in `figures/` as PDF; the figure in E is drawn in its source with

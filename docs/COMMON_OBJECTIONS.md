@@ -287,6 +287,11 @@ Markovity, or on a fixed collar model with a collar-local replacement modulus
 collar-dependent Lojasiewicz-type rate, but it is not a dimension-free
 one-shot trace-norm theorem for arbitrary tripartite systems.
 
+For CMI `I` in bits the guarantee is root fidelity at least `2^(-I/2)`,
+equivalently squared Uhlmann fidelity at least `2^(-I)`. It is an existence
+statement about a suitable recovery channel, not a bound on every unrotated
+Petz map. The hardware benchmark reports squared fidelity for its tested map.
+
 The BW and Einstein branches then carry the finite-stage defects through
 regularized controlled modular transport. The exact Lorentz/Einstein
 statements are controlled scaling-limit statements, not finite-cutoff exact
@@ -383,6 +388,11 @@ event, and connectedness, the minimal theorem derives balance on every null
 vector, the metric ambiguity and its constancy, and the finite Einstein shape
 
 `geometry_ab = coupling stress_ab + Lambda eta_ab`.
+
+The supplied-tensor premise matters: any nine readings interpolate a tensor
+in this frame. Extra directions test the dependent-family relations within
+a declared measurement and numerical error budget; a successful fit does not
+establish physical stress or control every unsampled direction.
 
 A separate normalized adapter takes a supplied
 `SourceOrderFrameCompatibilityPacket`, vacuum-reference equality, and scale
