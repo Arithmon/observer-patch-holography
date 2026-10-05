@@ -967,8 +967,6 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/collar_alignment/test_msa_characterizations.py",
             "code/geometry/test_collar_recoverability_receipts.py",
             "code/geometry/test_einstein_closure_receipts.py",
-            "code/geometry/test_first_law_audit.py",
-            "code/quantum_information/test_entropy_response.py",
             "code/maxent/test_maxent_closure_acceptance.py",
             "code/geometry/test_modular_clock_instrumentation.py",
             "code/geometry/test_quotient_cap_readout.py",

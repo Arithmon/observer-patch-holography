@@ -169,7 +169,10 @@ and legacy defect keys, but mark **schema 2**: the first-law defects and
 primary Gibbs slope now concern analytic tangents. Finite changes and
 secants have separate keys. No committed JSON receipt consumes these two
 functions; their callers are the tests and mandatory gravity suite. The
-new tests are part of that suite and the Windows/Linux quantum CI lane.
+existing gravity-suite assertions are tightened, and the dedicated
+Windows/Linux quantum CI lane collects all new regression files. The
+mandatory runner is byte-frozen by the invariant-mining campaign and stays
+byte-identical to main; no freeze is regenerated to add test-list entries.
 
 The entropy-bridge row `OPH-GR-D4D-ENTROPY-BRIDGE` and the shared derivation
 paper fragment now distinguish the tangent theorem, finite remainder and
@@ -178,7 +181,10 @@ the cap remainder correctly. The two papers including the shared fragment
 are rebuilt; the Standard Model branch skips the affected Einstein section.
 Its PDF remains byte-identical. The changed Einstein PDF and the active
 publication manifest are refreshed in preview mode; no release is bumped.
-The recent book calibration correction is separate upstream work. No
+The recent book calibration correction from #1047 is integrated from main.
+The live M1 necessity receipt binds the complete entropy-bridge registry
+row: its canonical producer refreshes that one row hash. Physical outputs,
+dependency roles, source pins and frozen evidence remain unchanged. No
 book equation, Lean theorem, gravity-ladder status, D10 calibration result,
 frozen registration, pinned historical evidence or source-selection claim
 is promoted by this repair.
@@ -192,12 +198,13 @@ python tools/build_gravity_ladder.py --check
 ```
 
 The targeted independent controls live in `test_entropy_response.py` and
-`test_first_law_audit.py`; they include malformed-input rejection, wrong
+`test_first_law_audit.py`; maintainer-audit extensions are in
+`test_entropy_response_audit.py`. They include malformed-input rejection, wrong
 generator and normalization witnesses, noncommuting finite changes,
 330-digit near-equilibrium scalar spectra, pure-source/faithful-reference
 boundaries and a finite secant that demonstrably differs from its tangent.
 
-The full affected suite passed 872 tests on Linux and 866 on Windows, with
+The initial affected suite passed 872 tests on Linux and 866 on Windows, with
 six pre-existing extended-precision skips on Windows. All 52 publication
 manifest tests passed. Both paper builds passed the warning gate; the
 changed Einstein pages 75 and 85 and continuation page 76 were rendered
@@ -218,3 +225,65 @@ producer. Every mutation caused assertion failures:
 | Use first rather than second power of energy units in the variance | 10 |
 | Reverse the Gibbs entropy derivative | 9 |
 | Accept traceful tangents | 1 |
+
+## Maintainer audit of the response implementation
+
+Ten further failing regressions were committed before the follow-up fix.
+They exposed two numerical weaknesses in the first implementation:
+
+- For `sigma=I/2+epsilon X`, a binary64 eigensolve erased coherences such as
+  `epsilon=1e-20` and reported both zero tangent entropy and zero mismatch
+  against a constant generator. The correct tangent on `X` is
+  `-log((1+2 epsilon)/(1-2 epsilon))`. The finite change from epsilon to
+  twice epsilon was consequently reported as `-2 epsilon^2` rather than
+  `-6 epsilon^2+O(epsilon^4)`.
+- At observable scale `1e-160`, separately rounded subnormal variance and
+  entropy derivative produced slope `1.299901185770751` at multiplier `1.3`.
+  A nonzero stored component alone does not establish adequate precision.
+
+The response layer now diagonalizes the scalar-subtracted reference in a
+private multiprecision context and uses `log1p` before restoring the scalar
+origin. It preserves exact coordinate blocks using nonzero adjacency, with
+no tolerance that could erase a small coupling. The output precision has
+a 400-decimal-digit floor and grows with the component range. Merely
+resolving first- and second-order input scales was insufficient: on a
+five-site path with coupling `1e-80`, an intermediate implementation
+reported a fourth-order response near `2.48e-300` instead of `3.125e-318`.
+The retained path-series control catches this, as well as the quadratic
+diagonal response on a three-site path.
+
+An underflowing log entry is not automatically replaced by zero. If it
+vanishes on every centered power `I,A,...,A^(n-1)`, exact rational arithmetic
+certifies that its real or imaginary component vanishes for the centered
+logarithm too: spectral interpolation represents `log(A)` by a real
+polynomial of degree below `n`. Otherwise an unrepresentable nonzero entry
+raises. This handles exact zeros in connected matrices, not just separate
+blocks, and distinguishes them from small added coherences. The controls
+use an exact `Q^2=2I` example and a nonzero response below binary64 range.
+Support remains subject to the original faithful-state validator; this
+does not infer exact rank or make the numerical log an interval proof.
+
+The Gibbs tangent components must retain their exact-accumulation values
+within eight binary64 epsilons relatively, and their ratio must agree with
+the analytic slope within sixteen epsilons. Insufficient subnormal
+precision raises explicitly. Independent unequal-weight complex-coherence
+controls extend through amplitude `1e-300`, and the private numerical
+context leaves the caller's global mpmath precision unchanged.
+
+The CI audit also detected two binding defects. The live M1 row hash is
+regenerated as described above; the independently replayed graph results
+do not change. The invariant-mining failure came from adding entries to
+its byte-frozen mandatory runner. Restoring that runner preserves the
+original freeze and its independent verifier, while the existing quantum
+CI workflow already executes the additional tests on both platforms.
+
+After these repairs, the full affected suite passed **899 tests on Linux**
+and **893 on Windows**, with the same six extended-precision skips. The
+M1 necessity and invariant-mining controls passed all **116 tests**, and
+the independent freeze verifier reported `GENERATION_LOCK_VALID`.
+The follow-up adds 27 audit cases. All 13 isolated mutants were caught
+against the 101 shared-response and audit controls: the original eight,
+plus reinstating the binary64 reference log, reducing log precision,
+accepting poorly resolved Gibbs components, flooring log underflow, and
+discarding small reference coherences. The latter five caused 24, 2, 1, 1
+and 20 assertion failures respectively.

@@ -1076,6 +1076,7 @@
         "code/geometry/test_first_law_audit.py",
         "code/quantum_information/entropy_response.py",
         "code/quantum_information/test_entropy_response.py",
+        "code/quantum_information/test_entropy_response_audit.py",
         "code/geometry/ENTROPY_FIRST_LAW_AUDIT.md",
         "code/particles/calibration/derive_d10_gravity_shared_edge_entropy_bridge.py",
         "code/particles/runs/calibration/d10_gravity_shared_edge_entropy_bridge.json",
