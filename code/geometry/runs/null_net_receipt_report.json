@@ -1,8 +1,10 @@
 {
   "artifact": "oph_null_net_receipt_instrumentation",
+  "schema_version": 2,
   "object_id": "NullNetReceipts_Issue503",
   "issue": 503,
-  "scope": "one-particle-level finite receipts on the declared Gaussian collar family; the Cyc limit clause and all second-quantized scaling-limit clauses are the paper's theorems/receipts, and the source-causal physical-placement, faithful-embedding, continuum-limit, and UC/VR/scale physical families are outside this module",
+  "audit_issue": 1033,
+  "scope": "Supplied finite Gaussian family. Analytic finite faithfulness and one-observable convergence; numerical packet transport and scalar envelope fits. No mixed-GNS, HSM, operator Lie-closure, continuum standardness or physical identification is certified. Legacy verdict names containing 'lie_closure' refer only to envelope diagnostics.",
   "rings": [
     16,
     32,
@@ -49,74 +51,126 @@
     {
       "n_ring": 16,
       "occupation_gap_log10": -6.050234825754679,
-      "strictly_faithful": true
+      "strictly_faithful": true,
+      "working_precision_digits": 120
     },
     {
       "n_ring": 32,
       "occupation_gap_log10": -13.825266199103329,
-      "strictly_faithful": true
+      "strictly_faithful": true,
+      "working_precision_digits": 120
     },
     {
       "n_ring": 64,
       "occupation_gap_log10": -29.718932572675993,
-      "strictly_faithful": true
+      "strictly_faithful": true,
+      "working_precision_digits": 120
     }
   ],
   "mixed_gns_cauchy": {
+    "scope": "one supplied smeared bond expectation; not mixed-GNS convergence",
     "rings": [
       16,
       32,
       64
     ],
     "values": [
-      0.08030397789281744,
-      0.07991676825383083,
-      0.07982049875266346
+      0.08030397789281742,
+      0.0799167682538308,
+      0.07982049875266342
+    ],
+    "limit_value": 0.07978843320880018,
+    "limit_error_bounds_exact": [
+      "7298/56085",
+      "14354/225429",
+      "28466/902805"
+    ],
+    "pairwise_cauchy_bounds_exact": [
+      "816741644/4214395155",
+      "6458641628/67839476115"
     ],
     "cauchy_differences": [
       0.0003872096389866131,
-      9.626950116736754e-05
+      9.626950116738142e-05
     ],
-    "cauchy_decreasing": true
+    "cauchy_decreasing": true,
+    "single_observable_limit_proved": true,
+    "mixed_gns_certified": false
   },
   "hsm_compression": [
     {
       "n_ring": 16,
       "modular_time": 0.12,
-      "leakage_plus": 0.014908742157107366,
-      "leakage_minus": 0.14263049908537248,
-      "compressing_sign": "+",
-      "asymmetry_ratio": 9.566903604767019
+      "leakage_plus": 0.01490874215710736,
+      "leakage_minus": 0.1426304990853726,
+      "lower_packet_leakage_sign": "+",
+      "asymmetry_ratio": 9.566903604767031,
+      "max_subspace_leakage_plus": 0.6536057164707211,
+      "max_subspace_leakage_minus": 0.6536057164707211,
+      "max_subspace_sign_difference": 0.0,
+      "unitarity_defect_max": 3.4539602874815015e-16,
+      "proper_finite_subspace_inclusion_possible": false,
+      "hsm_inclusion_certified": false
     },
     {
       "n_ring": 32,
       "modular_time": 0.12,
-      "leakage_plus": 0.0017749508964785344,
+      "leakage_plus": 0.001774950896478534,
       "leakage_minus": 0.06784638560557309,
-      "compressing_sign": "+",
-      "asymmetry_ratio": 38.22437327149664
+      "lower_packet_leakage_sign": "+",
+      "asymmetry_ratio": 38.224373271496646,
+      "max_subspace_leakage_plus": 0.9835608720945725,
+      "max_subspace_leakage_minus": 0.9835608720945725,
+      "max_subspace_sign_difference": 0.0,
+      "unitarity_defect_max": 1.4365567013901723e-15,
+      "proper_finite_subspace_inclusion_possible": false,
+      "hsm_inclusion_certified": false
     },
     {
       "n_ring": 64,
       "modular_time": 0.12,
-      "leakage_plus": 1.3554932692837132e-05,
-      "leakage_minus": 0.0398662107166155,
-      "compressing_sign": "+",
-      "asymmetry_ratio": 2941.085110491335
+      "leakage_plus": 1.3554932692837137e-05,
+      "leakage_minus": 0.03986621071661547,
+      "lower_packet_leakage_sign": "+",
+      "asymmetry_ratio": 2941.0851104913313,
+      "max_subspace_leakage_plus": 0.9999941955844127,
+      "max_subspace_leakage_minus": 0.9999941955844127,
+      "max_subspace_sign_difference": 0.0,
+      "unitarity_defect_max": 2.375049727099462e-15,
+      "proper_finite_subspace_inclusion_possible": false,
+      "hsm_inclusion_certified": false
     }
   ],
   "lie_closure": [
     {
       "n_ring": 32,
-      "relative_residual": 0.0016517472212006236,
-      "relative_residual_unresummed_control": 0.035874753784235144,
-      "normalization_alpha": 0.24792635728009574
+      "scope": "normalized scalar envelope fit only",
+      "rmax": null,
+      "all_even_ranges": true,
+      "fit_sample_count": 8,
+      "relative_residual": 0.0009036818088310168,
+      "normalization_alpha": 0.24836691841929576,
+      "relative_residual_unresummed_control": 0.03587475378423514,
+      "relative_residual_r8_control": 0.001651747221200639,
+      "omitted_envelope_bound_max": 0.0,
+      "commutator_frobenius_norm": 212.141839586544,
+      "real_symmetric_span_relative_distance": 1.0,
+      "operator_lie_closure_certified": false
     },
     {
       "n_ring": 64,
-      "relative_residual": 0.006636352219369,
-      "relative_residual_unresummed_control": 0.060224392682918994,
-      "normalization_alpha": 0.24652381723271133
+      "scope": "normalized scalar envelope fit only",
+      "rmax": null,
+      "all_even_ranges": true,
+      "fit_sample_count": 20,
+      "relative_residual": 0.00036953259157334505,
+      "normalization_alpha": 0.249611647426691,
+      "relative_residual_unresummed_control": 0.06022439268291897,
+      "relative_residual_r8_control": 0.006636352219369001,
+      "omitted_envelope_bound_max": 0.0,
+      "commutator_frobenius_norm": 619.0381039056448,
+      "real_symmetric_span_relative_distance": 1.0,
+      "operator_lie_closure_certified": false
     }
   ],
   "verdicts": {
@@ -124,32 +178,30 @@
     "weak_additivity_all_stages": true,
     "separating_all_stages": true,
     "mixed_gns_cauchy_decreasing": true,
-    "hsm_asymmetry_min_ratio": 9.566903604767019,
-    "hsm_direction_consistent": true,
+    "packet_asymmetry_min_ratio": 9.566903604767031,
+    "packet_direction_consistent": true,
     "lie_closure_residuals": [
-      0.0016517472212006236,
-      0.006636352219369
+      0.0009036818088310168,
+      0.00036953259157334505
     ],
     "lie_closure_percent_level": true,
-    "lie_closure_rate_certified": false,
-    "lie_closure_unresummed_controls": [
-      0.035874753784235144,
-      0.060224392682918994
-    ]
+    "lie_closure_residuals_decreasing": true,
+    "lie_closure_rate_certified": false
   },
   "receipts_witnessed": {
     "nti": true,
     "weak_additivity": true,
     "separating_faithfulness": true,
-    "mixed_gns_cauchy": true,
-    "hsm_compression_one_particle": true,
-    "modular_lie_closure_percent_level": true
+    "single_bond_observable_limit": true,
+    "mixed_gns_cauchy": false,
+    "hsm_compression_one_particle": false,
+    "modular_lie_closure_percent_level": false
   },
   "receipts_pending": [
-    "Cyc limit clause (cyclicity modulus along refinement)",
-    "Lie-closure convergence rate (percent-level match witnessed; the decay of the smooth subleading systematic is uncertified)",
-    "second-quantized MI relations (one-particle Lie closure is the finite surrogate)",
-    "source-causal event/link adequacy, physical placement, faithful embedding, and continuum-limit certificates",
-    "UC/VR/scale physical-identification receipts"
+    "Mixed-GNS convergence for the required observable family",
+    "Cyc limit clause and standard relative commutants on the common GNS space",
+    "Half-sided modular inclusion and modular-intersection relations in the limit",
+    "Operator Lie closure and any continuum convergence rate",
+    "Source-causal physical placement, faithful embedding, continuum limit and UC/VR/scale identification"
   ]
 }
