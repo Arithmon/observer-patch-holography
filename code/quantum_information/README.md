@@ -6,6 +6,13 @@ null-net and Einstein-closure evidence. It uses natural logarithms and the
 ordinary matrix trace. It implements finite numerical diagnostics, not a
 physical state selection or a proof of exact rank from approximate matrices.
 
+The follow-up [algebra and repair audit](ALGEBRAS_AND_REPAIR.md) fixes regional
+separation and basis normalization, replaces dense standardness matrices with
+reduced spectra, and classifies exactly when finite relative-entropy
+completion is an affine quantum repair. It includes independent recognition
+of supplied conditional expectations and a noncommuting repair convergence
+proof.
+
 ## Audit findings and corrections
 
 The audit used main commit `0f7aa44259f53e4f5a1f4cd4904758039975755e`.

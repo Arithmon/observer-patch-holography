@@ -134,6 +134,10 @@ order:
   records the entropy and collar audit, gives the direct-sum form of the finite
   A3 objective, and documents the shared implementation and corrected
   Markov-state, alignment and MaxEnt checks.
+- [When finite entropy completion is a repair channel](../code/quantum_information/ALGEBRAS_AND_REPAIR.md)
+  proves the equivalence between affine full-marginal completion, modular
+  compatibility and reference-preserving conditional expectation. It corrects
+  regional standardness checks and treats noncommuting primitive repairs.
 
 ## Instrument Specifications
 

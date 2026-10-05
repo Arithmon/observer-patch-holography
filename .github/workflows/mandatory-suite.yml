@@ -53,9 +53,9 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         # Manual full=true preserves one unsharded full run on each OS.
-        # Nine partitions separate the long three-axiom campaign from the
+        # Ten partitions separate the long three-axiom campaign from the
         # fingerprint suite while retaining the 30-minute worker ceiling.
-        shard: ${{ fromJSON(inputs.full && '[0]' || '[0,1,2,3,4,5,6,7,8]') }}
+        shard: ${{ fromJSON(inputs.full && '[0]' || '[0,1,2,3,4,5,6,7,8,9]') }}
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -86,13 +86,13 @@ jobs:
         run: python -m pytest -q code/P_derivation/test_selection_accounting.py code/P_derivation/test_printed_pair_identity.py evidence/source_net_causal_poset/manifold_refinement/test_verify.py code/particles/flavor/test_full_entropy_w5_selector.py code/particles/flavor/test_conditional_quark_mass_replay.py code/particles/flavor/test_verify_conditional_quark_mass_replay.py code/particles/flavor/test_compare_conditional_quark_masses.py code/particles/calibration/test_conditional_top_fixed_p.py code/particles/flavor/test_source_w5_response_constraints.py code/particles/flavor/test_native_repair_flavor_constraints.py code/particles/calibration/test_top_positive_capacity_band.py code/particles/flavor/test_native_record_renewal.py code/particles/flavor/test_exterior_higgs_response.py code/particles/calibration/test_source_ew_vev_matching.py code/particles/calibration/test_verify_source_ew_vev_matching.py code/particles/calibration/test_compare_source_ew_vev_matching.py
 
       # The same standard command sequence is partitioned without omissions
-      # across nine fresh-checkout shards per OS. It validates the scientific claim registry (#512),
+      # across ten fresh-checkout shards per OS. It validates the scientific claim registry (#512),
       # generated scientific registers, and the release manifest (#514,
       # unconditional on every push/PR so manifest drift cannot be bypassed by
       # a path-filter miss), collects the full scientific suite, and executes
       # the fast validation fixtures.
       - name: Run the mandatory suite
-        run: python tools/run_mandatory_suite.py ${{ inputs.full && '--full' || format('--shard-index {0} --shard-count 9', matrix.shard) }}
+        run: python tools/run_mandatory_suite.py ${{ inputs.full && '--full' || format('--shard-index {0} --shard-count 10', matrix.shard) }}
 
   # Preserve the historical status names. Each requires the entire worker
   # matrix to succeed; failed, cancelled, or skipped workers cannot pass.

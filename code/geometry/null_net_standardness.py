@@ -42,6 +42,9 @@ from quantum_information import (
     conditional_mutual_information, density_matrix, dimensions, direct_sum_state,
     faithful_log, one_sided_projection, partial_trace, probabilities, von_neumann_entropy,
 )
+from quantum_information.algebras import (
+    resolved_state_spectrum, separation_modulus, tensor_separation_modulus,
+)
 
 TOL = 1e-9
 
@@ -68,7 +71,11 @@ def site_op(op: np.ndarray, site: int, n: int) -> np.ndarray:
 # ---------------------------------------------------------------------------
 
 def gns_vector(rho: np.ndarray) -> np.ndarray:
-    """Omega = vec(sqrt(rho)) in H (x) H; the algebra acts as a (x) 1."""
+    """Canonical HS vector vec(sqrt(rho)); the algebra acts as a tensor 1.
+
+    For a nonfaithful state, its cyclic subspace is the GNS space, not the
+    entire ambient Hilbert-Schmidt representation used by these diagnostics.
+    """
     rho = density_matrix(rho)
     evals, vecs = np.linalg.eigh(rho)
     evals = np.maximum(evals, 0.0)
@@ -96,43 +103,25 @@ def cyclicity_dimension(ops: list[np.ndarray], omega: np.ndarray) -> int:
 
 
 def separating_modulus(ops_basis: list[np.ndarray], omega: np.ndarray) -> float:
-    """min over unit-HS-norm algebra elements a of |a Omega|: > 0 iff separating.
-
-    Assumes `ops_basis` is HS-orthogonal with equal norms (matrix units,
-    possibly tensored with an identity), so a = sum_i c_i b_i / beta has unit
-    HS norm exactly when |c| = 1 and the modulus is sigma_min(M) / beta for
-    M = [b_1 Omega | b_2 Omega | ...]."""
-    beta = float(np.linalg.norm(ops_basis[0], "fro"))
-    mat = np.stack([op @ omega for op in ops_basis], axis=1)
-    sv = np.linalg.svd(mat, compute_uv=False)
-    smallest = sv[-1] if len(sv) == len(ops_basis) else 0.0
-    if mat.shape[0] < len(ops_basis):
-        smallest = 0.0  # more basis elements than dimensions: kernel exists
-    return float(smallest) / beta
+    """Basis-independent separation modulus with ambient operator HS norm."""
+    return separation_modulus(ops_basis, omega)
 
 
 def full_algebra_standard(rho: np.ndarray) -> tuple[bool, bool]:
-    """(cyclic, separating) for the full matrix algebra in its GNS space."""
-    d = rho.shape[0]
-    omega = gns_vector(rho)
-    ops = [left_action(a, d) for a in algebra_basis(d)]
-    cyclic = cyclicity_dimension(ops, omega) == d * d
-    separating = separating_modulus(ops, omega) > 1e-10
-    return cyclic, separating
+    """Numerical (cyclic, separating) in the full HS representation.
+
+    The action singular values are sqrt(eigenvalues(rho)), each repeated d
+    times. Faithfulness is a support condition, not a fixed lower bound on
+    the separation modulus. Unresolved numerical support raises.
+    """
+    eigenvalues = resolved_state_spectrum(rho)
+    faithful = bool(eigenvalues[0] > 0)
+    return faithful, faithful
 
 
 def subalgebra_separating(rho: np.ndarray, dims: list[int], region: list[int]) -> bool:
-    """Separation passes to subalgebras: the half-line algebra on `region`."""
-    d = int(np.prod(dims))
-    omega = gns_vector(rho)
-    sub_ops = []
-    d_reg = int(np.prod([dims[i] for i in region]))
-    for a_small in algebra_basis(d_reg):
-        # embed: operators supported on `region` (contiguous prefix assumed)
-        rest = d // d_reg
-        a_full = np.kron(a_small, np.eye(rest))
-        sub_ops.append(left_action(a_full, d))
-    return separating_modulus(sub_ops, omega) > 1e-10
+    """Separation for the actual declared region, including non-prefix slots."""
+    return tensor_separation_modulus(rho, dims, region) > 0
 
 
 def commutant_cyclicity_implies_separating(d: int, seed: int = 7) -> tuple[bool, bool]:

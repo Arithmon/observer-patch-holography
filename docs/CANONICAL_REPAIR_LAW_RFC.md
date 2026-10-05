@@ -6,6 +6,15 @@ This document specifies a proposed strengthening of A1 and A2. It is not part
 of the three-axiom basis. Adoption requires the proof and refinement gates
 listed below.
 
+The [finite algebra and repair audit](../code/quantum_information/ALGEBRAS_AND_REPAIR.md)
+classifies when relative-entropy completion from every retained-algebra
+marginal, over its full fiber, is affine: exactly when that algebra is modular invariant
+under the faithful reference. It then equals the dual of the unique
+reference-preserving expectation. The audit supplies finite recognizers and
+a convergence proof for noncommuting primitive expectations. This result
+does not adopt the proposal or establish that an arbitrary OPH feasible
+family is such a marginal fiber.
+
 The proposed A1-R and A2-R clauses are substantive basis amendments, not
 clarifications of consequences that follow from the current wording. They
 exclude models that satisfy the present A1-A3 basis. Keeping them inside A1
