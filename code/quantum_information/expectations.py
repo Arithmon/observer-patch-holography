@@ -113,6 +113,9 @@ def repair_generator(superoperators, algebras, reference, rates, *, tol=1e-9):
     Returns the generator and a numerical intersection/gap diagnostic. The
     finite theorem needs positive rates but does not require commuting E_m.
     Rates are supplied data; this does not select their values or a clock.
+    Generator identity tolerances apply after division by max(rates), so
+    changing clock units cannot change acceptance. Returned gaps and defects
+    retain the supplied rate units; rate_scale records that common divisor.
     """
     tol = _tolerance(tol)
     if (not isinstance(superoperators, (list, tuple)) or not superoperators
@@ -132,20 +135,25 @@ def repair_generator(superoperators, algebras, reference, rates, *, tol=1e-9):
         if not expectation_diagnostics(s, algebra, rho, tol=tol)["passed"]:
             raise ValueError("supplied primitive is not a reference-preserving expectation")
     identity = np.eye(d*d)
-    generator = operator(sum(rate*(s-identity) for rate, s in zip(rates, maps)), d*d)
+    rate_scale = max(rates)
+    relative_rates = [rate/rate_scale for rate in rates]
+    if any(rate == 0 for rate in relative_rates):
+        raise ValueError("relative repair rates underflow; precision is insufficient")
+    normalized = operator(
+        sum(rate*(s-identity) for rate, s in zip(relative_rates, maps)), d*d)
     target = state_preserving_expectation(common, rho, tol=tol)
     # R^* R = W turns the weighted Dirichlet form into an ordinary Hermitian
     # matrix. Its kernel dimension is supplied by the actual intersection,
     # rather than inferred by deleting arbitrary small positive eigenvalues.
     r = np.linalg.cholesky(weight).conj().T
-    symmetric = operator(np.linalg.solve(r.T, (-r @ generator).T).T, d*d)
+    symmetric = operator(np.linalg.solve(r.T, (-r @ normalized).T).T, d*d)
     hermitian_defect = float(np.linalg.norm(symmetric-symmetric.conj().T))
     spectrum = np.linalg.eigvalsh((symmetric+symmetric.conj().T)/2)
     count = common.dimension
     kernel_defect = float(np.max(np.abs(spectrum[:count])))
-    stationarity = float(np.linalg.norm(apply_map(generator, rho, dual=True)))
-    target_residuals = [float(np.linalg.norm(generator @ target)),
-                        float(np.linalg.norm(target @ generator))]
+    stationarity = float(np.linalg.norm(apply_map(normalized, rho, dual=True)))
+    target_residuals = [float(np.linalg.norm(normalized @ target)),
+                        float(np.linalg.norm(target @ normalized))]
     residuals = [hermitian_defect, kernel_defect, stationarity, *target_residuals]
     if not all(np.isfinite(value) for value in residuals):
         raise ValueError("repair diagnostics exceed finite numerical range")
@@ -155,13 +163,29 @@ def repair_generator(superoperators, algebras, reference, rates, *, tol=1e-9):
     gap = None if count == d*d else float(spectrum[count])
     if gap is not None and gap <= 64*np.finfo(float).eps*d*d*max(1.,float(spectrum[-1])):
         raise ValueError("positive repair gap is numerically unresolved")
+    # Restore physical units only after the scale-free checks. Reject loss of
+    # the represented generator or its positive gap at the float range edges.
+    with np.errstate(over="ignore", under="ignore", invalid="ignore"):
+        generator = operator(rate_scale*normalized, d*d)
+        # Divide the real components separately: complex division by a
+        # subnormal scalar can itself overflow its reciprocal.
+        restored = generator.real/rate_scale + 1j*(generator.imag/rate_scale)
+    representation_roundoff = (8*np.finfo(float).eps*d*d
+                               * max(1., float(np.linalg.norm(normalized))))
+    if np.linalg.norm(restored-normalized) > representation_roundoff:
+        raise ValueError("repair generator underflow; precision is insufficient")
+    if gap is not None:
+        gap *= rate_scale
+        if not np.isfinite(gap) or gap <= 0:
+            raise ValueError("positive repair gap exceeds finite numerical range")
     return generator, {
         "intersection_dimension": count,
         "complement_dimension": d*d-count,
         "gap": gap,
-        "weighted_hermiticity_defect": hermitian_defect,
-        "kernel_defect": kernel_defect,
-        "stationarity_defect": stationarity,
-        "intersection_fixation_defect": target_defect,
+        "weighted_hermiticity_defect": hermitian_defect*rate_scale,
+        "kernel_defect": kernel_defect*rate_scale,
+        "stationarity_defect": stationarity*rate_scale,
+        "intersection_fixation_defect": target_defect*rate_scale,
+        "rate_scale": rate_scale,
         "tolerance": tol,
     }

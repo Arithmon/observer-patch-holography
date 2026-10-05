@@ -7,7 +7,7 @@ No positive eigenvalue is discarded or replaced by a logarithm floor.
 These numerical diagnostics do not certify exact rank from approximate data.
 """
 
-from math import prod
+from math import fsum, prod
 
 import numpy as np
 
@@ -140,6 +140,55 @@ def faithful_log(rho):
     return (vectors * np.log(eigenvalues)) @ vectors.conj().T
 
 
+def _relative_entropy_remainder(a, b, eig_a, vec_a, eig_b, vec_b):
+    """Stable trace Bregman remainder plus the supplied trace difference.
+
+    Sum |<u_i,v_j>|^2 [p_i log(p_i/q_j) - p_i + q_j], then add
+    Tr(a-b). Each bracket is nonnegative, so nearby normalized states do
+    not require subtracting two entropy terms of order one.
+    """
+    difference = a - b
+    action = vec_a.conj().T @ difference @ vec_b
+    terms = ([float(x.real) for x in np.diag(a)]
+             + [-float(x.real) for x in np.diag(b)])
+    for i, p in enumerate(eig_a):
+        for j, q in enumerate(eig_b):
+            if q == 0:
+                # The caller has already checked containment of support.
+                continue
+            if p > 0 and abs(p - q) <= .5 * q:
+                r = (p - q) / q
+                # g(r) = ((1+r) log(1+r) - r)/r^2, with g(0)=1/2.
+                # The series avoids cancellation in the scalar bracket.
+                if abs(r) < .125:
+                    g = 0.0
+                    for k in reversed(range(18)):
+                        g = -r * g + 1 / ((k + 1) * (k + 2))
+                else:
+                    g = ((1 + r) * np.log1p(r) - r) / (r * r)
+                # (p-q)<u,v> = <u|(a-b)|v>. Evaluating the small
+                # difference first avoids eigensolver trace and overlap
+                # roundoff dominating a divergence below machine epsilon.
+                # Divide before squaring to retain subnormal spectral mass.
+                term = abs(action[i, j] / np.sqrt(q)) ** 2 * g
+            else:
+                # Complex division may form an overflowing reciprocal for
+                # a subnormal gap even when both real quotients are bounded.
+                weight = np.hypot(action[i, j].real / (p - q),
+                                  action[i, j].imag / (p - q)) ** 2
+                # Keep the distant bracket's terms separate for fsum. If
+                # q >> p, forming the bracket first could lose p*log(p/q),
+                # then cancellation with the trace term would expose the loss.
+                if p > 0:
+                    terms.extend((float(weight * (p * (np.log(p) - np.log(q)))),
+                                  float(-weight * p)))
+                term = weight * q
+            terms.append(float(term))
+    # Include the actual trace difference even inside the validation
+    # tolerance: this API does not normalize its inputs or clip D to zero.
+    return fsum(terms)
+
+
 def relative_entropy(rho, sigma):
     """Umegaki D(rho || sigma), with +infinity on detected support escape.
 
@@ -148,8 +197,12 @@ infinity, even if small; unresolved numerical rank or kernel cancellation
 raises instead of inventing either a finite answer or infinity. No leakage
 is rounded away. Exact-support theorems still need independently certified
 support data; these guards are numerical diagnostics, not rank proofs.
+Nearby PSD states use a compensated trace Bregman remainder. If the source
+eigensolve clips spectral roundoff without an exactly annihilated kernel,
+the legacy entropy/reference pairing is retained; the stable PSD identity
+does not apply to an indefinite matrix admitted within the input tolerance.
 """
-    a, eig_a, _ = _spectrum(rho)
+    a, eig_a, vec_a = _spectrum(rho)
     b, eig_b, vec_b = _spectrum(sigma)
     if a.shape != b.shape:
         raise ValueError("relative entropy requires the same algebra")
@@ -175,12 +228,18 @@ support data; these guards are numerical diagnostics, not rank proofs.
             if np.all(np.abs(leakage) <= error_scale):
                 raise ValueError("relative-entropy support is numerically unresolved")
             return float("inf")
-    positive_a = eig_a[eig_a > 0]
-    positive_b = eig_b > 0
-    v = vec_b[:, positive_b]
-    diagonal = np.real(np.diag(v.conj().T @ a @ v))
-    return float(np.sum(positive_a * np.log(positive_a))
-                 - np.dot(diagonal, np.log(eig_b[positive_b])))
+    source_kernel = vec_a[:, eig_a == 0]
+    if source_kernel.size and np.any(a @ source_kernel != 0):
+        # The input tolerance also admits clipped negative spectral
+        # roundoff. The PSD Bregman identity does not apply to that matrix;
+        # retain the existing spectral-roundoff convention in this case.
+        positive_a = eig_a[eig_a > 0]
+        positive_b = eig_b > 0
+        v = vec_b[:, positive_b]
+        diagonal = np.real(np.diag(v.conj().T @ a @ v))
+        return float(np.sum(positive_a * np.log(positive_a))
+                     - np.dot(diagonal, np.log(eig_b[positive_b])))
+    return _relative_entropy_remainder(a, b, eig_a, vec_a, eig_b, vec_b)
 
 
 def _parts(dims, parts):

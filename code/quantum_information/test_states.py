@@ -9,6 +9,7 @@ import sys
 import numpy as np
 import pytest
 from scipy.linalg import logm
+import mpmath as mp
 
 from quantum_information import (
     conditional_mutual_information, density_matrix, direct_sum_state,
@@ -25,6 +26,102 @@ def test_noncommuting_entropy_matches_independent_matrix_log():
     assert relative_entropy(rho,tau) == pytest.approx(expected,abs=1e-14)
     u = np.array([[1,1j],[1j,1]])/np.sqrt(2)
     assert relative_entropy(u@rho@u.conj().T,u@tau@u.conj().T) == pytest.approx(expected,abs=1e-14)
+
+
+@pytest.mark.parametrize("delta", (2.**-20, 2.**-30, 2.**-40, 2.**-50))
+def test_nearby_normalized_states_retain_positive_relative_entropy(delta):
+    # These dyadic probabilities sum to exactly one, including as stored
+    # binary64 values. Compare with the direct scalar definition at 100 digits.
+    p = np.array([.5 + delta, .5 - delta])
+    with mp.workdps(100):
+        expected = float(mp.fsum(mp.mpf(x) * mp.log(2 * mp.mpf(x)) for x in p))
+    actual = relative_entropy(np.diag(p), np.eye(2) / 2)
+    assert actual > 0
+    assert actual == pytest.approx(expected, rel=2e-14, abs=0)
+
+
+@pytest.mark.parametrize("delta", (2.**-20, 2.**-30, 2.**-40))
+def test_small_noncommuting_divergence_matches_high_precision_matrix_log(delta):
+    rho = np.array([[.625, delta], [delta, .375]])
+    sigma = np.diag([.625, .375])
+    assert np.linalg.norm(rho @ sigma - sigma @ rho) > 0
+    with mp.workdps(100):
+        a, b = mp.matrix(rho.tolist()), mp.matrix(sigma.tolist())
+        product = a * (mp.logm(a) - mp.logm(b))
+        expected = float(mp.re(sum(product[i, i] for i in range(2))))
+    assert relative_entropy(rho, sigma) == pytest.approx(expected, rel=2e-13, abs=0)
+
+
+def test_small_divergence_survives_an_exact_change_of_basis():
+    delta = 2.**-30
+    p = np.array([.25 + delta, .25 - delta, .25, .25])
+    h = np.array([[1,1,1,1],[1,-1,1,-1],[1,1,-1,-1],[1,-1,-1,1]]) / 2
+    rho = h @ np.diag(p) @ h.T
+    with mp.workdps(100):
+        expected = float(mp.fsum(mp.mpf(x) * mp.log(4 * mp.mpf(x)) for x in p))
+    assert relative_entropy(rho, np.eye(4) / 4) == pytest.approx(expected, rel=2e-14, abs=0)
+
+
+@pytest.mark.parametrize("size,scale", ((3, 2.**-30), (4, 2.**-30), (3, .03), (4, .03)))
+def test_dense_full_rank_divergence_matches_high_precision_definition(size, scale):
+    rng = np.random.default_rng(210 + size)
+    x = rng.normal(size=(size, size)) + 1j * rng.normal(size=(size, size))
+    sigma = x @ x.conj().T + np.eye(size)
+    sigma = (sigma + sigma.conj().T) / 2
+    sigma /= np.trace(sigma).real
+    y = rng.normal(size=(size, size)) + 1j * rng.normal(size=(size, size))
+    perturbation = (y + y.conj().T) / 2
+    np.fill_diagonal(perturbation, 0)
+    perturbation /= np.linalg.norm(perturbation)
+    rho = sigma + scale * perturbation
+    assert np.linalg.eigvalsh(rho)[0] > 0
+    # Zero diagonal perturbations keep both supplied traces identical.
+    # The arbitrary complex bases exercise eigenvector as well as scalar error.
+    with mp.workdps(100):
+        a, b = mp.matrix(rho.tolist()), mp.matrix(sigma.tolist())
+        product = a * (mp.logm(a) - mp.logm(b))
+        expected = float(mp.re(sum(product[i, i] for i in range(size))))
+    assert relative_entropy(rho, sigma) == pytest.approx(expected, rel=2e-13, abs=0)
+
+
+def test_relative_entropy_preserves_accepted_trace_offsets_without_normalizing():
+    # The decimal perturbation has exact binary64 trace 1 - 2^-54, even
+    # though NumPy's rounded sum is 1. Umegaki's unnormalized expression is
+    # slightly negative; removing the linear trace term would change it.
+    rho = np.diag([.5 + 1e-9, .5 - 1e-9])
+    with mp.workdps(100):
+        expected = float(mp.fsum(mp.mpf(x) * mp.log(2 * mp.mpf(x))
+                                for x in np.diag(rho)))
+    assert expected < 0
+    assert relative_entropy(rho, np.eye(2) / 2) == pytest.approx(expected, rel=2e-14, abs=0)
+
+
+@pytest.mark.parametrize("mass", (1e-20, 1e-310))
+def test_small_spectral_mass_survives_stable_remainder_evaluation(mass):
+    rho, sigma = np.diag([1., mass]), np.diag([1., 2 * mass])
+    # These accepted states retain their supplied trace offsets. No ratio
+    # or squared intermediate may erase the small eigenvalue contribution.
+    with mp.workdps(100):
+        p, q = mp.mpf(mass), mp.mpf(2 * mass)
+        expected = float(p * mp.log(p / q))
+    assert relative_entropy(rho, sigma) == pytest.approx(expected, rel=1e-12, abs=0)
+
+
+def test_distant_scalar_bracket_does_not_erase_tiny_relative_entropy():
+    rho, sigma = np.diag([1., 1e-310]), np.diag([1., 1e-20])
+    with mp.workdps(100):
+        p, q = mp.mpf(1e-310), mp.mpf(1e-20)
+        expected = float(p * mp.log(p / q))
+    assert relative_entropy(rho, sigma) == pytest.approx(expected, rel=1e-13, abs=0)
+
+
+def test_clipped_negative_spectral_roundoff_keeps_existing_convention():
+    delta = 2.**-45
+    rho = np.diag([1. + delta, -delta])
+    # _spectrum accepts this negative eigenvalue only as declared roundoff.
+    # Retain the established clipped spectral entropy / raw reference pairing.
+    expected = (1. + delta) * np.log1p(delta) + np.log(2.)
+    assert relative_entropy(rho, np.eye(2) / 2) == pytest.approx(expected, abs=1e-15)
 
 
 @pytest.mark.parametrize("leak", (1.,.5,1e-20))

@@ -91,6 +91,10 @@ jobs:
       # unconditional on every push/PR so manifest drift cannot be bypassed by
       # a path-filter miss), collects the full scientific suite, and executes
       # the fast validation fixtures.
+      - name: Verify numerical recovery bounds without optional hardware SDKs
+        if: matrix.shard == 0
+        run: python -m pytest -q --confcutdir=code/ibm_quantum_cloud/tests code/ibm_quantum_cloud/tests/test_stage1_markov_fingerprint.py
+
       - name: Run the mandatory suite
         run: python tools/run_mandatory_suite.py ${{ inputs.full && '--full' || format('--shard-index {0} --shard-count 10', matrix.shard) }}
 
@@ -140,6 +144,9 @@ jobs:
 
       - name: Regression-test the Lean CI runtime ceiling
         run: python -m pytest -q tools/test_check_lean_ci_budget.py
+
+      - name: Verify numerical recovery bounds without optional hardware SDKs
+        run: python -m pytest -q --confcutdir=code/ibm_quantum_cloud/tests code/ibm_quantum_cloud/tests/test_stage1_markov_fingerprint.py
 
       - name: Run the full mandatory suite
         run: python tools/run_mandatory_suite.py --full

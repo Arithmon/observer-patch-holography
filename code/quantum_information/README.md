@@ -13,6 +13,14 @@ completion is an affine quantum repair. It includes independent recognition
 of supplied conditional expectations and a noncommuting repair convergence
 proof.
 
+`expectations.repair_generator` accepts rates in any common clock unit.
+Its identity and spectral-resolution checks use the generator divided by
+`max(rates)`; the returned generator, gap and defect magnitudes retain the
+input rate units. The report's `rate_scale` is this divisor, and `tolerance`
+applies to defect magnitudes divided by it. Unresolved relative gaps, lost
+positive rates, and unrepresentable rescaled generators still raise; a small
+absolute rate alone does not imply poor numerical resolution.
+
 ## Audit findings and corrections
 
 The audit used main commit `0f7aa44259f53e4f5a1f4cd4904758039975755e`.
@@ -156,6 +164,10 @@ actual CMI; it cannot assume the label exists as a physical repair.
 | Einstein closure, #526–#528/#503/#578 | Reuses the same central-label entropy identity. The first-law and normalization-countermodel tests still pass. |
 
 The shared helpers are one implementation, not four independent calculations.
+The follow-up [MaxEnt coordinate audit](../maxent/PROJECTION_COORDINATES.md)
+fixes dependence on observable units, basis and scalar energy origins, and
+connects its invariant stopping error to a bound on the true optimum. It
+retains the nonzero coarse-graining closure defect.
 Independent controls use explicit index contraction, scalar closed forms,
 SciPy matrix logarithms, complete classical enumeration and known product/Bell
 states. Tests include malformed matrices, missing sectors, invalid tensor

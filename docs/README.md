@@ -112,6 +112,10 @@ order:
 
 **Gravity and the dark sector.**
 
+- [Finite geometry: support, refinement and oriented caps](../code/geometry/GEOMETRY_RECEIPT_AUDIT.md)
+  audits the geometry readout, preserves higher-dimensional joint support,
+  certifies midpoint subdivisions, and reconstructs oriented caps from
+  explicit conformal data and a side witness.
 - [What a calibrated source clock does and does not fix about light bending](research/PAIRED_SOURCE_GRAVITY.md)
   proves that the calibrated clock-field response does not select the
   light-deflection coefficient, verified by [`code/paired_gravity`](../code/paired_gravity/).
@@ -134,6 +138,9 @@ order:
 
 **Existing-theory audit and simplification.**
 
+- [MaxEnt inference independent of observable coordinates](../code/maxent/PROJECTION_COORDINATES.md)
+  repairs unit, basis and energy-offset dependence, proves a global
+  optimization-error bound, and distinguishes that error from closure defect.
 - [Finite-state entropy and sector labels](../code/quantum_information/README.md)
   records the entropy and collar audit, gives the direct-sum form of the finite
   A3 objective, and documents the shared implementation and corrected
@@ -142,6 +149,10 @@ order:
   proves the equivalence between affine full-marginal completion, modular
   compatibility and reference-preserving conditional expectation. It corrects
   regional standardness checks and treats noncommuting primitive repairs.
+- [Finite null tomography: reconstruction, consistency and resolution](../code/geometry/NULL_TOMOGRAPHY.md)
+  repairs incomplete and non-null tensor reconstructions, reuses the proved
+  nine-direction inverse, and connects the dependent-family test to angular
+  harmonics, an exact cubic obstruction and sharp noise amplification.
 
 ## Instrument Specifications
 

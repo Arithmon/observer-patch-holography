@@ -679,17 +679,25 @@ A declared-convention objective is released with the paper: a per-point
 Gaussian rotation-curve data term for
 \(g_{\rm obs}=g_{\rm bar}+\sqrt{g_{\rm bar}a_0}\) with per-galaxy profiled
 nuisances (disk mass-to-light under a log-normal prior centered at
-\(0.5\), distance and inclination at their catalogued errors), the
-variance-normalization term kept in the objective, and a declared
+\(0.5\), distance and inclination at their catalogued errors), and a declared
 equal-correlation intra-galaxy covariance family scanned over
-\(\rho\in\{0,0.2,0.4,0.6\}\). Because the mass-to-light constraint is an
+\(\rho\in\{0,0.2,0.4,0.6\}\). The likelihood uses the fixed catalogue
+velocity frame, with mean \(v_{\rm model}\sin i/\sin i_{\rm cat}\) and
+catalogue velocity errors. Equivalently, correcting observations and errors by
+\(s(i)=\sin i_{\rm cat}/\sin i\) requires a density Jacobian
+\(s(i)^n\), which cancels the Gaussian normalization \(s(i)^{-n}\).
+The schema-v3 fixed-frame receipt corrects the former v2 objective, which
+omitted that Jacobian; the original receipt remains historical evidence.
+Because the mass-to-light constraint is an
 astrophysical prior rather than an identified auxiliary-data likelihood,
 this is a penalized objective, not a maximum-likelihood analysis. Its
 delta-objective threshold sets are uncalibrated sensitivity contours rather
-than confidence intervals, and every disconnected component is reported. On
-the \(f=0.1\) deep subset the objective minimum moves from \(0.794\) to
+than confidence intervals, and every component is reported. All corrected
+snapshot threshold sets are connected; a disconnected synthetic curve tests
+component enumeration. On
+the \(f=0.1\) deep subset the objective minimum moves from \(0.804\) to
 \(0.582\times10^{-10}\,\mathrm{m\,s^{-2}}\) as \(\rho\) runs from \(0\) to
-\(0.6\), a \(0.135\)-dex shift and a large unresolved sensitivity within
+\(0.6\), a \(0.140\)-dex shift and a large unresolved sensitivity within
 the scanned covariance family. Other unquantified systematics prevent a total
 systematic ranking, and no single \(\rho\) is selected. The data quadratic
 form divided by the nominal fixed-nuisance denominator lies between \(3.6\)
@@ -707,6 +715,9 @@ An independent script re-derives
 the receipt byte for byte, a synthetic sample with known \(a_0\) recovers
 it through the same pipeline as a regression sanity check, and mutation guards cover the subtraction
 sign, the cut, the mass-to-light encoding, and the covariance algebra.
+Independent checks project the model into the fixed observation frame and
+compare its explicit covariance quadratic form; two exact projected fits at
+different inclinations must have equal likelihood.
 
 \section{Cosmological Scaling}
 \label{sec:cosmo}

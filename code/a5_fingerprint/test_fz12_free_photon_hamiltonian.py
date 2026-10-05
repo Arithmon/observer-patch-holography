@@ -9,10 +9,48 @@ import sys
 from pathlib import Path
 
 import fz12_free_photon_hamiltonian as producer
+import mpmath as mp
+import numpy as np
 import pytest
 import verify_fz12_free_photon_hamiltonian_independent as independent
 
 VERIFIER = producer.HERE / "verify_fz12_free_photon_hamiltonian_independent.py"
+
+
+@pytest.mark.parametrize("direction", ((1, 0, 0), (1, 1, 1), (1, 2, 3)))
+@pytest.mark.parametrize("implementation", (producer, independent))
+def test_exact_symbol_and_group_speed_at_long_wavelengths(
+    direction: tuple[int, int, int], implementation,
+) -> None:
+    direction = np.asarray(direction, dtype=np.float64)
+    direction /= np.linalg.norm(direction)
+    projections = producer.unit_edge_directions() @ direction
+    # The fixed-scale UHE band has aK around 1e-11 to 1e-8. Direct binary64
+    # 1-cos evaluation erased its stiffness in both implementations.
+    positive = np.asarray([1e-12, 1e-10, 1e-9, 1e-8, 1e-7, 1e-4, 0.5, 1.0])
+    momenta = np.concatenate((-positive, [0.0], positive))
+    with mp.workdps(80):
+        dots = [mp.mpf(float(value)) for value in projections]
+        expected = []
+        expected_speed = []
+        for value in momenta:
+            q = mp.mpf(float(value))
+            # High-precision cosine subtraction is an independent control for
+            # both the producer's half angles and the verifier's chord norm.
+            symbol = mp.fsum(1 - mp.cos(q * dot) for dot in dots) / 5
+            expected.append(float(symbol))
+            if q:
+                derivative = mp.fsum(dot * mp.sin(q * dot) for dot in dots) / 5
+                expected_speed.append(float(derivative / (2 * mp.sqrt(symbol))))
+
+    symbol = implementation.lambda_hat(momenta, projections)
+    np.testing.assert_allclose(symbol, expected, rtol=2e-15, atol=0)
+    assert float(implementation.lambda_hat(0.0, projections)) == 0.0
+    nonzero = momenta != 0
+    assert np.all(symbol[nonzero] > 0)
+    speed = implementation.lambda_hat_derivative(momenta[nonzero], projections)
+    speed /= 2 * np.sqrt(symbol[nonzero])
+    np.testing.assert_allclose(speed, expected_speed, rtol=2e-15, atol=0)
 
 
 def write_canonical(path: Path, value: dict) -> None:
