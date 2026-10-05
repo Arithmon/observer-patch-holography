@@ -6,6 +6,12 @@ null-net and Einstein-closure evidence. It uses natural logarithms and the
 ordinary matrix trace. It implements finite numerical diagnostics, not a
 physical state selection or a proof of exact rank from approximate matrices.
 
+The [entropy-response audit](../geometry/ENTROPY_FIRST_LAW_AUDIT.md) separates
+tangent first laws from finite entropy changes with relative-entropy
+remainders. `entropy_response` tests independently supplied generators on
+all normalized tangents, supplies central probability-transfer witnesses,
+and computes Gibbs tangent slopes separately from finite secants.
+
 The follow-up [algebra and repair audit](ALGEBRAS_AND_REPAIR.md) fixes regional
 separation and basis normalization, replaces dense standardness matrices with
 reduced spectra, and classifies exactly when finite relative-entropy
