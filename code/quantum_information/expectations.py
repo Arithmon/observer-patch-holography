@@ -22,7 +22,7 @@ def _tolerance(value):
 def _data(algebra, reference):
     if not isinstance(algebra, FiniteAlgebra):
         raise ValueError("validated finite algebra required")
-    rho = faithful_density_matrix(reference)
+    rho = faithful_density_matrix(operator(reference))
     if len(rho) != algebra.size:
         raise ValueError("reference and algebra must use the same operator space")
     return rho, np.kron(np.eye(algebra.size), rho.T)
