@@ -44,8 +44,20 @@ from __future__ import annotations
 import itertools
 import random
 from dataclasses import dataclass, field
+from numbers import Integral, Real
 
 import numpy as np
+
+from conformal_readout import (
+    cross_ratio, cross_ratio_receipts, fit_cap, mobius_normalize,
+    produced_cap_normal, reconstruct_from_cross_ratios, stereographic,
+)
+
+from finite_incidence import (
+    IncidenceComplex, certify_midpoint_subdivision, complexes_equal,
+    complexes_isomorphic_under, dimension, euler_characteristic,
+    incidence_complex, refinement_is_simplicial, validate_complex, validate_records,
+)
 
 TOL = 1e-9
 
@@ -165,24 +177,32 @@ def klein_bottle() -> list[tuple[int, int, int]]:
 class RepairSystem:
     """Patch bits with equality constraints along record tokens.
 
-    Records (one per 2-cell) demand that all member patch bits agree. The
-    initial state seeds one conflict inside a single record; repair commits
-    one transactional conflict-component resolution (majority-with-min-label
-    tie break), which is manifestly terminating and confluent: there is a
-    single conflict component and its resolution does not depend on the
-    schedule order of untouched records.
+    Records demand that all member patch bits agree. The admitted state has
+    at most one bit equal to one; every record has at least two members.
+    Majority repair with a zero-valued tie break erases that defect in one
+    effective update, under every complete record schedule. This is a finite
+    one-defect fixture, not a confluence theorem for arbitrary majority states.
     """
 
     records: list[tuple[int, ...]]
     seed_record: int = 0
-    state: dict[int, int] = field(default_factory=dict)
+    state: dict[int, int] = field(default_factory=dict, init=False)
 
     def __post_init__(self) -> None:
+        self._validate_records()
         patches = sorted({p for rec in self.records for p in rec})
         self.state = {p: 0 for p in patches}
         # seed the conflict: flip the highest-label patch of the seed record
         bad = max(self.records[self.seed_record])
         self.state[bad] = 1
+
+    def _validate_records(self) -> None:
+        validate_records(self.records)
+        if (not self.records or any(len(rec) < 2 for rec in self.records)
+                or not isinstance(self.seed_record, Integral)
+                or isinstance(self.seed_record, (bool, np.bool_))
+                or not 0 <= self.seed_record < len(self.records)):
+            raise ValueError("repair fixture requires nonsingleton records and a valid seed")
 
     def conflicted_records(self) -> list[int]:
         return [
@@ -192,7 +212,20 @@ class RepairSystem:
 
     def repair(self, schedule: list[int] | None = None) -> dict[int, int]:
         """Run transactional repair; return the quotient normal form."""
+        self._validate_records()
         order = list(schedule) if schedule is not None else list(range(len(self.records)))
+        if (len(order) != len(self.records)
+                or any(not isinstance(k, Integral) or isinstance(k, (bool, np.bool_)) for k in order)
+                or set(order) != set(range(len(self.records)))):
+            raise ValueError("schedule must contain every record index exactly once")
+        patches = {p for rec in self.records for p in rec}
+        if (set(self.state) != patches
+                or any(not isinstance(k, Integral) or isinstance(k, (bool, np.bool_))
+                       for k in self.state)
+                or any(not isinstance(v, Integral) or isinstance(v, (bool, np.bool_))
+                       or v not in (0, 1) for v in self.state.values())
+                or sum(int(v) for v in self.state.values()) > 1):
+            raise ValueError("repair fixture only admits zero or one seeded defect")
         working = dict(self.state)
         progress = True
         while progress:
@@ -201,7 +234,7 @@ class RepairSystem:
                 rec = self.records[k]
                 vals = [working[p] for p in rec]
                 if len(set(vals)) > 1:
-                    # majority value, min-label tie break: recovery-derived law
+                    # Supplied fixture law: majority with a zero-valued tie break.
                     counts = {v: vals.count(v) for v in set(vals)}
                     best = min(sorted(counts), key=lambda v: (-counts[v], v))
                     for p in rec:
@@ -234,34 +267,8 @@ def normal_form_records(system: RepairSystem, normal_form: dict[int, int]) -> li
 # support-visible incidence complex and receipts
 # ---------------------------------------------------------------------------
 
-@dataclass
-class IncidenceComplex:
-    vertices: list[int]
-    edges: set[frozenset]
-    triangles: set[frozenset]
-
-
-def incidence_complex(records: list[tuple[int, ...]]) -> IncidenceComplex:
-    """K(W): patches are vertices; a k-simplex is a jointly supported set.
-
-    Joint support nonvanishing of a patch set is witnessed by a common record
-    token containing it (transport into a common refining patch algebra).
-    """
-    vertices = sorted({p for rec in records for p in rec})
-    edges, triangles = set(), set()
-    for rec in records:
-        for pair in itertools.combinations(sorted(rec), 2):
-            edges.add(frozenset(pair))
-        for tri in itertools.combinations(sorted(rec), 3):
-            triangles.add(frozenset(tri))
-    return IncidenceComplex(vertices, edges, triangles)
-
-
-def euler_characteristic(K: IncidenceComplex) -> int:
-    return len(K.vertices) - len(K.edges) + len(K.triangles)
-
-
 def is_connected(K: IncidenceComplex) -> bool:
+    validate_complex(K)
     if not K.vertices:
         return False
     adj: dict[int, set[int]] = {v: set() for v in K.vertices}
@@ -281,12 +288,17 @@ def is_connected(K: IncidenceComplex) -> bool:
 
 def is_closed_surface(K: IncidenceComplex) -> bool:
     """Every edge in exactly two triangles and every vertex link a single cycle."""
+    validate_complex(K)
+    if not K.triangles or K.higher_simplices:
+        return False
     for e in K.edges:
         cofaces = [t for t in K.triangles if e < t]
         if len(cofaces) != 2:
             return False
     for v in K.vertices:
         star = [t for t in K.triangles if v in t]
+        if not star:
+            return False
         link_edges = [tuple(sorted(t - {v})) for t in star]
         nodes = sorted({x for le in link_edges for x in le})
         deg = {x: sum(1 for le in link_edges if x in le) for x in nodes}
@@ -310,7 +322,10 @@ def is_closed_surface(K: IncidenceComplex) -> bool:
 
 def orient(K: IncidenceComplex) -> list[tuple[int, int, int]] | None:
     """Return coherently oriented triangles, or None if nonorientable."""
-    tris = [tuple(sorted(t)) for t in K.triangles]
+    validate_complex(K)
+    if K.higher_simplices:
+        return None
+    tris = sorted(tuple(sorted(t)) for t in K.triangles)
     if not tris:
         return None
     oriented: dict[tuple, tuple] = {}
@@ -431,65 +446,6 @@ def is_outward_framing(oriented: list[tuple[int, int, int]], coords: np.ndarray)
 # modular cross-ratio production (Theorem thm:conformal-cap-production)
 # ---------------------------------------------------------------------------
 
-def stereographic(p: np.ndarray) -> complex:
-    """North-pole stereographic chart of the unit sphere."""
-    x, y, z = p
-    if abs(1.0 - z) < 1e-15:
-        return complex(np.inf, 0.0)
-    return complex(x / (1.0 - z), y / (1.0 - z))
-
-
-def cross_ratio(z1: complex, z2: complex, z3: complex, z4: complex) -> complex:
-    return ((z1 - z3) * (z2 - z4)) / ((z1 - z4) * (z2 - z3))
-
-
-def mobius_normalize(z: complex, g1: complex, g2: complex, g3: complex) -> complex:
-    """The Mobius map sending the gauge triple (g1,g2,g3) -> (0,1,inf)."""
-    return ((z - g1) * (g2 - g3)) / ((z - g3) * (g2 - g1))
-
-
-def reconstruct_from_cross_ratios(points: np.ndarray, gauge: tuple[int, int, int]) -> np.ndarray:
-    """Embed sphere points into C from cross-ratio data against a gauge triple.
-
-    Consumes only cross-ratios (the modular receipt data), never coordinates:
-    cr(z, g2; g1, g3) equals the normalized coordinate mobius_normalize(z).
-    Returns the array of reconstructed complex coordinates.
-    """
-    zs = [stereographic(p) for p in points]
-    g1, g2, g3 = (zs[i] for i in gauge)
-    out = []
-    for i, z in enumerate(zs):
-        # gauge points land on (0, 1, inf) by definition of the gauge
-        if i == gauge[0]:
-            out.append(0.0 + 0.0j)
-        elif i == gauge[1]:
-            out.append(1.0 + 0.0j)
-        elif i == gauge[2]:
-            out.append(complex(np.inf, 0.0))
-        else:
-            # cross-ratio receipt value for the quadruple (z, g2; g1, g3)
-            out.append(cross_ratio(z, g2, g1, g3))
-    return np.array(out)
-
-
-def produced_cap_normal(boundary_points: np.ndarray) -> np.ndarray:
-    """Produce n_C from (>= 3) boundary points of a cap circle on S^2.
-
-    Fits the plane c . x = cos(alpha) through the points and applies the
-    formula n_C = (cot alpha, csc alpha * c) of Proposition
-    prop:round-cap-normal. Returns the 4-vector (time-first).
-    """
-    # least-squares plane through points on the sphere: minimize |P m - 1|
-    m, *_ = np.linalg.lstsq(boundary_points, np.ones(len(boundary_points)), rcond=None)
-    # m = c / cos(alpha)
-    norm = np.linalg.norm(m)
-    c = m / norm
-    cos_a = 1.0 / norm
-    cos_a = min(1.0 - 1e-12, max(-1.0 + 1e-12, cos_a))
-    sin_a = np.sqrt(1.0 - cos_a * cos_a)
-    return np.concatenate(([cos_a / sin_a], c / sin_a))
-
-
 def minkowski(u: np.ndarray, v: np.ndarray) -> float:
     return float(-u[0] * v[0] + np.dot(u[1:], v[1:]))
 
@@ -497,6 +453,12 @@ def minkowski(u: np.ndarray, v: np.ndarray) -> float:
 def kms_receipt(clock_scale: float, beta_target: float = 2.0 * np.pi, tol: float = 1e-9) -> bool:
     """Wrong-normalization separation clause: the independently normalized
     geometric comparison certifies exactly the declared modular temperature."""
+    for value in (clock_scale, beta_target, tol):
+        if (isinstance(value, (bool, np.bool_)) or not isinstance(value, Real)
+                or not np.isfinite(value) or value <= 0):
+            raise ValueError("clock, target and tolerance must be finite positive reals")
+    if tol > 1e-6:
+        raise ValueError("comparison tolerance exceeds the finite diagnostic's limit")
     return abs(clock_scale - beta_target) < tol
 
 
@@ -509,33 +471,17 @@ def readout_from_system(system: RepairSystem, schedule: list[int] | None = None)
     return incidence_complex(normal_form_records(system, nf))
 
 
-def complexes_equal(K1: IncidenceComplex, K2: IncidenceComplex) -> bool:
-    return (
-        K1.vertices == K2.vertices
-        and K1.edges == K2.edges
-        and K1.triangles == K2.triangles
-    )
-
-
 def gauge_relabel(records: list[tuple[int, ...]], perm: dict[int, int]) -> list[tuple[int, ...]]:
     return [tuple(sorted(perm[p] for p in rec)) for rec in records]
 
 
-def complexes_isomorphic_under(K1: IncidenceComplex, K2: IncidenceComplex, perm: dict[int, int]) -> bool:
-    ed = {frozenset(perm[v] for v in e) for e in K1.edges}
-    tr = {frozenset(perm[v] for v in t) for t in K1.triangles}
-    return (
-        sorted(perm[v] for v in K1.vertices) == K2.vertices
-        and ed == K2.edges
-        and tr == K2.triangles
-    )
-
-
 def refinement_subdivide(records: list[tuple[int, ...]]) -> tuple[list[tuple[int, ...]], dict[int, int]]:
-    """Barycentric-style edge subdivision of the record layer (one refinement
+    """Midpoint subdivision of a triangular record layer (one refinement
     stage) together with the coarse-graining projection on patch labels."""
     K = incidence_complex(records)
-    next_label = max(K.vertices) + 1
+    if not K.triangles or any(len(rec) != 3 for rec in records):
+        raise ValueError("subdivision producer requires nonempty triangular records")
+    next_label = int(max(K.vertices)) + 1
     midpoint: dict[frozenset, int] = {}
     projection: dict[int, int] = {v: v for v in K.vertices}
     for e in sorted(K.edges, key=lambda e: tuple(sorted(e))):
@@ -552,16 +498,6 @@ def refinement_subdivide(records: list[tuple[int, ...]]) -> tuple[list[tuple[int
         refined += [
             (a, mab, mac), (b, mab, mbc), (c, mbc, mac), (mab, mbc, mac),
         ]
+    if not certify_midpoint_subdivision(K, incidence_complex(refined), midpoint):
+        raise RuntimeError("subdivision failed its complete carrier check")
     return refined, projection
-
-
-def refinement_is_simplicial(fine: IncidenceComplex, coarse: IncidenceComplex,
-                             projection: dict[int, int]) -> bool:
-    """Petz support/CPTP clause: projected simplices are (degenerate) simplices."""
-    for t in fine.triangles:
-        img = {projection[v] for v in t}
-        if len(img) == 3 and frozenset(img) not in coarse.triangles:
-            return False
-        if len(img) == 2 and frozenset(img) not in coarse.edges:
-            return False
-    return True
