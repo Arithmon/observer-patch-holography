@@ -10,7 +10,7 @@ import pytest
 from scipy.linalg import block_diag, expm, logm
 
 from quantum_information import gibbs_sectors
-from maxent.information_projection import gibbs_state
+from maxent.information_projection import gibbs_state, project_information
 
 
 I = np.eye(2)
@@ -233,3 +233,34 @@ for call in bad:
     env = dict(os.environ, PYTHONPATH=str(Path(__file__).resolve().parents[1]))
     subprocess.run([sys.executable, "-O", "-c", source], cwd=tmp_path, env=env,
                    check=True, capture_output=True, text=True)
+
+
+@pytest.mark.parametrize("case", ["sector_hamiltonian", "maxent_hamiltonian",
+                                  "central_scalar", "central_array", "beta",
+                                  "multiplier", "target", "tolerance"])
+def test_missing_numeric_data_cannot_be_replaced_by_masked_storage(case):
+    # Masking means missing data, regardless of the finite hidden payload.
+    ham = np.ma.array(X, mask=[[False, True], [True, False]])
+    target = np.ma.array(I/2, mask=[[True, False], [False, True]])
+    cases = {
+        "sector_hamiltonian": lambda: gibbs_sectors([ham], [0.]),
+        "maxent_hamiltonian": lambda: gibbs_state([ham], [1.]),
+        "central_scalar": lambda: gibbs_sectors([X], [np.ma.masked]),
+        "central_array": lambda: gibbs_sectors([X, X],
+                    np.ma.array([0., 1.], mask=[False, True])),
+        "beta": lambda: gibbs_sectors([X], [0.], np.ma.masked),
+        "multiplier": lambda: gibbs_state([X], np.ma.array([.4], mask=[True])),
+        "target": lambda: project_information(target, [Z]),
+        "tolerance": lambda: project_information(I/2, [Z],
+                    tol=np.ma.array(1e-8, mask=True)),
+    }
+    with pytest.raises(ValueError, match="masked"):
+        cases[case]()
+
+
+def test_masked_array_container_without_missing_entries_remains_valid():
+    (p, actual), = gibbs_sectors([np.ma.array(X, mask=False)],
+                                 np.ma.array([0.], mask=False),
+                                 np.ma.array(.4, mask=False))
+    assert p == 1
+    np.testing.assert_allclose(actual, (I-np.tanh(.4)*X)/2, atol=2e-15, rtol=0)
