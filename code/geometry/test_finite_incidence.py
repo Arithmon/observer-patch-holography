@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 import sympy as sp
+import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from finite_incidence import (
@@ -233,3 +234,22 @@ def test_repair_revalidates_consumed_records_after_mutation(records):
 def test_repair_does_not_ignore_a_caller_supplied_initial_state():
     with pytest.raises(TypeError):
         RepairSystem([(0, 1)], state={0: 'invalid', 1: 1})
+
+
+@pytest.mark.parametrize('dtype,count', [(np.int8, 128), (np.uint8, 256)])
+def test_repair_defect_count_cannot_overflow(dtype, count):
+    system = RepairSystem([(i, i+1) for i in range(0, count, 2)])
+    system.state = {i: dtype(1) for i in range(count)}
+    with pytest.raises(ValueError, match='one seeded defect'):
+        system.repair()
+    system.state = {i: dtype(i == 0) for i in range(count)}
+    assert system.repair() == dict.fromkeys(range(count), 0)
+
+
+def test_subdivision_allocates_fresh_python_labels_past_numpy_integer_range():
+    labels = [np.uint64(2**64-1-i) for i in range(3)]
+    fine, projection = refinement_subdivide([tuple(labels)])
+    coarse = incidence_complex([tuple(labels)])
+    assert len(projection) == 6
+    assert all(isinstance(v, int) for v in set(projection) - set(labels))
+    assert refinement_is_simplicial(incidence_complex(fine), coarse, projection)

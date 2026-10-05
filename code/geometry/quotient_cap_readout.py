@@ -224,7 +224,7 @@ class RepairSystem:
                        for k in self.state)
                 or any(not isinstance(v, Integral) or isinstance(v, (bool, np.bool_))
                        or v not in (0, 1) for v in self.state.values())
-                or sum(self.state.values()) > 1):
+                or sum(int(v) for v in self.state.values()) > 1):
             raise ValueError("repair fixture only admits zero or one seeded defect")
         working = dict(self.state)
         progress = True

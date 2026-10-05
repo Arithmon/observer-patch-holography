@@ -56,6 +56,10 @@ closure merely to check labels. A caller-supplied initial-state argument is
 rejected instead of silently overwritten by the fixture seed. These input
 corrections preserve the theorem premises and the retained cyclic-tower
 receipt, which reproduces exactly without artifact changes.
+The defect count uses Python integers: a sum of 128 NumPy `int8` ones wraps
+to -128 in fixed-width arithmetic and must not pass the one-defect gate.
+Signed and unsigned overflow controls, and fresh subdivision labels beyond
+the NumPy integer range, exercise the exact combinatorial arithmetic.
 
 ## The support-to-incidence theorem
 
