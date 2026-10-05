@@ -10,7 +10,7 @@ four-vector `(1,0,0,0)` and made `(1e-200,0,0)` produce nonfinite data.
 The repair in [null_tomography.py](null_tomography.py) separates three facts:
 the design resolves nine components; the sampled charges lie within a declared
 distance of the tensor image; and the inverse has a measured sensitivity.
-None can be inferred just from a small residual. This is a focused contribution
+Rank and sensitivity cannot be inferred just from a small residual. This is a focused contribution
 to [the existing-theory audit, #1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033).
 
 ## The finite theorem and its angular meaning
@@ -105,27 +105,52 @@ It also avoids forming overflowing or underflowing ray squares. This modest
 exact work is appropriate for the finite audit, not intended as a large-data
 simulation kernel.
 
-`fit.require_consistent(error_budget=...)` checks the normalized residual
-against an **explicit** finite nonnegative Euclidean charge-error budget.
-There is no hidden absolute tolerance: the caller must include any allowance
-for numerical computation. NaN or infinite budgets are errors. The result
+`fit.require_consistent(error_budget=...)` replays the returned tensor against
+the **original** binary inputs. It compares the exact rational sum
+`sum(((q_i-T(k_i,k_i))/k_i0^2)^2)` with the exact squared **explicit** finite
+nonnegative error budget. Thus charge/ray normalization and solve roundoff
+cannot cause an out-of-budget tensor to be accepted. The displayed
+`residual_norm` is a numerical square root of this sum; acceptance does not
+rely on that rounded number. There is no hidden absolute tolerance. NaN or
+infinite budgets are errors. A rejection can reflect insufficient numerical
+resolution and alone does not prove that no better tensor exists. The result
 also supplies singular values, the sharp data-noise amplification estimate,
 a unit residual witness, its charge contraction, and its design defect
 `||A^T w||`. These SVD diagnostics are floating-point estimates, not interval
 certificates; a witness whose design defect is appreciable is not an exact
 dependent-family proof. Exact proofs in the tests and Lean have separate
 authority. In particular, roundoff on a consistent family can produce a tiny
-residual with an unreliable normalized witness.
+residual with an unreliable normalized witness. The exact replay establishes
+the returned tensor's finite error budget; it does not certify SVD optimality,
+an inverse error bound or the physical interpretation. Result arrays are
+backed by immutable bytes and exposed through separate array views so neither
+their values nor shape/dtype metadata can be edited under an already checked
+residual. Acceptance and the legacy wrapper return independent writable copies.
 
 Malformed data, complex or nonfinite entries, lossy conversion to binary64,
 zero directions, nonsymmetric
 tensors, insufficient or unresolved designs, unrepresentable nonzero charges,
 and rescaling that erases a nonzero input component fail closed. In particular,
 two unequal integer charges above `2^53` cannot silently become equal through
-float conversion. Residual norms
+float conversion, including mixed Python integer/float sequences. Residual norms
 use a scaled norm so a violation of size `1e-200` does not become zero by
 squaring. Reconstruction remains an ordinary binary64 solve; large error
 amplification is reported, not interpreted as physical evidence.
+
+The maintainer-style follow-up audit reproduced two further defects before
+repair: the intermediate solver residual understated the returned tensor's
+residual (`4.0283e-15` versus `4.7972e-15` in the retained control), and mutable
+NumPy arrays allowed an accepted zero tensor to be edited while keeping its
+zero residual. Exact replay and immutable result storage close these paths.
+Controls compare both sides of the acceptance boundary, down to adjacent
+binary64 budgets, against an independent exact contraction.
+The same audit checks mixed-type conversion before NumPy promotion and
+computes the metric projection exactly before rounding: dividing each trace
+summand first previously erased a minimum-subnormal metric coefficient.
+A separate 120-digit QR solver checks thirty families across three sample
+counts, three charge scales and individually rescaled past/future rays. It
+builds the coordinate matrix directly from the bilinear form, without the
+producer's basis, SVD or charge evaluator.
 
 The existing `reconstruct_from_charges` remains a **diagnostic** returning
 `(tensor, residual)` and can report an inconsistent full-rank family. Its
