@@ -138,7 +138,12 @@ underflows or suffers excessive subnormal quantization raises explicitly.
 The global mpmath context is unchanged.
 
 No uncertain entropy cancellation is floored to zero. Exact product checks
-handle common zero cases. An exact isospectral check also recognizes hidden
+handle common zero cases without requiring resolved numerical eigenvalues:
+positivity has already been proved exactly. Dimension-one conditioning
+factors do not add distinct product splits. Only the nontrivial factors
+are enumerated, so the number of splits is at most the conditioning-space
+dimension, regardless of how many trivial factors are declared.
+An exact isospectral check also recognizes hidden
 single-product decompositions: compare the power traces of
 `rho_AB tensor rho_BC` and `rho_B tensor rho_ABC` through their common
 dimension. Newton identities determine their spectra, and the tensor
@@ -189,6 +194,29 @@ The exact moment path is intended for small finite witnesses and can be
 more expensive than numerical evaluation. It proves a property of the
 specified matrix, not of an unknown noisy preparation.
 
+### Additional audit findings
+
+Commit `4fe2afd1` reproduces four failures in the first version of this PR.
+An exactly independent state and a conditional Markov state were rejected
+because their positive eigenvalues could not be resolved at 400 digits.
+Both use the six-dimensional integer Gram matrix
+`G=(I+2^26 S)^T (I+2^26 S)`, where `S` is the unit superdiagonal, then
+multiply it by the smallest positive binary64 value.
+Every input entry is representable, although a positive eigenvalue is below
+`1e-400`. Requiring a numerical entropy before honoring an algebraic zero
+was unnecessary. Exact product zeros now return after exact PSD validation;
+other unresolved spectral cases reach the exact zero test before refusal.
+A nearby state with an additional classical conditional correlation still
+fails explicitly, so this fallback cannot simply declare unresolved input
+Markov.
+
+The other two failures concern the numerical and exact APIs with 24
+dimension-one conditioning factors. They previously attempted `2^24`
+copies of the same product check on a four-dimensional state. The shared
+split helper now tests it once. Regression controls also retain nontrivial
+conditioning partitions and exercise complex singular quantum supports
+through the full modular-moment test, bypassing its shortcuts.
+
 ## Compatibility and downstream impact
 
 - Existing MI/CMI function signatures and nats remain unchanged. CMI keeps
@@ -235,36 +263,44 @@ in (2). Four separate witnesses isolate each term of (1). The proof concerns
 all finite states in its stated algebra; these controls check the executable
 diagnostic and its input boundary rather than replacing the proof.
 
-Final local validation: **850 tests passed on Linux; 844 passed on Windows
+Final local validation: **859 tests passed on Linux; 853 passed on Windows
 with six existing extended-precision skips**, with warnings treated as
-errors. This PR adds **68 cases**, including the fourteen pre-fix failures.
+errors. This PR adds **77 cases**, including fourteen original pre-fix
+failures and four audit regressions committed before their repair.
 The null-net Gibbs witness has CMI `0.006842238011420933`; its floating
 Markov construction has residual CMI `1.9828816605061793e-31`. The latter
 is below the existing numerical threshold, not an exact-zero certificate
 for the rounded constructor output.
 
-Twelve isolated mutations were tested against 66 of the new controls
+Sixteen isolated mutations were tested against 75 of the new controls
 (the full 255-support enumeration and slower multi-sector replay were
 separately included in the complete platform suites). Every copy contained
 its own source and tests outside the repository import path:
 
 | Deliberate defect | Failing controls |
 | --- | ---: |
-| Erase quantum coherences | 26 |
+| Erase quantum coherences | 30 |
 | Round conditional reference probabilities first | 1 |
 | Omit total-mass correction | 2 |
 | Accept nonzero output underflow | 1 |
 | Skip exact positivity | 1 |
-| Check only the first modular moment | 4 |
+| Check only the first modular moment | 7 |
 | Reduce quantum precision | 9 |
 | Suppress one endpoint obstruction | 6 |
 | Discard later weighted sectors | 7 |
-| Trust a product without comparing it | 25 |
-| Return bits through a nats interface | 17 |
-| Transpose the relative-modular reference | 1 |
+| Trust a product without comparing it | 29 |
+| Return bits through a nats interface | 21 |
+| Transpose the relative-modular reference | 2 |
+| Require resolved eigenvalues for an exact product | 1 |
+| Repeat splits over dimension-one factors | 2 |
+| Reject unresolved spectra before exact Markov verification | 1 |
+| Declare unresolved spectra Markov without verification | 1 |
 
 The transposed-reference mutation initially survived the fast subset.
 The retained complex BC-state control closes that coverage gap; its B
 marginal is real, so the wrong reference cannot cancel between both sides.
+The initial fast-test selector also unintentionally excluded four
+`small_classical` cases; the final replay uses complete function names to
+exclude only the two expensive tests. All cases run in the platform suites.
 The numerical output is still a checked approximation. The PSD, product,
 support and finite-moment decisions use exact rational arithmetic.
