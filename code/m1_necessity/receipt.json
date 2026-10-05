@@ -1148,7 +1148,7 @@
           "joint_likelihood_contract"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "25360340ad31ee61f1f0ab8f14444d884dec1e48b6d9aeb82623f881632226b2"
+        "original_claim_sha256": "723cae29441b440bc8ddcf7b9229fe4830ca8064dbb0f0bfb2cdd6fc951a5dbf"
       },
       "OPH-DM-DEEP-PROFILE-CHARACTERIZATION": {
         "assumptions": [
@@ -1189,7 +1189,7 @@
           "declared_equal_correlation_covariance_family_and_nuisance_priors"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "797617d6dda138df78648abc52cf0377e60536df704a5677ae5f3dccca045df3"
+        "original_claim_sha256": "8a1e03e547da3d63f8bb1e78ac5244da045c2f49ddcdff07bc29cb44ddb9821f"
       },
       "OPH-DM-SPARSE-DEFECT-MECHANISM": {
         "assumptions": [

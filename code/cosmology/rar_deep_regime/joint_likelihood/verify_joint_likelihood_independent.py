@@ -9,7 +9,7 @@ equal-correlation block covariance scan, grid-anchored delta-objective
 contours, matched channel-B
 estimator, paired bootstrap with the declared seed), serializes the result
 as canonical JSON (sorted keys, two-space indent, trailing newline), and
-byte-compares it against ``runtime/joint_likelihood_receipt.json``.
+byte-compares it against ``runtime/joint_likelihood_fixed_frame_receipt.json``.
 
 Byte equality of floating-point output requires the same arithmetic
 evaluation order as the producer contract; the declared formulas below fix
@@ -37,7 +37,7 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data"
-RECEIPT_PATH = HERE / "runtime" / "joint_likelihood_receipt.json"
+RECEIPT_PATH = HERE / "runtime" / "joint_likelihood_fixed_frame_receipt.json"
 
 # Declared constants, restated independently of the producer.
 KPC_M = 3.0856775814913673e19
@@ -54,7 +54,7 @@ INCLINATION_CLIP = (10.0, 89.9)
 THRESHOLD_68 = 1.0
 THRESHOLD_95 = 3.84
 SEED = 20260825
-SCHEMA = "oph.cosmology.joint_rar_btfr_penalized_profile_objective.v2"
+SCHEMA = "oph.cosmology.joint_rar_btfr_penalized_profile_objective.v3"
 
 LOG10_A0_MIN = -11.0
 LOG10_A0_MAX = -9.5
@@ -254,7 +254,9 @@ def block_stats(
     S1 = np.empty((len(a0), len(upsilon), len(d_grid), len(i_grid)))
     S2 = np.empty((len(a0), len(upsilon), len(d_grid), len(i_grid)))
     sin_cat = math.sin(math.radians(gal["meta"]["inclination_deg"]))
-    varlog = np.empty(len(i_grid))
+    # Fixed catalogue data measure: the corrected-velocity Jacobian s**n
+    # cancels the Gaussian normalization s**(-n).
+    varlog = np.zeros(len(i_grid))
     for j, d in enumerate(d_grid):
         v_model = np.sqrt(d * m0)
         for l, i_val in enumerate(i_grid):
@@ -262,7 +264,6 @@ def block_stats(
             u = (vobs * s - v_model) / (ev * s)
             S1[:, :, j, l] = (u * u).sum(axis=2)
             S2[:, :, j, l] = u.sum(axis=2) ** 2
-            varlog[l] = 2.0 * npts * math.log(s)
     S1[:, ~valid_u, :, :] = np.inf
     return S1, S2, varlog, npts
 
@@ -689,6 +690,12 @@ def compute() -> dict[str, Any]:
 
     return {
         "schema": SCHEMA,
+        "superseded_receipt": {
+            "path": "code/cosmology/rar_deep_regime/joint_likelihood/runtime/joint_likelihood_receipt.json",
+            "sha256": "6c74e6777b0b4752ec173c364907dfafba02a3669741af5421d098aac14d088b",
+            "replay_git_commit": "9582fdc384b8613a640f83c67571ab638b0899e0",
+            "reason": "v2 omitted the inclination change-of-variables Jacobian; its objective and fitted summaries are historical",
+        },
         "scope": (
             "labeled_postdiction_penalized_profile_objective_declared_conventions_"
             "fixed_absolute_cuts"
@@ -739,9 +746,11 @@ def compute() -> dict[str, Any]:
         },
         "error_model": {
             "per_point": (
-                "Gaussian in velocity with sigma = e_Vobs sin(i_cat)/sin(i); "
-                "the 2 n ln s(i) variance-normalization term is kept in the "
-                "penalized objective and a0-independent constants are dropped"
+                "Gaussian in the fixed catalogue velocity frame with sigma = e_Vobs "
+                "and mean = v_model sin(i)/sin(i_cat); equivalently corrected "
+                "velocities and errors both scale by s(i), whose density Jacobian "
+                "cancels the 2 n ln s(i) normalization term; only constants "
+                "independent of a0 and every profiled nuisance are dropped at fixed rho"
             ),
             "intra_galaxy_covariance": (
                 "equal-correlation block R = (1-rho) I + rho J per galaxy, "

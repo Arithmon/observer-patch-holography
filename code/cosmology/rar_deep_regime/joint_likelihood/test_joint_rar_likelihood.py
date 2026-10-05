@@ -23,6 +23,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 import joint_rar_likelihood as mod  # noqa: E402
+import verify_joint_likelihood_independent as independent  # noqa: E402
 
 A0_TRUE = 1.0e-10
 MASSES_MSUN = (1.0e9, 2.0e9, 3.0e9, 5.0e9, 1.0e10)
@@ -186,14 +187,28 @@ def test_contour_reports_disconnected_reentries() -> None:
     assert all(len(component["log10"]) == 2 for component in sublevel["components"])
 
 
-def test_committed_objective_exposes_real_disconnected_sublevel_sets(result: dict) -> None:
-    rows = {
-        row["rho"]: row
-        for row in result["subset_results"]["deep_f_0p3"]["per_rho"]
-    }
-    assert rows[0.4]["reference_sublevel_sets"]["delta_3p84"]["n_components"] == 2
-    assert rows[0.6]["reference_sublevel_sets"]["delta_1"]["n_components"] == 2
-    assert rows[0.6]["reference_sublevel_sets"]["delta_3p84"]["n_components"] == 2
+def test_corrected_snapshot_has_connected_sublevel_sets(result: dict) -> None:
+    # The old normalization introduced disconnected components on this
+    # snapshot. The artificial re-entry fixture above still guards enumeration.
+    for block in result["subset_results"].values():
+        for row in block["per_rho"]:
+            for sublevel in row["reference_sublevel_sets"].values():
+                assert sublevel["n_components"] == 1
+
+
+def test_historical_receipt_is_preserved_and_linked(result: dict) -> None:
+    import hashlib
+
+    historical = HERE / "runtime" / "joint_likelihood_receipt.json"
+    assert hashlib.sha256(historical.read_bytes()).hexdigest() == (
+        "6c74e6777b0b4752ec173c364907dfafba02a3669741af5421d098aac14d088b"
+    )
+    assert result["superseded_receipt"]["sha256"] == hashlib.sha256(
+        historical.read_bytes()
+    ).hexdigest()
+    assert historical != mod.RECEIPT_PATH
+    assert json.loads(historical.read_bytes())["schema"].endswith(".v2")
+    assert result["schema"].endswith(".v3")
 
 
 # ---------------------------------------------------------------------------
@@ -474,3 +489,74 @@ def test_verdict_rule_is_direction_neutral(result: dict) -> None:
     for f_key in ("deep_f_0p3", "deep_f_0p1"):
         for row in result["subset_results"][f_key]["per_rho"]:
             assert row["paired_btfr"]["verdict"] in labels
+
+
+@pytest.mark.parametrize("block_stats,profile", [
+    (mod.galaxy_block_stats, mod.profiled_curve),
+    (independent.block_stats, independent.profile_over_nuisances),
+], ids=["producer", "independent-replay"])
+@pytest.mark.parametrize("inclination", [30.0, 60.0, 80.0])
+@pytest.mark.parametrize("rho", [0.0, 0.6])
+def test_inclination_likelihood_uses_a_fixed_observation_measure(
+    inclination: float, rho: float, block_stats, profile,
+) -> None:
+    # Independent likelihood: project the model into the fixed catalogue
+    # velocity frame, whose observed values and covariance do not vary with i.
+    gal = {
+        "meta": {"inclination_deg": 60.0},
+        "rad_kpc": np.array([5.0, 10.0, 20.0]),
+        "gas_term": np.zeros(3),
+        "disk_term": np.array([6e9, 4e9, 2e9]),
+        "bul_term": np.zeros(3),
+        "vobs_kms": np.array([100.0, 105.0, 95.0]),
+        "e_vobs_kms": np.array([10.0, 9.0, 8.0]),
+    }
+    grids = {
+        "upsilon": np.array([0.5]),
+        "d_grid": np.array([1.0]),
+        "i_grid": np.array([inclination]),
+    }
+    stats = block_stats(gal, np.ones(3, dtype=bool), np.array([-10.0]), grids)
+    s1, s2, normalization, n = stats
+    actual = profile(s1, s2, normalization, np.zeros((1, 1, 1)), n, rho)
+    projected_model = []
+    for radius, disk in zip(gal["rad_kpc"], gal["disk_term"]):
+        vbar2 = disk / 2.0
+        circular = math.sqrt(vbar2 + math.sqrt(vbar2 * 1e-10 * radius * mod.KPC_M))
+        projected_model.append(circular * math.sin(math.radians(inclination))
+                               / math.sin(math.radians(60.0)))
+    residual = gal["vobs_kms"] * 1000.0 - np.array(projected_model)
+    sigma = gal["e_vobs_kms"] * 1000.0
+    covariance = np.outer(sigma, sigma) * ((1.0 - rho) * np.eye(3) + rho)
+    direct = float(residual @ np.linalg.solve(covariance, residual))
+    assert float(actual["curve"][0]) == pytest.approx(direct, rel=2e-13, abs=1e-13)
+
+
+@pytest.mark.parametrize("block_stats,profile", [
+    (mod.galaxy_block_stats, mod.profiled_curve),
+    (independent.block_stats, independent.profile_over_nuisances),
+], ids=["producer", "independent-replay"])
+def test_zero_residual_inclination_fits_have_equal_likelihood(block_stats, profile) -> None:
+    # Exact projected fits at two inclinations must have the same likelihood.
+    # A Jacobian left out of the corrected-velocity frame adds -2 log(2)
+    # to the edge-on fit and falsely prefers it, even with identical residuals.
+    gal = {
+        "meta": {"inclination_deg": 30.0},
+        "rad_kpc": np.array([10.0]),
+        "gas_term": np.zeros(1),
+        "disk_term": np.array([2e9]),
+        "bul_term": np.zeros(1),
+        "vobs_kms": np.array([100.0]),
+        "e_vobs_kms": np.array([10.0]),
+    }
+    curves = []
+    for inclination, circular in [(30.0, 100000.0), (90.0, 50000.0)]:
+        a0 = (circular**2 - 1e9)**2 / (1e9 * 10.0 * mod.KPC_M)
+        grids = {"upsilon": np.array([0.5]), "d_grid": np.array([1.0]),
+                 "i_grid": np.array([inclination])}
+        s1, s2, norm, n = block_stats(
+            gal, np.array([True]), np.array([math.log10(a0)]), grids,
+        )
+        row = profile(s1, s2, norm, np.zeros((1, 1, 1)), n, 0.0)
+        curves.append(float(row["curve"][0]))
+    assert curves == pytest.approx([0.0, 0.0], abs=1e-25)
