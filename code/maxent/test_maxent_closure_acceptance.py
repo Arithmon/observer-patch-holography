@@ -71,6 +71,10 @@ def test_relative_entropy_is_zero_only_on_the_diagonal() -> None:
 def test_full_acceptance_run_passes() -> None:
     results = run_acceptance()
     assert results["all_checks_pass"], results["checks"]
+    for run in results["generic_branch"] + [results["closed_subfamily"]]:
+        assert run["normalized_moment_matching_residual"] < 1e-11
+        assert 0 <= run["projection_optimality_gap_bound_nats"] < 1e-9
+        assert 0 <= run["projection_trace_distance_bound"] < 1e-4
 
 
 @pytest.mark.parametrize("lam", ([.5], [.5,.2,.1], [np.nan,.2], [True,False]))
