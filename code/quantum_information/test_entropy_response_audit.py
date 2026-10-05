@@ -7,7 +7,7 @@ import numpy as np
 import pytest
 
 from quantum_information.entropy_response import (
-    entropy_tangent, finite_entropy_balance, first_law_diagnostic,
+    central_normalization_diagnostic, entropy_tangent, finite_entropy_balance, first_law_diagnostic,
     gibbs_entropy_response,
 )
 
@@ -111,3 +111,17 @@ def test_unrepresentable_true_response_is_not_declared_an_exact_zero():
     # power moments are nonzero, so the polynomial-zero certificate fails.
     with pytest.raises(ValueError, match="resolved|precision"):
         entropy_tangent(sigma, np.diag([1., -2., 1.]))
+
+
+@pytest.mark.parametrize("power", [60, 500, 1000])
+def test_large_neighboring_edge_dimensions_do_not_have_equal_logarithms(power):
+    dimension = 2**power
+    report = central_normalization_diagnostic([dimension, dimension+1], [0., 0.])
+    expected = math.log1p(math.ldexp(1., -power))
+    assert report["all_sector_transfer_defect"] == pytest.approx(expected, rel=3e-15, abs=0)
+    np.testing.assert_array_equal(report["witness"], [1., -1.])
+
+
+def test_unrepresentable_relative_dimension_mismatch_cannot_pass_as_zero():
+    with pytest.raises(ValueError, match="resolved|precision"):
+        central_normalization_diagnostic([2**1100, 2**1100+1], [0., 0.])
