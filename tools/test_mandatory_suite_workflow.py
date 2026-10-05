@@ -214,7 +214,10 @@ def test_each_worker_has_a_fresh_complete_checkout_and_the_runtime_ceiling():
     )
     for step in job["steps"]:
         assert not step.get("continue-on-error")
-        if step.get("name") == "Verify additional scientific evidence":
+        if step.get("name") in {
+            "Verify additional scientific evidence",
+            "Verify numerical recovery bounds without optional hardware SDKs",
+        }:
             assert step["if"] == "matrix.shard == 0"
         else:
             assert not step.get("if")

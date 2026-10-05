@@ -42,12 +42,6 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
-        "Verify numerical recovery bounds without optional hardware SDKs",
-        [sys.executable, "-m", "pytest", "-q",
-         "--confcutdir=code/ibm_quantum_cloud/tests",
-         "code/ibm_quantum_cloud/tests/test_stage1_markov_fingerprint.py"],
-    ),
-    (
         "Verify geometric-source identifiability and native history controls",
         [sys.executable, "-m", "pytest", "-q", "code/native_geometric_source"],
     ),
