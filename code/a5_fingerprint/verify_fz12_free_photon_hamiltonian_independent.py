@@ -308,8 +308,11 @@ def projector_contract() -> dict[str, Any]:
 
 
 def lambda_hat(q_values: np.ndarray | float, projections: np.ndarray) -> np.ndarray:
+    """Replay the symbol through complex chords, stable at small momentum."""
+
     q = np.asarray(q_values, dtype=np.float64)
-    return 6.0 * np.mean(1.0 - np.cos(q[..., np.newaxis] * projections), axis=-1)
+    chords = np.expm1(1j * q[..., np.newaxis] * projections)
+    return 3.0 * np.mean(chords.real**2 + chords.imag**2, axis=-1)
 
 
 def lambda_hat_derivative(
