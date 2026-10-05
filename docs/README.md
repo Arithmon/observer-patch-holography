@@ -146,6 +146,10 @@ order:
   proves the equivalence between affine full-marginal completion, modular
   compatibility and reference-preserving conditional expectation. It corrects
   regional standardness checks and treats noncommuting primitive repairs.
+- [Finite null tomography: reconstruction, consistency and resolution](../code/geometry/NULL_TOMOGRAPHY.md)
+  repairs incomplete and non-null tensor reconstructions, reuses the proved
+  nine-direction inverse, and connects the dependent-family test to angular
+  harmonics, an exact cubic obstruction and sharp noise amplification.
 
 ## Instrument Specifications
 
