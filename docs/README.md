@@ -134,6 +134,9 @@ order:
 
 **Existing-theory audit and simplification.**
 
+- [MaxEnt inference independent of observable coordinates](../code/maxent/PROJECTION_COORDINATES.md)
+  repairs unit, basis and energy-offset dependence, proves a global
+  optimization-error bound, and distinguishes that error from closure defect.
 - [Finite-state entropy and sector labels](../code/quantum_information/README.md)
   records the entropy and collar audit, gives the direct-sum form of the finite
   A3 objective, and documents the shared implementation and corrected

@@ -44,8 +44,14 @@ import numpy as np
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from quantum_information import (
-    faithful_density_matrix, finite_real_scalar, partial_trace,
+    partial_trace,
     relative_entropy as _relative_entropy,
+)
+
+from maxent.information_projection import (
+    constrained_hamiltonian, duhamel_covariance, gibbs_state,
+    independent_operator_count, i_projection, project_information,
+    projection_diagnostics,
 )
 
 HERE = Path(__file__).resolve().parent
@@ -78,53 +84,6 @@ def global_sum_constraints(n_sites: int) -> list[np.ndarray]:
     return [sum(ops) for ops in cell_densities(n_sites)]
 
 
-def independent_operator_count(operators: list[np.ndarray]) -> int:
-    """Rank of the span of {operators, identity} minus one, via the HS Gram matrix."""
-    dim = operators[0].shape[0]
-    basis = [np.eye(dim, dtype=complex)] + list(operators)
-    gram = np.array([[np.trace(a.conj().T @ b) for b in basis] for a in basis])
-    return int(np.linalg.matrix_rank(gram, tol=1e-9)) - 1
-
-
-def constrained_hamiltonian(constraints, lam):
-    """Reject missing multipliers and invalid observables before summing."""
-    if not constraints:
-        raise ValueError("nonempty constraint family required")
-    multipliers = np.asarray(lam)
-    if (multipliers.shape != (len(constraints),) or multipliers.dtype.kind not in "iuf"
-            or not np.all(np.isfinite(multipliers))):
-        raise ValueError("one finite real multiplier is required per constraint")
-    operators = [np.asarray(s, dtype=complex) for s in constraints]
-    shape = operators[0].shape
-    if len(shape) != 2 or shape[0] == 0 or shape[0] != shape[1]:
-        raise ValueError("square constraint operators required")
-    for s in operators:
-        if (s.shape != shape or not np.all(np.isfinite(s))
-                or np.linalg.norm(s-s.conj().T, ord="fro") > 1e-12):
-            raise ValueError("constraints must be finite Hermitian operators on one algebra")
-    with np.errstate(over="ignore",invalid="ignore"):
-        ham = sum(l*s for l,s in zip(multipliers,operators))
-    if not np.all(np.isfinite(ham)):
-        raise ValueError("constraint combination exceeds finite numerical range")
-    return ham
-
-
-def gibbs_state(constraints: list[np.ndarray], lam: np.ndarray) -> tuple[np.ndarray, float]:
-    """omega(lambda) = exp(-sum_a lambda_a S_a)/Z and log Z, via eigendecomposition."""
-    ham = constrained_hamiltonian(constraints, lam)
-    energies, vectors = np.linalg.eigh(ham)
-    shifted = energies - energies.min()
-    weights = np.exp(-shifted)
-    if np.any(weights == 0):
-        raise ValueError("Gibbs spectrum underflow; faithful-state precision is insufficient")
-    log_z = math.log(weights.sum()) - energies.min()
-    probs = weights/weights.sum()
-    if np.any(probs == 0):
-        raise ValueError("normalized Gibbs spectrum underflow; precision is insufficient")
-    rho = (vectors * probs) @ vectors.conj().T
-    return faithful_density_matrix(rho), log_z
-
-
 def decimate(rho: np.ndarray, n_sites: int) -> np.ndarray:
     """Partial trace over the odd sites of a ring, keeping sites 0, 2, 4, ..."""
     if type(n_sites) is not int or n_sites <= 0 or n_sites % 2:
@@ -141,89 +100,6 @@ def trace_norm(delta: np.ndarray) -> float:
     return float(np.sum(np.abs(np.linalg.eigvalsh((delta + delta.conj().T) / 2))))
 
 
-def duhamel_covariance(constraints: list[np.ndarray], lam: np.ndarray) -> np.ndarray:
-    """Kubo-Mori covariance matrix of the constraints: the Hessian of log Z(lambda).
-
-    K_ab = d^2 log Z / (d lambda_a d lambda_b); positive definite iff the constrained
-    operators together with the identity are linearly independent, which is the strict
-    convexity input of the I-projection lemma.
-    """
-    ham = constrained_hamiltonian(constraints, lam)
-    energies, vectors = np.linalg.eigh(ham)
-    shifted = energies - energies.min()
-    probs = np.exp(-shifted)
-    probs /= probs.sum()
-    rho = (vectors * probs) @ vectors.conj().T
-    centered = [
-        vectors.conj().T @ (s - np.real(np.trace(rho @ s)) * np.eye(s.shape[0])) @ vectors
-        for s in constraints
-    ]
-    if np.any(probs == 0):
-        raise ValueError("Gibbs spectrum underflow; faithful-state precision is insufficient")
-    faithful_density_matrix(rho)
-    logp = np.log(probs)
-    pi, pj = np.meshgrid(probs, probs, indexing="ij")
-    li, lj = np.meshgrid(logp, logp, indexing="ij")
-    with np.errstate(divide="ignore", invalid="ignore"):
-        kernel = np.where(np.abs(li - lj) > 1e-12, (pi - pj) / (li - lj), pi)
-    n_con = len(constraints)
-    cov = np.empty((n_con, n_con))
-    for a in range(n_con):
-        for b in range(n_con):
-            cov[a, b] = float(np.real(np.sum(kernel * centered[a] * centered[b].T)))
-    return (cov + cov.T) / 2
-
-
-def i_projection(
-    sigma: np.ndarray, constraints: list[np.ndarray], tol: float = 1e-11, max_iter: int = 200
-) -> tuple[np.ndarray, float]:
-    """Unique minimizer lambda* of D(sigma || omega(lambda')) by damped Newton descent.
-
-    The objective is log Z(lambda') + sum_a lambda'_a <S_a>_sigma (strictly convex); its
-    gradient is the moment mismatch <S_a>_sigma - <S_a>_{omega(lambda')} and its Hessian
-    is the Duhamel covariance, so the minimizer is the moment-matching multiplier vector.
-    Requires a faithful target and constraints independent modulo identity.
-    Returns (lambda*, final gradient norm); failure to converge raises.
-    """
-    sigma = faithful_density_matrix(sigma)
-    constraints = [np.asarray(s,dtype=complex) for s in constraints]
-    ham = constrained_hamiltonian(constraints, np.zeros(len(constraints)))
-    if ham.shape != sigma.shape:
-        raise ValueError("target and constraints must use the same algebra")
-    if independent_operator_count(constraints) != len(constraints):
-        raise ValueError("constraints must be independent modulo identity")
-    tol = finite_real_scalar(tol, "convergence tolerance")
-    if tol <= 0:
-        raise ValueError("finite positive convergence tolerance required")
-    if type(max_iter) is not int or max_iter <= 0:
-        raise ValueError("positive integer iteration budget required")
-    targets = np.array([float(np.real(np.trace(sigma @ s))) for s in constraints])
-
-    def objective(lam: np.ndarray) -> float:
-        _, log_z = gibbs_state(constraints, lam)
-        return log_z + float(lam @ targets)
-
-    lam = np.zeros(len(constraints))
-    for _ in range(max_iter):
-        rho, _ = gibbs_state(constraints, lam)
-        moments = np.array([float(np.real(np.trace(rho @ s))) for s in constraints])
-        grad = targets - moments
-        if np.linalg.norm(grad) < tol:
-            break
-        hess = duhamel_covariance(constraints, lam)
-        step = np.linalg.solve(hess + 1e-14 * np.eye(len(lam)), -grad)
-        scale, base = 1.0, objective(lam)
-        while scale > 1e-8 and objective(lam + scale * step) > base + 1e-15:
-            scale /= 2
-        lam = lam + scale * step
-    rho, _ = gibbs_state(constraints, lam)
-    moments = np.array([float(np.real(np.trace(rho @ s))) for s in constraints])
-    residual = float(np.linalg.norm(targets - moments))
-    if not np.isfinite(residual) or residual >= tol:
-        raise RuntimeError("information projection did not converge within its budget")
-    return lam, residual
-
-
 def run_lattice_pair(n_fine: int, lam_fine: np.ndarray) -> dict:
     """Run the full issue-#539 acceptance test on the lattice pair (n_fine, n_fine/2)."""
     n_coarse = n_fine // 2
@@ -238,8 +114,8 @@ def run_lattice_pair(n_fine: int, lam_fine: np.ndarray) -> dict:
 
     omega_fine, _ = gibbs_state(fine, lam_fine)
     sigma = decimate(omega_fine, n_fine)
-    lam_star, moment_residual = i_projection(sigma, coarse)
-    omega_coarse, _ = gibbs_state(coarse, lam_star)
+    projection = project_information(sigma, coarse)
+    lam_star, omega_coarse = projection.multipliers, projection.state
 
     defect = max(relative_entropy(sigma, omega_coarse), 0.0)
     residual = trace_norm(sigma - omega_coarse)
@@ -253,13 +129,17 @@ def run_lattice_pair(n_fine: int, lam_fine: np.ndarray) -> dict:
         "independent_global_sum_constraints": {"fine": fine_count, "coarse": coarse_count},
         "rejected_per_cell_constraint_count": {"fine": per_cell_fine, "coarse": per_cell_coarse},
         "induced_map_R_multipliers": list(map(float, lam_star)),
-        "moment_matching_residual": moment_residual,
+        "moment_matching_residual": projection.raw_moment_residual,
+        "normalized_moment_matching_residual": projection.normalized_residual,
+        "projection_optimality_gap_bound_nats": projection.optimality_gap_bound,
+        "projection_trace_distance_bound": projection.trace_distance_bound,
+        "projection_iterations": projection.iterations,
         "duhamel_hessian_min_eigenvalue": hess_floor,
         "closure_defect_nats": defect,
         "trace_norm_residual": residual,
         "pinsker_residual_bound": pinsker_bound,
         "counts_match_displayed_dimension": fine_count == coarse_count == n_con,
-        "projection_unique": hess_floor > 1e-9,
+        "projection_unique": coarse_count == n_con,
         "residual_bound_holds": residual <= pinsker_bound + 1e-9,
     }
 
