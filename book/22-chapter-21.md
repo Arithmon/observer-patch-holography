@@ -114,9 +114,9 @@ Chapter eighteen defined energy and left an unpaid bill inside the definition.
 
 Repair works through a region's records at some rate. That rate is the region's energy. Every rate is counted against a clock. That one was counted against a clock nobody had built, with no universal time on offer to borrow instead. A region's dynamics has an energy generator once its time parameter and energy convention are fixed, and a repair-event count alone supplies neither that generator nor an elapsed duration; the identification rides on the imported calibration chapter eighteen names.
 
-Here it is. The region holds a state, the state determines a flow, the flow has a parameter, and the parameter is the clock. Energy is well defined region by region because every region carries the thing its rate is counted against, manufactured out of what the region holds. Two regions running at different rates differ in the states they hold. That is the whole of the difference.
+The region's state determines its modular flow and its parameter. Comparing that parameter with a physical clock requires a declared correspondence to time. Different states can determine different modular flows; comparing their physical rates also requires that correspondence.
 
-Energy is the generator of a region's advance along its own clock. The generator of the modular flow is minus the logarithm of the region's state. Those are the same operator, and the second is a recipe for computing the first out of what the region holds, with no constants fitted to measurements and nobody at a desk choosing an operator to fit the apparatus.
+For a supplied finite Gibbs state, minus its logarithm is the physical energy operator divided by the temperature in energy units, plus a scalar offset. The offset leaves the modular flow unchanged. The logarithm therefore determines energy in modular units; expressing that energy in joules and its flow in seconds still requires the declared physical calibration.
 
 ## The ship that light never catches
 
@@ -146,6 +146,6 @@ He did that calculation in 1976, in a paper called "Notes on black-hole evaporat
 
 Which is why nobody has run into this by accident. Warming yourself by a single degree calls for an acceleration around twenty-five billion billion times the strength of gravity at the Earth's surface, sustained, with you in the vehicle. Every acceleration a human body has ever survived leaves the reading far below what any thermometer built resolves, and the passengers have complaints about the other effects.
 
-Look at where that temperature came from. The clock was extracted from a state, by two demands about bookkeeping, with nothing put in beyond an algebra of questions and a rule assigning them odds. The temperature came out of those same two demands, applied to that same pair of objects. Nobody installed a thermometer and nobody installed a clock. Both came out welded together, because the equilibrium condition that fixes the flow is the condition that fixes a temperature.
+The algebra and state fix a modular flow. In this example, identifying that flow with the ship's motion fixes its rate against proper time, and the supplied acceleration fixes the temperature. The equilibrium condition relates the two; it does not give a temperature in kelvin from the state alone.
 
 So an observer's sense of duration and its sense of temperature are two readings taken off one object. A duration is a count of something. The count sits in a cesium atom where anybody can go and look at it. What is a temperature a count of?
