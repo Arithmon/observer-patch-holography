@@ -300,9 +300,19 @@ def test_noisy_tomography_returns_an_actually_positive_matrix(seed):
                         for z in row] for row in rho])
     assert exact == exact.H
     assert all((-1)**k*x >= 0 for k, x in enumerate(exact.charpoly().all_coeffs()))
+    assert 0 <= diagnostic["gram_rounding_trace_bound"] < 2e-15
+    assert diagnostic["trace_normalization_tolerance"] == 1e-12
     metrics = stage1.analyze_state(rho)
     assert np.isfinite(metrics["cmi_bits"]) and metrics["cmi_bits"] > 0
     replay, _, replay_diagnostic = stage1.reconstruct_density_matrix(
         json.loads(json.dumps(counts)), 3, return_diagnostics=True)
     np.testing.assert_array_equal(replay, rho)
     assert replay_diagnostic == diagnostic
+
+
+def test_exact_tomographic_states_do_not_receive_a_positive_floor():
+    for state in [np.diag([1., 0.]), np.array([[.5, .5j], [-.5j, .5]])]:
+        actual, bound = stage1.project_to_physical_density_matrix(state, return_rounding_bound=True)
+        assert bound is None
+        assert np.linalg.matrix_rank(actual) == 1
+        np.testing.assert_allclose(actual, state, atol=2e-16, rtol=0)
