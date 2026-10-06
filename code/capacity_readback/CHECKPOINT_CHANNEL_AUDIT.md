@@ -136,12 +136,25 @@ that enumerates all decoders, including unassigned outputs:
 
 Together these are 2,273 exact comparisons, not a proof by testing on arbitrary
 channels. The search proof supplies that general finite justification.
-Seven isolated implementation mutations restore false threshold slack,
+Ten isolated implementation mutations restore false threshold slack,
 float conversion, support truncation, downward TV rounding, acceptance of
-escaping mass, zeroed decoder errors or an always-accepting verifier. Each
+escaping mass, zeroed decoder errors, an always-accepting verifier, omitted
+normalization, greedy assignment or ignored invalid rows outside the code. Each
 is caught by an ordinary assertion or a missing required exception, not by
 an import or collection failure. CI executes these controls and the entire
 capacity directory on both Linux and Windows.
+
+The subsequent maintainer-style audit also compares the actual minimax error
+against flat decoder enumeration for 125 pairs of three-input, four-output
+channels with unequal row denominators. It tests each pair at the exact full
+code threshold and immediately on either side when that remains in `[0,1]`.
+A three-channel counterexample has capacity two for every individual channel
+but common capacity one: the calculation must select one common code, not
+take the minimum of separately optimized code sizes. Other controls exercise
+both exact row-mass boundaries, low Decimal precision, invalid rows outside
+the returned code, zero-probability external labels, the legacy float
+adapter's explicit refusal, and the TV transfer through the capacity caller.
+These additional controls found no further production defect in the repair.
 
 ## Downstream impact
 

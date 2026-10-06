@@ -31,13 +31,22 @@ import pytest
      "test_checkpoint_decoder_certificates.py::test_every_three_input_three_output_half_count_channel"),
     ("verify_checkpoint_decoder.py", "return False", "return True",
      "test_checkpoint_decoder_certificates.py::test_independent_replay_rejects_forged_certificates"),
+    ("checkpoint_channels.py", "out: p/mass for out, p in exact.items()",
+     "out: p for out, p in exact.items()",
+     "test_checkpoint_audit_boundaries.py::test_exact_row_mass_acceptance_boundary_and_disclosure"),
+    ("checkpoint_channels.py", "for owner in reversed(owners):", "for owner in reversed(owners[:1]):",
+     "test_checkpoint_audit_boundaries.py::test_unequal_denominators_at_both_sides_of_compound_optimum"),
+    ("verify_checkpoint_decoder.py", "for source, row in raw.items():",
+     "for source, row in ((x, r) for x, r in raw.items() if x in code):",
+     "test_checkpoint_audit_boundaries.py::test_invalid_rows_outside_the_certified_code_are_still_rejected"),
 ])
 def test_semantic_implementation_mutations_are_detected(tmp_path, module, before, after, test):
     source = Path(__file__).parent
     for name in ["correctable_public_record_capacity.py", "checkpoint_channels.py",
                  "public_record_csp.py", "verify_checkpoint_decoder.py",
                  "test_correctable_public_record_capacity.py",
-                 "test_checkpoint_channel_precision.py", "test_checkpoint_decoder_certificates.py"]:
+                 "test_checkpoint_channel_precision.py", "test_checkpoint_decoder_certificates.py",
+                 "test_checkpoint_audit_boundaries.py"]:
         shutil.copy2(source/name, tmp_path/name)
     target = tmp_path/module
     original = target.read_text(encoding="utf-8")
