@@ -30,6 +30,16 @@ def linear_matrix(action, d):
     return np.column_stack(columns)
 
 
+def exact_complex_rechart():
+    # Controlled phase after H tensor H: an entangling complex unitary
+    # with exactly representable entries. Exact conservation must not rely
+    # on a rounded exponential or on reimporting a floating QR basis.
+    h = np.array([[1., 1.], [1., -1.]])
+    u = np.diag([1, 1, 1, 1j])@np.kron(h, h)/2
+    assert np.array_equal(u@u.conj().T, np.eye(4))
+    return u
+
+
 def independent_choi(action, d):
     blocks = []
     for i in range(d):
@@ -242,9 +252,10 @@ def test_repair_clock_units_preserve_noncommuting_spectrum_and_evolution(clock):
 @pytest.mark.parametrize("clock", [1e-20, 1e20])
 def test_clock_units_preserve_nontracial_recharted_repair(clock):
     algebra, rho, _, channel = nontracial_factor_case()
-    u = expm(.27j*(np.kron(X,Y)+.3*np.kron(Y,Z)))
+    u = exact_complex_rechart()
     chart = linear_matrix(lambda a: u@a@u.conj().T, 4)
-    changed_algebra = FiniteAlgebra([u@a@u.conj().T for a in algebra.basis])
+    changed_algebra = FiniteAlgebra(
+        [u@np.kron(a,I)@u.conj().T for a in matrix_units(2)])
     generator, report = repair_generator(
         [chart@channel@chart.conj().T], [changed_algebra],
         u@rho@u.conj().T, [clock])
@@ -479,11 +490,12 @@ def test_nontracial_repair_generator_after_complex_unitary_recharting():
     assert np.allclose(np.sort(np.linalg.eigvals(-generator).real),expected,atol=1e-13)
     assert report["intersection_dimension"] == 4
     assert report["gap"] == pytest.approx(.1,abs=1e-13)
-    u = expm(.27j*(np.kron(X,Y)+.3*np.kron(Y,Z)))
+    u = exact_complex_rechart()
     rechart = linear_matrix(lambda a:u@a@u.conj().T,4)
     changed = [rechart@s@rechart.conj().T for s in primitives]
-    changed_algebras = [FiniteAlgebra([u@b@u.conj().T for b in a.basis])
-                       for a in algebras]
+    changed_algebras = [FiniteAlgebra(
+        [u@np.kron(a,b)@u.conj().T for a in matrix_units(2) for b in (I,axis)])
+        for axis in (Z,3*X+4*Z)]
     result,changed_report = repair_generator(
         changed,changed_algebras,u@rho@u.conj().T,[.5,.5])
     assert np.allclose(result,rechart@generator@rechart.conj().T,atol=2e-13)
