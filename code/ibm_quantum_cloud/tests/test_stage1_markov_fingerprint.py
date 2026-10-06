@@ -66,3 +66,51 @@ def test_diagonal_markov_state_is_recovered_exactly():
     assert row["cmi_bits"] == pytest.approx(0.0, abs=1e-14)
     assert row["petz_fidelity"] == pytest.approx(1.0, abs=1e-14)
     assert row["fawzi_renner_fidelity_lower_bound"] == pytest.approx(1.0, abs=1e-14)
+
+
+@pytest.mark.parametrize("mass", (2.**-35, 2.**-40, 1e-100, 1e-310))
+def test_petz_retains_every_resolved_markov_sector(mass):
+    rho = np.diag([1-mass, 0, 0, 0, 0, 0, 0, mass])
+    recovered = stage1.petz_recovery(rho)
+    assert recovered[7, 7].real == pytest.approx(mass, rel=2e-13, abs=0)
+    np.testing.assert_allclose(recovered, rho, atol=0, rtol=2e-13)
+
+
+@pytest.mark.parametrize("bad", (
+    np.zeros((8, 8)), np.eye(8), np.diag([1.1, -.1, 0, 0, 0, 0, 0, 0]),
+    np.ma.array(np.eye(8)/8, mask=np.eye(8, dtype=bool)),
+))
+@pytest.mark.parametrize("operation", ("analyze_state", "petz_recovery", "state_fidelity"))
+def test_invalid_states_cannot_become_recovery_evidence(bad, operation):
+    with pytest.raises(ValueError):
+        if operation == "state_fidelity":
+            stage1.state_fidelity(bad, np.eye(8)/8)
+        else:
+            getattr(stage1, operation)(bad)
+
+
+def test_entropy_retains_positive_spectral_mass():
+    mass = 1e-100
+    assert stage1.von_neumann_entropy(np.diag([1., mass])) == pytest.approx(
+        -mass*np.log2(mass), rel=1e-14, abs=0)
+
+
+@pytest.mark.parametrize("counts", ({}, {"XYZ": {"000": 100}},
+                                      {b: {} for b in stage1.measurement_bases(3)}))
+def test_incomplete_tomography_does_not_invent_a_state(counts):
+    with pytest.raises(ValueError):
+        stage1.reconstruct_density_matrix(counts, 3)
+
+
+@pytest.mark.parametrize("counts", ({}, {"0": -1, "1": 2}, {"0": True},
+                                      {"0": .5, "1": .5}, {"2": 1}, {"00": 1}))
+def test_invalid_counts_are_not_zero_expectations(counts):
+    with pytest.raises(ValueError):
+        stage1.expectation_from_counts(counts, "Z")
+
+
+def test_tomography_uses_shot_weights_for_repeated_pauli_estimates():
+    counts = {b: {"00": 1} for b in stage1.measurement_bases(2)}
+    counts["XY"] = {"01": 100}  # q0 is the rightmost count bit.
+    _, expectations = stage1.reconstruct_density_matrix(counts, 2)
+    assert expectations["XI"] == pytest.approx(-98/102, abs=1e-15)
