@@ -1,5 +1,17 @@
 # Tangent first laws and finite entropy changes
 
+Maintainer follow-up (#1048): Gibbs tangent evaluation now conservatively
+refuses subnormal thermal populations before converting them to exact
+fractions. Exact arithmetic on rounded populations cannot undo their loss
+of relative precision. For `T=diag(0,1e150)` and `lambda=7.45e-148`, the old
+variance was `4.940656458412465e-24` instead of the independent partition
+value `2.822350730472012e-24`; the entropy derivative had the same 75% error,
+so the derivative ratio did not detect it. The new 500-digit scalar controls
+cover both signs, ordinary and rescaled units, and gaps 700 through 746.
+This is an explicit numerical-domain restriction, not failure of the entropy
+identity. Ordinary receipt inputs, paper statements and frozen evidence are
+unchanged by this correction.
+
 This repair belongs to the standing evidence audit
 [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033).
 It repairs the historical Einstein-closure receipts and their claim-registry

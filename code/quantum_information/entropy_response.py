@@ -257,6 +257,9 @@ def gibbs_entropy_response(observable, lam):
     consequence of that family, not an independent numerical verification.
     A scalar observable has no energy coordinate and no slope dS/dt.
     Scalar energy origins are removed before the variance is evaluated.
+    Subnormal thermal populations are conservatively refused: exact sums
+    of their rounded values cannot recover lost relative precision, even
+    when rescaled derivatives lie comfortably in the normal output range.
     """
     lam = _parameter(lam, "multiplier")
     matrices, scales, _ = _observables([observable])
@@ -272,6 +275,8 @@ def gibbs_entropy_response(observable, lam):
             or np.any((energies != 0) & (ham == 0))):
         raise ValueError("thermal Hamiltonian is not resolved at this precision")
     diagonal, _, _, _ = _thermal(np.diag(ham))
+    if np.any(np.diag(diagonal).real < np.finfo(float).tiny):
+        raise ValueError("Gibbs population relative precision is insufficient")
     masses = [Fraction(float(p)) for p in np.diag(diagonal).real]
     rho = faithful_density_matrix((vectors*np.diag(diagonal).real) @ vectors.conj().T)
     # Pairwise variance avoids subtracting two large moments, and also the
