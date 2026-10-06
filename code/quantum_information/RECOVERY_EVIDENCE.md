@@ -212,6 +212,38 @@ counts through the full analysis path, combine stricter downstream validators
 with their producers, and certify properties of the returned entries rather
 than the eigenspectrum intended before reconstruction.
 
+### Circuit states must satisfy the same contract
+
+A further audit with the actual Qiskit 2.5.2 SDK found that the ordinary
+`DensityMatrix(Statevector(...))` constructor also loses exact positivity.
+With #1049's strict information validator, the structured theta=.6 and 1
+circuits and depth-three random circuits with seeds 0 through 3 all failed
+before reporting CMI. The theta=0 and GHZ controls alone did not expose it.
+Six retained SDK-array-contract regressions fail on `72ce9e1d`; they check
+the returned entries independently using characteristic coefficients.
+
+The circuit constructor now reverses the statevector tensor axes into
+q0-first order, then applies the same outward Gram rounding directly to
+that numerical vector. It does not project or renormalize a supplied state.
+The bound is relative to the numerical amplitudes, and does not certify
+simulation error relative to ideal gates. Exactly representable products
+receive no artificial floor. Invalid, non-normalized or incorrectly sized
+amplitudes fail explicitly.
+
+Every circuit-reference report and random-control candidate now retains a
+`circuit_state` record with the construction, rounding bound, scope and trace
+tolerance. Legacy fields `exact_analysis` and `exact_cmi_bits` remain for
+compatibility: they denote the numerical circuit reference, not an exact
+ideal-circuit certificate. The tests replay the complete JSON report path
+and check that these qualifications survive serialization. The real-SDK
+replay also covers all ten default random candidates and the five selected
+catalog circuits; their complete CMI/recovery analysis succeeds with #1049.
+
+This adds an audit requirement to the preceding lesson: follow every state
+producer into the consumer, including optional SDK adapters and the actual
+command-line report. A successful tomography reconstruction test does not
+validate the separate circuit-reference constructor.
+
 ## Numerical and downstream boundaries
 
 Strict numeric conversion rejects masked data, mixed Booleans and lossy
@@ -261,6 +293,12 @@ tomography controls. Its core suite passes 965 tests on Linux and 959 on
 Windows (six platform skips); all 54 Stage 1 tests pass on both platforms.
 The same Stage 1 tests pass with the strict #1049 information validator.
 Warnings are treated as errors.
+The circuit follow-up adds thirteen cases (six pre-fix reproductions, five
+invalid-amplitude controls, an exact product and a complete report replay).
+All 67 Stage 1 cases pass on Windows and Linux in the combined four-PR tree;
+that tree's core suite passed 1367 tests on Linux and 1361 on Windows with
+six expected skips before this consumer-only correction. Core sources are
+unchanged by the circuit follow-up. The PR adds 151 cases in total.
 The tests include independent rational and symbolic controls, high-precision
 matrix functions, complete Born-count reconstruction, invalid input rejection
 under optimized Python, and a guard forbidding state repair during analysis.
@@ -280,3 +318,9 @@ diagonals to nearest, use the wrong complex Gram product, report a false zero
 rounding bound, ignore a nonzero row at a zero Schur pivot, and return a
 constant zero Gram matrix. The latter controls use exact returned-entry
 inequalities and the full noisy-count path.
+
+Four circuit-specific mutations are also rejected: restore the ordinary
+rounded outer product, omit qubit-axis reversal, falsify the rounding bound
+as zero, and drop the circuit certificate from the saved report. These
+controls complement the actual SDK replay without making the mandatory
+numerical tests depend on optional circuit or cloud packages.

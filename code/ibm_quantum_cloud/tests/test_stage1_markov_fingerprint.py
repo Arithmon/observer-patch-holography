@@ -356,3 +356,82 @@ def test_circuit_state_constructor_returns_exact_psd_entries(monkeypatch, case):
     np.testing.assert_allclose(rho, np.outer(q0, q0.conj()), atol=1e-15, rtol=0)
     metrics = stage1.analyze_state(rho)
     assert np.isfinite(metrics["cmi_bits"])
+    actual, diagnostic = stage1.circuit_density_q0_order(circuit, return_diagnostics=True)
+    np.testing.assert_array_equal(actual, rho)
+    from sympy.polys.matrices import DomainMatrix
+    v = sp.Matrix([sp.Rational(float(z.real))+sp.I*sp.Rational(float(z.imag)) for z in q0])
+    exact_v = DomainMatrix.from_Matrix(v).convert_to(sp.QQ_I).to_dense()
+    adjoint = DomainMatrix.from_Matrix(v.H).convert_to(sp.QQ_I).to_dense()
+    error = exact-exact_v.matmul(adjoint).to_Matrix()
+    assert all((-1)**k*x >= 0 for k, x in enumerate(error.charpoly().all_coeffs()))
+    assert 0 <= sp.trace(error) <= sp.Rational(diagnostic["gram_rounding_trace_bound"])
+    assert diagnostic["gram_rounding_trace_bound"] < 2e-15
+    assert diagnostic["rounding_bound_scope"] == "supplied_numerical_statevector"
+    assert diagnostic["circuit_simulation_error_certified"] is False
+
+
+@pytest.mark.parametrize("psi", [np.zeros(8), np.ones(8), np.ones(4),
+                               np.full(8, np.nan), np.full(8, np.inf)])
+def test_invalid_circuit_amplitudes_are_not_normalized_or_replaced(monkeypatch, psi):
+    circuit = _stub_circuit_statevector(monkeypatch, psi)
+    with pytest.raises(ValueError):
+        stage1.circuit_density_q0_order(circuit)
+
+
+def test_exact_product_circuit_gets_no_rounding_floor(monkeypatch):
+    psi = np.zeros(8, complex)
+    psi[1] = 1j
+    rho, diagnostic = stage1.circuit_density_q0_order(
+        _stub_circuit_statevector(monkeypatch, psi), return_diagnostics=True)
+    expected = np.zeros((8, 8))
+    expected[4, 4] = 1
+    np.testing.assert_array_equal(rho, expected)
+    assert diagnostic["gram_rounding_trace_bound"] == 0
+
+
+def test_full_report_retains_circuit_rounding_and_count_replay(monkeypatch, tmp_path):
+    import json
+    import sys
+    from types import ModuleType, SimpleNamespace
+    _stub_circuit_statevector(monkeypatch, np.zeros(8))
+    def circuit(name, amplitudes):
+        return SimpleNamespace(name=name, num_qubits=3, amplitudes=amplitudes)
+    def structured(theta):
+        psi = np.zeros(8, complex)
+        psi[[0, 3, 7]] = np.array([1., np.cos(theta/2), np.sin(theta/2)])/np.sqrt(2)
+        return circuit(f"structured_theta_{theta:.2f}", psi)
+    def random(seed, depth):
+        rng = np.random.default_rng(seed)
+        psi = rng.normal(size=8)+1j*rng.normal(size=8)
+        return circuit(f"random_seed_{seed}", psi/np.linalg.norm(psi))
+    monkeypatch.setattr(stage1, "build_structured_family", structured)
+    monkeypatch.setattr(stage1, "build_random_control", random)
+    monkeypatch.setattr(stage1, "build_ghz", lambda: circuit(
+        "ghz_control", np.array([1., 0, 0, 0, 0, 0, 0, 1.])/np.sqrt(2)))
+    monkeypatch.setattr(stage1, "add_measurement_basis", lambda c, b:
+                        SimpleNamespace(name=f"{c.name}__{b}"))
+    monkeypatch.setattr(stage1, "parse_args", lambda: SimpleNamespace(
+        local_testing=True, mode="local", outdir=tmp_path, random_depth=3,
+        random_seeds=[0, 1], shots=256, transpile_seed=7,
+        credentials_file=tmp_path/'unused', backend=None))
+    counts = {f"{i:03b}": 32 for i in range(8)}
+    monkeypatch.setattr(stage1, "run_sampler", lambda **kwargs: (
+        {"counts_by_name": {c.name: counts for c in kwargs["circuits"]},
+         "run_metadata": {"test_counts": True}}, None))
+    common = ModuleType("ibm_runtime_common")
+    common.ensure_dir = lambda path: path
+    common.write_json = lambda path, data: path.write_text(json.dumps(data))
+    monkeypatch.setitem(sys.modules, "ibm_runtime_common", common)
+    assert stage1.main() == 0
+    report = json.loads((tmp_path/'summary.json').read_text())
+    assert len(report["exact_analysis"]) == 5
+    for metrics in report["exact_analysis"].values():
+        assert metrics["circuit_state"]["rounding_bound_scope"] == "supplied_numerical_statevector"
+        assert metrics["circuit_state"]["circuit_simulation_error_certified"] is False
+    selection = report["catalog"]["random_control_selection"]
+    assert all("circuit_state" in c for c in selection["candidate_summary"])
+    assert selection["circuit_state"] == next(c["circuit_state"] for c in
+        selection["candidate_summary"] if c["seed"] == selection["seed"])
+    for name, settings in report["tomography_counts_by_state"].items():
+        rho, _ = stage1.reconstruct_density_matrix(settings, 3)
+        assert stage1.analyze_state(rho)["cmi_bits"] == report["reconstructed_analysis"][name]["cmi_bits"]

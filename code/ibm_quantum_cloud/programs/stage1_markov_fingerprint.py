@@ -48,11 +48,33 @@ def qiskit_density_to_q0_order(rho: np.ndarray, num_qubits: int) -> np.ndarray:
     return np.transpose(tensor, perm).reshape(2**num_qubits, 2**num_qubits)
 
 
-def circuit_density_q0_order(circuit: QuantumCircuit) -> np.ndarray:
-    from qiskit.quantum_info import DensityMatrix, Statevector
+def circuit_density_q0_order(circuit: QuantumCircuit, *, return_diagnostics=False):
+    """Construct an exactly PSD matrix from the numerical circuit amplitudes.
 
-    rho = DensityMatrix(Statevector.from_instruction(circuit)).data
-    return qiskit_density_to_q0_order(rho, circuit.num_qubits)
+    The Gram-rounding bound covers these supplied amplitudes, not simulator
+    error relative to an ideal circuit. No tomography projection is applied.
+    """
+    from qiskit.quantum_info import Statevector
+
+    _qubit_count(circuit.num_qubits)
+    if type(return_diagnostics) is not bool:
+        raise ValueError("return_diagnostics must be Boolean")
+    amplitudes = _numeric(Statevector.from_instruction(circuit).data, "circuit amplitudes")
+    if amplitudes.shape != (2**circuit.num_qubits,):
+        raise ValueError("statevector dimensions must match the circuit")
+    # Reverse tensor axes before forming the Gram matrix. Constructing an
+    # ordinary floating outer product first can lose exact positivity.
+    q0 = amplitudes.reshape([2]*circuit.num_qubits).transpose().reshape(-1, 1)
+    rho, bound = round_positive_gram(q0)
+    rho = validated_state(rho)
+    diagnostic = {
+        "state_construction": "outward_rounded_statevector_gram",
+        "gram_rounding_trace_bound": bound,
+        "rounding_bound_scope": "supplied_numerical_statevector",
+        "trace_normalization_tolerance": ATOL,
+        "circuit_simulation_error_certified": False,
+    }
+    return (rho, diagnostic) if return_diagnostics else rho
 
 
 def partial_trace_q0_order(rho: np.ndarray, keep: list[int], num_qubits: int) -> np.ndarray:
@@ -292,20 +314,23 @@ def choose_random_control(depth: int, seeds: list[int]) -> tuple[QuantumCircuit,
     candidates = []
     for seed in seeds:
         circ = build_random_control(seed, depth)
-        rho = circuit_density_q0_order(circ)
+        rho, construction = circuit_density_q0_order(circ, return_diagnostics=True)
         candidates.append(
             {
                 "seed": seed,
                 "circuit": circ,
                 "exact_cmi_bits": conditional_mutual_information(rho),
+                "circuit_state": construction,
             }
         )
     chosen = max(candidates, key=lambda item: item["exact_cmi_bits"])
     return chosen["circuit"], {
         "seed": chosen["seed"],
         "exact_cmi_bits": chosen["exact_cmi_bits"],
+        "circuit_state": chosen["circuit_state"],
         "candidate_summary": [
-            {"seed": item["seed"], "exact_cmi_bits": item["exact_cmi_bits"]} for item in candidates
+            {"seed": item["seed"], "exact_cmi_bits": item["exact_cmi_bits"],
+             "circuit_state": item["circuit_state"]} for item in candidates
         ],
     }
 
@@ -450,8 +475,9 @@ def main() -> int:
 
     exact_analysis = {}
     for circuit in circuits:
-        rho = circuit_density_q0_order(circuit)
+        rho, construction = circuit_density_q0_order(circuit, return_diagnostics=True)
         exact_analysis[circuit.name] = analyze_state(rho)
+        exact_analysis[circuit.name]["circuit_state"] = construction
 
     sampler_output, resolved_backend = run_sampler(
         circuits=measured,
