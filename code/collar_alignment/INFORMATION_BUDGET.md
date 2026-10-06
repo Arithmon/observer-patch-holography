@@ -9,6 +9,19 @@ alignment budget, with both full-rank and singular conditional products;
 real and complex support escapes must still raise. This changes acceptance
 of valid inputs, not the moment theorem, frozen evidence or paper claims.
 
+The [review summary](https://github.com/FloatingPragma/observer-patch-holography/pull/1049#pullrequestreview-5423084144)
+and [inline comment](https://github.com/FloatingPragma/observer-patch-holography/pull/1049#discussion_r4190904723)
+identify this same defect. The eleven direct controls in
+`test_complex_markov_support.py` cover both entries' requirements; five fail
+against the reviewed `10fffe19` implementation. The broader follow-up retains
+24 independently constructed complex conditional-product families, with
+unequal sector weights and complex states at both endpoints. In each case,
+an explicit within-sector correlation preserves both marginals and destroys
+conditional independence. Exact Markov, public CMI and collar CMI must accept
+the product and distinguish the perturbed state. Twenty-three of these 24
+controls fail on the reviewed implementation; all 35 controls pass with
+canonical support equality. The branch includes main `7f99c8cc`.
+
 This is a focused evidence repair under [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033),
 built on main `3d848b7f`. It repairs false zero information scores and makes
 the existing alignment criterion more informative. It builds on the
@@ -272,14 +285,24 @@ in (2). Four separate witnesses isolate each term of (1). The proof concerns
 all finite states in its stated algebra; these controls check the executable
 diagnostic and its input boundary rather than replacing the proof.
 
-Final local validation: **859 tests passed on Linux; 853 passed on Windows
-with six existing extended-precision skips**, with warnings treated as
-errors. This PR adds **77 cases**, including fourteen original pre-fix
+Initial local validation before maintainer review: **859 tests passed on
+Linux; 853 passed on Windows with six existing extended-precision skips**,
+with warnings treated as errors. The initial implementation added **77
+cases**, including fourteen original pre-fix
 failures and four audit regressions committed before their repair.
 The null-net Gibbs witness has CMI `0.006842238011420933`; its floating
 Markov construction has residual CMI `1.9828816605061793e-31`. The latter
 is below the existing numerical threshold, not an exact-zero certificate
 for the rounded constructor output.
+
+After the maintainer correction, the additional 35 support controls and
+the merge of main `7f99c8cc`, the same complete local suite passes **989
+tests on Linux and 983 on Windows**, with six expected Windows
+extended-precision skips and warnings treated as errors. The PR now adds
+112 cases in total. Replaying the reviewed implementation fails five of
+the eleven direct controls and 23 of the 24 broader complex-state controls;
+the canonical-arithmetic correction passes all 35. Claim registry, axiom
+inventory, reader style and whitespace checks also pass.
 
 Sixteen isolated mutations were tested against 75 of the new controls
 (the full 255-support enumeration and slower multi-sector replay were
