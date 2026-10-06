@@ -314,6 +314,8 @@ def analyze_state(rho: np.ndarray) -> dict:
     fidelity = state_fidelity(rho, recovered)
     return {
         "cmi_bits": cmi_bits,
+        "recovery_map": "unrotated_petz_with_reference_state_kernel_completion",
+        "input_state_policy": "validated_without_normalization",
         "fidelity_convention": "squared_uhlmann",
         "petz_fidelity": fidelity,
         "petz_trace_distance": trace_distance(rho, recovered),
@@ -477,6 +479,7 @@ def main() -> int:
         "run_metadata": sampler_output["run_metadata"],
         "exact_analysis": exact_analysis,
         "reconstructed_analysis": reconstructed_analysis,
+        "tomography_counts_by_state": counts_by_state,
         "fingerprint_checks": {
             "structured_theta_0.00_lt_random_control": reconstructed_analysis["structured_theta_0.00"][
                 "cmi_bits"
