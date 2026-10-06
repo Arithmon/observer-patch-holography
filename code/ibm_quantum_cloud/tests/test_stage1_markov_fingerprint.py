@@ -270,3 +270,39 @@ def test_full_rank_counterexample_keeps_petz_below_the_optimal_recovery_bound():
     assert row["petz_fidelity"] == pytest.approx(expected_fidelity,abs=2e-13)
     assert row["petz_fidelity"] < row["fawzi_renner_fidelity_lower_bound"]-.001
     assert row["fawzi_renner_bound_scope"] == "optimal_recovery_over_B_to_BC_channels"
+
+
+@pytest.mark.parametrize("seed", range(4))
+def test_noisy_tomography_returns_an_actually_positive_matrix(seed):
+    """Complete finite-shot counts must remain analyzable with exact PSD checks."""
+    import json
+    import sympy as sp
+
+    rng = np.random.default_rng(seed)
+    psi = rng.normal(size=8)+1j*rng.normal(size=8)
+    psi /= np.linalg.norm(psi)
+    counts = {}
+    for basis in stage1.measurement_bases(3):
+        probabilities = []
+        for bits in range(8):
+            projector = np.ones((1, 1))
+            for bit, axis in zip(f"{bits:03b}", basis):
+                projector = np.kron(projector, (
+                    np.eye(2)+(-1)**int(bit)*stage1.PAULI_MATRICES[axis])/2)
+            probabilities.append(float(np.vdot(psi, projector@psi).real))
+        samples = rng.multinomial(8192, np.array(probabilities)/sum(probabilities))
+        counts[basis] = {f"{i:03b}"[::-1]: int(v) for i, v in enumerate(samples)}
+    rho, _, diagnostic = stage1.reconstruct_density_matrix(
+        counts, 3, return_diagnostics=True)
+    # Exact characteristic coefficients independently certify the matrix
+    # actually returned, not the intended eigenspectrum before rounding.
+    exact = sp.Matrix([[sp.Rational(float(z.real))+sp.I*sp.Rational(float(z.imag))
+                        for z in row] for row in rho])
+    assert exact == exact.H
+    assert all((-1)**k*x >= 0 for k, x in enumerate(exact.charpoly().all_coeffs()))
+    metrics = stage1.analyze_state(rho)
+    assert np.isfinite(metrics["cmi_bits"]) and metrics["cmi_bits"] > 0
+    replay, _, replay_diagnostic = stage1.reconstruct_density_matrix(
+        json.loads(json.dumps(counts)), 3, return_diagnostics=True)
+    np.testing.assert_array_equal(replay, rho)
+    assert replay_diagnostic == diagnostic
