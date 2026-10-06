@@ -7,6 +7,15 @@ from quantum_information import gibbs_sectors
 from maxent.information_projection import gibbs_state
 
 
+@pytest.mark.parametrize("gap", [0., 20., 700., 708.])
+def test_resolved_populations_are_still_constructed(gap):
+    state, _ = gibbs_state([np.diag([0., gap])], [1.])
+    expected = np.exp(-gap)/(1+np.exp(-gap))
+    assert state[1, 1].real == pytest.approx(expected, rel=2e-14, abs=0)
+    sectors = gibbs_sectors([np.zeros((1, 1))]*2, [0., gap])
+    assert sectors[1][0] == pytest.approx(expected, rel=2e-14, abs=0)
+
+
 @pytest.mark.parametrize("gap", [710., 720., 744., 745.])
 @pytest.mark.parametrize("kind", ["state", "conditional", "sector", "joint"])
 def test_state_producers_refuse_subnormal_population_precision(gap, kind):
