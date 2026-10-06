@@ -146,6 +146,12 @@ The independent test controls include:
 
 - All 4,096 binary-readout triangles and all 512 pairs of parallel or
   self-interfaces, compared with direct Cartesian enumeration.
+- A further 5,184 injective diagrams with unequal local alphabet sizes and
+  a disconnected component. All two-edge chain maps are exhausted, with
+  separate cycle, parallel-edge and self-interface controls. The verifier's
+  four-root-candidate budget forces reconstruction instead of its 24-candidate
+  Cartesian path; direct enumeration independently checks completeness,
+  omitted records and incompatible extras.
 - Relabeling/orientation invariance and 343 identifier round-trip cases,
   including literal escape strings, separators and Unicode labels.
 - Nine forged-list controls, including constant `PASS`, missing records,
