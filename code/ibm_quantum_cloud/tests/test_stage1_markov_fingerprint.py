@@ -316,3 +316,43 @@ def test_exact_tomographic_states_do_not_receive_a_positive_floor():
         assert bound is None
         assert np.linalg.matrix_rank(actual) == 1
         np.testing.assert_allclose(actual, state, atol=2e-16, rtol=0)
+
+
+def _stub_circuit_statevector(monkeypatch, amplitudes):
+    """Supply the SDK's numerical array contract without a cloud dependency."""
+    import sys
+    from types import ModuleType, SimpleNamespace
+    sdk = ModuleType("qiskit")
+    info = ModuleType("qiskit.quantum_info")
+    info.Statevector = SimpleNamespace(from_instruction=lambda circuit:
+                                      SimpleNamespace(data=circuit.amplitudes))
+    info.DensityMatrix = lambda state: SimpleNamespace(
+        data=np.outer(state.data, state.data.conj()))
+    sdk.quantum_info = info
+    monkeypatch.setitem(sys.modules, "qiskit", sdk)
+    monkeypatch.setitem(sys.modules, "qiskit.quantum_info", info)
+    return SimpleNamespace(num_qubits=3, amplitudes=amplitudes)
+
+
+@pytest.mark.parametrize("case", [0, 1, 2, 3, "theta_.6", "theta_1"])
+def test_circuit_state_constructor_returns_exact_psd_entries(monkeypatch, case):
+    import sympy as sp
+    if isinstance(case, int):
+        rng = np.random.default_rng(case)
+        psi = rng.normal(size=8)+1j*rng.normal(size=8)
+        psi /= np.linalg.norm(psi)
+    else:
+        theta = .6 if case == "theta_.6" else 1.
+        psi = np.zeros(8, complex)
+        psi[[0, 3, 7]] = np.array([1., np.cos(theta/2), np.sin(theta/2)])/np.sqrt(2)
+    circuit = _stub_circuit_statevector(monkeypatch, psi)
+    rho = stage1.circuit_density_q0_order(circuit)
+    exact = sp.Matrix([[sp.Rational(float(z.real))+sp.I*sp.Rational(float(z.imag))
+                        for z in row] for row in rho])
+    assert exact == exact.H
+    assert all((-1)**k*x >= 0 for k, x in enumerate(exact.charpoly().all_coeffs()))
+    # Independent bit reversal: Qiskit little-endian becomes the q0-first order.
+    q0 = psi[[0, 4, 2, 6, 1, 5, 3, 7]]
+    np.testing.assert_allclose(rho, np.outer(q0, q0.conj()), atol=1e-15, rtol=0)
+    metrics = stage1.analyze_state(rho)
+    assert np.isfinite(metrics["cmi_bits"])
