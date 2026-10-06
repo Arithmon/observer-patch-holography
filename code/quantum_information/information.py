@@ -235,10 +235,14 @@ def _relative_modular_moments(source, reference):
         inverse = sigma.inv()
     except sp.matrices.exceptions.NonInvertibleMatrixError:
         inverse = sigma.pinv()
-    if sigma*inverse*rho != rho:
-        raise ValueError("relative modular reference does not contain the state support")
     r = DomainMatrix.from_Matrix(rho).convert_to(sp.QQ_I)
+    s = DomainMatrix.from_Matrix(sigma).convert_to(sp.QQ_I)
     inverse = DomainMatrix.from_Matrix(inverse).convert_to(sp.QQ_I)
+    # SymPy Matrix equality compares expression trees, not rational complex
+    # operators. Use the same canonical field as the moment computation;
+    # the residual test also ignores sparse/dense storage representation.
+    if not (s.matmul(inverse).matmul(r)-r).is_zero_matrix:
+        raise ValueError("relative modular reference does not contain the state support")
     left = r
     right = DomainMatrix.eye(len(source), sp.QQ_I)
     while True:

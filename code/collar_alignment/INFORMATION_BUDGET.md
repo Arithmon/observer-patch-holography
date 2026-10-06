@@ -1,5 +1,14 @@
 # Resolve the full collar information budget
 
+Maintainer follow-up (#1049): support containment in the relative-modular
+moment test is now compared in the canonical Gaussian rational field, using
+a zero residual. Symbolic expression-tree equality falsely rejected a
+full-rank complex conditional-product state and a nearby non-Markov state.
+The new regression exercises exact Markov, public CMI, collar CMI and the
+alignment budget, with both full-rank and singular conditional products;
+real and complex support escapes must still raise. This changes acceptance
+of valid inputs, not the moment theorem, frozen evidence or paper claims.
+
 This is a focused evidence repair under [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033),
 built on main `3d848b7f`. It repairs false zero information scores and makes
 the existing alignment criterion more informative. It builds on the
