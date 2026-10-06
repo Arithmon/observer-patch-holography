@@ -163,10 +163,9 @@ address is `0xd2a7055317D0c7b316319cDadaE592D0644A0b07`
 ([chart on Dexscreener](https://dexscreener.com/base/0xba55cdae026b9dd63fcb50e82094d61472948e44527ca4791033497469228049)).
 Any other token using the OPH or TEO name is unrelated to this project.
 
-Pragma Research did not deploy the token and holds none of it. It was set up so
-that Bernhard Mueller can claim all the trading fees it generates, and those fees
-have been a very helpful source of funding for OPH. The token has no role in the
-OPH research.
+The token was set up so that Bernhard Mueller can claim all the trading fees it
+generates, and those fees have been a very helpful source of funding for OPH.
+The token has no role in the OPH research.
 
 Nothing here is financial advice.
 
