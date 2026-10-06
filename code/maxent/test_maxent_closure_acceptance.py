@@ -131,9 +131,11 @@ def test_gibbs_reconstruction_cannot_erase_a_faithful_direction():
     # Neither exp(-60) nor its normalization underflows. Adding it to the
     # dominant rotated eigenspace loses it when the dense state is formed.
     x=np.array([[0.,1.],[1.,0.]])
-    for operation in (gibbs_state,duhamel_covariance):
-        with pytest.raises(ValueError,match="faithful"):
-            operation([x],np.array([30.]))
+    with pytest.raises(ValueError,match="faithful"):
+        gibbs_state([x],np.array([30.]))
+    # The response API no longer materializes that unresolvable state.
+    assert duhamel_covariance([x], [30.])[0, 0] == pytest.approx(
+        1/np.cosh(30.)**2, rel=2e-14, abs=0)
     rho,_=gibbs_state([np.diag([0.,60.])],np.array([1.]))
     assert rho[1,1] == pytest.approx(np.exp(-60),rel=1e-14,abs=0)
 
