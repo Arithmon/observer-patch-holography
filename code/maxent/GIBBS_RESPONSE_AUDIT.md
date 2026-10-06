@@ -107,6 +107,58 @@ algebraic identity. Very ill-conditioned inputs may require a separate
 certified calculation. The kernel theorem concerns the exact finite family;
 the optimizer's numerical rank and Hessian-resolution gates remain necessary.
 
+### Audit correction: algebraic zeros must survive precision refinement
+
+The maintainer-style audit found that the first PR head rejected ordinary
+orthogonal observables at `I/d`: cancellation residues at two precisions
+disagreed even though the exact covariance was zero. The first retained audit
+regressions reproduced 27 failures across dimensions 3, 5 and 6, including
+nonzero multipliers whose Hamiltonian sum is scalar and the Newton helper.
+The same defect appeared inside degenerate thermal sectors, including after
+exact real and complex dyadic changes of basis.
+
+For a scalar Hamiltonian, the evaluator now computes
+`Tr(A B)/d-Tr(A)Tr(B)/d^2` in rational arithmetic on the Hermitian parts of
+the supplied entries, rounding only the result. Scalar-Hamiltonian membership
+is itself checked by exact assembly. The internal uniform-spectrum Newton
+case uses the same trace formula. This preserves both algebraic zeros and
+representable small nonzero values without a tolerance-based exception.
+
+For a nonuniform family that fails numerical precision agreement, the
+public evaluator can certify individual zeros when the supplied Hamiltonian
+has a rational spectrum. Its exact characteristic polynomial supplies all
+eigenvalues and multiplicities; an incomplete rational spectrum supplies no
+certificate. The exact spectral projectors are
+
+```text
+P_r = product_(s != r) (H-h_s I)/(h_r-h_s).
+```
+
+They are computed in canonical Gaussian-rational arithmetic, including
+degenerate eigenspaces. Write `w_r=exp(-h_r)`, `d_r=Tr(P_r)`,
+`a_r=Tr(P_r A)`, `b_r=Tr(P_r B)` and `Z=sum_r d_r w_r`. Then
+
+```text
+Z^2 C(A,B)
+ = Z sum_(r,s) L(w_r,w_s) Tr(P_r A P_s B)
+   - (sum_r w_r a_r)(sum_s w_s b_s).
+```
+
+This is the preceding integral formula with the exact spectral resolutions
+inserted. For `r=s`, the logarithmic mean is `w_r`; for `r!=s` it is
+`(w_r-w_s)/(h_s-h_r)`. Pair conjugate terms. The numerator is therefore a
+finite sum of rational coefficients times `exp(-h_r-h_s)`. Grouping equal
+exponents and proving every coefficient zero is a sufficient exact zero
+certificate. This proof is independent of a selected eigenbasis and keeps
+both the mean-product subtraction and interenergy coherences.
+
+Only entries with that certificate are replaced by zero during a retried
+precision check; every other entry must still agree and obey output-range
+checks. This is not a general zero-decision procedure for irrational spectra.
+Independent conditional-product and block-trace constructions verify the
+certificates; nearby nonzero coherences down to `1e-300`, transverse variances
+and an unsupported irrational spectrum prevent permissive acceptance.
+
 Newton iteration reuses this Gram evaluator on its supplied binary64 spectrum
 and vectors. It does not recover eigensolver accuracy lost upstream; replay
 and residual checks still govern acceptance. The public covariance instead
@@ -132,10 +184,12 @@ state-population boundaries. Both multiplier signs and gaps through 1000
 are exercised. Existing malformed/masked/Boolean and lossy-conversion tests
 continue to apply to both public entry points.
 
-Twelve isolated mutations are rejected: the old response, constant zero,
+Seventeen isolated mutations are rejected: the old response, constant zero,
 insufficient precision, removal of either Gram term, an arithmetic-mean kernel,
 missing complex conjugation, early population rounding, discarded original
-entries, disabled output/refinement checks and accepted subnormal states.
+entries, disabled output/refinement checks and accepted subnormal states;
+the audit also removes either exact-zero certificate, certifies every entry,
+and deletes the mean-product or interenergy terms from the certificate.
 
 | Consumer or surface | Impact |
 | --- | --- |
