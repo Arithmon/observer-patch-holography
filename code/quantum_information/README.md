@@ -1,5 +1,11 @@
 # Finite-state entropy and the role of sector labels
 
+The [Gibbs response audit](../maxent/GIBBS_RESPONSE_AUDIT.md) distinguishes
+resolved binary64 states from resolved weighted responses. State producers
+conservatively reject subnormal thermal populations, including joint sector
+weights. The public MaxEnt covariance retains populations and original
+observable entries in multiprecision until the final response is rounded.
+
 This shared implementation replaces duplicated density-matrix, entropy,
 partial-trace and modular-splitting operations in the MaxEnt, collar-alignment,
 null-net and Einstein-closure evidence. It uses natural logarithms and the
