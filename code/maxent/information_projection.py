@@ -12,6 +12,7 @@ import numpy as np
 
 from quantum_information import faithful_density_matrix, finite_real_scalar
 from quantum_information.gibbs import _finite, _numeric, _observables, _thermal
+from .hamiltonian_assembly import _assemble_hamiltonian
 
 
 def _multipliers(lam, count):
@@ -22,39 +23,39 @@ def _multipliers(lam, count):
 
 
 def _combination(operators, coefficients):
-    with np.errstate(over="ignore", invalid="ignore"):
-        terms = [c*a for c, a in zip(coefficients, operators)]
-    for c, a, term in zip(coefficients, operators, terms):
-        _finite(term, "constraint term")
-        if c != 0 and (np.any((a.real != 0) & (term.real == 0))
-                       or np.any((a.imag != 0) & (term.imag == 0))):
-            raise ValueError("constraint term underflow; precision is insufficient")
-    with np.errstate(over="ignore", invalid="ignore"):
-        result = sum(terms)
-    return _finite(result, "constraint combination")
+    return _assemble_hamiltonian(operators, coefficients, centered=False).matrix
 
 
 def _hamiltonian_parts(constraints, lam):
-    centered, scales, offsets = _observables(constraints)
+    centered, scales, _ = _observables(constraints)
     lam = _multipliers(lam, len(centered))
-    with np.errstate(over="ignore", invalid="ignore"):
-        coefficients = _finite(lam*scales, "scaled multipliers")
-        terms = _finite(lam[:, None]*offsets, "scalar energy")
-    if (np.any((lam != 0) & (coefficients == 0))
-            or np.any((lam[:, None] != 0) & (offsets != 0) & (terms == 0))):
-        raise ValueError("Hamiltonian coefficient underflow; precision is insufficient")
-    try:
-        shift = math.fsum(terms.flat)
-    except OverflowError as exc:
-        raise ValueError("scalar energy exceeds finite numerical range") from exc
-    return _combination(centered, coefficients), shift, centered, scales
+    # Normalized observables supply derivative coordinates, not the original
+    # Hamiltonian: normalization and product rounding can lose cancellation.
+    supplied = [_numeric(a, "constraints") for a in constraints]
+    assembly = _assemble_hamiltonian(supplied, lam, centered=True)
+    return assembly.matrix, assembly.scalar, centered, scales
+
+
+def hamiltonian_assembly_diagnostics(constraints, lam):
+    """Exact-input assembly error; excludes diagonalization and state rounding.
+
+    Returns a centered matrix and scalar, with rigorous rational-to-binary64
+    error bounds. The ideal Gibbs bounds concern these Hamiltonians, not a
+    certified floating-point Gibbs state. See HAMILTONIAN_ASSEMBLY.md.
+    """
+    _observables(constraints)
+    lam = _multipliers(lam, len(constraints))
+    supplied = [_numeric(a, "constraints") for a in constraints]
+    if any(not np.array_equal(a, a.conj().T) for a in supplied):
+        raise ValueError("exact Hermitian inputs required for assembly certificate")
+    return _assemble_hamiltonian(supplied, lam, centered=True)
 
 
 def constrained_hamiltonian(constraints, lam):
     """Full Hamiltonian; Gibbs evaluation keeps its scalar part separate."""
-    ham, shift, _, _ = _hamiltonian_parts(constraints, lam)
-    with np.errstate(over="ignore", invalid="ignore"):
-        return _finite(ham + shift*np.eye(len(ham)), "constraint combination")
+    _observables(constraints)
+    lam = _multipliers(lam, len(constraints))
+    return _combination([_numeric(a, "constraints") for a in constraints], lam).copy()
 
 
 def gibbs_state(constraints, lam):

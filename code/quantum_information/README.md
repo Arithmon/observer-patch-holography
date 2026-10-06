@@ -13,6 +13,13 @@ completion is an affine quantum repair. It includes independent recognition
 of supplied conditional expectations and a noncommuting repair convergence
 proof.
 
+The [fixed-point audit](REPAIR_FIXED_POINTS.md) prevents almost coincident
+repair algebras from manufacturing protected observables and an artificially
+large relaxation gap. Intersections use exact retained input spans; channel
+and gap calculations remain numerical diagnostics. The note derives the
+complete decay law of the counterexample and separates permanent records
+from records whose drift stays small over a finite observation time.
+
 `expectations.repair_generator` accepts rates in any common clock unit.
 Its identity and spectral-resolution checks use the generator divided by
 `max(rates)`; the returned generator, gap and defect magnitudes retain the
