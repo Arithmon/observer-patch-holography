@@ -30,6 +30,10 @@ second physical packet or a cosmic selector.
 
 ## Canonical lane
 
+- [`CHECKPOINT_CHANNEL_AUDIT.md`](CHECKPOINT_CHANNEL_AUDIT.md) records the
+  exact channel contract, decoder-search correctness argument, independent
+  replay and exhaustive controls, and downstream receipt comparison for the
+  public-checkpoint numerical repair under issue #1033.
 - [`F_READBACK_SPEC.md`](F_READBACK_SPEC.md) is the Pro5 acceptance contract:
   complete terminal fiber, atom readouts, endogenous reachability, frozen
   publicness, global joint kernels, compound confusability graph, exact and
