@@ -17,7 +17,7 @@ The maintainer found defects after the author's audits and passing CI:
 The retained reproductions are
 [`test_gibbs_population_response.py`](../../code/quantum_information/test_gibbs_population_response.py)
 in #1048 and
-[`test_complex_markov_support.py`](../../code/quantum_information/test_complex_markov_support.py)
+[`test_complex_markov_support.py`](https://github.com/MarioPoneder/observer-patch-holography/blob/ca79333e2420ee0d4c04dfc366ba87257112a0e8/code/quantum_information/test_complex_markov_support.py)
 in #1049. The first repair explicitly refuses insufficient population precision; it
 does not claim to evaluate that regime. The second preserves valid complex
 states and rejects actual support violations.
