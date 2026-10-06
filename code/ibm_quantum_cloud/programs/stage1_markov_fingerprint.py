@@ -20,6 +20,7 @@ from quantum_information.recovery import (
     matrix_inv_sqrt_psd, matrix_sqrt_psd, petz_recovery, state_fidelity,
     trace_distance, validated_state,
 )
+from quantum_information.positive_rounding import _is_exact_psd, round_positive_gram
 from quantum_information.states import (
     ATOL, conditional_mutual_information as _cmi, partial_trace,
     von_neumann_entropy as _entropy,
@@ -70,13 +71,18 @@ def conditional_mutual_information(rho: np.ndarray) -> float:
     return _cmi(validated_state(rho), [2, 2, 2], [0], [1], [2])/math.log(2)
 
 
-def project_to_physical_density_matrix(rho: np.ndarray) -> np.ndarray:
+def project_to_physical_density_matrix(rho: np.ndarray, *, return_rounding_bound=False):
     """Explicit tomography estimator: normalized positive spectral part.
 
     This is not validation, a channel, or the nearest trace-one PSD matrix.
     Only tomography calls it; recovery and distances never repair inputs.
+    Outward Gram rounding certifies PSD of the returned entries when ordinary
+    reconstruction loses it. Trace normalization retains the shared ATOL
+    convention; the rounding bound is not a statistical error certificate.
     """
     rho = _numeric(rho, "tomographic estimate")
+    if type(return_rounding_bound) is not bool:
+        raise ValueError("return_rounding_bound must be Boolean")
     if (rho.ndim != 2 or not len(rho) or rho.shape[0] != rho.shape[1]
             or np.linalg.norm(rho-rho.conj().T) > ATOL
             or abs(np.trace(rho)-1) > ATOL):
@@ -87,7 +93,13 @@ def project_to_physical_density_matrix(rho: np.ndarray) -> np.ndarray:
     total = float(np.sum(evals))
     if not np.isfinite(total) or total <= 0:
         raise ValueError("tomographic positive part exceeds numerical range")
-    return validated_state((evecs*(evals/total)) @ evecs.conj().T)
+    weights = evals/total
+    state = validated_state((evecs*weights) @ evecs.conj().T)
+    rounding_bound = None  # No Gram-rounding certificate was needed/emitted.
+    if not _is_exact_psd(state):
+        state, rounding_bound = round_positive_gram(evecs*np.sqrt(weights))
+        state = validated_state(state)
+    return (state, rounding_bound) if return_rounding_bound else state
 
 
 def pauli_expectation(rho: np.ndarray, pauli_string_q0: str) -> float:
@@ -230,9 +242,11 @@ def reconstruct_density_matrix(
             op = np.kron(op, PAULI_MATRICES[char])
         rho += value * op
     rho /= 2**num_qubits
-    state = project_to_physical_density_matrix(rho)
+    state, rounding_bound = project_to_physical_density_matrix(rho, return_rounding_bound=True)
     diagnostics = {
-        "estimator": "pooled_pauli_linear_inversion_then_normalized_positive_part",
+        "estimator": "pooled_pauli_linear_inversion_then_normalized_positive_part_with_psd_rounding",
+        "gram_rounding_trace_bound": rounding_bound,
+        "trace_normalization_tolerance": ATOL,
         "complete_settings": len(required),
         "shots_by_basis": shots,
         "raw_min_eigenvalue": float(np.linalg.eigvalsh(rho)[0]),

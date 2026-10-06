@@ -449,6 +449,9 @@ as evidence for OPH over standard quantum mechanics.
   complete tomography data, retains resolved positive support and distinguishes
   the fixed Petz channel from an optimal-recovery fidelity bound. New summaries
   retain raw counts and disclose the explicit tomographic state correction.
+  The estimator certifies positivity of its returned entries; if ordinary
+  reconstruction loses it, outward Gram rounding restores it with a reported
+  numerical bound. That bound does not certify statistical uncertainty.
 - `programs/generative_repair_kernel.py`
   Pure finite-matrix implementation of the record-gated Cayley repair kernel,
   the matched open-loop heat null, and the dimension-exponent diagnostic.

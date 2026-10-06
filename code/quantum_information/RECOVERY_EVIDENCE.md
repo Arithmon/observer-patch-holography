@@ -162,6 +162,56 @@ retain the complete count dictionaries for later replay. They do not report
 those corrections as confidence intervals or certify statistical error.
 The analysis and state-distance APIs never call this estimator.
 
+### Preserve positivity through the returned matrix
+
+The cross-PR review exposed an integration defect with the exact information
+validator in #1049. Four independent three-qubit Born-count experiments,
+each with 8192 shots per Pauli setting, produced rounded estimates with
+negative eigenvalues near `1e-17` after the nominal positive-part projection.
+Exact characteristic coefficients confirmed that the returned entries were
+indefinite. The information API correctly refused them. Its exact-state
+contract must not be weakened to conceal this estimator defect.
+
+The estimator tests its returned Hermitian entries by rational Schur
+elimination. For a positive pivot, positivity is equivalent to positivity
+of its Schur complement; a zero diagonal requires the corresponding row
+to vanish. This handles singular states without a tolerance. A candidate
+that passes is retained, including exact rank-deficient candidates.
+
+When ordinary reconstruction loses positivity, form the numerical factor
+`B = V sqrt(p)` from the normalized positive spectral part. Treat the supplied
+entries of B as exact binary rationals, and compute `G = B B*` exactly.
+Round each off-diagonal to binary64 once, with conjugate symmetry. Let
+`e_ij` be that exact rounding error. Choose each output diagonal by upward
+rounding of
+
+```text
+G_ii + sum_(j != i) (|Re e_ij| + |Im e_ij|).
+```
+
+For the resulting M, `E=M-G` is Hermitian diagonally dominant with nonnegative
+diagonal, hence positive semidefinite. Thus M is positive semidefinite as
+the actual returned binary64 matrix. Upward rounding of `Tr(E)` bounds both
+its trace norm and operator norm. There is no fixed positive floor. This
+certificate concerns rounding the numerical factor; it does not bound the
+factor's eigensolver error or experimental statistical uncertainty.
+
+The final state retains the shared trace-one tolerance (`1e-12`); no extra
+normalization follows the certified rounding. Normalizing those entries
+again would require a new positivity check. `gram_rounding_trace_bound` is
+null when the original candidate passes exact positivity, and is the bound
+for the fallback Gram reconstruction otherwise. The report includes the
+normalization tolerance and the complete correction from raw inversion.
+Exact characteristic-polynomial controls independently verify both M and
+`M-B B*` across real/complex factors and extreme scales. Complete noisy-count
+replay exercises reconstruction, information and recovery together.
+
+The audit implication is specific: ideal Born-probability reconstruction
+does not exercise finite-shot spectral projection. Retain complete sampled
+counts through the full analysis path, combine stricter downstream validators
+with their producers, and certify properties of the returned entries rather
+than the eigenspectrum intended before reconstruction.
+
 ## Numerical and downstream boundaries
 
 Strict numeric conversion rejects masked data, mixed Booleans and lossy
@@ -203,9 +253,13 @@ python -m pytest -q --confcutdir=code/ibm_quantum_cloud/tests code/ibm_quantum_c
 
 The existing quantum-information workflow runs the first command on both
 platforms; mandatory shard zero already runs the Stage 1 file on both.
-The affected core suite passes 927 tests on Linux and 921 on Windows, with
-six existing extended-precision skips on Windows. The Stage 1 file passes
-49 tests on each platform, for **95 added cases** across the two suites.
+At the initial reviewed head, the affected core suite passed 927 tests on
+Linux and 921 on Windows, with six extended-precision skips on Windows;
+the Stage 1 file passed 49 tests, for 95 added cases across both suites.
+The positivity follow-up adds 38 independent Gram/Schur controls and five
+tomography controls. Its core suite passes 965 tests on Linux and 959 on
+Windows (six platform skips); all 54 Stage 1 tests pass on both platforms.
+The same Stage 1 tests pass with the strict #1049 information validator.
 Warnings are treated as errors.
 The tests include independent rational and symbolic controls, high-precision
 matrix functions, complete Born-count reconstruction, invalid input rejection
@@ -219,3 +273,10 @@ counts, fabricated zero-shot data, and fidelity forced to meet the
 optimal-recovery bound. Each ran in a separate copied package tree; collection
 or import errors were not counted as detection. These controls exercise
 incorrect scientific answers, not merely an implementation's success flag.
+
+All twelve controls were rerun after the positivity repair. Seven additional
+mutations are rejected: skip that repair, omit row compensation, round
+diagonals to nearest, use the wrong complex Gram product, report a false zero
+rounding bound, ignore a nonzero row at a zero Schur pivot, and return a
+constant zero Gram matrix. The latter controls use exact returned-entry
+inequalities and the full noisy-count path.
