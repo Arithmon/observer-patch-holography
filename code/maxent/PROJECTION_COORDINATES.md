@@ -175,13 +175,12 @@ energy gaps rounded away on conversion to binary64.
 - Each observable is decomposed into a scalar offset and a bounded
   traceless variation. A diagonal anchor is subtracted before normalization,
   so a large scalar cannot erase an independently stored off-diagonal term.
-  The scalar is excluded from thermal diagonalization and restored only to
-  `log Z`. Keep the diagonal anchor and the remaining mean as separate
-  summands until compensated accumulation of all scalar energies; otherwise
-  cancelling large identity offsets can erase a representable small energy
-  origin and change `log Z` even when the Gibbs state is correct. This does
-  not recover diagonal differences already lost in the
-  caller's input representation.
+  These normalized operators supply derivative and inference coordinates.
+  The [Hamiltonian assembly repair](HAMILTONIAN_ASSEMBLY.md) accumulates the
+  original weighted entries exactly before separating the scalar from the
+  thermal matrix. This also prevents multiplication or partial-sum roundoff
+  from erasing an interaction. The scalar is restored only to `log Z`.
+  Neither operation recovers differences already lost in the caller's input.
 - The real traceless Hermitian coordinates use Helmert diagonal components
   and the real/imaginary upper triangle. SVD stays inside that space; it
   cannot create an anti-Hermitian or scalar direction from a small singular
@@ -209,6 +208,12 @@ certificates**. Rank, eigenvalues, moment evaluation and residuals retain
 roundoff uncertainty, so a reported zero is not an exact equality proof.
 Poorly conditioned reparametrizations or unresolved support can still be
 rejected rather than reported as a solution.
+
+`hamiltonian_assembly_diagnostics` separately supplies outward-rounded bounds
+on exact-input Hamiltonian assembly and its **ideal** Gibbs consequences.
+It requires exactly Hermitian inputs and does not include eigensolver or
+state-reconstruction error. Its rational certificate does not promote the
+optimizer's floating residual or reported state to an exact certificate.
 
 The compatibility `i_projection` pair remains `(multipliers, raw_residual)`.
 Its tolerance now controls the invariant residual; a raw residual in very

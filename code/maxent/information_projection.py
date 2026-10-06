@@ -12,7 +12,7 @@ import numpy as np
 
 from quantum_information import faithful_density_matrix, finite_real_scalar
 from quantum_information.gibbs import _finite, _numeric, _observables, _thermal
-from .hamiltonian_assembly import assemble_hamiltonian
+from .hamiltonian_assembly import _assemble_hamiltonian
 
 
 def _multipliers(lam, count):
@@ -23,7 +23,7 @@ def _multipliers(lam, count):
 
 
 def _combination(operators, coefficients):
-    return assemble_hamiltonian(operators, coefficients, centered=False).matrix
+    return _assemble_hamiltonian(operators, coefficients, centered=False).matrix
 
 
 def _hamiltonian_parts(constraints, lam):
@@ -32,7 +32,7 @@ def _hamiltonian_parts(constraints, lam):
     # Normalized observables supply derivative coordinates, not the original
     # Hamiltonian: normalization and product rounding can lose cancellation.
     supplied = [_numeric(a, "constraints") for a in constraints]
-    assembly = assemble_hamiltonian(supplied, lam, centered=True)
+    assembly = _assemble_hamiltonian(supplied, lam, centered=True)
     return assembly.matrix, assembly.scalar, centered, scales
 
 
@@ -48,14 +48,14 @@ def hamiltonian_assembly_diagnostics(constraints, lam):
     supplied = [_numeric(a, "constraints") for a in constraints]
     if any(not np.array_equal(a, a.conj().T) for a in supplied):
         raise ValueError("exact Hermitian inputs required for assembly certificate")
-    return assemble_hamiltonian(supplied, lam, centered=True)
+    return _assemble_hamiltonian(supplied, lam, centered=True)
 
 
 def constrained_hamiltonian(constraints, lam):
     """Full Hamiltonian; Gibbs evaluation keeps its scalar part separate."""
     _observables(constraints)
     lam = _multipliers(lam, len(constraints))
-    return _combination([_numeric(a, "constraints") for a in constraints], lam)
+    return _combination([_numeric(a, "constraints") for a in constraints], lam).copy()
 
 
 def gibbs_state(constraints, lam):

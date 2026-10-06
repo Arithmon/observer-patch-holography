@@ -59,7 +59,7 @@ class HamiltonianAssembly:
     ideal_log_partition_error_bound: float
 
 
-def assemble_hamiltonian(operators, coefficients, *, centered):
+def _assemble_hamiltonian(operators, coefficients, *, centered):
     """Return the assembled matrix, scalar and outward-rounded error bounds.
 
     With centered=True, remove Tr(H)/d before conversion. Otherwise return
