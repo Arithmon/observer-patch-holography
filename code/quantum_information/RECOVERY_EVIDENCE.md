@@ -211,6 +211,11 @@ does not exercise finite-shot spectral projection. Retain complete sampled
 counts through the full analysis path, combine stricter downstream validators
 with their producers, and certify properties of the returned entries rather
 than the eigenspectrum intended before reconstruction.
+The same count fixture can require outward rounding on one LAPACK build and
+already be exactly positive on another. Controls assert exact positivity in
+both cases and check any emitted bound; they do not require the fallback to
+run when its precondition is absent. The first Ubuntu CI replay exposed and
+corrected an overly strict assertion about that optional bound.
 
 ### Circuit states must satisfy the same contract
 

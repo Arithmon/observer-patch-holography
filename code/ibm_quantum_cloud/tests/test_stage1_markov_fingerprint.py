@@ -300,7 +300,12 @@ def test_noisy_tomography_returns_an_actually_positive_matrix(seed):
                         for z in row] for row in rho])
     assert exact == exact.H
     assert all((-1)**k*x >= 0 for k, x in enumerate(exact.charpoly().all_coeffs()))
-    assert 0 <= diagnostic["gram_rounding_trace_bound"] < 2e-15
+    # LAPACK/platform rounding may already produce an exactly PSD candidate.
+    # In that case the documented bound is None; the independent PSD check
+    # above still applies. Do not require a particular fallback decision.
+    bound = diagnostic["gram_rounding_trace_bound"]
+    if bound is not None:
+        assert 0 <= bound < 2e-15
     assert diagnostic["trace_normalization_tolerance"] == 1e-12
     metrics = stage1.analyze_state(rho)
     assert np.isfinite(metrics["cmi_bits"]) and metrics["cmi_bits"] > 0
