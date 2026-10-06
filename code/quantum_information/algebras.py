@@ -8,6 +8,7 @@ from math import prod
 
 import numpy as np
 
+from .gibbs import _numeric
 from .states import (
     _indices, _spectrum, _unresolved_positive_spectrum,
     dimensions, faithful_log, partial_trace,
@@ -17,11 +18,11 @@ ALGEBRA_ATOL = 1e-10
 
 
 def operator(value, size=None):
-    raw = np.asarray(value)
+    raw = _numeric(value, "operator")
     if (raw.ndim != 2 or raw.shape[0] == 0 or raw.shape[0] != raw.shape[1]
             or raw.dtype.kind not in "iufc"):
         raise ValueError("nonempty square numeric operator required")
-    a = raw.astype(complex)
+    a = raw
     if not np.all(np.isfinite(a)) or (size is not None and a.shape != (size, size)):
         raise ValueError("finite operator on the declared space required")
     return a
@@ -132,7 +133,10 @@ class FiniteAlgebra:
     """
 
     def __init__(self, basis):
-        normalized = orthonormal_operator_basis(basis)
+        if not isinstance(basis, (list, tuple)) or not basis:
+            raise ValueError("nonempty operator basis required")
+        supplied = tuple(operator(b) for b in basis)
+        normalized = orthonormal_operator_basis(list(supplied))
         self.size = len(normalized[0])
         self.dimension = len(normalized)
         self._q = np.column_stack([b.reshape(-1) for b in normalized])
@@ -145,6 +149,18 @@ class FiniteAlgebra:
                 if self.distance(a @ b) > ALGEBRA_ATOL:
                     raise ValueError("algebra must be closed under multiplication")
         self._q.setflags(write=False)
+        # QR is a numerical chart, not evidence of exact linear dependence.
+        # Keep the supplied span separately for conservation decisions.
+        for b in supplied:
+            b.setflags(write=False)
+        self._supplied = supplied
+        self._exact = None
+
+    def _exact_columns(self):
+        from .operator_spans import exact_columns
+        if self._exact is None:
+            self._exact = exact_columns(self._supplied)
+        return self._exact
 
     @property
     def basis(self):
@@ -161,7 +177,7 @@ class FiniteAlgebra:
         return float(np.linalg.norm(a - self.project(a), ord="fro"))
 
     def modular_invariance_defect(self, rho):
-        k = operator(faithful_log(rho), self.size)
+        k = faithful_log(operator(rho, self.size))
         return max(self.distance(k @ b - b @ k) for b in self.basis)
 
 
@@ -173,19 +189,26 @@ def tensor_factor_algebra(dims, region):
 
 
 def algebra_intersection(algebras):
+    """Intersect the supplied spans over exact binary64 rational entries.
+
+    The returned numerical basis must still be resolved and algebra-closed.
+    Rounded presentations of the same ideal algebra may have a different
+    exact intersection; no tolerance enlarges it into conserved observables.
+    """
     if (not isinstance(algebras, (list, tuple)) or not algebras
             or any(not isinstance(a, FiniteAlgebra) for a in algebras)):
         raise ValueError("nonempty family of finite algebras required")
     if any(a.size != algebras[0].size for a in algebras):
         raise ValueError("intersection requires a common operator space")
-    q = algebras[0]._q.copy()
+    from .operator_spans import contains_identity, intersect_columns, numerical_basis
+    common = algebras[0]._exact_columns()
     for algebra in algebras[1:]:
-        residual = q - algebra._q @ (algebra._q.conj().T @ q)
-        _, singular, vh = np.linalg.svd(residual, full_matrices=False)
-        # Closure tolerance is not a rank cutoff. In particular, two distinct
-        # almost coincident MASAs must not acquire a spurious large gap by
-        # silently enlarging their intersection at the looser closure scale.
-        rank_roundoff = 64*np.finfo(float).eps*max(residual.shape)
-        q = q @ vh.conj().T[:, singular <= rank_roundoff]
+        common = intersect_columns(common, algebra._exact_columns())
     d = algebras[0].size
-    return FiniteAlgebra([q[:, i].reshape(d, d) for i in range(q.shape[1])])
+    if not contains_identity(common, d):
+        raise ValueError("supplied spans have no exact common identity; intersection is unresolved")
+    result = FiniteAlgebra(numerical_basis(common, d))
+    # Preserve exact output across repeated intersections; converting this
+    # rational basis to its floating chart must not change later rank tests.
+    result._exact = common
+    return result

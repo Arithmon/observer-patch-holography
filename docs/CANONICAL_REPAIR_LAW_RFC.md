@@ -15,6 +15,12 @@ a convergence proof for noncommuting primitive expectations. This result
 does not adopt the proposal or establish that an arbitrary OPH feasible
 family is such a marginal fiber.
 
+The [fixed-point follow-up](../code/quantum_information/REPAIR_FIXED_POINTS.md)
+repairs a numerical false-conservation verdict and derives the full
+relaxation law of two almost parallel primitive repairs. A long finite
+record lifetime does not establish an exactly protected observable; the
+common supplied span must be checked without rounding away a slow mode.
+
 The proposed A1-R and A2-R clauses are substantive basis amendments, not
 clarifications of consequences that follow from the current wording. They
 exclude models that satisfy the present A1-A3 basis. Keeping them inside A1

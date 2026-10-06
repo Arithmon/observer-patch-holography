@@ -156,6 +156,19 @@ architecture and experiments. Its computational case rests on learning
 behavior and measured resource use. [Pragma Research](https://floatingpragma.io/)
 connects this work to embodied AI.
 
+## TEO memecoin
+
+OPH has an official memecoin on Base, TEO (Theory Of Everything). Its token
+address is `0xd2a7055317D0c7b316319cDadaE592D0644A0b07`
+([chart on Dexscreener](https://dexscreener.com/base/0xba55cdae026b9dd63fcb50e82094d61472948e44527ca4791033497469228049)).
+Any other token using the OPH or TEO name is unrelated to this project.
+
+The token was set up so that Bernhard Mueller can claim all the trading fees it
+generates, and those fees have been a very helpful source of funding for OPH.
+The token has no role in the OPH research.
+
+Nothing here is financial advice.
+
 ## License
 
 The repository uses split licensing. All software, including the Lean library, [`code/`](code), [`tools/`](tools), and the schemas in [`schemas/`](schemas), is licensed under [Apache-2.0](code/LICENSE). Papers, the book, documentation, figures, data, the generated ledgers in [`tracking/`](tracking), and the packaged particle data in [`pdg_data/`](pdg_data) are licensed under [CC BY-NC-SA 4.0](LICENSE); the tabulated values in `pdg_data/` carry their upstream Particle Data Group terms. The [LICENSE](LICENSE) file gives the per-directory map.
