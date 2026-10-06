@@ -444,7 +444,11 @@ as evidence for OPH over standard quantum mechanics.
 - `programs/s3_diagnostic_bundle.py`
   `S_3` layout and readout diagnostic bundle.
 - `programs/stage1_markov_fingerprint.py`
-  3-qubit Markov / recoverability benchmark.
+  3-qubit Markov / recoverability benchmark. Its
+  [finite recovery audit](../quantum_information/RECOVERY_EVIDENCE.md) requires
+  complete tomography data, retains resolved positive support and distinguishes
+  the fixed Petz channel from an optimal-recovery fidelity bound. New summaries
+  retain raw counts and disclose the explicit tomographic state correction.
 - `programs/generative_repair_kernel.py`
   Pure finite-matrix implementation of the record-gated Cayley repair kernel,
   the matched open-loop heat null, and the dimension-exponent diagnostic.
