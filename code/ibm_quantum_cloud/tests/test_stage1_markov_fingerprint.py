@@ -594,3 +594,56 @@ def test_review_does_not_classify_unrelated_errors_by_message(monkeypatch):
     monkeypatch.setattr(stage1, "petz_recovery", fail)
     with pytest.raises(ValueError, match="support is numerically unresolved"):
         stage1.analyze_state(np.eye(8)/8)
+
+
+@pytest.mark.parametrize("unavailable", ["structured_theta_0.00", "structured_theta_0.60",
+                                       "structured_theta_1.00", "random_seed_1"])
+def test_review_only_dependent_comparisons_become_unavailable(monkeypatch, tmp_path, unavailable):
+    import json
+    _review_main_fixture(monkeypatch, tmp_path, unresolved_counts=False)
+    sampler = stage1.run_sampler
+    def mixed_sampler(**kwargs):
+        result, backend = sampler(**kwargs)
+        result["counts_by_name"].update({f"{unavailable}__{b}": counts
+                                         for b, counts in _review_counts().items()})
+        return result, backend
+    monkeypatch.setattr(stage1, "run_sampler", mixed_sampler)
+    assert stage1.main() == 0
+    report = json.loads((tmp_path/"summary.json").read_text())
+    for name, row in report["reconstructed_analysis"].items():
+        if name == unavailable:
+            _assert_unresolved_report(row)
+        else:
+            assert row["petz_status"] == "available"
+            assert row["petz_unavailable_reason"] is None
+            assert row["petz_fidelity"] == pytest.approx(1, abs=2e-14)
+    expected = None if unavailable.startswith("structured") else True
+    assert report["fingerprint_checks"]["recovery_improves_as_cmi_drops"] is expected
+
+
+def test_review_incomplete_acquisition_is_saved_but_never_reported_as_success(monkeypatch, tmp_path):
+    import json
+    acquired = _review_main_fixture(monkeypatch, tmp_path)
+    sampler = stage1.run_sampler
+    missing = "structured_theta_0.00__XYZ"
+    def incomplete_sampler(**kwargs):
+        result, backend = sampler(**kwargs)
+        del result["counts_by_name"][missing]
+        return result, backend
+    monkeypatch.setattr(stage1, "run_sampler", incomplete_sampler)
+    with pytest.raises(KeyError, match=missing):
+        stage1.main()
+    raw = json.loads((tmp_path/"acquired_counts.json").read_text())
+    assert raw["counts_by_name"] == acquired["counts_by_name"]
+    assert len(raw["counts_by_name"]) == 134
+    assert raw["measured_index"]["structured_theta_0.00"]["XYZ"] == missing
+    assert not (tmp_path/"summary.json").exists()
+
+
+def test_review_support_exception_is_only_handled_for_recovery(monkeypatch):
+    from quantum_information.recovery import UnresolvedPetzSupport
+    def fail(*args):
+        raise UnresolvedPetzSupport("injected information failure")
+    monkeypatch.setattr(stage1, "conditional_mutual_information", fail)
+    with pytest.raises(UnresolvedPetzSupport, match="injected information failure"):
+        stage1.analyze_state(np.eye(8)/8)
