@@ -109,3 +109,47 @@ def test_verifier_rejects_incomplete_changed_or_mislabelled_evidence(packet, mut
         dataset['combined']['raw_rows'] = True
     with pytest.raises(ValueError):
         verifier.replay(receipt, data_dir)
+
+@pytest.mark.parametrize('path,value', [
+    (('subset_definition','redshift_range'), '0 <= z <= 200'),
+    (('subset_definition','monotone_capacity_condition'), 'w(a)>=0 at every epoch'),
+    (('base_lcdm_capacity_display','sample_level_formula'), 'Lambda*l_P^2 = omegal*H0'),
+    (('base_lcdm_capacity_display','model_scope'), 'model-independent physical measurement'),
+    (('base_lcdm_capacity_display','classification'), 'OPH confirmed'),
+    (('datasets','DESI_DR2_BAO+CMB','source_directory'), 'https://example.invalid/fiction'),
+    (('datasets','DESI_DR2_BAO+CMB','rare_tail_resolution','warning'), 'Frequentist OPH exclusion'),
+    (('arithmetic','chain_columns'), 'rounded to integers'),
+    (('producer','script_sha256'), '0'*64),
+    (('source','official_sha256_manifest_sha256'), '0'*64),
+    (('epistemic_status','notes'), 'All physical premises have been derived'),
+])
+def test_verifier_binds_scientific_context_as_well_as_numbers(packet, path, value):
+    receipt, data_dir = packet
+    target = receipt
+    for key in path[:-1]:
+        target = target[key]
+    target[path[-1]] = value
+    with pytest.raises(ValueError):
+        verifier.replay(receipt, data_dir)
+
+
+@pytest.mark.parametrize('path', [(), ('producer',), ('source',), ('arithmetic',),
+    ('subset_definition',), ('base_lcdm_capacity_display',),
+    ('datasets','DESI_DR2_BAO+CMB'),
+    ('datasets','DESI_DR2_BAO+CMB','rare_tail_resolution'),
+    ('datasets','DESI_DR2_BAO+CMB','fixed_capacity_point_gaussian_diagnostic')])
+def test_verifier_rejects_unverified_extra_contract_fields(packet, path):
+    receipt, data_dir = packet
+    target = receipt
+    for key in path:
+        target = target[key]
+    target['frozen_prediction_confirmed'] = True
+    with pytest.raises(ValueError):
+        verifier.replay(receipt, data_dir)
+
+
+def test_chain_identity_must_be_an_integer_not_boolean(packet):
+    receipt, data_dir = packet
+    receipt['datasets']['DESI_DR2_BAO+CMB']['chains'][0]['chain'] = True
+    with pytest.raises(ValueError):
+        verifier.replay(receipt, data_dir)
