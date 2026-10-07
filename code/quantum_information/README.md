@@ -1,5 +1,11 @@
 # Finite-state entropy and the role of sector labels
 
+The [Gibbs response audit](../maxent/GIBBS_RESPONSE_AUDIT.md) distinguishes
+resolved binary64 states from resolved weighted responses. State producers
+conservatively reject subnormal thermal populations, including joint sector
+weights. The public MaxEnt covariance retains populations and original
+observable entries in multiprecision until the final response is rounded.
+
 This shared implementation replaces duplicated density-matrix, entropy,
 partial-trace and modular-splitting operations in the MaxEnt, collar-alignment,
 null-net and Einstein-closure evidence. It uses natural logarithms and the
@@ -77,9 +83,12 @@ The follow-up audit of this refactor retains four additional controls:
   now reject complex, Boolean, nonfinite and nonscalar inputs, including
   convergence and alignment tolerances.
 - For `H=30 X`, both Gibbs eigenweights are positive, but reconstruction of
-  the dense matrix erases the smaller direction. Gibbs states, sector blocks
-  and Duhamel covariance now validate the reconstructed faithful state too.
-  Diagonal controls preserve the same small probability when representable.
+  the dense matrix erases the smaller direction. Gibbs states and sector
+  blocks validate the reconstructed faithful state. Diagonal controls
+  preserve the same small probability when representable. The public
+  Duhamel response instead evaluates the original thermal family before
+  output rounding; its resolved covariance can be returned without a
+  representable binary64 state. See the [response audit](../maxent/GIBBS_RESPONSE_AUDIT.md).
 
 ## One normal form for the finite A3 objective
 
