@@ -67,7 +67,7 @@ not a domain argument.
   the result is retained as evidence. Inject a failure after acquisition
   and verify that raw evidence survives. A recognized unavailable diagnostic
   must not discard independent valid results or become a successful check;
-  unrelated errors must still propagate.
+  unrelated errors must propagate.
 - **Numerical versus exact claims:** repeated-precision agreement is not
   an interval bound or proof of a zero. An exact certificate must establish
   the property of the supplied matrix, without silently projecting it onto
