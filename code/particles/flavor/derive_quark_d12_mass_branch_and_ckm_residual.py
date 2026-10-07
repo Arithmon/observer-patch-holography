@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 import math
 from datetime import datetime, timezone
 from pathlib import Path
@@ -33,6 +34,10 @@ from sigma_ud_orbit_provider import load_sigma_ud_singleton_uniqueness_witness
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from particles.mixing import ckm_parameters as _standard_ckm_parameters
 FORWARD_JSON = ROOT / "particles" / "runs" / "flavor" / "forward_yukawas.json"
 AUDIT_JSON = ROOT / "particles" / "runs" / "flavor" / "quark_current_family_exactness_audit.json"
 DEFAULT_OUT = ROOT / "particles" / "runs" / "flavor" / "quark_d12_mass_branch_and_ckm_residual.json"
@@ -123,32 +128,6 @@ def _generator_gauge_fix(generator: np.ndarray, matrix: np.ndarray) -> dict[str,
         "matrix": left @ generator @ right,
         "matrix_surface": left @ matrix @ right,
         "phase_shifts_radians": phase_shifts.tolist(),
-    }
-
-
-def _standard_ckm_parameters(v_ckm: np.ndarray) -> dict[str, float]:
-    s13 = min(1.0, max(0.0, float(abs(v_ckm[0, 2]))))
-    c13 = math.sqrt(max(0.0, 1.0 - s13 * s13))
-    s12 = min(1.0, max(0.0, float(abs(v_ckm[0, 1]) / c13)))
-    s23 = min(1.0, max(0.0, float(abs(v_ckm[1, 2]) / c13)))
-    theta_12 = math.asin(s12)
-    theta_23 = math.asin(s23)
-    theta_13 = math.asin(s13)
-    c12 = math.sqrt(max(0.0, 1.0 - s12 * s12))
-    c23 = math.sqrt(max(0.0, 1.0 - s23 * s23))
-    numerator = (s12 * s23) ** 2 + (c12 * c23 * s13) ** 2 - float(abs(v_ckm[2, 0])) ** 2
-    denominator = 2.0 * s12 * s23 * c12 * c23 * s13
-    cos_delta = max(-1.0, min(1.0, numerator / denominator))
-    delta = math.acos(cos_delta)
-    jarlskog = _jarlskog(v_ckm)
-    if jarlskog < 0.0:
-        delta = 2.0 * math.pi - delta
-    return {
-        "theta_12": theta_12,
-        "theta_23": theta_23,
-        "theta_13": theta_13,
-        "delta_ckm": delta,
-        "jarlskog": jarlskog,
     }
 
 

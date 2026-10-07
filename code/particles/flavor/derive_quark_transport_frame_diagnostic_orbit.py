@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 import math
 from datetime import datetime, timezone
 from pathlib import Path
@@ -31,6 +32,10 @@ import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from particles.mixing import ckm_parameters as _ckm_tuple
 DEFAULT_LINE_LIFT = ROOT / "particles" / "runs" / "flavor" / "overlap_edge_line_lift.json"
 DEFAULT_TRANSPORT = ROOT / "particles" / "runs" / "flavor" / "quark_d12_mass_branch_and_ckm_residual.json"
 DEFAULT_OUT = ROOT / "particles" / "runs" / "flavor" / "quark_transport_frame_diagnostic_orbit.json"
@@ -75,35 +80,6 @@ def _align_target_phase(source_vec: np.ndarray, target_vec: np.ndarray, transpor
     if abs(amplitude) > 1.0e-15:
         target_vec = target_vec * np.exp(1j * np.angle(amplitude))
     return target_vec
-
-
-def _ckm_tuple(matrix: np.ndarray) -> dict[str, float]:
-    s13 = min(1.0, max(0.0, float(abs(matrix[0, 2]))))
-    c13 = math.sqrt(max(0.0, 1.0 - s13 * s13))
-    s12 = min(1.0, max(0.0, float(abs(matrix[0, 1]) / c13)))
-    s23 = min(1.0, max(0.0, float(abs(matrix[1, 2]) / c13)))
-
-    theta12 = math.asin(s12)
-    theta23 = math.asin(s23)
-    theta13 = math.asin(s13)
-
-    c12 = math.sqrt(max(0.0, 1.0 - s12 * s12))
-    c23 = math.sqrt(max(0.0, 1.0 - s23 * s23))
-    numerator = (s12 * s23) ** 2 + (c12 * c23 * s13) ** 2 - float(abs(matrix[2, 0])) ** 2
-    denominator = 2.0 * s12 * s23 * c12 * c23 * s13
-    cos_delta = 1.0 if denominator == 0.0 else max(-1.0, min(1.0, numerator / denominator))
-    delta = math.acos(cos_delta)
-    jarlskog = float(np.imag(matrix[0, 0] * matrix[1, 1] * np.conj(matrix[0, 1]) * np.conj(matrix[1, 0])))
-    if jarlskog < 0.0:
-        delta = 2.0 * math.pi - delta
-
-    return {
-        "theta_12": theta12,
-        "theta_23": theta23,
-        "theta_13": theta13,
-        "delta_ckm": delta,
-        "jarlskog": jarlskog,
-    }
 
 
 def _debug_log_shell_loss(ckm: dict[str, Any]) -> float:
