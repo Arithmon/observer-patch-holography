@@ -289,3 +289,25 @@ def test_independent_positive_power_series(case):
         for key in result:
             assert result[key] == pytest.approx(float(expected[key]), rel=1e-12, abs=0), key
     assert packet.scalar_radius_moment(q, p, sigma, hbar) == pytest.approx(float(expected['radius']), rel=1e-12, abs=0)
+
+
+@pytest.mark.parametrize('sigma', [1e-200, 1e200, 1e-20])
+def test_pointwise_log_survives_unrepresentable_width_square(sigma):
+    q = np.zeros(56)
+    mp = mpmath.mp.clone(); mp.dps = 90
+    expected = -14*mp.log(2*mp.pi*mp.mpf(sigma)**2)
+    assert packet.seed_log_half_density(q, q, q, sigma) == pytest.approx(complex(float(expected)), rel=1e-14, abs=0)
+
+
+@pytest.mark.parametrize('sigma', [1e-200, 1e200, 1e-20])
+def test_unreportable_pointwise_amplitude_is_an_explicit_error(sigma):
+    q = np.zeros(56)
+    with pytest.raises(ValueError, match='range'):
+        packet.projected_half_density(q, q, q, sigma, nodes=16)
+
+
+def test_representable_pointwise_mean_does_not_overflow_its_sum():
+    q = np.zeros(56); sigma = 10**-11.35
+    mp = mpmath.mp.clone(); mp.dps = 90
+    expected = float((2*mp.pi*mp.mpf(sigma)**2)**-14)
+    assert packet.projected_half_density(q, q, q, sigma) == pytest.approx(expected, rel=2e-12, abs=0)

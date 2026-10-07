@@ -13,6 +13,7 @@ from fractions import Fraction as Q
 import hashlib
 import importlib.util
 import json
+import math
 from pathlib import Path
 import sys
 
@@ -214,8 +215,17 @@ def seed_log_half_density(point, center, momentum, sigma, hbar=1):
     center = real_vector(center, 56, 'packet center')
     momentum = real_vector(momentum, 56, 'packet momentum')
     sigma, hbar = positive(sigma, 'width'), positive(hbar, 'hbar')
-    delta = point-center
-    return complex(-14*np.log(2*np.pi*sigma**2)-delta@delta/(4*sigma**2), momentum@delta/hbar)
+    try:
+        with np.errstate(over='raise', invalid='raise', divide='raise', under='ignore'):
+            delta = point-center
+            scaled = (delta/sigma)/2
+            value = complex(-14*(math.log(2*math.pi)+2*math.log(sigma))-scaled@scaled,
+                            momentum@delta/hbar)
+    except (FloatingPointError, OverflowError) as error:
+        raise ValueError('seed logarithm outside binary64 calculation range') from error
+    if not np.isfinite(value):
+        raise ValueError('seed logarithm outside binary64 reporting range')
+    return value
 
 
 def rotate(vector, angle):
@@ -232,9 +242,20 @@ def projected_half_density(point, center, momentum, sigma, hbar=1, nodes=256):
     norm = overlap_parameters(center, momentum, sigma, hbar)['norm_squared']**.5
     if norm == 0:
         raise ValueError('projection norm underflows at these parameters')
-    values = [np.exp(seed_log_half_density(point, rotate(center, a), rotate(momentum, a), sigma, hbar))
-              for a in np.arange(nodes)*(2*np.pi/nodes)]
-    return complex(sum(values)/nodes/norm)
+    try:
+        with np.errstate(over='raise', invalid='raise', divide='raise', under='ignore'):
+            values = [np.exp(seed_log_half_density(point, rotate(center, a), rotate(momentum, a), sigma, hbar))
+                      for a in np.arange(nodes)*(2*np.pi/nodes)]
+            if any(value == 0 for value in values):
+                raise ValueError('pointwise Gaussian amplitude below binary64 range')
+            # Weight before summing: the mean can fit when the raw sum cannot.
+            value = complex(math.fsum(v.real/nodes for v in values),
+                            math.fsum(v.imag/nodes for v in values))/norm
+    except (FloatingPointError, OverflowError) as error:
+        raise ValueError('pointwise amplitude outside binary64 calculation range') from error
+    if not np.isfinite(value):
+        raise ValueError('pointwise amplitude outside binary64 reporting range')
+    return value
 
 
 def scalar_radius_moment(center, momentum, sigma, hbar=1):

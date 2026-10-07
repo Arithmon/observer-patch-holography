@@ -60,6 +60,10 @@ entries too. They reject masked/boolean data and scalars whose conversion
 would change their value, including an integer displacement erased above
 `2^53`. This explicit caller limitation does not restrict the scalar
 norm/radius evaluator's exact-rational input arithmetic.
+The seed logarithm avoids squaring extreme widths, and circle samples are
+weighted before summation. Unreportable pointwise amplitudes raise a range
+error instead of returning NaN or an underflowed Gaussian sample. These
+checks do not bound discretization error or resolve oscillatory cancellation.
 
 The independent receipt replay imports neither the packet producer nor the
 interacting coefficient evaluator. It uses positive one-dimensional integrals
