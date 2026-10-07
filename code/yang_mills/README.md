@@ -69,6 +69,11 @@ maximize probability differences over all events, check heterogeneous tables,
 and construct a two-spin heat-bath operator with a complete exact eigenbasis.
 They verify attained gap bounds at both signs of the correlation, within
 `2^-100` of the contractivity boundary, and at rate scales beyond binary64.
+Three-spin controls derive every conditional row from the full supplied law
+and check the entire weighted operator inequality by exact Schur elimination,
+with unequal rates and two influences per site. A singular-support control
+constructs a nonconstant centered zero-energy mode and requires rejection at
+`eta = 1`; its zero gap is calculated from the conditional expectations.
 
 ```bash
 python3 -m pytest -q code/yang_mills/tests/test_collar_certificate_accounting.py \

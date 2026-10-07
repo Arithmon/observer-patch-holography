@@ -410,3 +410,76 @@ def test_valid_cli_runs_outside_the_repository(tmp_path, kind):
                               "verify", "--manifest", str(source), "--receipt", str(output)],
                              capture_output=True, text=True, cwd=tmp_path)
         assert run.returncode == 0, run.stderr
+
+
+@pytest.mark.parametrize("kind", ["witness", "explicit"])
+def test_three_spin_source_rows_imply_the_reported_operator_bound(kind):
+    """Derive all influences from a full law, then check exact Poincare PSD.
+
+    This exercises two distinct influences per site and unequal rates. Exact
+    Schur elimination checks the whole weighted operator, not selected modes.
+    """
+    states = list(itertools.product((-1, 1), repeat=3))
+    accepted = refused = 0
+    for coupling, parity in [(Q(0), Q(0)), (Q(1, 5), Q(1, 8)),
+                             (Q(-1, 4), Q(1, 10)), (Q(0), Q(3, 4))]:
+        for scale in [Q(1), Q(2**1100), Q(1, 2**1100)]:
+            weights = [(1+coupling*s*t)*(1+coupling*t*u)*(1+parity*s*t*u)
+                       for s, t, u in states]
+            law = [w/sum(weights) for w in weights]
+            assert all(p > 0 for p in law) and sum(law) == 1
+            rates = [scale/3, 2*scale/5, 7*scale/6]
+            generator = [[Q(0) for _ in states] for _ in states]
+            entries = []
+            row_bounds = []
+            for site in range(3):
+                conditional = []
+                for i, state in enumerate(states):
+                    fiber = [j for j, target in enumerate(states)
+                             if all(state[k] == target[k] for k in range(3) if k != site)]
+                    mass = sum(law[j] for j in fiber)
+                    conditional.append([sum(law[j] for j in fiber if states[j][site] == value)/mass
+                                        for value in (-1, 1)])
+                    generator[i][i] += rates[site]
+                    for j in fiber:
+                        generator[i][j] -= rates[site]*law[j]/mass
+                e = entry()
+                e.update(id=str(site), rate_lower=str(rates[site]), refinement_targets=[str(site)])
+                total = Q(0)
+                for neighbor in range(3):
+                    if neighbor == site:
+                        continue
+                    pairs = [(conditional[i], conditional[j])
+                             for i, state in enumerate(states) for j, target in enumerate(states)
+                             if state[neighbor] != target[neighbor]
+                             and all(state[k] == target[k] for k in range(3) if k != neighbor)]
+                    left, right = max(pairs, key=lambda pair: abs(pair[0][0]-pair[1][0]))
+                    bound = abs(left[0]-right[0])
+                    total += bound
+                    e["influences"].append({"target_type": str(neighbor), "upper": str(bound),
+                                            "conditional_rows": [[str(v) for v in row] for row in (left, right)]})
+                entries.append(e)
+                row_bounds.append(total)
+            if max(row_bounds) >= 1:
+                with pytest.raises(ValueError, match="< 1"):
+                    check(kind, payload(kind, entries))
+                refused += 1
+                continue
+            result = check(kind, payload(kind, entries))
+            floor = Q(result["gap_lower"])
+            # <f,Lf>_pi - floor*Var_pi(f) is nonnegative for EVERY f.
+            matrix = [[law[i]*generator[i][j] - floor*((law[i] if i == j else 0)-law[i]*law[j])
+                       for j in range(8)] for i in range(8)]
+            assert all(matrix[i][j] == matrix[j][i] for i in range(8) for j in range(8))
+            assert all(sum(row) == 0 for row in matrix)
+            for pivot in range(8):
+                diagonal = matrix[pivot][pivot]
+                assert diagonal >= 0
+                if diagonal == 0:
+                    assert all(matrix[pivot][j] == 0 for j in range(pivot+1, 8))
+                else:
+                    for i in range(pivot+1, 8):
+                        for j in range(pivot+1, 8):
+                            matrix[i][j] -= matrix[i][pivot]*matrix[pivot][j]/diagonal
+            accepted += 1
+    assert (accepted, refused) == (9, 3)
