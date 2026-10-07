@@ -45,6 +45,7 @@ def test_lock_is_fail_closed_hashed_and_immutable() -> None:
         assert source_dag["source_closure_gate"]["passes"] is False
         nodes = {node['id']: node for node in source_dag['nodes']}
         for name, path in {'mixing_readout': 'particles/mixing.py',
+                           'mixing_numeric_package': 'quantum_information/__init__.py',
                            'mixing_numeric_validation': 'quantum_information/gibbs.py',
                            'mixing_numeric_validation_dependencies': 'quantum_information/states.py'}.items():
             assert nodes[name]['path'] == path

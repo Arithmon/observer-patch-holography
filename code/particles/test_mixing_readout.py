@@ -130,3 +130,16 @@ def test_subnormal_anchor_with_zero_cp_phase_remains_readable():
     result = pmns_signed(rotations(c=math.ulp(0.), delta=0.)[0])
     assert result['theta_13'] == math.ulp(0.)
     assert result['delta_pmns'] == result['jarlskog'] == 0.
+
+
+def test_jarlskog_is_correctly_rounded_on_supplied_entries():
+    import mpmath as mp
+
+    rng = np.random.default_rng(1056)
+    # 8192 bits suffice for the exact four-factor product of binary64 entries.
+    with mp.workprec(8192):
+        for _ in range(30):
+            u, _ = np.linalg.qr(rng.normal(size=(3, 3)) + 1j*rng.normal(size=(3, 3)))
+            v = [[mp.mpc(float(z.real), float(z.imag)) for z in row] for row in u]
+            expected = mp.im(v[0][0]*v[1][1]*mp.conj(v[0][1])*mp.conj(v[1][0]))
+            assert mixing_parameters(u)['J'] == float(expected)

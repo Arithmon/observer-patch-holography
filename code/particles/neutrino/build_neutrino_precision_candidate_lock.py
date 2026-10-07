@@ -34,6 +34,7 @@ CODE_INPUTS = {
     "cocycle_builder": ROOT / "particles" / "flavor" / "derive_overlap_edge_transport_cocycle.py",
     "weighted_cycle_builder": ROOT / "particles" / "neutrino" / "derive_neutrino_weighted_cycle_repair.py",
     "mixing_readout": ROOT / "particles" / "mixing.py",
+    "mixing_numeric_package": ROOT / "quantum_information" / "__init__.py",
     "mixing_numeric_validation": ROOT / "quantum_information" / "gibbs.py",
     "mixing_numeric_validation_dependencies": ROOT / "quantum_information" / "states.py",
     "profile_scorer": ROOT / "particles" / "neutrino" / "score_neutrino_nufit61.py",
