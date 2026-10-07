@@ -288,6 +288,31 @@ post-acquisition errors. Two optional cases use actual Qiskit circuits and
 CLI parsing with `--random-seeds 1`, replacing only the sampler with a
 local count fixture. The fixtures test reporting, not hardware behavior.
 
+The custody audit of `431556fe` also reproduced a sequential-rerun defect:
+after a successful 135-record run, incomplete acquisition in the same output
+directory left 134 replacement count records beside the old successful
+summary. Four failing controls are retained in `49ccbf69`. The runner now
+refuses existing Stage 1 output files before sampling; it neither overwrites
+nor removes them. Separate runs require separate output locations. Fresh
+directories retain the post-acquisition error behavior described above.
+
+Additional independent controls retain nonzero information through unresolved
+recovery: a shared classical AC bit and a Bell AC pair, each independent of
+a dense B state with eigenvalue `2^-50`, have CMI one and two bits. Their
+reports retain those values and bounds `1/2` and `1/4` while recovery is
+unavailable. Complete integer-count fixtures with AC correlations
+`c=0,0.6,1` independently give `I=1-h2((1+c)/2)` and Petz fidelity
+`(1+sqrt(1-c*c))/2`; permuting these fixtures checks both true and false
+fingerprint outcomes. Zero-only unavailable cases cannot detect an
+implementation that erases valid CMI, and equal-fidelity cases cannot
+validate a nontrivial ordering.
+Three injected faults passed the former SDK-free Stage 1 test file at
+`431556fe` (79 passes, two optional skips): zeroing unavailable CMI and its
+bound, forcing the recovery ordering to succeed, and forcing both CMI
+comparisons to fail. The strengthened controls reject each fault. Removing
+the output preflight also fails all four custody controls. The twelve
+mathematical and seven earlier reporting mutations were rerun and rejected.
+
 ## Numerical and downstream boundaries
 
 Strict numeric conversion rejects masked data, mixed Booleans and lossy

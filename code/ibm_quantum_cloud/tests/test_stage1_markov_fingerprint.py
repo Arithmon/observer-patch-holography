@@ -676,3 +676,63 @@ def test_review_rerun_cannot_pair_new_counts_with_an_old_success(monkeypatch, tm
         stage1.main()
     assert acquired == {}
     assert {p.name: p.read_bytes() for p in tmp_path.iterdir()} == previous
+
+
+@pytest.mark.parametrize("entangled,expected_cmi", [(False, 1.), (True, 2.)])
+def test_review_unresolved_recovery_retains_nonzero_information(entangled, expected_cmi):
+    import itertools
+    # Exact dyadic rho_AC tensor rho_B: I(A:C|B)=I(A:C), independent of B.
+    # A,C share a classical bit or a Bell pair; B has an unresolved dense
+    # eigenvalue 2^-50. The state is supplied directly, without PSD repair.
+    b = np.array([[.5, .5-2.**-50], [.5-2.**-50, .5]])
+    rho = np.zeros((8, 8))
+    for a, ap, q, qp in itertools.product(range(2), repeat=4):
+        if entangled or a == ap:
+            rho[5*a+2*q, 5*ap+2*qp] = b[q, qp]/2
+    with pytest.raises(stage1.UnresolvedPetzSupport):
+        stage1.petz_recovery(rho)
+    row = stage1.analyze_state(rho)
+    assert row["petz_status"] == "unresolved_support"
+    assert row["cmi_bits"] == pytest.approx(expected_cmi, abs=2e-13)
+    assert row["fawzi_renner_fidelity_lower_bound"] == pytest.approx(2**-expected_cmi, abs=2e-13)
+    assert row["petz_fidelity"] is row["petz_trace_distance"] is row["petz_observable_mismatch"] is None
+
+
+@pytest.mark.parametrize("families,random_family,ghz_family,checks", [
+    ((0, 1, 2), 1, 2, (True, True, True)),
+    ((1, 0, 2), 2, 0, (True, False, False)),
+    ((0, 2, 1), 0, 2, (False, True, False)),
+])
+def test_review_fingerprint_values_follow_independent_count_families(
+        monkeypatch, tmp_path, families, random_family, ghz_family, checks):
+    import json
+    import math
+    _review_main_fixture(monkeypatch, tmp_path, unresolved_counts=False)
+    names = [f"structured_theta_{t}" for t in ("0.00", "0.60", "1.00")]
+    kind = dict(zip(names+["random_seed_1", "ghz_control"],
+                    [*families, random_family, ghz_family]))
+    # B is uniform; AC has only a ZZ correlation c=0,.6,1. Its classical
+    # probabilities are (1+c,1-c,1-c,1+c)/4. Thus CMI=1-h2((1+c)/2)
+    # and Petz fidelity=(1+sqrt(1-c*c))/2, independently of the producer.
+    expected_cmi = (0., 1+.8*math.log2(.8)+.2*math.log2(.2), 1.)
+    expected_fidelity = (1., .9, .5)
+    def sampler(**kwargs):
+        counts = {}
+        for circuit in kwargs["circuits"]:
+            name, basis = circuit.name.rsplit("__", 1)
+            pair = basis[0]+basis[2]
+            excess = (0, 3, 5)[kind[name]] if pair == "ZZ" else 0
+            counts[circuit.name] = {f"{k:03b}": 5+excess*(-1)**((k & 1)+((k >> 2) & 1))
+                                    for k in range(8)}
+        return {"counts_by_name": counts, "run_metadata": {"fixture": True}}, "local_fixture"
+    monkeypatch.setattr(stage1, "run_sampler", sampler)
+    assert stage1.main() == 0
+    report = json.loads((tmp_path/"summary.json").read_text())
+    for name, family in kind.items():
+        row = report["reconstructed_analysis"][name]
+        assert row["petz_status"] == "available"
+        assert row["cmi_bits"] == pytest.approx(expected_cmi[family], abs=2e-13)
+        assert row["petz_fidelity"] == pytest.approx(expected_fidelity[family], abs=2e-13)
+    for key, expected in zip(("structured_theta_0.00_lt_random_control",
+                              "structured_theta_0.00_lt_ghz", "recovery_improves_as_cmi_drops"), checks):
+        assert report["fingerprint_checks"][key] is expected

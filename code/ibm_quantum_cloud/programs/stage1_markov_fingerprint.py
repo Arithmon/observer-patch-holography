@@ -468,6 +468,10 @@ def main() -> int:
 
     mode = "local" if args.local_testing else args.mode
     outdir = ensure_dir(args.outdir)
+    # A failed rerun must not overwrite counts beside an older success report.
+    for name in ("acquired_counts.json", "summary.json", "summary_pretty.txt"):
+        if (outdir / name).exists():
+            raise FileExistsError(f"Stage 1 output already exists at {outdir / name}; choose a fresh --outdir")
 
     circuits, catalog_meta = state_catalog(args.random_depth, args.random_seeds)
     bases = measurement_bases(3)

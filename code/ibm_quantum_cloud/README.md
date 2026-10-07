@@ -456,6 +456,9 @@ as evidence for OPH over standard quantum mechanics.
   immediately after sampler return, before numerical analysis. Unresolved
   Petz support leaves valid CMI available; recovery metrics and dependent
   checks are explicitly `null`, with `petz_status` and a reason in each row.
+  Use a separate output directory for each run. Existing `acquired_counts.json`,
+  `summary.json` or `summary_pretty.txt` causes refusal before sampling, so a
+  failed rerun cannot mix acquired counts with a previous success report.
 - `programs/generative_repair_kernel.py`
   Pure finite-matrix implementation of the record-gated Cayley repair kernel,
   the matched open-loop heat null, and the dimension-exponent diagnostic.
