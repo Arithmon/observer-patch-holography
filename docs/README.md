@@ -42,7 +42,9 @@ each file keeps its name in the folders above.
   the [falsification program](OPH_FALSIFICATION_PROGRAM.md), and the [paper index](../paper/).
 - **Build and test:** begin with the repository [reproduction
   guide](../REPRODUCE.md), [executable evidence](../code/), and [Lean
-  formalization](../Lean/).
+  formalization](../Lean/). Follow the [numerical audit
+  procedure](policies/NUMERICAL_AUDIT.md) when changing finite numerical
+  evidence or addressing review findings.
 
 ## Canonical References
 

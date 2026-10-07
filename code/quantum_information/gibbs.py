@@ -106,6 +106,8 @@ def _thermal(ham):
         probs = weights/weights.sum()
     if np.any(probs == 0) or not np.all(np.isfinite(probs)):
         raise ValueError("Gibbs spectrum underflow; faithful-state precision is insufficient")
+    if np.any(probs < np.finfo(float).tiny):
+        raise ValueError("Gibbs population relative precision is insufficient")
     rho = faithful_density_matrix((vectors*probs) @ vectors.conj().T)
     return rho, math.log(weights.sum())-energies[0], probs, vectors
 
@@ -125,7 +127,8 @@ def gibbs_sectors(hamiltonians, central_energies, beta=1.):
     a common origin before any rounding of relative log weights.
 
     Every sector and joint spectral direction must retain positive mass;
-    unresolved dense-state support or underflow raises ValueError. beta=0
+    subnormal populations, unresolved dense-state support or underflow
+    raise ValueError. Positivity alone does not resolve relative precision. beta=0
     returns the maximally mixed full state, so sector masses follow dimension.
     Negative beta is allowed for these finite spectra. No physical energy,
     temperature or center probabilities are inferred by this constructor.
@@ -167,4 +170,8 @@ def gibbs_sectors(hamiltonians, central_energies, beta=1.):
                 or any(np.any(p*spectrum == 0)
                        for p, spectrum in zip(probabilities, spectra))):
             raise ValueError("normalized Gibbs sector underflow; precision is insufficient")
+        if (np.any(probabilities < np.finfo(float).tiny)
+                or any(np.any(p*spectrum < np.finfo(float).tiny)
+                       for p, spectrum in zip(probabilities, spectra))):
+            raise ValueError("joint Gibbs population relative precision is insufficient")
     return [(float(p), state) for p, state in zip(probabilities, states)]

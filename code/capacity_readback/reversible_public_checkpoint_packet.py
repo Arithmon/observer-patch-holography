@@ -21,6 +21,7 @@ from correctable_public_record_capacity import (
     evaluate_terminal,
     public_global_sections,
     reachable_public_sections,
+    section_id,
 )
 
 
@@ -64,7 +65,7 @@ def build_reference_packet(capacity_dimension: int = 4) -> dict[str, Any]:
         for left, right in icosahedral_edges()
     ]
     sections = public_global_sections(observers, interfaces)
-    section_ids = ["|".join(f"{port}={section[port]}" for port in sorted(section)) for section in sections]
+    section_ids = [section_id(section) for section in sections]
     label_to_section = {
         section["north"]: sid for section, sid in zip(sections, section_ids, strict=True)
     }

@@ -254,15 +254,15 @@ def _parts(dims, parts):
 
 
 def mutual_information(rho, dims, part_x, part_y):
-    dims, (x, y) = _parts(dims, (part_x, part_y))
-    entropy = lambda keep: von_neumann_entropy(partial_trace(rho, dims, keep))
-    return entropy(x) + entropy(y) - entropy(x + y)
+    """Homogeneous mutual information; preserve small correlation defects."""
+    from .information import conditional_information
+    return conditional_information(rho, dims, part_x, [], part_y)
 
 
 def conditional_mutual_information(rho, dims, part_a, part_b, part_c):
-    dims, (a, b, c) = _parts(dims, (part_a, part_b, part_c))
-    entropy = lambda keep: von_neumann_entropy(partial_trace(rho, dims, keep))
-    return entropy(a + b) + entropy(b + c) - entropy(b) - entropy(a + b + c)
+    """Conditional information with exact reductions and guarded precision."""
+    from .information import conditional_information
+    return conditional_information(rho, dims, part_a, part_b, part_c)
 
 
 def direct_sum_state(weights, states):

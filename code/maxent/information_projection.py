@@ -13,6 +13,7 @@ import numpy as np
 from quantum_information import faithful_density_matrix, finite_real_scalar
 from quantum_information.gibbs import _finite, _numeric, _observables, _thermal
 from .hamiltonian_assembly import _assemble_hamiltonian
+from .gibbs_response import covariance_from_spectrum, gibbs_covariance
 
 
 def _multipliers(lam, count):
@@ -66,31 +67,18 @@ def gibbs_state(constraints, lam):
 
 
 def _covariance(operators, probs, vectors):
-    rotated = [vectors.conj().T @ a @ vectors for a in operators]
-    for a in rotated:
-        a[np.diag_indices(len(a))] -= np.dot(probs, np.diag(a)).real
-    # Logarithmic mean: expm1 avoids cancellation; use max(p_i,p_j) to
-    # avoid overflow even when the smaller positive eigenvalue is subnormal.
-    logs = np.log(probs)
-    distance = np.abs(logs[:, None]-logs[None, :])
-    ratio = np.ones_like(distance)
-    np.divide(-np.expm1(-distance), distance, out=ratio, where=distance != 0)
-    kernel = np.maximum(probs[:, None], probs[None, :])*ratio
-    result = np.array([[np.sum(kernel*a*b.T).real for b in rotated] for a in rotated])
-    return _finite((result+result.T)/2, "Duhamel covariance")
+    return covariance_from_spectrum(operators, probs, vectors)
 
 
 def duhamel_covariance(constraints, lam):
-    """Kubo-Mori covariance in the caller's units, with scalar parts removed."""
-    ham, _, centered, scales = _hamiltonian_parts(constraints, lam)
-    _, _, probs, vectors = _thermal(ham)
-    covariance = _covariance(centered, probs, vectors)
-    with np.errstate(over="ignore", under="ignore", invalid="ignore"):
-        result = (covariance*scales[:, None])*scales[None, :]
-    _finite(result, "Duhamel covariance")
-    if np.any((covariance != 0) & (result == 0)):
-        raise ValueError("Duhamel covariance underflow in the requested units")
-    return result
+    """Kubo-Mori covariance of the supplied family, in the caller's units.
+
+    Population and moment arithmetic precedes binary64 output rounding.
+    The public response need not materialize a binary64 faithful state.
+    """
+    _observables(constraints)  # shared shape, conversion and Hermiticity checks
+    lam = _multipliers(lam, len(constraints))
+    return gibbs_covariance([_numeric(a, "constraints") for a in constraints], lam)
 
 
 def _coordinates(constraints):
