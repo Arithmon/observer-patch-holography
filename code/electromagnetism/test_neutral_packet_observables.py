@@ -168,3 +168,60 @@ def test_private_mpmath_context_and_uncharged_sign_symmetry():
     assert first['norm_squared'] == second['norm_squared']
     assert packet.scalar_radius_moment(q, p, 1) == packet.scalar_radius_moment(q, -p, 1)
     assert mpmath.mp.dps == old
+
+
+@pytest.mark.parametrize('bad', [True, np.ma.masked])
+@pytest.mark.parametrize('reader', ['seed', 'projected', 'rotate', 'phase_input'])
+def test_float_caller_rejects_original_invalid_entries(bad, reader):
+    value = [0.]*56; value[0] = bad
+    q, p = np.zeros(56), np.zeros(56)
+    with pytest.raises(ValueError):
+        if reader == 'seed':
+            packet.seed_log_half_density(value, q, p, 1)
+        elif reader == 'projected':
+            packet.projected_half_density(value, q, p, 1, nodes=16)
+        elif reader == 'rotate':
+            packet.rotate(value, .5)
+        else:
+            packet.real_vector(value+[0.]*12, 68, 'phase configuration')
+
+
+@pytest.mark.parametrize('reader', ['seed', 'projected', 'rotate', 'phase_input'])
+def test_float_caller_rejects_masked_container(reader):
+    value = np.ma.array(np.zeros(56), mask=False); value.mask[0] = True
+    q, p = np.zeros(56), np.zeros(56)
+    with pytest.raises(ValueError):
+        if reader == 'seed':
+            packet.seed_log_half_density(value, q, p, 1)
+        elif reader == 'projected':
+            packet.projected_half_density(value, q, p, 1, nodes=16)
+        elif reader == 'rotate':
+            packet.rotate(value, .5)
+        else:
+            packet.real_vector(value, 56, 'phase configuration')
+
+
+def test_float_caller_refuses_lost_displacement_and_accepts_resolved_neighbor():
+    q, p, point = [0.]*56, [0.]*56, [0.]*56
+    q[0], point[0] = 2**53, 2**53+1
+    with pytest.raises(ValueError, match='binary64'):
+        packet.seed_log_half_density(point, q, p, 1)
+    point[0] = 2**53+2
+    assert packet.seed_log_half_density(point, q, p, 1)-packet.seed_log_half_density(q, q, p, 1) == -1
+
+
+@pytest.mark.parametrize('bad', [True, np.bool_(False), np.ma.masked])
+def test_float_caller_rejects_invalid_angle(bad):
+    with pytest.raises(ValueError):
+        packet.rotate(np.zeros(56), bad)
+
+
+@pytest.mark.parametrize('parameter', ['width', 'hbar'])
+def test_float_caller_refuses_changed_exact_parameter(parameter):
+    from fractions import Fraction
+    q, p = np.zeros(56), np.zeros(56)
+    width, hbar = (Fraction(1, 3), 1) if parameter == 'width' else (1, Fraction(1, 3))
+    # The exact scalar calculation continues to support the original value.
+    assert packet.overlap_parameters(q, p, width, hbar)['norm_squared'] == 1
+    with pytest.raises(ValueError, match='binary64'):
+        packet.seed_log_half_density(q, q, p, width, hbar)
