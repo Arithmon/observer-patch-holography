@@ -153,3 +153,38 @@ def test_chain_identity_must_be_an_integer_not_boolean(packet):
     receipt['datasets']['DESI_DR2_BAO+CMB']['chains'][0]['chain'] = True
     with pytest.raises(ValueError):
         verifier.replay(receipt, data_dir)
+
+
+@pytest.mark.parametrize('duplicate', ['schema', 'datasets', 'producer'])
+def test_public_cli_rejects_duplicate_json_keys_even_if_values_agree(packet, monkeypatch, duplicate):
+    receipt, data_dir = packet
+    path = data_dir / 'duplicate.json'
+    payload = json.dumps(receipt)
+    payload = payload[:-1] + ',' + json.dumps(duplicate) + ':' + json.dumps(receipt[duplicate]) + '}'
+    path.write_text(payload, encoding='utf-8')
+    monkeypatch.setattr(sys, 'argv', ['verify', '--data-dir', str(data_dir), '--receipt', str(path)])
+    with pytest.raises(ValueError, match='duplicate JSON key'):
+        verifier.main()
+
+
+def test_public_cli_accepts_complete_packet_without_importing_producer(packet, monkeypatch, capsys):
+    receipt, data_dir = packet
+    path = data_dir / 'receipt.json'
+    path.write_text(json.dumps(receipt), encoding='utf-8')
+    monkeypatch.setattr(sys, 'argv', ['verify', '--data-dir', str(data_dir), '--receipt', str(path)])
+    monkeypatch.setitem(sys.modules, 'official_desi_dr2_chain_audit', None)
+    monkeypatch.setitem(sys.modules, 'official_desi', None)
+    verifier.main()
+    assert capsys.readouterr().out.startswith('PASS: 20 pinned chains, 25 summaries')
+
+
+@pytest.mark.parametrize('constant', ['NaN', 'Infinity', '-Infinity'])
+def test_public_cli_refuses_nonstandard_json_numbers(packet, monkeypatch, constant):
+    receipt, data_dir = packet
+    path = data_dir / 'nonfinite.json'
+    payload = json.dumps(receipt)
+    payload = payload[:-1] + ',"nonfinite":' + constant + '}'
+    path.write_text(payload, encoding='utf-8')
+    monkeypatch.setattr(sys, 'argv', ['verify', '--data-dir', str(data_dir), '--receipt', str(path)])
+    with pytest.raises(ValueError, match='non-finite JSON constant'):
+        verifier.main()

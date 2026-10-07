@@ -99,6 +99,16 @@ independent `erfc` evaluation. It requires the full default receipt. CI runs
 small complete fixtures and corrupt-evidence controls on Linux and Windows;
 the public-chain replay uses the explicit download command above.
 
+The review of this implementation found that numerical replay alone accepted
+altered redshift ranges, formulas, provenance and physical interpretations.
+The verifier now also binds the complete scientific context to the reviewed
+v3 contract at `a14a3dac`, with a separate canonical digest. Computed statistics
+and per-file records are excluded from that digest and must pass independent
+replay. Unknown fields, duplicate JSON keys, non-finite JSON constants and
+Boolean chain identities are refused. The verifier still executes without
+importing the producer. Changes to the declared context require reviewing and
+updating this explicit binding; passing arithmetic alone cannot authorize them.
+
 The accounting audit reproduced erased narrow spreads, accepted negative
 CPL endpoint offsets, lost excluded tails and quantile atoms, weight-scaling
 overflow, and crashes on valid Gaussian tails. The original 30 controls had

@@ -278,3 +278,33 @@ def test_decimal_chain_order_units_and_column_mapping(tmp_path):
     assert result['w0_mean'] == -1.
     assert result['w0_std'] == 1e-19
     assert result['posterior_mass_w_ge_minus_one_for_0_le_z_le_2'] == .5
+
+
+@pytest.mark.parametrize('exponent', [-650, -637, -550, -500, -50, 0, 5, 50, 200, 500])
+@pytest.mark.parametrize('shear', [Fraction(0), Fraction(2**100)])
+def test_gaussian_sheared_narrow_family_against_independent_tail(exponent, shear):
+    import mpmath
+    mp = mpmath.mp.clone(); mp.dps = 500
+    shift = Fraction(2)**exponent
+    acc = mod.Accumulator()
+    for x,y in itertools.product((-1,1), repeat=2):
+        acc.add(1, -1+x, Fraction(y,2**100)+shear*x+shift)
+    # In coordinates (w0+1, wa-shear*(w0+1)), covariance is diag(1,2^-200).
+    # This change of variables gives q directly, without the producer's inverse.
+    q = shift**2*2**200
+    result = mod.gaussian_fixed_point_diagnostic(acc)
+    if 2*exponent+200 < -1073 or 2*exponent+200 > 1023:
+        assert result['status'] == 'unavailable_binary64_range'
+        return
+    exact_q = mp.mpf(q.numerator)/q.denominator
+    assert abs(mp.mpf(result['mahalanobis_squared'])-exact_q) <= abs(exact_q)*mp.mpf('1e-12')
+    sigma = mp.mpf(result['two_sided_normal_sigma_equivalent'])
+    log_tail = mp.log(mp.erfc(sigma/mp.sqrt(2)))
+    assert abs(log_tail+exact_q/2) <= abs(exact_q)*mp.mpf('3e-12')
+    if result['chi2_2dof_survival'] is None:
+        assert result['status'] == 'available_log_tail_only'
+        assert exact_q > 1400
+    else:
+        assert result['status'] == 'available'
+        expected = mp.exp(-exact_q/2)
+        assert abs(mp.mpf(result['chi2_2dof_survival'])-expected) <= expected*mp.mpf('1e-12')

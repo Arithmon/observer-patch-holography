@@ -56,6 +56,62 @@ PINS = {'DESI_DR2_BAO+CMB': [('cmb_chain.1.txt', 'c228de7bbaec19ddb22eec25c3dd7c
                                  'c827cd767a4864ca28aa15c902bda32004e803050d4be330e25aefddd78b5c36')]}
 
 
+# Canonical scientific context reviewed at a14a3dac. This binds provenance,
+# domains, formulas and interpretation; numerical outputs are replayed below.
+# The digest excludes all computed statistics and per-file records, whose
+# independent checks must still pass. It is not a replacement for replay.
+CONTRACT_SHA256 = "ba85bfdad9e987b30c1cb0c02dfb8a2d9f1003ff3da6326e1a4e5777c133a726"
+
+
+def _keys(value, keys, path):
+    if not isinstance(value, dict) or value.keys() != set(keys):
+        raise ValueError(f'{path}: field set mismatch')
+
+
+def scientific_context(receipt):
+    """Extract every declaration, refusing unrecognized receipt fields."""
+    metadata = ('schema', 'producer', 'source', 'arithmetic',
+                'epistemic_status', 'subset_definition')
+    _keys(receipt, (*metadata, 'datasets', 'base_lcdm_capacity_display'), 'receipt')
+    _keys(receipt['datasets'], set(PINS)-{'base_lcdm_capacity_display'}, 'datasets')
+    context = {key: receipt[key] for key in metadata}
+    context['datasets'] = {}
+    for name, dataset in receipt['datasets'].items():
+        _keys(dataset, ('source_directory', 'chains', 'combined',
+                       'chain_range_for_monotone_subset_mass', 'rare_tail_resolution',
+                       'fixed_capacity_point_gaussian_diagnostic'), name)
+        tail = dataset['rare_tail_resolution']
+        _keys(tail, ('classification', 'combined_raw_tail_rows', 'warning'), name+'/tail')
+        diagnostic = dataset['fixed_capacity_point_gaussian_diagnostic']
+        _keys(diagnostic, ('classification', 'status', 'mahalanobis_squared',
+                          'chi2_2dof_survival', 'log_chi2_2dof_survival',
+                          'two_sided_normal_sigma_equivalent'), name+'/diagnostic')
+        context['datasets'][name] = {
+            'source_directory': dataset['source_directory'],
+            'tail_warning': tail['warning'],
+            'diagnostic_classification': diagnostic['classification'],
+        }
+    base = receipt['base_lcdm_capacity_display']
+    _keys(base, ('source_directory', 'model_scope', 'sample_level_formula',
+                 'constants', 'chains', 'combined', 'classification'), 'base LCDM')
+    context['base_lcdm_capacity_display'] = {key: value for key, value in base.items()
+                                          if key not in ('chains', 'combined')}
+    return context
+
+
+def _unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f'duplicate JSON key: {key}')
+        result[key] = value
+    return result
+
+
+def _reject_constant(value):
+    raise ValueError(f'non-finite JSON constant: {value}')
+
+
 def compare(actual, expected, path='summary'):
     """No absolute floor; exact counts/zeros/shape, relative 1e-12 otherwise."""
     if isinstance(expected, dict):
@@ -122,27 +178,10 @@ def control(rows, base=False):
 
 
 def replay(receipt, data_dir):
-    if receipt['schema'] != 'oph.official_desi_dr2_fz13_retrospective.v3':
-        raise ValueError('unexpected receipt schema')
-    if set(receipt['datasets']) != set(PINS)-{'base_lcdm_capacity_display'}:
-        raise ValueError('expected all four CPL datasets')
-    for key, value in {
-        'retrospective_seen_data': True, 'frozen_prediction_score': False,
-        'oph_confirmation': False, 'direct_capacity_measurement': False,
-        'conditional_model_test_only': True,
-    }.items():
-        if receipt['epistemic_status'][key] is not value:
-            raise ValueError('epistemic status mismatch: '+key)
-    constants = receipt['base_lcdm_capacity_display']['constants']
-    for key, value in {
-        'speed_of_light_m_s_exact': 299792458., 'Mpc_in_m': 3.0856775814913673e22,
-        'Planck_length_m_CODATA_2022_central': 1.616255e-35,
-        'Planck_length_standard_uncertainty_m': 0.000018e-35,
-        'Planck_length_source': 'https://physics.nist.gov/cgi-bin/cuu/Value?plkl',
-        'constants_uncertainty_propagated': False,
-    }.items():
-        if type(constants[key]) is not type(value) or constants[key] != value:
-            raise ValueError('declared SI conversion mismatch: '+key)
+    context = json.dumps(scientific_context(receipt), sort_keys=True,
+                         separators=(',', ':'), ensure_ascii=True, allow_nan=False).encode('utf-8')
+    if hashlib.sha256(context).hexdigest() != CONTRACT_SHA256:
+        raise ValueError('scientific context differs from the reviewed v3 contract')
     fields = 0
     with localcontext() as ctx:
         ctx.prec = 160
@@ -153,10 +192,10 @@ def replay(receipt, data_dir):
                 raise ValueError(f'{name}: expected four chains')
             combined = []
             for index, (chain, (filename, expected_hash)) in enumerate(zip(dataset['chains'], pins), 1):
-                if chain['file'] != filename or chain['sha256'] != expected_hash or chain['chain'] != index:
+                if chain['file'] != filename or chain['sha256'] != expected_hash or type(chain['chain']) is not int or chain['chain'] != index:
                     raise ValueError(f'{name}: source pin mismatch')
                 payload = (data_dir/filename).read_bytes()
-                if hashlib.sha256(payload).hexdigest() != expected_hash or chain['bytes'] != len(payload):
+                if hashlib.sha256(payload).hexdigest() != expected_hash or type(chain['bytes']) is not int or chain['bytes'] != len(payload):
                     raise ValueError(f'{filename}: source bytes mismatch')
                 lines = payload.decode('utf-8').splitlines()
                 header = lines[0].lstrip('#').split()
@@ -178,8 +217,6 @@ def replay(receipt, data_dir):
                 slope = cov[0][1]/cov[0][0]
                 q = d0*d0/cov[0][0] + (da-slope*d0)**2/(cov[1][1]-slope*cov[0][1])
                 diagnostic = dataset['fixed_capacity_point_gaussian_diagnostic']
-                if diagnostic['classification'] != 'Gaussian moment summary; not official delta-chi2 or evidence':
-                    raise ValueError(name+': diagnostic classification mismatch')
                 if diagnostic['status'] != 'available':
                     raise ValueError(name+': expected available diagnostic on these official chains')
                 for key, value in [('mahalanobis_squared',q), ('log_chi2_2dof_survival',-q/2),
@@ -200,7 +237,7 @@ def replay(receipt, data_dir):
                 tail = dataset['rare_tail_resolution']
                 classification = ('resolved_in_all_four_chains' if all(c['raw_rows_in_monotone_subset'] > 0
                                   for c in dataset['chains']) else 'at_least_one_chain_has_no_raw_tail_row')
-                if tail['classification'] != classification or tail['combined_raw_tail_rows'] != expected['raw_rows_in_monotone_subset']:
+                if tail['classification'] != classification or type(tail['combined_raw_tail_rows']) is not int or tail['combined_raw_tail_rows'] != expected['raw_rows_in_monotone_subset']:
                     raise ValueError(name+': rare-tail classification mismatch')
     return fields
 
@@ -210,7 +247,8 @@ def main():
     parser.add_argument('--data-dir', type=Path, required=True)
     parser.add_argument('--receipt', type=Path, default=RECEIPT)
     args = parser.parse_args()
-    receipt = json.loads(args.receipt.read_text(encoding='utf-8'))
+    receipt = json.loads(args.receipt.read_text(encoding='utf-8'),
+                         object_pairs_hook=_unique_object, parse_constant=_reject_constant)
     fields = replay(receipt, args.data_dir)
     print(f'PASS: 20 pinned chains, 25 summaries ({fields} top-level fields), and four Gaussian diagnostics')
 
