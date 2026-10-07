@@ -2,12 +2,13 @@
 
 ## Source-contract verifier
 
-`verify_collar_gap_certificate.py` checks the finite source-type contract used by the
-issue-306 theorem. It uses exact rational arithmetic. A valid certificate must include every
-field in the collar source signature, positive rate lower bounds, a closed refinement-transition
-table, and exact conditional-probability rows whose total-variation influences have common upper
-bound strictly below one. The reported analytic
-floor is
+`verify_collar_gap_certificate.py` checks the declared finite row arithmetic used
+by the issue-306 theorem witness. Both certificate interfaces use
+`collar_gap_contract.py` for exact rational accounting. They require source
+descriptions, positive declared rate bounds, refinement targets inside the
+declared table, and normalized conditional-probability pairs with exact
+total-variation distances below the supplied bounds. Every influence and its
+integer multiplicity contributes to the row sum. The reported expression is
 
 ```text
 gap_lower = c_floor * (1 - eta_upper).
@@ -21,15 +22,21 @@ python3 code/yang_mills/verify_collar_gap_certificate.py \
 python3 -m pytest code/yang_mills/test_collar_gap_certificate.py
 ```
 
-The bundled JSON is deliberately marked `theorem_contract_witness`. It verifies the checker and
-the explicit constant `3/8`; it is not evidence that the OPH compact-gauge regulator tower has
-those kernels or influence bounds. A Clay-facing receipt must be generated from the actual finite
-transfer matrices, use `scope: physical_source_receipt`, and independently pass the continuum,
-OS/noncollapse, and transfer/intertwiner gates named in the papers.
+The bundled JSON is marked `theorem_contract_witness`. It tests the arithmetic
+and the explicit constant `3/8`. Source descriptions, rate bounds and the
+completeness of conditional rows remain supplied premises: comparing one pair
+does not establish that it maximizes influence over a source kernel. The
+checker does not reconstruct a Gibbs measure or prove the rate, refinement or
+continuum hypotheses of the paper's theorem.
+
+Both interfaces reject `scope: physical_source_receipt`, including fixtures with
+asserted provenance or continuum fields. Neither implements the source,
+transfer, OS/noncollapse or continuum verifications needed for that status.
+Accepted outputs have `physical_clay_receipt: false`.
 
 ## Finite calibration fixture
 
-`finite_collar_gap_certificate.py` independently checks a finite Ising
+`finite_collar_gap_certificate.py` expands and checks a finite Ising
 calibration family. Its exact rational table has 244 active types,
 `c_floor = 1`, `eta_upper = 1/2`, and `gap_lower = 1/2`. It is deliberately
 not a physical compact-simple-gauge Yang--Mills receipt: the physical
@@ -45,6 +52,34 @@ python3 code/yang_mills/finite_collar_gap_certificate.py verify \
   --receipt code/yang_mills/receipts/atomic_4d_ising_calibration.receipt.json
 python3 -m pytest code/yang_mills/tests/test_finite_collar_gap_certificate.py
 ```
+
+A compact family repeats the complete template with self-targets and independent
+copies of its data. Supply either this family or an explicit table. A template
+must omit generated IDs and targets; it cannot override them. Boolean or
+fractional multiplicities, malformed source fields, and duplicate JSON keys
+are rejected. Receipt replay checks every field and its JSON type, including
+the full manifest and expanded-table hashes.
+
+The retained audit under [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033)
+reproduces a lost-influence defect at `de60560b`: compact bounds `3/4` and `1/4`
+were reduced to `1/4`, so a noncontractive table returned a positive gap.
+The witness interface also truncated fractional multiplicities and both
+interfaces permitted unsupported physical promotion. Independent controls
+maximize probability differences over all events, check heterogeneous tables,
+and construct a two-spin heat-bath operator with a complete exact eigenbasis.
+They verify attained gap bounds at both signs of the correlation, within
+`2^-100` of the contractivity boundary, and at rate scales beyond binary64.
+
+```bash
+python3 -m pytest -q code/yang_mills/tests/test_collar_certificate_accounting.py \
+  code/yang_mills/tests/test_finite_collar_gap_certificate.py \
+  code/yang_mills/test_collar_gap_certificate.py -W error
+```
+
+The 244-type receipt reproduces byte-for-byte; its `1/2` floor and the witness's
+`3/8` floor are unchanged. The finite Z2 transfer diagnostic, frozen evidence,
+paper and book claims, and registry payloads are unchanged. These corrections
+establish no physical mass gap.
 
 ## Finite Z2 transfer-receipt diagnostic
 
