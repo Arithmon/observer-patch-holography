@@ -440,3 +440,157 @@ def test_full_report_retains_circuit_rounding_and_count_replay(monkeypatch, tmp_
     for name, settings in report["tomography_counts_by_state"].items():
         rho, _ = stage1.reconstruct_density_matrix(settings, 3)
         assert stage1.analyze_state(rho)["cmi_bits"] == report["reconstructed_analysis"][name]["cmi_bits"]
+
+
+def _review_counts():
+    # Review #1052: independent A,C are uniform; B has Bloch vector (.6,.8,0).
+    # All 27 settings have 40 shots. No counts were filtered for recovery.
+    return {b: {f"{k:03b}": {"X": (8, 2), "Y": (9, 1), "Z": (5, 5)}[b[1]][(k >> 1) & 1]
+                for k in range(8)} for b in stage1.measurement_bases(3)}
+
+
+def _assert_unresolved_report(row):
+    assert row["petz_status"] == "unresolved_support"
+    assert row["petz_unavailable_reason"] == "reference support is numerically unresolved"
+    for key in ("petz_fidelity", "petz_trace_distance", "petz_observable_mismatch"):
+        assert row[key] is None
+    assert row["cmi_bits"] == pytest.approx(0, abs=2e-13)
+    assert row["fawzi_renner_fidelity_lower_bound"] == pytest.approx(1, abs=2e-13)
+    assert row["fawzi_renner_bound_scope"] == "optimal_recovery_over_B_to_BC_channels"
+
+
+def test_review_complete_counts_preserve_cmi_with_unresolved_recovery():
+    import sympy as sp
+    rho, _ = stage1.reconstruct_density_matrix(_review_counts(), 3)
+    # Certify the actual returned entries independently of the producer's Schur test.
+    exact = sp.Matrix([[sp.Rational(float(z.real))+sp.I*sp.Rational(float(z.imag))
+                        for z in row] for row in rho])
+    assert all((-1)**k*x >= 0 for k, x in enumerate(exact.charpoly().all_coeffs()))
+    b = np.array([[.5, .3-.4j], [.3+.4j, .5]])
+    np.testing.assert_allclose(rho, np.kron(np.kron(np.eye(2)/2, b), np.eye(2)/2),
+                               atol=2e-16, rtol=0)
+    assert stage1.conditional_mutual_information(rho) == pytest.approx(0, abs=2e-13)
+    with pytest.raises(ValueError, match="support is numerically unresolved"):
+        stage1.petz_recovery(rho)
+    _assert_unresolved_report(stage1.analyze_state(rho))
+
+
+def test_review_seed_one_reference_retains_valid_information(monkeypatch):
+    # Unmodified output of Statevector.from_instruction(random_circuit(
+    # 3, depth=3, max_operands=2, measure=False, seed=1)), Qiskit 2.5.2.
+    psi = np.array([
+        .012583908990800391-.08544448948589424j,
+        -.06695570762093886+.009860958104918296j,
+        .08544448948589424+.012583908990800391j,
+        -.009860958104918296-.06695570762093886j,
+        -.54396834895709-.08011339570683529j,
+        .06277817483306489+.4262625471456357j,
+        .08011339570683529-.54396834895709j,
+        -.4262625471456357+.06277817483306489j,
+    ])
+    circuit = _stub_circuit_statevector(monkeypatch, psi)
+    rho = stage1.circuit_density_q0_order(circuit)
+    with pytest.raises(ValueError, match="support is numerically unresolved"):
+        stage1.petz_recovery(rho)
+    _assert_unresolved_report(stage1.analyze_state(rho))
+
+
+def _review_main_fixture(monkeypatch, tmp_path, *, sdk=False, unresolved_counts=True):
+    import json
+    import sys
+    from types import ModuleType, SimpleNamespace
+    if sdk:
+        pytest.importorskip("qiskit")
+    else:
+        psi = np.zeros(8)
+        psi[0] = 1
+        _stub_circuit_statevector(monkeypatch, psi)
+        def circuit(name):
+            return SimpleNamespace(name=name, num_qubits=3, amplitudes=psi)
+        monkeypatch.setattr(stage1, "build_structured_family", lambda theta:
+                            circuit(f"structured_theta_{theta:.2f}"))
+        monkeypatch.setattr(stage1, "build_ghz", lambda: circuit("ghz_control"))
+        monkeypatch.setattr(stage1, "build_random_control", lambda seed, depth:
+                            circuit(f"random_seed_{seed}"))
+        monkeypatch.setattr(stage1, "add_measurement_basis", lambda c, b:
+                            SimpleNamespace(name=f"{c.name}__{b}"))
+    # Use actual CLI parsing, including the maintainer's --random-seeds 1.
+    monkeypatch.setattr(sys, "argv", [str(MODULE_PATH), "--local-testing", "--shots", "40",
+                                      "--random-seeds", "1", "--outdir", str(tmp_path)])
+    settings = _review_counts() if unresolved_counts else {
+        b: {f"{k:03b}": 5 for k in range(8)} for b in stage1.measurement_bases(3)}
+    acquired = {}
+    def sampler(**kwargs):
+        acquired.update(counts_by_name={c.name: settings[c.name.rsplit("__", 1)[1]]
+                                       for c in kwargs["circuits"]},
+                        run_metadata={"mode": "local", "fixture": True, "shots": 40})
+        return acquired, "local_fixture"
+    monkeypatch.setattr(stage1, "run_sampler", sampler)
+    common = ModuleType("ibm_runtime_common")
+    common.ensure_dir = lambda path: path
+    common.write_json = lambda path, data: path.write_text(json.dumps(data, allow_nan=False))
+    monkeypatch.setitem(sys.modules, "ibm_runtime_common", common)
+    return acquired
+
+
+@pytest.mark.parametrize("sdk,unresolved_counts", [(False, True), (True, True), (True, False)])
+def test_review_main_retains_evidence_and_partial_results(monkeypatch, tmp_path, sdk, unresolved_counts):
+    import json
+    acquired = _review_main_fixture(monkeypatch, tmp_path, sdk=sdk,
+                                   unresolved_counts=unresolved_counts)
+    assert stage1.main() == 0
+    raw = json.loads((tmp_path/"acquired_counts.json").read_text())
+    report = json.loads((tmp_path/"summary.json").read_text())
+    assert raw["counts_by_name"] == acquired["counts_by_name"]
+    assert raw["run_metadata"] == acquired["run_metadata"]
+    assert raw["backend"] == "local_fixture"
+    assert raw["random_seeds"] == [1]
+    assert len(raw["counts_by_name"]) == 135
+    assert raw["catalog"] == report["catalog"]
+    assert raw["timestamp_utc"] == report["timestamp_utc"]
+    for name, mapping in raw["measured_index"].items():
+        settings = {b: raw["counts_by_name"][c] for b, c in mapping.items()}
+        assert settings == report["tomography_counts_by_state"][name]
+        rho, _, diagnostic = stage1.reconstruct_density_matrix(settings, 3, return_diagnostics=True)
+        row = report["reconstructed_analysis"][name]
+        assert row["tomography"] == diagnostic
+        assert all(row[k] == v for k, v in stage1.analyze_state(rho).items())
+        if unresolved_counts:
+            _assert_unresolved_report(row)
+        else:
+            assert row["petz_status"] == "available"
+            assert row["petz_unavailable_reason"] is None
+            assert row["petz_fidelity"] == pytest.approx(1, abs=2e-14)
+    if sdk:
+        _assert_unresolved_report(report["exact_analysis"]["random_seed_1"])
+        assert report["exact_analysis"]["random_seed_1"]["circuit_state"][
+            "circuit_simulation_error_certified"] is False
+    checks = report["fingerprint_checks"]
+    assert checks["recovery_improves_as_cmi_drops"] is (None if unresolved_counts else True)
+    assert checks["structured_theta_0.00_lt_random_control"] is False
+    assert checks["structured_theta_0.00_lt_ghz"] is False
+    assert json.loads((tmp_path/"summary_pretty.txt").read_text()) == report
+
+
+@pytest.mark.parametrize("failing_operation", ["analyze_state", "reconstruct_density_matrix"])
+def test_review_counts_are_saved_before_analysis_errors(monkeypatch, tmp_path, failing_operation):
+    import json
+    acquired = _review_main_fixture(monkeypatch, tmp_path)
+    def fail(*args, **kwargs):
+        raw = json.loads((tmp_path/"acquired_counts.json").read_text())
+        assert raw["counts_by_name"] == acquired["counts_by_name"]
+        assert raw["run_metadata"] == acquired["run_metadata"]
+        assert len(raw["measured_index"]) == 5
+        raise ValueError("unexpected analysis failure")
+    monkeypatch.setattr(stage1, failing_operation, fail)
+    with pytest.raises(ValueError, match="unexpected analysis failure"):
+        stage1.main()
+    assert not (tmp_path/"summary.json").exists()
+
+
+def test_review_does_not_classify_unrelated_errors_by_message(monkeypatch):
+    def fail(*args):
+        raise ValueError("reference support is numerically unresolved")
+    monkeypatch.setattr(stage1, "petz_recovery", fail)
+    with pytest.raises(ValueError, match="support is numerically unresolved"):
+        stage1.analyze_state(np.eye(8)/8)
