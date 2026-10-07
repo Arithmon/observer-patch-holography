@@ -109,6 +109,15 @@ Boolean chain identities are refused. The verifier still executes without
 importing the producer. Changes to the declared context require reviewing and
 updating this explicit binding; passing arithmetic alone cannot authorize them.
 
+The manifest URL is mutable. On 2026-10-07 it returned 226,892 bytes with SHA-256
+`ec6614202355892f0d8b4c70934e73e215527d100faebc0ca0e5995d0b444910`
+(HTTP Last-Modified: 2026-10-02); all twenty retained chain paths and hashes
+agree with that fetched manifest. The receipt preserves the historical
+manifest pin `df78872aa8b2d3473a9e8de78f498180efd7cbcbeb18211ce4787fac52067ee5`
+recorded by the August producer. It is not the hash of today's URL contents.
+Offline replay checks the retained chain identities directly; it neither
+substitutes newer data nor claims to recover the earlier full manifest bytes.
+
 The accounting audit reproduced erased narrow spreads, accepted negative
 CPL endpoint offsets, lost excluded tails and quantile atoms, weight-scaling
 overflow, and crashes on valid Gaussian tails. The original 30 controls had

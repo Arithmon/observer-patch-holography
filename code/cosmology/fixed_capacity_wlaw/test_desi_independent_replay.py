@@ -188,3 +188,23 @@ def test_public_cli_refuses_nonstandard_json_numbers(packet, monkeypatch, consta
     monkeypatch.setattr(sys, 'argv', ['verify', '--data-dir', str(data_dir), '--receipt', str(path)])
     with pytest.raises(ValueError, match='non-finite JSON constant'):
         verifier.main()
+
+
+
+def test_self_consistent_replacement_chain_cannot_replace_trusted_source_identity(packet, monkeypatch):
+    receipt, data_dir = packet
+    name = 'DESI_DR2_BAO+CMB'
+    chain = receipt['datasets'][name]['chains'][0]
+    path = data_dir / chain['file']
+    path.write_text(path.read_text().replace('-2', '-3'))
+    new_hash = mod.sha256(path)
+    hashes = list(mod.DATASETS[name]['sha256']); hashes[0] = new_hash
+    monkeypatch.setitem(mod.DATASETS[name], 'sha256', hashes)
+    forged = json.loads(json.dumps(mod.build_receipt(data_dir), allow_nan=False))
+    with pytest.raises(ValueError, match='source pin mismatch'):
+        verifier.replay(forged, data_dir)
+    # This is consistent numerical evidence for a different input, not a bad
+    # moment calculation. Only changing the verifier's trusted source admits it.
+    changed_pins = list(verifier.PINS[name]); changed_pins[0] = (chain['file'], new_hash)
+    monkeypatch.setitem(verifier.PINS, name, changed_pins)
+    assert verifier.replay(forged, data_dir) > 250
