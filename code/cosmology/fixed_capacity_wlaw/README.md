@@ -65,9 +65,51 @@ python3 code/cosmology/fixed_capacity_wlaw/download_official_desi_dr2_chains.py 
 python3 code/cosmology/fixed_capacity_wlaw/official_desi_dr2_chain_audit.py \
   --data-dir /path/to/desi-dr2-chains \
   --output code/cosmology/fixed_capacity_wlaw/runtime/official_desi_dr2_fz13_retrospective.json
+python3 code/cosmology/fixed_capacity_wlaw/verify_official_desi_dr2_independent.py \
+  --data-dir /path/to/desi-dr2-chains
 python3 -m pytest -q \
-  code/cosmology/fixed_capacity_wlaw/test_official_desi_dr2_chain_audit.py
+  code/cosmology/fixed_capacity_wlaw code/cosmology/postdiction_ledger -W error
 ```
+
+The v3 receipt reads the published decimal columns exactly. Both posterior
+families use one rational weighted-moment accumulator and one chain parser.
+Means, population covariances, weight-concentration ESS, subset decisions and
+quantile thresholds are independent of row order and chain merge grouping.
+The base-LambdaCDM conversion uses the printed central SI decimal constants
+before taking moments; it does not square an already rounded tiny display.
+The CPL endpoint test is `w0 >= -1 and 3*(w0+1)+2*wa >= 0`, evaluated exactly.
+The excluded subset is counted before conversion to a displayed probability.
+
+Final roots use a private 90-digit numerical context. A nonzero binary64
+summary field must retain relative rounding accuracy of `1e-12`; otherwise
+the producer refuses that summary with a field-specific error. This is a
+numerical reporting criterion, not an interval certificate or a bound on
+posterior sampling error. Singular covariance leaves the valid chain summary
+intact and marks the optional two-dimensional Gaussian diagnostic unavailable.
+A positive Gaussian survival probability outside resolved binary64 range is
+`null`, with an explicit status and the log tail retained when representable.
+The normal quantile uses a small-displacement `expm1` calculation and, for
+larger displacements, SciPy's inverse log-CDF. The diagnostic uses the exact
+covariance, not the rounded covariance reconstructed from displayed fields.
+
+The independent verifier imports no producer. It pins all twenty input files
+separately, recomputes all 25 chain/combined summaries with centered Decimal
+moments, and checks the four Gaussian diagnostics through elimination and an
+independent `erfc` evaluation. It requires the full default receipt. CI runs
+small complete fixtures and corrupt-evidence controls on Linux and Windows;
+the public-chain replay uses the explicit download command above.
+
+The accounting audit reproduced erased narrow spreads, accepted negative
+CPL endpoint offsets, lost excluded tails and quantile atoms, weight-scaling
+overflow, and crashes on valid Gaussian tails. The original 30 controls had
+22 failures on `de60560b`. Replaying the 416,469 published rows changes 188
+numeric fields by at most `4.10e-10` relative; all subset masses, tail counts
+and source hashes are unchanged. The live postdiction ledger is canonically
+regenerated with the new parent binding and three refreshed citation anchors
+whose formulas/statements remain in current main. Its verdicts and displayed
+comparisons are unchanged. Papers, claim payloads, frozen registrations and
+the pinned mandatory runner are unchanged. These repairs fall under
+[#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033).
 
 The output is a retrospective, model- and prior-dependent posterior diagnostic.
 The rare monotone-subset fractions are reported with per-chain tail counts and

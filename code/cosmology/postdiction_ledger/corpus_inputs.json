@@ -27,7 +27,7 @@
       "expression": "(1 + sqrt(5))/2",
       "symbol": "varphi",
       "source_file": "flagship/from_observer_consensus_to_standard_physics.tex",
-      "anchor_text": "$\\varphi=(1+\\sqrt5)/2$ is the golden ratio"
+      "anchor_text": "$\\varphi=(1+\\sqrt5)/2$"
     },
     "euler_number": {
       "kind": "expression",
@@ -125,7 +125,7 @@
       "kind": "statement",
       "statement": "Lambda = 3 pi / (N l_P^2): the record capacity read as the de Sitter horizon entropy in nats",
       "source_file": "flagship/from_observer_consensus_to_standard_physics.tex",
-      "anchor_text": "\\Lambda=\\frac{3\\pi}{N\\,\\ell_P^{2}}"
+      "anchor_text": "N=\\frac{3\\pi}{\\Lambda\\,\\ell_P^{2}}"
     },
     "flagship_lambda_planck_central_display": {
       "kind": "display",
@@ -199,7 +199,7 @@
       "kind": "statement",
       "statement": "FZ-14 integer-k ringdown comb is registered pending owner freeze; comparison access is forbidden until the contract is anchored",
       "source_file": "docs/FROZEN_PREDICTION_LADDER.md",
-      "anchor_text": "| FZ-14 | Target-blind build-stage implementation of an imported integer-division Kerr comb continuation"
+      "anchor_text": "Target-blind build-stage implementation of an imported integer-division Kerr comb continuation, not a source-derived transition"
     }
   },
   "parent_receipts": {
@@ -224,8 +224,8 @@
     },
     "official_desi_dr2_fz13_retrospective": {
       "path": "code/cosmology/fixed_capacity_wlaw/runtime/official_desi_dr2_fz13_retrospective.json",
-      "sha256": "04ce69f561e790a0583f9d96cd4a4289163764110a463309a359d38da9d9cd4d",
-      "schema": "oph.official_desi_dr2_fz13_retrospective.v2",
+      "sha256": "52abfd4ca15424420b4b4c55160660648279de0bdd1b404a242c4b3dab4c1473",
+      "schema": "oph.official_desi_dr2_fz13_retrospective.v3",
       "fields_read": [
         "/datasets/*/combined/{w0_mean,w0_std,wa_mean,wa_std,w0_wa_covariance,w0_wa_correlation,posterior_mass_w_ge_minus_one_for_0_le_z_le_2,posterior_mass_w0_gt_minus_one,posterior_mass_wa_nonnegative}",
         "/datasets/*/fixed_capacity_point_gaussian_diagnostic/{mahalanobis_squared,chi2_2dof_survival,two_sided_normal_sigma_equivalent}",
