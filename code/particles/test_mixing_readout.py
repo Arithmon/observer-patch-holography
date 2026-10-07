@@ -84,7 +84,7 @@ def test_tiny_mixing_and_phase_are_not_floored(c, delta):
 
 
 @pytest.mark.parametrize('bad', [np.eye(2), np.ones((3, 3)), np.eye(3)*1.01,
-    rotations()[0]*1.01,
+    rotations()[0]*1.01, rotations()[0]*(1+1e-10),
     np.full((3, 3), np.nan), np.full((3, 3), np.inf), np.full((3, 3), 1e308),
     np.eye(3, dtype=bool), [[True, 0, 0], [0, 1, 0], [0, 0, 1]],
     np.ma.array(np.eye(3), mask=np.eye(3)), np.eye(3).astype(str)])
