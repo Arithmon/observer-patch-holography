@@ -1056,7 +1056,7 @@
     },
     {
       "claim_id": "OPH-GR-D4D-ENTROPY-BRIDGE",
-      "statement": "For rho_C = direct-sum_alpha p_alpha (rho_bulk,alpha tensor I_edge,alpha/d_alpha), the entropy split is S = S_bulk + S_edge with S_bulk = H(p) + sum_alpha p_alpha S(rho_bulk,alpha) and S_edge = sum_alpha p_alpha log d_alpha. The exact finite first law is delta S = 2pi delta<B> + delta<Z>; Z contains only the sectorwise log d_alpha term, so delta<Z> = delta S_edge and delta S_bulk = 2pi delta<B> for the full central-interface variation class, including moving sector probabilities. The changing stress channel is supplied by the exact MaxEnt multiplier identity dS/dt = lambda = 2pi, giving the Clausius balance delta S_edge = lambda dt - 2pi delta<B> on the coupled class; the generalized-entropy leading term and edge normalization are named branch interfaces. On the separately declared D10 local-extension branch, a_cell=P ell_star^2 and ellbar_shared=P/4 give the exact pixel cancellation G_geom/ell_star^2=1. This is a natural-unit identity, not an SI prediction; the source-emitted operational-clock packet is unresolved.",
+      "statement": "For rho_C = direct-sum_alpha p_alpha (rho_bulk,alpha tensor I_edge,alpha/d_alpha), the entropy split is S = S_bulk + S_edge with S_bulk = H(p) + sum_alpha p_alpha S(rho_bulk,alpha) and S_edge = sum_alpha p_alpha log d_alpha. At a faithful reference sigma, the tangent first law is dS = 2pi d<B> + d<Z>. For finite changes at fixed K_sigma = 2pi B + Z = -log sigma, Delta S = 2pi Delta<B> + Delta<Z> - D(rho||sigma). On the declared Z = sum_alpha log(d_alpha) P_alpha, d<Z> = dS_edge and dS_bulk = 2pi d<B>, including moving sector probabilities. Testing every sector transfer fixes Z only up to a common scalar. Along a supplied nonconstant one-constraint Gibbs family, the analytic multiplier identity is dS/dt = lambda; identifying lambda with 2pi and t with physical energy is a separate branch normalization, not a numerical result. On that coupled tangent class, dS_edge = lambda dt - 2pi d<B>; the generalized-entropy leading term and edge normalization are named branch interfaces. On the separately declared D10 local-extension branch, a_cell=P ell_star^2 and ellbar_shared=P/4 give the exact pixel cancellation G_geom/ell_star^2=1. This is a natural-unit identity, not an SI prediction; the source-emitted operational-clock packet is unresolved.",
       "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
       "tier": "exact_finite_theorem_plus_conditional_bridge",
       "assumptions": [
@@ -1065,19 +1065,24 @@
         "edge_normalization_log_d"
       ],
       "imported_results": [
-        "finite_first_law_delta_S_equals_K_pairing",
+        "tangent_first_law_and_finite_relative_entropy_remainder",
         "maxent_envelope_identity"
       ],
-      "oph_specific_delta": "Exact machine-verified split identities handle edge terms and changing channels, with explicit countermodels for wrong coefficients and wrong edge normalizations.",
+      "oph_specific_delta": "Finite numerical diagnostics separate tangent response from the relative-entropy remainder, test independently supplied generators on all normalized tangents, and expose wrong relative central normalizations with explicit sector-transfer witnesses. Independent high-precision controls accompany the algebraic identities; these are not formal or physical-calibration certificates.",
       "novelty_type": "first_law_repair_with_countermodels",
       "evidence": [
         "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
         "code/geometry/einstein_closure_receipts.py",
+        "code/geometry/test_first_law_audit.py",
+        "code/quantum_information/entropy_response.py",
+        "code/quantum_information/test_entropy_response.py",
+        "code/quantum_information/test_entropy_response_audit.py",
+        "code/geometry/ENTROPY_FIRST_LAW_AUDIT.md",
         "code/particles/calibration/derive_d10_gravity_shared_edge_entropy_bridge.py",
         "code/particles/runs/calibration/d10_gravity_shared_edge_entropy_bridge.json",
         "code/particles/runs/clock/clock_source_energy_closure_audit.json"
       ],
-      "falsifier": "An explicit direct-sum block state violates S = S_bulk + S_edge, Z carries a sector-probability term, delta S_bulk differs from 2pi delta<B> on the declared central-interface class, or the multiplier identity fails along a MaxEnt family.",
+      "falsifier": "An explicit direct-sum block state violates the entropy split, the finite relative-entropy balance fails, a non-scalar generator mismatch has zero all-tangent defect, a wrong relative central normalization passes all sector transfers, or the analytic slope fails for a resolved nonconstant Gibbs family.",
       "scope_if_false": "The entropy bridge and its generalized-entropy interface support fail.",
       "status": "proved_finite_plus_receipt_branch",
       "claim_class": "conditional_implication",

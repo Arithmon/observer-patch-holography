@@ -102,33 +102,33 @@ def test_first_law_and_boxed_split_exact_on_declared_normalization():
     r = first_law_receipt()
     assert r["base_entropy_split_defect"] < 1e-12
     assert r["varied_entropy_split_defect"] < 1e-12
-    assert r["first_law_defect"] < 1e-3            # O(eps) second-order remainder
-    assert r["edge_identification_defect"] < 1e-3  # delta<Z> = delta S_edge
-    assert r["split_identity_defect"] < 1e-3       # delta S = 2pi d<B> + dS_edge
-    assert r["bulk_identity_defect"] < 1e-3        # dS_bulk = 2pi d<B>
+    assert r["first_law_defect"] < 1e-13           # tangent identity
+    assert r["edge_identification_defect"] < 1e-13  # delta<Z> = delta S_edge
+    assert r["split_identity_defect"] < 1e-13       # delta S = 2pi d<B> + dS_edge
+    assert r["bulk_identity_defect"] < 1e-13        # dS_bulk = 2pi d<B>
 
 
 def test_bulk_identity_includes_moving_sector_weights():
     # H(p) is in S_bulk and -log p_a is in B, so moving weights are covered.
     r = first_law_receipt(move_weights=True)
-    assert r["bulk_identity_defect"] < 1e-3
+    assert r["bulk_identity_defect"] < 1e-13
     assert r["predicted_bulk_defect"] < 1e-12
     # Fixed sector weights remain covered too.
     r0 = first_law_receipt(move_weights=False)
-    assert r0["bulk_identity_defect"] < 1e-3
+    assert r0["bulk_identity_defect"] < 1e-13
     assert r0["predicted_bulk_defect"] < 1e-12
 
 
 def test_mismatched_edge_normalization_breaks_edge_identification():
     wrong = [0.0, 0.0]  # z_alpha = 0 instead of log d_alpha
     r = first_law_receipt(z_weights=wrong)
-    # the first law itself still holds (fixed operators)...
-    assert r["first_law_defect"] < 1e-3
+    # The tangent first law still holds for the declared K=-log(rho0).
+    assert r["first_law_defect"] < 1e-13
     # ...but the edge identification fails by exactly the predicted defect
     assert r["predicted_edge_defect"] > 0.1
-    assert abs(r["edge_identification_defect"] - r["predicted_edge_defect"]) < 1e-2
+    assert abs(r["edge_identification_defect"] - r["predicted_edge_defect"]) < 1e-13
     # The same mismatch makes B differ from the declared bulk generator.
-    assert abs(r["bulk_identity_defect"] - r["predicted_bulk_defect"]) < 1e-2
+    assert abs(r["bulk_identity_defect"] - r["predicted_bulk_defect"]) < 1e-13
 
 
 # ---------------------------------------------------------------------------
