@@ -42,6 +42,8 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from particles.mixing import mixing_parameters as _pmns_parameters
+
 from particles.artifact_paths import portable_json_dumps
 DEFAULT_CERTIFICATE = ROOT / "particles" / "runs" / "neutrino" / "same_label_scalar_certificate.json"
 DEFAULT_COCYCLE = ROOT / "particles" / "runs" / "flavor" / "overlap_edge_transport_cocycle.json"
@@ -77,50 +79,6 @@ def _no_go_cap_eV2(a_gev: float, rho_gev: float) -> float:
     a_ev = a_gev * 1.0e9
     rho_ev = rho_gev * 1.0e9
     return 8.0 * a_ev * rho_ev + 4.0 * rho_ev * rho_ev
-
-
-def _pmns_parameters(unitary: np.ndarray) -> dict[str, float]:
-    s13 = abs(unitary[0, 2])
-    theta13 = math.asin(np.clip(s13, 0.0, 1.0))
-    c13 = math.cos(theta13)
-
-    s12 = abs(unitary[0, 1]) / max(c13, 1.0e-30)
-    s12 = float(np.clip(s12, 0.0, 1.0))
-    theta12 = math.asin(s12)
-
-    s23 = abs(unitary[1, 2]) / max(c13, 1.0e-30)
-    s23 = float(np.clip(s23, 0.0, 1.0))
-    theta23 = math.asin(s23)
-
-    jarlskog = float(np.imag(unitary[0, 0] * unitary[1, 1] * np.conjugate(unitary[0, 1]) * np.conjugate(unitary[1, 0])))
-
-    c12 = math.cos(theta12)
-    c23 = math.cos(theta23)
-    denom = 2.0 * s12 * c12 * s23 * c23 * s13
-    if abs(denom) <= 1.0e-30:
-        delta = 0.0
-    else:
-        cos_delta = (
-            (s12 * s23) ** 2 + (c12 * c23 * s13) ** 2 - abs(unitary[2, 0]) ** 2
-        ) / denom
-        cos_delta = float(np.clip(cos_delta, -1.0, 1.0))
-        sin_delta = 0.0
-        den_j = c12 * s12 * c23 * s23 * (c13**2) * s13
-        if abs(den_j) > 1.0e-30:
-            sin_delta = float(np.clip(jarlskog / den_j, -1.0, 1.0))
-        delta = math.atan2(sin_delta, cos_delta) % (2.0 * math.pi)
-
-    return {
-        "theta12_rad": float(theta12),
-        "theta23_rad": float(theta23),
-        "theta13_rad": float(theta13),
-        "delta_rad": float(delta),
-        "theta12_deg": math.degrees(theta12),
-        "theta23_deg": math.degrees(theta23),
-        "theta13_deg": math.degrees(theta13),
-        "delta_deg": math.degrees(delta),
-        "J": jarlskog,
-    }
 
 
 def _within_interval(value: float, interval: tuple[float, float]) -> bool:

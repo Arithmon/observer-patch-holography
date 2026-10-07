@@ -12,7 +12,7 @@ reference representative.
 from __future__ import annotations
 
 import json
-import math
+import sys
 from pathlib import Path
 from typing import Any, Sequence
 
@@ -28,6 +28,10 @@ from sigma_ud_orbit_provider_interface import (
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from particles.mixing import ckm_parameters as _standard_ckm_parameters
 FORWARD_YUKAWAS_JSON = ROOT / "particles" / "runs" / "flavor" / "forward_yukawas.json"
 D12_AUDIT_JSON = ROOT / "particles" / "runs" / "flavor" / "quark_current_family_exactness_audit.json"
 D12_BRANCH_JSON = ROOT / "particles" / "runs" / "flavor" / "quark_d12_mass_branch_and_ckm_residual.json"
@@ -61,10 +65,6 @@ def _encode_complex_matrix(matrix: np.ndarray) -> dict[str, list[list[float]]]:
     }
 
 
-def _jarlskog(v_ckm: np.ndarray) -> float:
-    return float(np.imag(v_ckm[0, 0] * v_ckm[1, 1] * np.conjugate(v_ckm[0, 1]) * np.conjugate(v_ckm[1, 0])))
-
-
 def _left_diag(matrix: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     hermitian = matrix @ matrix.conjugate().T
     eig_vals, eig_vecs = np.linalg.eigh(hermitian)
@@ -88,32 +88,6 @@ def _apply_delta(delta_value: float, y_u: np.ndarray, y_d: np.ndarray, sigma_u: 
         "U_u_left": u_left,
         "U_d_left": d_left,
         "V_CKM": u_left.conjugate().T @ d_left,
-    }
-
-
-def _standard_ckm_parameters(v_ckm: np.ndarray) -> dict[str, float]:
-    s13 = min(1.0, max(0.0, float(abs(v_ckm[0, 2]))))
-    c13 = math.sqrt(max(0.0, 1.0 - s13 * s13))
-    s12 = min(1.0, max(0.0, float(abs(v_ckm[0, 1]) / c13)))
-    s23 = min(1.0, max(0.0, float(abs(v_ckm[1, 2]) / c13)))
-    theta_12 = math.asin(s12)
-    theta_23 = math.asin(s23)
-    theta_13 = math.asin(s13)
-    c12 = math.sqrt(max(0.0, 1.0 - s12 * s12))
-    c23 = math.sqrt(max(0.0, 1.0 - s23 * s23))
-    numerator = (s12 * s23) ** 2 + (c12 * c23 * s13) ** 2 - float(abs(v_ckm[2, 0])) ** 2
-    denominator = 2.0 * s12 * s23 * c12 * c23 * s13
-    cos_delta = 1.0 if denominator == 0.0 else max(-1.0, min(1.0, numerator / denominator))
-    delta = math.acos(cos_delta)
-    jarlskog = _jarlskog(v_ckm)
-    if jarlskog < 0.0:
-        delta = 2.0 * math.pi - delta
-    return {
-        "theta_12": theta_12,
-        "theta_23": theta_23,
-        "theta_13": theta_13,
-        "delta_ckm": delta,
-        "jarlskog": jarlskog,
     }
 
 
