@@ -52,6 +52,7 @@ def assert_partition_result(result, expected):
     ctx = mp.mp.clone()
     ctx.dps = 110
     for key, values in expected.items():
+        assert np.shape(result[key]) == np.shape(values), key+' complete mode shape'
         for actual, reference in zip(np.atleast_1d(result[key]), np.atleast_1d(values)):
             if reference == 0:
                 assert actual == 0, key
@@ -175,6 +176,30 @@ def test_thermal_evaluation_does_not_use_or_change_global_precision():
 ])
 def test_thermal_spectrum_does_not_coerce_invalid_or_lossy_data(spectrum):
     with pytest.raises(ValueError):
+        thermal_point(spectrum, 1., 0., 1.)
+
+
+@pytest.mark.parametrize('spectrum', [
+    [2**53+1, 1.], (1., 2**53+1),
+    [np.uint64(2**64-1), 1.], [np.int64(2**53+1), np.float32(1)],
+])
+def test_mixed_numeric_sequences_are_checked_before_numpy_coercion(spectrum):
+    # The homogeneous array would already contain the wrong integer. Checking
+    # that rounded array against a second float conversion misses the loss.
+    with pytest.raises(ValueError, match='loses information'):
+        thermal_point(spectrum, 1., 0., 1e8)
+
+
+def test_mixed_exact_inputs_remain_available():
+    inputs = ([2**53, 1.], (np.uint64(2**53), np.float32(1)))
+    for spectrum in inputs:
+        result = thermal_point(spectrum, 1., 0., 1e8)
+        assert_partition_result(result, partition_control([float(x) for x in spectrum], 1., 0., 1e8))
+
+
+@pytest.mark.parametrize('spectrum', [[1., np.ma.masked], (np.ma.masked, 1.)])
+def test_missing_sequence_entries_are_refused_before_coercion(spectrum):
+    with pytest.raises(ValueError, match='masked'):
         thermal_point(spectrum, 1., 0., 1.)
 
 
