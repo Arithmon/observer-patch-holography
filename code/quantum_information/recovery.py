@@ -16,6 +16,10 @@ from .states import (
 )
 
 
+class UnresolvedPetzSupport(ValueError):
+    """The supplied reference cannot be support-inverted at this precision."""
+
+
 def validated_state(value):
     """Strict conversion followed by the shared finite-state validation."""
     return density_matrix(_numeric(value, "state"))
@@ -32,7 +36,7 @@ def _support_inverse(rho):
     kernel = vectors[:, values == 0]
     if (_unresolved_positive_spectrum(a, values)
             or (kernel.size and np.any(a @ kernel != 0))):
-        raise ValueError("reference support is numerically unresolved")
+        raise UnresolvedPetzSupport("reference support is numerically unresolved")
     inverse = np.zeros_like(values)
     positive = values > 0
     inverse[positive] = 1/np.sqrt(values[positive])

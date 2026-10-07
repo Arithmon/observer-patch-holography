@@ -18,7 +18,7 @@ if __package__ in (None, ""):
 from quantum_information.gibbs import _numeric
 from quantum_information.recovery import (
     matrix_inv_sqrt_psd, matrix_sqrt_psd, petz_recovery, state_fidelity,
-    trace_distance, validated_state,
+    trace_distance, validated_state, UnresolvedPetzSupport,
 )
 from quantum_information.positive_rounding import _is_exact_psd, round_positive_gram
 from quantum_information.states import (
@@ -348,20 +348,27 @@ def state_catalog(random_depth: int, random_seeds: list[int]) -> tuple[list[Quan
 
 
 def analyze_state(rho: np.ndarray) -> dict:
-    recovered = petz_recovery(rho)
+    """Retain valid information even when Petz support cannot be resolved."""
     cmi_bits = conditional_mutual_information(rho)
-    fidelity = state_fidelity(rho, recovered)
-    return {
+    result = {
         "cmi_bits": cmi_bits,
         "recovery_map": "unrotated_petz_with_reference_state_kernel_completion",
         "input_state_policy": "validated_without_normalization",
         "fidelity_convention": "squared_uhlmann",
-        "petz_fidelity": fidelity,
-        "petz_trace_distance": trace_distance(rho, recovered),
-        "petz_observable_mismatch": low_weight_observable_mismatch(rho, recovered),
         "fawzi_renner_fidelity_lower_bound": fawzi_renner_fidelity_lower_bound(cmi_bits),
         "fawzi_renner_bound_scope": "optimal_recovery_over_B_to_BC_channels",
     }
+    try:
+        recovered = petz_recovery(rho)
+    except UnresolvedPetzSupport as error:
+        result.update(petz_status="unresolved_support", petz_unavailable_reason=str(error),
+                      petz_fidelity=None, petz_trace_distance=None, petz_observable_mismatch=None)
+    else:
+        result.update(petz_status="available", petz_unavailable_reason=None,
+                      petz_fidelity=state_fidelity(rho, recovered),
+                      petz_trace_distance=trace_distance(rho, recovered),
+                      petz_observable_mismatch=low_weight_observable_mismatch(rho, recovered))
+    return result
 
 
 def run_sampler(
@@ -473,12 +480,6 @@ def main() -> int:
             measured_index[circuit.name][basis] = full.name
             measured.append(full)
 
-    exact_analysis = {}
-    for circuit in circuits:
-        rho, construction = circuit_density_q0_order(circuit, return_diagnostics=True)
-        exact_analysis[circuit.name] = analyze_state(rho)
-        exact_analysis[circuit.name]["circuit_state"] = construction
-
     sampler_output, resolved_backend = run_sampler(
         circuits=measured,
         mode=mode,
@@ -487,6 +488,33 @@ def main() -> int:
         credentials_file=args.credentials_file,
         backend_name=args.backend,
     )
+
+    run_context = {
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "experiment": "stage1_markov_fingerprint",
+        "mode": mode,
+        "backend": resolved_backend,
+        "shots": args.shots,
+        "transpile_seed": args.transpile_seed,
+        "random_depth": args.random_depth,
+        "random_seeds": args.random_seeds,
+        "catalog": catalog_meta,
+        "run_metadata": sampler_output["run_metadata"],
+    }
+    # Persist the returned evidence before regrouping counts or evaluating
+    # either reference or sampled states. Unexpected analysis errors still
+    # raise, but cannot erase the acquired data needed to replay the failure.
+    write_json(outdir / "acquired_counts.json", {
+        **run_context,
+        "measured_index": measured_index,
+        "counts_by_name": sampler_output["counts_by_name"],
+    })
+
+    exact_analysis = {}
+    for circuit in circuits:
+        rho, construction = circuit_density_q0_order(circuit, return_diagnostics=True)
+        exact_analysis[circuit.name] = analyze_state(rho)
+        exact_analysis[circuit.name]["circuit_state"] = construction
 
     counts_by_state = {}
     flat_counts = sampler_output["counts_by_name"]
@@ -507,16 +535,10 @@ def main() -> int:
             if label in expectations
         }
 
+    structured_fidelities = [reconstructed_analysis[f"structured_theta_{theta}"]["petz_fidelity"]
+                            for theta in ("0.00", "0.60", "1.00")]
     summary = {
-        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-        "experiment": "stage1_markov_fingerprint",
-        "mode": mode,
-        "backend": resolved_backend,
-        "shots": args.shots,
-        "transpile_seed": args.transpile_seed,
-        "random_depth": args.random_depth,
-        "catalog": catalog_meta,
-        "run_metadata": sampler_output["run_metadata"],
+        **run_context,
         "exact_analysis": exact_analysis,
         "reconstructed_analysis": reconstructed_analysis,
         "tomography_counts_by_state": counts_by_state,
@@ -530,9 +552,8 @@ def main() -> int:
             "structured_theta_0.00_lt_ghz": reconstructed_analysis["structured_theta_0.00"]["cmi_bits"]
             < reconstructed_analysis["ghz_control"]["cmi_bits"],
             "recovery_improves_as_cmi_drops": (
-                reconstructed_analysis["structured_theta_0.00"]["petz_fidelity"]
-                >= reconstructed_analysis["structured_theta_0.60"]["petz_fidelity"]
-                >= reconstructed_analysis["structured_theta_1.00"]["petz_fidelity"]
+                None if any(fidelity is None for fidelity in structured_fidelities)
+                else structured_fidelities[0] >= structured_fidelities[1] >= structured_fidelities[2]
             ),
         },
     }

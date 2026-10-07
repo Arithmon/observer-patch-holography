@@ -452,6 +452,10 @@ as evidence for OPH over standard quantum mechanics.
   The estimator certifies positivity of its returned entries; if ordinary
   reconstruction loses it, outward Gram rounding restores it with a reported
   numerical bound. That bound does not certify statistical uncertainty.
+  The runner saves `acquired_counts.json` with count mappings and run metadata
+  immediately after sampler return, before numerical analysis. Unresolved
+  Petz support leaves valid CMI available; recovery metrics and dependent
+  checks are explicitly `null`, with `petz_status` and a reason in each row.
 - `programs/generative_repair_kernel.py`
   Pure finite-matrix implementation of the record-gated Cayley repair kernel,
   the matched open-loop heat null, and the dimension-exponent diagnostic.

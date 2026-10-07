@@ -249,6 +249,45 @@ producer into the consumer, including optional SDK adapters and the actual
 command-line report. A successful tomography reconstruction test does not
 validate the separate circuit-reference constructor.
 
+### Unresolved recovery must not erase acquired evidence
+
+The maintainer's review of `d5e30c7c` found a separate reporting defect:
+strict support refusal aborted the run before any counts were saved. The
+complete 27-setting fixture assigns outcome `k` the count
+`{'X': (8,2), 'Y': (9,1), 'Z': (5,5)}[basis[1]][(k>>1)&1]`.
+Each setting has 40 shots. Reconstruction returns an exactly PSD state near
+`I_A/2 tensor rho_B tensor I_C/2`, with B Bloch vector `(0.6,0.8,0)` and
+CMI zero. Its roundoff-scale dense support remains unresolved for inversion.
+Qiskit 2.5.2's depth-three seed-1 reference independently reaches that same
+refusal. Neither result justifies removing positive spectral mass.
+
+The low-level inverse still refuses that support, now with the specific
+`UnresolvedPetzSupport` subclass of `ValueError`. `analyze_state` first
+computes and validates CMI, then handles only this recovery exception.
+The report retains CMI and the optimal-recovery bound, sets `petz_status`
+to `unresolved_support`, records the reason, and serializes fidelity,
+trace distance and observable mismatch as JSON `null`. Available recovery
+has status `available` and a null reason. The recovery-ordering check is
+null if any of its three required fidelities is unavailable; the two
+CMI comparisons remain evaluated. Unavailable is neither pass nor fail.
+Invalid states, invalid CMI and unrelated analysis errors still raise.
+
+Immediately after the sampler returns, before count regrouping or reference
+and tomography analysis, `acquired_counts.json` saves all returned counts,
+the state/basis-to-circuit mapping, catalog and run metadata. It can be
+replayed even if subsequent analysis raises. Successful runs also retain
+counts in `summary.json` as before. Circuit candidate CMI is necessarily
+computed before acquisition to select the random control; it does not
+require Petz inversion. This change neither submits a cloud job nor alters
+the numerical support, information or state-construction contracts.
+
+Seven failing report/evidence regressions were retained in `c1459805`
+before repair. Mandatory tests include the exact count fixture, the
+unmodified seed-1 numerical amplitudes, saved-count replay and forced
+post-acquisition errors. Two optional cases use actual Qiskit circuits and
+CLI parsing with `--random-seeds 1`, replacing only the sampler with a
+local count fixture. The fixtures test reporting, not hardware behavior.
+
 ## Numerical and downstream boundaries
 
 Strict numeric conversion rejects masked data, mixed Booleans and lossy
