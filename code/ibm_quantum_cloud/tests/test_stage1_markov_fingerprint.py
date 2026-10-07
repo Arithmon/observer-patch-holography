@@ -647,3 +647,32 @@ def test_review_support_exception_is_only_handled_for_recovery(monkeypatch):
     monkeypatch.setattr(stage1, "conditional_mutual_information", fail)
     with pytest.raises(UnresolvedPetzSupport, match="injected information failure"):
         stage1.analyze_state(np.eye(8)/8)
+
+
+@pytest.mark.parametrize("prior_file", ["acquired_counts.json", "summary.json", "summary_pretty.txt"])
+def test_review_existing_evidence_is_preserved_before_any_new_acquisition(monkeypatch, tmp_path, prior_file):
+    acquired = _review_main_fixture(monkeypatch, tmp_path)
+    previous = b"prior evidence must not be overwritten, even if incomplete"
+    (tmp_path/prior_file).write_bytes(previous)
+    with pytest.raises(FileExistsError, match="fresh --outdir"):
+        stage1.main()
+    assert acquired == {}
+    assert (tmp_path/prior_file).read_bytes() == previous
+    assert {p.name for p in tmp_path.iterdir()} == {prior_file}
+
+
+def test_review_rerun_cannot_pair_new_counts_with_an_old_success(monkeypatch, tmp_path):
+    _review_main_fixture(monkeypatch, tmp_path, unresolved_counts=False)
+    assert stage1.main() == 0
+    previous = {p.name: p.read_bytes() for p in tmp_path.iterdir()}
+    acquired = _review_main_fixture(monkeypatch, tmp_path, unresolved_counts=True)
+    original = stage1.run_sampler
+    def incomplete_sampler(**kwargs):
+        result, backend = original(**kwargs)
+        del result["counts_by_name"]["structured_theta_0.00__XYZ"]
+        return result, backend
+    monkeypatch.setattr(stage1, "run_sampler", incomplete_sampler)
+    with pytest.raises(FileExistsError, match="fresh --outdir"):
+        stage1.main()
+    assert acquired == {}
+    assert {p.name: p.read_bytes() for p in tmp_path.iterdir()} == previous
