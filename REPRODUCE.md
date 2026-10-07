@@ -48,6 +48,9 @@ large subtractions; a private mpmath context budgets extra precision for
 the remaining Bessel ratio. The two public observables share this evaluator.
 Masked, boolean, complex and nonfinite inputs are rejected. Integer,
 Fraction and NumPy real scalars retain their original values.
+NumPy integers and integer components inside a Fraction are converted
+to unbounded Python integers before rational arithmetic; wrapping a NumPy
+integer in Fraction alone can retain fixed-width overflow.
 
 Every returned nonzero scalar must retain relative `1e-12` accuracy when
 converted to binary64, or that readout explicitly refuses the range. This

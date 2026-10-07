@@ -144,8 +144,12 @@ def _rational(value):
             or not isinstance(value, (int, float, np.integer, np.floating, Q))):
         raise ValueError('finite real packet scalar required')
     try:
-        if isinstance(value, (int, np.integer, Q)):
-            return Q(value)
+        # Fraction can retain NumPy integer components and thereby their
+        # fixed-width overflow. Canonicalize before any rational operation.
+        if isinstance(value, (int, np.integer)):
+            return Q(int(value))
+        if isinstance(value, Q):
+            return Q(int(value.numerator), int(value.denominator))
         return Q(*value.as_integer_ratio())
     except (ValueError, OverflowError) as error:
         raise ValueError('finite real packet scalar required') from error

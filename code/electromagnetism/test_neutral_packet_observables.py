@@ -311,3 +311,40 @@ def test_representable_pointwise_mean_does_not_overflow_its_sum():
     mp = mpmath.mp.clone(); mp.dps = 90
     expected = float((2*mp.pi*mp.mpf(sigma)**2)**-14)
     assert packet.projected_half_density(q, q, q, sigma) == pytest.approx(expected, rel=2e-12, abs=0)
+
+
+@pytest.mark.parametrize('value', [
+    np.int8(3), np.uint8(255), np.int16(-300), np.uint16(65535),
+    np.int32(2**30), np.uint32(2**32-1), np.int64(-(2**63)),
+    np.int64(2**32), np.uint64(2**63+1),
+])
+def test_numpy_integer_coordinates_use_unbounded_rational_arithmetic(value):
+    q, p = [0.]*56, [0.]*56; q[30] = value
+    expected = perpendicular_integral(int(value), 0)
+    for key, actual in packet.overlap_parameters(q, p, 1).items():
+        assert actual == pytest.approx(float(expected[key]), rel=1e-12, abs=0)
+    assert packet.scalar_radius_moment(q, p, 1) == pytest.approx(float(expected['radius']), rel=1e-12, abs=0)
+
+
+@pytest.mark.parametrize('wrap_fraction', [False, True])
+@pytest.mark.parametrize('field', ['center', 'momentum', 'width', 'hbar'])
+def test_numpy_integer_parameters_and_fraction_components(field, wrap_fraction):
+    from fractions import Fraction as F
+    value = F(np.int64(3), np.int64(2)) if wrap_fraction else np.int64(3)
+    native = F(3,2) if wrap_fraction else 3
+    q, p, sigma, hbar = [0.]*56, [0.]*56, 1, 1
+    q[30], p[43] = 2, 1
+    if field == 'center': q[30] = value
+    elif field == 'momentum': p[43] = value
+    elif field == 'width': sigma = value
+    else: hbar = value
+    # Build the independent series from native Python integer components.
+    qq, pp, ss, hh = q.copy(), p.copy(), sigma, hbar
+    if field == 'center': qq[30] = native
+    elif field == 'momentum': pp[43] = native
+    elif field == 'width': ss = native
+    else: hh = native
+    expected = power_series_reference(qq, pp, ss, hh)
+    for key, actual in packet.overlap_parameters(q, p, sigma, hbar).items():
+        assert actual == pytest.approx(float(expected[key]), rel=1e-12, abs=0)
+    assert packet.scalar_radius_moment(q, p, sigma, hbar) == pytest.approx(float(expected['radius']), rel=1e-12, abs=0)
