@@ -43,6 +43,9 @@ def test_lock_is_fail_closed_hashed_and_immutable() -> None:
         assert source_dag["acyclic"] is True
         assert source_dag["target_audit"]["historical_target_exposure"] is True
         assert source_dag["source_closure_gate"]["passes"] is False
+        nodes = {node['id']: node for node in source_dag['nodes']}
+        for name in ('mixing_readout', 'mixing_numeric_validation', 'mixing_numeric_validation_dependencies'):
+            assert nodes[name]['sha256'] == _sha256(module.CODE_INPUTS[name])
         assert predictions["absolute_scale"]["absolute_mass_prediction_allowed"] is False
         assert adjudication["baseline"]["candidate_rejected_by_declared_3sigma_gate"] is True
         assert adjudication["baseline"]["stored_pmns_relabeling_rescue_found"] is False
