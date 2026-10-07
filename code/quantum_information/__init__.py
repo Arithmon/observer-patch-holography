@@ -17,3 +17,4 @@ from .states import (
     von_neumann_entropy,
 )
 from .gibbs import gibbs_sectors
+from .information import is_markov_exact

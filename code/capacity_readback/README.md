@@ -30,6 +30,10 @@ second physical packet or a cosmic selector.
 
 ## Canonical lane
 
+- [`CHECKPOINT_CHANNEL_AUDIT.md`](CHECKPOINT_CHANNEL_AUDIT.md) records the
+  exact channel contract, decoder-search correctness argument, independent
+  replay and exhaustive controls, and downstream receipt comparison for the
+  public-checkpoint numerical repair under issue #1033.
 - [`F_READBACK_SPEC.md`](F_READBACK_SPEC.md) is the Pro5 acceptance contract:
   complete terminal fiber, atom readouts, endogenous reachability, frozen
   publicness, global joint kernels, compound confusability graph, exact and
@@ -46,6 +50,9 @@ second physical packet or a cosmic selector.
   equivalent to Cartesian enumeration, but it model-counts the connected
   twelve-observer, twenty-four-atom source packet without exploring `24^12`
   assignments.
+- [`PUBLIC_RECORD_GLUING_AUDIT.md`](PUBLIC_RECORD_GLUING_AUDIT.md) records the
+  exact finite gluing repair, injective record identifiers, independent
+  completeness replay, and unchanged downstream source receipts under #1033.
 - [`test_correctable_public_record_capacity.py`](test_correctable_public_record_capacity.py)
   covers saturation, cyclic permutation, joint-coupling nonidentifiability,
   approximate capacity, ambiguous fibers, order countermodels, target taint,

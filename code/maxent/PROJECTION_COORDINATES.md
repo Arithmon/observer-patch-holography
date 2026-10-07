@@ -1,5 +1,11 @@
 # MaxEnt inference must not depend on observable coordinates
 
+The follow-up [Gibbs response audit](GIBBS_RESPONSE_AUDIT.md) preserves the
+original observable entries and rare populations through covariance
+evaluation. It proves the pairwise Gram form, relates its exact nullspace
+to scalar constraints and connects the response to relative-entropy
+curvature. The numerical output is still not an exact-rank certificate.
+
 This repair addresses the constraint-scale finding in
 [the maintainer's #1033 audit](https://github.com/FloatingPragma/observer-patch-holography/issues/1033#issuecomment-5986930536).
 The defect class is numerical dependence on an arbitrary presentation of a

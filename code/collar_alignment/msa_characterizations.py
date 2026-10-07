@@ -25,6 +25,7 @@ Bell-pair counterexample showing that I(A:D|B) = 0 alone implies none of 1-4.
 from __future__ import annotations
 
 import sys
+from fractions import Fraction
 from math import prod
 from pathlib import Path
 
@@ -34,11 +35,13 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from quantum_information import (
     conditional_mutual_information as _conditional_mutual_information,
-    density_matrix, dimensions, direct_sum_state, faithful_density_matrix, finite_real_scalar,
+    density_matrix, dimensions, direct_sum_state, faithful_density_matrix,
     gibbs_sectors,
     faithful_log as logm_psd, mutual_information, partial_trace, probabilities,
     one_sided_projection as _one_sided_projection, von_neumann_entropy,
 )
+from quantum_information.gibbs import _numeric, _parameter
+from quantum_information.information import weighted_information
 
 LN2 = float(np.log(2.0))
 
@@ -73,11 +76,14 @@ def validated_blocks(blocks):
         raise ValueError("nonempty collar block family required")
     if any(not isinstance(b, (list, tuple)) or len(b) != 3 for b in blocks):
         raise ValueError("a collar block needs weight, state and four dimensions")
-    probabilities([b[0] for b in blocks])
+    weights = probabilities(_numeric([b[0] for b in blocks], "collar weights", real=True))
     out = []
-    for p, rho, dims in blocks:
+    for p, (_, rho, dims) in zip(weights, blocks):
         dims = dimensions(dims)
-        a = density_matrix(rho)
+        a = _numeric(rho, "collar state")
+        # Validate here, but let the information evaluator perform its exact
+        # Hermitian averaging instead of losing a subnormal entry first.
+        density_matrix(a)
         if len(dims) != 4 or prod(dims) != len(a):
             raise ValueError("four collar dimensions must match each block")
         out.append((p, a, dims))
@@ -103,15 +109,16 @@ def embed_blocks(blocks: list[Block]) -> tuple[np.ndarray, list[np.ndarray]]:
 
 def collar_cmi(blocks: list[Block]) -> float:
     """I(A:D|B) of the blockwise state; entropies add over blocks."""
-    total = 0.0
+    weights, values = [], []
     for p, rho_a, dims in validated_blocks(blocks):
         if p <= 0.0:
             continue
         d = list(dims)
-        total += p * conditional_mutual_information(rho_a, d, [0], [1, 2], [3])
+        weights.append(p)
+        values.append(conditional_mutual_information(rho_a, d, [0], [1, 2], [3]))
     # Classical block label contributes equally to S(AB), S(BD), S(B), S(ABD)
     # and cancels in the CMI combination, so the blockwise sum is exact.
-    return total
+    return weighted_information(weights, values)
 
 
 # ---------------------------------------------------------------------------
@@ -130,10 +137,48 @@ def entropic_alignment_defect(blocks: list[Block]) -> float:
 
 
 def is_ec_aligned(blocks: list[Block], tol: float = 1e-9) -> bool:
-    tol = finite_real_scalar(tol, "alignment tolerance")
+    tol = _parameter(tol, "alignment tolerance")
     if tol <= 0:
         raise ValueError("alignment tolerance must be finite and positive")
     return entropic_alignment_defect(blocks) < tol
+
+
+def alignment_information_budget(blocks: list[Block]) -> dict:
+    """Resolve fixed-cut alignment into four nonnegative information terms.
+
+    I(A bL:bR D) = I(bL:bR) + I(A:bR|bL) + I(bL:D|bR)
+                    + I(A:D|bL bR).
+
+    The weighted total is the relative-entropy distance to the aligned
+    family with this declared center and tensor cut. It is not distance to
+    the union of all quantum Markov decompositions. See INFORMATION_BUDGET.md.
+    """
+    sectors = []
+    exact_mass = Fraction(0)
+    for index, (weight, rho, dims) in enumerate(validated_blocks(blocks)):
+        if weight == 0:
+            continue
+        exact_mass += Fraction(float(weight))*sum(Fraction(float(x.real)) for x in np.diag(rho))
+        terms = {
+            "collar": conditional_mutual_information(rho, dims, [0], [1, 2], [3]),
+            "middle": mutual_information(rho, dims, [1], [2]),
+            "left_leakage": conditional_mutual_information(rho, dims, [0], [1], [2]),
+            "right_leakage": conditional_mutual_information(rho, dims, [1], [2], [3]),
+        }
+        alignment = mutual_information(rho, dims, [0, 1], [2, 3])
+        resolved_sum = weighted_information([1.]*4, list(terms.values()))
+        sectors.append({"index": index, "weight": float(weight), **terms,
+                        "alignment": alignment,
+                        "chain_rule_residual": alignment-resolved_sum})
+    names = ("collar", "middle", "left_leakage", "right_leakage", "alignment")
+    weighted = {name: weighted_information([s["weight"] for s in sectors],
+                                           [s[name] for s in sectors]) for name in names}
+    total_mass = float(exact_mass)
+    return {"sectors": sectors, "weighted": weighted,
+            "total_mass": total_mass,
+            "maximum_alignment": max(s["alignment"] for s in sectors),
+            "trace_distance_bound": min(total_mass, float(np.sqrt(total_mass)
+                *np.sqrt(weighted["alignment"])*np.sqrt(.5)))}
 
 
 # ---------------------------------------------------------------------------

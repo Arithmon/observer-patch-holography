@@ -36,6 +36,40 @@ flag. Source-selected actions, QFT-Q2 constructions, QFT-Q3 restoration and
 identity transcripts, physical-current amplitudes, QFT-Q4 towers, analytic
 sheets, and numerical freezes remain separate producers.
 
+## Shared mixing readout
+
+The ten CKM/PMNS parameter readers in `flavor/` and `neutrino/` use
+[`mixing.py`](mixing.py). It preserves their four output schemas, including
+the shared-basis builder's signed phase. Full coordinates require a finite
+numeric 3-by-3 matrix with `||U†U-I||_F <= 1e-12` and nonzero entries
+`U00, U01, U02, U12, U22`. Invalid inputs and an undefined Dirac phase raise
+`ValueError`; the reader neither projects onto unitaries nor clips angles.
+This is a floating-point readout contract, not a unitarity certificate or
+an error bound on coordinates near a singular chart.
+
+In the [PDG convention, Eq. 12.3](https://pdg.lbl.gov/2025/reviews/rpp2025-rev-ckm-matrix.pdf),
+`U00, U01, U12, U22` are positive, `U02 = s13 exp(-iδ)`, and `det U = 1`.
+Consequently
+`δ = arg(U00 U01 U12 U22 conj(U02) conj(det U))` modulo `2π`.
+Every row/column rephasing contributes the same total phase to the five-entry
+product and the determinant, so the expression is invariant, including
+under Majorana column phases. Separate normalization of each factor avoids
+underflow of their product. Angle extraction uses `atan2` of entry magnitudes;
+it needs neither subtraction of nearly equal moduli nor a denominator floor.
+The Jarlskog quartet is evaluated exactly on the supplied binary64 entries
+before rounding once; nonzero values below the float range are refused.
+
+`test_mixing_readout.py` checks independently composed elementary rotations,
+phase quadrants, CP conjugation, rephasing, tiny mixing, invalid inputs and
+singular charts across all legacy entry points. These changes do not rescue
+any rejected particle candidate or supply missing physical source selection.
+Frozen artifacts/locks remain historical evidence; new candidate locks also
+hash the shared reader and its numeric-validation dependencies.
+
+Run `python -m pytest -q code/particles/test_mixing_readout.py` from the root.
+Run the older neutrino/flavor integration suites in a disposable checkout:
+some tests regenerate their default artifacts.
+
 ## Active Layout
 
 - [calibration](calibration)

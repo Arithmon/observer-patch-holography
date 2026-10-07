@@ -1,10 +1,22 @@
 # Finite-state entropy and the role of sector labels
 
+The [Gibbs response audit](../maxent/GIBBS_RESPONSE_AUDIT.md) distinguishes
+resolved binary64 states from resolved weighted responses. State producers
+conservatively reject subnormal thermal populations, including joint sector
+weights. The public MaxEnt covariance retains populations and original
+observable entries in multiprecision until the final response is rounded.
+
 This shared implementation replaces duplicated density-matrix, entropy,
 partial-trace and modular-splitting operations in the MaxEnt, collar-alignment,
 null-net and Einstein-closure evidence. It uses natural logarithms and the
 ordinary matrix trace. It implements finite numerical diagnostics, not a
 physical state selection or a proof of exact rank from approximate matrices.
+
+The [entropy-response audit](../geometry/ENTROPY_FIRST_LAW_AUDIT.md) separates
+tangent first laws from finite entropy changes with relative-entropy
+remainders. `entropy_response` tests independently supplied generators on
+all normalized tangents, supplies central probability-transfer witnesses,
+and computes Gibbs tangent slopes separately from finite secants.
 
 The follow-up [algebra and repair audit](ALGEBRAS_AND_REPAIR.md) fixes regional
 separation and basis normalization, replaces dense standardness matrices with
@@ -71,9 +83,12 @@ The follow-up audit of this refactor retains four additional controls:
   now reject complex, Boolean, nonfinite and nonscalar inputs, including
   convergence and alignment tolerances.
 - For `H=30 X`, both Gibbs eigenweights are positive, but reconstruction of
-  the dense matrix erases the smaller direction. Gibbs states, sector blocks
-  and Duhamel covariance now validate the reconstructed faithful state too.
-  Diagonal controls preserve the same small probability when representable.
+  the dense matrix erases the smaller direction. Gibbs states and sector
+  blocks validate the reconstructed faithful state. Diagonal controls
+  preserve the same small probability when representable. The public
+  Duhamel response instead evaluates the original thermal family before
+  output rounding; its resolved covariance can be returned without a
+  representable binary64 state. See the [response audit](../maxent/GIBBS_RESPONSE_AUDIT.md).
 
 ## One normal form for the finite A3 objective
 
@@ -199,3 +214,14 @@ amend A1–A3, prove a physical Markov collar, promote the gravity branch, or
 complete the separate model-selection issues #1025/#1026. Frozen evidence and
 archived simulator copies retain their historical bytes; this shared module
 governs the live consumers named above.
+
+The [collar information-budget audit](../collar_alignment/INFORMATION_BUDGET.md)
+repairs entropy-subtraction false zeros in mutual and conditional mutual
+information. Exact reductions, stable classical remainders and guarded
+quantum evaluation preserve small correlations. `is_markov_exact` decides
+zero CMI for the supplied finite matrix using exact relative-modular moments
+when simpler certificates do not suffice. The same audit resolves fixed-cut
+alignment into four nonnegative terms and proves that their weighted total
+is the relative-entropy projection cost onto the declared aligned family.
+For trace-roundoff inputs, MI uses the homogeneous convention `T I(rho/T)`;
+unresolved precision, indefinite states and nonzero output underflow raise.

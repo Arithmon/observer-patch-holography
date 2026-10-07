@@ -1,32 +1,14 @@
 #!/usr/bin/env python3
 """Machine receipts for the Einstein branch closure packets (GitHub #526-#528, #503, #578).
 
-Implements finite witnesses for The spacetime and Einstein paper's subsection
-`subsec:einstein-branch-closure`:
-
-* null tomography (Theorem `thm:null-tomography`): reconstruction of the
-  eta-trace-free part of a symmetric tensor from null-null charges over nine
-  or more resolved independent directions, the eta-ambiguity, and the countermodel of
-  Proposition `prop:no-local-stress-countermodel`: directional charges that
-  violate one dependent-family linearity relation admit no rank-two source
-  (irreducible least-squares residual);
-* bulk/edge/central first law (Theorem `thm:bulk-edge-central-first-law`):
-  for the explicit direct-sum states
-  oplus_alpha p_alpha (rho_bulk,alpha tensor I_edge,alpha/d_alpha),
-  S_bulk = H(p) + sum_alpha p_alpha S(rho_bulk,alpha),
-  S_edge = sum_alpha p_alpha log d_alpha, and
-  delta S = 2pi delta<B> + delta<Z> exactly at fixed operators.  Here Z
-  contains only the sectorwise log d_alpha term, so delta<Z> = delta S_edge
-  and delta S_bulk = 2pi delta<B> on the declared normalization.  A mismatch
-  z_alpha != log d_alpha gives the computable defect
-  sum_alpha (z_alpha - log d_alpha) delta p_alpha
-  (Proposition `prop:entropy-coefficient-countermodel`(ii));
-* MaxEnt multiplier identity (Theorem `thm:maxent-lagrange-stationarity`):
-  dS/dt = lambda along a Gibbs/MaxEnt constraint family, verified by finite
-  differences;
-* baseline countermodel (Proposition `prop:baseline-countermodels`(iv)):
-  two maximally symmetric baselines produce identical first-variation data
-  while differing by c * g_ab: delta Y = 0 never fixes the constant.
+The theorem labels below identify the historical #526--#528 packets, not
+proofs of physical energy calibration. Null tomography and the baseline
+countermodel are finite linear-algebra checks. Entropy response is a tangent
+identity at a faithful reference; finite changes include relative entropy.
+The bulk/edge split is tested against all central probability transfers as
+well as a supplied path. The MaxEnt slope is an analytic consequence of the
+supplied Gibbs family, with a separately labelled finite secant diagnostic.
+See ENTROPY_FIRST_LAW_AUDIT.md for proofs, regressions and downstream scope.
 """
 
 from __future__ import annotations
@@ -35,14 +17,22 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from scipy.linalg import expm, logm
+from scipy.linalg import block_diag
+import math
 
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from quantum_information import (
-    density_matrix, dimensions, direct_sum_state, probabilities, shannon_entropy,
+    density_matrix, dimensions, direct_sum_state, faithful_log, probabilities,
+    relative_entropy, shannon_entropy,
     von_neumann_entropy as entropy,
 )
+
+from quantum_information.entropy_response import (
+    central_normalization_diagnostic, entropy_tangent, finite_entropy_balance,
+    first_law_diagnostic, gibbs_entropy_response, _centered, _pairing,
+)
+from quantum_information.gibbs import _numeric, _parameter
 
 from geometry.null_tomography import (
     ETA, charges_of, design_matrix, eta_project_out, fit_null_charges,
@@ -114,6 +104,10 @@ def blockwise_state(ps: list[float], bulk_states: list[np.ndarray],
 def central_z(bulk_dims: list[int], edge_dims: list[int],
               z_weights: list[float]) -> np.ndarray:
     """Build Z = oplus_alpha z_alpha 1_alpha (no ``-log p_alpha`` term)."""
+    bulk_dims, edge_dims = dimensions(bulk_dims), dimensions(edge_dims)
+    z_weights = _numeric(z_weights, "central weights", real=True)
+    if z_weights.ndim != 1:
+        raise ValueError("one-dimensional central weights required")
     if not (len(bulk_dims) == len(edge_dims) == len(z_weights)):
         raise ValueError("bulk_dims, edge_dims, and z_weights must have equal length")
     block_dims = [d_bulk * d_edge
@@ -145,99 +139,115 @@ def edge_entropy(ps: list[float], edge_dims: list[int]) -> float:
 
 def first_law_receipt(z_weights: list[float] | None = None,
                       move_weights: bool = True,
-                      seed: int = 4, eps: float = 1e-6) -> dict[str, float]:
-    """Finite-difference check of Theorem thm:bulk-edge-central-first-law.
+                      seed: int = 4, eps: float = 1e-6) -> dict:
+    """Schema 2: tangent defects and a separately accounted finite change.
 
-    Verified identities (declared normalization z_alpha = log d_alpha):
-      * direct-sum entropy: S = S_bulk + S_edge, where S_bulk includes H(p);
-      * first law: delta S = 2pi delta<B> + delta<Z> (exact, fixed operators);
-      * edge identification: delta<Z> = delta S_edge;
-      * boxed split: delta S = 2pi delta<B> + delta S_edge;
-      * bulk identity: delta S_bulk = 2pi delta<B>, including variations of
-        the central probabilities because -log p_alpha is in the bulk
-        modular generator rather than Z;
-      * mismatched normalization z != log d breaks the edge identification
-        and the bulk identity by sum_a (z_a - log d_a) dp_a.
+    The tangent is specified independently of eps; eps only selects the
+    finite comparison state. A rounded-away finite comparison raises.
+    The fixture constructs K=-log(rho0), so its modular first-law residual
+    is a consistency check. first_law_diagnostic also accepts independent K.
+    The complete center test covers paths omitted by move_weights=False.
     """
+    eps = _parameter(eps, "variation step")
+    if eps == 0:
+        raise ValueError("variation step must be nonzero and resolved")
+    if not isinstance(move_weights, (bool, np.bool_)):
+        raise ValueError("move_weights must be Boolean")
     rng = np.random.default_rng(seed)
-    bulk_dims = [2, 3]
-    edge_dims = [2, 3]
-    ps0 = [0.6, 0.4]
+    bulk_dims, edge_dims = [2, 3], [2, 3]
+    ps0 = np.array([0.6, 0.4])
     sectors0 = [random_faithful(d, rng) for d in bulk_dims]
-    correct_z = [float(np.log(d)) for d in edge_dims]
+    correct_z = [math.log(d) for d in edge_dims]
     zw = correct_z if z_weights is None else z_weights
-
-    # base operators at the base point
+    # Validate even when the sampled path cannot see central normalization.
+    central_z(bulk_dims, edge_dims, zw)
+    center = central_normalization_diagnostic(edge_dims, zw)
     rho0 = blockwise_state(ps0, sectors0, edge_dims)
-    k0 = -logm(rho0)
-    z0 = central_z(bulk_dims, edge_dims, zw)
-    b0 = (k0 - z0) / (2.0 * np.pi)
+    k0 = -faithful_log(rho0)
 
-    # a variation moving sector states, and optionally sector weights
-    dps = [eps, -eps] if move_weights else [0.0, 0.0]
-    dsectors = [random_faithful(d, rng) for d in bulk_dims]
-    ps1 = [p + dp for p, dp in zip(ps0, dps)]
-    sectors1 = [
-        (1 - eps) * s + eps * t for s, t in zip(sectors0, dsectors)
-    ]
+    dp = np.array([1., -1.]) if move_weights else np.zeros(2)
+    targets = [random_faithful(d, rng) for d in bulk_dims]
+    ds = [t-s for s, t in zip(sectors0, targets)]
+    ps1 = ps0 + eps*dp
+    sectors1 = [s + eps*d for s, d in zip(sectors0, ds)]
     rho1 = blockwise_state(ps1, sectors1, edge_dims)
-    drho = rho1 - rho0
-
-    d_s = entropy(rho1) - entropy(rho0)
-    d_b = float(np.real(np.trace(b0 @ drho)))
-    d_z = float(np.real(np.trace(z0 @ drho)))
-    d_s_edge = edge_entropy(ps1, edge_dims) - edge_entropy(ps0, edge_dims)
-    s_bulk0 = bulk_entropy(ps0, sectors0)
-    s_bulk1 = bulk_entropy(ps1, sectors1)
-    d_s_bulk = s_bulk1 - s_bulk0
-
+    if np.array_equal(rho0, rho1) or (move_weights and np.array_equal(ps0, ps1)):
+        raise ValueError("finite variation is not resolved at this precision")
+    tangent = block_diag(*[np.kron(v*s+p*d, np.eye(n)/n)
+                          for p, v, s, d, n in zip(ps0, dp, sectors0, ds, edge_dims)])
+    dot_s = entropy_tangent(rho0, tangent)
+    dot_k = _pairing(_centered(k0), _centered(tangent))
+    dot_z = math.fsum(float(z)*float(v) for z, v in zip(zw, dp))
+    dot_edge = math.fsum(z*float(v) for z, v in zip(correct_z, dp))
+    dot_bulk = math.fsum([-float(v)*math.log(float(p))
+                         + float(v)*entropy(s) + float(p)*entropy_tangent(s, d)
+                         for p, v, s, d in zip(ps0, dp, sectors0, ds)])
+    # 2pi dot<B> = dot<K>-dot<Z>; scalar origins need never be subtracted
+    # inside large matrices. This is the explicitly supplied fixture split.
+    dot_2pi_b = math.fsum((dot_k, -dot_z))
+    s_bulk0, s_bulk1 = bulk_entropy(ps0, sectors0), bulk_entropy(ps1, sectors1)
+    balance = finite_entropy_balance(rho1, rho0)
+    decomposed_d = math.fsum([relative_entropy(np.diag(ps1), np.diag(ps0))]
+                             + [float(p)*relative_entropy(s1, s0)
+                                for p, s1, s0 in zip(ps1, sectors1, sectors0)])
     return {
-        "base_entropy_split_defect": abs(
-            entropy(rho0) - s_bulk0 - edge_entropy(ps0, edge_dims)
-        ),
-        "varied_entropy_split_defect": abs(
-            entropy(rho1) - s_bulk1 - edge_entropy(ps1, edge_dims)
-        ),
-        "first_law_defect": abs(d_s - (2.0 * np.pi * d_b + d_z)) / eps,
-        "edge_identification_defect": abs(d_z - d_s_edge) / eps,
-        "split_identity_defect": abs(d_s - (2.0 * np.pi * d_b + d_s_edge)) / eps
-        if z_weights is None else float("nan"),
-        "bulk_identity_defect": abs(d_s_bulk - 2.0 * np.pi * d_b) / eps,
-        "predicted_bulk_defect": abs(
-            float(np.dot(np.array(zw) - np.array(correct_z), dps))
-        ) / eps,
-        "predicted_edge_defect": abs(
-            float(np.dot(np.array(zw) - np.array(correct_z), dps))
-        ) / eps,
+        "schema_version": 2,
+        "base_entropy_split_defect": abs(entropy(rho0)-s_bulk0-edge_entropy(ps0, edge_dims)),
+        "varied_entropy_split_defect": abs(entropy(rho1)-s_bulk1-edge_entropy(ps1, edge_dims)),
+        "first_law_defect": abs(dot_s-dot_k),
+        "edge_identification_defect": abs(dot_z-dot_edge),
+        "split_identity_defect": abs(math.fsum((dot_s, -dot_2pi_b, -dot_edge))),
+        "bulk_identity_defect": abs(dot_bulk-dot_2pi_b),
+        "predicted_bulk_defect": abs(dot_z-dot_edge),
+        "predicted_edge_defect": abs(dot_z-dot_edge),
+        "all_tangent_modular_defect": first_law_diagnostic(rho0, k0)["all_tangent_defect"],
+        "all_sector_transfer_defect": center["all_sector_transfer_defect"],
+        "sector_transfer_witness": center["witness"].tolist(),
+        "finite_entropy_change": balance["entropy_change"],
+        "finite_modular_change": balance["modular_change"],
+        "finite_relative_entropy": balance["relative_entropy"],
+        "finite_trace_difference": balance["trace_difference"],
+        "finite_remainder_decomposition_defect": abs(balance["relative_entropy"]-decomposed_d),
     }
 
 
 # ---------------------------------------------------------------------------
-# MaxEnt multiplier identity (thm:maxent-lagrange-stationarity)
+# MaxEnt multiplier identity (historical thm:maxent-lagrange-stationarity)
 # ---------------------------------------------------------------------------
+
 
 def maxent_multiplier_receipt(lam: float = 1.3, dlam: float = 1e-5,
                               seed: int = 6) -> dict[str, float]:
-    """Along the Gibbs family rho(lam) = exp(-lam T)/Z, verify dS/dt = lam
-    where t = <T>: the exact envelope identity behind the coupled-class
-    stationarity."""
+    """Analytic Gibbs tangent slope plus an independent finite secant.
+
+    dS/dt=lambda is a consequence of the declared family. The secant has a
+    finite-step truncation error and is not an exact stationarity test.
+    Neither quantity identifies physical energy units or temperature.
+    """
+    lam, dlam = _parameter(lam, "multiplier"), _parameter(dlam, "secant step")
+    if dlam <= 0 or not np.isfinite(lam+dlam) or not np.isfinite(lam-dlam):
+        raise ValueError("secant step must be positive and finite")
+    if lam+dlam == lam or lam-dlam == lam:
+        raise ValueError("secant step is not resolved at this precision")
     rng = np.random.default_rng(seed)
     m = rng.normal(size=(6, 6))
     t_op = (m + m.T) / 2.0
-
-    def state(l: float) -> np.ndarray:
-        r = expm(-l * t_op)
-        return r / np.trace(r)
-
-    def s_and_t(l: float) -> tuple[float, float]:
-        r = state(l)
-        return entropy(r), float(np.real(np.trace(r @ t_op)))
-
-    s_p, t_p = s_and_t(lam + dlam)
-    s_m, t_m = s_and_t(lam - dlam)
-    ds_dt = (s_p - s_m) / (t_p - t_m)
-    return {"ds_dt": ds_dt, "lambda": lam,
-            "multiplier_defect": abs(ds_dt - lam)}
+    response = gibbs_entropy_response(t_op, lam)
+    plus = gibbs_entropy_response(t_op, lam+dlam)["state"]
+    minus = gibbs_entropy_response(t_op, lam-dlam)["state"]
+    delta_t = _pairing(_centered(t_op), plus, minus)
+    if delta_t == 0:
+        raise ValueError("secant energy change is not resolved at this precision")
+    balance = finite_entropy_balance(plus, minus)
+    secant = balance["entropy_change"] / delta_t
+    if not math.isfinite(secant):
+        raise ValueError("entropy secant is not resolved at this precision")
+    return {"schema_version": 2, "ds_dt": response["ds_dt"], "lambda": lam,
+            "multiplier_defect": abs(response["ds_dt"]-lam),
+            "energy_variance": response["energy_variance"],
+            "dt_dlambda": response["dt_dlambda"], "ds_dlambda": response["ds_dlambda"],
+            "secant_ds_dt": secant, "secant_multiplier_defect": abs(secant-lam),
+            "secant_step": dlam}
 
 
 # ---------------------------------------------------------------------------

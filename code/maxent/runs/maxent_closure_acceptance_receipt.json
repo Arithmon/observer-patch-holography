@@ -21,18 +21,18 @@
         "coarse": 6
       },
       "induced_map_R_multipliers": [
-        -0.3657000985434226,
-        0.3293135017032227
+        -0.3657000985434236,
+        0.3293135017032231
       ],
-      "moment_matching_residual": 3.2926743194896247e-13,
-      "normalized_moment_matching_residual": 6.721142133025075e-14,
-      "projection_optimality_gap_bound_nats": 5.01359156477547e-12,
-      "projection_trace_distance_bound": 3.1665727734493862e-06,
+      "moment_matching_residual": 3.272663708509914e-13,
+      "normalized_moment_matching_residual": 6.680296117778516e-14,
+      "projection_optimality_gap_bound_nats": 4.983122749588751e-12,
+      "projection_trace_distance_bound": 3.156936093616325e-06,
       "projection_iterations": 4,
-      "duhamel_hessian_min_eigenvalue": 2.2928720275360988,
-      "closure_defect_nats": 0.00018189324934314577,
-      "trace_norm_residual": 0.015887603894430072,
-      "pinsker_residual_bound": 0.019073187952890612,
+      "duhamel_hessian_min_eigenvalue": 2.2928720275360974,
+      "closure_defect_nats": 0.00018189324934398925,
+      "trace_norm_residual": 0.015887603894429433,
+      "pinsker_residual_bound": 0.019073187952934834,
       "counts_match_displayed_dimension": true,
       "projection_unique": true,
       "residual_bound_holds": true
@@ -64,10 +64,10 @@
       "projection_optimality_gap_bound_nats": 3.1119014640478627e-12,
       "projection_trace_distance_bound": 2.494755083789935e-06,
       "projection_iterations": 4,
-      "duhamel_hessian_min_eigenvalue": 3.0626262143830547,
-      "closure_defect_nats": 0.00025049078018524185,
+      "duhamel_hessian_min_eigenvalue": 3.0626262143830574,
+      "closure_defect_nats": 0.0002504907801854086,
       "trace_norm_residual": 0.014028884754533254,
-      "pinsker_residual_bound": 0.022382617370863573,
+      "pinsker_residual_bound": 0.022382617370871022,
       "counts_match_displayed_dimension": true,
       "projection_unique": true,
       "residual_bound_holds": true
@@ -92,18 +92,18 @@
       "coarse": 6
     },
     "induced_map_R_multipliers": [
-      -1.0534648487285785e-16,
-      0.40000000000000036
+      -1.043666378268528e-16,
+      0.40000000000000074
     ],
-    "moment_matching_residual": 1.095290720475075e-15,
-    "normalized_moment_matching_residual": 2.235752820974411e-16,
-    "projection_optimality_gap_bound_nats": 1.5032380373109357e-14,
-    "projection_trace_distance_bound": 1.7339192814608965e-07,
+    "moment_matching_residual": 3.728969589373966e-16,
+    "normalized_moment_matching_residual": 7.611727300268274e-17,
+    "projection_optimality_gap_bound_nats": 5.117845720715434e-15,
+    "projection_trace_distance_bound": 1.011715940441331e-07,
     "projection_iterations": 4,
-    "duhamel_hessian_min_eigenvalue": 2.5669163582435313,
-    "closure_defect_nats": 2.220446049250313e-16,
-    "trace_norm_residual": 9.764702238357683e-16,
-    "pinsker_residual_bound": 2.1073424255447017e-08,
+    "duhamel_hessian_min_eigenvalue": 2.5669163582435317,
+    "closure_defect_nats": 2.6367796834847517e-16,
+    "trace_norm_residual": 7.443101384215514e-16,
+    "pinsker_residual_bound": 2.2964231680963122e-08,
     "counts_match_displayed_dimension": true,
     "projection_unique": true,
     "residual_bound_holds": true

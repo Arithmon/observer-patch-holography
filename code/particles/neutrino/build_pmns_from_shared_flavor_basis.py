@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
 import pathlib
 import sys
 from typing import Any
@@ -17,6 +16,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from particles.mixing import pmns_signed as _standard_pmns_parameters
+
 from particles.artifact_paths import portable_json_dumps
 
 
@@ -26,41 +27,6 @@ def load_json(path: pathlib.Path) -> dict[str, Any]:
 
 def load_complex_matrix(real_rows: list[list[float]], imag_rows: list[list[float]]) -> np.ndarray:
     return np.array(real_rows, dtype=float) + 1j * np.array(imag_rows, dtype=float)
-
-
-def _standard_pmns_parameters(pmns: np.ndarray) -> dict[str, float]:
-    v_e1, v_e2, v_e3 = pmns[0]
-    v_mu1, v_mu2, v_mu3 = pmns[1]
-    v_tau1, v_tau2, v_tau3 = pmns[2]
-    s13 = float(abs(v_e3))
-    theta13 = float(math.asin(max(-1.0, min(1.0, s13))))
-    norm = math.sqrt(max(1.0e-30, 1.0 - s13 * s13))
-    s12 = float(abs(v_e2) / norm)
-    s23 = float(abs(v_mu3) / norm)
-    theta12 = float(math.asin(max(-1.0, min(1.0, s12))))
-    theta23 = float(math.asin(max(-1.0, min(1.0, s23))))
-    jarlskog = float(np.imag(v_e1 * v_mu2 * np.conjugate(v_e2) * np.conjugate(v_mu1)))
-    c12 = math.cos(theta12)
-    c23 = math.cos(theta23)
-    c13 = math.cos(theta13)
-    denom = 2.0 * s12 * s23 * c12 * c23 * s13
-    if abs(denom) <= 1.0e-30:
-        delta = 0.0
-    else:
-        cos_delta = (
-            (s12 * s23) ** 2 + (c12 * c23 * s13) ** 2 - abs(v_tau1) ** 2
-        ) / denom
-        cos_delta = max(-1.0, min(1.0, float(cos_delta)))
-        delta = float(math.acos(cos_delta))
-        if jarlskog < 0.0:
-            delta = -delta
-    return {
-        "theta_12": theta12,
-        "theta_23": theta23,
-        "theta_13": theta13,
-        "delta_pmns": delta,
-        "jarlskog": jarlskog,
-    }
 
 
 def _basis_labels(payload: dict[str, Any]) -> list[str] | None:
