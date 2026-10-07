@@ -49,7 +49,8 @@ def _fail(status: str, **details: Any) -> dict[str, Any]:
 
 
 def section_id(section: Mapping[str, str]) -> str:
-    return "|".join(f"{observer}={section[observer]}" for observer in sorted(section))
+    from public_record_csp import encode_section_id
+    return encode_section_id(section)
 
 
 def public_global_sections(
@@ -99,6 +100,9 @@ def reachable_public_sections(
     reachability_witnesses: Mapping[str, Sequence[str]],
 ) -> list[str]:
     """Select sections with nonempty endogenous semantic-history witnesses."""
+    if (not isinstance(reachability_witnesses, Mapping)
+            or any(type(sid) is not str or not sid for sid in reachability_witnesses)):
+        raise ValueError("reachability identifiers must be nonempty strings")
     valid = {section_id(section) for section in public_sections}
     unknown = set(reachability_witnesses) - valid
     if unknown:
@@ -294,7 +298,10 @@ def evaluate_terminal(packet: Mapping[str, Any]) -> dict[str, Any]:
     witnesses = packet.get("reachability_witnesses")
     if not isinstance(witnesses, Mapping):
         return _fail("NO_PUBLIC_RECORD_REACHABILITY")
-    reachable = reachable_public_sections(sections, witnesses)
+    try:
+        reachable = reachable_public_sections(sections, witnesses)
+    except ValueError as exc:
+        return _fail("NO_PUBLIC_RECORD_REACHABILITY", reason=str(exc))
     if not reachable:
         return _fail("NO_PUBLIC_RECORD_REACHABILITY")
     policy = packet.get("publicness_policy")
