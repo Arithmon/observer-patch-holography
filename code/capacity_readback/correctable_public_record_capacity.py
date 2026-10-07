@@ -14,10 +14,15 @@ until a source-derived packet and an exact finite-size slack law are supplied.
 from __future__ import annotations
 
 from collections import Counter
+from fractions import Fraction
 from itertools import combinations, product
 from typing import Any, Iterable, Mapping, Sequence
 
 from public_record_csp import public_global_sections_csp
+from checkpoint_channels import (
+    SearchBudget, alphabet, channel_family, channel_rows, decoder_certificate,
+    directed_float, optimal_decoder, probability, ratio,
+)
 
 
 FAIL = {
@@ -107,30 +112,26 @@ def reachable_public_sections(
 def _channel_rows(
     channel: Mapping[str, Any], reachable: Sequence[str]
 ) -> dict[str, dict[str, float]]:
-    rows = channel.get("rows")
-    if not isinstance(rows, Mapping) or set(rows) != set(reachable):
-        raise ValueError("every joint checkpoint kernel needs one row per reachable record")
-    normalized: dict[str, dict[str, float]] = {}
-    for source in reachable:
-        row = rows[source]
-        if not isinstance(row, Mapping) or not row:
-            raise ValueError("checkpoint rows must be nonempty mappings")
-        values = {str(out): float(prob) for out, prob in row.items()}
-        if any(prob < 0 for prob in values.values()) or abs(sum(values.values()) - 1.0) > 1e-12:
-            raise ValueError("checkpoint rows must be normalized probabilities")
-        normalized[source] = values
-    return normalized
+    """Lossless binary64 adapter for the existing reversible packet producers.
+
+    General support and decoder calculations use rational rows directly.
+    This historical private adapter must not erase a positive probability.
+    """
+    rows, _ = channel_rows(channel, reachable)
+    result = {x: {y: float(p) for y, p in row.items()} for x, row in rows.items()}
+    if any(Fraction(result[x][y]) != p for x, row in rows.items() for y, p in row.items()):
+        raise ValueError("checkpoint probabilities are not exactly representable in binary64")
+    return result
 
 
 def compound_confusability_graph(
     reachable: Sequence[str], channels: Sequence[Mapping[str, Any]]
 ) -> dict[str, set[str]]:
     """Return the union of all declared channel confusability graphs."""
-    if not channels:
-        raise ValueError("GLOBAL-PUBLIC-CHECKPOINT-COUPLING is required")
+    reachable = alphabet(reachable)
+    family = channel_family(channels, reachable)
     graph = {source: set() for source in reachable}
-    for channel in channels:
-        rows = _channel_rows(channel, reachable)
+    for rows, _ in family:
         support = {source: {out for out, p in row.items() if p > 0} for source, row in rows.items()}
         for i, left in enumerate(reachable):
             for right in reachable[i + 1 :]:
@@ -143,25 +144,11 @@ def compound_confusability_graph(
 def _decoder_success(
     rows: Mapping[str, Mapping[str, float]], code: Sequence[str]
 ) -> float:
-    """Return the optimal worst-input success over deterministic decoders.
-
-    This exhaustive routine is deliberately receipt-scale.  It implements the
-    paper's worst-input definition exactly and is not intended for large
-    production alphabets.
-    """
-    outputs = sorted({out for source in code for out in rows[source]})
-    best = 0.0
-    # ``None`` leaves an output unassigned.  It is redundant mathematically,
-    # but makes partial decoder witnesses explicit.
-    targets: tuple[str | None, ...] = (None, *code)
-    for assignment in product(targets, repeat=len(outputs)):
-        decoded = dict(zip(outputs, assignment, strict=True))
-        success = min(
-            sum(probability for out, probability in rows[source].items() if decoded[out] == source)
-            for source in code
-        )
-        best = max(best, success)
-    return best
+    """Conservative display of exact deterministic minimax success."""
+    selected = alphabet(code, "code")
+    exact, _ = channel_rows({"rows": {x: rows[x] for x in selected}}, selected)
+    error, _ = optimal_decoder(exact, selected, SearchBudget(100_000))
+    return directed_float(1-error, upward=False)
 
 
 def approximate_public_capacity(
@@ -170,23 +157,43 @@ def approximate_public_capacity(
     epsilon: float,
     *,
     max_vertices: int = 12,
+    max_decoder_nodes: int = 100_000,
 ) -> dict[str, Any]:
-    """Compute finite compound worst-input ``M_epsilon`` by exhaustive search."""
-    if not 0 <= epsilon <= 1:
-        raise ValueError("epsilon must lie in [0,1]")
+    """Exact compound ``M_epsilon`` with per-channel deterministic witnesses.
+
+    Row weights within the historical mass tolerance are normalized exactly;
+    their supplied masses are disclosed. The error threshold has no tolerance.
+    A search-budget refusal certifies no answer, rather than a smaller code.
+    """
+    reachable = alphabet(reachable)
+    epsilon = probability(epsilon, "epsilon")
+    if type(max_vertices) is not int or max_vertices < 1:
+        raise ValueError("max_vertices must be a positive integer")
     if len(reachable) > max_vertices:
         raise ValueError("approximate evaluator is limited to receipt-scale alphabets")
-    normalized = [_channel_rows(channel, reachable) for channel in channels]
+    normalized = channel_family(channels, reachable)
+    budget = SearchBudget(max_decoder_nodes)
     for size in range(len(reachable), 0, -1):
         for code in combinations(sorted(reachable), size):
-            successes = [_decoder_success(rows, code) for rows in normalized]
-            if min(successes) + 1e-12 >= 1.0 - epsilon:
+            errors, certificates = [], []
+            for rows, masses in normalized:
+                error, decoder = optimal_decoder(rows, code, budget)
+                if error > epsilon:
+                    break
+                errors.append(error)
+                certificates.append(decoder_certificate(rows, masses, code, decoder))
+            else:
                 return {
                     "capacity": size,
                     "code_witness": list(code),
-                    "worst_input_success_by_channel": successes,
+                    "worst_input_success_by_channel": [directed_float(1-e, upward=False) for e in errors],
+                    "worst_input_error_by_channel": [directed_float(e, upward=True) for e in errors],
+                    "epsilon_exact": ratio(epsilon),
+                    "probability_contract": "exact_relative_weights_with_disclosed_near_unit_row_masses",
+                    "certificate_scope": "deterministic_code_attainability",
+                    "decoder_certificates": certificates,
                 }
-    return {"capacity": 0, "code_witness": [], "worst_input_success_by_channel": []}
+    raise RuntimeError("a nonempty stochastic family must admit a singleton code")
 
 
 def maximum_independent_set(graph: Mapping[str, set[str]]) -> list[str]:
@@ -216,15 +223,17 @@ def support_relation_semigroup(
     reachable: Sequence[str], generators: Sequence[Mapping[str, Any]]
 ) -> set[frozenset[tuple[str, str]]]:
     """Close same-alphabet checkpoint support relations under composition."""
+    reachable = alphabet(reachable)
     universe = set(reachable)
     relations: set[frozenset[tuple[str, str]]] = set()
-    for channel in generators:
-        rows = _channel_rows(channel, reachable)
+    for rows, _ in channel_family(generators, reachable):
+        if any(p > 0 and target not in universe for row in rows.values() for target, p in row.items()):
+            raise ValueError("indefinite support generators must stay on the record alphabet")
         relation = frozenset(
             (source, target)
             for source, row in rows.items()
             for target, probability in row.items()
-            if probability > 0 and target in universe
+            if probability > 0
         )
         if any(not any(left == source for left, _ in relation) for source in reachable):
             raise ValueError("indefinite support generators must continue on the record alphabet")
@@ -424,6 +433,5 @@ def certify_unique_slack_zero(capacity_map: Mapping[int, int], selected: int) ->
 
 
 def tv_robustness_bound(epsilon: float, delta: float) -> float:
-    if not 0 <= epsilon <= 1 or not 0 <= delta <= 1:
-        raise ValueError("epsilon and delta must lie in [0,1]")
-    return min(1.0, epsilon + delta)
+    bound = min(Fraction(1), probability(epsilon, "epsilon")+probability(delta, "delta"))
+    return directed_float(bound, upward=True)
