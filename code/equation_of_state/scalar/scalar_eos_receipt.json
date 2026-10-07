@@ -5419,7 +5419,7 @@
       "numpy": "2.5.1",
       "scipy": "1.18.0"
     },
-    "producer_sha256": "b4b26b96b8315aa3cb9119ffe7f7a8cf9f20fc29d34a963aebcdb3f930510258",
+    "producer_sha256": "b66ed412ae239473bc5df6fc0042f7f7e633ed1fead1593d7c84cbb0fb8ece18",
     "python": "3.12.3",
     "source_sha256": {
       "code/source_scalar_execution/scalar_execution_algebra.py": "6cd1e44f9c0c5559f447db8db9499a843084424424145e371ad3be388fe92a67",

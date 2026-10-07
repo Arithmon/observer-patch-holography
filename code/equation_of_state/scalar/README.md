@@ -84,6 +84,11 @@ frequency must be positive: a massive zero-gradient mode is allowed, while a
 massless zero-frequency oscillator has no normalizable Bose Gibbs state.
 Inputs must be finite and exactly representable in the binary64 interface;
 masked entries, Booleans, complex data and lossy conversions are refused.
+Mixed sequences are checked element by element before NumPy chooses a common
+type: `[2**53+1, 1.0]` must be refused, while `[2**53, 1.0]` remains valid.
+Checking only the coerced array would miss the first sequence's lost integer
+precision. Missing elements are refused before conversion can replace them
+with `NaN`.
 
 All intermediate mode quantities and sums use a private 90-digit context.
 The free-energy logarithm uses complementary `expm1`/`log1p` expressions so

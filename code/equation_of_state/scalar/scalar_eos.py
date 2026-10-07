@@ -103,9 +103,11 @@ def _thermal_input(value, name, ndim):
     """Accept finite real data exactly representable in the binary64 interface."""
     if np.ma.is_masked(value):
         raise ValueError(name+' must not contain masked values')
-    if isinstance(value, (list, tuple)) and any(
-            isinstance(x, (bool, np.bool_)) for x in np.asarray(value, dtype=object).flat):
-        raise ValueError(name+' must not contain Booleans')
+    if isinstance(value, (list, tuple)):
+        # Validate each original scalar before a mixed sequence can round an
+        # integer, coerce a Boolean to one or turn a masked entry into NaN.
+        for part in value:
+            _thermal_input(part, name, 0)
     raw = np.asarray(value)
     if raw.ndim != ndim or raw.size == 0 or raw.dtype.kind not in 'iuf':
         raise ValueError(name+' requires a nonempty real input of the declared dimension')
