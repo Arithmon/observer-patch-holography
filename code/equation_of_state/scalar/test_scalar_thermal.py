@@ -11,14 +11,14 @@ from scalar_eos import thermal_point
 import verify_scalar_eos as verifier
 
 
-def partition_control(spectrum, scale, mass, temperature):
+def partition_control(spectrum, scale, mass, temperature, *, digits=110):
     """Differentiate log Z in dimensionless coordinates, from original inputs.
 
     No producer frequencies, occupations, stress components or support choices
     enter this control. A private context also checks global precision isolation.
     """
     ctx = mp.mp.clone()
-    ctx.dps = 110
+    ctx.dps = digits
     scale, mass, temperature = map(ctx.mpf, (scale, mass, temperature))
     volume, beta = scale**3, 1 / temperature
 
@@ -139,6 +139,15 @@ def test_high_temperature_mode_with_subnormal_rest_mass():
     assert result['mode_U'] == pytest.approx([.5])
     assert result['pressure'] == result['w'] == 0
     assert result['helmholtz_free_energy'] == pytest.approx(np.log(1e-308))
+
+
+def test_resolved_pressure_far_below_the_rest_energy():
+    # Resolve the volume dependence in the separate partition derivative,
+    # rather than applying higher precision to the producer's rounded energy.
+    expected = partition_control([1e-100], 1., 1e100, 1e100, digits=420)
+    result = thermal_point([1e-100], 1., 1e100, 1e100)
+    assert 0 < result['w'] < 1e-299
+    assert_partition_result(result, expected)
 
 
 @pytest.mark.parametrize('unit', [1e-120, 1., 1e120])
