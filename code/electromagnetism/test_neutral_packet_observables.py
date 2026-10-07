@@ -8,6 +8,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import whitney_quantum_packet as packet
+import verify_whitney_quantum_packet as replay
 
 
 def perpendicular(center, momentum):
@@ -92,3 +93,78 @@ def test_masked_container_is_not_silently_unmasked():
     q = np.ma.array(q, mask=False); q.mask[30] = True
     with pytest.raises(ValueError):
         packet.scalar_radius_moment(q, p, 1)
+
+
+@pytest.mark.parametrize('seed', range(10))
+@pytest.mark.parametrize('sigma,hbar', [(.25, .5), (1., 2.), (4., .125)])
+def test_general_scalar_directions_against_independent_integrals(seed, sigma, hbar):
+    rng = np.random.default_rng(seed)
+    q, p = rng.normal(size=(2, 56))
+    expected = replay.circle_observables(q, p, sigma, hbar)
+    actual = packet.overlap_parameters(q, p, sigma, hbar)
+    for key in actual:
+        assert actual[key] == pytest.approx(expected[key], rel=1e-12, abs=0), key
+    assert packet.scalar_radius_moment(q, p, sigma, hbar) == pytest.approx(expected['scalar_radius_numeric'], rel=1e-12, abs=0)
+
+
+def test_original_mixed_large_integers_preserve_small_charge():
+    q, p = [0.]*56, [0.]*56
+    q[30], q[31], p[43], p[44] = 2**53+1, 2**53, 1, -1
+    assert packet.overlap_parameters(q, p, 1)['B'] == 1
+
+
+@pytest.mark.parametrize('index', range(26))
+def test_every_scalar_direction_retained(index):
+    q, p = perpendicular(0., 0.)
+    q[30+index], p[30+index] = 2, 3
+    expected = replay.circle_observables(q, p, .5)
+    assert packet.overlap_parameters(q, p, .5)['norm_squared'] == pytest.approx(expected['norm_squared'], rel=1e-12, abs=0)
+    assert packet.scalar_radius_moment(q, p, .5) == pytest.approx(expected['scalar_radius_numeric'], rel=1e-12, abs=0)
+
+
+@pytest.mark.parametrize('center', [38., 40., 100.])
+def test_saturated_norm_refuses_insufficient_float_precision(center):
+    q, p = perpendicular(center, center/2)
+    with pytest.raises(ValueError, match='reporting range'):
+        packet.overlap_parameters(q, p, 1)
+    assert packet.scalar_radius_moment(q, p, 1) == 26
+    with pytest.raises(ValueError, match='reporting range'):
+        packet.projected_half_density(q, q, p, 1)
+
+
+@pytest.mark.parametrize('momentum', [1e160, 1e200, 1e300])
+def test_radius_does_not_require_representable_A(momentum):
+    q, p = perpendicular(0., momentum)
+    with pytest.raises(ValueError, match='reporting range'):
+        packet.overlap_parameters(q, p, 1)
+    assert packet.scalar_radius_moment(q, p, 1) == 25
+
+
+@pytest.mark.parametrize('sigma', [1e-170, 1e170])
+def test_unrepresentable_radius_is_not_zero_or_infinity(sigma):
+    q, p = perpendicular(0., 0.)
+    with pytest.raises(ValueError, match='reporting range'):
+        packet.scalar_radius_moment(q, p, sigma)
+    # A well-defined probability is independent of the radius reporting range.
+    assert packet.overlap_parameters(q, p, sigma)['norm_squared'] == 1
+
+
+def test_small_positive_observables_cannot_be_zeroed():
+    for value in (1e-250, 1e-100, 1e-20):
+        replay.close_observable(value, value, 'retained')
+        with pytest.raises(ValueError):
+            replay.close_observable(0., value, 'erased')
+    replay.close_observable(0, 0., 'true zero')
+    with pytest.raises(ValueError):
+        replay.close_observable(1e-250, 0., 'invented')
+
+
+def test_private_mpmath_context_and_uncharged_sign_symmetry():
+    old = mpmath.mp.dps
+    q, p = perpendicular(1., 1e10)
+    first = packet.overlap_parameters(q, p, 1)
+    second = packet.overlap_parameters(q, -p, 1)
+    assert first['A'] == second['A'] and first['B'] == -second['B']
+    assert first['norm_squared'] == second['norm_squared']
+    assert packet.scalar_radius_moment(q, p, 1) == packet.scalar_radius_moment(q, -p, 1)
+    assert mpmath.mp.dps == old
