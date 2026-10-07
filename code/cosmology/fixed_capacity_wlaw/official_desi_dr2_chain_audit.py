@@ -21,10 +21,16 @@ import argparse
 import hashlib
 import json
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from decimal import Decimal
+from fractions import Fraction
+from numbers import Integral, Real
+import re
 from pathlib import Path
-from statistics import NormalDist
 from typing import Iterable
+
+import mpmath
+from scipy.special import ndtri_exp
 
 
 HERE = Path(__file__).resolve().parent
@@ -132,329 +138,341 @@ def producer_metadata() -> dict[str, str]:
     """Bind a receipt to the exact postprocessor that emitted it."""
 
     return {
-        "script_path": str(SCRIPT_PATH.relative_to(REPO_ROOT)),
+        "script_path": SCRIPT_PATH.relative_to(REPO_ROOT).as_posix(),
         "script_sha256": sha256(SCRIPT_PATH),
     }
 
 
-def lambda_lp2_from_base_lcdm_sample(h0_km_s_mpc: float, omega_lambda: float) -> float:
-    """Return ``Lambda*l_P^2`` for one flat base-LCDM posterior sample.
+# Exact accumulation has no variance floor and is independent of row/merge order.
+# Only final square roots and distribution functions use numerical arithmetic.
+_MP = mpmath.mp.clone()
+_MP.dps = 90
+_REPORT_RTOL = Fraction(1, 10**12)
+_DECIMAL_TOKEN = re.compile(r"[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][+-]?[0-9]+)?")
 
-    The chain's derived ``omegal`` column is used directly; no replacement by
-    ``1-omegam`` and no fitted H0--density correlation is introduced.
-    """
 
-    if not (math.isfinite(h0_km_s_mpc) and math.isfinite(omega_lambda)):
-        raise ValueError("H0 and OmegaLambda must be finite")
-    if h0_km_s_mpc <= 0 or not 0.0 < omega_lambda < 1.0:
+def _fraction(value: object) -> Fraction:
+    """Preserve supplied real scalars before any homogeneous float coercion."""
+    if isinstance(value, bool):
+        raise ValueError("expected a finite real scalar, not Boolean")
+    if isinstance(value, Fraction):
+        return value
+    if isinstance(value, Integral):
+        return Fraction(int(value))
+    if isinstance(value, (Real, Decimal)):
+        try:
+            numerator, denominator = value.as_integer_ratio()
+            return Fraction(int(numerator), int(denominator))
+        except (AttributeError, ValueError, OverflowError) as exc:
+            raise ValueError("expected a finite real scalar") from exc
+    raise ValueError("expected a finite real scalar")
+
+
+def _mp(value: Fraction):
+    return _MP.mpf(value.numerator) / value.denominator
+
+
+def _report(value, label: str) -> float:
+    """Refuse erased or unresolved nonzero binary64 output (relative 1e-12)."""
+    try:
+        result = float(value)
+    except (ValueError, OverflowError) as exc:
+        raise ValueError(f"{label}: outside resolved binary64 range") from exc
+    if not math.isfinite(result):
+        raise ValueError(f"{label}: outside resolved binary64 range")
+    if isinstance(value, Fraction):
+        error = abs(Fraction(result) - value)
+        resolved = error <= abs(value) * _REPORT_RTOL
+    else:
+        resolved = abs(_MP.mpf(result) - value) <= abs(value) * _mp(_REPORT_RTOL)
+    if not resolved:
+        raise ValueError(f"{label}: outside resolved binary64 range")
+    return result
+
+
+def _sqrt(value: Fraction, label: str) -> float:
+    return _report(_MP.sqrt(_mp(value)), label)
+
+
+# Interpret the printed central conversion constants as decimal rationals.
+_LAMBDA_FACTOR = (3 * (Fraction(1000) / Fraction(str(MPC_IN_M)) /
+                      Fraction(str(SPEED_OF_LIGHT_M_S)))**2 *
+                  Fraction(str(PLANCK_LENGTH_M))**2)
+
+
+def _lambda_lp2(h0: Fraction, omega_lambda: Fraction) -> Fraction:
+    if h0 <= 0 or not 0 < omega_lambda < 1:
         raise ValueError("H0 must be positive and OmegaLambda must lie in (0,1)")
-    h0_s = h0_km_s_mpc * 1_000.0 / MPC_IN_M
-    return 3.0 * omega_lambda * (h0_s / SPEED_OF_LIGHT_M_S) ** 2 * PLANCK_LENGTH_M**2
+    return _LAMBDA_FACTOR * omega_lambda * h0**2
 
 
-def weighted_quantiles(
-    samples: list[tuple[float, float]], probabilities: tuple[float, ...]
-) -> dict[str, float]:
-    """Return step-CDF quantiles of positive-weight samples."""
+def lambda_lp2_from_base_lcdm_sample(h0_km_s_mpc: float, omega_lambda: float) -> float:
+    """Evaluate the declared SI conversion without rounded intermediate squares."""
+    return _report(_lambda_lp2(_fraction(h0_km_s_mpc), _fraction(omega_lambda)),
+                   "Lambda_lP2")
 
+
+@dataclass
+class WeightedMoments:
+    """Exact weighted population moments, shared by CPL and base-LCDM."""
+    dimension: int
+    raw_rows: int = field(default=0, init=False)
+    weight: Fraction = field(default=Fraction(0), init=False)
+    weight_sq: Fraction = field(default=Fraction(0), init=False)
+    sums: list[Fraction] = field(init=False)
+    products: list[list[Fraction]] = field(init=False)
+
+    def __post_init__(self) -> None:
+        if self.dimension not in (2, 3):
+            raise ValueError("posterior moments require two or three coordinates")
+        self.sums = [Fraction(0) for _ in range(self.dimension)]
+        self.products = [[Fraction(0) for _ in range(self.dimension)]
+                         for _ in range(self.dimension)]
+
+    def add(self, weight, values) -> None:
+        weight = _fraction(weight)
+        values = tuple(_fraction(value) for value in values)
+        if weight <= 0:
+            raise ValueError("chain weights must be positive")
+        if len(values) != self.dimension:
+            raise ValueError("posterior coordinate dimension mismatch")
+        self.raw_rows += 1
+        self.weight += weight
+        self.weight_sq += weight**2
+        for i, x in enumerate(values):
+            self.sums[i] += weight * x
+            for j in range(i, self.dimension):
+                self.products[i][j] += weight * x * values[j]
+
+    def merge(self, other: "WeightedMoments") -> None:
+        if self.dimension != other.dimension:
+            raise ValueError("posterior coordinate dimension mismatch")
+        self.raw_rows += other.raw_rows
+        self.weight += other.weight
+        self.weight_sq += other.weight_sq
+        self.sums = [a+b for a,b in zip(self.sums, other.sums, strict=True)]
+        self.products = [[a+b for a,b in zip(row, other_row, strict=True)]
+                         for row, other_row in zip(self.products, other.products, strict=True)]
+
+    def mean(self, i: int) -> Fraction:
+        if not self.weight:
+            raise ValueError("empty chain")
+        return self.sums[i] / self.weight
+
+    def covariance(self, i: int, j: int) -> Fraction:
+        i, j = sorted((i, j))
+        return self.products[i][j] / self.weight - self.mean(i) * self.mean(j)
+
+    def correlation(self, i: int, j: int) -> float | None:
+        product = self.covariance(i, i) * self.covariance(j, j)
+        cov = self.covariance(i, j)
+        if not product:
+            return None
+        magnitude = _sqrt(cov**2 / product, "correlation")
+        return -magnitude if cov < 0 else magnitude
+
+    def counts(self) -> dict[str, float | int]:
+        if not self.weight:
+            raise ValueError("empty chain")
+        return {
+            "raw_rows": self.raw_rows,
+            "expanded_posterior_weight": _report(self.weight, "weight"),
+            "weight_concentration_ess_not_autocorrelation_corrected": _report(
+                self.weight**2 / self.weight_sq, "weight concentration ESS"),
+        }
+
+
+def weighted_quantiles(samples, probabilities) -> dict[str, float]:
+    """Step-CDF quantiles with exact weights and thresholds, including endpoints."""
     if not samples:
         raise ValueError("cannot compute quantiles of an empty sample")
-    if any(not 0.0 <= probability <= 1.0 for probability in probabilities):
+    probabilities = tuple(_fraction(p) for p in probabilities)
+    if any(not 0 <= p <= 1 for p in probabilities):
         raise ValueError("quantile probabilities must lie in [0,1]")
     if tuple(sorted(probabilities)) != probabilities:
         raise ValueError("quantile probabilities must be sorted")
-    ordered = sorted(samples)
-    if any(
-        not (math.isfinite(value) and math.isfinite(weight)) or weight <= 0
-        for value, weight in ordered
-    ):
-        raise ValueError("quantile samples require finite values and positive weights")
-    total = sum(weight for _value, weight in ordered)
-    result: dict[str, float] = {}
-    cumulative = 0.0
-    probability_index = 0
+    keys = [f"{float(p):.3f}" for p in probabilities]
+    if len(set(keys)) != len(keys):
+        raise ValueError("quantile probabilities have duplicate output keys")
+    ordered = sorted((_fraction(value), _fraction(weight)) for value, weight in samples)
+    if any(weight <= 0 for _, weight in ordered):
+        raise ValueError("quantile samples require positive weights")
+    total = sum(weight for _, weight in ordered)
+    result = {}
+    cumulative = Fraction(0)
+    index = 0
     for value, weight in ordered:
         cumulative += weight
-        while (
-            probability_index < len(probabilities)
-            and cumulative >= probabilities[probability_index] * total
-        ):
-            probability = probabilities[probability_index]
-            result[f"{probability:.3f}"] = value
-            probability_index += 1
-    if probability_index != len(probabilities):
-        raise RuntimeError("weighted quantile traversal ended early")
+        while index < len(probabilities) and cumulative >= probabilities[index] * total:
+            result[keys[index]] = _report(value, "quantile")
+            index += 1
     return result
 
 
 @dataclass
 class BaseLCDMAccumulator:
-    raw_rows: int = 0
-    sum_weight: float = 0.0
-    sum_weight_sq: float = 0.0
-    sum_h0: float = 0.0
-    sum_h0_sq: float = 0.0
-    sum_omega_lambda: float = 0.0
-    sum_omega_lambda_sq: float = 0.0
-    sum_h0_omega_lambda: float = 0.0
-    sum_lambda_lp2: float = 0.0
-    sum_lambda_lp2_sq: float = 0.0
-    lambda_lp2_samples: list[tuple[float, float]] | None = None
+    moments: WeightedMoments = field(default_factory=lambda: WeightedMoments(3))
+    lambda_lp2_samples: list[tuple[Fraction, Fraction]] = field(default_factory=list)
 
-    def __post_init__(self) -> None:
-        if self.lambda_lp2_samples is None:
-            self.lambda_lp2_samples = []
-
-    def add(self, weight: float, h0: float, omega_lambda: float) -> None:
-        if not math.isfinite(weight) or weight <= 0:
-            raise ValueError("chain weights must be finite and positive")
-        lambda_lp2 = lambda_lp2_from_base_lcdm_sample(h0, omega_lambda)
-        self.raw_rows += 1
-        self.sum_weight += weight
-        self.sum_weight_sq += weight * weight
-        self.sum_h0 += weight * h0
-        self.sum_h0_sq += weight * h0 * h0
-        self.sum_omega_lambda += weight * omega_lambda
-        self.sum_omega_lambda_sq += weight * omega_lambda * omega_lambda
-        self.sum_h0_omega_lambda += weight * h0 * omega_lambda
-        self.sum_lambda_lp2 += weight * lambda_lp2
-        self.sum_lambda_lp2_sq += weight * lambda_lp2 * lambda_lp2
-        assert self.lambda_lp2_samples is not None
-        self.lambda_lp2_samples.append((lambda_lp2, weight))
+    def add(self, weight, h0, omega_lambda) -> None:
+        weight, h0, omega_lambda = map(_fraction, (weight, h0, omega_lambda))
+        value = _lambda_lp2(h0, omega_lambda)
+        self.moments.add(weight, (h0, omega_lambda, value))
+        self.lambda_lp2_samples.append((value, weight))
 
     def merge(self, other: "BaseLCDMAccumulator") -> None:
-        self.raw_rows += other.raw_rows
-        self.sum_weight += other.sum_weight
-        self.sum_weight_sq += other.sum_weight_sq
-        self.sum_h0 += other.sum_h0
-        self.sum_h0_sq += other.sum_h0_sq
-        self.sum_omega_lambda += other.sum_omega_lambda
-        self.sum_omega_lambda_sq += other.sum_omega_lambda_sq
-        self.sum_h0_omega_lambda += other.sum_h0_omega_lambda
-        self.sum_lambda_lp2 += other.sum_lambda_lp2
-        self.sum_lambda_lp2_sq += other.sum_lambda_lp2_sq
-        assert self.lambda_lp2_samples is not None
-        assert other.lambda_lp2_samples is not None
+        self.moments.merge(other.moments)
         self.lambda_lp2_samples.extend(other.lambda_lp2_samples)
 
     def summary(self) -> dict[str, object]:
-        if self.sum_weight <= 0:
-            raise ValueError("empty chain")
-        mean_h0 = self.sum_h0 / self.sum_weight
-        mean_omega_lambda = self.sum_omega_lambda / self.sum_weight
-        mean_lambda_lp2 = self.sum_lambda_lp2 / self.sum_weight
-        var_h0 = max(0.0, self.sum_h0_sq / self.sum_weight - mean_h0**2)
-        var_omega_lambda = max(
-            0.0,
-            self.sum_omega_lambda_sq / self.sum_weight - mean_omega_lambda**2,
-        )
-        var_lambda_lp2 = max(
-            0.0,
-            self.sum_lambda_lp2_sq / self.sum_weight - mean_lambda_lp2**2,
-        )
-        covariance = (
-            self.sum_h0_omega_lambda / self.sum_weight - mean_h0 * mean_omega_lambda
-        )
-        correlation = (
-            covariance / math.sqrt(var_h0 * var_omega_lambda)
-            if var_h0 > 0 and var_omega_lambda > 0
-            else None
-        )
-        assert self.lambda_lp2_samples is not None
-        return {
-            "raw_rows": self.raw_rows,
-            "expanded_posterior_weight": self.sum_weight,
-            "weight_concentration_ess_not_autocorrelation_corrected": (
-                self.sum_weight**2 / self.sum_weight_sq
-            ),
-            "H0_km_s_Mpc": {
-                "weighted_mean": mean_h0,
-                "weighted_std": math.sqrt(var_h0),
-            },
-            "OmegaLambda": {
-                "weighted_mean": mean_omega_lambda,
-                "weighted_std": math.sqrt(var_omega_lambda),
-            },
-            "H0_OmegaLambda_weighted_correlation": correlation,
-            "Lambda_lP2": {
-                "weighted_mean": mean_lambda_lp2,
-                "weighted_std": math.sqrt(var_lambda_lp2),
-                "fractional_std_about_weighted_mean": (
-                    math.sqrt(var_lambda_lp2) / mean_lambda_lp2
-                ),
-                "weighted_step_cdf_quantiles": weighted_quantiles(
-                    self.lambda_lp2_samples, (0.025, 0.16, 0.5, 0.84, 0.975)
-                ),
-            },
-        }
+        m = self.moments
+        result = m.counts()
+        for i, name in enumerate(("H0_km_s_Mpc", "OmegaLambda", "Lambda_lP2")):
+            result[name] = {"weighted_mean": _report(m.mean(i), name + " mean"),
+                            "weighted_std": _sqrt(m.covariance(i, i), name + " std")}
+        result["H0_OmegaLambda_weighted_correlation"] = m.correlation(0, 1)
+        result["Lambda_lP2"].update({
+            "fractional_std_about_weighted_mean": _sqrt(
+                m.covariance(2, 2) / m.mean(2)**2, "Lambda_lP2 fractional std"),
+            "weighted_step_cdf_quantiles": weighted_quantiles(
+                self.lambda_lp2_samples, tuple(map(Fraction, (".025", ".16", ".5", ".84", ".975")))),
+        })
+        return result
 
 
 @dataclass
 class Accumulator:
-    raw_rows: int = 0
-    sum_weight: float = 0.0
-    sum_weight_sq: float = 0.0
-    sum_w0: float = 0.0
-    sum_wa: float = 0.0
-    sum_w0_sq: float = 0.0
-    sum_wa_sq: float = 0.0
-    sum_w0_wa: float = 0.0
-    monotone_weight: float = 0.0
+    moments: WeightedMoments = field(default_factory=lambda: WeightedMoments(2))
+    monotone_weight: Fraction = Fraction(0)
     monotone_rows: int = 0
-    w0_gt_neg_one_weight: float = 0.0
-    wa_nonneg_weight: float = 0.0
+    w0_gt_neg_one_weight: Fraction = Fraction(0)
+    wa_nonneg_weight: Fraction = Fraction(0)
 
-    def add(self, weight: float, w0: float, wa: float) -> None:
-        if not (math.isfinite(weight) and math.isfinite(w0) and math.isfinite(wa)):
-            raise ValueError("chain contains a non-finite weight, w, or wa")
-        if weight <= 0:
-            raise ValueError("chain weights must be positive")
-        self.raw_rows += 1
-        self.sum_weight += weight
-        self.sum_weight_sq += weight * weight
-        self.sum_w0 += weight * w0
-        self.sum_wa += weight * wa
-        self.sum_w0_sq += weight * w0 * w0
-        self.sum_wa_sq += weight * wa * wa
-        self.sum_w0_wa += weight * w0 * wa
-
-        # CPL is affine in a: w(a)=w0+wa(1-a).  On a in [1/3,1],
-        # w(a)>=-1 iff the inequality holds at both endpoints.
-        monotone = w0 >= -1.0 and w0 + (2.0 / 3.0) * wa >= -1.0
-        if monotone:
+    def add(self, weight, w0, wa) -> None:
+        weight, w0, wa = map(_fraction, (weight, w0, wa))
+        self.moments.add(weight, (w0, wa))
+        # CPL is affine on [1/3,1]. Check the exact two endpoint inequalities.
+        if w0 >= -1 and 3 * (w0 + 1) + 2 * wa >= 0:
             self.monotone_weight += weight
             self.monotone_rows += 1
-        if w0 > -1.0:
+        if w0 > -1:
             self.w0_gt_neg_one_weight += weight
-        if wa >= 0.0:
+        if wa >= 0:
             self.wa_nonneg_weight += weight
 
     def merge(self, other: "Accumulator") -> None:
-        for field in self.__dataclass_fields__:
-            setattr(self, field, getattr(self, field) + getattr(other, field))
+        self.moments.merge(other.moments)
+        for name in ("monotone_weight", "monotone_rows", "w0_gt_neg_one_weight", "wa_nonneg_weight"):
+            setattr(self, name, getattr(self, name) + getattr(other, name))
 
     def summary(self) -> dict[str, float | int | None]:
-        if self.sum_weight <= 0:
-            raise ValueError("empty chain")
-        mean_w0 = self.sum_w0 / self.sum_weight
-        mean_wa = self.sum_wa / self.sum_weight
-        var_w0 = max(0.0, self.sum_w0_sq / self.sum_weight - mean_w0**2)
-        var_wa = max(0.0, self.sum_wa_sq / self.sum_weight - mean_wa**2)
-        cov = self.sum_w0_wa / self.sum_weight - mean_w0 * mean_wa
-        monotone_mass = self.monotone_weight / self.sum_weight
-        correlation = (
-            cov / math.sqrt(var_w0 * var_wa) if var_w0 > 0 and var_wa > 0 else None
-        )
-        return {
-            "raw_rows": self.raw_rows,
-            "expanded_posterior_weight": self.sum_weight,
-            "weight_concentration_ess_not_autocorrelation_corrected": (
-                self.sum_weight**2 / self.sum_weight_sq
-            ),
-            "w0_mean": mean_w0,
-            "w0_std": math.sqrt(var_w0),
-            "wa_mean": mean_wa,
-            "wa_std": math.sqrt(var_wa),
-            "w0_wa_covariance": cov,
-            "w0_wa_correlation": correlation,
-            "posterior_mass_w_ge_minus_one_for_0_le_z_le_2": monotone_mass,
-            "posterior_mass_capacity_loss_somewhere_for_0_le_z_le_2": (
-                1.0 - monotone_mass
-            ),
-            "posterior_mass_w0_gt_minus_one": (
-                self.w0_gt_neg_one_weight / self.sum_weight
-            ),
-            "posterior_mass_wa_nonnegative": self.wa_nonneg_weight / self.sum_weight,
+        m = self.moments
+        result = m.counts()
+        for i, name in enumerate(("w0", "wa")):
+            result[name + "_mean"] = _report(m.mean(i), name + " mean")
+            result[name + "_std"] = _sqrt(m.covariance(i, i), name + " std")
+        result.update({
+            "w0_wa_covariance": _report(m.covariance(0, 1), "covariance"),
+            "w0_wa_correlation": m.correlation(0, 1),
             "raw_rows_in_monotone_subset": self.monotone_rows,
-        }
+        })
+        for name, weight in (
+            ("w_ge_minus_one_for_0_le_z_le_2", self.monotone_weight),
+            ("capacity_loss_somewhere_for_0_le_z_le_2", m.weight - self.monotone_weight),
+            ("w0_gt_minus_one", self.w0_gt_neg_one_weight),
+            ("wa_nonnegative", self.wa_nonneg_weight),
+        ):
+            result["posterior_mass_" + name] = _report(weight / m.weight, name)
+        return result
+
+
+def _read_chain(path: Path, columns: tuple[str, ...], out):
+    header = None
+    with path.open(encoding="utf-8") as handle:
+        for line_number, line in enumerate(handle, start=1):
+            line = line.strip()
+            if not line:
+                continue
+            if line.startswith("#"):
+                if header is None:
+                    header = line.lstrip("#").split()
+                    if len(set(header)) != len(header):
+                        raise ValueError(f"{path}:{line_number}: duplicate column")
+                    for column in columns:
+                        if column not in header:
+                            raise ValueError(f"{path}: required column absent: {column}")
+                continue
+            if header is None:
+                raise ValueError(f"{path}:{line_number}: missing header")
+            values = line.split()
+            if len(values) != len(header):
+                raise ValueError(f"{path}:{line_number}: {len(values)} values for {len(header)} columns")
+            row = dict(zip(header, values, strict=True))
+            try:
+                if any(not _DECIMAL_TOKEN.fullmatch(row[c]) for c in columns):
+                    raise ValueError("expected finite decimal columns")
+                out.add(*(Fraction(row[c]) for c in columns))
+            except ValueError as exc:
+                raise ValueError(f"{path}:{line_number}: {exc}") from exc
+    if header is None or out.moments.raw_rows == 0:
+        raise ValueError(f"{path}: empty chain")
+    return out
 
 
 def read_chain(path: Path) -> Accumulator:
-    header: list[str] | None = None
-    out = Accumulator()
-    with path.open(encoding="utf-8") as handle:
-        for line_number, line in enumerate(handle, start=1):
-            if not line.strip():
-                continue
-            if line.startswith("#"):
-                if header is None:
-                    header = line.lstrip("#").split()
-                continue
-            if header is None:
-                raise ValueError(f"{path}:{line_number}: missing header")
-            values = line.split()
-            if len(values) != len(header):
-                raise ValueError(
-                    f"{path}:{line_number}: {len(values)} values for {len(header)} columns"
-                )
-            row = dict(zip(header, values, strict=True))
-            try:
-                out.add(float(row["weight"]), float(row["w"]), float(row["wa"]))
-            except KeyError as exc:
-                raise ValueError(
-                    f"{path}: required column absent: {exc.args[0]}"
-                ) from exc
-    return out
+    return _read_chain(path, ("weight", "w", "wa"), Accumulator())
 
 
 def read_base_lcdm_chain(path: Path) -> BaseLCDMAccumulator:
-    header: list[str] | None = None
-    out = BaseLCDMAccumulator()
-    with path.open(encoding="utf-8") as handle:
-        for line_number, line in enumerate(handle, start=1):
-            if not line.strip():
-                continue
-            if line.startswith("#"):
-                if header is None:
-                    header = line.lstrip("#").split()
-                continue
-            if header is None:
-                raise ValueError(f"{path}:{line_number}: missing header")
-            values = line.split()
-            if len(values) != len(header):
-                raise ValueError(
-                    f"{path}:{line_number}: {len(values)} values for {len(header)} columns"
-                )
-            row = dict(zip(header, values, strict=True))
-            try:
-                out.add(
-                    float(row["weight"]),
-                    float(row["H0"]),
-                    float(row["omegal"]),
-                )
-            except KeyError as exc:
-                raise ValueError(
-                    f"{path}: required column absent: {exc.args[0]}"
-                ) from exc
-    return out
+    return _read_chain(path, ("weight", "H0", "omegal"), BaseLCDMAccumulator())
 
 
 def source_directory(spec: dict[str, object]) -> str:
     return f"{SOURCE_COBAYA_ROOT}/{spec['model']}/{spec['directory']}/"
 
 
-def gaussian_fixed_point_diagnostic(
-    summary: dict[str, float | int],
-) -> dict[str, float | str]:
-    """Return a labelled Gaussian moment diagnostic, never a likelihood verdict."""
+def gaussian_fixed_point_diagnostic(accumulator: Accumulator) -> dict[str, object]:
+    """Label an optional moment diagnostic without losing valid chain evidence.
 
-    v0 = float(summary["w0_std"]) ** 2
-    va = float(summary["wa_std"]) ** 2
-    cov = float(summary["w0_wa_covariance"])
-    det = v0 * va - cov * cov
-    if det <= 0:
-        raise ValueError("non-positive posterior covariance determinant")
-    d0 = float(summary["w0_mean"]) + 1.0
-    da = float(summary["wa_mean"])
-    q = (va * d0 * d0 - 2.0 * cov * d0 * da + v0 * da * da) / det
-    survival_chi2_2dof = math.exp(-0.5 * q)
-    sigma_two_sided = NormalDist().inv_cdf(1.0 - survival_chi2_2dof / 2.0)
-    return {
+    Invert the exact covariance, never the rounded standard deviations in the
+    display. A singular covariance has no two-dimensional Gaussian diagnostic.
+    """
+    m = accumulator.moments
+    v0, va, cov = m.covariance(0, 0), m.covariance(1, 1), m.covariance(0, 1)
+    det = v0 * va - cov**2
+    result = {
         "classification": "Gaussian moment summary; not official delta-chi2 or evidence",
-        "mahalanobis_squared": q,
-        "chi2_2dof_survival": survival_chi2_2dof,
-        "two_sided_normal_sigma_equivalent": sigma_two_sided,
+        "status": "unavailable_singular_covariance",
+        "mahalanobis_squared": None,
+        "chi2_2dof_survival": None,
+        "log_chi2_2dof_survival": None,
+        "two_sided_normal_sigma_equivalent": None,
     }
+    if det == 0:
+        return result
+    if det < 0:
+        raise ArithmeticError("negative exact covariance determinant")
+    d0, da = m.mean(0) + 1, m.mean(1)
+    q = (va*d0**2 - 2*cov*d0*da + v0*da**2) / det
+    try:
+        result["mahalanobis_squared"] = _report(q, "Mahalanobis squared")
+        result["log_chi2_2dof_survival"] = _report(-q/2, "log survival")
+        # Small q needs expm1: subtracting a survival close to 1 erases sigma.
+        sigma = (_MP.sqrt(2) * _MP.erfinv(-_MP.expm1(-_mp(q)/2)) if q <= 1
+                 else -ndtri_exp(_report(-_mp(q)/2 - _MP.log(2), "log half-survival")))
+        result["two_sided_normal_sigma_equivalent"] = _report(sigma, "normal sigma")
+    except ValueError as exc:
+        result.update(status="unavailable_binary64_range", reason=str(exc))
+        return result
+    try:
+        # Avoid a huge exponential if the positive tail is certainly unresolved.
+        if q > 1500:
+            raise ValueError("survival: outside resolved binary64 range")
+        result["chi2_2dof_survival"] = _report(_MP.exp(-_mp(q)/2), "survival")
+        result["status"] = "available"
+    except ValueError as exc:
+        result.update(status="available_log_tail_only", reason=str(exc))
+    return result
 
 
 def audit_dataset(data_dir: Path, spec: dict[str, object]) -> dict[str, object]:
@@ -504,9 +522,7 @@ def audit_dataset(data_dir: Path, spec: dict[str, object]) -> dict[str, object]:
                 "capacity measurement, or an OPH prediction score."
             ),
         },
-        "fixed_capacity_point_gaussian_diagnostic": gaussian_fixed_point_diagnostic(
-            summary
-        ),
+        "fixed_capacity_point_gaussian_diagnostic": gaussian_fixed_point_diagnostic(combined),
     }
 
 
@@ -569,8 +585,15 @@ def build_receipt(
     if unknown:
         raise ValueError(f"unknown datasets: {unknown}")
     return {
-        "schema": "oph.official_desi_dr2_fz13_retrospective.v2",
+        "schema": "oph.official_desi_dr2_fz13_retrospective.v3",
         "producer": producer_metadata(),
+        "arithmetic": {
+            "chain_columns": "exact decimal values as published; no binary64 pre-rounding",
+            "moments_and_subset_decisions": "exact rational population moments and CPL endpoints",
+            "constants": "printed central SI decimal values; uncertainty not propagated",
+            "numerical_reporting": "90-digit roots; binary64 fields require relative rounding error <= 1e-12",
+            "gaussian_diagnostic": "exact moment inverse; numerical normal quantile; explicit unavailable status",
+        },
         "source": {
             "publisher": "DESI Collaboration / DESI Data",
             "documentation": (
@@ -617,10 +640,10 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     receipt = build_receipt(args.data_dir, args.dataset)
-    rendered = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+    rendered = json.dumps(receipt, indent=2, sort_keys=True, allow_nan=False) + "\n"
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(rendered, encoding="utf-8")
+        args.output.write_text(rendered, encoding="utf-8", newline="\n")
     print(rendered, end="")
     return 0
 
