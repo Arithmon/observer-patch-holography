@@ -55,6 +55,11 @@ is a reporting criterion, not a certified error enclosure. An unreportable
 probability does not prevent a separately representable normalized radius.
 The pointwise circle sampler remains a fixed-node numerical quadrature
 without a certified pointwise error; it propagates norm-reporting failures.
+Its binary64 seed, rotation and phase-space callers validate the original
+entries too. They reject masked/boolean data and scalars whose conversion
+would change their value, including an integer displacement erased above
+`2^53`. This explicit caller limitation does not restrict the scalar
+norm/radius evaluator's exact-rational input arithmetic.
 
 The independent receipt replay imports neither the packet producer nor the
 interacting coefficient evaluator. It uses positive one-dimensional integrals

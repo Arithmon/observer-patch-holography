@@ -71,24 +71,25 @@ def canonical(value):
 
 
 def real_vector(value, size, name):
-    raw = np.asarray(value)
-    if raw.dtype.kind not in 'iuf' or raw.shape != (size,):
-        raise ValueError('finite real '+name+' required')
-    result = np.asarray(raw, dtype=float)
-    if not np.isfinite(result).all():
-        raise ValueError('finite real '+name+' required')
-    return result
+    # These geometric/sampling callers are binary64 calculations. Validate
+    # each original entry before coercion and refuse a changed input value.
+    return np.array([_binary64(v, name) for v in _exact_vector(value, size)])
 
 
 def positive(value, name):
-    if isinstance(value, (bool, np.bool_, str, bytes)) or np.ndim(value) or not np.isrealobj(value):
+    result = _binary64(_rational(value), name)
+    if result <= 0:
         raise ValueError('positive finite '+name+' required')
+    return result
+
+
+def _binary64(value, name):
     try:
         result = float(value)
-    except (TypeError, ValueError, OverflowError) as error:
-        raise ValueError('positive finite '+name+' required') from error
-    if not np.isfinite(result) or result <= 0:
-        raise ValueError('positive finite '+name+' required')
+    except (OverflowError, ValueError) as error:
+        raise ValueError(name+' must be exactly representable in binary64') from error
+    if not np.isfinite(result) or Q(result) != value:
+        raise ValueError(name+' must be exactly representable in binary64')
     return result
 
 
@@ -149,12 +150,12 @@ def _rational(value):
         raise ValueError('finite real packet scalar required') from error
 
 
-def _exact_vector(value):
+def _exact_vector(value, size=56):
     if np.ma.isMaskedArray(value):
         raise ValueError('masked packet vector')
     raw = np.asarray(value, dtype=object)
-    if raw.shape != (56,):
-        raise ValueError('56 real packet coordinates required')
+    if raw.shape != (size,):
+        raise ValueError(str(size)+' real packet coordinates required')
     return [_rational(v) for v in raw]
 
 
@@ -219,8 +220,7 @@ def seed_log_half_density(point, center, momentum, sigma, hbar=1):
 
 def rotate(vector, angle):
     vector = real_vector(vector, 56, 'circle vector')
-    if not np.ndim(angle) == 0 or not np.isfinite(angle):
-        raise ValueError('finite angle required')
+    angle = _binary64(_rational(angle), 'angle')
     z = (vector[30:43]+1j*vector[43:])*np.exp(1j*angle)
     return np.r_[vector[:30], z.real, z.imag]
 

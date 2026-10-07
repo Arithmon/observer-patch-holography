@@ -225,3 +225,67 @@ def test_float_caller_refuses_changed_exact_parameter(parameter):
     assert packet.overlap_parameters(q, p, width, hbar)['norm_squared'] == 1
     with pytest.raises(ValueError, match='binary64'):
         packet.seed_log_half_density(q, q, p, width, hbar)
+
+
+def power_series_reference(q, p, sigma, hbar):
+    """Decimal positive series from the Gaussian overlap's Fourier powers.
+
+    Independently sum both its normalization and k-weighted moment; no
+    mpmath, Bessel functions, quadrature or producer intermediate values.
+    """
+    from decimal import Decimal, localcontext
+    from fractions import Fraction as F
+    x, p = list(map(F, q[30:])), list(map(F, p[30:]))
+    s, h = F(sigma), F(hbar)
+    xx, pp = sum(v*v for v in x), sum(v*v for v in p)
+    jx = [-v for v in x[13:]]+x[:13]
+    b = sum(u*v for u, v in zip(p, jx))/h
+    a = xx/(4*s*s)+s*s*pp/(h*h)
+    t = (a*a-b*b)/4
+    assert 0 <= t <= 256**2/4  # bounded reference, no large-z approximation
+    with localcontext() as ctx:
+        ctx.prec = 350
+        def d(v):
+            return Decimal(v.numerator)/Decimal(v.denominator)
+        total, weighted, term = Decimal(1), Decimal(0), Decimal(1)
+        for k in range(1, 10000):
+            term *= d(t)/Decimal(k*k)
+            total += term
+            weighted += k*term
+            ratio = d(t)/Decimal((k+1)**2)
+            if ratio < Decimal('.5') and (k+1)*term < total*Decimal('1e-120'):
+                break
+        else:
+            raise AssertionError('reference did not converge')
+        norm = (-d(a)).exp()*total
+        radius = d(26*s*s+xx/2-2*s**4*pp/h**2)+4*d(s*s)*weighted/total
+        return {'A': d(a), 'B': d(b), 'norm_squared': norm, 'radius': radius}
+
+
+@pytest.mark.parametrize('case', range(24))
+def test_independent_positive_power_series(case):
+    from fractions import Fraction as F
+    q, p = [0.]*56, [0.]*56
+    sigma, hbar = 1, 1
+    if case < 8:
+        q[30], p[43] = 2**case, 2**(case-1)
+    elif case < 12:
+        # The exact discriminant is nonzero even when rounded A equals B.
+        q[30], p[43] = F(2), F(1)+F((-1)**case, 2**(40+case))
+    elif case < 16:
+        q[30], p[43], p[44] = F(2), F(1), F(1, 2**(case+12))
+        sigma = F(1, 2)**(case-13)
+        hbar = F(1, 2)**(2*(case-13))
+    else:
+        rng = np.random.default_rng(case)
+        q, p = [v/8 for v in rng.integers(-8,9,56)], [v/8 for v in rng.integers(-8,9,56)]
+    expected = power_series_reference(q, p, sigma, hbar)
+    probability = float(expected['norm_squared'])
+    if probability == 0:
+        with pytest.raises(ValueError, match='reporting range'):
+            packet.overlap_parameters(q, p, sigma, hbar)
+    else:
+        result = packet.overlap_parameters(q, p, sigma, hbar)
+        for key in result:
+            assert result[key] == pytest.approx(float(expected[key]), rel=1e-12, abs=0), key
+    assert packet.scalar_radius_moment(q, p, sigma, hbar) == pytest.approx(float(expected['radius']), rel=1e-12, abs=0)
