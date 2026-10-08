@@ -154,8 +154,9 @@ Both interacting families also require the computed Dobrushin influence to
 exceed a dimension-scaled conditional-probability contrast floor at the requested
 relative resolution. Thus nearly uniform computed populations cannot turn a
 lost interaction response into a claimed zero. Only the source-exact free law
-bypasses that check. Masked operators and unused parameter names are rejected;
-an extended-precision nonzero coupling cannot silently become the free input.
+bypasses that check. Masked operators and unused parameter names are rejected.
+Narrowing an extended-precision coupling must preserve its value within ordinary
+relative rounding; becoming zero or a badly rounded subnormal causes refusal.
 These are numerical safeguards at a `1e-7` resolution policy, not certified
 interval bounds or a relative-error guarantee for every derived scalar at every
 accepted noncanonical coupling. Tiny cancellation-derived diagnostics remain

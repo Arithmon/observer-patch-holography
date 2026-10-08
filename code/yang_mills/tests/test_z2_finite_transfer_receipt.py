@@ -9,6 +9,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import mpmath as mp
 import pytest
 
 HERE = Path(__file__).resolve().parents[1]
@@ -142,6 +143,55 @@ def test_extended_nonzero_coupling_cannot_become_the_exact_free_law(orbits) -> N
     assert coupling != 0 and float(coupling) == 0
     with pytest.raises(RuntimeError, match="underflows.*precision"):
         z2.wilson_hamiltonian(orbits, coupling, 0.5)
+
+
+@pytest.mark.parametrize("consumer", ["dual_coupling", "evaluate"])
+def test_partially_rounded_subnormal_input_is_accurate_or_refused(orbits, consumer) -> None:
+    if np.finfo(np.longdouble).minexp >= np.finfo(float).minexp:
+        pytest.skip("platform has no wider-exponent real input type")
+    coupling = np.longdouble("3e-324")
+    assert coupling != 0 and float(coupling) != 0
+    numerator, denominator = coupling.as_integer_ratio()
+    with mp.workdps(100):
+        original = mp.mpf(numerator) / denominator
+        expected_rate = float(-mp.log(mp.tanh(original)))
+    try:
+        if consumer == "dual_coupling":
+            actual = z2.dual_coupling(coupling)
+            expected = expected_rate
+        else:
+            result = z2.evaluate(orbits, "wilson", beta_s=0.0, beta_t=coupling)
+            actual = result["spectral"]["gap_H"]
+            expected = 2 * expected_rate
+    except RuntimeError as error:
+        assert "precision" in str(error).lower()
+        return
+    assert actual == pytest.approx(expected, rel=1e-12, abs=0)
+
+
+@pytest.mark.parametrize("widen", [False, True])
+def test_exact_binary64_subnormal_parameter_remains_supported(orbits, widen) -> None:
+    original = float(np.nextafter(0.0, 1.0))
+    coupling = np.longdouble(original) if widen else original
+    numerator, denominator = original.as_integer_ratio()
+    with mp.workdps(100):
+        expected = float(-mp.log(mp.tanh(mp.mpf(numerator) / denominator)))
+    assert z2.dual_coupling(coupling) == pytest.approx(expected, rel=1e-14, abs=0)
+    result = z2.evaluate(orbits, "wilson", beta_s=0.0, beta_t=coupling)
+    assert result["spectral"]["gap_H"] == pytest.approx(2 * expected, rel=1e-12, abs=0)
+
+
+def test_ordinary_extended_precision_parameter_rounding_is_supported() -> None:
+    coupling = np.longdouble("0.50000000000000001")
+    numerator, denominator = coupling.as_integer_ratio()
+    with mp.workdps(100):
+        expected = float(-mp.log(mp.tanh(mp.mpf(numerator) / denominator)))
+    assert z2.dual_coupling(coupling) == pytest.approx(expected, rel=1e-14, abs=0)
+
+
+def test_parameter_conversion_overflow_is_an_explicit_domain_refusal() -> None:
+    with pytest.raises(ValueError, match="finite real parameter"):
+        z2.dual_coupling(10**1000)
 
 
 def test_unrepresentable_wilson_outputs_are_not_silent_zeros(orbits) -> None:

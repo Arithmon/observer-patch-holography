@@ -254,11 +254,22 @@ def _real_parameter(value: float, name: str, *, positive: bool = False) -> float
     if isinstance(value, (bool, np.bool_)) or not isinstance(value, (int, float, np.integer, np.floating)):
         raise ValueError(f"{name} must be a finite real parameter")
     original = value
-    value = float(value)
+    try:
+        value = float(value)
+    except OverflowError as error:
+        raise ValueError(f"{name} must be a finite real parameter") from error
     if value == 0 and original != 0:
         raise RuntimeError(f"{name} underflows the supported float64 precision")
     if not math.isfinite(value) or (positive and value <= 0):
         raise ValueError(f"{name} must be finite" + (" and positive" if positive else ""))
+    if isinstance(original, np.floating) and original != 0:
+        # Promote the narrowed value back before comparing. A wider input can
+        # round to a nonzero binary64 subnormal with large relative damage;
+        # checking only whether it became zero misses that loss. Ordinary
+        # rounding and exactly representable binary64 subnormals remain valid.
+        restored = type(original)(value)
+        if abs((restored - original) / original) > 4 * EPS:
+            raise RuntimeError(f"{name} loses input precision when converted to float64")
     return value
 
 
