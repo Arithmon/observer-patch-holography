@@ -20,6 +20,7 @@ The coupled-action controls can also be reproduced together:
 python -m pytest -q \
   code/electromagnetism/test_whitney_charged_enclosure.py \
   code/electromagnetism/test_whitney_magnetic_continuum.py \
+  code/electromagnetism/test_neutral_packet_observables.py \
   code/electromagnetism/test_whitney_quantum_packet.py
 ```
 
@@ -27,6 +28,65 @@ These check a rigorous fixed-mesh time enclosure, numerical controls for the
 analytic prescribed-magnetic-field continuum theorem, and full-dimensional
 neutral-state preparation. Their separate acceptance rules do not certify
 physical calibration or useful interacting quantum propagation.
+
+The neutral-packet audit under [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033)
+preserves both the projection probability and the scalar nodal squared radius.
+At main `de60560b`, a zero center with scalar momentum `1e10`, width and hbar
+both one, returned radius zero instead of approximately 25. With scalar
+center `(1,0)` and momentum `(0,1e8)` in one complex plane, it also erased
+the norm's finite `exp(-1/2)` suppression. The retained original-input
+integral controls produced 22 failures and 9 passes before the repair.
+
+For scalar parts `x,p`, write `X=|x|²/(4 sigma²)`,
+`Y=sigma² |p|²/hbar²`, `A=X+Y`, `B=p·Jx/hbar`, `D=X-Y`,
+and `K=4XY-B² >= 0`. The producer forms these invariants over exact
+rationals from the supplied real scalars, before array coercion. Then
+`z=sqrt(D²+K)`, `A-z=B²/(A+z)`, and, for negative `D`,
+`z+D=K/(z-D)`. The zero case is handled separately. The equivalent radius
+is `2 sigma² (13+(z+D)-z(1-I1(z)/I0(z)))`. These identities remove the
+large subtractions; a private mpmath context budgets extra precision for
+the remaining Bessel ratio. The two public observables share this evaluator.
+Masked, boolean, complex and nonfinite inputs are rejected. Integer,
+Fraction and NumPy real scalars retain their original values.
+NumPy integers and integer components inside a Fraction are converted
+to unbounded Python integers before rational arithmetic; wrapping a NumPy
+integer in Fraction alone can retain fixed-width overflow.
+
+Every returned nonzero scalar must retain relative `1e-12` accuracy when
+converted to binary64, or that readout explicitly refuses the range. This
+is a reporting criterion, not a certified error enclosure. An unreportable
+probability does not prevent a separately representable normalized radius.
+The pointwise circle sampler remains a fixed-node numerical quadrature
+without a certified pointwise error; it propagates norm-reporting failures.
+Its binary64 seed, rotation and phase-space callers validate the original
+entries too. They reject masked/boolean data and scalars whose conversion
+would change their value, including an integer displacement erased above
+`2^53`. This explicit caller limitation does not restrict the scalar
+norm/radius evaluator's exact-rational input arithmetic.
+The seed logarithm avoids squaring extreme widths, and circle samples are
+weighted before summation. Unreportable pointwise amplitudes raise a range
+error instead of returning NaN or an underflowed Gaussian sample. These
+checks do not bound discretization error or resolve oscillatory cancellation.
+
+The independent receipt replay imports neither the packet producer nor the
+interacting coefficient evaluator. It uses positive one-dimensional integrals
+instead of Bessel functions, with a rescaled
+Gaussian integration coordinate at large `z`. Its scalar comparisons have
+no absolute tolerance that could accept erasing a small positive value.
+The phase-space replay first authenticates the reported numerical coordinates;
+the scalar integrals then use those coordinates, so roundoff in a second
+gauge solve cannot hide a wrong small charge. The integral representation
+and large-argument behavior are consistent with [DLMF 10.32](https://dlmf.nist.gov/10.32)
+and [10.40](https://dlmf.nist.gov/10.40).
+
+The live packet receipt is regenerated with
+`python code/electromagnetism/whitney_quantum_packet.py` and checked with
+`python code/electromagnetism/verify_whitney_quantum_packet.py`.
+Its mathematical preparation contract, exact initial data, supplied physical
+inputs and unproved propagation status are unchanged. No frozen evidence,
+paper theorem, registry payload or physical prediction is revised by this
+numerical repair. The pinned mandatory runner is unchanged; the dedicated
+neutral-packet workflow executes the extra controls on Linux and Windows.
 
 ## Native observer dynamics and retained large-run statistics
 

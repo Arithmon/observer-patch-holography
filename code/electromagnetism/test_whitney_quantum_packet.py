@@ -219,6 +219,8 @@ module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
 assert not any(x.endswith('whitney_quantum_packet') and x!='isolated_packet_verifier' for x in sys.modules)
 assert not any(x.endswith('whitney_interacting_quantum') for x in sys.modules)
 assert module.load()['schema']=='oph.whitney_quantum_packet.v1'
+assert module.verify(module.load())['accepted'] is True
+assert not any(x.endswith('whitney_interacting_quantum') for x in sys.modules)
 '''
     result=subprocess.run([sys.executable,'-c',script,str(HERE/'verify_whitney_quantum_packet.py')],capture_output=True,text=True)
     assert result.returncode==0,result.stderr
@@ -250,4 +252,12 @@ def test_full_parent_is_verified_beyond_the_two_prepared_samples(packet,monkeypa
     monkeypatch.setattr(Path,'read_text',changed_text)
     changed=deepcopy(packet)
     changed['source_pins'][verifier.PARENT_PATH]=hashlib.sha256(forged).hexdigest()
+    with pytest.raises(ValueError):verifier.verify(changed)
+
+
+@pytest.mark.parametrize('replacement', [0., 1e-12, True, float('nan')])
+def test_tiny_reported_charge_is_independently_checked(packet,replacement):
+    changed=deepcopy(packet)
+    assert changed['samples'][0]['widths'][0]['B'] != 0
+    changed['samples'][0]['widths'][0]['B']=replacement
     with pytest.raises(ValueError):verifier.verify(changed)

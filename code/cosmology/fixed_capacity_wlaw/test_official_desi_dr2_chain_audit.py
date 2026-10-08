@@ -124,7 +124,7 @@ def test_source_pins_and_committed_receipt_bind_current_producer() -> None:
         MODULE_PATH.with_name("runtime") / "official_desi_dr2_fz13_retrospective.json"
     )
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
-    assert receipt["schema"] == "oph.official_desi_dr2_fz13_retrospective.v2"
+    assert receipt["schema"] == "oph.official_desi_dr2_fz13_retrospective.v3"
     assert receipt["producer"] == mod.producer_metadata()
     assert receipt["source"]["official_sha256_manifest_sha256"] == (
         mod.SOURCE_MANIFEST_SHA256

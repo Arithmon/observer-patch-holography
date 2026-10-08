@@ -234,6 +234,15 @@ def free_energy(spectrum, volume, mass, temperature):
                                for x in spectrum)
 
 
+def thermal_numeric(actual, expected, label):
+    """Thermal mode evidence has no absolute floor: preserve sign and zeros."""
+    require(type(actual) in (int, float) and np.isfinite(actual), label+' finite number')
+    if expected == 0:
+        require(actual == 0, label+' exact zero')
+    else:
+        require(abs(mp.mpf(actual)/expected-1) <= mp.mpf('3e-10'), label+' relative precision')
+
+
 def check_thermal(receipt, spectrum):
     cases = receipt['thermal_cases']
     expected_cases = list(product((1., 2., 8.), (0., 1., 4.), (.5, 2., 10., 50.)))
@@ -268,11 +277,11 @@ def check_thermal(receipt, spectrum):
                             ('mode_thermal_energies', energies), ('mode_K', K), ('mode_G', G), ('mode_U', U)]:
             require(type(case[key]) is list and len(case[key]) == 64, key+' 64 modes')
             for actual, expected in zip(case[key], values):
-                numeric(actual, expected, key, atol=3e-11, rtol=3e-10)
+                thermal_numeric(actual, expected, key)
         for key, value in {'volume': volume, 'energy': energy, 'energy_density': energy/volume,
                            'helmholtz_free_energy': free, 'pressure': derivative,
                            'w': derivative*volume/energy}.items():
-            numeric(case[key], value, 'thermal '+key, atol=3e-10, rtol=3e-10)
+            thermal_numeric(case[key], value, 'thermal '+key)
         w = derivative*volume/energy
         require(0 <= w <= mp.mpf(1)/3+mp.mpf('1e-60'), 'thermal pressure range')
         if mass == 0:

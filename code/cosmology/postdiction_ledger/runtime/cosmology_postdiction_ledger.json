@@ -155,15 +155,15 @@
   ],
   "corpus_inputs_schema": "oph.cosmology.postdiction_ledger.corpus_inputs.v1",
   "derived_constants": {
-    "Lambda_lP2_desi_dr2_display_mean": 2.9677036022648535e-122,
-    "Lambda_lP2_desi_dr2_display_std": 3.977658418382023e-124,
+    "Lambda_lP2_desi_dr2_display_mean": 2.9677036022648546e-122,
+    "Lambda_lP2_desi_dr2_display_std": 3.9776584184203244e-124,
     "Lambda_lP2_planck_central": 2.8451358375830875e-122,
     "Lambda_planck_central_m_minus_2": 1.0891388337006832e-52,
     "P_C": 1.6309682094039593,
     "P_fwd": 1.630972095858897,
     "a_dS_m_s2": 5.415298493722932e-10,
     "c_H0_m_s2": 6.54443616922538e-10,
-    "capacity_coordinate_desi_dr2_display": 3.1757814202121464e+122,
+    "capacity_coordinate_desi_dr2_display": 3.1757814202121453e+122,
     "capacity_coordinate_planck_central": 3.3125933167309256e+122,
     "euler_number": 2.718281828459045,
     "golden_ratio": 1.618033988749895,
@@ -182,8 +182,8 @@
   "parent_receipts": {
     "official_desi_dr2_fz13_retrospective": {
       "path": "code/cosmology/fixed_capacity_wlaw/runtime/official_desi_dr2_fz13_retrospective.json",
-      "schema": "oph.official_desi_dr2_fz13_retrospective.v2",
-      "sha256": "04ce69f561e790a0583f9d96cd4a4289163764110a463309a359d38da9d9cd4d"
+      "schema": "oph.official_desi_dr2_fz13_retrospective.v3",
+      "sha256": "52abfd4ca15424420b4b4c55160660648279de0bdd1b404a242c4b3dab4c1473"
     },
     "sparc_deep_regime_diagnostic": {
       "path": "code/cosmology/rar_deep_regime/receipts/sparc_deep_regime_diagnostic.json",
@@ -197,9 +197,9 @@
     }
   },
   "pins": {
-    "code/cosmology/fixed_capacity_wlaw/runtime/official_desi_dr2_fz13_retrospective.json": "04ce69f561e790a0583f9d96cd4a4289163764110a463309a359d38da9d9cd4d",
+    "code/cosmology/fixed_capacity_wlaw/runtime/official_desi_dr2_fz13_retrospective.json": "52abfd4ca15424420b4b4c55160660648279de0bdd1b404a242c4b3dab4c1473",
     "code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py": "29e2ab2327518e74e4f32e0d35f4b8de1e4fbc8a3f01974474a747ef0d70911c",
-    "code/cosmology/postdiction_ledger/corpus_inputs.json": "c87c8705187874b9cbc1c37e0a7a64b2f67c110e7725c52a4a5896842b9c5c91",
+    "code/cosmology/postdiction_ledger/corpus_inputs.json": "f7439cfadbff19db5f927e91ae82ec0fbc4d16d5bf4ae98d0de440961b1e93b8",
     "code/cosmology/postdiction_ledger/public_inputs.json": "22dfe5c393486ac19b4617759fae72bcf1be4c6fae71075206e39b6691e8b47a",
     "code/cosmology/postdiction_ledger/test_cosmology_postdiction_ledger.py": "faa540625fa02a311511660027ec4d4e8d09723e2c5431471e14ebad0bf0ab94",
     "code/cosmology/postdiction_ledger/verify_cosmology_postdiction_ledger_independent.py": "8edd31659a40a4cb02122d7d15061d490184815d42605521cb9e7f48efbd1b19",
@@ -209,7 +209,7 @@
   "promotes_nothing": true,
   "public_inputs_schema": "oph.cosmology.postdiction_ledger.public_inputs.v1",
   "row_count": 53,
-  "rows_sha256": "6c573dfadf3439daed2016cc36f68e03476b8703036ba7bc542d51258d69eb73",
+  "rows_sha256": "351e12d7ddb4a655a3821747a4181f410cc4b49d08027c3fa839bee1b17c111e",
   "schema": "oph.cosmology.postdiction_ledger.v1",
   "sections": [
     {
@@ -1444,24 +1444,24 @@
           "discriminates_from_baseline": true,
           "epistemic_note": "Gaussian moment diagnostic on the official chains: the Mahalanobis distance of the point (-1, 0) from the posterior mean under the sampled w0-wa covariance, converted to a two-sided normal equivalent; it is not the collaboration's delta chi-squared or evidence. Seen data; direction-neutral. The point (-1, 0) is also the LambdaCDM null, so consistency would support nothing; tension rows are reported as they stand. The posterior fractions are empirical masses under the DESI model, priors, and likelihoods.",
           "extras": {
-            "chi2_2dof_survival": 0.009170738876598417,
+            "chi2_2dof_survival": 0.009170738876587545,
             "component_sigma_distances": {
-              "w0": -2.8294287050634215,
-              "wa": 3.012505444786324
+              "w0": -2.829428705063407,
+              "wa": 3.01250544478641
             },
-            "mahalanobis_squared": 9.383474841080227,
+            "mahalanobis_squared": 9.383474841082599,
             "posterior_mass_w0_gt_minus_one": 0.9978895518303681,
             "posterior_mass_w_ge_minus_one_for_0_le_z_le_2": 7.048648110754993e-05,
             "posterior_mass_wa_nonnegative": 0.0008541303004797227
           },
           "measurement": {
             "kind": "two_parameter_gaussian_moments",
-            "w0_mean": -0.4191700669105224,
-            "w0_std": 0.20528169946464805,
-            "w0_wa_correlation": -0.9778258727827162,
-            "w0_wa_covariance": -0.11637136917907054,
-            "wa_mean": -1.7464744072033822,
-            "wa_std": 0.5797414939866636
+            "w0_mean": -0.41917006691052217,
+            "w0_std": 0.2052816994646492,
+            "w0_wa_correlation": -0.9778258727827605,
+            "w0_wa_covariance": -0.11637136917907343,
+            "wa_mean": -1.7464744072033862,
+            "wa_std": 0.5797414939866485
           },
           "measurement_display": "w0 = -0.419 +/- 0.205, wa = -1.746 +/- 0.580",
           "oph_premises": [
@@ -1480,7 +1480,7 @@
           "quantity": "(w0, wa) fixed-capacity point",
           "row_id": "w0wa_fixed_capacity_desi_dr2_bao_cmb",
           "section": "background_dark_energy",
-          "sigma_distance": 2.6056228166045248,
+          "sigma_distance": 2.6056228166049333,
           "sigma_distance_kind": "two_dof_gaussian_mahalanobis_two_sided_normal_equivalent",
           "verdict": "tension"
         },
@@ -1495,24 +1495,24 @@
           "discriminates_from_baseline": true,
           "epistemic_note": "Gaussian moment diagnostic on the official chains: the Mahalanobis distance of the point (-1, 0) from the posterior mean under the sampled w0-wa covariance, converted to a two-sided normal equivalent; it is not the collaboration's delta chi-squared or evidence. Seen data; direction-neutral. The point (-1, 0) is also the LambdaCDM null, so consistency would support nothing; tension rows are reported as they stand. The posterior fractions are empirical masses under the DESI model, priors, and likelihoods.",
           "extras": {
-            "chi2_2dof_survival": 0.009454936469971732,
+            "chi2_2dof_survival": 0.009454936469986444,
             "component_sigma_distances": {
-              "w0": -2.9520047904046702,
-              "wa": 2.9867722907282874
+              "w0": -2.952004790401431,
+              "wa": 2.9867722907283603
             },
-            "mahalanobis_squared": 9.322436592186945,
+            "mahalanobis_squared": 9.322436592183832,
             "posterior_mass_w0_gt_minus_one": 0.9988045637536698,
             "posterior_mass_w_ge_minus_one_for_0_le_z_le_2": 0.0011251164671342933,
             "posterior_mass_wa_nonnegative": 0.0006293620238032452
           },
           "measurement": {
             "kind": "two_parameter_gaussian_moments",
-            "w0_mean": -0.8379581981443356,
-            "w0_std": 0.054892120223643405,
-            "w0_wa_correlation": -0.8927674700987966,
-            "w0_wa_covariance": -0.01013481074882805,
-            "wa_mean": -0.6176883262728882,
-            "wa_std": 0.20680797400938541
+            "w0_mean": -0.8379581981443314,
+            "w0_std": 0.05489212022370506,
+            "w0_wa_correlation": -0.8927674700976148,
+            "w0_wa_covariance": -0.010134810748825789,
+            "wa_mean": -0.6176883262728894,
+            "wa_std": 0.20680797400938078
           },
           "measurement_display": "w0 = -0.838 +/- 0.055, wa = -0.618 +/- 0.207",
           "oph_premises": [
@@ -1531,7 +1531,7 @@
           "quantity": "(w0, wa) fixed-capacity point",
           "row_id": "w0wa_fixed_capacity_desi_dr2_bao_cmb_pantheonplus",
           "section": "background_dark_energy",
-          "sigma_distance": 2.5951510205053454,
+          "sigma_distance": 2.5951510205048067,
           "sigma_distance_kind": "two_dof_gaussian_mahalanobis_two_sided_normal_equivalent",
           "verdict": "tension"
         },
@@ -1546,24 +1546,24 @@
           "discriminates_from_baseline": true,
           "epistemic_note": "Gaussian moment diagnostic on the official chains: the Mahalanobis distance of the point (-1, 0) from the posterior mean under the sampled w0-wa covariance, converted to a two-sided normal equivalent; it is not the collaboration's delta chi-squared or evidence. Seen data; direction-neutral. The point (-1, 0) is also the LambdaCDM null, so consistency would support nothing; tension rows are reported as they stand. The posterior fractions are empirical masses under the DESI model, priors, and likelihoods.",
           "extras": {
-            "chi2_2dof_survival": 0.0007214897409731294,
+            "chi2_2dof_survival": 0.0007214897409725747,
             "component_sigma_distances": {
-              "w0": -3.770005473412106,
-              "wa": 3.7006804093657673
+              "w0": -3.770005473412656,
+              "wa": 3.700680409365658
             },
-            "mahalanobis_squared": 14.468384797753803,
+            "mahalanobis_squared": 14.468384797755341,
             "posterior_mass_w0_gt_minus_one": 0.9999478640555248,
             "posterior_mass_w_ge_minus_one_for_0_le_z_le_2": 0.00012056437159894425,
             "posterior_mass_wa_nonnegative": 3.2584965297011957e-06
           },
           "measurement": {
             "kind": "two_parameter_gaussian_moments",
-            "w0_mean": -0.6656627619095762,
-            "w0_std": 0.08868348877696094,
-            "w0_wa_correlation": -0.9335612030026802,
-            "w0_wa_covariance": -0.024367290304013856,
-            "wa_mean": -1.0891890176801327,
-            "wa_std": 0.2943212861406751
+            "w0_mean": -0.6656627619095767,
+            "w0_std": 0.08868348877694786,
+            "w0_wa_correlation": -0.9335612030028015,
+            "w0_wa_covariance": -0.024367290304014126,
+            "wa_mean": -1.089189017680132,
+            "wa_std": 0.2943212861406836
           },
           "measurement_display": "w0 = -0.666 +/- 0.089, wa = -1.089 +/- 0.294",
           "oph_premises": [
@@ -1582,7 +1582,7 @@
           "quantity": "(w0, wa) fixed-capacity point",
           "row_id": "w0wa_fixed_capacity_desi_dr2_bao_cmb_union3",
           "section": "background_dark_energy",
-          "sigma_distance": 3.3812800297337047,
+          "sigma_distance": 3.381280029733898,
           "sigma_distance_kind": "two_dof_gaussian_mahalanobis_two_sided_normal_equivalent",
           "verdict": "exceeds_three_sigma_diagnostic"
         },
@@ -1597,24 +1597,24 @@
           "discriminates_from_baseline": true,
           "epistemic_note": "Gaussian moment diagnostic on the official chains: the Mahalanobis distance of the point (-1, 0) from the posterior mean under the sampled w0-wa covariance, converted to a two-sided normal equivalent; it is not the collaboration's delta chi-squared or evidence. Seen data; direction-neutral. The point (-1, 0) is also the LambdaCDM null, so consistency would support nothing; tension rows are reported as they stand. The posterior fractions are empirical masses under the DESI model, priors, and likelihoods.",
           "extras": {
-            "chi2_2dof_survival": 8.668757332547376e-05,
+            "chi2_2dof_survival": 8.66875733248964e-05,
             "component_sigma_distances": {
-              "w0": -4.323723430355054,
-              "wa": 3.876669250238506
+              "w0": -4.323723430356354,
+              "wa": 3.876669250238782
             },
-            "mahalanobis_squared": 18.70640002805951,
+            "mahalanobis_squared": 18.706400028072828,
             "posterior_mass_w0_gt_minus_one": 1.0,
             "posterior_mass_w_ge_minus_one_for_0_le_z_le_2": 0.0002054219660642912,
             "posterior_mass_wa_nonnegative": 0.0
           },
           "measurement": {
             "kind": "two_parameter_gaussian_moments",
-            "w0_mean": -0.7523480181537241,
-            "w0_std": 0.05727747989328247,
-            "w0_wa_correlation": -0.907181894034366,
-            "w0_wa_covariance": -0.011544135554738433,
-            "wa_mean": -0.8612751003570971,
-            "wa_std": 0.22216883741219565
+            "w0_mean": -0.7523480181537261,
+            "w0_std": 0.057277479893264774,
+            "w0_wa_correlation": -0.9071818940350354,
+            "w0_wa_covariance": -0.011544135554742596,
+            "wa_mean": -0.8612751003570996,
+            "wa_std": 0.2221688374121805
           },
           "measurement_display": "w0 = -0.752 +/- 0.057, wa = -0.861 +/- 0.222",
           "oph_premises": [
@@ -1633,7 +1633,7 @@
           "quantity": "(w0, wa) fixed-capacity point",
           "row_id": "w0wa_fixed_capacity_desi_dr2_bao_cmb_desy5",
           "section": "background_dark_energy",
-          "sigma_distance": 3.9251170569001888,
+          "sigma_distance": 3.925117056901634,
           "sigma_distance_kind": "two_dof_gaussian_mahalanobis_two_sided_normal_equivalent",
           "verdict": "exceeds_three_sigma_diagnostic"
         }
@@ -1707,21 +1707,21 @@
           "discriminates_from_baseline": false,
           "epistemic_note": "Target-informed declared map: the capacity coordinate N = 3 pi/(Lambda l_P^2) is read from the data and both candidates were exposed after it, so the residual carries no predictive weight. Large N explains the small dimensional constant, not the closeness of the residual: a relative capacity residual delta gives a relative constant residual -delta/(1+delta). The DESI display is a base-LambdaCDM posterior display whose centrals (H0 = 68.17, Omega_Lambda = 0.6972) differ from the Planck 2018 centrals; that shift moves the coordinate by about four percent, larger than the candidate spread. Seen data.",
           "extras": {
-            "percent_residual_in_capacity": 3.662675870812396,
-            "percent_residual_in_lambda": -3.533263867678792
+            "percent_residual_in_capacity": 3.662675870812432,
+            "percent_residual_in_lambda": -3.5332638676788273
           },
           "measurement": {
-            "capacity_coordinate": 3.1757814202121464e+122,
+            "capacity_coordinate": 3.1757814202121453e+122,
             "kind": "gaussian",
-            "sigma": 3.977658418382023e-124,
+            "sigma": 3.9776584184203244e-124,
             "unit": null,
-            "value": 2.9677036022648535e-122,
+            "value": 2.9677036022648546e-122,
             "weighted_step_cdf_quantiles": {
               "0.025": 2.8899743161519555e-122,
-              "0.160": 2.92852199182499e-122,
-              "0.500": 2.9676226734509464e-122,
+              "0.160": 2.9285219918249906e-122,
+              "0.500": 2.967622673450945e-122,
               "0.840": 3.007628784196439e-122,
-              "0.975": 3.0453023296649846e-122
+              "0.975": 3.045302329664984e-122
             }
           },
           "measurement_display": "2.96770e-122 +/- 3.97766e-124 (weighted mean and std)",
@@ -1738,7 +1738,7 @@
           "quantity": "Lambda l_P^2 = 3 pi/N, N = 3.2921e+122 (candidate a)",
           "row_id": "lambda_lp2_capacity_candidate_a_desi_dr2_display",
           "section": "capacity_lambda",
-          "sigma_distance": -2.636143882894756,
+          "sigma_distance": -2.6361438828693995,
           "sigma_distance_kind": "signed_one_dimensional",
           "verdict": "tension"
         },
@@ -1806,21 +1806,21 @@
           "discriminates_from_baseline": false,
           "epistemic_note": "Target-informed declared map: the capacity coordinate N = 3 pi/(Lambda l_P^2) is read from the data and both candidates were exposed after it, so the residual carries no predictive weight. Large N explains the small dimensional constant, not the closeness of the residual: a relative capacity residual delta gives a relative constant residual -delta/(1+delta). The DESI display is a base-LambdaCDM posterior display whose centrals (H0 = 68.17, Omega_Lambda = 0.6972) differ from the Planck 2018 centrals; that shift moves the coordinate by about four percent, larger than the candidate spread. Seen data.",
           "extras": {
-            "percent_residual_in_capacity": 3.9145823763761727,
-            "percent_residual_in_lambda": -3.767115535524792
+            "percent_residual_in_capacity": 3.9145823763762087,
+            "percent_residual_in_lambda": -3.7671155355248267
           },
           "measurement": {
-            "capacity_coordinate": 3.1757814202121464e+122,
+            "capacity_coordinate": 3.1757814202121453e+122,
             "kind": "gaussian",
-            "sigma": 3.977658418382023e-124,
+            "sigma": 3.9776584184203244e-124,
             "unit": null,
-            "value": 2.9677036022648535e-122,
+            "value": 2.9677036022648546e-122,
             "weighted_step_cdf_quantiles": {
               "0.025": 2.8899743161519555e-122,
-              "0.160": 2.92852199182499e-122,
-              "0.500": 2.9676226734509464e-122,
+              "0.160": 2.9285219918249906e-122,
+              "0.500": 2.967622673450945e-122,
               "0.840": 3.007628784196439e-122,
-              "0.975": 3.0453023296649846e-122
+              "0.975": 3.045302329664984e-122
             }
           },
           "measurement_display": "2.96770e-122 +/- 3.97766e-124 (weighted mean and std)",
@@ -1837,7 +1837,7 @@
           "quantity": "Lambda l_P^2 = 3 pi/N, N = 3.3001e+122 (candidate b)",
           "row_id": "lambda_lp2_capacity_candidate_b_desi_dr2_display",
           "section": "capacity_lambda",
-          "sigma_distance": -2.8106190047038613,
+          "sigma_distance": -2.8106190046768247,
           "sigma_distance_kind": "signed_one_dimensional",
           "verdict": "tension"
         }
