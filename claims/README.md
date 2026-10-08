@@ -79,3 +79,31 @@ Three row-level contracts carry their own machine-checked declaration:
 The GitHub workflow runs the validator on registry changes and on public claim-surface changes.
 When a pull request changes paper TeX or the README claim narrative, it must also touch this
 registry/check surface. That rule keeps the registry from becoming a stale snapshot.
+
+## Numerical audit consolidation, 2026-10-08
+
+The review of [#1052](https://github.com/FloatingPragma/observer-patch-holography/pull/1052),
+[#1057](https://github.com/FloatingPragma/observer-patch-holography/pull/1057),
+[#1058](https://github.com/FloatingPragma/observer-patch-holography/pull/1058),
+[#1059](https://github.com/FloatingPragma/observer-patch-holography/pull/1059) and
+[#1060](https://github.com/FloatingPragma/observer-patch-holography/pull/1060)
+checks their combined effect on the existing claims. All 326 claim payloads,
+including their assumptions, dependencies, gates, statuses and falsifiers,
+remain unchanged. Frozen prediction targets, decision rules and custody bytes
+are preserved. These repairs add no physical-model prerequisite.
+
+| Evidence family | Sharper supported result | Public-surface disposition |
+| --- | --- | --- |
+| Petz recovery and tomography | Complete counts survive a later analysis failure; valid CMI remains available when recovery support is unresolved. Strict support validation and the squared-fidelity convention remain in force. | The Standard Model paper and IBM overview label old Stage 1 metrics as archived and unrevalidated because complete counts/states are missing. Historical values and the separate issue-509 claim are preserved. |
+| Scalar Bose readout | The equilibrium identity `p V = 2 sum(G) / 3` retains small pressure; nonzero free energies and positive mode occupations cannot disappear behind an absolute verifier tolerance. | Existing equations and supplied-action/ensemble scope remain correct. The live receipt is regenerated and independently checked. |
+| DESI posterior accounting | Exact decimal weights, endpoint tests, centered moments and separately accumulated subset masses preserve narrow spread and positive excluded tails. | The retrospective receipt and its downstream ledger are regenerated. Existing comparison classifications and the prospective FZ-13/FZ-15 commitments remain unchanged. |
+| Neutral quantum packet | Stable scalar invariants preserve norm suppression and normalized radius, including when only the radius is reportable. | Existing packet formulas, supplied preparation and unproved quantum propagation status remain correct. The live preparation receipt is independently replayed. |
+| Finite collar certificates | All declared influences and multiplicities contribute; the existing `1/2` calibration and `3/8` witness floors remain exact. | The Yang--Mills paper states the shared checker boundary: supplied finite arithmetic cannot authenticate physical-source or continuum evidence. |
+
+The paper, flagship and book passages state the applicable thermal,
+packet and cosmology premises. They need no new qualifications from these
+numerical fixes. Local replay of the repaired recovery producer is software
+evidence and supplies no new hardware measurement. The older Stage 1 summaries
+remain archived, without a claim that their measured numbers survived a
+recalculation. Validation and exact reviewed heads are recorded in the
+[standing audit](https://github.com/FloatingPragma/observer-patch-holography/issues/1033).

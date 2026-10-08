@@ -13,6 +13,7 @@ The maintainer found defects after the author's audits and passing CI:
 | --- | --- | --- |
 | [#1048](https://github.com/FloatingPragma/observer-patch-holography/pull/1048#pullrequestreview-5423083959) | Subnormal Gibbs populations were rounded before conversion to exact fractions. Variance and entropy derivative were both wrong by 75% while their ratio was correct. | Compute each response component from the original supplied parameters using a separate scalar partition function. Cross population precision boundaries at ordinary and rescaled observable units. |
 | [#1049](https://github.com/FloatingPragma/observer-patch-holography/pull/1049#pullrequestreview-5423084144) | Structural symbolic equality rejected an ordinary full-rank complex Markov state whose exact support residual was zero. Real examples and many existing tests missed it. | Compare operators in a canonical exact domain. Exercise complex conditional products, singular supports, nearby non-Markov states and genuine support escape through the public consumers. |
+| [#1052](https://github.com/FloatingPragma/observer-patch-holography/pull/1052#pullrequestreview-5439504720) | Correct Petz support refusal aborted a valid count-to-CMI run before its acquired evidence was saved. Default circuit selection hid the separate seed-1 failure. | Save acquired evidence before analysis; test recognized partial results and unexpected errors through serialization, including a nondefault valid circuit. |
 
 The retained reproductions are
 [`test_gibbs_population_response.py`](../../code/quantum_information/test_gibbs_population_response.py)
@@ -60,7 +61,9 @@ not a domain argument.
 - **Representations:** include real and complex inputs, exact dyadic basis
   changes, repeated eigenvalues, full-rank and singular states, and
   one-dimensional tensor factors. Check algebraic equality in a canonical
-  domain, not by expression-tree equality.
+  domain, not by expression-tree equality. Check original scalars in mixed
+  numeric containers before a common array dtype erases integer precision,
+  Boolean types or missingness; validating the coerced array is too late.
 - **Both sides of a decision:** pair an exact zero with a nearby nonzero
   input; valid support with actual support escape; complete evidence with
   incomplete, empty and malformed evidence. A blanket rejection is not a
@@ -69,7 +72,11 @@ not a domain argument.
 - **Callers:** follow the public entry point through its wrappers and
   downstream diagnostics. Test the internal helper and the returned
   observable or classification. Exercise serialization and replay where
-  the result is retained as evidence.
+  the result is retained as evidence. Inject a failure after acquisition
+  and verify that raw evidence survives. A recognized unavailable diagnostic
+  must not discard independent valid results or become a successful check;
+  unrelated errors must propagate. Exercise reused output locations so
+  replacement evidence cannot be paired with a stale success report.
 - **Numerical versus exact claims:** repeated-precision agreement is not
   an interval bound or proof of a zero. An exact certificate must establish
   the property of the supplied matrix, without silently projecting it onto

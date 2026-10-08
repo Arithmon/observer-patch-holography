@@ -35,6 +35,16 @@ guarantees the existence of a recovery channel; it does not generally certify
 the particular unrotated Petz map used here. The frozen JSON files retain their
 original values.
 
+The [recovery evidence audit](../../quantum_information/RECOVERY_EVIDENCE.md)
+also found that the former Stage 1 analysis silently repaired invalid states,
+deleted small positive B-sector probabilities with an inverse-root cutoff,
+and replaced missing tomography settings by zero expectations. The current
+code rejects invalid or incomplete data, preserves resolved support, and
+reports the explicit tomography correction. These archived summaries lack
+the counts and reconstructed matrices needed to determine the numerical
+impact on their measured rows; those rows have not been independently
+revalidated. New summaries retain complete tomography counts for replay.
+
 ## Z3
 
 - `z3/ibm_marrakesh_summary.json`

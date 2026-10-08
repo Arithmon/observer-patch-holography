@@ -68,5 +68,5 @@ class CollarGapCertificateTests(unittest.TestCase):
                 CERTIFICATE.verify(manifest_path, receipt_path)
 
     def test_physical_placeholder_fails_closed(self) -> None:
-        with self.assertRaisesRegex(ValueError, "type_table"):
+        with self.assertRaisesRegex(ValueError, "physical_source_receipt is unsupported"):
             CERTIFICATE.validate(manifest("physical_compact_gauge_uninstantiated.json"))

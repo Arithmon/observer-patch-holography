@@ -13,11 +13,12 @@ from fractions import Fraction as Q
 import hashlib
 import importlib.util
 import json
+import math
 from pathlib import Path
 import sys
 
+import mpmath
 import numpy as np
-from scipy.special import i0e, i1e
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -36,6 +37,7 @@ PIN_PATHS = (
     'code/electromagnetism/whitney_quantum_packet.py',
     'code/electromagnetism/verify_whitney_quantum_packet.py',
     'code/electromagnetism/test_whitney_quantum_packet.py',
+    'code/electromagnetism/test_neutral_packet_observables.py',
     'paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex',
     'paper/tex_fragments/WHITNEY_QUANTUM_PACKET.tex',
     PARENT_PATH,
@@ -70,24 +72,25 @@ def canonical(value):
 
 
 def real_vector(value, size, name):
-    raw = np.asarray(value)
-    if raw.dtype.kind not in 'iuf' or raw.shape != (size,):
-        raise ValueError('finite real '+name+' required')
-    result = np.asarray(raw, dtype=float)
-    if not np.isfinite(result).all():
-        raise ValueError('finite real '+name+' required')
-    return result
+    # These geometric/sampling callers are binary64 calculations. Validate
+    # each original entry before coercion and refuse a changed input value.
+    return np.array([_binary64(v, name) for v in _exact_vector(value, size)])
 
 
 def positive(value, name):
-    if isinstance(value, (bool, np.bool_, str, bytes)) or np.ndim(value) or not np.isrealobj(value):
+    result = _binary64(_rational(value), name)
+    if result <= 0:
         raise ValueError('positive finite '+name+' required')
+    return result
+
+
+def _binary64(value, name):
     try:
         result = float(value)
-    except (TypeError, ValueError, OverflowError) as error:
-        raise ValueError('positive finite '+name+' required') from error
-    if not np.isfinite(result) or result <= 0:
-        raise ValueError('positive finite '+name+' required')
+    except (OverflowError, ValueError) as error:
+        raise ValueError(name+' must be exactly representable in binary64') from error
+    if not np.isfinite(result) or Q(result) != value:
+        raise ValueError(name+' must be exactly representable in binary64')
     return result
 
 
@@ -131,19 +134,84 @@ def phase_space(q68, velocity68, mesh=None, charge=.25):
 
 
 def overlap_parameters(center, momentum, sigma, hbar=1):
-    center = real_vector(center, 56, 'packet center')
-    momentum = real_vector(momentum, 56, 'packet momentum')
-    sigma, hbar = positive(sigma, 'width'), positive(hbar, 'hbar')
-    x, p = center[30:], momentum[30:]
-    jx = np.r_[-x[13:], x[:13]]
-    a = float(x@x/(4*sigma**2)+sigma**2*(p@p)/hbar**2)
-    b = float(p@jx/hbar)
-    discriminant = a*a-b*b
-    if not np.isfinite([a, b, discriminant]).all() or discriminant < -1e-11*(1+a*a):
-        raise ValueError('invalid overlap parameters')
-    z = float(np.sqrt(max(0, discriminant)))
-    norm_squared = float(np.exp(z-a)*i0e(z))
-    return {'A': a, 'B': b, 'norm_squared': norm_squared}
+    values = _scalar_observables(center, momentum, sigma, hbar)
+    return {key: _reported(values[key], key) for key in ('A', 'B', 'norm_squared')}
+
+
+def _rational(value):
+    """Preserve each original real scalar before any array coercion."""
+    if (np.ma.isMaskedArray(value) or isinstance(value, (bool, np.bool_))
+            or not isinstance(value, (int, float, np.integer, np.floating, Q))):
+        raise ValueError('finite real packet scalar required')
+    try:
+        # Fraction can retain NumPy integer components and thereby their
+        # fixed-width overflow. Canonicalize before any rational operation.
+        if isinstance(value, (int, np.integer)):
+            return Q(int(value))
+        if isinstance(value, Q):
+            return Q(int(value.numerator), int(value.denominator))
+        return Q(*value.as_integer_ratio())
+    except (ValueError, OverflowError) as error:
+        raise ValueError('finite real packet scalar required') from error
+
+
+def _exact_vector(value, size=56):
+    if np.ma.isMaskedArray(value):
+        raise ValueError('masked packet vector')
+    raw = np.asarray(value, dtype=object)
+    if raw.shape != (size,):
+        raise ValueError(str(size)+' real packet coordinates required')
+    return [_rational(v) for v in raw]
+
+
+def _reported(value, name):
+    """Require relative 1e-12 representability; a positive value is not zero."""
+    result = float(value)
+    if not np.isfinite(result) or (value != 0 and
+            abs((result-value)/value) > 1e-12):
+        raise ValueError(name+' outside reliable binary64 reporting range')
+    return result
+
+
+def _scalar_observables(center, momentum, sigma, hbar):
+    """One original-input calculation for both neutral-state observables.
+
+    Exact rational invariants decide A >= |B|, including equality. Scaled
+    Bessel evaluation uses a private context with enough extra digits for
+    z*(1-I1/I0). This is numerical evaluation, not an interval certificate.
+    """
+    x, p = _exact_vector(center)[30:], _exact_vector(momentum)[30:]
+    s, h = _rational(sigma), _rational(hbar)
+    if s <= 0 or h <= 0:
+        raise ValueError('positive width and hbar required')
+    xx = sum(v*v for v in x)/(4*s*s)
+    pp = s*s*sum(v*v for v in p)/(h*h)
+    b = sum(p[i+13]*x[i]-p[i]*x[i+13] for i in range(13))/h
+    a, difference = xx+pp, xx-pp
+    gram = 4*xx*pp-b*b
+    if gram < 0:
+        raise ValueError('invalid exact packet Gram determinant')
+    mp = mpmath.mp.clone()
+    # bit_length gives a conservative decimal digit budget for z <= A.
+    mp.dps = 80+max(0, (a.numerator.bit_length()-a.denominator.bit_length()+3)//3)
+    def real(q):
+        return mp.mpf(q.numerator)/q.denominator
+    aa, bb, ss, dd = map(real, (a, b, s*s, difference))
+    z = mp.sqrt(real(difference*difference+gram))
+    if z == 0:
+        scaled_i0, deficit = mp.mpf(1), mp.mpf(0)
+    else:
+        i0 = mp.besseli(0, z)
+        scaled_i0 = mp.exp(-z)*i0
+        deficit = z*(1-mp.besseli(1, z)/i0)
+    # Rationalize each dangerous subtraction rather than flooring it.
+    gap = real(b*b)/(aa+z) if a else mp.mpf(0)
+    positive_part = real(gram)/(z-dd) if difference < 0 else z+dd
+    radius = 2*ss*(13+positive_part-deficit)
+    if radius <= 0 or not mp.isfinite(radius):
+        raise ValueError('unresolved positive packet radius')
+    return {'A': aa, 'B': bb, 'norm_squared': mp.exp(-gap)*scaled_i0,
+            'radius': radius}
 
 
 def seed_log_half_density(point, center, momentum, sigma, hbar=1):
@@ -151,14 +219,22 @@ def seed_log_half_density(point, center, momentum, sigma, hbar=1):
     center = real_vector(center, 56, 'packet center')
     momentum = real_vector(momentum, 56, 'packet momentum')
     sigma, hbar = positive(sigma, 'width'), positive(hbar, 'hbar')
-    delta = point-center
-    return complex(-14*np.log(2*np.pi*sigma**2)-delta@delta/(4*sigma**2), momentum@delta/hbar)
+    try:
+        with np.errstate(over='raise', invalid='raise', divide='raise', under='ignore'):
+            delta = point-center
+            scaled = (delta/sigma)/2
+            value = complex(-14*(math.log(2*math.pi)+2*math.log(sigma))-scaled@scaled,
+                            momentum@delta/hbar)
+    except (FloatingPointError, OverflowError) as error:
+        raise ValueError('seed logarithm outside binary64 calculation range') from error
+    if not np.isfinite(value):
+        raise ValueError('seed logarithm outside binary64 reporting range')
+    return value
 
 
 def rotate(vector, angle):
     vector = real_vector(vector, 56, 'circle vector')
-    if not np.ndim(angle) == 0 or not np.isfinite(angle):
-        raise ValueError('finite angle required')
+    angle = _binary64(_rational(angle), 'angle')
     z = (vector[30:43]+1j*vector[43:])*np.exp(1j*angle)
     return np.r_[vector[:30], z.real, z.imag]
 
@@ -170,19 +246,25 @@ def projected_half_density(point, center, momentum, sigma, hbar=1, nodes=256):
     norm = overlap_parameters(center, momentum, sigma, hbar)['norm_squared']**.5
     if norm == 0:
         raise ValueError('projection norm underflows at these parameters')
-    values = [np.exp(seed_log_half_density(point, rotate(center, a), rotate(momentum, a), sigma, hbar))
-              for a in np.arange(nodes)*(2*np.pi/nodes)]
-    return complex(sum(values)/nodes/norm)
+    try:
+        with np.errstate(over='raise', invalid='raise', divide='raise', under='ignore'):
+            values = [np.exp(seed_log_half_density(point, rotate(center, a), rotate(momentum, a), sigma, hbar))
+                      for a in np.arange(nodes)*(2*np.pi/nodes)]
+            if any(value == 0 for value in values):
+                raise ValueError('pointwise Gaussian amplitude below binary64 range')
+            # Weight before summing: the mean can fit when the raw sum cannot.
+            value = complex(math.fsum(v.real/nodes for v in values),
+                            math.fsum(v.imag/nodes for v in values))/norm
+    except (FloatingPointError, OverflowError) as error:
+        raise ValueError('pointwise amplitude outside binary64 calculation range') from error
+    if not np.isfinite(value):
+        raise ValueError('pointwise amplitude outside binary64 reporting range')
+    return value
 
 
 def scalar_radius_moment(center, momentum, sigma, hbar=1):
     """Exact nodal-radius formula, evaluated numerically; not a spatial L2 norm."""
-    row = overlap_parameters(center, momentum, sigma, hbar)
-    sigma, hbar = positive(sigma, 'width'), positive(hbar, 'hbar')
-    x, p = np.asarray(center)[30:], np.asarray(momentum)[30:]
-    z = np.sqrt(max(0, row['A']**2-row['B']**2))
-    ratio = float(i1e(z)/i0e(z))
-    return float(26*sigma**2+(x@x)/2-2*sigma**4*(p@p)/hbar**2+2*sigma**2*z*ratio)
+    return _reported(_scalar_observables(center, momentum, sigma, hbar)['radius'], 'radius')
 
 
 def exact_initial():
