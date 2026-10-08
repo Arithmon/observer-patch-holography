@@ -7,6 +7,10 @@ and Kogut--Susskind identities. Comparing two interacting results is portable
 replay, not an independent interacting eigensolve or a certified interval bound.
 Independent original-input numerical controls belong in the scientific tests.
 Self-digests bind local bytes; they do not authenticate their origin.
+Nonzero JSON numbers that underflow to binary64 zero are refused before any
+exact-zero claim is checked. Necessary scalar bounds also enforce possible
+probability normalization, least-squares and total-variation ceilings, and the
+spectral ceiling of a sum of unit-rate heat-bath projections.
 
 Substantive numbers have relative-only replay tolerance. Absolute error is
 allowed only for diagnostics whose exact value is zero: the free residual,
@@ -25,6 +29,7 @@ import hashlib
 import json
 import math
 import sys
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
 
@@ -81,6 +86,15 @@ def _nonfinite_constant(value: str) -> None:
 def _json_float(value: str) -> float:
     number = float(value)
     _require(math.isfinite(number), f"nonfinite JSON number: {value}")
+    if number == 0:
+        # Check the original lexeme before a nonzero quantity can be promoted
+        # to an exact structural zero. Decimal construction does not first
+        # round through binary64 and preserves subnormal exponent information.
+        try:
+            original = Decimal(value)
+        except InvalidOperation as error:
+            raise ReceiptValidationError(f"JSON number is outside the supported range: {value}") from error
+        _require(original.is_zero(), f"nonzero JSON number underflows and rounds to zero: {value}")
     return number
 
 
@@ -191,6 +205,9 @@ def _validate_run(run: Any, specification: tuple, index: int) -> None:
     for key, expected in (("L", size), ("transfer", transfer),
                           ("n_links", 2 * size**2), ("n_orbits", 2 ** (size**2 + 1))):
         _same(run[key], expected, f"{path}.{key}")
+    # These necessary scalar bounds allow only dimension-dependent roundoff.
+    # The validated geometry fixes this budget; a supplied rate cannot enlarge it.
+    roundoff = _zero_budget(run, "dimensionless")
     if control is not None:
         _same(run["control"], control, f"{path}.control")
     _keys(run["parameters"], set(parameters), f"{path}.parameters")
@@ -215,6 +232,9 @@ def _validate_run(run: Any, specification: tuple, index: int) -> None:
     _require(fit["rate_min"] == min(fit["rates"]) and fit["rate_max"] == max(fit["rates"]),
              path + ".constant_rate_fit: inconsistent rate extrema")
     _number(fit["relative_frobenius_residual"], path + ".constant_rate_fit.relative_frobenius_residual", nonnegative=True)
+    # The zero coefficient vector is available to the least-squares fit.
+    _require(fit["relative_frobenius_residual"] <= 1 + roundoff,
+             path + ".constant_rate_fit: relative residual exceeds the zero-fit bound")
 
     fiber = run["fiber_dependent_rates"]
     _keys(fiber, {"rate_min", "rate_max", "spread_max_over_min", "all_rates_positive",
@@ -227,10 +247,20 @@ def _validate_run(run: Any, specification: tuple, index: int) -> None:
     _require(fiber["rate_min"] <= fiber["rate_max"], path + ".fiber_dependent_rates: inverted extrema")
     _relative(fiber["spread_max_over_min"], fiber["rate_max"] / fiber["rate_min"],
               path + ".fiber_dependent_rates.spread_max_over_min", 8 * sys.float_info.epsilon)
+    # Each link is a fixed-point-free involution, with distinct partners for
+    # these L=2,3 tori. Reversibility makes c equal at both ends of a fiber;
+    # the two directed magnitudes sum to c. There are n*E/2 such fibers.
+    mean_fiber_rate = fiber["offdiagonal_mass_single_flip"] / (run["n_orbits"] * run["n_links"] / 2)
+    _require(fiber["rate_min"] * (1 - roundoff) <= mean_fiber_rate <=
+             fiber["rate_max"] * (1 + roundoff),
+             path + ".fiber_dependent_rates: single-flip mass contradicts rate_min/rate_max")
 
     dob = run["dobrushin"]
     _keys(dob, {"eta_star", "dobrushin_condition_holds", "unit_rate_floor_c_star_times_1_minus_eta"}, path + ".dobrushin")
     eta = _number(dob["eta_star"], path + ".dobrushin.eta_star", nonnegative=True)
+    # Each off-diagonal total-variation influence is at most one.
+    _require(eta <= (run["n_links"] - 1) * (1 + roundoff),
+             path + ".dobrushin.eta_star: exceeds the influence-count bound")
     _bool(dob["dobrushin_condition_holds"], path + ".dobrushin.dobrushin_condition_holds")
     _require(dob["dobrushin_condition_holds"] == (eta < 1), path + ".dobrushin: inconsistent condition")
     floor = _number(dob["unit_rate_floor_c_star_times_1_minus_eta"], path + ".dobrushin.unit_rate_floor_c_star_times_1_minus_eta", nonnegative=True)
@@ -242,6 +272,15 @@ def _validate_run(run: Any, specification: tuple, index: int) -> None:
         _number(value, f"{path}.spectral.{key}", positive=True)
     _require(spectral["pi_min"] <= 1 / run["n_orbits"] <= spectral["pi_max"] <= 1,
              path + ".spectral: impossible probability extrema")
+    # Min and max are attained, so normalization must be possible with one
+    # entry at each extremum, not merely an average between the two values.
+    least_total = math.fsum((spectral["pi_max"], (run["n_orbits"] - 1) * spectral["pi_min"]))
+    greatest_total = math.fsum((spectral["pi_min"], (run["n_orbits"] - 1) * spectral["pi_max"]))
+    _require(least_total <= 1 + roundoff and greatest_total >= 1 - roundoff,
+             path + ".spectral: attained probability extrema contradict normalization")
+    # In the pi-weighted inner product each I-E_l is an orthogonal projection.
+    _require(spectral["gap_unit_rate_heat_bath"] <= run["n_links"] * (1 + roundoff),
+             path + ".spectral.gap_unit_rate_heat_bath: exceeds the unit-projector sum bound")
     if transfer == "wilson":
         _number(run["lambda_max"], path + ".lambda_max", positive=True)
     else:
@@ -278,6 +317,9 @@ def _validate_run(run: Any, specification: tuple, index: int) -> None:
             _relative(value, rate, f"{path}.constant_rate_fit.rates[{position}]: free identity")
         for key in ("rate_min", "rate_max"):
             _relative(fiber[key], rate, f"{path}.fiber_dependent_rates.{key}: free identity")
+        _relative(fiber["offdiagonal_mass_single_flip"],
+                  run["n_orbits"] * run["n_links"] * rate / 2,
+                  path + ".fiber_dependent_rates.offdiagonal_mass_single_flip: free identity")
         for key, expected in (("gap_H", size * rate), ("gap_unit_rate_heat_bath", size),
                               ("pi_min", 1 / run["n_orbits"]), ("pi_max", 1 / run["n_orbits"])):
             _relative(spectral[key], expected, f"{path}.spectral.{key}: free identity")

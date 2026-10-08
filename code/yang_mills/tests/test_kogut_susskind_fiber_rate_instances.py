@@ -26,6 +26,7 @@ REQUIRED_TESTS = {
     "code/yang_mills/tests/test_z2_finite_transfer_verifier.py",
     "code/yang_mills/tests/test_z2_transfer_spectrum.py",
     "code/yang_mills/tests/test_z2_full_space_controls.py",
+    "code/yang_mills/tests/test_z2_kogut_precision.py",
     "code/yang_mills/tests/test_kogut_susskind_fiber_rate_instances.py",
 }
 
@@ -139,6 +140,48 @@ def test_companion_reads_primary_once(source_specimen, monkeypatch):
     monkeypatch.setattr(Path, "read_bytes", read_bytes)
     instances.committed_cross_check()
     assert source_reads == [path]
+
+
+@pytest.mark.parametrize("token,accepted", [("0", True), ("-0.0", True), ("0e-1000", True),
+                                            ("1e-1000", False), ("-1e-1000", False),
+                                            ("5e-324", False)])
+def test_companion_checks_original_number_before_exact_zero(source_specimen, token, accepted):
+    receipt, path = source_specimen
+    local = next(row for row in receipt["runs"] if row["transfer"] == "kogut_susskind")
+    local["fiber_dependent_rates"]["offdiagonal_mass_outside_single_flip"] = json.loads(token)
+    _rehash(receipt)
+    local["fiber_dependent_rates"]["offdiagonal_mass_outside_single_flip"] = "RAW_NUMBER_TOKEN"
+    path.write_text(json.dumps(receipt, sort_keys=True).replace('"RAW_NUMBER_TOKEN"', token),
+                    encoding="utf-8")
+    if accepted:
+        checked = instances.committed_cross_check()
+        assert len(checked["kogut_susskind_runs"]) == 6
+        assert checked["committed_receipt_sha256_at_read"] == hashlib.sha256(path.read_bytes()).hexdigest()
+    else:
+        with pytest.raises(verifier.ReceiptValidationError):
+            instances.committed_cross_check()
+
+
+@pytest.mark.parametrize("mutation", ["probability_extrema", "fit_ceiling", "influence_ceiling",
+                                      "heat_bath_ceiling", "free_mass"])
+def test_companion_rejects_necessary_scalar_contradictions(source_specimen, mutation):
+    receipt, path = source_specimen
+    run = receipt["runs"][1]
+    if mutation == "probability_extrema":
+        run["spectral"].update(pi_min=0.03, pi_max=0.5)
+    elif mutation == "fit_ceiling":
+        run["constant_rate_fit"]["relative_frobenius_residual"] = 2.0
+    elif mutation == "influence_ceiling":
+        run["dobrushin"].update(eta_star=100.0, dobrushin_condition_holds=False,
+                                unit_rate_floor_c_star_times_1_minus_eta=0.0)
+    elif mutation == "heat_bath_ceiling":
+        run["spectral"]["gap_unit_rate_heat_bath"] = 100.0
+    else:
+        receipt["runs"][0]["fiber_dependent_rates"]["offdiagonal_mass_single_flip"] *= 0.5
+    _rehash(receipt)
+    path.write_text(json.dumps(receipt, sort_keys=True), encoding="utf-8")
+    with pytest.raises(verifier.ReceiptValidationError):
+        instances.committed_cross_check()
 
 
 @pytest.mark.parametrize("rates", [(2.0, 2.0), (2.5, 10.0 / 3.0)])

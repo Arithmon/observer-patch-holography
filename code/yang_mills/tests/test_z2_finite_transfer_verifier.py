@@ -5,6 +5,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -317,3 +318,112 @@ def test_source_binding_is_to_raw_bytes(specimen):
     producer.write_bytes(producer.read_bytes().replace(b"\n", b"\r\n"))
     with pytest.raises(verifier.ReceiptValidationError, match="producer_sha256"):
         _verify(specimen, receipt)
+
+
+@pytest.mark.parametrize("token", ["1e-1000", "-1e-1000", "2e-324", "-2e-324"])
+def test_strict_loader_refuses_nonzero_json_numbers_lost_to_zero(tmp_path, token):
+    path = tmp_path / "underflow.json"
+    path.write_text('{"original_number":' + token + '}', encoding="utf-8")
+    with pytest.raises(verifier.ReceiptValidationError, match="underflow|rounds to zero"):
+        verifier.load_receipt(path)
+
+
+@pytest.mark.parametrize("token", ["0", "-0.0", "0e-1000", "5e-324", "-5e-324", "1e-310"])
+def test_strict_loader_keeps_zeros_and_representable_subnormals(tmp_path, token):
+    path = tmp_path / "representable.json"
+    path.write_text('{"original_number":' + token + '}', encoding="utf-8")
+    value = verifier.load_receipt(path)["original_number"]
+    assert value == float(token)
+    if token in ("5e-324", "-5e-324", "1e-310"):
+        assert value != 0
+
+
+def _raw_ks_mass_token(receipt, token):
+    changed = copy.deepcopy(receipt)
+    local = next(run for run in changed["runs"] if run["transfer"] == "kogut_susskind")
+    # Bind the attacker's anticipated rounded payload.  The raw token must
+    # nevertheless be checked before it can become an exact-zero claim.
+    local["fiber_dependent_rates"]["offdiagonal_mass_outside_single_flip"] = json.loads(token)
+    _rehash(changed)
+    local["fiber_dependent_rates"]["offdiagonal_mass_outside_single_flip"] = "RAW_NUMBER_TOKEN"
+    return json.dumps(changed, sort_keys=True).replace('"RAW_NUMBER_TOKEN"', token)
+
+
+@pytest.mark.parametrize("token,accepted", [("0", True), ("-0.0", True), ("0e-1000", True),
+                                            ("1e-1000", False), ("-1e-1000", False),
+                                            ("5e-324", False)])
+def test_cli_checks_original_json_before_structural_zero_claim(tmp_path, token, accepted):
+    original = HERE / "receipts/z2_finite_transfer_receipt.json"
+    path = tmp_path / "candidate.json"
+    path.write_text(_raw_ks_mass_token(verifier.load_receipt(original), token), encoding="utf-8")
+    result = subprocess.run(
+        [sys.executable, str(HERE / "verify_z2_finite_transfer_receipt.py"), str(path), str(original)],
+        capture_output=True, text=True, check=False,
+    )
+    if accepted:
+        assert result.returncode == 0, result.stderr
+        assert "portable replay verified" in result.stdout
+    else:
+        assert result.returncode != 0, result.stdout
+        assert "ReceiptValidationError" in result.stderr
+
+
+@pytest.mark.parametrize("mutation", ["probability_lower", "probability_upper", "fit_ceiling",
+                                      "influence_ceiling", "heat_bath_ceiling", "free_mass",
+                                      "fiber_mass_lower", "fiber_mass_upper"])
+def test_bindings_reject_mathematically_impossible_scalars(specimen, mutation):
+    changed = copy.deepcopy(specimen[0])
+    run = changed["runs"][1]
+    if mutation == "probability_lower":
+        run["spectral"].update(pi_min=0.03, pi_max=0.5)
+        assert 0.5 + 31 * 0.03 > 1
+    elif mutation == "probability_upper":
+        run["spectral"].update(pi_min=0.001, pi_max=1 / 32)
+        assert 0.001 + 31 / 32 < 1
+    elif mutation == "fit_ceiling":
+        run["constant_rate_fit"]["relative_frobenius_residual"] = 2.0
+    elif mutation == "influence_ceiling":
+        run["dobrushin"].update(eta_star=100.0, dobrushin_condition_holds=False,
+                                unit_rate_floor_c_star_times_1_minus_eta=0.0)
+    elif mutation == "heat_bath_ceiling":
+        run["spectral"]["gap_unit_rate_heat_bath"] = 100.0
+    elif mutation == "free_mass":
+        changed["runs"][0]["fiber_dependent_rates"]["offdiagonal_mass_single_flip"] *= 0.5
+    else:
+        fibers = run["fiber_dependent_rates"]
+        pairs = run["n_orbits"] * run["n_links"] / 2
+        fibers["offdiagonal_mass_single_flip"] = (
+            0.5 * pairs * fibers["rate_min"] if mutation == "fiber_mass_lower"
+            else 2 * pairs * fibers["rate_max"]
+        )
+    _rehash(changed)
+    with pytest.raises(verifier.ReceiptValidationError):
+        verifier.verify_bindings(changed, specimen[1], expected_grid=specimen[2])
+    # This is a necessary scalar condition, independently of whether two
+    # claimed interacting replays happen to agree with each other.
+    with pytest.raises(verifier.ReceiptValidationError):
+        _verify(specimen, changed, changed)
+
+
+@pytest.mark.parametrize("boundary", ["probability_lower", "probability_upper", "fit_ceiling",
+                                      "influence_ceiling", "heat_bath_ceiling"])
+def test_necessary_scalar_bounds_allow_dimension_roundoff(specimen, boundary):
+    # These exercise only the necessary scalar bounds. Matching inputs here
+    # are not an independent interacting eigensolve or a production receipt.
+    changed = copy.deepcopy(specimen[0])
+    run = changed["runs"][1]
+    allowance = 128 * sys.float_info.epsilon * run["n_orbits"]
+    if boundary == "probability_lower":
+        run["spectral"].update(pi_min=0.03, pi_max=1 - 31 * 0.03 + allowance / 4)
+    elif boundary == "probability_upper":
+        run["spectral"].update(pi_min=0.001, pi_max=(1 - 0.001 - allowance / 4) / 31)
+    elif boundary == "fit_ceiling":
+        run["constant_rate_fit"]["relative_frobenius_residual"] = 1 + allowance / 4
+    elif boundary == "influence_ceiling":
+        run["dobrushin"].update(eta_star=7 * (1 + allowance / 4),
+                                dobrushin_condition_holds=False,
+                                unit_rate_floor_c_star_times_1_minus_eta=0.0)
+    else:
+        run["spectral"]["gap_unit_rate_heat_bath"] = 8 * (1 + allowance / 4)
+    _rehash(changed)
+    _verify(specimen, changed, changed)
