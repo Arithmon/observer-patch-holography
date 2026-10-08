@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 887,
+    "file_count": 888,
     "files": [
       {
         "byte_count": 42558,
@@ -2948,14 +2948,14 @@
         "sha256": "sha256:8507221cee47ceb81dfb9befa63832599648bf90a91d29059b8f625896c0217e"
       },
       {
-        "byte_count": 8060,
+        "byte_count": 10319,
         "path": "code/consensus/README.md",
-        "sha256": "sha256:f35f6cabe27ed4d270b1d0b7463f7af502a1409aa118a27ba82b537fd496a5ff"
+        "sha256": "sha256:4c4605dc7d91c6f0744fa6bce22441ca40fe2ed53a03ad7407179eeed0f4a75b"
       },
       {
-        "byte_count": 64362,
+        "byte_count": 73908,
         "path": "code/consensus/compiled_lattice_settling_certificate.py",
-        "sha256": "sha256:79eddf4e3abb93a697ca63cce13ccc1e8b5e5c0b18080820f51cf7eaf4d43579"
+        "sha256": "sha256:9cb43dee5579b6fed665df2ddd3921bd23ac9607c94181bbee336a6f6d743980"
       },
       {
         "byte_count": 15243,
@@ -2988,9 +2988,14 @@
         "sha256": "sha256:2d5eac8d7dd84eac273ac86b246f95a9fd21035d826e476b7b957ddd6c891b8f"
       },
       {
-        "byte_count": 12303,
+        "byte_count": 15010,
         "path": "code/consensus/test_compiled_lattice_settling_certificate.py",
-        "sha256": "sha256:f6d5eb34e668f59c3d85fbd6ec4f607d69ce70b70bb06a184e86f75080e0d5a8"
+        "sha256": "sha256:ee0b396db653a0530a64da958e6c90c338cdfffdffebc01ac9fdf2d8710ff94e"
+      },
+      {
+        "byte_count": 21799,
+        "path": "code/consensus/test_compiled_source_correspondence.py",
+        "sha256": "sha256:c5976094c50f88c029ec8484310071307abc0bdea0bb8b24cc48d8e52e2d3d91"
       },
       {
         "byte_count": 14560,
@@ -4633,7 +4638,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:bac00eb0a5070f5219ccff1c1edb70b5816a459fc43d933152800441975b2142",
+    "files_sha256": "sha256:e2131817d6ba3d88086378295fb7a714968eb29171137777273c63ed82baec8d",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7542,7 +7547,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:4ba19ac7fe22c1938ba649caff51dfd70fd484f8fa8df1ca8477ec009f07b332",
+  "inventory_sha256": "sha256:6b9a7590289a3ae737336c7f7b7014ead6349bd1e16161da8ece1b8490266e9c",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

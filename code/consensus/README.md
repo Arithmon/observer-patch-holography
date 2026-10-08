@@ -41,7 +41,7 @@ Run and verify the issue #328 settling certificate from the repo root:
 ```bash
 python3 code/consensus/compiled_lattice_settling_certificate.py emit
 python3 code/consensus/compiled_lattice_settling_certificate.py verify
-python3 -m pytest code/consensus/test_compiled_lattice_settling_certificate.py
+python3 -W error -m pytest -q code/consensus
 ```
 
 The emitted manifest is
@@ -63,6 +63,41 @@ a compiler gadget that blocks backward writes would be a revised theorem
 target requiring its own proof; issue #626 tracks that construction.
 Continuum and physical-hardware attachment
 remain separate open interfaces.
+
+Compilation checks the complete Boolean truth and update tables over every
+declared port assignment and internal register state. It accepts only kernels
+whose update is state independent, whose readback equals the declared truth,
+and whose settled register state is fixed. The compiled object binds immutable
+snapshots of those tables to its netlist, register layout, wiring and rank
+data; construction checks that the derived fields agree, and certification
+checks the used entries of any supplied primitive library against that binding.
+
+Receipt verification preserves the types of the supplied fields and rejects
+duplicate JSON keys. Numeric substitutes for Boolean flags and fractional
+depths that round to integer-valued floats cannot pass through Python's loose
+numeric equality. Valid changes to whitespace and object-key order are accepted.
+
+Runtime evaluates the full supplied `update(ports, state)` table at each patch
+using the pre-round state. The assembled step is therefore exactly the product
+of the verified local kernels. Their state independence identifies that product
+with the ranked functional update: induction on dependency rank gives
+`T <= compiled_depth`, while the checked path-count weights give strict descent
+of the settling potential away from the generated extension. This argument
+applies to the accepted finite Boolean kernels and wiring, not an unchecked
+replacement update law.
+
+The repaired compiler boundary rejects, for example, a supplied wire with
+`q' = x XOR q`: at `x = 1` its original table has the cycle `0, 1, 0, 1` and no
+fixed state. Previously direct compilation used only the `q = 0` table slice
+and falsely certified a one-round bound. The reference manifest already
+verified its primitives before compilation, so its valid reference circuits
+retain their settling bounds. The tree-packet export, architecture benchmarks,
+and issue #517 receipt use separate engines. Consensus source changes require
+refreshing the live source-current inventory with
+`python3 code/a5_closure/source_current_order_sensitive_inventory.py all`, then
+running its producer and independent verifiers; no frozen evidence is refreshed.
+The `consensus-settling.yml` workflow executes every test in this directory on
+Ubuntu and Windows with warnings treated as errors.
 
 `TXN-DIAMOND-1` exhausts a finite reference engine; it is evidence that the
 declared read/write, support-reclosed component-merge, prepared-batch,
