@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 477,
+  "surface_count": 478,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1051,6 +1051,11 @@
     },
     {
       "path": "docs/research/SOURCE_SEA_ENERGY.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/WHITNEY_KINETIC_AUDIT.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },

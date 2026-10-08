@@ -11,13 +11,14 @@ interacting-quantization theorem assumes nonzero charge.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from decimal import Decimal
 from functools import lru_cache
 from fractions import Fraction
 from itertools import combinations, product
-from math import isfinite
+from math import frexp, fsum, isfinite, ldexp
 
 import numpy as np
-from scipy.linalg import null_space
+from scipy.linalg import null_space, qr, solve_triangular
 
 from verify_cone_whitney_bridge import source_mesh
 
@@ -105,79 +106,306 @@ def geometry(order=4):
 def _configuration(a, psi):
     if not np.isrealobj(a):
         raise ValueError("real edge coefficients required")
-    a, psi = np.asarray(a, dtype=float), np.asarray(psi, dtype=complex)
-    if a.shape != (42,) or psi.shape != (13,) or not np.isfinite(a).all() or not np.isfinite(psi).all():
+    if np.ma.isMaskedArray(a) or np.ma.isMaskedArray(psi):
+        raise ValueError("masked configuration coefficients are not supplied values")
+    a, psi = np.asarray(a, dtype=object), np.asarray(psi, dtype=object)
+    if a.shape != (42,) or psi.shape != (13,):
         raise ValueError("finite 42-edge and 13-complex-node coefficients required")
-    return a, psi
+    try:
+        real_a = np.array([_real_scalar(x, "edge coefficient") for x in a])
+        complex_psi = []
+        for value in psi:
+            if isinstance(value, (complex, np.complexfloating)):
+                real, imag = value.real, value.imag
+            else:
+                real, imag = value, 0
+            complex_psi.append(complex(_real_scalar(real, "scalar coefficient"),
+                                       _real_scalar(imag, "scalar coefficient")))
+    except ValueError as exc:
+        raise ValueError("finite 42-edge and 13-complex-node coefficients required without input precision loss") from exc
+    return real_a, np.array(complex_psi)
 
 
 def _real_scalar(value, name):
-    if np.ndim(value) != 0 or not np.isrealobj(value) or not np.isfinite(value):
+    if (np.ma.isMaskedArray(value) or isinstance(value, (bool, np.bool_))
+            or not isinstance(value, (int, float, np.integer, np.floating, Fraction, Decimal))):
         raise ValueError("finite real "+name+" required")
-    return float(value)
+    try:
+        exact = (Fraction(int(value)) if isinstance(value, (int, np.integer))
+                 else Fraction(value) if isinstance(value, Fraction)
+                 else Fraction(*value.as_integer_ratio()))
+        result = float(exact)
+        if not isfinite(result) or Fraction(result) != exact:
+            raise ValueError("original scalar is not representable in binary64")
+    except (ValueError, TypeError, OverflowError) as exc:
+        raise ValueError("finite real "+name+" required without input precision loss") from exc
+    return result
 
 
-def scalar_fields(a, psi, charge, mesh):
-    """Value, real configuration Jacobian and covariant spatial gradient."""
+def scalar_fields(a, psi, charge, mesh, *, include_covariant=True):
+    """Value, Jacobian and optional covariant spatial gradient.
+
+    Density-only callers do not evaluate unused spatial products, which may
+    exceed the reporting range even when their kinetic factors are resolved.
+    """
     a, psi = _configuration(a, psi)
     charge = _real_scalar(charge, "charge")
-    phase = np.exp(1j*charge*np.einsum("qie,e->qi", mesh.paths, a))
+    phase = (np.exp(1j*charge*np.einsum("qie,e->qi", mesh.paths, a)) if charge
+             else np.ones(mesh.nodal.shape, dtype=complex))
     w = mesh.nodal*phase
     value = w@psi
-    dressing = 1j*charge*np.einsum("qi,i,qie->qe", w, psi, mesh.paths)
+    # Pair the two endpoints before multiplying by barycentric weights.
+    # Uniform matter at a=0 has exactly zero edge derivative; summing the
+    # two large endpoint contributions separately loses that identity.
+    left, right = np.asarray(mesh.edges).T
+    transported = phase*psi
+    dressing = ((1j*charge*mesh.nodal[:, left]*mesh.nodal[:, right]
+                 * (transported[:, left]-transported[:, right])) if charge
+                else np.zeros((len(mesh.weights), 42), dtype=complex))
     jacobian = np.column_stack((dressing, w, 1j*w))
-    grad_phase = np.einsum("qiec,e->qic", mesh.path_grad, a)
-    grad = np.einsum("qi,i,qic->qc", phase, psi, mesh.nodal_grad)
-    grad += 1j*charge*np.einsum("qi,i,qic->qc", w, psi, grad_phase)
-    potential = np.einsum("qec,e->qc", mesh.edge_forms, a)
-    covariant = grad-1j*charge*potential*value[:, None]
+    if not include_covariant:
+        return value, jacobian, None
+    # Partition of unity removes the constant mode before differentiation.
+    # Node zero belongs to every tetrahedron of this cone.
+    grad = np.einsum("qi,qic->qc", transported-transported[:, :1], mesh.nodal_grad)
+    if charge:
+        grad_phase = np.einsum("qiec,e->qic", mesh.path_grad, charge*a)
+        grad += 1j*np.einsum("qi,i,qic->qc", w, psi, grad_phase)
+        potential = np.einsum("qec,e->qc", mesh.edge_forms, charge*a)
+        grad -= 1j*potential*value[:, None]
+    covariant = grad
     return value, jacobian, covariant
+
+
+def _potential_parameters(mass_squared, quartic):
+    try:
+        mass_squared = _real_scalar(mass_squared, "mass-squared")
+        quartic = _real_scalar(quartic, "quartic coupling")
+        if mass_squared < 0 or quartic < 0:
+            raise ValueError("negative potential coupling")
+    except ValueError as exc:
+        raise ValueError("nonnegative finite mass-squared and quartic coupling required without input precision loss") from exc
+    return mass_squared, quartic
+
+
+def _positive_product_sum(groups):
+    """Sum nonnegative products without first overflowing/underflowing powers.
+
+    A group consists of (factor, integer power) pairs. Mantissas stay near
+    unity until the final sum; the powers of two are tracked separately.
+    This evaluates the supplied quadrature, not a bound on integration error.
+    """
+    mantissas, exponents = [], []
+    for group in groups:
+        arrays = np.broadcast_arrays(*(np.asarray(value, dtype=float) for value, _ in group))
+        mantissa = np.ones(arrays[0].shape)
+        exponent = np.zeros(arrays[0].shape, dtype=np.int64)
+        for array, (_, power) in zip(arrays, group, strict=True):
+            if not np.isfinite(array).all() or (power % 2 and np.any(array < 0)):
+                raise ValueError("potential precision requires finite positive factors")
+            fraction, binary_exponent = np.frexp(abs(array))
+            mantissa *= fraction**power
+            exponent += binary_exponent*power
+        nonzero = mantissa != 0
+        mantissas.extend(mantissa[nonzero].flat)
+        exponents.extend(exponent[nonzero].flat)
+    if not mantissas:
+        return 0.
+    maximum = int(max(exponents))
+    # Terms too far below the largest term cannot change the reported sum.
+    # Their underflow here is relative to that sum, not loss of its scale.
+    with np.errstate(under="ignore"):
+        scaled = np.ldexp(np.asarray(mantissas), np.asarray(exponents)-maximum)
+    mantissa, adjustment = frexp(fsum(scaled))
+    exponent = maximum+adjustment
+    try:
+        result = ldexp(mantissa, exponent)
+        recovered = ldexp(result, -exponent)
+    except OverflowError as exc:
+        raise ValueError("potential precision outside finite reporting range") from exc
+    if not isfinite(result) or result <= 0 or abs(recovered/mantissa-1) > 1e-12:
+        raise ValueError("potential precision outside reliable reporting range")
+    return result
+
+
+def _magnetic_energy_terms(a, mesh):
+    """Positive curl factors from original oriented face circulations.
+
+    Three original binary64 edge values determine each circulation. Exact
+    rational addition retains a small curl behind a large pure gradient;
+    it is not a zero floor on the already damaged stiffness quadratic.
+    """
+    if not np.any(a):
+        return []
+    oriented = {}
+    for index, (left, right) in enumerate(mesh.edges):
+        oriented[left, right] = Fraction(float(a[index]))
+        oriented[right, left] = -oriented[left, right]
+    groups = []
+    for tet in mesh.tetrahedra:
+        pairs = list(combinations(range(1, 4), 2))
+        try:
+            circulation = np.array([float(oriented[tet[0], tet[i]]+oriented[tet[i], tet[j]]
+                                          -oriented[tet[0], tet[j]]) for i, j in pairs])
+        except OverflowError as exc:
+            raise ValueError("magnetic potential precision outside finite reporting range") from exc
+        scale = np.max(abs(circulation))
+        if scale:
+            points = mesh.vertices[list(tet)]
+            gradients = np.linalg.inv(np.column_stack((np.ones(4), points)))[1:].T
+            volume = abs(np.linalg.det(points[1:]-points[0]))/6
+            curls = np.array([2*np.cross(gradients[i], gradients[j]) for i, j in pairs])
+            normalized = (circulation/scale)@curls
+            groups.append(((volume/2, 1), (scale, 2), (normalized, 2)))
+    return groups
+
+
+def _potential_energy(a, value, covariant, mass_squared, quartic, mesh):
+    groups = _magnetic_energy_terms(a, mesh)
+    for component in (covariant.real, covariant.imag):
+        groups.append(((mesh.weights[:, None], 1), (component, 2)))
+    if mass_squared:
+        for component in (value.real, value.imag):
+            groups.append(((mesh.weights, 1), (mass_squared, 1), (component, 2)))
+    if quartic:
+        for component in (value.real, value.imag):
+            groups.append(((mesh.weights, 1), (quartic, 1), (.5, 1), (component, 4)))
+        groups.append(((mesh.weights, 1), (quartic, 1), (value.real, 2), (value.imag, 2)))
+    return _positive_product_sum(groups)
 
 
 def coefficients(a, psi, charge=1.0, mass_squared=1.0, quartic=1.0, mesh=None):
     """Full 68-real-coordinate kinetic G and the coupled potential V."""
     mesh = geometry() if mesh is None else mesh
     a, psi = _configuration(a, psi)
-    if not all(np.ndim(x) == 0 and np.isrealobj(x) and np.isfinite(x) and x >= 0
-               for x in (mass_squared, quartic)):
-        raise ValueError("nonnegative finite mass-squared and quartic coupling required")
-    value, jacobian, covariant = scalar_fields(a, psi, charge, mesh)
-    weighted = np.sqrt(mesh.weights)[:, None]*jacobian
-    metric = 2*np.real(weighted.conj().T@weighted)
-    metric[:42, :42] += mesh.mass
-    density = np.sum(abs(covariant)**2, axis=1)+mass_squared*abs(value)**2+quartic*abs(value)**4/2
-    potential = a@mesh.stiffness@a/2+mesh.weights@density
-    return metric, float(potential)
+    mass_squared, quartic = _potential_parameters(mass_squared, quartic)
+    try:
+        with np.errstate(over="raise", invalid="raise", divide="raise"):
+            value, jacobian, covariant = scalar_fields(a, psi, charge, mesh)
+            weighted = np.sqrt(mesh.weights)[:, None]*jacobian
+            metric = 2*np.real(weighted.conj().T@weighted)
+            metric[:42, :42] += mesh.mass
+            potential = _potential_energy(a, value, covariant, mass_squared, quartic, mesh)
+    except FloatingPointError as exc:
+        raise ValueError("coefficient precision outside finite reporting range") from exc
+    if not np.isfinite(metric).all():
+        raise ValueError("coefficient precision outside finite reporting range")
+    return metric, potential
 
 
 def vertical(psi, charge, mesh):
     """All thirteen infinitesimal gauge columns in [a, Re psi, Im psi]."""
-    psi = np.asarray(psi, dtype=complex)
+    _, psi = _configuration(np.zeros(42), psi)
     charge = _real_scalar(charge, "charge")
     if psi.shape != (13,) or not np.isfinite(psi).all():
         raise ValueError("finite 13-complex-node coefficients required")
     return np.vstack((mesh.d, -charge*np.diag(psi.imag), charge*np.diag(psi.real)))
 
 
-def reduced_coefficients(a, psi, charge=1.0, mass_squared=1.0, quartic=1.0, mesh=None):
-    """Schur metric in the Euclidean-orthonormal slice coordinates.
+KINETIC_RESOLUTION = 1e-7
 
-    Return gamma, V, eta_map, inertia. For a slice velocity v (56 reals),
-    the minimizing scalar potential is mean_zero @ eta_map @ v.
-    The residual constant potential is retained separately; add e*c*J
-    to the slice velocity before applying this map.
+
+@dataclass(frozen=True)
+class KineticReduction:
+    """Numerical square root of the reduced positive quadratic form.
+
+    The resolution gates concern binary64 algebra on the supplied element
+    factors. They are not interval bounds on quadrature or geometry error.
+    A usable square root need not admit a resolved dense Gram matrix.
+    """
+    factor: np.ndarray
+    potential: float | None
+    eta_map: np.ndarray
+    inertia: np.ndarray
+    singular_values: np.ndarray
+    resolution: float
+
+    def logdet(self):
+        return float(2*np.log(abs(np.diag(self.factor))).sum())
+
+    def dense_metric(self):
+        absolute_gram = abs(self.factor).T@abs(self.factor)
+        smallest = self.singular_values[-1]
+        gram_resolution = (56*np.finfo(float).eps
+                           * (np.linalg.norm(absolute_gram, 2)/smallest)/smallest)
+        if not np.isfinite(gram_resolution) or gram_resolution > KINETIC_RESOLUTION:
+            raise ValueError("kinetic precision insufficient for a dense reduced metric")
+        gamma = self.factor.T@self.factor
+        try:
+            np.linalg.cholesky(gamma)
+        except np.linalg.LinAlgError as exc:
+            raise ValueError("kinetic precision does not resolve a positive dense metric") from exc
+        return gamma
+
+
+def reduced_kinetic(a, psi, charge=1.0, mass_squared=1.0, quartic=1.0, mesh=None,
+                    *, include_potential=True):
+    """Minimize the original positive action using scaled Householder QR.
+
+    If [V,H]=Q R are vertical and slice kinetic factors, the trailing block
+    of R is the reduced factor and the first block determines the minimizer.
+    No nearly equal Gram matrices are subtracted. The direct vertical scalar
+    factor is the Ward identity i*e*Psi*lambda, before any rounded J@R product.
+    Density-only callers may omit the potential, returned as None: an unused
+    quartic energy can overflow even when the kinetic density is resolved.
     """
     mesh = geometry() if mesh is None else mesh
     a, psi = _configuration(a, psi)
-    if np.max(abs(mesh.d.T@mesh.mass@a)) > 1e-9*(1+np.linalg.norm(a)):
+    charge = _real_scalar(charge, "charge")
+    mass_squared, quartic = _potential_parameters(mass_squared, quartic)
+    if type(include_potential) is not bool:
+        raise ValueError("include_potential must be a Boolean")
+    # Compare in common units before any norm squares can overflow. This is
+    # the same absolute-plus-relative slice tolerance at every finite scale.
+    a_scale = max(1., float(np.max(abs(a))))
+    normalized_a = a/a_scale
+    if np.max(abs(mesh.d.T@mesh.mass@normalized_a)) > 1e-9*(1/a_scale+np.linalg.norm(normalized_a)):
         raise ValueError("configuration must lie on the Coulomb slice")
-    metric, potential = coefficients(a, psi, charge, mass_squared, quartic, mesh)
-    r = vertical(psi, charge, mesh)@mesh.mean_zero
-    inertia = r.T@metric@r
-    coupling = r.T@metric@mesh.slice
-    eta_map = -np.linalg.solve(inertia, coupling)
-    gamma = mesh.slice.T@metric@mesh.slice+coupling.T@eta_map
-    return gamma, potential, eta_map, inertia
+    try:
+        with np.errstate(over="raise", invalid="raise", divide="raise"):
+            value, jacobian, covariant = scalar_fields(a, psi, charge, mesh, include_covariant=include_potential)
+            electric = np.linalg.cholesky(mesh.mass).T
+            weights = np.sqrt(2*mesh.weights)[:, None]
+            scalar_h = weights*(jacobian@mesh.slice)
+            scalar_v = weights*(1j*charge*value[:, None]*(mesh.nodal@mesh.mean_zero))
+            h = np.vstack((electric@mesh.slice[:42], scalar_h.real, scalar_h.imag))
+            v = np.vstack((electric@mesh.d@mesh.mean_zero, scalar_v.real, scalar_v.imag))
+            joint = np.column_stack((v, h))
+            scales = np.linalg.norm(joint, axis=0)
+            if not np.isfinite(joint).all() or np.any(scales <= 0) or not np.isfinite(scales).all():
+                raise ValueError("kinetic precision cannot resolve the source factors")
+            normalized = joint/scales
+            vertical_spectrum = np.linalg.svd(normalized[:, :12], compute_uv=False)
+            triangular = qr(normalized, mode="r", check_finite=False)[0][:68]
+            eta_map = (-solve_triangular(triangular[:12, :12], triangular[:12, 12:])
+                       * scales[12:][None, :]/scales[:12, None])
+            factor = triangular[12:, 12:]*scales[12:][None, :]
+            singular = np.linalg.svd(factor, compute_uv=False)
+            resolution = (68*np.finfo(float).eps*np.linalg.norm(h, 2)/singular[-1]
+                          * vertical_spectrum[0]/vertical_spectrum[-1])
+            if not np.isfinite(resolution) or resolution > KINETIC_RESOLUTION:
+                raise ValueError("kinetic precision insufficient for the reduced factor")
+            inertia = v.T@v
+            potential = None
+            if include_potential:
+                potential = _potential_energy(a, value, covariant, mass_squared, quartic, mesh)
+            if ((potential is not None and not np.isfinite(potential))
+                    or not np.isfinite(eta_map).all() or not np.isfinite(inertia).all()):
+                raise ValueError("kinetic precision outside finite reporting range")
+    except (FloatingPointError, np.linalg.LinAlgError) as exc:
+        raise ValueError("kinetic precision insufficient for the supplied configuration") from exc
+    return KineticReduction(factor, potential, eta_map, inertia, singular, float(resolution))
+
+
+def reduced_coefficients(a, psi, charge=1.0, mass_squared=1.0, quartic=1.0, mesh=None):
+    """Return resolved dense gamma, V, eta_map and gauge inertia.
+
+    The minimizing potential is mean_zero @ eta_map @ velocity. A finite,
+    positive action whose weak modes cannot survive dense binary64 assembly
+    is explicitly refused; density-only callers can use the square-root path.
+    """
+    reduction = reduced_kinetic(a, psi, charge, mass_squared, quartic, mesh)
+    return reduction.dense_metric(), reduction.potential, reduction.eta_map, reduction.inertia
 
 
 def coulomb_representative(a, psi, charge=1.0, mesh=None):
@@ -192,17 +420,17 @@ def coulomb_representative(a, psi, charge=1.0, mesh=None):
 
 
 def _state_arguments(q, sigma):
-    if not np.isrealobj(q):
+    if not np.isrealobj(q) or np.ma.isMaskedArray(q):
         raise ValueError("finite real 56-dimensional state coordinates required")
-    q = np.asarray(q, dtype=float)
-    if q.shape != (56,) or not np.isfinite(q).all():
+    q = np.asarray(q, dtype=object)
+    if q.shape != (56,):
         raise ValueError("finite real 56-dimensional state coordinates required")
     try:
-        valid_sigma = (not isinstance(sigma, (bool, np.bool_)) and np.ndim(sigma) == 0
-                       and np.isrealobj(sigma) and isfinite(sigma) and sigma > 0)
-    except (TypeError, ValueError, OverflowError):
-        valid_sigma = False
-    if not valid_sigma:
+        q = np.array([_real_scalar(value, "state coordinate") for value in q])
+    except ValueError as exc:
+        raise ValueError("finite real 56-dimensional state coordinates required without input precision loss") from exc
+    sigma = _real_scalar(sigma, "sigma")
+    if sigma <= 0:
         raise ValueError("positive finite real sigma required")
     return q, float(sigma)
 
@@ -214,7 +442,15 @@ def gaussian_half_density_log(q, sigma=1.0):
     modulus is the density of N(0, sigma**2 I56). No state evolution is run.
     """
     q, sigma = _state_arguments(q, sigma)
-    return float(-14*(np.log(2*np.pi)+2*np.log(sigma))-(q/sigma)@(q/sigma)/4)
+    try:
+        with np.errstate(over="raise", invalid="raise", divide="raise"):
+            half_scaled = (q/sigma)/2
+            result = float(-14*(np.log(2*np.pi)+2*np.log(sigma))-half_scaled@half_scaled)
+    except FloatingPointError as exc:
+        raise ValueError("Gaussian log amplitude outside finite reporting range") from exc
+    if not isfinite(result):
+        raise ValueError("Gaussian log amplitude outside finite reporting range")
+    return result
 
 
 def gaussian_state_log_amplitude(q, sigma=1.0, charge=1.0, mesh=None):
@@ -237,11 +473,11 @@ def gaussian_state_log_amplitude(q, sigma=1.0, charge=1.0, mesh=None):
         raise ValueError("orthonormal Coulomb frame with standard scalar coordinates required")
     a = mesh.slice[:42, :30]@q[:30]
     psi = q[30:43]+1j*q[43:]
-    gamma, _, _, _ = reduced_coefficients(a, psi, charge=charge, mesh=mesh)
-    sign, logdet = np.linalg.slogdet(gamma)
-    if sign <= 0 or not np.isfinite(logdet):
-        raise ValueError("numerically positive reduced metric required")
-    return float(gaussian_half_density_log(q, sigma)-logdet/4)
+    logdet = reduced_kinetic(a, psi, charge=charge, mesh=mesh, include_potential=False).logdet()
+    result = float(gaussian_half_density_log(q, sigma)-logdet/4)
+    if not isfinite(result):
+        raise ValueError("Gaussian state log amplitude outside finite reporting range")
+    return result
 
 
 def gaussian_initial_moments(sigma, volume, transverse_stiffness_trace):

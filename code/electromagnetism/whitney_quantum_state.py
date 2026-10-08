@@ -103,11 +103,9 @@ def amplitude_samples():
         samples = []
         for order in (4, 5, 6):
             mesh = replace(quantum.geometry(order), slice=base.slice, mean_zero=base.mean_zero)
-            gamma, _, _, _ = quantum.reduced_coefficients(np.zeros(42), q[30:43]+1j*q[43:],
-                charge=.25, mass_squared=.5, quartic=.25, mesh=mesh)
-            sign, logdet = np.linalg.slogdet(gamma)
-            if sign <= 0:
-                raise ValueError("nonpositive illustrative metric determinant")
+            reduction = quantum.reduced_kinetic(np.zeros(42), q[30:43]+1j*q[43:],
+                charge=.25, mass_squared=.5, quartic=.25, mesh=mesh, include_potential=False)
+            logdet = reduction.logdet()
             samples.append({"quadrature_order": order,
                 "log_rho_numeric": float(logdet/2),
                 "log_f_numeric": quantum.gaussian_state_log_amplitude(q, sigma=.5, charge=.25, mesh=mesh)})

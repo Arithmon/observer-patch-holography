@@ -9,14 +9,16 @@ the Hilbert/operator-domain statements; this finite replay does not.
 from __future__ import annotations
 
 import argparse
+from decimal import Decimal
 from fractions import Fraction as Q
 import hashlib
-from itertools import combinations
+from itertools import combinations, product
 import json
 from math import factorial, prod
 from pathlib import Path
 import re
 
+import mpmath
 import numpy as np
 from scipy.linalg import null_space
 import sympy as sp
@@ -189,48 +191,215 @@ def expected_observables(volume):
     }
 
 
-def independent_log_rho(psi, xyz, edges, tets):
-    """Exact-degree simplex formulas, with floating matrix linear algebra."""
-    charge = .25
-    metric = np.zeros((68, 68))
-    mass = np.zeros((42, 42))
+def exact_real(value):
+    """Retain the supplied real component before a common array dtype exists."""
+    require(not isinstance(value, (bool, np.bool_)), "finite real replay scalar")
+    try:
+        if isinstance(value, (int, np.integer)):
+            return Q(int(value))
+        if isinstance(value, Q):
+            return Q(int(value.numerator), int(value.denominator))
+        if isinstance(value, Decimal):
+            return Q(value)
+        require(isinstance(value, (float, np.floating)), "finite real replay scalar")
+        return Q(*value.as_integer_ratio())
+    except (ValueError, OverflowError) as error:
+        raise ValueError("finite real replay scalar") from error
+
+
+def real_components(value, shape):
+    require(not np.ma.isMaskedArray(value), "unmasked replay data")
+    raw = np.asarray(value, dtype=object)
+    require(raw.shape == shape, "replay data shape")
+    return np.array([exact_real(v) for v in raw.flat], dtype=object).reshape(shape)
+
+
+def complex_components(value):
+    require(not np.ma.isMaskedArray(value), "unmasked replay matter")
+    raw = np.asarray(value, dtype=object)
+    require(raw.shape == (13,), "13 complex replay matter coordinates")
+    return [(exact_real(v.real), exact_real(v.imag))
+            if isinstance(v, (complex, np.complexfloating)) else (exact_real(v), Q(0))
+            for v in raw]
+
+
+def require_original_gradient(values, edges):
+    """Return its mean-zero potential after exact original edge-cycle closure.
+
+    A numerical Coulomb residual cannot decide whether a small radiative
+    field is zero. The monomial replay supports only configurations whose
+    edge cochain is a vertex gradient; it does not evaluate a nonzero
+    Coulomb field's magnetic energy or charged dressing phases.
+    """
+    values = real_components(values, (42,))
+    require(len(edges) == 42 and all(len(edge) == 2 and
+            all(type(i) is int and 0 <= i < 13 for i in edge) and edge[0] != edge[1]
+            for edge in edges), "original gradient incidence")
+    potential = [None]*13
+    potential[0] = Q(0)
+    for _ in range(13):
+        for value, (left, right) in zip(values, edges, strict=True):
+            if potential[left] is not None and potential[right] is None:
+                potential[right] = potential[left]+value
+            elif potential[right] is not None and potential[left] is None:
+                potential[left] = potential[right]-value
+        if all(value is not None for value in potential):
+            break
+    require(all(value is not None for value in potential), "original gradient connected incidence")
+    require(all(potential[right]-potential[left] == value
+                for value, (left, right) in zip(values, edges, strict=True)),
+            "original edge field must be an exact vertex gradient for the a=0 replay")
+    mean = sum(potential, Q(0))/13
+    return [value-mean for value in potential]
+
+
+def replay_context(*components):
+    # Four powers of the largest scale cover the field-dependent condition
+    # numbers. The full exponent span also matters: an O(1) gauge tangent
+    # can cancel and leave an originally supplied 1e-100 physical velocity.
+    # Numerator/denominator lengths retain exact near-one differences too,
+    # which an exponent-only budget would miss. Bit lengths avoid Python's
+    # decimal integer-string limit. Keep another 270 guard bits (80 digits).
+    # This remains a numerical replay budget, not an interval certificate.
+    lengths = [(abs(v.numerator).bit_length(), v.denominator.bit_length())
+               for values in components for v in values if v]
+    upper = max([0]+[numerator-denominator+1 for numerator, denominator in lengths])
+    lower = min([0]+[numerator-denominator-1 for numerator, denominator in lengths])
+    original_bits = max([0]+[max(pair) for pair in lengths])
+    mp = mpmath.mp.clone()
+    mp.prec = 270+3*upper+max(upper-lower, original_bits)
+    return mp
+
+
+def mp_real(mp, value):
+    return mp.mpf(value.numerator)/value.denominator
+
+
+def moment_system(mp, psi, xyz, edges, tets, *, potential=False):
+    """Original-input simplex moments, before any binary64 Gram assembly.
+
+    psi and xyz already belong to this private high-precision context. The
+    geometry consists of the supplied vertices, not a repaired rounded Gram.
+    """
+    require(len(edges) == 42 and len(tets) == 20 and xyz.rows == 13 and xyz.cols == 3,
+            "fixed cone replay geometry")
+    charge = mp.mpf(1)/4
+    metric, mass, energy = mp.matrix(68), mp.matrix(42), mp.mpf(0)
     for tet in tets:
-        points = xyz[list(tet)]
-        gradients = np.linalg.inv(np.column_stack((np.ones(4), points)))[1:].T
-        volume = abs(np.linalg.det(points[1:]-points[0]))/6
+        require(len(tet) == 4 and len(set(tet)) == 4 and
+                all(type(i) is int and 0 <= i < 13 for i in tet), "tetrahedron vertices")
+        points = mp.matrix([[xyz[i, j] for j in range(3)] for i in tet])
+        affine = mp.matrix([[1]+list(points[i, :]) for i in range(4)])
+        try:
+            gradients = mp.inverse(affine)[1:, :].T
+        except ZeroDivisionError as error:
+            raise ValueError("nondegenerate replay tetrahedron") from error
+        volume = abs(mp.det(mp.matrix([[points[i, j]-points[0, j]
+                                      for j in range(3)] for i in range(1, 4)])))/6
+        require(volume > 0, "positive replay tetrahedron volume")
+        gradient_gram = gradients*gradients.T
         edge_columns, columns = [], []
         for e, (u, v) in enumerate(edges):
             if u in tet and v in tet:
                 i, j = tet.index(u), tet.index(v)
                 edge_columns.append((e, i, j))
-                columns.append((e, 1j*charge*(psi[u]-psi[v]), (i, j)))
+                columns.append((e, mp.j*charge*(psi[u]-psi[v]), (i, j)))
         for i, vertex in enumerate(tet):
-            columns.extend(((42+vertex, 1, (i,)), (55+vertex, 1j, (i,))))
+            columns.extend(((42+vertex, 1, (i,)), (55+vertex, mp.j, (i,))))
         for e, i, j in edge_columns:
             for f, k, l in edge_columns:
-                mass[e, f] += volume/20*((1+int(i == k))*(gradients[j]@gradients[l])
-                    -(1+int(i == l))*(gradients[j]@gradients[k])
-                    -(1+int(j == k))*(gradients[i]@gradients[l])
-                    +(1+int(j == l))*(gradients[i]@gradients[k]))
+                mass[e, f] += volume/20*((1+int(i == k))*gradient_gram[j, l]
+                    -(1+int(i == l))*gradient_gram[j, k]
+                    -(1+int(j == k))*gradient_gram[i, l]
+                    +(1+int(j == l))*gradient_gram[i, k])
         for col, value, powers in columns:
             for other, other_value, other_powers in columns:
                 degree = powers+other_powers
-                integral = volume*float(simplex_moment(tuple(degree.count(i) for i in range(4))))
-                metric[col, other] += 2*np.real(np.conj(value)*other_value)*integral
+                integral = volume*mp_real(mp, simplex_moment(tuple(degree.count(i) for i in range(4))))
+                metric[col, other] += 2*mp.re(mp.conj(value)*other_value)*integral
+        if potential:
+            local = [psi[i] for i in tet]
+            energy += volume*mp.fsum(mp.re(mp.conj(local[i])*local[j])*gradient_gram[i, j]
+                                    for i, j in product(range(4), repeat=2))
+            for degree, coefficient in ((2, mp.mpf(1)/2), (4, mp.mpf(1)/8)):
+                for indices in product(range(4), repeat=degree):
+                    term = mp.fprod(mp.conj(local[i]) if n % 2 == 0 else local[i]
+                                    for n, i in enumerate(indices))
+                    energy += coefficient*volume*mp.re(term)*mp_real(
+                        mp, simplex_moment(tuple(indices.count(i) for i in range(4))))
     metric[:42, :42] += mass
-    d = np.zeros((42, 13))
+    return metric, mass, energy
+
+
+def positive_factor(mp, matrix, name):
+    """A resolved Cholesky factor; determinant sign cannot establish SPD."""
+    require(matrix.rows == matrix.cols and all(mp.isfinite(x) for x in matrix), name)
+    scale = max((abs(x) for x in matrix), default=mp.mpf(0))
+    require(scale > 0, name)
+    tolerance = scale*mp.power(10, 20-mp.dps)
+    require(max(abs(x) for x in matrix-matrix.T) <= tolerance, name+" symmetry")
+    try:
+        return mp.cholesky((matrix+matrix.T)/2, tol=tolerance)
+    except ValueError as error:
+        raise ValueError(name+" positive definite at replay precision") from error
+
+
+def solve_factor(mp, factor, right):
+    """Reuse a Cholesky factor for every right-hand side."""
+    result = mp.matrix(right.rows, right.cols)
+    for col in range(right.cols):
+        intermediate = mp.matrix(right.rows, 1)
+        for i in range(right.rows):
+            intermediate[i] = (right[i, col]-mp.fsum(factor[i, j]*intermediate[j]
+                                                    for j in range(i)))/factor[i, i]
+        for i in range(right.rows-1, -1, -1):
+            result[i, col] = (intermediate[i]-mp.fsum(factor[j, i]*result[j, col]
+                                                     for j in range(i+1, right.rows)))/factor[i, i]
+    return result
+
+
+def reduced_moments(mp, metric, vertical, section):
+    inertia, coupling = vertical.T*metric*vertical, vertical.T*metric*section
+    factor = positive_factor(mp, inertia, "gauge inertia")
+    eta_map = -solve_factor(mp, factor, coupling)
+    gamma = section.T*metric*section+coupling.T*eta_map
+    root = positive_factor(mp, gamma, "reduced kinetic metric")
+    # Symmetrize only the working-precision multiplication residual already
+    # checked above. No eigenvalue clipping or binary64 positivity repair.
+    return (gamma+gamma.T)/2, eta_map, mp.fsum(mp.log(root[i, i]) for i in range(root.rows))
+
+
+def reported(value, name):
+    result = float(value)
+    require(np.isfinite(result) and (value == 0 or abs((result-value)/value) <= 1e-12),
+            name+" outside reliable binary64 reporting range")
+    return result
+
+
+def independent_log_rho(psi, xyz, edges, tets):
+    """Original-input moments and high-precision constrained determinant."""
+    parts = complex_components(psi)
+    vertices = real_components(xyz, (13, 3))
+    mp = replay_context([x for pair in parts for x in pair], vertices.flat)
+    matter = [mp.mpc(mp_real(mp, re), mp_real(mp, im)) for re, im in parts]
+    points = mp.matrix([[mp_real(mp, x) for x in row] for row in vertices])
+    metric, mass, _ = moment_system(mp, matter, points, edges, tets)
+    d = mp.matrix(42, 13)
     for edge, (i, j) in enumerate(edges):
         d[edge, i], d[edge, j] = -1, 1
-    transverse, mean_zero = null_space(d.T@mass), null_space(np.ones((1, 13)))
+    # The small fixed geometric nullspace is well-conditioned; lift its
+    # supplied binary64 basis before the field-dependent matrix operations.
+    transverse = null_space(np.array((d.T*mass).tolist(), dtype=float))
     require(transverse.shape == (42, 30), "Coulomb dimension")
-    section = np.zeros((68, 56)); section[:42, :30] = transverse; section[42:, 30:] = np.eye(26)
-    vertical = np.vstack((d, -charge*np.diag(psi.imag), charge*np.diag(psi.real)))@mean_zero
-    inertia, coupling = vertical.T@metric@vertical, vertical.T@metric@section
-    gamma = section.T@metric@section-coupling.T@np.linalg.solve(inertia, coupling)
-    require(np.linalg.eigvalsh(gamma).min() > 0, "positive illustrative reduced metric")
-    sign, logdet = np.linalg.slogdet(gamma)
-    require(sign > 0 and np.isfinite(logdet), "illustrative density determinant")
-    return float(logdet/2)
+    section = mp.matrix(68, 56)
+    section[:42, :30], section[42:, 30:] = mp.matrix(transverse.tolist()), mp.eye(26)
+    basis = mp.matrix([[-1]*12]+np.eye(12, dtype=int).tolist())
+    vertical = mp.matrix(68, 13)
+    vertical[:42, :] = d
+    for i, value in enumerate(matter):
+        vertical[42+i, i], vertical[55+i, i] = -mp.im(value)/4, mp.re(value)/4
+    _, _, log_rho = reduced_moments(mp, metric, vertical*basis, section)
+    return reported(log_rho, "log density")
 
 
 def verify(packet):
