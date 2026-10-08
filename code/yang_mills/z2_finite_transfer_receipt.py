@@ -200,6 +200,8 @@ class Z2GaugeOrbits:
 
 
 def _symmetric_finite_matrix(matrix: np.ndarray) -> np.ndarray:
+    if np.ma.isMaskedArray(matrix):
+        raise ValueError("masked matrices do not specify a complete transfer operator")
     array = np.asarray(matrix)
     if (array.ndim != 2 or array.shape[0] != array.shape[1] or len(array) < 2
             or np.iscomplexobj(array) or array.dtype.kind not in "fiu"
@@ -251,7 +253,10 @@ def symmetric_log_hamiltonian(T: np.ndarray) -> tuple[np.ndarray, np.ndarray, fl
 def _real_parameter(value: float, name: str, *, positive: bool = False) -> float:
     if isinstance(value, (bool, np.bool_)) or not isinstance(value, (int, float, np.integer, np.floating)):
         raise ValueError(f"{name} must be a finite real parameter")
+    original = value
     value = float(value)
+    if value == 0 and original != 0:
+        raise RuntimeError(f"{name} underflows the supported float64 precision")
     if not math.isfinite(value) or (positive and value <= 0):
         raise ValueError(f"{name} must be finite" + (" and positive" if positive else ""))
     return value
@@ -351,13 +356,25 @@ def wilson_hamiltonian(orbits: Z2GaugeOrbits, beta_s: float,
 
 
 def ground_state(H: np.ndarray) -> tuple[np.ndarray, float]:
-    w, V = np.linalg.eigh(H)
-    omega = V[:, 0]
-    if omega.sum() < 0:
-        omega = -omega
-    if np.any(omega <= 0):
-        raise RuntimeError("Perron vector is not strictly positive")
-    return omega, float(w[0])
+    """Resolve the positive ground state before using its component ratios.
+
+    Conservation alone does not distinguish accurate probabilities from an
+    unresolved mixture of nearly degenerate ground-sector eigenvectors. This
+    conservative float-resolution policy can refuse otherwise accurate inputs.
+    """
+    H = _symmetric_finite_matrix(H)
+    scale = float(np.max(np.abs(H)))
+    normalized = H / scale
+    w, V = np.linalg.eigh(normalized)
+    omega = _positive_perron(V[:, 0])
+    error = 4 * len(H) * EPS * np.linalg.norm(normalized, ord=np.inf)
+    separation = w[1] - w[0]
+    if separation <= 2 * error or 2 * error / separation > RESOLUTION_RTOL * omega.min():
+        raise RuntimeError("ground-state Perron support precision is unresolved")
+    energy = float(w[0]) * scale
+    if not math.isfinite(energy):
+        raise ValueError("ground energy is outside float64 range")
+    return omega, energy
 
 
 def doob_transform(H: np.ndarray, omega: np.ndarray, e0: float) -> np.ndarray:
@@ -475,6 +492,9 @@ def spectral_gap(M: np.ndarray, pi: np.ndarray | None = None) -> float:
 
 
 def evaluate(orbits: Z2GaugeOrbits, transfer: str, **params: float) -> dict[str, Any]:
+    expected = {"wilson": {"beta_s", "beta_t"}, "kogut_susskind": {"lam"}}
+    if transfer not in expected or set(params) != expected[transfer]:
+        raise ValueError("transfer parameters must exactly match the selected operator")
     if transfer == "wilson":
         H, omega, lam_max = wilson_hamiltonian(orbits, params["beta_s"], params["beta_t"])
         e0 = 0.0
@@ -495,6 +515,15 @@ def evaluate(orbits: Z2GaugeOrbits, transfer: str, **params: float) -> dict[str,
     fibre = fiber_dependent_rates(Lgen, orbits, pi)
     dob = dobrushin_influence(orbits, pi)
     eta = dob["eta_star"]
+    # Subtracting almost equal conditionals can lose the influence even when
+    # the matrix, populations and conservation are individually well resolved.
+    # This dimension-scaled contrast floor is a numerical safeguard, not an
+    # interval guarantee for every derived observable. Only the source-exact
+    # free law justifies bypassing it with a known zero influence.
+    source_free = transfer == "wilson" and params["beta_s"] == 0
+    contrast_floor = 8 * EPS * orbits.n_orbits * orbits.n_links
+    if not source_free and contrast_floor > RESOLUTION_RTOL * eta:
+        raise RuntimeError("Dobrushin influence contrast is unresolved at the numerical precision")
     result: dict[str, Any] = {
         "transfer": transfer,
         "parameters": params,

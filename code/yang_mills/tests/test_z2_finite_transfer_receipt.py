@@ -135,6 +135,15 @@ def test_reported_parameters_must_all_be_used(orbits, transfer, parameters) -> N
         z2.evaluate(orbits, transfer, **parameters)
 
 
+def test_extended_nonzero_coupling_cannot_become_the_exact_free_law(orbits) -> None:
+    if np.finfo(np.longdouble).minexp >= np.finfo(float).minexp:
+        pytest.skip("platform has no wider-exponent real input type")
+    coupling = np.longdouble("1e-400")
+    assert coupling != 0 and float(coupling) == 0
+    with pytest.raises(RuntimeError, match="underflows.*precision"):
+        z2.wilson_hamiltonian(orbits, coupling, 0.5)
+
+
 def test_unrepresentable_wilson_outputs_are_not_silent_zeros(orbits) -> None:
     with pytest.raises(ValueError, match="normalization.*range"):
         z2.evaluate(orbits, "wilson", beta_s=0.0, beta_t=100.0)

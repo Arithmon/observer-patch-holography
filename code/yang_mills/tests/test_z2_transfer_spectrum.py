@@ -120,7 +120,9 @@ def test_generic_log_keeps_resolved_repeated_and_close_eigenvalues(
     assert z2.spectral_gap(H) == pytest.approx(-np.log(second_eigenvalue), rel=2e-10)
 
 
-def _original_input_wilson_control(beta_s: float, beta_t: float, dps: int):
+def _original_input_wilson_control(
+    beta_s: float, beta_t: float, dps: int, *, include_eta: bool = False,
+):
     """Build the 2 x 2 transfer directly from integer incidence and scalar exp.
 
     No producer geometry, matrix, eigenvalues, support decision or stationary
@@ -162,9 +164,67 @@ def _original_input_wilson_control(beta_s: float, beta_t: float, dps: int):
         omega = eigenvectors[:, 31]
         if sum(omega) < 0:
             omega = -omega
-        return (np.array(H.tolist(), dtype=float),
-                np.array(list(omega), dtype=float),
-                float(eigenvalues[31]), float(energies[30]))
+        control = (np.array(H.tolist(), dtype=float),
+                   np.array(list(omega), dtype=float),
+                   float(eigenvalues[31]), float(energies[30]))
+        if not include_eta:
+            return control
+
+        # Lift the independent orbit populations to all physical link states.
+        # Keep the populations and both conditional outcomes at mp precision:
+        # casting omega first would erase the small contrast under test.
+        orbit_index = {rep: i for i, rep in enumerate(representatives)}
+        population = [
+            omega[orbit_index[min(config ^ g for g in gauge)]] ** 2 / len(gauge)
+            for config in range(256)
+        ]
+        conditional = []
+        for target in range(8):
+            outcomes = []
+            for config in range(256):
+                plus = population[config & ~(1 << target)]
+                minus = population[config | (1 << target)]
+                outcomes.append((plus / (plus + minus), minus / (plus + minus)))
+            conditional.append(outcomes)
+        influence_sums = []
+        for target in range(8):
+            influences = []
+            for changed in range(8):
+                if changed == target:
+                    continue
+                contexts = (
+                    config for config in range(256)
+                    if not config & ((1 << target) | (1 << changed))
+                )
+                influences.append(max(
+                    mp.fsum(abs(a - b) for a, b in zip(
+                        conditional[target][config],
+                        conditional[target][config | (1 << changed)],
+                    )) / 2
+                    for config in contexts
+                ))
+            influence_sums.append(mp.fsum(influences))
+        return (*control, float(max(influence_sums)))
+
+
+@pytest.mark.parametrize("beta_s,allow_refusal", [(1e-12, True), (1e-4, False)])
+def test_weak_wilson_influence_uses_resolved_original_input_contrasts(
+    beta_s: float, allow_refusal: bool,
+) -> None:
+    # At 1e-12, float populations can be excellent while eta loses about
+    # 7e-4 relatively through subtraction.  The nearby 1e-4 point must remain
+    # supported, so blanket rejection of weak interactions does not pass.
+    low = _original_input_wilson_control(beta_s, 0.5, 60, include_eta=True)[-1]
+    high = _original_input_wilson_control(beta_s, 0.5, 90, include_eta=True)[-1]
+    assert high > 0
+    assert low == pytest.approx(high, rel=1e-14, abs=0)
+    try:
+        result = z2.evaluate(z2.Z2GaugeOrbits(2), "wilson", beta_s=beta_s, beta_t=0.5)
+    except RuntimeError as error:
+        assert allow_refusal, f"the nearby supported control was refused: {error}"
+        assert any(word in str(error).lower() for word in ("unresolved", "precision", "resolution"))
+        return
+    assert result["dobrushin"]["eta_star"] == pytest.approx(high, rel=1e-7, abs=0)
 
 
 @pytest.mark.parametrize("beta_s,beta_t", [(0.01, 0.01), (0.1, 0.1), (0.3, 0.8),
