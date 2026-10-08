@@ -26,6 +26,7 @@ from collections import deque
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
+from checkpoint_channels import channel_rows, probability
 from correctable_public_record_capacity import (
     _channel_rows,
     compound_confusability_graph,
@@ -52,6 +53,10 @@ FROZEN_CARRIER_TYPE = "echosahedral-edge-center-oriented-register/v1"
 REGULATOR_ID = "echosahedral-edge-center-r0"
 TERMINAL_ID = "q_echosahedral_oriented_exact"
 SCHEMA = "PUBLIC_CHECKPOINT_PACKET/v2-source-derived-reversible"
+CLAIM_BOUNDARY = (
+    "finite source-derived reversible screen packet; no cosmic selector, horizon bridge, "
+    "screen/electroweak load bridge, or hardware realization is claimed"
+)
 TARGET_MARKERS = (
     "measured_lambda",
     "electroweak_target",
@@ -543,37 +548,194 @@ def _emit_local_checkpoint_packets(
     return packets
 
 
+def _same_labels(values: Any, expected: Iterable[str]) -> bool:
+    return (isinstance(values, Sequence) and not isinstance(values, (str, bytes))
+            and all(type(value) is str for value in values)
+            and len(values) == len(set(values)) and set(values) == set(expected))
+
+
+def _validate_source_evidence(packet: Mapping[str, Any]) -> None:
+    """Check the supplied fixed-source diagram and its carrier representation.
+
+    Equality readouts and a carrier basis admit equivalent presentations. Their
+    topology, declared inventories and actual projection entries must still agree.
+    This validation boundary raises ValueError; scientific consumers run only
+    after it succeeds and do not have their exceptions suppressed.
+    """
+    def require(condition: bool, reason: str) -> None:
+        if not condition:
+            raise ValueError(reason)
+
+    require(isinstance(packet, Mapping), "packet must be a mapping")
+    for field, value in {
+        "schema": SCHEMA, "status": "SOURCE_DERIVED_FIXED_CUTOFF_PACKET",
+        "regulator_id": REGULATOR_ID, "carrier_type_id": FROZEN_CARRIER_TYPE,
+        "terminal_id": TERMINAL_ID,
+        "publicness_policy_id": "universal-twelve-port-publicness/v1",
+        "packet_hash_scope": "all packet fields except packet_sha256",
+    }.items():
+        require(packet.get(field) == value, f"source {field} mismatch")
+    require(type(packet.get("capacity_dimension")) is int
+            and packet["capacity_dimension"] == 24, "source carrier dimension mismatch")
+    carrier_source = packet["carrier_source"]
+    require(isinstance(carrier_source, Mapping), "source carrier recipe missing")
+    for field, value in {
+        "ports": "twelve exposed edge-center screen ports",
+        "orientation": "reversible write/check pair",
+        "record_register": "P_12 x {write,check}",
+    }.items():
+        require(carrier_source.get(field) == value, f"source carrier {field} mismatch")
+    require(_same_labels(carrier_source.get("source_roots"), (
+        "finite echosahedral port incidence", "edge-center record atoms",
+        "reversible checkpoint continuation", "semantic endogenous repair histories",
+    )), "source root declarations mismatch")
+    require(isinstance(packet.get("refinement_maps"), Sequence)
+            and not isinstance(packet["refinement_maps"], (str, bytes))
+            and len(packet["refinement_maps"]) == 0, "frozen source cannot supply unverified refinement maps")
+    observers = packet["observers"]
+    require(isinstance(observers, Mapping) and set(observers) == set(PORTS),
+            "source observer domain mismatch")
+    slots = oriented_slots()
+    for observer in PORTS:
+        require(_same_labels(observers[observer], (_local_atom(observer, slot) for slot in slots)),
+                "source local atom domain mismatch")
+    registry = packet["observer_registry"]
+    require(isinstance(registry, Sequence) and len(registry) == len(PORTS)
+            and all(isinstance(row, Mapping) and row.get("kind") == "edge-center-port-observer"
+                    for row in registry)
+            and _same_labels([row.get("observer_id") for row in registry], PORTS),
+            "source observer registry mismatch")
+    local = packet["local_record_atom_sets"]
+    require(isinstance(local, Mapping) and set(local) == set(PORTS)
+            and all(_same_labels(local[o], observers[o]) for o in PORTS),
+            "source local atom inventory mismatch")
+    interfaces = packet["interfaces"]
+    require(isinstance(interfaces, Sequence) and len(interfaces) == 30,
+            "source interface count mismatch")
+    edges, interface_ids = set(), set()
+    inventory = packet["interface_atom_sets"]
+    require(isinstance(inventory, Mapping), "source interface inventory mismatch")
+    for interface in interfaces:
+        require(isinstance(interface, Mapping), "interface must be a mapping")
+        left, right = interface["left_observer"], interface["right_observer"]
+        require(left in observers and right in observers and left != right,
+                "source interface endpoints mismatch")
+        edge = _edge(left, right)
+        require(edge not in edges, "duplicate source interface")
+        edges.add(edge)
+        name = interface["interface_id"]
+        require(type(name) is str and bool(name) and name not in interface_ids,
+                "source interface identifier mismatch")
+        interface_ids.add(name)
+        atoms = interface["interface_atoms"]
+        require(_same_labels(atoms, atoms) and len(atoms) == 24,
+                "source interface atom domain mismatch")
+        require(name in inventory and _same_labels(inventory[name], atoms),
+                "source interface inventory mismatch")
+        for endpoint, field in [(left, "left_readout"), (right, "right_readout")]:
+            readout = interface[field]
+            require(isinstance(readout, Mapping) and set(readout) == set(observers[endpoint])
+                    and _same_labels(list(readout.values()), atoms),
+                    "source interface requires a total bijective readout")
+        require(all(interface["left_readout"][_local_atom(left, slot)]
+                    == interface["right_readout"][_local_atom(right, slot)] for slot in slots),
+                "source interface slot mismatch")
+    require(edges == set(icosahedral_edges()), "source interface topology mismatch")
+    require(set(inventory) == interface_ids, "source interface inventory domain mismatch")
+    by_slot, by_id = _sections_by_slot(observers, interfaces)
+    sections = packet["public_global_sections"]
+    require(isinstance(sections, Sequence) and len(sections) == len(by_id)
+            and {section_id(section) for section in sections} == set(by_id),
+            "source public section inventory mismatch")
+    channels = packet["global_checkpoint_kernels"]
+    require(isinstance(channels, Sequence) and not isinstance(channels, (str, bytes))
+            and all(isinstance(channel, Mapping) and type(channel.get("continuation_id")) is str
+                    and channel["continuation_id"] for channel in channels),
+            "source continuation declarations malformed")
+    manifest = packet["carrier_projection_manifest"]
+    require(isinstance(manifest, Mapping), "carrier projection manifest missing")
+    for field, value in [("carrier_dimension", 24), ("rank_sum", 24),
+                         ("orthogonality_pairs_checked", 276)]:
+        require(type(manifest.get(field)) is int and manifest[field] == value,
+                f"carrier {field} mismatch")
+    require(manifest.get("pairwise_orthogonal") is True and manifest.get("resolves_identity") is True,
+            "carrier projection claims mismatch")
+    basis = manifest["basis_order"]
+    require(_same_labels(basis, slots), "carrier basis domain mismatch")
+    sparse, supports = manifest["sparse_rank_one_projections"], packet["projection_supports"]
+    require(isinstance(sparse, Mapping) and isinstance(supports, Mapping)
+            and set(sparse) == set(supports) == set(by_id), "carrier projection domain mismatch")
+    for index, slot in enumerate(basis):
+        sid = by_slot[slot]
+        projection, support = sparse[sid], supports[sid]
+        require(isinstance(support, Sequence) and len(support) == 1
+                and type(support[0]) is int and support[0] == index,
+                "carrier support does not match its declared basis")
+        require(isinstance(projection, Mapping)
+                and type(projection.get("basis_index")) is int and projection["basis_index"] == index
+                and type(projection.get("rank")) is int and projection["rank"] == 1,
+                "sparse projection rank or basis mismatch")
+        entry = projection["entry"]
+        require(isinstance(entry, Sequence) and len(entry) == 3
+                and all(type(coordinate) is int and coordinate == index for coordinate in entry[:2])
+                and probability(entry[2]) == 1, "sparse projection entry mismatch")
+
+
 def verify_local_marginal_consistency(packet: Mapping[str, Any]) -> dict[str, Any]:
+    observers = packet.get("observers")
+    if not isinstance(observers, Mapping) or set(observers) != set(PORTS):
+        return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "source observer domain mismatch"}
     sections = public_global_sections(packet["observers"], packet["interfaces"])
     section_by_slot, section_by_id = _sections_by_slot(packet["observers"], packet["interfaces"])
     reachable = reachable_public_sections(sections, packet["reachability_witnesses"])
     declared = packet.get("local_checkpoint_packets")
-    if not isinstance(declared, Mapping):
+    if (not isinstance(declared, Mapping)
+            or packet.get("local_marginal_manifest_complete") is not True):
         return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "missing declaration"}
+    continuation_ids = [channel["continuation_id"] for channel in packet["global_checkpoint_kernels"]]
+    if set(declared) != set(continuation_ids):
+        return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "local continuation domain mismatch"}
     checked_rows = 0
     for channel in packet["global_checkpoint_kernels"]:
         continuation_id = channel["continuation_id"]
-        if continuation_id not in declared:
-            return {"status": "LOCAL_MARGINAL_MISMATCH", "continuation_id": continuation_id}
-        rows = _channel_rows(channel, reachable)
+        local = declared[continuation_id]
+        if not isinstance(local, Mapping) or set(local) != set(PORTS):
+            return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "local observer domain mismatch"}
+        if any(not isinstance(local[observer], Mapping)
+               or set(local[observer]) != set(section_by_slot) for observer in PORTS):
+            return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "local source domain mismatch"}
+        try:
+            rows, _ = channel_rows(channel, reachable)
+        except ValueError as exc:
+            return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": str(exc)}
         for source_slot, source_sid in section_by_slot.items():
             for observer in PORTS:
-                derived: dict[str, float] = {}
-                for output_sid, probability in rows[source_sid].items():
+                derived = {}
+                for output_sid, weight in rows[source_sid].items():
+                    if output_sid not in section_by_id:
+                        return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "unknown public output"}
                     atom = section_by_id[output_sid][observer]
-                    derived[atom] = derived.get(atom, 0.0) + probability
-                expected = {
-                    atom: float(probability)
-                    for atom, probability in declared[continuation_id][observer][source_slot].items()
-                }
+                    derived[atom] = derived.get(atom, 0) + weight
+                supplied = local[observer][source_slot]
+                if (not isinstance(supplied, Mapping) or not supplied
+                        or not set(supplied).issubset(packet["observers"][observer])):
+                    return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "local output domain mismatch"}
+                try:
+                    expected = {atom: probability(weight) for atom, weight in supplied.items()}
+                except ValueError as exc:
+                    return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": str(exc)}
+                # Explicit zero entries and omitted zero entries denote the same
+                # measure. Positive weights must agree as exact supplied scalars.
+                derived = {atom: weight for atom, weight in derived.items() if weight}
+                expected = {atom: weight for atom, weight in expected.items() if weight}
                 if derived != expected:
                     return {
                         "status": "LOCAL_MARGINAL_MISMATCH",
                         "continuation_id": continuation_id,
                         "observer": observer,
                         "source_slot": source_slot,
-                        "derived": derived,
-                        "declared": expected,
+                        "derived": {atom: str(weight) for atom, weight in derived.items()},
+                        "declared": {atom: str(weight) for atom, weight in expected.items()},
                     }
                 checked_rows += 1
     return {
@@ -621,10 +783,7 @@ def build_source_derived_packet(
     packet: dict[str, Any] = {
         "schema": SCHEMA,
         "status": "SOURCE_DERIVED_FIXED_CUTOFF_PACKET",
-        "claim_boundary": (
-            "finite source-derived reversible screen packet; no cosmic selector, horizon bridge, "
-            "screen/electroweak load bridge, or hardware realization is claimed"
-        ),
+        "claim_boundary": CLAIM_BOUNDARY,
         "regulator_id": REGULATOR_ID,
         "carrier_type_id": FROZEN_CARRIER_TYPE,
         "terminal_id": TERMINAL_ID,
@@ -730,12 +889,99 @@ def _exact_decoder_receipts(packet: Mapping[str, Any]) -> dict[str, Any]:
     return {"status": "PASS", "channels": receipts}
 
 
+def _universal_public_cut(observers: Any) -> bool:
+    """The frozen read domain, with the generic policy's set semantics."""
+    return (isinstance(observers, Sequence) and not isinstance(observers, (str, bytes))
+            and all(isinstance(observer, str) for observer in observers)
+            and set(observers) == set(PORTS))
+
+
 def _verify_composition(packet: Mapping[str, Any]) -> dict[str, Any]:
+    """Bind named source operations and replay the supplied multiplication table.
+
+    An abstract group or its capacity cannot identify a named geometric action.
+    The record coordinates come from the actual compatible section atoms, and the
+    maps come from the exact normalized joint kernels supplied in this packet.
+    """
     actions = continuation_actions()
-    expected = _continuation_composition_table(actions)
-    actual = packet["support_relation_composition"]["table"]
+    if (packet.get("continuation_manifest_complete") is not True
+            or packet.get("continuation_family_kind") != "D5 x C2_antipodal x C2_orientation"
+            or type(packet.get("continuation_family_order")) is not int
+            or packet.get("continuation_family_order") != len(actions)):
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source family contract mismatch"}
+    observers = packet.get("observers")
+    if not isinstance(observers, Mapping) or set(observers) != set(PORTS):
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source observer domain mismatch"}
+    policy = packet.get("publicness_policy")
+    if (not isinstance(policy, Sequence) or isinstance(policy, (str, bytes))
+            or not policy or not all(_universal_public_cut(cut) for cut in policy)):
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source publicness policy mismatch"}
+    section_by_slot, _ = _sections_by_slot(packet["observers"], packet["interfaces"])
+    if packet.get("public_section_aliases") != section_by_slot:
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source section aliases mismatch"}
+    channels = packet["global_checkpoint_kernels"]
+    names = [channel["continuation_id"] for channel in channels]
+    if len(names) != len(set(names)) or set(names) != set(actions):
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "named continuation domain mismatch"}
+    records = list(section_by_slot.values())
+    supplied_actions = {}
+    for channel in channels:
+        name = channel["continuation_id"]
+        if not _universal_public_cut(channel.get("authorized_observers")):
+            return {"status": "SOURCE_CHECKPOINT_MISMATCH", "continuation_id": name,
+                    "reason": "source authorized observer domain mismatch"}
+        try:
+            rows, _ = channel_rows(channel, records)
+        except ValueError as exc:
+            return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": str(exc)}
+        actual_action = {}
+        for source_slot, source in section_by_slot.items():
+            positive = {output: weight for output, weight in rows[source].items() if weight}
+            expected_output = section_by_slot[actions[name][source_slot]]
+            if positive != {expected_output: 1}:
+                return {"status": "SOURCE_CHECKPOINT_MISMATCH", "continuation_id": name,
+                        "source_slot": source_slot, "reason": "named source action mismatch"}
+            actual_action[source] = next(iter(positive))
+        supplied_actions[name] = actual_action
+    composition = packet.get("support_relation_composition")
+    if (not isinstance(composition, Mapping) or composition.get("complete") is not True
+            or composition.get("composition_order") != "left-after-right"):
+        return {"status": "COMPOSITION_TABLE_MISMATCH", "reason": "composition contract mismatch"}
+    table = composition.get("table")
+    if (not isinstance(table, Mapping) or set(table) != set(actions)
+            or any(not isinstance(row, Mapping) or set(row) != set(actions)
+                   for row in table.values())):
+        return {"status": "COMPOSITION_TABLE_MISMATCH", "reason": "composition domain mismatch"}
+    for left, row in table.items():
+        for right, result in row.items():
+            if not isinstance(result, str) or result not in supplied_actions:
+                return {"status": "COMPOSITION_TABLE_MISMATCH", "reason": "unknown composition result"}
+            if any(supplied_actions[left][supplied_actions[right][source]]
+                   != supplied_actions[result][source] for source in records):
+                return {"status": "COMPOSITION_TABLE_MISMATCH", "left": left, "right": right}
+    generators = packet.get("continuation_generators")
+    if (not isinstance(generators, Sequence) or isinstance(generators, (str, bytes))
+            or not generators
+            or any(type(name) is not str or name not in supplied_actions for name in generators)
+            or len(generators) != len(set(generators))):
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source generator domain mismatch"}
+    # Replay words in the actual selected maps. Full-family closure was checked
+    # above, so this search has at most forty distinct record permutations.
+    identity = tuple(records)
+    generated, pending = {identity}, [identity]
+    while pending:
+        right = pending.pop()
+        for name in generators:
+            composed = tuple(supplied_actions[name][image] for image in right)
+            if composed not in generated:
+                generated.add(composed)
+                pending.append(composed)
+    if generated != {tuple(action[source] for source in records) for action in supplied_actions.values()}:
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH",
+                "reason": "declared generators do not generate the complete source family",
+                "generated_order": len(generated)}
     return {
-        "status": "PASS" if actual == expected else "COMPOSITION_TABLE_MISMATCH",
+        "status": "PASS",
         "continuation_count": len(actions),
         "composition_entries_checked": len(actions) ** 2,
     }
@@ -823,10 +1069,14 @@ def _full_support_noise_control(packet: Mapping[str, Any]) -> dict[str, Any]:
         for channel in packet["global_checkpoint_kernels"]
         if channel["continuation_id"] == "r1_s0_a0_f0"
     )
+    source_rows, _ = channel_rows(base, reachable)
     noisy_rows: dict[str, dict[str, float]] = {}
     decoder: dict[str, str] = {}
     for source in reachable:
-        deterministic_output = next(iter(base["rows"][source]))
+        support = [output for output, weight in source_rows[source].items() if weight]
+        if len(support) != 1 or support[0] not in reachable or support[0] in decoder:
+            return {"status": "FAIL", "reason": "noise control requires a reversible source kernel"}
+        deterministic_output = support[0]
         decoder[deterministic_output] = source
         row = {output: delta_mix / len(reachable) for output in reachable}
         row[deterministic_output] += 1.0 - delta_mix
@@ -838,16 +1088,19 @@ def _full_support_noise_control(packet: Mapping[str, Any]) -> dict[str, Any]:
         for source in reachable
     )
     row_tv = delta_mix * (1.0 - 1.0 / len(reachable))
+    tv_identity = abs(worst_success - (1.0 - row_tv)) < 1e-12
+    full_support = all(all(weight > 0 for weight in row.values()) for row in noisy_rows.values())
+    capacity = len(maximum_independent_set(graph))
     return {
-        "status": "PASS",
-        "all_rows_full_support": all(all(probability > 0 for probability in row.values()) for row in noisy_rows.values()),
-        "exact_zero_error_capacity": len(maximum_independent_set(graph)),
+        "status": "PASS" if full_support and capacity == 1 and tv_identity else "FAIL",
+        "all_rows_full_support": full_support,
+        "exact_zero_error_capacity": capacity,
         "mixture_weight": delta_mix,
         "row_tv_from_reversible_kernel": row_tv,
         "inverse_decoder_worst_input_success": worst_success,
         "epsilon_for_full_code": row_tv,
-        "approximate_capacity_at_epsilon": len(reachable),
-        "tv_identity": abs(worst_success - (1.0 - row_tv)) < 1e-12,
+        "approximate_capacity_at_epsilon": len(reachable) if tv_identity else None,
+        "tv_identity": tv_identity,
     }
 
 
@@ -1059,18 +1312,243 @@ def _circular_definition_control(packet: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+def _verify_terminal_manifest(packet: Mapping[str, Any], manifest: Mapping[str, Any]) -> dict[str, Any]:
+    """Replay every supplied trial before claiming a complete terminal fiber.
+
+    Candidate geometry is checked against the declared one-fault recipe, and
+    terminal membership is recomputed from each actual candidate. A digest or
+    a claimed completeness flag cannot replace that evidence. Set-valued
+    candidate fields and the trial enumeration need not use producer order.
+    """
+    def refuse(reason):
+        return {"status": "SOURCE_TERMINAL_MANIFEST_MISMATCH", "reason": reason}
+
+    def sequence(value):
+        return isinstance(value, Sequence) and not isinstance(value, (str, bytes))
+
+    def candidate_form(candidate):
+        if not isinstance(candidate, Mapping):
+            raise ValueError("candidate must be a mapping")
+        expected_keys = {"carrier_type_id", "ports", "edges", "inverse_ports",
+                         "oriented_slots", "record_recipe", "trial_id"}
+        if set(candidate) != expected_keys:
+            raise ValueError("candidate source fields differ")
+        edges, slots = candidate["edges"], candidate["oriented_slots"]
+        if (not sequence(edges) or any(not sequence(edge) or len(edge) != 2
+                or any(type(port) is not str for port in edge) for edge in edges)):
+            raise ValueError("candidate edge domain is malformed")
+        normalized_edges = [_edge(*edge) for edge in edges]
+        if len(normalized_edges) != len(set(normalized_edges)):
+            raise ValueError("candidate repeats an edge")
+        if (not sequence(slots) or any(type(slot) is not str for slot in slots)
+                or len(slots) != len(set(slots))):
+            raise ValueError("candidate slot domain is malformed")
+        result = dict(candidate)
+        if not sequence(candidate["ports"]):
+            raise ValueError("candidate port order is malformed")
+        result["ports"] = list(candidate["ports"])
+        result["edges"] = sorted(normalized_edges)
+        result["oriented_slots"] = sorted(slots)
+        return result
+
+    if not isinstance(manifest, Mapping):
+        return refuse("missing terminal manifest")
+    try:
+        unhashed = dict(manifest)
+        supplied_hash = unhashed.pop("terminal_fiber_manifest_sha256", None)
+        if supplied_hash != _sha256(unhashed):
+            return refuse("terminal manifest self-hash mismatch")
+        identity = {
+            "schema": "OPH_TERMINAL_FIBER_MANIFEST/v1",
+            "regulator_id": REGULATOR_ID,
+            "carrier_type_id": FROZEN_CARRIER_TYPE,
+            "declared_trial_class": (
+                "exact frozen carrier plus every single edge deletion, every single "
+                "oriented-slot deletion, and every single inverse-port fixed-point fault"
+            ),
+            "terminal_fiber_manifest_hash_scope": "all manifest fields except terminal_fiber_manifest_sha256",
+        }
+        if any(manifest.get(key) != value for key, value in identity.items()):
+            return refuse("terminal source identity mismatch")
+        # Reconstruct the declared fault census from the source carriers, not
+        # the producer's trial enumerator or candidate materializer. A shared
+        # omission in those constructors must not validate its own evidence.
+        source_edges, source_slots = icosahedral_edges(), oriented_slots()
+        if (len(PORTS) != 12 or len(source_edges) != 30 or len(set(source_edges)) != 30
+                or len(source_slots) != 24 or len(set(source_slots)) != 24):
+            return refuse("frozen source carrier census mismatch")
+        specs = {TERMINAL_ID: {"mutation_kind": "none", "mutation_payload": None}}
+        specs.update({f"q_edge_deleted_{left}_{right}":
+                      {"mutation_kind": "delete_edge", "mutation_payload": [left, right]}
+                      for left, right in source_edges})
+        specs.update({f"q_slot_deleted_{slot.replace('/', '_')}":
+                      {"mutation_kind": "delete_slot", "mutation_payload": slot}
+                      for slot in source_slots})
+        specs.update({f"q_inverse_fixed_{port}":
+                      {"mutation_kind": "fix_inverse", "mutation_payload": port}
+                      for port in PORTS})
+        trials = manifest.get("trials")
+        if not sequence(trials) or any(not isinstance(row, Mapping) for row in trials):
+            return refuse("missing actual trial enumeration")
+        trial_ids = [row.get("trial_id") for row in trials]
+        if (any(type(name) is not str for name in trial_ids)
+                or len(trial_ids) != len(set(trial_ids)) or set(trial_ids) != set(specs)
+                or type(manifest.get("trial_count")) is not int
+                or manifest["trial_count"] != len(trials)):
+            return refuse("declared trial census mismatch")
+        terminals = []
+        for row in trials:
+            spec = specs[row["trial_id"]]
+            if row.get("mutation_kind") != spec["mutation_kind"]:
+                return refuse("trial mutation kind mismatch")
+            payload = row.get("mutation_payload")
+            expected_payload = spec["mutation_payload"]
+            if spec["mutation_kind"] == "delete_edge":
+                if (not sequence(payload) or len(payload) != 2
+                        or any(type(port) is not str for port in payload)
+                        or _edge(*payload) != _edge(*expected_payload)):
+                    return refuse("trial mutation payload mismatch")
+            elif payload != expected_payload:
+                return refuse("trial mutation payload mismatch")
+            candidate = row.get("candidate")
+            expected_edges = set(source_edges)
+            expected_slots = set(source_slots)
+            expected_inverse = {port: antipodal_port(port) for port in PORTS}
+            if spec["mutation_kind"] == "delete_edge":
+                expected_edges.remove(_edge(*expected_payload))
+            elif spec["mutation_kind"] == "delete_slot":
+                expected_slots.remove(expected_payload)
+            elif spec["mutation_kind"] == "fix_inverse":
+                expected_inverse[expected_payload] = expected_payload
+            expected_candidate = {
+                "carrier_type_id": FROZEN_CARRIER_TYPE, "ports": list(PORTS),
+                "edges": sorted(expected_edges), "inverse_ports": expected_inverse,
+                "oriented_slots": sorted(expected_slots),
+                "record_recipe": "edge-center-port x reversible-orientation",
+                "trial_id": row["trial_id"],
+            }
+            if candidate_form(candidate) != expected_candidate:
+                return refuse("actual candidate differs from the declared source fault")
+            if row.get("candidate_sha256") != _sha256(candidate):
+                return refuse("candidate self-hash mismatch")
+            terminal = is_terminal_world(candidate)
+            if row.get("terminal") is not terminal:
+                return refuse("actual structural terminal membership mismatch")
+            if terminal:
+                terminals.append(row["trial_id"])
+        declared_terminals = manifest.get("terminal_world_ids")
+        if (not sequence(declared_terminals)
+                or any(type(name) is not str for name in declared_terminals)
+                or len(declared_terminals) != len(set(declared_terminals))
+                or set(declared_terminals) != set(terminals) or len(terminals) != 1
+                or manifest.get("terminal_fiber_kind") != "SINGLETON"
+                or manifest.get("terminal_fiber_complete") is not True):
+            return refuse("actual nonempty terminal fiber mismatch")
+        completeness = {
+            "declared_trials_enumerated": len(trials),
+            "expected_trial_count": len(specs),
+            "missing_trial_ids": [], "duplicate_trial_ids": [],
+            "all_trial_ids_unique": True, "all_candidates_materialized": True, "complete": True,
+        }
+        # Canonical scalar encoding distinguishes a Boolean claim from 0/1.
+        if (_canonical_bytes(manifest.get("terminal_fiber_completeness_certificate"))
+                != _canonical_bytes(completeness)
+                or _canonical_bytes(packet.get("terminal_fiber_completeness_certificate"))
+                != _canonical_bytes(completeness)):
+            return refuse("terminal completeness receipt mismatch")
+        source_text = inspect.getsource(is_terminal_world).lower()
+        audit = {marker: marker not in source_text
+                 for marker in ("capacity", "saturation", "expected_answer", "desired_output")}
+        if (_canonical_bytes(manifest.get("terminal_membership_source_audit")) != _canonical_bytes(audit)
+                or not all(audit.values()) or manifest.get("terminal_membership_output_blind") is not True):
+            return refuse("terminal membership source audit mismatch")
+        constructor_hash = _sha256({
+            "base_world": _base_world(), "trial_specs": _trial_specs(),
+            "materializer_source": inspect.getsource(_materialize_trial),
+            "membership_source": inspect.getsource(is_terminal_world),
+        })
+        if (manifest.get("trial_universe_constructor_sha256") != constructor_hash
+                or packet.get("trial_universe_constructor_hash") != constructor_hash
+                or packet.get("terminal_fiber_manifest_hash") != supplied_hash
+                or packet.get("terminal_id") not in terminals
+                or packet.get("regulator_id") != REGULATOR_ID
+                or packet.get("carrier_type_id") != FROZEN_CARRIER_TYPE):
+            return refuse("packet is not bound to the actual terminal source")
+    except (KeyError, TypeError, ValueError) as exc:
+        return refuse(str(exc))
+    return {"status": "PASS", "trial_count": len(trials), "terminal_world_ids": sorted(terminals)}
+
+
+def _verify_source_histories(packet: Mapping[str, Any]) -> dict[str, Any]:
+    """Replay source births, edge propagation, public audit and commit in order.
+
+    Any valid spanning-tree execution is admitted. The replay checks the actual
+    consumed history rather than requiring the producer's particular BFS tree.
+    """
+    def refuse(reason):
+        return {"status": "SOURCE_HISTORY_MISMATCH", "reason": reason}
+
+    def sequence(value):
+        return isinstance(value, Sequence) and not isinstance(value, (str, bytes))
+
+    try:
+        section_by_slot, _ = _sections_by_slot(packet["observers"], packet["interfaces"])
+        records = set(section_by_slot.values())
+        histories, witnesses = packet.get("semantic_histories"), packet.get("reachability_witnesses")
+        if (not isinstance(histories, Mapping) or not isinstance(witnesses, Mapping)
+                or set(histories) != records or set(witnesses) != records):
+            return refuse("complete source history and witness domains required")
+        edges = set(icosahedral_edges())
+        for slot, sid in section_by_slot.items():
+            history, witness = histories[sid], witnesses[sid]
+            port, orientation = _split_slot(slot)
+            if (not isinstance(history, Mapping) or history.get("source_slot") != slot
+                    or history.get("source_port") != port or history.get("orientation") != orientation
+                    or history.get("uses_executor_metadata") is not False
+                    or history.get("uses_external_target") is not False):
+                return refuse("history source or target-cleanliness mismatch")
+            events = history.get("events")
+            if (not sequence(events) or any(type(event) is not str for event in events)
+                    or not sequence(witness) or list(witness) != list(events)
+                    or type(history.get("semantic_event_count")) is not int
+                    or history["semantic_event_count"] != len(events)
+                    or len(events) != len(PORTS) + 3):
+                return refuse("history events and retained witness disagree")
+            if (list(events[:2]) != [f"birth:edge-center:{slot}", f"seed:{orientation}:{port}"]
+                    or list(events[-2:]) != [f"global-interface-audit:{slot}", f"checkpoint-commit:{slot}"]):
+                return refuse("source birth, seed, public audit or commit order mismatch")
+            reached = {port}
+            for event in events[2:-2]:
+                prefix, route, event_slot = event.split(":")
+                parent, child = route.split("->")
+                if (prefix != "repair-propagate" or event_slot != slot
+                        or parent not in reached or child in reached
+                        or _edge(parent, child) not in edges):
+                    return refuse("propagation must cross a source edge from a reached parent to a new child")
+                reached.add(child)
+            if reached != set(PORTS):
+                return refuse("public audit precedes complete source propagation")
+    except (KeyError, TypeError, ValueError, AssertionError) as exc:
+        return refuse(str(exc))
+    return {"status": "PASS", "history_count": len(records),
+            "propagation_events_checked": len(records) * (len(PORTS) - 1)}
+
+
 def _source_provenance_receipt(packet: Mapping[str, Any]) -> dict[str, Any]:
     carrier_source = packet["carrier_source"]
     source_text = json.dumps(carrier_source["source_roots"], sort_keys=True).lower()
     forbidden_values_absent = all(marker not in source_text for marker in TARGET_MARKERS)
-    exclusions_declared = set(TARGET_MARKERS).issubset(set(carrier_source.get("excluded_inputs", ())))
-    administrative_flags_clean = (
-        not packet["self_read_predicate_injected"]
-        and not packet["supplied_capacity_metadata_read_by_producer"]
-        and not packet["lambda_used"]
-        and not packet["ew_bridge_used"]
-        and not packet["rho_used"]
+    excluded = carrier_source.get("excluded_inputs")
+    exclusions_declared = (
+        isinstance(excluded, Sequence) and not isinstance(excluded, (str, bytes))
+        and all(type(value) is str for value in excluded)
+        and set(TARGET_MARKERS).issubset(excluded)
     )
+    administrative_flags_clean = all(packet.get(field) is False for field in (
+        "self_read_predicate_injected", "supplied_capacity_metadata_read_by_producer",
+        "lambda_used", "ew_bridge_used", "rho_used", "measured_lambda_used",
+        "ew_bridge_target_used", "rho_used_as_capacity_producer",
+    ))
     return {
         "status": "PASS" if forbidden_values_absent and exclusions_declared and administrative_flags_clean else "TARGET_TAINTED",
         "forbidden_target_values_absent": forbidden_values_absent,
@@ -1083,11 +1561,21 @@ def _source_provenance_receipt(packet: Mapping[str, Any]) -> dict[str, Any]:
 def certify_source_derived_packet(
     packet: Mapping[str, Any], *, terminal_manifest: Mapping[str, Any] | None = None
 ) -> dict[str, Any]:
-    manifest = terminal_manifest or build_terminal_fiber_manifest()
+    try:
+        _validate_source_evidence(packet)
+    except (KeyError, TypeError, ValueError) as exc:
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": str(exc)}
+    manifest = build_terminal_fiber_manifest() if terminal_manifest is None else terminal_manifest
+    for receipt in (_verify_terminal_manifest(packet, manifest), _verify_source_histories(packet)):
+        if receipt["status"] != "PASS":
+            return receipt
+    composition = _verify_composition(packet)
+    if composition["status"] != "PASS":
+        return composition
     provenance = _source_provenance_receipt(packet)
-    marginals = verify_local_marginal_consistency(packet)
     if provenance["status"] != "PASS":
         return provenance
+    marginals = verify_local_marginal_consistency(packet)
     if marginals["status"] != "PASS":
         return marginals
     evaluation = evaluate_terminal(packet)
@@ -1096,9 +1584,6 @@ def certify_source_derived_packet(
     decoders = _exact_decoder_receipts(packet)
     if decoders["status"] != "PASS":
         return decoders
-    composition = _verify_composition(packet)
-    if composition["status"] != "PASS":
-        return composition
     reachable = evaluation["reachable_public_sections"]
     semigroup = support_relation_semigroup(reachable, packet["global_checkpoint_kernels"])
     graph_edge_count = sum(len(neighbours) for neighbours in evaluation["confusability_graph"].values()) // 2
@@ -1168,7 +1653,7 @@ def certify_source_derived_packet(
         "status": "PASS" if all(pass_checks) else "FAIL",
         "issue": 548,
         "packet_status": packet["status"],
-        "claim_boundary": packet["claim_boundary"],
+        "claim_boundary": CLAIM_BOUNDARY,
         "packet_sha256": packet["packet_sha256"],
         "packet_hash_valid": packet_hash_valid,
         "trial_universe_constructor_hash": packet["trial_universe_constructor_hash"],

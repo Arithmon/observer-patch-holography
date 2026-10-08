@@ -30,8 +30,8 @@ M_0(q) = alpha(G_q) = 24 = D.
 | Complete terminal-fiber manifest | 67 fully materialized declared trials, SHA-256 constructor/candidate/manifest receipts, exactly one terminal ID, and `terminal_fiber_complete=true`. |
 | Observer/interface atoms and total readouts | 12 observers, 24 local atoms each, 30 interfaces, 24 interface atoms each, total endpoint readout maps. |
 | Endogenous histories and preregistered publicness | One semantic propagation/check/commit history per public section; universal twelve-port policy frozen before evaluation. |
-| Complete joint kernels and support compositions | Full `D5 x C2_antipodal x C2_orientation` family of 40 global permutation kernels and a 40-by-40 composition table. |
-| Local-marginal checks | Marginals are derived from every global row and compared against independently emitted observer packets: 11,520 row checks. |
+| Complete joint kernels and support compositions | Each of the 40 named `D5 x C2_antipodal x C2_orientation` actions is checked on all 24 actual public sections. Every entry of the supplied 40-by-40 table is replayed as left-after-right on those sections: 38,400 pointwise composition identities. |
+| Local-marginal checks | Complete continuation, observer and source domains are required. Marginals are derived from every normalized global row and compared exactly against original local probabilities: 11,520 row checks, without float coercion. |
 | Injective reversible generators and exact model count | Every continuation is deterministic, injective, and surjective; the CSP backend counts exactly 24 public sections. |
 | Compound graph, MIS, exact decoders | Empty 24-vertex graph, complete 24-vertex independent set, and inverse decoder for every continuation. |
 | Approximate branch and TV robustness | Exact worst-input success 1; for rowwise TV distance `delta`, the same decoder gives success at least `1-delta`, hence `M_delta=24` by the carrier upper bound. |
@@ -52,12 +52,6 @@ python3 source_derived_public_checkpoint_packet.py --output-dir runtime
 python3 -m pytest -q
 ```
 
-Expected test result for the supplied patch bundle:
-
-```text
-21 passed
-```
-
 The generated JSON files are:
 
 ```text
@@ -65,6 +59,81 @@ runtime/source_derived_terminal_fiber_manifest.json
 runtime/source_derived_public_checkpoint_packet.json
 runtime/source_derived_public_checkpoint_certificate.json
 ```
+
+## Source-binding audit
+
+The original checker regenerated the canonical multiplication table and
+compared it with the supplied table, without composing the supplied kernels.
+Swapping the identity and rotation kernels, together with their local
+marginals, retained `PASS` despite 4,620 failed pointwise composition
+identities. Inverting every kernel retained identity, permutation closure
+and capacity 24, yet failed 19,200 of the 38,400 identities.
+
+Composition is also insufficient by itself. Replacing every named rotation
+by its inverse through a group automorphism preserves the multiplication
+table, but sends `upper_0/write` to `upper_4/write` under the named `r1`
+operation, instead of the source's `upper_1/write`. Certification therefore
+checks both the actual composition law and the named source action.
+The record-to-slot map comes from the supplied section atoms and interfaces;
+an alias declaration cannot substitute a different source meaning.
+The actual observer domain and each authorized read set must also realize
+the universal twelve-port source policy. A one-observer policy cannot retain
+that source certificate merely because its continuation permutations agree.
+
+The retained tests first reproduce false acceptance on main `a20d4736`,
+then check the repaired public certificate with recomputed packet hashes.
+The independent scalar oracle checks all 960 named input/output mappings;
+separate positive controls preserve valid presentation changes. The existing
+near-unit normalization policy for global relative row weights is unchanged.
+Local marginals are compared to those normalized probabilities exactly.
+Zero entries may be omitted or placed anywhere in a row. The downstream
+noise control now decodes the positive support, rather than the first map
+key: a leading zero previously produced a success probability of zero while
+the control still reported `PASS`. Its returned status now checks its noise
+and decoding identities, and nonreversible source kernels are refused.
+
+The follow-up audit challenged the other evidence carried by the same source
+certificate. At PR head `67f9a9f`, a valid hash still admitted an empty actual
+terminal fiber, reversed or target-reading histories, a changed interface
+topology, missing sparse projections, and an identity-only generating set.
+The generated false certificates also survived serialization into the direct-N
+consumer's fixed-cutoff result. The universe-level result stayed unavailable;
+this was a false finite-source claim, not a new cosmological result.
+
+The checker now reconstructs the 67 declared source faults from the ports,
+edges and oriented slots, validates each supplied candidate and recomputes
+membership. Neither the trial enumerator nor candidate materializer supplies
+the verifier's expected census or candidate. Histories are replayed from birth
+and seed through eleven valid propagations, followed by public audit and commit;
+every propagation must reach a new child from an already reached parent along
+a source edge. The supplied witness, semantic metadata and target-use flags
+must agree. Alternative valid spanning trees and trial enumeration orders pass.
+
+The actual thirty interfaces must implement the declared slot readouts, with
+complete matching atom and section inventories. Every sparse carrier projector
+is checked against its declared basis and support. Coherent basis changes,
+interface atom renamings and reversed edge presentation remain valid. The
+declared generators must generate all forty supplied operations. Fixed-source
+identity and recipe fields are checked; free-form input prose cannot change the
+certificate's scientific boundary. Refused evidence remains refused after JSON
+serialization into the direct-N consumer.
+
+This is a repair of verification for the fixed finite source. The canonical
+packet, terminal manifest and certificate retain their existing outputs;
+downstream capacity and physical classifications do not change. It supplies
+no new source-selection law or physical realization.
+
+Validation uses the complete capacity directory on Windows/Python 3.13 and
+Linux/Python 3.12 with warnings treated as errors. Isolated faulty variants
+exercise removed source binding, table replay, domain validation, exact marginal
+comparison, diagram and carrier checks, administrative flags, restored first-key
+decoding, unchecked publicness, constant success and blanket refusal. Two mutants
+initially survived: omitted table-domain checking and omitted local output-domain
+checking. Retained public-path controls now reject both, including a vacuous
+empty table and an unknown zero-weight read atom. Independent downstream lift
+replay and byte-exact canonical receipt regeneration remain required.
+The existing capacity workflow executes this entire directory on both
+operating systems; these bounded checks are not a formal verification claim.
 
 ## Remaining theorem boundary
 
