@@ -15,6 +15,7 @@ HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 
 import z2_finite_transfer_receipt as z2  # noqa: E402
+from verify_z2_finite_transfer_receipt import load_receipt, verify_receipt  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -82,9 +83,53 @@ def test_kogut_susskind_single_flip_exact_but_fiber_dependent(orbits: z2.Z2Gauge
     assert floor["numerical_min_respects_bound"] is True
 
 
+@pytest.mark.parametrize("scale", [1e-200, 1.0, 1e200])
+def test_rate_fit_resolves_each_coefficient_across_units(orbits, scale) -> None:
+    projectors = z2.heat_bath_projectors(orbits, np.full(orbits.n_orbits, 1 / orbits.n_orbits))
+    expected = np.arange(1, orbits.n_links + 1, dtype=float)
+    generator = sum(c * (np.eye(orbits.n_orbits) - E)
+                    for c, E in zip(expected, projectors))
+    result = z2.constant_rate_fit(scale * generator, projectors)
+    np.testing.assert_allclose(np.asarray(result["rates"]) / scale, expected, rtol=2e-14)
+    assert result["relative_frobenius_residual"] < 2e-14
+    # A real off-support perturbation must not disappear through a zero norm
+    # or through a scale-independent absolute tolerance.
+    generator[0, -1] += 0.3
+    generator[0, 0] -= 0.3
+    perturbed = z2.constant_rate_fit(scale * generator, projectors)
+    assert perturbed["relative_frobenius_residual"] > 1e-3
+
+
+@pytest.mark.parametrize("beta_s,beta_t", [
+    (float("nan"), 0.5), (float("inf"), 0.5), (True, 0.5),
+    (0.0, 0.0), (0.0, -1.0), (0.0, float("nan")),
+    (0.0, float("inf")), (0.0, True), (0.0, 0.5j),
+])
+def test_wilson_refuses_nonphysical_or_nonfinite_parameters(orbits, beta_s, beta_t) -> None:
+    with pytest.raises(ValueError):
+        z2.evaluate(orbits, "wilson", beta_s=beta_s, beta_t=beta_t)
+
+
+@pytest.mark.parametrize("matrix", [
+    np.eye(2, dtype=complex), np.array([[1.0, 0.2], [0.3, 1.0]]),
+    np.array([[float("nan"), 0.1], [0.1, 1.0]]), np.zeros((2, 2)),
+    np.ones((2, 3)), np.ones((1, 1)), np.ones((2, 2), dtype=bool),
+])
+def test_generic_transfer_rejects_wrong_matrix_domain(matrix) -> None:
+    with pytest.raises(ValueError):
+        z2.symmetric_log_hamiltonian(matrix)
+
+
+def test_unrepresentable_wilson_outputs_are_not_silent_zeros(orbits) -> None:
+    with pytest.raises(ValueError, match="normalization.*range"):
+        z2.evaluate(orbits, "wilson", beta_s=0.0, beta_t=100.0)
+    with pytest.raises(RuntimeError, match="dual coupling.*range"):
+        z2.dual_coupling(400.0)
+
+
 def test_committed_receipt_matches_code() -> None:
     path = HERE / "receipts" / "z2_finite_transfer_receipt.json"
-    receipt = json.loads(path.read_text(encoding="utf-8"))
+    receipt = load_receipt(path)
     assert receipt["schema"] == z2.SCHEMA
     assert receipt["physical_clay_receipt"] is False
     assert receipt["grid_scope"]["universal_no_go"] is False
@@ -104,7 +149,10 @@ def test_committed_receipt_matches_code() -> None:
         r["variable_rate_floor"]["numerical_min_respects_bound"] for r in local_runs
     )
     fresh = z2.run([2, 3], [0.1, 0.3, 0.5, 0.7, 1.0], [0.5, 1.0, 2.0])
-    assert fresh == receipt
+    # Floating eigensolver output need not be byte-identical across LAPACK/OS.
+    # Verify every component with relative tolerances; hashes still bind the
+    # exact retained bytes and the original analytic controls run separately.
+    verify_receipt(receipt, fresh, HERE / "z2_finite_transfer_receipt.py")
     expected_runs_hash = hashlib.sha256(
         json.dumps(receipt["runs"], sort_keys=True).encode("utf-8")
     ).hexdigest()

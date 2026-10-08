@@ -1,10 +1,11 @@
-"""Compare the orbit receipt with an independent 256-configuration L=2 model.
+"""Independent full-space and positive-transfer controls for the orbit receipt.
 
-Geometry is built from signed edge endpoints, gauge transformations from site
-signs, and heat-bath probabilities from the physical +1/-1 link states.  None
-of the producer's masks, orbit members, flips, or probabilities construct the
-controls.  These ordinary-coupling checks concern finite mathematical
-conventions, not the resolution of extreme floating-point parameters.
+The 256-configuration L=2 geometry is built from signed edge endpoints, gauge
+transformations from site signs, and heat baths from physical +1/-1 link states,
+without the producer's geometry or probabilities.  A bounded L=3 Perron control
+shares integer orbit geometry while independently applying the positive transfer
+convolution.  These checks concern ordinary finite couplings, not the resolution
+of extreme floating-point parameters.
 """
 
 from __future__ import annotations
@@ -94,6 +95,29 @@ def test_orbit_basis_matches_site_sign_action(full_space: dict) -> None:
         assert len(set(destinations)) == full_space["n_links"]
 
 
+def _positive_wilson_transfer(
+    orbits: z2.Z2GaugeOrbits, beta_s: float, beta_t: float
+) -> np.ndarray:
+    """Positive convolution oracle sharing geometry, but no spectral operations.
+
+    Translation invariance makes K(i,j) depend only on the gauge orbit of
+    rep_i XOR rep_j.  The L=2 full-configuration tests below independently
+    establish this convolution's normalization and shared geometry.
+    """
+    kinetic = np.array([
+        math.fsum(
+            math.exp(beta_t * (orbits.n_links - 2 * (int(rep) ^ int(g)).bit_count()))
+            for g in orbits.gauge
+        )
+        for rep in orbits.reps
+    ])
+    difference_orbits = orbits.orbit_of_config[
+        orbits.reps[:, None] ^ orbits.reps[None, :]
+    ]
+    weight = np.exp(beta_s * orbits.plaquette_sum / 2)
+    return weight[:, None] * kinetic[difference_orbits] * weight[None, :]
+
+
 @pytest.mark.parametrize("transfer, params", [
     ("wilson", {"beta_s": 0.1, "beta_t": 0.1}),
     ("wilson", {"beta_s": 0.5, "beta_t": 0.5}),
@@ -119,7 +143,11 @@ def test_full_configuration_operator_and_consumers(
         omega, e0 = eigenvectors[:, -1], 0.0
         orbit_t = orbits.wilson_transfer(**params)
         np.testing.assert_allclose(q.T @ t @ q, orbit_t, atol=1e-10, rtol=1e-13)
-        orbit_h, orbit_omega, _ = z2.symmetric_log_hamiltonian(orbit_t)
+        np.testing.assert_allclose(
+            q.T @ t @ q, _positive_wilson_transfer(orbits, **params),
+            atol=1e-10, rtol=1e-13,
+        )
+        orbit_h, orbit_omega, _ = z2.wilson_hamiltonian(orbits, **params)
         orbit_e0 = 0.0
     else:
         h = -np.diag(p.astype(float))
@@ -197,3 +225,33 @@ def test_full_configuration_operator_and_consumers(
         assert reported["rate_max"] == pytest.approx(float(rates.max()), abs=1e-12)
         assert reported["offdiagonal_mass_outside_single_flip"] < 1e-12
         assert receipt["doob_generator_offdiagonal_nonpositive"]
+
+
+def test_l3_perron_components_against_positive_iteration() -> None:
+    """Retain the default grid's smallest Perron components without a log oracle.
+
+    This control shares only integer orbit geometry with the producer.  It
+    constructs a positive transfer convolution, starts from the uniform vector,
+    and never uses the producer's Walsh factor, singular values, or eigenvectors
+    to obtain the expected law.  L=2 checks above independently cover geometry.
+    """
+    orbits = z2.Z2GaugeOrbits(3)
+    transfer = _positive_wilson_transfer(orbits, beta_s=1.0, beta_t=1.0)
+    assert np.all(transfer > 0)
+    transfer /= transfer.max()
+    expected = np.full(orbits.n_orbits, 1 / math.sqrt(orbits.n_orbits))
+    for _ in range(2000):
+        updated = transfer @ expected
+        updated /= np.linalg.norm(updated)
+        relative_change = np.max(np.abs(updated - expected) / updated)
+        expected = updated
+        if relative_change < 2e-14:
+            break
+    else:
+        pytest.fail("independent positive Perron iteration did not converge")
+    h, omega, _ = z2.wilson_hamiltonian(orbits, beta_s=1.0, beta_t=1.0)
+    np.testing.assert_allclose(omega**2, expected**2, rtol=1e-8, atol=0)
+    # Check every component after undoing the Perron weighting: a normwise
+    # absolute check alone can conceal damage to the smallest populations.
+    residual = np.max(np.abs(h @ expected) / expected) / np.max(np.abs(h))
+    assert residual < 1e-8
