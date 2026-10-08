@@ -16,8 +16,10 @@ Independent numeric primitives used here, against the producer's:
   primitive);
 - g(chi) through the surface-gravity identity g = 4*G*M*kappa/c^3
   (producer: the closed form 2*sqrt(1-chi^2)/(1+sqrt(1-chi^2)));
-- tooth spacing through base = kappa/(4*pi^2)
-  (producer: c^3*g(chi)/(16*pi^2*G*M));
+- tooth spacing through base = kappa/(4*pi^2), an identity now also
+  used by the producer's mass-independent Kerr-scale evaluation; numerical
+  independence comes from the separate pi/log/root algorithms above,
+  not from a distinct spacing formula;
 - working precision 60 significant digits (producer: 50), both rendered
   to 40 significant digits, providing a cross-check at the rendered
   precision. Agreement does not exclude a shared mistake.

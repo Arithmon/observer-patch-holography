@@ -7,7 +7,7 @@ rotation line, or other intermediate results.
 from __future__ import annotations
 
 from decimal import (
-    Context, Decimal, Inexact, MAX_EMAX, MIN_EMIN, ROUND_DOWN,
+    Context, Decimal, DefaultContext, Inexact, MAX_EMAX, MIN_EMIN, ROUND_DOWN,
     ROUND_HALF_EVEN, ROUND_UP, Rounded, localcontext,
 )
 from fractions import Fraction
@@ -246,6 +246,29 @@ def test_receipt_builder_preserves_the_callers_complete_decimal_context(builder)
         before = _context_state(context)
         builder()
         assert _context_state(context) == before
+
+
+@pytest.mark.parametrize("builder", BUILDERS, ids=["producer", "independent_verifier"])
+def test_receipt_policy_does_not_inherit_mutable_default_context(builder, monkeypatch):
+    expected = (Path(__file__).parent / "runtime" / "integer_k_comb_template_receipt.json").read_bytes()
+    default_before = _context_state(DefaultContext)
+    with localcontext(_ambient("precision")) as caller:
+        caller.flags[Rounded] = True
+        caller_before = _context_state(caller)
+        with monkeypatch.context() as patch:
+            for name, value in (("prec", 3), ("rounding", ROUND_UP),
+                                ("Emin", -9), ("Emax", 1), ("clamp", 1),
+                                ("capitals", 0)):
+                patch.setattr(DefaultContext, name, value)
+            patch.setitem(DefaultContext.traps, Inexact, True)
+            patch.setitem(DefaultContext.traps, Rounded, True)
+            default_during = _context_state(DefaultContext)
+            receipt = builder()
+            actual = (json.dumps(receipt, sort_keys=True, separators=(",", ":")) + "\n").encode("ascii")
+            assert actual == expected
+            assert _context_state(DefaultContext) == default_during
+            assert _context_state(caller) == caller_before
+    assert _context_state(DefaultContext) == default_before
 
 
 def test_large_mass_intermediate_does_not_hide_representable_surface_gravity():
