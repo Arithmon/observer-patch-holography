@@ -1241,13 +1241,26 @@ If
 |\partial C|_{\mathrm{UV}}\le a(\ell_0/\ell)^p,
 \qquad
 \delta(\ell)\ge\zeta(p+\eta)\ell\log(\ell_0/\ell),
-\quad \eta>0,
+\quad p\ge0,\quad \eta>0,
 \]
-then \(\delta\to0\), \(\delta/\ell\to\infty\), and
+then \(\delta/\ell\to\infty\), and
 \[
 I(A_\delta:D_\delta\mid B_\delta)
 \le ca(\ell/\ell_0)^\eta\longrightarrow0.
 \]
+This lower bound on \(\delta\) does not imply \(\delta\to0\).
+Physical collar shrinking remains the separate double-scaling hypothesis
+stated above. It is realized, for example, by choosing
+\(\delta(\ell)=\zeta(p+\eta)\ell\log(\ell_0/\ell)\), or by rounding
+its graph-layer width upward with an additional error at most \(\ell\).
+For a counterexample to inferring shrinking from the lower bound alone,
+take \(\ell_n=1/(4n)\), \(\ell_0=\delta_n=1/4\),
+\(p=0\), and \(a=\zeta=\eta=1\). Then
+\(\delta_n\ge\ell_n\log n\) and \(\delta_n/\ell_n=n\), but
+\(\delta_n=1/4\) does not shrink. A zero-Hamiltonian product Gibbs chain
+has zero conditional matrix defect and CMI and satisfies all the local
+finite-range and mixing bounds in this example; it fails precisely the
+separately declared shrinking-collar hypothesis.
 The ratio \(\delta/\ell\to\infty\) alone is insufficient. For
 \(\ell_n=\ell_0e^{-n^2}\), \(\delta_n=\zeta n\ell_n\), and
 \(|\partial C_n|_{\mathrm{UV}}=e^{n^2}\), that ratio diverges while the upper envelope grows as
@@ -3088,16 +3101,28 @@ K_{(a,b)}^{\mathrm{null}}
 \]
 The remainder \(R_{(a,b)}\) is the carried endpoint/collar term of the same refinement family. In the small-ball limit this is the ball modular kernel used below.
 
-\textbf{Lemma E0.6 (Uniform remainder control).} Let
-\((r,\ell_r,\delta_r)\) be one declared cofinal family on which Theorem 2.5
-holds uniformly over the event region and cap family, and set
+\textbf{Lemma E0.6 (Uniform remainder control with its transfer bounds).}
+Let \((r,\ell_r,\delta_r)\) be one declared cofinal family with
+\(\ell_r\to0\) and faithful Gibbs states \(\rho_r\), on which the strong conditional matrix-mixing premise
+of Theorem 2.5 holds uniformly over the event region and cap family. Set
 \[
-\varepsilon_r
-=c|\partial C_r|_{\mathrm{UV}}e^{-\delta_r/\xi_r}.
+\varepsilon_r=c|\partial C_r|_{\mathrm{UV}}e^{-\delta_r/\xi_r}.
 \]
-Assume that the fixed-collar Markov replacements have one modulus
-\(\delta_r^{\mathrm M}\le C_{\mathrm M}\varepsilon_r^\theta\), with
-\(C_{\mathrm M}<\infty\) and \(\theta>0\), and that for some
+The boundary-anchor expansion directly controls the operator norm:
+\[
+\|\Delta K_r(\rho_r)\|_\infty
+=\|\mathbf J_{\rho_r}(A_r:D_r\mid B_r)\|_\infty
+\le\varepsilon_r.
+\]
+Here the four canonical marginal logarithms define \(\Delta K\), so
+\(\Delta K=-\mathbf J\). Exact faithful Markov references have zero canonical
+four-log defect. This direct bound requires no uniform spectral floor;
+it does not identify an EC splitting or control each individual modular
+Hamiltonian separately.
+
+Assume separately that the needed EC-aligned replacements obey one modulus
+\(d_r^{\mathrm{M,EC}}\le C_{\mathrm M}\varepsilon_r^\theta\), with
+\(C_{\mathrm M}<\infty\), \(\theta>0\), and that for some
 \[
 s>\max\{8,4/\theta\},\qquad \omega_r\longrightarrow+\infty,
 \]
@@ -3107,17 +3132,34 @@ the same family satisfies
 -\log\!\bigl(c|\partial C_r|_{\mathrm{UV}}\bigr)
 \ge s\log(\ell_0/\ell_r)+\omega_r.
 \]
-If the interval-kernel residual is also \(o(\ell_r^4)\) on this family, then
+Then
 \[
 2\sqrt{\varepsilon_r}=o(\ell_r^4),\qquad
-\delta_r^{\mathrm M}=o(\ell_r^4),
+d_r^{\mathrm{M,EC}}=o(\ell_r^4),\qquad
+\|\Delta K_r(\rho_r)\|_\infty=o(\ell_r^4).
 \]
-and the endpoint, collar, Markov, and long-wavelength derivative remainders do
-not alter the Einstein coefficient. Indeed,
-\(\varepsilon_r\le(\ell_r/\ell_0)^s e^{-\omega_r}\); the two conclusions
-follow from \(s/2>4\) and \(s\theta>4\). Mere pointwise convergence of a
-collar error does not supply this common-family rate, and no per-radius
-diagonal choice is used.
+Indeed \(\varepsilon_r\le(\ell_r/\ell_0)^s e^{-\omega_r}\), and the
+exponents are \(s/2>4\), \(s\theta>4\), and \(s>4\), respectively.
+For a downstream remainder bounded by a stage-independent constant times
+these three quantities, plus a separately controlled \(o(\ell_r^4)\)
+kernel residual, the remainder is \(o(\ell_r^4)\). Any growing
+transfer constant or further remainder must instead be included in the
+same-family tail receipt; the rate calculation does not bound it by itself.
+
+On a weaker route that has only a trace-norm replacement estimate, the
+matrix-mixing bound above is unavailable. The logarithm comparison instead
+requires the complete rate
+\[
+4\lambda_r^{-1}d_r^{\mathrm{M,EC}}=o(\ell_r^4),
+\]
+where \(\lambda_r>0\) bounds the relevant marginals of both states below.
+For example, \(\lambda_r\ge\lambda_0(\ell_r/\ell_0)^p\), with
+\(\lambda_0>0\) and \(p\ge0\), gives the sufficient strengthened margin
+\(s>\max\{8,(4+p)/\theta\}\), under uniformly bounded downstream
+transfer constants. Stagewise faithfulness alone supplies no such margin.
+This weaker route is not a replacement for the stronger hypotheses
+used by Theorem 2.5. Mere pointwise collar convergence also supplies neither
+common-family rate, and no per-radius diagonal choice is used.
 
 \textbf{Lemma E0.7 (Cap-pair timelike coverage).} On the cap-normal \(H^3\) branch, every future timelike vector \(v\) has \(r=\sqrt{-\eta(v,v)}\) and \(u=v/r\in H^3\). For any unit \(s\in u^\perp\), the vectors
 \[
