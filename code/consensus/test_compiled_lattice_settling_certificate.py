@@ -354,7 +354,7 @@ def _verify_receipt(path: Path, entrypoint: str, error: str | None = None) -> No
 
 @pytest.mark.parametrize("entrypoint", ["api", "cli"])
 @pytest.mark.parametrize("alteration", [
-    "numeric_success_flag", "boolean_round_count", "fractional_depth", "duplicate_key",
+    "numeric_success_flag", "boolean_round_count", "fractional_depth", "duplicate_key", "unpaired_surrogate",
 ])
 def test_manifest_receipt_preserves_original_types_and_unique_fields(tmp_path, entrypoint, alteration):
     original = MANIFEST_PATH.read_text(encoding="utf-8")
@@ -363,6 +363,7 @@ def test_manifest_receipt_preserves_original_types_and_unique_fields(tmp_path, e
         "boolean_round_count": ('"constant_c": 1', '"constant_c": true'),
         "fractional_depth": ('"compiled_depth": 6', '"compiled_depth": 5.999999999999999999999'),
         "duplicate_key": ('"bound_verified": true', '"bound_verified": false, "bound_verified": true'),
+        "unpaired_surrogate": ('"schema": "oph.compiled_lattice_settling_certificate.v2"', '"schema": "\\ud800"'),
     }
     old, new = substitutions[alteration]
     assert old in original

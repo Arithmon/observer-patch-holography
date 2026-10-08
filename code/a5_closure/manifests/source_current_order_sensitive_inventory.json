@@ -2948,14 +2948,14 @@
         "sha256": "sha256:8507221cee47ceb81dfb9befa63832599648bf90a91d29059b8f625896c0217e"
       },
       {
-        "byte_count": 10009,
+        "byte_count": 10319,
         "path": "code/consensus/README.md",
-        "sha256": "sha256:73494f51c769f894cf04df4b0b3dfaab6a8a9769d59618e88f39068fe705b4b2"
+        "sha256": "sha256:4c4605dc7d91c6f0744fa6bce22441ca40fe2ed53a03ad7407179eeed0f4a75b"
       },
       {
-        "byte_count": 73176,
+        "byte_count": 73908,
         "path": "code/consensus/compiled_lattice_settling_certificate.py",
-        "sha256": "sha256:2de006fa8225b592cc743ce6446adad2a5f92cba8692dc7c116b4c204ecfe346"
+        "sha256": "sha256:9cb43dee5579b6fed665df2ddd3921bd23ac9607c94181bbee336a6f6d743980"
       },
       {
         "byte_count": 15243,
@@ -2988,14 +2988,14 @@
         "sha256": "sha256:2d5eac8d7dd84eac273ac86b246f95a9fd21035d826e476b7b957ddd6c891b8f"
       },
       {
-        "byte_count": 12303,
+        "byte_count": 15010,
         "path": "code/consensus/test_compiled_lattice_settling_certificate.py",
-        "sha256": "sha256:f6d5eb34e668f59c3d85fbd6ec4f607d69ce70b70bb06a184e86f75080e0d5a8"
+        "sha256": "sha256:ee0b396db653a0530a64da958e6c90c338cdfffdffebc01ac9fdf2d8710ff94e"
       },
       {
-        "byte_count": 18702,
+        "byte_count": 21799,
         "path": "code/consensus/test_compiled_source_correspondence.py",
-        "sha256": "sha256:4eb4659bfb8d73935c8a35045592fd89e5c38db3fe6f10a35cde30cd6cef587b"
+        "sha256": "sha256:c5976094c50f88c029ec8484310071307abc0bdea0bb8b24cc48d8e52e2d3d91"
       },
       {
         "byte_count": 14560,
@@ -4638,7 +4638,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:c879cdb84a4d2b10de94d81a5e04601d3cdc5cc0f49cd91910cbd1162ebdbde0",
+    "files_sha256": "sha256:30bbc84b6b78f2fff3d915f024bfeb55bf250fcf61a67e0463e06c372db3775c",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7547,7 +7547,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:6e8a991b3932f607c41f8080adb168deb2ad1642aa0efc60301cf6c2c7e0410a",
+  "inventory_sha256": "sha256:52fe0288981019d3b27ca126164d3d344e1655a290cef882232358691ecd17ff",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

@@ -72,6 +72,11 @@ snapshots of those tables to its netlist, register layout, wiring and rank
 data; construction checks that the derived fields agree, and certification
 checks the used entries of any supplied primitive library against that binding.
 
+Receipt verification preserves the types of the supplied fields and rejects
+duplicate JSON keys. Numeric substitutes for Boolean flags and fractional
+depths that round to integer-valued floats cannot pass through Python's loose
+numeric equality. Valid changes to whitespace and object-key order are accepted.
+
 Runtime evaluates the full supplied `update(ports, state)` table at each patch
 using the pre-round state. The assembled step is therefore exactly the product
 of the verified local kernels. Their state independence identifies that product

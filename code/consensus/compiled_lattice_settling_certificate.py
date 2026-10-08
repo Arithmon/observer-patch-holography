@@ -134,9 +134,17 @@ def write_json(path: Path, value: Any) -> None:
 
 
 def load_json(path: Path) -> Any:
+    def unique_fields(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"duplicate JSON field {key!r}")
+            result[key] = value
+        return result
+
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+        return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique_fields)
+    except (OSError, ValueError) as exc:
         raise CertificateError("JSON_READ", f"cannot read {path}: {exc}") from exc
 
 
@@ -1741,8 +1749,16 @@ def build_manifest() -> dict[str, Any]:
 
 def verify_manifest(path: Path) -> dict[str, Any]:
     stored = load_json(path)
+    try:
+        stored_bytes = canonical_json_bytes(stored)
+    except UnicodeEncodeError as exc:
+        raise CertificateError(
+            "MANIFEST_MISMATCH", f"stored manifest {path} contains invalid Unicode"
+        ) from exc
     recomputed = build_manifest()
-    if stored != recomputed:
+    # Ordinary Python equality conflates Boolean flags, integers and rounded
+    # floats. Preserve their JSON types while allowing key/whitespace changes.
+    if stored_bytes != canonical_json_bytes(recomputed):
         raise CertificateError(
             "MANIFEST_MISMATCH", f"stored manifest {path} differs from recomputation"
         )
