@@ -232,7 +232,7 @@
     },
     "OPH-COSMO-FLRW-RECORD-DENSITY": {
       "disposition": "same_weight_identities_and_profile_boundary",
-      "original_claim_sha256": "a3c2995bcbb86cbdab57c53678939a477bff663650f24fe8803aabe86a1dc815"
+      "original_claim_sha256": "65ab1299f3d8e936c83c5a060db0f03619d5de8f34558a6e3ea96dd17a78f714"
     },
     "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION": {
       "disposition": "recorded_architecture_not_transferred",
@@ -1070,7 +1070,7 @@
           "constant_physical_event_density_count_calibration"
         ],
         "disposition": "same_weight_identities_and_profile_boundary",
-        "original_claim_sha256": "a3c2995bcbb86cbdab57c53678939a477bff663650f24fe8803aabe86a1dc815"
+        "original_claim_sha256": "65ab1299f3d8e936c83c5a060db0f03619d5de8f34558a6e3ea96dd17a78f714"
       },
       "OPH-COSMO-POSTDICTION-LEDGER": {
         "assumptions": [
