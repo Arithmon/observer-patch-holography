@@ -47,6 +47,12 @@ not a domain argument.
 - **Components and identities:** independently check each component of a
   ratio, difference or normalized diagnostic. Correlated errors can leave
   identities, positivity and normalization intact.
+  For a transfer logarithm, test the full Hamiltonian as well as its gap,
+  and every relevant stationary-population ratio as well as normalization.
+  Resolving small transfer eigenvalues and resolving the leading eigenspace
+  are different obligations. Where the source supplies a positive factor,
+  preserve that structure before forming a rounded Gram matrix; a successful
+  eigensolver on the damaged matrix cannot recover discarded information.
 - **Intermediate and output scales:** cross normal/subnormal/zero
   boundaries before and after weighting. Use ordinary units, very small
   and large units, both signs where allowed, and cancelling energy origins.

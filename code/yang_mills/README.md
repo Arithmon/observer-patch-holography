@@ -60,13 +60,77 @@ Result on the committed receipt (`receipts/z2_finite_transfer_receipt.json`):
 * the receipt is exact at `beta_s = 0` (every rate equals `log coth beta_t`, the dual coupling);
 * for every tested interacting Wilson point
   `beta_s = beta_t in {0.1,0.3,0.5,0.7,1}` it fails: the best constant-rate
-  fit leaves a 4% to 24% relative residual at `L = 3`;
+  fit leaves a 3.8% to 24% relative residual at `L = 3`;
 * for the Kogut-Susskind Hamiltonian the single-flip form is exact with
   fiber-dependent rates `c_l(o) = lam (r + 1/r)`, `r = Omega(o)/Omega(X_l o)`,
   so the scalar cross-fiber equality fails (rate spread 1.04 to 2.05 at
   `L = 3`) while `c_l(o) >= 2 lam` remains an analytic positive floor;
 * among the interacting tested points, the Dobrushin sum `eta_*` is below one
-  at the weakest Wilson and Kogut-Susskind couplings.
+  at Wilson `beta_s = beta_t = 0.1` and Kogut-Susskind `lam = 2`.
+
+### Numerical calculation and replay
+
+The free Hamiltonian is evaluated analytically as
+`H = (log(coth beta_t)/2) sum_l (I - X_l)`, with a uniform Perron state.
+Only exact `beta_s == 0` takes this route. For interacting inputs, forming the
+dense transfer matrix and then diagonalizing it loses small kinetic eigenvalues.
+Instead, let `G` be the gauge-mask group and `C = G^perp` its electric cycle
+space. With `n` orbits and `E` links,
+
+```text
+F[o,z] = (-1)^(rep_o dot z) / sqrt(n),  z in C,
+K = (2 cosh beta_t)^E F diag(tanh(beta_t)^|z|) F^T,
+A = diag(exp(beta_s P/2)) F diag(tanh(beta_t)^(|z|/2)),
+T = (2 cosh beta_t)^E A A^T.
+```
+
+Character orthogonality gives `F^T F = I`: averaging over orbit representatives
+is the full-configuration character sum divided by the common gauge-orbit size.
+The singular vectors of `A` therefore give the transfer eigenvectors, and
+`H = U diag(2 log(s_max/s_i)) U^T`. This computes the same Wilson operator;
+it changes no couplings or tested points. A common row scale is removed and
+restored in `lambda_max`.
+
+The [LAPACK Jacobi SVD](https://www.netlib.org/lapack/explore-html/d8/d78/group__gejsv_gaca7ba7f1e8002c7a1d5bffa4ccbb541f.html)
+is used with `JOBA=E`, whose relative singular-value accuracy is controlled by
+the column-equilibrated factor. Here that factor is `diag(exp(beta_s P/2)) F`,
+with condition number `exp(abs(beta_s) (max(P)-min(P))/2)`, independent of the
+tiny kinetic eigenvalues. The source checks the spatial condition, retained
+rank, solver status, scaled column reconstruction and Perron separation.
+It also checks amplification by the Doob division: an entrywise Hamiltonian
+uncertainty estimate `eps n ||H||_2` becomes a Frobenius estimate
+`eps n ||H||_2 ||1/Omega||_2` for unit-norm `Omega`. The relative estimate
+must fit the same resolution policy. For example, interacting `L=2, (3,3)`
+has an accurate Hamiltonian but unresolved Doob entries and is refused;
+every point in the original retained grid remains supported.
+These are numerical safeguards at a `1e-7` resolution policy, not certified
+interval bounds. The generic rounded-matrix logarithm separately refuses an
+unresolved bottom spectrum or Perron state. Near-zero positive couplings and
+an unresolved leading eigengap are not replaced by an exact free model.
+
+The defect was reproduced on `de60560b` before correction:
+
+| Original input | Incorrect result | Independent control / correction |
+| --- | --- | --- |
+| Free `L=2, beta_t=.01` | Nonzero constant-rate residual and multi-flip mass | Exact free Hamiltonian, including every entry and rate |
+| Free `L=2, beta_t=18` | `pi_max/pi_min` about 117, `eta_*` about 3.45 | Uniform law, `eta_* = 0`, heat-bath gap 2 |
+| Interacting `L=2, beta_s=beta_t=.01` | About 0.4% full-H error | Original-input 60/90-digit transfer calculations |
+| Interacting `L=3, beta_s=beta_t=.1` | Outside-single-flip mass about 6413.72 | Corrected value about 2152.32; fit residual .03777034 |
+
+Floating defects depend on LAPACK and platform; the analytic controls do not.
+The last row corrects live numerical evidence while preserving the finite-grid
+constant-rate failure. The paper's rounded residuals `.038`, `.084`, `.24`
+and the exact Kogut-Susskind rate theorem remain valid. No physical mass-gap
+claim, claim-registry status, Lean theorem or frozen registration changes.
+
+`verify_z2_finite_transfer_receipt.py` validates strict JSON, the complete grid,
+source and run digests, scalar identities, and every replayed component.
+Substantive quantities use relative-only tolerance; absolute allowances apply
+only to specified zero diagnostics and scale with the fresh calculation.
+Replay is not an independent interacting solver. Independence comes from the
+original-input high-precision, full-configuration, analytic near-free and
+positive Perron-iteration controls in the tests. Ubuntu and Windows CI execute
+these controls and the full grid, rather than merely collecting the tests.
 
 This is a finite-grid diagnostic on a toy gauge system (`physical_clay_receipt:
 false`), not a universal no-go or a compact-simple-gauge receipt. Anisotropic
@@ -77,5 +141,12 @@ target is the quotient-space variable-rate approximate-tensorization lemma.
 ```bash
 python3 code/yang_mills/z2_finite_transfer_receipt.py --L 2 3 \
   --output code/yang_mills/receipts/z2_finite_transfer_receipt.json
+python3 code/yang_mills/kogut_susskind_fiber_rate_instances.py
 python3 -m pytest code/yang_mills/tests/test_z2_finite_transfer_receipt.py
 ```
+
+The second command refreshes the live exact-instance receipt's upstream byte
+binding; its rational rates and gaps do not change. Both producers write LF
+bytes on every platform. For a separate portable replay, write a fresh transfer
+receipt to a temporary path and pass the retained and fresh paths to
+`verify_z2_finite_transfer_receipt.py`.
