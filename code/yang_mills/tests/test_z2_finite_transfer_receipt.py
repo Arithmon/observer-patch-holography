@@ -120,6 +120,21 @@ def test_generic_transfer_rejects_wrong_matrix_domain(matrix) -> None:
         z2.symmetric_log_hamiltonian(matrix)
 
 
+def test_masked_transfer_is_not_treated_as_a_complete_matrix() -> None:
+    supplied = np.ma.array([[2.0, 1.0], [1.0, 2.0]], mask=[[True, False], [False, False]])
+    with pytest.raises(ValueError, match="masked"):
+        z2.symmetric_log_hamiltonian(supplied)
+
+
+@pytest.mark.parametrize("transfer,parameters", [
+    ("wilson", {"beta_s": 0.0, "beta_t": 0.5, "lam": 999.0}),
+    ("kogut_susskind", {"lam": 1.0, "beta_s": 999.0}),
+])
+def test_reported_parameters_must_all_be_used(orbits, transfer, parameters) -> None:
+    with pytest.raises(ValueError, match="parameters"):
+        z2.evaluate(orbits, transfer, **parameters)
+
+
 def test_unrepresentable_wilson_outputs_are_not_silent_zeros(orbits) -> None:
     with pytest.raises(ValueError, match="normalization.*range"):
         z2.evaluate(orbits, "wilson", beta_s=0.0, beta_t=100.0)
