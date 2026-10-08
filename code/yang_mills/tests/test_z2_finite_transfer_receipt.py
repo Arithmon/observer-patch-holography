@@ -9,12 +9,14 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import mpmath as mp
 import pytest
 
 HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 
 import z2_finite_transfer_receipt as z2  # noqa: E402
+from verify_z2_finite_transfer_receipt import load_receipt, verify_receipt  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -82,9 +84,149 @@ def test_kogut_susskind_single_flip_exact_but_fiber_dependent(orbits: z2.Z2Gauge
     assert floor["numerical_min_respects_bound"] is True
 
 
+@pytest.mark.parametrize("scale", [1e-200, 1.0, 1e200])
+def test_rate_fit_resolves_each_coefficient_across_units(orbits, scale) -> None:
+    projectors = z2.heat_bath_projectors(orbits, np.full(orbits.n_orbits, 1 / orbits.n_orbits))
+    expected = np.arange(1, orbits.n_links + 1, dtype=float)
+    generator = sum(c * (np.eye(orbits.n_orbits) - E)
+                    for c, E in zip(expected, projectors))
+    result = z2.constant_rate_fit(scale * generator, projectors)
+    np.testing.assert_allclose(np.asarray(result["rates"]) / scale, expected, rtol=2e-14)
+    assert result["relative_frobenius_residual"] < 2e-14
+    # A real off-support perturbation must not disappear through a zero norm
+    # or through a scale-independent absolute tolerance.
+    generator[0, -1] += 0.3
+    generator[0, 0] -= 0.3
+    perturbed = z2.constant_rate_fit(scale * generator, projectors)
+    assert perturbed["relative_frobenius_residual"] > 1e-3
+
+
+@pytest.mark.parametrize("beta_s,beta_t", [
+    (float("nan"), 0.5), (float("inf"), 0.5), (True, 0.5),
+    (0.0, 0.0), (0.0, -1.0), (0.0, float("nan")),
+    (0.0, float("inf")), (0.0, True), (0.0, 0.5j),
+])
+def test_wilson_refuses_nonphysical_or_nonfinite_parameters(orbits, beta_s, beta_t) -> None:
+    with pytest.raises(ValueError):
+        z2.evaluate(orbits, "wilson", beta_s=beta_s, beta_t=beta_t)
+
+
+@pytest.mark.parametrize("matrix", [
+    np.eye(2, dtype=complex), np.array([[1.0, 0.2], [0.3, 1.0]]),
+    np.array([[float("nan"), 0.1], [0.1, 1.0]]), np.zeros((2, 2)),
+    np.ones((2, 3)), np.ones((1, 1)), np.ones((2, 2), dtype=bool),
+])
+def test_generic_transfer_rejects_wrong_matrix_domain(matrix) -> None:
+    with pytest.raises(ValueError):
+        z2.symmetric_log_hamiltonian(matrix)
+
+
+def test_masked_transfer_is_not_treated_as_a_complete_matrix() -> None:
+    supplied = np.ma.array([[2.0, 1.0], [1.0, 2.0]], mask=[[True, False], [False, False]])
+    with pytest.raises(ValueError, match="masked"):
+        z2.symmetric_log_hamiltonian(supplied)
+
+
+@pytest.mark.parametrize("transfer,parameters", [
+    ("wilson", {"beta_s": 0.0, "beta_t": 0.5, "lam": 999.0}),
+    ("kogut_susskind", {"lam": 1.0, "beta_s": 999.0}),
+])
+def test_reported_parameters_must_all_be_used(orbits, transfer, parameters) -> None:
+    with pytest.raises(ValueError, match="parameters"):
+        z2.evaluate(orbits, transfer, **parameters)
+
+
+def test_extended_nonzero_coupling_cannot_become_the_exact_free_law(orbits) -> None:
+    if np.finfo(np.longdouble).minexp >= np.finfo(float).minexp:
+        pytest.skip("platform has no wider-exponent real input type")
+    coupling = np.longdouble("1e-400")
+    assert coupling != 0 and float(coupling) == 0
+    with pytest.raises(RuntimeError, match="underflows.*precision"):
+        z2.wilson_hamiltonian(orbits, coupling, 0.5)
+
+
+@pytest.mark.parametrize("consumer", ["dual_coupling", "evaluate"])
+def test_partially_rounded_subnormal_input_is_accurate_or_refused(orbits, consumer) -> None:
+    if np.finfo(np.longdouble).minexp >= np.finfo(float).minexp:
+        pytest.skip("platform has no wider-exponent real input type")
+    coupling = np.longdouble("3e-324")
+    assert coupling != 0 and float(coupling) != 0
+    numerator, denominator = coupling.as_integer_ratio()
+    with mp.workdps(100):
+        original = mp.mpf(numerator) / denominator
+        expected_rate = float(-mp.log(mp.tanh(original)))
+    try:
+        if consumer == "dual_coupling":
+            actual = z2.dual_coupling(coupling)
+            expected = expected_rate
+        else:
+            result = z2.evaluate(orbits, "wilson", beta_s=0.0, beta_t=coupling)
+            actual = result["spectral"]["gap_H"]
+            expected = 2 * expected_rate
+    except RuntimeError as error:
+        assert "precision" in str(error).lower()
+        return
+    assert actual == pytest.approx(expected, rel=1e-12, abs=0)
+
+
+@pytest.mark.parametrize("widen", [False, True])
+def test_exact_binary64_subnormal_parameter_remains_supported(orbits, widen) -> None:
+    original = float(np.nextafter(0.0, 1.0))
+    coupling = np.longdouble(original) if widen else original
+    numerator, denominator = original.as_integer_ratio()
+    with mp.workdps(100):
+        expected = float(-mp.log(mp.tanh(mp.mpf(numerator) / denominator)))
+    assert z2.dual_coupling(coupling) == pytest.approx(expected, rel=1e-14, abs=0)
+    result = z2.evaluate(orbits, "wilson", beta_s=0.0, beta_t=coupling)
+    assert result["spectral"]["gap_H"] == pytest.approx(2 * expected, rel=1e-12, abs=0)
+
+
+def test_ordinary_extended_precision_parameter_rounding_is_supported() -> None:
+    coupling = np.longdouble("0.50000000000000001")
+    numerator, denominator = coupling.as_integer_ratio()
+    with mp.workdps(100):
+        expected = float(-mp.log(mp.tanh(mp.mpf(numerator) / denominator)))
+    assert z2.dual_coupling(coupling) == pytest.approx(expected, rel=1e-14, abs=0)
+
+
+def test_parameter_conversion_overflow_is_an_explicit_domain_refusal() -> None:
+    with pytest.raises(ValueError, match="finite real parameter"):
+        z2.dual_coupling(10**1000)
+
+
+def test_unrepresentable_wilson_outputs_are_not_silent_zeros(orbits) -> None:
+    with pytest.raises(ValueError, match="normalization.*range"):
+        z2.evaluate(orbits, "wilson", beta_s=0.0, beta_t=100.0)
+    with pytest.raises(RuntimeError, match="dual coupling.*range"):
+        z2.dual_coupling(400.0)
+
+
+@pytest.mark.parametrize("scale", [1e-200, 1.0, 1e200])
+def test_doob_conservation_is_checked_in_every_row_and_unit(scale) -> None:
+    # Large entries elsewhere must not hide an invalid small row.  Each input
+    # is symmetric, so refusal cannot be delegated to a symmetry check.
+    generator = np.array([[1e8, -1e8, 0], [-1e8, 1e8 + 1, -1], [0, -1, 1.0]])
+    omega = np.full(3, 1 / math.sqrt(3))
+    valid = z2.doob_transform(scale * generator, omega, 0.0)
+    np.testing.assert_allclose(valid / scale, generator, rtol=2e-15, atol=0)
+    damaged = generator.copy()
+    damaged[2, 2] += 1.0
+    with pytest.raises(RuntimeError, match="row conservation.*resolution"):
+        z2.doob_transform(scale * damaged, omega, 0.0)
+
+
+def test_doob_conservation_handles_roundoff_and_zero_rows() -> None:
+    omega = np.full(3, 1 / math.sqrt(3))
+    generator = np.array([[1.0, -1, 0], [-1, 1 + 1e-12, 0], [0, 0, 0]])
+    result = z2.doob_transform(generator, omega, 0.0)
+    # Validation does not repair the diagonal or erase the supplied residual.
+    assert result[1, 1] > 1
+    np.testing.assert_array_equal(result[2], 0)
+
+
 def test_committed_receipt_matches_code() -> None:
     path = HERE / "receipts" / "z2_finite_transfer_receipt.json"
-    receipt = json.loads(path.read_text(encoding="utf-8"))
+    receipt = load_receipt(path)
     assert receipt["schema"] == z2.SCHEMA
     assert receipt["physical_clay_receipt"] is False
     assert receipt["grid_scope"]["universal_no_go"] is False
@@ -104,7 +246,10 @@ def test_committed_receipt_matches_code() -> None:
         r["variable_rate_floor"]["numerical_min_respects_bound"] for r in local_runs
     )
     fresh = z2.run([2, 3], [0.1, 0.3, 0.5, 0.7, 1.0], [0.5, 1.0, 2.0])
-    assert fresh == receipt
+    # Floating eigensolver output need not be byte-identical across LAPACK/OS.
+    # Verify every component with relative tolerances; hashes still bind the
+    # exact retained bytes and the original analytic controls run separately.
+    verify_receipt(receipt, fresh, HERE / "z2_finite_transfer_receipt.py")
     expected_runs_hash = hashlib.sha256(
         json.dumps(receipt["runs"], sort_keys=True).encode("utf-8")
     ).hexdigest()

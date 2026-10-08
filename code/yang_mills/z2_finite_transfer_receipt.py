@@ -8,8 +8,8 @@ collar generator whose rate ``c_C`` is independent of the repaired value.
 This module evaluates that receipt numerically on two small gauge systems:
 Z2 lattice gauge theory on an ``L x L`` periodic spatial torus in the
 gauge-invariant (Gauss-law) sector.  The free control has an analytic exact
-identity; interacting eigendecompositions and matrix logarithms use float64
-arithmetic and the serialized tolerances.
+identity; interacting calculations use float64 arithmetic with explicit
+resolution checks. These checks are numerical safeguards, not interval proofs.
 
 Two transfer objects are tested.
 
@@ -49,8 +49,11 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
+from scipy.linalg.lapack import dgejsv
 
 SCHEMA = "oph.yang_mills.z2_finite_transfer_receipt.v2"
+RESOLUTION_RTOL = 1e-7
+EPS = np.finfo(float).eps
 
 
 # ----------------------------------------------------------------------------
@@ -196,32 +199,207 @@ class Z2GaugeOrbits:
 # ----------------------------------------------------------------------------
 
 
-def symmetric_log_hamiltonian(T: np.ndarray) -> tuple[np.ndarray, np.ndarray, float]:
-    w, V = np.linalg.eigh(T)
-    if w[0] <= 0:
-        raise RuntimeError("transfer matrix is not positive definite")
-    lam_max = w[-1]
-    H = (V * (-np.log(w / lam_max))) @ V.T
-    omega = V[:, -1]
+def _symmetric_finite_matrix(matrix: np.ndarray) -> np.ndarray:
+    if np.ma.isMaskedArray(matrix):
+        raise ValueError("masked matrices do not specify a complete transfer operator")
+    array = np.asarray(matrix)
+    if (array.ndim != 2 or array.shape[0] != array.shape[1] or len(array) < 2
+            or np.iscomplexobj(array) or array.dtype.kind not in "fiu"
+            or not np.isfinite(array).all()):
+        raise ValueError("expected a finite real square matrix of dimension >= 2")
+    array = array.astype(float)
+    scale = float(np.max(np.abs(array)))
+    if scale == 0 or not np.isfinite(scale):
+        raise ValueError("matrix has no finite nonzero scale")
+    if np.max(np.abs(array / scale - array.T / scale)) > 8 * EPS:
+        raise ValueError("matrix must be symmetric")
+    return array
+
+
+def _positive_perron(omega: np.ndarray) -> np.ndarray:
     if omega.sum() < 0:
         omega = -omega
-    if np.any(omega <= 0):
-        raise RuntimeError("Perron vector is not strictly positive")
-    return H, omega, float(lam_max)
+    if not np.isfinite(omega).all() or np.any(omega <= 0):
+        raise RuntimeError("Perron support is not resolved as strictly positive")
+    return omega / np.linalg.norm(omega)
+
+
+def symmetric_log_hamiltonian(T: np.ndarray) -> tuple[np.ndarray, np.ndarray, float]:
+    """Logarithm of an already-rounded matrix, only on its resolved spectrum.
+
+    Scaling prevents unit-dependent overflow. A positive computed eigenvalue
+    alone does not resolve its logarithm; a resolved bottom eigenvalue alone
+    does not resolve the Perron state. Source Wilson calculations below avoid
+    rounding away kinetic eigenvalues before this operation in the first place.
+    """
+    T = _symmetric_finite_matrix(T)
+    scale = float(np.max(np.abs(T)))
+    normalized = T / scale
+    w, V = np.linalg.eigh(normalized)
+    error = 4 * len(T) * EPS * np.linalg.norm(normalized, ord=np.inf)
+    if w[0] <= error or error / w[0] > RESOLUTION_RTOL:
+        raise RuntimeError("transfer log spectrum is unresolved in float64 precision")
+    separation = w[-1] - w[-2]
+    omega = _positive_perron(V[:, -1])
+    if separation <= 2 * error or 2 * error / separation > RESOLUTION_RTOL * omega.min():
+        raise RuntimeError("Perron eigenspace is unresolved in float64 precision")
+    H = (V * (np.log(w[-1]) - np.log(w))) @ V.T
+    maximum = float(w[-1]) * scale
+    if not math.isfinite(maximum) or maximum <= 0:
+        raise ValueError("transfer normalization is outside float64 range")
+    return H, omega, maximum
+
+
+def _real_parameter(value: float, name: str, *, positive: bool = False) -> float:
+    if isinstance(value, (bool, np.bool_)) or not isinstance(value, (int, float, np.integer, np.floating)):
+        raise ValueError(f"{name} must be a finite real parameter")
+    original = value
+    try:
+        value = float(value)
+    except OverflowError as error:
+        raise ValueError(f"{name} must be a finite real parameter") from error
+    if value == 0 and original != 0:
+        raise RuntimeError(f"{name} underflows the supported float64 precision")
+    if not math.isfinite(value) or (positive and value <= 0):
+        raise ValueError(f"{name} must be finite" + (" and positive" if positive else ""))
+    if isinstance(original, np.floating) and original != 0:
+        # Promote the narrowed value back before comparing. A wider input can
+        # round to a nonzero binary64 subnormal with large relative damage;
+        # checking only whether it became zero misses that loss. Ordinary
+        # rounding and exactly representable binary64 subnormals remain valid.
+        restored = type(original)(value)
+        if abs((restored - original) / original) > 4 * EPS:
+            raise RuntimeError(f"{name} loses input precision when converted to float64")
+    return value
+
+
+def dual_coupling(beta_t: float) -> float:
+    """log(coth(beta_t)), including the near-identity transfer regime."""
+    beta_t = _real_parameter(beta_t, "beta_t", positive=True)
+    rate = (-math.log(math.tanh(beta_t)) if beta_t < 1
+            else 2 * math.atanh(math.exp(-2 * beta_t)))
+    if rate < np.finfo(float).tiny:
+        raise RuntimeError("dual coupling is unresolved in float64 range")
+    return rate
+
+
+def wilson_hamiltonian(orbits: Z2GaugeOrbits, beta_s: float,
+                       beta_t: float) -> tuple[np.ndarray, np.ndarray, float]:
+    """Compute H from the source factor, without forming its ill-conditioned Gram matrix.
+
+    For electric cycles z in the annihilator of the gauge group, the normalized
+    character matrix F[o,z] = (-1)^(rep_o dot z)/sqrt(n) is orthogonal and
+    K = (2 cosh(beta_t))^E F diag(tanh(beta_t)^|z|) F.T.
+    Thus T is a scalar times A A.T, A = D_s F diag(tanh(beta_t)^(|z|/2)).
+    LAPACK GEJSV with JOBA='E' retains relative singular-value accuracy under
+    column scaling; its conditioning depends on D_s F, not on the tiny kinetic
+    eigenvalues. See https://www.netlib.org/lapack/explore-html/d8/d78/
+    group__gejsv_gaca7ba7f1e8002c7a1d5bffa4ccbb541f.html .
+    """
+    beta_s = _real_parameter(beta_s, "beta_s")
+    beta_t = _real_parameter(beta_t, "beta_t", positive=True)
+    rate = dual_coupling(beta_t)
+    n = orbits.n_orbits
+    log_scale = orbits.n_links * (beta_t + math.log1p(math.exp(-2 * beta_t)))
+    if beta_s == 0:
+        # Exact free law, not a threshold applied to nearby interacting inputs.
+        identity = np.eye(n)
+        H = (rate / 2) * sum(identity - identity[flip] for flip in orbits.flip)
+        omega = np.full(n, 1 / math.sqrt(n))
+    else:
+        log_condition = 0.5 * abs(beta_s) * int(orbits.plaquette_sum.max() - orbits.plaquette_sum.min())
+        if log_condition > math.log(RESOLUTION_RTOL / (8 * n * EPS)):
+            raise RuntimeError("Wilson spatial factor condition is unresolved in float64")
+        row_logs = 0.5 * beta_s * orbits.plaquette_sum
+        shift = float(row_logs.max())
+        # Gauge-invariant electric characters, enumerated before any floating
+        # transfer arithmetic. No selection on diagnostic success occurs here.
+        cycles = np.arange(orbits.n_configs, dtype=np.int64)
+        for star in star_masks(orbits.L):
+            cycles = cycles[(popcount(cycles & star) & 1) == 0]
+        if len(cycles) != n:
+            raise RuntimeError("electric character dimension disagrees with orbit space")
+        F = (1 - 2 * (popcount(orbits.reps[:, None] & cycles[None, :]) & 1)) / math.sqrt(n)
+        column_scale = np.exp(-0.5 * rate * popcount(cycles))
+        if column_scale.min() < np.finfo(float).tiny ** 0.5:
+            raise RuntimeError("Wilson kinetic factor is unresolved in float64 range")
+        A = np.exp(row_logs - shift)[:, None] * F * column_scale[None, :]
+        # SciPy enum mapping: E,U,V,R,N,N. Require all columns to survive the
+        # restricted range; do not transpose the column-scaled factor or perturb it.
+        s, U, V, work, rank, info = dgejsv(
+            A, joba=1, jobu=0, jobv=0, jobr=1, jobt=0, jobp=0,
+        )
+        if (info != 0 or rank[0] != n or rank[1] != n or rank[2] != 0
+                or not np.isfinite(s).all() or s[-1] <= 0
+                or not np.isfinite(U).all() or not np.isfinite(V).all()
+                or not np.isfinite(work[:3]).all() or np.any(work[:3] <= 0)):
+            raise RuntimeError("Wilson factor singular spectrum is unresolved")
+        singular_scale = work[0] / work[1]
+        reconstructed = ((U * s) @ V.T) * singular_scale
+        relative_columns = np.linalg.norm((reconstructed - A) / np.linalg.norm(A, axis=0), axis=0)
+        if relative_columns.max() * math.exp(log_condition) > RESOLUTION_RTOL:
+            raise RuntimeError("Wilson factor column reconstruction is unresolved")
+        separation = (s[0] - s[1]) / s[0]
+        if separation <= 8 * n * EPS / RESOLUTION_RTOL:
+            raise RuntimeError("Wilson Perron separation is unresolved in float64")
+        omega = _positive_perron(U[:, 0])
+        energies = 2 * (np.log(s[0]) - np.log(s))
+        H = (U * energies) @ U.T
+        # A good normwise H is insufficient for the subsequent pointwise Doob
+        # division. Given an entrywise uncertainty estimate eps*n*||H||_2,
+        # its Frobenius amplification is ||1/omega||_2 because ||omega||_2=1.
+        # This is a resolution policy, not a certified SVD forward-error bound.
+        # Scale by min(omega) to evaluate the ratio without reciprocal overflow.
+        smallest = float(omega.min())
+        scaled_doob = H * omega[None, :] * (smallest / omega)[:, None]
+        doob_uncertainty = (EPS * n * float(energies.max())
+                            * np.linalg.norm(smallest / omega)
+                            / np.linalg.norm(scaled_doob))
+        if not math.isfinite(doob_uncertainty) or doob_uncertainty > RESOLUTION_RTOL:
+            raise RuntimeError("Wilson Doob transform precision is unresolved on the Perron support")
+        log_scale += 2 * (shift + math.log(s[0]) + math.log(singular_scale))
+    if log_scale > math.log(np.finfo(float).max):
+        raise ValueError("reported transfer normalization is outside float64 range")
+    maximum = math.exp(log_scale)
+    if not math.isfinite(maximum) or maximum <= 0:
+        raise ValueError("reported transfer normalization is outside float64 range")
+    return H, omega, maximum
 
 
 def ground_state(H: np.ndarray) -> tuple[np.ndarray, float]:
-    w, V = np.linalg.eigh(H)
-    omega = V[:, 0]
-    if omega.sum() < 0:
-        omega = -omega
-    if np.any(omega <= 0):
-        raise RuntimeError("Perron vector is not strictly positive")
-    return omega, float(w[0])
+    """Resolve the positive ground state before using its component ratios.
+
+    Conservation alone does not distinguish accurate probabilities from an
+    unresolved mixture of nearly degenerate ground-sector eigenvectors. This
+    conservative float-resolution policy can refuse otherwise accurate inputs.
+    """
+    H = _symmetric_finite_matrix(H)
+    scale = float(np.max(np.abs(H)))
+    normalized = H / scale
+    w, V = np.linalg.eigh(normalized)
+    omega = _positive_perron(V[:, 0])
+    error = 4 * len(H) * EPS * np.linalg.norm(normalized, ord=np.inf)
+    separation = w[1] - w[0]
+    if separation <= 2 * error or 2 * error / separation > RESOLUTION_RTOL * omega.min():
+        raise RuntimeError("ground-state Perron support precision is unresolved")
+    energy = float(w[0]) * scale
+    if not math.isfinite(energy):
+        raise ValueError("ground energy is outside float64 range")
+    return omega, energy
 
 
 def doob_transform(H: np.ndarray, omega: np.ndarray, e0: float) -> np.ndarray:
-    return (H - e0 * np.eye(len(omega))) * omega[None, :] / omega[:, None]
+    result = (H - e0 * np.eye(len(omega))) * omega[None, :] / omega[:, None]
+    if not np.isfinite(result).all():
+        raise RuntimeError("Doob transform precision is unresolved")
+    # H omega = e0 omega implies conservation exactly. Test every row relative
+    # to its own magnitude, so a large unrelated row cannot hide a violation.
+    # Scaling first also makes the test independent of generator units.
+    row_scale = np.max(np.abs(result), axis=1, keepdims=True)
+    scaled = np.divide(result, row_scale, out=np.zeros_like(result), where=row_scale != 0)
+    if np.any(np.abs(scaled.sum(axis=1)) > RESOLUTION_RTOL * np.abs(scaled).sum(axis=1)):
+        raise RuntimeError("Doob row conservation is unresolved at the numerical resolution")
+    return result
 
 
 def heat_bath_projectors(orbits: Z2GaugeOrbits, pi: np.ndarray) -> list[np.ndarray]:
@@ -241,14 +419,17 @@ def heat_bath_projectors(orbits: Z2GaugeOrbits, pi: np.ndarray) -> list[np.ndarr
 def constant_rate_fit(Lgen: np.ndarray, projectors: list[np.ndarray]) -> dict[str, Any]:
     n = Lgen.shape[0]
     basis = np.stack([(np.eye(n) - E).ravel() for E in projectors], axis=1)
-    target = Lgen.ravel()
+    scale = float(np.max(np.abs(Lgen)))
+    if not math.isfinite(scale) or scale == 0:
+        raise ValueError("rate fit requires a finite nonzero generator")
+    target = Lgen.ravel() / scale
     coeff, *_ = np.linalg.lstsq(basis, target, rcond=None)
     residual = target - basis @ coeff
     rel = float(np.linalg.norm(residual) / np.linalg.norm(target))
     return {
-        "rates": [float(c) for c in coeff],
-        "rate_min": float(coeff.min()),
-        "rate_max": float(coeff.max()),
+        "rates": [float(c * scale) for c in coeff],
+        "rate_min": float(coeff.min() * scale),
+        "rate_max": float(coeff.max() * scale),
         "relative_frobenius_residual": rel,
     }
 
@@ -322,12 +503,15 @@ def spectral_gap(M: np.ndarray, pi: np.ndarray | None = None) -> float:
 
 
 def evaluate(orbits: Z2GaugeOrbits, transfer: str, **params: float) -> dict[str, Any]:
+    expected = {"wilson": {"beta_s", "beta_t"}, "kogut_susskind": {"lam"}}
+    if transfer not in expected or set(params) != expected[transfer]:
+        raise ValueError("transfer parameters must exactly match the selected operator")
     if transfer == "wilson":
-        T = orbits.wilson_transfer(params["beta_s"], params["beta_t"])
-        H, omega, lam_max = symmetric_log_hamiltonian(T)
+        H, omega, lam_max = wilson_hamiltonian(orbits, params["beta_s"], params["beta_t"])
         e0 = 0.0
         extra = {"lambda_max": lam_max}
     elif transfer == "kogut_susskind":
+        _real_parameter(params["lam"], "lam", positive=True)
         H = orbits.kogut_susskind(params["lam"])
         omega, e0 = ground_state(H)
         extra = {"ground_energy": e0}
@@ -342,14 +526,21 @@ def evaluate(orbits: Z2GaugeOrbits, transfer: str, **params: float) -> dict[str,
     fibre = fiber_dependent_rates(Lgen, orbits, pi)
     dob = dobrushin_influence(orbits, pi)
     eta = dob["eta_star"]
+    # Subtracting almost equal conditionals can lose the influence even when
+    # the matrix, populations and conservation are individually well resolved.
+    # This dimension-scaled contrast floor is a numerical safeguard, not an
+    # interval guarantee for every derived observable. Only the source-exact
+    # free law justifies bypassing it with a known zero influence.
+    source_free = transfer == "wilson" and params["beta_s"] == 0
+    contrast_floor = 8 * EPS * orbits.n_orbits * orbits.n_links
+    if not source_free and contrast_floor > RESOLUTION_RTOL * eta:
+        raise RuntimeError("Dobrushin influence contrast is unresolved at the numerical precision")
     result: dict[str, Any] = {
         "transfer": transfer,
         "parameters": params,
         "n_orbits": int(orbits.n_orbits),
         "n_links": int(orbits.n_links),
-        "doob_generator_rows_sum_zero": bool(
-            np.allclose(Lgen.sum(axis=1), 0, atol=1e-9)
-        ),
+        "doob_generator_rows_sum_zero": True,  # checked per row in doob_transform
         "doob_generator_offdiagonal_nonpositive": bool(
             np.all(Lgen - np.diag(np.diag(Lgen)) <= 1e-12)
         ),
@@ -429,9 +620,9 @@ def main() -> None:
     ap.add_argument("--output", type=Path, default=None)
     args = ap.parse_args()
     receipt = run(args.L, args.beta, args.lam)
-    text = json.dumps(receipt, indent=2, sort_keys=True)
+    text = json.dumps(receipt, indent=2, sort_keys=True, allow_nan=False)
     if args.output:
-        args.output.write_text(text + "\n", encoding="utf-8")
+        args.output.write_bytes((text + "\n").encode("utf-8"))
     for r in receipt["runs"]:
         tag = r["transfer"] + (" control" if "control" in r else "")
         print(
