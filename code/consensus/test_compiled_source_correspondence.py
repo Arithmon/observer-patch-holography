@@ -376,6 +376,59 @@ def test_zero_input_constant_cell_has_an_exact_one_round_extension():
         assert cert.settle_trajectory(compiled, (), state, (1,))[0] == int(state != (1,))
 
 
+def test_aliased_readback_ports_preserve_source_dynamics_and_path_multiplicity():
+    # Two distinct output ports may observe the same register. Both port uses
+    # count as paths even when they reconverge at the same consuming instance.
+    fork = _primitive("ALIAS", ("x",), ("q",), ("a", "b"), (0, 0),
+                      lambda p: (p[0], p[0]), lambda p, s: (p[0],))
+    primitives = {"ALIAS": fork, "NAND": cert.reference_primitives()["NAND"]}
+    net = cert.Netlist("aliased_fork", ("x",), (
+        cert.Instance("G", "NAND", (("out", "F", "a"), ("out", "F", "b"))),
+        cert.Instance("F", "ALIAS", (("in", "x"),)),
+    ), (("answer", "G"),))
+    compiled = cert.compile_net(net, primitives)
+    # F has its length-zero path and two length-one paths to G.
+    assert dict(compiled.analysis["weight"]) == {"F": 3, "G": 1}
+    assert dict(compiled.analysis["rank"]) == {"F": 1, "G": 2}
+    assert cert.rank_ladder_certification(compiled, primitives)["verified"] is True
+    states = _bits(2)
+    for inputs in _bits(1):
+        fixed = [state for state in states
+                 if _original_step(net, primitives, inputs, state) == state]
+        assert fixed == [(1 - inputs[0], inputs[0])]
+        assert cert.extension_state(compiled, inputs) == fixed[0]
+        for state in states:
+            following = _original_step(net, primitives, inputs, state)
+            assert cert.realized_step(compiled, inputs, state) == following
+            assert cert.output_values(compiled, state) == _original_outputs(net, primitives, state)
+            assert cert.potential(compiled, state, fixed[0]) == (
+                int(state[0] != fixed[0][0]) + 3 * int(state[1] != fixed[0][1])
+            )
+            assert _original_step(net, primitives, inputs, following) == fixed[0]
+            expected_time = 0 if state == fixed[0] else (1 if following == fixed[0] else 2)
+            assert cert.settle_trajectory(compiled, inputs, state, fixed[0])[0] == expected_time
+
+
+def test_settling_reports_the_exact_nonzero_potential_margin():
+    primitives = {"WIRE": _wire(), "NAND": cert.reference_primitives()["NAND"]}
+    net = cert.Netlist("masked_wire", ("x", "mask"), (
+        cert.Instance("W", "WIRE", (("in", "x"),)),
+        cert.Instance("G", "NAND", (("out", "W", "z"), ("in", "mask"))),
+    ), (("answer", "G"),))
+    inputs, initial, fixed = (0, 0), (1, 0), (0, 1)
+    # The zero mask makes NAND settle despite its unsettled wire input.
+    assert _original_step(net, primitives, inputs, initial) == fixed
+    assert _original_step(net, primitives, inputs, fixed) == fixed
+    compiled = cert.compile_net(net, primitives)
+    assert cert.extension_state(compiled, inputs) == fixed
+    assert cert.realized_step(compiled, inputs, initial) == fixed
+    assert dict(compiled.analysis["weight"]) == {"W": 2, "G": 1}
+    assert cert.potential(compiled, initial, fixed) == 3
+    assert cert.potential(compiled, fixed, fixed) == 0
+    # Exact margin = potential drop 3 - two initially unsettled instances.
+    assert cert.settle_trajectory(compiled, inputs, initial, fixed) == (1, 1)
+
+
 @pytest.mark.parametrize("has_one_row", [False, True])
 def test_incomplete_large_state_declaration_is_rejected_before_enumeration(has_one_row):
     # The supplied data are tiny. The missing 2**65 transition rows must not

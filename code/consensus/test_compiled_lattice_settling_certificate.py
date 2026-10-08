@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from fractions import Fraction
 from pathlib import Path
+import subprocess
 import sys
 
 import pytest
@@ -326,3 +327,59 @@ def test_manifest_emission_is_deterministic(tmp_path: Path, recomputed: dict) ->
 def test_manifest_paths_are_platform_independent(manifest: dict) -> None:
     assert "\\" not in manifest["scope"]["realized"]
     assert "\\" not in manifest["abstract_compiler_result"]["lean_module"]
+
+
+def _verify_receipt(path: Path, entrypoint: str, error: str | None = None) -> None:
+    if entrypoint == "api":
+        if error is None:
+            cert.verify_manifest(path)
+        else:
+            with pytest.raises(cert.CertificateError) as caught:
+                cert.verify_manifest(path)
+            assert caught.value.code == error
+        return
+    result = subprocess.run(
+        [sys.executable, str(MODULE_DIR / "compiled_lattice_settling_certificate.py"),
+         "verify", "--manifest", str(path)],
+        capture_output=True, text=True, timeout=60,
+    )
+    if error is None:
+        assert result.returncode == 0, result.stderr
+        assert "manifest verified:" in result.stdout
+    else:
+        assert result.returncode != 0
+        assert error in result.stderr
+        assert "manifest verified:" not in result.stdout
+
+
+@pytest.mark.parametrize("entrypoint", ["api", "cli"])
+@pytest.mark.parametrize("alteration", [
+    "numeric_success_flag", "boolean_round_count", "fractional_depth", "duplicate_key",
+])
+def test_manifest_receipt_preserves_original_types_and_unique_fields(tmp_path, entrypoint, alteration):
+    original = MANIFEST_PATH.read_text(encoding="utf-8")
+    substitutions = {
+        "numeric_success_flag": ('"bound_verified": true', '"bound_verified": 1'),
+        "boolean_round_count": ('"constant_c": 1', '"constant_c": true'),
+        "fractional_depth": ('"compiled_depth": 6', '"compiled_depth": 5.999999999999999999999'),
+        "duplicate_key": ('"bound_verified": true', '"bound_verified": false, "bound_verified": true'),
+    }
+    old, new = substitutions[alteration]
+    assert old in original
+    altered = original.replace(old, new, 1)
+    # This is a genuinely different supplied number, despite binary64 parsing
+    # rounding it to the existing depth and ordinary Python equality accepting it.
+    assert Fraction("5.999999999999999999999") != 6
+    path = tmp_path / "altered.json"
+    path.write_text(altered, encoding="utf-8")
+    error = "JSON_READ" if alteration == "duplicate_key" else "MANIFEST_MISMATCH"
+    _verify_receipt(path, entrypoint, error)
+
+
+@pytest.mark.parametrize("entrypoint", ["api", "cli"])
+def test_manifest_receipt_accepts_valid_reformatting(tmp_path, manifest, entrypoint):
+    reordered = dict(reversed(list(manifest.items())))
+    path = tmp_path / "reformatted.json"
+    path.write_text(json.dumps(reordered, indent=1, ensure_ascii=False), encoding="utf-8")
+    assert path.read_bytes() != MANIFEST_PATH.read_bytes()
+    _verify_receipt(path, entrypoint)
