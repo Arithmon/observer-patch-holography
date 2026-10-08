@@ -1,6 +1,6 @@
 {
   "artifact": "oph_neutrino_forward_splittings",
-  "ascending_gap_ratio_s10_over_s20": 4.615880777973925e-15,
+  "ascending_gap_ratio_s10_over_s20": 4.057879102371717e-15,
   "ascending_mass_sq_gap_bounds_gev2": {
     "s1_minus_s0": {
       "max": 9.625410408785124e-25,
@@ -12,9 +12,9 @@
     }
   },
   "ascending_mass_sq_gaps_gev2": {
-    "s1_minus_s0": 4.408103815583578e-39,
-    "s2_minus_s0": 9.54986497185582e-25,
-    "s2_minus_s1": 9.549864971855776e-25
+    "s1_minus_s0": 3.875219749976541e-39,
+    "s2_minus_s0": 9.549864971855822e-25,
+    "s2_minus_s1": 9.549864971855784e-25
   },
   "ascending_state_labels": [
     "s0",

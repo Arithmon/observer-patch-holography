@@ -27,7 +27,7 @@ Historical frozen targets and custody artifacts retain their original bytes.
 | Finite-window evaluation returned false zero bounds | At `theta=1e-14`, a radius change from `1` to `1.01` was erased; weights `[1e308,1e308]` normalized to zeros after overflow | Use scaled weight normalization, `log1p`/`expm1`, and the gamma recurrence for the derivative norm. Twelve independent controls reproduce eight failures on the base source: `code/cosmology/test_radial_window_regressions.py` |
 | No tensor source was promoted to zero tensor power | `h=sin(k tau)/(k tau)` is a nonzero homogeneous solution of the radiation-era tensor equation | Require zero initial tensor amplitude and velocity, no forcing, positive scalar pivot power, and linear primordial scope. Three live ledger rows lose generic slow-roll discrimination credit; their numerical comparison verdicts do not change |
 | A finite tensor upper limit was said to discriminate generic slow roll | The generic alternative admits arbitrarily small positive tensor power | Restrict exclusion to specified alternatives above the achieved sensitivity; semantic mutations of the live ledger are rejected even after rehashing |
-| Small nonzero Majorana masses became zero | `diag(1e-200,2e-200,3e-200)` returned zero masses; within the actual intrinsic family, `a=1+1e-8,rho=1` lost both masses `a-rho` | Replace squared normal-matrix/cubic readout with scaled direct SVD, phase and congruence checks. Preserve the independent cubic diagnostic. `code/particles/neutrino/test_takagi_numerics.py` |
+| Small nonzero Majorana masses became zero | `diag(1e-200,2e-200,3e-200)` returned zero masses; within the actual intrinsic family, `a=1+1e-8,rho=1` lost both masses `a-rho`. The downstream gap producer also underflowed squared gaps and used a dimensionful cutoff for their ratio | Replace squared normal-matrix/cubic readout with scaled direct SVD, phase and congruence checks. Preserve the independent cubic diagnostic. Compute gaps exactly on the supplied binary64 masses before one rounding, refuse nonrepresentable gaps, and read their ratio without an absolute unit cutoff. `code/particles/neutrino/test_takagi_numerics.py` |
 | Changing physical units erased Majorana phases | The absolute imaginary-part cutoff selected a real shortcut at `m_star=1e-20` although the relative complex phase remained nonzero | Use the real shortcut only for exactly real inputs; retain scale and subprocess/JSON congruence controls |
 | Alpha endpoint metadata falsely authorized theorem promotion | Inconsistent component/total intervals, a `not_positive` string, malformed spectra and an arbitrary certificate label passed | Distinguish `contract_satisfied` from a replayed certificate and physical promotion. Check exact necessary interval relations, supports, residues and budgets. The current backend has no certificate replay and cannot promote a contract. Tests live in `code/P_derivation/test_thomson_spectral_transport.py` and its two endpoint consumers |
 | Fine-to-coarse cost control did not ensure a coarse optimum was reachable | Coarse costs `A=0,B=1`, with only a fine lift of `B`, defeat the claimed implication even at zero distortion | Require a feasible contraction and a fine lift of the coarse optimum; give the three-inequality proof. `code/particles/test_paper_proof_boundaries.py` |
@@ -44,7 +44,11 @@ heat-bath gap is written as `2 epsilon`, handle zero-noise concentration
 without dividing by zero, and restore the Gaussian mismatch factor `1/2`
 and fixed-precision/entropy qualifications. Live cosmology summaries now
 distinguish finite-window clock estimates from proper-time limits and give
-the actual adopted versus unadopted freeze status.
+the actual adopted versus unadopted freeze status. The matching FLRW claim,
+novelty summary and observation ledger use the physical weighted counts, the
+two-diamond scale enclosure and the constant-profile or shrinking-window
+conditions; raw flat cardinality alone does not reconstruct an expanding
+proper-time ratio.
 
 ## Paper coverage
 
@@ -121,6 +125,10 @@ Recorded local results (the groups overlap and are not summed):
 - 81 final particle/endpoint regressions, 110 neutrino tests, 69 Koide/A5
   controls, and 62 hadronic-consumer tests passed. The P suite's scratch-copy
   fixture failures were resolved by 36 tests on the complete tree.
+- Downstream review added eight mass-gap consumer controls; the expanded
+  Majorana/gap module passed all 48 tests with warnings as errors. Three
+  ratio/cancellation controls fail against the original gap producer.
+  Current splitting and nested export receipts were regenerated together.
 - 34 consensus/string and existing paper-interface checks passed.
 - 60 mandatory-runner sharding/workflow tests passed.
 - The final scientific collection imports 18,090 tests successfully.
@@ -135,8 +143,8 @@ Recorded local results (the groups overlap and are not summed):
 The full-suite completion and any execution limits are recorded on the PR. No cloud simulation, new observation, physical calibration,
 refitting of experimental data, or change to a frozen outcome rule is part
 of this repair. Numerical tolerance checks are not outward-rounded error
-certificates; unresolved Takagi degeneracies and unverified endpoint proofs
-are refused rather than promoted.
+certificates; Takagi congruences failing the declared normwise residual
+checks are refused, and unreplayed endpoint proofs cannot authorize promotion.
 
 The equilibrium-propagation premise/sign correction agrees with the original
 [Scellier–Bengio derivation](https://arxiv.org/html/1602.05179v4), particularly

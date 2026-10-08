@@ -126,3 +126,51 @@ def test_real_shortcut_rejects_a_nonsymmetric_matrix_instead_of_using_one_triang
     assert result.returncode != 0
     assert "Majorana matrix must be complex symmetric" in result.stderr
     assert not output.exists()
+
+
+def _run_splittings(tmp_path, masses):
+    root = Path(__file__).resolve().parents[2]
+    majorana, output = tmp_path / "majorana.json", tmp_path / "gaps.json"
+    majorana.write_text(json.dumps({"masses_sorted_gev": masses}))
+    result = subprocess.run([sys.executable, str(root / "particles/neutrino/build_forward_splittings.py"),
+                             "--majorana", str(majorana), "--out", str(output)],
+                            capture_output=True, text=True)
+    return result, output
+
+
+@pytest.mark.parametrize("scale", [1.0, 1e-20, 1e-150, 1e150])
+def test_forward_gap_ratio_is_invariant_under_resolved_unit_changes(tmp_path, scale):
+    result, output = _run_splittings(tmp_path, [scale, 2 * scale, 3 * scale])
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(output.read_text())
+    for key, expected in {"s1_minus_s0": 3, "s2_minus_s0": 8, "s2_minus_s1": 5}.items():
+        assert payload["ascending_mass_sq_gaps_gev2"][key] / (scale * scale) == pytest.approx(expected, rel=2e-15)
+    assert payload["ascending_gap_ratio_s10_over_s20"] == pytest.approx(3 / 8, rel=2e-15)
+    assert payload["public_surface_candidate_allowed"] is False
+
+
+def test_forward_gap_does_not_subtract_separately_rounded_large_squares(tmp_path):
+    lower = 1e154
+    upper = float(np.nextafter(lower, np.inf))
+    result, output = _run_splittings(tmp_path, [0, lower, upper])
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(output.read_text())
+    # Independently factored difference avoids the two nearly equal squares.
+    expected = (upper - lower) * (upper + lower)
+    assert payload["ascending_mass_sq_gaps_gev2"]["s2_minus_s1"] == pytest.approx(expected, rel=2e-15)
+
+
+@pytest.mark.parametrize("scale", [1e-200, 1e200])
+def test_forward_gaps_refuse_underflow_or_overflow_instead_of_false_zeros(tmp_path, scale):
+    result, output = _run_splittings(tmp_path, [scale, 2 * scale, 3 * scale])
+    assert result.returncode != 0
+    assert "squared mass gap exceeds finite binary64 range" in result.stderr
+    assert not output.exists()
+
+
+def test_equal_masses_keep_exact_zero_gaps_and_undefined_ratio(tmp_path):
+    result, output = _run_splittings(tmp_path, [2, 2, 2])
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(output.read_text())
+    assert set(payload["ascending_mass_sq_gaps_gev2"].values()) == {0}
+    assert payload["ascending_gap_ratio_s10_over_s20"] is None

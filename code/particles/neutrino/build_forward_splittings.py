@@ -20,8 +20,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import pathlib
 import sys
+from fractions import Fraction
 from typing import Any
 
 
@@ -30,10 +32,39 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from particles.artifact_paths import portable_json_dumps
+from quantum_information.gibbs import _numeric
 
 
 def load_json(path: pathlib.Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _ascending_gaps(masses: list[float]) -> tuple[dict[str, float], float | None]:
+    """Round exact gaps of the supplied binary64 masses once, or refuse range loss."""
+    supplied = _numeric(masses, "Majorana masses", real=True)
+    if supplied.shape != (3,):
+        raise ValueError("majorana artifact must provide three sorted masses")
+    if any(value < 0 for value in supplied) or any(supplied[i] > supplied[i + 1] for i in (0, 1)):
+        raise ValueError("Majorana masses must be nonnegative and sorted")
+    exact = [Fraction(float(value)) for value in supplied]
+    gaps = {
+        "s1_minus_s0": exact[1] ** 2 - exact[0] ** 2,
+        "s2_minus_s0": exact[2] ** 2 - exact[0] ** 2,
+        "s2_minus_s1": exact[2] ** 2 - exact[1] ** 2,
+    }
+
+    def rounded(value: Fraction, name: str) -> float:
+        try:
+            result = float(value)
+        except OverflowError as error:
+            raise ValueError(f"{name} exceeds finite binary64 range") from error
+        if not math.isfinite(result) or (value != 0 and result == 0):
+            raise ValueError(f"{name} exceeds finite binary64 range")
+        return result
+
+    ratio = (None if gaps["s2_minus_s0"] == 0 else
+             rounded(gaps["s1_minus_s0"] / gaps["s2_minus_s0"], "mass gap ratio"))
+    return {name: rounded(value, "squared mass gap") for name, value in gaps.items()}, ratio
 
 
 def main() -> int:
@@ -63,14 +94,8 @@ def main() -> int:
     majorana = load_json(majorana_path)
     envelope = load_json(envelope_path) if envelope_path.exists() else None
     pullback_metric = load_json(pullback_metric_path) if pullback_metric_path.exists() else None
-    masses = [float(value) for value in majorana.get("masses_sorted_gev", [])]
-    if len(masses) != 3:
-        raise ValueError("majorana artifact must provide three sorted masses")
-    ascending_gaps = {
-        "s1_minus_s0": (masses[1] ** 2) - (masses[0] ** 2),
-        "s2_minus_s0": (masses[2] ** 2) - (masses[0] ** 2),
-        "s2_minus_s1": (masses[2] ** 2) - (masses[1] ** 2),
-    }
+    masses = majorana.get("masses_sorted_gev", [])
+    ascending_gaps, ascending_ratio = _ascending_gaps(masses)
     overlaps = [float(value) for value in majorana.get("collective_mode_overlap_by_eigenvector", [])]
     dominant_index = None if len(overlaps) != 3 else int(max(range(3), key=lambda idx: overlaps[idx]))
     collective_mode_location = (
@@ -110,11 +135,7 @@ def main() -> int:
         "masses_gev_sorted": masses,
         "ascending_state_labels": ["s0", "s1", "s2"],
         "ascending_mass_sq_gaps_gev2": ascending_gaps,
-        "ascending_gap_ratio_s10_over_s20": (
-            None
-            if abs(ascending_gaps["s2_minus_s0"]) <= 1.0e-30
-            else ascending_gaps["s1_minus_s0"] / ascending_gaps["s2_minus_s0"]
-        ),
+        "ascending_gap_ratio_s10_over_s20": ascending_ratio,
         "mass_eigenstate_label_status": "ascending_singular_states_only",
         "missing_mass_label_object": "source_derived_solar_pair_and_atmospheric_sign_rule",
         "physical_mass_label_assignment": physical_assignment,
