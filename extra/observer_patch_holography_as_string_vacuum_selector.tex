@@ -1372,7 +1372,7 @@ structures, and the supercurrent OPE.
 The precise claim is conditional: a heterotic edge-CFT completion would make the ranks,
 stress-tensor equality, supercurrent, and critical dimension follow rigidly.
 
-\begin{definition}[Critical-edge finite-carrier receipts]
+\begin{definition}[Critical-edge carrier and continuum receipts]
 Let \(V_{\rm port}\) be the real vector space of dynamical port-amplitude perturbations, distinct
 from the fixed curvature charges \(q_a=1\), and let
 \[
@@ -1381,7 +1381,9 @@ from the fixed curvature charges \(q_a=1\), and let
 \qquad
 \dim\mathfrak g_{\rm SM}=12.
 \]
-The finite-carrier critical-edge certificate consists of five receipts.
+The critical-edge certificate consists of five receipts. The OPE and
+character clauses are continuum hypotheses; finitely many cutoff tests do
+not prove them.
 \begin{enumerate}[leftmargin=2em]
 \item A visible-response map
 \[
@@ -1409,17 +1411,31 @@ J_A(z)J_B(w)\sim\frac{k_{AB}}{(z-w)^2}.
 Q_N^2-H_{R,N}\to0
 \]
 in the refinement limit.
-\item A torus and spin-structure receipt
+In addition, its local density must converge to an odd field \(G_R\) of
+weight \(3/2\) with the super-Virasoro OPE
 \[
-Z_{\OPH}(\tau,\bar\tau)=q^{-1}\bar q^{-1/2}(1+\cdots)
+ G_R(\bar z)G_R(\bar w)\sim
+ \frac{2c_R/3}{(\bar z-\bar w)^3}
+ +\frac{2T_R(\bar w)}{\bar z-\bar w}.
 \]
-with the modular transformations of the heterotic spin-structure sum.
+The integrated square relation alone does not establish this local OPE.
+\item Ordinary, unprojected vacuum characters with nonzero vacuum
+coefficients satisfying
+\[
+\chi_{L,\mathrm{vac}}(q)\,
+\chi_{R,\mathrm{vac}}(\bar q)=q^{-1}\bar q^{-1/2}(1+\cdots),
+\]
+and a separate receipt for the modular transformations of the heterotic
+spin-structure sectors. The vacuum powers are read before a GSO projection
+or a signed spin-structure sum. Such a sum can cancel the vacuum term, or
+vanish identically, and cannot be used to recover the central charges.
 \end{enumerate}
 \end{definition}
 
 \subsection{Operational finite-carrier receipt protocol}
 
-The finite-carrier certificate is an executable protocol, not a synonym for a single
+The finite-carrier tests support the continuum certificate; they do not
+replace its limit and OPE hypotheses. The protocol is not a synonym for a single
 twelve-port cavity. A single Echosahedron is a recurrent zero-spatial-dimensional patch: it evolves
 and self-reads, but the spatial edge coordinate needed for a
 \((1+1)\)-dimensional scaling theory is absent. Central charge, current modes, and Virasoro closure
@@ -1468,7 +1484,8 @@ c_L\to24,\qquad c_R\to12.
 and require \(T_{\OPH}-T_{\rm Sug}\to0\), equivalently no residual positive-central-charge coset.
 \item \textbf{Supercurrent.} Exhibit a genuine right-moving graded sector and a local odd
 supercurrent whose finite-carrier square-root receipt satisfies \(Q_N^2-H_{R,N}\to0\) on the
-low-energy projector.
+low-energy projector. Separately control the scaling limit of the local
+super-Virasoro OPE, including its central term and conformal weight.
 \item \textbf{Torus, spin structures, and internal lattice.} Export spin-structure partition
 functions, verify their modular transformation law after the full GSO projection, and identify the
 rank-sixteen even self-dual left-moving internal lattice. The Bouchard-Donagi witness belongs to
@@ -1486,7 +1503,9 @@ not a passed numerical result.
 
 \begin{lemma}[Port-spectrum and icosahedral rank tests]
 If every nonzero observer-visible repair generator changes some dynamical port record, then
-\(\calR_{\rm port}\) is an isomorphism. If the twelve ports transform as the vertex permutation
+\(\calR_{\rm port}\) is injective and has rank twelve. It is an
+isomorphism onto \(V_{\rm port}\) if that space also has dimension twelve.
+On this twelve-dimensional branch, if the ports transform as the vertex permutation
 representation of \(A_5\), then
 \[
 \mathbb R^{12}\cong\mathbf1\oplus\mathbf3\oplus\mathbf3'\oplus\mathbf5.
@@ -1504,7 +1523,8 @@ and
 \quad\Longleftrightarrow\quad
 \kappa_{\mathbf1},\kappa_{\mathbf3},\kappa_{\mathbf3'},\kappa_{\mathbf5}>0.
 \]
-For the oriented space \(V_{\rm port}\otimes\mathbb R[C_2]\),
+For an \(A_5\times C_2\)-invariant covariance on the oriented space
+\(V_{\rm port}\otimes\mathbb R[C_2]\),
 \[
 \operatorname{rank}k_L=24
 \quad\Longleftrightarrow\quad
@@ -1514,8 +1534,9 @@ For the oriented space \(V_{\rm port}\otimes\mathbb R[C_2]\),
 \end{lemma}
 
 \begin{proof}
-The response-map condition says \(\ker\calR_{\rm port}=0\). Since the domain and codomain both
-have dimension \(12\), \(\calR_{\rm port}\) is invertible. The \(A_5\) permutation character on the
+The response-map condition says \(\ker\calR_{\rm port}=0\), so its
+twelve-dimensional domain gives rank twelve. When the codomain also has
+dimension twelve, the map is invertible. The \(A_5\) permutation character on the
 twelve icosahedral vertices is
 \[
 \chi_V=(12,0,0,2,2),
@@ -1531,20 +1552,24 @@ applied to the \(A_5\times C_2\) decomposition.
 \end{proof}
 
 \begin{lemma}[Observability and current emergence]
-If the current covariance is positive semidefinite, all invisible directions have been quotiented
-out, and every remaining nonzero port perturbation changes an observer-visible record statistic,
-then the current covariance is positive definite. If additive port records satisfy
+If the current covariance is positive semidefinite and its zero-norm
+directions have been quotiented out in the declared fluctuation
+representation, then the induced covariance is positive definite.
+Suppose additive port records satisfy
 \[
 Q_A(I_1\cup I_2)=Q_A(I_1)+Q_A(I_2)
 \]
-and are conserved under accepted repairs away from interval endpoints, then in a local unitary
-scale-invariant sewn-edge limit they become chiral currents
+and are conserved under accepted repairs away from interval endpoints.
+If their continuum limits have local dimension-one densities with the
+chiral Ward identity, then they define chiral currents
 \[
 Q_A(I)=\int_I J_A(z)\,dz,
 \qquad
 \bar\partial J_A=0.
 \]
-If the fixed-cutoff integrated charges commute, their continuum current algebra is abelian:
+If the continuum currents close into an affine algebra, their integrated
+charges commute, and the zero-mode representation is faithful on the
+noncentral current Lie algebra, that algebra is abelian:
 \[
 J_A(z)J_B(w)\sim\frac{k_{AB}}{(z-w)^2}.
 \]
@@ -1552,21 +1577,27 @@ J_A(z)J_B(w)\sim\frac{k_{AB}}{(z-w)^2}.
 
 \begin{proof}
 For a positive-semidefinite covariance, a nonzero vector \(v\) with \(v^Tkv=0\) defines a zero-norm
-combination \(J_v=v^AJ_A\), hence an invisible fluctuation in the observer-facing algebra. The
-quotient-observability hypotheses exclude such a vector. Additivity gives a local continuum
-density, conservation gives a conserved two-dimensional current, and chirality gives a holomorphic
-component of weight \((1,0)\). Commuting zero modes exclude a simple-pole affine term, leaving only
+combination \(J_v=v^AJ_A\), removed by the declared covariance-null
+quotient. Zero variance in one state alone does not make an operator
+invisible in all states. The separately assumed continuum density and
+chiral Ward identity give a holomorphic component of weight \((1,0)\).
+Additivity and conservation alone do not establish existence, scaling
+dimension, or chirality of that density. Faithfulness and commuting zero
+modes exclude a simple-pole affine term, leaving only
 the central \((z-w)^{-2}\) singularity.
 \end{proof}
 
 \begin{theorem}[Critical-edge certificate theorem]
-If the five finite-carrier receipts above hold, then the OPH sewn-edge scaling branch satisfies the
-heterotic edge-polarization hypothesis below. Consequently the physical edge CFT has
+Suppose the five carrier and continuum receipts above hold on a local
+unitary positive-energy CFT with unique vacuum, and the current algebras
+have their usual commuting Sugawara cosets. Then the physical edge CFT has
 \[
 (c_L^{\rm phys},c_R^{\rm phys})=(24,12),
 \]
-a right-moving \(N=1\) supercurrent, no residual coset, and an even self-dual rank-sixteen
-left-moving internal lattice.
+a right-moving \(N=1\) supercurrent and no residual positive-central-charge
+stress tensor. These data do not identify the complete graded CFT with the
+heterotic edge-polarization hypothesis below. That stronger statement also
+requires its field-content, charge-lattice, and sector-extension receipts.
 \end{theorem}
 
 \begin{proof}
@@ -1576,7 +1607,7 @@ current-emergence receipt turns the additive records into abelian Heisenberg cur
 Sugawara construction gives central charge equal to rank, hence \(c_R=12\) and \(c_L=24\) for the
 generated sectors.
 
-The torus vacuum exponent
+The unprojected vacuum-character exponent
 \[
 q^{-1}\bar q^{-1/2}=q^{-c_L/24}\bar q^{-c_R/24}
 \]
@@ -1585,10 +1616,11 @@ fixes the total central charges to the same values. Therefore the residual stres
 T_{\rm res}=T_{\OPH}-T_{\rm Sug}
 \]
 has \(c_{\rm res}=0\) in both chiralities. In a unitary positive-energy CFT with unique vacuum, a
-\(c=0\) Virasoro sector is null after quotienting null states, so there is no residual coset.
+\(c=0\) Virasoro stress tensor is null after quotienting null states. This
+proves stress exhaustion, not uniqueness of the extension of the current
+algebra by charged vertex operators or spin sectors.
 
-The local graded half-repair operator supplies the refinement limit of a right-moving odd square
-root of translation. Its density is the supercurrent \(G_R\), and the free \(N=1\) OPE gives
+The separately supplied local supercurrent receipt gives
 \[
 G_R(\bar z)G_R(\bar w)
 \sim
@@ -1596,9 +1628,21 @@ G_R(\bar z)G_R(\bar w)
 +
 \frac{2T_R(\bar w)}{\bar z-\bar w}.
 \]
-The modular spin-structure receipt then identifies the sixteen remaining left-moving units with an
-even self-dual rank-sixteen lattice sector.
+The integrated relation \(Q_N^2\to H_{R,N}\) would not prove this OPE:
+the two-state matrices \(Q=\sigma_x\), \((-1)^F=\sigma_z\), and \(H=I\)
+satisfy the odd square relation without a chiral field algebra.
+Likewise, central charges and a modular transformation law do not identify
+a rank-sixteen lattice or the full graded extension. Those are the
+additional content of Assumption~\ref{ass:heterotic-edge-polarization}.
 \end{proof}
+
+The distinction between characters and the signed torus amplitude is
+essential even on the intended branch. The supersymmetric heterotic
+spin sum contains
+\(\vartheta_3^4-\vartheta_4^4-\vartheta_2^4=0\), by Jacobi's identity,
+although the underlying chiral central charges are nonzero
+\cite{AlvarezGaumeVazquezMozo1992}. A vanished amplitude cannot supply a
+leading vacuum power.
 
 \begin{assumption}[Heterotic edge-polarization hypothesis]\label{ass:heterotic-edge-polarization}
 The physical sewn-edge scaling limit is isomorphic, as a graded chiral CFT, to
@@ -1769,7 +1813,8 @@ The OPH theorem target is precise:
 with no residual coset. It cannot be replaced by the numerical observation \(12\to24\). It must be
 established by constructing the edge transfer operator, identifying the gapless chiral fields,
 calculating their OPEs, deriving the fermionic grading and spin-structure sum, and proving stress
-exhaustion. Equivalently, the finite carrier must export the five receipts listed above:
+exhaustion, together with the full charged and graded sector realization.
+The five receipts listed above supply necessary current and stress data:
 \[
 \operatorname{rank}\calR_{\rm port}=12,\quad
 \kappa_\rho>0,\quad
@@ -1777,8 +1822,10 @@ exhaustion. Equivalently, the finite carrier must export the five receipts liste
 J_AJ_B\sim k_{AB}(z-w)^{-2},\quad
 Q_N^2-H_{R,N}\to0,
 \]
-together with the torus receipt \(Z_{\OPH}=q^{-1}\bar q^{-1/2}(1+\cdots)\) and the correct modular
-spin-structure transformations. Once that edge-VOA identification is proved, \(D=10\) and the
+together with the unprojected vacuum-character exponents, the local
+supercurrent OPE, and the correct modular spin-structure transformations.
+They are not equivalent to the full edge-VOA identification. Once that
+additional identification is proved, \(D=10\) and the
 left-moving \(c_{\rm internal}=16\) sector follow by the calculation above. The number \(26\)
 belongs to the left-moving bosonic matter central charge, not to twenty-six shared heterotic
 spacetime dimensions.
@@ -3507,9 +3554,10 @@ The full string-model statement depends on the following explicit data:
 \midrule
 Central-charge and supercurrent certificate & Response-map rank
 \(\operatorname{rank}\calR_{\rm port}=12\), positive \(A_5\times C_2\) covariance sectors, edge
-transfer OPEs, local graded half-repair \(Q_N^2\to H_R\), and torus/spin-structure receipt. &
-The non-implication theorem and finite critical-edge certificate theorem are proved. The carrier
-premises are not established. \\
+transfer OPEs, local super-Virasoro OPE, unprojected vacuum characters, and
+spin-structure receipt; full graded edge-VOA identification is separate. &
+The non-implication and conditional current/stress certificate theorems are
+proved. The continuum and full-sector premises are not established. \\
 Cohomology certificate & Explicit \(X\), \(V\), and equivariant \(\Z_2\) action in
 cohomCalg, Sage, or Macaulay2 form. & The structural witness is cited; this paper does not
 reproduce the raw computation. \\
@@ -3809,6 +3857,12 @@ Cambridge University Press, 1998.
 P.\ Di Francesco, P.\ Mathieu, and D.\ Senechal,
 \emph{Conformal Field Theory},
 Springer, 1997.
+
+\bibitem{AlvarezGaumeVazquezMozo1992}
+L.\ Alvarez-Gaume and M.\ A.\ Vazquez-Mozo,
+\emph{Topics in String Theory and Quantum Gravity},
+arXiv:hep-th/9212006v1, Eq.~(598) and the discussion following Eq.~(601).
+\url{https://arxiv.org/abs/hep-th/9212006v1}.
 
 \bibitem{BouchardDonagi2005}
 V.\ Bouchard and R.\ Donagi,

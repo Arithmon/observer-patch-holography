@@ -210,7 +210,7 @@ an earlier committed projection. Under those hypotheses, partition, worker count
 restart history, and repartition metadata do not change quotient observables or observer readouts
 that factor through the monolithic normal form (Theorem~\ref{thm:distributed-one-universe} and
 Corollary~\ref{cor:distributed-invariance}).
-\item \textbf{Conditional noisy fair-block consensus.} If a noisy asynchronous implementation admits fair repair blocks, a uniform expected contraction toward the exact quotient normal-form set, and controlled within-block excursions, then all long runs stay in a controlled expected tube around that exact normal-form set. In singleton boundary/sector fibers, Lipschitz observer readouts are approximately schedule-independent, and a finite Markov-kernel certificate checks the block contraction on finite exported nets (Theorem~\ref{thm:noisy-fair-block-consensus}, Corollaries~\ref{cor:approx-schedule-independence}--\ref{cor:high-prob-noisy-tube}, and Proposition~\ref{prop:finite-fair-block-certificate}).
+\item \textbf{Conditional noisy fair-block consensus.} If a noisy asynchronous implementation admits fair repair blocks and a uniform expected contraction toward the exact quotient normal-form set, then its block-indexed distances have a controlled expectation. Deterministic block endpoints and controlled within-block excursions extend that bound to every asynchronous time; state-dependent stopping-time blocks require a separate occupation-time control. In singleton boundary/sector fibers, the deterministic-block certificate gives approximate schedule independence for Lipschitz observer readouts, and a finite Markov-kernel certificate checks contraction when block choices preserve the certified conditional kernels (Theorem~\ref{thm:noisy-fair-block-consensus}, Corollaries~\ref{cor:approx-schedule-independence}--\ref{cor:high-prob-noisy-tube}, and Proposition~\ref{prop:finite-fair-block-certificate}).
 \end{enumerate}
 
 The repair step itself is a concrete recovery move, not a free rewrite primitive. On the
@@ -2499,6 +2499,8 @@ record projectors.
 \frac{\widehat P_E(t)\rho_t \widehat P_E(t)}
 {\operatorname{Tr}(\rho_t \widehat P_E(t))}.
 \]
+The conditional state is defined only when \(\mathbb P_t(E)>0\); the
+probability formula also applies to zero-weight events.
 \item Conditional on observing \(E\) with nonzero weight and applying the
 declared L\"uders instrument, an immediate reread with the same projector has
 probability \(1\). The same conclusion after an intervening accepted operation
@@ -2537,8 +2539,12 @@ The finite-matrix steps behind (1) and (2) are machine-checked in the companion 
 event-algebra development \cite{eventalgebraLean}: the commutative span of a projective
 partition and its containment in the center of the partition commutant, the trace-preserving
 expectation onto that span, preservation of the partition Born statistics, the L\"uders
-fixed-point law, and the collapse of conditioning on a partition member to its normalized
-projector are theorem-level exports with declaration-level axiom audits.
+fixed-point law, and compatibility of partition averaging with conditioning
+are theorem-level exports with declaration-level axiom audits. It is the
+\emph{partition-averaged} conditional state that equals the normalized block
+projector. Conditioning alone retains the state inside a higher-rank block;
+for example, a pure state supported on a rank-two block remains pure, whereas
+the normalized block projector has rank two.
 
 After the declared conditioning on a nonzero-weight event \(E\), the state lies
 in the range of \(\widehat P_E(t)\), so an immediate reread of the same
@@ -4123,14 +4129,16 @@ and hence
 \le
 \frac{\varepsilon}{1-\lambda}.
 \]
-At all intermediate asynchronous times,
+If the block endpoints \(\tau_m\) are deterministic, then at all intermediate
+asynchronous times,
 \[
 \limsup_{t\to\infty}\mathbb E[D(q_t)]
 \le
 A\,\frac{\varepsilon}{1-\lambda}+\beta.
 \]
-Thus the noisy asynchronous OPH repair process converges in expectation to a controlled tube
-around the exact quotient normal-form set. If \(\varepsilon=\beta=0\), then \(D(q_t)\to0\) in
+Thus the process has a controlled block-indexed expected tube, and the same
+certificate gives the displayed calendar-time tube on the deterministic-block
+branch. On that branch, if \(\varepsilon=\beta=0\), then \(D(q_t)\to0\) in
 \(L^1\), hence also in probability, along the full asynchronous run.
 \end{theorem}
 
@@ -4159,8 +4167,10 @@ Iterating the scalar recursion gives
 +
 \frac{1-\lambda^m}{1-\lambda}\varepsilon.
 \]
-Taking \(m\to\infty\) yields the fair-block limsup bound. For
-\(t\in[\tau_m,\tau_{m+1})\), Assumption (G4) gives
+Taking \(m\to\infty\) yields the fair-block limsup bound, including when
+the endpoints are stopping times. For the remaining statements assume that
+the endpoints are deterministic. Then the index \(m=m(t)\) containing a
+fixed calendar time \(t\) is deterministic, and Assumption (G4) gives
 \[
 \mathbb E[D(q_t)]
 \le
@@ -4179,12 +4189,38 @@ Assumption (G4) then gives \(\mathbb E[D(q_t)]\le A\,\mathbb E[D(q_{\tau_m})]\) 
 block, so the same \(L^1\) and probability convergence holds along the full asynchronous run.
 \end{proof}
 
+\begin{remark}[Stopping-time blocks can bias a calendar-time readout]
+The deterministic-endpoint condition cannot be omitted from the displayed
+calendar-time constant. For an exact finite counterexample, let the
+block-endpoint distance be a two-state chain \(D_m\in\{0,1\}\), with
+\[
+ \Pr(D_{m+1}=1\mid D_m=0)=\tfrac14,
+ \qquad \Pr(D_{m+1}=1\mid D_m=1)=\tfrac34.
+\]
+It obeys (G3) with \(\lambda=1/2\), \(\varepsilon=1/4\), and its stationary
+mean is \(1/2\). Keep the distance constant within each block, assigning
+length one to a zero block and length two to a unit block. Thus \(L=2\),
+\(A=1\), and \(\beta=0\), even pathwise inside each block. The calendar-time
+chain has three states \(0,1_{\mathrm{first}},1_{\mathrm{second}}\), with
+transition matrix
+\[
+ \begin{pmatrix}3/4&1/4&0\\0&0&1\\1/4&3/4&0\end{pmatrix}.
+\]
+Its unique stationary law is uniform, so its limiting expected distance is
+\(2/3>\varepsilon/(1-\lambda)=1/2\). Sampling the block containing a fixed
+time favors longer blocks. A random containing-block index therefore cannot
+be substituted into the estimate for a fixed block index. Random block
+endpoints need their own occupation-time or conditional sampling bound to
+obtain a calendar-time constant.
+\end{remark}
+
 \begin{corollary}[Approximate observer-facing schedule independence]
 \label{cor:approx-schedule-independence}
 Let \(M:Q\to Y\) be an observer-facing readout into a metric space \((Y,d_Y)\), and suppose \(M\)
 is \(L_M\)-Lipschitz. Fix an exact sector \(\zeta\) whose exact normal-form set is the singleton
 \(\mathcal N_\zeta=\{n_\zeta\}\), and apply Theorem~\ref{thm:noisy-fair-block-consensus} on that
-sector, so that \(D(q)=d_Q(q,n_\zeta)\). Then
+sector, so that \(D(q)=d_Q(q,n_\zeta)\), with deterministic block endpoints.
+Then
 \[
 \limsup_{t\to\infty}
 \mathbb E\!\left[
@@ -4259,7 +4295,9 @@ D_m
 +
 \sum_{r=1}^{m}\lambda^{m-r}\xi_r.
 \]
-The final term is a weighted martingale sum with increments bounded by
+If \(b=0\), the noise vanishes almost surely and the displayed exceedance
+probability is zero; the exponential bound is understood in that limiting
+sense. Suppose henceforth that \(b>0\). The final term is a weighted martingale sum with increments bounded by
 \(|\lambda^{m-r}\xi_r|\le\lambda^{m-r}b\). Azuma--Hoeffding gives
 \[
 \Pr\!\left[
@@ -4277,7 +4315,17 @@ bound.
 \begin{proposition}[Finite fair-block contraction certificate]
 \label{prop:finite-fair-block-certificate}
 Let \(Q\) be finite, let \(\mathfrak B_{\mathrm{fair}}\) be a finite list of noisy fair-block
-types, and let \(K_B(q,q')\) be the Markov kernel induced by block type \(B\). If there are
+types, and let \(K_B(q,q')\) be the Markov kernel induced by block type \(B\).
+Require that the type \(B_m\) is chosen at block start and is
+\(\mathcal F_{\tau_m}\)-measurable, and that the implemented block has the
+certified conditional law
+\[
+ \Pr(q_{\tau_{m+1}}=q'\mid\mathcal F_{\tau_m})
+ =K_{B_m}(q_{\tau_m},q')
+ \quad\text{almost surely}.
+\]
+Randomized choices may be included in the block-start filtration, provided
+this conditional-law identity remains valid. If there are
 constants \(0<\lambda<1\) and \(\varepsilon\ge0\) such that
 \[
 \sum_{q'\in Q}K_B(q,q')D(q')
@@ -4287,15 +4335,24 @@ constants \(0<\lambda<1\) and \(\varepsilon\ge0\) such that
 \forall q\in Q,\quad \forall B\in\mathfrak B_{\mathrm{fair}},
 \]
 then Assumption (G3) of Theorem~\ref{thm:noisy-fair-block-consensus} holds for any run whose
-fair blocks are drawn from \(\mathfrak B_{\mathrm{fair}}\).
+fair blocks satisfy this implementation contract.
 \end{proposition}
 
 \begin{proof}
-Conditioning on the current quotient state \(q\) and the realized fair-block type \(B\), the
+By the certified conditional-law identity, conditioning on the entire
+block-start filtration (including the chosen type \(B\)), the
 conditional expectation of \(D\) after the block is exactly
 \(\sum_{q'}K_B(q,q')D(q')\). The displayed inequality is therefore Assumption (G3), uniformly
 over all reachable states and fair-block types.
 \end{proof}
+
+Selecting a block type using its as-yet-unobserved output does not meet this
+contract. For example, for one fair bit \(U\), the two maps with outputs
+\(U\) and \(1-U\) each have expected distance \(1/2\). Choosing the map
+whose output is one gives expected distance one. Their marginal kernels
+therefore do not certify that selected implementation. Adaptation inside a
+block is permitted only when its complete adapted law is the certified
+kernel.
 
 \paragraph{Finite audit route and constants.}
 For a finite exported packet net, Proposition~\ref{prop:finite-fair-block-certificate} gives the
@@ -4328,9 +4385,10 @@ does not follow from the exact finite repair theorem alone. The exact OPH theore
 quotient normal-form target \(\mathcal N\); the noisy theorem requires a separate fair-block
 contraction certificate \((\lambda,\varepsilon,A,\beta,L)\) for the chosen implementation. Without
 that certificate, OPH retains exact fixed-cutoff convergence and the collar-local splice and
-record-stability estimates above. With that certificate, arbitrarily long asynchronous noisy
-repair sequences converge to a controlled observer-facing tube around the exact quotient
-normal-form set.
+record-stability estimates above. With that certificate, the block-indexed
+expected distances have the stated long-run bound. The calendar-time tube
+and schedule-comparison constants additionally use deterministic block
+endpoints; randomly timed blocks require separate sampling control.
 
 
 \section{Law-Space Selection and Observer Emergence}
@@ -4363,15 +4421,20 @@ Let $X_t^\lambda$ denote the stationary process obtained by repeated local pertu
 reconciliation under law $\lambda$. For each subgraph $U\subseteq V$, let
 \(\mathcal Z_U^{\mathrm{rec}}(t)\) be the declared exact record algebra on its observer-accessible
 surface, or the reference exact algebra when only an approximate record presentation is available,
-and let $Y_U(t)$ be the corresponding finite outcome variable induced by that record algebra. Then $U$ is
+and let $Y_U(t)$ be the corresponding finite outcome variable induced by that record algebra.
+Identify the record labels across the compared slices by a declared
+continuation map, so equality compares the same stored record. Then $U$ is
 \((\eta,\varepsilon,h)\)-observer-like if it is record-stable:
 \[
-d_{\mathrm{TV}}\!\bigl(\operatorname{Law}(Y_U(t+h)),\operatorname{Law}(Y_U(t))\bigr)\le \eta,
+\Pr\!\bigl[Y_U(t+h)\ne Y_U(t)\bigr]\le \eta,
 \]
 and predictive:
 \[
 I\bigl(Y_U(t);\; X_{\partial U,\,t+1:t+h}^\lambda\bigr)\ge\varepsilon.
 \]
+The stability condition uses the two-time joint law. Comparing only the two
+marginal laws would be vacuous under stationarity: an independent fair bit
+at every tick has identical marginals but changes with probability \(1/2\).
 Define
 \[
 \mathcal{O}_{\eta,\varepsilon,h}(\lambda)
@@ -4604,7 +4667,10 @@ while Theorem~\ref{thm:crdt} gives the \((\varepsilon,\delta_{\mathrm{rec}})\) r
 stability bound for approximate record projectors. The long-run noisy statement is conditional:
 Theorem~\ref{thm:noisy-fair-block-consensus} upgrades those local noisy controls to a global
 expected tube around the exact quotient normal-form set only after a fair-block contraction
-certificate \((\lambda,\varepsilon,A,\beta,L)\) is supplied for the chosen implementation. It does
+certificate \((\lambda,\varepsilon,A,\beta,L)\) is supplied for the chosen implementation.
+The stated calendar-time constant additionally requires deterministic block
+endpoints; random block endpoints give the block-indexed estimate without a
+separate occupation-time certificate. It does
 not follow from finite descent or fairness alone, and it gives a unique approximate readout only
 inside singleton boundary/sector fibers.
 Ref.~\cite{observableNormalForms} supplies a complementary receipt-only endpoint estimate from a
@@ -4695,7 +4761,8 @@ realization. Theorems~\ref{thm:splice} and~\ref{thm:crdt} give collar-local
 perturbative controls, while the rooted-tree packet domain gives an exact
 finite repair package on one nontrivial domain.
 Theorem~\ref{thm:noisy-fair-block-consensus} gives long-run noisy control only
-under a fair-block contraction certificate. Arbitrary approximate recovery
+under a fair-block contraction certificate, with deterministic block endpoints
+for its stated calendar-time bound. Arbitrary approximate recovery
 moves do not inherit repair completeness, transactional validation, a
 quotient local diamond, the support/completely-positive trace-preserving
 clause on every Petz branch, or fair-block contraction.
@@ -4766,7 +4833,7 @@ Repair converges & finite exact descent; confluence additionally needs semantic-
 Distance equals min-cut & topological-code certificate with homological logicals and matching systole/min-cut geometry \\
 Corrects \(t\) corrupted carriers & code projector, error family, Knill--Laflamme condition, and certified \(t<d/2\) distance bound \\
 Exponential convergence & declared transfer/channel operator with stationary projection and spectral gap \\
-Long-run noisy approximate consensus & fair-block contraction certificate \((\lambda,\varepsilon,A,\beta,L)\) for distance to the exact quotient normal-form set \\
+Long-run noisy approximate consensus & fair-block contraction certificate \((\lambda,\varepsilon,A,\beta,L)\) for distance to the exact quotient normal-form set; deterministic block endpoints for the stated calendar-time constant \\
 Cross-view BFT safety and wall-clock liveness & valid prepared-backed decision certificates, one-value and monotone-view participation, monotone prepared locks, authenticated quorum-overlap sizing \(n=3f+1,q=2f+1\) or \(2q\ge n+f+1\); liveness from timeout-bound activation also needs \(q\le n-f\), an effective post-\textrm{GST} phase bound \(\Theta\), fair terminating view change, highest-certificate proposal selection, and nonfaulty proposal/prepare/commit/relay progress \\
 Hardware search work reduction & exact-verifier candidate-enrichment factor measured under controls \\
 \end{tabular}
