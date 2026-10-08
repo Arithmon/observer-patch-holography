@@ -87,6 +87,14 @@ second physical packet or a cosmic selector.
     no-new-confusability injections with negative controls.
 - [`test_source_derived_public_checkpoint_packet.py`](test_source_derived_public_checkpoint_packet.py)
   checks the full issue #548 acceptance surface.
+- [`test_source_checkpoint_source_binding.py`](test_source_checkpoint_source_binding.py)
+  checks the supplied operations against an independent port-coordinate
+  oracle. The source certificate binds every named continuation to its
+  action on the actual public sections, replays every declared composition
+  on those sections, and compares complete local marginals exactly. Capacity,
+  invertibility and an abstract group table alone do not establish that binding:
+  reversing the named rotations preserves all three while changing the source
+  operation. Reordered maps and explicit zero probabilities remain valid.
 - [`ISSUE_548_SOLUTION.md`](ISSUE_548_SOLUTION.md) maps every acceptance item
   to the executable receipt.
 - [`capacity_indexed_source_family.py`](capacity_indexed_source_family.py)
