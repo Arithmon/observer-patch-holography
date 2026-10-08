@@ -21,7 +21,7 @@
   },
   "ground_state_transform": "Doob transform by the Perron vector, pi = Omega^2",
   "physical_clay_receipt": false,
-  "producer_sha256": "085603c8bc2a087c5fe56024f268dca188afdf7e967b6ec55b88cf6e88a7ac38",
+  "producer_sha256": "2d3e64681483fc3494817aba39eabfbc06409be41167f8f9e90f7af3fc10b08d",
   "receipt_under_test": "finite ground-state-transform and cross-fiber receipt: U_r H_r U_r^{-1} = sum_C c_C (I - E_C) with c_C independent of the repaired value",
   "runs": [
     {

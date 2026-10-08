@@ -103,6 +103,9 @@ uncertainty estimate `eps n ||H||_2` becomes a Frobenius estimate
 must fit the same resolution policy. For example, interacting `L=2, (3,3)`
 has an accurate Hamiltonian but unresolved Doob entries and is refused;
 every point in the original retained grid remains supported.
+Row conservation is then checked relative to each row's own absolute mass.
+An unresolved row causes refusal; the code does not repair its diagonal or
+mask a small bad row with the scale of a larger one.
 These are numerical safeguards at a `1e-7` resolution policy, not certified
 interval bounds. The generic rounded-matrix logarithm separately refuses an
 unresolved bottom spectrum or Perron state. Near-zero positive couplings and

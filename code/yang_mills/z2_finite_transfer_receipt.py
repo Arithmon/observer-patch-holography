@@ -361,7 +361,17 @@ def ground_state(H: np.ndarray) -> tuple[np.ndarray, float]:
 
 
 def doob_transform(H: np.ndarray, omega: np.ndarray, e0: float) -> np.ndarray:
-    return (H - e0 * np.eye(len(omega))) * omega[None, :] / omega[:, None]
+    result = (H - e0 * np.eye(len(omega))) * omega[None, :] / omega[:, None]
+    if not np.isfinite(result).all():
+        raise RuntimeError("Doob transform precision is unresolved")
+    # H omega = e0 omega implies conservation exactly. Test every row relative
+    # to its own magnitude, so a large unrelated row cannot hide a violation.
+    # Scaling first also makes the test independent of generator units.
+    row_scale = np.max(np.abs(result), axis=1, keepdims=True)
+    scaled = np.divide(result, row_scale, out=np.zeros_like(result), where=row_scale != 0)
+    if np.any(np.abs(scaled.sum(axis=1)) > RESOLUTION_RTOL * np.abs(scaled).sum(axis=1)):
+        raise RuntimeError("Doob row conservation is unresolved at the numerical resolution")
+    return result
 
 
 def heat_bath_projectors(orbits: Z2GaugeOrbits, pi: np.ndarray) -> list[np.ndarray]:
@@ -490,9 +500,7 @@ def evaluate(orbits: Z2GaugeOrbits, transfer: str, **params: float) -> dict[str,
         "parameters": params,
         "n_orbits": int(orbits.n_orbits),
         "n_links": int(orbits.n_links),
-        "doob_generator_rows_sum_zero": bool(
-            np.allclose(Lgen.sum(axis=1), 0, atol=1e-9)
-        ),
+        "doob_generator_rows_sum_zero": True,  # checked per row in doob_transform
         "doob_generator_offdiagonal_nonpositive": bool(
             np.all(Lgen - np.diag(np.diag(Lgen)) <= 1e-12)
         ),

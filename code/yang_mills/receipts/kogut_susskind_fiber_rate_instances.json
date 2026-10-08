@@ -1,7 +1,7 @@
 {
   "committed_receipt_cross_check": {
     "committed_receipt": "receipts/z2_finite_transfer_receipt.json",
-    "committed_receipt_sha256_at_read": "a56510914208ad373655b1396b57240d91c4b4501a7822b9d5d7d36daa3f78ef",
+    "committed_receipt_sha256_at_read": "c90a09fcaaa2a7d0d4871d806f1315056ffc294f06c519c85a82fc1a33e34c0b",
     "kogut_susskind_runs": [
       {
         "L": 2,

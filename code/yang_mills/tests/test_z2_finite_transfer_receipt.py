@@ -127,6 +127,29 @@ def test_unrepresentable_wilson_outputs_are_not_silent_zeros(orbits) -> None:
         z2.dual_coupling(400.0)
 
 
+@pytest.mark.parametrize("scale", [1e-200, 1.0, 1e200])
+def test_doob_conservation_is_checked_in_every_row_and_unit(scale) -> None:
+    # Large entries elsewhere must not hide an invalid small row.  Each input
+    # is symmetric, so refusal cannot be delegated to a symmetry check.
+    generator = np.array([[1e8, -1e8, 0], [-1e8, 1e8 + 1, -1], [0, -1, 1.0]])
+    omega = np.full(3, 1 / math.sqrt(3))
+    valid = z2.doob_transform(scale * generator, omega, 0.0)
+    np.testing.assert_allclose(valid / scale, generator, rtol=2e-15, atol=0)
+    damaged = generator.copy()
+    damaged[2, 2] += 1.0
+    with pytest.raises(RuntimeError, match="row conservation.*resolution"):
+        z2.doob_transform(scale * damaged, omega, 0.0)
+
+
+def test_doob_conservation_handles_roundoff_and_zero_rows() -> None:
+    omega = np.full(3, 1 / math.sqrt(3))
+    generator = np.array([[1.0, -1, 0], [-1, 1 + 1e-12, 0], [0, 0, 0]])
+    result = z2.doob_transform(generator, omega, 0.0)
+    # Validation does not repair the diagonal or erase the supplied residual.
+    assert result[1, 1] > 1
+    np.testing.assert_array_equal(result[2], 0)
+
+
 def test_committed_receipt_matches_code() -> None:
     path = HERE / "receipts" / "z2_finite_transfer_receipt.json"
     receipt = load_receipt(path)
