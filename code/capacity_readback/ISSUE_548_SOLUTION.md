@@ -92,17 +92,46 @@ key: a leading zero previously produced a success probability of zero while
 the control still reported `PASS`. Its returned status now checks its noise
 and decoding identities, and nonreversible source kernels are refused.
 
+The follow-up audit challenged the other evidence carried by the same source
+certificate. At PR head `67f9a9f`, a valid hash still admitted an empty actual
+terminal fiber, reversed or target-reading histories, a changed interface
+topology, missing sparse projections, and an identity-only generating set.
+The generated false certificates also survived serialization into the direct-N
+consumer's fixed-cutoff result. The universe-level result stayed unavailable;
+this was a false finite-source claim, not a new cosmological result.
+
+The checker now reconstructs the 67 declared source faults from the ports,
+edges and oriented slots, validates each supplied candidate and recomputes
+membership. Neither the trial enumerator nor candidate materializer supplies
+the verifier's expected census or candidate. Histories are replayed from birth
+and seed through eleven valid propagations, followed by public audit and commit;
+every propagation must reach a new child from an already reached parent along
+a source edge. The supplied witness, semantic metadata and target-use flags
+must agree. Alternative valid spanning trees and trial enumeration orders pass.
+
+The actual thirty interfaces must implement the declared slot readouts, with
+complete matching atom and section inventories. Every sparse carrier projector
+is checked against its declared basis and support. Coherent basis changes,
+interface atom renamings and reversed edge presentation remain valid. The
+declared generators must generate all forty supplied operations. Fixed-source
+identity and recipe fields are checked; free-form input prose cannot change the
+certificate's scientific boundary. Refused evidence remains refused after JSON
+serialization into the direct-N consumer.
+
 This is a repair of verification for the fixed finite source. The canonical
 packet, terminal manifest and certificate retain their existing outputs;
 downstream capacity and physical classifications do not change. It supplies
 no new source-selection law or physical realization.
 
-Validation of this repair: the complete capacity directory passes 5,951
-tests and four subtests on Windows/Python 3.13 and Linux/Python 3.12 with
-warnings treated as errors. Nine isolated faulty variants fail the retained
-controls, including removed source binding, table replay and exact marginal
-comparison, restored first-key decoding, unchecked publicness, constant
-success and blanket refusal. Independent downstream lift replay passes.
+Validation uses the complete capacity directory on Windows/Python 3.13 and
+Linux/Python 3.12 with warnings treated as errors. Isolated faulty variants
+exercise removed source binding, table replay, domain validation, exact marginal
+comparison, diagram and carrier checks, administrative flags, restored first-key
+decoding, unchecked publicness, constant success and blanket refusal. Two mutants
+initially survived: omitted table-domain checking and omitted local output-domain
+checking. Retained public-path controls now reject both, including a vacuous
+empty table and an unknown zero-weight read atom. Independent downstream lift
+replay and byte-exact canonical receipt regeneration remain required.
 The existing capacity workflow executes this entire directory on both
 operating systems; these bounded checks are not a formal verification claim.
 

@@ -95,6 +95,14 @@ second physical packet or a cosmic selector.
   invertibility and an abstract group table alone do not establish that binding:
   reversing the named rotations preserves all three while changing the source
   operation. Reordered maps and explicit zero probabilities remain valid.
+- [`test_source_checkpoint_evidence.py`](test_source_checkpoint_evidence.py),
+  [`test_source_checkpoint_provenance.py`](test_source_checkpoint_provenance.py)
+  and [`test_source_checkpoint_generators.py`](test_source_checkpoint_generators.py)
+  challenge the actual diagram, carrier projections, complete terminal-trial
+  census, endogenous event histories and declared generating set. Rehashed
+  false evidence is refused through the public certificate and its serialized
+  direct-N consumer. Equivalent presentations and alternative valid executions
+  remain admissible; a content hash alone is not a source proof.
 - [`ISSUE_548_SOLUTION.md`](ISSUE_548_SOLUTION.md) maps every acceptance item
   to the executable receipt.
 - [`capacity_indexed_source_family.py`](capacity_indexed_source_family.py)
