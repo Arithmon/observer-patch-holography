@@ -6,7 +6,7 @@ namespace OPH.ExteriorSelection
 
 Machine checks for the #314/#567 source-bound closures.
 
-1. The exhaustive selection scan: over the derived primitive block charges
+1. The exhaustive selection scan: over the declared primitive block charges
    `(a, b) = (-2, 3)` in `q = 6Y` units, the ten nontrivial isotypic
    components of the exterior module admit exactly two nonempty chiral
    anomaly-free subsets, namely the two fermionic-parity sectors, and they
@@ -34,7 +34,7 @@ def colorDim : Fin 10 → ℤ := ![3, 1, 3, 3, 1, 3, 3, 1, 3, 1]
 /-- Complex dimension of the weak factor per component. -/
 def weakDim : Fin 10 → ℤ := ![1, 2, 1, 2, 1, 1, 2, 1, 1, 2]
 
-/-- Integer charge `q = 6Y` per component over the derived pair `(-2, 3)`. -/
+/-- Integer charge `q = 6Y` per component over the declared pair `(-2, 3)`. -/
 def charge : Fin 10 → ℤ := ![-2, 3, -4, 1, 6, 4, -1, -6, 2, -3]
 
 /-- Whether the component carries the color triplet or antitriplet. -/

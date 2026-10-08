@@ -1323,9 +1323,9 @@
         "sha256": "sha256:f33a18a2ab340e4d9862758937c4db8c6abe689fb37a4aa97c4b47e7c624726e"
       },
       {
-        "byte_count": 7845,
+        "byte_count": 7847,
         "path": "Lean/Screen/ExteriorSelection.lean",
-        "sha256": "sha256:a83cdeb1b418754796708e26f3a16e16f805df78424fc85d220fd8887cb01d3a"
+        "sha256": "sha256:464f9606ef77cf911e1ea86544e4cca98056b4f67ebc7eba9aff8b03dab8c531"
       },
       {
         "byte_count": 44626,
@@ -4633,7 +4633,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:5d4b103949a32dc1e737c2813d75a9a80e9a75e1190bca03f839a988ad148a9a",
+    "files_sha256": "sha256:bac00eb0a5070f5219ccff1c1edb70b5816a459fc43d933152800441975b2142",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7542,7 +7542,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:299e0bdf0b360a2cd798923cc7d60b072f613e37ea1e3a328fb2bb706ba35504",
+  "inventory_sha256": "sha256:4ba19ac7fe22c1938ba649caff51dfd70fd484f8fa8df1ca8477ec009f07b332",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
