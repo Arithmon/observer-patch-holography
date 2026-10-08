@@ -104,6 +104,15 @@ def phase_space(q68, velocity68, mesh=None, charge=.25):
     q68 = real_vector(q68, 68, 'configuration')
     velocity68 = real_vector(velocity68, 68, 'velocity')
     charge = positive(charge, 'charge')
+    try:
+        with np.errstate(over='raise', invalid='raise', divide='raise'):
+            return _phase_space_values(q68, velocity68, mesh, charge)
+    except FloatingPointError as error:
+        raise ValueError('kinetic precision outside finite phase-space reporting range') from error
+
+
+def _phase_space_values(q68, velocity68, mesh, charge):
+    """Evaluate validated binary64 inputs within the public range guard."""
     a, psi = q68[:42], q68[42:55]+1j*q68[55:]
     av, pv = velocity68[:42], velocity68[42:55]+1j*velocity68[55:]
     b = mesh.mean_zero
@@ -120,12 +129,16 @@ def phase_space(q68, velocity68, mesh=None, charge=.25):
     # normwise rechart policy retains directly supplied tiny velocities but
     # refuses unresolved cancellation of large gauge/scalar summands. Use
     # max norms and compare before multiplying tiny scales by epsilon.
-    upstream = max(float(np.max(abs(term))) for term in
-                   (av, pv, gauge_edge_velocity, gauge_scalar_velocity))
+    # Use the same real-coordinate max norm as full_v. A complex modulus
+    # may overflow although both supplied real components are representable.
+    upstream = max(float(np.max(abs(component)))
+                   for term in (av, pv, gauge_edge_velocity, gauge_scalar_velocity)
+                   for component in (term.real, term.imag))
     reduced = float(np.max(abs(full_v)))
     allowance = quantum.KINETIC_RESOLUTION/(128*np.finfo(float).eps*np.linalg.cond(laplacian))
     if (not np.isfinite(upstream) or not np.isfinite(reduced)
-            or (upstream > 0 and (reduced == 0 or upstream > reduced*allowance))):
+            or not np.isfinite(allowance) or allowance <= 0
+            or (upstream > 0 and (reduced == 0 or reduced/upstream < 1/allowance))):
         raise ValueError('kinetic precision insufficient for the recharted tangent')
     q, velocity = mesh.slice.T@full_q, mesh.slice.T@full_v
     reduction = quantum.reduced_kinetic(ac, pc, charge, .5, .25, mesh)
@@ -135,7 +148,7 @@ def phase_space(q68, velocity68, mesh=None, charge=.25):
     momentum = reduction.factor.T@(reduction.factor@velocity)
     generator = np.r_[np.zeros(30), -pc.imag, pc.real]
     eta = mesh.mean_zero@reduction.eta_map@velocity
-    return {'q': q, 'velocity': velocity, 'momentum': momentum,
+    result = {'q': q, 'velocity': velocity, 'momentum': momentum,
             'full_q': full_q, 'full_velocity': full_v, 'gauge_parameter': xi,
             'gauge_parameter_velocity': xidot, 'transformed_scalar_potential': -xidot,
             'schur_scalar_potential': eta, 'constant_moment_map': float(momentum@generator),
@@ -144,6 +157,9 @@ def phase_space(q68, velocity68, mesh=None, charge=.25):
             'cotangent_identity_defect': float(np.max(abs(momentum-gamma@velocity))),
             'log_rho': reduction.logdet()/2, 'potential': reduction.potential,
             'gamma_min_eigenvalue': float(reduction.singular_values[-1]**2)}
+    if any(not np.isfinite(value).all() for value in result.values()):
+        raise ValueError('kinetic precision outside finite phase-space reporting range')
+    return result
 
 
 def overlap_parameters(center, momentum, sigma, hbar=1):

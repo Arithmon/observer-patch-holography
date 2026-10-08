@@ -15,7 +15,7 @@ from decimal import Decimal
 from functools import lru_cache
 from fractions import Fraction
 from itertools import combinations, product
-from math import isfinite
+from math import frexp, fsum, isfinite, ldexp
 
 import numpy as np
 from scipy.linalg import null_space, qr, solve_triangular
@@ -142,11 +142,16 @@ def _real_scalar(value, name):
     return result
 
 
-def scalar_fields(a, psi, charge, mesh):
-    """Value, real configuration Jacobian and covariant spatial gradient."""
+def scalar_fields(a, psi, charge, mesh, *, include_covariant=True):
+    """Value, Jacobian and optional covariant spatial gradient.
+
+    Density-only callers do not evaluate unused spatial products, which may
+    exceed the reporting range even when their kinetic factors are resolved.
+    """
     a, psi = _configuration(a, psi)
     charge = _real_scalar(charge, "charge")
-    phase = np.exp(1j*charge*np.einsum("qie,e->qi", mesh.paths, a))
+    phase = (np.exp(1j*charge*np.einsum("qie,e->qi", mesh.paths, a)) if charge
+             else np.ones(mesh.nodal.shape, dtype=complex))
     w = mesh.nodal*phase
     value = w@psi
     # Pair the two endpoints before multiplying by barycentric weights.
@@ -154,16 +159,21 @@ def scalar_fields(a, psi, charge, mesh):
     # two large endpoint contributions separately loses that identity.
     left, right = np.asarray(mesh.edges).T
     transported = phase*psi
-    dressing = (1j*charge*mesh.nodal[:, left]*mesh.nodal[:, right]
-                * (transported[:, left]-transported[:, right]))
+    dressing = ((1j*charge*mesh.nodal[:, left]*mesh.nodal[:, right]
+                 * (transported[:, left]-transported[:, right])) if charge
+                else np.zeros((len(mesh.weights), 42), dtype=complex))
     jacobian = np.column_stack((dressing, w, 1j*w))
-    grad_phase = np.einsum("qiec,e->qic", mesh.path_grad, a)
+    if not include_covariant:
+        return value, jacobian, None
     # Partition of unity removes the constant mode before differentiation.
     # Node zero belongs to every tetrahedron of this cone.
     grad = np.einsum("qi,qic->qc", transported-transported[:, :1], mesh.nodal_grad)
-    grad += 1j*charge*np.einsum("qi,i,qic->qc", w, psi, grad_phase)
-    potential = np.einsum("qec,e->qc", mesh.edge_forms, a)
-    covariant = grad-1j*charge*potential*value[:, None]
+    if charge:
+        grad_phase = np.einsum("qiec,e->qic", mesh.path_grad, charge*a)
+        grad += 1j*np.einsum("qi,i,qic->qc", w, psi, grad_phase)
+        potential = np.einsum("qec,e->qc", mesh.edge_forms, charge*a)
+        grad -= 1j*potential*value[:, None]
+    covariant = grad
     return value, jacobian, covariant
 
 
@@ -178,16 +188,90 @@ def _potential_parameters(mass_squared, quartic):
     return mass_squared, quartic
 
 
-def _potential_energy(a, value, covariant, mass_squared, quartic, mesh):
-    density = np.sum(abs(covariant)**2, axis=1)
-    if mass_squared:
-        density += mass_squared*abs(value)**2
-    if quartic:
-        density += quartic*abs(value)**4/2
-    result = float(a@mesh.stiffness@a/2+mesh.weights@density)
-    if not np.isfinite(result):
-        raise ValueError("potential outside finite reporting range")
+def _positive_product_sum(groups):
+    """Sum nonnegative products without first overflowing/underflowing powers.
+
+    A group consists of (factor, integer power) pairs. Mantissas stay near
+    unity until the final sum; the powers of two are tracked separately.
+    This evaluates the supplied quadrature, not a bound on integration error.
+    """
+    mantissas, exponents = [], []
+    for group in groups:
+        arrays = np.broadcast_arrays(*(np.asarray(value, dtype=float) for value, _ in group))
+        mantissa = np.ones(arrays[0].shape)
+        exponent = np.zeros(arrays[0].shape, dtype=np.int64)
+        for array, (_, power) in zip(arrays, group, strict=True):
+            if not np.isfinite(array).all() or (power % 2 and np.any(array < 0)):
+                raise ValueError("potential precision requires finite positive factors")
+            fraction, binary_exponent = np.frexp(abs(array))
+            mantissa *= fraction**power
+            exponent += binary_exponent*power
+        nonzero = mantissa != 0
+        mantissas.extend(mantissa[nonzero].flat)
+        exponents.extend(exponent[nonzero].flat)
+    if not mantissas:
+        return 0.
+    maximum = int(max(exponents))
+    # Terms too far below the largest term cannot change the reported sum.
+    # Their underflow here is relative to that sum, not loss of its scale.
+    with np.errstate(under="ignore"):
+        scaled = np.ldexp(np.asarray(mantissas), np.asarray(exponents)-maximum)
+    mantissa, adjustment = frexp(fsum(scaled))
+    exponent = maximum+adjustment
+    try:
+        result = ldexp(mantissa, exponent)
+        recovered = ldexp(result, -exponent)
+    except OverflowError as exc:
+        raise ValueError("potential precision outside finite reporting range") from exc
+    if not isfinite(result) or result <= 0 or abs(recovered/mantissa-1) > 1e-12:
+        raise ValueError("potential precision outside reliable reporting range")
     return result
+
+
+def _magnetic_energy_terms(a, mesh):
+    """Positive curl factors from original oriented face circulations.
+
+    Three original binary64 edge values determine each circulation. Exact
+    rational addition retains a small curl behind a large pure gradient;
+    it is not a zero floor on the already damaged stiffness quadratic.
+    """
+    if not np.any(a):
+        return []
+    oriented = {}
+    for index, (left, right) in enumerate(mesh.edges):
+        oriented[left, right] = Fraction(float(a[index]))
+        oriented[right, left] = -oriented[left, right]
+    groups = []
+    for tet in mesh.tetrahedra:
+        pairs = list(combinations(range(1, 4), 2))
+        try:
+            circulation = np.array([float(oriented[tet[0], tet[i]]+oriented[tet[i], tet[j]]
+                                          -oriented[tet[0], tet[j]]) for i, j in pairs])
+        except OverflowError as exc:
+            raise ValueError("magnetic potential precision outside finite reporting range") from exc
+        scale = np.max(abs(circulation))
+        if scale:
+            points = mesh.vertices[list(tet)]
+            gradients = np.linalg.inv(np.column_stack((np.ones(4), points)))[1:].T
+            volume = abs(np.linalg.det(points[1:]-points[0]))/6
+            curls = np.array([2*np.cross(gradients[i], gradients[j]) for i, j in pairs])
+            normalized = (circulation/scale)@curls
+            groups.append(((volume/2, 1), (scale, 2), (normalized, 2)))
+    return groups
+
+
+def _potential_energy(a, value, covariant, mass_squared, quartic, mesh):
+    groups = _magnetic_energy_terms(a, mesh)
+    for component in (covariant.real, covariant.imag):
+        groups.append(((mesh.weights[:, None], 1), (component, 2)))
+    if mass_squared:
+        for component in (value.real, value.imag):
+            groups.append(((mesh.weights, 1), (mass_squared, 1), (component, 2)))
+    if quartic:
+        for component in (value.real, value.imag):
+            groups.append(((mesh.weights, 1), (quartic, 1), (.5, 1), (component, 4)))
+        groups.append(((mesh.weights, 1), (quartic, 1), (value.real, 2), (value.imag, 2)))
+    return _positive_product_sum(groups)
 
 
 def coefficients(a, psi, charge=1.0, mass_squared=1.0, quartic=1.0, mesh=None):
@@ -271,11 +355,15 @@ def reduced_kinetic(a, psi, charge=1.0, mass_squared=1.0, quartic=1.0, mesh=None
     mass_squared, quartic = _potential_parameters(mass_squared, quartic)
     if type(include_potential) is not bool:
         raise ValueError("include_potential must be a Boolean")
-    if np.max(abs(mesh.d.T@mesh.mass@a)) > 1e-9*(1+np.linalg.norm(a)):
+    # Compare in common units before any norm squares can overflow. This is
+    # the same absolute-plus-relative slice tolerance at every finite scale.
+    a_scale = max(1., float(np.max(abs(a))))
+    normalized_a = a/a_scale
+    if np.max(abs(mesh.d.T@mesh.mass@normalized_a)) > 1e-9*(1/a_scale+np.linalg.norm(normalized_a)):
         raise ValueError("configuration must lie on the Coulomb slice")
     try:
         with np.errstate(over="raise", invalid="raise", divide="raise"):
-            value, jacobian, covariant = scalar_fields(a, psi, charge, mesh)
+            value, jacobian, covariant = scalar_fields(a, psi, charge, mesh, include_covariant=include_potential)
             electric = np.linalg.cholesky(mesh.mass).T
             weights = np.sqrt(2*mesh.weights)[:, None]
             scalar_h = weights*(jacobian@mesh.slice)
@@ -354,7 +442,15 @@ def gaussian_half_density_log(q, sigma=1.0):
     modulus is the density of N(0, sigma**2 I56). No state evolution is run.
     """
     q, sigma = _state_arguments(q, sigma)
-    return float(-14*(np.log(2*np.pi)+2*np.log(sigma))-(q/sigma)@(q/sigma)/4)
+    try:
+        with np.errstate(over="raise", invalid="raise", divide="raise"):
+            half_scaled = (q/sigma)/2
+            result = float(-14*(np.log(2*np.pi)+2*np.log(sigma))-half_scaled@half_scaled)
+    except FloatingPointError as exc:
+        raise ValueError("Gaussian log amplitude outside finite reporting range") from exc
+    if not isfinite(result):
+        raise ValueError("Gaussian log amplitude outside finite reporting range")
+    return result
 
 
 def gaussian_state_log_amplitude(q, sigma=1.0, charge=1.0, mesh=None):
@@ -378,7 +474,10 @@ def gaussian_state_log_amplitude(q, sigma=1.0, charge=1.0, mesh=None):
     a = mesh.slice[:42, :30]@q[:30]
     psi = q[30:43]+1j*q[43:]
     logdet = reduced_kinetic(a, psi, charge=charge, mesh=mesh, include_potential=False).logdet()
-    return float(gaussian_half_density_log(q, sigma)-logdet/4)
+    result = float(gaussian_half_density_log(q, sigma)-logdet/4)
+    if not isfinite(result):
+        raise ValueError("Gaussian state log amplitude outside finite reporting range")
+    return result
 
 
 def gaussian_initial_moments(sigma, volume, transverse_stiffness_trace):
