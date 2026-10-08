@@ -10,6 +10,8 @@ from fractions import Fraction as F
 import hashlib
 import itertools
 import json
+from math import comb
+from numbers import Integral
 from pathlib import Path
 import sys
 import numpy as np
@@ -30,11 +32,40 @@ def encode(value):
     if isinstance(value, np.integer): return int(value)
     return value
 
+def reject_masked(value):
+    """Inspect original containers before NumPy can discard an inner mask."""
+    if np.ma.isMaskedArray(value):
+        raise ValueError('integer matrix cannot contain masked data')
+    entries = value.flat if isinstance(value, np.ndarray) else value
+    if isinstance(value, (np.ndarray, list, tuple)):
+        for entry in entries:
+            reject_masked(entry)
+
+
+def integers(value):
+    """Preserve original integer scalars before any product or reduction."""
+    reject_masked(value)
+    a = np.asarray(value, dtype=object)
+    if a.ndim != 2:
+        raise ValueError('integer matrix must have two dimensions')
+    if any(isinstance(v, (bool, np.bool_)) or not isinstance(v, Integral)
+           for v in a.flat):
+        raise ValueError('integer matrix requires exact integer entries')
+    return np.array([int(v) for v in a.flat], dtype=object).reshape(a.shape)
+
+
 def matrix(a, denominator=1):
-    return np.array([[F(int(v), denominator) for v in row] for row in a], dtype=object)
+    if (isinstance(denominator, (bool, np.bool_)) or
+            not isinstance(denominator, Integral) or denominator <= 0):
+        raise ValueError('positive integer denominator required')
+    a = integers(a)
+    return np.array([[F(v, int(denominator)) for v in row] for row in a], dtype=object)
 
 def centered_cov(x, y):
+    x, y = integers(x), integers(y)
     n = len(x)
+    if n == 0 or len(y) != n:
+        raise ValueError('covariance needs matching nonempty populations')
     return matrix(x.T @ y, n) - np.outer([F(int(v),n) for v in x.sum(0)],
                                        [F(int(v),n) for v in y.sum(0)])
 
@@ -46,67 +77,102 @@ def native_modules(spec):
     from oph_fpe.core.icosahedral import build_geodesic_icosahedral_tower
     return carrier, federation, build_geodesic_icosahedral_tower
 
-def finite_control(r, carrier, windows):
+def moment_coordinates(r, carrier):
+    """Exact degree-two closure of the original binary repair operation.
+
+    These 79 monomials span the three readouts. They need not be independent
+    on a fixed-occupancy slice; the (possibly singular) moment matrix is
+    only multiplied, never inverted. Products use set UNION since n_i^2=n_i.
+    """
     p = 12
-    states = np.array([[int(i in s) for i in range(p)]
-                       for s in itertools.combinations(range(p), r)], dtype=np.int64)
-    where = {tuple(s): i for i,s in enumerate(states)}
     edges = list(carrier.seams())
-    lap = carrier.laplacian()
-    # Integer numerators: z=x/12. Keeping numerators integral avoids rounding.
-    x = 12*states-r
-    drive = x@lap
-    mismatch = np.zeros_like(states)
+    # Bind the simplification to the supplied primitive, not just its name:
+    # for binary endpoints a fair coin is half identity, half transposition.
+    for a, b in itertools.product((0, 1), repeat=2):
+        targets = [tuple(carrier.integer_nearest_agreement(a, b, ceiling_to_first=coin))
+                   for coin in (False, True)]
+        if sorted(targets) != sorted(((a, b), (b, a))):
+            raise ValueError('binary repair is not a fair lazy transposition')
+    if (len(edges) != 30 or len(set(edges)) != 30 or
+            any(not (0 <= a < b < p) for a, b in edges)):
+        raise ValueError('expected thirty oriented native seams')
+    lap = np.zeros((p, p), dtype=object)
+    for a, b in edges:
+        lap[a, a] += 1; lap[b, b] += 1
+        lap[a, b] -= 1; lap[b, a] -= 1
+    if not np.array_equal(integers(carrier.laplacian()), lap):
+        raise ValueError('native Laplacian and seam operations disagree')
+    features = [()] + [(i,) for i in range(p)] + list(itertools.combinations(range(p), 2))
+    index = {s: i for i, s in enumerate(features)}
+    # Counts, not rounded probabilities: exactly this many r-subsets contain S.
+    counts = [comb(p-k, r-k) if k <= r else 0 for k in range(5)]
+    moments = np.array([[counts[len(set(s) | set(t))] for t in features]
+                        for s in features], dtype=object)
+    x = np.zeros((len(features), p), dtype=object)
+    x[0] = -r
+    for i in range(p):
+        x[index[(i,)], i] = 12
+    drive = x @ lap
+    mismatch = np.zeros_like(x)
     for a,b in edges:
-        sq = (states[:,a]-states[:,b])**2
-        mismatch[:,a] += sq; mismatch[:,b] += sq
+        for port in (a, b):
+            mismatch[index[(a,)], port] += 1
+            mismatch[index[(b,)], port] += 1
+            mismatch[index[(a, b)], port] -= 2
     values = {'load': (x,12), 'local_drive':(drive,12), 'local_mismatch':(mismatch,1)}
-    successors = []
-    for state in states:
-        row=[]
-        for a,b in edges:
-            for coin in (False,True):
-                target=state.copy()
-                target[a],target[b]=carrier.integer_nearest_agreement(int(state[a]),int(state[b]),ceiling_to_first=coin)
-                row.append(where[tuple(target)])
-        successors.append(row)
-    successors = np.asarray(successors)
+    permutations = np.array([
+        [index[tuple(sorted(b if i == a else a if i == b else i for i in s))]
+         for s in features] for a, b in edges])
+    return edges, moments, values, permutations
+
+
+def finite_control(r, carrier, windows):
+    if type(r) is not int or not 1 <= r <= 11:
+        raise ValueError('exact occupancy integer in 1..11 required')
+    if (type(windows) not in (list, tuple) or not windows or
+            any(type(count) is not int or count <= 0 for count in windows) or
+            len(set(windows)) != len(windows)):
+        raise ValueError('nonempty unique positive integer record windows required')
+    p = 12
+    edges, moments, values, permutations = moment_coordinates(r, carrier)
+    configurations = comb(p, r)
+    x = values['load'][0]
     kappa=F(r*(p-r),p*(p-1))
-    cz = centered_cov(x,x)/144
+    cz = matrix(x.T @ moments @ x, configurations*144)
     # Two disjoint two-port blocks. The second is antipodal to the first.
     a,b = edges[0]; c,d = carrier.antipode()[a],carrier.antipode()[b]
     coarse=np.zeros((2,p),dtype=object)
     coarse[0,a]=coarse[0,b]=F(1,2); coarse[1,c]=coarse[1,d]=F(1,2)
     out={}
     for name,(f,den) in values.items():
-        bmat=centered_cov(f,x)/(den*12*kappa)
+        # E[z]=0 exactly. Integer counts are retained through the Gram product.
+        weighted = f.T @ moments
+        bmat=matrix(weighted @ x, configurations*den*12)/kappa
+        mu=[F(v,configurations*den) for v in moments[0] @ f]
         lag=[]; propagated=f.copy()
         for t in range(2*(max(windows)-1)+1):
-            mu=[F(int(v),len(f)*den) for v in f.sum(0)]
-            cmat=matrix(f.T@propagated,len(f)*den*den*60**t)-np.outer(mu,mu)
+            cmat=matrix(weighted@propagated,configurations*den*den*60**t)-np.outer(mu,mu)
             lag.append(cmat)
-            if t<2*(max(windows)-1): propagated=propagated[successors].sum(axis=1)
-        covs={}
-        for count in windows:
-            total=count*lag[0]
-            for t in range(1,count): total=total+(count-t)*(lag[t]+lag[t].T)
-            covs[str(count)]=total/(count*count)
-        altered_clock={}
-        for count in windows:
-            total=count*lag[0]
-            for t in range(1,count): total=total+(count-t)*(lag[2*t]+lag[2*t].T)
-            altered_clock[str(count)]=total/(count*count)
+            if t<2*(max(windows)-1):
+                propagated=30*propagated+propagated[permutations].sum(axis=0)
+        averages={}
+        for stride,key in ((1,'record_average_covariance'),(2,'two_attempts_per_record_covariance')):
+            averages[key]={}
+            for count in windows:
+                total=count*lag[0]
+                for t in range(1,count):
+                    total=total+(count-t)*(lag[stride*t]+lag[stride*t].T)
+                averages[key][str(count)]=total/(count*count)
         c0=lag[0]; residual=c0-bmat@cz@bmat.T
-        out[name]={'mean':[F(int(v),len(f)*den) for v in f.sum(0)],
+        out[name]={'mean':mu,
                    'density_projection_B':bmat,'residual_covariance':residual,
                    'instant_covariance':c0,'lag_covariance':lag,
-                   'record_average_covariance':covs,
-                   'two_attempts_per_record_covariance':altered_clock,
+                   **averages,
                    'cross_scale_covariance':c0@coarse.T,
                    'coarse_covariance':coarse@c0@coarse.T}
     normalized={name:out[name]['instant_covariance']/np.trace(out[name]['instant_covariance'])
                 for name in ('load','local_drive')}
-    return encode({'raised':r,'configurations':len(states),'kappa':kappa,
+    return encode({'raised':r,'configurations':configurations,'kappa':kappa,
                    'preparation':'uniform law on all fixed-occupancy configurations',
                    'clock':'one independent uniform seam attempt and fair endpoint coin',
                    'coarse_blocks':[[a,b],[c,d]], 'readouts':out,
@@ -172,5 +238,5 @@ def build():
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--write',action='store_true');args=parser.parse_args()
     output=json.dumps(build(),indent=2,sort_keys=True,allow_nan=False)+'\n'
-    if args.write: (EVIDENCE/'receipt.json').write_text(output)
+    if args.write: (EVIDENCE/'receipt.json').write_bytes(output.encode('utf-8'))
     else: print(output,end='')
