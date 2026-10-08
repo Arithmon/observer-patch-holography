@@ -70,6 +70,18 @@ Run `python -m pytest -q code/particles/test_mixing_readout.py` from the root.
 Run the older neutrino/flavor integration suites in a disposable checkout:
 some tests regenerate their default artifacts.
 
+The intrinsic and forward Majorana readers share [`takagi.py`](takagi.py).
+They use a scaled direct SVD and check `U.T @ M @ U = diag(m)` instead of
+extracting masses from `M†M` or subtracting the intrinsic cubic trace shift.
+Those older calculations could round positive masses to zero. Complex phases
+are preserved at every mass scale; the real shortcut requires exactly zero
+imaginary entries. The cubic remains an independent numerical diagnostic.
+The checks are normwise binary64 residuals, not interval enclosures or relative
+error certificates for arbitrarily small masses. Degenerate blocks requiring
+additional congruence resolution are explicitly refused. Run
+`python3 -m pytest -q -W error code/particles/neutrino/test_takagi_numerics.py`
+for analytic-spectrum, scale, complex-congruence, and serialized-producer controls.
+
 ## Active Layout
 
 - [calibration](calibration)

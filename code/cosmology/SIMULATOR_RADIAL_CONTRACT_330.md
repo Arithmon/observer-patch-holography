@@ -92,8 +92,10 @@ D_{s,r}^{-1}C_{\zeta,r}D_{s,r}-u_r(s)C_{\zeta,r}
 -u_r(s)C_{{\rm src},r}\right)U_r^*.
 \]
 
-The finite objects must converge strongly on one embedded safe-band Hilbert
-space, with a uniform covariance norm bound and a vanishing operator residual.
+The finite objects must converge on a common embedded compact-band core,
+with local covariance bounds and a vanishing dilation residual on every
+core vector, including the error from replacing finite dilation maps by
+the physical maps.
 Only then does the continuum relation
 
 \[
@@ -134,7 +136,7 @@ Pass conditions:
 - the embedding square \(D_{s,r}U_r=U_rR_{s,r}\) passes and its residual converges;
 - source and coarse mode projectors commute within the declared residual;
 - source covariance naturality and physical covariance naturality have the same residual under \(U_r\);
-- the strong finite-to-continuum hypotheses and uniform covariance norm bound pass;
+- covariance convergence and the dilation residual pass on every compact log-wavenumber band of one common operator core; replacement of finite dilation maps by the physical maps has a vanishing error on that core;
 - covariance survival equals the screen source cocycle, not a separately chosen exponent;
 - safe-band leakage and operator residual converge under refinement;
 - finite diagonal checks \(\Delta^2(bk)=b^{-\theta}\Delta^2(k)\) pass;
@@ -149,6 +151,13 @@ Negative controls:
 - a mode basis from a different source embedding.
 
 Each control must fail.
+
+A nonzero global power law with nonzero tilt has an unbounded multiplication
+covariance on `L2(d log k)`. A global uniform covariance norm bound cannot be
+required for that limit: a bounded nonzero operator and its unitary conjugate
+have equal norm and cannot differ by the scalar `exp(-theta*s) != 1`.
+Uniform bounds on each fixed compact band are compatible with this branch;
+they do not supply a uniform bound as the band expands.
 
 ## Thin-shell Mellin receipt
 
@@ -178,7 +187,8 @@ The code must not solve this equation for \(A_\zeta\) using measured CMB \(C_\el
 
 ## Finite-window receipt
 
-The run computes the exact window transform and the certified bound
+For a nonnegative normalized radial measure `W`, positive reference radius,
+and `0 < theta < 2 ell`, the run evaluates the window transform and analytic bound
 
 \[
 \eta_{\ell,W}
@@ -197,7 +207,17 @@ J_\ell(\theta)=I_\ell(\theta-2)
 \left(2R_\star^{\theta/2}\sqrt{I_\ell}+\eta\right).
 \]
 
-The receipt stores \(I_\ell,J_\ell,\eta\), exact projected values, the bound, and the ratio of actual quadrature difference to the bound.
+The measure must have a finite `theta/2` radius moment. Without normalization,
+`W=2 delta_R` gives `eta=0` while quadrupling the shell spectrum. Signed windows
+need a different bound using total variation.
+
+The receipt stores \(I_\ell,J_\ell,\eta\), projected values, the bound, and
+the ratio of the quadrature difference to the bound. The Python helper evaluates
+the analytic inequality in binary64; it supplies no outward-rounded interval
+certificate. Its numerical error and the quadrature error must be controlled
+separately before promoting a numerical inequality. Gamma recurrence and
+`expm1` preserve the near-scale-invariant derivative norm and radius differences;
+finite positive window weights are normalized after rescaling to avoid overflow.
 
 ## `RADIAL_TOMOGRAPHY` receipt
 
@@ -206,6 +226,11 @@ The input must contain cross-covariances. Auto-spectra alone fail the receipt:
 \[
 C_\ell(r_i,r_j).
 \]
+
+The fixed-radius uniqueness route requires a strictly positive reference
+radius and a cross-covariance section admitting spherical-Hankel inversion in
+the declared function or distribution class. At radius zero, all sections
+with `ell >= 1` vanish regardless of the spectrum.
 
 The receipt records:
 
@@ -225,18 +250,33 @@ For every finite operator, publish:
 
 ```json
 {
-  "shape": [0, 0],
-  "singular_values": [],
-  "rank_threshold": 0.0,
-  "rank": 0,
+  "shape": [2, 2],
+  "singular_values": [1.0, 1e-8],
+  "rank_threshold": 1e-12,
+  "rank": 2,
   "nullity": 0,
-  "condition_number_nonzero": 0.0,
-  "right_null_basis_hash": "sha256:...",
+  "condition_number_nonzero": 1e8,
+  "null_basis_hash": "sha256:...",
   "resolution_kernel_hash": "sha256:..."
 }
 ```
 
-The raw right-null basis and resolution kernels are part of the evidence bundle, even when the source branch is one-dimensional. Their role is to prove that uniqueness comes from the source theorem, not from an accidentally square discretization.
+The basis and resolution kernels accompany the evidence bundle, even for a
+one-dimensional source branch. Source uniqueness still requires its theorem.
+
+`radial_null_space_report` is a floating-point diagnostic of the supplied raw
+matrix \(A\). A scaled SVD uses the relative cutoff
+\(\max(\mathtt{rtol},\max(\operatorname{shape}(A))\epsilon_{\rm binary64})\).
+Scaling a nonzero entry into the subnormal or zero range is accepted only if
+rounding its exact entry-to-scale ratio changes it by at most
+\(4\epsilon_{\rm binary64}\) relatively; otherwise the helper refuses that range.
+The retained singular values determine the rank, nullity and basis together;
+the API's `effective_threshold` corresponds to the receipt's `rank_threshold`.
+`relative_cutoff` records the cutoff; `rank_metric` is `raw_operator_euclidean`.
+Discarded nonzero directions are numerically unresolved, not proved elements
+of the mathematical kernel. The zero matrix has rank zero and a complete
+unresolved basis; its `condition_number_nonzero` is `None`. Omit that optional
+condition field when packaging a rank-zero report in the receipt schema.
 
 ## Prior-selected continuation
 
@@ -246,7 +286,60 @@ For a declared \(p_0,Q\), the exact representative is
 p_*=p_0+Q^{-1}A^T(AQ^{-1}A^T)^+(C-Ap_0).
 \]
 
-The run publishes \(p_0,Q,R_Q,N_Q\), positivity active set, and sensitivity to all declared prior variants. Its output type is `ConditionalRadialContinuation`.
+The reference implementation evaluates this theorem numerically. It factors
+\(Q=DLL^TD\), where \(D=\operatorname{diag}(\sqrt{Q_{ii}})\) and \(L\) is the
+Cholesky factor of the normalized precision. Set \(W=D^{-1}L^{-T}\).
+Each nonzero row of \(AW\) and of the corresponding target \(C-Ap_0\) is
+divided by that operator row's largest absolute entry; call this diagonal
+row scaling \(E\). No Gram matrix \(AQ^{-1}A^T\) is formed. One SVD defines:
+
+\[
+B=EAW=U\Sigma V^T,\qquad
+p=p_0+WV_r\Sigma_r^{-1}U_r^TE(C-Ap_0),\qquad
+R_Q=WV_rV_r^TW^{-1},\quad N_Q=I-R_Q.
+\]
+
+`effective_rank` counts retained directions using the same relative cutoff
+rule as the null report; `rank_metric` is
+`row_equilibrated_prior_whitened_operator`. It can differ from the raw-\(A\)
+rank because whitening and row scaling change relative singular values.
+The projectors are complementary and
+\(Q\)-self-adjoint up to roundoff; truncation alone does not establish
+\(AN_Q=0\). Neither the computed rank nor the continuation is an interval
+certificate or an exact-arithmetic proof of the constrained minimum.
+Before Cholesky, the computed smallest eigenvalue of \(H=D^{-1}QD^{-1}\)
+must be positive, with \(\kappa_H=\|H\|_\infty/\lambda_{\min}(H)\) and
+\(\eta_Q=n\epsilon_{\rm binary64}\kappa_H\le10^{-7}\), \(n=\dim Q\).
+Before inverting the retained spectrum, the solver additionally requires
+\[
+\eta_Q+\max(\operatorname{shape}(B))\epsilon_{\rm binary64}
+\sqrt{\kappa_H}\,\kappa_B\le10^{-7},\qquad
+\kappa_B=s_0/s_{\rm last}\quad(0\text{ at rank zero}).
+\]
+This joint first-order conditioning policy accounts for prior-metric error
+and amplification through whitening and inversion; it is neither a certified
+error bound nor a relative-accuracy guarantee for every output component.
+
+The inverse and residual interfaces validate original scalar entries before
+array coercion and require finite real data; `rtol` is finite with
+\(0<\mathtt{rtol}<1\). Zero \(A\) with zero \(C\) is supported.
+Nonintegral scalars may round to binary64 within \(4\epsilon_{\rm binary64}\)
+relatively, and the computation refers to those accepted binary64 values.
+Integral-valued inputs must be exactly representable, regardless of scalar
+type or container.
+Returned constraints are checked row by row using exact arithmetic on the
+accepted binary64 inputs and returned \(p\), without an absolute unit floor.
+Unresolved constraints or unrepresentable reported quantities cause an
+explicit refusal. Residual norms use scaled hypot evaluation; the objective
+is rounded from the exact quadratic expression for the returned vector.
+An original-row check of \(AN_Q\) prevents truncation from hiding a resolved
+constraint. If rounding \(p_0+\delta\) changes the intended correction by
+more than \(10^{-7}\) in relative \(Q\)-norm, the helper refuses that result.
+
+The run publishes \(p_0,Q,R_Q,N_Q\) and sensitivity to declared prior variants.
+The helper imposes no positivity constraint: any required positivity active
+set needs separate evidence. Its output remains `ConditionalRadialContinuation`,
+which cannot by itself promote a source-derived E4 claim.
 
 ## Forward residual
 
@@ -256,7 +349,32 @@ Every branch computes a forward residual without re-optimizing source parameters
 r_\ell=C_\ell^q-4\pi Z_q^2\int d\nu(k)\Delta_\zeta^2(k)|\Psi_\ell(k)|^2.
 \]
 
-The residual artifact contains raw signed residuals, absolute and relative norms, numerical error budget, and held-out modes/windows. A failed residual blocks promotion.
+The residual artifact contains raw signed residuals, absolute and relative
+norms, numerical error budget, and held-out modes/windows. A failed residual
+blocks promotion. `forward_residual` computes \(C-Ap\) from the accepted inputs
+without fitting; norms must not vanish merely because squaring underflows.
+Its relative norm uses \(\|C\|_2\) without a denominator floor. If \(C=0\),
+the relative residual is zero only when the residual is also zero; otherwise
+the relative quantity is undefined and the helper refuses explicitly.
+
+## Numerical audit and validation
+
+At main `1ba8a011c4a81fe0680b14dadf4802388a0567a2`, the original inputs
+\(A=\operatorname{diag}(1,10^{-8})\), \(C=(10^{-3},10^{-11})\),
+\(p_0=0\), \(Q=I\), with default `rtol`, returned \(p=(10^{-3},0)\),
+`effective_rank=2` and \(N_Q=\operatorname{diag}(0,1)\).
+The Gram cutoff discarded a resolved direction and the absolute residual
+floor accepted its missing constraint; the unique solution is
+\(p=(10^{-3},10^{-3})\).
+
+The regression and independent-control files retain this failure, exact
+Fraction/KKT solutions, metric-dependent ranks, projector identities, zero
+maps, original-input validation, and small/large-unit residual controls.
+`radial-inverse.yml` executes these two files and `test_oph_radial_lift_330.py`
+on Ubuntu and Windows with pinned dependencies and warnings treated as errors.
+This repair changes the live numerical helper. It requires no retained
+receipt regeneration, frozen-evidence rewrite, paper theorem change, or
+physical claim promotion.
 
 ## Curved branches
 
@@ -287,7 +405,7 @@ A transfer artifact may consume the E4 primordial packet, but the E4 packet may 
 - exact \(I_\ell(\theta)\) and \(J_\ell(\theta)\);
 - general-pivot/general-\(Z_q\) amplitude conversion;
 - exact thin-shell gamma spectrum;
-- finite-window quadrature and certified bound;
+- finite-window quadrature, analytic bound, and separate numerical error budget;
 - finite projection matrix and SVD/null report;
 - minimum-prior continuation;
 - source-family forward residual;

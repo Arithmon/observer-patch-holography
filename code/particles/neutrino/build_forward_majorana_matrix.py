@@ -32,6 +32,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from particles.artifact_paths import portable_json_dumps
+from particles.takagi import sorted_takagi, validate_takagi
 
 
 def load_json(path: pathlib.Path) -> dict[str, Any]:
@@ -52,19 +53,7 @@ def _phase_matrix_from_selector(selector: dict[str, Any] | None) -> np.ndarray:
 
 
 def _sorted_takagi(matrix: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    if np.max(np.abs(matrix - matrix.T)) > 1.0e-12:
-        raise ValueError("Majorana matrix must be complex symmetric")
-    eigenvalues, unitary = np.linalg.eigh(matrix.conjugate().T @ matrix)
-    order = np.argsort(eigenvalues)
-    eigenvalues = np.maximum(np.real(eigenvalues[order]), 0.0)
-    unitary = unitary[:, order]
-    congruence = unitary.T @ matrix @ unitary
-    offdiag = congruence - np.diag(np.diag(congruence))
-    tolerance = 1.0e-10 * max(1.0e-30, float(np.max(np.sqrt(eigenvalues))))
-    if np.max(np.abs(offdiag)) > tolerance:
-        raise ValueError("Takagi eigenspaces require a degenerate-block congruence resolution")
-    unitary = unitary @ np.diag(np.exp(-0.5j * np.angle(np.diag(congruence))))
-    return np.sqrt(eigenvalues), unitary
+    return sorted_takagi(matrix)
 
 
 def main() -> int:
@@ -155,7 +144,9 @@ def main() -> int:
     if phase_mode == "real_seed" and lift is not None and float(lift["cycle_constraint"]["omega_012"]) != 0.0:
         certification_status = "real_seed_phase_unresolved"
 
-    if np.allclose(np.imag(majorana_matrix), 0.0, atol=1.0e-18):
+    # A fixed GeV tolerance would erase every phase after a change of mass
+    # units or scale. The real shortcut is valid only for an actually real M.
+    if not np.any(np.imag(majorana_matrix)):
         eigenvalues, eigenvectors = np.linalg.eigh(np.real(majorana_matrix))
         order = np.argsort(np.abs(eigenvalues))
         eigenvalues = eigenvalues[order]
@@ -169,6 +160,8 @@ def main() -> int:
         masses = singular_values
         raw_eigenvalues = None
 
+    validate_takagi(majorana_matrix, masses, takagi_vectors)
+
     u_vector = np.asarray(scale_anchor["collective_mode"]["u_vector"], dtype=float)
     collective_overlaps = [float(abs(np.vdot(u_vector, takagi_vectors[:, idx])) ** 2) for idx in range(3)]
     principal_minors = [
@@ -180,6 +173,7 @@ def main() -> int:
         "artifact": "oph_neutrino_forward_majorana_matrix",
         "status": "blind_forward_matrix",
         "proof_scope": "exact_matrix_and_takagi_algebra_conditional_on_declared_inputs",
+        "numerical_scope": "binary64 normwise residual checks; no interval or tiny-mass relative-error certificate",
         "source_only_physical_input_eligible": source_closed,
         "public_surface_candidate_allowed": False,
         "source_closure_status": {

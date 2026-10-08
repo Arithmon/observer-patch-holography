@@ -468,36 +468,36 @@
     ],
     "U_nu_imag": [
       [
-        -0.007161937993042792,
+        0.007161937993042836,
         0.0,
-        0.009380801551920793
+        0.009380801551920717
       ],
       [
-        0.0035809689965214018,
-        -0.006202420242304,
-        0.009380801551920776
-      ],
-      [
-        0.003580968996521402,
+        -0.0035809689965213584,
         0.006202420242304001,
-        0.009380801551920778
+        0.009380801551920812
+      ],
+      [
+        -0.0035809689965213567,
+        -0.006202420242304002,
+        0.009380801551920809
       ]
     ],
     "U_nu_real": [
       [
-        -0.8164651696862825,
+        0.8164651696862834,
         0.0,
-        -0.5772740544105353
+        -0.5772740544105338
       ],
       [
-        0.40823258484314184,
-        -0.7070795782534932,
-        -0.5772740544105341
+        -0.408232584843141,
+        0.7070795782534934,
+        -0.577274054410535
       ],
       [
-        0.4082325848431419,
-        0.7070795782534933,
-        -0.5772740544105343
+        -0.40823258484314084,
+        -0.7070795782534935,
+        -0.5772740544105348
       ]
     ],
     "U_nu_semantics": "Takagi U satisfying U^T M U = diag(m_i) > 0; legacy left-vector keys are aliases",
@@ -505,8 +505,8 @@
     "artifact": "oph_neutrino_forward_majorana_matrix",
     "certification_status": "selector_law_closed_standard_math",
     "collective_mode_overlap_by_eigenvector": [
-      5.745754867366868e-31,
-      6.666883056638175e-33,
+      7.755902377859225e-31,
+      1.876366536077841e-33,
       1.0
     ],
     "eigenvalues_raw_gev": null,
@@ -566,8 +566,8 @@
     ],
     "majorana_mode": "canonical_selector",
     "masses_sorted_gev": [
-      2.3986448447627196e-12,
-      2.3986448447627196e-12,
+      2.39864484476272e-12,
+      2.398644844762721e-12,
       2.590074050773907e-12
     ],
     "notes": [
@@ -576,6 +576,7 @@
       "Selector/Takagi closure is conditional algebra and does not promote a source-open family response or Majorana lift.",
       "Residual-envelope mode carries certification metadata rather than claiming a unique complex Majorana matrix."
     ],
+    "numerical_scope": "binary64 normwise residual checks; no interval or tiny-mass relative-error certificate",
     "phase_mode": "canonical_selector",
     "phase_status": "residual_affine_plane",
     "proof_scope": "exact_matrix_and_takagi_algebra_conditional_on_declared_inputs",
@@ -587,8 +588,8 @@
     "selector_point_certified": true,
     "selector_used": "principal_equal_split",
     "singular_values_raw_gev": [
-      2.3986448447627196e-12,
-      2.3986448447627196e-12,
+      2.39864484476272e-12,
+      2.398644844762721e-12,
       2.590074050773907e-12
     ],
     "source_closure_status": {
@@ -612,39 +613,39 @@
     },
     "source_only_physical_input_eligible": false,
     "status": "blind_forward_matrix",
-    "takagi_congruence_max_offdiag_gev": 4.762404209507012e-28,
+    "takagi_congruence_max_offdiag_gev": 4.711781392398551e-28,
     "u_nu_left_imag": [
       [
-        -0.007161937993042792,
+        0.007161937993042836,
         0.0,
-        0.009380801551920793
+        0.009380801551920717
       ],
       [
-        0.0035809689965214018,
-        -0.006202420242304,
-        0.009380801551920776
-      ],
-      [
-        0.003580968996521402,
+        -0.0035809689965213584,
         0.006202420242304001,
-        0.009380801551920778
+        0.009380801551920812
+      ],
+      [
+        -0.0035809689965213567,
+        -0.006202420242304002,
+        0.009380801551920809
       ]
     ],
     "u_nu_left_real": [
       [
-        -0.8164651696862825,
+        0.8164651696862834,
         0.0,
-        -0.5772740544105353
+        -0.5772740544105338
       ],
       [
-        0.40823258484314184,
-        -0.7070795782534932,
-        -0.5772740544105341
+        -0.408232584843141,
+        0.7070795782534934,
+        -0.577274054410535
       ],
       [
-        0.4082325848431419,
-        0.7070795782534933,
-        -0.5772740544105343
+        -0.40823258484314084,
+        -0.7070795782534935,
+        -0.5772740544105348
       ]
     ]
   },
@@ -861,7 +862,7 @@
   "selector_used": "principal_equal_split",
   "splittings": {
     "artifact": "oph_neutrino_forward_splittings",
-    "ascending_gap_ratio_s10_over_s20": 0.0,
+    "ascending_gap_ratio_s10_over_s20": 4.057879102371717e-15,
     "ascending_mass_sq_gap_bounds_gev2": {
       "s1_minus_s0": {
         "max": 9.625410408785124e-25,
@@ -873,9 +874,9 @@
       }
     },
     "ascending_mass_sq_gaps_gev2": {
-      "s1_minus_s0": 0.0,
-      "s2_minus_s0": 9.549864971855835e-25,
-      "s2_minus_s1": 9.549864971855835e-25
+      "s1_minus_s0": 3.875219749976541e-39,
+      "s2_minus_s0": 9.549864971855822e-25,
+      "s2_minus_s1": 9.549864971855784e-25
     },
     "ascending_state_labels": [
       "s0",
@@ -884,8 +885,8 @@
     ],
     "certification_status": "selector_law_closed_standard_math",
     "collective_mode_dominance": [
-      5.745754867366868e-31,
-      6.666883056638175e-33,
+      7.755902377859225e-31,
+      1.876366536077841e-33,
       1.0
     ],
     "collective_mode_location": "s2",
@@ -926,8 +927,8 @@
     ],
     "mass_eigenstate_label_status": "ascending_singular_states_only",
     "masses_gev_sorted": [
-      2.3986448447627196e-12,
-      2.3986448447627196e-12,
+      2.39864484476272e-12,
+      2.398644844762721e-12,
       2.590074050773907e-12
     ],
     "missing_mass_label_object": "source_derived_solar_pair_and_atmospheric_sign_rule",

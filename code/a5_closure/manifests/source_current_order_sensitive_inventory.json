@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 886,
+    "file_count": 887,
     "files": [
       {
         "byte_count": 42558,
@@ -3003,6 +3003,11 @@
         "sha256": "sha256:a3af2c4f012b366df41e317726d9fbf2db2d2347e27d6152b67c9996acb11f28"
       },
       {
+        "byte_count": 5035,
+        "path": "code/consensus/test_sampling_and_record_boundaries.py",
+        "sha256": "sha256:9a2fffdf0190112ec6b93a573bf124a15cbcde342c9847507dbb6a0bc7d8a455"
+      },
+      {
         "byte_count": 4825,
         "path": "code/consensus/test_transport_from_gluing_obstruction.py",
         "sha256": "sha256:f0e18dfb007c39559d73442110212b2dd8dc02f75b40be9252fa17fc7edc9235"
@@ -4628,7 +4633,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:1b1a141ba1aeb6de99a84878e922853c6f9ab6faeafaa2ae15b4c4ebece7ddc1",
+    "files_sha256": "sha256:5d4b103949a32dc1e737c2813d75a9a80e9a75e1190bca03f839a988ad148a9a",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7537,7 +7542,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:96eaffdbaeee430ff0bd5b2562561199858d8f92953a25a4206187c6b6227c05",
+  "inventory_sha256": "sha256:299e0bdf0b360a2cd798923cc7d60b072f613e37ea1e3a328fb2bb706ba35504",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

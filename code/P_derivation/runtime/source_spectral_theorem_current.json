@@ -48,7 +48,7 @@
   "conclusion": {
     "exact_alpha_emitted_from_current_corpus": false,
     "exact_alpha_promotion_allowed_for_supplied_payload": false,
-    "reason": "The formal Ward-projected spectral reduction is emitted. The numerical fine-structure endpoint requires a populated source spectral measure and same-scheme remainder.",
+    "reason": "The formal Ward-projected spectral reduction is emitted. The numerical fine-structure endpoint requires a populated source spectral measure, same-scheme remainder and replayed source/interval certificates; metadata consistency alone cannot promote it.",
     "source_spectral_reduction_closed": true,
     "source_transport_payload_accepted": false
   },
@@ -123,8 +123,11 @@
     "measured_alpha_allowed": false,
     "residual_fit_allowed": false
   },
+  "source_payload_contract_satisfied": false,
   "source_payload_supplied": false,
   "source_payload_validation": {
+    "certificate_replayed": false,
+    "contract_satisfied": false,
     "promotion_allowed": false,
     "reasons": [
       "required_field_missing:source_measure",

@@ -10,13 +10,13 @@
   "papers": {
     "deriving_standard_model_gauge_structure_from_observer_overlap_consistency": {
       "pdf_path": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf",
-      "sha256": "08d7c90f63aee7ad58a66ae8f2a071236f78c6b85ebc553534a7523f0f7edf5c",
-      "size_bytes": 737482
+      "sha256": "731944ba22cd271e27568e77b9f7146ff79b4a79d9d775fbb39811d1368895f4",
+      "size_bytes": 744332
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
-      "sha256": "47fb34272b440b2ac6b4f40d204569429dbd4fec19d8e61e9dcc04d9b52d4940",
-      "size_bytes": 746497
+      "sha256": "af48dca8f1011c48de788cdb727083c4703e16b36b633059a4355f53782b7b5c",
+      "size_bytes": 748646
     },
     "from_observer_consensus_to_standard_physics": {
       "pdf_path": "flagship/from_observer_consensus_to_standard_physics.pdf",
@@ -25,8 +25,8 @@
     },
     "observers_are_all_you_need": {
       "pdf_path": "paper/observers_are_all_you_need.pdf",
-      "sha256": "da0e40098953af76aa76cbdf1b435c7946a1aec86d090e7c4d3ec2138d83b123",
-      "size_bytes": 929765
+      "sha256": "3e145c60bbf6a56e1089f0515482fb85f22df86797dc6cfe2096bc98c9bf1540",
+      "size_bytes": 929922
     },
     "paradise_as_fixed_point_consensus": {
       "pdf_path": "paper/paradise_as_fixed_point_consensus.pdf",
@@ -35,18 +35,18 @@
     },
     "reality_as_consensus_protocol": {
       "pdf_path": "paper/reality_as_consensus_protocol.pdf",
-      "sha256": "7fd0fb75f8c3ecb3cd59e4c175d9bb2dfefef9fc2ab6705ce0ee400c0fdff349",
-      "size_bytes": 517295
+      "sha256": "ae1362be8bb1d2d16b25d9c11dfa7dbddf8b32f2e8de0b5c366ec9768c96a8d4",
+      "size_bytes": 522432
     },
     "recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency": {
       "pdf_path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf",
-      "sha256": "2299d4144da56d62fcfdd78d489e3ed483903843599987a14028e2da625f177e",
-      "size_bytes": 1233959
+      "sha256": "5c57fdc8de8752d7bbf4bf41a6873a84ce911fe2fa69fd6eca9a1eb3d038498a",
+      "size_bytes": 1241996
     },
     "screen_microphysics_and_observer_synchronization": {
       "pdf_path": "paper/screen_microphysics_and_observer_synchronization.pdf",
-      "sha256": "bac14a81f06b9c924f19e1db2d48aa30778460c282e94b3ac1dc79751ef1c922",
-      "size_bytes": 484983
+      "sha256": "936b8db6f17f6b9d5482aa7be18bf9e542b7af903cce33f0816422b9c7aec60a",
+      "size_bytes": 487362
     }
   },
   "release_id": "r2048",

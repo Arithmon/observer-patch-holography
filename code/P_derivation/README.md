@@ -148,6 +148,17 @@ The important claim-boundary caveat is:
 
 ## Full derivation claim boundary
 
+`thomson_spectral_transport.py` distinguishes a consistent declared contract
+(`contract_satisfied`) from verified spectral/interval evidence. It checks
+necessary arithmetic consistency, including overlap of the endpoint with its
+component sum, but does not read or replay a supplied backend certificate.
+Consequently `certificate_replayed` and `promotion_allowed` remain false even
+for complete metadata. A backend name, positivity label or nonempty proof
+reference cannot authorize a physical fine-structure claim. The outer-map
+Decimal calculations are diagnostics; the reciprocal-alpha endpoints alone
+use directed Decimal rounding. This boundary does not change the separately
+replayed interval certificates for the two incomplete declared maps.
+
 `FULL_DERIVATION.md` records the complete derivation contract and the endpoint
 audit packet. `THOMSON_TRANSPORT_THEOREMS.md` records the theorem suite and its
 source-payload rule. The short version is:

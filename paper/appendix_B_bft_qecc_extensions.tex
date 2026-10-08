@@ -633,7 +633,10 @@ Theorem~\ref{thm:qbft-safety}; it does not follow from (B1)--(B3).
   \item Long-run noisy approximate consensus is available only on the fair-block contraction
         branch of Theorem~\ref{thm:noisy-fair-block-consensus}: the chosen implementation must
         certify fair blocks, expected contraction toward the exact quotient normal-form set, and
-        controlled within-block excursions. Fairness alone does not supply that certificate.
+        controlled within-block excursions. The stated calendar-time constant
+        additionally requires deterministic block endpoints; stopping-time
+        blocks alone certify the block-indexed bound. Fairness alone does not
+        supply that certificate.
   \item Topological-code distance equals graph min-cut only after a concrete chain complex,
         boundary condition, logical-operator dictionary, error family, and systole/min-cut
         identification are supplied for the chosen code realization.

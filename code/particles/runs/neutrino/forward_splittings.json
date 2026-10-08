@@ -1,6 +1,6 @@
 {
   "artifact": "oph_neutrino_forward_splittings",
-  "ascending_gap_ratio_s10_over_s20": 0.0,
+  "ascending_gap_ratio_s10_over_s20": 4.057879102371717e-15,
   "ascending_mass_sq_gap_bounds_gev2": {
     "s1_minus_s0": {
       "max": 9.625410408785124e-25,
@@ -12,9 +12,9 @@
     }
   },
   "ascending_mass_sq_gaps_gev2": {
-    "s1_minus_s0": 0.0,
-    "s2_minus_s0": 9.549864971855835e-25,
-    "s2_minus_s1": 9.549864971855835e-25
+    "s1_minus_s0": 3.875219749976541e-39,
+    "s2_minus_s0": 9.549864971855822e-25,
+    "s2_minus_s1": 9.549864971855784e-25
   },
   "ascending_state_labels": [
     "s0",
@@ -23,8 +23,8 @@
   ],
   "certification_status": "selector_law_closed_standard_math",
   "collective_mode_dominance": [
-    5.745754867366868e-31,
-    6.666883056638175e-33,
+    7.755902377859225e-31,
+    1.876366536077841e-33,
     1.0
   ],
   "collective_mode_location": "s2",
@@ -65,8 +65,8 @@
   ],
   "mass_eigenstate_label_status": "ascending_singular_states_only",
   "masses_gev_sorted": [
-    2.3986448447627196e-12,
-    2.3986448447627196e-12,
+    2.39864484476272e-12,
+    2.398644844762721e-12,
     2.590074050773907e-12
   ],
   "missing_mass_label_object": "source_derived_solar_pair_and_atmospheric_sign_rule",

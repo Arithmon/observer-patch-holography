@@ -16,15 +16,18 @@ This module does not run a Boltzmann solver and contains no observational target
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from decimal import Decimal
+from fractions import Fraction
 import hashlib
 import json
 import math
+from numbers import Integral, Real
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
-from scipy.linalg import null_space
+from scipy.linalg import solve_triangular
 from scipy.special import digamma, gammaln, spherical_jn
 
 
@@ -48,7 +51,7 @@ class PrimordialAmplitude:
 
 @dataclass(frozen=True)
 class WindowBound:
-    """Certified finite-window deviation from the source shell."""
+    """Floating-point evaluation of the analytic finite-window bound."""
 
     ell: int
     theta: float
@@ -67,13 +70,15 @@ class NullSpaceReport:
     nullity: int
     singular_values: list[float]
     effective_threshold: float
-    condition_number_nonzero: float
+    condition_number_nonzero: float | None
     null_basis: list[list[float]]
+    relative_cutoff: float
+    rank_metric: str = "raw_operator_euclidean"
 
 
 @dataclass(frozen=True)
 class PriorContinuation:
-    """Minimum-Q exact continuation and its resolution operator."""
+    """Numerical minimum-Q continuation; rank refers to the whitened operator."""
 
     p: list[float]
     residual: list[float]
@@ -82,6 +87,8 @@ class PriorContinuation:
     resolution: list[list[float]]
     null_projector: list[list[float]]
     effective_rank: int
+    relative_cutoff: float
+    rank_metric: str = "row_equilibrated_prior_whitened_operator"
 
 
 @dataclass(frozen=True)
@@ -155,13 +162,13 @@ def derivative_mellin_norm(ell: int, theta: float) -> float:
     theta = _finite(theta, "theta")
     if not (0.0 < theta < 2.0 * ell):
         raise RadialLiftInputError("derivative Mellin norm requires 0 < theta < 2*ell")
-    value = mellin_spherical_bessel_square(ell, theta - 2.0) - (
-        ell * (ell + 1.0) - 0.5 * theta * (theta + 1.0)
-    ) * mellin_spherical_bessel_square(ell, theta)
-    # Roundoff can only produce a tiny negative number near a boundary.
-    if value < 0.0 and abs(value) < 1e-13:
-        value = 0.0
-    if not (math.isfinite(value) and value >= 0.0):
+    # Gamma recurrence reduces the difference to one positive norm times a
+    # rational factor.  Computing I(theta - 2) first rounds theta - 2 to -2
+    # for small positive theta and needlessly loses the domain endpoint.
+    value = mellin_spherical_bessel_square(ell, theta) * (
+        ell * (ell + 1.0) / theta + (theta + 1.0) * (theta - 2.0) / 4.0
+    )
+    if not (math.isfinite(value) and value > 0.0):
         raise RadialLiftInputError("derived derivative norm is negative or nonfinite")
     return value
 
@@ -313,10 +320,11 @@ def normalized_radial_window(radii: ArrayLike, weights: ArrayLike) -> tuple[NDAr
         raise RadialLiftInputError("all radii must be positive and finite")
     if np.any(~np.isfinite(w)) or np.any(w < 0.0):
         raise RadialLiftInputError("window weights must be finite and nonnegative")
-    total = float(np.sum(w))
-    if total <= 0.0:
+    largest = float(np.max(w))
+    if largest <= 0.0:
         raise RadialLiftInputError("window weights must have positive total")
-    return r, w / total
+    scaled = w / largest
+    return r, scaled / float(np.sum(scaled))
 
 
 def window_transfer(
@@ -380,7 +388,7 @@ def finite_window_stability_bound(
     radii: ArrayLike,
     radial_weights: ArrayLike,
 ) -> WindowBound:
-    r"""Certify the finite-window deviation from a thin shell.
+    r"""Evaluate the analytic finite-window deviation bound for a thin shell.
 
     In the Hilbert space with norm
 
@@ -398,7 +406,9 @@ def finite_window_stability_bound(
 
     and then bounds the difference of squared norms.  This retains the Bessel
     ultraviolet decay and is integrable; it replaces the unsafe pointwise Taylor
-    bound that can lose that decay after a supremum is taken.
+    bound that can lose that decay after a supremum is taken. The returned
+    binary64 values are numerical evaluations, not outward-rounded interval
+    certificates; callers must account separately for numerical error.
     """
 
     ell = _integer_at_least(ell, 1, "ell")
@@ -413,12 +423,25 @@ def finite_window_stability_bound(
     I = mellin_spherical_bessel_square(ell, theta)
     J = derivative_mellin_norm(ell, theta)
     a = 0.5 * theta
-    eta = (2.0 * math.sqrt(J) / theta) * float(np.dot(w, np.abs(r**a - R_star**a)))
-    shell_norm = R_star**a * math.sqrt(I)
+    # Subtracting nearly equal powers can produce an exactly zero claimed
+    # bound for a nontrivial window.  Retain the radius displacement through
+    # log1p/expm1, including the near-scale-invariant theta -> 0+ limit.
+    with np.errstate(over="ignore", invalid="ignore"):
+        displacement = (r - R_star) / R_star
+    near = np.abs(displacement) < 0.5
+    log_ratio = np.empty_like(r)
+    log_ratio[near] = np.log1p(displacement[near])
+    log_ratio[~near] = np.log(r[~near]) - math.log(R_star)
+    reference_power = R_star**a
+    power_difference = reference_power * np.abs(np.expm1(a * log_ratio))
+    eta = (2.0 * math.sqrt(J) / theta) * float(np.dot(w, power_difference))
+    shell_norm = reference_power * math.sqrt(I)
     prefactor = 4.0 * math.pi * Z_q**2 * A_zeta * k_pivot**theta
     abs_bound = prefactor * eta * (2.0 * shell_norm + eta)
     shell_cl = prefactor * shell_norm**2
     rel_bound = abs_bound / shell_cl
+    if not all(math.isfinite(x) for x in (eta, shell_norm, abs_bound, rel_bound)):
+        raise RadialLiftInputError("window bound exceeds the floating-point range")
     return WindowBound(
         ell=ell,
         theta=theta,
@@ -466,27 +489,131 @@ def radial_projection_matrix(
     return A
 
 
-def radial_null_space_report(matrix: ArrayLike, *, rtol: float = 1e-12) -> NullSpaceReport:
-    """Return the complete finite-basis right-null report."""
+_RADIAL_EPS = np.finfo(float).eps
+_RADIAL_RESOLUTION_RTOL = 1e-7
 
-    A = np.asarray(matrix, dtype=float)
-    if A.ndim != 2 or A.size == 0 or np.any(~np.isfinite(A)):
-        raise RadialLiftInputError("matrix must be a finite nonempty 2-D array")
-    rtol = _positive(rtol, "rtol")
-    singular = np.linalg.svd(A, compute_uv=False)
-    threshold = rtol * (float(singular[0]) if singular.size else 0.0)
-    rank = int(np.sum(singular > threshold))
-    basis = null_space(A, rcond=rtol)
-    retained = singular[singular > threshold]
-    condition = float(retained[0] / retained[-1]) if retained.size else math.inf
+
+def _radial_array(value: ArrayLike, name: str, ndim: int) -> NDArray[np.float64]:
+    """Validate original scalars before a common dtype can discard information."""
+
+    def reject_masks(part: Any) -> None:
+        if np.ma.isMaskedArray(part) or part is np.ma.masked:
+            raise RadialLiftInputError(f"{name} cannot contain masked data")
+        if isinstance(part, (list, tuple)):
+            for item in part:
+                reject_masks(item)
+        elif isinstance(part, np.ndarray) and part.dtype == object:
+            for item in part.flat:
+                reject_masks(item)
+
+    reject_masks(value)
+    try:
+        original = np.asarray(value, dtype=object)
+    except (TypeError, ValueError) as error:
+        raise RadialLiftInputError(f"{name} must be a rectangular real array") from error
+    if original.ndim != ndim or not original.size:
+        raise RadialLiftInputError(f"{name} must be a nonempty {ndim}-D array")
+    result = np.empty(original.shape, dtype=float)
+    for index, scalar in np.ndenumerate(original):
+        if isinstance(scalar, (bool, np.bool_)) or not isinstance(scalar, (Real, Decimal)):
+            raise RadialLiftInputError(f"{name} must contain real, non-Boolean numbers")
+        try:
+            exact = Fraction(int(scalar)) if isinstance(scalar, Integral) else Fraction(*scalar.as_integer_ratio())
+            narrowed = float(scalar)
+        except (ValueError, TypeError, OverflowError, AttributeError) as error:
+            raise RadialLiftInputError(f"{name} must contain finite float64-representable numbers") from error
+        if not math.isfinite(narrowed):
+            raise RadialLiftInputError(f"{name} must contain finite numbers")
+        converted = Fraction(narrowed)
+        if exact.denominator == 1 and converted != exact:
+            raise RadialLiftInputError(f"{name} loses integer precision in float64")
+        if exact and abs(converted - exact) > abs(exact) * Fraction(4 * _RADIAL_EPS):
+            raise RadialLiftInputError(f"{name} loses input precision in float64")
+        result[index] = narrowed
+    return result
+
+
+def _radial_rtol(value: float, shape: tuple[int, int]) -> float:
+    supplied = float(_radial_array([value], "rtol", 1)[0])
+    if not 0 < supplied < 1:
+        raise RadialLiftInputError("rtol must satisfy 0 < rtol < 1")
+    # A numerical cutoff, not a certificate of algebraic rank or exact zeros.
+    return max(supplied, max(shape) * _RADIAL_EPS)
+
+
+def _radial_float(value: Fraction, name: str) -> float:
+    """Round a reported scalar once, refusing overflow and unresolved underflow."""
+    try:
+        result = float(value)
+    except OverflowError as error:
+        raise RadialLiftInputError(f"{name} is outside float64 output range") from error
+    if not math.isfinite(result) or (value and abs(Fraction(result) - value) > abs(value) * Fraction(4 * _RADIAL_EPS)):
+        raise RadialLiftInputError(f"{name} is unresolved in float64 output precision")
+    return result
+
+
+def _radial_fractions(array: NDArray[np.float64]) -> list[list[Fraction]]:
+    return [[Fraction(float(x)) for x in row] for row in array]
+
+
+def _radial_dot(row: Sequence[Fraction], vector: Sequence[Fraction]) -> Fraction:
+    return sum((a * b for a, b in zip(row, vector)), Fraction())
+
+
+def _radial_norm_parts(vector: Sequence[float]) -> tuple[float, float]:
+    scale = float(max(map(abs, vector), default=0.0))
+    return (scale, math.hypot(*(float(x) / scale for x in vector))) if scale else (0.0, 0.0)
+
+
+def _radial_norm(vector: Sequence[float], name: str) -> float:
+    scale, unit_norm = _radial_norm_parts(vector)
+    return _radial_float(Fraction(scale) * Fraction(unit_norm), name)
+
+
+def _radial_svd(matrix: NDArray[np.float64], rtol: float, *, complete: bool = False):
+    scale = float(np.max(np.abs(matrix)))
+    normalized = matrix / scale if scale else matrix.copy()
+    if scale:
+        # A nonzero subnormal quotient can already have lost most of its
+        # information. Rescaling the singular value later does not restore it.
+        # Ordinary normalized values have standard division precision; check
+        # the underflow boundary from the exact supplied binary64 entries.
+        for index in zip(*np.nonzero((matrix != 0) & (np.abs(normalized) < np.finfo(float).tiny))):
+            normalized[index] = _radial_float(
+                Fraction(float(matrix[index])) / Fraction(scale), "operator normalization precision"
+            )
+    try:
+        # A complete right basis only needs the full SVD for a wide matrix.
+        u, singular, vh = np.linalg.svd(normalized, full_matrices=complete and matrix.shape[1] > matrix.shape[0])
+    except np.linalg.LinAlgError as error:
+        raise RadialLiftInputError("radial SVD did not converge") from error
+    if not all(np.all(np.isfinite(x)) for x in (u, singular, vh)):
+        raise RadialLiftInputError("radial SVD produced nonfinite output")
+    threshold = rtol * float(singular[0])
+    rank = int(np.count_nonzero(singular > threshold))
+    return scale, u, singular, vh, threshold, rank
+
+
+def radial_null_space_report(matrix: ArrayLike, *, rtol: float = 1e-12) -> NullSpaceReport:
+    """Report the raw operator's numerical right kernel from one scaled SVD.
+
+    Singular directions below the relative cutoff are unresolved, not proven
+    algebraic zeros. The cutoff is at least ``max(shape)*eps``. At rank zero,
+    the condition number on the retained subspace is undefined and is ``None``.
+    """
+
+    A = _radial_array(matrix, "matrix", 2)
+    cutoff = _radial_rtol(rtol, A.shape)
+    scale, _, singular, vh, threshold, rank = _radial_svd(A, cutoff, complete=True)
     return NullSpaceReport(
         shape=(int(A.shape[0]), int(A.shape[1])),
         rank=rank,
         nullity=int(A.shape[1] - rank),
-        singular_values=[float(x) for x in singular],
-        effective_threshold=float(threshold),
-        condition_number_nonzero=condition,
-        null_basis=basis.T.tolist(),
+        singular_values=[_radial_float(Fraction(float(x)) * Fraction(scale), "singular value") for x in singular],
+        effective_threshold=_radial_float(Fraction(threshold) * Fraction(scale), "rank threshold"),
+        condition_number_nonzero=float(singular[0] / singular[rank - 1]) if rank else None,
+        null_basis=vh[rank:].tolist(),
+        relative_cutoff=cutoff,
     )
 
 
@@ -498,7 +625,7 @@ def minimum_prior_continuation(
     prior_precision: ArrayLike,
     rtol: float = 1e-12,
 ) -> PriorContinuation:
-    r"""Return the exact minimum-prior continuation under ``A p=C``.
+    r"""Numerically minimize the prior under the supplied constraints ``A p=C``.
 
     It minimizes
 
@@ -512,44 +639,188 @@ def minimum_prior_continuation(
 
         p_*=p_0+Q^{-1}A^T(AQ^{-1}A^T)^+(C-Ap_0).
 
-    This is a prior-selected representative, not a model-free inverse.  Its
-    resolution and null projectors are returned explicitly.
+    The formula is evaluated using an equilibrated Cholesky factor of Q and
+    one SVD of the row-equilibrated whitened operator, never an inverse of Q
+    or a Gram matrix. Each nonzero row is divided by its maximum magnitude,
+    together with the corresponding constraint, to remove equation units.
+    The correction, resolution, null projector and effective_rank all use
+    that SVD's retained subspace. This numerical rank can differ from the raw-A
+    report when the prior changes conditioning. It is not an exact-rank claim.
+    Incompatible constraints and unresolved returned quantities are refused.
     """
 
-    A = np.asarray(matrix, dtype=float)
-    C = np.asarray(screen_cl, dtype=float)
-    p0 = np.asarray(prior_center, dtype=float)
-    Q = np.asarray(prior_precision, dtype=float)
-    if A.ndim != 2 or C.shape != (A.shape[0],) or p0.shape != (A.shape[1],):
+    A = _radial_array(matrix, "matrix", 2)
+    C = _radial_array(screen_cl, "screen_cl", 1)
+    p0 = _radial_array(prior_center, "prior_center", 1)
+    Q = _radial_array(prior_precision, "prior_precision", 2)
+    if C.shape != (A.shape[0],) or p0.shape != (A.shape[1],):
         raise RadialLiftInputError("matrix, screen_cl and prior_center dimensions do not match")
-    if Q.shape != (A.shape[1], A.shape[1]) or np.any(~np.isfinite(Q)):
+    if Q.shape != (A.shape[1], A.shape[1]):
         raise RadialLiftInputError("prior_precision must be a finite square matrix")
-    if not np.allclose(Q, Q.T, rtol=0.0, atol=1e-12):
+    if not np.array_equal(Q, Q.T):
         raise RadialLiftInputError("prior_precision must be symmetric")
-    q_eigs = np.linalg.eigvalsh(Q)
-    if float(np.min(q_eigs)) <= 0.0:
+    cutoff = _radial_rtol(rtol, A.shape)
+    if np.any(np.diag(Q) <= 0):
         raise RadialLiftInputError("prior_precision must be positive definite")
-    Qinv = np.linalg.inv(Q)
-    G = A @ Qinv @ A.T
-    Gplus = np.linalg.pinv(G, rcond=rtol, hermitian=True)
-    resolution = Qinv @ A.T @ Gplus @ A
-    p = p0 + Qinv @ A.T @ Gplus @ (C - A @ p0)
-    residual = C - A @ p
-    scale = max(float(np.linalg.norm(C)), 1.0)
-    if float(np.linalg.norm(residual)) > 100.0 * rtol * scale:
-        raise RadialLiftInputError("exact constraints are inconsistent at the requested tolerance")
-    d = p - p0
-    objective = 0.5 * float(d @ Q @ d)
-    report = radial_null_space_report(A, rtol=rtol)
-    I = np.eye(A.shape[1], dtype=float)
+    # Q = D L L.T D. Diagonal equilibration separates coordinate units from
+    # the conditioning of its correlations, and avoids overflowing Q scales.
+    diagonal = np.sqrt(np.diag(Q))
+    q_exact = _radial_fractions(Q)
+    d_exact = [Fraction(float(x)) for x in diagonal]
+    correlation = np.array([
+        [_radial_float(q_exact[i][j] / (d_exact[i] * d_exact[j]), "prior equilibration")
+         for j in range(Q.shape[0])] for i in range(Q.shape[0])
+    ])
+    try:
+        minimum_eigenvalue = float(np.linalg.eigvalsh(correlation)[0])
+        # A conservative numerical policy on prior geometry, not an interval
+        # eigenvalue certificate. A successful Cholesky alone cannot resolve
+        # a tiny correlation eigenvalue, even if the constraints fit exactly.
+        prior_norm = float(np.linalg.norm(correlation, ord=np.inf))
+        prior_error_scale = Q.shape[0] * _RADIAL_EPS * prior_norm
+        if minimum_eigenvalue <= 0 or prior_error_scale > _RADIAL_RESOLUTION_RTOL * minimum_eigenvalue:
+            raise RadialLiftInputError("prior_precision correlation geometry is unresolved at float64 precision")
+        prior_condition = prior_norm / minimum_eigenvalue
+        prior_error_estimate = prior_error_scale / minimum_eigenvalue
+        L = np.linalg.cholesky(correlation)
+    except np.linalg.LinAlgError as error:
+        raise RadialLiftInputError("prior_precision must be numerically positive definite") from error
+    a_exact = _radial_fractions(A)
+    c_exact = [Fraction(float(x)) for x in C]
+    p0_exact = [Fraction(float(x)) for x in p0]
+    rhs = [c - _radial_dot(row, p0_exact) for row, c in zip(a_exact, c_exact)]
+    # Remove each equation's units before whitening, so independently tiny
+    # and huge rows cannot erase one another in a global normalization.
+    normalized = A.copy()
+    for i, row in enumerate(a_exact):
+        row_scale = max(map(abs, row), default=Fraction())
+        if row_scale:
+            normalized[i] = [_radial_float(x / row_scale, "operator row scaling") for x in row]
+            rhs[i] /= row_scale
+    equilibrated = np.array([
+        [_radial_float(Fraction(float(x)) / d_exact[j], "whitened operator")
+         for j, x in enumerate(row)] for row in normalized
+    ])
+    B = solve_triangular(L, equilibrated.T, lower=True, check_finite=False).T
+    if not np.all(np.isfinite(B)):
+        raise RadialLiftInputError("whitened operator is outside float64 range")
+    row_scales = np.max(np.abs(B), axis=1)
+    for i, row_scale in enumerate(row_scales):
+        if row_scale:
+            B[i] = [_radial_float(Fraction(float(x)) / Fraction(float(row_scale)), "equation equilibration")
+                    for x in B[i]]
+            rhs[i] /= Fraction(float(row_scale))
+    b_scale, u, singular, vh, _, rank = _radial_svd(B, cutoff, complete=True)
+    # Separate checks on the prior and inverse miss amplification of whitening
+    # roundoff by the inverse. Treat the Cholesky factor as a nearby metric
+    # (the prior term above), then propagate row/triangular-solve roundoff
+    # through both kappa(L) and the retained kappa(B). Since H=L L.T,
+    # sqrt(||H||inf/lambda_min(H)) estimates the first amplification.
+    # This first-order conditioning policy is not a certified error bound.
+    retained_condition = float(singular[0] / singular[rank - 1]) if rank else 0.0
+    inverse_error_estimate = (
+        max(A.shape) * _RADIAL_EPS * math.sqrt(prior_condition) * retained_condition
+    )
+    if prior_error_estimate + inverse_error_estimate > _RADIAL_RESOLUTION_RTOL:
+        raise RadialLiftInputError("combined prior and radial inverse geometry is unresolved at float64 precision")
+    V = vh[:rank].T
+    # Back-transform only retained right singular vectors; no inverse of Q.
+    W = solve_triangular(L.T, V, lower=False, check_finite=False)
+    W = np.array([
+        [_radial_float(Fraction(float(x)) / d_exact[i], "prior back-transform") for x in row]
+        for i, row in enumerate(W)
+    ]).reshape(A.shape[1], rank)
+    rhs_scale = max(map(abs, rhs), default=Fraction())
+    tolerance = 128 * max(A.shape) * _RADIAL_EPS
+    if rhs_scale:
+        rhs_unit = np.array([_radial_float(x / rhs_scale, "constraint scaling") for x in rhs])
+        fitted = u[:, :rank] @ (u[:, :rank].T @ rhs_unit)
+        if math.hypot(*(rhs_unit - fitted)) > tolerance * math.hypot(*rhs_unit):
+            raise RadialLiftInputError("constraints are inconsistent with the retained numerical range")
+        if not rank:
+            raise RadialLiftInputError("nonzero constraints have no retained operator direction")
+        coordinates = (u[:, :rank].T @ rhs_unit) / singular[:rank]
+        correction_scale = rhs_scale / Fraction(b_scale)
+        coord_exact = [Fraction(float(x)) for x in coordinates]
+        correction = [_radial_dot(row, coord_exact) * correction_scale for row in _radial_fractions(W)]
+    else:
+        correction = [Fraction()] * A.shape[1]
+    p = [_radial_float(center + delta, "continued spectrum") for center, delta in zip(p0_exact, correction)]
+    p_exact = list(map(Fraction, p))
+    residual_exact = [c - _radial_dot(row, p_exact) for row, c in zip(a_exact, c_exact)]
+    # Check each supplied equation in its own units; no absolute unit floor.
+    for row, target, error in zip(a_exact, c_exact, residual_exact):
+        scale = abs(target) + sum((abs(a * x) for a, x in zip(row, p_exact)), Fraction())
+        if abs(error) > Fraction(tolerance) * scale:
+            raise RadialLiftInputError("returned continuation does not resolve every supplied constraint")
+    residual = [_radial_float(x, "constraint residual") for x in residual_exact]
+    displacement = [x - center for x, center in zip(p_exact, p0_exact)]
+    # The final addition must retain the optimum's correction. A tiny target
+    # cannot be declared fitted merely because the prior has large cancelling
+    # components, nor may rounding the correction away produce objective zero.
+    correction_energy = _radial_dot(correction, [_radial_dot(row, correction) for row in q_exact])
+    rounding_error = [actual - intended for actual, intended in zip(displacement, correction)]
+    rounding_energy = _radial_dot(rounding_error, [_radial_dot(row, rounding_error) for row in q_exact])
+    if correction_energy < 0 or rounding_energy < 0 or rounding_energy > Fraction(_RADIAL_RESOLUTION_RTOL) ** 2 * correction_energy:
+        raise RadialLiftInputError("prior correction is unresolved in the returned spectrum precision")
+    objective_exact = _radial_dot(displacement, [_radial_dot(row, displacement) for row in q_exact]) / 2
+    if objective_exact < 0:
+        raise RadialLiftInputError("prior quadratic form is not positive at the returned displacement")
+    I = np.eye(A.shape[1])
+    if rank == A.shape[1]:
+        resolution = I
+        null_projector = np.zeros_like(I)
+    elif not rank:
+        resolution = np.zeros_like(I)
+        null_projector = I
+    else:
+        def projector(basis):
+            back = solve_triangular(L.T, basis, lower=False, check_finite=False)
+            back = [[Fraction(float(x)) / d_exact[i] for x in row]
+                    for i, row in enumerate(back)]
+            dual = (basis.T @ L.T) * diagonal
+            columns = _radial_fractions(dual.T)
+            values = [[_radial_dot(row, column) for column in columns] for row in back]
+            terms = [[sum((abs(a * b) for a, b in zip(row, column)), Fraction())
+                      for column in columns] for row in back]
+            return values, terms
+
+        resolved, resolved_terms = projector(V)
+        unresolved, unresolved_terms = projector(vh[rank:].T)
+        resolution, null_projector = np.empty_like(I), np.empty_like(I)
+        for i in range(A.shape[1]):
+            for j in range(A.shape[1]):
+                # Evaluate both complementary subspaces. For off-diagonals,
+                # choose the sum with less cancellation; on the diagonal keep
+                # the smaller component, avoiding subtraction from one there.
+                choose_resolved = (abs(resolved[i][j]) <= abs(unresolved[i][j]) if i == j
+                                   else resolved_terms[i][j] <= unresolved_terms[i][j])
+                if choose_resolved:
+                    r, n = resolved[i][j], Fraction(int(i == j)) - resolved[i][j]
+                else:
+                    n, r = unresolved[i][j], Fraction(int(i == j)) - unresolved[i][j]
+                resolution[i, j] = _radial_float(r, "resolution projector")
+                null_projector[i, j] = _radial_float(n, "null projector")
+    if not np.all(np.isfinite(null_projector)):
+        raise RadialLiftInputError("null projector is outside float64 output range")
+    # Whitening/truncation must not turn an original, resolved constraint into
+    # a claimed null direction. This is checked in every original row's units.
+    null_columns = _radial_fractions(null_projector.T)
+    for row in a_exact:
+        row_scale = sum(map(abs, row), Fraction())
+        for column in null_columns:
+            column_scale = max(map(abs, column), default=Fraction())
+            if abs(_radial_dot(row, column)) > Fraction(tolerance) * row_scale * column_scale:
+                raise RadialLiftInputError("numerical null projector loses an original constraint")
     return PriorContinuation(
-        p=p.tolist(),
-        residual=residual.tolist(),
-        residual_norm=float(np.linalg.norm(residual)),
-        objective=objective,
+        p=p,
+        residual=residual,
+        residual_norm=_radial_norm(residual, "constraint residual norm"),
+        objective=_radial_float(objective_exact, "prior objective"),
         resolution=resolution.tolist(),
-        null_projector=(I - resolution).tolist(),
-        effective_rank=report.rank,
+        null_projector=null_projector.tolist(),
+        effective_rank=rank,
+        relative_cutoff=cutoff,
     )
 
 
@@ -563,21 +834,40 @@ def source_powerlaw(k: ArrayLike, A_zeta: float, theta: float, k_pivot: float) -
 
 
 def forward_residual(matrix: ArrayLike, spectrum: ArrayLike, screen_cl: ArrayLike) -> Mapping[str, Any]:
-    """Return a non-fitting forward residual receipt."""
+    """Return a non-fitting residual, retaining cancellation in supplied data.
 
-    A = np.asarray(matrix, dtype=float)
-    p = np.asarray(spectrum, dtype=float)
-    C = np.asarray(screen_cl, dtype=float)
-    if A.ndim != 2 or p.shape != (A.shape[1],) or C.shape != (A.shape[0],):
+    Products and sums use the exact values of the validated binary64 inputs
+    before one output rounding. A zero target has relative residual zero only
+    for a zero residual; otherwise its relative residual is undefined and this
+    function refuses the report. No dimensional denominator floor is used.
+    """
+
+    A = _radial_array(matrix, "matrix", 2)
+    p = _radial_array(spectrum, "spectrum", 1)
+    C = _radial_array(screen_cl, "screen_cl", 1)
+    if p.shape != (A.shape[1],) or C.shape != (A.shape[0],):
         raise RadialLiftInputError("matrix, spectrum and screen_cl dimensions do not match")
-    predicted = A @ p
-    residual = C - predicted
-    denom = max(float(np.linalg.norm(C)), 1e-300)
+    p_exact = [Fraction(float(x)) for x in p]
+    predicted_exact = [_radial_dot(row, p_exact) for row in _radial_fractions(A)]
+    residual_exact = [Fraction(float(c)) - value for c, value in zip(C, predicted_exact)]
+    predicted = [_radial_float(x, "forward prediction") for x in predicted_exact]
+    residual = [_radial_float(x, "forward residual") for x in residual_exact]
+    residual_scale, residual_unit = _radial_norm_parts(residual)
+    target_scale, target_unit = _radial_norm_parts(C)
+    if not target_scale:
+        if residual_scale:
+            raise RadialLiftInputError("nonzero residual has undefined relative error against a zero target")
+        relative = 0.0
+    else:
+        relative = _radial_float(
+            Fraction(residual_scale) * Fraction(residual_unit) /
+            (Fraction(target_scale) * Fraction(target_unit)), "relative forward residual"
+        )
     return {
-        "predicted": predicted.tolist(),
-        "residual": residual.tolist(),
-        "absolute_l2_residual": float(np.linalg.norm(residual)),
-        "relative_l2_residual": float(np.linalg.norm(residual) / denom),
+        "predicted": predicted,
+        "residual": residual,
+        "absolute_l2_residual": _radial_norm(residual, "absolute forward residual"),
+        "relative_l2_residual": relative,
     }
 
 

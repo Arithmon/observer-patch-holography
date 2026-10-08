@@ -52,10 +52,13 @@ sufficient uniqueness routes beyond one-shell data. The construction states
 the source, covariant stress, physical scale, Boltzmann transfer and likelihood
 conditions needed to convert these screen quantities into cosmological
 observables. On the sourced causal order the expanding background is a
-record density and the redshift is a fourth root of a count ratio. The
+record density. The redshift is a fourth root of a count ratio for congruent
+comoving windows with a constant scale factor within each window, or in the
+shrinking-window limit of a continuous profile. The
 receipt-conditional primordial values, the tilt \(1-P_\star/48=0.96602\),
-zero running, zero source-side isocurvature and zero primordial tensor
-amplitude, are compared with Planck 2018, ACT DR6, SPT-3G and BICEP/Keck
+zero running, zero source-side isocurvature and zero linear primordial tensor
+amplitude under additionally vanishing tensor initial data and forcing,
+are compared with Planck 2018, ACT DR6, SPT-3G and BICEP/Keck
 data in a deterministic ledger with machine-checked brackets: the tilt lies
 within one standard deviation of Planck 2018 and of both SPT-3G
 combinations and 2.4 standard deviations below the ACT DR6 combination with
@@ -145,9 +148,12 @@ conformally invariant, so the flat causal order of the spacetime construction
 is the causal order of every spatially flat expanding history, and the scale
 factor enters only through the count measure, as the weight \(a^4\) per
 comoving cell and conformal tick that a constant physical event density
-assigns. The count clock then reads proper time, and the redshift between two
-epochs is the fourth root of the ratio of record counts of congruent comoving
-diamonds. The statements are proved in the fragment below and machine-checked
+assigns. The count clock converges to the proper-time ratio for shrinking
+diamonds; fixed finite diamonds obey a scale-factor enclosure and can retain
+a continuum bias. The redshift between two epochs is the fourth root of the
+ratio of record counts of congruent comoving diamonds when the profile is
+constant within each, or in the corresponding shrinking-window limit.
+The statements are proved in the fragment below and machine-checked
 in the named Lean module. The record-production profile \(a(\eta)\) is a
 supplied datum on this family; deriving it from the source dynamics is the
 sourced-density problem of the spacetime paper, and nothing here supplies the
@@ -195,12 +201,16 @@ On the source-dilation branch, the finite source embedding must satisfy
 D_{s,r}U_r=U_rR_{s,r},\qquad
 C_{\zeta,r}=U_rC_{{\rm src},r}U_r^*.
 \end{equation}
-Strong finite-to-continuum convergence, a uniform covariance norm bound, and a
-vanishing operator residual then give
+For a tilted spectrum on all positive wavenumbers, require convergence on
+the common compact-$\ln k$ core, with the local dilation residual tending to
+zero, as specified by the source-orbit-transfer theorem in
+\path{paper/tex_fragments/RADIAL_LIFT_THEOREMS_330.tex}. A global
+uniform covariance norm bound would be incompatible with nonzero tilt and
+unitary dilation. The local receipt instead gives, on that core,
 \begin{equation}
 D_s^{-1}C_\zeta D_s=e^{-\theta s}C_\zeta.
 \end{equation}
-This identity forces
+For a nonzero nonnegative radial covariance, this identity forces
 \begin{equation}
 \Delta_\zeta^2(k)=A_\zeta(k/k_\star)^{-\theta},\qquad
 A_\zeta=\frac{A_q}{\pi^{3/2}Z_q^2(k_\star R_\star)^\theta}
@@ -338,12 +348,21 @@ branch.
 2018 gives \(-0.0045\pm0.0067\) (\(0.67\sigma\)) and ACT DR6 with Planck,
 lensing and baryon acoustic oscillations gives \(0.0062\pm0.0052\)
 (\(1.19\sigma\)).
-\item The primordial tensor amplitude vanishes exactly, since the source is
-the scalar collar-volume field and no transverse-traceless source is
-emitted; BICEP/Keck 2018 gives \(r_{0.05}<0.036\) and the fourth Planck release with BK18
-and BAO gives \(r<0.032\). Generic slow-roll inflation gives \(r>0\), so this
-row discriminates, and a null at the LiteBIRD design sensitivity below
-\(0.001\) would discriminate against the models it keeps alive.
+\item A vanishing emitted transverse-traceless source does not determine
+the primordial tensor amplitude. The linear tensor equation admits
+homogeneous solutions: for example, in radiation domination
+\(h_k''+2h_k'/\tau+k^2h_k=0\) has the nonzero regular solution
+\(h_k=\sin(k\tau)/(k\tau)\). The additional conditions of zero initial
+tensor amplitude and velocity, and no tensor forcing, select the zero
+linear solution and hence \(r=0\) when the scalar power is positive.
+Those tensor initial conditions are not derived by the scalar screen
+construction. BICEP/Keck 2018 gives \(r_{0.05}<0.036\) and the fourth
+Planck release with BK18 and BAO gives \(r<0.032\), both compatible with
+this more restrictive branch. A future null excludes only specified models
+whose tensor signal exceeds its bound; single-field slow roll has no
+universal positive lower bound on \(r\). An observable comparison must also
+separate linear primordial tensors from later scalar-induced tensors,
+lensing, and foregrounds.
 \item The source-side isocurvature fraction vanishes on the rank-one
 single-clock branch; Planck 2018 bounds the uncorrelated cold-dark-matter
 fraction at \(3.5\), \(3.8\) and \(3.9\) percent at the three reference
@@ -361,10 +380,13 @@ the same prominence as the agreements, and the capacity candidates
 \(3.29\times10^{122}\) and \(3.30\times10^{122}\), whose dictionary
 \(\Lambda\ell_P^2=3\pi/N\) returns the cosmological constant within
 \(0.6\) percent of the Planck-central value and \(2.7\sigma\) below the DESI
-DR2 with CMB display. The primordial registration proposal released with the
-ledger states verbatim-ready freeze rows for the tilt, the tensor zero, and
-the running and isocurvature zeros, with every numeric kill cell an owner
-slot, so that the next primary-CMB and B-mode releases can score them.
+DR2 with CMB display. The conditional tilt protocol FZ-15 and the
+fixed-capacity protocol FZ-13 were frozen on 2026-10-04; the register labels
+both \texttt{frozen\_stamped\_upgrade\_pending}. Only their complete
+registered protocols and anchoring requirements govern eligible comparisons.
+The tensor-zero FZ-16 and running/isocurvature FZ-17 texts are unadopted
+proposals, not scoring contracts. Their historical proposal body is retained
+separately from the operative FZ-15 target.
 
 \section{Transfer Interface}
 \label{sec:transfer-interface}

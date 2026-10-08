@@ -119,6 +119,42 @@ def test_upper_bound_rows_are_consistent_only_below_the_bound() -> None:
         assert row["verdict"] == ("consistent" if below else "exceeds_stated_confidence_bound")
 
 
+@pytest.mark.parametrize("mutation", ["initial_data", "forcing", "scalar_power", "source_inference", "discrimination"])
+def test_tensor_semantics_survive_rehashed_receipt_mutations(tmp_path: Path, mutation: str) -> None:
+    receipt = committed_receipt()
+    row = rows(receipt)["tensor_zero_bk18_r_0p05"]
+    if mutation == "initial_data":
+        row["oph_premises"].remove("zero initial tensor amplitude and velocity")
+    elif mutation == "forcing":
+        row["oph_premises"].remove("no tensor forcing")
+    elif mutation == "scalar_power":
+        row["oph_premises"].remove("positive scalar power at the comparison pivot")
+    elif mutation == "source_inference":
+        row["epistemic_note"] = "A scalar source proves exact zero tensor power."
+    else:
+        row["discriminates_from_baseline"] = True
+    # Regenerate both integrity layers: failure must be scientific, not a stale
+    # checksum or an inconsistent Markdown rendering.
+    receipt["rows_sha256"] = ledger.sha256_bytes(ledger.canonical_bytes(receipt["sections"]))
+    encoded = ledger.render_bytes(receipt)
+    path = tmp_path / "receipt.json"
+    path.write_bytes(encoded)
+    markdown = tmp_path / "ledger.md"
+    markdown.write_text(ledger.render_markdown(receipt, ledger.sha256_bytes(encoded)), encoding="utf-8")
+    result = run(str(VERIFIER), "--receipt", str(path), "--markdown", str(markdown))
+    assert result.returncode == 1
+    assert "tensor_zero_bk18_r_0p05" in result.stdout
+    assert any(word in result.stdout for word in ("oph_premises", "epistemic_note", "discriminates"))
+
+
+def test_tensor_upper_limits_do_not_claim_generic_slow_roll_discrimination() -> None:
+    for row in rows(committed_receipt()).values():
+        if row["row_id"].startswith("tensor_zero_"):
+            assert row["discriminates_from_baseline"] is False
+            assert "zero initial tensor amplitude and velocity" in row["oph_premises"]
+            assert "no universal positive lower bound" in row["epistemic_note"]
+
+
 def test_verdict_rule_thresholds() -> None:
     assert ledger.verdict_from_sigma(Fraction(1999, 1000)) == "consistent"
     assert ledger.verdict_from_sigma(Fraction(-1999, 1000)) == "consistent"

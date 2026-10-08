@@ -142,8 +142,9 @@ def test_source_spectral_theorem_constructs_unequal_thomson_moments() -> None:
 def test_source_spectral_theorem_accepts_complete_source_payload_contract() -> None:
     payload = build_source_spectral_theorem(source_transport_payload=_valid_source_payload())
 
-    assert payload["status"] == "source_spectral_payload_contract_satisfied"
-    assert payload["promotion_allowed"] is True
-    assert payload["source_payload_validation"]["status"] == "source_transport_interval_certificate_satisfied"
-    assert payload["conclusion"]["source_transport_payload_accepted"] is True
-    assert payload["conclusion"]["exact_alpha_promotion_allowed_for_supplied_payload"] is True
+    assert payload["status"] == "source_spectral_payload_contract_satisfied_unverified"
+    assert payload["promotion_allowed"] is False
+    assert payload["source_payload_contract_satisfied"] is True
+    assert payload["source_payload_validation"]["status"] == "source_transport_contract_satisfied_unverified"
+    assert payload["conclusion"]["source_transport_payload_accepted"] is False
+    assert payload["conclusion"]["exact_alpha_promotion_allowed_for_supplied_payload"] is False
