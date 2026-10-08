@@ -29,6 +29,7 @@ def certify(packet):
     "empty_section_inventory", "stale_local_inventory", "stale_interface_inventory",
     "missing_observer_registry", "empty_sparse_projections", "wrong_sparse_entry",
     "wrong_basis", "false_rank_sum", "boolean_basis_index",
+    "empty_source_roots", "wrong_carrier_recipe", "unverified_refinement",
 ])
 def test_certificate_requires_the_supplied_source_evidence(packet, change):
     p = copy.deepcopy(packet)
@@ -56,6 +57,12 @@ def test_certificate_requires_the_supplied_source_evidence(packet, change):
         p["interface_atom_sets"] = {}
     elif change == "missing_observer_registry":
         p["observer_registry"] = p["observer_registry"][:-1]
+    elif change == "empty_source_roots":
+        p["carrier_source"]["source_roots"] = []
+    elif change == "wrong_carrier_recipe":
+        p["carrier_source"]["record_register"] = "one classical bit"
+    elif change == "unverified_refinement":
+        p["refinement_maps"] = [{"identifies_distinct_records": True}]
     else:
         manifest = p["carrier_projection_manifest"]
         sid, projection = next(iter(manifest["sparse_rank_one_projections"].items()))
@@ -125,3 +132,11 @@ def test_every_declared_target_use_flag_is_checked_without_truth_coercion(packet
     p = copy.deepcopy(packet)
     p[field] = value
     assert certify(p)["status"] == "TARGET_TAINTED"
+
+
+def test_certificate_boundary_is_computed_not_imported_from_free_text(packet):
+    p = copy.deepcopy(packet)
+    p["claim_boundary"] = "This input claims a hardware and cosmic realization."
+    receipt = certify(p)
+    assert receipt["status"] == "PASS"
+    assert receipt["claim_boundary"] == packet["claim_boundary"]
