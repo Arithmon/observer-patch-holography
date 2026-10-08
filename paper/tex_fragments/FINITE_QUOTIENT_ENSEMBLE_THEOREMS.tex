@@ -74,10 +74,20 @@ w_r(q)=m_r(q)e^{-S_r(q)},\qquad
 Z_r=\sum_{q\in Q_r}w_r(q),\qquad
 \mu_r(q)=Z_r^{-1}w_r(q).
 \]
-Equivalently, one may state an intrinsic projective prior \(\nu_r\) on \(Q_r\) and set
-\(\mu_r=(n_r)_\#\nu_r\).  Uniform quotient counting, uniform representative counting pushed to the
-quotient, groupoid weights, and tracial central-sector weights are different physical claims.  The
-paper must declare which one is being used.
+At least one action value must be finite, so that \(Z_r>0\).
+For a law on settled configurations only, restrict this construction to
+\(N_r\), or set \(S_r=+\infty\) outside \(N_r\).
+A separately specified prior \(\nu_r\) on \(Q_r\) instead induces the settled
+law \(\mu_r^{\rm nf}=(n_r)_\#\nu_r\). These constructions agree only if
+\[
+ \sum_{x:\,n_r(x)=q}\nu_r(x)=\mu_r(q)\qquad(q\in N_r)
+\]
+and \(\mu_r\) has no mass outside \(N_r\). For example, a retraction
+\(n(0)=0,n(1)=n(2)=1\) sends the uniform law on three states to weights
+\((1/3,2/3)\), whereas uniform counting on its two normal forms gives
+\((1/2,1/2)\). Uniform quotient counting, uniform representative counting
+pushed to the quotient, groupoid weights, and tracial central-sector weights
+are different physical claims. The paper must declare which one is being used.
 
 \paragraph{Normal-form projector non-selection.}
 For any retraction \(N:Q\to Q_{\rm nf}\) onto a subset \(Q_{\rm nf}\subseteq Q\), that is, any map
@@ -118,17 +128,25 @@ has the full-support solution, when the feasible full-support surface is nonempt
 \]
 Boundary optima obey the same formula after restricting to their support.  On a finite
 noncommutative quotient algebra with faithful reference state \(\sigma_r\),
+self-adjoint constraints and a feasible set containing a faithful state,
 \[
 \rho_r=
 \frac{\exp(\log\sigma_r-\sum_a\theta_aF_{r,a})}
 {\operatorname{Tr}\exp(\log\sigma_r-\sum_a\theta_aF_{r,a})}.
 \]
+If the feasible states lie in a proper support projection \(P\), first
+restrict to their joint support. The same multiplier argument uses
+\(P(\log\sigma_r)P\) and \(PF_{r,a}P\), exponentiated and normalized on
+\(P\mathcal H\); replacing the reference by \(P\sigma_rP\) before taking
+its logarithm is not valid without a commutation condition. An empty feasible
+set has no selected state.
 The finite constraint ledger must name every \(F_{r,a}\), its units and support, the target
 expectation and source, sector or zero-mode treatment, refinement transformation, and proof that no
 run output or observational output entered the source definition.
 
 \paragraph{Refinement compatibility and RG closure.}
-For \(s\succeq r\), let \(c_{sr}:Q_s\to Q_r\) be the physical coarse map.  Exact compatibility of
+For \(s\succeq r\), let \(c_{sr}:Q_s\to Q_r\) be the physical coarse maps, with
+\(c_{tr}=c_{sr}\circ c_{ts}\) for \(t\succeq s\succeq r\). Exact compatibility of
 weighted ensembles is equivalent to the fiber-sum identity
 \[
 \sum_{q':\,c_{sr}(q')=q}m_s(q')e^{-S_s(q')}
@@ -218,18 +236,25 @@ L_{\rm rep}=\sum_C c_C(I-E_C)
 is a relaxation or sampling object after a law has been selected.  Conditional expectations
 \(E_C\) are defined on \(L^2(X_r,\pi_r)\), so the reference law \(\pi_r\) is input.  On
 overlapping collars the expectations need not commute.  The correct finite gap certificate is the
-Poincare constant
+Poincare constant on the orthogonal complement of the common fixed space
+\(\mathcal F_r=\bigcap_C\operatorname{Ran}E_C\):
 \[
 \kappa_r
 =
-\inf_{f\perp 1}
+\inf_{0\ne f\perp\mathcal F_r}
 \frac{\sum_C\|(I-E_C)f\|^2}{\|f\|^2}.
 \]
-If local fiber rates have a positive lower bound \(\gamma_*\), then
+If every \(c_C\ge\gamma_*>0\), then
 \[
-L_{\rm rep}\ge \gamma_*\kappa_r(I-P_0).
+L_{\rm rep}\ge \gamma_*\kappa_r(I-P_0),
 \]
-Finite repair completeness gives \(\kappa_r>0\) at fixed regulator.  A uniform refinement lower
+where \(P_0\) projects onto \(\mathcal F_r\). In finite dimension,
+\(\kappa_r>0\) whenever \(\mathcal F_r^\perp\ne\{0\}\), since zero
+Dirichlet energy would put \(f\) in every fixed range. If all states are
+fixed, the displayed operator inequality is vacuous. Replacing
+\(f\perp\mathcal F_r\) by \(f\perp1\) requires the additional ergodicity
+condition \(\mathcal F_r=\operatorname{span}\{1\}\); a conserved nonconstant
+record otherwise makes that infimum zero. A uniform refinement lower
 bound \(\inf_r\kappa_r>0\) is a separate theorem or receipt.
 Multiplying all rates by \(s>0\) rescales the generator and gap by \(s\),
 while leaving the fixed space, stationarity and detailed balance unchanged.

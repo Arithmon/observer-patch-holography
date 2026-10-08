@@ -532,17 +532,48 @@ where \(\mathcal A_k\) may be a point attractor, a line or ring attractor, a met
 \mathcal O_B(x(t))\to \mathcal O_B^\star.
 \]
 
-\begin{proposition}[Continuous relaxation form]
-Suppose \(x(t)\) stays in a precompact active state region, \(\Phi_B\) is continuously differentiable there, and
+\begin{proposition}[Continuous relaxation bound]
+Suppose \(x(t)\) stays in a precompact active state region on whose closure
+\(\Phi_B\) is continuously differentiable and bounded below by \(\Phi_{\min}\),
+and along the trajectory
 \[
-\dot\Phi_B(x(t))
-\le
--c\|\nabla\Phi_B(x(t))\|^2+\epsilon
+\dot\Phi_B(x(t))\le-c\|\nabla\Phi_B(x(t))\|^2+\epsilon,
+\qquad c>0,\quad\epsilon\ge0.
 \]
-with \(c>0\). Then every limit point lies in the \(\epsilon\)-stationary region of the mismatch landscape, or on an invariant set whose observer-facing readout is stable up to the declared tolerance.
+Then
+\[
+\frac1T\int_0^T\|\nabla\Phi_B(x(t))\|^2\,dt
+\le\frac\epsilon c+
+\frac{\Phi_B(x(0))-\Phi_{\min}}{cT},
+\qquad
+\liminf_{t\to\infty}\|\nabla\Phi_B(x(t))\|^2\le\frac\epsilon c.
+\]
+These are time-average and lower-limit bounds. For positive \(\epsilon\),
+they imply neither that every limit point is \(\epsilon\)-stationary nor
+that the observer readout converges.
 \end{proposition}
+\begin{proof}
+Integrate the differential inequality and use the lower bound on \(\Phi_B\).
+An eventual gradient norm squared strictly above \(\epsilon/c\) contradicts
+the resulting average bound.
+\end{proof}
 
-This is the correct biological weakening. Real brains do not freeze. They converge enough to perceive, remember, choose, move, and report.
+A periodic counterexample makes the distinction explicit. On an annulus
+about the unit circle put
+\[
+\Phi(r,\theta)=\tfrac12\sin\theta+
+(r-1)\sqrt{2-\tfrac12\cos\theta-\tfrac14\cos^2\theta},
+\quad r(t)=1,\quad\theta(t)=t.
+\]
+The square root is smooth and positive there. On this orbit,
+\(\|\nabla\Phi\|^2=2-\tfrac12\cos t\) and
+\(\dot\Phi=\tfrac12\cos t=-\|\nabla\Phi\|^2+2\), yet the gradient
+norm squared repeatedly exceeds two and the readout \(\cos t\) oscillates.
+For zero error, an autonomous flow with a compact invariant region and the
+usual LaSalle regularity has its limit set in the zero-gradient set; a
+unique limiting output still requires the readout to be constant on that
+limit set. Approximate descent alone does not establish stable perception,
+memory or behavior.
 
 \section{Classical Fixed-Point Support}
 
@@ -555,7 +586,7 @@ If \(0<\eta<1\), then \(T_F\) is a contraction and
 \[
 T_F^n(v_0)\to F.
 \]
-More generally, if a federation update \(T\) on a complete product metric space satisfies
+More generally, if a federation update \(T\) on a nonempty complete product metric space is a self-map satisfying
 \[
 d(Tx,Ty)\le c\,d(x,y),
 \qquad 0<c<1,
@@ -580,9 +611,17 @@ E(s)=
 \]
 Under asynchronous update
 \[
-s_i'=\operatorname{sgn}\!\left(\sum_j w_{ij}s_j-\theta_i\right),
+s_i'=\begin{cases}
++1,&h_i>0,\\
+-1,&h_i<0,\\
+s_i,&h_i=0,
+\end{cases}
+\qquad h_i=\sum_jw_{ij}s_j-\theta_i,
 \]
-one has \(E(s')\le E(s)\). Since the state space is finite, repeated asynchronous updates terminate at a fixed point.
+one has \(E(s')\le E(s)\), strictly for every state-changing update.
+There are finitely many such changes. If every coordinate is visited
+infinitely often, the eventual constant state is a fixed point of every
+coordinate update. The sequence of update attempts itself need not stop.
 \end{theorem}
 
 \begin{proof}
@@ -595,7 +634,10 @@ Only \(s_i\) changes, so
 \sum_jw_{ij}s_j-\theta_i
 \right).
 \]
-The update chooses \(s_i'\) to have the same sign as the local field \(h_i=\sum_jw_{ij}s_j-\theta_i\). Thus \((s_i'-s_i)h_i\ge0\), and \(\Delta E\le0\).
+The update chooses \(s_i'\) to have the same sign as the local field \(h_i=\sum_jw_{ij}s_j-\theta_i\). Thus \((s_i'-s_i)h_i\ge0\), and \(\Delta E\le0\). A flip has
+\((s_i'-s_i)h_i=2|h_i|>0\), since a zero field preserves the spin.
+Strict descent on a finite state space bounds the number of flips.
+Fairness then excludes an unvisited unstable coordinate.
 \end{proof}
 
 The OPH translation is direct:
@@ -613,7 +655,11 @@ In Cohen--Grossberg-style continuous recurrent networks, broad symmetry, monoton
 \[
 \frac{dV}{dt}\le0.
 \]
-Trajectories therefore converge to equilibrium sets or stable pattern states under the theorem's hypotheses.
+For an autonomous flow with a compact positively invariant region, LaSalle's
+principle places the limit set in the largest invariant subset of
+\(\{\dot V=0\}\). Convergence to the equilibrium set additionally requires
+that invariant subset to consist of equilibria; nonincrease of \(V\) alone
+allows periodic orbits.
 \end{proposition}
 
 This is the continuous analogue of the discrete Hopfield result~\cite{CohenGrossberg1983}. Biological neurons are graded, delayed, noisy, and continuous. The fixed-point picture extends beyond binary toy networks.
@@ -629,7 +675,12 @@ and
 =
 \sum_\ell \epsilon_\ell^\top\Pi_\ell\epsilon_\ell,
 \]
-where \(\Pi_\ell\) is a precision matrix. Minimizing variational free energy is equivalent, up to priors and constants, to minimizing weighted squared overlap mismatch.
+where each \(\Pi_\ell\) is a fixed positive-definite precision matrix.
+The sum of conditional Gaussian negative log-likelihoods is
+\(\Phi_{\mathrm{PC}}/2\) plus a constant. With fixed priors and fixed
+variational entropy, the corresponding optimization reduces to mismatch
+minimization. General variational free energy also contains the prior and
+posterior-entropy terms; optimizing precision adds log-determinant terms.
 \end{theorem}
 
 \begin{proof}
@@ -639,7 +690,7 @@ A Gaussian likelihood gives
 =
 \frac12\epsilon_\ell^\top\Pi_\ell\epsilon_\ell+\mathrm{constant}.
 \]
-Summing across levels yields \(\Phi_{\mathrm{PC}}\) plus constants and prior terms. Thus predictive coding's residual-error minimization is an OPH overlap-mismatch minimization.
+Summing across levels yields \(\Phi_{\mathrm{PC}}/2\) plus constants. The stated restrictions make those constants independent of the optimized variables.
 \end{proof}
 
 \[
@@ -678,7 +729,11 @@ Let \(E_\theta(s,x)\) be a recurrent energy and \(C(s,y)\) a cost. For nudged en
 \[
 F_\theta^\beta(s)=E_\theta(s,x)+\beta C(s,y),
 \]
-let \(s_\theta^0\) be the free fixed point and \(s_\theta^\beta\) the weakly nudged fixed point. Equilibrium-propagation learning estimates
+assume \(E_\theta\) and \(C\) are twice continuously differentiable and
+\(s_\theta^0\) is a stationary point with positive-definite state Hessian.
+Let \(s_\theta^\beta\) be its locally continued stationary branch for small
+\(\beta\), and set \(J(\theta)=C(s_\theta^0,y)\), with no explicit
+\(\theta\)-dependence in \(C\). The implicit-function theorem then gives
 \[
 \frac{\partial J}{\partial\theta}
 =
@@ -690,7 +745,9 @@ let \(s_\theta^0\) be the free fixed point and \(s_\theta^\beta\) the weakly nud
 \frac{\partial E_\theta}{\partial\theta}(s_\theta^0)
 \right],
 \]
-up to sign convention.
+with the displayed sign for \(F^\beta=E+\beta C\). Gradient descent uses
+the negative of this derivative. Switching between stationary branches or
+using a finite nudge without a bias bound is not covered.
 \end{proposition}
 
 The same recurrent substrate can perform inference and learning~\cite{ScellierBengio2017}. It settles, is nudged by outcome or error, and plasticity follows from the difference between equilibria. In OPH language, learning is deformation of the repair landscape between fixed points.
@@ -1973,7 +2030,7 @@ Let
 \[
 x^\star_\theta=T_\theta(x^\star_\theta,u)
 \]
-and suppose \(I-D_xT_\theta\) is invertible at the fixed point. Then
+and suppose \(T_\theta\) is continuously differentiable jointly in state and parameter near that solution, with \(I-D_xT_\theta\) invertible there. The locally continued fixed-point branch supplied by the implicit-function theorem satisfies
 \[
 \boxed{
 \frac{\partial x^\star_\theta}{\partial\theta}
