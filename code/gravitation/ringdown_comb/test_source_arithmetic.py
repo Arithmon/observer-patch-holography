@@ -56,8 +56,13 @@ def _assert_close(actual, expected, precision):
         assert actual == 0
         return
     with localcontext(Context(prec=220)):
-        tolerance = D(10) ** (2 - precision)
-        assert abs(actual - expected) <= abs(expected) * tolerance, (actual, expected)
+        tolerance = D(10) ** (1 - precision)
+        error = abs(actual - expected)
+        assert error <= abs(expected) * tolerance, (actual, expected)
+        # These oracle comparisons have normal outputs in their requested
+        # contexts. Subnormal acceptance/refusal has separate controls below.
+        ulp = D((0, (1,), actual.adjusted() - precision + 1))
+        assert error < ulp, (actual, expected, ulp)
 
 
 PUBLIC_COMPONENTS = {
@@ -215,7 +220,7 @@ def _ambient(case):
     elif case == "round_up":
         context.rounding = ROUND_UP
     elif case == "exponents":
-        context.Emin, context.Emax, context.clamp = -9, 9, 1
+        context.Emin, context.Emax, context.clamp = -9, 1, 1
     elif case == "traps":
         context.traps[Inexact] = context.traps[Rounded] = True
     return context
@@ -351,3 +356,122 @@ def test_scalar_conversion_does_not_silently_accept_float_or_boolean(value, cons
     }
     with localcontext(Context(prec=50)), pytest.raises(REFUSAL):
         calls[consumer]()
+
+
+def _deep_original_cancellation(digits, upper=False):
+    import mpmath as mp
+
+    with mp.workdps(max(1200, digits + 700)):
+        pi, log_two = mp.mpf(str(PI)), mp.log(2)
+        threshold = log_two / mp.sqrt((2 * pi) ** 2 + log_two ** 2)
+        coefficient = mp.floor(threshold * mp.mpf(10) ** digits) + int(upper)
+        # Generate a finite decimal on either side of the zero. Avoid a
+        # context-rounded Decimal scaling operation when forming the input.
+        text = mp.nstr(coefficient, digits + 5, min_fixed=-10000, max_fixed=10000)
+        chi = D("0." + text.partition(".")[0].zfill(digits))
+        mass = D(f"1e-{digits}")
+        numerator, denominator = chi.as_integer_ratio()
+        x, mass_mp = mp.mpf(numerator) / denominator, mp.mpf(str(mass))
+        root = mp.sqrt(1 - x * x)
+        # Re-evaluate the exact supplied chi, not the unrounded threshold.
+        expected = (mp.mpf(299792458) ** 3 * (-2 * pi * x + root * log_two)
+                    / (8 * pi ** 2 * mass_mp * mp.mpf("1.3271244e20") * (1 + root)))
+        return mass, chi, D(mp.nstr(expected, 200))
+
+
+@pytest.mark.parametrize("upper", [False, True])
+def test_five_hundred_digit_cancellation_is_resolved_on_both_sides(upper):
+    mass, chi, expected = _deep_original_cancellation(500, upper)
+    assert (expected < 0) == upper
+    with localcontext(Context(prec=50)):
+        actual = producer.tooth_frequency_hz(mass, chi, -1, 2, PI)
+    _assert_close(actual, expected, 50)
+
+
+def test_finite_frequency_beyond_guard_budget_is_explicitly_unavailable():
+    mass, chi, expected = _deep_original_cancellation(4500)
+    # The original-input oracle gives about 7724.75 Hz, a finite nonzero
+    # result. Refusal describes the implementation's 4096-extra-digit policy,
+    # not a zero frequency or an invalid physical/mathematical input.
+    assert expected.is_finite() and D(7700) < expected < D(7750)
+    with localcontext(Context(prec=50)), pytest.raises(producer.NumericalResolutionError):
+        producer.tooth_frequency_hz(mass, chi, -1, 2, PI)
+
+
+def test_coarse_inexact_subnormal_is_explicitly_unavailable():
+    # The exact answer is 2.12345e-10, while this output context can retain
+    # only two of those digits. A nonzero rounded value is still insufficient.
+    with localcontext(Context(prec=9, Emin=-3, Emax=99)), pytest.raises(producer.NumericalResolutionError):
+        producer.detector_frame_mass_solar(D("2.12345e-10"), D(0))
+
+
+@pytest.mark.parametrize("evaluate", [
+    lambda mass: producer.omega_h_si(mass, D(0)),
+    lambda mass: producer.kappa_si(mass, D(1)),
+    lambda mass: producer.rotation_line_hz(mass, D(".67"), 0, PI),
+    lambda mass: producer.base_spacing_hz_per_nat(mass, D(-1), PI),
+    lambda mass: producer.tooth_offset_hz(mass, D(1), 2, PI),
+    lambda mass: producer.tooth_frequency_hz(mass, D(1), 0, 2, PI),
+    lambda mass: producer.detector_frame_tooth_frequency_hz(mass, D(1), D(-1), 0, 2, PI),
+])
+def test_exact_zero_does_not_require_an_unrepresentable_unused_component(evaluate):
+    with localcontext(Context(prec=50)):
+        assert evaluate(D((0, (1,), MIN_EMIN))) == 0
+
+
+@pytest.mark.parametrize("evaluate", [
+    lambda: producer.omega_h_si(D(0), D(0)),
+    lambda: producer.rotation_line_hz(D(62), D(2), 0, PI),
+    lambda: producer.base_spacing_hz_per_nat(D(62), D(1), D(0)),
+    lambda: producer.tooth_offset_hz(D(62), D(1), 1, PI),
+    lambda: producer.tooth_frequency_hz(D(62), D(1), 0, 2.0, PI),
+    lambda: producer.detector_frame_tooth_frequency_hz(D(62), D(-1), D(1), 0, 2, PI),
+])
+def test_zero_shortcuts_do_not_bypass_original_input_validation(evaluate):
+    with pytest.raises(REFUSAL):
+        evaluate()
+
+
+def test_dimensionless_ratio_survives_at_decimal_implementation_scale():
+    # M=chi makes chi/M exactly one. The sqrt correction is many orders
+    # below the requested precision, while an unused kappa would overflow.
+    tiny = D((0, (1,), MIN_EMIN))
+    with localcontext(Context(prec=200)):
+        expected = D(299792458) ** 3 / (4 * D("1.3271244e20"))
+    with localcontext(Context(prec=50)):
+        actual = producer.omega_h_si(tiny, tiny)
+    _assert_close(actual, expected, 50)
+
+
+def test_directed_interval_algebra_encloses_exact_rational_results():
+    arithmetic = producer._Arithmetic(4)
+    values = [D(text) for text in (
+        "-1e60", "-9.99999", "-.0000123456", "0", ".0000234567",
+        "1.00009", "9.99999", "1e60",
+    )]
+    for left in values:
+        for right in values:
+            a, b = arithmetic(left), arithmetic(right)
+            exact_a, exact_b = Fraction(left), Fraction(right)
+            pairs = [(a + b, exact_a + exact_b), (a - b, exact_a - exact_b),
+                     (a * b, exact_a * exact_b)]
+            if right:
+                pairs.append((a / b, exact_a / exact_b))
+            # Compose intervals widened by prior operations; exact input
+            # cancellation must still be enclosed through both operations.
+            pairs.append(((a + b) * (a - b), exact_a ** 2 - exact_b ** 2))
+            for interval, exact in pairs:
+                assert Fraction(interval.lo) <= exact <= Fraction(interval.hi)
+
+
+@pytest.mark.parametrize("operation", ["sqrt", "ln"])
+def test_transcendental_enclosures_contain_independent_original_input_oracle(operation):
+    import mpmath as mp
+
+    arithmetic = producer._Arithmetic(12)
+    for text in ("1e-600", ".00000123", ".99999999999999", "1", "2.0000000000001", "1e600"):
+        original = D(text)
+        interval = getattr(arithmetic, operation)(original)
+        with mp.workdps(180):
+            expected = getattr(mp, operation)(mp.mpf(text))
+            assert mp.mpf(str(interval.lo)) <= expected <= mp.mpf(str(interval.hi))

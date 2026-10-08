@@ -66,6 +66,43 @@ strict tooth monotonicity; rational bracketing of the reference ladder; and
 algebraic properties of the declared KMS factor). The KMS factor is not a
 transition probability or prior across different `k`.
 
+### Numerical evaluation of the imported formula
+
+The arithmetic helpers validate the supplied values before rounding: record
+dimensions, divisors and azimuthal labels are genuine integers; scalar inputs
+are finite Decimals or integers. Mass and supplied `pi` must be positive,
+`|chi| <= 1`, and redshift must be nonnegative. The mathematical linewidth
+helper accepts positive `a` and requires `|chi| < 1`; the declared physical
+nuisance range remains `[1,10]`.
+
+The Kerr factor is evaluated as `sqrt((1-chi)*(1+chi))`. A small positive
+offset must not disappear through a rounded `1-chi*chi`, and a signed rotation
+term can nearly cancel an offset even at ordinary spin. The evaluator bounds
+the complete expression from the original inputs and increases working
+precision until its error criterion is met. An unresolved or unrepresentable
+result raises an arithmetic error. It does not become a zero, infinity or
+successful check. After exact divisibility is established, the entropy change
+uses `-ln(k)` directly instead of subtracting two nearly equal large logs.
+
+Each returned value uses the caller's precision `p` and exponent range, with
+HALF_EVEN rounding. Its enclosure must certify error below one output ulp and
+relative error at most `10^(1-p)`; at most 4096 additional digits are tried.
+This is an error bound, not a correct-rounding guarantee. Supplied `pi` is
+treated as an exact finite parameter: the bound does not include its error
+relative to mathematical pi, or uncertainty in any other supplied parameter.
+In particular, cancellation can amplify parameter uncertainty even when the
+arithmetic of those supplied values is resolved.
+
+The canonical synthetic receipt uses an explicit local arithmetic context;
+caller precision, rounding, traps and exponent settings cannot alter its
+bytes. Its independent verifier uses separate numerical primitives and checks
+the entire canonical serialization. Original-input regression controls also
+exercise both spin signs, extremal limits, cancellation and scale changes.
+Agreement of two implementations alone is not a proof of their accuracy.
+These are mathematical evaluation checks, including deliberately extreme
+inputs. They do not establish physical eligibility near extremality, a
+transition model, a likelihood or a registered prediction.
+
 ## 3. Event-selection rule
 
 - Eligible events: ringdown observations published AFTER the owner
