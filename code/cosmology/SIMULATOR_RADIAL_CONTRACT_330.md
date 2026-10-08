@@ -225,18 +225,30 @@ For every finite operator, publish:
 
 ```json
 {
-  "shape": [0, 0],
-  "singular_values": [],
-  "rank_threshold": 0.0,
-  "rank": 0,
+  "shape": [2, 2],
+  "singular_values": [1.0, 1e-8],
+  "rank_threshold": 1e-12,
+  "rank": 2,
   "nullity": 0,
-  "condition_number_nonzero": 0.0,
-  "right_null_basis_hash": "sha256:...",
+  "condition_number_nonzero": 1e8,
+  "null_basis_hash": "sha256:...",
   "resolution_kernel_hash": "sha256:..."
 }
 ```
 
-The raw right-null basis and resolution kernels are part of the evidence bundle, even when the source branch is one-dimensional. Their role is to prove that uniqueness comes from the source theorem, not from an accidentally square discretization.
+The basis and resolution kernels accompany the evidence bundle, even for a
+one-dimensional source branch. Source uniqueness still requires its theorem.
+
+`radial_null_space_report` is a floating-point diagnostic of the supplied raw
+matrix \(A\). A scaled SVD uses the relative cutoff
+\(\max(\mathtt{rtol},\max(\operatorname{shape}(A))\epsilon_{\rm binary64})\).
+The retained singular values determine the rank, nullity and basis together;
+the API's `effective_threshold` corresponds to the receipt's `rank_threshold`.
+`relative_cutoff` records the cutoff; `rank_metric` is `raw_operator_euclidean`.
+Discarded nonzero directions are numerically unresolved, not proved elements
+of the mathematical kernel. The zero matrix has rank zero and a complete
+unresolved basis; its `condition_number_nonzero` is `None`. Omit that optional
+condition field when packaging a rank-zero report in the receipt schema.
 
 ## Prior-selected continuation
 
@@ -246,7 +258,53 @@ For a declared \(p_0,Q\), the exact representative is
 p_*=p_0+Q^{-1}A^T(AQ^{-1}A^T)^+(C-Ap_0).
 \]
 
-The run publishes \(p_0,Q,R_Q,N_Q\), positivity active set, and sensitivity to all declared prior variants. Its output type is `ConditionalRadialContinuation`.
+The reference implementation evaluates this theorem numerically. It factors
+\(Q=DLL^TD\), where \(D=\operatorname{diag}(\sqrt{Q_{ii}})\) and \(L\) is the
+Cholesky factor of the normalized precision. Set \(W=D^{-1}L^{-T}\).
+Each nonzero row of \(AW\) and of the corresponding target \(C-Ap_0\) is
+divided by that operator row's largest absolute entry; call this diagonal
+row scaling \(E\). No Gram matrix \(AQ^{-1}A^T\) is formed. One SVD defines:
+
+\[
+B=EAW=U\Sigma V^T,\qquad
+p=p_0+WV_r\Sigma_r^{-1}U_r^TE(C-Ap_0),\qquad
+R_Q=WV_rV_r^TW^{-1},\quad N_Q=I-R_Q.
+\]
+
+`effective_rank` counts retained directions using the same relative cutoff
+rule as the null report; `rank_metric` is
+`row_equilibrated_prior_whitened_operator`. It can differ from the raw-\(A\)
+rank because whitening and row scaling change relative singular values.
+The projectors are complementary and
+\(Q\)-self-adjoint up to roundoff; truncation alone does not establish
+\(AN_Q=0\). Neither the computed rank nor the continuation is an interval
+certificate or an exact-arithmetic proof of the constrained minimum.
+Before inverting retained singular values, the solver also requires
+\(\max(\operatorname{shape}(B))\epsilon_{\rm binary64}s_0/s_{\rm last}\le10^{-7}\).
+This separate numerical-conditioning policy permits explicit refusal of an
+unresolved inverse; it is neither an exact certificate nor an error proof.
+Before Cholesky, the computed smallest eigenvalue of \(H=D^{-1}QD^{-1}\)
+must be positive and satisfy
+\(n\epsilon_{\rm binary64}\|H\|_\infty/\lambda_{\min}(H)\le10^{-7}\), \(n=\dim Q\).
+This is a conservative prior-geometry support policy, not an interval bound
+or a relative-accuracy guarantee for every output component.
+
+The inverse and residual interfaces validate original scalar entries before
+array coercion and require finite real data; `rtol` is finite with
+\(0<\mathtt{rtol}<1\). Zero \(A\) with zero \(C\) is supported.
+Returned constraints are checked row by row using exact arithmetic on the
+accepted binary64 inputs and returned \(p\), without an absolute unit floor.
+Unresolved constraints or unrepresentable reported quantities cause an
+explicit refusal. Residual norms use scaled hypot evaluation; the objective
+is rounded from the exact quadratic expression for the returned vector.
+An original-row check of \(AN_Q\) prevents truncation from hiding a resolved
+constraint. If rounding \(p_0+\delta\) changes the intended correction by
+more than \(10^{-7}\) in relative \(Q\)-norm, the helper refuses that result.
+
+The run publishes \(p_0,Q,R_Q,N_Q\) and sensitivity to declared prior variants.
+The helper imposes no positivity constraint: any required positivity active
+set needs separate evidence. Its output remains `ConditionalRadialContinuation`,
+which cannot by itself promote a source-derived E4 claim.
 
 ## Forward residual
 
@@ -256,7 +314,32 @@ Every branch computes a forward residual without re-optimizing source parameters
 r_\ell=C_\ell^q-4\pi Z_q^2\int d\nu(k)\Delta_\zeta^2(k)|\Psi_\ell(k)|^2.
 \]
 
-The residual artifact contains raw signed residuals, absolute and relative norms, numerical error budget, and held-out modes/windows. A failed residual blocks promotion.
+The residual artifact contains raw signed residuals, absolute and relative
+norms, numerical error budget, and held-out modes/windows. A failed residual
+blocks promotion. `forward_residual` computes \(C-Ap\) from the accepted inputs
+without fitting; norms must not vanish merely because squaring underflows.
+Its relative norm uses \(\|C\|_2\) without a denominator floor. If \(C=0\),
+the relative residual is zero only when the residual is also zero; otherwise
+the relative quantity is undefined and the helper refuses explicitly.
+
+## Numerical audit and validation
+
+At main `1ba8a011c4a81fe0680b14dadf4802388a0567a2`, the original inputs
+\(A=\operatorname{diag}(1,10^{-8})\), \(C=(10^{-3},10^{-11})\),
+\(p_0=0\), \(Q=I\), with default `rtol`, returned \(p=(10^{-3},0)\),
+`effective_rank=2` and \(N_Q=\operatorname{diag}(0,1)\).
+The Gram cutoff discarded a resolved direction and the absolute residual
+floor accepted its missing constraint; the unique solution is
+\(p=(10^{-3},10^{-3})\).
+
+The regression and independent-control files retain this failure, exact
+Fraction/KKT solutions, metric-dependent ranks, projector identities, zero
+maps, original-input validation, and small/large-unit residual controls.
+`radial-inverse.yml` executes these two files and `test_oph_radial_lift_330.py`
+on Ubuntu and Windows with pinned dependencies and warnings treated as errors.
+This repair changes the live numerical helper. It requires no retained
+receipt regeneration, frozen-evidence rewrite, paper theorem change, or
+physical claim promotion.
 
 ## Curved branches
 
