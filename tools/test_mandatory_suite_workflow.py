@@ -35,6 +35,7 @@ ADDITIONAL_EVIDENCE_TESTS = (
     "code/particles/calibration/test_source_ew_vev_matching.py",
     "code/particles/calibration/test_verify_source_ew_vev_matching.py",
     "code/particles/calibration/test_compare_source_ew_vev_matching.py",
+    "code/geometry/test_collar_scaling_boundaries.py",
 )
 
 
