@@ -105,11 +105,14 @@ def replay_phase_space(q68, v68, xyz, edges, tetrahedra, frame):
     All field-dependent products, the gauge rechart, minimization and density
     remain in a private high-precision context. The producer instead uses its
     positive quadrature factor. Agreement is a finite numerical diagnostic.
+    The a=0 moments require an exact original vertex-gradient edge field;
+    small nonzero radiative fields are unsupported and explicitly refused.
     """
     configuration = source.real_components(q68, (68,))
     tangent = source.real_components(v68, (68,))
     vertices = source.real_components(xyz, (13, 3))
     coordinates = source.real_components(frame, (42, 30))
+    original_potential = source.require_original_gradient(configuration[:42], edges)
     mp = source.replay_context(configuration, tangent, vertices.flat, coordinates.flat)
     real = lambda value: source.mp_real(mp, value)
     q68, v68 = mp.matrix([real(v) for v in configuration]), mp.matrix([real(v) for v in tangent])
@@ -129,14 +132,17 @@ def replay_phase_space(q68, v68, xyz, edges, tetrahedra, frame):
         rhs = mp.matrix(14, 1)
         rhs[:13, :] = -d.T*mass*edges_velocity
         return mp.lu_solve(augmented, rhs)[:13, :]
-    xi, xidot = gauge_parameter(q68[:42, :]), gauge_parameter(v68[:42, :])
+    # Exact cycle closure already proves a=D*original_potential. Its Coulomb
+    # shift is therefore the negative mean-zero potential and its edge field
+    # is exactly zero, without a numerical solve whose residual could
+    # underflow when reporting a large but physically pure-gauge input.
+    xi = mp.matrix([-real(value) for value in original_potential])
+    xidot = gauge_parameter(v68[:42, :])
     phase = [mp.exp(mp.j*xi[i]/4) for i in range(13)]
     scalar = [phase[i]*psi[i] for i in range(13)]
     scalar_velocity = [phase[i]*(mp.mpc(v68[42+i], v68[55+i])+mp.j*xidot[i]*psi[i]/4)
                        for i in range(13)]
-    ac, av = q68[:42, :]+d*xi, v68[:42, :]+d*xidot
-    require(max(abs(v) for v in ac) < mp.mpf('1e-11'),
-            'parent radial field has zero Coulomb representative')
+    ac, av = mp.matrix(42, 1), v68[:42, :]+d*xidot
     full_q = mp.matrix(list(ac)+[mp.re(v) for v in scalar]+[mp.im(v) for v in scalar])
     full_v = mp.matrix(list(av)+[mp.re(v) for v in scalar_velocity]+[mp.im(v) for v in scalar_velocity])
     section = mp.matrix(68, 56)

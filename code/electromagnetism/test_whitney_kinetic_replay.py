@@ -217,12 +217,84 @@ def test_constrained_replay_accepts_positive_metric_and_rejects_asymmetry():
         state.reduced_moments(mp, metric, vertical, section)
 
 
+def test_reported_components_preserve_exact_zero_and_representable_subnormal():
+    mp = mpmath.mp.clone()
+    mp.dps = 80
+    smallest = mp.power(2, -1074)
+    assert state.reported(mp.mpf(0), 'test component') == 0
+    assert state.reported(smallest, 'test component') == np.nextafter(0., 1.)
+    assert state.reported(-smallest, 'test component') == -np.nextafter(0., 1.)
+
+
+@pytest.mark.parametrize('exponent', [-1200, 1200])
+def test_reported_components_refuse_underflow_and_overflow(exponent):
+    mp = mpmath.mp.clone()
+    mp.dps = 80
+    with pytest.raises(ValueError, match='reporting range'):
+        state.reported(mp.power(2, exponent), 'test component')
+
+
 def test_packet_replay_rejects_invalid_coulomb_frame(geometry):
     vertices, edges, tets, frame = geometry
     changed = frame.copy()
     changed[:, 0] *= 2
     with pytest.raises(ValueError, match='orthonormal Coulomb frame'):
         packet.replay_phase_space([0]*68, [0]*68, vertices, edges, tets, changed)
+
+
+@pytest.mark.parametrize('amplitude', [1e-12, -1e-12])
+def test_original_edge_domain_refuses_small_nonzero_radiative_field(geometry, amplitude):
+    vertices, edges, tets, frame = geometry
+    configuration = np.zeros(68)
+    configuration[12] = amplitude
+    # The original boundary edge has nonzero curl: even at psi=0 its magnetic
+    # energy is 4.6065533708336835e-25. Baseline accepted its ~7.6e-13 Coulomb
+    # representative under an absolute tolerance and reported potential zero.
+    # The a=0 monomial replay must refuse this unsupported source domain.
+    with pytest.raises(ValueError, match='original.*gradient'):
+        packet.replay_phase_space(configuration, np.zeros(68), vertices, edges, tets, frame)
+
+
+@pytest.mark.parametrize('phase', [1, 1j])
+def test_original_edge_domain_preserves_small_pure_gradient_and_complex_velocity(geometry, phase):
+    vertices, edges, tets, frame = geometry
+    epsilon = 1e-12
+    configuration = np.r_[np.full(12, epsilon), np.zeros(30),
+                          np.full(13, complex(phase).real), np.full(13, complex(phase).imag)]
+    scalar_velocity = 1j * phase * np.r_[12., -np.ones(12)]
+    velocity = np.r_[np.zeros(42), scalar_velocity.real, scalar_velocity.imag]
+    actual = packet.replay_phase_space(configuration, velocity, vertices, edges, tets, frame)
+    # Every radial edge equals epsilon and every boundary edge is zero, so
+    # the exact mean-zero Coulomb shift is (12,-1,...,-1)*epsilon/13.
+    shift = np.r_[12., -np.ones(12)] * epsilon / 13
+    rotation = np.exp(1j * shift / 4)
+    expected_position, expected_velocity = phase * rotation, scalar_velocity * rotation
+    assert np.max(abs(actual['full_q'][:42])) < epsilon * 1e-50
+    np.testing.assert_allclose(actual['gauge_parameter'], shift, rtol=2e-13, atol=0)
+    np.testing.assert_allclose(actual['full_q'][42:],
+                               np.r_[expected_position.real, expected_position.imag], rtol=2e-13, atol=0)
+    np.testing.assert_allclose(actual['full_velocity'][42:],
+                               np.r_[expected_velocity.real, expected_velocity.imag], rtol=2e-13, atol=0)
+
+
+def test_original_edge_domain_resolves_large_exact_pure_gradient(geometry):
+    vertices, edges, tets, frame = geometry
+    potential = np.r_[0., 1., -1., np.zeros(10)] * 2.**600
+    edge_field = np.array([potential[right]-potential[left] for left, right in edges])
+    configuration = np.r_[edge_field, np.zeros(26)]
+    actual = packet.replay_phase_space(configuration, np.zeros(68), vertices, edges, tets, frame)
+    # The original dyadic edge field is exactly D*potential, and potential
+    # already has zero mean. Thus its Coulomb edge field and zero-matter
+    # configuration are algebraically zero, independent of any metric solve.
+    # A generic MP gauge solve left tiny residuals which then underflowed
+    # during reporting and falsely refused this ordinary zero physical state.
+    np.testing.assert_array_equal(actual['gauge_parameter'], -potential)
+    for key in ('q', 'full_q', 'velocity', 'full_velocity', 'momentum'):
+        np.testing.assert_array_equal(actual[key], np.zeros_like(actual[key]))
+    assert actual['potential'] == 0
+    assert actual['coulomb_defect'] == 0
+    assert actual['log_rho'] == pytest.approx(uniform_control(0)['log_rho'], abs=2e-11, rel=0)
+    assert actual['gamma_min_eigenvalue'] > 0
 
 
 @pytest.mark.parametrize('verifier', [state, packet])

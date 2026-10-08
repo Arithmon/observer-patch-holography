@@ -223,6 +223,36 @@ def complex_components(value):
             for v in raw]
 
 
+def require_original_gradient(values, edges):
+    """Return its mean-zero potential after exact original edge-cycle closure.
+
+    A numerical Coulomb residual cannot decide whether a small radiative
+    field is zero. The monomial replay supports only configurations whose
+    edge cochain is a vertex gradient; it does not evaluate a nonzero
+    Coulomb field's magnetic energy or charged dressing phases.
+    """
+    values = real_components(values, (42,))
+    require(len(edges) == 42 and all(len(edge) == 2 and
+            all(type(i) is int and 0 <= i < 13 for i in edge) and edge[0] != edge[1]
+            for edge in edges), "original gradient incidence")
+    potential = [None]*13
+    potential[0] = Q(0)
+    for _ in range(13):
+        for value, (left, right) in zip(values, edges, strict=True):
+            if potential[left] is not None and potential[right] is None:
+                potential[right] = potential[left]+value
+            elif potential[right] is not None and potential[left] is None:
+                potential[left] = potential[right]-value
+        if all(value is not None for value in potential):
+            break
+    require(all(value is not None for value in potential), "original gradient connected incidence")
+    require(all(potential[right]-potential[left] == value
+                for value, (left, right) in zip(values, edges, strict=True)),
+            "original edge field must be an exact vertex gradient for the a=0 replay")
+    mean = sum(potential, Q(0))/13
+    return [value-mean for value in potential]
+
+
 def replay_context(*components):
     # Four powers of the largest scale cover the field-dependent condition
     # numbers. The full exponent span also matters: an O(1) gauge tangent
