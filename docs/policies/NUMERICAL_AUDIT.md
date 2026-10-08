@@ -54,6 +54,11 @@ not a domain argument.
   are different obligations. Where the source supplies a positive factor,
   preserve that structure before forming a rounded Gram matrix; a successful
   eigensolver on the damaged matrix cannot recover discarded information.
+- **Combined conditioning:** challenge metric whitening and constraint
+  inversion together. Separate precision gates can each pass while their
+  compounded error spoils the minimum. Compare with the original-input
+  solution, and check reported residuals on their own scale so a false zero
+  cannot hide inside the much larger target's roundoff budget.
 - **Intermediate and output scales:** cross normal/subnormal/zero
   boundaries before and after weighting. Use ordinary units, very small
   and large units, both signs where allowed, and cancelling energy origins.
