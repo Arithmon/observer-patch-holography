@@ -189,3 +189,22 @@ def test_alternative_valid_spanning_tree_execution_remains_valid(evidence):
     rehash(packet, manifest)
     assert source._verify_source_histories(packet)["status"] == "PASS"
     assert source.certify_source_derived_packet(packet, terminal_manifest=manifest)["status"] == "PASS"
+
+
+@pytest.mark.parametrize("fault", ["empty_fiber", "target_history"])
+def test_serialized_source_refusal_cannot_feed_direct_n_closure(evidence, fault, tmp_path, monkeypatch):
+    import direct_n_closure_verdict as downstream
+
+    packet, manifest = evidence
+    if fault == "empty_fiber":
+        manifest.update(trials=[], trial_count=0, terminal_world_ids=[])
+    else:
+        sid = next(iter(packet["semantic_histories"]))
+        packet["semantic_histories"][sid]["uses_external_target"] = True
+    rehash(packet, manifest)
+    receipt = source.certify_source_derived_packet(packet, terminal_manifest=manifest)
+    path = tmp_path / "fixed-source-certificate.json"
+    path.write_text(json.dumps(receipt, allow_nan=False), encoding="utf-8")
+    monkeypatch.setattr(downstream, "FIXED_CERTIFICATE_PATH", path)
+    with pytest.raises(ValueError, match="fixed-cutoff parent is not attained"):
+        downstream.build_verdict()
