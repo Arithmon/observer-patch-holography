@@ -195,7 +195,7 @@
         ".pyc"
       ]
     },
-    "file_count": 887,
+    "file_count": 888,
     "files": [
       {
         "byte_count": 42558,
@@ -2948,14 +2948,14 @@
         "sha256": "sha256:8507221cee47ceb81dfb9befa63832599648bf90a91d29059b8f625896c0217e"
       },
       {
-        "byte_count": 8060,
+        "byte_count": 10009,
         "path": "code/consensus/README.md",
-        "sha256": "sha256:f35f6cabe27ed4d270b1d0b7463f7af502a1409aa118a27ba82b537fd496a5ff"
+        "sha256": "sha256:73494f51c769f894cf04df4b0b3dfaab6a8a9769d59618e88f39068fe705b4b2"
       },
       {
-        "byte_count": 64362,
+        "byte_count": 73176,
         "path": "code/consensus/compiled_lattice_settling_certificate.py",
-        "sha256": "sha256:79eddf4e3abb93a697ca63cce13ccc1e8b5e5c0b18080820f51cf7eaf4d43579"
+        "sha256": "sha256:2de006fa8225b592cc743ce6446adad2a5f92cba8692dc7c116b4c204ecfe346"
       },
       {
         "byte_count": 15243,
@@ -2991,6 +2991,11 @@
         "byte_count": 12303,
         "path": "code/consensus/test_compiled_lattice_settling_certificate.py",
         "sha256": "sha256:f6d5eb34e668f59c3d85fbd6ec4f607d69ce70b70bb06a184e86f75080e0d5a8"
+      },
+      {
+        "byte_count": 18702,
+        "path": "code/consensus/test_compiled_source_correspondence.py",
+        "sha256": "sha256:4eb4659bfb8d73935c8a35045592fd89e5c38db3fe6f10a35cde30cd6cef587b"
       },
       {
         "byte_count": 14560,
@@ -4633,7 +4638,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:5d4b103949a32dc1e737c2813d75a9a80e9a75e1190bca03f839a988ad148a9a",
+    "files_sha256": "sha256:c879cdb84a4d2b10de94d81a5e04601d3cdc5cc0f49cd91910cbd1162ebdbde0",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7542,7 +7547,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:299e0bdf0b360a2cd798923cc7d60b072f613e37ea1e3a328fb2bb706ba35504",
+  "inventory_sha256": "sha256:6e8a991b3932f607c41f8080adb168deb2ad1642aa0efc60301cf6c2c7e0410a",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
