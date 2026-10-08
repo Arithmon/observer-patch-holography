@@ -16,11 +16,13 @@ Independent numeric primitives used here, against the producer's:
   primitive);
 - g(chi) through the surface-gravity identity g = 4*G*M*kappa/c^3
   (producer: the closed form 2*sqrt(1-chi^2)/(1+sqrt(1-chi^2)));
-- tooth spacing through base = kappa/(4*pi^2)
-  (producer: c^3*g(chi)/(16*pi^2*G*M));
+- tooth spacing through base = kappa/(4*pi^2), an identity now also
+  used by the producer's mass-independent Kerr-scale evaluation; numerical
+  independence comes from the separate pi/log/root algorithms above,
+  not from a distinct spacing formula;
 - working precision 60 significant digits (producer: 50), both rendered
-  to 40 significant digits, so agreement requires both computations to
-  be correct at the rendered precision.
+  to 40 significant digits, providing a cross-check at the rendered
+  precision. Agreement does not exclude a shared mistake.
 
 Exit status 0 on byte equality, 1 on any difference. The SHA-256 of both
 serializations is printed.
@@ -38,7 +40,10 @@ import hashlib
 import json
 import os
 import sys
-from decimal import Decimal, getcontext, localcontext
+from decimal import (
+    Context, Decimal, DivisionByZero, InvalidOperation, MAX_EMAX, MIN_EMIN,
+    Overflow, ROUND_HALF_EVEN, getcontext, localcontext,
+)
 
 V_PRECISION = 60
 V_SIG_DIGITS = 40
@@ -56,11 +61,22 @@ V_M_AZ = 2
 V_RECEIPT_BASENAME = "integer_k_comb_template_receipt.json"
 
 
+def _v_context(precision: int) -> Context:
+    """An explicit arithmetic policy, independent of mutable ambient defaults."""
+    return Context(
+        prec=precision, rounding=ROUND_HALF_EVEN,
+        Emin=MIN_EMIN, Emax=MAX_EMAX, capitals=1, clamp=0,
+        flags=[], traps=[InvalidOperation, DivisionByZero, Overflow],
+    )
+
+
 def v_arctan_inv(x: int) -> Decimal:
     """arctan(1/x) by the alternating Taylor series (guarded context).
 
     Terminates when the power magnitude falls below one part in
     10^(prec + 5) of unity."""
+    if not isinstance(x, int) or isinstance(x, bool) or x < 2:
+        raise ValueError("x must be an integer at least 2")
     limit = Decimal(1).scaleb(-(getcontext().prec + 5))
     inv = Decimal(1) / Decimal(x)
     x2 = Decimal(x) * Decimal(x)
@@ -77,7 +93,7 @@ def v_arctan_inv(x: int) -> Decimal:
 
 
 def v_pi() -> Decimal:
-    """pi from pi/4 = arctan(1/2) + arctan(1/3)."""
+    """Reference-precision pi from pi/4 = arctan(1/2) + arctan(1/3)."""
     with localcontext() as ctx:
         ctx.prec = V_PRECISION + 12
         quarter = v_arctan_inv(2) + v_arctan_inv(3)
@@ -86,7 +102,9 @@ def v_pi() -> Decimal:
 
 
 def v_ln_nat(k: int) -> Decimal:
-    """ln(k) for natural k >= 1 by the atanh series, no library ln."""
+    """Reference-precision log on the finite replay ladder (plus k=1)."""
+    if not isinstance(k, int) or isinstance(k, bool) or not 1 <= k <= V_K_MAX:
+        raise ValueError(f"k must be an integer in the replay domain 1..{V_K_MAX}")
     if k == 1:
         return Decimal(0)
     with localcontext() as ctx:
@@ -108,19 +126,37 @@ def v_ln_nat(k: int) -> Decimal:
 def v_sqrt(x: Decimal) -> Decimal:
     """Square root by Newton iteration, no library sqrt.
 
-    Newton iteration doubles the digit count per step; eight steps from
-    a sixteen-digit float seed exceed the guarded working precision by a
-    wide margin, so a fixed iteration count is used and no convergence
-    test is needed."""
+    A decimal exponent seed remains finite at scales outside binary64.
+    Iterate to guarded-precision convergence, then round to the active
+    precision without changing the caller's context or flags.
+    """
+    if isinstance(x, int) and not isinstance(x, bool):
+        x = Decimal(x)
+    if not isinstance(x, Decimal) or not x.is_finite() or x < 0:
+        raise ValueError("x must be a finite nonnegative Decimal or integer")
     if x == 0:
         return Decimal(0)
-    with localcontext() as ctx:
-        ctx.prec = V_PRECISION + 12
-        y = Decimal(float(x) ** 0.5)
-        for _ in range(8):
-            y = (y + x / y) / 2
+    precision = getcontext().prec
+    working_precision = max(V_PRECISION, precision) + 12
+    with localcontext(_v_context(working_precision)):
+        y = Decimal((0, (1,), x.adjusted() // 2))
+        previous = None
+        # The seed is within a factor ten of the root; Newton convergence
+        # is quadratic thereafter. Retain a finite budget even if arithmetic
+        # at an extreme Decimal boundary fails to reach a repeated value.
+        for _ in range(2 * working_precision.bit_length() + 16):
+            updated = (y + x / y) / 2
+            # Rounded Newton iteration can settle at one value or alternate
+            # between two guarded-precision values; stop on either repeat.
+            if updated == y or updated == previous:
+                y = updated
+                break
+            previous, y = y, updated
+        else:
+            raise ValueError("independent square root did not converge at guarded precision")
         result = y
-    return +result
+    with localcontext(_v_context(precision)):
+        return +result
 
 
 def v_sig40(x: Decimal) -> str:
@@ -128,7 +164,12 @@ def v_sig40(x: Decimal) -> str:
 
 
 def v_build_receipt() -> dict:
-    getcontext().prec = V_PRECISION
+    """Build canonical numbers without inheriting or mutating caller context."""
+    with localcontext(_v_context(V_PRECISION)):
+        return _v_build_receipt()
+
+
+def _v_build_receipt() -> dict:
     pi = v_pi()
     c = Decimal(V_C)
     gm = Decimal(V_MASS_SOLAR) * Decimal(V_GM_SUN)

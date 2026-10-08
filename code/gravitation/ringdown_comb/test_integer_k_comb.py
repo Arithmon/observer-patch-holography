@@ -18,7 +18,7 @@ import math
 import os
 import subprocess
 import sys
-from decimal import Decimal, getcontext
+from decimal import Decimal, localcontext
 
 import pytest
 
@@ -28,8 +28,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RECEIPT = os.path.join(HERE, "runtime", producer.RECEIPT_BASENAME)
 
 
-def setup_module(_module) -> None:
-    getcontext().prec = producer.WORKING_PRECISION
+@pytest.fixture(autouse=True)
+def reference_precision():
+    # Do not leak the receipt's precision into unrelated numerical tests.
+    with localcontext() as ctx:
+        ctx.prec = producer.WORKING_PRECISION
+        yield
 
 
 def _rel_close(a: Decimal, b: Decimal, tol: str = "1E-45") -> bool:

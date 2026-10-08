@@ -69,6 +69,11 @@ not a domain argument.
   domain, not by expression-tree equality. Check original scalars in mixed
   numeric containers before a common array dtype erases integer precision,
   Boolean types or missingness; validating the coerced array is too late.
+- **Arithmetic context:** exercise exact Decimal inputs longer than the
+  working precision, inherited rounding modes, exponent limits and traps.
+  Deterministic receipt builders must isolate their arithmetic policy and
+  preserve the caller's context, including flags. More precision applied after
+  a rounded subtraction or coercion cannot recover the original input.
 - **Both sides of a decision:** pair an exact zero with a nearby nonzero
   input; valid support with actual support escape; complete evidence with
   incomplete, empty and malformed evidence. A blanket rejection is not a

@@ -95,11 +95,20 @@ point M = 62 nominal solar masses, chi = 0.67, m = 2, which is a
 synthetic reference, not an event fit, and matches no published remnant
 posterior.
 
-Numeric discipline. All receipt numbers are computed in decimal
-arithmetic at 50 significant digits; pi is computed from the Machin
-formula pi = 16*arctan(1/5) - 4*arctan(1/239); logarithms and square
-roots use the decimal library primitives. Rendered strings carry 40
-significant digits; float renderings live under `derived_for_display`.
+Numeric discipline. Receipt values request 50 significant Decimal digits;
+public helpers request the caller's precision. Outward interval arithmetic
+refines complete expressions, with at most 4096 additional working digits.
+Logarithms and square roots use neighboring values around the correctly
+rounded Decimal primitives; Machin pi uses exact alternating-series bounds.
+Results use HALF_EVEN rounding and are checked against their enclosures for
+error below one output ulp and relative error at most 10^(1-p), where p is
+the requested precision. This is not a correct-rounding promise. Unresolved
+cancellation, output range or implementation exponent-range exhaustion is
+refused. Inputs named pi are exact supplied
+finite values, not replacements by mathematical pi. Caller Decimal context
+settings and flags are preserved; receipt construction owns a fixed context.
+Rendered strings carry 40 significant digits; float renderings live under
+`derived_for_display`.
 The canonical serialization is sorted-key, separator-minimal JSON with a
 trailing newline, no timestamps, and no machine paths, so the receipt is
 checksum-stable. The independent verifier
@@ -127,10 +136,15 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-from decimal import Decimal, getcontext, localcontext
+from decimal import (
+    Context, Decimal, DecimalException, DivisionByZero, InvalidOperation,
+    MAX_EMAX, MAX_PREC, MIN_EMIN, Overflow, ROUND_CEILING, ROUND_FLOOR,
+    ROUND_HALF_EVEN, getcontext, localcontext,
+)
+from fractions import Fraction
 
-# Working precision (significant decimal digits) for all internal
-# arithmetic. Rendered strings carry SIG_DIGITS significant digits.
+# Requested receipt precision; interval evaluation adds guard digits.
+# Rendered strings carry SIG_DIGITS significant digits.
 WORKING_PRECISION = 50
 SIG_DIGITS = 40
 
@@ -151,35 +165,301 @@ DECLARED_REFERENCE_M_AZIMUTHAL = 2  # synthetic reference, declared.
 RECEIPT_BASENAME = "integer_k_comb_template_receipt.json"
 
 
-def _arctan_inv(x: int) -> Decimal:
-    """arctan(1/x) for integer x >= 2 by the alternating Taylor series.
+MAX_GUARD_DIGITS = 4096
 
-    Terminates when the term magnitude falls below one part in
-    10^(prec + 5) of unity; the truncation error is then far below the
-    rendered precision."""
-    limit = Decimal(1).scaleb(-(getcontext().prec + 5))
-    one_over_x = Decimal(1) / Decimal(x)
-    x2 = Decimal(x) * Decimal(x)
-    term = one_over_x
-    total = Decimal(0)
-    n = 0
-    while term.copy_abs() > limit:
-        total += term if n % 2 == 0 else -term
-        n += 1
-        term = term / x2 * Decimal(2 * n - 1) / Decimal(2 * n + 1)
-    return total
+
+class NumericalResolutionError(ArithmeticError):
+    """The requested precision/range could not enclose a reportable value."""
+
+
+def _context(precision: int, rounding=ROUND_HALF_EVEN, *, emin=MIN_EMIN, emax=MAX_EMAX) -> Context:
+    # Do not inherit ambient rounding, flags, exponent bounds or trap settings.
+    return Context(
+        prec=precision, rounding=rounding, Emin=emin, Emax=emax,
+        capitals=1, clamp=0, flags=[],
+        traps=[InvalidOperation, DivisionByZero, Overflow],
+    )
+
+
+def _power10(exponent: int) -> Decimal:
+    return Decimal((0, (1,), exponent))
+
+
+def _scalar(value: Decimal | int, name: str, *, positive=False, nonnegative=False) -> Decimal:
+    if type(value) is int:
+        value = Decimal(value)
+    if not isinstance(value, Decimal):
+        raise TypeError(f"{name} must be an exact Decimal or integer")
+    if not value.is_finite():
+        raise ValueError(f"{name} must be finite")
+    if positive and value <= 0:
+        raise ValueError(f"{name} must be positive")
+    if nonnegative and value < 0:
+        raise ValueError(f"{name} must be nonnegative")
+    return value
+
+
+def _integer(value: int, name: str, minimum: int | None = None) -> int:
+    if type(value) is not int:
+        raise TypeError(f"{name} must be an integer, not a coerced numeric value")
+    if minimum is not None and value < minimum:
+        raise ValueError(f"{name} must be at least {minimum}")
+    return value
+
+
+def _chi(value: Decimal) -> Decimal:
+    value = _scalar(value, "chi")
+    # copy_abs is exact; ambient Decimal abs/unary-plus can round the source.
+    if value.copy_abs() > 1:
+        raise ValueError("chi must lie in [-1, 1]")
+    return value
+
+
+class _Interval:
+    """Closed Decimal enclosure; every arithmetic operation rounds outward."""
+
+    def __init__(self, arithmetic, lo, hi=None):
+        self.arithmetic = arithmetic
+        self.lo = lo
+        self.hi = lo if hi is None else hi
+
+    def __add__(self, other):
+        other = self.arithmetic(other)
+        return _Interval(self.arithmetic,
+                         self.arithmetic.down.add(self.lo, other.lo),
+                         self.arithmetic.up.add(self.hi, other.hi))
+
+    __radd__ = __add__
+
+    def __neg__(self):
+        return _Interval(self.arithmetic, self.hi.copy_negate(), self.lo.copy_negate())
+
+    def __sub__(self, other):
+        return self + -self.arithmetic(other)
+
+    def __rsub__(self, other):
+        return self.arithmetic(other) + -self
+
+    def __mul__(self, other):
+        other = self.arithmetic(other)
+        pairs = ((a, b) for a in (self.lo, self.hi) for b in (other.lo, other.hi))
+        pairs = tuple(pairs)
+        return _Interval(self.arithmetic,
+                         min(self.arithmetic.down.multiply(a, b) for a, b in pairs),
+                         max(self.arithmetic.up.multiply(a, b) for a, b in pairs))
+
+    __rmul__ = __mul__
+
+    def __truediv__(self, other):
+        other = self.arithmetic(other)
+        if other.lo <= 0 <= other.hi:
+            raise _Refine()
+        pairs = tuple((a, b) for a in (self.lo, self.hi) for b in (other.lo, other.hi))
+        return _Interval(self.arithmetic,
+                         min(self.arithmetic.down.divide(a, b) for a, b in pairs),
+                         max(self.arithmetic.up.divide(a, b) for a, b in pairs))
+
+    def __rtruediv__(self, other):
+        return self.arithmetic(other) / self
+
+
+class _Refine(Exception):
+    pass
+
+
+class _Arithmetic:
+    def __init__(self, precision):
+        self.precision = precision
+        self.down = _context(precision, ROUND_FLOOR)
+        self.up = _context(precision, ROUND_CEILING)
+        self.nearest = _context(precision)
+
+    def __call__(self, value):
+        return value if isinstance(value, _Interval) else _Interval(self, Decimal(value))
+
+    def sqrt(self, value):
+        value = self(value)
+        if value.lo < 0:
+            raise _Refine()
+        if value.lo == value.hi == 0:
+            return self(0)
+        # Decimal sqrt/ln are correctly rounded HALF_EVEN. Adjacent values
+        # enclose the exact result regardless of the endpoint's rounding side.
+        low = self.nearest.sqrt(value.lo)
+        high = self.nearest.sqrt(value.hi)
+        return _Interval(self, self.nearest.next_minus(low) if low else low,
+                         self.nearest.next_plus(high))
+
+    def ln(self, value):
+        value = self(value)
+        if value.lo <= 0:
+            raise _Refine()
+        if value.lo == value.hi == 1:
+            return self(0)
+        return _Interval(self, self.nearest.next_minus(self.nearest.ln(value.lo)),
+                         self.nearest.next_plus(self.nearest.ln(value.hi)))
+
+    def arctan_inverse(self, denominator):
+        # Exact rational partial sums with the alternating-series remainder.
+        # This also encloses pi; no agreement-between-precisions assumption.
+        power = Fraction(1, denominator)
+        total = Fraction(0)
+        limit = Fraction(1, 10 ** (self.precision + 4))
+        index, sign = 0, 1
+        while True:
+            total += sign * power / (2 * index + 1)
+            power /= denominator * denominator
+            index += 1
+            tail = power / (2 * index + 1)
+            sign = -sign
+            if tail < limit:
+                low, high = sorted((total, total + sign * tail))
+                return _Interval(
+                    self,
+                    self.down.divide(Decimal(low.numerator), Decimal(low.denominator)),
+                    self.up.divide(Decimal(high.numerator), Decimal(high.denominator)),
+                )
+
+
+def _evaluate(expression) -> Decimal:
+    """Return at caller precision, HALF_EVEN, with a checked error < 1 ulp.
+
+    A second relative bound, 10**(1-p), prevents coarse subnormal rounding
+    from silently discarding the requested significant precision. The caller's
+    exponent range is respected. At most 4096 extra working digits are tried;
+    unresolved cancellation, output range or implementation exponent-range
+    exhaustion is refused, not replaced by a numerical zero.
+    """
+    caller = getcontext()
+    precision = caller.prec
+    output = _context(precision, emin=caller.Emin, emax=caller.Emax)
+    ceiling = min(MAX_PREC, precision + MAX_GUARD_DIGITS)
+    work = min(ceiling, precision + 16)
+    relative_width = _power10(-precision - 3)
+    relative_error = _power10(1 - precision)
+    while True:
+        arithmetic = _Arithmetic(work)
+        try:
+            interval = expression(arithmetic)
+            lo, hi = interval.lo, interval.hi
+            if lo == hi == 0:
+                return Decimal(0)
+            if lo <= 0 <= hi:
+                raise _Refine()
+            scale = min(lo.copy_abs(), hi.copy_abs())
+            width = arithmetic.up.subtract(hi, lo)
+            if width > arithmetic.down.multiply(scale, relative_width):
+                raise _Refine()
+            midpoint = arithmetic.nearest.add(lo, arithmetic.nearest.divide(width, Decimal(2)))
+            result = output.plus(midpoint)
+            if not result.is_finite() or result == 0:
+                raise NumericalResolutionError("nonzero result is outside the requested Decimal output range")
+            error = max(
+                arithmetic.up.subtract(max(result, endpoint), min(result, endpoint))
+                for endpoint in (lo, hi)
+            )
+            ulp = _power10(max(result.adjusted(), output.Emin) - precision + 1)
+            if error < ulp and error <= arithmetic.down.multiply(scale, relative_error):
+                return result
+        except _Refine:
+            pass
+        except DecimalException as exc:
+            raise NumericalResolutionError("Decimal exponent range exhausted during evaluation") from exc
+        if work == ceiling:
+            raise NumericalResolutionError("requested accuracy unresolved within the guard-digit budget")
+        work = min(ceiling, 2 * work)
+
+
+def _spin(arithmetic, chi):
+    spin = arithmetic(chi)
+    root = arithmetic.sqrt((1 - spin) * (1 + spin))
+    return root, 1 + root
+
+
+def _shift_interval(arithmetic, value, exponent):
+    """Multiply by an exact decade without rounding the supplied coefficients."""
+    def shift(endpoint):
+        # Decimal zero can carry a huge quantum; it needs no exponent shift.
+        if endpoint == 0:
+            return Decimal(0)
+        sign, digits, original_exponent = endpoint.as_tuple()
+        # Tuple construction is exact. Its possible range exception must not
+        # set flags in the caller's context.
+        try:
+            with localcontext(arithmetic.nearest):
+                return Decimal((sign, digits, original_exponent + exponent))
+        except (DecimalException, OverflowError, ValueError) as exc:
+            raise NumericalResolutionError("Decimal exponent range exhausted during scale restoration") from exc
+    return _Interval(arithmetic, shift(value.lo), shift(value.hi))
+
+
+def _product_ratio(arithmetic, numerators, denominators=()):
+    """Enclose a product/ratio with powers of ten kept outside its arithmetic.
+
+    Every factor uses one common positive decade for both endpoints. Mantissa
+    arithmetic still rounds outward; Python integer exponents cancel before
+    the result is restored. This avoids overflowing a product whose quotient
+    is representable, without a search over arithmetic operation orders.
+    """
+    result, exponent = arithmetic(1), 0
+    for factors, divide in ((numerators, False), (denominators, True)):
+        for factor in factors:
+            factor = arithmetic(factor)
+            magnitude = max(factor.lo.copy_abs(), factor.hi.copy_abs())
+            factor_exponent = magnitude.adjusted() if magnitude else 0
+            normalized = _shift_interval(arithmetic, factor, -factor_exponent)
+            # Do not shortcut a zero numerator: all denominator intervals must
+            # still exclude zero, as required by the underlying division.
+            result = result / normalized if divide else result * normalized
+            exponent += -factor_exponent if divide else factor_exponent
+    return _shift_interval(arithmetic, result, exponent)
+
+
+def _kerr(arithmetic, chi):
+    root, horizon = _spin(arithmetic, chi)
+    c = int(C_LIGHT_M_PER_S)
+    # Keep the mass outside this scale: G*M or the separate dimensional
+    # frequency terms can overflow while the requested result is finite.
+    scale = arithmetic(c ** 3) / (2 * arithmetic(dec(GM_SUN_NOMINAL_M3_PER_S2)) * horizon)
+    return root, scale
+
+
+def _frequency(arithmetic, mass, chi, m, k, pi, frame_factor=1):
+    root, scale = _kerr(arithmetic, chi)
+    logarithm = arithmetic.ln(k)
+    # Choose an algebraic scale before adding signed terms. Neither branch
+    # forms a reciprocal of a tiny pi or a product with a huge pi in the sum.
+    if pi <= 1:
+        bracket = _product_ratio(arithmetic, (2, m, chi, pi)) + root * logarithm
+        denominator = (4, mass, pi, pi, frame_factor)
+    else:
+        bracket = _product_ratio(arithmetic, (2, m, chi)) + _product_ratio(
+            arithmetic, (root, logarithm), (pi,)
+        )
+        denominator = (4, mass, pi, frame_factor)
+    return _product_ratio(arithmetic, (scale, bracket), denominator)
+
+
+def _arctan_inv(x: int) -> Decimal:
+    _integer(x, "arctan denominator", 2)
+    return _evaluate(lambda arithmetic: arithmetic.arctan_inverse(x))
 
 
 def compute_pi() -> Decimal:
-    """pi from the Machin formula 16*arctan(1/5) - 4*arctan(1/239)."""
-    with localcontext() as ctx:
-        ctx.prec = WORKING_PRECISION + 10
-        pi_guard = 16 * _arctan_inv(5) - 4 * _arctan_inv(239)
-    return +pi_guard
+    """Machin pi, enclosed by exact alternating-series remainder bounds."""
+    return _evaluate(lambda arithmetic: 16 * arithmetic.arctan_inverse(5) - 4 * arithmetic.arctan_inverse(239))
 
 
-def dec(value: str | int) -> Decimal:
-    return Decimal(value)
+def dec(value: str | int | Decimal) -> Decimal:
+    """Parse an exact finite decimal; never import a binary float silently."""
+    if isinstance(value, str):
+        # Parsing invalid text must not change the caller's Decimal flags.
+        try:
+            with localcontext(_context(WORKING_PRECISION)):
+                value = Decimal(value)
+        except DecimalException as exc:
+            raise ValueError("value must be an exact finite decimal") from exc
+    return _scalar(value, "value")
 
 
 def integer_division_after(d_before: int, k: int) -> int:
@@ -189,10 +469,10 @@ def integer_division_after(d_before: int, k: int) -> int:
     pairs. It validates the continuation premise; it does not derive or select
     a physical transition.
     """
+    _integer(d_before, "d_before")
+    _integer(k, "k", 2)
     if d_before <= 0:
         raise ValueError("d_before must be positive")
-    if k < 2:
-        raise ValueError("k must be at least 2")
     d_after, remainder = divmod(d_before, k)
     if remainder != 0:
         raise ValueError("k must divide d_before")
@@ -203,85 +483,119 @@ def integer_division_after(d_before: int, k: int) -> int:
 
 def transition_entropy_nats(d_before: int, k: int) -> tuple[Decimal, Decimal]:
     """Signed black-hole entropy change and positive entropy loss in nats."""
-    d_after = integer_division_after(d_before, k)
-    signed_change = Decimal(d_after).ln() - Decimal(d_before).ln()
-    entropy_loss = Decimal(d_before).ln() - Decimal(d_after).ln()
-    return signed_change, entropy_loss
+    integer_division_after(d_before, k)
+    entropy_loss = _evaluate(lambda arithmetic: arithmetic.ln(k))
+    return entropy_loss.copy_negate(), entropy_loss
 
 
 def detector_frame_mass_solar(
     source_frame_mass_solar: Decimal, redshift: Decimal
 ) -> Decimal:
     """M_det=(1+z)M_source for an observed-frequency template."""
-    if source_frame_mass_solar <= 0:
-        raise ValueError("source-frame mass must be positive")
-    if redshift < 0:
-        raise ValueError("redshift must be nonnegative")
-    return (Decimal(1) + redshift) * source_frame_mass_solar
+    mass = _scalar(source_frame_mass_solar, "source-frame mass", positive=True)
+    redshift = _scalar(redshift, "redshift", nonnegative=True)
+    return _evaluate(lambda arithmetic: _product_ratio(
+        arithmetic, (mass, 1 + arithmetic(redshift))
+    ))
 
 
 def sqrt_one_minus_chi_squared(chi: Decimal) -> Decimal:
     """s(chi) = sqrt(1 - chi^2), the Kerr root factor."""
-    return (Decimal(1) - chi * chi).sqrt()
+    chi = _chi(chi)
+    return _evaluate(lambda arithmetic: _spin(arithmetic, chi)[0])
 
 
 def r_plus_hat(chi: Decimal) -> Decimal:
     """Outer horizon radius in units of G*M/c^2: 1 + sqrt(1 - chi^2)."""
-    return Decimal(1) + sqrt_one_minus_chi_squared(chi)
+    chi = _chi(chi)
+    return _evaluate(lambda arithmetic: _spin(arithmetic, chi)[1])
 
 
 def gm_si(mass_solar: Decimal) -> Decimal:
     """G*M in m^3/s^2 from the nominal solar mass parameter."""
-    return mass_solar * dec(GM_SUN_NOMINAL_M3_PER_S2)
+    mass = _scalar(mass_solar, "mass", positive=True)
+    return _evaluate(lambda arithmetic: _product_ratio(
+        arithmetic, (mass, dec(GM_SUN_NOMINAL_M3_PER_S2))
+    ))
 
 
 def r_plus_si(mass_solar: Decimal, chi: Decimal) -> Decimal:
     """Outer horizon radius in meters: (G*M/c^2)*(1 + sqrt(1 - chi^2))."""
-    c = dec(C_LIGHT_M_PER_S)
-    return gm_si(mass_solar) / (c * c) * r_plus_hat(chi)
+    mass, chi = _scalar(mass_solar, "mass", positive=True), _chi(chi)
+    return _evaluate(lambda arithmetic: _product_ratio(
+        arithmetic, (mass, dec(GM_SUN_NOMINAL_M3_PER_S2), _spin(arithmetic, chi)[1]),
+        (int(C_LIGHT_M_PER_S) ** 2,)
+    ))
 
 
 def omega_h_si(mass_solar: Decimal, chi: Decimal) -> Decimal:
     """Horizon angular frequency in rad/s:
     c^3*chi / (2*G*M*(1 + sqrt(1 - chi^2)))."""
-    c = dec(C_LIGHT_M_PER_S)
-    return c ** 3 * chi / (2 * gm_si(mass_solar) * r_plus_hat(chi))
+    mass, chi = _scalar(mass_solar, "mass", positive=True), _chi(chi)
+    if chi == 0:
+        return Decimal(0)
+    return _evaluate(lambda arithmetic: _product_ratio(
+        arithmetic, (_kerr(arithmetic, chi)[1], chi), (mass,)
+    ))
 
 
 def kappa_si(mass_solar: Decimal, chi: Decimal) -> Decimal:
     """Surface gravity in 1/s:
     c^3*sqrt(1 - chi^2) / (2*G*M*(1 + sqrt(1 - chi^2)))."""
-    c = dec(C_LIGHT_M_PER_S)
-    s = sqrt_one_minus_chi_squared(chi)
-    return c ** 3 * s / (2 * gm_si(mass_solar) * r_plus_hat(chi))
+    mass, chi = _scalar(mass_solar, "mass", positive=True), _chi(chi)
+    if chi.copy_abs() == 1:
+        return Decimal(0)
+    def expression(arithmetic):
+        root, scale = _kerr(arithmetic, chi)
+        return _product_ratio(arithmetic, (scale, root), (mass,))
+    return _evaluate(expression)
 
 
 def g_of_chi(chi: Decimal) -> Decimal:
     """Statement-pinned spin factor
     g(chi) = 2*sqrt(1 - chi^2)/(1 + sqrt(1 - chi^2)) = 4*G*M*kappa/c^3."""
-    s = sqrt_one_minus_chi_squared(chi)
-    return 2 * s / (Decimal(1) + s)
+    chi = _chi(chi)
+    def expression(arithmetic):
+        root, horizon = _spin(arithmetic, chi)
+        return 2 * root / horizon
+    return _evaluate(expression)
 
 
 def base_spacing_hz_per_nat(mass_solar: Decimal, chi: Decimal, pi: Decimal) -> Decimal:
     """Tooth spacing per nat of ln(k): c^3*g(chi) / (16*pi^2*G*M) in Hz."""
-    c = dec(C_LIGHT_M_PER_S)
-    return c ** 3 * g_of_chi(chi) / (16 * pi * pi * gm_si(mass_solar))
+    mass, chi = _scalar(mass_solar, "mass", positive=True), _chi(chi)
+    pi = _scalar(pi, "pi", positive=True)
+    if chi.copy_abs() == 1:
+        return Decimal(0)
+    def expression(arithmetic):
+        root, scale = _kerr(arithmetic, chi)
+        return _product_ratio(arithmetic, (scale, root), (4, pi, pi, mass))
+    return _evaluate(expression)
 
 
 def rotation_line_hz(mass_solar: Decimal, chi: Decimal, m: int, pi: Decimal) -> Decimal:
     """Rotation line m*Omega_H/(2*pi) in Hz."""
-    return Decimal(m) * omega_h_si(mass_solar, chi) / (2 * pi)
+    mass, chi = _scalar(mass_solar, "mass", positive=True), _chi(chi)
+    m, pi = _integer(m, "m"), _scalar(pi, "pi", positive=True)
+    if m == 0 or chi == 0:
+        return Decimal(0)
+    return _evaluate(lambda arithmetic: _product_ratio(
+        arithmetic, (m, _kerr(arithmetic, chi)[1], chi), (2, pi, mass)
+    ))
 
 
 def universal_position(k: int, pi: Decimal) -> Decimal:
     """Frozen universal-coordinate tooth position x_k = ln(k)/(8*pi)."""
-    return Decimal(k).ln() / (8 * pi)
+    k, pi = _integer(k, "k", 2), _scalar(pi, "pi", positive=True)
+    return _evaluate(lambda arithmetic: _product_ratio(arithmetic, (arithmetic.ln(k),), (8, pi)))
 
 
 def ladder_ratio(k: int) -> Decimal:
     """Offset-subtracted ratio against the k = 2 tooth: ln(k)/ln(2)."""
-    return Decimal(k).ln() / Decimal(2).ln()
+    k = _integer(k, "k", 2)
+    if k == 2:
+        return Decimal(1)
+    return _evaluate(lambda arithmetic: arithmetic.ln(k) / arithmetic.ln(2))
 
 
 def kms_weight(k: int) -> Decimal:
@@ -290,12 +604,20 @@ def kms_weight(k: int) -> Decimal:
     The legacy function name does not make this a normalized transition
     probability or prior across different k.
     """
-    return Decimal(k - 1) / Decimal(k)
+    k = _integer(k, "k", 2)
+    return _evaluate(lambda arithmetic: _product_ratio(arithmetic, (k - 1,), (k,)))
 
 
 def tooth_offset_hz(mass_solar: Decimal, chi: Decimal, k: int, pi: Decimal) -> Decimal:
     """Delta_f_k = c^3*g(chi)*ln(k) / (16*pi^2*G*M) in Hz."""
-    return base_spacing_hz_per_nat(mass_solar, chi, pi) * Decimal(k).ln()
+    mass, chi = _scalar(mass_solar, "mass", positive=True), _chi(chi)
+    k, pi = _integer(k, "k", 2), _scalar(pi, "pi", positive=True)
+    if chi.copy_abs() == 1:
+        return Decimal(0)
+    def expression(arithmetic):
+        root, scale = _kerr(arithmetic, chi)
+        return _product_ratio(arithmetic, (scale, root, arithmetic.ln(k)), (4, pi, pi, mass))
+    return _evaluate(expression)
 
 
 def tooth_frequency_hz(
@@ -306,9 +628,12 @@ def tooth_frequency_hz(
     Pass source-frame mass for source-frame hertz and detector-frame mass for
     observed detector-frame hertz.
     """
-    return rotation_line_hz(mass_solar, chi, m, pi) + tooth_offset_hz(
-        mass_solar, chi, k, pi
-    )
+    mass, chi = _scalar(mass_solar, "mass", positive=True), _chi(chi)
+    m, k = _integer(m, "m"), _integer(k, "k", 2)
+    pi = _scalar(pi, "pi", positive=True)
+    if m == 0 and chi.copy_abs() == 1:
+        return Decimal(0)
+    return _evaluate(lambda arithmetic: _frequency(arithmetic, mass, chi, m, k, pi))
 
 
 def detector_frame_tooth_frequency_hz(
@@ -320,8 +645,15 @@ def detector_frame_tooth_frequency_hz(
     pi: Decimal,
 ) -> Decimal:
     """Observed tooth frequency using M_det=(1+z)M_source."""
-    mass_det = detector_frame_mass_solar(source_frame_mass_solar, redshift)
-    return tooth_frequency_hz(mass_det, chi, m, k, pi)
+    mass = _scalar(source_frame_mass_solar, "source-frame mass", positive=True)
+    redshift, chi = _scalar(redshift, "redshift", nonnegative=True), _chi(chi)
+    m, k = _integer(m, "m"), _integer(k, "k", 2)
+    pi = _scalar(pi, "pi", positive=True)
+    if m == 0 and chi.copy_abs() == 1:
+        return Decimal(0)
+    return _evaluate(lambda arithmetic: _frequency(
+        arithmetic, mass, chi, m, k, pi, 1 + arithmetic(redshift)
+    ))
 
 
 def linewidth_fraction(a: Decimal, chi: Decimal, k: int, pi: Decimal) -> Decimal:
@@ -330,19 +662,34 @@ def linewidth_fraction(a: Decimal, chi: Decimal, k: int, pi: Decimal) -> Decimal
     The mass cancels, but the Kerr spin factor does not. The constant-p_0
     approximation is a declared template nuisance model, not a controlled
     near-extremal Page calculation."""
-    p0 = dec(DECLARED_P0)
-    g_chi = g_of_chi(chi)
-    return 64 * pi * pi * p0 / (a * g_chi * g_chi * Decimal(k).ln())
+    a, chi = _scalar(a, "a", positive=True), _chi(chi)
+    k, pi = _integer(k, "k", 2), _scalar(pi, "pi", positive=True)
+    if chi.copy_abs() == 1:
+        raise ValueError("linewidth is singular at extremal chi")
+    def expression(arithmetic):
+        root, horizon = _spin(arithmetic, chi)
+        g_chi = 2 * root / horizon
+        return _product_ratio(
+            arithmetic, (64, pi, pi, dec(DECLARED_P0)),
+            (a, g_chi, g_chi, arithmetic.ln(k))
+        )
+    return _evaluate(expression)
 
 
 def sig40(x: Decimal) -> str:
     """Render exactly SIG_DIGITS significant digits in scientific form."""
-    return format(x, ".%dE" % (SIG_DIGITS - 1))
+    x = _scalar(x, "value")
+    with localcontext(_context(WORKING_PRECISION)):
+        return format(x, ".%dE" % (SIG_DIGITS - 1))
 
 
 def build_receipt() -> dict:
     """Assemble the full receipt dictionary (pure; no I/O)."""
-    getcontext().prec = WORKING_PRECISION
+    with localcontext(_context(WORKING_PRECISION, emin=-999999, emax=999999)):
+        return _build_receipt()
+
+
+def _build_receipt() -> dict:
     pi = compute_pi()
 
     mass = dec(DECLARED_REFERENCE_MASS_SOLAR)
@@ -394,7 +741,7 @@ def build_receipt() -> dict:
     a_hi = dec(DECLARED_A_DISPLAY[1])
     for k in ks:
         dfk = tooth_offset_hz(mass, chi, k, pi)
-        fk = rot + dfk
+        fk = tooth_frequency_hz(mass, chi, m_az, k, pi)
         lw_lo = linewidth_fraction(a_hi, chi, k, pi)  # a = 10: narrow end
         lw_hi = linewidth_fraction(a_lo, chi, k, pi)  # a = 1: wide end
         key = "k%02d" % k
