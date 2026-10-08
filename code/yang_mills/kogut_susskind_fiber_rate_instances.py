@@ -25,6 +25,11 @@ rates live on the non-product orbit space and vary over orbits; only the
 rate identity, the floor value, and the ``pi = Omega^2`` heat-bath
 convention are shared and checked here.
 
+Before extracting conventions, the complete live source receipt must pass its
+strict structural, scalar-consistency and local source/payload binding checks.
+This does not independently replay its interacting eigensolves; those run in
+the finite-transfer scientific suite.
+
 Replay: ``python3 kogut_susskind_fiber_rate_instances.py`` from this
 directory rewrites ``receipts/kogut_susskind_fiber_rate_instances.json``
 deterministically.
@@ -37,6 +42,8 @@ import itertools
 import json
 from fractions import Fraction
 from pathlib import Path
+
+from verify_z2_finite_transfer_receipt import parse_receipt, verify_bindings
 
 SCHEMA = "oph.yang_mills.kogut_susskind_fiber_rate_instances.v1"
 
@@ -132,7 +139,9 @@ def instance_table(name: str, lam: Fraction, ratios: list[Fraction]) -> dict:
 
 
 def committed_cross_check() -> dict:
-    data = json.loads(COMMITTED_RECEIPT.read_text(encoding="utf-8"))
+    source_bytes = COMMITTED_RECEIPT.read_bytes()
+    data = parse_receipt(source_bytes)
+    verify_bindings(data, HERE / "z2_finite_transfer_receipt.py")
     assert data["schema"] == "oph.yang_mills.z2_finite_transfer_receipt.v2"
     assert data["physical_clay_receipt"] is False
     assert data["grid_scope"]["universal_no_go"] is False
@@ -156,7 +165,7 @@ def committed_cross_check() -> dict:
     return {
         "committed_receipt": "receipts/z2_finite_transfer_receipt.json",
         "committed_receipt_sha256_at_read": hashlib.sha256(
-            COMMITTED_RECEIPT.read_bytes()
+            source_bytes
         ).hexdigest(),
         "shared_conventions_checked": [
             "rate identity string c_l(o) = lambda * (r_l(o) + 1/r_l(o))",
@@ -212,7 +221,9 @@ def build() -> dict:
 def main() -> None:
     receipt = build()
     OUTPUT.write_text(
-        json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        json.dumps(receipt, indent=2, sort_keys=True, allow_nan=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
     )
     print(f"wrote {OUTPUT}")
     for inst in receipt["instances"]:
