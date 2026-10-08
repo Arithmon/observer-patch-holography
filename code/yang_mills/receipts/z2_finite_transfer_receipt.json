@@ -21,7 +21,7 @@
   },
   "ground_state_transform": "Doob transform by the Perron vector, pi = Omega^2",
   "physical_clay_receipt": false,
-  "producer_sha256": "2d3e64681483fc3494817aba39eabfbc06409be41167f8f9e90f7af3fc10b08d",
+  "producer_sha256": "3f4135ce135fc39a859f45df4163c688a4e2526a8732736911f7dc3b9361d831",
   "receipt_under_test": "finite ground-state-transform and cross-fiber receipt: U_r H_r U_r^{-1} = sum_C c_C (I - E_C) with c_C independent of the repaired value",
   "runs": [
     {
@@ -812,33 +812,33 @@
     {
       "L": 3,
       "constant_rate_fit": {
-        "rate_max": 1.2664712476470257,
-        "rate_min": 1.2664712476470144,
+        "rate_max": 1.266471247647025,
+        "rate_min": 1.266471247647013,
         "rates": [
-          1.2664712476470208,
-          1.2664712476470161,
+          1.2664712476470201,
+          1.266471247647013,
+          1.26647124764702,
+          1.2664712476470168,
+          1.2664712476470141,
+          1.2664712476470177,
+          1.266471247647016,
+          1.2664712476470186,
           1.2664712476470188,
+          1.266471247647022,
+          1.2664712476470183,
           1.2664712476470181,
           1.2664712476470146,
-          1.2664712476470166,
-          1.2664712476470188,
-          1.2664712476470181,
-          1.2664712476470172,
-          1.2664712476470237,
-          1.2664712476470181,
-          1.2664712476470188,
-          1.2664712476470144,
-          1.2664712476470206,
-          1.2664712476470257,
-          1.266471247647015,
+          1.2664712476470195,
+          1.266471247647025,
+          1.2664712476470146,
           1.2664712476470232,
-          1.2664712476470164
+          1.2664712476470155
         ],
-        "relative_frobenius_residual": 0.07014207193509911
+        "relative_frobenius_residual": 0.07014207193509939
       },
       "dobrushin": {
         "dobrushin_condition_holds": false,
-        "eta_star": 4.1126061659624025,
+        "eta_star": 4.11260616596247,
         "unit_rate_floor_c_star_times_1_minus_eta": 0.0
       },
       "doob_generator_offdiagonal_nonpositive": true,
@@ -846,10 +846,10 @@
       "fiber_dependent_rates": {
         "all_rates_positive": true,
         "offdiagonal_mass_outside_single_flip": 0.0,
-        "offdiagonal_mass_single_flip": 11614.095962530177,
-        "rate_max": 2.051629472077612,
+        "offdiagonal_mass_single_flip": 11614.095962530178,
+        "rate_max": 2.0516294720776007,
         "rate_min": 0.9999999999999998,
-        "spread_max_over_min": 2.0516294720776123
+        "spread_max_over_min": 2.051629472077601
       },
       "ground_energy": -11.341890588408376,
       "n_links": 18,
@@ -858,10 +858,10 @@
         "lam": 0.5
       },
       "spectral": {
-        "gap_H": 1.0206618335800945,
-        "gap_unit_rate_heat_bath": 0.6898183339483436,
+        "gap_H": 1.0206618335800952,
+        "gap_unit_rate_heat_bath": 0.6898183339483421,
         "pi_max": 0.0634393207716263,
-        "pi_min": 1.2456044860030855e-05
+        "pi_min": 1.2456044860031657e-05
       },
       "transfer": "kogut_susskind",
       "variable_rate_floor": {
@@ -875,33 +875,33 @@
     {
       "L": 3,
       "constant_rate_fit": {
-        "rate_max": 2.1273368542845708,
-        "rate_min": 2.127336854284472,
+        "rate_max": 2.1273368542845548,
+        "rate_min": 2.127336854284476,
         "rates": [
-          2.1273368542845708,
-          2.1273368542844957,
-          2.1273368542844833,
-          2.127336854284504,
-          2.127336854284472,
+          2.1273368542845548,
           2.1273368542844917,
           2.1273368542844837,
-          2.127336854284491,
+          2.1273368542845006,
+          2.127336854284476,
+          2.1273368542844877,
+          2.1273368542844837,
           2.1273368542844864,
+          2.1273368542844846,
+          2.1273368542844833,
           2.1273368542844873,
+          2.12733685428448,
+          2.1273368542844877,
+          2.1273368542844953,
           2.12733685428449,
           2.127336854284483,
-          2.1273368542844877,
-          2.1273368542844966,
-          2.1273368542844935,
-          2.1273368542844837,
-          2.1273368542844886,
-          2.1273368542844913
+          2.127336854284486,
+          2.127336854284489
         ],
-        "relative_frobenius_residual": 0.01915286991344523
+        "relative_frobenius_residual": 0.019152869913445312
       },
       "dobrushin": {
         "dobrushin_condition_holds": false,
-        "eta_star": 1.7481898548014767,
+        "eta_star": 1.7481898548015582,
         "unit_rate_floor_c_star_times_1_minus_eta": 0.0
       },
       "doob_generator_offdiagonal_nonpositive": true,
@@ -909,22 +909,22 @@
       "fiber_dependent_rates": {
         "all_rates_positive": true,
         "offdiagonal_mass_outside_single_flip": 0.0,
-        "offdiagonal_mass_single_flip": 19590.519612491615,
-        "rate_max": 2.339514288535492,
+        "offdiagonal_mass_single_flip": 19590.51961249162,
+        "rate_max": 2.3395142885354936,
         "rate_min": 1.9999999999999996,
-        "spread_max_over_min": 1.1697571442677461
+        "spread_max_over_min": 1.169757144267747
       },
-      "ground_energy": -19.131366809073846,
+      "ground_energy": -19.131366809073832,
       "n_links": 18,
       "n_orbits": 1024,
       "parameters": {
         "lam": 1.0
       },
       "spectral": {
-        "gap_H": 4.7755093255869445,
-        "gap_unit_rate_heat_bath": 2.2186667437643033,
-        "pi_max": 0.008561772120683432,
-        "pi_min": 0.00014186768267192623
+        "gap_H": 4.7755093255869765,
+        "gap_unit_rate_heat_bath": 2.2186667437643037,
+        "pi_max": 0.008561772120683429,
+        "pi_min": 0.00014186768267192884
       },
       "transfer": "kogut_susskind",
       "variable_rate_floor": {
@@ -938,56 +938,56 @@
     {
       "L": 3,
       "constant_rate_fit": {
-        "rate_max": 4.062824755274835,
-        "rate_min": 4.062824755274789,
+        "rate_max": 4.0628247552748835,
+        "rate_min": 4.062824755274791,
         "rates": [
-          4.062824755274835,
-          4.0628247552748205,
-          4.062824755274817,
-          4.062824755274834,
-          4.062824755274826,
-          4.06282475527482,
-          4.06282475527483,
-          4.062824755274809,
-          4.062824755274806,
-          4.062824755274794,
-          4.062824755274812,
-          4.062824755274814,
-          4.062824755274809,
-          4.062824755274826,
+          4.0628247552748835,
+          4.062824755274801,
           4.062824755274816,
-          4.062824755274789,
-          4.062824755274818,
+          4.062824755274838,
+          4.062824755274823,
+          4.062824755274817,
+          4.062824755274825,
+          4.062824755274807,
+          4.062824755274807,
+          4.062824755274797,
+          4.062824755274809,
+          4.062824755274813,
+          4.062824755274812,
+          4.062824755274829,
+          4.062824755274815,
+          4.062824755274791,
+          4.0628247552748205,
           4.06282475527481
         ],
-        "relative_frobenius_residual": 0.0049901553671129265
+        "relative_frobenius_residual": 0.00499015536711294
       },
       "dobrushin": {
         "dobrushin_condition_holds": true,
-        "eta_star": 0.820487187712789,
-        "unit_rate_floor_c_star_times_1_minus_eta": 0.17951281228721105
+        "eta_star": 0.8204871877127868,
+        "unit_rate_floor_c_star_times_1_minus_eta": 0.17951281228721316
       },
       "doob_generator_offdiagonal_nonpositive": true,
       "doob_generator_rows_sum_zero": true,
       "fiber_dependent_rates": {
         "all_rates_positive": true,
         "offdiagonal_mass_outside_single_flip": 0.0,
-        "offdiagonal_mass_single_flip": 37440.75903117652,
-        "rate_max": 4.143465828532195,
+        "offdiagonal_mass_single_flip": 37440.75903117654,
+        "rate_max": 4.1434658285321895,
         "rate_min": 3.999999999999999,
-        "spread_max_over_min": 1.035866457133049
+        "spread_max_over_min": 1.0358664571330476
       },
-      "ground_energy": -36.56324124138333,
+      "ground_energy": -36.56324124138336,
       "n_links": 18,
       "n_orbits": 1024,
       "parameters": {
         "lam": 2.0
       },
       "spectral": {
-        "gap_H": 11.450537875563569,
+        "gap_H": 11.45053787556352,
         "gap_unit_rate_heat_bath": 2.816608111291902,
-        "pi_max": 0.0029438408829512027,
-        "pi_min": 0.0003895445468821328
+        "pi_max": 0.0029438408829511984,
+        "pi_min": 0.0003895445468821312
       },
       "transfer": "kogut_susskind",
       "variable_rate_floor": {
@@ -1001,6 +1001,6 @@
   ],
   "schema": "oph.yang_mills.z2_finite_transfer_receipt.v2",
   "scope": "finite_gauge_diagnostic",
-  "sha256_of_runs": "6f7e2a8501cac0457bcbea134b2139aa3ab75b5bbf3e57cf702babc901379bda",
+  "sha256_of_runs": "46517a3f4ab9d2c7ae1b720f6786cc16bdde1d3b19786c1a90a83b1905508a5e",
   "system": "Z2 lattice gauge theory, L x L periodic spatial torus, gauge-invariant sector"
 }

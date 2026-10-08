@@ -47,5 +47,6 @@ jobs:
           code/yang_mills/tests/test_z2_finite_transfer_receipt.py
           code/yang_mills/tests/test_z2_finite_transfer_verifier.py
           code/yang_mills/tests/test_z2_transfer_spectrum.py
+          code/yang_mills/tests/test_z2_kogut_precision.py
           code/yang_mills/tests/test_z2_full_space_controls.py
           code/yang_mills/tests/test_kogut_susskind_fiber_rate_instances.py

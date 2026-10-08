@@ -106,8 +106,22 @@ every point in the original retained grid remains supported.
 Row conservation is then checked relative to each row's own absolute mass.
 An unresolved row causes refusal; the code does not repair its diagonal or
 mask a small bad row with the scale of a larger one.
+The Kogut-Susskind ground-state solve is scaled and checked against its ground
+separation and smallest Perron component too. This support gate is conservative:
+it can refuse an accurate small-coupling result, including `L=2, lam=.01`.
+The retained grid and independently controlled `lam=.05` and `lam=1e4` pass.
+Both interacting families also require the computed Dobrushin influence to
+exceed a dimension-scaled conditional-probability contrast floor at the requested
+relative resolution. Thus nearly uniform computed populations cannot turn a
+lost interaction response into a claimed zero. Only the source-exact free law
+bypasses that check. Masked operators and unused parameter names are rejected;
+an extended-precision nonzero coupling cannot silently become the free input.
 These are numerical safeguards at a `1e-7` resolution policy, not certified
-interval bounds. The generic rounded-matrix logarithm separately refuses an
+interval bounds or a relative-error guarantee for every derived scalar at every
+accepted noncanonical coupling. Tiny cancellation-derived diagnostics remain
+floating estimates; the retained grid is checked component by component across
+platforms and against the independent controls below.
+The generic rounded-matrix logarithm separately refuses an
 unresolved bottom spectrum or Perron state. Near-zero positive couplings and
 an unresolved leading eigengap are not replaced by an exact free model.
 
@@ -128,6 +142,9 @@ claim, claim-registry status, Lean theorem or frozen registration changes.
 
 `verify_z2_finite_transfer_receipt.py` validates strict JSON, the complete grid,
 source and run digests, scalar identities, and every replayed component.
+Nonzero JSON lexemes that underflow to zero are rejected before binding checks.
+Necessary normalization, least-squares, total-variation, projector-spectrum and
+reversible fiber-mass bounds reject impossible summaries even after rehashing.
 Substantive quantities use relative-only tolerance; absolute allowances apply
 only to specified zero diagnostics and scale with the fresh calculation.
 Replay is not an independent interacting solver. Independence comes from the
