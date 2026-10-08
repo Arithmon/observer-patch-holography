@@ -39,50 +39,75 @@ def source_edges():
     require(faces is not None,'source incidence missing')
     return sorted({tuple(sorted((face[i],face[(i+1)%3]))) for face in faces for i in range(3)})
 
-def check_finite(row,edges,antipodes):
-    r=row['raised']; masks=[s for s in range(1<<12) if s.bit_count()==r]
+def stationary_lag_covariances(value,masks,edges,scale,max_lag):
+    """Replay the entire fixed-occupancy chain with unbounded integers.
+
+    After t steps, f stores the integer numerator of K**t value with
+    denominator 60**t.  Those numerators exceed signed 64-bit range for
+    ordinary longer record windows, even though the covariances are small.
+    Object arrays preserve Python integer arithmetic before normalization.
+    This full-state replay is independent of the producer's moment coordinates.
+    """
+    value=np.array(value,dtype=object)
+    n=len(masks)
+    mean=np.array([F(sum(value[:,i]),n*scale) for i in range(12)],dtype=object)
+    where={s:i for i,s in enumerate(masks)}
+    permutations=[]
+    for a,b in edges:
+        permutations.append([where[s ^ ((1<<a)|(1<<b))]
+                             if ((s>>a)^(s>>b))&1 else where[s] for s in masks])
+    moments=[];f=value.copy()
+    for t in range(max_lag+1):
+        moments.append(gram(value,f,n*scale*scale*60**t)-np.outer(mean,mean))
+        if t<max_lag:
+            next_f=30*f
+            for indexes in permutations:
+                next_f+=f[indexes]
+            f=next_f
+    return mean,moments
+
+
+def check_finite(row,edges,antipodes,windows=(1,2,4)):
+    r=row['raised']
+    require(type(r) is int and 1<=r<=11,'exact occupancy integer in 1..11')
+    require(type(windows) in (list,tuple) and len(windows)>0,
+            'nonempty record windows')
+    require(all(type(count) is int and count>0 for count in windows),
+            'positive exact integer record windows')
+    require(len(set(windows))==len(windows),'unique record windows')
+    max_lag=2*(max(windows)-1)
+    masks=[s for s in range(1<<12) if s.bit_count()==r]
     require(row['configurations']==len(masks),'configuration census')
     require(row['preparation']=='uniform law on all fixed-occupancy configurations','source preparation')
     require(row['clock']=='one independent uniform seam attempt and fair endpoint coin','clock definition')
-    where={s:i for i,s in enumerate(masks)}
     neighbor=[[] for _ in range(12)]
     for a,b in edges: neighbor[a].append(b);neighbor[b].append(a)
-    occupation=np.array([[(s>>i)&1 for i in range(12)] for s in masks],dtype=np.int64)
+    occupation=np.array([[(s>>i)&1 for i in range(12)] for s in masks],dtype=object)
     load=12*occupation-r
-    drive=np.array([[sum(int(z[i]-z[j]) for j in neighbor[i]) for i in range(12)] for z in load])
-    mismatch=np.array([[sum(int(n[i]!=n[j]) for j in neighbor[i]) for i in range(12)] for n in occupation])
-    p=F(r,12); kappa=F(r*(12-r),132)
+    drive=np.array([[sum(z[i]-z[j] for j in neighbor[i]) for i in range(12)] for z in load],dtype=object)
+    mismatch=np.array([[sum(int(n[i]!=n[j]) for j in neighbor[i]) for i in range(12)] for n in occupation],dtype=object)
+    kappa=F(r*(12-r),132)
     require(F(row['kappa'])==kappa,'absolute kappa')
     cz=np.array([[kappa*(F(int(i==j))-F(1,12)) for j in range(12)] for i in range(12)],dtype=object)
     a,b=edges[0];c,d=antipodes[a],antipodes[b]
     require(row['coarse_blocks']==[[a,b],[c,d]] and len({a,b,c,d})==4,'separated coarse blocks')
     coarse=np.zeros((2,12),dtype=object);coarse[0,a]=coarse[0,b]=F(1,2);coarse[1,c]=coarse[1,d]=F(1,2)
-    lap=np.array([[len(neighbor[i]) if i==j else -int(j in neighbor[i]) for j in range(12)] for i in range(12)],dtype=np.int64)
     normalized={}
     for name,(value,scale) in {'load':(load,12),'local_drive':(drive,12),'local_mismatch':(mismatch,1)}.items():
         record=row['readouts'][name]; n=len(value)
-        mean=np.array([F(sum(int(x) for x in value[:,i]),n*scale) for i in range(12)],dtype=object)
+        mean,moments=stationary_lag_covariances(value,masks,edges,scale,max_lag)
         require([str(x) for x in mean]==record['mean'],'mean '+name)
         bmat=gram(value,load,n*scale*12)/kappa
         # E[z]=0, so no centering term in the density projection.
         eq(record['density_projection_B'],bmat,'projection '+name)
-        moments=[];f=value.copy()
-        for t in range(7):
-            moments.append(gram(value,f,n*scale*scale*60**t)-np.outer(mean,mean))
-            if t<6:
-                next_f=30*f.copy()
-                for a,b in edges:
-                    indexes=[where[s ^ ((1<<a)|(1<<b))] if ((s>>a)^(s>>b))&1 else where[s] for s in masks]
-                    next_f+=f[indexes]
-                f=next_f
-        require(len(record['lag_covariance'])==7,'lag census')
-        for t in range(7): eq(record['lag_covariance'][t],moments[t],f'lag {name} {t}')
+        require(len(record['lag_covariance'])==max_lag+1,'lag census')
+        for t in range(max_lag+1): eq(record['lag_covariance'][t],moments[t],f'lag {name} {t}')
         eq(record['instant_covariance'],moments[0],'instant '+name)
         residual=moments[0]-bmat@cz@bmat.T
         eq(record['residual_covariance'],residual,'residual '+name)
         for stride,key in [(1,'record_average_covariance'),(2,'two_attempts_per_record_covariance')]:
-            require(set(record[key])=={'1','2','4'},'window census')
-            for count in (1,2,4):
+            require(set(record[key])=={str(count) for count in windows},'window census')
+            for count in windows:
                 total=count*moments[0]
                 for t in range(1,count): total+=(count-t)*(moments[stride*t]+moments[stride*t].T)
                 eq(record[key][str(count)],total/(count*count),'clock/window '+name)
@@ -101,7 +126,8 @@ def check_finite(row,edges,antipodes):
     require(not np.array_equal(normalized['load'],normalized['local_drive']),'source shape remains unselected')
     for key in ('geometry_q_covariance','geometry_density_projection_B','geometry_residual_covariance'):
         eq(row[key],np.zeros((12,12),dtype=object),'fixed geometry '+key)
-    return {'raised':r,'configurations':len(masks),'exact_matrices_checked':3*(1+7+1+1+6+2)+2+3}
+    return {'raised':r,'configurations':len(masks),
+            'exact_matrices_checked':3*(1+(max_lag+1)+1+1+2*len(windows)+2)+2+3}
 
 def determinant(v):
     a,b,c=v
@@ -155,7 +181,7 @@ def verify(path=EVIDENCE/'receipt.json'):
     anti=[next(j for j in range(12) if distance[i][j]==3) for i in range(12)]
     require(row['antipodes']==anti,'native antipodes')
     require([r['raised'] for r in row['finite_controls']]==[1,6],'two distinct finite laws')
-    finite=[check_finite(r,edges,anti) for r in row['finite_controls']]
+    finite=[check_finite(r,edges,anti,windows=spec['record_attempt_counts']) for r in row['finite_controls']]
     require([(r['level'],r['preparation']) for r in row['geometry_traces']]==[(l,p) for l in (0,1) for p in ('uniform_fixed_total','clustered_fixed_total')],'full trace census')
     traces=[check_trace(r) for r in row['geometry_traces']]
     check=subprocess.run([sys.executable,str(Path(__file__).with_name('check_native_geometry.py')),str(Path(path).resolve()),str(EVIDENCE/'spec.json')],capture_output=True,text=True)
@@ -167,5 +193,5 @@ def verify(path=EVIDENCE/'receipt.json'):
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--receipt',type=Path,default=EVIDENCE/'receipt.json');p.add_argument('--write',action='store_true');args=p.parse_args()
     result=verify(args.receipt)
-    if args.write: (EVIDENCE/'verification_receipt.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
+    if args.write: (EVIDENCE/'verification_receipt.json').write_bytes((json.dumps(result,indent=2,sort_keys=True)+'\n').encode('utf-8'))
     print(json.dumps(result,indent=2,sort_keys=True))
