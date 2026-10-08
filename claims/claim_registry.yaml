@@ -641,7 +641,7 @@
     },
     {
       "claim_id": "OPH-GR-D2-COLLAR-RECOVERY",
-      "statement": "For a faithful finite-range Gibbs regulator family with a uniform boundary-anchor strong conditional/matrix log-density mixing envelope, collar tripartitions satisfy I(A_delta:D_delta | B_delta) <= kappa |partial C|_UV exp(-(m-r0)/zeta) <= c |partial C|_UV exp(-delta/xi), with m = delta/ell_UV, xi = zeta ell_UV, and c = kappa exp(r0/zeta); the associated recovery error vanishes when delta/xi - log |partial C|_UV tends to +infinity. Ordinary two-point clustering and delta/ell_UV -> infinity alone are insufficient. The declared central-interface branch remains exactly Markov with zero CMI.",
+      "statement": "For a faithful finite-range Gibbs regulator family with a uniform boundary-anchor strong conditional/matrix log-density mixing envelope, collar tripartitions satisfy I(A_delta:D_delta | B_delta) <= kappa |partial C|_UV exp(-(m-r0)/zeta) <= c |partial C|_UV exp(-delta/xi), with m = delta/ell_UV, xi = zeta ell_UV, and c = kappa exp(r0/zeta); the associated recovery error vanishes when delta/xi - log |partial C|_UV tends to +infinity. Ordinary two-point clustering and delta/ell_UV -> infinity alone are insufficient. The declared central-interface branch remains exactly Markov with zero CMI. The lower logarithmic bound on physical collar width ensures the boundary-aware recovery rate but does not imply that the collar shrinks; delta -> 0 remains separate, and choosing the logarithmic schedule itself realizes both properties.",
       "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
       "tier": "conditional_collar_recoverability_theorem",
       "assumptions": [
@@ -655,7 +655,7 @@
         "trace_norm_operator_norm_duality",
         "Fawzi_Renner_recovery"
       ],
-      "oph_specific_delta": "The OPH collar continuation exposes the boundary-size prefactor, regulator/mixing constants, sharp boundary-aware double-scaling rate, and finite receipt schema while separating the exact central-interface branch and downstream stress/source identifications.",
+      "oph_specific_delta": "The OPH collar continuation exposes the boundary-size prefactor, regulator/mixing constants, sharp boundary-aware double-scaling rate, and finite receipt schema while separating the exact central-interface branch and downstream stress/source identifications. The lower logarithmic bound on physical collar width ensures the boundary-aware recovery rate but does not imply that the collar shrinks; delta -> 0 remains separate, and choosing the logarithmic schedule itself realizes both properties.",
       "novelty_type": "conditional_recoverability_theorem_and_receipt_contract",
       "evidence": [
         "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
@@ -1097,7 +1097,7 @@
     },
     {
       "claim_id": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
-      "statement": "One uniform scaling family (region-uniform finite-range/strong conditional-mixing constants, boundary counts, fixed-collar modulus, and the sharp collar rate margin, plus o(ell^4) kernel residuals on that same family) replaces the per-radius diagonal choice; variation coverage of all local timelike directions follows from population plus the produced Lorentz orbit; and the vacuum-reference receipt VR fixes the first-variation integration constant, yielding the absolute semiclassical expectation-value equation G_ab + Lambda g_ab = 8 pi G <T_ab> per connected component with structural G and no measured constant; without VR the conclusion is constancy of the residue tensor only, with de Sitter and flat baselines producing identical first-variation data.",
+      "statement": "One uniform scaling family (region-uniform finite-range/strong conditional-mixing constants, boundary counts, fixed-collar modulus, and the sharp collar rate margin, plus o(ell^4) kernel residuals on that same family) replaces the per-radius diagonal choice; variation coverage of all local timelike directions follows from population plus the produced Lorentz orbit; and the vacuum-reference receipt VR fixes the first-variation integration constant, yielding the absolute semiclassical expectation-value equation G_ab + Lambda g_ab = 8 pi G <T_ab> per connected component with structural G and no measured constant; without VR the conclusion is constancy of the residue tensor only, with de Sitter and flat baselines producing identical first-variation data. The inherited strong matrix-mixing expansion directly bounds the canonical four-log modular defect by the CMI envelope. Downstream o(ell^4) transfer requires uniform transfer constants or the complete weighted tail receipt. A weaker trace-only replacement route must control inverse faithful-floor amplification and cannot infer modular-norm decay from stagewise faithfulness alone.",
       "owner_paper": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
       "tier": "conditional_scaling_theorem",
       "assumptions": [
@@ -1123,7 +1123,7 @@
         "fixed_volume_small_ball_area_identity",
         "contracted_Bianchi_identity"
       ],
-      "oph_specific_delta": "The diagonal-subsequence and unfixed-baseline defects flagged in the audit are replaced by a single declared scaling family and an explicit irreducible base-condition receipt with failure examples for uniformity, coverage, connectedness, and baseline.",
+      "oph_specific_delta": "The diagonal-subsequence and unfixed-baseline defects flagged in the audit are replaced by a single declared scaling family and an explicit irreducible base-condition receipt with failure examples for uniformity, coverage, connectedness, and baseline. The inherited strong matrix-mixing expansion directly bounds the canonical four-log modular defect by the CMI envelope. Downstream o(ell^4) transfer requires uniform transfer constants or the complete weighted tail receipt. A weaker trace-only replacement route must control inverse faithful-floor amplification and cannot infer modular-norm decay from stagewise faithfulness alone.",
       "novelty_type": "uniformity_and_base_condition_package",
       "evidence": [
         "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",

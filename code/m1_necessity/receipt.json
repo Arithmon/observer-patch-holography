@@ -1504,7 +1504,7 @@
           "independent_physical_scale_receipt"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "522947eec1f60764360cd1f987b6a72c8f2b2bc2480e1dfa89f7edeb0fdb8c31"
+        "original_claim_sha256": "f62f4ad42301a50c45b213db7f08e6928ba266d3987c2fd260bd64c08f661e65"
       },
       "OPH-GR-D6-HORIZON-RECORD": {
         "assumptions": [
