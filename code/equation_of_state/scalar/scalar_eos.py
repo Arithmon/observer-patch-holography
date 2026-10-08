@@ -15,6 +15,7 @@ from pathlib import Path
 import platform
 import sys
 
+import mpmath as mp
 import numpy as np
 from scipy.linalg import eigh
 
@@ -98,26 +99,87 @@ def classical_readout(packet, source, alg):
     return reports
 
 
+def _thermal_input(value, name, ndim):
+    """Accept finite real data exactly representable in the binary64 interface."""
+    if np.ma.is_masked(value):
+        raise ValueError(name+' must not contain masked values')
+    if isinstance(value, (list, tuple)):
+        # Validate each original scalar before a mixed sequence can round an
+        # integer, coerce a Boolean to one or turn a masked entry into NaN.
+        for part in value:
+            _thermal_input(part, name, 0)
+    raw = np.asarray(value)
+    if raw.ndim != ndim or raw.size == 0 or raw.dtype.kind not in 'iuf':
+        raise ValueError(name+' requires a nonempty real input of the declared dimension')
+    with np.errstate(over='ignore', under='ignore', invalid='ignore'):
+        data = raw.astype(float)
+    if not np.all(np.isfinite(data)):
+        raise ValueError(name+' must be finite in binary64')
+    changed = (any(int(x) != int(y) for x, y in zip(raw.flat, data.flat))
+               if raw.dtype.kind in 'iu' else np.any(raw != data))
+    if changed:
+        raise ValueError(name+' loses information in binary64 conversion')
+    return data
+
+
 def thermal_point(spatial_eigenvalues, scale, mass, temperature):
-    lam = spatial_eigenvalues / scale**2
-    omega = np.sqrt(mass*mass + lam)
-    occupation = 1 / np.expm1(omega/temperature)
-    mode_energy = omega*occupation
-    # Mechanical stress of oscillator covariance: K_i=E_i/2,
-    # G_i=E_i*lambda_i/(2*omega_i²), U_i=E_i*m²/(2*omega_i²).
-    K = mode_energy/2
-    G = mode_energy*lam/(2*omega**2)
-    U = mode_energy*mass**2/(2*omega**2)
-    p = float(np.sum(K-G/3-U)/scale**3)
-    energy = float(mode_energy.sum())
-    free = float(temperature*np.log(-np.expm1(-omega/temperature)).sum())
-    return {'scale': scale, 'volume': scale**3, 'mass': mass, 'temperature': temperature,
-            'frequencies': omega.tolist(), 'occupations': occupation.tolist(),
-            'mode_thermal_energies': mode_energy.tolist(),
-            'energy': energy, 'energy_density': energy/scale**3,
-            'pressure': p, 'w': p*scale**3/energy,
-            'helmholtz_free_energy': free,
-            'mode_K': K.tolist(), 'mode_G': G.tolist(), 'mode_U': U.tolist()}
+    """Finite zero-point-subtracted Bose readout in supplied model units.
+
+    Nonnegative spatial eigenvalues and mass, positive scale/temperature and
+    strictly positive mode frequencies are required. Compute in a private
+    90-digit context, then require every nonzero reported component to survive
+    binary64 conversion with relative error <= 1e-12. This is a numerical
+    precision check, not an interval certificate or a low-temperature cutoff.
+    """
+    spectrum = _thermal_input(spatial_eigenvalues, 'spatial eigenvalues', 1)
+    scale, mass, temperature = [float(_thermal_input(value, name, 0)) for value, name in
+                               ((scale, 'scale'), (mass, 'mass'), (temperature, 'temperature'))]
+    if np.any(spectrum < 0) or scale <= 0 or mass < 0 or temperature <= 0:
+        raise ValueError('nonnegative spectrum/mass and positive scale/temperature required')
+    if mass == 0 and np.any(spectrum == 0):
+        raise ValueError('a zero-frequency Bose mode has no finite thermal partition function')
+    ctx = mp.mp.clone()
+    ctx.dps = 90
+    length, rest_mass, temp = map(ctx.mpf, (scale, mass, temperature))
+    volume = length**3
+    fields = {key: [] for key in ('frequencies', 'occupations', 'mode_thermal_energies',
+                                  'mode_K', 'mode_G', 'mode_U')}
+    free_modes = []
+    for value in spectrum:
+        gradient = ctx.mpf(float(value))/length**2
+        omega_squared = rest_mass**2 + gradient
+        omega = ctx.sqrt(omega_squared)
+        x = omega/temp
+        if x > 750:  # Even the occupation is then below binary64 range.
+            raise ValueError('occupations cannot be resolved in binary64')
+        occupation = 1/ctx.expm1(x)
+        energy = omega*occupation
+        # K=G+U in thermal equilibrium. Thus pV=K-G/3-U=2G/3:
+        # keep the small gradient term instead of subtracting rest energies.
+        values = (omega, occupation, energy, energy/2,
+                  energy*gradient/(2*omega_squared), energy*rest_mass**2/(2*omega_squared))
+        for key, result in zip(fields, values):
+            fields[key].append(result)
+        # Complementary charts preserve both small x and exponentially small F.
+        log_partition_inverse = (ctx.log(-ctx.expm1(-x)) if x <= 1
+                                 else ctx.log1p(-ctx.exp(-x)))
+        free_modes.append(temp*log_partition_inverse)
+    energy = ctx.fsum(fields['mode_thermal_energies'])
+    pressure_volume = 2*ctx.fsum(fields['mode_G'])/3
+
+    def output(value, label):
+        result = float(value)
+        if (not np.isfinite(result)
+                or (value != 0 and abs(ctx.mpf(result)/value-1) > ctx.mpf('1e-12'))):
+            raise ValueError(label+' cannot be resolved in binary64')
+        return result
+
+    totals = {'volume': volume, 'energy': energy, 'energy_density': energy/volume,
+              'pressure': pressure_volume/volume, 'w': pressure_volume/energy,
+              'helmholtz_free_energy': ctx.fsum(free_modes)}
+    return {'scale': scale, 'mass': mass, 'temperature': temperature,
+            **{key: [output(value, key) for value in values] for key, values in fields.items()},
+            **{key: output(value, key) for key, value in totals.items()}}
 
 
 def build(rer=RER):

@@ -55,7 +55,9 @@ not a domain argument.
 - **Representations:** include real and complex inputs, exact dyadic basis
   changes, repeated eigenvalues, full-rank and singular states, and
   one-dimensional tensor factors. Check algebraic equality in a canonical
-  domain, not by expression-tree equality.
+  domain, not by expression-tree equality. Check original scalars in mixed
+  numeric containers before a common array dtype erases integer precision,
+  Boolean types or missingness; validating the coerced array is too late.
 - **Both sides of a decision:** pair an exact zero with a nearby nonzero
   input; valid support with actual support escape; complete evidence with
   incomplete, empty and malformed evidence. A blanket rejection is not a

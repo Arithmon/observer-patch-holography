@@ -1,8 +1,8 @@
 {
   "classical_exact_samples": 88,
   "classical_max_secant_pressure_error": 8.293272957260456e-09,
-  "generalized_eigenpair_max_residual": 2.8910207561239076e-13,
-  "generalized_orthonormality_max_error": 3.9968028886505635e-14,
+  "generalized_eigenpair_max_residual": 2.857714065385153e-13,
+  "generalized_orthonormality_max_error": 3.907985046680551e-14,
   "independent_spectrum_decimal_digits": 70,
   "instantaneous_stress_is_equilibrium_eos": false,
   "native_repair_eos_established": false,
@@ -409,7 +409,7 @@
   ],
   "thermal_modes_per_case": 64,
   "thermal_numerics_are_rigorous_interval_certificate": false,
-  "thermal_pressure_max_absolute_discrepancy": 1.1850143504818067e-13,
+  "thermal_pressure_max_absolute_discrepancy": 1.764258841194756e-14,
   "thermal_w_range": [
     0.040956067791384235,
     0.3333333333333333

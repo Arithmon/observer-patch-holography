@@ -16,8 +16,8 @@ import json
 from math import factorial, prod
 from pathlib import Path
 
+import mpmath
 import numpy as np
-from scipy.integrate import quad
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -33,6 +33,7 @@ PIN_PATHS = {
     'code/electromagnetism/whitney_quantum_packet.py',
     'code/electromagnetism/verify_whitney_quantum_packet.py',
     'code/electromagnetism/test_whitney_quantum_packet.py',
+    'code/electromagnetism/test_neutral_packet_observables.py',
     'paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex',
     'paper/tex_fragments/WHITNEY_QUANTUM_PACKET.tex', PARENT_PATH,
 }
@@ -166,20 +167,50 @@ def replay_phase_space(q68, v68, xyz, edges, tetrahedra, frame):
         'gamma_min_eigenvalue':float(np.linalg.eigvalsh(gamma)[0])}
 
 
-def circle_observables(q, p, sigma):
-    """Direct one-dimensional overlap integration, not a Bessel implementation."""
-    x, p = q[30:],p[30:]
-    xx, pp = float(x@x),float(p@p)
-    b = float(p@np.r_[-x[13:],x[:13]])
-    a = xx/(4*sigma**2)+sigma**2*pp
-    def overlap(theta):
-        return np.exp(-a*(1-np.cos(theta))-1j*b*np.sin(theta))
-    norm = quad(lambda theta: overlap(theta).real, -np.pi,np.pi,epsabs=2e-13,epsrel=2e-13)[0]/(2*np.pi)
-    def radius(theta):
-        multiplier = 26*sigma**2+xx/2*(1+np.cos(theta))-2*sigma**4*pp*(1-np.cos(theta))-2j*sigma**2*b*np.sin(theta)
-        return (overlap(theta)*multiplier).real
-    moment = quad(radius,-np.pi,np.pi,epsabs=2e-12,epsrel=2e-13)[0]/(2*np.pi*norm)
-    return {'A':a,'B':b,'norm_squared':norm,'scalar_radius_numeric':moment,'sigma':str(Q(sigma))}
+def circle_observables(q, p, sigma, hbar=1):
+    """Independent positive circle integrals, with no Bessel implementation.
+
+    Analytic contour translation gives exp(z-A)*I0e(z). At large z the
+    coordinate u=2*sqrt(z)*sin(theta/2) resolves the concentrated kernel.
+    The cutoff u=16 leaves a Gaussian tail below the reporting tolerance;
+    this high-precision quadrature is a diagnostic, not an interval proof.
+    """
+    x, p = [Q(v) for v in q[30:]], [Q(v) for v in p[30:]]
+    s, h = Q(sigma), Q(hbar)
+    xx, pp = sum(v*v for v in x), sum(v*v for v in p)
+    b = sum(p[i]*(-x[i+13]) + p[i+13]*x[i] for i in range(13))/h
+    a = xx/(4*s*s)+s*s*pp/(h*h)
+    discriminant = a*a-b*b
+    require(discriminant >= 0, 'nonnegative exact circle discriminant')
+    mp = mpmath.mp.clone()
+    mp.dps = 70+max(0, len(str(abs(a.numerator)))-len(str(a.denominator)))
+    def real(v):
+        return mp.mpf(v.numerator)/v.denominator
+    aa, bb, ss = real(a), real(b), real(s*s)
+    z = mp.sqrt(real(discriminant))
+    if z > 128:
+        def weight(u):
+            return mp.exp(-u*u/2)/mp.sqrt(1-u*u/(4*z))
+        intervals = [0, 1, 4, 8, 16]
+        mass = mp.quad(weight, intervals)
+        deficit = mp.quad(lambda u: u*u/2*weight(u), intervals)/mass
+        norm = mp.exp(z-aa)*mass/(mp.pi*mp.sqrt(z))
+    else:
+        def weight(theta):
+            return mp.exp(z*(mp.cos(theta)-1))
+        intervals = [0, mp.pi/2, mp.pi]
+        mass = mp.quad(weight, intervals)
+        deficit = mp.quad(lambda t: z*(1-mp.cos(t))*weight(t), intervals)/mass
+        norm = mp.exp(z-aa)*mass/mp.pi
+    moment = 26*ss+real(xx)/2-2*ss*ss*real(pp/(h*h))+2*ss*(z-deficit)
+    return {'A':float(aa),'B':float(bb),'norm_squared':float(norm),
+            'scalar_radius_numeric':float(moment),'sigma':str(s)}
+
+
+def close_observable(actual, expected, name):
+    """Each scalar of the supplied packet has its own relative tolerance."""
+    value = numbers(actual, (), name).item()
+    require(value == 0 if expected == 0 else abs((value-expected)/expected) <= 2e-11, name)
 
 
 def initial_algebra(volume):
@@ -254,11 +285,14 @@ def verify(packet):
         require(abs(expected['constant_moment_map'])<1e-9 and expected['minimizer_defect']<1e-9,'parent numerical Gauss compatibility')
         require(type(row['widths']) is list and len(row['widths'])==3,'width census')
         for width,sigma in zip(row['widths'],(.25,.5,1),strict=True):
-            expected_width=circle_observables(expected['q'],expected['momentum'],sigma)
+            # The phase-space replay above authenticates the numerical state.
+            # Evaluate that *reported* representative so a nearly cancelling
+            # charge cannot hide behind an absolute tolerance on another solve.
+            expected_width=circle_observables(row['q'],row['momentum'],sigma)
             keys(width,expected_width,'width')
             equal(width['sigma'],expected_width['sigma'],'width parameter')
             for key in ('A','B','norm_squared','scalar_radius_numeric'):
-                close(width[key],expected_width[key],'independent circle '+key,2e-11)
+                close_observable(width[key],expected_width[key],'independent circle '+key)
         diagnostics.append({'model_time':row['model_time'],'gauss_abs':abs(expected['constant_moment_map']),
             'minimizer_defect':expected['minimizer_defect'],
             'projection_norm_squared_numeric':[x['norm_squared'] for x in row['widths']]})

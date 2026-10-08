@@ -1,6 +1,6 @@
 # Cosmology postdiction ledger
 
-Generated deterministically by `code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py`; the JSON artifact is `code/cosmology/postdiction_ledger/runtime/cosmology_postdiction_ledger.json` (sha256 `cbf23ddc154496f9a4b482a06a39cfdccde659f5b072f2be03dc5deaba6667c8`, rows digest `6c573dfadf3439daed2016cc36f68e03476b8703036ba7bc542d51258d69eb73`).
+Generated deterministically by `code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py`; the JSON artifact is `code/cosmology/postdiction_ledger/runtime/cosmology_postdiction_ledger.json` (sha256 `b6f3f97d3bc40f4958edda3c25831f85f034d26fd6c02a33abe364e47d2fb9f7`, rows digest `351e12d7ddb4a655a3821747a4181f410cc4b49d08027c3fa839bee1b17c111e`).
 
 This ledger promotes nothing. Every comparison is on seen data; no row is a frozen prediction, a score, or evidence for or against OPH. Every number is read mechanically from `public_inputs.json`, `corpus_inputs.json`, or a pinned parent receipt. Sigma distances are signed as theory minus measurement over the quoted one-sigma uncertainty. The fixed verdict rule is: |sigma| < 2 consistent; 2 <= |sigma| < 3 tension; |sigma| >= 3 exceeds_three_sigma_diagnostic; an upper-bound row is consistent exactly when the theory value lies below the bound; rows without a comparison contract are not_evaluable. The (w0, wa) rows use the two-sided normal equivalent of a two-degree-of-freedom Gaussian Mahalanobis distance.
 
