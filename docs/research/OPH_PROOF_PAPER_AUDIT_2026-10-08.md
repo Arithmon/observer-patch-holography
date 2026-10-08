@@ -131,11 +131,21 @@ Recorded local results (the groups overlap and are not summed):
   Current splitting and nested export receipts were regenerated together.
 - 34 consensus/string and existing paper-interface checks passed.
 - 60 mandatory-runner sharding/workflow tests passed.
-- The final scientific collection imports 18,090 tests successfully.
+- 145 independent alpha/tau replay controls passed after refreshing only the
+  edited particle-paper provenance hash; all arithmetic and historical pins
+  remain unchanged.
+- 82 M1 necessity controls passed with warnings as errors after refreshing
+  only its two current FLRW claim hashes; all numerical evidence, source
+  pins, candidate constraints and graph edges remain unchanged.
+- 69 current source/control-inventory mutation tests and two subtests passed.
+  Their refreshed runner and file-inventory bindings preserve campaign
+  policies, candidates, source receipts and historical outcome rules.
+- The final scientific collection imports 18,098 tests successfully.
 - All 23 registered TeX roots compiled; all warning budgets and the preview
   release manifest passed. The two existing neural-paper underfull-warning
   anchors were moved with their paragraphs; their counts and badness limits
-  were not increased.
+  were not increased. Changed theorem pages were also visually inspected
+  in the rendered PDFs; the one discovered cross-reference error was fixed.
 - The claim registry, public quantitative surfaces, axiom inventory and
   theorem-count/native-trust gates passed. The default Lake build and the
   164-step standard mandatory suite are running at draft creation.
