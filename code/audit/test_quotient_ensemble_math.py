@@ -55,7 +55,7 @@ def test_boundary_quantum_maxent_compresses_log_reference():
     assert wrong_p > 0.6
     assert relative_entropy(wrong_p) > relative_entropy(0.5) + 0.02
     # Strict convexity gives the unique optimum on this diagonal family;
-    # off-diagonal coherence only decreases entropy at fixed eigenvalues.
+    # off-diagonal coherence only decreases entropy at fixed diagonal.
     for p in (0.1, 0.25, 0.75, 0.9):
         assert relative_entropy(p) > relative_entropy(0.5)
 

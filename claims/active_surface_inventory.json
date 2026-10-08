@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 476,
+  "surface_count": 477,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1031,6 +1031,11 @@
     },
     {
       "path": "docs/research/NOISY_SOURCE_RECORDS.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/research/OPH_PROOF_PAPER_AUDIT_2026-10-08.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },

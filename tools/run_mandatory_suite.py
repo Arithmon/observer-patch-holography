@@ -42,6 +42,24 @@ ROOT = Path(__file__).resolve().parents[1]
 
 MANDATORY_STEPS: list[tuple[str, list[str]]] = [
     (
+        "Verify proof-domain, sampling, spectrum and radial-inverse counterexamples",
+        [
+            sys.executable, "-m", "pytest", "-q",
+            "code/audit/test_quotient_ensemble_math.py",
+            "code/audit/test_recurrent_proof_boundaries.py",
+            "code/consensus/test_sampling_and_record_boundaries.py",
+            "code/particles/test_paper_proof_boundaries.py",
+            "code/particles/neutrino/test_takagi_numerics.py",
+            "code/P_derivation/test_thomson_spectral_transport.py",
+            "code/P_derivation/test_source_spectral_theorem.py",
+            "code/P_derivation/test_thomson_endpoint_interval_certificate.py",
+            "code/cosmology/test_radial_inverse_regressions.py",
+            "code/cosmology/test_radial_inverse_controls.py",
+            "code/cosmology/test_radial_window_regressions.py",
+            "tools/test_string_continuation_boundaries.py",
+        ],
+    ),
+    (
         "Verify geometric-source identifiability and native history controls",
         [sys.executable, "-m", "pytest", "-q", "code/native_geometric_source"],
     ),
