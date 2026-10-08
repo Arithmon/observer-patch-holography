@@ -23,7 +23,7 @@ Historical frozen targets and custody artifacts retain their original bytes.
 | Conditioning was mistaken for subsequent partition averaging | A pure state inside a rank-two event stays pure under Lüders conditioning; normalized block averaging has purity `1/2` | Correct the consensus consumer to match the existing Lean partition-average theorem and require nonzero event probability |
 | A bounded covariance was assigned a nonzero dilation exponent globally | Unitary conjugation preserves operator norm. For nonzero bounded `C`, `D_s* C D_s = exp(-theta*s) C` forces `theta=0`; `A k^-theta` is unbounded on all positive wavenumbers otherwise | Separate bounded-global convergence from a common-core/local-band criterion; require a nonzero positive covariance. `paper/tex_fragments/RADIAL_LIFT_THEOREMS_330.tex` |
 | Radial theorem statements omitted normalization, feasibility and inversion domains | `W=2 delta_R` defeats the shell error bound; at `r0=0`, all `j_l(k r0)` vanish for `l>=1`; a target outside `Ran(A)` has no exact constrained continuation | State positive probability-window and moment assumptions, `r0>0` and an inversion class, target feasibility, and the separate positivity requirement for a physical spectrum |
-| Radial inversion erased resolvable constraints and understated residuals | Normal-equation conditioning and a unit absolute tolerance can accept lost modes at small physical spectrum scales | Integrate independently reviewed PR [#1063](https://github.com/FloatingPragma/observer-patch-holography/pull/1063), preserving Mario Poneder's authorship. Prior-whitened SVD, independent KKT controls and guarded residual evaluation remain numerical policies, not interval proofs |
+| Radial inversion erased resolvable constraints and understated residuals | Normal-equation conditioning and a unit absolute tolerance can accept lost modes at small physical spectrum scales | Integrate independently reviewed PR [#1063](https://github.com/FloatingPragma/observer-patch-holography/pull/1063), preserving Mario Poneder's authorship. Prior-whitened SVD, combined conditioning guards, independent KKT controls and guarded residual evaluation remain numerical policies, not interval proofs |
 | Finite-window evaluation returned false zero bounds | At `theta=1e-14`, a radius change from `1` to `1.01` was erased; weights `[1e308,1e308]` normalized to zeros after overflow | Use scaled weight normalization, `log1p`/`expm1`, and the gamma recurrence for the derivative norm. Twelve independent controls reproduce eight failures on the base source: `code/cosmology/test_radial_window_regressions.py` |
 | No tensor source was promoted to zero tensor power | `h=sin(k tau)/(k tau)` is a nonzero homogeneous solution of the radiation-era tensor equation | Require zero initial tensor amplitude and velocity, no forcing, positive scalar pivot power, and linear primordial scope. Three live ledger rows lose generic slow-roll discrimination credit; their numerical comparison verdicts do not change |
 | A finite tensor upper limit was said to discriminate generic slow roll | The generic alternative admits arbitrarily small positive tensor power | Restrict exclusion to specified alternatives above the achieved sensitivity; semantic mutations of the live ledger are rejected even after rehashing |
@@ -119,8 +119,10 @@ lake build
 
 Recorded local results (the groups overlap and are not summed):
 
-- 206 focused proof-domain and numerical regression tests passed.
-- 440 cosmology, radial, capacity and lensing tests passed with warnings as errors.
+- 238 focused proof-domain and numerical regression tests passed after the
+  final PR integration, including the latest radial conditioning controls.
+- 464 cosmology, radial, capacity and lensing tests passed on the final
+  combined tree with warnings as errors.
 - 137 independently reviewed finite-gauge precision/verifier controls passed.
 - 81 final particle/endpoint regressions, 110 neutrino tests, 69 Koide/A5
   controls, and 62 hadronic-consumer tests passed. The P suite's scratch-copy
@@ -140,17 +142,32 @@ Recorded local results (the groups overlap and are not summed):
 - 69 current source/control-inventory mutation tests and two subtests passed.
   Their refreshed runner and file-inventory bindings preserve campaign
   policies, candidates, source receipts and historical outcome rules.
-- The final scientific collection imports 18,098 tests successfully.
+- The final scientific collection imports 18,122 tests successfully.
 - All 23 registered TeX roots compiled; all warning budgets and the preview
   release manifest passed. The two existing neural-paper underfull-warning
   anchors were moved with their paragraphs; their counts and badness limits
   were not increased. Changed theorem pages were also visually inspected
   in the rendered PDFs; the one discovered cross-reference error was fixed.
 - The claim registry, public quantitative surfaces, axiom inventory and
-  theorem-count/native-trust gates passed. The default Lake build and the
-  164-step standard mandatory suite are running at draft creation.
+  theorem-count/native-trust gates passed. The complete audit head
+  `cf9c564d` passed all 70 PR checks, including the 164-step standard suite
+  on Linux and Windows; final integration checks are recorded on the PR.
 
-The full-suite completion and any execution limits are recorded on the PR. No cloud simulation, new observation, physical calibration,
+The final integration includes PR #1063 head `5d5aa803`, including its
+additional exact-input, subnormal-scaling and combined-conditioning controls.
+Its changes retain Mario Poneder's authorship and original commit ancestry.
+The combined radial and window suites pass all 142 tests.
+
+The complete Lean source and dependency tree is byte-identical to the
+[successful full-default nightly build](https://github.com/FloatingPragma/observer-patch-holography/actions/runs/37719420767).
+The redundant local cold build was stopped and is not counted as completed.
+A local Whitney certificate replay hit its existing 600-second timeout under
+concurrent build load, then passed in 123.01 seconds in isolation. No source
+or timeout was changed for that retry. The fresh critical Lean CI build and
+the separate frozen-graph `OphGap` certificate also passed.
+
+The full-suite completion, final merged-tree checks and any execution limits
+are recorded on the PR. No cloud simulation, new observation, physical calibration,
 refitting of experimental data, or change to a frozen outcome rule is part
 of this repair. Numerical tolerance checks are not outward-rounded error
 certificates; Takagi congruences failing the declared normwise residual
