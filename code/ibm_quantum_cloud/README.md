@@ -66,7 +66,7 @@ different assessments:
 
 | Experiment | Immediate outcome | Strength for the immediate claim | Strength for OPH as a physical theory |
 | --- | --- | --- | --- |
-| Stage 1 recoverability | Structured states retained lower conditional dependence and higher recovery fidelity than random and GHZ controls on two QPUs | Supportive hardware consistency | None as a discriminator; the ordering is designed into QM-prepared states |
+| Stage 1 recoverability | Legacy summaries report lower conditional dependence and higher recovery fidelity for structured states on two QPUs | Archived consistency report; measured rows cannot be independently revalidated from the retained data | None as a discriminator; the ordering is designed into QM-prepared states |
 | `Z_3` heat-kernel check | Two independently decoded nontrivial states gave nearly the same heat time at all three prepared points | Strong sanity check | None as a discriminator; QM predicts the directly prepared distribution |
 | `Z_5` golden-ratio check | Several runs landed near `phi^2`, but the values spread from `2.407` to `2.878`, and the high-shot point was below the exact target | Mixed supportive consistency | None as a discriminator; QM predicts the encoded amplitude ratio |
 | `S_3` nonabelian check | The base layout missed `2`; reversing the physical qubits moved the result near `2`, and a repeat stayed near `2` | Useful layout diagnostic | None as a discriminator; QM predicts the prepared state and measurement |
@@ -99,16 +99,17 @@ CMI. The test was run on `ibm_marrakesh` and independently on `ibm_fez`.
 
 #### What happened
 
-The simplest structured state, `structured_theta_0.00`, had the lowest measured
-CMI and the highest measured Petz fidelity on both chips:
+The frozen derived summaries report the following ordering for
+`structured_theta_0.00` and the controls. These historical values are retained
+as reported; the measured rows have not been independently revalidated:
 
 | Backend | CMI: structured | CMI: random | CMI: GHZ | Recovery fidelity: structured | Random | GHZ |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `ibm_marrakesh` | `0.231` | `0.389` | `0.947` | `0.930` | `0.865` | `0.607` |
 | `ibm_fez` | `0.150` | `0.499` | `0.917` | `0.948` | `0.812` | `0.645` |
 
-All three preregistered qualitative fingerprint checks returned `true` on both
-backends. The provider jobs are `d6t4da6sh9gc73di7720` and
+The archived summaries record `true` for all three qualitative fingerprint
+checks on both backends. The provider jobs are `d6t4da6sh9gc73di7720` and
 `d6t4ejngtkcc73cm8l6g`; the public derived reconstruction summaries are in
 [`qc_data/stage1/`](qc_data/stage1/).
 
@@ -118,17 +119,26 @@ for the conversion and the theorem's scope over possible recovery channels.
 
 #### How strong is it?
 
-This is useful replicated evidence that IBM hardware and the tomography
-pipeline preserve the intended recoverability ordering. It is not evidence for
-OPH over quantum mechanics, which predicts the prepared states. The structured
-circuits were constructed to have lower ideal CMI, generic quantum information
-theory already connects low CMI with recovery, and the random control was one
-selected member of a candidate family rather than a held-out control. The
-public legacy files do not provide the complete tomography count tables, and
-the reported hardware metrics have no formal uncertainty test. Projecting a
-noisy reconstruction onto a physical density matrix can also bias nonlinear
-quantities such as CMI and fidelity. The result is best called **supportive
-hardware consistency**, not a blinded confirmation.
+The measured rows are **archived consistency reports**. Complete tomography
+counts and reconstructed density matrices were not retained, so the corrected
+analysis cannot independently revalidate their CMI or recovery values. The
+[recovery audit](../quantum_information/RECOVERY_EVIDENCE.md) found that the
+former pipeline could silently repair invalid states, erase rare sectors and
+accept incomplete tomography. The numerical impact on these archived rows
+cannot be determined from the retained summaries.
+
+The repaired pipeline validates complete count records, preserves resolved
+positive support and saves acquired evidence before analysis. Circuit
+references and complete synthetic-count controls can be replayed; unresolved
+Petz support leaves valid CMI available and marks recovery metrics unavailable.
+Those controls validate the software, while the historical measured rows
+remain unrevalidated. No formal uncertainty test was attached to those rows,
+and tomographic correction can affect nonlinear quantities such as CMI and
+fidelity.
+
+The prepared ordering does not distinguish OPH from quantum mechanics. The
+structured circuits were constructed to have lower ideal CMI, and the random
+control was selected from a candidate family rather than held out.
 
 ### 2. `Z_3`: the three-state internal-consistency check
 
