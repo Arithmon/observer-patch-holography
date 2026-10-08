@@ -92,8 +92,10 @@ D_{s,r}^{-1}C_{\zeta,r}D_{s,r}-u_r(s)C_{\zeta,r}
 -u_r(s)C_{{\rm src},r}\right)U_r^*.
 \]
 
-The finite objects must converge strongly on one embedded safe-band Hilbert
-space, with a uniform covariance norm bound and a vanishing operator residual.
+The finite objects must converge on a common embedded compact-band core,
+with local covariance bounds and a vanishing dilation residual on every
+core vector, including the error from replacing finite dilation maps by
+the physical maps.
 Only then does the continuum relation
 
 \[
@@ -134,7 +136,7 @@ Pass conditions:
 - the embedding square \(D_{s,r}U_r=U_rR_{s,r}\) passes and its residual converges;
 - source and coarse mode projectors commute within the declared residual;
 - source covariance naturality and physical covariance naturality have the same residual under \(U_r\);
-- the strong finite-to-continuum hypotheses and uniform covariance norm bound pass;
+- covariance convergence and the dilation residual pass on every compact log-wavenumber band of one common operator core; replacement of finite dilation maps by the physical maps has a vanishing error on that core;
 - covariance survival equals the screen source cocycle, not a separately chosen exponent;
 - safe-band leakage and operator residual converge under refinement;
 - finite diagonal checks \(\Delta^2(bk)=b^{-\theta}\Delta^2(k)\) pass;
@@ -149,6 +151,13 @@ Negative controls:
 - a mode basis from a different source embedding.
 
 Each control must fail.
+
+A nonzero global power law with nonzero tilt has an unbounded multiplication
+covariance on `L2(d log k)`. A global uniform covariance norm bound cannot be
+required for that limit: a bounded nonzero operator and its unitary conjugate
+have equal norm and cannot differ by the scalar `exp(-theta*s) != 1`.
+Uniform bounds on each fixed compact band are compatible with this branch;
+they do not supply a uniform bound as the band expands.
 
 ## Thin-shell Mellin receipt
 
@@ -178,7 +187,8 @@ The code must not solve this equation for \(A_\zeta\) using measured CMB \(C_\el
 
 ## Finite-window receipt
 
-The run computes the exact window transform and the certified bound
+For a nonnegative normalized radial measure `W`, positive reference radius,
+and `0 < theta < 2 ell`, the run evaluates the window transform and analytic bound
 
 \[
 \eta_{\ell,W}
@@ -197,7 +207,17 @@ J_\ell(\theta)=I_\ell(\theta-2)
 \left(2R_\star^{\theta/2}\sqrt{I_\ell}+\eta\right).
 \]
 
-The receipt stores \(I_\ell,J_\ell,\eta\), exact projected values, the bound, and the ratio of actual quadrature difference to the bound.
+The measure must have a finite `theta/2` radius moment. Without normalization,
+`W=2 delta_R` gives `eta=0` while quadrupling the shell spectrum. Signed windows
+need a different bound using total variation.
+
+The receipt stores \(I_\ell,J_\ell,\eta\), projected values, the bound, and
+the ratio of the quadrature difference to the bound. The Python helper evaluates
+the analytic inequality in binary64; it supplies no outward-rounded interval
+certificate. Its numerical error and the quadrature error must be controlled
+separately before promoting a numerical inequality. Gamma recurrence and
+`expm1` preserve the near-scale-invariant derivative norm and radius differences;
+finite positive window weights are normalized after rescaling to avoid overflow.
 
 ## `RADIAL_TOMOGRAPHY` receipt
 
@@ -206,6 +226,11 @@ The input must contain cross-covariances. Auto-spectra alone fail the receipt:
 \[
 C_\ell(r_i,r_j).
 \]
+
+The fixed-radius uniqueness route requires a strictly positive reference
+radius and a cross-covariance section admitting spherical-Hankel inversion in
+the declared function or distribution class. At radius zero, all sections
+with `ell >= 1` vanish regardless of the spectrum.
 
 The receipt records:
 
@@ -370,7 +395,7 @@ A transfer artifact may consume the E4 primordial packet, but the E4 packet may 
 - exact \(I_\ell(\theta)\) and \(J_\ell(\theta)\);
 - general-pivot/general-\(Z_q\) amplitude conversion;
 - exact thin-shell gamma spectrum;
-- finite-window quadrature and certified bound;
+- finite-window quadrature, analytic bound, and separate numerical error budget;
 - finite projection matrix and SVD/null report;
 - minimum-prior continuation;
 - source-family forward residual;

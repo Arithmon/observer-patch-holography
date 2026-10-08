@@ -564,11 +564,14 @@ def primordial_rows(items: dict[str, Any], consts: dict[str, Any]) -> list[dict[
         )
 
     tensor_note = (
-        "Zero tensor amplitude follows from the scalar screen field with a "
-        "rank-one single-clock source and no orthogonal primordial source. "
-        "Generic single-field slow-roll gives r > 0 (Starobinsky: r of order "
-        "0.003 at N = 55), so any primordial B-mode detection excludes this "
-        "branch. Bound rows carry no sigma distance. Seen data."
+        "Zero linear primordial tensor amplitude requires zero initial tensor "
+        "amplitude and velocity, no tensor forcing, and positive scalar power. "
+        "A scalar source alone leaves homogeneous tensor modes unconstrained. "
+        "These extra initial conditions are branch premises, not source-derived "
+        "results. Slow roll has no universal positive lower bound on r; an upper "
+        "limit tests only specified alternatives above it. Observable comparisons "
+        "require separate treatment of scalar-induced tensors, lensing and "
+        "foregrounds. Bound rows carry no sigma distance. Seen data."
     )
     for item_id in ("bk18_r_0p05", "tristram2022_r", "planck2018_x_r_0p002_bk15"):
         rows.append(
@@ -580,15 +583,16 @@ def primordial_rows(items: dict[str, Any], consts: dict[str, Any]) -> list[dict[
                 theory=Fraction(0),
                 theory_display="0 (exact)",
                 premises=[
-                    "scalar screen field only",
-                    "rank-one single-clock primordial source",
-                    "no orthogonal (transverse-traceless) primordial source",
+                    "linear tensor evolution on the declared background",
+                    "zero initial tensor amplitude and velocity",
+                    "no tensor forcing",
+                    "positive scalar power at the comparison pivot",
                 ],
                 item_id=item_id,
                 item=items[item_id],
                 corpus_ids=["zero_tensor_scalar_screen_field"],
-                discriminates=True,
-                prospective="LiteBIRD (delta r < 0.001 target); CMB-S4",
+                discriminates=False,
+                prospective="LiteBIRD; CMB-S4 (tests specified tensor alternatives above the achieved bound)",
                 note=tensor_note,
             )
         )
@@ -1312,9 +1316,10 @@ def render_markdown(receipt: dict[str, Any], receipt_sha256: str) -> str:
         lines.append(f"- `{name}`: {receipt['class_descriptions'][name]}")
     lines += [
         "",
-        "`discriminates` is true only where the OPH value differs from the generic "
-        "baseline (the specific n_s value, exact zero running, exact zero tensor "
-        "amplitude, and w = -1 against thawing).",
+        "`discriminates` marks the specific n_s value, zero running, and w = -1 "
+        "against specified nonzero alternatives. It does not assert separation "
+        "from every member of a model family. The tensor upper limits cannot "
+        "distinguish exact zero from arbitrarily small slow-roll signals.",
         "",
     ]
     header = (

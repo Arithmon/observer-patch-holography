@@ -278,7 +278,9 @@ left to determine, and the unused multipoles become consistency checks.
 
 \textbf{Theorem (finite-window bound).}
 \label{thm:oph330-finite-window-bound}
-For $0<\theta<2\ell$, define
+Let $\ell\ge1$ be an integer, $R_\star,k_\star>0$, $A_\zeta>0$, and let
+$W$ be a nonnegative probability measure on positive radii with finite
+$\theta/2$ moment. For $0<\theta<2\ell$, define
 \[
  I_\ell(\theta)=\int d\ln x\,x^{-\theta}j_\ell^2(x),
 \quad
@@ -310,6 +312,11 @@ $\|j_\ell(kr)\|_\theta=r^{\theta/2}\sqrt{I_\ell}$ and
 $\|\partial_rj_\ell(kr)\|_\theta=r^{\theta/2-1}\sqrt{J_\ell}$.
 The fundamental theorem of calculus, Minkowski, and
 $|\|f\|^2-\|g\|^2|\le\|f-g\|(\|f\|+\|g\|)$ give the bound.  \hfill$\square$
+
+Normalization and positivity of $W$ are premises: for example,
+$W=2\delta_{R_\star}$ gives $\eta_{\ell,W}=0$ while multiplying the shell
+spectrum by four. A signed window would require its total variation in the
+norm estimate.
 
 The reference implementation evaluates this analytic bound in binary64; it
 does not provide an outward-rounded interval certificate. Near $\theta=0$ it
@@ -354,10 +361,14 @@ the covariance operator on $L^2(r^2dr)$ obeys
  Q_\ell=\mathcal H_\ell^{-1}M_{P_\zeta}\mathcal H_\ell.
 \]
 Thus a complete radial cross-covariance operator determines $P_\zeta$ uniquely
-almost everywhere.  Fixing one radius $r_0$, the family $C_\ell(r,r_0)$ known for
-all $r$ suffices: its spherical-Hankel transform is
+almost everywhere on its natural operator domain. Fixing one radius $r_0>0$,
+the family $C_\ell(r,r_0)$ known for all $r$ suffices, provided that this
+section admits spherical-Hankel inversion in the declared function or
+distribution class: its spherical-Hankel transform is
 $\sqrt{2/\pi}\,P_\zeta(k)j_\ell(kr_0)$, and the Bessel zeros are discrete.
 A finite collection of auto-spectra does not supply this tomography theorem.
+The positive-radius condition is essential: $j_\ell(kr_0)$ is identically zero
+at $r_0=0$ for $\ell\ge1$, so that section contains no spectral information.
 
 \textit{Proof.}
 Apply spherical-Hankel inversion in the first radial variable.  Unitary

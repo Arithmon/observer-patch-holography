@@ -339,9 +339,29 @@ class Expected:
             self.add("primordial", self.gaussian(
                 f"running_zero_{item_id}", "conditional_theorem_postdiction", Fraction(0), item_id, True, cmb))
         for item_id in ("bk18_r_0p05", "tristram2022_r", "planck2018_x_r_0p002_bk15"):
-            self.add("primordial", self.bound(
-                f"tensor_zero_{item_id}", "conditional_theorem_postdiction", item_id, True,
-                "LiteBIRD (delta r < 0.001 target); CMB-S4"))
+            row = self.bound(
+                f"tensor_zero_{item_id}", "conditional_theorem_postdiction", item_id, False,
+                "LiteBIRD; CMB-S4 (tests specified tensor alternatives above the achieved bound)")
+            # Bind the scientific premises, not only the zero and upper bound.
+            # No source term in a second-order tensor equation does not fix
+            # its two homogeneous initial data.
+            row["oph_premises"] = [
+                "linear tensor evolution on the declared background",
+                "zero initial tensor amplitude and velocity",
+                "no tensor forcing",
+                "positive scalar power at the comparison pivot",
+            ]
+            row["epistemic_note"] = (
+                "Zero linear primordial tensor amplitude requires zero initial tensor "
+                "amplitude and velocity, no tensor forcing, and positive scalar power. "
+                "A scalar source alone leaves homogeneous tensor modes unconstrained. "
+                "These extra initial conditions are branch premises, not source-derived "
+                "results. Slow roll has no universal positive lower bound on r; an upper "
+                "limit tests only specified alternatives above it. Observable comparisons "
+                "require separate treatment of scalar-induced tensors, lensing and "
+                "foregrounds. Bound rows carry no sigma distance. Seen data."
+            )
+            self.add("primordial", row)
         for item_id in (
             "planck2018_x_cdi_axion_i_100beta_klow",
             "planck2018_x_cdi_axion_i_100beta_kmid",
@@ -666,7 +686,7 @@ def verify_row(actual: dict[str, Any], expected: dict[str, Any], section_id: str
         require(actual["verdict"] == ("consistent" if below else "exceeds_stated_confidence_bound"), f"{label}: bound rule")
     require(actual["discriminates_from_baseline"] is expected["discriminates_from_baseline"], f"{label}: discriminates")
     require(actual["prospective_data"] == expected["prospective_data"], f"{label}: prospective data")
-    for key in ("dataset", "citation"):
+    for key in ("dataset", "citation", "oph_premises", "epistemic_note"):
         if key in expected:
             require(actual[key] == expected[key], f"{label}: {key}")
     for key in ("quantity", "oph_value_display", "measurement_display", "dataset", "citation", "epistemic_note", "prospective_data"):

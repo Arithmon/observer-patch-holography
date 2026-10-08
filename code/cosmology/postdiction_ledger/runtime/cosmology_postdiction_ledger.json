@@ -198,18 +198,18 @@
   },
   "pins": {
     "code/cosmology/fixed_capacity_wlaw/runtime/official_desi_dr2_fz13_retrospective.json": "52abfd4ca15424420b4b4c55160660648279de0bdd1b404a242c4b3dab4c1473",
-    "code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py": "29e2ab2327518e74e4f32e0d35f4b8de1e4fbc8a3f01974474a747ef0d70911c",
-    "code/cosmology/postdiction_ledger/corpus_inputs.json": "f7439cfadbff19db5f927e91ae82ec0fbc4d16d5bf4ae98d0de440961b1e93b8",
+    "code/cosmology/postdiction_ledger/build_cosmology_postdiction_ledger.py": "1e5117a2699749cd314744114f1056da967d6e9bed4eafe242283abbad4cdf2c",
+    "code/cosmology/postdiction_ledger/corpus_inputs.json": "7beba089591dccd9f1cfbc922fbefaaacbe60737dec3bead897f57b4f5266e0b",
     "code/cosmology/postdiction_ledger/public_inputs.json": "22dfe5c393486ac19b4617759fae72bcf1be4c6fae71075206e39b6691e8b47a",
-    "code/cosmology/postdiction_ledger/test_cosmology_postdiction_ledger.py": "faa540625fa02a311511660027ec4d4e8d09723e2c5431471e14ebad0bf0ab94",
-    "code/cosmology/postdiction_ledger/verify_cosmology_postdiction_ledger_independent.py": "8edd31659a40a4cb02122d7d15061d490184815d42605521cb9e7f48efbd1b19",
+    "code/cosmology/postdiction_ledger/test_cosmology_postdiction_ledger.py": "9115121d2ac490db08f5534633dbe37a632d800dfa46ed7d8a2d044095e02937",
+    "code/cosmology/postdiction_ledger/verify_cosmology_postdiction_ledger_independent.py": "8aae6976f87377ca9178befeb576b656cd61e6a513c5ce55c9a491168a6d629e",
     "code/cosmology/rar_deep_regime/receipts/sparc_deep_regime_diagnostic.json": "b52c06698523ada1b8fe6337f61d81b5a0c57421c03453679dccf1872f56f2e9",
     "code/cosmology/rar_deep_regime/receipts/sparc_full_rar_calibration.json": "204ec809099937ffdb95ba77ae26f1343b49e9378a6c030c6b3494d29f28525f"
   },
   "promotes_nothing": true,
   "public_inputs_schema": "oph.cosmology.postdiction_ledger.public_inputs.v1",
   "row_count": 53,
-  "rows_sha256": "351e12d7ddb4a655a3821747a4181f410cc4b49d08027c3fa839bee1b17c111e",
+  "rows_sha256": "e30e256328683ae0576dbcda99c142ccd51403a9ed2b284cdd7d0a008233b933",
   "schema": "oph.cosmology.postdiction_ledger.v1",
   "sections": [
     {
@@ -984,8 +984,8 @@
             "zero_tensor_scalar_screen_field"
           ],
           "dataset": "BICEP/Keck through 2018 (BK18) + Planck + WMAP",
-          "discriminates_from_baseline": true,
-          "epistemic_note": "Zero tensor amplitude follows from the scalar screen field with a rank-one single-clock source and no orthogonal primordial source. Generic single-field slow-roll gives r > 0 (Starobinsky: r of order 0.003 at N = 55), so any primordial B-mode detection excludes this branch. Bound rows carry no sigma distance. Seen data.",
+          "discriminates_from_baseline": false,
+          "epistemic_note": "Zero linear primordial tensor amplitude requires zero initial tensor amplitude and velocity, no tensor forcing, and positive scalar power. A scalar source alone leaves homogeneous tensor modes unconstrained. These extra initial conditions are branch premises, not source-derived results. Slow roll has no universal positive lower bound on r; an upper limit tests only specified alternatives above it. Observable comparisons require separate treatment of scalar-induced tensors, lensing and foregrounds. Bound rows carry no sigma distance. Seen data.",
           "measurement": {
             "confidence_level": 0.95,
             "kind": "upper_bound",
@@ -995,14 +995,15 @@
           },
           "measurement_display": "< 0.036 (95 percent CL)",
           "oph_premises": [
-            "scalar screen field only",
-            "rank-one single-clock primordial source",
-            "no orthogonal (transverse-traceless) primordial source"
+            "linear tensor evolution on the declared background",
+            "zero initial tensor amplitude and velocity",
+            "no tensor forcing",
+            "positive scalar power at the comparison pivot"
           ],
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "LiteBIRD (delta r < 0.001 target); CMB-S4",
+          "prospective_data": "LiteBIRD; CMB-S4 (tests specified tensor alternatives above the achieved bound)",
           "public_input_ids": [
             "bk18_r_0p05"
           ],
@@ -1020,8 +1021,8 @@
             "zero_tensor_scalar_screen_field"
           ],
           "dataset": "Planck PR4 + BK18 + BAO",
-          "discriminates_from_baseline": true,
-          "epistemic_note": "Zero tensor amplitude follows from the scalar screen field with a rank-one single-clock source and no orthogonal primordial source. Generic single-field slow-roll gives r > 0 (Starobinsky: r of order 0.003 at N = 55), so any primordial B-mode detection excludes this branch. Bound rows carry no sigma distance. Seen data.",
+          "discriminates_from_baseline": false,
+          "epistemic_note": "Zero linear primordial tensor amplitude requires zero initial tensor amplitude and velocity, no tensor forcing, and positive scalar power. A scalar source alone leaves homogeneous tensor modes unconstrained. These extra initial conditions are branch premises, not source-derived results. Slow roll has no universal positive lower bound on r; an upper limit tests only specified alternatives above it. Observable comparisons require separate treatment of scalar-induced tensors, lensing and foregrounds. Bound rows carry no sigma distance. Seen data.",
           "measurement": {
             "confidence_level": 0.95,
             "kind": "upper_bound",
@@ -1030,14 +1031,15 @@
           },
           "measurement_display": "< 0.032 (95 percent CL)",
           "oph_premises": [
-            "scalar screen field only",
-            "rank-one single-clock primordial source",
-            "no orthogonal (transverse-traceless) primordial source"
+            "linear tensor evolution on the declared background",
+            "zero initial tensor amplitude and velocity",
+            "no tensor forcing",
+            "positive scalar power at the comparison pivot"
           ],
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "LiteBIRD (delta r < 0.001 target); CMB-S4",
+          "prospective_data": "LiteBIRD; CMB-S4 (tests specified tensor alternatives above the achieved bound)",
           "public_input_ids": [
             "tristram2022_r"
           ],
@@ -1055,8 +1057,8 @@
             "zero_tensor_scalar_screen_field"
           ],
           "dataset": "Planck 2018 TT,TE,EE+lowE+lensing + BK15",
-          "discriminates_from_baseline": true,
-          "epistemic_note": "Zero tensor amplitude follows from the scalar screen field with a rank-one single-clock source and no orthogonal primordial source. Generic single-field slow-roll gives r > 0 (Starobinsky: r of order 0.003 at N = 55), so any primordial B-mode detection excludes this branch. Bound rows carry no sigma distance. Seen data.",
+          "discriminates_from_baseline": false,
+          "epistemic_note": "Zero linear primordial tensor amplitude requires zero initial tensor amplitude and velocity, no tensor forcing, and positive scalar power. A scalar source alone leaves homogeneous tensor modes unconstrained. These extra initial conditions are branch premises, not source-derived results. Slow roll has no universal positive lower bound on r; an upper limit tests only specified alternatives above it. Observable comparisons require separate treatment of scalar-induced tensors, lensing and foregrounds. Bound rows carry no sigma distance. Seen data.",
           "measurement": {
             "confidence_level": 0.95,
             "kind": "upper_bound",
@@ -1065,14 +1067,15 @@
           },
           "measurement_display": "< 0.056 (95 percent CL)",
           "oph_premises": [
-            "scalar screen field only",
-            "rank-one single-clock primordial source",
-            "no orthogonal (transverse-traceless) primordial source"
+            "linear tensor evolution on the declared background",
+            "zero initial tensor amplitude and velocity",
+            "no tensor forcing",
+            "positive scalar power at the comparison pivot"
           ],
           "oph_value": 0.0,
           "oph_value_display": "0 (exact)",
           "oph_value_exact_rational": "0/1",
-          "prospective_data": "LiteBIRD (delta r < 0.001 target); CMB-S4",
+          "prospective_data": "LiteBIRD; CMB-S4 (tests specified tensor alternatives above the achieved bound)",
           "public_input_ids": [
             "planck2018_x_r_0p002_bk15"
           ],

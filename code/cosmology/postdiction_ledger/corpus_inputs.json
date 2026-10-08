@@ -85,9 +85,9 @@
     },
     "zero_tensor_scalar_screen_field": {
       "kind": "statement",
-      "statement": "r = 0 exactly: the scalar screen field emits no transverse-traceless source",
+      "statement": "r = 0 for linear tensors under zero initial tensor amplitude and velocity, no tensor forcing, and positive scalar power; the scalar source alone does not determine tensor initial data",
       "source_file": "cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex",
-      "anchor_text": "the scalar screen field emits no transverse-traceless source, so the primordial tensor amplitude is zero"
+      "anchor_text": "A zero linear primordial tensor amplitude additionally requires zero initial tensor amplitude and velocity and no tensor forcing"
     },
     "gaussian_maxent_release": {
       "kind": "statement",
