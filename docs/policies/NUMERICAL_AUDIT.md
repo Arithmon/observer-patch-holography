@@ -48,6 +48,11 @@ not a domain argument.
 - **Components and identities:** independently check each component of a
   ratio, difference or normalized diagnostic. Correlated errors can leave
   identities, positivity and normalization intact.
+- **Combined conditioning:** challenge metric whitening and constraint
+  inversion together. Separate precision gates can each pass while their
+  compounded error spoils the minimum. Compare with the original-input
+  solution, and check reported residuals on their own scale so a false zero
+  cannot hide inside the much larger target's roundoff budget.
 - **Intermediate and output scales:** cross normal/subnormal/zero
   boundaries before and after weighting. Use ordinary units, very small
   and large units, both signs where allowed, and cancelling energy origins.

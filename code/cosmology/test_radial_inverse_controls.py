@@ -103,11 +103,13 @@ def _check(a, c, p0, q, *, supplied_a=None, supplied_c=None, component_rtol=5e-1
         assert abs(float(error)) <= 5e-10 * scale
     assert math.isfinite(actual.residual_norm)
     assert len(actual.residual) == len(residual)
-    for reported, exact, scale in zip(actual.residual, residual, residual_scale):
+    for reported, exact in zip(actual.residual, residual):
         assert math.isfinite(reported)
-        assert abs(reported - float(exact)) <= 5e-15 * scale
+        # The producer reports the residual of its returned floats. A zero
+        # report must not hide a small nonzero error behind the target scale.
+        assert reported == pytest.approx(float(exact), rel=5e-15, abs=0.0)
     exact_norm = math.hypot(*(float(x) for x in residual))
-    assert abs(actual.residual_norm - exact_norm) <= 5e-15 * math.hypot(*residual_scale)
+    assert actual.residual_norm == pytest.approx(exact_norm, rel=5e-15, abs=0.0)
 
     # Exact null columns give independent feasible variations.  Their metric
     # inner product with the displacement must vanish, including for dense Q.
@@ -284,3 +286,46 @@ def test_resolved_near_parallel_constraints_keep_both_directions():
 def test_anisotropic_null_projector_preserves_a_tiny_positive_component():
     # The exact N[0,0] is 1/(1+2**96), despite R[0,0] rounding to 1.
     _check([[1, 1]], [1], [0, 0], [[1, 0], [0, 2**96]])
+
+
+def _combined_prior_problem(exponent, change_units):
+    step = F(1, 2**exponent)
+    a = [[3, 5, 1], [3, 5 + step / 2**10, 1 + step]]
+    c = [1, 1 + step / 4]
+    q = [[9, 15, 0], [15, 25 + F(1, 2**20), 0], [0, 0, 1]]
+    if change_units:
+        source_units = [F(1, 8), F(4), F(2)]
+        equation_units = [F(1, 2**30), F(2**30)]
+        a = [[x * source_units[j] * equation_units[i] for j, x in enumerate(row)]
+             for i, row in enumerate(a)]
+        c = [x * unit for x, unit in zip(c, equation_units)]
+        q = [[x * source_units[i] * source_units[j] for j, x in enumerate(row)]
+             for i, row in enumerate(q)]
+    return a, c, q
+
+
+@pytest.mark.parametrize("change_units", [False, True])
+def test_combined_prior_and_inverse_conditioning_needs_a_resolved_minimum(change_units):
+    a, c, q = _combined_prior_problem(24, change_units)
+    # Untransformed exact optimum: (10247/36, -512/3, 5/12), objective 13/48.
+    # The two individually acceptable conditioning estimates must not be
+    # mistaken for precision of their combined whitening/inversion operation.
+    expected_p, _, _, objective = _exact_control(a, c, [0, 0, 0], q)
+    try:
+        actual = minimum_prior_continuation(
+            np.asarray(a, float), np.asarray(c, float),
+            prior_center=[0, 0, 0], prior_precision=np.asarray(q, float),
+        )
+    except RadialLiftInputError as error:
+        assert "unresolved" in str(error)
+        return
+    error = [F(float(x)) - y for x, y in zip(actual.p, expected_p)]
+    error_energy = _dot(error, [_dot(row, error) for row in q])
+    assert error_energy <= F(1, 10**7) ** 2 * 2 * objective
+    assert actual.objective == pytest.approx(float(objective), rel=2e-7, abs=0.0)
+
+
+@pytest.mark.parametrize("change_units", [False, True])
+def test_resolved_combined_prior_and_inverse_geometry_remains_supported(change_units):
+    a, c, q = _combined_prior_problem(8, change_units)
+    _check(a, c, [0, 0, 0], q, component_rtol=2e-8)

@@ -509,7 +509,7 @@ def _radial_array(value: ArrayLike, name: str, ndim: int) -> NDArray[np.float64]
         if not math.isfinite(narrowed):
             raise RadialLiftInputError(f"{name} must contain finite numbers")
         converted = Fraction(narrowed)
-        if isinstance(scalar, Integral) and converted != exact:
+        if exact.denominator == 1 and converted != exact:
             raise RadialLiftInputError(f"{name} loses integer precision in float64")
         if exact and abs(converted - exact) > abs(exact) * Fraction(4 * _RADIAL_EPS):
             raise RadialLiftInputError(f"{name} loses input precision in float64")
@@ -557,8 +557,15 @@ def _radial_norm(vector: Sequence[float], name: str) -> float:
 def _radial_svd(matrix: NDArray[np.float64], rtol: float, *, complete: bool = False):
     scale = float(np.max(np.abs(matrix)))
     normalized = matrix / scale if scale else matrix.copy()
-    if np.any((matrix != 0) & (normalized == 0)):
-        raise RadialLiftInputError("operator scaling loses unresolved nonzero entries")
+    if scale:
+        # A nonzero subnormal quotient can already have lost most of its
+        # information. Rescaling the singular value later does not restore it.
+        # Ordinary normalized values have standard division precision; check
+        # the underflow boundary from the exact supplied binary64 entries.
+        for index in zip(*np.nonzero((matrix != 0) & (np.abs(normalized) < np.finfo(float).tiny))):
+            normalized[index] = _radial_float(
+                Fraction(float(matrix[index])) / Fraction(scale), "operator normalization precision"
+            )
     try:
         # A complete right basis only needs the full SVD for a wide matrix.
         u, singular, vh = np.linalg.svd(normalized, full_matrices=complete and matrix.shape[1] > matrix.shape[0])
@@ -653,9 +660,12 @@ def minimum_prior_continuation(
         # A conservative numerical policy on prior geometry, not an interval
         # eigenvalue certificate. A successful Cholesky alone cannot resolve
         # a tiny correlation eigenvalue, even if the constraints fit exactly.
-        prior_error_scale = Q.shape[0] * _RADIAL_EPS * float(np.linalg.norm(correlation, ord=np.inf))
+        prior_norm = float(np.linalg.norm(correlation, ord=np.inf))
+        prior_error_scale = Q.shape[0] * _RADIAL_EPS * prior_norm
         if minimum_eigenvalue <= 0 or prior_error_scale > _RADIAL_RESOLUTION_RTOL * minimum_eigenvalue:
             raise RadialLiftInputError("prior_precision correlation geometry is unresolved at float64 precision")
+        prior_condition = prior_norm / minimum_eigenvalue
+        prior_error_estimate = prior_error_scale / minimum_eigenvalue
         L = np.linalg.cholesky(correlation)
     except np.linalg.LinAlgError as error:
         raise RadialLiftInputError("prior_precision must be numerically positive definite") from error
@@ -685,12 +695,18 @@ def minimum_prior_continuation(
                     for x in B[i]]
             rhs[i] /= Fraction(float(row_scale))
     b_scale, u, singular, vh, _, rank = _radial_svd(B, cutoff, complete=True)
-    # Retaining a mode is not enough to resolve an inverse along it. A nearly
-    # parallel pair of equations can have a tiny backward residual while its
-    # minimum-prior solution is inaccurate. Apply the same numerical policy to
-    # the retained inverse; this is a conditioning estimate, not an error proof.
-    if rank and max(A.shape) * _RADIAL_EPS * singular[0] > _RADIAL_RESOLUTION_RTOL * singular[rank - 1]:
-        raise RadialLiftInputError("retained radial inverse is unresolved at float64 precision")
+    # Separate checks on the prior and inverse miss amplification of whitening
+    # roundoff by the inverse. Treat the Cholesky factor as a nearby metric
+    # (the prior term above), then propagate row/triangular-solve roundoff
+    # through both kappa(L) and the retained kappa(B). Since H=L L.T,
+    # sqrt(||H||inf/lambda_min(H)) estimates the first amplification.
+    # This first-order conditioning policy is not a certified error bound.
+    retained_condition = float(singular[0] / singular[rank - 1]) if rank else 0.0
+    inverse_error_estimate = (
+        max(A.shape) * _RADIAL_EPS * math.sqrt(prior_condition) * retained_condition
+    )
+    if prior_error_estimate + inverse_error_estimate > _RADIAL_RESOLUTION_RTOL:
+        raise RadialLiftInputError("combined prior and radial inverse geometry is unresolved at float64 precision")
     V = vh[:rank].T
     # Back-transform only retained right singular vectors; no inverse of Q.
     W = solve_triangular(L.T, V, lower=False, check_finite=False)

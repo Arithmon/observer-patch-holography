@@ -242,6 +242,9 @@ one-dimensional source branch. Source uniqueness still requires its theorem.
 `radial_null_space_report` is a floating-point diagnostic of the supplied raw
 matrix \(A\). A scaled SVD uses the relative cutoff
 \(\max(\mathtt{rtol},\max(\operatorname{shape}(A))\epsilon_{\rm binary64})\).
+Scaling a nonzero entry into the subnormal or zero range is accepted only if
+rounding its exact entry-to-scale ratio changes it by at most
+\(4\epsilon_{\rm binary64}\) relatively; otherwise the helper refuses that range.
 The retained singular values determine the rank, nullity and basis together;
 the API's `effective_threshold` corresponds to the receipt's `rank_threshold`.
 `relative_cutoff` records the cutoff; `rank_metric` is `raw_operator_euclidean`.
@@ -279,19 +282,26 @@ The projectors are complementary and
 \(Q\)-self-adjoint up to roundoff; truncation alone does not establish
 \(AN_Q=0\). Neither the computed rank nor the continuation is an interval
 certificate or an exact-arithmetic proof of the constrained minimum.
-Before inverting retained singular values, the solver also requires
-\(\max(\operatorname{shape}(B))\epsilon_{\rm binary64}s_0/s_{\rm last}\le10^{-7}\).
-This separate numerical-conditioning policy permits explicit refusal of an
-unresolved inverse; it is neither an exact certificate nor an error proof.
 Before Cholesky, the computed smallest eigenvalue of \(H=D^{-1}QD^{-1}\)
-must be positive and satisfy
-\(n\epsilon_{\rm binary64}\|H\|_\infty/\lambda_{\min}(H)\le10^{-7}\), \(n=\dim Q\).
-This is a conservative prior-geometry support policy, not an interval bound
-or a relative-accuracy guarantee for every output component.
+must be positive, with \(\kappa_H=\|H\|_\infty/\lambda_{\min}(H)\) and
+\(\eta_Q=n\epsilon_{\rm binary64}\kappa_H\le10^{-7}\), \(n=\dim Q\).
+Before inverting the retained spectrum, the solver additionally requires
+\[
+\eta_Q+\max(\operatorname{shape}(B))\epsilon_{\rm binary64}
+\sqrt{\kappa_H}\,\kappa_B\le10^{-7},\qquad
+\kappa_B=s_0/s_{\rm last}\quad(0\text{ at rank zero}).
+\]
+This joint first-order conditioning policy accounts for prior-metric error
+and amplification through whitening and inversion; it is neither a certified
+error bound nor a relative-accuracy guarantee for every output component.
 
 The inverse and residual interfaces validate original scalar entries before
 array coercion and require finite real data; `rtol` is finite with
 \(0<\mathtt{rtol}<1\). Zero \(A\) with zero \(C\) is supported.
+Nonintegral scalars may round to binary64 within \(4\epsilon_{\rm binary64}\)
+relatively, and the computation refers to those accepted binary64 values.
+Integral-valued inputs must be exactly representable, regardless of scalar
+type or container.
 Returned constraints are checked row by row using exact arithmetic on the
 accepted binary64 inputs and returned \(p\), without an absolute unit floor.
 Unresolved constraints or unrepresentable reported quantities cause an
