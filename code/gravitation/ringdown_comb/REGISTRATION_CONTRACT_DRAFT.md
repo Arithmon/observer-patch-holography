@@ -74,6 +74,8 @@ are finite Decimals or integers. Mass and supplied `pi` must be positive,
 `|chi| <= 1`, and redshift must be nonnegative. The mathematical linewidth
 helper accepts positive `a` and requires `|chi| < 1`; the declared physical
 nuisance range remains `[1,10]`.
+At `|chi|=1` the Kerr scale vanishes; offset-subtracted ratios and strict
+tooth separation require a positive scale, hence `|chi|<1`.
 
 The Kerr factor is evaluated as `sqrt((1-chi)*(1+chi))`. A small positive
 offset must not disappear through a rounded `1-chi*chi`, and a signed rotation
@@ -83,10 +85,16 @@ precision until its error criterion is met. An unresolved or unrepresentable
 result raises an arithmetic error. It does not become a zero, infinity or
 successful check. After exact divisibility is established, the entropy change
 uses `-ln(k)` directly instead of subtracting two nearly equal large logs.
+Products and ratios separate exact powers of ten from their mantissas before
+arithmetic. This avoids overflowing an intermediate detector mass or scale
+product when the requested radius or frequency remains representable.
 
 Each returned value uses the caller's precision `p` and exponent range, with
 HALF_EVEN rounding. Its enclosure must certify error below one output ulp and
 relative error at most `10^(1-p)`; at most 4096 additional digits are tried.
+Exhausting the implementation's exponent range while enclosing an expression
+also causes explicit refusal; successful evaluation is not promised for every
+mathematically finite result.
 This is an error bound, not a correct-rounding guarantee. Supplied `pi` is
 treated as an exact finite parameter: the bound does not include its error
 relative to mathematical pi, or uncertainty in any other supplied parameter.

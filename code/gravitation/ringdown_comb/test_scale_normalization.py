@@ -4,7 +4,7 @@ Expected values use only ordinary-sized constants at 200 digits and exact
 Decimal tuple exponent shifts. No oracle forms 10**MAX_EMAX as an integer,
 or reads a producer-generated mass, root, frequency, or scale.
 """
-from decimal import Context, Decimal, MAX_EMAX, MIN_EMIN, localcontext
+from decimal import Context, Decimal, MAX_EMAX, MIN_EMIN, Rounded, localcontext
 
 import pytest
 
@@ -99,3 +99,59 @@ def test_reversed_scale_cancellation_survives_changes_to_evaluation_order(case):
             actual = producer.tooth_frequency_hz(
                 D(f"1e{-N}"), D(0), 0, 2, D(f"1e{HALF_N}"))
     _check(actual, expected)
+
+
+@pytest.mark.parametrize("pi,chi,m", [
+    (D(".125"), D(".67"), -2),
+    (D(1), D(".67"), -1),
+    (D("0." + "9" * 80), D("-.67"), -1),
+    (D("1." + "0" * 79 + "1"), D(".67"), 2),
+    (D(10), D("-.67"), 2),
+])
+def test_both_pi_scalings_preserve_signed_original_input_frequencies(pi, chi, m):
+    import mpmath as mp
+
+    with mp.workdps(250):
+        x, supplied_pi = mp.mpf(str(chi)), mp.mpf(str(pi))
+        root = mp.sqrt(1 - x * x)
+        kappa = mp.mpf(299792458) ** 3 * root / (2 * 62 * mp.mpf("1.3271244e20") * (1 + root))
+        omega = mp.mpf(299792458) ** 3 * x / (2 * 62 * mp.mpf("1.3271244e20") * (1 + root))
+        expected = D(mp.nstr(m * omega / (2 * supplied_pi) + kappa * mp.log(2) / (4 * supplied_pi ** 2), 200))
+    with localcontext(Context(prec=50)):
+        actual = producer.tooth_frequency_hz(D(62), chi, m, 2, pi)
+    assert (actual < 0) == (expected < 0)
+    _check(actual.copy_abs(), expected.copy_abs())
+
+
+def test_true_output_overflow_refuses_without_mutating_caller_flags():
+    with localcontext(Context(prec=50, Emax=MAX_EMAX, Emin=MIN_EMIN)) as context:
+        context.flags[Rounded] = True
+        flags, traps = dict(context.flags), dict(context.traps)
+        with pytest.raises(producer.NumericalResolutionError):
+            producer.omega_h_si(D(f"1e{-N}"), D(".67"))
+        assert dict(context.flags) == flags
+        assert dict(context.traps) == traps
+
+
+@pytest.mark.parametrize("upper", [False, True])
+def test_signed_cancellation_survives_combined_implementation_scale_exponents(upper):
+    import mpmath as mp
+
+    with mp.workdps(250):
+        log_three = mp.log(3)
+        coefficient = int(mp.floor(log_three / 2 * 10 ** 60)) + int(upper)
+        a = D((0, tuple(map(int, str(coefficient))), -60))
+        chi = _shift(a, -HALF_N)
+        numerator, denominator = a.as_integer_ratio()
+        a_exact = mp.mpf(numerator) / denominator
+        # Original chi=a*10**(-H), pi=10**H and M=10**(-N).
+        # Replacing sqrt(1-chi²) by1 changes f by <10**(-N+10),
+        # negligible compared with the retained 200-digit oracle and its
+        # nonzero ~10**(-55) answer. All finite supplied coefficients remain.
+        kappa_at_unit_mass = mp.mpf(299792458) ** 3 / (4 * mp.mpf("1.3271244e20"))
+        expected = D(mp.nstr(kappa_at_unit_mass * (log_three - 2 * a_exact)
+                            / 4 * 10 ** (N - 2 * HALF_N), 200))
+    with localcontext(Context(prec=50, Emax=MAX_EMAX, Emin=MIN_EMIN)):
+        actual = producer.tooth_frequency_hz(D(f"1e{-N}"), chi, -1, 3, D(f"1e{HALF_N}"))
+    assert (actual < 0) == upper
+    _check(actual.copy_abs(), expected.copy_abs())

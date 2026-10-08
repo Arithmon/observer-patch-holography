@@ -103,7 +103,8 @@ rounded Decimal primitives; Machin pi uses exact alternating-series bounds.
 Results use HALF_EVEN rounding and are checked against their enclosures for
 error below one output ulp and relative error at most 10^(1-p), where p is
 the requested precision. This is not a correct-rounding promise. Unresolved
-cancellation or output range is refused. Inputs named pi are exact supplied
+cancellation, output range or implementation exponent-range exhaustion is
+refused. Inputs named pi are exact supplied
 finite values, not replacements by mathematical pi. Caller Decimal context
 settings and flags are preserved; receipt construction owns a fixed context.
 Rendered strings carry 40 significant digits; float renderings live under
@@ -326,7 +327,8 @@ def _evaluate(expression) -> Decimal:
     A second relative bound, 10**(1-p), prevents coarse subnormal rounding
     from silently discarding the requested significant precision. The caller's
     exponent range is respected. At most 4096 extra working digits are tried;
-    unresolved cancellation/range is refused, not replaced by a numerical zero.
+    unresolved cancellation, output range or implementation exponent-range
+    exhaustion is refused, not replaced by a numerical zero.
     """
     caller = getcontext()
     precision = caller.prec
@@ -374,6 +376,45 @@ def _spin(arithmetic, chi):
     return root, 1 + root
 
 
+def _shift_interval(arithmetic, value, exponent):
+    """Multiply by an exact decade without rounding the supplied coefficients."""
+    def shift(endpoint):
+        # Decimal zero can carry a huge quantum; it needs no exponent shift.
+        if endpoint == 0:
+            return Decimal(0)
+        sign, digits, original_exponent = endpoint.as_tuple()
+        # Tuple construction is exact. Its possible range exception must not
+        # set flags in the caller's context.
+        try:
+            with localcontext(arithmetic.nearest):
+                return Decimal((sign, digits, original_exponent + exponent))
+        except (DecimalException, OverflowError, ValueError) as exc:
+            raise NumericalResolutionError("Decimal exponent range exhausted during scale restoration") from exc
+    return _Interval(arithmetic, shift(value.lo), shift(value.hi))
+
+
+def _product_ratio(arithmetic, numerators, denominators=()):
+    """Enclose a product/ratio with powers of ten kept outside its arithmetic.
+
+    Every factor uses one common positive decade for both endpoints. Mantissa
+    arithmetic still rounds outward; Python integer exponents cancel before
+    the result is restored. This avoids overflowing a product whose quotient
+    is representable, without a search over arithmetic operation orders.
+    """
+    result, exponent = arithmetic(1), 0
+    for factors, divide in ((numerators, False), (denominators, True)):
+        for factor in factors:
+            factor = arithmetic(factor)
+            magnitude = max(factor.lo.copy_abs(), factor.hi.copy_abs())
+            factor_exponent = magnitude.adjusted() if magnitude else 0
+            normalized = _shift_interval(arithmetic, factor, -factor_exponent)
+            # Do not shortcut a zero numerator: all denominator intervals must
+            # still exclude zero, as required by the underlying division.
+            result = result / normalized if divide else result * normalized
+            exponent += -factor_exponent if divide else factor_exponent
+    return _shift_interval(arithmetic, result, exponent)
+
+
 def _kerr(arithmetic, chi):
     root, horizon = _spin(arithmetic, chi)
     c = int(C_LIGHT_M_PER_S)
@@ -383,11 +424,20 @@ def _kerr(arithmetic, chi):
     return root, scale
 
 
-def _frequency(arithmetic, mass, chi, m, k, pi):
+def _frequency(arithmetic, mass, chi, m, k, pi, frame_factor=1):
     root, scale = _kerr(arithmetic, chi)
-    pi = arithmetic(pi)
-    return scale * (m * arithmetic(chi) / (2 * pi)
-                    + root * arithmetic.ln(k) / (4 * pi * pi)) / mass
+    logarithm = arithmetic.ln(k)
+    # Choose an algebraic scale before adding signed terms. Neither branch
+    # forms a reciprocal of a tiny pi or a product with a huge pi in the sum.
+    if pi <= 1:
+        bracket = _product_ratio(arithmetic, (2, m, chi, pi)) + root * logarithm
+        denominator = (4, mass, pi, pi, frame_factor)
+    else:
+        bracket = _product_ratio(arithmetic, (2, m, chi)) + _product_ratio(
+            arithmetic, (root, logarithm), (pi,)
+        )
+        denominator = (4, mass, pi, frame_factor)
+    return _product_ratio(arithmetic, (scale, bracket), denominator)
 
 
 def _arctan_inv(x: int) -> Decimal:
@@ -444,7 +494,9 @@ def detector_frame_mass_solar(
     """M_det=(1+z)M_source for an observed-frequency template."""
     mass = _scalar(source_frame_mass_solar, "source-frame mass", positive=True)
     redshift = _scalar(redshift, "redshift", nonnegative=True)
-    return _evaluate(lambda arithmetic: arithmetic(mass) * (1 + arithmetic(redshift)))
+    return _evaluate(lambda arithmetic: _product_ratio(
+        arithmetic, (mass, 1 + arithmetic(redshift))
+    ))
 
 
 def sqrt_one_minus_chi_squared(chi: Decimal) -> Decimal:
@@ -462,15 +514,17 @@ def r_plus_hat(chi: Decimal) -> Decimal:
 def gm_si(mass_solar: Decimal) -> Decimal:
     """G*M in m^3/s^2 from the nominal solar mass parameter."""
     mass = _scalar(mass_solar, "mass", positive=True)
-    return _evaluate(lambda arithmetic: arithmetic(mass) * dec(GM_SUN_NOMINAL_M3_PER_S2))
+    return _evaluate(lambda arithmetic: _product_ratio(
+        arithmetic, (mass, dec(GM_SUN_NOMINAL_M3_PER_S2))
+    ))
 
 
 def r_plus_si(mass_solar: Decimal, chi: Decimal) -> Decimal:
     """Outer horizon radius in meters: (G*M/c^2)*(1 + sqrt(1 - chi^2))."""
     mass, chi = _scalar(mass_solar, "mass", positive=True), _chi(chi)
-    return _evaluate(lambda arithmetic: (
-        arithmetic(mass) * dec(GM_SUN_NOMINAL_M3_PER_S2)
-        * _spin(arithmetic, chi)[1] / int(C_LIGHT_M_PER_S) ** 2
+    return _evaluate(lambda arithmetic: _product_ratio(
+        arithmetic, (mass, dec(GM_SUN_NOMINAL_M3_PER_S2), _spin(arithmetic, chi)[1]),
+        (int(C_LIGHT_M_PER_S) ** 2,)
     ))
 
 
@@ -480,7 +534,9 @@ def omega_h_si(mass_solar: Decimal, chi: Decimal) -> Decimal:
     mass, chi = _scalar(mass_solar, "mass", positive=True), _chi(chi)
     if chi == 0:
         return Decimal(0)
-    return _evaluate(lambda arithmetic: _kerr(arithmetic, chi)[1] * chi / mass)
+    return _evaluate(lambda arithmetic: _product_ratio(
+        arithmetic, (_kerr(arithmetic, chi)[1], chi), (mass,)
+    ))
 
 
 def kappa_si(mass_solar: Decimal, chi: Decimal) -> Decimal:
@@ -491,7 +547,7 @@ def kappa_si(mass_solar: Decimal, chi: Decimal) -> Decimal:
         return Decimal(0)
     def expression(arithmetic):
         root, scale = _kerr(arithmetic, chi)
-        return scale * root / mass
+        return _product_ratio(arithmetic, (scale, root), (mass,))
     return _evaluate(expression)
 
 
@@ -513,7 +569,7 @@ def base_spacing_hz_per_nat(mass_solar: Decimal, chi: Decimal, pi: Decimal) -> D
         return Decimal(0)
     def expression(arithmetic):
         root, scale = _kerr(arithmetic, chi)
-        return scale * root / (4 * arithmetic(pi) * pi) / mass
+        return _product_ratio(arithmetic, (scale, root), (4, pi, pi, mass))
     return _evaluate(expression)
 
 
@@ -523,15 +579,15 @@ def rotation_line_hz(mass_solar: Decimal, chi: Decimal, m: int, pi: Decimal) -> 
     m, pi = _integer(m, "m"), _scalar(pi, "pi", positive=True)
     if m == 0 or chi == 0:
         return Decimal(0)
-    return _evaluate(lambda arithmetic: (
-        m * _kerr(arithmetic, chi)[1] * chi / (2 * arithmetic(pi)) / mass
+    return _evaluate(lambda arithmetic: _product_ratio(
+        arithmetic, (m, _kerr(arithmetic, chi)[1], chi), (2, pi, mass)
     ))
 
 
 def universal_position(k: int, pi: Decimal) -> Decimal:
     """Frozen universal-coordinate tooth position x_k = ln(k)/(8*pi)."""
     k, pi = _integer(k, "k", 2), _scalar(pi, "pi", positive=True)
-    return _evaluate(lambda arithmetic: arithmetic.ln(k) / (8 * arithmetic(pi)))
+    return _evaluate(lambda arithmetic: _product_ratio(arithmetic, (arithmetic.ln(k),), (8, pi)))
 
 
 def ladder_ratio(k: int) -> Decimal:
@@ -549,7 +605,7 @@ def kms_weight(k: int) -> Decimal:
     probability or prior across different k.
     """
     k = _integer(k, "k", 2)
-    return _evaluate(lambda arithmetic: arithmetic(k - 1) / k)
+    return _evaluate(lambda arithmetic: _product_ratio(arithmetic, (k - 1,), (k,)))
 
 
 def tooth_offset_hz(mass_solar: Decimal, chi: Decimal, k: int, pi: Decimal) -> Decimal:
@@ -560,7 +616,7 @@ def tooth_offset_hz(mass_solar: Decimal, chi: Decimal, k: int, pi: Decimal) -> D
         return Decimal(0)
     def expression(arithmetic):
         root, scale = _kerr(arithmetic, chi)
-        return scale * root * arithmetic.ln(k) / (4 * arithmetic(pi) * pi) / mass
+        return _product_ratio(arithmetic, (scale, root, arithmetic.ln(k)), (4, pi, pi, mass))
     return _evaluate(expression)
 
 
@@ -596,7 +652,7 @@ def detector_frame_tooth_frequency_hz(
     if m == 0 and chi.copy_abs() == 1:
         return Decimal(0)
     return _evaluate(lambda arithmetic: _frequency(
-        arithmetic, arithmetic(mass) * (1 + arithmetic(redshift)), chi, m, k, pi
+        arithmetic, mass, chi, m, k, pi, 1 + arithmetic(redshift)
     ))
 
 
@@ -613,8 +669,10 @@ def linewidth_fraction(a: Decimal, chi: Decimal, k: int, pi: Decimal) -> Decimal
     def expression(arithmetic):
         root, horizon = _spin(arithmetic, chi)
         g_chi = 2 * root / horizon
-        return (64 * arithmetic(pi) * pi * dec(DECLARED_P0)
-                / (a * g_chi * g_chi * arithmetic.ln(k)))
+        return _product_ratio(
+            arithmetic, (64, pi, pi, dec(DECLARED_P0)),
+            (a, g_chi, g_chi, arithmetic.ln(k))
+        )
     return _evaluate(expression)
 
 
