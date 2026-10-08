@@ -32,7 +32,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from particles.artifact_paths import portable_json_dumps
-from particles.takagi import sorted_takagi
+from particles.takagi import sorted_takagi, validate_takagi
 
 
 def load_json(path: pathlib.Path) -> dict[str, Any]:
@@ -159,6 +159,8 @@ def main() -> int:
         singular_values, takagi_vectors = _sorted_takagi(majorana_matrix)
         masses = singular_values
         raw_eigenvalues = None
+
+    validate_takagi(majorana_matrix, masses, takagi_vectors)
 
     u_vector = np.asarray(scale_anchor["collective_mode"]["u_vector"], dtype=float)
     collective_overlaps = [float(abs(np.vdot(u_vector, takagi_vectors[:, idx])) ** 2) for idx in range(3)]

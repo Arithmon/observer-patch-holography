@@ -13,6 +13,37 @@ import numpy as np
 from quantum_information.gibbs import _numeric
 
 
+def validate_takagi(matrix, masses, unitary):
+    """Check a supplied readout in scaled units, including the real shortcut."""
+    matrix = _numeric(matrix, "Majorana matrix")
+    masses = _numeric(masses, "Takagi masses", real=True)
+    unitary = _numeric(unitary, "Takagi columns")
+    if (matrix.ndim != 2 or not matrix.shape[0] or matrix.shape[0] != matrix.shape[1]
+            or unitary.shape != matrix.shape or masses.shape != (len(matrix),)):
+        raise ValueError("Takagi readout shapes disagree")
+    if np.any(masses < 0):
+        raise ValueError("Takagi masses must be nonnegative")
+    scale = max(float(np.max(np.abs(matrix.real))), float(np.max(np.abs(matrix.imag))))
+    if scale == 0:
+        scaled, relative_masses = matrix, masses
+    else:
+        with np.errstate(over="ignore", under="ignore", invalid="ignore"):
+            scaled = matrix.real / scale + 1j * (matrix.imag / scale)
+            relative_masses = masses / scale
+        if not np.all(np.isfinite(relative_masses)):
+            raise ValueError("Takagi masses exceed their matrix scale")
+        if (np.any((matrix.real != 0) & (scaled.real == 0))
+                or np.any((matrix.imag != 0) & (scaled.imag == 0))):
+            raise ValueError("Majorana normalization loses nonzero components")
+    if np.max(np.abs(scaled - scaled.T)) > 1e-12:
+        raise ValueError("Majorana matrix must be complex symmetric")
+    tolerance = 1e-10 * float(np.max(np.abs(scaled)))
+    if np.max(np.abs(unitary.T @ scaled @ unitary - np.diag(relative_masses))) > tolerance:
+        raise ValueError("Takagi masses disagree with the positive congruence diagonal")
+    if np.max(np.abs(unitary.conj().T @ unitary - np.eye(len(matrix)))) > 1e-12:
+        raise ValueError("Takagi columns are not unitary")
+
+
 def sorted_takagi(matrix):
     matrix = _numeric(matrix, "Majorana matrix")
     if matrix.ndim != 2 or not matrix.shape[0] or matrix.shape[0] != matrix.shape[1]:

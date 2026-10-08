@@ -266,3 +266,49 @@ def test_correlated_endpoint_may_be_narrower_than_the_component_interval_sum():
     result = validate_source_transport_payload(payload)
     assert result.contract_satisfied
     assert not result.promotion_allowed
+
+
+def test_declared_zero_ew_remainder_must_lie_in_its_component_interval():
+    payload = _valid_payload()
+    payload["endpoint_map"]["components"]["Delta_EW_image"] = {"lo": "0.1", "hi": "0.2"}
+    result = validate_source_transport_payload(payload)
+    assert not result.contract_satisfied
+    assert "delta_EW_zero_theorem_disjoint_from_bound" in result.reasons
+
+
+def test_ew_source_bound_must_overlap_its_component_interval():
+    payload = _valid_payload()
+    payload["delta_EW"] = {"source_bound": {"lo": "0.1", "hi": "0.2"}}
+    result = validate_source_transport_payload(payload)
+    assert not result.contract_satisfied
+    assert "delta_EW_source_bound_disjoint_from_endpoint_component" in result.reasons
+
+
+def test_ew_zero_theorem_cannot_conflict_with_a_second_source_bound():
+    payload = _valid_payload()
+    payload["delta_EW"]["source_bound"] = {"lo": "0.1", "hi": "0.2"}
+    result = validate_source_transport_payload(payload)
+    assert not result.contract_satisfied
+    assert "delta_EW_zero_theorem_disjoint_from_bound" in result.reasons
+
+
+def test_positive_hadronic_kernel_cannot_have_a_wholly_negative_moment():
+    payload = _valid_payload()
+    negative = {"lo": "-4.4", "hi": "-4.3"}
+    payload["source_measure"]["transport_moment_certificate"]["Delta_had_image"] = negative
+    payload["endpoint_map"]["components"]["Delta_had_image"] = negative
+    payload["endpoint_map"]["components"]["a0_image"] = {"lo": "136.9", "hi": "137.0"}
+    result = validate_source_transport_payload(payload)
+    assert not result.contract_satisfied
+    assert "positive_hadronic_measure_has_wholly_negative_moment" in result.reasons
+
+
+def test_error_enclosures_may_cross_zero_without_contradicting_positive_moment():
+    payload = _valid_payload()
+    enclosure = {"lo": "-0.1", "hi": "4.4"}
+    payload["source_measure"]["transport_moment_certificate"]["Delta_had_image"] = enclosure
+    payload["endpoint_map"]["components"]["Delta_had_image"] = enclosure
+    payload["delta_EW"]["source_bound"] = {"lo": "-0.1", "hi": "0.1"}
+    result = validate_source_transport_payload(payload)
+    assert result.contract_satisfied
+    assert not result.promotion_allowed

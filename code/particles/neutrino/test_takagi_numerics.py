@@ -90,7 +90,8 @@ def test_intrinsic_cubic_cancellation_cannot_erase_two_massive_modes():
                                np.diag(result.masses), atol=2e-14)
 
 
-def test_forward_serialization_preserves_complex_phases_at_small_mass_scale(tmp_path):
+@pytest.mark.parametrize("mode", ["canonical_selector", "real_seed"])
+def test_forward_serialization_preserves_complex_phases_at_small_mass_scale(tmp_path, mode):
     root = Path(__file__).resolve().parents[2]
     script = root / "particles/neutrino/build_forward_majorana_matrix.py"
     anchor = json.loads((root / "particles/runs/neutrino/neutrino_scale_anchor.json").read_text())
@@ -100,14 +101,28 @@ def test_forward_serialization_preserves_complex_phases_at_small_mass_scale(tmp_
         anchor_path, output = tmp_path / "anchor.json", tmp_path / "majorana.json"
         anchor_path.write_text(json.dumps(anchor))
         subprocess.run([sys.executable, str(script), "--scale-anchor", str(anchor_path),
-                        "--out", str(output)], check=True, capture_output=True)
+                        "--mode", mode, "--out", str(output)], check=True, capture_output=True)
         payload = json.loads(output.read_text())
         matrix = np.array(payload["majorana_matrix_real"]) + 1j * np.array(payload["majorana_matrix_imag"])
         unitary = np.array(payload["U_nu_real"]) + 1j * np.array(payload["U_nu_imag"])
         masses = np.array(payload["masses_sorted_gev"])
         np.testing.assert_allclose(unitary.T @ (matrix / scale) @ unitary,
                                    np.diag(masses / scale), atol=3e-14)
-        assert payload["eigenvalues_raw_gev"] is None
+        assert (payload["eigenvalues_raw_gev"] is None) == (mode == "canonical_selector")
         assert payload["public_surface_candidate_allowed"] is False
         results.append(masses / scale)
     np.testing.assert_allclose(results[0], results[1], rtol=2e-15)
+
+
+def test_real_shortcut_rejects_a_nonsymmetric_matrix_instead_of_using_one_triangle(tmp_path):
+    root = Path(__file__).resolve().parents[2]
+    family = json.loads((root / "particles/runs/neutrino/family_response_tensor.json").read_text())
+    family["C_nu_hat_real"][0][1] += 0.25
+    family_path, output = tmp_path / "family.json", tmp_path / "majorana.json"
+    family_path.write_text(json.dumps(family))
+    result = subprocess.run([sys.executable, str(root / "particles/neutrino/build_forward_majorana_matrix.py"),
+                             "--mode", "real_seed", "--family", str(family_path), "--out", str(output)],
+                            capture_output=True, text=True)
+    assert result.returncode != 0
+    assert "Majorana matrix must be complex symmetric" in result.stderr
+    assert not output.exists()

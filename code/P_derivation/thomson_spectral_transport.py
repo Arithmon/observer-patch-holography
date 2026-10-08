@@ -400,9 +400,23 @@ def build_source_transport_interval_certificate(
         hadronic = _parse_interval(moment.get("Delta_had_image"),
                                    "source_measure.transport_moment_certificate.Delta_had_image", reasons)
         hadronic_component = parsed_components.get("Delta_had_image")
+        if any(value is not None and value.hi < 0 for value in (hadronic, hadronic_component)):
+            reasons.append("positive_hadronic_measure_has_wholly_negative_moment")
         if hadronic is not None and hadronic_component is not None:
             if hadronic.lo > hadronic_component.hi or hadronic.hi < hadronic_component.lo:
                 reasons.append("hadronic_moment_disjoint_from_endpoint_component")
+        ew = payload.get("delta_EW")
+        ew_component = parsed_components.get("Delta_EW_image")
+        if isinstance(ew, dict):
+            ew_bound = None
+            if ew.get("source_bound") is not None:
+                ew_bound = _parse_interval(ew["source_bound"], "delta_EW.source_bound", reasons)
+            if ew.get("zero_theorem"):
+                if any(value is not None and not value.contains(0) for value in (ew_bound, ew_component)):
+                    reasons.append("delta_EW_zero_theorem_disjoint_from_bound")
+            if ew_bound is not None and ew_component is not None:
+                if ew_bound.lo > ew_component.hi or ew_bound.hi < ew_component.lo:
+                    reasons.append("delta_EW_source_bound_disjoint_from_endpoint_component")
 
     fixed_point = payload.get("fixed_point_certificate")
     if not isinstance(fixed_point, dict):
