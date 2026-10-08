@@ -9,12 +9,16 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+from decimal import Decimal
+from fractions import Fraction
 
 import pytest
+import source_derived_public_checkpoint_packet as source_packet
 
 from source_derived_public_checkpoint_packet import (
     build_source_derived_packet,
     certify_source_derived_packet,
+    verify_local_marginal_consistency,
 )
 
 
@@ -97,7 +101,7 @@ def require_refusal(packet):
     assert receipt["status"] != "PASS", "false fixed-source checkpoint certificate"
 
 
-@pytest.mark.parametrize("presentation", ["canonical", "reordered", "explicit_zeros"])
+@pytest.mark.parametrize("presentation", ["canonical", "reordered", "explicit_zeros", "near_unit_weights"])
 def test_valid_source_presentations_are_certified(original_packet, presentation):
     packet = copy.deepcopy(original_packet)
     aliases = packet["public_section_aliases"]
@@ -126,6 +130,11 @@ def test_valid_source_presentations_are_certified(original_packet, presentation)
             packet["local_checkpoint_packets"][channel["continuation_id"]][observer][slots[source]][
                 f"{observer}::record::{slots[zero_target]}"
             ] = 0
+    elif presentation == "near_unit_weights":
+        # The shared global-kernel contract treats near-unit masses as relative
+        # weights; preserve exact normalization instead of tightening that domain.
+        row = next(iter(packet["global_checkpoint_kernels"][0]["rows"].values()))
+        row[next(iter(row))] = 1 - 2**-50
     rehash(packet)
     receipt = certify_source_derived_packet(packet)
     assert receipt["status"] == "PASS"
@@ -208,4 +217,61 @@ def test_local_probabilities_are_not_coerced_to_a_different_input(original_packe
     packet = copy.deepcopy(original_packet)
     row = packet["local_checkpoint_packets"]["r1_s0_a0_f0"]["north"]["north/write"]
     row[next(iter(row))] = weight
+    require_refusal(packet)
+
+
+@pytest.mark.parametrize("weight", [Fraction(10**20 - 1, 10**20), Decimal("0.99999999999999999999")])
+def test_exact_local_deficits_survive_float_rounding(original_packet, weight):
+    packet = copy.deepcopy(original_packet)
+    row = packet["local_checkpoint_packets"]["r1_s0_a0_f0"]["north"]["north/write"]
+    row[next(iter(row))] = weight
+    assert float(weight) == 1.0 and weight != 1
+    # This public checker accepts native exact scalars; they do not need an
+    # unsupported Fraction/Decimal representation in the JSON packet hash.
+    receipt = verify_local_marginal_consistency(packet)
+    assert receipt["status"] == "LOCAL_MARGINAL_MISMATCH"
+    json.dumps(receipt, allow_nan=False)
+
+
+@pytest.mark.parametrize("weight", [1, 1.0, Fraction(1), Decimal(1)])
+def test_exact_numeric_local_units_remain_valid(original_packet, weight):
+    packet = copy.deepcopy(original_packet)
+    row = packet["local_checkpoint_packets"]["r1_s0_a0_f0"]["north"]["north/write"]
+    row[next(iter(row))] = weight
+    assert verify_local_marginal_consistency(packet)["status"] == "PASS"
+
+
+@pytest.mark.parametrize("field,value", [
+    ("complete", False),
+    ("complete", "true"),
+    ("composition_order", "right-after-left"),
+])
+def test_composition_claim_is_bound_to_its_declared_semantics(original_packet, field, value):
+    packet = copy.deepcopy(original_packet)
+    packet["support_relation_composition"][field] = value
+    require_refusal(packet)
+
+
+@pytest.mark.parametrize("field,value", [
+    ("continuation_family_kind", "C40"),
+    ("continuation_manifest_complete", "true"),
+    ("local_marginal_manifest_complete", False),
+])
+def test_source_family_claim_is_not_unchecked_metadata(original_packet, field, value):
+    packet = copy.deepcopy(original_packet)
+    packet[field] = value
+    require_refusal(packet)
+
+
+def test_composition_is_replayed_without_trusting_its_producer(original_packet, monkeypatch):
+    packet = copy.deepcopy(original_packet)
+    table = packet["support_relation_composition"]["table"]
+    # Swap chronology on one genuinely noncommuting pair, keeping the source
+    # kernels and complete table domain intact. A shared table-construction bug
+    # must not make its own faulty result into the verifier's expected result.
+    reflection, rotation = "r0_s1_a0_f0", "r1_s0_a0_f0"
+    table[reflection][rotation] = table[rotation][reflection]
+    assert composition_failures(packet) == 20
+    monkeypatch.setattr(source_packet, "_continuation_composition_table", lambda _: table)
+    assert source_packet._verify_composition(packet)["status"] == "COMPOSITION_TABLE_MISMATCH"
     require_refusal(packet)

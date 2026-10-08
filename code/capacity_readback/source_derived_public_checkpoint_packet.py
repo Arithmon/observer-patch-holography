@@ -26,6 +26,7 @@ from collections import deque
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
+from checkpoint_channels import channel_rows, probability
 from correctable_public_record_capacity import (
     _channel_rows,
     compound_confusability_graph,
@@ -548,32 +549,53 @@ def verify_local_marginal_consistency(packet: Mapping[str, Any]) -> dict[str, An
     section_by_slot, section_by_id = _sections_by_slot(packet["observers"], packet["interfaces"])
     reachable = reachable_public_sections(sections, packet["reachability_witnesses"])
     declared = packet.get("local_checkpoint_packets")
-    if not isinstance(declared, Mapping):
+    if (not isinstance(declared, Mapping)
+            or packet.get("local_marginal_manifest_complete") is not True):
         return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "missing declaration"}
+    continuation_ids = [channel["continuation_id"] for channel in packet["global_checkpoint_kernels"]]
+    if set(declared) != set(continuation_ids):
+        return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "local continuation domain mismatch"}
     checked_rows = 0
     for channel in packet["global_checkpoint_kernels"]:
         continuation_id = channel["continuation_id"]
-        if continuation_id not in declared:
-            return {"status": "LOCAL_MARGINAL_MISMATCH", "continuation_id": continuation_id}
-        rows = _channel_rows(channel, reachable)
+        local = declared[continuation_id]
+        if not isinstance(local, Mapping) or set(local) != set(PORTS):
+            return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "local observer domain mismatch"}
+        if any(not isinstance(local[observer], Mapping)
+               or set(local[observer]) != set(section_by_slot) for observer in PORTS):
+            return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "local source domain mismatch"}
+        try:
+            rows, _ = channel_rows(channel, reachable)
+        except ValueError as exc:
+            return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": str(exc)}
         for source_slot, source_sid in section_by_slot.items():
             for observer in PORTS:
-                derived: dict[str, float] = {}
-                for output_sid, probability in rows[source_sid].items():
+                derived = {}
+                for output_sid, weight in rows[source_sid].items():
+                    if output_sid not in section_by_id:
+                        return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "unknown public output"}
                     atom = section_by_id[output_sid][observer]
-                    derived[atom] = derived.get(atom, 0.0) + probability
-                expected = {
-                    atom: float(probability)
-                    for atom, probability in declared[continuation_id][observer][source_slot].items()
-                }
+                    derived[atom] = derived.get(atom, 0) + weight
+                supplied = local[observer][source_slot]
+                if (not isinstance(supplied, Mapping) or not supplied
+                        or not set(supplied).issubset(packet["observers"][observer])):
+                    return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "local output domain mismatch"}
+                try:
+                    expected = {atom: probability(weight) for atom, weight in supplied.items()}
+                except ValueError as exc:
+                    return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": str(exc)}
+                # Explicit zero entries and omitted zero entries denote the same
+                # measure. Positive weights must agree as exact supplied scalars.
+                derived = {atom: weight for atom, weight in derived.items() if weight}
+                expected = {atom: weight for atom, weight in expected.items() if weight}
                 if derived != expected:
                     return {
                         "status": "LOCAL_MARGINAL_MISMATCH",
                         "continuation_id": continuation_id,
                         "observer": observer,
                         "source_slot": source_slot,
-                        "derived": derived,
-                        "declared": expected,
+                        "derived": {atom: str(weight) for atom, weight in derived.items()},
+                        "declared": {atom: str(weight) for atom, weight in expected.items()},
                     }
                 checked_rows += 1
     return {
@@ -731,11 +753,59 @@ def _exact_decoder_receipts(packet: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _verify_composition(packet: Mapping[str, Any]) -> dict[str, Any]:
+    """Bind named source operations and replay the supplied multiplication table.
+
+    An abstract group or its capacity cannot identify a named geometric action.
+    The record coordinates come from the actual compatible section atoms, and the
+    maps come from the exact normalized joint kernels supplied in this packet.
+    """
     actions = continuation_actions()
-    expected = _continuation_composition_table(actions)
-    actual = packet["support_relation_composition"]["table"]
+    if (packet.get("continuation_manifest_complete") is not True
+            or packet.get("continuation_family_kind") != "D5 x C2_antipodal x C2_orientation"
+            or packet.get("continuation_family_order") != len(actions)):
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source family contract mismatch"}
+    section_by_slot, _ = _sections_by_slot(packet["observers"], packet["interfaces"])
+    if packet.get("public_section_aliases") != section_by_slot:
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source section aliases mismatch"}
+    channels = packet["global_checkpoint_kernels"]
+    names = [channel["continuation_id"] for channel in channels]
+    if len(names) != len(set(names)) or set(names) != set(actions):
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "named continuation domain mismatch"}
+    records = list(section_by_slot.values())
+    supplied_actions = {}
+    for channel in channels:
+        name = channel["continuation_id"]
+        try:
+            rows, _ = channel_rows(channel, records)
+        except ValueError as exc:
+            return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": str(exc)}
+        actual_action = {}
+        for source_slot, source in section_by_slot.items():
+            positive = {output: weight for output, weight in rows[source].items() if weight}
+            expected_output = section_by_slot[actions[name][source_slot]]
+            if positive != {expected_output: 1}:
+                return {"status": "SOURCE_CHECKPOINT_MISMATCH", "continuation_id": name,
+                        "source_slot": source_slot, "reason": "named source action mismatch"}
+            actual_action[source] = next(iter(positive))
+        supplied_actions[name] = actual_action
+    composition = packet.get("support_relation_composition")
+    if (not isinstance(composition, Mapping) or composition.get("complete") is not True
+            or composition.get("composition_order") != "left-after-right"):
+        return {"status": "COMPOSITION_TABLE_MISMATCH", "reason": "composition contract mismatch"}
+    table = composition.get("table")
+    if (not isinstance(table, Mapping) or set(table) != set(actions)
+            or any(not isinstance(row, Mapping) or set(row) != set(actions)
+                   for row in table.values())):
+        return {"status": "COMPOSITION_TABLE_MISMATCH", "reason": "composition domain mismatch"}
+    for left, row in table.items():
+        for right, result in row.items():
+            if not isinstance(result, str) or result not in supplied_actions:
+                return {"status": "COMPOSITION_TABLE_MISMATCH", "reason": "unknown composition result"}
+            if any(supplied_actions[left][supplied_actions[right][source]]
+                   != supplied_actions[result][source] for source in records):
+                return {"status": "COMPOSITION_TABLE_MISMATCH", "left": left, "right": right}
     return {
-        "status": "PASS" if actual == expected else "COMPOSITION_TABLE_MISMATCH",
+        "status": "PASS",
         "continuation_count": len(actions),
         "composition_entries_checked": len(actions) ** 2,
     }
