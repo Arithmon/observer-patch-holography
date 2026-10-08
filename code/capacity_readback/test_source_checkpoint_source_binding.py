@@ -101,7 +101,9 @@ def require_refusal(packet):
     assert receipt["status"] != "PASS", "false fixed-source checkpoint certificate"
 
 
-@pytest.mark.parametrize("presentation", ["canonical", "reordered", "explicit_zeros", "near_unit_weights"])
+@pytest.mark.parametrize("presentation", [
+    "canonical", "reordered", "explicit_zeros", "near_unit_weights", "equivalent_public_cuts",
+])
 def test_valid_source_presentations_are_certified(original_packet, presentation):
     packet = copy.deepcopy(original_packet)
     aliases = packet["public_section_aliases"]
@@ -112,9 +114,12 @@ def test_valid_source_presentations_are_certified(original_packet, presentation)
     assert composition_failures(packet) == 0
     if presentation == "reordered":
         packet["global_checkpoint_kernels"].reverse()
+        packet["observers"] = dict(reversed(list(packet["observers"].items())))
+        packet["publicness_policy"][0].reverse()
         packet["interfaces"].reverse()
         packet["public_global_sections"].reverse()
         for channel in packet["global_checkpoint_kernels"]:
+            channel["authorized_observers"].reverse()
             channel["rows"] = dict(reversed(list(channel["rows"].items())))
         packet["local_checkpoint_packets"] = dict(
             reversed(list(packet["local_checkpoint_packets"].items()))
@@ -135,6 +140,12 @@ def test_valid_source_presentations_are_certified(original_packet, presentation)
         # weights; preserve exact normalization instead of tightening that domain.
         row = next(iter(packet["global_checkpoint_kernels"][0]["rows"].values()))
         row[next(iter(row))] = 1 - 2**-50
+    elif presentation == "equivalent_public_cuts":
+        # The existing generic policy is a family of sets, not ordered lists.
+        packet["publicness_policy"].append(list(reversed(packet["publicness_policy"][0])))
+        packet["publicness_policy"][0].append("north")
+        for channel in packet["global_checkpoint_kernels"]:
+            channel["authorized_observers"].append("north")
     rehash(packet)
     receipt = certify_source_derived_packet(packet)
     assert receipt["status"] == "PASS"
@@ -275,3 +286,65 @@ def test_composition_is_replayed_without_trusting_its_producer(original_packet, 
     monkeypatch.setattr(source_packet, "_continuation_composition_table", lambda _: table)
     assert source_packet._verify_composition(packet)["status"] == "COMPOSITION_TABLE_MISMATCH"
     require_refusal(packet)
+
+
+def test_zero_first_presentation_preserves_the_actual_noise_decoder(original_packet):
+    packet = copy.deepcopy(original_packet)
+    channel = next(c for c in packet["global_checkpoint_kernels"]
+                   if c["continuation_id"] == "r1_s0_a0_f0")
+    source, row = next(iter(channel["rows"].items()))
+    target = next(iter(row))
+    zero = next(label for label in channel["rows"] if label != target)
+    channel["rows"][source] = {zero: 0, target: 1.0}
+    # Local marginals may omit the same zero: both presentations denote the
+    # identical measure. The control must decode the actual positive support.
+    rehash(packet)
+    receipt = certify_source_derived_packet(packet)
+    assert receipt["status"] == "PASS"
+    noise = receipt["controls"]["full_support_noise"]
+    assert noise["tv_identity"] is True
+    assert noise["inverse_decoder_worst_input_success"] == pytest.approx(
+        1 - noise["mixture_weight"] * Fraction(23, 24), abs=1e-15
+    )
+
+
+def test_actual_observer_domain_is_checked_before_source_certification(original_packet):
+    packet = copy.deepcopy(original_packet)
+    packet["observers"]["extra_observer"] = packet["observers"]["north"][:]
+    # A local twelve-observer declaration cannot silently omit an actual
+    # thirteenth observer. Refuse before attempting incompatible section maps.
+    assert verify_local_marginal_consistency(packet)["status"] == "LOCAL_MARGINAL_MISMATCH"
+    require_refusal(packet)
+
+
+def test_source_publicness_is_bound_to_actual_authorized_observers(original_packet):
+    packet = copy.deepcopy(original_packet)
+    packet["publicness_policy"] = [["north"]]
+    for channel in packet["global_checkpoint_kernels"]:
+        channel["authorized_observers"] = ["north"]
+    # This is a valid generic one-observer policy and every source operation
+    # still agrees, but it is not the declared universal twelve-port policy.
+    require_refusal(packet)
+
+
+def test_positive_side_branch_is_not_an_explicit_zero(original_packet):
+    packet = copy.deepcopy(original_packet)
+    channel = packet["global_checkpoint_kernels"][0]
+    row = next(iter(channel["rows"].values()))
+    target = next(iter(row))
+    other = next(label for label in channel["rows"] if label != target)
+    row[other] = 1e-100
+    # Exact normalization keeps this positive branch even though the dominant
+    # weight rounds to one at ordinary float precision.
+    assert source_packet._verify_composition(packet)["status"] == "SOURCE_CHECKPOINT_MISMATCH"
+
+
+@pytest.mark.parametrize("bad_kernel", ["erasure", "randomized"])
+def test_noise_control_cannot_certify_a_nonreversible_supplied_kernel(original_packet, bad_kernel):
+    packet = copy.deepcopy(original_packet)
+    channel = next(c for c in packet["global_checkpoint_kernels"]
+                   if c["continuation_id"] == "r1_s0_a0_f0")
+    labels = list(channel["rows"])
+    row = {labels[0]: 1.0} if bad_kernel == "erasure" else {labels[0]: 0.5, labels[1]: 0.5}
+    channel["rows"] = {source: dict(row) for source in labels}
+    assert source_packet._full_support_noise_control(packet)["status"] == "FAIL"

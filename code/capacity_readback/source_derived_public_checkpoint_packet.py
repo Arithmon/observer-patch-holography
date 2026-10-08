@@ -545,6 +545,9 @@ def _emit_local_checkpoint_packets(
 
 
 def verify_local_marginal_consistency(packet: Mapping[str, Any]) -> dict[str, Any]:
+    observers = packet.get("observers")
+    if not isinstance(observers, Mapping) or set(observers) != set(PORTS):
+        return {"status": "LOCAL_MARGINAL_MISMATCH", "reason": "source observer domain mismatch"}
     sections = public_global_sections(packet["observers"], packet["interfaces"])
     section_by_slot, section_by_id = _sections_by_slot(packet["observers"], packet["interfaces"])
     reachable = reachable_public_sections(sections, packet["reachability_witnesses"])
@@ -752,6 +755,13 @@ def _exact_decoder_receipts(packet: Mapping[str, Any]) -> dict[str, Any]:
     return {"status": "PASS", "channels": receipts}
 
 
+def _universal_public_cut(observers: Any) -> bool:
+    """The frozen read domain, with the generic policy's set semantics."""
+    return (isinstance(observers, Sequence) and not isinstance(observers, (str, bytes))
+            and all(isinstance(observer, str) for observer in observers)
+            and set(observers) == set(PORTS))
+
+
 def _verify_composition(packet: Mapping[str, Any]) -> dict[str, Any]:
     """Bind named source operations and replay the supplied multiplication table.
 
@@ -764,6 +774,13 @@ def _verify_composition(packet: Mapping[str, Any]) -> dict[str, Any]:
             or packet.get("continuation_family_kind") != "D5 x C2_antipodal x C2_orientation"
             or packet.get("continuation_family_order") != len(actions)):
         return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source family contract mismatch"}
+    observers = packet.get("observers")
+    if not isinstance(observers, Mapping) or set(observers) != set(PORTS):
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source observer domain mismatch"}
+    policy = packet.get("publicness_policy")
+    if (not isinstance(policy, Sequence) or isinstance(policy, (str, bytes))
+            or not policy or not all(_universal_public_cut(cut) for cut in policy)):
+        return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source publicness policy mismatch"}
     section_by_slot, _ = _sections_by_slot(packet["observers"], packet["interfaces"])
     if packet.get("public_section_aliases") != section_by_slot:
         return {"status": "SOURCE_CHECKPOINT_MISMATCH", "reason": "source section aliases mismatch"}
@@ -775,6 +792,9 @@ def _verify_composition(packet: Mapping[str, Any]) -> dict[str, Any]:
     supplied_actions = {}
     for channel in channels:
         name = channel["continuation_id"]
+        if not _universal_public_cut(channel.get("authorized_observers")):
+            return {"status": "SOURCE_CHECKPOINT_MISMATCH", "continuation_id": name,
+                    "reason": "source authorized observer domain mismatch"}
         try:
             rows, _ = channel_rows(channel, records)
         except ValueError as exc:
@@ -893,10 +913,14 @@ def _full_support_noise_control(packet: Mapping[str, Any]) -> dict[str, Any]:
         for channel in packet["global_checkpoint_kernels"]
         if channel["continuation_id"] == "r1_s0_a0_f0"
     )
+    source_rows, _ = channel_rows(base, reachable)
     noisy_rows: dict[str, dict[str, float]] = {}
     decoder: dict[str, str] = {}
     for source in reachable:
-        deterministic_output = next(iter(base["rows"][source]))
+        support = [output for output, weight in source_rows[source].items() if weight]
+        if len(support) != 1 or support[0] not in reachable or support[0] in decoder:
+            return {"status": "FAIL", "reason": "noise control requires a reversible source kernel"}
+        deterministic_output = support[0]
         decoder[deterministic_output] = source
         row = {output: delta_mix / len(reachable) for output in reachable}
         row[deterministic_output] += 1.0 - delta_mix
@@ -908,16 +932,19 @@ def _full_support_noise_control(packet: Mapping[str, Any]) -> dict[str, Any]:
         for source in reachable
     )
     row_tv = delta_mix * (1.0 - 1.0 / len(reachable))
+    tv_identity = abs(worst_success - (1.0 - row_tv)) < 1e-12
+    full_support = all(all(weight > 0 for weight in row.values()) for row in noisy_rows.values())
+    capacity = len(maximum_independent_set(graph))
     return {
-        "status": "PASS",
-        "all_rows_full_support": all(all(probability > 0 for probability in row.values()) for row in noisy_rows.values()),
-        "exact_zero_error_capacity": len(maximum_independent_set(graph)),
+        "status": "PASS" if full_support and capacity == 1 and tv_identity else "FAIL",
+        "all_rows_full_support": full_support,
+        "exact_zero_error_capacity": capacity,
         "mixture_weight": delta_mix,
         "row_tv_from_reversible_kernel": row_tv,
         "inverse_decoder_worst_input_success": worst_success,
         "epsilon_for_full_code": row_tv,
-        "approximate_capacity_at_epsilon": len(reachable),
-        "tv_identity": abs(worst_success - (1.0 - row_tv)) < 1e-12,
+        "approximate_capacity_at_epsilon": len(reachable) if tv_identity else None,
+        "tv_identity": tv_identity,
     }
 
 
