@@ -32,10 +32,19 @@ def encode(value):
     if isinstance(value, np.integer): return int(value)
     return value
 
-def integers(value):
-    """Preserve original integer scalars before any product or reduction."""
+def reject_masked(value):
+    """Inspect original containers before NumPy can discard an inner mask."""
     if np.ma.isMaskedArray(value):
         raise ValueError('integer matrix cannot contain masked data')
+    entries = value.flat if isinstance(value, np.ndarray) else value
+    if isinstance(value, (np.ndarray, list, tuple)):
+        for entry in entries:
+            reject_masked(entry)
+
+
+def integers(value):
+    """Preserve original integer scalars before any product or reduction."""
+    reject_masked(value)
     a = np.asarray(value, dtype=object)
     if a.ndim != 2:
         raise ValueError('integer matrix must have two dimensions')

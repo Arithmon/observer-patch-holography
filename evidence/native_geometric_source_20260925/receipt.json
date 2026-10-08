@@ -26508,7 +26508,7 @@
     "No observational target consulted"
   ],
   "observational_data_read": false,
-  "producer_sha256": "8ca2a5aef19667aa634d6fe93453b7e6b229a6ae422bd8785fef1665e207aa5b",
+  "producer_sha256": "cb121da03e48b3968ec7c11e0b521faad9f1e07b5ec13c0c9a0130923db72671",
   "remaining_interface": "Native local volume/metric update plus independently specified reference slice and observable calibration; an attached load function alone is not that interface.",
   "schema": "oph.native-geometric-source.receipt.v1",
   "seams": [

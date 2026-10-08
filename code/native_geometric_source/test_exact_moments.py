@@ -195,6 +195,48 @@ def test_nonlinear_mismatch_against_full_two_occupant_path_kernel(carrier, edges
                ["residual_covariance"] for entry in line)
 
 
+@pytest.mark.parametrize("stride,key", [(1, "record_average_covariance"),
+                                       (2, "two_attempts_per_record_covariance")])
+def test_record_covariance_from_native_path_sums(carrier, edges, stride, key):
+    """Accumulate actual record sums, without a lag multiplicity formula."""
+    states = [tuple(int(i in pair) for i in range(12))
+              for pair in itertools.combinations(range(12), 2)]
+    index = {state: i for i, state in enumerate(states)}
+    transition = np.zeros((66, 66), dtype=object)
+    value = np.zeros((66, 12), dtype=object)
+    for i, state in enumerate(states):
+        for a, b in edges:
+            if state[a] != state[b]:
+                value[i, a] += 1
+                value[i, b] += 1
+            for coin in (False, True):
+                target = list(state)
+                target[a], target[b] = carrier.integer_nearest_agreement(
+                    state[a], state[b], ceiling_to_first=coin)
+                transition[i, index[tuple(target)]] += 1
+    assert all(sum(row) == 60 for row in transition)
+    assert all(sum(column) == 60 for column in transition.T)
+    windows = [1, 5, 11]
+    record = producer.finite_control(2, carrier, windows)["readouts"]["local_mismatch"]
+    mean = value.sum(axis=0) / F(66)
+    gram = value.T @ value
+    # For paths ending at each state, retain their summed record sums;
+    # separately retain the global sum of squared record sums.
+    first, second, paths_per_state = value.copy(), gram.copy(), 1
+    for count in range(1, max(windows) + 1):
+        if count in windows:
+            covariance = second / F(66 * paths_per_state * count**2) - np.outer(mean, mean)
+            np.testing.assert_array_equal(exact(record[key][str(count)]), covariance)
+        if count == max(windows):
+            break
+        for _ in range(stride):
+            first = transition.T @ first
+        cross = first.T @ value
+        paths_per_state *= 60**stride
+        second = 60**stride * second + cross + cross.T + paths_per_state * gram
+        first += paths_per_state * value
+
+
 def test_complement_preserves_covariances_and_flips_mismatch_projection(carrier):
     low = producer.finite_control(2, carrier, [1, 5, 10])
     high = producer.finite_control(10, carrier, [1, 5, 10])

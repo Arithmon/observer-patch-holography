@@ -124,6 +124,20 @@ centering, moments, lazy weight, clock/covariance validation, input handling
 and fixed-width propagation are rejected; these controls are not a claim
 of mutation completeness.
 
+The follow-up audit of `a04620a7` found that an outer list or tuple could
+hide a masked NumPy row: array conversion discarded its mask before the
+integer check. For rows `1` and a masked `999`, this admitted covariance
+`249001` from an unobserved sample. The retained original-container tests
+first produced 13 failures and seven passes. Missingness is now checked
+inside the original containers before conversion; complete signed,
+unsigned and arbitrarily large integer rows remain accepted exactly.
+The mathematical follow-up checks the feature-transition identity against
+both original endpoint-coin operations on all 4,096 binary configurations.
+Direct original-state checks reproduce projection residuals and coarse
+covariances for every nontrivial occupancy. The retained native path-sum
+controls also verify record averages at both clock strides without using
+the covariance-lag multiplicity formula.
+
 The existing `[1,2,4]` controls end at lag six. All rational matrices, native
 states and events, source geometry and the source-identification decision
 remain unchanged. Canonical regeneration on Windows and Linux agrees, but
