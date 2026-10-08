@@ -11,7 +11,6 @@ import argparse
 from fractions import Fraction as Q
 import hashlib
 import importlib.util
-from itertools import combinations, product
 import json
 from math import factorial, prod
 from pathlib import Path
@@ -89,82 +88,91 @@ def simplex(powers):
 
 
 def metric_and_potential(psi, xyz, edges, tetrahedra):
-    """a=0 monomial assembly independent of all element-quadrature code."""
-    g = np.zeros((68, 68)); m = np.zeros((42, 42)); potential = 0.
-    for tet in tetrahedra:
-        points = xyz[list(tet)]
-        gradients = np.linalg.inv(np.column_stack((np.ones(4), points)))[1:].T
-        volume = abs(np.linalg.det(points[1:]-points[0]))/6
-        columns, local_edges = [], []
-        for edge, (u, v) in enumerate(edges):
-            if u in tet and v in tet:
-                i, j = tet.index(u), tet.index(v)
-                local_edges.append((edge, i, j))
-                columns.append((edge, .25j*(psi[u]-psi[v]), (i, j)))
-        for i, node in enumerate(tet):
-            columns.extend(((42+node, 1, (i,)), (55+node, 1j, (i,))))
-        for e, i, j in local_edges:
-            for f, k, l in local_edges:
-                m[e, f] += volume/20*((1+int(i == k))*(gradients[j]@gradients[l])
-                    -(1+int(i == l))*(gradients[j]@gradients[k])
-                    -(1+int(j == k))*(gradients[i]@gradients[l])
-                    +(1+int(j == l))*(gradients[i]@gradients[k]))
-        for col, value, powers in columns:
-            for other, val, powers2 in columns:
-                degree = powers+powers2
-                integral = volume*float(simplex(tuple(degree.count(i) for i in range(4))))
-                g[col, other] += 2*np.real(np.conj(value)*val)*integral
-        local = psi[list(tet)]
-        gradient = local@gradients
-        potential += volume*float(np.vdot(gradient, gradient).real)
-        for i, j in product(range(4), repeat=2):
-            potential += .5*volume*(local[i].conjugate()*local[j]).real*float(simplex(tuple((i,j).count(k) for k in range(4))))
-        for i, j, k, l in product(range(4), repeat=4):
-            power = (i,j,k,l)
-            potential += .125*volume*(local[i].conjugate()*local[j]*local[k].conjugate()*local[l]).real*float(simplex(tuple(power.count(n) for n in range(4))))
-    g[:42, :42] += m
-    return g, m, potential
+    """a=0 original-input moment assembly, reported in the legacy format."""
+    parts = source.complex_components(psi)
+    vertices = source.real_components(xyz, (13, 3))
+    mp = source.replay_context([x for pair in parts for x in pair], vertices.flat)
+    matter = [mp.mpc(source.mp_real(mp, re), source.mp_real(mp, im)) for re, im in parts]
+    points = mp.matrix([[source.mp_real(mp, x) for x in row] for row in vertices])
+    g, mass, potential = source.moment_system(mp, matter, points, edges, tetrahedra, potential=True)
+    return (np.array(g.tolist(), dtype=float), np.array(mass.tolist(), dtype=float),
+            source.reported(potential, 'potential'))
 
 
 def replay_phase_space(q68, v68, xyz, edges, tetrahedra, frame):
-    q68, v68 = np.asarray(q68), np.asarray(v68)
-    psi = q68[42:55]+1j*q68[55:]
-    d = np.zeros((42, 13))
+    """Replay the original tangent before rounding a reduced Gram matrix.
+
+    All field-dependent products, the gauge rechart, minimization and density
+    remain in a private high-precision context. The producer instead uses its
+    positive quadrature factor. Agreement is a finite numerical diagnostic.
+    """
+    configuration = source.real_components(q68, (68,))
+    tangent = source.real_components(v68, (68,))
+    vertices = source.real_components(xyz, (13, 3))
+    coordinates = source.real_components(frame, (42, 30))
+    mp = source.replay_context(configuration, tangent, vertices.flat, coordinates.flat)
+    real = lambda value: source.mp_real(mp, value)
+    q68, v68 = mp.matrix([real(v) for v in configuration]), mp.matrix([real(v) for v in tangent])
+    points = mp.matrix([[real(v) for v in row] for row in vertices])
+    frame = mp.matrix([[real(v) for v in row] for row in coordinates])
+    psi = [mp.mpc(q68[42+i], q68[55+i]) for i in range(13)]
+    d = mp.matrix(42, 13)
     for row, (i, j) in enumerate(edges):
         d[row, i], d[row, j] = -1, 1
-    _, mass, _ = metric_and_potential(np.ones(13, complex), xyz, edges, tetrahedra)
-    laplacian = d.T@mass@d
-    augmented = np.block([[laplacian, np.ones((13, 1))], [np.ones((1, 13)), np.zeros((1,1))]])
-    xi = np.linalg.solve(augmented, np.r_[-d.T@mass@q68[:42], 0])[:13]
-    xidot = np.linalg.solve(augmented, np.r_[-d.T@mass@v68[:42], 0])[:13]
-    phase = np.exp(.25j*xi)
-    scalar = phase*psi
-    scalar_velocity = phase*(v68[42:55]+1j*v68[55:]+.25j*xidot*psi)
-    ac, av = q68[:42]+d@xi, v68[:42]+d@xidot
-    require(np.max(abs(ac)) < 1e-11, 'parent radial field has zero Coulomb representative')
-    full_q, full_v = np.r_[ac,scalar.real,scalar.imag], np.r_[av,scalar_velocity.real,scalar_velocity.imag]
-    section = np.zeros((68,56));section[:42,:30]=frame;section[42:,30:]=np.eye(26)
-    close((frame.T@frame).tolist(), np.eye(30), 'orthonormal Coulomb frame', 2e-12)
-    close((d.T@mass@frame).tolist(), np.zeros((13,30)), 'mass Coulomb frame', 2e-12)
-    g, _, potential = metric_and_potential(scalar, xyz, edges, tetrahedra)
+    _, mass, _ = source.moment_system(mp, [mp.mpf(0)]*13, points, edges, tetrahedra)
+    laplacian = d.T*mass*d
+    augmented = mp.matrix(14)
+    augmented[:13, :13] = laplacian
+    for i in range(13):
+        augmented[i, 13] = augmented[13, i] = 1
+    def gauge_parameter(edges_velocity):
+        rhs = mp.matrix(14, 1)
+        rhs[:13, :] = -d.T*mass*edges_velocity
+        return mp.lu_solve(augmented, rhs)[:13, :]
+    xi, xidot = gauge_parameter(q68[:42, :]), gauge_parameter(v68[:42, :])
+    phase = [mp.exp(mp.j*xi[i]/4) for i in range(13)]
+    scalar = [phase[i]*psi[i] for i in range(13)]
+    scalar_velocity = [phase[i]*(mp.mpc(v68[42+i], v68[55+i])+mp.j*xidot[i]*psi[i]/4)
+                       for i in range(13)]
+    ac, av = q68[:42, :]+d*xi, v68[:42, :]+d*xidot
+    require(max(abs(v) for v in ac) < mp.mpf('1e-11'),
+            'parent radial field has zero Coulomb representative')
+    full_q = mp.matrix(list(ac)+[mp.re(v) for v in scalar]+[mp.im(v) for v in scalar])
+    full_v = mp.matrix(list(av)+[mp.re(v) for v in scalar_velocity]+[mp.im(v) for v in scalar_velocity])
+    section = mp.matrix(68, 56)
+    section[:42, :30], section[42:, 30:] = frame, mp.eye(26)
+    require(max(abs(v) for v in frame.T*frame-mp.eye(30)) <= mp.mpf('4e-12'),
+            'orthonormal Coulomb frame')
+    require(max(abs(v) for v in d.T*mass*frame) <= mp.mpf('2e-12'), 'mass Coulomb frame')
+    g, _, potential = source.moment_system(mp, scalar, points, edges, tetrahedra, potential=True)
     # A different, nonorthonormal gauge basis verifies basis independence.
-    basis = np.vstack((-np.ones((1,12)), np.eye(12)))
-    vertical = np.vstack((d, -.25*np.diag(scalar.imag), .25*np.diag(scalar.real)))@basis
-    inertia, coupling = vertical.T@g@vertical, vertical.T@g@section
-    gamma = section.T@g@section-coupling.T@np.linalg.solve(inertia,coupling)
-    q, velocity = section.T@full_q, section.T@full_v
-    momentum = gamma@velocity
-    eta = -basis@np.linalg.solve(inertia,coupling@velocity)
-    _, logdet = np.linalg.slogdet(gamma)
-    return {'q':q, 'velocity':velocity, 'momentum':momentum, 'full_q':full_q,
-        'full_velocity':full_v, 'gauge_parameter':xi,'gauge_parameter_velocity':xidot,
-        'transformed_scalar_potential':-xidot,'schur_scalar_potential':eta,
-        'constant_moment_map':float(momentum@np.r_[np.zeros(30),-scalar.imag,scalar.real]),
-        'minimizer_defect':float(np.max(abs(eta+xidot))),
-        'coulomb_defect':float(np.max(abs(d.T@mass@ac))),
-        'cotangent_identity_defect':float(np.max(abs(momentum-gamma@velocity))),
-        'log_rho':float(logdet/2),'potential':float(potential),
-        'gamma_min_eigenvalue':float(np.linalg.eigvalsh(gamma)[0])}
+    basis = mp.matrix([[-1]*12]+np.eye(12, dtype=int).tolist())
+    vertical = mp.matrix(68, 13)
+    vertical[:42, :] = d
+    for i, value in enumerate(scalar):
+        vertical[42+i, i], vertical[55+i, i] = -mp.im(value)/4, mp.re(value)/4
+    vertical = vertical*basis
+    gamma, eta_map, log_rho = source.reduced_moments(mp, g, vertical, section)
+    q, velocity = section.T*full_q, section.T*full_v
+    multiplier = eta_map*velocity
+    eta = basis*multiplier
+    # Obtain the cotangent from the minimized full action, and compare with
+    # the separately formed reduced quadratic form in working precision.
+    momentum = section.T*g*(section*velocity+vertical*multiplier)
+    generator = mp.matrix([0]*30+[-mp.im(v) for v in scalar]+[mp.re(v) for v in scalar])
+    scalar_values = {
+        'constant_moment_map': (momentum.T*generator)[0],
+        'minimizer_defect': max(abs(v) for v in eta+xidot),
+        'coulomb_defect': max(abs(v) for v in d.T*mass*ac),
+        'cotangent_identity_defect': max(abs(v) for v in momentum-gamma*velocity),
+        'log_rho': log_rho, 'potential': potential,
+        'gamma_min_eigenvalue': mp.eigsy(gamma, eigvals_only=True)[0],
+    }
+    vectors = {'q': q, 'velocity': velocity, 'momentum': momentum, 'full_q': full_q,
+        'full_velocity': full_v, 'gauge_parameter': xi, 'gauge_parameter_velocity': xidot,
+        'transformed_scalar_potential': -xidot, 'schur_scalar_potential': eta}
+    return {**{key: np.array([source.reported(v, key) for v in value]) for key, value in vectors.items()},
+            **{key: source.reported(value, key) for key, value in scalar_values.items()}}
 
 
 def circle_observables(q, p, sigma, hbar=1):
