@@ -14,7 +14,9 @@ a sufficiently accurate dense reduced metric is inappropriate. These finite
 precision controls are not interval certificates or new physical claims.
 """
 from functools import lru_cache
+from dataclasses import replace
 from itertools import combinations
+from math import factorial, prod
 from pathlib import Path
 import sys
 
@@ -28,7 +30,7 @@ import whitney_quantum_packet as packet
 
 
 @lru_cache(maxsize=1)
-def original_geometry():
+def original_forms():
     """Exact-degree original cone forms, evaluated in a private 80-digit context.
 
     The twelve supplied golden vertices fix 30 edges of squared length four
@@ -85,7 +87,53 @@ def original_geometry():
     mg = mass * gauge
     logdet_zero = (mp.log(mp.det(mass)) + mp.log(mp.det(gauge.T * mg))
                    - mp.log(mp.det(mg.T * mg)) + 2 * mp.log(mp.det(2 * nodal)))
-    return mp, volume, kappa, nodal, logdet_zero
+    return (mp, volume, kappa, nodal, logdet_zero), mass, incidence, edges, faces
+
+
+def original_geometry():
+    return original_forms()[0]
+
+
+def zero_edge_original_reduction(psi, charge, mesh):
+    """MP80 reduction from original degree-four simplex moments.
+
+    At a=0, J_edge=i*e*lambda_i*lambda_j*(psi_i-psi_j), while the
+    scalar columns are lambda_i and i*lambda_i. Integrating each monomial
+    product analytically supplies G without producer quadrature. The supplied
+    slice/mean-zero frames only name coordinates; no producer metric, reduced
+    factor or support decision enters this control. MP80 resolves the large
+    cancelling terms of the deliberately nonuniform 1e6 witness.
+    """
+    (mp, volume, _, _, _), mass, incidence, edges, faces = original_forms()
+    assert tuple(edges) == mesh.edges
+    psi = [mp.mpc(complex(value)) for value in psi]
+    charge = mp.mpf(charge)
+    metric, vertical = mp.matrix(68), mp.matrix(68, 13)
+    metric[:42, :42], vertical[:42, :] = mass, incidence
+    for face in faces:
+        tet = (0, *(j + 1 for j in face))
+        monomials = []
+        for edge, (i, j) in enumerate(edges):
+            if i in tet and j in tet:
+                powers = [int(node == i or node == j) for node in tet]
+                monomials.append((edge, mp.j * charge * (psi[i] - psi[j]), powers))
+        for local, node in enumerate(tet):
+            powers = [int(k == local) for k in range(4)]
+            monomials += [(42 + node, 1, powers), (55 + node, mp.j, powers)]
+        for i, ci, pi in monomials:
+            for j, cj, pj in monomials:
+                powers = [a + b for a, b in zip(pi, pj)]
+                integral = (6 * volume / 20 * prod(factorial(k) for k in powers)
+                            / factorial(sum(powers) + 3))
+                metric[i, j] += 2 * mp.re(mp.conj(ci) * cj) * integral
+    for i, value in enumerate(psi):
+        vertical[42 + i, i], vertical[55 + i, i] = -charge * value.imag, charge * value.real
+    frame, mean_zero = mp.matrix(mesh.slice.tolist()), mp.matrix(mesh.mean_zero.tolist())
+    orbit = vertical * mean_zero
+    inertia, coupling = orbit.T * metric * orbit, orbit.T * metric * frame
+    eta = -(inertia ** -1) * coupling
+    reduced = frame.T * metric * frame + coupling.T * eta
+    return mp, reduced, eta, inertia
 
 
 def uniform_oracle(amplitude, charge):
@@ -222,6 +270,104 @@ def test_gaussian_large_density_is_accurate_or_precision_refusal():
         assert "kinetic precision" in str(error)
     else:
         assert actual == pytest.approx(expected, abs=1e-7, rel=0)
+
+
+@pytest.mark.parametrize("phase", [1, 1j])
+def test_positive_factor_resolves_each_scalar_mode_and_action_at_large_amplitude(phase):
+    # The public factor can resolve the action well beyond the usable dense
+    # metric domain. Density alone is not sufficient: compensating errors in
+    # two modes could preserve a determinant while corrupting observables.
+    amplitude = 1e6
+    mesh = quantum.geometry()
+    psi, x, velocity = state(amplitude, phase)
+    result = quantum.reduced_kinetic(np.zeros(42), psi, .25, .5, .25, mesh)
+    expected = uniform_oracle(amplitude, .25)
+    coupled = slice(43, 56) if phase == 1 else slice(30, 43)
+    uncoupled = slice(30, 43) if phase == 1 else slice(43, 56)
+    singular = np.linalg.svd(result.factor[:, coupled], compute_uv=False)
+    np.testing.assert_allclose(singular[::-1] ** 2, expected["scalar_eigenvalues"],
+                               rtol=1e-8, atol=0)
+    np.testing.assert_allclose(result.factor[:, uncoupled].T @ result.factor[:, uncoupled],
+                               expected["scalar_mass"], rtol=2e-12, atol=2e-13)
+    assert np.linalg.norm(result.factor @ velocity) ** 2 == pytest.approx(
+        expected["energy_twice"], rel=1e-8, abs=0)
+    np.testing.assert_allclose(mesh.mean_zero @ result.eta_map @ velocity,
+                               expected["eta_scale"] * x, rtol=2e-10, atol=0)
+    assert result.logdet() == pytest.approx(expected["logdet"], abs=1e-7, rel=0)
+    assert result.potential == pytest.approx(expected["potential"], rel=2e-12, abs=0)
+
+
+@pytest.mark.parametrize("case", ["concentrated", "complex_rotated"])
+def test_nonuniform_combined_conditioning_keeps_resolved_positive_case(case):
+    mesh = quantum.geometry()
+    if case == "concentrated":
+        psi, charge = np.r_[1e6 + 0j, np.ones(12)], .25
+    else:
+        index = np.arange(13)
+        psi, charge = (.4 + .02 * index) + .13j * np.cos(index), -.25
+        # Exact dyadic orthogonal mixing names another radiative frame. The
+        # reversed gauge basis must change eta coordinates consistently.
+        rotation = np.eye(56)
+        rotation[:4, :4] = np.array([[1, 1, 1, 1], [1, -1, 1, -1],
+                                     [1, 1, -1, -1], [1, -1, -1, 1]]) / 2
+        mesh = replace(mesh, slice=mesh.slice @ rotation, mean_zero=mesh.mean_zero[:, ::-1])
+    result = quantum.reduced_kinetic(np.zeros(42), psi, charge, mesh=mesh)
+    mp, gamma, eta, inertia = zero_edge_original_reduction(psi, charge, mesh)
+    expected_logdet = float(mp.log(mp.det(gamma)))
+    assert result.logdet() == pytest.approx(expected_logdet, abs=1e-7, rel=0)
+    velocity = np.sin(.73 * np.arange(56)) + np.cos(.11 * np.arange(56))
+    mp_velocity = mp.matrix(velocity.tolist())
+    expected_action = float((mp_velocity.T * gamma * mp_velocity)[0])
+    assert np.linalg.norm(result.factor @ velocity) ** 2 == pytest.approx(
+        expected_action, rel=1e-7, abs=0)
+    eta_reference, inertia_reference = np.array(eta.tolist(), float), np.array(inertia.tolist(), float)
+    assert np.linalg.norm(result.eta_map - eta_reference) / np.linalg.norm(eta_reference) < 1e-7
+    assert np.linalg.norm(result.inertia - inertia_reference) / np.linalg.norm(inertia_reference) < 1e-7
+    # Check the entire quadratic form on its own local scale, not only one
+    # favorable velocity or a determinant whose mode errors may compensate.
+    reference = np.array(gamma.tolist(), float)
+    root = np.linalg.cholesky(reference)
+    error = np.linalg.solve(root, result.factor.T @ result.factor - reference)
+    error = np.linalg.solve(root, error.T).T
+    assert np.linalg.norm(error, 2) < 1e-7
+
+
+@pytest.mark.parametrize("phase", [1, 1j])
+def test_uniform_matter_keeps_exact_zero_edge_derivative_in_full_metric(phase):
+    # At a=0 and equal nodal matter the endpoint dressing derivative vanishes,
+    # even if T is enormous. Unpaired large endpoint terms introduce a fake
+    # gauge-edge mass in this otherwise ordinary full (unreduced) metric.
+    # A power-of-two amplitude merely rescales the old endpoint products
+    # exactly and misses their cancellation error; this integer is also exact
+    # in binary64 but exercises a nontrivial significand.
+    psi = np.full(13, 1e15 * phase, dtype=complex)
+    metric, _ = quantum.coefficients(np.zeros(42), psi, .25)
+    (_, _, _, nodal, _), mass, _, _, _ = original_forms()
+    expected = np.zeros((68, 68))
+    expected[:42, :42] = np.array(mass.tolist(), float)
+    expected[42:55, 42:55] = expected[55:, 55:] = np.array((2 * nodal).tolist(), float)
+    np.testing.assert_allclose(metric, expected, rtol=2e-12, atol=2e-13)
+
+
+def test_nonuniform_combined_conditioning_refuses_unresolved_projection():
+    # The rounded trailing factor is well-conditioned (estimate ~1e-13),
+    # although forming it already lost accuracy: bypassing the combined gate
+    # gives ~2e-5 logdet/form error against original degree-four MP moments.
+    # Conditioning the returned factor alone therefore cannot validate it.
+    psi = np.r_[1e12 + 0j, np.ones(12)]
+    with pytest.raises(ValueError, match="kinetic precision"):
+        quantum.reduced_kinetic(np.zeros(42), psi, .25)
+
+
+@pytest.mark.parametrize("charge", [0., 2.**-266])
+def test_gaussian_density_does_not_evaluate_unused_overflowing_potential(charge):
+    amplitude = 1e80
+    coordinates = np.r_[np.zeros(30), np.full(13, amplitude), np.zeros(13)]
+    mp, _, _, _, _ = original_geometry()
+    logg = -14 * (mp.log(2 * mp.pi) + 2 * mp.log(amplitude)) - mp.mpf(13) / 4
+    expected = float(logg - uniform_oracle(amplitude, charge)["logdet"] / 4)
+    assert quantum.gaussian_state_log_amplitude(coordinates, amplitude, charge) == pytest.approx(
+        expected, abs=1e-7, rel=0)
 
 
 def test_phase_space_cotangent_components_are_independently_correct():
