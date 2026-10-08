@@ -36,4 +36,11 @@ jobs:
       - name: Independently replay neutral packet observables and challenge their domain
         run: python -m pytest -q -W error code/electromagnetism/test_neutral_packet_observables.py code/electromagnetism/test_whitney_quantum_packet.py
       - name: Challenge original-input kinetic minima, densities and independent replay
-        run: python -m pytest -q -W error code/electromagnetism/test_whitney_interacting_quantum.py code/electromagnetism/test_whitney_kinetic_precision.py code/electromagnetism/test_whitney_kinetic_inputs.py code/electromagnetism/test_whitney_kinetic_replay.py
+        run: >-
+          python -m pytest -q -W error
+          code/electromagnetism/test_whitney_interacting_quantum.py
+          code/electromagnetism/test_whitney_kinetic_precision.py
+          code/electromagnetism/test_whitney_kinetic_inputs.py
+          code/electromagnetism/test_whitney_kinetic_replay.py
+          code/electromagnetism/test_whitney_kinetic_scale.py
+          code/electromagnetism/test_whitney_public_scale.py

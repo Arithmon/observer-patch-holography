@@ -142,9 +142,9 @@ already distinguish exact positivity and analytic domain results from finite
 quadrature diagnostics; the implementation repair does not strengthen those
 scientific claims.
 
-## Validation record
+## Initial implementation validation
 
-The final nine Whitney test modules pass with `-W error`: 569 tests on Linux
+The initial nine Whitney test modules passed with `-W error`: 569 tests on Linux
 (Python 3.12), and 568 on Windows (Python 3.13) with one expected skip because
 Windows `longdouble` has no precision beyond binary64. They comprise the
 interacting-quantum, state, history, packet, neutral-packet and real-continuum
@@ -169,3 +169,41 @@ Canonical regeneration changes retained state/packet diagnostics by at most
 most `3.6e-15`. The trial-history payload changes only source pins. Source
 hashes have been checked against Git's normalized committed bytes as well as
 the local working files.
+
+## Maintainer-style follow-up audit
+
+The follow-up review found and corrected additional concrete defects in the
+public numerical domain. Each correction has a failing-before control and a
+nearby valid-input control; the new scale suites are included in the existing
+Windows/Linux workflow.
+
+| Failure on the initial PR head | Correction and retained control |
+| --- | --- |
+| `q[30]=2e154`, width one, gave Gaussian log amplitude `-inf` although the result is about `-1e308`. | Divide coordinates by two before squaring; refuse genuinely unreportable logs. Preserve tiny widths and large balanced coordinate/width units. |
+| A norm overflow let the nonzero gradient `a=2^600 D xi` pass the Coulomb condition. | Compare the slice residual and norm in common, bounded units before squaring. The same non-Coulomb direction must refuse at ordinary and large scales. |
+| A resolved neutral density was refused because unused covariant products overflowed. | Omit unused spatial evaluation and identically zero charge products. Large opposite scalar components and nonzero radiative coordinates remain valid for neutral density evaluation. |
+| Small couplings times large field powers overflowed, and large couplings times small powers underflowed, despite a representable potential. | Accumulate positive quadrature products using separate mantissas and binary exponents. Test mass and quartic terms, real and imaginary matter, and actual reporting-range failures. |
+| A pure gradient of amplitude `1e15` acquired magnetic energy `1.2158875978002469e13`. Adding one to a boundary edge gave `1.99658875978003e14` instead of `(5-sqrt(5))/6`. | Compute original face circulations with exact rational addition, then evaluate their positive curl factors. No floor is applied to a damaged stiffness quadratic. |
+| A representable large cotangent overflowed only the resolution comparison; an unreportable one returned infinity/NaN. | Compare normalized scales, use real-coordinate norms, and validate every required returned quantity. Preserve large finite complex components and resolved subnormal tangents. |
+| The zero-field replay treated a boundary edge `1e-12` as zero and omitted magnetic energy `4.606553370833684e-25`. | Require exact original edge-cycle closure before using the zero-field monomial model. The verifier still accepts small genuine gradients and arbitrary supported tangents. |
+| A large exact pure-gradient configuration was refused because a numerical gauge-solve residual underflowed when reported. | Construct its mean-zero gauge potential from the proved original gradient identity and derive its zero Coulomb field algebraically. This is not numerical clipping. |
+
+Independent cross-checks use original complex simplex moments and original
+curl-pair integrals, not the producer's new potential accumulator. The replay
+tests separately challenge domain refusal, fixed working precision,
+determinant-only positivity and missing reporting checks. These remain finite
+diagnostics; the exact analytic and physical scope above does not change.
+
+CI also caught an integration omission: adding this document requires
+regenerating `claims/active_surface_inventory.json`, independently of the
+unchanged source-current inventory. Canonical regeneration adds exactly this
+one document (477 to 478 surfaces); the inventory guard passes. It changes no
+claim statement, axiom or frozen evidence.
+
+The corrected eleven-module suite passes with warnings treated as errors:
+639 tests on Linux and 638 on Windows, with the same one expected Windows
+precision-type skip. The additional producer and public scale tests fail on
+the prior implementation for numerical or domain reasons, not import errors.
+Six producer, three public-packet and five verifier mutations each fail the
+controls targeting their defect. The four live receipts are regenerated again;
+their changes remain within the numerical differences recorded above.
