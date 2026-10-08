@@ -209,6 +209,8 @@ def build_source_payload_interval_certificate(source_transport_payload: dict[str
             "status": (
                 "source_interval_theorem_closed_for_supplied_payload"
                 if promotion_allowed
+                else "blocked_source_interval_certificate_unverified"
+                if validation.get("contract_satisfied")
                 else "blocked_source_interval_payload_incomplete"
             ),
             "promotion_allowed": promotion_allowed,
@@ -231,7 +233,7 @@ def build_source_payload_interval_certificate(source_transport_payload: dict[str
                     "The supplied source payload carries a theorem-grade interval fixed-point "
                     "certificate."
                     if promotion_allowed
-                    else "Exact alpha still requires the populated source spectral measure payload, same-scheme remainder, and interval certificate fields."
+                    else "Exact alpha requires source spectral evidence, a same-scheme remainder, and independently replayed interval certificates; the local contract checker does not replay those certificates."
                 ),
             },
         }

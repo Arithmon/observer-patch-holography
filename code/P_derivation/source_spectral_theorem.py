@@ -169,6 +169,10 @@ def build_source_spectral_theorem(
 
     if source_payload_accepted:
         status = "source_spectral_payload_contract_satisfied"
+    elif validation.get("contract_satisfied"):
+        status = "source_spectral_payload_contract_satisfied_unverified"
+    elif source_payload_supplied:
+        status = "source_spectral_payload_contract_rejected"
     else:
         status = "source_spectral_reduction_theorem_emitted_measure_payload_absent"
 
@@ -179,6 +183,7 @@ def build_source_spectral_theorem(
         "promotion_allowed": source_payload_accepted,
         "external_inputs_used": False,
         "source_payload_supplied": source_payload_supplied,
+        "source_payload_contract_satisfied": bool(validation.get("contract_satisfied")),
         "source_payload_validation": validation,
         "source_only_guard": {
             "codata_allowed": False,
@@ -235,7 +240,8 @@ def build_source_spectral_theorem(
             "exact_alpha_promotion_allowed_for_supplied_payload": source_payload_accepted,
             "reason": (
                 "The formal Ward-projected spectral reduction is emitted. The numerical fine-structure "
-                "endpoint requires a populated source spectral measure and same-scheme remainder."
+                "endpoint requires a populated source spectral measure, same-scheme remainder and "
+                "replayed source/interval certificates; metadata consistency alone cannot promote it."
             ),
         },
     }

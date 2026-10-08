@@ -6744,6 +6744,21 @@ If \(P=0\), all three off-diagonal entries vanish, \(T=0\), and
 \(\lambda_0=\lambda_1=\lambda_2=0\); the trigonometric expression is not used.
 \end{theorem}
 
+\paragraph{Numerical mass readout.}
+The cubic identity is an exact algebraic statement, not a stability claim
+for its floating-point evaluation. Near a massless locus, subtracting
+\(d+\lambda_k\) loses small positive squared masses; forming
+\(M^\dagger M\) also squares the condition number. For example, at
+\(\Omega=0\), \(\eta=0\), \(\rho=1\), and \(a=1+10^{-8}\), the two
+small masses are \(a-\rho\), although binary64 evaluation of the cubic can
+round both to zero. The executable mass readout uses a scaled direct
+singular-value decomposition of \(M\), checks the positive Takagi congruence,
+and retains the cubic calculation only as a diagnostic. These are normwise
+floating-point residual checks, not interval enclosures or relative-error
+certificates for arbitrarily small masses. A degenerate block requiring
+additional congruence resolution is explicitly refused. This numerical
+repair supplies no physical mass-eigenstate labels or source closure.
+
 \begin{corollary}[Intrinsic eta-chain spectral closure]
 Once the centered eta-class is emitted at the flavor boundary, the intrinsic neutrino branch
 emits
@@ -7737,11 +7752,29 @@ section.
 
 \subsection{Refinement naturality and dynamical lift}
 
-For a refinement \(s\to r\), let \(Q_{sr}\) contract fine descended records to coarse records and
-let \(\eta_{sr}\) bound the cost distortion between the fine and coarse stitch problems. If the
-coarse certified gap obeys \(\Delta_r>2\eta_{sr}\), then the contracted fine optimum is
-isomorphic to the coarse optimum. This is the refinement-naturality gate: a cross-boundary stitch
-is not paper-grade until the coarse/fine contraction agrees within the declared margin.
+For a refinement \(s\to r\), require that record contraction induces a map
+\(Q_{sr}:\mathcal M_s\to\mathcal M_r\) from every admissible fine matching
+to an admissible coarse matching. The coarse optimum \(M_r^*\) must have
+at least one admissible fine lift \(\widetilde M_s\), with
+\(Q_{sr}(\widetilde M_s)=M_r^*\). Suppose the certified cost bounds imply
+\[
+|C_s(M)-C_r(Q_{sr}M)|\leq\eta_{sr}
+\qquad(M\in\mathcal M_s)
+\]
+for all admitted realizations, and the coarse certified gap obeys
+\(\Delta_r>2\eta_{sr}\). If a fine optimum \(M_s^*\) contracted to a
+competitor, then
+\[
+C_s(M_s^*)\geq C_r(M_r^*)+\Delta_r-\eta_{sr}
+>C_r(M_r^*)+\eta_{sr}\geq C_s(\widetilde M_s),
+\]
+a contradiction. Thus every fine optimum contracts to \(M_r^*\).
+The lift premise is essential: coarse costs \(C_r(A)=0,C_r(B)=1\), a
+single fine matching mapping to \(B\) with cost 1, and
+\(\eta_{sr}=0\) satisfy the gap and distortion inequalities but cannot
+recover \(A\). This is the refinement-naturality gate: feasibility,
+the lift, and the uniform cost bound must all be certified before the
+coarse/fine agreement follows from the margin.
 
 The stitch certificate lives on the conditional effective Lorentzian manifold. A geodesic or
 free-particle interpretation requires a separate dynamical receipt with a timelike speed margin,

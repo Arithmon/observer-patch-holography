@@ -100,6 +100,7 @@ def main() -> int:
         "source_isotropic": str(Path(args.isotropic)),
         "source_scalar_certificate": str(Path(args.scalar_certificate)),
         "completion_scope": "intrinsic_mass_eigenstates_only",
+        "numerical_scope": "scaled direct SVD with normwise Takagi residual checks; cubic spectrum is an independent diagnostic",
         "source_only_physical_input_eligible": source_only_physical_input_eligible,
         "source_closure_status": source_closure_status or {"closed": False},
         "not_completed_items": [
@@ -127,7 +128,9 @@ def main() -> int:
             "Q": float(exact_map.q_invariant),
             "cubic_roots": [float(x) for x in exact_map.cubic_roots],
             "equation": "lambda^3 - P lambda - 2Q = 0 for eigenvalues of H - d I",
-            "spectral_crosscheck_max_abs_residual_gev2": float(np.max(np.abs((masses * masses) - masses_sq))),
+            "spectral_crosscheck_max_abs_residual_gev2": float(np.max(np.abs(
+                masses_sq - np.sort(exact_map.d_trace_shift + exact_map.cubic_roots)
+            ))),
         },
         "mass_eigenstates": rows,
         "mass_eigenstate_label_status": "ascending_singular_states_only",

@@ -57,14 +57,16 @@ def test_required_residual_interval_contains_center_residual() -> None:
     assert "CODATA/NIST alpha" in r_q_contract["forbidden_inputs"]
 
 
-def test_source_payload_interval_certificate_promotes_without_compare_alpha() -> None:
+def test_source_payload_interval_contract_cannot_promote_unreplayed_metadata() -> None:
     certificate = build_source_payload_interval_certificate(_valid_source_payload())
 
     assert certificate["artifact"] == "oph_source_fine_structure_interval_certificate"
-    assert certificate["promotion_allowed"] is True
+    assert certificate["promotion_allowed"] is False
+    assert certificate["status"] == "blocked_source_interval_certificate_unverified"
     assert certificate["external_inputs_used"] is False
     assert certificate["codata_or_nist_input_used"] is False
-    assert certificate["source_payload_validation"]["promotion_allowed"] is True
+    assert certificate["source_payload_validation"]["promotion_allowed"] is False
+    assert certificate["source_payload_validation"]["contract_satisfied"] is True
     assert certificate["certified_intervals"]["alpha_interval"]["lo"].startswith("0.0072")
 
 

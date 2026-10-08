@@ -36,6 +36,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from particles.artifact_paths import portable_json_dumps
+from particles.takagi import sorted_takagi
 DEFAULT_ISOTROPIC = ROOT / "particles" / "runs" / "neutrino" / "forward_majorana_matrix.json"
 DEFAULT_PAYLOAD = ROOT / "particles" / "runs" / "neutrino" / "same_label_scalar_certificate.json"
 DEFAULT_OUT = ROOT / "particles" / "runs" / "neutrino" / "intrinsic_neutrino_exact_eta_map.json"
@@ -139,26 +140,7 @@ def _solve_principal_selector(mu: np.ndarray, omega: float) -> tuple[float, np.n
 
 def _takagi_unitary(matrix: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     """Return ascending singular values and U satisfying U.T @ M @ U > 0."""
-    if np.max(np.abs(matrix - matrix.T)) > 1.0e-12:
-        raise ValueError("Majorana matrix must be complex symmetric")
-    eigenvalues, unitary = np.linalg.eigh(matrix.conjugate().T @ matrix)
-    order = np.argsort(eigenvalues)
-    eigenvalues = np.maximum(np.real(eigenvalues[order]), 0.0)
-    unitary = unitary[:, order]
-    congruence = unitary.T @ matrix @ unitary
-    offdiag = congruence - np.diag(np.diag(congruence))
-    tolerance = 1.0e-10 * max(1.0e-30, float(np.max(np.sqrt(eigenvalues))))
-    if np.max(np.abs(offdiag)) > tolerance:
-        raise ValueError("Takagi eigenspaces require a degenerate-block congruence resolution")
-    unitary = unitary @ np.diag(np.exp(-0.5j * np.angle(np.diag(congruence))))
-    diagonalized = unitary.T @ matrix @ unitary
-    if np.max(np.abs(diagonalized - np.diag(np.diag(diagonalized)))) > tolerance:
-        raise ValueError("Takagi congruence is not diagonal")
-    if np.max(np.abs(np.imag(np.diag(diagonalized)))) > tolerance:
-        raise ValueError("Takagi diagonal is not real")
-    if np.any(np.real(np.diag(diagonalized)) < -tolerance):
-        raise ValueError("Takagi diagonal is not positive")
-    return np.sqrt(eigenvalues), unitary
+    return sorted_takagi(matrix)
 
 
 @dataclass
@@ -222,9 +204,15 @@ def _build_exact_eta_map(a_value: float, rho_value: float, omega: float, eta: np
                 dtype=float,
             )
 
-    masses_squared = np.sort(d_value + cubic_roots)
-    masses = np.sqrt(np.clip(masses_squared, 0.0, None))
-    singular_values, u_mat = _takagi_unitary(matrix)
+    # The cubic identity is exact algebra, but d + lambda cancels near a
+    # massless locus. Keep its values as a diagnostic, never as the mass
+    # readout: clipping a negative roundoff result creates spurious zeros.
+    masses, u_mat = _takagi_unitary(matrix)
+    with np.errstate(over="ignore", under="ignore", invalid="ignore"):
+        masses_squared = masses * masses
+    if (not np.all(np.isfinite(masses_squared))
+            or np.any((masses != 0) & (masses_squared == 0))):
+        raise ValueError("squared neutrino masses exceed finite binary64 range")
 
     return ExactEtaMap(
         a=a_value,
@@ -338,6 +326,11 @@ def main() -> int:
         "cubic_roots_closed_form_gev2_sorted": [float(value) for value in exact_map.cubic_roots.tolist()],
         "h_shift_eigenvalues_gev2_sorted": [float(value) for value in np.linalg.eigvalsh(exact_map.h_shift).tolist()],
         "masses_gev_sorted": [float(value) for value in exact_map.masses.tolist()],
+        "mass_readout": "scaled direct SVD with positive Takagi congruence residual check",
+        "numerical_scope": "binary64 normwise residual checks; no interval or tiny-mass relative-error certificate",
+        "cubic_squared_masses_diagnostic_gev2_sorted": [
+            float(value) for value in np.sort(exact_map.d_trace_shift + exact_map.cubic_roots).tolist()
+        ],
         "masses_from_h_eigvalsh_gev_sorted": [
             float(math.sqrt(max(value, 0.0)))
             for value in np.sort(np.linalg.eigvalsh(exact_map.majorana.conjugate().T @ exact_map.majorana)).tolist()

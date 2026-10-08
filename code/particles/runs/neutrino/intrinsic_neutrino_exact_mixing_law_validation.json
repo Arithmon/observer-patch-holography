@@ -11,27 +11,27 @@
     "phi_equal_split_rad": 0.5853814255968638,
     "rho_offdiag_gev": 7.615694417250985e-14
   },
-  "centroid_gap_actual_gev2": 9.24945663040676e-25,
+  "centroid_gap_actual_gev2": 9.249456630406825e-25,
   "centroid_gap_is_first_order_invariant": true,
-  "centroid_gap_isotropic_gev2": 9.549864971855835e-25,
-  "centroid_gap_pred_quadratic_gev2": 9.227252853444424e-25,
-  "centroid_gap_shift_actual_gev2": -3.0040834144907586e-26,
+  "centroid_gap_isotropic_gev2": 9.549864971855799e-25,
+  "centroid_gap_pred_quadratic_gev2": 9.227252853444387e-25,
+  "centroid_gap_shift_actual_gev2": -3.00408341448973e-26,
   "centroid_gap_shift_pred_quadratic_gev2": -3.2261211841141216e-26,
-  "centroid_gap_shift_rel_error_quadratic": 0.07391198545031145,
+  "centroid_gap_shift_rel_error_quadratic": 0.07391198545067915,
   "collective_vector_actual_aligned": {
     "imag": [
-      -0.0008393393651630371,
-      0.0035867578840082554,
-      -0.0026798269037758716
+      -0.0008393393651629918,
+      0.00358675788400827,
+      -0.0026798269037759167
     ],
     "real": [
-      0.5599591627536225,
-      0.6258672400837327,
-      0.5428767659822172
+      0.5599591627536211,
+      0.6258672400837344,
+      0.5428767659822165
     ]
   },
-  "collective_vector_overlap_from_delta": 0.9999945218895852,
-  "collective_vector_overlap_from_eta": 0.9999167250944141,
+  "collective_vector_overlap_from_delta": 0.999994521889585,
+  "collective_vector_overlap_from_eta": 0.999916725094414,
   "collective_vector_prediction_from_delta": {
     "imag": [
       -0.0011749273932872718,
@@ -61,16 +61,16 @@
     "psi23": -0.11189347567805047,
     "psi31": 0.37834234482484574
   },
-  "delta_m31_actual_gev2": 1.0143949544256274e-24,
+  "delta_m31_actual_gev2": 1.0143949544256333e-24,
   "delta_m31_pred_corrected_from_eta_gev2": 9.997010495598078e-25,
   "delta_m31_pred_corrected_gev2": 1.0032575305887436e-24,
-  "delta_m31_rel_error_corrected": 0.010979376216623685,
-  "delta_m31_rel_error_corrected_from_eta": 0.014485388360532222,
-  "delta_m32_actual_gev2": 8.354963716557245e-25,
+  "delta_m31_rel_error_corrected": 0.010979376216629417,
+  "delta_m31_rel_error_corrected_from_eta": 0.014485388360537933,
+  "delta_m32_actual_gev2": 8.354963716557318e-25,
   "delta_m32_pred_corrected_from_eta_gev2": 8.45749521129077e-25,
   "delta_m32_pred_corrected_gev2": 8.421930401001412e-25,
-  "delta_m32_rel_error_corrected": 0.008015197518028408,
-  "delta_m32_rel_error_corrected_from_eta": 0.012271925793087016,
+  "delta_m32_rel_error_corrected": 0.008015197518019546,
+  "delta_m32_rel_error_corrected_from_eta": 0.012271925793078115,
   "delta_pred_from_eta_linear": {
     "psi12": -0.2955272543224803,
     "psi23": -0.047269902547940196,
@@ -83,7 +83,7 @@
     "psi23": 0.07130912844682058,
     "psi31": -0.5171274991668646
   },
-  "generated_utc": "2026-07-27T08:33:43Z",
+  "generated_utc": "2026-10-08T04:32:04Z",
   "mc_scaling_check": [
     {
       "eta_norm_scale": 0.001,
@@ -143,9 +143,9 @@
   },
   "sigma_actual": 0.38872276295279573,
   "sigma_eta": 0.560511588857831,
-  "solar_split_actual_gev2": 1.7889858276990296e-25,
+  "solar_split_actual_gev2": 1.788985827699015e-25,
   "solar_split_pred_linear_from_delta_gev2": 1.610644904886026e-25,
   "solar_split_pred_linear_from_eta_gev2": 1.53951528430731e-25,
-  "solar_split_rel_error_from_delta_linear": 0.09968828151220374,
-  "solar_split_rel_error_from_eta_linear": 0.13944802665797826
+  "solar_split_rel_error_from_delta_linear": 0.09968828151219634,
+  "solar_split_rel_error_from_eta_linear": 0.1394480266579712
 }

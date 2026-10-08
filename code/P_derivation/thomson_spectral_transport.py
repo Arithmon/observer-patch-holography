@@ -2,16 +2,19 @@
 """Source-facing Ward-projected Thomson endpoint validator.
 
 This module is deliberately a gate, not a fitted endpoint solver.  It accepts a
-source-emitted spectral transport payload only if the payload carries the same
+declared spectral transport contract only if the payload carries the same
 D10 family/scheme identifiers as the anchor, declares a Ward-projected
 hadronic spectral measure, supplies an EW remainder statement, and keeps all
-external fine-structure comparison values out of the source path.
+external fine-structure comparison keys out of the source path. Contract
+consistency is not verification of its source data or interval proof. This
+module has no backend-certificate replay, so it cannot authorize promotion.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from decimal import Decimal, InvalidOperation, localcontext
+from fractions import Fraction
 from typing import Any
 
 from interval_backend import Interval
@@ -93,6 +96,7 @@ class TransportValidation:
     status: str
     promotion_allowed: bool
     reasons: tuple[str, ...]
+    contract_satisfied: bool = False
     interval_certificate: dict[str, Any] | None = None
     required_fields: tuple[str, ...] = THEOREM_GRADE_REQUIRED_FIELDS
 
@@ -101,6 +105,8 @@ class TransportValidation:
             "status": self.status,
             "promotion_allowed": self.promotion_allowed,
             "reasons": list(self.reasons),
+            "contract_satisfied": self.contract_satisfied,
+            "certificate_replayed": False,
             "required_fields": list(self.required_fields),
         }
         if self.interval_certificate is not None:
@@ -218,10 +224,33 @@ def _validate_source_measure(payload: dict[str, Any], reasons: list[str]) -> Non
 
     if not isinstance(measure.get("finite_volume_levels"), list) or not measure["finite_volume_levels"]:
         reasons.append("required_field_missing:source_measure.finite_volume_levels")
+    else:
+        for ensemble in measure["finite_volume_levels"]:
+            if not isinstance(ensemble, dict) or not isinstance(ensemble.get("levels"), list) or not ensemble["levels"]:
+                reasons.append("invalid_source_measure_finite_volume_levels")
+                continue
+            for level in ensemble["levels"]:
+                if not isinstance(level, dict):
+                    reasons.append("invalid_source_measure_level")
+                    continue
+                support = _parse_decimal(level.get("s"), "source_measure.level.s", reasons)
+                energy = _parse_decimal(level.get("energy"), "source_measure.level.energy", reasons)
+                _parse_nonnegative_decimal(level.get("weight"), "source_measure.level.weight", reasons)
+                if support is not None and energy is not None:
+                    if support <= 0 or energy <= 0:
+                        reasons.append("source_measure_level_support_not_positive")
+                    elif Fraction(support) != Fraction(energy) ** 2:
+                        reasons.append("source_measure_level_s_energy_inconsistent")
 
     residues = measure.get("ward_projected_residues")
     if not isinstance(residues, list) or not residues:
         reasons.append("required_field_missing:source_measure.ward_projected_residues")
+    else:
+        for residue in residues:
+            if not isinstance(residue, dict):
+                reasons.append("invalid_source_measure_residue")
+                continue
+            _parse_nonnegative_decimal(residue.get("residue"), "source_measure.residue", reasons)
 
     has_current_normalization = bool(measure.get("current_normalization"))
     if isinstance(residues, list) and residues:
@@ -238,7 +267,7 @@ def _validate_source_measure(payload: dict[str, Any], reasons: list[str]) -> Non
         if rho.get("support_variable") != "s":
             reasons.append("source_measure_support_variable_mismatch")
         positivity = str(rho.get("positivity_status", "")).lower()
-        if not any(token in positivity for token in ("certified", "proved", "positive")):
+        if positivity not in {"certified_positive", "proved_positive"}:
             reasons.append("source_measure_positivity_not_certified")
         if not rho.get("pushforward_rule"):
             reasons.append("required_field_missing:source_measure.rho_had_or_measure.pushforward_rule")
@@ -274,11 +303,13 @@ def _validate_source_measure(payload: dict[str, Any], reasons: list[str]) -> Non
             if not _has_bound_interval(budget):
                 reasons.append(f"required_field_missing:source_measure.systematics.{budget_name}.bound_interval")
             else:
-                _parse_interval(
+                interval = _parse_interval(
                     budget["bound_interval"],
                     f"source_measure.systematics.{budget_name}.bound_interval",
                     reasons,
                 )
+                if interval is not None and interval.lo < 0:
+                    reasons.append(f"negative_systematics_budget:{budget_name}")
 
     guards = measure.get("guards")
     if not isinstance(guards, dict):
@@ -313,11 +344,11 @@ def build_source_transport_interval_certificate(
     *,
     precision: int = 96,
 ) -> dict[str, Any]:
-    """Build and validate the source-only interval fixed-point certificate.
+    """Check a declared interval contract and compute Decimal diagnostics.
 
-    The theorem decision is made from source-supplied intervals and backend
-    proof metadata.  CODATA/NIST or compare endpoint keys are rejected before
-    promotion can occur.
+    Backend names, certificate strings and asserted derivative bounds are
+    unverified inputs. The local Decimal calculation is not directed interval
+    arithmetic. Even a consistent contract does not establish a theorem.
     """
     reasons: list[str] = []
     forbidden = sorted(source_payload_forbidden_keys(payload))
@@ -340,18 +371,38 @@ def build_source_transport_interval_certificate(
         positive=True,
     )
     derivative_bound = _parse_nonnegative_decimal(
-        endpoint.get("derivative_abs_bound") or endpoint.get("A_T_prime_abs_bound"),
+        endpoint.get("derivative_abs_bound", endpoint.get("A_T_prime_abs_bound")),
         "endpoint_map.derivative_abs_bound",
         reasons,
     )
     _parse_nonnegative_decimal(endpoint.get("transport_error_bound"), "endpoint_map.transport_error_bound", reasons)
 
     components = endpoint.get("components")
+    parsed_components = {}
     if not isinstance(components, dict):
         reasons.append("required_field_missing:endpoint_map.components")
     else:
         for field in ENDPOINT_COMPONENT_INTERVALS:
-            _parse_interval(components.get(field), f"endpoint_map.components.{field}", reasons)
+            parsed_components[field] = _parse_interval(components.get(field), f"endpoint_map.components.{field}", reasons)
+        summands = [parsed_components.get(field) for field in ENDPOINT_COMPONENT_INTERVALS[:4]]
+        if alpha_inv_image is not None and all(value is not None for value in summands):
+            # Exact rational comparison avoids a rounded sum accepting disjoint
+            # enclosures. Overlap is necessary, not sufficient: correlations
+            # can make a valid total enclosure narrower than the interval sum.
+            lower = sum(Fraction(value.lo) for value in summands)
+            upper = sum(Fraction(value.hi) for value in summands)
+            if lower > Fraction(alpha_inv_image.hi) or upper < Fraction(alpha_inv_image.lo):
+                reasons.append("endpoint_components_disjoint_from_total")
+        measure = payload.get("source_measure") or payload.get("spectral_measure") or {}
+        moment = measure.get("transport_moment_certificate", {}) if isinstance(measure, dict) else {}
+        if not isinstance(moment, dict):
+            moment = {}
+        hadronic = _parse_interval(moment.get("Delta_had_image"),
+                                   "source_measure.transport_moment_certificate.Delta_had_image", reasons)
+        hadronic_component = parsed_components.get("Delta_had_image")
+        if hadronic is not None and hadronic_component is not None:
+            if hadronic.lo > hadronic_component.hi or hadronic.hi < hadronic_component.lo:
+                reasons.append("hadronic_moment_disjoint_from_endpoint_component")
 
     fixed_point = payload.get("fixed_point_certificate")
     if not isinstance(fixed_point, dict):
@@ -384,7 +435,13 @@ def build_source_transport_interval_certificate(
                 +(phi + sqrt_pi / alpha_inv_image.lo),
             )
             computed_kappa = +(sqrt_pi * derivative_bound / (alpha_inv_image.lo * alpha_inv_image.lo))
-            alpha_interval = Interval(+(Decimal(1) / alpha_inv_image.hi), +(Decimal(1) / alpha_inv_image.lo))
+            # These reciprocal endpoints can be directed exactly with Decimal;
+            # the separate pi/sqrt G calculation above remains only an audit.
+            ctx.rounding = "ROUND_FLOOR"
+            alpha_lo = Decimal(1) / alpha_inv_image.hi
+            ctx.rounding = "ROUND_CEILING"
+            alpha_hi = Decimal(1) / alpha_inv_image.lo
+            alpha_interval = Interval(alpha_lo, alpha_hi)
 
     if computed_g_image is not None and claimed_g_image is not None:
         if not computed_g_image.subset_of(claimed_g_image):
@@ -403,15 +460,22 @@ def build_source_transport_interval_certificate(
     if fixed_point.get("uniqueness_pass") is not True:
         reasons.append("fixed_point_uniqueness_missing")
 
-    promotion_allowed = not reasons
+    contract_satisfied = not reasons
+    # No implementation here reads or replays the supplied backend certificate.
+    # Do not turn a nonempty metadata label into a physical-alpha theorem.
+    reasons.append("source_certificate_replay_not_implemented")
     return {
         "artifact": "oph_source_transport_interval_certificate",
         "status": (
-            "source_interval_certificate_satisfied"
-            if promotion_allowed
+            "source_interval_contract_satisfied_unverified"
+            if contract_satisfied
             else "blocked_source_interval_certificate_failed"
         ),
-        "promotion_allowed": promotion_allowed,
+        "promotion_allowed": False,
+        "contract_satisfied": contract_satisfied,
+        "certificate_replayed": False,
+        "verification_scope": "declared interval consistency and nondirected Decimal diagnostics only",
+        "certified_intervals_status": "source bounds unverified; only reciprocal alpha endpoints are directed locally",
         "external_inputs_used": False,
         "reasons": list(_dedupe(reasons)),
         "theorem": {
@@ -449,7 +513,7 @@ def validate_source_transport_payload(payload: dict[str, Any]) -> TransportValid
     if payload.get("artifact") != "oph_source_ward_projected_thomson_transport":
         reasons.append("artifact_mismatch")
 
-    if not payload.get("source_only", False):
+    if payload.get("source_only") is not True:
         reasons.append("source_only_false_or_missing")
 
     if payload.get("source_family_id") != "d10_running_tree":
@@ -459,7 +523,7 @@ def validate_source_transport_payload(payload: dict[str, Any]) -> TransportValid
         reasons.append("ward_current_mismatch")
 
     scheme = payload.get("scheme", {})
-    if not isinstance(scheme, dict) or not scheme.get("same_subtraction_as_a0", False):
+    if not isinstance(scheme, dict) or scheme.get("same_subtraction_as_a0") is not True:
         reasons.append("scheme_not_locked_to_a0")
     else:
         if not scheme.get("scheme_id"):
@@ -470,7 +534,8 @@ def validate_source_transport_payload(payload: dict[str, Any]) -> TransportValid
     _validate_source_measure(payload, reasons)
     _validate_delta_ew(payload, reasons)
     interval_certificate = build_source_transport_interval_certificate(payload)
-    reasons.extend(interval_certificate["reasons"])
+    reasons.extend(reason for reason in interval_certificate["reasons"]
+                   if reason != "source_certificate_replay_not_implemented")
     reasons_tuple = _dedupe(reasons)
 
     if reasons_tuple:
@@ -482,9 +547,10 @@ def validate_source_transport_payload(payload: dict[str, Any]) -> TransportValid
         )
 
     return TransportValidation(
-        status="source_transport_interval_certificate_satisfied",
-        promotion_allowed=True,
-        reasons=(),
+        status="source_transport_contract_satisfied_unverified",
+        promotion_allowed=False,
+        contract_satisfied=True,
+        reasons=("source_certificate_replay_not_implemented",),
         interval_certificate=interval_certificate,
     )
 
