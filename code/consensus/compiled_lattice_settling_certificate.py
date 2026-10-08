@@ -48,6 +48,7 @@ from dataclasses import dataclass
 from fractions import Fraction
 from itertools import product
 from pathlib import Path
+from types import MappingProxyType
 from typing import Any, Callable, Iterator, Mapping, Sequence
 
 MODULE_DIR = Path(__file__).resolve().parent
@@ -505,6 +506,72 @@ def crosstalk_fanout_control() -> Primitive:
     )
 
 
+def _names(values: tuple[str, ...], description: str) -> None:
+    if (
+        not isinstance(values, tuple)
+        or any(not isinstance(value, str) or not value for value in values)
+        or len(set(values)) != len(values)
+    ):
+        raise CertificateError("INVALID_INTERFACE", f"{description}: names must be distinct nonempty strings")
+
+
+def _bits_checked(value: object, size: int, description: str) -> None:
+    if (
+        not isinstance(value, tuple)
+        or len(value) != size
+        or any(type(bit) not in (int, bool) or bit not in (0, 1) for bit in value)
+    ):
+        raise CertificateError("BOOLEAN_DOMAIN", f"{description}: expected {size} Boolean coordinates")
+
+
+def _primitive_domain(prim: Primitive) -> None:
+    """Check the declared finite domain before any table lookup or readback."""
+
+    if not isinstance(prim, Primitive) or not isinstance(prim.name, str) or not prim.name:
+        raise CertificateError("INVALID_PRIMITIVE", "expected a named primitive")
+    for values, label in (
+        (prim.in_ports, "input ports"), (prim.registers, "registers"),
+        (prim.out_ports, "output ports"),
+    ):
+        _names(values, f"{prim.name} {label}")
+    if (
+        not isinstance(prim.readback, tuple)
+        or len(prim.readback) != len(prim.out_ports)
+        or any(type(index) is not int or not 0 <= index < len(prim.registers) for index in prim.readback)
+    ):
+        raise CertificateError("INVALID_READBACK", f"{prim.name}: readback must name one register per output port")
+    if not isinstance(prim.truth, Mapping) or not isinstance(prim.update, Mapping):
+        raise CertificateError("BOOLEAN_DOMAIN", f"{prim.name}: truth and update must be finite mappings")
+    if (
+        len(prim.truth) != 1 << len(prim.in_ports)
+        or len(prim.update) != 1 << (len(prim.in_ports) + len(prim.registers))
+    ):
+        raise CertificateError("BOOLEAN_DOMAIN", f"{prim.name}: tables must cover exactly the declared Boolean domain")
+    for key, value in prim.truth.items():
+        _bits_checked(key, len(prim.in_ports), f"{prim.name} truth input")
+        _bits_checked(value, len(prim.out_ports), f"{prim.name} truth output")
+    for key, value in prim.update.items():
+        if not isinstance(key, tuple) or len(key) != 2:
+            raise CertificateError("BOOLEAN_DOMAIN", f"{prim.name}: update keys must be (ports, state)")
+        _bits_checked(key[0], len(prim.in_ports), f"{prim.name} update input")
+        _bits_checked(key[1], len(prim.registers), f"{prim.name} update state")
+        _bits_checked(value, len(prim.registers), f"{prim.name} next state")
+    # Every mapping key is distinct and belongs to the declared finite domain.
+    # Matching its exact cardinality therefore establishes complete coverage,
+    # without materializing an exponential universe for an incomplete table.
+
+
+def _primitive_snapshot(prim: Primitive) -> Primitive:
+    # Copy before freezing: callers may retain and later edit the original maps.
+    _primitive_domain(prim)
+    snapshot = Primitive(
+        prim.name, prim.in_ports, prim.registers, prim.out_ports, prim.readback,
+        MappingProxyType(dict(prim.truth)), MappingProxyType(dict(prim.update)),
+    )
+    verify_primitive(snapshot)
+    return snapshot
+
+
 def verify_primitive(prim: Primitive) -> dict[str, Any]:
     """Exhaustive per-primitive intertwiner check.
 
@@ -519,6 +586,7 @@ def verify_primitive(prim: Primitive) -> dict[str, Any]:
     generating function.
     """
 
+    _primitive_domain(prim)
     checked_pairs = 0
     for inputs in bit_tuples(len(prim.in_ports)):
         next_states = {prim.update[(inputs, state)] for state in bit_tuples(len(prim.registers))}
@@ -595,6 +663,39 @@ class Netlist:
     outputs: tuple[tuple[str, str], ...]  # (output label, wire instance name)
 
 
+def _net_domain(net: Netlist) -> None:
+    if not isinstance(net, Netlist) or not isinstance(net.name, str):
+        raise CertificateError("INVALID_NETLIST", "expected a named netlist")
+    _names(net.inputs, f"{net.name} inputs")
+    if not isinstance(net.instances, tuple) or not isinstance(net.outputs, tuple):
+        raise CertificateError("INVALID_NETLIST", f"{net.name}: instances and outputs must be tuples")
+    for inst in net.instances:
+        if (
+            not isinstance(inst, Instance) or not isinstance(inst.name, str) or not inst.name
+            or not isinstance(inst.kind, str) or not inst.kind or not isinstance(inst.sources, tuple)
+        ):
+            raise CertificateError("INVALID_NETLIST", f"{net.name}: malformed instance")
+    for output in net.outputs:
+        if not isinstance(output, tuple) or len(output) != 2 or any(not isinstance(value, str) or not value for value in output):
+            raise CertificateError("INVALID_INTERFACE", f"{net.name}: outputs must be (label, instance) pairs")
+    _names(tuple(label for label, _ in net.outputs), f"{net.name} output labels")
+
+
+def _library_snapshot(net: Netlist, prims: Mapping[str, Primitive]) -> Mapping[str, Primitive]:
+    if not isinstance(prims, Mapping):
+        raise CertificateError("INVALID_PRIMITIVE", "primitive library must be a mapping")
+    used = {}
+    for inst in net.instances:
+        if inst.kind not in prims:
+            raise CertificateError("UNKNOWN_PRIMITIVE", f"{net.name}: instance {inst.name} has kind {inst.kind}")
+        if inst.kind not in used:
+            primitive = _primitive_snapshot(prims[inst.kind])
+            if primitive.name != inst.kind:
+                raise CertificateError("INVALID_PRIMITIVE", f"{net.name}: kind {inst.kind} names primitive {primitive.name}")
+            used[inst.kind] = primitive
+    return MappingProxyType(used)
+
+
 def check_netlist(net: Netlist, prims: Mapping[str, Primitive]) -> dict[str, Any]:
     """Composition checker: the structural-induction side of the packet.
 
@@ -605,6 +706,8 @@ def check_netlist(net: Netlist, prims: Mapping[str, Primitive]) -> dict[str, Any
     weight inequality w(p) >= 1 + sum of consumer weights checked exactly.
     """
 
+    _net_domain(net)
+    prims = _library_snapshot(net, prims)
     by_name: dict[str, Instance] = {}
     for inst in net.instances:
         if inst.name in by_name or inst.name in net.inputs:
@@ -691,6 +794,8 @@ def check_netlist(net: Netlist, prims: Mapping[str, Primitive]) -> dict[str, Any
             raise CertificateError(
                 "UNKNOWN_SIGNAL", f"{net.name}: output {label} names missing instance {wire_name}"
             )
+        if len(prims[by_name[wire_name].kind].out_ports) != 1:
+            raise CertificateError("OUTPUT_ARITY", f"{net.name}: output {label} must name an instance with one output port")
 
     # Kahn topological sort; leftover instances witness a cycle.
     remaining = {name: len(set(p for p in parents[name])) for name in parents}
@@ -762,15 +867,40 @@ def check_netlist(net: Netlist, prims: Mapping[str, Primitive]) -> dict[str, Any
 @dataclass(frozen=True)
 class CompiledNet:
     net: Netlist
-    analysis: dict
+    analysis: Mapping
     inst_order: tuple[str, ...]  # fixed instance order = register layout order
-    layouts: dict  # instance -> (offset, register count)
-    tables: dict  # instance -> {port tuple: register tuple}; valid after verify_primitive
-    src_slots: dict  # instance -> tuple of ("i", input index) or ("r", flat register index)
+    layouts: Mapping  # instance -> (offset, register count)
+    tables: Mapping  # instance -> {(port tuple, local state): next local state}
+    src_slots: Mapping  # instance -> tuple of ("i", input index) or ("r", flat register index)
     register_count: int
+    primitives: Mapping[str, Primitive]
+    output_slots: Mapping[str, int]
+
+    def __post_init__(self) -> None:
+        # Construction, including dataclasses.replace, establishes the binding.
+        # No caller-provided rank, lookup table or success flag is a premise.
+        _net_domain(self.net)
+        primitives = _library_snapshot(self.net, self.primitives)
+        expected = _compilation_parts(self.net, primitives)
+        for field, value in expected.items():
+            if _immutable(getattr(self, field)) != _immutable(value):
+                raise CertificateError("COMPILED_SOURCE_MISMATCH", f"{self.net.name}: compiled {field} differs from its source")
+        for field, value in expected.items():
+            object.__setattr__(self, field, _immutable(value))
+        object.__setattr__(self, "primitives", primitives)
 
 
-def compile_net(net: Netlist, prims: Mapping[str, Primitive]) -> CompiledNet:
+def _immutable(value: Any) -> Any:
+    if isinstance(value, Mapping):
+        return MappingProxyType({key: _immutable(item) for key, item in value.items()})
+    if isinstance(value, (tuple, list)):
+        return tuple(_immutable(item) for item in value)
+    return value
+
+
+def _compilation_parts(net: Netlist, prims: Mapping[str, Primitive]) -> dict[str, Any]:
+    """Derive every execution/proof lookup from the same checked source."""
+
     analysis = check_netlist(net, prims)
     inst_order = tuple(inst.name for inst in net.instances)
     by_name = {inst.name: inst for inst in net.instances}
@@ -781,15 +911,12 @@ def compile_net(net: Netlist, prims: Mapping[str, Primitive]) -> CompiledNet:
         layouts[name] = (offset, n)
         offset += n
     input_index = {name: k for k, name in enumerate(net.inputs)}
-    tables: dict[str, dict[tuple[int, ...], tuple[int, ...]]] = {}
+    tables = {}
     src_slots: dict[str, tuple[tuple[str, int], ...]] = {}
     for name in inst_order:
         inst = by_name[name]
         prim = prims[inst.kind]
-        zero = (0,) * len(prim.registers)
-        tables[name] = {
-            inputs: prim.update[(inputs, zero)] for inputs in bit_tuples(len(prim.in_ports))
-        }
+        tables[name] = prim.update
         slots = []
         for ref in inst.sources:
             if ref[0] == "in":
@@ -801,46 +928,54 @@ def compile_net(net: Netlist, prims: Mapping[str, Primitive]) -> CompiledNet:
                 reg = src_prim.readback[port_pos]
                 slots.append(("r", layouts[ref[1]][0] + reg))
         src_slots[name] = tuple(slots)
-    return CompiledNet(
-        net=net,
-        analysis=analysis,
-        inst_order=inst_order,
-        layouts=layouts,
-        tables=tables,
-        src_slots=src_slots,
-        register_count=offset,
+    output_slots = {
+        label: layouts[name][0] + prims[by_name[name].kind].readback[0]
+        for label, name in net.outputs
+    }
+    return dict(
+        analysis=analysis, inst_order=inst_order, layouts=layouts, tables=tables,
+        src_slots=src_slots, register_count=offset, output_slots=output_slots,
     )
 
 
+def compile_net(net: Netlist, prims: Mapping[str, Primitive]) -> CompiledNet:
+    _net_domain(net)
+    primitives = _library_snapshot(net, prims)
+    return CompiledNet(net=net, primitives=primitives, **_compilation_parts(net, primitives))
+
+
 def realized_step(cn: CompiledNet, inputs_vec: tuple[int, ...], state: tuple[int, ...]) -> tuple[int, ...]:
+    _bits_checked(inputs_vec, len(cn.net.inputs), f"{cn.net.name} inputs")
+    _bits_checked(state, cn.register_count, f"{cn.net.name} state")
     out: list[int] = []
     for name in cn.inst_order:
         key = tuple(
             inputs_vec[idx] if kind == "i" else state[idx] for kind, idx in cn.src_slots[name]
         )
-        out.extend(cn.tables[name][key])
+        offset, size = cn.layouts[name]
+        out.extend(cn.tables[name][(key, state[offset : offset + size])])
     return tuple(out)
 
 
 def extension_state(cn: CompiledNet, inputs_vec: tuple[int, ...]) -> tuple[int, ...]:
     """The generated extension: settled register values in topological order."""
 
+    _bits_checked(inputs_vec, len(cn.net.inputs), f"{cn.net.name} inputs")
     values: list[int] = [0] * cn.register_count
     for name in cn.analysis["order"]:
         key = tuple(
             inputs_vec[idx] if kind == "i" else values[idx] for kind, idx in cn.src_slots[name]
         )
         offset, n = cn.layouts[name]
-        values[offset : offset + n] = cn.tables[name][key]
+        # Locality was checked over every old local state at construction.
+        # Use the original full kernel, not a separately compressed table.
+        values[offset : offset + n] = cn.tables[name][(key, tuple(values[offset : offset + n]))]
     return tuple(values)
 
 
 def output_values(cn: CompiledNet, state: tuple[int, ...]) -> dict[str, int]:
-    result = {}
-    for label, wire_name in cn.net.outputs:
-        offset, _ = cn.layouts[wire_name]
-        result[label] = state[offset]
-    return result
+    _bits_checked(state, cn.register_count, f"{cn.net.name} state")
+    return {label: state[index] for label, index in cn.output_slots.items()}
 
 
 def unsettled_instances(
@@ -928,6 +1063,22 @@ def compile_gates_to_patches(circuit: GateCircuit) -> Netlist:
     the single-consumer wiring rule by construction.
     """
 
+    if not isinstance(circuit, GateCircuit) or not isinstance(circuit.name, str):
+        raise CertificateError("INVALID_CIRCUIT", "expected a named gate circuit")
+    _names(circuit.inputs, f"{circuit.name} inputs")
+    _names(circuit.outputs, f"{circuit.name} outputs")
+    if not isinstance(circuit.gates, tuple):
+        raise CertificateError("INVALID_CIRCUIT", f"{circuit.name}: gates must be a tuple")
+    for gate in circuit.gates:
+        if (
+            not isinstance(gate, tuple) or len(gate) != 2
+            or not isinstance(gate[0], str) or not gate[0]
+            or not isinstance(gate[1], tuple) or len(gate[1]) != 2
+            or any(not isinstance(signal, str) or not signal for signal in gate[1])
+        ):
+            raise CertificateError("INVALID_CIRCUIT", f"{circuit.name}: gates must name two source signals")
+    _names(circuit.inputs + tuple(name for name, _ in circuit.gates), f"{circuit.name} signals")
+
     uses: dict[str, int] = {}
     for _, (a, b) in circuit.gates:
         uses[a] = uses.get(a, 0) + 1
@@ -937,10 +1088,22 @@ def compile_gates_to_patches(circuit: GateCircuit) -> Netlist:
 
     gate_names = {name for name, _ in circuit.gates}
     instances: list[Instance] = []
+    reserved_names = set(circuit.inputs)
+
+    def fresh_name(base: str) -> str:
+        name = base
+        suffix = 0
+        while name in reserved_names:
+            suffix += 1
+            name = f"{base}_{suffix}"
+        reserved_names.add(name)
+        return name
+
+    gate_instances = {name: fresh_name(f"g_{name}") for name, _ in circuit.gates}
 
     def source_of(signal: str) -> SourceRef:
         if signal in gate_names:
-            return ("out", f"g_{signal}", "z")
+            return ("out", gate_instances[signal], "z")
         if signal in circuit.inputs:
             return ("in", signal)
         raise CertificateError("UNKNOWN_SIGNAL", f"{circuit.name}: missing signal {signal}")
@@ -952,7 +1115,7 @@ def compile_gates_to_patches(circuit: GateCircuit) -> Netlist:
         counter = 0
         while len(available) < need:
             ref = available.pop(0)
-            fname = f"f_{signal}_{counter}"
+            fname = fresh_name(f"f_{signal}_{counter}")
             counter += 1
             instances.append(Instance(fname, "FANOUT2", (ref,)))
             available.append(("out", fname, "z0"))
@@ -963,10 +1126,10 @@ def compile_gates_to_patches(circuit: GateCircuit) -> Netlist:
         return taps[signal].pop(0)
 
     for name, (a, b) in circuit.gates:
-        instances.append(Instance(f"g_{name}", "NAND", (take(a), take(b))))
+        instances.append(Instance(gate_instances[name], "NAND", (take(a), take(b))))
     outputs = []
     for sig in circuit.outputs:
-        wname = f"w_{sig}"
+        wname = fresh_name(f"w_{sig}")
         instances.append(Instance(wname, "WIRE", (take(sig),)))
         outputs.append((sig, wname))
 
@@ -1186,6 +1349,8 @@ def rank_ladder_certification(cn: CompiledNet, prims: Mapping[str, Primitive]) -
     c * depth rounds with c = 1.
     """
 
+    if _library_snapshot(cn.net, prims) != cn.primitives:
+        raise CertificateError("COMPILED_SOURCE_MISMATCH", f"{cn.net.name}: certificate library differs from the compiled source")
     rank = cn.analysis["rank"]
     by_name = {inst.name: inst for inst in cn.net.instances}
     for name in cn.inst_order:

@@ -238,3 +238,153 @@ def test_gate_compiler_rejects_duplicate_input_coordinates():
     circuit = replace(_identity_circuit(), inputs=("x", "x"))
     with pytest.raises(cert.CertificateError):
         cert.circuit_block(circuit, cert.reference_primitives(), exhaustive=True)
+
+
+@pytest.mark.parametrize("kernel", range(16))
+@pytest.mark.parametrize("truth", range(4))
+def test_all_one_bit_kernels_are_classified_by_the_original_transition(kernel, truth):
+    # Four independently specified bits give every possible (x, q) -> q'
+    # transition. Two further bits give every declared x -> z function.
+    update = {(ports, state): ((kernel >> (2 * ports[0] + state[0])) & 1,)
+              for ports in _bits(1) for state in _bits(1)}
+    declared = {ports: ((truth >> ports[0]) & 1,) for ports in _bits(1)}
+    admissible = all(update[ports, state] == declared[ports]
+                     for ports in _bits(1) for state in _bits(1))
+    # Exactly four of the 64 pairs are memoryless and match their declaration.
+    assert admissible == (kernel == ((truth & 1) * 3 + ((truth >> 1) & 1) * 12))
+    primitive = cert.Primitive("CELL", ("x",), ("q",), ("z",), (0,), declared, update)
+    primitives = {"CELL": primitive}
+    net = cert.Netlist("one_cell", ("input",),
+                       (cert.Instance("cell", "CELL", (("in", "input"),)),),
+                       (("answer", "cell"),))
+    if not admissible:
+        with pytest.raises(cert.CertificateError):
+            cert.compile_net(net, primitives)
+        return
+    compiled = cert.compile_net(net, primitives)
+    assert compiled.analysis["depth"] == 1
+    assert cert.rank_ladder_certification(compiled, primitives)["verified"] is True
+    for inputs in _bits(1):
+        fixed = declared[inputs]
+        assert cert.extension_state(compiled, inputs) == fixed
+        for state in _bits(1):
+            assert cert.realized_step(compiled, inputs, state) == _original_step(net, primitives, inputs, state)
+            assert cert.output_values(compiled, state) == _original_outputs(net, primitives, state)
+            assert cert.settle_trajectory(compiled, inputs, state, fixed)[0] == int(state != fixed)
+
+
+def test_compiled_kernel_is_isolated_from_mutable_source_aliases():
+    primitive = _wire()
+    update, truth = dict(primitive.update), dict(primitive.truth)
+    primitive = replace(primitive, update=update, truth=truth)
+    library = {"WIRE": primitive}
+    compiled = cert.compile_net(_one_wire_net(), library)
+    update.update({key: (0,) for key in update})
+    truth.update({key: (0,) for key in truth})
+    library["WIRE"] = _wire(stateful=True)
+    for state in _bits(1):
+        assert cert.realized_step(compiled, (1,), state) == (1,)
+    assert cert.extension_state(compiled, (1,)) == (1,)
+    assert cert.rank_ladder_certification(compiled, {"WIRE": _wire()})["verified"] is True
+
+
+@pytest.mark.parametrize("field", ["tables", "rank"])
+def test_reconstructed_compilation_is_isolated_from_mutable_derived_aliases(field):
+    compiled = cert.compile_net(_one_wire_net(), {"WIRE": _wire()})
+    if field == "tables":
+        tables = {name: dict(table) for name, table in compiled.tables.items()}
+        copied = replace(compiled, tables=tables)
+        tables["W"].update({key: (0,) for key in tables["W"]})
+        assert cert.realized_step(copied, (1,), (0,)) == (1,)
+    else:
+        rank = dict(compiled.analysis["rank"])
+        copied = replace(compiled, analysis={**compiled.analysis, "rank": rank})
+        rank["W"] = 23
+        assert copied.analysis["rank"]["W"] == 1
+    assert cert.rank_ladder_certification(copied, {"WIRE": _wire()})["verified"] is True
+
+
+@pytest.mark.parametrize("field", ["net", "primitives", "src_slots", "output_slots"])
+def test_source_and_execution_coordinates_cannot_be_rebound_to_stale_derivations(field):
+    compiled = cert.compile_net(_one_wire_net(), {"WIRE": _wire()})
+    if field == "net":
+        replacement = cert.Netlist("changed_source", ("x", "y"),
+                                  (cert.Instance("W", "WIRE", (("in", "y"),)),),
+                                  (("answer", "W"),))
+    elif field == "primitives":
+        replacement = {"WIRE": _primitive("WIRE", ("x",), ("q",), ("z",), (0,),
+                                          lambda p: (0,), lambda p, s: (0,))}
+    elif field == "src_slots":
+        replacement = {"W": (("r", 0),)}
+    else:
+        replacement = {"answer": 1}
+    with pytest.raises(cert.CertificateError):
+        changed = replace(compiled, **{field: replacement})
+        cert.rank_ladder_certification(changed, {"WIRE": _wire()})
+
+
+@pytest.mark.parametrize("readback", [(-1,), (1,), (True,), (), (0, 0)])
+def test_readback_must_be_a_complete_valid_register_coordinate(readback):
+    with pytest.raises(cert.CertificateError):
+        primitive = replace(_wire(), readback=readback)
+        cert.compile_net(_one_wire_net(), {"WIRE": primitive})
+
+
+@pytest.mark.parametrize("field", ["in_ports", "registers", "out_ports"])
+def test_primitive_coordinates_must_have_distinct_names(field):
+    primitive = _primitive("CELL", ("x", "y"), ("q", "r"), ("z", "w"), (0, 1),
+                           lambda p: p, lambda p, s: p)
+    with pytest.raises(cert.CertificateError):
+        cert.verify_primitive(replace(primitive, **{field: ("same", "same")}))
+
+
+@pytest.mark.parametrize("case", ["duplicate_gates", "gate_input_collision", "duplicate_outputs"])
+def test_gate_circuit_names_cannot_overwrite_distinct_signal_coordinates(case):
+    if case == "duplicate_gates":
+        circuit = cert.GateCircuit("duplicate_gates", ("a", "b"),
+                                   (("n", ("a", "b")), ("n", ("a", "b"))),
+                                   ("n",), lambda env: {"n": 1 - (env["a"] & env["b"])})
+    elif case == "gate_input_collision":
+        circuit = cert.GateCircuit("gate_input_collision", ("a", "b"),
+                                   (("a", ("a", "b")),), ("a",),
+                                   lambda env: {"a": 1 - (env["a"] & env["b"])})
+    else:
+        circuit = replace(_identity_circuit(), outputs=("x", "x"))
+    with pytest.raises(cert.CertificateError):
+        cert.circuit_block(circuit, cert.reference_primitives(), exhaustive=True)
+
+
+def test_valid_source_names_are_not_restricted_by_generated_patch_prefixes():
+    circuit = cert.GateCircuit("prefix_collision", ("g_n", "b"),
+                               (("n", ("g_n", "b")),), ("n",),
+                               lambda env: {"n": 1 - (env["g_n"] & env["b"])})
+    report = cert.circuit_block(circuit, cert.reference_primitives(), exhaustive=True)
+    assert report["extension_semantics_checks"] == 4
+    assert report["settling"]["worst_settling_time"] == 2
+    assert report["rank_ladder"]["verified"] is True
+
+
+def test_zero_input_constant_cell_has_an_exact_one_round_extension():
+    primitive = _primitive("CONST", (), ("q",), ("z",), (0,),
+                           lambda p: (1,), lambda p, s: (1,))
+    net = cert.Netlist("constant", (), (cert.Instance("C", "CONST", ()),), (("one", "C"),))
+    compiled = cert.compile_net(net, {"CONST": primitive})
+    assert cert.extension_state(compiled, ()) == (1,)
+    for state in _bits(1):
+        assert cert.realized_step(compiled, (), state) == _original_step(net, {"CONST": primitive}, (), state)
+        assert cert.output_values(compiled, state) == _original_outputs(net, {"CONST": primitive}, state)
+        assert cert.settle_trajectory(compiled, (), state, (1,))[0] == int(state != (1,))
+
+
+@pytest.mark.parametrize("has_one_row", [False, True])
+def test_incomplete_large_state_declaration_is_rejected_before_enumeration(has_one_row):
+    # The supplied data are tiny. The missing 2**65 transition rows must not
+    # induce enumeration of the claimed domain just to discover incompleteness.
+    state = (0,) * 64
+    update = {((0,), state): state} if has_one_row else {}
+    primitive = cert.Primitive("CELL", ("x",), tuple(f"q{k}" for k in range(64)),
+                               ("z",), (63,), {(0,): (0,), (1,): (1,)}, update)
+    net = cert.Netlist("incomplete", ("x",),
+                       (cert.Instance("C", "CELL", (("in", "x"),)),), (("answer", "C"),))
+    with pytest.raises(cert.CertificateError):
+        cert.compile_net(net, {"CELL": primitive})
