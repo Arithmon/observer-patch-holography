@@ -288,6 +288,41 @@ def test_composition_is_replayed_without_trusting_its_producer(original_packet, 
     require_refusal(packet)
 
 
+@pytest.mark.parametrize("omission", ["empty", "outer_row", "inner_cell", "unknown_result"])
+def test_every_claimed_composition_has_a_supplied_named_result(original_packet, omission):
+    packet = copy.deepcopy(original_packet)
+    table = packet["support_relation_composition"]["table"]
+    identity, rotation = "r0_s0_a0_f0", "r1_s0_a0_f0"
+    assert len(table) == 40 and all(len(row) == 40 for row in table.values())
+    if omission == "empty":
+        table.clear()
+    elif omission == "outer_row":
+        del table[rotation]
+    elif omission == "inner_cell":
+        del table[identity][rotation]
+    else:
+        table[identity][rotation] = "unbound_composition_result"
+    # All source kernels, local reads and packet hash remain valid. A partial
+    # or empty replay must not claim that all 1,600 compositions were checked.
+    rehash(packet)
+    receipt = certify_source_derived_packet(packet)
+    assert receipt["status"] == "COMPOSITION_TABLE_MISMATCH"
+    json.dumps(receipt, allow_nan=False)
+
+
+def test_explicit_local_zero_requires_an_atom_in_the_declared_read_alphabet(original_packet):
+    packet = copy.deepcopy(original_packet)
+    row = packet["local_checkpoint_packets"]["r1_s0_a0_f0"]["north"]["north/write"]
+    assert "nonexistent_read_atom" not in packet["observers"]["north"]
+    row["nonexistent_read_atom"] = 0
+    # Omission and zero mass agree only on the declared finite read alphabet;
+    # filtering zero entries must not conceal an unbound output label.
+    rehash(packet)
+    receipt = certify_source_derived_packet(packet)
+    assert receipt["status"] == "LOCAL_MARGINAL_MISMATCH"
+    json.dumps(receipt, allow_nan=False)
+
+
 def test_zero_first_presentation_preserves_the_actual_noise_decoder(original_packet):
     packet = copy.deepcopy(original_packet)
     channel = next(c for c in packet["global_checkpoint_kernels"]
