@@ -146,29 +146,54 @@ then
  =U_r\left(R_{s,r}^{-1}C_{{\rm src},r}R_{s,r}
            -u_r(s)C_{{\rm src},r}\right)U_r^*.
 \]
-Thus the source and physical operator residuals have equal norm.  If the finite
-covariances converge strongly with a uniform norm bound, the finite dilation maps
-and their inverses converge strongly, $u_r(s)\to u(s)$, and this residual tends to
-zero, then $D_s^{-1}C_\zeta D_s=u(s)C_\zeta$ in the continuum.
+Thus the source and physical operator residuals have equal norm. For a
+bounded-operator limit on a common Hilbert space, strong covariance convergence
+with a uniform norm bound, strong convergence of the dilation maps and their
+inverses, $u_r(s)\to u(s)$, and vanishing norm residual imply
+$D_s^{-1}C_\zeta D_s=u(s)C_\zeta$ in the continuum.
+This sufficient criterion does not cover a nonzero tilted power law on all
+$0<k<\infty$: unitary conjugation preserves the norm of a bounded operator,
+so $\|C_\zeta\|=|u(s)|\|C_\zeta\|$ would force $u(s)=1$ for positive $u(s)$
+and $C_\zeta\ne0$.
+
+For the global power-law branch, use instead a local limit receipt. After
+embedding on the common physical mode space, let $\mathcal D$ be the dense
+space of $L^2$ functions supported in compact $\ln k$ bands, and let $D_s$ be
+the exact physical dilation, preserving $\mathcal D$. Require
+$C_{\zeta,r}f\to C_\zeta f$ for every $f\in\mathcal D$ and
+\[
+ \bigl(D_s^{-1}C_{\zeta,r}D_s-u_r(s)C_{\zeta,r}\bigr)f\longrightarrow0
+ \qquad(f\in\mathcal D).
+\]
+If finite dilation maps are used to establish the latter condition, their
+replacement by $D_s$ must also have vanishing error on this core. The resulting
+identity holds on $\mathcal D$, with a possibly unbounded covariance operator;
+it does not assert a global uniform covariance norm bound.
 The commuting square states that source refinement followed by the physical
 embedding agrees with physical embedding followed by wavelength dilation, and
 it transfers the source covariance error exactly to the physical covariance.
 
 \textit{Proof.}
 Conjugate the source covariance by $U_r$ and use the commuting square; unitary
-invariance gives the residual identity.  For the limit, add and subtract the
-finite conjugated expression.  Strong convergence, uniform boundedness, scalar
-convergence, and the norm-residual hypothesis send the three resulting terms to
-zero.  \hfill$\square$
+invariance gives the finite residual identity. For the bounded limit, strong
+convergence and uniform boundedness allow passage through the products. For
+the local limit, both $f$ and $D_sf$ belong to $\mathcal D$, so pass to the
+limit in each of the two terms using the fixed bounded unitary $D_s^{-1}$.
+\hfill$\square$
 
 \textbf{Theorem (source-dilation uniqueness).}
 \label{thm:oph330-source-dilation-uniqueness}
+Let $\Delta_\zeta^2$ be a nonnegative measurable radial function, locally
+essentially bounded in $\ln k$, and nonzero on a set of positive measure.
 Let $C_\zeta=M_{\Delta_\zeta^2}$ on the common physical
-$L^2(d\ln k\,d\Omega_k)$ mode basis.  Define
+$L^2(d\ln k\,d\Omega_k)$ mode basis, with its natural multiplication-operator
+domain. The operator may be unbounded; the dilation identity below is required
+on the common compact-band core $\mathcal D$. Define
 \[
  (D_sf)(k,\hat k)=f(e^{-s}k,\hat k).
 \]
-If the source refinement packet proves
+If the source refinement packet proves, for all real $s,t$ and positive
+$u_q(s)$,
 \[
  D_s^{-1}C_\zeta D_s=u_q(s)C_\zeta,
  \qquad
@@ -187,13 +212,18 @@ For a continuous source representative and pivot $k_\star$,
 \]
 
 \textit{Proof.}
-Strong continuity solves the multiplicative Cauchy equation for $u_q$.
+The stated logarithmic derivative at zero gives continuity there and solves
+the positive multiplicative Cauchy equation for $u_q$.
 Conjugation of the multiplication operator gives
 $\Delta_\zeta^2(e^sk)=e^{-\theta s}\Delta_\zeta^2(k)$ almost everywhere for
 each $s$.  In logarithmic coordinates,
 $e^{\theta t}\Delta_\zeta^2(e^t)$ is invariant under all rational translations
 on one common full-measure set; bounded-transform convolution makes it constant
-almost everywhere.  Continuity upgrades the identity to every $k$.  \hfill$\square$
+almost everywhere. Nonnegativity and the nonzero premise make that constant
+strictly positive. Continuity upgrades the identity to every $k$.
+The compact-band functions form a core of the stated locally bounded
+multiplication operator, so the identity also identifies its natural domains.
+\hfill$\square$
 
 \textbf{Theorem (exact flat thin-shell lift).}
 \label{thm:oph330-exact-flat-thin-shell-lift}
@@ -255,6 +285,12 @@ For $0<\theta<2\ell$, define
  J_\ell(\theta)=I_\ell(\theta-2)
  -\left[\ell(\ell+1)-\frac{\theta(\theta+1)}2\right]I_\ell(\theta),
 \]
+or, equivalently by gamma recurrence,
+\[
+ J_\ell(\theta)=I_\ell(\theta)
+ \left[\frac{\ell(\ell+1)}{\theta}
+       +\frac{(\theta+1)(\theta-2)}4\right].
+\]
 \[
  \eta_{\ell,W}
  =\frac{2\sqrt{J_\ell(\theta)}}{\theta}
@@ -275,19 +311,33 @@ $\|\partial_rj_\ell(kr)\|_\theta=r^{\theta/2-1}\sqrt{J_\ell}$.
 The fundamental theorem of calculus, Minkowski, and
 $|\|f\|^2-\|g\|^2|\le\|f-g\|(\|f\|+\|g\|)$ give the bound.  \hfill$\square$
 
+The reference implementation evaluates this analytic bound in binary64; it
+does not provide an outward-rounded interval certificate. Near $\theta=0$ it
+uses the recurrence form of $J_\ell$ and evaluates the radius difference as
+$R_\star^{\theta/2}\operatorname{expm1}[(\theta/2)\ln(r/R_\star)]$.
+Direct subtraction of rounded powers can incorrectly return a zero bound for
+a nontrivial window. Numerical promotion requires a separate rounding-error
+budget in addition to the exact inequality.
+
 \textbf{Theorem (finite singular-value and prior continuation).}
 \label{thm:oph330-finite-prior-continuation}
 For a declared finite radial basis, write \(C=Ap\). If
 \(A\in\mathbb R^{N_\ell\times N_k}\) has rank \(r\), then
 \(\dim\ker A=N_k-r\), and every exact solution is
 \(p=p_{\rm part}+V_0a\) for a right-null basis \(V_0\). Given a prior center
-\(p_0\) and \(Q\succ0\), the unique minimizer of
+\(p_0\), \(Q\succ0\), and a feasible datum \(C\in\operatorname{Ran}A\),
+the unique minimizer over real vectors of
 \(\frac12(p-p_0)^{\mathsf T}Q(p-p_0)\) subject to \(Ap=C\) is
 \[
 \boxed{
 p_*=p_0+Q^{-1}A^{\mathsf T}
 (AQ^{-1}A^{\mathsf T})^+(C-Ap_0).}
 \]
+If $C\notin\operatorname{Ran}A$, no constrained minimizer exists; the displayed
+pseudoinverse expression instead leaves a nonzero constraint residual. Even
+when feasible, it need not give a nonnegative spectrum. Positivity therefore
+requires a separate check or a declared constrained optimization, whose
+solution is not in general the displayed expression.
 The run publishes the singular values, rank threshold, right-null basis,
 resolution operator, unresolved projector, positivity active set, and prior
 sensitivity. The output type is \textsc{ConditionalRadialContinuation}.

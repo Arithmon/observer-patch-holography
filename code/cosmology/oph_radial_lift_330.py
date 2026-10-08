@@ -48,7 +48,7 @@ class PrimordialAmplitude:
 
 @dataclass(frozen=True)
 class WindowBound:
-    """Certified finite-window deviation from the source shell."""
+    """Floating-point evaluation of the analytic finite-window bound."""
 
     ell: int
     theta: float
@@ -155,13 +155,13 @@ def derivative_mellin_norm(ell: int, theta: float) -> float:
     theta = _finite(theta, "theta")
     if not (0.0 < theta < 2.0 * ell):
         raise RadialLiftInputError("derivative Mellin norm requires 0 < theta < 2*ell")
-    value = mellin_spherical_bessel_square(ell, theta - 2.0) - (
-        ell * (ell + 1.0) - 0.5 * theta * (theta + 1.0)
-    ) * mellin_spherical_bessel_square(ell, theta)
-    # Roundoff can only produce a tiny negative number near a boundary.
-    if value < 0.0 and abs(value) < 1e-13:
-        value = 0.0
-    if not (math.isfinite(value) and value >= 0.0):
+    # Gamma recurrence reduces the difference to one positive norm times a
+    # rational factor.  Computing I(theta - 2) first rounds theta - 2 to -2
+    # for small positive theta and needlessly loses the domain endpoint.
+    value = mellin_spherical_bessel_square(ell, theta) * (
+        ell * (ell + 1.0) / theta + (theta + 1.0) * (theta - 2.0) / 4.0
+    )
+    if not (math.isfinite(value) and value > 0.0):
         raise RadialLiftInputError("derived derivative norm is negative or nonfinite")
     return value
 
@@ -313,10 +313,11 @@ def normalized_radial_window(radii: ArrayLike, weights: ArrayLike) -> tuple[NDAr
         raise RadialLiftInputError("all radii must be positive and finite")
     if np.any(~np.isfinite(w)) or np.any(w < 0.0):
         raise RadialLiftInputError("window weights must be finite and nonnegative")
-    total = float(np.sum(w))
-    if total <= 0.0:
+    largest = float(np.max(w))
+    if largest <= 0.0:
         raise RadialLiftInputError("window weights must have positive total")
-    return r, w / total
+    scaled = w / largest
+    return r, scaled / float(np.sum(scaled))
 
 
 def window_transfer(
@@ -380,7 +381,7 @@ def finite_window_stability_bound(
     radii: ArrayLike,
     radial_weights: ArrayLike,
 ) -> WindowBound:
-    r"""Certify the finite-window deviation from a thin shell.
+    r"""Evaluate the analytic finite-window deviation bound for a thin shell.
 
     In the Hilbert space with norm
 
@@ -398,7 +399,9 @@ def finite_window_stability_bound(
 
     and then bounds the difference of squared norms.  This retains the Bessel
     ultraviolet decay and is integrable; it replaces the unsafe pointwise Taylor
-    bound that can lose that decay after a supremum is taken.
+    bound that can lose that decay after a supremum is taken. The returned
+    binary64 values are numerical evaluations, not outward-rounded interval
+    certificates; callers must account separately for numerical error.
     """
 
     ell = _integer_at_least(ell, 1, "ell")
@@ -413,12 +416,25 @@ def finite_window_stability_bound(
     I = mellin_spherical_bessel_square(ell, theta)
     J = derivative_mellin_norm(ell, theta)
     a = 0.5 * theta
-    eta = (2.0 * math.sqrt(J) / theta) * float(np.dot(w, np.abs(r**a - R_star**a)))
-    shell_norm = R_star**a * math.sqrt(I)
+    # Subtracting nearly equal powers can produce an exactly zero claimed
+    # bound for a nontrivial window.  Retain the radius displacement through
+    # log1p/expm1, including the near-scale-invariant theta -> 0+ limit.
+    with np.errstate(over="ignore", invalid="ignore"):
+        displacement = (r - R_star) / R_star
+    near = np.abs(displacement) < 0.5
+    log_ratio = np.empty_like(r)
+    log_ratio[near] = np.log1p(displacement[near])
+    log_ratio[~near] = np.log(r[~near]) - math.log(R_star)
+    reference_power = R_star**a
+    power_difference = reference_power * np.abs(np.expm1(a * log_ratio))
+    eta = (2.0 * math.sqrt(J) / theta) * float(np.dot(w, power_difference))
+    shell_norm = reference_power * math.sqrt(I)
     prefactor = 4.0 * math.pi * Z_q**2 * A_zeta * k_pivot**theta
     abs_bound = prefactor * eta * (2.0 * shell_norm + eta)
     shell_cl = prefactor * shell_norm**2
     rel_bound = abs_bound / shell_cl
+    if not all(math.isfinite(x) for x in (eta, shell_norm, abs_bound, rel_bound)):
+        raise RadialLiftInputError("window bound exceeds the floating-point range")
     return WindowBound(
         ell=ell,
         theta=theta,
