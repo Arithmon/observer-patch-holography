@@ -12,7 +12,7 @@
     }
   ],
   "native_custody_checker_sha256": "1e0e9c3623abe9949aef2e32bae454d0f591f0a701e1218096bfbe95c8c5f8df",
-  "receipt_sha256": "eb19060cc0abbdcf9b33ed4c99306f36dc40bf5f3848571643d52ae37e3c972d",
+  "receipt_sha256": "b4221237cf63386b16c922d6e2d997bc1d5b92070c2bc4c9b285080d648e12ea",
   "scope": "Exact finite load moments and replayed fixed supplied geometry; no geometric source identification.",
   "status": "PASS",
   "trace_controls": [
@@ -41,5 +41,5 @@
       "swaps": 1
     }
   ],
-  "verifier_sha256": "aebed81570ead446fea69b3873c929e7ed832bff3aff71db2911a828d1e95353"
+  "verifier_sha256": "bf4f200ab16f2203cd539f2d91e194d25713031370393c396f532d7acdb117f9"
 }

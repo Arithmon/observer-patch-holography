@@ -8,11 +8,15 @@ assembly or the independent receipt verifier.
 from __future__ import annotations
 
 import ast
+import copy
 from fractions import Fraction as F
 import importlib.util
 import itertools
 import json
 from pathlib import Path
+import subprocess
+import sys
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -22,6 +26,9 @@ HERE = Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location("exact_moment_producer", HERE / "build.py")
 producer = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(producer)
+verify_spec = importlib.util.spec_from_file_location("exact_moment_verifier", HERE / "verify.py")
+verifier = importlib.util.module_from_spec(verify_spec)
+verify_spec.loader.exec_module(verifier)
 
 
 @pytest.fixture(scope="module")
@@ -212,3 +219,169 @@ def test_centering_preserves_original_mixed_integer_values():
     values = np.array([[2**60 + 1], [np.int64(2**60)]], dtype=object)
     np.testing.assert_array_equal(producer.centered_cov(values, values),
                                   np.array([[F(1, 4)]], dtype=object))
+
+
+@pytest.mark.parametrize("raised", range(1, 12))
+def test_mismatch_projection_has_independent_occupancy_factor(carrier, edges, raised):
+    row = producer.finite_control(raised, carrier, [1])
+    # Cov(n_a*n_b,z)/kappa = (r-1)/10*(e_a+e_b-2*1/12).
+    # Thus projecting sum_j(n_i+n_j-2*n_i*n_j) multiplies H*Pi by (6-r)/5.
+    h = 5 * np.eye(12, dtype=object)
+    for a, b in edges:
+        h[a, b] += 1
+        h[b, a] += 1
+    projection = F(6 - raised, 5) * h @ (
+        np.eye(12, dtype=object) - np.ones((12, 12), dtype=object) / F(12)
+    )
+    readout = row["readouts"]["local_mismatch"]
+    np.testing.assert_array_equal(exact(readout["density_projection_B"]), projection)
+    assert [F(value) for value in readout["mean"]] == [F(5 * raised * (12 - raised), 66)] * 12
+    if raised == 6:
+        assert readout["residual_covariance"] == readout["instant_covariance"]
+
+
+def test_cross_covariance_respects_large_origins_and_integer_coordinate_maps():
+    x = np.array([[0, 3], [7, -2], [-1, 6]], dtype=object)
+    y = np.array([[2], [-3], [5]], dtype=object)
+    # Pairwise differences are an independent centering formula.
+    expected = sum((np.outer(x[i] - x[j], y[i] - y[j])
+                    for i in range(3) for j in range(3)),
+                   np.zeros((2, 1), dtype=object)) / F(18)
+    transform = np.array([[1, 2], [-3, 1]], dtype=object)
+    x = (x @ transform) * 2**70 + np.array([2**120 + 1, -2**130], dtype=object)
+    y = -2**65 * y + 2**150
+    np.testing.assert_array_equal(producer.centered_cov(x, y),
+                                  -(2**135) * transform.T @ expected)
+
+
+@pytest.mark.parametrize("bad", [True, np.bool_(False), 1.0, 0.5, F(1, 2),
+                                 float("nan"), float("inf"), None])
+def test_original_noninteger_scalars_are_rejected(bad):
+    values = [[2**60 + 1], [bad]]
+    with pytest.raises(ValueError):
+        producer.centered_cov(values, [[1], [2]])
+    with pytest.raises(ValueError):
+        producer.matrix(values)
+
+
+def test_masked_and_malformed_populations_are_rejected():
+    masked = np.ma.array([[1], [2]], mask=[[False], [True]])
+    for values in (masked, np.array([1, 2]), np.zeros((0, 1), dtype=int)):
+        with pytest.raises(ValueError):
+            producer.centered_cov(values, values)
+    with pytest.raises(ValueError):
+        producer.centered_cov([[1], [2]], [[1]])
+    with pytest.raises(ValueError):
+        producer.matrix(masked)
+
+
+@pytest.mark.parametrize("denominator", [True, 0, -1, 2.0, F(1, 2)])
+def test_fraction_matrix_never_truncates_its_denominator(denominator):
+    with pytest.raises(ValueError):
+        producer.matrix([[3]], denominator)
+
+
+@pytest.mark.parametrize("raised", [True, 6.0, np.int64(6), -1, 0, 12])
+def test_finite_occupancy_requires_a_supported_exact_json_integer(carrier, edges, raised):
+    with pytest.raises(ValueError):
+        producer.finite_control(raised, carrier, [1])
+    with pytest.raises(ValueError):
+        verifier.check_finite({"raised": raised}, edges, carrier.antipode(), [1])
+
+
+@pytest.mark.parametrize("windows", [[], [0], [-1], [1, 1], [True], [1.0],
+                                    [np.int64(1)], range(1, 3), [[1]]])
+def test_record_windows_reject_changed_numeric_meanings(carrier, edges, windows):
+    with pytest.raises(ValueError):
+        producer.finite_control(6, carrier, windows)
+    with pytest.raises(ValueError):
+        verifier.check_finite({"raised": 6}, edges, carrier.antipode(), windows)
+
+
+def test_compressed_dynamics_reject_an_incompatible_native_primitive(carrier):
+    original = dict(seams=carrier.seams, laplacian=carrier.laplacian,
+                    antipode=carrier.antipode,
+                    integer_nearest_agreement=carrier.integer_nearest_agreement)
+    changed_repair = SimpleNamespace(**{**original, "integer_nearest_agreement":
+                                       lambda a, b, **kwargs: (a, b)})
+    with pytest.raises(ValueError, match="repair"):
+        producer.finite_control(6, changed_repair, [1])
+    changed_laplacian = SimpleNamespace(**{**original, "laplacian":
+                                          lambda: np.zeros((12, 12), dtype=int)})
+    with pytest.raises(ValueError, match="Laplacian"):
+        producer.finite_control(6, changed_laplacian, [1])
+
+
+@pytest.fixture(scope="module")
+def extended_row(carrier):
+    return producer.finite_control(2, carrier, [1, 5, 10])
+
+
+@pytest.mark.parametrize("raised", range(1, 12))
+def test_long_windows_pass_independent_replay_after_json_roundtrip(carrier, edges, extended_row, raised):
+    row = extended_row if raised == 2 else producer.finite_control(raised, carrier, [1, 5, 10])
+    restored = json.loads(json.dumps(row, allow_nan=False))
+    checked = verifier.check_finite(restored, edges, carrier.antipode(), [1, 5, 10])
+    assert checked["raised"] == row["raised"]
+    assert checked["configurations"] == row["configurations"]
+
+
+@pytest.mark.parametrize("kind", ["late_lag", "late_window", "projection", "missing_lag"])
+def test_independent_long_window_replay_rejects_false_moments(carrier, edges, extended_row, kind):
+    row = copy.deepcopy(extended_row)
+    readout = row["readouts"]["local_mismatch"]
+    if kind == "late_lag":
+        readout["lag_covariance"][18][0][3] = "0"
+    elif kind == "late_window":
+        readout["two_attempts_per_record_covariance"]["10"][0][0] = "0"
+    elif kind == "projection":
+        readout["density_projection_B"][0][0] = "0"
+    else:
+        readout["lag_covariance"].pop()
+    with pytest.raises(ValueError):
+        verifier.check_finite(row, edges, carrier.antipode(), [1, 5, 10])
+
+
+def test_detached_verifier_replays_and_rejects_without_the_producer(tmp_path, carrier, extended_row):
+    detached = tmp_path / "code/native_geometric_source/verify.py"
+    detached.parent.mkdir(parents=True)
+    detached.write_bytes((HERE / "verify.py").read_bytes())
+    incidence = producer.VENDOR / "oph_fpe/dynamics/self_readback_repair_closure.py"
+    copied_incidence = tmp_path / incidence.relative_to(producer.RER)
+    copied_incidence.parent.mkdir(parents=True)
+    copied_incidence.write_bytes(incidence.read_bytes())
+    (tmp_path / "input.json").write_text(json.dumps({
+        "row": extended_row, "antipodes": list(carrier.antipode()), "windows": [1, 5, 10]
+    }, allow_nan=False), encoding="utf-8")
+    runner = tmp_path / "replay.py"
+    runner.write_text('''from copy import deepcopy
+import importlib.util
+import json
+from pathlib import Path
+root = Path(__file__).parent
+assert not (root / "code/native_geometric_source/build.py").exists()
+spec = importlib.util.spec_from_file_location("detached", root / "code/native_geometric_source/verify.py")
+v = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(v)
+packet = json.loads((root / "input.json").read_text())
+edges = v.source_edges()
+def check(row):
+    return v.check_finite(row, edges, packet["antipodes"], packet["windows"])
+good = check(packet["row"])
+rejected = []
+for kind in ("lag18", "projection", "clock", "census"):
+    row = deepcopy(packet["row"])
+    drive = row["readouts"]["local_drive"]
+    if kind == "lag18": drive["lag_covariance"][18][0][0] = "0"
+    elif kind == "projection": row["readouts"]["local_mismatch"]["density_projection_B"][0][0] = "0"
+    elif kind == "clock": drive["two_attempts_per_record_covariance"]["10"] = drive["record_average_covariance"]["10"]
+    else: drive["lag_covariance"].pop()
+    try: check(row)
+    except ValueError: rejected.append(kind)
+print(json.dumps({"accepted_occupancy": good["raised"], "rejected": rejected}))
+''', encoding="utf-8")
+    result = subprocess.run([sys.executable, "-E", "-P", "-W", "error", str(runner)],
+                            cwd=tmp_path, capture_output=True, text=True, timeout=30)
+    assert result.returncode == 0, result.stderr
+    assert json.loads(result.stdout) == {"accepted_occupancy": 2,
+                                        "rejected": ["lag18", "projection", "clock", "census"]}
