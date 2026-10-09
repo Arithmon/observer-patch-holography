@@ -58,7 +58,7 @@ def test_hostile_kinetic_mutation(): rejected(lambda d:d["oph_contract"]["kineti
 def test_hostile_ng_nh_mutation(): rejected(lambda d:d["oph_contract"].update(nG=2))
 def test_hostile_mssm_beta_substitution(): rejected(lambda d:d["oph_contract"].update(beta_column=["33/5","1","-3"]))
 def test_hostile_btest_branch_promotion(): rejected(lambda d:d["controls"]["b_test_branch_mismatch_probe"].update(eligible_for_framework_cross_verdict=True))
-def test_hostile_public_measurement_input(): rejected(lambda d:d["trust_boundary"].update(public_measurement_read=True))
+def test_hostile_public_measurement_input(): rejected(lambda d:d["trust_boundary"].update(public_measurement_consumed_as_cross_input=True))
 def test_hostile_sealed_column_read(): rejected(lambda d:d["trust_boundary"].update(oph_sealed_comparison_opened=True))
 def test_hostile_mixed_verdict_promotion(): rejected(lambda d:d.update(primary_verdict="K7_GAUGE_VECTOR_EXACTLY_OFF_OPH_MATTER_TRACE_RG_PLANE"))
 def test_hostile_exact_near_zero_claim(): rejected(lambda d:d["controls"]["mixed_scale_probe"]["exact_D"].update(rational_part="0",sqrt2_part="0"))

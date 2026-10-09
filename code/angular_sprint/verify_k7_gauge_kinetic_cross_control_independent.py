@@ -6,7 +6,7 @@ from fractions import Fraction as F
 from pathlib import Path
 
 SCHEMA="arithmon.oph.k7_gauge_kinetic_cross.v1"
-OPH="7521d5c3a829ceebb0f86df1c34c70de7a52cb25"
+OPH="b8714c986a76ef3b83df88d64d94e67b6e4d8944"
 K7="210480b2ba8a13c98e6a6f146fbfd965e4904c00"
 K7L="2553ed170d04db8777f84fb2f9ef2b66b386f7fb"
 EXPECTED=[
@@ -66,6 +66,8 @@ def validate(doc, root):
  require(bt["same_object_contract"] is False and bt["scheme"]=="UNKNOWN","B-test scheme/contract was promoted")
  rg=candidates["rge_bundle"]
  require(rg["found"] is True and rg["classification"]=="CONDITIONAL_NUMERICAL_RGE_OUTPUT__NO_EXACT_SOURCE_CLEAN_REPRODUCER","paper RGE candidate omitted/mistyped")
+ require(rg["evidence_scope"]==["vendored K7 publications/ERRATUM_v3.5.md","vendored K7 publications/papers/markdown/k7_framework_3_5_main.md","vendored K7 docs/openwave-candidate/honest_ledger.md","vendored K7-Lean GIFT/Relations/GaugeSector.lean"],"RGE evidence scope broadened beyond pinned surfaces")
+ require("pinned K7 source surfaces consumed by this packet" in rg["record"] and rg["reproducible_artifact"]=="NOT ESTABLISHED BY PINNED SOURCE SURFACES","unsupported repository-wide absence claim")
  require(rg["displayed_outputs"]["alpha_em_inverse_MZ"]=="131.19" and rg["displayed_outputs"]["sin2_theta_W_MZ"]=="0.2377" and rg["displayed_outputs"]["alpha_s_split_spectrum"]=="0.1224","paper RGE outputs drift")
  require(rg["scale"]=="M_Z per §5.3 output table" and rg["same_object_contract"] is False and rg["exact_vector"].startswith("NOT AVAILABLE"),"RGE output promoted to an exact OPH vector")
 
@@ -102,10 +104,11 @@ def validate(doc, root):
  require((only_x,only_k,only_b)==(F(5106,5),F(-644),F(-1886,5)),"hostile partial-row arithmetic changed")
  require(tuple(map(F,(partials["x_only"],partials["k_only"],partials["b_only"])))==(only_x,only_k,only_b) and all(v!=0 for v in (only_x,only_k,only_b)),"partial row conversion incorrectly preserves zero")
  require(doc["comparison"]["same_object_contract"] is False and doc["comparison"]["admissible_candidate"] is None,"no-admissible-vector gate changed")
- require(doc["primary_verdict"]=="NO_ADMISSIBLE_K7_GAUGE_VECTOR_FOR_OPH_MATTER_TRACE_X_AT_CURRENT_PINS","primary verdict drift")
+ require(doc["primary_verdict"]=="NO_ADMISSIBLE_K7_GAUGE_VECTOR_ESTABLISHED_BY_PINNED_SOURCES","primary verdict drift")
  trust=doc["trust_boundary"]
- for field in ("public_measurement_read","oph_sealed_comparison_opened","k7_modified","oph_matter_branch_selected","physical_cross_framework_identity_claimed"):
+ for field in ("public_measurement_consumed_as_cross_input","public_measurement_values_parsed_by_cross_control","oph_sealed_comparison_opened","k7_modified","oph_matter_branch_selected","physical_cross_framework_identity_claimed"):
   require(trust[field] is False,f"trust boundary violated: {field}")
+ require(trust["vendored_main_paper_contains_measurement_comparison_text"] is True,"measurement-text disclosure missing")
  require(trust["off_plane_does_not_falsify_oph_globally"] is True and trust["oph_port_response_identified_with_k7"] is False and trust["matter_trace_physically_selected"] is False,"OPH branch firewall missing")
  return True
 

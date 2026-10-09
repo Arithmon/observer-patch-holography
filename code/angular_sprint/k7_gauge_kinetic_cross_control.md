@@ -1,10 +1,10 @@
 # K7 / OPH gauge kinetic cross-control
 
-**Frozen baseline:** OPH `7521d5c3a829ceebb0f86df1c34c70de7a52cb25`; K7 `210480b2ba8a13c98e6a6f146fbfd965e4904c00`; K7-Lean `2553ed170d04db8777f84fb2f9ef2b66b386f7fb`.
+**Frozen baseline after rebase:** OPH `b8714c986a76ef3b83df88d64d94e67b6e4d8944`; K7 `210480b2ba8a13c98e6a6f146fbfd965e4904c00`; K7-Lean `2553ed170d04db8777f84fb2f9ef2b66b386f7fb`. All four frozen OPH scientific source blobs remain unchanged from preregistration.
 
 ## Result
 
-`NO_ADMISSIBLE_K7_GAUGE_VECTOR_FOR_OPH_MATTER_TRACE_X_AT_CURRENT_PINS`.
+`NO_ADMISSIBLE_K7_GAUGE_VECTOR_ESTABLISHED_BY_PINNED_SOURCES`.
 
 The frozen OPH matter-trace statistic is reconstructed from `k=(10/3,2,2)` and the declared `(nG,nH)=(3,1)` beta column `b=(41/6,-19/6,-7)`. Direct cofactor expansion gives `det(x,k,b)=(-23/3)x1+37x2-(218/9)x3`, with integer zero locus `69x1-333x2+218x3=0`. The vector role is `(alpha_Y^-1, alpha_2^-1, alpha_3^-1)` in the declared hypercharge normalization. OPH's physical kinetic-form selector remains open.
 
@@ -12,9 +12,9 @@ The frozen OPH matter-trace statistic is reconstructed from `k=(10/3,2,2)` and t
 |---|---|---|
 | Type-I alpha relation plus weak angle and strong coupling | `267489/1952` is explicitly `alpha_em^-1(0)` in the pinned erratum; `sin²(theta_W)=3/13` and `alpha_s=sqrt(2)/12` have MZ comparison/interpretation in the paper. | Fails: mixed scale; scheme/threshold bridge unknown. The constructed vector is a negative control only. |
 | B-test / holonomy ray | GUT-normalized ratio `14:7:2`; exact normalization gives GUT ray `(42,21,6)sqrt(2)` and coherent Y ray `(70,21,6)sqrt(2)`. The pinned paper conflicts internally: the theorem display labels `91 sqrt(2)` at `M_Z`, while its proof note and holonomy-sequence discussion call it the GUT/M_GUT exact scale. | Fails: scale conflict, MSSM branch, conditional boundary role, and unresolved scheme/threshold contract differ from frozen OPH SM one-loop plane. |
-| Type-III RGE | The pinned paper publishes a common-`M_Z` numerical output row: `sin²θ_W=0.2377`, `alpha_em^-1=131.19`, and `alpha_s=0.1224` for split spectrum (`0.1038` for all-MSSM). It describes two-loop MSSM running from `alpha_GUT^-1=25.3`, `sin²θ_W=3/13` at `M_GUT`, with `tan(beta)=2`, MSSM above 3165 GeV and SM plus gauginos below. The exact vector and committed reproducer are absent; experimental-input status of the numerical run is UNKNOWN. | Fails: rounded numerical output, two-loop MSSM/split-spectrum branch, and incomplete source-clean run provenance. No exact determinant verdict is computed. |
+| Type-III RGE | The pinned paper publishes a common-`M_Z` numerical output row: `sin²θ_W=0.2377`, `alpha_em^-1=131.19`, and `alpha_s=0.1224` for split spectrum (`0.1038` for all-MSSM). It describes two-loop MSSM running from `alpha_GUT^-1=25.3`, `sin²θ_W=3/13` at `M_GUT`, with `tan(beta)=2`, MSSM above 3165 GeV and SM plus gauginos below. The exact vector and reproducer are not established by the four frozen source surfaces consumed here; experimental-input status is UNKNOWN. | Fails: rounded numerical output, two-loop MSSM/split-spectrum branch, and incomplete source-clean run provenance. No exact determinant verdict is computed. |
 
-No candidate closes the observable, common scale, compatible scheme, U(1) convention, field content, beta branch, running direction/boundary role, and source-clean derivation checks. The Type-III table gives a numerical common-scale output candidate, but it is conditional and rounded; it does not close the exact common-object gate. The exact controls therefore do not receive a physical cross-framework interpretation.
+No candidate is established by the frozen source surfaces consumed here as closing the observable, common scale, compatible scheme, U(1) convention, field content, beta branch, running direction/boundary role, and source-clean derivation checks. The Type-III table gives a numerical common-scale output candidate, but it is conditional and rounded; it does not close the exact common-object gate. This verdict is scoped to the vendored K7 erratum, main paper, honest ledger, and K7-Lean gauge-sector file; it is not a claim that no other K7 repository artifact could supply a bridge.
 
 ## Exact controls
 
@@ -33,7 +33,7 @@ The producer and independent verifier use exact rational arithmetic and a canoni
 
 Four minimal pinned K7/K7-Lean source files are vendored under `external/k7_gauge/`. The receipt carries repository, commit, path, Git blob, SHA-256, and byte count. The independent verifier recomputes all hashes and rejects altered source bytes or metadata. CI is offline.
 
-No public measurement or sealed OPH comparison column was read. The K7 historical/conditional epistemic labels are retained. The OPH matter-trace branch is not physically selected, the port-response branch is not identified with K7, and even a future valid off-plane result would not falsify OPH globally.
+The vendored main paper contains experimental-comparison text, but no public measurement value is parsed or consumed as a cross-control input; the sealed OPH comparison column remains unopened. The K7 historical/conditional epistemic labels are retained. The OPH matter-trace branch is not physically selected, the port-response branch is not identified with K7, and even a future valid off-plane result would not falsify OPH globally.
 
 Reopen only when a pinned K7 artifact supplies a reproducible common-scale inverse-coupling triple with explicit scheme, normalization, field content and boundary role compatible with the frozen OPH branch, or OPH derives a branch matching a frozen K7 vector.
 
