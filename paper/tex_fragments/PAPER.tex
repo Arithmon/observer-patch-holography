@@ -6217,10 +6217,19 @@ Across the four displayed weak-field samples, the measured ratio moves toward
 the golden ratio squared and the deviation decreases monotonically as h
 decreases. No limit proof, asymptotic error bound, or interval enclosure is
 provided, so these points do not establish convergence as
-h \ensuremath{\to} 0. (The table reports the direct link-basis run,
-reproducible with the held-out validation script in the public edge-sector
-code; a dual/flux-basis parameterization carries a tabulated parameter that
-runs opposite to the h of the displayed Hamiltonian and is not used.) The test
+h \ensuremath{\to} 0. The retained link-basis values are also reproduced by
+the public script's symmetry-reduced electric calculation, with the same
+displayed coupling \(h\). For \(h>0\), the unique strictly positive
+link-basis ground vector is fixed by the commuting star and noncontractible
+electric-cut permutations. Its electric fields therefore have zero
+divergence and winding: they are plaquette boundaries, parametrized by four
+potentials modulo one common constant. This gives \(n^3\) states instead of
+\(n^8\), including 125 instead of 390,625 for Z\textsubscript{5}, and the
+charge probabilities are positive sums of squared amplitudes. The reduction
+does not reverse or refit the electric coupling; original-link and separate
+electric-incidence controls check it. Its numerical solve is subject to
+explicit precision refusals, and at \(h=0\) the full model has degenerate
+topological ground sectors. The test
 is overconstrained at each sampled point: Z\textsubscript{5} has two distinct
 nonzero eigenvalues, t is fitted on the q = 1 sector alone, the q = 2 weight is
 a held-out comparison, and the deviation column reports that residual. Its
@@ -6232,8 +6241,10 @@ law (sector probabilities weighted by Laplacian eigenvalues) on the declared
 2D gauge-invariant fixtures with non-flat sector distributions. Because the
 nontrivial Z\textsubscript{3} eigenvalues are degenerate, the
 Z\textsubscript{5} test (and the S\textsubscript{3} test below) is the more
-informative overconstrained comparison. Neither calculation proves a weak-field
-limit, validates the law generally, or transfers it to SU(2)/SU(3).
+informative overconstrained comparison. The Z\textsubscript{5} samples do not prove
+a weak-field limit. The S\textsubscript{3} identity below establishes a
+large-electric-coupling asymptotic only for its declared one-plaquette model;
+neither calculation validates the law generally or transfers it to SU(2)/SU(3).
 
 \textbf{Results for S\textsubscript{3} (first nonabelian test).} The abelian tests above use charge-sector projectors that reduce to Fourier modes. For nonabelian groups, the edge-sector projector must be generalized to character projectors:
 
@@ -6252,32 +6263,89 @@ For S\textsubscript{3} (the smallest nonabelian group, order 6), there are three
 
 \textbf{Exact reduction on one plaquette.} For the single-plaquette model (4 links), imposing Gauss\textquotesingle s law at all vertices means the physical wavefunction depends only on the plaquette holonomy\textquotesingle s conjugacy class. Since S\textsubscript{3} has exactly 3 conjugacy classes, the gauge-invariant Hilbert space is 3-dimensional, spanned by the character states \{\textbar \ensuremath{\chi}\_R\ensuremath{\rangle}\}. In this basis, the edge-sector probabilities are exactly p\_R = \textbar c\_R\textbar\textsuperscript{2} where \textbar \ensuremath{\psi}\textsubscript{0}\ensuremath{\rangle} = \ensuremath{\Sigma}\_R c\_R \textbar \ensuremath{\chi}\_R\ensuremath{\rangle}. This is an exact identity for the one-plaquette gauge-invariant sector.
 
-The heat-kernel ansatz predicts p\_R \ensuremath{\propto} d\_R exp(-t \ensuremath{\lambda}\_R). Extracting t independently from the sign and standard irreps provides an overconstrained test: the ratio \ensuremath{\lambda}\_sign/\ensuremath{\lambda}\_std = 6/3 = 2 is a parameter-free prediction. Results from a single-plaquette S\textsubscript{3} lattice gauge model (K=1, \ensuremath{\Gamma}=5):
+The heat-kernel ansatz predicts p\_R \ensuremath{\propto} d\_R exp(-t \ensuremath{\lambda}\_R). Extracting t independently from the sign and standard irreps provides an overconstrained test: the ratio \ensuremath{\lambda}\_sign/\ensuremath{\lambda}\_std = 6/3 = 2 is a parameter-free prediction. With \(K=1\) and four electric links, the declared reduced Hamiltonian is
+\[
+H(h)=\begin{pmatrix}
+0&0&-1\\
+0&24h&-1\\
+-1&-1&12h-1
+\end{pmatrix},\qquad h\geq0.
+\]
+The Gauss penalty with \(\Gamma=5\) contributes only a common energy shift
+on this physical subspace. The following values are recomputed from this
+matrix; the earlier table did not reproduce the declared Hamiltonian.
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}>{\raggedleft\arraybackslash}p{0.112\textwidth}>{\raggedleft\arraybackslash}p{0.112\textwidth}>{\raggedleft\arraybackslash}p{0.112\textwidth}>{\raggedleft\arraybackslash}p{0.112\textwidth}>{\raggedleft\arraybackslash}p{0.112\textwidth}>{\raggedleft\arraybackslash}p{0.112\textwidth}>{\raggedleft\arraybackslash}p{0.112\textwidth}>{\raggedleft\arraybackslash}p{0.112\textwidth}@{}}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}[]{@{}rrrrrrrr@{}}
 \toprule\noalign{}
 h & p\_triv & p\_sign & p\_std & t (sign) & t (std) & \ensuremath{\Delta}t/t & log-ratio \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-0.5 & 0.909 & 0.0013 & 0.089 & 1.09 & 1.01 & 8.4\% & 2.17 \\
-1.0 & 0.980 & 7.5\ensuremath{\times}10\textsuperscript{-}\textsuperscript{5} & 0.020 & 1.58 & 1.54 & 2.8\% & 2.06 \\
-2.0 & 0.996 & 4.3\ensuremath{\times}10\textsuperscript{-}\textsuperscript{6} & 0.004 & 2.06 & 2.04 & 1.0\% & 2.02 \\
-5.0 & 0.9993 & 1.0\ensuremath{\times}10\textsuperscript{-}\textsuperscript{7} & 0.00066 & 2.68 & 2.67 & 0.3\% & 2.006 \\
-12 & 0.9999 & 3.0\ensuremath{\times}10\textsuperscript{-}\textsuperscript{9} & 0.00011 & 3.27 & 3.27 & 0.1\% & 2.002 \\
-100 & 1.0000 & 6.1\ensuremath{\times}10\textsuperscript{-}\textsuperscript{1}\textsuperscript{3} & 2.0\ensuremath{\times}10\textsuperscript{-}\textsuperscript{6} & 4.69 & 4.69 & 0.009\% & 2.0002 \\
+0.5 & 0.962927 & \(2.476\!\times\!10^{-4}\) & 0.036825 & 1.37766 & 1.31898 & 4.3518\% & 2.088972 \\
+1.0 & 0.991861 & \(1.400\!\times\!10^{-5}\) & 0.008125 & 1.86139 & 1.83261 & 1.5580\% & 2.031406 \\
+2.0 & 0.998116 & \(8.158\!\times\!10^{-7}\) & 0.001883 & 2.33619 & 2.32203 & 0.6080\% & 2.012197 \\
+5.0 & 0.999713 & \(1.993\!\times\!10^{-8}\) & \(2.871\!\times\!10^{-4}\) & 2.95511 & 2.94950 & 0.1897\% & 2.003798 \\
+12 & 0.999951 & \(5.895\!\times\!10^{-10}\) & \(4.890\!\times\!10^{-5}\) & 3.54195 & 3.53963 & 0.0656\% & 2.001312 \\
+100 & 0.999999 & \(1.208\!\times\!10^{-13}\) & \(6.956\!\times\!10^{-7}\) & 4.95749 & 4.95721 & 0.0056\% & 2.000112 \\
 \end{longtable}
 }
 
 The "\ensuremath{\Delta}t/t" column shows the fractional difference (t\_sign - t\_std) / \={t}. The "log-ratio" column shows log(p\_sign/p\textsubscript{0}) / log(p\_std/(2 p\textsubscript{0})), which should equal \ensuremath{\lambda}\_sign/\ensuremath{\lambda}\_std = 2 if the heat-kernel form holds exactly. Equivalently, t is fitted from the standard sector alone and the sign-sector weight is a held-out prediction; log-ratio minus 2 and \ensuremath{\Delta}t/t are the held-out residuals. Unlike Z\textsubscript{3}, the two nonzero eigenvalues are distinct (6 versus 3), so no symmetry forces this agreement.
 
-Across the six displayed samples, both residuals decrease as h increases:
-\ensuremath{\Delta}t/t falls below 10\textsuperscript{-}\textsuperscript{4} and the
-log-ratio moves toward 2.000. No limiting theorem, monotonicity proof,
-finite-size error bound, or interval enclosure is supplied, so this finite
-trend does not establish convergence or exactness in a perturbative limit.
+\textbf{Exact finite mismatch and its model-specific asymptotic.}
+Write the ground energy as \(-x\), where \(x>0\). Its first two eigenvector
+equations give relative amplitudes \((1,x/(24h+x),x)\); the last gives
+\[
+F(x,h):=x+12h-1-\frac1x-\frac1{24h+x}=0.
+\]
+For each \(h\geq0\), \(F\) increases strictly from \(-\infty\) to
+\(+\infty\) as \(x\) runs from zero to infinity. Its unique positive root
+has a strictly positive eigenvector, which selects the ground state of this
+irreducible matrix with nonpositive off-diagonal entries. The root decreases
+from \(x(0)=2\) to zero. Put \(z=x+12h\) and \(y=x(x+24h)\).
+Multiplying the secular equation by \(x(x+24h)\) gives
+\((z-1)y=2z\), hence
+\[
+\frac{p_{\rm sign}}{p_{\rm sign}^{\rm pred}}
+=\frac{4}{y^2}=\left(\frac{z-1}{z}\right)^2<1,
+\qquad
+\log\frac{p_{\rm sign}}{p_{\rm sign}^{\rm pred}}
+=-2\log\left(1+\frac1{z-1}\right),
+\quad
+p_{\rm sign}^{\rm pred}=\frac{p_{\rm std}^2}{4p_{\rm triv}}.
+\]
+Thus the standard-sector fit overpredicts the sign-sector weight at every
+finite \(h\), even though the discrepancy becomes small. With \(a=12h\),
+implicit differentiation gives
+\[
+\frac{dz}{da}
+=\frac{x^{-2}-(2a+x)^{-2}}{1+x^{-2}+(2a+x)^{-2}}>0\quad(a>0).
+\]
+Since \(z(0)=2\) and \(z\to\infty\), the held-out probability ratio
+increases strictly from \(1/4\) toward one as \(h\to\infty\).
+This is a limit within one fixed three-dimensional model, not a refinement
+or continuous-group limit.
+
+The fitted diffusion time is \(t_{\rm std}=\log(2/x^2)/3\). It is positive
+precisely for
+\[
+h>h_*:=\frac{1+\sqrt3-\sqrt2}{24}\simeq0.0549098852.
+\]
+At \(h=h_*\), the relative log residual and log-ratio divide by zero;
+below it the fitted time is negative and is outside the positive-diffusion
+ansatz. The unnormalized log discrepancy above remains finite throughout.
+On \(h>h_*\), \(t_{\rm std}\) increases and the magnitude of that log
+discrepancy decreases strictly. Writing the discrepancy as \(D<0\) gives
+\(t_{\rm sign}-t_{\rm std}=-D/6\). Consequently the magnitude of the relative
+log residual, the tabulated \(\Delta t/\bar t\), and log-ratio minus two
+all decrease strictly to zero. These identities establish the asymptotic
+comparison for this Hamiltonian without assuming exact heat-kernel weights
+at any finite coupling; they are not interval error bounds for a numerical
+eigensolver.
 
 This is a nonabelian finite-model diagnostic of the edge-sector extraction
 mechanism. Character projectors, Cayley-graph Laplacian eigenvalues, and an
@@ -6346,10 +6414,10 @@ controls, a replayable receipt, and an independently checked error model.
 \item
   \textbf{Z\textsubscript{5}}: overconstrained golden-ratio test (\ensuremath{\lambda}\textsubscript{2}/\ensuremath{\lambda}\textsubscript{1} = \ensuremath{\phi}\textsuperscript{2}, two distinct nonzero eigenvalues), held-out residual 1.0\% at h = 0.05, with residuals decreasing across the four displayed samples as h decreases from 0.50 to 0.05
 \item
-  \textbf{S\textsubscript{3}}: overconstrained nonabelian Casimir log-ratio test (\ensuremath{\lambda}\_sign/\ensuremath{\lambda}\_std = 2), held-out residual 0.01\%
+  \textbf{S\textsubscript{3}}: overconstrained nonabelian Casimir log-ratio test (\ensuremath{\lambda}\_sign/\ensuremath{\lambda}\_std = 2), held-out relative log residual approximately 0.0056\% at \(h=100\)
 \end{itemize}
 
-The Z\textsubscript{3} equality is forced by symmetry and is retained only as a regression check of the implementation; it is not an independent confirmation of the heat-kernel law. The Z\textsubscript{5} and S\textsubscript{3} calculations are more informative finite diagnostics: each fits t using fewer spectral sectors than it compares, involves two distinct nonzero eigenvalues, and reports a held-out residual. Across the displayed samples those residuals decrease in their reported scan directions. No limit theorem, monotonicity proof, interval enclosure, controlled truncation error, or continuous-group transfer is supplied. These calculations test the finite implementation of the proposed "MaxEnt + Laplacian =\textgreater{} heat-kernel sector weights" mechanism; they do not validate it generally or for physical SU(2)/SU(3). A self-contained held-out refit script for the finite-group models is provided \href{https://github.com/FloatingPragma/observer-patch-holography/blob/main/code/edge_sectors/heat_kernel_holdout_validation.py}{with the public code bundle}; it fits t on a declared subset of sectors and prints held-out residuals for the remaining sectors.
+The Z\textsubscript{3} equality is forced by symmetry and is retained only as a regression check of the implementation; it is not an independent confirmation of the heat-kernel law. The Z\textsubscript{5} and S\textsubscript{3} calculations are more informative finite diagnostics: each fits t using fewer spectral sectors than it compares, involves two distinct nonzero eigenvalues, and reports a held-out residual. The Z\textsubscript{5} samples supply no limit theorem or monotonicity proof. For the declared S\textsubscript{3} one-plaquette Hamiltonian, the exact scalar identity proves a strict held-out mismatch at every finite coupling and monotone asymptotic agreement on the positive-diffusion branch. Neither result supplies a refinement limit, interval enclosure, controlled truncation error, or continuous-group transfer. These calculations test the finite implementation of the proposed "MaxEnt + Laplacian =\textgreater{} heat-kernel sector weights" mechanism; they do not validate it generally or for physical SU(2)/SU(3). A self-contained held-out refit script for the finite-group models is provided \href{https://github.com/FloatingPragma/observer-patch-holography/blob/main/code/edge_sectors/heat_kernel_holdout_validation.py}{with the public code bundle}; it fits t on a declared subset of sectors and prints held-out residuals for the remaining sectors.
 
 \subsubsection{IBM Quantum Cloud engineering checks}\label{614a-ibm-quantum-cloud-hardware-benchmarks}
 

@@ -306,7 +306,18 @@ def test_heat_kernel_formula_and_finite_diagnostics_keep_their_conditions() -> N
     assert "Z2 has only one nontrivial eigenvalue" in claim["statement"]
     assert "No limit theorem" in claim["statement"]
     assert "no frozen scientific receipt" in claim["statement"]
-    assert "declared_finite_diagnostic_without_frozen_receipt" in claim["status"]
+    assert "independent original-Hamiltonian controls cover Z2 and S3" in claim["statement"]
+    assert "p_sign/p_sign_pred=((z-1)/z)^2<1" in claim["statement"]
+    assert "h>(1+sqrt(3)-sqrt(2))/24" in claim["statement"]
+    assert "relative residual magnitude" in claim["statement"]
+    assert "fixed three-dimensional model identity" in claim["statement"]
+    assert "No limit theorem or monotonicity proof is supplied for the Z5 scan" in claim["statement"]
+    assert "declared_finite_diagnostic_with_independent_controls_and_exact_S3_identity" in claim["status"]
+    assert "no_frozen_receipt_or_continuous_group_transfer" in claim["status"]
+    assert "code/edge_sectors/test_heat_kernel_regressions.py" in claim["evidence"]
+    assert "At \\(h=h_*\\), the relative log residual and log-ratio divide by zero" in paper
+    assert "the earlier table did not reproduce the declared Hamiltonian" in paper
+    assert "strict held-out mismatch at every finite coupling" in paper
     assert "earlier truncated SU3 numerical table" in claim["statement"]
     assert "withheld" in claim["statement"]
 

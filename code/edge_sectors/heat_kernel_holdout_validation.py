@@ -2,7 +2,7 @@
 """Held-out diagnostics of the edge-sector heat-kernel law on finite gauge groups.
 
 This script accompanies the "Numerical diagnostics of the heat-kernel law"
-section of the synthesis paper and implements the finite comparison protocol
+section of the gauge paper and implements the finite comparison protocol
 requested by paper-audit issue #540:
 
   * it separates symmetry-forced checks from overconstrained tests;
@@ -21,6 +21,8 @@ Z_n  : 2x2 periodic lattice gauge theory (8 links) with Z_n link spaces and
            H = -K sum_p Re(B_p) - h sum_l Re(X_l) - Gamma sum_v Re(A_v),
 
        exactly the Hamiltonian displayed in the paper (K = 1, Gamma = 5).
+       Its unique h>0 ground state is computed in the n^3-dimensional
+       zero-divergence/zero-winding electric sector (see README.md).
        Region A consists of links whose tail has x = 0; the electric-center
        edge charge at a boundary vertex v is the restricted star
        Q_v = prod_{l in star(v) cap A} X_l^{+/-1}.
@@ -42,153 +44,32 @@ nontrivial sector, t_R = ln((p_0/d_0)/(p_R/d_R)) / lambda_R.  The fit sector
 other nontrivial sector's weight is then a parameter-free held-out
 prediction, and the printed residual is
 
-    residual(R) = ln(p_R_measured / p_R_predicted)  /  ln(p_R_predicted/p_0)
+    residual(R) = ln(p_R_measured / p_R_predicted) / abs(ln(p_R_predicted/p_0))
 
 (a relative log-scale error), together with the eigenvalue-ratio diagnostic
 log(p_R/p_0 d_R) / log(p_fit/p_0 d_fit) versus lambda_R / lambda_fit.
 
-Only conventions internal to this script are used; overall normalizations of
-the electric term rescale t but cancel in every ratio and residual.
+The Hamiltonians and their electric normalization are fixed inputs. Changing
+the electric term changes the ground state. Only a common rescaling of the
+extraction eigenvalues can be absorbed into the fitted diffusion parameter.
 """
 
 from __future__ import annotations
 
 import argparse
-import itertools
+from fractions import Fraction
 import math
+from numbers import Integral, Real
 
+import mpmath
 import numpy as np
-from scipy.sparse.linalg import LinearOperator, eigsh
 
-K_PLAQ = 1.0
-GAMMA = 5.0
-
-
-# ----------------------------------------------------------------------
-# Z_n on a 2x2 periodic lattice, full link basis, ground state by Lanczos.
-# ----------------------------------------------------------------------
-
-def _zn_links():
-    """Link index table for the 2x2 torus: (x, y, dir) -> axis 0..7."""
-    links = {}
-    for x, y in itertools.product(range(2), range(2)):
-        links[(x, y, "x")] = len(links)
-        links[(x, y, "y")] = len(links)
-    return links
-
-
-def _zn_hamiltonian_apply(n, h):
-    links = _zn_links()
-    shape = (n,) * 8
-
-    # Diagonal magnetic term: -K sum_p cos(2 pi (k1 + k2 - k3 - k4)/n).
-    grids = np.meshgrid(*[np.arange(n)] * 8, indexing="ij", sparse=True)
-    diag = np.zeros(shape)
-    for x, y in itertools.product(range(2), range(2)):
-        l1 = links[(x, y, "x")]
-        l2 = links[((x + 1) % 2, y, "y")]
-        l3 = links[(x, (y + 1) % 2, "x")]
-        l4 = links[(x, y, "y")]
-        phase = grids[l1] + grids[l2] - grids[l3] - grids[l4]
-        diag = diag - K_PLAQ * np.cos(2.0 * np.pi * phase / n)
-
-    # Gauss stars: A_v rolls outgoing links +1 and incoming links -1.
-    stars = []
-    for x, y in itertools.product(range(2), range(2)):
-        out = [links[(x, y, "x")], links[(x, y, "y")]]
-        inc = [links[((x - 1) % 2, y, "x")], links[(x, (y - 1) % 2, "y")]]
-        stars.append((out, inc))
-
-    def apply_h(vec):
-        a = vec.reshape(shape)
-        out = diag * a
-        # Electric term: -h/2 (roll+1 + roll-1) per link.
-        for ax in range(8):
-            out = out - 0.5 * h * (np.roll(a, 1, axis=ax) + np.roll(a, -1, axis=ax))
-        # Gauss term: -Gamma/2 (A_v + A_v^dagger).
-        for out_axes, in_axes in stars:
-            b = a
-            for ax in out_axes:
-                b = np.roll(b, 1, axis=ax)
-            for ax in in_axes:
-                b = np.roll(b, -1, axis=ax)
-            c = a
-            for ax in out_axes:
-                c = np.roll(c, -1, axis=ax)
-            for ax in in_axes:
-                c = np.roll(c, 1, axis=ax)
-            out = out - 0.5 * GAMMA * (b + c)
-        return out.reshape(-1)
-
-    return apply_h
-
-
-def zn_edge_distribution(n, h):
-    """Ground state of the 2x2 Z_n model and edge-charge distribution p_q.
-
-    The distribution is measured at boundary vertex v = (0, 0) with the
-    restricted star Q_v = X_(0,0,x) X_(0,0,y) X^dag_(0,1,y)  (outgoing X,
-    incoming X^dagger, links in region A = {tail x = 0} only).
-    """
-    links = _zn_links()
-    dim = n**8
-    op = LinearOperator((dim, dim), matvec=_zn_hamiltonian_apply(n, h))
-    # Ground state (smallest algebraic eigenvalue).
-    _, vecs = eigsh(op, k=1, which="SA", maxiter=20000, tol=1e-12)
-    psi = vecs[:, 0].reshape((n,) * 8)
-
-    out_axes = [links[(0, 0, "x")], links[(0, 0, "y")]]
-    in_axes = [links[(0, 1, "y")]]  # incoming y-link from (0, -1) = (0, 1)
-
-    # <Q_v^k> for k = 0..n-1, then Fourier transform to p_q.
-    expect = np.zeros(n, dtype=complex)
-    for k in range(n):
-        b = psi
-        for ax in out_axes:
-            b = np.roll(b, k, axis=ax)
-        for ax in in_axes:
-            b = np.roll(b, -k, axis=ax)
-        expect[k] = np.vdot(psi, b)
-    q = np.arange(n)
-    omega = np.exp(-2j * np.pi * np.outer(q, q) / n)
-    p = (omega @ expect).real / n
-    p = np.clip(p, 0.0, None)
-    return p / p.sum()
-
-
-# ----------------------------------------------------------------------
-# S3, exact single-plaquette class-function reduction.
-# ----------------------------------------------------------------------
-
-S3_IRREPS = ("triv", "sign", "std")
-S3_DIMS = {"triv": 1, "sign": 1, "std": 2}
-S3_LAMBDA = {"triv": 0.0, "sign": 6.0, "std": 3.0}
-N_LINKS_S3 = 4  # single plaquette
-
-
-def s3_edge_distribution(h):
-    """Ground state of the reduced single-plaquette S3 model, p_R = |c_R|^2.
-
-    Basis: normalized characters (chi_triv, chi_sign, chi_std).  Magnetic
-    term = multiplication by Re chi_std(g); its matrix elements are the
-    fusion multiplicities <chi_R, chi_std * chi_R'>:
-    std x triv = std, std x sign = std, std x std = triv + sign + std.
-    Electric term = h per link times the Cayley Laplacian, diagonal with
-    eigenvalues (0, 6, 3).
-    """
-    magnetic = np.array(
-        [
-            [0.0, 0.0, 1.0],
-            [0.0, 0.0, 1.0],
-            [1.0, 1.0, 1.0],
-        ]
-    )
-    electric = np.diag([S3_LAMBDA[r] for r in S3_IRREPS])
-    ham = -K_PLAQ * magnetic + h * N_LINKS_S3 * electric
-    vals, vecs = np.linalg.eigh(ham)
-    ground = vecs[:, np.argmin(vals)]
-    p = ground**2
-    return {r: p[i] for i, r in enumerate(S3_IRREPS)}
+if __package__ in (None, ""):
+    from abelian_ground_state import zn_edge_distribution
+    from nonabelian_ground_state import s3_diagnostics, s3_edge_distribution
+else:
+    from .abelian_ground_state import zn_edge_distribution
+    from .nonabelian_ground_state import s3_diagnostics, s3_edge_distribution
 
 
 # ----------------------------------------------------------------------
@@ -196,11 +77,64 @@ def s3_edge_distribution(h):
 # ----------------------------------------------------------------------
 
 def fit_t(p0, p_fit, d_fit, lam_fit):
-    return math.log((p0 / 1.0) / (p_fit / d_fit)) / lam_fit
+    """Fit supplied weights, requiring resolved final binary64 conversion."""
+    values = [_positive(value) for value in (p0, p_fit, d_fit, lam_fit)]
+    base, weight, dimension, eigenvalue = values
+    ratio = Fraction(base)*Fraction(dimension)/Fraction(weight)
+    ctx = mpmath.mp.clone()
+    ctx.dps = 100
+    if Fraction(1, 2) <= ratio <= 2:
+        delta = ratio-1
+        logarithm = ctx.log1p(ctx.mpf(delta.numerator)/delta.denominator)
+    else:
+        logarithm = ctx.log(ctx.mpf(ratio.numerator)/ratio.denominator)
+    return _resolved_float(logarithm/ctx.mpf(eigenvalue), "fitted time", zero_allowed=ratio == 1)
+
+
+def _resolved_float(value, name, *, zero_allowed=False):
+    result = float(value)
+    if (not math.isfinite(result) or (result == 0 and not zero_allowed)
+            or (value and abs((value.context.mpf(result)-value)/value) > value.context.mpf("1e-12"))):
+        raise ValueError(f"{name} exceeds the resolved reporting range")
+    return result
+
+
+def _binary_real(value):
+    if isinstance(value, (bool, np.bool_)) or not isinstance(value, Real):
+        raise ValueError("finite real fit parameters required")
+    try:
+        converted = float(value)
+    except (OverflowError, ValueError) as exc:
+        raise ValueError("fit parameters exceed binary64 range") from exc
+    if not math.isfinite(converted):
+        raise ValueError("finite real fit parameters required")
+    if isinstance(value, Integral):
+        original = Fraction(int(value))
+    elif isinstance(value, Fraction):
+        original = Fraction(int(value.numerator), int(value.denominator))
+    else:
+        numerator, denominator = value.as_integer_ratio()
+        original = Fraction(int(numerator), int(denominator))
+    if Fraction(converted) != original:
+        raise ValueError("fit parameters must be exactly represented binary64 values")
+    return converted
+
+
+def _positive(value):
+    converted = _binary_real(value)
+    if converted <= 0:
+        raise ValueError("positive real fit parameters required")
+    return converted
 
 
 def predict(p0, d, lam, t):
-    return p0 * d * math.exp(-t * lam)
+    """Predict without intermediate underflow or unresolved output rounding."""
+    p0, d, lam = map(_positive, (p0, d, lam))
+    t = _binary_real(t)
+    ctx = mpmath.mp.clone()
+    ctx.dps = 100
+    logarithm = ctx.log(ctx.mpf(p0))+ctx.log(ctx.mpf(d))-ctx.mpf(t)*ctx.mpf(lam)
+    return _resolved_float(ctx.exp(logarithm), "positive prediction")
 
 
 def report_zn(n, h_values):
@@ -223,14 +157,26 @@ def report_zn(n, h_values):
     for h in h_values:
         p = zn_edge_distribution(n, h)
         t = fit_t(p[0], p[1], 1.0, lam[1])
+        if abs(t*lam[1]) <= 1e-8:
+            raise ValueError("Z_n log-gap is unresolved for a normalized sector comparison")
         residuals = []
         for q in range(2, (n // 2) + 1):
+            log_gap = fit_t(p[0], p[q], 1., 1.)
+            fitted_gap = t*lam[q]
+            difference = fitted_gap-log_gap
+            # A resolved denominator does not resolve the difference of two
+            # almost equal log gaps. This roundoff floor is a numerical
+            # refusal policy, not an error bound for the upstream solver.
+            roundoff_floor = 64*np.finfo(float).eps*(1+abs(fitted_gap)+abs(log_gap))
+            if abs(difference) <= roundoff_floor:
+                raise ValueError("Z_n held-out difference is unresolved at probability roundoff")
             pred = predict(p[0], 1.0, lam[q], t)
-            res = math.log(p[q] / pred) / abs(math.log(pred / p[0]))
-            ratio = math.log(p[q] / p[0]) / math.log(p[1] / p[0])
+            res = difference/abs(fitted_gap)
+            ratio = log_gap/(t*lam[1])
+            residual_text = f"{100*res:+.3e}%" if abs(res) < 5e-5 else f"{res:+.2%}"
             residuals.append(
                 f"q={q}: pred {pred:.3e} meas {p[q]:.3e} "
-                f"res {res:+.2%} ratio {ratio:.4f} (target {lam[q]/lam[1]:.4f})"
+                f"res {residual_text} ratio {ratio:.4f} (target {lam[q]/lam[1]:.4f})"
             )
         row = f"{h:<6.2f} " + "  ".join(f"{p[q]:.4e}" for q in range(n)) + f"  {t:<10.4f}"
         print(row)
@@ -242,17 +188,19 @@ def report_s3(h_values):
     print("\n=== S_3 (OVERCONSTRAINED HELD-OUT TEST, nonabelian) ===")
     print("eigenvalues: triv 0, sign 6, std 3 (distinct nonzero pair)")
     print("fit sector: std; held-out sector: sign; target log-ratio = 2")
-    print("h      p_triv      p_sign      p_std       t(std)   pred p_sign  res      log-ratio")
+    print("h      p_triv      p_sign      p_std       t(std)   pred p_sign  res      log-ratio excess")
     for h in h_values:
-        p = s3_edge_distribution(h)
-        t = fit_t(p["triv"], p["std"], S3_DIMS["std"], S3_LAMBDA["std"])
-        pred_sign = predict(p["triv"], S3_DIMS["sign"], S3_LAMBDA["sign"], t)
-        res = math.log(p["sign"] / pred_sign) / abs(math.log(pred_sign / p["triv"]))
-        log_ratio = math.log(p["sign"] / p["triv"]) / math.log(p["std"] / (2 * p["triv"]))
+        result = s3_diagnostics(h)
+        p = result["probabilities"]
         print(
             f"{h:<6.2f} {p['triv']:.4e}  {p['sign']:.4e}  {p['std']:.4e}  "
-            f"{t:<8.4f} {pred_sign:.3e}    {res:+.2%}  {log_ratio:.4f}"
+            f"{result['fit_time']:<8.4f} {result['predicted_sign']:.3e}    "
+            f"{result['normalized_log_residual']:+.3e}  "
+            f"{result['log_ratio_excess']:+.6e}"
         )
+        print(f"        log(measured/predicted)={result['log_discrepancy']:+.6e}; "
+              f"positive diffusion fit: {result['diffusion_fit']}")
+
 
 
 def main():
@@ -277,14 +225,13 @@ def main():
             report_zn(n, args.h or default_h)
 
     print(
-        "\nSummary: Z2/Z3 rows are implementation checks (single or degenerate "
-        "nontrivial eigenvalue).  Z5 and S3 fit t on one spectral sector and "
-        "print held-out residuals for a second, distinct, nonzero eigenvalue "
-        "sector.  Over the displayed samples the residuals decrease in the "
-        "reported direction: toward smaller h for the Z5 torus model and "
-        "toward larger h for the single-plaquette S3 model.  These finite "
-        "trends supply no limit theorem, monotonicity proof, error bound, or "
-        "continuous-group transfer."
+        "\nSummary: Z2/Z3 are symmetry-forced implementation checks. "
+        "Z5 fits t at q=1 and compares q=2; its samples supply no limit theorem. "
+        "For the specified S3 one-plaquette model, the analytic sign-sector "
+        "measured/predicted ratio is strictly below one at every finite h>=0 "
+        "and increases to one as h grows. The fitted diffusion time is positive "
+        "only above (1+sqrt(3)-sqrt(2))/24. These are results for the supplied "
+        "finite Hamiltonians, with no continuous-group or physical-model transfer."
     )
 
 
