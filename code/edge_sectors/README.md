@@ -88,7 +88,18 @@ proved relative population-error bound. `h=0` is refused because the full abelia
 model then has degenerate topological ground sectors; the code does not
 choose a ground state silently. Normalized printed comparisons additionally
 refuse a log-gap of magnitude at most `1e-8`, where the nearly uniform
-numerical weights do not justify that normalization.
+numerical weights do not justify that normalization. Even above that cutoff,
+the held-out numerator can be a roundoff-dominated subtraction: at
+`h=5.708163265306122e-9`, the former report printed a positive residual while
+an independent 65-digit original-incidence calculation gave approximately
+`-1.09016217468756855e-9`. Reporting now also requires the difference of the
+fitted and measured log gaps to exceed
+`64 eps (1 + abs(fitted_gap) + abs(measured_gap))` in magnitude, where eps is
+binary64 machine epsilon. This numerical cancellation guard refuses both
+unresolved signs and apparent zero mismatches. It is not an interval bound
+for the upstream solve; the probability API remains available independently.
+Resolved small residuals use scientific notation instead of printing zero
+percent at the ordinary display precision.
 
 The generic fitted-time and held-out prediction helpers also evaluate the
 original binary64 inputs in private 100-digit arithmetic and require final

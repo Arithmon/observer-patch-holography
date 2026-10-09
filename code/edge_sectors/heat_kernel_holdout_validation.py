@@ -2,7 +2,7 @@
 """Held-out diagnostics of the edge-sector heat-kernel law on finite gauge groups.
 
 This script accompanies the "Numerical diagnostics of the heat-kernel law"
-section of the synthesis paper and implements the finite comparison protocol
+section of the gauge paper and implements the finite comparison protocol
 requested by paper-audit issue #540:
 
   * it separates symmetry-forced checks from overconstrained tests;
@@ -161,13 +161,22 @@ def report_zn(n, h_values):
             raise ValueError("Z_n log-gap is unresolved for a normalized sector comparison")
         residuals = []
         for q in range(2, (n // 2) + 1):
-            pred = predict(p[0], 1.0, lam[q], t)
             log_gap = fit_t(p[0], p[q], 1., 1.)
-            res = (t*lam[q]-log_gap)/abs(t*lam[q])
+            fitted_gap = t*lam[q]
+            difference = fitted_gap-log_gap
+            # A resolved denominator does not resolve the difference of two
+            # almost equal log gaps. This roundoff floor is a numerical
+            # refusal policy, not an error bound for the upstream solver.
+            roundoff_floor = 64*np.finfo(float).eps*(1+abs(fitted_gap)+abs(log_gap))
+            if abs(difference) <= roundoff_floor:
+                raise ValueError("Z_n held-out difference is unresolved at probability roundoff")
+            pred = predict(p[0], 1.0, lam[q], t)
+            res = difference/abs(fitted_gap)
             ratio = log_gap/(t*lam[1])
+            residual_text = f"{100*res:+.3e}%" if abs(res) < 5e-5 else f"{res:+.2%}"
             residuals.append(
                 f"q={q}: pred {pred:.3e} meas {p[q]:.3e} "
-                f"res {res:+.2%} ratio {ratio:.4f} (target {lam[q]/lam[1]:.4f})"
+                f"res {residual_text} ratio {ratio:.4f} (target {lam[q]/lam[1]:.4f})"
             )
         row = f"{h:<6.2f} " + "  ".join(f"{p[q]:.4e}" for q in range(n)) + f"  {t:<10.4f}"
         print(row)

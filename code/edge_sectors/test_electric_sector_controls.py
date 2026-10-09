@@ -19,7 +19,7 @@ _FACES = np.array([[1, -1, -1, 0, 0, 1, 0, 0],
                    [0, 0, 0, 1, -1, 0, 1, -1]])
 
 
-def _original_incidence_oracle(n, h):
+def _original_incidence_oracle(n, h, *, dps=100, return_high_precision=False):
     """Diagonalize the independently enumerated electric-loop Hamiltonian.
 
     All eight original links contribute their electric energy. Magnetic
@@ -28,7 +28,7 @@ def _original_incidence_oracle(n, h):
     potential chart, trigonometric simplification or sparse solver is used.
     """
     ctx = mpmath.mp.clone()
-    ctx.dps = 100
+    ctx.dps = dps
     fields = sorted({tuple(np.array([0, *potentials]) @ _FACES % n)
                      for potentials in itertools.product(range(n), repeat=3)})
     indices = {field: row for row, field in enumerate(fields)}
@@ -46,6 +46,8 @@ def _original_incidence_oracle(n, h):
     for row, field in enumerate(fields):
         charge = int((field[0]+field[1]-field[3]) % n)
         probabilities[charge] += vectors[row, 0]**2
+    if return_high_precision:
+        return ctx, tuple(probabilities)
     return np.array([float(value) for value in probabilities])
 
 
