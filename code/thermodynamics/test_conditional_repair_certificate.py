@@ -282,7 +282,7 @@ def test_realization_probe_exhausts_committed_field_subset_projections():
         scope["arbitrary_strongly_lumpable_partition_search_performed"]
         is False
     )
-    assert scope["exact_lumpability_proof_emitted"] is False
+    assert scope["exact_lumpability_proof_emitted"] is True
 
     selected = audit["selected_raw_equilibrium_probe"]
     assert selected["packet_fields"] == ["repair_load_bucket"]
@@ -290,6 +290,9 @@ def test_realization_probe_exhausts_committed_field_subset_projections():
     assert selected["irreducible"] is True
     assert selected["aperiodic"] is True
     assert selected["fine_chain_strongly_lumpable_at_tolerance"] is False
+    assert selected["fine_chain_strongly_lumpable"] is False
+    assert selected["reversible"] is False
+    assert selected["period"] == 1
     assert selected["fine_chain_strong_lumpability_max_err"] > 0.9
     assert selected["stationary_min"] > 0.0
     assert selected["detailed_balance_max_err"] > probe.DB_TOL

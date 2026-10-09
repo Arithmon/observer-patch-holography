@@ -59,6 +59,11 @@ not a domain argument.
   compounded error spoils the minimum. Compare with the original-input
   solution, and check reported residuals on their own scale so a false zero
   cannot hide inside the much larger target's roundoff budget.
+- **Stationarity and graph structure:** a small stationary residual need not
+  bound population error in a slowly mixing chain. Check an independently
+  solved law, periodic chains and multiple closed classes. Decide support,
+  reversibility and lumpability from the supplied masses without an absolute
+  edge floor; check that a rounded export has not erased a positive edge.
 - **Intermediate and output scales:** cross normal/subnormal/zero
   boundaries before and after weighting. Use ordinary units, very small
   and large units, both signs where allowed, and cancelling energy origins.
