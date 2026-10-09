@@ -19,13 +19,13 @@ the equal-fibre-row comparison in both the pairwise-row and the
 stationary-profile form, the detailed-balance error of the
 reversibilized chain, and relative-entropy descent to the stationary
 law of the reversibilized chain. The raw chain's reducibility, which
-the simulator's own eligibility gate names as a blocker, is inherited
-and recorded. The probe also exhausts all fifteen coordinate projections
+the simulator's own eligibility gate names as a blocker, is recomputed
+from exact count support. The probe also exhausts all fifteen coordinate projections
 obtained by retaining a nonempty subset of the four committed packet fields.
 It isolates the eight-state repair-load count aggregation as ergodic but
 nonreversible and checks every closed communicating class of the fine chain.
 These projected count kernels are not automatically Markov quotients of the
-fine chain; the probe records a strong-lumpability diagnostic for each declared
+fine chain; the probe checks exact count-kernel strong lumpability for each declared
 coordinate map. It does not enumerate arbitrary partitions or nonlinear,
 statistical, stochastic, weakly lumpable, or history-dependent quotient maps.
 This is a bounded audit of the pinned 20-state table, without an additional
@@ -37,6 +37,7 @@ Run with --write to refresh the committed probe receipt.
 from __future__ import annotations
 
 import argparse
+from fractions import Fraction
 import hashlib
 import itertools
 import json
@@ -44,6 +45,8 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
+
+import exact_count_chain as exact
 
 from conditional_repair_certificate import (
     ThermoError,
@@ -93,7 +96,6 @@ PINS: dict[str, str] = {
 }
 
 FIBRE_FIELD = "record_family"
-ROW_SUM_TOL = 1e-12
 DB_TOL = 1e-12
 KL_MONOTONE_TOL = 1e-12
 KL_STEPS = 16
@@ -107,10 +109,9 @@ def file_sha256(path: Path) -> str:
 def load_inputs() -> tuple[dict[str, Any], dict[str, Any]]:
     """Load the pinned artifacts.
 
-    Every numerical result downstream is computed in fixed-order pure
-    Python float arithmetic, with logarithms through mpmath, so the
-    receipt is byte-reproducible across platforms; numpy touches the
-    data only to decode the npz container.
+    Preserve stored scalar values. NumPy decodes the container and replays
+    its original binary64 export; exact rational algebra then owns the
+    normalized count kernels. Logarithmic readouts use a private context.
     """
     require(MATRIX_PATH.exists(), "matrix artifact missing")
     require(REPORT_PATH.exists(), "report artifact missing")
@@ -123,27 +124,32 @@ def load_inputs() -> tuple[dict[str, Any], dict[str, Any]]:
         "report artifact drifted from its pin",
     )
     with np.load(MATRIX_PATH, allow_pickle=True) as z:
+        require(all(z[name].dtype == np.dtype('float64')
+                    for name in ('counts', 'raw_empirical', 'reversible_empirical')),
+                "pinned export must retain its binary64 source representation")
         data = {
-            "counts": np.asarray(z["counts"], dtype=float).tolist(),
-            "raw": np.asarray(z["raw_empirical"], dtype=float).tolist(),
-            "rev": np.asarray(
-                z["reversible_empirical"], dtype=float
-            ).tolist(),
+            "counts": z["counts"].tolist(),
+            "raw": z["raw_empirical"].tolist(),
+            "rev": z["reversible_empirical"].tolist(),
             "labels": [json.loads(str(s)) for s in z["state_labels"]],
         }
     report = json.loads(REPORT_PATH.read_text())
+    fields = report['packet_fields']
+    require(fields and len(set(fields)) == len(fields), "duplicate source packet fields")
+    require(canonical_json_bytes(data['labels']) == canonical_json_bytes(
+        [json.loads(label) for label in report['state_labels']]),
+        "matrix and report label order differ")
+    require(type(report['state_count']) is int
+            and len(data['labels']) == report['state_count'], "source state count mismatch")
+    require(all([name for name, _ in label] == fields for label in data['labels']),
+            "source labels must contain each declared field exactly once in order")
+    require(len({canonical_json_bytes(label) for label in data['labels']}) == len(data['labels']),
+            "source labels must identify distinct states")
     return data, report
 
 
 def fibre_of(label: list[list[Any]]) -> Any:
-    for field, value in label:
-        if field == FIBRE_FIELD:
-            return value
-    raise ThermoError(f"label misses the fibre field {FIBRE_FIELD}")
-
-
-POWER_ITERATIONS = 2048
-STATIONARY_RESIDUAL_TOL = 1e-12
+    return label_value(label, FIBRE_FIELD)
 
 
 def push_vec(mu: list[float], matrix: list[list[float]]) -> list[float]:
@@ -155,10 +161,9 @@ def push_vec(mu: list[float], matrix: list[list[float]]) -> list[float]:
 
 def label_value(label: list[list[Any]], field: str) -> Any:
     """Read one named value from the simulator's canonical packet label."""
-    for name, value in label:
-        if name == field:
-            return value
-    raise ThermoError(f"label misses the quotient field {field}")
+    values = [value for name, value in label if name == field]
+    require(len(values) == 1, f"label must contain exactly one quotient field {field}")
+    return values[0]
 
 
 def coarsen_counts(
@@ -174,83 +179,40 @@ def coarsen_counts(
     Keys are sorted by canonical JSON so the resulting matrix has a stable row
     order.
     """
-    require(bool(fields), "a coarsening needs at least one field")
-    encoded_to_key: dict[str, tuple[Any, ...]] = {}
-    for label in labels:
-        key = tuple(label_value(label, field) for field in fields)
-        encoded = json.dumps(key, separators=(",", ":"), sort_keys=True)
-        encoded_to_key[encoded] = key
-    ordered_keys = [encoded_to_key[key] for key in sorted(encoded_to_key)]
-    key_index = {key: i for i, key in enumerate(ordered_keys)}
-    source_index = [
-        key_index[tuple(label_value(label, field) for field in fields)]
-        for label in labels
-    ]
-    n = len(ordered_keys)
-    coarse_counts = [[0.0 for _ in range(n)] for _ in range(n)]
+    counts = exact.weight_matrix(counts)
+    require(len(labels) == len(counts), "count/label state count mismatch")
+    blocks = coordinate_partition_blocks(labels, fields)
+    source_index = [0]*len(labels)
+    for i, block in enumerate(blocks):
+        for j in block:
+            source_index[j] = i
+    n = len(blocks)
+    coarse_counts = [[Fraction(0) for _ in range(n)] for _ in range(n)]
     for i, row in enumerate(counts):
         for j, value in enumerate(row):
             coarse_counts[source_index[i]][source_index[j]] += value
-    matrix: list[list[float]] = []
-    for row in coarse_counts:
-        mass = sum(row)
-        require(mass > 0, "coarsened quotient contains an uncounted row")
-        matrix.append([value / mass for value in row])
+    matrix = exact.kernel_from_weights(coarse_counts)
     coarse_labels = [
-        [[field, value] for field, value in zip(fields, key)]
-        for key in ordered_keys
+        [[field, label_value(labels[block[0]], field)] for field in fields]
+        for block in blocks
     ]
     return coarse_labels, coarse_counts, matrix
 
 
-def support_reachability(matrix: list[list[float]]) -> list[list[bool]]:
-    """Transitive closure of the positive-entry support graph."""
-    n = len(matrix)
-    reach = [[matrix[i][j] > 0.0 for j in range(n)] for i in range(n)]
-    for i in range(n):
-        reach[i][i] = True
-    for k in range(n):
-        for i in range(n):
-            if reach[i][k]:
-                for j in range(n):
-                    reach[i][j] = reach[i][j] or reach[k][j]
-    return reach
-
-
-def closed_communicating_classes(
-    matrix: list[list[float]],
-) -> list[list[int]]:
-    """Return every closed communicating class of the support graph."""
-    reach = support_reachability(matrix)
-    unseen = set(range(len(matrix)))
-    classes: list[list[int]] = []
-    while unseen:
-        seed = min(unseen)
-        cls = sorted(
-            j for j in unseen if reach[seed][j] and reach[j][seed]
-        )
-        for j in cls:
-            unseen.remove(j)
-        members = set(cls)
-        closed = all(
-            matrix[i][j] == 0.0
-            for i in cls
-            for j in range(len(matrix))
-            if j not in members
-        )
-        if closed:
-            classes.append(cls)
-    return classes
+# Keep the public probe entry points; one exact implementation owns graph logic.
+support_reachability = exact.support_reachability
+closed_communicating_classes = exact.closed_classes
+stationary_of = exact.stationary_distribution
 
 
 def pairwise_row_tv_max(matrix: list[list[float]]) -> float:
     """Largest total-variation distance between two rows."""
-    out = 0.0
+    out = Fraction(0)
     for i in range(len(matrix)):
         for j in range(i + 1, len(matrix)):
             out = max(
                 out,
-                0.5
+                Fraction(1, 2)
                 * sum(abs(x - y) for x, y in zip(matrix[i], matrix[j])),
             )
     return out
@@ -260,10 +222,12 @@ def coordinate_partition_blocks(
     fine_labels: list[list[list[Any]]], fields: tuple[str, ...]
 ) -> list[list[int]]:
     """Fine-state blocks induced by a coordinate map, canonically ordered."""
+    require(bool(fields) and len(set(fields)) == len(fields),
+            "a coarsening needs distinct nonempty fields")
     encoded_blocks: dict[str, list[int]] = {}
     for i, label in enumerate(fine_labels):
         key = tuple(label_value(label, field) for field in fields)
-        encoded = json.dumps(key, separators=(",", ":"), sort_keys=True)
+        encoded = json.dumps(key, separators=(",", ":"), sort_keys=True, allow_nan=False)
         encoded_blocks.setdefault(encoded, []).append(i)
     return [encoded_blocks[key] for key in sorted(encoded_blocks)]
 
@@ -281,137 +245,156 @@ def strong_lumpability_max_err(
     kernel even when this condition fails, but in that case it is not a
     certified Markov quotient of the fine chain.
     """
-    blocks = coordinate_partition_blocks(fine_labels, fields)
-    max_err = 0.0
-    for source_block in blocks:
-        for left in source_block:
-            for right in source_block:
-                for target_block in blocks:
-                    left_mass = sum(
-                        fine_matrix[left][j] for j in target_block
-                    )
-                    right_mass = sum(
-                        fine_matrix[right][j] for j in target_block
-                    )
-                    max_err = max(max_err, abs(left_mass - right_mass))
-    return max_err
+    return exact.lumpability_defect(
+        fine_matrix, coordinate_partition_blocks(fine_labels, fields))
 
 
-def audit_irreducible_chain(
-    matrix: list[list[float]], mp
-) -> dict[str, Any]:
-    """Audit one coarsened raw chain without adding reversibilization."""
+def audit_irreducible_chain(matrix, mp) -> dict[str, Any]:
+    """Exact finite-chain classifications, with separate numerical KL samples."""
+    matrix = exact.stochastic_matrix(matrix)
     n = len(matrix)
-    row_sum_err = max(abs(sum(row) - 1.0) for row in matrix)
-    reach = support_reachability(matrix)
-    irreducible = all(all(row) for row in reach)
-    # In an irreducible finite chain one positive self-loop is an explicit
-    # period-one witness for the whole class.
-    self_loop_witness = next(
-        (i for i in range(n) if matrix[i][i] > 0.0), None
-    )
-    aperiodic = irreducible and self_loop_witness is not None
-    out: dict[str, Any] = {
+    irreducible = all(all(row) for row in support_reachability(matrix))
+    period = exact.irreducible_period(matrix) if irreducible else None
+    out = {
         "state_count": n,
-        "row_sum_max_err": row_sum_err,
+        "row_sum_max_err": 0.0,
         "irreducible": irreducible,
-        "aperiodic": aperiodic,
-        "aperiodic_self_loop_witness": self_loop_witness,
+        "period": period,
+        "aperiodic": period == 1 if irreducible else None,
+        "aperiodic_self_loop_witness": next(
+            (i for i in range(n) if matrix[i][i] > 0), None),
     }
     if not irreducible:
-        out.update(
-            {
-                "stationary_residual_max_err": None,
-                "stationary_distribution": None,
-                "stationary_min": None,
-                "detailed_balance_max_err": None,
-                "kl_to_stationary_initial": None,
-                "kl_to_stationary_final": None,
-                "kl_min_stepwise_descent": None,
-            }
-        )
+        out.update(dict.fromkeys((
+            "stationary_residual_max_err", "stationary_distribution",
+            "stationary_distribution_exact", "stationary_min",
+            "detailed_balance_max_err", "detailed_balance_defect_exact",
+            "reversible", "kl_to_stationary_initial", "kl_to_stationary_final",
+            "kl_min_stepwise_descent")))
         return out
     pi = stationary_of(matrix)
-    pushed = push_vec(pi, matrix)
-    stationary_residual = max(abs(pushed[i] - pi[i]) for i in range(n))
-    db_err = max(
-        abs(pi[i] * matrix[i][j] - pi[j] * matrix[j][i])
-        for i in range(n)
-        for j in range(n)
-    )
-    mu = [1.0 / n] * n
-    kl_seq = [kl(mu, pi, mp)]
+    db = exact.detailed_balance_defect(matrix, pi)
+    out.update({
+        "stationary_residual_max_err": 0.0,
+        "stationary_distribution": [float(value) for value in pi],
+        "stationary_distribution_exact": [str(value) for value in pi],
+        "stationary_min": float(min(pi)),
+        "detailed_balance_max_err": float(db),
+        "detailed_balance_defect_exact": str(db),
+        "reversible": db == 0,
+        **kl_diagnostics(matrix, pi, mp),
+    })
+    return out
+
+
+def kl(p, q, mp):
+    """KL on exact normalized laws; positive Bregman terms avoid cancellation.
+
+    Sum q*((1+u)*log(1+u)-u), u=(p-q)/q. For small u use
+    its alternating Taylor series, retaining exact supplied differences before
+    evaluating logarithms. This is numerical evaluation, not an interval proof.
+    """
+    p, q = [exact.rational(x) for x in p], [exact.rational(x) for x in q]
+    require(len(p) == len(q) and sum(p) == sum(q) == 1
+            and min(p) >= 0 and min(q) >= 0, "KL requires normalized probability laws")
+    terms = []
+    for a, b in zip(p, q):
+        require(b > 0 or a == 0, "stationary law misses support of the iterate")
+        if not b:
+            continue
+        weight = mp.mpf(b.numerator)/b.denominator
+        delta = (a-b)/b
+        u = mp.mpf(delta.numerator)/delta.denominator
+        if not a:
+            phi = mp.mpf(1)
+        elif abs(delta) <= Fraction(1, 2):
+            term = phi = u*u/2
+            degree = 2
+            while term:
+                term *= -u*(degree-1)/(degree+1)
+                phi += term
+                degree += 1
+                if abs(term) <= mp.eps*abs(phi):
+                    break
+        else:
+            ratio = a/b
+            r = mp.mpf(ratio.numerator)/ratio.denominator
+            phi = r*mp.log(r)-r+1
+        terms.append(weight*phi)
+    return mp.fsum(terms)
+
+
+def kl_diagnostics(matrix, pi, mp):
+    # Neither equilibrium nor qualitative classifications depend on these
+    # sampled, finite-precision logarithms. Preserve the caller's context.
+    ctx = mp.clone()
+    ctx.dps = max(90, mp.dps)
+    mu = [Fraction(1, len(matrix))]*len(matrix)
+    values = [kl(mu, pi, ctx)]
     for _ in range(KL_STEPS):
         mu = push_vec(mu, matrix)
-        kl_seq.append(kl(mu, pi, mp))
-    descents = [
-        kl_seq[t] - kl_seq[t + 1] for t in range(len(kl_seq) - 1)
-    ]
-    require(
-        min(descents) >= -mp.mpf(str(KL_MONOTONE_TOL)),
-        "coarsened raw-chain relative entropy failed to descend",
-    )
-    out.update(
-        {
-            "stationary_residual_max_err": stationary_residual,
-            "stationary_distribution": pi,
-            "stationary_min": min(pi),
-            "detailed_balance_max_err": db_err,
-            "kl_to_stationary_initial": str(mp.nstr(kl_seq[0], 12)),
-            "kl_to_stationary_final": str(mp.nstr(kl_seq[-1], 12)),
-            "kl_min_stepwise_descent": str(mp.nstr(min(descents), 12)),
-        }
-    )
-    return out
+        values.append(kl(mu, pi, ctx))
+    descents = [a-b for a, b in zip(values, values[1:])]
+    require(min(descents) >= -ctx.mpf(str(KL_MONOTONE_TOL)),
+            "relative entropy to the stationary law fails to descend numerically")
+    return {
+        "kl_to_stationary_initial": ctx.nstr(values[0], 12),
+        "kl_to_stationary_final": ctx.nstr(values[-1], 12),
+        "kl_min_stepwise_descent": ctx.nstr(min(descents), 12),
+    }
 
 
-def stationary_of(matrix: list[list[float]]) -> list[float]:
-    """Stationary law by fixed-count power iteration in fixed-order
-    pure Python arithmetic."""
-    n = len(matrix)
-    mu = [1.0 / n] * n
-    for _ in range(POWER_ITERATIONS):
-        mu = push_vec(mu, matrix)
-        total = sum(mu)
-        require(total > 0, "power iteration lost mass")
-        mu = [v / total for v in mu]
-    pushed = push_vec(mu, matrix)
-    residual = max(abs(pushed[i] - mu[i]) for i in range(n))
-    require(
-        residual <= STATIONARY_RESIDUAL_TOL,
-        "power iteration failed to reach the stationary law",
-    )
-    return mu
+def source_kernels(data):
+    """Bind both stored arrays to the archived weighted-count constructions.
 
-
-def kl(p: list[float], q: list[float], mp) -> Any:
-    """Relative entropy with mpmath logarithms, so the value does not
-    depend on the platform's libm."""
-    out = mp.mpf(0)
-    for pi_, qi in zip(p, q):
-        if pi_ > 0:
-            require(
-                qi > 0,
-                "stationary law misses support of the iterate",
-            )
-            out += mp.mpf(pi_) * mp.log(mp.mpf(pi_) / mp.mpf(qi))
-    return out
+    Replay the binary64 export exactly before deriving rational kernels from
+    the supplied binary64 masses. The latter are the explicitly normalized
+    count models, not a claim that rounded exported rows sum exactly to one.
+    """
+    counts = exact.weight_matrix(data["counts"])
+    array = np.asarray(data["counts"], dtype=float)
+    require(all(exact.rational(float(array[i, j])) == counts[i][j]
+                for i in range(len(counts)) for j in range(len(counts))),
+            "source weight conversion lost supplied precision")
+    with np.errstate(over='ignore', invalid='ignore', divide='ignore'):
+        sym = (array+array.T)/2
+        for name, weights in (("raw", array), ("rev", sym)):
+            totals = weights.sum(axis=1)
+            require(np.isfinite(weights).all() and np.isfinite(totals).all(),
+                    "source export normalization is not finite")
+            expected = np.zeros_like(weights)
+            occupied = totals > 0
+            expected[occupied] = weights[occupied]/totals[occupied, None]
+            for i in np.flatnonzero(~occupied):
+                expected[i, i] = 1
+            stored = exact.weight_matrix(data[name])
+            require(len(stored) == len(counts) and all(
+                exact.rational(float(expected[i, j])) == stored[i][j]
+                for i in range(len(counts)) for j in range(len(counts))),
+                name+" matrix is not the recorded weighted-count export")
+    symmetric = [[counts[i][j]+counts[j][i] for j in range(len(counts))]
+                 for i in range(len(counts))]
+    raw = exact.kernel_from_weights(counts, empty_rows='absorbing')
+    rev = exact.kernel_from_weights(symmetric, empty_rows='absorbing')
+    for name, kernel in (('raw', raw), ('rev', rev)):
+        require(all((kernel[i][j] > 0) == (data[name][i][j] > 0)
+                    for i in range(len(counts)) for j in range(len(counts))),
+                name+" source export lost count-kernel support")
+    return counts, raw, rev
 
 
 def build_probe() -> dict[str, Any]:
     import mpmath
 
     data, report = load_inputs()
-    counts = data["counts"]
-    raw = data["raw"]
-    rev = data["rev"]
+    counts, raw, rev = source_kernels(data)
     labels = data["labels"]
     n = len(labels)
     require(
         len(raw) == n and all(len(row) == n for row in raw),
         "matrix shape drift",
     )
-    fibres = [fibre_of(lab) for lab in labels]
+    fibres = [canonical_json_bytes(fibre_of(lab)) for lab in labels]
     row_mass = [sum(counts[i]) for i in range(n)]
     total_mass = sum(row_mass)
     require(total_mass > 0, "empty transition count table")
@@ -420,9 +403,9 @@ def build_probe() -> dict[str, Any]:
     # stochasticity of counted rows
     counted = [i for i in range(n) if row_mass[i] > 0]
     row_sum_err = max(
-        abs(sum(raw[i]) - 1.0) for i in counted
+        abs(sum(raw[i]) - 1) for i in counted
     )
-    require(row_sum_err <= ROW_SUM_TOL, "raw rows are not stochastic")
+    require(row_sum_err == 0, "normalized count rows are not stochastic")
 
     # protected-datum leakage: off-fibre mass of counted rows
     off_masses = []
@@ -439,26 +422,26 @@ def build_probe() -> dict[str, Any]:
     # equal-fibre-row comparison, pairwise form: within a fibre, the
     # conditional-resampling kernel has identical rows after
     # restriction to the fibre
-    pair_tv_max = 0.0
+    pair_tv_max = Fraction(0)
     pair_tv_count = 0
-    profile_tv_max = 0.0
-    for fib in sorted({str(f) for f in fibres}):
+    profile_tv_max = Fraction(0)
+    for fib in sorted(set(fibres)):
         members = [
-            i for i in counted if str(fibres[i]) == fib
+            i for i in counted if fibres[i] == fib
         ]
         if len(members) < 2:
             continue
         restricted = []
         for i in members:
             block = [
-                raw[i][j] for j in range(n) if str(fibres[j]) == fib
+                raw[i][j] for j in range(n) if fibres[j] == fib
             ]
             s = sum(block)
             if s > 0:
                 restricted.append([v / s for v in block])
         for a in range(len(restricted)):
             for b in range(a + 1, len(restricted)):
-                tv = 0.5 * sum(
+                tv = Fraction(1, 2) * sum(
                     abs(x - y)
                     for x, y in zip(restricted[a], restricted[b])
                 )
@@ -467,13 +450,13 @@ def build_probe() -> dict[str, Any]:
         # profile form: restricted rows against the visit-weight
         # profile of the fibre
         fibre_visit = [
-            visit[i] for i in range(n) if str(fibres[i]) == fib
+            visit[i] for i in range(n) if fibres[i] == fib
         ]
         fv_total = sum(fibre_visit)
         if fv_total > 0 and restricted:
             profile = [v / fv_total for v in fibre_visit]
             for row in restricted:
-                tv = 0.5 * sum(
+                tv = Fraction(1, 2) * sum(
                     abs(x - y) for x, y in zip(row, profile)
                 )
                 profile_tv_max = max(profile_tv_max, tv)
@@ -486,37 +469,17 @@ def build_probe() -> dict[str, Any]:
         bool(rev_summary["irreducible"]) and bool(rev_summary["aperiodic"]),
         "reversibilized chain lost ergodicity",
     )
-    pi = stationary_of(rev)
-    db_err = max(
-        abs(pi[i] * rev[i][j] - pi[j] * rev[j][i])
-        for i in range(n)
-        for j in range(n)
-    )
-    require(db_err <= DB_TOL, "reversibilized detailed balance fails")
-    mp = mpmath.mp
-    saved_dps = mp.dps
-    try:
-        mp.dps = 30
-        mu = [1.0 / n] * n
-        kl_seq = [kl(mu, pi, mp)]
-        for _ in range(KL_STEPS):
-            mu = push_vec(mu, rev)
-            kl_seq.append(kl(mu, pi, mp))
-        descents = [
-            kl_seq[t] - kl_seq[t + 1] for t in range(len(kl_seq) - 1)
-        ]
-        require(
-            min(descents) >= -mp.mpf(str(KL_MONOTONE_TOL)),
-            "relative entropy to the stationary law fails to descend",
-        )
-        kl_initial = mpmath.nstr(kl_seq[0], 12)
-        kl_final = mpmath.nstr(kl_seq[-1], 12)
-        kl_min_descent = mpmath.nstr(min(descents), 12)
-    finally:
-        mp.dps = saved_dps
+    mp = mpmath.mp.clone()
+    mp.dps = 90
+    rev_audit = audit_irreducible_chain(rev, mp)
+    require(rev_audit["irreducible"] and rev_audit["aperiodic"],
+            "count-derived reversibilized chain lost ergodicity")
+    db_err = rev_audit["detailed_balance_max_err"]
+    require(rev_audit["reversible"], "count-derived reversibilized detailed balance fails")
+    kl_initial = rev_audit["kl_to_stationary_initial"]
+    kl_final = rev_audit["kl_to_stationary_final"]
+    kl_min_descent = rev_audit["kl_min_stepwise_descent"]
 
-    raw_entry = report["matrices"]["raw_empirical"]
-    raw_summary = raw_entry.get("summary", raw_entry)
     inherited_blockers = list(report.get("blockers", []))
 
     # Exhaust every nonempty coordinate projection of the four committed
@@ -525,37 +488,31 @@ def build_probe() -> dict[str, Any]:
     # maps, a new simulation, or a parameter search.
     available_fields = tuple(str(field) for field in report["packet_fields"])
     coarsening_rows: list[dict[str, Any]] = []
-    saved_dps = mp.dps
-    try:
-        mp.dps = 30
-        for size in range(1, len(available_fields) + 1):
-            for fields in itertools.combinations(available_fields, size):
-                coarse_labels, _, coarse_matrix = coarsen_counts(
-                    counts, labels, fields
-                )
+    # Fifteen syntactic maps induce only four distinct partitions. Calculate
+    # each kernel once, while preserving every declared map in the receipt.
+    partition_audits = {}
+    for size in range(1, len(available_fields) + 1):
+        for fields in itertools.combinations(available_fields, size):
+            blocks = coordinate_partition_blocks(labels, fields)
+            signature = tuple(tuple(block) for block in blocks)
+            if signature not in partition_audits:
+                _, _, coarse_matrix = coarsen_counts(counts, labels, fields)
                 chain = audit_irreducible_chain(coarse_matrix, mp)
-                chain.update(
-                    {
-                        "packet_fields": list(fields),
-                        "labels": coarse_labels,
-                        "induced_fine_partition_blocks": (
-                            coordinate_partition_blocks(labels, fields)
-                        ),
-                        "equal_row_pairwise_tv_max": pairwise_row_tv_max(
-                            coarse_matrix
-                        ),
-                        "fine_chain_strong_lumpability_max_err": (
-                            strong_lumpability_max_err(raw, labels, fields)
-                        ),
-                    }
-                )
-                chain["fine_chain_strongly_lumpable_at_tolerance"] = (
-                    chain["fine_chain_strong_lumpability_max_err"]
-                    <= LUMPABILITY_TOL
-                )
-                coarsening_rows.append(chain)
-    finally:
-        mp.dps = saved_dps
+                defect = exact.lumpability_defect(raw, blocks)
+                chain.update({
+                    "equal_row_pairwise_tv_max": float(pairwise_row_tv_max(coarse_matrix)),
+                    "equal_row_pairwise_tv_max_exact": str(pairwise_row_tv_max(coarse_matrix)),
+                    "fine_chain_strong_lumpability_max_err": float(defect),
+                    "fine_chain_strong_lumpability_defect_exact": str(defect),
+                    "fine_chain_strongly_lumpable": defect == 0,
+                    # Retained display diagnostic; decisions use the exact field.
+                    "fine_chain_strongly_lumpable_at_tolerance": defect <= Fraction(str(LUMPABILITY_TOL)),
+                })
+                partition_audits[signature] = chain
+            coarse_labels, _, _ = coarsen_counts(counts, labels, fields)
+            coarsening_rows.append({**partition_audits[signature],
+                "packet_fields": list(fields), "labels": coarse_labels,
+                "induced_fine_partition_blocks": blocks})
 
     selected_fields = ["repair_load_bucket"]
     selected = next(
@@ -569,7 +526,7 @@ def build_probe() -> dict[str, Any]:
         "repair quotient lost its raw-chain ergodicity",
     )
     require(
-        float(selected["detailed_balance_max_err"]) > DB_TOL,
+        selected["reversible"] is False,
         "repair quotient unexpectedly became reversible",
     )
     nontrivial_irreducible = [
@@ -580,7 +537,7 @@ def build_probe() -> dict[str, Any]:
     nontrivial_reversible = [
         row
         for row in nontrivial_irreducible
-        if float(row["detailed_balance_max_err"]) <= DB_TOL
+        if row["reversible"]
     ]
     require(
         not nontrivial_reversible,
@@ -610,7 +567,17 @@ def build_probe() -> dict[str, Any]:
     protected_cardinality = len(set(fibres))
 
     body: dict[str, Any] = {
-        "schema": "oph.collar_matrix_realization_probe.v3",
+        "schema": "oph.collar_matrix_realization_probe.v4",
+        "arithmetic": {
+            "source_weights": "exact represented values of the pinned binary64 accumulated weighted counts",
+            "source_export_binding": "both stored arrays exactly replay row-normalized C and (C+C.T)/2 in binary64",
+            "kernel": "exact rational row normalization of those supplied masses; zero rows explicitly absorbing",
+            "stationarity": "unique exact balance solve; no mixing-time or residual stopping rule",
+            "classifications": "exact positive support, cycle period, detailed balance and coordinate lumpability",
+            "display": "binary64 summaries may round; exact rational fields determine classifications",
+            "entropy": "90-digit numerical logarithms on exact finite iterates; not an interval or continuum certificate",
+            "pre_accumulation_precision_recovered": False,
+        },
         "status": (
             "MEASURED_PROBE__SOURCE_PRODUCED_MATRIX_ATTAINED__"
             "DECLARED_15_SYNTACTIC_COORDINATE_PROJECTIONS_AUDITED__"
@@ -641,23 +608,30 @@ def build_probe() -> dict[str, Any]:
             "weight_field": report["weight_field"],
         },
         "measurements": {
-            "row_sum_max_err": row_sum_err,
-            "off_fibre_mass_max": off_max,
-            "off_fibre_mass_visit_weighted": off_visit_weighted,
-            "equal_fibre_row_pairwise_tv_max": pair_tv_max,
+            "row_sum_max_err": float(row_sum_err),
+            "off_fibre_mass_max": float(off_max),
+            "off_fibre_mass_max_exact": str(off_max),
+            "off_fibre_mass_visit_weighted": float(off_visit_weighted),
+            "equal_fibre_row_pairwise_tv_max": float(pair_tv_max),
+            "equal_fibre_row_pairwise_tv_max_exact": str(pair_tv_max),
             "equal_fibre_row_pairwise_pairs": pair_tv_count,
-            "fibre_profile_tv_max": profile_tv_max,
+            "fibre_profile_tv_max": float(profile_tv_max),
+            "fibre_profile_tv_max_exact": str(profile_tv_max),
             "protected_datum_cardinality": protected_cardinality,
             "reversibilized_detailed_balance_max_err": db_err,
             "reversibilized_spectral_gap": (
                 1.0 - float(rev_summary["lambda_2"])
             ),
+            "reversibilized_spectral_gap_source": "archived report; not recomputed or used by the exact equilibrium audit",
             "kl_to_stationary_initial": kl_initial,
             "kl_to_stationary_final": kl_final,
             "kl_steps": KL_STEPS,
             "kl_min_stepwise_descent": kl_min_descent,
-            "raw_chain_irreducible": bool(raw_summary["irreducible"]),
-            "raw_chain_aperiodic": bool(raw_summary["aperiodic"]),
+            "raw_chain_irreducible": all(all(row) for row in support_reachability(raw)),
+            "raw_chain_aperiodic": None,
+            "raw_chain_aperiodic_scope": "global period omitted for reducible chain; closed-class periods below",
+            "reversibilized_stationary_distribution_exact": rev_audit["stationary_distribution_exact"],
+            "reversibilized_reversible": rev_audit["reversible"],
         },
         "raw_coarsening_audit": {
             "audit_bound": (
@@ -691,13 +665,13 @@ def build_probe() -> dict[str, Any]:
                 "weak_lumpability_tested": False,
                 "arbitrary_strongly_lumpable_partition_search_performed": False,
                 "coordinate_strong_lumpability_diagnostic_recorded": True,
-                "exact_lumpability_proof_emitted": False,
+                "exact_lumpability_proof_emitted": True,
                 "interpretation": (
                     "the row-normalized count aggregations are stochastic "
-                    "kernels. The recorded defect is a numerical diagnostic "
-                    "on the pinned floating-point table, not an exact "
-                    "lumpability proof; a value above tolerance excludes "
-                    "strong lumpability for that pinned numerical matrix"
+                    "kernels of the supplied weighted masses. Exact rational "
+                    "block sums decide strong lumpability of their normalized "
+                    "fine kernel; this does not recover an unobserved process "
+                    "or precision lost before the counts were stored"
                 ),
             },
             "strong_lumpability_tolerance": LUMPABILITY_TOL,
@@ -725,7 +699,7 @@ def build_probe() -> dict[str, Any]:
                     "eight-state irreducible aperiodic stochastic kernel, "
                     "but its projected process is not a certified Markov "
                     "quotient because the coordinate map fails the recorded "
-                    "strong-lumpability diagnostic. "
+                    "exact count-kernel strong-lumpability test. "
                     "Its computed full-support stationary law and sampled "
                     "relative-entropy descent support a nonreversible "
                     "finite H-theorem branch. It does not identify that law "
@@ -738,6 +712,8 @@ def build_probe() -> dict[str, Any]:
         },
         "recurrent_class_audit": {
             "fine_quotient_closed_class_count": len(recurrent_classes),
+            "closed_class_periods": [exact.irreducible_period(
+                [[raw[i][j] for j in cls] for i in cls]) for cls in recurrent_classes],
             "closed_class_sizes": [
                 len(cls) for cls in recurrent_classes
             ],
@@ -772,7 +748,7 @@ def build_probe() -> dict[str, Any]:
                 "open; the exhaustive declared coordinate-projection audit "
                 "finds a nontrivial ergodic repair-load count kernel, but it "
                 "is nonreversible, fails the fine-chain strong-lumpability "
-                "diagnostic at the declared tolerance, lacks a "
+                "test for the exact normalized counts, lacks a "
                 "nontrivial protected charge, and has no source "
                 "identification with the state optimizer's reference. The "
                 "fine chain's only closed recurrent class is a singleton "
@@ -795,9 +771,7 @@ def main(argv: list[str] | None = None) -> int:
     probe = build_probe()
     if args.write:
         PROBE_PATH.parent.mkdir(parents=True, exist_ok=True)
-        PROBE_PATH.write_text(
-            canonical_json_bytes(probe).decode() + "\n"
-        )
+        PROBE_PATH.write_bytes(canonical_json_bytes(probe) + b"\n")
         print(f"wrote {PROBE_PATH}")
     print(probe["status"])
     print(
