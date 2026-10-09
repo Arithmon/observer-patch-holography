@@ -1,6 +1,6 @@
 # K7 / OPH gauge kinetic cross-control
 
-**Frozen baseline after rebase:** OPH `b8714c986a76ef3b83df88d64d94e67b6e4d8944`; K7 `210480b2ba8a13c98e6a6f146fbfd965e4904c00`; K7-Lean `2553ed170d04db8777f84fb2f9ef2b66b386f7fb`. All four frozen OPH scientific source blobs remain unchanged from preregistration.
+**Frozen baseline after rebase:** OPH `0660c94573c8f79c1b86955fbd1d7d927a0e4fa2`; K7 `210480b2ba8a13c98e6a6f146fbfd965e4904c00`; K7-Lean `2553ed170d04db8777f84fb2f9ef2b66b386f7fb`. All four frozen OPH scientific source blobs remain unchanged from preregistration.
 
 ## Result
 

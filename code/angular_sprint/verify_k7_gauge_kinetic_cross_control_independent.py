@@ -6,7 +6,7 @@ from fractions import Fraction as F
 from pathlib import Path
 
 SCHEMA="arithmon.oph.k7_gauge_kinetic_cross.v1"
-OPH="b8714c986a76ef3b83df88d64d94e67b6e4d8944"
+OPH="0660c94573c8f79c1b86955fbd1d7d927a0e4fa2"
 K7="210480b2ba8a13c98e6a6f146fbfd965e4904c00"
 K7L="2553ed170d04db8777f84fb2f9ef2b66b386f7fb"
 EXPECTED=[
