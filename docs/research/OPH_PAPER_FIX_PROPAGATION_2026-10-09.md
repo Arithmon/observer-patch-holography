@@ -80,6 +80,14 @@ was established from #1065, #1067, #1068, or #1069.
   independent replay checks pass, as do 108 focused tests and eight subtests.
   The paper-preview CI on `ffcbe37f` passed. The follow-up commit's mandatory
   CI checks the synchronized records.
+- The dependency sweep additionally refreshed the angular template and
+  fingerprint, the template binding in stratum 643, and the source-current
+  inventory. An independent recursive comparison again found only hashes and
+  a byte count changed, with no remaining tracked references to the old live
+  digests. Historical closure-exit evidence keeps its original bindings.
+  The complete affected mandatory shard passes locally. The active-surface
+  inventory also includes this newly added review document; its scientific
+  classifications are unchanged.
 
 This is a focused correction-propagation review, not an independent reproof
 of every paper. It establishes no new physical prediction or joint model of
