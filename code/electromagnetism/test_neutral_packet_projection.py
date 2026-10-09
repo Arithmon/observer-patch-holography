@@ -63,6 +63,29 @@ def test_public_projection_keeps_the_same_cancelled_radiative_phase():
     assert measured == pytest.approx(complex(expected), rel=2e-12, abs=0)
 
 
+def test_original_displacement_is_retained_before_phase_cancellation():
+    point, center, momentum = [0]*56, [0]*56, [0]*56
+    point[0] = point[1] = 1
+    center[0] = 2.**-54
+    momentum[0], momentum[1] = 2**54, -(2**54)
+    # Each supplied value is exactly binary64, but their first displacement
+    # is not. Rounding it before the otherwise exact dot product loses a radian.
+    assert point[0]-center[0] == 1
+    delta = Fraction(point[0])-Fraction(center[0])
+    phase = Fraction(momentum[0])*delta+Fraction(momentum[1])*point[1]
+    assert phase == -1
+    ctx = mpmath.mp.clone()
+    ctx.dps = 100
+    expected_log = (-14*ctx.log(2*ctx.pi)
+                    - (_original_real(ctx, delta)**2+1)/4
+                    + ctx.j*_original_real(ctx, phase))
+    measured = packet.seed_log_half_density(point, center, momentum, 1)
+    assert measured.imag == -1
+    assert measured.real == pytest.approx(float(expected_log.real), rel=2e-12, abs=0)
+    assert packet.projected_half_density(point, center, momentum, 1) == pytest.approx(
+        complex(ctx.exp(expected_log)), rel=2e-12, abs=0)
+
+
 @pytest.mark.parametrize("momentum", [10., 256., 1e20, 1e100])
 def test_public_projection_resolves_oscillatory_scalar_momentum(momentum):
     center, p, point = np.zeros(56), np.zeros(56), np.zeros(56)
@@ -212,6 +235,43 @@ def test_exact_chiral_normalization_compensates_unreportable_norm(center, sigma,
         assert packet.projected_half_density(point, q, p, sigma, hbar) == pytest.approx(complex(expected), rel=2e-12, abs=0)
 
 
+@pytest.mark.parametrize("exponent", [500, 1023])
+@pytest.mark.parametrize("direction", [-1, 1])
+def test_near_chiral_complex_projection_matches_original_fourier_series(exponent, direction):
+    point, q, p = [0]*56, [0]*56, [0]*56
+    center = 2.**exponent
+    point[30], q[30], p[30], p[43] = 1, center, direction/center, center/2
+    assert Fraction(p[30])*Fraction(center) == direction
+    ctx = mpmath.mp.clone()
+    ctx.dps = 180
+    inverse = _original_real(ctx, p[30])
+
+    def constant_fourier(product):
+        # In exp(a*exp(i theta)+b*exp(-i theta)), precisely equal
+        # Fourier powers survive averaging. Sum them without Bessel calls.
+        term = total = ctx.mpc(1)
+        for k in range(1, 1000):
+            term *= product/(k*k)
+            total += term
+            if abs(term) < abs(total)*ctx.mpf('1e-150'):
+                return total
+        raise AssertionError('original Fourier series did not resolve')
+
+    # Original one-plane Gaussian: q=(C,0), p=(direction/C,C/2), y=(1,0).
+    # Its two Fourier coefficients multiply to (i*direction-C^-2)/4;
+    # the Gaussian overlap coefficients multiply to (1+C^-4)/4.
+    # These simplified products retain the near-chiral perturbation without
+    # subtracting the huge center terms or reusing producer intermediates.
+    numerator = constant_fourier((direction*ctx.j-inverse**2)/4)
+    norm = constant_fourier((1+inverse**4)/4)
+    expected = ((2*ctx.pi)**-14
+                * ctx.exp(-ctx.mpf(1)/4+inverse**2/2-direction*ctx.j)
+                * numerator/ctx.sqrt(norm))
+    actual = packet.projected_half_density(point, q, p, 1)
+    assert actual.real == pytest.approx(float(expected.real), rel=2e-12, abs=0)
+    assert actual.imag == pytest.approx(float(expected.imag), rel=2e-12, abs=0)
+
+
 @pytest.mark.parametrize("center", [1e100, 1e308])
 def test_large_pure_position_projection_resolves_normalized_amplitude(center):
     q, p = [0]*56, [0]*56
@@ -261,6 +321,21 @@ def test_huge_radiative_phase_uses_original_ratio_before_phase_reduction():
     exact_phase = Fraction(1e300)/3
     assert Fraction(float(exact_phase)) == exact_phase
     assert packet.seed_log_half_density(point, q, p, 1, 3).imag == float(exact_phase)
+
+
+def test_maximal_momentum_over_minimal_hbar_preserves_reduced_phase():
+    point, q, p = [0]*56, [0]*56, [0]*56
+    point[0], p[0] = 1, float.fromhex('0x1.fffffffffffffp+1023')
+    hbar = float.fromhex('0x0.0000000000001p-1022')
+    phase = Fraction(p[0])/Fraction(hbar)
+    assert phase > Fraction(p[0])
+    ctx = mpmath.mp.clone()
+    ctx.dps = 800  # Original phase has 632 decimal digits before reduction.
+    expected = (2*ctx.pi)**-14*ctx.exp(-ctx.mpf(1)/4+ctx.j*_original_real(ctx, phase))
+    with pytest.raises(ValueError, match='phase.*range'):
+        packet.seed_log_half_density(point, q, p, 1, hbar)
+    assert packet.projected_half_density(point, q, p, 1, hbar) == pytest.approx(
+        complex(expected), rel=2e-12, abs=0)
 
 
 def test_projection_is_independent_of_inherited_mpmath_precision():

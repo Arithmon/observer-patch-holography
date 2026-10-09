@@ -145,7 +145,9 @@ has no effect on the closed-form evaluation. Existing callers need no API
 change. Raising the angle count is no longer an accuracy intervention.
 
 Controls compare against integration of the original rotated seed and its
-positive overlap, and against independently simplified cases. These include
+Gaussian overlap, and against independently simplified cases. The general
+overlap integrand is complex when `B` is nonzero; its average is the positive
+squared projection norm. The controls include
 complex scalar centers and momenta, nonunit width and hbar, interference,
 near Bessel zeros, rotation, coordinate permutations, normalization
 compensation, caller precision contexts and valid/reporting-range pairs.
@@ -194,3 +196,33 @@ can make two numerical evaluations agree on a wrong value after enormous
 logarithms cancel; agreement alone cannot replace the scale-derived budget.
 These checks cover the specified failure mechanisms, not every possible
 implementation error.
+
+## Follow-up audit
+
+The independent audit found no incorrect result in the repaired evaluator,
+but found a gap in its retained controls: rounding the displacement before
+the phase dot product survived the original 80 pointwise tests. Set two
+radiative point coordinates to one, the first center coordinate to `2^-54`,
+and their momenta to `(2^54,-2^54)`. The exact phase is `-1`, while subtracting
+the first center in binary64 loses that phase. The added control computes
+the original displacement and expected Gaussian independently. It passes on
+the repaired implementation and fails each separate seed/projected mutation
+that rounds the displacement first.
+
+Additional retained controls use independently summed Fourier coefficients
+for a nearly chiral scalar seed with `c=(C,0)`, `p=(+/-1/C,C/2)` and
+`C=2^500` or `2^1023`. The surviving complex circle coefficients remain of
+ordinary size while the separate center and momentum terms are enormous.
+A further phase control combines the largest finite binary64 momentum with
+the smallest positive binary64 hbar. The normalized projection remains
+representable even though its unwrapped phase cannot be returned as a
+binary64 value. These are independent numerical controls, not additions to
+the analytic hypotheses or physical claims.
+
+The final pointwise module has 86 passing cases. Both displacement mutations
+now produce one scientific failure and 85 passes, rather than surviving all
+80 earlier controls. The three affected packet modules pass together with
+warnings treated as errors: 311 tests on each of Windows and Linux. Canonical
+receipt regeneration changes only the updated test hash relative to the
+initial PR; all numerical and contract values are unchanged. The inventory
+check remains current. No evaluator or physical claim change was needed.
