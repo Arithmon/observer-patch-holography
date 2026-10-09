@@ -4264,9 +4264,9 @@
     },
     {
       "claim_id": "OPH-EDGE-HEAT-KERNEL-FINITE-DIAGNOSTICS",
-      "statement": "The public finite-group diagnostic code is declared for Z2, Z3, Z5, and S3 electric-center sector weights and heat-parameter fits, but it emits no frozen scientific receipt and has no independent numerical validator. Z2 has only one nontrivial eigenvalue and Z3 has a charge-conjugate degenerate pair, so those rows can serve only as implementation and convention checks. Z5 and S3 have two distinct nonzero eigenvalues and define overconstrained finite comparisons once a frozen independently validated artifact exists. No limit theorem, monotonicity proof, interval enclosure, controlled numerical error, refinement family, or transfer to physical SU(2)/SU(3) follows. A separate conditional algebra theorem gives the SU(2)/SU(3) Casimir log-gap ratios only under p_R proportional to d_R exp(-t C2(R)). An earlier truncated SU3 numerical table and weak-coupling extrapolation are withheld because the repository contains no committed producer, input fixture, receipt, or regression test for them. This row is a declared diagnostic contract and is nonpromoting.",
+      "statement": "The public finite-group diagnostic code implements declared Z2, Z3, Z5, and S3 electric-center sector weights and heat-parameter fits; independent original-Hamiltonian controls cover Z2 and S3, but the code emits no frozen scientific receipt. Z2 has only one nontrivial eigenvalue and Z3 has a charge-conjugate degenerate pair, so those rows can serve only as implementation and convention checks. Z5 and S3 have two distinct nonzero eigenvalues and define overconstrained finite comparisons. For the declared K=1 four-link S3 Hamiltonian, the unique positive secular root x gives z=x+12h and the exact held-out ratio p_sign/p_sign_pred=((z-1)/z)^2<1 at every finite h>=0. This ratio increases strictly from 1/4 to one as h tends to infinity. The fitted standard-sector diffusion time is positive only for h>(1+sqrt(3)-sqrt(2))/24; at equality the normalized log residual and log-ratio are undefined. On the positive-time branch the relative residual magnitude, fractional time difference, and log-ratio excess decrease strictly to zero. The corrected S3 table replays the displayed Hamiltonian; its earlier values did not. This fixed three-dimensional model identity supplies no refinement limit, interval enclosure, or transfer to physical SU(2)/SU(3). No limit theorem or monotonicity proof is supplied for the Z5 scan. A separate conditional algebra theorem gives the SU(2)/SU(3) Casimir log-gap ratios only under p_R proportional to d_R exp(-t C2(R)). An earlier truncated SU3 numerical table and weak-coupling extrapolation are withheld because the repository contains no committed producer, input fixture, receipt, or regression test for them. This row concerns declared finite models and makes no physical promotion.",
       "owner_paper": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
-      "tier": "finite_model_numerical_diagnostics_with_unreceipted_SU3_values_withheld",
+      "tier": "finite_model_S3_identity_and_independently_controlled_diagnostics_with_unreceipted_SU3_values_withheld",
       "assumptions": [
         "declared_finite_edge_sector_gauge_models",
         "conditional_heat_kernel_sector_ansatz"
@@ -4276,15 +4276,16 @@
         "finite_dimensional_Hermitian_eigensolvers",
         "compact_group_Casimir_spectra"
       ],
-      "oph_specific_delta": "OPH supplies a finite electric-center comparison protocol that distinguishes symmetry-forced checks from held-out spectral-sector diagnostics while keeping numerical custody, limiting, and continuous-group transfer gates explicit.",
+      "oph_specific_delta": "OPH supplies a finite electric-center comparison protocol with independent original-input controls and an exact S3 secular identity that separates finite mismatch from asymptotic agreement within one declared model; symmetry-forced checks, numerical custody, refinement, and continuous-group transfer remain separate.",
       "novelty_type": "finite_edge_sector_diagnostic_and_custody_boundary",
       "evidence": [
         "paper/tex_fragments/PAPER.tex",
-        "code/edge_sectors/heat_kernel_holdout_validation.py"
+        "code/edge_sectors/heat_kernel_holdout_validation.py",
+        "code/edge_sectors/test_heat_kernel_regressions.py"
       ],
-      "falsifier": "The finite script does not implement the displayed Hamiltonians or electric-center projectors, a displayed finite Z5 or S3 value fails reproducible recomputation, the Z2/Z3 equalities are presented as independent tests despite their degeneracy, the nonabelian extraction omits the representation-dimension factor, or any finite trend is promoted to a convergence, physical SU(2)/SU(3), or absolute-coupling result without the missing controls and custody.",
+      "falsifier": "The finite script does not implement the displayed Hamiltonians or electric-center projectors, a displayed finite Z5 or S3 value fails reproducible recomputation, the S3 secular identity or stated positive-time monotonicity fails for its declared Hamiltonian, the Z2/Z3 equalities are presented as independent tests despite their degeneracy, the nonabelian extraction omits the representation-dimension factor, or the fixed-model S3 asymptotic or any finite trend is promoted to a refinement, physical SU(2)/SU(3), or absolute-coupling result without the missing controls and custody.",
       "scope_if_false": "Only these finite diagnostics and their implementation checks fall. The fixed-cutoff conditional heat-kernel algebra, exact two-dimensional Yang--Mills normalization identity, compact-gauge structural reconstruction, and any future receipted continuous-group calculation remain separately assessable.",
-      "status": "declared_finite_diagnostic_without_frozen_receipt_or_independent_validator__conditional_algebra_theorem_separate",
+      "status": "declared_finite_diagnostic_with_independent_controls_and_exact_S3_identity__no_frozen_receipt_or_continuous_group_transfer",
       "claim_class": "declared_structure",
       "gates": [
         776,

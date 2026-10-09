@@ -10,8 +10,8 @@
   "papers": {
     "deriving_standard_model_gauge_structure_from_observer_overlap_consistency": {
       "pdf_path": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf",
-      "sha256": "632f967d6e63bcd520507286ade0ba42a26c803f70ec3d71d18e65479c21aabc",
-      "size_bytes": 745104
+      "sha256": "03f73047c00c5b7f9f95e3d3db0ea2b834691c72f69f4752bdc93e922d50be9b",
+      "size_bytes": 750972
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
