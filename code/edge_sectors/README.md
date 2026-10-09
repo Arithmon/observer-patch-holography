@@ -90,6 +90,16 @@ choose a ground state silently. Normalized printed comparisons additionally
 refuse a log-gap of magnitude at most `1e-8`, where the nearly uniform
 numerical weights do not justify that normalization.
 
+The generic fitted-time and held-out prediction helpers also evaluate the
+original binary64 inputs in private 100-digit arithmetic and require final
+conversion to relative `1e-12`. A nonzero subnormal is not automatically a
+resolved result: the audit reproduced a 6.2% rounded Z5 held-out prediction
+at `h=1e61`, and an 11% rounded fitted time for nearly equal weights divided
+by `1e308`. These comparisons now refuse insufficient output precision;
+the Z5 sector probabilities remain separately available. Resolved subnormal
+predictions, including the Z5 report at `h=1e59`, still work. This conversion
+check does not certify upstream eigensolver accuracy or logarithms by intervals.
+
 ## Complete S3 comparison within the declared model
 
 In character order `(triv,sign,std)`, with four electric links,

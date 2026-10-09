@@ -61,6 +61,7 @@ from fractions import Fraction
 import math
 from numbers import Integral, Real
 
+import mpmath
 import numpy as np
 
 if __package__ in (None, ""):
@@ -76,17 +77,25 @@ else:
 # ----------------------------------------------------------------------
 
 def fit_t(p0, p_fit, d_fit, lam_fit):
-    """Fit from the supplied weights without an overflowing intermediate ratio."""
+    """Fit supplied weights, requiring resolved final binary64 conversion."""
     values = [_positive(value) for value in (p0, p_fit, d_fit, lam_fit)]
     base, weight, dimension, eigenvalue = values
     ratio = Fraction(base)*Fraction(dimension)/Fraction(weight)
+    ctx = mpmath.mp.clone()
+    ctx.dps = 100
     if Fraction(1, 2) <= ratio <= 2:
-        logarithm = math.log1p(float(ratio-1))
+        delta = ratio-1
+        logarithm = ctx.log1p(ctx.mpf(delta.numerator)/delta.denominator)
     else:
-        logarithm = math.log(ratio.numerator)-math.log(ratio.denominator)
-    result = logarithm/eigenvalue
-    if not math.isfinite(result) or (ratio != 1 and result == 0):
-        raise ValueError("fitted time exceeds the resolved reporting range")
+        logarithm = ctx.log(ctx.mpf(ratio.numerator)/ratio.denominator)
+    return _resolved_float(logarithm/ctx.mpf(eigenvalue), "fitted time", zero_allowed=ratio == 1)
+
+
+def _resolved_float(value, name, *, zero_allowed=False):
+    result = float(value)
+    if (not math.isfinite(result) or (result == 0 and not zero_allowed)
+            or (value and abs((value.context.mpf(result)-value)/value) > value.context.mpf("1e-12"))):
+        raise ValueError(f"{name} exceeds the resolved reporting range")
     return result
 
 
@@ -119,16 +128,13 @@ def _positive(value):
 
 
 def predict(p0, d, lam, t):
+    """Predict without intermediate underflow or unresolved output rounding."""
     p0, d, lam = map(_positive, (p0, d, lam))
     t = _binary_real(t)
-    logarithm = math.log(p0)+math.log(d)-t*lam
-    try:
-        value = math.exp(logarithm)
-    except OverflowError as exc:
-        raise ValueError("prediction exceeds the reporting range") from exc
-    if not math.isfinite(value) or value == 0:
-        raise ValueError("positive prediction exceeds the reporting range")
-    return value
+    ctx = mpmath.mp.clone()
+    ctx.dps = 100
+    logarithm = ctx.log(ctx.mpf(p0))+ctx.log(ctx.mpf(d))-ctx.mpf(t)*ctx.mpf(lam)
+    return _resolved_float(ctx.exp(logarithm), "positive prediction")
 
 
 def report_zn(n, h_values):
