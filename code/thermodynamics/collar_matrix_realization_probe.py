@@ -97,7 +97,6 @@ PINS: dict[str, str] = {
 
 FIBRE_FIELD = "record_family"
 DB_TOL = 1e-12
-KL_MONOTONE_TOL = 1e-12
 KL_STEPS = 16
 LUMPABILITY_TOL = 1e-12
 
@@ -327,16 +326,30 @@ def kl(p, q, mp):
 def kl_diagnostics(matrix, pi, mp):
     # Neither equilibrium nor qualitative classifications depend on these
     # sampled, finite-precision logarithms. Preserve the caller's context.
+    matrix = exact.stochastic_matrix(matrix)
+    pi = [exact.rational(value) for value in pi]
+    require(len(pi) == len(matrix) and min(pi) > 0 and sum(pi) == 1
+            and push_vec(pi, matrix) == pi,
+            "entropy diagnostics require a faithful stationary reference")
     ctx = mp.clone()
     ctx.dps = max(90, mp.dps)
     mu = [Fraction(1, len(matrix))]*len(matrix)
     values = [kl(mu, pi, ctx)]
+    descents = []
     for _ in range(KL_STEPS):
-        mu = push_vec(mu, matrix)
+        following = push_vec(mu, matrix)
+        # Chain rule, without subtracting two almost equal entropies:
+        # A_ij=mu_i K_ij, B_ij=(mu K)_j pi_i K_ij/pi_j are probability
+        # laws. Stationarity implies D(A||B)=D(mu||pi)-D(mu K||pi).
+        # This holds without detailed balance, including genuine zero loss.
+        forward, reconstructed = [], []
+        for i, row in enumerate(matrix):
+            for j, transition in enumerate(row):
+                forward.append(mu[i]*transition)
+                reconstructed.append(following[j]*pi[i]*transition/pi[j])
+        descents.append(kl(forward, reconstructed, ctx))
+        mu = following
         values.append(kl(mu, pi, ctx))
-    descents = [a-b for a, b in zip(values, values[1:])]
-    require(min(descents) >= -ctx.mpf(str(KL_MONOTONE_TOL)),
-            "relative entropy to the stationary law fails to descend numerically")
     return {
         "kl_to_stationary_initial": ctx.nstr(values[0], 12),
         "kl_to_stationary_final": ctx.nstr(values[-1], 12),
@@ -575,7 +588,7 @@ def build_probe() -> dict[str, Any]:
             "stationarity": "unique exact balance solve; no mixing-time or residual stopping rule",
             "classifications": "exact positive support, cycle period, detailed balance and coordinate lumpability",
             "display": "binary64 summaries may round; exact rational fields determine classifications",
-            "entropy": "90-digit numerical logarithms on exact finite iterates; not an interval or continuum certificate",
+            "entropy": "90-digit numerical logarithms on exact finite iterates; contraction loss from forward/reconstructed joint KL, without entropy subtraction; not an interval or continuum certificate",
             "pre_accumulation_precision_recovered": False,
         },
         "status": (

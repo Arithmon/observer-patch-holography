@@ -50,8 +50,15 @@ the calculations for their four distinct partitions.
 - Entropy readouts use 90-digit numerical logarithms on exact finite iterates
   in a private arithmetic context. A positive-term KL formula retains small
   differences; direct probability ratios preserve near-boundary populations.
+  Contraction loss is evaluated as the relative entropy between the exact joint
+  laws `A_ij=p_i K_ij` and `B_ij=(pK)_j pi_i K_ij/pi_j`. For a faithful stationary
+  `pi`, the chain rule gives `D(A||B)=D(p||pi)-D(pK||pi)` without subtracting two
+  nearly equal numerical totals. This requires no detailed balance and retains
+  genuine zero loss in periodic chains. A nonstationary reference is refused.
   These samples are not interval proofs. The archived spectral-gap estimate is
-  identified as inherited and is not used to establish equilibrium.
+  identified as inherited and is not used to establish equilibrium. Oversized
+  rational receipt strings remain subject to the interpreter's decimal-digit
+  limit and raise a serialization error; no process-wide limit is disabled.
 
 ## Retained result and scientific impact
 
@@ -88,6 +95,11 @@ determinant give the eight-state stationary law. Source-export mutations include
 one-ulp changes and added minimum-subnormal edges. Valid sources and nonzero
 small effects are positive controls alongside the refusal cases.
 
-The new controls execute on both operating systems in the standard and nightly
-mandatory workflow. This is one finite-evidence repair under the standing audit
+The new controls execute on both operating systems in standard and manual-full
+CI, and on Linux in the nightly workflow. The audit additionally retains slow
+positive entropy losses at `epsilon=2^-400` and `2^-1000`, checked against
+independent 500-digit closed-form trajectories. Those losses were reported as
+zero on the first PR head despite its correct equilibrium. Paired public
+classification controls also reject tolerance substitutions that survived the
+initial helper-only tests. This is one finite-evidence repair under the standing audit
 [issue #1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033).

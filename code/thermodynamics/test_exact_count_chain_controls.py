@@ -167,6 +167,31 @@ def test_exact_reversibility_and_tiny_irreversible_circulation():
     assert chain.detailed_balance_defect(circulating, uniform) == 2 * epsilon / 3
 
 
+@pytest.mark.parametrize("epsilon", [F(0), F(1, 2**48), F(1, 2**1100)])
+def test_public_reversibility_preserves_exact_flux_decision(epsilon):
+    import mpmath
+
+    # Uniform stationarity follows directly from the unit column sums. Each
+    # directed cycle edge has excess stationary flux 2*epsilon/3.
+    kernel = [[F(1, 2), F(1, 4), F(1, 4)],
+              [F(1, 4), F(1, 2), F(1, 4)],
+              [F(1, 4), F(1, 4), F(1, 2)]]
+    for i in range(3):
+        kernel[i][(i + 1) % 3] += epsilon
+        kernel[i][(i - 1) % 3] -= epsilon
+    report = probe.audit_irreducible_chain(kernel, mpmath.mp.clone())
+    expected_defect = 2 * epsilon / 3
+    assert report["stationary_distribution_exact"] == ["1/3"] * 3
+    assert F(report["detailed_balance_defect_exact"]) == expected_defect
+    assert report["reversible"] is (epsilon == 0)
+    assert report["detailed_balance_max_err"] == float(expected_defect)
+    # Both an exact zero and a positive defect below binary64 have a zero
+    # display, while the public scientific classifications remain different.
+    if epsilon == F(1, 2**1100):
+        assert report["detailed_balance_max_err"] == 0.0
+        assert report["reversible"] is False
+
+
 def test_exact_lumpability_and_arbitrarily_small_escape_defect():
     epsilon = F(1, 2**48)
     kernel = [[F(1, 2), F(1, 4), F(1, 4)],
@@ -178,6 +203,33 @@ def test_exact_lumpability_and_arbitrarily_small_escape_defect():
     perturbed[1][1] -= epsilon
     perturbed[1][2] += epsilon
     assert chain.lumpability_defect(perturbed, blocks) == epsilon
+
+
+@pytest.mark.parametrize("defect", [F(0), F(1, 2**48), F(1, 2**1100)])
+def test_lumpability_report_keeps_exact_and_tolerance_decisions_distinct(monkeypatch, defect):
+    """Challenge the report boundary, not the physics of the pinned source.
+
+    The preceding original-kernel control establishes the helper's exact
+    zero/nonzero distinction. Inject those outcomes here to test the receipt
+    consumer independently of the retained table's large lumpability defect.
+    """
+    original = chain.lumpability_defect
+
+    def controlled_defect(kernel, blocks):
+        if len(blocks) == 8:
+            return defect
+        return original(kernel, blocks)
+
+    monkeypatch.setattr(chain, "lumpability_defect", controlled_defect)
+    receipt = probe.build_probe()
+    report = receipt["raw_coarsening_audit"]["selected_raw_equilibrium_probe"]
+    assert F(report["fine_chain_strong_lumpability_defect_exact"]) == defect
+    assert report["fine_chain_strongly_lumpable"] is (defect == 0)
+    assert report["fine_chain_strongly_lumpable_at_tolerance"] is True
+    assert report["fine_chain_strong_lumpability_max_err"] == float(defect)
+    if defect == F(1, 2**1100):
+        assert report["fine_chain_strong_lumpability_max_err"] == 0.0
+        assert report["fine_chain_strongly_lumpable"] is False
 
 
 def test_weight_scaling_preserves_kernel_and_original_scalar_precision():
