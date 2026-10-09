@@ -72,6 +72,14 @@ was established from #1065, #1067, #1068, or #1069.
 - Reader style, claim registry, active axiom inventory, source-current inventory,
   frozen-register custody/history, observation and premise registers, and
   whitespace checks passed.
+- Initial remote mandatory checks on `ffcbe37f` found three live generated
+  records still bound to the old complete prediction-register hash: forecast
+  contract state, discriminator stratum 643, and the dependent closure
+  preflight. Their canonical producers regenerated only hashes and one byte
+  count; all scientific payloads and verdicts are unchanged. Producer and
+  independent replay checks pass, as do 108 focused tests and eight subtests.
+  The paper-preview CI on `ffcbe37f` passed. The follow-up commit's mandatory
+  CI checks the synchronized records.
 
 This is a focused correction-propagation review, not an independent reproof
 of every paper. It establishes no new physical prediction or joint model of
