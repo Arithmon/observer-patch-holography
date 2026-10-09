@@ -13,7 +13,6 @@ from fractions import Fraction as Q
 import hashlib
 import importlib.util
 import json
-import math
 from pathlib import Path
 import sys
 
@@ -38,6 +37,7 @@ PIN_PATHS = (
     'code/electromagnetism/verify_whitney_quantum_packet.py',
     'code/electromagnetism/test_whitney_quantum_packet.py',
     'code/electromagnetism/test_neutral_packet_observables.py',
+    'code/electromagnetism/test_neutral_packet_projection.py',
     'paper/tex_fragments/WHITNEY_INTERACTING_QUANTUM.tex',
     'paper/tex_fragments/WHITNEY_QUANTUM_PACKET.tex',
     PARENT_PATH,
@@ -244,21 +244,100 @@ def _scalar_observables(center, momentum, sigma, hbar):
 
 
 def seed_log_half_density(point, center, momentum, sigma, hbar=1):
-    point = real_vector(point, 56, 'packet evaluation point')
-    center = real_vector(center, 56, 'packet center')
-    momentum = real_vector(momentum, 56, 'packet momentum')
-    sigma, hbar = positive(sigma, 'width'), positive(hbar, 'hbar')
+    """Seed logarithm with original-input displacement and unwrapped phase.
+
+    Inputs retain the binary64 contract. Rational arithmetic prevents a
+    cancelled dot product or a tiny squared displacement from being erased.
+    The returned phase must also have absolute error at most 1e-12 radians;
+    relative representability alone does not suffice for a phase.
+    """
+    point, center, momentum, sigma, hbar = _pointwise_inputs(
+        point, center, momentum, sigma, hbar)
+    delta = [y-x for y, x in zip(point, center)]
+    decay = sum(v*v for v in delta)/(4*sigma*sigma)
+    phase = sum(p*v for p, v in zip(momentum, delta))/hbar
     try:
-        with np.errstate(over='raise', invalid='raise', divide='raise', under='ignore'):
-            delta = point-center
-            scaled = (delta/sigma)/2
-            value = complex(-14*(math.log(2*math.pi)+2*math.log(sigma))-scaled@scaled,
-                            momentum@delta/hbar)
-    except (FloatingPointError, OverflowError) as error:
-        raise ValueError('seed logarithm outside binary64 calculation range') from error
-    if not np.isfinite(value):
-        raise ValueError('seed logarithm outside binary64 reporting range')
-    return value
+        phase_float = float(phase)
+    except OverflowError as error:
+        raise ValueError('seed phase outside binary64 reporting range') from error
+    if not np.isfinite(phase_float):
+        raise ValueError('seed phase outside binary64 reporting range')
+    phase_error = abs(Q(phase_float)-phase)
+    if ((phase != 0 and phase_error > Q(1, 10**12)*abs(phase))
+            or phase_error > Q(1, 10**12)):
+        raise ValueError('seed phase outside absolute binary64 reporting precision')
+
+    def evaluate(mp):
+        return -14*(mp.log(2*mp.pi)+2*mp.log(_mp_rational(mp, sigma)))-_mp_rational(mp, decay)
+
+    real = _pointwise_evaluation(evaluate, _pointwise_digits(decay),
+                                 'seed logarithm', complex_output=False)
+    return complex(real, phase_float)
+
+
+def _pointwise_inputs(point, center, momentum, sigma, hbar):
+    """Validate original values, then keep them exact for pointwise algebra."""
+    vectors = []
+    for value, name in ((point, 'packet evaluation point'),
+                        (center, 'packet center'), (momentum, 'packet momentum')):
+        exact = _exact_vector(value)
+        for entry in exact:
+            _binary64(entry, name)
+        vectors.append(exact)
+    sigma, hbar = _rational(sigma), _rational(hbar)
+    positive(sigma, 'width')
+    positive(hbar, 'hbar')
+    return (*vectors, sigma, hbar)
+
+
+def _mp_rational(mp, value):
+    return mp.mpf(value.numerator)/value.denominator
+
+
+def _pointwise_digits(*values):
+    # Cover absolute errors in large phases and cancellation of large log
+    # amplitudes. The binary64 input contract bounds this finite budget.
+    sizes = [(v.numerator.bit_length()-v.denominator.bit_length()+3)//3 for v in values]
+    return 80+max(0, *sizes)
+
+
+def _pointwise_evaluation(evaluate, digits, name, *, complex_output=True):
+    """Numerical precision agreement plus final relative reporting guard.
+
+    For complex values the 1e-12 reporting tolerance uses the full modulus,
+    rather than requiring relative precision in each Cartesian component.
+    This is not an interval enclosure or a proof of an exact zero. A zero
+    from the special-function calculation is unresolved, never a successful
+    pointwise amplitude. Extra precision also checks cancellation near a
+    Bessel zero. All arithmetic is isolated from the caller's mp context.
+    """
+    mp = mpmath.mp.clone()
+    previous = None
+    for extra in (0, 40, 100, 220, 460):
+        mp.dps = digits+extra
+        try:
+            value = evaluate(mp)
+        except (mp.NoConvergence, OverflowError, ZeroDivisionError) as error:
+            raise ValueError(name+' unresolved at available numerical precision') from error
+        if not mp.isfinite(value):
+            raise ValueError(name+' outside finite numerical evaluation range')
+        if (value != 0 and previous is not None and previous != 0
+                and abs(value-previous) <= mp.mpf('1e-30')*abs(value)):
+            try:
+                if complex_output:
+                    result = complex(value)
+                    reported = mp.mpc(result.real, result.imag)
+                else:
+                    result = float(value)
+                    reported = mp.mpf(result)
+            except OverflowError as error:
+                raise ValueError(name+' outside binary64 reporting range') from error
+            if (not np.isfinite(result)
+                    or abs(reported-value) > mp.mpf('1e-12')*abs(value)):
+                raise ValueError(name+' outside reliable binary64 reporting range')
+            return result
+        previous = value
+    raise ValueError(name+' unresolved at available numerical precision')
 
 
 def rotate(vector, angle):
@@ -269,26 +348,55 @@ def rotate(vector, angle):
 
 
 def projected_half_density(point, center, momentum, sigma, hbar=1, nodes=256):
-    """Numerical circle quadrature; no certified pointwise quadrature error."""
+    """Normalized neutral projection from the closed complex Bessel integral.
+
+    ``nodes`` is a validated legacy argument and no longer affects the result.
+    The full expression, including normalization, is evaluated before any
+    binary64 conversion. Precision agreement is numerical, not a certified
+    pointwise error bound. Unresolved zeros and reporting ranges are refused.
+    """
     if type(nodes) is not int or nodes < 16:
         raise ValueError('at least sixteen integer circle nodes required')
-    norm = overlap_parameters(center, momentum, sigma, hbar)['norm_squared']**.5
-    if norm == 0:
-        raise ValueError('projection norm underflows at these parameters')
-    try:
-        with np.errstate(over='raise', invalid='raise', divide='raise', under='ignore'):
-            values = [np.exp(seed_log_half_density(point, rotate(center, a), rotate(momentum, a), sigma, hbar))
-                      for a in np.arange(nodes)*(2*np.pi/nodes)]
-            if any(value == 0 for value in values):
-                raise ValueError('pointwise Gaussian amplitude below binary64 range')
-            # Weight before summing: the mean can fit when the raw sum cannot.
-            value = complex(math.fsum(v.real/nodes for v in values),
-                            math.fsum(v.imag/nodes for v in values))/norm
-    except (FloatingPointError, OverflowError) as error:
-        raise ValueError('pointwise amplitude outside binary64 calculation range') from error
-    if not np.isfinite(value):
-        raise ValueError('pointwise amplitude outside binary64 reporting range')
-    return value
+    point, center, momentum, sigma, hbar = _pointwise_inputs(
+        point, center, momentum, sigma, hbar)
+    y, x, p = point[30:], center[30:], momentum[30:]
+    s2 = sigma*sigma
+    dot = lambda a, b: sum(v*w for v, w in zip(a, b))
+    jx, jp = [-v for v in x[13:]]+x[:13], [-v for v in p[13:]]+p[:13]
+    radiative_delta = [v-w for v, w in zip(point[:30], center[:30])]
+    decay = -(dot(radiative_delta, radiative_delta)+dot(y, y)+dot(x, x))/(4*s2)
+    phase = (dot(momentum[:30], radiative_delta)-dot(p, x))/hbar
+    ur, ui = dot(y, x)/(2*s2), dot(p, y)/hbar
+    vr, vi = dot(y, jx)/(2*s2), dot(jp, y)/hbar
+    # W = U^2+V^2, with U and V the cosine and sine coefficients.
+    wr, wi = ur*ur-ui*ui+vr*vr-vi*vi, 2*(ur*ui+vr*vi)
+    a = dot(x, x)/(4*s2)+s2*dot(p, p)/(hbar*hbar)
+    b = dot(p, jx)/hbar
+    z2 = a*a-b*b
+    if z2 < 0:
+        raise ValueError('invalid exact packet Gram determinant')
+    # The norm squared is exp(-A)*I0(sqrt(A^2-B^2)). Combine
+    # decay+A/2 exactly: either separate exponential can be unreportable
+    # while the normalized state is an ordinary centered Gaussian.
+    normalized_decay = decay+a/2
+
+    def evaluate(mp):
+        real = lambda v: _mp_rational(mp, v)
+        if wi == 0 and wr < 0:
+            integral = mp.besselj(0, mp.sqrt(real(-wr)))
+        elif wr == 0 and wi == 0:
+            integral = mp.mpf(1)
+        else:
+            integral = mp.besseli(0, mp.sqrt(mp.mpc(real(wr), real(wi))))
+        if integral == 0:
+            return mp.mpc(0)
+        norm_log = mp.log(mp.besseli(0, mp.sqrt(real(z2)))) if z2 else mp.mpf(0)
+        log_size = (-14*(mp.log(2*mp.pi)+2*mp.log(real(sigma)))
+                    +real(normalized_decay)+mp.log(abs(integral))-norm_log/2)
+        return mp.exp(log_size)*mp.exp(mp.j*real(phase))*(integral/abs(integral))
+
+    return _pointwise_evaluation(evaluate,
+        _pointwise_digits(normalized_decay, a, phase, ur, ui, vr, vi), 'pointwise amplitude')
 
 
 def scalar_radius_moment(center, momentum, sigma, hbar=1):
