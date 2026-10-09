@@ -128,8 +128,10 @@ def test_saturated_norm_refuses_insufficient_float_precision(center):
     with pytest.raises(ValueError, match='reporting range'):
         packet.overlap_parameters(q, p, 1)
     assert packet.scalar_radius_moment(q, p, 1) == 26
-    with pytest.raises(ValueError, match='reporting range'):
-        packet.projected_half_density(q, q, p, 1)
+    # The complete normalized chiral state is a centered Gaussian even
+    # when its separate projection norm cannot be reported as binary64.
+    assert packet.projected_half_density(np.zeros(56), q, p, 1) == pytest.approx(
+        (2*np.pi)**-14, rel=1e-12, abs=0)
 
 
 @pytest.mark.parametrize('momentum', [1e160, 1e200, 1e300])

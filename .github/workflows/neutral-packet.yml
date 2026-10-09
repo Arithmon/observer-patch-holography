@@ -33,8 +33,12 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -r requirements.txt
-      - name: Independently replay neutral packet observables and challenge their domain
-        run: python -m pytest -q -W error code/electromagnetism/test_neutral_packet_observables.py code/electromagnetism/test_whitney_quantum_packet.py
+      - name: Independently replay neutral packet integrals, observables and their domain
+        run: >-
+          python -m pytest -q -W error
+          code/electromagnetism/test_neutral_packet_projection.py
+          code/electromagnetism/test_neutral_packet_observables.py
+          code/electromagnetism/test_whitney_quantum_packet.py
       - name: Challenge original-input kinetic minima, densities and independent replay
         run: >-
           python -m pytest -q -W error
