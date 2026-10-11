@@ -38,5 +38,12 @@
     "guard_receipt": "receipts/active_surface_guard.json",
     "guard_receipt_sha256": "0e0c5943c6f4835ebc88a22d5f1721ace69357765205f079b5405a7af1a750dd",
     "disposition": "canonical generated integration refresh after adding report; existing claim registry/adopted basis/premise map unchanged; omitted from portable ZIP"
+  },
+  "reader_style_validation": {
+    "receipt": "receipts/report_reader_style.json",
+    "tool_sha256": "3b517eab949a9e502618e9ad4694c9ef790754d6ca4d9f6ff997bfeabf88d595",
+    "report_sha256": "82eb0d794862657139b5df8bf30cf351fceea92828d1fb3dff7e620a772552f0",
+    "exit_code": 0,
+    "scope": "changed reader surfaces only; full repository fixture validation is separate"
   }
 }
