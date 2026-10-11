@@ -41,7 +41,8 @@ processus. Tout mécanisme ajouté doit répondre à un lien manquant démontré
 et toute hypothèse physique ajoutée doit être déclarée. L’échec d’un candidat
 purement scalaire ne prouve pas qu’une loi commune simple soit impossible.
 
-Le [suivi des modèles](docs/MODEL_SEARCH.md), la
+Le [registre des lois candidates](docs/MODEL_CANDIDATES.md) compare leurs
+propriétés testées et leurs hypothèses. Le [suivi des modèles](docs/MODEL_SEARCH.md), la
 [carte des prémisses](docs/MODEL_PREMISE_MAP.md) et les
 [tâches de recherche](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
 décrivent ce travail. Un lien testé ou un candidat rejeté constitue un progrès ;
@@ -57,6 +58,7 @@ et vérifications de reproductibilité continuent selon la
 | Pour explorer… | Commencer par… |
 | --- | --- |
 | Le modèle en construction et ses liens physiques à établir | [Suivi des modèles](docs/MODEL_SEARCH.md) |
+| Les lois candidates, leurs hypothèses et leurs tests distinctifs | [Registre des candidats](docs/MODEL_CANDIDATES.md) |
 | L’argument physique existant | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
 | Les preuves et les calculs reproductibles | [Bibliothèque Lean](Lean/) et [guide de reproduction](REPRODUCE.md) |
 | Les travaux associés sur les machines apprenantes | [Cadence](https://floatingpragma.io/cadence/) et [démonstrations interactives](https://floatingpragma.io/demos/) |

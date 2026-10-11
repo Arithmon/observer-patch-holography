@@ -38,7 +38,8 @@ demonstrated missing connection, and count every added physical assumption.
 A rejected scalar-only candidate does not establish that a simple common
 source law is impossible.
 
-Follow the [model search](docs/MODEL_SEARCH.md), its
+Compare the [concrete candidate laws](docs/MODEL_CANDIDATES.md), their tested
+properties and remaining choices. Follow the [model search](docs/MODEL_SEARCH.md), its
 [model–theorem premise map](docs/MODEL_PREMISE_MAP.md), and the
 [research issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics).
 Progress means a tested connection or a rejected candidate; theorem counts
@@ -54,6 +55,7 @@ states the milestone and the correction exception.
 | To explore… | Start with… |
 | --- | --- |
 | The model being constructed and its open physical connections | [Model search](docs/MODEL_SEARCH.md) |
+| The active repair laws, assumptions and distinguishing tests | [Candidate register](docs/MODEL_CANDIDATES.md) |
 | The existing physics argument | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
 | The proofs and reproducible calculations | [Lean library](Lean/) and [reproduction guide](REPRODUCE.md) |
 | The related work on learning machines | [Cadence](https://floatingpragma.io/cadence/) and [interactive demos](https://floatingpragma.io/demos/) |

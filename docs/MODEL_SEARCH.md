@@ -11,6 +11,9 @@ milestones; they do not by themselves complete the programme.
 Research status: **11 October 2026**. Source reference:
 `5c2aafe18a83921468e72e0df25912d6d814db57`.
 
+The [candidate register](MODEL_CANDIDATES.md) compares the concrete active
+laws, their tested properties, added assumptions and next decisive tests.
+
 **Programme decision, 11 October:** organize research around what one repair
 process must supply. The [work ownership](#work-ownership-and-claim-accounting)
 below assigns construction, physical tests and audits in parallel. Paper
@@ -368,8 +371,10 @@ Use the existing records together:
 
 - **GitHub issues** own live work, dependencies and concise decisions. Keep
   exploratory logs and unapproved private contributions local.
-- **This document and the [premise map](MODEL_PREMISE_MAP.md)** own candidate
-  status and model-to-theorem connections. Edit
+- **The [candidate register](MODEL_CANDIDATES.md)** owns the concise comparison
+  of concrete laws and their properties. This document supplies their
+  derivations and test summaries; the [premise map](MODEL_PREMISE_MAP.md)
+  owns model-to-theorem connections. Edit
   [`tracking/model_theorem_map.json`](../tracking/model_theorem_map.json) and
   regenerate the map; do not create a competing claim registry.
 - **The [claim registry](../claims/claim_registry.yaml) and scientific

@@ -69,6 +69,10 @@ administrative closure does not discharge a physical premise.
 Reuse the existing arguments before adding mechanisms; require geometry,
 reversible response and clocks to connect through the same source process.
 
+[Concrete Repair-Law Candidates](MODEL_CANDIDATES.md) compares the active
+update rules, tested properties, added assumptions and decisive tests. This
+maintained research summary has a separate role from the generated registers.
+
 [Model Search](MODEL_SEARCH.md) records the simplest compatible repair
 candidate, its constructed connections and missing physical inputs. Its
 [work ownership](MODEL_SEARCH.md#work-ownership-and-claim-accounting) links
