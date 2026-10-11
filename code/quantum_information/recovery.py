@@ -13,9 +13,10 @@ from .gibbs import _numeric
 from .states import (
     ATOL, _spectrum, _unresolved_positive_spectrum, density_matrix, dimensions,
 )
-from .state_factors import UnresolvedStatePrecision, source_state, fidelity_factors
+from .state_factors import SourceState, UnresolvedStatePrecision, source_state, fidelity_factors
 from .state_functions import source_root, source_distance, source_reduction, entries_array, channel_entries
 from .positive_rounding import _is_exact_psd
+from .recovery_functions import source_petz_output
 
 
 class UnresolvedPetzSupport(UnresolvedStatePrecision):
@@ -68,9 +69,10 @@ def petz_recovery_kraus(reference_bc, dims):
     """Kraus operators for a fixed B -> BC Petz channel.
 
     On the support of tau_B this is the usual transpose channel of Tr_C.
-    The explicit completion sends mass on ker(tau_B) to tau_BC. That choice
-    makes the map trace preserving on all B inputs and does not affect an
-    AB state with B marginal tau_B. No state-dependent renormalization occurs.
+    The explicit completion prepares tau_BC/Tr(tau_BC) from kernel mass.
+    This fixed replacement has unit trace even for accepted source trace
+    roundoff. The supported Petz formula retains the original reference,
+    and no AB input is renormalized.
     """
     dims = dimensions(dims)
     if len(dims) != 2:
@@ -87,7 +89,19 @@ def _source_kraus(tau, dims):
     root = source_root(tau)
     kraus = [root @ np.kron(np.eye(b), np.eye(c)[:, j:j+1]) @ inverse
              for j in range(c)]
-    kraus.extend(np.outer(root[:, j], kernel[:, k].conj())
+    completion_root = root
+    if kernel.size and tau.trace != 1:
+        # This normalization defines the fixed completion state; it never
+        # changes tau in the supported Petz formula or a supplied AB input.
+        # Divide original rational entries before any binary64 averaging.
+        entries = tuple(tuple((r / tau.trace, s / tau.trace) for r, s in row)
+                        for row in tau.entries)
+        raw = np.array([[complex(float(r), float(s)) for r, s in row] for row in entries])
+        raw.setflags(write=False)
+        replacement = SourceState(raw, entries, tau.columns,
+                                  tuple(p / tau.trace for p in tau.pivots), Fraction(1))
+        completion_root = source_root(replacement)
+    kraus.extend(np.outer(completion_root[:, j], kernel[:, k].conj())
                  for k in range(kernel.shape[1]) for j in range(b*c))
     completeness = sum(k.conj().T @ k for k in kraus)
     if (not all(np.all(np.isfinite(k)) for k in kraus)
@@ -110,14 +124,19 @@ def _source_kraus(tau, dims):
 
 
 def petz_recovery(rho_abc, dims=(2, 2, 2)):
-    """Recover ABC from its AB marginal using its fixed BC reference."""
+    """Recover ABC from its AB marginal using its fixed BC reference.
+
+    An unresolved source formula can use the exact Markov fixed-point
+    certificate for matrices of order at most 16. This is a computational
+    bound on the fallback, not a state rank or physical support cutoff.
+    """
     dims = dimensions(dims)
     if len(dims) != 3:
         raise ValueError("recovery dimensions must name A, B and C")
     rho = source_state(rho_abc)
     ab = source_reduction(rho, dims, [0, 1])
     bc = source_reduction(rho, dims, [1, 2])
-    kraus = _source_kraus(bc, dims[1:])
+    _source_kraus(bc, dims[1:])
     # A PSD state with a rank-one A or C marginal factors across that cut.
     # Its Petz recovery is exactly itself (also for accepted trace roundoff).
     # Use this source certificate instead of manufacturing an indefinite
@@ -127,8 +146,19 @@ def petz_recovery(rho_abc, dims=(2, 2, 2)):
             source_reduction(rho, dims, [2]).rank == 1):
         recovered = entries_array(rho.entries)
     else:
-        lifted = [np.kron(np.eye(dims[0]), k) for k in kraus]
-        recovered = entries_array(channel_entries(lifted, ab.entries))
+        try:
+            recovered = source_petz_output(ab, bc, dims)
+        except UnresolvedStatePrecision:
+            # The polynomial zero certificate is sufficient, not complete:
+            # cancellations between the two spectral functions can remain.
+            # Reuse the independent exact CMI-zero theorem on ORIGINAL raw
+            # entries before returning a fixed point; a nearby non-Markov
+            # source cannot select this identity. Bound the algebraic cost.
+            from .information import is_markov_exact
+            if (len(rho.entries) > 16
+                    or not is_markov_exact(rho.raw, dims, [0], [1], [2])):
+                raise
+            recovered = entries_array(rho.entries)
     # A rounded matrix product can be indefinite even when its exact channel
     # expression is PSD. Do not feed that output to a different repaired state
     # distance or add a diagonal floor to manufacture a successful diagnostic.
