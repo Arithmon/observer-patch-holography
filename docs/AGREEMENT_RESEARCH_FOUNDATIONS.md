@@ -12,6 +12,39 @@ and hypotheses to the actual candidate, and isolate the remaining obligation.
 Reuse the conclusion once those hypotheses hold. A renamed consensus result
 or a longer simulation of it is not an independent theoretical contribution.
 
+## One structure: complete history and internal computation
+
+OPH proposes two descriptions of the same structure: a timeless solution to
+self-reference and a world that computes itself through its internal local
+dependencies. States, records, read/write relations and responses to admissible
+interventions constitute its operation. The complete history can contain
+change without an external host or a further time in which the whole history
+is played. This is the closure and intrinsic-realization hypothesis in
+[Essay B, §§6–7 and 9](../essays/B-why-does-anything-exist.tex).
+
+An application must construct the correspondence between those descriptions,
+preserving the observer's accessible records and interventions. A fixed-point
+equation alone does not supply that implementation. The
+[consensus paper's Introduction](../paper/reality_as_consensus_protocol.tex)
+distinguishes a solver's repair schedule from the observer-facing record
+history it selects. Internal computation can have local event order without
+a global clock; a solver index or an authenticated event order supplies no
+physical duration by itself.
+
+Observer-local time is a further reading within that same structure. On the
+stated geometric modular-flow branch, the observer's algebra-state pair
+supplies dimensionless modular ordering; physical time additionally needs
+a readable transition, event correspondence and calibrated clock instrument.
+See [Definition 4.2a](../paper/tex_fragments/PAPER.tex) and the
+[observer-clock certificate](../paper/tex_fragments/OBSERVERS_TECHNICAL_SUPPLEMENT_PORT.tex).
+Identifying this ordering with experienced time is an interpretation.
+Clock compatibility requires local readings tied to the declared observable
+evolution and consistent comparisons at shared events. It does not require
+identical clock rates, preferred global time or universal simultaneity.
+Any shared time parameter used by a restricted benchmark remains a declared
+model choice; an auxiliary simulation index gains no physical status from it.
+The dual description alone establishes no final instantaneous cosmic endpoint.
+
 ## 1. Recovery is a property of a system and its execution assumptions
 
 [Dijkstra (1974), *Self-stabilizing systems in spite of distributed control*](https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD426.html)

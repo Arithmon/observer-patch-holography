@@ -17,6 +17,11 @@ N1/N1-E and N2/N3/N4 retain their finite channel proofs; S1 uses the declared
 linear overlap structure where applicable. A sheaf heat-flow theorem does not
 turn their quantum instruments or conservative evolution into that heat flow.
 
+Clock obligations concern observer-local readings and compatible comparisons
+on the same process. They impose no preferred universal clock; supplied shared
+benchmark times retain their stated scope. See the
+[clock convention](MODEL_SEARCH.md#one-process-with-geometry-gauge-response-and-clocks-read-from-it).
+
 ## Candidates and priorities
 
 | ID | Concrete law | Role | Strongest established property | Principal missing connection |
