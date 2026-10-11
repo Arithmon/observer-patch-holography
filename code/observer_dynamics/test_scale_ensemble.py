@@ -118,7 +118,7 @@ def test_geometry_digest_matches_parent_receipt(population):
 def test_specification_requires_the_complete_scale_population(population, change):
     scales = population["levels"][0]["scales"]
     if change == "remove":
-        scales.pop()
+        scales.pop(0)  # Keep cube pairs intact: the census must catch an absent ancestor.
     elif change == "duplicate":
         scales[-1] = scales[0]
     else:
@@ -189,3 +189,249 @@ def test_reordered_terminal_inputs_cannot_break_parent_alignment(population):
     reject(population)
 
 
+def original_vector_statistics(coefficients):
+    """Compute input observables from four-port, mean-zero exact vectors."""
+    initial = (1, -1, 1, -1)
+    residual_u = (1, 1, -1, -1)
+    residual_v = (1, -1, -1, 1)
+    fields = [tuple(Fraction(a * x + b * u + c * v)
+                    for x, u, v in zip(initial, residual_u, residual_v))
+              for a, b, c in coefficients]
+    count = len(fields)
+    average = tuple(sum(field[index] for field in fields) / count for index in range(4))
+    initial_power = sum(Fraction(value * value, 4) for value in initial)
+    responses = [sum(x * y for x, y in zip(initial, field)) / (4 * initial_power)
+                 for field in fields]
+    powers = [sum(value * value for value in field) / (4 * initial_power)
+              for field in fields]
+    # Start from the original coordinate-wise sample variance, independently
+    # of the residual-polygon reduction used by the verifier.
+    noise = sum((field[index] - average[index]) ** 2
+                for field in fields for index in range(4)) / (4 * (count - 1) * initial_power)
+    return [float(value) for value in responses], [float(value) for value in powers], float(noise)
+
+
+@pytest.mark.parametrize("coefficients", [
+    [(1, 0, 0), (-1, 0, 0)],  # Negative unbiased common power is valid.
+    [(2, 1, 0), (-1, 2, 0), (0, 3, 0)],  # Maximum residual-sum length.
+    [(1, 4, 0), (2, -1, 0), (-1, -1, 0)],  # Positive minimum sum length.
+    [(1, 1, 0), (-1, 0, 1), (0, -1, -1)],  # Zero minimum sum length.
+    [(1, 1, 0), (1, 1, 0)],  # Identical schedules: genuine zero noise.
+])
+def test_ensemble_bounds_accept_original_vector_populations_and_boundaries(coefficients):
+    responses, powers, noise = original_vector_statistics(coefficients)
+    retained.ensemble_bounds(responses, powers, noise)
+
+
+def test_negative_unbiased_common_power_is_not_clamped():
+    responses, powers, noise = original_vector_statistics([(1, 0, 0), (-1, 0, 0)])
+    assert mean(powers) - noise == -1
+    retained.ensemble_bounds(responses, powers, noise)
+
+
+@pytest.mark.parametrize("coefficients,noise_change", [
+    ([(2, 1, 0), (-1, 2, 0), (0, 3, 0)], -0.001),
+    ([(1, 4, 0), (2, -1, 0), (-1, -1, 0)], 0.001),
+    ([(1, 1, 0), (-1, 0, 1), (0, -1, -1)], 0.001),
+])
+def test_ensemble_bounds_reject_both_sides_outside_original_vector_boundaries(coefficients, noise_change):
+    responses, powers, noise = original_vector_statistics(coefficients)
+    with pytest.raises(ValueError):
+        retained.ensemble_bounds(responses, powers, noise + noise_change)
+
+
+@pytest.mark.parametrize("responses,powers,noise", [
+    ([1.0, -1.0], [0.5, 1.0], 1.0),  # Individual Cauchy violation.
+    ([1.0, -1.0], [1.0, 1.0], 0.0),  # Differing projections cannot be noiseless.
+    ([0.0, 0.0], [1.0, 1.0], -0.1),
+    ([0.0, 0.0], [1.0, float("nan")], 1.0),
+    ([0.0, 0.0], [1.0, float("inf")], 1.0),
+    ([0.0, 0.0], [1.0, True], 1.0),
+    ([False, 0.0], [1.0, 1.0], 1.0),
+    ([0.0, 0.0], [1.0, 1.0], True),
+    ([0.0, 0.0], [1.0], 1.0),
+    ([0.0], [1.0], 1.0),
+])
+def test_ensemble_bounds_reject_invalid_covariance_inputs(responses, powers, noise):
+    with pytest.raises(ValueError):
+        retained.ensemble_bounds(responses, powers, noise)
+
+
+def rescaled_statistics(responses, powers, noise, gain):
+    """Changing every terminal vector's units rescales its actual moments."""
+    return ([gain * response for response in responses],
+            [gain**2 * power for power in powers], gain**2 * noise)
+
+
+@pytest.mark.parametrize("delta", [5e-9, 8e-9, 1e-8])
+@pytest.mark.parametrize("gain", [1e-120, 1.0, 1e120])
+def test_original_nearly_parallel_vectors_keep_their_residual_roundoff_budget(delta, gain):
+    initial = np.array([1.0, 1.0, -1.0, -1.0])
+    transverse = np.array([1.0, -1.0, 1.0, -1.0])
+    fields = np.array([transverse] * 8 + [initial + delta * transverse] * 8)
+    responses = np.mean(fields * initial, axis=1).tolist()
+    powers = np.mean(fields**2, axis=1).tolist()
+    # This calculation starts from coordinate-wise fluctuations. It neither
+    # subtracts squared responses nor uses a residual-resultant identity.
+    noise = float(np.mean(np.var(fields, axis=0, ddof=1)))
+    exact_last = [Fraction(float(entry)) for entry in fields[-1]]
+    exact_response = sum(Fraction(int(x)) * y for x, y in zip(initial, exact_last)) / 4
+    exact_power = sum(y * y for y in exact_last) / 4
+    assert exact_power - exact_response**2 > 0
+    # Squaring and averaging the original binary64 data loses this positive
+    # residual. A final tolerance on the resultant alone then falsely rejects
+    # these vectors: sqrt near zero amplifies the permitted input roundoff.
+    assert powers[-1] - responses[-1]**2 == 0.0
+    retained.ensemble_bounds(*rescaled_statistics(responses, powers, noise, gain))
+
+
+@pytest.mark.parametrize("gain", [1e-120, 1.0, 1e120])
+def test_identical_original_vectors_allow_only_roundoff_negative_noise(gain):
+    initial = np.array([1.0, 1.0, -1.0, -1.0])
+    field = np.array([0.5, 0.1, -0.3, -0.9])
+    field = field - field.mean()
+    fields = np.tile(field, (16, 1))
+    response = float(np.mean(initial * field))
+    power = float(np.mean(field**2))
+    # The retained estimator subtracts these two independently accumulated
+    # powers. Exact original vectors give zero schedule variance because
+    # every field equals its population mean coordinate by coordinate.
+    exact_field = tuple(Fraction(float(value)) for value in field)
+    exact_mean = tuple(sum([value] * 16) / 16 for value in exact_field)
+    assert sum((value - average)**2 for value, average in zip(exact_field, exact_mean)) == 0
+    summed_power = sum([power] * 16)
+    power_of_sum = float(np.mean(np.sum(fields, axis=0)**2))
+    noise = (summed_power - power_of_sum / 16) / 15
+    assert noise == pytest.approx(-5.921189464667501e-17, rel=1e-14, abs=0)
+    responses, powers = [response] * 16, [power] * 16
+    retained.ensemble_bounds(*rescaled_statistics(responses, powers, noise, gain))
+    with pytest.raises(ValueError):
+        retained.ensemble_bounds(*rescaled_statistics(responses, powers, -1e-4 * power, gain))
+
+
+@pytest.mark.parametrize("weighted", [False, True])
+def test_geometry_factor_from_original_small_port_populations(weighted):
+    cells = [4, 4, 4, 8]
+    group_ports = [12 * count for count in cells]
+    # Twelve ports outside these disjoint groups exercise the partial-coverage
+    # case. Group sizes satisfy the archived cube estimator's minimum of four.
+    port_groups = [group for group, size in enumerate(group_ports) for _ in range(size)] + [None] * 12
+    ports = len(port_groups)
+    weights = cells if weighted else [1] * len(cells)
+
+    def centered_variance(values):
+        center = sum(w * value for w, value in zip(weights, values)) / sum(weights)
+        return sum(w * (value - center)**2 for w, value in zip(weights, values)) / sum(weights)
+
+    coefficients = []
+    for raised in (1, 2):
+        populations = Counter()
+        for occupied in combinations(range(ports), raised):
+            counts = [0] * len(cells)
+            for port in occupied:
+                group = port_groups[port]
+                if group is not None:
+                    counts[group] += 1
+            populations[tuple(counts)] += 1
+        expected = sum(multiplicity * centered_variance(
+            [Fraction(count, size) for count, size in zip(counts, group_ports)])
+            for counts, multiplicity in populations.items()) / comb(ports, raised)
+        fraction = Fraction(raised, ports)
+        coefficients.append(expected / (fraction * (1 - fraction) * Fraction(ports, ports - 1)))
+    assert coefficients[0] == coefficients[1] == (Fraction(1, 80) if weighted else Fraction(7, 512))
+
+    # For independent uniform {0,...,5} port loads, centered innovations have
+    # zero cross terms. Sum each original port's six quadratic contributions.
+    iid_variance = Fraction(0)
+    for group in port_groups:
+        for value in range(6):
+            means = [Fraction(0)] * len(cells)
+            if group is not None:
+                means[group] = (Fraction(value) - Fraction(5, 2)) / group_ports[group]
+            iid_variance += centered_variance(means) / 6
+    assert iid_variance == Fraction(35, 12) * coefficients[0]
+    geometry = {
+        "name": "cube_2_weighted" if weighted else "cube_2_unweighted",
+        "groups": len(cells), "cells_min": min(cells), "cells_max": max(cells),
+        "cells_arithmetic_mean": sum(cells) / len(cells),
+        "cells_harmonic_mean": float(Fraction(len(cells)) / sum(Fraction(1, count) for count in cells)),
+    }
+    assert float(retained.geometry_factor(geometry, ports // 12)) == pytest.approx(
+        float(coefficients[0]), rel=1e-14, abs=0)
+
+
+def test_scale_consumer_preserves_negative_common_power_from_discrete_ports():
+    initial_groups = ([2] * 3 + [3] * 9, [2] * 9 + [3] * 3) * 2
+    terminal_groups = ([0] * 3 + [1] * 9, [0] * 9 + [1] * 3) * 2
+    opposite_groups = tuple([1 - port for port in group] for group in terminal_groups)
+
+    def centered_means(groups):
+        values = [Fraction(sum(group), len(group)) for group in groups]
+        center = sum(values) / len(values)
+        return [value - center for value in values]
+
+    def inner(left, right):
+        return sum(x * y for x, y in zip(left, right)) / len(left)
+
+    x = centered_means(initial_groups)
+    fields = [centered_means(groups) for groups in (terminal_groups, opposite_groups)]
+    assert sum(map(sum, terminal_groups)) == sum(map(sum, opposite_groups)) == 24
+    initial = inner(x, x)
+    powers = [inner(field, field) for field in fields]
+    average = [(left + right) / 2 for left, right in zip(*fields)]
+    noise = sum(inner([value - center for value, center in zip(field, average)],
+                      [value - center for value, center in zip(field, average)])
+                for field in fields)
+    common = inner(*fields)
+    assert initial == Fraction(1, 16) and noise == Fraction(1, 8) and common == -initial
+    coefficient, factor = Fraction(12, 47), Fraction(1, 16)
+    equilibrium = coefficient * factor
+    rows = []
+    for seed, (field, power) in enumerate(zip(fields, powers)):
+        response = inner(x, field) / initial
+        rows.append({
+            "seed": seed, "initial_variance": float(initial), "terminal_variance": float(power),
+            "response": float(response), "power_ratio": float(power / initial),
+            "coherence_squared": float(inner(x, field)**2 / (initial * power)),
+            "residual_power_ratio": 0.0,
+            "variance_over_exchangeable_equilibrium": float(power / equilibrium),
+            "legacy_unweighted_global_centered_response": float(response),
+        })
+    scale = {
+        "name": "ancestor_1", "groups": 4, "cells_min": 1, "cells_max": 1,
+        "cells_arithmetic_mean": 1.0, "cells_harmonic_mean": 1.0,
+        "initial_variance_over_iid_null": float(initial / (Fraction(35, 12) * factor)),
+        "equilibrium_variance": float(equilibrium), "per_schedule": rows,
+        "response_mean": 0.0, "response_schedule_sd": 2**0.5, "response_schedule_se": 1.0,
+        "total_terminal_variance": float(sum(powers) / 2),
+        "conditional_schedule_variance_unbiased": float(noise),
+        "cross_schedule_common_power_unbiased": float(common), "schedule_noise_fraction": 2.0,
+    }
+    retained.check_scale(scale, [0, 1], 4, coefficient)
+
+
+def test_angular_consumer_preserves_negative_common_power_from_opposite_harmonics():
+    # Original real ell=1 coefficient vectors ordered by m=-1,0,1.
+    initial = (0, 1, 0)
+    fields = (initial, tuple(-value for value in initial))
+
+    def inner(left, right):
+        return sum(Fraction(x * y, 3) for x, y in zip(left, right))
+
+    power = inner(initial, initial)
+    common = inner(*fields)
+    average = tuple(Fraction(left + right, 2) for left, right in zip(*fields))
+    noise = sum(inner(tuple(value - center for value, center in zip(field, average)),
+                      tuple(value - center for value, center in zip(field, average)))
+                for field in fields)
+    assert power == Fraction(1, 3) and noise == Fraction(2, 3) and common == -power
+    row = {
+        "ell": 1, "C_initial": float(power),
+        "per_schedule_response": [float(inner(initial, field) / power) for field in fields],
+        "per_schedule_power_ratio": [float(inner(field, field) / power) for field in fields],
+        "cross_response_mean": 0.0, "cross_response_schedule_sd": 2**0.5,
+        "total_power_ratio_mean": 1.0, "C_terminal_mean": float(power),
+        "coherence_squared_mean": 1.0, "orthogonal_residual_power_ratio_mean": 0.0,
+        "conditional_schedule_noise_power": float(noise), "cross_schedule_common_power": float(common),
+    }
+    retained.check_angular(row, 2)
