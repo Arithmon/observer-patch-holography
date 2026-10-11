@@ -904,3 +904,52 @@ def test_source_rounded_recovery_is_positive_or_explicitly_unavailable():
         assert row["petz_status"] == "available"
         assert row["petz_fidelity"] == pytest.approx(np.trace(rho @ recovered).real,
                                                     abs=3e-15, rel=0)
+
+
+def test_pauli_expectation_keeps_original_half_subnormal_coherence():
+    mass = np.nextafter(0., 1.)
+    rho = np.zeros((8, 8), complex)
+    rho[0, 0] = 1
+    rho[1, 1] = rho[3, 3] = mass
+    rho[1, 3] = 1j*mass
+    # Exact Hermitian averaging gives +/-i*mass/2. The Y contraction
+    # adds both contributions, giving the representable expectation -mass.
+    assert stage1.pauli_expectation(rho, "IYI") == -mass
+
+
+@pytest.mark.parametrize("mass", [2.**-80, 9*np.nextafter(0., 1.)])
+def test_observable_difference_precedes_individual_expectation_rounding(mass):
+    from fractions import Fraction
+    rho, sigma = np.zeros((8, 8)), np.zeros((8, 8))
+    rho[0, 0] = sigma[0, 0] = 1
+    rho[1, 1], sigma[2, 2] = mass, mass
+    # Of 36 weight-1/2 Paulis, only IZI,IIZ,ZZI,ZIZ differ, each by
+    # 2*mass. Their individual expectations round to 1 in binary64.
+    expected = float(2*Fraction(mass)/9)
+    assert stage1.low_weight_observable_mismatch(rho, sigma) == expected
+    assert stage1.low_weight_observable_mismatch(sigma, rho) == expected
+    assert stage1.low_weight_observable_mismatch(rho, rho) == 0
+
+
+def test_positive_observable_mismatch_underflow_is_unavailable():
+    mass = np.nextafter(0., 1.)
+    rho, sigma = np.zeros((8, 8)), np.zeros((8, 8))
+    rho[0, 0] = sigma[0, 0] = 1
+    rho[1, 1], sigma[2, 2] = mass, mass
+    with pytest.raises(stage1.UnresolvedStatePrecision, match="underflow|precision"):
+        stage1.low_weight_observable_mismatch(rho, sigma)
+
+
+def test_source_pauli_contractions_match_all_complex_three_qubit_operators():
+    import itertools
+    # A dyadic complex pure state makes every matrix-product oracle exact
+    # in binary64. The oracle forms literal Kronecker matrices; it does not
+    # reuse the producer's signed-permutation contraction or bit indexing.
+    vector = np.array([1, 1j, -1, -1j, 1j, 1, -1j, -1])
+    rho = np.outer(vector, vector.conj())/8
+    paulis = {"I": np.eye(2), "X": np.array([[0, 1], [1, 0]]),
+              "Y": np.array([[0, -1j], [1j, 0]]), "Z": np.diag([1, -1])}
+    for label in itertools.product("IXYZ", repeat=3):
+        operator = np.kron(np.kron(paulis[label[0]], paulis[label[1]]), paulis[label[2]])
+        expected = np.trace(rho @ operator).real
+        assert stage1.pauli_expectation(rho, "".join(label)) == expected

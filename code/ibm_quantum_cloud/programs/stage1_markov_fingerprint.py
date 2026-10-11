@@ -6,6 +6,7 @@ import itertools
 import json
 import math
 import sys
+from fractions import Fraction
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import TYPE_CHECKING
@@ -21,6 +22,7 @@ from quantum_information.recovery import (
     trace_distance, validated_state, UnresolvedPetzSupport, UnresolvedStatePrecision,
 )
 from quantum_information.positive_rounding import _is_exact_psd, round_positive_gram
+from quantum_information.state_factors import source_state, fraction_float
 from quantum_information.states import (
     ATOL, conditional_mutual_information as _cmi, partial_trace,
     von_neumann_entropy as _entropy,
@@ -127,18 +129,34 @@ def project_to_physical_density_matrix(rho: np.ndarray, *, return_rounding_bound
 
 
 def pauli_expectation(rho: np.ndarray, pauli_string_q0: str) -> float:
-    rho = validated_state(rho)
+    return fraction_float(_source_pauli_expectation(source_state(rho), pauli_string_q0))
+
+
+def _source_pauli_expectation(source, pauli_string_q0):
+    """Exact signed-permutation contraction before any output rounding."""
     if (not isinstance(pauli_string_q0, str) or not pauli_string_q0
             or any(p not in "IXYZ" for p in pauli_string_q0)
-            or rho.shape != (2**len(pauli_string_q0),)*2):
+            or len(source.entries) != 2**len(pauli_string_q0)):
         raise ValueError("Pauli label must match the state space")
-    op = PAULI_MATRICES[pauli_string_q0[0]]
-    for char in pauli_string_q0[1:]:
-        op = np.kron(op, PAULI_MATRICES[char])
-    return float(np.real_if_close(np.trace(rho @ op)))
+    expectation = Fraction(0)
+    for i, row in enumerate(source.entries):
+        j, phase = i, 1
+        for position, char in enumerate(pauli_string_q0):
+            mask = 1 << (len(pauli_string_q0)-position-1)
+            bit = bool(i & mask)
+            if char in "XY":
+                j ^= mask
+            if char == "Y":
+                phase *= -1j if bit else 1j
+            elif char == "Z" and bit:
+                phase *= -1
+        real, imag = row[j]
+        expectation += real*int(phase.real)-imag*int(phase.imag)
+    return expectation
 
 
 def low_weight_observable_mismatch(rho: np.ndarray, sigma: np.ndarray) -> float:
+    left, right = source_state(rho), source_state(sigma)
     labels = []
     paulis = "XYZ"
     for weight in (1, 2):
@@ -148,8 +166,9 @@ def low_weight_observable_mismatch(rho: np.ndarray, sigma: np.ndarray) -> float:
                 for pos, op in zip(positions, ops):
                     label[pos] = op
                 labels.append("".join(label))
-    diffs = [abs(pauli_expectation(rho, label) - pauli_expectation(sigma, label)) for label in labels]
-    return float(np.mean(diffs))
+    differences = sum((abs(_source_pauli_expectation(left, label) -
+                           _source_pauli_expectation(right, label)) for label in labels), Fraction(0))
+    return fraction_float(differences/len(labels))
 
 
 def fawzi_renner_fidelity_lower_bound(cmi_bits: float) -> float:
