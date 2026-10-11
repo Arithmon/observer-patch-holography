@@ -29,23 +29,26 @@ def operator(value, size=None):
 
 
 def orthonormal_operator_basis(basis):
-    """HS-orthonormalize an independent basis, without assuming equal norms."""
+    """HS-orthonormalize the supplied independent binary64 operator span.
+
+    A well-conditioned floating chart is cheap. Ill-conditioned presentations
+    are preconditioned over the original exact entries, before roundoff can discard
+    their independent directions. Unresolved normalization or conversion raises.
+    """
     if not isinstance(basis, (list, tuple)) or not basis:
         raise ValueError("nonempty operator basis required")
     matrices = [operator(b) for b in basis]
     d = len(matrices[0])
     if any(b.shape != (d, d) for b in matrices):
         raise ValueError("basis operators must act on one space")
+    if len(basis) > d*d:
+        raise ValueError("operator basis is dependent")
+    from .operator_spans import numerical_chart
     columns = np.column_stack([b.reshape(-1) for b in matrices])
-    norms = np.linalg.norm(columns, axis=0)
-    if np.any(norms == 0) or not np.all(np.isfinite(norms)):
-        raise ValueError("nonzero finite basis norms required")
-    columns = columns / norms
-    singular = np.linalg.svd(columns, compute_uv=False)
-    floor = 64*np.finfo(float).eps*max(columns.shape)*singular[0]
-    if len(basis) > d*d or singular[-1] <= floor:
-        raise ValueError("operator basis is dependent or numerically unresolved")
-    q, _ = np.linalg.qr(columns, mode="reduced")
+    q = numerical_chart(columns)
+    if q is None:
+        from .operator_spans import exact_columns, numerical_basis
+        return numerical_basis(exact_columns(matrices), d)
     return [q[:, i].reshape(d, d) for i in range(len(basis))]
 
 
@@ -81,9 +84,12 @@ def separation_modulus(basis, omega):
     Orthonormalizing the operator span solves the generalized Gram problem
     H c = lambda G c. Nonorthogonal and unequally scaled bases are allowed;
     dependent bases are rejected. No algebra closure is implied by this API.
+    General singular values are numerical, not interval bounds. Exact source
+    arithmetic resolves singleton actions and kernels; unresolved small
+    positive multi-column actions raise rather than becoming a false zero.
     """
     orthogonal = orthonormal_operator_basis(basis)
-    raw = np.asarray(omega)
+    raw = _numeric(omega, "reference vector")
     if (raw.shape != (len(orthogonal[0]),) or raw.dtype.kind not in "iufc"
             or not np.all(np.isfinite(raw))):
         raise ValueError("finite reference vector on the operator space required")
@@ -93,10 +99,22 @@ def separation_modulus(basis, omega):
     squared_norm = np.vdot(raw, raw)
     if not np.isfinite(squared_norm) or abs(squared_norm - 1) > 1e-12:
         raise ValueError("reference vector must be normalized")
+    if len(orthogonal) == 1:
+        from .operator_spans import small_separation_modulus
+        return small_separation_modulus([operator(b) for b in basis], raw)
     action = np.column_stack([b @ raw for b in orthogonal])
     if action.shape[1] > action.shape[0]:
         return 0.0
-    return float(np.linalg.svd(action, compute_uv=False)[-1])
+    singular = np.linalg.svd(action, compute_uv=False)
+    # Unit HS columns and a unit vector bound each action column by one.
+    # An absolute chart-error scale also detects an entirely rounded kernel.
+    floor = 64*np.finfo(float).eps*max(action.shape)
+    if singular[-1] <= floor:
+        # Chart and action roundoff cannot certify a true zero. Resolve a kernel
+        # from the original entries, without turning small positives into zero.
+        from .operator_spans import small_separation_modulus
+        return small_separation_modulus([operator(b) for b in basis], raw)
+    return float(singular[-1])
 
 
 def resolved_state_spectrum(rho):
@@ -149,7 +167,7 @@ class FiniteAlgebra:
                 if self.distance(a @ b) > ALGEBRA_ATOL:
                     raise ValueError("algebra must be closed under multiplication")
         self._q.setflags(write=False)
-        # QR is a numerical chart, not evidence of exact linear dependence.
+        # A numerical chart is not evidence of exact linear dependence.
         # Keep the supplied span separately for conservation decisions.
         for b in supplied:
             b.setflags(write=False)

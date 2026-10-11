@@ -54,6 +54,12 @@ not a domain argument.
   are different obligations. Where the source supplies a positive factor,
   preserve that structure before forming a rounded Gram matrix; a successful
   eigensolver on the damaged matrix cannot recover discarded information.
+  For operator bases, `Q*Q=I` checks orthonormality, not preservation of
+  the supplied span. Check its projector and observable action against the
+  original entries, including exactly representable ill-conditioned shears.
+  A failed chart is not an intrinsically unresolved span: compare alternate
+  exact presentations before attributing an intermediate underflow to the
+  source. Check small retained projector entries on their own scale.
 - **Combined conditioning:** challenge metric whitening and constraint
   inversion together. Separate precision gates can each pass while their
   compounded error spoils the minimum. Compare with the original-input
@@ -68,12 +74,18 @@ not a domain argument.
   boundaries before and after weighting. Use ordinary units, very small
   and large units, both signs where allowed, and cancelling energy origins.
   A normal output need not have resolved intermediate data.
+  A final float conversion can double-round an exact value at a subnormal
+  midpoint. Check original-value inequalities against adjacent floats and
+  exercise ties in both directions, including the zero boundary.
 - **Representations:** include real and complex inputs, exact dyadic basis
   changes, repeated eigenvalues, full-rank and singular states, and
   one-dimensional tensor factors. Check algebraic equality in a canonical
   domain, not by expression-tree equality. Check original scalars in mixed
   numeric containers before a common array dtype erases integer precision,
   Boolean types or missingness; validating the coerced array is too late.
+  Compare against the exact domain's own zero; equality with a Python
+  integer is not guaranteed by a canonical representation. Exercise a
+  successful case of each exact fallback as well as its refusals.
 - **Arithmetic context:** exercise exact Decimal inputs longer than the
   working precision, inherited rounding modes, exponent limits and traps.
   Deterministic receipt builders must isolate their arithmetic policy and
