@@ -84,7 +84,10 @@ def test_classical_recovery_rounds_original_conditional_midpoints():
     # strictly above it. Rounded Kraus roots lose this distinction first.
     assert expected[4, 4] == 2*tiny
     assert expected[5, 5] == 3*tiny
-    np.testing.assert_array_equal(petz_recovery(rho), expected)
+    actual = petz_recovery(rho)
+    assert actual[4, 4] == 2*tiny
+    assert actual[5, 5] == 3*tiny
+    np.testing.assert_array_equal(actual, expected)
 
 
 @pytest.mark.parametrize("phase", (1., 1j))
@@ -102,7 +105,10 @@ def test_coherent_recovery_rounds_original_conditional_midpoints(phase):
     expected = _conditional_block_oracle(rho, (2, 2, 4))
     assert expected[8, 8] == 2*tiny
     assert expected[10, 11] == phase*tiny
-    np.testing.assert_array_equal(petz_recovery(rho, (2, 2, 4)), expected)
+    actual = petz_recovery(rho, (2, 2, 4))
+    assert actual[8, 8] == 2*tiny
+    assert actual[10, 11] == phase*tiny
+    np.testing.assert_array_equal(actual, expected)
 
 
 def test_dense_noncommuting_source_matches_independent_matrix_square_root():

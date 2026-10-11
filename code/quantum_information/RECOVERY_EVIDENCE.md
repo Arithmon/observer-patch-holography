@@ -31,7 +31,7 @@ loss. The conditional sector is erased completely.
 
 ## One finite channel, with its support domain made explicit
 
-Let tau be a normalized positive operator on BC, `t=Tr_C(tau)`, and Pi the
+Let tau be a positive operator on BC with positive trace, `t=Tr_C(tau)`, and Pi the
 support projector of t. Let T be the Moore--Penrose inverse square root of t,
 with every positive eigenvalue inverted. Define
 
@@ -47,12 +47,14 @@ the pseudoinverse alone does not make it trace preserving on all B inputs.
 The new `petz_recovery_kraus` adds the explicit completion
 
 ```text
-R(X) = R_0(X) + Tr[(I-Pi) X] tau.
+R(X) = R_0(X) + Tr[(I-Pi) X] tau/Tr(tau).
 ```
 
 For an orthonormal kernel basis `{v_r}`, its additional Kraus operators are
-`L_jr = sqrt(tau)|j><v_r|`. Their adjoint products sum to `I-Pi`, because
-`Tr(tau)=1`. Consequently the returned fixed map is completely positive and
+`L_jr = sqrt(tau/Tr(tau))|j><v_r|`. Their adjoint products sum to `I-Pi`.
+This agrees with replacement by tau for a normalized reference and preserves
+unit trace on kernel inputs for accepted source trace drift. Consequently the
+exact fixed map is completely positive and
 trace preserving on the full B algebra. There is no division by the trace
 of its output and no selection depending on the state being processed.
 The replacement on the unused kernel is a disclosed completion choice,
@@ -62,7 +64,7 @@ Positivity and `Tr[t(I-Pi)]=0` imply that tau is supported in
 `Pi tensor I_C`: a positive operator with zero trace on a subspace
 annihilates that subspace. Hence `R(t)=tau`. If rho_AB has marginal t,
 the same support argument shows that its kernel-completion term vanishes.
-Thus using tau=rho_BC recovers a normalized ABC state with the original
+Thus, for normalized rho_ABC, using tau=rho_BC recovers a normalized ABC state with the original
 A marginal and BC marginal, and agrees with the usual supported Petz formula.
 This proves the exact mathematical statements for finite states, including
 singular references. The executable implementation evaluates them numerically.
@@ -352,8 +354,44 @@ additionally requiring the numerical positive count to match the source rank.
 The false-kernel example raises `UnresolvedPetzSupport`; true singular
 completion and tiny coordinate support remain usable.
 
-Petz marginals, channel contractions and trace-distance differences retain
-original entries until output conversion. A necessary additional channel
+Petz marginals and trace-distance differences retain original entries until
+output conversion. The public recovered state evaluates the supported map
+directly from the original marginals, before rounding its root and inverse
+factors. Exact diagonal marginals use the rational conditional law. General
+quantum marginals use refined matrix functions and contractions in a private
+multiprecision context. Exact component zeros can be certified by the real
+polynomial span of the two spectral functions: each unordered Hermitian pair
+`V_i (AB tensor I_C) V_j* + V_j (AB tensor I_C) V_i*` must vanish in that
+component, with diagonal pairs included once. Here the `V_i` span the lifted
+products `BC^r (B^s tensor I_C)`. Both spectral functions vanish at zero,
+so positive powers suffice. This sufficient certificate has a bounded span;
+an unresolved cancellation raises rather than becoming a guessed zero.
+
+Exact marginal products simplify the map before numerical evaluation:
+if `BC Tr(rho)=B tensor C`, its output is `AB tensor C/Tr(rho)`;
+if `AB Tr(rho)=A tensor B`, its output is `A tensor BC/Tr(rho)`.
+These identities apply even when the original ABC state has correlations
+absent from those two marginals. They cannot justify returning that input.
+For a remaining numerical cancellation on a state of dimension at most 16,
+the existing exact finite Markov criterion supplies a second certificate.
+A proposed output is accepted only if it is exactly PSD, its exact AB and BC
+marginals equal the original marginals, and it is exactly Markov. Such a state
+is its own Petz recovery, and its recovery map and input marginal are the
+specified ones; therefore it equals the required output. This proves the
+entire candidate, including any provisionally zero components. Merely small
+entries or matching marginals without the Markov certificate are insufficient.
+The source itself can also be certified as an exact Markov fixed point when
+the numerical candidate is unresolved. Both checks retain the
+channel-domain checks. The dimension
+bound limits the cost of the relative-modular moment calculation; it is not
+a physical restriction or a tolerance for approximate Markov behavior.
+Neighboring non-Markov controls must recover the marginal-determined state,
+not inherit the fixed-point result. The independent audit retained full-rank
+complex products and a nontrivial `AB_L tensor B_R C` Markov state that the
+polynomial zero certificate alone could not resolve.
+
+The separately returned binary64 Kraus operators are approximations to that
+source map. A necessary additional channel
 check compares its action on the reference marginal with each nonzero source
 component on that component's own scale. For B dimension one and reference
 `[[.5,i*s],[-i*s,.5]]`, correctly rounded root components still produce an
@@ -362,6 +400,14 @@ coherence. This case now raises; the neighboring diagonal `(1,s)` replacement
 remains available. Reference preservation and completeness are necessary
 checks, not a proof of all channel action. Independent matrix-unit and
 closed-form channel controls remain part of the tests.
+
+The author audit reproduced a separate downstream error: with
+`rho=diag(.25,.25,.25,.25,0,5s,0,0)`, exact conditional populations lie just
+below and above `2.5s`, respectively. The old rounded-factor contraction
+returned `(3s,3s)` instead of `(2s,3s)`. Independent rational block-conditional
+controls include coherent real and complex BC references, so a diagonal-only
+repair fails. Kernel replacement controls independently check both signs of
+accepted trace drift while preserving the original supported reference.
 
 If rounding the recovered matrix makes it exactly indefinite, recovery raises
 `UnresolvedStatePrecision` instead of adding a positivity floor. Stage 1 catches
@@ -373,6 +419,23 @@ to CMI: its former pre-averaging wrapper could erase a positive coherence and
 report zero information. Controls retain representable tiny CMI, exact zero,
 and unrepresentable positive CMI that must raise rather than become zero.
 
+Stage 1 Pauli contractions use the original exact Hermitian average. Observable
+mismatch forms differences before rounding either expectation, then averages
+them before its single output conversion. For diagonal states with common
+unit mass at 000 and an added mass m at 001 versus 010, four of 36 low-weight
+Paulis differ by `2m`; the mean is `2m/9`. Separate float expectations erased
+this positive signal for ordinary tiny m and for `m=9s`. A mean below the
+representable range is unavailable, not zero. A complex dyadic control checks
+all 64 Pauli labels against independent literal Kronecker matrices.
+
+Additional exact paths resolve rational answers with irrational intermediate
+spectra: arbitrary-rank diagonal fidelity uses the cross-root sum, and trace
+distance uses one-sign rational characteristic factors and Vieta's formula.
+Mixed-sign irreducible factors remain numerical. Normal and subnormal ties
+exercise both rounding directions. Source Hermiticity and trace checks compare
+exact squared defects against the shared tolerance, avoiding a preliminary
+floating norm or eigensolve that can fail under the caller's underflow policy.
+
 A source with a rank-one A or C marginal is an exact product across that cut,
 so its Petz recovery equals itself. The public recovery uses this fixed-point
 identity after the channel-domain checks, preventing factor rounding from
@@ -383,7 +446,8 @@ amplitudes `(1,1,1,1,1,1,1,i)/sqrt(8)` has CMI
 recovery control. These are finite matrix identities, not a new physical
 Markov premise or a source-selection claim for OPH.
 
-Twelve isolated mutations are rejected by the retained scientific assertions:
+The initial implementation audit rejected twelve isolated mutations through
+retained scientific assertions:
 old roots, old fidelity, missing inverse-rank validation, pre-averaged source
 entries, constant-zero fidelity, blanket root refusal, missing exact spectral
 zero certificates, missing reference-component checks, missing semidefinite
@@ -391,6 +455,18 @@ distance ties, pre-averaged CMI, an overly broad exception handler, and a
 missing recovered-positivity guard. Positive controls pass in the same copied
 packages; collection failures are excluded. This bounded set tests specific
 failure mechanisms, not completeness of the numerical domain.
+
+The author review adds twelve isolated mutations: floating prevalidation,
+missing arbitrary-rank diagonal fidelity, checking only one state's
+diagonality, missing source tolerances, rounded Pauli contraction, rounded
+expectations before subtraction, rational-eigenvalue-only distance ties,
+diagonal-only recovery repair, missing whole-output certificate, omitted
+Markov identity, omitted exact marginal equality, and unnormalized kernel
+replacement. Each fails a scientific assertion or a required valid result;
+the copied unmodified controls pass. The coherent recovery mutation reports
+`3s` instead of the independently derived `2s`. Independent dense quantum
+oracles, invalid candidates, non-Markov neighbors and trace-drift controls
+guard against a repair that merely recognizes the retained example.
 
 ## Numerical and downstream boundaries
 
