@@ -35,6 +35,30 @@ is retained. No episode sample, including the held-out third slice, may enter
 calibration. A hardware operator must inspect the actual references; declaring
 their hashes is not a verification of a calibration laboratory.
 
+One unknown gain and offset must explain **all** readings on a channel:
+external references, the three controls, both gauge executions and every
+slice, including the held-out slice. The raw-error displacement may differ
+between readings. For supplied raw value `r_i` and required model value `y_i`,
+the contract is `y_i = g (r_i + delta_i) + b`, with one `(g,b)` in the frozen
+gain/offset box and `|delta_i| <= raw_error` for each reading. Calibration drift
+between readings is not part of this contract.
+
+The verifier checks this common feasibility with exact rational arithmetic.
+For the fixed gain sign `s` and raw-error bound `e`, each reading gives
+`y_i - (r_i + s e) g <= b <= y_i - (r_i - s e) g`.
+Include the frozen offset bounds as constant lower/upper lines. A common
+offset exists exactly when every lower line is at most every upper line at
+the same gain. Eliminating the offset therefore gives linear bounds on `g`;
+their intersection with the frozen gain interval must be nonempty. Inclusive
+endpoints preserve valid singleton and line-segment solutions, for either
+gain sign. No floating-point tolerance or fitted midpoint is used.
+
+This is an additional rejection check, not a calibration estimator. The
+verifier never replaces the declared gain/offset intervals with the feasible
+subset or reports a selected gain/offset pair. All coordinate, field, action
+and control uncertainty still uses the full frozen box. In particular,
+episode and held-out readings cannot tighten their own acceptance bounds.
+
 The supplied design ceilings bound coordinate uncertainty by `1/1000`, field
 uncertainty by `1/20`, and field/source-action uncertainty by `1/2` in the
 declared model units. They may be tightened. Disabled-feedback controls must
@@ -50,7 +74,13 @@ are `study_id`, `run_id`, `capture_kind`, `device_id`, `firmware_sha256`,
 `captured_utc`, `controls`, and `executions`, in addition to `schema`.
 UTC timestamps use ISO spelling ending in `Z`. Every numerical measurement,
 interval endpoint and raw device timestamp is a canonical rational string,
-such as `"-3/2"`; JSON floats are rejected.
+such as `"-3/2"`, with at most 200 characters; JSON floats are rejected.
+Exact arithmetic may produce longer output endpoints. Gauge comparisons use
+the retained rational intervals before report serialization, so the external
+input limit does not restrict internally computed field or action precision.
+Output numerator and denominator integers use exact `Decimal(int)` fixed
+formatting, preserving the caller's decimal context and the process-wide
+integer-string digit limit even when accumulated results exceed that limit.
 
 The three ordered controls are `sham_no_probe`, `pair_mean`, and
 `feedback_disabled`. Each has `name`, `start_tick`, `end_tick`, and four
@@ -163,3 +193,44 @@ channels/events/probes, changed held-out coordinates, forged writers/parents,
 extra synthetic reads, missing feedback, wrong current, calibration leakage,
 uncertainty inflation, clock substitution, nonce reuse and capture reordering.
 No synthetic capture is committed as a physical run or valid observed receipt.
+
+Shared-calibration controls reproduce the false acceptance present at
+`efa92897`: individually compatible readings could require different gains.
+For example, with gain `[1, 1 + 10^-9]`, offset `-7/10` and zero raw error,
+`(raw, model) = (7/10, 0)` forces gain 1, while
+`(17/10, 1 + 17/10^10)` forces gain `1 + 10^-9`. Each individual interval
+contains its target, but the pair is impossible. Full 3,540-sample controls
+also put incompatible readings in different slices or gauges, while all
+unchanged readings and references admit either endpoint. Feasible companions
+must still pass. An independent exact boundary-intersection oracle checks the
+feasibility solver against the original raw-error equations, including
+negative gains, degenerate boxes and pairwise-compatible but jointly
+incompatible triples.
+
+An additional valid-input regression at `efa92897` replaces only six channel
+raw-error bounds by `1/1000000007`, `1/1000000009`, `1/1000000021`,
+`1/1000000033`, `1/1000000087`, and `1/1000000093`. Each 12-character input
+tightens the original `1/1000000000` bound, and the unchanged singleton gains
+and offsets explain every reading with zero displacement. The exact action
+endpoints have 277 and 275 characters. Reapplying the external 200-character
+input limit during the final gauge comparison incorrectly returned `INVALID`.
+The verifier now retains its exact intervals for both gauge comparisons.
+API and CLI controls compare all decoded coordinates, fields, action endpoints
+and device durations against an independent original-input scalar center/radius
+calculation. A separate case crosses the field-endpoint length boundary;
+another uses full 200-character inputs whose action integers exceed Python's
+default 4,300-digit formatting ceiling. An independent base-10 chunk formatter
+checks those outputs, including under restricted decimal contexts. Overlong
+external calibration and capture values must still be rejected.
+
+The repairs reject inconsistent synthetic or hardware-emulator submissions
+and admit conforming captures with long exact intermediate results; verdict
+meanings and reported uncertainty are unchanged.
+Previously frozen contracts remain historical and fail the changed adapter
+source pin. A future run needs a newly frozen contract, not a replacement
+hash attached to an old experiment. The live source-current inventory is
+regenerated for the changed package bytes; it still records this adapter as
+downstream-contaminated with no shipped capture. The immutable serial parent,
+voltage decoder, paper claims and physical-realization obligations are
+unchanged. This is a verifier correction under the standing
+[evidence audit #1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033).

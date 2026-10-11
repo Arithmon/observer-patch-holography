@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
+from decimal import Decimal
 from fractions import Fraction as Q
 import hashlib
 import json
@@ -130,7 +131,48 @@ class Interval:
         return self.hi-self.lo
 
     def json(self):
-        return [str(self.lo), str(self.hi)]
+        def endpoint(value):
+            # Decimal(int) is exact and context-independent. Fixed formatting
+            # avoids Python's process-wide integer-to-string digit ceiling.
+            numerator=format(Decimal(value.numerator),"f")
+            return (numerator if value.denominator==1 else
+                    numerator+"/"+format(Decimal(value.denominator),"f"))
+        return [endpoint(self.lo),endpoint(self.hi)]
+
+
+def common_calibration(gain: Interval, offset: Interval, error: Q,
+                       samples: list[tuple[Q, Q]]) -> bool:
+    """Decide whether one frozen affine transfer explains every sample.
+
+    For gain sign s, y = g*(raw+delta)+b with |delta| <= error is equivalent
+    to y-(raw+s*error)*g <= b <= y-(raw-s*error)*g. Include the declared
+    offset endpoints as constant lower/upper lines. A common offset exists
+    exactly when every lower line is <= every upper line. Each pair gives
+    a closed half-line in g; intersect these with the declared gain interval.
+    Inclusive exact bounds retain feasible points and line segments. This
+    predicate never replaces the frozen intervals used for uncertainty.
+    """
+    need(gain.lo > 0 or gain.hi < 0, "calibration gain interval must exclude zero")
+    need(error >= 0, "nonnegative calibration raw uncertainty")
+    sign = 1 if gain.lo > 0 else -1
+    lower, upper = {(Q(0), offset.lo)}, {(Q(0), offset.hi)}
+    for raw, model in samples:
+        lower.add((-raw-sign*error, model))
+        upper.add((-raw+sign*error, model))
+    lo, hi = gain.lo, gain.hi
+    for lower_slope, lower_intercept in lower:
+        for upper_slope, upper_intercept in upper:
+            coefficient = lower_slope-upper_slope
+            bound = upper_intercept-lower_intercept
+            if coefficient > 0:
+                hi = min(hi, bound/coefficient)
+            elif coefficient < 0:
+                lo = max(lo, bound/coefficient)
+            elif bound < 0:
+                return False
+            if lo > hi:
+                return False
+    return True
 
 
 def fresh_parent():
@@ -218,7 +260,7 @@ def validate_prereg(p, edges):
         need(error >= 0, "nonnegative raw uncertainty")
         refs = cal["reference_samples"]
         need(type(refs) is list and 2 <= len(refs) <= 100, "calibration reference population")
-        raw_values, model_values = set(), set()
+        raw_values, model_values, reference_samples = set(), set(), []
         for ref in refs:
             closed(ref, "id raw model_value captured_utc source", "calibration reference")
             name(ref["id"])
@@ -226,10 +268,13 @@ def validate_prereg(p, edges):
                  "no held-out/episode data in calibration")
             raw, model = rational(ref["raw"]), rational(ref["model_value"])
             raw_values.add(raw); model_values.add(model)
+            reference_samples.append((raw, model))
             interval = gain*Interval(raw-error,raw+error)+offset
             need(interval.contains(model) and interval.width <= limits["maximum_coordinate_width"],
                  "calibration reference consistency/precision")
         need(len(raw_values) >= 2 and len(model_values) >= 2, "distinct calibration references")
+        need(common_calibration(gain, offset, error, reference_samples),
+             "calibration references have no common gain/offset")
         channels[ch["channel"]] = (gain,offset,error)
     clock = p["clock"]
     closed(clock, "orientation raw_unit seconds_per_tick tick_error reference_sha256 model_action_time_equals_device_time", "clock")
@@ -298,6 +343,10 @@ def certify_capture(p, c, parent, edges, gradient, curl, channels, limits, scale
     need(utc(c["captured_utc"]) > utc(p["preregistered_utc"]), "capture after preregistration")
     nonces = set()
     previous_tick = None
+    calibration_samples = {
+        ch["channel"]: [(rational(ref["raw"]), rational(ref["model_value"]))
+                        for ref in ch["calibration"]["reference_samples"]]
+        for ch in p["channels"]}
 
     def measured(row, role, channel, expected, start, end):
         closed(row, "role channel raw tick nonce", "raw sample")
@@ -311,6 +360,7 @@ def certify_capture(p, c, parent, edges, gradient, curl, channels, limits, scale
         interval = gain*Interval(value-error,value+error)+offset
         need(interval.width <= limits["maximum_coordinate_width"], "nonvacuous calibrated uncertainty")
         need(interval.contains(expected), "raw measurement/model mismatch")
+        calibration_samples[channel].append((value, expected))
         return interval, tick
 
     def window(row):
@@ -341,6 +391,7 @@ def certify_capture(p, c, parent, edges, gradient, curl, channels, limits, scale
                  "disabled-feedback control must resolve failed restoration")
     need(type(c["executions"]) is list and len(c["executions"]) == 2, "two complete gauge executions")
     reports=[]
+    gauge_observables=[]
     for observed,reference in zip(c["executions"],parent["executions"],strict=True):
         closed(observed, "gauge events", "execution")
         need(type(observed["gauge"]) is bool and observed["gauge"] is reference["gauge"], "gauge identity")
@@ -404,17 +455,24 @@ def certify_capture(p, c, parent, edges, gradient, curl, channels, limits, scale
         expected_action=Q(reference["events"][-1]["writes"]["field_source_action"])
         need(action.contains(expected_action) and action.width <= limits["maximum_action_width"],
              "field/source action conformance and uncertainty")
+        # Exact arithmetic can produce endpoints longer than the external input
+        # limit. Keep typed values for checks; serialization is only the report.
+        gauge_observables.append({"electric":electric,"magnetic":magnetic,
+                                  "field_source_action":action})
         reports.append({"gauge":reference["gauge"],"decoded_slices":[[v.json() for v in decoded[n]] for n in range(3)],
                         "electric":[[v.json() for v in row] for row in electric],
                         "magnetic":[[v.json() for v in row] for row in magnetic],
                         "field_source_action":action.json(),
                         "device_decode_durations_seconds":[((decode_ticks[n+1]-decode_ticks[n])*scale).json()
                                                            for n in range(2)]})
+    for channel, samples in calibration_samples.items():
+        need(common_calibration(*channels[channel], samples),
+             "capture and references have no common channel gain/offset calibration")
     for field in ("electric","magnetic"):
-        for left,right in zip(reports[0][field],reports[1][field],strict=True):
+        for left,right in zip(gauge_observables[0][field],gauge_observables[1][field],strict=True):
             for x,y in zip(left,right,strict=True):
-                need((Interval.parse(x)-Interval.parse(y)).contains(0), "gauge-invariant measured field")
-    need((Interval.parse(reports[0]["field_source_action"])-Interval.parse(reports[1]["field_source_action"])).contains(0),
+                need((x-y).contains(0), "gauge-invariant measured field")
+    need((gauge_observables[0]["field_source_action"]-gauge_observables[1]["field_source_action"]).contains(0),
          "gauge-invariant measured field/source action")
     return reports,len(nonces)
 
