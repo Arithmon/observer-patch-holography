@@ -39,9 +39,9 @@ the simpler flat N3 as preservation benchmarks. Test N4, a coherent exchange
 using the same private factors and response matrices, for internal-state
 influence on load repair. N4 supplies this finite feedback while inheriting
 completion, at the cost of changing the load marginal and the meaning of its
-current labels. A shared bare-occupation protocol now recovers the same
+current labels. A shared bare-occupation protocol recovers the same
 finite port geometry and distinguishes its kinetics from every clock rescaling
-of native repair. Full source grammar and physical selection still require
+of native repair. Full source grammar and physical selection require
 justification. The
 [general search findings](#general-findings-that-guide-the-search) explain
 which tests discriminate laws and how added assumptions are counted.
@@ -824,7 +824,7 @@ unmodified repair events, and measure final loads. The initial measurement
 leaves τ unchanged when its outcomes are averaged; there is no intervening
 measurement. For `f_v=Σv_p N_p`, the measured correlation is exactly
 `τ[f_v Φⁿ(f_v)]`. These are independently prepared experiments at each n,
-not a newly dephased trajectory instrument.
+not a repeatedly dephased trajectory instrument.
 
 On one odd load block define `R=Tr_load(W† Z W)/2` and
 `α=1−Tr_36(R²)/36`. Locality, number conservation and source covariance give
@@ -836,7 +836,7 @@ E[(X_1−X_0)(X_1−X_0)ᵀ] = 2K,
 max{1/9, 1−(4/3)(49+19√5)θ⁴} ≤ α(θ) ≤ 1.
 ```
 
-The lower bound holds for **every real θ**, not only sampled angles.
+The lower bound holds for **every real θ**.
 Indeed R is a traceless Hermitian contraction on each of four protected
 nine-dimensional private blocks, so each has squared trace at most eight.
 The quartic bound follows from the Frobenius Lipschitz bound for

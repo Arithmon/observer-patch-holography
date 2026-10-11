@@ -236,7 +236,7 @@ interval bound at finite θ.
 not to a measured change of bare load. N1's current-derived geometry and
 clock identities cannot simply be imported. The
 [shared bare-occupation protocol](MODEL_SEARCH.md#bare-occupation-geometry-and-a-clock-independent-memory-test)
-now reconstructs `K=αL_ico/396` at the full tracial reference, with `α≥1/9`
+reconstructs `K=αL_ico/396` at the full tracial reference, with `α≥1/9`
 for every coupling. It retains the finite rank-three port geometry and,
 at θ=1/8 and 1/16, certifies nonzero two-attempt memory for every
 nonconstant carrier mode. A change of clock units cannot remove it. No
