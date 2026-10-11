@@ -1,7 +1,15 @@
 # OPH model search: iterative construction from local repair
 
+**Governing principle: find the simplest shared repair rule that satisfies
+the known constraints.**
+
+**Programme completion requires finding that shared repair rule and showing
+that it satisfies the required constraints on one common model.** Component
+proofs, simulations, candidate implementations and issue closures are bounded
+milestones; they do not by themselves complete the programme.
+
 Research status: **11 October 2026**. Source reference:
-`dc893170a2096eb3e65be476a7008fb67e105d96`.
+`f06c9ab444b59d923920253a6904947f0b11de3b`.
 
 **Programme decision, 11 October:** organize research around what one repair
 process must supply. The [work ownership](#work-ownership-and-claim-accounting)
@@ -9,8 +17,8 @@ below assigns construction, physical tests and audits in parallel. Paper
 releases and broad prose restructuring are subject to the
 [model milestone](#research-programme-and-paper-release-hold).
 
-**Current approach:** join the existing weighted repair stiffness to the
-existing scalar theory through its **minimal canonical inertial completion**.
+**Current scalar benchmark:** join the existing weighted repair stiffness to
+the existing scalar theory through its **minimal canonical inertial completion**.
 Use the same local capacity for repair and inertia; test that identification
 rather than introduce another fitted action. A constrained first-order field
 representation retains local position/momentum access and both frequency
@@ -28,8 +36,23 @@ proof that the physical law has been selected. Native integer repair C,
 completed reconciliation E and the coherent-walk constructions remain valid
 baselines and alternatives.
 
+**Model-selection priority:** one microscopic repair process must supply
+compatible geometry, reversible response and clock readouts. The scalar
+benchmark tests one component of that requirement. Simplifying its simulation
+or compiler does not select the full source law. Use the existing theorem
+interfaces below to constrain the next candidate before adding mechanisms.
+
 ## 1. Headline results and missing-link completion status
 
+- **The native repair connects port geometry and a dimensionless
+  clock relation.** In the declared total-two nearest-integer model at uniform
+  binary equilibrium, the same
+  recorded events reconstruct `L_ico=3B/ν`, its rank-three slow Gram
+  `G=4P_slow`, and `κ γ_s/ν_t=(5−sqrt(5))/6`. Independent pile interventions
+  recover the same mean response; state-dependent activity controls delimit
+  its interpretation. Preserve this established common-process result as a
+  primary law-level benchmark. Its event-to-proper-time map and reversible
+  gauge-current attachment are separate missing connections.
 - **One conditional source construction joins preparation and retained
   observations on the same code.** The original eight-site q=3 blank,
   coupled-vacuum preparation, active free field, force and two coherent
@@ -41,13 +64,23 @@ baselines and alternatives.
   checks and four identical isolated replays**; these include analytic-bound,
   small-matrix and bookkeeping checks, not a simulation of the 106-qubit
   field/pointer state. Physical initialization and service errors are additional.
-- **The source compiler is constructive but not practical as bounded here.**
-  Its conservative combined evolution ceiling is **<3.44×10^34 native
-  pulses**, with two code-service events per pulse. This is an upper bound,
-  not a cost lower bound or an executed word. Efficient compilation, physical
-  control accuracy, service timing, storage and complete readback remain
-  open. The construction changes RE-10 from open to conditional; #1077 and
-  the physical part of M06 remain open.
+- **A simpler exact compiler removes an unnecessary approximation loop.**
+  Diagonalize the chosen finite quadrature and compile that basis with existing
+  source controls; the remaining diagonal phases commute. All 45 fixed cases
+  at d=2,4,8 passed full-phase native-word comparisons and an identical replay,
+  with largest numerical operator residual below 2.2×10^-13. This removes
+  the inner Strang repetition under ideal controls without changing the law.
+  The older full-history ceiling <3.44×10^34 pulses is a conservative baseline,
+  not an intrinsic cost. Large-cutoff precision and complete source execution
+  retain their own obligations; RE-10 is conditional and #1077 stays open.
+- **The scalar benchmark can be evaluated directly at modest classical cost.**
+  One onsite Gaussian calculation prepares the original eight-mode state and
+  follows all five retained-pointer histories. With fixed steps chosen before
+  execution, every prepared joint-history distance to the continuous reference
+  was numerically below 0.000493. All 90 checks and the identical isolated
+  replay passed. This is a practical simulator of the supplied quadratic
+  candidate; its numerical errors do not replace the rigorous source-code
+  budget or establish native execution.
 - **The repair force has a minimal conditional Hamiltonian completion.**
   Weighted agreement factors the supplied scalar stiffness exactly. If the
   same capacity measures inertia, linear autonomous dynamics, the declared
@@ -137,6 +170,74 @@ specific claim; they are neither twelve sequential hurdles nor a requirement
 to solve all physics at once. Finite results stay completed unless a new test
 invalidates them. Enlarging the physical scope adds an explicit obligation.
 
+### One process, with geometry, gauge response and clocks read from it
+
+The existing arguments constrain the shape of the repair law, not a minimum
+number of mechanisms. The scalar-equalizer counterexample below does not
+prove that a simple common law is impossible. The target is
+**one microscopic process with several verified readouts**, rather than one
+scalar matrix relabelled as geometry, gauge current and time. Its shared
+states, operations, retained records and reduction maps must be explicit.
+Independent fixtures placed beside one another do not establish this connection.
+
+| Existing argument | What the same repair process must supply | Present connection and limitation |
+| --- | --- | --- |
+| Rank-three carrier and slow band: [microphysics](../paper/screen_microphysics_and_observer_synchronization.tex), `thm:echosahedral-source-selector-microphysics` and `thm:a5-register-commutant` | Its own response/current records recover the declared carrier operator, the selected slow projector and the Gram geometry. State the regime and normalization of that readout. | At uniform binary equilibrium, the native recorded model reconstructs `L_ico`, with `4 P_slow=G` of rank three, and the rate-independent relation `κ γ_s/ν_t=(5−sqrt(5))/6`. The golden scalar is a separate supplied field construction; its eight-site generator is a different object. Their microscopic-to-field reduction and common clock need an explicit map. Rank three alone is not a bulk dimension or a physical generation count. |
+| Finite gauge Lie algebra: [gauge paper](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex), `thm:current-algebra` | A source-bound injective twelve-port reversible response, compact commutator closure, and A5-equivariance with the twelve-port permutation module, realized by endogenous inner proper-carrier transport on that same response. Reuse the classification once these inputs are realized. | The existing six-level response supplies the compiler's controls. Choosing those controls does not derive a gauge-field/matter action from scalar repair or show that autonomous events select the response. Global form, physical couplings and refinement retain their separate premises. |
+| Operational clocks: [count clock](../paper/tex_fragments/SOURCE_COUNT_CLOCK.tex), [scalar action clock](../paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex), and [curl/Stone comparison](../Lean/Screen/CurlStoneClockBridge.lean) | The same retained history and accessible records instantiate a clock theorem's hypotheses; the resulting time must intertwine the candidate's observable evolution. Charge readout, transport and service costs. | Count clocks require controlled order/count limits and complete ancestry. The scalar clock uses a supplied action and nondegenerate layer data. The curl comparison has explicit duration/frequency calibration premises. None identifies canonical model time with processor pulse count by notation. |
+
+The [existing record-derived geometry and clock relation](#current-derived-port-geometry-and-clock-relations) is the positive starting point. Keep its
+nearest-integer event rule, declared schedule, same-record response tests and
+preparation controls when testing an extension; do not replace that evidence
+with a separate scalar spectrum match.
+
+A useful restriction follows before any simulation: a self-adjoint linear
+response on the oriented 24-port register that commutes with `A5 × Z2` has
+**eight sector coefficients**, by the existing register-commutant theorem.
+This can replace an unrestricted matrix search for that response class.
+Locality, admissibility and measured response can constrain it further.
+It does not fix the eight coefficients, nor restrict the reversible gauge
+current to an eight-dimensional commuting algebra: those are different objects.
+
+There is also an existing decisive negative control. The scalar seam
+equalizers have commutator span of rank 49 and Lie closure `so(11)` of
+dimension 55 on the zero-sum port space, as documented in the gauge paper.
+They are not the required twelve-dimensional compact current. A simple
+diagonal phase lift is abelian; adding the tested adjacency tangent gives
+`u(12)`, which also misses the target. These results guide candidate rejection;
+they do not reject every non-diagonal reversible response on the carrier.
+
+Match carrier actions as well as dimensions. In the six-level response of
+[source record gluing](../paper/tex_fragments/SOURCE_RECORD_GLUING.tex), the
+simple su(2) ideal uses the Galois-conjugate triplet; native slow geometry uses
+the `5−sqrt(5)` band. A proposed identification must justify the intertwining
+map. Keeping internal response and spatial geometry distinct is also allowed;
+their equal dimension alone does not identify them.
+
+**Working hypothesis to test:** a local operation retains a reversible,
+phase-sensitive private response and produces repairable public records.
+Forgetting or retaining different records gives distinct, explicitly related
+views of that operation. A quantum instrument with retained outcomes is one
+available candidate description, used by the native C/E constructions;
+it is not selected uniquely by these arguments. The noncommuting response,
+its coupling to repaired records and its event clock must be derived or tested
+together. Simply appending an independent gauge sector or oscillator clock
+would leave the shared-process obligation unfilled.
+
+For each candidate, use this order of work:
+
+1. Pin the microscopic states, local event and retained-record contract.
+2. Derive its response, reversible perturbations and record-clock candidates
+   before importing a desired continuum action.
+3. Match the actual hypotheses of the three theorem interfaces above on that
+   same family, including cross-response under the same interventions.
+4. Use the scalar benchmark and compiler as component checks where applicable;
+   reject or revise a candidate that fails a required source interface.
+
+This directs the simplification search toward a common source law. It does
+not require all physical limits to be solved at once, and it does not turn
+conditional scalar compatibility into a complete physical model.
+
 ### The reverse-engineering table: hypotheses as well as results
 
 The [model–theorem premise map](MODEL_PREMISE_MAP.md) connects this M01–M12
@@ -180,8 +281,8 @@ representation or a changed operation are permitted candidate hypotheses
 when their purpose, cost and compatibility are explicit. The simulator is a
 tested starting realization, not an immutable specification of nature.
 
-**Use the simplest compatible construction, then let a decisive test determine
-the next change.** Simplicity is a research preference, not a proof that nature
+**Find the simplest shared repair rule that satisfies the known constraints;
+let a decisive test determine the next change.** Simplicity is a research preference, not a proof that nature
 selects the shortest formula. Preserve the actual carrier and load-bearing
 premises of every imported result.
 
@@ -212,6 +313,12 @@ Adaptation is allowed if its state and update belong to the same process.
 
 ### Work ownership and claim accounting
 
+**The simplest shared rule is the research target.** Added mechanisms must
+answer a demonstrated missing connection; a simpler rule is preferred when
+it satisfies the same constraints with fewer independent physical inputs.
+Compiler cost is an implementation cost, not evidence about how complicated
+the law of nature must be.
+
 The programme targets one common microscopic process whose constructed
 objects satisfy the premises of the physical conclusions being claimed.
 Separate conditional theorems can hold on different states, scales or laws;
@@ -222,7 +329,7 @@ which observable can distinguish the resulting candidate.
 | Owner | Responsibility and bounded result |
 | --- | --- |
 | [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026) | Common-model construction umbrella: one law, compatible theorem attachments, explicit remaining assumptions and tested histories. |
-| [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076) | Pin the minimal law and input inventory; test kinetic alternatives and identify what the declared premises select. |
+| [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076) | Find the simplest shared rule compatible with carrier, reversible-current and clock interfaces; pin its inputs and test dynamical alternatives. |
 | [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077) | Complete one source-coded preparation, evolution and retained-record history with a shared error and resource budget. |
 | [#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025) | Develop physical tests alongside construction: observable, interpretation, calibration, baseline, uncertainty, exposure and rejection rule. |
 | [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033) | Audit and repair existing proofs, code, evidence and scientific wording, including effects on the candidate. |
@@ -299,6 +406,7 @@ above assign active work:
 
 | Next question | Smallest proposed move | Decisive completion or rejection condition |
 | --- | --- | --- |
+| **Can one simple local rule supply the carrier, current and clock?** | Reuse the native response and gauge/clock interfaces above, with one shared state and event record. | Exhibit the response reduction, reversible current and same-history clock map; independent attached fixtures or the rejected scalar-current identification do not qualify. |
 | **Why should repair capacity also be inertia?** | Attach the tested three-mode curvature or distance-two acceleration discriminator to an admissible preparation/readout. | Derive the identification from microscopic operations or constrain it independently. Equilibrium and the shared position-observable continuum limit do not select it; retain clock, velocity and linearity premises. |
 | **Which weighted source law is selected?** | Reuse the exact stiffness factorization and action-measure theorem. | Justify conductances, reference, mass and boundaries independently of the target action; reciprocity identifies normalized capacities given an admissible response, not that response's physical selection. |
 | **Can the finite quantum components become a full source history?** | Join the local vacuum-preparation schedule and exact retained-pointer history through the existing state-error contract; reuse source controls for implementation. | Use the constructed common onsite preparation/history and finite source compiler to specify an executable word with complete outcomes and a shared resource/error budget. Fixed-path temporal and occupation errors are controlled; source precision, storage, drift and service costs require implementation evidence. |
@@ -638,6 +746,36 @@ precision, transport, reset, drift during service and all retained history
 outcomes require their own contributions to the total error and resource
 budget. Model-time step size does not select physical time.
 
+### Direct Gaussian simulation of the fixed scalar benchmark
+
+Use onsite coordinates with one complex symmetric 8×8 width matrix W and
+branch coefficients l,c. Potential kicks update W and l locally; free kinetic
+drifts solve with `I+i h W`. All twenty branches of the five force/pointer
+histories share W. The common Gaussian normalization phase can be removed
+uniformly while retaining every relative branch phase and readout outcome.
+This compact representation simulates the infinite-oscillator quadratic law;
+it does not assume false finite-cutoff canonical commutators.
+
+The fixed test uses the original q=3 source, frequency-one product blank,
+cubic preparation ramp with T=512 and 65,536 steps, then 1,280 steps per
+half-unit history. Independent real covariance/mean/Weyl propagation checks
+the onsite calculation, and the original continuous histories provide the
+comparison. Full joint fidelity uses one coherent sum over pointer branches,
+without independent phase alignment.
+
+The preparation distance was numerically 0.000492825, and the largest
+prepared joint-history distance was 0.000492026, below the prospective
+0.0011 criterion. The largest pointer-state distance was below 8.97×10^-7.
+All 90 checks passed; the sole isolated replay was byte-identical. Production
+and replay together used 2.895 CPU seconds rounded up on the test machine.
+These are floating-point comparisons, not interval-certified errors. The
+phase-omission controls remain detectable and all four outcomes are retained.
+
+This makes the component benchmark inexpensive to investigate without changing
+the candidate law. It supplies neither a microscopic selection argument nor a
+physical clock, and does not execute the finite source pulse word. Keep its
+simulation results separate from the conservative construction bounds below.
+
 ### Finite onsite preparation with intermediate occupation control
 
 Keep the same action, blank, T=512 and N=2^24. At each site use the number
@@ -771,6 +909,45 @@ Analogue precision, transport, storage, reset, physical processor drift,
 source clocks and complete preparation/readout services remain charged
 inputs. A matrix synthesis theorem does not establish their physical
 availability or identify source execution time with the model-time ramp.
+
+### Exact commuting compilation: simplify the implementation first
+
+The same finite targets admit an algebraically exact factorization. Write
+`Q_d=O Λ Oᵀ` and retain the existing `P_d=F Q_d F†`, with `F=diag(i^n)`.
+Then Q, Q², QQ and pointer-ZQ operations are diagonal phase operations in a
+common onsite quadrature basis; P² uses the same basis with the number phase.
+An entire potential layer can share its charged entrance and exit basis
+changes. No inner noncommuting product-formula repetition is required.
+
+The basis O is itself compiled. Gray-neighbor Givens rotations reduce to
+controlled-Y rotations; expanding the spectator projector gives mutually
+commuting Pauli terms. Diagonal phases use commuting Walsh-Z terms, including
+the identity phase. These words use the same twelve-port source controls and
+proper single/pair codes. The eigensolver is a classical compiler step, not a
+new native quantum gate or a free change of chart.
+
+All **45 fixed cases**, with d=2,4,8 and angles 0, 1/7, −1/5, passed against
+independent full matrix exponentials. The source pulse words were emitted and
+numerically evaluated from their full six-level generators. The largest
+full-phase operator residual was **2.181×10^-13**; the sole isolated replay
+reproduced results, checks and emitted words byte for byte. At d=8 and angle
+1/7, the QQ operation uses 4,870 native pulses, including its basis changes,
+plus 9,740 pack/export events under the declared service. This is a component
+cost at that cutoff, not the complete preparation/history cost.
+
+The controls detect wrong Gray orientation, omitted spectator restrictions,
+lost phases and the wrong top-level quadratic compression. In particular,
+finite cutoff dynamics are not exact oscillator shears: Q₂²=I/2 makes that
+purported identity fail. Cheap Gaussian simulation and finite source-word
+execution therefore have separate verification contracts.
+
+This removes the generic compiler's inner Strang error in ideal exact
+arithmetic. Floating angle/control errors, full service costs and practical
+large-d execution need budgets; the elementary basis construction has
+an O((log d)d³) upper count. No large-cutoff word or physical hardware was run.
+The following full-history bound retains its original compiler and error
+budget until a replacement has been checked at that scope. This simplification
+is evidence about implementation, not selection of a microscopic source law.
 
 ### One composed preparation–history error and resource budget
 

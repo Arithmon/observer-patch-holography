@@ -21,12 +21,25 @@ proposés.
 
 ## Priorité de recherche : un même processus de réparation
 
+**Trouver la règle de réparation commune la plus simple qui satisfait les
+contraintes connues.**
+
+**Le programme n’est achevé que lorsqu’une telle règle commune a été trouvée
+et que sa compatibilité avec les contraintes requises est établie dans un même
+modèle.** Les preuves partielles, simulations et améliorations du compilateur
+sont des étapes ; aucune ne suffit à clore le programme. L’identification
+physique exige aussi des observations discriminantes.
+
 La priorité est une loi microscopique explicite dont l’évolution fournit les
 entrées des théorèmes existants dans un même modèle. Des résultats conditionnels
 peuvent être corrects sans que leurs prémisses physiques soient réalisées
 ensemble. Nous partons de la construction compatible la plus simple,
 réutilisons les résultats démontrés et confrontons chaque hypothèse ajoutée
-à des alternatives.
+à des alternatives. La géométrie du support, la réponse de jauge réversible
+et l’horloge opérationnelle doivent être des lectures compatibles de ce même
+processus. Tout mécanisme ajouté doit répondre à un lien manquant démontré,
+et toute hypothèse physique ajoutée doit être déclarée. L’échec d’un candidat
+purement scalaire ne prouve pas qu’une loi commune simple soit impossible.
 
 Le [suivi des modèles](docs/MODEL_SEARCH.md), la
 [carte des prémisses](docs/MODEL_PREMISE_MAP.md) et les

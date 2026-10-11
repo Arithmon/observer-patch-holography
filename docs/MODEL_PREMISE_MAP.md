@@ -5,6 +5,8 @@ by `python tools/build_model_theorem_map.py`. Edit the input, then regenerate.
 
 Complete navigation coverage of the current canonical PR identifiers, plus explicit active-model obligations. Not an exhaustive extraction or proof of discharge of all paper/Lean antecedents. Branches are alternatives where stated; links do not alter claim-registry dependency roles.
 
+**Governing search principle: find the simplest shared repair rule that satisfies the known constraints.** Reuse existing results before adding mechanisms. Geometry, reversible response and operational clocks require compatible maps from the same source process; separate component constructions do not establish that common realization.
+
 These groups are workgroup navigation crosswalks, not claim-consumer edges or changes
 to proof status. A group links related construction, branch, downstream or metrology
 work; that association does not make every listed premise an antecedent of every
@@ -115,9 +117,9 @@ are not additional prerequisites for the supplied finite scalar theorem.
 
 **Constructed:** Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly.
 
-**Remaining input:** For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate.
+**Remaining input:** For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate. The full-model candidate must link its repair marginal, reversible port response and record clock through shared states and interventions; the scalar benchmark alone does not supply this.
 
-**Closure condition:** Exhibit the same process and restriction maps supplying the intended repair contract; derive each extra choice or retain it as an explicit model hypothesis.
+**Closure condition:** Exhibit one local process and explicit restriction/intervention maps supplying the intended repair, carrier-response, reversible-current and clock contracts. Reuse the existing theorem implications once these interfaces hold; derive each extra choice or retain it as an explicit model hypothesis. Separate matched component fixtures do not establish a common source.
 
 Explicit assumption-name navigation: ` faithful_common_reference_law `, ` complete_repaired_visible_datum_fibre `.
 
@@ -302,7 +304,7 @@ Sources:
 
 **Constructed:** Canonical model time, supplied event-count clock comparisons and conditional scalar action-clock reconstruction exist.
 
-**Remaining input:** Choose a physical clock on the same process and account for preparation, service, readout and ancestry costs. A source scale identification and conversion to laboratory units are distinct.
+**Remaining input:** Choose a physical clock on the same process and account for preparation, service, readout and ancestry costs. A source scale identification and conversion to laboratory units are distinct. The record clock must be read from the histories that also supply the carrier response and reversible source, with an explicit relation to scalar model time.
 
 **Closure condition:** Prove the same-history clock/observable intertwiner and its domain, then calibrate independently. A local generator alone does not establish a microscopic causal cone.
 
@@ -334,7 +336,7 @@ Sources:
 
 **Constructed:** The finite local Standard Model Lie-algebra result remains proved under the adopted A1 complete-response/closure clauses and A2 endogenous transport. Compact-Lie classification is an explicit mathematics import.
 
-**Remaining input:** The physical current/action, same-source category, global form and coupling attachment remain separate. The scalar field construction does not instantiate a physical gauge theory.
+**Remaining input:** The physical current/action, same-source category, global form and coupling attachment remain separate. The scalar field construction does not instantiate a physical gauge theory. Compatibility with the twelve-port reversible response is an immediate law-selection constraint, even though constructing physical gauge fields is downstream. Scalar seam equalizers cannot serve as that current: their tested Lie closure is so(11), not the required twelve-dimensional algebra.
 
 **Closure condition:** Bind the proved algebra and representation to actual source observables, dynamics and refinement; supply the categorical and physical gauge interfaces used by the selected branch.
 

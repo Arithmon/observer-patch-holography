@@ -65,6 +65,10 @@ administrative closure does not discharge a physical premise.
 
 ## Model Construction Status
 
+**Find the simplest shared repair rule that satisfies the known constraints.**
+Reuse the existing arguments before adding mechanisms; require geometry,
+reversible response and clocks to connect through the same source process.
+
 [Model Search](MODEL_SEARCH.md) records the simplest compatible repair
 candidate, its constructed connections and missing physical inputs. Its
 [work ownership](MODEL_SEARCH.md#work-ownership-and-claim-accounting) links

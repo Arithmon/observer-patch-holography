@@ -19,11 +19,24 @@ realization requires measurements that distinguish the proposed models.
 
 ## Research focus: one repair process
 
+**Find the simplest shared repair rule that satisfies the known constraints.**
+
+**The programme is complete only when that shared repair rule has been found
+and shown to satisfy the required constraints on one common model.** Component
+proofs, simulations and compiler improvements are milestones toward that
+result; none closes the programme by itself. Physical identification also
+requires discriminating evidence.
+
 The research priority is an explicit microscopic repair law whose evolution
 supplies the inputs of the existing theorems on one common model. Separate
 conditional results can be correct without their physical premises being
 realized together. We start with the simplest compatible construction, reuse
-proved results, and test each added hypothesis against alternatives.
+proved results, and test each added hypothesis against alternatives. The
+carrier geometry, reversible gauge response and operational clock must be
+compatible readouts of that same process. Add a mechanism only for a
+demonstrated missing connection, and count every added physical assumption.
+A rejected scalar-only candidate does not establish that a simple common
+source law is impossible.
 
 Follow the [model search](docs/MODEL_SEARCH.md), its
 [model–theorem premise map](docs/MODEL_PREMISE_MAP.md), and the
@@ -155,6 +168,7 @@ evidence family.
 
 ## Contribute
 
+Prefer a simpler shared rule over an accumulation of separate mechanisms.
 Contributions should repair an existing defect or resolve a named uncertainty
 in the common model and its tests. Reuse proved results; add a proof when a
 specific model obligation needs it. Standalone finite-theorem expansion and
