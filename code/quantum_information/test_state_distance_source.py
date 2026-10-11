@@ -75,3 +75,14 @@ def test_exact_root_identity_certifies_a_nonstructural_zero():
 def test_distance_does_not_hide_an_indefinite_source():
     with pytest.raises(ValueError, match="positive semidefinite"):
         trace_distance(np.array([[1., 2. ** -100], [2. ** -100, 0.]]), np.diag([1., 0.]))
+
+
+def test_semidefinite_difference_uses_exact_trace_at_an_irrational_spectrum_tie():
+    tiny = np.nextafter(0., 1.)
+    a = np.diag([1., 4*tiny, 3*tiny])
+    a[1, 2] = a[2, 1] = tiny
+    b = np.diag([1., tiny, tiny])
+    # D's positive eigenvalues are (5 +/- sqrt(5))*tiny/2, so
+    # ||D||_1/2=5*tiny/2, exactly halfway between floats 2*tiny and 3*tiny.
+    assert trace_distance(a, b) == 2*tiny
+    assert trace_distance(b, a) == 2*tiny

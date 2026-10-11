@@ -243,6 +243,15 @@ def source_distance(left, right):
                     for ra, rb in zip(left.entries, right.entries))
     if all(entries[i][j] == _ZERO for i in range(n) for j in range(n) if i != j):
         return fraction_float(sum((abs(entries[i][i][0]) for i in range(n)), Fraction(0)) / 2)
+    # A semidefinite difference has trace norm |Tr(D)| even if its individual
+    # eigenvalues are irrational. This also resolves exact output ties for
+    # accepted trace-roundoff inputs without rounding those eigenvalues.
+    for sign in (1, -1):
+        try:
+            factor_entries(tuple(tuple(_scale(value, sign) for value in row) for row in entries))
+        except ValueError:
+            continue
+        return fraction_float(abs(sum(entries[i][i][0] for i in range(n))) / 2)
     failure = "trace distance remains unresolved at available precision"
     for precision in (80, 240, 640, 1280):
         answers = []
