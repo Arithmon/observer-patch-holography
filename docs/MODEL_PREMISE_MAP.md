@@ -201,7 +201,7 @@ Sources:
 
 ### RE-06: Inertia and the real dynamical completion
 
-**Constructed:** Same-capacity linear reversible dynamics gives the displayed canonical Hamiltonian. Existing action-to-Hamiltonian and field-clock conversions remain proved under their own hypotheses.
+**Constructed:** Same-capacity linear reversible dynamics gives the displayed canonical Hamiltonian. Existing action-to-Hamiltonian and field-clock conversions remain proved under their own hypotheses. Three-mode curvature and an exact distance-two acceleration coefficient distinguish the I+epsilon A counterfamily after common clock/mass/speed calibration.
 
 **Remaining input:** Repair capacity equals inertia, velocity reading, linearity, energy and time reversal are candidate premises. Auxiliary oscillator and temporal Maxwell lifts are related alternatives, not consequences of the scalar construction.
 
@@ -248,7 +248,7 @@ Sources:
 
 ### RE-09: Preparation of the same coupled vacuum
 
-**Constructed:** For the original eight-mode q=3 action, a supplied local gapped ramp has rigorous error below 0.070155 at model time 512. A separate finite-code construction has error at most 0.059059008 but a very large conservative compilation cost.
+**Constructed:** For the original eight-mode q=3 action, the unchanged local gapped ramp has a sharper rigorous full-state error below 0.000433450 at model time 512 and 0.000108323 at 1024. For that q=3 continuous ramp at T=512, local time discretization with N=2^24 adds less than 0.000695044 state error, giving combined error below 0.001129 before finite source-code/service errors. A separate finite-code construction has error at most 0.059059008 but a very large conservative compilation cost.
 
 **Remaining input:** Independent oscillator blanks, control of the ramp and model time are hypotheses. Preparation is not autonomous vacuum selection; no uniform refinement resource theorem is supplied.
 
@@ -263,11 +263,11 @@ Sources:
 
 ### RE-10: One encoded preparation, evolution and record history
 
-**Constructed:** Free evolution, force and commuting retained-pointer couplings have one exact Gaussian history; finite normal-mode cutoffs have full-output bounds. Existing sequential channels propagate initial-state error.
+**Constructed:** Free evolution, force and commuting retained-pointer couplings have one exact Gaussian history; finite normal-mode cutoffs have full-output bounds. Existing sequential channels propagate initial-state error. For the same q=3 blank and cubic ramp, midpoint local kick-drift-kick has an explicit O(N^-2) state error including stiffness variation.
 
 **Remaining input:** Preparation and operation components use different convenient coordinates. Their same-code source realization needs intermediate occupation, encoding/decoding, source service, all outcomes and one resource/error budget.
 
-**Closure condition:** Supply the composite channel on one code and a bound of the form epsilon_vac+epsilon_history+epsilon_service. Prefer local factors before generic global mixing; account for any time-dependent splitting error.
+**Closure condition:** Supply the composite channel on one code and a bound of the form epsilon_vac+epsilon_history+epsilon_service. Reuse the local Gaussian time-variation/splitting estimate within its state-specific scope; bound finite onsite cutoff leakage through every intermediate factor and charge the complete source service.
 
 Existing claim-row navigation (no new edges): ` OPH-SCALAR-SEQUENTIAL-INSTRUMENT `.
 
@@ -283,7 +283,7 @@ Sources:
 
 **Constructed:** The existing common scalar theorem gives the stated massive 3D free-field Weyl-product limit. The canonical field join preserves the same action, vacuum and observables.
 
-**Remaining input:** Native preparation/control/record errors must remain controlled along that family. The archived spherical routing and interacting many-body limits are different targets.
+**Remaining input:** Native preparation/control/record errors must remain controlled along that family. The archived spherical routing and interacting many-body limits are different targets. Vanishing kinetic perturbations can share the narrower position-Weyl limit, so that limit alone does not select unique microscopic inertia.
 
 **Closure condition:** Prove uniform or summable errors and compatible states/observables for the actual implementation; reuse the existing scalar limit rather than reprove it. Interactions require their own continuum theorem.
 
