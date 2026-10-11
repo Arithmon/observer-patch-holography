@@ -54,6 +54,9 @@ not a domain argument.
   are different obligations. Where the source supplies a positive factor,
   preserve that structure before forming a rounded Gram matrix; a successful
   eigensolver on the damaged matrix cannot recover discarded information.
+  For operator bases, `Q*Q=I` checks orthonormality, not preservation of
+  the supplied span. Check its projector and observable action against the
+  original entries, including exactly representable ill-conditioned shears.
 - **Combined conditioning:** challenge metric whitening and constraint
   inversion together. Separate precision gates can each pass while their
   compounded error spoils the minimum. Compare with the original-input

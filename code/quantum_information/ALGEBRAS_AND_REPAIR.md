@@ -79,6 +79,86 @@ support cannot be resolved at floating-point precision raise an explicit
 error; a numerical answer does not certify exact rank. Explicit diagonal
 positive entries, including the smallest binary64 subnormal, remain positive.
 
+## Preserve the supplied span before computing its action
+
+A follow-up audit at `0b111ce904b29a389a596443c4ac2b03605a4220`
+found that ordinary floating-point normalization and QR could change the
+operator span while still returning an orthonormal basis. For the exactly
+representable inputs
+
+```text
+A = [[1, 2], [3, 4]],
+B = [[1, 2 + 2^-40], [3, 4 - 2^-40]],
+Omega = (1, 0),
+```
+
+`B-A` is nonzero and annihilates Omega. The separation modulus is therefore
+exactly zero. The previous implementation returned approximately
+`0.000893982369138`, above the `1e-10` comparison used by the null-net commutant diagnostic.
+For the same supplied span and `Omega=(0,1)`, the independent generalized
+Gram pencil gives modulus `sqrt(9/14)`, approximately `0.801783725737273`;
+the old answer was approximately `0.801729534186655`. Neither an
+orthonormality check nor a blanket zero result catches both errors.
+
+The same defect rejected a valid algebra. With
+`N=[[1,2],[2,-1]]`, the basis `[3I+N, 3I+N+2^-30 I]` spans exactly
+`span{I,N}` and `N^2=5I`, but its numerical chart could fail the identity
+membership check. Complex Hermitian variants also expose loss when an exact
+intersection is rounded before its ill-conditioned presentation is removed.
+Squaring basis entries to find their norms separately caused underflow or
+overflow for finite rescalings of ordinary matrix units.
+
+The shared implementation now treats the **supplied binary64 entries** as
+its source. It does not infer a different ideal algebra from a nearby
+rounded presentation:
+
+1. Divide real and imaginary components by their common maximum magnitude
+   before computing each column norm. This avoids both squaring extreme
+   physical units and forming a complex reciprocal of a subnormal scale.
+2. Use the numerical QR path only when the normalized source columns have
+   condition number at most 32. This is an accuracy guard, not a rank proof.
+   Otherwise perform row reduction of the transposed source columns over
+   the Gaussian rationals, followed by exact Hermitian Gram-Schmidt.
+3. Convert those exact orthogonal directions to a numerical chart only
+   after removing the bad presentation. Exact intersections use the same
+   ordering of operations and retain their rational span for subsequent
+   conservation decisions. Zero/dependent bases and charts that lose a
+   nonzero component remain errors.
+
+These changes preserve the mathematical span: row operations on the
+transpose are invertible changes of the independent column basis, and
+Gram-Schmidt subtracts exact combinations of preceding directions. Its
+nonzero squared norms are positive rationals. Normalizing the resulting
+orthogonal directions cannot amplify the original basis's conditioning.
+The returned chart, projections, closure checks and ordinary singular
+values still use floating-point arithmetic; this is not an interval
+certificate for their final error.
+
+Small operator actions require a separate check. Their resolution alarm is
+measured against the unit operator/reference scale, even if the entire
+action nearly cancels. Below that alarm, exact rank of the action on the
+original entries decides whether a nonzero annihilator exists. A kernel
+returns zero. For full-rank actions whose exact orthogonal operator
+directions also have orthogonal images, the squared singular values are
+exact ratios of image and operator squared norms; taking their square
+roots before conversion preserves directly evaluable tiny positives.
+For a single operator, the same exact norm ratio is used at every scale.
+Other unresolved positive actions raise an explicit error, as do positive
+outputs that underflow. A small computed singular value alone is never
+silently changed to zero. Masked and Boolean reference entries are rejected
+before coercion.
+
+The retained controls in `test_operator_span_charts.py` use exact
+original-entry Gram pencils and projectors, together with independently
+known annihilators and positive neighbors. They cover real and complex
+shears, reordered bases, finite extreme scales, conditional expectations,
+repeated intersections and repair gaps. In particular, nearly aligned
+but distinct algebras still have their actual scalar intersection; an
+unresolved slow gap cannot become a fast gap by inventing a conserved
+observable. The correction changes numerical answers and acceptance for
+these supplied inputs. It does not change the finite completion theorem,
+select a repair law, or alter frozen evidence or physical claim payloads.
+
 ## The complete finite completion theorem
 
 Let \(B\subset M_D(\mathbb C)\) be a unital complex *-subalgebra and

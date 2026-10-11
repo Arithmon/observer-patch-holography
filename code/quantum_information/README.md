@@ -23,7 +23,10 @@ separation and basis normalization, replaces dense standardness matrices with
 reduced spectra, and classifies exactly when finite relative-entropy
 completion is an affine quantum repair. It includes independent recognition
 of supplied conditional expectations and a noncommuting repair convergence
-proof.
+proof. Its [operator-span follow-up](ALGEBRAS_AND_REPAIR.md#preserve-the-supplied-span-before-computing-its-action)
+repairs false separation from ill-conditioned basis charts and retains exact
+source intersections before numerical conversion. Independent original-input
+controls also cover valid complex algebras and extreme basis units.
 
 The [fixed-point audit](REPAIR_FIXED_POINTS.md) prevents almost coincident
 repair algebras from manufacturing protected observables and an artificially
