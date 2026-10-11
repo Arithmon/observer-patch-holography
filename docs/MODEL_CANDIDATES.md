@@ -3,7 +3,7 @@
 **Find the simplest shared repair rule that satisfies the known constraints.**
 
 Candidate register: **11 October 2026**. Evidence baseline:
-[`4675d8ed`](https://github.com/FloatingPragma/observer-patch-holography/commit/4675d8edb33e7f14578d56b598efba1babefc7e3).
+[`39366529`](https://github.com/FloatingPragma/observer-patch-holography/commit/393665297e551f2023fb07a2853188a589ad7c33).
 This page owns the concise comparison of active laws. The
 [model search](MODEL_SEARCH.md) supplies derivations and test summaries; the
 [premise map](MODEL_PREMISE_MAP.md) tracks their connections to existing
@@ -15,14 +15,16 @@ theorems. These are research candidates, with no physical selection claimed.
 | --- | --- | --- | --- | --- |
 | **N1** | Nearest-integer seam repair with current record, channel C | Microscopic baseline | One recorded process supplies conservative load repair, a finite slow geometry readout and dimensionless clock relations. | Physical response, clock and refinement; the quantum instrument is a hypothesis. |
 | **N1-E** | Same load repair with contrast record, channel E | Active completion comparison | Idempotent completion of C on one seam; a conditional expectation on the binary shell. | Source selection of the retained algebra and record instrument. |
-| **N2** | N1 current drives local six-level response at both seam endpoints | Primary finite join under investigation | Preserves N1's load instrument and locality; inherits completion and finite binary-network convergence while protecting local block populations. | Reciprocal response-to-load influence, complete source grammar and selection against N3. |
+| **N2** | N1 current drives local six-level response at both seam endpoints | One-way preservation benchmark | Preserves N1's load instrument and locality; inherits completion and finite binary-network convergence while protecting local block populations. | Full source grammar and selection against N3; all-input marginal preservation excludes feedback. |
 | **N3** | N1 current drives the local flat endpoint response | Simpler active alternative | Preserves the same load instrument and locality; one global change of coordinates reduces it to N1 with unchanged internal variables. | A reason to select or reject its trivial closed-loop response. |
+| **N4** | One coherent load–response exchange conjugates binary C/E | Reciprocity experiment | Private preparations change bare load probabilities while preserving locality, total occupation and completion. | Shared source/observable grammar; its changed current labels require geometry and clock readouts to be rederived. |
 | **S1** | Minimal canonical inertial completion of weighted scalar agreement | Separate field/component benchmark | Explicit Hamiltonian, conditional free-field continuum and controlled preparation/observation construction. | Derivation of inertia, quantum state, controls and physical time from the microscopic process. |
 
-N2 is the priority because it joins an actual repair event to an existing
-reversible response. This ranking is a research decision, not evidence that
-N2 is nature's law. N3 tests whether that extra response structure is needed.
-S1 supplies useful field benchmarks; it is not identified with N2's dynamics.
+N2 and N3 retain the native repair marginal. N4 tests the smallest reciprocal
+extension examined after a one-term obstruction, using the same state factors.
+It is an experiment, not a preferred law by default. A fixed coefficient ratio
+is an assumption even without an extra fitted parameter. S1 supplies useful
+field benchmarks; its dynamics are not identified with these microscopic laws.
 Common refinement, physical time, interactions, gravitational premises and
 observational discrimination must be joined on one process before a complete
 physical model can be claimed.
@@ -149,16 +151,71 @@ loop has identity response, and the full encoded internal algebra survives.
 Load preservation, classical records, locality and proper covariance hold as
 for N2. There is no response-to-load feedback.
 
-**Discriminator:** on the declared reference-assisted input, retaining all
+**Simplest tested discriminator:** one local six-level state, one seam attempt
+and one local two-outcome effect distinguish N2 and N3 with probability
+difference **0.049095 at θ=1/8**, including both fair coin outcomes. No entangled
+reference or retained history is required. All 67 fixed checks and an
+identical isolated replay passed. Preparation, effect and coupling are
+supplied; see the [local readout](MODEL_SEARCH.md#a-simple-local-readout-distinguishes-the-alternatives).
+
+The earlier declared reference-assisted input, retaining all
 eight coin outcomes of the three-event history gives N2 versus N3 trace
 distance about **0.137390 at θ=1/8**, about **0.069358 at θ=1/16**, and zero at
 θ=0. No outcome is postselected. These are finite model comparisons using
 supplied quantum references and seams, not measured physical predictions.
 See the [alternative and fixed tests](MODEL_SEARCH.md#a-simpler-alternative-keeps-the-selection-question-testable).
 
-**Next decisive work:** identify which response histories an admissible source
-preparation and readout can distinguish. Preservation and convergence alone
-cannot select N2 over this simpler alternative.
+**Next decisive work:** realize that local preparation/readout in the admitted
+source grammar and connect it to a physical comparison. Preservation and
+convergence alone cannot select N2 over this simpler alternative.
+
+## N4: a reciprocal coherent exchange
+
+On the binary shell let S_e swap the endpoint occupations. Use
+`X=S_e(N_a−N_b)²` and `Y=iS_e(N_a−N_b)`, with the same endpoint private
+factors as N2. Define
+
+```text
+g=D_b−D_a, h=D_a+D_b−J/6, J=Σ_p D_p,
+G=g^(a)+g^(b), H=h^(a)+h^(b),
+W_e=exp[θ(Y⊗G+X⊗H)],     K_r=W_e(L_r⊗I)W_e†.
+```
+
+The exponent also equals `θ(s_+⊗B−s_−⊗B†)`, where
+`s_+=|10><01|` and `B=H−iG`. It is one coherent exchange, with no extra
+state variable beyond N2. θ, the equal relative weighting, exponential law
+and quantum interpretation are supplied choices.
+
+Both response directions omit the constant central generator; this exchange
+does not restore the missing central response.
+
+**Why test it:** any single-product conjugation `exp(θ A⊗G)` with local
+number-preserving A leaves C's load marginal unchanged. Its channel symmetry
+blocks feedback for that whole family. N4 evades this scoped obstruction;
+neither summand alone has the tested feedback. This does not prove universal
+minimality among other possible laws.
+
+**Properties:** local, total-occupation conserving, proper-carrier covariant,
+with protected 3+3 block populations. Same-seam C/E completion and finite
+binary-network convergence transfer by conjugacy. Its full common algebra
+and absolute gap are uncomputed. The candidate is restricted to the binary
+shell; full integer-pile relaxation is not established.
+
+**Evidence:** with fixed bare load I_2/2, supplied private preparations change
+endpoint occupation probability from **0.482020673 to 0.517979327 at θ=1/8**.
+The one-term controls give 1/2. All 187 fixed checks and an identical isolated
+replay passed. The
+[derivation and tests](MODEL_SEARCH.md#a-reciprocal-coherent-exchange-candidate)
+give independent source and small-coupling controls without claiming an
+interval bound at finite θ.
+
+**Main cost:** the old record label j refers to the conjugated occupation,
+not to a measured change of bare load. N1's current-derived geometry and
+clock identities cannot simply be imported. Fix a common admissible
+observable/record grammar before interpreting the feedback physically. On
+one seam the channel is unitarily equivalent to C; conjugating the observers
+too would turn that comparison into a coordinate change. The complete source
+grammar, physical time, gauge dynamics and interacting continuum are open.
 
 ## S1: the canonical scalar benchmark
 
@@ -208,6 +265,11 @@ Other superseded routes and their reasons are collected in
 [retired approaches](MODEL_SEARCH.md#7-retired-approaches-and-lessons-retained).
 
 ## Keeping this register useful
+
+Follow the [general search findings](MODEL_SEARCH.md#general-findings-that-guide-the-search):
+use discriminating requirements, test deletion controls, count independent
+assumptions and try the smallest diagnostic first. A shorter rewritten
+formula does not by itself reduce the law's physical inputs.
 
 Update the relevant card when the law, state space, parameters, schedule,
 record policy or physical interpretation changes. Preserve the candidate ID

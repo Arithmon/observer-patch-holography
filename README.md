@@ -17,6 +17,31 @@ known forces, with a conditional route to Einstein dynamics. Each construction
 states the assumptions it consumes. Establishing a common physical
 realization requires measurements that distinguish the proposed models.
 
+## Research status
+
+We have **conditional mathematical results and concrete finite repair
+candidates**. The candidates reproduce and connect some required structures,
+and we can distinguish several of them in simulations. **We do not have a
+common model established as physically correct.** The
+[candidate register](docs/MODEL_CANDIDATES.md) and
+[model search](docs/MODEL_SEARCH.md) separate constructed results, supplied
+assumptions and missing physical connections.
+
+**OPH's physical correctness is a hypothesis under investigation.** Logical
+consistency, conditional theorems and successful simulations do not establish
+that nature follows OPH or any particular candidate repair law. We retain
+alternative laws and revise or reject physical attachments when tests fail.
+
+The finite constructions supply model comparisons. A physical test additionally
+needs an operational identification of states, records, time and parameters;
+a distinguishing observable; an account of calibration and uncertainty; and
+a prediction and rejection rule fixed before independent comparison data are
+examined. Compare against established physics and alternative models, including
+cases where they cannot be distinguished. The
+[physical-test programme](https://github.com/FloatingPragma/observer-patch-holography/issues/1025)
+and [frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) track that work.
+Reproducing a value used to choose the model is a fit, not an independent test.
+
 ## Research focus: one repair process
 
 **Find the simplest shared repair rule that satisfies the known constraints.**

@@ -19,6 +19,32 @@ d’Einstein. Chaque construction précise ses hypothèses. Établir une
 réalisation physique commune exige des mesures qui distinguent les modèles
 proposés.
 
+## État de la recherche
+
+Nous disposons de **résultats mathématiques conditionnels et de candidats
+finis concrets pour la loi de réparation**. Ces candidats reproduisent et
+relient certaines structures requises ; des simulations permettent d’en
+distinguer plusieurs. **Aucun modèle commun n’est établi comme physiquement
+correct.** Le [registre des candidats](docs/MODEL_CANDIDATES.md) et le
+[suivi des modèles](docs/MODEL_SEARCH.md) distinguent les résultats construits,
+les hypothèses fournies et les liens physiques à établir.
+
+**La validité physique d’OPH est une hypothèse à tester.** La cohérence
+logique, les théorèmes conditionnels et les simulations réussies ne prouvent
+pas que la nature suit OPH ou une loi de réparation particulière. Nous
+conservons les lois alternatives et révisons ou rejetons les interprétations
+physiques que les tests mettent en défaut.
+
+Un test physique exige une identification opérationnelle des états, des
+registres, du temps et des paramètres, une observable discriminante, un bilan
+de calibration et d’incertitude, puis une prédiction et un critère de rejet
+fixés avant l’examen de données indépendantes. La comparaison inclut la
+physique établie et les modèles alternatifs. Le
+[programme de tests physiques](https://github.com/FloatingPragma/observer-patch-holography/issues/1025)
+et le [registre des prédictions figées](docs/FROZEN_PREDICTION_LADDER.md)
+suivent ce travail. Reproduire une valeur utilisée pour choisir le modèle
+constitue un ajustement, pas un test indépendant.
+
 ## Priorité de recherche : un même processus de réparation
 
 **Trouver la règle de réparation commune la plus simple qui satisfait les
