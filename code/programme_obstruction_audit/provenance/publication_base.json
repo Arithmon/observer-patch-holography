@@ -1,0 +1,16 @@
+{
+  "revision": "84025a97491f6e1173cc29d72822c989e4ef6ed5",
+  "path": "docs/MODEL_SEARCH.md",
+  "sha256": "27f9123477436ea8ff24bd2c5e8b18bd4ab719ed712f08f212979b43cb01ebf4",
+  "git_blob_sha1": "48100318406266288d26ef6673cc982a03070756",
+  "retrieval": "gh api contents endpoint with exact full SHA; raw bytes",
+  "change": "standalone audit evidence paragraph; no existing premise/status altered",
+  "generated_premise_map": "left unchanged; its fixed and current bytes have identical sha256 a0a8c2523a7a9d081653dd218e526e6c88bbd5d87c3f80a9ad50765b3c8b0ab3",
+  "publication_policy": {
+    "path": "docs/policies/NUMERICAL_AUDIT.md",
+    "revision": "84025a97491f6e1173cc29d72822c989e4ef6ed5",
+    "sha256": "53674716a064d890e1051773304130e07471790113743b56d8095f2e485783fe",
+    "git_blob_sha1": "cb9e2f0a723846a5288ddcbbbc30e89a8d145cb8",
+    "disposition": "read for publication controls; new exact receipt producers are packaged; no existing numerical consumer/live/frozen evidence repaired"
+  }
+}
