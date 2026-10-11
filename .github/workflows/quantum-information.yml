@@ -7,6 +7,8 @@ on:
       - 'code/geometry/**'
       - 'code/maxent/**'
       - 'code/native_response/**'
+      - 'code/source_selection_model/response.json'
+      - 'paper/tex_fragments/SOURCE_RECORD_GLUING.tex'
       - 'requirements.txt'
       - '.github/workflows/quantum-information.yml'
   push:
@@ -17,6 +19,8 @@ on:
       - 'code/geometry/**'
       - 'code/maxent/**'
       - 'code/native_response/**'
+      - 'code/source_selection_model/response.json'
+      - 'paper/tex_fragments/SOURCE_RECORD_GLUING.tex'
       - 'requirements.txt'
       - '.github/workflows/quantum-information.yml'
 permissions:
