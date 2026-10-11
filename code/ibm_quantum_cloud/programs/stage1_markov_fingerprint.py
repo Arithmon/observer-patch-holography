@@ -18,7 +18,7 @@ if __package__ in (None, ""):
 from quantum_information.gibbs import _numeric
 from quantum_information.recovery import (
     matrix_inv_sqrt_psd, matrix_sqrt_psd, petz_recovery, state_fidelity,
-    trace_distance, validated_state, UnresolvedPetzSupport,
+    trace_distance, validated_state, UnresolvedPetzSupport, UnresolvedStatePrecision,
 )
 from quantum_information.positive_rounding import _is_exact_psd, round_positive_gram
 from quantum_information.states import (
@@ -90,7 +90,9 @@ def von_neumann_entropy(rho: np.ndarray, base: float = 2.0) -> float:
 
 
 def conditional_mutual_information(rho: np.ndarray) -> float:
-    return _cmi(validated_state(rho), [2, 2, 2], [0], [1], [2])/math.log(2)
+    # The information API validates the original entries and averages them
+    # exactly. A binary64 Hermitian average here can erase source coherence.
+    return _cmi(rho, [2, 2, 2], [0], [1], [2])/math.log(2)
 
 
 def project_to_physical_density_matrix(rho: np.ndarray, *, return_rounding_bound=False):
@@ -348,7 +350,7 @@ def state_catalog(random_depth: int, random_seeds: list[int]) -> tuple[list[Quan
 
 
 def analyze_state(rho: np.ndarray) -> dict:
-    """Retain valid information even when Petz support cannot be resolved."""
+    """Retain valid information when a recovery diagnostic is unresolved."""
     cmi_bits = conditional_mutual_information(rho)
     result = {
         "cmi_bits": cmi_bits,
@@ -360,14 +362,18 @@ def analyze_state(rho: np.ndarray) -> dict:
     }
     try:
         recovered = petz_recovery(rho)
-    except UnresolvedPetzSupport as error:
-        result.update(petz_status="unresolved_support", petz_unavailable_reason=str(error),
+        fidelity = state_fidelity(rho, recovered)
+        distance = trace_distance(rho, recovered)
+        mismatch = low_weight_observable_mismatch(rho, recovered)
+    except UnresolvedStatePrecision as error:
+        status = ("unresolved_support" if isinstance(error, UnresolvedPetzSupport)
+                  else "unresolved_precision")
+        result.update(petz_status=status, petz_unavailable_reason=str(error),
                       petz_fidelity=None, petz_trace_distance=None, petz_observable_mismatch=None)
     else:
         result.update(petz_status="available", petz_unavailable_reason=None,
-                      petz_fidelity=state_fidelity(rho, recovered),
-                      petz_trace_distance=trace_distance(rho, recovered),
-                      petz_observable_mismatch=low_weight_observable_mismatch(rho, recovered))
+                      petz_fidelity=fidelity, petz_trace_distance=distance,
+                      petz_observable_mismatch=mismatch)
     return result
 
 

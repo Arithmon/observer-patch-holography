@@ -71,6 +71,13 @@ not a domain argument.
   A failed chart is not an intrinsically unresolved span: compare alternate
   exact presentations before attributing an intermediate underflow to the
   source. Check small retained projector entries on their own scale.
+  A trace-preserving channel can still have the wrong action. Check it on
+  independent input operators and its reference on each nonzero component's
+  own scale. An exactly positive source can have both a computed zero
+  eigenvalue and a rounded zero kernel residual; neither determines rank.
+  Correctly rounded matrix-function components need not remain accurate when
+  multiplied into a channel. Retain a valid neighboring tiny-output control
+  alongside any precision refusal.
 - **Combined conditioning:** challenge metric whitening and constraint
   inversion together. Separate precision gates can each pass while their
   compounded error spoils the minimum. Compare with the original-input

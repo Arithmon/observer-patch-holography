@@ -736,3 +736,171 @@ def test_review_fingerprint_values_follow_independent_count_families(
     for key, expected in zip(("structured_theta_0.00_lt_random_control",
                               "structured_theta_0.00_lt_ghz", "recovery_improves_as_cmi_drops"), checks):
         assert report["fingerprint_checks"][key] is expected
+
+
+@pytest.mark.parametrize("operation", ["petz_recovery", "state_fidelity",
+                                       "trace_distance", "low_weight_observable_mismatch"])
+def test_source_precision_refusal_retains_independent_information(monkeypatch, operation):
+    from quantum_information.recovery import UnresolvedStatePrecision
+    # Classical shared A,C bit and independent uniform B: exactly one CMI bit.
+    rho = np.diag([.25, 0., .25, 0., 0., .25, 0., .25])
+    def unavailable(*args):
+        raise UnresolvedStatePrecision("injected source precision refusal")
+    monkeypatch.setattr(stage1, operation, unavailable)
+    row = stage1.analyze_state(rho)
+    assert row["petz_status"] == "unresolved_precision"
+    assert row["petz_unavailable_reason"] == "injected source precision refusal"
+    assert row["cmi_bits"] == pytest.approx(1., abs=2e-13)
+    assert row["fawzi_renner_fidelity_lower_bound"] == pytest.approx(.5, abs=2e-13)
+    assert row["petz_fidelity"] is row["petz_trace_distance"] is row["petz_observable_mismatch"] is None
+
+
+@pytest.mark.parametrize("operation", ["state_fidelity", "trace_distance",
+                                       "low_weight_observable_mismatch"])
+def test_source_metric_unexpected_errors_propagate(monkeypatch, operation):
+    def failure(*args):
+        raise ValueError("injected source precision refusal")
+    monkeypatch.setattr(stage1, operation, failure)
+    with pytest.raises(ValueError, match="injected source precision refusal"):
+        stage1.analyze_state(np.eye(8)/8)
+
+
+def test_source_precision_refusal_serializes_counts_cmi_and_unavailable_ordering(monkeypatch, tmp_path):
+    import json
+    from quantum_information.recovery import UnresolvedStatePrecision
+    acquired = _review_main_fixture(monkeypatch, tmp_path, unresolved_counts=False)
+    def unavailable(*args):
+        raise UnresolvedStatePrecision("source root precision is unresolved")
+    monkeypatch.setattr(stage1, "state_fidelity", unavailable)
+    assert stage1.main() == 0
+    raw = json.loads((tmp_path/"acquired_counts.json").read_text())
+    report = json.loads((tmp_path/"summary.json").read_text())
+    assert raw["counts_by_name"] == acquired["counts_by_name"]
+    for analysis in ("exact_analysis", "reconstructed_analysis"):
+        for row in report[analysis].values():
+            assert row["petz_status"] == "unresolved_precision"
+            assert row["petz_fidelity"] is row["petz_trace_distance"] is row["petz_observable_mismatch"] is None
+            assert row["cmi_bits"] == pytest.approx(0., abs=2e-13)
+    assert report["fingerprint_checks"]["recovery_improves_as_cmi_drops"] is None
+    assert report["fingerprint_checks"]["structured_theta_0.00_lt_random_control"] is False
+    assert report["fingerprint_checks"]["structured_theta_0.00_lt_ghz"] is False
+    assert json.loads((tmp_path/"summary_pretty.txt").read_text()) == report
+
+
+def test_source_precision_exception_outside_recovery_is_not_handled(monkeypatch):
+    from quantum_information.recovery import UnresolvedStatePrecision
+    def failure(*args):
+        raise UnresolvedStatePrecision("independent information failed")
+    monkeypatch.setattr(stage1, "conditional_mutual_information", failure)
+    with pytest.raises(UnresolvedStatePrecision, match="independent information failed"):
+        stage1.analyze_state(np.eye(8)/8)
+
+
+def _source_tiny_conditional_coherence(mass, coherent=True):
+    # B=0 has one unit at A=C=0. B=1 has four diagonal cells of mass m
+    # and, after exact Hermitian averaging, one coherence i*m/2. The B=1
+    # eigenvalues are m/2,m,m,3m/2. Its CMI is
+    # m*(.5*log(.5)+1.5*log(1.5))/log(2), strictly positive if coherent.
+    rho = np.zeros((8, 8), complex)
+    rho[0, 0] = 1
+    rho[[2, 3, 6, 7], [2, 3, 6, 7]] = mass
+    if coherent:
+        rho[2, 7] = 1j*mass
+    return rho
+
+
+@pytest.mark.parametrize("operation", ("conditional_mutual_information", "analyze_state"))
+def test_source_half_subnormal_coherence_cannot_become_zero_information(operation):
+    rho = _source_tiny_conditional_coherence(np.nextafter(0., 1.))
+    # The positive CMI lies below binary64 range; returning zero after
+    # rounding the Hermitian average would assert a false conditional product.
+    with pytest.raises(ValueError, match="information underflow|insufficient output precision"):
+        getattr(stage1, operation)(rho)
+
+
+def test_source_representable_tiny_conditional_information():
+    import math
+    mass = 2.**-80
+    rho = _source_tiny_conditional_coherence(mass)
+    expected = mass*(.5*math.log(.5)+1.5*math.log(1.5))/math.log(2)
+    assert stage1.conditional_mutual_information(rho) == pytest.approx(expected, rel=3e-14, abs=0)
+
+
+@pytest.mark.parametrize("mass", (np.nextafter(0., 1.), 2.**-80))
+def test_source_exact_conditional_product_remains_zero(mass):
+    rho = _source_tiny_conditional_coherence(mass, coherent=False)
+    assert stage1.conditional_mutual_information(rho) == 0
+
+
+def test_source_exact_channel_contraction_keeps_phase_state_available():
+    import math
+    # An exact dyadic pure state symmetric under permuting A,B,C. Every
+    # single-qubit marginal has eigenvalues 1/2 +/- sqrt(10)/8; purity gives
+    # I(A:C|B)=S(A)+S(C)-S(B), hence the binary entropy below.
+    vector = np.ones(8, complex)
+    vector[-1] = 1j
+    rho = np.outer(vector, vector.conj())/8
+    p = .5+math.sqrt(10)/8
+    expected = -p*math.log2(p)-(1-p)*math.log2(1-p)
+    # Success is required: this valid singular source is representable after
+    # the channel contraction is performed before its final binary64 rounding.
+    recovered = stage1.petz_recovery(rho)
+    row = stage1.analyze_state(rho)
+    assert row["petz_status"] == "available"
+    assert row["petz_unavailable_reason"] is None
+    assert row["cmi_bits"] == pytest.approx(expected, abs=2e-14)
+    assert row["fawzi_renner_fidelity_lower_bound"] == pytest.approx(2**-expected, abs=2e-14)
+    # For the exact pure input, squared fidelity is the linear overlap.
+    assert row["petz_fidelity"] == pytest.approx(np.trace(rho @ recovered).real,
+                                                abs=3e-15, rel=0)
+    # Positive analytic CMI excludes an exact Petz fixed point. This nearby
+    # phase case must not take a numerical near-purity shortcut to rho.
+    assert row["petz_fidelity"] < .99
+
+
+def test_source_exact_complex_markov_product_remains_available():
+    # v = (1,1,1,i)_AB tensor (1,1)_C, with normalization sqrt(8).
+    # The pure C marginal certifies this exact product, so CMI=0 and Petz
+    # returns the original source. No approximate-rank decision is needed.
+    vector = np.array([1, 1, 1, 1, 1, 1, 1j, 1j])
+    rho = np.outer(vector, vector.conj())/8
+    np.testing.assert_array_equal(stage1.petz_recovery(rho), rho)
+    row = stage1.analyze_state(rho)
+    assert row["petz_status"] == "available"
+    assert row["petz_unavailable_reason"] is None
+    assert row["cmi_bits"] == 0
+    assert row["petz_fidelity"] == 1
+    assert row["petz_trace_distance"] == row["petz_observable_mismatch"] == 0
+
+
+def test_source_rounded_recovery_is_positive_or_explicitly_unavailable():
+    import math
+    import sympy as sp
+    # For this pure phase state S(B)=S(C); A has eigenvalues
+    # 1/2 +/- sqrt(2)/4. On the audited backend, final rounding produces
+    # an indefinite recovered matrix. Other backends may return a PSD
+    # rounding, so certify any returned entries rather than demand refusal.
+    vector = np.array([1, 1, 1, 1, 1, 1j, 1j, 1])
+    rho = np.outer(vector, vector.conj())/8
+    p = .5+math.sqrt(2)/4
+    expected = -p*math.log2(p)-(1-p)*math.log2(1-p)
+    try:
+        recovered = stage1.petz_recovery(rho)
+    except stage1.UnresolvedStatePrecision as error:
+        assert str(error) == "recovered matrix positivity is numerically unresolved"
+        recovered = None
+    else:
+        exact = sp.Matrix([[sp.Rational(float(z.real))+sp.I*sp.Rational(float(z.imag))
+                            for z in row] for row in recovered])
+        assert exact == exact.H
+        assert all((-1)**k*x >= 0 for k, x in enumerate(exact.charpoly().all_coeffs()))
+    row = stage1.analyze_state(rho)
+    assert row["cmi_bits"] == pytest.approx(expected, abs=2e-14)
+    assert row["fawzi_renner_fidelity_lower_bound"] == pytest.approx(2**-expected, abs=2e-14)
+    if recovered is None:
+        assert row["petz_status"] == "unresolved_precision"
+        assert row["petz_fidelity"] is row["petz_trace_distance"] is row["petz_observable_mismatch"] is None
+    else:
+        assert row["petz_status"] == "available"
+        assert row["petz_fidelity"] == pytest.approx(np.trace(rho @ recovered).real,
+                                                    abs=3e-15, rel=0)

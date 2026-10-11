@@ -28,6 +28,13 @@ repairs false separation from ill-conditioned basis charts and retains exact
 source intersections before numerical conversion. Independent original-input
 controls also cover valid complex algebras and extreme basis units.
 
+The [recovery audit](RECOVERY_EVIDENCE.md#source-support-square-roots-and-reported-distances)
+preserves original-entry support in square roots and state fidelity, and checks
+Petz action beyond trace preservation. These APIs require exact positivity of
+the supplied Hermitian average; unresolved numerical functions raise instead
+of clipping a spectrum or manufacturing a recovery score. Stage 1 preserves
+independent CMI and acquired counts when recovery is numerically unavailable.
+
 The [fixed-point audit](REPAIR_FIXED_POINTS.md) prevents almost coincident
 repair algebras from manufacturing protected observables and an artificially
 large relaxation gap. Intersections use exact retained input spans; channel
