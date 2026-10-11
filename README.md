@@ -2,7 +2,7 @@
 
 **Physics from the records observers can share.**
 
-[Physics preprint](https://philpapers.org/rec/MUEFOC) · [Pragma Research](https://floatingpragma.io/research/) · [Cadence](https://floatingpragma.io/cadence/) · [Français](README_FR.md)
+[Physics preprint](https://philpapers.org/rec/MUEFOC) · [Pragma Research](https://floatingpragma.io/research/) · [Français](README_FR.md)
 
 Observer Patch Holography (OPH) investigates whether familiar physics can be
 reconstructed from bounded observers that reach agreement. An observer patch

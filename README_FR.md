@@ -2,7 +2,7 @@
 
 **La physique à partir des registres que les observateurs peuvent partager.**
 
-[Article de physique](https://philpapers.org/rec/MUEFOC) · [Pragma Research](https://floatingpragma.io/research/) · [Cadence](https://floatingpragma.io/cadence/) · [English](README.md)
+[Article de physique](https://philpapers.org/rec/MUEFOC) · [Pragma Research](https://floatingpragma.io/research/) · [English](README.md)
 
 L’Holographie des parcelles d’observateur (OPH) étudie si la physique familière
 peut être reconstruite à partir d’observateurs bornés qui parviennent à un
