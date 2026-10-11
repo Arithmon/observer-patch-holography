@@ -122,6 +122,41 @@ def geometry_factor(scale, carriers):
     else:
         resolution = int(name.split('_')[1])
         need(low >= 4 and groups <= resolution**3, 'Invalid retained cube geometry')
+        if low == high:
+            need(groups*low <= carriers, 'Groups exceed carrier population')
+            close(arithmetic, low)
+            close(harmonic, low)
+        else:
+            # Both declared extrema are attained by integer cell counts.
+            # Bound the total before testing reciprocal moments; raw geometry
+            # is unavailable, so these are necessary consistency conditions.
+            budget = RTOL*groups*arithmetic
+            total_low = max(math.ceil(groups*arithmetic-budget), (groups-1)*low+high)
+            total_high = min(math.floor(groups*arithmetic+budget), low+(groups-1)*high,
+                             carriers)
+            need(total_low <= total_high, 'Impossible integer cube population')
+
+            def reciprocal_bounds(total):
+                # Reserve one minimum and maximum. Convexity minimizes the
+                # remaining reciprocal sum at adjacent integer counts and
+                # maximizes it at the extrema with at most one interior count.
+                count, mass = groups-2, total-low-high
+                base, extra = divmod(mass, count)
+                fixed = Q(1, low)+Q(1, high)
+                minimum = fixed+Q(count-extra, base)+Q(extra, base+1)
+                highs, interior = divmod(mass-count*low, high-low)
+                maximum = fixed+Q(highs, high)+Q(count-highs-(interior > 0), low)
+                if interior:
+                    maximum += Q(1, low+interior)
+                return minimum, maximum
+
+            # Both bounds decrease with total cell count.
+            lower = reciprocal_bounds(total_high)[0]
+            upper = reciprocal_bounds(total_low)[1]
+            reciprocal = Q(groups)/harmonic
+            tolerance = RTOL*max(reciprocal, upper)
+            need(lower-tolerance <= reciprocal <= upper+tolerance,
+                 'Impossible integer cube harmonic mean')
     cells = arithmetic if name.endswith('_weighted') else harmonic
     return Q(groups-1, 12*groups)/cells
 
@@ -234,7 +269,8 @@ def scale_ensemble(value=None):
         for key, pixels in grids.items():
             grid = level['angular'][key]
             low, high = integer(grid['counts_min']), integer(grid['counts_max'])
-            need(low*pixels <= carriers <= high*pixels, 'Invalid angular pixel population')
+            need(high+(pixels-1)*low <= carriers <= low+(pixels-1)*high,
+                 'Invalid angular pixel population')
             need([integer(r['ell']) for r in grid['rows']] == list(range(1, spec['angular_lmax']+1)),
                  'Missing or reordered angular multipoles')
             for row in grid['rows']:

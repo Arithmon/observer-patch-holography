@@ -435,3 +435,137 @@ def test_angular_consumer_preserves_negative_common_power_from_opposite_harmonic
         "conditional_schedule_noise_power": float(noise), "cross_schedule_common_power": float(common),
     }
     retained.check_angular(row, 2)
+
+
+@pytest.mark.parametrize("weighted", [False, True])
+@pytest.mark.parametrize("cells", [
+    [4, 5, 5, 8],  # Smallest reciprocal sum after reserving both extrema.
+    [4, 4, 6, 8],  # Largest reciprocal sum with one interior count.
+    [4, 4, 8, 8],  # Largest reciprocal sum entirely at the extrema.
+    [4, 4, 4, 4],  # Coincident extrema.
+])
+def test_integer_cube_bounds_keep_attainable_extrema_and_partial_coverage(cells, weighted):
+    count = len(cells)
+    arithmetic = Fraction(sum(cells), count)
+    harmonic = Fraction(count) / sum(Fraction(1, value) for value in cells)
+    weights = cells if weighted else [1] * count
+    total_weight = sum(weights)
+    # Start from the actual original groups and their normalized weights.
+    expected = sum((Fraction(weight, total_weight) - Fraction(weight, total_weight)**2)
+                   / (12 * size) for weight, size in zip(weights, cells))
+    geometry = {
+        "name": "cube_2_weighted" if weighted else "cube_2_unweighted",
+        "groups": count, "cells_min": min(cells), "cells_max": max(cells),
+        "cells_arithmetic_mean": float(arithmetic), "cells_harmonic_mean": float(harmonic),
+    }
+    assert float(retained.geometry_factor(geometry, sum(cells) + 1)) == pytest.approx(
+        float(expected), rel=1e-14, abs=0)
+
+
+@pytest.mark.parametrize("arithmetic,harmonic", [
+    (4.0, 4.0),  # The declared maximum eight must occur at least once.
+    (8.0, 8.0),  # The declared minimum four must occur at least once.
+    (5.1, 5.0),  # Four integer counts cannot sum to 20.4.
+    (5.5, 4.9),  # Reciprocal sum above every possible four-count population.
+    (5.5, 5.3),  # Reciprocal sum below every possible four-count population.
+])
+def test_integer_cube_bounds_reject_impossible_summary_populations(arithmetic, harmonic):
+    geometry = {
+        "name": "cube_2_unweighted", "groups": 4, "cells_min": 4, "cells_max": 8,
+        "cells_arithmetic_mean": arithmetic, "cells_harmonic_mean": harmonic,
+    }
+    with pytest.raises(ValueError, match="integer cube"):
+        retained.geometry_factor(geometry, 40)
+
+
+def test_unused_carriers_do_not_expand_cube_mean_roundoff_budget():
+    geometry = {
+        "name": "cube_2_unweighted", "groups": 4, "cells_min": 4, "cells_max": 8,
+        "cells_arithmetic_mean": 5.00001, "cells_harmonic_mean": float(Fraction(32, 7)),
+    }
+    # The arithmetic mean fixes a noninteger total 20.00004 even though a
+    # much larger parent population lies outside the four retained groups.
+    with pytest.raises(ValueError, match="integer cube population"):
+        retained.geometry_factor(geometry, 10**9)
+
+
+@pytest.mark.parametrize("direction", [-float("inf"), float("inf")])
+def test_integer_cube_means_allow_last_bit_roundoff(direction):
+    from math import nextafter
+
+    cells = [4, 5, 5, 8]
+    harmonic = Fraction(len(cells)) / sum(Fraction(1, value) for value in cells)
+    geometry = {
+        "name": "cube_2_unweighted", "groups": len(cells),
+        "cells_min": min(cells), "cells_max": max(cells),
+        "cells_arithmetic_mean": nextafter(sum(cells) / len(cells), direction),
+        "cells_harmonic_mean": nextafter(float(harmonic), direction),
+    }
+    retained.geometry_factor(geometry, sum(cells) + 1)
+
+
+def test_coherent_cube_renormalization_requires_possible_integer_geometry(population):
+    level = population["levels"][0]
+    parent = json.loads((SIM / (
+        "data/codex_audit_20260925/inputs/data/receipts/L8/receipt.json"
+    )).read_text())
+    count, total, low, high = 632, parent["carriers"], 2073, 2074
+    high_count = total - count * low
+    low_count = count - high_count
+    assert (low_count, high_count) == (48, 584)
+    arithmetic = Fraction(total, count)
+    harmonic = Fraction(count) / (Fraction(low_count, low) + Fraction(high_count, high))
+    # The total integer count is uniquely determined even with the specified
+    # arithmetic tolerance. The implied harmonic discrepancy exceeds it.
+    assert retained.RTOL * total < Fraction(1, 2)
+    assert (arithmetic - harmonic) / harmonic > 10 * retained.RTOL
+    ports = parent["ports"]
+    raised = parent["expected"]["component_total"][0] % ports
+    coefficient = Fraction(raised * (ports - raised), ports * (ports - 1))
+    for scale in level["scales"]:
+        if not scale["name"].startswith("cube_12_"):
+            continue
+        scale.update(cells_min=low, cells_max=high,
+                     cells_arithmetic_mean=float(arithmetic), cells_harmonic_mean=float(arithmetic))
+        factor = Fraction(count - 1, 12 * count) / arithmetic
+        scale["equilibrium_variance"] = float(coefficient * factor)
+        scale["initial_variance_over_iid_null"] = (
+            scale["per_schedule"][0]["initial_variance"] / float(Fraction(35, 12) * factor))
+        for row in scale["per_schedule"]:
+            row["variance_over_exchangeable_equilibrium"] = (
+                row["terminal_variance"] / scale["equilibrium_variance"])
+    with pytest.raises(ValueError, match="integer cube harmonic"):
+        retained.scale_ensemble(population)
+
+
+@pytest.mark.parametrize("attained", ["minimum", "maximum"])
+def test_angular_extrema_must_fit_the_full_pixel_population(population, attained):
+    level = population["levels"][0]
+    grid = level["angular"]["z128_phi256"]
+    pixels, carriers = 128 * 256, level["carriers"]
+    assert carriers % pixels == 0
+    if attained == "maximum":
+        grid["counts_min"], grid["counts_max"] = 1, carriers
+        assert grid["counts_max"] + (pixels - 1) * grid["counts_min"] > carriers
+    else:
+        grid["counts_min"], grid["counts_max"] = 1, carriers // pixels
+        assert grid["counts_min"] + (pixels - 1) * grid["counts_max"] < carriers
+    with pytest.raises(ValueError, match="angular pixel population"):
+        retained.scale_ensemble(population)
+
+
+@pytest.mark.parametrize("attained", ["minimum", "maximum", "both"])
+def test_angular_extrema_accept_original_integer_pixel_counts(population, attained):
+    level = population["levels"][0]
+    grid = level["angular"]["z128_phi256"]
+    pixels, carriers = 128 * 256, level["carriers"]
+    average = carriers // pixels
+    if attained == "minimum":
+        counts = [average - 1] * (pixels - 1) + [average + pixels - 1]
+    elif attained == "maximum":
+        counts = [average - 1, average + 1] + [average] * (pixels - 2)
+    else:
+        counts = [average] * pixels
+    assert sum(counts) == carriers and min(counts) > 0
+    grid["counts_min"], grid["counts_max"] = min(counts), max(counts)
+    assert retained.scale_ensemble(population)["angular_rows"] == 240
