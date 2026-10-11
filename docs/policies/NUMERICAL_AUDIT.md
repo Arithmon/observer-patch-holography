@@ -65,6 +65,12 @@ not a domain argument.
   are different obligations. Where the source supplies a positive factor,
   preserve that structure before forming a rounded Gram matrix; a successful
   eigensolver on the damaged matrix cannot recover discarded information.
+  For thermal responses, test small splittings within the populated energy
+  levels as well as the full spectral width. Subtracting a common energy
+  origin in finite precision can merge a doublet and destroy its response
+  while every population and the derivative ratio pass their checks.
+  Preserve the original entries through centering and spectral evaluation;
+  challenge each returned state component and derivative separately.
   For operator bases, `Q*Q=I` checks orthonormality, not preservation of
   the supplied span. Check its projector and observable action against the
   original entries, including exactly representable ill-conditioned shears.
