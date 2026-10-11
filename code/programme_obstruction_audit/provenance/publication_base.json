@@ -12,5 +12,31 @@
     "sha256": "53674716a064d890e1051773304130e07471790113743b56d8095f2e485783fe",
     "git_blob_sha1": "cb9e2f0a723846a5288ddcbbbc30e89a8d145cb8",
     "disposition": "read for publication controls; new exact receipt producers are packaged; no existing numerical consumer/live/frozen evidence repaired"
+  },
+  "active_surface_inventory": {
+    "path": "claims/active_surface_inventory.json",
+    "sha256": "5f9313eb38b31dbf46382dea168986d0b5c65f83a4931a7376dbbb8898856368",
+    "generator": {
+      "command": "python3 tools/check_axiom_consistency.py --inventory",
+      "exit_code": 0
+    },
+    "validation": [
+      {
+        "command": "python3 tools/check_axiom_consistency.py --check-inventory",
+        "exit_code": 0
+      },
+      {
+        "command": "python3 tools/test_check_axiom_consistency.py",
+        "exit_code": 0
+      }
+    ],
+    "active_surface_count": 487,
+    "prior_active_surface_count": 486,
+    "test_count": 11,
+    "test_seconds": 3.38,
+    "pdf_scan_performed": false,
+    "guard_receipt": "receipts/active_surface_guard.json",
+    "guard_receipt_sha256": "0e0c5943c6f4835ebc88a22d5f1721ace69357765205f079b5405a7af1a750dd",
+    "disposition": "canonical generated integration refresh after adding report; existing claim registry/adopted basis/premise map unchanged; omitted from portable ZIP"
   }
 }
