@@ -72,6 +72,11 @@ administrative closure does not discharge a physical premise.
 Reuse the existing arguments before adding mechanisms; require geometry,
 reversible response and clocks to connect through the same source process.
 
+[Established Mathematics for Observer Agreement](AGREEMENT_RESEARCH_FOUNDATIONS.md)
+maps distributed recovery, sheaf diffusion, boundary extension and contextuality
+to explicit candidate obligations. Its work products govern theorem reuse and
+the distinction between recovery, exact agreement and physical law selection.
+
 [Concrete Repair-Law Candidates](MODEL_CANDIDATES.md) compares the active
 update rules, tested properties, added assumptions and decisive tests. This
 maintained research summary has a separate role from the generated registers.

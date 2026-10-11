@@ -9,6 +9,14 @@ This page owns the concise comparison of active laws. The
 [premise map](MODEL_PREMISE_MAP.md) tracks their connections to existing
 theorems. These are research candidates, with no physical selection claimed.
 
+Each candidate uses the
+[established-mathematics contract](AGREEMENT_RESEARCH_FOUNDATIONS.md): define
+its agreement target independently, state its execution and fault assumptions,
+and map any imported convergence or extension theorem to its actual objects.
+N1/N1-E and N2/N3/N4 retain their finite channel proofs; S1 uses the declared
+linear overlap structure where applicable. A sheaf heat-flow theorem does not
+turn their quantum instruments or conservative evolution into that heat flow.
+
 ## Candidates and priorities
 
 | ID | Concrete law | Role | Strongest established property | Principal missing connection |
@@ -287,6 +295,13 @@ and record the changed version in Git history; create a separate ID when a
 scientifically distinct alternative must be compared. Promote results only
 with their scope, added assumptions, discriminator and evidence reference.
 Keep exploratory logs and private contributions outside this register.
+
+For each claimed recovery or agreement result, record the legitimate set,
+preserved data, perturbation domain, schedule class, nearest primary theorem,
+checked premise mapping and remaining physical discriminator. Distinguish
+support extension, probability extension, harmonic residual and uniqueness.
+The [bounded work products](AGREEMENT_RESEARCH_FOUNDATIONS.md#7-work-products-and-scientific-contribution)
+fit the existing owners below; they do not retire successful component evidence.
 
 [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076)
 owns shared-law selection;

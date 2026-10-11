@@ -14,6 +14,13 @@ Research status: **11 October 2026**. Source reference:
 The [candidate register](MODEL_CANDIDATES.md) compares the concrete active
 laws, their tested properties, added assumptions and next decisive tests.
 
+The [agreement research foundations](AGREEMENT_RESEARCH_FOUNDATIONS.md)
+govern reuse of distributed self-stabilization, sheaf diffusion and extension
+results. The search must map their premises to the candidate before adding
+mechanisms or proving another abstract convergence result. Recovery, exact
+agreement, boundary uniqueness and physical law selection remain separate
+obligations; the existing source and scalar evidence is retained.
+
 **Programme decision, 11 October:** organize research around what one repair
 process must supply. The [work ownership](#work-ownership-and-claim-accounting)
 below assigns construction, physical tests and audits in parallel. Paper
@@ -316,7 +323,10 @@ premises of every imported result.
 
 1. **Name one missing interface.** State which objects must be related, which
    result needs that relation, and what would falsify the proposed attachment.
-2. **Try an existing readout or composition first.** Current, recorded order,
+2. **Map an established theorem and existing construction first.** Use the
+   [reuse contract](AGREEMENT_RESEARCH_FOUNDATIONS.md) to identify its state,
+   restriction, boundary, fault and scheduling assumptions. Record the
+   candidate-specific missing premise. Current, recorded order,
    first passage and regional entropy have supplied useful objects without
    adding independent fields. Test those before introducing new state variables.
 3. **Add only what a demonstrated gap requires.** If the existing source fails,
@@ -443,6 +453,15 @@ Separate conditional theorems can hold on different states, scales or laws;
 their validity alone does not construct that common realization. The research
 question is which inputs the repair law supplies, which it leaves free, and
 which observable can distinguish the resulting candidate.
+
+The first outputs under this method are the
+[recovery contract and linear extension calculation](AGREEMENT_RESEARCH_FOUNDATIONS.md#7-work-products-and-scientific-contribution):
+define the native legitimate set and fault span, identify its actual scheduler,
+and factor the scalar comparison into its fixed overlap maps. Compute the
+protected nullspace, boundary extension residual and uniqueness condition.
+Reuse established conclusions when these objects meet their hypotheses;
+then spend model-selection effort on the missing source, instrument and clock
+connections and a transient observable that distinguishes viable laws.
 
 | Owner | Responsibility and bounded result |
 | --- | --- |
