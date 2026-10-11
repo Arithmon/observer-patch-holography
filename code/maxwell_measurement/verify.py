@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
+from decimal import Decimal
 from fractions import Fraction as Q
 import hashlib
 import json
@@ -130,7 +131,13 @@ class Interval:
         return self.hi-self.lo
 
     def json(self):
-        return [str(self.lo), str(self.hi)]
+        def endpoint(value):
+            # Decimal(int) is exact and context-independent. Fixed formatting
+            # avoids Python's process-wide integer-to-string digit ceiling.
+            numerator=format(Decimal(value.numerator),"f")
+            return (numerator if value.denominator==1 else
+                    numerator+"/"+format(Decimal(value.denominator),"f"))
+        return [endpoint(self.lo),endpoint(self.hi)]
 
 
 def common_calibration(gain: Interval, offset: Interval, error: Q,
@@ -384,6 +391,7 @@ def certify_capture(p, c, parent, edges, gradient, curl, channels, limits, scale
                  "disabled-feedback control must resolve failed restoration")
     need(type(c["executions"]) is list and len(c["executions"]) == 2, "two complete gauge executions")
     reports=[]
+    gauge_observables=[]
     for observed,reference in zip(c["executions"],parent["executions"],strict=True):
         closed(observed, "gauge events", "execution")
         need(type(observed["gauge"]) is bool and observed["gauge"] is reference["gauge"], "gauge identity")
@@ -447,6 +455,10 @@ def certify_capture(p, c, parent, edges, gradient, curl, channels, limits, scale
         expected_action=Q(reference["events"][-1]["writes"]["field_source_action"])
         need(action.contains(expected_action) and action.width <= limits["maximum_action_width"],
              "field/source action conformance and uncertainty")
+        # Exact arithmetic can produce endpoints longer than the external input
+        # limit. Keep typed values for checks; serialization is only the report.
+        gauge_observables.append({"electric":electric,"magnetic":magnetic,
+                                  "field_source_action":action})
         reports.append({"gauge":reference["gauge"],"decoded_slices":[[v.json() for v in decoded[n]] for n in range(3)],
                         "electric":[[v.json() for v in row] for row in electric],
                         "magnetic":[[v.json() for v in row] for row in magnetic],
@@ -457,10 +469,10 @@ def certify_capture(p, c, parent, edges, gradient, curl, channels, limits, scale
         need(common_calibration(*channels[channel], samples),
              "capture and references have no common channel gain/offset calibration")
     for field in ("electric","magnetic"):
-        for left,right in zip(reports[0][field],reports[1][field],strict=True):
+        for left,right in zip(gauge_observables[0][field],gauge_observables[1][field],strict=True):
             for x,y in zip(left,right,strict=True):
-                need((Interval.parse(x)-Interval.parse(y)).contains(0), "gauge-invariant measured field")
-    need((Interval.parse(reports[0]["field_source_action"])-Interval.parse(reports[1]["field_source_action"])).contains(0),
+                need((x-y).contains(0), "gauge-invariant measured field")
+    need((gauge_observables[0]["field_source_action"]-gauge_observables[1]["field_source_action"]).contains(0),
          "gauge-invariant measured field/source action")
     return reports,len(nonces)
 

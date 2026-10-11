@@ -74,7 +74,13 @@ are `study_id`, `run_id`, `capture_kind`, `device_id`, `firmware_sha256`,
 `captured_utc`, `controls`, and `executions`, in addition to `schema`.
 UTC timestamps use ISO spelling ending in `Z`. Every numerical measurement,
 interval endpoint and raw device timestamp is a canonical rational string,
-such as `"-3/2"`; JSON floats are rejected.
+such as `"-3/2"`, with at most 200 characters; JSON floats are rejected.
+Exact arithmetic may produce longer output endpoints. Gauge comparisons use
+the retained rational intervals before report serialization, so the external
+input limit does not restrict internally computed field or action precision.
+Output numerator and denominator integers use exact `Decimal(int)` fixed
+formatting, preserving the caller's decimal context and the process-wide
+integer-string digit limit even when accumulated results exceed that limit.
 
 The three ordered controls are `sham_no_probe`, `pair_mean`, and
 `feedback_disabled`. Each has `name`, `start_tick`, `end_tick`, and four
@@ -201,8 +207,25 @@ feasibility solver against the original raw-error equations, including
 negative gains, degenerate boxes and pairwise-compatible but jointly
 incompatible triples.
 
-The repair changes rejection of inconsistent synthetic or hardware-emulator
-submissions; verdict meanings and reported uncertainty are unchanged.
+An additional valid-input regression at `efa92897` replaces only six channel
+raw-error bounds by `1/1000000007`, `1/1000000009`, `1/1000000021`,
+`1/1000000033`, `1/1000000087`, and `1/1000000093`. Each 12-character input
+tightens the original `1/1000000000` bound, and the unchanged singleton gains
+and offsets explain every reading with zero displacement. The exact action
+endpoints have 277 and 275 characters. Reapplying the external 200-character
+input limit during the final gauge comparison incorrectly returned `INVALID`.
+The verifier now retains its exact intervals for both gauge comparisons.
+API and CLI controls compare all decoded coordinates, fields, action endpoints
+and device durations against an independent original-input scalar center/radius
+calculation. A separate case crosses the field-endpoint length boundary;
+another uses full 200-character inputs whose action integers exceed Python's
+default 4,300-digit formatting ceiling. An independent base-10 chunk formatter
+checks those outputs, including under restricted decimal contexts. Overlong
+external calibration and capture values must still be rejected.
+
+The repairs reject inconsistent synthetic or hardware-emulator submissions
+and admit conforming captures with long exact intermediate results; verdict
+meanings and reported uncertainty are unchanged.
 Previously frozen contracts remain historical and fail the changed adapter
 source pin. A future run needs a newly frozen contract, not a replacement
 hash attached to an old experiment. The live source-current inventory is
