@@ -17,7 +17,7 @@ from oph_fpe.cosmology.edge_center_clock import (
 from oph_fpe.cosmology.oph_screen_power import DEFAULT_D_STAR_MPC
 
 
-DEFAULT_SOURCE_DIR = Path("/Users/muellerberndt/Projects/oph-meta/cosmology/correspondence/cmb/7")
+DEFAULT_SOURCE_DIR = Path("data/cmb_selector")
 DEFAULT_KERNEL_ELL = (2, 3, 4, 5, 10, 20, 29, 30, 32, 40, 50, 100, 220)
 
 

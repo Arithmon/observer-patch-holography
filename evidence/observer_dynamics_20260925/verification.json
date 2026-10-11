@@ -10,19 +10,19 @@
   "code_sha256": {
     "__init__.py": "9003f679689d2fa2ab5e6b7a43b848f0bf11fe472c6ab8d291838958638da6f7",
     "archive_adapter.py": "c1b38e1c24f459aaf2949070a6fa80352865eeecdf4fa8ac15ca8551b3929d00",
-    "retained_measurements.py": "52d54b39296b3cc5739fa6c0305f7950db2138f9d43e5a9d569c0ba2c0b37c73",
+    "retained_measurements.py": "0779b392db556e48aa68d58f2c181e0191cba958dcc6d0ee6199b58a3740f26d",
     "test_archive.py": "31f311e734895d1bffa5069cabdcd09a5c97bb3edb0d914229771ef303b6d9b0",
-    "test_scale_ensemble.py": "9977debfe64ecb4682ff767d681fd1f5dfdc103e28588c7bbd29bff73631d042",
+    "test_scale_ensemble.py": "2fd52b7203382f253003a27c8080939283d98c68b2c3eb85e565266d1c5f96aa",
     "verify.py": "066d947f82f2d5315207aa2b62e63be581265f11c63a72cbbe5f4fdf5c43adc2"
   },
   "conditional_observer_spectrum_recomputed_from_retained_transfer": true,
-  "elapsed_seconds": 89.132490885,
+  "elapsed_seconds": 59.183444914000006,
   "fresh_noise_rng_replayed": false,
   "golden_fourier_receipt_recomputed": true,
   "inventory": {
-    "bytes": 25483903,
+    "bytes": 25483639,
     "files": 527,
-    "manifest_sha256": "c01616121d3cba371633f396b5b78c67c48a6dfa1e487004ea7f3ef165375915"
+    "manifest_sha256": "2b4b8090d84e7b4f646e0884c9db10ef9c174393269760c2f7a2552cba17c548"
   },
   "platform_notes": [],
   "python": "3.12.3",
@@ -126,7 +126,7 @@
   "schema": "oph.observer-dynamics.verification.v1",
   "tests": {
     "failed": 0,
-    "passed": 297,
+    "passed": 352,
     "skipped": 0
   },
   "verified": true,

@@ -9,7 +9,7 @@
     "P_pixel": "1.630968209403959"
   },
   "pinned_source": {
-    "file": "/Users/muellerberndt/Projects/oph-meta/oph-physics-sim/docs/OPH_SIGNATURE_EXPERIMENT_TRACKER.md",
+    "file": "OPH_SIGNATURE_EXPERIMENT_TRACKER.md",
     "section": "## 8. Freeze registry shortlist",
     "extraction_rule": "exact bytes from the start of the heading '## 8. Freeze registry shortlist' up to, and excluding, the first byte of the heading '## 9. Pro catalog integration'",
     "byte_range": [

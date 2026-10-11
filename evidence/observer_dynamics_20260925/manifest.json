@@ -3,7 +3,7 @@
     "Large terminal arrays and geometry caches remain in their existing AWS archive; this package does not claim a fresh replay of their microscopic schedules.",
     "Original source-context hashes in boundary/bulk and formal receipts may refer to prose or Lean outside this snapshot; canonical theorem/compiler and scientific replay receipts are separate."
   ],
-  "description": "Immutable scientific producers, specifications, receipts and compact numerical inputs. Original receipt bytes are preserved. Canonical verification is code/observer_dynamics/verify.py.",
+  "description": "Scientific producers, specifications, receipts and compact numerical inputs. Machine-specific path metadata was sanitized on 2026-10-11; METADATA_SANITIZATION_20261011.json records original and published digests. Numerical evidence is unchanged. Canonical verification is code/observer_dynamics/verify.py.",
   "files": {
     "oph-physics-sim/oph_exact/__init__.py": {
       "bytes": 417,
@@ -909,11 +909,11 @@
       "sha256": "840c6ec29203735400393fd59ffc43b0b1949abb22084214300fa07774a481fc"
     },
     "oph-physics-sim/oph_fpe/cosmology/selector_elimination.py": {
-      "bytes": 17121,
+      "bytes": 17069,
       "origin_commit": "14d16994b12adb2320b994044bc75db02378b8b1",
       "origin_path": "oph_fpe/cosmology/selector_elimination.py",
       "origin_repository": "oph-physics-sim",
-      "sha256": "cea1fcba273ecd04c6ee8dd640ec364e888c90f1c98b1550143ef3bb7e3c86cc"
+      "sha256": "c56303eefac4013c60619c7306619798afda6ca5a9004c36bac67a99b9eed9c7"
     },
     "oph-physics-sim/oph_fpe/cosmology/shape_certificates.py": {
       "bytes": 10070,
@@ -2669,24 +2669,24 @@
       "sha256": "0e44af261ef60763627c75c57003d41f58669e6eb2275a339adaf060c322dc5b"
     },
     "sim-analysis/data/codex_audit_20260925/inputs/data/receipts/L6/receipt.json": {
-      "bytes": 257228,
+      "bytes": 257122,
       "origin_path": "sim-analysis/data/codex_audit_20260925/inputs/data/receipts/L6/receipt.json",
-      "sha256": "d106cbd6f1a41ed5bd2d72866ea9dfd79d217d87ac305a8f6f62be661b835f6a"
+      "sha256": "6086cfd64b58432cf27e2dd6e98bd51088ff305eecf84ae839c3f15cac4224e8"
     },
     "sim-analysis/data/codex_audit_20260925/inputs/data/receipts/L6/texture.json": {
       "bytes": 6063,
       "origin_path": "sim-analysis/data/codex_audit_20260925/inputs/data/receipts/L6/texture.json",
-      "sha256": "e93f05dd0f29dace3f3faeafba4633fee3f544d980860f652c2931b37d0251ed"
+      "sha256": "9227680aa391bb8cdff33421a0372845a2e34a79b844d408699fd9511cb208d7"
     },
     "sim-analysis/data/codex_audit_20260925/inputs/data/receipts/L7/receipt.json": {
-      "bytes": 292279,
+      "bytes": 292173,
       "origin_path": "sim-analysis/data/codex_audit_20260925/inputs/data/receipts/L7/receipt.json",
-      "sha256": "cdcb8fd4c428a85e173593a8795034aba5ab2430f31e574d94ee6c08b8c5e853"
+      "sha256": "64e17e78fd107da96ca6d8e249bec8af1be6cda8844cb9f1116f1842bb39115d"
     },
     "sim-analysis/data/codex_audit_20260925/inputs/data/receipts/L7/texture.json": {
       "bytes": 6420,
       "origin_path": "sim-analysis/data/codex_audit_20260925/inputs/data/receipts/L7/texture.json",
-      "sha256": "abee4d8bc74380b9f9a7cc20962346a37468ebf7e96cd3f850a576dc6a7334fa"
+      "sha256": "0ebb02de025b809ddb4ec70a1b62e11aab73514dd0ce575d31e4ccb0729cf1f1"
     },
     "sim-analysis/data/codex_audit_20260925/inputs/data/receipts/L8/receipt.json": {
       "bytes": 1088352,
@@ -2741,7 +2741,7 @@
     "sim-analysis/data/codex_audit_20260925/inputs/manifest.json": {
       "bytes": 3175,
       "origin_path": "sim-analysis/data/codex_audit_20260925/inputs/manifest.json",
-      "sha256": "5dcd74a91391308094c697dd7b73912d36dd92c390cf7a5fae5255de7d4626d1"
+      "sha256": "12cb8f7eff4ba4c4f2c198a2e4bf717f1dfaca4f6574f8a553cef723b8ec7601"
     },
     "sim-analysis/data/codex_audit_20260925/scale_ensemble.json": {
       "bytes": 947979,

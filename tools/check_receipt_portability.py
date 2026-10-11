@@ -18,27 +18,15 @@ DEFAULT_RECEIPT_ROOTS = (
     ROOT / "claims",
     ROOT / "evidence",
 )
-# Attested bytes that carry a developer-home path and cannot be rewritten: the
-# anchored FZ-01 registry records where its pinned tracker section lived on the
-# author's machine at freeze time, and its sha256 is fixed by the 2026-07-17
-# OpenTimestamps attestation. The pinned bytes are vendored beside it as
-# tracker_section8_pinned_text.md, and PROVENANCE.md in that directory records
-# the repository reference. Each entry is (repo-relative path, JSON pointer).
-ATTESTED_PATH_ALLOWLIST: frozenset[tuple[str, str]] = frozenset(
-    {
-        (
-            "evidence/custody/falsification/frozen_targets/fz01_2026-07-17/"
-            "fz01_freeze_registry_2026-07-17.json",
-            "/pinned_source/file",
-        ),
-    }
-)
+# Display copies use portable metadata. The frozen-registry validator separately
+# checks normalized custody copies against timestamped historical bytes.
+ATTESTED_PATH_ALLOWLIST: frozenset[tuple[str, str]] = frozenset()
 # Original remote-machine provenance is immutable, while the canonical replay
 # uses the vendored relative paths. Permit only these two historical fields,
 # in original files whose bytes and containing manifest match the reviewed
 # archive. A changed file/manifest, new field, or new file still fails closed.
 OBSERVER_ARCHIVE = "evidence/observer_dynamics_20260925/"
-OBSERVER_MANIFEST_SHA256 = "c01616121d3cba371633f396b5b78c67c48a6dfa1e487004ea7f3ef165375915"
+OBSERVER_MANIFEST_SHA256 = "2b4b8090d84e7b4f646e0884c9db10ef9c174393269760c2f7a2552cba17c548"
 
 
 def _original_observer_provenance(rel: str, pointer: str, data: bytes) -> bool:

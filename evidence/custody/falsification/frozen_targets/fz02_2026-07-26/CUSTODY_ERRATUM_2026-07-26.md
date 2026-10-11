@@ -11,7 +11,7 @@ manifest, or any existing OpenTimestamps proof.
    `registration_manifest_2026-07-26.json`,
    `fz02_freeze_registry_2026-07-26.json`, and the downstream generated
    register is a timestamp metadata error. The corrected custody record is
-   the oph-meta commit
+   the custody commit
    `1e7d7c73dadeef9aa10ec60061a85cee8426c5b1`, committed at
    `2026-07-26T06:41:53Z`. This commit binds the complete artifact set below.
 2. The source commit containing the frozen executable receipt and
