@@ -134,9 +134,10 @@ nonzero squared norms are positive rationals. The numerical path has a
 bounded input condition number; the exact orthogonal fallback needs only
 scalar normalization. Neither inherits the original presentation's bad
 conditioning.
-The returned chart, projections, closure checks and ordinary singular
-values still use floating-point arithmetic; this is not an interval
-certificate for their final error.
+The returned chart, GNS expectation construction, closure-test products
+and ordinary singular values still use floating-point arithmetic; this
+is not an interval certificate for their final error. HS projection and
+distance instead use the original exact span as described below.
 
 Trying the canonical chart first also avoids an artificial refusal. Put
 `U=[[1,0],[epsilon,0]]`, `V=[[0,1],[epsilon,0]]`, `epsilon=2^-600`.

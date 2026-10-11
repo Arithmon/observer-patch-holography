@@ -5,7 +5,6 @@ their original span, whereas a supplied superoperator keeps its own entries.
 """
 
 from fractions import Fraction
-import math
 
 import numpy as np
 import sympy as sp
@@ -43,27 +42,14 @@ def _rounded_vector(vector):
 
 
 def _sqrt_ratio(squared):
-    """Correctly round a nonnegative rational root, without double rounding."""
+    """Reuse exact span rounding, with the distance API's range errors."""
     if not squared:
         return 0.
-    numerator, denominator = int(squared.numerator), int(squared.denominator)
-    exponent = (numerator.bit_length() - denominator.bit_length()) // 2
-    if ((numerator < denominator << (2*exponent)) if exponent >= 0
-            else (numerator << (-2*exponent) < denominator)):
-        exponent -= 1
-    spacing = max(exponent - 52, -1074)
-    if spacing < 0:
-        numerator <<= -2*spacing
-    else:
-        denominator <<= 2*spacing
-    lower = math.isqrt(numerator // denominator)
-    comparison = 4*numerator - denominator*(2*lower + 1)**2
-    if comparison > 0 or (comparison == 0 and lower % 2):
-        lower += 1
-    if not lower:
-        raise ValueError("positive distance underflows; precision is insufficient")
+    from .operator_spans import _rounded_positive_sqrt
     try:
-        return math.ldexp(float(lower), spacing)
+        return _rounded_positive_sqrt(squared)
+    except ValueError as error:
+        raise ValueError("positive distance underflows; precision is insufficient") from error
     except OverflowError as error:
         raise ValueError("distance exceeds finite numerical range") from error
 
