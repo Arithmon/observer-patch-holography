@@ -14,7 +14,7 @@ Then the other one. When our cognitive systems engage in visual and auditory inf
 
 Descartes had a physical world made of extended stuff and a thinking thing that occupies no place at all, and his trouble was traffic between the two: how a decision taken in something with no location moves an arm that has one. He put the meeting at the pineal gland, on the grounds that every other part of the brain comes in pairs and that one does not, so it was the only place the signals from two eyes and two ears could be brought together into one impression. Every version since has kept the shape and dropped the gland. There is an account of the world written in the third person, there is what it is like to be one of the things in it, and nobody has a rule that turns either into the other. The name for that is the **mind-body problem**.
 
-Chapter three was blunt about the word observer. An observer is any bounded system that keeps records, a thermostat is one, and consciousness had nothing to do with the five items on the list. It also made a promise about the conscious ones: when they arrive, they will not arrive as a sixth item.
+Chapter three defined an operational observer without assuming consciousness. This chapter adds a psychophysical identity proposal: certain organized self-reading and repair processes are experiences. Sharing a record-and-feedback interface, as a thermostat does, does not by itself establish that identity or identify which systems satisfy it.
 
 One of these bounded record-keepers is holding this book. There is something it is like to be it. Where in the architecture does that sit? And if the network settles into the same arrangement whatever order anybody repairs in, what is there for that reader to decide?
 
@@ -26,7 +26,7 @@ The argument runs three lines. Such a creature is conceivable, and Chalmers set 
 
 The twin writes the paper about zombies. It sits down, works through the conceivability argument, publishes it in a journal and answers the objections. There is nothing it is like to be the author. Chalmers grants that without flinching, because the twin does everything he does.
 
-Look at the operation the argument asks for, one step at a time. Take the complete physical description of a person. Remove the interior. Hand back what is left and call it the same physical situation.
+The zombie argument keeps the entire physical organization and removes experience, not computational registers or causal dependencies. An identity theory rejects the proposed separation. OPH can adopt that position, but showing that deleting a physical register changes behavior does not refute the zombie premise or derive experience from the operational definition.
 
 Everything rests on the first step, the step nobody pauses on, because taking a complete physical description sounds like the part you get for free.
 
@@ -46,11 +46,11 @@ Distance counts comparisons. There is no comparison without two parties each hol
 
 Objective, in the sense chapter eleven fixed, means settled between parties who each have a boundary and a budget, with no further list standing behind theirs for it to approximate.
 
-So the hard problem asks how somebody's readings arise from a list that is nobody's reading. One of its terms names nothing. It goes the way the ether question went.
+The proposed answer identifies certain lived processes with their qualitative character. That is a philosophical commitment about what the physical organization is, not a consequence of having records or a bounded point of view. The hard-problem objection therefore applies at this identity premise rather than disappearing through a change in the word observer.
 
-The zombie is the same move at the size of one person. Chapter eleven said exactly what an observer's interior is: the part the record map deletes. Alice's coin. Real, hers to consult at any time, and off the shared list because there is no check she and a second party could run on it together. The deletion is what makes the list shared.
+A record map can omit internally accessible state. That fact establishes privacy relative to that map. It does not identify every omitted variable with a quale, prove that it could never be inferred through another interface, or determine whether a physical duplicate has experience.
 
-Take the interior out and what is left is a seam with one side missing. The entries on that seam were entries about a relation between two things that each held something. One of them holds nothing. The behavior does not survive the operation unchanged, because the behavior was the boundary traffic of a thing with an inside. The zombie ends where the ether ended, with nothing left to do.
+Deleting a causally used interior can change boundary behavior. Keeping the interior while questioning its phenomenal character is a different proposal. The identity account opposes the latter on its stated psychophysical premise, not on the arithmetic of a missing register.
 
 ## Coordinates an observer reads on itself
 
@@ -60,7 +60,7 @@ What that private register holds is the observer's reading of its own relation t
 
 A system carrying readings of its own update state is doing something a photographic plate does not do. It divides itself into parts and reads the division. The reading goes to its own repair policy and nowhere else. Give it more registers and the division gets finer. A stable cell of that division is a coordinate the observer can locate itself along and repair itself with.
 
-Redness is one such coordinate. An ache in a knee is one. The state of having understood something and the state of being about to be wrong about something are two more, and people report both with the confidence they report colors with and with the same inability to hand the thing over.
+For an experiencing system, the proposal associates redness, pain and other lived distinctions with organized self-reading. Which distinctions occur, and how they depend on neural activity, are questions requiring psychological and biological evidence. The existence of a computational coordinate alone does not name its phenomenal character.
 
 Reading such a coordinate is the whole of having it. There is no second copy of the ache, kept elsewhere, for the reading to be a reading of, and no fact about whether the one you have is the genuine article.
 
@@ -68,31 +68,31 @@ Reading such a coordinate is the whole of having it. There is no second copy of 
 
 Owned, because the capacity being spent belongs to the observer and comes out of its own budget. Boundary, because what is being held is the interface between it and everything else. Repair, because the holding is a rate rather than an act, since the neighbors keep writing and the entries keep moving. Read from the inside, because the observer's records include readings of its own state, and those readings are the half of the record the map deletes: real by the same standard Alice's coin is real, and unpublishable by construction.
 
-Nothing in that sentence adds to chapter three's list. A boundary, a place to write, updating, comparing, and sticking around between comparisons. Five items, and no sixth. A thermostat has all five and reads exactly one coordinate on itself, which is why nobody wonders what it is like to be one. What separates a person from it is how many coordinates, how finely the division runs, and how much of the repair policy is computed off them. The difference is one of degree with an enormous number sitting in the middle of it. The number is biology's to measure.
+The proposed identity adds a claim about experience to the operational observer contract. A thermostat's bounded feedback does not establish the same phenomenal organization as a person's. The relevant distinctions could depend on organization as well as capacity, and neither a coordinate count nor the observer definition resolves them.
 
 Which cells implement which coordinate, why activity in one part of the visual cortex reads as color while activity a few centimeters away reads as motion, what a stroke takes away when it takes a coordinate away, how many coordinates a mouse reads on itself, and at which point in an anesthesiologist's induction a person stops reading any, are questions for people with electrodes and scanners.
 
-No instrument reads a coordinate from outside, and none could be built. A coordinate readable from outside would be a seam entry, and would have sat on the shared list from the beginning.
+A coordinate omitted by the chosen public record cannot be recovered uniquely from that record if its fiber contains different values. Another intervention or a richer interface can change what is reconstructible. Reconstructing information about an episode is also different from undergoing it.
 
 ## Three cells down the diagonal
 
 Ask somebody what red is like and everything comes back except the thing you asked for. A wavelength. The name the paint shop prints on the can. Both of those cross the gap between two people intact. Neither answers the question. The word for what failed to cross is a **quale**, plural qualia, meaning how a particular experience is for the thing undergoing it, as against the wavelength, the firing pattern or the word.
 
-Every quantity in the preceding chapters is somebody's readout, taken at a bounded interface. A readout comes in two parts. Chapter nineteen wrote an observer's questions as tables of numbers, so a readout that tells three things apart is three rows by three columns. Nine cells. Three of them lie down the diagonal, one for each alternative, and those three commute with each other, which is what makes a record a record: readable without disturbance, and the same again in a neighbor's notebook. The other six sit off the diagonal. They are what makes the order of two questions matter, and chapter twenty-one found the observer's entire supply of rate in them, because the flow leaves the record layer where it finds it and moves only the part that refuses to be answered alongside itself.
+A finite quantum model can represent a three-alternative system by three-by-three matrices. Its chosen diagonal record algebra has three independent entries; the six off-diagonal matrix entries encode distinctions absent from that diagonal restriction. The diagonal algebra is commutative, but it is not the center of the full matrix algebra, whose center contains only scalar multiples of the identity. It can serve as a classical record algebra in the appropriately restricted description. This algebraic choice is an additional model assumption, not something a thermostat's two output labels establish.
 
-Do that count at three other sizes, on the back of an envelope, because the numbers are small enough. A thermostat tells two things apart: four cells, two down the diagonal, two off it, and two is the only size at which the two parts come out equal. Take it to ten alternatives. Ten rows by ten columns is a hundred cells, the diagonal takes ten of them, so ninety are off it. Take it to a hundred. Ten thousand cells, a hundred on the diagonal, nine thousand nine hundred off. That one step, ten alternatives up to a hundred, multiplied the publishable part by ten and multiplied the rest by a hundred and ten.
+For N alternatives in the full matrix model, there are N diagonal and N squared minus N off-diagonal matrix entries. These are dimensions of a representation, not a count of conscious experiences. A two-state classical device can use a commutative algebra instead; assigning it two labels does not require a two-dimensional quantum amplitude space.
 
 One line covers every size, with N standing for the number of alternatives a readout tells apart.
 
 $$\text{cells on the diagonal} \;=\; N, \qquad \text{cells off it} \;=\; N^2 - N$$
 
-The diagonal count keeps pace with N and the other one climbs with N squared, so the share of a readout that can be handed to anybody is one cell in N. Push it to a thousand alternatives and work that share out: a million cells, and the thousand sitting on the diagonal are the whole of what leaves the observer.
+The diagonal restriction has N matrix entries out of N squared. This counts that chosen algebraic projection, not everything that can ever leave an observer or everything others can reconstruct by different measurements. No ratio of these dimensions establishes a ratio of public information to conscious content.
 
-A quale is the part of a readout that never gets committed, held by the observer whose interface it is. Which cells count as the diagonal is fixed by that observer's own record layer, so the division is taken in its terms and nobody else's.
+The identity proposal concerns lived content in an experiencing organization. It does not establish that a quale is an off-diagonal matrix entry or every part of a state omitted by a public record. Which distinctions the record loses is a mathematical question; which distinctions are experienced requires the additional psychophysical premise.
 
-The reason it does not travel is the reason nothing uncommitted travels. Communicating a quale would mean copying it, and chapter twenty settled what copies: a duplicator preserves overlaps and squares them in the same move, so it works at overlap zero and at overlap one and nowhere in between, and two distinct committed records sit at overlap zero. What is copyable is the record layer, exactly and only, and a quale never entered it. So the wavelength duplicates and the redness does not. The gap between the two of them is a fact about copying rather than a mystery about matter.
+No-cloning rules out perfect universal copying of arbitrary unknown quantum states. It allows copying orthogonal record states and does not prohibit learning about a prepared ensemble or reconstructing a model from richer measurements. It therefore supplies no standalone proof that qualia are quantum states or that every aspect of an experience is inaccessible to others.
 
-Look at what none of that required. A theory that begins with a stage and puts matter on it has to add experience later. The addition is where the hard problem lives, because nothing about a stage says what would switch the lights on or when. Nothing was added here. An observer is a bounded interface that reads, compares and writes, and a structure with no observer anywhere in it holds no records and has nothing that could be true of it. Experience is the material the rest was built out of rather than a late achievement of complicated matter. The question with content in it is why some of it grows elaborate enough to fill a room in Tucson.
+On the proposed ontology, experiencing organization belongs within reality rather than being supplied by an external observer. The operational equations and no-cloning theorem do not prove that experience is fundamental or locate every experiencing system. Those are the further commitments this chapter explores.
 
 ## Then nothing you do matters
 
@@ -140,7 +140,7 @@ The answer has two parts and both survive translation out of the vocabulary.
 
 The first is a distinction between two necessities. One is simple: men are necessarily mortal. The other is conditional: if you know that someone is walking, he is necessarily walking. The second attaches to the act only while the condition holds, imported by the knowing rather than produced by the walking. Then the test question, which Boethius puts directly: does the act of vision add any necessity to the things you see before your eyes? Watching a man cross a courtyard does not make him cross it.
 
-The second part is his definition of eternity: the possession of endless life whole and perfect at a single moment. That is chapter thirty-six's first order, written down in a cell in Pavia. A structure with no ordering inside it is not a very long time. It is no time at all, nothing in it is earlier than anything else, and nothing in it gets to be the reason for anything else by having come first.
+The second part is his definition of eternity as life possessed whole. A complete-history reading can contain earlier and later events internally while requiring no external time in which the whole is assembled. Timeless closure therefore permits internal causal reasons, local succession and change; it does not remove every ordering from the structure.
 
 Fourteen centuries later the requirement itself was taken apart, in eleven pages. What most people mean by freedom is that you are responsible for what you did only if you could have done otherwise. Harry Frankfurt attacked that sentence in the *Journal of Philosophy* of 4 December 1969, in a paper called "Alternate Possibilities and Moral Responsibility", pages 829 to 839.
 
@@ -160,7 +160,7 @@ Chapter six's flipped edge is the clean case, because the whole net can be check
 
 Where it sits is a different matter. Run the repairs in another order and the leftover ends up on a different part of the net. It survives any amount of working harder, and it can be placed, and which patch is carrying it when the repairs stop is settled by who repaired what, in which order, and which way each one pushed the disagreement it found.
 
-That trajectory is in the record. Chapter sixteen made a commit irreversible by arithmetic: seven arrangements at a seam average down to one, and what told them apart is gone from the state and written into the order of commits. So a record holds more than its endpoint. It holds the descent. The descent tells apart a patch that absorbed a mismatch at its own expense from a patch that wrote the mismatch onto a neighbor and let the neighbor pay for it.
+A record can retain part of the trajectory rather than only its endpoint. The midpoint map loses input distinctions when viewed only through its two output readings; retaining a log makes the full-state question different. Distinguishing who absorbed or exported a cost requires that the relevant interventions and records survive in the declared description.
 
 The leftover comes to one either way. The record that produced it names which patch absorbed the mismatch and which one exported it. The naming is no moral gloss applied afterward by somebody keeping accounts. It is the entries, in order, which is the only material anybody downstream has to compute from.
 
@@ -170,9 +170,9 @@ $$\text{world}\big(R(W)\big) \;=\; W$$
 
 W is the whole structure, R is chapter eleven's record map, which returns the part of a state that survives comparison, and world is the lookup running from a record to the consistent state that record names. The unknown sits on both sides, which makes this a fixed point rather than a recipe.
 
-A fixed point has no first solver. Nothing evaluates one side and arrives at the other, because an equation contains no step and nothing that goes first. So "the endpoint was going to be the endpoint" names a solution and uses it as a cause. Nothing in a solved equation pushes.
+The complete-history closure equation requires no first external solver. Its internal dependencies can nevertheless be realized by local computation. The equation does not cause those events from outside; the proposal identifies the self-consistent structure and its intrinsic operation as one reality.
 
-What an observer writes lands in the record R returns. The entries it puts on the seams it touches are part of the record the lookup gets applied to, which makes them an argument the equation takes in rather than a result it hands back. Fate is a claim about order. There is no order in there for it to be a claim about.
+What an observer writes contributes to the record R returns and to subsequent local dependencies. The closure equation adds no external ordering; its internal history can contain ordered causes and choices. By itself the equation settles neither causal determinism nor responsibility.
 
 ## Made and found
 
@@ -188,7 +188,7 @@ Made: which record that arithmetic is applied to is written by observers, one co
 
 So the world is found from the record and the record is made, and those are the two ends of one operation, which chapter eleven pinned down with four demands: hand it a record and it returns the consistent state that record names.
 
-Which of the two comes first is a question that needs a first. If a world existed before there were describers in it, truth is found and only found. If describers came before the world, it is made and only made. Chapter thirty-six took the word first away: the fixed point carries no ordering whatsoever, and before is a relation inside an observer's chain of committed records, which is an object inside the structure rather than a place to view it from. Nothing is earlier. Made and found are one operation with two ends, and the loop having no beginning is what collapses them into each other.
+Finding a relation and recording it are events with an internal order. The complete-history closure condition adds no external ordering in which the world must first exist and then be described. It can include both activities and their causal dependencies, without turning every mathematical discovery into a unique global equilibrium.
 
 The argument is usually had about mathematicians, whether a theorem is invented or discovered, as though some fact settled which. Somebody working on a proof is inside the structure the proof is about. What they reach is a fixed point of that work, the thing the work returns unchanged. It was found, in that nothing along the way was free to go otherwise. It was made, in that the working is what put the entries on the record. Nothing else was writing them.
 

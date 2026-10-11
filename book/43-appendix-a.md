@@ -126,7 +126,7 @@ The word carries an original. A flight simulator earns the name because there ar
 
 Put the question to the inventory and look for the second end. Name the entry that substitutes for something, or the warehouse where the original repair rate is kept, or the object a loop residue resembles. The two-rule rewriter produced strings that described nothing filed anywhere else. Run the rules and the strings you get are the strings there are.
 
-The word computed arrives with fake attached to it. Watch one repair: a disagreement that was there is gone, the total sits where it started, and which of seven arrangements the seam held is past recovering. That is a change in the world, carried out by arithmetic. Coffee tastes the way it does by the same route, and so does a magnetic field. And nothing is stepping any of it: eighty-one thousand nine hundred and twenty patches reached agreement on every seam between them without a tick from anywhere.
+Computed need not mean simulated by an external host. The proposed world realizes its own local read, write and feedback dependencies. The numerical examples use executor schedules and counters to test particular rules; their success does not establish that the universe has that executor or those counters as physical clocks.
 
 ## Does an observer have to be conscious?
 
@@ -136,7 +136,7 @@ The assumption is that observing is a mental act, so the word carries a mind whe
 
 Keeping records takes three things and not one of them is a mind: a bounded view, somewhere to write, and a reading that makes a difference. A thermostat screwed to a classroom wall has all five. None of the results built on the list would change if every observer in the network were plumbing.
 
-Consciousness is a late special case, with a definition at the size the structure supports: owned boundary repair, read from the inside. An observer that holds coordinates on its own state, and computes its next move off them, is reading the half of the record that the map to the public list deletes. A thermostat reads one such coordinate. A person reads enough of them, across a division that runs far finer, that counting them is a job for biology. Nothing in the structure lets a wish move an entry.
+Consciousness is the further identity proposal of chapter thirty-nine: some organized self-reading and repair processes are lived experience. The operational definition alone establishes no subject, qualitative character or boundary of experience. A thermostat illustrates feedback, not a theorem that experience differs from ours only by a coordinate count.
 
 ## Isn't the loop circular?
 
@@ -144,9 +144,9 @@ Observers build the account of the world and the world builds the observers. Any
 
 The objection assumes the loop is an argument, whose premises would have to be in place before its conclusions.
 
-It is a fixed point. A fixed point has no before in it. Three orderings get read as one whenever the loop sounds like reasoning: the fixed point, a condition on one structure that holds or fails with nothing running it; an observer's record time, where memory and the work of thinking something through sit; and the disagreement count, which falls at every accepted step until the repairs stop. Events inside the structure are ordered by the second and the third. The first is the loop. It puts nothing before anything.
+The proposed fixed point concerns a complete history under its self-reference map. It requires no external first solver, but it contains internal causal order, local changes and the computations through which the structure realizes its dependencies. A terminating repair solver, a stationary state and an observer's calibrated clock are distinct objects; no one of them supplies the others merely by being called a fixed point.
 
-The demand rules out nearly everything. A description that picks out any structure other than the one it came from leaves that one undescribed. There is nothing left for it to be. That demand is checkable on hardware: cut the run across a thousand machines and it finishes in the state the single machine finishes in, with the worker count, the restart history and the schedule appearing in no reading anybody inside can take. Circular reasoning does not usually come with a theorem about worker counts.
+The demand constrains a specified description and realization. A finite endpoint-invariance theorem checks one projected aspect of an execution; it does not prove unique self-description or preservation of every intermediate observation. Complete-history closure and intrinsic realization remain the proposed identification to investigate.
 
 ## Does this mean my choices are already made?
 

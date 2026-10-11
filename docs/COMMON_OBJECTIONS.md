@@ -2,6 +2,12 @@
 
 This note collects rebuttals to common objections to the OPH framework, with longer technical responses where needed.
 
+The [working terms](INTERPRETATION_AND_TERMS.md) separate the proposed intrinsic
+computation of a complete history from a repair algorithm's fixed point.
+Spacetime and matter are intended emergent readouts; supplied geometry, states
+and clocks remain premises of current constructions. A conditional symmetry
+theorem establishes its branch conclusion, not that the branch describes nature.
+
 The objections below meet a checkable core: a sorry-free Lean theorem subset
 and machine-certified interval and global-uniqueness fixed points for each
 declared map. Each rebuttal states its conditionals explicitly; the scientific
@@ -223,7 +229,7 @@ So `a_cell` is the geometric area per UV cut element in the emergent metric. No 
 
 The correct object that transforms is the **patch algebra** and its modular generator.
 
-Once OPH derives geometric modular flow on caps, the relevant symmetry group is `Conf^+(S^2) ≅ SO^+(3,1)`.
+On the stated branch with geometric modular flow on caps, the relevant symmetry group is `Conf^+(S^2) ≅ SO^+(3,1)`. Realizing that branch on one physical source is a separate obligation.
 
 Write the induced action on the net as `alpha_Lambda`, or in a representation as conjugation by `U(Lambda)`. Then the covariant comparison is `rho_(Lambda C) = U(Lambda) rho_C U(Lambda)^dagger` and `K_(Lambda C) = U(Lambda) K_C U(Lambda)^dagger`.
 
@@ -442,7 +448,7 @@ The criticism bundles together two different complaints:
 
 These are not the same objection.
 
-For the Lorentz issue, the relevant question is whether the observable patch net carries a preferred inertial frame. OPH's answer is no: boosts are induced automorphisms of the cap net once geometric modular flow is established.
+For the Lorentz issue, the relevant question is whether the observable patch net carries a preferred inertial frame. On the stated geometric modular branch, boosts act as induced automorphisms of the cap net. The intended ontology supplies no preferred global clock; a concrete candidate must realize the branch's covariance and physical readout premises.
 
 For the parameter/circularity issue, the relevant question is how `P` is used in the particle-physics chain. That is addressed separately in [Objection 1](#objection-1-p-circularity) above.
 

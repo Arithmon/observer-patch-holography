@@ -15,9 +15,9 @@
     },
     {
       "source": "assets/OPH_Unification_Diagram.svg",
-      "source_sha256": "d9cd077f413e439715beea04efd6d103c5505d9a2777b9be59eb56c36e7d4170",
+      "source_sha256": "270955b06decf87d76c49f628f9ad5d077a83c47658832e192443cca0168a7c1",
       "rendering": "assets/book_pdf_renderings/OPH_Unification_Diagram.pdf",
-      "rendering_sha256": "f9e864243f784f11c981c500b44ac3114a94e389393b24849d1073ac986fabbd"
+      "rendering_sha256": "3653f1048cb953ee5b3f636e853e80db27c813c376ae14bb4f904e9c0a7ed35e"
     },
     {
       "source": "assets/book_diagrams/boundary-ledger.svg",
@@ -33,15 +33,15 @@
     },
     {
       "source": "assets/book_diagrams/consensus-funnel.svg",
-      "source_sha256": "1ccdad7bbf1a1b6d0683c3cb745241039c4a13a276c93a58de30fcaf4460b79d",
+      "source_sha256": "4ab3855f1cf3a9a00ad15573d580e1fb494c49db1df8ed99b72c3215341404db",
       "rendering": "assets/book_pdf_renderings/book_diagrams/consensus-funnel.pdf",
-      "rendering_sha256": "66a112c938f93b912c08072d68b32d83f116a6d5ba0615aa327ef1ae0fd03006"
+      "rendering_sha256": "7359b520ceb6d18482cfb4857e59cd2355d85ae6c330fb68f2f58753bd3a0247"
     },
     {
       "source": "assets/book_diagrams/desitter-static-patch.svg",
-      "source_sha256": "022f5ecc2a0e6866371da7871d8300a2c0bbef039b6bb406bbd1bf418c65f487",
+      "source_sha256": "7fb1f06912bde249c6e99931d208c0849367d2f975384d382dd1e0205548c90f",
       "rendering": "assets/book_pdf_renderings/book_diagrams/desitter-static-patch.pdf",
-      "rendering_sha256": "337cf2514691f0f530e191ee73c531ac0bed16f763c3ebff6294bd3dfbeb3088"
+      "rendering_sha256": "ebc341155b1da4b351dee73e891ccde33f89f29efc72d49db6482220446f7735"
     },
     {
       "source": "assets/book_diagrams/entanglement-wedge-overlap.svg",
@@ -69,21 +69,21 @@
     },
     {
       "source": "assets/book_diagrams/matter-stability-ladder.svg",
-      "source_sha256": "80d5f8f4a8421b887fa2baa33e57538aaedd8351e56a813dfba5d4753b85dea3",
+      "source_sha256": "407be8a42ce13a02718cb4856925d4efa995ee79a1336b8e94d7777a28c2040d",
       "rendering": "assets/book_pdf_renderings/book_diagrams/matter-stability-ladder.pdf",
-      "rendering_sha256": "6bf5979e5756c2461d52b8e3a1ae802e8e3f4579377e58adbfbd853c6821b22b"
+      "rendering_sha256": "c963a8260e60da1fa3a348738d494e84412921a2e83013b752d5ca85f9300cca"
     },
     {
       "source": "assets/book_diagrams/maxent-clock.svg",
-      "source_sha256": "767c0bfc9af547f537f864acd3a7763a9319a4085c63f2bdbcb5b09f3554ca19",
+      "source_sha256": "578b32006b0e5e5c9df947308139dfc40d2f439d89eba19dd74668ca7b4b6c66",
       "rendering": "assets/book_pdf_renderings/book_diagrams/maxent-clock.pdf",
-      "rendering_sha256": "5db3920cca20f6004a2e30bbc6193534d5db42c69acbcc593e866371211ecdcd"
+      "rendering_sha256": "2fb550c065368f86588170a2166221600c4c5280126a1f925b46831bf7600c82"
     },
     {
       "source": "assets/book_diagrams/modular-flow-cap.svg",
-      "source_sha256": "0470137a9819174add6defb91324f2d0e12b910e4b84fecd6bcaac41cace4957",
+      "source_sha256": "2bd241d2f78f7442f0d0a39dec79a0b776edfc3285cf8f934982c543f9b35241",
       "rendering": "assets/book_pdf_renderings/book_diagrams/modular-flow-cap.pdf",
-      "rendering_sha256": "e2a7f503db8035559f09b1cb48d989d215d027e943c484ebb2813018c41f7d42"
+      "rendering_sha256": "03916eea50c067d245258f09c82ebf05f5a7aaf25838e08285786285fd625a79"
     },
     {
       "source": "assets/book_diagrams/newton-limit.svg",
@@ -99,9 +99,9 @@
     },
     {
       "source": "assets/book_diagrams/observer-loop.svg",
-      "source_sha256": "85fb29589163a8b8da09181f27bf34443b0c98ec4b34bd010622fa830571b1b2",
+      "source_sha256": "5025a1909f2cb6fa04284d61028e47c2bc5b71997a7391f08c6213b54398b58f",
       "rendering": "assets/book_pdf_renderings/book_diagrams/observer-loop.pdf",
-      "rendering_sha256": "cc9b34468a0000627c8a23e00b9ad244b901f16f2d26736c6af91c92999b08cc"
+      "rendering_sha256": "b7a821da74f6b0c4868fb2ed00f557a85a9845968a689cd610949a5a5c1f1c75"
     },
     {
       "source": "assets/book_diagrams/overlap-consistency.svg",
@@ -129,9 +129,9 @@
     },
     {
       "source": "assets/book_diagrams/selection-filters.svg",
-      "source_sha256": "443612c167daa53208891038c88bd285832521d57496be0156605f3f99bf71a9",
+      "source_sha256": "e71e9d80907685731b4c0ce0e466d897e9e2811306c7d039f79a9e85ec02b1ae",
       "rendering": "assets/book_pdf_renderings/book_diagrams/selection-filters.pdf",
-      "rendering_sha256": "cbe3b492f66404fe8e557a769ffb105b107cc9724ced7fdc47cf76f2aafab626"
+      "rendering_sha256": "b83403b8f688dc2ea2c92c0f8585648391eb40d8441d5c22dea8a3a0149c10d1"
     },
     {
       "source": "assets/book_diagrams/symmetry-to-conservation.svg",
@@ -141,9 +141,9 @@
     },
     {
       "source": "assets/book_diagrams/synthesis-spine.svg",
-      "source_sha256": "ae30bfb1374cc0e1b2d165f4a0eda60e84e9470224741f978620ad5f95a26e45",
+      "source_sha256": "75c9888e4528f118c6cf43de911567fb65060f87d1420059b33091192f353551",
       "rendering": "assets/book_pdf_renderings/book_diagrams/synthesis-spine.pdf",
-      "rendering_sha256": "8cb4f20bcb58f15c109342221f6dfb6b488c355fc5cee40ed0e3492fe192be1e"
+      "rendering_sha256": "0affa2d39dae76696e2eea8341a5bd6908726608413005b43b8c040473102083"
     },
     {
       "source": "assets/book_diagrams/tannaka-krein.svg",

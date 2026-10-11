@@ -2,6 +2,14 @@
 
 This directory is the canonical publication surface for the main OPH papers. Each paper is kept as a TeX source beside its built PDF.
 
+The papers distinguish a proposed complete-history interpretation from finite
+repair theorems and conditional physical reconstruction. Internal computation
+and timeless closure describe the same proposed structure; they do not equate
+a solver counter, causal precedence, modular parameter or local clock reading.
+The [working terms](../docs/INTERPRETATION_AND_TERMS.md) summarize these
+definitions. Mathematical background supplied by a benchmark remains an
+explicit premise even when the programme aims to reconstruct its physical role.
+
 **Paper releases and broad prose restructuring are on hold** under the
 [model research programme](../docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold).
 Audits, correctness fixes, dated errata and review builds continue. The
@@ -55,6 +63,9 @@ python3 tools/refresh_paper_release.py --preview
 
 This rebuilds review PDFs and their manifest without requiring a version bump,
 including when the visible identifier belongs to an existing release. After
+corrections, main-branch PDFs can therefore be current-source previews with
+the previous visible identifier; tagged or deposited release artifacts retain
+their original bytes. After
 an explicit maintainer decision under the release policy and manual review,
 run `python3 tools/bump_paper_release.py` followed by
 `python3 tools/refresh_paper_release.py --publication` to prepare a candidate

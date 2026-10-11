@@ -733,8 +733,10 @@ The conditional expectation depends on the A3-selected state
 \(\omega_r\). This dependence is target-free when \(\omega_r\) is computed
 from the A1 and A2 grammar before any repair channel is constructed. It also
 means that the repair generator does not create additional physical
-information absent from that grammar. It dynamically realizes the same
-least-informative compatible state.
+information absent from that grammar. The conditional expectations preserve
+the selected reference state. A limiting state can retain dependence on the
+initial data through the retained algebra; reference-state preservation alone does
+not prove convergence of every state to that reference.
 
 A stronger timeless closure would treat the state and repair law as a coupled
 fixed-point problem:
@@ -749,7 +751,8 @@ L_r
 
 The framework may claim selection by self-reference only after existence and
 uniqueness of this pair are proved, modulo protected record sectors and a
-common clock scale. Multiple solutions would leave a genuine selector open.
+common rate scale within this declared generator model. This scale is not a
+preferred universe-wide clock. Multiple solutions would leave a selector open.
 No measured property of the desired solution may enter either map.
 
 That coupled pair lives inside one fixed A1 model. Selection of a whole

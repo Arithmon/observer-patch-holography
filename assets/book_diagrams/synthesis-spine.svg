@@ -32,7 +32,7 @@
   </g>
 
   <g font-family="Arial, sans-serif" fill="#2e2a25" text-anchor="middle">
-    <text x="480" y="60" font-size="24" font-weight="700">source-selected 12-port carrier architecture</text>
+    <text x="480" y="60" font-size="24" font-weight="700">declared 12-port carrier architecture</text>
     <text x="480" y="86" font-size="17">presentation-invariant, architecture-sensitive</text>
 
     <text x="480" y="160" font-size="23" font-weight="700">federation of self-reading supports</text>

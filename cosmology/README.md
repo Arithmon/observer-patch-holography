@@ -4,6 +4,13 @@ This directory contains unpublished research on the cosmological continuation of
 
 The main papers provide finite observer and matter structures, controlled real-field continuum trajectories on a supplied domain, an interacting Hilbert space, and an internal action clock. These companions develop the source laws, expanding geometry, transfer maps, calibration, and likelihood contracts needed to turn such objects into cosmological observables.
 
+The proposed ontology makes spacetime and matter emergent readouts. A supplied
+FLRW background, species content, action or cosmological time coordinate is
+a premise of the corresponding model. Its use does not establish a
+preferred clock of the underlying observer network. Modular parameters,
+record precedence and calibrated local duration have distinct roles; see the
+[working terms](../docs/INTERPRETATION_AND_TERMS.md).
+
 ## Paper Map
 
 | Paper | Main contribution |

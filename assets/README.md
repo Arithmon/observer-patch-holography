@@ -2,6 +2,12 @@
 
 This directory holds the public diagrams used by the README, papers, book, and OPH web surfaces. SVG is the authoring and publication format where available; PNG and PDF variants support social cards and print builds.
 
+The [working terms](../docs/INTERPRETATION_AND_TERMS.md) govern these diagrams:
+closure of a complete history permits internal computation, and modular
+parameters need physical clock calibration. Numerical cards show their
+declared constructions; shared graphical arrows do not supply a common
+physical realization or discharge the papers' premise boundaries.
+
 ## Theory Overview
 
 - [Reconstruction chain](prediction-chain.svg), embedded in the root README

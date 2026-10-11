@@ -7,7 +7,7 @@ theorem.
 
 | Layer | Lean type | What an inhabitant means | What A1 does not infer |
 |---|---|---|---|
-| Universe endpoint | `UniverseClosure State close` | a supplied fixed point of `close` | a duration, a schedule, or existence of the OPH public-world endpoint |
+| Universe closure | `UniverseClosure State close` | a supplied fixed point of `close` on its declared state space | a duration, a schedule, or existence of the OPH public-world endpoint |
 | Repair execution | `RepairOrder Move` | a finite ordered repair schedule | elapsed time or a physical rate |
 | Observer history | `ObserverRecordOrder Record` | a supplied strict order on records | a clock or causal-event realization |
 | Modular flow | `ModularParameter` | a real local automorphism parameter | a global chronology or proper time |
@@ -18,6 +18,12 @@ theorem.
 
 The optional branch is represented by
 `OptionalGlobalTimeFunction Event causal`. No constructor is selected.
+
+The generic `State` type does not identify a fixed point with an instantaneous
+cosmic endpoint. A complete-history interpretation must supply that history
+space and its closure operation; the local events in a fixed history can
+change. See the [working terms](../../docs/INTERPRETATION_AND_TERMS.md) for
+the proposed relation between whole-history closure and intrinsic computation.
 
 ## Coercion policy
 

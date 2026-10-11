@@ -30,9 +30,9 @@ Where it gets smuggled in is a statement about how everything started: an arrang
 
 The assumption sits one line above the fix. The elementary dynamics is blind to direction, so a direction has to be imported from outside the dynamics, and the only place left to import one from is the boundary.
 
-Here the elementary move is a commit. A commit is a write that destroys what it resolved. The forward and reverse weights of any transition differ by exactly the exponential of the entropy produced, an identity between whole-number ratios with nothing approximated anywhere in it. The exponential of minus the entropy produced averages to exactly one, and the mean of the entropy produced equals the fall in relative entropy on the nose. One curve gets averaged in one place, that single step is the only inequality in the argument, and everything on either side of it is an equality.
+For the reduced averaging model, the update is many-to-one. Separately, a finite stochastic kernel preserving a positive reference obeys the relative-entropy and fluctuation identities under the support assumptions of chapter sixteen; detailed balance supplies its stated forward/reverse relation. Interpreting those quantities thermodynamically requires the physical kernel, bath and calibration. Neither result proves irreversible loss from every complete state or removes the physical boundary-condition problem.
 
-An arrangement at the beginning can bias which configurations are common and which are rare. Making a write reversible is beyond it.
+Initial and boundary conditions can affect which physical histories occur. An enlarged reversible description can retain information discarded by a reduced update. The model's arrow and the universe's thermodynamic arrow therefore need a demonstrated correspondence.
 
 So the asymmetry belongs to the operation, and works on the first repair of a fresh arrangement exactly as it works on the ten billionth. Loschmidt's reversal turns every velocity around and un-writes nothing. The bits the commits threw away have nowhere to come back from.
 

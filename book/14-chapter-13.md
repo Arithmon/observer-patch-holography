@@ -46,7 +46,7 @@ The sixth move is the one engineers recognize on sight. A patch can be wrong. It
 
 Each seam can score itself. Take the two packets, apply the seam's dictionary to one of them, and produce a number that is zero when they answer each other and positive when they do not. That number is local: it involves the two ends of one seam and nothing else in the world.
 
-Add the scores over every seam. What comes out is one number for the whole arrangement, the total mismatch. Every accepted repair lowers it. The score is built from finitely many seams each carrying finitely many possible values, so it takes values in a finite ordered set. A quantity that steps down and has a floor runs out of room.
+In this finite terminating contract, sum the declared seam scores and require each accepted progress move to lower that sum. A strictly decreasing quantity in a finite ordered set proves termination of those moves. This is an assumption of this contract, not a property inherited by every continuous, stochastic or plateau-admitting repair law.
 
 Chapter ten watched that number come down. Of the 122,880 seams in that run, 102,415 were scoring above zero at the start, and at cycle 1 out of 16 none of them were. The settling curve counted the seams contributing anything at all. The quantity the machine was working against was their sum.
 

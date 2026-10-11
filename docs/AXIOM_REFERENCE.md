@@ -523,10 +523,16 @@ three-axiom basis stated above.
 
 ## Glossary
 
+The [working terminology](INTERPRETATION_AND_TERMS.md) separates the proposed
+emergent ontology from conditional constructions and distinguishes complete
+histories, repair states, public normal forms and stationary distributions.
+
 - **Patch**: a finite system with local state, boundary, records, readback,
   and repair moves.
 - **Observer**: a connected subfederation with complete readback, record,
   feedback or repair, prediction, and checkpoint interfaces.
+  This is an operational definition; consciousness requires an additional
+  interpretation or empirical identification.
 - **Local carrier**: one A1 carrier with the twelve-port oriented boundary
   packet.
 - **Federation screen (nerve)**: the overlap nerve \(N_r\) of the carrier
@@ -560,6 +566,13 @@ constructed outer and inner readings, it imposes:
 - **determinacy**: existence, uniqueness, and stability are proved on the
   declared physical domain. Equality by itself does not establish any of
   these three properties.
+
+This fixed point concerns the complete inhabited history. Its local events,
+records and responses to interventions are the proposed intrinsic computation
+of that same structure, without an external host or playback time. It is
+distinct from a stationary instantaneous state. Physical geometry, matter and
+local clock readings are intended readouts whose construction retains the
+premises listed for each result.
 
 The screen-grain proposal
 \(P=\varphi+\sqrt{\pi}/A_T(P)\) has an interval-certified fixed
