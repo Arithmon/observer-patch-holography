@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 483,
+  "surface_count": 484,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -877,6 +877,11 @@
     {
       "path": "book/README.md",
       "glob": "book/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/AGREEMENT_RESEARCH_FOUNDATIONS.md",
+      "glob": "docs/**/*.md",
       "allowlisted": false
     },
     {
