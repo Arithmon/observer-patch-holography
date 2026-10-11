@@ -132,6 +132,13 @@ boundary. This separates an inconsistent target from a free interior mode or
 a failing solver. It also tests the hypothesis needed by OPH's existing
 boundary-conditioned uniqueness result.
 
+The same source, §4.2, also limits boundary reduction: eliminating an internal
+vector-valued node can induce `z=x+y`, which no pairwise graph on the unchanged
+boundary stalks can enforce. Every pair of these boundary coordinates is freely
+variable. Retain the mediator or justify a richer representation before claiming
+an exact reduction. The favorable scalar case requires every original vertex
+stalk to have dimension at most one, including eliminated vertices.
+
 ## 5. Keep relational, probabilistic and quantum extension separate
 
 [Abramsky and Carù (2019)](https://arxiv.org/html/1911.03521), Eq. (4),
@@ -151,6 +158,42 @@ operator with context-dependent measurements. A classical extension failure
 rejects that classical interpretation; it does not reject every quantum
 realization. A2 itself
 [does not imply global extension](AXIOM_REFERENCE.md#a2-observer-agreement).
+
+### Finite-lattice methods for record constraints
+
+[Ghrist and Riess, *Cellular Sheaves of Lattices and the Tarski Laplacian*](https://arxiv.org/html/2007.04099),
+§§3.2–3.4, identifies sections with `Fix(id ∧ L)` and gives descending-chain
+termination conditions. A concrete reusable case has a fixed finite graph,
+finite lattice stalks, and join-preserving incidence maps `f_ie` with Galois
+right adjoints `f_ie^+`. The adjoints here are order-theoretic residuals.
+
+[Riess and Ghrist, *Diffusion of Information on Networked Lattices by Gossip*](https://arxiv.org/html/2204.00167),
+§§III–IV, supplies the corresponding update for broadcasting vertices `tau_t`:
+
+```text
+x_i[t+1] = x_i[t] ∧ meet_{j in N(i) ∩ tau_t} f_ie^+(f_je(x_j[t])),
+e = {i,j}; the empty meet is the top lattice element.
+```
+
+The stated model requires each vertex to broadcast infinitely often, receipt
+and computation within the step, and fault-free simultaneous broadcasts.
+Finite descending state space and liveness give finite settling on each such
+execution. Arbitrarily long firing gaps preclude a uniform clock bound.
+This theorem does not cover arbitrary stale messages or crashes.
+
+Each update is monotone and fixes every section. Consequently the settled
+state is the greatest section below the initial state: any such section stays
+below every iterate. This proves independence from the live firing order for
+that initial state, without making different initial states equivalent.
+
+**Immediate use:** test a finite-record encoding as a constraint-propagation
+baseline, declaring its order, maps and admissible information loss. With
+powersets and direct-image overlap maps, a section is a family of supports with
+matching projections. For binary variables, the supports of `x=y`, `y=z` and
+`x≠z` all project to `{0,1}` on their overlaps, yet admit no joint assignment.
+Empty supports can also satisfy the section equations. Require a separate
+nonvacuity and global-extension test; neither probability weights nor quantum
+realizability follow from this support computation.
 
 ## 6. Apply distributed impossibility results only to matching models
 
