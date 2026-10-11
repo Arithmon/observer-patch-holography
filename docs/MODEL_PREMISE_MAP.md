@@ -58,11 +58,11 @@ Existing claim classifications: `explicit_edges`: 170; `explicit_non_consumer`: 
 
 ## Remaining-input and dependency rule
 
-For a selected scope G, let I(g) denote each group's still-required inputs on its
+For a selected scope G, let I(g) denote each group's required inputs on its
 declared family, state, observable algebra, clock, regime and quantitative error domain.
 The remaining-input set is U(G) = union over g in G of I(g), with genuinely identical
 inputs counted once. This is a bookkeeping rule, not a machine-computed logical set:
-the prose, ordinary assumptions and imports still require semantic review. Active
+the prose, ordinary assumptions and imports require semantic review. Active
 construction, optional branches, downstream physical attachments and metrology are
 separate scopes; unioning them does not turn all of them into theorem antecedents.
 
@@ -168,7 +168,7 @@ Sources:
 
 **Remaining input:** Identify the actual joint carrier, regions, correlations, access menu and semantic read support. Local momentum coordinates do not supply momentum access from a two-position-layer menu.
 
-**Closure condition:** Construct restriction-compatible regions and retained histories on the same source. For the scalar regional theorem verify its exterior row-space criterion, not just local coordinates.
+**Closure condition:** Construct restriction-compatible regions and retained histories on the same source. For the scalar regional theorem verify its exterior row-space criterion; local coordinates alone do not establish that criterion.
 
 Existing claim-row navigation (no new edges): ` OPH-SCALAR-REGIONAL-COLLAR-RECONSTRUCTION `.
 
@@ -281,7 +281,7 @@ Sources:
 
 ### RE-11: Controlled refinement of the selected quantum family
 
-**Constructed:** The existing common scalar theorem already gives the stated massive 3D free-field Weyl-product limit. The canonical field join preserves the same action, vacuum and observables.
+**Constructed:** The existing common scalar theorem gives the stated massive 3D free-field Weyl-product limit. The canonical field join preserves the same action, vacuum and observables.
 
 **Remaining input:** Native preparation/control/record errors must remain controlled along that family. The archived spherical routing and interacting many-body limits are different targets.
 
@@ -400,7 +400,7 @@ Sources:
 
 ### RE-18: One gravitational branch and its normalization
 
-**Constructed:** The conditional finite-to-Einstein composition and its countermodels already identify the required interfaces.
+**Constructed:** The conditional finite-to-Einstein composition and its countermodels identify the required interfaces.
 
 **Remaining input:** One inhabited physical tower must supply small-ball geometry, conserved stress, Ward/Bianchi transport, universal coupling, absolute vacuum baseline and common normalization. All required small-ball remainders must vanish at the prescribed rate on that one family.
 

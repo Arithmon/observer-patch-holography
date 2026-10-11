@@ -11,7 +11,7 @@ representation retains local position/momentum access and both frequency
 signs. It reuses the scalar continuum, preparation and instrument theorems
 without changing their Hamiltonian, vacuum or readout. A finite source-qubit
 compiler attaches individual force and pointer factors, with controlled
-low-occupation error. A local smooth schedule now prepares the original finite
+low-occupation error. A local smooth schedule prepares the original finite
 coupled vacuum with a controlled state error, and the existing finite-pulse
 theorems join free evolution, force and retained pointers in one exact history.
 Their complete native implementation remains open. This is a declared
@@ -105,7 +105,7 @@ invalidates them. Enlarging the physical scope adds an explicit obligation.
 
 The [model–theorem premise map](MODEL_PREMISE_MAP.md) connects this M01–M12
 summary to the existing canonical premise register, claim registry and gravity
-ladder. It records what each construction supplies, what it still assumes,
+ladder. It records what each construction supplies, what it assumes,
 which existing result can be reused, and what evidence would discharge the
 remaining obligation **on the same model and at the claimed scale**.
 
@@ -116,15 +116,15 @@ hypotheses to fill an old interface, keep those hypotheses in the total input
 budget. Shared requirements are counted once by identity, with every use
 retained; competing branches are not combined into one mandatory checklist.
 
-The map covers every currently registered canonical PR identifier, including
+The map covers every registered canonical PR identifier, including
 inactive branches. The larger named-assumption/import inventory is reported
 separately. This is a checked cross-reference and research ledger, **not a Lean
 proof that every antecedent in every paper has been extracted or discharged**.
 The original claim classifications and premise dispositions remain authoritative.
 In particular, an excluded physical conclusion is not silently turned into an
-unproved hypothesis of an already completed mathematical theorem.
+unproved hypothesis of a completed mathematical theorem.
 
-| Existing result to reuse | Connection supplied by the current construction | What still has to be supplied |
+| Existing result to reuse | Connection supplied by the current construction | What has to be supplied |
 | --- | --- | --- |
 | [Action-measure identification](../Lean/Geometry/SourceActionMeasure.lean), `normalized_symmetrizer_unique` | A connected response admitting a positive diagonal symmetrizer fixes normalized relative capacities; the weighted repair factorization uses that same capacity/stiffness interface. | Selection of the response, absolute scale and equality of repair capacity with inertia. |
 | [Source-to-Hamiltonian composition](../Lean/Variational/SourceToHamiltonianComposed.lean), `source_to_hamiltonian_composed` | Reuse the action/Legendre machinery once its real enrichment and variational hypotheses hold. The present quadratic completion gives its own explicit conditional action. | The theorem does not choose the real enrichment, kinetic law, quantum representation or physical clock. |
@@ -455,7 +455,7 @@ change. Joining the results uses the existing contract
 decoder and error domain. A rigorous preparation bound near 0.07 cannot
 certify the approximately 0.003 phase signal by itself. Site-to-mode access,
 finite control precision, drift during service, intermediate occupations,
-reset and all retained outcomes still need one source-level budget.
+reset and all retained outcomes need one source-level budget.
 
 The next minimal implementation should reuse local kinetic/potential split
 factors on the **same onsite code**, including one native-edge quadratic

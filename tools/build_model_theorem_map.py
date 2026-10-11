@@ -300,11 +300,11 @@ def render(data: dict, counts: dict) -> str:
     lines += ["", "Existing claim classifications: " + "; ".join(
         f"`{key}`: {value}" for key, value in counts["classifications"].items()) + ".", "",
         "## Remaining-input and dependency rule", "",
-        "For a selected scope G, let I(g) denote each group's still-required inputs on its",
+        "For a selected scope G, let I(g) denote each group's required inputs on its",
         "declared family, state, observable algebra, clock, regime and quantitative error domain.",
         "The remaining-input set is U(G) = union over g in G of I(g), with genuinely identical",
         "inputs counted once. This is a bookkeeping rule, not a machine-computed logical set:",
-        "the prose, ordinary assumptions and imports still require semantic review. Active",
+        "the prose, ordinary assumptions and imports require semantic review. Active",
         "construction, optional branches, downstream physical attachments and metrology are",
         "separate scopes; unioning them does not turn all of them into theorem antecedents.", "",
         "A result H implies C discharges an input P only when C establishes P on that same",
