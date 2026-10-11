@@ -78,7 +78,7 @@ not a domain argument.
   cannot hide inside the much larger target's roundoff budget.
   Test the action of a validated map as well as its matrix identities.
   Measure residuals before rounding a projection: a correctly rounded
-  projected operator can still give an incorrect distance after subtraction.
+  projected operator can give an incorrect distance after subtraction.
   Pair a large conserved component with a tiny transverse perturbation.
 - **Stationarity and graph structure:** a small stationary residual need not
   bound population error in a slowly mixing chain. Check an independently

@@ -151,6 +151,42 @@ def test_map_products_can_overflow_before_a_finite_cancelled_sum():
     np.testing.assert_array_equal(actual, expected)
 
 
+@pytest.mark.parametrize("phase", (1., 1j))
+@pytest.mark.parametrize("dual", (False, True))
+@pytest.mark.parametrize("boundary", ("below", "midpoint", "above"))
+def test_map_final_overflow_cannot_hide_in_rounded_positive_sums(phase, dual, boundary):
+    maximum = np.finfo(float).max
+    small = 2.**969
+    if boundary == "below":
+        small = np.nextafter(small, 0.)
+    elif boundary == "above":
+        small = np.nextafter(small, np.inf)
+    target = np.zeros((4, 4), dtype=complex)
+    target[0] = phase*np.array([maximum, small, small, 0.])
+    supplied = target.conj().T if dual else target
+    x = np.ones((2, 2))
+    # The two small positive terms can each round away in the numerical
+    # result AND its absolute-term sum. Their original rational total is
+    # at, immediately below, or immediately above the overflow midpoint.
+    exact = Fraction(float(maximum))+2*Fraction(float(small))
+    if boundary == "below":
+        expected = np.zeros((2, 2), dtype=complex)
+        expected[0, 0] = phase*float(exact)
+        assert abs(expected[0, 0].real or expected[0, 0].imag) == maximum
+        np.testing.assert_array_equal(apply_map(supplied, x, dual=dual), expected)
+    else:
+        with pytest.raises(OverflowError):
+            float(exact)
+        with pytest.raises(ValueError, match="finite|range|overflow"):
+            apply_map(supplied, x, dual=dual)
+
+
+@pytest.mark.parametrize("phase", (1., 1j))
+def test_map_maximum_finite_fixed_point_remains_representable(phase):
+    x = phase*np.finfo(float).max*np.eye(2, dtype=complex)
+    np.testing.assert_array_equal(apply_map(np.eye(4), x), x)
+
+
 def test_nontrivial_projection_uses_the_original_operator_span():
     n = np.kron(np.array([[0., 1.-2j], [1.+2j, 0.]]), np.eye(2))
     supplied = [np.eye(4), n]

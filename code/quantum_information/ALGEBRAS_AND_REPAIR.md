@@ -499,7 +499,11 @@ For an independently supplied superoperator, `apply_map` preserves that
 map's entries and the row-major/adjoint convention. It uses a floating dot
 product only when separate real and imaginary cancellation guards and
 range checks permit it; otherwise it evaluates the original entries
-exactly. The ordinary floating path is not a correctly-rounded or interval
+exactly. Upper-range magnitude estimates also trigger exact evaluation:
+even an all-positive sum can round down to the largest finite float when
+the original sum lies at the overflow midpoint. Real/imaginary and dual
+controls check both sides of this boundary, retaining representable results.
+The ordinary floating path is not a correctly-rounded or interval
 certificate. Projection components and exact fallback map components are
 rounded once; distance uses an integer midpoint comparison to round its
 rational square root without an intermediate floating square. A final
@@ -514,7 +518,7 @@ rational contractions, analytic projections and high-precision scalar
 norms. They cover mixed scales, complex dual maps, retained intersections,
 and final-range refusals. This repairs evaluation of finite observables
 and diagnostics; it neither selects a physical repair law nor changes
-channel recognition, spectral support decisions or frozen source receipts.
+channel-recognition criteria, spectral support decisions or frozen source receipts.
 
 | Existing component | Effect of this audit |
 | --- | --- |

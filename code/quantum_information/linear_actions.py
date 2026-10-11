@@ -99,7 +99,13 @@ def apply_linear(matrix, vector):
             result = matrix @ vector
             real_sum = np.abs(matrix.real) @ np.abs(vector.real) + np.abs(matrix.imag) @ np.abs(vector.imag)
             imag_sum = np.abs(matrix.real) @ np.abs(vector.imag) + np.abs(matrix.imag) @ np.abs(vector.real)
+            # A positive sum can round down to maxfloat even when its exact
+            # value rounds to infinity. Resolve the upper range before trusting
+            # the floating result or its equally rounded magnitude estimate.
+            upper_range = np.finfo(float).max/2
             if (not np.all(np.isfinite(result))
+                    or np.any(real_sum >= upper_range)
+                    or np.any(imag_sum >= upper_range)
                     or np.any(np.abs(result.real) < real_sum/32)
                     or np.any(np.abs(result.imag) < imag_sum/32)):
                 raise FloatingPointError
