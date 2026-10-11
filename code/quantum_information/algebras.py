@@ -158,21 +158,24 @@ class FiniteAlgebra:
         self.size = len(normalized[0])
         self.dimension = len(normalized)
         self._q = np.column_stack([b.reshape(-1) for b in normalized])
-        if self.distance(np.eye(self.size)) > ALGEBRA_ATOL*np.sqrt(self.size):
+        # Closure checks already query the original span. Intersections can
+        # later replace its exact columns without retaining a stale projector.
+        self._supplied = supplied
+        self._exact = None
+        self._projector = None
+        if not self._project(np.eye(self.size), within=ALGEBRA_ATOL*np.sqrt(self.size)):
             raise ValueError("algebra must contain the identity")
         for a in normalized:
-            if self.distance(a.conj().T) > ALGEBRA_ATOL:
+            if not self._project(a.conj().T, within=ALGEBRA_ATOL):
                 raise ValueError("algebra must be closed under adjoint")
             for b in normalized:
-                if self.distance(a @ b) > ALGEBRA_ATOL:
+                if not self._project(a @ b, within=ALGEBRA_ATOL):
                     raise ValueError("algebra must be closed under multiplication")
         self._q.setflags(write=False)
         # A numerical chart is not evidence of exact linear dependence.
         # Keep the supplied span separately for conservation decisions.
         for b in supplied:
             b.setflags(write=False)
-        self._supplied = supplied
-        self._exact = None
 
     def _exact_columns(self):
         from .operator_spans import exact_columns
@@ -186,13 +189,25 @@ class FiniteAlgebra:
                 for i in range(self.dimension)]
 
     def project(self, value):
-        """Ordinary-trace HS projection; not generally rho-preserving."""
+        """HS projection onto the original span; not generally rho-preserving."""
         a = operator(value, self.size)
-        return (self._q @ (self._q.conj().T @ a.reshape(-1))).reshape(a.shape)
+        return self._project(a)
 
     def distance(self, value):
+        """HS distance before projection rounding; refuse final range loss."""
         a = operator(value, self.size)
-        return float(np.linalg.norm(a - self.project(a), ord="fro"))
+        return self._project(a, distance=True)
+
+    def _project(self, value, *, distance=False, within=None):
+        if self.dimension == self.size**2:
+            if within is not None:
+                return True
+            return 0. if distance else value.copy()
+        from .linear_actions import SpanProjector
+        columns = self._exact_columns()
+        if self._projector is None or self._projector.columns is not columns:
+            self._projector = SpanProjector(columns)
+        return self._projector.evaluate(value, distance=distance, within=within)
 
     def modular_invariance_defect(self, rho):
         k = faithful_log(operator(rho, self.size))

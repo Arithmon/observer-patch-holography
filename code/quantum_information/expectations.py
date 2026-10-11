@@ -33,7 +33,8 @@ def apply_map(superoperator, value, *, dual=False):
     s = operator(superoperator, len(a)**2)
     if type(dual) is not bool:
         raise ValueError("dual must be Boolean")
-    return ((s.conj().T if dual else s) @ a.reshape(-1)).reshape(a.shape)
+    from .linear_actions import apply_linear
+    return apply_linear(s.conj().T if dual else s, a.reshape(-1)).reshape(a.shape)
 
 
 def choi_matrix(superoperator, size):
