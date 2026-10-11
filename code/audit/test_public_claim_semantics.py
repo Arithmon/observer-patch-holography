@@ -81,12 +81,12 @@ def test_readme_case_section_remains_short_and_reader_facing() -> None:
     surfaces = [
         (
             ROOT / "README.md",
-            "## One Architecture, All Of Physics",
+            "## Mathematical foundations",
             120,
         ),
         (
             ROOT / "README_FR.md",
-            "## Une seule architecture, toute la physique",
+            "## Fondements mathématiques",
             140,
         ),
     ]
