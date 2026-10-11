@@ -18,7 +18,7 @@ The first is **order**: which of two things happened before which. Order is a re
 
 The second is **direction**: why the relation runs one way round and never the other. That is a property of an operation rather than of a relation, and the one the bead in Canberra was testing.
 
-The third is **flow**: why anything seems to be moving, and why there is a rate at all. Order tells you which of two events came first, where there is a fact about it at all. Direction says why the pair never runs the other way round. Between them they say nothing whatever about passing. You could be handed the complete order of every event in the universe and the direction of every strand in it and have, out of that, no motion, no duration, and nothing that goes by. Chapter seven's recipe card carries an order, and printing it down a card draws an arrow along that order, and the card lies on the counter going at no rate whatever. The answer to flow is a separate answer, arrived at by a different route. It is not the arrow of time experienced from the inside. The state an observer holds determines its own clock, the way a piece of music determines a tempo without a metronome anywhere in the room. Five chapters from here, that stops being an image.
+The third is **flow**: a parameterized evolution, and, when physically interpreted, its relation to clock readings. An order alone supplies no durations. Chapter twenty-one constructs modular flow from an algebra and a state; identifying that parameter with an observer's physical time is a further hypothesis with specific proven examples. Neither that construction nor an arrow of record dependence establishes the experience of passage.
 
 ## What gets ordered
 
@@ -44,15 +44,15 @@ Watch what that does to counts. A seam whose two ends hold 6 and 0 finishes with
 
 Run it backwards. You have two readings of 3. The question is what they were. The readings do not say. The observers do not say, because their state consists of what they hold, and what they hold is 3 and 3. The seam does not say, because a seam records the comparison and the comparison is satisfied. The information distinguishing those seven cases was in the arrangement and the arrangement was overwritten, so it is somewhere else or nowhere.
 
-That is what a repair **commit** does: it leaves the total alone, satisfies the seam, and discards which disagreement it resolved. The acceptance test of chapter nine refuses any move that makes the fit worse anywhere, which rules out the move that would put 6 and 0 back. The ruling would be academic anyway, because nothing at the seam knows which of the seven to restore.
+That is what this midpoint update does to the two readings: it preserves their sum and discards their difference. The loss concerns this reduced state. A complete state including a retained record of the inputs can distinguish the seven cases. Other admissible updates need not have the midpoint map's many-to-one form.
 
 Those two facts fail differently. The acceptance test is a rule about which moves are available, and a rule can in principle be relaxed. The overwriting is arithmetic. Seven into one is a fact about averaging whole numbers, and no amount of relaxing anything recovers the input from the output.
 
-A write can be made undoable, and the method is old: keep a copy. Save 6 and 0 into a blank register before averaging them and the seven cases stop being interchangeable, because one of them is written down somewhere else. Copying onto a blank register erases nothing. The bill arrives when memory runs out and a register has to be cleared for reuse, and clearing it is another write that discards what it held. Every route out of the collapse arrives at another commit.
+A write can be made reversible on an enlarged state by retaining enough information about its input. The reduced output can then look irreversible while the full map is injective. Resetting used memory under a specified thermal protocol has a separate cost; it does not follow that every commit erases information from the complete universe. Counting commits and counting erased bits are different operations.
 
 Order is a relation between two records, checkable by whoever holds both and carrying no units. Direction is a property of a single move, showing up as an arithmetic loss inside that move. Drawing one axis and putting an arrow along it welds the two into a single object. The weld is why people go looking for the arrow in the first instant of the universe.
 
-The standard account of the arrow puts it somewhere else entirely. Boltzmann's argument is that high-entropy arrangements vastly outnumber low-entropy ones, so a system wanders into them and stays, which explains why the film runs one way provided the film started in an arrangement of the rare kind. David Albert named that proviso the past hypothesis in *Time and Chance* in 2000, and named it because it needs naming: the reason your coffee cools becomes a claim about the state of the universe some fourteen billion years ago. The seven-into-one collapse asks for nothing of the kind. It is a property of the move. It holds on the first repair of a fresh arrangement exactly as it holds on the ten billionth, and a universe assembled in any condition whatever runs its repairs in the same direction, because the direction is in the operation.
+Statistical accounts of the thermodynamic arrow also ask why the relevant boundary conditions permit sustained entropy production. The midpoint example establishes a direction for a chosen reduced, many-to-one update, independently of its initial readings. It does not derive that update as a fundamental physical law or remove the boundary-condition question for reversible microscopic models.
 
 ## Counting what got lost
 
@@ -78,13 +78,13 @@ The quantity that runs one way is a comparison rather than a count. Take a settl
 
 Pass both descriptions through the same process, whatever the process is, and they get harder to tell apart. Send two distinguishable messages through the same noisy channel and the outputs are closer together than the inputs were; nothing you do to both of them afterwards can make them further apart again. Relative entropy is the number that quantifies that, and can only fall under further processing.
 
-A repair step is a process, and it preserves the reference. So the relative entropy of any description against the reference never climbs, step after step. That is the second law, in the arrangement, with no appeal to counting microstates and no claim about how anything started.
+For a stochastic repair kernel preserving the declared reference distribution, data processing makes relative entropy to that reference nonincreasing. This is a mathematical monotonicity result. Reading it as a thermodynamic second law additionally requires the physical state, reference, bath and energy identifications; not every repair score or record write supplies them.
 
 ## The identity underneath the inequality
 
 The falling is an average of something that does not always fall. Take one repair step. Before it, the world is in some state and your odds give that state a probability, and the reference gives it a probability too. The logarithm of the ratio between them is your surprise at finding that state. After the step, the world is in another state, and there is a second surprise, computed the same way against the same reference. The **entropy produced** by that transition is the first surprise minus the second.
 
-Every transition has one. Some are positive and some are negative, which is the bead in Canberra. Average the exponential of minus that quantity over every transition the step can make, and the answer is exactly one, for any repair that leaves the reference alone. That identity holds whether or not anything is balanced. The second law leans on it.
+Every supported transition has this log-ratio quantity. For a finite kernel with a strictly positive invariant reference and a strictly positive initial distribution, its exponential average is exactly one. Support restrictions require separate treatment and can turn this identity into an inequality. Calling the quantity physical entropy production needs the thermodynamic interpretation of the kernel; the algebraic identity alone does not identify it with the bead experiment.
 
 One further condition is checkable at the seam: measured against the reference, the weight the step carries from one state to a second matches the weight it carries back. A repair in that balance satisfies the following at every pair of states, exactly.
 

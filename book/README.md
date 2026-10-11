@@ -38,3 +38,8 @@ and tectonic.
 Paragraphs are single lines in the source, separated by blank lines, and wrapping is left
 to the renderer. Straight quotes, American spelling. Bold marks a key term at first use
 and is not used for emphasis. There are no em-dashes anywhere, by rule.
+
+
+## Interpretation and source scope
+
+The front matter and glossary distinguish complete-history closure, intrinsic local computation, model-specific repair, observer interfaces and calibrated clock readings. Read the maintained [OPH interpretation and working terms](../docs/INTERPRETATION_AND_TERMS.md) alongside the numerical examples. Their supplied graphs, equations and calibrations remain premises; the book does not establish a common physically correct microscopic law. Statements about experience and ethics add the premises named in their chapters.

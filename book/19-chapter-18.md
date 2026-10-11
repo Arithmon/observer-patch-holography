@@ -14,9 +14,9 @@ Thomas Young gave the number its modern name in 1807: the term energy, he wrote,
 
 ## The rate a region is worked through
 
-Chapter nine left this world with one move. Two neighbors share a seam, each holds a reading of it, the readings disagree, and both readings go to their midpoint. Nothing else happens anywhere. The disagreement outstanding across a set of seams is a sum of squares of gaps, every repair strictly lowers it, and the lowest it goes is zero, which is what the seams read when every pair of neighbors agrees.
+Chapter nine studied scalar midpoint repair on a supplied graph. Its norm decreases under the exact averaging move, but that descent score is not automatically a region's physical energy. Other OPH constructions use different state spaces and admissible updates; their physical interpretation must be supplied separately.
 
-The machine holds one move, one kind of seam and two readings at each seam. The descent of the outstanding disagreement is the only quantitative thing any of it does, so energy is made out of that descent, there being nothing else to make it out of.
+The scalar machine supplies an update and a descent score. Identifying either with physical energy requires a dynamical realization, a clock convention and an independently justified calibration. The count of available moves does not make that identification unique.
 
 Take a screwdriver to a screw. One eighth of a turn, repeated, drives the screw into the wood. The whole trip of the screw is that one small move done again and again.
 
@@ -26,11 +26,11 @@ Every region in this world advances along a clock of its own. Something generate
 
 The word behaves identically wherever physics uses it. What generates turning about an axis is the angular momentum about that axis, and what generates sliding sideways is the momentum in that direction. Advance along a clock has the energy for its generator, and quantum mechanics has run on exactly that definition since the 1920s without ever saying what does the advancing.
 
-A clock of a region's own is the only kind this world has. Chapter ten ran eighty-two thousand patches with no tick anywhere in the machinery, nothing waiting for the next round and nothing counting rounds. What a region has instead is a clock its own state manufactures, out of nothing but what it holds. Two regions worked through at different rates differ in a fact about themselves, since no clock outside them has a setting they could differ in.
+The target is compatible observer-local clocks without a preferred universal physical tick. The simulation in chapter ten nevertheless uses schedules and cycle counts to execute and report work. Those auxiliary counters do not become physical time by appearing in the code. A modular parameter extracted from an algebra-state pair likewise needs an operational clock correspondence before rates can be compared in seconds.
 
-A region whose records agree everywhere generates no flow and reports nothing above the floor. A region holding standing disagreement drives its clock hard. The driving rate is the number a calorimeter or a particle detector hands you, on the imported calibration above; the reading is exact where the calibration is supplied and the identification is not yet closed.
+Agreement of the declared records alone determines neither an energy nor a physical clock rate. A stationary quantum state can have nonzero energy and nontrivial modular flow; a reduced repair map can have zero residual while other variables change. The calibration above is therefore part of the claimed physical reading, not a consequence of the word agreement.
 
-In ordinary quantum mechanics the energy of a system is the operator somebody writes down for it. You pick an operator called a Hamiltonian to match the system in front of you and fit its constants to measurements. The fitting is done by a person with a pencil. Here the operator is manufactured by the state the region holds. The region holds its state whether or not anybody has written anything about it. Two regions in the same state have the same energy. The pencil never enters.
+A physical Hamiltonian specifies evolution in calibrated time. A faithful finite density matrix supplies a modular Hamiltonian, its negative operator logarithm. In a Gibbs interpretation the two are proportional up to an additive constant, but the temperature and time normalization are additional inputs. Equal density matrices alone do not fix an absolute energy in joules.
 
 ## Positive, and additive
 
@@ -78,11 +78,11 @@ Move the terms to the other side of the equals sign and the statement about the 
 
 $$E^2 = m^2 + p^2$$
 
-Here E is the region's energy, m is its mass, and p is the size of the drift, with distances counted in seams and durations in repair events so that the conversion between the two is one. Fix the mass and fix the drift and the energy has one value available to it, which is why a detector measuring two of the three is measuring all three.
+Here E, m and p are the energy, invariant mass and momentum of the supplied relativistic model, in units with c=1. The matrix identity has that physical reading only after those quantities and their units are identified. Counting seams and repair events alone does not calibrate a speed or an energy.
 
-Set the three drift numbers to zero and the equation reads E = m. Run it the other way: if the energy equals the mass, then p squared is zero, and a sum of three squares comes to zero only when each of the three is zero, so the drift vanishes in every direction at once. Energy equals mass exactly when a pattern is going nowhere. The exactly-when is a two-way statement about a matrix rather than an approximation for slow objects.
+On the positive-energy branch with nonnegative invariant mass, setting momentum to zero gives E=m in units with c=1. Conversely E=m implies p squared is zero. The algebraic mass-shell identity alone also permits a negative-energy branch, which this physical reading has excluded explicitly.
 
-Chapter nine counted the conversion that equation set to one: influence advances one seam per event and no faster, which chapter seventeen turned into the speed limit. Restore it to the case where the drift is zero, and the standing cost of a pattern is its mass multiplied by the square of that speed. $E=mc^2$ is the corner of a four-number statement with the interesting term deleted. It is the equation for a brick going nowhere.
+Chapter nine gave an update-locality bound. Relating it to the physical speed in the relativistic energy-momentum relation requires chapter seventeen's geometric and clock identification. Restoring the calibrated c then gives E=mc^2 in the zero-momentum case.
 
 The corner is worth something because the conversion is squared. A helium-4 nucleus falls short of the two protons and two neutrons that make it by 0.0304 atomic mass units, and the energy released when those four combine, measured in the laboratory, is 28.3 million electronvolts, which is that shortfall multiplied by the square of the speed of light.
 

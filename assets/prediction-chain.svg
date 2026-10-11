@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="5620" height="4803" viewBox="0 0 5620 4803" role="img" aria-labelledby="title desc">
   <title id="title">Observer Patch Holography Derivation DAG</title>
-  <desc id="desc">Source provenance generates finite causal order and a 1+3 precursor; physical refinement links it conditionally to spacetime, gravity, and Standard Model branches.</desc>
+  <desc id="desc">Source provenance generates finite informational order and a 1+3 precursor; physical refinement links it conditionally to spacetime, gravity, and Standard Model branches.</desc>
 
   <defs>
     <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -87,7 +87,7 @@
   <text x="205" y="119" text-anchor="middle" fill="#4ee7ff" font-size="24" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="4">OPH</text>
   <text x="310" y="102" fill="#4ee7ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="600" letter-spacing="5">FLOATING PRAGMA // POSTER DAG</text>
   <text x="310" y="156" fill="#f4f7fb" font-size="54" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-1.7">Observer Patch Holography Derivation DAG</text>
-  <text x="310" y="222" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace">Source provenance generates finite causal order and a 1+3 precursor; physical refinement links it conditionally to spacetime, gravity, and Standard Model branches.</text>
+  <text x="310" y="222" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace">Source provenance generates finite informational order and a 1+3 precursor; physical refinement links it conditionally to spacetime, gravity, and Standard Model branches.</text>
   <rect x="4260" y="76" width="1120" height="162" rx="24" fill="rgb(255 255 255 / 0.03)" stroke="rgb(255 255 255 / 0.08)" />
   <text x="4292" y="104" fill="#f4f7fb" font-size="18" font-family="Space Grotesk, sans-serif" font-weight="700">Poster logic</text>
   <text x="4292" y="128" fill="#9ba7b8" font-size="14" font-family="JetBrains Mono, monospace">Top: the three axioms with typed interfaces and declared completions. Middle: derivation spine. Bottom: conditional branch</text>
@@ -230,10 +230,10 @@
   <path d="M 2120.0 932.0 C 2120.0 1252.0, 2400.0 2926.0, 2400.0 3246.0" stroke="#7ca6ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowBlue)" />
   <path d="M 2120.0 932.0 C 2120.0 1252.0, 535.0 2926.0, 535.0 3246.0" stroke="#d4b56e" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
   <path d="M 2120.0 932.0 C 2120.0 1252.0, 535.0 2926.0, 535.0 3246.0" stroke="#d4b56e" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowGold)" />
-  <path d="M 2430.0 842.0 C 2430.0 1162.0, 2400.0 3721.0, 2400.0 4041.0" stroke="#7ca6ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
-  <path d="M 2430.0 842.0 C 2430.0 1162.0, 2400.0 3721.0, 2400.0 4041.0" stroke="#7ca6ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowBlue)" />
-  <path d="M 2430.0 842.0 C 2430.0 1162.0, 1275.0 2926.0, 1275.0 3246.0" stroke="#d4b56e" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
-  <path d="M 2430.0 842.0 C 2430.0 1162.0, 1275.0 2926.0, 1275.0 3246.0" stroke="#d4b56e" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowGold)" />
+  <path d="M 2430.0 872.0 C 2430.0 1192.0, 2400.0 3721.0, 2400.0 4041.0" stroke="#7ca6ff" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
+  <path d="M 2430.0 872.0 C 2430.0 1192.0, 2400.0 3721.0, 2400.0 4041.0" stroke="#7ca6ff" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowBlue)" />
+  <path d="M 2430.0 872.0 C 2430.0 1192.0, 1275.0 2926.0, 1275.0 3246.0" stroke="#d4b56e" stroke-width="7" opacity="0.09" filter="url(#softGlow)" />
+  <path d="M 2430.0 872.0 C 2430.0 1192.0, 1275.0 2926.0, 1275.0 3246.0" stroke="#d4b56e" stroke-width="3.0" opacity="0.27" marker-end="url(#arrowGold)" />
   <path d="M 4040.0 645.0 C 4040.0 950.3, 535.0 1053.7, 535.0 1359.0" stroke="#4ee7ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
   <path d="M 4040.0 645.0 C 4040.0 950.3, 535.0 1053.7, 535.0 1359.0" stroke="#4ee7ff" stroke-width="2.6" opacity="0.22" marker-end="url(#arrowCyan)" />
   <path d="M 4605.0 645.0 C 4605.0 965.0, 535.0 1311.0, 535.0 1631.0" stroke="#4ee7ff" stroke-width="7" opacity="0.06" filter="url(#softGlow)" />
@@ -517,20 +517,21 @@
   <text x="2004" y="908" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">— no fit</text>
 </g>
 <g filter="url(#panelShadow)">
-  <rect x="2284" y="504" width="292" height="344" rx="30" fill="none" stroke="#f3df9a" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
-  <rect x="2290" y="510" width="280" height="332" rx="24" fill="rgb(14 16 24 / 0.96)" stroke="#f3df9a" stroke-width="2.2" opacity="1.0" />
+  <rect x="2284" y="504" width="292" height="374" rx="30" fill="none" stroke="#f3df9a" stroke-width="3" opacity="0.18" filter="url(#softGlow)" />
+  <rect x="2290" y="510" width="280" height="362" rx="24" fill="rgb(14 16 24 / 0.96)" stroke="#f3df9a" stroke-width="2.2" opacity="1.0" />
   <rect x="2291" y="511" width="278" height="38" rx="23" fill="rgba(243, 223, 154, 0.22)" opacity="0.84" />
   <rect x="2306" y="522" width="134" height="28" rx="14" fill="rgb(255 255 255 / 0.03)" stroke="#f3df9a" opacity="1" />
   <text x="2320" y="541" fill="#f3df9a" font-size="14" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">FIXED POINT</text>
-  <rect x="2308" y="833" width="151.2" height="3" rx="1.5" fill="#f3df9a" opacity="0.88" />
+  <rect x="2308" y="863" width="151.2" height="3" rx="1.5" fill="#f3df9a" opacity="0.88" />
   <text x="2314" y="588" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Global</text>
   <text x="2314" y="621" fill="#f4f7fb" font-size="24" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Capacity N</text>
-  <text x="2314" y="668" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">N = M0(U_N)</text>
-  <text x="2314" y="698" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">correctable</text>
-  <text x="2314" y="728" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">public-record</text>
-  <text x="2314" y="758" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">readback</text>
-  <text x="2314" y="788" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">closure output</text>
-  <text x="2314" y="818" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">— no fit</text>
+  <text x="2314" y="668" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">N = log</text>
+  <text x="2314" y="698" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">M0(U_N)</text>
+  <text x="2314" y="728" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">correctable</text>
+  <text x="2314" y="758" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">public-record</text>
+  <text x="2314" y="788" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">readback</text>
+  <text x="2314" y="818" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">closure output</text>
+  <text x="2314" y="848" fill="#c9d3e2" font-size="20" font-family="JetBrains Mono, monospace" font-weight="520" opacity="1">— no fit</text>
 </g>
 <g filter="url(#panelShadow)">
   <rect x="2720" y="510" width="205" height="573" rx="24" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="0.78" />
@@ -638,7 +639,7 @@
   <rect x="4938" y="636" width="160.0" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
   <text x="4944" y="548" fill="#f4f7fb" font-size="22" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Gauge Quotient</text>
   <text x="4944" y="593" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">gauge as implementation hiding</text>
-  <text x="4944" y="621" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">unique gauge-invariant law</text>
+  <text x="4944" y="621" fill="#9ba7b8" font-size="18" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">observable equivalence classes</text>
 </g>
 <g filter="url(#panelShadow)">
   <rect x="3790" y="685" width="500" height="203" rx="24" fill="rgb(10 14 22 / 0.93)" stroke="#4ee7ff" stroke-width="1.6" opacity="1.0" />
@@ -953,7 +954,7 @@
   <text x="4430" y="1846" fill="#4ee7ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">THEOREM</text>
   <rect x="4418" y="1999" width="316.8" height="3" rx="1.5" fill="#4ee7ff" opacity="0.82" />
   <text x="4424" y="1899" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Born Rule and Luders Conditioning</text>
-  <text x="4424" y="1952" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">unique overlap-consistent probability rule</text>
+  <text x="4424" y="1952" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">declared quantum probability representation</text>
   <text x="4424" y="1984" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">conditioning on central record algebra</text>
 </g>
 <g filter="url(#panelShadow)">
@@ -1087,7 +1088,7 @@
   <text x="1960" y="4072" fill="#7ca6ff" font-size="15" font-family="JetBrains Mono, monospace" font-weight="700" letter-spacing="2" opacity="1">OUTPUT</text>
   <rect x="1948" y="4257" width="300.8" height="3" rx="1.5" fill="#7ca6ff" opacity="0.82" />
   <text x="1954" y="4125" fill="#f4f7fb" font-size="30" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="-0.35" opacity="1">Global Closure N and de Sitter</text>
-  <text x="1954" y="4178" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">N = M0(U_N); finite M0(q) = alpha(G_q)</text>
+  <text x="1954" y="4178" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">N = log M0(U_N); finite M0(q) = alpha(G_q)</text>
   <text x="1954" y="4210" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">Lambda ell_*^2 = 3pi/N after horizon saturation</text>
   <text x="1954" y="4242" fill="#9ba7b8" font-size="22" font-family="JetBrains Mono, monospace" font-weight="500" opacity="1">horizon capacity = correctable public record</text>
 </g>

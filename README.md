@@ -10,6 +10,15 @@ has local state, a boundary with ports, readback, records, and feedback for
 repairing disagreement. Within the model, facts become public when records
 survive comparison across overlapping patches.
 
+The proposed universe is one structure viewed both as a timeless consistent
+history and as the internal local computation of that history. Its records
+and responses to interventions supply the operation; no external host or
+preferred global clock is required. Space, physical duration and matter are
+intended emergent readouts. Current constructions supply some geometry,
+states, actions and clock maps as premises. The
+[interpretation and working terms](docs/INTERPRETATION_AND_TERMS.md) distinguish
+this physical proposal from the conditional results achieved in these constructions.
+
 This repository contains the scientific work behind that idea: papers,
 machine-checked proofs and executable models. It connects finite agreement
 with quantum probability, spatial geometry and the symmetry pattern of the
@@ -64,7 +73,7 @@ supplies the inputs of the existing theorems on one common model. Separate
 conditional results can be correct without their physical premises being
 realized together. We start with the simplest compatible construction, reuse
 proved results, and test each added hypothesis against alternatives. The
-carrier geometry, reversible gauge response and operational clock must be
+carrier geometry, reversible gauge response and local operational clocks must be
 compatible readouts of that same process. Add a mechanism only for a
 demonstrated missing connection, and count every added physical assumption.
 A rejected scalar-only candidate does not establish that a simple common
@@ -87,6 +96,10 @@ Paper releases and broad prose restructuring are on hold until a coherent
 model milestone supports them. Audits, correctness fixes and reproducibility
 checks continue. The [research policy](docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold)
 states the milestone and the correction exception.
+
+Main-branch PDFs are current-source previews and may retain the existing
+release identifier after corrections. Tagged or deposited release artifacts
+retain their original bytes; a preview is not a new release.
 
 ## Start here
 

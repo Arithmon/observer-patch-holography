@@ -13,7 +13,8 @@ directory. The [technical paper](https://philpapers.org/rec/MUEFOC)
 states the primary technical account. The [OPH textbooks](https://learn.floatingpragma.io/) work through
 the basic derivations with the math taught along the way. The
 [interactive simulation](https://simulation.floatingpragma.io/) renders real
-run data so you can watch the universe assemble itself.
+run data from declared candidate models; it does not demonstrate that a
+physical universe has been reconstructed.
 
 ## Layout
 
@@ -48,6 +49,9 @@ each file keeps its name in the folders above.
 
 ## Canonical References
 
+- [Interpretation and Working Terms](INTERPRETATION_AND_TERMS.md) distinguishes
+  complete-history closure, intrinsic computation, emergent-physics proposals,
+  mathematical fixed points and the different uses of time.
 - [Axiom Reference](AXIOM_REFERENCE.md) states the three core axioms.
 - [Canonical Repair-Law RFC](CANONICAL_REPAIR_LAW_RFC.md) specifies a proposed
   strengthening of A1 and A2.

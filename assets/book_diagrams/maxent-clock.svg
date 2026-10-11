@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
-  <title id="title">Maximum entropy inference and modular clock</title>
+  <title id="title">Maximum entropy inference and modular flow</title>
   <desc id="desc">Constraints select a maximum entropy state, whose restricted algebra carries an internal modular flow.</desc>
   <rect width="960" height="500" fill="#f7f5ef"/>
   <defs>
@@ -19,5 +19,6 @@
   <path d="M600 240 L600 155" stroke="#405d73" stroke-width="7" stroke-linecap="round"/>
   <path d="M600 240 L670 276" stroke="#c85b43" stroke-width="7" stroke-linecap="round"/>
   <path d="M520 240 A80 80 0 1 1 600 320" fill="none" stroke="#68a691" stroke-width="7" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <text x="514" y="402" font-family="Arial, sans-serif" font-size="24" fill="#2e2a25">modular flow supplies an internal clock</text>
+  <text x="600" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#2e2a25">modular parameter</text>
+  <text x="600" y="434" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#2e2a25">physical clock needs calibration</text>
 </svg>

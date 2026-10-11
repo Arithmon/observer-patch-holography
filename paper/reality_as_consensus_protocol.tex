@@ -62,6 +62,8 @@ fixed-point computation, and all geometric and dynamical content enters through
 the separately declared branch structure of the companion papers.
 \end{abstract}
 
+\input{tex_fragments/INTERPRETATION_CONVENTIONS.tex}
+
 \section*{Scope of physical interpretation}
 
 The fixed-cutoff consensus theorem supplies a finite observer-like
@@ -98,6 +100,16 @@ paper with their standard meanings. OPH adds the physical reading: each variable
 patch, each constraint is an overlap-visible record check, and each accepted rewrite is a local
 repair move that must descend to the quotient seen by neighboring observers.
 
+Two further precedents separate the available convergence tools.
+Dijkstra's self-stabilizing ring reaches a legitimate regime under its central
+daemon while permitted activity continues~\cite{dijkstra1974}; this differs
+from termination of a repair relation. For fixed finite-dimensional
+inner-product stalks and linear restriction maps on a finite graph, sheaf
+diffusion converges to the orthogonal projection onto compatible
+sections~\cite{hansenghrist2020}. Using either result requires its actual state,
+map and scheduling hypotheses; neither selects a physical law from its
+equilibria. The present finite rewrite construction is a separate instantiation.
+
 That turns consensus into the implementation layer of the theory. The paper distinguishes
 accepted-step termination from scheduler attempts that may stutter, proves that every canonical
 adaptive attempt stream is eventually constant, isolates pathwise weak fairness as sufficient for
@@ -127,8 +139,10 @@ This paper writes the OPH consensus picture in the simplest concrete form. A uni
 The word ``dynamics'' is used here in the rewriting-system sense. The repair schedule selects
 terminal normal forms and proves schedule independence under the stated hypotheses. The selected
 observer-facing structure can carry an internal record order, which is read as history. A
-conventional simulation computes a surrogate history. OPH computes the fixed point and its
-quotient-visible records. A physical-clock interpretation additionally requires an
+conventional simulation may compute a surrogate history. The finite OPH
+construction computes a normal form and its quotient-visible records. Identifying
+this with intrinsic computation of a complete history requires an observation-
+and intervention-preserving realization map. A physical-clock interpretation additionally requires an
 observer-readable transition process, event correspondence, and affine clock calibration.
 The patch-net algorithm is a theorem device for fixed-point selection. The fundamental
 description contains no global timeline on which spacetime contents are rendered.
@@ -5129,6 +5143,17 @@ B.~M\"uller et al.,
 2026.\\
 Source and compiled paper:
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/observers_are_all_you_need.pdf}.
+
+\bibitem{dijkstra1974}
+E.~W.~Dijkstra,
+``Self-stabilizing systems in spite of distributed control,''
+\emph{Communications of the ACM} \textbf{17}(11), 643--644 (1974).
+\url{https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD426.html}.
+
+\bibitem{hansenghrist2020}
+J.~Hansen and R.~Ghrist,
+``Opinion Dynamics on Discourse Sheaves,'' arXiv:2005.12798 (2020).
+\url{https://arxiv.org/abs/2005.12798}.
 
 \bibitem{newman42}
 M.~H.~A.~Newman,

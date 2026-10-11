@@ -44,15 +44,15 @@ The first is that the state's odds are unchanged by it. Every question is worth 
 
 The second is where the non-commuting part earns its keep. In a world where every pair of questions could be answered together, the state's weight for asking A and then B would equal its weight for asking B and then A, because there would be nothing to tell the two orders apart. Chapter nineteen's entire subject is that they differ. So the state carries a gap between the two orders, one gap for every pair of questions. The gap is a fixed feature of the state rather than a nuisance to be argued away. The second demand is that swapping the order costs exactly one unit of the shuffle, the same one unit for every pair of questions, with the amount of shuffling measured along a direction at right angles to the flow's own parameter. That last clause is complex analysis, the one step in the whole construction that cannot be done on a table.
 
-Those two demands admit exactly one flow, for any state that leaves no question with odds of exactly zero. Uniqueness is the theorem here, and what takes the choice away: the two demands are the state's own bookkeeping written down, and the flow is what solves them. The parameter running along that flow is the observer's own time. The flow supplies neither a clock nor an elapsed duration, and reading its parameter in seconds is a separate declared identification.
+For the appropriate von Neumann algebra and faithful normal state, modular theory selects a unique flow under its analytic equilibrium condition. In finite dimensions, faithfulness means a positive definite density matrix, or positive probability for every nonzero projection. Its parameter is dimensionless. OPH proposes an observer-time interpretation, but the theorem supplies neither elapsed seconds nor a process of becoming conscious; the physical correspondence must be declared.
 
 Minoru Tomita, who lost his hearing at the age of two and published very little in a long career, wrote the construction down in 1967 in a manuscript that the people who received it found close to unreadable. Masamichi Takesaki worked out what it said, passed the results to Jacques Dixmier in the summer of that year, and published a usable version in 1970 as a thin volume of Springer lecture notes. The thing is called **modular flow**, after the algebraic machinery it drops out of rather than after anything it does, and its generator, in chapter eighteen's sense of the word, is called the modular Hamiltonian.
 
-The generator is manufactured out of the state and nothing else, by a recipe short enough to state in one line. Take the state's own array of numbers, take its logarithm, and put a minus sign in front.
+In the finite matrix example, take the negative operator logarithm of the positive definite density matrix. The algebra and representation are part of the input. In more general von Neumann algebras, modular theory need not be expressible as the logarithm of a density matrix inside the algebra.
 
 $$K = -\log \rho$$
 
-Here rho is chapter nineteen's density matrix, the array standing for the state the observer holds, and K is the generator of the flow that state determines. Chapter sixteen's logarithm counted questions and so ran in base two. The one in this recipe is the natural logarithm, the kind chapter ten used for the spread of eighty-two thousand records, where a doubling is worth 0.693 instead of 1. Applied to an array of this shape it works on each diagonal entry on its own.
+Here rho is chapter nineteen's density matrix, the array standing for the state the observer holds, and K is the generator of the flow that state determines. Chapter sixteen's logarithm counted questions and so ran in base two. The one in this recipe is the natural logarithm, the kind chapter ten used for the spread of eighty-two thousand records, where a doubling is worth 0.693 instead of 1. In an eigenbasis of the density matrix it applies the logarithm to each positive eigenvalue; it is not the entrywise logarithm of an arbitrary array.
 
 ## One system, two outcomes
 
@@ -64,7 +64,7 @@ Write the state as its array. Take the logarithm, which acts on the two diagonal
 
 The constant does nothing whatsoever. A generator shifted by a constant produces the same flow, since the constant piece commutes with the whole algebra and shuffles nothing. Delete it.
 
-What survives is the system's energy divided by its temperature. The flow it generates is the time evolution written down for that system in every physics course on Earth. The state's own clock is the clock physicists have been using all along, running at a rate the temperature sets.
+For the supplied Gibbs state, what survives is the supplied Hamiltonian divided by the temperature in energy units. Its modular evolution therefore matches that Hamiltonian's evolution after a scale and sign convention are fixed. This is a conditional correspondence: a density matrix alone does not choose an absolute temperature or elapsed seconds.
 
 Put numbers on it, and take a pencil. A state for this system is a slip with two odds written on it. One ratio settles both of them, because the two have to add up to one. Say the lower answer comes up twenty times for every once the upper one does. Write the slip: 20 in 21 and 1 in 21, and there is nothing else about the system left to write down.
 
@@ -76,17 +76,17 @@ Add it up yourself. Twenty is two times ten, so its logarithm is the sum of thei
 
 The recipe said the surviving entry would be the energy divided by the temperature, so this system's energy is 2.996 times its temperature, and the flow moves the system along at that rate.
 
-Which reads, on first pass, as an elaborate way of handing back what was put in. Read it the other way around. What went in was a betting slip: two odds, no clock, and nothing anywhere on it about what the system does next. Take its logarithm, flip the sign, and what is in your hand is the Hamiltonian divided by the temperature. Nobody supplied a Hamiltonian, the slip was the whole of the input, and the Hamiltonian came out, measured in units of the temperature.
+The slip determines a dimensionless log-odds gap. Given a Gibbs interpretation it fixes an energy-to-temperature ratio, not a unique Hamiltonian in joules. Many temperature and energy scales yield the same slip. A calibrated dynamics or clock supplies the missing physical information.
 
 ## Whose clock
 
 The flow belongs to the state, so it changes when the state changes.
 
-Two observers holding different states extract different flows. They run at different rates against each other. There is no third flow that either of them is failing to match, because a third flow would need a third state and no such state is held by anybody. Chapter seven left the shared present with nobody to hold it, and Hafele and Keating's flying clocks had a reading to report only when they stood next to the bench clocks. The rate goes the same way. It belongs to whoever holds the state, the way a patch's questions belong to the patch, and asking which of two observers runs at the true rate is asking for a state that nobody holds.
+Two algebra-state pairs can determine different modular flows. Comparing their physical rates requires correspondences to their operational clocks; different flows need not be related by a constant rate at all. There is no preferred universal physical clock in this proposal, but that does not forbid common coordinates, agreed calibrations or logical clocks used in a model.
 
-The two-outcome system makes the dependence cheap to check. Take it twice, once at a temperature and once at half that temperature, with the same two energies and the same single question available in both cases. The generator came out as the energy divided by the temperature, so halving the temperature doubles the generator, and the flow it produces covers twice as much ordinary evolution for each unit of its own parameter. On the slip it shows up as a squared ratio. Square the twenty to one, get four hundred to one, and since a logarithm turns a square into a double, the second slip comes to twice 2.996, which is 5.99. Same question, same energies, two states, two clocks running at a factor of two against each other, with nothing in either description marking one of them as the correct one.
+In the supplied two-level Gibbs model, halving temperature at fixed Hamiltonian doubles the modular generator and squares the population ratio. Twenty to one becomes four hundred to one; log 400 is twice log 20, approximately 5.99. These are two normalizations of modular evolution relative to the same supplied Hamiltonian. They do not show that two physical wristwatches run at a factor of two.
 
-Chapter eighteen met this from the energy side without being able to say where it came from. A region with nothing left to settle drives no clock, one carrying standing disagreement drives hard, and the joules a calorimeter reports are a reading of the state.
+The finite Gibbs example relates energy and modular flow under its stated physical interpretation. A state invariant under its flow need not have zero energy or a stopped physical clock. Vanishing repair discrepancy, stationarity of a state and triviality of its modular automorphisms are different conditions.
 
 "Time is subjective" is a sentence people say at dinner and it is usually a mood. Here it names an object: a one-parameter family of transformations, extracted from one specific state by a construction with no free choices anywhere in it, different for different states, and computable by hand on a two-outcome system in the time it takes to add two logarithms.
 
@@ -94,25 +94,25 @@ Chapter eighteen met this from the energy side without being able to say where i
 
 Records live in the center of the algebra: the questions that commute with everything, which is what makes a record readable without disturbance, copyable to a neighbor, and the same on the second reading as on the first. Run the flow on the center and it does nothing at all. Every element of the center is left exactly where it is by every transformation in the family, at every value of the parameter.
 
-The flow was built to close the gap between asking A and then B and asking B and then A. An element of the center has no gap with anything, because it commutes with everything in the algebra. So there is nothing for the flow to fix about it, and it sits untouched. The price of commuting with everything is having no clock of your own.
+Modular automorphisms fix the center of the algebra pointwise. That does not mean that a record-bearing device has no physical clock: its physical updates need not be automorphisms of that fixed record algebra.
 
 Chapter nineteen proved the harsher version, which reaches past this flow to every continuous motion a record layer could have had. The only structure-preserving moves a record algebra has are permutations of its finitely many labels, and a continuous family of permutations would have to jump to get anywhere, so it sits where it started. The classical layer changes one discrete relabeling at a time, or it holds.
 
-Put those two facts side by side. **You experience time passing because you are not made only of records.** The part of you that has been committed, written down, made copyable and readable and safe from disturbance, is the part with no flow on it. Whatever is going by is going by in the other part, the questions that refuse to be answered alongside each other, which is where the flow lives and where the entire supply of rate comes from. An observer built out of records and nothing else would hold a complete description of a world, would be able to read it, copy it and compare it with a neighbor's, and would sit inside it at no rate at all, the way chapter seven's recipe card lies on a kitchen counter.
+These facts concern modular automorphisms and the fixed center of a particular algebra. A classical open system can nevertheless change through stochastic updates, and a record can be written or replaced by dynamics outside that automorphism group. Identifying experienced passage with self-reading noncommutative activity is a further psychophysical proposal; trivial modular flow on a commutative algebra does not prove that classical information processing cannot support experience.
 
 ## The flow has no arrow
 
 The flow is reversible. Every transformation in the family has its inverse in the family, which is the transformation at minus the same parameter. That was settled before either demand was written down: what qualified as a change at all was a reshuffling of the questions that loses nothing, and a shuffle that loses nothing can be undone.
 
-So the flow cannot be the source of the arrow, and chapter sixteen was right to hold the two questions apart rather than answer them together. What supplies the arrow is what chapter sixteen said supplies it: the commit, seven arrangements of a seam collapsing into one, an arithmetic loss inside a single move that no relaxation of any rule anywhere recovers.
+The modular group therefore does not itself supply a dissipative arrow. The reduced averaging update in chapter sixteen is many-to-one, whereas a full description retaining its inputs can remain reversible. A proposed physical arrow must specify which degrees of freedom and records remain accessible and how its thermodynamic assumptions apply.
 
-Put the two together and you have the whole of what an observer undergoes, in two ingredients doing two different jobs. Committed repairs are irreversible and supply the direction. The flow the state determines is reversible and supplies the rate. Take away the commits and an observer holds a parameter with no arrow along it. Take away the flow and it holds a bare count of events with no duration between them. A clock on a wall is both at once: a count of commits, and a rate at which the counting proceeds.
+Record-producing dynamics and modular flow are distinct mathematical operations. Connecting them in one physical observer needs a common model with calibrated clock readouts. A count of accepted events gives an order; the declared clock correspondence supplies duration. Neither can be substituted for the other merely by calling both time.
 
 ## The region's own clock
 
 Chapter eighteen defined energy and left an unpaid bill inside the definition.
 
-Repair works through a region's records at some rate. That rate is the region's energy. Every rate is counted against a clock. That one was counted against a clock nobody had built, with no universal time on offer to borrow instead. A region's dynamics has an energy generator once its time parameter and energy convention are fixed, and a repair-event count alone supplies neither that generator nor an elapsed duration; the identification rides on the imported calibration chapter eighteen names.
+Chapter eighteen proposed an identification between regional dynamics and energy while retaining an imported clock-and-energy calibration. A repair count alone supplies neither a Hamiltonian nor elapsed duration. The modular construction addresses a different part of that identification; a common physical realization must connect the two.
 
 The region's state determines its modular flow and its parameter. Comparing that parameter with a physical clock requires a declared correspondence to time. Different states can determine different modular flows; comparing their physical rates also requires that correspondence.
 
@@ -148,4 +148,4 @@ Which is why nobody has run into this by accident. Warming yourself by a single 
 
 The algebra and state fix a modular flow. In this example, identifying that flow with the ship's motion fixes its rate against proper time, and the supplied acceleration fixes the temperature. The equilibrium condition relates the two; it does not give a temperature in kelvin from the state alone.
 
-So an observer's sense of duration and its sense of temperature are two readings taken off one object. A duration is a count of something. The count sits in a cesium atom where anybody can go and look at it. What is a temperature a count of?
+In the accelerating-detector example, proper time, modular parameter and thermal response have a specified correspondence. The theorem is about those operational quantities. A subjective sense of duration or warmth is an additional claim about an experiencing observer, not a consequence of the modular identity.

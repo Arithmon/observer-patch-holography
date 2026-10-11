@@ -7,6 +7,9 @@ one physical process with compatible carrier, response, record and clock
 readouts. Established results about distributed recovery and sheaf diffusion
 are tools for that construction. They do not select its physical law.
 
+The [working terms](INTERPRETATION_AND_TERMS.md) fix the distinctions between
+the proposed ontology, a theorem's model, its states and its uses of time.
+
 For each proposed result, identify the nearest theorem below, map its objects
 and hypotheses to the actual candidate, and isolate the remaining obligation.
 Reuse the conclusion once those hypotheses hold. A renamed consensus result

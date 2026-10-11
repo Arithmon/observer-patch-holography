@@ -33,6 +33,12 @@ reconstruct a supplied symmetric tensor modulo the metric, but do not establish
 that arbitrary directional readings form physical stress. The current paper
 retains these identifications as explicit premises, not demonstrated physics.
 
+## Interpretation and working terms
+
+The [current terminology guide](../docs/INTERPRETATION_AND_TERMS.md) separates a complete-history closure condition from instantaneous rest, and identifies intrinsic realization with internal causal operation without an external host or clock. Essays A to D already distinguish these proposals from mathematical results, physical clock calibration and additional premises about consciousness. An actual quantum history need not assign outcomes to every incompatible unperformed measurement.
+
+The preserved Essay E also uses stronger time and agreement language than the current contracts support. A logical height is not an elapsed duration, incomparable records are not automatically physically spacelike, and modular equilibrium does not alone identify a physical clock, temperature or gravitational state. Its submitted bytes remain unchanged; the reading notice above and current papers supply the maintained interpretation.
+
 ## Build
 
 Figures for A to D are in `figures/` as PDF; the figure in E is drawn in its source with

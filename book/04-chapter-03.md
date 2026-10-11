@@ -48,7 +48,7 @@ Two for three. Nothing in the glass consults the column. The mercury stands wher
 
 That is a useful failure, because it shows which of the three is load-bearing. Take away the boundary and you get a duplicate. Take away the writing and nothing is retained. But take away the reading and you are left with something that looks entirely functional, sits on the wall for decades, correlates with the world to a fraction of a degree, and observes nothing whatsoever.
 
-The thermostat's three out of three is the point rather than the joke. The bar is that low. A thermostat is an observer in the sense this book needs, in exactly the same sense that you are. The difference between the two of you is quantitative rather than categorical. You have a wider window, more places to write, and a great deal more that consults what is written there. Every one of those is a matter of degree. None of them is a new item on the list.
+The thermostat passes this elementary operational contract. A person also has bounded access, retained state and feedback, along with much richer organization. Sharing that contract does not prove that their difference is only quantitative or that either device has experience; the later consciousness argument adds a psychophysical hypothesis.
 
 A sensor, a number you set and a switch meet all three in full. That is the whole of what anything needs to be an observer, thermostats and people included.
 

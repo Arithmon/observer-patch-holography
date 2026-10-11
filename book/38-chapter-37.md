@@ -36,9 +36,9 @@ The symmetries of the earlier chapters arrive free of charge. The laws not carin
 
 So there are two ways for a reading to be invariant, two different physical situations wearing one word. In the first, the invariance is a property of the world's laws. The observer has nothing to do with it. In the second, the invariance is manufactured by a bounded observer out of its own capacity, continuously, for as long as it can afford the outlay. What the vital principle was tracking is the outlay, which in Bernard's rabbits was paid in liver.
 
-The outlay has to be continuous because seams do not sit quiet. An observer's neighbors are repairing as well, every commit any of them makes is irreversible in the sense chapter sixteen gave that word, and the entries on a shared boundary get rewritten whether or not the observer on the other side of it wanted them rewritten. A pattern that spends nothing inherits whatever its neighbors' repairs happen to leave on its boundary. Holding an invariant against that traffic is a rate rather than an act, which is why the liver does not finish, and why a mammal that stops paying cools toward the temperature of the room it is lying in.
+The outlay has to continue when the surrounding conditions keep changing. Neighbors update shared boundaries, and a maintained pattern must respond under its declared dynamics. Such updates need not erase information from the complete state; chapter sixteen's loss concerns a reduced map. Interpreting this maintenance as physical expenditure requires the relevant energy and clock model.
 
-Chapters eighteen and twenty-one already priced that rate. A region's energy is what drives its own clock, and what drives that clock is the repair running through its records. So the outlay here is the same quantity a calorimeter reads rather than a metaphor borrowed from biology, and eating is how an animal settles it.
+Chapters eighteen and twenty-one describe candidate energy and clock identifications under explicit physical calibration. An animal's food use and heat production can be measured, but identifying those quantities with this model's maintenance score requires a common dynamics and units. The biological example motivates that connection rather than proving it.
 
 ## What a living thing is
 
@@ -46,7 +46,7 @@ Chapter eleven divided a network's state into what any neighbor can check and wh
 
 A bounded observer persists when the reading on its seams keeps having a consistent extension. At every point along its own record time there is a world that carries what it publishes. It is spending to keep that true.
 
-Bounded homeostatic persistence is the whole definition of a living thing. There is no ingredient anywhere in the phrase. Bounded, because an observer has a finite interface and a finite budget. Homeostatic, because the invariance on its seams is manufactured rather than handed over. Persistence, because the claim is about the reading holding across record time rather than about any single moment. A rabbit is alive on Tuesday because it was alive on Monday and paid for the difference.
+Bounded homeostatic persistence is the operational criterion proposed here for a living pattern. It captures maintenance under disturbance and a finite budget; by itself it does not settle the biological classification of every thermostat, organism or dormant state. The rabbit motivates the criterion, while its predictive use requires actual survival and recovery tests.
 
 Chapter five's invariants survived something done to a system from outside: a rotation, a shift, a relabeling. This one survives the system's own running. A rabbit is whatever a rabbit's metabolism leaves alone while it takes everything else apart.
 

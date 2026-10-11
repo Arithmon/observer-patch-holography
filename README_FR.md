@@ -11,6 +11,15 @@ de ports, une capacité de relecture, des registres et une rétroaction qui
 répare les désaccords. Dans ce modèle, les faits deviennent publics lorsque
 les registres résistent à la comparaison entre parcelles qui se recouvrent.
 
+L’univers proposé est une même structure, décrite comme une histoire cohérente
+intemporelle et comme le calcul local interne qui la réalise. Ses registres
+et ses réponses aux interventions constituent ce fonctionnement, sans ordinateur
+extérieur ni horloge globale privilégiée. L’espace, la durée physique et la
+matière sont les lectures émergentes recherchées. Les constructions actuelles
+fournissent encore certaines géométries, actions et correspondances d’horloges
+comme prémisses. Le [guide des termes](docs/INTERPRETATION_AND_TERMS.md)
+distingue cette proposition des résultats conditionnels établis.
+
 Ce dépôt contient le travail scientifique derrière cette idée : articles,
 preuves vérifiées par machine et modèles exécutables. Il relie l’accord fini
 aux probabilités quantiques, à la géométrie spatiale et à la structure de
@@ -70,7 +79,7 @@ peuvent être corrects sans que leurs prémisses physiques soient réalisées
 ensemble. Nous partons de la construction compatible la plus simple,
 réutilisons les résultats démontrés et confrontons chaque hypothèse ajoutée
 à des alternatives. La géométrie du support, la réponse de jauge réversible
-et l’horloge opérationnelle doivent être des lectures compatibles de ce même
+et les horloges opérationnelles locales doivent être des lectures compatibles de ce même
 processus. Tout mécanisme ajouté doit répondre à un lien manquant démontré,
 et toute hypothèse physique ajoutée doit être déclarée. L’échec d’un candidat
 purement scalaire ne prouve pas qu’une loi commune simple soit impossible.
@@ -86,6 +95,11 @@ Les publications d’articles et leur restructuration générale sont suspendues
 jusqu’à une étape cohérente de construction du modèle. Audits, corrections
 et vérifications de reproductibilité continuent selon la
 [politique de recherche](docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold).
+
+Les PDF de la branche principale sont des versions de travail et peuvent
+conserver l’identifiant de publication existant après correction. Les fichiers
+associés à une version Git ou à un dépôt conservent leurs octets d’origine ;
+une version de travail n’est pas une nouvelle publication.
 
 ## Commencer ici
 

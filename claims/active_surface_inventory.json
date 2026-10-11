@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 484,
+  "surface_count": 486,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -181,6 +181,11 @@
     },
     {
       "path": "paper/tex_fragments/FOUNDATIONAL_REFERENCES.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/INTERPRETATION_CONVENTIONS.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -903,6 +908,11 @@
       "path": "docs/FROZEN_PREDICTION_LADDER.md",
       "glob": "docs/**/*.md",
       "allowlisted": true
+    },
+    {
+      "path": "docs/INTERPRETATION_AND_TERMS.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
     },
     {
       "path": "docs/MODEL_CANDIDATES.md",
