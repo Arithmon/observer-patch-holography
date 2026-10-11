@@ -54,6 +54,11 @@ not a domain argument.
   square root; a small erased residual can have a much larger effect on a
   joint bound. Exercise valid zero-noise and negative unbiased-common-power
   controls through the public consumers as well as their numerical helpers.
+  For nearly identical responses, independently centered variance and variance
+  about a rounded mean differ by a quadratic centering term. Bound that term
+  from the mean's arithmetic error; a tolerance on the full response scale
+  can hide a fabricated spread. Retain controls for both accurate and rounded
+  centering, erased spread, inflated spread and inconsistent standard errors.
   For a transfer logarithm, test the full Hamiltonian as well as its gap,
   and every relevant stationary-population ratio as well as normalization.
   Resolving small transfer eigenvalues and resolving the leading eigenspace

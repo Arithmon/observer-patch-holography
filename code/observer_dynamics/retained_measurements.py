@@ -39,14 +39,28 @@ def response_statistics(responses, average, deviation, error=None):
     count = len(responses)
     mean = sum(responses)/count
     variance = sum((a-mean)**2 for a in responses)/(count-1)
-    close(average, mean, scale=max(map(abs, responses)))
+    reported_mean = number(average)
+    # Binary64 summation and division can round the common center. Bound that
+    # error independently of RTOL: a relative moment budget would invent a
+    # much larger spread for nearly identical responses.
+    unit = Q(1, 1 << 53)
+    gamma = count*unit/(1-count*unit)
+    # The final mean division may round into the subnormal range.
+    mean_error = gamma*sum(map(abs, responses))/count+Q(1, 1 << 1075)
+    need(abs(reported_mean-mean) <= mean_error,
+         'Retained response mean exceeds binary64 roundoff')
+    # About a rounded center m_hat, the exact sample variance is
+    # V + count/(count-1)*(m_hat-mean)**2. Allow that centering increment,
+    # while retaining a relative lower bound on the actual response spread.
+    centered_variance = variance+Q(count, count-1)*(reported_mean-mean)**2
     sd = number(deviation)
     need(sd >= 0, 'Negative schedule standard deviation')
-    close(sd**2, variance)
+    need(variance*(1-RTOL) <= sd**2 <= centered_variance*(1+RTOL),
+         'Retained arithmetic mismatch: response spread')
     if error is not None:
         se = number(error)
         need(se >= 0, 'Negative schedule standard error')
-        close(se**2, variance/count)
+        close(se**2, sd**2/count)
 
 
 def sqrt_bounds(value):

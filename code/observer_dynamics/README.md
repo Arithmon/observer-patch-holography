@@ -121,8 +121,17 @@ on the relevant moment scale, without an absolute small-power floor. It
 propagates residual subtraction uncertainty before taking square roots, with
 outward rational root bounds. A tiny negative computed noise within roundoff
 is allowed; reported statistics are never rewritten. This preserves valid
-nearly collinear and identical schedules. Negative **unbiased common power**
-and noise fractions greater than one are also possible and remain accepted.
+nearly collinear and identical schedules. For the response spread, the exact
+sample variance `V` and variance about a rounded mean `m_hat` differ by
+`S/(S-1) (m_hat-mu)^2`. The checker bounds the mean's binary64 summation and
+division error, then permits that quadratic centering increment. It retains a
+relative lower bound on `V` and binds the standard error to the reported
+standard deviation; an erased or inflated resolvable spread still fails.
+For example, 16 original vectors with responses `[1+ulp(1),1,...,1]` have a
+NumPy variance about 6.7% above the exactly centered variance, although their
+absolute discrepancy is only rounding of the common center. Controls exercise
+both consumers at small, ordinary and large scales. Negative **unbiased common
+power** and noise fractions greater than one are also possible and remain accepted.
 
 The repair changes verifier acceptance and its live verification summary.
 Frozen inputs, producer bytes, numerical observations, claim registrations,

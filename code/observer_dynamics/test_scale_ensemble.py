@@ -569,3 +569,151 @@ def test_angular_extrema_accept_original_integer_pixel_counts(population, attain
     assert sum(counts) == carriers and min(counts) > 0
     grid["counts_min"], grid["counts_max"] = min(counts), max(counts)
     assert retained.scale_ensemble(population)["angular_rows"] == 240
+
+
+def nearly_equal_response_consumers(gain, delta, schedules=16):
+    """Retain moments of original mean-zero vectors, including rounded SD.
+
+    Four centered coordinates span three real dimensions, so the same inner
+    products also describe real ell=1 harmonics. No producer is imported.
+    """
+    initial = np.array([1.0, -1.0, 1.0, -1.0])
+    fields = np.tile(initial, (schedules, 1))
+    fields[0] *= 1.0 + delta
+    fields *= gain
+    responses = np.mean(fields * initial, axis=1)
+    powers = np.mean(fields**2, axis=1)
+    average = np.mean(fields, axis=0)
+    noise = float(np.mean(np.sum((fields - average)**2, axis=0) / (schedules - 1)))
+    total = float(powers.mean())
+    sd = float(responses.std(ddof=1))
+    # The exact oracle starts with the supplied coordinates, retaining the
+    # original binary scalars before a floating mean can erase their spread.
+    exact_responses = [sum(Fraction(float(x)) * Fraction(float(y))
+                           for x, y in zip(initial, field)) / 4 for field in fields]
+    exact_mean = sum(exact_responses) / schedules
+    exact_variance = sum((value - exact_mean)**2 for value in exact_responses) / (schedules - 1)
+    factor, coefficient = Fraction(1, 16), Fraction(12, 47)
+    equilibrium = float(coefficient * factor)
+    rows = []
+    for seed, (field, response, power) in enumerate(zip(fields, responses, powers)):
+        rows.append({
+            "seed": seed, "initial_variance": 1.0, "terminal_variance": float(power),
+            "response": float(response), "power_ratio": float(power),
+            "coherence_squared": float(response**2 / power),
+            "residual_power_ratio": float(np.mean((field - response * initial)**2)),
+            "variance_over_exchangeable_equilibrium": float(power / equilibrium),
+            "legacy_unweighted_global_centered_response": float(response),
+        })
+    scale = {
+        "name": "ancestor_1", "groups": 4, "cells_min": 1, "cells_max": 1,
+        "cells_arithmetic_mean": 1.0, "cells_harmonic_mean": 1.0,
+        "initial_variance_over_iid_null": float(1 / (Fraction(35, 12) * factor)),
+        "equilibrium_variance": equilibrium, "per_schedule": rows,
+        "response_mean": float(responses.mean()), "response_schedule_sd": sd,
+        "response_schedule_se": sd / schedules**0.5,
+        "total_terminal_variance": total, "conditional_schedule_variance_unbiased": noise,
+        "cross_schedule_common_power_unbiased": total - noise,
+        "schedule_noise_fraction": noise / total,
+    }
+    angular = {
+        "ell": 1, "C_initial": 1.0, "C_terminal_mean": total,
+        "per_schedule_response": responses.tolist(), "per_schedule_power_ratio": powers.tolist(),
+        "cross_response_mean": float(responses.mean()), "cross_response_schedule_sd": sd,
+        "total_power_ratio_mean": total,
+        "coherence_squared_mean": float(np.mean(responses**2 / powers)),
+        "orthogonal_residual_power_ratio_mean": float(np.mean(powers - responses**2)),
+        "conditional_schedule_noise_power": noise, "cross_schedule_common_power": total - noise,
+    }
+    return scale, angular, exact_variance
+
+
+def check_response_consumer(consumer, scale, angular):
+    schedules = len(scale["per_schedule"])
+    if consumer == "scale":
+        retained.check_scale(scale, list(range(schedules)), 4, Fraction(12, 47))
+    else:
+        retained.check_angular(angular, schedules)
+
+
+@pytest.mark.parametrize("gain", [1e-120, 1.0, 1e120])
+@pytest.mark.parametrize("delta", [np.spacing(1.0), 1e-12])
+@pytest.mark.parametrize("consumer", ["scale", "angular"])
+def test_public_consumers_keep_original_nearly_equal_response_spread(gain, delta, consumer):
+    scale, angular, exact_variance = nearly_equal_response_consumers(gain, delta)
+    assert exact_variance > 0
+    # A rounded center changes this tiny variance appreciably in relative
+    # terms. Exact recomputation of the damaged center is not an oracle.
+    reported_variance = Fraction(scale["response_schedule_sd"])**2
+    assert abs(reported_variance / exact_variance - 1) > retained.RTOL
+    check_response_consumer(consumer, scale, angular)
+
+
+@pytest.mark.parametrize("gain", [0.1, 1e120])
+@pytest.mark.parametrize("consumer", ["scale", "angular"])
+def test_public_consumers_keep_identical_vectors_with_rounded_response_center(gain, consumer):
+    scale, angular, exact_variance = nearly_equal_response_consumers(gain, 0.0, schedules=3)
+    assert exact_variance == 0
+    assert scale["response_schedule_sd"] > 0
+    check_response_consumer(consumer, scale, angular)
+
+
+@pytest.mark.parametrize("gain", [1e-120, 1.0, 1e120])
+@pytest.mark.parametrize("multiplier", [0, 2])
+@pytest.mark.parametrize("consumer", ["scale", "angular"])
+def test_public_consumers_reject_erased_or_doubled_resolvable_response_spread(gain, multiplier, consumer):
+    scale, angular, exact_variance = nearly_equal_response_consumers(gain, 1e-12)
+    assert exact_variance > 0
+    scale["response_schedule_sd"] *= multiplier
+    scale["response_schedule_se"] *= multiplier
+    angular["cross_response_schedule_sd"] *= multiplier
+    with pytest.raises(ValueError, match="Retained arithmetic mismatch"):
+        check_response_consumer(consumer, scale, angular)
+
+
+@pytest.mark.parametrize("gain", [1e-120, 1.0, 1e120])
+def test_scale_response_sd_and_se_describe_the_same_spread(gain):
+    scale, angular, _ = nearly_equal_response_consumers(gain, np.spacing(1.0))
+    scale["response_schedule_se"] *= 2
+    with pytest.raises(ValueError, match="Retained arithmetic mismatch"):
+        check_response_consumer("scale", scale, angular)
+
+
+@pytest.mark.parametrize("gain", [1e-120, 1.0, 1e120])
+@pytest.mark.parametrize("consumer", ["scale", "angular"])
+def test_public_consumers_reject_resolvable_spread_on_identical_vectors(gain, consumer):
+    scale, angular, exact_variance = nearly_equal_response_consumers(gain, 0.0)
+    assert exact_variance == 0
+    scale["response_schedule_sd"] = angular["cross_response_schedule_sd"] = gain * 1e-10
+    scale["response_schedule_se"] = gain * 1e-10 / 4
+    with pytest.raises(ValueError, match="Retained arithmetic mismatch"):
+        check_response_consumer(consumer, scale, angular)
+
+
+@pytest.mark.parametrize("gain", [1e-120, 1.0, 1e120])
+@pytest.mark.parametrize("delta", [np.spacing(1.0), 1e-12])
+@pytest.mark.parametrize("consumer", ["scale", "angular"])
+def test_public_consumers_also_accept_accurately_centered_small_response_spread(gain, delta, consumer):
+    scale, angular, exact_variance = nearly_equal_response_consumers(gain, delta)
+    exact_sd = float(exact_variance)**0.5
+    scale["response_schedule_sd"] = angular["cross_response_schedule_sd"] = exact_sd
+    scale["response_schedule_se"] = exact_sd / 4
+    check_response_consumer(consumer, scale, angular)
+
+
+@pytest.mark.parametrize("gain", [1e-120, 1.0, 1e120])
+@pytest.mark.parametrize("consumer", ["scale", "angular"])
+def test_coherent_fake_response_center_cannot_invent_small_spread(gain, consumer):
+    scale, angular, exact_variance = nearly_equal_response_consumers(gain, 0.0)
+    assert exact_variance == 0
+    fake_mean = float(gain + gain * 1e-10)
+    # This invented center fits the old 1e-9 moment tolerance. Its fabricated
+    # SD exactly matches a second moment about that center, so the binary64
+    # mean gate itself must reject it before the spread comparison.
+    centering_error = Fraction(fake_mean) - Fraction(gain)
+    fake_sd = float(Fraction(16, 15) * centering_error**2)**0.5
+    scale["response_mean"] = angular["cross_response_mean"] = fake_mean
+    scale["response_schedule_sd"] = angular["cross_response_schedule_sd"] = fake_sd
+    scale["response_schedule_se"] = fake_sd / 4
+    with pytest.raises(ValueError, match="response mean"):
+        check_response_consumer(consumer, scale, angular)
