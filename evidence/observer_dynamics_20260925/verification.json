@@ -10,12 +10,13 @@
   "code_sha256": {
     "__init__.py": "9003f679689d2fa2ab5e6b7a43b848f0bf11fe472c6ab8d291838958638da6f7",
     "archive_adapter.py": "c1b38e1c24f459aaf2949070a6fa80352865eeecdf4fa8ac15ca8551b3929d00",
-    "retained_measurements.py": "4fcebb230ca6872af96eeffc9fd5a80a2b619b68d8a77f60e998245900fe6842",
-    "test_archive.py": "9020e77271f7ac3a28bdb087d2a9b22e4e716adaf7f8256e0b23291b086a5454",
-    "verify.py": "391a5b915f7b13750f48b47eecdf55ab7acfe3dd4ed392bc4640ac2e051eed09"
+    "retained_measurements.py": "52d54b39296b3cc5739fa6c0305f7950db2138f9d43e5a9d569c0ba2c0b37c73",
+    "test_archive.py": "31f311e734895d1bffa5069cabdcd09a5c97bb3edb0d914229771ef303b6d9b0",
+    "test_scale_ensemble.py": "9977debfe64ecb4682ff767d681fd1f5dfdc103e28588c7bbd29bff73631d042",
+    "verify.py": "066d947f82f2d5315207aa2b62e63be581265f11c63a72cbbe5f4fdf5c43adc2"
   },
   "conditional_observer_spectrum_recomputed_from_retained_transfer": true,
-  "elapsed_seconds": 141.50475029204972,
+  "elapsed_seconds": 89.132490885,
   "fresh_noise_rng_replayed": false,
   "golden_fourier_receipt_recomputed": true,
   "inventory": {
@@ -23,7 +24,8 @@
     "files": 527,
     "manifest_sha256": "c01616121d3cba371633f396b5b78c67c48a6dfa1e487004ea7f3ef165375915"
   },
-  "python": "3.13.7",
+  "platform_notes": [],
+  "python": "3.12.3",
   "recomputed_receipts": [
     {
       "comparison": "exact structures and rationals; floats rtol=1e-7 atol=1e-8",
@@ -114,6 +116,8 @@
       "standard_transfer_recomputed": false
     },
     "scale_ensemble": {
+      "angular_rows": 240,
+      "moment_relative_tolerance": 1e-09,
       "raw_terminal_arrays_rehashed": false,
       "scale_rows": 51,
       "terminal_digest_crosspins": 48
@@ -122,9 +126,9 @@
   "schema": "oph.observer-dynamics.verification.v1",
   "tests": {
     "failed": 0,
-    "passed": 202,
+    "passed": 297,
     "skipped": 0
   },
   "verified": true,
-  "verifier_sha256": "391a5b915f7b13750f48b47eecdf55ab7acfe3dd4ed392bc4640ac2e051eed09"
+  "verifier_sha256": "066d947f82f2d5315207aa2b62e63be581265f11c63a72cbbe5f4fdf5c43adc2"
 }
