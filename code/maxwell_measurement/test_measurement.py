@@ -167,6 +167,7 @@ def assert_shared_calibration_result(tmp_path,p,c,feasible,entry_point):
         assert process.returncode==0
     assert result["verdict"]=="SYNTHETIC_CONFORMANCE_ONLY" and result["raw_samples"]==3540
     assert result["physical_truth_certified"] is False
+    return result
 
 
 def independently_admitted_gains(cal,raw,model):
@@ -191,7 +192,11 @@ def test_shared_calibration_references(tmp_path,fixture,entry_point,feasible):
     assert independently_admitted_gains(cal,first["raw"],first["model_value"])==(1,1)
     assert independently_admitted_gains(cal,second["raw"],second["model_value"])==(second_gain,second_gain)
     assert (second_gain==1)==feasible
-    assert_shared_calibration_result(tmp_path,p,c,feasible,entry_point)
+    result=assert_shared_calibration_result(tmp_path,p,c,feasible,entry_point)
+    if feasible:
+        # References force gain 1, but their constraint cannot narrow the
+        # declared uncertainty used to report the retained raw baseline.
+        assert result["executions"][0]["decoded_slices"][0][0]==["0",str(Q(7,10)*(upper-1))]
 
 
 @pytest.mark.parametrize("entry_point",["api","cli"])
@@ -397,3 +402,190 @@ def test_cli_drafts_but_refuses_overwrite(tmp_path):
     first=subprocess.run(command,capture_output=True,text=True)
     assert first.returncode==0 and json.loads(path.read_bytes())["status"]=="DRAFT"
     assert subprocess.run(command,capture_output=True).returncode!=0
+
+
+def calibration_corner_oracle(gain, offset, error, samples):
+    """Enumerate boundary intersections; evaluate original inverse transfers.
+
+    A nonempty bounded feasible polygon (including a segment or singleton)
+    has a vertex at two independent boundary lines. The raw-error boundaries
+    use both raw endpoints without branching on the gain sign. Candidate
+    acceptance uses (model-offset)/gain, independently of the solver's
+    elimination and half-plane sign formulas.
+    """
+    from itertools import combinations
+
+    lines = [(Q(1), Q(0), gain.lo), (Q(1), Q(0), gain.hi),
+             (Q(0), Q(1), offset.lo), (Q(0), Q(1), offset.hi)]
+    for raw, model in samples:
+        lines.extend((raw + delta, Q(1), model) for delta in (-error, error))
+    for (a, b, c), (d, e, f) in combinations(lines, 2):
+        determinant = a*e - b*d
+        if determinant == 0:
+            continue
+        g = (c*e - b*f)/determinant
+        o = (a*f - c*d)/determinant
+        if not (gain.lo <= g <= gain.hi and offset.lo <= o <= offset.hi):
+            continue
+        if all(abs((model-o)/g - raw) <= error for raw, model in samples):
+            return True
+    return False
+
+
+@pytest.mark.parametrize("sign", [-1, 1])
+def test_common_calibration_matches_exhaustive_corner_oracle(sign):
+    from itertools import combinations_with_replacement, product
+
+    gain = verify.Interval(*sorted((Q(sign), Q(2*sign))))
+    offset = verify.Interval(-1, 1)
+    alphabet = [(Q(raw), Q(model)) for raw, model in product((-1, 0, 1), (-2, 0, 2))]
+    outcomes = set()
+    for error in (Q(0), Q(1, 2)):
+        for samples in combinations_with_replacement(alphabet, 3):
+            expected = calibration_corner_oracle(gain, offset, error, samples)
+            actual = verify.common_calibration(gain, offset, error, samples)
+            assert actual is expected, (sign, error, samples)
+            outcomes.add(expected)
+    assert outcomes == {False, True}
+
+
+def test_common_calibration_matches_seeded_corner_oracle():
+    import random
+
+    rng = random.Random(1033)
+    outcomes = set()
+    for case in range(160):
+        sign = rng.choice((-1, 1))
+        endpoints = sorted(Q(sign*rng.randrange(1, 13), 4) for _ in range(2))
+        gain = verify.Interval(endpoints[0], endpoints[0] if case % 5 == 0 else endpoints[1])
+        endpoints = sorted(Q(rng.randrange(-8, 9), 4) for _ in range(2))
+        offset = verify.Interval(endpoints[0], endpoints[0] if case % 7 == 0 else endpoints[1])
+        error = Q(rng.randrange(4), 8)
+        g = gain.lo + Q(rng.randrange(5), 4)*(gain.hi-gain.lo)
+        o = offset.lo + Q(rng.randrange(5), 4)*(offset.hi-offset.lo)
+        samples = []
+        for _ in range(rng.randrange(7)):
+            raw = Q(rng.randrange(-12, 13), 4)
+            model = (g*(raw + error*Q(rng.randrange(-2, 3), 2)) + o
+                     if case % 2 == 0 else Q(rng.randrange(-20, 21), 4))
+            samples.append((raw, model))
+        expected = calibration_corner_oracle(gain, offset, error, samples)
+        if case % 2 == 0:
+            assert expected, "constructed witness must satisfy the original transfer"
+        assert verify.common_calibration(gain, offset, error, samples) is expected, case
+        outcomes.add(expected)
+    assert outcomes == {False, True}
+
+
+@pytest.mark.parametrize("sign", [-1, 1])
+def test_common_calibration_pairwise_feasible_triple_is_jointly_impossible(sign):
+    from itertools import combinations
+
+    delta = Q(1, 10000)
+    gain = verify.Interval(*sorted((sign*(1-delta), sign*(1+delta))))
+    offset = verify.Interval(-delta, delta)
+    samples = [(Q(0), Q(0)), (Q(sign), Q(1)), (Q(2*sign), 2+delta)]
+    for pair in combinations(samples, 2):
+        assert calibration_corner_oracle(gain, offset, Q(0), pair)
+        assert verify.common_calibration(gain, offset, Q(0), pair)
+    assert not calibration_corner_oracle(gain, offset, Q(0), samples)
+    assert not verify.common_calibration(gain, offset, Q(0), samples)
+
+
+@pytest.mark.parametrize("sign", [-1, 1])
+def test_common_calibration_exact_raw_error_boundary(sign):
+    gain = verify.Interval(sign)
+    offset = verify.Interval(-1, 1)
+    samples = [(Q(0), Q(-5, 4)), (Q(sign), Q(1, 4))]
+    for error, expected in ((Q(1, 4), True), (Q(1, 4)-Q(1, 10**30), False)):
+        assert calibration_corner_oracle(gain, offset, error, samples) is expected
+        assert verify.common_calibration(gain, offset, error, samples) is expected
+
+
+@pytest.mark.parametrize("sign", [-1, 1])
+@pytest.mark.parametrize("shape",["line","corner","point"])
+def test_common_calibration_retains_degenerate_feasible_sets(sign,shape):
+    gain=verify.Interval(*sorted((Q(sign),Q(sign if shape=="point" else 2*sign))))
+    offset=verify.Interval(-1,1) if shape=="corner" else verify.Interval(0)
+    samples=([(Q(0),Q(-1)),(Q(sign),Q(0))] if shape=="corner"
+             else [(Q(0),Q(0))])
+    assert calibration_corner_oracle(gain,offset,Q(0),samples)
+    assert verify.common_calibration(gain,offset,Q(0),samples)
+
+
+@pytest.mark.parametrize("sign", [-1, 1])
+def test_preregistration_rejects_pairwise_feasible_reference_triple(fixture,sign):
+    from itertools import combinations
+
+    p,_=copy.deepcopy(fixture)
+    cal=p["channels"][0 if sign==1 else 3]["calibration"]
+    delta=Q(1,10000)
+    cal.update(gain=list(map(str,sorted((sign*(1-delta),sign*(1+delta))))),
+               offset=[str(-delta),str(delta)],raw_error="0")
+    references=[{**cal["reference_samples"][0],"id":f"triple-{i}",
+                 "raw":str(sign*raw),"model_value":str(model)}
+                for i,(raw,model) in enumerate(((0,0),(1,1),(2,2+delta)))]
+    edges=[tuple(ch["oriented_ports"]) for ch in contract.draft()["channels"][12:]]
+    for pair in combinations(references,2):
+        cal["reference_samples"]=list(pair)
+        verify.validate_prereg(p,edges)
+    cal["reference_samples"]=references
+    with pytest.raises(ValueError,match="calibration references have no common"):
+        verify.validate_prereg(p,edges)
+
+
+@pytest.mark.parametrize("feasible",[False,True])
+def test_shared_calibration_includes_references_with_capture(tmp_path,fixture,feasible):
+    p,c=copy.deepcopy(fixture)
+    cal=p["channels"][0]["calibration"]
+    upper=1+Q(1,10**9)
+    cal.update(gain=["1",str(upper)],raw_error="0")
+    capture_gain=Q(1) if feasible else upper
+    for row in c["controls"]+[row for execution in c["executions"] for row in execution["events"]]:
+        for sample in row["samples"]:
+            if sample["channel"]=="slot0":
+                sample["raw"]=str(Q(sample["raw"])/capture_gain)
+    ref=cal["reference_samples"][0]
+    assert independently_admitted_gains(cal,ref["raw"],ref["model_value"])==(1,1)
+    raw=c["controls"][0]["samples"][0]["raw"]
+    assert independently_admitted_gains(cal,raw,Q(-1,2))==(capture_gain,capture_gain)
+    assert_shared_calibration_result(tmp_path,p,c,feasible,"api")
+
+
+@pytest.mark.parametrize("feasible",[False,True])
+def test_shared_calibration_includes_controls_with_episode(tmp_path,fixture,feasible):
+    p,c=copy.deepcopy(fixture)
+    cal=p["channels"][0]["calibration"]
+    epsilon=Q(1,10**9); upper=1+epsilon; error=3*epsilon
+    cal.update(gain=["1",str(upper)],raw_error=str(error))
+    control=c["controls"][0]["samples"][0]
+    control["raw"]=str(Q(1,5)+error)
+    late=c["executions"][1]["events"][583]["samples"][0]
+    late_gain=Q(1) if feasible else upper
+    late["raw"]=str(Q(7,10)/late_gain+(error if feasible else -error))
+    assert independently_admitted_gains(cal,control["raw"],Q(-1,2))==(1,1)
+    assert independently_admitted_gains(cal,late["raw"],0)==(late_gain,late_gain)
+    assert_shared_calibration_result(tmp_path,p,c,feasible,"api")
+
+
+def test_shared_calibration_is_fresh_for_each_verification(tmp_path,fixture):
+    upper=1+Q(1,10**9)
+    for admitted_gain in (Q(1),upper,Q(1)):
+        p,c=copy.deepcopy(fixture)
+        cal=p["channels"][0]["calibration"]
+        cal.update(gain=["1",str(upper)],raw_error="0")
+        for ref in cal["reference_samples"]:
+            ref["raw"]=str(Q(ref["raw"])/admitted_gain)
+        for row in c["controls"]+[row for execution in c["executions"] for row in execution["events"]]:
+            for sample in row["samples"]:
+                if sample["channel"]=="slot0":
+                    sample["raw"]=str(Q(sample["raw"])/admitted_gain)
+        assert_shared_calibration_result(tmp_path,p,c,True,"api")
+
+
+@pytest.mark.parametrize("gain,error",[("zero",Q(0)),("crossing",Q(0)),("positive",Q(-1))])
+def test_common_calibration_rejects_invalid_solver_domain(gain,error):
+    box={"zero":verify.Interval(0,1),"crossing":verify.Interval(-1,1),
+         "positive":verify.Interval(1,2)}[gain]
+    with pytest.raises(ValueError,match="calibration"):
+        verify.common_calibration(box,verify.Interval(0),error,[])
