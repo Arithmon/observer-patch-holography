@@ -1,5 +1,5 @@
 {
-  "controls_sha256": "b51dec46d5ac9c3fd87e56ca9f0cdf5e0c9f20b4172f3dd0ba0f92ea43e19b44",
+  "controls_sha256": "3a97a1ae7aa3688cc94c91a87f89315a08167603be6eb31f9cb4e476a4529807",
   "cost_exclusions": ["controller computation and metadata","publication instrument","physical isolation","inactive support","evidence storage"],
   "dynamic_scalar_writes": "pair_means_only",
   "error_model": {
@@ -37,7 +37,7 @@
     "code/source_read_acceptance/__init__.py": "3eb3f3c945ecf6b2f4900f915055b4c2bb13d945a0fc1e5fedfa0d0351ee9368",
     "code/source_read_acceptance/codec.py": "553a02669e2dc85fdf1dbbc9d34a50b0ded8fe71d60df446c37d38306d826cf6",
     "code/source_routing/support_w12_l3.json": "57ec958cb0c26f1614df67b88549bf193213ec3997863d818e462befdeb0f5a4",
-    "docs/AXIOM_REFERENCE.md": "78b803601945f6629816aa2715186876e0020ae67646c05b4b0e2ca44919db88"
+    "docs/AXIOM_REFERENCE.md": "b4bbc4b702ea1ded22fd81acbe4ed54ed3f95309703efe868cf59dd1a8789345"
   },
   "preparation_writes_per_history": 14,
   "scalar_means_replayed": 78255,

@@ -379,7 +379,7 @@
     "code/source_read_acceptance/__init__.py": "3eb3f3c945ecf6b2f4900f915055b4c2bb13d945a0fc1e5fedfa0d0351ee9368",
     "code/source_read_acceptance/codec.py": "553a02669e2dc85fdf1dbbc9d34a50b0ded8fe71d60df446c37d38306d826cf6",
     "code/source_routing/support_w12_l3.json": "57ec958cb0c26f1614df67b88549bf193213ec3997863d818e462befdeb0f5a4",
-    "docs/AXIOM_REFERENCE.md": "78b803601945f6629816aa2715186876e0020ae67646c05b4b0e2ca44919db88"
+    "docs/AXIOM_REFERENCE.md": "b4bbc4b702ea1ded22fd81acbe4ed54ed3f95309703efe868cf59dd1a8789345"
   },
   "reuse": {
     "all_histories_sha256": "4a71b693d899ef279da78aa5263ba3a281eabc30f41e0f5b2b6657351737be3e",

@@ -1,6 +1,6 @@
 {
   "comparator_calls_per_history": "paired_steps + 1",
-  "controls_sha256": "2dee998d3113f883f0fbf0ff02f74cd113f9df7632adf58b355f7d940c166748",
+  "controls_sha256": "99590d18f8a552b28b187386a385bd16cdc29aa0ddfce9825275cc8c72c58595",
   "exclusions": ["physical isolation","inactive support","evidence storage","immutable controller code"],
   "histories_replayed": 174762,
   "m1_derived": false,
@@ -246,7 +246,7 @@
     "code/source_read_acceptance/codec.py": "553a02669e2dc85fdf1dbbc9d34a50b0ded8fe71d60df446c37d38306d826cf6",
     "code/source_read_acceptance/verify.py": "c0dca90bdc1630726c75348a1347499fa74c53048e0f39a775d539a63eaf01d1",
     "code/source_routing/support_w12_l3.json": "57ec958cb0c26f1614df67b88549bf193213ec3997863d818e462befdeb0f5a4",
-    "docs/AXIOM_REFERENCE.md": "78b803601945f6629816aa2715186876e0020ae67646c05b4b0e2ca44919db88"
+    "docs/AXIOM_REFERENCE.md": "b4bbc4b702ea1ded22fd81acbe4ed54ed3f95309703efe868cf59dd1a8789345"
   },
   "preparation_writes_per_history": 10,
   "publication_instrument": "supplied logical controller, not a scalar-mean construction",
