@@ -21,6 +21,13 @@ mechanisms or proving another abstract convergence result. Recovery, exact
 agreement, boundary uniqueness and physical law selection remain separate
 obligations; the existing source and scalar evidence is retained.
 
+The [dual description](AGREEMENT_RESEARCH_FOUNDATIONS.md#one-structure-complete-history-and-internal-computation)
+concerns one structure: a complete consistent history whose internal local
+dependencies constitute its computation. Construct the same-history record
+and intervention maps; distinguish solver scheduling from observer-local time.
+This interpretation needs no external host or global clock and makes no new
+endpoint-convergence claim.
+
 **Programme decision, 11 October:** organize research around what one repair
 process must supply. The [work ownership](#work-ownership-and-claim-accounting)
 below assigns construction, physical tests and audits in parallel. Paper
@@ -213,9 +220,19 @@ scalar matrix relabelled as geometry, gauge current and time. Its shared
 states, operations, retained records and reduction maps must be explicit.
 Independent fixtures placed beside one another do not establish this connection.
 
+**Clock convention.** The target is observer-local clock readouts and compatible
+comparisons tied to the same event history, without a preferred universal clock
+or common instantaneous slice. A shared time parameter in a finite benchmark
+is a supplied model choice. For example, the
+[scalar action clock](../paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex) assigns
+one duration to a whole configuration layer; extending it to independent local
+clocks requires further work. The
+[count clock](../paper/tex_fragments/SOURCE_COUNT_CLOCK.tex) instead reads
+proper-time ratios under its stated order/count-limit and ancestry assumptions.
+
 | Existing argument | What the same repair process must supply | Present connection and limitation |
 | --- | --- | --- |
-| Rank-three carrier and slow band: [microphysics](../paper/screen_microphysics_and_observer_synchronization.tex), `thm:echosahedral-source-selector-microphysics` and `thm:a5-register-commutant` | Its own response/current records recover the declared carrier operator, the selected slow projector and the Gram geometry. State the regime and normalization of that readout. | At uniform binary equilibrium, the native recorded model reconstructs `L_ico`, with `4 P_slow=G` of rank three, and the rate-independent relation `κ γ_s/ν_t=(5−sqrt(5))/6`. The golden scalar is a separate supplied field construction; its eight-site generator is a different object. Their microscopic-to-field reduction and common clock need an explicit map. Rank three alone is not a bulk dimension or a physical generation count. |
+| Rank-three carrier and slow band: [microphysics](../paper/screen_microphysics_and_observer_synchronization.tex), `thm:echosahedral-source-selector-microphysics` and `thm:a5-register-commutant` | Its own response/current records recover the declared carrier operator, the selected slow projector and the Gram geometry. State the regime and normalization of that readout. | At uniform binary equilibrium, the native recorded model reconstructs `L_ico`, with `4 P_slow=G` of rank three, and the rate-independent relation `κ γ_s/ν_t=(5−sqrt(5))/6`. The golden scalar is a separate supplied field construction; its eight-site generator is a different object. Their microscopic-to-field reduction and compatible local clock readouts need explicit maps. Rank three alone is not a bulk dimension or a physical generation count. |
 | Finite gauge Lie algebra: [gauge paper](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex), `thm:current-algebra` | A source-bound injective twelve-port reversible response, compact commutator closure, and A5-equivariance with the twelve-port permutation module, realized by endogenous inner proper-carrier transport on that same response. Reuse the classification once these inputs are realized. | The existing six-level response supplies the compiler's controls. Choosing those controls does not derive a gauge-field/matter action from scalar repair or show that autonomous events select the response. Global form, physical couplings and refinement retain their separate premises. |
 | Operational clocks: [count clock](../paper/tex_fragments/SOURCE_COUNT_CLOCK.tex), [scalar action clock](../paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex), and [curl/Stone comparison](../Lean/Screen/CurlStoneClockBridge.lean) | The same retained history and accessible records instantiate a clock theorem's hypotheses; the resulting time must intertwine the candidate's observable evolution. Charge readout, transport and service costs. | Count clocks require controlled order/count limits and complete ancestry. The scalar clock uses a supplied action and nondegenerate layer data. The curl comparison has explicit duration/frequency calibration premises. None identifies canonical model time with processor pulse count by notation. |
 
@@ -1419,8 +1436,9 @@ Y_ε=A+εA²
    =m²(1+εm²)I+(1+2εm²)L+εL².
 ```
 
-A common clock rescaling multiplies Y by γ>0. Refitting a canonical mass and
-speed gives an affine function of a spatial eigenvalue μ; the alternative
+A common clock rescaling within this mode comparison multiplies Y by γ>0.
+Refitting a canonical mass and speed gives an affine function of a spatial
+eigenvalue μ; the alternative
 has curvature γε. For three equally spaced source modes with spacing d,
 
 ```text
@@ -2821,7 +2839,7 @@ law E and the established OPH constructions above remain active inputs.
 | **Direct weak-field or entropy/area attachments** | Explicit comparisons and regional-response calculations. | Tested attachments failed atomic-clock or weak-field checks; a one-sided area proxy failed a common stationarity coefficient across independent perturbations. This rejects those attachments, not every possible geometry or area map. |
 | **Generic phase loops, cubic grids and scalar toy worlds** | Agreement with nonzero holonomy, finite positive equilibria, greedy traps and residual motion. | They lacked a demonstrated map preserving the full native twelve-port contract. Loop frustration can be static; phase covariance alone did not produce physical gauge dynamics. |
 | **Exploratory uphill repair as the missing microscopic law** | On restricted odd Z3 cycles, any positive exploration restores almost-sure agreement, with an inverse-probability waiting cost. | It resolves a trap of that move menu. Native repair has a different admissible law and can increase some local mismatches while decreasing its actual potential. No P-to-exploration relation was derived. |
-| **Separate record repair plus independently evolving residuals** | Agreement could coexist with persistent distinctions and activity; conditional diffusive limits were constructed. | Autonomous component marginals did not establish reciprocal coupling, a common physical clock or relativistic propagation. The current candidate tests full instruments and records together. |
+| **Separate record repair plus independently evolving residuals** | Agreement could coexist with persistent distinctions and activity; conditional diffusive limits were constructed. | Autonomous component marginals did not establish reciprocal coupling, compatible local clock/response maps or relativistic propagation. The current candidate tests full instruments and records together. |
 | **Identify dynamics by matching a mean, channel or stationary histogram** | Exact controls produced identical means with different histories, and identical forgotten channels with different retained instruments. | These summaries cannot select the physical law. Ordered events, interventions, record preservation and same-source maps are required. |
 | **Treat an analogy or reported measurement as the missing proof** | Chen's bounded Genesis moment formula separates support at most k from exactly k+1 under distinct nonzero nodes and weights; loop tests motivated useful calculations. | Universal overflow rejection failed finite-field controls. Shared algebraic form, a unit mode or a reported power law does not select physical dynamics. Supplied Prism measurements and broad software claims were not independently reproduced. |
 
