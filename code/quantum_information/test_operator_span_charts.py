@@ -1,5 +1,7 @@
 """Original-entry controls for numerical charts of exact operator spans."""
 
+from fractions import Fraction
+
 import numpy as np
 import pytest
 import sympy as sp
@@ -147,6 +149,66 @@ def test_representable_tiny_positive_action_is_not_a_zero_or_refusal(exponent):
     assert separation_modulus(basis, np.array([0., 1.])) == tiny
 
 
+def _singleton_squared_from_real_entries(matrix, omega):
+    rows = [[Fraction(float(x)) for x in row] for row in matrix]
+    vector = [Fraction(float(x)) for x in omega]
+    image = [sum(x*y for x, y in zip(row, vector)) for row in rows]
+    return sum(x*x for x in image)/sum(x*x for row in rows for x in row)
+
+
+@pytest.mark.parametrize("lower", (0, 1, 2))
+@pytest.mark.parametrize("side", ("below", "above"))
+def test_singleton_rounding_near_subnormal_midpoints(lower, side):
+    tiny = np.nextafter(0., 1.)
+    t = Fraction(float(tiny))
+    unit = 1. if side == "below" else 1.-2.**-52
+    a = np.zeros((4, 4))
+    a[0] = [unit, -unit, 1., -1.]
+    a[1, 0] = (4*lower+2)*tiny
+    omega = np.full(4, .5)  # exactly normalized, including in rational arithmetic
+    squared = _singleton_squared_from_real_entries(a, omega)
+    midpoint = (Fraction(lower)+Fraction(1, 2))*t
+    # Locate the exact supplied-input quotient between adjacent floats and
+    # on the specified side of their midpoint, without evaluating its root.
+    assert (lower*t)**2 < squared < ((lower+1)*t)**2
+    assert (squared < midpoint**2) == (side == "below")
+    assert squared != midpoint**2
+    expected = (lower if side == "below" else lower+1)*tiny
+    if expected == 0:
+        with pytest.raises(ValueError, match="underflow"):
+            separation_modulus([a], omega)
+    else:
+        assert separation_modulus([a], omega) == expected
+
+
+@pytest.mark.parametrize("multiplier,units", ((1, 0), (3, 2), (5, 2)))
+def test_exact_subnormal_midpoints_obey_ties_to_even(multiplier, units):
+    tiny = np.nextafter(0., 1.)
+    a = np.zeros((4, 4))
+    a[0, 0] = a[1, 1] = a[1, 2] = a[2, 2] = 1.
+    # Its norm differs from one by far less than the API's declared 1e-12
+    # allowance. The exact oracle keeps the supplied tiny component intact.
+    omega = np.array([multiplier*tiny, 0., 0., 1.])
+    squared = _singleton_squared_from_real_entries(a, omega)
+    assert squared == (multiplier*Fraction(float(tiny))/2)**2
+    if units == 0:
+        with pytest.raises(ValueError, match="underflow"):
+            separation_modulus([a], omega)
+    else:
+        assert separation_modulus([a], omega) == units*tiny
+
+
+@pytest.mark.parametrize("exponent", (-1000, -1074))
+def test_multiple_exact_orthogonal_tiny_actions_remain_positive(exponent):
+    tiny = 2.**exponent
+    a = np.diag([tiny, 1., 0.])
+    b = np.array([[0., 0., 0.], [2*tiny, 0., 0.], [0., 0., 1.]])
+    # Disjoint matrix entries give HS orthogonality. Their e0 images are
+    # tiny*e0 and 2*tiny*e1, so the smaller squared modulus is tiny^2/(1+tiny^2).
+    # Its exact root rounds to tiny at both specified scales.
+    assert separation_modulus([a, b], np.array([1., 0., 0.])) == tiny
+
+
 @pytest.mark.parametrize("tiny", (0., 2.**-1000))
 def test_nested_python_lists_reach_exact_small_action_resolution(tiny):
     assert separation_modulus([[[1., 0.], [0., tiny]]], [0., 1.]) == tiny
@@ -156,6 +218,15 @@ def test_unrepresentable_operator_direction_requires_explicit_refusal():
     basis = [np.diag([2.**1000, 2.**-1000])]
     # Its second normalized entry is nonzero but smaller than binary64 can
     # represent. A chart dropping it would silently alter the supplied span.
+    with pytest.raises(ValueError, match="underflow|unresolved"):
+        orthonormal_operator_basis(basis)
+
+
+def test_lost_component_cannot_hide_in_an_occupied_coordinate_row():
+    basis = [np.array([[2.**-1000, 2.**1000], [0., 0.]]), np.eye(2)]
+    # The first normalized component underflows, but the identity keeps its
+    # coordinate row occupied. A row-support guard alone would silently return
+    # span{I,E01}, losing the supplied nonzero diagonal imbalance.
     with pytest.raises(ValueError, match="underflow|unresolved"):
         orthonormal_operator_basis(basis)
 

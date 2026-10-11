@@ -32,8 +32,8 @@ def orthonormal_operator_basis(basis):
     """HS-orthonormalize the supplied independent binary64 operator span.
 
     A well-conditioned floating chart is cheap. Ill-conditioned presentations
-    are preconditioned over the original exact entries, before QR can discard
-    their independent directions. A chart losing a nonzero component raises.
+    are preconditioned over the original exact entries, before roundoff can discard
+    their independent directions. Unresolved normalization or conversion raises.
     """
     if not isinstance(basis, (list, tuple)) or not basis:
         raise ValueError("nonempty operator basis required")
@@ -43,27 +43,11 @@ def orthonormal_operator_basis(basis):
         raise ValueError("basis operators must act on one space")
     if len(basis) > d*d:
         raise ValueError("operator basis is dependent")
-    from .operator_spans import unit_columns
+    from .operator_spans import numerical_chart
     columns = np.column_stack([b.reshape(-1) for b in matrices])
-    try:
-        columns = unit_columns(columns)
-    except ValueError:
-        columns = None
-    # Bound conditioning amplification of binary64 roundoff. This is an
-    # accuracy gate, not a rank cutoff: difficult presentations use exact
-    # source arithmetic below rather than declaring small directions absent.
-    if columns is not None:
-        singular = np.linalg.svd(columns, compute_uv=False)
-    use_exact = columns is None or singular[-1]*32 < singular[0]
-    if not use_exact:
-        # A normalized singleton needs no QR. Householder subtraction can
-        # erase its small leading component even though its condition is one.
-        q = columns if len(basis) == 1 else np.linalg.qr(columns, mode="reduced")[0]
-        use_exact = np.any(np.any(columns != 0, axis=1) & ~np.any(q != 0, axis=1))
-    if use_exact:
+    q = numerical_chart(columns)
+    if q is None:
         from .operator_spans import exact_columns, numerical_basis
-        # Exact orthogonal directions need only scalar normalization. A second
-        # floating QR would add cancellation after the source was resolved.
         return numerical_basis(exact_columns(matrices), d)
     return [q[:, i].reshape(d, d) for i in range(len(basis))]
 
@@ -126,7 +110,7 @@ def separation_modulus(basis, omega):
     # An absolute chart-error scale also detects an entirely rounded kernel.
     floor = 64*np.finfo(float).eps*max(action.shape)
     if singular[-1] <= floor:
-        # QR and action roundoff cannot certify a true zero. Resolve a kernel
+        # Chart and action roundoff cannot certify a true zero. Resolve a kernel
         # from the original entries, without turning small positives into zero.
         from .operator_spans import small_separation_modulus
         return small_separation_modulus([operator(b) for b in basis], raw)
@@ -183,7 +167,7 @@ class FiniteAlgebra:
                 if self.distance(a @ b) > ALGEBRA_ATOL:
                     raise ValueError("algebra must be closed under multiplication")
         self._q.setflags(write=False)
-        # QR is a numerical chart, not evidence of exact linear dependence.
+        # A numerical chart is not evidence of exact linear dependence.
         # Keep the supplied span separately for conservation decisions.
         for b in supplied:
             b.setflags(write=False)
