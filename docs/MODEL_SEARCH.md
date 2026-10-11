@@ -3,6 +3,12 @@
 Research status: **11 October 2026**. Source reference:
 `1e576926880039410a70bce65b7e15f43c2ab0a3`.
 
+**Programme decision, 11 October:** organize research around what one repair
+process must supply. The [work ownership](#work-ownership-and-claim-accounting)
+below assigns construction, physical tests and audits in parallel. Paper
+releases and broad prose restructuring are subject to the
+[model milestone](#research-programme-and-paper-release-hold).
+
 **Current approach:** join the existing weighted repair stiffness to the
 existing scalar theory through its **minimal canonical inertial completion**.
 Use the same local capacity for repair and inertia; test that identification
@@ -174,7 +180,92 @@ parameters, quotient, readout and memory budget. Label each as an axiom input,
 derived object, candidate hypothesis, calibration or target-exposed choice.
 Adaptation is allowed if its state and update belong to the same process.
 
-The next work is concentrated on a connected set of interfaces:
+### Work ownership and claim accounting
+
+The programme targets one common microscopic process whose constructed
+objects satisfy the premises of the physical conclusions being claimed.
+Separate conditional theorems can hold on different states, scales or laws;
+their validity alone does not construct that common realization. The research
+question is which inputs the repair law supplies, which it leaves free, and
+which observable can distinguish the resulting candidate.
+
+| Owner | Responsibility and bounded result |
+| --- | --- |
+| [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026) | Common-model construction umbrella: one law, compatible theorem attachments, explicit remaining assumptions and tested histories. |
+| [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076) | Pin the minimal law and input inventory; test kinetic alternatives and identify what the declared premises select. |
+| [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077) | Complete one source-coded preparation, evolution and retained-record history with a shared error and resource budget. |
+| [#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025) | Develop physical tests alongside construction: observable, interpretation, calibration, baseline, uncertainty, exposure and rejection rule. |
+| [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033) | Audit and repair existing proofs, code, evidence and scientific wording, including effects on the candidate. |
+
+These are parallel responsibilities. A link to another issue is not a hard
+dependency; declare a dependency only when a concrete required output is
+absent. The two construction tasks use a pinned conditional candidate while
+its physical selection is examined. Extend that family towards continuum
+control, interactions and joint matter/geometry only through a specific
+missing interface and a bounded test. The M01–M12 and RE groups are a
+scientific map, not a mandate to create an issue for every row.
+
+No standalone finite-theorem campaign, theorem-count target or generic
+formalization quota belongs to this programme. A proof is useful when it
+repairs a defect or discharges a necessary model premise. Try existing
+theorems and simpler constructions first. Any added mathematical structure
+must resolve a demonstrated obstruction and enter the candidate's total
+assumption and resource budget; renaming an input does not derive it.
+
+Each investigation declares its calculation, controls, acceptance/rejection
+rule and local compute budget. Close a bounded task with a supported result,
+a candidate rejection, or a precise obstruction. An obstruction changes the
+next experiment; it does not establish or refute every OPH model. There is no
+calendar deadline for declaring nature solved and no automatic promotion
+from an issue closure to physical completion. Large runs and cloud spending
+require their own authorization.
+
+Use the existing records together:
+
+- **GitHub issues** own live work, dependencies and concise decisions. Keep
+  exploratory logs and unapproved private contributions local.
+- **This document and the [premise map](MODEL_PREMISE_MAP.md)** own candidate
+  status and model-to-theorem connections. Edit
+  [`tracking/model_theorem_map.json`](../tracking/model_theorem_map.json) and
+  regenerate the map; do not create a competing claim registry.
+- **The [claim registry](../claims/claim_registry.yaml) and scientific
+  registers** own established claim identities, scope and evidence. Preserve
+  frozen prediction contracts and historical classifications.
+
+Every claimed connection records the candidate revision, exact theorem/claim
+and premise references, matching state/domain/refinement, what was
+constructed, all retained or added assumptions, evidence and countercontrols,
+and the condition for closure or rejection. State mathematical construction,
+physical selection and empirical support separately. The reference checker
+does not certify semantic premise discharge or exhaustive antecedent coverage.
+
+### Research programme and paper-release hold
+
+**Paper releases and broad restructuring of the prose papers are on hold.**
+Keep model work in its issues, this status document and the premise map while
+the common construction takes shape. Repeatedly reorganizing the papers
+around component results would obscure which physical premises the same
+process actually supplies.
+
+Audits, necessary correctness fixes and dated errata continue, including
+affected paper passages and rebuilt review PDFs where required. Existing
+releases and frozen evidence retain their history. Preview builds and CI
+continue; passing them does not lift the hold. A necessary corrective release
+must identify its correction scope and receive an explicit maintainer
+publication decision, without adding a broad model narrative.
+
+Reconsider the hold at a recorded maintainer review when one explicit
+candidate has a complete tested finite history, supplies a substantial
+connected set of existing theorem premises on the same family, and exposes
+its remaining physical assumptions with an error and resource account. A
+meaningful model milestone is sufficient; completing every physical sector
+is not required. The review states which claims warrant a paper revision and
+whether release work may resume. The resulting exposition should follow
+state and repair law → constructed objects → applicable theorems → physical
+consequences → tests.
+
+The connected interfaces below guide bounded tasks; only the issue owners
+above assign active work:
 
 | Next question | Smallest proposed move | Decisive completion or rejection condition |
 | --- | --- | --- |
@@ -1817,9 +1908,9 @@ analogies or treated as if the results did not exist.
 The [claim registry](../claims/claim_registry.yaml) and linked proofs remain
 authoritative. This is a research ledger, not a new theorem registration.
 [#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025)
-tracks selection of a physical test;
+tracks physical test design alongside construction;
 [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026)
-tracks its common model, derivation and eligible comparison. These finite
+tracks the common model and its theorem attachments. These finite
 results do not establish their physical completion. Existing seen-data
 comparisons retain the [postdiction ledger](POSTDICTION_LEDGER.md) and
 [frozen-prediction rules](FROZEN_PREDICTION_LADDER.md).

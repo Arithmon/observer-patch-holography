@@ -354,6 +354,12 @@ Einstein-branch axiom check. `Lean/README.md` documents the layout;
 
 ## Paper review and publication builds
 
+Paper releases and broad prose restructuring are on hold under the
+[model research policy](docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold).
+Correctness fixes, errata, review builds and their validation continue.
+The publication commands below require a maintainer decision to lift the
+hold for a model milestone or authorize a scoped corrective release.
+
 With the pinned publication tools above installed, rebuild every registered
 paper, including every extra and cosmology source, the warnings gate, the
 local review manifest, and the reader-facing book from the repository root:
@@ -370,7 +376,8 @@ identifier from an existing Git tag. It does not publish or replace that tag.
 The CI build uses this mode so draft PDFs can be committed and inspected
 without a version bump.
 
-After review, prepare a publication candidate with a new release identifier:
+After that decision and review, prepare a publication candidate with a
+distinct release identifier:
 
 ```bash
 python3 tools/bump_paper_release.py

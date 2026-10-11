@@ -19,16 +19,37 @@ d’Einstein. Chaque construction précise ses hypothèses. Établir une
 réalisation physique commune exige des mesures qui distinguent les modèles
 proposés.
 
+## Priorité de recherche : un même processus de réparation
+
+La priorité est une loi microscopique explicite dont l’évolution fournit les
+entrées des théorèmes existants dans un même modèle. Des résultats conditionnels
+peuvent être corrects sans que leurs prémisses physiques soient réalisées
+ensemble. Nous partons de la construction compatible la plus simple,
+réutilisons les résultats démontrés et confrontons chaque hypothèse ajoutée
+à des alternatives.
+
+Le [suivi des modèles](docs/MODEL_SEARCH.md), la
+[carte des prémisses](docs/MODEL_PREMISE_MAP.md) et les
+[tâches de recherche](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
+décrivent ce travail. Un lien testé ou un candidat rejeté constitue un progrès ;
+le nombre de théorèmes ne mesure pas l’achèvement physique.
+
+Les publications d’articles et leur restructuration générale sont suspendues
+jusqu’à une étape cohérente de construction du modèle. Audits, corrections
+et vérifications de reproductibilité continuent selon la
+[politique de recherche](docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold).
+
 ## Commencer ici
 
 | Pour explorer… | Commencer par… |
 | --- | --- |
-| L’argument physique principal | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
+| Le modèle en construction et ses liens physiques à établir | [Suivi des modèles](docs/MODEL_SEARCH.md) |
+| L’argument physique existant | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
 | Les preuves et les calculs reproductibles | [Bibliothèque Lean](Lean/) et [guide de reproduction](REPRODUCE.md) |
 | Les travaux associés sur les machines apprenantes | [Cadence](https://floatingpragma.io/cadence/) et [démonstrations interactives](https://floatingpragma.io/demos/) |
 | Les explications pour le grand public | [Blog Pragma Research](https://blog.floatingpragma.io/) |
 
-## Une seule architecture, toute la physique
+## Fondements mathématiques
 
 Le programme de recherche relie ces domaines de la physique par une même
 architecture d’observateurs, avec des hypothèses distinctes pour chaque résultat.
@@ -86,8 +107,8 @@ associé fournit une dynamique exécutable des observateurs et les éléments
 de vérification conservés.
 
 La [référence des axiomes](docs/AXIOM_REFERENCE.md) énonce les trois axiomes
-fondamentaux ; le [registre des prémisses](docs/registers/PREMISE_REGISTER_V3.md) et le
-[registre des résultats](claims/claim_registry.yaml) consignent les prémisses
+fondamentaux ; le [registre des prémisses](docs/registers/PREMISE_REGISTER_V3.md) et la
+[carte des prémisses](docs/MODEL_PREMISE_MAP.md) consignent les prémisses
 supplémentaires et les hypothèses propres à chaque résultat, y compris les
 identifications physiques et les données empiriques.
 Le [registre des postdictions](docs/POSTDICTION_LEDGER.md)
@@ -143,13 +164,15 @@ de chaque famille de preuves.
 
 ## Contribuer
 
-OPH accueille les preuves, contre-exemples, simulations, revues indépendantes
-et explications lisibles. Commencez par le [guide de reproduction](REPRODUCE.md)
-et le [registre de sélection](docs/registers/SELECTION_LEDGER.md), qui énonce les
-prémisses et les frontières scientifiques utiles aux contributions. Un article
-TeX va dans [`extra/`](extra/). Une note de recherche en Markdown va dans
-[`docs/research/`](docs/research/) et nomme le module de code qui la vérifie ;
-`extra/` ne contient aucune note en Markdown.
+Une contribution corrige un défaut existant ou résout une incertitude précise
+du modèle commun et de ses tests. Réutilisez les résultats démontrés ; ajoutez
+une preuve lorsqu’une obligation du modèle l’exige. L’expansion autonome des
+théorèmes finis et les objectifs de comptage sont hors programme. Commencez par
+les [tâches de recherche](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
+et le [guide de reproduction](REPRODUCE.md). Les journaux exploratoires restent
+locaux ; les décisions publiques indiquent leurs hypothèses et leurs preuves.
+Les notes vérifiées vont dans [`docs/research/`](docs/research/), et les articles
+respectent la suspension décrite ci-dessus.
 
 ## Des parcelles d’observateur aux machines apprenantes
 

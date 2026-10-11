@@ -2,6 +2,12 @@
 
 This directory is the canonical publication surface for the main OPH papers. Each paper is kept as a TeX source beside its built PDF.
 
+**Paper releases and broad prose restructuring are on hold** under the
+[model research programme](../docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold).
+Audits, correctness fixes, dated errata and review builds continue. The
+hold is reconsidered after a coherent, tested common-model milestone;
+preview CI does not authorize publication.
+
 For a first reading, begin with the flagship technical paper,
 [*Finite Observer Consensus as a Reconstruction Principle*](../flagship/from_observer_consensus_to_standard_physics.pdf), then
 *Observers Are All You Need* for the observer interpretation and the two
@@ -49,7 +55,8 @@ python3 tools/refresh_paper_release.py --preview
 
 This rebuilds review PDFs and their manifest without requiring a version bump,
 including when the visible identifier belongs to an existing release. After
-manual review, run `python3 tools/bump_paper_release.py` followed by
+an explicit maintainer decision under the release policy and manual review,
+run `python3 tools/bump_paper_release.py` followed by
 `python3 tools/refresh_paper_release.py --publication` to prepare a candidate
 under a new release identifier. Publication mode rebuilds the canonical book
 and binds its bytes to that identifier in the same manifest.

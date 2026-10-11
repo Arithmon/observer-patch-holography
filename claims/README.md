@@ -16,6 +16,14 @@ should parse it as JSON.
 
 The registry is part of the working process:
 
+- Model construction uses the existing claim identities and premises through
+  [MODEL_SEARCH.md](../docs/MODEL_SEARCH.md) and the generated
+  [model–theorem premise map](../docs/MODEL_PREMISE_MAP.md). Candidate hypotheses
+  and issue completion do not change a registered claim's scientific status.
+  Record exact same-model attachments and retained inputs there; change this
+  registry when the established claim or its evidence changes. Paper releases
+  follow the model programme's hold; necessary scientific corrections remain
+  in scope throughout it.
 - `claims/axiom_registry.yaml` records the normative three-axiom identities,
   interfaces, exclusions, and scientific realization boundaries.
 - `claims/claim_registry.yaml` records top-level claim IDs, owner papers, claim tiers, imported

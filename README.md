@@ -17,16 +17,36 @@ known forces, with a conditional route to Einstein dynamics. Each construction
 states the assumptions it consumes. Establishing a common physical
 realization requires measurements that distinguish the proposed models.
 
+## Research focus: one repair process
+
+The research priority is an explicit microscopic repair law whose evolution
+supplies the inputs of the existing theorems on one common model. Separate
+conditional results can be correct without their physical premises being
+realized together. We start with the simplest compatible construction, reuse
+proved results, and test each added hypothesis against alternatives.
+
+Follow the [model search](docs/MODEL_SEARCH.md), its
+[model–theorem premise map](docs/MODEL_PREMISE_MAP.md), and the
+[research issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics).
+Progress means a tested connection or a rejected candidate; theorem counts
+do not measure physical completion.
+
+Paper releases and broad prose restructuring are on hold until a coherent
+model milestone supports them. Audits, correctness fixes and reproducibility
+checks continue. The [research policy](docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold)
+states the milestone and the correction exception.
+
 ## Start here
 
 | To explore… | Start with… |
 | --- | --- |
-| The main physics argument | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
+| The model being constructed and its open physical connections | [Model search](docs/MODEL_SEARCH.md) |
+| The existing physics argument | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
 | The proofs and reproducible calculations | [Lean library](Lean/) and [reproduction guide](REPRODUCE.md) |
 | The related work on learning machines | [Cadence](https://floatingpragma.io/cadence/) and [interactive demos](https://floatingpragma.io/demos/) |
 | Explanations for a general audience | [Pragma Research blog](https://blog.floatingpragma.io/) |
 
-## One Architecture, All Of Physics
+## Mathematical foundations
 
 The research program connects these parts of physics through one observer
 architecture, with separate assumptions stated for each result.
@@ -80,7 +100,7 @@ executable observer dynamics and retained evidence.
 
 The [axiom reference](docs/AXIOM_REFERENCE.md) states the three core axioms;
 the [premise register](docs/registers/PREMISE_REGISTER_V3.md) and
-[claim registry](claims/claim_registry.yaml) record additional premises and
+[model–theorem premise map](docs/MODEL_PREMISE_MAP.md) record additional premises and
 result-specific assumptions, including physical identifications and empirical
 inputs.
 The [postdiction ledger](docs/POSTDICTION_LEDGER.md) records comparisons with
@@ -135,12 +155,14 @@ evidence family.
 
 ## Contribute
 
-OPH welcomes proofs, counterexamples, simulations, independent reviews and
-readable explanations. Start with the [reproduction guide](REPRODUCE.md) and
-the [selection ledger](docs/registers/SELECTION_LEDGER.md), which states the premises
-and scientific boundaries relevant to contributions. A TeX paper goes in
-[`extra/`](extra/). A Markdown research note goes in [`docs/research/`](docs/research/)
-and names the code lane that verifies it; `extra/` holds no Markdown notes.
+Contributions should repair an existing defect or resolve a named uncertainty
+in the common model and its tests. Reuse proved results; add a proof when a
+specific model obligation needs it. Standalone finite-theorem expansion and
+theorem-count targets are outside this programme. Start with the
+[research issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
+and [reproduction guide](REPRODUCE.md). Keep exploratory logs local and report
+concise decisions with their assumptions and evidence. Verified research notes
+belong in [`docs/research/`](docs/research/); paper publication follows the hold above.
 
 ## From observer patches to learning machines
 

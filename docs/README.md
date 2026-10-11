@@ -58,18 +58,27 @@ each file keeps its name in the folders above.
 - [OPH Falsification Program](OPH_FALSIFICATION_PROGRAM.md) lists only mature
   mathematical and realized-branch falsifiers.
 
-Each quantitative closure condition is tracked as a
-[GitHub issue labeled `closure`](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+label%3Aclosure),
-with its evaluation boundary and required completion stated on the issue.
+The [physics issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
+assign bounded work on the common repair model, its tests and existing-evidence
+audits. Historical closure issues retain their scientific boundaries;
+administrative closure does not discharge a physical premise.
 
 ## Model Construction Status
 
-[Model Search](MODEL_SEARCH.md) records what is constructed, which physical
-connections remain missing, and the rule to start from the simplest existing
-OPH carrier and repair implementation. It includes the model campaign's
-scoped results, source-reread corrections and completion criteria for the
-physical-model issues. It is a research status map, not a replacement for the
-claim registry or a new verified-result package.
+[Model Search](MODEL_SEARCH.md) records the simplest compatible repair
+candidate, its constructed connections and missing physical inputs. Its
+[work ownership](MODEL_SEARCH.md#work-ownership-and-claim-accounting) links
+parallel construction, physical tests and audits; its
+[paper-release hold](MODEL_SEARCH.md#research-programme-and-paper-release-hold)
+defers publication and broad prose restructuring until a coherent model
+milestone. Correctness fixes and reproducibility checks continue.
+
+The [model–theorem premise map](MODEL_PREMISE_MAP.md) connects the candidate
+to existing theorem premises and their closure conditions. It is generated
+from the model map in `tracking/` and checks references and coverage, without
+certifying that every theorem antecedent has been extracted or discharged.
+The scientific claim registry retains authority over established claims;
+these documents track the construction intended to supply their inputs.
 
 ## Registers
 
