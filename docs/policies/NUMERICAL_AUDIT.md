@@ -84,6 +84,12 @@ not a domain argument.
   incomplete, empty and malformed evidence. A blanket rejection is not a
   successful repair of a valid-input regression. A blanket acceptance or
   zero floor must fail the corresponding negative controls.
+- **Shared uncertainty:** when several observations use one unknown calibration,
+  state or parameter, require a single admissible witness for the complete
+  population. Per-row or pairwise compatibility does not establish joint
+  feasibility. Exercise contradictions across controls, executions and held-out
+  blocks, alongside feasible boundary cases. Keep a consistency check separate
+  from fitting: observations must not silently narrow their own frozen bounds.
 - **Callers:** follow the public entry point through its wrappers and
   downstream diagnostics. Test the internal helper and the returned
   observable or classification. Exercise serialization and replay where
