@@ -145,6 +145,87 @@ def test_complete_synthetic_interval_readout(tmp_path,fixture):
                 assert verify.Interval.parse(interval).contains(Q(public[f"B/{n}/{face}"]))
 
 
+def assert_shared_calibration_result(tmp_path,p,c,feasible,entry_point):
+    args=save(tmp_path,p,c)
+    if entry_point=="api":
+        if not feasible:
+            with pytest.raises(ValueError,match="calibration"):
+                verify.verify(*args)
+            return
+        result=verify.verify(*args)
+    else:
+        command=[sys.executable,"-W","error",str(HERE/"verify.py"),
+                 "--preregistration",str(args[0]),"--capture",str(args[1]),
+                 "--preregistration-sha256",args[2],"--capture-sha256",args[3]]
+        process=subprocess.run(command,capture_output=True,text=True,check=False)
+        result=json.loads(process.stdout)
+        assert not process.stderr
+        if not feasible:
+            assert process.returncode==2 and result["verdict"]=="INVALID"
+            assert "calibration" in result["reason"]
+            return
+        assert process.returncode==0
+    assert result["verdict"]=="SYNTHETIC_CONFORMANCE_ONLY" and result["raw_samples"]==3540
+    assert result["physical_truth_certified"] is False
+
+
+def independently_admitted_gains(cal,raw,model):
+    # Original-input scalar algebra, independent of the verifier's interval code.
+    assert cal["offset"]==["-7/10","-7/10"]
+    raw,error,target=Q(raw),Q(cal["raw_error"]),Q(model)+Q(7,10)
+    assert raw-error>0 and target>0
+    lo,hi=map(Q,cal["gain"])
+    return max(lo,target/(raw+error)),min(hi,target/(raw-error))
+
+
+@pytest.mark.parametrize("entry_point",["api","cli"])
+@pytest.mark.parametrize("feasible",[False,True])
+def test_shared_calibration_references(tmp_path,fixture,entry_point,feasible):
+    p,c=copy.deepcopy(fixture)
+    cal=p["channels"][0]["calibration"]
+    upper=1+Q(1,10**9)
+    cal.update(gain=["1",str(upper)],raw_error="0")
+    first,second=cal["reference_samples"]
+    second_gain=Q(1) if feasible else upper
+    second["model_value"]=str(Q(second["raw"])*second_gain-Q(7,10))
+    assert independently_admitted_gains(cal,first["raw"],first["model_value"])==(1,1)
+    assert independently_admitted_gains(cal,second["raw"],second["model_value"])==(second_gain,second_gain)
+    assert (second_gain==1)==feasible
+    assert_shared_calibration_result(tmp_path,p,c,feasible,entry_point)
+
+
+@pytest.mark.parametrize("entry_point",["api","cli"])
+@pytest.mark.parametrize("late_gauge",[0,1],ids=["cross_slice","cross_gauge"])
+@pytest.mark.parametrize("feasible",[False,True])
+def test_shared_calibration_episode(tmp_path,fixture,entry_point,late_gauge,feasible):
+    p,c=copy.deepcopy(fixture)
+    cal=p["channels"][0]["calibration"]
+    epsilon=Q(1,10**9); upper=1+epsilon; error=3*epsilon
+    cal.update(gain=["1",str(upper)],raw_error=str(error))
+    # References and every unchanged capture row admit either gain endpoint.
+    for ref in cal["reference_samples"]:
+        for gain in (Q(1),upper):
+            assert abs((Q(ref["model_value"])+Q(7,10))/gain-Q(ref["raw"]))<=error
+    for row in c["controls"]+[row for execution in c["executions"] for row in execution["events"]]:
+        for sample in row["samples"]:
+            if sample["channel"]=="slot0":
+                assert abs(Q(sample["raw"]))*epsilon/upper<=error
+    early=c["executions"][0]["events"][3]
+    late=c["executions"][late_gauge]["events"][583]
+    assert early["trace"]["op"]=="baseline" and early["trace"]["args"]==[0,0]
+    assert late["trace"]["op"]=="decode" and late["trace"]["args"]==[2]
+    assert early["samples"][0]["role"]=="input" and early["samples"][0]["channel"]=="slot0"
+    assert late["samples"][0]["role"]=="decoded_0" and late["samples"][0]["channel"]=="slot0"
+    assert early["trace"]["reads"]["x/0"]["value"]==late["trace"]["writes"]["d/2/0"]=="0"
+    early["samples"][0]["raw"]=str(Q(7,10)+error)  # Forces gain exactly 1.
+    late_gain=Q(1) if feasible else upper
+    late["samples"][0]["raw"]=str(Q(7,10)/late_gain+(error if feasible else -error))
+    assert independently_admitted_gains(cal,early["samples"][0]["raw"],"0")== (1,1)
+    assert independently_admitted_gains(cal,late["samples"][0]["raw"],"0")== (late_gain,late_gain)
+    assert (late_gain==1)==feasible
+    assert_shared_calibration_result(tmp_path,p,c,feasible,entry_point)
+
+
 def test_draft_is_not_a_freeze(tmp_path,fixture):
     with pytest.raises(ValueError,match="frozen preregistration"):
         run(tmp_path,(contract.draft(),fixture[1]))
