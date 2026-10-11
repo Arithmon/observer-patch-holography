@@ -204,7 +204,8 @@ def main():
         import pytest
         tests = sorted(str(p) for p in (SIM / "codex").rglob("test_*.py") if "causal" not in p.parts)
         tests += sorted(str(p) for p in (SIM / "tests").glob("test_*.py"))
-        tests += [str(SIM / "scripts/test_codex_causal_cosmology_audit.py"), str(Path(__file__).with_name("test_archive.py"))]
+        tests += [str(SIM / "scripts/test_codex_causal_cosmology_audit.py")]
+        tests += sorted(str(p) for p in Path(__file__).parent.glob("test_*.py"))
         tests += [str(ARCHIVE / "lean/test_verify.py")]
         counts = Counts()
         code = pytest.main(["-q", "-p", "no:cacheprovider", *tests], plugins=[counts])

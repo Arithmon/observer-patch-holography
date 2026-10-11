@@ -48,6 +48,17 @@ not a domain argument.
 - **Components and identities:** independently check each component of a
   ratio, difference or normalized diagnostic. Correlated errors can leave
   identities, positivity and normalization intact.
+  Derive retained-statistic null denominators from the original population
+  and estimator weights. Check that responses, powers and schedule noise can
+  describe one common population. Propagate subtraction uncertainty before a
+  square root; a small erased residual can have a much larger effect on a
+  joint bound. Exercise valid zero-noise and negative unbiased-common-power
+  controls through the public consumers as well as their numerical helpers.
+  For nearly identical responses, independently centered variance and variance
+  about a rounded mean differ by a quadratic centering term. Bound that term
+  from the mean's arithmetic error; a tolerance on the full response scale
+  can hide a fabricated spread. Retain controls for both accurate and rounded
+  centering, erased spread, inflated spread and inconsistent standard errors.
   For a transfer logarithm, test the full Hamiltonian as well as its gap,
   and every relevant stationary-population ratio as well as normalization.
   Resolving small transfer eigenvalues and resolving the leading eigenspace
