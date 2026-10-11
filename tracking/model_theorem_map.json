@@ -1,0 +1,902 @@
+{
+  "schema": "oph.model_theorem_map.v1",
+  "as_of": "2026-10-11",
+  "coverage_note": "Complete navigation coverage of the current canonical PR identifiers, plus explicit active-model obligations. Not an exhaustive extraction or proof of discharge of all paper/Lean antecedents. Branches are alternatives where stated; links do not alter claim-registry dependency roles.",
+  "groups": [
+    {
+      "id": "RE-01",
+      "title": "Common repair reference and law",
+      "links": [
+        "M01",
+        "M02"
+      ],
+      "scope": "active",
+      "status": "conditional",
+      "premises": [
+        "PR-07"
+      ],
+      "constructed": "Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly.",
+      "remaining": "For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate.",
+      "closure": "Exhibit the same process and restriction maps supplying the intended repair contract; derive each extra choice or retain it as an explicit model hypothesis.",
+      "sources": [
+        {
+          "path": "Lean/Thermodynamics/FiniteConditionalRepair.lean",
+          "label": "Finite conditional repair"
+        },
+        {
+          "path": "docs/CANONICAL_REPAIR_LAW_RFC.md",
+          "label": "Unadopted canonical repair-law proposal"
+        },
+        {
+          "path": "docs/MODEL_SEARCH.md",
+          "label": "Current candidate and native baselines"
+        }
+      ],
+      "assumptions": [
+        "faithful_common_reference_law",
+        "complete_repaired_visible_datum_fibre"
+      ]
+    },
+    {
+      "id": "RE-02",
+      "title": "Confluence, acceptance and protected observations",
+      "links": [
+        "M01",
+        "M02"
+      ],
+      "scope": "active",
+      "status": "conditional",
+      "premises": [
+        "PR-01"
+      ],
+      "constructed": "The normal-form and consensus implications are proved for their explicit repair and transactional contracts; finite protected-memory examples are constructed.",
+      "remaining": "The required observer menu must supply completeness, local diamonds, well-founded aggregate descent, semantic read closure and valid acceptance. Mere agreement or oscillatory Hamiltonian evolution does not supply termination.",
+      "closure": "Verify the complete contract on the actual operations and retained observations, including conflicting updates; do not infer it from translated-chart naturality.",
+      "sources": [
+        {
+          "path": "Lean/ObservableNormalForms/ObservableNormalForms/ObserverConfluence.lean",
+          "label": "Observer confluence"
+        },
+        {
+          "path": "paper/reality_as_consensus_protocol.tex",
+          "label": "Consensus paper"
+        },
+        {
+          "path": "claims/assumption_dictionary.md",
+          "label": "Transactional and acceptance assumptions"
+        }
+      ],
+      "assumptions": [
+        "repair_completeness",
+        "local_diamond",
+        "strict_well_founded_transactional_descent"
+      ]
+    },
+    {
+      "id": "RE-03",
+      "title": "Scheduler, reference and resources",
+      "links": [
+        "M01",
+        "M02",
+        "M04"
+      ],
+      "scope": "branch",
+      "status": "conditional",
+      "premises": [
+        "PR-05",
+        "PR-20",
+        "PR-60",
+        "PR-61",
+        "PR-62",
+        "PR-63",
+        "PR-77",
+        "PR-78",
+        "PR-79",
+        "PR-80",
+        "PR-84",
+        "PR-85"
+      ],
+      "constructed": "Native counting and bounded scheduling results retain their declared reference and fairness/resource classes.",
+      "remaining": "Select the scheduler and complete path reference actually used. Adaptive repair, fixed-node attempts and the canonical Hamiltonian are different branches; their resource hypotheses are not automatically interchangeable.",
+      "closure": "Declare one branch and prove its fairness, locality and attempt/waste bounds on complete histories, charging all operations.",
+      "sources": [
+        {
+          "path": "docs/registers/PREMISE_REGISTER_V3.md",
+          "label": "Canonical scheduler/reference entries"
+        },
+        {
+          "path": "paper/reality_as_consensus_protocol.tex",
+          "label": "Consensus scheduler contracts"
+        }
+      ]
+    },
+    {
+      "id": "RE-04",
+      "title": "Observer regions, causal provenance and time-slice access",
+      "links": [
+        "M02",
+        "M03",
+        "M04",
+        "M06"
+      ],
+      "scope": "active",
+      "status": "conditional",
+      "premises": [
+        "PR-32",
+        "PR-33",
+        "PR-34",
+        "PR-58",
+        "PR-81",
+        "PR-82"
+      ],
+      "constructed": "Finite carriers, authenticated source order and regional reconstruction contracts exist. The canonical executed-history constructor supplies an ancestry rank; the abstract semantic-log interface requires one.",
+      "remaining": "Identify the actual joint carrier, regions, correlations, access menu and semantic read support. Local momentum coordinates do not supply momentum access from a two-position-layer menu.",
+      "closure": "Construct restriction-compatible regions and retained histories on the same source. For the scalar regional theorem verify its exterior row-space criterion, not just local coordinates.",
+      "sources": [
+        {
+          "path": "paper/tex_fragments/SOURCE_SCALAR_REGIONAL_TIME_SLICE.tex",
+          "label": "Regional scalar reconstruction"
+        },
+        {
+          "path": "docs/registers/PREMISE_REGISTER_V3.md",
+          "label": "Observer and provenance entries"
+        }
+      ],
+      "claims": [
+        "OPH-SCALAR-REGIONAL-COLLAR-RECONSTRUCTION"
+      ]
+    },
+    {
+      "id": "RE-05",
+      "title": "Selected scalar action and relative capacities",
+      "links": [
+        "M01",
+        "M03",
+        "M05",
+        "M09"
+      ],
+      "scope": "active",
+      "status": "conditional",
+      "premises": [],
+      "constructed": "The golden scalar action is explicit. A connected response admitting a positive diagonal symmetrizer identifies normalized capacities; incidence factorization and the derived rates then need no independent fit.",
+      "remaining": "The response, conductances, boundary conditions, mass and absolute action scale remain supplied. Algebraic reconstruction does not select the physical response or turn capacities into physical volumes.",
+      "closure": "Supply an independent source-selection or comparison argument for the action family and its scale; retain symmetrizer positivity and compatibility hypotheses.",
+      "sources": [
+        {
+          "path": "paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex",
+          "label": "Declared common scalar action",
+          "anchor": "eq:common-scalar-action"
+        },
+        {
+          "path": "Lean/Geometry/SourceActionMeasure.lean",
+          "label": "Unique normalized symmetrizer",
+          "anchor": "normalized_symmetrizer_unique"
+        },
+        {
+          "path": "paper/tex_fragments/SOURCE_ACTION_DENSITY_IDENTIFICATION.tex",
+          "label": "Action-measure identification",
+          "anchor": "prop:source-action-measure-identification"
+        }
+      ],
+      "claims": [
+        "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION"
+      ],
+      "assumptions": [
+        "declared_golden_tensor_scalar_action_and_compact_instruments",
+        "connected_negative_response_action_measure"
+      ]
+    },
+    {
+      "id": "RE-06",
+      "title": "Inertia and the real dynamical completion",
+      "links": [
+        "M01",
+        "M04",
+        "M05",
+        "M06",
+        "M09"
+      ],
+      "scope": "active",
+      "status": "conditional",
+      "premises": [
+        "PR-06",
+        "PR-21",
+        "PR-22",
+        "PR-45",
+        "PR-66"
+      ],
+      "constructed": "Same-capacity linear reversible dynamics gives the displayed canonical Hamiltonian. Existing action-to-Hamiltonian and field-clock conversions remain proved under their own hypotheses.",
+      "remaining": "Repair capacity equals inertia, velocity reading, linearity, energy and time reversal are candidate premises. Auxiliary oscillator and temporal Maxwell lifts are related alternatives, not consequences of the scalar construction.",
+      "closure": "Derive the kinetic identification from admissible operations or independently constrain dynamical response; exclude the same-equilibrium alternative inertias. Conversion of a supplied action is not its selection.",
+      "sources": [
+        {
+          "path": "docs/MODEL_SEARCH.md",
+          "label": "Conditional kinetic uniqueness and counterfamily"
+        },
+        {
+          "path": "Lean/Variational/SourceToHamiltonianComposed.lean",
+          "label": "Source-to-Hamiltonian composition",
+          "anchor": "source_to_hamiltonian_composed"
+        },
+        {
+          "path": "Lean/Screen/CurlStoneClockBridge.lean",
+          "label": "Field clock conversion"
+        }
+      ]
+    },
+    {
+      "id": "RE-07",
+      "title": "Quantum representation and operational probabilities",
+      "links": [
+        "M02",
+        "M06"
+      ],
+      "scope": "active",
+      "status": "conditional",
+      "premises": [
+        "PR-02",
+        "PR-03",
+        "PR-04",
+        "PR-43",
+        "PR-44"
+      ],
+      "constructed": "The scalar Fock/Weyl construction and constrained local field representation are mathematically compatible. The Hamiltonian is the original positive canonical one.",
+      "remaining": "CCR, Hilbert representation, subsystem split, accessible phase effects, channel semantics and Born readout remain declared. Finite-code CCR are approximate with an explicit boundary defect.",
+      "closure": "Realize the specified state/observable/instrument relations on the same source, with controlled approximation. Shared spectra or a classical stationary distribution do not supply this interface.",
+      "sources": [
+        {
+          "path": "paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex",
+          "label": "Scalar quantum representation"
+        },
+        {
+          "path": "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex",
+          "label": "Complete quantum instrument",
+          "anchor": "thm:source-scalar-sequential-instrument"
+        },
+        {
+          "path": "docs/research/COHERENT_SOURCE_CLOCKS.md",
+          "label": "Coherent source assumptions"
+        }
+      ]
+    },
+    {
+      "id": "RE-08",
+      "title": "Native coherent controls, phase and reset",
+      "links": [
+        "M01",
+        "M02",
+        "M06"
+      ],
+      "scope": "active",
+      "status": "conditional",
+      "premises": [
+        "PR-64",
+        "PR-65"
+      ],
+      "constructed": "Existing proper-code source controls compile individual force/pointer factors. Complete retained-pointer phases are checked in the exact history target.",
+      "remaining": "Coherent code gluing, pure blanks, preparation, reset, precision, transport, drift and complete readback remain supplied service requirements.",
+      "closure": "Execute or bound the full source instrument with its complementary outcomes and all service errors; a requested unitary or accurate coefficient is not a complete channel certificate.",
+      "sources": [
+        {
+          "path": "docs/research/COHERENT_SOURCE_CLOCKS.md",
+          "label": "Coherent code and service contract"
+        },
+        {
+          "path": "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex",
+          "label": "Finite pulse and noise theorems",
+          "anchor": "prop:source-scalar-finite-noise"
+        }
+      ]
+    },
+    {
+      "id": "RE-09",
+      "title": "Preparation of the same coupled vacuum",
+      "links": [
+        "M06"
+      ],
+      "scope": "active",
+      "status": "conditional",
+      "premises": [],
+      "constructed": "For the original eight-mode q=3 action, a supplied local gapped ramp has rigorous error below 0.070155 at model time 512. A separate finite-code construction has error at most 0.059059008 but a very large conservative compilation cost.",
+      "remaining": "Independent oscillator blanks, control of the ramp and model time are hypotheses. Preparation is not autonomous vacuum selection; no uniform refinement resource theorem is supplied.",
+      "closure": "Implement that preparation in the history code and propagate its error. Do not substitute q=3 evidence for q=5/q=233 budgets or substitute a numerical ODE estimate for a certified bound.",
+      "sources": [
+        {
+          "path": "docs/MODEL_SEARCH.md",
+          "label": "Bounded local preparation result"
+        },
+        {
+          "path": "paper/tex_fragments/SOURCE_SCALAR_LOCAL_PREPARATION.tex",
+          "label": "Preparation error contract",
+          "anchor": "Preparation with an active free field"
+        }
+      ]
+    },
+    {
+      "id": "RE-10",
+      "title": "One encoded preparation, evolution and record history",
+      "links": [
+        "M02",
+        "M04",
+        "M06"
+      ],
+      "scope": "active",
+      "status": "open",
+      "premises": [],
+      "constructed": "Free evolution, force and commuting retained-pointer couplings have one exact Gaussian history; finite normal-mode cutoffs have full-output bounds. Existing sequential channels propagate initial-state error.",
+      "remaining": "Preparation and operation components use different convenient coordinates. Their same-code source realization needs intermediate occupation, encoding/decoding, source service, all outcomes and one resource/error budget.",
+      "closure": "Supply the composite channel on one code and a bound of the form epsilon_vac+epsilon_history+epsilon_service. Prefer local factors before generic global mixing; account for any time-dependent splitting error.",
+      "sources": [
+        {
+          "path": "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex",
+          "label": "Exact finite pulse",
+          "anchor": "prop:source-scalar-finite-pulse"
+        },
+        {
+          "path": "paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex",
+          "label": "Sequential composition",
+          "anchor": "thm:source-scalar-sequential-instrument"
+        },
+        {
+          "path": "paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex",
+          "label": "Fixed-action local splitting",
+          "anchor": "prop:source-scalar-time-refinement"
+        }
+      ],
+      "claims": [
+        "OPH-SCALAR-SEQUENTIAL-INSTRUMENT"
+      ]
+    },
+    {
+      "id": "RE-11",
+      "title": "Controlled refinement of the selected quantum family",
+      "links": [
+        "M03",
+        "M06",
+        "M10"
+      ],
+      "scope": "active",
+      "status": "conditional",
+      "premises": [],
+      "constructed": "The existing common scalar theorem already gives the stated massive 3D free-field Weyl-product limit. The canonical field join preserves the same action, vacuum and observables.",
+      "remaining": "Native preparation/control/record errors must remain controlled along that family. The archived spherical routing and interacting many-body limits are different targets.",
+      "closure": "Prove uniform or summable errors and compatible states/observables for the actual implementation; reuse the existing scalar limit rather than reprove it. Interactions require their own continuum theorem.",
+      "sources": [
+        {
+          "path": "paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex",
+          "label": "Existing scalar continuum",
+          "anchor": "prop:common-scalar-continuum-limit"
+        },
+        {
+          "path": "paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex",
+          "label": "Joint observable refinement"
+        },
+        {
+          "path": "claims/assumption_dictionary.md",
+          "label": "Uniform refinement hypotheses"
+        }
+      ],
+      "claims": [
+        "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT"
+      ]
+    },
+    {
+      "id": "RE-12",
+      "title": "Source clock, physical time and execution cost",
+      "links": [
+        "M04",
+        "M06",
+        "M09"
+      ],
+      "scope": "active",
+      "status": "open",
+      "premises": [
+        "PR-15",
+        "PR-22"
+      ],
+      "constructed": "Canonical model time, supplied event-count clock comparisons and conditional scalar action-clock reconstruction exist.",
+      "remaining": "Choose a physical clock on the same process and account for preparation, service, readout and ancestry costs. A source scale identification and conversion to laboratory units are distinct.",
+      "closure": "Prove the same-history clock/observable intertwiner and its domain, then calibrate independently. A local generator alone does not establish a microscopic causal cone.",
+      "sources": [
+        {
+          "path": "paper/tex_fragments/SOURCE_COUNT_CLOCK.tex",
+          "label": "Source count-clock theorem",
+          "anchor": "thm:source-count-clock"
+        },
+        {
+          "path": "paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex",
+          "label": "Scalar action clock"
+        },
+        {
+          "path": "Lean/Screen/CurlStoneClockBridge.lean",
+          "label": "Conditional clock conversion"
+        }
+      ]
+    },
+    {
+      "id": "RE-13",
+      "title": "Physical geometry and responsive metric",
+      "links": [
+        "M03",
+        "M07",
+        "M08"
+      ],
+      "scope": "downstream",
+      "status": "conditional",
+      "premises": [
+        "PR-09",
+        "PR-10",
+        "PR-16",
+        "PR-52"
+      ],
+      "constructed": "Finite source geometry, golden coordinates and conditional Lorentz/spacetime constructions exist. The canonical source includes its adopted oriented boundary and complete-response clauses.",
+      "remaining": "Choose the physical region/metric/area/volume attachment and a compatible source-causal continuum. A frozen chart cannot itself provide changing physical curvature.",
+      "closure": "Construct operational metric and geometric response on the same source and refinement family. Preserve the distinction between action capacity, event-count measure and physical volume.",
+      "sources": [
+        {
+          "path": "paper/tex_fragments/NATIVE_GEOMETRIC_SOURCE_IDENTIFIABILITY.tex",
+          "label": "Native geometric-source boundary"
+        },
+        {
+          "path": "docs/AXIOM_REFERENCE.md",
+          "label": "Adopted source clauses"
+        },
+        {
+          "path": "docs/registers/GRAVITY_PREMISE_LADDER.md",
+          "label": "Continuum and metric interfaces"
+        }
+      ]
+    },
+    {
+      "id": "RE-14",
+      "title": "Gauge algebra to physical gauge fields",
+      "links": [
+        "M05",
+        "M10"
+      ],
+      "scope": "downstream",
+      "status": "conditional",
+      "premises": [
+        "PR-11",
+        "PR-35",
+        "PR-46",
+        "PR-54"
+      ],
+      "constructed": "The finite local Standard Model Lie-algebra result remains proved under the adopted A1 complete-response/closure clauses and A2 endogenous transport. Compact-Lie classification is an explicit mathematics import.",
+      "remaining": "The physical current/action, same-source category, global form and coupling attachment remain separate. The scalar field construction does not instantiate a physical gauge theory.",
+      "closure": "Bind the proved algebra and representation to actual source observables, dynamics and refinement; supply the categorical and physical gauge interfaces used by the selected branch.",
+      "sources": [
+        {
+          "path": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
+          "label": "Finite gauge structure and physical attachments",
+          "anchor": "thm:current-algebra"
+        },
+        {
+          "path": "docs/registers/PREMISE_REGISTER_V3.md",
+          "label": "Gauge source and global-form entries"
+        }
+      ]
+    },
+    {
+      "id": "RE-15",
+      "title": "Physical edge factors and collar recovery",
+      "links": [
+        "M02",
+        "M07",
+        "M08"
+      ],
+      "scope": "downstream",
+      "status": "conditional",
+      "premises": [],
+      "constructed": "Finite charge centers, regional completion and nontrivial bulk collar splits are constructed. Existing exact Markov and conditional recovery theorems remain available.",
+      "remaining": "The physical edge-center split and state alignment, edge-reference factorization and log-d normalization must agree. Approximate recovery needs strong conditional mixing and the sharp collar rate on one family. These are alternative recovery routes. Strong matrix-mixing gives direct log-defect control without a universal spectral floor; the physical EC-replacement modulus remains separate.",
+      "closure": "Realize the selected physical split and prove either its exact central-interface condition or its complete uniform approximate-recovery hypotheses. Charge retention alone is insufficient.",
+      "sources": [
+        {
+          "path": "docs/registers/GRAVITY_PREMISE_LADDER.md",
+          "label": "Gravity rungs3–5"
+        },
+        {
+          "path": "claims/assumption_dictionary.md",
+          "label": "EC alignment, mixing and edge normalization"
+        }
+      ],
+      "claims": [
+        "OPH-GR-D4D-ENTROPY-BRIDGE"
+      ],
+      "assumptions": [
+        "central_interface_clause",
+        "EC_aligned_Markov_replacement_control",
+        "strong_conditional_gibbs_mixing",
+        "sharp_collar_rate_receipt",
+        "edge_normalization_log_d"
+      ]
+    },
+    {
+      "id": "RE-16",
+      "title": "Modular flow, null translations and stress",
+      "links": [
+        "M04",
+        "M05",
+        "M07",
+        "M08"
+      ],
+      "scope": "downstream",
+      "status": "conditional",
+      "premises": [
+        "PR-23",
+        "PR-24",
+        "PR-25"
+      ],
+      "constructed": "Typed modular/half-sided inclusion and conditional local-stress implications are available; finite cap diagnostics are constructed.",
+      "remaining": "Support-visible BW identification, common null translation, effective locality, tomography and the same-source physical stress attachment remain required.",
+      "closure": "Instantiate the modular and stress interfaces on the candidate with the required common domains, locality and normalization; algebraic modular flow alone is not physical time or stress.",
+      "sources": [
+        {
+          "path": "docs/registers/GRAVITY_PREMISE_LADDER.md",
+          "label": "Gravity rungs7–8"
+        },
+        {
+          "path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
+          "label": "Modular and stress construction"
+        }
+      ],
+      "assumptions": [
+        "null_stress_bridge"
+      ]
+    },
+    {
+      "id": "RE-17",
+      "title": "Joint state–geometry entropy stationarity",
+      "links": [
+        "M07",
+        "M08"
+      ],
+      "scope": "downstream",
+      "status": "open",
+      "premises": [
+        "PR-26"
+      ],
+      "constructed": "Finite counting stationarity and fixed-cap MaxEnt/envelope identities are proved under their declared variations.",
+      "remaining": "The candidate must supply constraint-tangent generalized-entropy stationarity for joint state and geometry variations, with the physical area/edge identification.",
+      "closure": "Construct the permitted variation family and show the full generalized entropy has zero first variation at fixed physical volume. A fixed-reference entropy optimum alone does not do this.",
+      "sources": [
+        {
+          "path": "docs/registers/GRAVITY_PREMISE_LADDER.md",
+          "label": "Gravity rung6"
+        },
+        {
+          "path": "paper/tex_fragments/EINSTEIN_DERIVATION_SCOPE.tex",
+          "label": "Einstein derivation scope"
+        },
+        {
+          "path": "claims/assumption_dictionary.md",
+          "label": "Stationarity and fixed-cap assumptions"
+        }
+      ],
+      "assumptions": [
+        "fixed_cap_MaxEnt_variation_family"
+      ]
+    },
+    {
+      "id": "RE-18",
+      "title": "One gravitational branch and its normalization",
+      "links": [
+        "M05",
+        "M08",
+        "M09"
+      ],
+      "scope": "downstream",
+      "status": "open",
+      "premises": [
+        "PR-27",
+        "PR-28"
+      ],
+      "constructed": "The conditional finite-to-Einstein composition and its countermodels already identify the required interfaces.",
+      "remaining": "One inhabited physical tower must supply small-ball geometry, conserved stress, Ward/Bianchi transport, universal coupling, absolute vacuum baseline and common normalization. All required small-ball remainders must vanish at the prescribed rate on that one family.",
+      "closure": "Exhibit all consumed receipts on one family, including compatible controls and limits. Separate successful examples of individual premises do not establish joint satisfiability.",
+      "sources": [
+        {
+          "path": "docs/registers/GRAVITY_PREMISE_LADDER.md",
+          "label": "Gravity rungs8–11"
+        },
+        {
+          "path": "flagship/from_observer_consensus_to_standard_physics.tex",
+          "label": "Flagship gravitational interface"
+        },
+        {
+          "path": "claims/assumption_dictionary.md",
+          "label": "Common tower and universal coupling"
+        }
+      ],
+      "claims": [
+        "OPH-GR-E2E-BRANCH-ENTRY"
+      ],
+      "assumptions": [
+        "einstein_typed_common_domain_tower",
+        "universal_coupling_receipt",
+        "independent_physical_scale_receipt",
+        "vacuum_reference_receipt"
+      ]
+    },
+    {
+      "id": "RE-19",
+      "title": "Matter, statistics and interactions",
+      "links": [
+        "M05",
+        "M06",
+        "M10"
+      ],
+      "scope": "downstream",
+      "status": "open",
+      "premises": [
+        "PR-12",
+        "PR-36",
+        "PR-41",
+        "PR-47",
+        "PR-48",
+        "PR-49",
+        "PR-50",
+        "PR-59",
+        "PR-67",
+        "PR-68",
+        "PR-69"
+      ],
+      "constructed": "Finite carrier/representation and declared Higgs/Yukawa packets exist; the active scalar candidate has a conditional free Bose limit.",
+      "remaining": "Select physical sectors, spin/chirality/statistics, kinetic attachments, interactions, coupling coefficients and stable poles on the same process. A declared finite grammar is not its physical selection.",
+      "closure": "Construct the selected interacting source family and its controlled observables/continuum, reusing the algebraic packets without treating supplied matter content as derived.",
+      "sources": [
+        {
+          "path": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
+          "label": "Matter and QFT interfaces"
+        },
+        {
+          "path": "claims/assumption_dictionary.md",
+          "label": "Matter selection and action hypotheses"
+        }
+      ]
+    },
+    {
+      "id": "RE-20",
+      "title": "Parameter selection and P",
+      "links": [
+        "M09",
+        "M10",
+        "M12"
+      ],
+      "scope": "downstream",
+      "status": "open",
+      "premises": [
+        "PR-13",
+        "PR-17",
+        "PR-37",
+        "PR-38",
+        "PR-39",
+        "PR-40",
+        "PR-51"
+      ],
+      "constructed": "Exact conditional identities, normalized-capacity reconstruction and selection boundaries are recorded in the existing ledgers.",
+      "remaining": "P and N remain proposed fundamental numerical inputs. Closure maps, same-quantity readback, Koide balance and screen/electroweak attachment are not supplied by the minimal repair experiment.",
+      "closure": "Give a target-independent source selection and same-quantity observable bridge for each claimed value. Do not identify P with a detuning amplitude, temperature or rate without that map.",
+      "sources": [
+        {
+          "path": "docs/registers/SELECTION_LEDGER.md",
+          "label": "Selection ledger"
+        },
+        {
+          "path": "docs/registers/PREMISE_REGISTER_V3.md",
+          "label": "Parameter and comparison premises"
+        },
+        {
+          "path": "docs/FROZEN_PREDICTION_LADDER.md",
+          "label": "Frozen comparison boundaries"
+        }
+      ]
+    },
+    {
+      "id": "RE-21",
+      "title": "Cosmology and dark-sector attachment",
+      "links": [
+        "M08",
+        "M11",
+        "M12"
+      ],
+      "scope": "downstream",
+      "status": "open",
+      "premises": [
+        "PR-18",
+        "PR-19",
+        "PR-29",
+        "PR-30",
+        "PR-31",
+        "PR-42"
+      ],
+      "constructed": "Conditional radial, horizon, cosmological and dark-source calculations remain available outside the active free-scalar target.",
+      "remaining": "Physical expansion/source dynamics, horizon charges, EOS, stress and transfer to observables remain branch-specific. Euclidean vacuum selection needs target-independent source slab data, reflection-positive reconstruction and compatible transfer/refinement; positive transfer alone does not select a vacuum; cosmological transport has additional field and collision inputs.",
+      "closure": "Construct the common source/stress/scale history and each claimed observational transfer. Fixed-history selection alone cannot determine volume response or the equation of state.",
+      "sources": [
+        {
+          "path": "Lean/Thermodynamics/EquationOfState.lean",
+          "label": "Equation-of-state selection boundary"
+        },
+        {
+          "path": "cosmology/oph_cosmological_vacuum_and_structure_formation.tex",
+          "label": "Cosmological vacuum hypotheses"
+        },
+        {
+          "path": "cosmology/oph_boltzmann_transport_derivation.tex",
+          "label": "Boltzmann reduction inputs"
+        },
+        {
+          "path": "docs/research/DARK_SOURCE_DYNAMICS_LENSING.md",
+          "label": "Dark source and lensing"
+        }
+      ],
+      "claims": [
+        "OPH-COSMO-VACUUM-ENSEMBLE-CLASSIFICATION",
+        "OPH-COSMO-BOLTZMANN-TRANSPORT-REDUCTION",
+        "OPH-DARK-SOURCE-DYNAMICS-LENSING"
+      ]
+    },
+    {
+      "id": "RE-22",
+      "title": "Physical propagation and an eligible test",
+      "links": [
+        "M03",
+        "M04",
+        "M05",
+        "M12"
+      ],
+      "scope": "downstream",
+      "status": "open",
+      "premises": [
+        "PR-53",
+        "PR-70",
+        "PR-71",
+        "PR-72",
+        "PR-73",
+        "PR-74",
+        "PR-75",
+        "PR-76"
+      ],
+      "constructed": "Finite seam symbols, exact coefficients and conditional frozen comparison contracts exist. Internal scalar discriminators are not physical measurements.",
+      "remaining": "Attach the same source operator, sector, physical scale, frame/boost, refinement, nuisance model and calibrated readout. Exclusivity and a positive lower scale bound are needed where the registered test requires them.",
+      "closure": "Freeze an unavoidable relation and rejection rule with full remaining freedom, baseline and uncertainties before an independent eligible observation; preserve the frozen ladder unchanged.",
+      "sources": [
+        {
+          "path": "docs/FROZEN_PREDICTION_LADDER.md",
+          "label": "Existing frozen targets and eligibility"
+        },
+        {
+          "path": "docs/registers/PREMISE_REGISTER_V3.md",
+          "label": "Propagation attachment premises"
+        }
+      ]
+    },
+    {
+      "id": "RE-23",
+      "title": "External calibrations and empirical imports",
+      "links": [
+        "M04",
+        "M09",
+        "M11",
+        "M12"
+      ],
+      "scope": "metrology",
+      "status": "imported",
+      "premises": [
+        "PR-14",
+        "PR-15"
+      ],
+      "constructed": "The canonical register explicitly distinguishes hadronic empirical payloads and laboratory clock/energy anchors from source deductions.",
+      "remaining": "Every result using these inputs retains their provenance, uncertainty and transfer contract. Fundamental-input counts do not absorb or erase them.",
+      "closure": "Supply admissible independent calibration/import data, or replace a payload with an independently justified source computation; do not count calibration as a theorem proof.",
+      "sources": [
+        {
+          "path": "docs/registers/PREMISE_REGISTER_V3.md",
+          "label": "Empirical imports PR-14/15"
+        },
+        {
+          "path": "docs/policies/HADRON.md",
+          "label": "Hadronic import policy"
+        }
+      ]
+    },
+    {
+      "id": "RE-24",
+      "title": "Baryon-specific branch",
+      "links": [
+        "M10",
+        "M12"
+      ],
+      "scope": "branch",
+      "status": "open",
+      "premises": [
+        "PR-55",
+        "PR-56",
+        "PR-57"
+      ],
+      "constructed": "Declared charge labels and finite operator-eligibility/contraction calculations exist.",
+      "remaining": "Physical baryon/proton states, baryon-violating effective action and decay readout are separate inputs, outside the active scalar target.",
+      "closure": "Instantiate the same physical state, dynamics and observable contract before using the finite operator result as a physical prediction.",
+      "sources": [
+        {
+          "path": "docs/registers/PREMISE_REGISTER_V3.md",
+          "label": "Baryon entries"
+        },
+        {
+          "path": "claims/assumption_dictionary.md",
+          "label": "Baryon and proton attachments"
+        }
+      ]
+    },
+    {
+      "id": "RE-25",
+      "title": "Low-temperature and common-reference branch",
+      "links": [
+        "M06",
+        "M07"
+      ],
+      "scope": "branch",
+      "status": "conditional",
+      "premises": [
+        "PR-08"
+      ],
+      "constructed": "Finite Gibbs/repair implications and explicit common-reference obstructions are available. The active pure-vacuum preparation is a different construction.",
+      "remaining": "A continuum low-temperature claim needs its common reference, physical energy/temperature identification and refinement-uniform spectral-tail bound; collar recovery uses its separately stated exact or mixing hypotheses. A fitted finite stationary state does not supply these inputs.",
+      "closure": "Exhibit the required common objects and uniform bounds or explicitly choose another branch; retain negative controls rather than silently changing the reference.",
+      "sources": [
+        {
+          "path": "Lean/Thermodynamics/CommonObjectBinding.lean",
+          "label": "Common object interfaces"
+        },
+        {
+          "path": "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean",
+          "label": "Physical Gibbs energy identification"
+        },
+        {
+          "path": "docs/registers/PREMISE_REGISTER_V3.md",
+          "label": "Refinement-uniform thermal premise"
+        }
+      ]
+    },
+    {
+      "id": "RE-26",
+      "title": "Common-model compatibility and remaining named inputs",
+      "links": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M08",
+        "M09",
+        "M10",
+        "M11",
+        "M12"
+      ],
+      "scope": "active",
+      "status": "open",
+      "premises": [],
+      "constructed": "This crosswalk covers the canonical PR inventory and identifies actual scalar theorem reuse. The authoritative claim registry separately records ordinary assumptions, imports and explicit non-consumers.",
+      "remaining": "The whole paper/theorem body has not been exhaustively normalized into one semantic dependency graph. Ordinary assumptions and imported-result names are inventoried, not individually discharged by this crosswalk.",
+      "closure": "For each promoted claim bind its actual assumptions and imports, all transitive antecedents and model-added hypotheses to compatible objects with scoped evidence. Keep unreviewed bindings visible and reject circular discharge.",
+      "sources": [
+        {
+          "path": "claims/claim_registry.yaml",
+          "label": "Per-claim assumptions and edge classifications"
+        },
+        {
+          "path": "claims/assumption_dictionary.md",
+          "label": "Named assumption meanings"
+        },
+        {
+          "path": "docs/registers/PREMISE_REGISTER_V3.md",
+          "label": "Canonical register scope"
+        }
+      ]
+    }
+  ]
+}

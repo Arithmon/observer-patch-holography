@@ -1,7 +1,7 @@
 # OPH model search: iterative construction from local repair
 
-Research status: **10 October 2026**. Source reference:
-`b234ba500e0227d739ad8e244bb5149f8b1a2bd9`.
+Research status: **11 October 2026**. Source reference:
+`1e576926880039410a70bce65b7e15f43c2ab0a3`.
 
 **Current approach:** join the existing weighted repair stiffness to the
 existing scalar theory through its **minimal canonical inertial completion**.
@@ -11,7 +11,10 @@ representation retains local position/momentum access and both frequency
 signs. It reuses the scalar continuum, preparation and instrument theorems
 without changing their Hamiltonian, vacuum or readout. A finite source-qubit
 compiler attaches individual force and pointer factors, with controlled
-low-occupation error; original-vacuum preparation remains open. This is a declared
+low-occupation error. A local smooth schedule now prepares the original finite
+coupled vacuum with a controlled state error, and the existing finite-pulse
+theorems join free evolution, force and retained pointers in one exact history.
+Their complete native implementation remains open. This is a declared
 conservative extension of repair, not the original dissipative channel or a
 proof that the physical law has been selected. Native integer repair C,
 completed reconciliation E and the coherent-walk constructions remain valid
@@ -42,8 +45,21 @@ baselines and alternatives.
   The existing twelve-port response and coherent code service compile local
   force and pointer factors into proper qubit codes. Direct infinite-oscillator
   bounds include escaped amplitude and arbitrary reference entanglement.
-  All 18 fixed cases passed; source-vacuum preparation and free-field history
-  remain separate obligations. No extra primitive oscillator gate is assumed.
+  All 18 fixed cases passed. No extra primitive oscillator gate is assumed;
+  source implementation of the full preparation and history remains separate.
+- **A local schedule prepares the original coupled vacuum.** Starting from
+  independent frequency-one oscillator blanks, smoothly turn on the existing
+  stiffness. The path stays gapped and has the original eight-mode q=3 vacuum
+  as its target. An analytical infinite-state bound certifies error below
+  0.070155 at the prospectively chosen duration 512; 42 checks passed. The
+  numerical distance is about 0.00016024, which is not a certified bound.
+  Blanks, time-dependent Hamiltonian control and model time are supplied.
+- **Free evolution, force and retained pointers have one exact finite-history
+  formula.** Reuse the scalar papers' solvable finite pulses, retaining all
+  relative controller phases. Five fixed eight-mode histories and three
+  normal-mode code cutoffs passed 100 checks. The finite-code error includes
+  escaped output; source compilation and site-to-mode access remain distinct
+  implementation requirements.
 - **The new interfaces passed bounded tests and countercontrols.** Exact
   source/action identities and full-matrix checks passed at 8 and 64 sites,
   including all frequency signs, local constraints, quantum commutators,
@@ -62,7 +78,7 @@ baselines and alternatives.
 construction, under its declared inputs. It does not close the entire physical
 entry. A construction, selection of that construction by OPH, and agreement
 with observations are separate claims. The experiments retain analytical
-proofs, exact controls, separate agent reviews and isolated replays locally;
+proofs, exact controls, separate agent reviews and recorded replays locally;
 this document is not an empirical verification bundle or an axiom amendment.
 
 | Link | Completion status and constructed result | What completes the remaining physical connection |
@@ -72,7 +88,7 @@ this document is not an empirical verification bundle or an axiom amendment.
 | **M03: geometry** | **Finite geometry and controlled coarse energy constructed.** Native rank-three response; uniform memory/gap bounds and local coarse energies; periodic acoustic tensor; existing golden coordinates and uniquely reconstructible relative action capacities. | Identify physical regions, spacetime metric, area/volume and bulk refinement; select the response being reconstructed. Event-count weights and nonuniform action capacities are distinct finite references. A positive Schur energy need not be a Markov generator. |
 | **M04: physical time** | **Finite clocks and explicit model-time laws constructed; physical attachment open.** Canonical flow reuses the original scalar time. The weighted walk and periodic exchange/wave scalings remain alternatives. | Justify and calibrate the physical law and clock with complete execution costs. Avoiding the walk normalization does not identify canonical time with accepted source-event counts or establish an operational physical cone. |
 | **M05: fields and current** | **Finite currents, full scalar stiffness and local canonical fields joined.** Exact energy/symplectic preservation and local position/momentum decoder; no independent edge field is added. | Select physical charge, energy, stress and units; attach interactions and reciprocal geometry response. Local field coordinates do not supply stress coupling or native many-body closure. |
-| **M06: quantum dynamics and regime** | **Conditional canonical scalar continuum and local instrument compatibility complete.** Exact original Hamiltonian, CCR, vacuum, preparations and readouts; constrained first-order field equation. Finite source-qubit force/pointer factors have reference-preserving low-occupation error bounds; coherent-walk alternatives are retained. | Prepare and encode the original coupled vacuum, implement joint free-plus-driven histories with a common error/resource budget, and justify representation, controls and physical time. The tested k=3 vacuum bound is inconclusive; no native many-body or interacting continuum has been derived. |
+| **M06: quantum dynamics and regime** | **Conditional scalar continuum, local vacuum-preparation schedule and joint history target constructed.** The unchanged Hamiltonian and instruments join exactly. A local gapped ramp prepares the original q=3 coupled vacuum with a nonvacuous infinite-state error bound. Full force/two-pointer histories retain relative phases and controlled normal-mode cutoff error. Finite source-qubit interaction factors remain available. | Implement preparation and the complete history in compatible source codes, with drift, intermediate occupation, all outcomes and one resource/error budget; justify representation, controls and physical time. The earlier k=3 local-code vacuum bound remains inconclusive. Finite preparation is not autonomous state selection or a uniform continuum resource bound; no native interacting QFT has been derived. |
 | **M07: entropy/area stationarity** | **Finite counting stationarity, exterior completion and bulk collar splits complete.** `S_A+〈Z_B〉=log66−D(ρ_A‖τ_A)`. Exact recovery and a nontrivial 3×4 bulk block are constructed with declared charge centers. | Identify the formal split with the required physical edge factors and derive area, stress/flow, fixed-volume variations, normalization and common refinement. Z_B contains remote bulk entropy. Charge retention alone does not give all-state screening, and unrestricted boundary repair can break alignment. |
 | **M08: gravity** | **Conditional OPH reconstruction exists; this candidate's physical attachment is open.** Finite entropy and controlled charge-collar constructions supply explicit candidate inputs. | Realize the flagship's G1–G6 premises on this same family, including its physical EC factors, conserved stress, universal coupling and gravitational constraints, or justify a different route. The nontrivial bulk collar factors do not discharge the physical gauge-edge premises; the tested spatial-symmetry identification fails. |
 | **M09: parameters and P** | **Relative-capacity identification and conditional kinetic-law uniqueness constructed.** Reciprocity reconstructs normalized capacities for an admissible connected response. The same-capacity linear reversible completion uniquely gives its canonical equation. | Select the response, absolute action scale, inertia identification, mass and physical clock. The counterfamily shows why configuration equilibrium alone cannot do this. No P-to-amplitude, temperature or rate map follows. |
@@ -84,6 +100,40 @@ M01–M12 are a dependency map. Develop the connected cluster needed by a
 specific claim; they are neither twelve sequential hurdles nor a requirement
 to solve all physics at once. Finite results stay completed unless a new test
 invalidates them. Enlarging the physical scope adds an explicit obligation.
+
+### The reverse-engineering table: hypotheses as well as results
+
+The [model–theorem premise map](MODEL_PREMISE_MAP.md) connects this M01–M12
+summary to the existing canonical premise register, claim registry and gravity
+ladder. It records what each construction supplies, what it still assumes,
+which existing result can be reused, and what evidence would discharge the
+remaining obligation **on the same model and at the claimed scale**.
+
+A theorem proves an implication; a model can construct its inputs. That is
+real progress even before physical selection. However, moving a premise into
+the candidate's definition does not derive it. When a construction uses new
+hypotheses to fill an old interface, keep those hypotheses in the total input
+budget. Shared requirements are counted once by identity, with every use
+retained; competing branches are not combined into one mandatory checklist.
+
+The map covers every currently registered canonical PR identifier, including
+inactive branches. The larger named-assumption/import inventory is reported
+separately. This is a checked cross-reference and research ledger, **not a Lean
+proof that every antecedent in every paper has been extracted or discharged**.
+The original claim classifications and premise dispositions remain authoritative.
+In particular, an excluded physical conclusion is not silently turned into an
+unproved hypothesis of an already completed mathematical theorem.
+
+| Existing result to reuse | Connection supplied by the current construction | What still has to be supplied |
+| --- | --- | --- |
+| [Action-measure identification](../Lean/Geometry/SourceActionMeasure.lean), `normalized_symmetrizer_unique` | A connected response admitting a positive diagonal symmetrizer fixes normalized relative capacities; the weighted repair factorization uses that same capacity/stiffness interface. | Selection of the response, absolute scale and equality of repair capacity with inertia. |
+| [Source-to-Hamiltonian composition](../Lean/Variational/SourceToHamiltonianComposed.lean), `source_to_hamiltonian_composed` | Reuse the action/Legendre machinery once its real enrichment and variational hypotheses hold. The present quadratic completion gives its own explicit conditional action. | The theorem does not choose the real enrichment, kinetic law, quantum representation or physical clock. |
+| [Common scalar packet](../paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex), `prop:common-scalar-continuum-limit` | The canonical completion and constrained local field coordinates retain the original action, fields and vacuum, so the same free scalar limit applies. | Native implementation and physical identification; no interacting limit follows. |
+| [Local preparation](../paper/tex_fragments/SOURCE_SCALAR_LOCAL_PREPARATION.tex), “Preparation with an active free field” | The local ramp supplies a bounded initial-state error for the same original **q=3** coupled vacuum, which propagates by channel contractivity. | Supplied blank/control/time; it does not supply the separately used q=5 or q=233 numerical preparation budgets. |
+| [Finite instruments](../paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex), `prop:source-scalar-finite-pulse` | Exact force and retained-pointer histories reuse the solvable Gaussian pulse and keep its relative pointer phases. | A complete implementation in compatible source codes, including intermediate tails and all outcomes. |
+| [Sequential instruments](../paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex), `thm:source-scalar-sequential-instrument` | Reuse the joint field/record channel and trace-distance contraction; do not rederive a separate probability law for each history. | Source production of preparations, instruments and readout; adaptive feedback requires its own explicit history. |
+| [Time refinement](../paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex), `prop:source-scalar-time-refinement` | Reuse the existing local split-step error estimate for its specified time-independent action. | A time-dependent ramp needs an additional variation-error bound; the existing theorem does not automatically cover it or select a physical clock. |
+| [Gravity premise ladder](registers/GRAVITY_PREMISE_LADDER.md) | Reuse the conditional entropy-to-gravity implications once the same candidate supplies their typed inputs. | Physical edge alignment, joint state/geometry stationarity, stress, common continuum and calibration remain distinct; scalar preparation does not close them. |
 
 ## 2. The iterative minimalist method
 
@@ -130,7 +180,7 @@ The next work is concentrated on a connected set of interfaces:
 | --- | --- | --- |
 | **Why should repair capacity also be inertia?** | Test the linear reversible same-capacity completion against `I+εA` kinetic alternatives using dynamical response, not configuration equilibrium alone. | Derive the identification from admissible microscopic operations or constrain it independently; retain velocity, clock and linearity premises. |
 | **Which weighted source law is selected?** | Reuse the exact stiffness factorization and action-measure theorem. | Justify conductances, reference, mass and boundaries independently of the target action; reciprocity identifies normalized capacities given an admissible response, not that response's physical selection. |
-| **Can the finite quantum components become a full source history?** | Reuse the source-qubit force/pointer compiler and coherent-transfer criterion; attach the original coupled vacuum and free evolution. | Control the actual state/energy tail, simultaneous free-plus-driven pulse, retained pointer, resets and complete outcomes with one resource/error budget. The component compiler does not prepare the vacuum or derive autonomous controls. |
+| **Can the finite quantum components become a full source history?** | Join the local vacuum-preparation schedule and exact retained-pointer history through the existing state-error contract; reuse source controls for implementation. | Implement the same encoding/decoder, preparation, free-plus-driven operations and complete retained outcomes, with one error/resource budget. A normal-mode code is not free local hardware; the conservative current preparation bound does not resolve every small pointer signal. |
 | **Which model time is physical?** | Attach the canonical flow and existing local split implementation to a declared source clock. | Establish preparation, readout, event ancestry and all execution costs; a model-time parameter or a local matrix is insufficient. |
 | **Does the archived spherical family converge?** | Use its uniform internal gap, exact memory and positive local coarse approximants. | Prove compatible spatial operator/state convergence on that different routing; neither of the two completed continuum examples substitutes for this. |
 | **Can the field assumptions be supplied by the microscopic process?** | Test the canonical phase reference, state preparation and statistics against retained records and resources. | Justify or replace the supplied Bose CCR and vacuum. The constrained field decoder is local; the free Fock representation requires justification. |
@@ -348,6 +398,72 @@ Exact CCR cannot hold in a finite code: the boundary defect is
 `[X_d,Y_d]=i(I−d|d−1><d−1|)`. Controlled approximation replaces that impossible
 identity. Source controls remain supplied; compiling a chosen operation does
 not show that autonomous repair selects it or calibrates physical time.
+
+### Local vacuum preparation and one retained-pointer history
+
+The simplest new preparation keeps the original oscillator variables and
+turns on the existing stiffness locally:
+
+```text
+H(t) = [pᵀp + qᵀ(I + s(t/T)(A−I))q]/2,
+s(u) = 3u²−2u³,   0 ≤ u ≤ 1.
+```
+
+For the original q=3 model, start from independent frequency-one oscillator
+blanks and use the original eight-mode matrix A. The path has frequency gap
+at least one. A modewise integration-by-parts estimate bounds the **full
+infinite-oscillator** vacuum trace distance by C/T, with an interval-certified
+C<35.919273. The prospectively selected T=512 therefore gives error
+<0.070155. All 42 fixed checks passed, including shorter-duration controls and an
+independent canonical/Bogoliubov comparison. The numerical distance
+0.00016024 is diagnostic rather than a rigorous ODE error enclosure.
+A declared additional implementation/preparation budget of 0.025 would give
+<0.095155, conditional on actually meeting that budget. The schedule, blanks
+and model time remain supplied. This is a finite preparation theorem, not
+autonomous vacuum selection or a refinement-uniform implementation bound.
+
+A second constructive preparation encodes squeezed finite states followed by
+passive mixing into the existing source-qubit controls. For the same original
+q=3 vacuum, its exact retained-mass formula gives trace distance
+≤0.059059008; 196 checks passed. Its conservative compiler has an upper bound of about
+396 billion native pulses before the declared service costs. The complete
+word was not executed or precision-certified. This existence construction
+supports the interface but makes the local ramp the preferred next route.
+
+For free evolution, classical force and commuting retained-pointer controls,
+the existing finite-pulse solution extends directly to piecewise histories.
+Write `H(t)=H_0−j(t)ᵀq`, where j includes the signed pointer Z controls. Then
+
+```text
+U(T)=exp(−iH_0T) exp(iΦ) exp[i(aᵀq+bᵀp)],
+a=∫cos(Ωt)j(t)dt,   b=∫Ω^−1 sin(Ωt)j(t)dt,
+Φ=(1/2)∫_(t>s) j(t)ᵀΩ^−1 sin[Ω(t−s)]j(s) ds dt.
+```
+
+The Magnus expansion terminates because those controls commute. Φ includes
+identity, Z and ZZ terms; relative pointer phases cannot be discarded.
+Five fixed eight-mode histories with two retained pointers and three code
+cutoffs passed 100 checks against an independent coherent-state evolution.
+Dropping the relative phases changes the two-pointer output, by trace distance
+about 0.00298 in the force-plus-two-pointer case. Noncommuting controls lie
+outside this exact formula's hypotheses.
+
+The normal-mode finite-code comparison includes escaped output and arbitrary
+reference entanglement. It is an operation target, not a free native basis
+change. Joining the results uses the existing contract
+`ε_total ≤ ε_vac + ε_history + ε_service`, with a compatible encoding,
+decoder and error domain. A rigorous preparation bound near 0.07 cannot
+certify the approximately 0.003 phase signal by itself. Site-to-mode access,
+finite control precision, drift during service, intermediate occupations,
+reset and all retained outcomes still need one source-level budget.
+
+The next minimal implementation should reuse local kinetic/potential split
+factors on the **same onsite code**, including one native-edge quadratic
+coupling, before paying for a generic global Gaussian compiler. Existing
+source Pauli controls and the fixed-action time-refinement theorem are useful
+pieces. Time-dependent stiffness, cutoff leakage throughout the history and
+source-clock costs require their own bounds; none is hidden in the change of
+coordinates.
 
 ### A short selection theorem isolates the substantive extra assumption
 

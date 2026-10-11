@@ -14,6 +14,11 @@ on:
       - "README.md"
       - "README_FR.md"
       - "tools/check_claim_registry.py"
+      - "tracking/premise_register.json"
+      - "tracking/model_theorem_map.json"
+      - "docs/MODEL_PREMISE_MAP.md"
+      - "tools/build_model_theorem_map.py"
+      - "tools/test_model_theorem_map.py"
       - "tools/bump_paper_release.py"
       - "code/particles/calibration/q1_q4_wz_theorem_oracle/**"
       - ".github/workflows/claim-registry.yml"
@@ -27,6 +32,11 @@ on:
       - "README.md"
       - "README_FR.md"
       - "tools/check_claim_registry.py"
+      - "tracking/premise_register.json"
+      - "tracking/model_theorem_map.json"
+      - "docs/MODEL_PREMISE_MAP.md"
+      - "tools/build_model_theorem_map.py"
+      - "tools/test_model_theorem_map.py"
       - "tools/bump_paper_release.py"
       - "code/particles/calibration/q1_q4_wz_theorem_oracle/**"
       - ".github/workflows/claim-registry.yml"
@@ -63,6 +73,11 @@ jobs:
 
       - name: Validate registry
         run: python3 tools/check_claim_registry.py
+
+      - name: Validate model–theorem premise map
+        run: |
+          python3 tools/build_model_theorem_map.py --check
+          python3 -m unittest discover -s tools -p test_model_theorem_map.py -v
 
       - name: Validate QFT/WZ theorem oracle
         working-directory: code/particles/calibration/q1_q4_wz_theorem_oracle
