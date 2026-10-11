@@ -9,7 +9,7 @@ proofs, simulations, candidate implementations and issue closures are bounded
 milestones; they do not by themselves complete the programme.
 
 Research status: **11 October 2026**. Source reference:
-`f06c9ab444b59d923920253a6904947f0b11de3b`.
+`5c2aafe18a83921468e72e0df25912d6d814db57`.
 
 **Programme decision, 11 October:** organize research around what one repair
 process must supply. The [work ownership](#work-ownership-and-claim-accounting)
@@ -17,24 +17,20 @@ below assigns construction, physical tests and audits in parallel. Paper
 releases and broad prose restructuring are subject to the
 [model milestone](#research-programme-and-paper-release-hold).
 
-**Current scalar benchmark:** join the existing weighted repair stiffness to
-the existing scalar theory through its **minimal canonical inertial completion**.
-Use the same local capacity for repair and inertia; test that identification
-rather than introduce another fitted action. A constrained first-order field
-representation retains local position/momentum access and both frequency
-signs. It reuses the scalar continuum, preparation and instrument theorems
-without changing their Hamiltonian, vacuum or readout. A finite source-qubit
-compiler attaches individual force and pointer factors, with controlled
-low-occupation error. A local smooth schedule prepares the original finite
-coupled vacuum with a controlled state error, and the existing finite-pulse
-theorems join free evolution, force and retained pointers in one exact history.
-Preparation, source synthesis and the retained-pointer history compose
-on one finite onsite code, with mathematical error below 0.001237 before
-physical service errors. Complete native execution remains open. This is a declared
-conservative extension of repair, not the original dissipative channel or a
-proof that the physical law has been selected. Native integer repair C,
-completed reconciliation E and the coherent-walk constructions remain valid
-baselines and alternatives.
+**Current microscopic test:** use the native recorded repair current to drive
+an existing reversible source response at the two affected endpoints. The
+local coupling preserves the original repair marginal and inherits its
+single-seam completion and finite binary-network convergence arguments.
+A flat local alternative satisfies the same preservation conditions, so
+response histories must distinguish the candidates. Local response factors
+and their coupling are explicit hypotheses; reciprocal backreaction and the
+full source-response grammar are unfilled requirements.
+
+**Current scalar benchmark:** the separate minimal canonical inertial
+completion supplies controlled preparation, free evolution and retained
+observations, with a same-code mathematical error below 0.001237 before
+physical service errors. It is a component benchmark, not a selection of the
+microscopic law. Its construction and compiler results remain available below.
 
 **Model-selection priority:** one microscopic repair process must supply
 compatible geometry, reversible response and clock readouts. The scalar
@@ -44,6 +40,15 @@ interfaces below to constrain the next candidate before adding mechanisms.
 
 ## 1. Headline results and missing-link completion status
 
+- **One native event can join repair and local reversible response.**
+  Attach the existing six-level response to the recorded current at both seam
+  endpoints. The original load channel, classical records and disjoint-seam
+  locality are preserved. A unitary change of coordinates reuses the existing
+  completion proof; positive seam mixtures converge on the finite binary
+  shell while retaining protected local block populations. All 268 checks and
+  an identical isolated replay passed. This is a one-way finite coupling,
+  with extra local response factors and a supplied coupling; no physical
+  clock, full A1 grammar or reciprocal force is established.
 - **The native repair connects port geometry and a dimensionless
   clock relation.** In the declared total-two nearest-integer model at uniform
   binary equilibrium, the same
@@ -152,8 +157,8 @@ this document is not an empirical verification bundle or an axiom amendment.
 
 | Link | Completion status and constructed result | What completes the remaining physical connection |
 | --- | --- | --- |
-| **M01: common source** | **Finite source constructions and canonical field join complete.** Native C/E and coherent extensions; exact weighted factorization of the golden scalar stiffness; a local constrained first-order representation of its canonical completion. | Select the source coefficients, same-capacity inertia, quantum representation and controls. Conservative canonical evolution and the native dissipative channel are distinct laws. |
-| **M02: observers and agreement** | **Finite observer contracts, candidate equalizers and nested completions complete.** Proper overlaps, protected marginals and actual interventions. E completes the supplied exchange/phase-invariant algebra. Exterior repair realizes regional maximum-entropy completions with an exact inclusion tower. | Justify those interpretations from the required observer menu; translated-chart naturality alone does not select them. Supply the used completeness, acceptance, confluence, authentication and broader history contracts. Nonnested completions can fail to commute; the supplied targets are not the complete A2 diagram. |
+| **M01: common source** | **Finite source constructions and canonical field join complete.** Native C/E and coherent extensions; exact weighted factorization of the golden scalar stiffness; a local constrained first-order representation of its canonical completion; a recorded-current coupling to endpoint response factors with the original repair marginal. | Select the source coefficients, same-capacity inertia, quantum representation and controls. Conservative canonical evolution and the native dissipative channel are distinct laws. The endpoint-current extension adds local response factors and coupling; its full source grammar and reciprocal backreaction need justification. |
+| **M02: observers and agreement** | **Finite observer contracts, candidate equalizers and nested completions complete.** Proper overlaps, protected marginals and actual interventions. E completes the supplied exchange/phase-invariant algebra. Exterior repair realizes regional maximum-entropy completions with an exact inclusion tower. The current/response extension inherits a finite binary-network fixed-algebra limit. | Justify those interpretations from the required observer menu; translated-chart naturality alone does not select them. Supply the used completeness, acceptance, confluence, authentication and broader history contracts. Nonnested completions can fail to commute; the supplied targets are not the complete A2 diagram. |
 | **M03: geometry** | **Finite geometry and controlled coarse energy constructed.** Native rank-three response; uniform memory/gap bounds and local coarse energies; periodic acoustic tensor; existing golden coordinates and uniquely reconstructible relative action capacities. | Identify physical regions, spacetime metric, area/volume and bulk refinement; select the response being reconstructed. Event-count weights and nonuniform action capacities are distinct finite references. A positive Schur energy need not be a Markov generator. |
 | **M04: physical time** | **Finite clocks and explicit model-time laws constructed; physical attachment open.** Canonical flow reuses the original scalar time. The weighted walk and periodic exchange/wave scalings remain alternatives. | Justify and calibrate the physical law and clock with complete execution costs. Avoiding the walk normalization does not identify canonical time with accepted source-event counts or establish an operational physical cone. |
 | **M05: fields and current** | **Finite currents, full scalar stiffness and local canonical fields joined.** Exact energy/symplectic preservation and local position/momentum decoder; no independent edge field is added. | Select physical charge, energy, stress and units; attach interactions and reciprocal geometry response. Local field coordinates do not supply stress coupling or native many-body closure. |
@@ -214,12 +219,14 @@ the `5−sqrt(5)` band. A proposed identification must justify the intertwining
 map. Keeping internal response and spatial geometry distinct is also allowed;
 their equal dimension alone does not identify them.
 
-**Working hypothesis to test:** a local operation retains a reversible,
+**Working hypothesis under test:** a local operation retains a reversible,
 phase-sensitive private response and produces repairable public records.
 Forgetting or retaining different records gives distinct, explicitly related
 views of that operation. A quantum instrument with retained outcomes is one
-available candidate description, used by the native C/E constructions;
-it is not selected uniquely by these arguments. The noncommuting response,
+available candidate description, used by the native C/E constructions. The
+[endpoint-current construction](#a-local-response-driven-by-the-actual-repair-record)
+tests a finite attachment, with a flat local alternative. Neither is selected
+uniquely by these arguments. The noncommuting response,
 its coupling to repaired records and its event clock must be derived or tested
 together. Simply appending an independent gauge sector or oscillator clock
 would leave the shared-process obligation unfilled.
@@ -419,6 +426,117 @@ above assign active work:
 
 ## 3. The candidate repair law being tested
 
+### A local response driven by the actual repair record
+
+The current microscopic test joins native repair and the existing reversible
+response through the same recorded event. For a seam e=(a,b), the current j
+fixes the native load change. Keep its current-record Kraus operator L_r and
+apply U_r=exp[θj(D_b−D_a)] at both endpoint response factors. The D_p are the
+existing six-level [source response](../paper/tex_fragments/SOURCE_RECORD_GLUING.tex),
+with an explicit incidence-preserving port identification. The working load
+space has 78 total-two configurations; the declared response space is
+`(C^6)^⊗12`. With identity on the other response factors, the event is
+
+```text
+K_(e,c,j) = L_(e,c,j) ⊗ U_(e,j)^(a) ⊗ U_(e,j)^(b),
+U_(e,j) = exp[θ j (D_b−D_a)].
+```
+
+The local factors and θ are declared hypotheses.
+
+#### What is supplied by that one event
+
+For any correlated load/response input, discarding the response gives exactly
+the original native repair channel, branch by branch for classical records.
+Its classical geometry and dimensionless clock relations therefore retain
+their original preparation and scheduling conditions. The coherent record
+off-diagonal blocks can change. Disjoint seams commute because they operate
+on disjoint endpoint factors; proper-carrier covariance follows from the
+existing response transport. A single shared response factor is a useful
+rejected control: it permits disjoint seams to interfere.
+
+The main simplification is exact reuse of the completion argument. Set
+s_e(x)=(x_b−x_a)/2 and let W_e apply exp[θs_e(x)(D_b−D_a)] at the two endpoints,
+controlled by the load configuration. A repair changes s_e by j, hence
+K_r=W_e(L_r⊗I)W_e†. The coupled C_e and E_e are conjugates of their original
+channels and inherit C_e^n=E_e+2^(1−n)(C_e−E_e), for n≥1. No additional
+relaxation law is needed for this single-seam result.
+
+On the 66-state binary shell, the existing Hilbert–Schmidt positive-contraction
+and quadratic-form argument transfers too. Any fixed normalized positive seam mixture
+of the coupled atomic channels converges to its common fixed algebra after
+fresh records are discarded. This is convergence of reduced states, not of
+the growing coherently retained history. The completed-channel mixture has
+the same fixed algebra, and their gaps satisfy
+γ_E/2≤γ_C≤γ_E on its orthogonal complement. No absolute gap or continuum-uniform
+rate has been computed for this enlarged model; the old uncoupled numerical
+gap cannot be imported through different seam-dependent W_e.
+
+The local 3+3 block populations commute with every D_p and survive every
+event. Thus this finite model can settle while retaining protected local
+distinctions. This does not establish arbitrary private coherence, a unique
+equilibrium or the full physical observer algebra. Sustained recorded
+operation needs the same explicit storage/disposal policy as the native law.
+
+#### A simpler alternative keeps the selection question testable
+
+Let J=Σ_pD_p and Dbar_p=D_p−J/12. The endpoint operations
+exp(−θjDbar_a) and exp(+θjDbar_b) define another local current-record lift.
+They are induced by the single global change of coordinates
+W_flat(x)=⊗_p exp(θx_pDbar_p), so every closed load history has identity
+response holonomy. This alternative preserves the same native repair and
+locality. Distinguishing it from the main lift requires response-history
+measurements, not another match of the unchanged load spectrum.
+
+In the main lift, a closed load loop can leave local path memory even with
+commuting response matrices. Loop memory alone must not be called physical
+gauge curvature. The tests separate order-sensitive noncommutation from this
+ordinary path memory with a commuting-generator control and retain all
+outcomes of the fixed short history.
+
+#### Fixed tests and what they discriminate
+
+The frozen cases use θ=0, 1/16 and 1/8; all 78 total-two load states, all
+30 native seams and all 60 proper carrier transports are checked. The local
+support argument covers all 315 disjoint seam pairs. Exact current grouping
+and C/E identities are combined with correlated-input matrix checks and a
+nonzero C−E coherence test. All **268 checks** passed and the sole independent
+fresh-directory replay reproduced the scientific output byte for byte.
+
+At θ=1/8 the shared-processor negative control has a disjoint-order channel
+infidelity of approximately 0.000844, whereas endpoint support preserves
+commutation. On a fixed three-seam schedule the two local alternatives have
+complete record-plus-response trace distance **0.137390**, numerically, for
+the declared product of local maximally entangled inputs and references.
+All eight equiprobable coin records are included. This is a source-model
+comparison with supplied probe resources, not an experimental observation or
+a physical coupling estimate. The commuting-generator control also retains
+loop memory, so that signal alone is not evidence for non-Abelian curvature.
+
+The all-seam convergence argument reuses the existing positive-contraction
+proof; the enlarged network matrix and its absolute gap were not computed.
+
+#### Remaining connection
+
+This is a finite one-way coupling: private interventions cannot change the
+unconditional native repair probabilities. Reciprocal backreaction is absent.
+For classical retained histories and product private inputs the attached
+unitaries factorize, so this mechanism alone does not entangle private copies.
+The added tensor factors and conditional response operations have not been
+shown to satisfy the full A1 response grammar on the enlarged source.
+Conserved difference drives omit the central relative-phase direction of D;
+the complete twelve-direction response remains a supplied interface.
+
+The candidates leave θ, physical clock, microscopic state selection, responsive
+geometry and interacting continuum dynamics open. Their common finite
+convergence supplies a useful requirement, but does not select the physical
+law or close an M01–M12 parent entry. The next useful test must discriminate
+the response histories or supply reciprocal coupling while preserving locality
+and a justified completion argument. Reciprocal coupling requires relaxing
+exact preservation of C on specified internal preparations: retaining that
+marginal for every input mathematically forbids feedback. The archived kernel
+is a reference benchmark, not an immutable microscopic implementation.
+
 ### Weighted agreement and its minimal inertial completion
 
 For a chosen overlap e=(i,j), reconcile the two readings to their common
@@ -436,7 +554,7 @@ This real-valued extension is distinct from the native integer rule below.
 Grounded boundary seams and the supplied constant mass give the full
 configuration potential `V=fᵀ(K_D+m²M)f/2`.
 
-The active candidate adds a local velocity ν and uses **the same M for
+The scalar benchmark adds a local velocity ν and uses **the same M for
 inertia**, retaining the repair restoring force:
 
 ```text

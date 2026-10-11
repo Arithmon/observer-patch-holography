@@ -115,9 +115,9 @@ are not additional prerequisites for the supplied finite scalar theorem.
 
 ### RE-01: Common repair reference and law
 
-**Constructed:** Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly.
+**Constructed:** Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly. A current-record lift couples native C to the existing six-level response at both seam endpoints, preserving its full load marginal and disjoint-seam locality.
 
-**Remaining input:** For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate. The full-model candidate must link its repair marginal, reversible port response and record clock through shared states and interventions; the scalar benchmark alone does not supply this.
+**Remaining input:** For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate. The full-model candidate must link its repair marginal, reversible port response and record clock through shared states and interventions; the scalar benchmark alone does not supply this. This lift adds local response factors and a supplied coupling, is one-way at the repair marginal, and does not establish the complete response grammar on the enlarged source.
 
 **Closure condition:** Exhibit one local process and explicit restriction/intervention maps supplying the intended repair, carrier-response, reversible-current and clock contracts. Reuse the existing theorem implications once these interfaces hold; derive each extra choice or retain it as an explicit model hypothesis. Separate matched component fixtures do not establish a common source.
 
@@ -133,9 +133,9 @@ Sources:
 
 ### RE-02: Confluence, acceptance and protected observations
 
-**Constructed:** The normal-form and consensus implications are proved for their explicit repair and transactional contracts; finite protected-memory examples are constructed.
+**Constructed:** The normal-form and consensus implications are proved for their explicit repair and transactional contracts; finite protected-memory examples are constructed. The endpoint-current lift inherits C/E completion by seamwise unitary conjugation; positive seam mixtures on its finite binary shell converge to their common fixed algebra after records are discarded, with protected local block populations.
 
-**Remaining input:** The required observer menu must supply completeness, local diamonds, well-founded aggregate descent, semantic read closure and valid acceptance. Mere agreement or oscillatory Hamiltonian evolution does not supply termination.
+**Remaining input:** The required observer menu must supply completeness, local diamonds, well-founded aggregate descent, semantic read closure and valid acceptance. Mere agreement or oscillatory Hamiltonian evolution does not supply termination. This candidate fixed algebra is not identified with the full A2 observer equalizer; its absolute gap and refinement control have not been established.
 
 **Closure condition:** Verify the complete contract on the actual operations and retained observations, including conflicting updates; do not infer it from translated-chart naturality.
 
@@ -237,7 +237,7 @@ Sources:
 
 **Constructed:** Existing proper-code source controls compile individual force/pointer factors. Complete retained-pointer phases are checked in the exact history target.
 
-**Remaining input:** Coherent code gluing, pure blanks, preparation, reset, precision, transport, drift and complete readback remain supplied service requirements.
+**Remaining input:** Coherent code gluing, pure blanks, preparation, reset, precision, transport, drift and complete readback remain supplied service requirements. Event-conditioned raw responses in the endpoint-current candidate require a grammar/implementation check beyond the existing proper-code controller contract.
 
 **Closure condition:** Execute or bound the full source instrument with its complementary outcomes and all service errors; a requested unitary or accurate coefficient is not a complete channel certificate.
 
@@ -302,7 +302,7 @@ Sources:
 
 ### RE-12: Source clock, physical time and execution cost
 
-**Constructed:** Canonical model time, supplied event-count clock comparisons and conditional scalar action-clock reconstruction exist.
+**Constructed:** Canonical model time, supplied event-count clock comparisons and conditional scalar action-clock reconstruction exist. The endpoint-current lift preserves the native load marginal and classical record blocks and therefore its scoped geometry/count relations; this adds no physical clock calibration.
 
 **Remaining input:** Choose a physical clock on the same process and account for preparation, service, readout and ancestry costs. A source scale identification and conversion to laboratory units are distinct. The record clock must be read from the histories that also supply the carrier response and reversible source, with an explicit relation to scalar model time.
 
@@ -336,7 +336,7 @@ Sources:
 
 **Constructed:** The finite local Standard Model Lie-algebra result remains proved under the adopted A1 complete-response/closure clauses and A2 endogenous transport. Compact-Lie classification is an explicit mathematics import.
 
-**Remaining input:** The physical current/action, same-source category, global form and coupling attachment remain separate. The scalar field construction does not instantiate a physical gauge theory. Compatibility with the twelve-port reversible response is an immediate law-selection constraint, even though constructing physical gauge fields is downstream. Scalar seam equalizers cannot serve as that current: their tested Lie closure is so(11), not the required twelve-dimensional algebra.
+**Remaining input:** The physical current/action, same-source category, global form and coupling attachment remain separate. The scalar field construction does not instantiate a physical gauge theory. Compatibility with the twelve-port reversible response is an immediate law-selection constraint, even though constructing physical gauge fields is downstream. Scalar seam equalizers cannot serve as that current: their tested Lie closure is so(11), not the required twelve-dimensional algebra. Conserved difference drives in the endpoint-current lift omit the central relative-phase generator; the full twelve-direction response is a supplied interface, not derived physical gauge dynamics.
 
 **Closure condition:** Bind the proved algebra and representation to actual source observables, dynamics and refinement; supply the categorical and physical gauge interfaces used by the selected branch.
 
@@ -536,7 +536,7 @@ Sources:
 
 **Constructed:** This crosswalk covers the canonical PR inventory and identifies actual scalar theorem reuse. The authoritative claim registry separately records ordinary assumptions, imports and explicit non-consumers.
 
-**Remaining input:** The whole paper/theorem body has not been exhaustively normalized into one semantic dependency graph. Ordinary assumptions and imported-result names are inventoried, not individually discharged by this crosswalk.
+**Remaining input:** The whole paper/theorem body has not been exhaustively normalized into one semantic dependency graph. Ordinary assumptions and imported-result names are inventoried, not individually discharged by this crosswalk. The endpoint-current candidate declares twelve local six-level factors, conditional response operations, retained records and a coupling theta; its flat alternative shows that preservation and convergence alone do not select that coupling law.
 
 **Closure condition:** For each promoted claim bind its actual assumptions and imports, all transitive antecedents and model-added hypotheses to compatible objects with scoped evidence. Keep unreviewed bindings visible and reject circular discharge.
 
