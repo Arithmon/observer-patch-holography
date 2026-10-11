@@ -297,9 +297,9 @@
       "scope": "active",
       "status": "conditional",
       "premises": [],
-      "constructed": "For the original eight-mode q=3 action, the unchanged local gapped ramp has a sharper rigorous full-state error below 0.000433450 at model time 512 and 0.000108323 at 1024. For that q=3 continuous ramp at T=512, local time discretization with N=2^24 adds less than 0.000695044 state error, giving combined error below 0.001129 before finite source-code/service errors. A separate finite-code construction has error at most 0.059059008 but a very large conservative compilation cost.",
-      "remaining": "Independent oscillator blanks, control of the ramp and model time are hypotheses. Preparation is not autonomous vacuum selection; no uniform refinement resource theorem is supplied.",
-      "closure": "Implement that preparation in the history code and propagate its error. Do not substitute q=3 evidence for q=5/q=233 budgets or substitute a numerical ODE estimate for a certified bound.",
+      "constructed": "For the original eight-mode q=3 action, the unchanged local gapped ramp has rigorous full-state error below 0.000433450 at model time 512 and 0.000108323 at 1024. At T=512, local time discretization with N=2^24 adds less than 0.000695044; a fixed d=8192 onsite code adds less than 0.000033144832 through all partial quadratic factors. The ideal finite preparation error is below 0.001162. Existing source controls compile that word with uniform synthesis error at most 1161/2^24; its preparation and subsequent history share one conditional mathematical budget in RE-10. The older finite-code preparation and its 0.059059008 bound remain a separate construction.",
+      "remaining": "Independent oscillator blanks, control of the ramp and model time are hypotheses. The native word has not been emitted or executed; physical pulse and code-service precision, storage, initialization and readout costs remain additional. Preparation is not autonomous vacuum selection; no uniform refinement resource theorem is supplied.",
+      "closure": "Implement the native preparation within the same-code history of RE-10 and charge actual initialization, pulse and service errors. Reuse the uniform synthesis estimate and transport the state-specific preparation error by channel contraction. Do not substitute q=3 evidence for q=5/q=233 budgets or a numerical trajectory for a certified bound.",
       "sources": [
         {
           "path": "docs/MODEL_SEARCH.md",
@@ -321,12 +321,16 @@
         "M06"
       ],
       "scope": "active",
-      "status": "open",
+      "status": "conditional",
       "premises": [],
-      "constructed": "Free evolution, force and commuting retained-pointer couplings have one exact Gaussian history; finite normal-mode cutoffs have full-output bounds. Existing sequential channels propagate initial-state error. For the same q=3 blank and cubic ramp, midpoint local kick-drift-kick has an explicit O(N^-2) state error including stiffness variation.",
-      "remaining": "Preparation and operation components use different convenient coordinates. Their same-code source realization needs intermediate occupation, encoding/decoding, source service, all outcomes and one resource/error budget.",
-      "closure": "Supply the composite channel on one code and a bound of the form epsilon_vac+epsilon_history+epsilon_service. Reuse the local Gaussian time-variation/splitting estimate within its state-specific scope; bound finite onsite cutoff leakage through every intermediate factor and charge the complete source service.",
+      "constructed": "The original five q=3 force/retained-pointer histories and coupled-vacuum preparation compose on one d=8192 onsite code with 104 field and two pointer work qubits. Time, displaced occupation cutoffs and existing-source synthesis have a combined mathematical trace-distance bound below 0.001237, preserved by the same complete readout. All relative phases and outcomes are retained. The finite recipe has a conservative evolution pulse upper bound below 2^116, with fewer than 2^117 pack/export events; neither word emission nor native execution was performed.",
+      "remaining": "Physical blank/pointer initialization, pulse/control and coherent code-service accuracy, storage/drift, routing/reset, complete readback and their resource budgets remain supplied or unimplemented. The enormous constructive upper count does not establish efficient execution. Physical clock selection and refinement-uniform resources remain separate obligations.",
+      "closure": "Emit and execute an adequate native implementation and add reference-stable physical initialization, pulse, service, storage and readout errors to the constructed mathematical budget. Preserve complete records and the comparison order: uniform finite compiler on actual code, preparation error under a common extended finite history, state-specific ideal Gaussian history estimates, then complete readout. A common-code mathematical recipe does not close the physical experiment.",
       "sources": [
+        {
+          "path": "docs/MODEL_SEARCH.md",
+          "label": "One composed preparation–history error and resource budget"
+        },
         {
           "path": "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex",
           "label": "Exact finite pulse",

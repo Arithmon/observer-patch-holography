@@ -1,7 +1,7 @@
 # OPH model search: iterative construction from local repair
 
 Research status: **11 October 2026**. Source reference:
-`ac408a09deeebb4d3dc27dc1ec11361e6583fd4a`.
+`dc893170a2096eb3e65be476a7008fb67e105d96`.
 
 **Programme decision, 11 October:** organize research around what one repair
 process must supply. The [work ownership](#work-ownership-and-claim-accounting)
@@ -20,7 +20,9 @@ compiler attaches individual force and pointer factors, with controlled
 low-occupation error. A local smooth schedule prepares the original finite
 coupled vacuum with a controlled state error, and the existing finite-pulse
 theorems join free evolution, force and retained pointers in one exact history.
-Their complete native implementation remains open. This is a declared
+Preparation, source synthesis and the retained-pointer history compose
+on one finite onsite code, with mathematical error below 0.001237 before
+physical service errors. Complete native execution remains open. This is a declared
 conservative extension of repair, not the original dissipative channel or a
 proof that the physical law has been selected. Native integer repair C,
 completed reconciliation E and the coherent-walk constructions remain valid
@@ -28,6 +30,24 @@ baselines and alternatives.
 
 ## 1. Headline results and missing-link completion status
 
+- **One conditional source construction joins preparation and retained
+  observations on the same code.** The original eight-site q=3 blank,
+  coupled-vacuum preparation, active free field, force and two coherent
+  retained pointers use 8,192 onsite levels throughout. Existing source
+  controls give a finite synthesis recipe. The combined mathematical
+  trace-distance error is **<0.001237**, including preparation, time steps,
+  occupation cutoffs and both synthesis stages. Complete readout preserves
+  the bound without postselection. Four reviewed packets passed **535
+  checks and four identical isolated replays**; these include analytic-bound,
+  small-matrix and bookkeeping checks, not a simulation of the 106-qubit
+  field/pointer state. Physical initialization and service errors are additional.
+- **The source compiler is constructive but not practical as bounded here.**
+  Its conservative combined evolution ceiling is **<3.44×10^34 native
+  pulses**, with two code-service events per pulse. This is an upper bound,
+  not a cost lower bound or an executed word. Efficient compilation, physical
+  control accuracy, service timing, storage and complete readback remain
+  open. The construction changes RE-10 from open to conditional; #1077 and
+  the physical part of M06 remain open.
 - **The repair force has a minimal conditional Hamiltonian completion.**
   Weighted agreement factors the supplied scalar stiffness exactly. If the
   same capacity measures inertia, linear autonomous dynamics, the declared
@@ -52,7 +72,7 @@ baselines and alternatives.
   force and pointer factors into proper qubit codes. Direct infinite-oscillator
   bounds include escaped amplitude and arbitrary reference entanglement.
   All 18 fixed cases passed. No extra primitive oscillator gate is assumed;
-  source implementation of the full preparation and history remains separate.
+  complete source execution and physical service budgets remain separate.
 - **A local schedule prepares the original coupled vacuum.** Starting from
   independent frequency-one oscillator blanks, smoothly turn on the existing
   stiffness. The path stays gapped and has the original eight-mode q=3 vacuum
@@ -68,14 +88,7 @@ baselines and alternatives.
   <0.000695044 relative to the continuous ramp. Together with its endpoint
   bound, this gives **<0.001129 to the original coupled vacuum**. All 62
   checks and an identical isolated replay passed. This is an oscillator
-  construction; its finite source-code realization and service costs remain
-  open. Computing its small symplectic matrices is not executing a native word.
-- **Free evolution, force and retained pointers have one exact finite-history
-  formula.** Reuse the scalar papers' solvable finite pulses, retaining all
-  relative controller phases. Five fixed eight-mode histories and three
-  normal-mode code cutoffs passed 100 checks. The finite-code error includes
-  escaped output; source compilation and site-to-mode access remain distinct
-  implementation requirements.
+  construction; native pulse execution and service costs remain open. Computing its small symplectic matrices is not executing a native word.
 - **The new interfaces passed bounded tests and countercontrols.** Exact
   source/action identities and full-matrix checks passed at 8 and 64 sites,
   including all frequency signs, local constraints, quantum commutators,
@@ -111,7 +124,7 @@ this document is not an empirical verification bundle or an axiom amendment.
 | **M03: geometry** | **Finite geometry and controlled coarse energy constructed.** Native rank-three response; uniform memory/gap bounds and local coarse energies; periodic acoustic tensor; existing golden coordinates and uniquely reconstructible relative action capacities. | Identify physical regions, spacetime metric, area/volume and bulk refinement; select the response being reconstructed. Event-count weights and nonuniform action capacities are distinct finite references. A positive Schur energy need not be a Markov generator. |
 | **M04: physical time** | **Finite clocks and explicit model-time laws constructed; physical attachment open.** Canonical flow reuses the original scalar time. The weighted walk and periodic exchange/wave scalings remain alternatives. | Justify and calibrate the physical law and clock with complete execution costs. Avoiding the walk normalization does not identify canonical time with accepted source-event counts or establish an operational physical cone. |
 | **M05: fields and current** | **Finite currents, full scalar stiffness and local canonical fields joined.** Exact energy/symplectic preservation and local position/momentum decoder; no independent edge field is added. | Select physical charge, energy, stress and units; attach interactions and reciprocal geometry response. Local field coordinates do not supply stress coupling or native many-body closure. |
-| **M06: quantum dynamics and regime** | **Conditional scalar continuum, local vacuum-preparation schedule and joint history target constructed.** The unchanged Hamiltonian and instruments join exactly. The same local q=3 ramp has endpoint error <0.000433450; including its specified local time discretization gives <0.001129 to the coupled vacuum. Full force/two-pointer histories retain relative phases and controlled normal-mode cutoff error. Finite source-qubit interaction factors remain available. | Implement preparation and the complete history in compatible source codes, with drift, intermediate occupation, all outcomes and one resource/error budget; justify representation, controls and physical time. The earlier k=3 local-code vacuum bound remains inconclusive. Finite preparation is not autonomous state selection or a uniform continuum resource bound; no native interacting QFT has been derived. |
+| **M06: quantum dynamics and regime** | **Conditional scalar continuum and one finite source construction joined.** The unchanged Hamiltonian and instruments share the same q=3 onsite code. Preparation, active evolution, force and two retained pointers have a combined mathematical error <0.001237, including time, cutoff and source synthesis bounds; the same complete readout contracts it. | Emit and execute an efficient native word; supply physical initialization, drift, pulse/service precision, storage and readback, and include their errors and resources. Justify representation, controls and physical time. The earlier k=3 local-code vacuum bound remains inconclusive. This fixed construction is not autonomous state selection, a refinement-uniform resource bound or an interacting QFT. |
 | **M07: entropy/area stationarity** | **Finite counting stationarity, exterior completion and bulk collar splits complete.** `S_A+〈Z_B〉=log66−D(ρ_A‖τ_A)`. Exact recovery and a nontrivial 3×4 bulk block are constructed with declared charge centers. | Identify the formal split with the required physical edge factors and derive area, stress/flow, fixed-volume variations, normalization and common refinement. Z_B contains remote bulk entropy. Charge retention alone does not give all-state screening, and unrestricted boundary repair can break alignment. |
 | **M08: gravity** | **Conditional OPH reconstruction exists; this candidate's physical attachment is open.** Finite entropy and controlled charge-collar constructions supply explicit candidate inputs. | Realize the flagship's G1–G6 premises on this same family, including its physical EC factors, conserved stress, universal coupling and gravitational constraints, or justify a different route. The nontrivial bulk collar factors do not discharge the physical gauge-edge premises; the tested spatial-symmetry identification fails. |
 | **M09: parameters and P** | **Relative-capacity identification and conditional kinetic-law uniqueness constructed.** Reciprocity reconstructs normalized capacities for an admissible connected response. The same-capacity linear reversible completion uniquely gives its canonical equation; exact kinetic discriminators survive clock/mass/speed refits. | Select the response, absolute action scale, inertia identification, mass and physical clock. The counterfamily shows why configuration equilibrium alone cannot do this. No P-to-amplitude, temperature or rate map follows. |
@@ -153,9 +166,9 @@ unproved hypothesis of a completed mathematical theorem.
 | [Source-to-Hamiltonian composition](../Lean/Variational/SourceToHamiltonianComposed.lean), `source_to_hamiltonian_composed` | Reuse the action/Legendre machinery once its real enrichment and variational hypotheses hold. The present quadratic completion gives its own explicit conditional action. | The theorem does not choose the real enrichment, kinetic law, quantum representation or physical clock. |
 | [Common scalar packet](../paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex), `prop:common-scalar-continuum-limit` | The canonical completion and constrained local field coordinates retain the original action, fields and vacuum, so the same free scalar limit applies. | Native implementation and physical identification; no interacting limit follows. |
 | [Local preparation](../paper/tex_fragments/SOURCE_SCALAR_LOCAL_PREPARATION.tex), “Preparation with an active free field” | The local ramp supplies a bounded initial-state error for the same original **q=3** coupled vacuum, which propagates by channel contractivity. | Supplied blank/control/time; it does not supply the separately used q=5 or q=233 numerical preparation budgets. |
-| [Finite instruments](../paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex), `prop:source-scalar-finite-pulse` | Exact force and retained-pointer histories reuse the solvable Gaussian pulse and keep its relative pointer phases. | A complete implementation in compatible source codes, including intermediate tails and all outcomes. |
+| [Finite instruments](../paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex), `prop:source-scalar-finite-pulse` | Exact force and retained-pointer histories reuse the solvable Gaussian pulse and keep its relative pointer phases. | Native pulse/service accuracy and complete readback. The fixed commuting histories have a common onsite code with controlled intermediate tails. |
 | [Sequential instruments](../paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex), `thm:source-scalar-sequential-instrument` | Reuse the joint field/record channel and trace-distance contraction; do not rederive a separate probability law for each history. | Source production of preparations, instruments and readout; adaptive feedback requires its own explicit history. |
-| [Time refinement](../paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex), `prop:source-scalar-time-refinement` | Reuse the fixed-action split-step structure. The local ramp has its own midpoint variation and stable splitting estimate, giving a full Gaussian state bound of order N^-2. | Finite onsite cutoffs, source pulse/service error and a physical clock remain separate. The Gaussian bound is state-specific, not an arbitrary-input channel norm. |
+| [Time refinement](../paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex), `prop:source-scalar-time-refinement` | Reuse the fixed-action split-step structure. The local ramp has its own midpoint variation and stable splitting estimate, giving a full Gaussian state bound of order N^-2. | The fixed onsite preparation/history cutoffs have separate state-specific bounds. Native pulse/service error and a physical clock require their own inputs; the Gaussian estimate is not an arbitrary-input channel norm. |
 | [Gravity premise ladder](registers/GRAVITY_PREMISE_LADDER.md) | Reuse the conditional entropy-to-gravity implications once the same candidate supplies their typed inputs. | Physical edge alignment, joint state/geometry stationarity, stress, common continuum and calibration remain distinct; scalar preparation does not close them. |
 
 ## 2. The iterative minimalist method
@@ -288,7 +301,7 @@ above assign active work:
 | --- | --- | --- |
 | **Why should repair capacity also be inertia?** | Attach the tested three-mode curvature or distance-two acceleration discriminator to an admissible preparation/readout. | Derive the identification from microscopic operations or constrain it independently. Equilibrium and the shared position-observable continuum limit do not select it; retain clock, velocity and linearity premises. |
 | **Which weighted source law is selected?** | Reuse the exact stiffness factorization and action-measure theorem. | Justify conductances, reference, mass and boundaries independently of the target action; reciprocity identifies normalized capacities given an admissible response, not that response's physical selection. |
-| **Can the finite quantum components become a full source history?** | Join the local vacuum-preparation schedule and exact retained-pointer history through the existing state-error contract; reuse source controls for implementation. | Implement the same encoding/decoder, preparation, free-plus-driven operations and complete retained outcomes, with one error/resource budget. The local oscillator schedule has a useful preparation bound; intermediate cutoff leakage and total source-service costs need a common budget. |
+| **Can the finite quantum components become a full source history?** | Join the local vacuum-preparation schedule and exact retained-pointer history through the existing state-error contract; reuse source controls for implementation. | Use the constructed common onsite preparation/history and finite source compiler to specify an executable word with complete outcomes and a shared resource/error budget. Fixed-path temporal and occupation errors are controlled; source precision, storage, drift and service costs require implementation evidence. |
 | **Which model time is physical?** | Attach the canonical flow and existing local split implementation to a declared source clock. | Establish preparation, readout, event ancestry and all execution costs; a model-time parameter or a local matrix is insufficient. |
 | **Does the archived spherical family converge?** | Use its uniform internal gap, exact memory and positive local coarse approximants. | Prove compatible spatial operator/state convergence on that different routing; neither of the two completed continuum examples substitutes for this. |
 | **Can the field assumptions be supplied by the microscopic process?** | Test the canonical phase reference, state preparation and statistics against retained records and resources. | Justify or replace the supplied Bose CCR and vacuum. The constrained field decoder is local; the free Fock representation requires justification. |
@@ -499,9 +512,11 @@ a replacement for a state-preparation and energy budget.
 
 The completed part is a conditional finite **operation** interface. These
 are individual force and pointer factors from disjoint original supports,
-not a transported response. Concurrent free evolution, the complete
-finite-duration pulse, GHZ pointer preparation, source vacuum encoding and
-an executed readout history need their joint construction and budget.
+not a transported response. Those earlier q=5 component tests do not supply
+concurrent free evolution, the complete finite-duration pulse, GHZ pointer
+preparation, source vacuum encoding or an executed readout history. The q=3
+construction below supplies a separate conditional common-code history; it
+does not substitute a q=3 preparation budget for this q=5 target.
 Exact CCR cannot hold in a finite code: the boundary defect is
 `[X_d,Y_d]=i(I−d|d−1><d−1|)`. Controlled approximation replaces that impossible
 identity. Source controls remain supplied; compiling a chosen operation does
@@ -574,9 +589,10 @@ change. Joining the results uses the existing contract
 decoder and error domain. The sharper continuous-preparation bound is smaller
 than the approximately 0.003 phase diagnostic, but that alone is not a certified discrimination:
 the two complete error balls must be disjoint, and the diagnostic signal
-itself needs an error enclosure. Site-to-mode access,
-finite control precision, drift during service, intermediate occupations,
-reset and all retained outcomes need one source-level budget.
+itself needs an error enclosure. Site-to-mode access belongs to this older
+normal-mode route; the onsite construction below avoids it. Source control
+precision, drift during service, reset and all retained outcomes require
+one implementation budget.
 
 ### Local time steps for the same preparation
 
@@ -616,20 +632,210 @@ matrix products, not as a finite source pulse word. Floating ODE/trajectory
 comparisons remain diagnostics; the analytical interval estimate supplies
 the certificate.
 
-This closes the missing changing-stiffness estimate for this scheduled
-oscillator preparation. The next implementation should keep **one onsite
-code** through preparation and the retained-record history. Existing source
-Pauli controls can synthesize its finite Hermitian quadratic factors to
-declared precision; no new primitive oscillator gate is needed. The unresolved comparison is between
-those finite factors and the infinite-oscillator evolution throughout every
-kick and drift, including intermediate occupation, escaped amplitude,
-precision, transport, reset, drift during service and all retained outcomes.
-Use the existing operator-norm synthesis bound throughout the finite-code
-Pauli pulses, and control Gaussian tails along the ideal quadratic substeps;
-Gaussian structure need not persist inside the native synthesis. Also retain
-the frequency-one occupation-cutoff correction: compressing q² differs
-from squaring the compressed q by `(d/2)|d−1><d−1|`. Endpoint accuracy alone does not supply
-these costs or select physical time.
+This supplies the changing-stiffness estimate for the scheduled oscillator
+preparation. Its finite onsite-code comparison is given below. Source pulse
+precision, transport, reset, drift during service and all retained history
+outcomes require their own contributions to the total error and resource
+budget. Model-time step size does not select physical time.
+
+### Finite onsite preparation with intermediate occupation control
+
+Keep the same action, blank, T=512 and N=2^24. At each site use the number
+levels `0,...,d−1`, with **d=8192**, and set `Q_d=Π_d q Π_d`,
+`P_d=Π_d p Π_d`. The finite factors are `Q_d²`, `P_d²` and `Q_di Q_dj`.
+All potential factors commute, so the existing local schedule is retained.
+The frequency-one boundary identity is essential:
+
+```text
+Π_d q² Π_d = Q_d² + (d/2)|d−1><d−1|.
+```
+
+Replacing the chosen polynomial factor by compressed q² changes the word
+and can break that commutation. Tests explicitly detect this substitution.
+Each finite generator is extended by identity on spectator spaces for the
+comparison; escaped amplitude on the active sites is included.
+
+The proof supplies a covariance bound `V<65I` through **every partial ideal
+quadratic factor**, including its ordering within each kick and drift.
+For a one- or two-site marginal, the Gaussian occupation generating function
+is `M(z)=det[I−(z−1)(V−I/2)]^(-1/2)`. The standard formula is taken from
+[Cardin and Quesada, equations (28)–(31)](https://arxiv.org/html/2212.06067v2#S3.E30);
+its positive-z convergence domain and the required weighted tails are
+checked explicitly. The marginal may be mixed and correlated.
+
+With z=130/129 and threshold d−2, weighted onsite and pair tail norms are
+less than `280 exp(−30)` and `700 exp(−30)`. The quadratic defect constants
+are 2 and 1. Duhamel's formula and unitary composition along the ideal
+prefixes give
+
+```text
+D_cutoff ≤ 2 u_d W_onsite + v_d W_pair,
+W_onsite ≤ 264192,    W_pair ≤ 262144,
+D_cutoff < 0.000033144832.
+```
+
+The weights sum integrated coefficients over the full duration; there is
+no extra step-count multiplier. Adding the independently checked endpoint
+and time-discretization bounds gives **<0.001162** to the original coupled
+vacuum. This is an input-specific full-state bound from the supplied blank,
+not an arbitrary-input oscillator channel bound.
+
+All **169 checks** passed, followed by an identical isolated replay.
+Exact rational inequalities and the reviewed analytic argument supply the
+certificate. Independent small-code controls check complete escaped outputs,
+number rotations, Pauli reconstruction, identity phases, correlated Gaussian
+normalization and the cutoff boundary correction. No 2^104-dimensional
+state or native preparation word was executed.
+
+This completes the preparation cutoff comparison on a fixed onsite code.
+Native Pauli synthesis uses its separate finite-code operator-norm bound;
+its intermediate states need not be Gaussian. The force and retained-pointer
+history below uses this same code with separately proved time, displacement
+and cutoff bounds. Complete source services have their own error budget.
+Initial preparation error propagates by channel
+contraction; small trace distance alone does not control a noisy state's
+occupation moments. No autonomous vacuum selection, refinement-uniform
+resource bound or physical clock is supplied by this finite construction.
+
+### The same onsite code through force, evolution and retained pointers
+
+The original five q=3 histories admit a local construction on the preparation
+code, with **d=8192 throughout**. Keep active free evolution, the original
+force and two nonoverlapping pointer windows, all relative phases and both
+retained readouts. Use history step `h=1/(10·2^16)` for 327,680 steps over
+model duration 1/2. No physical normal-mode transform is inserted.
+
+For a constant pointer branch j, the local kick–drift–kick unitary equals
+an exact shifted quadratic evolution. With `a=A^-1 j`, each mode obeys
+
+```text
+θ=2 asin(hω/2),  κ=ω sqrt(1−h²ω²/4),
+B=θ/(hκ),       C=θκ/h,
+H_modified = [pᵀBp+(q−a)ᵀC(q−a)]/2 − jᵀA^-1j/2.
+```
+
+The Mehler kernel fixes the unitary phase as well as the canonical map.
+The scalar term and ordered cross-window Weyl phases are retained. On
+these unchanged profiles, a full-state Duhamel estimate gives temporal
+error **<0.000005**. Partial-factor covariances and means are bounded by
+`V<7I` and `|mean|<6`. Displaced Gaussian weighted tails then give history
+cutoff error **<10^-81** on the same large preparation code.
+
+The retained pointer Z sectors are orthogonal. Bounding their field defects
+branch by branch and taking the maximum preserves the coherent output;
+it does not dephase or postselect the pointers. Arbitrary reference
+entanglement with those pointers is retained. The final complete readout
+contracts the same trace-distance bound. The initial field is the declared
+coupled vacuum; approximation of that field state enters separately.
+
+All **97 checks** and a byte-identical isolated replay passed. Exact source
+and rational checks support the analytic bounds. Independent complex
+Schrödinger wavefunction evolution agrees with the complete Weyl-history
+pointer matrices, including their phases. Small-code controls retain escaped
+outputs and the top-occupation correction. Preparation plus this ideal
+finite history has error **<0.001167**, before native synthesis and services.
+The phase-omission separation near 0.002979 remains a numerical diagnostic;
+its rigorous separation and complete implementation error require their own
+comparison.
+
+### Compiling the finite preparation with existing source controls
+
+The existing six-level response, proper qubit codes, phase-exact CNOT and
+Pauli gadgets implement the finite quadratic preparation to a prescribed
+accuracy. A binary-carry decomposition bounds its Pauli coefficient sums
+without generating a huge list: `L(Q_d)<(1+sqrt(2))d/2`. Products and the
+exact number rotation give `L≤3d²/2` for all three quadratic generators.
+The unchanged preparation coefficients satisfy `Σ|θ|³≤129/128`.
+
+Using the existing symmetric product formula with fixed `r=2^46` gives
+
+```text
+ε_synthesis ≤ L³ Σ|θ|³/(3r²) ≤ 1161/2^24 < 0.0001.
+```
+
+This bound is uniform on the finite code, including references. Identity
+Pauli phases are supplied by the stored `phase_0+phase_1` control and charged
+once per onsite factor. The native intermediate states need not be Gaussian;
+the occupation comparison follows ideal quadratic substeps, and the compiler
+comparison covers the whole finite code.
+
+All **177 checks** passed with an identical isolated replay. They include
+independent binary-carry and Pauli reconstructions, actual full-six-level
+control identities, complete proper-code failure channels and phase controls.
+The large construction was neither emitted nor executed. Its sufficient
+uncancelled upper count is about **3.27×10^34 native pulses**, plus twice as
+many code-service events. This enormous upper bound is not a lower bound on
+other compilers or evidence of efficient implementation.
+
+Analogue precision, transport, storage, reset, physical processor drift,
+source clocks and complete preparation/readout services remain charged
+inputs. A matrix synthesis theorem does not establish their physical
+availability or identify source execution time with the model-time ramp.
+
+### One composed preparation–history error and resource budget
+
+Use the same **106 work qubits**: 104 for the eight onsite field codes and
+two retained pointers. The original blank, ramp, force, pointer profiles and
+readout remain fixed. No physical normal-mode conversion or new primitive
+matrix gate is added. For the history, the joint quadratic angle sum is at
+most 258 and the linear sum below 15. Thus `Σ|θ|≤273` and
+`max |θ|≤1/10240`. The same compiler repetition count `r=2^46` gives
+
+```text
+ε_history synthesis ≤ L³ Σ|θ|³/(3r²)
+                    ≤ 2457/(25·2^39) < 2×10^-10.
+```
+
+Multiplying a local Q by a retained-pointer Z preserves its Pauli
+coefficient sum. This estimate is uniform over the finite code and untouched
+references; it requires no Gaussian assumption about intermediate native gates.
+The resulting mathematical comparison with the original continuous history
+has the following budget. Displayed component decimals are rounded upward;
+the exact rational sum is below 0.001235681.
+
+| Contribution | Sufficient upper bound |
+| --- | ---: |
+| Preparation endpoint, local time steps and onsite cutoff | 0.001161638 |
+| Preparation source synthesis | 0.000069201 |
+| History time steps, including pointer phases | 0.000004843 |
+| History onsite cutoff | 10^-81 |
+| History source synthesis | 2×10^-10 |
+| **Combined mathematical error, before physical service errors** | **<0.001237** |
+
+The order of comparison matters. First apply the uniform finite-history
+compiler bound to the actual encoded prepared state. Under the same extended
+finite history, replace that state by the ideal coupled vacuum and charge
+its preparation and synthesis errors. Only then use Gaussian cutoff and time
+bounds on the ideal history branches. Finally apply the same complete CPTP
+readout. This neither assumes that trace-distance-close states have small
+occupation moments nor discards pointer coherence or failed outcomes.
+
+The join passed **92 exact arithmetic, input-custody and accounting checks**
+and an identical isolated replay. These checks do not formally prove the
+analytic composition; that argument was reviewed separately. Together with
+the three component packets, the total is 535 checks and four replays.
+
+The combined evolution recipe has a conservative upper inventory of
+`34,316,088,908,833,975,917,332,078,914,437,120` native pulses, below 2^116,
+and at most twice as many pack/export events, below 2^117. The 106 work
+qubits exclude the processor, fresh service buffers, references and records.
+Initialization, routing, reset, storage and readout need additional resources.
+Neither the Pauli lists nor this native word were emitted or executed.
+
+For an actual source execution, the error budget needs
+
+```text
+ε_actual ≤ ε_mathematical + ε_field blank + ε_pointer initialization
+           + Σ ε_pulse + Σ ε_code service + ε_storage/drift
+           + ε_readout + other admitted service errors.
+```
+
+Service bounds must retain references and all outcomes, for example through
+half diamond-norm estimates. No values or attainability for these terms are
+supplied here. **RE-10 is conditional, not closed**: its common-code
+mathematical composition is constructed. Native implementation and
+physical attachment require the additional inputs listed above. No separating physical measurement,
+continuum-uniform implementation or selected physical clock follows.
 
 ### A short selection theorem isolates the substantive extra assumption
 
