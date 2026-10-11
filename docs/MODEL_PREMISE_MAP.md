@@ -115,9 +115,9 @@ are not additional prerequisites for the supplied finite scalar theorem.
 
 ### RE-01: Common repair reference and law
 
-**Constructed:** Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly. A current-record lift couples native C to the existing six-level response at both seam endpoints, preserving its full load marginal and disjoint-seam locality. N4 instead conjugates binary C/E by one coherent load-response exchange and supplies private-state influence on fixed bare occupation probabilities.
+**Constructed:** Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly. A current-record lift couples native C to the existing six-level response at both seam endpoints, preserving its full load marginal and disjoint-seam locality. N4 instead conjugates binary C/E by one coherent load-response exchange and supplies private-state influence on fixed bare occupation probabilities. At the declared full tracial reference, N4 now supplies a shared bare-occupation geometry and two-attempt kinetics protocol; its finite memory excess rules out native heat closure at the tested couplings.
 
-**Remaining input:** For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate. The full-model candidate must link its repair marginal, reversible port response and record clock through shared states and interventions; the scalar benchmark alone does not supply this. This lift adds local response factors and a supplied coupling, is one-way at the repair marginal, and does not establish the complete response grammar on the enlarged source. N4 changes the load marginal and current-label meaning; its supplied coupling and shared observable/record grammar require independent justification.
+**Remaining input:** For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate. The full-model candidate must link its repair marginal, reversible port response and record clock through shared states and interventions; the scalar benchmark alone does not supply this. This lift adds local response factors and a supplied coupling, is one-way at the repair marginal, and does not establish the complete response grammar on the enlarged source. N4 changes the load marginal and current-label meaning; its supplied coupling and the physical admissibility of the shared bare-occupation preparation/readout require independent justification.
 
 **Closure condition:** Exhibit one local process and explicit restriction/intervention maps supplying the intended repair, carrier-response, reversible-current and clock contracts. Reuse the existing theorem implications once these interfaces hold; derive each extra choice or retain it as an explicit model hypothesis. Separate matched component fixtures do not establish a common source.
 
@@ -128,6 +128,7 @@ Sources:
 - [Finite conditional repair](../Lean/Thermodynamics/FiniteConditionalRepair.lean).
 - [Unadopted canonical repair-law proposal](../docs/CANONICAL_REPAIR_LAW_RFC.md).
 - [Current candidate and native baselines](../docs/MODEL_SEARCH.md).
+- [N4 shared bare-occupation response and finite memory certificate](../code/native_response/README.md).
 
 <a id="re-02"></a>
 
@@ -302,9 +303,9 @@ Sources:
 
 ### RE-12: Source clock, physical time and execution cost
 
-**Constructed:** Canonical model time, supplied event-count clock comparisons and conditional scalar action-clock reconstruction exist. The endpoint-current lift preserves the native load marginal and classical record blocks and therefore its scoped geometry/count relations; this adds no physical clock calibration.
+**Constructed:** Canonical model time, supplied event-count clock comparisons and conditional scalar action-clock reconstruction exist. The endpoint-current lift preserves the native load marginal and classical record blocks and therefore its scoped geometry/count relations; this adds no physical clock calibration. For N4, bare-occupation measurements at the endpoints of an unmodified one- or two-event experiment recover the native port Dirichlet geometry up to a positive scalar. Certified two-attempt memory at theta=1/8 and 1/16 rejects native heat dynamics even after a clock-rate fit.
 
-**Remaining input:** Choose a physical clock on the same process and account for preparation, service, readout and ancestry costs. A source scale identification and conversion to laboratory units are distinct. The record clock must be read from the histories that also supply the carrier response and reversible source, with an explicit relation to scalar model time. N4 does not preserve C: its record j is conjugate to a seam-dependent transformed occupation. Reconstruct compatible physical current, geometry and clock readouts before importing the native current relations.
+**Remaining input:** Choose a physical clock on the same process and account for preparation, service, readout and ancestry costs. A source scale identification and conversion to laboratory units are distinct. The record clock must be read from the histories that also supply the carrier response and reversible source, with an explicit relation to scalar model time. N4 does not preserve C: its record j is conjugate to a seam-dependent transformed occupation. The new finite occupation protocol does not restore the native current-label identities or calibrate a physical clock; those require compatible physical current and time readouts.
 
 **Closure condition:** Prove the same-history clock/observable intertwiner and its domain, then calibrate independently. A local generator alone does not establish a microscopic causal cone.
 
@@ -313,6 +314,7 @@ Sources:
 - [Source count-clock theorem](../paper/tex_fragments/SOURCE_COUNT_CLOCK.tex); exact source anchor: ` thm:source-count-clock `.
 - [Scalar action clock](../paper/tex_fragments/SOURCE_SCALAR_CLOCK.tex).
 - [Conditional clock conversion](../Lean/Screen/CurlStoneClockBridge.lean).
+- [N4 shared bare-occupation response and finite memory certificate](../code/native_response/README.md).
 
 <a id="re-13"></a>
 
@@ -534,7 +536,7 @@ Sources:
 
 ### RE-26: Common-model compatibility and remaining named inputs
 
-**Constructed:** This crosswalk covers the canonical PR inventory and identifies actual scalar theorem reuse. The authoritative claim registry separately records ordinary assumptions, imports and explicit non-consumers.
+**Constructed:** This crosswalk covers the canonical PR inventory and identifies actual scalar theorem reuse. The authoritative claim registry separately records ordinary assumptions, imports and explicit non-consumers. N4 now joins equilibrium port geometry and a nontrivial kinetics discriminator on the same bare occupations, preparation and events, without adding state factors or a new interaction.
 
 **Remaining input:** The whole paper/theorem body has not been exhaustively normalized into one semantic dependency graph. Ordinary assumptions and imported-result names are inventoried, not individually discharged by this crosswalk. The endpoint-current candidate declares twelve local six-level factors, conditional response operations, retained records and a coupling theta; its flat alternative shows that preservation and convergence alone do not select that coupling law. N4 reuses the same factors but adds a fixed choice of response quadratures; writing it as one exchange does not derive that choice. OPH physical correctness is a hypothesis under investigation, not a consequence of these finite compatibility checks.
 
@@ -545,3 +547,4 @@ Sources:
 - [Per-claim assumptions and edge classifications](../claims/claim_registry.yaml).
 - [Named assumption meanings](../claims/assumption_dictionary.md).
 - [Canonical register scope](../docs/registers/PREMISE_REGISTER_V3.md).
+- [N4 shared bare-occupation response and finite memory certificate](../code/native_response/README.md).

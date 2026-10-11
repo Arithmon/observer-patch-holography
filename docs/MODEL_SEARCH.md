@@ -9,7 +9,7 @@ proofs, simulations, candidate implementations and issue closures are bounded
 milestones; they do not by themselves complete the programme.
 
 Research status: **11 October 2026**. Source reference:
-`393665297e551f2023fb07a2853188a589ad7c33`.
+`84025a97491f6e1173cc29d72822c989e4ef6ed5`.
 
 The [candidate register](MODEL_CANDIDATES.md) compares the concrete active
 laws, their tested properties, added assumptions and next decisive tests.
@@ -39,8 +39,10 @@ the simpler flat N3 as preservation benchmarks. Test N4, a coherent exchange
 using the same private factors and response matrices, for internal-state
 influence on load repair. N4 supplies this finite feedback while inheriting
 completion, at the cost of changing the load marginal and the meaning of its
-current labels. Full source grammar, geometry/clock readouts and physical
-selection require separate justification. The
+current labels. A shared bare-occupation protocol now recovers the same
+finite port geometry and distinguishes its kinetics from every clock rescaling
+of native repair. Full source grammar and physical selection still require
+justification. The
 [general search findings](#general-findings-that-guide-the-search) explain
 which tests discriminate laws and how added assumptions are counted.
 
@@ -58,6 +60,15 @@ interfaces below to constrain the next candidate before adding mechanisms.
 
 ## 1. Headline results and missing-link completion status
 
+- **The reciprocal candidate keeps port geometry but changes its kinetics.**
+  At the supplied tracial reference, N4's bare-occupation Dirichlet matrix is
+  exactly `α(θ)L_ico/396`, with `α≥1/9` for every real coupling. The existing
+  rank-three port Gram therefore survives. Two endpoint measurements, with
+  no intermediate dephasing, also expose a strictly positive two-attempt
+  memory excess at θ=1/8 and 1/16. This rejects an autonomous native heat
+  equation with a fitted clock rate on the same bare observables. The
+  [derivation and finite certificate](#bare-occupation-geometry-and-a-clock-independent-memory-test)
+  use the same N4 states and events; they add no interaction or state factor.
 - **One coherent exchange supplies finite load feedback.** N4 uses the
   existing binary repair, response matrices, local factors and one supplied
   coupling. Changing only the private preparation changes the endpoint
@@ -764,7 +775,9 @@ channels with records discarded, not unlimited retained histories.
 
 #### Feedback test and its operational cost
 
-On seam (0,1), keep the odd load state fixed at I_2/2. Put
+On a neighboring seam, keep the odd load state fixed at I_2/2. The original
+diagnostic labels it (0,1); in the authoritative response chart used by the
+reproduction below, a representative is (0,2). Put
 `q=i[g,h]`, `ell=sqrt(49+19 sqrt(5))` and prepare each private endpoint in
 `σ_±=(I±q/(2 ell))/6`. The source formula gives `||q||_F=ell`, so these
 are normalized full-rank states with eigenvalues at least 1/12. Measure the
@@ -792,13 +805,83 @@ and record interpretation must therefore be established before using a clock
 or geometry theorem. Measuring loads before and after each event would
 define a different, additionally dephased instrument.
 
-N4 closes a finite feedback construction under supplied quantum inputs. It
-does not inherit N1's current-derived geometry/count identities, full-78
-transient repair, complete source-response grammar or physical clock. On one
-seam it is unitarily equivalent to C; its distinction here is relative to
-the fixed preparations and bare occupation readout. Whether that distinction
-has a physical meaning is an open selection requirement. No M01–M12 parent
-is closed by this test.
+N4 closes a finite feedback construction under supplied quantum inputs. The
+following readout recovers its port geometry without reinterpreting j as a
+bare current. Full-78 transient repair, complete source-response grammar and
+physical clock selection are not supplied. On one seam N4 is unitarily
+equivalent to C; its distinction is relative to fixed preparations and bare
+occupation readouts. No M01–M12 parent is closed by these finite tests.
+
+#### Bare-occupation geometry and a clock-independent memory test
+
+Fix the existing N4 law on the 66 binary total-two load states and twelve
+six-level factors. Let τ be normalized trace on that entire space and Φ the
+uniform, independent 30-seam mixture, with records discarded. This is a
+supplied stationary preparation and schedule, not a uniqueness claim for the
+stationary state. Use the **same bare occupations N_p on every seam**.
+Prepare τ, measure and retain the initial binary loads, apply one or two
+unmodified repair events, and measure final loads. The initial measurement
+leaves τ unchanged when its outcomes are averaged; there is no intervening
+measurement. For `f_v=Σv_p N_p`, the measured correlation is exactly
+`τ[f_v Φⁿ(f_v)]`. These are independently prepared experiments at each n,
+not a newly dephased trajectory instrument.
+
+On one odd load block define `R=Tr_load(W† Z W)/2` and
+`α=1−Tr_36(R²)/36`. Locality, number conservation and source covariance give
+
+```text
+K_pq = τ[N_p(I−Φ)N_q] = α L_ico,pq/396,
+E[(X_1−X_0)(X_1−X_0)ᵀ] = 2K,
+60 K/Tr(K) = L_ico,
+max{1/9, 1−(4/3)(49+19√5)θ⁴} ≤ α(θ) ≤ 1.
+```
+
+The lower bound holds for **every real θ**, not only sampled angles.
+Indeed R is a traceless Hermitian contraction on each of four protected
+nine-dimensional private blocks, so each has squared trace at most eight.
+The quartic bound follows from the Frobenius Lipschitz bound for
+`cos(2θ√x)` and the exact source commutator norm. The smallest positive
+eigenspace of this Dirichlet matrix recovers `G=4P_slow`, the existing
+unit-diagonal rank-three port Gram. This is a finite equilibrium response
+geometry; it does not identify a spacetime metric or a long-time density mode.
+
+Does preserving that geometry also preserve the native diffusion clock?
+Let P project onto centered linear occupations in the τ inner product and
+`A=I−Φ`. For a centered carrier eigenvector `L_ico v=λv`, put
+`c_n=τ[f_v Φⁿ(f_v)]/τ[f_v²]`. Orthogonal projection gives the exact test
+
+```text
+r = αλ/60,       c_1 = 1−r,
+c_2−c_1² = ||(I−P)A f_v||²_τ / ||f_v||²_τ = b_v ≥ 0.
+```
+
+N1 and either one-term exchange control have `b_v=0`. For N4, a local
+overlap calculation and interval certificate give **b_v>0 for every
+nonconstant carrier vector at θ=1/8 and 1/16**. The calculation uses only
+local matrices; it does not instantiate the enormous twelve-factor network.
+For the rank-three carrier band, floating-point evaluations are:
+
+| θ | α | b_v | b_v/r² |
+| --- | --- | --- | --- |
+| 1/8 | 0.975986704560 | 0.00004178223344 | 0.0206705310 |
+| 1/16 | 0.998236412623 | 0.00000329877975 | 0.0015600348 |
+
+The decimals describe evaluations, while the certificate proves positivity
+at those exact rational couplings. With a supplied Poisson attempt rate ν,
+the continuous correlation has initial decay νr and curvature `ν²(r²+b_v)`.
+The ratio `b_v/r²` is invariant under a common change of time units.
+Consequently no clock calibration makes these correlations a native
+single-exponential heat mode. Agreement of Dirichlet matrices alone would
+have missed this failure of closure of the linear-occupation subspace.
+
+The [reproduction and proof](../code/native_response/README.md) bind the
+actual source chart, protected blocks, trace normalization, local overlap
+weights and finite error enclosures. This resolves the finite shared
+geometry/kinetics readout for the declared N4 preparation, with a genuine
+discriminator against simpler preserved-marginal laws. It neither selects
+N4 over those laws physically nor restores j's original bare-current
+meaning. The coupling, tracial preparation, schedule, endpoint measurement
+access and physical conversion of event count remain explicit inputs.
 
 ### Weighted agreement and its minimal inertial completion
 

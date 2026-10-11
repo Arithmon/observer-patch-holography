@@ -25,6 +25,13 @@ input is access to the unchanged commuting occupations N_p. These are not
 consequences of A1–A3 or physical calibration. Neither mass, inertia, a bulk
 boundary condition nor a new field is introduced by this calculation.
 
+The two rational couplings reuse the preceding feedback test; neither is
+fitted to this result. The discriminator is strict positivity of the
+full centered-subspace memory defect after error enclosure, against exact
+zero for the native and one-term controls. The compute budget uses local
+72-dimensional matrices and three representative edges with protected
+18-dimensional blocks, rather than constructing the full network matrix.
+
 In independent trials, measure all initial binary loads, retain the outcome,
 apply n unmodified N4 events, then measure all final loads. Use n=1 and n=2;
 there is **no intermediate measurement, private reset or postselection**.
