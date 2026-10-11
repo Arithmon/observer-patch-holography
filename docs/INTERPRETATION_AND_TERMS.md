@@ -9,14 +9,20 @@ established mathematical results used in model construction.
 ## One structure, two descriptions
 
 OPH proposes that one complete structure is both a timeless solution of a
-self-reference condition and a world that computes itself through internal
-local events. Its states, records, read/write dependencies and responses to
-admissible interventions constitute that computation. No external computer or
-additional time in which the whole history is played is required by this
-interpretation. A description of a history and an implementation of its
-dependencies must nevertheless be connected by a map preserving the declared
-observations and interventions. A passive replay of one trajectory does not
-establish that connection.
+self-reference condition and a world that computes itself. Its proposed
+realization is literal: observers reverse-engineer their reality's substrate
+and construct hardware within it whose actual execution realizes that same
+history, including its builders and executing hardware. Construction and
+execution occur in emergent, mutually calibrated local times. No external computer or additional
+time in which the whole history is played is supplied by this hypothesis.
+
+The realization requires a specified map between the hardware's actual
+execution and the represented history. Matching one actual history, preserving
+a declared family of preparation and intervention responses, and encoding every
+independently allowed microscopic state are different contracts. A passive
+replay of one trajectory does not establish the stronger intervention-faithful
+contract; this does not by itself reject an actual-history-only hypothesis.
+Each candidate must state its comparison, observable scope and error budget.
 
 The universe-level equation `T(U)=U` concerns a complete history and its
 structural closure. This notation is schematic: a candidate must specify the
@@ -30,6 +36,33 @@ hypotheses to investigate. The equation alone proves neither a final
 instantaneous cosmic state nor that every mathematical fixed point is a world.
 See [Essay B, §§6–7 and 9](../essays/B-why-does-anything-exist.tex) and the
 [flagship's closure hypothesis](../flagship/from_observer_consensus_to_standard_physics.tex).
+
+## Internal construction and execution
+
+The builders' inference, device construction, program and data initialization,
+controls, memory, read/write and record services, and clock comparisons must
+be operations available within the candidate history. Its realization map must
+account for their information access, execution delay and resources. Specifying a decoder
+does not implement one, and initial data cannot conceal unaccounted access to
+the desired answer. A mathematical correspondence also needs an explicit
+physical identification with the history containing the builders and device.
+These are open realization obligations, not new conclusions of A1–A3 or the
+finite source models.
+
+[Wolpert's self-simulation lemma, Lemma 2 in Section 4](https://arxiv.org/html/2404.16050v5#S4)
+is a relevant conditional possibility result. It assumes the Physical
+Church–Turing thesis (deterministic computable universe dynamics) and the pristine reverse
+Physical Church–Turing thesis. For a fixed requested finite model-time horizon
+it supplies an initial computer program whose computation returns the
+whole-system state at that horizon, including the computer; the program can
+depend on the horizon and execution can finish later in model time. The model
+allows arbitrarily extendible memory. It does not show that observers can
+prepare the required initial state, that a finite device has sufficient
+resources, or that the simulated and executing worlds are physically identical.
+Nor does one program for each requested horizon establish one execution
+realizing a whole ongoing history. The result therefore neither completes
+OPH's construction nor supports a blanket impossibility claim about internal
+self-simulation.
 
 ## Proposed primitives and emergent physics
 
