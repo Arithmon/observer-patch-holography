@@ -158,6 +158,28 @@ def _observables(ctx, operators):
     return result
 
 
+def _spectrum(ctx, operators, coefficients):
+    """Thermal spectral data reconstructed from the original input entries.
+
+    Keep the centered observables, Hamiltonian, eigenvectors and populations
+    in the same private precision until each consumer rounds its outputs.
+    Population and returned-state policies belong to those consumers.
+    """
+    matrices = _observables(ctx, operators)
+    hamiltonian = ctx.zeros(len(operators[0]))
+    for coefficient, matrix in zip(coefficients, matrices):
+        hamiltonian += ctx.mpf(float(coefficient))*matrix
+    if all(hamiltonian[i, j] == 0 for i in range(hamiltonian.rows)
+           for j in range(i)):
+        energies = [ctx.re(hamiltonian[i, i]) for i in range(hamiltonian.rows)]
+        vectors = ctx.eye(hamiltonian.rows)
+    else:
+        energies, vectors = ctx.eighe(hamiltonian)
+    origin = min(energies)
+    weights = [ctx.exp(-(e-origin)) for e in energies]
+    return matrices, energies, vectors, weights
+
+
 def _gram(ctx, operators, probabilities, vectors, gaps):
     total = ctx.fsum(probabilities)
     p = [x/total for x in probabilities]
@@ -235,18 +257,7 @@ def gibbs_covariance(operators, coefficients):
     zero_entries = []
 
     def evaluate(ctx):
-        matrices = _observables(ctx, operators)
-        hamiltonian = ctx.zeros(len(operators[0]))
-        for coefficient, matrix in zip(coefficients, matrices):
-            hamiltonian += ctx.mpf(float(coefficient))*matrix
-        if all(hamiltonian[i, j] == 0 for i in range(hamiltonian.rows)
-               for j in range(i)):
-            energies = [ctx.re(hamiltonian[i, i]) for i in range(hamiltonian.rows)]
-            vectors = ctx.eye(hamiltonian.rows)
-        else:
-            energies, vectors = ctx.eighe(hamiltonian)
-        origin = min(energies)
-        weights = [ctx.exp(-(e-origin)) for e in energies]
+        matrices, energies, vectors, weights = _spectrum(ctx, operators, coefficients)
         result = _gram(ctx, matrices, weights, vectors, energies)
         for i, j in zero_entries:
             result[i, j] = result[j, i] = 0
