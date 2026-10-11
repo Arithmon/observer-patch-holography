@@ -6,6 +6,14 @@ This program covers completed, non-cosmological OPH claim surfaces with stable
 hypotheses and comparison objects. It contains no frozen-target registry,
 preregistration queue, forward scorecard, or aggregate hit count.
 
+The parallel [programme-wide obstruction search (#1078)](https://github.com/FloatingPragma/observer-patch-holography/issues/1078)
+investigates inconsistency of the adopted basis, impossibility of a common
+physical realization, limits on explanatory unification and empirical
+exclusion of a fixed formulation. It pins the tested premises and admissible
+interpretations. This broader research question does not extend any falsifier
+below beyond its stated claim or branch; changing the target requires an
+explicit revision and preserves the original verdict.
+
 The eligible sources are:
 
 - the finite quotient-consensus theorems in

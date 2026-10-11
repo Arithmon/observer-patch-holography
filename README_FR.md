@@ -45,6 +45,14 @@ et le [registre des prédictions figées](docs/FROZEN_PREDICTION_LADDER.md)
 suivent ce travail. Reproduire une valeur utilisée pour choisir le modèle
 constitue un ajustement, pas un test indépendant.
 
+La [recherche d'obstructions à l'échelle du programme](https://github.com/FloatingPragma/observer-patch-holography/issues/1078)
+examine en parallèle les contradictions, les impossibilités de réalisation
+commune, les entrées physiques indépendantes inévitables et les exclusions
+empiriques. Chaque résultat précise la formulation ou la classe de modèles
+qu'il rejette. Un résultat négatif décisif est utile ; ne pas en trouver ne
+confirme pas OPH. Cette tâche distingue aussi une réfutation scientifique d'une
+décision pratique d'arrêter les recherches.
+
 ## Priorité de recherche : un même processus de réparation
 
 **Trouver la règle de réparation commune la plus simple qui satisfait les

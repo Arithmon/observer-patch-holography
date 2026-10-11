@@ -366,6 +366,38 @@ If all retained candidates make the same accessible predictions, record that
 non-identifiability and seek a stronger justified interface or observation;
 adding indistinguishable variants does not solve selection.
 
+#### Search for programme-wide obstructions
+
+The [active obstruction search (#1078)](https://github.com/FloatingPragma/observer-patch-holography/issues/1078)
+asks whether the adopted OPH programme can be ruled out. A decisive negative
+result is useful. Pin the axiom revision, target conclusion, mandatory physical
+premises, admissible interpretations and calibration freedom before testing.
+Distinguish those commitments from optional implementation choices.
+
+Search for a contradiction in the adopted basis, impossibility of jointly
+realizing necessary structures on one source, independence of allegedly
+derived physical inputs, or an unavoidable failed physical prediction. Reuse
+the existing claim graph and premise map to locate the actual theorem
+statements; do not conjoin alternative branches as mandatory premises.
+Count the content of assumptions, including the response architecture in A1;
+the number of axiom headings does not measure explanatory economy.
+
+A candidate or family no-go excludes the full formulation only if it covers
+every admissible realization. Premise-checked countermodels with different
+outputs can refute a claimed derivation; they do not automatically eliminate
+all shared predictions. An unfinished construction proves neither impossibility
+nor independence. Conversely, failing to find an obstruction supplies no
+physical confirmation.
+
+Record the strongest surviving alternatives and obtain independent scope
+review before promoting an exclusion. Changing a core commitment creates a
+revised target and preserves the original negative result. A maintainer may
+also stop for insufficient predictive or explanatory return under explicit
+milestones and costs; that is a research decision, distinct from a proof of
+impossibility. Opening this search makes no stop decision. Existing
+[claim- and branch-specific falsifiers](OPH_FALSIFICATION_PROGRAM.md) retain
+their exact scope.
+
 #### A deletion test exposes what convergence cannot select
 
 For N2, the load-preservation, locality and completion arguments work with
@@ -419,6 +451,7 @@ which observable can distinguish the resulting candidate.
 | [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077) | Complete one source-coded preparation, evolution and retained-record history with a shared error and resource budget. |
 | [#1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025) | Develop physical tests alongside construction: observable, interpretation, calibration, baseline, uncertainty, exposure and rejection rule. |
 | [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033) | Audit and repair existing proofs, code, evidence and scientific wording, including effects on the candidate. |
+| [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078) | Search for programme-wide inconsistency, joint-realization no-go results, failure of explanatory unification and empirical exclusion; distinguish scoped rejection from a practical stop decision. |
 
 These are parallel responsibilities. A link to another issue is not a hard
 dependency; declare a dependency only when a concrete required output is

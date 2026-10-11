@@ -57,6 +57,9 @@ each file keeps its name in the folders above.
   values and their input ancestry.
 - [OPH Falsification Program](OPH_FALSIFICATION_PROGRAM.md) lists only mature
   mathematical and realized-branch falsifiers.
+- [Programme-wide obstruction search](https://github.com/FloatingPragma/observer-patch-holography/issues/1078)
+  seeks inconsistency, joint-realization impossibility and limits on explanatory
+  unification, with explicit exclusion and stopping criteria.
 
 The [physics issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
 assign bounded work on the common repair model, its tests and existing-evidence

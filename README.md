@@ -42,6 +42,13 @@ cases where they cannot be distinguished. The
 and [frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) track that work.
 Reproducing a value used to choose the model is a fit, not an independent test.
 
+The parallel [programme-wide obstruction search](https://github.com/FloatingPragma/observer-patch-holography/issues/1078)
+seeks contradictions, joint-realization impossibility, unavoidable independent
+physical inputs and empirical exclusions. Each result states which fixed
+formulation or model class it rejects. A decisive negative result is valuable;
+failing to find one does not confirm OPH. The issue also distinguishes scientific
+refutation from a practical decision to stop pursuing the programme.
+
 ## Research focus: one repair process
 
 **Find the simplest shared repair rule that satisfies the known constraints.**
