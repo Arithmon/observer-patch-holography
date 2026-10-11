@@ -3078,9 +3078,9 @@
         "sha256": "sha256:9c1dba2e61589101914d41f6afa96b4079f7c17d284a5c4b140dad324143866d"
       },
       {
-        "byte_count": 9032,
+        "byte_count": 13779,
         "path": "code/maxwell_measurement/README.md",
-        "sha256": "sha256:3a8648833947f75ae848f77c3f28807b14d257ad58758a808aaba2efa5612450"
+        "sha256": "sha256:f6fac9b729d3954b03b4bb061949960199e262e76bc36dcc0a60484ce42128a7"
       },
       {
         "byte_count": 4168,
@@ -3088,9 +3088,9 @@
         "sha256": "sha256:895696207740599c38ee049b27714262875ff1a90da21a2e5458fea354bf54a7"
       },
       {
-        "byte_count": 16232,
+        "byte_count": 38823,
         "path": "code/maxwell_measurement/test_measurement.py",
-        "sha256": "sha256:57b88f9a842fceaeedd93bf99b0fa972d0e6df840e206d7f820cbb7f939dfa4e"
+        "sha256": "sha256:01a7004ceb4db1c358abe09c3491224e886fc2a5f30f5cfa9afe21da931a7adf"
       },
       {
         "byte_count": 4640,
@@ -3098,9 +3098,9 @@
         "sha256": "sha256:fd53cf65f7958d41e549b21bcca25d0efbd93167289675dfa459aca0aaa981ca"
       },
       {
-        "byte_count": 25951,
+        "byte_count": 28973,
         "path": "code/maxwell_measurement/verify.py",
-        "sha256": "sha256:d96a23683f55f2aec472a2bde2774796469132f7e66f7e7469dfb19a355fd5f7"
+        "sha256": "sha256:28f0c8ea0fb0747c5bc8ed5f3d3065c3d5d96a8d9715f55c590a872b3464ca49"
       },
       {
         "byte_count": 6654,
@@ -4683,7 +4683,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:0e63a8c810c59cfb818f81df9138bc4d62ea6e02e2f12aa907dc34ecc925a143",
+    "files_sha256": "sha256:9beaffb6eac4f46c320d924206a14951c9b1a0be9020467d8581c6b4cca9345c",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7592,7 +7592,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:70b4896a9840181f97c5136899dcf038f111ff8db6ffc632f88fd4bffe57f67d",
+  "inventory_sha256": "sha256:6d17d59dbb25065aff3e96035e56764042c71d5711f206126ea1ec83d321096f",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -8472,9 +8472,9 @@
       "sha256": "sha256:0a93ada86ff6349623e7cb039309072a669b6fafa04749e382319b922bd77e62"
     },
     {
-      "bytes": 9032,
+      "bytes": 13779,
       "path": "code/maxwell_measurement/README.md",
-      "sha256": "sha256:3a8648833947f75ae848f77c3f28807b14d257ad58758a808aaba2efa5612450"
+      "sha256": "sha256:f6fac9b729d3954b03b4bb061949960199e262e76bc36dcc0a60484ce42128a7"
     },
     {
       "bytes": 4168,
