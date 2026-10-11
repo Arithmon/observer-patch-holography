@@ -70,6 +70,12 @@ demonstrated missing connection, and count every added physical assumption.
 A rejected scalar-only candidate does not establish that a simple common
 source law is impossible.
 
+Use the [established agreement mathematics](docs/AGREEMENT_RESEARCH_FOUNDATIONS.md)
+as the research foundation: specify recovery and scheduling assumptions,
+map linear overlap models to sheaf diffusion and boundary extension, and reuse
+the resulting theorems where their premises hold. Each candidate must identify
+its remaining physical obligation and a test that can distinguish its law.
+
 Compare the [concrete candidate laws](docs/MODEL_CANDIDATES.md), their tested
 properties and remaining choices. Follow the [model search](docs/MODEL_SEARCH.md), its
 [model–theorem premise map](docs/MODEL_PREMISE_MAP.md), and the
