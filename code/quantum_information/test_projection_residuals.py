@@ -104,3 +104,44 @@ def test_constructor_identity_tolerance_retains_both_sides(ulps, accepted):
     else:
         with pytest.raises(ValueError, match="contain the identity"):
             FiniteAlgebra([a])
+
+
+def test_complex_sheared_tensor_factor_uses_original_partial_trace():
+    b = [np.kron(unit, np.eye(2)) for unit in matrix_units(2)]
+    # Invertible triangular combinations span M2 tensor I2. The complex
+    # nonorthogonal Gram matrix and unequal dyadic units require all four
+    # source directions, without supplying a normalized replacement basis.
+    supplied = [(1.+1j)*b[0]/4, 256*(b[0]+(1.-2j)*b[1]/8),
+                (b[2]+3j*b[0])/128, (b[3]-2j*b[2])/32]
+    gram = np.array([[np.vdot(a, c) for c in supplied] for a in supplied])
+    assert np.any(gram.imag != 0)
+    assert np.any(gram-np.diag(np.diag(gram)) != 0)
+    algebra = FiniteAlgebra(supplied)
+    x = np.diag([2.**400, 2.**400, -2.**400, -2.**400]).astype(complex)
+    x[0, 2], x[1, 3] = 1.+3j, -1.+5j
+    x[2, 0], x[3, 1] = 2.+7j, 6.-3j
+    x[0, 1], x[2, 3] = 2.**-600*(1.-1j), -7.+2j
+    changed = 2.**-100*np.array([[1., 2j, 3., 4.], [5j, 6., 7., 8j],
+                                [9., 10., 11j, 12.], [13., 14j, 15., 16.]])
+    for value in (x, changed, x):
+        source = [[(Fraction(float(z.real)), Fraction(float(z.imag)))
+                   for z in row] for row in value]
+        projected = [[(Fraction(), Fraction()) for _ in range(4)]
+                     for _ in range(4)]
+        # The HS projection is Tr_spectator(X)/2 tensor I2. Compute each
+        # partial-trace component directly from the original entries, with
+        # neither a Gram solve nor an exported production chart in the oracle.
+        for i in range(2):
+            for j in range(2):
+                average = tuple(sum((source[2*i+s][2*j+s][part]
+                                     for s in range(2)), Fraction())/2
+                                for part in range(2))
+                for s in range(2):
+                    projected[2*i+s][2*j+s] = average
+        expected = np.array([[complex(float(r), float(i)) for r, i in row]
+                             for row in projected])
+        squared = sum(((source[i][j][part]-projected[i][j][part])**2
+                       for i in range(4) for j in range(4) for part in range(2)),
+                      Fraction())
+        np.testing.assert_array_equal(algebra.project(value), expected)
+        assert algebra.distance(value) == _sqrt_fraction(squared)

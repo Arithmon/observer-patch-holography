@@ -472,7 +472,13 @@ ordinary-trace Hilbert--Schmidt projector is
 over the exact rational real and imaginary parts of the supplied binary64
 entries. It caches the coordinate factor, rather than a dense ambient
 projector, and refreshes that cache when an intersection supplies new exact
-columns. The full matrix algebra needs no factorization.
+columns. Clearing a common denominator from \(C\) leaves \(P\) unchanged;
+the Gram inverse is stored as an integer numerator and denominator. This
+keeps repeated contractions over Gaussian integers and postpones rational
+division until output, avoiding repeated fraction reduction in closure
+checks. Dense exact calculations remain more expensive than floating chart
+calculations; their cost depends on both span dimension and integer bit
+length. The full matrix algebra needs no factorization.
 
 At audit base `083afa28`, with \(B=\mathbb C I_4\), \(\rho=I_4/4\) and
 \(X=\operatorname{diag}(2^{56},-2^{56},1,0)\), both the HS projection and

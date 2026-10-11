@@ -20,9 +20,10 @@ def _exact_matrix(value):
 
 
 def _adjoint(matrix):
+    domain = matrix.domain
     return DomainMatrix([
-        [sp.QQ_I(x.x, -x.y) for x in row]
-        for row in matrix.transpose().to_list()], matrix.shape[::-1], sp.QQ_I).to_sparse()
+        [domain(x.x, -x.y) for x in row]
+        for row in matrix.transpose().to_list()], matrix.shape[::-1], domain).to_sparse()
 
 
 def _rounded_component(value):
@@ -59,25 +60,33 @@ class SpanProjector:
 
     def __init__(self, columns):
         self.columns = columns
-        adjoint = _adjoint(columns)
-        self.coordinates = adjoint.matmul(columns).inv().matmul(adjoint)
+        # A common source denominator cancels from the projector. Keeping
+        # contractions over Gaussian integers avoids repeated rational gcds.
+        _, self.integer = columns.clear_denoms(convert=True)
+        adjoint = _adjoint(self.integer)
+        numerator, self.denominator = adjoint.matmul(self.integer).inv_den()
+        self.coordinates = numerator.matmul(adjoint)
 
     def evaluate(self, value, *, distance=False, within=None):
-        vector = _exact_matrix(value.reshape(-1, 1))
-        projected = self.columns.matmul(self.coordinates.matmul(vector))
+        scale, vector = _exact_matrix(value.reshape(-1, 1)).clear_denoms(convert=True)
+        projected = self.integer.matmul(self.coordinates.matmul(vector))
+        denominator = self.denominator*scale.element
         if not distance and within is None:
-            return _rounded_vector(projected).reshape(value.shape)
+            divisor = sp.QQ_I(denominator.x, denominator.y)
+            rounded = projected.convert_to(sp.QQ_I).scalarmul(sp.QQ_I.one/divisor)
+            return _rounded_vector(rounded).reshape(value.shape)
         # Subtract and sum squares before rounding. The rounded projection
         # can erase a residual, and individual residual coordinates can be
         # unrepresentable even when their scalar norm is representable.
-        residual = vector - projected
+        residual = vector.scalarmul(self.denominator) - projected
         squared = sum((x.x*x.x + x.y*x.y for row in residual.to_list()
-                       for x in row), sp.QQ.zero)
+                       for x in row), 0)
+        divisor_squared = denominator.x**2 + denominator.y**2
         if within is not None:
             # A tolerance decision needs no representable scalar distance.
             threshold = sp.QQ(*float(within).as_integer_ratio())
-            return squared <= threshold*threshold
-        return _sqrt_ratio(squared)
+            return squared*threshold.denominator**2 <= divisor_squared*threshold.numerator**2
+        return _sqrt_ratio(sp.QQ(squared, divisor_squared))
 
 
 def apply_linear(matrix, vector):
