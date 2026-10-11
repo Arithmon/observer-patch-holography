@@ -321,8 +321,8 @@ Passing trace preservation did not establish correct channel action:
 | Original input and independent result | Defective result |
 | --- | --- |
 | `P=vv*/4`, `v=(1,i,-1,-i)`: `P^2=P`, so `sqrt(P)=P` and `F(P,I/4)=1/4`. | Fidelity `0.2500000061422713`; spurious positive eigenvalues were amplified by square roots. |
-| `P=vv*/4`, `v=(1,i,1,-i)`: `Tr_C(P)=I/2`, so the Petz map is `X -> Tr(X)P`. | Action on `\|0><0\|` wrong by Frobenius norm `9.26e-9`, despite passing trace preservation. |
-| `tau=[[.5,.3,0],[.3,.18,0],[0,0,.32]]`: the exact leading minor of the supplied binary64 entries is positive, hence rank three. With C dimension one its Petz channel is the identity. | The eigensolver and rounded kernel residual both indicated a false zero. A fabricated kernel completion changed `\|0><0\|` by norm `0.706341`, while remaining numerically trace preserving. |
+| `P=vv*/4`, `v=(1,i,1,-i)`: `Tr_C(P)=I/2`, so the Petz map is `X -> Tr(X)P`. | Action on the first-coordinate projector wrong by Frobenius norm `9.26e-9`, despite passing trace preservation. |
+| `tau=[[.5,.3,0],[.3,.18,0],[0,0,.32]]`: the exact leading minor of the supplied binary64 entries is positive, hence rank three. With C dimension one its Petz channel is the identity. | The eigensolver and rounded kernel residual both indicated a false zero. A fabricated kernel completion changed the first-coordinate projector by norm `0.706341`, while remaining numerically trace preserving. |
 | Two independent off-diagonal source entries equal to the least subnormal `s`, with their transposed partners zero and positive surrounding diagonal blocks. | Hermitian averaging before subtraction erased both `s/2` coherences; trace distance was zero instead of `s`. |
 
 The shared exact pivoted LDL factorization determines positivity and rank of
@@ -382,6 +382,15 @@ amplitudes `(1,1,1,1,1,1,1,i)/sqrt(8)` has CMI
 `h2(1/2+sqrt(10)/8)=0.48376694420142585` bits and remains a nontrivial available
 recovery control. These are finite matrix identities, not a new physical
 Markov premise or a source-selection claim for OPH.
+
+Twelve isolated mutations are rejected by the retained scientific assertions:
+old roots, old fidelity, missing inverse-rank validation, pre-averaged source
+entries, constant-zero fidelity, blanket root refusal, missing exact spectral
+zero certificates, missing reference-component checks, missing semidefinite
+distance ties, pre-averaged CMI, an overly broad exception handler, and a
+missing recovered-positivity guard. Positive controls pass in the same copied
+packages; collection failures are excluded. This bounded set tests specific
+failure mechanisms, not completeness of the numerical domain.
 
 ## Numerical and downstream boundaries
 

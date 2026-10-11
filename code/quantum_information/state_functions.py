@@ -4,7 +4,7 @@ Exact arithmetic determines support and structural zeros. Refinement checks
 the numerical function on that support; it is not an interval proof.
 """
 from fractions import Fraction
-from math import isqrt
+from math import isqrt, prod
 
 import mpmath
 import numpy as np
@@ -193,12 +193,12 @@ def source_root(source, *, inverse=False):
 def source_reduction(source, dims, keep):
     """Partial trace before binary64 summation or Hermitian averaging."""
     size = len(source.entries)
-    if int(np.prod(dims)) != size:
+    if prod(dims) != size:
         raise ValueError("state and tensor dimensions do not match")
     traced = tuple(i for i in range(len(dims)) if i not in keep)
     coordinates = list(np.ndindex(*dims))
     kept_dims = tuple(dims[i] for i in keep)
-    out_size = int(np.prod(kept_dims))
+    out_size = prod(kept_dims)
     entries = [[_ZERO for _ in range(out_size)] for _ in range(out_size)]
     for i, row in enumerate(coordinates):
         ri = np.ravel_multi_index(tuple(row[k] for k in keep), kept_dims)
