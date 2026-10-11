@@ -94,6 +94,11 @@ not a domain argument.
   A final float conversion can double-round an exact value at a subnormal
   midpoint. Check original-value inequalities against adjacent floats and
   exercise ties in both directions, including the zero boundary.
+  Equal results at two precisions can both miss the higher-order term that
+  selects a midpoint's side. Compare midpoint distance with numerical
+  resolution before accepting the conversion; retain nearby successful
+  subnormals. Test cancellation against accepted trace offsets separately
+  from normalized-state controls, including unequal inputs with exact zero.
 - **Representations:** include real and complex inputs, exact dyadic basis
   changes, repeated eigenvalues, full-rank and singular states, and
   one-dimensional tensor factors. Check algebraic equality in a canonical
@@ -103,6 +108,10 @@ not a domain argument.
   Compare against the exact domain's own zero; equality with a Python
   integer is not guaranteed by a canonical representation. Exercise a
   successful case of each exact fallback as well as its refusals.
+  A rounded zero eigenvalue and a rounded zero matrix/kernel product can
+  coexist for an exactly full-rank matrix. Check source support before
+  reporting infinite divergence, with a finite determinant-based control
+  and genuine complex singular containment and escape controls.
 - **Arithmetic context:** exercise exact Decimal inputs longer than the
   working precision, inherited rounding modes, exponent limits and traps.
   Deterministic receipt builders must isolate their arithmetic policy and
@@ -127,6 +136,9 @@ not a domain argument.
   must not discard independent valid results or become a successful check;
   unrelated errors must propagate. Exercise reused output locations so
   replacement evidence cannot be paired with a stale success report.
+  Passing original inputs to a repaired scalar routine does not repair a
+  wrapper's separate pairings: exercise a small linear component alongside
+  an ordinary quadratic response, as well as a completely small receipt.
 - **Numerical versus exact claims:** repeated-precision agreement is not
   an interval bound or proof of a zero. An exact certificate must establish
   the property of the supplied matrix, without silently projecting it onto

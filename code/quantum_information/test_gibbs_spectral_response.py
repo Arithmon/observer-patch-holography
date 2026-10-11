@@ -131,3 +131,106 @@ def test_structural_complex_zero_survives_spectral_roundoff():
 def test_scalar_or_unresolved_population_and_dense_support_still_refused(observable, beta):
     with pytest.raises(ValueError):
         gibbs_entropy_response(observable, beta)
+
+
+@pytest.mark.parametrize("phase", [1., 1j])
+@pytest.mark.parametrize("family", ["qubit", "doublet_with_spectator"])
+@pytest.mark.parametrize("sign", [-1., 1.])
+@pytest.mark.parametrize("middle, offset", [(n, step) for n in (3, 5, 7) for step in (-1, 0, 1)])
+def test_subnormal_component_rounding_resolves_both_sides_of_midpoints(
+        phase, family, sign, middle, offset):
+    tiny = np.nextafter(0., 1.)
+    beta = sign*(middle+offset)*tiny
+    if family == "qubit":
+        observable = np.array([[0, phase], [np.conj(phase), 0]])
+        variance = 1.
+    else:
+        observable = np.array([[0, 1.5*phase, 0],
+                               [1.5*np.conj(phase), 0, 0], [0, 0, 1.5]])
+        variance = 2.
+    ctx = mpmath.mp.clone()
+    ctx.dps = 1100
+    b = ctx.mpf(beta)
+    if family == "qubit":
+        coherence = -ctx.tanh(b)/2
+        # For b>0, tanh(b)<b: an odd multiple lies just BELOW its
+        # half-subnormal midpoint. The cubic correction matters for rounding.
+    else:
+        w = ctx.expm1(3*b)
+        coherence = -w/(2*(3+w))
+        # Here |coherence|=b/2+b²/4+O(b³) for b>0: the opposite
+        # midpoint side. The source spectrum is exactly {-1.5,1.5,1.5}.
+    # Round in integer units of the smallest binary64 subnormal. Direct
+    # float(mpf) can itself double-round onto a midpoint, so it cannot be
+    # the oracle for the production conversion being challenged here.
+    units = abs(coherence)/ctx.mpf(tiny)
+    lower = int(ctx.floor(units))
+    fraction = units-lower
+    rounded_units = lower+(fraction > ctx.mpf('.5')
+                           or (fraction == ctx.mpf('.5') and lower % 2))
+    expected = phase*int(ctx.sign(coherence))*rounded_units*tiny
+    if offset == 0:
+        # Agreement of two values already rounded onto a midpoint cannot
+        # decide its side. Accurate output or explicit resolution refusal
+        # are both honest; silently selecting the midpoint's even neighbor is not.
+        try:
+            report = gibbs_entropy_response(observable, beta)
+        except ValueError as error:
+            assert "component" in str(error) and ("rounding" in str(error)
+                                                  or "resolved" in str(error)
+                                                  or "precision" in str(error))
+            return
+    else:
+        # Adjacent even multipliers put the coherence near a representable
+        # subnormal, away from the midpoint. A blanket range refusal fails.
+        report = gibbs_entropy_response(observable, beta)
+    assert report["state"][0, 1] == expected
+    assert report["state"][1, 0] == expected.conjugate()
+    assert report["energy_variance"] == variance
+    assert report["ds_dlambda"] == -beta*variance
+    assert report["ds_dt"] == beta
+
+
+@pytest.mark.parametrize("phase", [1., 1j])
+def test_positive_component_below_zero_midpoint_is_not_accepted_as_zero(phase):
+    observable = np.array([[0, phase], [np.conj(phase), 0]])
+    with pytest.raises(ValueError, match="component.*(resolved|rounding|precision)"):
+        gibbs_entropy_response(observable, np.nextafter(0., 1.))
+    report = gibbs_entropy_response(observable, 0.)
+    np.testing.assert_array_equal(report["state"], np.eye(2)/2)
+    assert report["energy_variance"] == 1.
+    assert report["ds_dlambda"] == report["ds_dt"] == 0.
+
+
+@pytest.mark.parametrize("phase", [1., 1j])
+@pytest.mark.parametrize("beta_units", [5, -3])
+def test_resolved_subnormal_midpoint_side_is_rounded_once(phase, beta_units):
+    tiny, spectator = np.nextafter(0., 1.), 2.**400
+    beta = beta_units*tiny
+    observable = np.array([[0, 1.5*phase, 0],
+                           [1.5*np.conj(phase), 0, 0], [0, 0, spectator]])
+    ctx = mpmath.mp.clone()
+    ctx.dps = 900
+    b, e = ctx.mpf(beta), ctx.mpf(spectator)
+    low, high, third = ctx.expm1(ctx.mpf('1.5')*b), ctx.expm1(-ctx.mpf('1.5')*b), ctx.expm1(-e*b)
+    total = 3+low+high+third
+    coherence = (high-low)/(2*total)
+    units = abs(coherence)/ctx.mpf(tiny)
+    if beta_units > 0:
+        assert ctx.mpf('2.5') < units < 3
+        rounded_units = -3
+    else:
+        assert 1 < units < ctx.mpf('1.5')
+        rounded_units = 1
+    # The spectator moves the coherence off the midpoint by O(beta^2 E),
+    # resolvable at the producer's precision. The exact integer cell decides
+    # its binary64 rounding without converting the MP component to float.
+    energies, weights = [-ctx.mpf('1.5'), ctx.mpf('1.5'), e], [1+low, 1+high, 1+third]
+    mean = ctx.fsum(w*x for w, x in zip(weights, energies))/total
+    variance = ctx.fsum(w*(x-mean)**2 for w, x in zip(weights, energies))/total
+    report = gibbs_entropy_response(observable, beta)
+    assert report["state"][0, 1] == phase*rounded_units*tiny
+    assert report["state"][1, 0] == report["state"][0, 1].conjugate()
+    assert report["energy_variance"] == pytest.approx(float(variance), rel=3e-14, abs=0)
+    assert report["dt_dlambda"] == pytest.approx(float(-variance), rel=3e-14, abs=0)
+    assert report["ds_dlambda"] == pytest.approx(float(-b*variance), rel=3e-14, abs=0)

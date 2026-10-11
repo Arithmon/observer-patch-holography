@@ -195,18 +195,46 @@ def finite_entropy_balance(rho, sigma):
     The trace difference is reported, not normalized away. D minus that
     difference is the nonnegative Bregman remainder for PSD inputs, even
     when accepted input traces differ within the state validator tolerance.
+    Original Hermitian representatives determine the difference and D;
+    unresolved reference averaging before the logarithm raises.
     """
-    a = density_matrix(_numeric(rho, "source state"))
+    from .states import _exact_hermitian
+
+    original_a = _numeric(rho, "source state")
+    original_b = _numeric(sigma, "reference state")
+    a = density_matrix(original_a)
     resolved_state_spectrum(a)
-    b = density_matrix(_numeric(sigma, "reference state"))
-    log_b, log_origin = _log_parts(b)
+    b = density_matrix(original_b)
     if a.shape != b.shape:
         raise ValueError("source and reference must use the same algebra")
-    trace_difference = _pairing(np.eye(len(a)), a, b)
-    linear = math.fsum((-_pairing(log_b, a, b), -log_origin*trace_difference))
-    divergence = relative_entropy(a, b)
+    exact_a, exact_b = _exact_hermitian(original_a), _exact_hermitian(original_b)
+    rounded_b = _exact_hermitian(b)
+    if any(abs(rounded-original) > Fraction(8*np.finfo(float).eps)*abs(original)
+           for row, rounded_row in zip(exact_b, rounded_b)
+           for entry, rounded_entry in zip(row, rounded_row)
+           for original, rounded in zip(entry, rounded_entry)):
+        raise ValueError("reference Hermitian averaging is not resolved at this precision")
+    if exact_a != _exact_hermitian(a):
+        # The rounded source can hide an indefinite half-subnormal block.
+        # Check the original representative before using the PSD identity.
+        from .information import _positive_rank
+        _positive_rank(exact_a)
+    log_b, log_origin = _log_parts(b)
+    trace = sum((exact_a[i][i][0]-exact_b[i][i][0] for i in range(len(a))), Fraction(0))
+    pairing = sum((Fraction(float(component))*(x-y)
+                   for i, row in enumerate(log_b) for j, value in enumerate(row)
+                   for component, x, y in zip((value.real, value.imag),
+                                              exact_a[i][j], exact_b[i][j])), Fraction(0))
+    trace_difference = _rounded(trace, "trace difference")
+    linear = _rounded(-pairing-Fraction(log_origin)*trace, "modular change")
+    divergence = relative_entropy(original_a, original_b)
     remainder = math.fsum((divergence, -trace_difference))
-    if not np.array_equal(a, b) and remainder <= 0:
+    if exact_a != exact_b and abs(remainder)*1024 <= abs(divergence)+abs(trace_difference):
+        # D can be accurately rounded while D-Tr(rho-sigma) loses most
+        # of its bits. Round the requested remainder only after subtraction.
+        from .states import _relative_entropy_refined
+        remainder = _relative_entropy_refined(original_a, original_b, subtract_trace=True)
+    if exact_a != exact_b and remainder <= 0:
         raise ValueError("finite entropy remainder is not resolved at this precision")
     return {
         "entropy_change": math.fsum((linear, -divergence)),
@@ -263,6 +291,7 @@ def gibbs_entropy_response(observable, lam):
     this API's domain, including when the response itself is representable.
     """
     from maxent.gibbs_response import _gram, _precision, _spectrum
+    from .states import _resolved_subnormal
 
     lam = _parameter(lam, "multiplier")
     _observables([observable])  # Preserve the shared shape/Hermiticity contract.
@@ -284,6 +313,8 @@ def gibbs_entropy_response(observable, lam):
         if abs(ctx.mpf(coarse)-refined) > ctx.mpf('1e-25')*abs(refined):
             raise ValueError("Gibbs tangent precision refinement disagrees")
     exact_powers = None
+    state_resolution = (64*len(original)*ctx.mpf(values[0][2].ctx.eps)
+                        *max(1, ctx.norm(state)))
 
     def state_component(value, coarse, i, j, imaginary=False):
         nonlocal exact_powers
@@ -308,6 +339,12 @@ def gibbs_entropy_response(observable, lam):
                 return 0.
             if disagreement:
                 raise ValueError("Gibbs state component precision refinement disagrees")
+        if abs(value) < np.finfo(float).tiny:
+            try:
+                return _resolved_subnormal(ctx, value,
+                    abs(ctx.mpf(coarse)-value)+state_resolution)
+            except ArithmeticError as exc:
+                raise ValueError("Gibbs state component rounding is unresolved") from exc
         return _rounded(value, "Gibbs state component")
 
     rho = np.zeros(original.shape, dtype=complex)
