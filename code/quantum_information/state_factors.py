@@ -14,7 +14,7 @@ import mpmath
 import numpy as np
 
 from .gibbs import _numeric
-from .states import density_matrix
+from .states import ATOL
 
 
 _ZERO = (Fraction(0), Fraction(0))
@@ -109,12 +109,28 @@ class SourceState:
 def source_state(value):
     """Validate without letting rounded averaging determine source support."""
     raw = _numeric(value, "state")
-    density_matrix(raw)
+    if raw.ndim != 2 or not raw.shape[0] or raw.shape[0] != raw.shape[1]:
+        raise ValueError("nonempty square numeric density matrix required")
     size = len(raw)
-    entries = tuple(tuple(
-        ((Fraction(float(raw[i, j].real)) + Fraction(float(raw[j, i].real))) / 2,
-         (Fraction(float(raw[i, j].imag)) - Fraction(float(raw[j, i].imag))) / 2)
-        for j in range(size)) for i in range(size))
+    original = tuple(tuple((Fraction(float(z.real)), Fraction(float(z.imag)))
+                           for z in row) for row in raw)
+    # Apply the shared tolerances to the original entries, without a
+    # throwaway binary64 norm, trace reduction, average, or eigensolve.
+    # Squared exact comparisons also preserve the caller's NumPy policy.
+    tolerance_squared = Fraction(ATOL)**2
+    hermitian_defect = sum((_norm_squared(_subtract(original[i][j],
+                              _conjugate(original[j][i])))
+                            for i in range(size) for j in range(size)), Fraction(0))
+    if hermitian_defect > tolerance_squared:
+        raise ValueError("density matrix must be Hermitian")
+    raw_trace = _ZERO
+    for i in range(size):
+        raw_trace = _add(raw_trace, original[i][i])
+    if _norm_squared(_subtract(raw_trace, _ONE)) > tolerance_squared:
+        raise ValueError("density matrix must have trace one")
+    entries = tuple(tuple(_scale(_add(original[i][j], _conjugate(original[j][i])),
+                                 Fraction(1, 2))
+                          for j in range(size)) for i in range(size))
     columns, pivots = factor_entries(entries)
     raw.setflags(write=False)
     return SourceState(raw, entries, columns, pivots,
@@ -243,9 +259,12 @@ def _rational_sqrt(value):
     return None
 
 
-def _fidelity_at_precision(left, right, overlap, rank, precision, rank_two=None):
+def _fidelity_at_precision(left, right, overlap, rank, precision, rank_two=None,
+                           diagonal=None):
     ctx = mpmath.mp.clone()
     ctx.dps = precision
+    if diagonal is not None:
+        return ctx, ctx.fsum(ctx.sqrt(_mp_real(ctx, p)) for p in diagonal)**2
     if rank_two is not None:
         trace, moment = rank_two
         return ctx, _mp_real(ctx, trace) + 2 * ctx.sqrt(_mp_real(ctx, moment))
@@ -278,27 +297,52 @@ def fidelity_factors(left, right):
         raise ValueError("fidelity requires states on the same space")
     if left.entries == right.entries:
         return fraction_float(left.trace ** 2)
-    overlap = _overlap_matrix(left, right)
-    rank = _rank(overlap)
-    if not rank:
-        return 0.0
-    if rank == 1:
-        # A single positive singular value has nuclear norm squared equal
-        # to the exact Frobenius norm squared: Tr(A B).
-        return fraction_float(_trace_product(left, right, overlap))
+    diagonal = None
     rank_two = None
-    if rank == 2:
-        trace = _trace_product(left, right, overlap)
-        moment = _rank_two_moment(left, right, overlap)
-        root = _rational_sqrt(moment)
-        if root is not None:
-            return fraction_float(trace + 2 * root)
-        rank_two = trace, moment
+    size = len(left.entries)
+    if all(source.entries[i][j] == _ZERO for source in (left, right)
+           for i in range(size) for j in range(size) if i != j):
+        diagonal = tuple(left.entries[i][i][0] * right.entries[i][i][0]
+                         for i in range(size))
+        # F=(sum sqrt(p_i))^2. Even irrational individual roots can have
+        # rational cross products, giving an exact arbitrary-rank answer
+        # at binary64 midpoints. No SVD or positive-mass threshold is needed.
+        exact = sum(diagonal, Fraction(0))
+        for i, p in enumerate(diagonal):
+            for q in diagonal[i+1:]:
+                root = _rational_sqrt(p*q)
+                if root is None:
+                    exact = None
+                    break
+                exact += 2*root
+            if exact is None:
+                break
+        if exact is not None:
+            return fraction_float(exact)
+        overlap, rank = None, None
+    else:
+        overlap = _overlap_matrix(left, right)
+        rank = _rank(overlap)
+        if not rank:
+            return 0.0
+        if rank == 1:
+            # A single positive singular value has nuclear norm squared equal
+            # to the exact Frobenius norm squared: Tr(A B).
+            return fraction_float(_trace_product(left, right, overlap))
+        if rank == 2:
+            trace = _trace_product(left, right, overlap)
+            moment = _rank_two_moment(left, right, overlap)
+            root = _rational_sqrt(moment)
+            if root is not None:
+                return fraction_float(trace + 2 * root)
+            rank_two = trace, moment
     failure = "fidelity remains unresolved at available precision"
     for precision in (80, 240, 640, 1280):
         try:
-            coarse, value = _fidelity_at_precision(left, right, overlap, rank, precision, rank_two)
-            ctx, check = _fidelity_at_precision(left, right, overlap, rank, precision + 40, rank_two)
+            coarse, value = _fidelity_at_precision(left, right, overlap, rank, precision,
+                                                  rank_two, diagonal)
+            ctx, check = _fidelity_at_precision(left, right, overlap, rank, precision + 40,
+                                              rank_two, diagonal)
             difference = abs(ctx.mpf(value) - check)
             if difference > abs(check) * ctx.mpf("1e-25"):
                 continue

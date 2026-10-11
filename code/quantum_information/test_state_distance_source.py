@@ -86,3 +86,29 @@ def test_semidefinite_difference_uses_exact_trace_at_an_irrational_spectrum_tie(
     # ||D||_1/2=5*tiny/2, exactly halfway between floats 2*tiny and 3*tiny.
     assert trace_distance(a, b) == 2*tiny
     assert trace_distance(b, a) == 2*tiny
+
+
+@pytest.mark.parametrize("multiple", [1, 3])
+def test_normalized_distance_tie_with_mixed_sign_irrational_spectrum(multiple):
+    delta = multiple*2.**-54
+    a = np.diag([.25, .25+delta, .25-delta, .25])
+    a[0, 1] = a[1, 0] = .125
+    b = np.diag([0., 0., .5, .5])
+    # D has a positive-definite 2x2 block and a negative diagonal block.
+    # Thus half its trace norm is Tr(D_positive)=.5+delta, regardless of
+    # the irrational eigenvalues of the positive block. Both states have
+    # trace EXACTLY one; no accepted normalization drift is required.
+    assert sum(Fraction(float(x)) for x in np.diag(a)) == 1
+    expected = float(Fraction(1, 2)+Fraction(delta))
+    assert trace_distance(a, b) == expected
+    assert trace_distance(b, a) == expected
+
+
+@pytest.mark.parametrize("multiple, units", [(1, 4), (3, 14)])
+def test_subnormal_distance_tie_with_mixed_sign_irrational_spectrum(multiple, units):
+    mass = multiple*np.nextafter(0., 1.)
+    a = np.diag([1., 4*mass, 3*mass, 0.])
+    a[1, 2] = a[2, 1] = mass
+    b = np.diag([1., mass, mass, 4*mass])
+    # D has positive eigenvalues (5 +/- sqrt(5))*mass/2 and -4*mass.
+    assert trace_distance(a, b) == units*np.nextafter(0., 1.)

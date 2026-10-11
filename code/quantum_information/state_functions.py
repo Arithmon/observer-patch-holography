@@ -47,15 +47,38 @@ def _entries(array):
                        for z in row) for row in array)
 
 
-def _rational_spectrum(entries):
+def _characteristic_polynomial(entries):
     import sympy as sp
     matrix = sp.Matrix([[sp.Rational(r.numerator, r.denominator) +
                          sp.I * sp.Rational(s.numerator, s.denominator)
                          for r, s in row] for row in entries])
-    roots = matrix.charpoly().as_poly().ground_roots()
+    return matrix.charpoly().as_poly()
+
+
+def _rational_spectrum(entries):
+    roots = _characteristic_polynomial(entries).ground_roots()
     if sum(roots.values()) != len(entries):
         return None
     return {Fraction(int(value.p), int(value.q)): count for value, count in roots.items()}
+
+
+def _exact_trace_norm(entries):
+    """Sum traces of one-sign rational spectral factors, when they suffice.
+
+    Hermiticity guarantees real roots. Alternating nonnegative coefficients
+    exclude negative roots; nonnegative coefficients exclude positive roots.
+    Vieta then gives each factor's absolute spectral sum without rounding its
+    possibly irrational roots. A mixed-sign factor leaves this unresolved.
+    """
+    total = Fraction(0)
+    for factor, multiplicity in _characteristic_polynomial(entries).factor_list()[1]:
+        coefficients = [Fraction(int(c.p), int(c.q)) for c in factor.all_coeffs()]
+        coefficients = [value / coefficients[0] for value in coefficients]
+        if (not all(value >= 0 for value in coefficients) and
+                not all((-1)**i * value >= 0 for i, value in enumerate(coefficients))):
+            return None
+        total += multiplicity * abs(coefficients[1])
+    return total
 
 
 def _rational_function_zeros(entries, inverse):
@@ -273,10 +296,10 @@ def source_distance(left, right):
             return rounded_mp(ctx, second, max(8 * delta, ctx.mpf(coarse.eps) * second * n ** 3 * 1000))
         except UnresolvedStatePrecision as error:
             failure = str(error)
-        # Resolve exact rational ties independently of numerical eigensolvers.
+        # Resolve exact rational ties even when individual eigenvalues are
+        # irrational but complete spectral factors have one sign.
         if precision == 80:
-            roots = _rational_spectrum(entries)
-            if roots is not None:
-                exact = sum(abs(value) * count for value, count in roots.items()) / 2
-                return fraction_float(exact)
+            exact = _exact_trace_norm(entries)
+            if exact is not None:
+                return fraction_float(exact / 2)
     raise UnresolvedStatePrecision(failure)
