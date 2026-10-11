@@ -76,6 +76,10 @@ not a domain argument.
   compounded error spoils the minimum. Compare with the original-input
   solution, and check reported residuals on their own scale so a false zero
   cannot hide inside the much larger target's roundoff budget.
+  Test the action of a validated map as well as its matrix identities.
+  Measure residuals before rounding a projection: a correctly rounded
+  projected operator can still give an incorrect distance after subtraction.
+  Pair a large conserved component with a tiny transverse perturbation.
 - **Stationarity and graph structure:** a small stationary residual need not
   bound population error in a slowly mixing chain. Check an independently
   solved law, periodic chains and multiple closed classes. Decide support,
