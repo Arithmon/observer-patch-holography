@@ -77,6 +77,16 @@ uniform seam mixtures of C and E converge to the uniform binary state on the
 load space. Protected external registers require explicit separate factors.
 This ensemble statement does not establish confluence of individual histories.
 
+On classical diagonal states this is the lazy symmetric simple exclusion
+process with two particles. Its generator per seam attempt is
+`(1/60) Σ_e(S_e−I)`. The exclusion-process corollary of
+[Caputo, Liggett and Richthammer (2010), section 4.1.1](https://arxiv.org/abs/0906.1238)
+gives the exact classical gap `(5−sqrt(5))/60 ≈ 0.046066` on this carrier,
+equal to the one-particle gap. This is an application of existing theory.
+It does not determine the full quantum-channel gap or the enlarged N2/N4
+gaps: off-diagonal operators and additional response factors require their
+own analysis.
+
 Under uniform binary equilibrium and uniform seam attempts, the same records
 recover the carrier Laplacian, its rank-three slow Gram and a dimensionless
 rate relation. Those readouts do not identify physical space or proper time.

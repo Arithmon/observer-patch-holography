@@ -1,4 +1,4 @@
-$ /Users/muellerberndt/.pyenv/versions/3.13.7/bin/python3 /Users/muellerberndt/Projects/oph-meta/survival-proof-3/upstream_mathematical_completion/proofs/symbolic_completion_proofs.py
+$ python3 proofs/symbolic_completion_proofs.py
 PASS anomaly arithmetic
 PASS pure-SM one-loop gauge beta coefficients
 PASS electroweak neutral mass eigenvalues
@@ -7,7 +7,7 @@ PASS charged strict pole series through two loops
 PASS neutral strict pole series and A-Z mixing order
 PASS strict square-root series
 
-$ /Users/muellerberndt/.pyenv/versions/3.13.7/bin/python3 /Users/muellerberndt/Projects/oph-meta/survival-proof-3/upstream_mathematical_completion/checkers/check_completion_bundle.py
+$ python3 checkers/check_completion_bundle.py
 {
   "status": "THEOREM_STACK_DEFINED__SIMULATION_RECEIPTS_OPEN__NO_OPH_NATIVE_POLE_PROMOTION",
   "schemas_valid": true,
@@ -43,7 +43,7 @@ $ /Users/muellerberndt/.pyenv/versions/3.13.7/bin/python3 /Users/muellerberndt/P
   ]
 }
 
-$ /Users/muellerberndt/.pyenv/versions/3.13.7/bin/python3 -m pytest -q /Users/muellerberndt/Projects/oph-meta/survival-proof-3/upstream_mathematical_completion/tests
+$ python3 -m pytest -q tests
 ..................................                                       [100%]
 34 passed in 0.19s
 

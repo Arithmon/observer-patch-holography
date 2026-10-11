@@ -23,6 +23,34 @@ def live_register() -> dict:
     return json.loads(fz_tool.REGISTER_PATH.read_text(encoding="utf-8"))
 
 
+def test_normalized_custody_copies_bind_original_bytes_and_reject_mutation(tmp_path):
+    metadata = fz_tool.custody_metadata_normalization()
+    assert len(metadata["artifacts"]) == 2
+    for relative, pin in metadata["artifacts"].items():
+        original = REPO_ROOT / relative
+        copy_path = tmp_path / original.name
+        copy_path.write_bytes(original.read_bytes())
+        assert pin["original_sha256"] != pin["normalized_sha256"]
+        assert fz_tool.verify_custody_artifact_digest(copy_path, pin["original_sha256"])
+        if copy_path.suffix == ".json":
+            data = json.loads(copy_path.read_text())
+            data["rows"][0]["oph_value"] = "changed prediction"
+            copy_path.write_text(json.dumps(data))
+        else:
+            copy_path.write_text(copy_path.read_text().replace("06:41:53Z", "06:41:54Z"))
+        assert not fz_tool.verify_custody_artifact_digest(copy_path, pin["original_sha256"])
+
+
+def test_metadata_normalization_receipt_cannot_authorize_new_changes(tmp_path, monkeypatch):
+    replacement = tmp_path / "normalization.json"
+    data = fz_tool.custody_metadata_normalization()
+    data["rows"]["FZ-01"]["content"] = "changed prediction"
+    replacement.write_text(json.dumps(data))
+    monkeypatch.setattr(fz_tool, "METADATA_NORMALIZATION_PATH", replacement)
+    with pytest.raises(SystemExit, match="normalization bytes differ"):
+        fz_tool.custody_metadata_normalization()
+
+
 def test_live_register_validates_and_surface_is_current():
     register = live_register()
     rows = fz_tool.validate(register)

@@ -14,8 +14,9 @@ be updated before a freeze. Retrospective results occupy a separate collection;
 their former reservations cannot also occur as ladder rows. The issue-506
 record is checked against a fresh replay of its canonical producer as well as
 its recomputed payload digest. Committed custody contracts bind the source-side
-FZ-02 receipt and Lean module. The custody directories themselves are vendored
-byte for byte under ``evidence/custody/``, so every clone verifies each
+FZ-02 receipt and Lean module. The custody directories are under
+``evidence/custody/`` with two explicitly pinned metadata-normalized derivatives;
+the verifier compares those against their historical originals. Every clone verifies each
 manifest artifact, detached OpenTimestamps digest, attestation class, and the
 append-only FZ-02 custody and scientific errata. If that directory is removed,
 the tool reports ``external_custody_not_present`` explicitly rather than
@@ -63,6 +64,54 @@ ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "claims" / "frozen_prediction_register.json"
 FROZEN_ROWS_BOOTSTRAP_REVISION = "68663e9e52a3931c322676a127dd0af144a01de3"
 FROZEN_ROWS_BOOTSTRAP_GIT_BLOB_SHA1 = "731ff48c6005a0d2b3930c1d33a6f00c2dd3e345"
+METADATA_NORMALIZATION_PATH = ROOT / "evidence/custody/metadata_normalization_2026-10-11.json"
+METADATA_NORMALIZATION_SHA256 = "29056c76c475620748d6518bc68d96ae9d55685d2f97075dfe5329c7f4e7947d"
+
+
+def custody_metadata_normalization() -> dict:
+    """Load the fixed, metadata-only normalization, never a target exemption."""
+    raw = METADATA_NORMALIZATION_PATH.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != METADATA_NORMALIZATION_SHA256:
+        fail("custody metadata normalization bytes differ from fixed pin")
+    return strict_json.loads(raw.decode("utf-8"))
+
+
+def verify_custody_artifact_digest(path: Path, expected_hash: str) -> bool:
+    """Bind a displayed copy to its timestamped original without restamping it.
+
+    Only two exact normalized byte strings are admitted. Their original bytes
+    must exist at the pinned public source revision and reproduce the original
+    digest. All scientific JSON fields and all other erratum text are compared.
+    """
+    raw = path.read_bytes()
+    if hashlib.sha256(raw).hexdigest() == expected_hash:
+        return True
+    metadata = custody_metadata_normalization()
+    # A caller may supply a copied custody root (including mutation tests).
+    matches = [
+        (relative, pin) for relative, pin in metadata["artifacts"].items()
+        if path.name == Path(relative).name
+    ]
+    if len(matches) != 1:
+        return False
+    relative, pin = matches[0]
+    if (pin["original_sha256"] != expected_hash or
+            hashlib.sha256(raw).hexdigest() != pin["normalized_sha256"]):
+        return False
+    original = read_commit_blob(ROOT, metadata["source_revision"], relative,
+                                "custody metadata normalization")
+    if hashlib.sha256(original).hexdigest() != expected_hash:
+        return False
+    if path.suffix == ".json":
+        source = strict_json.loads(original.decode("utf-8"))
+        source["pinned_source"]["file"] = Path(source["pinned_source"]["file"]).name
+        return source == strict_json.loads(raw.decode("utf-8"))
+    normalized, count = re.subn(
+        r"(?m)^   the [^\n]+ commit$", "   the custody commit",
+        original.decode("utf-8"),
+    )
+    return count == 1 and normalized.encode("utf-8") == raw
+
 # Append-only October 4 extension. The V3 row schema is unchanged; the original
 # bootstrap still binds every historical frozen/void row. New conditional
 # cosmology rows are bound separately to their externally stamped snapshots.
@@ -1873,6 +1922,14 @@ def validate_frozen_rows_bootstrap(rows: list[dict]) -> None:
     historical_immutable = [
         row for row in historical_rows if row.get("status") in immutable_statuses
     ]
+    # The fixed normalization changes display custody metadata only. Every
+    # scientific field continues to compare against the original Git blob.
+    metadata_rows = custody_metadata_normalization()["rows"]
+    for row in historical_immutable:
+        replacements = metadata_rows.get(row["id"], {})
+        if not set(replacements) <= {"custody", "attestation"}:
+            fail("custody normalization cannot change scientific row fields")
+        row.update(replacements)
     historical_ids = {row["id"] for row in historical_immutable}
     current_immutable = [row for row in rows if row.get("id") in historical_ids]
     if historical_immutable != current_immutable:
@@ -2388,7 +2445,7 @@ def verify_external_custody(
             artifact_path = directory / filename
             if not artifact_path.is_file():
                 fail(f"{contract_id} custody artifact is missing: {filename}")
-            if sha256_file(artifact_path) != expected_hash:
+            if not verify_custody_artifact_digest(artifact_path, expected_hash):
                 fail(f"{contract_id} custody artifact hash mismatch: {filename}")
             verify_ots_binding(Path(str(artifact_path) + ".ots"), expected_hash, state)
         verify_ots_binding(
@@ -2401,7 +2458,7 @@ def verify_external_custody(
             erratum_path = directory / contract["custody_erratum"]
             if not erratum_path.is_file():
                 fail("FZ-02 append-only custody erratum is missing")
-            if sha256_file(erratum_path) != contract["custody_erratum_sha256"]:
+            if not verify_custody_artifact_digest(erratum_path, contract["custody_erratum_sha256"]):
                 fail("FZ-02 custody erratum hash mismatch")
             scientific_erratum_path = directory / contract["scientific_erratum"]
             if not scientific_erratum_path.is_file():
@@ -3256,7 +3313,8 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
     lines.append("## Custody and attestation")
     lines.append("")
     lines.append(
-        "The custody statements below preserve their registration-time wording."
+        "The custody statements below preserve their scientific registration content;"
+        " display metadata is normalized by the fixed October 11 receipt."
         " Later proof upgrades appear in the dated receipt below; they do not"
         " change a target, decision rule, freeze time, or scientific verdict."
     )
@@ -3379,10 +3437,14 @@ def render(register: dict, rows: list[dict], bitcoin_upgrades: dict | None = Non
     )
     lines.append("")
     lines.append(
-        "The custody directories named in the frozen rows are vendored byte for"
-        " byte under `evidence/custody/`, where the custody paths below resolve."
+        "The custody directories named in the frozen rows are under"
+        " `evidence/custody/`, where the custody paths below resolve."
+        " Two metadata-normalized copies are identified in"
+        " `metadata_normalization_2026-10-11.json`; their scientific content is"
+        " checked against the pinned historical public artifacts. Detached proofs"
+        " for these copies bind the original bytes, not the normalized copies."
         " The validator checks the committed in-repo hash contracts, recomputes"
-        " every manifest and artifact hash from those copies, checks each"
+        " every manifest and artifact hash with that explicit distinction, checks each"
         " detached `.ots` digest, and distinguishes pending calendar commitments"
         " from Bitcoin block attestations. The original custody commits are"
         " recorded as provenance; the timestamps anchor the bytes independently"

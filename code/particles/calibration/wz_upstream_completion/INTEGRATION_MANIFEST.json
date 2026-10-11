@@ -16,7 +16,7 @@
   "package_test_count_policy": "the current executable count is reported by pytest collection; 38 is the preserved baseline specification-suite count",
   "runtime_log_excluded": "outputs/latest_validation.log",
   "file_count_excluding_manifest_and_runtime_log": 92,
-  "total_bytes_excluding_manifest_and_runtime_log": 25293383,
+  "total_bytes_excluding_manifest_and_runtime_log": 25292972,
   "files": [
     {
       "path": "OPH_SM_EFT_WZ_COMPLETION_THEOREMS.md",
@@ -160,8 +160,8 @@
     },
     {
       "path": "outputs/integration_initial_validation.log",
-      "bytes": 2447,
-      "sha256": "7a90721d62359ffffc8a25e27a30942c8ed89f283fb82a4673ecf4d39e79994c"
+      "bytes": 2036,
+      "sha256": "bdb2470419919472c144c03f253a15e335f813f49d96935574c52c9da0db7bcf"
     },
     {
       "path": "outputs/renormalization_ct_1.json",

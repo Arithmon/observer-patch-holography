@@ -1,5 +1,16 @@
 # Observer dynamics evidence
 
+## Metadata normalization, 11 October 2026
+
+Machine-specific cache locations, one unused default input location, and historical
+command locations have been replaced with portable paths. The numerical evidence,
+seeds and scientific assertions are unchanged. [The normalization ledger](METADATA_SANITIZATION_20261011.json)
+distinguishes original byte hashes from the current published copies; dependent
+input manifests and receipt references use the published hashes. Statements below
+about original bytes describe the archive before this metadata-only update. The
+canonical verifier replays the current published archive.
+
+
 `manifest.json` pins the immutable producer, specification, receipt and compact
 input bytes. `sim-analysis/` preserves their original relative paths;
 `oph-physics-sim/` contains the frozen import dependency closure needed by the

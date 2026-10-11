@@ -1,0 +1,36 @@
+{
+  "schema": "oph.custody_metadata_normalization.v1",
+  "date": "2026-10-11",
+  "source_revision": "efa92897d913d157d386f76eaca65b70734f7705",
+  "scope": "Display metadata only. Scientific targets, protocols, content digests, freeze times and detached timestamp proofs are unchanged. Timestamp proofs bind the historical original bytes; normalized copies are verified against those originals and are not newly timestamped.",
+  "rows": {
+    "FZ-01": {
+      "custody": "falsification/frozen_targets/fz01_2026-07-17 (registration manifest plus per-target statements, decision policies, and integrity hashes)"
+    },
+    "FZ-02": {
+      "custody": "custody commit 1e7d7c73 at 2026-07-26T06:41:53Z, falsification/frozen_targets/fz02_2026-07-26 (frozen target, freeze registry, executable receipt, pinned Lean module, registration manifest, append-only custody erratum, and append-only scientific erratum dated 2026-07-29; the scientific erratum does not modify any stamped artifact)"
+    },
+    "FZ-06": {
+      "custody": "falsification/frozen_targets/fz01_2026-07-17 (integer-k comb target of the FZ-01 registration; per-event re-test record kept with the tracker)"
+    },
+    "FZ-10": {
+      "custody": "falsification/frozen_targets/fz10_2026-07-28 (frozen target statement with decision policy, byte copy of the producing artifact at source commit bbc2cebe, and registration manifest)"
+    },
+    "FZ-11": {
+      "custody": "RER source commit 66176656dc1143f9ec50ba1a6e409c403545857f at 2026-07-31T18:17:29Z fixes the prediction receipt. custody commit 97202365784ad5bfc96c482b95b429c396afb5bf at 2026-07-31T18:20:01Z fixes the target statement and exact coefficient snapshot. Append-only custody commit c35679ab93e4c121fd2d0d51d6e253f9c5bc6257 pins the corrected sorry-free Lean proof from RER commit 05771b773ffaef4be10ae67a72e51cc17e3a38fb. Append-only custody commit 8cc5261653e37cbca0e6017fcc95a9fe7f649963 records the complete decision rule without changing prediction bytes or reading comparison data. Public repository custody requires these commits on origin/main."
+    },
+    "FZ-12": {
+      "custody": "RER source commit bc5595f8dbb2d2886e2a64ddf447f69fbb00eb3f, original custody commit 54b450af0bb5bd0fee4842f5c5f654d08d6baa2d, and direct-child decision-rule custody commit 25da61a800226e0232336ccc86de8dec7d6b51c6; falsification/frozen_targets/fz12_2026-08-02 contains the stamped original package and append-only clarification."
+    }
+  },
+  "artifacts": {
+    "evidence/custody/falsification/frozen_targets/fz01_2026-07-17/fz01_freeze_registry_2026-07-17.json": {
+      "original_sha256": "8eb71663383aa7927448188e62337ae46ede676d11fad72450c013c2fa570c91",
+      "normalized_sha256": "71a841cd01c44e9e74926e687ba045de9a89b64545bb230aa52f7f454f272762"
+    },
+    "evidence/custody/falsification/frozen_targets/fz02_2026-07-26/CUSTODY_ERRATUM_2026-07-26.md": {
+      "original_sha256": "80a7bf46431ba630b08841a203752f643906a06b130b6d2d5d4f650539e025aa",
+      "normalized_sha256": "8dd2e38f43ebd235a80f88de130da5e07649898d4a11870a6622d26a64d5f67a"
+    }
+  }
+}

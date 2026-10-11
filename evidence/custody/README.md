@@ -8,6 +8,17 @@ for every stamped file. Historical packages were vendored byte for byte;
 later registrations are appended in their own dated directories.
 `.ots.bak` files retain proofs before their Bitcoin upgrade.
 
+The [October 11 metadata normalization](metadata_normalization_2026-10-11.json)
+identifies two display copies whose storage metadata has been normalized. Their
+scientific contents are unchanged. The validator binds each exact derivative
+to the original bytes at a pinned public Git revision and checks the permitted
+metadata transformation. The existing manifests and timestamp proofs attest the
+original bytes, **not** the normalized copies; no new timestamp is claimed.
+To check the FZ-01 registry's detached proof independently, retrieve its original
+bytes from that revision and pass that file to `ots verify -f`. The FZ-02 custody
+erratum has a hash binding but no detached timestamp of its own. All other
+artifacts, including every target and decision rule, retain their original bytes.
+
 The append-only `bitcoin_upgrades_2026-10-04/` directory holds upgraded
 copies of all 23 archived FZ-02, FZ-10, FZ-11 and FZ-12 proofs. Its
 `upgrade_audit.json` binds each copy to the unchanged original proof and
@@ -22,7 +33,7 @@ With a configured Bitcoin Core node, independently verify an individual
 copy using `ots verify -f <original-artifact> <upgraded-proof.ots>`.
 
 `python3 tools/build_fz_registry.py --check` recomputes every manifest and
-artifact hash from these copies, parses each proof with the official client
+artifact hash, with the original/derivative distinction above, and parses each proof with the official client
 (`ots info`, local only) and checks its digest and attestation class. To check
 a proof against the Bitcoin chain, run `ots verify <file>.ots` next to the
 file. The timestamps anchor the bytes independently of any Git history; the
