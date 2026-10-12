@@ -94,11 +94,11 @@ the actual coordinate half-line projector: taking the sign of a finite coordinat
 matrix is a different detector. A separate uniform number-moment theorem
 controls the finite-Hamiltonian family before that final read. The
 [complete-output audit](common_source/READOUT.md#complete-comparisons-with-the-actual-finite-pointer)
-now supplies certified finite-detector comparisons for the same zero-current
+supplies certified finite-detector comparisons for the same zero-current
 preparation. At d=2 the full ideal source output is about 0.455 from the
 infinite sharp history in trace distance, despite the much smaller change
 in its single sign probability. Every output confined to the d=256
-occupation code still has error above 0.122 for this prepared history.
+occupation code has error above 0.122 for this prepared history.
 This resolves a detector approximation question, with no spatial refinement
 or physical apparatus identification.
 
