@@ -16,9 +16,16 @@ observer to the existing free-field construction: its first current prepares
 a signed scalar intervention, a binary field read controls the next repair,
 and the inherited refinement bounds constrain the resulting history law.
 The scalar Hamiltonian, vacuum, readout and model-time convention are supplied.
-Its [continued version](observer/scalar_response/CONTINUATION.md) keeps the
-disturbed field for a second read and a third native event, with explicit
-record memory and a bound on the complete history.
+Its local evolution extension executes neighboring-site scalar updates at
+q=13 and q=34 and uses their detector probabilities for native feedback.
+Original-vacuum squeezing and a q=13 step-halving control are included;
+the inherited temporal and spatial certificates remain distinct from
+floating numerical error and physical apparatus error.
+Its separate [continued version](observer/scalar_response/CONTINUATION.md)
+uses continuous spectral evolution and keeps the disturbed field for a
+second read and a third native event, with explicit record memory and a
+bound on the complete history. Combining this retained two-read process
+with the local update engine remains further work.
 
 ## Run the observer
 
@@ -61,6 +68,11 @@ refuse to overwrite an existing file; use `--write PATH` to retain the full
 result and example traces. The [local-tick README](local_tick/README.md)
 gives its certificate replay and the incident-attempt stopping rule.
 `model.verify` replays the retained results and checks their artifact hashes.
+The scalar local-evolution receipt can also be replayed directly:
+
+```sh
+python3 -m model.observer.scalar_response.local_evolution --check model/observer/scalar_response/local_results.json
+```
 
 ## What is implemented
 
@@ -68,7 +80,8 @@ gives its certificate replay and the incident-attempt stopping rule.
 | --- | --- |
 | Native observer | [Native C, retained tape and record-only controller](observer/README.md), including all 264 benchmark paths and exact feedback controls |
 | Binary electromagnetic observation | [P-dependent detector](observer/p_response/README.md): evaluates α(P), writes one stable bit and uses it for the next native repair; all 528 weighted paths |
-| Scalar field observation and refinement | [Scalar detector](observer/scalar_response/README.md): native-current preparation, executed binary field instrument and bit-only feedback, with conditional continuum comparison and [prediction protocol](observer/scalar_response/PREDICTION.md) |
+| Scalar field observation and refinement | [Scalar detector](observer/scalar_response/README.md): native-current preparation, binary field instrument and bit-only feedback; local field updates at q=13,34, with temporal and spatial comparison bounds and a [prediction protocol](observer/scalar_response/PREDICTION.md) |
+| Retained scalar continuation | [Two reads of one field](observer/scalar_response/CONTINUATION.md): continuous spectral evolution, three native repairs, all 2,112 labelled histories and 209 reached record prefixes, with a separate complete-history bound |
 | Finite capacity | [Correctable record capacity and compact controller](observer/CAPACITY.md): 11 terminal native words, 16 reachable prefixes and a four-bit classical encoding under the binary preparation |
 | Direct execution | [20,000-trial native receipt](observer/results/run.json) and [200,000-trial detector receipt](observer/p_response/results.json), alongside exact references |
 | Local event clock | [N4 local-tick calculation](local_tick/README.md): corrected native null and certified positive memory bounds while remote events continue |
@@ -90,6 +103,11 @@ The scalar adapter executes a supplied free-field model; native integer
 averaging does not by itself derive that Hamiltonian or its quantum vacuum.
 Its detector prediction is conditional on the stated apparatus and field
 law, with independent software controls and a separate physical test boundary.
+The next physical construction target is a compatible implementation of the
+field preparation, evolution and detector on the chosen microscopic source,
+with its errors carried through the same retained history. The local scalar
+updates provide an explicit operation to implement; they do not supply that
+microscopic or laboratory identification.
 
 ## Continue the construction
 

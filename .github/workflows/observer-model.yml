@@ -8,6 +8,8 @@ on:
       - 'code/capacity_readback/**'
       - 'code/native_response/**'
       - 'code/source_scalar_packet/**'
+      - 'code/source_scalar_time_refinement/**'
+      - 'paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex'
       - 'code/causal_refinement/source_net_causet.py'
       - 'Lean/Screen/PrimitivePortFrameQuotient.lean'
       - 'Lean/Screen/PortFrameGram.lean'
@@ -24,6 +26,8 @@ on:
       - 'code/capacity_readback/**'
       - 'code/native_response/**'
       - 'code/source_scalar_packet/**'
+      - 'code/source_scalar_time_refinement/**'
+      - 'paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex'
       - 'code/causal_refinement/source_net_causet.py'
       - 'Lean/Screen/PrimitivePortFrameQuotient.lean'
       - 'Lean/Screen/PortFrameGram.lean'
@@ -58,5 +62,5 @@ jobs:
           cache-dependency-path: model/requirements.txt
       - run: python -m pip install -r model/requirements.txt
       - run: python -m model.verify
-      - run: python code/source_scalar_packet/verify_source_common_scalar.py
+      - run: python code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py
       - run: python -m pytest -q -W error model

@@ -37,6 +37,30 @@ of its finite-grid counterpart. These bounds are mathematical properties of
 the ideal supplied apparatus; floating point diagnostics do not certify
 implementation error.
 
+## Local evolution comparison
+
+The separate local receipt fixes q=13 and q=34 and the inherited largest
+dyadic step no greater than the squared minimum grid gap. It targets model
+time `39/40` by the nearest certified update, retaining the actual rational
+time. At q=13 a second run uses half that step at the same actual time.
+The scalar mean and detector pullback columns advance by neighboring-site
+canonical updates. The original-vacuum covariance supplies their detector
+variance, including squeezing. The centered split probability
+`Pr_split(y=+1 | j=+1)-1/2` replaces `r_q` in the same native prediction
+formulas and sampled controls. This receipt has one field read and two
+native repairs per history.
+
+The mathematical comparison to the continuum adds the inherited temporal
+error to the spatial error; a distinct reference time also adds its timing
+allowance. These terms transfer through the same exact native coefficients.
+All four grids have analytic temporal bounds, while only q=13 and q=34 run
+the local update loop. Their spatial bounds remain trivial, so this receipt
+does not turn either coarse-grid experiment into a precise continuum test.
+The q=89 and q=233 local split bounds remain analytic comparisons. Numerical
+agreement with the spectral split oracle and step refinement check the
+implementation; they are not independently measured physics or certified
+floating-point error bounds.
+
 ## Controls and decision rule
 
 Reversing the preparation sign must reverse E[j2]. Zero impulse or zero
@@ -71,6 +95,10 @@ and the same four grids. It keeps the first conditional field and native
 loads, adds a second field observation and uses its bit for a third native
 repair. Both outcome signs and every source path are retained. Its frozen
 software execution uses 50,000 trials per grid and seed 20261012.
+
+This continuation uses continuous full-mode spectral evolution. The local
+split-update receipt above remains a separate one-read protocol; its
+temporal bounds have not been transferred to this two-read history.
 
 At q=233 the ideal mathematical model predicts a zero-current detector-bit
 correlation above `0.045619388905`. This distinguishes a fresh-field reset

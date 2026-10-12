@@ -18,6 +18,10 @@ the [one-read experiment](README.md). Fix the two model times to `19/20` and
 `1`. The settings and 50,000-trial seed `20261012` are declared before the
 execution; no outcomes select a grid, time or coefficient.
 
+This protocol uses exact continuous spectral evolution. The separate local
+kick-drift-kick extension executes one terminal field read; its temporal-error
+certificate is not included in this two-read comparison.
+
 1. Prepare the native binary total-two shell uniformly and repair `(0,1)`.
    Keep its coin and current j, then use j for the single scalar preparation.
 2. At `19/20`, apply the existing centered field instrument and commit y1.

@@ -20,6 +20,8 @@ REPLAYS = (
     ("model.local_tick", None, "model/local_tick/results.json"),
     ("model.observer.scalar_response", None, "model/observer/scalar_response/results.json"),
     ("model.observer.scalar_response", "--continue-field", "model/observer/scalar_response/continuation_results.json"),
+    ("model.observer.scalar_response.local_evolution", None,
+     "model/observer/scalar_response/local_results.json"),
 )
 
 

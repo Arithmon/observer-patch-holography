@@ -42,6 +42,10 @@ continuum comparison. The native current sets a local preparation sign;
 the field detector writes the bit that controls the next native event.
 This joins an executed observer to a supplied field model without identifying
 native integer averaging with the field Hamiltonian.
+Its local evolution extension advances that field by neighboring-site
+canonical updates at q=13 and q=34, propagates the detector's vacuum variance,
+and uses the resulting probability in the same native continuation. It
+tests temporal refinement while retaining the existing continuum theorem.
 
 ## Native repair and its observer contract
 
@@ -240,6 +244,26 @@ state or an interacting theory. The first two grids retain the parent's
 trivial error bound; q=89 and q=233 give nontrivial bounds. The analytic parent
 establishes the limit independently of these four numerical executions.
 
+The [local evolution](observer/scalar_response/local_evolution.py) executes
+the canonical kick–drift–kick recurrence with the local tensor stencil at
+q=13 and q=34. It advances the mean and detector pullback columns; the
+original-vacuum covariance then supplies the squeezed detector variance.
+This local receipt performs one field read and two native repairs.
+The q=13 step-halving control compares at the same actual model time. The
+separate [receipt](observer/scalar_response/local_results.json) retains
+checkpoint summaries and sampled native records. It is not an authenticated
+log of every field update or a compiled native quantum-control word.
+
+The existing time-refinement certificate adds a temporal detector error to
+the spatial one on all four grids, including the change in the original
+vacuum under split evolution. The same `5/33` and `5/132` factors transfer
+that combined bound to complete histories and the mean current. A nearest
+grid-time comparison also includes the parent's timing bound. Only q=13
+and q=34 execute the local loop here; their inherited spatial bound is
+trivial. The tighter q=89 and q=233 spatial/temporal bounds remain analytic
+comparisons for this extension. Numerical agreement with the spectral
+oracle is a software check, not a certified floating-point error bound.
+
 The [prediction protocol](observer/scalar_response/PREDICTION.md) fixes the
 feedback statistic with disconnected, zero-preparation and sign-reversal
 controls. Independent mathematical reconstruction and seeded execution test
@@ -257,6 +281,10 @@ are kept. Its 209 reachable record prefixes have an explicit eight-bit
 encoding; source, field and service memory are separate. Four coherent Weyl
 terms retain the terminal quantum state, while every one of the 12,487,168
 q=233 modes contributes to their Gram kernel.
+
+This extension uses continuous full-mode spectral evolution. The local
+split-update engine above has not yet been joined to this two-read
+conditional-state continuation or its complete-history error bound.
 
 The new directed rational bound puts the q=233 complete-history TV error
 below 0.02571. It includes the zero-current histories, whose two-bit
@@ -359,8 +387,12 @@ retains all eight prescribed rational cases, including rejection of singular
 ## Remaining construction work
 
 The finite observer is a completed component to extend and preserve. The
-next work should connect its actual interfaces, rather than add abstract
-convergence theorems without a missing implementation requirement:
+next concrete target is to implement this scalar preparation, local update
+and binary detector on the chosen microscopic source, retaining their
+records and bounding their joint error on the same refinement family.
+That tests the missing source-to-field connection directly. A physical
+completion additionally needs the compatible interacting and geometric
+interfaces and an independent comparison below:
 
 - Implement longer or composed observers with explicit memory, reset,
   continuation and resource contracts while preserving current behavior.

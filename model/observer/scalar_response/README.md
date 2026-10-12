@@ -23,11 +23,20 @@ python3 -m model.observer.scalar_response --check model/observer/scalar_response
 # A new seed and a fresh receipt; existing files are never overwritten.
 python3 -m model.observer.scalar_response --trials 10000 --seed 42 --write /tmp/scalar-observer.json
 
+# Local field updates, temporal refinement and native feedback.
+python3 -m model.observer.scalar_response.local_evolution --check model/observer/scalar_response/local_results.json
+
+# Two retained field reads under continuous spectral evolution.
+python3 -m model.observer.scalar_response --continue-field --check model/observer/scalar_response/continuation_results.json
+
 # Independent field, quantum-instrument and native-history checks.
 python3 -m pytest -q model/observer/scalar_response
 
 # Replay the owning directed-interval continuum certificate.
 python3 code/source_scalar_packet/verify_source_common_scalar.py
+
+# Independent temporal certificate, with its spatial parent replayed.
+python3 code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py
 ```
 
 Replay compares source bindings, exact rational bounds, record counts and
@@ -65,16 +74,49 @@ occupation-basis tests independently check the quantum instrument and its
 backaction. The software does not emit a native quantum-control pulse word
 or allocate a physical oscillator network of that size.
 
-## Prediction and continuum error
+## Local evolution and temporal refinement
 
-The [continued experiment](CONTINUATION.md) reads this same field twice,
-retaining its conditional state through three native repairs. It executes
-all 2,112 labelled histories, implements an eight-bit encoding of 209 reached
+`local_evolution.py` executes neighboring-site canonical kick–drift–kick
+updates at q=13 and q=34. It evolves the prepared mean and two detector
+pullback columns by the local tensor stencil. Contracting those columns with
+the original vacuum covariance includes the squeezing caused by split
+evolution. Keeping the continuous vacuum variance unchanged would describe
+a different detector experiment.
+Terminal branch records retain the two Weyl-shifted squeezed components,
+their coefficients and their Gram overlaps.
+
+The model time is the nearest certified update to `39/40`, retained exactly
+as the step count times the rational step size. At q=13 an additional run
+halves the step at the same actual model time. A spectral split propagator
+independently checks the local recurrence. The computed detector probability
+then drives the same native record-and-feedback protocol and controls.
+
+The [local receipt](local_results.json) retains checkpoint summaries and
+sampled native records, not an authenticated log of every field read and
+write. This is numerical execution of the supplied scalar dynamics; no
+native quantum-control pulse word or laboratory oscillator array is executed.
+q=89 and q=233 are covered by the inherited analytic temporal certificate,
+but their local update loops are not executed in this receipt. The existing
+four-grid spectral receipt and mathematical certificates retain their scope.
+
+## Retained field and record continuation
+
+The [continued experiment](CONTINUATION.md) uses continuous full-mode spectral
+evolution and reads one prepared field twice, retaining its conditional state
+through three native repairs. It executes all 2,112 labelled histories,
+implements an eight-bit encoding of 209 reached
 record prefixes, and gives a new complete-history refinement bound below
 0.02571 at q=233. A certified second-read disturbance distinguishes the
 instrument from an explicit commuting Gaussian control with the same
 ordinary temporal correlation. Run it with `--continue-field`; the default
 one-read experiment and its sharper single-read bounds below are retained.
+
+This two-read engine uses `kernel.py`; `local_evolution.py` executes the
+one-read protocol. Continuing the conditional field through local split
+updates, with a corresponding two-read temporal error bound, remains
+further work.
+
+## Prediction and continuum error
 
 Let `r_q(t)=Pr(y=+1 | j=+1)-1/2`. Exact enumeration of all 528 histories gives
 
@@ -111,6 +153,16 @@ error bound; q=89 and q=233 tighten it. The parent theorem proves the
 continuum limit on its stated refinement family; these four certificates
 give concrete finite bounds, not a convergence rate inferred from samples.
 
+For local split evolution, replace `epsilon_q` in the transfer formulas by
+the parent's combined spatial and temporal probability bound. Comparing to
+a target between update times also includes its timing allowance. At q=233
+the certified temporal term is at most `0.000008071512` and the combined
+grid-time probability error is at most `0.050062606564`; these are analytic
+bounds for the ideal split dynamics. At the locally executed q=13 and q=34,
+the inherited spatial bound remains trivial. Floating agreement and step
+refinement check the numerical implementation and do not certify its roundoff
+error or remove the supplied field law.
+
 The [derivation](DERIVATION.md) supplies the composed instrument and exact
 transfer proof. The [prediction protocol](PREDICTION.md) fixes settings,
 controls and a prospective statistical rejection rule. It is independently
@@ -135,3 +187,6 @@ units, calibration, interactions and hardware errors remain further work.
 | [test_kernel.py](test_kernel.py) | Independent final Fock states, phases and checkpoint controls |
 | [test_continuation.py](test_continuation.py) | Independent native enumeration, memory and deletion controls |
 | [test_continuation_bounds.py](test_continuation_bounds.py) | Exact arithmetic, source drift and scientific mutation controls |
+| [local_evolution.py](local_evolution.py) | Local stencil evolution, squeezed detector probability and native continuation |
+| [local_results.json](local_results.json) | Executed q=13,34 comparisons, step refinement and inherited temporal bounds |
+| [test_local_evolution.py](test_local_evolution.py) | Independent local-action, split-map, Gaussian-state and refinement controls |
