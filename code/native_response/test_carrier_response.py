@@ -12,7 +12,7 @@ import pytest
 from scipy.linalg import expm
 import sympy as sp
 
-from native_response.carrier import decode, encode, refresh_address
+from native_response.carrier import decode, encode, refresh_address, select_address
 from native_response.geometry import exchange_generator, odd_unitary
 from native_response.source import source_generators
 
@@ -218,11 +218,41 @@ def test_complete_chart_implementer_has_endogenous_centralizer_decomposition(pac
                                atol=2e-16, rtol=0)
 
 
-def test_independent_address_controls_would_enlarge_the_response():
-    # Two address blocks already double the rank. Such controls are excluded
-    # from the witness grammar, rather than silently treated as twelve probes.
-    source = source_generators().reshape(12, -1)
-    real = np.concatenate((source.real, source.imag), axis=1).T
-    independent = np.kron(np.eye(2), real)
-    assert np.linalg.matrix_rank(real) == 12
-    assert np.linalg.matrix_rank(independent) == 24
+def test_record_conditioned_reversible_controls_would_have_exact_rank_144(packet):
+    # Reading e_p and choosing the subsequent reversible word from its result
+    # would implement independent controls in every central block. This is a
+    # forbidden grammar extension, not ruled out by an irreversible-channel
+    # kernel argument: nondemolition central readout need not lose information.
+    source = sp.Matrix.hstack(*(real_column(exact_blocks(row))
+                               for row in packet["generators"]))
+    _, coordinates = source.T.to_DM(extension=True).rref()
+    assert len(coordinates) == 12
+    probe = source[list(coordinates), :]
+    # Twelve independent within-block coordinates suffice. Central supports
+    # are disjoint; the faithful collective lift preserves this coefficient
+    # rank, without constructing operators on the full private tensor space.
+    uniform = sp.Matrix.vstack(*([probe] * 12))
+    conditioned = sp.kronecker_product(sp.eye(12), probe)
+    assert uniform.to_DM(extension=True).rank() == 12
+    assert conditioned.shape == (144, 144)
+    assert conditioned.to_DM(extension=True).rank() == 144
+
+
+def test_central_read_then_address_selected_from_its_result_is_identity():
+    # A fixed address reset loses information. Its outcome-conditioned use
+    # after a nondemolition central read need not: the branch still carries
+    # the old address. The full-input composition lemma cannot be applied to
+    # the names of commands inside such an adaptive instrument tree.
+    weights = np.array([1] * 11 + [5]) / 16
+    state = np.empty((12, 2, 2), complex)
+    for p, weight in enumerate(weights):
+        coherence = (1j**p) / 8
+        conditional = np.array([[.5, coherence], [coherence.conjugate(), .5]])
+        state[p] = weight * conditional
+    recovered = np.zeros_like(state)
+    for p, weight in enumerate(weights):
+        branch = np.zeros_like(state)
+        branch[p] = state[p] / weight
+        recovered += weight * select_address(branch, p)
+    np.testing.assert_array_equal(recovered, state)
+    assert np.linalg.norm(select_address(state, 0) - state) > .1

@@ -5,6 +5,8 @@ The logical algebra M_d embeds diagonally in direct_sum_12 M_d. Address
 refresh and star repair reproduce the supplied uniform seam channel exactly;
 no native or private quantum factor is reset. This finite adapter is not a
 full A1 source, a response-completeness proof, or a physical clock selection.
+Floating matrix-product evaluators conservatively refuse subnormal operands;
+their ordinary roundoff is not enclosed by an error certificate.
 """
 from __future__ import annotations
 
@@ -47,6 +49,20 @@ def _port(port):
             or not 0 <= port < 12):
         raise ValueError("port must be an integer from 0 to 11")
     return int(port)
+
+
+def _matrix_operand(value, name):
+    """Refuse subnormal operands before BLAS can silently erase them.
+
+    This is a conservative floating boundary, not an error certificate for
+    arbitrary matrix products. Direct attachment and address moves keep
+    their separate component-preservation checks.
+    """
+    tiny = np.finfo(float).tiny
+    for component in (value.real, value.imag):
+        magnitude = np.abs(component)
+        if np.any((magnitude != 0) & (magnitude < tiny)):
+            raise ValueError(f"{name} has subnormal matrix-product components")
 
 
 def antipode(port):
@@ -140,6 +156,7 @@ class SeamChannels:
                 dimension = kraus.shape[1]
             if kraus.shape[1] != dimension:
                 raise ValueError("all seam channels must have the same dimension")
+            _matrix_operand(kraus, "Kraus family")
             complete = sum(k.conj().T @ k for k in kraus)
             if np.linalg.norm(complete - np.eye(dimension), ord="fro") > ATOL:
                 raise ValueError("seam Kraus family must be trace preserving")
@@ -153,6 +170,7 @@ class SeamChannels:
         return self._dimension
 
     def _apply(self, edge, value):
+        _matrix_operand(value, "channel input")
         return sum(k @ value @ k.conj().T for k in self._families[edge])
 
     def apply(self, edge, rho):
@@ -177,9 +195,14 @@ def star_repair(blocks, channels):
         raise ValueError("cq state and seam dimensions differ")
     result = np.zeros_like(state)
     for a, b in edges():
-        result[a] += channels._apply((a, b), state[a]) / 5
-        result[b] += channels._apply((a, b), state[b]) / 5
-    return result
+        result[a] += channels._apply((a, b), state[a])
+        result[b] += channels._apply((a, b), state[b])
+    with np.errstate(under="ignore"):
+        average = result / 5
+    if (np.any((result.real != 0) & (average.real == 0))
+            or np.any((result.imag != 0) & (average.imag == 0))):
+        raise ValueError("star averaging underflows a state component")
+    return average
 
 
 def tick(blocks, channels):
@@ -203,6 +226,8 @@ def binary_query(blocks, occupied_projectors):
     projectors = _numeric(occupied_projectors, "binary projectors")
     if projectors.shape != state.shape:
         raise ValueError("binary projectors need shape (12, d, d)")
+    _matrix_operand(state, "query input")
+    _matrix_operand(projectors, "binary projectors")
     identity = np.eye(state.shape[1])
     result = np.zeros_like(state)
     for p, projector in enumerate(projectors):

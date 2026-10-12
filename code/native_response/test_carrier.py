@@ -103,6 +103,56 @@ def test_intertwining_multiple_steps_on_quantum_correlated_cq_states():
                           - decode(tick(initial, channels))) > .001
 
 
+def test_nonunital_channels_preserve_reference_and_selective_native_histories():
+    rng = np.random.default_rng(1091)
+    families = {}
+    for edge in edges():
+        raw = rng.normal(size=(9, 3)) + 1j * rng.normal(size=(9, 3))
+        isometry, _ = np.linalg.qr(raw)
+        families[edge] = isometry.reshape(3, 3, 3)
+    assert all(np.linalg.norm(sum(k @ k.conj().T for k in ks) - np.eye(3)) > .1
+               for ks in families.values())
+    # The second factor is an independent reference, untouched by every map.
+    lifted = {edge: np.array([np.kron(k, np.eye(2)) for k in ks])
+              for edge, ks in families.items()}
+    channels = SeamChannels(lifted)
+    superoperator = sum(np.kron(k.conj(), k)
+                        for ks in lifted.values() for k in ks) / 30
+
+    def native_tick(value):
+        return (superoperator @ value.reshape(-1, order="F")).reshape((6, 6), order="F")
+
+    def reference(value):
+        return np.trace(value.reshape(3, 2, 3, 2), axis1=0, axis2=2)
+
+    # Unequal address weights and a different entangled pure state per block.
+    vectors = rng.normal(size=(12, 6)) + 1j * rng.normal(size=(12, 6))
+    state = vectors[:, :, None] * vectors[:, None, :].conj()
+    state /= np.trace(state, axis1=1, axis2=2).sum()
+    native = state.sum(axis=0)
+    np.testing.assert_allclose(reference(decode(tick(state, channels))),
+                               reference(native), atol=2e-15)
+    probabilities = np.array([.2, .45, .8])
+    instrument = [np.kron(np.diag(np.sqrt(p)), np.eye(2))
+                  for p in (probabilities, 1 - probabilities)]
+    histories = [(1., state, native)]
+    for _ in range(2):
+        children = []
+        for parent_weight, blocks, direct in histories:
+            evolved, direct = tick(blocks, channels), native_tick(direct)
+            for kraus in instrument:
+                branch = kraus @ evolved @ kraus.conj().T
+                probability = np.trace(branch, axis1=1, axis2=2).sum().real
+                direct_branch = kraus @ direct @ kraus.conj().T
+                weight = parent_weight * probability
+                conditional = branch / probability
+                assert weight == pytest.approx(np.trace(direct_branch).real, abs=2e-15)
+                np.testing.assert_allclose(weight * decode(conditional), direct_branch,
+                                           atol=2e-15)
+                children.append((weight, conditional, direct_branch))
+        histories = children
+
+
 def test_central_query_records_lueders_branches_and_preserves_within_branch_coherence():
     state = random_cq(3)
     native = decode(state)
@@ -226,6 +276,54 @@ def test_uniform_attachment_refuses_subnormal_population_erasure():
     tiny = np.nextafter(0., 1.)
     with pytest.raises(ValueError, match="underflows"):
         encode(np.diag([1., tiny]))
+
+
+def test_matrix_channels_refuse_subnormal_operands_without_banning_direct_moves():
+    tiny = np.nextafter(0., 1.)
+    rho = np.diag([1., 12 * tiny])
+    state = encode(rho)
+    assert decode(state)[1, 1] == 12 * tiny
+    assert decode(select_address(state, 3))[1, 1] == 12 * tiny
+    channels = SeamChannels({edge: np.eye(2)[None, :, :] for edge in edges()})
+    for evaluate in (lambda: channels.apply((0, 2), rho),
+                     lambda: star_repair(state, channels),
+                     lambda: tick(state, channels)):
+        with pytest.raises(ValueError, match="subnormal matrix-product"):
+            evaluate()
+    kraus = np.eye(2)[None, :, :]
+    kraus[0, 0, 1] = tiny
+    with pytest.raises(ValueError, match="subnormal matrix-product"):
+        SeamChannels({edge: kraus for edge in edges()})
+
+
+def test_query_refuses_subnormal_coherence_even_when_projector_support_is_exact():
+    tiny = np.nextafter(0., 1.)
+    state = np.zeros((12, 3, 3), dtype=complex)
+    state[0, 0, 0] = 1
+    state[0, 1:, 1:] = tiny
+    projector = np.zeros((3, 3))
+    projector[0, 0] = 1
+    projector[1:, 1:] = .5
+    # P fixes both |0> and |1>+|2>, hence P rho P=rho exactly. BLAS's
+    # half-subnormal intermediates erased the small supported block before.
+    np.testing.assert_array_equal(projector @ projector, projector)
+    projectors = np.repeat(projector[None, :, :], 12, axis=0)
+    with pytest.raises(ValueError, match="subnormal matrix-product"):
+        binary_query(state, projectors)
+
+
+def test_star_averages_after_summing_and_refuses_unrepresentable_output():
+    tiny = np.nextafter(0., 1.)
+    small = np.array([np.diag([1., np.sqrt(tiny)]), [[0., 1.], [0., 0.]]])
+    reset = np.array([np.diag([1., 0.]), [[0., 1.], [0., 0.]]])
+    state = select_address(encode(np.diag([0., 1.])), 0)
+    channels = SeamChannels({edge: small for edge in edges()})
+    assert channels.apply((0, 2), np.diag([0., 1.]))[1, 1] == tiny
+    assert star_repair(state, channels)[0, 1, 1] == tiny
+    families = {edge: reset for edge in edges()}
+    families[0, 2] = small
+    with pytest.raises(ValueError, match="star averaging underflows"):
+        star_repair(state, SeamChannels(families))
 
 
 @pytest.mark.skipif(np.finfo(np.longdouble).tiny >= np.finfo(float).tiny,
