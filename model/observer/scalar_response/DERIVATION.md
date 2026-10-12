@@ -72,6 +72,49 @@ evaluation can compute the coherent inner products and their overlaps
 without allocating a Fock-space state vector. Floating evaluation of these
 quantities is distinct from the inherited directed interval certificate.
 
+## Local split evolution of the same apparatus
+
+The separate local extension replaces exact continuous propagation by
+canonical kick–drift–kick gates for the same whitened action `A`:
+
+```text
+p_half = p - (tau/2) A q,
+q_next = q + tau p_half,
+p_next = p_half - (tau/2) A q_next.
+```
+
+The position recurrence is `q_(n+1)=(2I-tau^2 A)q_n-q_(n-1)` with the
+initial half kick included. Each application of `A` uses only the site and
+its six axial neighbors, with the declared Dirichlet boundary. All modes
+remain present. The chosen time step obeys the inherited stability bound.
+
+Let `E_n` and `F_n` be the position blocks of the nth split propagator, so
+`q_n=E_n q_0+F_n p_0`. For the detector `X=g^T q_n`, define
+`a_n=E_n^T g` and `b_n=F_n^T g`. Propagating the mean and these two columns
+suffices for the single terminal readout. In the original action vacuum,
+
+```text
+mu_n = g^T mean(q_n),
+variance_n = [a_n^T Omega^(-1) a_n + b_n^T Omega b_n]/2,
+r_split(n) = exp(-variance_n/2) sin(mu_n)/2.
+```
+
+The variance changes because the split propagator generally squeezes the
+original vacuum. Gaussian characteristic functions give this probability
+without allocating a full covariance matrix or Fock vector. The continuous
+vacuum is an input, not a split-invariant replacement state. The final Weyl
+instrument has the same effects; its general output is a superposition of
+displaced squeezed states. This extension computes the terminal readout law
+from its mean and variance and retains each terminal branch's coefficients
+and Gaussian Gram overlaps without allocating a Fock vector.
+
+The local recurrence is executed at q=13 and q=34 at the nearest certified
+step to `39/40`; the exact attained model time is retained. The q=13
+step-halving comparison fixes that attained time. An independent spectral
+split propagator checks the local result. Retained traces are checkpoint
+summaries and native outcome records, not a complete authenticated field
+event history or native quantum-control compilation.
+
 ## One channel, retained records and native feedback
 
 The first native event uses seam `E=(0,1)` and commits `r=(c1,j)`. The field
@@ -148,6 +191,17 @@ TV(full history_h, full history_infinity)
 |Delta E[j2]| = |Delta E[N0_final]| <= (5/132) epsilon_h,
 |Delta E[y j]| <= (10/33) epsilon_h.
 ```
+
+The same argument applies to local split propagation: opposite currents
+reverse the mean while preserving covariance, and zero current has zero
+sine response. The existing time-refinement certificate bounds both the
+mean displacement error and the vacuum squeezing. Thus one may replace
+`epsilon_h` by `min(1, epsilon_spatial+epsilon_temporal)` for a comparison
+at the attained update time. At a distinct target time `s`, add
+`2|s-n tau|` before capping at one, using the parent's continuum probability
+Lipschitz bound. Its nearest admissible update is at distance at most `tau`.
+These transferred bounds concern the ideal mathematical recurrence;
+floating execution needs a separate numerical-error allowance.
 
 The equality concerns the complete labelled histories; forgetting records
 can only decrease total variation. The two sharper expectation bounds use

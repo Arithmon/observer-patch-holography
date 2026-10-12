@@ -1713,7 +1713,7 @@
           "declared_scalar_Weyl_branch_instrument_and_native_feedback"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "b755ecae59dccffdc4a36f3f1ccd10924aa941e50cd0219005064ca1c4c30a07"
+        "original_claim_sha256": "e30aa05f0529b037077ec001173f90e369ec161230281ff382799459c8e76b0d"
       },
       "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM": {
         "assumptions": [

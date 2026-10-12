@@ -37,7 +37,11 @@ The [scalar detector](model/observer/scalar_response/README.md) uses the native
 current to prepare a scalar field, reads one binary outcome and feeds it back
 into native repair, with a controlled comparison across the existing field
 refinements. Its field law, vacuum, apparatus and model clock are explicit
-inputs.
+inputs. The local evolution extension executes the field's neighboring-site
+updates at q=13 and q=34, includes the original vacuum's squeezing in the
+detector probability, and passes its sampled bit to native feedback. A
+separate temporal certificate extends the inherited continuum error budget;
+the two finest grids remain analytic comparisons for this local extension.
 
 Run from the repository root with Python 3.11 or newer:
 
@@ -58,8 +62,10 @@ concrete repair candidates**. The native observer and P-dependent binary
 detector execute complete observation, record and feedback protocols.
 The scalar adapter connects those interfaces to a supplied free-field
 continuum family and an independently checkable conditional detector
-prediction. It does not derive that Hamiltonian from integer averaging or
-establish a new empirical prediction of OPH.
+prediction. Its local evolution now supplies a checked numerical path from
+neighboring field updates to the detector-controlled repair, with a temporal
+refinement control. It does not derive that Hamiltonian from integer averaging
+or establish a new empirical prediction of OPH.
 The candidates reproduce and connect some required structures, and we can
 distinguish several of them in simulations. **We do not have a
 common model established as physically correct.** The

@@ -491,7 +491,7 @@
       "scope": "active",
       "status": "conditional",
       "premises": [],
-      "constructed": "The original five q=3 force/retained-pointer histories and coupled-vacuum preparation compose on one d=8192 onsite code with 104 field and two pointer work qubits. Time, displaced occupation cutoffs and existing-source synthesis have a combined mathematical trace-distance bound below 0.001237, preserved by the same complete readout. All relative phases and outcomes are retained. The finite recipe has a conservative evolution pulse upper bound below 2^116, with fewer than 2^117 pack/export events; neither word emission nor native execution was performed. Separately, model/observer executes a finite native two-event history and a P-dependent bit-controlled continuation; those are smaller completed protocols with different states and operations. The scalar-response adapter joins a first native repair, signed scalar preparation/evolution, binary field instrument and retained-bit-controlled second native repair. Its conditional field branches and complete native histories execute in software. This does not emit the separate large common-code scalar/pointer word or instantiate its native quantum service schedule.",
+      "constructed": "The original five q=3 force/retained-pointer histories and coupled-vacuum preparation compose on one d=8192 onsite code with 104 field and two pointer work qubits. Time, displaced occupation cutoffs and existing-source synthesis have a combined mathematical trace-distance bound below 0.001237, preserved by the same complete readout. All relative phases and outcomes are retained. The finite recipe has a conservative evolution pulse upper bound below 2^116, with fewer than 2^117 pack/export events; neither word emission nor native execution was performed. Separately, model/observer executes a finite native two-event history and a P-dependent bit-controlled continuation; those are smaller completed protocols with different states and operations. The scalar-response adapter joins a first native repair, signed scalar preparation/evolution, binary field instrument and retained-bit-controlled second native repair. Its conditional field branches and complete native histories execute in software. This does not emit the separate large common-code scalar/pointer word or instantiate its native quantum service schedule. A separate local scalar execution advances the mean and two detector pullback columns by neighboring-site canonical kick-drift-kick recurrences at q=13 and q=34, includes original-vacuum squeezing in its terminal detector law, and samples the same bit-controlled native continuation. A q=13 step-halving control fixes the attained model time. Its retained traces contain checkpoint summaries and native records, not a full authenticated field-event history or a compiled native quantum-control word.",
       "remaining": "Physical blank/pointer initialization, pulse/control and coherent code-service accuracy, storage/drift, routing/reset, complete readback and their resource budgets remain supplied or unimplemented. The enormous constructive upper count does not establish efficient execution. Physical clock selection and refinement-uniform resources remain separate obligations. Running the finite observer does not count as emitting or executing the scalar field/pointer word described in this group.",
       "closure": "Emit and execute an adequate native implementation and add reference-stable physical initialization, pulse, service, storage and readout errors to the constructed mathematical budget. Preserve complete records and the comparison order: uniform finite compiler on actual code, preparation error under a common extended finite history, state-specific ideal Gaussian history estimates, then complete readout. A common-code mathematical recipe does not close the physical experiment.",
       "sources": [
@@ -529,6 +529,18 @@
         {
           "path": "model/observer/scalar_response/results.json",
           "label": "Retained scalar-response execution and controls"
+        },
+        {
+          "path": "model/observer/scalar_response/local_evolution.py",
+          "label": "Local scalar updates and terminal detector probability"
+        },
+        {
+          "path": "model/observer/scalar_response/local_results.json",
+          "label": "Local q=13,34 execution and temporal refinement control"
+        },
+        {
+          "path": "code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py",
+          "label": "Independent inherited temporal detector certificate"
         }
       ],
       "claims": [
@@ -547,8 +559,8 @@
       "scope": "active",
       "status": "conditional",
       "premises": [],
-      "constructed": "The existing common scalar theorem gives the stated massive 3D free-field Weyl-product limit. The canonical field join preserves the same action, vacuum and observables. For the scalar-response adapter on the inherited q=13,34,89,233 family, the scalar probability bound epsilon_q transfers to complete history total variation at most 5epsilon_q/33 and native second-current mean error at most 5epsilon_q/132. Preparation, detector profiles and the [19/20,1] model-time window are fixed across the comparison; full Fock-state convergence is not asserted.",
-      "remaining": "Native preparation/control/record errors must remain controlled along that family. The archived spherical routing and interacting many-body limits are different targets. Vanishing kinetic perturbations can share the narrower position-Weyl limit, so that limit alone does not select unique microscopic inertia. The two-event native observer, its P detector and the N4 local-tick calculation establish no spatial refinement or interacting quantum continuum; their operators must be mapped to the chosen continuum family before any such transfer.",
+      "constructed": "The existing common scalar theorem gives the stated massive 3D free-field Weyl-product limit. The canonical field join preserves the same action, vacuum and observables. For the scalar-response adapter on the inherited q=13,34,89,233 family, the scalar probability bound epsilon_q transfers to complete history total variation at most 5epsilon_q/33 and native second-current mean error at most 5epsilon_q/132. Preparation, detector profiles and the [19/20,1] model-time window are fixed across the comparison; full Fock-state convergence is not asserted. The local evolution extension transfers the inherited temporal detector bound, including vacuum squeezing, through these same coefficients and adds the inherited timing allowance for reference times between updates. It executes local loops at q=13 and q=34, where the spatial bounds remain trivial; the q=89 and q=233 local split comparisons remain analytic. The temporal certificate and original four-grid spectral receipt retain their separate evidence scopes.",
+      "remaining": "Native preparation/control/record errors must remain controlled along that family. The archived spherical routing and interacting many-body limits are different targets. Vanishing kinetic perturbations can share the narrower position-Weyl limit, so that limit alone does not select unique microscopic inertia. The two-event native observer, its P detector and the N4 local-tick calculation establish no spatial refinement or interacting quantum continuum; their operators must be mapped to the chosen continuum family before any such transfer. Floating local-loop and spectral agreement does not certify roundoff error or instantiate the native quantum preparation, propagation and detector service.",
       "closure": "Prove uniform or summable errors and compatible states/observables for the actual implementation; reuse the existing scalar limit rather than reprove it. Interactions require their own continuum theorem.",
       "sources": [
         {
@@ -579,6 +591,18 @@
         {
           "path": "model/observer/scalar_response/results.json",
           "label": "Retained scalar-response execution and controls"
+        },
+        {
+          "path": "model/observer/scalar_response/local_evolution.py",
+          "label": "Local scalar updates and terminal detector probability"
+        },
+        {
+          "path": "model/observer/scalar_response/local_results.json",
+          "label": "Local q=13,34 execution and temporal refinement control"
+        },
+        {
+          "path": "code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py",
+          "label": "Independent inherited temporal detector certificate"
         }
       ],
       "claims": [
