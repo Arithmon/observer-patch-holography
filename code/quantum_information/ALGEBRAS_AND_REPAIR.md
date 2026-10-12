@@ -134,9 +134,10 @@ nonzero squared norms are positive rationals. The numerical path has a
 bounded input condition number; the exact orthogonal fallback needs only
 scalar normalization. Neither inherits the original presentation's bad
 conditioning.
-The returned chart, projections, closure checks and ordinary singular
-values still use floating-point arithmetic; this is not an interval
-certificate for their final error.
+The returned chart, GNS expectation construction, closure-test products
+and ordinary singular values still use floating-point arithmetic; this
+is not an interval certificate for their final error. HS projection and
+distance instead use the original exact span as described below.
 
 Trying the canonical chart first also avoids an artificial refusal. Put
 `U=[[1,0],[epsilon,0]]`, `V=[[0,1],[epsilon,0]]`, `epsilon=2^-600`.
@@ -459,6 +460,71 @@ the complement. Unresolved positive gaps still raise. The follow-up derives
 the complete finite spectrum and record lifetime, and keeps exact span
 data separate from its numerical basis. A numerical construction is not
 a source-law receipt.
+
+### Preserve observable actions and residuals
+
+The supplied span also determines projection, not just intersection. If
+\(C\) has the independent original vectorized operators as columns, the
+ordinary-trace Hilbert--Schmidt projector is
+\(P=C(C^*C)^{-1}C^*\). Indeed, \(Px\) belongs to the span and
+\(C^*(x-Px)=0\), which uniquely characterizes the orthogonal projection.
+[linear_actions.py](linear_actions.py) evaluates this factored expression
+over the exact rational real and imaginary parts of the supplied binary64
+entries. It caches the coordinate factor, rather than a dense ambient
+projector, and refreshes that cache when an intersection supplies new exact
+columns. Clearing a common denominator from \(C\) leaves \(P\) unchanged;
+the Gram inverse is stored as an integer numerator and denominator. This
+keeps repeated contractions over Gaussian integers and postpones rational
+division until output, avoiding repeated fraction reduction in closure
+checks. Dense exact calculations remain more expensive than floating chart
+calculations; their cost depends on both span dimension and integer bit
+length. The full matrix algebra needs no factorization.
+
+At audit base `083afa28`, with \(B=\mathbb C I_4\), \(\rho=I_4/4\) and
+\(X=\operatorname{diag}(2^{56},-2^{56},1,0)\), both the HS projection and
+the validated expectation returned zero instead of \(I_4/4\). The associated
+rate-one repair action also lost its final diagonal response \(1/4\).
+The cancellation happens during numerical evaluation even though the map
+has already passed the complete channel recognizer. Real and imaginary
+controls now retain those responses; finite results also survive overflowing
+or underflowing intermediate products.
+
+Distance is computed as \(\sqrt{(x-Px)^*(x-Px)}\), with subtraction and the
+sum of squares exact until the final scalar rounding. Subtracting a rounded
+projection is insufficient: for \(B=\mathbb C I_3\) and
+\(X=\operatorname{diag}(1,1+2^{-52},1)\), the projection rounds to \(I_3\),
+but the distance is \(2^{-52}\sqrt{2/3}\), not \(2^{-52}\). A large scalar
+part plus a tiny off-diagonal perturbation must likewise retain the tiny
+distance; QR roundoff must not supply a much larger fictitious residual.
+Algebra validation compares the exact squared distance with its squared
+tolerance, so a residual below the floating-point range can still be
+correctly accepted. This preserves the existing tolerance-based closure
+contract; it does not certify exact algebra closure.
+
+For an independently supplied superoperator, `apply_map` preserves that
+map's entries and the row-major/adjoint convention. It uses a floating dot
+product only when separate real and imaginary cancellation guards and
+range checks permit it; otherwise it evaluates the original entries
+exactly. Upper-range magnitude estimates also trigger exact evaluation:
+even an all-positive sum can round down to the largest finite float when
+the original sum lies at the overflow midpoint. Real/imaginary and dual
+controls check both sides of this boundary, retaining representable results.
+The ordinary floating path is not a correctly-rounded or interval
+certificate. Projection components and exact fallback map components are
+rounded once; distance uses an integer midpoint comparison to round its
+rational square root without an intermediate floating square. A final
+nonzero component or distance that rounds to zero, or a result that
+overflows on final rounding, raises explicitly. A scalar distance can
+therefore succeed even when individual projected components cannot be
+represented.
+
+The controls in [test_linear_actions.py](test_linear_actions.py) and
+[test_projection_residuals.py](test_projection_residuals.py) use independent
+rational contractions, analytic projections and high-precision scalar
+norms. They cover mixed scales, complex dual maps, retained intersections,
+and final-range refusals. This repairs evaluation of finite observables
+and diagnostics; it neither selects a physical repair law nor changes
+channel-recognition criteria, spectral support decisions or frozen source receipts.
 
 | Existing component | Effect of this audit |
 | --- | --- |
