@@ -24,7 +24,7 @@
     "test_native_observer.py": "517fba7fcd275c67637758d1a29d15b9fa8d85caa3f7716a435dcb4a94af444e",
     "test_observer_capacity.py": "4ac0b4efe01b045aabae27555421e15487b68059588cb402a513543206b64e37",
     "test_observer_simulation.py": "8474573b1d27b021fe57e597c0125268b639b2b1b0234e65967036ace672b7f7",
-    "test_quantum_memory.py": "bf94bfb669ced01c733ee24b38447be5d26b52dfcada61ea91d5cf3365b0e8be",
+    "test_quantum_memory.py": "7b4af6c7f47e1fd76c7db350cb5c0062a2b584911ba10aae81898d642f6734f9",
     "test_quantum_mixing.py": "0a9214fcb876821cd1d4e9fe881a1a71986de115a95bc55be8b1fe3a47f6382b",
     "test_quantum_mixing_graphs.py": "7be808b47e0ad2a8179fe79e13023e29d695fdd4c84103d2e407790d656e7a09",
     "test_quantum_mixing_receipt.py": "3f398128ce5e1de8d9eaa8aefe4145060ff92b0dd4ae5f80b110236fbb82831e"

@@ -205,3 +205,63 @@ def test_corrupt_native_witness_row_is_rejected(monkeypatch):
     monkeypatch.setattr(mixing, "native_block", corrupt)
     with pytest.raises(ArithmeticError, match="isolated and positive"):
         memory.full_carrier_witness("C")
+
+
+@pytest.mark.parametrize("candidate", ("C", "E"))
+def test_binary_to_collision_leakage_away_from_witness_input_is_rejected(monkeypatch, candidate):
+    u, v = mixing.seams()[0]
+    pile = next(i for i, state in enumerate(mixing.STATES) if state[u] == 2)
+    witness = next(i for i, state in enumerate(mixing.STATES) if state[u] == state[v] == 1)
+    sector = next(s for s in mixing.sectors() if s.difference == mixing.ZERO)
+    row = sector.pairs.index((pile, pile))
+    witness_column = sector.pairs.index((witness, witness))
+    foreign_column = next(k for k, (i, _) in enumerate(sector.pairs)
+                          if mixing.BINARY[i] and i != witness)
+    original = mixing.native_block
+
+    def corrupt(candidate, difference, *, binary=False):
+        rows = [list(r) for r in original(candidate, difference, binary=binary)]
+        if difference == mixing.ZERO and not binary:
+            # The selected witness still has zero collision population after
+            # one event. Only checking that column would miss later return.
+            assert rows[row][witness_column] == 0
+            assert rows[foreign_column][foreign_column] >= F(1, 60)
+            rows[row][foreign_column] += F(1, 60)
+            rows[foreign_column][foreign_column] -= F(1, 60)
+        return tuple(map(tuple, rows))
+
+    monkeypatch.setattr(mixing, "native_block", corrupt)
+    with pytest.raises(ArithmeticError, match="binary populations can reach a collision"):
+        memory.full_carrier_witness(candidate)
+
+
+@pytest.mark.parametrize("candidate", ("C", "E"))
+def test_foreign_coherence_cannot_feed_the_positive_witness_row(monkeypatch, candidate):
+    u, v = mixing.seams()[0]
+    pile = next(i for i, state in enumerate(mixing.STATES) if state[u] == 2)
+    witness = next(i for i, state in enumerate(mixing.STATES) if state[u] == state[v] == 1)
+    difference = tuple(int(i == u)-int(i == v) for i in range(12))
+    sector = next(s for s in mixing.sectors() if s.difference == difference)
+    row = sector.pairs.index((pile, witness))
+    foreign_column = next(k for k, (i, j) in enumerate(sector.pairs)
+                          if mixing.BINARY[i] and mixing.BINARY[j])
+    original = mixing.native_block
+
+    def corrupt(candidate, delta, *, binary=False):
+        rows = [list(r) for r in original(candidate, delta, binary=binary)]
+        if delta == difference and not binary:
+            # Preserve the claimed positive coefficient: the invalidity is
+            # the additional incoming coherence, which spoils a**n.
+            assert rows[row][row] == (F(23, 30) if candidate == "C" else F(7, 10))
+            rows[row][foreign_column] += F(1, 60)
+        return tuple(map(tuple, rows))
+
+    monkeypatch.setattr(mixing, "native_block", corrupt)
+    with pytest.raises(ArithmeticError, match="isolated and positive"):
+        memory.full_carrier_witness(candidate)
+
+
+def test_coherence_rate_is_bound_to_native_eigenoperator(monkeypatch):
+    monkeypatch.setitem(memory.COHERENCE_RATES, "C", F(4, 5))
+    with pytest.raises(ArithmeticError, match="not a native eigenoperator"):
+        memory.phase_pair_witness()
