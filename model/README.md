@@ -8,7 +8,7 @@ its actual interfaces while preserving the demonstrated behavior.
 The newest step is the [common interacting source](common_source/README.md):
 quantum electric flux, charged CAR matter and a scalar field share one
 evolving register, with complete measurements, retained records and native
-feedback. Its scalar response now has an [exact nonzero infinite-occupation
+feedback. Its scalar response has an [exact nonzero infinite-occupation
 interval](common_source/INFINITE_HISTORY.md), including the actual
 coordinate-sign measurement and the preparation, propagation and readout
 errors of that calculation.

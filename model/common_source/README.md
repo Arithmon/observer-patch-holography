@@ -4,7 +4,7 @@
 fermions and a neutral scalar, measures that shared state, and uses its
 records for feedback and native repair.** An exact certificate proves a
 nonzero scalar response to the recorded matter feedback. A separate exact
-certificate now proves that this response survives infinite oscillator
+certificate proves that this response survives infinite oscillator
 occupation and the actual coordinate-sign readout. This is a construction
 toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
 That target remains open.

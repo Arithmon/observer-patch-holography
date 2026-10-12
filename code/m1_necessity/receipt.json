@@ -1714,7 +1714,7 @@
           "uniform_binary_total_two_preparation"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "e9cd2dda69a7e77fed0dd5579c22db0ba0483e2354361a552154f668262da0bc"
+        "original_claim_sha256": "e0a053a4be30f113aff12679cc199c069d94f2e201e2ed0953d3a996846b75f4"
       },
       "OPH-MODEL-SCALAR-RESPONSE-EXECUTION": {
         "assumptions": [
