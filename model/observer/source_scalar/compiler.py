@@ -429,6 +429,61 @@ def execute(tape, qubits, state=None):
     return out[:, 0] if vector else out
 
 
+def stabilize_executed_unitary(matrix):
+    """Remove bounded floating drift from an already executed unitary word.
+
+    The caller supplies the raw contraction of source pulses, never a target
+    matrix. If M=L diag(s) R*, its polar unitary is L R*. This is a numerical
+    representation of the same ideally unitary subroutine, not a physical
+    channel, error-correction service, new primitive, or state normalization.
+    The raw executor is unchanged. Its full-phase target checks remain useful
+    because projection cannot repair an incorrect unitary gate or phase.
+
+    Fixed mandatory guards bound the input defect, actual matrix change and
+    restored defect. They reject a materially nonunitary request. Returned
+    norms describe floating computations; they are not interval certificates
+    or estimates of physical gate precision. No state or outcome is used.
+    """
+    if np.ma.isMaskedArray(matrix):
+        raise ValueError("executed unitary cannot be masked")
+    raw = np.asarray(matrix)
+    if (raw.ndim != 2 or raw.shape[0] != raw.shape[1] or raw.dtype.kind not in "iufc"
+            or not np.all(np.isfinite(raw))):
+        raise ValueError("a finite square executed-unitary matrix required")
+    _bits(raw.shape[0], 10)
+    raw = np.array(raw, dtype=complex, copy=True)
+    identity = np.eye(len(raw))
+    input_limit = 1e-10
+    correction_limit = 5.1e-11
+    output_limit = 2e-13
+    defect = float(np.linalg.norm(raw.conj().T@raw-identity, 2))
+    if not math.isfinite(defect) or defect > input_limit:
+        raise ArithmeticError("executed-unitary defect exceeds the fixed rounding guard")
+    left, _, right = np.linalg.svd(raw, full_matrices=False)
+    corrected = left@right
+    correction = float(np.linalg.norm(corrected-raw, 2))
+    restored = float(np.linalg.norm(corrected.conj().T@corrected-identity, 2))
+    if (not math.isfinite(correction) or correction > correction_limit
+            or not math.isfinite(restored) or restored > output_limit):
+        raise ArithmeticError("executed-unitary polar correction exceeds its fixed rounding guard")
+    # In exact arithmetic, ||polar(M)-M|| <= delta/(1+sqrt(1-delta)).
+    # This stable expression avoids cancellation for tiny delta. The value
+    # is diagnostic, since delta and the SVD are themselves floating results.
+    polar_distance_bound = defect/(1+math.sqrt(1-defect))
+    return corrected, {
+        "method": "guarded polar projection of the executed source-word matrix",
+        "dimension": len(raw),
+        "raw_unitarity_defect": defect,
+        "projection_change": correction,
+        "restored_unitarity_defect": restored,
+        "exact_polar_distance_formula_evaluated": polar_distance_bound,
+        "maximum_raw_unitarity_defect": input_limit,
+        "maximum_projection_change": correction_limit,
+        "maximum_restored_unitarity_defect": output_limit,
+        "physical_error_certificate": False,
+    }
+
+
 def resources(tape):
     """Retained word counts, including services for all zero-angle requests."""
     tape = _validate(tape)

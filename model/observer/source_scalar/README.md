@@ -54,7 +54,7 @@ The independent continuous **finite** Hamiltonian gives approximately
 gives `0.516421501748`. The latter comparison improves as the occupation
 code grows, but is a numerical diagnostic, not a certified cutoff bound.
 The source program and independent finite split calculation agree within
-`3e-11` in the finest detector probability. Complete branch-density tests
+`2e-10` in the finest detector probability. Complete branch-density tests
 also compare the source instrument with independent direct matrices.
 
 The ideal prepared target has a separate rigorous trace-distance bound from
@@ -83,6 +83,16 @@ executor contracts each generated subroutine once and reuses its matrix
 in the declared repeated schedule. These are logical operation counts,
 not host iterations, elapsed physical duration or optimized hardware costs.
 Initialization, storage and final readout costs are additional.
+
+Before repetition, a guarded polar decomposition restores numerical
+unitarity to each matrix computed from the source pulses. It uses no target
+matrix and preserves the word's phase. The receipt records each raw defect,
+correction and final defect. A raw unitarity defect above `1e-10` or a
+correction above `5.1e-11` fails; an actual nonunitary operation cannot be
+silently normalized. This prevents backend-dependent rounding bias from
+accumulating across the long program. Outcome probabilities and conditional
+states still pass the original independent checks. These diagnostics are
+not an interval arithmetic certificate or a physical error correction service.
 
 The full export channel includes all complement failure outcomes and is
 tested on the entire six-level operator algebra and with a reference system.

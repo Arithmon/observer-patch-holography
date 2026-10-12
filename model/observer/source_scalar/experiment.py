@@ -102,15 +102,23 @@ def program(d, steps):
 def _executed(d, steps):
     bits = _validate(d, steps)
     words = program(d, steps)["routines"]
-    blank = np.zeros(d*d)
-    blank[0] = 1
-    prepared = c.execute(words["prepare"], 2*bits, blank)
-    half = c.execute(words["onsite_half"], bits)
-    bond = c.execute(words["bond"], 2*bits)
-    pointer = c.execute(words["pointer"], bits+1)
-    impulses = {j: c.execute(words[f"impulse_{j}"], bits) for j in (-1, 0, 1)}
+    diagnostics = {}
+
+    def execute_routine(name, size):
+        # Every exact pulse word is unitary. Roundoff from thousands of raw
+        # matrix products can coherently accumulate over repeated routines.
+        # Project ONLY the executed matrix, without consulting its target.
+        # The guard rejects genuine nonunitarity and exposes the correction.
+        unitary, diagnostics[name] = c.stabilize_executed_unitary(c.execute(words[name], size))
+        return unitary
+
+    prepared = execute_routine("prepare", 2*bits)[:, 0]
+    half = execute_routine("onsite_half", bits)
+    bond = execute_routine("bond", 2*bits)
+    pointer = execute_routine("pointer", bits+1)
+    impulses = {j: execute_routine(f"impulse_{j}", bits) for j in (-1, 0, 1)}
     half_both = np.kron(half, half)
-    return prepared, half_both@bond@half_both, pointer, impulses
+    return prepared, half_both@bond@half_both, pointer, impulses, diagnostics
 
 
 def _resource_counts(d, steps, current):
@@ -134,7 +142,7 @@ def _resource_counts(d, steps, current):
 def source_history(d, steps, current, retain_program=False):
     """One actual source-compiled field instrument, before classical feedback."""
     _validate(d, steps, current)
-    prepared, step, pointer, impulses = _executed(d, steps)
+    prepared, step, pointer, impulses, diagnostics = _executed(d, steps)
     state = np.kron(np.eye(d), impulses[current])@prepared
     for _ in range(steps):
         state = step@state
@@ -152,6 +160,7 @@ def source_history(d, steps, current, retain_program=False):
               "preparation": preparation, "prepared_state": encoded(prepared),
               "finite_preparation_fidelity": float(abs(np.vdot(target, prepared))**2),
               "branches": branches, "resource_counts": _resource_counts(d, steps, current),
+              "executed_routine_roundoff_diagnostics": diagnostics,
               "pre_read_state_norm": float(np.vdot(state, state).real),
               "post_read_total_probability": sum(row["probability"] for row in branches)}
     if retain_program:
@@ -221,7 +230,7 @@ def run(trials=TRIALS, seed=SEED):
             "target": "two sites with onsite occupation d=4,8, supplied mass=1 and spring kappa=9/32; not the earlier spatial-refinement family",
             "time": "declared scalar model coordinate t=1; not a source pulse clock, solver counter or calibrated physical clock",
             "preparation": "real entangled projected vacuum compiled from blank registers; target selected by supplied scalar action",
-            "execution": "full M6 exponentials of twelve source controls; cached contractions of executed repeated routines",
+            "execution": "full M6 exponentials of twelve source controls; checked polar stabilization of source-executed routine matrices before cached repetition; no target-matrix substitution",
             "instrument": "both terminal conditional field states retained; only committed pointer bit enters feedback",
             "services": "coherent proper-code load/export, blank registers, storage, Born readout and analogue controls supplied",
             "rigorous_errors": "initial vacuum tail and ideal finite-Hamiltonian splitting separately bounded by exact rational certificates",
