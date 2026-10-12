@@ -1,5 +1,6 @@
 """Full-shell counting, unreduced private overlaps and kinetic controls."""
 from collections import Counter
+from fractions import Fraction
 from itertools import combinations
 import json
 from pathlib import Path
@@ -138,6 +139,84 @@ def test_all_seams_and_bands_have_the_certified_structure(data):
     # The positive operator lower bound applies to arbitrary superpositions.
     lower = (11 * margin / 6000) * laplacian()
     assert np.linalg.eigvalsh(data["normalized_leakage"] - lower).min() > -1e-17
+
+
+def test_single_port_correction_from_unprojected_event_moments(data):
+    """Obtain c2 before projecting, then compare the corrected local statistic."""
+    states = shell()
+    incident = [edge for edge in edges() if 0 in edge]
+    assert len(incident) == 5 and all(edge[0] == 0 for edge in incident)
+    z = bare_contrast()
+    # A f=(1/60) sum_e (Z_e-Phi_e(Z_e)) over the five incident edges.
+    # These are not the projected residuals Phi_e(Z_e)-beta Z_e.
+    defects = [z - sum(k.conj().T @ z @ k
+                       for k in conjugated_kraus(edge, data["theta"]))
+               for edge in incident]
+    gram = np.zeros((5, 5))
+    first = 0.0
+    for i, (edge, defect) in enumerate(zip(incident, defects)):
+        odd = states[:, edge[0]] != states[:, edge[1]]
+        for state in states[odd]:
+            sign = 1 - state[0]
+            block = defect[36 * sign:36 * (sign + 1),
+                           36 * sign:36 * (sign + 1)]
+            first += (state[0] - 1 / 6) * np.trace(block).real / (66 * 36 * 60)
+        gram[i, i] = np.count_nonzero(odd) * np.vdot(defect, defect).real / (66 * 72)
+        for j in range(i):
+            other = incident[j]
+            ports = sorted(set(edge) | set(other))
+            patterns = Counter(tuple(x[ports]) for x in states
+                               if x[edge[0]] != x[edge[1]]
+                               and x[other[0]] != x[other[1]])
+            overlap = 0.0
+            for pattern, count in patterns.items():
+                sign = 1 - pattern[ports.index(0)]
+                block = slice(36 * sign, 36 * (sign + 1))
+                # Full three-private-factor trace; do not use the producer's
+                # endpoint partial traces or its projected edge Gram.
+                left = embed_private_pair(defect[block, block], edge, ports)
+                right = embed_private_pair(defects[j][block, block], other, ports)
+                overlap += count * np.einsum("ij,ji->", left, right).real / (66 * 216)
+            gram[i, j] = gram[j, i] = overlap
+    variance = 5 / 36
+    r = first / variance
+    c1 = 1 - r
+    c2 = 1 - 2 * r + gram.sum() / (3600 * variance)
+    corrected = c2 - c1**2 - (1 - c1)**2 / 10
+    expected = data["leakage_matrix"][0, 0] / variance
+    assert r == pytest.approx(data["alpha"] / 11, rel=3e-14, abs=0)
+    assert corrected == pytest.approx(expected, rel=0, abs=4e-16)
+    # Uncorrected scalar variance contains the known mixture of carrier bands.
+    assert c2 - c1**2 - expected == pytest.approx(data["alpha"]**2 / 1210,
+                                               rel=0, abs=4e-16)
+    # Lower endpoints already established by test_certificate.py.
+    lower = {1 / 16: Fraction(186661676, 10**12),
+             1 / 8: Fraction(3778430107, 10**12)}[data["theta"]]
+    assert corrected > float(lower / 100) > 0
+
+
+def test_native_local_mode_mixture_is_not_hidden_memory():
+    """Exact 66-state events give the false positive and its corrected zero."""
+    states = shell()
+    indices = {tuple(state): i for i, state in enumerate(states)}
+    counts = np.zeros((66, 66), dtype=int)
+    for i, state in enumerate(states):
+        for a, b in edges():
+            swapped = state.copy()
+            swapped[a], swapped[b] = state[b], state[a]
+            counts[i, i] += 1
+            counts[i, indices[tuple(swapped)]] += 1
+    np.testing.assert_array_equal(counts.sum(axis=1), 60)
+    np.testing.assert_array_equal(counts, counts.T)
+    f = 6 * states[:, 0] - 1  # Integer multiple of N_0-1/6.
+    next_f = counts @ f
+    norm = int(f @ f)
+    c1 = Fraction(int(f @ next_f), 60 * norm)
+    c2 = Fraction(int(next_f @ next_f), 3600 * norm)
+    assert c1 == Fraction(10, 11)
+    assert c2 == Fraction(91, 110)
+    assert c2 - c1**2 == Fraction(1, 1210)
+    assert c2 - c1**2 - (1 - c1)**2 / 10 == 0
 
 
 @pytest.mark.parametrize("keep", ("g", "h"))

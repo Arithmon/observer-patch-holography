@@ -8,8 +8,13 @@ that it satisfies the required constraints on one common model.** Component
 proofs, simulations, candidate implementations and issue closures are bounded
 milestones; they do not by themselves complete the programme.
 
-Research status: **11 October 2026**. Source reference:
-`84025a97491f6e1173cc29d72822c989e4ef6ed5`.
+Research status: **12 October 2026**. The current update incorporates
+numerical corrections [#1082](https://github.com/FloatingPragma/observer-patch-holography/pull/1082),
+[#1083](https://github.com/FloatingPragma/observer-patch-holography/pull/1083) and
+[#1084](https://github.com/FloatingPragma/observer-patch-holography/pull/1084),
+[N4 geometry and memory #1085](https://github.com/FloatingPragma/observer-patch-holography/pull/1085)
+and [the scoped obstruction audit #1086](https://github.com/FloatingPragma/observer-patch-holography/pull/1086).
+Historical packets retain their original source revisions and receipts.
 
 The [programme obstruction audit for issue #1078](OPH_PROGRAMME_OBSTRUCTION_AUDIT_1078.md) independently reviews the fixed formulation `0510578e317de5da0d485d09792dc8bcad2e2f3c`; its [exact reproduction packet](../code/programme_obstruction_audit/README.md) records scoped attachment and non-entailment evidence. Programme-wide exclusion remains inconclusive; existing claim and premise boundaries are retained.
 
@@ -42,8 +47,11 @@ using the same private factors and response matrices, for internal-state
 influence on load repair. N4 supplies this finite feedback while inheriting
 completion, at the cost of changing the load marginal and the meaning of its
 current labels. A shared bare-occupation protocol recovers the same
-finite port geometry and distinguishes its kinetics from every clock rescaling
-of native repair. Full source grammar and physical selection require
+finite port geometry and distinguishes its kinetics from a common constant
+rescaling of native attempt time. The
+[corrected single-port test](#a-single-port-test-that-removes-spatial-mode-mixing)
+needs only local endpoint outcomes under the specified tracial preparation
+and one-/two-attempt protocol. Full source grammar and physical selection require
 justification. The
 [general search findings](#general-findings-that-guide-the-search) explain
 which tests discriminate laws and how added assumptions are counted.
@@ -68,7 +76,7 @@ interfaces below to constrain the next candidate before adding mechanisms.
   rank-three port Gram therefore survives. Two endpoint measurements, with
   no intermediate dephasing, also expose a strictly positive two-attempt
   memory excess at θ=1/8 and 1/16. This rejects an autonomous native heat
-  equation with a fitted clock rate on the same bare observables. The
+  equation with a fitted constant attempt rate on the same bare observables. The
   [derivation and finite certificate](#bare-occupation-geometry-and-a-clock-independent-memory-test)
   use the same N4 states and events; they add no interaction or state factor.
 - **One coherent exchange supplies finite load feedback.** N4 uses the
@@ -205,7 +213,7 @@ this document is not an empirical verification bundle or an axiom amendment.
 
 | Link | Completion status and constructed result | What completes the remaining physical connection |
 | --- | --- | --- |
-| **M01: common source** | **Finite source constructions and canonical field join complete.** Native C/E and coherent extensions; exact weighted factorization and local canonical scalar fields; N2's current-driven response preserves the load marginal, while N4's coherent exchange supplies private-state influence on bare occupations. | Select the source coefficients, inertia, quantum representation and controls. Conservative scalar evolution and dissipative repair are distinct laws. The added response factors and coupling need a complete source grammar; N4 also needs a shared operational observable/record interpretation. Finite feedback does not establish a physical force. |
+| **M01: common source** | **Finite source constructions and canonical field join complete.** Native C/E and coherent extensions; exact weighted factorization and local canonical scalar fields; N2's current-driven response preserves the load marginal, while N4's coherent exchange supplies private-state influence on bare occupations. | Select the source coefficients, inertia, quantum representation and controls. Conservative scalar evolution and dissipative repair are distinct laws. The added response factors and coupling need a complete source grammar; N4's shared bare-occupation protocol needs source-realized preparation/readout and a complete record/service interpretation. Finite feedback does not establish a physical force. |
 | **M02: observers and agreement** | **Finite observer contracts, candidate equalizers and nested completions complete.** Proper overlaps, protected marginals and actual interventions. E completes the supplied exchange/phase-invariant algebra. Exterior repair realizes regional maximum-entropy completions with an exact inclusion tower. The current/response extension inherits a finite binary-network fixed-algebra limit. | Justify those interpretations from the required observer menu; translated-chart naturality alone does not select them. Supply the used completeness, acceptance, confluence, authentication and broader history contracts. Nonnested completions can fail to commute; the supplied targets are not the complete A2 diagram. |
 | **M03: geometry** | **Finite geometry and controlled coarse energy constructed.** Native rank-three response; uniform memory/gap bounds and local coarse energies; periodic acoustic tensor; existing golden coordinates and uniquely reconstructible relative action capacities. | Identify physical regions, spacetime metric, area/volume and bulk refinement; select the response being reconstructed. Event-count weights and nonuniform action capacities are distinct finite references. A positive Schur energy need not be a Markov generator. |
 | **M04: physical time** | **Finite clocks and explicit model-time laws constructed; physical attachment open.** Canonical flow reuses the original scalar time. The weighted walk and periodic exchange/wave scalings remain alternatives. | Justify and calibrate the physical law and clock with complete execution costs. Avoiding the walk normalization does not identify canonical time with accepted source-event counts or establish an operational physical cone. |
@@ -216,7 +224,7 @@ this document is not an empirical verification bundle or an axiom amendment.
 | **M09: parameters and P** | **Relative-capacity identification and conditional kinetic-law uniqueness constructed.** Reciprocity reconstructs normalized capacities for an admissible connected response. The same-capacity linear reversible completion uniquely gives its canonical equation; exact kinetic discriminators survive clock/mass/speed refits. | Select the response, absolute action scale, inertia identification, mass and physical clock. The counterfamily shows why configuration equilibrium alone cannot do this. No P-to-amplitude, temperature or rate map follows. |
 | **M10: physical matter** | **Declared free scalar benchmarks joined to repair stiffness.** The canonical massive 3D scalar preserves the existing full field/instrument theory; periodic massless 2D and weighted arc versions remain alternatives. | Attach statistics, physical sectors, interactions, stable poles and charges to the same process. Supplied Bose CCR and a free scalar limit do not select particle content or establish the fermionic compiler premises. |
 | **M11: cosmology/dark sector** | **Outside the active minimal target; open if claimed.** Existing conditional cosmology constructions are retained. | Attach common expansion/source dynamics, stress, physical scales and observational transfer; add abundance, pressure/slip and lensing where used. |
-| **M12: eligible physical test** | **Internal discriminators complete; empirical test open.** Decay versus oscillation, retained-record menus and alternative inertias distinguish supplied laws. One local preparation/effect distinguishes N2/N3; private preparations distinguish N4's load response from its single-product controls. | Select a physical observable and rejection rule; enumerate freedom, calibration, uncertainties and baseline, then freeze an unavoidable relation before independent comparison. The finite probes are diagnostic resources, not independently realized physical instruments. |
+| **M12: eligible physical test** | **Internal discriminators complete; empirical test open.** Decay versus oscillation, retained-record menus and alternative inertias distinguish supplied laws. One local preparation/effect distinguishes N2/N3; private preparations distinguish N4's load response from its single-product controls. The corrected single-port tracial statistic distinguishes N4 from the matched native heat description at the certified couplings. | Select a physical observable and rejection rule; enumerate freedom, calibration, uncertainties and baseline, then freeze an unavoidable relation before independent comparison. The finite probes are diagnostic resources, not independently realized physical instruments. |
 
 M01–M12 are a dependency map. Develop the connected cluster needed by a
 specific claim; they are neither twelve sequential hurdles nor a requirement
@@ -393,6 +401,7 @@ They are methodological findings, not additional microscopic axioms.
 | Reusing source matrices does not transfer the source's entire algebra or operation grammar. | Bind states, overlap restrictions, admissible interventions and records before importing a theorem's conclusion. Equal dimensions or matching spectra are insufficient. |
 | Algebraic regrouping can shorten a formula without reducing its choices. | Count state variables, independent coefficients, preparations, clocks and services. Declare fixed coefficient ratios as choices even when they are not fitted. |
 | A demanding diagnostic can obscure a simple distinction. | Try one local state, one event and one local effect before entangled references, long coherent histories or large simulations. N2/N3 admit this reduction. |
+| Mixing closed spatial modes produces apparent local memory. | Derive the null for the actual observable and sampling protocol. N4's single-port statistic subtracts the native mode-mixing term; changing from global attempts to local stopping times needs a new null. |
 | A successful compiler implements a supplied law; it does not select that law. | Prioritize discriminating microscopic tests. Use the scalar compiler and continuum benchmark where a concrete shared-source question needs them. |
 | A conjugated channel may only change coordinates if its observations are conjugated too. | Fix operational preparations and observables before comparing laws; track changes in record meaning explicitly. |
 | Conditional mathematical consistency does not establish physical correctness or uniqueness. | Retain viable alternatives and allow a failed attachment to revise the candidate. Physical selection requires an identifiable prediction and independent evidence. |
@@ -437,6 +446,35 @@ milestones and costs; that is a research decision, distinct from a proof of
 impossibility. Opening this search makes no stop decision. Existing
 [claim- and branch-specific falsifiers](OPH_FALSIFICATION_PROGRAM.md) retain
 their exact scope.
+
+#### How the audited obstructions change the next construction
+
+The [fixed-target audit](OPH_PROGRAMME_OBSTRUCTION_AUDIT_1078.md) narrows
+specific routes. Use the following boundaries before expanding a simulation;
+none is a programme-wide exclusion or a new mandatory axiom.
+
+| Proposed attachment | Validated boundary | Surviving move and required test |
+| --- | --- | --- |
+| The entire native `M66` or `M78` algebra is the A1 carrier. | A full matrix algebra has scalar centre; twelve occupation labels do not supply twelve primitive central ports. [#1087](https://github.com/FloatingPragma/observer-patch-holography/issues/1087) | Specify a different carrier algebra/tower or an extension and its operational inclusion, restrictions and updates. Check actual centrality and source membership. |
+| The original lower simple-response triplet is the slow spatial triplet under the identical marked A5 action. | Their order-five characters differ, precluding that intertwiner. [#1088](https://github.com/FloatingPragma/observer-patch-holography/issues/1088) | Keep domains distinct, or justify an action twist/whole-law alternative and test its shared observable map. Matching dimension alone does not repair the attachment. |
+| A covariant single-product exchange feeds internal state back into the preserved load channel. | The stated class cannot do so; exact all-input marginal preservation also forbids feedback. A nonnormal exchange escapes. [#1089](https://github.com/FloatingPragma/observer-patch-holography/issues/1089) | Reuse N4 or the exact toy as a finite countercontrol. Check locality, completion and unchanged bare readout, then supply the full source grammar. The toy is not that full source. |
+| A fixed configuration Gibbs law selects inertia. | The audited kinetic family keeps that marginal while changing dynamics; it does not keep the full phase-space reference or the canonical same-capacity premise. [#1090](https://github.com/FloatingPragma/observer-patch-holography/issues/1090) | Derive or independently constrain inertia and velocity/clock readings. Compare the existing three-mode or distance-two response under one preparation and calibration contract. |
+
+The scalar-seam source also shows that the abstract architecture does not
+entail the remote record service used by the specified count clock. Realize
+preparation, readout, delivery and control as operations of the same source;
+do not infer them from a successful local channel or compiler. Conversely,
+the compact Lie-type result retains its faithful complete-response,
+endogenous-inner-action and classification premises: these obstructions do
+not establish that every physical sector is freely selectable.
+
+The audit targets `0510578e...`; the subsequent N4 construction supplies
+the finite bare-occupation geometry/kinetics interface below. Its physical
+and full-source attachments require separate construction. Keep that chronology explicit.
+The next useful output is one candidate with a typed interface ledger and a
+distinguishing observable, or a precise rejection of that attachment. Mark
+a comparison unevaluable when its interface is missing. The audit's suggested
+effort ceilings are recommendations, not adopted policy or a stop decision.
 
 #### A deletion test exposes what convergence cannot select
 
@@ -577,6 +615,7 @@ above assign active work:
 | Next question | Smallest proposed move | Decisive completion or rejection condition |
 | --- | --- | --- |
 | **Can one simple local rule supply the carrier, current and clock?** | Reuse the native response and gauge/clock interfaces above, with one shared state and event record. | Exhibit the response reduction, reversible current and same-history clock map; independent attached fixtures or the rejected scalar-current identification do not qualify. |
+| **Can N4's memory distinction be read locally?** | Use the corrected single-port endpoint statistic below, retaining the tracial preparation and one-/two-global-attempt schedule. | Realize preparation and readout in the source, bound the complete measured statistic's error, and derive a new null before substituting observer-local ticks. Positive uncorrected correlation excess alone fails this gate. |
 | **Why should repair capacity also be inertia?** | Attach the tested three-mode curvature or distance-two acceleration discriminator to an admissible preparation/readout. | Derive the identification from microscopic operations or constrain it independently. Equilibrium and the shared position-observable continuum limit do not select it; retain clock, velocity and linearity premises. |
 | **Which weighted source law is selected?** | Reuse the exact stiffness factorization and action-measure theorem. | Justify conductances, reference, mass and boundaries independently of the target action; reciprocity identifies normalized capacities given an admissible response, not that response's physical selection. |
 | **Can the finite quantum components become a full source history?** | Join the local vacuum-preparation schedule and exact retained-pointer history through the existing state-error contract; reuse source controls for implementation. | Use the constructed common onsite preparation/history and finite source compiler to specify an executable word with complete outcomes and a shared resource/error budget. Fixed-path temporal and occupation errors are controlled; source precision, storage, drift and service costs require implementation evidence. |
@@ -872,7 +911,7 @@ The decimals describe evaluations, while the certificate proves positivity
 at those exact rational couplings. With a supplied Poisson attempt rate ν,
 the continuous correlation has initial decay νr and curvature `ν²(r²+b_v)`.
 The ratio `b_v/r²` is invariant under a common change of time units.
-Consequently no clock calibration makes these correlations a native
+Consequently no common constant clock rescaling makes these correlations a native
 single-exponential heat mode. Agreement of Dirichlet matrices alone would
 have missed this failure of closure of the linear-occupation subspace.
 
@@ -884,6 +923,54 @@ discriminator against simpler preserved-marginal laws. It neither selects
 N4 over those laws physically nor restores j's original bare-current
 meaning. The coupling, tracial preparation, schedule, endpoint measurement
 access and physical conversion of event count remain explicit inputs.
+
+#### A single-port test that removes spatial mode mixing
+
+The scalar eigenmode test must not be applied unchanged to an arbitrary local
+occupation. For `f=N_p−1/6`, define `c_n=τ[f Φⁿ(f)]/τ[f²]` under the same
+tracial preparation and IID seam attempts. Here `τ[f²]=5/36`,
+`(L_ico)_pp=5` and `(L_ico²)_pp=30`. The known compression therefore gives
+
+```text
+r = 1−c_1 = α/11,
+||P A f||²_τ / ||f||²_τ = α²/110,
+b_local = ||(I−P)A f||²_τ / ||f||²_τ
+        = c_2−c_1²−(1−c_1)²/10.
+```
+
+Self-adjointness of Φ makes the last line an orthogonal-decomposition
+identity. Native repair has `c_2−c_1²=1/1210` despite exact mean closure:
+that positive value comes from mixing the spatial bands. The corrected
+`b_local` is zero for native repair and the one-term controls. If the existing
+edge-Gram certificate is `B≥mI`, five seams incident to a port give
+`b_local≥m/100`. Thus #1085's certificate proves strict positivity
+at θ=1/16 and 1/8. No new positivity certificate or interaction is required.
+
+Measure only `N_p` at the two endpoints of each independently prepared trial.
+For its spectral projector `E_a` and full load-pattern projectors `P_x`,
+`Σ_{x:x_p=a}P_x τ P_x=E_a τ E_a=τ E_a`. Linearity of the intervening channel
+then gives the same local joint law as marginalizing the all-load experiment.
+There is no intermediate measurement, private reset or postselection. The
+[derivation and controls](../code/native_response/README.md#a-corrected-single-port-readout)
+therefore reduce the readout requirement without supplying its physical
+implementation.
+
+The stopping rule counts **one or two global IID attempts**. Local
+receiver ticks, state-dependent schedules and timeouts define different
+conditional channels; the formula cannot be transferred to them unchanged.
+Here “global” counts all seams in this supplied benchmark; it does not posit
+a preferred universal physical clock.
+Under a separately supplied constant Poisson rate ν>0, the initial-derivative
+ratio is `c''(0)/c'(0)²−11/10=b_local/r²`, invariant under one common constant
+time-unit change. It supplies no calibrated observer duration.
+
+Before reporting a measured positive value, fix preparation/readout/schedule
+errors, trial allocation and a joint confidence or error rule for the whole
+corrected statistic. Quadratic plug-in estimates have finite-sample bias;
+a positive point estimate alone is insufficient. C and E share these first
+two correlations, and other enlarged classical or quantum laws can have
+positive hidden-component norms. This excludes the matched closed native
+heat description under the stated contract, not every alternative to N4.
 
 ### Weighted agreement and its minimal inertial completion
 
