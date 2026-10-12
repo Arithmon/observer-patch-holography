@@ -9,10 +9,11 @@ records and repairing disagreements can reproduce our observed experiences.
 The goal is an executable observer whose measurements and shared
 interpretations agree with ours.
 
-**In OPH's proposed picture, observation is fundamental.** Reality is a
-timeless, self-referential structure of observations, records and their
-relations. Each observer assigns meaning to its observations, and shared
-meaning must survive comparisons with other observers. There is no
+**In OPH's proposed picture, reality is fundamentally computational and
+observation is primary.** Reality is a timeless, self-referential structure
+of observations, records and their relations. Each observer assigns meaning
+to its observations, and shared meaning must survive comparisons with other
+observers. There is no
 fundamental, observer-independent spacetime continuum containing those
 experiences. Space, time, matter and classical objects are effective
 interpretations of them. The apparent continuum belongs to that description;
@@ -25,12 +26,19 @@ two descriptions of the same proposed structure. An observer's clock is a
 readout within it, with no external time in which the whole history must run.
 The [working terms](docs/INTERPRETATION_AND_TERMS.md) explain this view.
 
+This radical observers-first approach addresses foundational problems beyond
+the classical picture: quantum measurement, correlations incompatible with
+a local classical account, and the origin of an apparent spacetime. OPH
+seeks a common explanation in the consistency of observers' records and
+operations. Explaining these phenomena through one construction is the
+programme's ambition; the results below establish specific parts of it.
+
 The project has checked finite mathematical results and executable observers
 that connect several of them in one process. **Agreement with the full range
 of observed measurement statistics has not been established.** The work below gives
 concrete pieces of that construction and tests where they fit together.
 
-## Flagship finite theorems
+## Mathematical results
 
 - **Agreement and stable records.** Under explicit termination and consistency
   conditions, local repairs reach a shared public result independent of their
@@ -48,6 +56,18 @@ concrete pieces of that construction and tests where they fit together.
   assumptions, the construction forces the Standard Model gauge Lie algebra.
   A specified matter representation gives an anomaly-free generation.
   [Gauge derivation](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf).
+- **Thermodynamics.** A common finite repair construction gives the four laws,
+  fluctuation relations and the Landauer erasure bound under stated reference,
+  energy-calibration and low-temperature assumptions.
+  [Thermodynamics account](paper/observers_are_all_you_need.pdf).
+- **Information capacity.** Exact results count which records remain
+  distinguishable after the allowed operations, bound that count by the
+  available carrier, and track it through refinement.
+  [Record capacity](code/capacity_readback/README.md).
+- **Matter and fields.** A supplied charged-scalar/Maxwell action, geometry and
+  quantization give an interacting Hamiltonian after gauge reduction. Controlled
+  scalar refinement connects classical detector readouts to a nonlinear field
+  equation. [Physics synthesis](flagship/from_observer_consensus_to_standard_physics.pdf).
 
 These are conditional mathematical results. Making their premises hold for
 observations in one common model is the central construction problem. The

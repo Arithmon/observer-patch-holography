@@ -62,26 +62,55 @@ def test_fz10_public_wording_matches_the_frozen_decision_rule() -> None:
 
     readme = " ".join(surfaces["English README"].read_text(encoding="utf-8").lower().split())
     french = " ".join(surfaces["French README"].read_text(encoding="utf-8").lower().split())
-    # The reader-facing case states the Koide premise and presents capacity
-    # as a high-level scientific program. Detailed negative/comparison status
-    # belongs in the technical surfaces, not the marketing README files.
-    assert "stated balance premise" in readme
-    assert "the capacity program asks whether" in readme
+    # A compact README need not advertise each constant calculation. When
+    # Koide is highlighted, its balance condition must accompany the claim.
+    # The owning papers and capacity guide retain the detailed boundaries
+    # independently of which results are selected for the front page.
+    if "koide" in readme:
+        assert re.search(r"(?:stated|declared) balance (?:premise|condition)", readme)
     assert "so neither is a prediction" not in readme
     assert "prémisse d’équilibre déclarée" in french
     assert "le programme de capacité demande si" in french
     assert "aucun des deux n’est une prédiction" not in french
 
 
+def test_constant_claim_owners_retain_their_physical_boundaries() -> None:
+    koide = " ".join(
+        (ROOT / "extra/koide_identity_from_positive_c3_face_circulants.tex")
+        .read_text(encoding="utf-8")
+        .lower()
+        .split()
+    )
+    capacity = " ".join(
+        (ROOT / "code/capacity_readback/README.md")
+        .read_text(encoding="utf-8")
+        .lower()
+        .split()
+    )
+    coupling = " ".join(
+        (ROOT / "model/predictions/README.md")
+        .read_text(encoding="utf-8")
+        .lower()
+        .split()
+    )
+    assert "under the balance and mass-ordering premises" in koide
+    assert "no source-only mass prediction is claimed" in koide
+    assert "neither local count is a value of the cosmological n" in capacity
+    assert "no universe-level physical `n` is emitted" in capacity
+    assert "incomplete physical transport obligations" in coupling
+    assert "numerical interval does not bound those missing physical contributions" in coupling
+    assert "not a refutation of oph as a whole or a prospective prediction success" in coupling
+
+
 def test_readme_case_section_remains_short_and_reader_facing() -> None:
-    # The case section is a fixed set of bold-led bullets; each stays short,
+    # The selected results are bold-led bullets; each stays short,
     # reader-facing, and lightly linked, so the front door never regrows a
     # receipt inventory. The French renderings run longer for the same
     # content, so each surface carries its own word budget.
     surfaces = [
         (
             ROOT / "README.md",
-            "## Mathematical foundations",
+            "## Mathematical results",
             120,
         ),
         (
@@ -115,7 +144,11 @@ def test_readme_case_section_remains_short_and_reader_facing() -> None:
     french = " ".join((ROOT / "README_FR.md").read_text(encoding="utf-8").split())
     assert "lands within 72 eV" not in english
     assert "tombe à 72 eV" not in french
-    assert "carries diagnostic status" in english
+    # Require the diagnostic boundary if the English front page highlights
+    # the coupling calculation; the detailed comparison is checked above
+    # even when the front page links to it without repeating the claim.
+    if re.search(r"\bfine[- ]structure\b|\binverse[- ]alpha\b", english.lower()):
+        assert "diagnostic" in english.lower()
     assert "statut diagnostique" in french
 
 
