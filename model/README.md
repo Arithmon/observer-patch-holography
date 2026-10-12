@@ -32,6 +32,12 @@ The [readout checks](common_source/CALIBRATION.md) test geometric distances,
 modular-parameter inference and oscillator energy convergence against their
 mathematical targets, and make the remaining unit-calibration freedom explicit.
 
+The [fixed-reference modular bridge](common_source/THERMAL_CLOCK.md) connects
+the supplied Hamiltonian evolution to the modular flow of a chosen faithful
+Gibbs reference, while the actual observed state changes. Its clock probes
+execute on the same recorded histories. Reference selection by repair,
+physical duration and the relation to spatial propagation remain open.
+
 The [local history-repair formulation](common_source/HISTORY_REPAIR.md)
 recovers that same completed observation history under every fair update
 schedule, for the fixed source apparatus and causal graph. Observer readouts
@@ -44,6 +50,9 @@ to the same joint observation histories. A binary controller extension
 executes displacements spanning three directions while preserving the
 original protocol. This supplies a finite geometric readout, with physical
 translation, momentum and spatial field refinement remaining open.
+The [native propagation checks](common_source/CAUSALITY.md) verify finite
+dependency cones and delayed influence under fixed local seam schedules.
+They distinguish causal interaction depth from an auxiliary solver counter.
 
 The [completion target](CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 is an executable observer algebra whose compatible measurement statistics

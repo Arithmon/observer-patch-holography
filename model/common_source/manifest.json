@@ -14,22 +14,27 @@
     "Lean/Screen/PrimitivePortFrameQuotient.lean",
     "Lean/Screen/PortFrameGram.lean",
     "model/observer/scalar_response/field.py",
-    "model/observer/scalar_response/local_evolution.py"
+    "model/observer/scalar_response/local_evolution.py",
+    "NetworkX, jsonschema and PyYAML imports from the retained geometry package (model/requirements.txt)"
   ],
   "files": {
-    "CALIBRATION.md": "5dcd7fad6ddbaf8901607a7432e73e6d42f0822a27e428cd76bd48da34051e16",
+    "CALIBRATION.md": "7202efd6a6d2460bff4f7569033ac6153f846f05d75833f2febd3f9abe2f77a1",
+    "CAUSALITY.md": "d28fdaf480cb85db158b9b158ae44818e106966a4db8c80bfcdb2e8fcd71ffd0",
     "DERIVATION.md": "874f3e8d5ff662fe47762b86fe4abc8372209e6934549970f746297e4a977e0e",
     "HISTORY_REPAIR.md": "e60d3ce9aac02fe536d28a8c73176dbc6520bb06243a8ab190f2589d01f4385d",
-    "OBSERVER_READOUTS.md": "fb519eafc6abf13f32adf5814322651991ae37d814e896eb9698a3b0206197ff",
+    "OBSERVER_READOUTS.md": "4663e368396031163f60618315677b39ec8be89329d6a0595e949abad3382eed",
     "OCCUPATION_REFINEMENT.md": "b300e410a859d100fa62b3e11e80acb6aa91d1570477422c9a8ee97a382c3513",
-    "README.md": "bf2589331405d1a8c6721a77e2086d5d757ad16bee7c1ecf0962f5e3fbd714ed",
+    "README.md": "36f50f5c477b3c562fa416b97a887525f1c109572023a0499062523824189a46",
     "SLOW_GEOMETRY.md": "0d294475a08abaa814a00673b3467c0ae86cd73f9e878057dbad1db0124c0348",
     "SMOOTH_REFINEMENT.md": "a2fbb88c8a7d2c4de66a3fe4d9d2ed72f61ae0b6961bf323c0aa63ef9fe635fa",
+    "THERMAL_CLOCK.md": "fd51c0b5d7f90c68d344b6f49a95428d585254225b68e6d2e4ce8234ea78385a",
     "__init__.py": "becb29d889d8b0712a6b2d36734793bcb22575fc8999e80026e5c3e2f7a39ab5",
     "__main__.py": "ebb33f255fa087ce6db95f4a161b90ab35e64b4687af28266eabc9c4204618c6",
     "bridge.py": "38258383db6b7189dcf2a2ec3e57dcef61be19ae03b82af85bd0413edaf25ad4",
     "bridge_results.json": "be9b6f6b92d39bc945b3d031f20157d2ac27df98d51b07edf70308b6b7fdc028",
     "calibration.py": "fb368057920314f2fcf1f3bac813c8081fd59f0f40d8468797b3ce05fbc522b7",
+    "causality.py": "e3f5e989d7f6a614a083817064ef69864e4985143d3a1f23743dac38d118bd15",
+    "causality_results.json": "9f1868ec21926752d712a393e1ea6aae3f7201873b76cdf30c8984acfbe06197",
     "experiment.py": "a9b341d714b548ec6efa2d462c7bc5623dae2c2cb1101fd9369e6bef7a6aeafd",
     "finite_signal.py": "0f74fe17b82e6140342aca048964984c7a5e35d8098e77ab298811b04e4df5ca",
     "gauge_matter.py": "5ae518551305352707d30f27568df549ab057e13a3a734d9eddc6410b84161bc",
@@ -49,6 +54,7 @@
     "smooth_results.json": "bc9d5fcb621e777c73e31d6a917f0bde43734bb25fb69c3fb08e83c1ad0a5d18",
     "spatial.py": "873fa595f93ab8bc228d60bc46480acda2e5ea86fb0952db2d023670d1d36733",
     "test_calibration.py": "3a3df07f2c5add9a93d1a658ebc6e8c11ca7a72b37071973d68b526be43793f4",
+    "test_causality.py": "f4aa122b337c8e7c907966b6a2459b9f561ffdd80483ab232fbca81d63193180",
     "test_experiment.py": "733f8885771f94f287999ac589d2fa7bfcaae51cad8d79ec8ac990f91a46117a",
     "test_finite_signal.py": "a0a75aa8eeda029908e34e9e504d0f55d63ed40ccfd225e7d96b886b71348a50",
     "test_gauge_matter.py": "48c7e928619ed69f15255b3d1e7f14dc645a92d16dbb7035c156984f831f0350",
@@ -64,14 +70,20 @@
     "test_smooth_protocol.py": "52179cfdf68dd2c72f757aad600adfb01b8e9fbd97d5d3ee260480c6dc44610f",
     "test_smooth_refinement.py": "ed1fc4ac82bc4581538e99510905430b43ea14ebd76757d5305f0feac35e75f0",
     "test_spatial.py": "ff650099097573bde8a78eaefaf752225288460c0885edaddd5dab32056f342b",
+    "test_thermal_clock.py": "61dc1aa588c21171dca0634b119738229019931760e464c5ca0e06cc06e7e525",
     "test_units.py": "c7951baba1574d4b5c12d0cf4367831e01baae353e9ff30e6f024e57e6f3138f",
+    "thermal_bridge.py": "4e4b94467968ef2f9c40802ce5f8c75cf0292f65c1b31717341f9a9d758aa424",
+    "thermal_clock.py": "da6f53334510bea63fe2dc3ce641f0dcfb358439af3873b4ebdae94cdfabaa68",
+    "thermal_results.json": "208c30d25388917299a6687e69b279f92abbb247868f6b571fb6a75603633f59",
     "units.py": "4abd502971cf3bca6c4f385d9d4a65e35281ce20a79760874dac72d2783a1360"
   },
   "reproduce": [
     "python3 -m model.common_source --check model/common_source/results.json",
     "python3 -m pytest -q -W error model/common_source",
     "python3 -m model.common_source.bridge --check model/common_source/bridge_results.json",
-    "python3 -m model.common_source.smooth_bridge --check model/common_source/smooth_results.json"
+    "python3 -m model.common_source.smooth_bridge --check model/common_source/smooth_results.json",
+    "python3 -m model.common_source.thermal_bridge --check model/common_source/thermal_results.json",
+    "python3 -m model.common_source.causality --check model/common_source/causality_results.json"
   ],
   "schema": "oph.observer.public_manifest.v1"
 }

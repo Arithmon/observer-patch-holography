@@ -67,6 +67,14 @@ interacting-history error certificate. No claim of an energy increment of
 
 ## What fixing the speed of light would determine
 
+Units are observer conventions. One may choose a reference propagation
+process and set its speed to `c=1`; OPH need not derive the names metre,
+second or joule, or select a unique system of units. The construction must
+instead make its different readouts agree after that convention is fixed:
+clock comparisons, signal travel, geometric distances and matter dispersion
+must satisfy compatible operational relations. Dimensionless discrepancies
+between those readouts cannot be removed by choosing other units.
+
 Let one model length, model time and model energy unit correspond to `L`
 metres, `T` seconds and `E` joules. **If** a common operational propagation
 law establishes a dimensionless speed `c_model`, choosing the SI value of
@@ -133,6 +141,13 @@ and direct finite differences verify the Hamiltonian derivative. Therefore
 no scalar rescaling makes these two flows identical on all local
 expectations in this state. This is a numerical obstruction to that specific
 identification, not a rejection of other observer clocks or of OPH.
+
+The [fixed-reference bridge](THERMAL_CLOCK.md) supplies a consistent
+alternative: the same Hamiltonian flow is modular for its chosen Gibbs
+reference on the full working algebra. The actual measured density is a
+different state and can change under that flow. This conditional construction
+does not turn the local-reference counterexample into a passing test; it
+changes the reference and access contract explicitly.
 
 A useful next physical attachment must measure propagation, frequency,
 energy and spatial translations on one family of observation histories.

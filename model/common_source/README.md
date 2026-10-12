@@ -45,6 +45,22 @@ mathematical targets. They also show why choosing the physical speed of
 light would relate length and time units without determining an energy
 scale. A propagation law connecting these readouts remains to be built.
 
+The [fixed-reference clock bridge](THERMAL_CLOCK.md) distinguishes a
+stationary equilibrium reference from the actual changing observation state.
+Choosing a faithful Gibbs reference for the existing full Hamiltonian makes
+its between-event dynamics modular, with a known parameter conversion.
+Source-executed clock probes retain the earlier records. The reference is
+constructed from the supplied action; its selection by repair and a physical
+time calibration remain unproved. The earlier local-clock construction and
+the failed identification using the local post-measurement state are retained.
+
+The [native propagation check](CAUSALITY.md) verifies exact dependency cones
+for fixed seam schedules on all 78 admitted load states. Concrete paired
+histories show information arriving only after the intervening local updates.
+Choosing one edge and one causal layer as units gives a graph speed bound of
+one. Relating that causal depth to modular readings is an operational
+consistency requirement, not a demand for an external fundamental ruler.
+
 ## Run and inspect
 
 From the repository root, after installing `model/requirements.txt`:
@@ -53,6 +69,8 @@ From the repository root, after installing `model/requirements.txt`:
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source --check model/common_source/results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.bridge --check model/common_source/bridge_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.smooth_bridge --check model/common_source/smooth_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.thermal_bridge --check model/common_source/thermal_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.causality --check model/common_source/causality_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q -W error model/common_source
 ```
 

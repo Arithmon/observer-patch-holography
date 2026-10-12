@@ -27,6 +27,8 @@ REPLAYS = (
     ("model.common_source", None, "model/common_source/results.json"),
     ("model.common_source.bridge", None, "model/common_source/bridge_results.json"),
     ("model.common_source.smooth_bridge", None, "model/common_source/smooth_results.json"),
+    ("model.common_source.thermal_bridge", None, "model/common_source/thermal_results.json"),
+    ("model.common_source.causality", None, "model/common_source/causality_results.json"),
 )
 
 

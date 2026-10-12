@@ -168,6 +168,15 @@ nonzero rescaling. A Gibbs assumption `rho proportional to exp(-beta H)`
 would give `sigma_s = alpha_(-beta s)`; that assumption has not been shown
 for this interacting observation state.
 
+This obstruction does not invalidate the programmed clock above: its probe
+first changes the actual state relative to the modular reference. The
+[fixed-reference bridge](THERMAL_CLOCK.md) instead chooses
+`sigma_beta = exp(-beta H)/Z` on the full working algebra, separately from
+the actual observed density. Its modular flow agrees with the existing
+Hamiltonian flow at `t=-beta s`. This is an explicit reference/access choice,
+not a proof that the local post-measurement density was Gibbs or that repair
+selects the new reference. The original negative test remains valid.
+
 ## Spatial meaning on the same carrier
 
 [spatial.py](spatial.py) uses the supplied factorization
