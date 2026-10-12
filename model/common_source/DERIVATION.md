@@ -345,8 +345,10 @@ and [fourth-moment proof](OCCUPATION_REFINEMENT.md) supply interacting
 pre-readout bounds. The sharp instrument converges strongly, and the
 [infinite-history certificate](INFINITE_HISTORY.md) resolves the limiting
 feedback signal with the actual infinite coordinate-sign detector.
-These results do not give a numerical cutoff rate for the final sharp
-instrument. The [smooth Ramsey variant](SMOOTH_REFINEMENT.md) does give a
+Those results alone do not give numerical finite-cutoff bounds for the final
+sharp instrument. The separate [complete-output comparison](READOUT.md#complete-comparisons-with-the-actual-finite-pointer)
+supplies such enclosures for the zero-current preparation, without an
+interacting all-cutoff asymptotic rate. The [smooth Ramsey variant](SMOOTH_REFINEMENT.md) does give a
 complete-output occupation rate for its different detector. The scalar
 action, interaction strength, initial state and proper-code capabilities
 remain stated design choices. These
@@ -483,9 +485,11 @@ When a state-specific complete-output trace-distance bound is available,
 every common subsequent CPTP continuation and readout contracts it. The
 smooth-detector occupation certificate has that scope on its declared
 prepared histories; it is not an all-input diamond-norm estimate. For the
-sharp detector, the rectangular cutoff bounds stop before the final read;
-strong convergence supplies its complete-output limit without a numerical
-cutoff rate. The exact infinite sharp-history certificate instead bounds
+sharp detector, the rectangular pre-readout bounds stop before the final
+read, and strong convergence alone gives no numerical cutoff rate. The
+separate [complete-output comparison](READOUT.md#complete-comparisons-with-the-actual-finite-pointer)
+adds finite-cutoff enclosures for the zero-current preparation. The exact
+infinite sharp-history certificate itself bounds
 its polynomial approximation after applying the same infinite half-line
 instrument on both sides. It does not identify that instrument with the
 sign of a finite coordinate matrix. If the continuation
@@ -797,7 +801,7 @@ clock continuation, or establishes their physical duration.
 | Hardware refinement | Old privately owned factors embed by tensoring identities | Oscillator cutoff embeddings are not exact unital algebra/state/generator tower maps |
 | Finite temporal approximation | Rational all-input bounds for this same interacting Hamiltonian, with arbitrary spectator references | Finite code and ideal source services; numerical and physical service errors are separate |
 | Interacting occupation refinement | [Exponential-moment bound](OCCUPATION.md) through matter read/feedback, [strong sharp-readout limit](OCCUPATION_REFINEMENT.md) and [complete-output cutoff certificate](READOUT.md#complete-comparisons-with-the-actual-finite-pointer) | Fixed scalar preparation; the complete-output certificate uses zero native current; no spatial field limit or post-sharp clock continuation |
-| Infinite sharp-readout response | [Exact nonzero contrast and complete-output approximation bound](INFINITE_HISTORY.md) using the infinite half-line instrument | Zero native preparation current and declared two-site action; no rate comparing finite sign instruments, spatial limit or physical calibration |
+| Infinite sharp-readout response | [Exact nonzero contrast and complete-output approximation bound](INFINITE_HISTORY.md) using the infinite half-line instrument | Zero native preparation current and declared two-site action; this signal enclosure alone supplies no finite-sign comparison, spatial limit or physical calibration |
 | Smooth binary instrument | [Complete-output occupation rate and finite-energy backreaction](SMOOTH_REFINEMENT.md) for the Ramsey detector | Different bit dictionary and quantum instrument; no sharp-detector rate or modular-clock limit |
 | Observer representation and modular flow | [GNS and modular readouts](OBSERVER_READOUTS.md) of the actual observation state; emitted clock probe retains all records | Quantum algebra and access supplied; full conditioned scalar states may be nonfaithful; physical clock calibration open |
 | Fixed-reference modular correspondence | [Faithful full-work Gibbs reference](THERMAL_CLOCK.md) gives `t=-beta s` for continuous Hamiltonian segments, with source-executed clock continuations | Chosen reference differs from the actual state and earlier local reference; interventions need not preserve it; no reference selection by repair, clock occupation limit or physical calibration |

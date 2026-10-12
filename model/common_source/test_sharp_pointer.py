@@ -1,6 +1,9 @@
 """Independent source-matrix controls and hostile eigensolver candidates."""
 from fractions import Fraction as F
 import math
+from pathlib import Path
+import sys
+from types import ModuleType
 
 import mpmath as mp
 import numpy as np
@@ -159,3 +162,58 @@ def test_complete_comparison_preserves_initial_norm_all_flags_and_both_error_ter
         assert abs(hi-(distance+mp.mpf('0.04'))) < mp.mpf('2e-12')
     eta = F(pointer.pointer_certificate(2)['positive_projector_operator_error_upper'])
     assert F(row['pointer_seed_density_error_upper']) == 2*eta+eta**2
+
+
+@pytest.mark.parametrize('d', (2, 32))
+def test_valid_rotated_candidate_bound_contains_exact_parity_witness(d):
+    # Rotate only the smallest positive/negative candidate eigenvectors by
+    # the exact rational orthogonal matrix with cos=9999/10001, sin=200/10001.
+    # This is a valid, deliberately imperfect seed, rather than a candidate
+    # that should be rejected by a malformed-input or usefulness guard.
+    basis, scale, diagonal, value_scale = pointer._seed(d)
+    negative = max((j for j in range(d) if diagonal[j] < 0), key=lambda j: diagonal[j])
+    positive = min((j for j in range(d) if diagonal[j] > 0), key=lambda j: diagonal[j])
+    changed = []
+    for row in basis:
+        output = [10001*x for x in row]
+        output[negative] = 9999*row[negative]+200*row[positive]
+        output[positive] = -200*row[negative]+9999*row[positive]
+        changed.append(tuple(output))
+    changed, changed_scale = tuple(changed), 10001*scale
+    certificate = pointer.certify_eigenbasis(changed, changed_scale, diagonal, value_scale)
+
+    # Independent exact source oracle: R=(-1)^N anticommutes with a+a*,
+    # whose even-dimensional Jacobi matrix is invertible. Thus R B_d R=I-B_d
+    # and every parity-pure vector has B_d expectation exactly 1/2. Neither
+    # the eigensolver nor its residual certificate supplies this expectation.
+    # Use the even part of a seed column merely to select a rational vector.
+    vector = tuple(basis[n][positive] if n % 2 == 0 else 0 for n in range(d))
+    weights = tuple(math.factorial(n) for n in range(d))
+    norm = sum(weight*x*x for weight, x in zip(weights, vector, strict=True))
+    assert norm > 0
+    expectation_numerator = sum(
+        sum(weights[n]*vector[n]*changed[n][j] for n in range(d))**2
+        for j in range(d) if diagonal[j] > 0)
+    expectation = F(expectation_numerator, changed_scale**2*norm)
+    exact_error_lower = abs(expectation-F(1, 2))
+    reported = F(certificate['positive_projector_operator_error_upper'])
+    assert F(1, 100) < exact_error_lower < F(1, 40)
+    assert 0 < reported < F(1, 10)
+    assert exact_error_lower <= reported, 'certificate understates the exact parity-witness error'
+
+
+@pytest.mark.parametrize('mutation,d', (('omit_gap', 32), ('quarter_bound', 2)))
+def test_exact_parity_witness_kills_understated_projector_bounds(monkeypatch, mutation, d):
+    code = Path(pointer.__file__).read_text(encoding='utf-8')
+    original = 'projection_error = operator_residual/gap+epsilon*(2+epsilon)'
+    assert code.count(original) == 1
+    replacement = ('projection_error = operator_residual+epsilon*(2+epsilon)'
+                   if mutation == 'omit_gap' else
+                   'projection_error = (operator_residual/gap+epsilon*(2+epsilon))/4')
+    mutant = ModuleType('model.common_source._understated_pointer')
+    mutant.__package__ = 'model.common_source'
+    mutant.__file__ = pointer.__file__
+    exec(compile(code.replace(original, replacement), pointer.__file__, 'exec'), mutant.__dict__)
+    monkeypatch.setattr(sys.modules[__name__], 'pointer', mutant)
+    with pytest.raises(AssertionError, match='understates the exact parity-witness error'):
+        test_valid_rotated_candidate_bound_contains_exact_parity_witness(d)
