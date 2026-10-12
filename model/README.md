@@ -21,6 +21,11 @@ q=13 and q=34 and uses their detector probabilities for native feedback.
 Original-vacuum squeezing and a q=13 step-halving control are included;
 the inherited temporal and spatial certificates remain distinct from
 floating numerical error and physical apparatus error.
+The [source-compiled apparatus](observer/source_scalar/README.md) adds a
+separate two-site quantum field: its entangled preparation from blanks,
+field evolution and binary pointer all execute emitted twelve-port control
+words. Four- and eight-level site codes retain both quantum branches,
+exact initial-tail and finite splitting bounds, and the native feedback.
 
 ## Run the observer
 
@@ -63,6 +68,7 @@ The scalar local-evolution receipt can also be replayed directly:
 
 ```sh
 python3 -m model.observer.scalar_response.local_evolution --check model/observer/scalar_response/local_results.json
+python3 -m model.observer.source_scalar --check model/observer/source_scalar/results.json
 ```
 
 ## What is implemented
@@ -72,6 +78,7 @@ python3 -m model.observer.scalar_response.local_evolution --check model/observer
 | Native observer | [Native C, retained tape and record-only controller](observer/README.md), including all 264 benchmark paths and exact feedback controls |
 | Binary electromagnetic observation | [P-dependent detector](observer/p_response/README.md): evaluates α(P), writes one stable bit and uses it for the next native repair; all 528 weighted paths |
 | Scalar field observation and refinement | [Scalar detector](observer/scalar_response/README.md): native-current preparation, binary field instrument and bit-only feedback; local field updates at q=13,34, with temporal and spatial comparison bounds and a [prediction protocol](observer/scalar_response/PREDICTION.md) |
+| Source-compiled quantum field apparatus | [Two-site source program](observer/source_scalar/README.md): preparation from blanks, field evolution and quantum pointer from twelve-port gates; both terminal field branches, finite error certificates and native feedback |
 | Finite capacity | [Correctable record capacity and compact controller](observer/CAPACITY.md): 11 terminal native words, 16 reachable prefixes and a four-bit classical encoding under the binary preparation |
 | Direct execution | [20,000-trial native receipt](observer/results/run.json) and [200,000-trial detector receipt](observer/p_response/results.json), alongside exact references |
 | Local event clock | [N4 local-tick calculation](local_tick/README.md): corrected native null and certified positive memory bounds while remote events continue |
@@ -93,11 +100,12 @@ The scalar adapter executes a supplied free-field model; native integer
 averaging does not by itself derive that Hamiltonian or its quantum vacuum.
 Its detector prediction is conditional on the stated apparatus and field
 law, with independent software controls and a separate physical test boundary.
-The next physical construction target is a compatible implementation of the
-field preparation, evolution and detector on the chosen microscopic source,
-with its errors carried through the same retained history. The local scalar
-updates provide an explicit operation to implement; they do not supply that
-microscopic or laboratory identification.
+The two-site source program now implements field preparation, evolution and
+detection under its declared code services. The next connection is a complete
+occupation and spatial refinement error budget for that same implementation,
+followed by physical apparatus identification and independent comparison.
+Its finite splitting certificate and initial vacuum-tail bound are separate
+parts of that budget; neither establishes the full continuum limit.
 
 ## Continue the construction
 

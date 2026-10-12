@@ -1710,10 +1710,12 @@
           "declared_native_current_two_event_observer",
           "uniform_binary_total_two_preparation",
           "declared_scalar_action_vacuum_and_refinement_adapter",
-          "declared_scalar_Weyl_branch_instrument_and_native_feedback"
+          "declared_scalar_Weyl_branch_instrument_and_native_feedback",
+          "declared_two_site_scalar_action_and_physical_occupation_projection",
+          "declared_coherent_proper_code_services_and_analogue_source_controls"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "e30aa05f0529b037077ec001173f90e369ec161230281ff382799459c8e76b0d"
+        "original_claim_sha256": "cbf8d8c64eb4a379227088dc611d25ca3eb41edae336bba2ec475c61020f999b"
       },
       "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM": {
         "assumptions": [

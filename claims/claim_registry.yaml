@@ -14552,7 +14552,7 @@
     },
     {
       "claim_id": "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
-      "statement": "The executable scalar-response adapter composes the native two-event observer with the supplied positive scalar Hamiltonian, original vacuum and golden refinement family q=13,34,89,233. The first native current j in {-1,0,1} sets the signed momentum preparation 4j f. At model time t in [19/20,1], an explicit binary Weyl instrument acts on the evolved field, retains its conditional output state and writes y; only y controls the second native repair, preserving committed classical records. If r_q(t)=Pr(y=+1|j=1)-1/2, complete finite-history enumeration gives E[j2]=5r_q/132. The existing scalar probability bound epsilon_q transfers to complete labelled outcome-history total variation at most 5epsilon_q/33 and second-current mean error at most 5epsilon_q/132 relative to the declared continuum comparison. The retained protocol specifies feedback, null and reversal controls with independent software checks. A separate local evolution receipt executes neighboring-site canonical kick-drift-kick recurrences at q=13 and q=34, evolving the mean and detector pullback columns and including original-vacuum squeezing in the terminal detector probability. A q=13 step-halving control compares at the same attained model time. The inherited temporal detector certificate transfers through the same history and current coefficients, with a timing allowance for a distinct reference time. Checkpoint summaries and sampled native records are retained; no full authenticated field-event log or native quantum-control pulse word is asserted. All four grids retain analytic temporal bounds, but q=89 and q=233 local loops are not executed by this extension, and the spatial bounds at the executed grids remain trivial. This executes a conditional detector and native continuation; it does not derive the scalar action or vacuum from integer averaging, certify full Fock-state convergence, calibrate a physical clock, or establish an empirical OPH prediction.",
+      "statement": "The executable scalar-response adapter composes the native two-event observer with the supplied positive scalar Hamiltonian, original vacuum and golden refinement family q=13,34,89,233. The first native current j in {-1,0,1} sets the signed momentum preparation 4j f. At model time t in [19/20,1], an explicit binary Weyl instrument acts on the evolved field, retains its conditional output state and writes y; only y controls the second native repair, preserving committed classical records. If r_q(t)=Pr(y=+1|j=1)-1/2, complete finite-history enumeration gives E[j2]=5r_q/132. The existing scalar probability bound epsilon_q transfers to complete labelled outcome-history total variation at most 5epsilon_q/33 and second-current mean error at most 5epsilon_q/132 relative to the declared continuum comparison. The retained protocol specifies feedback, null and reversal controls with independent software checks. A separate local evolution receipt executes neighboring-site canonical kick-drift-kick recurrences at q=13 and q=34, evolving the mean and detector pullback columns and including original-vacuum squeezing in the terminal detector probability. A q=13 step-halving control compares at the same attained model time. The inherited temporal detector certificate transfers through the same history and current coefficients, with a timing allowance for a distinct reference time. Checkpoint summaries and sampled native records are retained; this local recurrence does not emit a full authenticated field-event log or native quantum-control pulse word. All four grids retain analytic temporal bounds, but q=89 and q=233 local loops are not executed by this extension, and the spatial bounds at the executed grids remain trivial. This executes a conditional detector and native continuation; it does not derive the scalar action or vacuum from integer averaging, certify full Fock-state convergence, calibrate a physical clock, or establish an empirical OPH prediction. A separate two-site source-scalar apparatus now emits and executes preparation from blank registers, finite quantum evolution and pointer detection through the existing twelve-port controls. Correctly projected physical quadratic operators retain their occupation-boundary terms. Four- and eight-level site codes run at 64 and 128 steps to declared model time 1, retain both conditional field states and feed only the detector bit to native repair. Exact rational certificates separately bound initial vacuum truncation and reference-stable splitting error for the same finite Hamiltonian; the latter transfers to classical native histories and current by the same 5/33 and 5/132 coefficients. Independent matrix and full-branch tests check floating source execution. The finest word uses seven work qubits, 1774010 native pulses and 3548020 proper-code load/export service events, evaluated through cached executed subroutine contractions. Full export failure outcomes are defined and tested, with zero probability on the invariant valid-code histories. Coherent transport, reset, storage, Born readout and analogue control services remain supplied. This two-site action is distinct from the golden spatial-refinement family: no transfer of its continuum bounds, full occupation-propagation bound, physical service budget or empirical confirmation is asserted.",
       "owner_paper": "model/observer/scalar_response/README.md",
       "owner_medium": "protocol_record",
       "tier": "bounded_finite_executed_construction",
@@ -14560,15 +14560,19 @@
         "declared_native_current_two_event_observer",
         "uniform_binary_total_two_preparation",
         "declared_scalar_action_vacuum_and_refinement_adapter",
-        "declared_scalar_Weyl_branch_instrument_and_native_feedback"
+        "declared_scalar_Weyl_branch_instrument_and_native_feedback",
+        "declared_two_site_scalar_action_and_physical_occupation_projection",
+        "declared_coherent_proper_code_services_and_analogue_source_controls"
       ],
       "imported_results": [
         "Gaussian_Weyl_characteristic_function",
         "binary_Kraus_Stinespring_instrument",
         "coherent_state_evolution_under_positive_quadratic_action",
-        "total_variation_contraction_under_finite_classical_continuation"
+        "total_variation_contraction_under_finite_classical_continuation",
+        "twelve_port_source_exact_proper_code_controls",
+        "finite_symmetric_product_formula_error_bound"
       ],
-      "oph_specific_delta": "Executes the scalar field detector on explicit conditional branches between two native repairs, restricts the actuator to its committed binary outcome, and transfers the existing scalar continuum error to the full composed history and native feedback statistic.",
+      "oph_specific_delta": "Executes the scalar field detector on explicit conditional branches between two native repairs, restricts the actuator to its committed binary outcome, and transfers the existing scalar continuum error to the full composed history and native feedback statistic. Separately compiles entangled scalar preparation, finite evolution and both pointer branches from the twelve-port source controls, with exact initial-tail and finite splitting certificates and counted code services.",
       "novelty_type": "conditional_scalar_detector_execution_and_native_feedback_refinement",
       "evidence": [
         "model/observer/scalar_response/README.md",
@@ -14585,9 +14589,18 @@
         "model/observer/scalar_response/local_results.json",
         "model/observer/scalar_response/test_local_evolution.py",
         "code/source_scalar_time_refinement/source_scalar_time_refinement_receipt.json",
-        "code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py"
+        "code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py",
+        "model/observer/source_scalar/README.md",
+        "model/observer/source_scalar/DERIVATION.md",
+        "model/observer/source_scalar/compiler.py",
+        "model/observer/source_scalar/field.py",
+        "model/observer/source_scalar/bounds.py",
+        "model/observer/source_scalar/experiment.py",
+        "model/observer/source_scalar/results.json",
+        "model/observer/source_scalar/test_compiler.py",
+        "model/observer/source_scalar/test_experiment.py"
       ],
-      "falsifier": "Independent field evolution or pointer amplitudes change a detector probability; instrument normalization or conditional output states fail; any retained branch is omitted; the controller reads hidden field or current data beyond its bit; the native coefficient or inherited error transfer fails; null or reversal controls disagree; or canonical replay fails.",
+      "falsifier": "Independent field evolution or pointer amplitudes change a detector probability; instrument normalization or conditional output states fail; any retained branch is omitted; the controller reads hidden field or current data beyond its bit; the native coefficient or inherited error transfer fails; null or reversal controls disagree; the source control word differs from its complete finite quantum target; preparation or finite splitting certificates fail; or canonical replay fails.",
       "scope_if_false": "The scalar observer adapter, its execution or the stated error transfer fails. The independent native observer and parent supplied-action scalar theorems retain their own scopes; no empirical OPH verdict follows.",
       "status": "implemented_and_replayed_under_declared_finite_contract",
       "claim_class": "emitted_artifact",
