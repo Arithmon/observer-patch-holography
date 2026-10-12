@@ -53,6 +53,11 @@ translation, momentum and spatial field refinement remaining open.
 The [native propagation checks](common_source/CAUSALITY.md) verify finite
 dependency cones and delayed influence under fixed local seam schedules.
 They distinguish causal interaction depth from an auxiliary solver counter.
+The [native field relations](common_source/NATIVE_FIELDS.md) attach exact
+continuity and conditional current laws to those same recorded transfers.
+The existing uniform-seam calibration gives a closed graph diffusion law
+for the mean load. Its decaying modes do not supply an undamped wave law;
+coherent field dynamics remain a separate construction obligation.
 
 The [completion target](CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 is an executable observer algebra whose compatible measurement statistics

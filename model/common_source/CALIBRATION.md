@@ -41,8 +41,12 @@ sampling uncertainty. The seed, sample size, all settings and all outcomes
 remain in the receipt.
 
 This checks operational readability in the modular parameter. The samples
-are generated from the executed source probabilities, so they test the
-readout and inference procedure, not a theory against independent data.
+are generated from the analytic law checked against the executed source
+probabilities, so they test the readout and inference procedure, not a
+theory against independent data. Explicit seeded uniform-threshold Bernoulli
+trials make the retained counts stable when source roundoff falls on either
+side of probability one half. The actual source probabilities are retained
+separately; no replay tolerance is relaxed.
 They do not establish the duration of sequential interventions, eliminate
 periodic clock aliases, or calibrate a second. The original interacting
 Hamiltonian's model-time parameter is also distinct from this modular

@@ -64,6 +64,10 @@ not establish that repair selects that reference or calibrate physical time.
 The [native propagation tests](model/common_source/CAUSALITY.md) check that
 information follows local seam interactions under fixed schedules. Units
 may be chosen by observers; consistent relations among readouts are the target.
+The [native field relations](model/common_source/NATIVE_FIELDS.md) derive
+conservation and conditional current laws directly from the recorded repair.
+The existing uniform calibration gives graph diffusion of mean load; an
+undamped physical wave law does not follow from that mean alone.
 
 Its finite observer executes local repair, retains an
 observation and uses that record to choose its next interaction. The

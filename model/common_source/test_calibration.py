@@ -1,6 +1,7 @@
 """Synthetic sampling, exact dimensionless distances and energy-cutoff checks."""
 import json
 import math
+from copy import deepcopy
 
 import pytest
 
@@ -20,6 +21,7 @@ def test_all_clock_settings_are_sampled_and_interval_is_simultaneous(receipt):
     for row in clock["settings"]:
         expected_probability = (1 + clock["state_derived_normalized_contrast"] * math.sin(row["programmed_modular_phase"])) / 2
         assert row["normalized_source_probability"] == pytest.approx(expected_probability, abs=2e-13)
+        assert row["synthetic_sampling_probability"] == expected_probability
         assert row["hoeffding_probability_radius"] == pytest.approx(expected_radius)
         assert row["observed_frequency"] == row["number_one_count"] / 100000
         assert row["shots"] == 100000
@@ -37,6 +39,27 @@ def test_seeded_clock_counts_are_reproducible_without_refitting_the_clock(receip
     second = c.clock_benchmark(16)
     assert [row["number_one_count"] for row in first["settings"]] == [row["number_one_count"] for row in second["settings"]]
     assert first["state_derived_modular_frequency"] == second["state_derived_modular_frequency"]
+
+
+def test_synthetic_counts_do_not_reflect_when_source_roundoff_crosses_one_half(monkeypatch):
+    """Linux/Windows replay exposed opposite source rounding at phase zero."""
+    emitted = c.modular_clock.receipt(c.experiment.history(2, 16))
+    assert emitted["settings"][0]["phase"] == 0
+    outputs = []
+    probabilities = [math.nextafter(.5, 0.), math.nextafter(.5, 1.)]
+    for probability in probabilities:
+        perturbed = deepcopy(emitted)
+        perturbed["settings"][0]["clock_bit_marginal"] = [1 - probability, probability]
+        monkeypatch.setattr(c.modular_clock, "receipt", lambda history: perturbed)
+        outputs.append(c.clock_benchmark(16))
+    for output, probability in zip(outputs, probabilities):
+        first = output["settings"][0]
+        assert first["normalized_source_probability"] == probability
+        assert first["synthetic_sampling_probability"] == .5
+    for left, right in zip(outputs[0]["settings"], outputs[1]["settings"]):
+        assert left["number_one_count"] == right["number_one_count"]
+        assert left["inferred_modular_parameter"] == right["inferred_modular_parameter"]
+        assert left["modular_parameter_interval"] == right["modular_parameter_interval"]
 
 
 def test_interval_inversion_handles_boundaries_and_empty_model_intersections():
