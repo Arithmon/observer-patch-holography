@@ -125,6 +125,16 @@ completed component. Construction choices need no uniqueness theorem;
 their physical consequences need compatible readouts, explicit assumptions
 and discriminating evidence.
 
+More precisely, the target is an executable observer algebra whose compatible
+measurement interpretations recover nontrivial 3+1-dimensional quantum
+fields, their observed interactions and dynamical gravity at coarse scales.
+Shared operational meaning defines the proposed objective structure; its
+agreement with nature remains a testable requirement. The
+[completion criteria](model/CONSTRUCTION.md#completion-target-and-acceptance-criteria)
+and [objectivity contract](docs/INTERPRETATION_AND_TERMS.md#observer-measurements-and-operational-objectivity)
+state this target, including gapless sectors and controlled errors, separately
+from the current finite achievements.
+
 The research priority is an explicit microscopic repair law whose evolution
 supplies the inputs of the existing theorems on one common model. Separate
 conditional results can be correct without their physical premises being

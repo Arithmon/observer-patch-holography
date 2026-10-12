@@ -91,6 +91,55 @@ clock is an explicit premise of that construction. A successful calculation
 on such a background remains a conditional result until its source and
 physical interpretation are supplied.
 
+## Observer measurements and operational objectivity
+
+**The construction target is an executable realization of OPH's observer
+algebra whose shared measurement statistics recover the physics of our
+Universe.** The proposed continuum description is a nontrivial quantum
+field theory in three spatial and one temporal dimension, with the observed
+matter and interactions, and a compatible gravitational description under
+coarse-graining. These are the intended physical success criteria, not
+conclusions already obtained from the observer algebra or current code.
+
+Meaning assignment is operational: it identifies which preparations,
+interventions, measured quantities and recorded events different observers
+are describing. Inter-observer consensus and repair must make those
+interpretations compatible on shared observations, including joint and
+conditional probabilities and correlations. The interpretation maps must
+respect accessible operations and records, survive refinement, and be fixed
+independently of the observations used to validate a prediction. Agreement
+on labels or a reinterpretation chosen after seeing an answer is insufficient.
+
+Within this proposal, **objective reality is the stable operational
+structure shared by compatible observer perspectives**: quantities, records
+and responses that remain consistent under the specified comparisons and
+interventions. Agreement does not require independent stochastic experiments
+to produce identical outcomes. It also does not assign predetermined
+classical values to incompatible measurements that were not performed.
+This states OPH's operational interpretation of objectivity; it does not
+establish a metaphysical claim that agreement alone creates or determines
+the physical world.
+
+“Exactly the measurements of nature” names the ideal limiting target:
+matching the observable probability laws and their conditional responses,
+with controlled finite approximations. Experimental support is necessarily
+within declared calibration and statistical uncertainties and cannot certify
+unlimited precision from finitely many records. Consensus and mathematical
+consistency alone do not imply that this target is attained. The separate
+actual-history self-realization hypothesis above retains its own contract.
+
+Where a vacuum-sector mass gap is defined, the target allows a nonnegative
+gap, including zero for gapless sectors. It does not demand a strictly
+positive gap for every field or a global energy operator on arbitrary curved
+spacetimes. The required stability, spectrum and spacetime domains must be
+stated in each result. A free-field benchmark is a component of the target;
+the observed interactions and compatible dynamical gravity remain obligations.
+
+The [construction completion criteria](../model/CONSTRUCTION.md#completion-target-and-acceptance-criteria)
+make this target reviewable. Apparatus and protocol design choices are
+legitimate; proving unique selection of a design is not required. A chosen
+construction still has to satisfy its continuum and empirical contracts.
+
 ## Terms with different mathematical roles
 
 | Term | Meaning and boundary |

@@ -14,6 +14,51 @@ separate question, not a prerequisite for constructing it. A complete
 physical model additionally needs compatible physical identifications and
 tests on the same process.
 
+## Completion target and acceptance criteria
+
+**Build an executable realization of the OPH observer algebra whose
+compatible inter-observer measurements reproduce the observed Universe.**
+The target is a nontrivial quantum field theory in 3+1 dimensions in the
+continuum, with the observed matter and interactions, and compatible
+dynamical gravity under coarse-graining. Here four-dimensional QFT and
+3+1-dimensional spacetime refer to the same dimension count.
+
+Meaning assignment connects actual preparations, instruments, interventions
+and records to shared physical quantities. Consensus and repair must preserve
+compatible joint and conditional statistics on overlapping observer domains.
+This is the proposed operational sense in which an objective reality emerges.
+It does not follow merely from observers agreeing on an interpretation.
+See the [interpretation contract](../docs/INTERPRETATION_AND_TERMS.md#observer-measurements-and-operational-objectivity).
+
+| Completion obligation | Acceptance evidence |
+| --- | --- |
+| Executable observer algebra | Explicit state, operation, preparation, measurement, retained-record and feedback maps; their algebraic identities and observer-access limits; accounted memory and service assumptions; actual execution of the claimed protocols. A finite two-event implementation discharges its own contract, not every observer or federation interface. |
+| Shared operational meaning | Interpretation maps specified independently of the validation outcomes, compatible across observers and refinement, and preserving the declared intervention statistics and quantum correlations. Shared labels alone are insufficient; incompatible unperformed measurements need no common table of classical outcomes. |
+| Quantum continuum | A common refining family with compatible states and observables, controlled errors tending to zero, and a nontrivial 3+1-dimensional QFT in the declared domain, including the required matter and interactions. Where a vacuum-sector mass gap is defined, it is nonnegative and may be zero; no universal strictly positive gap is required. |
+| Gravitational description | Dynamical geometry, stress, couplings and local clock comparisons on that same construction, yielding the gravitational predictions in their stated coarse-scale regime with controlled corrections. Separate fields on a supplied geometry do not discharge this obligation. |
+| Physical predictions | Explicit parameter/input ancestry, calibration and uncertainty; predictions and rejection rules fixed before independent comparison data; agreement with the observed statistics, including alternatives and distinguishing tests. Reusing a calibration datum is not an independent prediction. |
+
+Exact equality of limiting observable laws is the mathematical target.
+Finite simulations and experiments are assessed with declared approximation
+and measurement errors. They do not prove arbitrary empirical precision or
+force a particular random outcome in an independently repeated experiment.
+Agreement must be constrained by measurements; a consistent world model can
+still describe different physics from nature.
+
+Hardware, protocol and implementation choices remain open design variables.
+No uniqueness theorem for the chosen rule is a prerequisite. For the current
+P/N construction, closure-derived P and N are accepted inputs under their
+declared contracts; that assumption does not discharge the other physical
+interfaces. Supplied background geometry, action, state, interpretation or
+clock data must stay visible until the same construction accounts for them.
+
+These obligations can advance in parallel. Passing CI verifies the retained
+software contracts; it does not mark the physical target complete. The
+current native observer, P detector and source-compiled two-site scalar
+apparatus are completed finite components under their stated premises.
+The controlled interacting continuum, compatible physical gravity and
+independent empirical completion remain open.
+
 ## Current executable result
 
 The [native observer](observer/README.md) executes two repair events with a
@@ -384,12 +429,15 @@ retains all eight prescribed rational cases, including rejection of singular
 ## Remaining construction work
 
 The finite observer is a completed component to extend and preserve. The
-next concrete target is to implement this scalar preparation, local update
-and binary detector on the chosen microscopic source, retaining their
-records and bounding their joint error on the same refinement family.
-That tests the missing source-to-field connection directly. A physical
-completion additionally needs the compatible interacting and geometric
-interfaces and an independent comparison below:
+two-site source program now executes preparation, quantum evolution and the
+binary detector under its declared services. The next concrete target is
+to bound occupation errors throughout this complete history and connect a
+refining family of source programs to the continuum, retaining their
+records and a common error budget. The earlier spatial scalar theorem
+provides a separate comparison family; its bounds do not transfer without
+that connection. Physical completion follows the acceptance criteria above
+and additionally needs the compatible interacting and gravitational
+interfaces and independent comparisons below:
 
 - Implement longer or composed observers with explicit memory, reset,
   continuation and resource contracts while preserving current behavior.
