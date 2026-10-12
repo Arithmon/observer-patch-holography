@@ -116,3 +116,7 @@ def test_receipt_cli_round_trip_and_tampering_rejected(tmp_path, monkeypatch, ca
     with pytest.raises(ValueError, match="Receipt mismatch"):
         c.main()
     capsys.readouterr()
+
+
+def test_retained_native_rule_path_is_platform_independent(receipt):
+    assert receipt["source"]["native_rule"] == "model/observer/native.py"

@@ -229,7 +229,7 @@ def report():
     native_path = Path(native.__file__).resolve()
     return {
         "schema": "oph.common_source.fixed_schedule_native_causality.v1",
-        "source": {"native_rule": str(native_path.relative_to(root)),
+        "source": {"native_rule": native_path.relative_to(root).as_posix(),
                    "native_sha256": hashlib.sha256(native_path.read_bytes()).hexdigest(),
                    "incidence": "existing pinned native response carrier, checked by slow_geometry.source"},
         "native_ports": 12, "native_seams": [list(seam) for seam in edges()],
