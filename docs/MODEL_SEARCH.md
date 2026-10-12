@@ -11,6 +11,8 @@ milestones; they do not by themselves complete the programme.
 Research status: **11 October 2026**. Source reference:
 `84025a97491f6e1173cc29d72822c989e4ef6ed5`.
 
+The [programme obstruction audit for issue #1078](OPH_PROGRAMME_OBSTRUCTION_AUDIT_1078.md) independently reviews the fixed formulation `0510578e317de5da0d485d09792dc8bcad2e2f3c`; its [exact reproduction packet](../code/programme_obstruction_audit/README.md) records scoped attachment and non-entailment evidence. Programme-wide exclusion remains inconclusive; existing claim and premise boundaries are retained.
+
 The [candidate register](MODEL_CANDIDATES.md) compares the concrete active
 laws, their tested properties, added assumptions and next decisive tests.
 

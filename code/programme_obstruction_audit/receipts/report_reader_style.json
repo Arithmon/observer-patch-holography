@@ -1,0 +1,18 @@
+{
+  "tool": "tools/check_reader_style.py",
+  "source_revision": "84025a97491f6e1173cc29d72822c989e4ef6ed5",
+  "tool_sha256": "3b517eab949a9e502618e9ad4694c9ef790754d6ca4d9f6ff997bfeabf88d595",
+  "python": "3.14.7",
+  "invocation": "unmodified canonical module; set ROOT to publication staging and call main()",
+  "checked_surfaces": [
+    "docs/OPH_PROGRAMME_OBSTRUCTION_AUDIT_1078.md",
+    "docs/MODEL_SEARCH.md"
+  ],
+  "report_sha256": "82eb0d794862657139b5df8bf30cf351fceea92828d1fb3dff7e620a772552f0",
+  "exit_code": 0,
+  "stdout": "reader style check OK",
+  "scope": "changed reader surfaces only; full repository fixture validation is separate",
+  "scientific_scope_and_citation_links_changed": false,
+  "scientific_scripts_or_receipts_changed": false,
+  "inventory_paths_changed": false
+}
