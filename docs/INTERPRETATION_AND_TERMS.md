@@ -94,12 +94,33 @@ physical interpretation are supplied.
 ## Observer measurements and operational objectivity
 
 **The construction target is an executable realization of OPH's observer
-algebra whose shared measurement statistics recover the physics of our
-Universe.** The proposed continuum description is a nontrivial quantum
-field theory in three spatial and one temporal dimension, with the observed
-matter and interactions, and a compatible gravitational description under
-coarse-graining. These are the intended physical success criteria, not
-conclusions already obtained from the observer algebra or current code.
+algebra whose shared measurement statistics reproduce the observable
+physics of our Universe.** Those statistics must admit the appropriate
+effective descriptions: a nontrivial quantum field theory in three spatial
+and one temporal dimension, including the observed interactions, and
+classical physics and gravity in their coarse-scale regimes. These are
+intended physical success criteria, not conclusions already obtained from
+the observer algebra or current code.
+
+**Observations are primary; fields and spacetime are effective descriptions.**
+In this interpretation, the physical content of the represented universe is
+the observations made by observers and their compatible operational meanings.
+Particles, fields, positions, durations and metrics describe regularities in
+those observations. The construction is not required to produce a fundamental
+QFT, manifold or metric first, or to establish that those descriptions exist
+independently underneath the observers' records. Internal state vectors,
+graphs and coordinate arrays can be implementation representations without
+being a fundamental spacetime ontology.
+
+The acceptance test is observational: over a stated domain, a shared
+interpretation of the executable observer's joint statistics and intervention
+responses must agree, within controlled errors, with the effective physical
+description and independent measurements. Refinement may make the errors
+vanish for a declared limiting description. Coarse-grained classical and
+gravitational descriptions have their own validity regimes and corrections;
+they need not become exact descriptions at every scale. Using a supplied
+field equation as a benchmark remains legitimate, but does not by itself
+show that its observational content follows from the constructed observer.
 
 Meaning assignment is operational: it identifies which preparations,
 interventions, measured quantities and recorded events different observers
@@ -128,12 +149,14 @@ unlimited precision from finitely many records. Consensus and mathematical
 consistency alone do not imply that this target is attained. The separate
 actual-history self-realization hypothesis above retains its own contract.
 
-Where a vacuum-sector mass gap is defined, the target allows a nonnegative
+Where an effective vacuum-sector mass gap is defined, the target allows a nonnegative
 gap, including zero for gapless sectors. It does not demand a strictly
 positive gap for every field or a global energy operator on arbitrary curved
 spacetimes. The required stability, spectrum and spacetime domains must be
-stated in each result. A free-field benchmark is a component of the target;
-the observed interactions and compatible dynamical gravity remain obligations.
+stated in each result. These are properties of the effective description of
+observations, not additional fundamental objects to install in the source.
+A free-field benchmark is a component of the target; the observations
+associated with interactions and dynamical gravity remain obligations.
 
 The [construction completion criteria](../model/CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 make this target reviewable. Apparatus and protocol design choices are

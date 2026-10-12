@@ -18,10 +18,21 @@ tests on the same process.
 
 **Build an executable realization of the OPH observer algebra whose
 compatible inter-observer measurements reproduce the observed Universe.**
-The target is a nontrivial quantum field theory in 3+1 dimensions in the
-continuum, with the observed matter and interactions, and compatible
-dynamical gravity under coarse-graining. Here four-dimensional QFT and
-3+1-dimensional spacetime refer to the same dimension count.
+Their joint observations must admit a nontrivial 3+1-dimensional QFT as a
+controlled effective description, including the observed matter and
+interactions, and classical physics and dynamical gravity under appropriate
+coarse-graining. Four-dimensional QFT and 3+1-dimensional spacetime refer
+to the same dimension count of that description.
+
+**No fundamental QFT or spacetime recovery is required.** The target concerns
+what observers can measure and jointly interpret. Fields, particles and
+spacetime geometry can be effective descriptions of those observations,
+without being primitive objects or an underlying observer-independent
+substrate. Implementation data structures do not change that ontology.
+Success requires agreement of the accessible joint and conditional
+statistics and intervention responses in each description's validity
+regime, with controlled errors and corrections. It does not require every
+effective description to remain valid at arbitrarily fine scales.
 
 Meaning assignment connects actual preparations, instruments, interventions
 and records to shared physical quantities. Consensus and repair must preserve
@@ -34,8 +45,8 @@ See the [interpretation contract](../docs/INTERPRETATION_AND_TERMS.md#observer-m
 | --- | --- |
 | Executable observer algebra | Explicit state, operation, preparation, measurement, retained-record and feedback maps; their algebraic identities and observer-access limits; accounted memory and service assumptions; actual execution of the claimed protocols. A finite two-event implementation discharges its own contract, not every observer or federation interface. |
 | Shared operational meaning | Interpretation maps specified independently of the validation outcomes, compatible across observers and refinement, and preserving the declared intervention statistics and quantum correlations. Shared labels alone are insufficient; incompatible unperformed measurements need no common table of classical outcomes. |
-| Quantum continuum | A common refining family with compatible states and observables, controlled errors tending to zero, and a nontrivial 3+1-dimensional QFT in the declared domain, including the required matter and interactions. Where a vacuum-sector mass gap is defined, it is nonnegative and may be zero; no universal strictly positive gap is required. |
-| Gravitational description | Dynamical geometry, stress, couplings and local clock comparisons on that same construction, yielding the gravitational predictions in their stated coarse-scale regime with controlled corrections. Separate fields on a supplied geometry do not discharge this obligation. |
+| Effective quantum-field description | A common refining family of observer statistics and interpretation maps whose errors relative to a nontrivial 3+1-dimensional QFT tend to zero in the declared continuum domain, including the observed matter and interactions. The comparison concerns measurable correlations and intervention responses, not recovery of fundamental field objects. Where an effective vacuum-sector mass gap is defined, it is nonnegative and may be zero. |
+| Effective classical and gravitational descriptions | The same observer construction yields observations that admit compatible classical, geometric, stress and clock descriptions in their stated regimes, reproducing the gravitational predictions with controlled corrections. A fundamental metric or manifold is not a prerequisite. Separate calculations on a supplied geometry need a map to these observer statistics before discharging this obligation. |
 | Physical predictions | Explicit parameter/input ancestry, calibration and uncertainty; predictions and rejection rules fixed before independent comparison data; agreement with the observed statistics, including alternatives and distinguishing tests. Reusing a calibration datum is not an independent prediction. |
 
 Exact equality of limiting observable laws is the mathematical target.
@@ -56,8 +67,8 @@ These obligations can advance in parallel. Passing CI verifies the retained
 software contracts; it does not mark the physical target complete. The
 current native observer, P detector and source-compiled two-site scalar
 apparatus are completed finite components under their stated premises.
-The controlled interacting continuum, compatible physical gravity and
-independent empirical completion remain open.
+The controlled effective interacting-field and gravitational descriptions
+of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 

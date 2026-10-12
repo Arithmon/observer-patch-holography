@@ -9,6 +9,8 @@ Complete navigation coverage of the current canonical PR identifiers, plus expli
 
 The live construction is model/. Its finite native observer, conditional P-dependent detector, N4 incident-attempt certificate and source-compiled two-site scalar apparatus have explicit executable sources below. The two-site source word and the earlier golden-grid scalar comparison use different actions, states and approximation contracts. They are distinct from the scalar continuum and common physical-world claims; a cross-reference does not transfer assumptions or promote those claims. Unique-law selection is not required to complete a declared finite implementation.
 
+**Operational completion, not fundamental field or spacetime recovery.** The target concerns joint observer statistics and intervention responses that admit effective quantum-field, classical and gravitational descriptions in their stated regimes, with controlled errors. Fields, metrics and manifolds need not be fundamental objects in the construction. Each reused theorem retains its mathematical hypotheses; this navigation map does not make every paper-specific route an indispensable ontology or completion requirement.
+
 These groups are workgroup navigation crosswalks, not claim-consumer edges or changes
 to proof status. A group links related construction, branch, downstream or metrology
 work; that association does not make every listed premise an antecedent of every
@@ -663,3 +665,4 @@ Sources:
 - [Retained scalar-response execution and controls](../model/observer/scalar_response/results.json).
 - [Composed finite source apparatus and retained physical obligations](../model/observer/source_scalar/DERIVATION.md).
 - [Current executable source-compiled two-site construction](../model/observer/source_scalar/experiment.py).
+- [Operational completion criteria and effective-description scope](../model/CONSTRUCTION.md); exact source anchor: ` ## Completion target and acceptance criteria `.

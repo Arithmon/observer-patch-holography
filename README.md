@@ -126,8 +126,10 @@ their physical consequences need compatible readouts, explicit assumptions
 and discriminating evidence.
 
 More precisely, the target is an executable observer algebra whose compatible
-measurement interpretations recover nontrivial 3+1-dimensional quantum
-fields, their observed interactions and dynamical gravity at coarse scales.
+measurement statistics admit nontrivial 3+1-dimensional quantum fields,
+their observed interactions, classical physics and gravity as effective
+descriptions in the appropriate regimes. Fundamental fields or a fundamental
+spacetime are not prerequisites; their observational content is the target.
 Shared operational meaning defines the proposed objective structure; its
 agreement with nature remains a testable requirement. The
 [completion criteria](model/CONSTRUCTION.md#completion-target-and-acceptance-criteria)
