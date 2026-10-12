@@ -283,8 +283,8 @@ terms retain the terminal quantum state, while every one of the 12,487,168
 q=233 modes contributes to their Gram kernel.
 
 This extension uses continuous full-mode spectral evolution. The local
-split-update engine above has not yet been joined to this two-read
-conditional-state continuation or its complete-history error bound.
+split-update engine above and this two-read conditional-state continuation
+are separate implementations with separate error bounds.
 
 The new directed rational bound puts the q=233 complete-history TV error
 below 0.02571. It includes the zero-current histories, whose two-bit
