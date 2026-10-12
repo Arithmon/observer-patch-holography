@@ -29,7 +29,7 @@ explained in the [assumption dictionary](../claims/assumption_dictionary.md).
 | Canonical premise IDs represented in this crosswalk | 84/84 |
 | Model criteria represented | 12/12 |
 | Registered claims | 331 |
-| Unique ordinary `assumptions` names | 785 |
+| Unique ordinary `assumptions` names | 786 |
 | Unique `imported_results` names | 847 |
 | Workgroups | 26 |
 | Assumption names explicitly linked by optional group fields | 18 |
@@ -253,7 +253,7 @@ Sources:
 
 ### RE-07: Quantum representation and operational probabilities
 
-**Constructed:** The scalar Fock/Weyl construction and constrained local field representation are mathematically compatible. The Hamiltonian is the original positive canonical one. The finite native observer has an all-input CPTP map with coherent write isometries and an explicit classical readout. The binary electromagnetic detector has complementary effects on arbitrary coherent record inputs; its outcome probabilities and complete continuation are implemented. A separate binary native/N4 carrier has twelve primitive central address blocks and an exactly recoverable full quantum sector. Every instrument reporting effects N_p/2 erases disjoint-load coherences; an explicit pair has unavoidable recovery error at least 1/2. The scalar-response adapter executes a binary Weyl instrument on the evolved scalar field and retains conditional branch states before native continuation. The pointer, quantization and Born readout remain supplied; drawing independent unconditional receipt marginals is not this instrument execution.
+**Constructed:** The scalar Fock/Weyl construction and constrained local field representation are mathematically compatible. The Hamiltonian is the original positive canonical one. The finite native observer has an all-input CPTP map with coherent write isometries and an explicit classical readout. The binary electromagnetic detector has complementary effects on arbitrary coherent record inputs; its outcome probabilities and complete continuation are implemented. A separate binary native/N4 carrier has twelve primitive central address blocks and an exactly recoverable full quantum sector. Every instrument reporting effects N_p/2 erases disjoint-load coherences; an explicit pair has unavoidable recovery error at least 1/2. The scalar-response adapter executes a binary Weyl instrument on the evolved scalar field and retains conditional branch states before native continuation. The pointer, quantization and Born readout remain supplied; drawing independent unconditional receipt marginals is not this instrument execution. The continued adapter retains conditional Weyl branches through two noncommuting reads of the same field; all modes enter a small Gram kernel and independent final Fock states check the relative phases. A commuting Gaussian control preserves temporal correlation while removing the separately certified disturbance.
 
 **Remaining input:** CCR, Hilbert representation, subsystem split, accessible phase effects, channel semantics and Born readout remain declared. Finite-code CCR are approximate with an explicit boundary defect. These finite protocols use supplied quantum instrumentation and do not derive the Born rule or the scalar Fock representation from the native load law.
 
@@ -272,6 +272,8 @@ Sources:
 - [Executed scalar detector and native feedback contract](../model/observer/scalar_response/README.md).
 - [Binary instrument, history law and inherited refinement bound](../model/observer/scalar_response/DERIVATION.md).
 - [Retained scalar-response execution and controls](../model/observer/scalar_response/results.json).
+- [Retained field, record capacity and complete-history proof](../model/observer/scalar_response/CONTINUATION.md).
+- [Executed two-read history and outward rational refinement bounds](../model/observer/scalar_response/continuation_results.json).
 
 <a id="re-08"></a>
 
@@ -315,7 +317,7 @@ Sources:
 
 ### RE-10: One encoded preparation, evolution and record history
 
-**Constructed:** The original five q=3 force/retained-pointer histories and coupled-vacuum preparation compose on one d=8192 onsite code with 104 field and two pointer work qubits. Time, displaced occupation cutoffs and existing-source synthesis have a combined mathematical trace-distance bound below 0.001237, preserved by the same complete readout. All relative phases and outcomes are retained. The finite recipe has a conservative evolution pulse upper bound below 2^116, with fewer than 2^117 pack/export events; neither word emission nor native execution was performed. Separately, model/observer executes a finite native two-event history and a P-dependent bit-controlled continuation; those are smaller completed protocols with different states and operations. The scalar-response adapter joins a first native repair, signed scalar preparation/evolution, binary field instrument and retained-bit-controlled second native repair. Its conditional field branches and complete native histories execute in software. This does not emit the separate large common-code scalar/pointer word or instantiate its native quantum service schedule.
+**Constructed:** The original five q=3 force/retained-pointer histories and coupled-vacuum preparation compose on one d=8192 onsite code with 104 field and two pointer work qubits. Time, displaced occupation cutoffs and existing-source synthesis have a combined mathematical trace-distance bound below 0.001237, preserved by the same complete readout. All relative phases and outcomes are retained. The finite recipe has a conservative evolution pulse upper bound below 2^116, with fewer than 2^117 pack/export events; neither word emission nor native execution was performed. Separately, model/observer executes a finite native two-event history and a P-dependent bit-controlled continuation; those are smaller completed protocols with different states and operations. The scalar-response adapter joins a first native repair, signed scalar preparation/evolution, binary field instrument and retained-bit-controlled second native repair. Its conditional field branches and complete native histories execute in software. This does not emit the separate large common-code scalar/pointer word or instantiate its native quantum service schedule. A completed two-read extension retains one field and the same native loads through three repairs, all 2,112 labelled histories and 209 reached record prefixes, with an explicit eight-bit prefix code, checkpoint restoration and final halt. It uses no intermediate source or field reset.
 
 **Remaining input:** Physical blank/pointer initialization, pulse/control and coherent code-service accuracy, storage/drift, routing/reset, complete readback and their resource budgets remain supplied or unimplemented. The enormous constructive upper count does not establish efficient execution. Physical clock selection and refinement-uniform resources remain separate obligations. Running the finite observer does not count as emitting or executing the scalar field/pointer word described in this group.
 
@@ -333,12 +335,14 @@ Sources:
 - [Executed scalar detector and native feedback contract](../model/observer/scalar_response/README.md).
 - [Binary instrument, history law and inherited refinement bound](../model/observer/scalar_response/DERIVATION.md).
 - [Retained scalar-response execution and controls](../model/observer/scalar_response/results.json).
+- [Retained field, record capacity and complete-history proof](../model/observer/scalar_response/CONTINUATION.md).
+- [Executed two-read history and outward rational refinement bounds](../model/observer/scalar_response/continuation_results.json).
 
 <a id="re-11"></a>
 
 ### RE-11: Controlled refinement of the selected quantum family
 
-**Constructed:** The existing common scalar theorem gives the stated massive 3D free-field Weyl-product limit. The canonical field join preserves the same action, vacuum and observables. For the scalar-response adapter on the inherited q=13,34,89,233 family, the scalar probability bound epsilon_q transfers to complete history total variation at most 5epsilon_q/33 and native second-current mean error at most 5epsilon_q/132. Preparation, detector profiles and the [19/20,1] model-time window are fixed across the comparison; full Fock-state convergence is not asserted.
+**Constructed:** The existing common scalar theorem gives the stated massive 3D free-field Weyl-product limit. The canonical field join preserves the same action, vacuum and observables. For the scalar-response adapter on the inherited q=13,34,89,233 family, the scalar probability bound epsilon_q transfers to complete history total variation at most 5epsilon_q/33 and native second-current mean error at most 5epsilon_q/132. Preparation, detector profiles and the [19/20,1] model-time window are fixed across the comparison; full Fock-state convergence is not asserted. The two-read adapter additionally derives a complete-history TV bound at most 0.025709913643 at q=233 from the parent full residuals and separate compact tails. It includes the 28/33 zero-current population and does not reuse the single-read bias as a two-read bound. Its fixed nine-mode comparison tail does not establish a vanishing rate; the parent's separate enlarged-band finite-Weyl theorem supplies the asymptotic route.
 
 **Remaining input:** Native preparation/control/record errors must remain controlled along that family. The archived spherical routing and interacting many-body limits are different targets. Vanishing kinetic perturbations can share the narrower position-Weyl limit, so that limit alone does not select unique microscopic inertia. The two-event native observer, its P detector and the N4 local-tick calculation establish no spatial refinement or interacting quantum continuum; their operators must be mapped to the chosen continuum family before any such transfer.
 
@@ -355,12 +359,14 @@ Sources:
 - [Executed scalar detector and native feedback contract](../model/observer/scalar_response/README.md).
 - [Binary instrument, history law and inherited refinement bound](../model/observer/scalar_response/DERIVATION.md).
 - [Retained scalar-response execution and controls](../model/observer/scalar_response/results.json).
+- [Retained field, record capacity and complete-history proof](../model/observer/scalar_response/CONTINUATION.md).
+- [Executed two-read history and outward rational refinement bounds](../model/observer/scalar_response/continuation_results.json).
 
 <a id="re-12"></a>
 
 ### RE-12: Source clock, physical time and execution cost
 
-**Constructed:** Canonical model time, supplied event-count clock comparisons and conditional scalar action-clock reconstruction exist. The endpoint-current lift preserves the native load marginal and classical record blocks and therefore its scoped geometry/count relations; this adds no physical clock calibration. For N4, bare-occupation measurements at the endpoints of an unmodified one- or two-event experiment recover the native port Dirichlet geometry up to a positive scalar. Certified two-attempt memory at theta=1/8 and 1/16 rejects native heat dynamics even after a clock-rate fit. The incident-attempt extension derives the distinct first-hit channel and corrected native null while retaining all remote events; it transfers strict N4 memory bounds to one or two local ticks at both certified couplings. A central occupied-port instrument recovers the same corrected statistic from endpoint joint probabilities, with an exact native null and separate stationarity, sampling-noise and intermediate-measurement controls.
+**Constructed:** Canonical model time, supplied event-count clock comparisons and conditional scalar action-clock reconstruction exist. The endpoint-current lift preserves the native load marginal and classical record blocks and therefore its scoped geometry/count relations; this adds no physical clock calibration. For N4, bare-occupation measurements at the endpoints of an unmodified one- or two-event experiment recover the native port Dirichlet geometry up to a positive scalar. Certified two-attempt memory at theta=1/8 and 1/16 rejects native heat dynamics even after a clock-rate fit. The incident-attempt extension derives the distinct first-hit channel and corrected native null while retaining all remote events; it transfers strict N4 memory bounds to one or two local ticks at both certified couplings. A central occupied-port instrument recovers the same corrected statistic from endpoint joint probabilities, with an exact native null and separate stationarity, sampling-noise and intermediate-measurement controls. The continued scalar protocol counts one source preparation, one field preparation, three native repairs, two field reads and five record writes, retaining four coherent terms at its terminal state. These are supplied finite services and model times, not a physical duration or a native pulse compilation.
 
 **Remaining input:** Choose a physical clock on the same process and account for preparation, service, readout and ancestry costs. A source scale identification and conversion to laboratory units are distinct. The record clock must be read from the histories that also supply the carrier response and reversible source, with an explicit relation to scalar model time. N4 does not preserve C: its record j is conjugate to a seam-dependent transformed occupation. The finite occupation protocol does not restore the native current-label identities or calibrate a physical clock; those require compatible physical current and time readouts. Endpoint storage is an explicit supplied service; refreshing the address erases its prior tag.
 
@@ -378,6 +384,8 @@ Sources:
 - [Exact local stopping null and certificate replay](../model/local_tick/experiment.py); exact source anchor: ` def calculate() `.
 - [Independent finite-chain and quantum stopping checks](../model/local_tick/test_local_tick.py).
 - [Occupied-port endpoint instrument and corrected record statistic](../code/native_response/port_readout.py).
+- [Retained field, record capacity and complete-history proof](../model/observer/scalar_response/CONTINUATION.md).
+- [Executed two-read history and outward rational refinement bounds](../model/observer/scalar_response/continuation_results.json).
 
 <a id="re-13"></a>
 
@@ -545,7 +553,7 @@ Sources:
 
 ### RE-22: Physical propagation and an eligible test
 
-**Constructed:** Finite seam symbols, exact coefficients and conditional frozen comparison contracts exist. Internal scalar discriminators are not physical measurements. A local N2/N3 probe and N4 private-preparation/load-response test give finite internal discriminators under supplied quantum preparations and coupling, without empirical data. The native record and P-detector protocols have exact disconnected and shuffled-record controls plus reproducible sampled executions. The N4 local-tick calculation provides the separate stopping-rule null and certified finite lower bounds. The scalar-response prediction protocol targets the native feedback statistic 5r_q/132 with null and reversal controls under the supplied scalar action and apparatus. Independent software tests do not supply an external physical comparison, freeze a new physical prediction or establish a calibrated clock.
+**Constructed:** Finite seam symbols, exact coefficients and conditional frozen comparison contracts exist. Internal scalar discriminators are not physical measurements. A local N2/N3 probe and N4 private-preparation/load-response test give finite internal discriminators under supplied quantum preparations and coupling, without empirical data. The native record and P-detector protocols have exact disconnected and shuffled-record controls plus reproducible sampled executions. The N4 local-tick calculation provides the separate stopping-rule null and certified finite lower bounds. The scalar-response prediction protocol targets the native feedback statistic 5r_q/132 with null and reversal controls under the supplied scalar action and apparatus. Independent software tests do not supply an external physical comparison, freeze a new physical prediction or establish a calibrated clock. On the fixed continued scalar apparatus at q=233, the positive-current second-plus probability increases by more than 0.000022281162 when the first read is performed rather than omitted. This distinguishes the specified commuting Gaussian control; temporal correlation alone does not. Software trials do not statistically resolve this small contrast and are not physical comparison data.
 
 **Remaining input:** Attach the same source operator, sector, physical scale, frame/boost, refinement, nuisance model and calibrated readout. Exclusivity and a positive lower scale bound are needed where the registered test requires them. These are internal model checks, not physical observations or eligible frozen predictions.
 
@@ -563,6 +571,8 @@ Sources:
 - [Executed scalar detector and native feedback contract](../model/observer/scalar_response/README.md).
 - [Binary instrument, history law and inherited refinement bound](../model/observer/scalar_response/DERIVATION.md).
 - [Retained scalar-response execution and controls](../model/observer/scalar_response/results.json).
+- [Retained field, record capacity and complete-history proof](../model/observer/scalar_response/CONTINUATION.md).
+- [Executed two-read history and outward rational refinement bounds](../model/observer/scalar_response/continuation_results.json).
 
 <a id="re-23"></a>
 

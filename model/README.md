@@ -16,6 +16,9 @@ observer to the existing free-field construction: its first current prepares
 a signed scalar intervention, a binary field read controls the next repair,
 and the inherited refinement bounds constrain the resulting history law.
 The scalar Hamiltonian, vacuum, readout and model-time convention are supplied.
+Its [continued version](observer/scalar_response/CONTINUATION.md) keeps the
+disturbed field for a second read and a third native event, with explicit
+record memory and a bound on the complete history.
 
 ## Run the observer
 
@@ -30,9 +33,13 @@ python3 -m model.observer run --trials 10000 --seed 42
 
 # P → electromagnetic coupling → detector bit → native feedback.
 python3 -m model.observer.p_response --check model/observer/p_response/results.json
+
+# Continue the same scalar field through two observations (NumPy/SciPy required).
+python3 -m model.observer.scalar_response --continue-field \
+  --check model/observer/scalar_response/continuation_results.json
 ```
 
-These runtime commands use the Python standard library. They run software
+The native and P-detector commands use the Python standard library. They run software
 models, with a fresh preparation for each two-event trial. Event order is
 the time parameter; the program does not assign a physical duration to a
 Python invocation. The P detector evaluates the existing source-only

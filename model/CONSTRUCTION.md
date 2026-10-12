@@ -248,6 +248,26 @@ field, apparatus, calibration and independently acquired records. The scalar
 action, quantization, vacuum, preparation, Born readout and model clock remain
 explicit inputs; the finite native observer does not select them.
 
+### Retained field and record continuation
+
+The [continued scalar observer](observer/scalar_response/CONTINUATION.md)
+retains one field through two noncommuting reads at model times `19/20` and
+`1`, with three repairs of the same native loads. All 2,112 labelled histories
+are kept. Its 209 reachable record prefixes have an explicit eight-bit
+encoding; source, field and service memory are separate. Four coherent Weyl
+terms retain the terminal quantum state, while every one of the 12,487,168
+q=233 modes contributes to their Gram kernel.
+
+The new directed rational bound puts the q=233 complete-history TV error
+below 0.02571. It includes the zero-current histories, whose two-bit
+correlation is not controlled by the old single-read bias bound. It also
+certifies a positive second-read disturbance above 0.000022281162 relative
+to omitting the first read on the positive-current preparation. A commuting
+Gaussian control retains ordinary temporal correlation but removes that
+disturbance. Independent state-vector, conditional-field donor, reset and
+record-deletion controls distinguish these mechanisms. The existing supplied
+action, vacuum, instrument and time contract is preserved.
+
 ### Scalar action and entropy results retained as inputs
 
 The separate scalar benchmark factors weighted agreement into its supplied

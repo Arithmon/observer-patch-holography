@@ -14552,7 +14552,7 @@
     },
     {
       "claim_id": "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
-      "statement": "The executable scalar-response adapter composes the native two-event observer with the supplied positive scalar Hamiltonian, original vacuum and golden refinement family q=13,34,89,233. The first native current j in {-1,0,1} sets the signed momentum preparation 4j f. At model time t in [19/20,1], an explicit binary Weyl instrument acts on the evolved field, retains its conditional output state and writes y; only y controls the second native repair, preserving committed classical records. If r_q(t)=Pr(y=+1|j=1)-1/2, complete finite-history enumeration gives E[j2]=5r_q/132. The existing scalar probability bound epsilon_q transfers to complete labelled outcome-history total variation at most 5epsilon_q/33 and second-current mean error at most 5epsilon_q/132 relative to the declared continuum comparison. The retained protocol specifies feedback, null and reversal controls with independent software checks. This executes a conditional detector and native continuation; it does not derive the scalar action or vacuum from integer averaging, certify full Fock-state convergence, calibrate a physical clock, or establish an empirical OPH prediction.",
+      "statement": "The executable scalar-response adapter composes the native two-event observer with the supplied positive scalar Hamiltonian, original vacuum and golden refinement family q=13,34,89,233. The first native current j in {-1,0,1} sets the signed momentum preparation 4j f. At model time t in [19/20,1], an explicit binary Weyl instrument acts on the evolved field, retains its conditional output state and writes y; only y controls the second native repair, preserving committed classical records. If r_q(t)=Pr(y=+1|j=1)-1/2, complete finite-history enumeration gives E[j2]=5r_q/132. The existing scalar probability bound epsilon_q transfers to complete labelled outcome-history total variation at most 5epsilon_q/33 and second-current mean error at most 5epsilon_q/132 relative to the declared continuum comparison. The retained protocol specifies feedback, null and reversal controls with independent software checks. This executes a conditional detector and native continuation; it does not derive the scalar action or vacuum from integer averaging, certify full Fock-state convergence, calibrate a physical clock, or establish an empirical OPH prediction. Its continued protocol reads the same conditional field at times 19/20 and 1 through three native repairs, retaining all 2,112 labelled histories and 209 reached record prefixes in an explicit eight-bit controller. Full-mode Weyl Gram evaluation retains the quantum branch phases and checkpoint continuation without an intermediate reset. A separate directed rational calculation from the parent full residual and compact-tail bounds gives complete-history total variation at most 0.025709913643 at q=233, including the zero-current histories. It certifies a second-plus probability increase greater than 0.000022281162 on the positive-current preparation relative to omitting the first field read. A commuting Gaussian control retains temporal correlations but removes this disturbance. Fixed-band finite bounds do not establish a vanishing rate or certify floating roundoff; the sampled execution does not statistically resolve this small disturbance.",
       "owner_paper": "model/observer/scalar_response/README.md",
       "owner_medium": "protocol_record",
       "tier": "bounded_finite_executed_construction",
@@ -14560,7 +14560,8 @@
         "declared_native_current_two_event_observer",
         "uniform_binary_total_two_preparation",
         "declared_scalar_action_vacuum_and_refinement_adapter",
-        "declared_scalar_Weyl_branch_instrument_and_native_feedback"
+        "declared_scalar_Weyl_branch_instrument_and_native_feedback",
+        "declared_scalar_two_read_continuation"
       ],
       "imported_results": [
         "Gaussian_Weyl_characteristic_function",
@@ -14568,7 +14569,7 @@
         "coherent_state_evolution_under_positive_quadratic_action",
         "total_variation_contraction_under_finite_classical_continuation"
       ],
-      "oph_specific_delta": "Executes the scalar field detector on explicit conditional branches between two native repairs, restricts the actuator to its committed binary outcome, and transfers the existing scalar continuum error to the full composed history and native feedback statistic.",
+      "oph_specific_delta": "Executes the scalar field detector on explicit conditional branches between two native repairs, restricts the actuator to its committed binary outcome, and transfers the existing scalar continuum error to the full composed history and native feedback statistic. Continues the same disturbed field and native source through two reads and three repairs, with exact record capacity, an all-mode branch representation, separate correlation/backaction controls and a complete-history refinement bound.",
       "novelty_type": "conditional_scalar_detector_execution_and_native_feedback_refinement",
       "evidence": [
         "model/observer/scalar_response/README.md",
@@ -14580,9 +14581,17 @@
         "code/source_scalar_packet/source_common_scalar_receipt.json",
         "code/source_scalar_instruments/sequential_instrument.py",
         "model/observer/scalar_response/field.py",
-        "model/observer/scalar_response/test_field.py"
+        "model/observer/scalar_response/test_field.py",
+        "model/observer/scalar_response/CONTINUATION.md",
+        "model/observer/scalar_response/kernel.py",
+        "model/observer/scalar_response/continuation.py",
+        "model/observer/scalar_response/continuation_bounds.py",
+        "model/observer/scalar_response/continuation_results.json",
+        "model/observer/scalar_response/test_kernel.py",
+        "model/observer/scalar_response/test_continuation.py",
+        "model/observer/scalar_response/test_continuation_bounds.py"
       ],
-      "falsifier": "Independent field evolution or pointer amplitudes change a detector probability; instrument normalization or conditional output states fail; any retained branch is omitted; the controller reads hidden field or current data beyond its bit; the native coefficient or inherited error transfer fails; null or reversal controls disagree; or canonical replay fails.",
+      "falsifier": "Independent field evolution or pointer amplitudes change a detector probability; instrument normalization or conditional output states fail; any retained branch is omitted; the controller reads hidden field or current data beyond its bit; the native coefficient or inherited error transfer fails; null or reversal controls disagree; or canonical replay fails. The continued result also fails if a retained conditional field is silently reset, its Weyl phases or source records are lost, a reached prefix does not round-trip, the complete-history bound omits zero-current branches, or the stated performed-versus-omitted-read disturbance enclosure fails.",
       "scope_if_false": "The scalar observer adapter, its execution or the stated error transfer fails. The independent native observer and parent supplied-action scalar theorems retain their own scopes; no empirical OPH verdict follows.",
       "status": "implemented_and_replayed_under_declared_finite_contract",
       "claim_class": "emitted_artifact",
