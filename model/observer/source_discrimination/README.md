@@ -64,6 +64,11 @@ comparison contract. These are synthetic controls,
 not independent observations. The sampler's floating mass correction is
 reported separately; quantum amplitudes are never renormalized. Every reserved
 record code is kept as an abort outcome, including zero-probability outcomes.
+The synthetic sampler uses one Python uniform draw per attempted trial and
+cumulative executed branch norms. This avoids a binomial algorithm changing
+its random-number consumption when execution roundoff crosses probability
+one half. The receipt declares that sampling algorithm; no target probabilities
+are substituted and no scientific tolerance is relaxed.
 
 ## Complete attempted-trial costs
 

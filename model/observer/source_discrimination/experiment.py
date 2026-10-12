@@ -13,6 +13,7 @@ from fractions import Fraction
 import hashlib
 import math
 from pathlib import Path
+import random
 
 import numpy as np
 
@@ -244,6 +245,28 @@ def resources(candidate, setting):
     return deepcopy(_resources(candidate, setting))
 
 
+def sample_counts(probabilities, trials, rng):
+    """Draw fixed uniform thresholds from executed, unrounded branch norms.
+
+    One Random.random() draw is consumed per attempted trial, independent of
+    the probabilities. In particular, a conditional probability rounding
+    across 1/2 cannot switch a binomial rejection algorithm or its RNG use.
+    Only this classical distribution is normalized; source vectors are not.
+    """
+    values = np.asarray(probabilities, dtype=float)
+    if (values.ndim != 1 or not len(values) or not np.all(np.isfinite(values))
+            or np.any(values < 0) or type(trials) is not int or trials < 0):
+        raise ValueError("finite nonnegative branch probabilities and an integer trial count required")
+    total = math.fsum(values)
+    if total <= 0:
+        raise ValueError("positive total branch probability required")
+    cumulative = np.array([math.fsum(values[:index + 1]) / total
+                           for index in range(len(values))])
+    draws = [rng.random() for _ in range(trials)]
+    selected = np.searchsorted(cumulative, draws, side="right")
+    return np.bincount(selected, minlength=len(values))
+
+
 def run(seed=SEED):
     """Reproduce source states, then feed source-generated counts to the fixed test."""
     if type(seed) is not int:
@@ -251,7 +274,7 @@ def run(seed=SEED):
     from .certificate import (channel_certificate, readout_certificate, parity_refinement_certificate,
                               apparatus_error_contract, ERROR_TERMS)
     plan = protocol.checked_protocol()
-    rng = np.random.default_rng(seed)
+    rng = random.Random(seed)
     records = {}
     for candidate in circuit.RECORD_BITS:
         data = protocol.data_template(plan)
@@ -263,10 +286,10 @@ def run(seed=SEED):
             executed = events(candidate, setting)
             diagnostics = _check_events(candidate, setting, executed)
             probabilities = np.array([probability(event) for event in executed])
-            total = float(probabilities.sum())
+            total = math.fsum(probabilities)
             # Only the classical sampler needs a normalized floating vector.
             # Its correction is exposed; raw quantum states above are untouched.
-            draws = rng.multinomial(protocol.TRIALS, probabilities/total)
+            draws = sample_counts(probabilities, protocol.TRIALS, rng)
             counts = dict.fromkeys(protocol.BINS, 0)
             aborts = 0
             branches = []
@@ -295,6 +318,10 @@ def run(seed=SEED):
     allocation = Fraction(1, 64*(3*worst["native_pulses"]+len(ERROR_TERMS)-3))
     required_bounds = dict.fromkeys(ERROR_TERMS, allocation)
     return {"schema": "oph.source_native_discrimination.v1", "seed": seed,
+            "synthetic_sampling": {
+                "algorithm": "one Python Random.random uniform threshold per attempted trial; cumulative executed branch norms",
+                "probability_source": "unnormalized source-word branch norms, normalized only for the classical sampler",
+                "target_probabilities_substituted": False},
             "source": source.source_summary(), "sources": {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in pins},
             "protocol_sha256": protocol.digest(plan), "candidates": records,
             "readout_certificate": readout_certificate(),
