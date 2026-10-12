@@ -30,7 +30,7 @@ benchmark times retain their stated scope. See the
 | **N1-E** | Same load repair with contrast record, channel E | Active completion comparison | Idempotent completion of C on one seam; a conditional expectation on the binary shell. | Source selection of the retained algebra and record instrument. |
 | **N2** | N1 current drives local six-level response at both seam endpoints | One-way preservation benchmark | Preserves N1's load instrument and locality; inherits completion and finite binary-network convergence while protecting local block populations. | Full source grammar and selection against N3; all-input marginal preservation excludes feedback. |
 | **N3** | N1 current drives the local flat endpoint response | Simpler active alternative | Preserves the same load instrument and locality; one global change of coordinates reduces it to N1 with unchanged internal variables. | A reason to select or reject its trivial closed-loop response. |
-| **N4** | One coherent load–response exchange conjugates binary C/E | Reciprocity experiment | Private preparations change bare load probabilities. The same bare-occupation protocol retains port geometry but exhibits memory beyond a rescaled native heat law. | Full source grammar, physical preparation/readout and clock selection; j is not a bare-load current. |
+| **N4** | One coherent load–response exchange conjugates binary C/E | Reciprocity experiment with abstract central-port attachment | Private preparations change bare load probabilities. Minimal central addresses preserve its quantum channel in a complete scalar-seam source grammar. It retains normalized port geometry but exhibits memory beyond a rescaled native heat law at the same full quantum reference. | Physical source selection, preparation/readout, retained-record service and clock comparison; j is not a bare-load current. |
 | **S1** | Minimal canonical inertial completion of weighted scalar agreement | Separate field/component benchmark | Explicit Hamiltonian, conditional free-field continuum and controlled preparation/observation construction. | Derivation of inertia, quantum state, controls and physical time from the microscopic process. |
 
 N2 and N3 retain the native repair marginal. N4 tests the smallest reciprocal
@@ -242,9 +242,15 @@ at θ=1/8 and 1/16, certifies nonzero two-attempt memory for every
 nonconstant carrier mode. A change of clock units cannot remove it. No
 additional state factor or interaction is needed for this test. On one seam
 the channel is unitarily equivalent to C; conjugating the observers too
-would change the fixed comparison. The physical interpretation of this
-preparation/readout, complete source grammar, gauge dynamics and interacting
-continuum remain open.
+would change the fixed comparison. The
+[central-address construction](../code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
+preserves the native quantum channel in a minimal twelve-block algebra and
+supplies a full abstract scalar-seam grammar. Its native/N4 counterpair shares
+the full quantum reference and complete collective response, so these do not
+select the finite kinetics. Sampling an occupied port has a proved quantum
+information cost; central control addresses and occupation records serve
+different operations. Physical preparation/readout, retained-record services,
+gauge dynamics and an interacting continuum require their own realization.
 
 ## S1: the canonical scalar benchmark
 

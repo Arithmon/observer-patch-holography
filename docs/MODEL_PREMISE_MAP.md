@@ -1,6 +1,6 @@
 # OPH reverse-engineering table: model and theorem premises
 
-As of 2026-10-11. Generated from [the navigation map](../tracking/model_theorem_map.json)
+As of 2026-10-12. Generated from [the navigation map](../tracking/model_theorem_map.json)
 by `python tools/build_model_theorem_map.py`. Edit the input, then regenerate.
 
 Complete navigation coverage of the current canonical PR identifiers, plus explicit active-model obligations. Not an exhaustive extraction or proof of discharge of all paper/Lean antecedents. Branches are alternatives where stated; links do not alter claim-registry dependency roles.
@@ -115,9 +115,9 @@ are not additional prerequisites for the supplied finite scalar theorem.
 
 ### RE-01: Common repair reference and law
 
-**Constructed:** Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly. A current-record lift couples native C to the existing six-level response at both seam endpoints, preserving its full load marginal and disjoint-seam locality. N4 instead conjugates binary C/E by one coherent load-response exchange and supplies private-state influence on fixed bare occupation probabilities. At the declared full tracial reference, N4 supplies a shared bare-occupation geometry and two-attempt kinetics protocol; its finite memory excess rules out native heat closure at the tested couplings.
+**Constructed:** Finite conditional repair and candidate equalizers exist. Weighted averaging factors the supplied scalar stiffness exactly. A current-record lift couples native C to the existing six-level response at both seam endpoints, preserving its full load marginal and disjoint-seam locality. N4 instead conjugates binary C/E by one coherent load-response exchange and supplies private-state influence on fixed bare occupation probabilities. At the declared full tracial reference, N4 supplies a shared bare-occupation geometry and two-attempt kinetics protocol; its finite memory excess rules out native heat closure at the tested couplings. A minimal twelve-block address carrier preserves the complete quantum channel and joins binary native/N4 repair with collective response in an abstract scalar-seam A1–A3 source. The two laws share the full quantum reference and normalized geometry but differ in certified finite kinetics.
 
-**Remaining input:** For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate. The full-model candidate must link its repair marginal, reversible port response and record clock through shared states and interventions; the scalar benchmark alone does not supply this. This lift adds local response factors and a supplied coupling, is one-way at the repair marginal, and does not establish the complete response grammar on the enlarged source. N4 changes the load marginal and current-label meaning; its supplied coupling and the physical admissibility of the shared bare-occupation preparation/readout require independent justification.
+**Remaining input:** For the conditional-resampling branch, choose one state space, faithful reference and visible fibres. The conservative canonical extension and dissipative repair are different dynamics; a faithful thermal reference is not mandatory for every pure-state candidate. The full-model candidate must link its repair marginal, reversible port response and record clock through shared states and interventions; the scalar benchmark alone does not supply this. The one-way current-record lift adds local response factors and a supplied coupling. For binary N4, collective controls supply a complete abstract response grammar on the central-address carrier; independent-factor or address-controlled reversible probes are excluded from that grammar. N4 changes the load marginal and current-label meaning; its supplied coupling and the physical admissibility of the shared bare-occupation preparation/readout require independent justification.
 
 **Closure condition:** Exhibit one local process and explicit restriction/intervention maps supplying the intended repair, carrier-response, reversible-current and clock contracts. Reuse the existing theorem implications once these interfaces hold; derive each extra choice or retain it as an explicit model hypothesis. Separate matched component fixtures do not establish a common source.
 
@@ -220,7 +220,7 @@ Sources:
 
 ### RE-07: Quantum representation and operational probabilities
 
-**Constructed:** The scalar Fock/Weyl construction and constrained local field representation are mathematically compatible. The Hamiltonian is the original positive canonical one.
+**Constructed:** The scalar Fock/Weyl construction and constrained local field representation are mathematically compatible. The Hamiltonian is the original positive canonical one. A separate binary native/N4 carrier has twelve primitive central address blocks and an exactly recoverable full quantum sector. Every instrument reporting effects N_p/2 erases disjoint-load coherences; an explicit pair has unavoidable recovery error at least 1/2.
 
 **Remaining input:** CCR, Hilbert representation, subsystem split, accessible phase effects, channel semantics and Born readout remain declared. Finite-code CCR are approximate with an explicit boundary defect.
 
@@ -231,6 +231,7 @@ Sources:
 - [Scalar quantum representation](../paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex).
 - [Complete quantum instrument](../paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex); exact source anchor: ` thm:source-scalar-sequential-instrument `.
 - [Coherent source assumptions](../docs/research/COHERENT_SOURCE_CLOCKS.md).
+- [Central addresses and the occupied-port information bound](../code/native_response/README.md).
 
 <a id="re-08"></a>
 
@@ -303,9 +304,9 @@ Sources:
 
 ### RE-12: Source clock, physical time and execution cost
 
-**Constructed:** Canonical model time, supplied event-count clock comparisons and conditional scalar action-clock reconstruction exist. The endpoint-current lift preserves the native load marginal and classical record blocks and therefore its scoped geometry/count relations; this adds no physical clock calibration. For N4, bare-occupation measurements at the endpoints of an unmodified one- or two-event experiment recover the native port Dirichlet geometry up to a positive scalar. Certified two-attempt memory at theta=1/8 and 1/16 rejects native heat dynamics even after a clock-rate fit.
+**Constructed:** Canonical model time, supplied event-count clock comparisons and conditional scalar action-clock reconstruction exist. The endpoint-current lift preserves the native load marginal and classical record blocks and therefore its scoped geometry/count relations; this adds no physical clock calibration. For N4, bare-occupation measurements at the endpoints of an unmodified one- or two-event experiment recover the native port Dirichlet geometry up to a positive scalar. Certified two-attempt memory at theta=1/8 and 1/16 rejects native heat dynamics even after a clock-rate fit. A central occupied-port instrument recovers the same corrected statistic from endpoint joint probabilities, with an exact native null and separate stationarity, sampling-noise and intermediate-measurement controls.
 
-**Remaining input:** Choose a physical clock on the same process and account for preparation, service, readout and ancestry costs. A source scale identification and conversion to laboratory units are distinct. The record clock must be read from the histories that also supply the carrier response and reversible source, with an explicit relation to scalar model time. N4 does not preserve C: its record j is conjugate to a seam-dependent transformed occupation. The new finite occupation protocol does not restore the native current-label identities or calibrate a physical clock; those require compatible physical current and time readouts.
+**Remaining input:** Choose a physical clock on the same process and account for preparation, service, readout and ancestry costs. A source scale identification and conversion to laboratory units are distinct. The record clock must be read from the histories that also supply the carrier response and reversible source, with an explicit relation to scalar model time. N4 does not preserve C: its record j is conjugate to a seam-dependent transformed occupation. The finite occupation protocol does not restore the native current-label identities or calibrate a physical clock; those require compatible physical current and time readouts. Endpoint storage is an explicit supplied service; refreshing the address erases its prior tag.
 
 **Closure condition:** Prove the same-history clock/observable intertwiner and its domain, then calibrate independently. A local generator alone does not establish a microscopic causal cone.
 
@@ -536,9 +537,9 @@ Sources:
 
 ### RE-26: Common-model compatibility and remaining named inputs
 
-**Constructed:** This crosswalk covers the canonical PR inventory and identifies actual scalar theorem reuse. The authoritative claim registry separately records ordinary assumptions, imports and explicit non-consumers. N4 joins equilibrium port geometry and a nontrivial kinetics discriminator on the same bare occupations, preparation and events, without adding state factors or a new interaction.
+**Constructed:** This crosswalk covers the canonical PR inventory and identifies actual scalar theorem reuse. The authoritative claim registry separately records ordinary assumptions, imports and explicit non-consumers. N4 joins equilibrium port geometry and a nontrivial kinetics discriminator on the same bare occupations, preparation and events, without adding state factors or a new interaction. Its minimal central-address extension supplies full abstract A1–A3 compatibility under the scalar-seam interpretation. The fixed-reference native/N4 pair proves finite kinetic nonselection with the complete collective response and normalized occupation geometry held fixed.
 
-**Remaining input:** The whole paper/theorem body has not been exhaustively normalized into one semantic dependency graph. Ordinary assumptions and imported-result names are inventoried, not individually discharged by this crosswalk. The endpoint-current candidate declares twelve local six-level factors, conditional response operations, retained records and a coupling theta; its flat alternative shows that preservation and convergence alone do not select that coupling law. N4 reuses the same factors but adds a fixed choice of response quadratures; writing it as one exchange does not derive that choice. OPH physical correctness is a hypothesis under investigation, not a consequence of these finite compatibility checks.
+**Remaining input:** The whole paper/theorem body has not been exhaustively normalized into one semantic dependency graph. Ordinary assumptions and imported-result names are inventoried, not individually discharged by this crosswalk. The endpoint-current candidate declares twelve local six-level factors, conditional response operations, retained records and a coupling theta; its flat alternative shows that preservation and convergence alone do not select that coupling law. N4 reuses the same factors but adds a fixed choice of response quadratures; writing it as one exchange does not derive that choice. OPH physical correctness is a hypothesis under investigation, not a consequence of these finite compatibility checks. The abstract counterpair does not establish two physical realizations or an all-sector independence result; the scalar seams do not deliver remote records.
 
 **Closure condition:** For each promoted claim bind its actual assumptions and imports, all transitive antecedents and model-added hypotheses to compatible objects with scoped evidence. Keep unreviewed bindings visible and reject circular discharge.
 

@@ -8,15 +8,16 @@ that it satisfies the required constraints on one common model.** Component
 proofs, simulations, candidate implementations and issue closures are bounded
 milestones; they do not by themselves complete the programme.
 
-**Current status.** [N4's finite construction](../code/native_response/README.md)
-supplies bare-occupation geometry and a certified two-attempt memory signal.
-The corrected single-port statistic removes the native spatial-mode-mixing
-term under the stated tracial preparation and IID global-attempt protocol. It
-distinguishes N4 from the matched native heat description at two couplings; it
-does not select C versus E or uniquely identify N4. The remaining model-search
-gap is a single-source realization of preparation, local readout, record
-delivery and clock comparison, together with a separate null for
-observer-local stopping times.
+**Construction and selection.** [N4's central-port construction](../code/native_response/README.md)
+joins its quantum repair, complete collective response and finite port
+geometry in an abstract A1–A3 source. Twelve central addresses control
+incident-seam repairs while preserving the native/N4 channel after decoding.
+The native and N4 sources share the full quantum reference and normalized
+geometry, yet have different certified kinetic invariants. Thus those source
+requirements do not select the finite repair law. Physical source selection,
+record delivery and clock comparison require further evidence; the endpoint
+test consumes a supplied record service and IID global attempts. It does not
+select C versus E or supply the null for observer-local stopping times.
 
 The [candidate register](MODEL_CANDIDATES.md) compares the concrete active
 laws, their tested properties, added assumptions and next decisive tests.
@@ -51,7 +52,8 @@ finite port geometry and distinguishes its kinetics from a common constant
 rescaling of native attempt time. The
 [corrected single-port test](#a-single-port-test-that-removes-spatial-mode-mixing)
 needs only local endpoint outcomes under the specified tracial preparation
-and one-/two-attempt protocol. Full source grammar and physical selection require
+and one-/two-attempt protocol. An explicit scalar-seam source grammar admits
+the construction; physical selection and its retained-record service require
 justification. The
 [general search findings](#general-findings-that-guide-the-search) explain
 which tests discriminate laws and how added assumptions are counted.
@@ -70,6 +72,18 @@ interfaces below to constrain the next candidate before adding mechanisms.
 
 ## 1. Headline results and missing-link completion status
 
+- **Central ports can preserve quantum repair, but occupied-port records have a cost.**
+  The minimal full-matrix attachment is twelve identical quantum blocks.
+  Refresh the classical address, then repair a uniformly selected incident
+  seam: decoding reproduces the entire original channel. Collective private
+  response and the scalar-seam refinement supply a full abstract A1–A3
+  construction. Its native/N4 pair holds the full quantum reference and
+  normalized geometry fixed while changing a clock-independent kinetic
+  invariant. Recording a sampled occupied port instead erases disjoint-load
+  coherences under every instrument with those effects; the recovery error
+  is at least 1/2 on an explicit orthogonal pair. The
+  [proofs and negative controls](../code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
+  distinguish the address, measurement and record-storage contracts.
 - **The reciprocal candidate keeps port geometry but changes its kinetics.**
   At the supplied tracial reference, N4's bare-occupation Dirichlet matrix is
   exactly `α(θ)L_ico/396`, with `α≥1/9` for every real coupling. The existing
@@ -213,7 +227,7 @@ this document is not an empirical verification bundle or an axiom amendment.
 
 | Link | Completion status and constructed result | What completes the remaining physical connection |
 | --- | --- | --- |
-| **M01: common source** | **Finite source constructions and canonical field join complete.** Native C/E and coherent extensions; exact weighted factorization and local canonical scalar fields; N2's current-driven response preserves the load marginal, while N4's coherent exchange supplies private-state influence on bare occupations. | Select the source coefficients, inertia, quantum representation and controls. Conservative scalar evolution and dissipative repair are distinct laws. The added response factors and coupling need a complete source grammar; N4's shared bare-occupation protocol needs source-realized preparation/readout and a complete record/service interpretation. Finite feedback does not establish a physical force. |
+| **M01: common source** | **Finite source constructions and canonical field join complete.** Native C/E and coherent extensions; exact weighted factorization and local canonical scalar fields. A minimal central-address extension joins N4 repair and collective response in the full abstract scalar-seam source. A native/N4 pair shares its full quantum reference and normalized geometry but differs in finite kinetics. | Select the physical source, coefficients, inertia, representation and controls. Conservative scalar evolution and dissipative repair are distinct laws. The abstract grammar does not select N4; its endpoint protocol needs physical preparation/readout and retained-record services. Finite feedback does not establish a physical force. |
 | **M02: observers and agreement** | **Finite observer contracts, candidate equalizers and nested completions complete.** Proper overlaps, protected marginals and actual interventions. E completes the supplied exchange/phase-invariant algebra. Exterior repair realizes regional maximum-entropy completions with an exact inclusion tower. The current/response extension inherits a finite binary-network fixed-algebra limit. | Justify those interpretations from the required observer menu; translated-chart naturality alone does not select them. Supply the used completeness, acceptance, confluence, authentication and broader history contracts. Nonnested completions can fail to commute; the supplied targets are not the complete A2 diagram. |
 | **M03: geometry** | **Finite geometry and controlled coarse energy constructed.** Native rank-three response; uniform memory/gap bounds and local coarse energies; periodic acoustic tensor; existing golden coordinates and uniquely reconstructible relative action capacities. | Identify physical regions, spacetime metric, area/volume and bulk refinement; select the response being reconstructed. Event-count weights and nonuniform action capacities are distinct finite references. A positive Schur energy need not be a Markov generator. |
 | **M04: physical time** | **Finite clocks and explicit model-time laws constructed; physical attachment open.** Canonical flow reuses the original scalar time. The weighted walk and periodic exchange/wave scalings remain alternatives. | Justify and calibrate the physical law and clock with complete execution costs. Avoiding the walk normalization does not identify canonical time with accepted source-event counts or establish an operational physical cone. |
@@ -448,6 +462,20 @@ impossibility. Opening this search makes no stop decision. Existing
 their exact scope.
 
 #### A deletion test exposes what convergence cannot select
+
+The [central-port attachment](../code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
+constructs an escape from the whole-simple-algebra obstruction in #1087:
+use twelve central address blocks, preserving every native coherence, with
+actual address-dependent repair operations. It retains #1088's inequivalent
+marked spatial/response triplets as distinct objects. Its full abstract
+scalar-seam grammar supplies collective response, chart implementation,
+all-level refinement and the complete A3 state problem. Native and N4 repair
+then form a counterpair with the same full quantum reference and normalized
+port geometry, strengthening the configuration-only equilibrium distinction
+in #1090. The pair differs in the clock-independent corrected memory ratio.
+This result concerns abstract finite law selection; it supplies neither
+two physical realizations nor an all-sector exclusion. Endpoint comparison
+uses a separate record service, and scalar seams carry no remote record.
 
 For N2, the load-preservation, locality and completion arguments work with
 any finite skew-Hermitian family A_p in place of D_p. Covariance also transfers
@@ -819,8 +847,9 @@ define a different, additionally dephased instrument.
 
 N4 closes a finite feedback construction under supplied quantum inputs. The
 following readout recovers its port geometry without reinterpreting j as a
-bare current. Full-78 transient repair, complete source-response grammar and
-physical clock selection are not supplied. On one seam N4 is unitarily
+bare current. The central-address extension supplies a complete abstract
+source-response grammar on the binary shell; full-78 transient repair and
+physical clock selection are separate targets. On one seam N4 is unitarily
 equivalent to C; its distinction is relative to fixed preparations and bare
 occupation readouts. No M01–M12 parent is closed by these finite tests.
 
