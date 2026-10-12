@@ -12,7 +12,7 @@ import mpmath
 import numpy as np
 
 from .algebras import resolved_state_spectrum
-from .gibbs import _finite, _numeric, _observables, _parameter, _scaled, _thermal
+from .gibbs import _finite, _numeric, _observables, _parameter, _scaled
 from .states import (
     density_matrix, dimensions, faithful_density_matrix, relative_entropy,
 )
@@ -195,18 +195,46 @@ def finite_entropy_balance(rho, sigma):
     The trace difference is reported, not normalized away. D minus that
     difference is the nonnegative Bregman remainder for PSD inputs, even
     when accepted input traces differ within the state validator tolerance.
+    Original Hermitian representatives determine the difference and D;
+    unresolved reference averaging before the logarithm raises.
     """
-    a = density_matrix(_numeric(rho, "source state"))
+    from .states import _exact_hermitian
+
+    original_a = _numeric(rho, "source state")
+    original_b = _numeric(sigma, "reference state")
+    a = density_matrix(original_a)
     resolved_state_spectrum(a)
-    b = density_matrix(_numeric(sigma, "reference state"))
-    log_b, log_origin = _log_parts(b)
+    b = density_matrix(original_b)
     if a.shape != b.shape:
         raise ValueError("source and reference must use the same algebra")
-    trace_difference = _pairing(np.eye(len(a)), a, b)
-    linear = math.fsum((-_pairing(log_b, a, b), -log_origin*trace_difference))
-    divergence = relative_entropy(a, b)
+    exact_a, exact_b = _exact_hermitian(original_a), _exact_hermitian(original_b)
+    rounded_b = _exact_hermitian(b)
+    if any(abs(rounded-original) > Fraction(8*np.finfo(float).eps)*abs(original)
+           for row, rounded_row in zip(exact_b, rounded_b)
+           for entry, rounded_entry in zip(row, rounded_row)
+           for original, rounded in zip(entry, rounded_entry)):
+        raise ValueError("reference Hermitian averaging is not resolved at this precision")
+    if exact_a != _exact_hermitian(a):
+        # The rounded source can hide an indefinite half-subnormal block.
+        # Check the original representative before using the PSD identity.
+        from .information import _positive_rank
+        _positive_rank(exact_a)
+    log_b, log_origin = _log_parts(b)
+    trace = sum((exact_a[i][i][0]-exact_b[i][i][0] for i in range(len(a))), Fraction(0))
+    pairing = sum((Fraction(float(component))*(x-y)
+                   for i, row in enumerate(log_b) for j, value in enumerate(row)
+                   for component, x, y in zip((value.real, value.imag),
+                                              exact_a[i][j], exact_b[i][j])), Fraction(0))
+    trace_difference = _rounded(trace, "trace difference")
+    linear = _rounded(-pairing-Fraction(log_origin)*trace, "modular change")
+    divergence = relative_entropy(original_a, original_b)
     remainder = math.fsum((divergence, -trace_difference))
-    if not np.array_equal(a, b) and remainder <= 0:
+    if exact_a != exact_b and abs(remainder)*1024 <= abs(divergence)+abs(trace_difference):
+        # D can be accurately rounded while D-Tr(rho-sigma) loses most
+        # of its bits. Round the requested remainder only after subtraction.
+        from .states import _relative_entropy_refined
+        remainder = _relative_entropy_refined(original_a, original_b, subtract_trace=True)
+    if exact_a != exact_b and remainder <= 0:
         raise ValueError("finite entropy remainder is not resolved at this precision")
     return {
         "entropy_change": math.fsum((linear, -divergence)),
@@ -256,42 +284,85 @@ def gibbs_entropy_response(observable, lam):
     dt/dlambda=-Var(T), dS/dlambda=-lambda Var(T). The ratio is an analytic
     consequence of that family, not an independent numerical verification.
     A scalar observable has no energy coordinate and no slope dS/dt.
-    Scalar energy origins are removed before the variance is evaluated.
-    Subnormal thermal populations are conservatively refused: exact sums
-    of their rounded values cannot recover lost relative precision, even
-    when rescaled derivatives lie comfortably in the normal output range.
+    Original observable entries determine the spectrum, state and response
+    in two private multiprecision contexts before output conversion. Their
+    agreement is a numerical check, not an interval certificate. Subnormal
+    thermal populations and unresolved returned-state support remain outside
+    this API's domain, including when the response itself is representable.
     """
+    from maxent.gibbs_response import _gram, _precision, _spectrum
+    from .states import _resolved_subnormal
+
     lam = _parameter(lam, "multiplier")
-    matrices, scales, _ = _observables([observable])
-    c, scale = matrices[0], float(scales[0])
-    # Diagonalize the observable, including at lambda=0. Probabilities must
-    # not be recovered by rotating a nearly pure reconstructed matrix back:
-    # that would replace small genuine masses by eigensolver roundoff.
-    energies, vectors = np.linalg.eigh(c)
-    with np.errstate(over="ignore", under="ignore", invalid="ignore"):
-        coefficient = _finite(lam*scale, "scaled multiplier")
-        ham = _finite(coefficient*energies, "thermal Hamiltonian")
-    if lam != 0 and (coefficient == 0
-            or np.any((energies != 0) & (ham == 0))):
-        raise ValueError("thermal Hamiltonian is not resolved at this precision")
-    diagonal, _, _, _ = _thermal(np.diag(ham))
-    if np.any(np.diag(diagonal).real < np.finfo(float).tiny):
-        raise ValueError("Gibbs population relative precision is insufficient")
-    masses = [Fraction(float(p)) for p in np.diag(diagonal).real]
-    rho = faithful_density_matrix((vectors*np.diag(diagonal).real) @ vectors.conj().T)
-    # Pairwise variance avoids subtracting two large moments, and also the
-    # tiny false variance caused by rounding a dominant eigenvalue's mean.
-    variance = sum((masses[i]*masses[j]*(Fraction(float(energies[i]))
-                                       - Fraction(float(energies[j])))**2
-                    for i in range(len(energies)) for j in range(i)), Fraction(0))
-    variance *= Fraction(scale)**2 / sum(masses)**2
+    _observables([observable])  # Preserve the shared shape/Hermiticity contract.
+    original = _numeric(observable, "observable")
+    values = []
+    precision = _precision([original], [lam])
+    for digits in (precision, precision+40):
+        ctx = mpmath.mp.clone()
+        ctx.dps = digits
+        matrices, energies, vectors, weights = _spectrum(ctx, [original], [lam])
+        masses = [w/ctx.fsum(weights) for w in weights]
+        if any(p < np.finfo(float).tiny for p in masses):
+            raise ValueError("Gibbs population relative precision is insufficient")
+        variance = _gram(ctx, matrices, masses, vectors, energies)[0, 0]
+        state = vectors*ctx.diag(masses)*vectors.H
+        values.append((variance, -ctx.mpf(lam)*variance, state))
+    variance, entropy_derivative, state = values[-1]
+    for coarse, refined in zip(values[0][:2], values[1][:2]):
+        if abs(ctx.mpf(coarse)-refined) > ctx.mpf('1e-25')*abs(refined):
+            raise ValueError("Gibbs tangent precision refinement disagrees")
+    exact_powers = None
+    state_resolution = (64*len(original)*ctx.mpf(values[0][2].ctx.eps)
+                        *max(1, ctx.norm(state)))
+
+    def state_component(value, coarse, i, j, imaginary=False):
+        nonlocal exact_powers
+        disagreement = abs(ctx.mpf(coarse)-value) > ctx.mpf('1e-25')*abs(value)
+        if disagreement or (value and float(value) == 0):
+            # A thermal state is a real polynomial in its Hermitian
+            # observable of degree < dimension. Certify structural zero
+            # components from original rational powers, rather than floor
+            # small genuine coherences or eigensolver cancellation noise.
+            import sympy as sp
+            if exact_powers is None:
+                exact = sp.Matrix([[sp.Rational(float(z.real))+sp.I*sp.Rational(float(z.imag))
+                                    for z in row] for row in original])
+                exact = (exact+exact.H)/2
+                exact -= exact[0, 0]*sp.eye(len(original))
+                power, exact_powers = sp.eye(len(original)), []
+                for _ in range(len(original)):
+                    exact_powers.append(power)
+                    power = (power*exact).expand()
+            part = sp.im if imaginary else sp.re
+            if all(part(power[i, j]).expand() == 0 for power in exact_powers):
+                return 0.
+            if disagreement:
+                raise ValueError("Gibbs state component precision refinement disagrees")
+        if abs(value) < np.finfo(float).tiny:
+            try:
+                return _resolved_subnormal(ctx, value,
+                    abs(ctx.mpf(coarse)-value)+state_resolution)
+            except ArithmeticError as exc:
+                raise ValueError("Gibbs state component rounding is unresolved") from exc
+        return _rounded(value, "Gibbs state component")
+
+    rho = np.zeros(original.shape, dtype=complex)
+    for i in range(len(original)):
+        rho[i, i] = state_component(ctx.re(state[i, i]), ctx.re(values[0][2][i, i]), i, i)
+        for j in range(i):
+            v = (state[i, j]+ctx.conj(state[j, i]))/2
+            coarse = (ctx.mpc(values[0][2][i, j])+ctx.conj(values[0][2][j, i]))/2
+            rho[i, j] = complex(state_component(ctx.re(v), ctx.re(coarse), i, j),
+                                state_component(ctx.im(v), ctx.im(coarse), i, j, True))
+            rho[j, i] = rho[i, j].conjugate()
+    rho = faithful_density_matrix(rho)
     var = _rounded(variance, "energy variance")
     if var <= 0:
         raise ValueError("energy coordinate has no resolved nonzero variance")
-    entropy_derivative = -Fraction(lam)*variance
     ds = _rounded(entropy_derivative, "entropy derivative")
     for value, rounded in ((variance, var), (entropy_derivative, ds)):
-        if abs(Fraction(rounded)-value) > Fraction(8*np.finfo(float).eps)*abs(value):
+        if abs(ctx.mpf(rounded)-value) > 8*np.finfo(float).eps*abs(value):
             raise ValueError("Gibbs tangent components are not resolved at this precision")
     # A nonzero subnormal is representable but may have very few accurate
     # bits. Do not report a different slope after separately rounding ds/dt.

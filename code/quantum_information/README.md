@@ -61,14 +61,13 @@ in Hermiticity, normalization and negative eigenvalues. Accepted Hermiticity
 roundoff is symmetrized and negative spectral roundoff is set to zero for
 spectral calculations. Inputs are never implicitly normalized. No positive
 support leakage is rounded away to make relative entropy finite. Relative
-entropy rejects unresolved support: a dense reference with positive
-eigenvalues on the eigensolver roundoff scale, a computed kernel that does
-not annihilate its reference, or leakage indistinguishable from matrix-product
-cancellation. It neither assigns false infinity nor drops that leakage to
-force a finite answer. A diagonal reference supplies its spectrum directly;
-explicit positive entries as small as `1e-310` remain supported. These are
-numerical guards, not a rank certificate: exact-support claims still require
-exact or separately certified support data.
+entropy reevaluates ambiguous reference support from the original Hermitian
+representative using exact positivity, rank and kernel checks. A rounded
+zero eigenvalue or matrix/kernel product alone cannot justify infinity.
+An unresolved finite evaluation raises. A diagonal reference supplies its
+spectrum directly; explicit positive entries as small as `1e-310` remain
+supported. The exact checks certify these supplied entries, not the ranks
+of arbitrary approximate or physically uncertain matrices.
 
 The follow-up audit of this refactor retains four additional controls:
 
@@ -92,6 +91,90 @@ The follow-up audit of this refactor retains four additional controls:
   Duhamel response instead evaluates the original thermal family before
   output rounding; its resolved covariance can be returned without a
   representable binary64 state. See the [response audit](../maxent/GIBBS_RESPONSE_AUDIT.md).
+
+## Preserve the source before evaluating entropy responses
+
+An audit of `a94a3ac3` found two losses that surviving positive populations
+and a correct derivative ratio did not detect. They affect the supplied
+finite objective and its response, without changing A3 or selecting a
+physical law.
+
+For `T = diag(0, 2^-60, 1)` and multiplier 700, subtracting the binary64
+mean from T erased the low-energy doublet splitting. The entropy response
+reported variance `4.929838271879886e-305`; the original scalar partition
+function gives `1.88079096131566e-37`. Both derivative components were wrong
+by the same factor, so `dS/dt = 700` concealed the defect. All three thermal
+populations are normal binary64 values. This is distinct from the subnormal
+population error corrected after review of #1048.
+
+The entropy-response API shares the original-input spectral machinery with
+the MaxEnt covariance calculation. Supplied entries, energy differences,
+populations and response contractions remain in private multiprecision
+arithmetic until output conversion. The returned state also retains small
+real or imaginary coherences from the source eigenprojectors. For this API,
+subnormal populations and unresolved faithful output states are refused;
+the covariance-only API has its separately documented, broader domain.
+Repeated-precision agreement is a numerical control, not an interval proof.
+
+A separate loss occurred in relative entropy. Set `p=2^-40`, `t=2^-538`,
+`rho=[[p,t],[t,1-p]]` and `sigma=diag(p,1-p)`. These supplied matrices have
+exact trace one and positive determinants. Their divergence rounds to
+`3.5e-323`, but squaring a spectral overlap before multiplying its logarithmic
+factor produced zero. A correct support decision did not prevent this
+arithmetic error.
+
+Range-sensitive contractions trigger reevaluation from the original
+Hermitian entries, with exact positivity, rank and support checks, increased
+numerical precision and a second-precision comparison. An unrepresentable
+nonzero result raises instead of becoming equality. Exact equality returns
+zero; detected support escape retains infinity. Accepted trace offsets are
+not normalized away. The clipped-negative spectral convention is retained
+on the ordinary faithful-reference path; exact positivity is required when
+source-level refinement or support checks are needed. These checks do not certify
+arbitrary floating-point eigensolves. Cancellation against an accepted trace
+offset also triggers reevaluation: `rho=(.5-t^2) I+t X`, `t=2^-27`, against
+`I/2` has positive divergence `2.2597578014143572e-32`; the earlier fast
+calculation returned a negative value. Exact unequal-state cancellations
+that the bounded numerical refinement cannot resolve raise explicitly.
+
+Support is checked before classifying a divergence as infinite. For
+`sigma=[[p,x+iy],[x-iy,1-p]]`, with `p=2^-20`, `x=2^-14` and binary64
+`y=0.0009746528185015864`, the exact determinant is positive, although both
+the numerical smallest eigenvalue and matrix/kernel product can round to
+zero. The original determinant gives `D(I/2||sigma)=25.904130790941124`.
+Exact kernel containment also retains genuine complex singular examples.
+
+The finite-balance consumer retains original Hermitian differences for its
+trace and modular pairings as well as its divergence. Otherwise accepted
+one-sided subnormal entries can disappear during symmetrization before the
+repaired calculation is called. A reference whose averaging loses component
+precision is refused before taking its logarithm; ordinary Hermitian
+roundoff remains admissible. When cancellation makes `D-Tr(rho-sigma)`
+unreliable, that remainder is evaluated before either term is rounded. For
+`rho=(.5+3*2^-53) I` against `I/2`, subtracting correctly rounded terms had
+understated the remainder by one ninth. The logarithm remains a numerical
+calculation.
+
+Near a subnormal rounding midpoint, two precision levels can agree while
+both miss the term that decides the correct neighbor. Gibbs state components
+whose rounding side is unresolved are refused. Neighboring representable
+subnormals and algebraically certified zeros remain accepted. This resolution
+gate is a numerical safeguard, not a general correct-rounding certificate.
+The relative-entropy fallback uses the same midpoint gate and can increase
+precision to resolve the side. Rational conversion of the final MP value
+avoids a second rounding during conversion to a binary64 subnormal.
+Two high-precision eigensolves increase runtime materially: a warm dimension-12
+response took about 0.48 seconds in the audit environment, compared with
+0.00073 seconds for the previous binary64 calculation. This API serves small
+finite diagnostics, not a cost-equivalent replacement for large dense solves.
+
+The retained controls independently evaluate scalar partition derivatives
+and qubit characteristic roots. They check variance and both derivatives,
+complex state coherences, opposite signs, changed energy units, exact zeros,
+support boundaries and lost-output refusals. Public MaxEnt and serialized
+finite-entropy-balance consumers exercise the same defects. Existing fixed
+receipt producers remain subject to their numerical tolerances; no frozen
+experimental data or physical claim is promoted by these corrections.
 
 ## One normal form for the finite A3 objective
 

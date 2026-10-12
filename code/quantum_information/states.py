@@ -7,7 +7,7 @@ No positive eigenvalue is discarded or replaced by a logarithm floor.
 These numerical diagnostics do not certify exact rank from approximate data.
 """
 
-from math import fsum, prod
+from math import frexp, fsum, nextafter, prod
 
 import numpy as np
 
@@ -142,6 +142,108 @@ def faithful_log(rho):
     return (vectors * np.log(eigenvalues)) @ vectors.conj().T
 
 
+def _exact_hermitian(value):
+    """Rational Hermitian representative of validated binary64 entries."""
+    from fractions import Fraction
+
+    raw = np.asarray(value, dtype=complex)
+    return [[((Fraction(float(raw[i, j].real))
+               + Fraction(float(raw[j, i].real)))/2,
+              (Fraction(float(raw[i, j].imag))
+               - Fraction(float(raw[j, i].imag)))/2)
+             for j in range(len(raw))] for i in range(len(raw))]
+
+
+def _resolved_subnormal(ctx, value, resolution):
+    """Round an MP component only when its subnormal midpoint is resolved.
+
+    Resolution is the caller's numerical estimate, not an interval bound.
+    Rational conversion avoids mpf-to-float double rounding at this boundary.
+    """
+    from fractions import Fraction
+    from mpmath.libmp import to_rational
+
+    if value == 0:
+        return 0.0
+    rounded = float(Fraction(*to_rational(value._mpf_)))
+    if rounded == 0:
+        raise ArithmeticError("nonzero component is below output resolution")
+    lower = (ctx.mpf(rounded)+ctx.mpf(nextafter(rounded, -float("inf"))))/2
+    upper = (ctx.mpf(rounded)+ctx.mpf(nextafter(rounded, float("inf"))))/2
+    if min(abs(value-lower), abs(value-upper)) <= resolution:
+        raise ArithmeticError("subnormal rounding midpoint is unresolved")
+    return rounded
+
+
+def _relative_entropy_refined(rho, sigma, *, subtract_trace=False):
+    """Reevaluate range-sensitive contractions from the supplied entries.
+
+    Exact Hermitian representatives determine positivity, rank and support.
+    Two private numerical precisions must resolve the final cancellation and
+    agree on its binary64 result; this is not an interval certificate.
+    Consumers can request D-Tr(rho-sigma) before either term is rounded.
+    """
+    import mpmath
+    from .information import _positive_rank
+
+    a, b = _exact_hermitian(rho), _exact_hermitian(sigma)
+    if a == b:
+        return 0.0
+    ranks = [_positive_rank(matrix) for matrix in (a, b)]
+    if ranks[1] < len(b):
+        import sympy as sp
+        from sympy.polys.matrices import DomainMatrix
+        matrices = [DomainMatrix.from_Matrix(sp.Matrix([
+            [sp.Rational(r.numerator, r.denominator)
+             + sp.I*sp.Rational(i.numerator, i.denominator) for r, i in row]
+            for row in matrix])).convert_to(sp.QQ_I) for matrix in (a, b)]
+        if not matrices[0].matmul(matrices[1].nullspace().transpose()).is_zero_matrix:
+            return float("inf")
+
+    def evaluate(precision):
+        ctx = mpmath.mp.clone()
+        ctx.dps = precision
+        matrices = [ctx.matrix([[ctx.mpc(ctx.mpf(r.numerator)/r.denominator,
+                                         ctx.mpf(i.numerator)/i.denominator)
+                                 for r, i in row] for row in matrix])
+                    for matrix in (a, b)]
+        spectra = []
+        for matrix, rank in zip(matrices, ranks):
+            values, vectors = ctx.eighe(matrix)
+            floor = 64*len(a)*ctx.eps*max(1, ctx.norm(matrix))
+            positive = list(range(len(a)-rank, len(a)))
+            if any(values[i] <= floor for i in positive):
+                raise ArithmeticError("unresolved positive spectrum")
+            spectra.append((values, vectors, positive))
+        values, _, positive = spectra[0]
+        terms = [values[i]*ctx.log(values[i]) for i in positive]
+        values, vectors, positive = spectra[1]
+        for i in positive:
+            v = vectors[:, i]
+            mass = ctx.re((v.H*matrices[0]*v)[0])
+            terms.append(-mass*ctx.log(values[i]))
+        if subtract_trace:
+            terms.extend(ctx.re(matrices[1][i, i]-matrices[0][i, i])
+                         for i in range(len(a)))
+        result = ctx.fsum(terms)
+        scale = max(1, ctx.fsum(abs(term) for term in terms))
+        resolution = 256*len(a)*ctx.eps*scale
+        if abs(result) <= resolution:
+            raise ArithmeticError("unresolved entropy cancellation")
+        if abs(result) < np.finfo(float).tiny:
+            return _resolved_subnormal(ctx, result, resolution)
+        return float(result)
+
+    for precision in (80, 400, 800):
+        try:
+            result, check = evaluate(precision), evaluate(precision+40)
+        except (ArithmeticError, ValueError):
+            continue
+        if result == check and np.isfinite(result) and result != 0:
+            return result
+    raise ValueError("relative entropy range or cancellation is numerically unresolved")
+
+
 def _relative_entropy_remainder(a, b, eig_a, vec_a, eig_b, vec_b):
     """Stable trace Bregman remainder plus the supplied trace difference.
 
@@ -150,9 +252,24 @@ def _relative_entropy_remainder(a, b, eig_a, vec_a, eig_b, vec_b):
     not require subtracting two entropy terms of order one.
     """
     difference = a - b
+    # BLAS need not report an underflow inside the two contractions. Bound
+    # the exponent of every nonzero real product before evaluating them.
+    exponents = []
+    for matrix in (vec_a, difference, vec_b):
+        parts = np.concatenate((np.abs(matrix.real).ravel(),
+                                np.abs(matrix.imag).ravel()))
+        positive = parts[parts != 0]
+        if positive.size:
+            exponents.append(frexp(float(np.min(positive)))[1])
+    if len(exponents) == 3 and sum(exponents) < -1018:
+        raise FloatingPointError("relative entropy contraction range")
     action = vec_a.conj().T @ difference @ vec_b
-    terms = ([float(x.real) for x in np.diag(a)]
-             + [-float(x.real) for x in np.diag(b)])
+    # This sum is exact up to its final rounding, unlike the spectral
+    # terms below. Do not count the cancelling unit traces as numerical
+    # uncertainty when both supplied traces coincide.
+    trace_difference = fsum([float(x.real) for x in np.diag(a)]
+                            + [-float(x.real) for x in np.diag(b)])
+    terms = [trace_difference]
     for i, p in enumerate(eig_a):
         for j, q in enumerate(eig_b):
             if q == 0:
@@ -188,48 +305,47 @@ def _relative_entropy_remainder(a, b, eig_a, vec_a, eig_b, vec_b):
             terms.append(float(term))
     # Include the actual trace difference even inside the validation
     # tolerance: this API does not normalize its inputs or clip D to zero.
-    return fsum(terms)
+    result = fsum(terms)
+    magnitude = fsum(abs(term) for term in terms)
+    # The individual spectral terms are approximate even when fsum is
+    # accurate. Cancellation can expose their roundoff, including against
+    # an accepted trace offset. Reevaluate before that amplification
+    # exceeds 2^10; the guard is not an interval error certificate.
+    if magnitude and abs(result)*1024 <= magnitude:
+        raise FloatingPointError("relative entropy cancellation")
+    return result
 
 
 def relative_entropy(rho, sigma):
     """Umegaki D(rho || sigma), with +infinity on detected support escape.
 
-Zero eigenvalues of sigma remain zero. Resolved support escape gives
-infinity, even if small; unresolved numerical rank or kernel cancellation
-raises instead of inventing either a finite answer or infinity. No leakage
-is rounded away. Exact-support theorems still need independently certified
-support data; these guards are numerical diagnostics, not rank proofs.
+Ambiguous reference eigenvalues trigger exact positivity, rank and support
+checks on the supplied Hermitian representative. Certified support escape
+gives infinity, even if small; unresolved finite evaluation raises instead
+of inventing either a finite answer or infinity. No leakage is rounded away.
+These input-specific checks do not certify arbitrary numerical eigensolves.
 Nearby PSD states use a compensated trace Bregman remainder. If the source
 eigensolve clips spectral roundoff without an exactly annihilated kernel,
 the legacy entropy/reference pairing is retained; the stable PSD identity
 does not apply to an indefinite matrix admitted within the input tolerance.
 """
+    from .gibbs import _numeric
+    rho = _numeric(rho, "relative entropy source state")
+    sigma = _numeric(sigma, "relative entropy reference state")
     a, eig_a, vec_a = _spectrum(rho)
     b, eig_b, vec_b = _spectrum(sigma)
     if a.shape != b.shape:
         raise ValueError("relative entropy requires the same algebra")
     if np.array_equal(a, b):
-        return 0.0
-    # Dense eigensolvers can turn a true zero into a tiny positive number.
-    # Reject that ambiguous rank instead of treating it as faithful. A
-    # coordinate-diagonal reference has its spectrum directly in the input,
-    # so even subnormal positive entries need no such rank inference.
-    if _unresolved_positive_spectrum(b, eig_b):
-        raise ValueError("reference support is numerically unresolved")
-    kernel = vec_b[:, eig_b == 0]
-    if kernel.size:
-        if np.any(b @ kernel != 0):
-            raise ValueError("reference support is numerically unresolved")
-        leakage = a @ kernel
-        if np.any(leakage != 0):
-            # Cancellation in a matrix product is not a support witness.
-            # This scales with the terms of each product, so a tiny but
-            # explicit diagonal support violation remains detectable.
-            error_scale = (8 * np.finfo(float).eps * len(a)
-                           * (np.abs(a) @ np.abs(kernel)))
-            if np.all(np.abs(leakage) <= error_scale):
-                raise ValueError("relative-entropy support is numerically unresolved")
-            return float("inf")
+        if np.array_equal(np.asarray(rho), np.asarray(sigma)):
+            return 0.0
+        # Accepted Hermitian averaging can erase a half-subnormal entry.
+        return _relative_entropy_refined(rho, sigma)
+    # Either sign of a roundoff-sized eigenvalue can conceal full support.
+    # Even a rounded zero matrix/kernel product is not an exact certificate:
+    # certify the original representative before returning infinity.
+    if np.any(eig_b == 0) or _unresolved_positive_spectrum(b, eig_b):
+        return _relative_entropy_refined(rho, sigma)
     source_kernel = vec_a[:, eig_a == 0]
     if source_kernel.size and np.any(a @ source_kernel != 0):
         # The input tolerance also admits clipped negative spectral
@@ -241,7 +357,11 @@ does not apply to an indefinite matrix admitted within the input tolerance.
         diagonal = np.real(np.diag(v.conj().T @ a @ v))
         return float(np.sum(positive_a * np.log(positive_a))
                      - np.dot(diagonal, np.log(eig_b[positive_b])))
-    return _relative_entropy_remainder(a, b, eig_a, vec_a, eig_b, vec_b)
+    try:
+        with np.errstate(over="raise", under="raise", invalid="raise", divide="raise"):
+            return _relative_entropy_remainder(a, b, eig_a, vec_a, eig_b, vec_b)
+    except FloatingPointError:
+        return _relative_entropy_refined(rho, sigma)
 
 
 def _parts(dims, parts):
