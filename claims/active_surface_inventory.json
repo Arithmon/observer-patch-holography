@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 503,
+  "surface_count": 505,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1181,6 +1181,16 @@
     },
     {
       "path": "model/observer/scalar_response/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/observer/source_scalar/DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/observer/source_scalar/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

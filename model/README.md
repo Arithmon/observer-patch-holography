@@ -26,6 +26,13 @@ uses continuous spectral evolution and keeps the disturbed field for a
 second read and a third native event, with explicit record memory and a
 bound on the complete history. Combining this retained two-read process
 with the local update engine remains further work.
+The [source-compiled apparatus](observer/source_scalar/README.md) adds a
+separate two-site quantum field: its entangled preparation from blanks,
+field evolution and binary pointer all execute emitted twelve-port control
+words. Four- and eight-level site codes retain both quantum branches,
+exact initial-tail and finite splitting bounds, and the native feedback.
+This source program performs one field read; it has not been joined to the
+spectral two-read continuation.
 
 ## Run the observer
 
@@ -68,10 +75,11 @@ refuse to overwrite an existing file; use `--write PATH` to retain the full
 result and example traces. The [local-tick README](local_tick/README.md)
 gives its certificate replay and the incident-attempt stopping rule.
 `model.verify` replays the retained results and checks their artifact hashes.
-The scalar local-evolution receipt can also be replayed directly:
+The scalar local-evolution and source-compiled receipts can also be replayed directly:
 
 ```sh
 python3 -m model.observer.scalar_response.local_evolution --check model/observer/scalar_response/local_results.json
+python3 -m model.observer.source_scalar --check model/observer/source_scalar/results.json
 ```
 
 ## What is implemented
@@ -82,6 +90,7 @@ python3 -m model.observer.scalar_response.local_evolution --check model/observer
 | Binary electromagnetic observation | [P-dependent detector](observer/p_response/README.md): evaluates α(P), writes one stable bit and uses it for the next native repair; all 528 weighted paths |
 | Scalar field observation and refinement | [Scalar detector](observer/scalar_response/README.md): native-current preparation, binary field instrument and bit-only feedback; local field updates at q=13,34, with temporal and spatial comparison bounds and a [prediction protocol](observer/scalar_response/PREDICTION.md) |
 | Retained scalar continuation | [Two reads of one field](observer/scalar_response/CONTINUATION.md): continuous spectral evolution, three native repairs, all 2,112 labelled histories and 209 reached record prefixes, with a separate complete-history bound |
+| Source-compiled quantum field apparatus | [Two-site source program](observer/source_scalar/README.md): preparation from blanks, field evolution and quantum pointer from twelve-port gates; both terminal field branches, finite error certificates and native feedback |
 | Finite capacity | [Correctable record capacity and compact controller](observer/CAPACITY.md): 11 terminal native words, 16 reachable prefixes and a four-bit classical encoding under the binary preparation |
 | Direct execution | [20,000-trial native receipt](observer/results/run.json) and [200,000-trial detector receipt](observer/p_response/results.json), alongside exact references |
 | Local event clock | [N4 local-tick calculation](local_tick/README.md): corrected native null and certified positive memory bounds while remote events continue |
@@ -103,11 +112,12 @@ The scalar adapter executes a supplied free-field model; native integer
 averaging does not by itself derive that Hamiltonian or its quantum vacuum.
 Its detector prediction is conditional on the stated apparatus and field
 law, with independent software controls and a separate physical test boundary.
-The next physical construction target is a compatible implementation of the
-field preparation, evolution and detector on the chosen microscopic source,
-with its errors carried through the same retained history. The local scalar
-updates provide an explicit operation to implement; they do not supply that
-microscopic or laboratory identification.
+The two-site source program implements field preparation, evolution and
+detection under its declared code services. The next connection is a complete
+occupation and spatial refinement error budget for that same implementation,
+followed by physical apparatus identification and independent comparison.
+Its finite splitting certificate and initial vacuum-tail bound are separate
+parts of that budget; neither establishes the full continuum limit.
 
 ## Continue the construction
 

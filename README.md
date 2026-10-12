@@ -42,6 +42,12 @@ updates at q=13 and q=34, includes the original vacuum's squeezing in the
 detector probability, and passes its sampled bit to native feedback. A
 separate temporal certificate extends the inherited continuum error budget;
 the two finest grids remain analytic comparisons for this local extension.
+The new [source-compiled field apparatus](model/observer/source_scalar/README.md)
+executes a separate two-site design from blank registers through entangled
+preparation, quantum evolution, pointer readout and native feedback. All
+field gates are emitted from the existing twelve-port controls. Exact
+certificates bound its initial vacuum tail and finite temporal splitting;
+its full occupation and spatial continuum limits remain open.
 
 Run from the repository root with Python 3.11 or newer:
 
@@ -66,6 +72,11 @@ prediction. Its local evolution supplies a checked numerical path from
 neighboring field updates to the detector-controlled repair, with a temporal
 refinement control. It does not derive that Hamiltonian from integer averaging
 or establish a new empirical prediction of OPH.
+The source-compiled two-site experiment implements preparation,
+evolution and detection through the same source-control interface, including
+both terminal quantum branches. Its coherent transport services, field
+action and clock remain explicit inputs. This closes a finite implementation
+gap without establishing a common continuum realization of observed physics.
 The candidates reproduce and connect some required structures, and we can
 distinguish several of them in simulations. **We do not have a
 common model established as physically correct.** The

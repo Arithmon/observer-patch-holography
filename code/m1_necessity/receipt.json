@@ -1711,10 +1711,12 @@
           "uniform_binary_total_two_preparation",
           "declared_scalar_action_vacuum_and_refinement_adapter",
           "declared_scalar_Weyl_branch_instrument_and_native_feedback",
+          "declared_two_site_scalar_action_and_physical_occupation_projection",
+          "declared_coherent_proper_code_services_and_analogue_source_controls",
           "declared_scalar_two_read_continuation"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "7cbf5162924a37a74135de1c685b9dd2d224aaa6076793cca98e807200c9ede1"
+        "original_claim_sha256": "3031cfb31445242ff16b90b3e355f616699ae35055fd8cebbb457d22c31f7305"
       },
       "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM": {
         "assumptions": [

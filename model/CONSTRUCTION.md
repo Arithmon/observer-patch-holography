@@ -47,6 +47,28 @@ canonical updates at q=13 and q=34, propagates the detector's vacuum variance,
 and uses the resulting probability in the same native continuation. It
 tests temporal refinement while retaining the existing continuum theorem.
 
+The [source-compiled two-site construction](observer/source_scalar/README.md)
+emits and executes the field apparatus through the existing twelve-port
+controls. Blank registers are transformed into an entangled projected vacuum;
+the first native current supplies an impulse; finite quantum evolution and
+a quantum pointer produce both recorded outcome branches. Only the pointer
+bit controls the next native repair. The four- and eight-level site codes
+run at 64 and 128 steps with exact initial preparation-tail and finite
+splitting certificates, independent branch-density checks and retained
+200,000-trial feedback runs per code size. The finest protocol uses seven
+work qubits, 1,774,010 native pulses and 3,548,020 declared proper-code
+service events, evaluated by caching executed subroutine contractions.
+
+This is a separate two-site action, not another member of the earlier
+spatial refinement family. Its physical occupation projection retains the
+boundary terms in both quadratic operators; squaring truncated coordinates
+would implement a different Hamiltonian. The source controls implement
+preparation, evolution and readout under supplied coherent transport,
+reset and storage services. Full infinite-occupation propagation/readout
+bounds, spatial refinement, physical service errors and empirical
+identification require separate bounds and evidence. The earlier continuum bounds cannot be
+transferred merely because both experiments use a scalar field.
+
 ## Native repair and its observer contract
 
 Use the twelve-port source, with 78 nonnegative integer configurations of
@@ -285,6 +307,8 @@ q=233 modes contributes to their Gram kernel.
 This extension uses continuous full-mode spectral evolution. The local
 split-update engine above and this two-read conditional-state continuation
 are separate implementations with separate error bounds.
+The two-site source compiler executes a separate single-read apparatus;
+compiling this two-read history requires its own implementation and bounds.
 
 The new directed rational bound puts the q=233 complete-history TV error
 below 0.02571. It includes the zero-current histories, whose two-bit

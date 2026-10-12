@@ -22,6 +22,14 @@ contrast, null and reversal controls. Install `model/requirements.txt` for
 this adapter; the native and P-dependent commands below remain standard-library
 executions.
 
+The [source-compiled two-site apparatus](source_scalar/README.md) executes a
+separate finite field design through emitted twelve-port control words,
+including entangled preparation from blanks and both pointer branches.
+It retains exact initial-tail and finite temporal error certificates with
+the native feedback. Coherent code services and the scalar action remain
+supplied; the earlier field family's continuum bounds do not transfer to
+this two-site implementation.
+
 ## Run from the repository root
 
 The observer code uses the Python standard library. The capacity calculation
