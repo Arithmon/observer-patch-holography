@@ -35,7 +35,7 @@ def test_terminal_density_guard_rejects_a_probability_invisible_phase_error():
 def test_terminal_guard_rejects_nonfinite_amplitudes():
     changed = experiment.events("C", "phase_0")
     changed[0]["amplitude"][0] = complex(float("nan"), 0.)
-    with pytest.raises(ArithmeticError, match="normalized"):
+    with pytest.raises(ArithmeticError, match="finite"):
         experiment._check_events("C", "phase_0", changed)
 
 

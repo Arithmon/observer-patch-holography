@@ -518,6 +518,7 @@
           ],
           "classical_sampling_mass_correction": 4.837907852106582e-12,
           "maximum_branch_density_frobenius_error": 2.31385020396421e-12,
+          "maximum_retained_preparation_density_frobenius_error": 2.31385020396421e-12,
           "plus_probability": 0.6249999999971054,
           "raw_total_probability": 0.999999999995162,
           "resources": {
@@ -728,6 +729,7 @@
           ],
           "classical_sampling_mass_correction": 5.102473998874757e-12,
           "maximum_branch_density_frobenius_error": 2.5773816639828915e-12,
+          "maximum_retained_preparation_density_frobenius_error": 2.5773816639828915e-12,
           "plus_probability": 0.12499999999942003,
           "raw_total_probability": 0.9999999999948975,
           "resources": {
@@ -938,6 +940,7 @@
           ],
           "classical_sampling_mass_correction": 4.969136213617276e-12,
           "maximum_branch_density_frobenius_error": 1.2976246811367984e-12,
+          "maximum_retained_preparation_density_frobenius_error": 1.2976246811367984e-12,
           "plus_probability": 0.37499999999826356,
           "raw_total_probability": 0.9999999999950308,
           "resources": {
@@ -1324,6 +1327,7 @@
           ],
           "classical_sampling_mass_correction": 4.970357458944363e-12,
           "maximum_branch_density_frobenius_error": 1.2985680462893747e-12,
+          "maximum_retained_preparation_density_frobenius_error": 1.2887740726016206e-12,
           "plus_probability": 0.3749999999982628,
           "raw_total_probability": 0.9999999999950296,
           "resources": {
@@ -2376,6 +2380,7 @@
           ],
           "classical_sampling_mass_correction": 4.947597886939548e-12,
           "maximum_branch_density_frobenius_error": 1.2980123336150545e-12,
+          "maximum_retained_preparation_density_frobenius_error": 1.2980123336150545e-12,
           "plus_probability": 0.3749999999982622,
           "raw_total_probability": 0.9999999999950524,
           "resources": {
@@ -2762,6 +2767,7 @@
           ],
           "classical_sampling_mass_correction": 4.992450897134404e-12,
           "maximum_branch_density_frobenius_error": 1.3000101603554986e-12,
+          "maximum_retained_preparation_density_frobenius_error": 1.3000101603554986e-12,
           "plus_probability": 0.3749999999982417,
           "raw_total_probability": 0.9999999999950077,
           "resources": {
@@ -3148,6 +3154,7 @@
           ],
           "classical_sampling_mass_correction": 4.969025191314813e-12,
           "maximum_branch_density_frobenius_error": 1.298123413139754e-12,
+          "maximum_retained_preparation_density_frobenius_error": 1.298123413139754e-12,
           "plus_probability": 0.37499999999825284,
           "raw_total_probability": 0.9999999999950311,
           "resources": {
@@ -3886,6 +3893,7 @@
           ],
           "classical_sampling_mass_correction": 4.970024392036976e-12,
           "maximum_branch_density_frobenius_error": 1.2989834255308877e-12,
+          "maximum_retained_preparation_density_frobenius_error": 6.500050801777493e-13,
           "plus_probability": 0.3749999999982519,
           "raw_total_probability": 0.99999999999503,
           "resources": {

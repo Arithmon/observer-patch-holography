@@ -7,6 +7,7 @@ the unchanged count decision rule. No quantum branch is renormalized.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 from functools import lru_cache
 from fractions import Fraction
 import hashlib
@@ -130,35 +131,92 @@ def probability(event):
     return float(np.vdot(event["amplitude"], event["amplitude"]).real)
 
 
-def _check_events(candidate, setting, executed):
-    total = sum(map(probability, executed))
-    if not math.isfinite(total) or abs(total-1) > TOLERANCE:
-        raise ArithmeticError("complete source instrument is not normalized")
-    expected = target.event_outputs(candidate, setting)
+def _validate_event_grid(candidate, setting, executed):
+    """Validate the complete retained record, including zero and abort branches."""
+    if candidate not in circuit.RECORD_BITS or setting not in circuit.SETTINGS:
+        raise ValueError("a fixed candidate and setting required")
+    randomizers = (0, 1) if setting == "diagonal_control" else (None,)
+    codes = range(1 << circuit.RECORD_BITS[candidate])
+    required = {(r, c, code, outcome) for r in randomizers for c in (0, 1)
+                for code in codes for outcome in (-1, 1)}
+    fields = {"coin", "record_code", "current", "contrast", "abort",
+              "preparation_record", "outcome", "amplitude"}
+    if not isinstance(executed, (list, tuple)) or len(executed) != len(required):
+        raise ArithmeticError("complete unique event grid required")
+    seen = set()
+    for row in executed:
+        if not isinstance(row, dict) or set(row) != fields:
+            raise ArithmeticError("exact event record fields required")
+        if (type(row["coin"]) is not int or row["coin"] not in (0, 1)
+                or type(row["record_code"]) is not int or row["record_code"] not in codes
+                or type(row["outcome"]) is not int or row["outcome"] not in (-1, 1)
+                or type(row["abort"]) is not bool):
+            raise ArithmeticError("invalid event record types or values")
+        r = row["preparation_record"]
+        if (setting == "diagonal_control" and (type(r) is not int or r not in (0, 1))
+                or setting != "diagonal_control" and r is not None):
+            raise ArithmeticError("invalid retained preparation record")
+        key = (r, row["coin"], row["record_code"], row["outcome"])
+        if key in seen:
+            raise ArithmeticError("duplicate event record")
+        seen.add(key)
+        value = circuit.record_values(candidate, row["coin"]).get(row["record_code"])
+        current = value if candidate == "C" or value is None else (
+            value-(2*row["coin"]-1)*(abs(value) % 2))//2
+        contrast = value if candidate == "E" else None
+        if (row["abort"] != (value is None)
+                or type(row["current"]) is not type(current) or row["current"] != current
+                or type(row["contrast"]) is not type(contrast) or row["contrast"] != contrast):
+            raise ArithmeticError("raw record and decoded event labels disagree")
+        vector = np.asarray(row["amplitude"])
+        if (np.ma.isMaskedArray(row["amplitude"]) or vector.shape != (512,)
+                or vector.dtype.kind not in "iufc" or not np.all(np.isfinite(vector))):
+            raise ArithmeticError("finite unmasked terminal vector of shape (512,) required")
+    if seen != required:
+        raise ArithmeticError("complete unique event grid required")
+
+
+def _density_error(candidate, setting, executed, weight=1.):
+    """Independent quantum target, optionally inside one preparation record."""
     maximum = 0.
-    for event in expected:
+    for event in target.event_outputs(candidate, setting):
         record = event["record"]
         selected = [row for row in executed if not row["abort"]
                     and row["coin"] == record["coin"] and row["current"] == record["current"]
                     and (candidate == "C" or row["contrast"] == record["contrast"])
                     and row["outcome"] == event["outcome"]]
-        actual = sum((np.outer(row["amplitude"], row["amplitude"].conj())
+        actual = sum((np.outer(row["amplitude"], np.conjugate(row["amplitude"]))
                       for row in selected), np.zeros((512, 512), complex))
         ideal = np.zeros_like(actual)
         for item in event["source_density"]:
-            ideal[circuit.SOURCE_CODES[item["row"]], circuit.SOURCE_CODES[item["column"]]] = complex(
+            ideal[circuit.SOURCE_CODES[item["row"]], circuit.SOURCE_CODES[item["column"]]] = weight*complex(
                 float(Fraction(item["real"])), float(Fraction(item["imaginary"])))
         maximum = max(maximum, float(np.linalg.norm(actual-ideal, "fro")))
+    return maximum
+
+
+def _check_events(candidate, setting, executed):
+    _validate_event_grid(candidate, setting, executed)
+    total = sum(map(probability, executed))
+    if not math.isfinite(total) or abs(total-1) > TOLERANCE:
+        raise ArithmeticError("complete source instrument is not normalized")
+    maximum = _density_error(candidate, setting, executed)
+    retained = maximum
+    if setting == "diagonal_control":
+        retained = max(_density_error(candidate, phase,
+                       [row for row in executed if row["preparation_record"] == r], .5)
+                       for r, phase in ((0, "phase_0"), (1, "phase_pi")))
     abort = sum(probability(row) for row in executed if row["abort"])
-    if maximum > TOLERANCE or abort > TOLERANCE:
+    if maximum > TOLERANCE or retained > TOLERANCE or abort > TOLERANCE:
         raise ArithmeticError("source-executed branch densities differ from the exact instrument")
     return {"raw_total_probability": total, "abort_probability": abort,
             "maximum_branch_density_frobenius_error": maximum,
+            "maximum_retained_preparation_density_frobenius_error": retained,
             "plus_probability": sum(probability(row) for row in executed if row["outcome"] == 1 and not row["abort"])}
 
 
 @lru_cache(maxsize=8)
-def resources(candidate, setting):
+def _resources(candidate, setting):
     if candidate not in circuit.RECORD_BITS or setting not in circuit.SETTINGS:
         raise ValueError("a fixed candidate and setting required")
     # Both repair words have equal resource costs. The pi randomizer branch
@@ -179,6 +237,11 @@ def resources(candidate, setting):
                    "resource_branch": "phase_pi for diagonal control; either fair-coin branch; local addresses are reused between stages",
                    "physical_loading_and_service_errors_certified": False})
     return result
+
+
+def resources(candidate, setting):
+    """Return isolated counts; callers cannot mutate future receipts or bounds."""
+    return deepcopy(_resources(candidate, setting))
 
 
 def run(seed=SEED):

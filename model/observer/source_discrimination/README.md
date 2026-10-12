@@ -11,7 +11,10 @@ The result is an encoded construction on all 78 native configurations.
 The [derivation](DERIVATION.md) proves equality of the recorded channels on
 all 6,084 matrix units, hence also with an arbitrary reference system.
 Numerical execution then compares every unnormalized terminal density block
-with the independent exact prediction. Coin, current/contrast, preparation
+with the independent exact prediction, including the conditional blocks of
+both retained preparation-randomizer outcomes. The verifier requires the full
+unique record grid, correct raw-to-public labels and finite unmasked vectors.
+Coin, current/contrast, preparation
 randomizer and readout records remain present; no successful subset is selected.
 
 ## Reproduce
@@ -55,8 +58,9 @@ would implement a different instrument even if its plus frequency agreed.
 
 Actual source execution recovers these probabilities and the full output
 densities. The receipt samples 8,192 attempted trials per setting directly
-from executed branch norms. Both candidates pass their own fixed test and
-reject the other under its comparison contract. These are synthetic controls,
+from executed branch norms. For each dataset, the fixed evaluator does not
+reject its generating candidate and rejects the alternative under the
+comparison contract. These are synthetic controls,
 not independent observations. The sampler's floating mass correction is
 reported separately; quantum amplitudes are never renormalized. Every reserved
 record code is kept as an abort outcome, including zero-probability outcomes.
