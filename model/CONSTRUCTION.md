@@ -144,7 +144,11 @@ places the full quantum algebra in twelve identical blocks. Refreshing the
 central address and repairing a uniformly selected incident seam reproduces
 the entire original channel after decoding. With its declared collective
 response, chart implementation, scalar seams and all-level refinement, this
-gives a complete abstract A1–A3 source on the binary shell. The minimum
+gives a complete abstract A1–A3 source on the binary shell. Reversible
+response words and chart paths have control sequences fixed independently
+of measured records; feedback uses the declared repair/reset templates.
+Allowing records to select reversible words would add 144 independent
+address-controlled directions and change this source grammar. The minimum
 twelve-block dimension assumes a unital embedding of the full working
 matrix algebra and exactly twelve primitive central ports; it is not a
 universal physical encoding bound. It does not extend N4 to all 78 loads.
@@ -157,7 +161,9 @@ is not an observed occupied port. For the prescribed occupied-port effects,
 every instrument erases coherences between disjoint load supports, with
 recovery error at least `1/2` on an explicit orthogonal pair. Endpoint
 comparison consumes a separate record service; scalar seams carry no remote
-record. Physical realization and service costs remain additional contracts.
+record. The explicit occupied-port endpoint instrument recovers the
+certified global-attempt statistic under the tracial preparation; adding
+intermediate occupation reads changes that experiment. Physical realization and service costs remain additional contracts.
 
 The [native-response calculation](../code/native_response/README.md) uses
 one common tracial state and fixed bare occupations to recover the same

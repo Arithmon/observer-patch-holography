@@ -73,13 +73,23 @@ def luders_branches(value):
 
     For a normalized density matrix, use measure_occupied_port to validate
     positivity and normalization as well as the native-space dimensions.
+    Reject component underflow rather than silently erase a supplied entry.
     """
     value = _matrix(value)
     if len(value) % 66:
         raise ValueError("native operator dimension must be 66*d")
     d = len(value) // 66
-    return tuple(value[np.ix_(indices, indices)] / 2
-                 for indices in (sector_indices(port, d) for port in range(12)))
+    result = []
+    for port in range(12):
+        indices = sector_indices(port, d)
+        selected = value[np.ix_(indices, indices)]
+        with np.errstate(under="ignore"):
+            branch = selected / 2
+        if (np.any((selected.real != 0) & (branch.real == 0))
+                or np.any((selected.imag != 0) & (branch.imag == 0))):
+            raise ValueError("occupied-port branch underflows an operator component")
+        result.append(branch)
+    return tuple(result)
 
 
 def measure_occupied_port(state):

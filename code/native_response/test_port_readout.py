@@ -388,3 +388,35 @@ def test_invalid_matrix_states_and_record_blocks_are_rejected():
     assert np.trace(blocks[0]) == Fraction(1, 2)
     with pytest.raises(ValueError, match="endpoint range"):
         correlation_from_same_port(Fraction(1, 4))
+
+
+def test_measurement_refuses_erasing_a_subnormal_population():
+    # This diagonal population survives the shared density validator. Its
+    # two half-weight branches cannot be represented in binary64 separately.
+    tiny = np.nextafter(0., 1.)
+    state = np.zeros((66, 66))
+    state[0, 0], state[1, 1] = 1., tiny
+    from quantum_information.states import density_matrix
+    assert density_matrix(state)[1, 1] == tiny
+    with np.errstate(under="raise"):
+        with pytest.raises(ValueError, match="branch underflows"):
+            measure_occupied_port(state)
+
+
+@pytest.mark.parametrize("imaginary", [False, True])
+def test_unread_channel_refuses_erasing_a_fixed_private_operator(imaginary):
+    # Within one load sector, arbitrary private matrix units are exact fixed
+    # points of the forgotten-record channel. An unresolved numerical split
+    # must not turn a nonzero fixed operator into an apparently exact zero.
+    value = np.zeros((132, 132), complex)
+    tiny = np.nextafter(0., 1.)
+    if imaginary:
+        value[0, 1] = 1j * tiny
+    else:
+        value[0, 1] = tiny
+    with pytest.raises(ValueError, match="branch underflows"):
+        unread_port_readout(value)
+    # The next larger population splits exactly, so the guard does not
+    # replace all subnormal entries with an arbitrary numerical cutoff.
+    value *= 2
+    np.testing.assert_array_equal(unread_port_readout(value), value)
