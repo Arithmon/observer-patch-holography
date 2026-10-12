@@ -35,6 +35,7 @@ REPLAYS = (
     ("model.common_source.thermal_bridge", None, "model/common_source/thermal_results.json"),
     ("model.common_source.causality", None, "model/common_source/causality_results.json"),
     ("model.common_source.native_fields", None, "model/common_source/native_fields_results.json"),
+    ("model.observer.record_recovery_receipt", None, "model/observer/results/record_recovery.json"),
 )
 
 

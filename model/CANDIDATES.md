@@ -174,6 +174,20 @@ measurement to distinguish C from E. Mean loads and classical histories
 cannot settle this choice. Quantum preparation, readout and finite record
 capacity must be accounted for.
 
+**Complete-record decision:** [optimal native recovery](observer/RECORD_RECOVERY.md)
+separates reconstructing classical loads from restoring an unknown quantum
+input. The retained tape permits exact reversal of every recorded load
+translation, but classical commitment leaves a measurement of the initial
+state. E can fully identify the 78-state input with eight prescribed seam
+attempts (seven on the binary shell). C cannot do so under any bounded
+record-only adaptive seam policy on this carrier, although a supplied
+almost-surely terminating policy does. Both laws admit an exactly correctable
+encoded qubit after one event; the identifying schedules eliminate passive
+exact codes. This resolves a candidate-level memory question while preserving
+the native geometry/current dictionary. Intermediate quantum correction,
+additional response registers and coherent uncommitted records are different
+process contracts; no physical law or programme-wide obstruction is inferred.
+
 ## N2: repair current drives endpoint response
 
 Supply one private six-level factor at each port, together with the existing

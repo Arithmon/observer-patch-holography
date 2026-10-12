@@ -1,29 +1,41 @@
 {
   "dependencies": [
     "Python standard library",
-    "code/capacity_readback"
+    "code/capacity_readback",
+    "model/requirements.txt (complete-record recovery source replay)"
   ],
   "files": {
     "CAPACITY.md": "3607811ac4c844bb0ee78ebc6237c0b9389193fccbf52f0e8baa56350c4b04ce",
     "DERIVATION.md": "2c0a0f6eae158c91938b7f6014c524738a226380e89d519df78d3b3a8e9c228c",
-    "README.md": "255ed0e06e18d9388bc9d9722355abb99b51c571e69c3d5a1275cdfd5dd2da5a",
+    "README.md": "cb6b8d25cc083b19b457e2ff406bd76a20e3a1a0a706e3dae753ff9cf40cec5f",
+    "RECORD_RECOVERY.md": "ea45922310ddd1c46d97b312cdf5f12f86527f6f69b23511e556b79e0c3f8a21",
     "__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
     "__main__.py": "c79bda56d3944fc38b91dda1d26d8513467a0a9bf003929a4c192d73f64c3229",
     "capacity.py": "a27c34e7486e4c88abd57c934caf526bbd1183a76e9d232830a2aa85c64211db",
     "native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "record_recovery.py": "0ad1c23cac53bbcf00c32ada6ce01660466b4e9c71e5e58a0226a0bf5609a193",
+    "record_recovery_receipt.py": "c6d9a31dfbb1039f1d657c48d1fc92357e4c6162d580b5a765d4f96995278c63",
+    "record_recovery_schedule.py": "36354c11e95503a6adbce8baf27576374cbcd662aa8284d42b711f79ab8681fe",
+    "record_recovery_source.py": "073f177533cf35d6eda9aeffb72205575e9acd80d226ad61f6a6542d48fe371d",
     "results/capacity.json": "373c6558dda5bef7250170876f28aba091c264479db6ef754b23e109b3140680",
     "results/native.json": "5b4f48e31f35cc6d8941bab6482ed4c0e5ab8d51ff9ab1fe469241f60b910293",
+    "results/record_recovery.json": "38b15a2ee62941974ad784e5a2add28f2e9204e40aba8420187508a349ea8de0",
     "results/run.json": "88aa066539b197c1c070a58d1b2c4900b64bc4ff71bc674ca375a5771dd55c4f",
     "simulate.py": "d7380b43216c657e3a6a0c24a2da923b55c367cae107fb325e2389735db93046",
     "test_native_observer.py": "517fba7fcd275c67637758d1a29d15b9fa8d85caa3f7716a435dcb4a94af444e",
     "test_observer_capacity.py": "4ac0b4efe01b045aabae27555421e15487b68059588cb402a513543206b64e37",
-    "test_observer_simulation.py": "8474573b1d27b021fe57e597c0125268b639b2b1b0234e65967036ace672b7f7"
+    "test_observer_simulation.py": "8474573b1d27b021fe57e597c0125268b639b2b1b0234e65967036ace672b7f7",
+    "test_record_recovery.py": "ab159b4557df5160f6bb4c473ca51bc60bef4a8cb6702cc4bffab1747f40bf6c",
+    "test_record_recovery_receipt.py": "579cf136a29d130f6fdeebaaa149d34d8c5df1b76670125f46c1f82626710942",
+    "test_record_recovery_schedule.py": "4ac66a3d4115457b12398285242131ed97e813a1226490c2bac4466c24be5a40",
+    "test_record_recovery_source.py": "a614a508832530ce90c183a1705ba3e7bcdbaf111ba203aa4f3776a2becb7c65"
   },
   "reproduce": [
     "python3 -m model.observer native --check model/observer/results/native.json",
     "python3 -m model.observer capacity --check model/observer/results/capacity.json",
     "python3 -m model.observer run --trials 20000 --seed 20261012 --check model/observer/results/run.json",
-    "python3 -m unittest model.observer.test_native_observer model.observer.test_observer_capacity model.observer.test_observer_simulation -v"
+    "python3 -m unittest model.observer.test_native_observer model.observer.test_observer_capacity model.observer.test_observer_simulation -v",
+    "python3 -m model.observer.record_recovery_receipt --check model/observer/results/record_recovery.json"
   ],
   "schema": "oph.observer.public_manifest.v1"
 }
