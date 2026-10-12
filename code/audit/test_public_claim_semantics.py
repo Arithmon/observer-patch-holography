@@ -125,6 +125,22 @@ def test_readme_case_section_remains_short_and_reader_facing() -> None:
         body = text[start : text.index("\n## ", start)]
         bullets = re.split(r"(?m)^- ", body)[1:]
         assert 5 <= len(bullets) <= 8, f"{path.name} lists {len(bullets)} case bullets"
+        if path.name == "README.md":
+            labels = [
+                " ".join(match.group(1).split())
+                if (match := re.match(r"\*\*(.*?)\*\*", bullet, re.DOTALL))
+                else None
+                for bullet in bullets
+            ]
+            assert labels == [
+                "Agreement and stable records.",
+                "Quantum observations.",
+                "Three spatial directions.",
+                "Gauge symmetry.",
+                "Thermodynamics.",
+                "Information capacity.",
+                "Matter and fields.",
+            ], "English README must retain its seven named mathematical results"
         for number, bullet in enumerate(bullets, start=1):
             assert bullet.startswith("**"), (
                 f"{path.name} case bullet {number} drops its bold lead"
@@ -142,6 +158,13 @@ def test_readme_case_section_remains_short_and_reader_facing() -> None:
     # Flattened so the checks survive the line wrapping of the README prose.
     english = " ".join((ROOT / "README.md").read_text(encoding="utf-8").split())
     french = " ".join((ROOT / "README_FR.md").read_text(encoding="utf-8").split())
+    english_prose = re.sub(r"\[([^]]+)\]\([^)]+\)", r"\1", english)
+    english_prose = re.sub(r"[*_`]", "", english_prose)
+    assert "These are conditional mathematical results." in english_prose
+    assert (
+        "Agreement with the full range of observed measurement statistics "
+        "has not been established."
+    ) in english_prose
     assert "lands within 72 eV" not in english
     assert "tombe à 72 eV" not in french
     # Require the diagnostic boundary if the English front page highlights
