@@ -17,7 +17,7 @@
   {
     "packaged_path": "joint_independent.py",
     "source_sha256": "cbd8613ddc9288793fbcbc9dee4bd9a828cfbcf6f951db5cc779038450e2b463",
-    "modification": "only fixture relative path code/source_selection_model/response.json -> data/response.json; self-reported script hash necessarily changes"
+    "modification": "fixture relative path code/source_selection_model/response.json -> data/response.json; remove write to retained review_independent_controls.json so replays emit stdout only; self-reported script hash necessarily changes; exact arithmetic and case budget unchanged"
   },
   {
     "packaged_path": "kinetic_control.py",

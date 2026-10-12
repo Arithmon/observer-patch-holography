@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 import time
 
 ROOT=Path(__file__).resolve().parent
@@ -21,7 +22,8 @@ def main():
     if not __debug__:
         raise SystemExit('Assertions must be enabled; do not use python -O.')
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output-dir',type=Path,default=ROOT/'run_receipts')
+    parser.add_argument('--output-dir',type=Path,
+                        help='empty directory outside this package; default: fresh temporary directory')
     args=parser.parse_args()
     manifest=json.loads((ROOT/'provenance/package_sha256.json').read_text())
     for rel,expected in manifest['files'].items():
@@ -37,7 +39,18 @@ def main():
     assert len(matched)==1 and matched[0]['sha256']==hashlib.sha256(raw).hexdigest()
     jobs=[('channel_author',[]),('channel_independent',[]),('joint_author',['data/response.json']),
           ('joint_independent',[]),('kinetic_control',[]),('attempt_independent',[]),('compact_classifier',[])]
-    args.output_dir.mkdir(parents=True,exist_ok=True)
+    if args.output_dir is None:
+        temporary_root = Path(tempfile.gettempdir()).resolve()
+        if temporary_root == ROOT or ROOT in temporary_root.parents:
+            raise SystemExit('Output directory must be outside the input package.')
+        output_dir = Path(tempfile.mkdtemp(prefix='oph-programme-obstruction-', dir=temporary_root))
+    else:
+        output_dir = args.output_dir.resolve()
+    if output_dir == ROOT or ROOT in output_dir.parents:
+        raise SystemExit('Output directory must be outside the input package.')
+    if output_dir.exists() and (not output_dir.is_dir() or any(output_dir.iterdir())):
+        raise SystemExit('Output directory must be empty; retained results are never overwritten.')
+    output_dir.mkdir(parents=True,exist_ok=True)
     summary={'target_revision':'0510578e317de5da0d485d09792dc8bcad2e2f3c','python':sys.version,
              'hash_manifest_verified':True,'scope':'fixed finite controls; analytic membership is reviewed separately; no physical observations',
              'stopping_rule':'seven prescribed controls, stop on any failure or per-script120s ceiling; no adaptive expansion','runs':[]}
@@ -46,11 +59,11 @@ def main():
         result=subprocess.run([sys.executable,'-B',str(ROOT/(name+'.py')),*extra],capture_output=True,text=True,timeout=120,cwd=ROOT)
         if result.returncode: raise SystemExit(f'{name} failed ({result.returncode}): {result.stderr}')
         packet=json.loads(result.stdout)
-        destination=args.output_dir/(name+'.json');destination.write_text(result.stdout)
+        destination=output_dir/(name+'.json');destination.write_text(result.stdout)
         summary['runs'].append({'script':name+'.py','exit_code':result.returncode,
                  'seconds':round(time.monotonic()-start,6),'receipt':destination.name,
                  'receipt_sha256':hashlib.sha256(destination.read_bytes()).hexdigest()})
-    (args.output_dir/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
-    print(json.dumps({'all_seven_controls_passed':True,'immutable_fixture_and_package_hashes_verified':True,'receipt_file_count':len(jobs)+1,'full_summary':'summary.json','scope':summary['scope']},indent=2))
+    (output_dir/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+    print(json.dumps({'all_seven_controls_passed':True,'immutable_fixture_and_package_hashes_verified':True,'receipt_file_count':len(jobs)+1,'full_summary':str(output_dir/'summary.json'),'scope':summary['scope']},indent=2))
 
 if __name__=='__main__':main()
