@@ -119,8 +119,11 @@ declared; it establishes no new physical prediction or laboratory verdict.
 
 ## Executable-model premise audit, 2026-10-12
 
-The compact public README summarizes the registered finite results and the
-common-source execution. It promotes no claim or physical identification.
+The compact public README summarizes the registered results for agreement,
+quantum observations, carrier geometry, gauge symmetry, thermodynamics,
+record capacity and fields, alongside the common-source execution. Its
+computational, observation-first interpretation states the programme's
+proposal and motivation. It promotes no claim or physical identification.
 Physical identification here means agreement with observers' measurement
 statistics and interventions. It does not require an independently existing
 classical world or fundamental fields and spacetime.
