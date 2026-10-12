@@ -30,7 +30,7 @@ benchmark times retain their stated scope. See the
 | **N1-E** | Same load repair with contrast record, channel E | Active completion comparison | Idempotent completion of C on one seam; a conditional expectation on the binary shell. | Source selection of the retained algebra and record instrument. |
 | **N2** | N1 current drives local six-level response at both seam endpoints | One-way preservation benchmark | Preserves N1's load instrument and locality; inherits completion and finite binary-network convergence while protecting local block populations. | Full source grammar and selection against N3; all-input marginal preservation excludes feedback. |
 | **N3** | N1 current drives the local flat endpoint response | Simpler active alternative | Preserves the same load instrument and locality; one global change of coordinates reduces it to N1 with unchanged internal variables. | A reason to select or reject its trivial closed-loop response. |
-| **N4** | One coherent load–response exchange conjugates binary C/E | Reciprocity experiment | Private preparations change bare load probabilities while preserving locality, total occupation and completion. | Shared source/observable grammar; its changed current labels require geometry and clock readouts to be rederived. |
+| **N4** | One coherent load–response exchange conjugates binary C/E | Reciprocity experiment | Private preparations change bare load probabilities. The same bare-occupation protocol retains port geometry but exhibits memory beyond a rescaled native heat law. | Full source grammar, physical preparation/readout and clock selection; j is not a bare-load current. |
 | **S1** | Minimal canonical inertial completion of weighted scalar agreement | Separate field/component benchmark | Explicit Hamiltonian, conditional free-field continuum and controlled preparation/observation construction. | Derivation of inertia, quantum state, controls and physical time from the microscopic process. |
 
 N2 and N3 retain the native repair marginal. N4 tests the smallest reciprocal
@@ -234,11 +234,17 @@ interval bound at finite θ.
 
 **Main cost:** the old record label j refers to the conjugated occupation,
 not to a measured change of bare load. N1's current-derived geometry and
-clock identities cannot simply be imported. Fix a common admissible
-observable/record grammar before interpreting the feedback physically. On
-one seam the channel is unitarily equivalent to C; conjugating the observers
-too would turn that comparison into a coordinate change. The complete source
-grammar, physical time, gauge dynamics and interacting continuum are open.
+clock identities cannot simply be imported. The
+[shared bare-occupation protocol](MODEL_SEARCH.md#bare-occupation-geometry-and-a-clock-independent-memory-test)
+reconstructs `K=αL_ico/396` at the full tracial reference, with `α≥1/9`
+for every coupling. It retains the finite rank-three port geometry and,
+at θ=1/8 and 1/16, certifies nonzero two-attempt memory for every
+nonconstant carrier mode. A change of clock units cannot remove it. No
+additional state factor or interaction is needed for this test. On one seam
+the channel is unitarily equivalent to C; conjugating the observers too
+would change the fixed comparison. The physical interpretation of this
+preparation/readout, complete source grammar, gauge dynamics and interacting
+continuum remain open.
 
 ## S1: the canonical scalar benchmark
 
