@@ -76,10 +76,37 @@ def test_true_singular_kernel_completion_is_still_available():
     assert Fraction(.6)*Fraction(.15) == Fraction(.3)**2
     support = np.array([[.8, .4, 0.], [.4, .2, 0.], [0., 0., 1.]])
     kernel_state = np.eye(3)-support
+    # LAPACK can report this exact zero as a tiny positive value (for
+    # example 3.8858e-18 on Accelerate). The API deliberately refuses an
+    # unresolved floating support; exact source rank must not override
+    # that admission guard. Check the refusal instead of demanding that
+    # every platform resolve this particular rotated kernel.
+    values, vectors = np.linalg.eigh(tau.astype(complex))
+    if (np.count_nonzero(values > 0) != 2
+            or np.any(tau @ vectors[:, values <= 0] != 0)):
+        with pytest.raises(UnresolvedPetzSupport):
+            petz_recovery_kraus(tau, (3, 1))
+        return
     kraus = petz_recovery_kraus(tau, (3, 1))
     np.testing.assert_allclose(_apply(kraus, kernel_state), tau, atol=3e-15, rtol=0)
     probe = np.diag([0., 0., 1.])
     np.testing.assert_allclose(_apply(kraus, probe), probe, atol=3e-15, rtol=0)
+
+
+def test_resolved_rotated_kernel_completion_with_source_trace_drift():
+    # Equal entries give a directly cancelling numerical kernel while the
+    # final diagonal retains exact source trace drift. Completion replaces
+    # kernel mass by tau/Tr(tau), and supported action still recovers tau.
+    tau = np.array([[.375, .375, 0.], [.375, .375, 0.],
+                    [0., 0., np.nextafter(.25, 0.)]])
+    trace = sum(Fraction(float(x)) for x in np.diag(tau))
+    assert trace != 1
+    expected = np.array([[float(Fraction(float(x))/trace) for x in row]
+                         for row in tau])
+    kernel = np.array([[.5, -.5, 0.], [-.5, .5, 0.], [0., 0., 0.]])
+    kraus = petz_recovery_kraus(tau, (3, 1))
+    np.testing.assert_allclose(_apply(kraus, kernel), expected, atol=3e-15, rtol=0)
+    np.testing.assert_allclose(_apply(kraus, tau), tau, atol=3e-15, rtol=0)
 
 
 def test_complex_full_rank_reference_with_trivial_c_is_identity():
