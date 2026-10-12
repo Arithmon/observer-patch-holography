@@ -35,7 +35,12 @@ measured distance between physical laboratories.
 
 The actual source clock has a known binary probability law on its declared
 monotone phase window. Repeated, freshly prepared trials at each programmed
-setting give simulated binomial counts. Inverting the observed frequency
+setting give simulated binomial counts. Explicit PCG64 uniform draws are
+compared with the unrounded emitted probabilities. The receipt retains the
+sampling method and minimum distance from a draw to each probability
+threshold. This avoids the seeded binomial sampler's symmetry-branch jump
+at probability one half; the retained distances diagnose replay sensitivity,
+not uncertainty in the source probabilities. Inverting the observed frequency
 estimates the modular parameter; simultaneous Hoeffding intervals show the
 sampling uncertainty. The seed, sample size, all settings and all outcomes
 remain in the receipt.

@@ -17549,178 +17549,184 @@
       "fresh_complete_history_per_shot_and_setting": true,
       "monotone_modular_parameter_window": [
         0.0,
-        2.9681073819221844
+        2.968107381922697
       ],
       "physical_seconds_calibrated": false,
       "sampling_is_synthetic": true,
+      "sampling_method": "PCG64 uniform draws; count U < unrounded normalized source probability",
       "seed": 20261012,
       "sequential_use_of_one_system": false,
       "settings": [
         {
-          "absolute_parameter_estimation_error": 0.020020832369794073,
+          "absolute_parameter_estimation_error": 0.02732814687379228,
           "declared_normalized_probability_window": [
             0.5,
-            0.6293023136223319
+            0.6293023136223106
           ],
           "declared_parameter_window": [
             0.0,
-            2.9681073819221844
+            2.968107381922697
           ],
           "hoeffding_probability_radius": 0.005146997846583986,
-          "inferred_modular_parameter": 0.020020832369794073,
+          "inferred_modular_parameter": 0.02732814687379228,
           "interval_intersects_declared_model_range": true,
+          "minimum_sampling_threshold_distance": 1.6918582788072456e-06,
           "modular_parameter_interval": [
             0.0,
-            0.09527633816489198
+            0.10259310607263404
           ],
           "normalized_probability_interval": [
-            0.49622300215341597,
-            0.506516997846584
+            0.496723002153416,
+            0.507016997846584
           ],
-          "normalized_source_probability": 0.49999999999999994,
-          "number_one_count": 50137,
-          "observed_frequency": 0.50137,
+          "normalized_source_probability": 0.5000000000000002,
+          "number_one_count": 50187,
+          "observed_frequency": 0.50187,
           "point_estimate_projected_to_declared_window": false,
           "programmed_modular_parameter": 0.0,
           "programmed_modular_phase": 0.0,
           "programmed_parameter_inside_interval": true,
           "shots": 100000,
-          "source_law_probability_error": 1.1102230246251565e-16,
-          "source_retained_total_weight": 0.9999999999999468
+          "source_law_probability_error": 2.7755575615628914e-16,
+          "source_retained_total_weight": 0.9999999999999589
         },
         {
-          "absolute_parameter_estimation_error": 0.018371706062064508,
+          "absolute_parameter_estimation_error": 0.04217651786805077,
           "declared_normalized_probability_window": [
             0.5,
-            0.6293023136223319
+            0.6293023136223106
           ],
           "declared_parameter_window": [
             0.0,
-            2.9681073819221844
+            2.968107381922697
           ],
           "hoeffding_probability_radius": 0.005146997846583986,
-          "inferred_modular_parameter": 0.4763128575916329,
+          "inferred_modular_parameter": 0.452508045785732,
           "interval_intersects_declared_model_range": true,
+          "minimum_sampling_threshold_distance": 1.38809333194434e-06,
           "modular_parameter_interval": [
-            0.3990281662755175,
-            0.5544209863308283
+            0.37544523656992856,
+            0.5303465432288957
           ],
           "normalized_probability_interval": [
-            0.527103002153416,
-            0.537396997846584
+            0.525523002153416,
+            0.535816997846584
           ],
-          "normalized_source_probability": 0.5334659013412784,
-          "number_one_count": 53225,
-          "observed_frequency": 0.53225,
+          "normalized_source_probability": 0.533465901341273,
+          "number_one_count": 53067,
+          "observed_frequency": 0.53067,
           "point_estimate_projected_to_declared_window": false,
-          "programmed_modular_parameter": 0.4946845636536974,
+          "programmed_modular_parameter": 0.49468456365378277,
           "programmed_modular_phase": 0.2617993877991494,
           "programmed_parameter_inside_interval": true,
           "shots": 100000,
           "source_law_probability_error": 3.3306690738754696e-16,
-          "source_retained_total_weight": 0.9999999999999467
+          "source_retained_total_weight": 0.9999999999999597
         },
         {
-          "absolute_parameter_estimation_error": 0.0032240289586803472,
+          "absolute_parameter_estimation_error": 0.06883263160810782,
           "declared_normalized_probability_window": [
             0.5,
-            0.6293023136223319
+            0.6293023136223106
           ],
           "declared_parameter_window": [
             0.0,
-            2.9681073819221844
+            2.968107381922697
           ],
           "hoeffding_probability_radius": 0.005146997846583986,
-          "inferred_modular_parameter": 0.9861450983487144,
+          "inferred_modular_parameter": 0.9205364956994577,
           "interval_intersects_declared_model_range": true,
+          "minimum_sampling_threshold_distance": 1.4069375100400627e-05,
           "modular_parameter_interval": [
-            0.9004665743432279,
-            1.0741204793501102
+            0.8363831641700197,
+            1.0067256252846104
           ],
           "normalized_probability_interval": [
-            0.559313002153416,
-            0.569606997846584
+            0.555383002153416,
+            0.565676997846584
           ],
-          "normalized_source_probability": 0.5646511568111661,
-          "number_one_count": 56446,
-          "observed_frequency": 0.56446,
+          "normalized_source_probability": 0.5646511568111555,
+          "number_one_count": 56053,
+          "observed_frequency": 0.56053,
           "point_estimate_projected_to_declared_window": false,
-          "programmed_modular_parameter": 0.9893691273073948,
+          "programmed_modular_parameter": 0.9893691273075655,
           "programmed_modular_phase": 0.5235987755982988,
           "programmed_parameter_inside_interval": true,
           "shots": 100000,
-          "source_law_probability_error": 1.1102230246251565e-16,
-          "source_retained_total_weight": 0.9999999999999469
+          "source_law_probability_error": 3.3306690738754696e-16,
+          "source_retained_total_weight": 0.9999999999999589
         },
         {
-          "absolute_parameter_estimation_error": 0.030618041720320788,
+          "absolute_parameter_estimation_error": 0.013602313000309119,
           "declared_normalized_probability_window": [
             0.5,
-            0.6293023136223319
+            0.6293023136223106
           ],
           "declared_parameter_window": [
             0.0,
-            2.9681073819221844
+            2.968107381922697
           ],
           "hoeffding_probability_radius": 0.005146997846583986,
-          "inferred_modular_parameter": 1.514671732681413,
+          "inferred_modular_parameter": 1.4704513779610393,
           "interval_intersects_declared_model_range": true,
+          "minimum_sampling_threshold_distance": 8.309207093049054e-06,
           "modular_parameter_interval": [
-            1.4095026810677809,
-            1.6262773226070966
+            1.3675485015968811,
+            1.5792089836731062
           ],
           "normalized_probability_interval": [
-            0.587753002153416,
-            0.598046997846584
+            0.585623002153416,
+            0.595916997846584
           ],
-          "normalized_source_probability": 0.5914305427854606,
-          "number_one_count": 59290,
-          "observed_frequency": 0.5929,
+          "normalized_source_probability": 0.5914305427854455,
+          "number_one_count": 59077,
+          "observed_frequency": 0.59077,
           "point_estimate_projected_to_declared_window": false,
-          "programmed_modular_parameter": 1.4840536909610922,
+          "programmed_modular_parameter": 1.4840536909613484,
           "programmed_modular_phase": 0.7853981633974483,
           "programmed_parameter_inside_interval": true,
           "shots": 100000,
-          "source_law_probability_error": 0.0,
-          "source_retained_total_weight": 0.9999999999999469
+          "source_law_probability_error": 1.1102230246251565e-16,
+          "source_retained_total_weight": 0.9999999999999591
         },
         {
-          "absolute_parameter_estimation_error": 0.007255979651460409,
+          "absolute_parameter_estimation_error": 0.060556547960676,
           "declared_normalized_probability_window": [
             0.5,
-            0.6293023136223319
+            0.6293023136223106
           ],
           "declared_parameter_window": [
             0.0,
-            2.9681073819221844
+            2.968107381922697
           ],
           "hoeffding_probability_radius": 0.005146997846583986,
-          "inferred_modular_parameter": 1.9714822749633292,
+          "inferred_modular_parameter": 1.918181706654455,
           "interval_intersects_declared_model_range": true,
+          "minimum_sampling_threshold_distance": 1.2077890728656726e-06,
           "modular_parameter_interval": [
-            1.8308897568271845,
-            2.1329543897356684
+            1.783234151232278,
+            2.070868489425651
           ],
           "normalized_probability_interval": [
-            0.606583002153416,
-            0.616876997846584
+            0.604703002153416,
+            0.614996997846584
           ],
-          "normalized_source_probability": 0.6119790883650421,
-          "number_one_count": 61173,
-          "observed_frequency": 0.61173,
+          "normalized_source_probability": 0.6119790883650236,
+          "number_one_count": 60985,
+          "observed_frequency": 0.60985,
           "point_estimate_projected_to_declared_window": false,
-          "programmed_modular_parameter": 1.9787382546147896,
+          "programmed_modular_parameter": 1.978738254615131,
           "programmed_modular_phase": 1.0471975511965976,
           "programmed_parameter_inside_interval": true,
           "shots": 100000,
-          "source_law_probability_error": 1.1102230246251565e-16,
-          "source_retained_total_weight": 0.999999999999947
+          "source_law_probability_error": 0.0,
+          "source_retained_total_weight": 0.9999999999999589
         }
       ],
       "shots_per_setting": 100000,
       "simultaneous_confidence_lower_bound": 0.95,
-      "state_derived_modular_frequency": 0.5292248981159262,
-      "state_derived_normalized_contrast": 0.2586046272446638,
+      "state_derived_modular_frequency": 0.5292248981158348,
+      "state_derived_normalized_contrast": 0.2586046272446212,
       "steps_per_segment": 512
     },
     "response_distances": {

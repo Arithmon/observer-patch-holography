@@ -2,6 +2,7 @@
 import json
 import math
 
+import numpy as np
 import pytest
 
 from . import calibration as c
@@ -37,6 +38,43 @@ def test_seeded_clock_counts_are_reproducible_without_refitting_the_clock(receip
     second = c.clock_benchmark(16)
     assert [row["number_one_count"] for row in first["settings"]] == [row["number_one_count"] for row in second["settings"]]
     assert first["state_derived_modular_frequency"] == second["state_derived_modular_frequency"]
+
+
+def test_sampling_keeps_source_roundoff_without_flipping_the_half_probability_count(monkeypatch):
+    clock = {"contrast": .25, "mass": 1., "modular_frequency": .5,
+             "monotone_parameter_window": [0., math.pi]}
+    emitted = {"clock_parameters": clock, "all_pass": True, "settings": []}
+    monkeypatch.setattr(c.experiment, "history", lambda *args: None)
+    monkeypatch.setattr(c.modular_clock, "receipt", lambda _: emitted)
+    probabilities = (math.nextafter(.5, 0.), math.nextafter(.5, 1.))
+    results = []
+    for probability in probabilities:
+        emitted["settings"] = [{"clock_bit_marginal": [1-probability, probability],
+                                "modular_parameter": 0., "phase": 0.,
+                                "analytic_probability_error": abs(probability-.5)}]
+        results.append(c.clock_benchmark()["settings"][0])
+    assert [row["normalized_source_probability"] for row in results] == list(probabilities)
+    assert results[0]["number_one_count"] == results[1]["number_one_count"]
+    assert min(row["minimum_sampling_threshold_distance"] for row in results) > 1e-10
+    # Reconstruct uniforms directly from the independent raw integer stream.
+    raw = np.random.PCG64(20261012).random_raw(100000)
+    expected = sum(int(value) < 2**63 for value in raw)
+    assert results[0]["number_one_count"] == expected
+
+
+def test_sampling_counts_actual_threshold_crossings_without_rounding_probabilities():
+    class FixedUniforms:
+        def random(self, shots):
+            assert shots == 3
+            return np.array([.25, .5, .75])
+
+    below = math.nextafter(.5, 0.)
+    above = math.nextafter(.5, 1.)
+    count_below, margin_below = c._sample_clock_count(FixedUniforms(), 3, below)
+    count_above, margin_above = c._sample_clock_count(FixedUniforms(), 3, above)
+    assert (count_below, count_above) == (1, 2)
+    assert margin_below == .5-below
+    assert margin_above == above-.5
 
 
 def test_interval_inversion_handles_boundaries_and_empty_model_intersections():
