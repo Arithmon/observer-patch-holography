@@ -1720,7 +1720,7 @@
           "declared_common_source_thermal_reference"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "296a351623d83dff58fa5d941c3e842af261fd8f9ef9c3d2fd6eea5ab14e01d6"
+        "original_claim_sha256": "c5aeb68574ae0966b19c7957687610105268573a5cff8786af7b641d2561cbcd"
       },
       "OPH-MODEL-SCALAR-RESPONSE-EXECUTION": {
         "assumptions": [

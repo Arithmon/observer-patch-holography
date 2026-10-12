@@ -8,8 +8,13 @@ its actual interfaces while preserving the demonstrated behavior.
 The newest step is the [common interacting source](common_source/README.md):
 quantum electric flux, charged CAR matter and a scalar field share one
 evolving register, with complete measurements, retained records and native
-feedback. Its finite scalar response has an exact nonzero interval. This
-binds several finite theorem interfaces to one process; the interacting
+feedback. For zero native preparation current, its scalar response has an
+[exact nonzero infinite-occupation interval](common_source/INFINITE_HISTORY.md), including the actual
+coordinate-sign measurement and the preparation, propagation and readout
+errors of that calculation.
+A separate moment bound controls finite occupation through retained matter
+feedback for arbitrary matter/reference inputs. This
+binds several theorem interfaces to one process; the interacting
 spatial continuum, gravity and independent physical comparison remain open.
 
 The [observer readout bridge](common_source/OBSERVER_READOUTS.md) extracts
@@ -33,10 +38,14 @@ modular-parameter inference and oscillator energy convergence against their
 mathematical targets, and make the remaining unit-calibration freedom explicit.
 
 The [fixed-reference modular bridge](common_source/THERMAL_CLOCK.md) connects
-the supplied Hamiltonian evolution to the modular flow of a chosen faithful
-Gibbs reference, while the actual observed state changes. Its clock probes
-execute on the same recorded histories. Reference selection by repair,
-physical duration and the relation to spatial propagation remain open.
+continuous segments of the supplied full Hamiltonian evolution to the
+modular flow of a chosen faithful Gibbs reference, with `t=-beta s`, while
+the actual observed state changes. This reference and full-work algebra
+differ from the earlier local-reference clock. Its clock probes continue
+the finite sharp-readout histories; neither clock is included in the
+infinite sharp-signal certificate or the smooth-detector occupation bound.
+Reference selection by repair, physical duration and the relation to
+spatial propagation remain open.
 
 The [local history-repair formulation](common_source/HISTORY_REPAIR.md)
 recovers that same completed observation history under every fair update

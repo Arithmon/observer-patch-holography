@@ -259,5 +259,5 @@ def run():
                       'interaction': 'g sqrt(2) Q0 (nL0-nR0), with g=1/4 a declared model coefficient',
                       'time': 'declared Hamiltonian model coordinate with intervals 1 and 1/2; no physical clock calibration',
                       'reference': 'faithful tracial reference for block-algebra repair; the separately prepared pure state is not selected by that unconstrained reference',
-                      'errors': 'rational all-input finite temporal channel bounds; floating source execution checked against independent finite split matrices; numerical, service, cutoff and spatial continuum bounds for this interacting family remain open',
+                      'errors': 'rational all-input finite temporal channel bounds; floating source execution checked against independent finite split matrices; separate interacting occupation and infinite coordinate-sign certificates are in infinite_results.json; numerical execution, physical services and spatial continuum errors remain separate',
                       'completion': 'finite common-process construction; not a complete OPH physical model or empirical validation'}}

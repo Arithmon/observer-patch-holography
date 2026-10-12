@@ -3,8 +3,10 @@
 **One finite source program couples quantum electric flux, charged
 fermions and a neutral scalar, measures that shared state, and uses its
 records for feedback and native repair.** An exact certificate proves a
-nonzero scalar response to the recorded matter feedback. This is a finite
-construction toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
+nonzero scalar response to the recorded matter feedback. A separate exact
+certificate proves that this response survives infinite oscillator
+occupation and the actual coordinate-sign readout. This is a construction
+toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
 That target remains open.
 
 The [observer readout bridge](OBSERVER_READOUTS.md) reconstructs Hilbert
@@ -14,6 +16,9 @@ extracts the interactions between its declared regions. The
 [occupation analysis](OCCUPATION_REFINEMENT.md) adds an interacting
 two-oscillator limit; its final sharp readout converges strongly, with a
 finite-cutoff error rate still missing for that last instrument.
+The [infinite-history certificate](INFINITE_HISTORY.md) independently
+encloses the limiting sharp-readout response itself; it does not supply
+that missing finite-detector comparison rate.
 
 A separate [finite-resolution detector](SMOOTH_REFINEMENT.md) replaces that
 sharp sign measurement with a source-executed Ramsey readout. Its complete
@@ -48,11 +53,13 @@ scale. A propagation law connecting these readouts remains to be built.
 The [fixed-reference clock bridge](THERMAL_CLOCK.md) distinguishes a
 stationary equilibrium reference from the actual changing observation state.
 Choosing a faithful Gibbs reference for the existing full Hamiltonian makes
-its between-event dynamics modular, with a known parameter conversion.
+its continuous between-event dynamics modular, with `t=-beta s`.
 Source-executed clock probes retain the earlier records. The reference is
 constructed from the supplied action; its selection by repair and a physical
 time calibration remain unproved. The earlier local-clock construction and
 the failed identification using the local post-measurement state are retained.
+Neither clock continuation is included in the infinite sharp-readout
+certificate or transferred to the smooth detector.
 
 The [native propagation check](CAUSALITY.md) verifies exact dependency cones
 for fixed seam schedules on all 78 admitted load states. Concrete paired
@@ -74,6 +81,7 @@ From the repository root, after installing `model/requirements.txt`:
 
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source --check model/common_source/results.json
+python3 -m model.common_source.infinite_history --check model/common_source/infinite_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.bridge --check model/common_source/bridge_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.smooth_bridge --check model/common_source/smooth_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.thermal_bridge --check model/common_source/thermal_results.json
@@ -89,6 +97,11 @@ rational error certificates. [bridge_results.json](bridge_results.json)
 retains the Hilbert/modular/regional readouts and every appended clock branch.
 [smooth_results.json](smooth_results.json) retains the separate finite-resolution
 histories, feedback and disconnected controls, energy ledger and error bounds.
+[infinite_results.json](infinite_results.json) retains the exact infinite
+sharp-readout signal, state-error budgets, polynomial hashes and controls.
+[thermal_results.json](thermal_results.json) retains the separate fixed-reference
+clock continuations; [causality_results.json](causality_results.json) retains
+the fixed-schedule native dependency and delayed-influence checks.
 The [derivation](DERIVATION.md) supplies the
 carrier maps, proof and theorem boundaries. `python3 -m model.verify`
 checks this package's hashes and replays it with the other model packets.
@@ -191,11 +204,54 @@ ideal exact-factor source words, for the entire recorded instrument and an
 arbitrary spectator reference. It excludes binary64 coefficient and
 execution errors and physical service errors. Actual floating source
 execution is separately checked against independent matrices. The two
-cutoffs in the original receipt remain a numerical diagnostic. The separate
-[interacting occupation analysis](OCCUPATION_REFINEMENT.md) bounds the
-complete pre-readout evolution and proves strong convergence of the final
-sharp scalar instrument. Its finite-cutoff readout error rate and spatial
-continuum remain open; the older free Gaussian bound is not reused.
+executed cutoffs provide a numerical diagnostic. The following independent
+certificate supplies the interacting occupation and infinite-readout result.
+
+## Removing the occupation and readout approximations
+
+For the same interacting action, infinite coupled free vacuum, zero native
+preparation current and feedback schedule, the actual coordinate half-line
+readout has unconditional enabled-minus-disabled probability in
+**[−0.024045670143, −0.024043450955]**. This interval excludes zero after
+including initial-state projection, full-Hamiltonian Taylor remainders,
+discarded occupation support, coefficient rounding and the final readout.
+Removing the interaction gives exactly zero contrast.
+
+This is an exact rational certificate for two infinite oscillators, with
+all records and quantum outcome states retained. The
+[derivation](INFINITE_HISTORY.md) and compact [receipt](infinite_results.json)
+are reproducible without floating simulation as an input. The terminal
+polynomials can be regenerated with `--polynomials --write PATH.json`.
+
+The [readout audit](READOUT.md) also identifies a necessary distinction:
+the sign projector of a truncated coordinate is not the compression of the
+infinite sign projector. Their operator difference already has norm about
+0.101058 at d=2. The previous finite signal remains valid for its detector;
+the new certificate uses the actual infinite detector, including its
+postmeasurement tails.
+
+A separate [occupation theorem](OCCUPATION.md) bounds the rectangular
+finite-Hamiltonian family through the first retained matter measurement
+and feedback, uniformly over arbitrary initial matter states and untouched
+references with the fixed scalar vacuum. At onsite d=64 the pre-readout
+trace-distance error is below 0.000002498. The final scalar read requires
+the separate readout treatment above. The independent
+[fourth-moment analysis](OCCUPATION_REFINEMENT.md) supplies a further
+pre-readout bound and proves strong convergence of the complete sharp
+history for all three native currents, including its native continuation.
+Neither estimate is a finite-cutoff error rate for the final sharp detector.
+These occupation results supply no spatial continuum or physical service
+error budget.
+
+The infinite-history derivation also proves that the finite sign instruments
+converge to this same infinite instrument, including terminal states. With
+`d=2^k` and `d^2` exact palindromic steps per interval, the mathematical
+finite-family contrast is eventually strictly negative. This is a limit
+theorem, without an explicit sufficient d or a larger native compiler run.
+It concerns zero native preparation current. The sharp postread quantum
+states retain their full half-line wavefunctions; their kinetic energy
+need not be finite. The pre-readout moment bounds therefore cannot be
+reused automatically through further field evolution and sharp reads.
 
 For the separate smooth detector, the full ideal history error decreases as
 `O(1/d)` at fixed model time. Its conservative bound is about `0.2063` at
@@ -205,6 +261,9 @@ executed dimensions 2 and 4 the bound is vacuous, so agreement between those
 small cutoffs does not certify continuum precision. The joint ideal limit
 uses `n(d)=d^2` temporal steps; floating execution and physical service errors
 remain separate.
+
+The local-reference and fixed-Gibbs-reference clock continuations have no
+proved occupation limit in either detector analysis.
 
 ## What this establishes and what remains
 
@@ -218,10 +277,14 @@ approximate occupation cutoffs. No full Lean observer or consensus-tower
 instantiation is asserted.
 
 The action, initial projected free vacuum, couplings and model-coordinate
-schedule are supplied. The appended modular clock reads an ensemble
-probability on a bounded phase window; its pulse schedule is supplied and
-its physical duration is uncalibrated. In particular the preparation is not established as
-the ground state of the coupled Hamiltonian. P and N retain their existing
+schedule are supplied. The local-reference clock reads an ensemble
+probability on a bounded phase window. The fixed-Gibbs-reference bridge
+relates modular and Hamiltonian parameters on continuous evolution segments;
+it does not turn the intervening measurements and feedback into one modular
+unitary flow. Both protocols use declared references and pulse schedules,
+without physical duration calibration. The actual preparation remains the
+projected free vacuum, not the Gibbs reference or an established ground state
+of the coupled Hamiltonian. P and N retain their existing
 closure and physical-readback contracts; they do not fix these additional
 choices. This construction has no spatial refinement, established
 interacting 3+1-dimensional effective field theory, responsive gravity,

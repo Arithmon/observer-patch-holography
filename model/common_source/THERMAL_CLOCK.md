@@ -159,6 +159,11 @@ remain supplied physical services.
 No occupation or spatial continuum theorem for this Gibbs reference is being
 added here. The old sharp-readout and the separate smooth-readout occupation
 results retain their own precisely stated protocols and limits.
+The appended clock evolution occurs after the sharp field readout, whose
+half-line projection can destroy finite kinetic energy and number moments.
+The pre-readout moment bounds therefore do not automatically control these
+continuations; an occupation-limit claim for this clock needs its own
+post-readout state and error analysis.
 
 ## Why the previous result is still correct
 
