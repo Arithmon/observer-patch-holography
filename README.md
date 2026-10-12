@@ -33,6 +33,11 @@ construction.** Its finite observer executes local repair, retains an
 observation and uses that record to choose its next interaction. The
 P-dependent detector computes the electromagnetic coupling and lets a
 retained binary outcome control the next repair.
+The [scalar detector](model/observer/scalar_response/README.md) uses the native
+current to prepare a scalar field, reads one binary outcome and feeds it back
+into native repair, with a controlled comparison across the existing field
+refinements. Its field law, vacuum, apparatus and model clock are explicit
+inputs.
 
 Run from the repository root with Python 3.11 or newer:
 
@@ -51,6 +56,10 @@ identification remains part of the research below.
 We have **runnable finite observers, conditional mathematical results and
 concrete repair candidates**. The native observer and P-dependent binary
 detector execute complete observation, record and feedback protocols.
+The scalar adapter connects those interfaces to a supplied free-field
+continuum family and an independently checkable conditional detector
+prediction. It does not derive that Hamiltonian from integer averaging or
+establish a new empirical prediction of OPH.
 The candidates reproduce and connect some required structures, and we can
 distinguish several of them in simulations. **We do not have a
 common model established as physically correct.** The

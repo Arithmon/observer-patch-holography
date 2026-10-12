@@ -13,6 +13,15 @@ coin/current letter and makes a binary seam decision. **Two events** counts
 sequential interactions; it does not mean that the whole recorder has only two
 possible records.
 
+The [scalar detector](scalar_response/README.md) uses the first native current
+to prepare a signed intervention in the existing scalar field, executes a
+binary quantum readout and lets its retained bit select the second native
+repair. Its supplied action and vacuum have an inherited continuum comparison;
+the [prediction protocol](scalar_response/PREDICTION.md) states the feedback
+contrast, null and reversal controls. Install `model/requirements.txt` for
+this adapter; the native and P-dependent commands below remain standard-library
+executions.
+
 ## Run from the repository root
 
 The observer code uses the Python standard library. The capacity calculation
@@ -127,6 +136,7 @@ compression statement or a cosmological horizon capacity.
 | [results/capacity.json](results/capacity.json) | Reachable records, carrier certificates and code tables |
 | [results/run.json](results/run.json) | A reproducible 20,000-trial run with visible traces |
 | [p_response/](p_response/) | P-dependent binary electromagnetic observation and feedback |
+| [scalar_response/](scalar_response/) | Supplied scalar field, binary instrument, native continuation and controlled refinement |
 
 These are implemented finite observer functions with designed apparatus and
 protocol choices. Uniqueness of that design is not a completion requirement.

@@ -37,7 +37,7 @@ benchmark times retain their stated scope. See the
 | **N2** | N1 current drives local six-level response at both seam endpoints | One-way preservation benchmark | Preserves N1's load instrument and locality; inherits completion and finite binary-network convergence while protecting local block populations. | Full source grammar and selection against N3; all-input marginal preservation excludes feedback. |
 | **N3** | N1 current drives the local flat endpoint response | Simpler active alternative | Preserves the same load instrument and locality; one global change of coordinates reduces it to N1 with unchanged internal variables. | A reason to select or reject its trivial closed-loop response. |
 | **N4** | One coherent load–response exchange conjugates binary C/E | Reciprocity experiment with abstract central-port attachment | Private preparations change bare load probabilities. Twelve central addresses preserve its quantum channel in a complete abstract scalar-seam source grammar. It retains normalized port geometry but exhibits memory beyond a rescaled native heat law at the same full quantum reference. | Physical realization, preparation/readout, retained-record service and clock comparison; j is not a bare-load current. |
-| **S1** | Minimal canonical inertial completion of weighted scalar agreement | Separate field/component benchmark | Explicit Hamiltonian, conditional free-field continuum and controlled preparation/observation construction. | Derivation of inertia, quantum state, controls and physical time from the microscopic process. |
+| **S1** | Minimal canonical inertial completion of weighted scalar agreement | Conditional field model with executed observer adapter | Explicit Hamiltonian, controlled free-field continuum, and a native-current preparation/binary field detector/native feedback protocol. | Derivation or physical identification of inertia, quantum state, controls and model time on the same microscopic process. |
 
 N2 and N3 retain the native repair marginal. N4 tests the smallest reciprocal
 extension examined after a one-term obstruction, using the same state factors.
@@ -332,6 +332,16 @@ preserves only the normalized classical configuration Gibbs marginal; its
 full phase-space reference and quantum vacuum change. Nonzero kinetic
 deformation violates the canonical theorem's same-capacity inertia premise.
 This control and N4's fixed-full-reference counterpair have different scopes.
+
+The [executed scalar adapter](observer/scalar_response/README.md) lets the
+native first current prepare a signed field displacement, performs a binary
+Weyl read and uses only its result for native feedback. The mean second
+current is `5r_q/132`, where `r_q` is the positive-preparation detector bias.
+The inherited scalar probability error `ε_q` bounds the complete history
+distance by `5ε_q/33` and this mean's error by `5ε_q/132`.
+This is a conditional connection to the supplied scalar family, with explicit
+instrument branches and a [detector prediction](observer/scalar_response/PREDICTION.md);
+it does not derive the Hamiltonian from native averaging.
 
 **Next decisive work:** connect the inertia and Hamiltonian time to the same
 microscopic events as N1/N2, and execute a complete preparation/readout history

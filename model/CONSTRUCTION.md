@@ -36,6 +36,13 @@ invocations; it does not mean that the source or complete history has only
 two alternatives. The binary detector is an access interface to a richer
 source and record history.
 
+The [scalar-response construction](observer/scalar_response/README.md)
+extends this protocol through the existing scalar field and its bounded
+continuum comparison. The native current sets a local preparation sign;
+the field detector writes the bit that controls the next native event.
+This joins an executed observer to a supplied field model without identifying
+native integer averaging with the field Hamiltonian.
+
 ## Native repair and its observer contract
 
 Use the twelve-port source, with 78 nonnegative integer configurations of
@@ -201,6 +208,48 @@ universal physical clock.
 
 ## Retained scalar and entropy constructions
 
+### Executed scalar detector and native continuation
+
+The [scalar adapter](observer/scalar_response/README.md) prepares the original
+finite-action vacuum with signed momentum mean `4j f`, where the first native
+current is `j∈{−1,0,1}` and f is the inherited left-slab profile. The supplied
+positive scalar Hamiltonian evolves this field. A binary Weyl instrument
+reads the inherited detector profile at model time `t∈[19/20,1]`, retains
+its conditional output state and commits `y=±1`. Only y chooses the second
+native seam. The first current and the detector bit remain readable after
+feedback. Conditional states use finite superpositions of Weyl-displaced
+coherent states, with their coefficients and Gram overlaps retained; a full
+Fock-space vector need not be allocated. The instrument acts on the field;
+it is not a draw from a stored theoretical receipt or execution of a compiled
+native quantum-control word.
+
+Write `r_q(t)=Pr(y=+1|j=1)−1/2` at refinement q. Symmetric signed preparation
+gives the native continuation statistic
+
+```text
+E[j2] = 5 r_q(t)/132.
+```
+
+The comparison uses the existing golden refinements `q=13,34,89,233`, the same
+preparation and detector profiles, and the same model-time window. If the
+parent scalar bound is `|r_q−r_cont|≤ε_q`, the complete labelled outcome-history
+law differs by total variation at most `5ε_q/33`, and the second-current mean
+differs by at most `5ε_q/132`. These transfer bounds concern this specified
+observable and protocol; they do not assert convergence of the full Fock
+state or an interacting theory. The first two grids retain the parent's
+trivial error bound; q=89 and q=233 give nontrivial bounds. The analytic parent
+establishes the limit independently of these four numerical executions.
+
+The [prediction protocol](observer/scalar_response/PREDICTION.md) fixes the
+feedback statistic with disconnected, zero-preparation and sign-reversal
+controls. Independent mathematical reconstruction and seeded execution test
+the software prediction. A physical comparison additionally needs a realized
+field, apparatus, calibration and independently acquired records. The scalar
+action, quantization, vacuum, preparation, Born readout and model clock remain
+explicit inputs; the finite native observer does not select them.
+
+### Scalar action and entropy results retained as inputs
+
 The separate scalar benchmark factors weighted agreement into its supplied
 stiffness. If repair capacity also measures inertia, linear dynamics, energy
 conservation, time reversal and the declared velocity reading give
@@ -250,6 +299,7 @@ finite software run.
 | --- | --- | --- |
 | N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
 | P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
+| Native-current scalar preparation, binary field instrument and native continuation | Executed conditional instrument, feedback mean `5r_q/132`, inherited history and mean refinement bounds | Source identification of the scalar action, vacuum, preparation/readout and clock; a physically calibrated independent detector comparison |
 | Reachable native record words on the declared carrier | Existing correctable-record evaluator and explicit classical prefix encoding | A compatible physical capacity cut and global closure family before identifying this count with cosmological N |
 | Twelve central addresses with binary native/N4 quantum blocks | Full-channel decoding, complete abstract scalar-seam grammar, shared full reference and normalized geometry with distinct finite kinetics | Physical realization, retained-record delivery and compatible apparatus; the address is not an occupation measurement |
 | N4 tracial bare occupation at incident attempts | Corrected first-hit null and inherited strict finite memory bounds | N4 occupation preparation, detector and incident-event recognition; the N1 current detector does not measure this occupation |

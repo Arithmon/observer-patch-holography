@@ -47,6 +47,15 @@ sorties de fermeture P/N et déclare son appareil et son protocole. Elle ne
 requiert pas que l’autoréférence choisisse un appareil unique ; son exécution
 logicielle n’établit pas la réalisation physique de l’univers entier.
 
+Le [détecteur scalaire](model/observer/scalar_response/README.md) utilise le
+premier courant natif pour préparer un champ scalaire, lit un résultat binaire
+et commande la réparation suivante avec ce seul registre. La famille de champs
+fournie possède une comparaison contrôlée avec sa limite continue ; le
+protocole fixe une prédiction conditionnelle de rétroaction et ses contrôles.
+L’action, le vide, l’appareil et le temps du modèle restent des entrées
+explicites. Ce résultat ne dérive pas le Hamiltonien de la moyenne entière
+et n’établit pas une nouvelle prédiction empirique d’OPH.
+
 La [construction à ports centraux](code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
 ajoute douze adresses classiques à la source native/N4 en préservant son
 canal quantique décodé. Deux sources abstraites partagent la même référence

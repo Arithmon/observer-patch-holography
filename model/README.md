@@ -11,6 +11,11 @@ P-dependent version computes the electromagnetic coupling, produces a
 binary detector result and lets only that bit control the next repair.
 These finite constructions are implemented and runnable under their stated
 premises; they do not require a theorem that their design is unique.
+The [scalar detector](observer/scalar_response/README.md) connects that
+observer to the existing free-field construction: its first current prepares
+a signed scalar intervention, a binary field read controls the next repair,
+and the inherited refinement bounds constrain the resulting history law.
+The scalar Hamiltonian, vacuum, readout and model-time convention are supplied.
 
 ## Run the observer
 
@@ -48,7 +53,7 @@ replays, new output options and the full controller contract. Result writes
 refuse to overwrite an existing file; use `--write PATH` to retain the full
 result and example traces. The [local-tick README](local_tick/README.md)
 gives its certificate replay and the incident-attempt stopping rule.
-`model.verify` regenerates the five retained receipts and checks their hashes.
+`model.verify` replays the retained results and checks their artifact hashes.
 
 ## What is implemented
 
@@ -56,6 +61,7 @@ gives its certificate replay and the incident-attempt stopping rule.
 | --- | --- |
 | Native observer | [Native C, retained tape and record-only controller](observer/README.md), including all 264 benchmark paths and exact feedback controls |
 | Binary electromagnetic observation | [P-dependent detector](observer/p_response/README.md): evaluates α(P), writes one stable bit and uses it for the next native repair; all 528 weighted paths |
+| Scalar field observation and refinement | [Scalar detector](observer/scalar_response/README.md): native-current preparation, executed binary field instrument and bit-only feedback, with conditional continuum comparison and [prediction protocol](observer/scalar_response/PREDICTION.md) |
 | Finite capacity | [Correctable record capacity and compact controller](observer/CAPACITY.md): 11 terminal native words, 16 reachable prefixes and a four-bit classical encoding under the binary preparation |
 | Direct execution | [20,000-trial native receipt](observer/results/run.json) and [200,000-trial detector receipt](observer/p_response/results.json), alongside exact references |
 | Local event clock | [N4 local-tick calculation](local_tick/README.md): corrected native null and certified positive memory bounds while remote events continue |
@@ -73,6 +79,10 @@ protocol are construction choices. P enters the detector probability and
 the feedback response; N bounds capacity on a declared physical carrier.
 This does not claim fabricated hardware, a complete cosmological simulation,
 an online learner or physical validation of the entire model.
+The scalar adapter executes a supplied free-field model; native integer
+averaging does not by itself derive that Hamiltonian or its quantum vacuum.
+Its detector prediction is conditional on the stated apparatus and field
+law, with independent software controls and a separate physical test boundary.
 
 ## Continue the construction
 

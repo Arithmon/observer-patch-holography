@@ -330,7 +330,8 @@
     "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
     "OPH-MODEL-OBSERVER-RECORD-CAPACITY",
     "OPH-MODEL-P-RESPONSE-EXECUTION",
-    "OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE"
+    "OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE",
+    "OPH-MODEL-SCALAR-RESPONSE-EXECUTION"
   ],
   "edges": [
     {
@@ -2892,6 +2893,21 @@
       "from": "OPH-ALPHA-PIXEL",
       "to": "OPH-MODEL-P-RESPONSE-EXECUTION",
       "role": "consumes the declared source-only forward-closure and coupling map as conditional design inputs, preserving physical endpoint status"
+    },
+    {
+      "from": "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+      "to": "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
+      "role": "supplies the initial current instrument and retained-bit-controlled second native repair"
+    },
+    {
+      "from": "OPH-SCALAR-SEQUENTIAL-INSTRUMENT",
+      "to": "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
+      "role": "reuses the supplied scalar vacuum and binary field-pointer instrument; executes explicit conditional branch states"
+    },
+    {
+      "from": "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT",
+      "to": "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
+      "role": "imports only the declared scalar probability comparison and refinement family; transfers the bound to composed histories and native feedback"
     }
   ]
 }

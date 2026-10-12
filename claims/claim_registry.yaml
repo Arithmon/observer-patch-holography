@@ -14549,6 +14549,51 @@
         "boundary": [],
         "rationale": "This row certifies a finite supplied N4 endpoint protocol by matrix identities and an existing interval Gram bound. Its tracial source, uniform schedule, incident detector and occupation readout are explicit inputs, with no canonical physical-clock, apparatus-realization or law-selection premise consumed."
       }
+    },
+    {
+      "claim_id": "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
+      "statement": "The executable scalar-response adapter composes the native two-event observer with the supplied positive scalar Hamiltonian, original vacuum and golden refinement family q=13,34,89,233. The first native current j in {-1,0,1} sets the signed momentum preparation 4j f. At model time t in [19/20,1], an explicit binary Weyl instrument acts on the evolved field, retains its conditional output state and writes y; only y controls the second native repair, preserving committed classical records. If r_q(t)=Pr(y=+1|j=1)-1/2, complete finite-history enumeration gives E[j2]=5r_q/132. The existing scalar probability bound epsilon_q transfers to complete labelled outcome-history total variation at most 5epsilon_q/33 and second-current mean error at most 5epsilon_q/132 relative to the declared continuum comparison. The retained protocol specifies feedback, null and reversal controls with independent software checks. This executes a conditional detector and native continuation; it does not derive the scalar action or vacuum from integer averaging, certify full Fock-state convergence, calibrate a physical clock, or establish an empirical OPH prediction.",
+      "owner_paper": "model/observer/scalar_response/README.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_finite_executed_construction",
+      "assumptions": [
+        "declared_native_current_two_event_observer",
+        "uniform_binary_total_two_preparation",
+        "declared_scalar_action_vacuum_and_refinement_adapter",
+        "declared_scalar_Weyl_branch_instrument_and_native_feedback"
+      ],
+      "imported_results": [
+        "Gaussian_Weyl_characteristic_function",
+        "binary_Kraus_Stinespring_instrument",
+        "coherent_state_evolution_under_positive_quadratic_action",
+        "total_variation_contraction_under_finite_classical_continuation"
+      ],
+      "oph_specific_delta": "Executes the scalar field detector on explicit conditional branches between two native repairs, restricts the actuator to its committed binary outcome, and transfers the existing scalar continuum error to the full composed history and native feedback statistic.",
+      "novelty_type": "conditional_scalar_detector_execution_and_native_feedback_refinement",
+      "evidence": [
+        "model/observer/scalar_response/README.md",
+        "model/observer/scalar_response/DERIVATION.md",
+        "model/observer/scalar_response/PREDICTION.md",
+        "model/observer/scalar_response/experiment.py",
+        "model/observer/scalar_response/results.json",
+        "model/observer/scalar_response/test_experiment.py",
+        "code/source_scalar_packet/source_common_scalar_receipt.json",
+        "code/source_scalar_instruments/sequential_instrument.py",
+        "model/observer/scalar_response/field.py",
+        "model/observer/scalar_response/test_field.py"
+      ],
+      "falsifier": "Independent field evolution or pointer amplitudes change a detector probability; instrument normalization or conditional output states fail; any retained branch is omitted; the controller reads hidden field or current data beyond its bit; the native coefficient or inherited error transfer fails; null or reversal controls disagree; or canonical replay fails.",
+      "scope_if_false": "The scalar observer adapter, its execution or the stated error transfer fails. The independent native observer and parent supplied-action scalar theorems retain their own scopes; no empirical OPH verdict follows.",
+      "status": "implemented_and_replayed_under_declared_finite_contract",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This software construction supplies the finite scalar action, canonical quantization, vacuum, preparation, binary Born instrument, model time and refinement dictionary explicitly, as do its conditional scalar theorem parents. It asserts neither source-derived physical field laws nor physical clock, apparatus, laboratory data or cosmological closure; no canonical physical premise is directly consumed."
+      }
     }
   ]
 }

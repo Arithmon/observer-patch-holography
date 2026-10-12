@@ -1,0 +1,26 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "NumPy and SciPy from model/requirements.txt",
+    "model/observer/native.py",
+    "code/source_scalar_packet"
+  ],
+  "files": {
+    "DERIVATION.md": "82c4d23a904b9a0078568fa00040f20e6ed9305ddf5620541fea2f2d5a7a6bc3",
+    "PREDICTION.md": "64d6d224e09bc892aaf691c0b2a85fad37101102f44afa357e5a9490783bf3eb",
+    "README.md": "99050c6eb1850e8cfcab2b9d934e9cf870fd1668cae1e3d7da7c0e83cc1203dc",
+    "__init__.py": "d58d04679545f488798fee6962710741ec695f20bc73e6a70fb29475219d0b93",
+    "__main__.py": "2a5691626cef115a0919bb59832b1967d747504204173e262468fccaea1516c9",
+    "experiment.py": "49f7427c1de19cc916b63734970b3363df166ce124856133aa059d2826930734",
+    "field.py": "60ffdd516231e7ef14dad2f3badee0dadbea050dfaa1c7696b61826204d15e9b",
+    "results.json": "e71b9da35c2a3a8e82bfe97cd3ecd215ea25347ca82a0bddc0012bd2a9670011",
+    "test_experiment.py": "10c015973a4d4c451634839062812e323190aa777d3ace04d7c90a11f0641410",
+    "test_field.py": "c36f65836f96a8355a7be42b6f1de8f283071227b45a061cad2ea19d5453e07c"
+  },
+  "reproduce": [
+    "python3 -m model.observer.scalar_response --check model/observer/scalar_response/results.json",
+    "python3 -m pytest -q -W error model/observer/scalar_response",
+    "python3 code/source_scalar_packet/verify_source_common_scalar.py"
+  ],
+  "schema": "oph.observer.public_manifest.v1"
+}

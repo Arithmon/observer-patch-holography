@@ -92,7 +92,7 @@ registry/check surface. That rule keeps the registry from becoming a stale snaps
 
 ## Finite model constructions, 2026-10-12
 
-Four `emitted_artifact` rows register the runnable model and its retained
+Five `emitted_artifact` rows register the runnable model and its retained
 evidence. Their owners are the self-contained implementation documents under
 `model/`, with `owner_medium: protocol_record`; no paper theorem is promoted
 or changed by these additions.
@@ -103,14 +103,18 @@ or changed by these additions.
 | `OPH-MODEL-OBSERVER-RECORD-CAPACITY` | [Finite correctable capacity](../model/observer/CAPACITY.md) and lossless reached-prefix controller encoding |
 | `OPH-MODEL-P-RESPONSE-EXECUTION` | [P-dependent binary detector](../model/observer/p_response/README.md), with accepted closure input and declared running/matching map |
 | `OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE` | [Incident-attempt memory certificate](../model/local_tick/README.md), with supplied occupation preparation and readout |
+| `OPH-MODEL-SCALAR-RESPONSE-EXECUTION` | [Scalar detector and native continuation](../model/observer/scalar_response/README.md), with supplied field action/vacuum and inherited history refinement control |
 
 The detector consumes PR-17 and PR-37. Its separate physical same-quantity
 and Thomson readback attachments are undischarged PR-38 and PR-39. The other
-three rows certify their supplied finite contracts without consuming the
+four rows certify their supplied finite contracts without consuming the
 canonical physical premises. Local tape capacity is not cosmic N closure;
 the native current recorder does not implement the N4 occupation apparatus.
 Uniqueness of a designed rule is not required for these implementation claims.
 Existing claim payloads, physical statuses and frozen predictions are preserved.
+The scalar adapter's conditional detector protocol is independently testable
+in software. Its scalar action, vacuum, apparatus and model clock remain
+declared; it establishes no new physical prediction or laboratory verdict.
 
 ## Audit #1078 attachment corrections
 

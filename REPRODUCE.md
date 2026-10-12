@@ -16,18 +16,28 @@ python -m model.verify
 python -m pytest -q -W error model
 ```
 
-The verifier checks the artifact manifests and replays all five receipts:
+The verifier checks the artifact manifests and replays the retained receipts:
 the native observer, its record capacity, a 20,000-trial sequential run, the
-P-dependent binary detector with 200,000 trials, and the observer-local
-incident-tick calculation. The tests independently check endpoint arithmetic,
+P-dependent binary detector with 200,000 trials, the observer-local
+incident-tick calculation, and the scalar field detector with native feedback.
+The tests independently check endpoint arithmetic,
 all retained histories, classical-record preservation, quantum coherence,
 controls, capacity and
 the stopping-time null. The exact native observer and P-response runtime
 use the Python standard library; the complete test and local-tick route
 uses the pinned model requirements. Individual commands and scope are in
 [observer/](model/observer/README.md),
-[observer/p_response/](model/observer/p_response/README.md), and
+[observer/p_response/](model/observer/p_response/README.md),
+[observer/scalar_response/](model/observer/scalar_response/README.md), and
 [local_tick/](model/local_tick/README.md).
+
+The scalar adapter executes the supplied field instrument and its conditional
+branches, with the original-action vacuum and native record-only continuation.
+Its retained [prediction protocol](model/observer/scalar_response/PREDICTION.md)
+compares the feedback statistic with null and reversal controls and transfers
+the existing scalar refinement error to the complete history law. These are
+conditional software tests; the scalar action, Born readout and model-time
+convention are supplied, and independent physical comparison is separate.
 
 The [Runnable observer model workflow](.github/workflows/observer-model.yml)
 runs this gate on Linux and Windows for changes to the model and its source

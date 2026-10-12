@@ -10,13 +10,15 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick")
+PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
+           "model/observer/scalar_response")
 REPLAYS = (
     ("model.observer", "native", "model/observer/results/native.json"),
     ("model.observer", "capacity", "model/observer/results/capacity.json"),
     ("model.observer", "run", "model/observer/results/run.json"),
     ("model.observer.p_response", None, "model/observer/p_response/results.json"),
     ("model.local_tick", None, "model/local_tick/results.json"),
+    ("model.observer.scalar_response", None, "model/observer/scalar_response/results.json"),
 )
 
 
@@ -64,7 +66,7 @@ def main():
         argv.extend(["--check", receipt])
         print(f"Replaying {receipt}", flush=True)
         subprocess.run(argv, cwd=ROOT, env=environment, check=True)
-    print("All five model receipts reproduced", flush=True)
+    print(f"All {len(REPLAYS)} model receipts reproduced", flush=True)
 
 
 if __name__ == "__main__":
