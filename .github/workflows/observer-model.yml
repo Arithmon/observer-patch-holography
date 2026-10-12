@@ -57,7 +57,9 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 15
+    # Exact receipt replay plus the complete test suite exceeds 15 minutes
+    # on Windows runners; retain both checks with enough time to finish.
+    timeout-minutes: 25
     env:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
