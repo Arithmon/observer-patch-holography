@@ -1,0 +1,30 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "NumPy and SciPy from model/requirements.txt",
+    "model/observer/source_scalar/compiler.py",
+    "model/predictions/protocol.json",
+    "code/source_selection_model/response.json",
+    "code/m1_source_realization/receipt.json"
+  ],
+  "files": {
+    "DERIVATION.md": "1d35ca6d88b66255d6aa5e0e401025532818904c5c3e40800e203577aa2c406a",
+    "README.md": "a2b4c31c4f756d121656fc685da153cb3785f4858dd57309ef89601a2f68e8f2",
+    "__init__.py": "c94ec6992b410eddd212eeff1875744e8419e0819d8fa947411e0698bbfeae11",
+    "__main__.py": "23de3fee29a81511bc8d395e275e82d88914db62d5be99e9daa9eb9fd81253bc",
+    "certificate.py": "1d31da1cc67ab4ae0b970d027df646b2c0ddb600c335162b1dc543fc373f7291",
+    "circuit.py": "d8289157abdef14c99c6cc915e4d0549b0f3076d88a749d13bde0be9a72d83b5",
+    "experiment.py": "0397a463df9fdb5c6e0b3acdd5656cf94a4032aa506a2793d89424ad31cbc414",
+    "results.json": "1b4739491150472fb3257cfd68f7434e11edc2eac9ffc1d9f495c4a2e5666335",
+    "test_adversarial.py": "19ddc95a12c96dba69d9e05deced7e861fdeae46c2e0c34010f0b701acee4008",
+    "test_certificate.py": "9c4ad3c8323ed3e0d6e695822008cb0c4ace5b0190490290c81324a092030c70",
+    "test_circuit.py": "ce35eaa046f02d8612ba4d2cf9d1ddb15336582c9c7442738365ec0585a582f5",
+    "test_experiment.py": "2b612f4026c4e0737d7dddef3130c7749d3375ee44c4b1c912c5c81e9df9c5c7",
+    "test_receipt.py": "de8aca02bb6f224bda8d707f23427e8de6dbbee430f6660db9c0ba89b6498232"
+  },
+  "reproduce": [
+    "python3 -m model.observer.source_discrimination --check model/observer/source_discrimination/results.json",
+    "python3 -m pytest -q -W error model/observer/source_discrimination"
+  ],
+  "schema": "oph.observer.public_manifest.v1"
+}
