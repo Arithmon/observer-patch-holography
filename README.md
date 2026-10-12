@@ -54,8 +54,16 @@ directions without identifying them with physical position or momentum.
 A separate [finite-resolution detector](model/common_source/SMOOTH_REFINEMENT.md)
 has a quantitative error bound through its complete interacting observation
 history and an explicit measurement-energy ledger. Its mathematical
-occupation limit retains a fixed two-site apparatus; physical units and
-spatial refinement require further construction.
+occupation limit retains a fixed two-site apparatus; spatial refinement and
+agreement between its clock, distance and energy readouts require further construction.
+
+The [fixed-reference clock bridge](model/common_source/THERMAL_CLOCK.md)
+connects the same Hamiltonian to modular evolution by choosing a faithful
+equilibrium reference distinct from the changing observed state. It does
+not establish that repair selects that reference or calibrate physical time.
+The [native propagation tests](model/common_source/CAUSALITY.md) check that
+information follows local seam interactions under fixed schedules. Units
+may be chosen by observers; consistent relations among readouts are the target.
 
 Its finite observer executes local repair, retains an
 observation and uses that record to choose its next interaction. The

@@ -121,6 +121,17 @@ physical clocks and the gravitational readouts are separate remaining
 connections. The physical tower must carry these
 maps on one compatible family; its record fields alone do not establish them.
 
+The [fixed-reference bridge](common_source/THERMAL_CLOCK.md) adds a different
+clock protocol: a chosen faithful Gibbs reference on the full work algebra
+identifies continuous Hamiltonian segments with modular flow by `t=-beta s`.
+The actual observation state is unchanged by that reference choice, and
+measurements and feedback remain distinct intervention maps. This preserves
+the earlier local-reference clock and its failed identification with the
+interacting Hamiltonian. Reference selection by repair and physical duration
+calibration remain open. The [native causal cones](common_source/CAUSALITY.md)
+separately bound influence to one graph edge per causal layer for fixed seam
+schedules; they do not relate that causal depth to either clock.
+
 The separate [smooth Ramsey instrument](common_source/SMOOTH_REFINEMENT.md)
 supplies a full interacting occupation error rate and finite measurement
 energy on this declared two-site action. It changes the scalar detector's
@@ -132,7 +143,7 @@ dimensions 2 and 4 remaining open.
 The sharp instrument need not preserve finite kinetic energy; the smooth
 instrument preserves the energy form domain and has unconditional
 infinite-model energy increment `1/8`. None of these occupation results includes
-a limit of the appended modular clock or a calibrated physical duration.
+a limit of either appended clock protocol or a calibrated physical duration.
 
 The [native observer](observer/README.md) executes two repair events with a
 finite tape. It records the first current, issues a supplied forecast from
@@ -487,7 +498,7 @@ finite software run.
 | Constructed object | Result that can be reused | Required connection for a broader claim |
 | --- | --- | --- |
 | Common flux-dressed CAR/scalar register and two recorded instruments | Source execution, operator Gauss, committed records, all-input finite temporal bound, exact finite and infinite sharp-readout feedback contrasts, interacting occupation bounds and strong sharp-instrument limit | Numerical finite-cutoff sharp-readout rate, spatial refinement, vacuum/coupling identification, numerical/physical source services and responsive stress/geometry on this same process |
-| Observer representations and appended modular clock on the sharp history | GNS and modular readouts, source-compiled binary clock and CP regional restrictions | Declared observer access and factorization; physical clock calibration, growing spatial family and occupation limit of the appended clock |
+| Observer representations and appended clocks on the finite sharp history | GNS and local-reference modular readouts, fixed full-work Gibbs/modular correspondence, source-compiled clock probes and CP regional restrictions | Declared observer access, factorization and references; reference selection by repair, physical clock calibration, growing spatial family and occupation limits of the appended clocks |
 | Separate smooth Ramsey detector on the common action | Quantitative complete-output occupation bound and finite-energy backreaction | Different instrument and bit dictionary; small executed-cutoff bounds are vacuous, and the sharp-history clock does not transfer |
 | N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
 | P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |

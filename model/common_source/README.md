@@ -50,6 +50,24 @@ mathematical targets. They also show why choosing the physical speed of
 light would relate length and time units without determining an energy
 scale. A propagation law connecting these readouts remains to be built.
 
+The [fixed-reference clock bridge](THERMAL_CLOCK.md) distinguishes a
+stationary equilibrium reference from the actual changing observation state.
+Choosing a faithful Gibbs reference for the existing full Hamiltonian makes
+its continuous between-event dynamics modular, with `t=-beta s`.
+Source-executed clock probes retain the earlier records. The reference is
+constructed from the supplied action; its selection by repair and a physical
+time calibration remain unproved. The earlier local-clock construction and
+the failed identification using the local post-measurement state are retained.
+Neither clock continuation is included in the infinite sharp-readout
+certificate or transferred to the smooth detector.
+
+The [native propagation check](CAUSALITY.md) verifies exact dependency cones
+for fixed seam schedules on all 78 admitted load states. Concrete paired
+histories show information arriving only after the intervening local updates.
+Choosing one edge and one causal layer as units gives a graph speed bound of
+one. Relating that causal depth to modular readings is an operational
+consistency requirement, not a demand for an external fundamental ruler.
+
 ## Run and inspect
 
 From the repository root, after installing `model/requirements.txt`:
@@ -59,6 +77,8 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source --check 
 python3 -m model.common_source.infinite_history --check model/common_source/infinite_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.bridge --check model/common_source/bridge_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.smooth_bridge --check model/common_source/smooth_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.thermal_bridge --check model/common_source/thermal_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.causality --check model/common_source/causality_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q -W error model/common_source
 ```
 
@@ -71,6 +91,9 @@ retains the Hilbert/modular/regional readouts and every appended clock branch.
 histories, feedback and disconnected controls, energy ledger and error bounds.
 [infinite_results.json](infinite_results.json) retains the exact infinite
 sharp-readout signal, state-error budgets, polynomial hashes and controls.
+[thermal_results.json](thermal_results.json) retains the separate fixed-reference
+clock continuations; [causality_results.json](causality_results.json) retains
+the fixed-schedule native dependency and delayed-influence checks.
 The [derivation](DERIVATION.md) supplies the
 carrier maps, proof and theorem boundaries. `python3 -m model.verify`
 checks this package's hashes and replays it with the other model packets.
@@ -231,8 +254,8 @@ small cutoffs does not certify continuum precision. The joint ideal limit
 uses `n(d)=d^2` temporal steps; floating execution and physical service errors
 remain separate.
 
-The appended modular-clock experiment has no proved occupation limit in
-either detector analysis.
+The local-reference and fixed-Gibbs-reference clock continuations have no
+proved occupation limit in either detector analysis.
 
 ## What this establishes and what remains
 
@@ -246,10 +269,14 @@ approximate occupation cutoffs. No full Lean observer or consensus-tower
 instantiation is asserted.
 
 The action, initial projected free vacuum, couplings and model-coordinate
-schedule are supplied. The appended modular clock reads an ensemble
-probability on a bounded phase window; its pulse schedule is supplied and
-its physical duration is uncalibrated. In particular the preparation is not established as
-the ground state of the coupled Hamiltonian. P and N retain their existing
+schedule are supplied. The local-reference clock reads an ensemble
+probability on a bounded phase window. The fixed-Gibbs-reference bridge
+relates modular and Hamiltonian parameters on continuous evolution segments;
+it does not turn the intervening measurements and feedback into one modular
+unitary flow. Both protocols use declared references and pulse schedules,
+without physical duration calibration. The actual preparation remains the
+projected free vacuum, not the Gibbs reference or an established ground state
+of the coupled Hamiltonian. P and N retain their existing
 closure and physical-readback contracts; they do not fix these additional
 choices. This construction has no spatial refinement, established
 interacting 3+1-dimensional effective field theory, responsive gravity,

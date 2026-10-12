@@ -8,8 +8,8 @@ its actual interfaces while preserving the demonstrated behavior.
 The newest step is the [common interacting source](common_source/README.md):
 quantum electric flux, charged CAR matter and a scalar field share one
 evolving register, with complete measurements, retained records and native
-feedback. Its scalar response has an [exact nonzero infinite-occupation
-interval](common_source/INFINITE_HISTORY.md), including the actual
+feedback. For zero native preparation current, its scalar response has an
+[exact nonzero infinite-occupation interval](common_source/INFINITE_HISTORY.md), including the actual
 coordinate-sign measurement and the preparation, propagation and readout
 errors of that calculation.
 A separate moment bound controls finite occupation through retained matter
@@ -37,6 +37,16 @@ The [readout checks](common_source/CALIBRATION.md) test geometric distances,
 modular-parameter inference and oscillator energy convergence against their
 mathematical targets, and make the remaining unit-calibration freedom explicit.
 
+The [fixed-reference modular bridge](common_source/THERMAL_CLOCK.md) connects
+continuous segments of the supplied full Hamiltonian evolution to the
+modular flow of a chosen faithful Gibbs reference, with `t=-beta s`, while
+the actual observed state changes. This reference and full-work algebra
+differ from the earlier local-reference clock. Its clock probes continue
+the finite sharp-readout histories; neither clock is included in the
+infinite sharp-signal certificate or the smooth-detector occupation bound.
+Reference selection by repair, physical duration and the relation to
+spatial propagation remain open.
+
 The [local history-repair formulation](common_source/HISTORY_REPAIR.md)
 recovers that same completed observation history under every fair update
 schedule, for the fixed source apparatus and causal graph. Observer readouts
@@ -49,6 +59,9 @@ to the same joint observation histories. A binary controller extension
 executes displacements spanning three directions while preserving the
 original protocol. This supplies a finite geometric readout, with physical
 translation, momentum and spatial field refinement remaining open.
+The [native propagation checks](common_source/CAUSALITY.md) verify finite
+dependency cones and delayed influence under fixed local seam schedules.
+They distinguish causal interaction depth from an auxiliary solver counter.
 
 The [completion target](CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 is an executable observer algebra whose compatible measurement statistics

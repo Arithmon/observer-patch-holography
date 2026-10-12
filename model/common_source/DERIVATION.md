@@ -783,8 +783,8 @@ through another sharp field read and further evolution follows here. The
 domain and has unconditional infinite-model energy increment `1/8`; its
 full occupation error includes the pointer interaction. That is a different
 binary instrument, with bit zero denoting `(I+sin(Q0))/2`. None of these
-occupation results includes the separately appended finite modular clock
-or establishes its physical duration.
+occupation results includes either the local-reference or fixed-Gibbs-reference
+clock continuation, or establishes their physical duration.
 
 ## Compatible theorem use and open physical connections
 
@@ -800,6 +800,7 @@ or establishes its physical duration.
 | Infinite sharp-readout response | [Exact nonzero contrast and complete-output approximation bound](INFINITE_HISTORY.md) using the infinite half-line instrument | Zero native preparation current and declared two-site action; no rate comparing finite sign instruments, spatial limit or physical calibration |
 | Smooth binary instrument | [Complete-output occupation rate and finite-energy backreaction](SMOOTH_REFINEMENT.md) for the Ramsey detector | Different bit dictionary and quantum instrument; no sharp-detector rate or modular-clock limit |
 | Observer representation and modular flow | [GNS and modular readouts](OBSERVER_READOUTS.md) of the actual observation state; emitted clock probe retains all records | Quantum algebra and access supplied; full conditioned scalar states may be nonfaithful; physical clock calibration open |
+| Fixed-reference modular correspondence | [Faithful full-work Gibbs reference](THERMAL_CLOCK.md) gives `t=-beta s` for continuous Hamiltonian segments, with source-executed clock continuations | Chosen reference differs from the actual state and earlier local reference; interventions need not preserve it; no reference selection by repair, clock occupation limit or physical calibration |
 | Quantum regional restriction | CP conditional expectations and Hamiltonian-derived interaction support on the same carrier | Supplied factorization; no multiplicative restriction, metric or growing spatial family |
 
 The [model–theorem premise map](../PREMISES.md) retains the broader
@@ -818,9 +819,13 @@ Nonabelian/chiral matter, the physical coupling map, dynamical stress and
 geometry, and independent data comparison remain open. The occupation
 proofs use the interacting generator directly; the free scalar Gaussian
 bound is not reused after adding this interaction.
-The finite source-compiled modular clock reads a programmed modular
-parameter through ensemble statistics on a bounded phase window. Its
-physical duration and its relation to the Hamiltonian's model time remain
-uncalibrated; neither a tracial reference's trivial modular flow nor a
-solver counter supplies that calibration. P/N closure assumptions do not
-determine the declared coupling g or the action/preparation in this packet.
+The finite local-reference clock reads a programmed modular parameter
+through ensemble statistics on a bounded phase window. Its flow is not
+identified with the interacting Hamiltonian. The separate full-work Gibbs
+reference gives the exact conditional relation `t=-beta s` for continuous
+Hamiltonian segments; measurements and feedback remain interventions.
+Neither clock has a calibrated physical duration or a proved relation to
+the [native causal depth](CAUSALITY.md). A tracial reference's trivial modular
+flow and a solver counter supply neither identification. P/N closure
+assumptions do not determine the declared coupling g, action/preparation
+or chosen Gibbs reference in this packet.
