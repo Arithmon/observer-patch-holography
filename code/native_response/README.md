@@ -1,7 +1,7 @@
 # One N4 process: port geometry and a non-native timing response
 
 This calculation resolves the finite bare-observable interface of the existing
-[N4 candidate](../../docs/MODEL_CANDIDATES.md#n4-a-reciprocal-coherent-exchange).
+[N4 candidate](../../model/CANDIDATES.md#n4-a-reciprocal-coherent-exchange).
 It adds no interaction, state factor or axiom. N4 retains the native port
 Dirichlet geometry at every real coupling, but its linear occupation space is
 not dynamically closed at the two certified couplings. This supplies an

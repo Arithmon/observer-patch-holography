@@ -1,0 +1,51 @@
+name: Runnable observer model
+
+on:
+  pull_request:
+    paths:
+      - 'model/**'
+      - 'code/P_derivation/**'
+      - 'code/capacity_readback/**'
+      - 'code/native_response/**'
+      - 'code/source_selection_model/response.json'
+      - 'paper/tex_fragments/SOURCE_RECORD_GLUING.tex'
+      - 'paper/tex_fragments/OBSERVERS_N_CLOSURE_PRO5.tex'
+      - '.github/workflows/observer-model.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'model/**'
+      - 'code/P_derivation/**'
+      - 'code/capacity_readback/**'
+      - 'code/native_response/**'
+      - 'code/source_selection_model/response.json'
+      - 'paper/tex_fragments/SOURCE_RECORD_GLUING.tex'
+      - 'paper/tex_fragments/OBSERVERS_N_CLOSURE_PRO5.tex'
+      - '.github/workflows/observer-model.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  observer:
+    name: Observer construction (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: model/requirements.txt
+      - run: python -m pip install -r model/requirements.txt
+      - run: python -m model.verify
+      - run: python -m pytest -q -W error model

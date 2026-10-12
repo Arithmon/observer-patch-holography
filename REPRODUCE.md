@@ -355,7 +355,7 @@ Einstein-branch axiom check. `Lean/README.md` documents the layout;
 ## Paper review and publication builds
 
 Paper releases and broad prose restructuring are on hold under the
-[model research policy](docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold).
+[model research policy](model/CONSTRUCTION.md#research-programme-and-paper-release-hold).
 Correctness fixes, errata, review builds and their validation continue.
 The publication commands below require a maintainer decision to lift the
 hold for a model milestone or authorize a scoped corrective release.

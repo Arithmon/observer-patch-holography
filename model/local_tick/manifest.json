@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-12",
+  "files": {
+    "README.md": "1f6613f6e2a61818065c2a44921a78cf3bb9eb29bc8a76ba245166ab2920cb03",
+    "SPEC.md": "19b1b5273d7ef1e71d9e3cec4964d3502371355360fc7d3ed9a1e6ab1d22f0da",
+    "__init__.py": "53b7050490c8347d2e44aaf1cdedc8892c2ee6355a4a196779795a971affac9a",
+    "__main__.py": "f91c4ca53a88e177f0e28034eb6c73d1dfb73729b3605f9883b193e223e3732d",
+    "experiment.py": "30189ed53de85b1a0363206f568d01b38d0aae3c339a3ed981dba2b495aaf9ce",
+    "results.json": "a8edea4509989e12ba67e9a7a361096446bd9a7a941f67ce88524b01125116b1",
+    "source_pins.json": "fc1b624b52f4726b02a822bb4539723d6b9c3ee033d87791affbbb63e19ddcc7",
+    "test_local_tick.py": "138f3c39891c595001becfd779296eb743a214b4f3e5f06bc4866e414efb5eec"
+  },
+  "reproduce": [
+    "python3 -m model.local_tick --check model/local_tick/results.json",
+    "python3 -m pytest -q -W error model/local_tick"
+  ],
+  "schema": "oph.local_tick.artifacts.v1",
+  "scope": "Finite observer-incident stopping theorem; supplied preparation, detector and scheduler."
+}

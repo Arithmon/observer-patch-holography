@@ -17,8 +17,8 @@ should parse it as JSON.
 The registry is part of the working process:
 
 - Model construction uses the existing claim identities and premises through
-  [MODEL_SEARCH.md](../docs/MODEL_SEARCH.md) and the generated
-  [model–theorem premise map](../docs/MODEL_PREMISE_MAP.md). Candidate hypotheses
+  [Model construction](../model/CONSTRUCTION.md) and the generated
+  [model–theorem premise map](../model/PREMISES.md). Candidate hypotheses
   and issue completion do not change a registered claim's scientific status.
   Record exact same-model attachments and retained inputs there; change this
   registry when the established claim or its evidence changes. Paper releases

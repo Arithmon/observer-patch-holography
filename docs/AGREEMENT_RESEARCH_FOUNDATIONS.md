@@ -1,8 +1,8 @@
 # Established mathematics for observer agreement
 
 Research method, 11 October 2026. This document governs theorem reuse in the
-[model search](MODEL_SEARCH.md), [candidate register](MODEL_CANDIDATES.md), and
-their existing [premise obligations](MODEL_PREMISE_MAP.md). The target remains
+[model search](../model/CONSTRUCTION.md), [candidate register](../model/CANDIDATES.md), and
+their existing [premise obligations](../model/PREMISES.md). The target remains
 one physical process with compatible carrier, response, record and clock
 readouts. Established results about distributed recovery and sheaf diffusion
 are tools for that construction. They do not select its physical law.

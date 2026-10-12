@@ -34,8 +34,8 @@ Nous disposons de **résultats mathématiques conditionnels et de candidats
 finis concrets pour la loi de réparation**. Ces candidats reproduisent et
 relient certaines structures requises ; des simulations permettent d’en
 distinguer plusieurs. **Aucun modèle commun n’est établi comme physiquement
-correct.** Le [registre des candidats](docs/MODEL_CANDIDATES.md) et le
-[suivi des modèles](docs/MODEL_SEARCH.md) distinguent les résultats construits,
+correct.** Le [registre des candidats](model/CANDIDATES.md) et le
+[suivi des modèles](model/CONSTRUCTION.md) distinguent les résultats construits,
 les hypothèses fournies et les liens physiques à établir.
 
 **La validité physique d’OPH est une hypothèse à tester.** La cohérence
@@ -84,9 +84,9 @@ processus. Tout mécanisme ajouté doit répondre à un lien manquant démontré
 et toute hypothèse physique ajoutée doit être déclarée. L’échec d’un candidat
 purement scalaire ne prouve pas qu’une loi commune simple soit impossible.
 
-Le [registre des lois candidates](docs/MODEL_CANDIDATES.md) compare leurs
-propriétés testées et leurs hypothèses. Le [suivi des modèles](docs/MODEL_SEARCH.md), la
-[carte des prémisses](docs/MODEL_PREMISE_MAP.md) et les
+Le [registre des lois candidates](model/CANDIDATES.md) compare leurs
+propriétés testées et leurs hypothèses. Le [suivi des modèles](model/CONSTRUCTION.md), la
+[carte des prémisses](model/PREMISES.md) et les
 [tâches de recherche](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
 décrivent ce travail. Un lien testé ou un candidat rejeté constitue un progrès ;
 le nombre de théorèmes ne mesure pas l’achèvement physique.
@@ -94,7 +94,7 @@ le nombre de théorèmes ne mesure pas l’achèvement physique.
 Les publications d’articles et leur restructuration générale sont suspendues
 jusqu’à une étape cohérente de construction du modèle. Audits, corrections
 et vérifications de reproductibilité continuent selon la
-[politique de recherche](docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold).
+[politique de recherche](model/CONSTRUCTION.md#research-programme-and-paper-release-hold).
 
 Les PDF de la branche principale sont des versions de travail et peuvent
 conserver l’identifiant de publication existant après correction. Les fichiers
@@ -105,8 +105,8 @@ une version de travail n’est pas une nouvelle publication.
 
 | Pour explorer… | Commencer par… |
 | --- | --- |
-| Le modèle en construction et ses liens physiques à établir | [Suivi des modèles](docs/MODEL_SEARCH.md) |
-| Les lois candidates, leurs hypothèses et leurs tests distinctifs | [Registre des candidats](docs/MODEL_CANDIDATES.md) |
+| Le modèle en construction et ses liens physiques à établir | [Suivi des modèles](model/CONSTRUCTION.md) |
+| Les lois candidates, leurs hypothèses et leurs tests distinctifs | [Registre des candidats](model/CANDIDATES.md) |
 | L’argument physique existant | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
 | Les preuves et les calculs reproductibles | [Bibliothèque Lean](Lean/) et [guide de reproduction](REPRODUCE.md) |
 | Les travaux associés sur les machines apprenantes | [Cadence](https://floatingpragma.io/cadence/) et [démonstrations interactives](https://floatingpragma.io/demos/) |
@@ -171,7 +171,7 @@ de vérification conservés.
 
 La [référence des axiomes](docs/AXIOM_REFERENCE.md) énonce les trois axiomes
 fondamentaux ; le [registre des prémisses](docs/registers/PREMISE_REGISTER_V3.md) et la
-[carte des prémisses](docs/MODEL_PREMISE_MAP.md) consignent les prémisses
+[carte des prémisses](model/PREMISES.md) consignent les prémisses
 supplémentaires et les hypothèses propres à chaque résultat, y compris les
 identifications physiques et les données empiriques.
 Le [registre des postdictions](docs/POSTDICTION_LEDGER.md)

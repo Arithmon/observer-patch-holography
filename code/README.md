@@ -6,6 +6,11 @@ stack. The papers state the claims. These artifacts let a reader recompute the
 finite and numerical parts, inspect their inputs, and see which physical bridge
 each result requires.
 
+The live observer and repair-law implementation is in
+**[model/](../model/README.md)**. It runs native record/feedback protocols,
+the P-dependent binary detector and the local-tick checks. This directory
+provides the supporting source calculations and broader executable evidence.
+
 The strongest artifacts are small and exact: finite repair checks, the
 twelve-port coefficient algebra, exterior Standard Model branching, anomaly
 arithmetic, and interval uniqueness certificates. Larger simulations test
@@ -17,6 +22,7 @@ the theorem or physical carrier named by that branch.
 
 | Surface | What to inspect |
 | --- | --- |
+| [`../model/`](../model/README.md) | Runnable observer construction, P-dependent binary response, record capacity and local-tick result |
 | [`consensus/`](consensus/) | Finite patch-net repair, schedule independence, and reference-architecture benchmarks |
 | [`geometry/`](geometry/) | Screen incidence, modular clocks, event reconstruction, causal cones, and Einstein-branch receipts |
 | [`observer_dynamics/`](observer_dynamics/) | Native port-repair histories, retained large-run statistics, finite clock controls and conditional observer spectra |

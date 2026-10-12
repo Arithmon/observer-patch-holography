@@ -86,6 +86,7 @@ BOOK_PARAGRAPH_MAX_WORDS = 300
 # lands.
 REGISTER_GLOBS = [
     "docs/**/*.md",
+    "model/*.md",
 ]
 
 PAPER_GLOBS = [
