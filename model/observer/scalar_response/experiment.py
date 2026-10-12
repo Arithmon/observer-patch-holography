@@ -41,16 +41,18 @@ def sources():
 
 
 def detector_probability(response, current, outcome):
-    if (not math.isfinite(response) or abs(response) > 0.5
-            or current not in (-1, 0, 1) or outcome not in (-1, 1)):
+    from .field import _current, _outcome, _real
+    response = _real(response, "scalar response")
+    current, outcome = _current(current), _outcome(outcome)
+    if abs(response) > 0.5:
         raise ValueError("Invalid scalar response or detector symbol")
     return 0.5 + outcome * current * response
 
 
 def decoder_seam(detector_bit):
     """Only the committed field-detector bit is accessible to the actuator."""
-    if detector_bit not in (-1, 1):
-        raise ValueError("Invalid detector bit")
+    from .field import _outcome
+    detector_bit = _outcome(detector_bit)
     return native.F if detector_bit == 1 else native.E
 
 

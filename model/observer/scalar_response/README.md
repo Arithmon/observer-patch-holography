@@ -67,6 +67,15 @@ or allocate a physical oscillator network of that size.
 
 ## Prediction and continuum error
 
+The [continued experiment](CONTINUATION.md) reads this same field twice,
+retaining its conditional state through three native repairs. It executes
+all 2,112 labelled histories, implements an eight-bit encoding of 209 reached
+record prefixes, and gives a new complete-history refinement bound below
+0.02571 at q=233. A certified second-read disturbance distinguishes the
+instrument from an explicit commuting Gaussian control with the same
+ordinary temporal correlation. Run it with `--continue-field`; the default
+one-read experiment and its sharper single-read bounds below are retained.
+
 Let `r_q(t)=Pr(y=+1 | j=+1)-1/2`. Exact enumeration of all 528 histories gives
 
 ```
@@ -119,3 +128,10 @@ units, calibration, interactions and hardware errors remain further work.
 | [results.json](results.json) | Four-level execution and inherited rational bounds |
 | [test_field.py](test_field.py) | Independent action and quantum-instrument oracles |
 | [test_experiment.py](test_experiment.py) | Independent history, control, replay and bound checks |
+| [kernel.py](kernel.py) | Full-mode Gram representation of retained Weyl states |
+| [continuation.py](continuation.py) | Two field reads, three native repairs and record-only forecasts |
+| [continuation_bounds.py](continuation_bounds.py) | Directed rational full-history and disturbance bounds |
+| [continuation_results.json](continuation_results.json) | Continued execution, complete record counts and bounds |
+| [test_kernel.py](test_kernel.py) | Independent final Fock states, phases and checkpoint controls |
+| [test_continuation.py](test_continuation.py) | Independent native enumeration, memory and deletion controls |
+| [test_continuation_bounds.py](test_continuation_bounds.py) | Exact arithmetic, source drift and scientific mutation controls |

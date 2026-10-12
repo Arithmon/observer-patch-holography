@@ -6,19 +6,28 @@
     "code/source_scalar_packet"
   ],
   "files": {
+    "CONTINUATION.md": "86f63eb099e999e535d1444fc6212eca71e10c76794d752e2c0b43dbb0f87000",
     "DERIVATION.md": "82c4d23a904b9a0078568fa00040f20e6ed9305ddf5620541fea2f2d5a7a6bc3",
-    "PREDICTION.md": "64d6d224e09bc892aaf691c0b2a85fad37101102f44afa357e5a9490783bf3eb",
-    "README.md": "99050c6eb1850e8cfcab2b9d934e9cf870fd1668cae1e3d7da7c0e83cc1203dc",
+    "PREDICTION.md": "3e8de28cdbec31f4fcf83ae933c7d12ebcac9002915bf2d5546374a4597f5405",
+    "README.md": "d0186f80ec40810661720d4df7466562b947a73e0f77e5ad1b4b460e8f07a1f6",
     "__init__.py": "d58d04679545f488798fee6962710741ec695f20bc73e6a70fb29475219d0b93",
-    "__main__.py": "2a5691626cef115a0919bb59832b1967d747504204173e262468fccaea1516c9",
-    "experiment.py": "49f7427c1de19cc916b63734970b3363df166ce124856133aa059d2826930734",
+    "__main__.py": "024d21af12483724317e04ea28b86c64995a9c2a2a979058c3654a19fc4f1895",
+    "continuation.py": "ad54e8b7770537463b0be405496b1cdbda4b2021a8f3860039b0c76ea1fd4a60",
+    "continuation_bounds.py": "d3a17246e2dcdadc9f428e4356ea4735ec6ecacf67387fa22750227056ae62d3",
+    "continuation_results.json": "2c6e741a7ff85342d90bb27e3c75c9333f7265e4169488085e4ff1de853a1c11",
+    "experiment.py": "c4948be6d905dbb1a1f74e0bc39406228d5da949e1b50c1e2054cba26f0358fb",
     "field.py": "03c695bd529ca63b8bd2f7d3bdee598e8ab26158e4a5eb19f6628bf093d2ff6b",
+    "kernel.py": "48da4ef3254bb300cddb6ae855eadb3ac6981ef6951d1f39d829c5ee0bc720e0",
     "results.json": "e71b9da35c2a3a8e82bfe97cd3ecd215ea25347ca82a0bddc0012bd2a9670011",
-    "test_experiment.py": "10c015973a4d4c451634839062812e323190aa777d3ace04d7c90a11f0641410",
-    "test_field.py": "8dbffa40abc4aaad48ef293462271c13b2fbd7c8e8d184d4aa319bc9fe466196"
+    "test_continuation.py": "2df85d422e900c208c93e9cf2006cdbf7d3ad1cff24f90a731de6a8b3da33e3f",
+    "test_continuation_bounds.py": "dd4979ca4ad04b6a550064abb85e3f2212e240831042f8e9a7d6f9ff965dc727",
+    "test_experiment.py": "56f1264535455c139ae7066edf005d661e718c89842e86bf4365faf45a90473a",
+    "test_field.py": "8dbffa40abc4aaad48ef293462271c13b2fbd7c8e8d184d4aa319bc9fe466196",
+    "test_kernel.py": "4df9b54909ab6bfb9b7f7a21917dce87d81b0f7804d873e3a2ff612515253c98"
   },
   "reproduce": [
     "python3 -m model.observer.scalar_response --check model/observer/scalar_response/results.json",
+    "python3 -m model.observer.scalar_response --continue-field --check model/observer/scalar_response/continuation_results.json",
     "python3 -m pytest -q -W error model/observer/scalar_response",
     "python3 code/source_scalar_packet/verify_source_common_scalar.py"
   ],

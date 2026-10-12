@@ -63,3 +63,34 @@ the stated finite-grid bound and independently bounded preparation/control/
 readout error. Reject this apparatus model if the resulting intervals are
 disjoint. Numerical diagnostics require a separate numerical-error allowance.
 Do not diagnose OPH from a mismatch before checking those apparatus premises.
+
+## Continued-field protocol
+
+The [two-read experiment](CONTINUATION.md) fixes times `19/20` and `1`, gamma=4
+and the same four grids. It keeps the first conditional field and native
+loads, adds a second field observation and uses its bit for a third native
+repair. Both outcome signs and every source path are retained. Its frozen
+software execution uses 50,000 trials per grid and seed 20261012.
+
+At q=233 the ideal mathematical model predicts a zero-current detector-bit
+correlation above `0.045619388905`. This distinguishes a fresh-field reset
+but also occurs in a correlated commuting Gaussian control. The separate
+measurement-disturbance prediction is stronger: on the positive-current
+preparation, performing the first read raises the second plus probability
+by more than `0.000022281162` compared with omitting it. The commuting control
+has zero such disturbance. These are two distinct experimental questions.
+
+The q=233 complete-history TV bound relative to the declared continuum is
+`0.025709913643`. This controls probabilities of all complete recorded
+events; an expectation in [-1,1] has the generic error bound twice that
+number. It is not a bound on conditional probabilities after arbitrarily
+rare postselection. The separate positive-current disturbance certificate
+uses the declared preparation directly.
+
+The software samples do not resolve the small disturbance difference at a
+statistical confidence level. A prospective apparatus comparison must fix
+independent performed/omitted-first-read batches, their preparation contract,
+sample budget, rejection thresholds and service errors before collecting
+data. Apply the stated concentration rule to the difference with both batch
+errors included. A model-versus-reset or model-versus-commuting discrepancy
+rejects that specified comparison, not all alternative theories or OPH.
