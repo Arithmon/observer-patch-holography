@@ -85,6 +85,17 @@ of a declared finite model, with numerical and physical service errors
 excluded from the ideal interval. It supplies no independent empirical
 comparison or interacting spatial continuum bound.
 
+The same declared action also has a certified infinite-occupation feedback
+contrast **[−0.024045670143, −0.024043450955]** for zero native preparation
+current. The [infinite-history proof](common_source/INFINITE_HISTORY.md)
+includes the original free vacuum, unbounded interacting evolution, both
+recorded instruments and all approximation errors. It uses the actual
+coordinate half-line projector: taking the sign of a finite coordinate
+matrix is a different detector. A separate uniform number-moment theorem
+controls the finite-Hamiltonian family before that final read. These results
+close occupation and readout errors for the stated experiment without
+supplying a spatial refinement or physical apparatus identification.
+
 The construction reuses the existing coherent source rather than claiming
 that a common abstract source was absent. Its [theorem attachments](common_source/DERIVATION.md#compatible-theorem-use-and-open-physical-connections)
 bind CAR, operator Gauss, record persistence and conditional expectations
@@ -445,7 +456,7 @@ finite software run.
 
 | Constructed object | Result that can be reused | Required connection for a broader claim |
 | --- | --- | --- |
-| Common flux-dressed CAR/scalar register and two recorded instruments | Actual source execution, operator Gauss, protected committed records, rational all-input finite temporal bound and exact nonzero feedback contrast | Compatible interacting occupation/spatial refinement, vacuum and physical coupling readbacks, observer clocks and responsive stress/geometry on this same process |
+| Common flux-dressed CAR/scalar register and two recorded instruments | Finite source execution, operator Gauss, protected committed records, all-input finite temporal bound, interacting occupation bound and exact nonzero infinite-coordinate-sign response | Compatible spatial refinement, vacuum and physical coupling readbacks, observer clocks, numerical/physical source services and responsive stress/geometry on this same process |
 | N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
 | P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
 | Native-current scalar preparation, binary field instrument and native continuation | Executed conditional instrument, feedback mean `5r_q/132`, inherited history and mean refinement bounds | Source identification of the scalar action, vacuum, preparation/readout and clock; a physically calibrated independent detector comparison |

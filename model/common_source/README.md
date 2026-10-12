@@ -3,8 +3,10 @@
 **One finite source program couples quantum electric flux, charged
 fermions and a neutral scalar, measures that shared state, and uses its
 records for feedback and native repair.** An exact certificate proves a
-nonzero scalar response to the recorded matter feedback. This is a finite
-construction toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
+nonzero scalar response to the recorded matter feedback. A separate exact
+certificate now proves that this response survives infinite oscillator
+occupation and the actual coordinate-sign readout. This is a construction
+toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
 That target remains open.
 
 ## Run and inspect
@@ -13,6 +15,7 @@ From the repository root, after installing `model/requirements.txt`:
 
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source --check model/common_source/results.json
+python3 -m model.common_source.infinite_history --check model/common_source/infinite_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q -W error model/common_source
 ```
 
@@ -121,8 +124,45 @@ ideal exact-factor source words, for the entire recorded instrument and an
 arbitrary spectator reference. It excludes binary64 coefficient and
 execution errors and physical service errors. Actual floating source
 execution is separately checked against independent matrices. The two
-cutoffs provide a numerical diagnostic; no interacting occupation or
-spatial continuum error bound is claimed.
+executed cutoffs provide a numerical diagnostic. The following independent
+certificate supplies the interacting occupation and infinite-readout result.
+
+## Removing the occupation and readout approximations
+
+For the same interacting action, infinite coupled free vacuum, zero native
+preparation current and feedback schedule, the actual coordinate half-line
+readout has unconditional enabled-minus-disabled probability in
+**[−0.024045670143, −0.024043450955]**. This interval excludes zero after
+including initial-state projection, full-Hamiltonian Taylor remainders,
+discarded occupation support, coefficient rounding and the final readout.
+Removing the interaction gives exactly zero contrast.
+
+This is an exact rational certificate for two infinite oscillators, with
+all records and quantum outcome states retained. The
+[derivation](INFINITE_HISTORY.md) and compact [receipt](infinite_results.json)
+are reproducible without floating simulation as an input. The terminal
+polynomials can be regenerated with `--polynomials --write PATH.json`.
+
+The [readout audit](READOUT.md) also identifies a necessary distinction:
+the sign projector of a truncated coordinate is not the compression of the
+infinite sign projector. Their operator difference already has norm about
+0.101058 at d=2. The previous finite signal remains valid for its detector;
+the new certificate uses the actual infinite detector, including its
+postmeasurement tails.
+
+A separate [occupation theorem](OCCUPATION.md) bounds the rectangular
+finite-Hamiltonian family through the first retained matter measurement
+and feedback, uniformly over arbitrary initial matter states and untouched
+references with the fixed scalar vacuum. At onsite d=64 the pre-readout
+trace-distance error is below 0.000002498. The final scalar read requires
+the separate readout treatment above. Neither proof supplies a spatial
+continuum or a physical service error budget.
+
+The infinite-history derivation also proves that the finite sign instruments
+converge to this same infinite instrument, including terminal states. With
+`d=2^k` and `d^2` exact palindromic steps per interval, the mathematical
+finite-family contrast is eventually strictly negative. This is a limit
+theorem, without an explicit sufficient d or a larger native compiler run.
 
 ## What this establishes and what remains
 

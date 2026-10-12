@@ -8,8 +8,13 @@ its actual interfaces while preserving the demonstrated behavior.
 The newest step is the [common interacting source](common_source/README.md):
 quantum electric flux, charged CAR matter and a scalar field share one
 evolving register, with complete measurements, retained records and native
-feedback. Its finite scalar response has an exact nonzero interval. This
-binds several finite theorem interfaces to one process; the interacting
+feedback. Its scalar response now has an [exact nonzero infinite-occupation
+interval](common_source/INFINITE_HISTORY.md), including the actual
+coordinate-sign measurement and the preparation, propagation and readout
+errors of that calculation.
+A separate moment bound controls finite occupation through retained matter
+feedback for arbitrary matter/reference inputs. This
+binds several theorem interfaces to one process; the interacting
 spatial continuum, gravity and independent physical comparison remain open.
 
 The [completion target](CONSTRUCTION.md#completion-target-and-acceptance-criteria)

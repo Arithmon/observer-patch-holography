@@ -333,13 +333,18 @@ experiments charges both experiments' errors.
 
 ### Scope
 
-This is one declared finite interacting Hamiltonian and a controlled temporal
-limit. It does not establish an occupation or spatial continuum limit,
+This section establishes one declared finite interacting Hamiltonian and a
+controlled temporal limit. Its temporal estimate alone establishes no
+occupation or spatial continuum limit,
 interacting quantum-field identification, empirical masses or couplings,
 responsive geometry, or a calibrated physical clock. In particular the
 earlier free Gaussian occupation bound cannot be transferred through this
 new interaction. Comparing d=2 with d=4 is a numerical cutoff diagnostic,
-not a cutoff certificate. The scalar action, interaction strength, initial
+not a cutoff certificate. The separate [occupation proof](OCCUPATION.md)
+now supplies an interacting pre-readout bound, and the
+[infinite-history certificate](INFINITE_HISTORY.md) resolves the feedback
+signal with the actual infinite coordinate-sign detector. The scalar
+action, interaction strength, initial
 state and proper-code capabilities remain stated design choices. These
 choices require no proof of unique selection before implementing them, but
 they do not become measured properties of nature by being consistently
@@ -621,7 +626,9 @@ does not manufacture a resolved signal in those cases.
 This result proves a common interacting observer process can produce a
 nonzero record-conditioned field response with an exact quantitative
 bound. It supplies no comparison with independent measurements in nature
-and no transfer to another occupation cutoff or a spatial continuum.
+and, by itself, no transfer to another occupation cutoff or a spatial
+continuum. [INFINITE_HISTORY.md](INFINITE_HISTORY.md) proves the distinct
+infinite-occupation response and explicitly corrects the readout comparison.
 
 ## Native observation, interacting quantum response and native feedback
 
@@ -747,8 +754,14 @@ fixture lacking those certificates.
 This is temporal approximation of a specified finite interacting model.
 Floating compilation and physical service errors require additional
 terms. The older free two-oscillator occupation estimate does not cover
-the present gauge/scalar interaction, and no spatial continuum theorem
-or empirical identification follows from this composition.
+the present gauge/scalar interaction. The new [interacting occupation
+proof](OCCUPATION.md) is uniform over initial matter states through their
+retained read and feedback, before the final scalar read. The separate
+[infinite-history signal](INFINITE_HISTORY.md) fixes native preparation
+current zero and uses the actual infinite sign instrument; it is not a
+certificate for every joined native preparation or the emitted finite
+sign detectors. No spatial continuum theorem or empirical identification
+follows from this composition.
 
 ## Compatible theorem use and open physical connections
 
@@ -759,7 +772,8 @@ or empirical identification follows from this composition.
 | A3 and conditional expectation | Faithful tracial reference with block and public-record algebras distinguished | Does not select the prepared pure state or prove one global repair channel is its stationary optimizer |
 | Protected records | Fixed old-record projectors on committed checkpoints and complete controlled instruments | Blank-to-written transitions are separate; no complete Lean `OperationalObserver` inhabitant is asserted |
 | Hardware refinement | Old privately owned factors embed by tensoring identities | Oscillator cutoff embeddings are not exact unital algebra/state/generator tower maps |
-| Finite temporal approximation | Rational all-input bounds for this same interacting Hamiltonian, with arbitrary spectator references | No occupation or spatial refinement certificate for this interacting family |
+| Finite temporal approximation | Rational all-input bounds for this same interacting Hamiltonian, with arbitrary spectator references | Finite code and ideal source services; numerical and physical service errors are separate |
+| Interacting occupation refinement | Exponential number-moment bound through retained matter read/feedback; exact infinite-history response with the actual half-line instrument | Fixed scalar vacuum, declared two-site action and schedule; no spatial limit or physical calibration |
 
 The [model–theorem premise map](../PREMISES.md) retains the broader
 conditional results. They must be applied with compatible hypotheses;
@@ -774,8 +788,9 @@ or a fundamental QFT. It must make their observed joint statistics and
 responses effective descriptions of this same process. Two occupation
 cutoffs on a fixed two-site carrier do not supply spatial refinement.
 Nonabelian/chiral matter, the physical coupling map, dynamical stress and
-geometry, and independent data comparison remain open. The free scalar
-Gaussian occupation bound cannot be reused after adding this interaction.
+geometry, and independent data comparison remain open. The new occupation
+proof uses the interacting generator directly; the free scalar Gaussian
+bound is not reused after adding this interaction.
 Neither a tracial reference's trivial modular flow nor a solver counter
 is a calibrated observer clock. P/N closure assumptions do not determine
 the declared coupling g or the action/preparation in this packet.
