@@ -8,15 +8,14 @@ that it satisfies the required constraints on one common model.** Component
 proofs, simulations, candidate implementations and issue closures are bounded
 milestones; they do not by themselves complete the programme.
 
-Research status: **12 October 2026**. The current update incorporates
-numerical corrections [#1082](https://github.com/FloatingPragma/observer-patch-holography/pull/1082),
-[#1083](https://github.com/FloatingPragma/observer-patch-holography/pull/1083) and
-[#1084](https://github.com/FloatingPragma/observer-patch-holography/pull/1084),
-[N4 geometry and memory #1085](https://github.com/FloatingPragma/observer-patch-holography/pull/1085)
-and [the scoped obstruction audit #1086](https://github.com/FloatingPragma/observer-patch-holography/pull/1086).
-Historical packets retain their original source revisions and receipts.
-
-The [programme obstruction audit for issue #1078](OPH_PROGRAMME_OBSTRUCTION_AUDIT_1078.md) independently reviews the fixed formulation `0510578e317de5da0d485d09792dc8bcad2e2f3c`; its [exact reproduction packet](../code/programme_obstruction_audit/README.md) records scoped attachment and non-entailment evidence. Programme-wide exclusion remains inconclusive; existing claim and premise boundaries are retained.
+**Current status.** [N4's finite construction](../code/native_response/README.md)
+supplies bare-occupation geometry and a certified two-attempt memory signal.
+The corrected single-port statistic removes the native spatial-mode-mixing
+term under the stated tracial preparation and IID global-attempt protocol. It
+distinguishes N4 from the matched native heat description at two couplings; it
+does not select C versus E or uniquely identify N4. The next step is to realize
+preparation, local readout, record delivery and clock comparison within one
+source, then derive a separate null for observer-local stopping times.
 
 The [candidate register](MODEL_CANDIDATES.md) compares the concrete active
 laws, their tested properties, added assumptions and next decisive tests.
@@ -446,35 +445,6 @@ milestones and costs; that is a research decision, distinct from a proof of
 impossibility. Opening this search makes no stop decision. Existing
 [claim- and branch-specific falsifiers](OPH_FALSIFICATION_PROGRAM.md) retain
 their exact scope.
-
-#### How the audited obstructions change the next construction
-
-The [fixed-target audit](OPH_PROGRAMME_OBSTRUCTION_AUDIT_1078.md) narrows
-specific routes. Use the following boundaries before expanding a simulation;
-none is a programme-wide exclusion or a new mandatory axiom.
-
-| Proposed attachment | Validated boundary | Surviving move and required test |
-| --- | --- | --- |
-| The entire native `M66` or `M78` algebra is the A1 carrier. | A full matrix algebra has scalar centre; twelve occupation labels do not supply twelve primitive central ports. [#1087](https://github.com/FloatingPragma/observer-patch-holography/issues/1087) | Specify a different carrier algebra/tower or an extension and its operational inclusion, restrictions and updates. Check actual centrality and source membership. |
-| The original lower simple-response triplet is the slow spatial triplet under the identical marked A5 action. | Their order-five characters differ, precluding that intertwiner. [#1088](https://github.com/FloatingPragma/observer-patch-holography/issues/1088) | Keep domains distinct, or justify an action twist/whole-law alternative and test its shared observable map. Matching dimension alone does not repair the attachment. |
-| A covariant single-product exchange feeds internal state back into the preserved load channel. | The stated class cannot do so; exact all-input marginal preservation also forbids feedback. A nonnormal exchange escapes. [#1089](https://github.com/FloatingPragma/observer-patch-holography/issues/1089) | Reuse N4 or the exact toy as a finite countercontrol. Check locality, completion and unchanged bare readout, then supply the full source grammar. The toy is not that full source. |
-| A fixed configuration Gibbs law selects inertia. | The audited kinetic family keeps that marginal while changing dynamics; it does not keep the full phase-space reference or the canonical same-capacity premise. [#1090](https://github.com/FloatingPragma/observer-patch-holography/issues/1090) | Derive or independently constrain inertia and velocity/clock readings. Compare the existing three-mode or distance-two response under one preparation and calibration contract. |
-
-The scalar-seam source also shows that the abstract architecture does not
-entail the remote record service used by the specified count clock. Realize
-preparation, readout, delivery and control as operations of the same source;
-do not infer them from a successful local channel or compiler. Conversely,
-the compact Lie-type result retains its faithful complete-response,
-endogenous-inner-action and classification premises: these obstructions do
-not establish that every physical sector is freely selectable.
-
-The audit targets `0510578e...`; the subsequent N4 construction supplies
-the finite bare-occupation geometry/kinetics interface below. Its physical
-and full-source attachments require separate construction. Keep that chronology explicit.
-The next useful output is one candidate with a typed interface ledger and a
-distinguishing observable, or a precise rejection of that attachment. Mark
-a comparison unevaluable when its interface is missing. The audit's suggested
-effort ceilings are recommendations, not adopted policy or a stop decision.
 
 #### A deletion test exposes what convergence cannot select
 

@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 487,
+  "surface_count": 486,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -931,11 +931,6 @@
     },
     {
       "path": "docs/OPH_FALSIFICATION_PROGRAM.md",
-      "glob": "docs/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/OPH_PROGRAMME_OBSTRUCTION_AUDIT_1078.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },

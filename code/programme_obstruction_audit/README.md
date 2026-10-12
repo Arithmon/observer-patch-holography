@@ -1,6 +1,11 @@
-# Fixed-formulation scientific audit for issue #1078
+# Finite source and attachment controls
 
-This is supplemental evidence for the [programme obstruction audit](../../docs/OPH_PROGRAMME_OBSTRUCTION_AUDIT_1078.md), using existing claim IDs. The scientific target is `0510578e317de5da0d485d09792dc8bcad2e2f3c`. It is not a security scan, new claim registry, full Lean build, physical experiment, or exhaustive model search. The programme-wide exclusion verdict is **inconclusive**; narrower attachment/no-entailment results and the complete analytic abstract scalar-seam witness are retained with their interpretations and escape routes.
+This package reproduces finite mathematical controls for the fixed source
+formulation identified in `provenance/fixed_sources.json`. It checks scoped
+attachment and non-entailment cases; the supplied analytic scalar-seam source
+remains an abstract witness under its declared typed interpretation. These
+controls do not determine a physical model, establish an empirical exclusion,
+or replace the analytic proof.
 
 ## Run the seven offline controls
 
@@ -36,7 +41,15 @@ python3 attempt_independent.py > attempt-result.json
 python3 compact_classifier.py > classifier-result.json
 ```
 
-`receipts/` contains the final publication execution and two retained upstream replays. `provenance/package_sha256.json` covers every package file except itself. The publication file manifest additionally covers that manifest, the report and the exact maintained-document delta. `provenance/packaging_adaptations.json` preserves original script hashes and describes the adaptations: author joint receipt uses a stable fixture label plus actual-input SHA256; independent joint fixture path becomes package relative and its retained-evidence sidecar write is removed; kinetic control emits stdout without a scratch sidecar and reports its completed independent-review status. Arithmetic, cases and scientific scope are unchanged. Frozen receipts retain their original producer hashes and environment metadata; current replay receipts describe the current producer.
+`receipts/` contains the final control execution and two retained upstream
+replays. `provenance/package_sha256.json` covers every package file except
+itself. `provenance/packaging_adaptations.json` preserves original script
+hashes and describes the adaptations: the author joint receipt uses a stable
+fixture label plus actual-input SHA256; the independent joint fixture path is
+package relative and its retained-evidence sidecar write is removed; and the
+kinetic control writes to stdout. Arithmetic, cases and scientific scope are
+unchanged. Frozen receipts retain their original producer hashes and
+environment metadata; current replay receipts describe the current producer.
 
 Run `python3 -B -W error test_run_all.py` for the package-preservation regressions. They copy the package to a temporary directory, run all seven controls twice with explicit and default fresh output destinations, verify that package file names, bytes and modification times remain unchanged, and check that unsafe output destinations are refused without changing existing files.
 
@@ -57,6 +70,17 @@ These replays **did not run** top-level recursive source custody, producer regen
 
 ## Independent review and evidence boundary
 
-`provenance/review_status.json` records final methods, reviewers, note hashes and accepted corrections. Author replays establish reproducibility. Independent proofs use a separate implementation, tensor order or algebraic reconstruction, and source clause review challenges admissibility/quantifiers. The initial audit's current-unit overclaim was corrected; the repository already states the scoped rate relation correctly. The scalar-seam source is an already claimed full **abstract** model under its actual typed interpretation, rather than an absent common abstract witness. Neither correction is a repository theorem defect.
+`provenance/review_status.json` records methods, reviewers, note hashes and
+accepted corrections. Author replays establish reproducibility. Independent
+proofs use a separate implementation, tensor order or algebraic
+reconstruction, and source-clause review challenges admissibility and
+quantifiers. The scalar-seam source is a claimed full **abstract** model under
+its typed interpretation. Finite controls do not establish physical source
+membership or empirical selection.
 
-The exact current publication base is separately identified in `publication_base.json`; whole current-main scientific interpretation is not reaudited. A subsequent local Git-object custody check matched all 38 pinned source blobs against both Git SHA-1 and SHA-256; `provenance/local_object_verification.json` records that later verification without asserting a clean full filesystem status or rerunning scientific results. Existing generated premise-map rows, registry entries, theorem statements, live upstream producers and frozen evidence are unchanged. The maintained-document edit is an audit-evidence link in `docs/MODEL_SEARCH.md`. Because the new report changes the scanner's active surfaces, `claims/active_surface_inventory.json` is regenerated with unmodified `tools/check_axiom_consistency.py --inventory`; this generated integration inventory does not change the adopted basis, claim statuses or premise discharge. The portable archive omits this repository-wide inventory, just as it omits the maintained model-search document; the publication manifest covers both. All new generated audit receipts are produced by these packaged scripts. There are no measured observations, laboratory preparations, resource lower bounds or programme-wide decisions encoded in this package.
+The fixed source revision and verified Git objects are recorded in
+`provenance/fixed_sources.json` and `provenance/local_object_verification.json`.
+The generated active-surface inventory is maintained by the repository's
+canonical scanner. These controls do not change the adopted basis, claim
+statuses, premise map or frozen evidence. They contain no measured
+observations, laboratory preparations or resource lower bounds.
