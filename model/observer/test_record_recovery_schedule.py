@@ -88,6 +88,34 @@ def test_initial_constraints_also_cover_arbitrary_prefixes_and_reversed_seams():
             assert set(schedule.decode(law, history)) == expected
 
 
+@pytest.mark.parametrize("binary", (False, True))
+@pytest.mark.parametrize("law", ("C", "E"))
+@pytest.mark.parametrize("word", (((0, 1), (0, 1), (1, 0)),
+                                  ((0, 1), (0, 5), (6, 8))))
+def test_all_short_record_strings_have_exact_fibers_or_are_rejected(binary, law, word):
+    # Enumerate all syntactically valid records, including those no input can
+    # produce. Local range checks alone cannot reject globally false tapes.
+    expected = defaultdict(set)
+    for initial in recovery.carrier(binary):
+        for coins in product((0, 1), repeat=len(word)):
+            state, history = initial, []
+            for edge, coin in zip(word, coins, strict=True):
+                state, record = _step(law, state, edge, coin)
+                history.append(record)
+            expected[tuple(history)].add(initial)
+    labels = tuple(product((0, 1), range(-1, 2) if law == "C" else range(-2, 3)))
+    refused = 0
+    for tokens in product(labels, repeat=len(word)):
+        history = tuple((*edge, *token) for edge, token in zip(word, tokens, strict=True))
+        if history in expected:
+            assert set(schedule.decode(law, history, binary=binary)) == expected[history]
+        else:
+            with pytest.raises(ValueError):
+                schedule.decode(law, history, binary=binary)
+            refused += 1
+    assert refused > 0
+
+
 def test_opposite_coin_identity_on_every_native_seam_input_and_first_coin():
     for state in recovery.carrier():
         for a, b in recovery.seams():
