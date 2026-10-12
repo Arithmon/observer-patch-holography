@@ -14636,6 +14636,61 @@
         "boundary": [],
         "rationale": "This software construction supplies the finite scalar action, canonical quantization, vacuum, preparation, binary Born instrument, model time and refinement dictionary explicitly, as do its conditional scalar theorem parents. It asserts neither source-derived physical field laws nor physical clock, apparatus, laboratory data or cosmological closure; no canonical physical premise is directly consumed."
       }
+    },
+    {
+      "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "statement": "The executable common-source construction couples two neutral scalar codes to an invariant four-state sector of four ordered CAR modes and one quantum integer electric link. Each charged channel has one fermion, charges are +1 and -1, and the isometry fixes flux E=-b0+b1; both operator Gauss constraints and even fermion parity hold on the entire code. The declared Hamiltonian is H_hop+E^2+H_scalar+(sqrt(2)/4)Q0(nL0-nR0), with the existing kappa=9/32 scalar action and physical occupation-projection boundary terms. Preparation, evolution, two complete quantum pointer reads and record-controlled feedback execute through the existing twelve-port M6 proper-code controls on one interacting register at onsite dimensions d=2 and d=4. All four joint quantum records and unnormalized terminal states are retained. The first read records charged occupation; its bit controls a dressed hopping pulse, and the second read records scalar-coordinate sign. Disconnected and feedback-disabled controls distinguish the interaction response. An exact rational all-input temporal bound S^3 t^3/(3 n^2), with S=3+(1+2*kappa)(2d-1)+abs(g)*sqrt(4d-2) bounded above rationally, compares the ideal symmetric source word with this same finite continuous Hamiltonian. Exact Gaussian-rational Taylor actions independently enclose the d=2 detector probabilities and certify a nonzero unconditional feedback contrast, including the ideal source splitting budget. Numerical native execution is separately compared with independent finite target matrices. The native-current preparation and final-bit-only native continuation retain all 1056 joint load/quantum-record histories; their probabilities are bound to the referenced unnormalized terminal states. Exact postcommit checkpoint, public/block conditional-expectation and controlled-Kraus adapters preserve the committed classical records while allowing off-diagonal record coherence to change. The common coherent source and abstract signed fermionic controls predate this execution; this construction joins actual coupled scalar, matter, flux, detector and native feedback operations. Native M78 integer repair remains its existing declared primitive and is not itself compiled into M6. The prepared state is not asserted to be the unconstrained A3 optimizer. No full Lean OperationalObserver or federation instantiation, simultaneous satisfaction of incompatible theorem branches, occupation or spatial continuum limit, physical clock, responsive gravity, derived empirical coupling or comparison with nature is claimed.",
+      "owner_paper": "model/common_source/README.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_finite_executed_construction",
+      "assumptions": [
+        "declared_common_gauge_CAR_scalar_action_and_preparation",
+        "declared_common_source_two_record_intervention_protocol",
+        "declared_native_current_to_common_quantum_history_attachment",
+        "declared_coherent_proper_code_services_and_analogue_source_controls",
+        "uniform_binary_total_two_preparation"
+      ],
+      "imported_results": [
+        "finite_CAR_representation_and_gauge_invariant_sector_isometry",
+        "finite_Kraus_Stinespring_construction",
+        "classical_controlled_quantum_channels",
+        "finite_matrix_conditional_expectations_and_dual_fixed_observables",
+        "symmetric_product_formula_integral_Taylor_remainder",
+        "trace_distance_contraction_and_unitary_channel_composition"
+      ],
+      "oph_specific_delta": "Reuses the existing coherent M6 source to execute a coupled scalar, signed matter and quantum-flux history, connects its actual pointer records back to native current-controlled preparation and native repair feedback, and checks the appropriate postcommit record interfaces. Adds a rational all-input finite temporal budget and an independent exact d=2 signal enclosure; no new claim of abstract universal quantum hardware or physical sector selection is made.",
+      "novelty_type": "finite_common_source_interaction_records_and_native_feedback_with_temporal_control",
+      "evidence": [
+        "model/common_source/README.md",
+        "model/common_source/DERIVATION.md",
+        "model/common_source/gauge_matter.py",
+        "model/common_source/scalar_coupling.py",
+        "model/common_source/records.py",
+        "model/common_source/experiment.py",
+        "model/common_source/native_join.py",
+        "model/common_source/finite_signal.py",
+        "model/common_source/results.json",
+        "model/common_source/test_gauge_matter.py",
+        "model/common_source/test_scalar_coupling.py",
+        "model/common_source/test_records.py",
+        "model/common_source/test_native_join.py",
+        "model/common_source/test_finite_signal.py",
+        "code/m1_source_realization/README.md",
+        "code/m1_fermionic_source/README.md",
+        "Lean/Dynamics/ProtectedCharge.lean"
+      ],
+      "falsifier": "The independent CAR/flux embedding violates Gauss or parity; a source word differs from the full finite target action; a joint branch is omitted or its probability detaches from its terminal state; the specified noncommuting coupling is absent; the exact signal enclosure or temporal operator bound fails; a committed checkpoint projector changes; the final native actuator reads undeclared data; or canonical replay fails.",
+      "scope_if_false": "The stated finite common-source composition, error transfer or signal certificate fails. Earlier native, coherent-source, fermionic and scalar results retain their separate hypotheses; no whole-theory or empirical verdict follows.",
+      "status": "implemented_and_replayed_under_declared_finite_contract",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This bounded common-source experiment supplies its CAR/link code, scalar and interaction Hamiltonian, preparation, coherent services, model-time schedule, records and native controller. It instantiates finite algebraic and instrument identities without claiming a physical matter, clock, gauge, geometric or continuum attachment. Its ideal temporal and d=2 signal certificates do not consume or discharge canonical physical premises, and the native M78 primitive remains explicitly supplied."
+      }
     }
   ]
 }

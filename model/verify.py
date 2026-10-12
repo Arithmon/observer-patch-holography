@@ -12,7 +12,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/observer/scalar_response", "model/observer/source_scalar",
-           "model/predictions", "model/observer/source_discrimination")
+           "model/predictions", "model/observer/source_discrimination",
+           "model/common_source")
 REPLAYS = (
     ("model.observer", "native", "model/observer/results/native.json"),
     ("model.observer", "capacity", "model/observer/results/capacity.json"),
@@ -26,6 +27,7 @@ REPLAYS = (
     ("model.predictions", None, "model/predictions/results.json"),
     ("model.observer.source_discrimination", None,
      "model/observer/source_discrimination/results.json"),
+    ("model.common_source", None, "model/common_source/results.json"),
 )
 
 

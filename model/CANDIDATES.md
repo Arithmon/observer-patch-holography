@@ -15,6 +15,16 @@ N1: the [native record/controller](observer/README.md) and its
 explicit implementations under declared premises; construction completion
 does not require proving that their design is the unique possible law.
 
+The [common interacting source](common_source/README.md) extends this
+construction through one quantum register carrying charged matter, electric
+flux and a neutral scalar. Its source-executed matter measurement controls
+feedback before a scalar measurement controls native continuation. It
+retains all 1,056 joint paths and certifies a nonzero finite scalar response.
+This binds compatible finite interfaces; its action, state, service and
+clock inputs remain declared, with interacting spatial refinement and
+physical identification open. It does not identify N1's integer averaging
+with that Hamiltonian or combine incompatible candidate hypotheses.
+
 Each candidate uses the
 [established-mathematics contract](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md): define
 its agreement target independently, state its execution and fault assumptions,

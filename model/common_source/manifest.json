@@ -1,0 +1,36 @@
+{
+  "dependencies": [
+    "Python 3.11+",
+    "NumPy and SciPy from model/requirements.txt",
+    "model/observer/native.py",
+    "model/observer/p_response/experiment.py",
+    "model/observer/source_scalar/compiler.py",
+    "model/observer/source_scalar/field.py",
+    "code/source_selection_model/response.json",
+    "code/m1_source_realization/receipt.json"
+  ],
+  "files": {
+    "DERIVATION.md": "dfd791cc29e907666aafe3df6d1d6f38a88ecaf69c53891e1e6e5a29262585bc",
+    "README.md": "3339477be8fd91a0aaccf01c43ddf9ce625ca631ea937710da27d141c01cb224",
+    "__init__.py": "becb29d889d8b0712a6b2d36734793bcb22575fc8999e80026e5c3e2f7a39ab5",
+    "__main__.py": "ebb33f255fa087ce6db95f4a161b90ab35e64b4687af28266eabc9c4204618c6",
+    "experiment.py": "a9b341d714b548ec6efa2d462c7bc5623dae2c2cb1101fd9369e6bef7a6aeafd",
+    "finite_signal.py": "0f74fe17b82e6140342aca048964984c7a5e35d8098e77ab298811b04e4df5ca",
+    "gauge_matter.py": "5ae518551305352707d30f27568df549ab057e13a3a734d9eddc6410b84161bc",
+    "native_join.py": "5103e163bfec42ea0a5c87647c4ff8998846cbdbc6fde8c33cb4a89581c38be0",
+    "records.py": "af8187c7d3f12a3088c64f881f47bda3e6d2fd2723f41337d0a8f8fe3fa43b82",
+    "results.json": "7b801b62808e0738d61a4ae9b8466b42c0945a64cc573e53658ac68e16caab68",
+    "scalar_coupling.py": "90e4000b0e48e4429e69891c0274966701cd59951f79d151dbe98a66e61ba0cf",
+    "test_experiment.py": "733f8885771f94f287999ac589d2fa7bfcaae51cad8d79ec8ac990f91a46117a",
+    "test_finite_signal.py": "a0a75aa8eeda029908e34e9e504d0f55d63ed40ccfd225e7d96b886b71348a50",
+    "test_gauge_matter.py": "48c7e928619ed69f15255b3d1e7f14dc645a92d16dbb7035c156984f831f0350",
+    "test_native_join.py": "c890e1f28f17742129dfe94b67242f772f7f9661708923dca1ac9930286d8b92",
+    "test_records.py": "41d7d26163194e60076159746ff4887cce58cef5eb00a10713dfc05c46616819",
+    "test_scalar_coupling.py": "047fcca858c522bbfc1fbe96a60d42d584fa927de0a13c1c1adf42a6e5d9887b"
+  },
+  "reproduce": [
+    "python3 -m model.common_source --check model/common_source/results.json",
+    "python3 -m pytest -q -W error model/common_source"
+  ],
+  "schema": "oph.observer.public_manifest.v1"
+}

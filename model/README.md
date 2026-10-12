@@ -5,6 +5,13 @@ The implementation, tests, derivations and next construction steps belong
 here. Start with the finite observer, run its retained results, then extend
 its actual interfaces while preserving the demonstrated behavior.
 
+The newest step is the [common interacting source](common_source/README.md):
+quantum electric flux, charged CAR matter and a scalar field share one
+evolving register, with complete measurements, retained records and native
+feedback. Its finite scalar response has an exact nonzero interval. This
+binds several finite theorem interfaces to one process; the interacting
+spatial continuum, gravity and independent physical comparison remain open.
+
 The [completion target](CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 is an executable observer algebra whose compatible measurement statistics
 admit the observed 3+1-dimensional quantum-field, classical and gravitational
@@ -99,12 +106,14 @@ python3 -m model.observer.scalar_response.local_evolution --check model/observer
 python3 -m model.observer.source_scalar --check model/observer/source_scalar/results.json
 python3 -m model.predictions --check model/predictions/results.json
 python3 -m model.observer.source_discrimination --check model/observer/source_discrimination/results.json
+python3 -m model.common_source --check model/common_source/results.json
 ```
 
 ## What is implemented
 
 | Component | Result and entry point |
 | --- | --- |
+| Common interacting source | [Gauge/matter/scalar observer](common_source/README.md): actual source words, operator Gauss, two committed bits, all 1,056 native/quantum paths and a certified finite feedback response; declared action and services |
 | Native observer | [Native C, retained tape and record-only controller](observer/README.md), including all 264 benchmark paths and exact feedback controls |
 | Binary electromagnetic observation | [P-dependent detector](observer/p_response/README.md): evaluates α(P), writes one stable bit and uses it for the next native repair; all 528 weighted paths |
 | Scalar field observation and refinement | [Scalar detector](observer/scalar_response/README.md): native-current preparation, binary field instrument and bit-only feedback; local field updates at q=13,34, with temporal and spatial comparison bounds and a [prediction protocol](observer/scalar_response/PREDICTION.md) |

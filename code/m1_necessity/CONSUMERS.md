@@ -10,7 +10,7 @@ silently shortened list. The dispositions concern the named results below;
 several registry rows collect much broader mixed-scope conclusions.
 
 The audit also closes the registered dependency graph forward from these
-eight claims: 136 downstream rows, including the eight direct consumers, are
+eight claims: 137 downstream rows, including the eight direct consumers, are
 enumerated in `downstream.json`. The receipt retains each row's exact
 assumptions, original full-row hash and every internal dependency edge with
 its stated role. A missing row or newly reachable claim fails verification.
@@ -25,6 +25,7 @@ claim-by-claim requirements retained in the receipt:
 | Registered downstream interface | What the result actually needs | Disposition |
 | --- | --- | --- |
 | Scalar action clock, original quantum probability, sequential instruments, regional collar recovery and scalar metric pressure | The particular finite action, preparation/vacuum, versioned consumed records, spectral bounds, canonical algebra and detector/clock error contract | These exact finite receipts remain about their original action. T's classical, free quantum and thermal limits are separately proved; they do not identify its finite instruments with the old ones. |
+| Common scalar, CAR, flux and native-record construction | Its own finite coupled Hamiltonian, invariant Gauss sector, coherent source services, preparation, two-record protocol and temporal error bound | Its existing contract is retained without automatic M1 premise transfer. The source-compiled scalar parent supplies finite controls and an action; its free occupation and spatial continuum certificates do not apply to the added interaction. |
 | Native stored programs and eventual publication | Protected banks, input retention, charged native operations, checkpoint/reference law and complete histories | Logical stencil degree is not a replacement execution. The original native contracts and their costs are retained. |
 | Common-world carrier, force/clock, Maxwell and Whitney action chains | The committed carrier incidence, action, current/clock dictionary, Whitney forms, preparation and finite/continuum comparison data | The sparse spatial graphs do not alter these carrier complexes. In particular a Whitney mass matrix called M1 is not the M1 source read law. No changed coefficient or inherited finite theorem is asserted. |
 | Einstein/stress/entropy composition, horizons, cosmological profile and dark-sector chains | Their stated source identification, tensor/stress, entropy, coupling, profile, calibration and branch-entry inputs | The new observable comparison does not supply those physical identifications. T preserves the specific planar crossing statistic; it is not a horizon, temperature or Einstein-branch construction. |

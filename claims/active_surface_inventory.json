@@ -1120,6 +1120,16 @@
       "allowlisted": false
     },
     {
+      "path": "model/common_source/DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/common_source/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/local_tick/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
