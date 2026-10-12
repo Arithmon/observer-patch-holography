@@ -226,6 +226,16 @@ state/instrument error, provided the service bounds hold with arbitrary
 reference systems. The demonstration's floating residual tolerance tests
 implementation consistency; it does not certify those physical errors.
 
+The numerical executor first contracts each complete subroutine from the
+full source exponentials, then takes a guarded polar factor of that executed
+matrix before repetition. This is numerical stabilization of an exactly
+unitary word, not an extra physical gate or an inserted target matrix.
+Both raw and corrected residuals and the correction size are retained.
+Large raw defects are rejected, and independent target/branch comparisons
+remain unchanged. No physical failure probability or measured branch is
+renormalized by this procedure. Its floating residuals do not replace a
+certified roundoff budget.
+
 There is a precise route to a full oscillator comparison. For the finite
 embedding `iota`, a normalized finite state `psi_d`, and its continuous
 projected evolution,

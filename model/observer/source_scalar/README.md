@@ -54,7 +54,7 @@ The independent continuous **finite** Hamiltonian gives approximately
 gives `0.516421501748`. The latter comparison improves as the occupation
 code grows, but is a numerical diagnostic, not a certified cutoff bound.
 The source program and independent finite split calculation agree within
-`3e-11` in the finest detector probability. Complete branch-density tests
+`2e-10` in the finest detector probability. Complete branch-density tests
 also compare the source instrument with independent direct matrices.
 
 The ideal prepared target has a separate rigorous trace-distance bound from
@@ -77,17 +77,22 @@ identities. Phase-preserving CNOTs, Gray-order basis rotations and diagonal
 Walsh expansions then supply every basis change and pointer operation.
 Zero-angle requests and scalar phases remain in the schedule.
 
-The full six-level pulse exponentials use 50 decimal digits before conversion
-to binary64, reducing drift accumulated through repeated pulse contractions.
-The assembled generators and subsequent matrix products remain binary64;
-this numerical safeguard supplies no certified roundoff or physical error bound.
-
 The `d=8`, 128-step protocol uses seven work qubits and **1,774,010 native
 pulses**, with **3,548,020 proper-code load/export service events**. The
 executor contracts each generated subroutine once and reuses its matrix
 in the declared repeated schedule. These are logical operation counts,
 not host iterations, elapsed physical duration or optimized hardware costs.
 Initialization, storage and final readout costs are additional.
+
+Before repetition, a guarded polar decomposition restores numerical
+unitarity to each matrix computed from the source pulses. It uses no target
+matrix and preserves the word's phase. The receipt records each raw defect,
+correction and final defect. A raw unitarity defect above `1e-10` or a
+correction above `5.1e-11` fails. Matrices whose nonunitarity exceeds the
+declared rounding tolerance are rejected. This prevents backend-dependent
+rounding bias from accumulating across the long program. Outcome probabilities and conditional
+states still pass the original independent checks. These diagnostics are
+not an interval arithmetic certificate or a physical error correction service.
 
 The full export channel includes all complement failure outcomes and is
 tested on the entire six-level operator algebra and with a reference system.

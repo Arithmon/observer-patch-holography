@@ -5,6 +5,15 @@ The implementation, tests, derivations and next construction steps belong
 here. Start with the finite observer, run its retained results, then extend
 its actual interfaces while preserving the demonstrated behavior.
 
+The [completion target](CONSTRUCTION.md#completion-target-and-acceptance-criteria)
+is an executable observer algebra whose compatible measurement statistics
+admit the observed 3+1-dimensional quantum-field, classical and gravitational
+descriptions in their respective regimes. Fundamental fields or spacetime
+need not be reconstructed first. The
+[operational meaning and objectivity contract](../docs/INTERPRETATION_AND_TERMS.md#observer-measurements-and-operational-objectivity)
+states what inter-observer agreement must preserve. These are research
+success criteria; the finite implementations below are components of that goal.
+
 One process executes a local repair, writes an observation, keeps its
 classical record and uses that record to choose the next interaction. The
 P-dependent version computes the electromagnetic coupling, produces a

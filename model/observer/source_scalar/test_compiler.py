@@ -324,3 +324,75 @@ def test_execution_leaves_inputs_and_tapes_unmodified_and_serializable():
     assert np.array_equal(state, old)
     json.dumps(c.resources(tape), allow_nan=False)
     json.dumps(c.source_summary(), allow_nan=False)
+
+
+def test_guarded_polar_correction_retains_full_phase_and_is_reference_linear():
+    # Known polar factor, including a nontrivial scalar phase. Tiny radial
+    # drift imitates accumulation without introducing a gate target argument.
+    rng = np.random.default_rng(206)
+    raw_basis = rng.normal(size=(64, 64))+1j*rng.normal(size=(64, 64))
+    unitary, _ = np.linalg.qr(raw_basis)
+    unitary *= np.exp(.731j)
+    radial = np.linspace(-3e-12, 4e-12, 64)
+    raw = unitary@np.diag(1+radial)
+    original = raw.copy()
+    corrected, report = c.stabilize_executed_unitary(raw)
+    assert_matrix(corrected, unitary, 3e-14)
+    assert report["projection_change"] == pytest.approx(max(abs(radial)), abs=5e-15)
+    assert report["raw_unitarity_defect"] > 7e-12
+    assert report["restored_unitarity_defect"] < 2e-14
+    assert report["projection_change"] <= report["maximum_projection_change"]
+    assert report["raw_unitarity_defect"] <= report["maximum_raw_unitarity_defect"]
+    assert report["physical_error_certificate"] is False
+    assert np.array_equal(raw, original)
+    # A single matrix acts on both columns of an untouched-reference state.
+    entangled = np.eye(64)[:, :3]/math.sqrt(3)
+    assert_matrix(corrected@entangled, unitary@entangled, 3e-14)
+    assert np.linalg.norm(corrected@entangled) == pytest.approx(1., abs=2e-14)
+    # No fitted global phase: replacing U by exp(-i*.731)U is observable here.
+    assert np.linalg.norm(corrected-np.exp(-.731j)*unitary, 2) > .7
+    json.dumps(report, allow_nan=False)
+
+
+def test_guarded_polar_is_optional_and_keeps_the_raw_source_executor(monkeypatch):
+    # Inject tiny backend drift into a raw native pulse. The raw executor
+    # must still return it; stabilization is a separate explicit operation.
+    angle = .19
+    actual_native = c.native_pulse("X", angle)
+    drifted = actual_native.copy()
+    drifted[:2, :2] *= .99999999999999
+    monkeypatch.setattr(c, "_native", lambda kind, value: drifted)
+    raw = c.execute([c.pulse("X", angle, [0])], 1)
+    assert np.array_equal(raw, drifted[:2, :2])
+    assert np.linalg.norm(raw.conj().T@raw-np.eye(2), 2) > 1e-14
+    corrected, report = c.stabilize_executed_unitary(raw)
+    assert_matrix(corrected, expm(1j*angle*X), 1e-14)
+    assert report["projection_change"] > 5e-15
+
+
+@pytest.mark.parametrize("bad", (.99*np.eye(4), 1.01*np.eye(4), np.zeros((4, 4)),
+                                 np.diag([1., 1., 1., 1-1e-8])))
+def test_guarded_polar_rejects_genuinely_nonunitary_input(bad):
+    with pytest.raises(ArithmeticError, match="fixed rounding guard"):
+        c.stabilize_executed_unitary(bad)
+
+
+@pytest.mark.parametrize("bad", (np.ones(4), np.ones((4, 2)), np.eye(3),
+                                 np.full((2, 2), np.nan), np.ones((2, 2), dtype=bool),
+                                 np.ma.array(np.eye(2), mask=False)))
+def test_guarded_polar_rejects_invalid_matrix_domains(bad):
+    with pytest.raises(ValueError):
+        c.stabilize_executed_unitary(bad)
+
+
+def test_guarded_polar_detects_a_failed_projection_backend(monkeypatch):
+    def corrupt_svd(matrix, full_matrices):
+        dimension = len(matrix)
+        return .99*np.eye(dimension), np.ones(dimension), np.eye(dimension)
+    monkeypatch.setattr(c.np.linalg, "svd", corrupt_svd)
+    # Use the Frobenius norm for this hostile backend test, because NumPy's
+    # spectral-norm implementation itself calls the patched SVD.
+    actual_norm = np.linalg.norm
+    monkeypatch.setattr(c.np.linalg, "norm", lambda matrix, ord=None: actual_norm(matrix, "fro"))
+    with pytest.raises(ArithmeticError, match="polar correction"):
+        c.stabilize_executed_unitary(np.eye(4))

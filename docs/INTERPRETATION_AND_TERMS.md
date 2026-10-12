@@ -91,6 +91,107 @@ clock is an explicit premise of that construction. A successful calculation
 on such a background remains a conditional result until its source and
 physical interpretation are supplied.
 
+## Observer measurements and operational objectivity
+
+**The construction target is an executable realization of OPH's observer
+algebra whose shared measurement statistics reproduce the observable
+physics of our Universe.** Those statistics must admit the appropriate
+effective descriptions: a nontrivial quantum field theory in three spatial
+and one temporal dimension, including the observed interactions, and
+classical physics and gravity in their coarse-scale regimes. These are
+intended physical success criteria, not conclusions obtained from
+the observer algebra or current code.
+
+**Observations are primary; fields and spacetime are effective descriptions.**
+In this interpretation, the physical content of the represented universe is
+the observations made by observers and their compatible operational meanings.
+Particles, fields, positions, durations and metrics describe regularities in
+those observations. The construction is not required to produce a fundamental
+QFT, manifold or metric first, or to establish that those descriptions exist
+independently underneath the observers' records. Internal state vectors,
+graphs and coordinate arrays can be implementation representations without
+being a fundamental spacetime ontology.
+
+The acceptance test is observational: over a stated domain, a shared
+interpretation of the executable observer's joint statistics and intervention
+responses must agree, within controlled errors, with the effective physical
+description and independent measurements. Refinement may make the errors
+vanish for a declared limiting description. Coarse-grained classical and
+gravitational descriptions have their own validity regimes and corrections;
+they need not become exact descriptions at every scale. Using a supplied
+field equation as a benchmark remains legitimate, but does not by itself
+show that its observational content follows from the constructed observer.
+
+Meaning assignment is operational: it identifies which preparations,
+interventions, measured quantities and recorded events different observers
+are describing. Inter-observer consensus and repair must make those
+interpretations compatible on shared observations, including joint and
+conditional probabilities and correlations. The interpretation maps must
+respect accessible operations and records, survive refinement, and be fixed
+independently of the observations used to validate a prediction. Agreement
+on labels or a reinterpretation chosen after seeing an answer is insufficient.
+
+Within this proposal, **objective reality is the stable operational
+structure shared by compatible observer perspectives**: quantities, records
+and responses that remain consistent under the specified comparisons and
+interventions. Agreement does not require independent stochastic experiments
+to produce identical outcomes. It also does not assign predetermined
+classical values to incompatible measurements that were not performed.
+This states OPH's operational interpretation of objectivity; it does not
+establish a metaphysical claim that agreement alone creates or determines
+the physical world.
+
+“Exactly the measurements of nature” names the ideal limiting target:
+matching the observable probability laws and their conditional responses,
+with controlled finite approximations. Experimental support is necessarily
+within declared calibration and statistical uncertainties and cannot certify
+unlimited precision from finitely many records. Consensus and mathematical
+consistency alone do not imply that this target is attained. The separate
+actual-history self-realization hypothesis above retains its own contract.
+
+Where an effective vacuum-sector mass gap is defined, the target allows a nonnegative
+gap, including zero for gapless sectors. It does not demand a strictly
+positive gap for every field or a global energy operator on arbitrary curved
+spacetimes. The required stability, spectrum and spacetime domains must be
+stated in each result. These are properties of the effective description of
+observations, not additional fundamental objects to install in the source.
+A free-field benchmark is a component of the target; the observations
+associated with interactions and dynamical gravity remain obligations.
+
+The [construction completion criteria](../model/CONSTRUCTION.md#completion-target-and-acceptance-criteria)
+make this target reviewable. Apparatus and protocol design choices are
+legitimate; proving unique selection of a design is not required. A chosen
+construction has to satisfy its continuum and empirical contracts.
+
+### Why observations come first
+
+Informally, OPH starts with what observers can experience operationally:
+detector outcomes, clock readings, retained records and the consequences of
+their interventions. They compare those records and repair incompatible
+interpretations. A successful shared description lets each observer predict
+how further observations will relate to the records they can access.
+
+In that description, a field summarizes how detectors respond to specified
+preparations. Spacetime geometry summarizes relationships among observations
+such as clock comparisons, signal exchanges and trajectories. Classical
+physics describes the regularities accessible at suitable coarse scales.
+Within OPH these are effective ways observers describe their experienced
+world, with limited domains of validity. They are not additional fundamental
+entities that the implementation must construct behind the observations.
+
+For example, a geometric description earns its role by correctly relating
+observers' clock and signal records. The model need not contain a fundamental
+spacetime object for those relations to have that description. Conversely,
+putting a metric array into a simulation does not establish that observers
+can observe its proposed geometric meaning. The comparison must follow
+through to their accessible records and predictions.
+
+That is why the completion test concerns experiences represented by
+measurements and their agreed operational meanings. Those meanings must
+predict the correlations and intervention responses observers actually find.
+The claim that OPH achieves this for nature requires the construction and
+evidence specified above; the interpretation alone supplies no verdict.
+
 ## Terms with different mathematical roles
 
 | Term | Meaning and boundary |

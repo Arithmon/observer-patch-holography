@@ -349,7 +349,8 @@ processor. It prepares the entangled field from blank registers, evolves
 four- and eight-level site codes and retains both pointer outcomes before
 native feedback. Exact bounds cover the initial vacuum tail and temporal
 splitting for the same finite Hamiltonian. Full occupation and spatial
-refinement, coherent service errors and physical identification require separate bounds and evidence;
+refinement, coherent service errors and physical identification require
+further evidence;
 this does not upgrade the earlier eight-site or golden-grid execution claims.
 
 **Next decisive work:** connect the inertia and Hamiltonian time to the same

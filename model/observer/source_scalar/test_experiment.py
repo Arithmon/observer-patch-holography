@@ -238,6 +238,34 @@ def test_largest_retained_source_word_preserves_raw_norms_and_all_branch_states(
     assert abs(plus_probabilities[-1]+plus_probabilities[1]-1) < 2e-10
 
 
+def test_repeated_source_routines_resist_tiny_backend_norm_bias(monkeypatch):
+    """Reproduce a harmless per-routine drift that becomes visible on repetition."""
+    from . import compiler, experiment
+    execute = compiler.execute
+
+    def biased_execute(*args, **kwargs):
+        return (1-2e-12)*execute(*args, **kwargs)
+
+    # Uncorrected, the four onsite uses plus bond on every step accumulate
+    # probability loss far beyond the unchanged 2e-10 instrument check.
+    assert 1-(1-2e-12)**(2*5*128) > 2e-9
+    monkeypatch.setattr(compiler, "execute", biased_execute)
+    experiment._executed.cache_clear()
+    try:
+        result = experiment.source_history(4, 128, 1)
+        assert abs(result["post_read_total_probability"]-1) < 2e-10
+        for row in result["executed_routine_roundoff_diagnostics"].values():
+            assert row["projection_change"] > 1e-12
+        oracle = independent_terminal_branches(4, 128, 1)
+        for row in result["branches"]:
+            state = complex_vector(row["state"])
+            expected = oracle[row["outcome"]]
+            np.testing.assert_allclose(row["probability"]*np.outer(state, state.conj()),
+                                       np.outer(expected, expected.conj()), atol=2e-10)
+    finally:
+        experiment._executed.cache_clear()
+
+
 def test_preparation_and_pointer_phase_cannot_be_omitted(source_histories):
     q, _, _, _, onsite = physical_targets(4)
     half = np.kron(expm(-.125j*onsite), expm(-.125j*onsite))
