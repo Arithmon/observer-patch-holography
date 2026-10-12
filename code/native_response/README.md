@@ -7,6 +7,16 @@ Dirichlet geometry at every real coupling, but its linear occupation space is
 not dynamically closed at the two certified couplings. This supplies an
 internal discriminator against a native heat law with a refitted clock.
 
+The live [observer-local incident-tick calculation](../../model/local_tick/README.md)
+now reuses this packet's certified edge bound for a different, explicitly
+defined stopping rule: every attempted seam incident to one port counts as a
+tick, with intervening remote events retained. It derives the corresponding
+native null and a positive N4 lower bound. The global-attempt calculation
+below remains unchanged; the extension supplies no physical duration
+calibration. Runnable N1 observation, record and feedback protocols live in
+[model/observer/](../../model/observer/README.md), with their distinct source
+and apparatus assumptions.
+
 ## Fixed inputs and experiment
 
 The state space is the binary total-two shell (dimension 66), with one

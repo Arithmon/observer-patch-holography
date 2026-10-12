@@ -5,6 +5,41 @@ commands verify that the claim registry is internally connected and that the
 public test collection imports without error. Individual evidence families
 then have their own theorem, certificate, or experimental acceptance rule.
 
+## Runnable observer and repair-law model
+
+The live [model implementation](model/README.md) has a separate clean-clone
+reproduction gate. From the repository root:
+
+```sh
+python -m pip install -r model/requirements.txt
+python -m model.verify
+python -m pytest -q -W error model
+```
+
+The verifier checks the artifact manifests and replays all five receipts:
+the native observer, its record capacity, a 20,000-trial sequential run, the
+P-dependent binary detector with 200,000 trials, and the observer-local
+incident-tick calculation. The tests independently check endpoint arithmetic,
+all retained histories, classical-record preservation, quantum coherence,
+controls, capacity and
+the stopping-time null. The exact native observer and P-response runtime
+use the Python standard library; the complete test and local-tick route
+uses the pinned model requirements. Individual commands and scope are in
+[observer/](model/observer/README.md),
+[observer/p_response/](model/observer/p_response/README.md), and
+[local_tick/](model/local_tick/README.md).
+
+The [Runnable observer model workflow](.github/workflows/observer-model.yml)
+runs this gate on Linux and Windows for changes to the model and its source
+dependencies. This supplements the source-frozen mandatory runner below.
+Neither that runner nor a bare `python -m pytest` includes the new `model/`
+tests: invoke the model commands explicitly when changing this implementation.
+The finite observer construction is executable with declared apparatus and
+accepted closure inputs; no hardware fabrication, calibrated physical clock
+or whole-universe implementation is inferred from a passing run.
+
+## Additional component calculations
+
 The bounded modal Maxwell-shaped factorization is also an exact, laptop-scale
 algebra check rather than a simulation campaign:
 
@@ -286,7 +321,9 @@ change to a note rebuilds that receipt in the same commit.
 Full test execution (`python -m pytest code`) is **not** expected to be green
 from a clean clone, so it is not the documented gate here. A bare
 `python -m pytest` collects `code/` only (`testpaths` in `pytest.ini`); the
-regression tests under `tools/` run through the mandatory suite. Individual scientific
+regression tests under `tools/` run through the mandatory suite. The live
+observer implementation requires the separate `python -m model.verify` and
+`python -m pytest -q -W error model` gate above. Individual scientific
 test outcomes are tracked as their own issues, and some are not reproducible
 from the public checkout alone. In particular:
 

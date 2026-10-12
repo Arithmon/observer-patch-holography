@@ -1,7 +1,10 @@
-# Internal Tracking Index
+# Scientific registers
 
 This directory contains machine-readable scientific registers and generated
-evidence summaries. It is not part of the public theory reading route.
+evidence summaries. The [live model](../model/README.md) owns observer and
+repair-law implementation; these sources record its connections to finite
+and continuum results, declared physical premises and observation targets.
+Finite construction evidence does not by itself promote a physical claim.
 
 - [`model_theorem_map.json`](model_theorem_map.json) connects the common
   repair candidate to theorem premises and bounded completion conditions.

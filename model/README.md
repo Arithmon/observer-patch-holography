@@ -77,6 +77,9 @@ an online learner or physical validation of the entire model.
 
 - [Construction guide](CONSTRUCTION.md): current contracts, P/N connection,
   completed results, remaining connections and research policy.
+- [Finite-to-physical connections](CONSTRUCTION.md#connecting-finite-objects-to-the-physical-theorem-routes):
+  the actual state, record and refinement maps required when reusing the
+  existing scalar, gauge and gravity results.
 - [Candidate register](CANDIDATES.md): native C/E, response extensions,
   reciprocal N4 and the separate scalar benchmark.
 - [Model–theorem premise map](PREMISES.md): generated navigation to the
@@ -89,6 +92,8 @@ The broader [executable evidence](../code/README.md) and
 [reproduction guide](../REPRODUCE.md) remain the home of supporting source,
 field, geometry and parameter calculations. The new observer construction
 continues here; its results do not silently change those existing claims.
+The [scientific registers](../tracking/README.md) keep finite construction
+evidence separate from physical observation status and parameter ancestry.
 
 Software is licensed under [Apache-2.0](../code/LICENSE). Documentation and
 data follow the repository's [licensing map](../LICENSE).

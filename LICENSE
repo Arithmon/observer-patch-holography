@@ -12,7 +12,8 @@ Software: Apache License 2.0
 All software in this repository is licensed under the Apache License,
 Version 2.0. This covers the Lean library (Lean/), the certificate,
 simulation, particle, and experiment code (code/), the build and audit
-tooling (tools/), the machine-readable schemas that the tooling validates
+tooling (tools/), the runnable observer and repair-law software (model/),
+the machine-readable schemas that the tooling validates
 against (schemas/), and every other script, test suite, notebook, build
 file, and requirements file in the repository, regardless of directory.
 

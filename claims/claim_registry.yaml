@@ -14382,6 +14382,173 @@
         "boundary": [],
         "rationale": "This feasibility calculation explicitly hypothesizes physical frequency, scale, frame, species shells and additive kinematics. It reuses a mathematical edge support without consuming or discharging canonical physical source-identification premises. It claims neither a full interacting model nor empirical establishment."
       }
+    },
+    {
+      "claim_id": "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+      "statement": "The executable native C observer on 78 twelve-port total-two source states writes a coin/current record, issues a supplied forecast from that record, chooses its second seam from the retained current sign, writes the second record and halts. Its fixed 3354-dimensional source/tape channel has exact isometry checks on every nonfull input column and preserves committed classical record projectors; a reachable quantum first-record coherence changes from 1/4 to 1/8. All 264 uniform binary-source histories have weight 1/264. The supplied forecast has Brier risk 395/7392, improving on the action-known prior 140/2013. Record feedback changes final port-0 mean to 35/264 from the disconnected or same-marginal independent-selector value 1/6. A 20000-trial seeded execution retains exact path-reference matches and explicit halts. This is a finite observation-record-feedback implementation with designed tape, scheduler, prior and controller, without online learning, physical clock calibration, full operational-algebra instantiation or N4 occupation-meter implementation.",
+      "owner_paper": "model/observer/README.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_finite_executed_construction",
+      "assumptions": [
+        "declared_native_current_two_event_observer",
+        "uniform_binary_total_two_preparation",
+        "declared_classical_record_and_forecast_access"
+      ],
+      "imported_results": [
+        "finite_Kraus_Stinespring_construction",
+        "conditional_probability_and_Brier_decomposition",
+        "classical_controlled_quantum_channels"
+      ],
+      "oph_specific_delta": "Implements one current-record source/tape/control law and checks all finite paths, arbitrary-input coherent writes, record-only forecasts and matched feedback controls in runnable code.",
+      "novelty_type": "finite_observer_construction_and_complete_history_execution",
+      "evidence": [
+        "model/observer/native.py",
+        "model/observer/DERIVATION.md",
+        "model/observer/results/native.json",
+        "model/observer/simulate.py",
+        "model/observer/results/run.json",
+        "model/observer/test_native_observer.py",
+        "model/observer/test_observer_simulation.py"
+      ],
+      "falsifier": "An independent endpoint oracle changes a retained history or risk; an isometry column fails normalization or orthogonality; feedback changes a committed classical record; the policy reads hidden loads or future outcomes; or canonical replay fails.",
+      "scope_if_false": "The finite native observer implementation or stated identity is withdrawn. The general observer definition, other candidate laws, and physical source-identification results keep their separate premises.",
+      "status": "implemented_and_replayed_under_declared_finite_contract",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This exact two-event N1 construction supplies its finite source, record allocation, prior, forecast and seam policy explicitly. It asserts no source-derived spacetime, cosmological closure, physical hardware or N4 occupation instrument, so no canonical physical premise is directly consumed."
+      }
+    },
+    {
+      "claim_id": "OPH-MODEL-OBSERVER-RECORD-CAPACITY",
+      "statement": "The existing correctable-public-record evaluator applied to the halting native observer returns M0=11 terminal words for the 66-state binary preparation and M0=17 for the full 78-state input family. The terminal word projectors have rank 78 in the actual 3354-dimensional source/tape carrier, and the result is unsaturated. Exact halt and full-tape reread are the complete declared continuations. The binary preparation reaches 16 classical prefixes, permitting a four-bit encoding that preserves every phase, record, forecast, seam and source continuation across all 264 histories; the full input family reaches 24 prefixes. Readout controls reduce correctable capacity, including M0=1 under complete erasure. These are finite record-interface counts, not complete machine size, quantum compression, whole-fiber N closure or a cosmological constant calculation.",
+      "owner_paper": "model/observer/CAPACITY.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_finite_executed_construction",
+      "assumptions": [
+        "declared_native_current_two_event_observer",
+        "declared_terminal_halt_and_exact_reread",
+        "declared_reachable_classical_prefix_encoding"
+      ],
+      "imported_results": [
+        "compound_checkpoint_confusability_graph",
+        "zero_error_independence_number",
+        "orthogonal_projection_carrier_bound"
+      ],
+      "oph_specific_delta": "Feeds actual native current histories and carrier projectors into the existing OPH capacity evaluator and executes their lossless reached-prefix controller encoding.",
+      "novelty_type": "finite_correctable_record_capacity_and_controller_encoding",
+      "evidence": [
+        "model/observer/capacity.py",
+        "model/observer/results/capacity.json",
+        "model/observer/CAPACITY.md",
+        "model/observer/test_observer_capacity.py",
+        "code/capacity_readback/correctable_public_record_capacity.py"
+      ],
+      "falsifier": "Independent enumeration changes a reachable record count; a declared reread confuses distinct retained words; projector supports overlap or exceed the carrier; compact execution changes any admitted native history; or receipt replay fails.",
+      "scope_if_false": "The finite capacity attachment or controller encoding fails. The general correctable-record theorem and the separately stated global N closure and horizon attachment are unaffected.",
+      "status": "implemented_and_replayed_under_declared_finite_contract",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row applies the existing finite code-size bound to one explicitly halting tape and its exact reread interface. It neither consumes a cosmic capacity value nor asserts complete-fiber closure, horizon identification or physical storage allocation."
+      }
+    },
+    {
+      "claim_id": "OPH-MODEL-P-RESPONSE-EXECUTION",
+      "statement": "The binary detector implementation accepts closure-derived P/N inputs and evaluates the declared Thomson structured-running P-to-alpha map, retaining its source-only inverse-alpha value approximately 136.9948351774. With the designed charge assignment Q_v=g(P)N_v, g(P)=sqrt(4*pi*alpha(P)), and calibrated external loop exposure chi, its valid binary instrument has Pr(y|j)=(1+y*sin(g(P)*j*chi))/2. Only its committed detector bit y selects the second native repair and that bit is preserved. Complete enumeration retains all 528 state/coin/detector/coin histories and gives E[j2]=5*sin(g(P)*chi)/264 and weak-exposure E[g*j2]=(5*pi/66)*alpha(P)*chi+O(chi^3). The audit has 24 terminal words and 37 prefixes; actuator access remains one bit. Fifteen calculation checks, six independent tests and a 200000-trial seeded receipt support this conditional software construction. No measured-alpha substitution, new physical Thomson attachment, closure-map uniqueness, fabricated hardware or learned law is asserted. Physical Thomson realization additionally needs the separate same-quantity bridge PR-38 and endpoint readback contract PR-39; those open attachments do not block the stated finite software construction.",
+      "owner_paper": "model/observer/p_response/README.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_finite_executed_construction",
+      "assumptions": [
+        "accepted_P_N_closure_inputs_for_finite_design",
+        "declared_P_structured_running_coupling_map",
+        "declared_charge_probe_and_external_loop_exposure",
+        "declared_binary_bit_only_native_feedback",
+        "uniform_binary_total_two_preparation"
+      ],
+      "imported_results": [
+        "Aharonov_Bohm_loop_phase",
+        "Ramsey_binary_quantum_instrument",
+        "charge_transfer_covariance",
+        "complete_finite_history_enumeration"
+      ],
+      "oph_specific_delta": "Composes the existing numerical P-to-coupling function with a fully specified binary detector and native feedback protocol, so coupling changes actual recorded probabilities and subsequent charge response.",
+      "novelty_type": "conditional_P_dependent_binary_observer_execution",
+      "evidence": [
+        "model/observer/p_response/experiment.py",
+        "model/observer/p_response/DERIVATION.md",
+        "model/observer/p_response/ACCESS_CAPACITY.md",
+        "model/observer/p_response/results.json",
+        "model/observer/p_response/test_experiment.py",
+        "code/P_derivation/paper_math.py",
+        "code/P_derivation/runtime/p_interval_contraction_certificate_2026-07-14.json"
+      ],
+      "falsifier": "The pinned source map fails to reproduce the declared branch; detector Kraus completeness, charge conservation or exact feedback coefficients fail; the actuator accesses first-current data beyond its detector bit; any branch is filtered; or canonical replay fails.",
+      "scope_if_false": "The designed P-dependent observer adapter or numerical receipt fails. The source P-closure certificate and its physical endpoint boundaries retain their original status; no global OPH or empirical fine-structure verdict follows.",
+      "status": "implemented_and_replayed_under_declared_finite_contract",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_edges",
+        "consumed": [
+          "PR-17",
+          "PR-37"
+        ],
+        "open": [
+          "PR-38",
+          "PR-39"
+        ],
+        "boundary": []
+      }
+    },
+    {
+      "claim_id": "OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE",
+      "statement": "For the declared N4 binary total-two source with its twelve six-level factors, full tracial preparation and IID uniform thirty-seam schedule, a local tick counts every attempted seam incident to one observer, including unchanged loads. The endpoint occupation protocol keeps all intervening remote events and both endpoint outcomes, with no intermediate measurement or reset. The exact native closed-mean comparator has c1=5/11 and c2=93/407. Subtracting r^2*(209*r+180)/(1331*r^2+3300*r+1800), r=1-c1, from c2-c1^2 gives zero for the comparator. A first-hit resolvent and Schur-complement argument transfer independently recomputed N4 edge-Gram margins to strictly positive bounds 139996257/12500000000000 at theta=1/16 and 11335290321/50000000000000 at theta=1/8, for both C and E completions. Their actual local-tick c2 values are not numerically evaluated; C is at least E without a strictness claim. The receipt and eight independent checks certify this finite stopping-clock result, with supplied preparation, incident detection and bare occupation readout, not an implemented N4 observer apparatus or calibrated proper clock.",
+      "owner_paper": "model/local_tick/README.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_finite_executed_construction",
+      "assumptions": [
+        "declared_N4_tracial_local_tick_protocol",
+        "supplied_incident_attempt_detector_and_occupation_readout",
+        "pinned_N4_edge_Gram_certificate"
+      ],
+      "imported_results": [
+        "first_hit_channel_geometric_series",
+        "Schur_complement_positive_resolvent_bound",
+        "finite_stationary_endpoint_correlations",
+        "certified_interval_Gram_bound"
+      ],
+      "oph_specific_delta": "Transfers the existing N4 memory separation from global attempts to observer-incident stopping times and supplies the exact refitted native null, retaining remote operations throughout.",
+      "novelty_type": "finite_local_tick_memory_certificate_and_independent_controls",
+      "evidence": [
+        "model/local_tick/experiment.py",
+        "model/local_tick/README.md",
+        "model/local_tick/SPEC.md",
+        "model/local_tick/results.json",
+        "model/local_tick/test_local_tick.py",
+        "code/native_response/certificate.py",
+        "code/native_response/source.py"
+      ],
+      "falsifier": "The stopped-channel ordering, exact closed comparator, Schur identity or source-bound Gram margin fails; a remote event or failure branch is omitted; an independent full native-chain check disagrees; or receipt replay fails.",
+      "scope_if_false": "The finite local-tick transfer or its numerical bound fails. The earlier global-attempt N4 result and the separate native current-recorder construction retain their own contracts.",
+      "status": "implemented_and_replayed_under_declared_finite_contract",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This row certifies a finite supplied N4 endpoint protocol by matrix identities and an existing interval Gram bound. Its tracial source, uniform schedule, incident detector and occupation readout are explicit inputs, with no canonical physical-clock, apparatus-realization or law-selection premise consumed."
+      }
     }
   ]
 }

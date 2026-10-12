@@ -1,6 +1,6 @@
 # OPH Assumption Dictionary
 
-This dictionary gives stable names to the assumptions used in the claim registry. The paper text remains the legal source for each theorem; the registry points readers to the owner paper and makes cross-paper status language auditable.
+This dictionary gives stable names to the assumptions used in the claim registry. Paper text remains the source for each paper theorem; a registered executed construction may instead name a self-contained protocol record as its owner. The registry makes those assumptions and claim boundaries auditable across both kinds of owner.
 
 | Assumption | Meaning | Primary owner |
 |, |, |, |
@@ -896,3 +896,15 @@ Dictionary closure is a fail-closed validator check (issue #512): every assumpti
 
 | `fixed_edge_frequency_scale_and_additive_kinematics` | The complete edge cosine symbol is hypothesized to be photon frequency squared in the declared cosmic-background frame, with two positive-energy transverse modes, physical time, additive energy/momentum, no extra quadratic terms, and a=sqrt(P) l_P from exposed nominal calibration. This is a fixed physical hypothesis for a kinematic calculation, not a source-derived photon law or an armed frozen comparison. | `docs/research/DISPERSION_FEASIBILITY.md` |
 | `specified_LI_or_shared_massive_shell_and_validity_cutoff` | Electrons and positrons have either the Lorentz-invariant shell or exactly sqrt(m^2+Lambda_a(p)); shared propagation means these species only. Final momenta obey a|p|<=1 and hard momenta lie in the stated finite band. Electron spin action, vertices, rates, source populations and detector response are not selected by these shells. | `docs/research/DISPERSION_FEASIBILITY.md` |
+| `declared_native_current_two_event_observer` | The twelve-port total-two current instrument, two allocated event slots, fair placement coins, conditional second seam and terminal identity are supplied finite design data. | `model/observer/README.md` |
+| `uniform_binary_total_two_preparation` | Each scored native or detector trial is freshly prepared uniformly on the 66 twelve-port binary configurations with total load two. | `model/observer/README.md` |
+| `declared_classical_record_and_forecast_access` | The current recorder exposes its committed prefix and phase; its supplied forecast is issued before the next event and does not read source loads or future outcomes. | `model/observer/README.md` |
+| `declared_terminal_halt_and_exact_reread` | The finite capacity interface admits terminal identity ticks and exact classical tape rereads as its full continuation family. | `model/observer/README.md` |
+| `declared_reachable_classical_prefix_encoding` | Compression acts only on reached classical controller prefixes and preserves their attached source continuation; program, source and quantum carrier are not included in the bit count. | `model/observer/README.md` |
+| `accepted_P_N_closure_inputs_for_finite_design` | P and N closure outputs are accepted inputs to this finite construction; a local detector run does not re-establish cosmic closure or allocate the entire global capacity. | `model/observer/p_response/README.md` |
+| `declared_P_structured_running_coupling_map` | The detector evaluates the pinned P-closure map and its Thomson structured-running convention, retaining the source-only endpoint and declared running/matching inputs. | `model/observer/p_response/README.md` |
+| `declared_charge_probe_and_external_loop_exposure` | In natural units the designed charge assignment is Q_v=g(P)N_v; a prepared path qubit reads a calibrated external closed-loop exposure with phase g(P)j chi. | `model/observer/p_response/README.md` |
+| `declared_binary_bit_only_native_feedback` | After detector measurement only its committed sign chooses the second native seam; the branch retains that sign and does not expose the preceding current to the actuator. | `model/observer/p_response/README.md` |
+| `declared_N4_tracial_local_tick_protocol` | The N4 endpoint protocol uses the binary total-two shell, twelve six-level factors, full normalized trace and IID uniform thirty-seam attempts; every incident attempt counts as a tick. | `model/local_tick/README.md` |
+| `supplied_incident_attempt_detector_and_occupation_readout` | Initial and final bare occupation reads and detection of all incident attempts are supplied; remote events continue without intermediate measurement or factor reset. | `model/local_tick/README.md` |
+| `pinned_N4_edge_Gram_certificate` | The unchanged source-bound interval producer certifies the full N4 residual-edge Gram lower margins at theta=1/16 and theta=1/8. | `model/local_tick/README.md` |

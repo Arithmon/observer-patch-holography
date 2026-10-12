@@ -42,7 +42,8 @@ each file keeps its name in the folders above.
   the [observation ledger](registers/OBSERVATION_LEDGER_V3.md), the [premise register](registers/PREMISE_REGISTER_V3.md),
   the [falsification program](OPH_FALSIFICATION_PROGRAM.md), and the [paper index](../paper/).
 - **Build and test:** begin with the repository [reproduction
-  guide](../REPRODUCE.md), [executable evidence](../code/), and [Lean
+  guide](../REPRODUCE.md), the [runnable observer model](../model/README.md),
+  [executable evidence](../code/), and [Lean
   formalization](../Lean/). Follow the [numerical audit
   procedure](policies/NUMERICAL_AUDIT.md) when changing finite numerical
   evidence or addressing review findings.

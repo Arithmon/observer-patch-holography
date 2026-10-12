@@ -34,7 +34,8 @@
       "label": "alpha_in / Thomson endpoint",
       "status": "undischarged",
       "claim_ids": [
-        "OPH-ALPHA-PIXEL"
+        "OPH-ALPHA-PIXEL",
+        "OPH-MODEL-P-RESPONSE-EXECUTION"
       ],
       "source_anchors": [
         "physical Thomson readback contract"
@@ -58,7 +59,8 @@
       "status": "undischarged",
       "claim_ids": [
         "OPH-ALPHA-PIXEL",
-        "OPH-Q-PN-CLOSURE"
+        "OPH-Q-PN-CLOSURE",
+        "OPH-MODEL-P-RESPONSE-EXECUTION"
       ],
       "source_anchors": [
         "source-selected detuning law",

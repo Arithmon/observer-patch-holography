@@ -80,6 +80,7 @@ equations**. Apparatus, protocol and simulation hardware remain construction
 choices. The [detector implementation](observer/p_response/README.md)
 evaluates the existing forward-closure P input and source-only
 structured-running map `α(P)`, then sets `g(P)=sqrt(4π α(P))` in natural units.
+The observer does not fit P or N to its desired output.
 Its chosen charge assignment is `Q_v=g(P)N_v`, so native current j transfers
 charge `g(P)j` while conserving the total.
 
@@ -207,6 +208,29 @@ A charge center is not by itself a physical gauge-edge factor, area law or
 stress coupling. Nonnested completions need not commute. The
 [gravity premise ladder](../docs/registers/GRAVITY_PREMISE_LADDER.md) retains
 the physical assumptions needed for the existing gravitational conclusions.
+
+## Connecting finite objects to the physical theorem routes
+
+The same word can name different objects in these constructions. Use the
+actual carrier, operation and accessible record when applying an existing
+theorem. The [generated map](PREMISES.md) links their executable sources and
+proofs; the [observation ledger](../docs/registers/OBSERVATION_LEDGER_V3.md)
+records the broader physical targets without promoting their status from a
+finite software run.
+
+| Constructed object | Result that can be reused | Required connection for a broader claim |
+| --- | --- | --- |
+| N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
+| P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
+| Reachable native record words on the declared carrier | Existing correctable-record evaluator and explicit classical prefix encoding | A compatible physical capacity cut and global closure family before identifying this count with cosmological N |
+| N4 tracial bare occupation at incident attempts | Corrected first-hit null and inherited strict finite memory bounds | N4 occupation preparation, detector and incident-event recognition; the N1 current detector does not measure this occupation |
+| Supplied canonical scalar action, vacuum and Weyl observables | Existing finite instrument and controlled free-field continuum theorems | Explicit maps from the chosen native implementation with controlled state, observable and service errors along the same refinement family |
+| Declared gauge, edge, stress and geometry structures | Existing conditional gauge/gravity implications | Joint physical carrier, interactions, conserved stress and compatible geometric variations on that family |
+
+No observation rung or physical premise is discharged merely by putting these
+sources in the same repository. Conversely, the remaining physical joins do
+not reopen the completed finite observer contract. Model maintenance belongs
+here; changes to the broader papers follow their separate review policy.
 
 ## Remaining construction work
 

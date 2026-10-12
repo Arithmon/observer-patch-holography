@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - "claims/**"
+      - "model/**"
       - "paper/**/*.tex"
       - "extra/**/*.tex"
       - "flagship/**/*.tex"
@@ -27,6 +28,7 @@ on:
   pull_request:
     paths:
       - "claims/**"
+      - "model/**"
       - "paper/**/*.tex"
       - "extra/**/*.tex"
       - "flagship/**/*.tex"

@@ -2,7 +2,8 @@
 
 This directory contains the certificates, simulations, exact finite
 calculations, public receipts, and experimental adapters behind the OPH paper
-stack. The papers state the claims. These artifacts let a reader recompute the
+stack and runnable model. The papers and model contracts state their respective
+claims. These artifacts let a reader recompute the
 finite and numerical parts, inspect their inputs, and see which physical bridge
 each result requires.
 

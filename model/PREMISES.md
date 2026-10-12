@@ -7,6 +7,8 @@ Complete navigation coverage of the current canonical PR identifiers, plus expli
 
 **Governing search principle: find the simplest shared repair rule that satisfies the known constraints.** Reuse existing results before adding mechanisms. Geometry, reversible response and operational clocks require compatible maps from the same source process; separate component constructions do not establish that common realization.
 
+The live construction is model/. Its finite native observer, conditional P-dependent detector and N4 incident-attempt certificate have explicit executable sources below. They are distinct from the scalar continuum and common physical-world claims; a cross-reference does not transfer assumptions or promote those claims. Unique-law selection is not required to complete a declared finite implementation.
+
 These groups are workgroup navigation crosswalks, not claim-consumer edges or changes
 to proof status. A group links related construction, branch, downstream or metrology
 work; that association does not make every listed premise an antecedent of every
@@ -26,12 +28,12 @@ explained in the [assumption dictionary](../claims/assumption_dictionary.md).
 | --- | ---: |
 | Canonical premise IDs represented in this crosswalk | 84/84 |
 | Model criteria represented | 12/12 |
-| Registered claims | 326 |
-| Unique ordinary `assumptions` names | 771 |
-| Unique `imported_results` names | 829 |
+| Registered claims | 330 |
+| Unique ordinary `assumptions` names | 783 |
+| Unique `imported_results` names | 843 |
 | Workgroups | 26 |
 | Assumption names explicitly linked by optional group fields | 18 |
-| Claims explicitly linked by optional group fields | 9 |
+| Claims explicitly linked by optional group fields | 13 |
 
 Canonical-ID coverage is a reference check. Ordinary assumptions and imported names
 are inventoried only; they have not all been individually, semantically bound to the
@@ -56,7 +58,7 @@ the ordinary-assumption inventory:
 | `null_decision_assumptions` | 1 | 2 | 2 | 0 |
 | `threshold_kinematic_assumptions` | 1 | 6 | 6 | 0 |
 
-Existing claim classifications: `explicit_edges`: 170; `explicit_non_consumer`: 156.
+Existing claim classifications: `explicit_edges`: 171; `explicit_non_consumer`: 159.
 
 ## Remaining-input and dependency rule
 
@@ -123,6 +125,8 @@ are not additional prerequisites for the supplied finite scalar theorem.
 
 Explicit assumption-name navigation: ` faithful_common_reference_law `, ` complete_repaired_visible_datum_fibre `.
 
+Existing claim-row navigation (no new edges): ` OPH-MODEL-NATIVE-OBSERVER-EXECUTION `, ` OPH-MODEL-P-RESPONSE-EXECUTION `.
+
 Sources:
 
 - [Finite conditional repair](../Lean/Thermodynamics/FiniteConditionalRepair.lean).
@@ -130,6 +134,8 @@ Sources:
 - [Current candidate and native baselines](../model/CONSTRUCTION.md).
 - [N4 shared bare-occupation response and finite memory certificate](../code/native_response/README.md).
 - [Executable native observer and finite record/feedback contract](../model/observer/README.md).
+- [Native C and exact observation-record-feedback execution](../model/observer/native.py); exact source anchor: ` def run() `.
+- [P-dependent detector and bit-controlled continuation](../model/observer/p_response/experiment.py); exact source anchor: ` def controlled_native_step( `.
 
 <a id="re-02"></a>
 
@@ -143,12 +149,15 @@ Sources:
 
 Explicit assumption-name navigation: ` repair_completeness `, ` local_diamond `, ` strict_well_founded_transactional_descent `.
 
+Existing claim-row navigation (no new edges): ` OPH-MODEL-NATIVE-OBSERVER-EXECUTION `.
+
 Sources:
 
 - [Observer confluence](../Lean/ObservableNormalForms/ObservableNormalForms/ObserverConfluence.lean).
 - [Consensus paper](../paper/reality_as_consensus_protocol.tex).
 - [Transactional and acceptance assumptions](../claims/assumption_dictionary.md).
 - [Fixed CPTP observer and classical-record preservation](../model/observer/DERIVATION.md).
+- [Independent native observer tests](../model/observer/test_native_observer.py).
 
 <a id="re-03"></a>
 
@@ -160,28 +169,34 @@ Sources:
 
 **Closure condition:** Declare one branch and prove its fairness, locality and attempt/waste bounds on complete histories, charging all operations.
 
+Existing claim-row navigation (no new edges): ` OPH-MODEL-OBSERVER-RECORD-CAPACITY `.
+
 Sources:
 
 - [Canonical scheduler/reference entries](../docs/registers/PREMISE_REGISTER_V3.md).
 - [Consensus scheduler contracts](../paper/reality_as_consensus_protocol.tex).
 - [Finite source witnesses, record capacity and controller encoding](../model/observer/CAPACITY.md).
+- [Reachable-word capacity and compact controller execution](../model/observer/capacity.py); exact source anchor: ` def compile_controller( `.
+- [Independent capacity checks](../model/observer/test_observer_capacity.py).
 
 <a id="re-04"></a>
 
 ### RE-04: Observer regions, causal provenance and time-slice access
 
-**Constructed:** Finite carriers, authenticated source order and regional reconstruction contracts exist. The canonical executed-history constructor supplies an ancestry rank; the abstract semantic-log interface requires one.
+**Constructed:** Finite carriers, authenticated source order and regional reconstruction contracts exist. The canonical executed-history constructor supplies an ancestry rank; the abstract semantic-log interface requires one. The executable native observer specifies a finite source/tape carrier, a record-only controller menu and repeatable committed-prefix reads. The electromagnetic detector distinguishes the one-bit actuator algebra from its complete recorded trajectory.
 
-**Remaining input:** Identify the actual joint carrier, regions, correlations, access menu and semantic read support. Local momentum coordinates do not supply momentum access from a two-position-layer menu.
+**Remaining input:** Identify the actual joint carrier, regions, correlations, access menu and semantic read support. Local momentum coordinates do not supply momentum access from a two-position-layer menu. This single local protocol has no federation, transported record service or continuum regional net; it does not instantiate the complete abstract OperationalObserver structure.
 
 **Closure condition:** Construct restriction-compatible regions and retained histories on the same source. For the scalar regional theorem verify its exterior row-space criterion; local coordinates alone do not establish that criterion.
 
-Existing claim-row navigation (no new edges): ` OPH-SCALAR-REGIONAL-COLLAR-RECONSTRUCTION `.
+Existing claim-row navigation (no new edges): ` OPH-SCALAR-REGIONAL-COLLAR-RECONSTRUCTION `, ` OPH-MODEL-NATIVE-OBSERVER-EXECUTION `.
 
 Sources:
 
 - [Regional scalar reconstruction](../paper/tex_fragments/SOURCE_SCALAR_REGIONAL_TIME_SLICE.tex).
 - [Observer and provenance entries](../docs/registers/PREMISE_REGISTER_V3.md).
+- [Finite source/tape access contract and record algebra](../model/observer/DERIVATION.md).
+- [One-bit actuator versus full audit algebra](../model/observer/p_response/ACCESS_CAPACITY.md).
 
 <a id="re-05"></a>
 
@@ -223,32 +238,39 @@ Sources:
 
 ### RE-07: Quantum representation and operational probabilities
 
-**Constructed:** The scalar Fock/Weyl construction and constrained local field representation are mathematically compatible. The Hamiltonian is the original positive canonical one.
+**Constructed:** The scalar Fock/Weyl construction and constrained local field representation are mathematically compatible. The Hamiltonian is the original positive canonical one. The finite native observer has an all-input CPTP map with coherent write isometries and an explicit classical readout. The binary electromagnetic detector has complementary effects on arbitrary coherent record inputs; its outcome probabilities and complete continuation are implemented.
 
-**Remaining input:** CCR, Hilbert representation, subsystem split, accessible phase effects, channel semantics and Born readout remain declared. Finite-code CCR are approximate with an explicit boundary defect.
+**Remaining input:** CCR, Hilbert representation, subsystem split, accessible phase effects, channel semantics and Born readout remain declared. Finite-code CCR are approximate with an explicit boundary defect. These finite protocols use supplied quantum instrumentation and do not derive the Born rule or the scalar Fock representation from the native load law.
 
 **Closure condition:** Realize the specified state/observable/instrument relations on the same source, with controlled approximation. Shared spectra or a classical stationary distribution do not supply this interface.
+
+Existing claim-row navigation (no new edges): ` OPH-MODEL-NATIVE-OBSERVER-EXECUTION `, ` OPH-MODEL-P-RESPONSE-EXECUTION `.
 
 Sources:
 
 - [Scalar quantum representation](../paper/tex_fragments/SOURCE_SCALAR_QUANTUM.tex).
 - [Complete quantum instrument](../paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex); exact source anchor: ` thm:source-scalar-sequential-instrument `.
 - [Coherent source assumptions](../docs/research/COHERENT_SOURCE_CLOCKS.md).
+- [All-input native CPTP construction](../model/observer/DERIVATION.md).
+- [Binary detector completeness on coherent record inputs](../model/observer/p_response/DERIVATION.md).
 
 <a id="re-08"></a>
 
 ### RE-08: Native coherent controls, phase and reset
 
-**Constructed:** Existing proper-code source controls compile individual force/pointer factors. Complete retained-pointer phases are checked in the exact history target. N2/N3 admit a one-event, one-port state/effect discriminator without an external quantum reference or coherent record history.
+**Constructed:** Existing proper-code source controls compile individual force/pointer factors. Complete retained-pointer phases are checked in the exact history target. N2/N3 admit a one-event, one-port state/effect discriminator without an external quantum reference or coherent record history. The N1-based detector software executes all native and binary-probe outcomes, retains its committed bit and uses only that bit for the next seam.
 
-**Remaining input:** Coherent code gluing, pure blanks, preparation, reset, precision, transport, drift and complete readback remain supplied service requirements. Event-conditioned raw responses in the endpoint-current candidate require a grammar/implementation check beyond the existing proper-code controller contract. Those local preparations and effects are supplied diagnostic resources, not an autonomous hardware execution. N4 uses existing D matrices in a supplied load-response interaction; this does not establish admissibility in the old primitive-response grammar.
+**Remaining input:** Coherent code gluing, pure blanks, preparation, reset, precision, transport, drift and complete readback remain supplied service requirements. Event-conditioned raw responses in the endpoint-current candidate require a grammar/implementation check beyond the existing proper-code controller contract. Those local preparations and effects are supplied diagnostic resources, not an autonomous hardware execution. N4 uses existing D matrices in a supplied load-response interaction; this does not establish admissibility in the old primitive-response grammar. Its chosen probe preparation, flux exposure, routing and readout are specified apparatus; the software does not execute the earlier scalar source compiler or realize the N4 occupation apparatus.
 
 **Closure condition:** Execute or bound the full source instrument with its complementary outcomes and all service errors; a requested unitary or accurate coefficient is not a complete channel certificate.
+
+Existing claim-row navigation (no new edges): ` OPH-MODEL-P-RESPONSE-EXECUTION `.
 
 Sources:
 
 - [Coherent code and service contract](../docs/research/COHERENT_SOURCE_CLOCKS.md).
 - [Finite pulse and noise theorems](../paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex); exact source anchor: ` prop:source-scalar-finite-noise `.
+- [Complete detector and feedback branches](../model/observer/p_response/experiment.py); exact source anchor: ` def histories( `.
 
 <a id="re-09"></a>
 
@@ -269,9 +291,9 @@ Sources:
 
 ### RE-10: One encoded preparation, evolution and record history
 
-**Constructed:** The original five q=3 force/retained-pointer histories and coupled-vacuum preparation compose on one d=8192 onsite code with 104 field and two pointer work qubits. Time, displaced occupation cutoffs and existing-source synthesis have a combined mathematical trace-distance bound below 0.001237, preserved by the same complete readout. All relative phases and outcomes are retained. The finite recipe has a conservative evolution pulse upper bound below 2^116, with fewer than 2^117 pack/export events; neither word emission nor native execution was performed.
+**Constructed:** The original five q=3 force/retained-pointer histories and coupled-vacuum preparation compose on one d=8192 onsite code with 104 field and two pointer work qubits. Time, displaced occupation cutoffs and existing-source synthesis have a combined mathematical trace-distance bound below 0.001237, preserved by the same complete readout. All relative phases and outcomes are retained. The finite recipe has a conservative evolution pulse upper bound below 2^116, with fewer than 2^117 pack/export events; neither word emission nor native execution was performed. Separately, model/observer executes a finite native two-event history and a P-dependent bit-controlled continuation; those are smaller completed protocols with different states and operations.
 
-**Remaining input:** Physical blank/pointer initialization, pulse/control and coherent code-service accuracy, storage/drift, routing/reset, complete readback and their resource budgets remain supplied or unimplemented. The enormous constructive upper count does not establish efficient execution. Physical clock selection and refinement-uniform resources remain separate obligations.
+**Remaining input:** Physical blank/pointer initialization, pulse/control and coherent code-service accuracy, storage/drift, routing/reset, complete readback and their resource budgets remain supplied or unimplemented. The enormous constructive upper count does not establish efficient execution. Physical clock selection and refinement-uniform resources remain separate obligations. Running the finite observer does not count as emitting or executing the scalar field/pointer word described in this group.
 
 **Closure condition:** Emit and execute an adequate native implementation and add reference-stable physical initialization, pulse, service, storage and readout errors to the constructed mathematical budget. Preserve complete records and the comparison order: uniform finite compiler on actual code, preparation error under a common extended finite history, state-specific ideal Gaussian history estimates, then complete readout. A common-code mathematical recipe does not close the physical experiment.
 
@@ -283,6 +305,7 @@ Sources:
 - [Exact finite pulse](../paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex); exact source anchor: ` prop:source-scalar-finite-pulse `.
 - [Sequential composition](../paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex); exact source anchor: ` thm:source-scalar-sequential-instrument `.
 - [Fixed-action local splitting](../paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex); exact source anchor: ` prop:source-scalar-time-refinement `.
+- [Separate implemented two-event observer, not scalar-word execution](../model/observer/README.md).
 
 <a id="re-11"></a>
 
@@ -290,7 +313,7 @@ Sources:
 
 **Constructed:** The existing common scalar theorem gives the stated massive 3D free-field Weyl-product limit. The canonical field join preserves the same action, vacuum and observables.
 
-**Remaining input:** Native preparation/control/record errors must remain controlled along that family. The archived spherical routing and interacting many-body limits are different targets. Vanishing kinetic perturbations can share the narrower position-Weyl limit, so that limit alone does not select unique microscopic inertia.
+**Remaining input:** Native preparation/control/record errors must remain controlled along that family. The archived spherical routing and interacting many-body limits are different targets. Vanishing kinetic perturbations can share the narrower position-Weyl limit, so that limit alone does not select unique microscopic inertia. The two-event native observer, its P detector and the N4 local-tick calculation establish no spatial refinement or interacting quantum continuum; their operators must be mapped to the chosen continuum family before any such transfer.
 
 **Closure condition:** Prove uniform or summable errors and compatible states/observables for the actual implementation; reuse the existing scalar limit rather than reprove it. Interactions require their own continuum theorem.
 
@@ -301,6 +324,7 @@ Sources:
 - [Existing scalar continuum](../paper/tex_fragments/SOURCE_COMMON_SCALAR_PACKET.tex); exact source anchor: ` prop:common-scalar-continuum-limit `.
 - [Joint observable refinement](../paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex).
 - [Uniform refinement hypotheses](../claims/assumption_dictionary.md).
+- [Finite observer and scalar continuum scope distinction](../model/CONSTRUCTION.md).
 
 <a id="re-12"></a>
 
@@ -312,6 +336,8 @@ Sources:
 
 **Closure condition:** Prove the same-history clock/observable intertwiner and its domain, then calibrate independently. A local generator alone does not establish a microscopic causal cone.
 
+Existing claim-row navigation (no new edges): ` OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE `.
+
 Sources:
 
 - [Source count-clock theorem](../paper/tex_fragments/SOURCE_COUNT_CLOCK.tex); exact source anchor: ` thm:source-count-clock `.
@@ -319,6 +345,8 @@ Sources:
 - [Conditional clock conversion](../Lean/Screen/CurlStoneClockBridge.lean).
 - [N4 shared bare-occupation response and finite memory certificate](../code/native_response/README.md).
 - [Incident-attempt stopping channel and certified N4 bounds](../model/local_tick/README.md).
+- [Exact local stopping null and certificate replay](../model/local_tick/experiment.py); exact source anchor: ` def calculate() `.
+- [Independent finite-chain and quantum stopping checks](../model/local_tick/test_local_tick.py).
 
 <a id="re-13"></a>
 
@@ -340,9 +368,9 @@ Sources:
 
 ### RE-14: Gauge algebra to physical gauge fields
 
-**Constructed:** The finite local Standard Model Lie-algebra result remains proved under the adopted A1 complete-response/closure clauses and A2 endogenous transport. Compact-Lie classification is an explicit mathematics import.
+**Constructed:** The finite local Standard Model Lie-algebra result remains proved under the adopted A1 complete-response/closure clauses and A2 endogenous transport. Compact-Lie classification is an explicit mathematics import. The designed N1 charge assignment Q_v=g(P)N_v gives exact branch charge transfer and local U(1) covariance; its binary loop detector makes g(P) affect the native feedback response.
 
-**Remaining input:** The physical current/action, same-source category, global form and coupling attachment remain separate. The scalar field construction does not instantiate a physical gauge theory. Compatibility with the twelve-port reversible response is an immediate law-selection constraint, even though constructing physical gauge fields is downstream. Scalar seam equalizers cannot serve as that current: their tested Lie closure is so(11), not the required twelve-dimensional algebra. Conserved difference drives in the endpoint-current lift omit the central relative-phase generator; the full twelve-direction response is a supplied interface, not derived physical gauge dynamics. A carrier-covariant lower-block deletion retains N2 locality, completion and protected populations while failing injective twelve-direction response; those successful properties cannot replace the gauge theorem premise. The original direct-sum source algebra and the candidate tensor factors require an explicit interface.
+**Remaining input:** The physical current/action, same-source category, global form and coupling attachment remain separate. The scalar field construction does not instantiate a physical gauge theory. Compatibility with the twelve-port reversible response is an immediate law-selection constraint, even though constructing physical gauge fields is downstream. Scalar seam equalizers cannot serve as that current: their tested Lie closure is so(11), not the required twelve-dimensional algebra. Conserved difference drives in the endpoint-current lift omit the central relative-phase generator; the full twelve-direction response is a supplied interface, not derived physical gauge dynamics. A carrier-covariant lower-block deletion retains N2 locality, completion and protected populations while failing injective twelve-direction response; those successful properties cannot replace the gauge theorem premise. The original direct-sum source algebra and the candidate tensor factors require an explicit interface. This chosen U(1) response does not derive the Standard Model representation, Maxwell field-source dynamics or the omitted nonabelian interactions.
 
 **Closure condition:** Bind the proved algebra and representation to actual source observables, dynamics and refinement; supply the categorical and physical gauge interfaces used by the selected branch.
 
@@ -350,6 +378,7 @@ Sources:
 
 - [Finite gauge structure and physical attachments](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex); exact source anchor: ` thm:current-algebra `.
 - [Gauge source and global-form entries](../docs/registers/PREMISE_REGISTER_V3.md).
+- [Chosen charge transfer and branch gauge covariance](../model/observer/p_response/DERIVATION.md).
 
 <a id="re-15"></a>
 
@@ -450,12 +479,15 @@ Sources:
 
 **Closure condition:** For independent physical parameter claims, give the claimed source selection and same-quantity observable bridge. The finite detector supplies a conditional P-to-response map, not a P-only temperature or event-rate law; design uniqueness is not required for its implementation.
 
+Existing claim-row navigation (no new edges): ` OPH-MODEL-P-RESPONSE-EXECUTION `.
+
 Sources:
 
 - [Selection ledger](../docs/registers/SELECTION_LEDGER.md).
 - [Parameter and comparison premises](../docs/registers/PREMISE_REGISTER_V3.md).
 - [Frozen comparison boundaries](../docs/FROZEN_PREDICTION_LADDER.md).
 - [P-dependent electromagnetic observation and native feedback](../model/observer/p_response/README.md).
+- [Executed declared P-to-coupling map](../model/observer/p_response/experiment.py); exact source anchor: ` def coupling( `.
 
 <a id="re-21"></a>
 
@@ -480,16 +512,21 @@ Sources:
 
 ### RE-22: Physical propagation and an eligible test
 
-**Constructed:** Finite seam symbols, exact coefficients and conditional frozen comparison contracts exist. Internal scalar discriminators are not physical measurements. A local N2/N3 probe and N4 private-preparation/load-response test give finite internal discriminators under supplied quantum preparations and coupling, without empirical data.
+**Constructed:** Finite seam symbols, exact coefficients and conditional frozen comparison contracts exist. Internal scalar discriminators are not physical measurements. A local N2/N3 probe and N4 private-preparation/load-response test give finite internal discriminators under supplied quantum preparations and coupling, without empirical data. The native record and P-detector protocols have exact disconnected and shuffled-record controls plus reproducible sampled executions. The N4 local-tick calculation provides the separate stopping-rule null and certified finite lower bounds.
 
-**Remaining input:** Attach the same source operator, sector, physical scale, frame/boost, refinement, nuisance model and calibrated readout. Exclusivity and a positive lower scale bound are needed where the registered test requires them.
+**Remaining input:** Attach the same source operator, sector, physical scale, frame/boost, refinement, nuisance model and calibrated readout. Exclusivity and a positive lower scale bound are needed where the registered test requires them. These are internal model checks, not physical observations or eligible frozen predictions.
 
 **Closure condition:** Freeze an unavoidable relation and rejection rule with full remaining freedom, baseline and uncertainties before an independent eligible observation; preserve the frozen ladder unchanged.
+
+Existing claim-row navigation (no new edges): ` OPH-MODEL-NATIVE-OBSERVER-EXECUTION `, ` OPH-MODEL-P-RESPONSE-EXECUTION `, ` OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE `.
 
 Sources:
 
 - [Existing frozen targets and eligibility](../docs/FROZEN_PREDICTION_LADDER.md).
 - [Propagation attachment premises](../docs/registers/PREMISE_REGISTER_V3.md).
+- [Native seeded execution and paired controls](../model/observer/results/run.json).
+- [Detector exact histories and seeded execution](../model/observer/p_response/results.json).
+- [Local-tick null and inherited strict lower bounds](../model/local_tick/results.json).
 
 <a id="re-23"></a>
 
@@ -541,11 +578,13 @@ Sources:
 
 ### RE-26: Common-model compatibility and remaining named inputs
 
-**Constructed:** This crosswalk covers the canonical PR inventory and identifies actual scalar theorem reuse. The authoritative claim registry separately records ordinary assumptions, imports and explicit non-consumers. N4 joins equilibrium port geometry and a nontrivial kinetics discriminator on the same bare occupations, preparation and events, without adding state factors or a new interaction.
+**Constructed:** This crosswalk covers the canonical PR inventory and identifies actual scalar theorem reuse. The authoritative claim registry separately records ordinary assumptions, imports and explicit non-consumers. N4 joins equilibrium port geometry and a nontrivial kinetics discriminator on the same bare occupations, preparation and events, without adding state factors or a new interaction. The live model directory maintains one finite native observation-record-feedback construction, its correctable record capacity, a conditional P-dependent detector and a separate N4 stopping-clock certificate with direct source and replay links.
 
-**Remaining input:** The whole paper/theorem body has not been exhaustively normalized into one semantic dependency graph. Ordinary assumptions and imported-result names are inventoried, not individually discharged by this crosswalk. The endpoint-current candidate declares twelve local six-level factors, conditional response operations, retained records and a coupling theta; its flat alternative shows that preservation and convergence alone do not select that coupling law. N4 reuses the same factors but adds a fixed choice of response quadratures; writing it as one exchange does not derive that choice. OPH physical correctness is a hypothesis under investigation, not a consequence of these finite compatibility checks.
+**Remaining input:** The whole paper/theorem body has not been exhaustively normalized into one semantic dependency graph. Ordinary assumptions and imported-result names are inventoried, not individually discharged by this crosswalk. The endpoint-current candidate declares twelve local six-level factors, conditional response operations, retained records and a coupling theta; its flat alternative shows that preservation and convergence alone do not select that coupling law. N4 reuses the same factors but adds a fixed choice of response quadratures; writing it as one exchange does not derive that choice. OPH physical correctness is a hypothesis under investigation, not a consequence of these finite compatibility checks. Hardware and protocols are legitimate design choices for the accepted finite construction; uniqueness is not its completion requirement. Mapping those objects to all broader physical theorem premises is a separate common-model task.
 
 **Closure condition:** For each promoted claim bind its actual assumptions and imports, all transitive antecedents and model-added hypotheses to compatible objects with scoped evidence. Keep unreviewed bindings visible and reject circular discharge.
+
+Existing claim-row navigation (no new edges): ` OPH-MODEL-NATIVE-OBSERVER-EXECUTION `, ` OPH-MODEL-OBSERVER-RECORD-CAPACITY `, ` OPH-MODEL-P-RESPONSE-EXECUTION `, ` OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE `.
 
 Sources:
 
@@ -553,3 +592,5 @@ Sources:
 - [Named assumption meanings](../claims/assumption_dictionary.md).
 - [Canonical register scope](../docs/registers/PREMISE_REGISTER_V3.md).
 - [N4 shared bare-occupation response and finite memory certificate](../code/native_response/README.md).
+- [Live observer and repair-law implementation](../model/README.md).
+- [Reproducible package receipt and source verification](../model/verify.py).

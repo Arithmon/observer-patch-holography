@@ -38,6 +38,15 @@ correct.** Le [registre des candidats](model/CANDIDATES.md) et le
 [suivi des modèles](model/CONSTRUCTION.md) distinguent les résultats construits,
 les hypothèses fournies et les liens physiques à établir.
 
+Le **[modèle exécutable](model/README.md)** réalise un observateur fini :
+observation, conservation du registre classique et rétroaction commandant
+l’interaction suivante. Il comprend un détecteur binaire dont la réponse
+dépend de P, un calcul de capacité des registres et un résultat sur les
+événements locaux comptés par un observateur. La construction accepte les
+sorties de fermeture P/N et déclare son appareil et son protocole. Elle ne
+requiert pas que l’autoréférence choisisse un appareil unique ; son exécution
+logicielle n’établit pas la réalisation physique de l’univers entier.
+
 **La validité physique d’OPH est une hypothèse à tester.** La cohérence
 logique, les théorèmes conditionnels et les simulations réussies ne prouvent
 pas que la nature suit OPH ou une loi de réparation particulière. Nous
@@ -105,6 +114,7 @@ une version de travail n’est pas une nouvelle publication.
 
 | Pour explorer… | Commencer par… |
 | --- | --- |
+| L’observateur fini, son code et ses expériences reproductibles | [Modèle exécutable](model/README.md) |
 | Le modèle en construction et ses liens physiques à établir | [Suivi des modèles](model/CONSTRUCTION.md) |
 | Les lois candidates, leurs hypothèses et leurs tests distinctifs | [Registre des candidats](model/CANDIDATES.md) |
 | L’argument physique existant | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
@@ -183,6 +193,22 @@ donne les observations qui réfuteraient des affirmations précises.
 
 ### Reproduire le noyau fini
 
+Pour exécuter et vérifier le modèle d’observateur depuis la racine du dépôt :
+
+```sh
+python3 -m pip install -r model/requirements.txt
+python3 -m model.verify
+python3 -m pytest -q -W error model
+```
+
+Cette voie vérifie les manifestes et les cinq résultats conservés, dont
+20 000 essais de l’observateur natif et 200 000 essais du détecteur binaire.
+Chaque essai suit son protocole fini et conserve tous ses résultats.
+Le workflow [Runnable observer model](.github/workflows/observer-model.yml)
+exécute ces contrôles sous Linux et Windows. Cette suite complète les
+vérifications historiques ; un simple `python3 -m pytest` ne collecte pas
+les tests de `model/`.
+
 Après avoir installé les dépendances décrites dans [REPRODUCE.md](REPRODUCE.md),
 vérifiez le graphe des affirmations et une sélection de résultats sur
 l’algèbre finie, la capacité des registres et le consensus :
@@ -217,6 +243,7 @@ de chaque famille de preuves.
 | [`flagship/`](flagship/) | Article principal autonome de physique, source TeX et PDF |
 | [`paper/`](paper/) | Articles principaux et index des publications |
 | [`Lean/`](Lean/) | Développement mathématique vérifié par machine |
+| [`model/`](model/) | Observateur et loi de réparation exécutables, protocoles, résultats et tests |
 | [`code/`](code/) et [`evidence/`](evidence/) | Modèles exécutables, certificats et éléments de reproduction |
 | [`extra/`](extra/) et [`cosmology/`](cosmology/) | Articles de recherche mathématique et physique spécialisés |
 | [`book/`](book/) | *Reverse Engineering Reality*, source et livre téléchargeable |
@@ -254,4 +281,4 @@ d’apprentissage et les ressources mesurées.
 
 ## Licence
 
-Le dépôt utilise des licences séparées par type d’artefact. Tout le logiciel, y compris la bibliothèque Lean, [`code/`](code), [`tools/`](tools) et les schémas de [`schemas/`](schemas), est publié sous [Apache-2.0](code/LICENSE). Les articles, le livre, la documentation, les figures, les données, les registres générés de [`tracking/`](tracking) et les données de particules empaquetées de [`pdg_data/`](pdg_data) sont publiés sous [CC BY-NC-SA 4.0](LICENSE). Les valeurs tabulées de `pdg_data/` conservent les conditions amont du Particle Data Group. Le fichier [LICENSE](LICENSE) donne la carte par répertoire.
+Le dépôt utilise des licences séparées par type d’artefact. Tout le logiciel, y compris la bibliothèque Lean, [`code/`](code), [`model/`](model), [`tools/`](tools) et les schémas de [`schemas/`](schemas), est publié sous [Apache-2.0](code/LICENSE). Les articles, le livre, la documentation, les figures, les données, les registres générés de [`tracking/`](tracking) et les données de particules empaquetées de [`pdg_data/`](pdg_data) sont publiés sous [CC BY-NC-SA 4.0](LICENSE). Les valeurs tabulées de `pdg_data/` conservent les conditions amont du Particle Data Group. Le fichier [LICENSE](LICENSE) donne la carte par répertoire.
