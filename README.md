@@ -83,6 +83,9 @@ charged fermions and electric flux on one finite quantum register. An
 observation produces a record, that record controls feedback, and a later
 observation controls local repair. Every outcome is retained, and an exact
 error bound certifies that the feedback changes the measured response.
+For the same declared field action, an exact infinite-occupation calculation
+bounds the feedback contrast away from zero with the coordinate half-line
+detector; the action and preparation remain supplied inputs.
 
 The same histories supply observer Hilbert spaces and readable modular-clock
 probes. Native currents give exact conservation and transport relations,
@@ -102,6 +105,9 @@ python3 -m model.observer run --trials 10000 --seed 42
 
 The [prediction package](model/predictions/README.md) gives competing detector
 predictions and a rejection test; independent experimental counts are absent.
+The model also includes a finite source test that distinguishes two repair
+instruments through their retained record laws using specified coherent
+preparation and readout.
 Simulation agreement with a supplied field law does not establish that OPH
 derives the corresponding observation statistics.
 

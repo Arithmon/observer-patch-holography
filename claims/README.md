@@ -142,6 +142,12 @@ proved from a construction and inputs selected to define that construction:
 | Observer Hilbert representations and modular flow | Specified observer algebra and its state restriction |
 | Alignment of Hamiltonian and modular flow | Chosen full-work Gibbs reference |
 
+The source-discrimination construction compares two complete finite
+measurement channels and implements their difference as a recorded parity
+bit. Its executed trial counts are synthetic, and coherent preparation,
+readout and load-to-code identification remain declared inputs. This result
+adds no independent physical data or canonical premise disposition.
+
 The consequences in this table are registered conclusions, not extra input
 premises to delete. Stationarity of the uniform binary distribution does not
 derive its preparation. Setting the thermal scale parameter to one is a
