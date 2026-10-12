@@ -343,13 +343,14 @@ This is a conditional connection to the supplied scalar family, with explicit
 instrument branches and a [detector prediction](observer/scalar_response/PREDICTION.md);
 it does not derive the Hamiltonian from native averaging.
 
-The [two-site source implementation](observer/source_scalar/README.md) now
+The [two-site source implementation](observer/source_scalar/README.md)
 compiles and executes a separate finite scalar action on the twelve-port
 processor. It prepares the entangled field from blank registers, evolves
 four- and eight-level site codes and retains both pointer outcomes before
 native feedback. Exact bounds cover the initial vacuum tail and temporal
 splitting for the same finite Hamiltonian. Full occupation and spatial
-refinement, coherent service errors and physical identification remain open;
+refinement, coherent service errors and physical identification require
+further evidence;
 this does not upgrade the earlier eight-site or golden-grid execution claims.
 
 **Next decisive work:** connect the inertia and Hamiltonian time to the same

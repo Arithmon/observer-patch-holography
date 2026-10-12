@@ -88,9 +88,9 @@ Before repetition, a guarded polar decomposition restores numerical
 unitarity to each matrix computed from the source pulses. It uses no target
 matrix and preserves the word's phase. The receipt records each raw defect,
 correction and final defect. A raw unitarity defect above `1e-10` or a
-correction above `5.1e-11` fails; an actual nonunitary operation cannot be
-silently normalized. This prevents backend-dependent rounding bias from
-accumulating across the long program. Outcome probabilities and conditional
+correction above `5.1e-11` fails. Matrices whose nonunitarity exceeds the
+declared rounding tolerance are rejected. This prevents backend-dependent
+rounding bias from accumulating across the long program. Outcome probabilities and conditional
 states still pass the original independent checks. These diagnostics are
 not an interval arithmetic certificate or a physical error correction service.
 

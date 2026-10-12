@@ -109,7 +109,7 @@ The scalar adapter executes a supplied free-field model; native integer
 averaging does not by itself derive that Hamiltonian or its quantum vacuum.
 Its detector prediction is conditional on the stated apparatus and field
 law, with independent software controls and a separate physical test boundary.
-The two-site source program now implements field preparation, evolution and
+The two-site source program implements field preparation, evolution and
 detection under its declared code services. The next connection is a complete
 occupation and spatial refinement error budget for that same implementation,
 followed by physical apparatus identification and independent comparison.

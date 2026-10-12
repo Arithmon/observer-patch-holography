@@ -68,11 +68,11 @@ concrete repair candidates**. The native observer and P-dependent binary
 detector execute complete observation, record and feedback protocols.
 The scalar adapter connects those interfaces to a supplied free-field
 continuum family and an independently checkable conditional detector
-prediction. Its local evolution now supplies a checked numerical path from
+prediction. Its local evolution supplies a checked numerical path from
 neighboring field updates to the detector-controlled repair, with a temporal
 refinement control. It does not derive that Hamiltonian from integer averaging
 or establish a new empirical prediction of OPH.
-The source-compiled two-site experiment now implements preparation,
+The source-compiled two-site experiment implements preparation,
 evolution and detection through the same source-control interface, including
 both terminal quantum branches. Its coherent transport services, field
 action and clock remain explicit inputs. This closes a finite implementation

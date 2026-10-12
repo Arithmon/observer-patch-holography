@@ -54,7 +54,7 @@ Finite simulations and experiments are assessed with declared approximation
 and measurement errors. They do not prove arbitrary empirical precision or
 force a particular random outcome in an independently repeated experiment.
 Agreement must be constrained by measurements; a consistent world model can
-still describe different physics from nature.
+describe different physics from nature.
 
 Hardware, protocol and implementation choices remain open design variables.
 No uniqueness theorem for the chosen rule is a prerequisite. For the current
@@ -104,7 +104,7 @@ and uses the resulting probability in the same native continuation. It
 tests temporal refinement while retaining the existing continuum theorem.
 
 The [source-compiled two-site construction](observer/source_scalar/README.md)
-now emits and executes the field apparatus through the existing twelve-port
+emits and executes the field apparatus through the existing twelve-port
 controls. Blank registers are transformed into an entangled projected vacuum;
 the first native current supplies an impulse; finite quantum evolution and
 a quantum pointer produce both recorded outcome branches. Only the pointer
@@ -122,8 +122,8 @@ would implement a different Hamiltonian. The source controls implement
 preparation, evolution and readout under supplied coherent transport,
 reset and storage services. Full infinite-occupation propagation/readout
 bounds, spatial refinement, physical service errors and empirical
-identification remain open. The earlier continuum bounds cannot be
-transferred merely because both experiments use a scalar field.
+identification require further bounds and evidence. The earlier continuum
+bounds cannot be transferred merely because both experiments use a scalar field.
 
 ## Native repair and its observer contract
 
@@ -440,7 +440,7 @@ retains all eight prescribed rational cases, including rejection of singular
 ## Remaining construction work
 
 The finite observer is a completed component to extend and preserve. The
-two-site source program now executes preparation, quantum evolution and the
+two-site source program executes preparation, quantum evolution and the
 binary detector under its declared services. The next concrete target is
 to bound occupation errors throughout this complete history and connect a
 refining family of source programs to the continuum, retaining their

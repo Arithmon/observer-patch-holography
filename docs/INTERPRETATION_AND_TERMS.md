@@ -99,7 +99,7 @@ physics of our Universe.** Those statistics must admit the appropriate
 effective descriptions: a nontrivial quantum field theory in three spatial
 and one temporal dimension, including the observed interactions, and
 classical physics and gravity in their coarse-scale regimes. These are
-intended physical success criteria, not conclusions already obtained from
+intended physical success criteria, not conclusions obtained from
 the observer algebra or current code.
 
 **Observations are primary; fields and spacetime are effective descriptions.**
@@ -161,7 +161,36 @@ associated with interactions and dynamical gravity remain obligations.
 The [construction completion criteria](../model/CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 make this target reviewable. Apparatus and protocol design choices are
 legitimate; proving unique selection of a design is not required. A chosen
-construction still has to satisfy its continuum and empirical contracts.
+construction has to satisfy its continuum and empirical contracts.
+
+### Why observations come first
+
+Informally, OPH starts with what observers can experience operationally:
+detector outcomes, clock readings, retained records and the consequences of
+their interventions. They compare those records and repair incompatible
+interpretations. A successful shared description lets each observer predict
+how further observations will relate to the records they can access.
+
+In that description, a field summarizes how detectors respond to specified
+preparations. Spacetime geometry summarizes relationships among observations
+such as clock comparisons, signal exchanges and trajectories. Classical
+physics describes the regularities accessible at suitable coarse scales.
+Within OPH these are effective ways observers describe their experienced
+world, with limited domains of validity. They are not additional fundamental
+entities that the implementation must construct behind the observations.
+
+For example, a geometric description earns its role by correctly relating
+observers' clock and signal records. The model need not contain a fundamental
+spacetime object for those relations to have that description. Conversely,
+putting a metric array into a simulation does not establish that observers
+can observe its proposed geometric meaning. The comparison must follow
+through to their accessible records and predictions.
+
+That is why the completion test concerns experiences represented by
+measurements and their agreed operational meanings. Those meanings must
+predict the correlations and intervention responses observers actually find.
+The claim that OPH achieves this for nature requires the construction and
+evidence specified above; the interpretation alone supplies no verdict.
 
 ## Terms with different mathematical roles
 
