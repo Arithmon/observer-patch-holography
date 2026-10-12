@@ -2,390 +2,143 @@
 
 **Physics from the records observers can share.**
 
-[Runnable model](model/README.md) · [Physics preprint](https://philpapers.org/rec/MUEFOC) · [Pragma Research](https://floatingpragma.io/research/) · [Français](README_FR.md)
+[Physics preprint](https://philpapers.org/rec/MUEFOC) · [Pragma Research](https://floatingpragma.io/research/) · [Français](README_FR.md)
 
-Observer Patch Holography (OPH) investigates whether familiar physics can be
-reconstructed from bounded observers that reach agreement. An observer patch
-has local state, a boundary with ports, readback, records, and feedback for
-repairing disagreement. Within the model, facts become public when records
-survive comparison across overlapping patches.
+Observer Patch Holography (OPH) asks whether bounded observers comparing
+records and repairing disagreements can reproduce our observed experiences.
+The goal is an executable observer whose measurements and shared
+interpretations agree with ours.
 
-The proposed universe is one structure viewed both as a timeless consistent
-history and as the internal local computation of that history. Its records
-and responses to interventions supply the operation; no external host or
-preferred global clock is required. Space, physical duration and matter are
-intended emergent readouts. Current constructions supply some geometry,
-states, actions and clock maps as premises. The
-[interpretation and working terms](docs/INTERPRETATION_AND_TERMS.md) distinguish
-this physical proposal from the conditional results achieved in these constructions.
+**In OPH's proposed picture, observation is fundamental.** Reality is a
+timeless, self-referential structure of observations, records and their
+relations. Each observer assigns meaning to its observations, and shared
+meaning must survive comparisons with other observers. There is no
+fundamental, observer-independent spacetime continuum containing those
+experiences. Space, time, matter and classical objects are effective
+interpretations of them. The apparent continuum belongs to that description;
+"objective reality" means the stable operational structure on which observers
+agree.
 
-This repository contains the scientific work behind that idea: papers,
-machine-checked proofs and executable models. It connects finite agreement
-with quantum probability, spatial geometry and the symmetry pattern of the
-known forces, with a conditional route to Einstein dynamics. Each construction
-states the assumptions it consumes. Establishing a common physical
-realization requires measurements that distinguish the proposed models.
+Observers experience change from within this complete history. Its timeless
+self-consistency and its internal local observation-and-repair process are
+two descriptions of the same proposed structure. An observer's clock is a
+readout within it, with no external time in which the whole history must run.
+The [working terms](docs/INTERPRETATION_AND_TERMS.md) explain this view.
 
-## Run the observer model
+The project has checked finite mathematical results and executable observers
+that connect several of them in one process. **Agreement with the full range
+of observed measurement statistics has not been established.** The work below gives
+concrete pieces of that construction and tests where they fit together.
 
-**[model/](model/README.md) is the live home of observer and repair-law
-construction.** The new [common interacting process](model/common_source/README.md)
-couples quantum electric flux, charged fermions and a scalar on one evolving
-register. A matter observation controls feedback; a later scalar observation
-controls native repair. All 1,056 complete native/quantum histories retain
-their records and terminal states. An exact finite certificate proves that
-the feedback changes the scalar response, including ideal temporal splitting
-error. Its [observer readouts](model/common_source/OBSERVER_READOUTS.md)
-construct a GNS Hilbert representation from the actual state, execute
-a readable finite modular-clock instrument, and identify interactions
-between its supplied regions. The action, access, services and pulse
-schedule remain declared inputs. Physical clock calibration, an interacting
-spatial continuum and empirical comparison remain open.
+## Flagship finite theorems
 
-The [history repair formulation](model/common_source/HISTORY_REPAIR.md)
-recovers the same completed observations under every fair local update
-schedule for these fixed inputs. Observer event order and modular readouts
-remain distinct from the auxiliary solver counter.
-The [native geometric readout](model/common_source/SLOW_GEOMETRY.md)
-connects the inherited rank-three response carrier to recorded currents;
-an additional binary controller executes displacements spanning three
-directions without identifying them with physical position or momentum.
+- **Agreement and stable records.** Under explicit termination and consistency
+  conditions, local repairs reach a shared public result independent of their
+  order. Further results control record preservation and changes under
+  refinement. [Consensus paper](paper/reality_as_consensus_protocol.pdf).
+- **Quantum observations.** Within the stated finite quantum algebra, verified
+  results cover repeatable measurements, protected classical records,
+  uncertainty and the Bell correlation bound, including a state that attains
+  it. [Finite quantum event algebras](extra/machine_checked_finite_event_algebras.pdf).
+- **Three spatial directions.** The fixed twelve-port carrier and its mean
+  repair rule give an exact three-dimensional slow response and its Euclidean
+  geometry. This supplies a geometric building block for an observer's spatial
+  interpretation. [Carrier construction](code/a5_closure/README.md).
+- **Gauge symmetry.** With complete reversible response and observer-transport
+  assumptions, the construction forces the Standard Model gauge Lie algebra.
+  A specified matter representation gives an anomaly-free generation.
+  [Gauge derivation](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf).
 
-A separate [finite-resolution detector](model/common_source/SMOOTH_REFINEMENT.md)
-has a quantitative error bound through its complete interacting observation
-history and an explicit measurement-energy ledger. Its mathematical
-occupation limit retains a fixed two-site apparatus; spatial refinement and
-agreement between its clock, distance and energy readouts require further construction.
+These are conditional mathematical results. Making their premises hold for
+observations in one common model is the central construction problem. The
+[axiom reference](docs/AXIOM_REFERENCE.md) states the three core axioms; the
+[model–theorem map](model/PREMISES.md) separates their consequences from the
+additional inputs of each construction.
 
-The [fixed-reference clock bridge](model/common_source/THERMAL_CLOCK.md)
-connects the same Hamiltonian to modular evolution by choosing a faithful
-equilibrium reference distinct from the changing observed state. It does
-not establish that repair selects that reference or calibrate physical time.
-The [native propagation tests](model/common_source/CAUSALITY.md) check that
-information follows local seam interactions under fixed schedules. Units
-may be chosen by observers; consistent relations among readouts are the target.
-The [native field relations](model/common_source/NATIVE_FIELDS.md) derive
-conservation and conditional current laws directly from the recorded repair.
-The existing uniform calibration gives graph diffusion of mean load; an
-undamped physical wave law does not follow from that mean alone.
+## Executable observer
 
-Its finite observer executes local repair, retains an
-observation and uses that record to choose its next interaction. The
-P-dependent detector computes the electromagnetic coupling and lets a
-retained binary outcome control the next repair.
-The [scalar detector](model/observer/scalar_response/README.md) uses the native
-current to prepare a scalar field, reads one binary outcome and feeds it back
-into native repair, with a controlled comparison across the existing field
-refinements. Its field law, vacuum, apparatus and model clock are explicit
-inputs. The local evolution extension executes the field's neighboring-site
-updates at q=13 and q=34, includes the original vacuum's squeezing in the
-detector probability, and passes its sampled bit to native feedback. A
-separate temporal certificate extends the inherited continuum error budget;
-the two finest grids remain analytic comparisons for this local extension.
-The new [source-compiled field apparatus](model/observer/source_scalar/README.md)
-executes a separate two-site design from blank registers through entangled
-preparation, quantum evolution, pointer readout and native feedback. All
-field gates are emitted from the existing twelve-port controls. Exact
-certificates bound its complete ideal occupation history and finite temporal
-splitting. The executed sixteen-level design has an ideal detector probability
-between 0.51495 and 0.51789, excluding a fair response under the declared
-apparatus. Spatial refinement, numerical execution and physical service
-errors require separate bounds for that same construction.
+The [model directory](model/README.md) contains the implementation, tests and
+reproducible results. Its strongest joined experiment puts a scalar field,
+charged fermions and electric flux on one finite quantum register. An
+observation produces a record, that record controls feedback, and a later
+observation controls local repair. Every outcome is retained, and an exact
+error bound certifies that the feedback changes the measured response.
 
-The [specified prediction tests](model/predictions/README.md) distinguish
-the current-record and contrast-record quantum instruments with exact phase
-predictions, a fixed sample plan and a validator for complete independent
-counts. The experimental verdict is `no_data`. A separate retrospective
-audit retains the P detector's incomplete low-energy coupling contract and
-its approximately 300 ppm inverse-alpha discrepancy; no fitted correction
-or empirical confirmation is introduced.
+The same histories supply observer Hilbert spaces and readable modular-clock
+probes. Native currents give exact conservation and transport relations,
+with geometric readouts tied to the twelve-port carrier. A smooth detector
+has controlled errors as the two-site occupation cutoff increases. These are
+executed and proved consequences of the specified apparatus; its field
+Hamiltonian, preparation and some clock choices are supplied inputs.
+See the [common process](model/common_source/README.md) for the results and
+boundaries, including the distinction between repair relaxation and waves
+in an observer's time.
 
-Run from the repository root with Python 3.11 or newer:
+Try the finite observer from the repository root with Python 3.11 or newer:
 
 ```sh
 python3 -m model.observer run --trials 10000 --seed 42
-python3 -m model.observer.p_response --check model/observer/p_response/results.json
 ```
 
-The [model README](model/README.md) gives the exact checks, reproducible
-receipts and construction guide. These are completed finite software
-protocols with explicit P/N premises and apparatus choices. Broader physical
-identification remains part of the research below.
-
-## Research status
-
-We have **runnable finite observers, conditional mathematical results and
-concrete repair candidates**. The native observer and P-dependent binary
-detector execute complete observation, record and feedback protocols.
-The common interacting construction places scalar, charged matter,
-electric evolution and record-controlled interventions on one quantum work
-space, with operator Gauss constraints and a certified finite response.
-Its theorem attachments distinguish record creation from persistence and
-exact hardware refinement from approximate occupation cutoffs. It does not
-yet instantiate every compatible finite theorem or establish the required
-continuum and gravitational descriptions of observer statistics.
-The scalar adapter connects those interfaces to a supplied free-field
-continuum family and an independently checkable conditional detector
-prediction. Its local evolution supplies a checked numerical path from
-neighboring field updates to the detector-controlled repair, with a temporal
-refinement control. It does not derive that Hamiltonian from integer averaging
-or establish a new empirical prediction of OPH.
-The source-compiled two-site experiment implements preparation,
-evolution and detection through the same source-control interface, including
-both terminal quantum branches. Its coherent transport services, field
-action and clock remain explicit inputs. This closes a finite implementation
-gap without establishing a common continuum realization of observed physics.
-The candidates reproduce and connect some required structures, and we can
-distinguish several of them in simulations. **We do not have a
-common model established as physically correct.** The
-[candidate register](model/CANDIDATES.md) and
-[model search](model/CONSTRUCTION.md) separate constructed results, supplied
-assumptions and missing physical connections.
-
-The [central-port construction](code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
-extends the native/N4 source with twelve classical addresses while preserving
-its decoded quantum channel. Its abstract source pair holds the full quantum
-reference and normalized port geometry fixed while exhibiting different
-finite kinetics. Occupied-port readout has a separate quantum information
-cost. The [four audit controls](model/CONSTRUCTION.md#retained-audit-controls)
-retain the precise carrier, marked-action, feedback and inertia boundaries.
-
-**OPH's physical correctness is a hypothesis under investigation.** Logical
-consistency, conditional theorems and successful simulations do not establish
-that nature follows OPH or any particular candidate repair law. We retain
-alternative laws and revise or reject physical attachments when tests fail.
-
-The finite constructions supply model comparisons. A physical test additionally
-needs an operational identification of states, records, time and parameters;
-a distinguishing observable; an account of calibration and uncertainty; and
-a prediction and rejection rule fixed before independent comparison data are
-examined. Compare against established physics and alternative models, including
-cases where they cannot be distinguished. The
-[physical-test programme](https://github.com/FloatingPragma/observer-patch-holography/issues/1025)
-and [frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) track that work.
-Reproducing a value used to choose the model is a fit, not an independent test.
-
-The parallel [programme-wide obstruction search](https://github.com/FloatingPragma/observer-patch-holography/issues/1078)
-seeks contradictions, joint-realization impossibility, unavoidable independent
-physical inputs and empirical exclusions. Each result states which fixed
-formulation or model class it rejects. A decisive negative result is valuable;
-failing to find one does not confirm OPH. The issue also distinguishes scientific
-refutation from a practical decision to stop pursuing the programme.
-
-## Research focus: one repair process
-
-**Find the simplest shared repair rule that satisfies the known constraints.**
-
-**The completion target is one common construction with a controlled
-continuum limit reproducing established physics and quantitative predictions
-that survive independent tests.** Its finite observer implementation is a
-completed component. Construction choices need no uniqueness theorem;
-their physical consequences need compatible readouts, explicit assumptions
-and discriminating evidence.
-
-More precisely, the target is an executable observer algebra whose compatible
-measurement statistics admit nontrivial 3+1-dimensional quantum fields,
-their observed interactions, classical physics and gravity as effective
-descriptions in the appropriate regimes. Fundamental fields or a fundamental
-spacetime are not prerequisites; their observational content is the target.
-Shared operational meaning defines the proposed objective structure; its
-agreement with nature remains a testable requirement. The
-[completion criteria](model/CONSTRUCTION.md#completion-target-and-acceptance-criteria)
-and [objectivity contract](docs/INTERPRETATION_AND_TERMS.md#observer-measurements-and-operational-objectivity)
-state this target, including gapless sectors and controlled errors, separately
-from the current finite achievements.
-
-The research priority is an explicit microscopic repair law whose evolution
-supplies the inputs of the existing theorems on one common model. Separate
-conditional results can be correct without their physical premises being
-realized together. We start with the simplest compatible construction, reuse
-proved results, and test each added hypothesis against alternatives. The
-carrier geometry, reversible gauge response and local operational clocks must be
-compatible readouts of that same process. Add a mechanism only for a
-demonstrated missing connection, and count every added physical assumption.
-A rejected scalar-only candidate does not establish that a simple common
-source law is impossible.
-
-Use the [established agreement mathematics](docs/AGREEMENT_RESEARCH_FOUNDATIONS.md)
-as the research foundation: specify recovery and scheduling assumptions,
-map linear overlap models to sheaf diffusion and boundary extension, and reuse
-the resulting theorems where their premises hold. Each candidate must identify
-its remaining physical obligation and a test that can distinguish its law.
-
-Compare the [concrete candidate laws](model/CANDIDATES.md), their tested
-properties and remaining choices. Follow the [model search](model/CONSTRUCTION.md), its
-[model–theorem premise map](model/PREMISES.md), and the
-[research issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics).
-Progress means a tested connection or a rejected candidate; theorem counts
-do not measure physical completion.
-
-Paper releases and broad prose restructuring are on hold until a coherent
-model milestone supports them. Audits, correctness fixes and reproducibility
-checks continue. The [research policy](model/CONSTRUCTION.md#research-programme-and-paper-release-hold)
-states the milestone and the correction exception.
-
-Main-branch PDFs are current-source previews and may retain the existing
-release identifier after corrections. Tagged or deposited release artifacts
-retain their original bytes; a preview is not a new release.
-
-## Start here
-
-| To explore… | Start with… |
-| --- | --- |
-| Run the observer and continue its construction | [Runnable model](model/README.md) |
-| The construction contracts and open physical connections | [Construction guide](model/CONSTRUCTION.md) |
-| The active repair laws, assumptions and distinguishing tests | [Candidate register](model/CANDIDATES.md) |
-| The existing physics argument | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
-| The proofs and reproducible calculations | [Lean library](Lean/) and [reproduction guide](REPRODUCE.md) |
-| The related work on learning machines | [Cadence](https://floatingpragma.io/cadence/) and [interactive demos](https://floatingpragma.io/demos/) |
-| Explanations for a general audience | [Pragma Research blog](https://blog.floatingpragma.io/) |
-
-## Mathematical foundations
-
-The research program connects these parts of physics through one observer
-architecture, with separate assumptions stated for each result.
-
-- **Agreement between observers.** Under the stated termination and
-  consistency conditions, local repairs reach a protected public record
-  independent of their order. The finite theorems describe agreement,
-  stability and refinement.
-- **Quantum probability.** Finite event algebras support the Born probability
-  rule, Lüders conditioning and exact Tsirelson results, including a Bell-state
-  construction that attains 2√2. These are mathematical results on the stated
-  event-algebra branch.
-- **Geometry and the known forces.** A twelve-port response construction
-  supplies a three-dimensional spatial readback. Complete reversible response
-  and internal observer transport force the Standard Model gauge Lie type
-  under the stated hypotheses. A supplied matter representation gives an
-  anomaly-free fifteen-state generation; its physical realization and the
-  global gauge group require additional structure.
-- **Spacetime and gravity.** Declared source and reading laws support
-  controlled causal-geometry constructions. The Einstein-equation implication
-  assumes a common physical realization with the stated stress, entropy,
-  continuum and scale data.
-- **Classical and quantum matter.** A supplied charged-scalar/Maxwell action
-  supports controlled nonlinear continuum motion in its real sector and an
-  interacting quantum state space on a fixed mesh. Selecting the action from
-  observer histories and identifying it with physical matter are separate
-  requirements.
-- **Constants as fixed-point problems.** Koide's relation holds exactly under
-  a stated balance premise. The fine-structure calculation certifies a root
-  of a declared closure map and carries diagnostic status. The capacity
-  program asks whether the public capacity assigned to the universe agrees
-  with the capacity reconstructed from within it. Connecting these
-  constructions to measured constants requires physical identification.
-
-The [main preprint](https://philpapers.org/rec/MUEFOC) develops these connections
-and their precise scope. The [paper index](paper/) provides the specialist
-accounts, including thermodynamics, field geometry and fixed-point
-constructions for the constants.
+The [prediction package](model/predictions/README.md) gives competing detector
+predictions and a rejection test; independent experimental counts are absent.
+Simulation agreement with a supplied field law does not establish that OPH
+derives the corresponding observation statistics.
 
 <!-- PUBLIC-QUANTITATIVE-CLAIMS:BEGIN -->
 <!-- Quantitative table suppressed while physical_establishment count is zero. -->
 <!-- PUBLIC-QUANTITATIVE-CLAIMS:END -->
 
-## Evidence you can inspect
+## Explore and reproduce
 
+Start with the [main preprint](https://philpapers.org/rec/MUEFOC),
+[paper index](paper/), [book](book/) or [reproduction guide](REPRODUCE.md).
 The [Lean library](Lean/) contains more than 12300 public theorems and lemmas
-with no admitted proofs. Exact certificates and reproducible simulations
-accompany the mathematical arguments. The companion
-[physics simulator](https://github.com/muellerberndt/oph-physics-sim) provides
-executable observer dynamics and retained evidence.
+with no admitted proofs. The [postdiction ledger](docs/POSTDICTION_LEDGER.md)
+and [falsification programme](docs/OPH_FALSIFICATION_PROGRAM.md) distinguish
+comparisons with measurements from tests of the mathematical constructions.
 
-The [axiom reference](docs/AXIOM_REFERENCE.md) states the three core axioms;
-the [premise register](docs/registers/PREMISE_REGISTER_V3.md) and
-[model–theorem premise map](model/PREMISES.md) record additional premises and
-result-specific assumptions, including physical identifications and empirical
-inputs.
-The [postdiction ledger](docs/POSTDICTION_LEDGER.md) records comparisons with
-measured values and their input ancestry; the
-[frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) records tests whose
-conditions must be fixed before the comparison data are examined.
-The [falsification program](docs/OPH_FALSIFICATION_PROGRAM.md) gives the
-observations that would refute particular claims.
+<details>
+<summary>Related work, funding and licensing</summary>
 
-### Reproduce the finite core
+[Cadence](https://github.com/muellerberndt/cadence) is the related learning-machine
+project. Its capability evidence is separate from OPH's physics evidence.
+[Pragma Research](https://floatingpragma.io/) brings the projects together.
 
-After setting up the dependencies in [REPRODUCE.md](REPRODUCE.md), check the
-claim graph and selected finite algebra, record-capacity and consensus results:
+OPH's official TEO (Theory Of Everything) memecoin is on Base at
+`0xd2a7055317D0c7b316319cDadaE592D0644A0b07`
+([chart](https://dexscreener.com/base/0xba55cdae026b9dd63fcb50e82094d61472948e44527ca4791033497469228049)).
+Bernhard Mueller can claim its trading fees, which help fund the research.
+The token has no role in the theory. Other tokens using the OPH or TEO name
+are unrelated. Nothing here is financial advice.
 
-```bash
-python3 tools/check_claim_registry.py
-python3 -m pytest -q \
-  code/a5_closure/test_audit.py \
-  code/capacity_readback/test_correctable_public_record_capacity.py \
-  code/capacity_readback/test_reversible_public_checkpoint_packet.py \
-  code/consensus/test_reference_architecture_benchmark_suite.py \
-  code/consensus/test_verified_tree_packet_net.py
-```
+Software, including Lean and the model code, uses [Apache-2.0](code/LICENSE).
+Papers, documentation, figures, data and ledgers use [CC BY-NC-SA 4.0](LICENSE),
+with upstream Particle Data Group terms for the packaged particle values.
+The [license map](LICENSE) gives the directory-specific terms.
 
-The reproduction guide describes the wider checks and the scope of each
-evidence family.
+</details>
 
-## Reconstruction map
+## Research focus
 
-<p align="center">
-  <a href="assets/prediction-chain.svg" target="_blank" rel="noopener noreferrer">
-    <img src="assets/prediction-chain.svg" alt="OPH reconstruction chain" width="92%">
-  </a>
-</p>
+**Make one observation-and-repair process supply the effective physics.**
+The task is to connect the observer's clock, spatial interpretation and field
+measurements on the same histories, then compare outcome probabilities,
+correlations and responses to interventions with independent observations.
+A controlled continuum limit means that these observations admit an
+increasingly accurate continuous description. It does not assert that a
+spacetime continuum exists underneath them. The conditional route to Einstein
+dynamics has the same target: observers' measurements agreeing with the
+effective gravitational description.
 
-<p align="center"><sub>The OPH reconstruction map connects observer records, three-dimensional source geometry, causal order, clocks, fields and quantum states. Each arrow names a mathematical connection; the papers state the assumptions that join them into an effective physical description.</sub></p>
-
-## Repository guide
-
-| Path | Contents |
-| --- | --- |
-| [`flagship/`](flagship/) | Main standalone physics paper, TeX source and PDF |
-| [`paper/`](paper/) | Core papers and publication index |
-| [`Lean/`](Lean/) | Machine-checked mathematical development |
-| [`code/`](code/) and [`evidence/`](evidence/) | Executable models, certificates and reproduction evidence |
-| [`extra/`](extra/) and [`cosmology/`](cosmology/) | Focused mathematical and physical research papers |
-| [`book/`](book/) | *Reverse Engineering Reality*, source and downloadable book |
-| [`docs/`](docs/) | Canonical references: axioms, frozen predictions, postdictions and falsifiers |
-| [`docs/registers/`](docs/registers/) | Generated premise, observation, instrument and selection registers |
-| [`docs/research/`](docs/research/) | Markdown research notes, each verified by a code lane |
-| [`docs/policies/`](docs/policies/) | Data, hardware-evidence and writing policies |
-
-## Contribute
-
-Prefer a simpler shared rule over an accumulation of separate mechanisms.
-Contributions should repair an existing defect or resolve a named uncertainty
-in the common model and its tests. Reuse proved results; add a proof when a
-specific model obligation needs it. Standalone finite-theorem expansion and
-theorem-count targets are outside this programme. Start with the
+Use the existing carrier and rules to discharge inputs by proof or execution.
+A supplied field equation remains an input even when its simulation works.
+Construction choices need no uniqueness theorem, but their consequences must
+survive the tests. Contributions should resolve a named connection or expose
+a failure in the shared model. The [construction guide](model/CONSTRUCTION.md),
+[candidate register](model/CANDIDATES.md) and
 [research issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
-and [reproduction guide](REPRODUCE.md). Keep exploratory logs local and report
-concise decisions with their assumptions and evidence. Verified research notes
-belong in [`docs/research/`](docs/research/); paper publication follows the hold above.
+set out that work.
 
-## From observer patches to learning machines
-
-[Cadence](https://github.com/muellerberndt/cadence) makes the settling idea
-executable as a learning architecture. Its bounded software patches carry
-local state and readback, with feedback that repairs prediction errors.
-Its default brain, System 1, learns from experience as animal brains do and
-not by backpropagation. Optional System 2 observers add recursive feedback
-inside the same settlement.
-
-The [Cadence preprint](https://philpapers.org/rec/MUECAP-2) describes the
-architecture and experiments. Its computational case rests on learning
-behavior and measured resource use. [Pragma Research](https://floatingpragma.io/)
-connects this work to embodied AI.
-
-## TEO memecoin
-
-OPH has an official memecoin on Base, TEO (Theory Of Everything). Its token
-address is `0xd2a7055317D0c7b316319cDadaE592D0644A0b07`
-([chart on Dexscreener](https://dexscreener.com/base/0xba55cdae026b9dd63fcb50e82094d61472948e44527ca4791033497469228049)).
-Any other token using the OPH or TEO name is unrelated to this project.
-
-The token was set up so that Bernhard Mueller can claim all the trading fees it
-generates, and those fees have been a very helpful source of funding for OPH.
-The token has no role in the OPH research.
-
-Nothing here is financial advice.
-
-## License
-
-The repository uses split licensing. All software, including the Lean library, [`code/`](code), [`model/`](model), [`tools/`](tools), and the schemas in [`schemas/`](schemas), is licensed under [Apache-2.0](code/LICENSE). Papers, the book, documentation, figures, data, the generated ledgers in [`tracking/`](tracking), and the packaged particle data in [`pdg_data/`](pdg_data) are licensed under [CC BY-NC-SA 4.0](LICENSE); the tabulated values in `pdg_data/` carry their upstream Particle Data Group terms. The [LICENSE](LICENSE) file gives the per-directory map.
+Paper releases follow the [model milestone policy](model/CONSTRUCTION.md#research-programme-and-paper-release-hold).
+Main-branch PDFs are source previews; deposited releases retain their original bytes.
