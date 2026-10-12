@@ -232,6 +232,46 @@ def test_rejects_indefinite_covariance_even_when_complex_modulus_overflows():
         WeylKernel(covariance, [0., 0.], (0., 1.))
 
 
+def test_covariance_psd_tolerance_cannot_hide_a_material_absolute_defect():
+    # Its eigenvalues are -0.5 and 2e12+0.5. A relative-only check used to
+    # accept it and return normalized two-read states with overlap exp(0.5)
+    # between two unit basis vectors, despite valid-looking probabilities.
+    covariance = [[1e12, 1e12+.5], [1e12+.5, 1e12]]
+    with pytest.raises(ValueError, match="positive semidefinite"):
+        WeylKernel(covariance, [0., 0.], (0., 1.))
+
+
+@pytest.mark.parametrize("reverse", (False, True))
+def test_covariance_scaling_keeps_a_small_indefinite_block_detectable(reverse):
+    # The -0.5 eigenvalue becomes subnormal after scaling by the independent
+    # 1e308 variance. It still must fail the absolute positivity check.
+    covariance = np.array([[1e308, 0., 0.], [0., 0., .5], [0., .5, 0.]])
+    if reverse:
+        covariance = covariance[::-1, ::-1]
+    with pytest.raises(ValueError, match="positive semidefinite"):
+        WeylKernel(covariance, [0., 0., 0.], (0., 1., 2.))
+
+
+@pytest.mark.parametrize("scale", (1e-12, 1., 1e12, 1e300))
+def test_psd_validation_accepts_positive_covariance_across_scales(scale):
+    kernel = WeylKernel(scale*np.array([[1., .25], [.25, 1.]]), [0., 0.], (0., 1.))
+    probabilities, states = joint_law(kernel)
+    assert sum(probabilities.values()) == pytest.approx(1., abs=2e-14)
+    assert all(state.norm_squared() == pytest.approx(1., abs=2e-14)
+               for state in states.values())
+
+
+def test_maximum_shifts_cannot_amplify_a_tolerated_negative_variance():
+    # The roughly -1.5e-12 eigenvalue is within the covariance tolerance;
+    # the difference between allowed shifts amplifies its squared distance
+    # past the absolute 1e-10 Gram tolerance.
+    covariance = [[1., 1.+1.5e-12], [1.+1.5e-12, 1.]]
+    kernel = WeylKernel(covariance, [0., 0.], (0., 1.))
+    state = WeylState(kernel, [[7, -7], [-7, 7]], [1., 1.], 1)
+    with pytest.raises(ArithmeticError, match="negative Weyl squared distance"):
+        state.gram()
+
+
 def test_nonfinite_intermediates_cannot_become_finite_weyl_norms():
     huge = WeylKernel(np.diag([1e308, 1e308]), [0., 0.], (0., 1.))
     overflow = WeylState(huge, [[-7, -7], [7, 7]], [1., 1.], 1)

@@ -91,6 +91,30 @@ def test_certified_noncommutation_and_two_distinct_witnesses(receipt):
     assert Q(finest["second_plus_disturbance_given_positive_current_lower"]) > Q(2228, 10 ** 8)
 
 
+def test_coarse_witnesses_use_signed_fallback_when_sign_is_unresolved(receipt):
+    parent = json.loads((subject.ROOT / subject.PARENT).read_text())
+    # These coarse enclosures admit a positive definite two-direction
+    # covariance with C<0, and a positive unmeasured response r2. Hence
+    # exp(-V)*sinh(C)<0 and -r2*(1-cos(c/2))<0: zero is not a lower bound
+    # that follows from the available premises. This does not substitute
+    # the example for the fixed field; it independently checks the missing
+    # sign information that requires the universal signed fallback.
+    variance, cross, commutator, response = Q(1, 10), Q(-1, 20), Q(1, 20), Q(1, 10)
+    assert variance**2 > cross**2 + commutator**2 / 4
+    assert cross < 0 and 0 < commutator < 1 and response > 0
+    for source, row in zip(parent["levels"][:2], receipt["levels"][:2]):
+        witnesses = row["finite_field_witnesses"]
+        for key, value in (("variance_interval", variance),
+                           ("real_cross_covariance_interval", cross),
+                           ("commutator_over_i_interval", commutator)):
+            low, high = map(Q, witnesses[key])
+            assert low <= value <= high
+        low, high = map(Q, source["graph_compact_induced_response"])
+        assert low <= response <= high
+        assert Q(witnesses["vacuum_bit_correlation_lower"]) == -1
+        assert Q(witnesses["second_plus_disturbance_given_positive_current_lower"]) == -1
+
+
 @pytest.mark.parametrize("mutation", ("time", "reset", "zero_current", "kernel", "disturbance", "parent", "type"))
 def test_replay_rejects_resealed_scientific_mutations(receipt, mutation):
     forged = deepcopy(receipt)

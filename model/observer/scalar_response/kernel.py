@@ -73,7 +73,10 @@ class WeylKernel:
             raise ValueError("Weyl variances must be nonnegative")
         scale = max(float(np.max(np.abs(covariance.real), initial=0.)),
                     float(np.max(np.abs(covariance.imag), initial=0.)))
-        if scale and np.linalg.eigvalsh(covariance / scale)[0] < -2e-12:
+        # Scale the eigensolve to avoid overflow, but cap the permitted
+        # negative eigenvalue in absolute units. A relative-only tolerance
+        # can admit order-one negative variances in a large covariance.
+        if scale and np.linalg.eigvalsh(covariance / scale)[0] < -2e-12/max(1., scale):
             raise ValueError("Weyl covariance must be positive semidefinite")
         if (isinstance(self.mode_count, (bool, np.bool_))
                 or not isinstance(self.mode_count, Integral) or self.mode_count < 0):
@@ -235,6 +238,11 @@ class WeylState:
                     phase = float(left @ self.kernel.covariance.imag @ right)
                     mean_phase = float(difference @ means)
                     _finite((distance, phase, mean_phase), "Weyl Gram exponent")
+                    # Bounded shifts can amplify a tolerated covariance
+                    # defect into an overlap larger than one. Fail closed
+                    # rather than normalizing with that invalid Gram matrix.
+                    if distance < -NORM_TOLERANCE:
+                        raise ArithmeticError("unresolved negative Weyl squared distance")
                     exponent = -.5*distance + 1j*phase + 1j*mean_phase
                     result[a, b] = np.exp(exponent)
         return _finite(result, "Weyl Gram matrix")

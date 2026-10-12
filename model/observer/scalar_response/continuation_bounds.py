@@ -99,10 +99,13 @@ def run():
         comm = enclose(commutator, 2 * kernel_error)
         # The joint vacuum correlation is exp(-V)*sinh(C). Use sinh C >= C
         # and the directed exponential; no monotonicity outside C>0 is used.
-        corr = I.of(0)
+        # Both witnesses are signed: an outcome-product expectation and a
+        # difference of probabilities. Without the sign premises below,
+        # only their universal lower bound -1 is available from this proof.
+        corr = I.of(-1)
         if cross.lo > 0:
             corr = exp(-I(v.hi, v.hi)) * I(cross.lo, cross.lo)
-        disturbance = I.of(0)
+        disturbance = I.of(-1)
         # For 0<c<1, 1-cos(c/2) >= c^2/8-c^4/384. The polynomial is
         # increasing there. Multiply by the positive lower bound on -r2.
         if 0 < comm.lo <= comm.hi < arithmetic.SCALE and response.hi < 0:

@@ -209,6 +209,11 @@ The independent directed rational replay yields
 | 89 | 0.052189606637 |
 | 233 | 0.025709913643 |
 
+The coarse q=13 and q=34 enclosures do not certify either witness's sign.
+Their receipts retain the universal signed lower bound -1; zero would
+incorrectly assert nonnegativity. The positive witness bounds above concern
+q=233 and the continuum, with q=89 also certified positive.
+
 The same enclosures certify the controls above: `R0=exp(-V)sinh C` is at
 least `exp(-V) C` when C>0. For `0<c<1`,
 `1-cos(c/2)>=c^2/8-c^4/384`; the parent's strictly negative r(t2) supplies

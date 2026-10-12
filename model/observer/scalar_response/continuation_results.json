@@ -6636,8 +6636,8 @@
             "-1172731920795403/500000000000",
             "2345573571975369/1000000000000"
           ],
-          "second_plus_disturbance_given_positive_current_lower": "0",
-          "vacuum_bit_correlation_lower": "0",
+          "second_plus_disturbance_given_positive_current_lower": "-1",
+          "vacuum_bit_correlation_lower": "-1",
           "variance_interval": [
             "0",
             "45390314953611/20000000000"
@@ -6675,8 +6675,8 @@
             "-29768172623/100000000000",
             "50926513849/125000000000"
           ],
-          "second_plus_disturbance_given_positive_current_lower": "0",
-          "vacuum_bit_correlation_lower": "0",
+          "second_plus_disturbance_given_positive_current_lower": "-1",
+          "vacuum_bit_correlation_lower": "-1",
           "variance_interval": [
             "0",
             "405058596613/1000000000000"
