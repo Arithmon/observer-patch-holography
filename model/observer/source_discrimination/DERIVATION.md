@@ -35,25 +35,35 @@ original difference `d=a-b`. This characterization does not evaluate the
 prediction oracle's current formula.
 
 Prepare and measure a fresh fair coin first, retaining its outcome `c`.
-For C the record codes are `0->0`, `+1->1`, `-1->2`; for E they are
-`0->0`, `+1->1`, `-1->2`, `+2->3`, `-2->4`. With blank record bits above
-the three endpoint bits, the local basis index is `endpoint+8*record`.
-The following disjoint transpositions define the entire local permutation;
-all other basis states are fixed.
+For C the current record codes are `0->0`, `+1->1`, `-1->2`. With blank
+record bits above the three endpoint bits, the local basis index is
+`endpoint+8*current_code`. The following disjoint transpositions define
+the entire five-qubit local permutation; all other basis states are fixed.
 
-| Candidate | Coin | Local transpositions |
-| --- | --- | --- |
-| C | 0 | `(2,9) (3,20) (5,12)` |
-| C | 1 | `(1,18) (3,20) (5,12)` |
-| E | 0 | `(1,17) (2,9) (3,36) (5,28)` |
-| E | 1 | `(1,18) (2,10) (3,36) (5,28)` |
+| Coin | C local transpositions |
+| --- | --- |
+| 0 | `(2,9) (3,20) (5,12)` |
+| 1 | `(1,18) (3,20) (5,12)` |
+
+For every admitted blank-record input this outputs precisely `|F_c(x)>|j>`.
+E applies the same C word with one additional blank record bit, then one
+CNOT from endpoint bit `c` to local bit five. After C, even seam total has
+endpoint code zero or four; odd seam total has code one for coin zero or
+code two for coin one. The copied bit is therefore exactly seam-total
+parity `p`. E's raw record code is `current_code+4*p`. Its contrast decoder
+is `d=2*j+(2*c-1)*p`, with the admitted values
+
+| Coin | Raw record code to contrast |
+| --- | --- |
+| 0 | `0->0, 1->2, 2->-2, 4->-1, 5->1` |
+| 1 | `0->0, 1->2, 2->-2, 4->1, 6->-1` |
 
 C uses five local qubits and E uses six. Spectator bits are untouched.
-For every admitted blank-record input these permutations output precisely
-`|F_c(x)>|j>` or `|F_c(x)>|d>`. Their action on nonblank and unused inputs
-is also a specified unitary, although the candidate instrument requires
-blank record initialization. All record outcomes are kept when the record
-register is measured; different committed values are never coherently added.
+Both words define unitaries on their entire local registers, although the
+candidate instruments require blank record initialization. All admitted
+record outcomes are retained; relabeling `(c,j,p)` as `(c,d)` is bijective.
+The remaining record codes are padding, with zero probability on the ideal
+native input code. Failure handling must retain any actual invalid outcome.
 
 ## Exact recorded-channel intertwining
 
@@ -89,6 +99,61 @@ as `sum_{x,z} |x><z| tensor R_xz` proves the same identity with any untouched
 reference system. It includes all unnormalized terminal record blocks.
 It does not derive a physical encoding of a pre-existing load carrier.
 
+## Contrast is the minimal binary refinement of the current record
+
+Let `Pi_p` project onto seam-total parity `p=(a+b) mod 2`. Endpoint averaging
+preserves `a+b`, so this parity can be measured before or after repair. Its
+relation to current and contrast is an identity of the declared rule:
+
+```text
+d = 2*j + (2*c-1)*p,
+p = abs(d) mod 2,
+j = (d-(2*c-1)*p)/2.
+```
+
+For fixed `c`, the admitted pair `(j,p)` and the contrast `d` therefore
+determine each other. The fair-coin factor `1/sqrt(2)` is unchanged.
+If `L_(c,j)` is the current-record Kraus operator, the parity-refined
+operator is `Pi_p L_(c,j)`, whose support is precisely the contrast group
+with the displayed `d`. Hence the entire E instrument is C followed by
+recording seam parity and this classical relabeling. This is an equality of
+complete unnormalized quantum branches, not only outcome probabilities.
+
+On a matrix unit `|x><z|`, C retains a coin branch exactly when the two
+currents agree; the added parity record retains it exactly when the two
+parities also agree. By the identity above those two conditions are
+equivalent to equal contrasts. `parity_refinement_certificate` checks all
+6084 units, including the 2650 connecting different spectator-total shells.
+For example, the coherence between `X={2,3}` (seam total zero) and `{0,1}`
+(seam total two) survives: both have even parity and zero current. No
+measurement of the spectator shell is introduced. Linearity extends the
+identity to any reference entangled across these shells.
+
+For a fixed C record, at most two distinct E records occur, indexed by
+`p=0,1`. Two are necessary: `X={2,3}` and `Z={1,2}` share C's `(c,j)=(0,0)`
+record but give E contrasts zero and minus one. Thus an additional
+one-valued record could not distinguish the required branches. The maximum
+refinement fiber has size two, proving that one additional binary classical
+outcome is necessary and sufficient when the existing C records are
+retained. This statement concerns the specified classical refinement. It
+does not claim minimum physical memory, environment dimension or gate count;
+the joint labels can be encoded in other alphabets.
+
+Forgetting the added parity label gives, inside each old current block,
+
+```text
+rho_(c,j) -> Pi_0 rho_(c,j) Pi_0 + Pi_1 rho_(c,j) Pi_1.
+```
+
+It leaves parity dephasing and does not recover C. In particular the
+`X,Z` off-diagonal survives C's coin-zero/current-zero branch and is lost
+under E. The fixed coherent phase/readout test consequently measures the
+effect of this additional parity recording, while its diagonal control
+has no such coherence to lose. This factorization introduces no new
+candidate hypothesis: it follows from the existing C and E definitions.
+Whether an identified physical apparatus records that extra parity remains
+an operational choice or a further physical selection premise.
+
 ## Source compilation, phase and complete readout
 
 A controlled bit flip is compiled from its matching-controls projector
@@ -101,8 +166,12 @@ controlled_X = exp(-i*pi*P/2) exp(i*pi*P*X/2).
 The nonmatching subspace sees identity; on the matching subspace the two
 factors are `-i` and `iX`, giving exactly `X`. Walsh expansion of `P` makes
 both factors products of commuting tensor-Pauli rotations. The scalar
-Walsh term is retained. Omitting it would change coherent phases and hence
-the instrument. The existing source compiler realizes every Pauli rotation
+Walsh term is retained for exact unitary equality. Omitting only that term
+would change a common global phase, which cancels from the standalone
+instrument. Relative column phases can change the instrument. Full-unitary
+tests enforce the declared phase convention; terminal-density tests accept
+common global phases and reject relative-phase corruption. The existing
+source compiler realizes every Pauli rotation
 using its full six-level generators and declared proper-code services.
 
 To transpose two arbitrary local basis states, choose a path of single-bit
@@ -111,6 +180,9 @@ the last edge in reverse. The endpoints exchange with phase `+1`; every
 intermediate and unrelated basis state returns to itself. This compiles the
 local permutations above without a primitive many-qubit swap. Zero-angle
 and scalar-phase requests remain in the resource schedule.
+E then appends the existing phase-exact native CNOT, costing three more
+source pulses: 5370 for either C repair word and 5373 for either E word.
+The parity record's initialization and readout retain their service costs.
 
 Let `U=exp(-i*pi*Y_0/4)`, so `U|0...0>=(|0>+|1>)/sqrt(2)`. The preparation
 then applies the bit-zero phase `diag(1,exp(i*theta))`, compiled as an

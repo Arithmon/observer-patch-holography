@@ -42,14 +42,20 @@ def test_every_local_dilation_column_and_all_78_native_inputs(candidate, coin):
     bits = 3 + circuit.RECORD_BITS[candidate]
     word = circuit.repair_word(candidate, coin)
     actual = source.execute(word, bits)
-    expected = np.eye(1 << bits, dtype=complex)
-    for a, b in circuit.REPAIR_SWAPS[candidate, coin]:
-        expected[[a, b]] = expected[[b, a]]
+    current_permutation = list(range(32))
+    for a, b in circuit.REPAIR_SWAPS["C", coin]:
+        current_permutation[a], current_permutation[b] = b, a
+    expected = np.zeros((1 << bits, 1 << bits), complex)
+    for column in range(1 << bits):
+        output = (column // 32) * 32 + current_permutation[column % 32]
+        if candidate == "E" and output >> coin & 1:
+            output ^= 32
+        expected[output, column] = 1
     # This absolute, phase-sensitive comparison also checks every padding
     # and initially nonblank-record column of the declared unitary.
     assert np.linalg.norm(actual - expected, 2) < 3e-12
-    assert len(word) == (5370 if candidate == "C" else 16236)
-    record_codes = circuit.CURRENT_CODES if candidate == "C" else circuit.CONTRAST_CODES
+    assert len(word) == (5370 if candidate == "C" else 5373)
+    record_codes = {value: code for code, value in circuit.record_values(candidate, coin).items()}
     for state in native.states():
         # Independent floor/ceiling characterization, not native.native.
         total = state[0] + state[1]
@@ -64,6 +70,38 @@ def test_every_local_dilation_column_and_all_78_native_inputs(candidate, coin):
         # The untouched six spectator bits embed the same local identity
         # into the complete carrier, including cross-shell coherences.
         assert circuit.decode((target % 8) + 8 * (source_code // 8)) == repaired
+
+
+@pytest.mark.parametrize("coin", (0, 1))
+def test_contrast_is_exactly_current_plus_one_recorded_parity_bit(coin):
+    current_word = circuit.repair_word("C", coin)
+    contrast_word = circuit.repair_word("E", coin)
+    assert contrast_word == current_word + source.cnot(coin, 5)
+    records = circuit.record_values("E", coin)
+    assert set(records.values()) == {-2, -1, 0, 1, 2}
+    assert len(records) == 5
+    current_values = circuit.record_values("C", coin)
+    for raw in range(8):
+        current = current_values.get(raw % 4)
+        if current is None:
+            assert raw not in records
+            continue
+        contrast = 2 * current + (2 * coin - 1) * (raw // 4)
+        if abs(contrast) > 2:
+            assert raw not in records
+        else:
+            assert records[raw] == contrast
+    for state in native.states():
+        total = state[0] + state[1]
+        low, high = total // 2, (total + 1) // 2
+        endpoint = (low, high) if coin == 0 else (high, low)
+        current = state[0] - endpoint[0]
+        parity = total % 2
+        # This identity makes a single source-qubit CNOT sufficient; no
+        # additional many-qubit parity computation is hidden in the word.
+        assert (circuit.SEAM_STATES.index(endpoint) >> coin) & 1 == parity
+        raw = circuit.CURRENT_CODES[current] + 4 * parity
+        assert records[raw] == state[0] - state[1]
 
 
 @pytest.mark.parametrize("setting", circuit.SETTINGS[:3])
@@ -107,6 +145,8 @@ def test_readout_executes_a_lueders_instrument_with_an_untouched_reference():
     (circuit.controlled_flip_word, (11, 1, 0)),
     (circuit.basis_swap_word, (2, 2, 3)),
     (circuit.repair_word, ("C", True)),
+    (circuit.record_values, ("E", True)),
+    (circuit.record_values, ("unknown", 0)),
     (circuit.preparation_word, ("unknown",)),
     (circuit.preparation_word, ("diagonal_control",)),
 ))

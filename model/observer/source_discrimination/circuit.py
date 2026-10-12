@@ -18,19 +18,33 @@ SOURCE_QUBITS = 9
 POINTER = 9
 SEAM_STATES = ((0, 0), (0, 1), (1, 0), (0, 2), (1, 1), (2, 0))
 CURRENT_CODES = {0: 0, 1: 1, -1: 2}
-CONTRAST_CODES = {0: 0, 1: 1, -1: 2, 2: 3, -2: 4}
 RECORD_BITS = {"C": 2, "E": 3}
 SETTINGS = ("phase_0", "phase_pi", "phase_pi_over_2", "diagonal_control")
 
 # All endpoints are distinct, and the destination of a moving admitted
 # column has a nonblank record. Thus these disjoint swaps complete the
-# required partial injection to a unitary on the entire local register.
+# current-record partial injection to a unitary on the entire local register.
+# Contrast recording uses this same repair followed by one parity copy.
 REPAIR_SWAPS = {
     ("C", 0): ((2, 9), (3, 20), (5, 12)),
     ("C", 1): ((1, 18), (3, 20), (5, 12)),
-    ("E", 0): ((1, 17), (2, 9), (3, 36), (5, 28)),
-    ("E", 1): ((1, 18), (2, 10), (3, 36), (5, 28)),
 }
+
+
+def record_values(candidate, coin):
+    """Decode admitted raw records; absent codes are retained abort outcomes.
+
+    C stores the current code. E stores current_code + 4*parity, with
+    contrast d = 2*current + (2*coin-1)*parity. The reserved current code
+    and the impossible contrasts +/-3 are excluded from the native carrier.
+    """
+    if candidate not in RECORD_BITS or type(coin) is not int or coin not in (0, 1):
+        raise ValueError("candidate C/E and a binary integer coin required")
+    if candidate == "C":
+        return {0: 0, 1: 1, 2: -1}
+    if coin == 0:
+        return {0: 0, 1: 2, 2: -2, 4: -1, 5: 1}
+    return {0: 0, 1: 2, 2: -2, 4: 1, 6: -1}
 
 
 def _spectator_shells():
@@ -89,8 +103,9 @@ def controlled_flip_word(bits, target, pattern):
 
     The target bit of pattern must be zero. For the matching-controls
     projector P, the exact word is exp(-i*pi*P/2) exp(i*pi*P*X/2).
-    Its commuting Walsh expansion retains the scalar term; omitting that
-    phase would implement a different instrument on coherent inputs.
+    Its commuting Walsh expansion retains the scalar term for exact
+    unitary equality. Omitting only that term changes a global phase;
+    the standalone instrument is insensitive to a common global phase.
     """
     bits = _integer(bits, 1, 11, "register size")
     target = _integer(target, 0, bits, "target")
@@ -137,12 +152,16 @@ def repair_word(candidate, coin):
 
     The external spectator register is untouched. Coin is already committed
     to a classical record and selects one of these fixed source words.
+    E performs C's repair and copies seam parity to one further record bit.
+    For the repaired total-two carrier, source bit `coin` equals that parity;
+    measuring the joint current/parity record is exactly contrast recording.
     """
     if candidate not in RECORD_BITS or type(coin) is not int or coin not in (0, 1):
         raise ValueError("candidate C/E and a binary integer coin required")
-    bits = 3 + RECORD_BITS[candidate]
-    return [pulse for a, b in REPAIR_SWAPS[candidate, coin]
-            for pulse in basis_swap_word(a, b, bits)]
+    if candidate == "E":
+        return repair_word("C", coin) + source.cnot(coin, 5)
+    return [pulse for a, b in REPAIR_SWAPS["C", coin]
+            for pulse in basis_swap_word(a, b, 5)]
 
 
 def preparation_word(setting):

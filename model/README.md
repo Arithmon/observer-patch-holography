@@ -52,6 +52,8 @@ coherent preparation/readout test with twelve-port control words. An exact
 channel identity preserves arbitrary reference coherence, and the executed
 terminal states feed the unchanged count protocol. Physical encoding and
 service calibration remain separate from this finite construction.
+E is C with one extra seam-parity record, implemented by three additional
+source pulses; discarding that label does not reverse the lost interference.
 
 ## Run the observer
 

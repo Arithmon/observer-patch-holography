@@ -7,6 +7,7 @@ not certify floating compilation, numerical execution or physical services.
 """
 from __future__ import annotations
 
+from collections import Counter
 from fractions import Fraction as F
 from itertools import combinations_with_replacement
 
@@ -43,11 +44,17 @@ def _endpoint_image(state, candidate, coin):
 
 
 def _permutation_image(candidate, coin, index):
-    for left, right in circuit.REPAIR_SWAPS[candidate, coin]:
-        if index == left:
-            index = right
-        elif index == right:
-            index = left
+    # E uses the same complete five-bit C permutation, tensored with
+    # identity on its extra record bit, followed by one parity CNOT.
+    local = index & 31
+    for left, right in circuit.REPAIR_SWAPS["C", coin]:
+        if local == left:
+            local = right
+        elif local == right:
+            local = left
+    index = (index & ~31) | local
+    if candidate == "E" and (index >> coin) & 1:
+        index ^= 32
     return index
 
 
@@ -77,7 +84,13 @@ def channel_certificate(candidate):
         raise AssertionError("the full 78-state carrier must embed injectively")
     if any(circuit.decode(code) != state for code, state in zip(codes, states, strict=True)):
         raise AssertionError("encoding must preserve every native configuration")
-    decoders = {"C": {0: 0, 1: 1, 2: -1}, "E": {0: 0, 1: 1, 2: -1, 3: 2, 4: -2}}
+    # Independently spelled out labels: E's raw code is j_code+4*parity,
+    # and its contrast meaning depends on the already committed fair coin.
+    decoders = {
+        ("C", 0): {0: 0, 1: 1, 2: -1}, ("C", 1): {0: 0, 1: 1, 2: -1},
+        ("E", 0): {0: 0, 1: 2, 2: -2, 4: -1, 5: 1},
+        ("E", 1): {0: 0, 1: 2, 2: -2, 4: 1, 6: -1},
+    }
     expected, encoded = [], []
     for state, code in zip(states, codes, strict=True):
         native_column, encoded_column = [], []
@@ -85,7 +98,7 @@ def channel_certificate(candidate):
             record, output = _endpoint_image(state, candidate, coin)
             native_column.append((record, circuit.encode(output)))
             local = _permutation_image(candidate, coin, code % 8)
-            value = decoders[candidate].get(local // 8)
+            value = decoders[candidate, coin].get(local // 8)
             if value is None:
                 raise AssertionError("an admitted source column reached a reserved record")
             encoded_column.append(((coin, value), (code // 8) * 8 + local % 8))
@@ -119,6 +132,94 @@ def channel_certificate(candidate):
         "floor_ceiling_intertwining_exact": True,
         "arbitrary_reference_extension": True,
         "scope": "exact encoded target channel on the full native carrier, retaining every record; floating compilation and physical identification are separate",
+    }
+
+
+def parity_refinement_certificate():
+    """E is exactly C followed by one retained seam-parity measurement.
+
+    The required extra classical refinement has alphabet size two. This
+    is a statement about the fixed recorded instruments, not minimal
+    physical memory, native gate count or a rule selecting E in nature.
+    """
+    states = _states()
+    current_columns, contrast_columns, refined_columns = [], [], []
+    labels = {}
+    for state in states:
+        current_column, contrast_column, refined_column = [], [], []
+        parity = (state[0] + state[1]) % 2
+        for coin in (0, 1):
+            current_record, output = _endpoint_image(state, "C", coin)
+            contrast_record, direct_output = _endpoint_image(state, "E", coin)
+            j = current_record[1]
+            d = 2 * j + (2 * coin - 1) * parity
+            if contrast_record != (coin, d) or output != direct_output:
+                raise AssertionError("current and parity do not reconstruct the contrast")
+            output_parity = (output[0] + output[1]) % 2
+            c_output = _permutation_image("C", coin, circuit.encode(state) % 8)
+            encoded_parity = (c_output >> coin) & 1
+            if output_parity != parity or encoded_parity != parity:
+                raise AssertionError("the one-bit output probe does not read seam parity")
+            key = (coin, j, parity)
+            labels[key] = (coin, d)
+            inverse_parity = abs(d) % 2
+            inverse_current = (d - (2 * coin - 1) * inverse_parity) // 2
+            if (coin, inverse_current, inverse_parity) != key:
+                raise AssertionError("contrast relabeling is not invertible")
+            current_column.append((current_record, output))
+            contrast_column.append((contrast_record, output))
+            refined_column.append(((coin, d), output))
+        current_columns.append(current_column)
+        contrast_columns.append(contrast_column)
+        refined_columns.append(refined_column)
+    if len(labels) != 10 or len(set(labels.values())) != 10:
+        raise AssertionError("all ten admitted contrast records must be retained")
+
+    units = cross_shell_units = 0
+    for left, x in enumerate(states):
+        for right, z in enumerate(states):
+            refined = _matrix_unit_image(refined_columns[left], refined_columns[right])
+            contrast = _matrix_unit_image(contrast_columns[left], contrast_columns[right])
+            if refined != contrast:
+                raise AssertionError("parity refinement differs from E on a matrix unit")
+            current = _matrix_unit_image(current_columns[left], current_columns[right])
+            dephased_current = {
+                key: value for key, value in current.items()
+                if (sum(key[1][:2]) - sum(key[2][:2])) % 2 == 0
+            }
+            forgotten = {}
+            for ((coin, d), a, b), value in contrast.items():
+                parity = abs(d) % 2
+                j = (d - (2 * coin - 1) * parity) // 2
+                forgotten[(coin, j), a, b] = value
+            if forgotten != dephased_current:
+                raise AssertionError("forgetting parity must leave its source dephasing")
+            units += 1
+            cross_shell_units += sum(x[:2]) != sum(z[:2])
+
+    fibers = Counter((coin, j) for coin, j, _ in labels)
+    largest_fiber = max(fibers.values())
+    # X and Z have the same C record (0,0), but E records contrast 0 and -1.
+    x = tuple(int(port in (2, 3)) for port in range(12))
+    z = tuple(int(port in (1, 2)) for port in range(12))
+    if (_endpoint_image(x, "C", 0)[0] != _endpoint_image(z, "C", 0)[0]
+            or _endpoint_image(x, "E", 0)[0] == _endpoint_image(z, "E", 0)[0]
+            or largest_fiber != 2):
+        raise AssertionError("the binary refinement must be necessary as well as sufficient")
+    return {
+        "native_dimension": 78, "matrix_units_checked": units,
+        "cross_spectator_shell_matrix_units_checked": cross_shell_units,
+        "record_relabeling_bijective": True, "admitted_refined_records": len(labels),
+        "contrast_from_current_and_parity": "d=2*j+(2*c-1)*p",
+        "parity_from_contrast": "p=abs(d)%2",
+        "minimum_extra_classical_refinement_alphabet": largest_fiber,
+        "extra_binary_record_sufficient": True, "nontrivial_refinement_necessary": True,
+        "minimum_scope": "classical refinement of fixed C records; no claim of minimal hardware, environment, or gate count",
+        "extra_native_cnot_words": 1,
+        "E_is_recorded_parity_after_C": True,
+        "forgetting_parity_leaves_dephased_C": True,
+        "arbitrary_reference_extension": True,
+        "scope": "identity of the declared finite C/E instruments, not an extra dynamical hypothesis or physical selection of parity recording",
     }
 
 

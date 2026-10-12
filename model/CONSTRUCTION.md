@@ -150,7 +150,7 @@ executes both native channels, the four preparations and a complete Lueders
 readout from the same twelve-port controls. The repair identity holds on all
 78 states and arbitrary source/reference inputs; full terminal-state checks
 also distinguish erroneous phase and overmeasurement. All old records and
-attempted trials are retained. The complete trial has 32,006--42,873 native
+attempted trials are retained. The complete trial has 32,006--32,010 native
 pulse requests, with each load/export charged. A compositional error contract
 specifies sufficient per-operation bounds for the unchanged 1/64 allowance.
 Physical encoding, independent calibration and comparison data remain required.

@@ -366,6 +366,9 @@ minus readout subspace and charges every native pulse and proper-code service.
 Its synthetic comparison therefore tests emitted preparations and channels;
 physical encoding and an independently established apparatus budget remain
 necessary to use the same test on observations.
+The contrast law E is precisely C followed by recording seam-total parity,
+the minimal extra binary refinement of the coin/current labels. Both use
+the same repair circuit; one three-pulse CNOT supplies their difference.
 
 **Next decisive work:** connect the inertia and Hamiltonian time to the same
 microscopic events as N1/N2, and execute a complete preparation/readout history

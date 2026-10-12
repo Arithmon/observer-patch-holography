@@ -39,6 +39,15 @@ def test_terminal_guard_rejects_nonfinite_amplitudes():
         experiment._check_events("C", "phase_0", changed)
 
 
+def test_terminal_channel_guard_accepts_an_unobservable_global_phase():
+    original = experiment.events("C", "phase_0")
+    phase_word = [source.pulse("I", math.pi / 4, [0])]
+    changed = [{**event, "amplitude": source.execute(phase_word, 9, event["amplitude"])}
+               for event in original]
+    result = experiment._check_events("C", "phase_0", changed)
+    assert result["maximum_branch_density_frobenius_error"] < experiment.TOLERANCE
+
+
 @pytest.mark.parametrize("candidate", ("C", "E"))
 def test_record_adapter_retains_a_unit_probability_reserved_record(monkeypatch, candidate):
     # Inject a local unitary reaching a reserved code to test the branch

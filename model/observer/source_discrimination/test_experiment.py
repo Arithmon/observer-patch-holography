@@ -130,6 +130,75 @@ def test_repair_preserves_all_spectator_and_reference_coherences(candidate):
     assert abs(sum(np.linalg.norm(branch["amplitude"])**2 for branch in actual) - 1) < TOLERANCE
 
 
+def test_contrast_instrument_is_current_instrument_with_one_retained_parity_measurement():
+    rng = np.random.default_rng(88603)
+    incoming = np.zeros((DIMENSION, 2), complex)
+    values = rng.normal(size=(78, 2)) + 1j * rng.normal(size=(78, 2))
+    values /= np.linalg.norm(values)
+    masks = [np.zeros(DIMENSION, bool), np.zeros(DIMENSION, bool)]
+    for state, value in zip(exact.STATES, values, strict=True):
+        address = circuit.encode(state)
+        incoming[address] = value
+        masks[(state[0] + state[1]) % 2][address] = True
+    current = {(branch["coin"], branch["current"]): branch["amplitude"]
+               for branch in experiment.repair_branches("C", incoming)
+               if not branch["abort"]}
+    expected = {(coin, value, parity): amplitude * masks[parity][:, None]
+                for (coin, value), amplitude in current.items() for parity in (0, 1)}
+    represented = set()
+    for branch in experiment.repair_branches("E", incoming):
+        if branch["abort"]:
+            assert np.linalg.norm(branch["amplitude"]) < TOLERANCE
+            continue
+        coin, value, contrast = branch["coin"], branch["current"], branch["contrast"]
+        parity = abs(contrast) % 2
+        assert contrast == 2 * value + (2 * coin - 1) * parity
+        key = coin, value, parity
+        assert key not in represented
+        represented.add(key)
+        # Project independently executed C amplitudes by occupation parity;
+        # this never uses E's raw code table or circuit permutation list.
+        assert np.linalg.norm(branch["amplitude"] - expected[key]) < TOLERANCE
+    assert len(represented) == 10
+    # Two current/parity combinations are impossible on total-two inputs.
+    for key in set(expected) - represented:
+        assert np.linalg.norm(expected[key]) < TOLERANCE
+
+
+def test_classically_discarding_contrast_refinement_does_not_restore_current_coherence():
+    source = np.zeros(DIMENSION, complex)
+    x, z = circuit.encode(exact.STATES[exact.X]), circuit.encode(exact.STATES[exact.Z])
+    source[[x, z]] = 1 / math.sqrt(2)
+    current = next(branch["amplitude"] for branch in experiment.repair_branches("C", source)
+                   if not branch["abort"] and branch["coin"] == 0 and branch["current"] == 0)
+    refined = [branch["amplitude"] for branch in experiment.repair_branches("E", source)
+               if not branch["abort"] and branch["coin"] == 0 and branch["current"] == 0]
+    assert len(refined) == 2
+    current_density = np.outer(current, current.conj())
+    grouped = sum((np.outer(vector, vector.conj()) for vector in refined),
+                  np.zeros((DIMENSION, DIMENSION), complex))
+    assert abs(np.trace(current_density) - .5) < TOLERANCE
+    assert abs(np.trace(grouped) - .5) < TOLERANCE
+    assert abs(current_density[x, z] - .25) < TOLERANCE
+    assert abs(grouped[x, z]) < TOLERANCE
+    assert np.linalg.norm(grouped - current_density) > .35
+    # Coherently summing different committed records would incorrectly bring
+    # this interference back; the public interface must sum density blocks.
+    incorrect_merge = sum(refined)
+    assert np.linalg.norm(np.outer(incorrect_merge, incorrect_merge.conj()) - current_density) < TOLERANCE
+
+
+def test_parity_refinement_adds_one_native_cnot_and_one_record_bit():
+    current = experiment.resources("C", "phase_0")
+    contrast = experiment.resources("E", "phase_0")
+    assert contrast["native_pulses"] - current["native_pulses"] == 3
+    assert contrast["proper_code_load_events"] - current["proper_code_load_events"] == 3
+    assert contrast["proper_code_export_events"] - current["proper_code_export_events"] == 3
+    assert contrast["pair_code_pulses"] - current["pair_code_pulses"] == 1
+    assert contrast["maximum_live_code_qubits"] - current["maximum_live_code_qubits"] == 1
+    assert contrast["retained_classical_bits"] - current["retained_classical_bits"] == 1
+
+
 def test_readout_wrapper_preserves_coherent_minus_subspace_and_reference():
     incoming = np.zeros((DIMENSION, 2), complex)
     x, z = circuit.encode(exact.STATES[exact.X]), circuit.encode(exact.STATES[exact.Z])

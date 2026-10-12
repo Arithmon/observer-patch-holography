@@ -21,7 +21,8 @@ def test_exact_intertwining_checks_every_native_matrix_unit(candidate, records):
 @pytest.mark.parametrize("candidate", ("C", "E"))
 def test_certificate_rejects_an_endpoint_word_mutation(monkeypatch, candidate):
     changed = dict(circuit.REPAIR_SWAPS)
-    changed[candidate, 0] = changed[candidate, 0][1:]
+    # Both candidates now use this same C repair word; E appends parity.
+    changed["C", 0] = changed["C", 0][1:]
     monkeypatch.setattr(circuit, "REPAIR_SWAPS", changed)
     with pytest.raises(AssertionError, match="floor/ceiling"):
         certificate.channel_certificate(candidate)
@@ -43,6 +44,50 @@ def test_full_channel_keeps_current_coherence_but_records_contrast():
         images[candidate] = certificate._matrix_unit_image(*columns)
     assert images["C"] == {((0, 0), 0, 1): F(1, 2)}
     assert images["E"] == {}
+
+
+def test_parity_refinement_is_exact_and_needs_one_nontrivial_classical_bit():
+    proof = certificate.parity_refinement_certificate()
+    assert proof["matrix_units_checked"] == 6084
+    assert proof["cross_spectator_shell_matrix_units_checked"] == 2650
+    assert proof["admitted_refined_records"] == 10
+    assert proof["record_relabeling_bijective"]
+    assert proof["minimum_extra_classical_refinement_alphabet"] == 2
+    assert proof["nontrivial_refinement_necessary"]
+    assert proof["E_is_recorded_parity_after_C"]
+    assert proof["forgetting_parity_leaves_dephased_C"]
+    assert "no claim of minimal hardware" in proof["minimum_scope"]
+
+
+def test_parity_measurement_preserves_coherence_between_even_spectator_shells():
+    # X has seam total zero; the state occupying ports 0 and 1 has seam
+    # total two. Their code addresses are 0 and 4. Equal even parity must
+    # preserve their coherence, despite differing spectator total/shell.
+    expected = {((coin, 0), 0, 4): F(1, 2) for coin in (0, 1)}
+    for candidate in ("C", "E"):
+        columns = []
+        for address in (0, 4):
+            columns.append([
+                ((coin, certificate._permutation_image(candidate, coin, address) // 8),
+                 certificate._permutation_image(candidate, coin, address) % 8)
+                for coin in (0, 1)
+            ])
+        assert certificate._matrix_unit_image(*columns) == expected
+
+
+def test_parity_refinement_rejects_reading_the_wrong_output_bit(monkeypatch):
+    original = certificate._permutation_image
+
+    def corrupted(candidate, coin, index):
+        output = original(candidate, coin, index)
+        # Swap endpoint bits zero and one only after the exact C map.
+        if candidate == "C":
+            output = (output & ~3) | ((output & 1) << 1) | ((output & 2) >> 1)
+        return output
+
+    monkeypatch.setattr(certificate, "_permutation_image", corrupted)
+    with pytest.raises(AssertionError, match="output probe"):
+        certificate.parity_refinement_certificate()
 
 
 def test_readout_keeps_the_complete_minus_space_and_reference_coherences():

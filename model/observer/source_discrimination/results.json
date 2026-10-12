@@ -1720,13 +1720,13 @@
               },
               {
                 "coin": 0,
-                "count": 2043,
+                "count": 2082,
                 "current": 0,
                 "outcome": -1
               },
               {
                 "coin": 0,
-                "count": 2101,
+                "count": 2068,
                 "current": 0,
                 "outcome": 1
               },
@@ -1744,7 +1744,7 @@
               },
               {
                 "coin": 1,
-                "count": 2042,
+                "count": 2039,
                 "current": -1,
                 "outcome": -1
               },
@@ -1756,13 +1756,13 @@
               },
               {
                 "coin": 1,
-                "count": 1027,
+                "count": 1025,
                 "current": 0,
                 "outcome": -1
               },
               {
                 "coin": 1,
-                "count": 979,
+                "count": 978,
                 "current": 0,
                 "outcome": 1
               },
@@ -1798,31 +1798,31 @@
               },
               {
                 "coin": 0,
-                "count": 2030,
+                "count": 2022,
                 "current": 0,
                 "outcome": -1
               },
               {
                 "coin": 0,
+                "count": 2038,
+                "current": 0,
+                "outcome": 1
+              },
+              {
+                "coin": 0,
+                "count": 0,
+                "current": 1,
+                "outcome": -1
+              },
+              {
+                "coin": 0,
+                "count": 0,
+                "current": 1,
+                "outcome": 1
+              },
+              {
+                "coin": 1,
                 "count": 2017,
-                "current": 0,
-                "outcome": 1
-              },
-              {
-                "coin": 0,
-                "count": 0,
-                "current": 1,
-                "outcome": -1
-              },
-              {
-                "coin": 0,
-                "count": 0,
-                "current": 1,
-                "outcome": 1
-              },
-              {
-                "coin": 1,
-                "count": 2109,
                 "current": -1,
                 "outcome": -1
               },
@@ -1834,13 +1834,13 @@
               },
               {
                 "coin": 1,
-                "count": 1039,
+                "count": 1084,
                 "current": 0,
                 "outcome": -1
               },
               {
                 "coin": 1,
-                "count": 997,
+                "count": 1031,
                 "current": 0,
                 "outcome": 1
               },
@@ -1876,13 +1876,13 @@
               },
               {
                 "coin": 0,
-                "count": 1999,
+                "count": 2095,
                 "current": 0,
                 "outcome": -1
               },
               {
                 "coin": 0,
-                "count": 2067,
+                "count": 2005,
                 "current": 0,
                 "outcome": 1
               },
@@ -1900,7 +1900,7 @@
               },
               {
                 "coin": 1,
-                "count": 2109,
+                "count": 2024,
                 "current": -1,
                 "outcome": -1
               },
@@ -1912,13 +1912,13 @@
               },
               {
                 "coin": 1,
-                "count": 1052,
+                "count": 1043,
                 "current": 0,
                 "outcome": -1
               },
               {
                 "coin": 1,
-                "count": 965,
+                "count": 1025,
                 "current": 0,
                 "outcome": 1
               },
@@ -1954,13 +1954,13 @@
               },
               {
                 "coin": 0,
-                "count": 2016,
+                "count": 2030,
                 "current": 0,
                 "outcome": -1
               },
               {
                 "coin": 0,
-                "count": 2098,
+                "count": 2045,
                 "current": 0,
                 "outcome": 1
               },
@@ -1978,7 +1978,7 @@
               },
               {
                 "coin": 1,
-                "count": 2060,
+                "count": 1997,
                 "current": -1,
                 "outcome": -1
               },
@@ -1990,13 +1990,13 @@
               },
               {
                 "coin": 1,
-                "count": 1020,
+                "count": 1081,
                 "current": 0,
                 "outcome": -1
               },
               {
                 "coin": 1,
-                "count": 998,
+                "count": 1039,
                 "current": 0,
                 "outcome": 1
               },
@@ -2019,7 +2019,7 @@
       },
       "executions": [
         {
-          "abort_probability": 1.1981714965828978e-27,
+          "abort_probability": 9.367052724187056e-29,
           "branches": [
             {
               "abort": false,
@@ -2029,7 +2029,7 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999917549,
+              "probability": 0.12499999999937006,
               "record_code": 0
             },
             {
@@ -2040,63 +2040,19 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999925139,
+              "probability": 0.12499999999942542,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 0,
-              "contrast": 1,
-              "count": 0,
-              "current": 1,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 3.075664011478229e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": 1,
-              "count": 0,
-              "current": 1,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 1.0548222116447739e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -1,
-              "count": 1060,
-              "current": 0,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 0.12499999999913293,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -1,
-              "count": 1035,
-              "current": 0,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 0.12499999999920165,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 0,
               "contrast": 2,
               "count": 0,
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.916577067878124e-30,
-              "record_code": 3
+              "probability": 3.908012196042369e-30,
+              "record_code": 1
             },
             {
               "abort": false,
@@ -2106,51 +2062,95 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 4.7933697350280545e-30,
+              "probability": 5.541135053819214e-31,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 4.591500024240077e-29,
+              "record_code": 2
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 2.565181703225689e-29,
+              "record_code": 2
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 3.945930332064697e-31,
+              "record_code": 3
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 3.8903705159221884e-31,
               "record_code": 3
             },
             {
               "abort": false,
               "coin": 0,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
+              "contrast": -1,
+              "count": 1099,
+              "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.128685580987654e-28,
+              "probability": 0.12499999999936275,
               "record_code": 4
             },
             {
               "abort": false,
               "coin": 0,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
+              "contrast": -1,
+              "count": 1002,
+              "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.8032426502725803e-28,
+              "probability": 0.12499999999941776,
               "record_code": 4
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 0,
-              "contrast": null,
+              "contrast": 1,
               "count": 0,
-              "current": null,
+              "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.7136552564558284e-30,
+              "probability": 2.0526239905785935e-30,
               "record_code": 5
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 0,
-              "contrast": null,
+              "contrast": 1,
               "count": 0,
-              "current": null,
+              "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.713337268932839e-30,
+              "probability": 1.8786105588113992e-30,
               "record_code": 5
             },
             {
@@ -2161,7 +2161,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.1508787162201565e-28,
+              "probability": 3.7090259365852293e-29,
               "record_code": 6
             },
             {
@@ -2172,7 +2172,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.560898664016355e-28,
+              "probability": 3.5474503181760033e-29,
               "record_code": 6
             },
             {
@@ -2183,7 +2183,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 4.005406410752698e-31,
+              "probability": 1.8063065847220729e-31,
               "record_code": 7
             },
             {
@@ -2194,85 +2194,41 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 4.005406410753103e-31,
+              "probability": 7.631148164158182e-34,
               "record_code": 7
             },
             {
               "abort": false,
               "coin": 1,
               "contrast": 0,
-              "count": 1027,
+              "count": 1025,
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999915964,
+              "probability": 0.12499999999935524,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 1,
               "contrast": 0,
-              "count": 979,
+              "count": 978,
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999924309,
+              "probability": 0.12499999999941903,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 1,
-              "contrast": 1,
-              "count": 0,
-              "current": 0,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 3.219339585080707e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 1,
-              "count": 0,
-              "current": 0,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 8.117271804676918e-30,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -1,
-              "count": 2042,
-              "current": -1,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 0.24999999999830436,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -1,
-              "count": 0,
-              "current": -1,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 5.043764290358265e-28,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 1,
               "contrast": 2,
               "count": 0,
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.9040915661769246e-30,
-              "record_code": 3
+              "probability": 1.5498275224294086e-30,
+              "record_code": 1
             },
             {
               "abort": false,
@@ -2282,8 +2238,8 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.111977406009855e-31,
-              "record_code": 3
+              "probability": 3.724155988175779e-31,
+              "record_code": 1
             },
             {
               "abort": false,
@@ -2293,18 +2249,62 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 7.563911775466078e-29,
+              "probability": 4.264756834423042e-30,
+              "record_code": 2
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 2.599748181329194e-29,
+              "record_code": 2
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 6.5582752123163695e-31,
+              "record_code": 3
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 4.890184568109154e-31,
+              "record_code": 3
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 1,
+              "count": 0,
+              "current": 0,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 8.975899561368424e-30,
               "record_code": 4
             },
             {
               "abort": false,
               "coin": 1,
-              "contrast": -2,
+              "contrast": 1,
               "count": 0,
-              "current": -1,
+              "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.424918843087012e-28,
+              "probability": 4.638203412836608e-32,
               "record_code": 4
             },
             {
@@ -2315,7 +2315,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.2494631430214712e-30,
+              "probability": 1.1748738281143594e-30,
               "record_code": 5
             },
             {
@@ -2326,29 +2326,29 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.2492605560112948e-30,
+              "probability": 2.5067293323118337e-57,
               "record_code": 5
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 1,
-              "contrast": null,
-              "count": 0,
-              "current": null,
+              "contrast": -1,
+              "count": 2039,
+              "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 5.165436031175479e-28,
+              "probability": 0.24999999999870215,
               "record_code": 6
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 1,
-              "contrast": null,
+              "contrast": -1,
               "count": 0,
-              "current": null,
+              "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.9832489582828517e-30,
+              "probability": 5.040339810767367e-28,
               "record_code": 6
             },
             {
@@ -2359,7 +2359,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 7.401089768438591e-31,
+              "probability": 1.7821021030014004e-29,
               "record_code": 7
             },
             {
@@ -2370,34 +2370,34 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 4.518036615377976e-57,
+              "probability": 3.5012198353840073e-56,
               "record_code": 7
             }
           ],
-          "classical_sampling_mass_correction": 6.531442053869796e-12,
-          "maximum_branch_density_frobenius_error": 1.6957697359333559e-12,
-          "plus_probability": 0.3749999999976961,
-          "raw_total_probability": 0.9999999999934686,
+          "classical_sampling_mass_correction": 4.947597886939548e-12,
+          "maximum_branch_density_frobenius_error": 1.2980123336150545e-12,
+          "plus_probability": 0.3749999999982622,
+          "raw_total_probability": 0.9999999999950524,
           "resources": {
             "blank_resets": 4,
-            "identity_phase_pulses": 20,
+            "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
-            "integrated_processor_norm_upper": 82435.39123019617,
+            "integrated_processor_norm_upper": 61961.63190675149,
             "maximum_live_code_qubits": 12,
             "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
             "maximum_work_qubits": 12,
-            "native_pulses": 42872,
-            "pair_code_pulses": 12838,
+            "native_pulses": 32009,
+            "pair_code_pulses": 9665,
             "physical_loading_and_service_errors_certified": false,
             "processor_dimension": 6,
-            "proper_code_export_events": 42872,
-            "proper_code_load_events": 42872,
-            "proper_code_service_events": 85744,
+            "proper_code_export_events": 32009,
+            "proper_code_load_events": 32009,
+            "proper_code_service_events": 64018,
             "record_readout_channels": 3,
             "resource_branch": "phase_pi for diagonal control; either fair-coin branch; local addresses are reused between stages",
             "retained_classical_bits": 5,
             "service_failure_outcomes_retained": true,
-            "single_code_pulses": 30034,
+            "single_code_pulses": 22344,
             "source_code_qubits": 9,
             "valid_code_failure_probability_in_exact_arithmetic": 0,
             "zero_angle_requests": 2
@@ -2405,84 +2405,40 @@
           "setting": "phase_0"
         },
         {
-          "abort_probability": 1.2031261819724947e-27,
+          "abort_probability": 4.6910526151339614e-29,
           "branches": [
             {
               "abort": false,
               "coin": 0,
               "contrast": 0,
-              "count": 995,
+              "count": 985,
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999916556,
+              "probability": 0.12499999999935926,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 0,
               "contrast": 0,
-              "count": 1028,
+              "count": 1001,
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999926038,
+              "probability": 0.12499999999941484,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 0,
-              "contrast": 1,
-              "count": 0,
-              "current": 1,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 1.6980138343097307e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": 1,
-              "count": 0,
-              "current": 1,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 2.198151076457839e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -1,
-              "count": 1035,
-              "current": 0,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 0.12499999999913268,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -1,
-              "count": 989,
-              "current": 0,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 0.12499999999920318,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 0,
               "contrast": 2,
               "count": 0,
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.293345134632637e-30,
-              "record_code": 3
+              "probability": 2.5624852297487935e-30,
+              "record_code": 1
             },
             {
               "abort": false,
@@ -2492,51 +2448,95 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.5860074163933655e-30,
+              "probability": 6.2842961422552034e-31,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 3.254432508229765e-29,
+              "record_code": 2
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 9.105932988806535e-30,
+              "record_code": 2
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 3.945930332064836e-31,
+              "record_code": 3
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 3.8903705159223434e-31,
               "record_code": 3
             },
             {
               "abort": false,
               "coin": 0,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
+              "contrast": -1,
+              "count": 1037,
+              "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.4513726060619587e-28,
+              "probability": 0.12499999999935178,
               "record_code": 4
             },
             {
               "abort": false,
               "coin": 0,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
+              "contrast": -1,
+              "count": 1037,
+              "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.5017789018241235e-28,
+              "probability": 0.12499999999940696,
               "record_code": 4
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 0,
-              "contrast": null,
+              "contrast": 1,
               "count": 0,
-              "current": null,
+              "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.713655256455883e-30,
+              "probability": 4.955691995660456e-31,
               "record_code": 5
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 0,
-              "contrast": null,
+              "contrast": 1,
               "count": 0,
-              "current": null,
+              "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.713337268932773e-30,
+              "probability": 3.2155576779816674e-31,
               "record_code": 5
             },
             {
@@ -2547,7 +2547,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.8120359667681953e-28,
+              "probability": 1.455837998992366e-29,
               "record_code": 6
             },
             {
@@ -2558,7 +2558,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.942968071439615e-28,
+              "probability": 1.293589020345984e-29,
               "record_code": 6
             },
             {
@@ -2569,7 +2569,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 4.005406410752687e-31,
+              "probability": 1.80630658472208e-31,
               "record_code": 7
             },
             {
@@ -2580,85 +2580,41 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 4.005406410753121e-31,
+              "probability": 7.631148164139357e-34,
               "record_code": 7
             },
             {
               "abort": false,
               "coin": 1,
               "contrast": 0,
-              "count": 1039,
+              "count": 1084,
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999915734,
+              "probability": 0.12499999999935471,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 1,
               "contrast": 0,
-              "count": 997,
+              "count": 1031,
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999923923,
+              "probability": 0.1249999999994199,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 1,
-              "contrast": 1,
-              "count": 0,
-              "current": 0,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 3.816518366811069e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 1,
-              "count": 0,
-              "current": 0,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 1.6908836278764177e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -1,
-              "count": 2109,
-              "current": -1,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 0.2499999999982973,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -1,
-              "count": 0,
-              "current": -1,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 5.41145268238754e-28,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 1,
               "contrast": 2,
               "count": 0,
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.5851993136051896e-30,
-              "record_code": 3
+              "probability": 1.1330346701311493e-30,
+              "record_code": 1
             },
             {
               "abort": false,
@@ -2668,8 +2624,8 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.1759413333018313e-31,
-              "record_code": 3
+              "probability": 2.2820775422762225e-31,
+              "record_code": 1
             },
             {
               "abort": false,
@@ -2679,18 +2635,62 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 4.782278101162336e-29,
+              "probability": 1.0449779030182615e-29,
+              "record_code": 2
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 6.021876002303898e-30,
+              "record_code": 2
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 1.0527423887453284e-31,
+              "record_code": 3
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 1.7868288556274288e-31,
+              "record_code": 3
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 1,
+              "count": 0,
+              "current": 0,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 1.5542378770354636e-29,
               "record_code": 4
             },
             {
               "abort": false,
               "coin": 1,
-              "contrast": -2,
+              "contrast": 1,
               "count": 0,
-              "current": -1,
+              "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.3700453885351342e-28,
+              "probability": 4.6382034128366553e-32,
               "record_code": 4
             },
             {
@@ -2701,7 +2701,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.2494631430215733e-30,
+              "probability": 8.420575883910882e-31,
               "record_code": 5
             },
             {
@@ -2712,29 +2712,29 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.2492605560109887e-30,
+              "probability": 1.683615177228875e-57,
               "record_code": 5
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 1,
-              "contrast": null,
-              "count": 0,
-              "current": null,
+              "contrast": -1,
+              "count": 2017,
+              "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 5.169928467606447e-28,
+              "probability": 0.24999999999870015,
               "record_code": 6
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 1,
-              "contrast": null,
+              "contrast": -1,
               "count": 0,
-              "current": null,
+              "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.166024907653287e-30,
+              "probability": 5.040339810767334e-28,
               "record_code": 6
             },
             {
@@ -2745,7 +2745,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 7.4010897684379755e-31,
+              "probability": 1.732521738704041e-29,
               "record_code": 7
             },
             {
@@ -2756,34 +2756,34 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 2.837751402007557e-57,
+              "probability": 3.413085522610987e-56,
               "record_code": 7
             }
           ],
-          "classical_sampling_mass_correction": 6.544320640955448e-12,
-          "maximum_branch_density_frobenius_error": 1.7028182258022032e-12,
-          "plus_probability": 0.3749999999977028,
-          "raw_total_probability": 0.9999999999934557,
+          "classical_sampling_mass_correction": 4.992450897134404e-12,
+          "maximum_branch_density_frobenius_error": 1.3000101603554986e-12,
+          "plus_probability": 0.3749999999982417,
+          "raw_total_probability": 0.9999999999950077,
           "resources": {
             "blank_resets": 4,
-            "identity_phase_pulses": 20,
+            "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
-            "integrated_processor_norm_upper": 82438.53282284977,
+            "integrated_processor_norm_upper": 61964.77349940508,
             "maximum_live_code_qubits": 12,
             "maximum_numerical_valid_code_leakage": 1.0282787712773792e-16,
             "maximum_work_qubits": 12,
-            "native_pulses": 42872,
-            "pair_code_pulses": 12838,
+            "native_pulses": 32009,
+            "pair_code_pulses": 9665,
             "physical_loading_and_service_errors_certified": false,
             "processor_dimension": 6,
-            "proper_code_export_events": 42872,
-            "proper_code_load_events": 42872,
-            "proper_code_service_events": 85744,
+            "proper_code_export_events": 32009,
+            "proper_code_load_events": 32009,
+            "proper_code_service_events": 64018,
             "record_readout_channels": 3,
             "resource_branch": "phase_pi for diagonal control; either fair-coin branch; local addresses are reused between stages",
             "retained_classical_bits": 5,
             "service_failure_outcomes_retained": true,
-            "single_code_pulses": 30034,
+            "single_code_pulses": 22344,
             "source_code_qubits": 9,
             "valid_code_failure_probability_in_exact_arithmetic": 0,
             "zero_angle_requests": 0
@@ -2791,40 +2791,128 @@
           "setting": "phase_pi"
         },
         {
-          "abort_probability": 1.198985547043534e-27,
+          "abort_probability": 8.526613759945961e-29,
           "branches": [
             {
               "abort": false,
               "coin": 0,
               "contrast": 0,
-              "count": 987,
+              "count": 1050,
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999916958,
+              "probability": 0.12499999999936492,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 0,
               "contrast": 0,
-              "count": 1024,
+              "count": 970,
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.1249999999992563,
+              "probability": 0.12499999999942034,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 0,
+              "contrast": 2,
+              "count": 0,
+              "current": 1,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 3.390131250606506e-30,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": 2,
+              "count": 0,
+              "current": 1,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 1.1569296641734952e-30,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 3.2487953931862865e-29,
+              "record_code": 2
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 1.04548956634271e-29,
+              "record_code": 2
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 3.945930332064714e-31,
+              "record_code": 3
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 3.8903705159222155e-31,
+              "record_code": 3
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -1,
+              "count": 1045,
+              "current": 0,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 0.12499999999935678,
+              "record_code": 4
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -1,
+              "count": 1035,
+              "current": 0,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 0.12499999999941218,
+              "record_code": 4
+            },
+            {
+              "abort": false,
+              "coin": 0,
               "contrast": 1,
               "count": 0,
               "current": 1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 2.225633402928086e-29,
-              "record_code": 1
+              "probability": 1.6169643961990183e-30,
+              "record_code": 5
             },
             {
               "abort": false,
@@ -2834,162 +2922,140 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.7839208380242853e-29,
-              "record_code": 1
+              "probability": 1.4429509644316332e-30,
+              "record_code": 5
             },
             {
-              "abort": false,
+              "abort": true,
               "coin": 0,
-              "contrast": -1,
-              "count": 1012,
-              "current": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999913215,
-              "record_code": 2
+              "probability": 3.379391571618e-29,
+              "record_code": 6
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 3.219001472674627e-29,
+              "record_code": 6
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 1.806306584722074e-31,
+              "record_code": 7
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 7.631148164148257e-34,
+              "record_code": 7
             },
             {
               "abort": false,
-              "coin": 0,
-              "contrast": -1,
+              "coin": 1,
+              "contrast": 0,
               "count": 1043,
               "current": 0,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 0.12499999999935446,
+              "record_code": 0
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 0,
+              "count": 1025,
+              "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999920282,
+              "probability": 0.12499999999942031,
+              "record_code": 0
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 2,
+              "count": 0,
+              "current": 1,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 1.846898194221653e-30,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 2,
+              "count": 0,
+              "current": 1,
+              "outcome": 1,
+              "preparation_record": null,
+              "probability": 5.3511067122109705e-31,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": -1,
+              "preparation_record": null,
+              "probability": 4.852720558145306e-30,
               "record_code": 2
             },
             {
               "abort": false,
-              "coin": 0,
-              "contrast": 2,
-              "count": 0,
-              "current": 1,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 1.6857300173248525e-30,
-              "record_code": 3
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": 2,
-              "count": 0,
-              "current": 1,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 6.548379263829312e-30,
-              "record_code": 3
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 3.075286031579873e-28,
-              "record_code": 4
-            },
-            {
-              "abort": false,
-              "coin": 0,
+              "coin": 1,
               "contrast": -2,
               "count": 0,
               "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.9017524480787878e-28,
-              "record_code": 4
+              "probability": 1.8007418953141216e-29,
+              "record_code": 2
             },
             {
               "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 1.7136552564559047e-30,
-              "record_code": 5
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 1.713337268932776e-30,
-              "record_code": 5
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 2.97229744148593e-28,
-              "record_code": 6
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 3.758771899364671e-28,
-              "record_code": 6
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 4.005406410752964e-31,
-              "record_code": 7
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 4.0054064107528305e-31,
-              "record_code": 7
-            },
-            {
-              "abort": false,
               "coin": 1,
-              "contrast": 0,
-              "count": 1052,
-              "current": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 0.12499999999915742,
-              "record_code": 0
+              "probability": 2.4575060301499107e-31,
+              "record_code": 3
             },
             {
-              "abort": false,
+              "abort": true,
               "coin": 1,
-              "contrast": 0,
-              "count": 965,
-              "current": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 0.12499999999924209,
-              "record_code": 0
+              "probability": 2.1869131667344002e-31,
+              "record_code": 3
             },
             {
               "abort": false,
@@ -2999,8 +3065,8 @@
               "current": 0,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 3.6871183527260203e-29,
-              "record_code": 1
+              "probability": 1.289087998167821e-29,
+              "record_code": 4
             },
             {
               "abort": false,
@@ -3010,73 +3076,7 @@
               "current": 0,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.1764883567129803e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -1,
-              "count": 2109,
-              "current": -1,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 0.24999999999830153,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -1,
-              "count": 0,
-              "current": -1,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 5.262501538947131e-28,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 2,
-              "count": 0,
-              "current": 1,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 2.9053438767270988e-30,
-              "record_code": 3
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 2,
-              "count": 0,
-              "current": 1,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 4.574305495999875e-31,
-              "record_code": 3
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
-              "outcome": -1,
-              "preparation_record": null,
-              "probability": 5.0293698547570644e-29,
-              "record_code": 4
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
-              "outcome": 1,
-              "preparation_record": null,
-              "probability": 3.3181191550955435e-28,
+              "probability": 4.638203412836651e-32,
               "record_code": 4
             },
             {
@@ -3087,7 +3087,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 1.2494631430215491e-30,
+              "probability": 5.67693587754632e-31,
               "record_code": 5
             },
             {
@@ -3098,29 +3098,29 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 1.2492605560110776e-30,
+              "probability": 1.2142483450461687e-57,
               "record_code": 5
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 1,
-              "contrast": null,
-              "count": 0,
-              "current": null,
+              "contrast": -1,
+              "count": 2024,
+              "current": -1,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 5.152377336565703e-28,
+              "probability": 0.24999999999870204,
               "record_code": 6
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 1,
-              "contrast": null,
+              "contrast": -1,
               "count": 0,
-              "current": null,
+              "current": -1,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 3.173972818487994e-30,
+              "probability": 5.040339810767366e-28,
               "record_code": 6
             },
             {
@@ -3131,7 +3131,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": null,
-              "probability": 7.401089768438045e-31,
+              "probability": 1.7285047791002955e-29,
               "record_code": 7
             },
             {
@@ -3142,34 +3142,34 @@
               "current": null,
               "outcome": 1,
               "preparation_record": null,
-              "probability": 5.419213470899962e-57,
+              "probability": 3.3951850856758615e-56,
               "record_code": 7
             }
           ],
-          "classical_sampling_mass_correction": 6.538103392017547e-12,
-          "maximum_branch_density_frobenius_error": 1.6986007439986454e-12,
-          "plus_probability": 0.3749999999977012,
-          "raw_total_probability": 0.9999999999934619,
+          "classical_sampling_mass_correction": 4.969025191314813e-12,
+          "maximum_branch_density_frobenius_error": 1.298123413139754e-12,
+          "plus_probability": 0.37499999999825284,
+          "raw_total_probability": 0.9999999999950311,
           "resources": {
             "blank_resets": 4,
-            "identity_phase_pulses": 20,
+            "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
-            "integrated_processor_norm_upper": 82436.96202652296,
+            "integrated_processor_norm_upper": 61963.202703078285,
             "maximum_live_code_qubits": 12,
             "maximum_numerical_valid_code_leakage": 6.032922920504741e-17,
             "maximum_work_qubits": 12,
-            "native_pulses": 42872,
-            "pair_code_pulses": 12838,
+            "native_pulses": 32009,
+            "pair_code_pulses": 9665,
             "physical_loading_and_service_errors_certified": false,
             "processor_dimension": 6,
-            "proper_code_export_events": 42872,
-            "proper_code_load_events": 42872,
-            "proper_code_service_events": 85744,
+            "proper_code_export_events": 32009,
+            "proper_code_load_events": 32009,
+            "proper_code_service_events": 64018,
             "record_readout_channels": 3,
             "resource_branch": "phase_pi for diagonal control; either fair-coin branch; local addresses are reused between stages",
             "retained_classical_bits": 5,
             "service_failure_outcomes_retained": true,
-            "single_code_pulses": 30034,
+            "single_code_pulses": 22344,
             "source_code_qubits": 9,
             "valid_code_failure_probability_in_exact_arithmetic": 0,
             "zero_angle_requests": 0
@@ -3177,40 +3177,128 @@
           "setting": "phase_pi_over_2"
         },
         {
-          "abort_probability": 1.2006488392776961e-27,
+          "abort_probability": 7.02905266966051e-29,
           "branches": [
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": 0,
-              "count": 503,
-              "current": 0,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 0.062499999999587774,
-              "record_code": 0
-            },
             {
               "abort": false,
               "coin": 0,
               "contrast": 0,
               "count": 502,
               "current": 0,
-              "outcome": 1,
+              "outcome": -1,
               "preparation_record": 0,
-              "probability": 0.0624999999996257,
+              "probability": 0.06249999999968506,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 0,
+              "contrast": 0,
+              "count": 536,
+              "current": 0,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 0.062499999999712744,
+              "record_code": 0
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": 2,
+              "count": 0,
+              "current": 1,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 1.9540060980211857e-30,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": 2,
+              "count": 0,
+              "current": 1,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 2.770567526909607e-31,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 2.2957500121200402e-29,
+              "record_code": 2
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 1.2825908516128444e-29,
+              "record_code": 2
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 1.9729651660323495e-31,
+              "record_code": 3
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 1.945185257961095e-31,
+              "record_code": 3
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -1,
+              "count": 542,
+              "current": 0,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 0.06249999999968135,
+              "record_code": 4
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -1,
+              "count": 518,
+              "current": 0,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 0.062499999999708865,
+              "record_code": 4
+            },
+            {
+              "abort": false,
+              "coin": 0,
               "contrast": 1,
               "count": 0,
               "current": 1,
               "outcome": -1,
               "preparation_record": 0,
-              "probability": 1.537832005739115e-29,
-              "record_code": 1
+              "probability": 1.026311995289297e-30,
+              "record_code": 5
             },
             {
               "abort": false,
@@ -3220,19 +3308,327 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 0,
-              "probability": 5.274111058223871e-30,
+              "probability": 9.393052794056998e-31,
+              "record_code": 5
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 1.8545129682926152e-29,
+              "record_code": 6
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 1.7737251590880028e-29,
+              "record_code": 6
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 9.031532923610367e-32,
+              "record_code": 7
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 3.8155740820790903e-34,
+              "record_code": 7
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 0,
+              "count": 531,
+              "current": 0,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 0.06249999999967764,
+              "record_code": 0
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 0,
+              "count": 485,
+              "current": 0,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 0.062499999999709524,
+              "record_code": 0
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 2,
+              "count": 0,
+              "current": 1,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 7.749137612147044e-31,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 2,
+              "count": 0,
+              "current": 1,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 1.8620779940878892e-31,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 2.132378417211521e-30,
+              "record_code": 2
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 1.299874090664597e-29,
+              "record_code": 2
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 3.2791376061581856e-31,
+              "record_code": 3
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 2.4450922840545775e-31,
+              "record_code": 3
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 1,
+              "count": 0,
+              "current": 0,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 4.487949780684212e-30,
+              "record_code": 4
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 1,
+              "count": 0,
+              "current": 0,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 2.3191017064183047e-32,
+              "record_code": 4
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 5.8743691405718015e-31,
+              "record_code": 5
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 1.2533646661559177e-57,
+              "record_code": 5
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": -1,
+              "count": 1042,
+              "current": -1,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 0.1249999999993511,
+              "record_code": 6
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": -1,
+              "count": 0,
+              "current": -1,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 2.5201699053836833e-28,
+              "record_code": 6
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": 0,
+              "probability": 8.910510515007002e-30,
+              "record_code": 7
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": 0,
+              "probability": 1.750609917692003e-56,
+              "record_code": 7
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": 0,
+              "count": 483,
+              "current": 0,
+              "outcome": -1,
+              "preparation_record": 1,
+              "probability": 0.06249999999967962,
+              "record_code": 0
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": 0,
+              "count": 478,
+              "current": 0,
+              "outcome": 1,
+              "preparation_record": 1,
+              "probability": 0.06249999999970739,
+              "record_code": 0
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": 2,
+              "count": 0,
+              "current": 1,
+              "outcome": -1,
+              "preparation_record": 1,
+              "probability": 1.2812426148743966e-30,
               "record_code": 1
             },
             {
               "abort": false,
               "coin": 0,
+              "contrast": 2,
+              "count": 0,
+              "current": 1,
+              "outcome": 1,
+              "preparation_record": 1,
+              "probability": 3.142148071127601e-31,
+              "record_code": 1
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": -1,
+              "preparation_record": 1,
+              "probability": 1.627216254114882e-29,
+              "record_code": 2
+            },
+            {
+              "abort": false,
+              "coin": 0,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": 1,
+              "preparation_record": 1,
+              "probability": 4.5529664944032674e-30,
+              "record_code": 2
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": 1,
+              "probability": 1.972965166032418e-31,
+              "record_code": 3
+            },
+            {
+              "abort": true,
+              "coin": 0,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": 1,
+              "probability": 1.9451852579611726e-31,
+              "record_code": 3
+            },
+            {
+              "abort": false,
+              "coin": 0,
               "contrast": -1,
-              "count": 508,
+              "count": 503,
               "current": 0,
               "outcome": -1,
-              "preparation_record": 0,
-              "probability": 0.062499999999566486,
-              "record_code": 2
+              "preparation_record": 1,
+              "probability": 0.062499999999675884,
+              "record_code": 4
             },
             {
               "abort": false,
@@ -3241,317 +3637,9 @@
               "count": 513,
               "current": 0,
               "outcome": 1,
-              "preparation_record": 0,
-              "probability": 0.06249999999960082,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": 2,
-              "count": 0,
-              "current": 1,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 1.4582885339390617e-30,
-              "record_code": 3
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": 2,
-              "count": 0,
-              "current": 1,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 2.3966848675140258e-30,
-              "record_code": 3
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 1.5643427904938275e-28,
-              "record_code": 4
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 9.016213251362907e-29,
-              "record_code": 4
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 8.568276282279147e-31,
-              "record_code": 5
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 8.566686344664195e-31,
-              "record_code": 5
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 1.5754393581100783e-28,
-              "record_code": 6
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 1.7804493320081777e-28,
-              "record_code": 6
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 2.0027032053763495e-31,
-              "record_code": 7
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 2.0027032053765523e-31,
-              "record_code": 7
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 0,
-              "count": 541,
-              "current": 0,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 0.062499999999579864,
-              "record_code": 0
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 0,
-              "count": 501,
-              "current": 0,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 0.06249999999962155,
-              "record_code": 0
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 1,
-              "count": 0,
-              "current": 0,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 1.609669792540354e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 1,
-              "count": 0,
-              "current": 0,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 4.05863590233846e-30,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -1,
-              "count": 1055,
-              "current": -1,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 0.1249999999991522,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -1,
-              "count": 0,
-              "current": -1,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 2.5218821451791326e-28,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 2,
-              "count": 0,
-              "current": 1,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 1.4520457830884625e-30,
-              "record_code": 3
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 2,
-              "count": 0,
-              "current": 1,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 1.5559887030049282e-31,
-              "record_code": 3
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 3.7819558877330395e-29,
-              "record_code": 4
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 1.7124594215435067e-28,
-              "record_code": 4
-            },
-            {
-              "abort": true,
-              "coin": 1,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 6.247315715107357e-31,
-              "record_code": 5
-            },
-            {
-              "abort": true,
-              "coin": 1,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 6.246302780056477e-31,
-              "record_code": 5
-            },
-            {
-              "abort": true,
-              "coin": 1,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 2.5827180155877404e-28,
-              "record_code": 6
-            },
-            {
-              "abort": true,
-              "coin": 1,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 1.4916244791414253e-30,
-              "record_code": 6
-            },
-            {
-              "abort": true,
-              "coin": 1,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": -1,
-              "preparation_record": 0,
-              "probability": 3.7005448842192956e-31,
-              "record_code": 7
-            },
-            {
-              "abort": true,
-              "coin": 1,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": 1,
-              "preparation_record": 0,
-              "probability": 2.2590183076889886e-57,
-              "record_code": 7
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": 0,
-              "count": 503,
-              "current": 0,
-              "outcome": -1,
               "preparation_record": 1,
-              "probability": 0.062499999999582785,
-              "record_code": 0
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": 0,
-              "count": 518,
-              "current": 0,
-              "outcome": 1,
-              "preparation_record": 1,
-              "probability": 0.06249999999963017,
-              "record_code": 0
+              "probability": 0.062499999999703466,
+              "record_code": 4
             },
             {
               "abort": false,
@@ -3561,8 +3649,8 @@
               "current": 1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 8.490069171548656e-30,
-              "record_code": 1
+              "probability": 2.4778459978302273e-31,
+              "record_code": 5
             },
             {
               "abort": false,
@@ -3572,95 +3660,7 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.0990755382289198e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -1,
-              "count": 502,
-              "current": 0,
-              "outcome": -1,
-              "preparation_record": 1,
-              "probability": 0.062499999999566305,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -1,
-              "count": 565,
-              "current": 0,
-              "outcome": 1,
-              "preparation_record": 1,
-              "probability": 0.06249999999960155,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": 2,
-              "count": 0,
-              "current": 1,
-              "outcome": -1,
-              "preparation_record": 1,
-              "probability": 1.1466725673163183e-30,
-              "record_code": 3
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": 2,
-              "count": 0,
-              "current": 1,
-              "outcome": 1,
-              "preparation_record": 1,
-              "probability": 2.7930037081966813e-30,
-              "record_code": 3
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
-              "outcome": -1,
-              "preparation_record": 1,
-              "probability": 1.7256863030309791e-28,
-              "record_code": 4
-            },
-            {
-              "abort": false,
-              "coin": 0,
-              "contrast": -2,
-              "count": 0,
-              "current": -1,
-              "outcome": 1,
-              "preparation_record": 1,
-              "probability": 7.508894509120621e-29,
-              "record_code": 4
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": -1,
-              "preparation_record": 1,
-              "probability": 8.568276282279415e-31,
-              "record_code": 5
-            },
-            {
-              "abort": true,
-              "coin": 0,
-              "contrast": null,
-              "count": 0,
-              "current": null,
-              "outcome": 1,
-              "preparation_record": 1,
-              "probability": 8.566686344663865e-31,
+              "probability": 1.6077788389908326e-31,
               "record_code": 5
             },
             {
@@ -3671,7 +3671,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 1.406017983384097e-28,
+              "probability": 7.279189994961827e-30,
               "record_code": 6
             },
             {
@@ -3682,7 +3682,7 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.9714840357198072e-28,
+              "probability": 6.467945101729918e-30,
               "record_code": 6
             },
             {
@@ -3693,7 +3693,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 2.0027032053763434e-31,
+              "probability": 9.031532923610398e-32,
               "record_code": 7
             },
             {
@@ -3704,85 +3704,41 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 2.0027032053765597e-31,
+              "probability": 3.815574082069677e-34,
               "record_code": 7
             },
             {
               "abort": false,
               "coin": 1,
               "contrast": 0,
-              "count": 479,
+              "count": 550,
               "current": 0,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 0.06249999999957866,
+              "probability": 0.06249999999967734,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 1,
               "contrast": 0,
-              "count": 497,
+              "count": 554,
               "current": 0,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 0.06249999999961961,
+              "probability": 0.06249999999970993,
               "record_code": 0
             },
             {
               "abort": false,
               "coin": 1,
-              "contrast": 1,
-              "count": 0,
-              "current": 0,
-              "outcome": -1,
-              "preparation_record": 1,
-              "probability": 1.9082591834055343e-29,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": 1,
-              "count": 0,
-              "current": 0,
-              "outcome": 1,
-              "preparation_record": 1,
-              "probability": 8.454418139382091e-30,
-              "record_code": 1
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -1,
-              "count": 1005,
-              "current": -1,
-              "outcome": -1,
-              "preparation_record": 1,
-              "probability": 0.12499999999914864,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 1,
-              "contrast": -1,
-              "count": 0,
-              "current": -1,
-              "outcome": 1,
-              "preparation_record": 1,
-              "probability": 2.7057263411937692e-28,
-              "record_code": 2
-            },
-            {
-              "abort": false,
-              "coin": 1,
               "contrast": 2,
               "count": 0,
               "current": 1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 1.292599656802594e-30,
-              "record_code": 3
+              "probability": 5.665173350655746e-31,
+              "record_code": 1
             },
             {
               "abort": false,
@@ -3792,8 +3748,8 @@
               "current": 1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.0879706666509157e-31,
-              "record_code": 3
+              "probability": 1.141038771138111e-31,
+              "record_code": 1
             },
             {
               "abort": false,
@@ -3803,18 +3759,62 @@
               "current": -1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 2.3911390505811686e-29,
+              "probability": 5.2248895150913095e-30,
+              "record_code": 2
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": -2,
+              "count": 0,
+              "current": -1,
+              "outcome": 1,
+              "preparation_record": 1,
+              "probability": 3.0109380011519494e-30,
+              "record_code": 2
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": -1,
+              "preparation_record": 1,
+              "probability": 5.263711943726638e-32,
+              "record_code": 3
+            },
+            {
+              "abort": true,
+              "coin": 1,
+              "contrast": null,
+              "count": 0,
+              "current": null,
+              "outcome": 1,
+              "preparation_record": 1,
+              "probability": 8.934144278137141e-32,
+              "record_code": 3
+            },
+            {
+              "abort": false,
+              "coin": 1,
+              "contrast": 1,
+              "count": 0,
+              "current": 0,
+              "outcome": -1,
+              "preparation_record": 1,
+              "probability": 7.771189385177317e-30,
               "record_code": 4
             },
             {
               "abort": false,
               "coin": 1,
-              "contrast": -2,
+              "contrast": 1,
               "count": 0,
-              "current": -1,
+              "current": 0,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.1850226942675673e-28,
+              "probability": 2.319101706418327e-32,
               "record_code": 4
             },
             {
@@ -3825,7 +3825,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 6.247315715107864e-31,
+              "probability": 4.210287941955441e-31,
               "record_code": 5
             },
             {
@@ -3836,29 +3836,29 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 6.246302780054941e-31,
+              "probability": 8.418075886144376e-58,
               "record_code": 5
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 1,
-              "contrast": null,
-              "count": 0,
-              "current": null,
+              "contrast": -1,
+              "count": 955,
+              "current": -1,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 2.5849642338032236e-28,
+              "probability": 0.12499999999935008,
               "record_code": 6
             },
             {
-              "abort": true,
+              "abort": false,
               "coin": 1,
-              "contrast": null,
+              "contrast": -1,
               "count": 0,
-              "current": null,
+              "current": -1,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.5830124538266422e-30,
+              "probability": 2.5201699053836667e-28,
               "record_code": 6
             },
             {
@@ -3869,7 +3869,7 @@
               "current": null,
               "outcome": -1,
               "preparation_record": 1,
-              "probability": 3.7005448842189856e-31,
+              "probability": 8.662608693520203e-30,
               "record_code": 7
             },
             {
@@ -3880,34 +3880,34 @@
               "current": null,
               "outcome": 1,
               "preparation_record": 1,
-              "probability": 1.4188757010037782e-57,
+              "probability": 1.706542761305493e-56,
               "record_code": 7
             }
           ],
-          "classical_sampling_mass_correction": 6.537881347412622e-12,
-          "maximum_branch_density_frobenius_error": 1.699266160010524e-12,
-          "plus_probability": 0.3749999999976994,
-          "raw_total_probability": 0.9999999999934621,
+          "classical_sampling_mass_correction": 4.970024392036976e-12,
+          "maximum_branch_density_frobenius_error": 1.2989834255308877e-12,
+          "plus_probability": 0.3749999999982519,
+          "raw_total_probability": 0.99999999999503,
           "resources": {
             "blank_resets": 5,
-            "identity_phase_pulses": 20,
+            "identity_phase_pulses": 17,
             "initialization_storage_readout_physical_costs_included": false,
-            "integrated_processor_norm_upper": 82439.31822101316,
+            "integrated_processor_norm_upper": 61965.55889756848,
             "maximum_live_code_qubits": 12,
             "maximum_numerical_valid_code_leakage": 1.0282787712773792e-16,
             "maximum_work_qubits": 12,
-            "native_pulses": 42873,
-            "pair_code_pulses": 12838,
+            "native_pulses": 32010,
+            "pair_code_pulses": 9665,
             "physical_loading_and_service_errors_certified": false,
             "processor_dimension": 6,
-            "proper_code_export_events": 42873,
-            "proper_code_load_events": 42873,
-            "proper_code_service_events": 85746,
+            "proper_code_export_events": 32010,
+            "proper_code_load_events": 32010,
+            "proper_code_service_events": 64020,
             "record_readout_channels": 4,
             "resource_branch": "phase_pi for diagonal control; either fair-coin branch; local addresses are reused between stages",
             "retained_classical_bits": 6,
             "service_failure_outcomes_retained": true,
-            "single_code_pulses": 30035,
+            "single_code_pulses": 22345,
             "source_code_qubits": 9,
             "valid_code_failure_probability_in_exact_arithmetic": 0,
             "zero_angle_requests": 0
@@ -3926,8 +3926,8 @@
                   "1/64"
                 ],
                 "observed_interval": [
-                  "1787/8192",
-                  "2299/8192"
+                  "913/4096",
+                  "1169/4096"
                 ],
                 "setting": "phase_0",
                 "statistic": "0,0,-1"
@@ -3938,8 +3938,8 @@
                   "33/64"
                 ],
                 "observed_interval": [
-                  "1845/8192",
-                  "2357/8192"
+                  "453/2048",
+                  "581/2048"
                 ],
                 "setting": "phase_0",
                 "statistic": "0,0,1"
@@ -3950,8 +3950,8 @@
                   "41/64"
                 ],
                 "observed_interval": [
-                  "353/1024",
-                  "417/1024"
+                  "1395/4096",
+                  "1651/4096"
                 ],
                 "setting": "phase_0",
                 "statistic": "plus"
@@ -3962,8 +3962,8 @@
                   "33/64"
                 ],
                 "observed_interval": [
-                  "887/4096",
-                  "1143/4096"
+                  "883/4096",
+                  "1139/4096"
                 ],
                 "setting": "phase_pi",
                 "statistic": "0,0,-1"
@@ -3974,8 +3974,8 @@
                   "1/64"
                 ],
                 "observed_interval": [
-                  "1761/8192",
-                  "2273/8192"
+                  "891/4096",
+                  "1147/4096"
                 ],
                 "setting": "phase_pi",
                 "statistic": "0,0,1"
@@ -3986,8 +3986,8 @@
                   "9/64"
                 ],
                 "observed_interval": [
-                  "1379/4096",
-                  "1635/4096"
+                  "2813/8192",
+                  "3325/8192"
                 ],
                 "setting": "phase_pi",
                 "statistic": "plus"
@@ -4019,12 +4019,12 @@
               "1/32"
             ],
             "0,0,-1": [
-              "55/256",
-              "71/256"
+              "887/4096",
+              "1143/4096"
             ],
             "0,0,1": [
-              "921/4096",
-              "1177/4096"
+              "1789/8192",
+              "2301/8192"
             ],
             "0,1,-1": [
               "0",
@@ -4035,20 +4035,20 @@
               "1/32"
             ],
             "1,-1,-1": [
-              "451/2048",
-              "579/2048"
+              "1741/8192",
+              "2253/8192"
             ],
             "1,-1,1": [
               "0",
               "1/32"
             ],
             "1,0,-1": [
-              "191/2048",
-              "319/2048"
+              "825/8192",
+              "1337/8192"
             ],
             "1,0,1": [
-              "371/4096",
-              "627/4096"
+              "783/8192",
+              "1295/8192"
             ],
             "1,1,-1": [
               "0",
@@ -4063,8 +4063,8 @@
               "1/32"
             ],
             "plus": [
-              "355/1024",
-              "419/1024"
+              "707/2048",
+              "835/2048"
             ]
           },
           "phase_0": {
@@ -4077,12 +4077,12 @@
               "1/32"
             ],
             "0,0,-1": [
-              "1787/8192",
-              "2299/8192"
+              "913/4096",
+              "1169/4096"
             ],
             "0,0,1": [
-              "1845/8192",
-              "2357/8192"
+              "453/2048",
+              "581/2048"
             ],
             "0,1,-1": [
               "0",
@@ -4093,20 +4093,20 @@
               "1/32"
             ],
             "1,-1,-1": [
-              "893/4096",
-              "1149/4096"
+              "1783/8192",
+              "2295/8192"
             ],
             "1,-1,1": [
               "0",
               "1/32"
             ],
             "1,0,-1": [
-              "771/8192",
-              "1283/8192"
+              "769/8192",
+              "1281/8192"
             ],
             "1,0,1": [
-              "723/8192",
-              "1235/8192"
+              "361/4096",
+              "617/4096"
             ],
             "1,1,-1": [
               "0",
@@ -4121,8 +4121,8 @@
               "1/32"
             ],
             "plus": [
-              "353/1024",
-              "417/1024"
+              "1395/4096",
+              "1651/4096"
             ]
           },
           "phase_pi": {
@@ -4135,12 +4135,12 @@
               "1/32"
             ],
             "0,0,-1": [
-              "887/4096",
-              "1143/4096"
+              "883/4096",
+              "1139/4096"
             ],
             "0,0,1": [
-              "1761/8192",
-              "2273/8192"
+              "891/4096",
+              "1147/4096"
             ],
             "0,1,-1": [
               "0",
@@ -4151,20 +4151,20 @@
               "1/32"
             ],
             "1,-1,-1": [
-              "1853/8192",
-              "2365/8192"
+              "1761/8192",
+              "2273/8192"
             ],
             "1,-1,1": [
               "0",
               "1/32"
             ],
             "1,0,-1": [
-              "783/8192",
-              "1295/8192"
+              "207/2048",
+              "335/2048"
             ],
             "1,0,1": [
-              "741/8192",
-              "1253/8192"
+              "775/8192",
+              "1287/8192"
             ],
             "1,1,-1": [
               "0",
@@ -4179,8 +4179,8 @@
               "1/32"
             ],
             "plus": [
-              "1379/4096",
-              "1635/4096"
+              "2813/8192",
+              "3325/8192"
             ]
           },
           "phase_pi_over_2": {
@@ -4193,12 +4193,12 @@
               "1/32"
             ],
             "0,0,-1": [
-              "1743/8192",
-              "2255/8192"
+              "1839/8192",
+              "2351/8192"
             ],
             "0,0,1": [
-              "1811/8192",
-              "2323/8192"
+              "1749/8192",
+              "2261/8192"
             ],
             "0,1,-1": [
               "0",
@@ -4209,20 +4209,20 @@
               "1/32"
             ],
             "1,-1,-1": [
-              "1853/8192",
-              "2365/8192"
+              "221/1024",
+              "285/1024"
             ],
             "1,-1,1": [
               "0",
               "1/32"
             ],
             "1,0,-1": [
-              "199/2048",
-              "327/2048"
+              "787/8192",
+              "1299/8192"
             ],
             "1,0,1": [
-              "709/8192",
-              "1221/8192"
+              "769/8192",
+              "1281/8192"
             ],
             "1,1,-1": [
               "0",
@@ -4237,8 +4237,8 @@
               "1/32"
             ],
             "plus": [
-              "347/1024",
-              "411/1024"
+              "1387/4096",
+              "1643/4096"
             ]
           }
         },
@@ -4252,18 +4252,18 @@
       "certified_numerical_execution": false,
       "complete_instrument_trace_distance_upper_if_premises_hold": "1/64",
       "contributions": {
-        "coin": "1/8232192",
-        "compilation": "1/8232192",
-        "diagonal_randomizer": "1/8232192",
-        "export_channel": "14291/2744064",
-        "load_channel": "14291/2744064",
-        "numerical_execution": "1/8232192",
-        "preparation": "1/8232192",
-        "pulse_operator": "14291/2744064",
-        "readout": "1/8232192",
-        "record": "1/8232192",
-        "reset": "1/8232192",
-        "storage": "1/8232192"
+        "coin": "1/6146496",
+        "compilation": "1/6146496",
+        "diagonal_randomizer": "1/6146496",
+        "export_channel": "5335/1024416",
+        "load_channel": "5335/1024416",
+        "numerical_execution": "1/6146496",
+        "preparation": "1/6146496",
+        "pulse_operator": "5335/1024416",
+        "readout": "1/6146496",
+        "record": "1/6146496",
+        "reset": "1/6146496",
+        "storage": "1/6146496"
       },
       "every_joint_plus_and_abort_probability_error_upper_if_premises_hold": "1/64",
       "frozen_protocol_apparatus_allowance": "1/64",
@@ -4271,8 +4271,26 @@
       "scope": "conditional telescoping implication only; all supplied upper bounds require independent justification; all failed attempts remain abort outcomes",
       "sufficient_for_frozen_protocol_if_premises_hold": true
     },
-    "each_bound": "1/8232192",
+    "each_bound": "1/6146496",
     "independently_established": false
+  },
+  "parity_refinement_certificate": {
+    "E_is_recorded_parity_after_C": true,
+    "admitted_refined_records": 10,
+    "arbitrary_reference_extension": true,
+    "contrast_from_current_and_parity": "d=2*j+(2*c-1)*p",
+    "cross_spectator_shell_matrix_units_checked": 2650,
+    "extra_binary_record_sufficient": true,
+    "extra_native_cnot_words": 1,
+    "forgetting_parity_leaves_dephased_C": true,
+    "matrix_units_checked": 6084,
+    "minimum_extra_classical_refinement_alphabet": 2,
+    "minimum_scope": "classical refinement of fixed C records; no claim of minimal hardware, environment, or gate count",
+    "native_dimension": 78,
+    "nontrivial_refinement_necessary": true,
+    "parity_from_contrast": "p=abs(d)%2",
+    "record_relabeling_bijective": true,
+    "scope": "identity of the declared finite C/E instruments, not an extra dynamical hypothesis or physical selection of parity recording"
   },
   "protocol_sha256": "ce79d4e3f1331ad0443d4815e1b6a2709ba4ef64ed052a80e1a4439a0297c041",
   "readout_certificate": {

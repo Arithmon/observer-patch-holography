@@ -65,10 +65,9 @@ def repair_branches(candidate, state):
     records = 1 << circuit.RECORD_BITS[candidate]
     blank = np.zeros((8*records, 64*count), complex)
     blank[:8] = local
-    codes = circuit.CURRENT_CODES if candidate == "C" else circuit.CONTRAST_CODES
-    inverse = {code: value for value, code in codes.items()}
     branches = []
     for coin in (0, 1):
+        inverse = circuit.record_values(candidate, coin)
         executed = (_repair(candidate, coin)@blank).reshape(records, 8, 64, count)
         for code in range(records):
             amplitude = executed[code].transpose(1, 0, 2).reshape(512, count)*_coin()[coin]
@@ -186,7 +185,8 @@ def run(seed=SEED):
     """Reproduce source states, then feed source-generated counts to the fixed test."""
     if type(seed) is not int:
         raise ValueError("an integer seed required")
-    from .certificate import channel_certificate, readout_certificate, apparatus_error_contract, ERROR_TERMS
+    from .certificate import (channel_certificate, readout_certificate, parity_refinement_certificate,
+                              apparatus_error_contract, ERROR_TERMS)
     plan = protocol.checked_protocol()
     rng = np.random.default_rng(seed)
     records = {}
@@ -235,6 +235,7 @@ def run(seed=SEED):
             "source": source.source_summary(), "sources": {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in pins},
             "protocol_sha256": protocol.digest(plan), "candidates": records,
             "readout_certificate": readout_certificate(),
+            "parity_refinement_certificate": parity_refinement_certificate(),
             "illustrative_required_error_allocation": {
                 "each_bound": str(allocation), "independently_established": False,
                 "contract": apparatus_error_contract(worst, required_bounds)},
