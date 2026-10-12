@@ -13,9 +13,10 @@ supplies bare-occupation geometry and a certified two-attempt memory signal.
 The corrected single-port statistic removes the native spatial-mode-mixing
 term under the stated tracial preparation and IID global-attempt protocol. It
 distinguishes N4 from the matched native heat description at two couplings; it
-does not select C versus E or uniquely identify N4. The next step is to realize
-preparation, local readout, record delivery and clock comparison within one
-source, then derive a separate null for observer-local stopping times.
+does not select C versus E or uniquely identify N4. The remaining model-search
+gap is a single-source realization of preparation, local readout, record
+delivery and clock comparison, together with a separate null for
+observer-local stopping times.
 
 The [candidate register](MODEL_CANDIDATES.md) compares the concrete active
 laws, their tested properties, added assumptions and next decisive tests.
@@ -34,7 +35,7 @@ and intervention maps; distinguish solver scheduling from observer-local time.
 This interpretation needs no external host or global clock and makes no new
 endpoint-convergence claim.
 
-**Programme decision, 11 October:** organize research around what one repair
+**Programme organization:** research is organized around what one repair
 process must supply. The [work ownership](#work-ownership-and-claim-accounting)
 below assigns construction, physical tests and audits in parallel. Paper
 releases and broad prose restructuring are subject to the
