@@ -42,7 +42,8 @@ each file keeps its name in the folders above.
   the [observation ledger](registers/OBSERVATION_LEDGER_V3.md), the [premise register](registers/PREMISE_REGISTER_V3.md),
   the [falsification program](OPH_FALSIFICATION_PROGRAM.md), and the [paper index](../paper/).
 - **Build and test:** begin with the repository [reproduction
-  guide](../REPRODUCE.md), [executable evidence](../code/), and [Lean
+  guide](../REPRODUCE.md), the [runnable observer model](../model/README.md),
+  [executable evidence](../code/), and [Lean
   formalization](../Lean/). Follow the [numerical audit
   procedure](policies/NUMERICAL_AUDIT.md) when changing finite numerical
   evidence or addressing review findings.
@@ -81,19 +82,23 @@ maps distributed recovery, sheaf diffusion, boundary extension and contextuality
 to explicit candidate obligations. Its work products govern theorem reuse and
 the distinction between recovery, exact agreement and physical law selection.
 
-[Concrete Repair-Law Candidates](MODEL_CANDIDATES.md) compares the active
+[Concrete Repair-Law Candidates](../model/CANDIDATES.md) compares the active
 update rules, tested properties, added assumptions and decisive tests. This
 maintained research summary has a separate role from the generated registers.
 
-[Model Search](MODEL_SEARCH.md) records the simplest compatible repair
-candidate, its constructed connections and missing physical inputs. Its
-[work ownership](MODEL_SEARCH.md#work-ownership-and-claim-accounting) links
+[Runnable Model](../model/README.md) is the live home of observer and
+repair-law construction, including executable native and P-dependent binary
+observers, capacity checks and local-tick results. Its
+[construction guide](../model/CONSTRUCTION.md) records the contracts,
+constructed connections and missing physical inputs. Its
+[work ownership](../model/CONSTRUCTION.md#work-ownership-and-claim-accounting) links
 parallel construction, physical tests and audits; its
-[paper-release hold](MODEL_SEARCH.md#research-programme-and-paper-release-hold)
-defers publication and broad prose restructuring until a coherent model
-milestone. Correctness fixes and reproducibility checks continue.
+[paper-release hold](../model/CONSTRUCTION.md#research-programme-and-paper-release-hold)
+defers paper releases and broad paper restructuring until a coherent model
+milestone. Tested model code, correctness fixes and reproducibility checks
+continue to be published.
 
-The [model–theorem premise map](MODEL_PREMISE_MAP.md) connects the candidate
+The [model–theorem premise map](../model/PREMISES.md) connects the candidate
 to existing theorem premises and their closure conditions. It is generated
 from the model map in `tracking/` and checks references and coverage, without
 certifying that every theorem antecedent has been extracted or discharged.

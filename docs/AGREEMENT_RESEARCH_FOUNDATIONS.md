@@ -1,8 +1,8 @@
 # Established mathematics for observer agreement
 
 Research method, 11 October 2026. This document governs theorem reuse in the
-[model search](MODEL_SEARCH.md), [candidate register](MODEL_CANDIDATES.md), and
-their existing [premise obligations](MODEL_PREMISE_MAP.md). The target remains
+[model search](../model/CONSTRUCTION.md), [candidate register](../model/CANDIDATES.md), and
+their existing [premise obligations](../model/PREMISES.md). The target remains
 one physical process with compatible carrier, response, record and clock
 readouts. Established results about distributed recovery and sheaf diffusion
 are tools for that construction. They do not select its physical law.
@@ -14,6 +14,20 @@ For each proposed result, identify the nearest theorem below, map its objects
 and hypotheses to the actual candidate, and isolate the remaining obligation.
 Reuse the conclusion once those hypotheses hold. A renamed consensus result
 or a longer simulation of it is not an independent theoretical contribution.
+
+The current [runnable construction](../model/README.md) supplies concrete
+objects for this mapping. The [native observer](../model/observer/DERIVATION.md)
+implements completely positive instruments, retained classical records and
+record-controlled repair on one declared finite source. Its
+[capacity adapter](../model/observer/CAPACITY.md) reuses the existing
+checkpoint confusability theorem; its
+[P-dependent detector](../model/observer/p_response/DERIVATION.md) uses the
+accepted coupling branch in a designed electromagnetic probe. The
+[incident-tick result](../model/local_tick/README.md) transports the existing
+N4 memory bound to an explicitly defined observer-local stopping rule.
+Reuse these completed components under their stated preparation,
+apparatus and clock-calibration boundaries. They do not supply an entire
+cosmological realization.
 
 ## One structure: complete history and internal computation
 

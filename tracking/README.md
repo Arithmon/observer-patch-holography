@@ -1,16 +1,19 @@
-# Internal Tracking Index
+# Scientific registers
 
 This directory contains machine-readable scientific registers and generated
-evidence summaries. It is not part of the public theory reading route.
+evidence summaries. The [live model](../model/README.md) owns observer and
+repair-law implementation; these sources record its connections to finite
+and continuum results, declared physical premises and observation targets.
+Finite construction evidence does not by itself promote a physical claim.
 
 - [`model_theorem_map.json`](model_theorem_map.json) connects the common
   repair candidate to theorem premises and bounded completion conditions.
-  Generate `docs/MODEL_PREMISE_MAP.md` with
+  Generate `model/PREMISES.md` with
   `python3 tools/build_model_theorem_map.py`; use `--check` to validate source
   references and freshness. The map indexes scientific connections, without
   certifying premise discharge. GitHub owns tasks and the claim registry owns
   established claim scope. The model programme and publication hold are in
-  [MODEL_SEARCH.md](../docs/MODEL_SEARCH.md#work-ownership-and-claim-accounting).
+  [Model construction](../model/CONSTRUCTION.md#work-ownership-and-claim-accounting).
 - [`observation_ledger.json`](observation_ledger.json) is the V3 observation
   ledger source (rendered to `docs/registers/OBSERVATION_LEDGER_V3.md` by
   `python3 tools/build_observation_ledger.py`).

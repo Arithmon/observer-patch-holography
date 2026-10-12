@@ -11,7 +11,7 @@ definitions. Mathematical background supplied by a benchmark remains an
 explicit premise even when the programme aims to reconstruct its physical role.
 
 **Paper releases and broad prose restructuring are on hold** under the
-[model research programme](../docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold).
+[model research programme](../model/CONSTRUCTION.md#research-programme-and-paper-release-hold).
 Audits, correctness fixes, dated errata and review builds continue. The
 hold is reconsidered after a coherent, tested common-model milestone;
 preview CI does not authorize publication.

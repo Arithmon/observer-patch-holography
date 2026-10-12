@@ -1,0 +1,32 @@
+{
+  "commands": [
+    "python3 -m model.observer.p_response --check model/observer/p_response/results.json",
+    "python3 -m unittest model.observer.p_response.test_experiment -v"
+  ],
+  "date": "2026-10-12",
+  "files": {
+    "ACCESS_CAPACITY.md": "c187fcefff3843a60ba4232486f422a7918c33e089ad904722cd342644ebf244",
+    "DERIVATION.md": "0e9cb765f4dcc8c67826f3b1880d68b3152fbe7172bd7b833fac125546c9629c",
+    "README.md": "3ec57d7504258aa691accc6bbfbbc5dce4cddd5513f1fc6977e382bc91943ee9",
+    "VALIDATION.md": "a0c8a207aa54ba300d77de70e0f504fe69685debbf1ffebe64ec85a797063e8e",
+    "__init__.py": "12283bebf1bb3465a7184dac216f9a569b98b911308416f22f6cb80f238b98a5",
+    "__main__.py": "70ed89324247d66abad78672a604a7966b8cbf5ec36b69752017329a8d5f08dc",
+    "experiment.py": "44049e5702af83ab8a62e40f8f7d3b25b088ed24e47078a0b412c3b2400ed61e",
+    "results.json": "e050ec01837c59459b0ea1c1f839f8993d5930b97276b972ee82c3366f9ad91f",
+    "test_experiment.py": "3b50061fb3411a792ed4cc19ac9948d9d31a3e0d572281805d2b26a9d1c8a2a9"
+  },
+  "schema": "oph.p_response.artifacts.v1",
+  "validation": {
+    "all_pass": true,
+    "calculation_checks": 15,
+    "contracts": [
+      "DERIVATION.md",
+      "ACCESS_CAPACITY.md",
+      "VALIDATION.md"
+    ],
+    "exact_symbolic_history_count": 528,
+    "independent_unittests": 6,
+    "sequential_seed": 20261012,
+    "sequential_trials": 200000
+  }
+}

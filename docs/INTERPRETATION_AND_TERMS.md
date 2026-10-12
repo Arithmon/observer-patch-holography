@@ -39,6 +39,16 @@ See [Essay B, §§6–7 and 9](../essays/B-why-does-anything-exist.tex) and the
 
 ## Internal construction and execution
 
+The live [observer implementation](../model/observer/README.md) constructs
+finite read, retained-record and feedback functions. Its
+[binary electromagnetic detector](../model/observer/p_response/README.md)
+uses P as an accepted closure input and makes the detector outcome control
+the next native repair. Apparatus and protocol are legitimate design choices
+in this construction; self-consistency need not select one unique device.
+Executable finite observer functions are therefore an achieved component,
+while a physical realization containing the builders has the broader contract
+below.
+
 The builders' inference, device construction, program and data initialization,
 controls, memory, read/write and record services, and clock comparisons must
 be operations available within the candidate history. Its realization map must

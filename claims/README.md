@@ -1,8 +1,10 @@
 # OPH Claim Registry
 
-The papers are the standalone source for every theorem, assumption, falsifier, and claim boundary.
-This directory contains the machine-readable scientific registry that keeps those standalone
-statements synchronized across the public stack.
+The papers are the standalone source for their theorems, assumptions,
+falsifiers and claim boundaries. Executed constructions may instead name a
+self-contained protocol record as their owner. This directory contains the
+machine-readable scientific registry that keeps those statements synchronized
+across the public stack.
 It is not public reading-path material. Do not link the registry
 from the top-level public README files; point readers to the papers, falsifiability map, and public
 explainers instead.
@@ -17,8 +19,8 @@ should parse it as JSON.
 The registry is part of the working process:
 
 - Model construction uses the existing claim identities and premises through
-  [MODEL_SEARCH.md](../docs/MODEL_SEARCH.md) and the generated
-  [model–theorem premise map](../docs/MODEL_PREMISE_MAP.md). Candidate hypotheses
+  [Model construction](../model/CONSTRUCTION.md) and the generated
+  [model–theorem premise map](../model/PREMISES.md). Candidate hypotheses
   and issue completion do not change a registered claim's scientific status.
   Record exact same-model attachments and retained inputs there; change this
   registry when the established claim or its evidence changes. Paper releases
@@ -87,6 +89,28 @@ Three row-level contracts carry their own machine-checked declaration:
 The GitHub workflow runs the validator on registry changes and on public claim-surface changes.
 When a pull request changes paper TeX or the README claim narrative, it must also touch this
 registry/check surface. That rule keeps the registry from becoming a stale snapshot.
+
+## Finite model constructions, 2026-10-12
+
+Four `emitted_artifact` rows register the runnable model and its retained
+evidence. Their owners are the self-contained implementation documents under
+`model/`, with `owner_medium: protocol_record`; no paper theorem is promoted
+or changed by these additions.
+
+| Claim | Executed scope |
+| --- | --- |
+| `OPH-MODEL-NATIVE-OBSERVER-EXECUTION` | [Native current recorder](../model/observer/README.md), exact classical preservation, supplied forecasts and feedback |
+| `OPH-MODEL-OBSERVER-RECORD-CAPACITY` | [Finite correctable capacity](../model/observer/CAPACITY.md) and lossless reached-prefix controller encoding |
+| `OPH-MODEL-P-RESPONSE-EXECUTION` | [P-dependent binary detector](../model/observer/p_response/README.md), with accepted closure input and declared running/matching map |
+| `OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE` | [Incident-attempt memory certificate](../model/local_tick/README.md), with supplied occupation preparation and readout |
+
+The detector consumes PR-17 and PR-37. Its separate physical same-quantity
+and Thomson readback attachments are undischarged PR-38 and PR-39. The other
+three rows certify their supplied finite contracts without consuming the
+canonical physical premises. Local tape capacity is not cosmic N closure;
+the native current recorder does not implement the N4 occupation apparatus.
+Uniqueness of a designed rule is not required for these implementation claims.
+Existing claim payloads, physical statuses and frozen predictions are preserved.
 
 ## Numerical audit consolidation, 2026-10-08
 

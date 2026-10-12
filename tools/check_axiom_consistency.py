@@ -38,6 +38,7 @@ ACTIVE_GLOBS = [
     "cosmology/*.tex",
     "book/*.md",
     "docs/**/*.md",
+    "model/**/*.md",
     "claims/*.yaml",
     "claims/*.md",
     "claims/*.json",

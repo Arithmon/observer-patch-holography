@@ -1,6 +1,6 @@
 # One N4 process: central ports, geometry and a non-native timing response
 
-The [N4 candidate](../../docs/MODEL_CANDIDATES.md#n4-a-reciprocal-coherent-exchange)
+The [N4 candidate](../../model/CANDIDATES.md#n4-a-reciprocal-coherent-exchange)
 retains native port geometry but has a certified memory signal beyond native
 heat dynamics. A minimal twelve-block address carrier preserves its complete
 quantum channel and supports a full abstract A1–A3 construction. The resulting
@@ -10,6 +10,16 @@ This proves finite kinetic nonselection within the stated abstract source
 interpretation. Recording an occupied port has a separate, unavoidable quantum
 information cost, proved below. The address register is an explicit extension;
 the native/N4 interaction and private factors are unchanged.
+
+The live [observer-local incident-tick calculation](../../model/local_tick/README.md)
+reuses this packet's certified edge bound for a different, explicitly
+defined stopping rule: every attempted seam incident to one port counts as a
+tick, with intervening remote events retained. It derives the corresponding
+native null and a positive N4 lower bound. The global-attempt calculation
+below retains its own protocol; the extension supplies no physical duration
+calibration. Runnable N1 observation, record and feedback protocols live in
+[model/observer/](../../model/observer/README.md), with their distinct source
+and apparatus assumptions.
 
 ## Fixed inputs and experiment
 
@@ -323,17 +333,41 @@ different marked order-five characters; no identification of those triplets
 is used. This preserves the exact negative controls in #1087 and #1088.
 
 The admitted reversible port controls are the collective response words,
-their inverses, and the specified chart changes. Native/N4 Tick, requested
-addressing, readout and trace reset are irreversible channels. In particular
+their inverses, and the specified chart changes, with their control sequence
+fixed independently of measured records. Nondemolition central readout is
+available, but its outcome cannot select, omit or repeat a reversible word
+or chart path. Feedback uses the stipulated addressed repair and reset
+templates. This is an explicit grammar restriction, not a consequence of
+irreversibility: unrestricted record-conditioned reversible control would
+give the 144 independent directions `e_p Delta D_q` and violate the declared
+twelve-dimensional response. A1 requires feedback availability, not this
+larger closure under arbitrary record-controlled programs.
+
+Native/N4 Tick, requested addressing, quantum readout and trace reset are
+irreversible channels. In particular
 the coherent W in a Kraus factorization is not separately exposed as an
 arbitrary reversible probe. Each declared irreversible primitive loses
 information on the full cq state space: refresh and requested addressing
 forget the original centre, readout overwrites it, and requested-block
 reset discards that block's internal state. Subsequent channels cannot
-invert that loss for all states. This concerns deterministic CPTP maps on
-the full cq algebra, not normalized postselected branches on a restricted
-support. Thus their finite words introduce no additional reversible port
-direction. Allowing independent internal
+invert that loss for all states. This argument concerns compositions of
+deterministic CPTP endomorphisms of the full cq algebra. It does not apply
+separately to instrument branches: reading p and then restoring address p
+is the identity on cq inputs, despite a fixed requested-address map having
+a kernel. Admitted feedback is specified by its resulting full-input map;
+normalized postselection on a restricted support is a different object.
+
+The addressed T and individual seam maps also supply no reversible
+direction, even if an average has no linear kernel. On one fixed finite
+algebra, a product of CPTP endomorphisms can have a CPTP inverse only if
+each factor does: a left inverse implies bijectivity, after which the
+CP inverses follow successively. Such reversible maps are automorphisms.
+Each native seam expectation, or its fixed N4 conjugate, kills a nonzero
+operator. An incident-star average cannot be an automorphism: extremality
+would force every seam summand to equal that automorphism. Thus these
+fixed-control compositions also cannot create a reversible response.
+The separate control-type restriction above rules out adaptive reversible
+programs. Allowing independent internal
 unitaries, controlled reversible probes or W as a primitive changes the
 grammar and requires a fresh response-completeness proof.
 
@@ -513,6 +547,11 @@ The floating evaluators are diagnostics on `|θ|≤1`; they do not certify
 zeros, tiny differences or arbitrary-angle forward accuracy. The separate
 certificate starts from the algebraic source entries and exact rational
 couplings. All-angle nondegeneracy follows from the proof above.
+Address/measurement division rejects erased components. Channel and query
+matrix products conservatively reject subnormal operands, whose products
+can lose representable information inside BLAS; direct address moves retain
+their supported subnormal values. These guards delimit numerical evaluation,
+not the exact channel theorem or a general forward-error certificate.
 The finite common fixed algebra, absolute quantum gap, physical clock,
 source-law selection and continuum limit are not inferred. In particular
 C and E share these first two occupation moments, so this test alone does

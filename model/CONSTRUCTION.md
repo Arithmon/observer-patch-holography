@@ -1,0 +1,313 @@
+# OPH model construction from local repair
+
+This is the construction guide for the [live model implementation](README.md).
+It replaces the former model-search ledger with the current contracts,
+results and next connections. The [candidate register](CANDIDATES.md) gives
+law-level comparisons; the generated [premise map](PREMISES.md) connects
+those constructions to the existing theorems.
+
+**Build the simplest shared repair process that satisfies the required
+constraints.** A finite implementation is complete when its declared
+observation, record and feedback contract runs and passes its checks.
+Proving that self-consistency uniquely selects that implementation is a
+separate question, not a prerequisite for constructing it. A complete
+physical model additionally needs compatible physical identifications and
+tests on the same process.
+
+## Current executable result
+
+The [native observer](observer/README.md) executes two repair events with a
+finite tape. It records the first current, issues a supplied forecast from
+that record, chooses the next seam, records the result and halts. Exhaustive
+checks retain all 264 binary-source paths. A 20,000-trial seeded execution
+reproduces the exact predictions within the reported sample differences.
+
+The [P-dependent detector](observer/p_response/README.md) computes the
+existing P-to-electromagnetic-coupling map, writes a binary detector result
+and lets that bit choose the second repair. All 528 weighted histories are
+retained. A separate 200,000-trial execution agrees with the analytic
+response within its reported sampling uncertainty. Only the detector bit
+reaches the actuator; feedback preserves its committed value.
+
+These are executable finite observation–record–feedback constructions.
+The initial ensemble, tape, forecast table, detector and control protocol
+are explicit design inputs. Two events means two successive repair
+invocations; it does not mean that the source or complete history has only
+two alternatives. The binary detector is an access interface to a richer
+source and record history.
+
+## Native repair and its observer contract
+
+Use the twelve-port source, with 78 nonnegative integer configurations of
+total load two. Its 66 binary configurations form an invariant shell. For
+an oriented seam `(a,b)` and fair placement coin `c`, native C uses
+
+```text
+d = x_a − x_b,
+j = [d − (2c−1)(|d| mod 2)]/2,
+y = x + j(unit_b − unit_a).
+```
+
+The load is conserved. Its quantum current instrument has Kraus operators
+`L_(c,j)=(1/sqrt(2)) Σ_(x:j(x,c)=j) |y(x,c)><x|`.
+The record is `(c,j)`. Keeping the pre-repair contrast instead gives the
+alternative instrument E, with identical classical transitions but different
+quantum coherences. The classical repair rule alone does not select C or E.
+
+The observer first applies C on `(0,1)`. Its committed first record alone
+selects `(0,5)` when `j1>0`, otherwise `(0,1)`, and supplies the preissued
+forecast of a positive second current. No source loads or future outcomes
+are accessible to that controller. Full simulator checkpoints and external
+occupation audits are distinct from the observer's record access.
+
+The [derivation](observer/DERIVATION.md) gives one fixed CPTP map on the
+phase/tape/source carrier and shows classical-prefix preservation. Genuine
+feedback can reduce coherence between different old record values while
+preserving their classical probabilities. Halting is an identity operation
+on the terminal sector, not a claim of unlimited continuing memory.
+
+Exact controls separate record information from knowledge of the chosen
+action. Native-record prediction improves on the action-known prior and a
+within-action shuffled record. Native feedback gives final port-0 occupation
+`35/264`, versus `1/6` when the selector is disconnected or independently
+shuffled with the same action frequencies. Occupation here is an external
+audit; the native current remains the implemented observation.
+
+## P-dependent response and finite capacity
+
+For this design, **P and N are accepted as derived from OPH's self-reference
+equations**. Apparatus, protocol and simulation hardware remain construction
+choices. The [detector implementation](observer/p_response/README.md)
+evaluates the existing forward-closure P input and source-only
+structured-running map `α(P)`, then sets `g(P)=sqrt(4π α(P))` in natural units.
+The observer does not fit P or N to its desired output.
+Its chosen charge assignment is `Q_v=g(P)N_v`, so native current j transfers
+charge `g(P)j` while conserving the total.
+
+A prepared path qubit uses the first current to orient a calibrated loop
+exposure χ. A Y measurement writes `y=±1` with
+
+```text
+Pr(y | j1,P,χ) = [1 + y sin(g(P)j1χ)]/2,
+E[g(P)j2] = (5g(P)/264) sin(g(P)χ).
+```
+
+Only y chooses the second seam. At χ=1 the mean native second current is
+approximately `0.00564883566843`. Disconnecting the detector or independently
+shuffling y removes the mean response while preserving its half/half outcome
+and seam frequencies. Weak exposure gives
+`E[g j2]=(5π/66) α(P)χ + O(χ³)`: P affects an actual response magnitude.
+The loop geometry can separately use `A_loop=K_loop P ell_star²`.
+
+The chosen charge, prepared probe, calibrated flux, readout and controller
+are specified apparatus. This is a software execution of that conditional
+design, not a report of fabricated electromagnetic hardware. The inherited
+source-only α branch retains its documented physical endpoint status;
+executing the adapter does not turn its output into an independent precision
+measurement. P does not alone determine a whole observer's Hilbert dimension,
+local exposure, temperature or event rate.
+
+The [capacity calculation](observer/CAPACITY.md) reuses the existing
+correctable-public-record theorem. Under the binary preparation, 11 terminal
+native words and 16 reachable prefixes allow a four-bit classical prefix
+encoding. On the full 78-state source those counts are 17 and 24. These are
+reachable record counts, not the dimension of the whole machine. The
+P-detector's richer audit has 24 terminal words and 37 prefixes; its actuator
+receives a single bit. Program, source, probe and service capacity are
+additional.
+
+For a declared capacity carrier of dimension D, `N=ln D` bounds a correctable
+classical record code by `ln M0≤N`. The cosmological relation
+`N=3π/(Λ ell_star²)` needs the stated physical capacity/area identification.
+A finite controller does not establish global saturation or cosmic closure.
+See the existing [capacity implementation](../code/capacity_readback/README.md)
+and [N-closure theorem](../paper/tex_fragments/OBSERVERS_N_CLOSURE_PRO5.tex).
+
+## Geometry, response and local event clocks
+
+The native current process supplies a finite port geometry and dimensionless
+clock relation under its declared uniform binary reference and IID seam
+schedule. These are readouts of the same recorded events, without identifying
+a finite port chart with physical space or attempt count with proper time.
+The [candidate register](CANDIDATES.md) retains the exact baseline relations.
+
+N2 lets the native current drive the existing local six-level response;
+N3 is its simpler flat alternative. They preserve the full native load
+instrument, so internal preparations cannot feed back on that marginal.
+N4 instead conjugates binary C/E by a coherent load–response exchange.
+It preserves locality and total occupation and supplies finite reciprocal
+feedback, with an added coupling θ and specified internal preparation.
+N4's record label j is not a bare-load current.
+
+The [native-response calculation](../code/native_response/README.md) uses
+one common tracial state and fixed bare occupations to recover the same
+port Gram geometry and a certified two-attempt memory excess for N4.
+For one local occupation under global IID attempts, the corrected statistic
+is `b_local=c2−c1²−(1−c1)²/10`. The subtraction removes ordinary spatial-mode
+mixing and gives a zero native null. All outcomes are retained and there is
+no intermediate measurement or reset.
+
+The [local-tick extension](local_tick/README.md) counts every attempted seam
+incident to the chosen port, including unchanged loads. All intervening
+remote attempts remain in the evolution. Under uniform IID seam selection
+the incident probability is `p=1/6`; the first-hit Schrödinger channel is
+`K=B(I−A)^−1` for remote/incident channel sums A and B. It requires a different
+correction:
+
+```text
+r = 1−c1,
+b_tick = c2−c1²−r²(209r+180)/(1331r²+3300r+1800).
+```
+
+Native repair has `c1=5/11`, `c2=93/407`, `b_tick=0`. Reusing the existing
+edge-Gram certificate `G≥mI` proves `b_tick≥3m/50` for N4. Certified lower
+bounds are `0.00001119970056` at θ=1/16 and `0.00022670580642` at θ=1/8.
+These are lower bounds, not numerical evaluations of the full N4 correlation.
+C and E share c1 and these bounds; the local-tick result also gives
+`c2_C≥c2_E`, without asserting strictness.
+
+Preparation, occupation readout, incident-event recognition and calibration
+remain specified services. The N1 current detector does not implement this
+N4 occupation apparatus. Local attempt count, model time, host runtime,
+modular parameter and calibrated observer duration are distinct. The
+[working terms](../docs/INTERPRETATION_AND_TERMS.md) impose no preferred
+universal physical clock.
+
+## Central ports, quantum records and finite law selection
+
+The [central-port attachment](../code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
+constructs an escape from the whole-simple-algebra obstruction in #1087.
+The minimal unital full-matrix attachment is `A=direct_sum_12 B(H)`.
+Refresh the central address, then repair a uniformly selected incident seam:
+decoding reproduces the entire native/N4 channel, including quantum
+coherences. Fixed-address interventions make those ports operational controls.
+Collective private response, actual chart implementers and tagged refinement
+supply a full abstract A1–A3 source under the scalar-seam interpretation.
+The marked spatial and internal-response triplets in #1088 remain distinct.
+
+The native and N4 members share the full quantum tracial reference, complete
+collective response and normalized port geometry, but have different
+certified clock-independent kinetic invariants. This strengthens #1090's
+configuration-only equilibrium distinction without changing the canonical
+inertia theorem or its premises. It proves abstract finite nonselection;
+it does not impede completing a declared observer design, supply two physical
+realizations or establish an all-sector exclusion.
+
+An instrument that instead reports a sampled occupied port has effects
+`N_p/2`. Every instrument with those effects erases disjoint-load coherences;
+an explicit orthogonal pair has unavoidable recovery error at least 1/2.
+The implemented central readout preserves its outcome and supported private
+blocks, and continuation on A uses the same repair law. Its endpoint joint
+probabilities recover the global-attempt corrected memory statistic with the
+exact native null. Endpoint storage is a supplied service: address refresh
+erases its previous tag. This quantum occupation instrument is distinct from
+the N1 current detector, and scalar seams carry no remote record.
+
+## Retained scalar and entropy constructions
+
+The separate scalar benchmark factors weighted agreement into its supplied
+stiffness. If repair capacity also measures inertia, linear dynamics, energy
+conservation, time reversal and the declared velocity reading give
+`M f_ddot=−(K_D+m²M)f` and the canonical Hamiltonian. These hypotheses determine
+the equation within that class. The `I+εA` kinetic counterfamily has the same
+configuration equilibrium with different frequencies; three-mode curvature
+and a distance-two response distinguish it after common clock/mass/speed
+refits. Equilibrium alone does not determine inertia.
+
+Local coordinates `χ=(m q+i p,Dq)` represent the original canonical fields
+without independent edge oscillators. The existing free-scalar continuum,
+local force and retained-pointer instruments remain conditional results;
+interactions and physical matter identification are further work. See the
+[source instruments](../code/source_scalar_instruments/README.md) and
+[finite implementation](../code/source_scalar_finite_instrument/README.md).
+
+The retained q=3 eight-mode preparation/history uses the same 8,192-level
+onsite code, with combined mathematical trace-distance error below `0.001237`
+before physical service errors. Its ramp error is below `0.000433450` at
+model duration 512; `2^24` local time steps add below `0.000695044`.
+Existing source controls give a finite synthesis recipe, and exact commuting
+compilation removes an unnecessary inner approximation loop. These are
+construction/error results; no enormous native pulse word or 106-qubit
+field/pointer state was executed. The [premise map](PREMISES.md#re-10)
+retains the detailed preparation, history and resource assumptions.
+
+Regional maximum-entropy completion, nested inclusion towers, protected
+records and charge-resolved collars remain available from the
+[finite algebra results](../code/quantum_information/ALGEBRAS_AND_REPAIR.md).
+A charge center is not by itself a physical gauge-edge factor, area law or
+stress coupling. Nonnested completions need not commute. The
+[gravity premise ladder](../docs/registers/GRAVITY_PREMISE_LADDER.md) retains
+the physical assumptions needed for the existing gravitational conclusions.
+
+## Connecting finite objects to the physical theorem routes
+
+The same word can name different objects in these constructions. Use the
+actual carrier, operation and accessible record when applying an existing
+theorem. The [generated map](PREMISES.md) links their executable sources and
+proofs; the [observation ledger](../docs/registers/OBSERVATION_LEDGER_V3.md)
+records the broader physical targets without promoting their status from a
+finite software run.
+
+| Constructed object | Result that can be reused | Required connection for a broader claim |
+| --- | --- | --- |
+| N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
+| P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
+| Reachable native record words on the declared carrier | Existing correctable-record evaluator and explicit classical prefix encoding | A compatible physical capacity cut and global closure family before identifying this count with cosmological N |
+| N4 tracial bare occupation at incident attempts | Corrected first-hit null and inherited strict finite memory bounds | N4 occupation preparation, detector and incident-event recognition; the N1 current detector does not measure this occupation |
+| Supplied canonical scalar action, vacuum and Weyl observables | Existing finite instrument and controlled free-field continuum theorems | Explicit maps from the chosen native implementation with controlled state, observable and service errors along the same refinement family |
+| Declared gauge, edge, stress and geometry structures | Existing conditional gauge/gravity implications | Joint physical carrier, interactions, conserved stress and compatible geometric variations on that family |
+
+No observation rung or physical premise is discharged merely by putting these
+sources in the same repository. Conversely, the remaining physical joins do
+not reopen the completed finite observer contract. Model maintenance belongs
+here; changes to the broader papers follow their separate review policy.
+
+## Remaining construction work
+
+The finite observer is a completed component to extend and preserve. The
+next work should connect its actual interfaces, rather than add abstract
+convergence theorems without a missing implementation requirement:
+
+- Implement longer or composed observers with explicit memory, reset,
+  continuation and resource contracts while preserving current behavior.
+- Join the N4 preparation, occupation detector and local event counter if
+  claiming its certified memory test as an implemented apparatus.
+- Attach interacting matter, responsive geometry and physical clock
+  calibration to the same state, event law and retained records.
+- Specify a physically realizable preparation and observable, compare
+  alternatives, and freeze a prediction and rejection rule before independent
+  comparison data. Existing seen-data comparisons remain postdictions.
+
+The [established-mathematics guide](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md)
+governs reuse: define compatibility independently of the update, map the
+actual domain and scheduler to the nearest theorem, and identify what is new.
+Complete history, instantaneous fixed state, stationary distribution and
+continuing operation remain different claims. A history-level self-consistent
+structure can contain changing records and interventions.
+
+## Work ownership and claim accounting
+
+`model/` is the live home of observer and repair-law construction. Its
+implementation, tests, candidate comparison and this guide evolve together.
+GitHub issues own tasks; the [claim registry](../claims/claim_registry.yaml)
+owns established claim scope; [PREMISES.md](PREMISES.md) is generated
+navigation, not a proof that every theorem antecedent has been discharged.
+
+The connected responsibilities are [common construction #1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026),
+[shared repair law #1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076),
+[complete source history #1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077),
+[physical tests #1025](https://github.com/FloatingPragma/observer-patch-holography/issues/1025),
+[correctness #1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033)
+and [obstructions #1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
+They are parallel responsibilities, not twelve sequential completion hurdles.
+Finite results stay completed unless new evidence invalidates them; larger
+claims add declared requirements. A negative result rejects its stated family.
+
+## Research programme and paper-release hold
+
+Publish tested model code and reproducible results in this directory.
+**Paper releases and broad restructuring of the prose papers remain on hold**
+pending a recorded review of a coherent model milestone. Audits, necessary
+correctness fixes, errata, preview builds and reproducibility checks continue.
+Frozen evidence and deposited releases retain their original bytes. Passing
+CI or publishing the model code does not itself release a new paper.

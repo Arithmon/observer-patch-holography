@@ -326,7 +326,11 @@
     "OPH-DARK-SOURCE-DYNAMICS-LENSING",
     "OPH-SOURCE-ADMISSIBLE-CLOCK-SPATIAL-NONSELECTION",
     "OPH-INDEPENDENT-ALPHA-TAU-REPRODUCTION",
-    "OPH-FIXED-DISPERSION-FEASIBILITY"
+    "OPH-FIXED-DISPERSION-FEASIBILITY",
+    "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+    "OPH-MODEL-OBSERVER-RECORD-CAPACITY",
+    "OPH-MODEL-P-RESPONSE-EXECUTION",
+    "OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE"
   ],
   "edges": [
     {
@@ -2863,6 +2867,31 @@
       "from": "OPH-A5-SEAM-CURRENT-EDGE30",
       "to": "OPH-FIXED-DISPERSION-FEASIBILITY",
       "role": "Reuses the exact edge symbol as a declared physical hypothesis for a bounded kinematic check; physical attachment, interactions and frozen comparison permissions are not transferred."
+    },
+    {
+      "from": "OPH-NATIVE-REPAIR-HISTORY-SOURCE",
+      "to": "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+      "role": "reuses the finite conservative integer endpoint rule; the two-event tape and schedule are separately declared"
+    },
+    {
+      "from": "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+      "to": "OPH-MODEL-OBSERVER-RECORD-CAPACITY",
+      "role": "supplies reachable native records and the actual source/tape carrier"
+    },
+    {
+      "from": "OPH-GR-D6-CAPACITY",
+      "to": "OPH-MODEL-OBSERVER-RECORD-CAPACITY",
+      "role": "uses only the finite correctable-record and orthogonal-carrier bound, without consuming global saturation or horizon attachment"
+    },
+    {
+      "from": "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+      "to": "OPH-MODEL-P-RESPONSE-EXECUTION",
+      "role": "supplies the current instrument and bit-controlled native continuation"
+    },
+    {
+      "from": "OPH-ALPHA-PIXEL",
+      "to": "OPH-MODEL-P-RESPONSE-EXECUTION",
+      "role": "consumes the declared source-only forward-closure and coupling map as conditional design inputs, preserving physical endpoint status"
     }
   ]
 }

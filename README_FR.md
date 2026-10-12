@@ -34,9 +34,18 @@ Nous disposons de **résultats mathématiques conditionnels et de candidats
 finis concrets pour la loi de réparation**. Ces candidats reproduisent et
 relient certaines structures requises ; des simulations permettent d’en
 distinguer plusieurs. **Aucun modèle commun n’est établi comme physiquement
-correct.** Le [registre des candidats](docs/MODEL_CANDIDATES.md) et le
-[suivi des modèles](docs/MODEL_SEARCH.md) distinguent les résultats construits,
+correct.** Le [registre des candidats](model/CANDIDATES.md) et le
+[suivi des modèles](model/CONSTRUCTION.md) distinguent les résultats construits,
 les hypothèses fournies et les liens physiques à établir.
+
+Le **[modèle exécutable](model/README.md)** réalise un observateur fini :
+observation, conservation du registre classique et rétroaction commandant
+l’interaction suivante. Il comprend un détecteur binaire dont la réponse
+dépend de P, un calcul de capacité des registres et un résultat sur les
+événements locaux comptés par un observateur. La construction accepte les
+sorties de fermeture P/N et déclare son appareil et son protocole. Elle ne
+requiert pas que l’autoréférence choisisse un appareil unique ; son exécution
+logicielle n’établit pas la réalisation physique de l’univers entier.
 
 **La validité physique d’OPH est une hypothèse à tester.** La cohérence
 logique, les théorèmes conditionnels et les simulations réussies ne prouvent
@@ -84,9 +93,9 @@ processus. Tout mécanisme ajouté doit répondre à un lien manquant démontré
 et toute hypothèse physique ajoutée doit être déclarée. L’échec d’un candidat
 purement scalaire ne prouve pas qu’une loi commune simple soit impossible.
 
-Le [registre des lois candidates](docs/MODEL_CANDIDATES.md) compare leurs
-propriétés testées et leurs hypothèses. Le [suivi des modèles](docs/MODEL_SEARCH.md), la
-[carte des prémisses](docs/MODEL_PREMISE_MAP.md) et les
+Le [registre des lois candidates](model/CANDIDATES.md) compare leurs
+propriétés testées et leurs hypothèses. Le [suivi des modèles](model/CONSTRUCTION.md), la
+[carte des prémisses](model/PREMISES.md) et les
 [tâches de recherche](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
 décrivent ce travail. Un lien testé ou un candidat rejeté constitue un progrès ;
 le nombre de théorèmes ne mesure pas l’achèvement physique.
@@ -94,7 +103,7 @@ le nombre de théorèmes ne mesure pas l’achèvement physique.
 Les publications d’articles et leur restructuration générale sont suspendues
 jusqu’à une étape cohérente de construction du modèle. Audits, corrections
 et vérifications de reproductibilité continuent selon la
-[politique de recherche](docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold).
+[politique de recherche](model/CONSTRUCTION.md#research-programme-and-paper-release-hold).
 
 Les PDF de la branche principale sont des versions de travail et peuvent
 conserver l’identifiant de publication existant après correction. Les fichiers
@@ -105,8 +114,9 @@ une version de travail n’est pas une nouvelle publication.
 
 | Pour explorer… | Commencer par… |
 | --- | --- |
-| Le modèle en construction et ses liens physiques à établir | [Suivi des modèles](docs/MODEL_SEARCH.md) |
-| Les lois candidates, leurs hypothèses et leurs tests distinctifs | [Registre des candidats](docs/MODEL_CANDIDATES.md) |
+| L’observateur fini, son code et ses expériences reproductibles | [Modèle exécutable](model/README.md) |
+| Le modèle en construction et ses liens physiques à établir | [Suivi des modèles](model/CONSTRUCTION.md) |
+| Les lois candidates, leurs hypothèses et leurs tests distinctifs | [Registre des candidats](model/CANDIDATES.md) |
 | L’argument physique existant | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
 | Les preuves et les calculs reproductibles | [Bibliothèque Lean](Lean/) et [guide de reproduction](REPRODUCE.md) |
 | Les travaux associés sur les machines apprenantes | [Cadence](https://floatingpragma.io/cadence/) et [démonstrations interactives](https://floatingpragma.io/demos/) |
@@ -171,7 +181,7 @@ de vérification conservés.
 
 La [référence des axiomes](docs/AXIOM_REFERENCE.md) énonce les trois axiomes
 fondamentaux ; le [registre des prémisses](docs/registers/PREMISE_REGISTER_V3.md) et la
-[carte des prémisses](docs/MODEL_PREMISE_MAP.md) consignent les prémisses
+[carte des prémisses](model/PREMISES.md) consignent les prémisses
 supplémentaires et les hypothèses propres à chaque résultat, y compris les
 identifications physiques et les données empiriques.
 Le [registre des postdictions](docs/POSTDICTION_LEDGER.md)
@@ -182,6 +192,22 @@ des données de comparaison. Le [programme de falsification](docs/OPH_FALSIFICAT
 donne les observations qui réfuteraient des affirmations précises.
 
 ### Reproduire le noyau fini
+
+Pour exécuter et vérifier le modèle d’observateur depuis la racine du dépôt :
+
+```sh
+python3 -m pip install -r model/requirements.txt
+python3 -m model.verify
+python3 -m pytest -q -W error model
+```
+
+Cette voie vérifie les manifestes et les cinq résultats conservés, dont
+20 000 essais de l’observateur natif et 200 000 essais du détecteur binaire.
+Chaque essai suit son protocole fini et conserve tous ses résultats.
+Le workflow [Runnable observer model](.github/workflows/observer-model.yml)
+exécute ces contrôles sous Linux et Windows. Cette suite complète les
+vérifications historiques ; un simple `python3 -m pytest` ne collecte pas
+les tests de `model/`.
 
 Après avoir installé les dépendances décrites dans [REPRODUCE.md](REPRODUCE.md),
 vérifiez le graphe des affirmations et une sélection de résultats sur
@@ -217,6 +243,7 @@ de chaque famille de preuves.
 | [`flagship/`](flagship/) | Article principal autonome de physique, source TeX et PDF |
 | [`paper/`](paper/) | Articles principaux et index des publications |
 | [`Lean/`](Lean/) | Développement mathématique vérifié par machine |
+| [`model/`](model/) | Observateur et loi de réparation exécutables, protocoles, résultats et tests |
 | [`code/`](code/) et [`evidence/`](evidence/) | Modèles exécutables, certificats et éléments de reproduction |
 | [`extra/`](extra/) et [`cosmology/`](cosmology/) | Articles de recherche mathématique et physique spécialisés |
 | [`book/`](book/) | *Reverse Engineering Reality*, source et livre téléchargeable |
@@ -254,4 +281,4 @@ d’apprentissage et les ressources mesurées.
 
 ## Licence
 
-Le dépôt utilise des licences séparées par type d’artefact. Tout le logiciel, y compris la bibliothèque Lean, [`code/`](code), [`tools/`](tools) et les schémas de [`schemas/`](schemas), est publié sous [Apache-2.0](code/LICENSE). Les articles, le livre, la documentation, les figures, les données, les registres générés de [`tracking/`](tracking) et les données de particules empaquetées de [`pdg_data/`](pdg_data) sont publiés sous [CC BY-NC-SA 4.0](LICENSE). Les valeurs tabulées de `pdg_data/` conservent les conditions amont du Particle Data Group. Le fichier [LICENSE](LICENSE) donne la carte par répertoire.
+Le dépôt utilise des licences séparées par type d’artefact. Tout le logiciel, y compris la bibliothèque Lean, [`code/`](code), [`model/`](model), [`tools/`](tools) et les schémas de [`schemas/`](schemas), est publié sous [Apache-2.0](code/LICENSE). Les articles, le livre, la documentation, les figures, les données, les registres générés de [`tracking/`](tracking) et les données de particules empaquetées de [`pdg_data/`](pdg_data) sont publiés sous [CC BY-NC-SA 4.0](LICENSE). Les valeurs tabulées de `pdg_data/` conservent les conditions amont du Particle Data Group. Le fichier [LICENSE](LICENSE) donne la carte par répertoire.

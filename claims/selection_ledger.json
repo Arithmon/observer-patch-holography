@@ -820,6 +820,42 @@
         "the payload records that neither statistic nor designation rule was preregistered and that the result is ineligible as validation"
       ],
       "paper_anchors": []
+    },
+    {
+      "row": 24,
+      "selector_id": "finite_observer_apparatus_and_protocol",
+      "label": "Finite native observer tape, detector and continuation design",
+      "class": "exposed_premise",
+      "conditional_on": [],
+      "canonical_claim_id": "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+      "secondary_claim_ids": [
+        "OPH-MODEL-OBSERVER-RECORD-CAPACITY",
+        "OPH-MODEL-P-RESPONSE-EXECUTION",
+        "OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE"
+      ],
+      "owner_issues": [],
+      "where": "model/observer/ specifies a two-event tape, uniform binary preparation, supplied forecast, record-only seam controller and halt. Its capacity adapter declares exact terminal reread and reached-prefix encoding. model/observer/p_response/ additionally specifies charge Q_v=g(P)N_v, a prepared path qubit, calibrated external exposure and a bit-only actuator while consuming the declared P coupling map. model/local_tick/ separately supplies the N4 tracial preparation, uniform schedule, incident detector and bare occupation reads. These are implemented finite designs with completed scoped checks. Their validity does not require proving that self-consistency uniquely selects the design. Physical field, clock, hardware and whole-universe attachments keep their separate premises.",
+      "menu": {
+        "size": null,
+        "alternatives": "No finite enumeration of apparatus, memory, exposure or continuation designs is claimed.",
+        "enumeration_source": "model/CONSTRUCTION.md"
+      },
+      "compression_input": false,
+      "receipts": [
+        "model/observer/results/native.json",
+        "model/observer/results/capacity.json",
+        "model/observer/results/run.json",
+        "model/observer/p_response/results.json",
+        "model/local_tick/results.json"
+      ],
+      "lean": [],
+      "negative_controls": [
+        "An independent selector with the same native seam frequencies removes the causal feedback effect.",
+        "Zero detector exposure or independently shuffled detector bits remove the P-dependent mean response while keeping detector and seam marginals.",
+        "Complete record erasure reduces the declared zero-error capacity to one.",
+        "Using the old global-attempt memory correction at local ticks fails the native null; the retained first-hit comparator gives zero."
+      ],
+      "paper_anchors": []
     }
   ]
 }

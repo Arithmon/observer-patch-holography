@@ -1,0 +1,29 @@
+{
+  "dependencies": [
+    "Python standard library",
+    "code/capacity_readback"
+  ],
+  "files": {
+    "CAPACITY.md": "3607811ac4c844bb0ee78ebc6237c0b9389193fccbf52f0e8baa56350c4b04ce",
+    "DERIVATION.md": "2c0a0f6eae158c91938b7f6014c524738a226380e89d519df78d3b3a8e9c228c",
+    "README.md": "4d58d78f08020e76e8b776837a88eabc65dbd8dd5d14b293c5d47b8e92b6f587",
+    "__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
+    "__main__.py": "c79bda56d3944fc38b91dda1d26d8513467a0a9bf003929a4c192d73f64c3229",
+    "capacity.py": "a27c34e7486e4c88abd57c934caf526bbd1183a76e9d232830a2aa85c64211db",
+    "native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "results/capacity.json": "373c6558dda5bef7250170876f28aba091c264479db6ef754b23e109b3140680",
+    "results/native.json": "5b4f48e31f35cc6d8941bab6482ed4c0e5ab8d51ff9ab1fe469241f60b910293",
+    "results/run.json": "88aa066539b197c1c070a58d1b2c4900b64bc4ff71bc674ca375a5771dd55c4f",
+    "simulate.py": "d7380b43216c657e3a6a0c24a2da923b55c367cae107fb325e2389735db93046",
+    "test_native_observer.py": "517fba7fcd275c67637758d1a29d15b9fa8d85caa3f7716a435dcb4a94af444e",
+    "test_observer_capacity.py": "4ac0b4efe01b045aabae27555421e15487b68059588cb402a513543206b64e37",
+    "test_observer_simulation.py": "8474573b1d27b021fe57e597c0125268b639b2b1b0234e65967036ace672b7f7"
+  },
+  "reproduce": [
+    "python3 -m model.observer native --check model/observer/results/native.json",
+    "python3 -m model.observer capacity --check model/observer/results/capacity.json",
+    "python3 -m model.observer run --trials 20000 --seed 20261012 --check model/observer/results/run.json",
+    "python3 -m unittest model.observer.test_native_observer model.observer.test_observer_capacity model.observer.test_observer_simulation -v"
+  ],
+  "schema": "oph.observer.public_manifest.v1"
+}

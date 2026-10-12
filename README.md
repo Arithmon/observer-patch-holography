@@ -2,7 +2,7 @@
 
 **Physics from the records observers can share.**
 
-[Physics preprint](https://philpapers.org/rec/MUEFOC) · [Pragma Research](https://floatingpragma.io/research/) · [Français](README_FR.md)
+[Runnable model](model/README.md) · [Physics preprint](https://philpapers.org/rec/MUEFOC) · [Pragma Research](https://floatingpragma.io/research/) · [Français](README_FR.md)
 
 Observer Patch Holography (OPH) investigates whether familiar physics can be
 reconstructed from bounded observers that reach agreement. An observer patch
@@ -26,14 +26,34 @@ known forces, with a conditional route to Einstein dynamics. Each construction
 states the assumptions it consumes. Establishing a common physical
 realization requires measurements that distinguish the proposed models.
 
+## Run the observer model
+
+**[model/](model/README.md) is the live home of observer and repair-law
+construction.** Its finite observer executes local repair, retains an
+observation and uses that record to choose its next interaction. The
+P-dependent detector computes the electromagnetic coupling and lets a
+retained binary outcome control the next repair.
+
+Run from the repository root with Python 3.11 or newer:
+
+```sh
+python3 -m model.observer run --trials 10000 --seed 42
+python3 -m model.observer.p_response --check model/observer/p_response/results.json
+```
+
+The [model README](model/README.md) gives the exact checks, reproducible
+receipts and construction guide. These are completed finite software
+protocols with explicit P/N premises and apparatus choices. Broader physical
+identification remains part of the research below.
+
 ## Research status
 
 We have **conditional mathematical results and concrete finite repair
 candidates**. The candidates reproduce and connect some required structures,
 and we can distinguish several of them in simulations. **We do not have a
 common model established as physically correct.** The
-[candidate register](docs/MODEL_CANDIDATES.md) and
-[model search](docs/MODEL_SEARCH.md) separate constructed results, supplied
+[candidate register](model/CANDIDATES.md) and
+[model search](model/CONSTRUCTION.md) separate constructed results, supplied
 assumptions and missing physical connections.
 
 **OPH's physical correctness is a hypothesis under investigation.** Logical
@@ -85,16 +105,16 @@ map linear overlap models to sheaf diffusion and boundary extension, and reuse
 the resulting theorems where their premises hold. Each candidate must identify
 its remaining physical obligation and a test that can distinguish its law.
 
-Compare the [concrete candidate laws](docs/MODEL_CANDIDATES.md), their tested
-properties and remaining choices. Follow the [model search](docs/MODEL_SEARCH.md), its
-[model–theorem premise map](docs/MODEL_PREMISE_MAP.md), and the
+Compare the [concrete candidate laws](model/CANDIDATES.md), their tested
+properties and remaining choices. Follow the [model search](model/CONSTRUCTION.md), its
+[model–theorem premise map](model/PREMISES.md), and the
 [research issues](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics).
 Progress means a tested connection or a rejected candidate; theorem counts
 do not measure physical completion.
 
 Paper releases and broad prose restructuring are on hold until a coherent
 model milestone supports them. Audits, correctness fixes and reproducibility
-checks continue. The [research policy](docs/MODEL_SEARCH.md#research-programme-and-paper-release-hold)
+checks continue. The [research policy](model/CONSTRUCTION.md#research-programme-and-paper-release-hold)
 states the milestone and the correction exception.
 
 Main-branch PDFs are current-source previews and may retain the existing
@@ -105,8 +125,9 @@ retain their original bytes; a preview is not a new release.
 
 | To explore… | Start with… |
 | --- | --- |
-| The model being constructed and its open physical connections | [Model search](docs/MODEL_SEARCH.md) |
-| The active repair laws, assumptions and distinguishing tests | [Candidate register](docs/MODEL_CANDIDATES.md) |
+| Run the observer and continue its construction | [Runnable model](model/README.md) |
+| The construction contracts and open physical connections | [Construction guide](model/CONSTRUCTION.md) |
+| The active repair laws, assumptions and distinguishing tests | [Candidate register](model/CANDIDATES.md) |
 | The existing physics argument | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
 | The proofs and reproducible calculations | [Lean library](Lean/) and [reproduction guide](REPRODUCE.md) |
 | The related work on learning machines | [Cadence](https://floatingpragma.io/cadence/) and [interactive demos](https://floatingpragma.io/demos/) |
@@ -166,7 +187,7 @@ executable observer dynamics and retained evidence.
 
 The [axiom reference](docs/AXIOM_REFERENCE.md) states the three core axioms;
 the [premise register](docs/registers/PREMISE_REGISTER_V3.md) and
-[model–theorem premise map](docs/MODEL_PREMISE_MAP.md) record additional premises and
+[model–theorem premise map](model/PREMISES.md) record additional premises and
 result-specific assumptions, including physical identifications and empirical
 inputs.
 The [postdiction ledger](docs/POSTDICTION_LEDGER.md) records comparisons with
@@ -260,4 +281,4 @@ Nothing here is financial advice.
 
 ## License
 
-The repository uses split licensing. All software, including the Lean library, [`code/`](code), [`tools/`](tools), and the schemas in [`schemas/`](schemas), is licensed under [Apache-2.0](code/LICENSE). Papers, the book, documentation, figures, data, the generated ledgers in [`tracking/`](tracking), and the packaged particle data in [`pdg_data/`](pdg_data) are licensed under [CC BY-NC-SA 4.0](LICENSE); the tabulated values in `pdg_data/` carry their upstream Particle Data Group terms. The [LICENSE](LICENSE) file gives the per-directory map.
+The repository uses split licensing. All software, including the Lean library, [`code/`](code), [`model/`](model), [`tools/`](tools), and the schemas in [`schemas/`](schemas), is licensed under [Apache-2.0](code/LICENSE). Papers, the book, documentation, figures, data, the generated ledgers in [`tracking/`](tracking), and the packaged particle data in [`pdg_data/`](pdg_data) are licensed under [CC BY-NC-SA 4.0](LICENSE); the tabulated values in `pdg_data/` carry their upstream Particle Data Group terms. The [LICENSE](LICENSE) file gives the per-directory map.
