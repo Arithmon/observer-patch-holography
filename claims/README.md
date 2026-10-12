@@ -112,6 +112,23 @@ the native current recorder does not implement the N4 occupation apparatus.
 Uniqueness of a designed rule is not required for these implementation claims.
 Existing claim payloads, physical statuses and frozen predictions are preserved.
 
+## Audit #1078 attachment corrections
+
+The [construction guide](../model/CONSTRUCTION.md#retained-audit-controls)
+records the dispositions of issues #1087–#1090. Their exact controls reject
+the whole-simple-algebra central-port identification, the original
+same-marked-action triplet identification, unrestricted extension of the
+single-product feedback exclusion, and selection of inertia from the
+configuration Gibbs marginal alone.
+
+The [addressed native/N4 construction](../code/native_response/README.md)
+supplies a separate twelve-block carrier and a fixed-full-reference abstract
+kinetic counterpair under a restricted collective response grammar. Its
+occupied-port instrument makes the information loss and retained-record
+requirements explicit. These results are linked in the model–theorem map;
+they change no existing claim ID, canonical inertia hypothesis, physical
+premise disposition, observation rung or frozen prediction.
+
 ## Numerical audit consolidation, 2026-10-08
 
 The review of [#1052](https://github.com/FloatingPragma/observer-patch-holography/pull/1052),

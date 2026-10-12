@@ -48,13 +48,23 @@ identification remains part of the research below.
 
 ## Research status
 
-We have **conditional mathematical results and concrete finite repair
-candidates**. The candidates reproduce and connect some required structures,
-and we can distinguish several of them in simulations. **We do not have a
+We have **runnable finite observers, conditional mathematical results and
+concrete repair candidates**. The native observer and P-dependent binary
+detector execute complete observation, record and feedback protocols.
+The candidates reproduce and connect some required structures, and we can
+distinguish several of them in simulations. **We do not have a
 common model established as physically correct.** The
 [candidate register](model/CANDIDATES.md) and
 [model search](model/CONSTRUCTION.md) separate constructed results, supplied
 assumptions and missing physical connections.
+
+The [central-port construction](code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
+extends the native/N4 source with twelve classical addresses while preserving
+its decoded quantum channel. Its abstract source pair holds the full quantum
+reference and normalized port geometry fixed while exhibiting different
+finite kinetics. Occupied-port readout has a separate quantum information
+cost. The [four audit controls](model/CONSTRUCTION.md#retained-audit-controls)
+retain the precise carrier, marked-action, feedback and inertia boundaries.
 
 **OPH's physical correctness is a hypothesis under investigation.** Logical
 consistency, conditional theorems and successful simulations do not establish
@@ -82,11 +92,12 @@ refutation from a practical decision to stop pursuing the programme.
 
 **Find the simplest shared repair rule that satisfies the known constraints.**
 
-**The programme is complete only when that shared repair rule has been found
-and shown to satisfy the required constraints on one common model.** Component
-proofs, simulations and compiler improvements are milestones toward that
-result; none closes the programme by itself. Physical identification also
-requires discriminating evidence.
+**The completion target is one common construction with a controlled
+continuum limit reproducing established physics and quantitative predictions
+that survive independent tests.** Its finite observer implementation is a
+completed component. Construction choices need no uniqueness theorem;
+their physical consequences need compatible readouts, explicit assumptions
+and discriminating evidence.
 
 The research priority is an explicit microscopic repair law whose evolution
 supplies the inputs of the existing theorems on one common model. Separate

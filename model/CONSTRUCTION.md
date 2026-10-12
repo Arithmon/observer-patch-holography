@@ -139,6 +139,26 @@ It preserves locality and total occupation and supplies finite reciprocal
 feedback, with an added coupling θ and specified internal preparation.
 N4's record label j is not a bare-load current.
 
+The [central-address extension](../code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
+places the full quantum algebra in twelve identical blocks. Refreshing the
+central address and repairing a uniformly selected incident seam reproduces
+the entire original channel after decoding. With its declared collective
+response, chart implementation, scalar seams and all-level refinement, this
+gives a complete abstract A1–A3 source on the binary shell. The minimum
+twelve-block dimension assumes a unital embedding of the full working
+matrix algebra and exactly twelve primitive central ports; it is not a
+universal physical encoding bound. It does not extend N4 to all 78 loads.
+
+Native and N4 versions share the full tracial quantum reference, collective
+response and normalized occupation geometry while their finite kinetic
+invariants differ. These requirements therefore allow both implementations;
+uniqueness is unnecessary for constructing either. A central control address
+is not an observed occupied port. For the prescribed occupied-port effects,
+every instrument erases coherences between disjoint load supports, with
+recovery error at least `1/2` on an explicit orthogonal pair. Endpoint
+comparison consumes a separate record service; scalar seams carry no remote
+record. Physical realization and service costs remain additional contracts.
+
 The [native-response calculation](../code/native_response/README.md) uses
 one common tracial state and fixed bare occupations to recover the same
 port Gram geometry and a certified two-attempt memory excess for N4.
@@ -180,9 +200,11 @@ stiffness. If repair capacity also measures inertia, linear dynamics, energy
 conservation, time reversal and the declared velocity reading give
 `M f_ddot=−(K_D+m²M)f` and the canonical Hamiltonian. These hypotheses determine
 the equation within that class. The `I+εA` kinetic counterfamily has the same
-configuration equilibrium with different frequencies; three-mode curvature
+normalized classical configuration Gibbs marginal with different frequencies;
+the full phase-space reference and quantum vacuum change. Three-mode curvature
 and a distance-two response distinguish it after common clock/mass/speed
-refits. Equilibrium alone does not determine inertia.
+refits. Nonzero deformation violates the same-capacity inertia premise;
+configuration equilibrium alone does not determine inertia.
 
 Local coordinates `χ=(m q+i p,Dq)` represent the original canonical fields
 without independent edge oscillators. The existing free-scalar continuum,
@@ -223,6 +245,7 @@ finite software run.
 | N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
 | P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
 | Reachable native record words on the declared carrier | Existing correctable-record evaluator and explicit classical prefix encoding | A compatible physical capacity cut and global closure family before identifying this count with cosmological N |
+| Twelve central addresses with binary native/N4 quantum blocks | Full-channel decoding, complete abstract scalar-seam grammar, shared full reference and normalized geometry with distinct finite kinetics | Physical realization, retained-record delivery and compatible apparatus; the address is not an occupation measurement |
 | N4 tracial bare occupation at incident attempts | Corrected first-hit null and inherited strict finite memory bounds | N4 occupation preparation, detector and incident-event recognition; the N1 current detector does not measure this occupation |
 | Supplied canonical scalar action, vacuum and Weyl observables | Existing finite instrument and controlled free-field continuum theorems | Explicit maps from the chosen native implementation with controlled state, observable and service errors along the same refinement family |
 | Declared gauge, edge, stress and geometry structures | Existing conditional gauge/gravity implications | Joint physical carrier, interactions, conserved stress and compatible geometric variations on that family |
@@ -231,6 +254,31 @@ No observation rung or physical premise is discharged merely by putting these
 sources in the same repository. Conversely, the remaining physical joins do
 not reopen the completed finite observer contract. Model maintenance belongs
 here; changes to the broader papers follow their separate review policy.
+
+## Retained audit controls
+
+The [fixed audit package](../code/programme_obstruction_audit/README.md)
+retains exact author and independent controls for the following boundaries.
+Run `python3 code/programme_obstruction_audit/run_all.py` from the repository
+root with assertions enabled. Its seven scripts validate the frozen inputs
+and write fresh receipts outside the package. These controls reject the
+named identifications or overly broad inferences; none rejects A1–A3 or
+requires a unique designed implementation.
+
+| Audit issue | Exact retained boundary | Construction consequence |
+| --- | --- | --- |
+| [#1087: complete carrier](https://github.com/FloatingPragma/observer-patch-holography/issues/1087) | `Z(M66)=Z(M78)=C I` cannot supply twelve nonzero primitive central ports. Binary occupations are noncentral, overlap and sum to `2I`; total-two occupations also admit eigenvalue two. | Keep the native matrix algebra as a sector. The twelve-block central-address extension supplies the missing central algebra and real port-controlled operations; occupation measurement remains a separate contract. |
+| [#1088: marked triplets](https://github.com/FloatingPragma/observer-patch-holography/issues/1088) | The slow Gram satisfies `G²=4G`, `tr G=12`, `(5I−A)G=(5−sqrt(5))G`. One fixed order-five action has slow-frame trace `(1−sqrt(5))/2` and lower response-triplet trace `(1+sqrt(5))/2`, excluding an invertible same-action intertwiner. | Keep spatial and internal response domains distinct. Whole-law Galois substitution or an explicit action twist needs its own attachment; incidence recharting alone does not identify the marked triplets. |
+| [#1089: feedback class](https://github.com/FloatingPragma/observer-patch-holography/issues/1089) | At fixed load `I_odd/2`, the rational number-preserving exchange gives endpoint probabilities `769/1250` and `481/1250`, difference `144/625`. Four Kraus operators certify CPTP; its private commutant has dimension one, excluding every single-product exponential representation, including alternate logarithm branches. | Preserve the all-input reduced-load and single-product no-feedback theorems within their stated classes. The escape is a finite channel control; importing geometry, current or clock semantics requires a common observable map. |
+| [#1090: configuration equilibrium](https://github.com/FloatingPragma/observer-patch-holography/issues/1090) | For `A=I+L_path3`, the positive `ε=±1/16` controls retain the normalized configuration Gibbs marginal but change the full reference and vacuum. For stiffness response `Y=γ(A+εA²)`, `Y13=γε` and the third-mode fit residual is `6γε`; actual acceleration is `−Yq`. | The same-capacity inertia theorem retains its premise. Separate this configuration-only control from the native/N4 counterpair, which fixes the full quantum reference and normalized geometry but changes finite kinetics. Neither supplies two physical realizations. |
+
+The [independent joint reconstruction](../code/programme_obstruction_audit/joint_independent.py)
+checks the marked path and occupation identities; the
+[independent channel reconstruction](../code/programme_obstruction_audit/channel_independent.py)
+checks all 64 operator matrix units and solves the private commutant.
+The [kinetic control](../code/programme_obstruction_audit/kinetic_control.py)
+retains all eight prescribed rational cases, including rejection of singular
+`ε=−1/4`. The source extension does not erase these negative controls.
 
 ## Remaining construction work
 

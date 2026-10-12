@@ -36,7 +36,7 @@ benchmark times retain their stated scope. See the
 | **N1-E** | Same load repair with contrast record, channel E | Active completion comparison | Idempotent completion of C on one seam; a conditional expectation on the binary shell. | Source selection of the retained algebra and record instrument. |
 | **N2** | N1 current drives local six-level response at both seam endpoints | One-way preservation benchmark | Preserves N1's load instrument and locality; inherits completion and finite binary-network convergence while protecting local block populations. | Full source grammar and selection against N3; all-input marginal preservation excludes feedback. |
 | **N3** | N1 current drives the local flat endpoint response | Simpler active alternative | Preserves the same load instrument and locality; one global change of coordinates reduces it to N1 with unchanged internal variables. | A reason to select or reject its trivial closed-loop response. |
-| **N4** | One coherent load–response exchange conjugates binary C/E | Reciprocity experiment | Private preparations change bare load probabilities. The same bare-occupation protocol retains port geometry but exhibits memory beyond a rescaled native heat law. | Full source grammar, physical preparation/readout and clock selection; j is not a bare-load current. |
+| **N4** | One coherent load–response exchange conjugates binary C/E | Reciprocity experiment with abstract central-port attachment | Private preparations change bare load probabilities. Twelve central addresses preserve its quantum channel in a complete abstract scalar-seam source grammar. It retains normalized port geometry but exhibits memory beyond a rescaled native heat law at the same full quantum reference. | Physical realization, preparation/readout, retained-record service and clock comparison; j is not a bare-load current. |
 | **S1** | Minimal canonical inertial completion of weighted scalar agreement | Separate field/component benchmark | Explicit Hamiltonian, conditional free-field continuum and controlled preparation/observation construction. | Derivation of inertia, quantum state, controls and physical time from the microscopic process. |
 
 N2 and N3 retain the native repair marginal. N4 tests the smallest reciprocal
@@ -255,7 +255,11 @@ does not restore the missing central response.
 number-preserving A leaves C's load marginal unchanged. Its channel symmetry
 blocks feedback for that whole family. N4 evades this scoped obstruction;
 neither summand alone has the tested feedback. This does not prove universal
-minimality among other possible laws.
+minimality among other possible laws. The independent
+[rational feedback control](CONSTRUCTION.md#retained-audit-controls)
+gives a number-preserving CPTP escape with probability difference `144/625`;
+its scalar-only private commutant excludes every single-product exponential
+representation. It supplies a class-boundary control, not an N4 source proof.
 
 **Properties:** local, total-occupation conserving, proper-carrier covariant,
 with protected 3+3 block populations. Same-seam C/E completion and finite
@@ -281,9 +285,16 @@ at θ=1/8 and 1/16, certifies nonzero two-attempt memory for every
 nonconstant carrier mode. A change of clock units cannot remove it. No
 additional state factor or interaction is needed for this test. On one seam
 the channel is unitarily equivalent to C; conjugating the observers too
-would change the fixed comparison. The physical interpretation of this
-preparation/readout, complete source grammar, gauge dynamics and interacting
-continuum remain open.
+would change the fixed comparison. The
+[central-address construction](../code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
+preserves the full native quantum channel in twelve identical quantum blocks
+and supplies a complete abstract scalar-seam grammar on the binary shell.
+Its native/N4 pair shares the full tracial quantum reference, collective
+response and normalized port geometry while its finite kinetics differ.
+Sampling an occupied port has a proved quantum information cost; central
+control addresses and occupation records serve different operations.
+Physical preparation/readout, retained-record services, gauge dynamics and
+an interacting continuum require their own realization.
 
 The [local-tick extension](local_tick/README.md) derives the separate null
 when the observer counts incident attempts and all remote events remain.
@@ -315,6 +326,12 @@ observations on one finite code with mathematical trace-distance error
 evaluates the same quadratic benchmark; a finite compiler simplifies its
 implementation. Neither is an additional physical law or an executed complete
 source history. See the [shared error and resource account](CONSTRUCTION.md#retained-scalar-and-entropy-constructions).
+
+The [configuration-equilibrium control](CONSTRUCTION.md#retained-audit-controls)
+preserves only the normalized classical configuration Gibbs marginal; its
+full phase-space reference and quantum vacuum change. Nonzero kinetic
+deformation violates the canonical theorem's same-capacity inertia premise.
+This control and N4's fixed-full-reference counterpair have different scopes.
 
 **Next decisive work:** connect the inertia and Hamiltonian time to the same
 microscopic events as N1/N2, and execute a complete preparation/readout history

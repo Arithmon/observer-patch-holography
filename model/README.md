@@ -59,6 +59,7 @@ gives its certificate replay and the incident-attempt stopping rule.
 | Finite capacity | [Correctable record capacity and compact controller](observer/CAPACITY.md): 11 terminal native words, 16 reachable prefixes and a four-bit classical encoding under the binary preparation |
 | Direct execution | [20,000-trial native receipt](observer/results/run.json) and [200,000-trial detector receipt](observer/p_response/results.json), alongside exact references |
 | Local event clock | [N4 local-tick calculation](local_tick/README.md): corrected native null and certified positive memory bounds while remote events continue |
+| Central ports and occupation readout | [Native/N4 address adapter](../code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair): tested finite channel and readout operations, with an analytic abstract source extension and explicit record costs |
 
 The controller's binary choice is an interface. The native record itself
 contains coin and current, and the full detector audit retains more than
@@ -82,6 +83,8 @@ an online learner or physical validation of the entire model.
   existing scalar, gauge and gravity results.
 - [Candidate register](CANDIDATES.md): native C/E, response extensions,
   reciprocal N4 and the separate scalar benchmark.
+- [Audit controls](CONSTRUCTION.md#retained-audit-controls): retained
+  counterexamples and the precise carrier, response and kinetic attachments.
 - [Model–theorem premise map](PREMISES.md): generated navigation to the
   existing hypotheses and theorem attachments.
 - [Mathematical foundations](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md) and

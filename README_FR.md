@@ -30,8 +30,8 @@ proposés.
 
 ## État de la recherche
 
-Nous disposons de **résultats mathématiques conditionnels et de candidats
-finis concrets pour la loi de réparation**. Ces candidats reproduisent et
+Nous disposons d’**observateurs finis exécutables, de résultats mathématiques
+conditionnels et de candidats concrets pour la loi de réparation**. Ces candidats reproduisent et
 relient certaines structures requises ; des simulations permettent d’en
 distinguer plusieurs. **Aucun modèle commun n’est établi comme physiquement
 correct.** Le [registre des candidats](model/CANDIDATES.md) et le
@@ -46,6 +46,15 @@ dépend de P, un calcul de capacité des registres et un résultat sur les
 sorties de fermeture P/N et déclare son appareil et son protocole. Elle ne
 requiert pas que l’autoréférence choisisse un appareil unique ; son exécution
 logicielle n’établit pas la réalisation physique de l’univers entier.
+
+La [construction à ports centraux](code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
+ajoute douze adresses classiques à la source native/N4 en préservant son
+canal quantique décodé. Deux sources abstraites partagent la même référence
+quantique complète et la même géométrie normalisée, mais présentent des
+cinétiques finies différentes. La lecture d’un port occupé a un coût
+d’information quantique distinct. Les [quatre contrôles d’audit](model/CONSTRUCTION.md#retained-audit-controls)
+conservent les limites précises concernant le support, l’action marquée,
+la rétroaction et l’inertie.
 
 **La validité physique d’OPH est une hypothèse à tester.** La cohérence
 logique, les théorèmes conditionnels et les simulations réussies ne prouvent
@@ -76,11 +85,12 @@ décision pratique d'arrêter les recherches.
 **Trouver la règle de réparation commune la plus simple qui satisfait les
 contraintes connues.**
 
-**Le programme n’est achevé que lorsqu’une telle règle commune a été trouvée
-et que sa compatibilité avec les contraintes requises est établie dans un même
-modèle.** Les preuves partielles, simulations et améliorations du compilateur
-sont des étapes ; aucune ne suffit à clore le programme. L’identification
-physique exige aussi des observations discriminantes.
+**L’objectif est une construction commune avec une limite continue contrôlée
+qui reproduit la physique établie et fournit des prédictions quantitatives
+résistant à des tests indépendants.** L’observateur fini exécuté est un
+composant achevé. Les choix de construction n’exigent pas de théorème
+d’unicité ; leurs conséquences physiques exigent des lectures compatibles,
+des hypothèses explicites et des observations discriminantes.
 
 La priorité est une loi microscopique explicite dont l’évolution fournit les
 entrées des théorèmes existants dans un même modèle. Des résultats conditionnels
