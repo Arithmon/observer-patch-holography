@@ -1711,10 +1711,15 @@
           "declared_common_source_two_record_intervention_protocol",
           "declared_native_current_to_common_quantum_history_attachment",
           "declared_coherent_proper_code_services_and_analogue_source_controls",
-          "uniform_binary_total_two_preparation"
+          "uniform_binary_total_two_preparation",
+          "declared_common_source_observer_algebra_and_access",
+          "declared_common_source_programmed_modular_instrument",
+          "declared_common_history_constraint_repair",
+          "declared_native_slow_geometry_readout",
+          "declared_common_source_smooth_ramsey_instrument"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "e0a053a4be30f113aff12679cc199c069d94f2e201e2ed0953d3a996846b75f4"
+        "original_claim_sha256": "144e68932aa63938378bb7fc374ea74d82cc0440e238e5bae0caa4a8570c0c2a"
       },
       "OPH-MODEL-SCALAR-RESPONSE-EXECUTION": {
         "assumptions": [
@@ -3848,7 +3853,7 @@
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
     "code/m1_necessity/downstream.json": "5f6fae73f0bdd4e3a93b45dd2b0840afe2415998f3eac766cab096650cc9ea1c",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "21ddf5ec3cd93db8bdac725f4211fadd056e46d2717a0048c7ed0ae1bbd100f2",
+    "code/m1_necessity/test_necessity.py": "4401092e978c42f1e27a07057b660909bd72dbd30ead772b258266dd6179510e",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "5460ddfa8a588944d7eac244c2962f38bde7c2fed785bae72987671b37204e18",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",

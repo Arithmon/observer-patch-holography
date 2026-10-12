@@ -73,7 +73,12 @@ def test_common_source_descendant_retains_its_finite_interaction_contract():
         'declared_common_source_two_record_intervention_protocol',
         'declared_native_current_to_common_quantum_history_attachment',
         'declared_coherent_proper_code_services_and_analogue_source_controls',
-        'uniform_binary_total_two_preparation'}
+        'uniform_binary_total_two_preparation',
+        'declared_common_source_observer_algebra_and_access',
+        'declared_common_source_programmed_modular_instrument',
+        'declared_common_history_constraint_repair',
+        'declared_native_slow_geometry_readout',
+        'declared_common_source_smooth_ramsey_instrument'}
     links = {edge['from']: edge['role'] for edge in downstream['links'] if edge['to'] == name}
     assert set(links) == {'OPH-SOURCE-COHERENT-CODE-COMPLETION',
                           'OPH-MODEL-SCALAR-RESPONSE-EXECUTION'}

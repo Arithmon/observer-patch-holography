@@ -26,6 +26,8 @@ REPLAYS = (
     ("model.predictions", None, "model/predictions/results.json"),
     ("model.common_source", None, "model/common_source/results.json"),
     ("model.common_source.infinite_history", None, "model/common_source/infinite_results.json"),
+    ("model.common_source.bridge", None, "model/common_source/bridge_results.json"),
+    ("model.common_source.smooth_bridge", None, "model/common_source/smooth_results.json"),
 )
 
 

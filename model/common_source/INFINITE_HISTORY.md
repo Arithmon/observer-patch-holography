@@ -22,6 +22,15 @@ The present state-specific calculation also includes the final readout and
 resolves the signal. Neither result is a spatial limit or a physical
 calibration of the declared action and model-coordinate time.
 
+The qualitative sharp finite-detector limit is also proved in
+[OCCUPATION_REFINEMENT.md](OCCUPATION_REFINEMENT.md); this calculation
+additionally certifies the infinite-history signal. It does not supply a
+numerical finite-`d` sharp-projector error rate. The separate Ramsey
+instrument in [SMOOTH_REFINEMENT.md](SMOOTH_REFINEMENT.md) has effects
+`(I +/- sin(Q0))/2`, a complete-output cutoff bound and finite-energy output.
+A sharp half-line projection can instead produce infinite kinetic energy;
+the trace-distance bounds here do not bound the postread energy.
+
 ## A fixed observable across occupation cutoffs
 
 The earlier finite detector is the spectral projector of the finite matrix

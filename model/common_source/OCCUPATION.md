@@ -1,5 +1,12 @@
 # Occupation refinement of the interacting retained history
 
+This gives an exponential-moment refinement of the fourth-moment
+pre-readout estimate in [OCCUPATION_REFINEMENT.md](OCCUPATION_REFINEMENT.md),
+for the same Hamiltonian and vacuum family. Both estimates apply with an
+untouched reference. The separate smooth-detector result in
+[SMOOTH_REFINEMENT.md](SMOOTH_REFINEMENT.md) includes a quantitative bound
+on the complete output of a different final instrument.
+
 The finite action in `scalar_coupling.py` is exactly the rectangular
 occupation compression of an infinite two-oscillator Hamiltonian. Write
 `P_d=1_{N0<d,N1<d}` and `N=N0+N1` in the original unit-frequency Fock basis.

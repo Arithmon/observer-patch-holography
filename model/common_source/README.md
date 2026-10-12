@@ -9,6 +9,47 @@ occupation and the actual coordinate-sign readout. This is a construction
 toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
 That target remains open.
 
+The [observer readout bridge](OBSERVER_READOUTS.md) reconstructs Hilbert
+representations and modular flow from this same executed state, extends
+its complete records with a source-compiled binary modular clock, and
+extracts the interactions between its declared regions. The
+[occupation analysis](OCCUPATION_REFINEMENT.md) adds an interacting
+two-oscillator limit; its final sharp readout converges strongly, with a
+finite-cutoff error rate still missing for that last instrument.
+The [infinite-history certificate](INFINITE_HISTORY.md) independently
+encloses the limiting sharp-readout response itself; it does not supply
+that missing finite-detector comparison rate.
+
+A separate [finite-resolution detector](SMOOTH_REFINEMENT.md) replaces that
+sharp sign measurement with a source-executed Ramsey readout. Its complete
+interacting record/quantum output has a quantitative occupation error bound,
+including measurement backreaction. The infinite-model unconditional
+measurement energy increase is exactly `1/8` in the declared model units.
+The executed finite cutoffs retain their actual energy changes and boundary
+corrections. This is a different detector; the original sharp-record clock
+is not transferred to it.
+
+The [history repair construction](HISTORY_REPAIR.md) solves the original
+sharp-readout event history as local compatibility constraints. Every fair update schedule
+reaches its unique completed assignment for the fixed apparatus inputs.
+Its observer states and modular readouts are consequently independent of
+the auxiliary repair counter. The supplied record meanings still select
+the actual feedback operations inside that history.
+
+The [native slow-geometry readout](SLOW_GEOMETRY.md) attaches the existing
+rank-three response carrier to all 1,056 joint histories. The original
+two-seam controller spans two displacement directions. An additional
+binary continuation uses three independent seam directions across its two
+events, with every new native outcome and its quantum reference retained.
+These are dimensionless carrier displacements; physical position, momentum
+and spacetime remain separate attachments.
+
+The [calibration checks](CALIBRATION.md) compare carrier distances, sampled
+modular-clock readings and finite detector energy with their declared
+mathematical targets. They also show why choosing the physical speed of
+light would relate length and time units without determining an energy
+scale. A propagation law connecting these readouts remains to be built.
+
 ## Run and inspect
 
 From the repository root, after installing `model/requirements.txt`:
@@ -16,13 +57,21 @@ From the repository root, after installing `model/requirements.txt`:
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source --check model/common_source/results.json
 python3 -m model.common_source.infinite_history --check model/common_source/infinite_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.bridge --check model/common_source/bridge_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.smooth_bridge --check model/common_source/smooth_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q -W error model/common_source
 ```
 
 `--write PATH` retains a new receipt and refuses to overwrite an existing
 file. [results.json](results.json) contains the complete quantum branches,
 all 1,056 native/quantum histories, controls, source-service counts and
-rational error certificates. The [derivation](DERIVATION.md) supplies the
+rational error certificates. [bridge_results.json](bridge_results.json)
+retains the Hilbert/modular/regional readouts and every appended clock branch.
+[smooth_results.json](smooth_results.json) retains the separate finite-resolution
+histories, feedback and disconnected controls, energy ledger and error bounds.
+[infinite_results.json](infinite_results.json) retains the exact infinite
+sharp-readout signal, state-error budgets, polynomial hashes and controls.
+The [derivation](DERIVATION.md) supplies the
 carrier maps, proof and theorem boundaries. `python3 -m model.verify`
 checks this package's hashes and replays it with the other model packets.
 
@@ -155,14 +204,35 @@ finite-Hamiltonian family through the first retained matter measurement
 and feedback, uniformly over arbitrary initial matter states and untouched
 references with the fixed scalar vacuum. At onsite d=64 the pre-readout
 trace-distance error is below 0.000002498. The final scalar read requires
-the separate readout treatment above. Neither proof supplies a spatial
-continuum or a physical service error budget.
+the separate readout treatment above. The independent
+[fourth-moment analysis](OCCUPATION_REFINEMENT.md) supplies a further
+pre-readout bound and proves strong convergence of the complete sharp
+history for all three native currents, including its native continuation.
+Neither estimate is a finite-cutoff error rate for the final sharp detector.
+These occupation results supply no spatial continuum or physical service
+error budget.
 
 The infinite-history derivation also proves that the finite sign instruments
 converge to this same infinite instrument, including terminal states. With
 `d=2^k` and `d^2` exact palindromic steps per interval, the mathematical
 finite-family contrast is eventually strictly negative. This is a limit
 theorem, without an explicit sufficient d or a larger native compiler run.
+It concerns zero native preparation current. The sharp postread quantum
+states retain their full half-line wavefunctions; their kinetic energy
+need not be finite. The pre-readout moment bounds therefore cannot be
+reused automatically through further field evolution and sharp reads.
+
+For the separate smooth detector, the full ideal history error decreases as
+`O(1/d)` at fixed model time. Its conservative bound is about `0.2063` at
+occupation dimension 64, `0.04096` at 256 and `0.008840` at 1024. These are
+analytic bounds, not executions of those larger source programs. At the
+executed dimensions 2 and 4 the bound is vacuous, so agreement between those
+small cutoffs does not certify continuum precision. The joint ideal limit
+uses `n(d)=d^2` temporal steps; floating execution and physical service errors
+remain separate.
+
+The appended modular-clock experiment has no proved occupation limit in
+either detector analysis.
 
 ## What this establishes and what remains
 
@@ -176,7 +246,9 @@ approximate occupation cutoffs. No full Lean observer or consensus-tower
 instantiation is asserted.
 
 The action, initial projected free vacuum, couplings and model-coordinate
-clock are supplied. In particular that preparation is not established as
+schedule are supplied. The appended modular clock reads an ensemble
+probability on a bounded phase window; its pulse schedule is supplied and
+its physical duration is uncalibrated. In particular the preparation is not established as
 the ground state of the coupled Hamiltonian. P and N retain their existing
 closure and physical-readback contracts; they do not fix these additional
 choices. This construction has no spatial refinement, established

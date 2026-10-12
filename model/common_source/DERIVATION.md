@@ -340,12 +340,16 @@ interacting quantum-field identification, empirical masses or couplings,
 responsive geometry, or a calibrated physical clock. In particular the
 earlier free Gaussian occupation bound cannot be transferred through this
 new interaction. Comparing d=2 with d=4 is a numerical cutoff diagnostic,
-not a cutoff certificate. The separate [occupation proof](OCCUPATION.md)
-now supplies an interacting pre-readout bound, and the
-[infinite-history certificate](INFINITE_HISTORY.md) resolves the feedback
-signal with the actual infinite coordinate-sign detector. The scalar
-action, interaction strength, initial
-state and proper-code capabilities remain stated design choices. These
+not a cutoff certificate. The separate [exponential-moment proof](OCCUPATION.md)
+and [fourth-moment proof](OCCUPATION_REFINEMENT.md) supply interacting
+pre-readout bounds. The sharp instrument converges strongly, and the
+[infinite-history certificate](INFINITE_HISTORY.md) resolves the limiting
+feedback signal with the actual infinite coordinate-sign detector.
+These results do not give a numerical cutoff rate for the final sharp
+instrument. The [smooth Ramsey variant](SMOOTH_REFINEMENT.md) does give a
+complete-output occupation rate for its different detector. The scalar
+action, interaction strength, initial state and proper-code capabilities
+remain stated design choices. These
 choices require no proof of unique selection before implementing them, but
 they do not become measured properties of nature by being consistently
 implemented.
@@ -477,8 +481,14 @@ TV(p_d(.|a), p(.|a)) <= epsilon_d(a),   epsilon_d(a) -> 0.
 
 When a state-specific complete-output trace-distance bound is available,
 every common subsequent CPTP continuation and readout contracts it. The
-two-site occupation certificate has that scope on its declared prepared
-histories; it is not an all-input diamond-norm estimate. If the continuation
+smooth-detector occupation certificate has that scope on its declared
+prepared histories; it is not an all-input diamond-norm estimate. For the
+sharp detector, the rectangular cutoff bounds stop before the final read;
+strong convergence supplies its complete-output limit without a numerical
+cutoff rate. The exact infinite sharp-history certificate instead bounds
+its polynomial approximation after applying the same infinite half-line
+instrument on both sides. It does not identify that instrument with the
+sign of a finite coordinate matrix. If the continuation
 itself changes with d, its own comparison error must be added. A common
 finite experiment menu permits a uniform maximum of its finitely many
 bounds. It does not produce a bound over all physical interventions or a
@@ -754,14 +764,27 @@ fixture lacking those certificates.
 This is temporal approximation of a specified finite interacting model.
 Floating compilation and physical service errors require additional
 terms. The older free two-oscillator occupation estimate does not cover
-the present gauge/scalar interaction. The new [interacting occupation
+the present gauge/scalar interaction. The [exponential-moment occupation
 proof](OCCUPATION.md) is uniform over initial matter states through their
-retained read and feedback, before the final scalar read. The separate
-[infinite-history signal](INFINITE_HISTORY.md) fixes native preparation
+retained read and feedback, before the final scalar read. The
+[fourth-moment analysis](OCCUPATION_REFINEMENT.md) also proves strong
+convergence of the complete sharp history for all three native currents
+and their native continuation, without a numerical final-readout rate.
+The separate [infinite-history signal](INFINITE_HISTORY.md) fixes native preparation
 current zero and uses the actual infinite sign instrument; it is not a
 certificate for every joined native preparation or the emitted finite
 sign detectors. No spatial continuum theorem or empirical identification
 follows from this composition.
+
+The sharp half-line instrument can produce a jump in the terminal
+wavefunction and need not preserve finite kinetic energy. No moment bound
+through another sharp field read and further evolution follows here. The
+[smooth instrument](SMOOTH_REFINEMENT.md) instead preserves the energy form
+domain and has unconditional infinite-model energy increment `1/8`; its
+full occupation error includes the pointer interaction. That is a different
+binary instrument, with bit zero denoting `(I+sin(Q0))/2`. None of these
+occupation results includes the separately appended finite modular clock
+or establishes its physical duration.
 
 ## Compatible theorem use and open physical connections
 
@@ -773,7 +796,11 @@ follows from this composition.
 | Protected records | Fixed old-record projectors on committed checkpoints and complete controlled instruments | Blank-to-written transitions are separate; no complete Lean `OperationalObserver` inhabitant is asserted |
 | Hardware refinement | Old privately owned factors embed by tensoring identities | Oscillator cutoff embeddings are not exact unital algebra/state/generator tower maps |
 | Finite temporal approximation | Rational all-input bounds for this same interacting Hamiltonian, with arbitrary spectator references | Finite code and ideal source services; numerical and physical service errors are separate |
-| Interacting occupation refinement | Exponential number-moment bound through retained matter read/feedback; exact infinite-history response with the actual half-line instrument | Fixed scalar vacuum, declared two-site action and schedule; no spatial limit or physical calibration |
+| Interacting occupation refinement | [Exponential-moment bound](OCCUPATION.md) through matter read/feedback and [fourth-moment bound with strong sharp-readout limit](OCCUPATION_REFINEMENT.md) | Fixed scalar preparation; no numerical finite-cutoff sharp-readout rate or spatial field limit |
+| Infinite sharp-readout response | [Exact nonzero contrast and complete-output approximation bound](INFINITE_HISTORY.md) using the infinite half-line instrument | Zero native preparation current and declared two-site action; no rate comparing finite sign instruments, spatial limit or physical calibration |
+| Smooth binary instrument | [Complete-output occupation rate and finite-energy backreaction](SMOOTH_REFINEMENT.md) for the Ramsey detector | Different bit dictionary and quantum instrument; no sharp-detector rate or modular-clock limit |
+| Observer representation and modular flow | [GNS and modular readouts](OBSERVER_READOUTS.md) of the actual observation state; emitted clock probe retains all records | Quantum algebra and access supplied; full conditioned scalar states may be nonfaithful; physical clock calibration open |
+| Quantum regional restriction | CP conditional expectations and Hamiltonian-derived interaction support on the same carrier | Supplied factorization; no multiplicative restriction, metric or growing spatial family |
 
 The [model–theorem premise map](../PREMISES.md) retains the broader
 conditional results. They must be applied with compatible hypotheses;
@@ -788,9 +815,12 @@ or a fundamental QFT. It must make their observed joint statistics and
 responses effective descriptions of this same process. Two occupation
 cutoffs on a fixed two-site carrier do not supply spatial refinement.
 Nonabelian/chiral matter, the physical coupling map, dynamical stress and
-geometry, and independent data comparison remain open. The new occupation
-proof uses the interacting generator directly; the free scalar Gaussian
+geometry, and independent data comparison remain open. The occupation
+proofs use the interacting generator directly; the free scalar Gaussian
 bound is not reused after adding this interaction.
-Neither a tracial reference's trivial modular flow nor a solver counter
-is a calibrated observer clock. P/N closure assumptions do not determine
-the declared coupling g or the action/preparation in this packet.
+The finite source-compiled modular clock reads a programmed modular
+parameter through ensemble statistics on a bounded phase window. Its
+physical duration and its relation to the Hamiltonian's model time remain
+uncalibrated; neither a tracial reference's trivial modular flow nor a
+solver counter supplies that calibration. P/N closure assumptions do not
+determine the declared coupling g or the action/preparation in this packet.
