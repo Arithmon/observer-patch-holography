@@ -1729,10 +1729,11 @@
           "declared_scalar_action_vacuum_and_refinement_adapter",
           "declared_scalar_Weyl_branch_instrument_and_native_feedback",
           "declared_two_site_scalar_action_and_physical_occupation_projection",
-          "declared_coherent_proper_code_services_and_analogue_source_controls"
+          "declared_coherent_proper_code_services_and_analogue_source_controls",
+          "declared_scalar_two_read_continuation"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "2267ac57a3b52823e7aa4cae1c029ae493b2ee2e531aaf10544647ee3cd8536e"
+        "original_claim_sha256": "01131760df319a187975e740a7c4de535caba9498004be3eeaeed887b162a3b9"
       },
       "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM": {
         "assumptions": [

@@ -69,6 +69,26 @@ def test_full_m6_pulse_from_independent_source_formula(kind):
         assert_matrix(actual.conj().T@actual, np.eye(6), 8e-14)
 
 
+def test_full_source_exponential_retains_a_resolved_off_code_coupling(monkeypatch):
+    # Perturb the already-loaded source to distinguish full M6 exponentiation
+    # from inserting its ideal logical target or projecting onto the code.
+    generators, coefficients, exact = c._source()
+    perturbed = generators.copy()
+    controls = c.integrated_controls("X", .37)
+    port = int(np.argmax(abs(controls)))
+    perturbed[port, 0, 3] += 1e-7
+    perturbed[port, 3, 0] -= 1e-7
+    expected = expm(np.einsum("p,pij->ij", controls, perturbed))
+    monkeypatch.setattr(c, "_source", lambda: (perturbed, coefficients, exact))
+    c._native.cache_clear()
+    try:
+        actual = c.native_pulse("X", .37)
+        assert abs(actual[3, 0]) > 1e-9
+        assert_matrix(actual, expected, 2e-14)
+    finally:
+        c._native.cache_clear()
+
+
 @pytest.mark.parametrize("d", (2, 4))
 @pytest.mark.parametrize("coherent", (False, True))
 def test_full_code_export_includes_complement_and_preserves_no_cross_code_coherence(d, coherent):

@@ -45,8 +45,10 @@ time `39/40` by the nearest certified update, retaining the actual rational
 time. At q=13 a second run uses half that step at the same actual time.
 The scalar mean and detector pullback columns advance by neighboring-site
 canonical updates. The original-vacuum covariance supplies their detector
-variance, including squeezing. This split probability replaces `r_q` in
-the same native prediction formulas and sampled controls.
+variance, including squeezing. The centered split probability
+`Pr_split(y=+1 | j=+1)-1/2` replaces `r_q` in the same native prediction
+formulas and sampled controls. This receipt has one field read and two
+native repairs per history.
 
 The mathematical comparison to the continuum adds the inherited temporal
 error to the spatial error; a distinct reference time also adds its timing
@@ -85,3 +87,38 @@ the stated finite-grid bound and independently bounded preparation/control/
 readout error. Reject this apparatus model if the resulting intervals are
 disjoint. Numerical diagnostics require a separate numerical-error allowance.
 Do not diagnose OPH from a mismatch before checking those apparatus premises.
+
+## Continued-field protocol
+
+The [two-read experiment](CONTINUATION.md) fixes times `19/20` and `1`, gamma=4
+and the same four grids. It keeps the first conditional field and native
+loads, adds a second field observation and uses its bit for a third native
+repair. Both outcome signs and every source path are retained. Its frozen
+software execution uses 50,000 trials per grid and seed 20261012.
+
+This continuation uses continuous full-mode spectral evolution. The local
+split-update receipt above remains a separate one-read protocol; its
+temporal bounds have not been transferred to this two-read history.
+
+At q=233 the ideal mathematical model predicts a zero-current detector-bit
+correlation above `0.045619388905`. This distinguishes a fresh-field reset
+but also occurs in a correlated commuting Gaussian control. The separate
+measurement-disturbance prediction is stronger: on the positive-current
+preparation, performing the first read raises the second plus probability
+by more than `0.000022281162` compared with omitting it. The commuting control
+has zero such disturbance. These are two distinct experimental questions.
+
+The q=233 complete-history TV bound relative to the declared continuum is
+`0.025709913643`. This controls probabilities of all complete recorded
+events; an expectation in [-1,1] has the generic error bound twice that
+number. It is not a bound on conditional probabilities after arbitrarily
+rare postselection. The separate positive-current disturbance certificate
+uses the declared preparation directly.
+
+The software samples do not resolve the small disturbance difference at a
+statistical confidence level. A prospective apparatus comparison must fix
+independent performed/omitted-first-read batches, their preparation contract,
+sample budget, rejection thresholds and service errors before collecting
+data. Apply the stated concentration rule to the difference with both batch
+errors included. A model-versus-reset or model-versus-commuting discrepancy
+rejects that specified comparison, not all alternative theories or OPH.

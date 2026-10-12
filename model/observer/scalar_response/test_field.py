@@ -136,3 +136,68 @@ def test_coherent_backaction_against_independent_fock_kraus_matrices(outcome):
     second_probability, _ = branch.centered_instrument([.4*beta], 1)
     assert second_probability == pytest.approx(np.vdot(expected_second, expected_second).real,
                                                rel=0, abs=4e-14)
+
+
+@pytest.mark.parametrize("amplitudes, coefficients", (
+    ([[0.]], [1e308]),
+    ([[1e308+1e308j]], [1.]),
+    ([[1e308], [-1e308]], [1., 1.]),
+))
+def test_nonfinite_inner_products_cannot_become_zero_or_normalized_states(amplitudes, coefficients):
+    # Finite inputs can overflow within either the Gram matrix or its
+    # quadratic form. Neither inf/sqrt(inf) nor max(0, nan) is a state.
+    source = CoherentSum(amplitudes, coefficients)
+    for operation in (lambda: source.inner(source), source.norm_squared, source.normalized):
+        with pytest.raises(ArithmeticError, match="unresolved floating"):
+            operation()
+
+
+@pytest.mark.parametrize("coefficients", ([0.], [1., -1.]))
+def test_zero_vector_has_zero_norm_but_no_normalized_state(coefficients):
+    source = CoherentSum(np.zeros((len(coefficients), 1)), coefficients)
+    assert source.norm_squared() == 0
+    with pytest.raises(ArithmeticError, match="zero or numerically unresolved"):
+        source.normalized()
+
+
+@pytest.mark.parametrize("epsilon", (1e-3, 1e-4, 1e-5, 1e-6, 2e-7))
+def test_cancellation_cannot_return_a_state_that_violates_the_normalization_contract(epsilon):
+    # The exact norm is 2*(1-exp(-epsilon**2/2)); this approaches a
+    # one-photon ray, although its coherent coordinates become ill-conditioned.
+    source = CoherentSum([[0.], [epsilon]], [1., -1.])
+    exact_form = -2*np.expm1(-epsilon*epsilon/2)
+    assert source.norm_squared() == pytest.approx(exact_form, rel=0, abs=3e-16)
+    try:
+        normalized = source.normalized()
+    except ArithmeticError as error:
+        assert "numerically unresolved" in str(error)
+    else:
+        assert abs(normalized.norm_squared()-1) <= 1e-10
+        assert np.all(np.isfinite(normalized.coefficients))
+        assert np.any(normalized.coefficients != 0)
+
+
+@pytest.mark.parametrize("amplitudes, coefficients", (
+    (np.ma.array([[0.]], mask=False), [1.]),
+    ([[0.]], np.ma.array([1.], mask=False)),
+    ([[float("nan")]], [1.]),
+    ([[0.]], [float("inf")]),
+    ([[0.], [0., 1.]], [1., 1.]),
+))
+def test_coherent_inputs_reject_masked_nonfinite_and_ragged_arrays(amplitudes, coefficients):
+    with pytest.raises(ValueError):
+        CoherentSum(amplitudes, coefficients)
+
+
+@pytest.mark.skipif(np.finfo(np.longdouble).tiny >= np.finfo(float).tiny,
+                    reason="platform has no wider floating representation")
+@pytest.mark.parametrize("imaginary", (False, True))
+def test_coherent_input_conversion_rejects_erased_components(imaginary):
+    value = np.ones((1, 1), dtype=np.clongdouble)
+    tiny = np.finfo(np.longdouble).tiny
+    if imaginary:
+        value.imag = tiny
+    else:
+        value.real = tiny
+    with pytest.raises(ValueError, match="underflows the numerical representation"):
+        CoherentSum(value, [1.])

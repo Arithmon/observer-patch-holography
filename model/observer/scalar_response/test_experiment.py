@@ -118,3 +118,24 @@ def test_small_seeded_run_replays_and_zero_impulse_forecast():
     assert a["statistics"]["current"]["forecast"] == 0
     with pytest.raises(ValueError):
         subject.sample(float("nan"))
+
+
+@pytest.mark.parametrize("symbol", (True, False, 1., -1., None, "1"))
+def test_detector_symbols_are_integer_records_not_equal_valued_objects(symbol):
+    with pytest.raises(ValueError):
+        subject.detector_probability(.2, symbol, 1)
+    with pytest.raises(ValueError):
+        subject.detector_probability(.2, 1, symbol)
+    with pytest.raises(ValueError):
+        subject.decoder_seam(symbol)
+
+
+def test_cli_rejects_ambiguous_duplicate_receipt_keys(tmp_path, monkeypatch):
+    import sys
+    from . import __main__ as cli
+    receipt = tmp_path / "duplicate.json"
+    receipt.write_text('{"all_pass":false,"all_pass":true}', encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", ["scalar_response", "--check", str(receipt)])
+    monkeypatch.setattr(subject, "run", lambda *args: {"all_pass": True})
+    with pytest.raises(ValueError, match="duplicate"):
+        cli.main()

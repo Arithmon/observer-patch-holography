@@ -46,12 +46,21 @@ def _current(value):
 def _array(value, name, ndim):
     if np.ma.isMaskedArray(value):
         raise ValueError(f"{name} must not be masked")
-    raw = np.asarray(value)
+    try:
+        raw = np.asarray(value)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"{name} must be a numeric array") from exc
     if raw.ndim != ndim or raw.dtype.kind not in "iufc":
         raise ValueError(f"{name} has the wrong numeric shape")
-    result = np.array(raw, dtype=complex, copy=True)
-    if not np.all(np.isfinite(result)):
+    if not np.all(np.isfinite(raw)):
         raise ValueError(f"{name} must be finite")
+    with np.errstate(over="ignore", invalid="ignore", under="ignore"):
+        result = np.array(raw, dtype=complex, copy=True)
+    if not np.all(np.isfinite(result)):
+        raise ValueError(f"{name} exceeds the numerical representation")
+    if (np.any((raw.real != 0) & (result.real == 0))
+            or np.any((raw.imag != 0) & (result.imag == 0))):
+        raise ValueError(f"{name} underflows the numerical representation")
     return result
 
 
@@ -230,7 +239,8 @@ class CoherentSum:
     Amplitudes have shape (terms, modes). Coefficients carry all Weyl phases.
     Inner products and conditional states use coherent-state Gram matrices;
     no oscillator occupation cutoff or Gaussian post-measurement assumption
-    is made. Numerical evaluations themselves are not interval certificates.
+    is made. Overflow and unresolved normalization are rejected; these checks
+    do not certify roundoff for arbitrary ill-conditioned superpositions.
     """
 
     amplitudes: np.ndarray
@@ -254,13 +264,22 @@ class CoherentSum:
         result = np.empty((len(self.amplitudes), len(other.amplitudes)), complex)
         for i, alpha in enumerate(self.amplitudes):
             for j, beta in enumerate(other.amplitudes):
-                difference = alpha - beta
-                result[i, j] = np.exp(-np.vdot(difference, difference).real / 2
-                                      + 1j * np.vdot(alpha, beta).imag)
+                with np.errstate(over="ignore", invalid="ignore"):
+                    difference = alpha - beta
+                    distance_squared = np.vdot(difference, difference).real
+                    phase = np.vdot(alpha, beta).imag
+                if not isfinite(distance_squared) or not isfinite(phase):
+                    raise ArithmeticError("unresolved floating coherent-state overlap")
+                result[i, j] = np.exp(-distance_squared / 2 + 1j * phase)
         return result
 
     def inner(self, other):
-        return complex(self.coefficients.conj() @ self.gram(other) @ other.coefficients)
+        gram = self.gram(other)
+        with np.errstate(over="ignore", invalid="ignore"):
+            value = complex(self.coefficients.conj() @ gram @ other.coefficients)
+        if not isfinite(value.real) or not isfinite(value.imag):
+            raise ArithmeticError("unresolved floating coherent-state inner product")
+        return value
 
     def norm_squared(self):
         norm = self.inner(self)
@@ -272,7 +291,10 @@ class CoherentSum:
         norm = self.norm_squared()
         if norm <= 1e-14:
             raise ArithmeticError("coherent-state norm is zero or numerically unresolved")
-        return CoherentSum(self.amplitudes, self.coefficients / np.sqrt(norm))
+        normalized = CoherentSum(self.amplitudes, self.coefficients / np.sqrt(norm))
+        if abs(normalized.norm_squared() - 1) > 1e-10:
+            raise ArithmeticError("coherent-state normalization is numerically unresolved")
+        return normalized
 
     def evolve(self, omega, time):
         omega = _positive_frequencies(omega, self.amplitudes.shape[1])

@@ -93,6 +93,11 @@ q=13 and q=34 and uses their detector probabilities for native feedback.
 Original-vacuum squeezing and a q=13 step-halving control are included;
 the inherited temporal and spatial certificates remain distinct from
 floating numerical error and physical apparatus error.
+Its separate [continued version](observer/scalar_response/CONTINUATION.md)
+uses continuous spectral evolution and keeps the disturbed field for a
+second read and a third native event, with explicit record memory and a
+bound on the complete history. Combining this retained two-read process
+with the local update engine remains further work.
 The [source-compiled apparatus](observer/source_scalar/README.md) adds a
 separate two-site quantum field: its entangled preparation from blanks,
 field evolution and binary pointer all execute emitted twelve-port control
@@ -100,6 +105,8 @@ words. Four-, eight- and sixteen-level site codes retain both quantum branches,
 exact complete occupation-history and finite splitting bounds, and the
 native feedback. The occupation theorem covers this two-oscillator action;
 it does not establish spatial refinement.
+This source program performs one field read; it has not been joined to the
+spectral two-read continuation.
 
 The [prediction package](predictions/README.md) specifies two competing
 quantum observer instruments, computes their exact phase-dependent
@@ -122,9 +129,13 @@ python3 -m model.observer run --trials 10000 --seed 42
 
 # P → electromagnetic coupling → detector bit → native feedback.
 python3 -m model.observer.p_response --check model/observer/p_response/results.json
+
+# Continue the same scalar field through two observations (NumPy/SciPy required).
+python3 -m model.observer.scalar_response --continue-field \
+  --check model/observer/scalar_response/continuation_results.json
 ```
 
-These runtime commands use the Python standard library. They run software
+The native and P-detector commands use the Python standard library. They run software
 models, with a fresh preparation for each two-event trial. Event order is
 the time parameter; the program does not assign a physical duration to a
 Python invocation. The P detector evaluates the existing source-only
@@ -146,7 +157,7 @@ refuse to overwrite an existing file; use `--write PATH` to retain the full
 result and example traces. The [local-tick README](local_tick/README.md)
 gives its certificate replay and the incident-attempt stopping rule.
 `model.verify` replays the retained results and checks their artifact hashes.
-The scalar local-evolution receipt can also be replayed directly:
+The scalar local-evolution and source-compiled receipts can also be replayed directly:
 
 ```sh
 python3 -m model.observer.scalar_response.local_evolution --check model/observer/scalar_response/local_results.json
@@ -165,6 +176,7 @@ python3 -m model.common_source --check model/common_source/results.json
 | Native observer | [Native C, retained tape and record-only controller](observer/README.md), including all 264 benchmark paths and exact feedback controls |
 | Binary electromagnetic observation | [P-dependent detector](observer/p_response/README.md): evaluates α(P), writes one stable bit and uses it for the next native repair; all 528 weighted paths |
 | Scalar field observation and refinement | [Scalar detector](observer/scalar_response/README.md): native-current preparation, binary field instrument and bit-only feedback; local field updates at q=13,34, with temporal and spatial comparison bounds and a [prediction protocol](observer/scalar_response/PREDICTION.md) |
+| Retained scalar continuation | [Two reads of one field](observer/scalar_response/CONTINUATION.md): continuous spectral evolution, three native repairs, all 2,112 labelled histories and 209 reached record prefixes, with a separate complete-history bound |
 | Source-compiled quantum field apparatus | [Two-site source program](observer/source_scalar/README.md): preparation from blanks, field evolution and quantum pointer from twelve-port gates; both terminal field branches, finite error certificates and native feedback |
 | Specified alternatives and rejection test | [C/E phase experiment](predictions/README.md): exact complete outcome laws, fixed error and sample budgets, strict independent-count evaluation and an explicit no-data verdict; separate retrospective coupling audit |
 | Finite capacity | [Correctable record capacity and compact controller](observer/CAPACITY.md): 11 terminal native words, 16 reachable prefixes and a four-bit classical encoding under the binary preparation |

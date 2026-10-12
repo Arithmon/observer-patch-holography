@@ -26,6 +26,9 @@ python3 -m model.observer.scalar_response --trials 10000 --seed 42 --write /tmp/
 # Local field updates, temporal refinement and native feedback.
 python3 -m model.observer.scalar_response.local_evolution --check model/observer/scalar_response/local_results.json
 
+# Two retained field reads under continuous spectral evolution.
+python3 -m model.observer.scalar_response --continue-field --check model/observer/scalar_response/continuation_results.json
+
 # Independent field, quantum-instrument and native-history checks.
 python3 -m pytest -q model/observer/scalar_response
 
@@ -96,6 +99,23 @@ q=89 and q=233 are covered by the inherited analytic temporal certificate,
 but their local update loops are not executed in this receipt. The existing
 four-grid spectral receipt and mathematical certificates retain their scope.
 
+## Retained field and record continuation
+
+The [continued experiment](CONTINUATION.md) uses continuous full-mode spectral
+evolution and reads one prepared field twice, retaining its conditional state
+through three native repairs. It executes all 2,112 labelled histories,
+implements an eight-bit encoding of 209 reached
+record prefixes, and gives a new complete-history refinement bound below
+0.02571 at q=233. A certified second-read disturbance distinguishes the
+instrument from an explicit commuting Gaussian control with the same
+ordinary temporal correlation. Run it with `--continue-field`; the default
+one-read experiment and its sharper single-read bounds below are retained.
+
+This two-read engine uses `kernel.py`; `local_evolution.py` executes the
+one-read protocol. Continuing the conditional field through local split
+updates, with a corresponding two-read temporal error bound, remains
+further work.
+
 ## Prediction and continuum error
 
 Let `r_q(t)=Pr(y=+1 | j=+1)-1/2`. Exact enumeration of all 528 histories gives
@@ -160,6 +180,13 @@ units, calibration, interactions and hardware errors remain further work.
 | [results.json](results.json) | Four-level execution and inherited rational bounds |
 | [test_field.py](test_field.py) | Independent action and quantum-instrument oracles |
 | [test_experiment.py](test_experiment.py) | Independent history, control, replay and bound checks |
+| [kernel.py](kernel.py) | Full-mode Gram representation of retained Weyl states |
+| [continuation.py](continuation.py) | Two field reads, three native repairs and record-only forecasts |
+| [continuation_bounds.py](continuation_bounds.py) | Directed rational full-history and disturbance bounds |
+| [continuation_results.json](continuation_results.json) | Continued execution, complete record counts and bounds |
+| [test_kernel.py](test_kernel.py) | Independent final Fock states, phases and checkpoint controls |
+| [test_continuation.py](test_continuation.py) | Independent native enumeration, memory and deletion controls |
+| [test_continuation_bounds.py](test_continuation_bounds.py) | Exact arithmetic, source drift and scientific mutation controls |
 | [local_evolution.py](local_evolution.py) | Local stencil evolution, squeezed detector probability and native continuation |
 | [local_results.json](local_results.json) | Executed q=13,34 comparisons, step refinement and inherited temporal bounds |
 | [test_local_evolution.py](test_local_evolution.py) | Independent local-action, split-map, Gaussian-state and refinement controls |

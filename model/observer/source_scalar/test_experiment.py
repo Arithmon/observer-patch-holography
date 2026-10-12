@@ -206,6 +206,38 @@ def test_actual_detector_parity_and_nonzero_response(source_histories):
     assert plus(1) > .51
 
 
+def test_largest_retained_source_word_preserves_raw_norms_and_all_branch_states():
+    from .experiment import source_history
+
+    # The short d=4, n=4 fixture cannot expose primitive exponential drift
+    # amplified through this 1,774,010-pulse schedule. Check raw mass before
+    # looking at normalized conditional states, with the receipt's tolerance.
+    histories = {current: source_history(8, 128, current) for current in (-1, 0, 1)}
+    plus_probabilities = {}
+    for current, result in histories.items():
+        assert abs(result["pre_read_state_norm"]-1) < 2e-10
+        assert abs(result["post_read_total_probability"]-1) < 2e-10
+        resources = result["resource_counts"]
+        assert resources["native_pulses"] == 1_774_010
+        assert resources["proper_code_load_events"] == 1_774_010
+        assert resources["proper_code_export_events"] == 1_774_010
+        assert resources["proper_code_service_events"] == 3_548_020
+        branches = {row["outcome"]: row for row in result["branches"]}
+        assert set(branches) == {-1, 1}
+        plus_probabilities[current] = branches[1]["probability"]
+        for outcome, oracle in independent_terminal_branches(8, 128, current).items():
+            row = branches[outcome]
+            state = complex_vector(row["state"])
+            probability = float(np.vdot(oracle, oracle).real)
+            assert abs(row["probability"]-probability) < 2e-10
+            assert abs(np.vdot(state, state)-1) < 2e-10
+            actual_density = row["probability"]*np.outer(state, state.conj())
+            expected_density = np.outer(oracle, oracle.conj())
+            assert np.linalg.norm(actual_density-expected_density, 2) < 2e-10
+    assert abs(plus_probabilities[0]-.5) < 2e-10
+    assert abs(plus_probabilities[-1]+plus_probabilities[1]-1) < 2e-10
+
+
 def test_repeated_source_routines_resist_tiny_backend_norm_bias(monkeypatch):
     """Reproduce a harmless per-routine drift that becomes visible on repetition."""
     from . import compiler, experiment
