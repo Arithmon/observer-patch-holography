@@ -68,6 +68,13 @@ Choosing one edge and one causal layer as units gives a graph speed bound of
 one. Relating that causal depth to modular readings is an operational
 consistency requirement, not a demand for an external fundamental ruler.
 
+The [native field calculation](NATIVE_FIELDS.md) derives local continuity
+and the conditional mean current from the existing integer repair. Its
+full 78-state kernel checks graph diffusion for the existing uniform-seam
+calibration. This mean relaxes while individual recorded histories continue;
+its real decay modes cannot be identified with undamped field oscillations.
+The result adds no field Hamiltonian or clock convention.
+
 ## Run and inspect
 
 From the repository root, after installing `model/requirements.txt`:
@@ -79,6 +86,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.bridge -
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.smooth_bridge --check model/common_source/smooth_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.thermal_bridge --check model/common_source/thermal_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.causality --check model/common_source/causality_results.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.native_fields --check model/common_source/native_fields_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m pytest -q -W error model/common_source
 ```
 

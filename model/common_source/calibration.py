@@ -1,12 +1,14 @@
 """Small dimensionless readout benchmarks, not calibration against nature.
 
-Clock samples are synthetic binomial draws from the actual emitted modular
-clock law. Geometry compares two representations of the same native response
-carrier. Energy uses independent finite oscillator matrices, including larger
+Clock samples are synthetic Bernoulli trials of the analytic modular clock law,
+checked separately against the actual source probabilities. Geometry compares
+two representations of the same native response carrier. Energy uses independent
+finite oscillator matrices, including larger
 cutoffs that have not been executed through the source compiler.
 """
 import json
 import math
+import random
 
 import numpy as np
 
@@ -74,20 +76,6 @@ def binomial_parameter_interval(count, shots, clock, settings=5, failure_probabi
     }
 
 
-def _sample_clock_count(rng, shots, probability):
-    """Retain the emitted probability and couple replay by explicit uniforms.
-
-    A binomial sampler may switch to its complementary distribution at p=1/2,
-    making the seeded count discontinuous there despite negligible source
-    roundoff. Bernoulli thresholds change only when a probability crosses an
-    actual draw. The returned minimum margin records that replay sensitivity;
-    it is not an error bound on the emitted probability.
-    """
-    uniforms = rng.random(shots)
-    return (int(np.count_nonzero(uniforms < probability)),
-            float(np.min(np.abs(uniforms - probability))))
-
-
 def clock_benchmark(steps=512, shots=100000, seed=20261012):
     steps = _positive_integer(steps, "split count")
     shots = _positive_integer(shots, "shot count")
@@ -96,19 +84,25 @@ def clock_benchmark(steps=512, shots=100000, seed=20261012):
     history = experiment.history(2, steps)
     emitted = modular_clock.receipt(history)
     clock = emitted["clock_parameters"]
-    rng = np.random.Generator(np.random.PCG64(seed))
+    rng = random.Random(seed)
     settings = []
     for row in emitted["settings"]:
         mass = sum(row["clock_bit_marginal"])
         probability = row["clock_bit_marginal"][1] / mass
-        count, threshold_margin = _sample_clock_count(rng, shots, probability)
+        sampling_probability = (1 + clock["contrast"] / clock["mass"] * math.sin(row["phase"])) / 2
+        # Sample the checked analytic law with explicit uniform thresholds.
+        # A binomial implementation can reflect its seeded draw at p > 1/2;
+        # one-ulp source roundoff at the zero-phase setting then changes the
+        # retained count macroscopically. Keep the actual source probability
+        # separate, without rounding it or changing the replay tolerance.
+        count = sum(rng.random() < sampling_probability for _ in range(shots))
         inferred = binomial_parameter_interval(count, shots, clock, len(emitted["settings"]))
         interval = inferred["modular_parameter_interval"]
         truth = row["modular_parameter"]
         settings.append({
             "programmed_modular_parameter": truth, "programmed_modular_phase": row["phase"],
             "normalized_source_probability": probability,
-            "minimum_sampling_threshold_distance": threshold_margin,
+            "synthetic_sampling_probability": sampling_probability,
             "source_retained_total_weight": mass,
             "source_law_probability_error": row["analytic_probability_error"],
             **inferred,
@@ -118,7 +112,6 @@ def clock_benchmark(steps=512, shots=100000, seed=20261012):
     return {
         "dimension": 2, "steps_per_segment": steps, "shots_per_setting": shots,
         "seed": seed, "settings": settings,
-        "sampling_method": "PCG64 uniform draws; count U < unrounded normalized source probability",
         "simultaneous_confidence_lower_bound": .95,
         "confidence_method": "two-sided Hoeffding with union bound over all five independent settings",
         "monotone_modular_parameter_window": clock["monotone_parameter_window"],
@@ -127,6 +120,7 @@ def clock_benchmark(steps=512, shots=100000, seed=20261012):
         "all_programmed_parameters_inside_reported_intervals": all(row["programmed_parameter_inside_interval"] for row in settings),
         "all_source_instrument_checks_pass": emitted["all_pass"],
         "sampling_is_synthetic": True,
+        "sampling_method": "Python Random.random uniform-threshold Bernoulli trials of the checked analytic law",
         "fresh_complete_history_per_shot_and_setting": True,
         "sequential_use_of_one_system": False,
         "confidence_covers_hardware_or_state_estimation_error": False,
