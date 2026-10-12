@@ -46,6 +46,13 @@ Labeled synthetic controls exercise rejection; no independent experimental
 counts are supplied. A separate retrospective coupling audit preserves the
 inherited P-response gap and its physical-transport boundary.
 
+The [source-executed C/E experiment](observer/source_discrimination/README.md)
+implements both complete 78-state repair instruments and their fixed
+coherent preparation/readout test with twelve-port control words. An exact
+channel identity preserves arbitrary reference coherence, and the executed
+terminal states feed the unchanged count protocol. Physical encoding and
+service calibration remain separate from this finite construction.
+
 ## Run the observer
 
 From the repository root, with Python 3.11 or newer:
@@ -89,6 +96,7 @@ The scalar local-evolution receipt can also be replayed directly:
 python3 -m model.observer.scalar_response.local_evolution --check model/observer/scalar_response/local_results.json
 python3 -m model.observer.source_scalar --check model/observer/source_scalar/results.json
 python3 -m model.predictions --check model/predictions/results.json
+python3 -m model.observer.source_discrimination --check model/observer/source_discrimination/results.json
 ```
 
 ## What is implemented

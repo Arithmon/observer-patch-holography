@@ -359,6 +359,14 @@ C, versus 3/8 for both under E. The fixed sample plan evaluates complete
 records and outcomes under declared preparation/readout error; no physical
 dataset is supplied. This comparison does not select a unique OPH law.
 
+Both complete quantum instruments and their fixed test have an
+[encoded source-control realization](observer/source_discrimination/README.md).
+The construction preserves arbitrary reference coherence, keeps the full
+minus readout subspace and charges every native pulse and proper-code service.
+Its synthetic comparison therefore tests emitted preparations and channels;
+physical encoding and an independently established apparatus budget remain
+necessary to use the same test on observations.
+
 **Next decisive work:** connect the inertia and Hamiltonian time to the same
 microscopic events as N1/N2, and execute a complete preparation/readout history
 within one service budget. Equal equilibrium configurations do not select

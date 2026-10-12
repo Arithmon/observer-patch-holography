@@ -30,6 +30,13 @@ the native feedback. Coherent code services and the scalar action remain
 supplied; the earlier field family's continuum bounds do not transfer to
 this two-site implementation.
 
+The [source C/E discriminator](source_discrimination/README.md) supplies
+encoded twelve-port control words for both full native repair channels,
+coherent preparations and a pointer-only binary readout. Its exact channel
+identity covers every native input and arbitrary references. The executed
+output states and synthetic counts reproduce the fixed prediction test;
+physical occupation-to-code loading and service calibration remain supplied.
+
 ## Run from the repository root
 
 The observer code uses the Python standard library. The capacity calculation
