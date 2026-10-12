@@ -27,7 +27,7 @@ def test_complete_reference_execution_and_counts(packet):
     assert {k:actual[k] for k in ('routes','route_steps','executed_events','executed_reads','consumer_claims')} == {
         "routes":298,"route_steps":2215,"executed_events":149760,"executed_reads":13479912,"consumer_claims":8}
     assert actual['balanced_routes']==161 and actual['balanced_steps']>0
-    assert actual['downstream_claims']==136
+    assert actual['downstream_claims']==137
 
 
 def test_dark_source_context_does_not_transfer_dense_m1_or_physical_admission():
@@ -60,6 +60,27 @@ def test_operational_clock_descendants_do_not_inherit_dense_m1_premises():
     assert any(edge['from'] == 'OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT' and
                edge['to'] == 'OPH-M1-MASSIVE-FLIGHT-SPECTRUM'
                for edge in downstream['links'])
+
+
+def test_common_source_descendant_retains_its_finite_interaction_contract():
+    downstream = audit.downstream_audit()
+    name = 'OPH-MODEL-COMMON-SOURCE-EXECUTION'
+    row = downstream['claims'][name]
+    assert row['disposition'] == 'existing_contract_retained_without_automatic_transfer'
+    assert not (set(row['assumptions']) & audit.KEYS)
+    assert set(row['assumptions']) == {
+        'declared_common_gauge_CAR_scalar_action_and_preparation',
+        'declared_common_source_two_record_intervention_protocol',
+        'declared_native_current_to_common_quantum_history_attachment',
+        'declared_coherent_proper_code_services_and_analogue_source_controls',
+        'uniform_binary_total_two_preparation'}
+    links = {edge['from']: edge['role'] for edge in downstream['links'] if edge['to'] == name}
+    assert set(links) == {'OPH-SOURCE-COHERENT-CODE-COMPLETION',
+                          'OPH-MODEL-SCALAR-RESPONSE-EXECUTION'}
+    assert 'no physical clock or prepared-state selection is transferred' in links[
+        'OPH-SOURCE-COHERENT-CODE-COMPLETION']
+    assert 'spatial continuum bounds are not inherited' in links[
+        'OPH-MODEL-SCALAR-RESPONSE-EXECUTION']
 
 
 @pytest.mark.parametrize("bad", [True,False,0,-1,25,1.0,"2",None])

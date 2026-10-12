@@ -72,6 +72,27 @@ of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 
+The [common interacting source](common_source/README.md) joins quantum
+electric flux, a charged CAR pair and two neutral scalar sites on the same
+work register. Native source words implement their noncommuting evolution,
+matter and scalar pointer instruments, and feedback controlled by a
+committed matter bit. The final scalar bit controls the next native repair.
+All 1,056 native/quantum histories retain their terminal quantum states.
+At scalar dimension 2 and 512 temporal steps per interval, an exact
+certificate places the ideal source-word scalar feedback contrast in
+`[-0.033297300667839,-0.030025660061775]`. This is an internal prediction
+of a declared finite model, with numerical and physical service errors
+excluded from the ideal interval. It supplies no independent empirical
+comparison or interacting spatial continuum bound.
+
+The construction reuses the existing coherent source rather than claiming
+that a common abstract source was absent. Its [theorem attachments](common_source/DERIVATION.md#compatible-theorem-use-and-open-physical-connections)
+bind CAR, operator Gauss, record persistence and conditional expectations
+to actual finite operations. Writing and preserving records are separate
+interfaces. Exact hardware-inventory refinement and approximate occupation
+cutoffs have different algebraic maps. The declared action, prepared state,
+coupling and model-coordinate schedule remain physical construction inputs.
+
 The [native observer](observer/README.md) executes two repair events with a
 finite tape. It records the first current, issues a supplied forecast from
 that record, chooses the next seam, records the result and halts. Exhaustive
@@ -424,6 +445,7 @@ finite software run.
 
 | Constructed object | Result that can be reused | Required connection for a broader claim |
 | --- | --- | --- |
+| Common flux-dressed CAR/scalar register and two recorded instruments | Actual source execution, operator Gauss, protected committed records, rational all-input finite temporal bound and exact nonzero feedback contrast | Compatible interacting occupation/spatial refinement, vacuum and physical coupling readbacks, observer clocks and responsive stress/geometry on this same process |
 | N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
 | P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
 | Native-current scalar preparation, binary field instrument and native continuation | Executed conditional instrument, feedback mean `5r_q/132`, inherited history and mean refinement bounds | Source identification of the scalar action, vacuum, preparation/readout and clock; a physically calibrated independent detector comparison |

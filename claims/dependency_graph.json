@@ -331,7 +331,8 @@
     "OPH-MODEL-OBSERVER-RECORD-CAPACITY",
     "OPH-MODEL-P-RESPONSE-EXECUTION",
     "OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE",
-    "OPH-MODEL-SCALAR-RESPONSE-EXECUTION"
+    "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
+    "OPH-MODEL-COMMON-SOURCE-EXECUTION"
   ],
   "edges": [
     {
@@ -2908,6 +2909,21 @@
       "from": "OPH-SCALAR-SPACE-TIME-DETECTOR-LIMIT",
       "to": "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
       "role": "imports only the declared scalar probability comparison and refinement family; transfers the bound to composed histories and native feedback"
+    },
+    {
+      "from": "OPH-MODEL-NATIVE-OBSERVER-EXECUTION",
+      "to": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "role": "Supplies the existing M78 current-record instrument, native branch law and committed-bit-controlled continuation for the joint history. The whole native repair channel is retained as a declared primitive, without claiming an M6 compilation."
+    },
+    {
+      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+      "to": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "role": "Supplies the existing twelve-port M6 controls, coherent proper codes and complete local quantum instruments used by the shared scalar, matter, flux and pointer words. Coherent service and hardware assumptions remain explicit; no physical clock or prepared-state selection is transferred."
+    },
+    {
+      "from": "OPH-MODEL-SCALAR-RESPONSE-EXECUTION",
+      "to": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "role": "Reuses the source-compiled two-site scalar action, physical occupation projection, preparation compiler and independent matrix checks. The added matter interaction has its own finite temporal certificate; the free Gaussian occupation and separate spatial continuum bounds are not inherited."
     }
   ]
 }

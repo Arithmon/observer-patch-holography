@@ -29,7 +29,17 @@ realization requires measurements that distinguish the proposed models.
 ## Run the observer model
 
 **[model/](model/README.md) is the live home of observer and repair-law
-construction.** Its finite observer executes local repair, retains an
+construction.** The new [common interacting process](model/common_source/README.md)
+couples quantum electric flux, charged fermions and a scalar on one evolving
+register. A matter observation controls feedback; a later scalar observation
+controls native repair. All 1,056 complete native/quantum histories retain
+their records and terminal states. An exact finite certificate proves that
+the feedback changes the scalar response, including ideal temporal splitting
+error. Its action, preparation, services and model-coordinate schedule remain
+declared inputs; the interacting spatial continuum and empirical comparison
+are open.
+
+Its finite observer executes local repair, retains an
 observation and uses that record to choose its next interaction. The
 P-dependent detector computes the electromagnetic coupling and lets a
 retained binary outcome control the next repair.
@@ -77,6 +87,13 @@ identification remains part of the research below.
 We have **runnable finite observers, conditional mathematical results and
 concrete repair candidates**. The native observer and P-dependent binary
 detector execute complete observation, record and feedback protocols.
+The common interacting construction places scalar, charged matter,
+electric evolution and record-controlled interventions on one quantum work
+space, with operator Gauss constraints and a certified finite response.
+Its theorem attachments distinguish record creation from persistence and
+exact hardware refinement from approximate occupation cutoffs. It does not
+yet instantiate every compatible finite theorem or establish the required
+continuum and gravitational descriptions of observer statistics.
 The scalar adapter connects those interfaces to a supplied free-field
 continuum family and an independently checkable conditional detector
 prediction. Its local evolution supplies a checked numerical path from
