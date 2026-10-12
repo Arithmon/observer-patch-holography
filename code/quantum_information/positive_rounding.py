@@ -11,6 +11,7 @@ import math
 import numpy as np
 
 from .gibbs import _numeric
+from .state_factors import factor_entries
 
 
 def _parts(a):
@@ -27,22 +28,11 @@ def _is_exact_psd(a):
     """
     if not np.array_equal(a, a.conj().T):
         return False
-    real, imag = _parts(a)
-    for k in range(len(a)):
-        pivot = real[k][k]
-        if pivot < 0:
-            return False
-        if pivot == 0:
-            if any(real[i][k] or imag[i][k] for i in range(k+1, len(a))):
-                return False
-            continue
-        for i in range(k+1, len(a)):
-            for j in range(i, len(a)):
-                r = (real[i][k]*real[j][k]+imag[i][k]*imag[j][k])/pivot
-                s = (imag[i][k]*real[j][k]-real[i][k]*imag[j][k])/pivot
-                real[i][j] -= r
-                imag[i][j] -= s
-                real[j][i], imag[j][i] = real[i][j], -imag[i][j]
+    try:
+        factor_entries(tuple(tuple((Fraction(float(z.real)), Fraction(float(z.imag)))
+                                   for z in row) for row in a))
+    except ValueError:
+        return False
     return True
 
 
