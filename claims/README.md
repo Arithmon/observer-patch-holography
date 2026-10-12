@@ -92,7 +92,7 @@ registry/check surface. That rule keeps the registry from becoming a stale snaps
 
 ## Finite model constructions, 2026-10-12
 
-Five `emitted_artifact` rows register the runnable model and its retained
+Six `emitted_artifact` rows register the runnable model and its retained
 evidence. Their owners are the self-contained implementation documents under
 `model/`, with `owner_medium: protocol_record`; no paper theorem is promoted
 or changed by these additions.
@@ -104,10 +104,11 @@ or changed by these additions.
 | `OPH-MODEL-P-RESPONSE-EXECUTION` | [P-dependent binary detector](../model/observer/p_response/README.md), with accepted closure input and declared running/matching map |
 | `OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE` | [Incident-attempt memory certificate](../model/local_tick/README.md), with supplied occupation preparation and readout |
 | `OPH-MODEL-SCALAR-RESPONSE-EXECUTION` | [Scalar detector and native continuation](../model/observer/scalar_response/README.md), with supplied field action/vacuum and inherited history refinement control |
+| `OPH-MODEL-COMMON-SOURCE-EXECUTION` | [Common interacting observer](../model/common_source/README.md), complete scalar/matter/flux records and feedback, observer readouts and conditional error bounds |
 
 The detector consumes PR-17 and PR-37. Its separate physical same-quantity
 and Thomson readback attachments are undischarged PR-38 and PR-39. The other
-four rows certify their supplied finite contracts without consuming the
+five rows certify their supplied finite contracts without consuming the
 canonical physical premises. Local tape capacity is not cosmic N closure;
 the native current recorder does not implement the N4 occupation apparatus.
 Uniqueness of a designed rule is not required for these implementation claims.
@@ -115,6 +116,44 @@ Existing claim payloads, physical statuses and frozen predictions are preserved.
 The scalar adapter's conditional detector protocol is independently testable
 in software. Its scalar action, vacuum, apparatus and model clock remain
 declared; it establishes no new physical prediction or laboratory verdict.
+
+## Executable-model premise audit, 2026-10-12
+
+The compact public README summarizes the registered finite results and the
+common-source execution. It promotes no claim or physical identification.
+Physical identification here means agreement with observers' measurement
+statistics and interventions. It does not require an independently existing
+classical world or fundamental fields and spacetime.
+A continuum certificate concerns convergence and controlled errors of those
+operational readouts, without asserting a fundamental continuous substrate.
+All eleven input assumptions of `OPH-MODEL-COMMON-SOURCE-EXECUTION` retain
+their names and dependencies. The distinction is between consequences
+proved from a construction and inputs selected to define that construction:
+
+| Derived or executed consequence | Inputs that the result retains |
+| --- | --- |
+| Exact continuity and conditional current mean and variance | Integer seam rule and fair placement coin |
+| Full-kernel mean diffusion and rank-three slow response | Fixed twelve-port incidence, uniform seam calibration and geometric readout interpretation |
+| Complete record preservation and certified coupled feedback | Quantum algebra, specified action, instruments and coherent source services |
+| Schedule-independent completed history | Fixed event graph, boundary, source maps and fair constraint-repair schedule |
+| Observer Hilbert representations and modular flow | Specified observer algebra and its state restriction |
+| Alignment of Hamiltonian and modular flow | Chosen full-work Gibbs reference |
+
+The consequences in this table are registered conclusions, not extra input
+premises to delete. Stationarity of the uniform binary distribution does not
+derive its preparation. Setting the thermal scale parameter to one is a
+unit convention; it does not select the Gibbs reference or derive the
+interacting Hamiltonian. Compiling a chosen apparatus into admitted source
+controls establishes implementation while retaining the chosen action and
+the physical service contract.
+
+The [native field derivation](../model/common_source/NATIVE_FIELDS.md) excludes
+undamped wave modes for the stated uniform mean readout and forgotten-record
+quantum channel. It does not identify repair-attempt count with subjective
+modular time or exclude oscillatory modular correlations on a restricted
+history state. A wave claim requires an actual observable/clock pairing and
+its propagation law. No physical wave, continuum or empirical premise is
+discharged by that restriction.
 
 ## Audit #1078 attachment corrections
 

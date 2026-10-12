@@ -27,6 +27,7 @@ def test_actual_carrier_graph_and_shortest_paths():
 
 
 def test_all_initial_states_and_declared_coin_words_checked(receipt):
+    assert receipt["source"]["native_rule"] == "model/observer/native.py"
     assert receipt["valid_state_coin_schedule_runs"] == 78 * 27
     assert len(receipt["fixed_schedule_checks"]) == 27
     assert receipt["total_agreeing_cone_pairs_checked"] > 100000
@@ -116,7 +117,3 @@ def test_receipt_cli_round_trip_and_tampering_rejected(tmp_path, monkeypatch, ca
     with pytest.raises(ValueError, match="Receipt mismatch"):
         c.main()
     capsys.readouterr()
-
-
-def test_retained_native_rule_path_is_platform_independent(receipt):
-    assert receipt["source"]["native_rule"] == "model/observer/native.py"
