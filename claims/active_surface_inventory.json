@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 508,
+  "surface_count": 514,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1120,12 +1120,42 @@
       "allowlisted": false
     },
     {
+      "path": "model/common_source/CALIBRATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/common_source/DERIVATION.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
     {
+      "path": "model/common_source/HISTORY_REPAIR.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/common_source/OBSERVER_READOUTS.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/common_source/OCCUPATION_REFINEMENT.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/common_source/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/common_source/SLOW_GEOMETRY.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/common_source/SMOOTH_REFINEMENT.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

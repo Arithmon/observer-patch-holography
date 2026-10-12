@@ -759,7 +759,10 @@ or empirical identification follows from this composition.
 | A3 and conditional expectation | Faithful tracial reference with block and public-record algebras distinguished | Does not select the prepared pure state or prove one global repair channel is its stationary optimizer |
 | Protected records | Fixed old-record projectors on committed checkpoints and complete controlled instruments | Blank-to-written transitions are separate; no complete Lean `OperationalObserver` inhabitant is asserted |
 | Hardware refinement | Old privately owned factors embed by tensoring identities | Oscillator cutoff embeddings are not exact unital algebra/state/generator tower maps |
-| Finite temporal approximation | Rational all-input bounds for this same interacting Hamiltonian, with arbitrary spectator references | No occupation or spatial refinement certificate for this interacting family |
+| Finite temporal approximation | Rational all-input bounds for this same interacting Hamiltonian, with arbitrary spectator references | Numerical/service errors remain separate; the new occupation analysis has a state-specific scope |
+| Interacting occupation refinement | [Moment/Duhamel estimate and strong sharp-readout limit](OCCUPATION_REFINEMENT.md) for this same two-site history | No finite-cutoff sharp-readout rate or spatial field limit |
+| Observer representation and modular flow | [GNS and modular readouts](OBSERVER_READOUTS.md) of the actual observation state; emitted clock probe retains all records | Quantum algebra and access supplied; full conditioned scalar states may be nonfaithful; physical clock calibration open |
+| Quantum regional restriction | CP conditional expectations and Hamiltonian-derived interaction support on the same carrier | Supplied factorization; no multiplicative restriction, metric or growing spatial family |
 
 The [model–theorem premise map](../PREMISES.md) retains the broader
 conditional results. They must be applied with compatible hypotheses;

@@ -25,6 +25,19 @@ clock inputs remain declared, with interacting spatial refinement and
 physical identification open. It does not identify N1's integer averaging
 with that Hamiltonian or combine incompatible candidate hypotheses.
 
+Its [observer readouts](common_source/OBSERVER_READOUTS.md) attach GNS
+representations, modular flow, a source-programmed clock and quantum regional
+maps to the same recorded state. Its interacting occupation limit retains
+the fixed two-site apparatus; it supplies neither a spatial field limit
+nor physical clock calibration. A theorem's hypotheses have to be
+checked on the chosen candidate before transferring its conclusion.
+
+The separately executed smooth-detector variant adds a complete interacting
+occupation error bound and an explicit model-energy balance. Its Ramsey
+outcomes have a different meaning from the sharp-sign records. Its finite
+energy identity and convergence theorem do not provide physical calibration
+or transfer the original modular-clock attachment.
+
 Each candidate uses the
 [established-mathematics contract](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md): define
 its agreement target independently, state its execution and fault assumptions,

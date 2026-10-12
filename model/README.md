@@ -12,6 +12,39 @@ feedback. Its finite scalar response has an exact nonzero interval. This
 binds several finite theorem interfaces to one process; the interacting
 spatial continuum, gravity and independent physical comparison remain open.
 
+The [observer readout bridge](common_source/OBSERVER_READOUTS.md) extracts
+Hilbert representations and modular flow from that actual observation state,
+continues its records with a source-executed binary modular clock, and
+computes the interaction graph of its supplied quantum regions. Its
+[occupation analysis](common_source/OCCUPATION_REFINEMENT.md) establishes
+a fixed two-site interacting limit, with a finite error bound before the
+last sharp readout and strong convergence of that readout. A finite-cutoff
+error rate for the sharp instrument remains open. These results connect
+existing components; they do not supply physical time or a spatial continuum.
+
+A separate [finite-resolution instrument](common_source/SMOOTH_REFINEMENT.md)
+has a quantitative error bound for its complete interacting history,
+including the last measurement. Its retained energy ledger compares actual
+finite-cutoff backreaction with the infinite-model unconditional `1/8`
+energy increment. The supplied energy units and two-site action remain
+construction assumptions; this is not an empirical energy calibration.
+The [readout checks](common_source/CALIBRATION.md) test geometric distances,
+modular-parameter inference and oscillator energy convergence against their
+mathematical targets, and make the remaining unit-calibration freedom explicit.
+
+The [local history-repair formulation](common_source/HISTORY_REPAIR.md)
+recovers that same completed observation history under every fair update
+schedule, for the fixed source apparatus and causal graph. Observer readouts
+are functions of the completed history; the solver counter is auxiliary.
+The native quantum realization of this global constraint-repair algorithm
+remains a separate construction requirement.
+
+The [rank-three native carrier](common_source/SLOW_GEOMETRY.md) is connected
+to the same joint observation histories. A binary controller extension
+executes displacements spanning three directions while preserving the
+original protocol. This supplies a finite geometric readout, with physical
+translation, momentum and spatial field refinement remaining open.
+
 The [completion target](CONSTRUCTION.md#completion-target-and-acceptance-criteria)
 is an executable observer algebra whose compatible measurement statistics
 admit the observed 3+1-dimensional quantum-field, classical and gravitational
@@ -104,6 +137,8 @@ python3 -m model.common_source --check model/common_source/results.json
 | Component | Result and entry point |
 | --- | --- |
 | Common interacting source | [Gauge/matter/scalar observer](common_source/README.md): actual source words, operator Gauss, two committed bits, all 1,056 native/quantum paths and a certified finite feedback response; declared action and services |
+| Observer Hilbert space, modular clock and regions | [Same-history readouts](common_source/OBSERVER_READOUTS.md): GNS pairings, nontrivial local modular flow, complete source-compiled clock branches and CP regional maps; access, schedule and localization declared |
+| Timeless history and native rank-three carrier | [Local history repair](common_source/HISTORY_REPAIR.md) and [geometric readouts](common_source/SLOW_GEOMETRY.md): schedule-independent completed branching law and record-readable displacements, including an executed three-direction controller |
 | Native observer | [Native C, retained tape and record-only controller](observer/README.md), including all 264 benchmark paths and exact feedback controls |
 | Binary electromagnetic observation | [P-dependent detector](observer/p_response/README.md): evaluates α(P), writes one stable bit and uses it for the next native repair; all 528 weighted paths |
 | Scalar field observation and refinement | [Scalar detector](observer/scalar_response/README.md): native-current preparation, binary field instrument and bit-only feedback; local field updates at q=13,34, with temporal and spatial comparison bounds and a [prediction protocol](observer/scalar_response/PREDICTION.md) |

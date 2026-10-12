@@ -35,9 +35,27 @@ register. A matter observation controls feedback; a later scalar observation
 controls native repair. All 1,056 complete native/quantum histories retain
 their records and terminal states. An exact finite certificate proves that
 the feedback changes the scalar response, including ideal temporal splitting
-error. Its action, preparation, services and model-coordinate schedule remain
-declared inputs; the interacting spatial continuum and empirical comparison
-are open.
+error. Its [observer readouts](model/common_source/OBSERVER_READOUTS.md)
+construct a GNS Hilbert representation from the actual state, execute
+a readable finite modular-clock instrument, and identify interactions
+between its supplied regions. The action, access, services and pulse
+schedule remain declared inputs. Physical clock calibration, an interacting
+spatial continuum and empirical comparison remain open.
+
+The [history repair formulation](model/common_source/HISTORY_REPAIR.md)
+recovers the same completed observations under every fair local update
+schedule for these fixed inputs. Observer event order and modular readouts
+remain distinct from the auxiliary solver counter.
+The [native geometric readout](model/common_source/SLOW_GEOMETRY.md)
+connects the inherited rank-three response carrier to recorded currents;
+an additional binary controller executes displacements spanning three
+directions without identifying them with physical position or momentum.
+
+A separate [finite-resolution detector](model/common_source/SMOOTH_REFINEMENT.md)
+has a quantitative error bound through its complete interacting observation
+history and an explicit measurement-energy ledger. Its mathematical
+occupation limit retains a fixed two-site apparatus; physical units and
+spatial refinement require further construction.
 
 Its finite observer executes local repair, retains an
 observation and uses that record to choose its next interaction. The

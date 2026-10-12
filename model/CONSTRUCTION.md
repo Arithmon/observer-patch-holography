@@ -93,6 +93,28 @@ interfaces. Exact hardware-inventory refinement and approximate occupation
 cutoffs have different algebraic maps. The declared action, prepared state,
 coupling and model-coordinate schedule remain physical construction inputs.
 
+The [observer readout bridge](common_source/OBSERVER_READOUTS.md)
+constructs the GNS representation of the actual observation state, obtains
+nontrivial modular flow on a specified scalar observer algebra, and
+executes a binary clock probe with that modular frequency. It retains
+every old record and every clock outcome. CP regional restrictions and
+the actual Hamiltonian's interaction graph provide a finite spatial
+interpretation under the declared factorization. The
+[interacting occupation analysis](common_source/OCCUPATION_REFINEMENT.md)
+supplies a moment/Duhamel bound before the final scalar read and a strong
+limit for the complete sharp instrument. Its final-readout rate, a growing
+spatial family, calibrated physical clocks and the gravitational readouts
+are separate remaining connections. The physical tower must carry these
+maps on one compatible family; its record fields alone do not establish them.
+
+The separate [smooth Ramsey instrument](common_source/SMOOTH_REFINEMENT.md)
+supplies a full interacting occupation error rate and finite measurement
+energy on this declared two-site action. It changes the scalar detector's
+meaning from sign to `(I +/- sin(Q0))/2`; the sharp-history clock is not
+inherited. Small executed cutoffs have vacuous continuum error bounds.
+Larger cutoffs are covered analytically, with source compilation beyond
+dimensions 2 and 4 remaining open.
+
 The [native observer](observer/README.md) executes two repair events with a
 finite tape. It records the first current, issues a supplied forecast from
 that record, chooses the next seam, records the result and halts. Exhaustive
@@ -445,7 +467,7 @@ finite software run.
 
 | Constructed object | Result that can be reused | Required connection for a broader claim |
 | --- | --- | --- |
-| Common flux-dressed CAR/scalar register and two recorded instruments | Actual source execution, operator Gauss, protected committed records, rational all-input finite temporal bound and exact nonzero feedback contrast | Compatible interacting occupation/spatial refinement, vacuum and physical coupling readbacks, observer clocks and responsive stress/geometry on this same process |
+| Common flux-dressed CAR/scalar register and two recorded instruments | Source execution, operator Gauss, committed records, exact finite feedback contrast, GNS and programmed modular clock, CP regions and a strong interacting occupation limit | Finite-cutoff sharp-readout rate, spatial refinement, vacuum/coupling identification, physical clock calibration and responsive stress/geometry on this same process |
 | N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
 | P-dependent path-qubit detector | Complementary binary effects, branch charge covariance and bit-controlled native feedback under accepted closure inputs | Physical realization of the declared apparatus; a same-quantity screen/Thomson readback and precision endpoint claim keep their existing contracts |
 | Native-current scalar preparation, binary field instrument and native continuation | Executed conditional instrument, feedback mean `5r_q/132`, inherited history and mean refinement bounds | Source identification of the scalar action, vacuum, preparation/readout and clock; a physically calibrated independent detector comparison |
@@ -489,8 +511,10 @@ retains all eight prescribed rational cases, including rejection of singular
 
 The finite observer is a completed component to extend and preserve. The
 two-site source program executes preparation, quantum evolution and the
-binary detector under its declared services. Its ideal complete-history
-occupation bound can be combined with finite splitting. Connect a spatially
+binary detector under its declared services. The earlier free-field program
+has a quantitative complete-history occupation bound. The current interacting
+history has a pre-readout bound and a strong sharp-readout limit; a quantitative
+rate for that last readout remains to be supplied. Connect a spatially
 refining family of source programs to the continuum, retaining their
 records and bounding numerical and physical services. The earlier spatial scalar theorem
 provides a separate comparison family; its bounds do not transfer without
