@@ -1,0 +1,28 @@
+{
+  "dependencies": [
+    "Python 3.11+ standard library",
+    "model/observer/native.py",
+    "model/observer/p_response/experiment.py",
+    "model/observer/p_response/results.json",
+    "code/P_derivation"
+  ],
+  "files": {
+    "DERIVATION.md": "4c295e4e3afc10ab666870d1ba08845cf1d27271e885a448bc51fbe5e8219976",
+    "README.md": "ac4f8eb0dbcf18712169d85ffc94650be782fdfaee175da5bbe2cebfc57d6060",
+    "__init__.py": "868d8eae184116b4ad35d61843c5b2f7951fe690d322ad7e38acece1add37a51",
+    "__main__.py": "21a944d38029986b3d73b5667bcd7764cf530fa524cbef371292f6fc498af389",
+    "endpoint_audit.py": "f362374fe6156ea9ceb4cd17d694fd1091bdb34c2085ef4080ee5dcdfbee90cb",
+    "observer_instrument.py": "4a136febf813609f704224669c22b7cba9735d7456d7046d577d03bfa4b8e56b",
+    "protocol.json": "ce79d4e3f1331ad0443d4815e1b6a2709ba4ef64ed052a80e1a4439a0297c041",
+    "protocol.py": "65ebbd8169359011a2b83ead003243bc72a35b8ade5c511781b0cc944018bd3e",
+    "results.json": "18b5ced3ec67ea0d018f67e197b6739cce2869e04019539c37957501a720de53",
+    "test_endpoint_audit.py": "9ef226c41e586dc79b3bf1bd78f3e15fcf6591e6d291e8836b07e47dfefbdfa1",
+    "test_observer_instrument.py": "2d898f5047c2863ea7d8c15843df75c30aa4851d6d57655087ff02557ed072bb",
+    "test_protocol.py": "ca55d594d1d7158bed65f2c27b6695ae30a8cc38317e727456459b1088984fd3"
+  },
+  "reproduce": [
+    "python3 -m model.predictions --check model/predictions/results.json",
+    "python3 -m pytest -q -W error model/predictions"
+  ],
+  "schema": "oph.observer.predictions.manifest.v1"
+}

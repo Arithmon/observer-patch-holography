@@ -1715,7 +1715,7 @@
           "declared_coherent_proper_code_services_and_analogue_source_controls"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "7ef97c1606c3d2b1fbb8533b8222b37b28f572fef203ca4182ad7c7a540a4475"
+        "original_claim_sha256": "2267ac57a3b52823e7aa4cae1c029ae493b2ee2e531aaf10544647ee3cd8536e"
       },
       "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM": {
         "assumptions": [

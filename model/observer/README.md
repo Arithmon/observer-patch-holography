@@ -133,6 +133,13 @@ four bits encode its full classical controller history. That count excludes
 the working source, program tables and Python workspace and is not a quantum
 compression statement or a cosmological horizon capacity.
 
+The [specified phase experiment](../predictions/README.md) compares this
+current-record instrument with its contrast-record alternative. Their
+classical native transitions coincide, while fixed coherent preparations
+give different binary readout probabilities. The executable count protocol
+retains every record and outcome and declares its apparatus-error budget;
+the independent experimental verdict is `no_data`.
+
 ## Files and scope
 
 | File | Role |

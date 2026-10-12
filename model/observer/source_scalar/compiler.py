@@ -323,13 +323,13 @@ def _gray_rotation(a, b, theta, bits):
 
 
 def compile_real_orthogonal(matrix):
-    """Compile a complete real orthogonal basis on at most three qubits.
+    """Compile a complete real orthogonal basis on at most four qubits.
 
     Gray order is applied to both rows and pivot columns; the remaining
     diagonal signs and all fixed-bit projectors are actual emitted gates.
     """
     value = _real_array(matrix, 2, "orthogonal basis")
-    bits = _bits(value.shape[0], 3)
+    bits = _bits(value.shape[0], 4)
     if value.shape != (len(value), len(value)) or np.linalg.norm(value.T@value-np.eye(len(value)), 2) > 2e-11:
         raise ValueError("a real orthogonal square basis required")
     gray = [j ^ (j >> 1) for j in range(len(value))]
@@ -357,16 +357,50 @@ def compile_real_orthogonal(matrix):
     return word
 
 
+def _compile_real_state_tree(value, bits):
+    """Binary amplitude tree with commuting Walsh-Y factors at each level.
+
+    Higher bits label the prepared prefix. A level splits its remaining norm
+    between target zero and one; the final level retains signed amplitudes.
+    Every conditional rotation is compiled from native tensor-Pauli words,
+    including all zero coefficients, in a dimension-dependent fixed schedule.
+    """
+    word = []
+    for target in reversed(range(bits)):
+        controls = bits-target-1
+        angles = []
+        for prefix in range(1 << controls):
+            block = value[prefix*(1 << (target+1)):(prefix+1)*(1 << (target+1))]
+            half = 1 << target
+            x = float(block[0]) if target == 0 else float(np.linalg.norm(block[:half]))
+            y = float(block[1]) if target == 0 else float(np.linalg.norm(block[half:]))
+            angles.append(-math.atan2(y, x) if x != 0 or y != 0 else 0.)
+        for mask in range(1 << controls):
+            coefficient = math.fsum(theta*(-1)**((prefix & mask).bit_count())
+                                    for prefix, theta in enumerate(angles))/(1 << controls)
+            label = ["I"]*bits
+            label[target] = "Y"
+            for control in range(controls):
+                if mask >> control & 1:
+                    label[target+1+control] = "Z"
+            word.extend(pauli_rotation(label, coefficient))
+    return word
+
+
 def compile_real_state(vector):
-    """Prepare a normalized real state from |0>, using at most six qubits.
+    """Prepare a normalized real state from |0>, using at most eight qubits.
 
     This emits a state-preparation word, not an arbitrary state replacement.
     Its action on all other inputs is the same explicitly compiled unitary.
+    Through six qubits the existing Gray word is preserved. Larger vectors
+    use an O(bits*2**bits) binary-tree word with commuting Walsh-Y factors.
     """
     value = _real_array(vector, 1, "state amplitudes")
-    bits = _bits(len(value), 6)
+    bits = _bits(len(value), 8)
     if abs(np.linalg.norm(value)-1) > 2e-12:
         raise ValueError("a normalized real state required")
+    if bits > 6:
+        return _compile_real_state_tree(value, bits)
     gray = [j ^ (j >> 1) for j in range(len(value))]
     residual = value[gray].copy()
     rotations = []

@@ -46,8 +46,19 @@ The new [source-compiled field apparatus](model/observer/source_scalar/README.md
 executes a separate two-site design from blank registers through entangled
 preparation, quantum evolution, pointer readout and native feedback. All
 field gates are emitted from the existing twelve-port controls. Exact
-certificates bound its initial vacuum tail and finite temporal splitting;
-its full occupation and spatial continuum limits remain open.
+certificates bound its complete ideal occupation history and finite temporal
+splitting. The executed sixteen-level design has an ideal detector probability
+between 0.51495 and 0.51789, excluding a fair response under the declared
+apparatus. Spatial refinement, numerical execution and physical service
+errors require separate bounds for that same construction.
+
+The [specified prediction tests](model/predictions/README.md) distinguish
+the current-record and contrast-record quantum instruments with exact phase
+predictions, a fixed sample plan and a validator for complete independent
+counts. The experimental verdict is `no_data`. A separate retrospective
+audit retains the P detector's incomplete low-energy coupling contract and
+its approximately 300 ppm inverse-alpha discrepancy; no fitted correction
+or empirical confirmation is introduced.
 
 Run from the repository root with Python 3.11 or newer:
 

@@ -8,17 +8,20 @@
     "code/m1_source_realization/receipt.json"
   ],
   "files": {
-    "DERIVATION.md": "f774565b86a9cf3da25933e6986b88f9db54ae1577210426bd47d3789a4d34b9",
-    "README.md": "5647c8d8a650f3f621b94d79689901182ba8b412325dceaeb6f7180bd2d9154c",
+    "DERIVATION.md": "1c66f83c4407cd3710a7f4f7a6236c5706a9d3f6baea87af70c300d13b9d7819",
+    "README.md": "23fe462c03ac44aa8557419c94006edba9483e5033ac7c2f7226702e37f8baae",
     "__init__.py": "d3dcf546c13e23ceb9a58c19481e2e3f04134013d8047d83b020ec836d8e1e86",
-    "__main__.py": "6e02e97002e4124a9ed1fc7ff54c4f0882b71e2eca9779e97180b12f58d6b1ee",
+    "__main__.py": "ebfca9de82999c0701ad547c1514a6826336b39cddf6c83426e72add85e1dabf",
     "bounds.py": "1c110719845e5b27f34845f5f68c8397f8cb9eb3108bd1636577b1e4ca17d327",
-    "compiler.py": "3efdbab2dfcbc1304554028cf70fc8e3e06224d38e0c2dcf03fce70752e6e527",
-    "experiment.py": "caf4223ca64ebab3e061fabc9891f61bb6c1fd51ffaaf6381d3e9f7896d986fa",
+    "compiler.py": "65056d5753bec26fadab3ab9ada50be4c4b1772f150a52a857052e062742dd7e",
+    "cutoff.py": "df4057037cbdabed68734e1d746aa29caa5babe27527574a0828599d6118fd4e",
+    "experiment.py": "0f7cfd81a7d1ea3442e4060754d5caa85db191ec8ed881cce2d5ee81a58c1851",
     "field.py": "7368e6b0fada5ed89f5a1ea7969e6bf4f6fdad8648fa82d3851320a5146fb708",
-    "results.json": "e9cc92986ae15c91a66bf7259fdad0ae0b5927c51e011a6bdefe017bf6aecc01",
-    "test_compiler.py": "24384b2be74eddcdafdf623225612cf8a521a049faf8b669c3265bc23860ac6b",
-    "test_experiment.py": "648e06640c7f806195eb5195c4c9998a57c4605c7387bfaf82a376c0c58c933e"
+    "results.json": "0be6aa3ff145439b58c65d2d0de19fe4fae0ed158a512e2400425191b7c2232a",
+    "test_compiler.py": "7b7ef0d9e930758596e1720245de90e2a1fc145575db7ac7a0e498f6d27c844a",
+    "test_cutoff.py": "9a79c08a9651b7ddde3c4f003db114c413828c77a7a610cca0a271d5f27cc8ac",
+    "test_experiment.py": "648e06640c7f806195eb5195c4c9998a57c4605c7387bfaf82a376c0c58c933e",
+    "test_larger_preparation.py": "95595cb262fa0e1258700eea796b47a8cf8a9debd95fd5da529772b230b8a606"
   },
   "reproduce": [
     "python3 -m model.observer.source_scalar --check model/observer/source_scalar/results.json",

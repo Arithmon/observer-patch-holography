@@ -108,11 +108,11 @@ emits and executes the field apparatus through the existing twelve-port
 controls. Blank registers are transformed into an entangled projected vacuum;
 the first native current supplies an impulse; finite quantum evolution and
 a quantum pointer produce both recorded outcome branches. Only the pointer
-bit controls the next native repair. The four- and eight-level site codes
-run at 64 and 128 steps with exact initial preparation-tail and finite
+bit controls the next native repair. The four-, eight- and sixteen-level site codes
+run at 64 and 128 steps with exact complete occupation-history and finite
 splitting certificates, independent branch-density checks and retained
-200,000-trial feedback runs per code size. The finest protocol uses seven
-work qubits, 1,774,010 native pulses and 3,548,020 declared proper-code
+200,000-trial feedback runs per code size. The finest protocol uses nine
+work qubits, 18,612,125 native pulses and 37,224,250 declared proper-code
 service events, evaluated by caching executed subroutine contractions.
 
 This is a separate two-site action, not another member of the earlier
@@ -120,10 +120,36 @@ spatial refinement family. Its physical occupation projection retains the
 boundary terms in both quadratic operators; squaring truncated coordinates
 would implement a different Hamiltonian. The source controls implement
 preparation, evolution and readout under supplied coherent transport,
-reset and storage services. Full infinite-occupation propagation/readout
-bounds, spatial refinement, physical service errors and empirical
-identification require further bounds and evidence. The earlier continuum
+reset and storage services. A uniform Gaussian number-tail estimate and
+projected Duhamel comparison bound occupation errors along preparation,
+impulse, propagation and both pointer arms, including terminal quantum
+branches. The state-specific ideal instrument bound is below 0.077171 at
+d=8 and below 0.000196 at the executed d=16 cutoff. At d=16 and 128
+steps, adding finite splitting gives an ideal error below 0.001465. A rational
+reference enclosure then places the ideal plus probability between 0.51495
+and 0.51789, excluding the fair-detector alternative. The
+larger preparation uses a binary amplitude tree and commuting Walsh-Y
+rotations from the same source controls. Spatial refinement,
+numerical execution error, physical service errors and empirical
+identification require further evidence. The earlier continuum
 bounds cannot be transferred merely because both experiments use a scalar field.
+
+The [specified C/E test](predictions/README.md) supplies a separate finite
+discriminator for the native quantum instrument. Both rules have identical
+diagonal classical repair statistics. On a fixed coherent two-state source
+preparation, phase reversal changes the C readout probability from 5/8 to
+1/8; E predicts 3/8 for both. Four fixed settings include common phase and
+incoherent controls. The complete-count evaluator uses 8192 trials per
+setting, an independently established probability-error budget of 1/64 and
+an exact sampling certificate below 1/1000. It rejects malformed or
+incomplete records and reports `no_data` without supplied counts. Synthetic
+controls test the decision rule; they establish no physical verdict.
+
+The [retrospective endpoint audit](predictions/endpoint_audit.py) compares the
+inherited P-response output with its cited low-energy target. Its approximately
+300 ppm inverse-alpha deficit excludes treating that incomplete output as a
+complete zero-correction physical endpoint. It neither supplies the missing
+transport nor rejects all OPH constructions, and uses no target to change P.
 
 ## Native repair and its observer contract
 
@@ -441,10 +467,10 @@ retains all eight prescribed rational cases, including rejection of singular
 
 The finite observer is a completed component to extend and preserve. The
 two-site source program executes preparation, quantum evolution and the
-binary detector under its declared services. The next concrete target is
-to bound occupation errors throughout this complete history and connect a
+binary detector under its declared services. Its ideal complete-history
+occupation bound can be combined with finite splitting. Connect a spatially
 refining family of source programs to the continuum, retaining their
-records and a common error budget. The earlier spatial scalar theorem
+records and bounding numerical and physical services. The earlier spatial scalar theorem
 provides a separate comparison family; its bounds do not transfer without
 that connection. Physical completion follows the acceptance criteria above
 and additionally needs the compatible interacting and gravitational
@@ -456,9 +482,10 @@ interfaces and independent comparisons below:
   claiming its certified memory test as an implemented apparatus.
 - Attach interacting matter, responsive geometry and physical clock
   calibration to the same state, event law and retained records.
-- Specify a physically realizable preparation and observable, compare
-  alternatives, and freeze a prediction and rejection rule before independent
-  comparison data. Existing seen-data comparisons remain postdictions.
+- Realize the fixed C/E preparation and observable, independently establish
+  the service budget and collect complete records for the declared rejection
+  protocol. A physical model of nature needs further sector-specific
+  predictions. Existing seen-data comparisons remain postdictions.
 
 The [established-mathematics guide](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md)
 governs reuse: define compatibility independently of the update, map the

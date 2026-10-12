@@ -13,7 +13,7 @@ def main():
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--write", type=Path, help="create a receipt, refusing overwrite")
     group.add_argument("--check", type=Path, help="replay exact fields and floats within 2e-10")
-    parser.add_argument("--emit", type=Path, help="also emit complete d=8,n=128 routines and repeat recipe, refusing overwrite")
+    parser.add_argument("--emit", type=Path, help="also emit the finest executed dimension/step routines and repeat recipe, refusing overwrite")
     args = parser.parse_args()
     result = experiment.run(args.trials, args.seed)
     if args.write:
@@ -23,12 +23,13 @@ def main():
         experiment.compare_receipt(json.loads(args.check.read_text(encoding="utf-8")), result)
     if args.emit:
         with args.emit.open("x", encoding="utf-8") as stream:
-            stream.write(experiment.canonical(experiment.program(8, 128)))
+            stream.write(experiment.canonical(experiment.program(experiment.DIMENSIONS[-1], experiment.STEPS[-1])))
     finest = result["levels"][-1]["step_refinement"][-1]
     print(json.dumps({"all_pass": result["all_pass"], "dimensions": list(experiment.DIMENSIONS),
                       "steps": list(experiment.STEPS), "trials_per_dimension": args.trials,
                       "finest_plus_probability": .5+finest["response"],
                       "finite_split_certificate": finest["finite_split_certificate"],
+                      "ideal_infinite_instrument_certificate": finest["ideal_infinite_instrument_certificate"],
                       "resources": finest["histories"][-1]["resource_counts"],
                       "scope": result["scope"]}, indent=2))
 

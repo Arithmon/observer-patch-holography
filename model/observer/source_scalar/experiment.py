@@ -16,11 +16,12 @@ from scipy.linalg import expm
 
 from . import compiler as c, field
 from .bounds import split_error_bound
+from .cutoff import occupation_cutoff_bound, reference_probability_interval
 from ..scalar_response.experiment import canonical, compare_receipt, exact_statistics, sample
 
 TRIALS = 200_000
 SEED = 20261012
-DIMENSIONS = (4, 8)
+DIMENSIONS = (4, 8, 16)
 STEPS = (64, 128)
 PINS = {
     c.RESPONSE: "226ab001894f357d3732d8a898fbae80e28b9e16ca41104a6f293190b441e053",
@@ -43,7 +44,7 @@ def encoded(state):
 def _validate(d, steps, current=0):
     d = field.dimension(d)
     if d not in DIMENSIONS or type(steps) is not int or steps <= 0:
-        raise ValueError("d=4 or d=8 and a positive integer step count required")
+        raise ValueError("d=4, d=8 or d=16 and a positive integer step count required")
     if type(current) is not int or current not in (-1, 0, 1):
         raise ValueError("a native current -1, 0 or 1 required")
     return d.bit_length()-1
@@ -191,9 +192,12 @@ def _oracle(d, steps, current):
 def run(trials=TRIALS, seed=SEED):
     source = sources()
     histories = exact_statistics()
+    reference_interval = reference_probability_interval()
     checks = {}
     levels = []
     for d in DIMENSIONS:
+        occupation = occupation_cutoff_bound(d)
+        occupation_epsilon = F(occupation["instrument_trace_distance_upper"])
         rows = []
         for steps in STEPS:
             runs = [source_history(d, steps, current) for current in (-1, 0, 1)]
@@ -201,6 +205,9 @@ def run(trials=TRIALS, seed=SEED):
             oracle = _oracle(d, steps, 1)
             bound = split_error_bound(d, steps)
             epsilon = F(bound["detector_probability_error_upper"])
+            infinite_epsilon = min(F(1), occupation_epsilon+epsilon)
+            ideal_lower = max(F(0), F(reference_interval["plus_probability_lower"])-infinite_epsilon)
+            ideal_upper = min(F(1), F(reference_interval["plus_probability_upper"])+infinite_epsilon)
             response = probabilities[2]-.5
             prefix = f"d{d}_n{steps}"
             checks[prefix+"_instrument_normalized"] = all(abs(row["post_read_total_probability"]-1) < 2e-10 for row in runs)
@@ -209,36 +216,67 @@ def run(trials=TRIALS, seed=SEED):
             checks[prefix+"_source_word_matches_independent_split"] = abs(probabilities[2]-oracle["split_plus_probability"]) < 2e-10
             checks[prefix+"_finite_exact_error_below_rational_bound"] = oracle["split_unitary_operator_error"] <= float(epsilon)
             checks[prefix+"_record_zero_current_has_full_service_schedule"] = len({row["resource_counts"]["native_pulses"] for row in runs}) == 1
+            if d == 16:
+                checks[prefix+"_ideal_probability_interval_excludes_fair_response"] = ideal_lower > F(1, 2)
             rows.append({"steps": steps, "response": response, "histories": runs,
                          "target_matrix_diagnostics": oracle,
                          "finite_split_certificate": bound,
                          "ideal_classical_history_tv_error_upper": str(F(5, 33)*epsilon),
                          "ideal_native_current_error_upper": str(F(5, 132)*epsilon),
+                         "ideal_infinite_instrument_certificate": {
+                             "reference_plus_probability_interval": reference_interval,
+                             "instrument_trace_distance_upper": str(infinite_epsilon),
+                             "detector_probability_error_upper": str(infinite_epsilon),
+                             "ideal_finite_plus_probability_lower": str(ideal_lower),
+                             "ideal_finite_plus_probability_upper": str(ideal_upper),
+                             "ideal_nonzero_response_certified": ideal_lower > F(1, 2),
+                             "classical_history_tv_error_upper_under_parity": str(F(5, 33)*infinite_epsilon),
+                             "native_current_error_upper_under_parity": str(F(5, 132)*infinite_epsilon),
+                             "composition": "continuous occupation cutoff plus finite Strang error by triangle inequality; the parity factors apply only to classical native records",
+                             "scope": "ideal finite split instrument versus infinite two-oscillator reference, including terminal field states; no numerical execution, physical service or spatial continuum bound",
+                         },
                          "forecast_second_native_current": 5*response/132})
         sampled = sample(rows[-1]["response"], trials, seed)
         for name, item in sampled["statistics"].items():
             checks[f"d{d}_{name}_within_six_standard_errors"] = abs(item["mean"]-item["forecast"]) <= 6*item["standard_error"]+1/trials
         checks[f"d{d}_finite_step_refinement_improves"] = rows[1]["target_matrix_diagnostics"]["split_unitary_operator_error"] < rows[0]["target_matrix_diagnostics"]["split_unitary_operator_error"]
-        levels.append({"dimension": d, "step_refinement": rows, "sample": sampled})
+        checks[f"d{d}_continuous_occupation_certificate_nontrivial"] = 0 < occupation_epsilon < 1
+        levels.append({"dimension": d,
+                       "continuous_instrument_occupation_certificate": occupation,
+                       "step_refinement": rows, "sample": sampled})
     reference = field.ideal_prediction()
     differences = [abs(row["step_refinement"][-1]["histories"][-1]["branches"][0]["probability"]-reference["plus_probability"]) for row in levels]
-    checks["occupation_refinement_improves_infinite_reference_diagnostic"] = differences[1] < differences[0]
+    checks["occupation_refinement_improves_infinite_reference_diagnostic"] = all(
+        later < earlier for earlier, later in zip(differences, differences[1:]))
+    occupation_refinement = [
+        {"dimension": d, "executed": d in DIMENSIONS,
+         "execution_scope": ("source histories retained in levels" if d in DIMENSIONS
+                             else "analytic occupation certificate only; no source program emitted or executed at this dimension"),
+         "continuous_instrument_occupation_certificate": occupation_cutoff_bound(d)}
+        for d in (4, 8, 16, 32, 64)
+    ]
+    occupation_errors = [F(row["continuous_instrument_occupation_certificate"]["instrument_trace_distance_upper"])
+                         for row in occupation_refinement]
+    checks["analytic_occupation_refinement_bound_decreases"] = all(
+        later < earlier for earlier, later in zip(occupation_errors, occupation_errors[1:]))
     result = {
         "schema": "oph.observer.source_scalar.v1", "source_pins": PINS, "source": source,
         "scope": {
             "construction": "native repair current -> emitted source preparation, scalar evolution and quantum pointer -> committed bit -> native repair feedback",
-            "target": "two sites with onsite occupation d=4,8, supplied mass=1 and spring kappa=9/32; not the earlier spatial-refinement family",
+            "target": "two sites with onsite occupation d=4,8,16, supplied mass=1 and spring kappa=9/32; not the earlier spatial-refinement family",
             "time": "declared scalar model coordinate t=1; not a source pulse clock, solver counter or calibrated physical clock",
             "preparation": "real entangled projected vacuum compiled from blank registers; target selected by supplied scalar action",
             "execution": "full M6 exponentials of twelve source controls; checked polar stabilization of source-executed routine matrices before cached repetition; no target-matrix substitution",
             "instrument": "both terminal conditional field states retained; only committed pointer bit enters feedback",
             "services": "coherent proper-code load/export, blank registers, storage, Born readout and analogue controls supplied",
-            "rigorous_errors": "initial vacuum tail and ideal finite-Hamiltonian splitting separately bounded by exact rational certificates",
+            "rigorous_errors": "complete continuous occupation cutoff and ideal finite-Hamiltonian splitting bounded and composed by exact rational certificates, including both terminal field branches; d=32,64 occupation certificates are analytic refinements without source execution",
             "numeric_errors": "source compilation and full branch execution checked in floating arithmetic, not interval-certified",
-            "open": "infinite-occupation propagation/readout error, spatial continuum from this code, physical service budget, emergent action/geometry, empirical physics validation",
+            "open": "spatial continuum from this code, physical service budget, certified numerical execution error, emergent action/geometry, empirical physics validation",
         },
         "native_history_law": histories, "levels": levels,
+        "occupation_refinement": occupation_refinement,
         "infinite_two_oscillator_reference": reference,
+        "infinite_two_oscillator_reference_interval": reference_interval,
         "absolute_reference_differences_diagnostic_only": differences,
         "checks": checks, "all_pass": all(checks.values()),
     }

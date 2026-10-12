@@ -162,3 +162,12 @@ does not determine a local exposure or require the whole available capacity
 to be allocated to this observer. This construction supplies a usable
 finite interface under the accepted premises, without extending the claim
 to a complete cosmological implementation.
+
+The [endpoint audit](../../predictions/README.md#inherited-coupling-comparison)
+compares this inherited structured-running branch with its cited CODATA
+target. The inverse-alpha deficit is approximately 300.388 ppm. This is a
+retrospective check of an explicitly incomplete transport map; the narrow
+numerical enclosure is not physical theory uncertainty. Declaring the output
+complete with zero missing correction conflicts with that comparison, while
+the stated incomplete contract requires physical transport work. The audit
+does not fit P, apply a residual correction or establish an OPH-wide verdict.

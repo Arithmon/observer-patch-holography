@@ -283,7 +283,7 @@ def test_reject_invalid_compiler_domains():
     with pytest.raises(ValueError):
         c.compile_real_orthogonal(np.ones((4, 4)))
     with pytest.raises(ValueError):
-        c.compile_real_orthogonal(np.eye(16))
+        c.compile_real_orthogonal(np.eye(32))
     with pytest.raises(ValueError):
         c.compile_real_state([1., 1.])
     with pytest.raises(ValueError):

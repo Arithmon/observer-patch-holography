@@ -33,8 +33,18 @@ floating numerical error and physical apparatus error.
 The [source-compiled apparatus](observer/source_scalar/README.md) adds a
 separate two-site quantum field: its entangled preparation from blanks,
 field evolution and binary pointer all execute emitted twelve-port control
-words. Four- and eight-level site codes retain both quantum branches,
-exact initial-tail and finite splitting bounds, and the native feedback.
+words. Four-, eight- and sixteen-level site codes retain both quantum branches,
+exact complete occupation-history and finite splitting bounds, and the
+native feedback. The occupation theorem covers this two-oscillator action;
+it does not establish spatial refinement.
+
+The [prediction package](predictions/README.md) specifies two competing
+quantum observer instruments, computes their exact phase-dependent
+probabilities and fixes a count-based rejection protocol before independent
+data. Its evaluator retains every record and outcome, including aborts.
+Labeled synthetic controls exercise rejection; no independent experimental
+counts are supplied. A separate retrospective coupling audit preserves the
+inherited P-response gap and its physical-transport boundary.
 
 ## Run the observer
 
@@ -78,6 +88,7 @@ The scalar local-evolution receipt can also be replayed directly:
 ```sh
 python3 -m model.observer.scalar_response.local_evolution --check model/observer/scalar_response/local_results.json
 python3 -m model.observer.source_scalar --check model/observer/source_scalar/results.json
+python3 -m model.predictions --check model/predictions/results.json
 ```
 
 ## What is implemented
@@ -88,6 +99,7 @@ python3 -m model.observer.source_scalar --check model/observer/source_scalar/res
 | Binary electromagnetic observation | [P-dependent detector](observer/p_response/README.md): evaluates α(P), writes one stable bit and uses it for the next native repair; all 528 weighted paths |
 | Scalar field observation and refinement | [Scalar detector](observer/scalar_response/README.md): native-current preparation, binary field instrument and bit-only feedback; local field updates at q=13,34, with temporal and spatial comparison bounds and a [prediction protocol](observer/scalar_response/PREDICTION.md) |
 | Source-compiled quantum field apparatus | [Two-site source program](observer/source_scalar/README.md): preparation from blanks, field evolution and quantum pointer from twelve-port gates; both terminal field branches, finite error certificates and native feedback |
+| Specified alternatives and rejection test | [C/E phase experiment](predictions/README.md): exact complete outcome laws, fixed error and sample budgets, strict independent-count evaluation and an explicit no-data verdict; separate retrospective coupling audit |
 | Finite capacity | [Correctable record capacity and compact controller](observer/CAPACITY.md): 11 terminal native words, 16 reachable prefixes and a four-bit classical encoding under the binary preparation |
 | Direct execution | [20,000-trial native receipt](observer/results/run.json) and [200,000-trial detector receipt](observer/p_response/results.json), alongside exact references |
 | Local event clock | [N4 local-tick calculation](local_tick/README.md): corrected native null and certified positive memory bounds while remote events continue |
@@ -110,11 +122,15 @@ averaging does not by itself derive that Hamiltonian or its quantum vacuum.
 Its detector prediction is conditional on the stated apparatus and field
 law, with independent software controls and a separate physical test boundary.
 The two-site source program implements field preparation, evolution and
-detection under its declared code services. The next connection is a complete
-occupation and spatial refinement error budget for that same implementation,
-followed by physical apparatus identification and independent comparison.
-Its finite splitting certificate and initial vacuum-tail bound are separate
-parts of that budget; neither establishes the full continuum limit.
+detection under its declared code services. A Gaussian-history tail bound
+controls the complete ideal occupation truncation through impulse, evolution
+and pointer readout, including terminal field states. Adding finite splitting
+gives a common ideal two-oscillator error budget. The d=8 bound remains too
+conservative to certify the small detector bias. At the executed d=16 cutoff
+and 128 steps, an exact rational interval places the ideal plus probability
+between 0.51495 and 0.51789, excluding a fair response. Spatial refinement,
+numerical and physical service errors, apparatus identification and independent
+comparison require their own evidence.
 
 ## Continue the construction
 

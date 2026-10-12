@@ -346,12 +346,18 @@ it does not derive the Hamiltonian from native averaging.
 The [two-site source implementation](observer/source_scalar/README.md)
 compiles and executes a separate finite scalar action on the twelve-port
 processor. It prepares the entangled field from blank registers, evolves
-four- and eight-level site codes and retains both pointer outcomes before
-native feedback. Exact bounds cover the initial vacuum tail and temporal
-splitting for the same finite Hamiltonian. Full occupation and spatial
-refinement, coherent service errors and physical identification require
-further evidence;
+four-, eight- and sixteen-level site codes and retains both pointer outcomes before
+native feedback. Exact bounds cover the complete ideal occupation history
+and temporal splitting for the same finite Hamiltonian. Spatial refinement,
+coherent service errors and physical identification require further evidence;
 this does not upgrade the earlier eight-site or golden-grid execution claims.
+
+The [C/E interference experiment](predictions/README.md) holds the native
+endpoint map and diagonal preparation weights fixed while changing the
+recorded quantum instrument. Its two phase settings predict 5/8 and 1/8 for
+C, versus 3/8 for both under E. The fixed sample plan evaluates complete
+records and outcomes under declared preparation/readout error; no physical
+dataset is supplied. This comparison does not select a unique OPH law.
 
 **Next decisive work:** connect the inertia and Hamiltonian time to the same
 microscopic events as N1/N2, and execute a complete preparation/readout history

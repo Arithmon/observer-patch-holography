@@ -34,7 +34,7 @@ vacuum vector replace the executed source gates.
 
 The chosen Hamiltonian is
 `H=(P0²+P1²+Q0²+Q1²)/2 + (9/64)(Q0-Q1)²`, with normal frequencies 1 and 5/4.
-Each site uses four or eight number states. The prepared target retains
+Each site uses four, eight or sixteen number states. The prepared target retains
 total occupation through `d-2` from the analytic infinite vacuum and is
 compiled from the all-zero state. The evolution uses 64 or 128 symmetric
 split steps to reach the declared model coordinate `t=1`. These are neither
@@ -48,22 +48,26 @@ For a positive unit native current, the retained results are:
 | 4 | 128 | 0.516679563 | 0.000025990 |
 | 8 | 64 | 0.516424174 | 0.000693013 |
 | 8 | 128 | 0.516422803 | 0.000173254 |
+| 16 | 64 | 0.516423330 | 0.005076875 |
+| 16 | 128 | 0.516421959 | 0.001269219 |
 
 The independent continuous **finite** Hamiltonian gives approximately
-`0.516422345746` at `d=8`; the independent infinite two-oscillator reference
+`0.516422345746` at `d=8` and `0.516421501748353` at `d=16`;
+the independent infinite two-oscillator reference
 gives `0.516421501748`. The latter comparison improves as the occupation
-code grows, but is a numerical diagnostic, not a certified cutoff bound.
+code grows; that numerical diagnostic is separate from the rigorous
+whole-history cutoff certificate below.
 The source program and independent finite split calculation agree within
 `2e-10` in the finest detector probability. Complete branch-density tests
 also compare the source instrument with independent direct matrices.
 
 The ideal prepared target has a separate rigorous trace-distance bound from
-the infinite coupled vacuum: below `0.007576` at `d=4` and `0.000079899` at
-`d=8`. That bound cannot be used alone to compare two different subsequent
-evolution or detector channels.
+the infinite coupled vacuum: below `0.007576` at `d=4`, `0.000079899` at
+`d=8` and `0.000000010324` at `d=16`. That bound cannot be used alone to
+compare two different subsequent evolution or detector channels.
 
 Only the detector bit reaches the controller. The existing exact 528-path
-enumeration gives `E[j2]=5r/132`, where `r=Pr(y=+1|j1=1)-1/2`. Two
+enumeration gives `E[j2]=5r/132`, where `r=Pr(y=+1|j1=1)-1/2`. Three
 200,000-trial native runs retain the actual detector response, terminal
 branches, complete record counts, reversal, disconnected and independent
 donor controls. A new trial freshly prepares its field; measured branches
@@ -74,11 +78,14 @@ are not reused as undisturbed vacua.
 Every gate is reconstructed as a full six-level exponential of the twelve
 retained source generators. Exact arithmetic checks the base control
 identities. Phase-preserving CNOTs, Gray-order basis rotations and diagonal
-Walsh expansions then supply every basis change and pointer operation.
+Walsh expansions supply every basis change and pointer operation. The
+larger state preparation uses a binary amplitude tree with commuting
+Walsh-Y factors: 5,379 source pulses for the eight field qubits. The
+smaller preparations retain their original source words.
 Zero-angle requests and scalar phases remain in the schedule.
 
-The `d=8`, 128-step protocol uses seven work qubits and **1,774,010 native
-pulses**, with **3,548,020 proper-code load/export service events**. The
+The `d=16`, 128-step protocol uses nine work qubits and **18,612,125 native
+pulses**, with **37,224,250 proper-code load/export service events**. The
 executor contracts each generated subroutine once and reuses its matrix
 in the declared repeated schedule. These are logical operation counts,
 not host iterations, elapsed physical duration or optimized hardware costs.
@@ -103,20 +110,55 @@ their physical implementation and noise budget are not established here.
 
 ## Error boundaries and next connection
 
-[DERIVATION.md](DERIVATION.md) proves the finite target, preparation tail,
-pointer law and uniform splitting bound. [bounds.py](bounds.py) evaluates
+[DERIVATION.md](DERIVATION.md) proves the finite target, complete ideal
+occupation-history bound, pointer law and uniform splitting bound.
+[bounds.py](bounds.py) evaluates
 the nested-commutator bound with exact rational matrix entries and directed
 integer square roots. It controls all inputs, including entangled references,
 for the same finite Hamiltonian. Under parity, the bound transfers to
 classical native-history total variation by `5/33` and mean current by
 `5/132`. Floating compilation error and physical service error are separate.
 
-A full field comparison still needs certified occupation-tail errors during
-the impulse, evolution and readout, followed by a spatial refinement family
-for the same implementation. The earlier [scalar continuum adapter](../scalar_response/README.md)
+[cutoff.py](cutoff.py) uses exact rational Gaussian number-moment bounds and
+projected Duhamel comparison throughout the impulse, continuous evolution
+and both pointer arms. Its trace-distance bound includes the terminal
+quantum branches without dividing by their probabilities. The bound is
+state-specific for this prepared history, not an all-input diamond norm.
+
+| Onsite levels | Complete ideal occupation bound, rounded upward | Source word executed |
+| --- | --- | --- |
+| 4 | 0.799447 | Yes |
+| 8 | 0.077171 | Yes |
+| 16 | 0.000196 | Yes |
+
+Adding the finite splitting bound gives a common ideal instrument error
+budget relative to the infinite two-oscillator reference. The occupation
+bound tends to zero with the cutoff. For the executed `d=16`, 128-step design,
+the combined ideal error is below `0.001464436`. A separate exact rational
+enclosure of the infinite Gaussian probability then gives
+
+```
+0.514957066204 <= ideal Pr(y=+1 | j1=1) <= 0.517885937293.
+```
+
+The endpoints displayed here are rounded outward; the receipt retains
+exact rational endpoints. This interval excludes the fair-detector response
+`1/2`, so the declared ideal coupled apparatus predicts a distinguishable
+positive-current response. The enclosure uses bounded sine and exponential
+series, the full occupation bound and the finite splitting bound; it does
+not use the floating execution result as a proof. Numerical execution and
+physical service errors require additional terms. This is a prediction of
+the specified apparatus, with no claim that it identifies a measurement in
+nature.
+
+A field comparison additionally needs a spatial refinement family for the
+same implementation. The earlier [scalar continuum adapter](../scalar_response/README.md)
 uses a different spatial construction; its bounds do not automatically
 apply to these two sites. An empirical prediction additionally needs a
 physical identification and calibration with independent comparison data.
 
 This construction adds an implemented field apparatus to the source and
 observer interfaces. It does not complete continuum physics or OPH.
+The separate [C/E prediction test](../../predictions/README.md) distinguishes
+two finite native instruments with a fixed complete-count protocol; it does
+not use this scalar cutoff bound or assert a laboratory result.
