@@ -77,6 +77,11 @@ identities. Phase-preserving CNOTs, Gray-order basis rotations and diagonal
 Walsh expansions then supply every basis change and pointer operation.
 Zero-angle requests and scalar phases remain in the schedule.
 
+The full six-level pulse exponentials use 50 decimal digits before conversion
+to binary64, reducing drift accumulated through repeated pulse contractions.
+The assembled generators and subsequent matrix products remain binary64;
+this numerical safeguard supplies no certified roundoff or physical error bound.
+
 The `d=8`, 128-step protocol uses seven work qubits and **1,774,010 native
 pulses**, with **3,548,020 proper-code load/export service events**. The
 executor contracts each generated subroutine once and reuses its matrix

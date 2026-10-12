@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from . import experiment
+from tools.strict_json import load
 
 
 def main():
@@ -20,7 +21,7 @@ def main():
         with args.write.open("x", encoding="utf-8") as stream:
             stream.write(experiment.canonical(result))
     if args.check:
-        experiment.compare_receipt(json.loads(args.check.read_text(encoding="utf-8")), result)
+        experiment.compare_receipt(load(args.check), result)
     if args.emit:
         with args.emit.open("x", encoding="utf-8") as stream:
             stream.write(experiment.canonical(experiment.program(8, 128)))

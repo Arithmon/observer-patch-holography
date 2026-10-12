@@ -21,8 +21,8 @@ import math
 from numbers import Integral, Real
 from pathlib import Path
 
+import mpmath as mp
 import numpy as np
-from scipy.linalg import expm
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -186,9 +186,17 @@ def integrated_controls(kind, angle):
 
 @lru_cache(maxsize=32768)
 def _native(kind, angle):
+    """Evaluate the actual full source exponential with guard digits.
+
+    Repeated pulse contractions amplify binary64 matrix-exponential drift. Only
+    this exponential uses 50 decimal digits; its assembled generator and
+    subsequent contractions remain binary64 floating diagnostics, with no
+    certified roundoff bound. Every M6 entry is retained on conversion.
+    """
     coefficients = integrated_controls(kind, angle)
     generator = np.tensordot(coefficients, _source()[0], axes=(0, 0))
-    full = expm(generator)
+    with mp.workdps(50):
+        full = np.array(mp.expm(mp.matrix(generator.tolist())).tolist(), dtype=complex)
     full.flags.writeable = False
     return full
 
