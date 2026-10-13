@@ -167,6 +167,17 @@
       "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
     },
     {
+      "id": "underfull::observable_normal_forms::../paper/tex_fragments/PRIOR_WORK_OBSERVABLE_NORMAL_FORMS.tex::L11--12",
+      "log": "observable_normal_forms.log",
+      "source_file": "../paper/tex_fragments/PRIOR_WORK_OBSERVABLE_NORMAL_FORMS.tex",
+      "kind": "underfull_hbox",
+      "lines": "11--12",
+      "badness_min": 1400,
+      "badness_max": 1400,
+      "max_count": 1,
+      "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
+    },
+    {
       "id": "underfull::observers_are_all_you_need::tex_fragments/FOUNDATIONAL_REFERENCES.tex::L227--230",
       "log": "observers_are_all_you_need.log",
       "source_file": "tex_fragments/FOUNDATIONAL_REFERENCES.tex",
@@ -218,6 +229,17 @@
       "lines": "27--36",
       "badness_min": 1817,
       "badness_max": 1817,
+      "max_count": 1,
+      "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
+    },
+    {
+      "id": "underfull::reality_as_consensus_protocol::tex_fragments/PRIOR_WORK_REALITY_AS_CONSENSUS_PROTOCOL_BIBITEMS.tex::L99--100",
+      "log": "reality_as_consensus_protocol.log",
+      "source_file": "tex_fragments/PRIOR_WORK_REALITY_AS_CONSENSUS_PROTOCOL_BIBITEMS.tex",
+      "kind": "underfull_hbox",
+      "lines": "99--100",
+      "badness_min": 1215,
+      "badness_max": 1215,
       "max_count": 1,
       "reason": "Layout-only microtype/hyphenation underfull at a fixed source location; the warning itself carries no semantic status. Anchored to source line-range + badness band so a new/unseen underfull (different location or badness) is reported, not absorbed."
     },
