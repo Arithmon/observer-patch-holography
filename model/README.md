@@ -19,7 +19,14 @@ same-history occupation bound includes those later operations.
 python -m model.common_source.composition --check model/common_source/composition_results.json
 ```
 
-The newest step is the [common interacting source](common_source/README.md):
+The [coherent native interface](common_source/QUANTUM_NATIVE.md) also executes
+the surrounding C/E repairs through the same source controls, including the
+port routing used by final feedback. Its complete recorded instrument acts
+on arbitrary native/reference inputs and retains padding and abort outputs.
+This extends the earlier classical native attachment; the source encoding
+and physical services remain declared.
+
+The [common interacting source](common_source/README.md) contains
 quantum electric flux, charged CAR matter and a scalar field share one
 evolving register, with complete measurements, retained records and native
 feedback. For zero native preparation current, its scalar response has an

@@ -646,6 +646,10 @@ infinite-occupation response and explicitly corrects the readout comparison.
 
 ## Native observation, interacting quantum response and native feedback
 
+This section retains the earlier sharp-history attachment. The separate
+[coherent native interface](QUANTUM_NATIVE.md) executes the surrounding
+native maps for the four-read smooth continuation, including port routing.
+
 The common experiment uses one declared state space for the native loads,
 the gauge/scalar quantum work registers and the committed history. The native
 integer-load repair is its existing instrument primitive. Gauge, scalar,
