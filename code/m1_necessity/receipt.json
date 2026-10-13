@@ -1717,10 +1717,11 @@
           "declared_common_history_constraint_repair",
           "declared_native_slow_geometry_readout",
           "declared_common_source_smooth_ramsey_instrument",
-          "declared_common_source_thermal_reference"
+          "declared_common_source_thermal_reference",
+          "declared_common_source_finite_record_program"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "4fd6ddf110f360deb9cbb74e3755fb585d7e1a191e7a3620a3fe2fd7a8009962"
+        "original_claim_sha256": "8dca324d63ddd1a076b1150633c46dc21cfb643fd5186ae852b04e8afed59cbb"
       },
       "OPH-MODEL-SCALAR-RESPONSE-EXECUTION": {
         "assumptions": [

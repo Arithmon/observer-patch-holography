@@ -72,6 +72,17 @@ of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 
+The [finite executable specification](common_source/COMPOSITION.md) now
+connects the common source's preparation, complete instruments, retained
+records, feedback, continuation and occupation refinement through one
+[typed runtime](common_source/protocol.py). The old sharp and smooth
+histories are programs of this engine and retain their comparison receipts.
+The new four-read program keeps the field through two smooth observations
+and later clock evolution, with source-word costs and complete-output error
+budgets. Both cutoffs d=2,4 execute all 4,224 joint native/quantum outcomes.
+This closes the smooth-read continuation and later model-time probe join;
+it does not transfer smooth moment bounds to the sharp detector.
+
 The [common interacting source](common_source/README.md) joins quantum
 electric flux, a charged CAR pair and two neutral scalar sites on the same
 work register. Native source words implement their noncommuting evolution,
