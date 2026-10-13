@@ -215,6 +215,12 @@ that is an additional intervention between native events. The passive
 history bounds below do not cover it, nor do they derive its physical
 controls, cost or compatibility with the uniform geometry/clock protocol.
 
+The separate [active encoded attachment](../common_source/ENCODED_MEMORY.md)
+compiles that recovery and re-encoding inside a continuing common-source
+history. Its matched passive control and paid interventions have their own
+evidence; the final-recovery protocol and receipt here retain their stated
+scope.
+
 ## Independent random seam attempts: exact all-integer rates
 
 This section uses independent seam choices with probabilities `p_e>0` on

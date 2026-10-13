@@ -32,6 +32,16 @@ laws. Its [runtime](quantum_native.py) and
 storage and physical calibration as explicit inputs. The earlier classical
 native benchmark remains available with its original scope and counts.
 
+The [encoded memory variant](ENCODED_MEMORY.md) uses
+`native_mode='protected_qubit'` to recover the existing four-configuration
+logical qubit after each native event. The same field continues through its
+four reads; the `passive_qubit` control uses the same encoded input and seam
+policy without recovery. This is active correction under the existing
+coherent services, with a separate contract from full-carrier recovery or
+physical memory calibration. The [producer](encoded_observer.py) and
+[receipt](encoded_observer_results.json) compare the active and passive
+complete instruments, including their source costs.
+
 The [observer readout bridge](OBSERVER_READOUTS.md) reconstructs Hilbert
 representations and modular flow from this same executed state, extends
 its complete records with a source-compiled binary modular clock, and

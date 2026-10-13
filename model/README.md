@@ -26,6 +26,11 @@ on arbitrary native/reference inputs and retains padding and abort outputs.
 This extends the earlier classical native attachment; the source encoding
 and physical services remain declared.
 
+Its [encoded memory variant](common_source/ENCODED_MEMORY.md) compiles active
+recovery of a supplied native logical qubit around the same field history.
+A matched passive control separates recovery from record retention. The
+logical-code and physical-service boundaries remain explicit.
+
 The [common interacting source](common_source/README.md) contains
 quantum electric flux, charged CAR matter and a scalar field share one
 evolving register, with complete measurements, retained records and native
