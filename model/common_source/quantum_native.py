@@ -33,6 +33,24 @@ INDEX = {state: index for index, state in enumerate(STATES)}
 CODES = circuit.SOURCE_CODES
 TOLERANCE = 2e-8
 STEPS = 512
+NATIVE_MODES = ('full_carrier', 'protected_qubit', 'passive_qubit')
+
+
+def _mode(value):
+    if type(value) is not str or value not in NATIVE_MODES:
+        raise ValueError('an explicit native input and recovery mode required')
+    return value
+
+
+def input_dimension(mode):
+    return 78 if _mode(mode) == 'full_carrier' else 2
+
+
+def final_seam(mode, scalar_bit):
+    _mode(mode)
+    if type(scalar_bit) is not int or scalar_bit not in (0, 1):
+        raise ValueError('a committed binary smooth record required')
+    return ((0, 5) if mode == 'full_carrier' else (2, 3)) if scalar_bit == 0 else (0, 1)
 
 
 def _law(value):
@@ -86,6 +104,7 @@ class JointHistory:
     steps: int
     field_backend: str
     branches: tuple[JointBranch, ...]
+    native_mode: str = 'full_carrier'
 
 
 def _injection():
@@ -94,40 +113,51 @@ def _injection():
     return result
 
 
-@lru_cache(maxsize=2)
-def _native_tree(law):
-    """Actually execute every native outcome on all 78 input columns."""
+@lru_cache(maxsize=6)
+def _native_tree(law, mode='full_carrier'):
+    """Execute every native outcome on the declared input columns."""
     _law(law)
-    first = routing.routed_repair_branches(law, (0, 1), _injection())
+    _mode(mode)
+    if mode == 'full_carrier':
+        repair, initial = routing.routed_repair_branches, _injection()
+    else:
+        from . import encoded_memory as memory
+        initial = memory.code_matrix()
+
+        def repair(candidate, seam, state):
+            return memory.repair_branches(candidate, seam, state,
+                                         recover=mode == 'protected_qubit')
+    first = repair(law, (0, 1), initial)
     rows = []
     for start in first:
         a = _immutable(start['amplitude'])
         endings = {}
         if not start['abort']:
             for scalar_bit in (0, 1):
-                seam = (0, 5) if scalar_bit == 0 else (0, 1)
+                seam = final_seam(mode, scalar_bit)
                 endings[scalar_bit] = tuple(
                     (end['coin'], end['record_code'], end['abort'],
                      _immutable(end['amplitude']))
-                    for end in routing.routed_repair_branches(law, seam, a))
+                    for end in repair(law, seam, a))
         rows.append((start['coin'], start['record_code'], start['current'],
                      start['abort'], a, endings))
     return tuple(rows)
 
 
-def execute(law='C', dimension=2, steps=STEPS, *, field_backend='source'):
+def execute(law='C', dimension=2, steps=STEPS, *, field_backend='source',
+            native_mode='full_carrier'):
     """Complete finite channel on native input and independently prepared work.
 
     Every ``native_map tensor work_map`` also defines the finite channel on
     arbitrary native/work/reference input; that override omits vacuum
     preparation and does not inherit its occupation error bound.
     """
-    law = _law(law)
+    law, native_mode = _law(law), _mode(native_mode)
     histories = _programs(dimension, steps, field_backend)
     prepared = histories[0].initial_state
     identity = _immutable(np.eye(4*dimension**2))
     branches = []
-    for c1, raw1, current, abort, a, endings in _native_tree(law):
+    for c1, raw1, current, abort, a, endings in _native_tree(law, native_mode):
         if abort:
             branches.append(JointBranch((c1, raw1, (), None, None), True,
                                         a, identity, prepared))
@@ -136,7 +166,7 @@ def execute(law='C', dimension=2, steps=STEPS, *, field_backend='source'):
             for c2, raw2, stopped, combined in endings[middle.record[2]]:
                 branches.append(JointBranch((c1, raw1, middle.record, c2, raw2),
                                             stopped, combined, middle.kraus, middle.state))
-    result = JointHistory(law, dimension, steps, field_backend, tuple(branches))
+    result = JointHistory(law, dimension, steps, field_backend, tuple(branches), native_mode)
     _validate_menu(result)
     return result
 
@@ -178,6 +208,7 @@ def _validate_menu(history):
     if history.field_backend not in protocol.BACKENDS:
         raise ValueError('unknown field backend')
     expected = _menu(history.law)
+    native_size = input_dimension(history.native_mode)
     seen = set()
     size = 4*history.dimension**2
     if type(history.branches) is not tuple:
@@ -193,7 +224,7 @@ def _validate_menu(history):
                 or branch.abort != expected[key]):
             raise ValueError('invalid, duplicate, or relabelled joint outcome')
         seen.add(key)
-        _array(branch.native_map, (512, 78), 'native branch')
+        _array(branch.native_map, (512, native_size), 'native branch')
         _array(branch.work_map, (size, size), 'work branch')
         _array(branch.work_state, (size, 1), 'prepared work branch')
     if seen != set(expected):
@@ -216,7 +247,7 @@ def _input(value, size):
 def output(history, initial):
     """Return factorized full native/reference and prepared work amplitudes."""
     _validate_menu(history)
-    initial = _input(initial, 78)
+    initial = _input(initial, input_dimension(history.native_mode))
     return {branch.record: (branch.native_map@initial, branch.work_state)
             for branch in history.branches}
 
@@ -231,7 +262,7 @@ def output_on_joint_input(history, initial):
     if np.ma.isMaskedArray(initial):
         raise ValueError('joint input cannot be masked')
     raw = np.asarray(initial)
-    if raw.ndim != 3 or raw.shape[:2] != (78, size) or not raw.shape[2]:
+    if raw.ndim != 3 or raw.shape[:2] != (input_dimension(history.native_mode), size) or not raw.shape[2]:
         raise ValueError('native-by-work-by-reference amplitudes required')
     value = _array(initial, raw.shape, 'joint input')
     norm_squared = float(np.vdot(value, value).real)
@@ -271,9 +302,64 @@ def _ideal_native_tree(law):
     return {key: _immutable(value) for key, value in maps.items()}
 
 
-def _oracle_branch(branch, law, histories):
+def _logical_supports():
+    # Independent statement of the existing four-configuration code. The
+    # scientific oracle must not obtain its columns from the source encoder.
+    return tuple(tuple(tuple(int(port in pair) for port in range(12))
+                       for pair in pairs)
+                 for pairs in (((0, 2), (1, 3)), ((0, 3), (1, 2))))
+
+
+def _logical_code():
+    value = np.zeros((512, 2), complex)
+    for column, supports in enumerate(_logical_supports()):
+        for state in supports:
+            value[circuit.encode(state), column] = 1/math.sqrt(2)
+    return value
+
+
+def _code_weights(law, seam):
+    counts = {}
+    for column, supports in enumerate(_logical_supports()):
+        for state in supports:
+            for coin in (0, 1):
+                _, current, contrast = _endpoint(state, seam, coin)
+                key = (coin, _raw(law, current, contrast))
+                counts.setdefault(key, [0, 0])[column] += 1
+    if any(left != right for left, right in counts.values()):
+        raise ArithmeticError('this native seam does not satisfy the declared logical code condition')
+    return {key: F(values[0], 4) for key, values in counts.items()}
+
+
+@lru_cache(maxsize=4)
+def _ideal_encoded_tree(law, mode):
+    _law(law)
+    if _mode(mode) == 'full_carrier':
+        raise ValueError('an encoded native mode required')
+    maps = {}
+    if mode == 'protected_qubit':
+        code = _logical_code()
+        for (c1, raw1), first in _code_weights(law, (0, 1)).items():
+            for selected in (0, 1):
+                # Pin the declared selector independently of the executor.
+                seam = (2, 3) if selected == 0 else (0, 1)
+                for (c2, raw2), last in _code_weights(law, seam).items():
+                    maps[c1, raw1, selected, c2, raw2] = math.sqrt(float(first*last))*code
+    else:
+        for c1, c2, selected in product((0, 1), repeat=3):
+            for column, supports in enumerate(_logical_supports()):
+                for state in supports:
+                    middle, j1, d1 = _endpoint(state, (0, 1), c1)
+                    end, j2, d2 = _endpoint(middle, (2, 3) if selected == 0 else (0, 1), c2)
+                    key = c1, _raw(law, j1, d1), selected, c2, _raw(law, j2, d2)
+                    matrix = maps.setdefault(key, np.zeros((512, 2), complex))
+                    matrix[circuit.encode(end), column] += 1/(2*math.sqrt(2))
+    return {key: _immutable(value) for key, value in maps.items()}
+
+
+def _oracle_branch(branch, law, histories, mode='full_carrier'):
     c1, raw1, bits, c2, raw2 = branch.record
-    zero = np.zeros((512, 78), complex)
+    zero = np.zeros((512, input_dimension(mode)), complex)
     if not bits:
         size = histories[0].program.work_dimension
         return zero, np.eye(size), histories[0].initial_state
@@ -281,7 +367,8 @@ def _oracle_branch(branch, law, histories):
     if current is None:
         raise ValueError('an admitted raw first record is required for continued work')
     middle = next(b for b in histories[current].branches if b.record == bits)
-    a = _ideal_native_tree(law).get((c1, raw1, bits[2], c2, raw2), zero)
+    tree = _ideal_native_tree(law) if mode == 'full_carrier' else _ideal_encoded_tree(law, mode)
+    a = tree.get((c1, raw1, bits[2], c2, raw2), zero)
     return a, middle.kraus, middle.state
 
 
@@ -296,13 +383,14 @@ def audit(history):
     if history.field_backend != 'source':
         raise ValueError('the source implementation is required for this audit')
     targets = _programs(history.dimension, history.steps, 'product')
-    prepared_effect = np.zeros((78, 78), complex)
+    native_size = input_dimension(history.native_mode)
+    prepared_effect = np.zeros((native_size, native_size), complex)
     native_max = work_max = 0.
     errors, prepared_errors = [], []
     abort_mass = padding_mass = 0.
     padding = [i for i in range(512) if i not in set(CODES)]
     for branch in history.branches:
-        a, b, v = _oracle_branch(branch, history.law, targets)
+        a, b, v = _oracle_branch(branch, history.law, targets, history.native_mode)
         dn = float(np.linalg.norm(branch.native_map-a, 'fro'))
         dw = float(np.linalg.norm(branch.work_map-b, 'fro'))
         dv = float(np.linalg.norm(branch.work_state-v))
@@ -311,9 +399,9 @@ def audit(history):
         prepared_errors.append((dn*np.linalg.norm(branch.work_state)+np.linalg.norm(a, 'fro')*dv)**2)
         weight = float(np.vdot(branch.work_state, branch.work_state).real)
         prepared_effect += weight*(branch.native_map.conj().T@branch.native_map)
-        mass = weight*float(np.linalg.norm(branch.native_map, 'fro')**2)/78
+        mass = weight*float(np.linalg.norm(branch.native_map, 'fro')**2)/native_size
         abort_mass += mass*branch.abort
-        padding_mass += weight*float(np.linalg.norm(branch.native_map[padding], 'fro')**2)/78
+        padding_mass += weight*float(np.linalg.norm(branch.native_map[padding], 'fro')**2)/native_size
     result = {
         'full_outcome_count_including_abort': len(history.branches),
         'first_abort_outcome_count': sum(not b.record[2] for b in history.branches),
@@ -322,7 +410,7 @@ def audit(history):
         'maximum_work_map_frobenius_error': work_max,
         'complete_stacked_map_frobenius_error_upper': math.sqrt(math.fsum(errors)),
         'prepared_complete_stacked_map_error_upper': math.sqrt(math.fsum(prepared_errors)),
-        'prepared_native_input_completeness_operator_error': float(np.linalg.norm(prepared_effect-np.eye(78), 2)),
+        'prepared_native_input_completeness_operator_error': float(np.linalg.norm(prepared_effect-np.eye(native_size), 2)),
         'maximally_mixed_native_abort_probability': abort_mass,
         'maximally_mixed_native_padding_probability': padding_mass,
     }
@@ -338,15 +426,18 @@ def _read_rotation():
     return _immutable(compiler.execute([compiler.pulse('Y', math.pi/4, [0])], 9))
 
 
-def prepared_native(setting):
+def prepared_native(setting, *, native_mode='full_carrier'):
+    _mode(native_mode)
     if type(setting) is not str or setting not in circuit.SETTINGS[:3]:
         raise ValueError('one of the three declared coherent preparations required')
     blank = np.zeros(512)
     blank[0] = 1
     result = compiler.execute(circuit.preparation_word(setting), 9, blank)
-    if np.count_nonzero(np.delete(result, list(CODES))):
+    retained = list(CODES) if native_mode == 'full_carrier' else [0, 1]
+    result = _array(result, (512,), 'source native preparation')
+    if np.count_nonzero(np.delete(result, retained)):
         raise ArithmeticError('native preparation escaped its input code')
-    return result[list(CODES)]
+    return result[retained]
 
 
 def readout_outputs(history, initial):
@@ -364,6 +455,9 @@ def readout_outputs(history, initial):
         if branch.abort:
             yield branch.record, None, a, v
             continue
+        if history.native_mode != 'full_carrier':
+            from . import encoded_memory as memory
+            a = memory.decoding(a)
         measured = rotation@a
         if not np.isfinite(measured).all():
             raise ArithmeticError('nonfinite complete native readout')
@@ -398,7 +492,8 @@ def coherence_witness(histories):
     if type(histories) is not dict or set(histories) != {'C', 'E'}:
         raise ValueError('both native law histories required')
     signature = {(h.dimension, h.steps, h.field_backend) for h in histories.values()}
-    if len(signature) != 1 or any(h.law != law for law, h in histories.items()):
+    if (len(signature) != 1
+            or any(h.law != law or h.native_mode != 'full_carrier' for law, h in histories.items())):
         raise ValueError('C/E must use the same field program and execution backend')
     d, steps, backend = next(iter(signature))
     middle = _programs(d, steps, backend)[0]
@@ -424,8 +519,11 @@ def coherence_witness(histories):
             'same_classical_load_law_selects_unique_quantum_instrument': False}
 
 
-def resources(law, dimension, steps):
+def resources(law, dimension, steps, *, native_mode='full_carrier'):
     law = _law(law)
+    if _mode(native_mode) != 'full_carrier':
+        from . import encoded_observer
+        return encoded_observer.resources(law, dimension, steps, native_mode=native_mode)
     histories = _programs(dimension, steps, 'source')
     first = routing.routed_repair_resources(law, (0, 1))
     last = routing.routed_repair_resources(law, (0, 5))
