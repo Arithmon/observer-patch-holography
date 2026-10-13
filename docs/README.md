@@ -124,9 +124,9 @@ then regenerate.
   its consumers and classifies each evidence path by its scientific role.
 - [Observation Ledger](registers/OBSERVATION_LEDGER_V3.md) records the physical
   targets, adequacy rungs, premise ancestry, frozen-target links, and evidence paths.
-- [Emergent-Instrument Register](registers/INSTRUMENT_REGISTER_V3.md) lists the
+- [Emergent-Instrument Register](registers/OBSERVATION_LEDGER_V3.md#emergent-instrument-register) lists the
   simulation-instrument designs and frozen instruments of the adequacy program.
-- [Constants Ancestry](registers/CONSTANTS_ANCESTRY_V3.md) declares the complete
+- [Constants Ancestry](registers/OBSERVATION_LEDGER_V3.md#constants-ancestry) declares the complete
   input ancestry of each constants family against the premise register.
 - [Selection Ledger](registers/SELECTION_LEDGER.md) records the selections that
   consensus forces, with the exposed premises and proofs behind each row.

@@ -9,6 +9,15 @@ ids drawn from the fixed register, evidence paths resolving to committed
 files) and renders ``docs/registers/OBSERVATION_LEDGER_V3.md`` from it. The rendered
 page is a generated surface: ``--check`` fails when the committed page differs
 byte for byte from the render.
+
+The same JSON carries two folded registers as sections: ``instruments`` (the
+emergent-instrument register, validated and rendered by
+``tools/build_instrument_register.py``) and ``constants`` (the constants
+ancestry, validated and rendered by ``tools/build_constants_ancestry.py``).
+``validate`` checks both sections against the observation rows of the same
+loaded object, and the page closes with their two sections. Every section is
+rendered from the JSON alone; the committed page is read only by the ``--check``
+comparisons.
 """
 
 from __future__ import annotations
@@ -19,6 +28,8 @@ import re
 import sys
 from pathlib import Path
 
+import build_constants_ancestry as constants_ancestry
+import build_instrument_register as instrument_register
 import strict_json
 from closed_lanes import CLOSED_LANE_SUCCESSORS
 
@@ -28,7 +39,14 @@ SURFACE_PATH = ROOT / "docs" / "registers" / "OBSERVATION_LEDGER_V3.md"
 PREMISE_REGISTER_PATH = ROOT / "tracking" / "premise_register.json"
 FROZEN_REGISTER_PATH = ROOT / "claims" / "frozen_prediction_register.json"
 
-SCHEMA = "oph.observation_ledger.v4"
+SCHEMA = "oph.observation_ledger.v5"
+TOP_LEVEL_KEYS = (
+    "schema",
+    "issue",
+    "rows",
+    instrument_register.SECTION_KEY,
+    constants_ancestry.SECTION_KEY,
+)
 ISSUE = 726
 REPO_URL = "https://github.com/FloatingPragma/observer-patch-holography"
 
@@ -330,8 +348,8 @@ def _clean_prose(where: str, field: str, value: object) -> str:
 def validate(ledger: dict) -> list[dict]:
     if not isinstance(ledger, dict):
         fail("ledger must be an object")
-    if set(ledger) != {"schema", "issue", "rows"}:
-        fail("top-level keys must be exactly schema, issue, rows")
+    if set(ledger) != set(TOP_LEVEL_KEYS):
+        fail(f"top-level keys must be exactly {', '.join(TOP_LEVEL_KEYS)}")
     if ledger["schema"] != SCHEMA:
         fail(f"schema must equal {SCHEMA}")
     if ledger["issue"] != ISSUE:
@@ -491,7 +509,26 @@ def validate(ledger: dict) -> list[dict]:
             f"{sorted(exceptions - uncovered)}"
         )
 
+    validate_sections(ledger, rows)
     return rows
+
+
+def validate_sections(ledger: dict, rows: list[dict]) -> None:
+    """Validate the folded register sections against these observation rows.
+
+    Each section validator receives the rows of the same loaded ledger, so a
+    section can neither name an absent observation row nor contradict the
+    status or premises recorded on it.
+    """
+
+    instrument_register.validate(
+        instrument_register.register_section(ledger),
+        ledger_rows=instrument_register.index_ledger_rows(rows),
+    )
+    constants_ancestry.validate(
+        constants_ancestry.register_section(ledger),
+        ledger_rows=constants_ancestry.index_ledger_rows(rows),
+    )
 
 
 def _frozen_target_display(row: dict, frozen_target_by_id: dict[str, dict]) -> str:
@@ -518,7 +555,25 @@ def _issue_link(number: int) -> str:
     return f"[issue #{number}]({REPO_URL}/issues/{number})"
 
 
-def render(rows: list[dict]) -> str:
+def render(ledger: dict) -> str:
+    """Render the whole page: the observation rows, then the two sections."""
+
+    rows = ledger["rows"]
+    instruments = instrument_register.register_section(ledger)
+    constants = constants_ancestry.register_section(ledger)
+    return "\n".join(
+        (
+            render_observations(rows),
+            instrument_register.render(instruments, instruments["rows"]),
+            constants_ancestry.render(
+                constants["rows"],
+                ledger_rows=constants_ancestry.index_ledger_rows(rows),
+            ),
+        )
+    )
+
+
+def render_observations(rows: list[dict]) -> str:
     frozen_target_by_id = load_frozen_target_rows()
     lines: list[str] = []
     lines.append("# V3 Observation Ledger")
@@ -529,6 +584,17 @@ def render(rows: list[dict]) -> str:
         f" The JSON carries schema `{SCHEMA}`; the V3 in this page's title"
         " and file name names the V3 lane set its sections group rows by, not"
         " the schema."
+    )
+    lines.append("")
+    lines.append(
+        "The same JSON holds two further sections, rendered at the end of this"
+        f" page: `{instrument_register.SECTION_KEY}`, the"
+        " [Emergent-Instrument Register](#emergent-instrument-register),"
+        " validated by `tools/build_instrument_register.py`, and"
+        f" `{constants_ancestry.SECTION_KEY}`, the"
+        " [Constants Ancestry](#constants-ancestry), validated by"
+        " `tools/build_constants_ancestry.py`. Both validators check their rows"
+        " against the observation rows of the same file."
     )
     lines.append("")
     lines.append(
@@ -697,8 +763,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     ledger = load_ledger(LEDGER_PATH)
-    rows = validate(ledger)
-    surface = render(rows).encode("utf-8")
+    validate(ledger)
+    surface = render(ledger).encode("utf-8")
     if args.check:
         committed = SURFACE_PATH.read_bytes() if SURFACE_PATH.is_file() else b""
         if committed != surface:

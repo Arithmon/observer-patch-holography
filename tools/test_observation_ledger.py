@@ -13,10 +13,88 @@ def _ledger() -> dict:
     return json.loads(tool.LEDGER_PATH.read_text(encoding="utf-8"))
 
 
+def _control(ledger: dict, ledger_row: str) -> dict:
+    return next(
+        control
+        for control in ledger["instruments"]["ledger_controls"]
+        if control["ledger_row"] == ledger_row
+    )
+
+
 def test_committed_surface_matches_rebuild() -> None:
-    rows = tool.validate(_ledger())
-    assert tool.SURFACE_PATH.read_bytes() == tool.render(rows).encode("utf-8")
+    ledger = _ledger()
+    tool.validate(ledger)
+    assert tool.SURFACE_PATH.read_bytes() == tool.render(ledger).encode("utf-8")
     assert tool.main(["--check"]) == 0
+
+
+def test_top_level_sections_are_exact() -> None:
+    assert tool.TOP_LEVEL_KEYS == (
+        "schema",
+        "issue",
+        "rows",
+        "instruments",
+        "constants",
+    )
+    assert list(_ledger()) == list(tool.TOP_LEVEL_KEYS)
+    for dropped in ("instruments", "constants"):
+        ledger = _ledger()
+        del ledger[dropped]
+        with pytest.raises(SystemExit, match="top-level keys must be exactly"):
+            tool.validate(ledger)
+    ledger = _ledger()
+    ledger["unregistered_section"] = {}
+    with pytest.raises(SystemExit, match="top-level keys must be exactly"):
+        tool.validate(ledger)
+
+
+def test_folded_registers_have_no_separate_files_or_pages() -> None:
+    for retired in (
+        "claims/emergent_instrument_register.json",
+        "tracking/constants_ancestry.json",
+        "docs/registers/INSTRUMENT_REGISTER_V3.md",
+        "docs/registers/CONSTANTS_ANCESTRY_V3.md",
+    ):
+        assert not (tool.ROOT / retired).exists(), retired
+
+
+def test_page_closes_with_the_two_register_sections() -> None:
+    page = tool.SURFACE_PATH.read_text(encoding="utf-8")
+    instruments = "\n## Emergent-Instrument Register\n"
+    constants = "\n## Constants Ancestry\n"
+    assert page.count(instruments) == 1
+    assert page.count(constants) == 1
+    premise_usage = page.index("\n## Premise usage and missing attachments\n")
+    assert premise_usage < page.index(instruments) < page.index(constants)
+    assert "(#emergent-instrument-register)" in page
+    assert "(#constants-ancestry)" in page
+
+
+def test_instrument_section_is_checked_against_observation_rows() -> None:
+    ledger = _ledger()
+    row = next(row for row in ledger["rows"] if row["id"] == "OL-A1")
+    row["status"] = "attained"
+    with pytest.raises(
+        SystemExit, match="controlling FAILED verdict with owe_row consequence"
+    ):
+        tool.validate(ledger)
+
+
+def test_instrument_section_tamper_fails_ledger_validation() -> None:
+    ledger = _ledger()
+    ledger["instruments"]["rows"][0]["status"] = "PENDING"
+    with pytest.raises(SystemExit, match="status must be one of"):
+        tool.validate(ledger)
+
+
+def test_constants_section_is_checked_against_observation_rows() -> None:
+    ledger = _ledger()
+    row = next(row for row in ledger["constants"]["rows"] if row["id"] == "CA-03")
+    row["ancestry"] = [
+        entry for entry in row["ancestry"] if entry.get("register_row") != "PR-13"
+    ]
+    with pytest.raises(SystemExit, match="observation-ledger premises"):
+        tool.validate(ledger)
 
 
 def test_ol_a1_failed_control_and_unfrozen_followup_are_exact() -> None:
@@ -24,7 +102,10 @@ def test_ol_a1_failed_control_and_unfrozen_followup_are_exact() -> None:
     row = rows["OL-A1"]
     assert row["status"] == "owed"
     assert row["rung"] == "emergent"
-    assert "claims/emergent_instrument_register.json" in row["evidence"]
+    # The emergent-instrument register is the instruments section of this
+    # ledger; the row cites it and INS-01 controls the row there.
+    assert "tracking/observation_ledger.json" in row["evidence"]
+    assert _control(_ledger(), "OL-A1")["controlling_instrument"] == "INS-01"
     assert "docs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md" not in row["evidence"]
     assert "threshold form on two of five" in row["notes"]
     assert "robust reference on one of five" in row["notes"]
@@ -38,7 +119,12 @@ def test_ol_c5_ins03_registration_is_explicitly_nonpromoting() -> None:
     row = rows["OL-C5"]
     assert row["status"] == "partial"
     assert row["open_premises"] == ["PR-03", "PR-64", "PR-65"]
-    assert "claims/emergent_instrument_register.json" in row["evidence"]
+    assert "tracking/observation_ledger.json" in row["evidence"]
+    ledger = _ledger()
+    assert _control(ledger, "OL-C5")["controlling_instrument"] is None
+    ins03 = next(item for item in ledger["instruments"]["rows"] if item["id"] == "INS-03")
+    assert ins03["ledger_row"] == "OL-C5"
+    assert ins03["status"] == "SPECIFIED"
     assert "unfrozen SPECIFIED design" in row["notes"]
     assert "no seed, freeze, simulator custody pin, run, verdict" in row["notes"]
     assert "or promotion authority" in row["notes"]
