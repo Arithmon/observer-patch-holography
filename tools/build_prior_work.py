@@ -306,6 +306,21 @@ def existing_references(target: Target, root: Path = ROOT) -> list[tuple[str, st
     return blocks
 
 
+def _block_titles(block: str) -> set[str]:
+    """Normalized title fields of one reference: BibTeX, quoted or emphasized."""
+    titles = re.findall(r"\btitle\s*=\s*[{\"](.+?)[}\"]\s*,?\s*$", block, re.M | re.I)
+    titles += re.findall(r"``(.+?)''", block, re.S)
+    titles += re.findall(r"\\emph\{([^{}]+)\}", block)
+    return {_normal(title) for title in titles}
+
+
+def _first_surname(author: str) -> str:
+    if author.startswith("{") and author.endswith("}"):
+        return _normal(author[1:-1])
+    first = author.split(" and ")[0].strip()
+    return _normal(first.split(",")[0] if "," in first else first.split()[-1])
+
+
 def match_existing(entry: dict, blocks: list[tuple[str, str]]) -> str | None:
     doi = (entry.get("doi") or "").lower()
     eprint = (entry.get("eprint") or "").lower()
@@ -317,6 +332,13 @@ def match_existing(entry: dict, blocks: list[tuple[str, str]]) -> str | None:
         if eprint and eprint in lower:
             return key
         if len(title) >= 24 and title in _normal(block):
+            return key
+    # A short title is too common to match inside a reference. It matches when
+    # it is that reference's whole title and the reference names the same
+    # first author: Kemeny and Snell's "Finite Markov Chains", for instance.
+    surname = _first_surname(entry["author"])
+    for key, block in blocks:
+        if title in _block_titles(block) and surname and surname in _normal(block):
             return key
     return None
 
