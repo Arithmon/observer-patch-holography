@@ -16,10 +16,18 @@ python -m model.verify
 python -m pytest -q -W error model
 ```
 
-The verifier checks the artifact manifests and replays the retained receipts:
-the native observer, its record capacity, a 20,000-trial sequential run, the
-P-dependent binary detector with 200,000 trials, the observer-local
-incident-tick calculation, and the scalar field detector with native feedback.
+The verifier checks the artifact manifests and replays all 21 retained
+receipts. The finite observer contributes the exact native observer, its
+quantum mixing and record capacity, a 20,000-trial sequential run, complete
+record recovery, the P-dependent binary detector with 200,000 trials and
+the observer-local incident-tick calculation. The field detectors
+contribute the scalar detector with native feedback, its retained two-read
+continuation, its local evolution and the source-compiled two-site
+apparatus. The prediction package and the source-executed C/E experiment
+contribute the instrument comparison. The common interacting source
+contributes its finite execution, the infinite-occupation history, the
+complete sharp-output comparison, the observer readout, smooth-detector and
+thermal-clock bridges, the causal cones and the native field relations.
 The tests independently check endpoint arithmetic,
 all retained histories, classical-record preservation, quantum coherence,
 controls, capacity and
@@ -75,72 +83,15 @@ analytic prescribed-magnetic-field continuum theorem, full-dimensional
 neutral-state preparation, and the closed-form neutral projection. Their separate acceptance rules do not certify
 physical calibration or useful interacting quantum propagation.
 
-The neutral-packet audit under [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033)
-preserves both the projection probability and the scalar nodal squared radius.
-At main `de60560b`, a zero center with scalar momentum `1e10`, width and hbar
-both one, returned radius zero instead of approximately 25. With scalar
-center `(1,0)` and momentum `(0,1e8)` in one complex plane, it also erased
-the norm's finite `exp(-1/2)` suppression. The retained original-input
-integral controls produced 22 failures and 9 passes before the repair.
-
-For scalar parts `x,p`, write `X=|x|²/(4 sigma²)`,
-`Y=sigma² |p|²/hbar²`, `A=X+Y`, `B=p·Jx/hbar`, `D=X-Y`,
-and `K=4XY-B² >= 0`. The producer forms these invariants over exact
-rationals from the supplied real scalars, before array coercion. Then
-`z=sqrt(D²+K)`, `A-z=B²/(A+z)`, and, for negative `D`,
-`z+D=K/(z-D)`. The zero case is handled separately. The equivalent radius
-is `2 sigma² (13+(z+D)-z(1-I1(z)/I0(z)))`. These identities remove the
-large subtractions; a private mpmath context budgets extra precision for
-the remaining Bessel ratio. The two public observables share this evaluator.
-Masked, boolean, complex and nonfinite inputs are rejected. Integer,
-Fraction and NumPy real scalars retain their original values.
-NumPy integers and integer components inside a Fraction are converted
-to unbounded Python integers before rational arithmetic; wrapping a NumPy
-integer in Fraction alone can retain fixed-width overflow.
-
-Every returned nonzero scalar must retain relative `1e-12` accuracy when
-converted to binary64, or that readout explicitly refuses the range. This
-is a reporting criterion, not a certified error enclosure. An unreportable
-probability does not prevent a separately representable normalized radius.
+The neutral-packet controls preserve the projection probability and the
+scalar nodal squared radius through exact-rational invariants and a budgeted
+high-precision evaluation.
 The pointwise projection evaluates the closed form of the circle integral,
-a modified Bessel function of the complex cosine and sine coefficients,
-derived in the [neutral-packet projection audit](docs/research/NEUTRAL_PACKET_PROJECTION_AUDIT.md).
-No angle count controls its accuracy: the legacy `nodes` argument is
-validated and has no effect. The normalized amplitude is returned even when
-the separately reported projection norm is unrepresentable.
-Its binary64 seed, rotation and phase-space callers validate the original
-entries too. They reject masked/boolean data and scalars whose conversion
-would change their value, including an integer displacement erased above
-`2^53`. This explicit caller limitation does not restrict the scalar
-norm/radius evaluator's exact-rational input arithmetic.
-The seed and the projection form displacements, dot products and the
-combined exponent as exact fractions of those entries. A private mpmath
-context evaluates the normalized expression; successive precisions must
-agree to relative `1e-30`, the binary64 result to relative `1e-12`, and a
-returned seed phase to `1e-12` radians. Unresolved zeros and unreportable
-amplitudes raise an error instead of returning NaN, zero or an underflowed
-Gaussian sample. This is a numerical stability policy, not an interval
-certificate.
-
-The independent receipt replay imports neither the packet producer nor the
-interacting coefficient evaluator. It uses positive one-dimensional integrals
-instead of Bessel functions, with a rescaled
-Gaussian integration coordinate at large `z`. Its scalar comparisons have
-no absolute tolerance that could accept erasing a small positive value.
-The phase-space replay first authenticates the reported numerical coordinates;
-the scalar integrals then use those coordinates, so roundoff in a second
-gauge solve cannot hide a wrong small charge. The integral representation
-and large-argument behavior are consistent with [DLMF 10.32](https://dlmf.nist.gov/10.32)
-and [10.40](https://dlmf.nist.gov/10.40).
-
-The live packet receipt is regenerated with
-`python code/electromagnetism/whitney_quantum_packet.py` and checked with
-`python code/electromagnetism/verify_whitney_quantum_packet.py`.
-Its mathematical preparation contract, exact initial data, supplied physical
-inputs and unproved propagation status are unchanged. No frozen evidence,
-paper theorem, registry payload or physical prediction is revised by this
-numerical repair. The pinned mandatory runner is unchanged; the dedicated
-neutral-packet workflow executes the extra controls on Linux and Windows.
+and the legacy `nodes` argument is validated and has no effect. The
+[neutral-packet projection audit](docs/research/NEUTRAL_PACKET_PROJECTION_AUDIT.md)
+gives the evaluator, its numerical contract, the independent replay and the
+receipt regeneration commands. The dedicated neutral-packet workflow
+executes these controls on Linux and Windows.
 
 ## Native observer dynamics and retained large-run statistics
 
@@ -401,11 +352,13 @@ Einstein-branch axiom check. `Lean/README.md` documents the layout;
 
 ## Paper review and publication builds
 
-Paper releases and broad prose restructuring are on hold under the
-[model research policy](model/CONSTRUCTION.md#research-programme-and-paper-release-hold).
-Correctness fixes, errata, review builds and their validation continue.
-The publication commands below require a maintainer decision to lift the
-hold for a model milestone or authorize a scoped corrective release.
+A new paper release follows the owner's approval of a recorded model
+milestone under the
+[model research policy](model/CONSTRUCTION.md#research-programme-and-paper-release-hold);
+the [paper set](docs/PAPER_SET.md) records the milestone and the role of each
+paper. Correctness fixes, errata, review builds and their validation continue
+between releases. The publication commands below require that maintainer
+decision or an authorized scoped corrective release.
 
 With the pinned publication tools above installed, rebuild every registered
 paper, including every extra and cosmology source, the warnings gate, the

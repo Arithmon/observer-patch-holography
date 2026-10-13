@@ -34,7 +34,7 @@ its authenticated provenance order by both local readback and cell centre,
 beside a freshly executed q=13 record-metric trace. Its independent verifier
 and complete artifacts live in that companion package.
 
-The [full routing construction](../../code/source_read_routing/README.md#comparison-with-the-completed-support-wiring-diagnostic)
+The [full routing construction](../../code/source_read_routing/README.md#diagnostic-boundary)
 checks its L3-L5 support captures against that diagnostic and compares every
 q13 baseline logical value and read-menu entry after full primitive replay.
 This is an agreement of the projected record-metric order under the supplied

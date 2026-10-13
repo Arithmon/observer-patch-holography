@@ -10,7 +10,7 @@ physical realization or discharge the papers' premise boundaries.
 
 ## Theory Overview
 
-- [Reconstruction chain](prediction-chain.svg), embedded in the root README
+- [Reconstruction chain](prediction-chain.svg), the published reconstruction poster
 - [Unification diagram](OPH_Unification_Diagram.svg) ([PNG](OPH_Unification_Diagram.png))
 - [Science overlap map](oph_science_overlap_map.svg) ([poster PNG](oph_science_overlap_map_poster.png))
 - [Observer screen](screen.svg)
@@ -24,7 +24,7 @@ physical realization or discharge the papers' premise boundaries.
 ## Publication Collections
 
 - [`book_diagrams/`](book_diagrams/) contains the chapter diagrams selected by the book builder.
-- [`french/`](french/) contains localized public figures.
+
 - [Book cover](book-cover.svg) is the canonical print-cover source.
 
-The README poster is `prediction-chain.svg`; this directory contains the published artifact.
+`prediction-chain.svg` is the published reconstruction poster.
