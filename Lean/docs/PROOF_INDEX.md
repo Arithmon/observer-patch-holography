@@ -69,6 +69,17 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   $R=I-L/60$ for thirty seams. The theorem does not assert that A1--A3
   select this grammar, that the refinement semigroup commutes, or that the
   finite generator is a physical repair law.
+- Declared repair law on the Euclidean history register (`SourceLaw/`):
+  sorry-free; `docs/research/SOURCE_LAW_HISTORY_REGISTER.md` names the
+  theorems behind its Lean statements. Entry points:
+  `eventually_repair_clock_iff`, `counterfamily_dynamical_response_shift`
+  and `calibrated_response_iff`
+  (RE-06 candidate), `golden_continuum_time_limit`, `equalTimeVar_err_uniform`
+  and `golden_joint_limit_L2` (RE-11 candidate), and `iterated_reference_limit`
+  (RE-09 candidate). The small-step admissibility premise and the declared law
+  are candidate hypotheses, the time-seam rate is a calibration, and the
+  supplied inputs stay explicit; no physical time or vacuum selection is
+  asserted.
 - Whitney positive modes and frame naturality
   (`Screen/WhitneyNormalModeConstruction.lean`, `Screen/WhitneyConeModes.lean`,
   `Screen/WhitneyConeMass.lean`, and the `Whitney*Naturality.lean` modules):
