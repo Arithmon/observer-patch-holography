@@ -72,7 +72,7 @@ of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 
-The [finite executable specification](common_source/COMPOSITION.md) now
+The [finite executable specification](common_source/COMPOSITION.md)
 connects the common source's preparation, complete instruments, retained
 records, feedback, continuation and occupation refinement through one
 [typed runtime](common_source/protocol.py). The old sharp and smooth
