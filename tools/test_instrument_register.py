@@ -1,4 +1,8 @@
-"""Drift and tamper rejection tests for the V3 emergent-instrument register."""
+"""Drift and tamper rejection tests for the V3 emergent-instrument register.
+
+The register is the ``instruments`` section of the observation ledger and
+renders as a section of the observation-ledger page.
+"""
 
 from __future__ import annotations
 
@@ -33,7 +37,7 @@ FIXTURE_RECEIPTS = [_local_artifact("docs/AXIOM_REFERENCE.md")]
 
 
 def _register() -> dict:
-    return copy.deepcopy(register_tool.load_json(register_tool.REGISTER_PATH))
+    return copy.deepcopy(register_tool.load_register())
 
 
 def _fixture_row(
@@ -224,9 +228,47 @@ def test_ins03_design_contract_is_explicit_unfrozen_and_nonpromoting() -> None:
 def test_rebuild_parity_with_committed_surface() -> None:
     register = _register()
     rows = register_tool.validate(register)
-    rendered = register_tool.render(register, rows).encode("utf-8")
-    committed = register_tool.SURFACE_PATH.read_bytes()
-    assert rendered == committed
+    rendered = register_tool.render(register, rows)
+    committed = register_tool.SURFACE_PATH.read_bytes().decode("utf-8")
+    assert register_tool.committed_section(committed) == rendered
+
+
+def test_register_is_the_instruments_section_of_the_observation_ledger() -> None:
+    root = register_tool.ROOT
+    assert register_tool.LEDGER_PATH == root / "tracking" / "observation_ledger.json"
+    assert register_tool.SURFACE_PATH == (
+        root / "docs" / "registers" / "OBSERVATION_LEDGER_V3.md"
+    )
+    ledger = register_tool.load_json(register_tool.LEDGER_PATH)
+    assert ledger["instruments"] == register_tool.load_register()
+    assert ledger["instruments"]["generated_surface"] == (
+        "docs/registers/OBSERVATION_LEDGER_V3.md"
+    )
+    assert not (root / "claims" / "emergent_instrument_register.json").exists()
+    assert not (root / "docs" / "registers" / "INSTRUMENT_REGISTER_V3.md").exists()
+
+
+def test_missing_section_fails_closed() -> None:
+    with pytest.raises(SystemExit, match="carries no instruments section"):
+        register_tool.register_section({"schema": "fixture", "issue": 726, "rows": []})
+
+
+def test_retired_generated_surface_rejected() -> None:
+    register = _register()
+    register["generated_surface"] = "docs/registers/INSTRUMENT_REGISTER_V3.md"
+    with pytest.raises(SystemExit, match="generated_surface must equal"):
+        register_tool.validate(register)
+
+
+def test_committed_section_bounds_are_exact() -> None:
+    register = _register()
+    section = register_tool.render(register, register_tool.validate(register))
+    page = "# Fixture page\n\n" + section
+    assert register_tool.committed_section(page) == section
+    assert register_tool.committed_section(page + "\n## Next section\n") == section
+    assert register_tool.committed_section(page + "stray line\n") != section
+    assert register_tool.committed_section(page + "\n" + section) is None
+    assert register_tool.committed_section("# Fixture page\n") is None
 
 
 def test_intro_explains_explicit_ledger_control() -> None:
@@ -439,7 +481,7 @@ def test_duplicate_artifact_path_rejected() -> None:
 
 
 def test_in_repo_artifact_hash_binding() -> None:
-    pinned = "claims/emergent_instrument_register.json"
+    pinned = "tracking/observation_ledger.json"
     digest = hashlib.sha256((register_tool.ROOT / pinned).read_bytes()).hexdigest()
 
     register = _register()
@@ -534,9 +576,18 @@ def test_nested_duplicate_json_key_rejected(tmp_path: Path) -> None:
 
 
 def test_stale_surface_fails_check(tmp_path, monkeypatch) -> None:
-    stale = tmp_path / "INSTRUMENT_REGISTER_V3.md"
+    stale = tmp_path / "OBSERVATION_LEDGER_V3.md"
     stale.write_bytes(b"stale\n")
     monkeypatch.setattr(register_tool, "SURFACE_PATH", stale)
+    assert register_tool.main(["--check"]) == 1
+
+
+def test_stale_section_content_fails_check(tmp_path, monkeypatch) -> None:
+    ledger = register_tool.load_json(register_tool.LEDGER_PATH)
+    ledger["instruments"]["rows"][1]["title"] = "OL-A1 factorial follow-up, retitled"
+    mutated = tmp_path / "observation_ledger.json"
+    mutated.write_text(json.dumps(ledger, ensure_ascii=False), encoding="utf-8")
+    monkeypatch.setattr(register_tool, "LEDGER_PATH", mutated)
     assert register_tool.main(["--check"]) == 1
 
 

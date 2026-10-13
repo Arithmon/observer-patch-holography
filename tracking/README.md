@@ -20,9 +20,9 @@ Finite construction evidence does not by itself promote a physical claim.
 - [`premise_register.json`](premise_register.json) is the V3 premise register
   source (rendered to `docs/registers/PREMISE_REGISTER_V3.md` by
   `python3 tools/build_premise_register.py`).
-- [`constants_ancestry.json`](constants_ancestry.json) classifies the source
+- [`observation_ledger.json`](observation_ledger.json) section `constants` classifies the source
   and comparison ancestry of constants rows (rendered to
-  `docs/registers/CONSTANTS_ANCESTRY_V3.md` by
+  `docs/registers/OBSERVATION_LEDGER_V3.md` by
   `python3 tools/build_constants_ancestry.py`).
 - [`sm_lagrangian_correspondence.json`](sm_lagrangian_correspondence.json) is
   the Standard Model Lagrangian correspondence source (rendered to

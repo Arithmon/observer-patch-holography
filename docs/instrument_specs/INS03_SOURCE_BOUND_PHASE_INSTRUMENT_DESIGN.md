@@ -25,8 +25,9 @@ the 2026-08-20 simulator alignment record. RER content is read at committed head
 ## A. Identity and scope
 
 - Instrument id: INS-03. Owning lane: issue #737, which owns the instrument
-  surface and the register `claims/emergent_instrument_register.json` with its
-  generated view `docs/registers/INSTRUMENT_REGISTER_V3.md`.
+  surface and the register, the `instruments` section of
+  `tracking/observation_ledger.json`, with its generated view, the
+  Emergent-Instrument Register section of `docs/registers/OBSERVATION_LEDGER_V3.md`.
 - Bound ledger row: OL-C5, "Phase completion and full operator tomography",
   lane issue 730, status `partial`, premises PR-02 and PR-04, open premises
   PR-03, PR-64, PR-65 (`tracking/observation_ledger.json`, generated view
@@ -731,8 +732,9 @@ and non-evidential, in the sense that `oph_fpe/qm_observer/DESIGN.md` and the
 boundary paragraph of `oph_fpe/quantum/phase_operation.py` state on their face.
 
 Standing verdicts: INS-01 remains the controlling completed verdict for OL-A1
-and its pins are immutable, as recorded in the ledger-control lineage of
-`docs/registers/INSTRUMENT_REGISTER_V3.md` and in the 2026-08-20 simulator alignment record.
+and its pins are immutable, as recorded in the ledger-control lineage of the
+Emergent-Instrument Register section of `docs/registers/OBSERVATION_LEDGER_V3.md` and in
+the 2026-08-20 simulator alignment record.
 INS-03 binds OL-C5 and does not enter that lineage. This design changes no
 ledger row, no premise row, and no register row: OL-C5 stays `partial` with
 open premises PR-03, PR-64, and PR-65, and PR-04 stays consumed under its

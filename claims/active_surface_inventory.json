@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 554,
+  "surface_count": 551,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1131,17 +1131,7 @@
       "allowlisted": true
     },
     {
-      "path": "docs/registers/CONSTANTS_ANCESTRY_V3.md",
-      "glob": "docs/**/*.md",
-      "allowlisted": false
-    },
-    {
       "path": "docs/registers/GRAVITY_PREMISE_LADDER.md",
-      "glob": "docs/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/registers/INSTRUMENT_REGISTER_V3.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },
@@ -1462,11 +1452,6 @@
     },
     {
       "path": "claims/dependency_graph.json",
-      "glob": "claims/*.json",
-      "allowlisted": false
-    },
-    {
-      "path": "claims/emergent_instrument_register.json",
       "glob": "claims/*.json",
       "allowlisted": false
     },

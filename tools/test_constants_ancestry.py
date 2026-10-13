@@ -1,4 +1,8 @@
-"""Drift and tamper rejection tests for the V3 constants ancestry surface."""
+"""Drift and tamper rejection tests for the V3 constants ancestry surface.
+
+The register is the ``constants`` section of the observation ledger and
+renders as a section of the observation-ledger page.
+"""
 
 from __future__ import annotations
 
@@ -16,7 +20,7 @@ import build_constants_ancestry as ancestry_tool
 
 
 def _register() -> dict:
-    return copy.deepcopy(ancestry_tool.load_json(ancestry_tool.REGISTER_PATH))
+    return copy.deepcopy(ancestry_tool.load_register())
 
 
 def _row(register: dict, row_id: str) -> dict:
@@ -35,9 +39,60 @@ def test_committed_register_validates() -> None:
 
 def test_rebuild_parity_with_committed_surface() -> None:
     rows = ancestry_tool.validate(_register())
-    rendered = ancestry_tool.render(rows).encode("utf-8")
-    committed = ancestry_tool.SURFACE_PATH.read_bytes()
-    assert rendered == committed
+    rendered = ancestry_tool.render(rows)
+    committed = ancestry_tool.SURFACE_PATH.read_bytes().decode("utf-8")
+    assert ancestry_tool.committed_section(committed) == rendered
+
+
+def test_register_is_the_constants_section_of_the_observation_ledger() -> None:
+    root = ancestry_tool.ROOT
+    assert ancestry_tool.OBSERVATION_LEDGER_PATH == (
+        root / "tracking" / "observation_ledger.json"
+    )
+    assert ancestry_tool.SURFACE_PATH == (
+        root / "docs" / "registers" / "OBSERVATION_LEDGER_V3.md"
+    )
+    ledger = ancestry_tool.load_json(ancestry_tool.OBSERVATION_LEDGER_PATH)
+    assert ledger["constants"] == ancestry_tool.load_register()
+    assert not (root / "tracking" / "constants_ancestry.json").exists()
+    assert not (root / "docs" / "registers" / "CONSTANTS_ANCESTRY_V3.md").exists()
+
+
+def test_missing_section_fails_closed() -> None:
+    with pytest.raises(SystemExit, match="carries no constants section"):
+        ancestry_tool.register_section({"schema": "fixture", "issue": 726, "rows": []})
+
+
+def test_section_page_is_scanned_by_the_reader_style_gate() -> None:
+    import check_reader_style
+
+    scanned = {
+        path.relative_to(ancestry_tool.ROOT).as_posix()
+        for path in check_reader_style.iter_paths(check_reader_style.REGISTER_GLOBS)
+    }
+    assert "docs/registers/OBSERVATION_LEDGER_V3.md" in scanned
+    page = ancestry_tool.SURFACE_PATH.read_text(encoding="utf-8")
+    assert page.count(f"\n{ancestry_tool.SECTION_HEADING}\n") == 1
+
+
+def test_ledger_status_column_reads_the_supplied_ledger_rows() -> None:
+    committed = ancestry_tool.render(ancestry_tool.validate(_register()))
+    assert "| CA-06 | hadron spectrum | `diagnostic` | OL-H6 | `owed` |" in committed
+    assert "Status pairing" in committed
+
+    ledger_rows = copy.deepcopy(ancestry_tool.load_ledger_rows())
+    ledger_rows["OL-H6"]["status"] = "partial"
+    rows = ancestry_tool.validate(_register(), ledger_rows=ledger_rows)
+    rendered = ancestry_tool.render(rows, ledger_rows=ledger_rows)
+    assert "| CA-06 | hadron spectrum | `diagnostic` | OL-H6 | `partial` |" in rendered
+    assert "Status pairing" not in rendered
+
+
+def test_supplied_ledger_rows_drive_the_premise_cross_check() -> None:
+    ledger_rows = copy.deepcopy(ancestry_tool.load_ledger_rows())
+    ledger_rows["OL-H3"]["premises"].remove("PR-13")
+    with pytest.raises(SystemExit, match="observation-ledger premises"):
+        ancestry_tool.validate(_register(), ledger_rows=ledger_rows)
 
 
 def test_check_mode_passes_on_committed_artifacts() -> None:
@@ -202,8 +257,18 @@ def test_dropped_row_rejected() -> None:
 
 
 def test_stale_surface_fails_check(tmp_path, monkeypatch) -> None:
-    stale = tmp_path / "CONSTANTS_ANCESTRY_V3.md"
+    stale = tmp_path / "OBSERVATION_LEDGER_V3.md"
     stale.write_bytes(b"stale\n")
     monkeypatch.setattr(ancestry_tool, "SURFACE_PATH", stale)
     monkeypatch.setattr(sys, "argv", ["build_constants_ancestry.py", "--check"])
     assert ancestry_tool.main() == 1
+
+
+def test_stale_section_content_fails_check(tmp_path, monkeypatch) -> None:
+    ledger = ancestry_tool.load_json(ancestry_tool.OBSERVATION_LEDGER_PATH)
+    ca07 = next(row for row in ledger["constants"]["rows"] if row["id"] == "CA-07")
+    ca07["falsifier"]["rule"] += " Fixture sentence."
+    mutated = tmp_path / "observation_ledger.json"
+    mutated.write_text(json.dumps(ledger, ensure_ascii=False), encoding="utf-8")
+    monkeypatch.setattr(ancestry_tool, "OBSERVATION_LEDGER_PATH", mutated)
+    assert ancestry_tool.main(["--check"]) == 1

@@ -1,5 +1,5 @@
 {
-  "schema": "oph.observation_ledger.v4",
+  "schema": "oph.observation_ledger.v5",
   "issue": 726,
   "rows": [
     {
@@ -10,7 +10,7 @@
       "lane_issue": 728,
       "premises": [],
       "evidence": [
-        "claims/emergent_instrument_register.json"
+        "tracking/observation_ledger.json"
       ],
       "notes": "The preregistered fresh-seed replication returned FAILED. The 65536-carrier rung reproduced the threshold (1,3) form and its preregistered robust reference on five of five replicates. The 16384-carrier rung reproduced the threshold form on two of five and its robust reference on one of five, so it is seed-sensitive; this does not prove carrier count is the cause. The margin-ratio trend missed its declared band on all five, and the ancestry-permutation null did not discriminate, so the estimator does not attribute the signature to ancestry structure. The emergent rung is demoted per the frozen rule; INS-01 supplies the controlling scientific verdict. INS-02 records a deferred carrier-count-by-absolute-support-size design with the 16384 rung, fixed observer count, and stronger quantitative ancestry controls; it is not frozen or authorized to run and changes no scientific classification.",
       "open_premises": []
@@ -582,7 +582,7 @@
         "Lean/EventAlgebra/SourcePhaseInstrumentOutcomeBridge.lean",
         "Lean/EventAlgebra/SourcePhaseCommonPreparationHull.lean",
         "Lean/EventAlgebra/SourcePhaseBornWeightBoundary.lean",
-        "claims/emergent_instrument_register.json",
+        "tracking/observation_ledger.json",
         "Lean/EventAlgebra/SourceBoundInstrumentInterface.lean",
         "code/phase_instrument_export/ins03_export_validator.py",
         "code/phase_instrument_export/VALIDATOR_CONTRACT.md",
@@ -2392,5 +2392,547 @@
         "PR-65"
       ]
     }
-  ]
+  ],
+  "instruments": {
+    "schema": "oph.emergent_instrument_register.v5",
+    "issue": 737,
+    "generated_surface": "docs/registers/OBSERVATION_LEDGER_V3.md",
+    "policy": "This register distinguishes an open SPECIFIED design from a preregistered FROZEN instrument: SPECIFIED means mutable design only, with no freeze, authorization, or evidential verdict. A completed positive verdict can support an observation-ledger rung only when the committed receipts satisfy the frozen decision rule and the ledger-control lineage explicitly selects it. Each ledger control declares the exact row-status consequence of a selected REPLICATED or FAILED verdict and the open premises that verdict cannot remove; a later design or incomplete run cannot overwrite either boundary. A ledger row with no decisive completed instrument carries an explicit null controller and cannot be marked attained; a later decisive verdict must be selected explicitly in the same scientific update that applies its declared ledger consequence. The register is separate from the frozen-prediction ladder, which is reserved for physical predictions against external data. Negative and control outcomes are reported with the same prominence as positive ones. Fail closed on post-hoc analyses labeled as validation, parameters revised after data, silent reruns, omitted controls, and any run whose configuration is not reproducible from committed artifacts. The authenticated Whitney Maxwell software readback is a mathematical execution certificate with prescribed geometric evolution, not a frozen physical-adequacy instrument. Its three instrumented slices and separate 64-slab numerical continuation, the free-sector quantum construction and the analytic charged-matter action do not select or change any instrument verdict or observation-ledger controller. The separate 81-sample charged-scalar trajectory checks the full 68 equations and 13 Gauss constraints on the supplied cone but contains no authenticated observer events or quantum-state history. Its numerical convergence checks, the analytic spatial action consistency, complete interacting metric, essential self-adjointness and explicitly normalized neutral initial-state packet with exact scalar moments are mathematical evidence; they do not select a frozen physical instrument, alter any verdict, or promote an observation-ledger controller. The coupled software observer execution, Jacobi duration readout, invariant real-sector continuum theorem and conservative quantum trial history are mathematical/software evidence only. They do not change a physical instrument verdict, observed postdiction, prospective freeze, calibration import or physical-adequacy rung. The golden-source free-scalar compact-detector certificate and local gauge/Grassmann jet action are mathematical comparisons and exact conditional action checks. They do not instantiate a frozen empirical instrument, alter a controlling verdict or establish a measured world. The separate q=5 authenticated scalar execution and Cartan-scalar current/feedback pilot are conditional mathematical/software evidence. Their exact identities, finite temporal bound and independently replayed numerical readouts do not constitute eligible external measurements, arm a prediction or change any frozen row, instrument verdict or observation classification. The finite native-repair histories, all-schedule scale transfer, seeded refinement covariance, port-transport controls and layered-clock experiments in evidence/observer_dynamics_20260925 are mathematical and software evidence. The schedule ensemble conditions on one load per rung, refinement chains share parents, temporal clock correction consumes the supplied geometry, and the conditional CMB comparison retains supplied primordial and background inputs. These results do not instantiate a frozen physical instrument, alter a controlling verdict or promote a physical adequacy rung. The common classical feedback packet, finite local scalar force preparation, native geometric-source obstruction and action-measure reconstruction are conditional mathematical/software evidence. They keep supplied action, preparation, operation, clock and constitutive assumptions explicit; no quantum outcomes or physical metric/source law are observed. Their independent finite certificates do not instantiate a frozen empirical instrument, select a controlling verdict, arm a prediction or promote any observation-ledger rung. The finite native current recorder, P-dependent binary detector, correctable-record capacity adapter and N4 local-tick certificate run under model/. Their complete-history calculations and seeded receipts support the four OPH-MODEL execution claims under their explicit design contracts. They do not create a prospective freeze, laboratory outcome, instrument verdict or observation-ledger promotion. The native current tape does not implement the separately supplied N4 bare-occupation readout, and the P detector does not discharge the physical Thomson attachment. The scalar-response observer adapter executes a binary field instrument and native feedback under a supplied scalar Hamiltonian, original vacuum and golden refinement family. Its explicit branch states, retained bits and conditional feedback/refinement prediction are software evidence. They create no physical frozen-instrument verdict, eligible external observation or observation-ledger promotion.",
+    "ledger_controls": [
+      {
+        "ledger_row": "OL-A1",
+        "controlling_instrument": "INS-01",
+        "replicated_consequence": "attain_row",
+        "failed_consequence": "owe_row",
+        "replicated_preserves_open_premises": [],
+        "failed_preserves_open_premises": [],
+        "supersession_policy": "INS-01 remains controlling after its FAILED verdict. A later instrument may supersede it only when that instrument is REPLICATED under its frozen decision rule and is then explicitly selected here. Until both conditions hold, OL-A1 remains owed."
+      },
+      {
+        "ledger_row": "OL-C5",
+        "controlling_instrument": null,
+        "replicated_consequence": "support_only",
+        "failed_consequence": "block_attainment",
+        "replicated_preserves_open_premises": [
+          "PR-03"
+        ],
+        "failed_preserves_open_premises": [
+          "PR-03"
+        ],
+        "supersession_policy": "No completed decisive instrument controls OL-C5. INS-03 is SPECIFIED design work only and cannot move the ledger row. A later decisive verdict must be selected explicitly here in the same scientific update that applies its ledger consequence."
+      }
+    ],
+    "rows": [
+      {
+        "id": "INS-01",
+        "title": "OL-A1 (1,3) signature replication instrument",
+        "owning_issue": 737,
+        "ledger_row": "OL-A1",
+        "status": "FAILED",
+        "spec_pointer": "docs/instrument_specs/OL_A1_SIGNATURE_REPLICATION_SPEC.md",
+        "decision_rule": "Pointer while SPECIFIED: the binding text is the Tier A decision rule in the specification, copied verbatim into this field at freeze time. Tier A summary: arms A1 = 16384/128/96, A2 = 65536/256/96, and C1 = 16384/128/6 with five declared replicates per arm; observables O1 threshold inertia, O2 robust inertia at relative tau 1e-3 with reference (1,2)/(1,2)/(2,1), O3 degeneracy ratio against the reference band 2e-5..4e-5, O4 cone margin and rung ratio (retained 0.5725, declared band 0.35..0.80), O5 structural diagnostics, and O6 split-half inertia concordance; verdict REPLICATED, FAILED, or INCONCLUSIVE per the frozen rule, and FAILED demotes the OL-A1 emergent rung with equal prominence. Eigenvalue caution: the archived (1,3) threshold verdict rides on one eigenvalue at relative magnitude about 3e-5 against a 1e-12 threshold; at a relative threshold of 1e-3 the robust inertia of the retained rungs is (1,2) with one degenerate direction, matching the independently measured (1,2) receipt, and a fresh seed can flip (1,3) to (2,2) with no change in physical content. Every public sentence about this instrument carries that caution.",
+        "seeds_policy": "One fresh seed drawn at freeze time and five declared replicate ids per arm. The held-out split is stride-structured per rung (strides 8/35/141), so train/held-out parity structure is recorded and stratified across replicates. N = 5 resolves seed fragility at the 1-in-5 level only, and the report states so. The runtime environment is single and recorded.",
+        "controls": [
+          "C-SUPPORT: matched support-density control at 16384/128/6; a fired control reads as mean signature degradation plus halved cross edges.",
+          "C-ANCESTRY: ancestry-permutation null at zero extra runtime; the null destroys (1,3) on at least 4 of 5 replicates."
+        ],
+        "custody_repository": {
+          "url": "https://github.com/muellerberndt/oph-physics-sim",
+          "commit": "42aa96607f40dae94c5a8b65e9dd8e71e5b6434e"
+        },
+        "freeze_artifacts": [
+          {
+            "path": "oph-physics-sim/scripts/ol_a1_signature_replication.py",
+            "sha256": "6cd6b179e9f62e7d7f5f1177ec4cfa329a07c0279ef9e7aedc7aef2383e8acc1"
+          },
+          {
+            "path": "oph-physics-sim/docs/OL_A1_PREREGISTERED_SIGNATURE_REPLICATION_2026-08-12.md",
+            "sha256": "b4953ec083e9af7121baf0656d97ab538598e705575f7b6742a26c9ade7490ae"
+          },
+          {
+            "path": "oph-physics-sim/docs/OL_A1_SEED_TABLE_2026-08-12.json",
+            "sha256": "acc8d5d67c2a4eaffe25c07fcdbfdcd7175a8b9a82142b8edb53d0d402f70f05"
+          }
+        ],
+        "frozen_utc": "2026-08-12T19:14:51Z",
+        "lineage_predecessor": null,
+        "limitations": "The committed campaign retains the manifest, summary, and fifteen per-arm receipt files but no raw feature matrices or fit captures from which an independent implementation could reconstruct every observable. The simulator's validate-only mode rechecks the committed receipt fields and frozen decision rule using the producer implementation; it is not an independent observable recomputation. The pinned campaign commit is present in the sibling custody checkout and is reachable from the configured GitHub remote's main branch; remote reachability closes only the publication-custody check and does not supply the missing raw captures or an independent observable recomputation. Instrument defect found 2026-08-21: the event chart mixes an integer ancestry-depth coordinate with three spectral coordinates whose spreads differ by about three orders of magnitude (depth standard deviation 29.11 against spectral 0.043 to 0.049 on a 2,048-carrier capture), so the quadratic form was dominated by the depth direction and the spectral directions collapsed to an eigenvalue at 1.3e-05 relative magnitude; the reported signature turned on which side of the inertia cut that degenerate direction fell, which is the recorded seed fragility. Repaired in oph-physics-sim commit 017ec2a by standardize_chart and a standardize flag on the fit, which resolves every direction and makes the signature invariant under per-coordinate rescaling, with the flag defaulting to off so committed receipts replay unchanged. The repair does not restore discriminating power: against the C-ANCESTRY null the null reproduces the data inertia in 4 of 5 permutations before and after, and the held-out cone margin is unchanged and negative, because eigenvalue sign counts do not test attribution to ancestry structure. No repaired rerun was performed on that basis.",
+        "verdict_receipts": [
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/manifest.json",
+            "sha256": "befad341fdc5dfe8dcc1370c9ec613748b3891f7744957b133251ac36ac85d28"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/campaign_summary.json",
+            "sha256": "e9f8cd54f1451b546a88341f678203f87f500dd4207584309dbe9a0612d2fe6b"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_A1_ola1.r1.json",
+            "sha256": "66be4d632ae4a37b42369b6a89ee0bee4d6c667fd9cc612449fbc7f7fbb9b515"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_A1_ola1.r2.json",
+            "sha256": "87841e0a5fab7feca514cba821c158c177bb308c53cba6f9d3a8c96d2276f765"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_A1_ola1.r3.json",
+            "sha256": "03d5b2e305bd5652d73b60bdc757d8c9812007a9b81648602e02772522161674"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_A1_ola1.r4.json",
+            "sha256": "07c43363eb37ae908d6ef2d203b9b4afbe080d05a52802c69ce20d80bc649ece"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_A1_ola1.r5.json",
+            "sha256": "bf81a4f85aca32f6292458005d481590d7c9556ae9829025a607d9c0f048125a"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_A2_ola1.r1.json",
+            "sha256": "0a4dd46e524914f54c307ebbd970e85fe8bba1abc733f2e62b6a970c32b1e016"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_A2_ola1.r2.json",
+            "sha256": "e2da7a503978ef7e66b780a40017e491c09f80e03da10c9c5f0095975f64a416"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_A2_ola1.r3.json",
+            "sha256": "86f387b87ae7dd16792a0df6a1f5d09b99c759deb30f8696848739b1fdd67d24"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_A2_ola1.r4.json",
+            "sha256": "83e1719b8efec4a73a9decf9f2cb8ddddb46ed1f4fb5d842ee7a04771c1e5bba"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_A2_ola1.r5.json",
+            "sha256": "5dc398c3f86f8b172bfd5cee1332c3077d7c69a7381f4b46092fc96953e77eb4"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_C1_ola1.r1.json",
+            "sha256": "ae4d18d3c7a4c113d5fa279b4198218589d546b962b7294736f48045c8b0b8c4"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_C1_ola1.r2.json",
+            "sha256": "b38f02987fb5c10b8ef4971b6078b4cda2943f2f0258fd3267416618cc2abcb2"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_C1_ola1.r3.json",
+            "sha256": "39cbb3c7a4bcd37c71e68302bece6dba606bbe7f3f3413d077a6c5257e0b1bd7"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_C1_ola1.r4.json",
+            "sha256": "109257fa22802d15c9fd8d2bff14dfc0e1584d634e05bda038c77a559d387e7c"
+          },
+          {
+            "path": "oph-physics-sim/data/ol_a1_replication/run_C1_ola1.r5.json",
+            "sha256": "0461bc690c019ed34ad974aee7deaba0247c2d64b607c78ba107202e649404f4"
+          }
+        ]
+      },
+      {
+        "id": "INS-02",
+        "title": "OL-A1 factorial carrier-count and support-size follow-up",
+        "owning_issue": 737,
+        "ledger_row": "OL-A1",
+        "status": "SPECIFIED",
+        "spec_pointer": "docs/instrument_specs/OL_A1_FACTORIAL_FOLLOWUP_DESIGN.md",
+        "decision_rule": "Design-stage pointer only. The mutable design envelope crosses candidate carrier counts 16,384; 65,536; 131,072; and 262,144 with candidate absolute support sizes 48; 96; and 192 at one observer count fixed at the future preregistration, provisionally 256. A later freeze must report threshold stability, continuous spectral margins, carrier-count and absolute-support-size main effects, their interaction, quantitative ancestry-destruction and synthetic-sensitivity gates, sham equivalence, and cone-margin scaling separately through one fixed estimator before applying a predeclared overall REPLICATED, FAILED, or INCONCLUSIVE rule. No component pass may overwrite a failed control or endpoint, and no component failure may erase a separately reported component pass. These values and rules remain mutable until a target-blind freeze and do not authorize execution.",
+        "seeds_policy": "No seed has been drawn. Before a future freeze, a target-blind prospective precision and power calculation must determine the replicate count from declared minimum effects, interval widths, multiplicity, and attrition; no fixed count is presumed sufficient. Fresh seeds form paired blocks spanning every retained factorial cell and control, with cell execution order randomized within each block, no seed redraw or optional stopping, and one recorded runtime environment. Runtime-only pilots may measure cost but may not expose signature, margin, or control outcomes.",
+        "controls": [
+          "Degree-preserving ancestry rewiring must preserve carrier count, degree sequence, support counts, and one-point record marginals while breaking lineage correlations.",
+          "Depth-stratified lineage shuffling must preserve the population at every declared depth while breaking cross-depth family identity.",
+          "A sham identifier relabeling must preserve the complete ancestry graph and leave the analysis invariant.",
+          "A synthetic ancestry-sensitive statistic of known sign must pass a predeclared quantitative recovery gate through the same estimator used for the main and ancestry-destroyed cells; it has no promotion authority."
+        ],
+        "custody_repository": null,
+        "freeze_artifacts": [],
+        "frozen_utc": null,
+        "lineage_predecessor": "INS-01",
+        "limitations": "This is an open SPECIFIED design, not a preregistration or authorization to run. Candidate carrier counts, absolute support sizes, fixed observer count, replicate count, statistics, and quantitative gates remain mutable until a target-blind freeze. INS-01 remains the controlling completed verdict and OL-A1 remains owed; INS-02 cannot supersede it unless a later frozen run returns REPLICATED and the ledger control explicitly selects it.",
+        "verdict_receipts": []
+      },
+      {
+        "id": "INS-03",
+        "title": "OL-C5 static phase-fixture validator and future source-bound readout design",
+        "owning_issue": 737,
+        "ledger_row": "OL-C5",
+        "status": "SPECIFIED",
+        "spec_pointer": "docs/instrument_specs/INS03_SOURCE_BOUND_PHASE_INSTRUMENT_DESIGN.md",
+        "decision_rule": "The implemented v1 validator is static-only. A valid committed synthetic fixture returns STATIC_COMMITTED_FIXTURE_CONFORMANT after exact schema, digest, Hermiticity, Kraus-effect, 0 <= E_i <= I, opposite-effect complement, normalization, and expected-frequency checks. Matrix-unit trace differences are diagnostics, not trace-nonincreasing certificates. Every object claiming producer provenance returns PRODUCER_AUTHENTICATION_UNIMPLEMENTED. Neither result maps to REPLICATED or FAILED and neither changes OL-C5. A future authenticated v2 may be frozen target-blind to evaluate source production, preparation, provenance, custody, phase discrimination, PR-64 readback, controls, and PR-03 additivity; only that separate preregistration may define PASS-to-REPLICATED, FAIL-to-FAILED, and missing-producer-to-INCONCLUSIVE mappings. No numeric placeholder is bound here and this mutable design authorizes no execution.",
+        "seeds_policy": "No seed has been drawn. Before a future freeze, every threshold, interval construction, multiplicity family, context and effect list, excluded-input set, missing-data rule, and block count binds target-blind. A prospective precision calculation fixes the block count from declared effects, interval widths, multiplicity, and attrition. One fresh master seed then uses a frozen collision-free derivation to paired block and cell seeds, with execution order randomized within blocks, no redraw, no substitution, no optional stopping, and one recorded runtime environment. Runtime-only pilots may measure cost but may not expose preparation coordinates, outcome counts, endpoints, or control results.",
+        "controls": [
+          "The v1 checker recomputes each Kraus effect, proves exact two-by-two Hermitian positive-semidefinite certificates for E_i and I-E_i, and requires I-E_i to equal the opposite declared outcome effect.",
+          "The v1 checker recomputes the matrix-unit trace-action table as a diagnostic and does not require its generally nonzero differences to vanish.",
+          "The static declared-table comparison carries no promotion authority and returns only STATIC_COMMITTED_FIXTURE_CONFORMANT for the committed synthetic fixture.",
+          "Every producer-provenance claim is rejected as PRODUCER_AUTHENTICATION_UNIMPLEMENTED until a separately frozen v2 binds an authenticated producer, raw artifacts, run configuration, outcomes, and custody."
+        ],
+        "custody_repository": null,
+        "freeze_artifacts": [],
+        "frozen_utc": null,
+        "lineage_predecessor": null,
+        "limitations": "This is an unfrozen mutable design with an implemented static conformance checker, not a preregistration or an authenticated simulator instrument. The row pins no producer, custody repository, seed, freeze artifact, run, raw capture, verdict receipt, source preparation, recorded public outcome, operational readback, provenance, or custody. The v1 synthetic fixture is a transcription of committed objects and its static verdict has no scientific promotion authority. OL-C5 remains partial; PR-03, the public-readback remainder of PR-64, and PR-65 remain open, while PR-04 remains a declared consumed effect. At present, no endpoint in this design supplies the operational derivation required to remove PR-03. For any future authenticated-v2 verdict, the registered consequence contract remains: REPLICATED support_only and FAILED block_attainment; neither verdict alone attains or owes the whole ledger row. OL-C5 has no controlling instrument, and INS-03 neither supersedes INS-01 or INS-02 nor authorizes a simulator run. Any evidential freeze or execution requires a separate immutable authenticated-v2 preregistration and explicit authorization.",
+        "verdict_receipts": []
+      }
+    ]
+  },
+  "constants": {
+    "schema": "oph.constants_ancestry.v3",
+    "issue": 736,
+    "rows": [
+      {
+        "id": "CA-01",
+        "constant": "fine-structure constant",
+        "value_or_enclosure": {
+          "artifact": "code/P_derivation/runtime/empirical_thomson_endpoint_current.json",
+          "reading": "The certified Thomson endpoint enclosure is the alpha_inv_interval field with central alpha_inv_central, compare-only under the recorded guards; the P fixed-point enclosure behind it is certified in code/P_derivation/runtime/p_interval_contraction_certificate_2026-07-14.json."
+        },
+        "ancestry": [
+          {
+            "input": "numerical input P: the interval-certified fixed point of the declared screen-grain map",
+            "class": "P",
+            "register_row": "PR-17"
+          },
+          {
+            "input": "declared closure-map selection: the one-loop running and matching conventions, the tree-level m_Z closure, and the continuation masses enter as declared map data, certified as declared in the interval certificate",
+            "class": "register_import",
+            "register_row": "PR-37"
+          },
+          {
+            "input": "declared same-quantity bridge: identification of the screen detuning reading and the electromagnetic return reading of P as one typed quantity",
+            "class": "register_import",
+            "register_row": "PR-38"
+          },
+          {
+            "input": "declared physical Thomson readback contract behind the endpoint transport",
+            "class": "register_import",
+            "register_row": "PR-39"
+          },
+          {
+            "input": "hadronic transport packet: the pinned measured e+e- hadronic compilation payload consumed by the endpoint transport",
+            "class": "register_import",
+            "register_row": "PR-14"
+          },
+          {
+            "input": "closed one-loop lepton vacuum-polarization transport kernel",
+            "class": "external_mathematics"
+          },
+          {
+            "input": "CODATA inverse fine-structure witness, compare-only",
+            "class": "measured_comparison_target"
+          }
+        ],
+        "status": "diagnostic",
+        "ledger_row": "OL-H1",
+        "evidence": [
+          "code/P_derivation/fixed_point_certificate.py",
+          "code/P_derivation/runtime/p_interval_contraction_certificate_2026-07-14.json",
+          "code/P_derivation/runtime/p_global_uniqueness_extension_certificate_2026-07-17.json",
+          "code/P_derivation/runtime/empirical_thomson_endpoint_current.json",
+          "docs/POSTDICTION_LEDGER.md"
+        ],
+        "falsifier": {
+          "artifact": "docs/POSTDICTION_LEDGER.md",
+          "rule": "The interval-certified enclosures are the kill surface: a failed fixed-point enclosure kills the root, and a source-emitted bridge value outside the recorded same-scheme accounting interval refutes the declared decomposition. PR-37 through PR-39 are registered, but promotion beyond diagnostic also requires their bridge contracts to be inhabited or discharged and the measured-target ancestry to be removed; registration alone never promotes the row. The certified Thomson-endpoint enclosure is a bound kill surface for the endpoint transport as declared: the current certificate records the CODATA witness outside that enclosure, with the hadronic payload required to reach the witness outside the measured payload interval, and that record bars the endpoint row from any status above diagnostic. The endpoint transport falls outright if a same-scheme transport with hadronic vacuum polarization included, computed on the declared maps, also places the witness outside its certified enclosure."
+        },
+        "diagnostic_import_register_rows": []
+      },
+      {
+        "id": "CA-02",
+        "constant": "cosmological constant via N",
+        "value_or_enclosure": {
+          "artifact": "code/capacity_readback/manifests/n_closure_branch_certificate.json",
+          "reading": "The two recorded branch values N = N0*(1 - P/24) and N = N0*exp(-P/24) over the conditional baseline N0 = pi*exp(6*pi/(P*alpha_U)); both branches carry status conditional_unselected_retrospective, every physical attachment gate is open, and the row is shared with the gravitation lane row OL-B5."
+        },
+        "ancestry": [
+          {
+            "input": "numerical input N under the declared capacity map; the direct proposal is not evaluable on the incomplete source antecedent",
+            "class": "N",
+            "register_row": "PR-17"
+          },
+          {
+            "input": "numerical input P entering the conditional baseline and both reserve corrections",
+            "class": "P",
+            "register_row": "PR-17"
+          },
+          {
+            "input": "declared fine-structure closure map and running conventions inherited by the conditional alpha_U branch",
+            "class": "register_import",
+            "register_row": "PR-37"
+          },
+          {
+            "input": "declared electroweak sector selections inherited by the conditional alpha_U branch",
+            "class": "register_import",
+            "register_row": "PR-41"
+          },
+          {
+            "input": "declared common screen-electroweak load and global-capacity same-quantity bridge",
+            "class": "register_import",
+            "register_row": "PR-51"
+          },
+          {
+            "input": "conditional screen and electroweak bridge value alpha_U evaluated on those registered but undischarged premises",
+            "class": "derived"
+          },
+          {
+            "input": "exact two-branch reserve arithmetic 1 - P/24 and exp(-P/24) typed by the finite edge-center receipt; neither branch is selected",
+            "class": "derived"
+          },
+          {
+            "input": "Planck posterior propagation of the measured cosmological constant to an N comparison value with recorded offsets",
+            "class": "measured_comparison_target"
+          }
+        ],
+        "status": "diagnostic",
+        "ledger_row": "OL-H2",
+        "evidence": [
+          "code/capacity_readback/manifests/n_closure_branch_certificate.json",
+          "code/capacity_readback/direct_n_closure_verdict.py",
+          "code/capacity_readback/planck_posterior/planck_lambda_to_N_propagation.json",
+          "Lean/ObserverPatchHolography/GlobalCapacityAttachment.lean",
+          "cosmology/oph_cosmological_vacuum_and_structure_formation.tex"
+        ],
+        "falsifier": {
+          "artifact": "code/capacity_readback/manifests/n_closure_branch_certificate.json",
+          "rule": "No averaging or selection between the two corrections without a derivation. A source-derived global capacity action must select the reserve semantics; a selected action whose value lies outside both recorded branches kills the route, and the recorded Planck offset is the standing comparison."
+        },
+        "diagnostic_import_register_rows": []
+      },
+      {
+        "id": "CA-03",
+        "constant": "charged-lepton masses",
+        "value_or_enclosure": {
+          "artifact": "code/particles/runs/status/postdiction_ledger.json",
+          "reading": "The charged_leptons section carries the certified rows: the Koide conditional tau enclosure under the balanced-circulant and mass-ordering premises, the anchor-gap accounting interval with the recorded scheme term, and the rectangle and coherent kappa intervals with the witness triple inside every interval; decimal enclosures are certified by code/particles/leptons/charged_interval_decimal_certificate.py."
+        },
+        "ancestry": [
+          {
+            "input": "Koide balance premise, taken from the relation Koide published",
+            "class": "register_import",
+            "register_row": "PR-13"
+          },
+          {
+            "input": "clock and energy calibration anchors for the MeV attachment of the mass rows",
+            "class": "register_import",
+            "register_row": "PR-15"
+          },
+          {
+            "input": "declared payload-coherent anchor-gap premise of the coherent kappa interval closure",
+            "class": "register_import",
+            "register_row": "PR-40"
+          },
+          {
+            "input": "positive-chamber circulant identity and the machine-checked interval inversion arithmetic",
+            "class": "derived"
+          },
+          {
+            "input": "measured electron and muon masses as anchors and the measured tau mass as the compare witness",
+            "class": "measured_comparison_target"
+          },
+          {
+            "input": "hadronic transport packet entering the alpha(m_Z) anchor transport of the kappa solve (delta_alpha_had_5 window)",
+            "class": "register_import",
+            "register_row": "PR-14"
+          },
+          {
+            "input": "numerical input P entering through the a0(P) inverse fine-structure anchor behind the transport inversion",
+            "class": "P",
+            "register_row": "PR-17"
+          },
+          {
+            "input": "the CODATA inverse fine-structure value as the declared empirical closure of the anchor transport",
+            "class": "measured_comparison_target"
+          }
+        ],
+        "status": "postdiction_comparison",
+        "ledger_row": "OL-H3",
+        "evidence": [
+          "Lean/ObserverPatchHolography/KoideCirculant.lean",
+          "code/particles/leptons/koide_balance_comparison_certificate.py",
+          "code/particles/leptons/charged_interval_decimal_certificate.py",
+          "code/particles/leptons/derive_charged_kappa_interval_coherent_closure.py",
+          "docs/POSTDICTION_LEDGER.md",
+          "docs/FROZEN_PREDICTION_LADDER.md"
+        ],
+        "falsifier": {
+          "artifact": "docs/FROZEN_PREDICTION_LADDER.md",
+          "rule": "FZ10-R01 is the frozen kill rule: a tau world average differing from the recorded central by more than three standard uncertainties kills the balanced-circulant premise. Witness exit from any certified kappa interval kills the interval surface, and a source-emitted bridge value outside the recorded accounting interval refutes the declared anchor decomposition."
+        },
+        "diagnostic_import_register_rows": []
+      },
+      {
+        "id": "CA-04",
+        "constant": "quark masses and mixings",
+        "value_or_enclosure": {
+          "artifact": "code/particles/runs/status/postdiction_ledger.json",
+          "reading": "The quarks section records that no absolute quark mass is emitted: the two-modulus spread fiber, obtained by granting a candidate-only ordered shape law, survives the 2026-07 certified structure set (matter receipt #314, port receipt #566, twelve frozen selector candidates; input hashes pinned 2026-07-30), so the six source-only absolute masses are non-identifiable from that set by an explicit rescaling symmetry of the registered data. A Yukawa-typed source equation, a new selector under the frozen discipline, or the conditional Higgs/top criticality coordinate stays live as a cut. The down-type register-Clebsch ratio row is recorded as a rejected conditional candidate under the retrospective conservative gate."
+        },
+        "ancestry": [
+          {
+            "input": "family transport kernels and the conditional kappa-interval surface arithmetic under their declared transport premises",
+            "class": "derived"
+          },
+          {
+            "input": "two-modulus spread-fiber nonidentifiability obstruction transport",
+            "class": "derived"
+          },
+          {
+            "input": "clock and energy calibration anchors for mass units on compare rows",
+            "class": "register_import",
+            "register_row": "PR-15"
+          },
+          {
+            "input": "PDG and FLAG quark mass and mass-ratio witnesses, compare-only; the rejected register-Clebsch route additionally consumed the measured charged-lepton masses through its boundary Yukawas",
+            "class": "measured_comparison_target"
+          }
+        ],
+        "status": "postdiction_comparison",
+        "ledger_row": "OL-H4",
+        "evidence": [
+          "code/particles/flavor/derive_quark_current_family_exact_pdg_theorem.py",
+          "code/particles/flavor/derive_quark_axiom_level_yukawa_moduli_nonidentifiability.py",
+          "code/particles/flavor/derive_down_type_register_clebsch_lane.py",
+          "docs/POSTDICTION_LEDGER.md"
+        ],
+        "falsifier": {
+          "artifact": "docs/POSTDICTION_LEDGER.md",
+          "rule": "The retrospective conservative FLAG gate is the recorded decision rule and rejected all six generation assignments of the down-type route. The nonidentifiability obstruction dies if a certified structure transport separates the two-modulus spread fiber; until then no absolute quark mass row exists to compare."
+        },
+        "diagnostic_import_register_rows": []
+      },
+      {
+        "id": "CA-05",
+        "constant": "W, Z, and Higgs sector",
+        "value_or_enclosure": {
+          "artifact": "code/particles/calibration/wz_upstream_completion/outputs/certified_second_sheet_poles.json",
+          "reading": "Chart-local interval receipts: zero exclusion in the declared principal-sheet boxes and, for each of W and Z, one simple scalar zero with derivative and scalar-residue balls in its declared lower-half pole box on a channel-specific algebraic chart. The W/Z chart coordinates keep their physical-comparison status NOT_EVALUABLE; the conditional Higgs and top centrals with envelopes are the electroweak section of code/particles/runs/status/postdiction_ledger.json."
+        },
+        "ancestry": [
+          {
+            "input": "certified contour stack and second-sheet pole interval receipts on the declared channel-specific charts",
+            "class": "derived"
+          },
+          {
+            "input": "one-loop electroweak self-energy forms consumed by the separate external pole-map fixture, not composed with the OPH chart",
+            "class": "external_mathematics"
+          },
+          {
+            "input": "declared electroweak selection premises of the conditional Higgs and top rows",
+            "class": "register_import",
+            "register_row": "PR-41"
+          },
+          {
+            "input": "PDG Higgs and top mass witnesses, compare-only",
+            "class": "measured_comparison_target"
+          },
+          {
+            "input": "numerical input P entering the conditional Higgs and top centrals through the calibration surface",
+            "class": "P",
+            "register_row": "PR-17"
+          }
+        ],
+        "status": "postdiction_comparison",
+        "ledger_row": "OL-H5",
+        "evidence": [
+          "code/particles/calibration/wz_upstream_completion/outputs/certified_second_sheet_poles.json",
+          "code/particles/calibration/wz_upstream_completion/outputs/certified_wz_contours.json",
+          "code/particles/runs/status/postdiction_ledger.json",
+          "docs/POSTDICTION_LEDGER.md"
+        ],
+        "falsifier": {
+          "artifact": "docs/POSTDICTION_LEDGER.md",
+          "rule": "The declared boxes are the kill surface for the pole stack: a replay violating a zero-exclusion or pole-box enclosure kills the receipts. The Higgs and top rows are compare-only postdictions with a registered fire condition: z is the distance between the recorded central value and the measured central value in units of the measured standard uncertainty, the quantity the postdiction ledger displays for each row, and the recorded envelope is the row's numerical enclosure, not a tolerance. A row dies at z above three, holds COMPATIBLE at z of two or below, and is INCONCLUSIVE with no verdict in between; no z value promotes a row beyond compare-only. No physical W or Z pole comparison is defined until a receipt identifies a chart with the physical resonance sheet; the sector stance is owed."
+        },
+        "diagnostic_import_register_rows": []
+      },
+      {
+        "id": "CA-06",
+        "constant": "hadron spectrum",
+        "value_or_enclosure": {
+          "artifact": "code/particles/runs/hadron/empirical_ward_projected_spectral_measure.json",
+          "reading": "The Ward-projected export of the pinned payload, with positivity verified on the exported grids and atoms and requadrature at the recorded tolerance; the correction-engine value Delta alpha_had^(5)(M_Z^2) with its uncertainty is the hadrons section of code/particles/runs/status/postdiction_ledger.json. Source-only hadron rows stay suppressed."
+        },
+        "ancestry": [
+          {
+            "input": "hadronic transport packet: the pinned measured e+e- hadronic compilation, compare and transport data under the nonperturbative-QCD barrier policy",
+            "class": "register_import",
+            "register_row": "PR-14"
+          },
+          {
+            "input": "Ward-projected spectral-measure export arithmetic with positivity and requadrature receipts",
+            "class": "derived"
+          },
+          {
+            "input": "dispersion relation and optical-theorem identities behind the empirical closure",
+            "class": "external_mathematics"
+          }
+        ],
+        "status": "diagnostic",
+        "ledger_row": "OL-H6",
+        "evidence": [
+          "code/particles/hadron/empirical_ee_hadrons_sources.yaml",
+          "code/particles/hadron/derive_empirical_ward_projected_spectral_measure.py",
+          "docs/policies/HADRON.md",
+          "docs/POSTDICTION_LEDGER.md"
+        ],
+        "falsifier": {
+          "artifact": "code/particles/hadron/empirical_ee_hadrons_sources.yaml",
+          "rule": "The payload is pinned: a requadrature difference above the recorded tolerance or a positivity failure on the exported grids kills the export. The packet is never promoted to a source-only theorem; replacement requires a source-side hadronic computation, and the standby QCD solver stays invocation-gated on source-side parameter emissions."
+        },
+        "diagnostic_import_register_rows": [
+          "PR-14"
+        ]
+      },
+      {
+        "id": "CA-07",
+        "constant": "neutrino stance",
+        "value_or_enclosure": {
+          "artifact": "docs/FROZEN_PREDICTION_LADDER.md",
+          "reading": "None frozen. FZ-03 is registered pending freeze and no value or enclosure is on record; the recorded template candidate on the results surface is rejected by its declared gate and no neutrino row is eligible for promotion."
+        },
+        "ancestry": [],
+        "status": "owed",
+        "ledger_row": "OL-H7",
+        "evidence": [
+          "docs/FROZEN_PREDICTION_LADDER.md",
+          "code/particles/RESULTS_STATUS.md"
+        ],
+        "falsifier": {
+          "artifact": "docs/FROZEN_PREDICTION_LADDER.md",
+          "rule": "Comparison is forbidden until the neutrino stance and its decision rule are registered on the frozen ladder; registration precedes any comparison, and a comparison recorded before registration is an audit failure."
+        },
+        "diagnostic_import_register_rows": []
+      },
+      {
+        "id": "CA-08",
+        "constant": "units and calibration: clock and energy anchors",
+        "value_or_enclosure": {
+          "artifact": "claims/assumption_dictionary.md",
+          "reading": "No dimensionless constant; the row is the laboratory-unit attachment. Internal modular charge, energy gaps, and repair-step order carry no laboratory units, and the conversion to physical clocks and energy scales is the declared calibration statement recorded as the independent physical scale receipt row."
+        },
+        "ancestry": [
+          {
+            "input": "clock and energy calibration anchors: declared measured standards shared with the thermodynamics lane",
+            "class": "register_import",
+            "register_row": "PR-15"
+          },
+          {
+            "input": "exact affine calibration algebra: two ordered event pairs determine the unique positive-affine interpolation, with the cross-product consistency check at a third shared event",
+            "class": "derived"
+          }
+        ],
+        "status": "conditional_determination",
+        "ledger_row": "OL-H8",
+        "evidence": [
+          "claims/assumption_dictionary.md",
+          "Lean/Time/ProperTimeCalibration.lean",
+          "Lean/Time/ClockReadout.lean",
+          "Lean/Time/ClockComparison.lean"
+        ],
+        "falsifier": {
+          "artifact": "Lean/Time/ClockComparison.lean",
+          "rule": "Affine consistency at a third shared event is equivalent to the cross-product equation and gives a no-new-fit-parameter check; a failing check falsifies a claimed common calibration. The anchors stay flagged measured imports, and the row carries no source-derived physical clock."
+        },
+        "diagnostic_import_register_rows": []
+      }
+    ]
+  }
 }

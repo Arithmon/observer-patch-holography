@@ -1,9 +1,12 @@
-"""Build and validate the V3 constants ancestry surface (issue #736).
+"""Validate and render the V3 constants ancestry section (issue #736).
 
-The machine-readable register is ``tracking/constants_ancestry.json``. This
-tool validates it fail-closed and renders ``docs/registers/CONSTANTS_ANCESTRY_V3.md``;
-``--check`` fails when the committed page differs byte-for-byte from the
-render.
+The machine-readable register is the ``constants`` section of
+``tracking/observation_ledger.json``. This tool validates it fail-closed
+against the observation rows of the same file and renders the Constants
+Ancestry section of ``docs/registers/OBSERVATION_LEDGER_V3.md``, the page that
+``tools/build_observation_ledger.py`` writes. ``--check`` fails when the
+committed section differs byte-for-byte from the render; without ``--check``
+the tool regenerates the whole page through the observation-ledger builder.
 
 One row per constants family in the masses-and-constants lane. Fail-closed
 rules: the row ids, constants, statuses, and owning observation-ledger rows
@@ -19,7 +22,11 @@ target in plain sight, ``diagnostic`` rows carry a measured comparison target
 or a flagged empirical import, ``owed`` rows consume nothing, and
 ``conditional_determination`` rows carry no measured comparison target; every
 evidence, value, and falsifier path exists in the repository. The rendered
-page is a generated surface; edit the JSON, then regenerate.
+section is a generated surface; edit the JSON, then regenerate.
+
+The owning observation rows are read from the ``rows`` section of the same
+loaded ledger, never from the rendered page, so the section output depends on
+the JSON alone.
 """
 
 from __future__ import annotations
@@ -32,10 +39,11 @@ from pathlib import Path
 import strict_json
 
 ROOT = Path(__file__).resolve().parents[1]
-REGISTER_PATH = ROOT / "tracking" / "constants_ancestry.json"
-SURFACE_PATH = ROOT / "docs" / "registers" / "CONSTANTS_ANCESTRY_V3.md"
-PREMISE_REGISTER_PATH = ROOT / "tracking" / "premise_register.json"
 OBSERVATION_LEDGER_PATH = ROOT / "tracking" / "observation_ledger.json"
+SECTION_KEY = "constants"
+SURFACE_PATH = ROOT / "docs" / "registers" / "OBSERVATION_LEDGER_V3.md"
+SECTION_HEADING = "## Constants Ancestry"
+PREMISE_REGISTER_PATH = ROOT / "tracking" / "premise_register.json"
 
 SCHEMA = "oph.constants_ancestry.v3"
 ISSUE = 736
@@ -142,16 +150,40 @@ def load_premise_types() -> dict[str, str]:
     return {row["id"]: row["type"] for row in rows}
 
 
-def load_ledger_rows() -> dict[str, dict]:
-    """Index the observation ledger by row id.
-
-    The constants surface reads each owning row's status and lane from the
-    ledger at build time rather than copying either into this register, so a
-    ledger status change moves this page and ``--check`` reports it stale.
-    """
+def load_ledger() -> dict:
+    """Read the observation ledger that holds the constants section."""
 
     ledger = load_json(OBSERVATION_LEDGER_PATH)
-    rows = ledger.get("rows")
+    if not isinstance(ledger, dict):
+        fail("observation ledger must be an object")
+    return ledger
+
+
+def register_section(ledger: dict) -> dict:
+    """Return the ``constants`` section of a loaded observation ledger."""
+
+    register = ledger.get(SECTION_KEY) if isinstance(ledger, dict) else None
+    if not isinstance(register, dict):
+        fail(f"observation ledger carries no {SECTION_KEY} section")
+    return register
+
+
+def load_register() -> dict:
+    return register_section(load_ledger())
+
+
+def load_ledger_rows() -> dict[str, dict]:
+    return index_ledger_rows(load_ledger().get("rows"))
+
+
+def index_ledger_rows(rows: object) -> dict[str, dict]:
+    """Index the observation rows by row id.
+
+    The constants section reads each owning row's status and lane from the
+    ledger rows at build time rather than copying either into this register,
+    so a ledger status change moves the page and ``--check`` reports it stale.
+    """
+
     if not isinstance(rows, list) or not rows:
         fail("observation ledger rows must be a nonempty list")
     by_id: dict[str, dict] = {}
@@ -169,10 +201,14 @@ def load_ledger_rows() -> dict[str, dict]:
     return by_id
 
 
-def load_ledger_premises() -> dict[str, list[str]]:
+def load_ledger_premises(
+    ledger_rows: dict[str, dict] | None = None,
+) -> dict[str, list[str]]:
+    if ledger_rows is None:
+        ledger_rows = load_ledger_rows()
     return {
         row_id: list(row.get("premises", []))
-        for row_id, row in load_ledger_rows().items()
+        for row_id, row in ledger_rows.items()
     }
 
 
@@ -285,7 +321,10 @@ def validate_ancestry(
     return cited
 
 
-def validate(register: dict) -> list[dict]:
+def validate(
+    register: dict,
+    ledger_rows: dict[str, dict] | None = None,
+) -> list[dict]:
     if not isinstance(register, dict):
         fail("register must be an object")
     if register.get("schema") != SCHEMA:
@@ -293,7 +332,7 @@ def validate(register: dict) -> list[dict]:
     if register.get("issue") != ISSUE:
         fail(f"issue must equal {ISSUE}")
     if set(register) != {"schema", "issue", "rows"}:
-        fail("top-level keys must be exactly schema, issue, rows")
+        fail("section keys must be exactly schema, issue, rows")
     rows = register.get("rows")
     if not isinstance(rows, list):
         fail("rows must be a list")
@@ -301,7 +340,7 @@ def validate(register: dict) -> list[dict]:
         fail(f"rows must contain exactly {len(EXPECTED_ROWS)} entries")
 
     premise_types = load_premise_types()
-    ledger_premises = load_ledger_premises()
+    ledger_premises = load_ledger_premises(ledger_rows)
 
     pn_classes_seen: set[str] = set()
     for index, row in enumerate(rows):
@@ -451,15 +490,25 @@ def ancestry_lines(row: dict) -> list[str]:
     return lines
 
 
-def render(rows: list[dict]) -> str:
+def render(rows: list[dict], ledger_rows: dict[str, dict] | None = None) -> str:
+    """Render the register as one second-level section of the ledger page.
+
+    The section's own headings are third level and below, so the section
+    runs from ``SECTION_HEADING`` to the next second-level heading or the end
+    of the page.
+    """
+
     premise_types = load_premise_types()
-    ledger_rows = load_ledger_rows()
+    if ledger_rows is None:
+        ledger_rows = load_ledger_rows()
     lines: list[str] = []
-    lines.append("# OPH V3 Constants Ancestry")
+    lines.append(SECTION_HEADING)
     lines.append("")
     lines.append(
-        "Generated by `tools/build_constants_ancestry.py` from"
-        " `tracking/constants_ancestry.json`; edit the JSON, then regenerate."
+        "Rendered by `tools/build_constants_ancestry.py` from the"
+        f" `{SECTION_KEY}` section of `tracking/observation_ledger.json`; edit"
+        " that section, then regenerate this page with"
+        " `tools/build_observation_ledger.py`."
         f" [Issue #{ISSUE}]({ISSUE_URL}/{ISSUE}) owns this surface."
     )
     lines.append("")
@@ -505,11 +554,11 @@ def render(rows: list[dict]) -> str:
         )
     lines.append("")
 
-    lines.append("## Rows")
+    lines.append("### Rows")
     lines.append("")
     for row in rows:
         ledger_row = ledger_rows[row["ledger_row"]]
-        lines.append(f"### {row['id']} {row['constant']}")
+        lines.append(f"#### {row['id']} {row['constant']}")
         lines.append("")
         lines.append(
             f"Status `{row['status']}`; owning observation-ledger row"
@@ -539,10 +588,10 @@ def render(rows: list[dict]) -> str:
         lines.append(f"- Falsifier (`{falsifier['artifact']}`): {falsifier['rule']}")
         lines.append("")
 
-    lines.append("## What the statuses mean")
+    lines.append("### What the statuses mean")
     lines.append("")
     for status in STATUSES:
-        lines.append(f"### {status}")
+        lines.append(f"#### {status}")
         lines.append("")
         lines.append(STATUS_MEANING[status])
         lines.append("")
@@ -555,32 +604,56 @@ def render(rows: list[dict]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def main() -> int:
+def committed_section(page: str) -> str | None:
+    """Return the committed constants section of the ledger page, or None.
+
+    The heading must occur exactly once. The section ends before the next
+    second-level heading, which follows one blank line, or at the end of the
+    page, so a byte comparison with ``render`` checks the whole section.
+    """
+
+    marker = f"\n{SECTION_HEADING}\n"
+    if page.count(marker) != 1:
+        return None
+    start = page.index(marker) + 1
+    end = page.find("\n## ", start)
+    return page[start:] if end == -1 else page[start:end]
+
+
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--check",
         action="store_true",
-        help="fail when the committed surface differs from the render",
+        help="fail when the committed section differs from the render",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
-    register = load_json(REGISTER_PATH)
-    rows = validate(register)
-    surface = render(rows).encode("utf-8")
+    ledger = load_ledger()
+    register = register_section(ledger)
+    ledger_rows = index_ledger_rows(ledger.get("rows"))
+    rows = validate(register, ledger_rows=ledger_rows)
+    section = render(rows, ledger_rows=ledger_rows)
     if args.check:
-        committed = SURFACE_PATH.read_bytes() if SURFACE_PATH.is_file() else b""
-        if committed != surface:
+        page = (
+            SURFACE_PATH.read_bytes().decode("utf-8")
+            if SURFACE_PATH.is_file()
+            else ""
+        )
+        if committed_section(page) != section:
             print(
-                "constants ancestry: docs/registers/CONSTANTS_ANCESTRY_V3.md is stale; "
-                "run python tools/build_constants_ancestry.py",
+                "constants ancestry: the Constants Ancestry section of "
+                "docs/registers/OBSERVATION_LEDGER_V3.md is stale; "
+                "run python tools/build_observation_ledger.py",
                 file=sys.stderr,
             )
             return 1
-        print("constants ancestry: surface is current")
+        print("constants ancestry: section is current")
         return 0
-    SURFACE_PATH.write_bytes(surface)
-    print(f"constants ancestry: wrote {SURFACE_PATH.relative_to(ROOT)}")
-    return 0
+    # The observation-ledger builder writes the page that holds every section.
+    import build_observation_ledger
+
+    return build_observation_ledger.main([])
 
 
 if __name__ == "__main__":

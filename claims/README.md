@@ -38,9 +38,9 @@ The registry is part of the working process:
 - `claims/frozen_prediction_register.json` records frozen and pending
   prediction contracts; `tools/build_fz_registry.py` validates it and renders
   `docs/FROZEN_PREDICTION_LADDER.md`.
-- `claims/emergent_instrument_register.json` records scientific simulation and
+- `tracking/observation_ledger.json` section `instruments` records scientific simulation and
   measurement instruments; `tools/build_instrument_register.py` validates it
-  and renders `docs/registers/INSTRUMENT_REGISTER_V3.md`.
+  and renders it as a section of `docs/registers/OBSERVATION_LEDGER_V3.md`.
 - `claims/selection_ledger.json` and
   `claims/physical_identification_registry.json` record scientific selection
   classes and physical-identification boundaries; `tools/build_selection_ledger.py`
