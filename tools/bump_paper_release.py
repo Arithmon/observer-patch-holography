@@ -24,7 +24,11 @@ def main() -> int:
     release_info_path = repo_root / RELEASE_INFO_RELATIVE
     claim_registry_path = repo_root / CLAIM_REGISTRY_RELATIVE
     text = release_info_path.read_text(encoding="utf-8")
-    registry = json.loads(claim_registry_path.read_text(encoding="utf-8"))
+    registry_text = claim_registry_path.read_text(encoding="utf-8")
+    registry = json.loads(registry_text)
+    # Keep the registry's existing escaping so a bump changes one line, not every
+    # non-ASCII character in the file.
+    ascii_escaped = json.dumps(registry, indent=2, ensure_ascii=True) + "\n" == registry_text
 
     current_release_id = extract_macro(text, RELEASE_ID_MACRO)
     current_release_date = extract_macro(text, RELEASE_DATE_MACRO)
@@ -44,7 +48,7 @@ def main() -> int:
     registry["release_id"] = next_release_id
     release_info_path.write_text(updated_text, encoding="utf-8")
     claim_registry_path.write_text(
-        json.dumps(registry, indent=2, ensure_ascii=False) + "\n",
+        json.dumps(registry, indent=2, ensure_ascii=ascii_escaped) + "\n",
         encoding="utf-8",
     )
     print(f"Updated {release_info_path}")
