@@ -9,8 +9,9 @@ implementation identifiers in paper abstracts.
 Banned vocabulary is scanned across the reader surfaces, the papers and the
 essays, and the register pages under ``docs/``. The register pages are held to
 the vocabulary rules alone, so an internal row id inside a register row stays
-legal. ``ALLOWLIST_PATHS`` holds out the two pages whose subject matter is the
-banned vocabulary itself.
+legal. ``ALLOWLIST_PATHS`` holds out the pages whose subject matter is the
+banned vocabulary itself, and the generated prior-work bibliography fragments,
+which hold only other authors' titles and venues.
 """
 
 from __future__ import annotations
@@ -106,6 +107,9 @@ ALLOWLIST_PATHS = [
     "docs/policies/STYLE_GUIDE.md",
     "docs/FROZEN_PREDICTION_LADDER.md",
     "docs/research/",
+    # Rendered by tools/build_prior_work.py from claims/prior_work.json: external
+    # titles such as "Recent Developments in Gauge Theories" are quoted verbatim.
+    "_BIBITEMS.tex",
 ]
 
 PROGRESS_PATTERNS = [

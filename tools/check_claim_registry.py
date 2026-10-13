@@ -397,6 +397,23 @@ def check_claim_views(root: Path) -> None:
         + "; run python3 tools/build_claim_views.py",
     )
 
+    # Every established result a claim uses is cited from the verified
+    # bibliography or marked as a result of the project itself, and the
+    # papers' credited-prior-work sections are current.
+    import build_prior_work
+
+    try:
+        bibliography = build_prior_work.load_bibliography(root / "claims" / "prior_work.json")
+        build_prior_work.check_citations(registry["claims"], context, bibliography)
+        stale_prior = build_prior_work.stale(root)
+    except build_prior_work.PriorWorkError as error:
+        require(False, f"prior work: {error}")
+    require(
+        not stale_prior,
+        "prior-work renderings differ: " + ", ".join(stale_prior)
+        + "; run python3 tools/build_prior_work.py",
+    )
+
 
 def check_standalone_papers(root: Path) -> None:
     for folder in ["paper", "extra"]:

@@ -10,7 +10,8 @@ tool renders the three tabular views that tests, lane verifiers and readers
 consume:
 
 * ``claims/novelty_matrix.csv``: prior work, overlap, imported step, OPH delta,
-  novelty type, owner section and falsifier per claim;
+  novelty type, owner section, falsifier and the prior-work citation keys
+  (entries of ``claims/prior_work.json``) per claim;
 * ``claims/falsification_matrix.csv``: mathematical, physical-identification and
   phenomenological falsifiers and the scope if false;
 * ``claims/dependency_graph.json``: claim-to-claim edges with their roles.
@@ -48,6 +49,7 @@ NOVELTY_COLUMNS = (
     "novelty_type",
     "owner_theorem_or_section",
     "falsifier",
+    "prior_work_citations",
 )
 FALSIFICATION_COLUMNS = (
     "claim_id",
@@ -89,6 +91,9 @@ def render_novelty(claims: list[dict]) -> str:
                 "novelty_type": claim["novelty_type"],
                 "owner_theorem_or_section": context["owner_section"],
                 "falsifier": summary.get("falsifier", claim["falsifier"]),
+                "prior_work_citations": "; ".join(
+                    dict.fromkeys(key for record in prior["citations"] for key in record["keys"])
+                ) or "internal",
             }
         )
     return _csv(NOVELTY_COLUMNS, rows)
