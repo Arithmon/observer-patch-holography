@@ -1,4 +1,8 @@
-"""Fail-closed tests for the #618 gravity premise ladder."""
+"""Fail-closed tests for the #618 gravity premise ladder.
+
+The ladder is the ``gravity_rungs`` section of ``tracking/premise_register.json``
+and renders as a section of ``docs/registers/PREMISE_REGISTER_V3.md``.
+"""
 
 import importlib.util
 import json
@@ -17,7 +21,16 @@ spec.loader.exec_module(ladder_tool)
 
 
 def live_ladder() -> dict:
-    return json.loads(ladder_tool.LADDER_PATH.read_text(encoding="utf-8"))
+    return ladder_tool.load_ladder()
+
+
+def test_ladder_is_the_gravity_rungs_section_of_the_premise_register():
+    register = json.loads(ladder_tool.REGISTER_PATH.read_text(encoding="utf-8"))
+    assert ladder_tool.SECTION == "gravity_rungs"
+    assert register[ladder_tool.SECTION] == live_ladder()
+    assert ladder_tool.SURFACE_PATH.relative_to(REPO_ROOT).as_posix() == (
+        ladder_tool.GENERATED_SURFACE
+    )
 
 
 def test_live_ladder_validates_and_surface_is_current():
@@ -25,8 +38,35 @@ def test_live_ladder_validates_and_surface_is_current():
     rungs = ladder_tool.validate(ladder)
     rendered = ladder_tool.render(ladder, rungs)
     committed = ladder_tool.SURFACE_PATH.read_text(encoding="utf-8")
-    assert rendered == committed
+    assert committed.count(rendered) == 1
     assert len(rungs) == 11
+
+
+def test_missing_section_fails(tmp_path, monkeypatch):
+    register = json.loads(ladder_tool.REGISTER_PATH.read_text(encoding="utf-8"))
+    del register[ladder_tool.SECTION]
+    path = tmp_path / "premise_register.json"
+    path.write_text(json.dumps(register), encoding="utf-8")
+    monkeypatch.setattr(ladder_tool, "REGISTER_PATH", path)
+    with pytest.raises(SystemExit, match="no gravity_rungs section"):
+        ladder_tool.load_ladder()
+
+
+def test_stale_generated_surface_fails():
+    ladder = live_ladder()
+    ladder["generated_surface"] = "docs/registers/GRAVITY_PREMISE_LADDER.md"
+    with pytest.raises(SystemExit, match="generated_surface must equal"):
+        ladder_tool.validate(ladder)
+
+
+def test_check_mode_fails_on_a_stale_page(tmp_path, monkeypatch):
+    page = ladder_tool.SURFACE_PATH.read_text(encoding="utf-8")
+    stale = tmp_path / "PREMISE_REGISTER_V3.md"
+    stale.write_text(page.replace("| 11 | Metrological", "| 12 | Metrological", 1), encoding="utf-8")
+    monkeypatch.setattr(ladder_tool, "SURFACE_PATH", stale)
+    assert ladder_tool.main(["--check"]) == 1
+    monkeypatch.undo()
+    assert ladder_tool.main(["--check"]) == 0
 
 
 def test_every_rung_has_countermodel_and_mutation_test():

@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 551,
+  "surface_count": 548,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1131,11 +1131,6 @@
       "allowlisted": true
     },
     {
-      "path": "docs/registers/GRAVITY_PREMISE_LADDER.md",
-      "glob": "docs/**/*.md",
-      "allowlisted": false
-    },
-    {
       "path": "docs/registers/OBSERVATION_LEDGER_V3.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
@@ -1147,11 +1142,6 @@
     },
     {
       "path": "docs/registers/SELECTION_LEDGER.md",
-      "glob": "docs/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/registers/SM_LAGRANGIAN_CORRESPONDENCE.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },
@@ -1459,11 +1449,6 @@
       "path": "claims/frozen_prediction_register.json",
       "glob": "claims/*.json",
       "allowlisted": true
-    },
-    {
-      "path": "claims/gravity_premise_ladder.json",
-      "glob": "claims/*.json",
-      "allowlisted": false
     },
     {
       "path": "claims/physical_identification_registry.json",

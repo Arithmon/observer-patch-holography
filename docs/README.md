@@ -132,10 +132,10 @@ and papers ledgers.
   input ancestry of each constants family against the premise register.
 - [Selection Ledger](registers/SELECTION_LEDGER.md) records the selections that
   consensus forces, with the exposed premises and proofs behind each row.
-- [Gravity Premise Ladder](registers/GRAVITY_PREMISE_LADDER.md) types each
+- [Gravity Premise Ladder](registers/PREMISE_REGISTER_V3.md#gravity-rungs) types each
   gravity interface with a premise packet, a theorem or countermodel, and a
   deletion test.
-- [Standard Model Correspondence](registers/SM_LAGRANGIAN_CORRESPONDENCE.md)
+- [Standard Model Correspondence](registers/PREMISE_REGISTER_V3.md#sm-coverage)
   classifies each Standard Model term and sector by what OPH supplies.
 
 ## Research Notes

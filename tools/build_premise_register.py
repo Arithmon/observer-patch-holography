@@ -5,6 +5,14 @@ validates it fail-closed and renders ``docs/registers/PREMISE_REGISTER_V3.md``;
 ``--check`` fails when the committed page differs byte-for-byte from the
 render.
 
+The same file carries three further sections. ``sm_coverage`` (the Standard
+Model term-and-sector correspondence) and ``gravity_rungs`` (the gravity
+premise-elimination ladder) are validated by ``tools/build_sm_correspondence.py``
+and ``tools/build_gravity_ladder.py`` and rendered as sections of the page
+written here. ``model_supply`` (the model and theorem navigation crosswalk) is
+validated and rendered to ``model/PREMISES.md`` by
+``tools/build_model_theorem_map.py``; this tool checks only its shape.
+
 Fail-closed rules: the row ids, names, types, and dispositions are fixed
 program-wide and must equal the expected inventory exactly, in order; every
 type comes from the six-value enum and every disposition from the three-value
@@ -23,6 +31,10 @@ from pathlib import Path
 
 import strict_json
 
+import build_gravity_ladder as gravity_tool
+import build_model_theorem_map as model_map_tool
+import build_sm_correspondence as sm_tool
+
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER_PATH = ROOT / "tracking" / "premise_register.json"
 SURFACE_PATH = ROOT / "docs" / "registers" / "PREMISE_REGISTER_V3.md"
@@ -30,6 +42,14 @@ SURFACE_PATH = ROOT / "docs" / "registers" / "PREMISE_REGISTER_V3.md"
 SCHEMA = "oph.premise_register.v3"
 ISSUE = 727
 ISSUE_URL = "https://github.com/FloatingPragma/observer-patch-holography/issues"
+
+# Sections folded into the register, in file order, with the schema each keeps.
+SECTION_SCHEMAS = {
+    "model_supply": model_map_tool.SCHEMA,
+    "sm_coverage": sm_tool.SCHEMA,
+    "gravity_rungs": gravity_tool.SCHEMA,
+}
+TOP_KEYS = ("schema", "issue", "rows", *SECTION_SCHEMAS)
 
 TYPES = (
     "structural_rule",
@@ -577,8 +597,8 @@ def validate(register: dict) -> list[dict]:
         fail(f"schema must equal {SCHEMA}")
     if register.get("issue") != ISSUE:
         fail(f"issue must equal {ISSUE}")
-    if set(register) != {"schema", "issue", "rows"}:
-        fail("top-level keys must be exactly schema, issue, rows")
+    if set(register) != set(TOP_KEYS):
+        fail(f"top-level keys must be exactly {', '.join(TOP_KEYS)}")
     rows = register.get("rows")
     if not isinstance(rows, list):
         fail("rows must be a list")
@@ -664,14 +684,28 @@ def validate(register: dict) -> list[dict]:
                     f"{where}: evidence role for {path} must be one of "
                     f"{sorted(EVIDENCE_ROLES)}"
                 )
+    validate_sections(register)
     return rows
+
+
+def validate_sections(register: dict) -> None:
+    """Validate the folded sections; the section tools own their rules."""
+    for section, schema in SECTION_SCHEMAS.items():
+        data = register[section]
+        if not isinstance(data, dict):
+            fail(f"section {section} must be an object")
+        if data.get("schema") != schema:
+            fail(f"section {section}: schema must equal {schema}")
+    sm_tool.validate(register["sm_coverage"])
+    gravity_tool.validate(register["gravity_rungs"])
 
 
 def lane_links(lanes: list[int]) -> str:
     return ", ".join(f"[#{n}]({ISSUE_URL}/{n})" for n in lanes)
 
 
-def render(rows: list[dict]) -> str:
+def render(rows: list[dict], register: dict) -> str:
+    """Render the page; ``register`` supplies the validated folded sections."""
     counts = {
         disposition: sum(1 for row in rows if row["disposition"] == disposition)
         for disposition in DISPOSITIONS
@@ -685,6 +719,19 @@ def render(rows: list[dict]) -> str:
         " `tracking/premise_register.json`; edit the JSON, then regenerate."
         f" Established under [issue #{ISSUE}]({ISSUE_URL}/{ISSUE});"
         " maintained as a scientific register."
+    )
+    lines.append("")
+    lines.append(
+        "The same source file carries three further sections. `sm_coverage`"
+        " classifies each Standard Model term and sector by what OPH supplies,"
+        " and `gravity_rungs` types each gravity interface with a premise"
+        " packet, a theorem or countermodel, and a deletion test; both are"
+        " rendered at the end of this page as the"
+        " [Standard Model correspondence](#sm-coverage) and the"
+        " [gravity premise ladder](#gravity-rungs)."
+        " `model_supply` holds the model and theorem navigation crosswalk,"
+        " which `tools/build_model_theorem_map.py` renders to"
+        " [model/PREMISES.md](../../model/PREMISES.md)."
     )
     lines.append("")
     lines.append(
@@ -776,21 +823,27 @@ def render(rows: list[dict]) -> str:
         " as permanent evidence of what A1-A3 do not supply."
         " The register is the anti-cheating surface of the V3 program."
     )
+    sm_data = register["sm_coverage"]
+    gravity_data = register["gravity_rungs"]
+    lines.append("")
+    lines.append(sm_tool.render(sm_data, sm_data["rows"]).rstrip("\n"))
+    lines.append("")
+    lines.append(gravity_tool.render(gravity_data, gravity_data["rungs"]).rstrip("\n"))
     return "\n".join(lines) + "\n"
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--check",
         action="store_true",
         help="fail when the committed surface differs from the render",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     register = load_json(REGISTER_PATH)
     rows = validate(register)
-    surface = render(rows).encode("utf-8")
+    surface = render(rows, register).encode("utf-8")
     if args.check:
         committed = SURFACE_PATH.read_bytes() if SURFACE_PATH.is_file() else b""
         if committed != surface:
