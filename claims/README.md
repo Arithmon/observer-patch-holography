@@ -188,8 +188,7 @@ The review of [#1052](https://github.com/FloatingPragma/observer-patch-holograph
 [#1058](https://github.com/FloatingPragma/observer-patch-holography/pull/1058),
 [#1059](https://github.com/FloatingPragma/observer-patch-holography/pull/1059) and
 [#1060](https://github.com/FloatingPragma/observer-patch-holography/pull/1060)
-checks their combined effect on the existing claims. All 326 claim payloads,
-including their assumptions, dependencies, gates, statuses and falsifiers,
+checks their combined effect on the existing claims. All 326 claim payloads of that date, including their assumptions, dependencies, gates, statuses and falsifiers,
 remain unchanged. Frozen prediction targets, decision rules and custody bytes
 are preserved. These repairs add no physical-model prerequisite.
 

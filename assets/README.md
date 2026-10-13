@@ -1,6 +1,6 @@
 # OPH Figure Index
 
-This directory holds the public diagrams used by the README, papers, book, and OPH web surfaces. SVG is the authoring and publication format where available; PNG and PDF variants support social cards and print builds.
+This directory holds the public diagrams used by the papers, the book and the OPH web surfaces. SVG is the authoring and publication format where available; PNG and PDF variants support social cards and print builds.
 
 The [working terms](../docs/INTERPRETATION_AND_TERMS.md) govern these diagrams:
 closure of a complete history permits internal computation, and modular

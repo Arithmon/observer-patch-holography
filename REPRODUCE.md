@@ -288,10 +288,6 @@ observer implementation requires the separate `python -m model.verify` and
 test outcomes are tracked as their own issues, and some are not reproducible
 from the public checkout alone. In particular:
 
-- Two runtime-surface tests in
-  `code/particles/test_compute_current_output_table_runtime_surface.py` require
-  the untracked sibling tree `../arXiv/RC1/ancillary/code/particles`, which a
-  clean clone does not provide.
 - Some byte- and value-level receipt checks are sensitive to platform line
   endings and to `numpy`/`scipy` versions.
 
@@ -331,10 +327,7 @@ physical $N$ packet, or the continuum Einstein tower.
 
 ## Lean proofs
 
-The Lean 4 / Mathlib workspace under `Lean/` holds four libraries
-(`ObserverPatchHolography`, `EventAlgebra`, `OPHScreen` in `Screen/`, and the
-standalone `ObservableNormalForms` package), each sorry-free with standard
-axioms only. Rebuild everything with:
+The Lean 4 / Mathlib workspace under `Lean/` holds nine libraries (`ObserverPatchHolography`, `EventAlgebra`, `OPHScreen` in `Screen/`, `OPHTime`, `OPHComputation`, `OPHThermodynamics`, `OPHConstruction`, `OphGap`, and the standalone `ObservableNormalForms` package), each sorry-free with standard axioms only. Rebuild everything with:
 
 ```bash
 cd Lean
@@ -455,7 +448,7 @@ license status; and distinguishes three boundaries:
   literature packet, which are deliberately not vendored because their
   redistribution licenses are `NOASSERTION`.
 
-The validator requires the complete nine-artifact inventory; deleting a
+The validator requires the complete twelve-artifact inventory; deleting a
 dataset entry is itself a gate failure. Those declared gaps are data lineage,
 not hidden build inputs. The paper and book build does not consume them. To
 replay the optional NuFIT score, obtain the profile files listed in

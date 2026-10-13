@@ -100,5 +100,4 @@ the executable specification supplies its antecedents.
 - The [executable observer paper](../paper/executable_observer_construction.tex)
   states the specification, its acceptance criteria, its certified components
   and the premise map.
-- The theorem library holds the long proofs: consensus, observers and
-  records, gauge structure, matter, and spacetime with Einstein dynamics.
+- The theorem library holds the long proofs: consensus, observers and records, gauge structure, matter, screen microphysics, and spacetime with Einstein dynamics.

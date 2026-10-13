@@ -23,8 +23,7 @@ continues its records with a source-executed binary modular clock, and
 computes the interaction graph of its supplied quantum regions. Its
 [occupation analysis](common_source/OCCUPATION_REFINEMENT.md) establishes
 a fixed two-site interacting limit, with a finite error bound before the
-last sharp readout and strong convergence of that readout. A finite-cutoff
-error rate for the sharp instrument remains open. These results connect
+last sharp readout and strong convergence of that readout. No all-cutoff error rate for the sharp instrument is proved; fixed-state enclosures exist for the zero-current preparation. These results connect
 existing components; they do not supply physical time or a spatial continuum.
 
 A separate [finite-resolution instrument](common_source/SMOOTH_REFINEMENT.md)
