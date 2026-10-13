@@ -552,9 +552,25 @@ shuffled schedules from one seeded load terminate at the balanced class with
 no accepted move raising $V$, and all sixteen return one quotient hash equal to the component multiset fixed by the initial totals.
 A standalone verifier that imports no simulator code rebuilds the component
 multisets from the primitive arrays, replays one schedule from its seed and
-recomputes every hash \cite{ophsim}. The level-ten rung, with
-$20{,}971{,}520$ carriers and $660{,}602{,}880$ seams, terminates all sixteen
-schedules at the balanced class with one quotient hash fixed by the loads.
+recomputes every hash \cite{ophsim}. The level-ten rung, with $20{,}971{,}520$ carriers and $660{,}602{,}880$ seams,
+terminates all sixteen schedules at the balanced class in $84$ to $100$ sweeps
+with one quotient hash fixed by the loads. Across the rungs from six to ten,
+one initial load per rung gives an empirical excess-energy contraction near
+$0.82$ per sweep and a fitted settling time $4.3\log_2 N-9$; these finite fits
+prove no all-size mixing or termination-time bound. The recorded
+strict-descent count is about $1.2555$ times half the initial $\ell_1$
+deviation from the uniform reading. The first-settling configuration retains
+spatial information that its public component multiset does not encode: at
+level ten the initial-to-terminal amplitude responses of equal-count
+ancestral groups of sizes $1{,}024$, $4{,}096$ and $65{,}536$ are $0.90758$,
+$0.95232$ and $0.98983$, with conditional schedule-noise fractions
+$1.241\%$, $0.594\%$ and $0.143\%$. Stationary continuation adds a
+constructive fluctuation result: for fair integer repair on a connected
+weighted graph with independent edge clocks the fixed-occupancy law is
+reversible, centred loads have covariance $\kappa e^{-|t|L/2}\Pi$ with
+$\kappa=r(p-r)/(p(p-1))$ for $r$ raised occupancies on $p$ ports and $\Pi$ the
+projection off constants, and fixed linear readouts obey a martingale central
+limit theorem \cite{ophMicrophysics}.
 
 The same records let observers recover the specification itself.
 At carrier scale, recovery from event logs under the declared probe and
@@ -760,15 +776,104 @@ The port count twelve equals the dimension of the forced algebra, so the
 carrier fixes that dimension by declaration; the content of the theorem is
 the exclusion of the only other twelve-dimensional compact type
 $\mathfrak{su}(2)^4$ through compactness and the one-dimensional fixed space,
-together with the forcing of the unique center. Without the internal
-implementation clause the same module also carries the zero bracket, whose
-trivial response group fails it. An explicit four-band matrix witness on
-$\mathbb C^3\oplus\mathbb C^3$ with one nonzero rational coefficient per
-band realizes the forced algebra with an inner, equivariant action and a
-positive invariant pairing, by exact calculation over
-$\mathbb Q(\sqrt5)$ \cite{ophGauge}. The reconstruction of $D$ from ordered
+together with the forcing of the unique center. Without the internal implementation clause the same module also carries the
+zero bracket, whose trivial response group fails it.  The reconstruction of $D$ from ordered
 reversible histories is consumed as a premise, and laboratory currents
 consume (M3).
+
+The forced algebra has an explicit finite realization.
+
+Let
+\[
+\Phi_0(b^0)=\sum_{i=1}^{6}b_i^0u_iu_i^{\mathsf T},
+\qquad
+\widehat{x}\,y=x\times y .
+\]
+The conditional matrix witness uses the space
+\[
+H=\mathbb C^3_E\oplus\mathbb C^3_W
+\]
+and four nonzero rational coefficients
+$\lambda_1,\lambda_5,\lambda_3,\lambda_{3'}$, one on each source band.
+These are explicit branch premises. The two three-dimensional response blocks
+match the two rank-three odd channels; they are not asserted to be a derived
+physical Hilbert space.
+Write $v_p$ for the signed coordinate vector at port $p$. For $g\in A_5$, let
+$R_g\in\mathrm{SO}(3)$ be the exact rotation satisfying
+$R_gv_p=v_{g(p)}$ on the oriented port frame, and define
+\[
+\Pi(g)=\operatorname{diag}(R_g,\sigma(R_g)).
+\]
+The target $A_5$ action on $\mathfrak u(H)$ is conjugation by $\Pi(g)$.
+
+\begin{theorem}[Conditional four-band finite port-response algebra]
+\label{thm:finite-response}
+On the declared twelve-port carrier and supplied response representation,
+define
+\begin{equation}
+\begin{split}
+K(f)=\operatorname{diag}\bigl(&
+\lambda_3\widehat{Ud}
++i\{\lambda_1cI_3+\lambda_5\Phi_0(b^0)\},\\
+&\lambda_{3'}\widehat{\sigma(U)d}\bigr)
+\in\mathfrak u(H).
+\end{split}
+\label{eq:port-response-map}
+\end{equation}
+Then $K$ is injective, its image is commutator-closed, and
+\[
+K(g\!\cdot\! f)=\Pi(g)K(f)\Pi(g)^*.
+\]
+The induced $A_5$ action on $\operatorname{im}K$ is inner. Let
+$K^{-1}:\operatorname{im}K\to P_{12}$ denote the inverse of $K$ onto its
+image. With the bracket pulled back from that image,
+\[
+[x,y]_K=K^{-1}\!\left([K(x),K(y)]_{\mathrm{mat}}\right),
+\]
+one has
+\begin{equation}
+(P_{12},[\,\cdot\,,\cdot\,]_K)
+\cong
+\mathfrak u(3)\oplus\mathfrak{so}(3)
+\cong
+\mathfrak u(1)\oplus\mathfrak{su}(3)\oplus\mathfrak{su}(2).
+\label{eq:liealgebra}
+\end{equation}
+Its center is the uniform one-dimensional port line, its derived algebra has
+dimension eleven, and the five-dimensional $A_5$ band is noncentral. The map
+has a positive-definite invariant Hilbert--Schmidt pullback.
+\end{theorem}
+
+\begin{proof}
+Evaluating \eqref{eq:antipode-polynomial} on the four adjacency eigenspaces
+gives the antipode relation, and the source protocol solves the common
+farthest-shell filter to give the signed response $-J$. The constant
+coordinate maps to $i\mathbb RI_3$; the six rank-one axis matrices span the
+symmetric $3\times3$ matrices with $\sum_iu_iu_i^{\mathsf T}=(5+\sqrt5)I_3$,
+so their sum-zero coefficients map isomorphically onto the traceless
+symmetric matrices under $\Phi_0$; $U$ is an isomorphism on the $\mathbf3$
+band and annihilates $\mathbf3'$, with $\sigma(U)$ complementary. Hence $K$
+has rank $12$ and image exactly $\mathfrak u(3)\oplus\mathfrak{so}(3)$.
+Equivariance, positive definiteness of the invariant pairing, and the
+statement that $\Pi(g)$ is the exponential of an element of
+$\operatorname{im}K$ are exact calculations in $\mathbb Q(\sqrt5)$ over the
+full sixty-element domain, part of the proof by the exhaustive-computation
+rule of Table~\ref{tab:claim-classes} \cite{ophrepo}.
+\end{proof}
+
+\begin{boundary}
+The $A_5$-module decomposition alone does not determine a Lie bracket: the
+same module also carries the zero bracket, whose trivial response-generated
+group fails the A2 endogeneity clause. The independent inputs to
+Theorem~\ref{thm:finite-response} are the carrier incidence and orientation,
+the supplied response representation, and four nonzero band coefficients.
+The block architecture and coefficients are declared. No measured particle,
+mass, or coupling value enters the exact verification. The theorem constructs
+the pulled-back bracket for this response map; it does not select $K$ from
+source histories or prove a uniqueness claim over all $A_5$-equivariant
+brackets or finite carriers. The abstract Lie type is forced independently by
+Theorem~\ref{thm:inner-action-closure}.
+\end{boundary}
 
 \begin{theorem}[Finite matter image and exhaustive exterior-menu selection]
 \label{thm:matter-image}
