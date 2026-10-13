@@ -1220,6 +1220,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/observer/RECORD_RECOVERY.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/observer/p_response/ACCESS_CAPACITY.md",
       "glob": "model/**/*.md",
       "allowlisted": false

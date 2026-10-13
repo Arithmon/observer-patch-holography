@@ -162,6 +162,18 @@ the independent experimental verdict is `no_data`.
 
 ## Files and scope
 
+The [complete-record recovery analysis](RECORD_RECOVERY.md) answers a different
+question from preserving old record values: can the source's unknown quantum
+input be recovered after those values have been committed classically? The
+complete tape and final source recover every initial load population. Exact
+history projectors determine the remaining quantum information and the best
+possible final recovery. Existing source inverse words implement the branch
+reversal without overwriting the archive. A correctable one-event encoded
+qubit and finite identifying schedules establish both the opportunity and
+the limitation; the coherent, unread tape remains a distinct recoverable
+isometry. Run `python -m model.observer.record_recovery_receipt --check
+model/observer/results/record_recovery.json` to replay the complete evidence.
+
 | File | Role |
 | --- | --- |
 | [native.py](native.py) | Native repair, fixed controller, exact quantum and history checks |

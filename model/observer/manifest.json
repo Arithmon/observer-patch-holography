@@ -2,7 +2,8 @@
   "dependencies": [
     "Python standard library",
     "code/capacity_readback",
-    "model/requirements.txt (quantum mixing audit)"
+    "model/requirements.txt (quantum mixing audit)",
+    "model/requirements.txt (complete-record recovery source replay)"
   ],
   "files": {
     "CAPACITY.md": "3607811ac4c844bb0ee78ebc6237c0b9389193fccbf52f0e8baa56350c4b04ce",
@@ -27,14 +28,25 @@
     "test_quantum_memory.py": "7b4af6c7f47e1fd76c7db350cb5c0062a2b584911ba10aae81898d642f6734f9",
     "test_quantum_mixing.py": "0a9214fcb876821cd1d4e9fe881a1a71986de115a95bc55be8b1fe3a47f6382b",
     "test_quantum_mixing_graphs.py": "7be808b47e0ad2a8179fe79e13023e29d695fdd4c84103d2e407790d656e7a09",
-    "test_quantum_mixing_receipt.py": "3f398128ce5e1de8d9eaa8aefe4145060ff92b0dd4ae5f80b110236fbb82831e"
+    "test_quantum_mixing_receipt.py": "3f398128ce5e1de8d9eaa8aefe4145060ff92b0dd4ae5f80b110236fbb82831e",
+    "RECORD_RECOVERY.md": "ea45922310ddd1c46d97b312cdf5f12f86527f6f69b23511e556b79e0c3f8a21",
+    "record_recovery.py": "0ad1c23cac53bbcf00c32ada6ce01660466b4e9c71e5e58a0226a0bf5609a193",
+    "record_recovery_receipt.py": "c6d9a31dfbb1039f1d657c48d1fc92357e4c6162d580b5a765d4f96995278c63",
+    "record_recovery_schedule.py": "36354c11e95503a6adbce8baf27576374cbcd662aa8284d42b711f79ab8681fe",
+    "record_recovery_source.py": "073f177533cf35d6eda9aeffb72205575e9acd80d226ad61f6a6542d48fe371d",
+    "results/record_recovery.json": "38b15a2ee62941974ad784e5a2add28f2e9204e40aba8420187508a349ea8de0",
+    "test_record_recovery.py": "ab159b4557df5160f6bb4c473ca51bc60bef4a8cb6702cc4bffab1747f40bf6c",
+    "test_record_recovery_receipt.py": "579cf136a29d130f6fdeebaaa149d34d8c5df1b76670125f46c1f82626710942",
+    "test_record_recovery_schedule.py": "4e5829b1032f90544d2e0704f9c074707b5b77ebe7ff836ec79762c573a72916",
+    "test_record_recovery_source.py": "a614a508832530ce90c183a1705ba3e7bcdbaf111ba203aa4f3776a2becb7c65"
   },
   "reproduce": [
     "python3 -m model.observer native --check model/observer/results/native.json",
     "python3 -m model.observer capacity --check model/observer/results/capacity.json",
     "python3 -m model.observer run --trials 20000 --seed 20261012 --check model/observer/results/run.json",
     "python3 -m unittest model.observer.test_native_observer model.observer.test_observer_capacity model.observer.test_observer_simulation -v",
-    "python3 -m model.observer.quantum_mixing_receipt --check model/observer/results/quantum_mixing.json"
+    "python3 -m model.observer.quantum_mixing_receipt --check model/observer/results/quantum_mixing.json",
+    "python3 -m model.observer.record_recovery_receipt --check model/observer/results/record_recovery.json"
   ],
   "schema": "oph.observer.public_manifest.v1"
 }
