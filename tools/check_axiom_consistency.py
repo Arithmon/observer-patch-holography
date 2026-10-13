@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Three-axiom drift guard (AR1).
+"""Basis and library-premise drift guard (AR1).
 
-Enforces the canonical basis in ``claims/axiom_registry.yaml`` across active
-surfaces:
+Enforces the basis of ``docs/BASIS.md`` and the three theorem-library premises
+of ``claims/axiom_registry.yaml`` across active surfaces:
 
-1. the registry declares exactly three core axioms and a valid status enum;
+1. the registry declares exactly three library premises and a valid status enum;
 2. no active surface states or counts a five-axiom basis, uses ``OPH5``,
    presents Axiom 4 as a core recovery principle, or presents Axiom 5 /
    Minimal Admissible Realization as a core economy principle;
-3. designated entry surfaces carry the three-axiom basis;
+3. designated entry surfaces point at the basis and the premise reference
+   keeps the formal premise statements;
 4. mathematical uses of the group :math:`A_5` pass untouched.
 
 The allowlist distinguishes archives, dated audits, provenance records,
@@ -125,9 +126,12 @@ LINE_ALLOW = [
     re.compile(r"^\|\s*Recoverable generalized entropy axiom \(the recovery bundle\)\s*\|"),
 ]
 
+# Entry surfaces must point readers at the layered basis; the premise reference
+# keeps the formal statements of the three theorem-library premises.
 ENTRY_SURFACES = {
-    "README.md": "three core axioms",
-    "README_FR.md": "trois axiomes",
+    "README.md": "docs/BASIS.md",
+    "README_FR.md": "docs/BASIS.md",
+    "docs/BASIS.md": "the closure hypothesis",
     "docs/AXIOM_REFERENCE.md": "exactly three core axioms",
 }
 
@@ -267,7 +271,7 @@ POSTER_CARD_BADGE_ROW = 'y="541"'
 
 
 def poster_axiom_card_checks(errors: list[str]) -> None:
-    """The derivation poster must show exactly three AXIOM-badged cards.
+    """The derivation poster must show exactly three PREMISE-badged cards.
 
     Prose patterns do not catch a diagram, because a card carries a short label
     such as "A4 Recoverable" rather than a sentence about five axioms. The poster
@@ -283,11 +287,11 @@ def poster_axiom_card_checks(errors: list[str]) -> None:
     badges = [
         line
         for line in path.read_text(encoding="utf-8", errors="replace").splitlines()
-        if ">AXIOM</text>" in line and POSTER_CARD_BADGE_ROW in line
+        if ">PREMISE</text>" in line and POSTER_CARD_BADGE_ROW in line
     ]
     if len(badges) != 3:
         errors.append(
-            f"{POSTER}: card row carries {len(badges)} AXIOM badges; the basis has exactly three. "
+            f"{POSTER}: card row carries {len(badges)} PREMISE badges; the library has exactly three premises. "
             "Re-badge non-axiom cards as INTERFACE or DECLARED."
         )
 
@@ -300,7 +304,7 @@ def entry_surface_checks(errors: list[str]) -> None:
             continue
         text = path.read_text(encoding="utf-8", errors="replace").lower()
         if needle.lower() not in text:
-            errors.append(f"{rel}: entry surface does not state the three-axiom basis ('{needle}')")
+            errors.append(f"{rel}: entry surface does not state the basis ('{needle}')")
 
 
 def pdf_checks(errors: list[str]) -> None:
@@ -411,7 +415,7 @@ def main(argv: list[str] | None = None) -> int:
             print(error, file=sys.stderr)
         print(f"axiom consistency: {len(errors)} violation(s)", file=sys.stderr)
         return 0 if args.list_only else 1
-    print("axiom consistency OK: three-axiom basis is coherent across active surfaces")
+    print("axiom consistency OK: the basis and the three library premises are coherent across active surfaces")
     return 0
 
 

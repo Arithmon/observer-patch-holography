@@ -223,6 +223,10 @@ comparison require their own evidence.
 
 ## Continue the construction
 
+- [Construction paper](../paper/executable_observer_construction.pdf): the
+  specification, acceptance criteria, certified components and premise map
+  in paper form; the [basis](../docs/BASIS.md) explains why the specification
+  needs no outside justification.
 - [Construction guide](CONSTRUCTION.md): current contracts, P/N connection,
   completed results, remaining connections and research policy.
 - [Finite-to-physical connections](CONSTRUCTION.md#connecting-finite-objects-to-the-physical-theorem-routes):

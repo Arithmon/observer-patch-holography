@@ -26,6 +26,19 @@ two descriptions of the same proposed structure. An observer's clock is a
 readout within it, with no external time in which the whole history must run.
 The [working terms](docs/INTERPRETATION_AND_TERMS.md) explain this view.
 
+**The Universe reads itself into existence.** OPH starts from one
+hypothesis: its observers recover the specification of their own world from
+their records and build hardware whose execution realizes that same
+history, including its builders. Because nothing lies outside this
+structure, whatever observers recover and implement needs no further
+justification. The carrier, the observer algebra and the repair law are
+justified by being recovered, by running and by reproducing what observers
+measure. Nothing unrecovered may be assumed, and the public record, what
+survives every comparison between observers, is what "our Universe" means.
+The executable specification is where the account enters this loop; the
+loop itself has no first step. The [basis](docs/BASIS.md) states this
+precisely.
+
 This radical observers-first approach addresses foundational problems beyond
 the classical picture: quantum measurement, correlations incompatible with
 a local classical account, and the origin of an apparent spacetime. OPH
@@ -37,43 +50,6 @@ The project has checked finite mathematical results and executable observers
 that connect several of them in one process. **Agreement with the full range
 of observed measurement statistics has not been established.** The work below gives
 concrete pieces of that construction and tests where they fit together.
-
-## Mathematical results
-
-- **Agreement and stable records.** Under explicit termination and consistency
-  conditions, local repairs reach a shared public result independent of their
-  order. Further results control record preservation and changes under
-  refinement. [Consensus paper](paper/reality_as_consensus_protocol.pdf).
-- **Quantum observations.** Within the stated finite quantum algebra, verified
-  results cover repeatable measurements, protected classical records,
-  uncertainty and the Bell correlation bound, including a state that attains
-  it. [Finite quantum event algebras](extra/machine_checked_finite_event_algebras.pdf).
-- **Three spatial directions.** The fixed twelve-port carrier and its mean
-  repair rule give an exact three-dimensional slow response and its Euclidean
-  geometry. This supplies a geometric building block for an observer's spatial
-  interpretation. [Carrier construction](code/a5_closure/README.md).
-- **Gauge symmetry.** With complete reversible response and observer-transport
-  assumptions, the construction forces the Standard Model gauge Lie algebra.
-  A specified matter representation gives an anomaly-free generation.
-  [Gauge derivation](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf).
-- **Thermodynamics.** A common finite repair construction gives the four laws,
-  fluctuation relations and the Landauer erasure bound under stated reference,
-  energy-calibration and low-temperature assumptions.
-  [Thermodynamics account](paper/observers_are_all_you_need.pdf).
-- **Information capacity.** Exact results count which records remain
-  distinguishable after the allowed operations, bound that count by the
-  available carrier, and track it through refinement.
-  [Record capacity](code/capacity_readback/README.md).
-- **Matter and fields.** A supplied charged-scalar/Maxwell action, geometry and
-  quantization give an interacting Hamiltonian after gauge reduction. Controlled
-  scalar refinement connects classical detector readouts to a nonlinear field
-  equation. [Physics synthesis](flagship/from_observer_consensus_to_standard_physics.pdf).
-
-These are conditional mathematical results. Making their premises hold for
-observations in one common model is the central construction problem. The
-[axiom reference](docs/AXIOM_REFERENCE.md) states the three core axioms; the
-[model–theorem map](model/PREMISES.md) separates their consequences from the
-additional inputs of each construction.
 
 ## Executable observer
 
@@ -110,6 +86,62 @@ instruments through their retained record laws using specified coherent
 preparation and readout.
 Simulation agreement with a supplied field law does not establish that OPH
 derives the corresponding observation statistics.
+
+## Mathematical results
+
+- **Agreement and stable records.** Under explicit termination and consistency
+  conditions, local repairs reach a shared public result independent of their
+  order. Further results control record preservation and changes under
+  refinement. [Consensus paper](paper/reality_as_consensus_protocol.pdf).
+- **Quantum observations.** Within the stated finite quantum algebra, verified
+  results cover repeatable measurements, protected classical records,
+  uncertainty and the Bell correlation bound, including a state that attains
+  it. [Finite quantum event algebras](extra/machine_checked_finite_event_algebras.pdf).
+- **Three spatial directions.** The fixed twelve-port carrier and its mean
+  repair rule give an exact three-dimensional slow response and its Euclidean
+  geometry. This supplies a geometric building block for an observer's spatial
+  interpretation. [Carrier construction](code/a5_closure/README.md).
+- **Gauge symmetry.** With complete reversible response and observer-transport
+  assumptions, the construction forces the Standard Model gauge Lie algebra.
+  A specified matter representation gives an anomaly-free generation.
+  [Gauge derivation](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf).
+- **Thermodynamics.** A common finite repair construction gives the four laws,
+  fluctuation relations and the Landauer erasure bound under stated reference,
+  energy-calibration and low-temperature assumptions.
+  [Thermodynamics account](paper/observers_are_all_you_need.pdf).
+- **Information capacity.** Exact results count which records remain
+  distinguishable after the allowed operations, bound that count by the
+  available carrier, and track it through refinement.
+  [Record capacity](code/capacity_readback/README.md).
+- **Matter and fields.** A supplied charged-scalar/Maxwell action, geometry and
+  quantization give an interacting Hamiltonian after gauge reduction. Controlled
+  scalar refinement connects classical detector readouts to a nonlinear field
+  equation. [Matter continuum](paper/observers_are_all_you_need.pdf).
+
+These are conditional mathematical results. Making their premises hold for
+observations in one common model is the central construction problem. The
+[basis](docs/BASIS.md) explains how the theorem premises relate to the
+executable specification, and the [model–theorem map](model/PREMISES.md)
+records which premises the construction supplies. 
+
+## Papers
+
+- **[Observers Who Read Their Universe into Existence](flagship/from_observer_consensus_to_standard_physics.pdf)**
+  is the main synthesis: the theory in one account, selected results in
+  detail, the scoreboard of the construction and the closure hypothesis. Its released version is on [PhilPapers](https://philpapers.org/rec/MUEFOC).
+- **[An Executable Observer](paper/executable_observer_construction.pdf)**
+  states the specification, its acceptance criteria, its certified components
+  and the premise map.
+- **The theorem library** holds the long proofs, from
+  [consensus](paper/reality_as_consensus_protocol.pdf) and
+  [observers and records](paper/observers_are_all_you_need.pdf) to
+  [spacetime and Einstein dynamics](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf).
+  The [paper index](paper/README.md) and the [paper set](docs/PAPER_SET.md)
+  list every paper and its role. The Koide relation holds exactly under a
+  stated balance premise, and the capacity programme asks whether the public
+  capacity assigned to the Universe agrees with the one reconstructed from
+  inside. These constant calculations, including the fine-structure root,
+  have diagnostic status.
 
 <!-- PUBLIC-QUANTITATIVE-CLAIMS:BEGIN -->
 <!-- Quantitative table suppressed while physical_establishment count is zero. -->
