@@ -49,7 +49,7 @@ and the clocks inside it.
   time comes from record counts; and the Einstein equation from a realized
   null balance.
 - **Mathematics you can check.** The [Lean library](Lean/) contains more than
-  12200 public theorems and lemmas with no admitted proofs, and every retained
+  12600 public theorems and lemmas with no admitted proofs, and every retained
   computational receipt is replayed under continuous integration.
 - **Tests fixed in advance.** Predictions and their rejection rules enter the
   [frozen-prediction ladder](docs/FROZEN_PREDICTION_LADDER.md) before any

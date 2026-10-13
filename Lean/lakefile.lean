@@ -139,5 +139,21 @@ lean_lib «OPHConstruction» where
   roots := #[`Tower, `Dynamics, `Geometry, `InformationProjection, `Locality,
     `QFT, `Variational]
 
+@[default_target]
+lean_lib «SourceLaw» where
+  srcDir := "."
+  roots := #[`SourceLaw.WeightedSeams, `SourceLaw.HistoryRegister,
+    `SourceLaw.CounterfamilyLocality, `SourceLaw.IdentificationLadder,
+    `SourceLaw.LangevinStationarity, `SourceLaw.TransferStructure,
+    `SourceLaw.ReflectionPositivity, `SourceLaw.ContinuumTimeLimit,
+    `SourceLaw.TwoPointFlux, `SourceLaw.MatrixSeams,
+    `SourceLaw.ScalarPacket, `SourceLaw.TransferMatrixLift,
+    `SourceLaw.RepairAdmissibility, `SourceLaw.CounterfamilyReader,
+    `SourceLaw.StationaryWindow, `SourceLaw.GoldenCarrier,
+    `SourceLaw.MatrixLimits, `SourceLaw.DynamicalResponse,
+    `SourceLaw.GoldenFamily, `SourceLaw.ContinuumConnection,
+    `SourceLaw.RepairConvergence, `SourceLaw.OpenWindow,
+    `SourceLaw.VacuumIdentity]
+
 lean_exe «oph» where
   root := `Main

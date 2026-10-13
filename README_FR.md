@@ -53,7 +53,7 @@ intemporelle et les horloges qu’elle contient.
   ordre causal de dimension (1+3) dont le temps propre vient de comptages de
   registres ; et l’équation d’Einstein issue d’un bilan nul réalisé.
 - **Des mathématiques vérifiables.** La [bibliothèque Lean](Lean/) contient
-  plus de 12200 théorèmes et lemmes publics sans preuve admise, et chaque reçu
+  plus de 12600 théorèmes et lemmes publics sans preuve admise, et chaque reçu
   de calcul conservé est rejoué en intégration continue.
 - **Des tests fixés à l’avance.** Les prédictions et leurs règles de rejet
   entrent dans l’[échelle des prédictions gelées](docs/FROZEN_PREDICTION_LADDER.md)
