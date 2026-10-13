@@ -14,11 +14,15 @@ representations and modular flow from this same executed state, extends
 its complete records with a source-compiled binary modular clock, and
 extracts the interactions between its declared regions. The
 [occupation analysis](OCCUPATION_REFINEMENT.md) adds an interacting
-two-oscillator limit; its final sharp readout converges strongly, with a
-finite-cutoff error rate still missing for that last instrument.
-The [infinite-history certificate](INFINITE_HISTORY.md) independently
-encloses the limiting sharp-readout response itself; it does not supply
-that missing finite-detector comparison rate.
+two-oscillator limit. The [infinite-history certificate](INFINITE_HISTORY.md)
+encloses the limiting sharp-readout response itself. The
+[complete-output comparison](READOUT.md#complete-comparisons-with-the-actual-finite-pointer)
+also bounds the finite detector's retained quantum state, for the same
+zero-current preparation with feedback enabled and disabled. At d=2 its
+distance from the infinite sharp history is about 0.455 with feedback;
+even at d=256 every output confined to that occupation code has error
+above 0.122. Accurate sign probabilities alone do not certify an accurate
+postmeasurement state.
 
 A separate [finite-resolution detector](SMOOTH_REFINEMENT.md) replaces that
 sharp sign measurement with a source-executed Ramsey readout. Its complete
@@ -82,6 +86,7 @@ From the repository root, after installing `model/requirements.txt`:
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source --check model/common_source/results.json
 python3 -m model.common_source.infinite_history --check model/common_source/infinite_results.json
+python3 -m model.common_source.sharp_output --check model/common_source/sharp_output_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.bridge --check model/common_source/bridge_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.smooth_bridge --check model/common_source/smooth_results.json
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -m model.common_source.thermal_bridge --check model/common_source/thermal_results.json
@@ -99,6 +104,9 @@ retains the Hilbert/modular/regional readouts and every appended clock branch.
 histories, feedback and disconnected controls, energy ledger and error bounds.
 [infinite_results.json](infinite_results.json) retains the exact infinite
 sharp-readout signal, state-error budgets, polynomial hashes and controls.
+[sharp_output_results.json](sharp_output_results.json) retains the complete
+finite/infinite output comparisons, unavoidable code-support errors and
+independently checked finite-projector residuals.
 [thermal_results.json](thermal_results.json) retains the separate fixed-reference
 clock continuations; [causality_results.json](causality_results.json) retains
 the fixed-schedule native dependency and delayed-influence checks.
@@ -239,9 +247,34 @@ the separate readout treatment above. The independent
 [fourth-moment analysis](OCCUPATION_REFINEMENT.md) supplies a further
 pre-readout bound and proves strong convergence of the complete sharp
 history for all three native currents, including its native continuation.
-Neither estimate is a finite-cutoff error rate for the final sharp detector.
-These occupation results supply no spatial continuum or physical service
-error budget.
+Neither pre-readout estimate alone bounds the final sharp detector. The
+separate complete-output calculation now adds the missing projector
+comparison for the zero-current preparation, with every quantum branch
+retained. It gives finite error enclosures at d=32,64,128 and a direct d=2
+comparison including the ideal source splitting budget. These mathematical
+cutoff comparisons supply no additional source execution, spatial continuum
+or physical service error budget.
+
+For zero native preparation current, the certified complete continuous-output
+distances are:
+
+| Onsite occupation dimension | Feedback enabled | Feedback disabled |
+| --- | --- | --- |
+| 2 | [0.455154, 0.455155] | [0.457642, 0.457643] |
+| 32 | [0.203713, 0.226530] | [0.203935, 0.226752] |
+| 64 | [0.180917, 0.180924] | [0.181090, 0.181097] |
+| 128 | [0.152201, 0.152204] | [0.152341, 0.152344] |
+
+These intervals are rounded outwards from the exact receipt. At d=2 the
+additional ideal 512-step source budget gives [0.454336, 0.455973] with
+feedback and [0.456824, 0.458461] without it. At d=64 the pre-readout error
+is below 0.000002498, so it cannot explain the much larger final error:
+the sharp detector dominates. The vacuum control independently proves
+that optimal approximation within these occupation codes requires
+dimension `Omega(epsilon^-4)` for complete-output error epsilon. That
+resource bound concerns the specified Fock code, not every abstract finite
+encoding. The separate smooth detector avoids this discontinuous readout
+while changing the observable being measured.
 
 The infinite-history derivation also proves that the finite sign instruments
 converge to this same infinite instrument, including terminal states. With

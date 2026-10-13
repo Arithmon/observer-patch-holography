@@ -230,7 +230,7 @@ currently named towers; they cannot be interchanged.
 | Contract | What it connects | Status for this construction |
 | --- | --- | --- |
 | Exact hardware inventory | The same finite observables, states, records and generators under unital embeddings | Extra independent hardware may preserve a fixed experiment; adding interactions generally breaks exact generator naturality |
-| Occupation and temporal approximation | Complete quantum instruments and their observations as cutoffs and splitting are refined | Temporal bound already certified; [interacting occupation analysis](OCCUPATION_REFINEMENT.md) controls pre-readout evolution and proves strong convergence of the final sharp readout, without a finite-cutoff readout rate |
+| Occupation and temporal approximation | Complete quantum instruments and their observations as cutoffs and splitting are refined | Temporal bound already certified; [interacting occupation analysis](OCCUPATION_REFINEMENT.md) controls pre-readout evolution and proves strong convergence of the final sharp readout; the separate [complete-output comparison](READOUT.md#complete-comparisons-with-the-actual-finite-pointer) gives finite-cutoff enclosures for the zero-current preparation |
 | Bare repair tower | Normal forms, protected boundaries and coarse-graining of terminating repairs | A strictly decreasing repair mismatch is not the continuing unitary evolution |
 | Physical readout tower | Common-source event, modular, stress, entropy, geometry and scale readouts, commuting maps and limiting physical identities | Regional algebra/modular/clock attachments now exist at finite cutoffs; the full physical bundle remains uninhabited by this source |
 

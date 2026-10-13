@@ -4,9 +4,10 @@ The finite common construction has an occupation limit with its actual final
 field instrument: the complete unnormalized classical/quantum history
 converges in trace norm to a specified interacting two-oscillator history.
 There is also an explicit finite-cutoff error bound **before** the final sharp
-field readout. A finite-cutoff error rate for that readout is not supplied.
-These are different conclusions and the executable certificate keeps them
-separate.
+field readout. The separate [complete-output comparison](READOUT.md#complete-comparisons-with-the-actual-finite-pointer)
+now supplies finite-cutoff bounds including the sharp detector for the
+zero-current interacting preparation. That state-specific comparison and
+the uniform pre-readout bound below have different scopes.
 
 This is a fixed two-site occupation limit. The two sites, their spring,
 coupling, model-time evolution, preparation and readout are declared inputs.
@@ -259,11 +260,13 @@ finite native transitions and keeping their labels. Convex mixing and that
 common classical/quantum channel preserve trace-norm convergence; no extra
 cutoff factor of 1056 is required.
 
-The spectral convergence argument supplies no finite-`d` numerical rate here.
-Accordingly the pre-readout error number must not be reported as the final
-detector error or as an error on the complete recorded instrument. A certified
-finite-section approximation of the sharp spectral projectors, or an explicitly
-changed finite-resolution detector, would be needed for that stronger bound.
+The spectral convergence argument supplies no finite-`d` numerical rate by
+itself. The pre-readout error number must not be reported as the final
+detector error. [sharp_output.py](sharp_output.py) supplies that additional
+comparison for the zero-current preparation by retaining the complete
+infinite polynomial history and certifying finite sign projectors through
+their source residuals. Its finite error enclosures do not claim the
+arbitrary-matter/reference scope of the separate pre-readout theorem.
 
 Also, a sharp sign projector generally turns a smooth wavefunction nonzero
 at the origin into one with a jump. The post-readout kinetic energy need not
@@ -290,8 +293,9 @@ a fixed model-time interval is at most `S_d^3 t^3/(3 n^2)`. Taking, for example,
 `O(1/d)`. At each `d` those two implementations use the **same** finite final
 readout, so its channel is contractive for this split-error comparison.
 Combining this with the proved occupation limit gives a simultaneous ideal
-time/occupation limit for the same history. It still supplies no final sharp
-readout rate and does not assert source execution above the retained `d=2,4`.
+time/occupation limit for the same history. Its sharp-detector comparison
+requires the additional certificate above; it does not assert source
+execution above the retained `d=2,4`.
 
 Run from the repository root:
 

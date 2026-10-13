@@ -3,7 +3,8 @@
 The fourth-number-moment/Duhamel certificate is quantitative up to the last
 field readout. The actual finite sign(Q_d) instrument also converges strongly,
 as proved in OCCUPATION_REFINEMENT.md, but no finite-d rate for that sharp
-readout is supplied here. None of these statements is a spatial continuum or
+readout is supplied by this module. The separate sharp_output module gives
+state-specific complete-output finite-cutoff enclosures. None is a spatial continuum or
 physical-service certificate. The source execution remains at d=2 and d=4.
 """
 from fractions import Fraction as F

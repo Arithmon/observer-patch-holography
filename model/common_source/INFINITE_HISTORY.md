@@ -24,8 +24,11 @@ calibration of the declared action and model-coordinate time.
 
 The qualitative sharp finite-detector limit is also proved in
 [OCCUPATION_REFINEMENT.md](OCCUPATION_REFINEMENT.md); this calculation
-additionally certifies the infinite-history signal. It does not supply a
-numerical finite-`d` sharp-projector error rate. The separate Ramsey
+additionally certifies the infinite-history signal. The subsequent
+[complete-output comparison](READOUT.md#complete-comparisons-with-the-actual-finite-pointer)
+uses these same retained polynomial states to enclose actual finite sharp
+instrument errors and prove unavoidable occupation-code output errors.
+Those bounds are separate from this signal enclosure. The separate Ramsey
 instrument in [SMOOTH_REFINEMENT.md](SMOOTH_REFINEMENT.md) has effects
 `(I +/- sin(Q0))/2`, a complete-output cutoff bound and finite-energy output.
 A sharp half-line projection can instead produce infinite kinetic energy;

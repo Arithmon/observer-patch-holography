@@ -92,10 +92,15 @@ includes the original free vacuum, unbounded interacting evolution, both
 recorded instruments and the listed state-approximation errors. It uses
 the actual coordinate half-line projector: taking the sign of a finite coordinate
 matrix is a different detector. A separate uniform number-moment theorem
-controls the finite-Hamiltonian family before that final read. These results
-certify the limiting sharp-readout signal directly. They do not supply a
-numerical rate comparing finite sign instruments with that limit, a spatial
-refinement or a physical apparatus identification.
+controls the finite-Hamiltonian family before that final read. The
+[complete-output audit](common_source/READOUT.md#complete-comparisons-with-the-actual-finite-pointer)
+supplies certified finite-detector comparisons for the same zero-current
+preparation. At d=2 the full ideal source output is about 0.455 from the
+infinite sharp history in trace distance, despite the much smaller change
+in its single sign probability. Every output confined to the d=256
+occupation code has error above 0.122 for this prepared history.
+This resolves a detector approximation question, with no spatial refinement
+or physical apparatus identification.
 
 The construction reuses the existing coherent source rather than claiming
 that a common abstract source was absent. Its [theorem attachments](common_source/DERIVATION.md#compatible-theorem-use-and-open-physical-connections)
@@ -115,10 +120,11 @@ interpretation under the declared factorization. The
 [interacting occupation analysis](common_source/OCCUPATION_REFINEMENT.md)
 supplies a moment/Duhamel bound before the final scalar read and a strong
 limit for the complete sharp instrument, including all three declared
-native currents and their native continuation. A numerical finite-cutoff
-rate for that final sharp read, a growing spatial family, calibrated
-physical clocks and the gravitational readouts are separate remaining
-connections. The physical tower must carry these
+native currents and their native continuation. The separate finite-error
+enclosures including the sharp read use the zero-current preparation and
+both feedback settings; they do not inherit arbitrary-input uniformity.
+A growing spatial family, calibrated physical clocks and the gravitational
+readouts are separate remaining connections. The physical tower must carry these
 maps on one compatible family; its record fields alone do not establish them.
 
 The [fixed-reference bridge](common_source/THERMAL_CLOCK.md) adds a different
@@ -538,7 +544,7 @@ finite software run.
 
 | Constructed object | Result that can be reused | Required connection for a broader claim |
 | --- | --- | --- |
-| Common flux-dressed CAR/scalar register and two recorded instruments | Source execution, operator Gauss, committed records, all-input finite temporal bound, exact finite and infinite sharp-readout feedback contrasts, interacting occupation bounds and strong sharp-instrument limit | Numerical finite-cutoff sharp-readout rate, spatial refinement, vacuum/coupling identification, numerical/physical source services and responsive stress/geometry on this same process |
+| Common flux-dressed CAR/scalar register and two recorded instruments | Source execution, operator Gauss, committed records, finite temporal and occupation bounds, exact sharp-readout contrasts, state-specific complete-output cutoff enclosures and unavoidable occupation-code output errors | Spatial refinement, vacuum/coupling identification, numerical/physical source services and responsive stress/geometry on this same process; post-sharp clock continuation needs its own error analysis |
 | Observer representations and appended clocks on the finite sharp history | GNS and local-reference modular readouts, fixed full-work Gibbs/modular correspondence, source-compiled clock probes and CP regional restrictions | Declared observer access, factorization and references; reference selection by repair, physical clock calibration, growing spatial family and occupation limits of the appended clocks |
 | Separate smooth Ramsey detector on the common action | Quantitative complete-output occupation bound and finite-energy backreaction | Different instrument and bit dictionary; small executed-cutoff bounds are vacuous, and the sharp-history clock does not transfer |
 | N1 source, phase and finite record tape | All-input CPTP law, repeatable committed classical records, exact forecast and feedback controls | Composition into the intended observer menu, delivery/refinement and continuation contract; no full `OperationalObserver` or federation instantiation is asserted |
@@ -587,9 +593,12 @@ two-site source program executes preparation, quantum evolution and the
 binary detector under its declared services. The earlier free-field program
 has a quantitative complete-history occupation bound. The interacting sharp
 history has quantitative pre-readout bounds, a strong complete-instrument
-limit and an exact nonzero infinite signal for zero native preparation
-current. A numerical finite-cutoff rate for its final sharp readout remains
-to be supplied. The separate smooth detector has a quantitative
+limit, an exact nonzero infinite signal and certified complete-output cutoff
+enclosures for zero native preparation current. The sharp detector's long
+occupation tail forces substantial output error even when its probabilities
+are close; the vacuum control requires occupation dimension of order at
+least the inverse fourth power of the requested trace-distance error.
+The separate smooth detector has a quantitative
 complete-output occupation bound, including the pointer. Connect a spatially
 refining family of source programs to the continuum, retaining their
 records and bounding numerical and physical services. The earlier spatial scalar theorem

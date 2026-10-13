@@ -7,9 +7,11 @@ output now has an explicit occupation error bound tending to zero. The new
 instrument also preserves finite energy and has a simple unconditional energy
 increment in the infinite-oscillator model.
 
-The old sharp-sign protocol and its retained evidence remain unchanged. Its
-strong occupation limit still has no supplied finite-cutoff readout rate;
-changing the detector here does not prove such a rate for that other protocol.
+The old sharp-sign protocol and its retained evidence remain unchanged.
+Changing the detector here does not prove a sharp-sign error bound. The
+separate [complete-output comparison](READOUT.md#complete-comparisons-with-the-actual-finite-pointer)
+supplies finite-cutoff sharp-sign enclosures for the zero-current preparation;
+it does not supply an interacting all-cutoff asymptotic rate.
 This result is a fixed two-site occupation theorem, not a spatial continuum
 or an empirical test of OPH.
 

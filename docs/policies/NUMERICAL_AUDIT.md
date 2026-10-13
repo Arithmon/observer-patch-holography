@@ -182,6 +182,14 @@ generated-PDF merge conflict by rebuilding from the merged source and
 current release metadata, then regenerate and validate the manifest and
 visually inspect the changed pages; choosing either old binary is not enough.
 
+Claim-registry edits also affect receipts that bind complete downstream claim
+rows. In particular, `code/m1_necessity` follows the registered dependency
+closure even when none of its numerical code changes. Regenerate its live
+receipt with `PYTHONPATH=code python -m m1_necessity.build`, inspect the exact
+field changes, and run its producer-free verifier and hostile controls.
+Confirm that any custody-only update leaves the numerical evidence unchanged;
+a passing model manifest or registry validator does not check that consumer.
+
 ## Reporting and exit
 
 Report each maintainer finding with its corrective commit and retained
