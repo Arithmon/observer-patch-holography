@@ -9,6 +9,19 @@ occupation and the actual coordinate-sign readout. This is a construction
 toward OPH's [physical completion target](../CONSTRUCTION.md#completion-target-and-acceptance-criteria).
 That target remains open.
 
+The canonical finite [executable specification](COMPOSITION.md) and
+[program runtime](protocol.py) now compose these operations on retained
+states. Both original sharp and smooth histories use this engine. The new
+[four-read continuation](composition.py) adds a second smooth field read,
+record-controlled feedback and a later gauge clock probe to the same
+preparation. Its complete native attachment retains all 4,224 joint outcomes
+at d=2 and d=4. The smooth occupation theorem now covers those later reads
+and evolution, including their quantum output rather than only probabilities.
+
+```sh
+python -m model.common_source.composition --check model/common_source/composition_results.json
+```
+
 The [observer readout bridge](OBSERVER_READOUTS.md) reconstructs Hilbert
 representations and modular flow from this same executed state, extends
 its complete records with a source-compiled binary modular clock, and
