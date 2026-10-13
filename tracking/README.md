@@ -6,7 +6,7 @@ repair-law implementation; these sources record its connections to finite
 and continuum results, declared physical premises and observation targets.
 Finite construction evidence does not by itself promote a physical claim.
 
-- [`model_theorem_map.json`](model_theorem_map.json) connects the common
+- The `model_supply` section of [`premise_register.json`](premise_register.json) connects the common
   repair candidate to theorem premises and bounded completion conditions.
   Generate `model/PREMISES.md` with
   `python3 tools/build_model_theorem_map.py`; use `--check` to validate source
@@ -24,7 +24,7 @@ Finite construction evidence does not by itself promote a physical claim.
   and comparison ancestry of constants rows (rendered to
   `docs/registers/CONSTANTS_ANCESTRY_V3.md` by
   `python3 tools/build_constants_ancestry.py`).
-- [`sm_lagrangian_correspondence.json`](sm_lagrangian_correspondence.json) is
+- The `sm_coverage` section of [`premise_register.json`](premise_register.json) is
   the Standard Model Lagrangian correspondence source (rendered to
   `docs/registers/SM_LAGRANGIAN_CORRESPONDENCE.md` by
   `python3 tools/build_sm_correspondence.py`).

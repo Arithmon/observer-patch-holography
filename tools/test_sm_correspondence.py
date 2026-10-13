@@ -1,4 +1,8 @@
-"""Drift and tamper tests for the SM Lagrangian correspondence surface."""
+"""Drift and tamper tests for the SM Lagrangian correspondence section.
+
+The table is the ``sm_coverage`` section of ``tracking/premise_register.json``
+and renders as a section of ``docs/registers/PREMISE_REGISTER_V3.md``.
+"""
 
 from __future__ import annotations
 
@@ -10,7 +14,14 @@ import build_sm_correspondence as tool
 
 
 def _data() -> dict:
-    return json.loads(tool.TABLE_PATH.read_text(encoding="utf-8"))
+    return tool.load_table()
+
+
+def test_table_is_the_sm_coverage_section_of_the_premise_register() -> None:
+    register = json.loads(tool.PREMISE_REGISTER_PATH.read_text(encoding="utf-8"))
+    assert tool.SECTION == "sm_coverage"
+    assert register[tool.SECTION] == _data()
+    assert tool.SURFACE_PATH.name == "PREMISE_REGISTER_V3.md"
 
 
 def test_committed_table_validates() -> None:
@@ -23,12 +34,36 @@ def test_committed_table_validates() -> None:
 def test_rendered_surface_matches_committed_doc() -> None:
     data = _data()
     rows = tool.validate(data)
-    assert tool.SURFACE_PATH.read_bytes() == tool.render(data, rows).encode("utf-8")
+    committed = tool.SURFACE_PATH.read_text(encoding="utf-8")
+    assert committed.count(tool.render(data, rows)) == 1
 
 
 def test_check_mode_passes_on_committed_artifacts(capsys) -> None:
     assert tool.main(["--check"]) == 0
-    assert "surface is current" in capsys.readouterr().out
+    assert "section is current" in capsys.readouterr().out
+
+
+def test_check_mode_fails_on_a_stale_page(tmp_path, monkeypatch, capsys) -> None:
+    page = tool.SURFACE_PATH.read_text(encoding="utf-8")
+    stale = tmp_path / "PREMISE_REGISTER_V3.md"
+    stale.write_text(page.replace("| SML-01 |", "| SML-1 |", 1), encoding="utf-8")
+    monkeypatch.setattr(tool, "SURFACE_PATH", stale)
+    assert tool.main(["--check"]) == 1
+    assert "stale" in capsys.readouterr().err
+    data = _data()
+    section = tool.render(data, tool.validate(data))
+    stale.write_text(page + "\n" + section, encoding="utf-8")
+    assert tool.main(["--check"]) == 1
+
+
+def test_missing_section_is_rejected(tmp_path, monkeypatch) -> None:
+    register = json.loads(tool.PREMISE_REGISTER_PATH.read_text(encoding="utf-8"))
+    del register[tool.SECTION]
+    path = tmp_path / "premise_register.json"
+    path.write_text(json.dumps(register), encoding="utf-8")
+    monkeypatch.setattr(tool, "PREMISE_REGISTER_PATH", path)
+    with pytest.raises(SystemExit, match="no sm_coverage section"):
+        tool.load_table()
 
 
 def test_classification_outside_enum_is_rejected() -> None:
@@ -59,7 +94,7 @@ def test_classification_tamper_breaks_surface_parity() -> None:
     row = next(r for r in data["rows"] if r["classification"] == "partial")
     row["classification"] = "registered_premise"
     rows = tool.validate(data)
-    assert tool.render(data, rows).encode("utf-8") != tool.SURFACE_PATH.read_bytes()
+    assert tool.render(data, rows) not in tool.SURFACE_PATH.read_text(encoding="utf-8")
 
 
 def test_missing_evidence_path_is_rejected() -> None:

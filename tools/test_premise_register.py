@@ -35,14 +35,82 @@ def test_committed_register_validates() -> None:
 
 
 def test_rebuild_parity_with_committed_surface() -> None:
-    rows = register_tool.validate(_register())
-    rendered = register_tool.render(rows).encode("utf-8")
+    register = _register()
+    rows = register_tool.validate(register)
+    rendered = register_tool.render(rows, register).encode("utf-8")
     committed = register_tool.SURFACE_PATH.read_bytes()
     assert rendered == committed
 
 
+def test_register_carries_exactly_the_folded_sections() -> None:
+    register = _register()
+    assert list(register) == list(register_tool.TOP_KEYS)
+    assert register_tool.TOP_KEYS == (
+        "schema", "issue", "rows", "model_supply", "sm_coverage", "gravity_rungs"
+    )
+    for section, schema in register_tool.SECTION_SCHEMAS.items():
+        assert register[section]["schema"] == schema
+
+
+@pytest.mark.parametrize("section", ["model_supply", "sm_coverage", "gravity_rungs"])
+def test_missing_section_rejected(section: str) -> None:
+    register = _register()
+    del register[section]
+    with pytest.raises(SystemExit, match="top-level keys must be exactly"):
+        register_tool.validate(register)
+
+
+def test_unknown_top_level_section_rejected() -> None:
+    register = _register()
+    register["evidence_rows"] = []
+    with pytest.raises(SystemExit, match="top-level keys must be exactly"):
+        register_tool.validate(register)
+
+
+@pytest.mark.parametrize("section", ["model_supply", "sm_coverage", "gravity_rungs"])
+def test_section_schema_tamper_rejected(section: str) -> None:
+    register = _register()
+    register[section]["schema"] = "oph.some_other_ledger.v1"
+    with pytest.raises(SystemExit, match=f"section {section}: schema must equal"):
+        register_tool.validate(register)
+
+
+def test_folded_section_validators_run_inside_register_validation() -> None:
+    register = _register()
+    register["sm_coverage"]["rows"][0]["classification"] = "derived"
+    with pytest.raises(SystemExit, match="classification"):
+        register_tool.validate(register)
+    register = _register()
+    next(r for r in register["gravity_rungs"]["rungs"] if r["rung"] == 7)[
+        "status"
+    ] = "axiom_forced"
+    with pytest.raises(SystemExit, match="not among its registry"):
+        register_tool.validate(register)
+
+
+def test_page_renders_the_folded_sections_with_anchors() -> None:
+    register = _register()
+    rendered = register_tool.render(register_tool.validate(register), register)
+    introduction = rendered.split("| Row |", 1)[0]
+    assert "(#sm-coverage)" in introduction
+    assert "(#gravity-rungs)" in introduction
+    assert "(../../model/PREMISES.md)" in introduction
+    sm_start = rendered.index('<a id="sm-coverage"></a>')
+    gravity_start = rendered.index('<a id="gravity-rungs"></a>')
+    assert rendered.index("## What the dispositions mean") < sm_start < gravity_start
+    assert rendered.count("## The Standard Model term-and-sector correspondence table") == 1
+    assert rendered.count("## The gravity premise-elimination ladder") == 1
+    assert rendered[sm_start:gravity_start].count("| SML-") == len(
+        register["sm_coverage"]["rows"]
+    )
+    assert len(register["gravity_rungs"]["rungs"]) == 11
+    for rung in register["gravity_rungs"]["rungs"]:
+        assert f"- **Rung {rung['rung']}**:" in rendered[gravity_start:]
+
+
 def test_intro_keeps_register_scientific_and_explains_evidence_roles() -> None:
-    rendered = register_tool.render(register_tool.validate(_register()))
+    register = _register()
+    rendered = register_tool.render(register_tool.validate(register), register)
     assert "Established under [issue #727]" in rendered
     assert "maintained as a scientific register" in rendered
     assert "implicit reverse-consumer edge" in rendered
@@ -62,9 +130,10 @@ def test_intro_accounts_for_valid_result_specific_assumptions() -> None:
     assert "fixed_or_monotone_capacity_branch" in claim["assumptions"]
     assert set(claim["assumptions"]) <= claim_tool.dictionary_tokens(root)
 
-    introduction = register_tool.render(register_tool.validate(_register())).split(
-        "| Row |", 1
-    )[0]
+    register = _register()
+    introduction = register_tool.render(
+        register_tool.validate(register), register
+    ).split("| Row |", 1)[0]
     assert "canonical PR-numbered premises" in introduction
     assert "result-specific assumptions" in introduction.lower()
     assert "claims/claim_registry.yaml" in introduction

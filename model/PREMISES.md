@@ -1,6 +1,6 @@
 # OPH reverse-engineering table: model and theorem premises
 
-As of 2026-10-12. Generated from [the navigation map](../tracking/model_theorem_map.json)
+As of 2026-10-12. Generated from [the navigation map](../tracking/premise_register.json)
 by `python tools/build_model_theorem_map.py`. Edit the input, then regenerate.
 
 Complete navigation coverage of the current canonical PR identifiers, plus explicit active-model obligations. Not an exhaustive extraction or proof of discharge of all paper/Lean antecedents. Branches are alternatives where stated; links do not alter claim-registry dependency roles.
@@ -509,7 +509,7 @@ Sources:
 
 - [Native geometric-source boundary](../paper/tex_fragments/NATIVE_GEOMETRIC_SOURCE_IDENTIFIABILITY.tex).
 - [Adopted source clauses](../docs/AXIOM_REFERENCE.md).
-- [Continuum and metric interfaces](../docs/registers/GRAVITY_PREMISE_LADDER.md).
+- [Continuum and metric interfaces](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
 - [Native response calibration and original and extended binary-controller scopes](../model/common_source/SLOW_GEOMETRY.md).
 - [Exact slow projector and committed-current displacements on all joint paths](../model/common_source/slow_geometry.py).
 - [Exact native continuity, mean transport and their restricted field interpretation](../model/common_source/NATIVE_FIELDS.md).
@@ -551,7 +551,7 @@ Existing claim-row navigation (no new edges): ` OPH-GR-D4D-ENTROPY-BRIDGE `.
 
 Sources:
 
-- [Gravity rungs3–5](../docs/registers/GRAVITY_PREMISE_LADDER.md).
+- [Gravity rungs3–5](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
 - [EC alignment, mixing and edge normalization](../claims/assumption_dictionary.md).
 
 <a id="re-16"></a>
@@ -570,7 +570,7 @@ Existing claim-row navigation (no new edges): ` OPH-MODEL-COMMON-SOURCE-EXECUTIO
 
 Sources:
 
-- [Gravity rungs7–8](../docs/registers/GRAVITY_PREMISE_LADDER.md).
+- [Gravity rungs7–8](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
 - [Modular and stress construction](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex).
 - [Finite modular readout on the actual interacting observation state](../model/common_source/operational.py).
 - [Finite thermal modular identity with BW and stress obligations retained](../model/common_source/THERMAL_CLOCK.md).
@@ -589,7 +589,7 @@ Explicit assumption-name navigation: ` fixed_cap_MaxEnt_variation_family `.
 
 Sources:
 
-- [Gravity rung6](../docs/registers/GRAVITY_PREMISE_LADDER.md).
+- [Gravity rung6](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
 - [Einstein derivation scope](../paper/tex_fragments/EINSTEIN_DERIVATION_SCOPE.tex).
 - [Stationarity and fixed-cap assumptions](../claims/assumption_dictionary.md).
 
@@ -609,7 +609,7 @@ Existing claim-row navigation (no new edges): ` OPH-GR-E2E-BRANCH-ENTRY `.
 
 Sources:
 
-- [Gravity rungs8–11](../docs/registers/GRAVITY_PREMISE_LADDER.md).
+- [Gravity rungs8–11](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
 - [Flagship gravitational interface](../flagship/from_observer_consensus_to_standard_physics.tex).
 - [Common tower and universal coupling](../claims/assumption_dictionary.md).
 

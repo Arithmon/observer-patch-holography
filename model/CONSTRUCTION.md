@@ -530,7 +530,7 @@ records and charge-resolved collars remain available from the
 [finite algebra results](../code/quantum_information/ALGEBRAS_AND_REPAIR.md).
 A charge center is not by itself a physical gauge-edge factor, area law or
 stress coupling. Nonnested completions need not commute. The
-[gravity premise ladder](../docs/registers/GRAVITY_PREMISE_LADDER.md) retains
+[gravity premise ladder](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs) retains
 the physical assumptions needed for the existing gravitational conclusions.
 
 ## Connecting finite objects to the physical theorem routes

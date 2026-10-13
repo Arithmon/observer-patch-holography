@@ -1,8 +1,14 @@
 """Validate and render the model/theorem navigation crosswalk (stdlib only).
 
-This checks references, inventory coverage and generated-file freshness. It does
-not infer claim-consumer edges, logical entailment, or a total of unproved
-premises. The existing premise and claim registries remain authoritative.
+The crosswalk is the ``model_supply`` section of
+``tracking/premise_register.json``; this tool renders it to
+``model/PREMISES.md``. It checks references, inventory coverage and
+generated-file freshness. It does not infer claim-consumer edges, logical
+entailment, or a total of unproved premises. The premise rows of the same file
+and the claim registry remain authoritative.
+
+A source path may end in ``#fragment`` to link a section of its file; the
+fragment must name an explicit ``<a id="fragment"></a>`` anchor in that file.
 """
 
 from __future__ import annotations
@@ -17,8 +23,8 @@ import sys
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
-INPUT = Path("tracking/model_theorem_map.json")
 REGISTER = Path("tracking/premise_register.json")
+SECTION = "model_supply"
 CLAIMS = Path("claims/claim_registry.yaml")  # This repository uses JSON syntax.
 OUTPUT = Path("model/PREMISES.md")
 SCHEMA = "oph.model_theorem_map.v1"
@@ -32,6 +38,7 @@ GROUP_KEYS = {
     "remaining", "closure", "sources", "assumptions", "claims",
 }
 GROUP_REQUIRED = GROUP_KEYS - {"assumptions", "claims"}
+FRAGMENT = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 
 
 def _text(value: object) -> bool:
@@ -182,14 +189,24 @@ def validate(data: object, premise_register: object, claim_registry: object,
             if not _text(path):
                 errors.append(f"{spot}.path: expected a repository-relative path")
                 continue
-            relative = PurePosixPath(path)
+            file_path, has_fragment, fragment = path.partition("#")
+            relative = PurePosixPath(file_path)
             if relative.is_absolute() or ".." in relative.parts or "\\" in path:
                 errors.append(f"{spot}.path: must stay inside the repository")
                 continue
-            target = (root / path).resolve()
+            target = (root / file_path).resolve()
             if not target.is_relative_to(root) or not target.is_file():
                 errors.append(f"{spot}.path: missing file or outside repository: {path}")
                 continue
+            if has_fragment:
+                if not FRAGMENT.fullmatch(fragment):
+                    errors.append(f"{spot}.path: fragment must be lowercase words joined by hyphens")
+                    continue
+                try:
+                    if f'<a id="{fragment}"></a>' not in target.read_text(encoding="utf-8"):
+                        errors.append(f"{spot}.path: anchor #{fragment} absent from {file_path}")
+                except (OSError, UnicodeError) as exc:
+                    errors.append(f"{spot}: cannot read source: {exc}")
             key = (path, anchor if isinstance(anchor, str) else "")
             if key in source_keys:
                 errors.append(f"{spot}: duplicate source path/anchor")
@@ -254,7 +271,7 @@ def render(data: dict, counts: dict) -> str:
     """Deterministic Markdown; call after validate succeeds."""
     lines = [
         "# OPH reverse-engineering table: model and theorem premises", "",
-        f"As of {data['as_of']}. Generated from [the navigation map](../tracking/model_theorem_map.json)",
+        f"As of {data['as_of']}. Generated from [the navigation map](../tracking/premise_register.json)",
         "by `python tools/build_model_theorem_map.py`. Edit the input, then regenerate.", "",
         data["coverage_note"], "",
         "These groups are workgroup navigation crosswalks, not claim-consumer edges or changes",
@@ -341,7 +358,7 @@ def render(data: dict, counts: dict) -> str:
         lines += ["Sources:", ""]
         for source in group["sources"]:
             label = source["label"].replace("[", "\\[").replace("]", "\\]")
-            item = f"- [{label}](../{quote(source['path'], safe='/')})"
+            item = f"- [{label}](../{quote(source['path'], safe='/#')})"
             if "anchor" in source:
                 item += "; exact source anchor: " + _code(source["anchor"])
             lines.append(item + ".")
@@ -366,7 +383,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--check", action="store_true", help="read-only validation and freshness check")
     args = parser.parse_args(argv)
     try:
-        data, premises, claims = (read_json(ROOT / path) for path in (INPUT, REGISTER, CLAIMS))
+        premises, claims = (read_json(ROOT / path) for path in (REGISTER, CLAIMS))
+        if not isinstance(premises, dict) or SECTION not in premises:
+            print(f"{REGISTER}: missing {SECTION} section", file=sys.stderr)
+            return 1
+        data = premises[SECTION]
         errors = validate(data, premises, claims, ROOT)
         if errors:
             for error in errors:

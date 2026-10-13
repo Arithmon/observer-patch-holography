@@ -99,6 +99,23 @@ class ModelTheoremMapTests(unittest.TestCase):
                     "exact substring absent")
         self.reject(lambda d: d["groups"][0]["sources"][0].update(anchor=" "), "nonempty exact substring")
 
+    def test_source_fragment_must_name_an_explicit_anchor(self):
+        (self.root / "page.md").write_text('# Page\n\n<a id="gravity-rungs"></a>\n\n## Ladder\n')
+        self.data["groups"][0]["sources"].append({"path": "page.md#gravity-rungs", "label": "Ladder"})
+        self.assertEqual(self.errors(), [])
+        rendered = builder.render(self.data, builder.inventory(self.data, self.premises, self.claims))
+        self.assertIn("- [Ladder](../page.md#gravity-rungs).", rendered)
+        self.reject(lambda d: d["groups"][0]["sources"][1].update(path="page.md#ladder"),
+                    "anchor #ladder absent from page.md")
+        self.reject(lambda d: d["groups"][0]["sources"][1].update(path="page.md#Gravity_Rungs"),
+                    "fragment must be lowercase words joined by hyphens")
+        self.reject(lambda d: d["groups"][0]["sources"][1].update(path="page.md#"),
+                    "fragment must be lowercase words joined by hyphens")
+        self.reject(lambda d: d["groups"][0]["sources"][1].update(path="absent.md#gravity-rungs"),
+                    "missing file")
+        self.reject(lambda d: d["groups"][0]["sources"][1].update(path="../page.md#gravity-rungs"),
+                    "inside the repository")
+
     def test_source_without_anchor_is_allowed_but_missing_file_is_not(self):
         del self.data["groups"][0]["sources"][0]["anchor"]
         self.assertEqual(self.errors(), [])
@@ -156,12 +173,31 @@ class ModelTheoremMapTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "duplicate JSON key: schema"):
             builder.read_json(path)
 
-    def _write_fixture(self):
-        for relative, value in ((builder.INPUT, self.data), (builder.REGISTER, self.premises),
-                                (builder.CLAIMS, self.claims)):
+    def _write_fixture(self, register=None):
+        if register is None:
+            register = dict(self.premises, **{builder.SECTION: self.data})
+        for relative, value in ((builder.REGISTER, register), (builder.CLAIMS, self.claims)):
             target = self.root / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(json.dumps(value))
+
+    def test_map_is_the_model_supply_section_of_the_premise_register(self):
+        self.assertEqual(builder.REGISTER, Path("tracking/premise_register.json"))
+        self.assertEqual(builder.SECTION, "model_supply")
+        live = builder.read_json(builder.ROOT / builder.REGISTER)
+        self.assertEqual(live[builder.SECTION]["schema"], builder.SCHEMA)
+        self.assertEqual(builder.validate(live[builder.SECTION], live,
+                                          builder.read_json(builder.ROOT / builder.CLAIMS),
+                                          builder.ROOT), [])
+
+    def test_missing_section_fails_closed_without_writing(self):
+        self._write_fixture(register=self.premises)
+        output = self.root / builder.OUTPUT
+        stderr = io.StringIO()
+        with patch.object(builder, "ROOT", self.root), redirect_stderr(stderr):
+            self.assertEqual(builder.main([]), 1)
+        self.assertIn("missing model_supply section", stderr.getvalue())
+        self.assertFalse(output.exists())
 
     def test_cli_generation_and_read_only_stale_check(self):
         self._write_fixture()

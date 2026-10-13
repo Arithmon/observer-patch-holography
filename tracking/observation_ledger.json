@@ -293,7 +293,7 @@
         "Lean/Geometry/SourceOrderEinsteinComposition.lean",
         "Lean/ObserverPatchHolography/EinsteinBranch/Composition.lean",
         "Lean/ObserverPatchHolography/EinsteinBranch/RegisterSurface.lean",
-        "docs/registers/GRAVITY_PREMISE_LADDER.md",
+        "docs/registers/PREMISE_REGISTER_V3.md",
         "Lean/Geometry/EinsteinBranchInhabitant.lean",
         "Lean/Screen/LocalEnergyBalance.lean",
         "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean",
@@ -1546,7 +1546,7 @@
         "PR-69"
       ],
       "evidence": [
-        "tracking/sm_lagrangian_correspondence.json",
+        "tracking/premise_register.json",
         "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
         "Lean/Screen/ElectroweakBreakingComposition.lean"
       ],
@@ -1567,8 +1567,8 @@
       "lane_issue": 735,
       "premises": [],
       "evidence": [
-        "tracking/sm_lagrangian_correspondence.json",
-        "docs/registers/SM_LAGRANGIAN_CORRESPONDENCE.md",
+        "tracking/premise_register.json",
+        "docs/registers/PREMISE_REGISTER_V3.md",
         "Lean/Screen/AssembledActionComposition.lean",
         "Lean/Screen/FermionSectorAssembly.lean",
         "Lean/Screen/GaugeSectorBracketCompletion.lean",
