@@ -10,42 +10,46 @@ The [working terms](../docs/INTERPRETATION_AND_TERMS.md) summarize these
 definitions. Mathematical background supplied by a benchmark remains an
 explicit premise even when the programme aims to reconstruct its physical role.
 
-**Paper releases and broad prose restructuring are on hold** under the
-[model research programme](../model/CONSTRUCTION.md#research-programme-and-paper-release-hold).
-Audits, correctness fixes, dated errata and review builds continue. The
-hold is reconsidered after a coherent, tested common-model milestone;
-preview CI does not authorize publication.
+The [paper set](../docs/PAPER_SET.md) records the model milestone around which
+these papers are organized and the role of each. A new paper release follows
+the owner's approval under the
+[release policy](../model/CONSTRUCTION.md#research-programme-and-paper-release-hold);
+audits, correctness fixes, dated errata and review builds continue between
+releases, and preview CI does not authorize publication. The
+[basis](../docs/BASIS.md) states the closure hypothesis, the no-outside rule,
+the agreement condition and the executable specification that the papers share.
 
-For a first reading, begin with the flagship technical paper,
-[*Finite Observer Consensus as a Reconstruction Principle*](../flagship/from_observer_consensus_to_standard_physics.pdf), then
-*Observers Are All You Need* for the observer interpretation and the two
-quantitative closures, then the two technical derivation papers for spacetime and gravity on one side
-and Standard Model gauge structure on the other. The consensus, particle, and screen papers provide the finite
-repair theorem, numerical continuations, and physical carrier architecture.
-The focused [positive-chamber Koide paper](../extra/koide_identity_from_positive_c3_face_circulants.pdf)
-isolates the exact face-circulant identity and conditional finite tracial
-Gelfand--Naimark--Segal balance from the open physical family attachment,
-phase, and numerical ratios.
-The focused [finite de Sitter capacity paper](../extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.pdf)
-proves the smooth shock normalization, finite entropy and transfer laws, and
-graph-spectrum identity, with the physical time-advance dictionary stated as
-a separate conditional attachment.
+For a first reading, begin with the flagship synthesis,
+[*Observers Who Read Their Universe into Existence*](../flagship/from_observer_consensus_to_standard_physics.pdf).
+It gives the account, develops selected results and states the closure
+hypothesis. The construction paper,
+[*An Executable Observer for Observer Patch Holography*](executable_observer_construction.pdf),
+states the specification, its acceptance criteria, its certified components
+and the premise map. The remaining papers form the theorem library: *Observers
+Are All You Need* for observers, records and the closure equations, the two
+derivation papers for spacetime and gravity on one side and Standard Model
+gauge structure on the other, and the consensus, particle and screen papers
+for the finite repair theorems, the matter sector and the carrier
+architecture.
 
 | Paper | Role |
 | --- | --- |
-| [Recovering Observer Spacetime and Einstein Dynamics](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) ([source](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex)) | Universal finite-poset provenance compiler, source-derived causal order, carrier-local port/null-ray decoration and seeded 3+1 causet grammar controls, ambient 1+3 target carrier, and conditional physical continuum, curvature, stress, generalized-entropy, and Einstein chain |
-| [Deriving Standard Model Gauge Structure](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) ([source](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex)) | Full categorical and finite-carrier gauge routes, conditional matter image, and physical global-form boundary |
-| [From Observer Consensus to Standard Physics](https://philpapers.org/rec/MUEFOC) ([source](../flagship/from_observer_consensus_to_standard_physics.tex)) | Flagship observer-first synthesis and main account of the local $P$ and global $N$ closures |
-| [Reality as a Consensus Protocol](reality_as_consensus_protocol.pdf) ([source](reality_as_consensus_protocol.tex)) | Finite repair, protected records, and quotient normal forms |
-| [Deriving the Particle Zoo](deriving_the_particle_zoo_from_observer_consistency.pdf) ([source](deriving_the_particle_zoo_from_observer_consistency.tex)) | Particle carriers, hierarchy coordinates, declared flavor tests, and executable pipeline |
-| [Federated Echosahedral Screen Microphysics](screen_microphysics_and_observer_synchronization.pdf) ([source](screen_microphysics_and_observer_synchronization.tex)) | Twelve-port source selector, central records, and observer synchronization |
-| [Paradise as Fixed-Point Consensus](paradise_as_fixed_point_consensus.pdf) ([source](paradise_as_fixed_point_consensus.tex)) | Observer continuation and interpretation |
+| [Observers Who Read Their Universe into Existence](../flagship/from_observer_consensus_to_standard_physics.pdf) ([source](../flagship/from_observer_consensus_to_standard_physics.tex)) | Flagship synthesis: the account of the theory, selected results, the construction scoreboard and the closure hypothesis; released on [PhilPapers](https://philpapers.org/rec/MUEFOC) |
+| [An Executable Observer for Observer Patch Holography](executable_observer_construction.pdf) ([source](executable_observer_construction.tex)) | Construction paper: specification, acceptance criteria, certified components, premise map and open connections |
+| [Reality as a Consensus Protocol](reality_as_consensus_protocol.pdf) ([source](reality_as_consensus_protocol.tex)) | Theorem library: finite repair, protected records, quotient normal forms and provenance order |
+| [Observers Are All You Need](observers_are_all_you_need.pdf) ([source](observers_are_all_you_need.tex)) | Theorem library: observers, records, quantum identities, thermodynamics, matter continuum and the closure equations |
+| [Recovering Observer Spacetime and Einstein Dynamics](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf) ([source](recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex)) | Theorem library: provenance compiler, source-derived causal order, ambient 1+3 carrier and the conditional continuum, stress, generalized-entropy and Einstein chain |
+| [Deriving Standard Model Gauge Structure](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf) ([source](deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex)) | Theorem library: categorical and finite-carrier gauge routes, conditional matter image and global-form boundary |
+| [Deriving the Particle Zoo](deriving_the_particle_zoo_from_observer_consistency.pdf) ([source](deriving_the_particle_zoo_from_observer_consistency.tex)) | Theorem library: particle carriers, hierarchy coordinates, declared flavor tests and the executable pipeline |
+| [Federated Echosahedral Screen Microphysics](screen_microphysics_and_observer_synchronization.pdf) ([source](screen_microphysics_and_observer_synchronization.tex)) | Theorem library: twelve-port source selector, central records and observer synchronization |
 
 The flavor theorem is developed in [The Positive-Chamber Koide Identity for
-Icosahedral Face Circulants](../extra/koide_identity_from_positive_c3_face_circulants.pdf).
-The finite de Sitter theorem is developed in [The de Sitter Time-Advance Sign
-from a Finite Screen with Fixed Capacity](../extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.pdf).
-Focused papers are listed in the [supplement index](../extra/).
+Icosahedral Face Circulants](../extra/koide_identity_from_positive_c3_face_circulants.pdf),
+and the finite de Sitter theorem in [The de Sitter Time-Advance Sign from a
+Finite Screen with Fixed Capacity](../extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.pdf).
+Focused papers are listed in the [supplement index](../extra/). Papers that
+left the active set keep their sources and last built PDFs in
+[`archive/`](archive/); the [paper set](../docs/PAPER_SET.md) lists them.
 
 Shared TeX lives in [`tex_fragments/`](tex_fragments/). The [BFT/QECC appendix](appendix_B_bft_qecc_extensions.tex) is included by *Reality as a Consensus Protocol*.
 

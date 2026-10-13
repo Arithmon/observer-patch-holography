@@ -645,9 +645,11 @@ claims add declared requirements. A negative result rejects its stated family.
 
 ## Research programme and paper-release hold
 
-Publish tested model code and reproducible results in this directory.
-**Paper releases and broad restructuring of the prose papers remain on hold**
-pending a recorded review of a coherent model milestone. Audits, necessary
-correctness fixes, errata, preview builds and reproducibility checks continue.
-Frozen evidence and deposited releases retain their original bytes. Passing
-CI or publishing the model code does not itself release a new paper.
+Publish tested model code and reproducible results in this directory. The
+[paper set](../docs/PAPER_SET.md) records the model milestone around which
+the prose papers are organized and the role of each paper. **A new paper
+release follows the owner's approval of a recorded model milestone.**
+Audits, necessary correctness fixes, errata, preview builds and
+reproducibility checks continue between releases. Frozen evidence and
+deposited releases retain their original bytes. Passing CI or publishing the
+model code does not itself release a new paper.

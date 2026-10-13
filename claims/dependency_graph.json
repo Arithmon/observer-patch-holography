@@ -4,6 +4,7 @@
     "OPH-SYN-FORMAL-BASIS",
     "OPH-OBS-PATCH-DEF",
     "OPH-CARRIER-PRESENTATION-INVARIANCE",
+    "OPH-UNIFIED-TYPED-SPINE",
     "OPH-CONS-D1",
     "OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION",
     "OPH-CONS-CUMULATIVE-ATTEMPT-CAPACITY",
@@ -14,7 +15,9 @@
     "OPH-CONS-REFINEMENT-MODULI",
     "OPH-CONS-PROTECTED-BEHAVIOR-PROFILE",
     "OPH-CONS-CROSS-SOURCE-ENDPOINT",
+    "OPH-GR-PORT-RESPONSE-COMPLETION",
     "OPH-GR-D2-COLLAR-RECOVERY",
+    "OPH-GR-D5",
     "OPH-GR-D3-CAP-H3",
     "OPH-GR-D3-H3-LOCALIZATION",
     "OPH-GR-D3H-GEOMETRY-PRODUCER",
@@ -25,9 +28,10 @@
     "OPH-GR-D4D-ENTROPY-BRIDGE",
     "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
     "OPH-GR-E2E-BRANCH-ENTRY",
-    "OPH-GR-D5",
+    "OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION",
     "OPH-GR-D6-CAPACITY",
     "OPH-GR-D6-READBACK-NOGO",
+    "OPH-GR-D6-A5-FINITE-CONTROL",
     "OPH-GR-D6-HORIZON-RECORD",
     "OPH-GR-DS-MU2-IDENTITY",
     "OPH-GR-DS-CAPACITY-TRANSFER",
@@ -35,18 +39,40 @@
     "OPH-GR-DS-DISCRETE-SHOCK-SPECTRUM",
     "OPH-REPAIR-SHOCK-DOMAIN-BOUNDARY",
     "OPH-COSMO-SCREEN-SPECTRUM",
+    "OPH-WZ-STRICT-1L-POLE-MAP",
+    "OPH-SM-Q1-LOCAL-G6",
+    "OPH-SM-Q2E-CHIRAL-MEASURE-CRITERION",
+    "OPH-SM-Q2H-POSITIVE-HAMILTONIAN-SOUNDNESS",
+    "OPH-SM-Q3-BV-RESTORATION",
+    "OPH-SM-Q4-OS-OBSERVABLE-SECTOR",
+    "OPH-SM-Q4-RESONANCE-CONTINUATION",
     "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
     "OPH-SCREEN-GALOIS-FRAME-BOUNDARY",
-    "OPH-GR-PORT-RESPONSE-COMPLETION",
     "OPH-A5-PRIMITIVE-PORT-SPIN6",
     "OPH-A5-CARRIER-CLASS-DISPERSION-BAND",
     "OPH-POSITIVE-COSINE-FREQUENCY-CONTRACTION",
+    "OPH-TIME-ORDER-TYPE-LEDGER",
+    "OPH-BOUNDED-OBSERVER-TIME-CALIBRATION",
+    "OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING",
+    "OPH-CONSENSUS-TOWER-INTERFACE",
+    "OPH-PUBLICIZATION-DYNAMICS-FINITE",
+    "OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE",
+    "OPH-FINITE-QUANTUM-LIMITATION-SUITE",
+    "OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE",
+    "OPH-FINITE-BORN-FRAME-RANK-GAP",
+    "OPH-THERMO-FOUR-LAW-PACKAGE",
+    "OPH-THERMO-SOURCE-REALIZATION-AUDIT",
+    "OPH-FINITE-TRANSPORT-GREEN-KUBO-DIFFUSION",
+    "OPH-FINITE-LOCALITY-NOSIGNALLING",
+    "OPH-ADAPTIVE-SCHEDULER-LOCALITY-HELPER",
+    "OPH-FINITE-HISTORY-VARIATIONAL-HELPERS",
     "OPH-A5-SEAM-CURRENT-EDGE30",
     "OPH-MODAL-MAXWELL-FACTORIZATION-BOUNDARY",
     "OPH-SCREEN-PORT-CURRENT-INNER",
     "OPH-SM-SIMPLE-GUT-XY-CHANNEL-ABSENCE",
     "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
     "OPH-SCREEN-CARRIER-SUPPORT-BRIDGE",
+    "OPH-FINITE-CONSERVATION-WARD-PRECURSOR",
     "OPH-GAUGE-D7-D9",
     "OPH-QUARK-REGISTER-CLEBSCH",
     "OPH-QUARK-YUKAWA-TWO-MODULUS-NONIDENTIFIABILITY",
@@ -56,13 +82,6 @@
     "OPH-SCREEN-A5-SM-RECOGNITION",
     "OPH-GAUGE-KINETIC-HISTORY-BINDING",
     "OPH-SM-ROUTE-IDENTIFICATION",
-    "OPH-WZ-STRICT-1L-POLE-MAP",
-    "OPH-SM-Q1-LOCAL-G6",
-    "OPH-SM-Q2E-CHIRAL-MEASURE-CRITERION",
-    "OPH-SM-Q2H-POSITIVE-HAMILTONIAN-SOUNDNESS",
-    "OPH-SM-Q3-BV-RESTORATION",
-    "OPH-SM-Q4-OS-OBSERVABLE-SECTOR",
-    "OPH-SM-Q4-RESONANCE-CONTINUATION",
     "OPH-GAUGE-EXTERIOR-SM-WITNESS",
     "OPH-Q-PN-CLOSURE",
     "OPH-Q-N-RESERVE-CANDIDATES",
@@ -78,30 +97,11 @@
     "OPH-IBM-GENERATIVE-REPAIR",
     "OPH-THINKING-PATCH",
     "OPH-PARADISE",
-    "OPH-UNIFIED-TYPED-SPINE",
-    "OPH-GR-D6-A5-FINITE-CONTROL",
-    "OPH-TIME-ORDER-TYPE-LEDGER",
-    "OPH-BOUNDED-OBSERVER-TIME-CALIBRATION",
-    "OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING",
-    "OPH-CONSENSUS-TOWER-INTERFACE",
-    "OPH-PUBLICIZATION-DYNAMICS-FINITE",
-    "OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE",
-    "OPH-FINITE-QUANTUM-LIMITATION-SUITE",
-    "OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE",
-    "OPH-FINITE-BORN-FRAME-RANK-GAP",
-    "OPH-THERMO-FOUR-LAW-PACKAGE",
-    "OPH-THERMO-SOURCE-REALIZATION-AUDIT",
-    "OPH-FINITE-TRANSPORT-GREEN-KUBO-DIFFUSION",
-    "OPH-FINITE-CONSERVATION-WARD-PRECURSOR",
-    "OPH-FINITE-LOCALITY-NOSIGNALLING",
-    "OPH-ADAPTIVE-SCHEDULER-LOCALITY-HELPER",
-    "OPH-FINITE-HISTORY-VARIATIONAL-HELPERS",
     "OPH-PUBLIC-WORLD-ENDPOINT-FINITE",
     "OPH-CANONICAL-LORENTZ-MODULE",
     "OPH-FINITE-CAUSAL-OBSERVER-NET",
     "OPH-FINITE-HOLONOMY-CHARACTER-PHASE",
     "OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING",
-    "OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION",
     "OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX",
     "OPH-FINITE-UNITARY-SCATTERING-LIMIT-NO-GO",
     "OPH-GEOMETRY-INVERSE-SQUARE-SHELL",
@@ -250,8 +250,8 @@
     "OPH-SOURCE-ROUTING-STORAGE-AND-RAW-COUNT",
     "OPH-NATIVE-LOCAL-SINGLETON-PUBLICATION",
     "OPH-NATIVE-REUSABLE-ACCUMULATION",
-    "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION",
     "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM",
+    "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION",
     "OPH-TEMPORAL-NATIVE-RECOVERY",
     "OPH-NATIVE-CHECKPOINT-SELECTION",
     "OPH-NATIVE-EVENTUAL-PUBLICATION",
@@ -346,416 +346,6 @@
       "role": "supplies the full observer-facing signature whose isomorphisms define presentation invariance and whose architecture fields may be physically load-bearing"
     },
     {
-      "from": "OPH-OBS-PATCH-DEF",
-      "to": "OPH-CONS-D1",
-      "role": "supplies finite visible patch object"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-CONS-BFT-PREPARED-LOCK",
-      "role": "supplies the observer-facing patch-state and repair vocabulary only; authenticated certificates, monotone views, locks, quorum thresholds, partial synchrony, pacemaker stabilization, and explicit nonfaulty progress remain separate protocol premises"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-CONS-REFINEMENT-MODULI",
-      "role": "supplies finite-stage normalizers; uniform inverse/residual moduli, Lipschitz restrictions, compatible inputs, vanishing solver errors, completeness, and cofinally vanishing tails remain explicit"
-    },
-    {
-      "from": "OPH-OBS-PATCH-DEF",
-      "to": "OPH-CONS-PROTECTED-BEHAVIOR-PROFILE",
-      "role": "supplies the protected observation and finite patch vocabulary; the scheduler kernel, active sources, targets, endpoint equivalence, and transport packet remain explicit"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-CONS-PROTECTED-BEHAVIOR-PROFILE",
-      "role": "supplies the observable-normal-form and repair setting; the four-stage first-hit profile and exact behavior-cut adapter add a separately declared stochastic layer"
-    },
-    {
-      "from": "OPH-OBS-PATCH-DEF",
-      "to": "OPH-SCREEN-MODULAR-GEARING",
-      "role": "supplies the finite quotient-visible state, interface, transition-channel, and provenance vocabulary; reversible rates and the channel realization remain source receipts"
-    },
-    {
-      "from": "OPH-OBS-PATCH-DEF",
-      "to": "OPH-GR-D6-CAPACITY",
-      "role": "supplies observer record atoms, interfaces, histories, and checkpoint vocabulary; the publicness policy and global joint kernels remain explicit receipts"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-GR-D5",
-      "role": "supplies the overlap/repair quotient only; finite consensus does not establish strong conditional Gibbs mixing"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-GR-D2-COLLAR-RECOVERY",
-      "role": "supplies the fixed-cutoff patch/collar substrate only; the finite-range Gibbs and strong conditional-mixing premises remain explicit"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-GR-D6-CAPACITY",
-      "role": "supplies terminal quotient normal forms only; the complete terminal fiber, correctable-code packet, no-new-confusability maps, and finite-size selector remain explicit"
-    },
-    {
-      "from": "OPH-GR-D2-COLLAR-RECOVERY",
-      "to": "OPH-GR-D4-NULLNET-STANDARDNESS",
-      "role": "supplies controlled approximate recovery on the nonexact conditional-mixing branch; exact modular locality requires the exact central-interface/Markov branch"
-    },
-    {
-      "from": "OPH-GR-D2-COLLAR-RECOVERY",
-      "to": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
-      "role": "supplies the boundary-prefactored CMI and Fawzi-Renner envelopes plus the sharp rate receipt used in the single-family remainder bound"
-    },
-    {
-      "from": "OPH-GR-D2-COLLAR-RECOVERY",
-      "to": "OPH-GR-D5",
-      "role": "supplies only conditional collar-recovery error control, or zero error on the separate exact central-interface specialization"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-GR-D3-CAP-H3",
-      "role": "supplies upstream quotient and collar data only; round-cap and support-visible BW assumptions remain explicit"
-    },
-    {
-      "from": "OPH-GR-D3-CAP-H3",
-      "to": "OPH-GR-D5",
-      "role": "supplies Lorentz-equivariant cap geometry, observer-frame coverage space, and the canonical H3 kinematic chart"
-    },
-    {
-      "from": "OPH-GR-D3-CAP-H3",
-      "to": "OPH-GR-D3-H3-LOCALIZATION",
-      "role": "supplies the observer-facing H3 chart and cap-normal halfspace coordinates"
-    },
-    {
-      "from": "OPH-OBS-PATCH-DEF",
-      "to": "OPH-GR-D3-H3-LOCALIZATION",
-      "role": "supplies quotient-visible record-token and conditioned-state vocabulary"
-    },
-    {
-      "from": "OPH-GR-D6-READBACK-NOGO",
-      "to": "OPH-GR-D6-CAPACITY",
-      "role": "excludes normal-form-only, checkpoint-fixed, local-marginal, two-sided-attractor, geometric-tautology, and electroweak-producer shortcuts"
-    },
-    {
-      "from": "OPH-GR-D6-CAPACITY",
-      "to": "OPH-GR-D6-HORIZON-RECORD",
-      "role": "supplies a positive direct carrier only after the complete A1-A3 packet lift and a unique stable zero are certified; the bounded counterfamily supplies neither"
-    },
-    {
-      "from": "OPH-GR-D5",
-      "to": "OPH-GR-D6-HORIZON-RECORD",
-      "role": "supplies the conditional de Sitter geometry; HORIZON-RECORD-SATURATION remains an independent physical identification"
-    },
-    {
-      "from": "OPH-GR-D5",
-      "to": "OPH-COSMO-SCREEN-SPECTRUM",
-      "role": "supplies the conditional local geometry and source-stress interface consumed by the source-screen branch"
-    },
-    {
-      "from": "OPH-Q-PN-CLOSURE",
-      "to": "OPH-COSMO-SCREEN-SPECTRUM",
-      "role": "supplies the selected dimensionless pixel coordinate entering the conditional edge-center generator density"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-GAUGE-D7-D9",
-      "role": "supplies transportable visible sector setting"
-    },
-    {
-      "from": "OPH-OBS-PATCH-DEF",
-      "to": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "role": "supplies the quotient-visible primitive-port, record, boundary-incidence, and refinement-lineage semantics"
-    },
-    {
-      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-SCREEN-PORT-CURRENT-INNER",
-      "role": "supplies the certified twelve-port module, proper A5 action, and one fixed line used by the A1/A2 compact Lie-type theorem; target-blind readback separately supplies R=-J"
-    },
-    {
-      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-A5-PRIMITIVE-PORT-SPIN6",
-      "role": "supplies the primitive twelve-port orbit, proper A5 transitivity, and exact moment geometry; the scalar physical-sector bridge, coherent frame, exclusivity, and finite nonzero scale were specified historically in issue #655, with target-clean producer owner #733 and physical-output and comparison owner #736"
-    },
-    {
-      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-A5-SEAM-CURRENT-EDGE30",
-      "role": "supplies the canonical thirty-seam incidence and exact A5 carrier geometry used to identify the complete projective edge orbit"
-    },
-    {
-      "from": "OPH-GR-PORT-RESPONSE-COMPLETION",
-      "to": "OPH-A5-SEAM-CURRENT-EDGE30",
-      "role": "supplies the antipodal six-axis load quotient and response-selected metric carrier; the position action, physical sector, cofinal gluing, scale, frame and readout remain the frozen FZ-12 branch premises with target-clean producer owner #733 and physical-output and comparison owner #736"
-    },
-    {
-      "from": "OPH-SCREEN-PORT-CURRENT-INNER",
-      "to": "OPH-SM-SIMPLE-GUT-XY-CHANNEL-ABSENCE",
-      "role": "supplies the forced abstract product Lie type and its 8+3+1 adjoint decomposition; no general proton-stability, lifetime, source-current, or laboratory-attachment claim follows"
-    },
-    {
-      "from": "OPH-SCREEN-PORT-CURRENT-INNER",
-      "to": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
-      "role": "supplies the hash-pinned conditional matrix-current fixture; the physical source gate is false and the matter, statistics, super-category, and kernel-emission contracts remain separately typed"
-    },
-    {
-      "from": "OPH-SCREEN-PORT-CURRENT-INNER",
-      "to": "OPH-SCREEN-A5-SM-RECOGNITION",
-      "role": "supplies the A1/A2-forced abstract Lie type plus a conditional full-rank matrix witness; source reconstruction, laboratory attachment, and downstream matter, family, pole, and continuum gates are unsupplied"
-    },
-    {
-      "from": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
-      "to": "OPH-SCREEN-A5-SM-RECOGNITION",
-      "role": "supplies one exact conditional matter realization and emitted kernel; it does not select the physical matter contract, global quotient, or family attachment"
-    },
-    {
-      "from": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
-      "to": "OPH-QUARK-REGISTER-CLEBSCH",
-      "role": "supplies the conditional channel-invariant dimensions and color multiplicity only; it neither equates independent Yukawa coefficients nor supplies generation order, physical MCPR attachment, or scale"
-    },
-    {
-      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-KOIDE-CIRCULANT-IDENTITY",
-      "role": "supplies the geometric regular-C3 face carrier only; positive-chamber square-root-mass identification, finite-GNS balance, physical chiral recovery, phase, ratios, and running remain separately typed"
-    },
-    {
-      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-A5-REAL-AXIS-CABIBBO-NOGO",
-      "role": "supplies the canonical real three-dimensional icosahedral geometry whose 31 unoriented residual axes form the finite no-go menu; it does not identify physical quark residuals or exclude other representations and breaking schemes"
-    },
-    {
-      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-W5-STABILISER-POTENTIAL-BOUNDARY",
-      "role": "supplies the real A5 rotation action used on W5; it does not emit the screen-derived invariant potential or physical family attachment required for ratio selection"
-    },
-    {
-      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-SCREEN-CARRIER-SUPPORT-BRIDGE",
-      "role": "supplies the local twelve-port boundary and A5 incidence object; it does not supply the federation nerve, S2 support, or BW normalization"
-    },
-    {
-      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-SCREEN-A5-SM-RECOGNITION",
-      "role": "supplies the unit-port, inverse-pairing, proper-A5, rank-three-frame, and naturality inputs; A1/A2 force the abstract current type, while source reconstruction and laboratory attachment remain separate"
-    },
-    {
-      "from": "OPH-GAUGE-EXTERIOR-SM-WITNESS",
-      "to": "OPH-SCREEN-A5-SM-RECOGNITION",
-      "role": "supplies the exact conditional rank-15 one-generation representation witness after the trace-balanced 3+2 carrier is selected; it does not supply family or laboratory attachment"
-    },
-    {
-      "from": "OPH-GR-FINITE-LOCAL-DOMAIN",
-      "to": "OPH-SCREEN-A5-SM-RECOGNITION",
-      "role": "supplies the separate finite seam domain and signed operator used by the declared tensor-identity extension; it does not source-select a matter action or bridge the twelve-port Spin packet and rank-three response data to the local domain"
-    },
-    {
-      "from": "OPH-GAUGE-D7-D9",
-      "to": "OPH-SM-ROUTE-IDENTIFICATION",
-      "role": "supplies the independently reconstructed categorical compact group on its declared branch"
-    },
-    {
-      "from": "OPH-SCREEN-A5-SM-RECOGNITION",
-      "to": "OPH-SM-ROUTE-IDENTIFICATION",
-      "role": "supplies the independently recognized A5 screen-current compact group on its declared branch"
-    },
-    {
-      "from": "OPH-Q-PN-CLOSURE",
-      "to": "OPH-HIER-EW",
-      "role": "supplies P and N only after their respective physical closure receipts; the bounded N counterfamily is not a direct value and the EW/Higgs relation is downstream"
-    },
-    {
-      "from": "OPH-HIER-EW",
-      "to": "OPH-Q-N-RESERVE-CANDIDATES",
-      "role": "supplies the conditional uncorrected coordinate N_0 only after the common screen/electroweak load premise; it supplies no global capacity attachment"
-    },
-    {
-      "from": "OPH-Q-PN-CLOSURE",
-      "to": "OPH-Q-N-RESERVE-CANDIDATES",
-      "role": "records that direct capacity is not evaluable on the incomplete source antecedent; both reserve branches remain target-exposed diagnostics and cannot substitute for direct closure"
-    },
-    {
-      "from": "OPH-GR-D6-CAPACITY",
-      "to": "OPH-Q-PN-CLOSURE",
-      "role": "supplies the exact bounded counterfamily and six-rung transported controls; the closure surface additionally requires universal complete-source membership and the executable-to-Lean bridge"
-    },
-    {
-      "from": "OPH-GR-D6-CAPACITY",
-      "to": "OPH-HIER-EW",
-      "role": "supplies N only after stable direct closure independently of the electroweak bridge"
-    },
-    {
-      "from": "OPH-GAUGE-EXTERIOR-SM-WITNESS",
-      "to": "OPH-HIER-EW",
-      "role": "supplies the exact four-copy weak multiplicity and additive-load mathematics"
-    },
-    {
-      "from": "OPH-GAUGE-D7-D9",
-      "to": "OPH-HIER-EW",
-      "role": "supplies the conditional electroweak matter packet inside its declared representation menu; it does not supply the physical screen load line"
-    },
-    {
-      "from": "OPH-SCREEN-A5-SM-RECOGNITION",
-      "to": "OPH-HIER-EW",
-      "role": "supplies the abstract screen-current Lie type and conditional matrix/matter fixtures; COMMON-EW-LOAD-CARRIER must identify source-normalized screen and weak load lines, and laboratory matter attachment is a separate gate"
-    },
-    {
-      "from": "OPH-GAUGE-D7-D9",
-      "to": "OPH-SM-Q1-LOCAL-G6",
-      "role": "supplies the conditional G6 representation target; source selection of the action, coefficients, regulator, normalization, and ancestry is open"
-    },
-    {
-      "from": "OPH-SM-Q1-LOCAL-G6",
-      "to": "OPH-SM-Q2E-CHIRAL-MEASURE-CRITERION",
-      "role": "QFT-Q2-E is one exact finite quantum descendant; construction of its equivariant determinant-line section is open"
-    },
-    {
-      "from": "OPH-SM-Q1-LOCAL-G6",
-      "to": "OPH-SM-Q2H-POSITIVE-HAMILTONIAN-SOUNDNESS",
-      "role": "QFT-Q2-H is an alternative exact finite quantum descendant; its constrained noncollapsing Hamiltonian is open"
-    },
-    {
-      "from": "OPH-SM-Q1-LOCAL-G6",
-      "to": "OPH-SM-Q3-BV-RESTORATION",
-      "role": "QFT-Q3 is a parallel formal perturbative descendant and does not consume either QFT-Q2 criterion"
-    },
-    {
-      "from": "OPH-SM-Q3-BV-RESTORATION",
-      "to": "OPH-WZ-STRICT-1L-POLE-MAP",
-      "role": "places the strict fixed-parameter W/Z algebra in QFT-Q3 after a complete renormalized packet; no QFT-Q4 consequence follows"
-    },
-    {
-      "from": "OPH-SM-Q4-OS-OBSERVABLE-SECTOR",
-      "to": "OPH-SM-Q4-RESONANCE-CONTINUATION",
-      "role": "the observable sector is necessary but not sufficient; a separate analytic domain, sheet, and nonzero physical-current numerator are required"
-    },
-    {
-      "from": "OPH-Q-PN-CLOSURE",
-      "to": "OPH-ALPHA-PIXEL",
-      "role": "supplies local pixel fixed-point coordinate"
-    },
-    {
-      "from": "OPH-GR-D5",
-      "to": "OPH-DM-CONT",
-      "role": "supplies independently constructed gravitational stress bookkeeping; scalar collar CMI does not supply the dark source"
-    },
-    {
-      "from": "OPH-GR-D6-HORIZON-RECORD",
-      "to": "OPH-DM-CONT",
-      "role": "supplies conditional cosmological branch context after horizon-record saturation"
-    },
-    {
-      "from": "OPH-GAUGE-D7-D9",
-      "to": "OPH-YM-GAP",
-      "role": "supplies compact-gauge branch"
-    },
-    {
-      "from": "OPH-GAUGE-D7-D9",
-      "to": "OPH-STRING-SELECTOR",
-      "role": "supplies target Standard Model branch"
-    },
-    {
-      "from": "OPH-GAUGE-D7-D9",
-      "to": "OPH-SCREEN-24-CLOCK-DETERMINANT",
-      "role": "supplies the charged-lepton determinant line; the 24-clock and natural attachment remain independent physical gates"
-    },
-    {
-      "from": "OPH-OBS-PATCH-DEF",
-      "to": "OPH-IBM-GENERATIVE-REPAIR",
-      "role": "supplies the bounded state, readback, record, feedback, and evidence-bundle interface"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-IBM-GENERATIVE-REPAIR",
-      "role": "supplies finite mismatch and normal-form semantics only; the frozen engineering kernel is implementation-falsifiable but does not discriminate OPH from quantum mechanics"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-THINKING-PATCH",
-      "role": "supplies fixed-point consensus model"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-GR-D3H-GEOMETRY-PRODUCER",
-      "role": "supplies repaired quotient normal forms and the transactional gluing/Petz-support package consumed by the incidence readout"
-    },
-    {
-      "from": "OPH-GR-D3H-GEOMETRY-PRODUCER",
-      "to": "OPH-GR-D3-CAP-H3",
-      "role": "produces FiniteCapBWCertificate from computable support/flow receipts; BW also consumes an independent complete MGNS-1 certificate on the same tower, whose physical construction remains a live F1 premise under issue #729 and whose structural net inheritance is gated by issue #730"
-    },
-    {
-      "from": "OPH-GR-D3H-GEOMETRY-PRODUCER",
-      "to": "OPH-GR-D4-NULLNET-STANDARDNESS",
-      "role": "supplies produced cap/support geometry and geometric cap flow; the independent same-tower MGNS-1 package supplies the algebra-state cap pair used to derive the half-sided inclusion noncircularly"
-    },
-    {
-      "from": "OPH-GR-D4-NULLNET-STANDARDNESS",
-      "to": "OPH-GR-D5",
-      "role": "supplies proved standardness, derived positive null translations, Markov modular-locality boundary, and bounded-interval covariance to the null bridge"
-    },
-    {
-      "from": "OPH-OBS-PATCH-DEF",
-      "to": "OPH-GR-FINITE-LOCAL-DOMAIN",
-      "role": "supplies the finite observer, record, interface, and readback types instantiated by the target-clean source capture"
-    },
-    {
-      "from": "OPH-GR-FINITE-LOCAL-DOMAIN",
-      "to": "OPH-SOURCE-DIMENSIONLESS-GAP",
-      "role": "supplies the finite signed incidence operator and equal counting measure whose exact full-rank certificate yields the dimensionless gap"
-    },
-    {
-      "from": "OPH-SOURCE-DIMENSIONLESS-GAP",
-      "to": "OPH-SCREEN-24-CLOCK-DETERMINANT",
-      "role": "supplies a positive finite-domain signed-seam gap only; physical reference-transition selection, SI calibration, and the charged determinant attachment remain independent"
-    },
-    {
-      "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
-      "to": "OPH-GR-D5",
-      "role": "supplies the exact finite one-plus-three carrier immediately and, only under the source-causal continuum and convergent-curvature certificate, the smooth Lorentzian regime consumed by the physical Einstein interpretation"
-    },
-    {
-      "from": "OPH-GR-D4-NULLNET-STANDARDNESS",
-      "to": "OPH-GR-D4C-LOCAL-STRESS",
-      "role": "supplies positive directional generators and modular-intersection data as candidate tomography inputs; dependent-family linearity, effective locality, and same-source stress matching remain separate hypotheses"
-    },
-    {
-      "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
-      "to": "OPH-GR-D4C-LOCAL-STRESS",
-      "role": "supplies the finite source carrier; the source-causal continuum certificate must additionally supply the physical local domains, smooth transport, and curvature arena on which stress locality, covariance, and conservation are interpreted"
-    },
-    {
-      "from": "OPH-GR-D4C-LOCAL-STRESS",
-      "to": "OPH-GR-D4D-ENTROPY-BRIDGE",
-      "role": "conditionally interprets the changing MaxEnt constraint channel as a local stress channel only after same-source matching and the physical stress supplies; the finite entropy and envelope identities do not consume that upgrade"
-    },
-    {
-      "from": "OPH-GR-D4D-ENTROPY-BRIDGE",
-      "to": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
-      "role": "supplies the exact split first law and the coupled Clausius balance consumed by the small-diamond limit"
-    },
-    {
-      "from": "OPH-GR-D4C-LOCAL-STRESS",
-      "to": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
-      "role": "under the separately registered same-source, locality/covariance, and weak-Ward supplies, upgrades finite tomography to the conserved source tensor consumed by the Bianchi/constancy step"
-    },
-    {
-      "from": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
-      "to": "OPH-GR-D5",
-      "role": "upgrades the Jacobson-type first-variation package to the absolute per-component equation under VR/UC"
-    },
-    {
-      "from": "OPH-GR-D3H-GEOMETRY-PRODUCER",
-      "to": "OPH-GR-E2E-BRANCH-ENTRY",
-      "role": "first arrow of the composed chain; an inhabited branch requires the same source-derived tower to carry every downstream readout"
-    },
-    {
-      "from": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
-      "to": "OPH-GR-E2E-BRANCH-ENTRY",
-      "role": "final arrow of the composed chain"
-    },
-    {
-      "from": "OPH-SYN-FORMAL-BASIS",
-      "to": "OPH-PARADISE",
-      "role": "supplies observer record and continuation vocabulary"
-    },
-    {
       "from": "OPH-CONS-D1",
       "to": "OPH-UNIFIED-TYPED-SPINE",
       "role": "supplies the quotient-normal-form substrate without supplying geometry or current data"
@@ -816,9 +406,274 @@
       "role": "records the exact stabilizer boundary and the unresolved need for a source-derived invariant potential before any physical flavor-ratio prediction"
     },
     {
+      "from": "OPH-CONSENSUS-TOWER-INTERFACE",
+      "to": "OPH-UNIFIED-TYPED-SPINE",
+      "role": "supplies the common finite refinement root object and variance-correct compatibility targets; no nonconstant source tower or causal, geometric, dynamical, continuum, or physical attachment is supplied"
+    },
+    {
+      "from": "OPH-FINITE-BORN-FRAME-RANK-GAP",
+      "to": "OPH-UNIFIED-TYPED-SPINE",
+      "role": "supplies the bounded finite-rank and continuous-binary no-go plus the exact positive successor premise after affinity is supplied; it establishes no positive Born closure, source effect system, or public instrument"
+    },
+    {
+      "from": "OPH-OBS-PATCH-DEF",
+      "to": "OPH-CONS-D1",
+      "role": "supplies finite visible patch object"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION",
+      "role": "supplies the canonical localRepair, acceptedStep, mismatchCount, and finite carrier semantics on which the adaptive attempt stratification is proved"
+    },
+    {
+      "from": "OPH-ADAPTIVE-SCHEDULER-LOCALITY-HELPER",
+      "to": "OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION",
+      "role": "supplies the existing state-dependent AdaptiveScheduler and adaptiveRun interface only; the locality helper's consultation-region conclusion is not consumed"
+    },
+    {
+      "from": "OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION",
+      "to": "OPH-CONS-CUMULATIVE-ATTEMPT-CAPACITY",
+      "role": "supplies the canonical attempt, equality-stutter, accepted-change, and strict mismatch-descent semantics used by the cumulative capacity classification"
+    },
+    {
+      "from": "OPH-CONS-CUMULATIVE-ATTEMPT-CAPACITY",
+      "to": "OPH-CONS-CAPACITY-BOUNDED-PUBLIC-ENDPOINT",
+      "role": "supplies the bounded-waste threshold and sufficient cumulative attempt budget consumed by the quantitative Tower endpoint"
+    },
+    {
+      "from": "OPH-PUBLIC-WORLD-ENDPOINT-FINITE",
+      "to": "OPH-CONS-CAPACITY-BOUNDED-PUBLIC-ENDPOINT",
+      "role": "supplies canonical Repair, the literal PublicWorld quotient, and the existing FixedPointObject consumed after budget-bounded normalization"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE",
+      "role": "supplies the accepted transactional commit semantics, read/write validation, and aggregate conflict discipline whose versioned register image the provenance layer reads"
+    },
+    {
+      "from": "OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION",
+      "to": "OPH-CONS-ADAPTIVE-PUBLIC-ENDPOINT",
+      "role": "supplies reachable weak-fair adaptive normal forms and the exact work-conservation boundary"
+    },
+    {
+      "from": "OPH-PUBLIC-WORLD-ENDPOINT-FINITE",
+      "to": "OPH-CONS-ADAPTIVE-PUBLIC-ENDPOINT",
+      "role": "supplies the canonical Repair endpoint, literal PublicWorld quotient, and fixed-point object consumed by the adaptive endpoint corollary"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-CONS-BFT-PREPARED-LOCK",
+      "role": "supplies the observer-facing patch-state and repair vocabulary only; authenticated certificates, monotone views, locks, quorum thresholds, partial synchrony, pacemaker stabilization, and explicit nonfaulty progress remain separate protocol premises"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-CONS-REFINEMENT-MODULI",
+      "role": "supplies finite-stage normalizers; uniform inverse/residual moduli, Lipschitz restrictions, compatible inputs, vanishing solver errors, completeness, and cofinally vanishing tails remain explicit"
+    },
+    {
+      "from": "OPH-OBS-PATCH-DEF",
+      "to": "OPH-CONS-PROTECTED-BEHAVIOR-PROFILE",
+      "role": "supplies the protected observation and finite patch vocabulary; the scheduler kernel, active sources, targets, endpoint equivalence, and transport packet remain explicit"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-CONS-PROTECTED-BEHAVIOR-PROFILE",
+      "role": "supplies the observable-normal-form and repair setting; the four-stage first-hit profile and exact behavior-cut adapter add a separately declared stochastic layer"
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-GR-PORT-RESPONSE-COMPLETION",
+      "role": "supplies the declared twelve-port incidence and exact normalized Gram reference; the repair mean, cumulative signed position module, response topology, action, and gluing remain separate premises"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-GR-D2-COLLAR-RECOVERY",
+      "role": "supplies the fixed-cutoff patch/collar substrate only; the finite-range Gibbs and strong conditional-mixing premises remain explicit"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-GR-D5",
+      "role": "supplies the overlap/repair quotient only; finite consensus does not establish strong conditional Gibbs mixing"
+    },
+    {
+      "from": "OPH-GR-D2-COLLAR-RECOVERY",
+      "to": "OPH-GR-D5",
+      "role": "supplies only conditional collar-recovery error control, or zero error on the separate exact central-interface specialization"
+    },
+    {
+      "from": "OPH-GR-D3-CAP-H3",
+      "to": "OPH-GR-D5",
+      "role": "supplies Lorentz-equivariant cap geometry, observer-frame coverage space, and the canonical H3 kinematic chart"
+    },
+    {
+      "from": "OPH-GR-D4-NULLNET-STANDARDNESS",
+      "to": "OPH-GR-D5",
+      "role": "supplies proved standardness, derived positive null translations, Markov modular-locality boundary, and bounded-interval covariance to the null bridge"
+    },
+    {
+      "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+      "to": "OPH-GR-D5",
+      "role": "supplies the exact finite one-plus-three carrier immediately and, only under the source-causal continuum and convergent-curvature certificate, the smooth Lorentzian regime consumed by the physical Einstein interpretation"
+    },
+    {
+      "from": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
+      "to": "OPH-GR-D5",
+      "role": "upgrades the Jacobson-type first-variation package to the absolute per-component equation under VR/UC"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-GR-D3-CAP-H3",
+      "role": "supplies upstream quotient and collar data only; round-cap and support-visible BW assumptions remain explicit"
+    },
+    {
+      "from": "OPH-GR-D3H-GEOMETRY-PRODUCER",
+      "to": "OPH-GR-D3-CAP-H3",
+      "role": "produces FiniteCapBWCertificate from computable support/flow receipts; BW also consumes an independent complete MGNS-1 certificate on the same tower, whose physical construction remains a live F1 premise under issue #729 and whose structural net inheritance is gated by issue #730"
+    },
+    {
+      "from": "OPH-CANONICAL-LORENTZ-MODULE",
+      "to": "OPH-GR-D3-CAP-H3",
+      "role": "supplies an exact intrinsic Herm2 Lorentz coordinate module, celestial future-null-ray quotient, frame hyperboloid, rest spaces, and sign-correct Einstein-coordinate bridge; the support-visible BW limit, cap realization, topology, soldering, clocks, and physical spacetime remain separate premises"
+    },
+    {
+      "from": "OPH-GR-D3-CAP-H3",
+      "to": "OPH-GR-D3-H3-LOCALIZATION",
+      "role": "supplies the observer-facing H3 chart and cap-normal halfspace coordinates"
+    },
+    {
+      "from": "OPH-OBS-PATCH-DEF",
+      "to": "OPH-GR-D3-H3-LOCALIZATION",
+      "role": "supplies quotient-visible record-token and conditioned-state vocabulary"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-GR-D3H-GEOMETRY-PRODUCER",
+      "role": "supplies repaired quotient normal forms and the transactional gluing/Petz-support package consumed by the incidence readout"
+    },
+    {
+      "from": "OPH-GR-D2-COLLAR-RECOVERY",
+      "to": "OPH-GR-D4-NULLNET-STANDARDNESS",
+      "role": "supplies controlled approximate recovery on the nonexact conditional-mixing branch; exact modular locality requires the exact central-interface/Markov branch"
+    },
+    {
+      "from": "OPH-GR-D3H-GEOMETRY-PRODUCER",
+      "to": "OPH-GR-D4-NULLNET-STANDARDNESS",
+      "role": "supplies produced cap/support geometry and geometric cap flow; the independent same-tower MGNS-1 package supplies the algebra-state cap pair used to derive the half-sided inclusion noncircularly"
+    },
+    {
+      "from": "OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING",
+      "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+      "role": "supplies the bounded algebraic source-unit/celestial/null-ray and frame/rest covariance bridge; the finite source carrier does not depend on a population map or legacy supplied atlas, while physical frames, refinement, clocks, volume, and continuum realization remain explicit"
+    },
+    {
+      "from": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE",
+      "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+      "role": "supplies the finite semantic-event population and authenticated generated order, from which the geometry module computes canonical longest-parent-chain sourceHeight; independently of that order, the ambient carrier of dimension four and Lorentz signature is an independent real axis plus the source quotient, while positive timeScale times sourceHeight enters only through an event placement and is not a physical clock, and intrinsic poset dimension, physical event/link identification, faithful refinement, count-volume, manifoldlikeness, topology, curvature, and continuum uniqueness remain explicit"
+    },
+    {
+      "from": "OPH-GR-PORT-RESPONSE-COMPLETION",
+      "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+      "role": "supplies the exact positive rank-three FrameQuotient and Gram form used independently in the source one-plus-three carrier R plus FrameQuotient, and the dense conservative record carrier consumed by the conditional metric coarsening and scalar-action construction"
+    },
+    {
+      "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
+      "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+      "role": "supplies actual golden Lebesgue quadrature and fixed null-frontier spacetime event counts; the moving causal-interval and strict-pair specializations remain analytic and no physical premise is discharged"
+    },
+    {
+      "from": "OPH-OBS-PATCH-DEF",
+      "to": "OPH-GR-FINITE-LOCAL-DOMAIN",
+      "role": "supplies the finite observer, record, interface, and readback types instantiated by the target-clean source capture"
+    },
+    {
+      "from": "OPH-GR-D4-NULLNET-STANDARDNESS",
+      "to": "OPH-GR-D4C-LOCAL-STRESS",
+      "role": "supplies positive directional generators and modular-intersection data as candidate tomography inputs; dependent-family linearity, effective locality, and same-source stress matching remain separate hypotheses"
+    },
+    {
+      "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+      "to": "OPH-GR-D4C-LOCAL-STRESS",
+      "role": "supplies the finite source carrier; the source-causal continuum certificate must additionally supply the physical local domains, smooth transport, and curvature arena on which stress locality, covariance, and conservation are interpreted"
+    },
+    {
+      "from": "OPH-FINITE-CONSERVATION-WARD-PRECURSOR",
+      "to": "OPH-GR-D4C-LOCAL-STRESS",
+      "role": "supplies the finite Ward precursor and a guarded residual-limit implication; F1 must define the residual from continuity, identify it with distributional divergence, and supply the source, stress, chart, and common-tower evidence"
+    },
+    {
+      "from": "OPH-GR-D4C-LOCAL-STRESS",
+      "to": "OPH-GR-D4D-ENTROPY-BRIDGE",
+      "role": "conditionally interprets the changing MaxEnt constraint channel as a local stress channel only after same-source matching and the physical stress supplies; the finite entropy and envelope identities do not consume that upgrade"
+    },
+    {
+      "from": "OPH-GR-D2-COLLAR-RECOVERY",
+      "to": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
+      "role": "supplies the boundary-prefactored CMI and Fawzi-Renner envelopes plus the sharp rate receipt used in the single-family remainder bound"
+    },
+    {
+      "from": "OPH-GR-D4D-ENTROPY-BRIDGE",
+      "to": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
+      "role": "supplies the exact split first law and the coupled Clausius balance consumed by the small-diamond limit"
+    },
+    {
+      "from": "OPH-GR-D4C-LOCAL-STRESS",
+      "to": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
+      "role": "under the separately registered same-source, locality/covariance, and weak-Ward supplies, upgrades finite tomography to the conserved source tensor consumed by the Bianchi/constancy step"
+    },
+    {
+      "from": "OPH-GR-D3H-GEOMETRY-PRODUCER",
+      "to": "OPH-GR-E2E-BRANCH-ENTRY",
+      "role": "first arrow of the composed chain; an inhabited branch requires the same source-derived tower to carry every downstream readout"
+    },
+    {
+      "from": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
+      "to": "OPH-GR-E2E-BRANCH-ENTRY",
+      "role": "final arrow of the composed chain"
+    },
+    {
+      "from": "OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING",
+      "to": "OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION",
+      "role": "supplies the conditional same-event-type packet and exact SourceUnitDirection equivalence used to pull back the fixed coordinate tomography frame into a separately supplied tensor interface; it supplies no packet inhabitant, coordinate-difference identification, observed link directions, tensor fields, or balance law"
+    },
+    {
+      "from": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
+      "to": "OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION",
+      "role": "supplies the existing finite null-tomography and Ward/Bianchi constancy algebra reused by the minimal nine-source-direction shape theorem; a separate normalized adapter adds vacuum-reference and scale data, while the smooth physical reading and common tower remain external"
+    },
+    {
+      "from": "OPH-OBS-PATCH-DEF",
+      "to": "OPH-GR-D6-CAPACITY",
+      "role": "supplies observer record atoms, interfaces, histories, and checkpoint vocabulary; the publicness policy and global joint kernels remain explicit receipts"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-GR-D6-CAPACITY",
+      "role": "supplies terminal quotient normal forms only; the complete terminal fiber, correctable-code packet, no-new-confusability maps, and finite-size selector remain explicit"
+    },
+    {
+      "from": "OPH-GR-D6-READBACK-NOGO",
+      "to": "OPH-GR-D6-CAPACITY",
+      "role": "excludes normal-form-only, checkpoint-fixed, local-marginal, two-sided-attractor, geometric-tautology, and electroweak-producer shortcuts"
+    },
+    {
       "from": "OPH-GR-D6-READBACK-NOGO",
       "to": "OPH-GR-D6-A5-FINITE-CONTROL",
       "role": "supplies the implementation-invariance boundary tested by the publicly inert A5 multiplicity"
+    },
+    {
+      "from": "OPH-GR-D6-CAPACITY",
+      "to": "OPH-GR-D6-HORIZON-RECORD",
+      "role": "supplies a positive direct carrier only after the complete A1-A3 packet lift and a unique stable zero are certified; the bounded counterfamily supplies neither"
+    },
+    {
+      "from": "OPH-GR-D5",
+      "to": "OPH-GR-D6-HORIZON-RECORD",
+      "role": "supplies the conditional de Sitter geometry; HORIZON-RECORD-SATURATION remains an independent physical identification"
+    },
+    {
+      "from": "OPH-BH-CROSSING-READ-AREA-LAW",
+      "to": "OPH-GR-D6-HORIZON-RECORD",
+      "role": "supplies the exact seam-count area law and its Planck-area dictionary on the declared family as a finite counterpart of the horizon-record capacity reading; it supplies no physical horizon, no realized de Sitter branch and no value of N"
     },
     {
       "from": "OPH-GR-D5",
@@ -846,6 +701,11 @@
       "role": "supplies the source-bound Einstein-branch nonemptiness obligation; the shock coefficient and physical scale remain separate gates"
     },
     {
+      "from": "OPH-REPAIR-SHOCK-DOMAIN-BOUNDARY",
+      "to": "OPH-GR-DS-SHOCK-SIGN-ATTACHMENT",
+      "role": "prevents the fixed-sector repair generator from supplying a dimension-changing physical shock source without a typed extension"
+    },
+    {
       "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
       "to": "OPH-GR-DS-DISCRETE-SHOCK-SPECTRUM",
       "role": "supplies the finite icosahedral port and edge carrier; exact gauge removal and the physical kinetic-operator identification remain DS-GAUGE and DS-LAPLACIAN"
@@ -856,14 +716,59 @@
       "role": "supplies the pure de Sitter normalization baseline without selecting a discrete carrier operator"
     },
     {
-      "from": "OPH-REPAIR-SHOCK-DOMAIN-BOUNDARY",
-      "to": "OPH-GR-DS-SHOCK-SIGN-ATTACHMENT",
-      "role": "prevents the fixed-sector repair generator from supplying a dimension-changing physical shock source without a typed extension"
+      "from": "OPH-GR-D5",
+      "to": "OPH-COSMO-SCREEN-SPECTRUM",
+      "role": "supplies the conditional local geometry and source-stress interface consumed by the source-screen branch"
+    },
+    {
+      "from": "OPH-Q-PN-CLOSURE",
+      "to": "OPH-COSMO-SCREEN-SPECTRUM",
+      "role": "supplies the selected dimensionless pixel coordinate entering the conditional edge-center generator density"
+    },
+    {
+      "from": "OPH-SM-Q3-BV-RESTORATION",
+      "to": "OPH-WZ-STRICT-1L-POLE-MAP",
+      "role": "places the strict fixed-parameter W/Z algebra in QFT-Q3 after a complete renormalized packet; no QFT-Q4 consequence follows"
+    },
+    {
+      "from": "OPH-GAUGE-D7-D9",
+      "to": "OPH-SM-Q1-LOCAL-G6",
+      "role": "supplies the conditional G6 representation target; source selection of the action, coefficients, regulator, normalization, and ancestry is open"
+    },
+    {
+      "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
+      "to": "OPH-SM-Q1-LOCAL-G6",
+      "role": "Supplies the prepared golden source-address family for the separate Cartan-scalar execution, not a hypothesis of the generic local classical reduction. The tensor action weights and log-plaquette dynamics are declared; causal-count clock and physical-source identification are not transported."
+    },
+    {
+      "from": "OPH-SM-Q1-LOCAL-G6",
+      "to": "OPH-SM-Q2E-CHIRAL-MEASURE-CRITERION",
+      "role": "QFT-Q2-E is one exact finite quantum descendant; construction of its equivariant determinant-line section is open"
+    },
+    {
+      "from": "OPH-SM-Q1-LOCAL-G6",
+      "to": "OPH-SM-Q2H-POSITIVE-HAMILTONIAN-SOUNDNESS",
+      "role": "QFT-Q2-H is an alternative exact finite quantum descendant; its constrained noncollapsing Hamiltonian is open"
+    },
+    {
+      "from": "OPH-SM-Q1-LOCAL-G6",
+      "to": "OPH-SM-Q3-BV-RESTORATION",
+      "role": "QFT-Q3 is a parallel formal perturbative descendant and does not consume either QFT-Q2 criterion"
+    },
+    {
+      "from": "OPH-SM-Q4-OS-OBSERVABLE-SECTOR",
+      "to": "OPH-SM-Q4-RESONANCE-CONTINUATION",
+      "role": "the observable sector is necessary but not sufficient; a separate analytic domain, sheet, and nonzero physical-current numerator are required"
+    },
+    {
+      "from": "OPH-OBS-PATCH-DEF",
+      "to": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "role": "supplies the quotient-visible primitive-port, record, boundary-incidence, and refinement-lineage semantics"
     },
     {
       "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-GR-PORT-RESPONSE-COMPLETION",
-      "role": "supplies the declared twelve-port incidence and exact normalized Gram reference; the repair mean, cumulative signed position module, response topology, action, and gluing remain separate premises"
+      "to": "OPH-A5-PRIMITIVE-PORT-SPIN6",
+      "role": "supplies the primitive twelve-port orbit, proper A5 transitivity, and exact moment geometry; the scalar physical-sector bridge, coherent frame, exclusivity, and finite nonzero scale were specified historically in issue #655, with target-clean producer owner #733 and physical-output and comparison owner #736"
     },
     {
       "from": "OPH-A5-PRIMITIVE-PORT-SPIN6",
@@ -876,9 +781,14 @@
       "role": "supplies the edge-branch coefficient ray reproduced as the interior band point at -1/15; the physical branch premises stay with the edge claim and its owning issues"
     },
     {
+      "from": "OPH-A5-PRIMITIVE-PORT-SPIN6",
+      "to": "OPH-POSITIVE-COSINE-FREQUENCY-CONTRACTION",
+      "role": "supplies the immutable complete vertex12 support whose exact tight-frame normalization instantiates the generic auxiliary-frequency contraction"
+    },
+    {
       "from": "OPH-A5-SEAM-CURRENT-EDGE30",
-      "to": "OPH-MODAL-MAXWELL-FACTORIZATION-BOUNDARY",
-      "role": "supplies the exact FZ-12 scalar spatial symbol and rank-two transverse oscillator that are factored by the complex Fourier-modal curl pair; it supplies no local real field, source-produced Maxwell dynamics, gauge/action, Gauss/source bridge, covariance, continuum limit, or readout"
+      "to": "OPH-POSITIVE-COSINE-FREQUENCY-CONTRACTION",
+      "role": "supplies the immutable complete edge30 support whose exact tight-frame normalization instantiates the generic auxiliary-frequency contraction"
     },
     {
       "from": "OPH-OBS-PATCH-DEF",
@@ -886,14 +796,19 @@
       "role": "supplies the observer record, repair, and interface vocabulary whose order structures are separated from modular, worldline, clock, proper-time, and optional global-time layers; all physical realization maps remain explicit"
     },
     {
-      "from": "OPH-OBS-PATCH-DEF",
-      "to": "OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING",
-      "role": "supplies the observer-facing public-record interpretation; the exact star-algebra representation and sharp copying obstruction are finite mathematics, while mixed-state broadcasting and physical record selection remain explicit attachments"
-    },
-    {
       "from": "OPH-TIME-ORDER-TYPE-LEDGER",
       "to": "OPH-BOUNDED-OBSERVER-TIME-CALIBRATION",
       "role": "supplies the separated record-order, clock, worldline, proper-time, and named-map interfaces; D1 adds a monotone-gauge no-go and conditional metric calibration without identifying a physical clock"
+    },
+    {
+      "from": "OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING",
+      "to": "OPH-BOUNDED-OBSERVER-TIME-CALIBRATION",
+      "role": "supplies the conditional event atlas, affine Lorentz overlap, and invariant displacement interface consumed by the unit-timelike history theorem; source atlas and physical clock production are separate source obligations"
+    },
+    {
+      "from": "OPH-OBS-PATCH-DEF",
+      "to": "OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING",
+      "role": "supplies the observer-facing public-record interpretation; the exact star-algebra representation and sharp copying obstruction are finite mathematics, while mixed-state broadcasting and physical record selection remain explicit attachments"
     },
     {
       "from": "OPH-TIME-ORDER-TYPE-LEDGER",
@@ -906,11 +821,6 @@
       "role": "supplies the finite public star-algebra and active-record ingredients used by the constant adaptor; a nonconstant source-derived refinement tower is not supplied"
     },
     {
-      "from": "OPH-CONSENSUS-TOWER-INTERFACE",
-      "to": "OPH-UNIFIED-TYPED-SPINE",
-      "role": "supplies the common finite refinement root object and variance-correct compatibility targets; no nonconstant source tower or causal, geometric, dynamical, continuum, or physical attachment is supplied"
-    },
-    {
       "from": "OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING",
       "to": "OPH-PUBLICIZATION-DYNAMICS-FINITE",
       "role": "supplies the finite projective public-record algebra on which pinching and averaging act; the solvable relaxation packet adds no physical channel, clock, or source-derived rate"
@@ -919,6 +829,26 @@
       "from": "OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING",
       "to": "OPH-PUBLIC-PRIVATE-DYNAMICS-FINITE",
       "role": "supplies the active-label function algebra for the exact public stochastic classification; the private full-block theorem is independent, and central-block, converse-generator, source, and clock interfaces are separate"
+    },
+    {
+      "from": "OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING",
+      "to": "OPH-FINITE-QUANTUM-LIMITATION-SUITE",
+      "role": "supplies the finite projective record-partition interface; B10 proves the complete commutant readout quotient and the supplied-partition public-record adaptor, including factorization through pinching, surjectivity onto the projector span, commutation with the partition commutant, and an exact distinction control, without selecting a physical detector algebra"
+    },
+    {
+      "from": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
+      "to": "OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE",
+      "role": "supplies the declared exterior matter weights and common central kernel; the bounded bridge realizes their exterior basis and carries the supplied weights as a character action on the component-labelled product of mapped projector ranges, with exact operator and selected-support kernels, without ambient-projector conjugation or source-selected physical matter"
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-FINITE-BORN-FRAME-RANK-GAP",
+      "role": "supplies the declared twelve-port incidence and central-atom manifest audited against the separate nonphysical spinor projector adapter; no public quantum-effect producer or Born-rule derivation follows"
+    },
+    {
+      "from": "OPH-CANONICAL-LORENTZ-MODULE",
+      "to": "OPH-FINITE-BORN-FRAME-RANK-GAP",
+      "role": "supplies only the C1 celestial unit-sphere domain used by the continuous B13 countermodel and dense-after-affinity theorem; it supplies no Born semantics, effect producer, affinity principle, or public instrument"
     },
     {
       "from": "OPH-PUBLICIZATION-DYNAMICS-FINITE",
@@ -936,56 +866,6 @@
       "role": "supplies the conditional-resampling heat bath used by the projector-memory obstruction; the generic reversible resolvent and graph theorems are finite conditional mathematics, while all physical transport attachments remain separate"
     },
     {
-      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-FINITE-BORN-FRAME-RANK-GAP",
-      "role": "supplies the declared twelve-port incidence and central-atom manifest audited against the separate nonphysical spinor projector adapter; no public quantum-effect producer or Born-rule derivation follows"
-    },
-    {
-      "from": "OPH-CANONICAL-LORENTZ-MODULE",
-      "to": "OPH-FINITE-BORN-FRAME-RANK-GAP",
-      "role": "supplies only the C1 celestial unit-sphere domain used by the continuous B13 countermodel and dense-after-affinity theorem; it supplies no Born semantics, effect producer, affinity principle, or public instrument"
-    },
-    {
-      "from": "OPH-FINITE-BORN-FRAME-RANK-GAP",
-      "to": "OPH-QUANTUM-OPERATIONAL-PHASE-INTERFACE",
-      "role": "supplies the committed two-dimensional algebraic state/effect representation and static phase-completion pair used by the ideal exact-fit model; it supplies no CP outcome operations, summed channel, source protocol, producer receipt, or statistical validation"
-    },
-    {
-      "from": "OPH-FINITE-BORN-FRAME-RANK-GAP",
-      "to": "OPH-UNIFIED-TYPED-SPINE",
-      "role": "supplies the bounded finite-rank and continuous-binary no-go plus the exact positive successor premise after affinity is supplied; it establishes no positive Born closure, source effect system, or public instrument"
-    },
-    {
-      "from": "OPH-A5-PRIMITIVE-PORT-SPIN6",
-      "to": "OPH-POSITIVE-COSINE-FREQUENCY-CONTRACTION",
-      "role": "supplies the immutable complete vertex12 support whose exact tight-frame normalization instantiates the generic auxiliary-frequency contraction"
-    },
-    {
-      "from": "OPH-A5-SEAM-CURRENT-EDGE30",
-      "to": "OPH-POSITIVE-COSINE-FREQUENCY-CONTRACTION",
-      "role": "supplies the immutable complete edge30 support whose exact tight-frame normalization instantiates the generic auxiliary-frequency contraction"
-    },
-    {
-      "from": "OPH-PUBLIC-RECORD-ALGEBRA-NOCLONING",
-      "to": "OPH-FINITE-QUANTUM-LIMITATION-SUITE",
-      "role": "supplies the finite projective record-partition interface; B10 proves the complete commutant readout quotient and the supplied-partition public-record adaptor, including factorization through pinching, surjectivity onto the projector span, commutation with the partition commutant, and an exact distinction control, without selecting a physical detector algebra"
-    },
-    {
-      "from": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
-      "to": "OPH-FINITE-EXTERIOR-COMPONENT-BRIDGE",
-      "role": "supplies the declared exterior matter weights and common central kernel; the bounded bridge realizes their exterior basis and carries the supplied weights as a character action on the component-labelled product of mapped projector ranges, with exact operator and selected-support kernels, without ambient-projector conjugation or source-selected physical matter"
-    },
-    {
-      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
-      "to": "OPH-FINITE-CONSERVATION-WARD-PRECURSOR",
-      "role": "supplies the exact twelve-port, thirty-seam incidence carrier; the pointwise continuity update and every physical identification remain explicit premises"
-    },
-    {
-      "from": "OPH-FINITE-CONSERVATION-WARD-PRECURSOR",
-      "to": "OPH-GR-D4C-LOCAL-STRESS",
-      "role": "supplies the finite Ward precursor and a guarded residual-limit implication; F1 must define the residual from continuity, identify it with distributional divergence, and supply the source, stress, chart, and common-tower evidence"
-    },
-    {
       "from": "OPH-OBS-PATCH-DEF",
       "to": "OPH-FINITE-LOCALITY-NOSIGNALLING",
       "role": "supplies the concrete localRepair read/write semantics used by the fixed-word dependency upper bound; the conditional E1 packet consumes the B4 partial-trace helper and the 86/247 capstone supplies an exact support-disjoint counted correlation datum, while scientific owner #728 carries source selection or justification of the regional carrier/factor reading and a nonconstant source realization, and E2 owns source-produced channel semantics and refinement-natural adaptive scheduling"
@@ -999,6 +879,226 @@
       "from": "OPH-THERMO-FOUR-LAW-PACKAGE",
       "to": "OPH-FINITE-HISTORY-VARIATIONAL-HELPERS",
       "role": "supplies the finite information-projection identity reused on a finite path type; the closed #731 composition milestone joins one declared bundle and one inhabited ansatz, while the complete source history/reference, real enrichment, stationary-phase mechanism, and physical action remain premise-discharge obligations under #739"
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-A5-SEAM-CURRENT-EDGE30",
+      "role": "supplies the canonical thirty-seam incidence and exact A5 carrier geometry used to identify the complete projective edge orbit"
+    },
+    {
+      "from": "OPH-GR-PORT-RESPONSE-COMPLETION",
+      "to": "OPH-A5-SEAM-CURRENT-EDGE30",
+      "role": "supplies the antipodal six-axis load quotient and response-selected metric carrier; the position action, physical sector, cofinal gluing, scale, frame and readout remain the frozen FZ-12 branch premises with target-clean producer owner #733 and physical-output and comparison owner #736"
+    },
+    {
+      "from": "OPH-A5-SEAM-CURRENT-EDGE30",
+      "to": "OPH-MODAL-MAXWELL-FACTORIZATION-BOUNDARY",
+      "role": "supplies the exact FZ-12 scalar spatial symbol and rank-two transverse oscillator that are factored by the complex Fourier-modal curl pair; it supplies no local real field, source-produced Maxwell dynamics, gauge/action, Gauss/source bridge, covariance, continuum limit, or readout"
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-SCREEN-PORT-CURRENT-INNER",
+      "role": "supplies the certified twelve-port module, proper A5 action, and one fixed line used by the A1/A2 compact Lie-type theorem; target-blind readback separately supplies R=-J"
+    },
+    {
+      "from": "OPH-SCREEN-PORT-CURRENT-INNER",
+      "to": "OPH-SM-SIMPLE-GUT-XY-CHANNEL-ABSENCE",
+      "role": "supplies the forced abstract product Lie type and its 8+3+1 adjoint decomposition; no general proton-stability, lifetime, source-current, or laboratory-attachment claim follows"
+    },
+    {
+      "from": "OPH-SCREEN-PORT-CURRENT-INNER",
+      "to": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
+      "role": "supplies the hash-pinned conditional matrix-current fixture; the physical source gate is false and the matter, statistics, super-category, and kernel-emission contracts remain separately typed"
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-SCREEN-CARRIER-SUPPORT-BRIDGE",
+      "role": "supplies the local twelve-port boundary and A5 incidence object; it does not supply the federation nerve, S2 support, or BW normalization"
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-FINITE-CONSERVATION-WARD-PRECURSOR",
+      "role": "supplies the exact twelve-port, thirty-seam incidence carrier; the pointwise continuity update and every physical identification remain explicit premises"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-GAUGE-D7-D9",
+      "role": "supplies transportable visible sector setting"
+    },
+    {
+      "from": "OPH-FINITE-HOLONOMY-CHARACTER-PHASE",
+      "to": "OPH-GAUGE-D7-D9",
+      "role": "supplies exact finite path-ratio, character-phase, rechart, four-vertex path/face-control, and cyclic-sector identities; it proves no puncture or noncontractibility, and source gauge transport, physical flux, laboratory interference, and continuum gauge theory remain separate"
+    },
+    {
+      "from": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
+      "to": "OPH-QUARK-REGISTER-CLEBSCH",
+      "role": "supplies the conditional channel-invariant dimensions and color multiplicity only; it neither equates independent Yukawa coefficients nor supplies generation order, physical MCPR attachment, or scale"
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-KOIDE-CIRCULANT-IDENTITY",
+      "role": "supplies the geometric regular-C3 face carrier only; positive-chamber square-root-mass identification, finite-GNS balance, physical chiral recovery, phase, ratios, and running remain separately typed"
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-A5-REAL-AXIS-CABIBBO-NOGO",
+      "role": "supplies the canonical real three-dimensional icosahedral geometry whose 31 unoriented residual axes form the finite no-go menu; it does not identify physical quark residuals or exclude other representations and breaking schemes"
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-W5-STABILISER-POTENTIAL-BOUNDARY",
+      "role": "supplies the real A5 rotation action used on W5; it does not emit the screen-derived invariant potential or physical family attachment required for ratio selection"
+    },
+    {
+      "from": "OPH-SCREEN-PORT-CURRENT-INNER",
+      "to": "OPH-SCREEN-A5-SM-RECOGNITION",
+      "role": "supplies the A1/A2-forced abstract Lie type plus a conditional full-rank matrix witness; source reconstruction, laboratory attachment, and downstream matter, family, pole, and continuum gates are unsupplied"
+    },
+    {
+      "from": "OPH-SCREEN-SUPER-TANNAKIAN-MATTER-LIFT",
+      "to": "OPH-SCREEN-A5-SM-RECOGNITION",
+      "role": "supplies one exact conditional matter realization and emitted kernel; it does not select the physical matter contract, global quotient, or family attachment"
+    },
+    {
+      "from": "OPH-SCREEN-ECHOSAHEDRAL-SELECTOR",
+      "to": "OPH-SCREEN-A5-SM-RECOGNITION",
+      "role": "supplies the unit-port, inverse-pairing, proper-A5, rank-three-frame, and naturality inputs; A1/A2 force the abstract current type, while source reconstruction and laboratory attachment remain separate"
+    },
+    {
+      "from": "OPH-GAUGE-EXTERIOR-SM-WITNESS",
+      "to": "OPH-SCREEN-A5-SM-RECOGNITION",
+      "role": "supplies the exact conditional rank-15 one-generation representation witness after the trace-balanced 3+2 carrier is selected; it does not supply family or laboratory attachment"
+    },
+    {
+      "from": "OPH-GR-FINITE-LOCAL-DOMAIN",
+      "to": "OPH-SCREEN-A5-SM-RECOGNITION",
+      "role": "supplies the separate finite seam domain and signed operator used by the declared tensor-identity extension; it does not source-select a matter action or bridge the twelve-port Spin packet and rank-three response data to the local domain"
+    },
+    {
+      "from": "OPH-SCREEN-A5-SM-RECOGNITION",
+      "to": "OPH-GAUGE-KINETIC-HISTORY-BINDING",
+      "role": "supplies the certified compact-bracket families and simple-factor decomposition consumed by the bounded kinetic-shape record; source selection of the current and bracket is open"
+    },
+    {
+      "from": "OPH-FINITE-HISTORY-VARIATIONAL-HELPERS",
+      "to": "OPH-GAUGE-KINETIC-HISTORY-BINDING",
+      "role": "supplies the finite declared-reference and log-transition-action algebra plus a conditional uniform-kernel realization from supplied counting/trivial data; it does not source-select those inputs or an initial law, and the E9 instance constructs its kernel from one chosen P-factor cost rather than identifying an independent source law"
+    },
+    {
+      "from": "OPH-GAUGE-D7-D9",
+      "to": "OPH-SM-ROUTE-IDENTIFICATION",
+      "role": "supplies the independently reconstructed categorical compact group on its declared branch"
+    },
+    {
+      "from": "OPH-SCREEN-A5-SM-RECOGNITION",
+      "to": "OPH-SM-ROUTE-IDENTIFICATION",
+      "role": "supplies the independently recognized A5 screen-current compact group on its declared branch"
+    },
+    {
+      "from": "OPH-GR-D6-CAPACITY",
+      "to": "OPH-Q-PN-CLOSURE",
+      "role": "supplies the exact bounded counterfamily and six-rung transported controls; the closure surface additionally requires universal complete-source membership and the executable-to-Lean bridge"
+    },
+    {
+      "from": "OPH-HIER-EW",
+      "to": "OPH-Q-N-RESERVE-CANDIDATES",
+      "role": "supplies the conditional uncorrected coordinate N_0 only after the common screen/electroweak load premise; it supplies no global capacity attachment"
+    },
+    {
+      "from": "OPH-Q-PN-CLOSURE",
+      "to": "OPH-Q-N-RESERVE-CANDIDATES",
+      "role": "records that direct capacity is not evaluable on the incomplete source antecedent; both reserve branches remain target-exposed diagnostics and cannot substitute for direct closure"
+    },
+    {
+      "from": "OPH-Q-PN-CLOSURE",
+      "to": "OPH-HIER-EW",
+      "role": "supplies P and N only after their respective physical closure receipts; the bounded N counterfamily is not a direct value and the EW/Higgs relation is downstream"
+    },
+    {
+      "from": "OPH-GR-D6-CAPACITY",
+      "to": "OPH-HIER-EW",
+      "role": "supplies N only after stable direct closure independently of the electroweak bridge"
+    },
+    {
+      "from": "OPH-GAUGE-EXTERIOR-SM-WITNESS",
+      "to": "OPH-HIER-EW",
+      "role": "supplies the exact four-copy weak multiplicity and additive-load mathematics"
+    },
+    {
+      "from": "OPH-GAUGE-D7-D9",
+      "to": "OPH-HIER-EW",
+      "role": "supplies the conditional electroweak matter packet inside its declared representation menu; it does not supply the physical screen load line"
+    },
+    {
+      "from": "OPH-SCREEN-A5-SM-RECOGNITION",
+      "to": "OPH-HIER-EW",
+      "role": "supplies the abstract screen-current Lie type and conditional matrix/matter fixtures; COMMON-EW-LOAD-CARRIER must identify source-normalized screen and weak load lines, and laboratory matter attachment is a separate gate"
+    },
+    {
+      "from": "OPH-GAUGE-D7-D9",
+      "to": "OPH-SCREEN-24-CLOCK-DETERMINANT",
+      "role": "supplies the charged-lepton determinant line; the 24-clock and natural attachment remain independent physical gates"
+    },
+    {
+      "from": "OPH-SOURCE-DIMENSIONLESS-GAP",
+      "to": "OPH-SCREEN-24-CLOCK-DETERMINANT",
+      "role": "supplies a positive finite-domain signed-seam gap only; physical reference-transition selection, SI calibration, and the charged determinant attachment remain independent"
+    },
+    {
+      "from": "OPH-GR-FINITE-LOCAL-DOMAIN",
+      "to": "OPH-SOURCE-DIMENSIONLESS-GAP",
+      "role": "supplies the finite signed incidence operator and equal counting measure whose exact full-rank certificate yields the dimensionless gap"
+    },
+    {
+      "from": "OPH-OBS-PATCH-DEF",
+      "to": "OPH-SCREEN-MODULAR-GEARING",
+      "role": "supplies the finite quotient-visible state, interface, transition-channel, and provenance vocabulary; reversible rates and the channel realization remain source receipts"
+    },
+    {
+      "from": "OPH-Q-PN-CLOSURE",
+      "to": "OPH-ALPHA-PIXEL",
+      "role": "supplies local pixel fixed-point coordinate"
+    },
+    {
+      "from": "OPH-GR-D5",
+      "to": "OPH-DM-CONT",
+      "role": "supplies independently constructed gravitational stress bookkeeping; scalar collar CMI does not supply the dark source"
+    },
+    {
+      "from": "OPH-GR-D6-HORIZON-RECORD",
+      "to": "OPH-DM-CONT",
+      "role": "supplies conditional cosmological branch context after horizon-record saturation"
+    },
+    {
+      "from": "OPH-GAUGE-D7-D9",
+      "to": "OPH-YM-GAP",
+      "role": "supplies compact-gauge branch"
+    },
+    {
+      "from": "OPH-GAUGE-D7-D9",
+      "to": "OPH-STRING-SELECTOR",
+      "role": "supplies target Standard Model branch"
+    },
+    {
+      "from": "OPH-OBS-PATCH-DEF",
+      "to": "OPH-IBM-GENERATIVE-REPAIR",
+      "role": "supplies the bounded state, readback, record, feedback, and evidence-bundle interface"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-IBM-GENERATIVE-REPAIR",
+      "role": "supplies finite mismatch and normal-form semantics only; the frozen engineering kernel is implementation-falsifiable but does not discriminate OPH from quantum mechanics"
+    },
+    {
+      "from": "OPH-CONS-D1",
+      "to": "OPH-THINKING-PATCH",
+      "role": "supplies fixed-point consensus model"
+    },
+    {
+      "from": "OPH-SYN-FORMAL-BASIS",
+      "to": "OPH-PARADISE",
+      "role": "supplies observer record and continuation vocabulary"
     },
     {
       "from": "OPH-CONS-D1",
@@ -1027,16 +1127,6 @@
     },
     {
       "from": "OPH-CANONICAL-LORENTZ-MODULE",
-      "to": "OPH-GR-D3-CAP-H3",
-      "role": "supplies an exact intrinsic Herm2 Lorentz coordinate module, celestial future-null-ray quotient, frame hyperboloid, rest spaces, and sign-correct Einstein-coordinate bridge; the support-visible BW limit, cap realization, topology, soldering, clocks, and physical spacetime remain separate premises"
-    },
-    {
-      "from": "OPH-FINITE-HOLONOMY-CHARACTER-PHASE",
-      "to": "OPH-GAUGE-D7-D9",
-      "role": "supplies exact finite path-ratio, character-phase, rechart, four-vertex path/face-control, and cyclic-sector identities; it proves no puncture or noncontractibility, and source gauge transport, physical flux, laboratory interference, and continuum gauge theory remain separate"
-    },
-    {
-      "from": "OPH-CANONICAL-LORENTZ-MODULE",
       "to": "OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING",
       "role": "supplies the intrinsic Herm2 Lorentz form, celestial quotient, frame hyperboloid, and positive rest fibers; C2 adds only conditional affine-overlap covariance and no source event atlas"
     },
@@ -1044,26 +1134,6 @@
       "from": "OPH-GR-PORT-RESPONSE-COMPLETION",
       "to": "OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING",
       "role": "supplies the rank-three FrameQuotient and Gram form used by the candidate standard-rest-fiber bridge; no theorem identifies that quotient with absolute space or produces the event atlas"
-    },
-    {
-      "from": "OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING",
-      "to": "OPH-BOUNDED-OBSERVER-TIME-CALIBRATION",
-      "role": "supplies the conditional event atlas, affine Lorentz overlap, and invariant displacement interface consumed by the unit-timelike history theorem; source atlas and physical clock production are separate source obligations"
-    },
-    {
-      "from": "OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING",
-      "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
-      "role": "supplies the bounded algebraic source-unit/celestial/null-ray and frame/rest covariance bridge; the finite source carrier does not depend on a population map or legacy supplied atlas, while physical frames, refinement, clocks, volume, and continuum realization remain explicit"
-    },
-    {
-      "from": "OPH-ALGEBRAIC-EVENT-FRAME-SOLDERING",
-      "to": "OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION",
-      "role": "supplies the conditional same-event-type packet and exact SourceUnitDirection equivalence used to pull back the fixed coordinate tomography frame into a separately supplied tensor interface; it supplies no packet inhabitant, coordinate-difference identification, observed link directions, tensor fields, or balance law"
-    },
-    {
-      "from": "OPH-GR-D5A-ABSOLUTE-EINSTEIN",
-      "to": "OPH-GR-SOURCE-DIRECTION-EINSTEIN-COMPOSITION",
-      "role": "supplies the existing finite null-tomography and Ward/Bianchi constancy algebra reused by the minimal nine-source-direction shape theorem; a separate normalized adapter adds vacuum-reference and scale data, while the smooth physical reading and common tower remain external"
     },
     {
       "from": "OPH-FINITE-CAUSAL-OBSERVER-NET",
@@ -1081,14 +1151,24 @@
       "role": "sharpens the particle/scattering exit by excluding only direct ordinary convergence of one fixed-cutoff unitary power sequence; it neither makes the row statable nor excludes relative, weak, projected, Cesaro, continuum, open-system, or finite-time operational constructions"
     },
     {
-      "from": "OPH-SCREEN-A5-SM-RECOGNITION",
-      "to": "OPH-GAUGE-KINETIC-HISTORY-BINDING",
-      "role": "supplies the certified compact-bracket families and simple-factor decomposition consumed by the bounded kinetic-shape record; source selection of the current and bracket is open"
+      "from": "OPH-QUANTUM-TIME-SLICE-INTERFACE-DELIMITATION",
+      "to": "OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX",
+      "role": "supplies the corrected finite transport-aware one-step precursor and constant-region inhabitant acknowledged by matrix row 6; it supplies no Cauchy geometry, coherent physical evolution, or stress-response derivative"
     },
     {
-      "from": "OPH-FINITE-HISTORY-VARIATIONAL-HELPERS",
-      "to": "OPH-GAUGE-KINETIC-HISTORY-BINDING",
-      "role": "supplies the finite declared-reference and log-transition-action algebra plus a conditional uniform-kernel realization from supplied counting/trivial data; it does not source-select those inputs or an initial law, and the E9 instance constructs its kernel from one chosen P-factor cost rather than identifying an independent source law"
+      "from": "OPH-EM-POSITION-SPACE-MAXWELL-COULOMB",
+      "to": "OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX",
+      "role": "supplies the exact dense global Hodge-projector action acknowledged as a row-4 precursor; its nonlocality, Coulomb annihilation, and missing source/spacetime attachments prevent promotion to field/action reconstruction"
+    },
+    {
+      "from": "OPH-QUANTUM-TRIPLE-CARRIER-JOIN",
+      "to": "OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX",
+      "role": "supplies the common state/path/checkpoint and adjacent-step precursor acknowledged by row 6 while leaving regional-net morphisms, Cauchy geometry, and physical evolution absent"
+    },
+    {
+      "from": "OPH-EM-LOCAL-FACE-MAXWELL-STATIC-COMPOSITION",
+      "to": "OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX",
+      "role": "supplies the exact local finite static face-curvature action acknowledged by row 4 while leaving temporal dynamics, matter/current attachment, spacetime covariance, and continuum reconstruction absent"
     },
     {
       "from": "OPH-GR-PORT-RESPONSE-COMPLETION",
@@ -1121,19 +1201,14 @@
       "role": "supplies the committed 86/247 counted correlation state specialized by the record-diagonal CHSH delimitation; the separate declared Bell state and its attaining readouts are not source-produced by that net"
     },
     {
+      "from": "OPH-FINITE-BORN-FRAME-RANK-GAP",
+      "to": "OPH-QUANTUM-OPERATIONAL-PHASE-INTERFACE",
+      "role": "supplies the committed two-dimensional algebraic state/effect representation and static phase-completion pair used by the ideal exact-fit model; it supplies no CP outcome operations, summed channel, source protocol, producer receipt, or statistical validation"
+    },
+    {
       "from": "OPH-FINITE-CAUSAL-OBSERVER-NET",
       "to": "OPH-QUANTUM-TIME-SLICE-INTERFACE-DELIMITATION",
       "role": "supplies the two committed finite regional diamonds, their counted correlation and marginal data, and the tower interfaces used by the parallel anchoring, shared-observer hinge, and transport-aware one-step evolution; it supplies no regional-net/tower join, Cauchy geometry, or physical time"
-    },
-    {
-      "from": "OPH-QUANTUM-TIME-SLICE-INTERFACE-DELIMITATION",
-      "to": "OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX",
-      "role": "supplies the corrected finite transport-aware one-step precursor and constant-region inhabitant acknowledged by matrix row 6; it supplies no Cauchy geometry, coherent physical evolution, or stress-response derivative"
-    },
-    {
-      "from": "OPH-EM-POSITION-SPACE-MAXWELL-COULOMB",
-      "to": "OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX",
-      "role": "supplies the exact dense global Hodge-projector action acknowledged as a row-4 precursor; its nonlocality, Coulomb annihilation, and missing source/spacetime attachments prevent promotion to field/action reconstruction"
     },
     {
       "from": "OPH-FINITE-HISTORY-VARIATIONAL-HELPERS",
@@ -1154,16 +1229,6 @@
       "from": "OPH-QUANTUM-TIME-SLICE-INTERFACE-DELIMITATION",
       "to": "OPH-QUANTUM-TRIPLE-CARRIER-JOIN",
       "role": "supplies the separately committed pair paths, counted states, and checkpoint anchorings that the target couples on the triple carrier; the new marginal maps are not net or tower morphisms"
-    },
-    {
-      "from": "OPH-QUANTUM-TRIPLE-CARRIER-JOIN",
-      "to": "OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX",
-      "role": "supplies the common state/path/checkpoint and adjacent-step precursor acknowledged by row 6 while leaving regional-net morphisms, Cauchy geometry, and physical evolution absent"
-    },
-    {
-      "from": "OPH-EM-LOCAL-FACE-MAXWELL-STATIC-COMPOSITION",
-      "to": "OPH-QFT-STRUCTURAL-INHERITANCE-MATRIX",
-      "role": "supplies the exact local finite static face-curvature action acknowledged by row 4 while leaving temporal dynamics, matter/current attachment, spacetime covariance, and continuum reconstruction absent"
     },
     {
       "from": "OPH-THERMO-COHERENT-REFINEMENT-ENVELOPE",
@@ -1204,6 +1269,11 @@
       "from": "OPH-GAUGE-KINETIC-HISTORY-BINDING",
       "to": "OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION",
       "role": "supplies the invariant-form receipts whose free per-factor coefficients keep the relative coupling normalization declared, so the tree mass ratio is stated in declared constants"
+    },
+    {
+      "from": "OPH-SM-BARYON-DIMENSION-SIX-CENSUS",
+      "to": "OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION",
+      "role": "Supplies the frozen ten-field Weyl grammar and its left-chirality column that the matter-grammar index dictionary identifies column by column with the selected exterior components; no baryon-violating operator, label, or proton claim is inherited."
     },
     {
       "from": "OPH-MECH-ENRICHMENT-CHARACTERIZATION",
@@ -1266,16 +1336,6 @@
       "role": "supplies the committed electroweak receipt whose exhibited Yukawa rows the shared-row identification matches against the committed matter slots"
     },
     {
-      "from": "OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION",
-      "to": "OPH-SCREEN-NEUTRAL-CURRENT-DICTIONARY",
-      "role": "supplies the committed breaking directions, infinitesimal action, vacuum, stabilizer line, and premise bundle from which the coupling dictionary is proved"
-    },
-    {
-      "from": "OPH-GEOMETRY-INVERSE-SQUARE-SHELL",
-      "to": "OPH-GEOMETRY-REST-FIBER-SHELL-TRANSPORT",
-      "role": "supplies the committed RadialFluxData packet and shell-law theorems that the boost-shear isometry transports onto every declared rest fiber"
-    },
-    {
       "from": "OPH-GEOMETRY-KINEMATIC-MASS-SHELL",
       "to": "OPH-GEOMETRY-COMMON-WORLD-TWO-ISLAND-WITNESS",
       "role": "supplies the kinematic mass-shell packet the record carries at its declared mass and state frame"
@@ -1314,6 +1374,16 @@
       "from": "OPH-QUANTUM-PHASE-MODEL-DETERMINATION-BOUNDARY",
       "to": "OPH-QUANTUM-PHASE-OPERATION-RECORDED-DECISION-ATTAINMENT",
       "role": "supplies the integer phase-count window and closed-form frequency law instantiated by the static conformance fixture"
+    },
+    {
+      "from": "OPH-GEOMETRY-INVERSE-SQUARE-SHELL",
+      "to": "OPH-GEOMETRY-REST-FIBER-SHELL-TRANSPORT",
+      "role": "supplies the committed RadialFluxData packet and shell-law theorems that the boost-shear isometry transports onto every declared rest fiber"
+    },
+    {
+      "from": "OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION",
+      "to": "OPH-SCREEN-NEUTRAL-CURRENT-DICTIONARY",
+      "role": "supplies the committed breaking directions, infinitesimal action, vacuum, stabilizer line, and premise bundle from which the coupling dictionary is proved"
     },
     {
       "from": "OPH-QUANTUM-HINGE-FIBERED-JOIN-AND-SLICE-REGION-DICHOTOMY",
@@ -1359,6 +1429,21 @@
       "from": "OPH-SCREEN-NEUTRAL-CURRENT-DICTIONARY",
       "to": "OPH-SCREEN-CHARGED-CURRENT-DICTIONARY",
       "role": "supplies the committed photon and Z directions and neutral units gZ and e consumed by the charge-step and commutator-join receipts"
+    },
+    {
+      "from": "OPH-COMPUTATION-REPAIR-PROGRAM-BOUNDARY",
+      "to": "OPH-COMPUTATION-FIXED-FEDERATION-PROGRESS",
+      "role": "supplies the generated formula nodes, straight-line dependency order, weak-step limitation, and fixed-device gap closed by the canonical fixed-federation theorem"
+    },
+    {
+      "from": "OPH-COMPUTATION-FIXED-FEDERATION-PROGRESS",
+      "to": "OPH-COMPUTATION-FIXED-FEDERATION-ENDPOINT",
+      "role": "supplies ranked accepted-step termination, fair attempt consensus, input preservation, and same-input output uniqueness to the Tower endpoint consumer"
+    },
+    {
+      "from": "OPH-COMPUTATION-FIXED-FEDERATION-PROGRESS",
+      "to": "OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION",
+      "role": "supplies eventual attempt stabilization, compiler well-formedness, input preservation, and output uniqueness to the exact fairness, complexity, and bounded-attempt classification"
     },
     {
       "from": "OPH-QUANTUM-PHASE-OPERATION-RECORDED-DECISION-ATTAINMENT",
@@ -1921,71 +2006,6 @@
       "role": "supplies the general energy-derived real and Hermitian forms, phase flow, generator, and coefficient-recovery theorem that the nineteen-mode curl packet instantiates"
     },
     {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION",
-      "role": "supplies the canonical localRepair, acceptedStep, mismatchCount, and finite carrier semantics on which the adaptive attempt stratification is proved"
-    },
-    {
-      "from": "OPH-ADAPTIVE-SCHEDULER-LOCALITY-HELPER",
-      "to": "OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION",
-      "role": "supplies the existing state-dependent AdaptiveScheduler and adaptiveRun interface only; the locality helper's consultation-region conclusion is not consumed"
-    },
-    {
-      "from": "OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION",
-      "to": "OPH-CONS-ADAPTIVE-PUBLIC-ENDPOINT",
-      "role": "supplies reachable weak-fair adaptive normal forms and the exact work-conservation boundary"
-    },
-    {
-      "from": "OPH-PUBLIC-WORLD-ENDPOINT-FINITE",
-      "to": "OPH-CONS-ADAPTIVE-PUBLIC-ENDPOINT",
-      "role": "supplies the canonical Repair endpoint, literal PublicWorld quotient, and fixed-point object consumed by the adaptive endpoint corollary"
-    },
-    {
-      "from": "OPH-CONS-ADAPTIVE-REPAIR-STRATIFICATION",
-      "to": "OPH-CONS-CUMULATIVE-ATTEMPT-CAPACITY",
-      "role": "supplies the canonical attempt, equality-stutter, accepted-change, and strict mismatch-descent semantics used by the cumulative capacity classification"
-    },
-    {
-      "from": "OPH-CONS-CUMULATIVE-ATTEMPT-CAPACITY",
-      "to": "OPH-CONS-CAPACITY-BOUNDED-PUBLIC-ENDPOINT",
-      "role": "supplies the bounded-waste threshold and sufficient cumulative attempt budget consumed by the quantitative Tower endpoint"
-    },
-    {
-      "from": "OPH-PUBLIC-WORLD-ENDPOINT-FINITE",
-      "to": "OPH-CONS-CAPACITY-BOUNDED-PUBLIC-ENDPOINT",
-      "role": "supplies canonical Repair, the literal PublicWorld quotient, and the existing FixedPointObject consumed after budget-bounded normalization"
-    },
-    {
-      "from": "OPH-CONS-D1",
-      "to": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE",
-      "role": "supplies the accepted transactional commit semantics, read/write validation, and aggregate conflict discipline whose versioned register image the provenance layer reads"
-    },
-    {
-      "from": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE",
-      "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
-      "role": "supplies the finite semantic-event population and authenticated generated order, from which the geometry module computes canonical longest-parent-chain sourceHeight; independently of that order, the ambient carrier of dimension four and Lorentz signature is an independent real axis plus the source quotient, while positive timeScale times sourceHeight enters only through an event placement and is not a physical clock, and intrinsic poset dimension, physical event/link identification, faithful refinement, count-volume, manifoldlikeness, topology, curvature, and continuum uniqueness remain explicit"
-    },
-    {
-      "from": "OPH-GR-PORT-RESPONSE-COMPLETION",
-      "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
-      "role": "supplies the exact positive rank-three FrameQuotient and Gram form used independently in the source one-plus-three carrier R plus FrameQuotient, and the dense conservative record carrier consumed by the conditional metric coarsening and scalar-action construction"
-    },
-    {
-      "from": "OPH-COMPUTATION-REPAIR-PROGRAM-BOUNDARY",
-      "to": "OPH-COMPUTATION-FIXED-FEDERATION-PROGRESS",
-      "role": "supplies the generated formula nodes, straight-line dependency order, weak-step limitation, and fixed-device gap closed by the canonical fixed-federation theorem"
-    },
-    {
-      "from": "OPH-COMPUTATION-FIXED-FEDERATION-PROGRESS",
-      "to": "OPH-COMPUTATION-FIXED-FEDERATION-ENDPOINT",
-      "role": "supplies ranked accepted-step termination, fair attempt consensus, input preservation, and same-input output uniqueness to the Tower endpoint consumer"
-    },
-    {
-      "from": "OPH-COMPUTATION-FIXED-FEDERATION-PROGRESS",
-      "to": "OPH-COMPUTATION-FIXED-FEDERATION-EXECUTION-CLASSIFICATION",
-      "role": "supplies eventual attempt stabilization, compiler well-formedness, input preservation, and output uniqueness to the exact fairness, complexity, and bounded-attempt classification"
-    },
-    {
       "from": "OPH-A5-SEAM-CURRENT-EDGE30",
       "to": "OPH-SEAM-MAXWELL-CONTINUUM",
       "role": "Exact complete seam symbol and source second/fourth moments determine the global continuum consistency bound."
@@ -2056,6 +2076,11 @@
       "role": "Supplies the same gauge-dressed scalar/Maxwell action, full interpolation derivatives and finite geometric configuration; physical source, quantum prescription and numerical acceptance remain separately declared."
     },
     {
+      "from": "OPH-WHITNEY-REAL-CONTINUUM",
+      "to": "OPH-WHITNEY-INTERACTING-QUANTUM",
+      "role": "Supplies only the conditional real-sector H1 trajectory estimate, smooth Neumann reference and Ritz initialization used to bound quadratic/quartic shared readouts and Lipschitz detector responses; it supplies no quantum-state refinement or physical detector calibration."
+    },
+    {
       "from": "OPH-WHITNEY-CHARGED-MATTER",
       "to": "OPH-WHITNEY-CHARGED-EXECUTION",
       "role": "Supplies the same gauge-dressed scalar/Maxwell action, full interpolation derivatives and finite geometric configuration; physical source, quantum prescription and numerical acceptance remain separately declared."
@@ -2069,6 +2094,11 @@
       "from": "OPH-WHITNEY-CHARGED-EXECUTION",
       "to": "OPH-WHITNEY-CHARGED-INSTRUMENT",
       "role": "Supplies the same declared action, mathematical configuration or independently authenticated decoded record named in the child theorem; no physical selection or empirical status is inherited."
+    },
+    {
+      "from": "OPH-WHITNEY-CHARGED-ENCLOSURE",
+      "to": "OPH-WHITNEY-CHARGED-INSTRUMENT",
+      "role": "supplies the independently verified historical q/v error enclosure for the new decoded-checkpoint triangle bound only"
     },
     {
       "from": "OPH-WHITNEY-CHARGED-INSTRUMENT",
@@ -2111,24 +2141,14 @@
       "role": "Supplies the exact fixed-space lift and charged initial datum. Historical floating-point samples are comparison targets, not inputs to the continuous-time enclosure proof."
     },
     {
-      "from": "OPH-WHITNEY-REAL-CONTINUUM",
-      "to": "OPH-WHITNEY-INTERACTING-QUANTUM",
-      "role": "Supplies only the conditional real-sector H1 trajectory estimate, smooth Neumann reference and Ritz initialization used to bound quadratic/quartic shared readouts and Lipschitz detector responses; it supplies no quantum-state refinement or physical detector calibration."
-    },
-    {
+      "from": "OPH-FINITE-CAUSAL-OBSERVER-NET",
       "to": "OPH-QFT-RESTRICTION-NATURALITY",
-      "role": "supplies finite restriction, repair and refinement laws; restriction-repair compatibility is additionally stated and inhabited",
-      "from": "OPH-FINITE-CAUSAL-OBSERVER-NET"
+      "role": "supplies finite restriction, repair and refinement laws; restriction-repair compatibility is additionally stated and inhabited"
     },
     {
+      "from": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE",
       "to": "OPH-QFT-RESTRICTION-NATURALITY",
-      "role": "supplies authenticated generated precedence and the actual diamond-to-chain coarsening certificate",
-      "from": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE"
-    },
-    {
-      "to": "OPH-WHITNEY-CHARGED-INSTRUMENT",
-      "role": "supplies the independently verified historical q/v error enclosure for the new decoded-checkpoint triangle bound only",
-      "from": "OPH-WHITNEY-CHARGED-ENCLOSURE"
+      "role": "supplies authenticated generated precedence and the actual diamond-to-chain coarsening certificate"
     },
     {
       "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
@@ -2136,9 +2156,9 @@
       "role": "Supplies only the golden source-address family for the distinct declared tensor scalar-action instantiation; neither the general comparison theorem nor its finite packet consumes native physical spacetime selection or authenticated field/count-clock identification."
     },
     {
-      "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
-      "to": "OPH-SM-Q1-LOCAL-G6",
-      "role": "Supplies the prepared golden source-address family for the separate Cartan-scalar execution, not a hypothesis of the generic local classical reduction. The tensor action weights and log-plaquette dynamics are declared; causal-count clock and physical-source identification are not transported."
+      "from": "OPH-SCALAR-ACTION-CLOCK",
+      "to": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
+      "role": "Supplies the recovered elapsed-time intervals for the separate q5 same-detector timing extension only. Neither the general Hilbert-space comparison nor the q233 spatial certificate consumes these intervals."
     },
     {
       "from": "OPH-CONS-SOURCE-DERIVED-EVENT-PRECEDENCE",
@@ -2149,11 +2169,6 @@
       "from": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
       "to": "OPH-SCALAR-ACTION-CLOCK",
       "role": "Supplies the prepared golden source-address family for this finite scalar instantiation only; no old count-clock or physical cone identification is transferred."
-    },
-    {
-      "from": "OPH-SCALAR-ACTION-CLOCK",
-      "to": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
-      "role": "Supplies the recovered elapsed-time intervals for the separate q5 same-detector timing extension only. Neither the general Hilbert-space comparison nor the q233 spatial certificate consumes these intervals."
     },
     {
       "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
@@ -2176,11 +2191,6 @@
       "role": "supplies the layered read law, site density and read radius of the declared golden family whose crossing reads are counted; it supplies no horizon, entropy or Planck-length identification"
     },
     {
-      "from": "OPH-BH-CROSSING-READ-AREA-LAW",
-      "to": "OPH-GR-D6-HORIZON-RECORD",
-      "role": "supplies the exact seam-count area law and its Planck-area dictionary on the declared family as a finite counterpart of the horizon-record capacity reading; it supplies no physical horizon, no realized de Sitter branch and no value of N"
-    },
-    {
       "from": "OPH-COSMO-SCREEN-SPECTRUM",
       "to": "OPH-COSMO-POSTDICTION-LEDGER",
       "role": "supplies the conditional tilt, running, tensor and isocurvature values that the primordial rows compare; it supplies no public measurement and no verdict"
@@ -2199,11 +2209,6 @@
       "from": "OPH-COSMO-FLRW-RECORD-DENSITY",
       "to": "OPH-COSMO-POSTDICTION-LEDGER",
       "role": "supplies the cosmological reading of the count clock under which the ledger's background rows are compared with a spatially flat expanding history; it supplies no measurement"
-    },
-    {
-      "from": "OPH-GOLDEN-SOURCE-QUADRATURE",
-      "to": "OPH-GR-D4B-SOURCE-CAUSAL-CONTINUUM",
-      "role": "supplies actual golden Lebesgue quadrature and fixed null-frontier spacetime event counts; the moving causal-interval and strict-pair specializations remain analytic and no physical premise is discharged"
     },
     {
       "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
@@ -2261,11 +2266,6 @@
       "role": "Supplies the maximal sound singleton publication policy and native final-read error interface; the accumulator adds declared request composition and integer feasibility bounds."
     },
     {
-      "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
-      "to": "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION",
-      "role": "Supplies the complete q3 routed event streams, prepared address records and declared M1 compiler used for the paired gluing comparison; source-selected population, physical geometry and unrestricted law recovery are not inherited."
-    },
-    {
       "from": "OPH-NATIVE-REUSABLE-ACCUMULATION",
       "to": "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM",
       "role": "Supplies scale-aligned native arithmetic and the bounded integer decoder. The bank compiler derives layered request semantics, clean/lifetime invariants and native lowering; explicit geometric routes and finite error bounds are handled separately."
@@ -2274,6 +2274,11 @@
       "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
       "to": "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM",
       "role": "Supplies captured twelve-port supports and the declared golden metric menus for finite family certificates. The new bank placement and mean-only words do not inherit the older export/reset/capture primitives, prepared-address preservation or exact raw-writer semantic-order refinement."
+    },
+    {
+      "from": "OPH-SOURCE-FULL-FAMILY-READ-ROUTING",
+      "to": "OPH-FEDERATION-LOG-GLUING-NONIDENTIFICATION",
+      "role": "Supplies the complete q3 routed event streams, prepared address records and declared M1 compiler used for the paired gluing comparison; source-selected population, physical geometry and unrestricted law recovery are not inherited."
     },
     {
       "from": "OPH-TEMPORAL-NATIVE-RECOVERY",
@@ -2561,11 +2566,6 @@
       "role": "Supplies the product-adjoint exclusion of the simple-GUT X/Y exchange channel whose proton-stability boundary the census makes exact; the census adds the surviving dimension-six operator classes and inherits no lifetime or decay claim."
     },
     {
-      "from": "OPH-SM-BARYON-DIMENSION-SIX-CENSUS",
-      "to": "OPH-SCREEN-ELECTROWEAK-BREAKING-COMPOSITION",
-      "role": "Supplies the frozen ten-field Weyl grammar and its left-chirality column that the matter-grammar index dictionary identifies column by column with the selected exterior components; no baryon-violating operator, label, or proton claim is inherited."
-    },
-    {
       "from": "OPH-QFT-EFFECTIVE-QUANTUM-COMPARISON",
       "to": "OPH-COMMON-HISTORY-FEEDBACK-PACKET",
       "role": "Consumes only its explicitly supplied q=5 scalar action and authenticated classical source-history construction; no quantum comparison, source selection or physical realization is inherited."
@@ -2576,224 +2576,224 @@
       "role": "Consumes only its explicitly supplied q=5 scalar action and authenticated classical source-history construction; no quantum comparison, source selection or physical realization is inherited."
     },
     {
-      "role": "Supplies the charged tetrahedral coin, complete parent spectrum and native duration; the massive spectrum and all-band bound are proved for the explicit doubled process.",
       "from": "OPH-M1-MINIMAL-TETRAHEDRAL-TRANSPORT",
-      "to": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM"
+      "to": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+      "role": "Supplies the charged tetrahedral coin, complete parent spectrum and native duration; the massive spectrum and all-band bound are proved for the explicit doubled process."
     },
     {
-      "role": "Supplies the full-channel dynamic error and native record; actual local sampled CAR read errors are derived without assuming low-energy state selection.",
       "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
-      "to": "OPH-M1-RESOLVED-LOCAL-READ-CONE"
+      "to": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
+      "role": "Supplies the full-channel dynamic error and native record; actual local sampled CAR read errors are derived without assuming low-energy state selection."
     },
     {
-      "role": "Supplies the explicit massive walk, full-channel dynamics and fixed positive accounting observable; mass interference and the clock error are constructed directly.",
       "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
-      "to": "OPH-M1-OBSERVABLE-MASS-CLOCK"
+      "to": "OPH-M1-OBSERVABLE-MASS-CLOCK",
+      "role": "Supplies the explicit massive walk, full-channel dynamics and fixed positive accounting observable; mass interference and the clock error are constructed directly."
     },
     {
-      "role": "Supplies the sampled full-vector bound used in the actual local clock detector comparison; source admission and physical energy are not inherited.",
       "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
-      "to": "OPH-M1-OBSERVABLE-MASS-CLOCK"
+      "to": "OPH-M1-OBSERVABLE-MASS-CLOCK",
+      "role": "Supplies the sampled full-vector bound used in the actual local clock detector comparison; source admission and physical energy are not inherited."
     },
     {
-      "role": "Supplies the exact active M6 response, same-response chart words and spherical support; buffer/coherence completeness is proved anew, not inherited from scalar seams.",
       "from": "OPH-SCALAR-SEAM-SOURCE-NONENTAILMENT",
-      "to": "OPH-SOURCE-COHERENT-CODE-COMPLETION"
+      "to": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+      "role": "Supplies the exact active M6 response, same-response chart words and spherical support; buffer/coherence completeness is proved anew, not inherited from scalar seams."
     },
     {
-      "role": "Supplies the proposed classical RG service being completed and separated from noncentral transport; no quantum service is inherited.",
       "from": "OPH-RECORD-GLUING-M1-SUFFICIENCY",
-      "to": "OPH-SOURCE-COHERENT-CODE-COMPLETION"
+      "to": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+      "role": "Supplies the proposed classical RG service being completed and separated from noncentral transport; no quantum service is inherited."
     },
     {
-      "role": "Supplies the declared proper-code interfaces to which the general finite channel theorem is applied; accepted complementary read data are stated explicitly.",
       "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
-      "to": "OPH-SOURCE-TWO-BASIS-A3-SELECTION"
+      "to": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
+      "role": "Supplies the declared proper-code interfaces to which the general finite channel theorem is applied; accepted complementary read data are stated explicitly."
     },
     {
-      "role": "Supplies the native single-qubit and entangling response controls and full physical code instruments in the named source.",
       "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
-      "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+      "to": "OPH-SOURCE-COMPILED-MASS-CLOCK",
+      "role": "Supplies the native single-qubit and entangling response controls and full physical code instruments in the named source."
     },
     {
-      "role": "Supplies coherent transfer under two read tables and the exact-Z A3 noise semigroup; its rate remains declared data.",
       "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
-      "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+      "to": "OPH-SOURCE-COMPILED-MASS-CLOCK",
+      "role": "Supplies coherent transfer under two read tables and the exact-Z A3 noise semigroup; its rate remains declared data."
     },
     {
-      "role": "Supplies the bounded finite one-particle clock signal and sampled preparation/detector estimates. Source gates, preparation program and positive control time are supplied here; arbitrary Fock-sector claims are not transferred.",
       "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
-      "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+      "to": "OPH-SOURCE-COMPILED-MASS-CLOCK",
+      "role": "Supplies the bounded finite one-particle clock signal and sampled preparation/detector estimates. Source gates, preparation program and positive control time are supplied here; arbitrary Fock-sector claims are not transferred."
     },
     {
-      "role": "Supplies the full one-particle walk and fixed positive Floquet observable used for the phase-noise ultraviolet test; no physical energy calibration is inherited.",
       "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
-      "to": "OPH-SOURCE-COMPILED-MASS-CLOCK"
+      "to": "OPH-SOURCE-COMPILED-MASS-CLOCK",
+      "role": "Supplies the full one-particle walk and fixed positive Floquet observable used for the phase-noise ultraviolet test; no physical energy calibration is inherited."
     },
     {
-      "role": "Supplies the existing native response, complete proper-code interfaces and constructed support; fermionic encoding and preparation are proved here.",
       "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
-      "to": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION"
+      "to": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+      "role": "Supplies the existing native response, complete proper-code interfaces and constructed support; fermionic encoding and preparation are proved here."
     },
     {
-      "role": "Supplies the explicitly proposed CCG coherent transport service, without granting a freely variable code basis.",
       "from": "OPH-SOURCE-TWO-BASIS-A3-SELECTION",
-      "to": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION"
+      "to": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+      "role": "Supplies the explicitly proposed CCG coherent transport service, without granting a freely variable code basis."
     },
     {
-      "role": "Supplies the edge encoding and independent cycle constraints on which the physical vacuum-noise obstruction is proved.",
       "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
-      "to": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE"
+      "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK",
+      "role": "Supplies the all-sector gates, deterministic local preparation and complete number instruments."
     },
     {
-      "role": "Supplies the all-sector gates, deterministic local preparation and complete number instruments.",
-      "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
-      "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
-    },
-    {
-      "role": "Supplies the full-interface noise estimate, including off-code intermediate pulses and gauge preparation; the unencoded sector bound is not reused.",
       "from": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
-      "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+      "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK",
+      "role": "Supplies the full-interface noise estimate, including off-code intermediate pulses and gauge preparation; the unencoded sector bound is not reused."
     },
     {
-      "role": "Supplies the prior source-clock target and charged-control conventions; its vacuum/one-particle restriction is removed by this separate fermionic compiler.",
       "from": "OPH-SOURCE-COMPILED-MASS-CLOCK",
-      "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+      "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK",
+      "role": "Supplies the prior source-clock target and charged-control conventions; its vacuum/one-particle restriction is removed by this separate fermionic compiler."
     },
     {
-      "role": "Supplies the all-state resolved CAR norm bound, transferred by the explicit source isometry at macrostep endpoints.",
       "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
-      "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+      "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK",
+      "role": "Supplies the all-state resolved CAR norm bound, transferred by the explicit source isometry at macrostep endpoints."
     },
     {
-      "role": "Supplies the finite analytic clock interval certificate and one-particle effect, with its full Fock instrument and all setup/report latency implemented here.",
       "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
-      "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK"
+      "to": "OPH-SOURCE-ENCODED-FERMION-CLOCK",
+      "role": "Supplies the finite analytic clock interval certificate and one-particle effect, with its full Fock instrument and all setup/report latency implemented here."
     },
     {
-      "role": "Supplies the full prepared clock/read programs, finite accounting reference and padded source schedule; protection and fixed-rate operational convergence are proved separately.",
-      "from": "OPH-SOURCE-ENCODED-FERMION-CLOCK",
-      "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
-    },
-    {
-      "role": "Supplies complete native proper-code operations, finite per-owner inventories and cofinal charged control capability; no reliable recovery service is added.",
-      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
-      "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
-    },
-    {
-      "role": "Supplies the unprotected raw-vacuum obstruction, retained rather than misread as an obstruction to corrected operational outputs.",
-      "from": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
-      "to": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION"
-    },
-    {
-      "role": "Specifies complete decoded observables and abort accounting; does not transfer raw fidelity or unweighted native counts.",
-      "from": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
-      "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS"
-    },
-    {
-      "role": "Supplies the proper-code noise decomposition, protected output convention and charged cofinal source; reliable runtime classical control is removed here.",
-      "from": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
-      "to": "OPH-SOURCE-NOISY-CONTROL-HISTORIES"
-    },
-    {
-      "role": "Supplies the native complete classical services and cofinal finite inventory; noisy archive maintenance is proved separately.",
-      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
-      "to": "OPH-SOURCE-LIVE-RECORD-PROTECTION"
-    },
-    {
-      "role": "Supplies actual noisy public export and live record maintenance, with every retained lifetime and terminal boundary counted.",
-      "from": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
-      "to": "OPH-SOURCE-NOISY-CONTROL-HISTORIES"
-    },
-    {
-      "role": "Supplies complete proper-code transfer, complement and reset services; the new local leakage-reduction instrument is derived from them.",
-      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
-      "to": "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION"
-    },
-    {
-      "role": "Supplies the complete syndrome decoder and declared accounting reference; the full-carrier extension is changed to correct leakage locally.",
-      "from": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
-      "to": "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION"
-    },
-    {
-      "role": "Supplies native complete reduction and single-carrier correction identities; noisy reductions and full gadget hypotheses remain charged.",
-      "from": "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION",
-      "to": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT"
-    },
-    {
-      "role": "Supplies the merged prepared source programs, universal gadget construction and causal schedule. Its independent code-preserving dephasing hypothesis is replaced, not inherited, in the new general-noise proof.",
-      "from": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
-      "to": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT"
-    },
-    {
-      "role": "Supplies the exact causal instrument compiler and explicit measurement-free computation code; native leakage reduction and norm fault paths extend its quantum noise model.",
-      "from": "OPH-SOURCE-NOISY-CONTROL-HISTORIES",
-      "to": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT"
-    },
-    {
-      "role": "Supplies the actual live archive, disjoint export islands and complete storage ledger. The norm-tail proof replaces its stochastic estimate; six fixed levels preserve its joint convergence rate.",
-      "from": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
-      "to": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT"
-    },
-    {
-      "role": "Supplies the central-bit interpretation, private-voter fault ownership and live-bank handoff. The new explicit graph replaces its all-to-all fanout and shrinking-error bound.",
-      "from": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
-      "to": "OPH-SOURCE-EXPANDER-LIVE-ARCHIVE"
-    },
-    {
-      "role": "Supplies a live public archive with fixed-degree native service count and an exponential bad-cycle bound at fixed subthreshold strength.",
-      "from": "OPH-SOURCE-EXPANDER-LIVE-ARCHIVE",
-      "to": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY"
-    },
-    {
-      "role": "Supplies the exact causal instrument compiler, actual computation code, protected classical feedback and source lifetime ledger; a staged record decoder and growing protection replace its fixed-level export.",
-      "from": "OPH-SOURCE-NOISY-CONTROL-HISTORIES",
-      "to": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY"
-    },
-    {
-      "role": "Supplies complete proper-code transfer and reset services from which the noisy full-carrier reduction is derived without a new reversible M6 operation.",
-      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
-      "to": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY"
-    },
-    {
-      "role": "Supplies the actual massive walk, specified principal branch and complete spectral partition limit; the filled reference changes the vacuum interpretation.",
-      "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
-      "to": "OPH-SOURCE-SEA-GENERATOR"
-    },
-    {
-      "role": "Supplies the all-sector CAR source compiler and actual reflecting flight; no periodic source link is substituted.",
       "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
-      "to": "OPH-SOURCE-SEA-GENERATOR"
+      "to": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
+      "role": "Supplies the edge encoding and independent cycle constraints on which the physical vacuum-noise obstruction is proved."
     },
     {
-      "role": "Supplies both endpoint gaps and the negative-energy projection; weighted resolvents establish its local reflecting limit.",
+      "from": "OPH-SOURCE-ENCODED-FERMION-CLOCK",
+      "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
+      "role": "Supplies the full prepared clock/read programs, finite accounting reference and padded source schedule; protection and fixed-rate operational convergence are proved separately."
+    },
+    {
+      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+      "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
+      "role": "Supplies complete native proper-code operations, finite per-owner inventories and cofinal charged control capability; no reliable recovery service is added."
+    },
+    {
+      "from": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
+      "to": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
+      "role": "Specifies complete decoded observables and abort accounting; does not transfer raw fidelity or unweighted native counts."
+    },
+    {
+      "from": "OPH-SOURCE-FERMIONIC-VACUUM-NOISE",
+      "to": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
+      "role": "Supplies the unprotected raw-vacuum obstruction, retained rather than misread as an obstruction to corrected operational outputs."
+    },
+    {
+      "from": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
+      "to": "OPH-SOURCE-NOISY-CONTROL-HISTORIES",
+      "role": "Supplies the proper-code noise decomposition, protected output convention and charged cofinal source; reliable runtime classical control is removed here."
+    },
+    {
+      "from": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
+      "to": "OPH-SOURCE-NOISY-CONTROL-HISTORIES",
+      "role": "Supplies actual noisy public export and live record maintenance, with every retained lifetime and terminal boundary counted."
+    },
+    {
+      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+      "to": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
+      "role": "Supplies the native complete classical services and cofinal finite inventory; noisy archive maintenance is proved separately."
+    },
+    {
+      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+      "to": "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION",
+      "role": "Supplies complete proper-code transfer, complement and reset services; the new local leakage-reduction instrument is derived from them."
+    },
+    {
+      "from": "OPH-SOURCE-RAW-DECODED-NOISE-SEPARATION",
+      "to": "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION",
+      "role": "Supplies the complete syndrome decoder and declared accounting reference; the full-carrier extension is changed to correct leakage locally."
+    },
+    {
+      "from": "OPH-SOURCE-NATIVE-LEAKAGE-REDUCTION",
+      "to": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT",
+      "role": "Supplies native complete reduction and single-carrier correction identities; noisy reductions and full gadget hypotheses remain charged."
+    },
+    {
+      "from": "OPH-SOURCE-FIXED-RATE-PROTECTED-READS",
+      "to": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT",
+      "role": "Supplies the merged prepared source programs, universal gadget construction and causal schedule. Its independent code-preserving dephasing hypothesis is replaced, not inherited, in the new general-noise proof."
+    },
+    {
+      "from": "OPH-SOURCE-NOISY-CONTROL-HISTORIES",
+      "to": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT",
+      "role": "Supplies the exact causal instrument compiler and explicit measurement-free computation code; native leakage reduction and norm fault paths extend its quantum noise model."
+    },
+    {
+      "from": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
+      "to": "OPH-SOURCE-GENERAL-NOISE-REFINEMENT",
+      "role": "Supplies the actual live archive, disjoint export islands and complete storage ledger. The norm-tail proof replaces its stochastic estimate; six fixed levels preserve its joint convergence rate."
+    },
+    {
+      "from": "OPH-SOURCE-LIVE-RECORD-PROTECTION",
+      "to": "OPH-SOURCE-EXPANDER-LIVE-ARCHIVE",
+      "role": "Supplies the central-bit interpretation, private-voter fault ownership and live-bank handoff. The new explicit graph replaces its all-to-all fanout and shrinking-error bound."
+    },
+    {
+      "from": "OPH-SOURCE-EXPANDER-LIVE-ARCHIVE",
+      "to": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY",
+      "role": "Supplies a live public archive with fixed-degree native service count and an exponential bad-cycle bound at fixed subthreshold strength."
+    },
+    {
+      "from": "OPH-SOURCE-NOISY-CONTROL-HISTORIES",
+      "to": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY",
+      "role": "Supplies the exact causal instrument compiler, actual computation code, protected classical feedback and source lifetime ledger; a staged record decoder and growing protection replace its fixed-level export."
+    },
+    {
+      "from": "OPH-SOURCE-COHERENT-CODE-COMPLETION",
+      "to": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY",
+      "role": "Supplies complete proper-code transfer and reset services from which the noisy full-carrier reduction is derived without a new reversible M6 operation."
+    },
+    {
+      "from": "OPH-M1-MASSIVE-FLIGHT-SPECTRUM",
+      "to": "OPH-SOURCE-SEA-GENERATOR",
+      "role": "Supplies the actual massive walk, specified principal branch and complete spectral partition limit; the filled reference changes the vacuum interpretation."
+    },
+    {
+      "from": "OPH-SOURCE-LOCAL-FERMIONIC-REALIZATION",
+      "to": "OPH-SOURCE-SEA-GENERATOR",
+      "role": "Supplies the all-sector CAR source compiler and actual reflecting flight; no periodic source link is substituted."
+    },
+    {
       "from": "OPH-SOURCE-SEA-GENERATOR",
-      "to": "OPH-SOURCE-LOCAL-SEA-LIMIT"
+      "to": "OPH-SOURCE-LOCAL-SEA-LIMIT",
+      "role": "Supplies both endpoint gaps and the negative-energy projection; weighted resolvents establish its local reflecting limit."
     },
     {
-      "role": "Supplies state-independent compact resolved-read commutator and sampling bounds; these transfer to the new quasi-free state.",
       "from": "OPH-M1-RESOLVED-LOCAL-READ-CONE",
-      "to": "OPH-SOURCE-LOCAL-SEA-LIMIT"
+      "to": "OPH-SOURCE-LOCAL-SEA-LIMIT",
+      "role": "Supplies state-independent compact resolved-read commutator and sampling bounds; these transfer to the new quasi-free state."
     },
     {
-      "role": "Supplies the actual positive excitation generator and filled reference; complete preparation remains explicitly charged.",
       "from": "OPH-SOURCE-SEA-GENERATOR",
-      "to": "OPH-SOURCE-SEA-CLOCK"
+      "to": "OPH-SOURCE-SEA-CLOCK",
+      "role": "Supplies the actual positive excitation generator and filled reference; complete preparation remains explicitly charged."
     },
     {
-      "role": "Supplies the blocking and finite-boundary covariance estimates used by the informative clock bound.",
       "from": "OPH-SOURCE-LOCAL-SEA-LIMIT",
-      "to": "OPH-SOURCE-SEA-CLOCK"
+      "to": "OPH-SOURCE-SEA-CLOCK",
+      "role": "Supplies the blocking and finite-boundary covariance estimates used by the informative clock bound."
     },
     {
-      "role": "Supplies massive packet dynamics and phase estimates; a new resolved-mode detector is proved separately instead of transferring the old visibility.",
       "from": "OPH-M1-OBSERVABLE-MASS-CLOCK",
-      "to": "OPH-SOURCE-SEA-CLOCK"
+      "to": "OPH-SOURCE-SEA-CLOCK",
+      "role": "Supplies massive packet dynamics and phase estimates; a new resolved-mode detector is proved separately instead of transferring the old visibility."
     },
     {
-      "role": "Supplies fixed-strength protection and live records; new schedules and lifetime exponents account for the much longer filled-sea preparation.",
       "from": "OPH-SOURCE-FIXED-STRENGTH-PUBLIC-HISTORY",
-      "to": "OPH-SOURCE-SEA-CLOCK"
+      "to": "OPH-SOURCE-SEA-CLOCK",
+      "role": "Supplies fixed-strength protection and live records; new schedules and lifetime exponents account for the much longer filled-sea preparation."
     },
     {
       "from": "OPH-QUARK-SOURCE-W5-RESPONSE-CONSTRAINTS",
@@ -2826,9 +2826,9 @@
       "role": "Supplies the independent-alpha gauge packet and midpoint criticality boundary. The explicit Landau-VEV identification and external-SM mass matching are new conditional steps, not inherited source theorems."
     },
     {
-      "role": "Supplies the actual positive source action support and distinguishes its action measure from record multiplicity; the new massless two-field constitutive and physical probe maps are explicitly supplied.",
       "from": "OPH-SOURCE-ACTION-MEASURE-IDENTIFICATION",
-      "to": "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION"
+      "to": "OPH-SOURCE-PAIRED-GRAVITY-NONIDENTIFICATION",
+      "role": "Supplies the actual positive source action support and distinguishes its action measure from record multiplicity; the new massless two-field constitutive and physical probe maps are explicitly supplied."
     },
     {
       "from": "OPH-DM-CONT",

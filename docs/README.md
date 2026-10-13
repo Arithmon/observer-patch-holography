@@ -20,13 +20,13 @@ physical universe has been reconstructed.
 
 | Path | Contents |
 | --- | --- |
-| This folder | Canonical references and the common-objections guide |
+| This folder | The basis, the paper set, canonical references and the common-objections guide |
 | [`registers/`](registers/) | Generated V3 registers and ledgers |
 | [`research/`](research/) | Research notes, each verified by a code lane |
 | [`instrument_specs/`](instrument_specs/) | Instrument designs listed in the instrument register |
 | [`policies/`](policies/) | Data, hardware-evidence and writing policies |
 
-The five canonical references keep fixed paths because verifier receipts, the
+The six canonical references keep fixed paths because verifier receipts, the
 Lean core and frozen custody records cite them by path. Published essays link
 to the common-objections guide at its path in this folder. Records written before
 2026-10-04 cite the other documents at `docs/<NAME>.md` or `extra/<NAME>.md`;
@@ -37,7 +37,8 @@ each file keeps its name in the folders above.
 - **First encounter:** the [technical paper](https://philpapers.org/rec/MUEFOC),
   [textbooks](https://learn.floatingpragma.io/), and the
   [simulation](https://simulation.floatingpragma.io/) above, then the
-  repository [README](../README.md) from the three axioms through the twist.
+  repository [README](../README.md), the [basis](BASIS.md) and the
+  [paper set](PAPER_SET.md).
 - **Technical verification:** use the [claim registry](../claims/claim_registry.yaml),
   the [observation ledger](registers/OBSERVATION_LEDGER_V3.md), the [premise register](registers/PREMISE_REGISTER_V3.md),
   the [falsification program](OPH_FALSIFICATION_PROGRAM.md), and the [paper index](../paper/).
@@ -48,12 +49,21 @@ each file keeps its name in the folders above.
   procedure](policies/NUMERICAL_AUDIT.md) when changing finite numerical
   evidence or addressing review findings.
 
+## Basis And Paper Set
+
+- [The OPH Basis](BASIS.md) states the closure hypothesis, the no-outside
+  rule, the agreement condition and the executable specification, and how the
+  theorem-library premises A1, A2 and A3 relate to them.
+- [The Paper Set](PAPER_SET.md) records the model milestone, the role of each
+  paper and the archived papers.
+
 ## Canonical References
 
 - [Interpretation and Working Terms](INTERPRETATION_AND_TERMS.md) distinguishes
   complete-history closure, intrinsic computation, emergent-physics proposals,
   mathematical fixed points and the different uses of time.
-- [Axiom Reference](AXIOM_REFERENCE.md) states the three core axioms.
+- [Premise Reference](AXIOM_REFERENCE.md) gives the formal statements of the
+  theorem-library premises A1, A2 and A3.
 - [Canonical Repair-Law RFC](CANONICAL_REPAIR_LAW_RFC.md) specifies a proposed
   strengthening of A1 and A2.
 - [Frozen-Prediction Ladder](FROZEN_PREDICTION_LADDER.md) records tests whose
@@ -92,11 +102,10 @@ observers, capacity checks and local-tick results. Its
 [construction guide](../model/CONSTRUCTION.md) records the contracts,
 constructed connections and missing physical inputs. Its
 [work ownership](../model/CONSTRUCTION.md#work-ownership-and-claim-accounting) links
-parallel construction, physical tests and audits; its
-[paper-release hold](../model/CONSTRUCTION.md#research-programme-and-paper-release-hold)
-defers paper releases and broad paper restructuring until a coherent model
-milestone. Tested model code, correctness fixes and reproducibility checks
-continue to be published.
+parallel construction, physical tests and audits; its [release policy](../model/CONSTRUCTION.md#research-programme-and-paper-release-hold)
+ties paper releases to an approved model milestone, which the
+[paper set](PAPER_SET.md) records. Tested model code, correctness fixes and
+reproducibility checks are published between releases.
 
 The [model–theorem premise map](../model/PREMISES.md) connects the candidate
 to existing theorem premises and their closure conditions. It is generated
@@ -194,6 +203,9 @@ order:
   proves the equivalence between affine full-marginal completion, modular
   compatibility and reference-preserving conditional expectation. It corrects
   regional standardness checks and treats noncommuting primitive repairs.
+- [Neutral-packet projection audit](research/NEUTRAL_PACKET_PROJECTION_AUDIT.md)
+  and [Whitney kinetic audit](research/WHITNEY_KINETIC_AUDIT.md) document the
+  numerical repairs behind the neutral-packet and Whitney kinetic tests.
 - [Finite null tomography: reconstruction, consistency and resolution](../code/geometry/NULL_TOMOGRAPHY.md)
   repairs incomplete and non-null tensor reconstructions, reuses the proved
   nine-direction inverse, and connects the dependent-family test to angular

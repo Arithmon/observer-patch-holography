@@ -28,8 +28,9 @@ The bundle contains two scientifically different kinds of experiment.
 2. The issue `#509` benchmark starts from ordinary basis states and generates
    its output through a mid-circuit record and conditional feedback. It was
    preregistered, blinded, run on a development QPU and a held-out QPU, and
-   analyzed before the semantic reveal was opened. Its complete receipts are
-   under [`runs/issue_509_20260711_v2/`](runs/issue_509_20260711_v2/).
+   analyzed before the semantic reveal was opened. Its receipts are under
+   [`runs/issue_509_20260711_v2/`](runs/issue_509_20260711_v2/); the compressed
+   raw payloads are retained at a pinned revision named there.
 
 The second kind is stronger evidence for the engineered controller claim
 because the bounded patch reads its own local state, writes a record, uses that
@@ -346,8 +347,8 @@ That last number counts the many cells in the locked transition table, not
 55,296 independent experiments. “Zero violations” means that none fell outside
 the tolerance calibrated for the whole family at once.
 
-The full result, jobs, raw counts, checksums, and exact replay commands are in
-[`runs/issue_509_20260711_v2/`](runs/issue_509_20260711_v2/).
+The full result, jobs, checksums, the pinned location of the raw counts, and exact
+replay commands are in [`runs/issue_509_20260711_v2/`](runs/issue_509_20260711_v2/).
 
 The very large log-likelihood ratios need context. They accumulate over many
 shots and many sharply separated, nearly deterministic circuit variants. They
@@ -496,8 +497,9 @@ as evidence for OPH over standard quantum mechanics.
   Claim boundary, exact predictions, blinding contract, nulls, and failure rule
   for the issue `#509` benchmark.
 - `runs/issue_509_20260711_v2/`
-  Public manifest, committed reveal, raw provider count journals, sealed blind
-  packet/report, job receipts, checksums, and the completed hardware result.
+  Public manifest, job receipts, checksums, the completed hardware result, and the
+  pinned revision that retains the committed reveal, raw provider count journals
+  and sealed blind packet/report.
 - `qc_data/README.md`
   Index of the representative legacy derived summaries.
 

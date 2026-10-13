@@ -60,7 +60,7 @@ def test_supersymmetric_spin_sum_cancels_even_with_nonzero_characters():
 
 def test_string_paper_requires_local_ope_and_full_sector_identification():
     paper = (Path(__file__).resolve().parents[1]
-             / "extra/observer_patch_holography_as_string_vacuum_selector.tex").read_text()
+             / "paper/archive/observer_patch_holography_as_string_vacuum_selector.tex").read_text()
     assert "The integrated square relation alone does not establish this local OPE" in paper
     assert "Ordinary, unprojected vacuum characters" in paper
     assert "They are not equivalent to the full edge-VOA identification" in paper

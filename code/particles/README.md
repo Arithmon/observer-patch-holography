@@ -92,7 +92,7 @@ for analytic-spectrum, scale, complex-congruence, and serialized-producer contro
 - [hadron](hadron)
 - [qcd](qcd)
 - [uhe](uhe)
-- [compact_transients](compact_transients)
+
 - [hierarchy](hierarchy)
 - [runs](runs)
 - [scripts](scripts)
@@ -181,13 +181,6 @@ for analytic-spectrum, scale, complex-congruence, and serialized-producer contro
   quotient, source law, compact-engine source loads, baseline, feature map,
   moment targets, solver, no-UHE-data-use DAG, and common-source lock without
   analyzing neutrino, cosmic-ray, or gamma event data.
-- Compact-transient receipt scaffold:
-  `compact_transients/build_compact_transient_receipts.py`
-  mirrors the compact record-surface ladder for FRBs, old-host compact
-  sources, and black-hole recycling. It is diagnostic by default at
-  `CR2_CONDITIONAL_PHENOMENOLOGY`, blocks physical-prediction promotion until
-  control, refinement, freeze, and held-out likelihood receipts exist, and fails
-  closed if a black-hole generation prior reads ringdown residuals.
 - rendered public surface:
   `scripts/build_results_status_table.py`
 

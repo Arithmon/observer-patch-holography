@@ -524,20 +524,20 @@ RETIRED_ROWS = {
 
 DISPOSITION_MEANING = {
     "remove": (
-        "A remove row is consumed as a declared premise while its derivation "
-        "from the three axioms remains open. The row leaves the register only"
+        "A remove row is consumed as a declared premise until a derivation "
+        "from A1-A3 is proved. The row leaves the register only"
         " through a proved source "
         "derivation; every composition citing it is conditional on it, and "
-        "any bounded no-go attached to the row records exactly what the "
-        "current axioms fail to supply."
+        "any bounded no-go attached to the row records exactly what "
+        "A1-A3 fail to supply."
     ),
     "axiomatize": (
-        "An axiomatize row is a candidate for promotion into the basis. "
-        "Promotion is a recorded register decision with rationale and a "
-        "basis-wide dependency and countermodel review, never "
+        "An axiomatize row is a candidate for adoption into the specification. "
+        "Adoption is a recorded register decision with rationale and a "
+        "specification-wide dependency and countermodel review, never "
         "a silent edit; the row keeps its source-selection no-gos as the "
-        "evidence of what the current axioms do not supply, and a promoted "
-        "row remains on the register with its decision record."
+        "evidence of what A1-A3 do not supply, and an adopted "
+        "row stays on the register with its decision record."
     ),
     "import": (
         "An import row is a flagged external input that stays on the "
@@ -700,15 +700,17 @@ def render(rows: list[dict]) -> str:
         " own result-specific assumptions. The full input budget must be read"
         " from each result and its dependencies, not from this register alone."
         " Dispositions such as `axiomatize` and `remove` describe intended"
-        " treatment; they do not certify completed axiom adoption or removal."
+        " treatment; they do not certify a completed adoption into the"
+        " specification or a completed removal."
         " P and N are the only proposed fundamental free"
         " numerical parameters; measured calibrations, fits, targets, and"
         " transport payloads remain separate flagged empirical inputs and must"
         " be included in the input budget of the results that use them."
         " Registering a premise legitimizes its use inside conditional"
         " compositions; it does not make the premise true, derived, or"
-        " physical. Disposition changes, including promotion to axiom, require"
-        " an explicit scientific rationale, never a silent edit."
+        " physical. Disposition changes, including adoption into the"
+        " specification, require an explicit scientific rationale, never a"
+        " silent edit."
     )
     lines.append("")
     lines.append(
@@ -771,7 +773,7 @@ def render(rows: list[dict]) -> str:
 
     lines.append(
         "Register rows keep the source-selection no-gos proved against them"
-        " as permanent evidence of what the current axioms do not supply."
+        " as permanent evidence of what A1-A3 do not supply."
         " The register is the anti-cheating surface of the V3 program."
     )
     return "\n".join(lines) + "\n"

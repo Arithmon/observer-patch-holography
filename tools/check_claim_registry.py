@@ -355,6 +355,49 @@ def release_id_from_tex(root: Path) -> str:
     return match.group(1)
 
 
+def check_claim_views(root: Path) -> None:
+    """The claim context covers every claim, and the views render from the registry."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import build_claim_views
+
+    registry = load_json(root / "claims" / "claim_registry.yaml")
+    ids = [claim["claim_id"] for claim in registry["claims"]]
+    context = registry.get("claim_context")
+    require(isinstance(context, dict), "claim registry: missing claim_context section")
+    require(list(context) == ids, "claim_context must list every claim once, in registry order")
+    for claim_id, entry in context.items():
+        require(
+            {"prior_work", "owner_section", "falsifiers", "depends_on"} <= set(entry)
+            <= {"prior_work", "owner_section", "falsifiers", "depends_on", "matrix_summary"},
+            f"{claim_id}: claim_context fields are prior_work, owner_section, falsifiers, depends_on and an optional matrix_summary",
+        )
+        prior = entry["prior_work"]
+        require(
+            isinstance(prior, dict) and set(prior) == {"summary", "overlap", "imported_step", "citations"},
+            f"{claim_id}: prior_work must carry summary, overlap, imported_step and citations",
+        )
+        require(isinstance(prior["citations"], list), f"{claim_id}: prior_work.citations must be a list")
+        falsifiers = entry["falsifiers"]
+        require(
+            isinstance(falsifiers, dict)
+            and {"physical_identification", "phenomenological"} <= set(falsifiers)
+            <= {"physical_identification", "phenomenological", "mathematical"},
+            f"{claim_id}: falsifiers must carry physical_identification and phenomenological",
+        )
+        require(
+            isinstance(entry["depends_on"], list)
+            and all(isinstance(edge, dict) and set(edge) == {"claim_id", "role"} and edge["claim_id"] in context
+                    for edge in entry["depends_on"]),
+            f"{claim_id}: depends_on must list claim_id/role records of registered claims",
+        )
+    stale = build_claim_views.stale_views(root)
+    require(
+        not stale,
+        "claim views differ from the registry: " + ", ".join(stale)
+        + "; run python3 tools/build_claim_views.py",
+    )
+
+
 def check_standalone_papers(root: Path) -> None:
     for folder in ["paper", "extra"]:
         for path in (root / folder).glob("*.tex"):
@@ -873,6 +916,11 @@ def main(root: Path = ROOT) -> None:
     )
     nodes = set(raw_nodes)
     check_dependency_graph_edges(graph.get("edges", []), nodes)
+
+    # The ledger fields and the rendered views are checked on the repository
+    # itself; synthetic fixture registries exercise the structural gates above.
+    if root.resolve() == ROOT.resolve():
+        check_claim_views(root)
 
     gated = [claim for claim in claims if claim["gates"]]
     gate_count = len({gate for claim in gated for gate in claim["gates"]})

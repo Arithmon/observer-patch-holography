@@ -50,5 +50,23 @@ papers. Each package states its own replay and claim boundary.
   routes and their controls, and its byte-exact mirror sits in the
   causal-poset package.
 
+- [`exact_federation_tower_20260924/`](exact_federation_tower_20260924/)
+  carries the settlement receipts of tower levels five to ten (20,480 to
+  20,971,520 twelve-port carriers) with per-schedule records, readbacks and
+  the standalone tower verifier that checks the parent receipts.
+- [`observer_dynamics_20260925/`](observer_dynamics_20260925/) is the
+  observer-dynamics archive: native occupation histories, refinement streams,
+  the frozen producer dependency closure and the Lean interface, replayed by
+  the canonical observer-dynamics verifier.
+- [`native_geometric_source_20260925/`](native_geometric_source_20260925/)
+  holds the specification, receipt and verification record of the native
+  repair-history source on a fixed weighted port graph.
+- [`common_history_packet_20260925/`](common_history_packet_20260925/) holds
+  the authenticated feedback history on a supplied 64-site scalar action, with
+  its contract, cases and verification record.
+- [`source_density_geometry/`](source_density_geometry/) holds the
+  action-measure identification receipts, emission panels and conformal
+  controls produced and verified by the source-density geometry package.
+
 Evidence directories are not interchangeable. A carrier count shared by two
 packages does not make one run evidence for the observable tested by another.

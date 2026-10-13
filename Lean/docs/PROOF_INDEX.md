@@ -12,9 +12,10 @@ are mapped in [`BRIDGE_BOUNDARY_INDEX.md`](BRIDGE_BOUNDARY_INDEX.md). The
 finite counterexamples are imported by the umbrella source library, and the
 Screen algebra modules are part of the default Lake build.
 
-Mapping between Lean 4 theorems in this project and statements in
-*Paradise as Fixed-Point Consensus* (B. Müller, 2026; source in
-`paper/paradise_as_fixed_point_consensus.tex`).
+Mapping between Lean 4 theorems in this project and statements of the OPH
+papers. The first sections follow Definition 4.1 and Proposition 4.2 of the
+archived paper *Paradise as Fixed-Point Consensus* (source in
+`paper/archive/paradise_as_fixed_point_consensus.tex`).
 
 ## Completion summary
 
@@ -1666,7 +1667,7 @@ math-seat audit (2026-05-19): previous "3+2" undercounted by ≈3×.
 > accepted repair and `∼_gauge` identifies hidden local presentations with
 > the same declared observable overlap data.
 
-Paper: `paper/paradise_as_fixed_point_consensus.tex` §4, lines 305–313.
+Paper: `paper/archive/paradise_as_fixed_point_consensus.tex` §4, lines 305–313.
 
 | Lean name | Module | Status | Notes |
 |---|---|---|---|
@@ -1688,7 +1689,7 @@ Paper: `paper/paradise_as_fixed_point_consensus.tex` §4, lines 305–313.
 > completeness) terminal public state is independent of update schedule on
 > the physical quotient.
 
-Paper: `paper/paradise_as_fixed_point_consensus.tex` §4, lines 321–328.
+Paper: `paper/archive/paradise_as_fixed_point_consensus.tex` §4, lines 321–328.
 
 | Lean name | Module | Status | Notes |
 |---|---|---|---|
@@ -2012,7 +2013,7 @@ When adding a Lean statement that targets a paper item:
 
 1. Add a row in the appropriate section above.
 2. Cite the paper line range (use
-   `paper/paradise_as_fixed_point_consensus.tex` line numbers).
+   `paper/archive/paradise_as_fixed_point_consensus.tex` line numbers).
 3. Set status (✅ / 🟡 / 🔸 / ⬜ / ❌).
 4. Update the completion summary.
 5. Tag the PR with the affected proposition/definition for the cross-audit

@@ -416,7 +416,7 @@ def test_publication_surfaces_reject_the_retired_gluing_story() -> None:
     publication_surfaces = tuple(
         ROOT.glob("flagship/*.tex")
     ) + tuple(ROOT.glob("paper/*.tex")) + tuple(ROOT.glob("cosmology/*.tex")) + (
-        ROOT / "extra/observer_patch_holography_as_string_vacuum_selector.tex",
+        ROOT / "paper/archive/observer_patch_holography_as_string_vacuum_selector.tex",
         ROOT / "paper/tex_fragments/PAPER.tex",
         ROOT / "paper/tex_fragments/EINSTEIN_DERIVATION_SCOPE.tex",
         ROOT / "paper/tex_fragments/UNIFIED_OBSERVER_PHYSICS_SPINE.tex",

@@ -2,302 +2,245 @@
 
 **La physique à partir des registres que les observateurs peuvent partager.**
 
-[Article de physique](https://philpapers.org/rec/MUEFOC) · [Pragma Research](https://floatingpragma.io/research/) · [English](README.md)
+[Article principal](https://philpapers.org/rec/MUEFOC) · [Observateur exécutable](model/README.md) · [Bibliothèque Lean](Lean/) · [Reproduire](REPRODUCE.md) · [Pragma Research](https://floatingpragma.io/research/) · [English](README.md)
 
-L’Holographie des parcelles d’observateur (OPH) étudie si la physique familière
-peut être reconstruite à partir d’observateurs bornés qui parviennent à un
-accord. Une parcelle d’observateur possède un état local, une frontière munie
-de ports, une capacité de relecture, des registres et une rétroaction qui
-répare les désaccords. Dans ce modèle, les faits deviennent publics lorsque
-les registres résistent à la comparaison entre parcelles qui se recouvrent.
+[![Mandatory Suite](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/mandatory-suite.yml/badge.svg)](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/mandatory-suite.yml)
+[![Lean CI](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/lean-ci.yml/badge.svg)](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/lean-ci.yml)
+[![Runnable observer model](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/observer-model.yml/badge.svg)](https://github.com/FloatingPragma/observer-patch-holography/actions/workflows/observer-model.yml)
 
-L’univers proposé est une même structure, décrite comme une histoire cohérente
-intemporelle et comme le calcul local interne qui la réalise. Ses registres
-et ses réponses aux interventions constituent ce fonctionnement, sans ordinateur
-extérieur ni horloge globale privilégiée. L’espace, la durée physique et la
-matière sont les lectures émergentes recherchées. Les constructions actuelles
-fournissent encore certaines géométries, actions et correspondances d’horloges
-comme prémisses. Le [guide des termes](docs/INTERPRETATION_AND_TERMS.md)
-distingue cette proposition des résultats conditionnels établis.
+L’Holographie des parcelles d’observateur (OPH) propose que la physique est
+ce que des observateurs bornés peuvent établir ensemble. Des observateurs
+finis comparent leurs registres sur des frontières partagées, réparent leurs
+désaccords et tiennent pour réel ce qui résiste à toutes les comparaisons.
+Trois problèmes qui résistent à une description classique motivent le
+programme : la mesure quantique, les corrélations qu’aucun modèle classique
+local ne reproduit et l’origine d’un espace-temps apparent. OPH cherche une
+explication commune des trois dans la cohérence des registres et des
+opérations des observateurs, et la poursuit sous la forme d’un observateur
+exécutable, de mathématiques vérifiées par machine et de prédictions fixées à
+l’avance.
 
-Ce dépôt contient le travail scientifique derrière cette idée : articles,
-preuves vérifiées par machine et modèles exécutables. Il relie l’accord fini
-aux probabilités quantiques, à la géométrie spatiale et à la structure de
-symétrie des forces connues, avec une voie conditionnelle vers la dynamique
-d’Einstein. Chaque construction précise ses hypothèses. Établir une
-réalisation physique commune exige des mesures qui distinguent les modèles
-proposés.
+**L’Univers se lit lui-même jusqu’à l’existence.** OPH a une seule
+hypothèse, l’hypothèse de clôture : l’Univers est une structure intemporelle
+et autoréférentielle dont les observateurs retrouvent la spécification de
+leur propre monde à partir de leurs registres et construisent un matériel qui
+réalise cette même histoire, y compris ses constructeurs. Rien ne se trouve
+hors de cette boucle ; la spécification retrouvée n’a donc besoin d’aucune
+autre justification. Elle doit fonctionner et reproduire ce que mesurent les
+observateurs. L’espace, le temps et la matière sont des descriptions
+effectives des registres, et « notre Univers » est le registre public, ce qui
+résiste à toute comparaison entre observateurs. La [base](docs/BASIS.md)
+énonce l’hypothèse, la règle de l’absence d’extérieur, la condition d’accord
+et la spécification exécutable ; le
+[guide des termes](docs/INTERPRETATION_AND_TERMS.md) explique la vision
+intemporelle et les horloges qu’elle contient.
 
-## État de la recherche
+## Points forts
 
-Nous disposons d’**observateurs finis exécutables, de résultats mathématiques
-conditionnels et de candidats concrets pour la loi de réparation**. Ces candidats reproduisent et
-relient certaines structures requises ; des simulations permettent d’en
-distinguer plusieurs. **Aucun modèle commun n’est établi comme physiquement
-correct.** Le [registre des candidats](model/CANDIDATES.md) et le
-[suivi des modèles](model/CONSTRUCTION.md) distinguent les résultats construits,
-les hypothèses fournies et les liens physiques à établir.
+- **Un observateur qui fonctionne.** Le plus petit observateur a douze ports
+  et deux événements. Il écrit un registre à chaque événement, le conserve et
+  ne laisse que ce registre choisir la réparation suivante, et le registre
+  change ce qui est mesuré : l’occupation finale passe de 1/6 à 35/264. Un
+  seul processus quantique fini réunit le flux électrique, la matière chargée
+  et un champ scalaire sur un même registre, et un calcul exact certifie que
+  sa rétroaction enregistrée modifie la réponse mesurée.
+- **La physique standard à partir d’un accord fini.** Des théorèmes finis
+  mènent des lectures de l’observateur à des structures familières : des
+  registres publics indépendants de l’ordre des réparations ; la règle de
+  Born, qui fixe les probabilités quantiques, et la borne de Tsirelson sur les
+  registres achevés ; un support tridimensionnel par lui-même ; l’algèbre de
+  Lie de jauge du Modèle standard avec une génération sans anomalies ; un
+  ordre causal de dimension (1+3) dont le temps propre vient de comptages de
+  registres ; et l’équation d’Einstein issue d’un bilan nul réalisé.
+- **Des mathématiques vérifiables.** La [bibliothèque Lean](Lean/) contient
+  plus de 12200 théorèmes et lemmes publics sans preuve admise, et chaque reçu
+  de calcul conservé est rejoué en intégration continue.
+- **Des tests fixés à l’avance.** Les prédictions et leurs règles de rejet
+  entrent dans l’[échelle des prédictions gelées](docs/FROZEN_PREDICTION_LADDER.md)
+  avant toute donnée de comparaison, avec des horodatages attestés sur la
+  chaîne de blocs Bitcoin ; la prédiction de dispersion pour l’orbite des ports
+  primitifs en fait partie. Le [registre des postdictions](docs/POSTDICTION_LEDGER.md)
+  et le [programme de falsification](docs/OPH_FALSIFICATION_PROGRAM.md)
+  séparent les comparaisons avec des mesures des tests des mathématiques.
 
-Le **[modèle exécutable](model/README.md)** réalise un observateur fini :
-observation, conservation du registre classique et rétroaction commandant
-l’interaction suivante. Il comprend un détecteur binaire dont la réponse
-dépend de P, un calcul de capacité des registres et un résultat sur les
-événements locaux comptés par un observateur. La construction accepte les
-sorties de fermeture P/N et déclare son appareil et son protocole. Elle ne
-requiert pas que l’autoréférence choisisse un appareil unique ; son exécution
-logicielle n’établit pas la réalisation physique de l’univers entier.
+**L’accord avec l’ensemble des statistiques de mesure observées n’est pas
+établi.** Les théorèmes valent sous des prémisses énoncées, et l’observateur
+exécutable est un candidat jugé selon des critères d’acceptation déclarés.
+Les sections ci-dessous indiquent quelles prémisses la construction fournit
+et lesquelles restent des entrées.
 
-Le [détecteur scalaire](model/observer/scalar_response/README.md) utilise le
-premier courant natif pour préparer un champ scalaire, lit un résultat binaire
-et commande la réparation suivante avec ce seul registre. La famille de champs
-fournie possède une comparaison contrôlée avec sa limite continue ; le
-protocole fixe une prédiction conditionnelle de rétroaction et ses contrôles.
-L’action, le vide, l’appareil et le temps du modèle restent des entrées
-explicites. Ce résultat ne dérive pas le Hamiltonien de la moyenne entière
-et n’établit pas une nouvelle prédiction empirique d’OPH.
+## Lancer l’observateur
 
-La [construction à ports centraux](code/native_response/README.md#a-central-port-carrier-that-retains-the-quantum-repair)
-ajoute douze adresses classiques à la source native/N4 en préservant son
-canal quantique décodé. Deux sources abstraites partagent la même référence
-quantique complète et la même géométrie normalisée, mais présentent des
-cinétiques finies différentes. La lecture d’un port occupé a un coût
-d’information quantique distinct. Les [quatre contrôles d’audit](model/CONSTRUCTION.md#retained-audit-controls)
-conservent les limites précises concernant le support, l’action marquée,
-la rétroaction et l’inertie.
+Depuis la racine du dépôt, avec Python 3.11 ou plus récent :
 
-**La validité physique d’OPH est une hypothèse à tester.** La cohérence
-logique, les théorèmes conditionnels et les simulations réussies ne prouvent
-pas que la nature suit OPH ou une loi de réparation particulière. Nous
-conservons les lois alternatives et révisons ou rejetons les interprétations
-physiques que les tests mettent en défaut.
+```sh
+python3 -m model.observer run --trials 10000 --seed 42
+```
 
-Un test physique exige une identification opérationnelle des états, des
-registres, du temps et des paramètres, une observable discriminante, un bilan
-de calibration et d’incertitude, puis une prédiction et un critère de rejet
-fixés avant l’examen de données indépendantes. La comparaison inclut la
-physique établie et les modèles alternatifs. Le
-[programme de tests physiques](https://github.com/FloatingPragma/observer-patch-holography/issues/1025)
-et le [registre des prédictions figées](docs/FROZEN_PREDICTION_LADDER.md)
-suivent ce travail. Reproduire une valeur utilisée pour choisir le modèle
-constitue un ajustement, pas un test indépendant.
+L’exécution affiche une ligne : le risque de Brier de trois prévisions du
+registre suivant et l’empreinte du résultat.
 
-La [recherche d'obstructions à l'échelle du programme](https://github.com/FloatingPragma/observer-patch-holography/issues/1078)
-examine en parallèle les contradictions, les impossibilités de réalisation
-commune, les entrées physiques indépendantes inévitables et les exclusions
-empiriques. Chaque résultat précise la formulation ou la classe de modèles
-qu'il rejette. Un résultat négatif décisif est utile ; ne pas en trouver ne
-confirme pas OPH. Cette tâche distingue aussi une réfutation scientifique d'une
-décision pratique d'arrêter les recherches.
+```text
+{"brier": {"action_known_prior": 0.0728, "native_record": 0.0563, "within_action_shuffle": 0.0884}, "reference_matches": 10000, ...}
+```
 
-## Priorité de recherche : un même processus de réparation
-
-**Trouver la règle de réparation commune la plus simple qui satisfait les
-contraintes connues.**
-
-**L’objectif est une construction commune avec une limite continue contrôlée
-qui reproduit la physique établie et fournit des prédictions quantitatives
-résistant à des tests indépendants.** L’observateur fini exécuté est un
-composant achevé. Les choix de construction n’exigent pas de théorème
-d’unicité ; leurs conséquences physiques exigent des lectures compatibles,
-des hypothèses explicites et des observations discriminantes.
-
-La priorité est une loi microscopique explicite dont l’évolution fournit les
-entrées des théorèmes existants dans un même modèle. Des résultats conditionnels
-peuvent être corrects sans que leurs prémisses physiques soient réalisées
-ensemble. Nous partons de la construction compatible la plus simple,
-réutilisons les résultats démontrés et confrontons chaque hypothèse ajoutée
-à des alternatives. La géométrie du support, la réponse de jauge réversible
-et les horloges opérationnelles locales doivent être des lectures compatibles de ce même
-processus. Tout mécanisme ajouté doit répondre à un lien manquant démontré,
-et toute hypothèse physique ajoutée doit être déclarée. L’échec d’un candidat
-purement scalaire ne prouve pas qu’une loi commune simple soit impossible.
-
-Le [registre des lois candidates](model/CANDIDATES.md) compare leurs
-propriétés testées et leurs hypothèses. Le [suivi des modèles](model/CONSTRUCTION.md), la
-[carte des prémisses](model/PREMISES.md) et les
-[tâches de recherche](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
-décrivent ce travail. Un lien testé ou un candidat rejeté constitue un progrès ;
-le nombre de théorèmes ne mesure pas l’achèvement physique.
-
-Les publications d’articles et leur restructuration générale sont suspendues
-jusqu’à une étape cohérente de construction du modèle. Audits, corrections
-et vérifications de reproductibilité continuent selon la
-[politique de recherche](model/CONSTRUCTION.md#research-programme-and-paper-release-hold).
-
-Les PDF de la branche principale sont des versions de travail et peuvent
-conserver l’identifiant de publication existant après correction. Les fichiers
-associés à une version Git ou à un dépôt conservent leurs octets d’origine ;
-une version de travail n’est pas une nouvelle publication.
-
-## Commencer ici
-
-| Pour explorer… | Commencer par… |
-| --- | --- |
-| L’observateur fini, son code et ses expériences reproductibles | [Modèle exécutable](model/README.md) |
-| Le modèle en construction et ses liens physiques à établir | [Suivi des modèles](model/CONSTRUCTION.md) |
-| Les lois candidates, leurs hypothèses et leurs tests distinctifs | [Registre des candidats](model/CANDIDATES.md) |
-| L’argument physique existant | [*Finite Observer Consensus as a Reconstruction Principle*](https://philpapers.org/rec/MUEFOC) |
-| Les preuves et les calculs reproductibles | [Bibliothèque Lean](Lean/) et [guide de reproduction](REPRODUCE.md) |
-| Les travaux associés sur les machines apprenantes | [Cadence](https://floatingpragma.io/cadence/) et [démonstrations interactives](https://floatingpragma.io/demos/) |
-| Les explications pour le grand public | [Blog Pragma Research](https://blog.floatingpragma.io/) |
+Plus la valeur est basse, mieux c’est. La prévision qui utilise le registre
+conservé bat celle qui ne connaît que l’action choisie et celle dont les
+registres sont mélangés au sein d’une même action ; les valeurs exactes sont
+395/7392, 140/2013 et 12875/150304. Le [répertoire du modèle](model/README.md)
+contient l’implémentation, ses tests et ses résultats conservés. Son
+expérience conjointe la plus forte est le
+[processus commun en interaction](model/common_source/README.md), dans lequel
+le flux électrique quantique, des fermions chargés et un champ scalaire
+partagent un même registre fini avec des instruments complets, des registres
+conservés et une rétroaction native ; l’action du champ et la préparation sont
+des entrées fournies. Le [paquet de prédictions](model/predictions/README.md)
+fixe deux instruments de détection concurrents et leur règle de rejet par
+comptage avant tout comptage indépendant, et le
+[guide de construction](model/CONSTRUCTION.md) énonce les critères
+d’acceptation et les connexions qui restent à construire.
 
 ## Fondements mathématiques
 
-Le programme de recherche relie ces domaines de la physique par une même
-architecture d’observateurs, avec des hypothèses distinctes pour chaque résultat.
+- **L’accord et les registres stables.** Sous des conditions explicites de
+  terminaison et de cohérence, les réparations locales atteignent un même
+  résultat public quel que soit leur ordre. D’autres résultats contrôlent
+  quels registres survivent au raffinement.
+  [Article sur le consensus](paper/reality_as_consensus_protocol.pdf).
+- **Les observations quantiques.** Dans l’algèbre quantique finie énoncée, des
+  résultats vérifiés couvrent les mesures répétables, les registres classiques
+  que les opérations ultérieures ne peuvent perturber, l’incertitude et la
+  borne de corrélation de Bell, avec un état qui l’atteint.
+  [Algèbres finies d’événements quantiques](extra/machine_checked_finite_event_algebras.pdf).
+- **Trois directions spatiales.** Le support fixe à douze ports et sa règle de
+  réparation moyenne donnent une réponse lente exactement tridimensionnelle de
+  géométrie euclidienne, la brique géométrique de l’espace d’un observateur.
+  [Construction du support](code/a5_closure/README.md).
+- **La symétrie de jauge.** Sous des prémisses énoncées de réponse réversible
+  complète et de transport entre observateurs, la construction impose
+  l’algèbre de Lie de jauge du Modèle standard, et une représentation de
+  matière spécifiée donne une génération sans anomalies.
+  [Dérivation de jauge](paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf).
+- **La thermodynamique.** Une seule construction finie de réparation donne les
+  quatre lois, les relations de fluctuation et la borne d’effacement de
+  Landauer sous des prémisses énoncées de référence, de calibration de
+  l’énergie et de basse température.
+  [Exposé thermodynamique](paper/observers_are_all_you_need.pdf).
+- **La capacité d’information.** Des résultats exacts comptent les registres
+  qui restent distinguables après les opérations permises, bornent ce nombre
+  par le support disponible et le suivent lors du raffinement.
+  [Capacité des registres](code/capacity_readback/README.md).
+- **La matière et les champs.** Une action fournie de scalaire chargé et de
+  Maxwell, avec sa géométrie et sa quantification, donne un hamiltonien en
+  interaction après réduction de jauge, et un raffinement scalaire contrôlé
+  relie les lectures classiques d’un détecteur à une équation de champ non
+  linéaire. [Continuum de matière](paper/observers_are_all_you_need.pdf).
 
-- **L’accord entre observateurs.** Sous les conditions de terminaison et de
-  cohérence énoncées, les réparations locales aboutissent à un registre public
-  protégé, indépendamment de leur ordre. Les théorèmes finis décrivent
-  l’accord, la stabilité et le raffinement.
-- **Les probabilités quantiques.** Les algèbres finies d’événements portent la
-  règle de Born, le conditionnement de Lüders et des résultats exacts de
-  Tsirelson, dont une construction de Bell qui atteint 2√2. Ces résultats
-  mathématiques concernent la branche d’algèbre d’événements déclarée.
-- **La géométrie et les forces connues.** Une construction de réponse à douze
-  ports fournit une lecture spatiale tridimensionnelle. La réponse réversible
-  complète et le transport interne entre observateurs imposent le type de Lie
-  de jauge du Modèle standard sous les hypothèses énoncées. Une représentation
-  de matière fournie donne une génération à quinze états sans anomalies ; sa
-  réalisation physique et le groupe de jauge global exigent une structure
-  supplémentaire.
-- **L’espace-temps et la gravité.** Des lois de source et de lecture déclarées
-  permettent des constructions contrôlées de géométrie causale. L’implication
-  vers l’équation d’Einstein suppose une réalisation physique commune avec les
-  données énoncées de contrainte mécanique, d’entropie, de continuum et
-  d’échelle.
-- **La matière classique et quantique.** Une action fournie de champ scalaire
-  chargé couplé au champ de Maxwell permet un mouvement continu non linéaire
-  contrôlé dans son secteur réel et un espace d’états quantiques en interaction
-  sur un maillage fixé. Sélectionner cette action à partir des histoires des
-  observateurs et l’identifier à la matière physique sont des exigences
-  distinctes.
-- **Les constantes comme problèmes de point fixe.** La relation de Koide tient
-  exactement sous une prémisse d’équilibre déclarée. Le calcul de structure
-  fine certifie une racine d’une application de fermeture déclarée et possède
-  un statut diagnostique. Le programme de capacité demande si la capacité
-  publique attribuée à l’univers s’accorde avec celle reconstruite depuis
-  l’intérieur. Relier ces constructions aux constantes mesurées exige une
-  identification physique.
+Ce sont des résultats mathématiques conditionnels. Faire tenir leurs prémisses
+pour les observations d’un même modèle commun est le problème central de la
+construction. La [carte des prémisses](model/PREMISES.md) indique quelles
+prémisses la spécification exécutable fournit et lesquelles elle prend comme
+entrées.
 
-L’[article principal](https://philpapers.org/rec/MUEFOC) développe ces liens
-et leur portée précise. L’[index des articles](paper/) donne les exposés
-spécialisés, notamment sur la thermodynamique, la géométrie des champs et les
-constructions de points fixes pour les constantes.
+## Articles
+
+- **[Observers Who Read Their Universe into Existence](flagship/from_observer_consensus_to_standard_physics.pdf)**
+  est la synthèse principale : la théorie en un seul exposé, des résultats
+  choisis en détail, le tableau de bord de la construction et l’hypothèse de
+  clôture. Citez sa version publiée, la
+  [fiche PhilPapers](https://philpapers.org/rec/MUEFOC).
+- **[An Executable Observer for Observer Patch Holography](paper/executable_observer_construction.pdf)**
+  énonce la spécification, ses critères d’acceptation, ses composants
+  certifiés et la carte des prémisses.
+- **La bibliothèque de théorèmes** contient les preuves longues, du
+  [consensus](paper/reality_as_consensus_protocol.pdf) et des
+  [observateurs et registres](paper/observers_are_all_you_need.pdf) jusqu’à
+  l’[espace-temps et la dynamique d’Einstein](paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf).
+  L’[index des articles](paper/README.md) et l’[ensemble des articles](docs/PAPER_SET.md)
+  donnent chaque article et son rôle.
+- **Les articles compagnons** portent des résultats ciblés. Une relation entre
+  masses de leptons, la relation de Koide, tient exactement sous une prémisse
+  d’équilibre déclarée. Le programme de capacité demande si la capacité
+  publique attribuée à l’Univers s’accorde avec celle reconstruite depuis
+  l’intérieur. Ces calculs de constantes, comme celui de la structure fine,
+  ont un statut diagnostique.
+
+## Où se trouvent les choses
+
+| Chemin | Contenu |
+| --- | --- |
+| [model/](model/README.md) | L’observateur exécutable : implémentation, tests, reçus conservés et enregistrements de protocole |
+| [flagship/](flagship/) | L’article de synthèse |
+| [paper/](paper/README.md) | L’article de construction et la bibliothèque de théorèmes, avec les articles archivés sous [paper/archive/](paper/archive/README.md) |
+| [extra/](extra/README.md), [cosmology/](cosmology/) | Les articles compagnons |
+| [Lean/](Lean/) | La bibliothèque vérifiée par machine |
+| [code/](code/README.md) | Les calculs exacts, les vérificateurs et les reçus derrière les articles |
+| [evidence/](evidence/README.md) | Les paquets de preuves conservés et les enregistrements de garde |
+| [claims/](claims/README.md) | Le registre des énoncés, le registre des prémisses et le registre des prédictions gelées |
+| [docs/](docs/README.md) | La base, le guide des termes, les politiques et les registres |
+| [book/](book/), [essays/](essays/) | Le livre et les essais |
+
+## Reproduire et vérifier
+
+Le [guide de reproduction](REPRODUCE.md) lance la suite de vérification depuis
+un clone propre. Le vérificateur du modèle rejoue chaque reçu conservé :
+
+```sh
+python -m pip install -r model/requirements.txt
+python -m model.verify
+```
+
+La [bibliothèque Lean](Lean/) se compile avec Lake, l’[index de la documentation](docs/README.md)
+donne les registres et les politiques, et le [livre](book/) offre un chemin
+d’accès plus long. Les manuels sur [learn.floatingpragma.io](https://learn.floatingpragma.io/)
+et la simulation interactive sur
+[simulation.floatingpragma.io](https://simulation.floatingpragma.io/) sont
+les introductions les plus accessibles.
+
+## Contribuer
+
+La tâche consiste à faire qu’un seul processus d’observation et de réparation
+fournisse la physique effective : relier l’horloge de l’observateur, son
+interprétation spatiale et ses mesures de champ sur les mêmes histoires, puis
+comparer les probabilités de résultats, les corrélations et les réponses aux
+interventions avec des observations indépendantes. Une équation de champ
+fournie reste une entrée même lorsque sa simulation fonctionne. Les
+contributions doivent résoudre une connexion nommée ou révéler un défaut du
+modèle commun ; le [guide de construction](model/CONSTRUCTION.md), le
+[registre des candidats](model/CANDIDATES.md) et les
+[tâches de recherche](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
+décrivent ce travail. Les publications d’articles suivent la
+[politique de publication](model/CONSTRUCTION.md#research-programme-and-paper-release-hold) ;
+les PDF de la branche principale sont des aperçus des sources, et les versions
+déposées conservent leurs octets d’origine.
+
+<details>
+<summary>Projets associés et financement</summary>
+
+[Cadence](https://github.com/muellerberndt/cadence) est le projet associé de
+machines apprenantes. Ses éléments de preuve sur les capacités sont distincts
+des éléments de preuve physiques d’OPH.
+[Pragma Research](https://floatingpragma.io/) réunit les projets.
+
+Le memecoin officiel TEO (Theory Of Everything) d’OPH est sur Base à l’adresse
+`0xd2a7055317D0c7b316319cDadaE592D0644A0b07`
+([graphique](https://dexscreener.com/base/0xba55cdae026b9dd63fcb50e82094d61472948e44527ca4791033497469228049)).
+Bernhard Mueller peut réclamer ses frais de transaction, qui aident à financer
+la recherche. Le jeton n’a aucun rôle dans la théorie. Les autres jetons qui
+utilisent le nom OPH ou TEO n’ont aucun lien avec le projet. Rien ici ne
+constitue un conseil financier.
+
+</details>
+
+## Licence
+
+Le logiciel, y compris Lean et le code du modèle, est publié sous
+[Apache-2.0](code/LICENSE). Les articles, la documentation, les figures, les
+données et les registres sont publiés sous [CC BY-NC-SA 4.0](LICENSE), avec les
+conditions amont du Particle Data Group pour les valeurs de particules
+empaquetées. La [carte des licences](LICENSE) donne les conditions par
+répertoire.
 
 <!-- PUBLIC-QUANTITATIVE-CLAIMS:BEGIN -->
 <!-- Quantitative table suppressed while physical_establishment count is zero. -->
 <!-- PUBLIC-QUANTITATIVE-CLAIMS:END -->
-
-## Preuves et éléments de vérification
-
-La [bibliothèque Lean](Lean/) contient plus de 12300 théorèmes et lemmes
-publics sans preuve admise. Des certificats exacts et des simulations
-reproductibles accompagnent les arguments mathématiques. Le
-[simulateur de physique](https://github.com/muellerberndt/oph-physics-sim)
-associé fournit une dynamique exécutable des observateurs et les éléments
-de vérification conservés.
-
-La [référence des axiomes](docs/AXIOM_REFERENCE.md) énonce les trois axiomes
-fondamentaux ; le [registre des prémisses](docs/registers/PREMISE_REGISTER_V3.md) et la
-[carte des prémisses](model/PREMISES.md) consignent les prémisses
-supplémentaires et les hypothèses propres à chaque résultat, y compris les
-identifications physiques et les données empiriques.
-Le [registre des postdictions](docs/POSTDICTION_LEDGER.md)
-consigne les comparaisons avec des valeurs mesurées et l’origine de leurs
-entrées ; l’[échelle des prédictions gelées](docs/FROZEN_PREDICTION_LADDER.md)
-consigne les tests dont les conditions doivent être fixées avant l’examen
-des données de comparaison. Le [programme de falsification](docs/OPH_FALSIFICATION_PROGRAM.md)
-donne les observations qui réfuteraient des affirmations précises.
-
-### Reproduire le noyau fini
-
-Pour exécuter et vérifier le modèle d’observateur depuis la racine du dépôt :
-
-```sh
-python3 -m pip install -r model/requirements.txt
-python3 -m model.verify
-python3 -m pytest -q -W error model
-```
-
-Cette voie vérifie les manifestes et les cinq résultats conservés, dont
-20 000 essais de l’observateur natif et 200 000 essais du détecteur binaire.
-Chaque essai suit son protocole fini et conserve tous ses résultats.
-Le workflow [Runnable observer model](.github/workflows/observer-model.yml)
-exécute ces contrôles sous Linux et Windows. Cette suite complète les
-vérifications historiques ; un simple `python3 -m pytest` ne collecte pas
-les tests de `model/`.
-
-Après avoir installé les dépendances décrites dans [REPRODUCE.md](REPRODUCE.md),
-vérifiez le graphe des affirmations et une sélection de résultats sur
-l’algèbre finie, la capacité des registres et le consensus :
-
-```bash
-python3 tools/check_claim_registry.py
-python3 -m pytest -q \
-  code/a5_closure/test_audit.py \
-  code/capacity_readback/test_correctable_public_record_capacity.py \
-  code/capacity_readback/test_reversible_public_checkpoint_packet.py \
-  code/consensus/test_reference_architecture_benchmark_suite.py \
-  code/consensus/test_verified_tree_packet_net.py
-```
-
-Le guide de reproduction décrit les vérifications plus larges et la portée
-de chaque famille de preuves.
-
-## Carte de reconstruction
-
-<p align="center">
-  <a href="assets/prediction-chain.svg" target="_blank" rel="noopener noreferrer">
-    <img src="assets/prediction-chain.svg" alt="Chaîne de reconstruction OPH" width="92%">
-  </a>
-</p>
-
-<p align="center"><sub>La carte de reconstruction OPH relie registres d’observateurs, géométrie spatiale à trois dimensions, ordre causal, horloges, champs et états quantiques. Chaque flèche représente un lien mathématique ; les articles précisent les hypothèses qui les réunissent dans une description physique effective.</sub></p>
-
-## Guide du dépôt
-
-| Chemin | Contenu |
-| --- | --- |
-| [`flagship/`](flagship/) | Article principal autonome de physique, source TeX et PDF |
-| [`paper/`](paper/) | Articles principaux et index des publications |
-| [`Lean/`](Lean/) | Développement mathématique vérifié par machine |
-| [`model/`](model/) | Observateur et loi de réparation exécutables, protocoles, résultats et tests |
-| [`code/`](code/) et [`evidence/`](evidence/) | Modèles exécutables, certificats et éléments de reproduction |
-| [`extra/`](extra/) et [`cosmology/`](cosmology/) | Articles de recherche mathématique et physique spécialisés |
-| [`book/`](book/) | *Reverse Engineering Reality*, source et livre téléchargeable |
-| [`docs/`](docs/) | Références canoniques : axiomes, prédictions gelées, postdictions et critères de réfutation |
-| [`docs/registers/`](docs/registers/) | Registres générés des prémisses, observations, instruments et sélections |
-| [`docs/research/`](docs/research/) | Notes de recherche en Markdown, chacune vérifiée par un module de code |
-| [`docs/policies/`](docs/policies/) | Politiques de données, de preuves matérielles et de rédaction |
-
-## Contribuer
-
-Une contribution corrige un défaut existant ou résout une incertitude précise
-du modèle commun et de ses tests. Réutilisez les résultats démontrés ; ajoutez
-une preuve lorsqu’une obligation du modèle l’exige. L’expansion autonome des
-théorèmes finis et les objectifs de comptage sont hors programme. Commencez par
-les [tâches de recherche](https://github.com/FloatingPragma/observer-patch-holography/issues?q=is%3Aissue+is%3Aopen+label%3Aprogram%3Aphysics)
-et le [guide de reproduction](REPRODUCE.md). Les journaux exploratoires restent
-locaux ; les décisions publiques indiquent leurs hypothèses et leurs preuves.
-Les notes vérifiées vont dans [`docs/research/`](docs/research/), et les articles
-respectent la suspension décrite ci-dessus.
-
-## Des parcelles d’observateur aux machines apprenantes
-
-[Cadence](https://github.com/muellerberndt/cadence) rend l’idée de stabilisation
-exécutable sous forme d’architecture d’apprentissage. Ses parcelles logicielles
-bornées portent un état local et une capacité de relecture, avec une
-rétroaction qui répare les erreurs de prédiction. Son cerveau par
-défaut, le Système 1, apprend par l’expérience comme les cerveaux animaux, et
-non par rétropropagation. Des observateurs optionnels, le Système 2, ajoutent
-une rétroaction récursive au sein de la même stabilisation.
-
-L’[article Cadence](https://philpapers.org/rec/MUECAP-2) décrit l’architecture
-et les expériences. Son évaluation repose sur le comportement
-d’apprentissage et les ressources mesurées.
-[Pragma Research](https://floatingpragma.io/) relie ce travail à l’IA incarnée.
-
-## Licence
-
-Le dépôt utilise des licences séparées par type d’artefact. Tout le logiciel, y compris la bibliothèque Lean, [`code/`](code), [`model/`](model), [`tools/`](tools) et les schémas de [`schemas/`](schemas), est publié sous [Apache-2.0](code/LICENSE). Les articles, le livre, la documentation, les figures, les données, les registres générés de [`tracking/`](tracking) et les données de particules empaquetées de [`pdg_data/`](pdg_data) sont publiés sous [CC BY-NC-SA 4.0](LICENSE). Les valeurs tabulées de `pdg_data/` conservent les conditions amont du Particle Data Group. Le fichier [LICENSE](LICENSE) donne la carte par répertoire.

@@ -2,7 +2,9 @@
 
 This reference distinguishes the proposed physical interpretation from the
 objects and hypotheses of a particular theorem or executable model. The
-[axiom reference](AXIOM_REFERENCE.md) remains the source for A1–A3; the
+[basis](BASIS.md) states the closure hypothesis, the no-outside rule, the
+agreement condition and the executable specification, the
+[premise reference](AXIOM_REFERENCE.md) is the source for A1–A3, and the
 [agreement research foundations](AGREEMENT_RESEARCH_FOUNDATIONS.md) map the
 established mathematical results used in model construction.
 
@@ -76,10 +78,10 @@ self-simulation.
 
 ## Proposed primitives and emergent physics
 
-The proposed starting objects are patches with local states, records,
-interfaces and admissible operations. A1 supplies a particular mathematical
-carrier and incidence structure; A2 constrains shared operational meaning;
-A3 selects a state within its declared feasible set. Those supplied structures
+The proposed primitive objects are patches with local states, records,
+interfaces and admissible operations. As theorem premises, A1 names a
+particular mathematical carrier and incidence structure, A2 constrains shared
+operational meaning, and A3 selects a state within its declared feasible set. Those supplied structures
 and every further theorem premise must be counted.
 
 Physical spatial position, metric geometry, durations, fields and matter are

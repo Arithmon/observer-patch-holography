@@ -268,7 +268,7 @@ def test_measurement_claims_require_a_declared_instrument_and_state_support() ->
 def test_thermodynamic_scope_separates_stationary_kernels_from_normalizers() -> None:
     claim = _claims()["OPH-THERMO-FOUR-LAW-PACKAGE"]["statement"]
     assert "five typed source and physical receipts" in claim
-    assert "They are not a source-realized theorem of the three axioms" in claim
+    assert "They are not a source-realized theorem of A1--A3" in claim
     assert "stationary law" in claim
     assert "deterministic strict-descent normalizer is a distinct map with no entropy inequality" in claim
     observers = _text("paper/observers_are_all_you_need.tex")

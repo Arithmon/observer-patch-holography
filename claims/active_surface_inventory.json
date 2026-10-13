@@ -1,11 +1,12 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 525,
+  "surface_count": 523,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
-    "docs/AXIOM_REFERENCE.md"
+    "docs/AXIOM_REFERENCE.md",
+    "docs/BASIS.md"
   ],
   "pdf_surfaces": [
     "flagship/from_observer_consensus_to_standard_physics.pdf",
@@ -45,12 +46,12 @@
       "allowlisted": false
     },
     {
-      "path": "paper/observers_are_all_you_need.tex",
+      "path": "paper/executable_observer_construction.tex",
       "glob": "paper/*.tex",
       "allowlisted": false
     },
     {
-      "path": "paper/paradise_as_fixed_point_consensus.tex",
+      "path": "paper/observers_are_all_you_need.tex",
       "glob": "paper/*.tex",
       "allowlisted": false
     },
@@ -895,6 +896,11 @@
       "allowlisted": true
     },
     {
+      "path": "docs/BASIS.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "docs/CANONICAL_REPAIR_LAW_RFC.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
@@ -915,22 +921,17 @@
       "allowlisted": false
     },
     {
-      "path": "docs/MODEL_CANDIDATES.md",
-      "glob": "docs/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/MODEL_PREMISE_MAP.md",
-      "glob": "docs/**/*.md",
-      "allowlisted": false
-    },
-    {
       "path": "docs/MODEL_SEARCH.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },
     {
       "path": "docs/OPH_FALSIFICATION_PROGRAM.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/PAPER_SET.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },
@@ -1066,16 +1067,6 @@
     },
     {
       "path": "docs/research/NOISY_SOURCE_RECORDS.md",
-      "glob": "docs/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/research/OPH_PAPER_FIX_PROPAGATION_2026-10-09.md",
-      "glob": "docs/**/*.md",
-      "allowlisted": false
-    },
-    {
-      "path": "docs/research/OPH_PROOF_PAPER_AUDIT_2026-10-08.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },

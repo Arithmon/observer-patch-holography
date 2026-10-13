@@ -26,7 +26,7 @@ The registry is part of the working process:
   registry when the established claim or its evidence changes. Paper releases
   follow the model programme's hold; necessary scientific corrections remain
   in scope throughout it.
-- `claims/axiom_registry.yaml` records the normative three-axiom identities,
+- `claims/axiom_registry.yaml` records the theorem premises A1-A3, their
   interfaces, exclusions, and scientific realization boundaries.
 - `claims/claim_registry.yaml` records top-level claim IDs, owner papers, claim tiers, imported
   mathematics, OPH-specific deltas, assumptions, evidence, falsifiers, and survival rules.
@@ -188,8 +188,7 @@ The review of [#1052](https://github.com/FloatingPragma/observer-patch-holograph
 [#1058](https://github.com/FloatingPragma/observer-patch-holography/pull/1058),
 [#1059](https://github.com/FloatingPragma/observer-patch-holography/pull/1059) and
 [#1060](https://github.com/FloatingPragma/observer-patch-holography/pull/1060)
-checks their combined effect on the existing claims. All 326 claim payloads,
-including their assumptions, dependencies, gates, statuses and falsifiers,
+checks their combined effect on the existing claims. All 326 claim payloads of that date, including their assumptions, dependencies, gates, statuses and falsifiers,
 remain unchanged. Frozen prediction targets, decision rules and custody bytes
 are preserved. These repairs add no physical-model prerequisite.
 

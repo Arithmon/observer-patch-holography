@@ -13,6 +13,7 @@ from fractions import Fraction as F
 from hashlib import sha256
 import json
 from pathlib import Path
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -58,7 +59,22 @@ def manifest(root=ROOT):
                   for p in PIN_PATHS}}
 
 
+def ensure_packet(root=ROOT):
+    """Regenerate the byte-exact packet when the checkout does not carry it.
+
+    The packet is a deterministic output of packet.py; manifest.json pins its bytes,
+    so a regenerated copy is checked by the same custody comparison.
+    """
+    target = root/'evidence/common_history_packet_20260925/packet.json'
+    if not target.exists():
+        # A separate process keeps producer code out of this verifier.
+        subprocess.run([sys.executable, str(Path(__file__).with_name('packet.py'))], check=True, cwd=root)
+    return target
+
+
 def check_manifest(root=ROOT):
+    if root == ROOT:
+        ensure_packet(root)
     folder = root/'evidence/common_history_packet_20260925'
     need({p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_file()} == {'packet.json', 'verification.json', 'manifest.json'},
          'closed evidence file inventory')
@@ -66,6 +82,8 @@ def check_manifest(root=ROOT):
 
 
 def load(path=PATH):
+    if Path(path) == PATH:
+        ensure_packet()
     raw = Path(path).read_bytes()
     need(len(raw) < 80_000_000, 'bounded packet bytes')
     return json.loads(raw, object_pairs_hook=parent.strict_pairs,

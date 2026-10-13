@@ -100,6 +100,24 @@ as per-execution transport receipts.
 - `result_summary.json`: machine-readable result and claim boundary
 - `CHECKSUMS.json`: compressed and original-file SHA-256 values
 
+The seven compressed payloads (`*.json.gz` and `*.ndjson.gz`, 29.6 MB together) left
+the main branch to keep the checkout small. They are retained byte for byte at
+repository revision `b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7`, and `CHECKSUMS.json` and
+`blind_freeze_receipt.json` here keep their SHA-256 values. Restore them into this
+directory from any full clone:
+
+```bash
+for f in analysis_lock.json.gz reveal.json.gz blind_hardware_report.json.gz \
+         blinded_hardware_data_packet.json.gz runtime_harvest_events.ndjson.gz \
+         runtime_development_submission_events.ndjson.gz \
+         runtime_heldout_submission_events.ndjson.gz; do
+  git show b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7:code/ibm_quantum_cloud/runs/issue_509_20260711_v2/$f > code/ibm_quantum_cloud/runs/issue_509_20260711_v2/$f
+done
+```
+
+or download each file from
+`https://github.com/FloatingPragma/observer-patch-holography/raw/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/code/ibm_quantum_cloud/runs/issue_509_20260711_v2/<file>`.
+
 The JSON and NDJSON evidence is compressed with deterministic `gzip -9 -n`.
 The submission journals bind every opaque ID to its normalized-OpenQASM logical
 digest and execution-only compiled-QPY digest. The reveal contains the recipes
@@ -108,7 +126,7 @@ joined counts and IBM Runtime job metadata.
 
 ## Verification
 
-From the repository root, first check the compressed artifacts:
+From the repository root, restore the payloads as above, then check the compressed artifacts:
 
 ```bash
 gzip -t code/ibm_quantum_cloud/runs/issue_509_20260711_v2/*.gz

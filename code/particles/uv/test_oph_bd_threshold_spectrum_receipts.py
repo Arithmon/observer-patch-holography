@@ -19,7 +19,7 @@ UV_DIR = Path(__file__).resolve().parent
 REPO_ROOT = UV_DIR.parents[2]
 PAPER_PATH = (
     REPO_ROOT
-    / "extra/observer_patch_holography_as_string_vacuum_selector.tex"
+    / "paper/archive/observer_patch_holography_as_string_vacuum_selector.tex"
 )
 if str(UV_DIR) not in sys.path:
     sys.path.insert(0, str(UV_DIR))
@@ -455,7 +455,7 @@ def test_source_paths_reject_absolute_parent_and_pdf_dependencies() -> None:
     with pytest.raises(PacketError):
         _resolve_repo_path("../injected.json")
     with pytest.raises(PacketError):
-        _resolve_repo_path("extra/observer_patch_holography_as_string_vacuum_selector.pdf")
+        _resolve_repo_path("paper/archive/observer_patch_holography_as_string_vacuum_selector.pdf")
 
 
 def test_non_null_uv_receipts_are_bound_to_issue_branch_and_slot(

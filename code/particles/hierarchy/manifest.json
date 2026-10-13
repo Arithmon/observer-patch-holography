@@ -159,8 +159,8 @@
     },
     {
       "path": "certificates/R_readback_resolution_certificate.json",
-      "sha256": "5be2f9e6452a386250c74c3a14e688db2fa90b1f767accf8949be116df7a7c97",
-      "bytes": 21212
+      "sha256": "69ad83f1782ec67c76b7944f8e6e74b61b76a01313df33c587d1a4f6472d0faa",
+      "bytes": 21244
     },
     {
       "path": "certificates/R_screen_sieve_icosahedral_certificate.json",
@@ -334,8 +334,8 @@
     },
     {
       "path": "verify_issue_342_readback_resolution.py",
-      "sha256": "0d96024ff0470cd316f1a243872fa80e8a54c4468995fdfe9399467dcef19aa8",
-      "bytes": 29813
+      "sha256": "f9425366f297b2bc15da509ef857698e437856948494bfef3ae09686ddc514c8",
+      "bytes": 29845
     },
     {
       "path": "verify_issue_343_m_rep_24.py",

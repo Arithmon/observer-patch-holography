@@ -76,8 +76,7 @@ rows.
 ## Ineligible Surfaces
 
 The following surfaces are not part of this falsification program because the
-physical map, source derivation, comparison object, or paper-level closure is
-work in progress:
+physical map, source derivation, comparison object, or paper-level closure is not complete:
 
 - all cosmology: capacity, dark energy, inflation replacement, scalar tilt,
   CMB spectra, low-$\ell$, birefringence, $H_0$, $S_8$, growth, dark abundance,
@@ -89,8 +88,7 @@ work in progress:
   charged-lepton, and neutrino mass continuations whose physical readout or
   source selector is incomplete;
 - black-hole spectroscopy, entropy, Page curves, and ringdown templates;
-- coherent-matter, anti-gravity, hardware enrichment, cognition, string-vacuum,
-  and meaning-layer continuations;
+- coherent-matter, anti-gravity, hardware enrichment and meaning-layer continuations, and the archived cognition and string-vacuum papers;
 - Yang--Mills mass-gap claims whose continuum, reflection-positivity,
   transfer/intertwiner, or nontriviality receipts are open.
 

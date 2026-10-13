@@ -14,6 +14,7 @@
 \usepackage{seqsplit}
 
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\hypersetup{pdftitle={The Fine-Structure Constant as an OPH Pixel Fixed Point},pdfauthor={Bernhard Mueller; Alexander Osika}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.55em}
 \setlength{\emergencystretch}{3em}
@@ -60,15 +61,12 @@
 
 \title{\textbf{The Fine-Structure Constant as an OPH Pixel Fixed Point}}
 \author{Bernhard M\"uller \and Alexander Osika}
-\date{}
+\date{\OPHPaperReleaseDate}
 \input{../paper/release_info}
 
 \begin{document}
 \maketitle
-\begin{center}
-\small\textbf{Paper release:} \OPHPaperReleaseID\quad
-\textbf{Released:} \OPHPaperReleaseDate
-\end{center}
+\OPHPaperReleaseBanner
 
 \begin{center}
 \small\textbf{Author affiliations:} Bernhard Mueller, Pragma Research Inc.; Alexander Osika, EtherWorks.
@@ -125,8 +123,7 @@ and same-quantity premises, empirical endpoint input, and measured comparison.
 The screen cell in this calculation is not free-floating. On the declared
 carrier branch of the OPH framework it is a cell of the federated screen built
 from twelve-port icosahedral carriers, the same lineage whose port algebra
-witnesses the Standard Model gauge structure in the compact
-paper~\cite{oph-smgr}; the local pixel equation reads back the
+witnesses the Standard Model gauge structure in the gauge paper~\cite{oph-smgr}; the local pixel equation reads back the
 electromagnetic resolution of one such cell.
 
 Two declared principles carry the construction. The detuning law places the
@@ -222,7 +219,7 @@ spectral transport, and finite endpoint matching. In short, the observer
 measures the fully dressed low-energy coupling, while
 \(A_{\alpha_U}^{\mathrm{fp}}\) is a mixed-provenance no-hadron diagnostic before that dressing.
 
-The OPH background used here is spread across three papers. The observer-overlap starting point is the synthesis paper \cite{oph-synthesis}. The source map and fixed-point branch are recorded in the compact overlap-consistency paper \cite{oph-smgr}. The charged-spectrum and particle-structure continuation is recorded in the particle paper \cite{oph-particle}. The references give direct GitHub links to those source files.
+The OPH background used here is spread across three papers. The observer account is the flagship synthesis \cite{oph-synthesis}. The source map and fixed-point branch are recorded in the Standard Model gauge paper \cite{oph-smgr}. The charged-spectrum and particle-structure continuation is recorded in the particle paper \cite{oph-particle}. The references give direct GitHub links to those source files.
 
 Why this split matters: the fixed-point equation and the hadronic transport calculation answer different questions. The fixed-point equation tests closure for a declared local map. The hadronic calculation transports the electromagnetic current through low-energy QCD. A physical endpoint calculation must select the map without consulting the target, construct the same-cell bridge, and evaluate the same-scheme hadronic spectral functional from OPH source data.
 
@@ -313,7 +310,7 @@ does not make \(P/4\) a primitive Hilbert-space dimension.  In this paper,
 fixed-point branch; \(P_\chi/24\) is the shared scalar-reserve density used by the
 \(\chi_\nu\) collar branch.
 
-\section{Step 1: The OPH Starting Rule}
+\section{Step 1: The OPH Overlap Rule}
 
 OPH starts from a finite screen covered by observer patches. If \(P_1\) and \(P_2\) overlap, then their induced states must agree on the shared algebra:
 \begin{equation}
@@ -681,7 +678,7 @@ one dressed mass readout. A balanced \(C_3\) fixed point gives \(Q=2/3\); a
 Q=\frac{1+e^{-2\chi_\star}}{3}.
 \]
 An off-plane response requires the full response operator. These are
-additional branch conditions beyond the three axioms. No \(12/24\) receipt supplies that
+additional branch conditions beyond A1--A3. No \(12/24\) receipt supplies that
 physical attachment.
 Define three Koide roots
 \begin{equation}
@@ -720,7 +717,7 @@ For charged leptons the exponent vector is
 \label{eq:lepexp}
 \end{equation}
 This vector and the normalization below are declared phenomenological transport
-inputs. The OPH axioms do not derive
+inputs. The premises A1--A3 do not derive
 \(\bm n_e=(7,4,3)\) or the resulting determinant identity
 \(\det M_e=v(P)^3/(2\,6^{14})\). The electron entry is selected by a
 finite scan: with \(n_\tau=N_g=3\) and \(n_\mu=N_g+1=4\) fixed by the
@@ -1613,12 +1610,12 @@ selection, the typed same-quantity bridge, and the interval-certificate step.
 \begin{thebibliography}{99}
 
 \bibitem{oph-synthesis}
-B.\ M\"uller, A.\ Osika, M.\ Poneder, K.\ Xue, B.\ Cassie, P.\ Nguyen, J.\ Kim, D.\ Matscheko, J.\ Hill, W.\ T.\ Glynn, M.\ A.\ Visser, K.\ A.\ Anirudha, and B.\ de La Fourni\`ere,
-\emph{From Observer Consensus to Standard Physics}.
-\url{https://wkaxfdgxoqmghwgshymt.supabase.co/storage/v1/object/public/papers/from_observer_consensus_to_standard_physics.pdf}.
+B.\ M\"uller, M.\ Poneder, A.\ Osika, K.\ Xue, B.\ Cassie, P.\ Nguyen, J.\ Kim, D.\ Matscheko, J.\ Hill, W.\ T.\ Glynn, M.\ A.\ Visser, K.\ A.\ Anirudha, and B.\ de La Fourni\`ere,
+\emph{Observers Who Read Their Universe into Existence: Finite Consensus, an Executable Observer, and Standard Physics}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/flagship/from_observer_consensus_to_standard_physics.pdf}.
 
 \bibitem{oph-smgr}
-B.\ M\"uller, A.\ Osika, M.\ Poneder, K.\ Xue, P.\ Nguyen, and D.\ Matscheko,
+B.\ M\"uller, M.\ Poneder, A.\ Osika, K.\ Xue, P.\ Nguyen, and D.\ Matscheko,
 \emph{Deriving Standard Model Gauge Structure from Observer Overlap Consistency}.
 GitHub source:
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex}.
@@ -1626,7 +1623,7 @@ GitHub PDF:
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}.
 
 \bibitem{oph-particle}
-B.\ M\"uller, A.\ Osika, M.\ Poneder, and K.\ Xue,
+B.\ M\"uller, M.\ Poneder, A.\ Osika, and K.\ Xue,
 \emph{Deriving the Particle Zoo from Observer Consistency}.
 GitHub source:
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/paper/deriving_the_particle_zoo_from_observer_consistency.tex}.

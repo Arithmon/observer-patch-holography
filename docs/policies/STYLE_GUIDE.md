@@ -158,19 +158,22 @@ their scientific focus, and READMEs give the short positive case.
 - A technical stretch begins with the physical question or a concrete image.
   Equations are introduced in words, and the prose after them says what the
   reader should carry forward.
-- The three-axiom intuition remains visible through the narrative: bounded
-  observers make records, agreement constrains shared meaning, and maximum
-  randomness fills what those constraints leave free. This does not imply that
-  preference or consciousness chooses physical outcomes.
+- The basis stays visible through the narrative: bounded observers make
+  records and recover the specification of their world, agreement fixes what
+  counts as shared, and since nothing unrecovered may be assumed, maximum
+  randomness fills what the recovered constraints leave free. This does not
+  imply that preference or consciousness chooses physical outcomes.
 
-## Axiom basis
+## Basis and premises
 
-- A surface that states or counts the axiom basis gives exactly three axioms
-  and pairs every axiom with both forms in the same local context: one
-  plain-language sentence, then the concise formal statement, then what the
-  axiom constrains, then what it does not imply, then a citation to
-  `docs/AXIOM_REFERENCE.md`. A surface that only consumes an axiom names the
-  exact dependency and cites the reference.
+- A surface that states the basis gives one hypothesis, one rule, one
+  condition and one specification, and cites `docs/BASIS.md`. A surface that
+  states a theorem premise A1, A2 or A3 pairs it with both forms in the same
+  local context: one plain-language sentence, then the concise formal
+  statement, then what the premise constrains, then what it does not imply,
+  then a citation to `docs/AXIOM_REFERENCE.md`. A surface that only consumes a
+  premise names the exact dependency and cites the reference. No surface
+  counts A1-A3 as axioms of OPH or calls them its basis.
 - The symbol \(A_5\) names the alternating group on five letters, never an
   axiom. Where confusion is possible, the group is typeset with a subscript
   and introduced as a group.
