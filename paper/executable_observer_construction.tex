@@ -1,0 +1,2847 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[shortlabels]{enumitem}
+\usepackage{booktabs,array}
+\usepackage{hyperref}
+\usepackage{xurl}
+\input{release_info.tex}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,
+  pdftitle={An Executable Observer for Observer Patch Holography: Specification, Certified Components and Acceptance Criteria},
+  pdfauthor={Bernhard Mueller; Mario Poneder}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{plain}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\proj}[1]{\lvert #1\rangle\langle #1\rvert}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Ex}{\mathbb{E}}
+\newcommand{\Cn}{\mathsf{C}}
+\newcommand{\En}{\mathsf{E}}
+\newcommand{\Eflux}{\mathcal{E}}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Hil}{\mathcal{H}}
+
+\title{An Executable Observer for Observer Patch Holography:\\
+Specification, Certified Components and Acceptance Criteria}
+\author{Bernhard Mueller\textsuperscript{1,2,*}\qquad Mario Poneder}
+\date{\OPHPaperReleaseDate}
+
+\usepackage{microtype}
+\setlength{\emergencystretch}{3em}
+\begin{document}
+\maketitle
+\OPHPaperReleaseBanner
+
+\begin{center}
+\footnotesize
+\textsuperscript{1}Pragma Research Inc.\quad
+\textsuperscript{2}Information Physics Institute\\
+\textsuperscript{*}Corresponding author:
+\href{mailto:bernhard@floatingpragma.ai}{\nolinkurl{bernhard@floatingpragma.ai}}
+\end{center}
+
+\begin{abstract}
+Observer Patch Holography (OPH) seeks an executable realization of its
+observer algebra whose compatible inter-observer measurements reproduce the
+observed Universe, with quantum-field, classical and gravitational physics
+entering as controlled effective descriptions of those measurements. This
+paper states the executable construction as a technical contract. The
+specification consists of a twelve-port carrier with icosahedral incidence,
+a native local repair law that writes a coin and current record at every
+event, a finite observer algebra of preparations, measurements, retained
+records and record-only feedback, declared services, and two accepted closure
+inputs. We give acceptance criteria for the completion target and report the
+certified components. A two-event observer whose retained record selects its
+next repair moves a final occupation from $1/6$ to $35/264$. The repair
+channels with discarded records have the exact quantum spectral gap
+$(5-\sqrt5)/60$, and complete classical records permit an explicitly
+computed optimal recovery of the unknown input. A binary detector converts
+the electromagnetic coupling computed from a closure input into a recorded
+bit that controls the next repair. Scalar-field detectors carry refinement,
+occupation and complete-output error bounds. In a common source, quantum
+electric flux, charged fermions and a scalar field share one register; for a
+declared preparation its recorded feedback response is certified nonzero at
+infinite oscillator occupation. A fixed count protocol distinguishes two quantum record laws with
+identical classical transitions; no comparison data exist. A premise map
+records which theorem antecedents the construction supplies and which enter
+as inputs. The open connections are spatial refinement, responsive geometry,
+physical clock calibration and independent empirical comparison.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+Observer Patch Holography (OPH) treats observations as primary. The
+completion target of its construction programme is an executable realization
+of the OPH observer algebra whose compatible inter-observer measurements
+reproduce the observed Universe. Reproduction is judged on
+observations. The joint statistics of those measurements, together with their
+responses to interventions, must admit the observed 3+1-dimensional
+quantum-field, classical and gravitational descriptions as controlled
+effective descriptions, each in its regime of validity. No fundamental field
+or spacetime is reconstructed first. Fields, particles and geometry enter as
+effective descriptions of what observers measure and jointly interpret, and
+the data structures of an implementation do not change that ontology
+\cite{mCONSTRUCTION,mINTERP}.
+
+OPH starts from one hypothesis. The Universe is a timeless, self-referential
+structure whose observers recover the specification of their own world from
+their records and realize it; the structure reads itself into existence.
+Because nothing lies outside it, two consequences follow. Whatever observers
+recover and implement needs no further justification. The carrier, the
+observer algebra, the repair law and the closure inputs $P$ and $N$ are
+justified by being recovered, by running, and by reproducing what observers
+measure. Conversely, nothing may be assumed that observers have not
+recovered. Agreement fixes what counts as shared. The public record is what
+survives every comparison between observers, and ``our Universe'' is the
+world that record describes. The executable specification is where the
+account enters the loop; the loop itself has no first step. Here $P$ is the
+screen pixel ratio and $N$ a record capacity in nats;
+Section~\ref{sec:closure-inputs} states how the construction uses them.
+
+The order of exposition enters at the specification, because it is concrete
+and because observers stand there, holding records and inferring. The order
+of justification puts the hypothesis first, since the hypothesis is what
+exempts the specification from external justification. This paper stays at
+the entry point. It treats the executable specification as a candidate and
+writes down the contract by which that candidate is judged. The contract
+states what is specified and what counts as completion, which components are
+certified and with which exact results, which theorem antecedents those
+components supply, and the open connections to the completion target.
+
+Two companion bodies of work frame that contract. The flagship synthesis
+\cite{flagship} gives the informal account of OPH and selected results. The
+theorem library holds conditional theorems on consensus and repair
+\cite{ophconsensus}, observers and records \cite{ophobservers}, gauge
+structure \cite{ophgauge}, spacetime and Einstein dynamics
+\cite{ophspacetime}, and screen microphysics \cite{ophmicro}. The labels A1,
+A2 and A3 used there name theorem premises. A1 is the carrier, federation and
+response layer of the executable specification, A2 the agreement condition
+with its endogeneity clause, and A3 the least-informative state selection
+that the no-outside rule imposes. A theorem that uses them states an
+implication. Section~\ref{sec:premises} records, route by route, which of
+those antecedents the executable construction supplies on its own finite
+objects.
+
+Section~\ref{sec:spec} states the specification, namely the carrier, the
+native repair law and its contrast-record variant, the finite observer
+algebra, the declared services, the closure inputs and the time parameters.
+Section~\ref{sec:target} states the completion target as five obligations
+with their acceptance evidence. Sections~\ref{sec:observer}
+to~\ref{sec:prediction} report the certified components, in turn the finite
+observer and its records, scalar field detectors, a common interacting source in which
+quantum electric flux, charged fermions and a neutral scalar share one
+register, and a fixed count protocol for two quantum record laws.
+Section~\ref{sec:premises} gives the premise map together with four retained
+audit controls, Section~\ref{sec:open} the open connections and
+Section~\ref{sec:repro} the reproducibility contract. Every number in the
+paper is copied from a retained receipt or from a model document of the
+construction \cite{mREADME}, cited at a pinned revision of the public
+repository \cite{ophrepo}.
+
+Results carry the epistemic classes of the flagship, summarized in
+Table~\ref{tab:classes}. Every component of Sections~\ref{sec:observer}
+to~\ref{sec:prediction} is a finite construction under declared premises.
+Its actions, preparations, couplings, instruments, services and model-time
+schedules are inputs of the specification, and none of its results is a
+comparison with independent observations of nature. Individual results state
+only the boundary specific to them.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Epistemic claim classes, following the flagship synthesis \cite{flagship}.}
+\label{tab:classes}
+\begin{tabular}{@{}L{0.30\linewidth}L{0.64\linewidth}@{}}
+\toprule
+\textbf{Class} & \textbf{Meaning}\\
+\midrule
+Finite theorem & A deductive result proved from displayed premises on a
+stated domain. An exhaustive computation counts as part of a proof only with
+a specified domain and a soundness argument.\\
+Certified finite computation & An executable witness whose inputs, controls
+and outputs are fixed by a replayable receipt. Exact rational enclosures
+belong here when their arithmetic is the proof.\\
+Reconstruction implication & An exact implication whose antecedents include
+displayed geometric or physical premises.\\
+Unsupplied realization map & A required map from a finite object to a
+physical event, current, field, clock, scale or continuum structure for which
+no construction is asserted.\\
+Diagnostic & A certified computation compared against measured values that
+it consumes; never counted as a prediction.\\
+Prospectively fixed conditional test & A test whose target definition,
+error budget and decision rule are fixed before any comparison data.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Six claim records of the repository \cite{ophrepo} state the scope of the
+certified components. Table~\ref{tab:registry} lists them with
+the sections that state their content.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Certified components and the repository's claim records that state
+their scope. The first five rows have status ``implemented and replayed under the
+declared finite contract''; the last has status ``implemented and replayed
+under the declared action and occupation contract''.}
+\label{tab:registry}
+\begin{tabular}{@{}L{0.42\linewidth}L{0.14\linewidth}L{0.38\linewidth}@{}}
+\toprule
+\textbf{Component} & \textbf{Sections} & \textbf{Claim record}\\
+\midrule
+Two-event native observer, quantum mixing of the repair channels, recovery
+from complete records, phase protocol for two record laws and its
+source-executed implementation &
+\ref{sec:observer-algebra}, \ref{sec:native-observer}, \ref{sec:mixing},
+\ref{sec:recovery}, \ref{sec:ce-protocol}, \ref{sec:ce-source} &
+\texttt{OPH-MODEL-NATIVE-OBSERVER-EXECUTION}\\
+Correctable record capacity and compact controller &
+\ref{sec:capacity} & \texttt{OPH-MODEL-OBSERVER-RECORD-CAPACITY}\\
+$P$-dependent binary detector and retrospective coupling audit &
+\ref{sec:p-detector}, \ref{sec:endpoint} &
+\texttt{OPH-MODEL-P-RESPONSE-EXECUTION}\\
+Memory certificate at observer-local ticks for the reciprocal exchange law &
+\ref{sec:local-tick} & \texttt{OPH-MODEL-N4-LOCAL-TICK-CERTIFICATE}\\
+Scalar detector, two-read continuation and two-site source apparatus &
+\ref{sec:scalar}, \ref{sec:two-read}, \ref{sec:two-site} &
+\texttt{OPH-MODEL-SCALAR-RESPONSE-EXECUTION}\\
+Common interacting source, occupation and readout certificates, smooth
+detector, observer readouts, history repair, geometric and field readouts &
+\ref{sec:common-construction} to \ref{sec:repair-geometry}, except
+Proposition~\ref{prop:causal} &
+\texttt{OPH-MODEL-COMMON-SOURCE-EXECUTION}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{The specification}
+\label{sec:spec}
+
+\subsection{The carrier and its load configurations}
+\label{sec:carrier}
+
+The specification has one carrier with twelve primitive ports. Its incidence
+is the oriented boundary of an icosahedron, with thirty seams and twenty
+faces; five seams meet at every port, the neighbours of each port form a
+five-cycle, and every seam lies on two oppositely oriented faces
+\cite{ophmicro,flagship}. Write $A$ for the adjacency matrix of the seam
+graph and $L=5I-A$ for its Laplacian. The spectrum of $L$ is $0$,
+$5-\sqrt5$ with multiplicity three, $6$ with multiplicity five and
+$5+\sqrt5$ with multiplicity three, so its characteristic polynomial is
+$x(x-6)^5(x^2-10x+20)^3$ \cite{oQM,rQM,csSLOW}.
+
+A load configuration assigns a nonnegative integer $x_p$ to each port $p$,
+with total load $\sum_p x_p=2$. There are 78 configurations. The 66 with two
+distinct occupied ports form the binary shell; the other twelve are
+collisions $\ket{2u}$ with load two at one port $u$. We write $\Hil_{78}=\C^{78}$
+for the quantum load space with basis $\ket{x}$, $\Hil_{66}$ for the span of
+the binary shell, and $M_{78}$, $M_{66}$ for the corresponding full matrix
+algebras. For a binary configuration occupied at ports $u$ and $w$ we also
+write $\ket{uw}$ or $\ket{\{u,w\}}$.
+
+The theorem library labels A1 the layer formed by carriers, their federation
+through typed seams and coherent triple overlaps, the oriented spherical
+support, and the complete reversible port response. The executed construction
+realizes one carrier of that layer, namely its ports, seams and faces, its
+load configurations and the repair events on its seams. Coherent quantum
+operations run through twelve-port source controls. A six-level processor
+carries twelve source generators, one for each port, and every executed
+gate is the exponential of a real combination of these generators, applied
+to two- and four-dimensional proper codes through declared load and export
+services \cite{csDERIV,ssREADME}. Federation across carriers, the spherical
+support, and a physical current for the complete response algebra are not
+executed; Section~\ref{sec:premises} lists them among the supplied
+antecedents.
+
+\subsection{Native repair and its contrast-record variant}
+\label{sec:repair}
+
+Fix an oriented seam $e=(a,b)$ and a fair placement coin $c\in\{0,1\}$. The
+native repair law is
+\begin{equation}
+\label{eq:native}
+d=x_a-x_b,\qquad
+j=\tfrac12\bigl[d-(2c-1)(\lvert d\rvert \bmod 2)\bigr],\qquad
+y=x+j\,(\mathbf e_b-\mathbf e_a),
+\end{equation}
+where $\mathbf e_p$ is the unit load vector of port $p$ and $y$ is the
+repaired configuration. The two endpoint loads become the floor and the
+ceiling of their mean; the coin assigns the ceiling to $a$ when $c=1$; all
+other loads are unchanged. The record is $r=(c,j)$, the coin and the signed
+current. Compatibility on a seam is specified independently of the update;
+it requires the two endpoint loads to differ by at most one. On the quantum load space the
+record defines the current instrument $\Cn$ with Kraus operators and
+record-discarded channel
+\begin{equation}
+\label{eq:kraus}
+L^{e}_{(c,j)}=\frac{1}{\sqrt2}\sum_{x:\,j(x,c)=j}\ket{y(x,c)}\bra{x},
+\qquad
+\Cn_e(\rho)=\sum_{r}L^{e}_{r}\,\rho\,L^{e\dagger}_{r}.
+\end{equation}
+Both maps are written in Kraus form \cite{kraus1983}. The contrast-record
+variant $\En$ keeps $r=(c,d)$ instead, with Kraus operators $M^{e}_{(c,d)}=2^{-1/2}\sum_{x:\,x_a-x_b=d}\ket{y(x,c)}\bra{x}$ and
+record-discarded channel $\En_e$. Uniform independent seam attempts form the
+baseline schedule; on diagonal states the repair is then the lazy symmetric
+exclusion process with two particles, with generator
+$\frac1{60}\sum_e(S_e-I)$ per attempt, $S_e$ exchanging the endpoint loads
+\cite{mCANDIDATES}.
+
+\begin{proposition}[Native repair instrument]
+\label{prop:native}
+Let $e=(a,b)$ be an oriented seam of the twelve-port carrier, let the
+placement coin be fair, and let $\Cn_e$ and $\En_e$ act on $\Hil_{78}$. Then:
+\begin{enumerate}[(i)]
+\item For every record value the branch map $x\mapsto y(x,c)$ is an injective
+translation of its support. Consequently $\sum_rL^{e\dagger}_rL^e_r=I$, and
+$\Cn_e$ is completely positive and trace preserving (CPTP), also when
+tensored with an untouched reference system. The same holds for $\En_e$.
+\item Every branch conserves the total load, leaves spectator ports
+unchanged, never increases $\sum_px_p^2$, and maps the binary shell into
+itself.
+\item The current labels satisfy $c\in\{0,1\}$ and $j\in\{-1,0,1\}$; all six
+labels occur on $\Hil_{78}$ and four occur on the binary shell.
+\item $\Cn$ and $\En$ induce the same classical transition on every
+configuration, and
+\[
+\En_e^2=\En_e,\qquad \En_e\Cn_e=\Cn_e\En_e=\En_e,\qquad
+\Cn_e^n=\En_e+2^{1-n}(\Cn_e-\En_e)\quad(n\ge1).
+\]
+On the binary shell $\En_e$ is a trace-preserving conditional expectation.
+\item With the seam-total parity $p=(x_a+x_b)\bmod 2$ one has
+$d=2j+(2c-1)p$, and $\En$ equals $\Cn$ followed by a binary record of $p$
+and this relabelling, as an identity of complete unnormalized branches.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+The inverse of a fixed-current branch adds $j$ at $a$ and subtracts it at
+$b$; every basis vector has one branch for each coin, so each column of the
+joint record/source isometry has two entries $2^{-1/2}$ with disjoint
+supports \cite{oDERIV}. For fixed contrast, the unchanged spectators and the
+endpoint sum reconstruct the input, which gives (i) for $\En$. Items (ii) and
+(iv) are the single-seam relations of the candidate register
+\cite{mCANDIDATES}. Item (v) follows from $j=\lceil d/2\rceil$ for $c=0$ and
+$j=\lfloor d/2\rfloor$ for $c=1$; the parity-refined Kraus operator
+$\Pi_pL_{(c,j)}$ has exactly the contrast group as support
+\cite{sdDERIV}. The executable checks all 312 outputs of the observer's two
+seams against an independent floor and ceiling rule \cite{oDERIV}.
+\end{proof}
+
+The current instrument is not a classical coarse-graining of the contrast
+instrument. Grouping the labels of $\En$ sums density operators and cannot
+restore the coherent Kraus sums of $\Cn$. The classical repair rule alone
+selects neither instrument, and Section~\ref{sec:prediction} makes the choice
+observable. The candidate register of the construction also records laws that
+couple the native current to private six-level response factors at the two
+seam endpoints \cite{mCANDIDATES}. One of them, a reciprocal coherent
+exchange named N4, enters the local-tick certificate of
+Section~\ref{sec:local-tick}; the other components use the native law and its
+contrast variant.
+
+\subsection{The finite observer algebra}
+\label{sec:observer-algebra}
+
+\begin{definition}[Two-event native observer]
+\label{def:observer}
+Let $R=\C^6$ carry one basis vector per current label $(c,j)$. The observer
+carrier is
+\[
+\Hil_{\rm cap}=\Hil_{78}\oplus(R\otimes\Hil_{78})\oplus(R\otimes R\otimes\Hil_{78}),
+\]
+with sectors of dimensions 78, 468 and 2808, total 3354; the sector index is
+the phase, the number of filled record slots.
+\begin{enumerate}[(a)]
+\item \emph{Preparation.} The scored preparation is uniform on the 66 binary
+configurations; the full input family uses all 78.
+\item \emph{Measurement and record.} At phase zero the coherent write
+$W_{e}=\sum_r\ket{r}\otimes L^{e}_r$ acts on the seam $e=(0,1)$.
+\item \emph{Record-only feedback.} At phase one the seam is $s(r)=(0,5)$ if
+the stored current is positive and $(0,1)$ otherwise, and
+$V_1(\ket r\otimes\psi)=\ket r\otimes W_{s(r)}\psi$.
+\item \emph{Forecast.} Before the second event the controller reads its
+stored letter and issues a supplied forecast $q(r)$ of a positive second
+current.
+\item \emph{Halting.} At phase two the observer acts as the identity.
+\end{enumerate}
+The controller reads only the committed first record; it has no access to
+source loads or future outcomes.
+\end{definition}
+
+\begin{proposition}[One CPTP map with classical-prefix preservation]
+\label{prop:cptp}
+Let $V_0=W_{(0,1)}$ and $V_1$ be extended by zero to the other sectors, giving
+$A_0$ and $A_1$, and let $P_2$ project onto the full sector. Then:
+\begin{enumerate}[(i)]
+\item $V_0$ and $V_1$ are isometries on every nonfull sector, including
+unreachable combinations of letters and loads, and
+$T(\rho)=A_0\rho A_0^\dagger+A_1\rho A_1^\dagger+P_2\rho P_2$ is CPTP;
+\item on the inhabited subspace $K=\Hil_1\oplus\Hil_2$ every first-record
+projector $Q_r$ obeys $T^*(Q_r)=Q_r$, so a committed first record is reread
+with probability one;
+\item for the blank input with occupations $(1,1,0,\dots,0)$, the
+first-record projector of the letter $(0,0)$, extended by zero to phase zero,
+has expectation $0$ before the tick and $1/2$ after it, so writing a record is
+a transition distinct from preserving it;
+\item for the equal superposition of $\{0,2\}$ and $\{1,2\}$, the
+reduced-density entry of the first-record pair $((0,1),(0,0))$ equals $1/4$
+after the first write and $1/8$ after the second while the classical
+diagonals are unchanged, so coherence between different record values need
+not survive feedback.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Orthogonal retained labels and $W_s^\dagger W_s=I$ give
+$V_0^\dagger V_0=V_1^\dagger V_1=I$, hence $A_0^\dagger A_0+A_1^\dagger
+A_1+P_2=I$. Every subsequent map intertwines $Q_r$ on $K$. In (iv) the
+working state attached to the entry has occupations $\{1,2\}$, on which the
+isometries of $(0,5)$ and $(0,1)$ overlap by $1/2$ \cite{oDERIV}. The
+checkpoint adapter verifies all $78+468+2808$ columns and both the
+preservation identity on the 3276-dimensional checkpoint space and the
+blank-sector control \cite{csDERIV,rCS}.
+\end{proof}
+
+\begin{lemma}[Feedback requires classical record preservation]
+\label{lem:multiplicative}
+Let $\Lambda$ be a CPTP map from $R\otimes W$ to $R\otimes W'$ with
+$\Lambda^*(B\otimes I)=B\otimes I$ for every $B$ in the full matrix algebra
+of $R$. Then $\Lambda^*(I\otimes O)=I\otimes\Phi^*(O)$ for a unital
+completely positive map $\Phi^*$, so changing only the record preparation of
+a product input changes no output statistic on $W'$.
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+The operators $B\otimes I$ lie in the multiplicative domain of the unital
+completely positive map $\Lambda^*$, because the Schwarz inequality is an
+equality for them \cite{choi1974}. Then $\Lambda^*(I\otimes O)$ commutes with
+every $B\otimes I$ and has the stated form \cite{oDERIV}.
+\end{proof}
+
+Lemma~\ref{lem:multiplicative} fixes the shape of the observer contract. A
+record that steers the working state is preserved as a classical record,
+with its projectors fixed, while coherence between different record values
+may change.
+
+\subsection{Declared services}
+\label{sec:services}
+
+Each component names the services it assumes; they belong to the
+specification and enter the resource counts where a component counts
+resources. The services are coherent proper-code load and export, with
+complementary failure outcomes retained by a complete channel definition;
+blank initialization, reset, storage and routing of quantum registers and
+classical records; Born readout of pointers and fair coins; and analogue
+precision of source pulses. Particular components add a calibrated external
+flux and probe (Section~\ref{sec:p-detector}), incident-event recognition
+and bare-occupation readout (Section~\ref{sec:local-tick}), and coherent
+phase preparation and readout (Section~\ref{sec:prediction}). Inside the
+joint instruments of Section~\ref{sec:common}, native integer repair is a
+declared primitive whose 78-dimensional channel is not compiled into the
+six-level processor. Exact certificates exclude numerical execution error
+and physical service error unless a component states otherwise.
+
+\subsection{The closure inputs \texorpdfstring{$P$}{P} and \texorpdfstring{$N$}{N}}
+\label{sec:closure-inputs}
+
+The pixel ratio $P$ is the area of one screen cell in units of
+$\ell_\star^2$, and $N$ is a record capacity in nats
+\cite{ophobservers,pACCESS}. The construction accepts both as closure-derived
+inputs and fits neither to an output. $P$ enters through the existing map
+$P\mapsto\alpha(P)$ of the source-only structured-running coupling branch. At
+the pinned closure value $P=1.63097209585889737696451$ this map gives
+$\alpha^{-1}(P)\approx136.9948351774$ and
+$g(P)=\sqrt{4\pi\alpha(P)}=0.302867613116883569191349$ in Heaviside-Lorentz
+natural units \cite{pREADME,rP}. $N$ enters as a bound. For a declared
+capacity carrier of dimension $D$, $N=\ln D$ bounds every correctable
+classical record code by $\ln M_0\le N$ \cite{mCONSTRUCTION,oCAP}. The
+cosmological relation $N=3\pi/(\Lambda\ell_\star^2)$ additionally requires a
+physical identification of capacity with horizon area, which the
+construction does not make.
+
+\subsection{Time parameters}
+\label{sec:time}
+
+The construction keeps the time parameters of Table~\ref{tab:time} distinct
+\cite{mINTERP}. Conversions between them need explicit maps. The only
+conversion it uses is the fixed-reference relation $t=-\beta s$ of
+Section~\ref{sec:readouts} between a model coordinate and a modular
+parameter. No preferred universal physical clock is required.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Time parameters and where they occur.}
+\label{tab:time}
+\begin{tabular}{@{}L{0.20\linewidth}L{0.38\linewidth}L{0.36\linewidth}@{}}
+\toprule
+\textbf{Parameter} & \textbf{Meaning} & \textbf{Occurrence}\\
+\midrule
+Host time & Runtime of a software execution; a resource cost & Never used as a physical quantity\\
+Solver counter & Position in a search or repair schedule & History repair (Section~\ref{sec:repair-geometry})\\
+Event order & Precedence of recorded events; counts of native operations & Observers, detectors, phase protocol, local ticks\\
+Model coordinate & Parameter of a declared Hamiltonian or action & Scalar detectors, two-site apparatus, common source\\
+Modular parameter & Parameter of the modular automorphisms of an algebra-state pair & Modular clock and fixed-reference relation (Section~\ref{sec:readouts})\\
+Calibrated observer clock & Observer-accessible reading with calibrated duration & Supplied by no component\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Completion target and acceptance criteria}
+\label{sec:target}
+
+The completion target is an executable realization of the OPH observer
+algebra whose compatible inter-observer measurements reproduce the observed
+Universe. Their joint observations must admit a nontrivial 3+1-dimensional
+quantum field theory (QFT) as a controlled effective description, including
+the observed matter and interactions, and classical physics and dynamical
+gravity under appropriate coarse-graining. Four-dimensional QFT and
+3+1-dimensional spacetime refer to the same dimension count of that
+description \cite{mCONSTRUCTION}.
+
+Success requires agreement of the accessible joint and conditional statistics
+and intervention responses in each description's regime of validity, with
+controlled errors and corrections. It does not require every effective
+description to hold at arbitrarily fine scales. Meaning assignment connects
+actual preparations, instruments, interventions and records to shared
+physical quantities, and consensus and repair must preserve compatible joint
+and conditional statistics on overlapping observer domains. This is the
+proposed operational sense in which an objective reality emerges; agreement
+on an interpretation alone does not supply it \cite{mINTERP}.
+Table~\ref{tab:acceptance} states the five obligations, their acceptance
+evidence, and the components of this paper that address each.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Completion obligations, acceptance evidence \cite{mCONSTRUCTION}, and
+the corresponding evidence in this paper.}
+\label{tab:acceptance}
+\begin{tabular}{@{}L{0.17\linewidth}L{0.47\linewidth}L{0.30\linewidth}@{}}
+\toprule
+\textbf{Obligation} & \textbf{Acceptance evidence} & \textbf{This paper}\\
+\midrule
+Executable observer algebra &
+Explicit state, operation, preparation, measurement, retained-record and
+feedback maps; their algebraic identities and observer-access limits;
+accounted memory and service assumptions; actual execution of the claimed
+protocols. A finite implementation discharges its own contract only. &
+Two-event observers and detectors with every history retained
+(Sections~\ref{sec:observer}, \ref{sec:fields}); one interacting joint
+instrument (Section~\ref{sec:common}). No federation and no continuing
+observer.\\
+\addlinespace
+Shared operational meaning &
+Interpretation maps specified independently of the validation outcomes,
+compatible across observers and refinement, and preserving the declared
+intervention statistics and quantum correlations. Shared labels alone are
+insufficient; incompatible unperformed measurements need no common table of
+classical outcomes. &
+Committed-record preservation (Section~\ref{sec:observer-algebra}); one
+record law for every observer of the common source; a schedule-independent
+completed history (Section~\ref{sec:repair-geometry}). No interpretation
+maps across observers and refinement.\\
+\addlinespace
+Effective quantum-field description &
+A common refining family of observer statistics and interpretation maps
+whose errors relative to a nontrivial 3+1-dimensional QFT tend to zero in
+the declared continuum domain, including the observed matter and
+interactions; the comparison concerns measurable correlations and
+intervention responses. Where an effective vacuum-sector mass gap is
+defined, it is nonnegative and may be zero. &
+Free-scalar refinement transfer (Section~\ref{sec:scalar}); two-site
+occupation limits with complete-output bounds and a nonzero interacting
+signal at infinite occupation (Sections~\ref{sec:two-site},
+\ref{sec:finite-contrast} to \ref{sec:smooth}). No spatially refining
+interacting family.\\
+\addlinespace
+Effective classical and gravitational descriptions &
+The same observer construction yields observations that admit compatible
+classical, geometric, stress and clock descriptions in their regimes,
+reproducing the gravitational predictions with controlled corrections. A
+fundamental metric or manifold is not a prerequisite; calculations on a
+supplied geometry need a map to these observer statistics. &
+A finite rank-three geometric readout, native causal cones and field
+relations (Section~\ref{sec:repair-geometry}); modular clock readouts
+(Section~\ref{sec:readouts}). No stress, responsive geometry or calibrated
+clock.\\
+\addlinespace
+Physical predictions &
+Explicit parameter and input ancestry, calibration and uncertainty;
+predictions and rejection rules fixed before independent comparison data;
+agreement with the observed statistics, including alternatives and
+distinguishing tests. Reusing a calibration datum is not an independent
+prediction. &
+A fixed count protocol for two record laws, without data
+(Sections~\ref{sec:ce-protocol}, \ref{sec:ce-source}); a retrospective
+coupling audit (Section~\ref{sec:endpoint}).\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Exact equality of limiting observable laws is the mathematical target.
+Finite simulations and experiments are assessed with declared approximation
+and measurement errors. They cannot certify arbitrary empirical precision,
+and they do not force a particular random outcome in an independently
+repeated experiment. Agreement has to be constrained by measurements, because
+a consistent world model can describe physics different from that of nature.
+
+Hardware, protocol and implementation choices are design variables, and no
+uniqueness theorem for a chosen rule is a prerequisite. Closure-derived $P$
+and $N$ are accepted inputs under their declared contracts; accepting them
+discharges no other physical interface. Supplied background geometry,
+action, state, interpretation or clock data stay visible until the same
+construction accounts for them. The five obligations can advance in
+parallel. Passing the software checks verifies the retained contracts and
+leaves the physical target to the acceptance evidence above.
+
+\section{The finite observer}
+\label{sec:observer}
+
+\subsection{The native observer}
+\label{sec:native-observer}
+
+The native observer executes Definition~\ref{def:observer} on the scored
+preparation \cite{oREADME,oDERIV}. A trial is one fresh preparation followed
+by two repair events and a halt; running many trials repeats the preparation
+and does not extend one observer's memory. Event order is the time
+parameter. The tape, prior, forecast table, seam selector and halting rule
+are designed apparatus, and the forecast is a fixed table without learning.
+
+\begin{proposition}[Statistics of the native observer]
+\label{prop:native-observer}
+Prepare the 66 binary configurations uniformly, use fair coins and the
+controller of Definition~\ref{def:observer}, and let $Y$ indicate a positive
+second current. Then:
+\begin{enumerate}[(i)]
+\item the 264 histories, two coins for each of the 66 configurations at each
+of the two events, each have weight $1/264$;
+\item the first record has masses $14/33$, $14/33$, $5/66$, $5/66$ for
+$(c,j)=(0,0),(1,0),(0,1),(1,-1)$, the conditional probabilities
+$q(r)=\Pr(Y=1\mid r)$ are $0$, $5/56$, $0$, $1/2$ in the same order, and
+$\Pr(Y=1)=5/66$;
+\item the Brier risk of forecasting $Y$ is $395/7392$ with $q(r)$,
+$140/2013$ with the best forecast based on the chosen seam alone, and
+$12875/150304$ when $q$ is evaluated on an independent record resampled
+within the same seam;
+\item the mean final load at port $0$ is $35/264$ under record feedback and
+$1/6$ when the selector is disconnected or replaced by an independent
+selector with the same seam frequencies; the feedback effect is $-3/88$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+For (iii), $\Ex[(Y-q(R))^2]=\Ex[\operatorname{Var}(Y\mid R)]$. The chosen
+seam $S$ is a function of $R$; the best $S$-only forecast has excess risk
+$\Ex[\operatorname{Var}(q(R)\mid S)]$, and an independent resample within the
+seam adds twice that amount. For (iv), a positive first current occurs on ten
+binary inputs with coin zero, mass $5/66$. On that branch $x_0=0$, $x_1=1$
+and $\Ex[x_5]=1/10$; a second repair on $(0,1)$ gives port-0 mean $1/2$ and
+one on $(0,5)$ gives $1/20$. Hence the change is
+$(5/66)(1/20-1/2)=-3/88$ and the mean is $1/6-3/88=35/264$. An independent
+selector leaves the uniform shell uniform under either seam
+\cite{oDERIV}.
+\end{proof}
+
+The other two current letters occur only on the full carrier, where the
+forecast abstains. The exact receipt retains all 264 histories and 18
+calculation checks \cite{rNATIVE}. A seeded sequential execution of 20,000
+fresh trials (seed 20261012) performs 40,000 native events, matches all
+20,000 trials against their exact path references and records 20,000
+explicit halts \cite{rRUN}. Its sample means of the final port-0 load are
+$0.1327$ with feedback, $0.16645$ with the selector disconnected and
+$0.1668$ with the independent selector; the sample Brier risk of the record
+forecast is $478659/8960000$, against $395/7392$.
+
+\subsection{Record capacity}
+\label{sec:capacity}
+
+The retained records are evaluated with the correctable-public-record
+construction of the theorem library \cite{ophobservers,oCAP}. There $M_0$ is
+the largest correctable set of reachable public records, the independence
+number of the compound checkpoint confusability graph; the record capacity is
+$N_{\rm record}=\ln M_0$ nats; and $M_0\le D$ for a declared carrier of
+dimension $D$. The counts below describe the reachable record interface;
+program, source, probe and service memory are additional.
+
+\begin{proposition}[Record capacity of the native observer]
+\label{prop:capacity}
+Take halt and exact classical reread as the declared terminal continuations
+of the observer of Definition~\ref{def:observer}. Then the compound graph
+has no edges, and:
+\begin{enumerate}[(i)]
+\item $M_0=11$ on the binary preparation (four reachable first records, 264
+histories) and $M_0=17$ on the full family of 78 inputs (six first records,
+312 histories);
+\item each terminal word projector has rank 78 in the 3354-dimensional
+carrier, distinct projectors are orthogonal, and the eleven reachable ones
+have total rank 858, so the bound is unsaturated with slack $\ln(3354/11)$;
+\item the binary preparation reaches $1+4+11=16$ classical prefixes, so four
+bits encode the complete controller history; a compact controller that reads
+only this code reproduces the phase, action, forecast, source loads, record
+and halt of all 264 histories; the full family reaches 24 prefixes and needs
+five bits;
+\item coarser retained readouts give correctable codes of size 4 for the
+first letter alone, 4 for the second letter alone, 3 for the forecast alone,
+2 for the chosen seam alone, 4 for forecast and seam, and 1 after complete
+erasure.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Halt and reread leave the tape unchanged, so the joint kernel is the
+identity and the existing evaluator returns the number of reachable terminal
+words. The terminal projector of word $w$ occupies the basis coordinates
+$546+78w$ to $546+78w+77$ of the carrier \cite{oCAP,rCAP}.
+\end{proof}
+
+The terminal capacity is $\ln 11$ nats, about 3.459 bits, on the binary
+preparation and $\ln 17$ nats, about 4.087 bits, on the full family. The
+Shannon entropy of the benchmark record law is a different quantity, about
+2.023 nats. The four-bit code is the minimum fixed-width encoding of the 16
+reached prefixes; a naive layout with a separate phase uses eight bits, and
+an optimal index over all 43 allocated prefixes uses six.
+
+The library's global proposal adds closure across the complete terminal
+fiber, $N_\star=\ln D_\star=\ln M_0(U_{N_\star})$, and identifies the same
+carrier with a de Sitter horizon through $N_\star=A_{\rm dS}/(4\ell_\star^2)$
+and $A_{\rm dS}=12\pi/\Lambda$, hence $\Lambda\ell_\star^2=3\pi/N_\star$
+\cite{ophobservers,oCAP}. The native records supply an actual finite input to
+that evaluator. The complete-fiber closure and the horizon identification
+are separate steps that this construction does not take.
+
+\subsection{The \texorpdfstring{$P$}{P}-dependent detector}
+\label{sec:p-detector}
+
+The detector carries the closure input $P$ through the electromagnetic
+coupling into a recorded binary observation that controls the next repair
+\cite{pREADME,pDERIV}. The charge assignment, probe, calibrated flux, readout
+and controller are specified apparatus, and the coupling branch keeps its
+documented endpoint status (Section~\ref{sec:endpoint}).
+
+Choose the charged realization $Q_v=g(P)N_v$ of the native occupation $N_v$.
+A current record $j$ on the seam $(a,b)$ then transfers the charge
+$\Delta Q=g(P)\,j\,(\mathbf e_b-\mathbf e_a)$, and total charge is conserved.
+For port gauge parameters $\lambda_v$ and
+$U_\lambda\ket{x}=e^{ig\sum_v\lambda_vx_v}\ket{x}$, every current-grouped
+Kraus operator obeys
+$U_\lambda L_{(c,j)}U_\lambda^\dagger=e^{igj(\lambda_b-\lambda_a)}L_{(c,j)}$.
+The probe is a unit-charge path qubit prepared in $\ket{+X}$. The first
+native current routes it around a calibrated external loop with signed
+exposure $j\chi$, where $\chi=\oint A\cdot dx$ is prepared independently of
+$g$, so the relative phase is $\varphi_j=g(P)\,j\,\chi$, the Aharonov-Bohm
+phase \cite{aharonov1959}. A $Y$ measurement commits $y=\pm1$ with amplitudes
+$m_y(j)=\frac12[e^{-i\varphi_j/2}-iy\,e^{i\varphi_j/2}]$ and effects
+$E_y=\sum_r\frac12[1+y\sin\varphi_{j(r)}]\proj{r}$ on the old current
+register. The actuator receives only $y$. It repairs $(0,5)$ for $y=+1$ and
+$(0,1)$ for $y=-1$, keeps $y$ unchanged, and the protocol halts.
+
+\begin{proposition}[$P$-dependent response]
+\label{prop:p-response}
+Prepare the 66 binary configurations uniformly, run the protocol above, and
+put $s=\sin(g(P)\chi)$. Then:
+\begin{enumerate}[(i)]
+\item $\{E_y\}$ is a binary instrument on every input, including coherent
+records; each $M_y=\sum_rm_y(j(r))\proj r$ commutes with the old record
+projectors, and the composed experiment is one CPTP map that preserves the
+committed bit;
+\item $\Pr(y\mid j_1,P,\chi)=\frac12[1+y\sin(g(P)j_1\chi)]$;
+\item at $\chi=1$ all 528 state, coin, detector and coin histories have
+positive probability, and
+\[
+\Ex[y]=0,\quad \Ex[yj_1]=\tfrac{5}{33}s,\quad
+\Ex[j_2]=\tfrac{5}{264}s,\quad \Ex[g(P)j_2]=\tfrac{5g(P)}{264}s;
+\]
+\item for weak exposure, $\Ex[g\,j_2]=\frac{5\pi}{66}\alpha(P)\chi+O(\chi^3)$;
+\item disconnecting the probe, or replacing $y$ by an independent fair bit,
+gives $\Ex[j_2]=0$ with the same detector and seam frequencies.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+The eigenvalues of $E_y$ lie in $[0,1]$ and sum to one, which gives (i). For
+(iii), after the first repair let the source be $z$; averaging the second
+coin gives $\Ex[j_2\mid z,j]=\frac14(2z_0-z_1-z_5)+\frac{sj}{4}(z_1-z_5)$.
+The first term averages to zero because the first repair preserves the
+uniform shell. Currents $\pm1$ each have mass $5/66$, and on either branch
+the other load is uniform over ten ports, so $\Ex[j(z_1-z_5)]=5/66$. An
+independent floor and ceiling enumerator reproduces every coefficient over
+all $66\cdot2\cdot2\cdot2=528$ paths \cite{pDERIV,pVALID}.
+\end{proof}
+
+At the computed $P$ and $\chi=1$ the plus probability is $0.649129261647$ for
+$j=+1$, $0.350870738353$ for $j=-1$ and exactly $1/2$ for $j=0$. The mean
+second current is $0.00564883566843$, the mean transferred charge
+$0.00171084937579$ in natural units, and the equivalent source audit gives a
+final port-0 load of $0.161017830998235$ against $1/6$ for the controls.
+Off-closure parameter controls at $0.999P$ and $1.001P$ recompute the coupling
+map and change the detector and feedback probabilities at fixed $\chi$
+\cite{pREADME,rP}. Fifteen calculation checks in the receipt, six independent
+tests and a fixed-seed sequential run of 200,000 trials (seed 20261012)
+support the construction; the run's mean second current is $0.006390$ with
+standard error $0.00085715$, consistent with the analytic value.
+
+The actuator's record algebra is $\C(\{-1,+1\})$, with correctable size
+$M_0=2$. The scientific audit retains $(r_1,y,r_2)$, with 24 terminal words, 37
+prefixes, a six-bit encoding and $M_0=24$ \cite{pACCESS}. If an identified
+cut enclosing a retained record obeys the area-capacity law with area equal
+to $K$ chart cells, then $N_{\rm cut}=KP/4$ and $\ln M_0\le N_{\rm cut}$
+give $K\ge4\ln M_0/P$. With the pinned $P$, $4\ln2/P\approx1.6999608573$ and
+$4\ln24/P\approx7.7942567832$, so one retained detector bit needs $K\ge2$
+and the full audit $K\ge8$ \cite{pACCESS}.
+
+\subsection{Quantum mixing and memory}
+\label{sec:mixing}
+
+Discarding every seam, coin and repair record after each event turns the
+repairs into channels $\Phi_\Cn$ and $\Phi_\En$ on the source. Under
+independent seam attempts these channels have an exact spectral theory
+\cite{oQM}. Theorems~\ref{thm:gap} and~\ref{thm:memory} concern this
+record-discarded channel under independent uniform attempts; they do not
+describe the retained tape or the feedback controller.
+
+\begin{theorem}[Signed-difference reduction and quantum gap]
+\label{thm:gap}
+Let $G$ be a finite connected graph with $n\ge2$ vertices, positive edge
+weights $w_{ab}$ and $W=\sum w_{ab}$. Let each event choose the edge $ab$ with
+probability $w_{ab}/W$ and a fresh fair coin, and discard its record. On the
+binary space $\Hil_k$ of load $k$, $1\le k\le n-1$, with $D=\binom nk$:
+\begin{enumerate}[(i)]
+\item for a matrix unit $\ket x\bra y$ the signed difference $z=x-y$ is
+invariant; if $z$ has $r$ positive entries and $Z=\{v:z_v=0\}$, then on the
+sector of $z$
+\[
+\Phi_{\mathsf L}\big|_z=I-\frac{L_{\rm excl}(G[Z],k-r)+K_{\mathsf L}(z)\,I}{2W},
+\qquad \mathsf L\in\{\Cn,\En\},
+\]
+with the exclusion Laplacian $L_{\rm excl}$ of the induced graph,
+$K_\Cn(z)=\sum w_{ab}\lvert z_a-z_b\rvert$ and
+$K_\En(z)=2\sum w_{ab}\mathbf 1[z_a\neq z_b]$;
+\item both channels are unital and Hilbert-Schmidt self-adjoint with spectrum
+in $[0,1]$, their fixed algebra consists of the scalars, and both have gap
+$\gamma=\lambda_1(G)/(2W)$, where $\lambda_1(G)$ is the first positive
+Laplacian eigenvalue; and
+$\lVert\Phi^t_{\mathsf L}-{\rm Dep}_D\rVert_{2\to2}=(1-\gamma)^t$;
+\item for every input and every untouched reference $R$,
+$\dist\bigl((\Phi^t_{\mathsf L}\otimes{\rm id}_R)(\rho),\tau\otimes\rho_R\bigr)
+\le\min\{1,\tfrac{D}{2}(1-\gamma)^t\}$, with $\tau=I_D/D$ and
+$\dist(\rho,\sigma)=\frac12\lVert\rho-\sigma\rVert_1$.
+\end{enumerate}
+For the twelve-port carrier at load two ($n=12$, $W=30$,
+$\lambda_1=5-\sqrt5$, $D=66$) the gap is $\gamma=(5-\sqrt5)/60\approx0.046066$,
+and the slowest off-diagonal sectors contract by exactly $r_\Cn=5/6$ and
+$r_\En=7/10$ per attempt. On the full 78-state carrier the gap is the same,
+the full channel is block triangular with a diagonal collision block whose
+entries lie in $[0,5/6]$, and the unique stationary density is the uniform binary density, of rank 66 on
+dimension 78.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+A matrix unit survives a coin branch exactly when its two records agree, and
+then both configurations translate by the same current; comparing the coin
+branches gives (i). The diagonal sector is the symmetric $k$-particle
+exclusion chain, whose gap equals $\lambda_1(G)$ by the theorem of Caputo,
+Liggett and Richthammer \cite{caputo2010}. For a nonzero sector,
+$K_\En\ge K_\Cn\ge\frac12\sum w_{ab}(z_a-z_b)^2\ge r\lambda_1\ge\lambda_1$, so
+no off-diagonal mode is slower. Item (iii) uses Schmidt rank at most $D$ and
+$\lVert Y\rVert_1\le D\lVert Y\rVert_2$. On the carrier, $r=1$ gives
+$K_\Cn=10$ and $K_\En=2(10-\mathbf 1[uv\text{ edge}])$, while $r=2$ gives
+$K_\Cn\ge16$ and $K_\En\ge24$. The collision block has largest entry
+$1-d_{\min}/W=5/6\le1-\gamma$ \cite{oQM}. The executable checks
+the reduction against the native primitive on all 4,356 binary matrix units
+and the transient structure on all 6,084 full matrix units \cite{rQM}.
+\end{proof}
+
+Choose adjacent ports $u,v$ and the two mixtures
+$\rho_\pm=\frac1{20}\sum_{w\notin\{u,v\}}(\ket{uw}\pm\ket{vw})(\bra{uw}\pm\bra{vw})$.
+They have identical load populations and orthogonal supports, and
+\[
+\dist\bigl(\Phi^t_{\mathsf L}(\rho_+),\Phi^t_{\mathsf L}(\rho_-)\bigr)=r_{\mathsf L}^t,\qquad
+\dist\bigl(\Phi^t_\Cn(\rho_+),\Phi^t_\En(\rho_+)\bigr)=\tfrac12(r_\Cn^t-r_\En^t).
+\]
+The second distance is $1/15$ after one attempt and peaks at four attempts at
+$12259/101250$; the binary effect $\frac12(I+A_{uv}+A_{uv}^\dagger)$ with
+$A_{uv}=\sum_{w\notin\{u,v\}}\ket{uw}\bra{vw}$ attains it. Load populations,
+classical load histories and diagonal geometric observables obey the same
+exclusion process under both laws, so only coherent preparations and readouts
+distinguish them under this schedule.
+
+\begin{theorem}[Finite quantum memory]
+\label{thm:memory}
+Under the schedule of Theorem~\ref{thm:gap} on the twelve-port carrier:
+\begin{enumerate}[(i)]
+\item on the binary shell both record-discarded channels are entanglement
+breaking after at most 134 attempts;
+\item on the full carrier let $u,v$ be adjacent and
+$\ket\Psi=(\ket{2u}\ket0+\ket{uv}\ket1)/\sqrt2$ with a reference qubit; after
+$t$ attempts the coefficient of $\ket{2u}\bra{uv}$ is $a_{\mathsf L}^t$, with
+$a_\Cn=23/30$ and $a_\En=7/10$, and the partial transpose on the reference
+has a principal $2\times2$ minor equal to $-a_{\mathsf L}^{2t}/4<0$; no finite
+power of either full channel is entanglement breaking;
+\item every input converges to $\tau_P\otimes\rho_R$, where $\tau_P$ is the
+uniform binary density, with
+$\dist\le\min\{1,\mu^{s/2}+\mu^s+\tfrac{D}{2}(1-\gamma)^{t-s}\}$ for all
+$0\le s\le t$, $\mu=5/6$ and $D=66$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+For the normalized Choi state $J_t$,
+$\lVert J_t-I/D^2\rVert_2^2=D^{-2}\sum_{i>0}\lambda_i^{2t}$. The separable
+ball of Gurvits and Barnum \cite{gurvits2002} and the equivalence of
+separable Choi states with entanglement-breaking channels \cite{horodecki2003}
+reduce (i) to $65\,r_{\rm mix}^{2t}+4290\,r_{\mathsf L}^{2t}\le1/4355$, where
+$r_{\rm mix}=1-\gamma$. The rational enclosure
+$559/250<\sqrt5<2237/1000$ certifies this at $t=134$ and its failure at
+$t=133$; treating all modes with $r_{\rm mix}$ would certify only 178. For
+(ii), 25 edges avoid $u$ and four of them touch $v$; $\Cn$ keeps one coin on
+each of those four and $\En$ keeps neither, and the triangular structure
+prevents any return from the binary space. Separable states have positive
+partial transpose \cite{peres1996}; the complete argument is in
+\cite{oQM,rQM}.
+\end{proof}
+
+Replacing the full carrier by its attracting binary shell therefore changes
+an exact finite-time quantum property, although both converge to the same
+stationary density. The number 134 is a sufficient certificate time; the
+exact index of entanglement breaking on the shell is not determined.
+
+\subsection{Recovery from complete records}
+\label{sec:recovery}
+
+Preserving committed records and recovering the unknown input from them are
+different questions \cite{oRR}. Here a seam policy may depend on committed
+records and classical randomness and may not inspect hidden loads or insert
+quantum corrections; a final decoder may act on the full load register and
+tape, keep the tape, use blank ancillas and return a state on the original
+carrier. That decoder access is stronger than the record-only access of the
+observer's controller.
+
+\begin{theorem}[Optimal recovery from complete native records]
+\label{thm:recovery}
+Let $X$ be the 78 configurations or the 66-state shell and $D=\lvert X\rvert$.
+For a complete admitted history $h$ let $X_h$ be its compatible inputs, $P_h$
+the projector onto them, $d_h=\rk P_h$, and $w_h$ the product of its seam and
+coin factors. Then:
+\begin{enumerate}[(i)]
+\item the history Kraus operator is $K_h=\sqrt{w_h}\,U_hP_h$ with
+$U_h^\dagger U_h=P_h$ and $\sum_hw_hP_h=I$; a tape-controlled inverse outputs
+$\sum_hw_h\proj h\otimes P_h\rho P_h$, so every initial load population is
+recovered;
+\item among all final CPTP decoders the optimal entanglement fidelity for the
+maximally mixed input is
+$F_{\rm opt}=D^{-2}\sum_hw_hd_h^2=D^{-2}\sum_{x,y}H_{xy}$, with
+$H_{xy}=\sum_{h:\,x,y\in X_h}w_h$;
+\item for the two-event observer, $F_{\rm opt}$ equals $5543/8712$ (binary) and
+$1301/2028$ (full) under $\Cn$, and $769/1452$ and $3329/6084$ under $\En$
+with the same current-sign selector applied to its decoded current;
+\item the maximal exactly correctable algebra on the whole input is the
+commutant of $\{P_h\}$, and one event with full-support random seam choice
+reduces it to the diagonal load algebra; nevertheless the qubit code
+$\ket{0_L}=(\ket{\{0,2\}}+\ket{\{1,3\}})/\sqrt2$,
+$\ket{1_L}=(\ket{\{0,3\}}+\ket{\{1,2\}})/\sqrt2$ satisfies the
+Knill-Laflamme condition $QP_hQ=\alpha_hQ$ for every seam, coin and record of
+either law and is recovered exactly after one event;
+\item under independent seam attempts $H_{xy}(t)=q_{\mathsf L}(x-y)^t$, with
+largest off-diagonal rates $5/6$ for $\Cn$ and $7/10$ for $\En$ on both
+carriers; $F_{\rm opt}(t)\to1/D$, and neither retained instrument is
+entanglement breaking at any finite horizon;
+\item a fixed $\En$ seam word identifies every full-carrier input exactly
+when at most one visited component has size one or two, and every binary
+input exactly when at most one component is a singleton and at most one has
+size two; the minimal such words have eight and seven distinct edges;
+\item no bounded record-only adaptive policy makes $\Cn$ entanglement
+breaking; a $\Cn$ word that doubles a minimal forest, 16 or 14 events,
+excludes every nontrivial exact code; the policy that repeats each forest edge until its
+coin first differs identifies the input almost surely, with stopping time
+$T=m+\sum_{i=1}^mG_i$ for independent geometric $G_i$ of success probability
+one half, $\Pr(T=t)=\binom{t-m-1}{m-1}2^{-(t-m)}$ for $t\ge2m$, and
+$\Ex[T]=3m$, namely 24 on the full carrier and 21 on the binary shell.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Every retained current determines a translation, so reversing them gives the
+input uniquely from the terminal configuration and $h$. Optimality follows
+from Cauchy-Schwarz on each classical branch:
+$\sum_a\lvert\Tr(R_{ha}U_hP_h)\rvert^2\le d_h^2$. For (iv), commutation is
+sufficient by (i), and necessity follows from equality in the Schwarz
+inequalities in a Stinespring dilation; the code has nonadjacent occupied
+pairs, equal one-port means and vanishing products $N_aN_b$ on every edge,
+which gives the Knill-Laflamme identity \cite{knill1997}. For (vi), matching
+$\En$ histories are those for which $z$ is constant on every visited
+component. For (vii), the inputs $\{u,w\}$ and $\{v,w\}$ with $u,v$
+nonadjacent keep equal currents for at least one coin on every edge, so a
+history of length at most $T$ shares a rank-two fiber with probability at
+least $2^{-T}$; repeating an edge with the opposite coin reveals the initial
+parity through $d=2j_1+j_*$ \cite{oRR,rRR}.
+\end{proof}
+
+The minimal fixed $\En$ words are the forests $(0,1),(0,5),(2,3),(2,4),
+(6,8),(8,9),(7,10),(10,11)$ on the full carrier and
+$(1,5),(2,3),(2,4),(6,8),(8,9),(7,10),(10,11)$ on the binary shell, with
+component sizes $(3,3,3,3)$ and $(1,2,3,3,3)$. The full-input correctable
+blocks of the two-event observer have sizes $46,10,9,1$ on the binary shell
+and $56,10,9,1,1,1$ on the full carrier, for both laws. Existing source
+inverse words implement the single-seam branch reversal of (i) while keeping
+the classical archive \cite{oRR,rRR}. Native current
+records thus suffice to reverse classical load transport. An exactly
+reversible quantum response on the whole bare-load algebra needs an
+additional ingredient, such as the active recovery of an encoded qubit
+between events.
+
+\subsection{The local event clock}
+\label{sec:local-tick}
+
+N4 is the name, in the construction's candidate register, of a reciprocal
+extension of the binary repair law \cite{mCANDIDATES}. Each port carries a
+private six-level response factor. One coherent exchange
+$W_e=\exp[\theta(Y\otimes\Gamma_e+X\otimes\Delta_e)]$, with
+$X=S_e(N_a-N_b)^2$, $Y=iS_e(N_a-N_b)$ and response generators
+$\Gamma_e,\Delta_e$ built from the existing endpoint response matrices,
+conjugates the binary repair, $K_r=W_e(L_r\otimes I)W_e^\dagger$. The
+coupling $\theta$ is supplied. Private preparations then change bare load
+probabilities; at fixed bare load and $\theta=1/8$ an endpoint occupation
+probability moves from $0.482020673$ to $0.517979327$. An interval
+certificate of the existing N4 construction proves an edge-Gram margin
+$\mathcal G\ge mI$ at $\theta=1/16$ and $\theta=1/8$ \cite{mCANDIDATES,ltREADME}.
+
+Fix an observer port $v$. A tick is any attempted seam incident to $v$,
+including attempts that leave its load unchanged. Under independent uniform
+seam selection a tick has probability $p=1/6$ per attempt, and remote attempts
+continue between ticks. In independent trials the full tracial state is
+prepared, the binary occupation $N_v$ is measured, the unmodified source runs
+until one or two ticks have occurred, and $N_v$ is measured again, with no
+intermediate measurement, reset or postselection. With $f=N_v-1/6$ and
+$\lVert f\rVert^2_\tau=5/36$, write
+$c_k=\Ex[(X_0-\frac16)(X_k-\frac16)]/(5/36)$ for the endpoint correlation
+after $k$ ticks \cite{ltREADME,ltSPEC}. The two numbers of
+Theorem~\ref{thm:tick}(iii) are certified lower bounds, the full N4 two-tick
+correlation is not evaluated, and preparation, incident-event detection and
+bare-occupation readout are supplied operations that the current detector
+of Section~\ref{sec:native-observer} does not implement.
+
+\begin{theorem}[Memory at observer-local ticks]
+\label{thm:tick}
+Let $\mathcal A$ and $\mathcal B$ be the averages over the thirty seams of the
+remote and incident seam channels, so that the first-hit channel is
+$\mathcal K=\mathcal B(I-\mathcal A)^{-1}$. Then:
+\begin{enumerate}[(i)]
+\item $c_k=\langle f,(\mathcal K^*)^kf\rangle/\lVert f\rVert^2$, and
+$c_1=1-6\alpha_{\rm occ}/11$ for the occupation compression factor
+$\alpha_{\rm occ}$;
+\item the statistic
+\[
+b_{\rm tick}=c_2-c_1^2-\frac{r^2(209r+180)}{1331r^2+3300r+1800},\qquad r=1-c_1,
+\]
+vanishes for the native law and for the one-term exchange controls, which
+have $c_1=5/11$ and $c_2=93/407$;
+\item for both N4 completions, built on $\Cn$ and on $\En$,
+$b_{\rm tick}\ge3m/50$, and the certified lower bounds are
+\[
+\begin{aligned}
+b_{\rm tick}&\ge\frac{139996257}{12500000000000}\approx0.00001119970056
+&&(\theta=1/16),\\
+b_{\rm tick}&\ge\frac{11335290321}{50000000000000}\approx0.00022670580642
+&&(\theta=1/8);
+\end{aligned}
+\]
+\item $c_{2,\Cn}\ge c_{2,\En}$ and $b_{{\rm tick},\Cn}\ge b_{{\rm tick},\En}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Each seam channel is a positive semidefinite contraction of Hilbert-Schmidt
+space, with spectrum in $\{0,1/2,1\}$ for $\Cn$ and $\{0,1\}$ for $\En$; N4
+conjugation preserves this. Hence $0\le\mathcal A\le(1-p)I$, the first-hit
+series converges, and the stopped maps are unital and trace preserving.
+Remote seams fix $f$, which gives (i). The closed comparator with seam mean
+maps $I-\frac{\alpha_{\rm occ}}2w_ew_e^{\top}$ yields the correction term
+in (ii) after substituting $\alpha_{\rm occ}=11(1-c_1)/6$. With the Schur complement $S$ of
+$I-\mathcal A$ on the centered occupations, $S\le I$ and
+$b_{\rm tick}=\langle z,S^{-1}z\rangle/(p\lVert f\rVert^2)\ge
+\lVert z\rVert^2/(p\lVert f\rVert^2)$. The hidden defect is
+$z=-\frac1{60}\sum_et_eS_e$ with five incident coefficients $\pm1$, so
+$\lVert z\rVert^2\ge5m/3600$ and $b_{\rm tick}\ge3m/50$. On each seam
+$\Cn-\En$ is positive semidefinite, which gives (iv) \cite{ltREADME}.
+\end{proof}
+
+The correction used for global attempts, $(1-c_1)^2/10$, assigns $-16/2035$
+to the native null at local ticks; the correction of
+Theorem~\ref{thm:tick}(ii) is the one adapted to this stopping instrument.
+The receipt and eight independent checks bind the result, including a
+comparison with the full 66-state native stopping kernel and a complete
+dimension-six quantum model of the resolvent and Schur identities
+\cite{ltREADME,rLT}.
+
+\section{Fields}
+\label{sec:fields}
+
+\subsection{The scalar detector and its refinement transfer}
+\label{sec:scalar}
+
+The scalar detector joins the native observer to the free-scalar continuum
+family of the theorem library \cite{sREADME,sDERIV}. The scalar action,
+quantization, vacuum, preparation, Born readout and model clock are
+supplied, and native integer averaging does not derive them. The field is
+the parent's massive scalar on the golden tensor grids
+$q\in\{13,34,89,233\}$, with Dirichlet boundary and mass one. After mass
+whitening its one-particle operator is
+$\mathsf A=I+B\otimes I\otimes I+I\otimes B\otimes I+I\otimes I\otimes B$,
+with the parent's one-dimensional stiffness $B$; then $\Omega=\sqrt{\mathsf
+A}$ and $H=d\Gamma(\Omega)$ with $\hbar=1$. A preparation profile $f$ in a
+compact left slab and a detector profile $g$ in a compact right slab are
+inherited, both including the square roots of the product masses.
+
+One trial runs as follows. (1) Prepare one of the 66 binary configurations
+uniformly, repair $(0,1)$ and retain $(c_1,j)$. (2) Prepare the field vacuum
+and apply the momentum displacement of amplitude $\gamma jf$ with $\gamma=4$.
+(3) Evolve to the model time $t$ and read a centered binary Weyl instrument
+with
+\[
+K_y=\tfrac12\bigl[e^{-iX/2}-iy\,e^{iX/2}\bigr],\qquad
+X=a^\dagger(v)+a(v),\qquad v=\Omega^{-1/2}g/\sqrt2,
+\]
+so that $K_y^\dagger K_y=\frac12[I+y\sin X]$. (4) Commit $y$, repair
+$(0,5)$ for $y=+1$ and $(0,1)$ for $y=-1$, and halt. The window of model
+times is $[19/20,1]$, with primary setting $39/40$; model time is $ct/L$ for
+the declared box and carries no laboratory calibration.
+
+\begin{proposition}[Scalar feedback and refinement transfer]
+\label{prop:scalar}
+For the process above at model time $t$, let
+$r(t)=\Pr(y=+1\mid j=1)-\frac12$. Then:
+\begin{enumerate}[(i)]
+\item the branch operators
+$M_{(r,y,s)}=(L_sL_r)\otimes(K_ye^{-iHt}V_j)$, with $V_j$ the controlled
+displacement, form one CPTP instrument on arbitrary joint source and field
+inputs, and each branch retains its conditional field state as a
+superposition of two coherent components with their relative phase;
+\item $p(y\mid j)=\frac12+yj\,r(t)$ with
+$r(t)=\frac12e^{-\lVert v\rVert^2/2}\sin\mu(t)$ and
+$\mu(t)=\gamma\langle g,\Omega^{-1}\sin(\Omega t)f\rangle$;
+\item over the 528 histories, $\Ex[j_2]=5r/132$,
+$\Ex[N_{0,\rm final}]=\frac16-5r/132$, $\Ex[yj]=10r/33$ and
+$\Pr(y=\pm1)=\frac12$; disconnecting the preparation or replacing $y$ by an
+independent fair bit gives $\Ex[j_2]=0$ with the same seam frequencies, and
+reversing the kick reverses the sign;
+\item if $\lvert r_q-r_\infty\rvert\le\varepsilon_q$ on the window, then the
+complete labelled histories satisfy
+$\TV=\frac5{33}\lvert r_q-r_\infty\rvert\le5\varepsilon_q/33$, and
+$\lvert\Delta\Ex[j_2]\rvert\le5\varepsilon_q/132$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+The Weyl operators $e^{\pm iX/2}$ are displacements by $\pm iv/2$, which gives
+the two-component branch states and (ii); the zero-current branch has
+probability one half for either record. Conditioned on the initial
+configuration and first coin, the two detector laws differ in total
+variation by $\lvert j\rvert\,\lvert r_q-r_\infty\rvert$, and the subsequent
+native update is common; the expectation bounds use the exact affine
+formulas \cite{sDERIV}.
+\end{proof}
+
+At $q=233$ the parent certifies, uniformly for $19/20\le t\le1$,
+\[
+\varepsilon\le\frac{12513633763}{250000000000},\qquad
+-\frac{111322580247}{500000000000}\le r\le-\frac{34438518047}{250000000000}.
+\]
+The finite-grid mean second current therefore satisfies
+\[
+-\frac{37107526749}{4400000000000}\le\Ex[j_2]\le-\frac{34438518047}{6600000000000},
+\]
+negative throughout the window, and the continuum mean lies within
+$\frac5{132}\varepsilon\approx0.001896$ of it \cite{rSCALAR,sPRED}. At the primary time $39/40$ the computed plus
+probabilities for $j=+1$ are approximately $0.334515$, $0.319421$,
+$0.317093$ and $0.316771$ on $q=13,34,89,233$, and the finest-grid
+prediction is $\Ex[j_2]\approx-0.00694050$. A seeded execution with 200,000
+fresh trials per grid (seed 20261012) tests Born outcomes against predictions
+computed before sampling, with paired reversal, independent-donor and
+fixed-seam controls. At $q=233$ all 12,487,168 field modes contribute; no
+mode projection or occupation cutoff replaces the field. The two coarse grids
+carry the parent's trivial bound $\varepsilon=1$. An independent check
+diagonalizes the family's weighted Dirichlet operator on its unit cube. For
+four fixed standing-wave labels the largest relative frequency error against
+the supplied massive dispersion law
+$\omega^2=1+\pi^2(n_x^2+n_y^2+n_z^2)$ is $2.137\%$, $0.2875\%$ and
+$0.04116\%$ at $q=13$, $34$ and $89$ \cite{csCALIB}. The labels are
+standing waves on a box, and the frequencies follow from the supplied
+quadratic action.
+
+A local extension replaces continuous propagation by canonical
+kick-drift-kick updates
+$\mathbf p\leftarrow\mathbf p-\frac\tau2\mathsf A\mathbf u$,
+$\mathbf u\leftarrow\mathbf u+\tau\mathbf p$,
+$\mathbf p\leftarrow\mathbf p-\frac\tau2\mathsf A\mathbf u$ of the field
+configuration $\mathbf u$ and momentum $\mathbf p$, where $\mathsf A$ acts
+through the six-neighbour stencil \cite{sDERIV}. It runs at
+$q=13$ and $q=34$ at the certified update nearest $39/40$ and retains the
+attained rational time. The detector variance
+$\frac12[a_n^\top\Omega^{-1}a_n+b_n^\top\Omega b_n]$, computed from the
+propagated pullback columns and the original vacuum, includes the squeezing
+caused by split evolution, and a $q=13$ step-halving control compares at the
+same attained time. Replacing $\varepsilon_q$ by the parent's combined
+spatial and temporal bound transfers through the same factors $5/33$ and
+$5/132$. At $q=233$ the certified temporal term is at most
+$0.000008071512$ and the combined grid-time probability error at most
+$0.050062606564$, both analytic bounds for the ideal split dynamics
+\cite{sREADME}.
+
+\subsection{The retained two-read continuation}
+\label{sec:two-read}
+
+The continued observer keeps the disturbed field after its first read
+\cite{sCONT}. One source and one field are prepared per history. The field
+is read at model times $19/20$ and $1$; the first bit $y_1$ selects the second
+native seam, the conditional field evolves to time $1$, the second bit $y_2$
+selects the third seam, and the observer halts with five records readable.
+This continuation uses exact continuous spectral evolution, so the local
+split-update engine of Section~\ref{sec:scalar} and this two-read history
+carry separate error bounds.
+
+\begin{proposition}[Two reads of one field]
+\label{prop:two-read}
+In the continued protocol:
+\begin{enumerate}[(i)]
+\item all 2,112 labelled histories are retained; the record-prefix counts at
+the six phases are $1,4,8,24,48,124$, so the 209 reached prefixes have an
+eight-bit encoding and the 124 terminal words need seven bits;
+\item with the Gram kernel $G_{ab}$ of the two detector vectors,
+$V=G_{11}=G_{22}$, $C=\operatorname{Re}G_{12}$, $c=2\operatorname{Im}G_{12}$
+(so that $[X_1,X_2]=ic$), $S_a(j)=e^{-V/2}\sin(j\mu_a)$, $D=\cos(c/2)$ and
+$R_j=\frac12[e^{-(V-C)}\cos(j(\mu_1-\mu_2))-e^{-(V+C)}\cos(j(\mu_1+\mu_2))]$,
+the joint law is
+\[
+p_j(y_1,y_2)=\tfrac14\bigl[1+y_1S_1(j)+y_2D\,S_2(j)+y_1y_2R_j\bigr];
+\]
+\item on the positive-current preparation, performing the first read changes
+the second plus probability by $(-r(t_2))[1-\cos(c/2)]$, certified greater
+than $0.000022281162$ at $q=233$ and greater than $0.0000252366$ in the
+declared compact continuum; a commuting Gaussian control with the same means
+and real covariance has $D=1$ and no such disturbance; the zero-current
+vacuum correlation exceeds $0.045619388905$ at $q=233$;
+\item the total variation distance of the complete labelled history from the
+declared continuum is at most $1$, $0.451806$, $0.052189606637$ and
+$0.025709913643$ on $q=13,34,89,233$, including the zero-current histories.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+A state is stored as $\sum_nc_nD(i\sum_ah_{na}v_a)\ket\alpha$ with exact
+half-integer shifts $h$; its Gram matrix is explicit in $G$ and the mean
+vector, and every one of the field modes enters $G$. Both terms of each
+Kraus operator are applied before the branch norm is taken. The closed law
+follows from the coherent characteristic function. For four atoms with signed
+Walsh-moment differences $a,b,d$, $\TV=\frac12\max(\lvert a\rvert,\lvert
+b\rvert,\lvert d\rvert,\frac12(\lvert a\rvert+\lvert b\rvert+\lvert
+d\rvert))$; the parent's one-particle residuals and compact tails bound the
+moment differences in directed rational arithmetic \cite{sCONT}.
+\end{proof}
+
+Numerical execution at $q=233$ gives $\Ex[j_3]\approx-0.00130126$ and
+$\Ex[y_1y_2\mid j=0]\approx0.0514838$; deleting the first field record from
+the forecast raises the model's Brier risk by about $0.00064677$. The
+software run uses 50,000 trials per grid with seed 20261012 and does not
+resolve the small disturbance statistically. The conditional-field donor,
+the field reset, the commuting control, the independent bit and the
+disconnected actuator separate correlation from measurement disturbance.
+
+\subsection{The source-compiled two-site apparatus}
+\label{sec:two-site}
+
+The two-site apparatus is a separate finite field design whose preparation,
+evolution and pointer all execute emitted twelve-port control words
+\cite{ssREADME,ssDERIV}. Its action lies outside the golden refinement family,
+so its occupation limit carries no spatial refinement. The Hamiltonian is
+\[
+H=\tfrac12(P_0^2+P_1^2+Q_0^2+Q_1^2)+\tfrac\kappa2(Q_0-Q_1)^2,\qquad
+\kappa=\tfrac9{32},
+\]
+with normal-mode frequencies $1$ and $5/4$. Each site uses
+$d\in\{4,8,16\}$ number states. The executed Hamiltonian uses the compressed
+physical squares $Q_d^2+\frac d2\proj{d-1}$ and $P_d^2+\frac d2\proj{d-1}$,
+so that $H_d=\Pi_dH\Pi_d$; squaring truncated quadratures would implement a
+different Hamiltonian, and $[Q_d,P_d]=i(I-d\proj{d-1})$ forbids treating the
+finite gates as exact Gaussian shears.
+
+The prepared state is the normalized projection of the coupled vacuum onto
+total occupation at most $d-2$, compiled from blank registers into a source
+word. The eight-qubit register of $d=16$ uses a binary amplitude tree with
+commuting Walsh-$Y$ factors, which costs $3((n-1)2^n+1)$ native pulses for
+$n$ qubits, 5,379 at $n=8$. The current impulse is $e^{ijQ_{0,d}}$; 64 or 128
+symmetric split steps reach the model coordinate $t=1$; the pointer is
+prepared in $\ket+$, coupled by $e^{-iZQ_{1,d}/2}$ and read in the $Y$ basis,
+with field effects $\frac12(I\pm\sin Q_{1,d})$. Only the pointer bit reaches
+the controller. Parity gives $\Pr(y=+1\mid j)=\frac12+jr_d$, so
+$\Ex[j_2]=5r_d/132$ as in Proposition~\ref{prop:scalar}.
+
+\begin{theorem}[Complete ideal error budget of the two-site instrument]
+\label{thm:two-site}
+For the declared two-site action, model time $0\le t\le1$ and native current
+$j\in\{-1,0,1\}$:
+\begin{enumerate}[(i)]
+\item with $A$ the onsite and $B$ the bond part of $H_d$ and
+$S(h)=e^{-ihA/2}e^{-ihB}e^{-ihA/2}$,
+\[
+\bigl\lVert S(t/n)^n-e^{-it(A+B)}\bigr\rVert\le\frac{t^3}{n^2}
+\Bigl(\frac{\lVert[A,[A,B]]\rVert}{24}+\frac{\lVert[B,[A,B]]\rVert}{12}\Bigr),
+\]
+uniformly over inputs and references;
+\item the prepared state differs from the infinite coupled vacuum in trace
+distance by less than $0.007576$, $0.000079899$ and $1.0324\times10^{-8}$ at
+$d=4,8,16$;
+\item the trace distance between the complete ideal finite instrument,
+including its classical outcome and unnormalized terminal field branches, and
+the infinite two-oscillator instrument is below $0.799447$, $0.077171$ and
+$0.000196$ at $d=4,8,16$, and the bound tends to zero as $d$ grows;
+\item at $d=16$ and $n=128$ the combined occupation and splitting error is
+below $0.001464436$, and the ideal source-word instrument satisfies
+$0.514957066204\le\Pr(y=+1\mid j=1)\le0.517885937293$, an interval that
+excludes $1/2$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Item (i) is a direct defect bound for the symmetric product formula
+\cite{strang1968}, with nested-commutator norms bounded by exact rational
+Frobenius norms in the factorial-weighted number basis. For (ii), the vacuum
+overlap is $\sqrt{c_J}$ with an explicit squeezed tail. For (iii), the
+infinite state is a displaced squeezed vacuum throughout; the Gaussian
+generating function $\langle z^N\rangle$ bounds the number tails uniformly
+along impulse, evolution and both pointer arms; the boundary residual of the
+projected generators is controlled by those tails; projected Duhamel
+comparison and the orthogonal terminal leakage give
+$e_{\rm full}\le(e_{\rm proj}^2+T_1)^{1/2}$ without dividing by any Born
+probability. Item (iv) combines (i), (iii) and a rational enclosure of the
+infinite reference probability obtained from alternating sine series and a
+Taylor bound on $e^{9/40}$ \cite{ssDERIV,rSS}.
+\end{proof}
+
+Table~\ref{tab:two-site} lists the executed plus probabilities for a positive
+unit current with their splitting bounds. The independent continuous finite
+Hamiltonian gives approximately $0.516422345746$ at $d=8$ and
+$0.516421501748353$ at $d=16$. The infinite two-oscillator reference has
+detector variance $9/20$ and mean $\mu(t)=\frac12(\sin t-\frac45\sin(5t/4))$
+for unit impulse, so $\Pr(y=+1\mid j)=\frac12(1+e^{-9/40}\sin(j\mu(t)))$,
+equal to $0.516421501748$ at $t=1$ and $j=1$ \cite{ssREADME}.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Two-site apparatus: source-executed plus probability for a positive
+unit current and the exact rational finite splitting bound, rounded upward
+\cite{ssREADME}.}
+\label{tab:two-site}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+Onsite levels $d$ & Steps & Executed $\Pr(y=+1)$ & Splitting bound\\
+\midrule
+4 & 64 & 0.516680958 & 0.000103957\\
+4 & 128 & 0.516679563 & 0.000025990\\
+8 & 64 & 0.516424174 & 0.000693013\\
+8 & 128 & 0.516422803 & 0.000173254\\
+16 & 64 & 0.516423330 & 0.005076875\\
+16 & 128 & 0.516421959 & 0.001269219\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The $d=16$, 128-step protocol uses nine work qubits, 18,612,125 native pulses
+and 37,224,250 proper-code load and export events; the executor contracts
+each generated subroutine once, so these are logical operation counts. The
+complete export channel includes all failure outcomes, which have zero
+probability on the invariant valid-code histories in exact arithmetic.
+Retained 200,000-trial native runs record the detector response, terminal
+branches, complete record counts and the reversal, disconnected and donor
+controls \cite{ssREADME}.
+
+\section{The common interacting source}
+\label{sec:common}
+
+\subsection{Construction}
+\label{sec:common-construction}
+
+The common source places quantum electric flux, a charged fermion pair and a
+neutral scalar on one evolving work register, measures that shared state
+twice, and feeds the records back into the register and into native repair
+\cite{csREADME,csDERIV}. Native integer repair enters the joint instrument as
+its declared primitive, and the action, preparation, coupling and
+model-coordinate schedule are construction inputs.
+
+Order four fermion modes as $L_0,R_0,L_1,R_1$. The two channels carry charges
+$q_0=+1$ and $q_1=-1$ and one fermion each; $b_j=0$ means left and $b_j=1$
+right occupation of channel $j$. The electric link has basis $\ket\ell$,
+$\ell\in\mathbb Z$, with $\Eflux\ket\ell=\ell\ket\ell$ and
+$U\ket\ell=\ket{\ell+1}$. The isometry
+\[
+W\ket{b_0,b_1}=\ket{\text{modes }b_0\text{ and }2+b_1\text{ occupied}}\otimes\ket{-b_0+b_1}
+\]
+maps onto four orthonormal occupation and flux vectors.
+
+\begin{proposition}[Flux-dressed matter code]
+\label{prop:gauss}
+On the image of $W$:
+\begin{enumerate}[(i)]
+\item both operator Gauss constraints hold, $G_LW=G_RW=0$ with
+$G_L=\Eflux-Q_L$ and $G_R=-\Eflux-Q_R$, the supported flux set is
+$\{-1,0,1\}$ inside the infinite link, and fermion parity is even;
+\item the dressed hopping terms $h_j=c_{Lj}^\dagger U^{q_j}c_{Rj}+c_{Rj}^\dagger
+U^{-q_j}c_{Lj}$ preserve both ambient Gauss values and the code, with
+$W^*(h_0+h_1)W=X_0+X_1=H_{\rm hop}$ and
+$W^*\Eflux^2W=\frac12(I-Z_0Z_1)$, and
+$\lVert[H_{\rm hop},\Eflux^2]\rVert=2$;
+\item with $\theta=\operatorname{atan2}(4,3)$, $u=(3I-4iX)/5$,
+$U_\theta=u\otimes u=e^{-i\theta H_{\rm hop}}$ and
+$V_\theta=e^{-i\theta\Eflux^2}=\diag(1,z,z,1)$, $z=(3-4i)/5$, the echo
+$U_\theta^*V_\theta U_\theta$ applied to $\ket{00}$ gives right occupation of
+channel $0$ with probability exactly $576/3125$, and without $V_\theta$ the
+probability is zero.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+On every image column $Q_L=-b_0+b_1=\Eflux$ and $Q_R=-\Eflux$. The full
+four-mode algebra of canonical anticommutation relations (CAR) is checked on
+all 16 occupation states, with independent Jordan-Wigner signs; right-to-left
+motion raises the flux by $q_j$ and left-to-right motion lowers it. All
+entries of the echo unitaries are Gaussian rationals, and
+$U_\theta^*V_\theta U_\theta\ket{00}=\frac1{3125}(2549-1152i,\,336-168i,\,
+336-168i,\,-576-1152i)$ \cite{csDERIV}.
+\end{proof}
+
+The echo runs on the source controls with 22 native pulses and 44 coherent
+service events. Two neutral scalar sites join the same register. With the
+onsite quadratics compressed from the infinite oscillator, the declared
+dimensionless action is
+\begin{equation}
+\label{eq:common-H}
+\begin{aligned}
+H&=H_{\rm hop}+\Eflux^2+H_{\rm scalar}+H_{\rm int},\\
+H_{\rm scalar}&=\sum_{j=0,1}\tfrac12\bigl[P_j^2+(1+\kappa)Q_j^2\bigr]-\kappa Q_0Q_1,
+\qquad H_{\rm int}=g\sqrt2\,Q_0(n_{L0}-n_{R0}),
+\end{aligned}
+\end{equation}
+with $\kappa=9/32$ and $g=1/4$. The interaction commutes with both Gauss
+generators and with fermion parity, and it couples the sectors:
+$[H_{\rm int},H_{\rm hop}]=2ig\sqrt2\,Q_0Y_0$. At $d=2$ the whole action has
+rational entries,
+\[
+H=X_0+X_1+\tfrac12(I-Z_0Z_1)+\tfrac{73}{64}(n_{s0}+n_{s1}+1)
+-\tfrac9{64}X_{s0}X_{s1}+\tfrac14X_{s0}Z_0,
+\]
+where the index $s$ marks the scalar sites.
+
+The experiment proceeds in four steps. (1) Native repair on $(0,1)$ records
+a current $j$, which controls the emitted gauge pulse
+$V_j=e^{-ij\theta X_0}$. (2) The register evolves for model-coordinate
+interval $1$ ($U_1$); a source pointer measures the right occupation of the
+first charged species and commits a bit $a$ ($P_a$). (3) Only $a$ selects the
+hopping pulse $F_1=(3I-4iX_0)/5$, with $F_0=I$; the register evolves for
+interval $1/2$ ($U_2$). (4) A second pointer measures the sign of $Q_0$ and
+commits $b$ ($R_b$); only $b$ selects the second native seam, $(0,5)$ for
+$b=1$ and $(0,1)$ otherwise.
+
+\begin{proposition}[One joint instrument with retained histories]
+\label{prop:joint}
+The operators $K_{(a,b)}=R_bU_2F_aP_aU_1$ satisfy
+$\sum_{a,b}K_{(a,b)}^\dagger K_{(a,b)}=I$, and
+$M_{(r,a,b,s)}=(L_s^{e(b)}L_r^{(0,1)})\otimes(K_{(a,b)}V_j)$ form one CPTP
+instrument on arbitrary joint native and quantum inputs. Under the uniform
+binary preparation and the declared quantum vector $\psi$, the
+$66\cdot2\cdot4\cdot2=1{,}056$ histories have probabilities
+$p(a,b\mid j)/264$ with $p(a,b\mid j)=\lVert K_{(a,b)}V_j\psi\rVert^2$, each
+bound to its terminal density $\proj{v_{j,a,b}}/264$, and the first native
+record keeps the masses $14/33$, $14/33$, $5/66$, $5/66$. For a complete
+record-controlled instrument $B_y=\sum_r\proj r\otimes K_{(r,y)}$ with
+channel $\Lambda(X)=\sum_yB_yXB_y^\dagger$, every old record projector $Q_r$
+satisfies $\Lambda^*(Q_r)=Q_r$, and the block readback
+$E_{\rm block}(X)=\sum_rQ_rXQ_r$ and the public readback
+$E_{\rm public}(X)=\sum_r\Tr(Q_rXQ_r)Q_r/\dim W$ are distinct conditional
+expectations.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Summing $M^\dagger M$ over $s$, then $(a,b)$, then $r$ gives the identity.
+Each $B_y$ commutes with $Q_r$, so
+$\Lambda^*(Q_r)=Q_r\sum_yB_y^\dagger B_y=Q_r$, the dual fixed-observable
+criterion of the record theorems; the joining code checks every reported
+probability against the norm of the retained unnormalized vector
+\cite{csDERIV,rCS}.
+\end{proof}
+
+At 512 steps per interval the emitted words use 4 working qubits, 176,182
+native pulses and 352,364 coherent load and export events at $d=2$, and 6
+qubits, 1,879,628 pulses and 3,759,256 events at $d=4$. Disconnected and
+feedback-disabled controls, a fixed-seam control and an independent actuator
+bit with the same unconditional frequency isolate the causal effect of the
+records \cite{csREADME}.
+
+\subsection{The finite feedback contrast}
+\label{sec:finite-contrast}
+
+\begin{theorem}[Finite feedback contrast]
+\label{thm:finite-contrast}
+For the common source with intervals $1$ and $1/2$:
+\begin{enumerate}[(i)]
+\item every palindromic product $F(h)$ of the component exponentials whose
+generators sum to $H$ satisfies
+$\lVert F(t/n)^n-e^{-itH}\rVert\le S^3\lvert t\rvert^3/(3n^2)$ with
+$S\le3+(1+2\kappa)(2d-1)+\lvert g\rvert\sqrt{4d-2}$, on all inputs and
+references; at $n=512$ and $t=1$ the half-diamond bounds are below
+$0.000728$ for $d=2$ and $0.004184$ for $d=4$;
+\item at $d=2$ and zero native preparation current, exact rational Taylor
+arithmetic of degree 64 with $\lVert H\rVert\le109/16$ encloses the
+unconditional probability of a positive scalar coordinate and the feedback
+contrast for the continuous finite Hamiltonian:
+\[
+\begin{aligned}
+&\text{feedback enabled:} && [0.370697726608684,\,0.370697726608685],\\
+&\text{feedback disabled:} && [0.402359206973491,\,0.402359206973492],\\
+&\text{contrast:} && [-0.031661480364808,\,-0.031661480364807];
+\end{aligned}
+\]
+\item for the ideal source word at 512 steps per interval the contrast lies in
+\[
+[-0.033297300667839,\,-0.030025660061775],
+\]
+which excludes zero.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+For (i), the multinomial Leibniz expansion bounds the third derivative of a
+product of unitaries by $S^3$, palindromic symmetry makes the product agree
+with $e^{-ihH}$ through second order, and unitary telescoping gives the
+displayed bound. For (ii), the integral Taylor remainder contains a unitary,
+so $\lVert T_m(t)-e^{-itH}\rVert\le(St)^{m+1}/(m+1)!$; branch vectors carry
+error at most $\eta=\epsilon_2+(1+\epsilon_2)\epsilon_1$, each probability
+error is at most $4\eta+2\eta^2$ and the contrast error at most
+$8\eta+4\eta^2$; at $m=64$ the probability radius is below
+$7.091\times10^{-37}$. Inserted measurements and feedback contract trace
+distance, which gives (iii) \cite{csDERIV}.
+\end{proof}
+
+With $g=0$ the gauge-only feedback cannot change the disconnected scalar
+marginal, and that control runs with the same requests and counted services.
+A coarse splitting or an inadequate Taylor degree yields an interval that
+contains zero, and the evaluator then reports no resolved signal.
+
+\subsection{The infinite-occupation contrast}
+\label{sec:infinite}
+
+The finite pointer measures $B_d=\mathbf 1_{(Q_d>0)}$, the sign projector of
+the truncated coordinate, whereas the infinite detector multiplies by
+$\mathbf 1_{x_0>0}$. Compression and spectral sign do not commute. At $d=2$,
+$\mathbf 1_{(Q_2>0)}=\frac12(I+X)$ while
+$V_2^*\mathbf 1_{(Q>0)}V_2=\frac12I+X/\sqrt{2\pi}$, and the two differ in norm
+by $\frac12-1/\sqrt{2\pi}\approx0.10105772$ \cite{csREAD}. The finite signal
+of Theorem~\ref{thm:finite-contrast} is a statement about its own detector;
+the infinite-occupation statement needs the infinite detector.
+
+\begin{theorem}[Infinite-occupation feedback contrast]
+\label{thm:infinite}
+Take the action~\eqref{eq:common-H} on two infinite oscillator Fock spaces,
+the infinite free coupled vacuum, proportional to
+$\exp[-(a_0^\dagger-a_1^\dagger)^2/36]\ket{0,0}$ with squared normalization
+$4\sqrt5/9$, the blank gauge code, zero native preparation current, the
+matter record and feedback of Section~\ref{sec:common-construction}, and the
+half-line readout of $Q_0$. Then:
+\begin{enumerate}[(i)]
+\item the unconditional positive-coordinate probability with feedback minus
+that without lies in $[-0.024045670143,\,-0.024043450955]$, and without the
+interaction the contrast is exactly zero;
+\item both matter records and both half-line outcomes retain their quantum
+states, including the post-read infinite occupation tail;
+\item along $d=2^k$, with exact palindromic factors and $n=d^2$ steps per
+interval, the complete finite sign instruments converge in trace distance to
+this infinite instrument, terminal states included, and the finite-family
+contrast is strictly negative for all sufficiently large $d$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The linear force is relatively bounded by the positive coupled oscillator
+Hamiltonian $K$, so $H$ is self-adjoint on $\mathcal D(K)$, and finite Hermite
+polynomials lie in every $\mathcal D(H^k)$. Each of 24 steps of length $1/16$
+applies a degree-16 Taylor polynomial of the full $H$ on expanding support,
+charges its remainder $\delta^{17}\lVert H^{17}v\rVert/17!$ exactly, then
+discards support above total occupation 16 and rounds coefficients to a
+$2^{-112}$ grid, charging both differences; the largest expanded occupation
+is 50. The complete output then has half trace-norm error at most
+$\tau+\epsilon+\epsilon^2/2$ and each event at most $\tau+2\epsilon+\epsilon^2$.
+Half-line probabilities have the form $r+s/\sqrt{2\pi}$ with exact rationals
+$r,s$, and $\pi$ is enclosed by Machin's formula. For (iii), $A_d=P_dQ_0P_d$
+converges to $Q_0$ in the strong resolvent sense on the Hermite core, the
+spectral measure of $Q_0$ has no atom at zero, and $\det Q_{2m}\neq0$, so the
+sign projectors converge strongly \cite{csINF,teschl2014,reedsimon1}.
+\end{proof}
+
+The $d=2$ finite continuous experiment has contrast about $-0.03166148$;
+replacing only its detector by the infinite half-line effect gives about
+$-0.02526221$; removing the dynamical cutoff as well gives the interval of
+Theorem~\ref{thm:infinite} \cite{csINF}. The signal survives both limits,
+and both approximations change its size. The interval is specific to zero
+native preparation current and the declared two-site action.
+
+\subsection{Occupation refinement and complete-output comparisons}
+\label{sec:occupation}
+
+Let $P_d$ project both oscillators onto occupations below $d$ and let
+$N=n_0+n_1$ be the total oscillator occupation, a different object from the
+closure input $N$. Two moment estimates control the history before the final
+read. The first is uniform over matter inputs.
+
+\begin{theorem}[Uniform pre-readout occupation bound]
+\label{thm:occupation}
+Let the matter start in an arbitrary state entangled with an untouched
+reference, let the scalar start in the fixed coupled vacuum, and let the
+finite preparation retain total occupations $0,2,\dots,d-2$. Then:
+\begin{enumerate}[(i)]
+\item $M(s,t)=\langle e^{sN}\rangle$ satisfies
+$\partial_tM\le\frac{11}{16}\sinh(s)\,\partial_sM+\frac{25}{32}\sinh(s)\,M$
+through the matter measurement and feedback;
+\item at total model time $T=3/2$ the resulting moment bound holds with base
+$\varrho=113/64\ge7/4$ and $M<13$, where $\varrho\le e^{s(T)}$;
+\item $\lVert P_dH(1-P_d)\rVert\le C_d=\frac\kappa2\sqrt{d(d+1)}+\frac{3\kappa}2d+\frac14\sqrt d$,
+and the retained-history trace distance up to the final scalar read is at
+most $\bigl[(\sqrt{2v_d}+TC_d\sqrt{\tau_d})^2+\tau_d\bigr]^{1/2}$ with
+$\tau_d=M/\varrho^d$ and $v_d$ the omitted preparation probability, an
+$O(d\,\varrho^{-d/2})$ rate;
+\item this bound is below $0.011408$, $0.000002498$ and
+$6.175\times10^{-14}$ at $d=32,64,128$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+A passive rotation to common and difference modes leaves only the squeezing
+term $\frac\kappa2(a_-^2+a_-^{\dagger2})$ and the force as number-changing
+terms; weighted commutator and Cauchy inequalities that hold for
+matter-entangled vectors, followed by Young's inequality, give (i). Along
+$\tanh(s(t)/2)=e^{-11t/16}\tanh(s_0/2)$ the moment grows by at most
+$e^{(25/22)(s_0-s(t))}$ from its initial value $\sqrt{80/(81-\varrho_0^2)}$,
+equal to $\sqrt{80/17}$ at $\varrho_0=8$. The coherent record dilation and the controlled
+feedback commute with $N$. Projected Duhamel comparison and the orthogonal
+outside tail give (iii) \cite{csOCC}.
+\end{proof}
+
+\begin{theorem}[Fourth moment and strong convergence of the sharp instrument]
+\label{thm:fourth}
+Let $w(N)=(N+2)^4$ and let $M(t)=\langle w(N)\rangle$ be summed over the
+unnormalized record branches. Then:
+\begin{enumerate}[(i)]
+\item $\lvert\dot M\rvert\le CM$ with $C=8\kappa+4\lvert g\rvert=13/4$, and
+every finite preparation has $M(0)\le M_0=143748821/8192000$;
+\item the record-dilation vectors immediately before the final read satisfy
+\[
+\lVert\Psi_d-\Psi\rVert\le\Bigl[(e_0+I_TL_d)^2+\frac{M_0e^{CT}}{(d+2)^4}\Bigr]^{1/2}=O(1/d),
+\]
+with $I_T=\sqrt{M_0}\,(e^{CT/2}-1)/(C/2)$,
+$L_d=\kappa/(d+2)+\lvert g\rvert/(d+2)^{3/2}$ and $e_0$ the preparation
+error;
+\item the sign projectors of $Q_{0,d}$ converge strongly to those of $Q_0$,
+and the complete unnormalized classical and quantum history, together with
+its native continuation, converges in trace norm for all three native
+currents and both feedback settings.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+On states with total occupation at most $m$, $\lVert H\psi\rVert\le4(m+2)
+\lVert\psi\rVert$, and each application of $H$ raises the occupation by at
+most two, so finite-particle vectors are analytic and $H$ is essentially
+self-adjoint on them \cite{reedsimon2}. Core convergence gives strong
+resolvent convergence and strong convergence of the unitary groups
+\cite{teschl2014}. The coefficients of the moment derivative are bounded by
+$8\kappa$ and $4\lvert g\rvert$, the latter through an explicit positive
+polynomial certificate; the gauge measurement and the conditional rotations
+preserve $w(N)$ summed over branches. The spectral measure of multiplication
+by $x$ has no atom at zero, which gives strong convergence of the sign
+projectors \cite{csOCCREF}.
+\end{proof}
+
+Strong convergence supplies no finite-$d$ rate for the sharp readout. The
+complete-output certificate closes that gap for the zero-current preparation
+\cite{csREAD,rSHARP}; its results are fixed-state statements for that
+preparation and for the named rectangular occupation codes.
+
+\begin{theorem}[Complete outputs of the sharp detector]
+\label{thm:sharp}
+For zero native preparation current, with both matter records and both sign
+outcomes retained:
+\begin{enumerate}[(i)]
+\item for two complete post-read outputs with rank-one branches, the half
+trace norm of their difference is
+$\frac12\sum_b\sqrt{(p_b+q_b)^2-4\lvert z_b\rvert^2}$, summed over earlier
+records, where $p_b$, $q_b$ are the branch weights and $z_b$ their overlap;
+\item the complete continuous-output distances between the finite and the
+infinite sharp histories lie in the intervals of Table~\ref{tab:sharp}; at
+$d=2$ the ideal 512-step source budget widens them to
+$[0.454336,\,0.455973]$ with feedback and $[0.456824,\,0.458461]$ without;
+\item every output state supported in the rectangular occupation code of
+$d=256$ lies at distance above $0.122$ from the true output of either
+prepared history;
+\item for the vacuum control, whose two sign probabilities are both $1/2$,
+the best approximation by a state supported in the code with $d=2m$ has
+distance between $\sqrt{3/(8\pi)}\,m^{-1/4}$ and
+$\sqrt{4/(3\pi\sqrt3)}\,m^{-1/4}$, hence of order $d^{-1/4}$, and distance at
+most $\varepsilon$ requires $d\ge9/(32\pi^2\varepsilon^4)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Item (i) is the trace norm of a difference of two rank-one operators. For
+(iii), with inside mass $a_{ab}$ and outside mass $t_{ab}$ of each branch,
+the operator exchanging their normalized directions is a witness of norm one,
+so every code-supported output has distance at least
+$\sum_{a,b}\sqrt{a_{ab}t_{ab}}-\epsilon_{\rm poly}$. Half-line matrix
+elements of Hermite functions are explicit, rational up to a factor
+$1/\sqrt{2\pi}$ \cite{dlmf}. Larger finite sign projectors are certified
+through exact eigenbasis residuals,
+$\lVert P_A-P_C\rVert_F\le\delta/\gamma$. For (iv), the omitted vacuum mass
+per sign branch is
+$T_d=\frac14-\frac1{2\pi}\sum_{k=0}^{m-1}\binom{2k}k/(4^k(2k+1))$, which
+obeys $1/(4\pi\sqrt m)\le T_{2m}\le2/(3\pi\sqrt{3m})$ \cite{csREAD}.
+\end{proof}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Certified complete continuous-output distances between the finite
+sharp history and the infinite sharp history, zero native preparation
+current, rounded outward \cite{csREADME,rSHARP}.}
+\label{tab:sharp}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+Onsite dimension $d$ & Feedback enabled & Feedback disabled\\
+\midrule
+2 & $[0.455154,\,0.455155]$ & $[0.457642,\,0.457643]$\\
+32 & $[0.203713,\,0.226530]$ & $[0.203935,\,0.226752]$\\
+64 & $[0.180917,\,0.180924]$ & $[0.181090,\,0.181097]$\\
+128 & $[0.152201,\,0.152204]$ & $[0.152341,\,0.152344]$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At $d=64$ the pre-readout error is below $0.000002498$, so the sharp detector
+dominates the final error. Accurate sign probabilities do not certify an
+accurate post-measurement state; the long occupation tail of the sharp
+detector forces a large output error even where its probabilities are close.
+
+\subsection{The smooth Ramsey instrument}
+\label{sec:smooth}
+
+A separate detector variant keeps the preparation, evolution, first record
+and feedback, and replaces the final sharp read by a source Ramsey pointer
+\cite{csSMOOTH}. Its work-space Kraus maps are
+\[
+M_0=e^{-i\pi/4}\cos\bigl(\tfrac{Q_0}2-\tfrac\pi4\bigr),\qquad
+M_1=e^{i\pi/4}\cos\bigl(\tfrac{Q_0}2+\tfrac\pi4\bigr),
+\]
+with effects $\frac12(I+\sin Q_0)$ for bit zero and $\frac12(I-\sin Q_0)$ for
+bit one. Bit zero thus denotes the plus effect, a detector meaning different
+from the sharp sign record, so neither the sharp-sign certificates nor the
+sharp-history clock carry over to this instrument.
+
+\begin{theorem}[Smooth instrument]
+\label{thm:smooth}
+For the declared initial vacuum family, uniformly over the three native
+current kicks and both feedback settings, with $T=3/2$ and the constants of
+Theorem~\ref{thm:fourth}:
+\begin{enumerate}[(i)]
+\item the complete recorded instrument, including the pointer interaction and
+both unnormalized outcomes, lies within trace distance $\min(1,E_d)$ of its
+infinite counterpart, where $A_T=\sqrt{M_0}e^{CT/2}$ and
+\[
+E_d=\Bigl[\Bigl(e_0+I_TL_d+\frac{A_T(e-1)}{2(d+2)^{3/2}}\Bigr)^2
++\frac{M_0e^{CT+2}}{(d+2)^4}\Bigr]^{1/2}=O(1/d);
+\]
+\item with $n(d)=d^2$ symmetric steps per interval the combined ideal temporal
+and occupation error is $O(1/d)$;
+\item on normalized inputs in the form domain of the infinite Hamiltonian the
+unconditional increment of the full energy is exactly $1/8$ in the declared
+dimensionless convention.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Along the auxiliary pointer parameter $s\in[0,1]$ the generator
+$\frac12Z_{\rm anc}Q_0$ obeys $dM/ds\le2M$, and only its lowering part
+returns outside occupation to the code; integrating gives the pointer term.
+For (iii), $f_0(q)=\cos(q/2-\pi/4)$ and $f_1(q)=\cos(q/2+\pi/4)$ satisfy
+$\sum_bf_b^2=1$, $\sum_bf_bf_b'=0$ and $\sum_b(f_b')^2=\frac14$, so the
+kinetic term gains exactly $\frac18\lVert\psi\rVert^2$, and every other term
+of $H$ commutes with $f_b(Q_0)$ \cite{csSMOOTH}.
+\end{proof}
+
+The conservative bound is about $0.2063$ at $d=64$, $0.04096$ at $d=256$ and
+$0.008840$ at $d=1024$; at the executed $d=2$ and $d=4$ it is vacuous
+\cite{csREADME}. The identity of (iii) belongs to the infinite canonical
+oscillator; at a finite cutoff the commutator defect removes it, while the
+finite instrument keeps finite energy \cite{csSMOOTH,csCALIB}.
+
+\subsection{Observer readouts and the fixed-reference clock}
+\label{sec:readouts}
+
+The readouts below extract observer representations, modular flow and
+regional structure from the same executed history \cite{csOBS}. Their
+quantum algebra, state pairing and access choices are premises, so the
+construction reconstructs the representation conditionally and derives
+neither the Born rule nor these premises from native repair.
+
+\begin{proposition}[Observer representations of the executed history]
+\label{prop:gns}
+Let $v_{ab}$ be the four unnormalized terminal vectors of the history at
+$d\in\{2,4\}$ and $\rho_{\rm hist}=\bigoplus_{a,b}\proj{v_{ab}}$ on
+$\bigoplus_{a,b}M_{4d^2}$.
+\begin{enumerate}[(i)]
+\item For a positive functional $\omega$ the
+Gelfand-Naimark-Segal (GNS) construction $\langle[A],[B]\rangle=\omega(A^*B)$,
+$\pi(X)[A]=[XA]$, $\Omega=[I]$ has dimension $dr$ on a block $M_d$ whose
+density has rank $r$. The record and work algebra has GNS dimension
+$4(4d^2)$, that is 64 and 256; the four committed record projectors give a
+four-dimensional classical GNS space; the site-0 observer that forgets both
+records has GNS dimension $d^2$, that is 4 and 16; and the regional maps
+$J_R[A]=[{\rm embed}_R(A)]$ are isometric and intertwine the regional
+actions.
+\item For faithful $\rho_0$ the modular group
+$\sigma_s(A)=\rho_0^{is}A\rho_0^{-is}$ moves number observables; the
+commutative record algebra has identity flow; states conditioned on the sharp
+terminal bit are nonfaithful on the full scalar algebra, with rank at most
+$d/2$.
+\item At $d=2$, $\rho_0=\frac12(I-\delta X)$ with $\delta=P(b=0)-P(b=1)$ and
+modular frequency $\nu=\log(P(b=0)/P(b=1))$. A source-compiled
+continuation of every terminal branch by $Z(\pi/4)$, $X(s\nu/2)$ and a
+fresh number pointer preserves the old two-bit record marginal and has
+readout law $P(1\mid s)=\frac12(m+\delta\sin(\nu s))$, where $m$ is the
+total branch mass, equal to one for the normalized history.
+\item Scalar regional restrictions are completely positive conditional
+expectations, normalized partial trace followed by identity embedding; they
+are unital and idempotent and in general not multiplicative. The centered
+components of the actual Hamiltonian give an interaction graph that is a
+path through scalar site 1, scalar site 0 and the shared charged-matter and
+link sector, with one edge from the scalar bond and one from the scalar and
+charge interaction.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+For $\rho=V\diag(\lambda)V^*$ of rank $r$ the map
+$[A]\mapsto AV\sqrt{\diag(\lambda)}$ is the explicit GNS isometry
+\cite{bratteli1}. The modular identities, including the finite
+Kubo-Martin-Schwinger (KMS) condition, are checked with this sign convention
+\cite{bratteli2}. At $d=2$, $-\log\rho_0$ equals a multiple of the identity
+plus $(\nu/2)X$, and the probe implements the Schr\"odinger dual of
+$\sigma_s$ \cite{csOBS}.
+\end{proof}
+
+In the executed history $\nu\approx0.5292248981159262$ and
+$\delta\approx0.2586046272446501$ \cite{rBRIDGE}. Ensemble frequencies read a
+modular interval on a declared monotone window, and full-cycle aliases are
+indistinguishable. Taking the post-measurement site-0 state as its own
+modular reference fails to reproduce the interacting dynamics. Its modular
+flow preserves it, while its density changes under $H$ with derivative norms
+about $0.2086$ at $d=2$ and $0.6603$ at $d=4$, so no rescaling identifies
+the two flows on local expectations \cite{csCALIB}. A fixed reference on the
+full work algebra removes this obstruction \cite{csTHERM}.
+
+\begin{proposition}[Fixed-reference modular relation]
+\label{prop:thermal}
+Let $H$ be the finite interacting Hamiltonian on the work space of dimension
+$4d^2$, $\beta>0$ and $\sigma_\beta=e^{-\beta H}/\Tr e^{-\beta H}$. Then
+\[
+\sigma_\beta^{is}A\,\sigma_\beta^{-is}=e^{-i\beta sH}Ae^{i\beta sH}
+=\alpha_{-\beta s}(A),\qquad \alpha_t(A)=e^{itH}Ae^{-itH},
+\]
+so continuous Hamiltonian segments correspond to modular flow at
+$t=-\beta s$. For the full matrix algebra this identification of the two
+automorphism groups forces the Gibbs form of the reference. With record
+blocks $\Sigma_\beta=\bigoplus_rq_r\sigma_\beta$, $q_r>0$, the weights cancel
+and every record projector is fixed. The actual state
+$\omega(t)=e^{-itH}\omega e^{itH}$ can change while $\sigma_\beta$ is
+stationary, and $\Tr(\omega(t)E)=\Tr(\omega\,\sigma_{-t/\beta}(E))$ for every
+effect $E$.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+$\log\sigma_\beta=-\beta H-\log Z_\beta\,I$, and the scalar cancels in the
+conjugation. Equality of the generators requires
+$[\log\sigma+\beta H,A]=0$ for every matrix $A$, and the commutant of the full
+matrix algebra consists of scalars \cite{csTHERM,connesrovelli1994}.
+\end{proof}
+
+The reference, $\beta$ and the full-work access are declared choices, and
+measurements and feedback act as interventions outside this one-parameter
+group. The receipt uses $\beta=1$ and reference weights
+$(1/10,2/10,3/10,4/10)$. Source continuations at model times $0$, $1/2$ and
+$1$ append a gauge-number pointer to every post-sharp branch and retain all
+eight outcomes \cite{csTHERM}.
+
+\subsection{History repair, geometry, causal cones and field relations}
+\label{sec:repair-geometry}
+
+\begin{theorem}[Local repair of the completed history]
+\label{thm:history}
+Fix $d\in\{2,4\}$, the native current $j$ and the feedback setting. Let twelve
+event nodes carry unnormalized work vectors subject to the compatibility
+equations $x_{\rm root}={\rm prepared}(j)$, $x_1=U_1x_{\rm root}$,
+$x_{(a)}=P_ax_1$, $y_{(a)}=F_ax_{(a)}$, $z_{(a)}=U_2y_{(a)}$ and
+$w_{(a,b)}=B_bz_{(a)}$, of depths $0$ to $5$. Then:
+\begin{enumerate}[(i)]
+\item exactly one assignment satisfies all equations;
+\item the common fixed set of the local updates
+$x_v\leftarrow A_vx_{{\rm parent}(v)}$ equals that compatibility set;
+\item every node-fair schedule reaches the compatible assignment from
+arbitrary initial vectors after finitely many updates and stays there; five
+covering rounds suffice, a forward topological pass needs eleven updates, and
+a reverse order may need 55;
+\item with subtree weights $w_v$, equal to $11$, $5$, $4$, $3$ and $1$ at
+depths one to five, the potential
+$\Phi=\sum_{v\neq{\rm root}}w_v\lVert x_v-A_vx_{{\rm parent}(v)}\rVert$
+decreases by at least the repaired residual at every active ideal repair;
+\item every deterministic extraction from the completed assignment, including
+branch probabilities, terminal densities, GNS representations and modular
+parameters, is independent of the schedule.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Agreement at depth zero forces agreement at each further depth. A node whose
+ancestors are correct becomes correct permanently at its next selection, and
+after the $k$th covering round every node of depth at most $k$ is correct.
+Updating $v$ zeroes its residual and changes each child's residual by at
+most $\lVert r_v\rVert$, since all maps are contractions \cite{csHIST}.
+\end{proof}
+
+The solved object is the complete branching instrument law for given
+apparatus inputs; its uniqueness selects no realized record pair, and the
+auxiliary solver is a host computation distinct from a native hardware
+process. The geometric and field statements that follow are dimensionless
+carrier displacements and event counts; physical position, momentum, length
+scale and propagation speed need their own operational identification.
+
+\begin{proposition}[Native geometric readout]
+\label{prop:geometry}
+\begin{enumerate}[(i)]
+\item Exact enumeration of all 4,680 state, seam and coin branches gives the
+one-attempt mean $T=I-L/60$ under uniform seam selection.
+\item With $Q$ removing the constant mode and $C_n=QT^{2n}Q$, the normalized
+response $12C_n/\Tr C_n$ tends to $G=4P_{\rm slow}$, where $P_{\rm slow}$
+projects onto the rank-three band $5-\sqrt5$; all eleven nonconstant modes
+are present at every finite attempt count.
+\item For the readout $x(n)=\sum_pn_pu_p$ with frame directions $u_p$, a
+committed current $j$ on the seam $(a,b)$ gives the relative displacement
+$x(n')-x(n)=j(u_b-u_a)$, computable from the record without hidden loads.
+\item The original controller spans two displacement directions. A declared
+continuation that sends the final scalar bit to $(0,5)$ or $(0,7)$ after the
+first event re-executes all 1,056 second events, and its three displacement
+directions $(2,0,0)$, $(1,1-\varphi,\varphi)$, $(1,1-\varphi,-\varphi)$, with
+$\varphi=(1+\sqrt5)/2$, have determinant $4$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Native causal cones]
+\label{prop:causal}
+For a fixed seam schedule and shared coins, the load at a port $v$ after the
+schedule is a function of the initial loads and coins in its backward
+dependency set. An initial difference supported on $D$ influences $v$ only
+along a time-ordered path, so
+$\dist(D,v)\le\text{edge crossings on that path}\le\text{elapsed seam events}$,
+and at most one edge is crossed per causal layer of disjoint simultaneous
+events.
+\end{proposition}
+
+Exhaustive checks cover all 78 states for 27 schedule and coin pairs, and two
+executed examples show influence at graph distance two arriving only after
+two properly ordered seams \cite{csCAUS}. Taking one edge and one causal layer
+as units gives native signal speed at most one. Units themselves are observer
+conventions \cite{csCALIB}. If one model length, time and energy unit
+correspond to $L$ metres, $T$ seconds and $E$ joules, and a common operational
+propagation law fixed a dimensionless speed $c_{\rm model}$, choosing the SI
+speed of light would impose only $L/T=c_{\rm SI}/c_{\rm model}$; an
+operational action constant $\hbar_{\rm model}$ would add
+$ET=\hbar_{\rm SI}/\hbar_{\rm model}$, and one overall scale would stay free.
+The construction does not supply $c_{\rm model}$ relating its native distance
+readout to its modular clock, so these relations calibrate none of the
+receipts.
+
+\begin{proposition}[Native field relations]
+\label{prop:fields}
+\begin{enumerate}[(i)]
+\item Every event satisfies the discrete continuity law $x'-x=-b_ej$ with
+$b_e=\mathbf e_a-\mathbf e_b$.
+\item Conditional on the past and the selected seam,
+$\Ex[j]=d/2$ and $\operatorname{Var}(j)=(\lvert d\rvert\bmod2)/4$.
+\item Under the uniform calibration the mean load obeys
+$\mu_{k+1}-\mu_k=-L\mu_k/60$, exactly, by $\mathcal KX=XT$ for the 78-state
+kernel $\mathcal K$ and load matrix $X$; the deviation
+$V=\frac12\lVert\mu-\frac16\mathbf 1\rVert^2$ decreases strictly unless the
+mean is constant, while every binary trajectory keeps
+$\lVert x-\frac16\mathbf 1\rVert^2=5/3$.
+\item The slow band has mean multiplier $q=(55+\sqrt5)/60\approx0.953934466291663$,
+every nonconstant multiplier lies in $(0,1)$, and the second-difference
+coefficient $q+1/q-2>0$ has the opposite sign to the coefficient
+$-4\sin^2(\omega\Delta t/2)\le0$ of an undamped oscillator; no positive
+rescaling of the attempt count turns this closed mean law into a wave law.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch of Propositions~\ref{prop:geometry}
+to~\ref{prop:fields}]
+The fair coin averages a seam to its endpoint mean, which gives the mean
+operator and the conditional current moments; the other two positive response
+eigenvalues have strictly smaller magnitude than $1-(5-\sqrt5)/60$, which
+gives the limit in Proposition~\ref{prop:geometry}(ii). Conservation gives
+the displacement identity. For the causal cones, scanning the schedule
+backwards and adding both endpoints of every seam that touches the
+dependency set proves the dependency claim by induction
+\cite{csSLOW,csCAUS,csFIELDS}.
+\end{proof}
+
+\section{A prediction protocol}
+\label{sec:prediction}
+
+\subsection{The phase experiment for two record laws}
+\label{sec:ce-protocol}
+
+The classical repair law does not select between the current instrument
+$\Cn$ and the contrast instrument $\En$ (Section~\ref{sec:repair}). A fixed
+interference experiment makes the choice observable, and its count protocol
+is fixed before any data \cite{prREADME,prDERIV}. Both candidates are
+ordinary quantum instruments, so the test separates two record laws and
+makes no claim to separate OPH from quantum mechanics.
+
+Write $x=\{2,3\}$, $z=\{1,2\}$ and $w=\{0,2\}$ for binary configurations on
+the 78-dimensional carrier. Prepare
+$\ket{\phi_\theta}=(\ket x+e^{i\theta}\ket z)/\sqrt2$ for
+$\theta\in\{0,\pi,\pi/2\}$, or the incoherent mixture
+$\frac12(\proj x+\proj z)$. Apply one repair on the seam $(0,1)$ and retain
+its record. Then measure $P_+=\proj{\phi_0}$ and $P_-=I-P_+$ inside each
+committed record block.
+
+\begin{proposition}[Phase law of the two record instruments]
+\label{prop:ce}
+For the preparations above:
+\begin{enumerate}[(i)]
+\item the nonzero recorded source densities of $\Cn$ are
+$\frac12\proj{\phi_\theta}$ for $(c,j)=(0,0)$, $\frac14\proj x$ for $(1,0)$
+and $\frac14\proj w$ for $(1,-1)$; those of $\En$ are $\frac14\proj x$ for
+$(c,d)=(0,0)$ and $(1,0)$, $\frac14\proj z$ for $(0,-1)$ and $\frac14\proj w$
+for $(1,-1)$;
+\item the plus probabilities are $p_\Cn(\theta)=\frac38+\frac14\cos\theta$
+and $p_\En(\theta)=\frac38$, and the incoherent preparation gives $3/8$ for
+both; the phase-reversal contrast is $1/2$ for $\Cn$ and zero for $\En$;
+\item all four preparations have identical classical load probabilities,
+the readout preserves the probability of every old record, and no record is
+erased and no outcome postselected.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+On the seam $(0,1)$ the configuration $x$ has contrast zero for both coins,
+and $z$ has contrast $-1$, current $0$ for coin zero and current $-1$ for
+coin one, which moves it to $w$. The coherent sum survives only in the
+$\Cn$ branch $(0,0)$, where both currents vanish; $\En$ separates $x$ from $z$
+by their contrasts. Summing $\Tr(P_+\rho_rP_+)$ over the branches gives (ii)
+\cite{prDERIV}.
+\end{proof}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Plus probabilities of the four fixed settings \cite{prREADME}.}
+\label{tab:ce}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Preparation & $\Cn$ & $\En$\\
+\midrule
+Phase $0$ & $5/8$ & $3/8$\\
+Phase $\pi$ & $1/8$ & $3/8$\\
+Phase $\pi/2$ & $3/8$ & $3/8$\\
+Incoherent mixture of $x$ and $z$ & $3/8$ & $3/8$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The count protocol fixes four settings with 8,192 fresh independent attempted
+trials each and no optional stopping. Each attempt contributes to one of
+twelve common bins of coin, current and outcome, or to an abort; every
+frequency uses all 8,192 attempts. At each setting it scores the twelve bin
+indicators, the plus indicator and the abort indicator, $m=4(12+2)=56$
+statistics in all. The sampling half-width is $b=1/32$, the independently
+established apparatus probability budget is $\eta=1/64$, and the familywise
+sampling requirement is $\delta=0.001$.
+
+\begin{proposition}[Sampling certificate]
+\label{prop:sampling}
+If the attempted trials of each setting are independent, then with $n=8192$
+and $b=1/32$ the probability that any of the 56 observation intervals
+$[\hat p-b,\hat p+b]$ misses its actual probability is at most
+$112e^{-16}<112/S_{32}<0.000012606<\delta$, where
+$S_{32}=\sum_{k=0}^{32}16^k/k!$.
+\end{proposition}
+
+\begin{proof}
+Hoeffding's inequality \cite{hoeffding1963} gives
+$2e^{-2nb^2}=2e^{-16}$ for each statistic, and a union bound over 56
+statistics gives $112e^{-16}$. Positivity of the exponential series gives
+$S_{32}<e^{16}$, and the final comparison is exact rational arithmetic
+\cite{prDERIV}.
+\end{proof}
+
+A candidate is rejected when some observation interval is disjoint from its
+ideal probability widened by $\eta$. If the apparatus contract holds,
+rejection can occur only when an observation interval fails, which proves
+the familywise bound; both candidates use the same intervals, so testing
+both needs no further union bound. If the calibration guarantee itself fails
+with probability at most $\beta$, the combined bound is $112/S_{32}+\beta$.
+An abort counts in the denominator, has ideal probability zero, and a
+statistically resolved excess over its allowance returns the verdict that
+the apparatus budget is exceeded. Without supplied counts the verdict is
+``no data''. Software demonstrations are labeled synthetic and external
+count files unverified, and every result reports empirical confirmation as
+false \cite{prREADME}. If one candidate survives and the other is rejected,
+the counts discriminate the conditional instruments; if both survive, the
+test does not separate them; if both are rejected, neither specified
+apparatus model explains the counts within the declared premises.
+
+\subsection{The source-executed implementation}
+\label{sec:ce-source}
+
+Both complete recorded instruments, the four preparations and the readout
+also run as emitted twelve-port control words \cite{sdREADME,sdDERIV}. The
+encoding is a mathematical isometry; a physical interface from occupation
+states to the code is not established. A configuration is written as the
+seam pair and the ten spectators. The six endpoint pairs use three source
+bits and the spectators six bits, which places the 78 configurations
+injectively in a nine-qubit register with 434 unused addresses. A local
+permutation with blank record bits realizes each repair from phase-exact
+transpositions, and the fair placement coin is itself prepared by a source
+pulse and recorded.
+
+\begin{proposition}[Exact source realization of the two instruments]
+\label{prop:ce-source}
+In the nine-qubit encoding $J$:
+\begin{enumerate}[(i)]
+\item the encoded recorded channels intertwine the native ones,
+\[
+\mathcal E_{\rm code}(J\rho J^*)=(I_{\rm record}\otimes J)\,
+\mathcal E_{\rm native}(\rho)\,(I_{\rm record}\otimes J^*),
+\]
+on all 6,084 matrix units of the 78-state carrier and therefore with every
+untouched reference; the complete Gram identity has 156 nonzero Kraus
+entries;
+\item $\En$ is $\Cn$ followed by a three-pulse source CNOT that copies the
+seam-total parity $p$, with contrast decoded as $d=2j+(2c-1)p$; relative to
+the retained coin and current labels one additional binary record is
+necessary and sufficient, and forgetting it leaves parity dephasing without
+restoring the coherence of $\Cn$;
+\item the readout is the L\"uders instrument \cite{luders1950} of the
+rank-one plus projector and its complement, realized by coupling the plus
+projector to a blank pointer and measuring only the pointer; the minus
+outcome is one rank-77 projector whose internal coherences survive, and
+reading the full computational basis would implement a different
+instrument.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+For fixed current the endpoint map is an injective translation, and for fixed
+contrast the spectators and endpoint sum reconstruct the input, so every
+input column of the joint coin, record and source isometry has two entries
+$2^{-1/2}$ with disjoint supports. An independent floor and ceiling
+enumeration checks the permutation images and all 6,084 matrix units for each
+candidate. For (ii), the inputs $\{2,3\}$ and $\{1,2\}$ share the $\Cn$
+record $(0,0)$ and have contrasts $0$ and $-1$, so a single extra value cannot
+separate them \cite{sdDERIV}.
+\end{proof}
+
+The complete attempted trial costs 32,006 native pulse requests for the pure
+$\Cn$ settings, 32,007 for the diagonal $\Cn$ setting, 32,009 for the pure
+$\En$ settings and 32,010 for the diagonal $\En$ setting, with one
+proper-code load and one export charged per pulse. Each readout costs 26,632
+pulses, a local $\Cn$ repair 5,370 and a local $\En$ repair 5,373; the peak
+live code width is 11 qubits for $\Cn$ and 12 for $\En$
+\cite{sdREADME}. Executed terminal states reproduce the probabilities of
+Table~\ref{tab:ce} and the full output densities, and the synthetic counts,
+8,192 attempted trials per setting drawn from executed branch norms, feed the
+unchanged count protocol. For each synthetic dataset the evaluator keeps its
+generating candidate and rejects the other. A compositional error contract,
+\[
+N_pu+N_l\,l+N_e\,e+p+z+c+a+r+s+m+g+n\le\frac1{64},
+\]
+with pulse, load and export counts $N_p,N_l,N_e$, their uniform channel errors
+$u,l,e$, and whole-trial allowances for preparation, initialization, coin,
+randomizer, records, storage, measurement, coefficient compilation and
+numerical execution, gives sufficient conditions for the protocol's budget
+$\eta=1/64$; an equal allocation at the largest schedule is $1/6146496$ per
+term. The same source alphabet, code services and classical transitions thus
+admit two implemented quantum instruments whose common observable at phase
+zero differs by $1/4$, so these ingredients alone do not select the quantum
+record law.
+
+\subsection{Retrospective audit of the inherited coupling output}
+\label{sec:endpoint}
+
+The detector of Section~\ref{sec:p-detector} evaluates the inherited
+structured-running branch of the closure map. A retrospective diagnostic
+compares that output with the CODATA 2022 recommended value
+\[
+\alpha^{-1}=137.035999177(21)
+\]
+\cite{codata2022}. The inherited output, approximately $136.994835177413$,
+falls short of the central value by about $300.388218$ parts per million, and
+exact rational arithmetic shows its narrow numerical interval disjoint from
+the band of five reported standard uncertainties around the central value
+\cite{prREADME,prDERIV}. The band is a declared comparison allowance without
+the status of a confidence interval. The audit rejects the additional
+hypothesis that this output is the complete physical endpoint
+with zero missing correction; the documented incomplete-transport contract
+of the branch requires physical transport work. No fit is performed, $P$ is
+unchanged, and no theory significance is assigned.
+
+\section{The premise map}
+\label{sec:premises}
+
+The premise map relates the construction to the conditional theorems of the
+library \cite{mPREMISES,mMAP}. It is a navigation document generated from a
+machine-readable crosswalk, and it applies one rule. A result ``$H$ implies
+$C$'' discharges an input $I$ only when $C$ establishes $I$ on the same
+domain with the required errors and $H$ has independent support; a change of
+regulator, state or code, or a calibration relabelled as a derivation, does
+not discharge an obligation. Accordingly the map distinguishes two kinds of
+entry. An antecedent can be discharged for the finite objects of the
+construction by execution or proof, or it can be supplied. Discharge on the
+finite domain is a different statement from discharge of the corresponding
+physical premise on a physical refinement tower. Five of the six claim
+records of Table~\ref{tab:registry} consume no canonical physical premise; the
+detector record consumes the accepted closure inputs $P$ and $N$ and the
+selected coupling map, and lists the same-quantity bridge for $P$ and the
+physical Thomson readback contract as unsupplied \cite{ophrepo}.
+At the cited revision the crosswalk
+represents all 84 canonical premise identifiers in 27 groups; it inventories,
+without binding them individually to the model, 801 ordinary assumption
+names and 876 imported-result names across 332 registered claims
+\cite{mPREMISES}. Table~\ref{tab:premises} summarizes seven theorem routes.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Theorem routes, antecedents discharged on the finite construction,
+and supplied antecedents \cite{mPREMISES,mCONSTRUCTION}.}
+\label{tab:premises}
+\begin{tabular}{@{}L{0.14\linewidth}L{0.42\linewidth}L{0.38\linewidth}@{}}
+\toprule
+\textbf{Route} & \textbf{Discharged by execution or proof} & \textbf{Supplied}\\
+\midrule
+Consensus and repair \cite{ophconsensus} &
+Committed-record preservation for the native and common-source instruments;
+completion identities and the exact gap of the record-discarded channels;
+schedule-independent recovery of the completed common-source history with a
+strictly decreasing residual. &
+Repair completeness, local diamonds and well-founded transactional descent
+for an unrestricted observer menu; conflicting updates; federation; global
+history repair executed by native hardware.\\
+\addlinespace
+Quantum records \cite{ophobservers} &
+All-input CPTP maps with coherent write isometries; complete binary
+instruments retaining both outcomes; the exact correctable algebra, optimal
+recovery and an exactly correctable code; the exact channel identity of the
+two record laws on every matrix unit; GNS representations of the actual
+observation state. &
+Hilbert representation and canonical relations, subsystem split, Born
+readout, coherent preparation and readout services, a physical encoding of
+loads in the code.\\
+\addlinespace
+Record capacity \cite{ophobservers} &
+$M_0$ for each declared record interface with a carrier projector
+certificate; the bound $\ln M_0\le N$ on a declared carrier. &
+A capacity-indexed source family, complete-fiber closure, a physical
+selector, and the same-carrier horizon identification behind
+$\Lambda\ell_\star^2=3\pi/N$.\\
+\addlinespace
+Gauge structure \cite{ophgauge} &
+Branch charge covariance of the designed assignment $Q=g(P)N$; a four-state
+CAR and link code with operator Gauss constraints and even parity under
+source execution. &
+Physical current and action for the complete response algebra, the
+same-source category, the global form, coupling attachment, nonabelian and
+chiral matter.\\
+\addlinespace
+Scalar continuum \cite{ophobservers,flagship} &
+Refinement transfer to complete histories and native feedback; occupation
+limits with complete-output bounds for the free and interacting two-site
+actions; the infinite-occupation interacting signal. &
+The scalar action, quantization and vacuum; inertia; the model clock; a
+spatially refining family for the interacting process.\\
+\addlinespace
+Modular clocks \cite{ophspacetime} &
+Finite modular flow of actual observation states; a programmed modular clock
+with a readable law; the fixed-reference relation $t=-\beta s$. &
+Reference selection by repair; Bisognano-Wichmann identification; common
+null translations; physical clock calibration; the relation to causal
+depth.\\
+\addlinespace
+Gravity \cite{ophspacetime} &
+Only finite readouts, namely a rank-three geometric response attached to
+committed records, and native causal cones. &
+Physical region, metric and area attachment; generalized-entropy
+stationarity; small-ball geometry; conserved stress; universal coupling and
+normalization on one inhabited physical tower.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Four retained audit controls fix exact boundaries of the construction
+\cite{mCONSTRUCTION}. Each rejects a named identification or an overly broad
+inference; none rejects the theorem premises or requires a unique designed
+implementation.
+
+\paragraph{Complete-carrier center.} The centers of $M_{66}$ and $M_{78}$
+consist of scalars, so the unextended working algebra cannot supply twelve
+nonzero primitive central ports. Binary occupations are noncentral, overlap
+and sum to $2I$, and total-two occupations also admit the eigenvalue two. The
+native matrix algebra is therefore kept as a sector; a separate
+twelve-block central-address extension supplies a central algebra with
+port-controlled operations, and occupation measurement is a separate
+contract.
+
+\paragraph{Marked triplets.} The slow Gram matrix satisfies $G^2=4G$,
+$\Tr G=12$ and $(5I-A)G=(5-\sqrt5)G$. One fixed order-five symmetry has trace
+$(1-\sqrt5)/2$ on the slow frame and $(1+\sqrt5)/2$ on the lower response
+triplet, which excludes an invertible intertwiner for the same action.
+Spatial and internal response domains are therefore kept distinct; a
+whole-law Galois substitution or an explicit twist of the action needs its
+own attachment.
+
+\paragraph{Feedback class.} With the two endpoint loads in the uniform
+mixture of their one-particle configurations, a rational number-preserving
+exchange gives endpoint probabilities $769/1250$ and $481/1250$ for the two
+private preparations, a difference of $144/625$. Four Kraus operators certify that it
+is CPTP, and its private commutant has dimension one, which excludes every
+single-product exponential representation, alternate logarithm branches
+included. The no-feedback theorems for reduced loads and single products hold
+within their stated classes, and this channel marks the class boundary.
+
+\paragraph{Configuration equilibrium.} For $A=I+L_{\rm path3}$ the controls
+$\varepsilon=\pm1/16$ keep the normalized configuration Gibbs marginal and
+change the full reference and the vacuum. For a stiffness response
+$Y=\gamma(A+\varepsilon A^2)$ one has $Y_{13}=\gamma\varepsilon$ and a
+third-mode fit residual $6\gamma\varepsilon$, while the actual acceleration is
+$-Yq$. The theorem that identifies inertia with the same capacity keeps that
+premise, and equal equilibrium configurations do not select the kinetic law.
+
+\section{Open connections}
+\label{sec:open}
+
+The finite components above are completed under their contracts. The
+connections below join them into the target of Section~\ref{sec:target}; they
+can advance in parallel, and none requires a uniqueness theorem for the
+chosen design.
+
+\paragraph{A spatially refining family.} A family of source programs that
+refines in space, carries the charges, interactions and instruments of
+Section~\ref{sec:common}, retains its records, and bounds numerical and
+physical services along the way would connect the construction to a
+continuum. Two oscillators at increasing occupation cutoff stay two
+oscillators, and the spatial bounds of Section~\ref{sec:scalar} transfer to
+another implementation only through an explicit map. No continuum limit of
+the interacting family is established.
+
+\paragraph{Matter, geometry and clocks on one process.} Interacting matter,
+responsive geometry and a physical clock calibration have to attach to the
+same state, event law and retained records. This needs stress and geometric
+readouts from the same family, the balance and Ward identities with
+controlled tails, a calibrated scale, a choice of modular reference produced
+by the construction, and a relation between modular readings and causal
+depth. The calibration examples show that fixing the speed of light relates
+length and time units and leaves an energy scale free \cite{csCALIB}.
+
+\paragraph{Physical realization of the phase test.} The test of
+Section~\ref{sec:prediction} needs a realized preparation and observable, an
+independently established service budget, and complete records collected
+under the fixed protocol. A physical model of nature additionally needs
+sector-specific predictions; comparisons with data seen before a protocol was
+fixed are postdictions.
+
+\paragraph{Joins between executed components.} Several certified
+components run on separate schedules with separate error budgets. The
+source-executed record instruments of Section~\ref{sec:ce-source} run apart
+from the common source of Section~\ref{sec:common}, whose native step is the
+declared primitive; the two-read field history of
+Section~\ref{sec:two-read} has no source compilation; the local split-update
+engine and the two-read continuation of Section~\ref{sec:fields} carry
+different bounds; and the modular and fixed-reference clocks of
+Section~\ref{sec:readouts} continue the finite sharp history without an
+occupation limit of their own. Each join needs its own implementation and
+error analysis, and certified numerical execution together with independently
+established physical service bounds is a separate budget for every executed
+word.
+
+\paragraph{Longer observers.} Observers with explicit memory, reset,
+continuation and resource contracts should preserve the demonstrated
+behaviour of the two-event components. The incident-tick memory test becomes
+an implemented apparatus once the N4 preparation, occupation detector and
+local event counter are joined; and a native quantum realization of the
+global history repair of Section~\ref{sec:repair-geometry} is a separate
+construction requirement.
+
+\section{Reproducibility}
+\label{sec:repro}
+
+Every result has a replayable receipt. Each receipt binds the SHA-256 hashes
+of its sources and inputs through a per-package artifact list, and every
+source, model document and receipt of the construction is covered by such a
+list. The repository's verification entry point recomputes all hashes,
+replays the twenty-one retained receipts and compares canonical bytes. Exact
+certificates must match exactly, and floating diagnostics carry declared
+replay tolerances. Independent test suites check the executable statements
+against separately written oracles, including adversarial mutations of the
+receipts. The construction, its documents and its receipts are public at the
+cited revision of the OPH repository \cite{ophrepo}.
+
+\section*{Statements and declarations}
+
+\noindent\textbf{Funding.}
+The authors declare that no external grants or dedicated third-party research
+funding were received for the preparation of this manuscript.
+
+\noindent\textbf{Competing interests.}
+The authors participate in OPH-related research, software, simulation, or
+prototype-development programs and may receive professional or reputational
+benefit from this work. These relationships are disclosed. The authors declare
+no other competing interests.
+
+\noindent\textbf{Data availability.}
+The model documents, executable sources, retained receipts and claim records
+supporting this study are available in the public OPH repository at the
+cited revision \cite{ophrepo}.
+
+\noindent\textbf{Corresponding author.}
+Correspondence should be addressed to Bernhard Mueller,
+\href{mailto:bernhard@floatingpragma.ai}{\nolinkurl{bernhard@floatingpragma.ai}}.
+
+{\footnotesize
+\begin{thebibliography}{99}
+\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}
+
+\bibitem{ophrepo}
+FloatingPragma (2026). \emph{Observer Patch Holography}: papers, Lean library,
+executable model, receipts and claim registries. Public repository at revision
+b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7.
+\url{https://github.com/FloatingPragma/observer-patch-holography/tree/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7}
+
+\bibitem{flagship}
+Mueller, B., Osika, A., Poneder, M., Xue, K., Cassie, B., Nguyen, P., Kim, J.,
+Matscheko, D., Hill, J., Glynn, W.\,T., Visser, M.\,A., Anirudha, K.\,A., and
+de La Fourni\`ere, B. (2026). \emph{Observers Who Read Their Universe into
+Existence: Finite Consensus, an Executable Observer, and Standard Physics}.
+Flagship synthesis.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/flagship/from_observer_consensus_to_standard_physics.pdf}
+
+\bibitem{ophconsensus}
+Mueller, B., Xue, K., Kim, J., Anirudha, K.\,A., Matscheko, D., and Hill, J.
+(2026). \emph{Reality as a Consensus Protocol: The Fixed-Point Computation That
+Implements Physics}. Public manuscript.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/paper/reality_as_consensus_protocol.pdf}
+
+\bibitem{ophobservers}
+Mueller, B., Osika, A., Poneder, M., Xue, K., Cassie, B., and Nguyen, P.
+(2026). \emph{Observers Are All You Need}. Public manuscript.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/paper/observers_are_all_you_need.pdf}
+
+\bibitem{ophgauge}
+Mueller, B., Osika, A., Poneder, M., Xue, K., Nguyen, P., and Matscheko, D.
+(2026). \emph{Deriving Standard Model Gauge Structure from Observer Overlap
+Consistency}. Public manuscript.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf}
+
+\bibitem{ophspacetime}
+Mueller, B., Osika, A., Poneder, M., Xue, K., Nguyen, P., Visser, M.\,A.,
+Matscheko, D., and de La Fourni\`ere, B. (2026). \emph{Recovering Observer
+Spacetime and Einstein Dynamics from Overlap Consistency}. Public manuscript.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}
+
+\bibitem{ophmicro}
+Mueller, B., Osika, A., Xue, K., Cassie, B., and de La Fourni\`ere, B. (2026).
+\emph{Federated Echosahedral Screen Microphysics: Patch Hardware, Records, and
+Observer Synchronization in Observer-Patch Holography}. Public manuscript.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/paper/screen_microphysics_and_observer_synchronization.pdf}
+
+\bibitem{mREADME}
+FloatingPragma (2026). \emph{The runnable OPH model}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/README.md}
+
+\bibitem{mCONSTRUCTION}
+FloatingPragma (2026). \emph{OPH model construction from local repair}.
+Construction guide with completion target, acceptance criteria and audit
+controls.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/CONSTRUCTION.md}
+
+\bibitem{mCANDIDATES}
+FloatingPragma (2026). \emph{Concrete repair-law candidates}. Candidate
+register.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/CANDIDATES.md}
+
+\bibitem{mPREMISES}
+FloatingPragma (2026). \emph{OPH reverse-engineering table: model and theorem
+premises}. Generated premise map.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/PREMISES.md}
+
+\bibitem{mMAP}
+FloatingPragma (2026). \emph{Model and theorem navigation map}.
+Machine-readable input of the premise map.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/tracking/model_theorem_map.json}
+
+\bibitem{mINTERP}
+FloatingPragma (2026). \emph{OPH interpretation and working terms}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/docs/INTERPRETATION_AND_TERMS.md}
+
+\bibitem{oREADME}
+FloatingPragma (2026). \emph{Runnable finite observers}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/README.md}
+
+\bibitem{oDERIV}
+FloatingPragma (2026). \emph{Finite current-record controller: mathematical
+account}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/DERIVATION.md}
+
+\bibitem{oCAP}
+FloatingPragma (2026). \emph{Native observer records reuse the existing capacity
+construction}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/CAPACITY.md}
+
+\bibitem{oQM}
+FloatingPragma (2026). \emph{Quantum mixing of the native C/E repairs}. Model
+document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/QUANTUM_MIXING.md}
+
+\bibitem{oRR}
+FloatingPragma (2026). \emph{Recovery with complete native records}. Model
+document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/RECORD_RECOVERY.md}
+
+\bibitem{pREADME}
+FloatingPragma (2026). \emph{P-dependent electromagnetic observation and native
+feedback}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/p_response/README.md}
+
+\bibitem{pDERIV}
+FloatingPragma (2026). \emph{Charged realization, binary instrument and
+feedback}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/p_response/DERIVATION.md}
+
+\bibitem{pACCESS}
+FloatingPragma (2026). \emph{Detector access and the conditional capacity
+budget}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/p_response/ACCESS_CAPACITY.md}
+
+\bibitem{pVALID}
+FloatingPragma (2026). \emph{Validation of the native-record electromagnetic
+adapter}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/p_response/VALIDATION.md}
+
+\bibitem{sREADME}
+FloatingPragma (2026). \emph{A scalar detector inside the native observer
+protocol}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/scalar_response/README.md}
+
+\bibitem{sDERIV}
+FloatingPragma (2026). \emph{A native record coupled to a scalar field
+instrument}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/scalar_response/DERIVATION.md}
+
+\bibitem{sPRED}
+FloatingPragma (2026). \emph{Conditional detector prediction}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/scalar_response/PREDICTION.md}
+
+\bibitem{sCONT}
+FloatingPragma (2026). \emph{Two reads of the retained field}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/scalar_response/CONTINUATION.md}
+
+\bibitem{ssREADME}
+FloatingPragma (2026). \emph{Scalar preparation, evolution and detection through
+source controls}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/source_scalar/README.md}
+
+\bibitem{ssDERIV}
+FloatingPragma (2026). \emph{A finite source implementation of the two-site
+scalar instrument}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/source_scalar/DERIVATION.md}
+
+\bibitem{sdREADME}
+FloatingPragma (2026). \emph{Execute the native C/E discrimination experiment
+from source controls}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/source_discrimination/README.md}
+
+\bibitem{sdDERIV}
+FloatingPragma (2026). \emph{Source implementation of the complete C/E
+discriminator}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/source_discrimination/DERIVATION.md}
+
+\bibitem{prREADME}
+FloatingPragma (2026). \emph{Fixed observer predictions and complete-count
+comparison}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/predictions/README.md}
+
+\bibitem{prDERIV}
+FloatingPragma (2026). \emph{Exact record-instrument discrimination}. Model
+document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/predictions/DERIVATION.md}
+
+\bibitem{ltREADME}
+FloatingPragma (2026). \emph{N4 memory survives the observer's local tick
+clock}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/local_tick/README.md}
+
+\bibitem{ltSPEC}
+FloatingPragma (2026). \emph{N4 occupation memory at observer-local ticks}.
+Protocol specification.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/local_tick/SPEC.md}
+
+\bibitem{csREADME}
+FloatingPragma (2026). \emph{A common interacting observer process}. Model
+document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/README.md}
+
+\bibitem{csDERIV}
+FloatingPragma (2026). \emph{One finite interacting source: derivation and
+theorem attachments}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/DERIVATION.md}
+
+\bibitem{csINF}
+FloatingPragma (2026). \emph{The interacting feedback signal survives infinite
+occupation}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/INFINITE_HISTORY.md}
+
+\bibitem{csOCC}
+FloatingPragma (2026). \emph{Occupation refinement of the interacting retained
+history}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/OCCUPATION.md}
+
+\bibitem{csOCCREF}
+FloatingPragma (2026). \emph{Occupation limit of the same interacting observer
+history}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/OCCUPATION_REFINEMENT.md}
+
+\bibitem{csREAD}
+FloatingPragma (2026). \emph{Infinite coordinate-sign readout}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/READOUT.md}
+
+\bibitem{csSMOOTH}
+FloatingPragma (2026). \emph{A smooth binary observer with a complete occupation
+error bound}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/SMOOTH_REFINEMENT.md}
+
+\bibitem{csOBS}
+FloatingPragma (2026). \emph{Hilbert space, modular clocks and operational
+regions}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/OBSERVER_READOUTS.md}
+
+\bibitem{csTHERM}
+FloatingPragma (2026). \emph{A fixed thermal reference for the changing common
+history}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/THERMAL_CLOCK.md}
+
+\bibitem{csHIST}
+FloatingPragma (2026). \emph{One complete history from local constraint
+repair}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/HISTORY_REPAIR.md}
+
+\bibitem{csSLOW}
+FloatingPragma (2026). \emph{The existing three-dimensional response carrier on
+actual observer records}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/SLOW_GEOMETRY.md}
+
+\bibitem{csCAUS}
+FloatingPragma (2026). \emph{Exact native causal cones}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/CAUSALITY.md}
+
+\bibitem{csFIELDS}
+FloatingPragma (2026). \emph{Field relations of the existing native repair}.
+Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/NATIVE_FIELDS.md}
+
+\bibitem{csCALIB}
+FloatingPragma (2026). \emph{Testing the readouts before assigning physical
+units}. Model document.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/CALIBRATION.md}
+
+\bibitem{rNATIVE}
+FloatingPragma (2026). Retained receipt of the exact native observer histories
+and calculation checks.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/results/native.json}
+
+\bibitem{rRUN}
+FloatingPragma (2026). Retained receipt of the 20,000-trial sequential native
+execution.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/results/run.json}
+
+\bibitem{rCAP}
+FloatingPragma (2026). Retained receipt of the record capacity and compact
+controller.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/results/capacity.json}
+
+\bibitem{rQM}
+FloatingPragma (2026). Retained receipt of the quantum mixing and memory
+certificates.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/results/quantum_mixing.json}
+
+\bibitem{rRR}
+FloatingPragma (2026). Retained receipt of complete-record recovery and
+identifying schedules.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/results/record_recovery.json}
+
+\bibitem{rP}
+FloatingPragma (2026). Retained receipt of the $P$-dependent detector.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/p_response/results.json}
+
+\bibitem{rLT}
+FloatingPragma (2026). Retained receipt of the local-tick memory certificate.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/local_tick/results.json}
+
+\bibitem{rSCALAR}
+FloatingPragma (2026). Retained receipt of the scalar detector on four grids.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/scalar_response/results.json}
+
+\bibitem{rSS}
+FloatingPragma (2026). Retained receipt of the two-site source apparatus.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/observer/source_scalar/results.json}
+
+\bibitem{rCS}
+FloatingPragma (2026). Retained receipt of the common interacting source.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/results.json}
+
+\bibitem{rSHARP}
+FloatingPragma (2026). Retained receipt of the complete sharp-output
+comparisons.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/sharp_output_results.json}
+
+\bibitem{rBRIDGE}
+FloatingPragma (2026). Retained receipt of the observer readouts and the
+modular clock.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/b2e8dd0537593e6e08f8eb6e2bc8f3b9065454c7/model/common_source/bridge_results.json}
+
+\bibitem{aharonov1959}
+Aharonov, Y., and Bohm, D. (1959). ``Significance of electromagnetic potentials
+in the quantum theory.'' \emph{Physical Review} \textbf{115}(3), 485--491.
+\url{https://doi.org/10.1103/PhysRev.115.485}
+
+\bibitem{bratteli1}
+Bratteli, O., and Robinson, D.\,W. (1987). \emph{Operator Algebras and Quantum
+Statistical Mechanics 1: $C^*$- and $W^*$-Algebras, Symmetry Groups,
+Decomposition of States}, 2nd ed. Springer, Berlin.
+
+\bibitem{bratteli2}
+Bratteli, O., and Robinson, D.\,W. (1997). \emph{Operator Algebras and Quantum
+Statistical Mechanics 2: Equilibrium States, Models in Quantum Statistical
+Mechanics}, 2nd ed. Springer, Berlin.
+
+\bibitem{caputo2010}
+Caputo, P., Liggett, T.\,M., and Richthammer, T. (2010). ``Proof of Aldous'
+spectral gap conjecture.'' \emph{Journal of the American Mathematical Society}
+\textbf{23}(3), 831--851. \url{https://arxiv.org/abs/0906.1238}
+
+\bibitem{choi1974}
+Choi, M.-D. (1974). ``A Schwarz inequality for positive linear maps on
+$C^*$-algebras.'' \emph{Illinois Journal of Mathematics} \textbf{18}(4),
+565--574.
+
+\bibitem{codata2022}
+Mohr, P.\,J., Newell, D.\,B., Taylor, B.\,N., and Tiesinga, E. (2025).
+``CODATA recommended values of the fundamental physical constants: 2022.''
+\emph{Reviews of Modern Physics} \textbf{97}, 025002.
+\url{https://doi.org/10.1103/RevModPhys.97.025002}
+
+\bibitem{connesrovelli1994}
+Connes, A., and Rovelli, C. (1994). ``Von Neumann algebra automorphisms and
+time-thermodynamics relation in generally covariant quantum theories.''
+\emph{Classical and Quantum Gravity} \textbf{11}, 2899--2917.
+\url{https://doi.org/10.1088/0264-9381/11/12/007}
+
+\bibitem{dlmf}
+Olver, F.\,W.\,J., et al., eds. \emph{NIST Digital Library of Mathematical
+Functions}, Chapter 18, Orthogonal Polynomials. \url{https://dlmf.nist.gov/18}
+
+\bibitem{gurvits2002}
+Gurvits, L., and Barnum, H. (2002). ``Largest separable balls around the
+maximally mixed bipartite quantum state.'' \emph{Physical Review A}
+\textbf{66}, 062311. \url{https://doi.org/10.1103/PhysRevA.66.062311}
+
+\bibitem{hoeffding1963}
+Hoeffding, W. (1963). ``Probability inequalities for sums of bounded random
+variables.'' \emph{Journal of the American Statistical Association}
+\textbf{58}(301), 13--30. \url{https://doi.org/10.1080/01621459.1963.10500830}
+
+\bibitem{horodecki2003}
+Horodecki, M., Shor, P.\,W., and Ruskai, M.\,B. (2003). ``Entanglement breaking
+channels.'' \emph{Reviews in Mathematical Physics} \textbf{15}(6), 629--641.
+\url{https://arxiv.org/abs/quant-ph/0302031}
+
+\bibitem{knill1997}
+Knill, E., and Laflamme, R. (1997). ``Theory of quantum error-correcting
+codes.'' \emph{Physical Review A} \textbf{55}, 900--911.
+\url{https://doi.org/10.1103/PhysRevA.55.900}
+
+\bibitem{kraus1983}
+Kraus, K. (1983). \emph{States, Effects, and Operations: Fundamental Notions of
+Quantum Theory}. Lecture Notes in Physics 190, Springer, Berlin.
+
+\bibitem{luders1950}
+L\"uders, G. (1950). ``\"Uber die Zustands\"anderung durch den
+Me{\ss}proze{\ss}.'' \emph{Annalen der Physik} \textbf{443}, 322--328.
+\url{https://doi.org/10.1002/andp.19504430510}
+
+\bibitem{peres1996}
+Peres, A. (1996). ``Separability criterion for density matrices.''
+\emph{Physical Review Letters} \textbf{77}, 1413--1415.
+\url{https://doi.org/10.1103/PhysRevLett.77.1413}
+
+\bibitem{reedsimon1}
+Reed, M., and Simon, B. (1980). \emph{Methods of Modern Mathematical Physics I:
+Functional Analysis}, revised and enlarged ed. Academic Press, New York.
+
+\bibitem{reedsimon2}
+Reed, M., and Simon, B. (1975). \emph{Methods of Modern Mathematical Physics
+II: Fourier Analysis, Self-Adjointness}. Academic Press, New York.
+
+\bibitem{strang1968}
+Strang, G. (1968). ``On the construction and comparison of difference
+schemes.'' \emph{SIAM Journal on Numerical Analysis} \textbf{5}(3), 506--517.
+\url{https://doi.org/10.1137/0705041}
+
+\bibitem{teschl2014}
+Teschl, G. (2014). \emph{Mathematical Methods in Quantum Mechanics: With
+Applications to Schr\"odinger Operators}, 2nd ed. Graduate Studies in
+Mathematics 157, American Mathematical Society, Providence.
+
+\end{thebibliography}}
+
+\section*{AI Assistance Disclosure}
+This research project used research-grade commercial models, including
+Anthropic's Fable and OpenAI's GPT-6 Astra, for research support, software
+development, editing, and synthesis. The authors are responsible for the
+paper's claims, methods, and final text.
+
+\end{document}
