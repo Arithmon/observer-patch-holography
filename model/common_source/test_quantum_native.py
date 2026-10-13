@@ -131,13 +131,30 @@ def test_empty_or_unnormalized_joint_reference_is_rejected(history):
             q.output_on_joint_input(history, value)
 
 
-def test_resource_count_covers_routing_and_all_code_services():
-    costs = q.resources('C', 2, 16)
-    assert costs['maximum_native_pulses_per_attempt'] == (
-        costs['field_path_maxima']['native_pulses']+5371+2198007+4)
+@pytest.mark.parametrize('law,dimension,record_bits,peak_qubits',
+                         [('C', 2, 21, 15), ('E', 4, 23, 18)])
+def test_resource_count_covers_routing_and_all_code_services(law, dimension, record_bits, peak_qubits):
+    histories = q._programs(dimension, 16, 'source')
+    costs = q.resources(law, dimension, 16)
+    native_preparation = max(len(q.circuit.preparation_word(setting))
+                             for setting in q.circuit.SETTINGS[:3])
+    first = q.routing.routed_repair_resources(law, (0, 1))['native_pulses']
+    last = {bit: q.routing.routed_repair_resources(
+        law, (0, 5) if bit == 0 else (0, 1))['native_pulses'] for bit in (0, 1)}
+    # Retain the causal coupling: the second smooth bit selects both its
+    # feedback operation and the final native seam. Independent maxima need
+    # not be simultaneously realizable for a different source schedule.
+    successful_paths = [native_preparation+first+dict(branch.resources)['native_pulses']
+                        +last[branch.record[2]]+1
+                        for history in histories.values() for branch in history.branches]
+    first_abort = native_preparation+first+dict(histories[0].preparation_resources)['native_pulses']
+    # A last-record abort retains its work but omits the terminal Y rotation;
+    # a first-record abort omits the current kick and every work operation.
+    attempted_paths = [first_abort, *successful_paths, *(cost-1 for cost in successful_paths)]
+    assert costs['maximum_native_pulses_per_attempt'] == max(attempted_paths)
     assert costs['maximum_proper_code_service_events_per_attempt'] == 2*costs['maximum_native_pulses_per_attempt']
-    assert costs['fixed_width_terminal_record_bits_including_two_status_bits'] == 21
-    assert costs['peak_code_qubits_excluding_six_level_processor'] == 15
+    assert costs['fixed_width_terminal_record_bits_including_two_status_bits'] == record_bits
+    assert costs['peak_code_qubits_excluding_six_level_processor'] == peak_qubits
     assert costs['field_preparations'] == 1
 
 

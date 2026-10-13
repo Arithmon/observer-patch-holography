@@ -1036,7 +1036,8 @@
   },
   "schema": "oph.common_source.quantum_native.v1",
   "scope": {
-    "all_native_reference_coherences_retained": true,
+    "complete_native_reference_outputs_retained": true,
+    "cross_record_coherence_preserved": false,
     "declared_native_integer_primitive_used_in_execution": false,
     "full_native_input_dimension": 78,
     "native_terminal_read_is_full_computational_read_after_rotation": true,

@@ -100,3 +100,59 @@ def test_readout_refuses_nonfinite_aborted_probability_from_finite_forged_factor
             assert np.isnan(result['probability_mass'])
             assert np.isnan(result['abort_probability'])
             assert result['complete_outcome_count'] == 295106
+
+
+@pytest.mark.parametrize('joint', (False, True))
+@pytest.mark.parametrize('amplitude', (1e200, 1e200+1e200j))
+def test_public_inputs_reject_overflowing_norms_of_finite_amplitudes(baseline, joint, amplitude):
+    shape = (78, 16, 2) if joint else (78, 2)
+    initial = np.zeros(shape, complex)
+    initial.flat[0] = amplitude
+    assert np.isfinite(initial).all()
+    consumer = q.output_on_joint_input if joint else q.output
+    with np.errstate(over='ignore', invalid='ignore'):
+        with pytest.raises(ValueError, match='normalized'):
+            consumer(baseline, initial)
+
+
+@pytest.mark.parametrize('joint', (False, True))
+def test_nan_norm_reduction_guard_has_a_deterministic_mutation_control(baseline, joint, monkeypatch):
+    shape = (78, 16, 2) if joint else (78, 2)
+    initial = np.zeros(shape, complex)
+    initial.flat[0] = 1.
+    consumer = q.output_on_joint_input if joint else q.output
+    # BLAS implementations may return either inf or NaN as the real part of
+    # an overflowing complex inner product. Force its NaN reduction here so
+    # the guard mutation is independent of that implementation detail.
+    monkeypatch.setattr(q.np, 'vdot', lambda left, right: complex(float('nan'), 0))
+    with pytest.raises(ValueError, match='normalized'):
+        consumer(baseline, initial)
+    with monkeypatch.context() as weakened:
+        weakened.setattr(q.math, 'isfinite', lambda value: True)
+        assert consumer(baseline, initial) is not None
+
+
+@pytest.mark.parametrize('joint', (False, True))
+def test_public_inputs_preserve_valid_complex_reference_amplitudes(baseline, joint):
+    shape = (78, 16, 2) if joint else (78, 2)
+    initial = np.zeros(shape, complex)
+    initial.flat[0], initial.flat[-1] = .5+.5j, .5-.5j
+    if joint:
+        rows = q.output_on_joint_input(baseline, initial)
+        mass = 0.
+        for branch, (record, value) in zip(baseline.branches, rows, strict=True):
+            mass += float(np.vdot(value, value).real)
+            expected = np.zeros((512, 16, 2), complex)
+            expected[:, :, 0] = (.5+.5j)*np.outer(branch.native_map[:, 0], branch.work_map[:, 0])
+            expected[:, :, 1] = (.5-.5j)*np.outer(branch.native_map[:, -1], branch.work_map[:, -1])
+            assert record == branch.record
+            np.testing.assert_allclose(value, expected, atol=2e-12, rtol=0)
+    else:
+        rows = q.output(baseline, initial)
+        mass = sum(float(np.vdot(a, a).real)*float(np.vdot(v, v).real)
+                   for a, v in rows.values())
+        for branch in baseline.branches:
+            expected = np.column_stack(((.5+.5j)*branch.native_map[:, 0],
+                                        (.5-.5j)*branch.native_map[:, -1]))
+            np.testing.assert_allclose(rows[branch.record][0], expected, atol=2e-12, rtol=0)
+    assert abs(mass-1) < 2e-10

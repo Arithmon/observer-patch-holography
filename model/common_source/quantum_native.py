@@ -207,7 +207,8 @@ def _input(value, size):
     if raw.ndim not in (1, 2) or raw.shape[0] != size:
         raise ValueError('native vector or native-by-reference columns required')
     result = _array(value, raw.shape, 'native input').reshape(size, -1)
-    if not result.shape[1] or abs(float(np.vdot(result, result).real)-1) > 2e-10:
+    norm_squared = float(np.vdot(result, result).real)
+    if not result.shape[1] or not math.isfinite(norm_squared) or abs(norm_squared-1) > 2e-10:
         raise ValueError('normalized nonempty native/reference input required')
     return result
 
@@ -233,7 +234,8 @@ def output_on_joint_input(history, initial):
     if raw.ndim != 3 or raw.shape[:2] != (78, size) or not raw.shape[2]:
         raise ValueError('native-by-work-by-reference amplitudes required')
     value = _array(initial, raw.shape, 'joint input')
-    if abs(float(np.vdot(value, value).real)-1) > 2e-10:
+    norm_squared = float(np.vdot(value, value).real)
+    if not math.isfinite(norm_squared) or abs(norm_squared-1) > 2e-10:
         raise ValueError('normalized joint input required')
     return ((b.record, np.einsum('ai,bj,ijr->abr', b.native_map, b.work_map, value,
                                  optimize=True)) for b in history.branches)
@@ -466,7 +468,8 @@ def run(steps=STEPS):
             'routing': routing.routing_word_summary(),
             'routing_execution': routing.routing_execution_diagnostics(), 'cutoffs': rows,
             'scope': {'full_native_input_dimension': 78, 'retained_native_output_dimension': 512,
-                      'all_native_reference_coherences_retained': True,
+                      'complete_native_reference_outputs_retained': True,
+                      'cross_record_coherence_preserved': False,
                       'declared_native_integer_primitive_used_in_execution': False,
                       'native_terminal_read_is_full_computational_read_after_rotation': True,
                       'physical_services_or_clock_calibration_established': False,

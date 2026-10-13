@@ -348,3 +348,12 @@ invisible to basis populations, omitted aborts, changed work outputs,
 discarded padding and nonfinite accumulated probabilities. Shared decoder
 logic and an overflow-to-NaN normalization escape were corrected during this
 audit; paired regressions reproduce the defective checks and their repairs.
+
+A further independent audit found the same NaN comparison failure at both
+input boundaries: finite but grossly unnormalized complex amplitudes could
+overflow their squared norm. Input validation explicitly requires a finite
+unit norm before either native/reference or joint-input execution; valid
+complex states remain admitted. Resource maxima are checked against complete
+record paths with their selected final seams, including the charged
+zero-angle feedback requests. The receipt records complete quantum-output
+retention and explicitly excludes preservation of cross-record coherence.
