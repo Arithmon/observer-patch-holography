@@ -118,7 +118,9 @@ these documents track the construction intended to supply their inputs.
 
 Each register is generated from a JSON source by a tool in [`tools/`](../tools/).
 The first line of every page names its source and generator; edit the source,
-then regenerate.
+then regenerate. The [five-ledger map](../claims/README.md#the-five-ledgers)
+groups the sources into the claims, premises, predictions-and-tests, evidence
+and papers ledgers.
 
 - [Premise Register](registers/PREMISE_REGISTER_V3.md) names each V3 input and
   its consumers and classifies each evidence path by its scientific role.

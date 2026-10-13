@@ -16,44 +16,30 @@ The validator parses it as strict JSON and rejects duplicate keys; a YAML loader
 reads the same data but lets a duplicate key through silently, so consumers
 should parse it as JSON.
 
-The registry is part of the working process:
+## The five ledgers
 
-- Model construction uses the existing claim identities and premises through
-  [Model construction](../model/CONSTRUCTION.md) and the generated
-  [model–theorem premise map](../model/PREMISES.md). Candidate hypotheses
-  and issue completion do not change a registered claim's scientific status.
-  Record exact same-model attachments and retained inputs there; change this
-  registry when the established claim or its evidence changes. Paper releases
-  follow the model programme's hold; necessary scientific corrections remain
-  in scope throughout it.
-- `claims/axiom_registry.yaml` records the theorem premises A1-A3, their
-  interfaces, exclusions, and scientific realization boundaries.
-- `claims/claim_registry.yaml` records top-level claim IDs, owner papers, claim tiers, imported
-  mathematics, OPH-specific deltas, assumptions, evidence, falsifiers, and survival rules.
-- `claims/novelty_matrix.csv` maps each claim against prior work.
-- `claims/falsification_matrix.csv` records mathematical, physical-identification, and
-  phenomenological failure modes.
-- `claims/dependency_graph.json` records cross-claim dependencies.
-- `claims/assumption_dictionary.md` gives stable names to recurring assumptions.
-- `claims/frozen_prediction_register.json` records frozen and pending
-  prediction contracts; `tools/build_fz_registry.py` validates it and renders
-  `docs/FROZEN_PREDICTION_LADDER.md`.
-- `tracking/observation_ledger.json` section `instruments` records scientific simulation and
-  measurement instruments; `tools/build_instrument_register.py` validates it
-  and renders it as a section of `docs/registers/OBSERVATION_LEDGER_V3.md`.
-- `claims/selection_ledger.json` and
-  `claims/physical_identification_registry.json` record scientific selection
-  classes and physical-identification boundaries; `tools/build_selection_ledger.py`
-  validates them and renders `docs/registers/SELECTION_LEDGER.md`.
-- `claims/gravity_premise_ladder.json` records the gravity premise-elimination
-  rungs; `tools/build_gravity_ladder.py` validates it and renders
-  `docs/registers/GRAVITY_PREMISE_LADDER.md`.
-- `claims/public_surface_quantitative_claims.json` controls quantitative
-  statements on public summary surfaces and is checked by
-  `tools/check_public_surface_claims.py`.
-- `claims/active_surface_inventory.json` is a generated reachability
-  projection written by `tools/check_axiom_consistency.py --inventory`; it is
-  not a hand-edited registry or project-status surface.
+The repository keeps its scientific bookkeeping in five ledgers. Each ledger
+has one machine source; the other files are views rendered from it or
+sub-registers validated with it, and the checks fail when a view drifts from
+its source.
+
+| Ledger | Machine source | Views and sub-registers |
+| --- | --- | --- |
+| Claims | `claims/claim_registry.yaml`: the claim rows and a `claim_context` section with each claim's prior work and citations, owner section, falsifiers and dependencies; `claims/prior_work.json`, the verified bibliography of that prior work; `claims/assumption_dictionary.md`, the assumption names | `claims/novelty_matrix.csv`, `claims/falsification_matrix.csv` and `claims/dependency_graph.json` (rendered by `tools/build_claim_views.py`); the credited-prior-work section of each paper (`tools/build_prior_work.py`); the selection and physical-identification registers `claims/selection_ledger.json` and `claims/physical_identification_registry.json` (validated and rendered to `docs/registers/SELECTION_LEDGER.md` by `tools/build_selection_ledger.py`); the public quantitative-display policy `claims/public_surface_quantitative_claims.json` |
+| Premises | `tracking/premise_register.json`, with the model-supply crosswalk `tracking/model_theorem_map.json`, the Standard Model coverage `tracking/sm_lagrangian_correspondence.json` and the gravity rungs `claims/gravity_premise_ladder.json`; the theorem-library premises A1-A3 in `claims/axiom_registry.yaml`, stated in `docs/AXIOM_REFERENCE.md` | `docs/registers/PREMISE_REGISTER_V3.md`, `model/PREMISES.md`, `docs/registers/SM_LAGRANGIAN_CORRESPONDENCE.md`, `docs/registers/GRAVITY_PREMISE_LADDER.md` |
+| Predictions and tests | `claims/frozen_prediction_register.json`, the custody record of frozen predictions, and `tracking/observation_ledger.json`, whose `instruments` and `constants` sections hold the emergent-instrument register and the constants ancestry | `docs/FROZEN_PREDICTION_LADDER.md`, `docs/registers/OBSERVATION_LEDGER_V3.md`, `docs/POSTDICTION_LEDGER.md`, `tracking/null_model_scorecard.md`; `docs/OPH_FALSIFICATION_PROGRAM.md` summarizes the falsification rules for readers |
+| Evidence | the per-package manifests and verifiers under `evidence/`, `code/` and `model/`, the receipt-promotion and external-data registries under `code/audit/`, and `Lean/docs/PROOF_INDEX.md` | `evidence/README.md` |
+| Papers | `paper/content_inventory.yml` and the paper list in `tools/build_tex_papers.py` | `paper/paper_release_manifest.json`, `docs/PAPER_SET.md` |
+
+Model construction uses the existing claim identities and premises through
+[Model construction](../model/CONSTRUCTION.md) and the generated
+[model–theorem premise map](../model/PREMISES.md). Candidate hypotheses and
+issue completion do not change a registered claim's scientific status. Record
+exact same-model attachments and retained inputs there; change this registry
+when the established claim or its evidence changes.
+
+`claims/active_surface_inventory.json` is a generated reachability projection
+written by `tools/check_axiom_consistency.py --inventory`; it is not a ledger.
 
 The validator is:
 
@@ -64,8 +50,11 @@ python3 tools/check_claim_registry.py
 It checks that the registry release ID matches `paper/release_info.tex`, that every claim has an
 owner file and falsifier, that the novelty/falsification matrices and dependency graph contain
 every canonical claim ID with no unknown IDs, that the one-row-per-claim novelty and DAG node
-projections have no duplicates, and that paper sources do not depend on direct paths to this
-registry. The falsification matrix may keep several independently scoped rows for one claim.
+projections have no duplicates, that those three views match their rendering from the registry,
+that every established result a claim uses is cited from a verified entry of
+`claims/prior_work.json` or marked as a result of the project itself, that the papers'
+credited-prior-work sections are current, and that paper sources do not depend on direct paths
+to this registry. The falsification matrix may keep several independently scoped rows for one claim.
 
 Three row-level contracts carry their own machine-checked declaration:
 

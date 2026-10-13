@@ -5,6 +5,8 @@ evidence summaries. The [live model](../model/README.md) owns observer and
 repair-law implementation; these sources record its connections to finite
 and continuum results, declared physical premises and observation targets.
 Finite construction evidence does not by itself promote a physical claim.
+The [five-ledger map](../claims/README.md#the-five-ledgers) shows which of
+these files are ledger sources and which are rendered views.
 
 - [`model_theorem_map.json`](model_theorem_map.json) connects the common
   repair candidate to theorem premises and bounded completion conditions.
