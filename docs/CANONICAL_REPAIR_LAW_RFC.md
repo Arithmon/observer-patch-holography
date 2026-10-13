@@ -3,7 +3,7 @@
 ## Status
 
 This document specifies a proposed strengthening of A1 and A2. It is not part
-of the three-axiom basis. Adoption requires the proof and refinement gates
+of the premises A1-A3. Adoption requires the proof and refinement gates
 listed below.
 
 The [finite algebra and repair audit](../code/quantum_information/ALGEBRAS_AND_REPAIR.md)
@@ -21,11 +21,11 @@ relaxation law of two almost parallel primitive repairs. A long finite
 record lifetime does not establish an exactly protected observable; the
 common supplied span must be checked without rounding away a slow mode.
 
-The proposed A1-R and A2-R clauses are substantive basis amendments, not
+The proposed A1-R and A2-R clauses are substantive premise amendments, not
 clarifications of consequences that follow from the current wording. They
-exclude models that satisfy the present A1-A3 basis. Keeping them inside A1
-and A2 would preserve a three-axiom count, and adoption would require a
-basis-wide dependency and countermodel audit.
+exclude models that satisfy the present premises A1-A3. Keeping them inside A1
+and A2 would preserve the three premise labels, and adoption would require a
+dependency and countermodel audit of every result that consumes A1 or A2.
 
 The scalar finite branch has a positive exact result. The thirty primitive
 seam constraints, their sixty directed integer completions, the unique
@@ -50,15 +50,15 @@ premises.
 The proposal is designed to derive a unique dimensionless repair generator at
 each certified finite regulator after a common repair algebra, a faithful
 selected state, and a fair schedule have been certified. It does not introduce
-a fourth axiom, and it has not been adopted.
+a premise beyond A1-A3, and it has not been adopted.
 
 ## Motivation
 
 A1 exposes repair instruments, A2 defines agreement of interpreted data, and
 A3 selects a least-informative state or transition distribution inside a fixed
-feasible space. The canonical axiom reference does not require the A1 repair
+feasible space. The premise reference does not require the A1 repair
 grammar to be complete and does not define a completed A2 reconciliation.
-Consequently, several inequivalent repair policies satisfy the basis.
+Consequently, several inequivalent repair policies satisfy A1-A3.
 
 The proposed clauses close those two gaps. A1 fixes the complete primitive
 move grammar and types the data carried through repair. A2 fixes the
@@ -450,7 +450,7 @@ grammar remains a separate proof obligation.
 
 The twelve-port scalar branch exposes a possible construction of the carrier
 space itself. This construction is conditional on two additional clauses
-inside the proposed A1-R/A2-R amendment. It is not part of the adopted basis.
+inside the proposed A1-R/A2-R amendment. It is not part of the adopted premises A1-A3.
 
 Let \(P\) be the twelve-port set with its source antipode. The cumulative
 signed port-record module is
@@ -890,4 +890,4 @@ The strongest supported statement is:
 
 If inequivalent repair laws survive after every proof obligation above is
 closed, their remaining choice is a genuine additional physical premise. That
-is the point at which a fourth axiom would become justified.
+is the point at which an additional specification clause would become justified.

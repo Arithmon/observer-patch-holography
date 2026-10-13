@@ -464,7 +464,7 @@ There are two different questions here:
 
 ### 8.1 Strong UV background independence
 
-One can ask for a fully closed, nonperturbative theory in which no kinematical structure at all is presupposed. OPH does not attempt that maximal version of the program. It starts from a screen net on `S^2`, plus algebraic and information-theoretic axioms.
+One can ask for a fully closed, nonperturbative theory in which no kinematical structure at all is presupposed. OPH does not attempt that maximal version of the program. Its executable specification fixes a screen net on `S^2` with algebraic and information-theoretic premises; under the closure hypothesis, observers recover that specification from their records, and nothing outside the structure supplies it.
 
 ### 8.2 Absence of a preferred observable inertial frame
 

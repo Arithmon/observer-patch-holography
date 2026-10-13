@@ -1208,8 +1208,8 @@ def build_svg(results: Dict[str, Any], exact_by_id: Dict[str, Dict[str, Any]]) -
         {
             "x": MARGIN_X,
             "w": axiom_w,
-            "title": "Five OPH Axioms",
-            "body": ["This chart treats the OPH axioms as the common starting point. They provide the conceptual constraints upstream of every lane below."],
+            "title": "Premises A1-A3",
+            "body": ["This chart treats the theorem premises A1-A3 as the common input. They provide the conceptual constraints upstream of every lane below."],
             "fill": COLORS["axiom_fill"],
             "stroke": COLORS["axiom_stroke"],
         },
@@ -1344,7 +1344,7 @@ def build_svg(results: Dict[str, Any], exact_by_id: Dict[str, Dict[str, Any]]) -
             "Bottom line",
             [
                 f"Status table generated: {generated_utc}. SVG generated: {built_utc}.",
-                "This chart maps the implemented derivation pipeline and its claim boundaries. It emits no nonzero source-only physical particle mass. The full particle zoo does not sit on one uniform theorem chain from P plus axioms.",
+                "This chart maps the implemented derivation pipeline and its claim boundaries. It emits no nonzero source-only physical particle mass. The full particle zoo does not sit on one uniform theorem chain from P plus A1-A3.",
             ],
         ),
     ]

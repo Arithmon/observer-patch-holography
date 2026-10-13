@@ -53,8 +53,8 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         # Manual full=true preserves one unsharded full run on each OS.
-        # Ten partitions separate the long three-axiom campaign from the
-        # fingerprint suite while retaining the 30-minute worker ceiling.
+        # Ten partitions separate the long A1-A3 certificate campaign from
+        # the fingerprint suite while retaining the 30-minute worker ceiling.
         shard: ${{ fromJSON(inputs.full && '[0]' || '[0,1,2,3,4,5,6,7,8,9]') }}
     steps:
       - name: Checkout

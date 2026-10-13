@@ -26,7 +26,7 @@ The registry is part of the working process:
   registry when the established claim or its evidence changes. Paper releases
   follow the model programme's hold; necessary scientific corrections remain
   in scope throughout it.
-- `claims/axiom_registry.yaml` records the normative three-axiom identities,
+- `claims/axiom_registry.yaml` records the theorem premises A1-A3, their
   interfaces, exclusions, and scientific realization boundaries.
 - `claims/claim_registry.yaml` records top-level claim IDs, owner papers, claim tiers, imported
   mathematics, OPH-specific deltas, assumptions, evidence, falsifiers, and survival rules.

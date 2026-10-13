@@ -554,7 +554,7 @@ def render(rows: list[dict]) -> str:
     )
     lines.append(
         "- **Structural**: the architecture provably carries the law; an exact"
-        " theorem from the three axioms plus named register rows,"
+        " theorem from A1-A3 plus named register rows,"
         " machine-checked where the statement permits."
     )
     lines.append(

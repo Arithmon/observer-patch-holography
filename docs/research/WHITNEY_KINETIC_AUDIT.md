@@ -198,7 +198,7 @@ CI also caught an integration omission: adding this document requires
 regenerating `claims/active_surface_inventory.json`, independently of the
 unchanged source-current inventory. Canonical regeneration adds exactly this
 one document (477 to 478 surfaces); the inventory guard passes. It changes no
-claim statement, axiom or frozen evidence.
+claim statement, premise or frozen evidence.
 
 The corrected eleven-module suite passes with warnings treated as errors:
 639 tests on Linux and 638 on Windows, with the same one expected Windows

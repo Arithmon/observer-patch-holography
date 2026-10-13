@@ -7,7 +7,7 @@ One row per observation the architecture must reproduce. The closed [issue #726]
 ## Adequacy rungs
 
 - **Formal precursor**: an exact mathematical representation or helper exists, but no theorem attaches it to the observer architecture or a physical readout. It cannot by itself satisfy a physics target.
-- **Structural**: the architecture provably carries the law; an exact theorem from the three axioms plus named register rows, machine-checked where the statement permits.
+- **Structural**: the architecture provably carries the law; an exact theorem from A1-A3 plus named register rows, machine-checked where the statement permits.
 - **Emergent**: simulated observers' records exhibit the law; a preregistered, target-clean instrument run at laptop scale with pinned receipts.
 - **Predictive**: a pre-comparison frozen instrument owned by the relevant physics lane binds the row to future data with registered kill bands.
 
