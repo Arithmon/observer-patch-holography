@@ -74,11 +74,11 @@ realize it, so that it reads itself into existence. Nothing lies outside to
 impose premises, so the recovered specification owes no a-priori
 justification; it has to run and reproduce what observers measure.
 
-That specification is an executable observer: a twelve-port carrier, a native
+That specification is a candidate, an executable observer: a twelve-port carrier, a native
 repair law, retained records and record-controlled feedback, joined in one
 interacting quantum process of electric flux, charged matter and a scalar
 field whose feedback response is certified nonzero in the infinite-occupation
-limit. Finite theorems turn the architecture's readouts into familiar
+limit. Finite theorems turn the specification's readouts into familiar
 structure: schedule-independent public records, the Born rule and Tsirelson
 bound on completed records, an intrinsic three-dimensional carrier, the
 Standard Model gauge Lie algebra with an anomaly-free generation, a
@@ -103,7 +103,7 @@ gauge structure; Einstein field equation.
 Physics usually begins with a world and asks how observers fit into it.
 Observer Patch Holography (OPH) begins with observers and asks what world
 they can establish together. Its observers are finite. Each holds a patch
-of local state, reads a boundary it shares with its neighbours, keeps
+of local state, reads a boundary it shares with its neighbors, keeps
 durable records, and repairs its state when records disagree; it accepts
 only repairs that preserve protected data. OPH identifies an objective
 fact with a record that survives every authorized comparison. Quantum
@@ -143,24 +143,9 @@ electromagnetic detector evaluates the coupling from a closure coordinate
 and feeds a single bit back; and one interacting quantum process joins
 electric flux, charged matter and a scalar field with complete measurements
 and a feedback response certified nonzero in the infinite-occupation limit.
-The finite theorems of the programme turn the architecture's readouts into
-familiar structure. Repair under a transactional local diamond selects
-schedule-independent public records. On the completed record surface every
-nonnegative normalized valuation additive on coexisting effects is a Born
-weight, and correlations obey and attain Tsirelson's bound. The repair
-response of the carrier has an intrinsic rank-three quotient, which is why
-the number three occurs without being declared. Complete reversible
-response with internally implemented rechartings forces the Standard Model
-gauge Lie algebra, and a declared matter module gives one anomaly-free
-generation of fifteen states. Authenticated provenance generates a finite
-causal order that places into a source-derived $(1+3)$ Lorentzian carrier,
-and a realized null balance with Ward conservation gives the Einstein
-equation up to a cosmological constant.
+Section~\ref{sec:selected} turns six readouts of the specification into familiar structure: schedule-independent public records, the quantum identities of completed records, three spatial directions, the gauge algebra with one anomaly-free generation, a causal precursor with record-count clocks, and the Einstein equation up to a cosmological constant.
 
-The results have different logical types, and Table~\ref{tab:claim-classes}
-gives the classes used throughout. 
-Each step is identified as a Lean theorem, exact executable certificate,
-conditional paper argument, numerical receipt, or explicit unproved premise.
+The results have different logical types, and Table~\ref{tab:claim-classes} gives the classes used throughout; each result below carries one of them. Each step is identified by its artifact as a Lean theorem, exact executable certificate, conditional paper argument, numerical receipt, or explicit unproved premise.
 
 \begin{table}[htbp]
 \centering
@@ -175,8 +160,8 @@ proof only with a specified domain and a soundness argument.\\
 \textbf{Certified finite computation} & An executable witness whose inputs,
 controls, and output are fixed by a reproducible certificate; execution alone
 does not promote its interpretation to a theorem.\\
-\textbf{Reconstruction implication} & An exact implication whose antecedents
-include displayed geometric or physical premises.\\
+\textbf{Conditional analytic theorem} & A theorem whose hypotheses include a supplied continuum action, state space or limit; its conclusion holds on that supplied object.\\
+\textbf{Reconstruction implication} & An exact implication whose antecedents include displayed geometric or physical premises.\\
 \textbf{Unsupplied realization map} & A required map from a finite object to a
 physical event, current, field, clock, scale, or continuum structure for which
 no construction is asserted.\\
@@ -195,8 +180,7 @@ framework only if the branch is proved forced and exclusive.\\
 
 Throughout, ``source'' means computed from the declared finite source
 specification, including every explicitly named source law, with no measured
-physical input. A physical realization map is not source-only merely because
-the finite branch calculation is target-clean.
+physical input. A physical realization map is not source-only merely because the finite branch calculation consumes no measured target value.
 
 \begin{definition}[Physical realization map]
 \label{def:physical-realization}
@@ -208,8 +192,7 @@ refinement relations consumed by the conclusion in question. A resemblance
 of spectra, dimensions, or symmetry names is insufficient.
 \end{definition}
 
-\paragraph{How this paper is organized.} This paper gives the account and
-develops selected results in full. Section~\ref{sec:architecture} describes
+\paragraph{How this paper is organized.} This paper gives the account and develops selected results in detail. Section~\ref{sec:architecture} describes
 the observer, its carrier and repair law, and what runs.
 Section~\ref{sec:consensus} shows what observers agree on: public normal
 forms and the quantum identities of completed records.
@@ -230,8 +213,7 @@ carries the long proofs
 \begin{boundary}
 This paper claims no completed derivation of particle masses, no source-only
 determination of the fine-structure constant, no completed cosmology, and no
-claim that formal verification establishes physical truth. Quantitative
-surfaces that consume measured values are labeled diagnostics.
+claim that formal verification establishes physical truth. Quantitative comparisons that consume measured values are labeled diagnostics.
 Section~\ref{sec:empirical} states the frozen tests and the physical premises
 that set the scope of any verdict.
 \end{boundary}
@@ -290,8 +272,7 @@ irreducibility certificates are machine-checked
 \cite{serre1977,ophrepo}. Second, record keeping is integer valued: a write
 appends $+1$, a retraction appends $-1$, and readback sums atomic events per
 port. A conservative repair transfers one unit across a seam whenever the
-oriented mismatch has magnitude at least two. With $V(N)=\sum_iN_i^{2}$,
-each such repair strictly decreases $V$ by $2(d-1)$ for mismatch $d\ge 2$,
+oriented mismatch has magnitude at least two. With $V(x)=\sum_ix_i^{2}$, each such repair strictly decreases $V$ by $2(d-1)$ for mismatch $d\ge 2$,
 so repair terminates.
 
 \subsection{The native repair law}
@@ -313,7 +294,7 @@ $L_{(c,j)}=2^{-1/2}\sum_{x:\,j(x,c)=j}|y(x,c)\rangle\langle x|$. A second
 law, E, is C with one additional seam-parity record. Both laws have the same
 diagonal classical repair statistics, and they differ in the coherence they
 preserve: Section~\ref{sec:empirical} turns that difference into a test.
-The quantum relaxation of the forgotten-source channels is known exactly.
+The quantum relaxation of the channels obtained by discarding the source record, the forgotten-source channels, is known exactly.
 Both laws have quantum spectral gap $(5-\sqrt5)/60$ on the binary shell and
 on the full carrier, their slowest binary coherences decay by the sharp factors $5/6$ per attempt
 for C and $7/10$ for E, the binary-shell channel becomes entanglement breaking
@@ -339,9 +320,7 @@ occupation $35/264$, against $1/6$ when the selector is disconnected or
 shuffled with the same action frequencies, so the response is caused by the
 retained record and not by the action statistics. Feedback preserves the
 committed classical record while it can reduce coherence between different
-record values. Complete records of these short histories recover the source
-optimally with fidelity $D^{-2}\sum_hw_h\operatorname{rank}(P_h)^2$, which
-equals $1301/2028$ for the full-carrier two-event C observer and $3329/6084$
+record values. Complete records of these short histories recover the source optimally, with entanglement fidelity $D^{-2}\sum_hw_h\operatorname{rank}(P_h)^2$ for the maximally mixed input, where $D$ is the number of carrier configurations, $h$ runs over the complete admitted histories, $w_h$ is the product of their seam-selection and coin probabilities and $P_h$ projects onto the inputs compatible with $h$; it equals $1301/2028$ for the full-carrier two-event C observer and $3329/6084$
 for E under the same current-sign selector
 \cite{ophrecovery}.
 
@@ -389,9 +368,7 @@ displacement readout, and fixed seam schedules propagate influence at most
 one graph edge per causal layer.
 
 These executions are finite and their apparatus, services, field action and
-preparations are declared. They discharge the executable-observer row of the
-acceptance criteria and leave the continuum and gravitational rows open
-(Section~\ref{sec:scoreboard}).
+preparations are declared. They discharge the executable-observer row of the acceptance criteria under their declared services and inputs; longer observers with memory, reset and continuation contracts, and the continuum and gravitational rows, are not constructed (Section~\ref{sec:scoreboard}).
 
 %=====================================================================
 \section{What observers agree on}
@@ -434,20 +411,15 @@ several observationally indistinguishable extensions.
 The following statements are equivalent:
 \begin{enumerate}[label=(\roman*),leftmargin=1.6em]
 \item $B|_C$ is injective;
-\item there is a unique map $N:Q\to C\sqcup\{\bot\}$ that preserves $B$ on
+\item there is a unique map $\mathcal N:Q\to C\sqcup\{\bot\}$ that preserves $B$ on
 its $C$-valued outputs, fixes every point of $C$, is constant on each
 $B$-fiber, and returns $\bot$ exactly on fibers with no consistent extension;
-\item $B|_C:C\to B(C)$ is a bijection.
 \end{enumerate}
 If $B(Q)\subseteq B(C)$, the map is a total idempotent retraction $Q\to C$.
 \end{theorem}
 
 \begin{proof}
-Injectivity makes every nonempty $C_b$ a singleton, which defines $N$ and
-forces all its properties fiber by fiber. Conversely, if $c,c'\in C$ have
-$B(c)=B(c')$, the fixed-point and fiber clauses give
-$c=N(c)=N(c')=c'$. The third statement is the restriction of the first to
-the image $B(C)$.
+Injectivity makes every nonempty $C_b$ a singleton, which defines $\mathcal N$ and forces all its properties fiber by fiber. Conversely, if $c,c'\in C$ have $B(c)=B(c')$, the fixed-point and fiber clauses give $c=\mathcal N(c)=\mathcal N(c')=c'$.
 \end{proof}
 
 The normalizer is defined by observable fibers, independently of any repair
@@ -465,13 +437,12 @@ constant because each nonstuttering attempt strictly lowers the mismatch
 count; pathwise weak fairness makes the stable state a normal form, and
 completeness with confluence sends every weak-fair run to the same public
 fixed point. These results select no scheduler and provide no stochastic hitting law, rate, physical clock, or refinement theorem.
-Attempts obey a sharp capacity law: a scheduler can delay the first genuine
-repair for any prescribed number of attempts, while a bounded-waste upper horizon of $(q+1)$ times the initial mismatch count holds when every reducible record sees a genuine change among the next $q+1$ attempts, and an independent-defect family attains the work-conserving case exactly at $q=0$.
+Attempts obey a sharp capacity law. A scheduler can delay the first genuine repair for any prescribed number of attempts. When every reducible record sees a genuine change among the next $q+1$ attempts, a bounded-waste upper horizon of $(q+1)$ times the initial mismatch count holds, and an independent-defect family attains the work-conserving case exactly at $q=0$.
 The input-independent compiler produces a fixed federation with immutable input ports;
 genuine node repairs decrease a dependency rank, and pathwise weak fairness
 gives stable consensus and the correct output.
 Emission-order round robin finishes within its first $n$ attempts, and the single-consumer structure bounds every accepted path by $n(n+1)/2$, with an emitted family attaining $\Theta(n^2)$.
-General well-formed circuits instead admit $2^n-1$ accepted steps, attained by a fanout chain.
+General well-formed circuits instead admit $2^n-1$ accepted steps, attained by a fanout chain, where $n$ counts the emitted nodes.
 These statements concern canonical node repairs: the weak patch-frame relation can stutter fairly forever, and no physical scheduler, clock, energy or hardware cost follows from these operation counts \cite{ophnormalforms,ophconsensus}.
 
 \subsection{Public records from local repair}
@@ -518,10 +489,7 @@ equality to the physical quotient.
 
 \begin{theorem}[Consensus normal form]
 \label{thm:confluence}
-Suppose the accepted repair relation satisfies
-Proposition~\ref{prop:transactional-diamond}, the exact quadratic descent of
-Section~\ref{sec:architecture}, and repair completeness, meaning that its
-normal forms are exactly the consistent states. Every maximal asynchronous
+Suppose the accepted repair relation satisfies the hypotheses of Proposition~\ref{prop:transactional-diamond}, so that it has the one-step diamond property, strictly decreases the quadratic descent functional $V$ of Section~\ref{sec:architecture}, and is repair complete, meaning that its normal forms are exactly the consistent states. Every maximal asynchronous
 repair schedule from one initial state then terminates at the same consistent
 quotient normal form. The induced global repair map is idempotent, fixes
 consistent states, and preserves the protected record.
@@ -546,7 +514,7 @@ record, independent of the order in which observers repaired.
 
 The law runs at scale. The public run uses the level-six cell rung of the
 geodesic icosahedral refinement tower: $81{,}920$ exact twelve-port carriers
-with one declared gluing of ports to neighbouring cells, $2{,}580{,}480$
+with one declared gluing of ports to neighboring cells, $2{,}580{,}480$
 seams in all, and the seam-mean retraction as repair primitive. Sixteen
 shuffled schedules from one seeded load terminate at the balanced class with
 no accepted move raising $V$, and all sixteen return one quotient hash equal to the component multiset fixed by the initial totals.
@@ -554,20 +522,14 @@ A standalone verifier that imports no simulator code rebuilds the component
 multisets from the primitive arrays, replays one schedule from its seed and
 recomputes every hash \cite{ophsim}. The level-ten rung, with $20{,}971{,}520$ carriers and $660{,}602{,}880$ seams,
 terminates all sixteen schedules at the balanced class in $84$ to $100$ sweeps
-with one quotient hash fixed by the loads. Across the rungs from six to ten,
-one initial load per rung gives an empirical excess-energy contraction near
-$0.82$ per sweep and a fitted settling time $4.3\log_2 N-9$; these finite fits
-prove no all-size mixing or termination-time bound. The recorded
-strict-descent count is about $1.2555$ times half the initial $\ell_1$
-deviation from the uniform reading. The first-settling configuration retains
+with one quotient hash fixed by the loads. Across the rungs from five to nine, one initial load per rung gives an excess-energy contraction between $0.81$ and $0.83$ per sweep, and the sweep counts to the balanced class grow slowly with the carrier count, from $51$ to $79$ at level six to $84$ to $100$ at level ten; these finite readings prove no all-size mixing or termination-time bound. On the sixteen level-six schedules the number of unit transfers to the balanced class lies between $924{,}832$ and $925{,}708$, about $1.25$ times half the initial $\ell_1$ deviation of the loads from their mean. The first-settling configuration retains
 spatial information that its public component multiset does not encode: at
 level ten the initial-to-terminal amplitude responses of equal-count
 ancestral groups of sizes $1{,}024$, $4{,}096$ and $65{,}536$ are $0.90758$,
 $0.95232$ and $0.98983$, with conditional schedule-noise fractions
-$1.241\%$, $0.594\%$ and $0.143\%$. Stationary continuation adds a
+$1.241$, $0.594$ and $0.143$ percent. Stationary continuation adds a
 constructive fluctuation result: for fair integer repair on a connected
-weighted graph with independent edge clocks the fixed-occupancy law is
-reversible, centred loads have covariance $\kappa e^{-|t|L/2}\Pi$ with
+weighted graph with independent edge clocks of total rate one the fixed-occupancy law is reversible, centered loads have lagged covariance $\kappa e^{-|t|L_G/2}\Pi$ in the edge-clock time $t$, with $L_G$ the weighted graph Laplacian,
 $\kappa=r(p-r)/(p(p-1))$ for $r$ raised occupancies on $p$ ports and $\Pi$ the
 projection off constants, and fixed linear readouts obey a martingale central
 limit theorem \cite{ophMicrophysics}.
@@ -607,7 +569,7 @@ and a normalized positive state on the post-event corner. For self-adjoint
 dichotomic observables $A_0,A_1$ and $B_0,B_1$ in commuting record
 subalgebras, with $A_i^2=B_j^2=I$, the combination
 $S_{\mathrm{CHSH}}=\operatorname{Tr}[\rho\{A_0(B_0+B_1)+A_1(B_0-B_1)\}]$
-obeys $|S_{\mathrm{CHSH}}|\le 2\sqrt 2$. The bound is attained exactly on the
+obeys $|S_{\mathrm{CHSH}}|\le 2\sqrt 2$ \cite{chsh1969,tsirelson1980}. The bound is attained exactly on the
 committed slot-split interface by the maximally entangled state with Pauli
 and quarter-rotated projections, while every state diagonal in the record
 basis with diagonal observables valued in $[-1,1]$ obeys
@@ -619,7 +581,7 @@ Positivity of $\rho$ and $0\le P_E\le I$ give $0\le\operatorname{Tr}(\rho
 P_E)\le1$, and $\sum_kP_k=I$ normalizes every partition; for nonzero weight
 $P_E\rho P_E/\operatorname{Tr}(\rho P_E)$ is positive and normalized. For
 $\mathcal B=A_0(B_0+B_1)+A_1(B_0-B_1)$ the commuting-subalgebra calculation
-gives $\mathcal B^2=4I-[A_0,A_1][B_0,B_1]$, so $\|\mathcal B\|\le2\sqrt2$.
+gives $\mathcal B^2=4I-[A_0,A_1][B_0,B_1]$ \cite{landau1987}, so $\|\mathcal B\|\le2\sqrt2$.
 The saturating witness and the diagonal bound are exact finite calculations
 \cite{opheventalgebra}.
 \end{proof}
@@ -628,15 +590,13 @@ At the level of weights the Born form is derived. Every valuation on the
 effects of the finite surface that is nonnegative, normalized and additive on
 coexisting effects equals $E\mapsto\operatorname{Tr}(\rho E)$ for a unique
 density operator $\rho$, in every finite dimension including two, where the
-projector-only Gleason theorem fails, and the derivation consumes no
-continuity axiom. The projectors alone do not select the update: an explicit swap-twisted instrument has the same effects and different updates.
+projector-only Gleason theorem fails, and the derivation consumes no continuity axiom \cite{gleason1957,busch2003}. The projectors alone do not select the update: an explicit swap-twisted instrument has the same effects and different updates.
 Kraus form with induced effect $P$ together with invariance on the states
 certain of $P$ is equivalent to being the L\"uders map
 \cite{luders1950,opheventalgebra}. The same surface carries the copying
 obstruction: if one ancilla-free isometry copies two sharp states from a
 common blank, preservation of inner products forces their overlap $z$ to
-satisfy $z^2=z$, so two distinct alternatives copied by one device are
-orthogonal. Finite webs do not by themselves supply the valuation
+satisfy $z^2=z$, so two distinct alternatives copied by one device are orthogonal \cite{wootterszurek1982,dieks1982}. Finite webs do not by themselves supply the valuation
 hypothesis: a source-produced complex-tomographically-complete effect and
 instrument web with full coexistent-effect additivity is the missing step
 \cite{opheventalgebra}.
@@ -645,7 +605,7 @@ instrument web with full coexistent-effect additivity is the missing step
 \section{Selected results}
 \label{sec:selected}
 
-Five results are developed here in full. They were chosen because the
+Five results are developed here, three as theorems with proofs and two as certified computations with their declared inputs. They were chosen because the
 executable construction consumes them or because they carry the programme's
 most specific structural content. Section~\ref{sec:reproduced} lists the other results with their classes.
 
@@ -658,8 +618,7 @@ without being declared.
 
 \begin{theorem}[Intrinsic three-dimensional carrier completion]
 \label{thm:rank-three}
-Let $A$ be the twelve-port adjacency, let $T=I-(5I-A)/60$ be the uniform
-scalar repair mean, and take the complete equally weighted centered probe
+Let $A$ be the twelve-port adjacency, let $M=I-(5I-A)/60$ be the uniform scalar repair mean, and take the complete equally weighted centered probe
 census. The normalized infinite-response kernel converges to the intrinsic
 Gram $G=4P_{\mathrm{slow}}$, of rank three. The twelve integer port loads have
 antipodal-odd quotient $\mathbb Z^{12}/\{x:x_p=x_{-p}\}\cong\mathbb Z^6$, and
@@ -673,7 +632,7 @@ completion, and cumulative records act by exact internal translations.
 
 The mechanism is spectral. The icosahedral adjacency has eigenvalues $5$,
 $\sqrt5$, $-1$ and $-\sqrt5$ with multiplicities $1$, $3$, $5$ and $3$, so the
-repair mean $T$ has eigenvalue $1-(5-\sqrt5)/60$ on a three-dimensional
+repair mean $M$ has eigenvalue $1-(5-\sqrt5)/60$ on a three-dimensional
 eigenspace and smaller eigenvalues on everything else nonconstant. Repeated local averaging forgets every nonuniform pattern except a
 three-dimensional one, and that surviving pattern is the triplet of
 \eqref{eq:bands} carried by the port position vectors. The same
@@ -693,7 +652,7 @@ position is the carrier's own readback of its accumulated records. In the
 executable observer the same rank-three readout attaches to all joint
 histories of the interacting process, and a binary controller extension
 executes displacements spanning three independent directions
-\cite{ophmodel}. Reading the completion as physical position consumes (M1)
+\cite{ophmodel}. Reading the completion as physical position consumes the realization map (M1) of Section~\ref{sec:standing-maps}
 \cite{ophrepo,ophMicrophysics}.
 
 \subsection{The gauge algebra and one generation}
@@ -710,8 +669,7 @@ $P_{12}\cong_{A_5}\mathbf1\oplus\mathbf5\oplus\mathbf3\oplus\mathbf3'$: the
 even coordinates carry $\mathbf1\oplus\mathbf5$ and the odd coordinates the
 rank-three frame channel and its Galois-conjugate companion.
 
-The theorem below uses two premises in the vocabulary of
-Section~\ref{sec:no-outside}. The carrier layer of the specification supplies
+The theorem below uses two premises stated in the introduction and developed in Section~\ref{sec:no-outside}. The carrier layer of the specification supplies
 a complete reversible response: an injective response derivative
 $D:P_{12}\to\mathfrak u(H)$ whose image is commutator-closed with a positive
 trace pairing. The no-outside rule applied to transformations requires every
@@ -721,7 +679,7 @@ response; the library calls this the endogeneity clause of A2.
 \begin{theorem}[Gauge Lie-type forcing]
 \label{thm:inner-action-closure}
 Let $D:P_{12}\to\mathfrak u(H)$ be the complete reversible response derivative
-of the carrier, and put $\mathfrak g=D(P_{12})$. Suppose every proper carrier
+of the carrier, and put $\mathfrak g=D(P_{12})$; let $G_D^0$ be the connected subgroup of the unitary group of $H$ generated by $\exp\mathfrak g$. Suppose every proper carrier
 action $a\in A_5$ has a projective implementer satisfying
 \[
 \operatorname{Ad}_{[U_a]}D(v)=D(a\!\cdot\!v),
@@ -776,14 +734,16 @@ The port count twelve equals the dimension of the forced algebra, so the
 carrier fixes that dimension by declaration; the content of the theorem is
 the exclusion of the only other twelve-dimensional compact type
 $\mathfrak{su}(2)^4$ through compactness and the one-dimensional fixed space,
-together with the forcing of the unique center. Without the internal implementation clause the same module also carries the
-zero bracket, whose trivial response group fails it.  The reconstruction of $D$ from ordered
-reversible histories is consumed as a premise, and laboratory currents
-consume (M3).
+together with the forcing of the unique center. The reconstruction of $D$ from ordered
+reversible histories is consumed as a premise, and laboratory currents consume the realization map (M3) of Section~\ref{sec:standing-maps}.
 
-The forced algebra has an explicit finite realization.
-
-Let
+The forced algebra has an explicit finite realization. Choose from each antipodal axis one of the certificate's exact coordinate vectors $u_i\in\mathbb Q(\sqrt5)^3$, each with $\lVert u_i\rVert^2=2+\varphi$ for $\varphi=(1+\sqrt5)/2$, and put $U=[u_1\ \cdots\ u_6]$. For a real port field $f$ with antipodal involution $J$, write
+\[
+b_i=\frac{f_i+f_{J i}}2,\qquad
+d_i=\frac{f_i-f_{J i}}2,\qquad
+c=\frac16\sum_i b_i,\qquad b^0=b-c\mathbf1 ,
+\]
+so that the even coordinates $b$ carry $\mathbf1\oplus\mathbf5$ and the odd coordinates $d$ carry the rank-three frame channel detected by $U$ and its Galois-conjugate companion detected by $\sigma(U)$, where $\sigma$ is the field automorphism $\sqrt5\mapsto-\sqrt5$ applied entrywise. Let
 \[
 \Phi_0(b^0)=\sum_{i=1}^{6}b_i^0u_iu_i^{\mathsf T},
 \qquad
@@ -791,9 +751,9 @@ Let
 \]
 The conditional matrix witness uses the space
 \[
-H=\mathbb C^3_E\oplus\mathbb C^3_W
+H=\mathbb C^3_E\oplus\mathbb C^3_W ,
 \]
-and four nonzero rational coefficients
+two copies of $\mathbb C^3$ carrying the exact rotations $R_g$ and their Galois conjugates $\sigma(R_g)$ defined below, and four nonzero rational coefficients
 $\lambda_1,\lambda_5,\lambda_3,\lambda_{3'}$, one on each source band.
 These are explicit branch premises. The two three-dimensional response blocks
 match the two rank-three odd channels; they are not asserted to be a derived
@@ -845,7 +805,7 @@ has a positive-definite invariant Hilbert--Schmidt pullback.
 \end{theorem}
 
 \begin{proof}
-Evaluating \eqref{eq:antipode-polynomial} on the four adjacency eigenspaces
+Evaluating~\eqref{eq:antipode-polynomial} on the four adjacency eigenspaces
 gives the antipode relation, and the source protocol solves the common
 farthest-shell filter to give the signed response $-J$. The constant
 coordinate maps to $i\mathbb RI_3$; the six rank-one axis matrices span the
@@ -983,9 +943,7 @@ recover the source with the optimal fidelity of
 Section~\ref{sec:observer-runs} \cite{ophmixing,ophrecovery}.
 
 The field action, preparation, coupling and model-time schedule are declared
-construction inputs, and the results concern this two-site action; a
-spatially refining family is the open connection of
-Section~\ref{sec:scoreboard}.
+construction inputs, and the results concern this two-site action; a spatially refining family is the connection that Section~\ref{sec:scoreboard} lists as not constructed.
 
 \subsection{A causal precursor from records}
 \label{sec:spacetime}
@@ -1010,10 +968,10 @@ generated order of some authenticated log \cite{ophrepo}.
 
 \begin{theorem}[Source-derived finite (1+3) causal precursor]
 \label{thm:source-causal-precursor}
-Let $L$ be an authenticated finite semantic-event log with generated strict
-order $\prec_L$ and canonical source height $h_L$, zero on roots and one
-plus the maximum parent height otherwise. Then $h_L$ strictly increases along
-$\prec_L$ and equals the maximum length of an authenticated parent chain
+Let $\mathcal L$ be an authenticated finite semantic-event log with generated strict
+order $\prec_{\mathcal L}$ and canonical source height $h_{\mathcal L}$, zero on roots and one
+plus the maximum parent height otherwise. Then $h_{\mathcal L}$ strictly increases along
+$\prec_{\mathcal L}$ and equals the maximum length of an authenticated parent chain
 ending at each event. Let $V_{\mathrm{src}}$ be the rank-three source Gram
 quotient with positive form $g_{\mathrm{src}}$, and put
 $W_{\mathrm{src}}=\mathbb R\oplus V_{\mathrm{src}}$ with
@@ -1023,15 +981,15 @@ $Q(t,x)=t^2-g_{\mathrm{src}}(x,x)$.
 three negative directions;
 \item source-unit directions, $S^2$ and future-null rays are exactly
 equivalent;
-\item a placement $F(e)=(\tau h_L(e),x(e))$ sends every generated precedence
+\item a placement $F(e)=(\tau h_{\mathcal L}(e),x(e))$ sends every generated precedence
 into the future cone whenever each parent edge obeys
-$g_{\mathrm{src}}(x(f)-x(e),x(f)-x(e))\leq\tau^2(h_L(f)-h_L(e))^2$;
+$g_{\mathrm{src}}(x(f)-x(e),x(f)-x(e))\leq\tau^2(h_{\mathcal L}(f)-h_{\mathcal L}(e))^2$;
 \item every finite log admits an injective placement of this form that sends
 generated ancestry into the future cone and makes distinct same-height events
 spacelike; and
 \item for a placement obeying the edge condition of (F3), if the spatial
 readback separates each equal-height layer and every unrelated pair with
-$h_L(e)<h_L(f)$ is spacelike, then $e\preceq_L f$ holds
+$h_{\mathcal L}(e)<h_{\mathcal L}(f)$ is spacelike, then $e\preceq_{\mathcal L} f$ holds
 exactly when $F(f)-F(e)$ is future causal, so $F$ is an exact order
 embedding preserving every causal interval.
 \end{enumerate}
@@ -1041,8 +999,7 @@ embedding preserving every causal interval.
 Dimension is additive and positivity of $g_{\mathrm{src}}$ gives the
 inertia; induction over parents bounds every ending chain by the height and
 constructs an attaining chain; the edge inequality and transitivity of cone
-and ancestry give (F3); an enumeration along one axis with $\tau=n+1$ gives
-(F4); and the two geometric checks exclude every unsupported cone comparison
+and ancestry give (F3); an enumeration along one axis with $\tau=n+1$, $n$ the number of events, gives (F4); and the two geometric checks exclude every unsupported cone comparison
 in (F5). The finite statements are formalized \cite{ophrepo,ophEinstein}.
 \end{proof}
 
@@ -1064,32 +1021,31 @@ dimension and manifoldlikeness tests against Poisson-sprinkled controls, and
 convergence to a distinguishing time-oriented Lorentzian geometry
 \cite{bombelli1987,surya2019,majorrideoutsurya2007}.
 
-\begin{theorem}[Effective manifold and smooth-curvature promotion]
+\begin{proposition}[Composition of the continuum certificate]
 \label{thm:source-causal-continuum}
 For a source-causal continuum certificate, causal order fixes the conformal
 Lorentzian geometry of the admitted distinguishing limit and the calibrated
 count measure fixes its conformal scale
 \cite{hawkingkingmccarthy1976,malament1977}; the local model is $(1+3)$, so a
-limit passing the dimension and topology rows is an effective
-four-dimensional time-oriented Lorentzian event manifold. If on the same family a causal-set d'Alembertian or scalar-curvature
+limit satisfying the dimension and topology clauses of the certificate is an effective four-dimensional time-oriented Lorentzian event manifold. If on the same family a causal-set d'Alembertian or scalar-curvature
 estimator converges as an independent curvature diagnostic
 \cite{benincasadowker2010,dowkerglaser2013}, an explicit tensor-curvature
 reconstruction converges to the Einstein tensor or the small-ball
 null-balance route identifies the limiting geometry tensor with $G_{ab}$, and stress and Ward--Bianchi data converge with calibrated
 coupling, then the smooth limit is $G_{ab}+\Lambda g_{ab}=8\pi G\,T_{ab}$.
-\end{theorem}
+\end{proposition}
 
 A source-record population realizes the flat case.
 
 \begin{theorem}[A source-record causal and count limit]
 \label{thm:source-record-causal-count}
 In the rank-three conservative repair carrier, let
-$\varphi=(1+\sqrt5)/2$, $L=2/\sqrt{\varphi+2}$ and $q=F_n$, $n\geq4$. The
+$\varphi=(1+\sqrt5)/2$, $L=2/\sqrt{\varphi+2}$ and $q=F_n$ the $n$-th Fibonacci number, $n\geq4$. The
 population
 $S_q=L\{b\varphi-\lfloor b\varphi\rfloor:0\leq b<q\}^{3}\subset[0,L]^3$
 consists of $q^3$ distinct conservative source-record images. Retain it at
 each layer and let every next-layer event read all preceding-layer sites
-within $a_q=L/\sqrt q$, with model duration $\Delta_q=a_q/c$. As
+within $a_q=L/\sqrt q$, with model duration $\Delta_q=a_q/c$ for a declared speed $c$. As
 $q\to\infty$ the order converges away from null separation to the speed-$c$
 causal order, and with $\rho_q=q^3/(L^3\Delta_q)$, for fixed interior
 timelike diamonds,
@@ -1113,13 +1069,10 @@ up to units.
 
 At finite regulator the population is produced by the carriers themselves:
 each holds its record as port loads, reads its position through the
-rank-three response and decides its neighbours from that readback, and the
+rank-three response and decides its neighbors from that readback, and the
 precedence generated from their authenticated reads equals the layered order
 through $q=89$, that is $704{,}969$ carriers reading one another over ten
-rounds. On the central diamond the inverted Myrheim--Meyer dimension reads
-$4.15$, $3.61$, $4.10$, $4.09$ and $4.07$ at $q=13,21,34,55,89$
-\cite{myrheim1978,meyer1988}, and the count clock reads $2.05$ and $1.96$ at
-$q=89$ and $144$ against the model-time ratio $2$. Covariance requirements
+rounds. On the largest interior diamond the inverted Myrheim--Meyer dimension reads $2.83$, $4.38$, $3.55$, $3.84$ and $3.92$ at $q=13,21,34,55,89$ \cite{myrheim1978,meyer1988}; the outermost central diamonds, which the cube clips and which are therefore not interior readings, read $4.15$, $3.61$, $4.10$, $4.09$ and $4.07$, and the readings at $q=5$ and $q=8$ lie below the regime of the theorem. The ordering fraction of the central diamond reads $0.088$, $0.138$, $0.092$, $0.093$ and $0.094$ against the proved flat value $1/10$, and the count clock reads $1.71$, $2.09$, $1.91$ and $2.05$ at $q=13,34,55,89$ against the model-time ratio $2$. Covariance requirements
 select the cone: a closed convex pointed displacement cone preserved by the
 irreducible icosahedral rotations and by boosts along one axis is the future
 or past cone of $t^2-\|x\|^2$. The read law and model clock are declared, and
@@ -1131,13 +1084,12 @@ the ordinal height of a history with self-waits is no proper-time instrument
 
 \begin{theorem}[Null tomography and metric ambiguity]
 \label{thm:null-tomography}
-Let $V$ be four-dimensional with Lorentz form $\eta$. If a symmetric form $X$
+Let $V$ be four-dimensional with Lorentz form $\eta$ of signature $(-,+,+,+)$, the opposite convention from $Q$ in Section~\ref{sec:spacetime}; nothing below depends on the choice. If a symmetric form $X$
 satisfies $X(k,k)=0$ for every null vector $k$, then $X=\phi\eta$. Null-null
 values therefore determine a symmetric tensor modulo the metric line, and
 nine explicit null directions, the six axis rays $(1,\pm e_i)$ and
 $(1,s,s,\pm s)$, $(1,s,-s,s)$ with $s=\sqrt3/3$, reconstruct the quotient
-$\operatorname{Sym}^2(V^*)/\mathbb R\eta$ with determinant $8192/27$ and a
-decoder obeying $\lVert x\rVert_\infty\le(2+\sqrt3)\lVert q\rVert_\infty$.
+$\operatorname{Sym}^2(V^*)/\mathbb R\eta$ with design determinant $8192/27$ in the certificate's basis and a decoder obeying $\lVert x\rVert_\infty\le(2+\sqrt3)\lVert q\rVert_\infty$.
 \end{theorem}
 
 \begin{proof}
@@ -1184,8 +1136,8 @@ machine-checked identity: scalars with
 $\delta S_{\mathrm{bulk}}=\tfrac{8\pi^2\ell^4}{15}t$,
 $\delta A=-\tfrac{4\pi\ell^4}{15}f$ and
 $\delta S_{\mathrm{bulk}}+\delta A/(4G_N)=0$ obey $f=8\pi G_Nt$. For OPH to
-supply \eqref{eq:null-balance}, one common refinement tower must realize
-(G1) the effective manifold of Theorem~\ref{thm:source-causal-continuum};
+supply~\eqref{eq:null-balance}, one common refinement tower must realize
+(G1) the effective manifold of Proposition~\ref{thm:source-causal-continuum};
 (G2) geometrically normalized cap modular flow whose directional charges
 define one stress tensor; (G3) its Ward identity, independently of that
 reconstruction; (G4) the edge-center entropy split, the normalization
@@ -1275,8 +1227,7 @@ A three-dimensional position carrier & The normalized twelve-port repair
 response has an intrinsic rank-three Gram quotient into which the record
 modules embed densely & finite theorem & \S\ref{sec:three-directions}\\
 Lorentz kinematics and the velocity space & $\mathrm{Conf}^+(S^2)\cong
-\mathrm{SO}^+(3,1)$ with $H^3$ the space of future unit timelike directions &
-conditional scaling theorem & \S\ref{sec:spacetime}\\
+\mathrm{SO}^+(3,1)$ with $H^3$ the space of future unit timelike directions & classical identification on the supplied spherical support & \S\ref{sec:spacetime}\\
 A source-derived $1+3$ causal precursor & The real axis and the rank-three
 source quotient give Lorentz inertia $(1,3)$ with the $S^2$ null boundary,
 and authenticated logs embed by exact order embeddings & finite theorem plus
@@ -1306,7 +1257,7 @@ action, and a unique self-adjoint closure of its declared Hamiltonian &
 conditional analytic theorem & \cite{ophobservers}\\
 The arrow of time and the four laws & Reference-preserving stochastic repair
 contracts relative entropy; one conditional package gives the four laws,
-fluctuation relations and the Landauer bound & conditional finite theorem &
+fluctuation relations and the Landauer bound & finite theorem &
 \cite{ophobservers}\\
 Entropy that scales with a boundary & Collar decomposition with one-sided
 edge term $\sum_\alpha p_\alpha\log d_\alpha$; the sparse crossing-read
@@ -1324,7 +1275,7 @@ limiting repair gap under named finite-rate, transfer and reconstruction
 certificates & reconstruction implication & \cite{ophyangmills}\\
 The Koide relation & Positive-chamber circulant identity with $Q=2/3$
 exactly at $\rho/a=1/\sqrt2$, with a custody-bound tau window & finite
-theorem; fixed test & \cite{ophkoide}\\
+theorem; prospectively fixed conditional test & \cite{ophkoide}\\
 The fine-structure constant & Interval-certified screen-grain roots
 $136.994835$ and $137.035660$ against $137.035999$ & diagnostic &
 \S\ref{sec:closure-principle}\\
@@ -1343,7 +1294,7 @@ $\Delta S_{\mathrm{gen}}^{\max}=\log(1-f)<0$ & finite theorem &
 \cite{ophdesitter}\\
 Isotropy of propagation to angular rank five & The first symmetry-allowed
 anisotropic rank of the carrier class is six, with two frozen rays inside
-one exact band & finite theorem; frozen prediction & \S\ref{sec:spin-six}\\
+one exact band & finite theorem; frozen prospective branch prediction & \S\ref{sec:spin-six}\\
 An instrument comparison fixed before data & C and E repair predict $5/8$,
 $1/8$ and $3/8$ on fixed coherent settings, with a complete-count rejection
 rule & prospectively fixed conditional test & \S\ref{sec:empirical}\\*
@@ -1383,13 +1334,13 @@ of the construction that uses it.
 \label{tab:acceptance}\\
 \toprule
 \textbf{Obligation} & \textbf{Acceptance evidence} &
-\textbf{Discharged} & \textbf{Supplied or open}\\
+\textbf{Discharged} & \textbf{Supplied or not constructed}\\
 \midrule
 \endfirsthead
 \multicolumn{4}{@{}l}{\small Table~\thetable\ continued}\\
 \toprule
 \textbf{Obligation} & \textbf{Acceptance evidence} &
-\textbf{Discharged} & \textbf{Supplied or open}\\
+\textbf{Discharged} & \textbf{Supplied or not constructed}\\
 \midrule
 \endhead
 Executable observer algebra & Explicit state, operation, preparation,
@@ -1398,31 +1349,31 @@ memory and services & Native observer, electromagnetic and scalar
 detectors, source-compiled field apparatus, the common interacting process
 and both C/E instruments, each with retained receipts & Initial ensembles,
 apparatus and services are declared; longer observers with memory, reset and
-continuation contracts are open\\
+continuation contracts are not constructed\\
 Shared operational meaning & Interpretation maps fixed independently of
 validation outcomes, compatible across observers and refinement, preserving
 intervention statistics and quantum correlations & Schedule-independent
 public records (Theorem~\ref{thm:confluence}); the completed interacting
 history under every fair schedule & Interpretation maps for physical
-quantities across observers and refinement are open\\
+quantities across observers and refinement are not constructed\\
 Effective quantum-field description & A refining family of observer
 statistics whose errors relative to a nontrivial $3+1$-dimensional QFT tend
 to zero, including observed matter and interactions & One interacting
 register with operator Gauss law; infinite-occupation and complete-output
 certificates for a two-site action; free-field continuum theorems &
 The field action, vacuum and coupling are supplied; a spatially refining
-interacting family is open\\
+interacting family is not constructed\\
 Classical and gravitational descriptions & Compatible classical, geometric,
 stress and clock descriptions of the same observations, reproducing
 gravitational predictions with controlled corrections & Rank-three
 displacement readouts, causal cones, the finite $(1+3)$ precursor, flat
 count volume, tensor completion of null balance & Read law, model clock,
 stress, entropy and scale premises are supplied; responsive geometry on the
-same process is open\\
+same process is not constructed\\
 Physical predictions & Input ancestry, calibration and decision rules fixed
 before independent data, agreement with observed statistics & The C/E
 protocol and the angular-rank-six band are fixed before comparison &
-Physical encoding, service calibration and independent data are open\\
+Physical encoding, service calibration and independent data are not supplied\\
 \bottomrule
 \end{longtable}
 }
@@ -1457,7 +1408,7 @@ normalizations, and operational readout.
 The executable observer turns these maps into construction work on one
 process. Its retained histories carry a rank-three displacement
 readout, modular clock probes and committed records on a single register;
-the open task is a spatially refining family of such processes whose
+what such a realization lacks is a spatially refining family of such processes whose
 records, clocks, currents and stress readouts converge together. A finite
 theorem that consumes none of the five maps stands on its own domain, and no
 result in this paper discharges any of them.
@@ -1541,9 +1492,7 @@ by base agreement, positivity and the carrier bound does not identify it
 
 The executable observer gives the condition its finite meaning. A
 realization differs from a description because it carries the described
-dependencies under intervention: for a described update $T_a$, realized
-operation $F_a$ and fixed readout $p$, the one-step condition
-$p(F_a(s))=T_a(p(s))$ extends by induction to every finite admitted sequence
+dependencies under intervention: for a described update $\tau_a$, realized operation $F_a$ and fixed readout $p$, the one-step condition $p(F_a(s))=\tau_a(p(s))$ extends by induction to every finite admitted sequence
 \cite{ophessayB}. A playback can match every frame of one history and fail
 this test as soon as a retained state is changed. The controls of
 Section~\ref{sec:observer-runs} perform exactly this test on the running
@@ -1573,7 +1522,7 @@ observers measure, which is the content of Section~\ref{sec:scoreboard}.
 have not recovered. After every observer-visible constraint has been
 imposed, the selected state may carry no further information relative to the
 recovered reference, so it minimizes the weighted relative entropy
-$\sum_Pw_PD(\rho_P\Vert\tau_P)$ over the compatible local state families.
+$\sum_pw_pD(\rho_p\Vert\tau_p)$ over the compatible local state families of the patches $p$.
 The theorem library calls this premise A3. Its finite objective has exact
 consequences: every minimizing local density has the union of the feasible
 supports, and a feasible witness with failure probability $b>0$ gives an
@@ -1643,10 +1592,7 @@ several worlds, and self-consistency alone has not selected ours.
 \label{sec:closure-principle}
 
 The architecture carries two dimensionless closure coordinates: the screen
-grain $P$ and the record capacity $N$. Closure determines them as fixed
-points, and the closed loop also licenses reading them off: observers locate
-a constant inside a basin of the closure map by measurement and then prove
-that the located value is an exact fixed point. The theory stands on its
+grain $P$ and the record capacity $N$. Under the closure hypothesis these coordinates are fixed points of the closure map, and the loop also licenses reading them off: observers locate a constant by measurement, declare a map, and certify a fixed point of that map inside the measured basin. Whether a certified fixed point coincides with the measured value is a diagnostic in the sense of Table~\ref{tab:claim-classes}, not a consequence of the hypothesis. The theory stands on its
 recovered specification whether or not a first-principles evaluation of
 every coordinate is found.
 
@@ -1662,9 +1608,7 @@ from the 2022 CODATA value $137.035999177(21)$ \cite{codata2022}; the
 self-consistent map, which recomputes the finite-screen unified gauge width
 inside the loop, settles at $P=1.6309682414$ and
 $\alpha^{-1}=137.035660136947$, a relative distance of $2.5\times10^{-6}$,
-the gauge width supplying 99.2 percent of the gap. The residual is addressed
-by same-scheme low-energy transport to the Thomson endpoint, which neither
-map computes \cite{ophalpha}. Reading the capacity as de Sitter horizon
+the gauge width supplying 99.2 percent of the gap. The residual is attributed to same-scheme low-energy transport to the Thomson endpoint, which neither map computes and which this paper does not supply \cite{ophalpha}. Reading the capacity as de Sitter horizon
 entropy in nats gives
 \begin{equation}
 N=\frac{3\pi}{\Lambda\,\ell_P^{2}},
@@ -1701,12 +1645,10 @@ an instrument comparison fixed by the executable observer.
 \subsection{Propagation anisotropy at angular rank six}
 \label{sec:spin-six}
 
-In this subsection ``spin six'' means spherical-harmonic angular rank $j=6$,
-not a particle with spin six. The dimension of the invariant subspace of the
-sixty proper icosahedral rotations in angular rank $L$ is
+Angular rank means spherical-harmonic rank $j$, not a particle spin. The dimension of the invariant subspace of the sixty proper icosahedral rotations in angular rank $j$ is
 \[
-m_L=\frac1{60}\Bigl[(2L+1)+15\,U_{2L}(0)+20\,U_{2L}(\tfrac12)
-+12\,U_{2L}(\tfrac\varphi2)+12\,U_{2L}(\tfrac{\varphi-1}2)\Bigr],
+m_j=\frac1{60}\Bigl[(2j+1)+15\,U_{2j}(0)+20\,U_{2j}(\tfrac12)
++12\,U_{2j}(\tfrac\varphi2)+12\,U_{2j}(\tfrac{\varphi-1}2)\Bigr],
 \]
 with $U$ the Chebyshev polynomials of the second kind, and the exact table
 gives $m_1=\cdots=m_5=0$ and $m_6=1$ \cite{cohan1958}.
@@ -1727,7 +1669,7 @@ nonzero anisotropic rank in the class.
 
 \begin{proof}
 The order-$a^{2m-2}k^{2m}$ angular content is an invariant polynomial of
-degree $2m$ with harmonic components at even ranks $L\le2m$, and the
+degree $2m$ with harmonic components at even ranks $j\le2m$, and the
 invariant table forces zero at $L=2,4,8$ and a one-dimensional space at
 $L=6$. The table, the $62$-direction stationary census, the orbit
 verification and the nonvanishing sixth-moment coefficients are certified in
@@ -1845,7 +1787,7 @@ Summing over the sixty rotations gives
 $\sum_g((gu)\!\cdot\!\widehat k)^6=\tfrac{60}{7}
 +\tfrac{64}{35}\mathcal I_6(\widehat u)\mathcal I_6(\widehat k)$ on unit
 vectors. The floor is the Lagrange identity
-$\mu_2\mu_6-\mu_4^2=\sum_{i<j}W_iW_jr_i^2r_j^2(r_i^2-r_j^2)^2\ge0$, and the
+$\mu_2\mu_6-\mu_4^2=\sum_{i<j}W_iW_jr_i^2r_j^2(r_i^2-r_j^2)^2\ge0$ with $W_s=w_s|O_s|$, and the
 band holds because the rank-six numerator is a positive-weighted mean of seed
 values of $\mathcal I_6$ in $[-5/9,1]$ \cite{ophrepo}.
 \end{proof}
@@ -1888,7 +1830,7 @@ requirements.
 
 \subsection{Diagnostics and what fails together}
 
-The other quantitative surfaces carry their own decision shapes and do not
+The other quantitative comparisons carry their own decision shapes and do not
 count as predictions. The closure roots of
 Section~\ref{sec:closure-principle} are diagnostics of declared maps. A
 charged-lepton world average more than three standard uncertainties from the
@@ -2007,8 +1949,7 @@ Relational quantum mechanics treats physical facts as relational
 \cite{rovelli1996} and the thermal-time programme reads time from modular
 structure \cite{connesrovelli1994}; OPH attaches public facts to protected
 overlap records, and its executable observer reads modular flow from the
-actual observation state of a running process. The local-diamond proof
-neighbours asynchronous agreement \cite{lamport1982,flp1985}, and
+actual observation state of a running process. The local-diamond proof sits beside asynchronous agreement \cite{lamport1982,flp1985}, and
 Dijkstra's self-stabilization separates recovery from continued legitimate
 operation \cite{dijkstra1974}.
 
@@ -2060,18 +2001,13 @@ coupling from a closure coordinate, and one interacting quantum process
 carries flux, charged matter and a scalar field through complete
 measurements with a certified feedback response.
 
-The finite theorems turn the architecture's readouts into familiar
+The finite theorems turn the specification's readouts into familiar
 structure: public records independent of the repair schedule, the Born rule
 and the Tsirelson bound on completed records, an intrinsic carrier with three
 directions, the
 Standard Model gauge Lie algebra with an anomaly-free generation, a
 source-derived $(1+3)$ causal precursor with proper-time ratios from record
-counts, and the Einstein equation from a realized null balance. The
-prospective content is the frozen dispersion surface, where $C_4<0$ with
-$B_0/C_4^2\ge10/21$ and $B_6/B_0$ inside $[-16/135,16/75]$ excludes the whole
-declared carrier class when a resolved measurement falls outside it, and the
-C/E instrument test, whose decision rule is fixed before any independent
-count.
+counts, and the Einstein equation from a realized null balance. The prospective content is the frozen dispersion band of Theorem~\ref{thm:carrier-class-band} and Proposition~\ref{prop:spin-six-prediction}: a resolved intrinsic dispersion with $C_4\ge0$, with $B_0/C_4^2<10/21$, with $B_6/B_0$ outside $[-16/135,16/75]$ or with a nonzero coefficient at angular ranks one through five excludes every member of the declared carrier class at once; and the C/E instrument test, whose decision rule is fixed before any independent count.
 
 The acceptance criteria state what is missing: a spatially refining family
 of interacting observer processes whose statistics converge to a
@@ -2135,8 +2071,7 @@ established order-sharp quadratic accepted-step bounds for the actual compiler
 with the exponential fanout control, and proved the historical weak-relation
 fair-stuttering no-go and the weak-fair delay versus bounded-waste horizon
 separation. He formalized these results in Lean, connected the repair and
-execution results to Tower endpoints, and contributed their manuscript,
-claim-registry, ledger, and reproducible-build surfaces. David Matscheko contributed proof review of
+execution results to the Tower library, and contributed their manuscript, claim registry, ledger and build records. David Matscheko contributed proof review of
 consensus repair, observable normal forms, modular and Einstein algebra,
 edge entropy, hypercharge, and the $\mathbb Z_6$ quotient. Jonathan Hill
 contributed Lean formalization and proof auditing of observable normal forms,
@@ -2231,9 +2166,7 @@ Live register:
 \bibitem{ophnormalforms}
 Mueller, B., Kim, J., Matscheko, D., and Hill, J. (2026).
 \emph{Observation-Determined Normal Forms: Stability, Obstructions, and
-Refinement in Constraint and Rewrite Systems}. Public manuscript, distributed
-as \path{extra/observable_normal_forms.pdf} in the same repository revision as
-this paper.
+Refinement in Constraint and Rewrite Systems}. Public manuscript in the same repository revision as this paper.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/main/extra/observable_normal_forms.pdf}
 
 \bibitem{opheventalgebra}
@@ -2302,9 +2235,7 @@ Proto-Objects}. Public manuscript.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/7260dc7c4ac05f84c021167f1e095a58998573f1/cosmology/oph_cosmological_vacuum_and_structure_formation.pdf}
 
 \bibitem{ophyangmills}
-Mueller, B. and Hill, J. (2026). \emph{Explaining the Yang--Mills Mass Gap
-with Observer-Patch Repair Dynamics: A Support-Visible Route to the Clay
-Problem}. Public manuscript.
+Mueller, B. and Hill, J. (2026). \emph{Explaining the Yang--Mills Mass Gap with Observer-Patch Repair Dynamics: A Support-Visible OPH Route to the Clay Problem: A Conditional Identity}. Public manuscript.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/7260dc7c4ac05f84c021167f1e095a58998573f1/extra/yang_mills_gap_clay_problem.pdf}
 
 \bibitem{hardy2001}
@@ -2323,6 +2254,40 @@ Masanes, L., and M\"uller, M.\,P. (2011).
 ``A derivation of quantum theory from physical requirements.''
 \emph{New Journal of Physics} \textbf{13}, 063001.
 \url{https://doi.org/10.1088/1367-2630/13/6/063001}
+
+\bibitem{gleason1957}
+Gleason, A.\,M. (1957). ``Measures on the closed subspaces of a Hilbert
+space.'' \emph{Journal of Mathematics and Mechanics} \textbf{6}, 885--893.
+
+\bibitem{busch2003}
+Busch, P. (2003). ``Quantum states and generalized observables: A simple
+proof of Gleason's theorem.'' \emph{Physical Review Letters} \textbf{91},
+120403. \url{https://doi.org/10.1103/PhysRevLett.91.120403}
+
+\bibitem{chsh1969}
+Clauser, J.\,F., Horne, M.\,A., Shimony, A., and Holt, R.\,A. (1969).
+``Proposed experiment to test local hidden-variable theories.''
+\emph{Physical Review Letters} \textbf{23}, 880--884.
+\url{https://doi.org/10.1103/PhysRevLett.23.880}
+
+\bibitem{tsirelson1980}
+Cirel'son, B.\,S. (1980). ``Quantum generalizations of Bell's inequality.''
+\emph{Letters in Mathematical Physics} \textbf{4}, 93--100.
+\url{https://doi.org/10.1007/BF00417500}
+
+\bibitem{landau1987}
+Landau, L.\,J. (1987). ``On the violation of Bell's inequality in quantum
+theory.'' \emph{Physics Letters A} \textbf{120}, 54--56.
+\url{https://doi.org/10.1016/0375-9601(87)90075-2}
+
+\bibitem{wootterszurek1982}
+Wootters, W.\,K., and Zurek, W.\,H. (1982). ``A single quantum cannot be
+cloned.'' \emph{Nature} \textbf{299}, 802--803.
+\url{https://doi.org/10.1038/299802a0}
+
+\bibitem{dieks1982}
+Dieks, D. (1982). ``Communication by EPR devices.'' \emph{Physics Letters A}
+\textbf{92}, 271--272. \url{https://doi.org/10.1016/0375-9601(82)90084-6}
 
 \bibitem{luders1950}
 L\"uders, G. (1950). ``\"Uber die Zustands\"anderung durch den
@@ -2394,10 +2359,7 @@ Fischer, M.\,J., Lynch, N.\,A., and Paterson, M.\,S. (1985).
 \url{https://doi.org/10.1145/3149.214121}
 
 \bibitem{dijkstra1974}
-E.~W.~Dijkstra,
-``Self-stabilizing systems in spite of distributed control,''
-\emph{Communications of the ACM} \textbf{17}(11), 643--644 (1974).
-\url{https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD426.html}.
+Dijkstra, E.\,W. (1974). ``Self-stabilizing systems in spite of distributed control.'' \emph{Communications of the ACM} \textbf{17}(11), 643--644. \url{https://doi.org/10.1145/361179.361202}
 
 \bibitem{newman42}
 Newman, M.\,H.\,A. (1942). ``On theories with a combinatorial definition of
@@ -2585,16 +2547,14 @@ W.\,H. Zurek (eds.), \emph{Quantum Theory and Measurement}, 182--213.
 Princeton University Press.
 
 \bibitem{tegmark2008}
-Tegmark, M. (2008). ``The mathematical universe.'' \emph{Foundations of
-Physics} \textbf{38}, 101--150.
+Tegmark, M. (2008). ``The mathematical universe.'' \emph{Foundations of Physics} \textbf{38}, 101--150. \url{https://doi.org/10.1007/s10701-007-9186-9}
 
 \bibitem{nozick1981}
 Nozick, R. (1981). \emph{Philosophical Explanations}. Harvard University
 Press.
 
 \bibitem{lawvere1969}
-Lawvere, F.\,W. (1969). ``Diagonal arguments and cartesian closed
-categories.'' \emph{Lecture Notes in Mathematics} \textbf{92}, 134--145.
+Lawvere, F.\,W. (1969). ``Diagonal arguments and cartesian closed categories.'' \emph{Lecture Notes in Mathematics} \textbf{92}, 134--145. \url{https://doi.org/10.1007/BFb0080769}
 
 \end{thebibliography}}
 
