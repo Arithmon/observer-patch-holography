@@ -75,8 +75,10 @@ Source-executed clock probes retain the earlier records. The reference is
 constructed from the supplied action; its selection by repair and a physical
 time calibration remain unproved. The earlier local-clock construction and
 the failed identification using the local post-measurement state are retained.
-Neither clock continuation is included in the infinite sharp-readout
-certificate or transferred to the smooth detector.
+The earlier clock probes appended to the sharp history are outside its
+infinite-readout certificate. The [smooth continuation](COMPOSITION.md)
+separately controls the actual gauge-probe instrument after two smooth reads;
+it supplies no Gibbs-reference limit or physical clock calibration.
 
 The [native propagation check](CAUSALITY.md) verifies exact dependency cones
 for fixed seam schedules on all 78 admitted load states. Concrete paired
@@ -308,8 +310,10 @@ small cutoffs does not certify continuum precision. The joint ideal limit
 uses `n(d)=d^2` temporal steps; floating execution and physical service errors
 remain separate.
 
-The local-reference and fixed-Gibbs-reference clock continuations have no
-proved occupation limit in either detector analysis.
+The earlier local-reference and post-sharp fixed-Gibbs-reference probes have
+no proved occupation limit in those detector analyses. The separate
+[continued smooth program](COMPOSITION.md) bounds its later gauge probe on
+the retained state, without asserting convergence of Gibbs modular data.
 
 ## What this establishes and what remains
 

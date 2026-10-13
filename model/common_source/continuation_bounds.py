@@ -27,6 +27,11 @@ def _coupling(coupling):
         raise ValueError("this continuation certificate requires coupling exactly 1/4")
 
 
+def _round_upper(value, scale):
+    """Round a nonnegative rational upward to the shared certificate grid."""
+    return F(-(-value.numerator * scale // value.denominator), scale)
+
+
 def validated_stages(operations):
     """Normalize a finite operation list without depending on the runtime.
 
@@ -91,7 +96,7 @@ def occupation_bound(d, operations, *, coupling=r.COUPLING):
     # preparation tail has thousands of denominator digits.  Its upward
     # rounding contributes O(d^-6) to the vector bound, with no fixed floor.
     tail_scale = scale**2
-    omitted = F(-(-omitted_exact.numerator * tail_scale // omitted_exact.denominator), tail_scale)
+    omitted = _round_upper(omitted_exact, tail_scale)
     preparation = root_upper(2 * omitted, scale=scale)
     projected = preparation
     inverse_root = root_upper(F(1, d + 2), scale=scale)
@@ -114,7 +119,13 @@ def occupation_bound(d, operations, *, coupling=r.COUPLING):
             residual = integral * pointer_leakage
         elif kind == "gauge_read":
             records += 1
-        amplitude *= growth
+        # Bound denominator growth without reducing either upper bound.
+        # Each rounding adds less than 1/scale.  For a fixed finite program,
+        # propagated amplitude rounding and accumulated residual rounding
+        # remain O(d^-6).  Rounding the increment preserves the exact
+        # preparation + sum(reported increments) projected-error ledger.
+        amplitude = _round_upper(amplitude * growth, scale)
+        residual = _round_upper(residual, scale)
         projected += residual
         rows.append({
             "index": index, "kind": kind, "parameter_exact": str(value),

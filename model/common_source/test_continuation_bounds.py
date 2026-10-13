@@ -147,6 +147,74 @@ def test_fixed_protocol_cutoff_limit_and_exact_temporal_scaling():
     assert not analytic["source_compiler_available_at_this_dimension"]
 
 
+def test_long_admitted_program_returns_directed_vacuous_bound_without_fraction_growth():
+    from . import protocol
+    program = protocol.Program(operations=tuple(
+        protocol.Operation("evolve", F(5)) for _ in range(protocol.MAX_OPERATIONS)))
+    budget = b.program_bound(program)
+    certificate = budget["occupation_certificate"]
+    assert budget["complete_ideal_product_to_infinite_instrument_error_upper"] == "1"
+    assert len(certificate["stages"]) == protocol.MAX_OPERATIONS
+    # This used to fail while serializing the final moment: the accumulated
+    # rational denominator exceeded Python's integer-string digit limit.
+    assert len(json.dumps(budget)) < 300_000
+    scale = 10**30 * (program.dimension + 2)**6
+    for row in certificate["stages"]:
+        for key in ("outgoing_sqrt_fourth_moment_upper", "projected_duhamel_increment_upper",
+                    "projected_history_vector_error_upper"):
+            assert (F(row[key]) * scale).denominator == 1
+    with mp.workdps(400):
+        # Independent closed-form continuous-time integral: there are no
+        # measurements, so all 64 intervals collapse to model time 320.
+        expected = _reference(program.dimension, (("evolve", F(320)),))
+        keys = ("final_projected_history_vector_error_upper", "final_outside_vector_norm_upper",
+                "complete_stinespring_vector_error_upper", "final_fourth_number_moment_upper")
+        for key, target in zip(keys, expected):
+            actual = _mp(certificate[key])
+            assert target <= actual
+            assert (actual - target) / target < mp.mpf("1e-27")
+
+
+def test_stage_rounding_is_upward_bounded_and_keeps_neutral_stages_exact():
+    stages = (("evolve", F(0)), ("gauge_read", 0), ("feedback", 0),
+              ("evolve", F(1, 7)), ("smooth_read", 1), ("evolve", F(1, 11)))
+    resolutions = []
+    for d in (16, 64, 256):
+        certificate = b.occupation_bound(d, stages)
+        scale = 10**30 * (d + 2)**6
+        resolution = F(1, scale)
+        resolutions.append(resolution)
+        floor = math.isqrt(scale**2 // (d + 2))
+        inverse_root = F(floor + int(F(floor, scale)**2 < F(1, d + 2)), scale)
+        for row in certificate["stages"]:
+            amplitude = F(row["incoming_sqrt_fourth_moment_upper"])
+            growth = F(row["sqrt_moment_growth_factor_upper"])
+            rounding = F(row["outgoing_sqrt_fourth_moment_upper"]) - amplitude * growth
+            assert 0 <= rounding < resolution
+            leakage = ((F(9, 32) + inverse_root / 4) / (d + 2) if row["kind"] == "evolve"
+                       else inverse_root / (2 * (d + 2)) if row["kind"] == "smooth_read" else F(0))
+            raw_increment = F(row["integrated_sqrt_fourth_moment_upper"]) * leakage
+            increment_rounding = F(row["projected_duhamel_increment_upper"]) - raw_increment
+            assert 0 <= increment_rounding < resolution
+        initial = certificate["stages"][0]
+        for row in certificate["stages"][:3]:
+            assert row["outgoing_sqrt_fourth_moment_upper"] == initial["incoming_sqrt_fourth_moment_upper"]
+            assert row["projected_duhamel_increment_upper"] == "0"
+            assert row["projected_history_vector_error_upper"] == certificate["preparation_vector_error_upper"]
+        assert F(certificate["final_projected_history_vector_error_upper"]) == (
+            F(certificate["preparation_vector_error_upper"])
+            + sum(F(row["projected_duhamel_increment_upper"]) for row in certificate["stages"]))
+        with mp.workdps(100):
+            expected = _reference(d, stages)[2]
+            actual = _mp(certificate["complete_stinespring_vector_error_upper"])
+            assert expected <= actual
+            assert actual - expected < mp.mpf("1e-25")
+    # Added stage rounding shrinks with cutoff instead of making a fixed
+    # positive error floor in the occupation limit.
+    assert resolutions[1] / resolutions[0] == F(18, 66)**6
+    assert resolutions[2] / resolutions[1] == F(66, 258)**6
+
+
 @dataclass(frozen=True)
 class _Operation:
     kind: str

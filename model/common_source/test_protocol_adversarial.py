@@ -315,3 +315,28 @@ def test_valid_reference_checkpoint_roundtrip_preserves_every_complex_component(
     uninterrupted = p.execute(program, backend="product", initial=initial)
     for actual, expected in zip(resumed.branches, uninterrupted.branches, strict=True):
         np.testing.assert_array_equal(actual.state, expected.state)
+
+
+@pytest.mark.parametrize("backend", ("source", "product", "continuous"))
+@pytest.mark.parametrize("reference_columns", (1, 3))
+@pytest.mark.parametrize("cursor", (0, 1))
+def test_checkpoint_roundtrip_preserves_signed_zero_bytes(backend, reference_columns, cursor):
+    initial = np.zeros((16, reference_columns), complex)
+    initial[0, 0] = complex(.6, -0.0)
+    initial[12, -1] = .8j
+    initial[3, 0] = complex(-0.0, 0.0)
+    initial[6, 0] = complex(0.0, -0.0)
+    initial[7, 0] = complex(-0.0, -0.0)
+    program = p.Program(operations=(p.Operation("smooth_read"),
+        p.Operation("feedback", record=0), p.Operation("gauge_read")))
+    original = p.execute(program, initial=initial, backend=backend, stop_after=cursor)
+    restored = p.checkpoint_from_json(program, p.checkpoint_to_json(original), backend=backend)
+    assert restored.seal == original.seal
+    assert restored.initial_state.tobytes() == original.initial_state.tobytes()
+    for saved, loaded in zip(original.branches, restored.branches, strict=True):
+        assert loaded.state.tobytes() == saved.state.tobytes()
+        assert loaded.kraus.tobytes() == saved.kraus.tobytes()
+    resumed = p.execute(program, checkpoint=restored, backend=backend)
+    uninterrupted = p.execute(program, initial=initial, backend=backend)
+    for actual, expected in zip(resumed.branches, uninterrupted.branches, strict=True):
+        np.testing.assert_array_equal(actual.state, expected.state)

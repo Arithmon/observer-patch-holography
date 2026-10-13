@@ -556,7 +556,12 @@ def _decode_array(value, rows, columns=None):
            for pair in values):
         raise ValueError('checkpoint amplitudes must be finite real/imaginary numeric pairs')
     result = np.asarray(values, dtype=float)
-    return _immutable((result[:, 0]+1j*result[:, 1]).reshape(shape))
+    # Componentwise assignment preserves IEEE signed zeros. Arithmetic such
+    # as real+1j*imag can change their bits and invalidate a valid byte seal.
+    decoded = np.empty(len(result), dtype=np.complex128)
+    decoded.real = result[:, 0]
+    decoded.imag = result[:, 1]
+    return _immutable(decoded.reshape(shape))
 
 
 def checkpoint_from_json(program, payload, *, backend='source'):

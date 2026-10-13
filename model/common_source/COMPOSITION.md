@@ -97,6 +97,14 @@ prefix, all outcomes and costs by reexecution before continuing. It supplies
 neither a physical quantum-state reader nor a method to reconstruct unknown
 work coherence from classical records. The complete prepared work state is
 unchanged by a pause; the controller does not receive its hidden amplitudes.
+Direct in-memory continuation trusts runtime-produced `History` objects and
+checks their integrity and consistency; their public digest is not source
+authentication. Untrusted saved data must pass the JSON replay boundary.
+The program's `preparation` field describes its declared default.
+An explicit `execute(initial=...)` supplies a different work/reference input;
+the history records `preparation_mode='supplied_input'` and that input's
+amplitudes. This override retains finite channel composition but does not
+inherit the vacuum occupation bound.
 
 ## Existing finite results connected by this specification
 
@@ -328,14 +336,23 @@ and bit dictionary on both sides of the comparison.
 
 All certificate arithmetic is rational. Square roots and exponentials are
 rounded upward using the existing directed routines. Root resolution is
-`1/[10^30(d+2)^6]`; the initial probability tail is first rounded upward at
-the square of that scale, avoiding exponentially long serialized fractions.
-For a fixed finite protocol the resulting vector rounding error tends to
-zero. The Hamiltonian residual is `O(1/d)`, pointer residuals are
+`h_d=1/[10^30(d+2)^6]`; the initial probability tail is first rounded upward
+with resolution `h_d^2`, avoiding exponentially long serialized fractions.
+After every stage, the outgoing moment amplitude and the Duhamel increment
+are rounded upward to the least multiple of `h_d`. The projected error adds
+that reported increment exactly. Each rounding adds less than `h_d`;
+neutral and zero-time stages are already on the grid and unchanged.
+For a fixed finite program with growth factors `G_i`, the amplitude excess
+obeys `Delta A_(i+1) <= G_i Delta A_i + h_d`, so it is `O(h_d)`. Its effect
+on later residuals, plus finitely many increment roundings, is also
+`O(h_d)`. This preserves the directed bound and the exact
+preparation-plus-increments ledger while preventing denominator growth.
+The Hamiltonian residual is `O(1/d)`, pointer residuals are
 `O(d^-3/2)`, and the final outside term is `O(d^-2)`. Thus the complete
 occupation error is `O(1/d)` at fixed protocol, with no fixed rounding floor.
 No assertion uniform in growing protocol length or growing total time is
-made.
+made. Extremely large moments can still exceed the evaluator's integer
+serialization limit; those requests raise an error and emit no certificate.
 
 ## Temporal and supplied-service budgets
 
