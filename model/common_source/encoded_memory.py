@@ -144,7 +144,8 @@ def encoding(state):
 
 def decoding(state):
     """Execute the source inverse, retaining every syndrome and padding row."""
-    return _finite_output(_encoder(True)@routing._state(state))
+    value = routing._state(state)
+    return _finite_output(_encoder(True)@value)
 
 
 @lru_cache(maxsize=96)

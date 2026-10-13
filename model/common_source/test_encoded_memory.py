@@ -147,6 +147,18 @@ def test_bad_logical_inputs_are_rejected_before_source_execution(bad, monkeypatc
         memory.encoding(bad)
 
 
+@pytest.mark.parametrize('bad', [True, np.ones(512, dtype=bool), [1.]+[False]*511,
+                                np.zeros(511), np.empty((512, 0)),
+                                [math.nan]+[0.]*511,
+                                np.ma.array(np.zeros(512), mask=False)])
+def test_bad_decoder_inputs_are_rejected_before_source_execution(bad, monkeypatch):
+    # A cold source inverse executes a large compiled word. Invalid original
+    # data must be rejected before that work, even if caches are empty.
+    monkeypatch.setattr(memory, '_encoder', lambda *args: pytest.fail('invalid input reached source execution'))
+    with pytest.raises(ValueError):
+        memory.decoding(bad)
+
+
 @pytest.mark.parametrize('law,seam,coin,raw', [
     ('Q', (0, 1), 0, 0), ('C', (1, 0), 0, 0), ('C', [0, 1], 0, 0),
     ('C', (False, 1), 0, 0), ('C', (0, 1), True, 0),

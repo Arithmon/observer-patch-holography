@@ -284,7 +284,7 @@ def routing_execution_diagnostics():
 
 
 def routed_repair_branches(candidate, seam, state):
-    """Complete source-recorded repair on the two implemented physical seams.
+    """Complete source-recorded repair on the three implemented physical seams.
 
     Input/output arrays have 512 rows and may have arbitrary reference columns;
     unnormalized inputs remain unnormalized. Every raw record, including an
