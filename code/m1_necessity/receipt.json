@@ -1721,7 +1721,7 @@
           "declared_common_source_finite_record_program"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "b168575c074bc25d9263e43c6cddfc857dcecbeb2dfb8e7c1d9f73c3f5e810fa"
+        "original_claim_sha256": "a3b0daf661c80fc6a6caf833c1307e5a0d30c34900d83b869b51d341d0ec0ddc"
       },
       "OPH-MODEL-SCALAR-RESPONSE-EXECUTION": {
         "assumptions": [

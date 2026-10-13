@@ -159,8 +159,11 @@ dimensions 2 and 4 remaining open.
 
 The sharp instrument need not preserve finite kinetic energy; the smooth
 instrument preserves the energy form domain and has unconditional
-infinite-model energy increment `1/8`. None of these occupation results includes
-a limit of either appended clock protocol or a calibrated physical duration.
+infinite-model energy increment `1/8`. The earlier clock probes appended to
+the sharp history have no occupation limit here. The
+[continued smooth program](common_source/COMPOSITION.md) instead bounds its
+actual later gauge-probe instrument; Gibbs modular-data convergence and
+physical clock calibration remain separate obligations.
 
 The [native observer](observer/README.md) executes two repair events with a
 finite tape. It records the first current, issues a supplied forecast from
