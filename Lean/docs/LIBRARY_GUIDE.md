@@ -1,8 +1,12 @@
 # Observer-Patch Holography: Lean 4 Formalisation
 
-Lean 4 / Mathlib formalisation effort for *Paradise as Fixed-Point Consensus*
-(B. Müller, 2026; source in `paper/paradise_as_fixed_point_consensus.tex`),
-with **Proposition 4.2** as the primary target.
+Lean 4 / Mathlib formalisation of the OPH theorem library. The
+consensus-layer entries of the [proof index](PROOF_INDEX.md) follow
+Definition 4.1 and Proposition 4.2 of the archived paper *Paradise as
+Fixed-Point Consensus* (source in
+`paper/archive/paradise_as_fixed_point_consensus.tex`), whose fixed-point
+reading of the public world is the consensus normal form of the theorem
+library.
 
 ## Scope
 

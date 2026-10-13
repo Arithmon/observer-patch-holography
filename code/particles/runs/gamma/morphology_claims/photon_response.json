@@ -1,7 +1,0 @@
-{
-  "artifact": "photon_response",
-  "claim": "DIAGNOSTIC_GAMMA_MAP",
-  "direct_anomaly_gamma_default": 0.0,
-  "nonzero_direct_requires": "ANOMALY_EM_CURRENT_RECEIPT",
-  "route": "TRANSPORTED_STRESS"
-}

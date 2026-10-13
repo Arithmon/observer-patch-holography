@@ -1,6 +1,0 @@
-{
-  "artifact": "instrument_response",
-  "claim": "DIAGNOSTIC_GAMMA_MAP",
-  "operator": "intensity_to_binned_counts",
-  "route": "TRANSPORTED_STRESS"
-}

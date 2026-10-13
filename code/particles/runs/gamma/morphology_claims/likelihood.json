@@ -1,6 +1,0 @@
-{
-  "artifact": "frozen_gamma_likelihood",
-  "claim": "DIAGNOSTIC_GAMMA_MAP",
-  "likelihood": "binned_poisson_counts",
-  "route": "TRANSPORTED_STRESS"
-}

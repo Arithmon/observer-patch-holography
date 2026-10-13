@@ -1,7 +1,0 @@
-{
-  "artifact": "stress_contraction",
-  "claim": "DIAGNOSTIC_GAMMA_MAP",
-  "default_contraction": "sigma_T = T_A^{mu nu} u_mu u_nu",
-  "extended_branch_requires": "EXTENDED_STRESS_CONTRACTION_RECEIPT",
-  "route": "TRANSPORTED_STRESS"
-}
