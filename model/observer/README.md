@@ -37,8 +37,8 @@ identity covers every native input and arbitrary references. The executed
 output states and synthetic counts reproduce the fixed prediction test;
 physical occupation-to-code loading and service calibration remain supplied.
 
-The [quantum mixing theorem](QUANTUM_MIXING.md) determines the full C/E
-relaxation spectrum through small exact signed-difference blocks. Under
+The [quantum mixing theorem](QUANTUM_MIXING.md) determines the C/E quantum
+gap and coherence rates through small exact signed-difference blocks. Under
 independent uniform seam attempts, their quantum gap equals the existing
 classical gap, but their coherence decay differs. It also proves finite
 entanglement breaking on the binary shell and an explicit finite-time
@@ -50,7 +50,8 @@ channel obtained by discarding the records, not the retained observer tape.
 The native observer commands use the Python standard library. The capacity
 calculation imports the existing [public-record evaluator](../../code/capacity_readback/).
 The quantum mixing audit additionally uses the pinned `model/requirements.txt`
-environment for its source-carrier imports and exact characteristic polynomial.
+environment for its source-carrier imports and exact characteristic polynomial,
+as does the complete-record recovery replay for its source-word execution.
 
 ```sh
 # Exhaustive exact construction: 78 source states, 264 benchmark histories.

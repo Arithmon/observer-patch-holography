@@ -99,8 +99,8 @@ preparation. At d=2 the full ideal source output is about 0.455 from the
 infinite sharp history in trace distance, despite the much smaller change
 in its single sign probability. Every output confined to the d=256
 occupation code has error above 0.122 for this prepared history.
-This resolves a detector approximation question, with no spatial refinement
-or physical apparatus identification.
+This answers the finite-detector comparison question for this preparation,
+with no spatial refinement or physical apparatus identification.
 
 The construction reuses the existing coherent source rather than claiming
 that a common abstract source was absent. Its [theorem attachments](common_source/DERIVATION.md#compatible-theorem-use-and-open-physical-connections)

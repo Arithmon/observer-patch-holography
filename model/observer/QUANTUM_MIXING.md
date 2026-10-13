@@ -356,8 +356,9 @@ to the existing thirty-seam carrier. Exhaustive checks establish that
 the executable channel is the one in the proof; they do not replace the
 weighted exclusion theorem or the separable-ball theorem.
 
-The result closes the quantum mixing and finite entanglement-breaking
-questions for these two specified forgotten-source channels. It does not
-discard records from the actual observer, derive coherent code services,
-calibrate the event schedule in physical time, or decide the full OPH
-programme's realizability.
+The result settles the quantum gap, eventual entanglement breaking on the
+binary shell and its failure on the full carrier for these two specified
+forgotten-source channels; the exact shell entanglement-breaking index is
+not determined. It does not discard records from the actual observer,
+derive coherent code services, calibrate the event schedule in physical
+time, or decide the full OPH programme's realizability.

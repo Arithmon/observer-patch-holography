@@ -269,11 +269,11 @@ These intervals are rounded outwards from the exact receipt. At d=2 the
 additional ideal 512-step source budget gives [0.454336, 0.455973] with
 feedback and [0.456824, 0.458461] without it. At d=64 the pre-readout error
 is below 0.000002498, so it cannot explain the much larger final error:
-the sharp detector dominates. The vacuum control independently proves
-that optimal approximation within these occupation codes requires
-dimension `Omega(epsilon^-4)` for complete-output error epsilon. That
-resource bound concerns the specified Fock code, not every abstract finite
-encoding. The separate smooth detector avoids this discontinuous readout
+the sharp detector dominates. For the vacuum control, optimal approximation
+within these occupation codes requires dimension `Omega(epsilon^-4)` for
+complete-output error epsilon. That resource bound concerns the specified
+Fock code and that control, not every abstract finite encoding or the
+interacting histories. The separate smooth detector avoids this discontinuous readout
 while changing the observable being measured.
 
 The infinite-history derivation also proves that the finite sign instruments

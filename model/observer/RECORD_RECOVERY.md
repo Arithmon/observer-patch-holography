@@ -138,7 +138,8 @@ at least one half on one of them. Later processing cannot reverse that
 loss. This concerns unencoded states; (8) supplies a distinct encoded
 countercontrol.
 
-For the existing two-event current-controlled E/F observer, exhaustive
+For the existing two-event current-controlled C observer, and for E with
+the same current-sign selector applied to its decoded current, exhaustive
 history fibers give the following instances of (4):
 
 | Input carrier | C optimal fidelity | E optimal fidelity | Full-input correctable block sizes, both laws |
@@ -239,8 +240,9 @@ H_xy(t) = q_L(x-y)^t,
 F_opt(t) = D^(-2) sum_{x,y} q_L(x-y)^t.                           (10)
 ```
 
-Connectedness and equal total imply `q_L(z)<1` for every nonzero admitted
-`z`. Thus `F_opt(t)` tends to `1/D`, while all initial populations remain
+Here `t` counts seam attempts. Connectedness and equal total imply
+`q_L(z)<1` for every nonzero admitted `z`. Thus `F_opt(t)` tends to `1/D`,
+while all initial populations remain
 perfectly recoverable. Retaining the tape preserves the classical input
 even as the optimal full-state entanglement fidelity approaches its
 complete-dephasing value.
