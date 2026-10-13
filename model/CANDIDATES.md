@@ -158,9 +158,20 @@ process with two particles. Its generator per seam attempt is
 [Caputo, Liggett and Richthammer (2010), section 4.1.1](https://arxiv.org/abs/0906.1238)
 gives the exact classical gap `(5−sqrt(5))/60 ≈ 0.046066` on this carrier,
 equal to the one-particle gap. This is an application of existing theory.
-It does not determine the full quantum-channel gap or the enlarged N2/N4
-gaps: off-diagonal operators and additional response factors require their
-own analysis.
+The [exact quantum reduction](observer/QUANTUM_MIXING.md) proves that this is
+also the full C/E channel gap, on both the binary shell and all 78 states.
+Every surviving matrix unit keeps its signed load difference, reducing its
+binary block to exclusion on the remaining vertices plus a constant loss.
+The slowest binary coherences decay by `5/6` per attempt for C and `7/10`
+for E, although their classical relaxation and geometry agree.
+
+On the binary shell, both forgotten-record channels are entanglement-breaking
+after at most 134 independent uniform attempts. On the full 78-state carrier,
+a collision/binary input retains provable reference entanglement at every
+finite attempt count, with a signal tending to zero. Thus replacing the
+full carrier by its attracting shell can change an exact finite-time quantum
+property. The rate concerns discarded records and no intervening control;
+it does not erase retained history or cover N2/N4's extra response factors.
 
 Under uniform binary equilibrium and uniform seam attempts, the same records
 recover the carrier Laplacian, its rank-three slow Gram and a dimensionless

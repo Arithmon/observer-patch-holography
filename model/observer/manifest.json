@@ -1,29 +1,40 @@
 {
   "dependencies": [
     "Python standard library",
-    "code/capacity_readback"
+    "code/capacity_readback",
+    "model/requirements.txt (quantum mixing audit)"
   ],
   "files": {
     "CAPACITY.md": "3607811ac4c844bb0ee78ebc6237c0b9389193fccbf52f0e8baa56350c4b04ce",
     "DERIVATION.md": "2c0a0f6eae158c91938b7f6014c524738a226380e89d519df78d3b3a8e9c228c",
-    "README.md": "255ed0e06e18d9388bc9d9722355abb99b51c571e69c3d5a1275cdfd5dd2da5a",
+    "QUANTUM_MIXING.md": "2ce009fc025a146cbab82c50593e6cafe45dc2f57afeb77f81c4fb3b93f2580f",
+    "README.md": "67095d312e10460f112a7821afa0cb1205bebc45903d4808d2ee621f7b332f51",
     "__init__.py": "8c075559977af21e4de61a648f42a2f57efbb1e6bae727183acc70c35a316af0",
     "__main__.py": "c79bda56d3944fc38b91dda1d26d8513467a0a9bf003929a4c192d73f64c3229",
     "capacity.py": "a27c34e7486e4c88abd57c934caf526bbd1183a76e9d232830a2aa85c64211db",
     "native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "quantum_memory.py": "be5f6b9d46d016e24046ac49dd5eb04029fda4018f26ca1376d9687e67ef81d6",
+    "quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139",
+    "quantum_mixing_receipt.py": "9d6b526d3b82b8d4c52d4c9bb15e2aa2ca195fd831114bd5d46a882a0b49f326",
     "results/capacity.json": "373c6558dda5bef7250170876f28aba091c264479db6ef754b23e109b3140680",
     "results/native.json": "5b4f48e31f35cc6d8941bab6482ed4c0e5ab8d51ff9ab1fe469241f60b910293",
+    "results/quantum_mixing.json": "8f2e18b461437b76b4aa10a653d0c8fa2510b6cf1f66b59f64785be4d0356f30",
     "results/run.json": "88aa066539b197c1c070a58d1b2c4900b64bc4ff71bc674ca375a5771dd55c4f",
     "simulate.py": "d7380b43216c657e3a6a0c24a2da923b55c367cae107fb325e2389735db93046",
     "test_native_observer.py": "517fba7fcd275c67637758d1a29d15b9fa8d85caa3f7716a435dcb4a94af444e",
     "test_observer_capacity.py": "4ac0b4efe01b045aabae27555421e15487b68059588cb402a513543206b64e37",
-    "test_observer_simulation.py": "8474573b1d27b021fe57e597c0125268b639b2b1b0234e65967036ace672b7f7"
+    "test_observer_simulation.py": "8474573b1d27b021fe57e597c0125268b639b2b1b0234e65967036ace672b7f7",
+    "test_quantum_memory.py": "7b4af6c7f47e1fd76c7db350cb5c0062a2b584911ba10aae81898d642f6734f9",
+    "test_quantum_mixing.py": "0a9214fcb876821cd1d4e9fe881a1a71986de115a95bc55be8b1fe3a47f6382b",
+    "test_quantum_mixing_graphs.py": "7be808b47e0ad2a8179fe79e13023e29d695fdd4c84103d2e407790d656e7a09",
+    "test_quantum_mixing_receipt.py": "3f398128ce5e1de8d9eaa8aefe4145060ff92b0dd4ae5f80b110236fbb82831e"
   },
   "reproduce": [
     "python3 -m model.observer native --check model/observer/results/native.json",
     "python3 -m model.observer capacity --check model/observer/results/capacity.json",
     "python3 -m model.observer run --trials 20000 --seed 20261012 --check model/observer/results/run.json",
-    "python3 -m unittest model.observer.test_native_observer model.observer.test_observer_capacity model.observer.test_observer_simulation -v"
+    "python3 -m unittest model.observer.test_native_observer model.observer.test_observer_capacity model.observer.test_observer_simulation -v",
+    "python3 -m model.observer.quantum_mixing_receipt --check model/observer/results/quantum_mixing.json"
   ],
   "schema": "oph.observer.public_manifest.v1"
 }

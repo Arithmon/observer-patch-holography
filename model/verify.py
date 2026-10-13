@@ -16,6 +16,7 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/common_source")
 REPLAYS = (
     ("model.observer", "native", "model/observer/results/native.json"),
+    ("model.observer.quantum_mixing_receipt", None, "model/observer/results/quantum_mixing.json"),
     ("model.observer", "capacity", "model/observer/results/capacity.json"),
     ("model.observer", "run", "model/observer/results/run.json"),
     ("model.observer.p_response", None, "model/observer/p_response/results.json"),
