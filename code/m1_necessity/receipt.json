@@ -1038,7 +1038,7 @@
           "declared_classical_probe_restore_feedback_error_model"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "ff9b68a4b980b4169e1b8b368b3e5f4525676f096aec2528d9fcc36f0fd3d85e"
+        "original_claim_sha256": "929b4e38226fec7572a9c47ecc7050fa1c24d66c5c60b25ca188ddb67c9770e8"
       },
       "OPH-CONE-WHITNEY-BRIDGE": {
         "assumptions": [
