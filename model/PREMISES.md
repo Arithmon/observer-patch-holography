@@ -36,9 +36,9 @@ explained in the [assumption dictionary](../claims/assumption_dictionary.md).
 | --- | ---: |
 | Canonical premise IDs represented in this crosswalk | 84/84 |
 | Model criteria represented | 12/12 |
-| Registered claims | 332 |
-| Unique ordinary `assumptions` names | 806 |
-| Unique `imported_results` names | 878 |
+| Registered claims | 336 |
+| Unique ordinary `assumptions` names | 810 |
+| Unique `imported_results` names | 882 |
 | Workgroups | 27 |
 | Assumption names explicitly linked by optional group fields | 32 |
 | Claims explicitly linked by optional group fields | 17 |
@@ -66,7 +66,7 @@ the ordinary-assumption inventory:
 | `null_decision_assumptions` | 1 | 2 | 2 | 0 |
 | `threshold_kinematic_assumptions` | 1 | 6 | 6 | 0 |
 
-Existing claim classifications: `explicit_edges`: 171; `explicit_non_consumer`: 161.
+Existing claim classifications: `explicit_edges`: 171; `explicit_non_consumer`: 165.
 
 ## Remaining-input and dependency rule
 

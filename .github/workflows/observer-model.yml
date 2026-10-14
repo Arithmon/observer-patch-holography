@@ -57,9 +57,10 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
-    # Full receipt replay and source-level recovery controls execute the
-    # compiled nine-qubit macros twice. Retain all checks on Windows too.
-    timeout-minutes: 40
+    # Spatial/scalar receipts, dense native readout compilation and the
+    # complete regression suite run sequentially. Allow Windows headroom
+    # while retaining every replay and source-level recovery control.
+    timeout-minutes: 90
     env:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'

@@ -14841,6 +14841,169 @@
         "boundary": [],
         "rationale": "This construction supplies its CAR/link code, scalar and interaction Hamiltonian, free coupled vacuum, coherent services, model-time schedule, records, native controller and observer access algebras. It instantiates finite algebraic and instrument identities, programmed modular readouts, local history repair and native response coordinates, with their stated operational boundaries. It also proves occupation refinement and a state-specific infinite half-line response for the same declared action, while the separate smooth Ramsey detector has its own complete-instrument occupation and energy theorem. These mathematical certificates and finite attachments do not emit an infinite apparatus or establish physical matter, clock, gauge, geometric or spatial identification. They neither consume nor discharge canonical physical premises. The exponential-number bound is uniform over matter/reference inputs with the fixed scalar vacuum before final readout; the exact infinite sharp response is for zero native preparation current; the modular clock remains a finite sharp-protocol continuation; and the earlier classical native attachment retains its primitive interface. The separate coherent attachment executes complete C/E native maps through a supplied encoding and existing source controls, including routed feedback and raw aborts; it does not select a physical load-to-code identification or establish initialization, storage or service accuracy. The separate full-work Gibbs reference and beta are supplied finite choices: t=-beta*s identifies continuous Hamiltonian segments without replacing the actual prepared state, selecting a physical temperature, or extending either appended clock protocol to the occupation limit. The native continuity and conditional-current laws follow from the existing primitive; closed mean transport uses the separate uniform-seam calibration. Its restriction on a fixed linear mean readout supplies no physical field law, new clock identification or additional canonical premise."
       }
+    },
+    {
+      "claim_id": "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION",
+      "statement": "The retained source execution realizes the supplied repulsive Bose action in its exact two-particle sector on 27, 125 and 343 sites, with both pointer records, field feedback and all 1056 native/quantum histories at each size. Its independent full-Hamiltonian comparison and rational temporal and infinite-volume certificates are retained; the ideal source-to-infinite-history TV bound at 343 sites is below 0.010183. A separate interaction-deletion witness has a positive volume-uniform analytic margin. This is a nonrelativistic lattice action at fixed spacing. Its full-Fock vacuum gap follows from the supplied positive mass term and is not measured by fixed-particle histories. Model time, geometry, preparation and services are supplied; no relativistic continuum or empirical agreement is asserted.",
+      "owner_paper": "model/spatial_interaction/README.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_executed_model_and_comparison_record",
+      "assumptions": [
+        "declared_spatial_bose_observation_protocol",
+        "declared_coherent_proper_code_services_and_analogue_source_controls"
+      ],
+      "imported_results": [
+        "Bose_Hubbard_lattice_action",
+        "symmetric_product_formula_integral_Taylor_remainder",
+        "finite_Kraus_Stinespring_construction",
+        "trace_distance_contraction_and_unitary_channel_composition"
+      ],
+      "oph_specific_delta": "Executes the growing spatial branch through the existing source alphabet and retains complete feedback histories, source resources and uniform finite-to-infinite comparison certificates.",
+      "novelty_type": "source_executed_model_and_scoped_observation_comparison",
+      "evidence": [
+        "model/spatial_interaction/README.md",
+        "model/spatial_interaction/DERIVATION.md",
+        "model/spatial_interaction/experiment.py",
+        "model/spatial_interaction/source.py",
+        "model/spatial_interaction/bounds.py",
+        "model/spatial_interaction/results.json"
+      ],
+      "falsifier": "A retained branch, padding state or source phase is omitted; the independent Hamiltonian comparison fails; a temporal or boundary certificate fails under its stated hypotheses; the positive witness margin fails; or canonical replay disagrees.",
+      "scope_if_false": "The supplied spatial Bose construction or its comparison certificate fails; no verdict about observed physics or the entire OPH programme follows.",
+      "status": "retained_execution_and_comparison_under_declared_premises",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This packet explicitly supplies a repulsive nonrelativistic lattice action, fixed spacing, finite-number preparation, instruments, routing and Hamiltonian model time. It certifies software laws and their infinite-volume comparison without consuming or discharging a canonical physical identification premise."
+      }
+    },
+    {
+      "claim_id": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
+      "statement": "The source-executed eight-site canonical scalar regulator permits number-changing quartic interactions and retains both measurements, feedback and all 1056 native/quantum histories. Exact polynomial certificates compare its finite occupation histories with the same eight unrestricted oscillators; the ideal combined TV bound is below 0.000928 at the larger retained cutoff. A separate bounded instrument has a positive analytic interaction margin. Strong convexity yields a finite-volume gap bound for the supplied untruncated action, and a separate free spatial comparison approaches Klein-Gordon. The interacting relativistic observation domain, physical calibration, spatial continuum and action selection are not established. The prepared blank is not the interacting vacuum.",
+      "owner_paper": "model/relativistic_scalar/README.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_executed_model_and_comparison_record",
+      "assumptions": [
+        "declared_canonical_scalar_observation_protocol",
+        "declared_coherent_proper_code_services_and_analogue_source_controls"
+      ],
+      "imported_results": [
+        "canonical_lattice_scalar_quantum_simulation",
+        "convex_Schrodinger_spectral_gap_comparison",
+        "symmetric_product_formula_integral_Taylor_remainder",
+        "selfadjoint_oscillator_spectral_Taylor_remainder"
+      ],
+      "oph_specific_delta": "Executes a number-changing spatial scalar branch and binds complete-record occupation and time-splitting errors to that source execution, with a distinct finite interaction witness and free-field comparison.",
+      "novelty_type": "source_executed_model_and_scoped_observation_comparison",
+      "evidence": [
+        "model/relativistic_scalar/README.md",
+        "model/relativistic_scalar/DERIVATION.md",
+        "model/relativistic_scalar/experiment.py",
+        "model/relativistic_scalar/exact_history.py",
+        "model/relativistic_scalar/source.py",
+        "model/relativistic_scalar/results.json"
+      ],
+      "falsifier": "The full oscillator polynomials are replaced by powers of compressed coordinates, a history or feedback branch is lost, the exact remainder or gap hypotheses fail, the source comparison exceeds its budget, or canonical replay disagrees.",
+      "scope_if_false": "The declared scalar regulator or bounded comparison fails; no physical relativistic QFT or OPH-specific empirical claim is withdrawn because none is asserted here.",
+      "status": "retained_execution_and_comparison_under_declared_premises",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This eight-site packet supplies its scalar action, positive mass, spacing, occupation basis, blank preparation and Hamiltonian model-time schedule. Its fixed-volume occupation certificates and separate free comparison do not consume or establish canonical continuum, clock, matter or source-selection premises."
+      }
+    },
+    {
+      "claim_id": "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS",
+      "statement": "The retained interacting scalar observations compare one smeared-field detector on the same seven Fourier modes and torus across spatial grids. Both pointer outcomes and conditional feedback execute through source words. At grid size 65 the ideal source law is within 0.001427 TV of the exact-gradient four-level target; a separate occupation receipt bounds its complete law against seven unrestricted modes by less than 0.054. The stronger-detector cutoff failure remains recorded. An auxiliary, non-source-executed calculation certifies an interaction-dependent retained-event separation greater than 0.00008 under the positive-current preparation. The band, action, parameters and model time remain supplied; these results do not establish locality under band enlargement or empirical interacting dynamics.",
+      "owner_paper": "model/scalar_observations/README.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_executed_model_and_comparison_record",
+      "assumptions": [
+        "declared_fixed_band_scalar_observation_protocol",
+        "declared_coherent_proper_code_services_and_analogue_source_controls"
+      ],
+      "imported_results": [
+        "canonical_lattice_scalar_quantum_simulation",
+        "symmetric_product_formula_integral_Taylor_remainder",
+        "quadratic_form_Leibniz_identity_for_smooth_measurement",
+        "weighted_number_moment_and_projected_Duhamel_cutoff_bounds",
+        "exact_rational_arithmetic_with_directed_root_and_pi_enclosures"
+      ],
+      "oph_specific_delta": "Fixes one detector meaning across interacting spatial refinements and records separate finite-code, unrestricted spatial and complete-history occupation comparisons without replacing the failed stronger-detector control.",
+      "novelty_type": "source_executed_model_and_scoped_observation_comparison",
+      "evidence": [
+        "model/scalar_observations/README.md",
+        "model/scalar_observations/DERIVATION.md",
+        "model/scalar_observations/OCCUPATION_DERIVATION.md",
+        "model/scalar_observations/experiment.py",
+        "model/scalar_observations/occupation.py",
+        "model/scalar_observations/results.json",
+        "model/scalar_observations/occupation_results.json"
+      ],
+      "falsifier": "A grid changes the supplied mode band or observable meaning, a complete branch or occupation boundary term is omitted, an auxiliary proof is mislabeled source execution, an exact error budget fails, or either retained receipt fails replay.",
+      "scope_if_false": "The fixed-band observation comparison or certificate fails. The numerical stress result retains its scope; no empirical agreement of interacting scalar dynamics is asserted.",
+      "status": "retained_execution_and_comparison_under_declared_premises",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This branch fixes a seven-mode torus action, state preparation, smooth pointer, feedback and Hamiltonian model times before comparing spatial grids and occupation codes. Its supplied model and exact approximation budgets neither consume nor discharge canonical physical parameter, clock or source-identification premises."
+      }
+    },
+    {
+      "claim_id": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT",
+      "statement": "The retained retrospective oscillator comparison uses the zero-simulated-duration McGarry et al. trapped-ion data. Twenty-one complex axis records calibrate preparation/readout and 100 off-axis complex records are excluded from fitting. The original Gaussian axis-product analysis has spin-mean RMSE 0.07639048. The separate executable model fits only real displacement and nonnegative thermal occupation, then contracts native preparation, rotation and pointer words at 64 occupation levels to emit both binary probabilities. Its primary spin-mean RMSE is 0.06647166 and binary-probability RMSE 0.03323583, with an ideal fitted-point occupation probability bound below 3.82e-7. Both published coordinate scales remain in the receipt. The off-axis data had been inspected before this execution was designed, laboratory preparation is postselected, accepted shot counts are unauthenticated, and fit uncertainty and apparatus errors are not certified. This establishes a reproducible supplied-model preparation/readout comparison, not a prospective prediction, interacting dynamics, physical clock calibration, source-selected laboratory law or OPH-specific empirical distinction.",
+      "owner_paper": "model/scalar_observations/experimental_readout/EXECUTABLE_READOUT.md",
+      "owner_medium": "protocol_record",
+      "tier": "bounded_executed_model_and_comparison_record",
+      "assumptions": [
+        "declared_published_oscillator_readout_protocol",
+        "declared_coherent_proper_code_services_and_analogue_source_controls"
+      ],
+      "imported_results": [
+        "published_trapped_ion_preparation_and_characteristic_readout",
+        "Gaussian_Weyl_characteristic_function",
+        "binary_Kraus_Stinespring_instrument",
+        "weighted_number_moment_and_projected_Duhamel_cutoff_bounds",
+        "Hoeffding_finite_sample_concentration_and_union_bound"
+      ],
+      "oph_specific_delta": "Connects an attributed experimental aggregate dataset to a fixed axis/interior split and separately executes native source words to produce the reserved probabilities under a calibrated laboratory model, while retaining analytic checks, alternate metadata conventions and a rational occupation certificate.",
+      "novelty_type": "source_executed_model_and_scoped_observation_comparison",
+      "evidence": [
+        "model/scalar_observations/experimental_readout/README.md",
+        "model/scalar_observations/experimental_readout/EXECUTABLE_READOUT.md",
+        "model/scalar_observations/experimental_readout/EXECUTABLE_DERIVATION.md",
+        "model/scalar_observations/experimental_readout/provenance.json",
+        "model/scalar_observations/experimental_readout/protocol.json",
+        "model/scalar_observations/experimental_readout/results.json",
+        "model/scalar_observations/experimental_readout/executable_protocol.json",
+        "model/scalar_observations/experimental_readout/executable.py",
+        "model/scalar_observations/experimental_readout/executable_source.py",
+        "model/scalar_observations/experimental_readout/executable_results.json"
+      ],
+      "falsifier": "Numeric off-axis observations enter the preparation fit or source readout function, analytic reference values replace emitted branch probabilities, mirror copies count as independent observations, a recorded outcome or coordinate convention is dropped, source or data hashes fail, the occupation certificate fails, or canonical replay disagrees.",
+      "scope_if_false": "The stated retrospective preparation/readout comparison or its implementation fails. Neither its agreement nor failure alone establishes or excludes OPH, and no statistical significance verdict or interacting-field observation is claimed.",
+      "status": "retained_execution_and_comparison_under_declared_premises",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "This readout attachment supplies the single-oscillator family, thermal mixture, code services and apparatus map, calibrates two parameters on published axes, and reports a retrospective reserved-point discrepancy. Its occupation bound is mathematical at the fitted point. It does not consume or discharge the canonical physical-selection, clock, continuum or empirical-completion premises."
+      }
     }
   ],
   "claim_context": {
@@ -26912,6 +27075,207 @@
         "oph_specific_delta": "Reuses the existing coherent M6 source to execute a coupled scalar, signed matter and quantum-flux history, connects its actual pointer records back to native current-controlled preparation and native repair feedback, and checks the appropriate postcommit record interfaces. Adds a rational all-input finite temporal budget and an independent exact d=2 signal enclosure; no new claim of abstract universal quantum hardware or physical sector selection is made. Attaches the actual observation state to explicit GNS and modular readouts, executes a record-preserving programmed modular clock on its d=2 scalar marginal, and computes regional interaction support on the same supplied carrier. Quantum algebra, access, source services and physical calibration retain their stated boundaries. Supplies a candidate-specific interacting fourth-moment/Duhamel bound before sharp field readout and a strong-limit proof for the actual complete sharp-readout history; it does not transfer the earlier free Gaussian bound or claim a finite-cutoff final-detector rate. Expresses the same source history as local acyclic constraints and proves schedule-independent recovery of its complete quantum outputs. Attaches the existing native slow-response quotient to committed currents on every joint path, distinguishes uniform calibration from the original rank-two controller, and executes a declared binary F/G continuation with a rank-three displacement span. These attachments do not implement a global native history solver or identify physical spacetime or momentum. Executes a distinct smooth Ramsey detector on the same interacting carrier and gives its complete unnormalized instrument a quantitative occupation bound. The same-family ideal temporal refinement can be combined with that bound; the infinite smooth ensemble has an exact dimensionless energy increment of 1/8. This changes the detector meaning rather than supplying a sharp-sign rate, and claims no observed matter or gravity. Beyond the finite temporal budget and exact d=2 signal, an independent exact expanding-support calculation certifies the same action's infinite-occupation feedback contrast [-0.024045670143, -0.024043450955] with the actual half-line readout and every discarded/rounded amplitude charged. A separate non-Gaussian cutoff theorem controls the retained pre-readout history uniformly over matter/reference inputs with the fixed scalar vacuum; exact Hermite formulas expose the finite-sign detector correction. This exact zero-current sharp response and the separate smooth-detector occupation/energy result have distinct observable contracts; neither supplies a physical calibration or an infinite modular clock. Attaches a fixed full-work Gibbs reference to the same Hamiltonian and actual changing observation histories, with t=-beta*s and complete record-preserving source probe continuations. The full-work reference is a supplied clock construction; it does not invalidate the earlier local-reference obstruction or calibrate physical temperature or time. Attaches existing scalar-seam averaging and graph diffusion identities to the actual integer-current records and full finite kernel, with continuing-fluctuation and feedback-schedule controls; the mean-wave restriction is limited to that closed readout. Executes the full native quantum interface around the retained smooth continuation, reusing the existing C/E source circuits and adding source-executed port routing while retaining native/reference coherence and every raw abort outcome. Compiles the existing one-event native code into active encoded memory within the retained field history, with arbitrary-reference branch identities and a passive schedule that loses logical phase. Reuses Walsh/Gray diagonal synthesis to reduce the actual routed-native and encoded-memory source schedule while preserving the complete endpoint action. Adds an exact prepared sixteen-output continuation certificate through both smooth reads, later feedback and the gauge probe, with separate all-current finite-product error bounds and complete native/encoded lifts.",
         "falsifier": "The independent CAR/flux embedding violates Gauss or parity; a source word differs from the full finite target action; a joint branch is omitted or its probability detaches from its terminal state; the specified noncommuting coupling is absent; the exact signal enclosure or temporal operator bound fails; a committed checkpoint projector changes; the final native actuator reads undeclared data; the GNS pairing or finite modular identities fail; the programmed clock word violates its analytic law or alters an old record marginal; a regional conditional expectation fails its CP projection contract; the interaction support disagrees with the full Hamiltonian; the interacting moment, cutoff residual or complete-history convergence argument fails under its stated operator/domain hypotheses; a fair constraint-repair schedule fails to recover the unique source history under its fixed-boundary acyclic hypotheses; the ideal residual-descent inequality fails; the native calibration projector or current-displacement identity fails; a geometric path loses its actual joint-history provenance; the smooth source pointer violates its declared Kraus phases or effects; its complete-instrument occupation bound fails under the stated moment hypotheses; the unconditional infinite energy identity fails on its form domain; a full-H Taylor power silently truncates a return path, or a discarded/rounded amplitude escapes its weighted error budget; the infinite Hermite half-line instrument is replaced by the sign of a compressed coordinate or its output tail/coherence is omitted; the interval [-0.024045670143, -0.024043450955] fails to enclose the declared zero-current infinite sharp-sign feedback contrast; the full-work Gibbs reference fails its modular Hamiltonian identity or faithful-state contract; its source probe changes an old record marginal or exceeds its stated continuous-target error budget; the native current moments, full-kernel mean closure or stated mean-wave restriction fails; or canonical replay fails. The coherent native attachment fails its full-input branch identity, replaces executed routing by a target permutation, loses native/reference coherence within a record, decodes an E contrast as a current without its coin, omits a raw padding/abort outcome, or charges a selected success path as the complete attempted operation. The active encoded mode fails its logical/work/reference intertwining, selects recovery from hidden logical data, omits a zero-probability or abort record, mistakes passive (0,1) then (0,5) correctability for a phase-loss control, or omits encoding, conditional recovery or terminal decoding from its path costs. Reject the shortened compiler if any full-register phase, padding column, inverse, reference action or emitted-pulse accounting differs from its declared endpoint contract."
       }
+    },
+    "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION": {
+      "prior_work": {
+        "summary": "Bose-Hubbard lattice physics, symmetric product formulas and finite quantum instruments supply the target and comparison methods.",
+        "overlap": "The action, standard quantum instruments and comparison methods are supplied or inherited; the artifact does not claim discovery of those established ingredients.",
+        "imported_step": "Bose_Hubbard_lattice_action; symmetric_product_formula_integral_Taylor_remainder; finite_Kraus_Stinespring_construction; trace_distance_contraction_and_unitary_channel_composition",
+        "citations": [
+          {
+            "work": "Bose_Hubbard_lattice_action",
+            "keys": [
+              "jaksch1998cold"
+            ]
+          },
+          {
+            "work": "symmetric_product_formula_integral_Taylor_remainder",
+            "keys": [
+              "jahnke2000error",
+              "childs2021theory"
+            ]
+          },
+          {
+            "work": "finite_Kraus_Stinespring_construction",
+            "keys": [
+              "stinespring1955positive",
+              "kraus1971general"
+            ]
+          },
+          {
+            "work": "trace_distance_contraction_and_unitary_channel_composition",
+            "keys": [
+              "ruskai1994beyond",
+              "nielsen2010quantum"
+            ]
+          }
+        ]
+      },
+      "owner_section": "model/spatial_interaction/README.md",
+      "falsifiers": {
+        "physical_identification": "The source controls and supplied action or apparatus do not establish their physical selection by OPH. A physical attachment requires its own identification and error contract.",
+        "phenomenological": "The supplied spatial Bose construction or its comparison certificate fails; no verdict about observed physics or the entire OPH programme follows."
+      },
+      "depends_on": [
+        {
+          "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+          "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+        }
+      ]
+    },
+    "OPH-MODEL-CANONICAL-SCALAR-EXECUTION": {
+      "prior_work": {
+        "summary": "Canonical scalar simulation, convex-potential spectral comparison and oscillator remainder methods predate this source attachment.",
+        "overlap": "The action, standard quantum instruments and comparison methods are supplied or inherited; the artifact does not claim discovery of those established ingredients.",
+        "imported_step": "canonical_lattice_scalar_quantum_simulation; convex_Schrodinger_spectral_gap_comparison; symmetric_product_formula_integral_Taylor_remainder; selfadjoint_oscillator_spectral_Taylor_remainder",
+        "citations": [
+          {
+            "work": "canonical_lattice_scalar_quantum_simulation",
+            "keys": [
+              "jordan2014quantum"
+            ]
+          },
+          {
+            "work": "convex_Schrodinger_spectral_gap_comparison",
+            "keys": [
+              "andrews2010fundamental"
+            ]
+          },
+          {
+            "work": "symmetric_product_formula_integral_Taylor_remainder",
+            "keys": [
+              "jahnke2000error",
+              "childs2021theory"
+            ]
+          },
+          {
+            "work": "selfadjoint_oscillator_spectral_Taylor_remainder",
+            "keys": [],
+            "internal": true
+          }
+        ]
+      },
+      "owner_section": "model/relativistic_scalar/README.md",
+      "falsifiers": {
+        "physical_identification": "The source controls and supplied action or apparatus do not establish their physical selection by OPH. A physical attachment requires its own identification and error contract.",
+        "phenomenological": "The declared scalar regulator or bounded comparison fails; no physical relativistic QFT or OPH-specific empirical claim is withdrawn because none is asserted here."
+      },
+      "depends_on": [
+        {
+          "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+          "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+        }
+      ]
+    },
+    "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS": {
+      "prior_work": {
+        "summary": "Standard scalar regulators, smooth quantum instruments and Duhamel/product-formula estimates supply the mathematical ingredients.",
+        "overlap": "The action, standard quantum instruments and comparison methods are supplied or inherited; the artifact does not claim discovery of those established ingredients.",
+        "imported_step": "canonical_lattice_scalar_quantum_simulation; symmetric_product_formula_integral_Taylor_remainder; quadratic_form_Leibniz_identity_for_smooth_measurement; weighted_number_moment_and_projected_Duhamel_cutoff_bounds; exact_rational_arithmetic_with_directed_root_and_pi_enclosures",
+        "citations": [
+          {
+            "work": "canonical_lattice_scalar_quantum_simulation",
+            "keys": [
+              "jordan2014quantum"
+            ]
+          },
+          {
+            "work": "symmetric_product_formula_integral_Taylor_remainder",
+            "keys": [
+              "jahnke2000error",
+              "childs2021theory"
+            ]
+          },
+          {
+            "work": "quadratic_form_Leibniz_identity_for_smooth_measurement",
+            "keys": [],
+            "internal": true
+          },
+          {
+            "work": "weighted_number_moment_and_projected_Duhamel_cutoff_bounds",
+            "keys": [],
+            "internal": true
+          },
+          {
+            "work": "exact_rational_arithmetic_with_directed_root_and_pi_enclosures",
+            "keys": [
+              "moore2009introduction",
+              "rump2010verification"
+            ]
+          }
+        ]
+      },
+      "owner_section": "model/scalar_observations/README.md",
+      "falsifiers": {
+        "physical_identification": "The source controls and supplied action or apparatus do not establish their physical selection by OPH. A physical attachment requires its own identification and error contract.",
+        "phenomenological": "The fixed-band observation comparison or certificate fails. The numerical stress result retains its scope; no empirical agreement of interacting scalar dynamics is asserted."
+      },
+      "depends_on": [
+        {
+          "claim_id": "OPH-MODEL-CANONICAL-SCALAR-EXECUTION",
+          "role": "extends the supplied scalar construction to one shared fixed-band observation contract"
+        },
+        {
+          "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+          "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+        }
+      ]
+    },
+    "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT": {
+      "prior_work": {
+        "summary": "McGarry et al. supply the experimental dataset and measurement; Gaussian-state quantum optics supplies the family. The existing OPH source compiler supplies the finite implementation.",
+        "overlap": "The action, standard quantum instruments and comparison methods are supplied or inherited; the artifact does not claim discovery of those established ingredients.",
+        "imported_step": "published_trapped_ion_preparation_and_characteristic_readout; Gaussian_Weyl_characteristic_function; binary_Kraus_Stinespring_instrument; weighted_number_moment_and_projected_Duhamel_cutoff_bounds; Hoeffding_finite_sample_concentration_and_union_bound",
+        "citations": [
+          {
+            "work": "published_trapped_ion_preparation_and_characteristic_readout",
+            "keys": [
+              "mcgarry2026programmable"
+            ]
+          },
+          {
+            "work": "Gaussian_Weyl_characteristic_function",
+            "keys": [
+              "holevo2011probabilistic",
+              "weedbrook2012gaussian"
+            ]
+          },
+          {
+            "work": "binary_Kraus_Stinespring_instrument",
+            "keys": [
+              "kraus1983states",
+              "stinespring1955positive",
+              "ozawa1984quantum"
+            ]
+          },
+          {
+            "work": "weighted_number_moment_and_projected_Duhamel_cutoff_bounds",
+            "keys": [],
+            "internal": true
+          },
+          {
+            "work": "Hoeffding_finite_sample_concentration_and_union_bound",
+            "keys": [
+              "hoeffding1963probability"
+            ]
+          }
+        ]
+      },
+      "owner_section": "model/scalar_observations/experimental_readout/EXECUTABLE_READOUT.md",
+      "falsifiers": {
+        "physical_identification": "The source controls and supplied action or apparatus do not establish their physical selection by OPH. A physical attachment requires its own identification and error contract.",
+        "phenomenological": "The stated retrospective preparation/readout comparison or its implementation fails. Neither its agreement nor failure alone establishes or excludes OPH, and no statistical significance verdict or interacting-field observation is claimed."
+      },
+      "depends_on": [
+        {
+          "claim_id": "OPH-MODEL-SHARED-SCALAR-OBSERVATIONS",
+          "role": "inherits the smooth detector family, not a claimed experimental test of its seven-mode dynamics"
+        },
+        {
+          "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+          "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification"
+        }
+      ]
     }
   }
 }

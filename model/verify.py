@@ -13,8 +13,17 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/observer/scalar_response", "model/observer/source_scalar",
            "model/predictions", "model/observer/source_discrimination",
-           "model/common_source")
+           "model/common_source", "model/spatial_interaction", "model/relativistic_scalar",
+           "model/scalar_observations")
 REPLAYS = (
+    ("model.scalar_observations", None, "model/scalar_observations/results.json"),
+    ("model.scalar_observations.occupation", None, "model/scalar_observations/occupation_results.json"),
+    ("model.scalar_observations.experimental_readout", None,
+     "model/scalar_observations/experimental_readout/results.json"),
+    ("model.scalar_observations.experimental_readout.executable", None,
+     "model/scalar_observations/experimental_readout/executable_results.json"),
+    ("model.relativistic_scalar", None, "model/relativistic_scalar/results.json"),
+    ("model.spatial_interaction", None, "model/spatial_interaction/results.json"),
     ("model.observer.source_selection", None, "model/observer/results/source_selection.json"),
     ("model.observer.coherent_continuation", None, "model/observer/results/coherent_continuation.json"),
     ("model.observer", "native", "model/observer/results/native.json"),

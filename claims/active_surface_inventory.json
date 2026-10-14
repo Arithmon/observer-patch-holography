@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 555,
+  "surface_count": 567,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1447,6 +1447,66 @@
     },
     {
       "path": "model/predictions/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/relativistic_scalar/DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/relativistic_scalar/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/scalar_observations/DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/scalar_observations/OCCUPATION_DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/scalar_observations/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/scalar_observations/experimental_readout/DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/scalar_observations/experimental_readout/EXECUTABLE_DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/scalar_observations/experimental_readout/EXECUTABLE_READOUT.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/scalar_observations/experimental_readout/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/scalar_observations/experimental_readout/data/SOURCE_README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/spatial_interaction/DERIVATION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/spatial_interaction/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
