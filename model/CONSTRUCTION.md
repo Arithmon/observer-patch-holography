@@ -709,6 +709,18 @@ retains all eight prescribed rational cases, including rejection of singular
 
 ## Remaining construction work
 
+The [observer-record reconstruction](observer_reconstruction/README.md)
+adds a finite inverse experiment to the supplied-matrix analyses. It
+recovers free-field propagation, cube geometry and spectral parameters
+using executed binary laws and an independently read reference clock, with
+withheld detector predictions and a separate complete-output occupation
+certificate. Native response geometry is also recovered from committed
+currents rather than source coordinates. The field and native geometries
+remain distinct; normal-mode apparatus and the quadratic action are
+supplied. This closes the estimator's direct access to the target matrix,
+not the native action-selection, interacting spacetime or physical clock
+obligations below.
+
 The finite observer is a completed component to extend and preserve. The
 two-site source program executes preparation, quantum evolution and the
 binary detector under its declared services. The earlier free-field program

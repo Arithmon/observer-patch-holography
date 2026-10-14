@@ -16,7 +16,7 @@ python -m model.verify
 python -m pytest -q -W error model
 ```
 
-The verifier checks the artifact manifests and replays all 33 retained
+The verifier checks the artifact manifests and replays all 34 retained
 receipts. The finite observer contributes the exact native observer, its
 quantum mixing and record capacity, a 20,000-trial sequential run, complete
 record recovery, the P-dependent binary detector with 200,000 trials and
@@ -41,6 +41,11 @@ The spatial Bose and canonical scalar branches add complete interacting
 histories and approximation certificates. The shared scalar observations
 add spatial and occupation comparisons, the retrospective published-data
 readout check and the separate source-executed calibrated readout.
+The [observer-record reconstruction](model/observer_reconstruction/README.md)
+adds executed free-field and clock records, record-only spatial/spectral
+identification, withheld detector predictions and an exact native response
+geometry. Its normal-mode occupation bound and noncommuting-phase control
+retain the supplied-action and finite-identification scope.
 The tests independently check endpoint arithmetic,
 all retained histories, classical-record preservation, quantum coherence,
 controls, capacity and
