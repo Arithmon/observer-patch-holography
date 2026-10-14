@@ -8,7 +8,7 @@
   "preparation": {
     "family": "real displaced thermal oscillator",
     "fitted_parameters": ["alpha_real", "thermal_occupation"],
-    "calibration_rule": "Equal-weight bounded nonlinear least squares on real and imaginary parts of the 21 axis records, with 33 fixed phase multistarts in one alias interval; thermal occupation >= 0.",
+    "calibration_rule": "Equal-weight bounded nonlinear least squares on real and imaginary parts of the 21 axis records, with 33 fixed phase multistarts in one alias interval; original-axis stationary refinement at 80 decimal digits selects the final binary64 parameter point; thermal occupation >= 0. This remains a numerical fit, not a certified global optimum.",
     "visibility_offset_or_origin_renormalization": false,
     "finite_thermal_rule": "Capped geometric classical draw: (1-r)*r^n for n<d-1 and r^(d-1) at n=d-1, where r=nbar/(1+nbar). Every branch is retained."
   },
@@ -24,9 +24,16 @@
     "all_outcomes_retained": true
   },
   "scoring": "Descriptive RMSE over all 200 reserved real spin means and the corresponding binary probabilities; zero-response baseline; no significance or joint confidence claim for this point calibration.",
+  "numerical_replay_policy": {
+    "revision_scope": "Cross-platform replay repair after the original full source run; no new prospective or blinded comparison is claimed.",
+    "word_generation": "Private 80-decimal-digit arithmetic from the original binary64 parameter ratios, including coordinate eigensystem and complete Gray/Walsh compilation; source pulse angles convert to binary64 at the existing compiler boundary.",
+    "maximum_native_pulses_per_contraction_block": 4096,
+    "contraction": "Fixed chronological blocks through the unchanged native executor and polar guards; retain raw and corrected full products, both full-phase target checks, correction diagnostics, original complete word hashes and service counts.",
+    "outward_numerical_error_certificate": false
+  },
   "error_accounting": {
     "occupation": "Directed rational displaced-thermal moment and projected Duhamel bound for preparation and both coherent pointer arms, evaluated at exact binary parameter values.",
-    "numerical": "Retain source word hashes, full-phase target residuals, fixed stabilization checks and probability mass residuals separately.",
+    "numerical": "Retain canonical source word hashes, raw and corrected full-phase target residuals, fixed block and final stabilization checks, accumulated correction diagnostics and probability mass residuals separately.",
     "parameter_uncertainty_propagated": false,
     "hardware_error_authenticated": false
   },

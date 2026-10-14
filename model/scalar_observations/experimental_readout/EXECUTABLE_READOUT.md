@@ -52,6 +52,12 @@ real displacement `alpha` and nonnegative thermal occupation `nbar`. The
 axes only, with no fitted visibility, offset or origin renormalization.
 The noisy origin and all other axis values remain in the fit. A fitted
 thermal parameter is not an independent laboratory temperature measurement.
+The 33 fixed phase starts provide numerical basin seeds. An 80-decimal-digit
+stationary refinement reevaluates the objective from the original axis values
+and selects the final binary64 parameter point, including the thermal boundary.
+This makes the declared point reproducible without certifying a global optimum
+or a parameter-confidence region; optimizer start identities are not the
+scientific fit output.
 
 The [source implementation](executable_source.py) uses 64 occupation levels:
 
@@ -73,10 +79,24 @@ Every basis, displacement, rotation and detector phase is contracted from
 the existing twelve-port source pulses. The Gray compilation is extended
 locally to six field qubits using the same gates; a seventh qubit is the
 pointer. Dense basis matrices are cached only after executing their words.
+The requested words are generated in a private 80-decimal-digit arithmetic
+context from the exact ratios of the declared binary64 parameters. The
+coordinate eigensystem, signs and full Gray/Walsh schedule are evaluated there;
+only angles passed to the existing compiler become binary64. Independent
+SciPy targets continue to check the executed operations. Fixed arithmetic
+defines replayable words, not an interval accuracy or physical-service claim.
 The receipt counts the full word at every measurement and binds its hash.
 Independent finite-matrix targets check execution; they do not replace the
 executed operations. The existing small polar numerical stabilization and
 its unchanged error guards remain explicit in the ledger.
+The million-pulse operations use fixed blocks of at most 4,096 native pulses
+for host contraction, with the same guard on every block and on the final
+corrected product. Both raw and corrected complete products retain their
+phase-sensitive target checks. The receipt reports accumulated numerical
+corrections and raw drift without changing the original word or resource
+counts; these diagnostics are not outward roundoff or physical-error bounds.
+The [derivation](EXECUTABLE_DERIVATION.md#long-source-word-contraction) gives
+the exact matrix-product telescoping identity and its floating-evaluation scope.
 
 This is a computation through the source model, not execution on laboratory
 hardware. The blank register, classical thermal draw, coherent code services

@@ -12,12 +12,17 @@ import json
 import math
 import numbers
 
+import mpmath as mp
 import numpy as np
 from scipy.optimize import least_squares
 
 
 AXIS_KEYS = frozenset({(i, 0) for i in range(11)} | {(0, j) for j in range(11)})
 STARTS = 33
+REFINEMENT_DIGITS = 80
+BOUNDARY_ROUNDING = 1e-12
+BOUNDARY_KKT_ALLOWANCE = 1e-10
+BASIN_OBJECTIVE_ALLOWANCE = 1e-12
 
 
 def _axes(axis_means):
@@ -49,6 +54,123 @@ def _axis_model(parameters, coordinates):
     real, imaginary = coordinates.T
     return np.exp(-(occupation+.5)*(real*real+imaginary*imaginary)
                   + 2j*alpha*imaginary)
+
+
+def _refine_parameters(values, coordinates, seeds, alpha_bound):
+    """Refine numerical basin seeds from original axis values, then select a point.
+
+    This is numerical stationary-point refinement, not a global-optimum or
+    parameter-confidence certificate. Only final binary64 parameters enter
+    the source program and its separately exact occupation certificate.
+    """
+    ctx = mp.mp.clone()
+    ctx.dps = REFINEMENT_DIGITS
+
+    def exact(value):
+        numerator, denominator = float(value).as_integer_ratio()
+        return ctx.mpf(numerator)/denominator
+
+    points = [(exact(u), exact(v), exact(z.real), exact(z.imag))
+              for (u, v), z in zip(coordinates, values, strict=True)]
+
+    def gradient(alpha, thermal):
+        first = second = ctx.mpf(0)
+        for u, v, real, imaginary in points:
+            radius = u*u+v*v
+            amplitude = ctx.exp(-(thermal+ctx.mpf('.5'))*radius)
+            sine, cosine = ctx.sin(2*alpha*v), ctx.cos(2*alpha*v)
+            first += 4*v*amplitude*(real*sine-imaginary*cosine)
+            second += 2*radius*amplitude*(real*cosine+imaginary*sine-amplitude)
+        return first, second
+
+    def objective(alpha, thermal):
+        result = ctx.mpf(0)
+        for u, v, real, imaginary in points:
+            amplitude = ctx.exp(-(thermal+ctx.mpf('.5'))*(u*u+v*v))
+            result += (amplitude*ctx.cos(2*alpha*v)-real)**2
+            result += (amplitude*ctx.sin(2*alpha*v)-imaginary)**2
+        return result
+
+    def boundary(alpha):
+        step = min(ctx.mpf('.01'), exact(alpha_bound)/100)
+        return ctx.findroot(lambda a: gradient(a, ctx.mpf(0))[0],
+                            (alpha-step, alpha+step), tol=ctx.mpf('1e-60'), maxsteps=80)
+
+    bound = exact(alpha_bound)
+
+    candidates = {}
+    for seed in seeds:
+        alpha, thermal = map(exact, seed)
+        try:
+            if thermal < exact(BOUNDARY_ROUNDING):
+                alpha, thermal = boundary(alpha), ctx.mpf(0)
+            else:
+                alpha, thermal = ctx.findroot(gradient, (alpha, thermal),
+                                             tol=ctx.mpf('1e-60'), maxsteps=80)
+            # An unconstrained stationary point can lie just outside a valid
+            # box optimum. Refine the free coordinate on that active face;
+            # both gradient signs are checked below, including its corners.
+            alpha_face = abs(alpha) > bound
+            thermal_face = thermal < exact(BOUNDARY_ROUNDING)
+            if alpha_face:
+                alpha = bound if alpha > 0 else -bound
+                if thermal_face:
+                    thermal = ctx.mpf(0)
+                else:
+                    thermal = ctx.findroot(lambda n: gradient(alpha, n)[1], thermal,
+                                           tol=ctx.mpf('1e-60'), maxsteps=80)
+                    if thermal < exact(BOUNDARY_ROUNDING):
+                        thermal = ctx.mpf(0)
+            elif thermal_face:
+                alpha, thermal = boundary(alpha), ctx.mpf(0)
+                if abs(alpha) > bound:
+                    alpha = bound if alpha > 0 else -bound
+            if (not ctx.isfinite(alpha) or not ctx.isfinite(thermal)
+                    or abs(alpha) > bound or thermal < 0):
+                continue
+            da, dn = gradient(alpha, thermal)
+            if alpha == bound:
+                alpha_gradient = max(ctx.mpf(0), da)
+            elif alpha == -bound:
+                alpha_gradient = max(ctx.mpf(0), -da)
+            else:
+                alpha_gradient = abs(da)
+            alpha_allowance = exact(BOUNDARY_KKT_ALLOWANCE) if abs(alpha) == bound else ctx.mpf('1e-40')
+            if alpha_gradient > alpha_allowance:
+                continue
+            if thermal == 0:
+                # A materially negative derivative points into the feasible
+                # thermal domain, so that boundary is not an admissible fit.
+                if dn < -exact(BOUNDARY_KKT_ALLOWANCE):
+                    continue
+            elif abs(dn) > ctx.mpf('1e-40'):
+                continue
+            point = (float(alpha), float(thermal))
+            if not all(math.isfinite(value) for value in point):
+                continue
+            # Reevaluate at the actual declared binary point. The same point
+            # has the same objective regardless of its optimizer start.
+            a, n = map(exact, point)
+            loss = objective(a, n)
+            if loss > objective(*map(exact, seed))+ctx.mpf('1e-20'):
+                continue
+            da, dn = gradient(a, n)
+            projected_alpha = max(ctx.mpf(0), da) if a == bound else (
+                max(ctx.mpf(0), -da) if a == -bound else abs(da))
+            projected = max(projected_alpha, max(ctx.mpf(0), -dn) if n == 0 else abs(dn))
+            candidates[point] = (float(loss), float(projected), float(dn), float(da))
+        except (ValueError, ZeroDivisionError, OverflowError):
+            continue
+    if not candidates:
+        raise ArithmeticError('No admissible original-axis stationary refinement converged')
+    selected = min(candidates, key=lambda point: (candidates[point][0], point))
+    loss, projected, thermal_gradient, alpha_gradient = candidates[selected]
+    return np.array(selected), {
+        'sum_of_squared_real_residuals': loss,
+        'gradient_optimality_diagnostic': projected,
+        'thermal_boundary_gradient': thermal_gradient if selected[1] == 0 else None,
+        'alpha_boundary_gradient': alpha_gradient if abs(selected[0]) == alpha_bound else None,
+    }
 
 
 def calibrate_state(axis_means, *, extent=4.0):
@@ -89,17 +211,21 @@ def calibrate_state(axis_means, *, extent=4.0):
                           xtol=1e-13, ftol=1e-13, gtol=1e-13,
                           max_nfev=1000)
             for initial in np.linspace(-alpha_bound*.999, alpha_bound*.999, STARTS)]
-    valid = [index for index, fit in enumerate(fits)
-             if fit.success and np.isfinite(fit.x).all() and np.isfinite(fit.cost)]
-    if not valid:
+    seeds = []
+    for fit in fits:
+        value = np.asarray(fit.x)
+        if (not fit.success or value.shape != (2,) or value.dtype.kind not in 'iuf'
+                or not np.isfinite(value).all() or not math.isfinite(fit.cost)
+                or fit.cost < 0 or abs(value[0]) > alpha_bound or value[1] < 0):
+            continue
+        seeds.append(value)
+    if not seeds:
         raise ArithmeticError('No axis-only displaced-thermal fit converged')
-    selected = min(valid, key=lambda index: fits[index].cost)
-    fit = fits[selected]
-    parameters = fit.x.copy()
-    # A boundary optimum is exactly the vacuum thermal component. This tiny
-    # rounding is disclosed and its axis residuals are recomputed below.
-    if parameters[1] < 1e-12:
-        parameters[1] = 0.
+    scores = [float(residual(seed)@residual(seed)) for seed in seeds]
+    best = min(scores)
+    seeds = [seed for seed, score in zip(seeds, scores, strict=True)
+             if score <= best+BASIN_OBJECTIVE_ALLOWANCE*max(1., best)]
+    parameters, refinement = _refine_parameters(values, coordinates, seeds, alpha_bound)
     prediction = _axis_model(parameters, coordinates)
     errors = residual(parameters)
     singular = np.linalg.svd(jacobian(parameters), compute_uv=False)
@@ -129,14 +255,16 @@ def calibrate_state(axis_means, *, extent=4.0):
         'calibration_spin_mean_rmse': float(np.sqrt(np.mean(errors**2))),
         'calibration_max_component_residual': float(np.max(np.abs(errors))),
         'thermal_boundary_active': bool(parameters[1] == 0),
-        'boundary_rounding_threshold': 1e-12,
+        'boundary_rounding_threshold': BOUNDARY_ROUNDING,
         'optimizer': {
-            'method': 'bounded least_squares with analytic Jacobian and fixed phase multistarts',
+            'method': 'bounded least_squares basin seeds followed by original-input high-precision stationary refinement',
             'number_of_starts': STARTS,
-            'successful_starts': len(valid),
-            'selected_start': selected,
-            'sum_of_squared_real_residuals': float(errors@errors),
-            'gradient_optimality_diagnostic': float(fit.optimality),
+            'refinement_decimal_digits': REFINEMENT_DIGITS,
+            'selection_rule': 'least recomputed objective at distinct refined binary points; canonical parameter tuple breaks ties',
+            'basin_objective_allowance': BASIN_OBJECTIVE_ALLOWANCE,
+            'solver_start_and_iteration_diagnostics_retained': False,
+            'boundary_kkt_gradient_allowance': BOUNDARY_KKT_ALLOWANCE,
+            **refinement,
             'jacobian_singular_values': [float(value) for value in singular],
             'global_optimality_certified': False},
         'scope': {

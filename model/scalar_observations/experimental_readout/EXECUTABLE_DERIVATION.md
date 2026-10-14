@@ -185,3 +185,41 @@ bound real apparatus service errors. The laboratory's preparation selection,
 coordinate ambiguity and aggregate-shot limitations remain in force.
 There is no intervening interacting evolution in this component, so this
 result identifies neither an action nor a physical clock.
+
+## Long source-word contraction
+
+The dense 64-level basis and displacement words each contain more than a
+million native pulses. Repeated floating evaluation can accumulate radial
+drift beyond the existing whole-matrix polar guard, even when the complete
+phase-sensitive target residual remains small. The readout implementation
+therefore groups each original word into fixed chronological blocks of at
+most 4,096 pulses. This grouping is chosen before inspecting any residual.
+Every block is executed by the unchanged native executor and passed through
+the unchanged polar guards; no pulse, scalar phase or proper-code service
+is removed. The original full-word hash and resource counts remain binding.
+
+Write `R_k` for the raw executed block and `Q_k` for its guarded numerical
+representation. Both products are retained: the product of the `R_k` and
+the product of the `Q_k`. The raw product uses this fixed block grouping,
+so its floating entries need not equal a monolithic pulse-by-pulse product.
+The raw product and final corrected product must each pass the unchanged
+`2e-10` full-phase target gate. The corrected product also passes the existing
+final polar guard. An incorrect unitary or global phase is not repaired by
+these norm corrections.
+
+For exact products of the represented matrices, set `E_0=0`, `r_0=1` and
+
+```text
+E_k = ||Q_k|| E_(k-1) + ||Q_k-R_k|| r_(k-1),
+r_k = ||R_k|| r_(k-1).
+```
+
+Submultiplicativity and telescoping give
+`||Q_k ... Q_1 - R_k ... R_1|| <= E_k`. Add the final polar correction norm
+once to compare the final returned matrix with the raw product. The receipt
+retains the evaluated expression, measured complete matrix change, sum and
+maximum of block correction norms, and maximum block defects. These are
+floating diagnostics: their evaluation does not enclose norm-computation or
+matrix-product roundoff, and it is not added to the rational occupation
+certificate as an independently certified numerical error. Initialization,
+physical pulse precision and apparatus errors retain their separate scope.
