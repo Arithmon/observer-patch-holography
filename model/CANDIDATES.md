@@ -51,6 +51,11 @@ on the same process. They impose no preferred universal clock; supplied shared
 benchmark times retain their stated scope. See the
 [clock convention](CONSTRUCTION.md#geometry-response-and-local-event-clocks).
 
+The [three-obligation selection guide](SOURCE_SELECTION.md) states the current
+priority: derive the carrier, observer interface and complete repair rule as
+one source construction, comparing candidates up to admitted observations.
+Finite implementation and source selection are separate milestones.
+
 ## Candidates and priorities
 
 | ID | Concrete law | Role | Strongest established property | Principal missing connection |

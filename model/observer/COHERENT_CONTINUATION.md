@@ -124,3 +124,31 @@ continuation action, or exhibit an observable insensitive to that freedom.
 Recovering a wave recurrence after choosing the reflection does not discharge
 that task. The exact countercontrols are acceptance tests for any proposed
 selection argument.
+
+## Selection under fixed structural constraints
+
+The extended exact receipt checks the two real continuation endpoints under
+all sixty proper rotations of the pinned carrier, including orientation
+reversal of an edge's coin convention. It verifies 237,600 arc covariance
+identities per reversal. The two endpoints share conservative one-seam
+support, real orthogonality, a fixed uniform coherent ket and the same
+algebraic antiunitary reversal `Theta=S conjugation`. Even an additional
+full event-permutation coin symmetry leaves identity and the reflection;
+this stronger symmetry is a hypothetical restriction, not a source premise.
+Both preserve amplitude disagreement with the event-uniform subspace.
+
+An all-seam moving-arc sign control removes the distinguished seam from the
+earlier phase counterexample. Its 600 negative moving arcs preserve every
+committed C/E CP branch and proper covariance, while changing the compressed
+trace cube by `-1/90`. It has uniform-return outcomes `529/1089,560/1089`
+and fixed-Ramsey outcomes `28/33,5/33`. Unlike the endpoint pair, this signed
+control does not fix the uniform coherent ket or share the first coherent
+event. The [source-selection guide](../SOURCE_SELECTION.md) states the
+three primitive obligations and the appropriate interface equivalence.
+
+The [source-executed record test](source_selection.py) separately realizes
+an observable phase distinction with existing C/E source words. It compares
+coherent record access with commit-first access; it is not a source-pulse
+realization of the entire 3,960-arc walk. Replay it with
+`python3 -m model.observer.source_selection --check
+model/observer/results/source_selection.json`.

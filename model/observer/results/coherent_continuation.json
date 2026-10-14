@@ -164,12 +164,77 @@
     "supplied_coherent_control_law": true,
     "unknown_quantum_input_restored_after_commitment": false
   },
+  "selection": {
+    "A1_A2_A3_source_admission_proved": false,
+    "committed_interface_scope": "scalar phases cancel in every CP branch, hence every finite adaptive committed-record history including reference systems; coherent record access is a different interface",
+    "conditional_coin_classification": {
+      "equations": "C=aI+bJ; a+60b=1; a^2=1",
+      "full_event_symmetry_is_a_source_premise": false,
+      "premises": "real orthogonal; fixes uniform vector; commutes with every S60 event permutation",
+      "solutions": [
+        "I",
+        "2*P_uniform-I"
+      ]
+    },
+    "fixed_coherent_interface": "same 3960-dimensional arc space, embedding A and complete Ramsey read",
+    "moving_record_sign_control": {
+      "complete_same_Ramsey_probabilities": [
+        "28/33",
+        "5/33"
+      ],
+      "complete_uniform_return_probabilities": [
+        "529/1089",
+        "560/1089"
+      ],
+      "discriminant": "D=2*diag(K)-K",
+      "each_committed_C_and_E_CP_branch_unchanged": true,
+      "negative_arcs": 600,
+      "phase_rule": "-1 iff native current is nonzero, on every seam",
+      "same_classical_stationary_distribution": true,
+      "same_first_coherent_event": false,
+      "signed_reversal_involutive": true,
+      "trace_D_cubed_minus_trace_K_cubed": "-1/90",
+      "uniform_coherent_state_fixed": false,
+      "uniform_return_amplitude": "23/33",
+      "unsigned_uniform_read_probabilities": [
+        "1",
+        "0"
+      ]
+    },
+    "phase_endpoint_criteria": {
+      "coins": [
+        {
+          "diagonal": "1",
+          "off_diagonal": "0",
+          "phase": 1
+        },
+        {
+          "diagonal": "-29/30",
+          "off_diagonal": "1/30",
+          "phase": -1
+        }
+      ],
+      "common_antiunitary": "Theta=S conjugation; Theta^2=I; Theta W Theta^-1=W^*",
+      "disagreement_norm": "||(I-Pi) C v||=||(I-Pi) v||; no strict repair",
+      "no_continuous_parameter": true,
+      "real_orthogonal": true,
+      "same_first_coherent_event": true,
+      "support_locality": "coin fixes loads; shift makes one conservative native seam move",
+      "uniform_coherent_state_fixed": true
+    },
+    "proper_covariance": {
+      "arc_checks_per_reversal": 237600,
+      "orientation_coin_flip_included": true,
+      "rotations": 60,
+      "unsigned_and_signed_reversals": true
+    }
+  },
   "source_sha256": {
     "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py": "7e7cda89350be6330c7425df69bf9647549e6e1890a64eaaf28289be6c640b2f",
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
-    "model/observer/coherent_continuation.py": "616be5935f2537664e1fd7a0f6101ba928fbe67a107c0ce971567adf90131377",
+    "model/observer/coherent_continuation.py": "91a0c885a52b934c01a470e269e4ac98e575bc010c7764ba624badcb79a0b0a9",
     "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
     "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139"
   }
