@@ -150,3 +150,16 @@ def test_exhaustive_default_build_is_rejected() -> None:
     mutated = workflow.replace('lake build "$target"', "lake build", 1)
     errors = validate(mutated, lakefile)
     assert "per-change Lean CI must not run an exhaustive default Lake build" in errors
+
+
+def test_cache_without_lakefile_independent_fallback_is_rejected() -> None:
+    workflow, lakefile = _inputs()
+    mutated = workflow
+    for prefix in ("lean-core-v3", "golden-psl-v1", "ophgap-v1"):
+        line = f"            {prefix}-${{{{ runner.os }}}}-\n"
+        assert line in mutated
+        mutated = mutated.replace(line, "", 1)
+    errors = validate(mutated, lakefile)
+    assert "Lean CI 'build' cache must restore across lakefile edits" in errors
+    assert "Lean CI 'golden_sector_psl2f5' cache must restore across lakefile edits" in errors
+    assert "Lean CI 'ophgap' cache must restore across lakefile edits" in errors
