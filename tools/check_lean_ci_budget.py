@@ -125,6 +125,17 @@ def validate(workflow: str, lakefile: str) -> list[str]:
         if "${{ github.run_attempt }}" not in block:
             errors.append(f"Lean CI {name!r} cache keys must support resumable re-runs")
 
+    # A lakefile edit changes every hashed key; without a hash-free fallback
+    # the next run starts cold and exhausts its budget.
+    for name, block, prefix in (
+        ("build", build, "lean-core-v3"),
+        ("golden_sector_psl2f5", golden, "golden-psl-v1"),
+        ("ophgap", ophgap, "ophgap-v1"),
+    ):
+        fallback = re.compile(rf"(?m)^\s+{re.escape(prefix)}-\$\{{\{{ runner\.os \}}\}}-\s*$")
+        if not fallback.search(block):
+            errors.append(f"Lean CI {name!r} cache must restore across lakefile edits")
+
     for path in (
         "Lean/Screen/GoldenSectorPSL2F5Representations.lean",
         "Lean/Screen/OPHScreen.lean",

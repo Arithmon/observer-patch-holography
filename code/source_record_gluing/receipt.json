@@ -35,7 +35,7 @@
   ],
   "total_reference_events": 5344106,
   "source_pins": {
-    ".github/workflows/lean-ci.yml": "0e5357feba6d2e5656f8a2734653f445dbad041322ab651d936915976f605394",
+    ".github/workflows/lean-ci.yml": "f5156e2b35b9f0583d602dd967723a4a137ee0585fd15ad91ffe205ffc7ae975",
     ".github/workflows/source-selection-model.yml": "83a97335a8d78649f8ba0758ffeada7ea1ba10d5707d0c6c002ae46e0bb98181",
     "Lean/Geometry.lean": "6755ab36453442f9ecabfddda92eb6489168f39b075485bed15ed49e1eaf1277",
     "Lean/Geometry/FlatDiamondError.lean": "cd6c0a4334f185c528fb5692ee83d5411485153ffe78bf714568aa9442e94325",

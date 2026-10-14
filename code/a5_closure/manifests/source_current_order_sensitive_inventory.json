@@ -4200,7 +4200,7 @@
       {
         "byte_count": 9860,
         "path": "code/source_record_gluing/receipt.json",
-        "sha256": "sha256:f751cda3b8d4960825e2f12463c10252a0f4614289d1765d4f11d7207559b9e2"
+        "sha256": "sha256:3c536befd917dcd60b9b14b8ec822b81ff756506b917c3fb756db8ee55a93d61"
       },
       {
         "byte_count": 11938,
@@ -4450,7 +4450,7 @@
       {
         "byte_count": 8628,
         "path": "code/source_selection_model/receipt.json",
-        "sha256": "sha256:9150fd75797ded36e6b93fd35d7d813d6b58efee47861923202eaa6596b7b439"
+        "sha256": "sha256:071342a0ffdeaa4808bcbd513f8ef1834edc7dc560f152bbd92a93d2a6e3b2f0"
       },
       {
         "byte_count": 11004,
@@ -4683,7 +4683,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:a5f97b00259365881dc8277d90e5a4f14a5bfb19aff85c3f2ccd527e24829d3c",
+    "files_sha256": "sha256:15703de94af26899ac7e6dfd25acae84fcbdafada423be0267456d4d2555e528",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7592,7 +7592,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:e10be0498f2bb7bd8fa2a22ef2897f997ed4ff4530daf081fe94fbaaea77b049",
+  "inventory_sha256": "sha256:1cec638163b6011181330b099a5f26fb9f50ceb75a7d0be82bbe96c090f55ada",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

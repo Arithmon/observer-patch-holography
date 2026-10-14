@@ -87,8 +87,14 @@ jobs:
             Lean/.lake/build
             Lean/ObservableNormalForms/.lake/build
           key: lean-core-v3-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          # The last key survives lakefile edits (every new library changes the
+          # hash). Lake re-checks each module trace against its source, imports
+          # and toolchain, so a restored artifact is reused only when it is
+          # still valid. Without this key the first run after a lakefile edit
+          # starts cold and cannot finish inside the 18-minute budget.
           restore-keys: |
             lean-core-v3-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json', 'Lean/ObservableNormalForms/lean-toolchain', 'Lean/ObservableNormalForms/lakefile.lean', 'Lean/ObservableNormalForms/lake-manifest.json') }}-
+            lean-core-v3-${{ runner.os }}-
 
       - name: Verify pinned dependency inputs
         working-directory: Lean
@@ -431,9 +437,11 @@ jobs:
         with:
           path: Lean/.lake/build
           key: golden-psl-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          # The last key survives lakefile edits; Lake re-checks every trace.
           restore-keys: |
             golden-psl-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-${{ github.run_id }}-
             golden-psl-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-
+            golden-psl-v1-${{ runner.os }}-
 
       - name: Fetch Mathlib olean cache
         if: steps.changes.outputs.required == 'true'
@@ -574,8 +582,10 @@ jobs:
             Lean/.lake/build/ir/OphGap
             Lean/.lake/build/ir/OphGap.*
           key: ophgap-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          # The last key survives lakefile edits; Lake re-checks every trace.
           restore-keys: |
             ophgap-v1-${{ runner.os }}-${{ hashFiles('Lean/lean-toolchain', 'Lean/lakefile.lean', 'Lean/lake-manifest.json') }}-
+            ophgap-v1-${{ runner.os }}-
 
       - name: Fetch Mathlib olean cache
         if: steps.changes.outputs.required == 'true'
