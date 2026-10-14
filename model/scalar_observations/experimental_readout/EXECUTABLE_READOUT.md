@@ -36,10 +36,11 @@ imaginary readout. The reported experimental frequencies are **0.716** and
 **0.828**, respectively. All other predictions and discrepancies are retained
 with equal status in the receipt.
 
-The maximum full-phase source-operation residual is `4.69e-11`, and maximum
-probability-mass residual is below `7.6e-15`. These are numerical diagnostics.
+In the retained run, the maximum raw full-phase source-operation residual
+is below `9.98e-11`; the corrected residual is below `5.42e-13`. Maximum
+probability-mass residual is below `3.2e-15`. These are numerical diagnostics.
 The independent unrestricted Gaussian calculation differs from the emitted
-probabilities by less than `8e-13`; it is a reference check after execution.
+probabilities by less than `8.2e-14`; it is a reference check after execution.
 The explicit implementation uses at most **3,489,068 native pulses per shot**,
 including preparation and both coordinate-basis passes, with physical
 initialization, storage and final readout costs outside that count.
@@ -52,6 +53,12 @@ real displacement `alpha` and nonnegative thermal occupation `nbar`. The
 axes only, with no fitted visibility, offset or origin renormalization.
 The noisy origin and all other axis values remain in the fit. A fitted
 thermal parameter is not an independent laboratory temperature measurement.
+The 33 fixed phase starts provide numerical basin seeds. An 80-decimal-digit
+stationary refinement reevaluates the objective from the original axis values
+and selects the final binary64 parameter point, including the thermal boundary.
+This makes the declared point reproducible without certifying a global optimum
+or a parameter-confidence region; optimizer start identities are not the
+scientific fit output.
 
 The [source implementation](executable_source.py) uses 64 occupation levels:
 
@@ -73,10 +80,27 @@ Every basis, displacement, rotation and detector phase is contracted from
 the existing twelve-port source pulses. The Gray compilation is extended
 locally to six field qubits using the same gates; a seventh qubit is the
 pointer. Dense basis matrices are cached only after executing their words.
+The requested words are generated in a private 80-decimal-digit arithmetic
+context from the exact ratios of the declared binary64 parameters. The
+coordinate eigensystem, signs and full Gray/Walsh schedule are evaluated there;
+only angles passed to the existing compiler become binary64. Independent
+SciPy targets continue to check the executed operations. Fixed arithmetic
+defines replayable words, not an interval accuracy or physical-service claim.
 The receipt counts the full word at every measurement and binds its hash.
 Independent finite-matrix targets check execution; they do not replace the
-executed operations. The existing small polar numerical stabilization and
-its unchanged error guards remain explicit in the ledger.
+executed operations.
+The million-pulse operations use fixed blocks of at most 4,096 native pulses
+for host contraction. The shared compiler's polar thresholds are unchanged:
+they apply to every executed block and to the product of the corrected blocks.
+The former whole-word raw defect cap of `1e-10` and polar correction cap of
+`5.1e-11` no longer constrain the complete raw product or its total correction.
+Both the complete raw product and the final corrected product must pass the
+`2e-10` phase-sensitive target gate. The receipt reports accumulated numerical
+corrections and raw drift. Blocking preserves the requested source word and
+its pulse/service counts; these diagnostics are not outward roundoff or
+physical-error bounds.
+The [derivation](EXECUTABLE_DERIVATION.md#long-source-word-contraction) gives
+the exact matrix-product telescoping identity and its floating-evaluation scope.
 
 This is a computation through the source model, not execution on laboratory
 hardware. The blank register, classical thermal draw, coherent code services
@@ -129,7 +153,10 @@ python3 -m pytest -q -W error model/scalar_observations/experimental_readout
 python3 -m model.verify --hashes-only
 ```
 
-Replay is offline and takes several minutes because the full dense source
-words are executed. The original dataset, protocol, Gaussian-product receipt
-and seven-mode receipts remain unchanged. Dataset authorship, CC BY 4.0
+Replay is offline and can take tens of minutes because the full dense source
+words are executed. The original dataset, Gaussian-product protocol and receipt,
+and seven-mode receipts remain unchanged. The executable protocol and receipt
+were revised for this numerical replay policy; the
+[original executable receipt at `df89a7e5`](https://github.com/FloatingPragma/observer-patch-holography/blob/df89a7e5/model/scalar_observations/experimental_readout/executable_results.json)
+remains available in repository history. Dataset authorship, CC BY 4.0
 license and original-file checksums are recorded in [provenance](provenance.json).

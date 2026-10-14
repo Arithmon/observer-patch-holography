@@ -163,7 +163,7 @@ def run(*, progress=None):
         'predictions_computed_from_source_branches': all(
             not item['source_execution']['analytic_characteristic_used_for_prediction'] for item in runs),
     }
-    bindings = ['executable.py', 'executable_source.py', 'executable_bounds.py',
+    bindings = ['executable.py', 'executable_source.py', 'canonical_source.py', 'executable_bounds.py',
                 'executable_calibration.py', 'data.py', '../source.py',
                 '../../observer/source_scalar/compiler.py']
     receipt = {

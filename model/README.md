@@ -22,6 +22,12 @@ probe, then completes the native actuation. Its 4,224 joint outcomes at each
 executed cutoff retain the disturbed quantum state and every record. The
 same-history occupation bound includes those later operations.
 
+The separate [smooth-history certificate](common_source/SMOOTH_HISTORY.md)
+compares all 16 ideal finite work outputs at d=2,4 with the corresponding
+infinite history for each native current. It uses the canonical blank-gauge
+and scalar-vacuum preparation; the broader uniform bound remains a separate
+comparison, and numerical and physical service errors remain additional.
+
 ```sh
 python -m model.common_source.composition --check model/common_source/composition_results.json
 ```
@@ -85,7 +91,8 @@ executed two-particle histories. A relativistic continuum, physical clock
 and selection of that action remain open.
 
 The [encoded memory variant](common_source/ENCODED_MEMORY.md) compiles active
-recovery of a supplied native logical qubit around the same field history.
+recovery of a supplied native logical qubit around the two-site common-source
+field history.
 A matched passive control separates recovery from record retention. The
 logical-code and physical-service boundaries remain explicit.
 

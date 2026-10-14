@@ -26,9 +26,14 @@ from scipy.linalg import expm
 
 from ...observer.source_scalar import compiler as c
 from ..source import _basis
+from . import canonical_source
 
 
 MAXIMUM_DIMENSION = 64
+# Fixed host-contraction grouping, chosen before execution or target checks.
+# Every pulse remains in the original word and every block uses the unchanged
+# compiler guard. This does not alter the requested physical source operations.
+MAXIMUM_CONTRACTION_BLOCK_PULSES = 4096
 COUNT_KEYS = ('native_pulses', 'single_code_pulses', 'pair_code_pulses',
               'identity_phase_pulses', 'proper_code_load_events',
               'proper_code_export_events', 'proper_code_service_events')
@@ -52,72 +57,73 @@ def _word_hash(word):
     return hashlib.sha256(payload.encode()).hexdigest()
 
 
-def _large_real_orthogonal(matrix):
-    """The existing Gray-Givens algorithm extended from four to six qubits.
-
-    Each Gray-neighbour rotation is its full commuting Walsh-Y expansion in
-    the existing compiler's tensor-Pauli words. No new source primitive is
-    introduced. At dimensions <=16 we call the established implementation.
-    """
-    value = np.asarray(matrix, dtype=float)
-    dimension = _dimension(len(value))
-    if value.shape != (dimension, dimension) or not np.isfinite(value).all():
-        raise ValueError('a finite real square basis is required')
-    if np.linalg.norm(value.T @ value - np.eye(dimension), 2) > 2e-11:
-        raise ValueError('an orthogonal basis is required')
-    if dimension <= 16:
-        return c.compile_real_orthogonal(value)
-    return _extended_gray_word(value)
-
-
-def _extended_gray_word(value):
-    """Same complete Gray elimination, with dimension validation by caller."""
-    dimension = len(value)
-    bits = dimension.bit_length() - 1
-    gray = [j ^ (j >> 1) for j in range(dimension)]
-    residual = value[np.ix_(gray, gray)].copy()
-    rotations = []
-    for column in range(dimension - 1):
-        for row in range(dimension - 1, column, -1):
-            x, y = residual[row - 1, column], residual[row, column]
-            theta = 0. if x == 0 and y == 0 else math.atan2(y, x)
-            cosine, sine = math.cos(theta), math.sin(theta)
-            old = residual[[row - 1, row], :].copy()
-            residual[row - 1], residual[row] = cosine * old[0] + sine * old[1], -sine * old[0] + cosine * old[1]
-            rotations.append((gray[row - 1], gray[row], theta))
-    signs = np.where(np.diag(residual) >= 0, 1., -1.)
-    if np.linalg.norm(residual - np.diag(signs), 2) > 3e-11:
-        raise ArithmeticError('Gray elimination did not retain the complete basis')
-    phases = np.zeros(dimension)
-    for j, sign in enumerate(signs):
-        phases[gray[j]] = 0 if sign == 1 else math.pi
-    word = c.compile_diagonal(phases)
-    for a, b, theta in reversed(rotations):
-        difference = a ^ b
-        target = difference.bit_length() - 1
-        orientation = (-1) ** ((a >> target) & 1)
-        for mask in range(1 << bits):
-            if mask & difference:
-                continue
-            label = ['Y' if j == target else 'Z' if mask >> j & 1 else 'I' for j in range(bits)]
-            coefficient = -orientation * theta * (-1) ** ((a & mask).bit_count()) / (1 << (bits - 1))
-            word.extend(c.pauli_rotation(label, coefficient))
-    return word
-
-
 def _contract(word, qubits, target, *, name):
-    """Only the native contraction supplies the returned operation matrix."""
-    raw = c.execute(word, qubits)
+    """Execute fixed pulse blocks with separately retained floating drift.
+
+    R_k is an executed raw block, Q_k its guarded polar representation.
+    For exact matrix products, E_k <= ||Q_k|| E_(k-1)
+      + ||Q_k-R_k|| product_(i<k)||R_i||
+    bounds the complete difference. The evaluated expression below, like
+    all the norms and products, is a floating diagnostic, not an interval
+    certificate. Raw and corrected full-phase target gates remain mandatory.
+    """
+    raw = corrected = None
+    guards, counts = [], []
+    norm_product, telescope = 1., 0.
+    for start in range(0, max(1, len(word)), MAXIMUM_CONTRACTION_BLOCK_PULSES):
+        block = word[start:start+MAXIMUM_CONTRACTION_BLOCK_PULSES]
+        executed = c.execute(block, qubits)
+        represented, guard = c.stabilize_executed_unitary(executed)
+        telescope = (float(np.linalg.norm(represented, 2))*telescope
+                     + guard['projection_change']*norm_product)
+        norm_product *= float(np.linalg.norm(executed, 2))
+        raw = executed if raw is None else executed @ raw
+        corrected = represented if corrected is None else represented @ corrected
+        guards.append(guard)
+        counts.append(len(block))
     error = float(np.linalg.norm(raw - target, 2))
     if not math.isfinite(error) or error > 2e-10:
         raise ArithmeticError(f'{name}: native contraction differs from its independent target')
-    matrix, stabilization = c.stabilize_executed_unitary(raw)
+    if len(guards) == 1:
+        # This one block already passed the final compiler guard. Preserve
+        # the existing short-word contraction, including its numerical data.
+        matrix, stabilization, final_change = corrected, guards[0], 0.
+    else:
+        matrix, stabilization = c.stabilize_executed_unitary(corrected)
+        final_change = stabilization['projection_change']
+    corrected_error = float(np.linalg.norm(matrix - target, 2))
+    if not math.isfinite(corrected_error) or corrected_error > 2e-10:
+        raise ArithmeticError(f'{name}: corrected native contraction differs from its independent target')
+    raw_defect = float(np.linalg.norm(raw.conj().T @ raw-np.eye(len(raw)), 2))
+    complete_change = float(np.linalg.norm(matrix-raw, 2))
+    telescope += final_change
+    if not all(math.isfinite(value) for value in (raw_defect, complete_change, telescope)):
+        raise ArithmeticError(f'{name}: nonfinite complete contraction diagnostic')
     matrix.flags.writeable = False
     return matrix, {
         'name': name, 'word_sha256': _word_hash(word),
         'resources': c.resources(word), 'register_qubits': qubits,
         'full_phase_target_residual': error,
+        'corrected_full_phase_target_residual': corrected_error,
         'numerical_stabilization': stabilization,
+        'blockwise_contraction': {
+            'method': 'fixed chronological pulse blocks; raw and guarded products retained',
+            'maximum_native_pulses_per_block': MAXIMUM_CONTRACTION_BLOCK_PULSES,
+            'block_pulse_counts': counts,
+            'block_count': len(guards),
+            'maximum_block_raw_unitarity_defect': max(g['raw_unitarity_defect'] for g in guards),
+            'maximum_block_projection_change': max(g['projection_change'] for g in guards),
+            'maximum_block_restored_unitarity_defect': max(g['restored_unitarity_defect'] for g in guards),
+            'sum_block_projection_changes': math.fsum(g['projection_change'] for g in guards),
+            'final_projection_change': final_change,
+            'raw_block_product_unitarity_defect': raw_defect,
+            'complete_corrected_minus_raw_norm': complete_change,
+            'algebraic_telescoping_expression_evaluated': telescope,
+            'raw_product_grouping': 'product of executed blocks, not monolithic pulse-by-pulse contraction',
+            'floating_matrix_product_roundoff_in_telescoping_expression': False,
+            'outward_roundoff_or_physical_error_certificate': False,
+            'source_word_or_resource_counts_changed': False,
+        },
         'matrix_origin': 'contracted_native_source_pulses',
         'physical_service_error_certified': False,
     }
@@ -131,7 +137,7 @@ def _ladder(dimension):
 def _displacement(dimension, alpha_real):
     ladder = _ladder(dimension)
     target = expm(alpha_real * (ladder.T - ladder))
-    word = _large_real_orthogonal(target)
+    word = canonical_source.displacement_word(dimension, alpha_real)
     return _contract(word, dimension.bit_length() - 1, target, name='real_displacement')
 
 
@@ -140,7 +146,7 @@ def _coordinate_basis(dimension):
     ladder = _ladder(dimension)
     coordinate = (ladder + ladder.T) / 2
     values, basis = _basis(coordinate)
-    word = _large_real_orthogonal(basis)
+    word = canonical_source.coordinate_word(dimension)
     bits = dimension.bit_length() - 1
     forward, metadata = _contract(word, bits, basis, name='coordinate_basis')
     backward, inverse_metadata = _contract(c.inverse(word), bits, basis.T, name='coordinate_inverse_basis')
@@ -258,17 +264,18 @@ def source_run(dimension, alpha_real, thermal, settings):
     records = []
     for setting in settings:
         u, v, theta = (setting[key] for key in ('u', 'v', 'theta'))
-        radius = math.hypot(u, v)
-        phi = 0. if radius == 0 else math.atan2(-u, v)
-        phases = -phi * np.arange(dimension)
-        rotation_word = c.compile_diagonal(phases)
+        phi, radius, rotation_word, conditional_word = canonical_source.quadrature_words(
+            dimension, u, v, theta)
+        # Independent binary64 targets remain checks, never the word producer.
+        target_radius = math.hypot(u, v)
+        target_phi = 0. if target_radius == 0 else math.atan2(-u, v)
+        phases = -target_phi * np.arange(dimension)
         rotation, rotation_metadata = _contract(rotation_word, bits, np.diag(np.exp(1j * phases)),
                                                 name='quadrature_rotation')
         rotated = inverse_basis @ rotation @ states
         joint = np.vstack([rotated, np.zeros_like(rotated)])
-        angles = radius * values + theta / 2
+        angles = target_radius * values + theta / 2
         pointer_phases = np.r_[-angles, angles]
-        conditional_word = c.compile_diagonal(pointer_phases)
         conditional, conditional_metadata = _contract(
             conditional_word, bits + 1, np.diag(np.exp(1j * pointer_phases)),
             name='conditional_detector_phase')
@@ -314,6 +321,7 @@ def source_run(dimension, alpha_real, thermal, settings):
         },
         'records': records,
         'prediction_origin': 'norms_of_source_executed_pointer_branches',
+        'canonical_source_compilation': canonical_source.policy(),
         'analytic_characteristic_used_for_prediction': False,
         'source_summary': c.source_summary(),
         'supplied_apparatus': ['blank register', 'classical thermal draw',

@@ -22,6 +22,14 @@ and evolution, including their quantum output rather than only probabilities.
 python -m model.common_source.composition --check model/common_source/composition_results.json
 ```
 
+The [smooth-history certificate](SMOOTH_HISTORY.md) compares all 16 ideal
+finite work outputs at d=2,4 with the infinite history for each of the three
+native currents, including later feedback and the gauge clock probe. Its
+[producer](smooth_history.py) and [receipt](smooth_history_results.json)
+fix the blank-gauge and scalar-vacuum preparation. The broader uniform
+moment bound and the missing numerical and physical service bounds remain
+separate.
+
 The [coherent native attachment](QUANTUM_NATIVE.md) executes the native
 repairs around that same continuation with the existing source controls.
 It accepts the full 78-state native carrier with arbitrary reference

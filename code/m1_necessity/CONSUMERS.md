@@ -10,12 +10,12 @@ silently shortened list. The dispositions concern the named results below;
 several registry rows collect much broader mixed-scope conclusions.
 
 The audit also closes the registered dependency graph forward from these
-eight claims: 137 downstream rows, including the eight direct consumers, are
+eight claims: 141 downstream rows, including the eight direct consumers, are
 enumerated in `downstream.json`. The receipt retains each row's exact
 assumptions, original full-row hash and every internal dependency edge with
 its stated role. A missing row or newly reachable claim fails verification.
 Reachability includes contextual and boundary edges; it does not by itself
-mean that every descendant theorem assumes M1. The four new comparison
+mean that every descendant theorem assumes M1. The four M1 necessity
 claims are excluded from the historical inventory, without blocking traversal
 through them to future descendants.
 

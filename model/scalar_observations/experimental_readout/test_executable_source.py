@@ -97,7 +97,7 @@ def test_source_pulses_actually_control_predictions(monkeypatch):
 
 def test_failed_contraction_cannot_be_replaced_by_target_matrix(monkeypatch):
     monkeypatch.setattr(c, 'execute', lambda word, qubits: np.zeros((2**qubits, 2**qubits), complex))
-    with pytest.raises(ArithmeticError, match='native contraction differs'):
+    with pytest.raises(ArithmeticError, match='native contraction differs|fixed rounding guard'):
         s._contract([c.pulse('X', .2, [0])], 1, np.eye(2), name='broken')
 
 
@@ -131,12 +131,118 @@ def test_settings_accept_no_observed_values_or_invalid_coordinates(settings):
 
 
 @pytest.mark.parametrize('dimension', [2, 4, 8, 16])
-def test_extended_gray_algorithm_matches_existing_words_on_original_domain(dimension):
-    rng = np.random.default_rng(184 + dimension)
-    basis, _ = np.linalg.qr(rng.normal(size=(dimension, dimension)))
-    extended = s._extended_gray_word(basis)
+def test_canonical_gray_action_and_counts_match_existing_compiler_domain(dimension):
+    from . import canonical_source
+    ladder = np.diag(np.sqrt(np.arange(1, dimension)), 1)
+    basis = expm(.23 * (ladder.T - ladder))
+    canonical = canonical_source.displacement_word(dimension, .23)
     original = c.compile_real_orthogonal(basis)
-    assert extended == original
-    # Independently contract smaller instances, including every scalar sign.
-    if dimension <= 8:
-        assert c.execute(extended, dimension.bit_length()-1) == pytest.approx(basis, abs=2e-12)
+    canonical_resources, original_resources = c.resources(canonical), c.resources(original)
+    for key in s.COUNT_KEYS:
+        assert canonical_resources[key] == original_resources[key]
+    bits = dimension.bit_length() - 1
+    actual = c.execute(canonical, bits)
+    assert actual == pytest.approx(c.execute(original, bits), abs=2e-12)
+    assert actual == pytest.approx(basis, abs=2e-12)
+
+
+def test_canonical_64_level_displacement_passes_unchanged_source_guards():
+    """Windows previously refused this actual million-pulse preparation."""
+    from .data import load_observations
+    from .executable_calibration import calibrate_state
+    alpha = calibrate_state(load_observations()['calibration'], extent=4)['parameters']['alpha_real']
+    s._displacement.cache_clear()
+    actual, metadata = s._displacement(64, alpha)
+    ladder = np.diag(np.sqrt(np.arange(1, 64)), 1)
+    expected = expm(alpha*(ladder.T-ladder))
+    assert np.linalg.norm(actual-expected, 2) < 2e-10
+    assert metadata['resources']['native_pulses'] == 1162054
+    assert metadata['numerical_stabilization']['maximum_raw_unitarity_defect'] == 1e-10
+    assert metadata['numerical_stabilization']['maximum_projection_change'] == 5.1e-11
+    ledger = metadata['blockwise_contraction']
+    assert ledger['block_count'] == math.ceil(1162054/s.MAXIMUM_CONTRACTION_BLOCK_PULSES)
+    assert sum(ledger['block_pulse_counts']) == 1162054
+    assert ledger['maximum_block_raw_unitarity_defect'] <= 1e-10
+    assert ledger['maximum_block_projection_change'] <= 5.1e-11
+    assert ledger['maximum_block_restored_unitarity_defect'] <= 2e-13
+    assert metadata['corrected_full_phase_target_residual'] < 2e-10
+
+
+def test_long_word_retains_every_pulse_phase_resource_and_raw_comparison(monkeypatch):
+    word = [event for _ in range(2050)
+            for event in (c.pulse('X', .2, [0]), c.pulse('Z', -.11, [0]))]
+    x = np.array([[0, 1], [1, 0]])
+    z = np.diag([1, -1])
+    target = np.linalg.matrix_power(expm(-.11j*z) @ expm(.2j*x), 2050)
+    monolithic = c.execute(word, 1)
+    original, executed = c.execute, []
+
+    def traced(block, qubits):
+        executed.extend(deepcopy(block))
+        return original(block, qubits)
+
+    monkeypatch.setattr(c, 'execute', traced)
+    result, metadata = s._contract(word, 1, target, name='long_native_control')
+    assert executed == word
+    assert result == pytest.approx(monolithic, abs=3e-12)
+    assert metadata['word_sha256'] == s._word_hash(word)
+    assert metadata['resources'] == c.resources(word)
+    assert metadata['full_phase_target_residual'] < 2e-10
+    ledger = metadata['blockwise_contraction']
+    assert ledger['block_pulse_counts'] == [4096, 4]
+    assert not ledger['source_word_or_resource_counts_changed']
+    assert not ledger['outward_roundoff_or_physical_error_certificate']
+    assert ledger['complete_corrected_minus_raw_norm'] <= (
+        ledger['algebraic_telescoping_expression_evaluated']+3e-14)
+
+
+@pytest.mark.parametrize('fault', ['wrong_unitary', 'global_phase', 'nonunitary'])
+def test_fixed_block_execution_retains_hostile_full_matrix_guards(monkeypatch, fault):
+    word = [c.pulse('I', 0., [0])]*(s.MAXIMUM_CONTRACTION_BLOCK_PULSES+1)
+    wrong = {'wrong_unitary': np.array([[0., 1.], [1., 0.]]),
+             'global_phase': 1j*np.eye(2),
+             'nonunitary': (1+1e-7)*np.eye(2)}[fault]
+    calls = 0
+
+    def corrupt(block, qubits):
+        nonlocal calls
+        calls += 1
+        return wrong.copy() if calls == 1 else np.eye(2, dtype=complex)
+
+    monkeypatch.setattr(c, 'execute', corrupt)
+    with pytest.raises(ArithmeticError, match='independent target|fixed rounding guard'):
+        s._contract(word, 1, np.eye(2), name='hostile')
+
+
+def test_corrected_full_phase_gate_cannot_be_replaced_by_unitarity(monkeypatch):
+    original = c.stabilize_executed_unitary
+
+    def wrong_projection(raw):
+        matrix, metadata = original(raw)
+        return 1j*matrix, metadata
+
+    monkeypatch.setattr(c, 'stabilize_executed_unitary', wrong_projection)
+    with pytest.raises(ArithmeticError, match='corrected native contraction differs'):
+        s._contract([c.pulse('I', 0., [0])], 1, np.eye(2), name='bad_projection')
+
+
+def test_block_correction_account_uses_raw_prefix_norms(monkeypatch):
+    epsilon = 2e-11
+    block = np.diag([1+epsilon, 1-epsilon]).astype(complex)
+    monkeypatch.setattr(c, 'execute', lambda word, qubits: block.copy())
+    word = [c.pulse('I', 0., [0])]*(3*s.MAXIMUM_CONTRACTION_BLOCK_PULSES)
+    matrix, metadata = s._contract(word, 1, np.eye(2), name='known_radial_drift')
+    ledger = metadata['blockwise_contraction']
+    expected = np.linalg.norm(np.linalg.matrix_power(block, 3)-np.eye(2), 2)
+    assert matrix == pytest.approx(np.eye(2), abs=1e-15)
+    assert ledger['complete_corrected_minus_raw_norm'] == pytest.approx(expected, abs=1e-15)
+    assert ledger['algebraic_telescoping_expression_evaluated'] == pytest.approx(expected, abs=2e-15)
+    assert ledger['sum_block_projection_changes'] > 5e-11
+    assert not ledger['floating_matrix_product_roundoff_in_telescoping_expression']
+
+
+def test_small_individual_corrections_cannot_evade_complete_raw_target_gate(monkeypatch):
+    monkeypatch.setattr(c, 'execute', lambda word, qubits: (1+4e-11)*np.eye(2, dtype=complex))
+    word = [c.pulse('I', 0., [0])]*(6*s.MAXIMUM_CONTRACTION_BLOCK_PULSES)
+    with pytest.raises(ArithmeticError, match='native contraction differs from its independent target'):
+        s._contract(word, 1, np.eye(2), name='accumulated_fault')

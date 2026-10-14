@@ -16,7 +16,7 @@ python -m model.verify
 python -m pytest -q -W error model
 ```
 
-The verifier checks the artifact manifests and replays all 32 retained
+The verifier checks the artifact manifests and replays all 33 retained
 receipts. The finite observer contributes the exact native observer, its
 quantum mixing and record capacity, a 20,000-trial sequential run, complete
 record recovery, the P-dependent binary detector with 200,000 trials and
@@ -30,6 +30,13 @@ complete sharp-output comparison, the observer readout, smooth-detector and
 thermal-clock bridges, the causal cones and the native field relations.
 Its corrected native-memory history adds a source encoder and recovery,
 complete logical/reference comparisons, and the matched passive failure control.
+The [smooth-history certificate](model/common_source/SMOOTH_HISTORY.md)
+compares all 16 retained work outputs with the infinite history for each of
+the three native-current preparations, including later feedback and the
+gauge clock probe. Its state-specific bound is separate from the broader
+uniform occupation theorem and from numerical or physical service errors.
+The native coherent-continuation and source-selection receipts retain their
+distinct phase-sensitive observation contracts.
 The spatial Bose and canonical scalar branches add complete interacting
 histories and approximation certificates. The shared scalar observations
 add spatial and occupation comparisons, the retrospective published-data
@@ -44,6 +51,12 @@ uses the pinned model requirements. Individual commands and scope are in
 [observer/p_response/](model/observer/p_response/README.md),
 [observer/scalar_response/](model/observer/scalar_response/README.md), and
 [local_tick/](model/local_tick/README.md).
+
+The complete smooth-history comparison can also be replayed directly:
+
+```sh
+python -m model.common_source.smooth_history --check model/common_source/smooth_history_results.json
+```
 
 The scalar adapter executes the supplied field instrument and its conditional
 branches, with the original-action vacuum and native record-only continuation.

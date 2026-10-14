@@ -2,7 +2,9 @@
 from copy import deepcopy
 import json
 import math
+from types import SimpleNamespace
 
+import mpmath as mp
 import numpy as np
 import pytest
 
@@ -147,3 +149,159 @@ def test_published_calibration_has_json_native_types_and_strict_receipt_roundtri
     decoded = json.loads(json.dumps(calibration, allow_nan=False))
     compare_receipt(decoded, calibration)
     assert decoded == calibration
+
+
+def _refine(axis, seeds, extent=4):
+    keys, values = c._axes(axis)
+    coordinates = np.asarray(keys, dtype=float)*extent/10
+    return c._refine_parameters(values, coordinates, seeds, math.pi*5/extent)
+
+
+def test_platform_solver_seeds_and_start_diagnostics_do_not_define_preparation(monkeypatch):
+    """Actual Linux/Windows basin seeds must declare the same binary source input."""
+    axis = load_observations()['calibration']
+    old_seed = [.9634130901023388, .12777123190717807]
+    new_seed = [.9634130900677007, .12777123192307055]
+
+    def calibrate(seed, successful_start):
+        calls = iter(range(c.STARTS))
+        predicted = synthetic_axes(*seed)
+        cost = .5*sum(abs(predicted[key]-axis[key])**2 for key in axis)
+
+        def solver(*args, **kwargs):
+            selected = next(calls)
+            return SimpleNamespace(
+                x=np.asarray(seed), success=successful_start is None or selected == successful_start,
+                cost=cost, optimality=1e-9 if successful_start is None else 2e-9)
+
+        monkeypatch.setattr(c, 'least_squares', solver)
+        return c.calibrate_state(axis)
+
+    first, second = calibrate(old_seed, None), calibrate(new_seed, 17)
+    assert first == second
+    assert first['parameters'] == {
+        'alpha_real': float.fromhex('0x1.ed447b0eb4eb9p-1'),
+        'thermal_occupation': float.fromhex('0x1.05acec6756e4bp-3')}
+    assert not first['optimizer']['solver_start_and_iteration_diagnostics_retained']
+    assert not first['optimizer']['global_optimality_certified']
+
+
+@pytest.mark.parametrize('seed,success,cost', [
+    ([.8, .2], False, 0.),
+    ([float('nan'), .2], True, 0.),
+    ([.8, float('inf')], True, 0.),
+    ([.8, .2], True, float('nan')),
+    ([.8, .2], True, float('inf')),
+    ([.8, .2], True, -1.),
+    ([.8], True, 0.),
+    ([.8, -.1], True, 0.),
+    ([4., .2], True, 0.),
+    ([True, False], True, 0.),
+])
+def test_failed_or_malformed_solver_results_cannot_supply_preparation(monkeypatch, seed, success, cost):
+    monkeypatch.setattr(c, 'least_squares', lambda *args, **kwargs:
+                        SimpleNamespace(x=np.asarray(seed), success=success, cost=cost))
+    with pytest.raises(ArithmeticError, match='No axis-only'):
+        c.calibrate_state(synthetic_axes(.8, .2))
+
+
+@pytest.mark.parametrize('sign', [-1, 1])
+@pytest.mark.parametrize('distance', [0., 1e-8])
+@pytest.mark.parametrize('thermal', [0., .1])
+def test_valid_alpha_boundary_and_neighbor_remain_supported(sign, distance, thermal):
+    bound = math.pi*5/4
+    alpha = sign*(bound-distance)
+    fit = c.calibrate_state(synthetic_axes(alpha, thermal))
+    actual = fit['parameters']
+    assert -bound <= actual['alpha_real'] <= bound
+    # The two interval endpoints are aliases; retain the original means as
+    # the oracle rather than presupposing which endpoint wins its tiny tie.
+    displacement = actual['alpha_real']-alpha
+    assert min(abs(displacement), abs(displacement-2*bound),
+               abs(displacement+2*bound)) < 1e-12
+    assert actual['thermal_occupation'] == pytest.approx(thermal, abs=2e-15)
+    assert fit['calibration_spin_mean_rmse'] < 1e-14
+    assert fit['optimizer']['gradient_optimality_diagnostic'] < 1e-10
+
+
+def test_thermal_boundary_sign_and_tiny_neighbor_are_checked_from_original_axes():
+    axis = load_observations()['calibration']
+    parameters, diagnostics = _refine(axis, [(.7697457903270853, 0.)], extent=5)
+    assert parameters[1] == 0
+    assert diagnostics['thermal_boundary_gradient'] > .6
+    for thermal in (0., 5e-13):
+        parameters, diagnostics = _refine(synthetic_axes(.8, thermal), [(.8, 0.)])
+        assert parameters[1] == 0
+        assert diagnostics['gradient_optimality_diagnostic'] < c.BOUNDARY_KKT_ALLOWANCE
+    # A spurious optimizer boundary success must not erase an interior
+    # occupation when the original-axis derivative resolves its direction.
+    for thermal in (1e-8, .2):
+        with pytest.raises(ArithmeticError, match='stationary refinement'):
+            _refine(synthetic_axes(.8, thermal), [(.8, 0.)])
+    parameters, _ = _refine(synthetic_axes(.8, 2e-12), [(.8, .01)])
+    assert parameters[1] == pytest.approx(2e-12, abs=1e-16)
+
+
+def test_original_input_objective_and_derivative_match_independent_mp_oracle():
+    axis = load_observations()['calibration']
+    parameters, diagnostics = _refine(axis, [(.9634130900677007, .12777123192307055)])
+    ctx = mp.mp.clone()
+    ctx.dps = 70
+
+    def exact(value):
+        numerator, denominator = float(value).as_integer_ratio()
+        return ctx.mpf(numerator)/denominator
+
+    def objective(alpha, thermal):
+        total = ctx.mpf(0)
+        for (i, j), observed in axis.items():
+            u, v = exact(i*4/10), exact(j*4/10)
+            predicted = ctx.exp(-(thermal+ctx.mpf('.5'))*(u*u+v*v)+2j*alpha*v)
+            total += abs(predicted-ctx.mpc(exact(observed.real), exact(observed.imag)))**2
+        return total
+
+    alpha, thermal = map(exact, parameters)
+    loss = objective(alpha, thermal)
+    derivatives = [ctx.diff(lambda a: objective(a, thermal), alpha),
+                   ctx.diff(lambda n: objective(alpha, n), thermal)]
+    assert diagnostics['sum_of_squared_real_residuals'] == float(loss)
+    assert diagnostics['gradient_optimality_diagnostic'] == pytest.approx(
+        float(max(map(abs, derivatives))), rel=1e-12, abs=1e-28)
+
+
+def test_refinement_isolates_mp_context_and_seed_order():
+    axis = load_observations()['calibration']
+    seeds = [(.9634130901023388, .12777123190717807),
+             (.9634130900677007, .12777123192307055), (.95, .13)]
+    expected, diagnostics = _refine(axis, seeds)
+    with mp.workdps(7):
+        before = (mp.mp.prec, mp.mp.dps, mp.mp.trap_complex)
+        actual, changed_order = _refine(axis, list(reversed(seeds)))
+        assert (mp.mp.prec, mp.mp.dps, mp.mp.trap_complex) == before
+    assert np.array_equal(actual, expected)
+    assert changed_order == diagnostics
+
+
+def test_distinct_equal_cost_basins_use_canonical_parameter_tie_break():
+    # Erasing the imaginary means makes the original-axis objective exactly
+    # even in alpha. Its two nonzero stationary basins are equally admissible;
+    # start order must not select a different declared source preparation.
+    axis = {key: complex(value.real) for key, value in synthetic_axes(1.8, .1).items()}
+    negative, negative_diagnostics = _refine(axis, [(-1.8, .1)])
+    positive, positive_diagnostics = _refine(axis, [(1.8, .1)])
+    assert negative[0] < 0 < positive[0]
+    assert np.array_equal(negative, positive*np.array([-1., 1.]))
+    assert negative_diagnostics == positive_diagnostics
+    for seeds in ([(-1.8, .1), (1.8, .1)], [(1.8, .1), (-1.8, .1)]):
+        selected, diagnostics = _refine(axis, seeds)
+        assert np.array_equal(selected, negative)
+        assert diagnostics == negative_diagnostics
+
+
+def test_interior_refinement_success_requires_original_axis_stationarity(monkeypatch):
+    context = mp.mp.clone()
+    monkeypatch.setattr(c.mp.mp, 'clone', lambda: context)
+    monkeypatch.setattr(context, 'findroot', lambda *args, **kwargs:
+                        (context.mpf('.8'), context.mpf('.2')))
+    with pytest.raises(ArithmeticError, match='stationary refinement'):
+        _refine(synthetic_axes(.8, .1), [(.8, .2)])
