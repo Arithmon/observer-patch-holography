@@ -15,6 +15,7 @@ PACKETS = ("model/observer", "model/observer/p_response", "model/local_tick",
            "model/predictions", "model/observer/source_discrimination",
            "model/common_source")
 REPLAYS = (
+    ("model.observer.source_selection", None, "model/observer/results/source_selection.json"),
     ("model.observer.coherent_continuation", None, "model/observer/results/coherent_continuation.json"),
     ("model.observer", "native", "model/observer/results/native.json"),
     ("model.observer.quantum_mixing_receipt", None, "model/observer/results/quantum_mixing.json"),

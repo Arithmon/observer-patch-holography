@@ -286,10 +286,119 @@ def audit():
     }
 
 
+def selection_audit():
+    """Structural criteria on a fixed coherent experiment do not select a law.
+
+    Full event-permutation covariance is a conditional stronger restriction,
+    not a source premise. Physical locality, A1--A3 admission, a selected
+    vacuum and a calibrated time reversal are not claimed by these checks.
+    """
+    from ..common_source.slow_geometry import source
+
+    records, shift, counts = branches(), reversal(), kernel_counts()
+    seams = quantum_mixing.seams()
+    edge_index = {edge: i for i, edge in enumerate(seams)}
+    signs = tuple(-1 if current else 1 for _, _, _, current in records)
+    signed = [[0] * len(STATES) for _ in STATES]
+    groups = ({}, {})
+    for arc, (output, edge, coin, current) in enumerate(records):
+        x, y = STATES[arc // EVENTS], STATES[output]
+        a, b = seams[edge]
+        if sum(x) != sum(y) or any(x[p] != y[p] for p in range(12) if p not in (a, b)):
+            raise ArithmeticError("continuation support is not a conservative native seam move")
+        signed[arc // EVENTS][output] += signs[arc]
+        for table, label in zip(groups, (current, x[a]-x[b]), strict=True):
+            table.setdefault((edge, coin, label), set()).add(signs[arc])
+    if (any(signs[i] != signs[shift[i]] for i in range(DIMENSION))
+            or any(len(v) != 1 for table in groups for v in table.values())):
+        raise ArithmeticError("signed reversal fails involution or changes a committed CP branch")
+    if any(signed[i][j] != (counts[i][j] if i == j else -counts[i][j])
+           for i in range(len(STATES)) for j in range(len(STATES))):
+        raise ArithmeticError("signed discriminant differs from 2*diag(K)-K")
+
+    rotations = source().rotations()
+    if len(rotations) != 60 or len(set(rotations)) != 60:
+        raise ArithmeticError("the pinned source lacks its sixty distinct proper rotations")
+    for permutation in rotations:
+        state_map = []
+        for x in STATES:
+            y = [0] * 12
+            for old, new in enumerate(permutation):
+                y[new] = x[old]
+            state_map.append(INDEX[tuple(y)])
+        events = tuple(2*edge_index[tuple(sorted((permutation[a], permutation[b])))]
+                       + (coin ^ int(permutation[a] > permutation[b]))
+                       for a, b in seams for coin in (0, 1))
+        transport = tuple(EVENTS*y+event for y in state_map for event in events)
+        if (len(set(transport)) != DIMENSION
+                or any(transport[shift[i]] != shift[transport[i]] or signs[transport[i]] != signs[i]
+                       for i in range(DIMENSION))):
+            raise ArithmeticError("native reversal or moving-record phase breaks proper covariance")
+
+    reverse = lambda values: tuple(values[i] for i in shift)
+    probe = tuple(F(i % 7-3, 5) for i in range(DIMENSION))
+    means = compress(probe)
+    disagreement = sum((v-means[i//EVENTS])**2 for i, v in enumerate(probe))
+    uniform = (F(1),) * DIMENSION
+    coins = []
+    for phase in (1, -1):
+        diagonal, off_diagonal = F(1+phase*(EVENTS-1), EVENTS), F(1-phase, EVENTS)
+        if (diagonal+(EVENTS-1)*off_diagonal != 1
+                or diagonal**2+(EVENTS-1)*off_diagonal**2 != 1
+                or 2*diagonal*off_diagonal+(EVENTS-2)*off_diagonal**2 != 0):
+            raise ArithmeticError("permutation-covariant coin is not orthogonal and uniform-fixing")
+        coin_output = reverse(advance(probe, phase))
+        expected = tuple((diagonal-off_diagonal)*v+EVENTS*off_diagonal*means[i//EVENTS]
+                         for i, v in enumerate(probe))
+        if (coin_output != expected or compress(coin_output) != means
+                or sum((v-means[i//EVENTS])**2 for i, v in enumerate(coin_output)) != disagreement
+                or advance(reverse(advance(probe, phase)), phase) != reverse(probe)
+                or advance(uniform, phase) != uniform):
+            raise ArithmeticError("continuation fails the shared structural selection criteria")
+        coins.append({"phase": phase, "diagonal": str(diagonal), "off_diagonal": str(off_diagonal)})
+
+    trace_difference = F(_trace_cube(signed)-_trace_cube(counts), EVENTS**3)
+    amplitude = F(sum(signs), DIMENSION)
+    remainder = sum((F(sign)-amplitude)**2 for sign in signs)/DIMENSION
+    ramsey = tuple(norm_squared(tuple((1+sign*value)/F(2) for value in signs))/len(STATES)
+                   for sign in (1, -1))
+    if (signs.count(-1) != 600 or trace_difference != -F(1, 90)
+            or amplitude != F(23, 33) or amplitude**2+remainder != 1
+            or ramsey != (F(28, 33), F(5, 33))):
+        raise ArithmeticError("proper-covariant signed source control lost its complete signal")
+    return {
+        "fixed_coherent_interface": "same 3960-dimensional arc space, embedding A and complete Ramsey read",
+        "phase_endpoint_criteria": {"coins": coins, "same_first_coherent_event": True,
+                                    "no_continuous_parameter": True, "real_orthogonal": True,
+                                    "uniform_coherent_state_fixed": True,
+                                    "support_locality": "coin fixes loads; shift makes one conservative native seam move",
+                                    "common_antiunitary": "Theta=S conjugation; Theta^2=I; Theta W Theta^-1=W^*",
+                                    "disagreement_norm": "||(I-Pi) C v||=||(I-Pi) v||; no strict repair"},
+        "conditional_coin_classification": {"premises": "real orthogonal; fixes uniform vector; commutes with every S60 event permutation",
+                                            "equations": "C=aI+bJ; a+60b=1; a^2=1",
+                                            "solutions": ["I", "2*P_uniform-I"],
+                                            "full_event_symmetry_is_a_source_premise": False},
+        "proper_covariance": {"rotations": len(rotations), "arc_checks_per_reversal": len(rotations)*DIMENSION,
+                              "unsigned_and_signed_reversals": True, "orientation_coin_flip_included": True},
+        "moving_record_sign_control": {"negative_arcs": signs.count(-1), "phase_rule": "-1 iff native current is nonzero, on every seam",
+                                       "signed_reversal_involutive": True, "each_committed_C_and_E_CP_branch_unchanged": True,
+                                       "same_classical_stationary_distribution": True, "uniform_coherent_state_fixed": False,
+                                       "same_first_coherent_event": False, "discriminant": "D=2*diag(K)-K",
+                                       "trace_D_cubed_minus_trace_K_cubed": str(trace_difference),
+                                       "uniform_return_amplitude": str(amplitude),
+                                       "complete_uniform_return_probabilities": [str(amplitude**2), str(remainder)],
+                                       "complete_same_Ramsey_probabilities": list(map(str, ramsey)),
+                                       "unsigned_uniform_read_probabilities": ["1", "0"]},
+        "committed_interface_scope": "scalar phases cancel in every CP branch, hence every finite adaptive committed-record history including reference systems; coherent record access is a different interface",
+        "A1_A2_A3_source_admission_proved": False,
+    }
+
+
 def run():
     return {"schema": "oph.observer.coherent_continuation.v1",
             "source_sha256": {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in SOURCE_PATHS},
             "audit": audit(),
+            "selection": selection_audit(),
             "contract": {"native_rule": "N1 current-record instrument on its invariant 66-state binary shell",
                          "seams": "the existing thirty seams, with coherent uniform event amplitudes",
                          "workspace": "uncommitted event amplitudes, coherent record re-encoding and reflection",

@@ -251,3 +251,109 @@ def test_kernel_switch_rejects_inexact_types_even_after_cache_warmup(bad):
     c.kernel_counts(False)
     with pytest.raises(ValueError):
         c.kernel_counts(bad)
+
+
+def test_structural_selection_audit_keeps_the_two_control_scopes_distinct():
+    result = c.selection_audit()
+    endpoints = result["phase_endpoint_criteria"]
+    assert endpoints["coins"] == [{"phase": 1, "diagonal": "1", "off_diagonal": "0"},
+                                  {"phase": -1, "diagonal": "-29/30", "off_diagonal": "1/30"}]
+    assert endpoints["uniform_coherent_state_fixed"]
+    assert result["proper_covariance"]["arc_checks_per_reversal"] == 237600
+    assert not result["conditional_coin_classification"]["full_event_symmetry_is_a_source_premise"]
+    signed = result["moving_record_sign_control"]
+    assert signed["each_committed_C_and_E_CP_branch_unchanged"]
+    assert not signed["same_first_coherent_event"]
+    assert not signed["uniform_coherent_state_fixed"]
+    assert signed["complete_uniform_return_probabilities"] == ["529/1089", "560/1089"]
+    assert signed["complete_same_Ramsey_probabilities"] == ["28/33", "5/33"]
+    assert signed["trace_D_cubed_minus_trace_K_cubed"] == "-1/90"
+    assert not result["A1_A2_A3_source_admission_proved"]
+
+
+def test_full_coin_classification_and_common_reversal_on_complex_columns():
+    # Simultaneous permutation covariance makes every diagonal entry equal
+    # and every off-diagonal entry equal. The two orthogonal solutions fix
+    # the uniform vector and are checked against the actual runtime coin.
+    reverse = lambda v: tuple(v[i] for i in c.reversal())
+    for phase in (-1, 1):
+        diagonal = F(1+59*phase,60); off = F(1-phase,60)
+        assert (diagonal-off)**2 == 1 and diagonal+59*off == 1
+        for event in (0, 37, 59):
+            v = tuple(F(i == event) for i in range(c.DIMENSION))
+            actual = reverse(c.advance(v,phase))
+            expected = tuple(diagonal if i == event else off if i < 60 else F(0)
+                             for i in range(c.DIMENSION))
+            assert actual == expected
+        # For complex v=u+i w, Theta=S conjugation acts on both parts with
+        # opposite signs; the same S works for both continuation rules.
+        for v in (tuple(F(i%3-1,7) for i in range(c.DIMENSION)),
+                  tuple(F(i%5-2,11) for i in range(c.DIMENSION))):
+            assert c.advance(reverse(c.advance(v,phase)),phase) == reverse(v)
+            before = c.compress(v)
+            after = reverse(c.advance(v,phase))
+            assert c.compress(after) == before
+            assert sum((x-before[i//60])**2 for i,x in enumerate(v)) == sum((x-before[i//60])**2 for i,x in enumerate(after))
+
+
+def test_all_moving_arc_signs_by_independent_endpoint_oracle():
+    signs = []
+    signed = [[0]*66 for _ in range(66)]
+    branches_by_label = ({}, {})
+    for i, state in enumerate(c.STATES):
+        for edge, seam in enumerate(c.quantum_mixing.seams()):
+            for coin in (0,1):
+                output, current = endpoint(state,seam,coin)
+                sign = 1 if output == state else -1
+                signs.append(sign)
+                signed[i][c.INDEX[output]] += sign
+                for groups, label in zip(branches_by_label,
+                                         (current,state[seam[0]]-state[seam[1]]),strict=True):
+                    groups.setdefault((edge,coin,label), []).append((i,sign))
+    assert signs.count(-1) == 600
+    for groups in branches_by_label:
+        # Every matrix unit surviving each CP branch gets the same phase
+        # on its ket and bra; reference matrix units factor identically.
+        assert all(a*b == 1 for columns in groups.values() for _,a in columns for _,b in columns)
+    counts = c.kernel_counts()
+    assert all(signed[i][j] == (counts[i][j] if i == j else -counts[i][j])
+               for i in range(66) for j in range(66))
+    return_amplitude = F(sum(signs),c.DIMENSION)
+    assert return_amplitude == F(23,33)
+    assert return_amplitude**2 == F(529,1089)
+    assert c.norm_squared(tuple(F(1+s,2) for s in signs))/66 == F(28,33)
+    assert c.norm_squared(tuple(F(1-s,2) for s in signs))/66 == F(5,33)
+
+
+def test_actual_record_adaptive_two_event_histories_hide_scalar_phases():
+    # A supplied current-controlled second seam is enough to check that
+    # commitment plus adaptive feedback does not recover lost branch phases.
+    # Equality of the CP map for each step gives the all-history extension.
+    for candidate in ("C","E"):
+        phases = {}
+        for initial in c.STATES:
+            for first_coin in (0,1):
+                first, j1 = endpoint(initial,(0,1),first_coin)
+                first_label = j1 if candidate == "C" else initial[0]-initial[1]
+                seam = (0,5) if j1 > 0 else (0,1)
+                for second_coin in (0,1):
+                    _, j2 = endpoint(first,seam,second_coin)
+                    second_label = j2 if candidate == "C" else first[seam[0]]-first[seam[1]]
+                    label = (first_coin,first_label,seam,second_coin,second_label)
+                    sign = (-1 if j1 else 1)*(-1 if j2 else 1)
+                    phases.setdefault(label,set()).add(sign)
+        assert all(len(signs) == 1 for signs in phases.values())
+
+
+def test_duplicate_proper_rotations_rejected(monkeypatch):
+    from ..common_source.slow_geometry import source
+    monkeypatch.setattr(source(), "rotations", lambda: (tuple(range(12)),)*60)
+    with pytest.raises(ArithmeticError, match="distinct proper rotations"):
+        c.selection_audit()
+
+
+def test_selection_audit_rejects_missing_reflection_on_nonuniform_inputs(monkeypatch):
+    original = c.advance
+    monkeypatch.setattr(c, "advance", lambda values, phase=-1: original(values,1))
+    with pytest.raises(ArithmeticError, match="selection criteria"):
+        c.selection_audit()

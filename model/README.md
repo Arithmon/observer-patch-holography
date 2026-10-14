@@ -5,6 +5,13 @@ The implementation, tests, derivations and next construction steps belong
 here. Start with the finite observer, run its retained results, then extend
 its actual interfaces while preserving the demonstrated behavior.
 
+The [source-selection target](SOURCE_SELECTION.md) concentrates the remaining
+selection work on the carrier architecture, observer interface and its
+implementation, and complete repair rule. Observable effective physics must
+follow from that same process. The latest tests distinguish phases invisible
+to committed records from phases measurable through coherent record access;
+proper carrier symmetry alone does not select the coherent continuation.
+
 The [finite executable specification](common_source/COMPOSITION.md) gives
 the common interacting observer one validated operation grammar, state and
 record algebra, preparation, controller, checkpoint and refinement contract.

@@ -51,6 +51,14 @@ amplitude recurrence and shows that the committed instrument does not select
 its coherent continuation. Uncommitted record access and the reflection are
 additional premises; this is separate from the classical-tape observer.
 
+The [source-selection experiment](source_selection.py) executes a record-phase
+control with the existing C/E dilation. A fixed coherent X read has plus
+probabilities `3/4` and `1/4`; committing the record first gives `1/2` for
+both. All actual outcomes and native/reference outputs are retained. The
+coherent read's label is not a native current. See the
+[three selection obligations](../SOURCE_SELECTION.md) for the interface
+boundary and the separately verified symmetry constraints.
+
 ## Run from the repository root
 
 The native observer commands use the Python standard library. The capacity
