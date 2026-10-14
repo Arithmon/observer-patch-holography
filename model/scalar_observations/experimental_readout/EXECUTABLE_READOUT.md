@@ -36,10 +36,11 @@ imaginary readout. The reported experimental frequencies are **0.716** and
 **0.828**, respectively. All other predictions and discrepancies are retained
 with equal status in the receipt.
 
-The maximum full-phase source-operation residual is `4.69e-11`, and maximum
-probability-mass residual is below `7.6e-15`. These are numerical diagnostics.
+In the retained run, the maximum raw full-phase source-operation residual
+is below `9.98e-11`; the corrected residual is below `5.42e-13`. Maximum
+probability-mass residual is below `3.2e-15`. These are numerical diagnostics.
 The independent unrestricted Gaussian calculation differs from the emitted
-probabilities by less than `8e-13`; it is a reference check after execution.
+probabilities by less than `8.2e-14`; it is a reference check after execution.
 The explicit implementation uses at most **3,489,068 native pulses per shot**,
 including preparation and both coordinate-basis passes, with physical
 initialization, storage and final readout costs outside that count.
@@ -149,7 +150,7 @@ python3 -m pytest -q -W error model/scalar_observations/experimental_readout
 python3 -m model.verify --hashes-only
 ```
 
-Replay is offline and takes several minutes because the full dense source
+Replay is offline and can take tens of minutes because the full dense source
 words are executed. The original dataset, protocol, Gaussian-product receipt
 and seven-mode receipts remain unchanged. Dataset authorship, CC BY 4.0
 license and original-file checksums are recorded in [provenance](provenance.json).
