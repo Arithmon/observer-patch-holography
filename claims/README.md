@@ -106,6 +106,35 @@ The scalar adapter's conditional detector protocol is independently testable
 in software. Its scalar action, vacuum, apparatus and model clock remain
 declared; it establishes no new physical prediction or laboratory verdict.
 
+## Continued-observer maintainer audit, 2026-10-14
+
+PRs [#1099](https://github.com/FloatingPragma/observer-patch-holography/pull/1099),
+[#1100](https://github.com/FloatingPragma/observer-patch-holography/pull/1100) and
+[#1101](https://github.com/FloatingPragma/observer-patch-holography/pull/1101)
+extend `OPH-MODEL-COMMON-SOURCE-EXECUTION` in dependency order:
+
+- [Composition](../model/common_source/COMPOSITION.md) executes four reads,
+  later evolution and a gauge clock probe on one prepared work state; its
+  fixed-program smooth occupation bound controls the complete output.
+- [Quantum-native execution](../model/common_source/QUANTUM_NATIVE.md)
+  compiles the surrounding complete C/E instruments and feedback-selected
+  routing, including all abort and padding outputs. It retains quantum
+  states within record branches, without preserving cross-record coherence.
+- [Active encoded memory](../model/common_source/ENCODED_MEMORY.md) compiles
+  encoding and record-selected recovery and preserves a logical qubit and
+  its reference correlations before the optional destructive read. This is
+  a supplied active protocol, not protection by passive repair dynamics.
+
+The existing claim identity remains an `emitted_artifact`. Its protocol
+records own the detailed statements; the construction and flagship papers
+summarize them in the refactored paper set. Canonical physical-premise
+statuses, frozen prediction bytes and observation dispositions are unchanged.
+The two executed occupation cutoffs have complete-output occupation
+budgets of one. Physical services, observer-clock calibration, interacting
+spatial refinement and independent observations remain open. The old sharp
+history, its infinite signal certificate and its later clock probes keep
+their distinct scopes; the new smooth bound does not certify those probes.
+
 ## Executable-model premise audit, 2026-10-12
 
 The compact public README summarizes the registered results for agreement,
@@ -118,8 +147,10 @@ statistics and interventions. It does not require an independently existing
 classical world or fundamental fields and spacetime.
 A continuum certificate concerns convergence and controlled errors of those
 operational readouts, without asserting a fundamental continuous substrate.
-All eleven input assumptions of `OPH-MODEL-COMMON-SOURCE-EXECUTION` retain
-their names and dependencies. The distinction is between consequences
+The existing input assumptions of `OPH-MODEL-COMMON-SOURCE-EXECUTION` retain
+their names and dependencies. The finite continuation, coherent native
+attachment and active encoded-memory variants add their own explicit
+contracts. The distinction is between consequences
 proved from a construction and inputs selected to define that construction:
 
 | Derived or executed consequence | Inputs that the result retains |

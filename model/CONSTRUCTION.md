@@ -264,10 +264,16 @@ attempted trials are retained. The complete trial has 32,006--32,010 native
 pulse requests, with each load/export charged. A compositional error contract
 specifies sufficient per-operation bounds for the unchanged 1/64 allowance.
 Physical encoding, independent calibration and comparison data remain required.
-This fixed-seam recorded repair has not replaced the native repair primitive
-inside the common interacting-source history. The two executions retain
-their separate schedules and error budgets; this construction does not
-compile that history's complete coherent source/tape channel.
+This fixed-seam experiment retains its own schedule and error budget.
+The later [quantum-native continuation](common_source/QUANTUM_NATIVE.md)
+compiles both surrounding repairs, including feedback-selected routing,
+around the common four-read smooth history. Its complete native/work/reference
+channel preserves the quantum output within each committed record branch.
+The original sharp history uses the declared classical native adapter;
+the new smooth occupation bound does not extend its post-sharp clocks.
+The [active encoded mode](common_source/ENCODED_MEMORY.md) additionally
+executes record-selected recovery on a supplied logical code. These joins
+retain the physical encoding and source-service obligations.
 
 The [retrospective endpoint audit](predictions/endpoint_audit.py) compares the
 inherited P-response output with its cited low-energy target. Its approximately
@@ -638,8 +644,11 @@ that connection. Physical completion follows the acceptance criteria above
 and additionally needs the compatible interacting and gravitational
 interfaces and independent comparisons below:
 
-- Implement longer or composed observers with explicit memory, reset,
-  continuation and resource contracts while preserving current behavior.
+- Extend the executed four-read continuation and active logical memory to
+  repeated operation with bounded record storage, reset, service errors and
+  resources. Preserve the complete outcomes and reference correlations of
+  the finite protocols; simulator checkpoint restoration is not a physical
+  reset or autonomous continuation.
 - Join the N4 preparation, occupation detector and local event counter if
   claiming its certified memory test as an implemented apparatus.
 - Attach interacting matter, responsive geometry and physical clock
@@ -648,6 +657,26 @@ interfaces and independent comparisons below:
   the service budget and collect complete records for the declared rejection
   protocol. A physical model of nature needs further sector-specific
   predictions. Existing seen-data comparisons remain postdictions.
+
+The four-read, quantum-native and active-memory constructions connect
+separate operations on one finite history. That is progress toward
+the common-model target. Source compilation establishes that the declared
+controls can implement the chosen action and instruments; it does not select
+that action or show that its observations describe nature. Increasing the
+occupation cutoff of two sites supplies no spatial refinement. The executed
+d=2,4 complete-output occupation budgets are one, despite their useful exact
+finite-channel and logical-memory identities.
+
+A discriminating next attachment should connect propagation, a retained
+quantum observable and an operational clock on the same extending family,
+with an explicit comparison to the existing native mean-diffusion control.
+The [native field analysis](common_source/NATIVE_FIELDS.md) excludes an
+undamped wave law for that fixed mean-load readout and uniform attempt
+schedule; it does not exclude other recorded quantum observables or an
+observer-relative modular clock. A supplied Hamiltonian can serve as the
+comparison target, with the extra restriction contributed by the repair
+process stated separately. This construction work and independently
+calibrated tests of the fixed instruments can proceed in parallel.
 
 The [established-mathematics guide](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md)
 governs reuse: define compatibility independently of the update, map the

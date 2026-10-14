@@ -39,7 +39,9 @@ and the clocks inside it.
   final occupation moves from 1/6 to 35/264. One finite quantum process joins
   electric flux, charged matter and a scalar field on a single register, and
   an exact calculation certifies that its recorded feedback changes the
-  measured response.
+  measured response. Its continued smooth protocol executes four reads on
+  one disturbed state, compiles both quantum-native repairs, and preserves
+  an encoded qubit through record-selected recovery under declared services.
 - **Standard physics from finite agreement.** Finite theorems take the
   observer's readouts to familiar structure: public records that do not depend
   on the order of repairs; the Born rule, which fixes quantum probabilities,
