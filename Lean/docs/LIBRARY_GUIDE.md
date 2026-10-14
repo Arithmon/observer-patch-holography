@@ -41,6 +41,17 @@ surface for the OPH consensus layer. Contents:
   averaging over a finite seam family is $I-L/(2|E|)$, hence $I-L/60$ for
   thirty seams. This proves the finite linear branch and does not identify it
   with the universal or physical repair law.
+- A sorry-free library in `SourceLaw/` (23 modules, Mathlib only)
+  about a Langevin law declared on the Euclidean history register, whose
+  drift is the mean of the capacity-weighted seam agreement. It covers the
+  stationary covariance, the transfer structure and reflection positivity of
+  the stationary chain, and conditional candidates for RE-06 (inertia under
+  two named premises, and the boundary of the calibrated kinetic response),
+  RE-11 (the golden refinement family, with a vacuum error uniform in the
+  level) and RE-09 (the iterated reference limit of the declared dynamics).
+  The statements, premises and input labels are in
+  `docs/research/SOURCE_LAW_HISTORY_REGISTER.md`. The library does not supply
+  physical time, a physical vacuum, the two premises or interacting fields.
 - A sorry-free Whitney normal-mode construction and naturality package in
   `Screen/WhitneyNormalModeConstruction.lean` through
   `Screen/WhitneyConeMassNaturality.lean`. It turns the fixed cone cochain
