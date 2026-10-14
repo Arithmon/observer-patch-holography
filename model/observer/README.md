@@ -45,6 +45,12 @@ entanglement breaking on the binary shell and an explicit finite-time
 counterexample on the full 78-state carrier. These statements concern the
 channel obtained by discarding the records, not the retained observer tape.
 
+The [coherent continuation experiment](COHERENT_CONTINUATION.md) attaches a
+reflection walk to the actual binary N1 branches. It obtains an exact
+amplitude recurrence and shows that the committed instrument does not select
+its coherent continuation. Uncommitted record access and the reflection are
+additional premises; this is separate from the classical-tape observer.
+
 ## Run from the repository root
 
 The native observer commands use the Python standard library. The capacity

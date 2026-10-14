@@ -1,0 +1,176 @@
+{
+  "audit": {
+    "all_pass": true,
+    "branch_space": {
+      "arcs": 3960,
+      "binary_states": 66,
+      "complete_record_reencoding_bijective": true,
+      "reversal_rule": "coin unchanged for j=0, flipped otherwise; current becomes -j",
+      "reversed_pairs": 300,
+      "self_arcs": 3360
+    },
+    "committed_instrument_phase_control": {
+      "changed_undirected_kernel_entries": 10,
+      "each_CP_record_branch_unchanged": true,
+      "phase_rule": "-1 on seam (0,1), current +1; +1 otherwise",
+      "trace_D_cubed_minus_trace_K_cubed": "-1/900"
+    },
+    "continuation_control": {
+      "basis_zero_two_step_return_amplitude": "38/75",
+      "basis_zero_two_step_return_probability": "1444/5625",
+      "complete_ramsey_probabilities": [
+        {
+          "minus": "0",
+          "phase": 1,
+          "plus": "1",
+          "steps": 0
+        },
+        {
+          "minus": "1/15",
+          "phase": 1,
+          "plus": "14/15",
+          "steps": 1
+        },
+        {
+          "minus": "0",
+          "phase": 1,
+          "plus": "1",
+          "steps": 2
+        },
+        {
+          "minus": "0",
+          "phase": -1,
+          "plus": "1",
+          "steps": 0
+        },
+        {
+          "minus": "1/15",
+          "phase": -1,
+          "plus": "14/15",
+          "steps": 1
+        },
+        {
+          "minus": "37/150",
+          "phase": -1,
+          "plus": "113/150",
+          "steps": 2
+        }
+      ],
+      "same_first_coherent_native_event": true,
+      "two_step_compressions": {
+        "phase_minus": "2*K^2-I",
+        "phase_plus": "I"
+      }
+    },
+    "discriminant": {
+      "all_load_columns": 12,
+      "amplitude_not_mean_or_probability": true,
+      "compression": "A* W_minus^n A = T_n(K)",
+      "equal_to_actual_native_kernel": true,
+      "exact_arc_recurrence_samples": [
+        {
+          "port_zero_pairing": "330",
+          "step": 0
+        },
+        {
+          "port_zero_pairing": "300",
+          "step": 1
+        },
+        {
+          "port_zero_pairing": "216",
+          "step": 2
+        },
+        {
+          "port_zero_pairing": "1421/15",
+          "step": 3
+        },
+        {
+          "port_zero_pairing": "-8968/225",
+          "step": 4
+        },
+        {
+          "port_zero_pairing": "-545531/3375",
+          "step": 5
+        },
+        {
+          "port_zero_pairing": "-1393343/5625",
+          "step": 6
+        },
+        {
+          "port_zero_pairing": "-214937024/759375",
+          "step": 7
+        },
+        {
+          "port_zero_pairing": "-3000787448/11390625",
+          "step": 8
+        }
+      ],
+      "load_intertwiner": "K G = G (I-L/60), G[x,p]=6*x[p]-1",
+      "load_second_difference": "G[n+1]-2*G[n]+G[n-1] = -G[n]*L/30, G[n]=A* W_minus^n A G"
+    },
+    "full_carrier_counterexample": {
+      "any_native_one_event_reverse": false,
+      "input": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "output": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "record": [
+        0,
+        1
+      ]
+    }
+  },
+  "contract": {
+    "native_rule": "N1 current-record instrument on its invariant 66-state binary shell",
+    "nearest_theorem": "Szegedy quantum walk / unitary-involution spectral mapping",
+    "parameter": "coherent continuation iteration; neither committed native attempts nor physical time",
+    "readout": "added controlled-continuation Ramsey arm, both outcomes and quantum outputs retained",
+    "seams": "the existing thirty seams, with coherent uniform event amplitudes",
+    "spectral_mapping_source": "https://arxiv.org/abs/1506.06457",
+    "workspace": "uncommitted event amplitudes, coherent record re-encoding and reflection"
+  },
+  "schema": "oph.observer.coherent_continuation.v1",
+  "scope": {
+    "coherent_extension_selected_by_native_instrument": false,
+    "no_new_supplied_field_Hamiltonian": true,
+    "physical_clock_or_spatial_refinement": false,
+    "physical_predictions_or_empirical_validation": false,
+    "same_as_existing_committed_observer": false,
+    "source_pulses_emitted": false,
+    "supplied_coherent_control_law": true,
+    "unknown_quantum_input_restored_after_commitment": false
+  },
+  "source_sha256": {
+    "evidence/native_geometric_source_20260925/spec.json": "a6b14ad3c89ab17d3c213375022975e1a35239a82810406b73157a6b856cadcc",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py": "83354f120a0d40d9fd3c04721bbbb3c6140cc3c5bf10655d899e9aa4325804bb",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/self_readback_repair_closure.py": "7e7cda89350be6330c7425df69bf9647549e6e1890a64eaaf28289be6c640b2f",
+    "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
+    "model/observer/coherent_continuation.py": "616be5935f2537664e1fd7a0f6101ba928fbe67a107c0ce971567adf90131377",
+    "model/observer/native.py": "dd7c87bcda73f55990690effd0633020ff05b9131205d2314793329f8e0c811d",
+    "model/observer/quantum_mixing.py": "bc1a178c765e59dee0462bca04f26ec2e58f362b5fd0c623c819f12d11ece139"
+  }
+}

@@ -42,6 +42,15 @@ physical memory calibration. The [producer](encoded_observer.py) and
 [receipt](encoded_observer_results.json) compare the active and passive
 complete instruments, including their source costs.
 
+The [current source synthesis](QUANTUM_NATIVE.md#exact-gray-parity-synthesis)
+uses the established Walsh/Gray parity method to reduce each recurring
+nine-bit controlled flip from 11,782 to 2,044 native pulses. It preserves
+the complete 512-dimensional endpoint operator, including padding and
+reference coherence, with no extra qubits. The encoder now uses 28,635
+pulses; the `d=2` protected C history uses at most 1,158,423. These counts
+include every repeated source request. Physical services remain supplied,
+and the shorter words need not preserve intermediate source states.
+
 The [observer readout bridge](OBSERVER_READOUTS.md) reconstructs Hilbert
 representations and modular flow from this same executed state, extends
 its complete records with a source-compiled binary modular clock, and

@@ -222,37 +222,37 @@
         "C": {
           "complete_channel_audits": {
             "passive_qubit": {
-              "complete_stacked_map_frobenius_error_upper": 9.88835724385848e-12,
+              "complete_stacked_map_frobenius_error_upper": 5.413026721444944e-11,
               "final_abort_outcome_count": 192,
               "first_abort_outcome_count": 2,
               "full_outcome_count_including_abort": 770,
-              "maximally_mixed_native_abort_probability": 1.4420321240641814e-28,
-              "maximally_mixed_native_padding_probability": 1.8129445385839216e-26,
-              "maximum_native_map_frobenius_error": 3.880130932898045e-13,
-              "maximum_work_map_frobenius_error": 1.3891186721105685e-12,
-              "prepared_complete_stacked_map_error_upper": 2.481221945295449e-12,
-              "prepared_native_input_completeness_operator_error": 1.0635120572662905e-12
+              "maximally_mixed_native_abort_probability": 2.540116039295641e-27,
+              "maximally_mixed_native_padding_probability": 4.1204811119323887e-23,
+              "maximum_native_map_frobenius_error": 6.384205308298359e-12,
+              "maximum_work_map_frobenius_error": 2.2516935333564303e-12,
+              "prepared_complete_stacked_map_error_upper": 1.2879031110751532e-11,
+              "prepared_native_input_completeness_operator_error": 3.9404553097671386e-13
             },
             "protected_qubit": {
-              "complete_stacked_map_frobenius_error_upper": 9.966673671427911e-12,
+              "complete_stacked_map_frobenius_error_upper": 5.155533672316117e-11,
               "final_abort_outcome_count": 192,
               "first_abort_outcome_count": 2,
               "full_outcome_count_including_abort": 770,
-              "maximally_mixed_native_abort_probability": 1.4230256418808036e-28,
-              "maximally_mixed_native_padding_probability": 3.3046184775340656e-26,
-              "maximum_native_map_frobenius_error": 2.9455809797989885e-13,
-              "maximum_work_map_frobenius_error": 1.3891186721105685e-12,
-              "prepared_complete_stacked_map_error_upper": 2.500097481761128e-12,
-              "prepared_native_input_completeness_operator_error": 1.0669085706383771e-12
+              "maximally_mixed_native_abort_probability": 2.5044344630317386e-27,
+              "maximally_mixed_native_padding_probability": 2.2554744929885444e-23,
+              "maximum_native_map_frobenius_error": 4.764453072844004e-12,
+              "maximum_work_map_frobenius_error": 2.2516935333564303e-12,
+              "prepared_complete_stacked_map_error_upper": 1.2495298779114185e-11,
+              "prepared_native_input_completeness_operator_error": 4.199657650793379e-13
             }
           },
           "memory_witness": {
-            "active_encoded_bell_fidelity_diagnostic": 0.9999999999989533,
+            "active_encoded_bell_fidelity_diagnostic": 0.9999999999996843,
             "complete_pre_read_logical_phase_distances_diagnostic": {
-              "active": 0.9999999999989538,
-              "passive": 0.5640792327646491
+              "active": 0.9999999999996848,
+              "passive": 0.5640792327688798
             },
-            "evaluated_passive_decoder_error_lower_diagnostic": 0.2179603836176474,
+            "evaluated_passive_decoder_error_lower_diagnostic": 0.21796038361745107,
             "exact_uniform_passive_obstruction": {
               "infinite_occupation_uniform_lower_bound_claimed": false,
               "scope": "ideal finite pointer; arbitrary incoming work state; before terminal read",
@@ -262,25 +262,25 @@
             "logical_memory_is_assessed_before_terminal_read": true,
             "passive_any_decoder_worst_case_error_lower_formula": "q_bar / 2",
             "passive_distance_formula": "1 - q_bar",
-            "prepared_second_smooth_plus_probability_diagnostic": 0.4359207672352948,
+            "prepared_second_smooth_plus_probability_diagnostic": 0.43592076723490214,
             "source_decoded_complete_terminal_reads": {
               "phase_0": {
-                "abort_probability": 1.4260483718353653e-28,
+                "abort_probability": 2.545525693555943e-27,
                 "complete_outcome_count": 295106,
-                "plus_code_zero_probability": 0.999999999998933,
-                "probability_mass": 0.999999999998933
+                "plus_code_zero_probability": 0.9999999999997905,
+                "probability_mass": 0.9999999999997905
               },
               "phase_pi": {
-                "abort_probability": 1.4200029119262416e-28,
+                "abort_probability": 2.4633432325075323e-27,
                 "complete_outcome_count": 295106,
-                "plus_code_zero_probability": 2.0108277423538962e-27,
-                "probability_mass": 0.9999999999989746
+                "plus_code_zero_probability": 1.7328254395548494e-24,
+                "probability_mass": 0.9999999999995793
               },
               "phase_pi_over_2": {
-                "abort_probability": 1.4230256418808054e-28,
+                "abort_probability": 2.5044344630317942e-27,
                 "complete_outcome_count": 295106,
-                "plus_code_zero_probability": 0.49999999999945277,
-                "probability_mass": 0.9999999999989544
+                "plus_code_zero_probability": 0.5000000000006495,
+                "probability_mass": 0.9999999999996849
               }
             },
             "terminal_read_is_destructive": true
@@ -292,14 +292,14 @@
               "encoder": {
                 "blank_code_qubits": 8,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
-                "pair_code_pulses": 50204,
+                "pair_code_pulses": 7140,
                 "physical_initialization_error_included": false,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "supplied_logical_qubits": 1
               },
               "field_pointer_initializations_and_reads": 4,
@@ -326,10 +326,10 @@
               },
               "maximum_first_recovery_native_pulses": 0,
               "maximum_last_recovery_native_pulses": 0,
-              "maximum_native_pulses_per_attempt": 4371169,
-              "maximum_proper_code_export_events_per_attempt": 4371169,
-              "maximum_proper_code_load_events_per_attempt": 4371169,
-              "maximum_proper_code_service_events_per_attempt": 8742338,
+              "maximum_native_pulses_per_attempt": 1060249,
+              "maximum_proper_code_export_events_per_attempt": 1060249,
+              "maximum_proper_code_load_events_per_attempt": 1060249,
+              "maximum_proper_code_service_events_per_attempt": 2120498,
               "native_classical_readout_registers": 5,
               "native_coin_initializations": 2,
               "native_input_qubits": 9,
@@ -341,14 +341,14 @@
               "terminal_decoder": {
                 "blank_code_qubits": 0,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
                 "output_rows_retained": 512,
-                "pair_code_pulses": 50204,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "pair_code_pulses": 7140,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "syndrome_postselection_applied": false
               }
             },
@@ -358,14 +358,14 @@
               "encoder": {
                 "blank_code_qubits": 8,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
-                "pair_code_pulses": 50204,
+                "pair_code_pulses": 7140,
                 "physical_initialization_error_included": false,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "supplied_logical_qubits": 1
               },
               "field_pointer_initializations_and_reads": 4,
@@ -390,12 +390,12 @@
                   0
                 ]
               },
-              "maximum_first_recovery_native_pulses": 259231,
-              "maximum_last_recovery_native_pulses": 306367,
-              "maximum_native_pulses_per_attempt": 4936767,
-              "maximum_proper_code_export_events_per_attempt": 4936767,
-              "maximum_proper_code_load_events_per_attempt": 4936767,
-              "maximum_proper_code_service_events_per_attempt": 9873534,
+              "maximum_first_recovery_native_pulses": 44995,
+              "maximum_last_recovery_native_pulses": 53179,
+              "maximum_native_pulses_per_attempt": 1158423,
+              "maximum_proper_code_export_events_per_attempt": 1158423,
+              "maximum_proper_code_load_events_per_attempt": 1158423,
+              "maximum_proper_code_service_events_per_attempt": 2316846,
               "native_classical_readout_registers": 5,
               "native_coin_initializations": 2,
               "native_input_qubits": 9,
@@ -407,14 +407,14 @@
               "terminal_decoder": {
                 "blank_code_qubits": 0,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
                 "output_rows_retained": 512,
-                "pair_code_pulses": 50204,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "pair_code_pulses": 7140,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "syndrome_postselection_applied": false
               }
             }
@@ -423,37 +423,37 @@
         "E": {
           "complete_channel_audits": {
             "passive_qubit": {
-              "complete_stacked_map_frobenius_error_upper": 9.854120226503405e-12,
+              "complete_stacked_map_frobenius_error_upper": 5.4386271833529804e-11,
               "final_abort_outcome_count": 960,
               "first_abort_outcome_count": 6,
               "full_outcome_count_including_abort": 2566,
-              "maximally_mixed_native_abort_probability": 2.5891748078310425e-28,
-              "maximally_mixed_native_padding_probability": 1.8133444210944614e-26,
-              "maximum_native_map_frobenius_error": 3.8821646706627363e-13,
-              "maximum_work_map_frobenius_error": 1.3891186721105685e-12,
-              "prepared_complete_stacked_map_error_upper": 2.4733425608942384e-12,
-              "prepared_native_input_completeness_operator_error": 1.062062626499283e-12
+              "maximally_mixed_native_abort_probability": 4.659735194382103e-27,
+              "maximally_mixed_native_padding_probability": 4.120924907812031e-23,
+              "maximum_native_map_frobenius_error": 6.384727613006757e-12,
+              "maximum_work_map_frobenius_error": 2.2516935333564303e-12,
+              "prepared_complete_stacked_map_error_upper": 1.293250875847894e-11,
+              "prepared_native_input_completeness_operator_error": 4.272287212000317e-13
             },
             "protected_qubit": {
-              "complete_stacked_map_frobenius_error_upper": 9.909840835139623e-12,
+              "complete_stacked_map_frobenius_error_upper": 5.163445077322387e-11,
               "final_abort_outcome_count": 960,
               "first_abort_outcome_count": 6,
               "full_outcome_count_including_abort": 2566,
-              "maximally_mixed_native_abort_probability": 2.588679388061692e-28,
-              "maximally_mixed_native_padding_probability": 2.7331829028622923e-26,
-              "maximum_native_map_frobenius_error": 2.942939486001743e-13,
-              "maximum_work_map_frobenius_error": 1.3891186721105685e-12,
-              "prepared_complete_stacked_map_error_upper": 2.486797525528563e-12,
-              "prepared_native_input_completeness_operator_error": 1.0654333631634796e-12
+              "maximally_mixed_native_abort_probability": 4.654211455848755e-27,
+              "maximally_mixed_native_padding_probability": 2.2125447686629243e-23,
+              "maximum_native_map_frobenius_error": 4.758457187390691e-12,
+              "maximum_work_map_frobenius_error": 2.2516935333564303e-12,
+              "prepared_complete_stacked_map_error_upper": 1.2509922420812046e-11,
+              "prepared_native_input_completeness_operator_error": 4.5372584699623785e-13
             }
           },
           "memory_witness": {
-            "active_encoded_bell_fidelity_diagnostic": 0.9999999999989543,
+            "active_encoded_bell_fidelity_diagnostic": 0.9999999999996537,
             "complete_pre_read_logical_phase_distances_diagnostic": {
-              "active": 0.9999999999989548,
-              "passive": 0.5640792327646204
+              "active": 0.9999999999996544,
+              "passive": 0.5640792327685492
             },
-            "evaluated_passive_decoder_error_lower_diagnostic": 0.2179603836176474,
+            "evaluated_passive_decoder_error_lower_diagnostic": 0.21796038361745107,
             "exact_uniform_passive_obstruction": {
               "infinite_occupation_uniform_lower_bound_claimed": false,
               "scope": "ideal finite pointer; arbitrary incoming work state; before terminal read",
@@ -463,25 +463,25 @@
             "logical_memory_is_assessed_before_terminal_read": true,
             "passive_any_decoder_worst_case_error_lower_formula": "q_bar / 2",
             "passive_distance_formula": "1 - q_bar",
-            "prepared_second_smooth_plus_probability_diagnostic": 0.4359207672352948,
+            "prepared_second_smooth_plus_probability_diagnostic": 0.43592076723490214,
             "source_decoded_complete_terminal_reads": {
               "phase_0": {
-                "abort_probability": 2.6725505883670634e-28,
+                "abort_probability": 5.0110635603840225e-27,
                 "complete_outcome_count": 820166,
-                "plus_code_zero_probability": 0.9999999999989345,
-                "probability_mass": 0.9999999999989345
+                "plus_code_zero_probability": 0.9999999999997633,
+                "probability_mass": 0.9999999999997633
               },
               "phase_pi": {
-                "abort_probability": 2.5048081877563225e-28,
+                "abort_probability": 4.297359351313483e-27,
                 "complete_outcome_count": 820166,
-                "plus_code_zero_probability": 2.0077764393846554e-27,
-                "probability_mass": 0.999999999998975
+                "plus_code_zero_probability": 1.732495425257921e-24,
+                "probability_mass": 0.9999999999995456
               },
               "phase_pi_over_2": {
-                "abort_probability": 2.588679388061691e-28,
+                "abort_probability": 4.654211455849059e-27,
                 "complete_outcome_count": 820166,
-                "plus_code_zero_probability": 0.49999999999945355,
-                "probability_mass": 0.9999999999989554
+                "plus_code_zero_probability": 0.5000000000006358,
+                "probability_mass": 0.9999999999996544
               }
             },
             "terminal_read_is_destructive": true
@@ -493,14 +493,14 @@
               "encoder": {
                 "blank_code_qubits": 8,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
-                "pair_code_pulses": 50204,
+                "pair_code_pulses": 7140,
                 "physical_initialization_error_included": false,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "supplied_logical_qubits": 1
               },
               "field_pointer_initializations_and_reads": 4,
@@ -527,10 +527,10 @@
               },
               "maximum_first_recovery_native_pulses": 0,
               "maximum_last_recovery_native_pulses": 0,
-              "maximum_native_pulses_per_attempt": 4371175,
-              "maximum_proper_code_export_events_per_attempt": 4371175,
-              "maximum_proper_code_load_events_per_attempt": 4371175,
-              "maximum_proper_code_service_events_per_attempt": 8742350,
+              "maximum_native_pulses_per_attempt": 1060255,
+              "maximum_proper_code_export_events_per_attempt": 1060255,
+              "maximum_proper_code_load_events_per_attempt": 1060255,
+              "maximum_proper_code_service_events_per_attempt": 2120510,
               "native_classical_readout_registers": 5,
               "native_coin_initializations": 2,
               "native_input_qubits": 9,
@@ -542,14 +542,14 @@
               "terminal_decoder": {
                 "blank_code_qubits": 0,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
                 "output_rows_retained": 512,
-                "pair_code_pulses": 50204,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "pair_code_pulses": 7140,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "syndrome_postselection_applied": false
               }
             },
@@ -559,14 +559,14 @@
               "encoder": {
                 "blank_code_qubits": 8,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
-                "pair_code_pulses": 50204,
+                "pair_code_pulses": 7140,
                 "physical_initialization_error_included": false,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "supplied_logical_qubits": 1
               },
               "field_pointer_initializations_and_reads": 4,
@@ -591,12 +591,12 @@
                   0
                 ]
               },
-              "maximum_first_recovery_native_pulses": 259231,
-              "maximum_last_recovery_native_pulses": 306367,
-              "maximum_native_pulses_per_attempt": 4936773,
-              "maximum_proper_code_export_events_per_attempt": 4936773,
-              "maximum_proper_code_load_events_per_attempt": 4936773,
-              "maximum_proper_code_service_events_per_attempt": 9873546,
+              "maximum_first_recovery_native_pulses": 44995,
+              "maximum_last_recovery_native_pulses": 53179,
+              "maximum_native_pulses_per_attempt": 1158429,
+              "maximum_proper_code_export_events_per_attempt": 1158429,
+              "maximum_proper_code_load_events_per_attempt": 1158429,
+              "maximum_proper_code_service_events_per_attempt": 2316858,
               "native_classical_readout_registers": 5,
               "native_coin_initializations": 2,
               "native_input_qubits": 9,
@@ -608,14 +608,14 @@
               "terminal_decoder": {
                 "blank_code_qubits": 0,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
                 "output_rows_retained": 512,
-                "pair_code_pulses": 50204,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "pair_code_pulses": 7140,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "syndrome_postselection_applied": false
               }
             }
@@ -899,37 +899,37 @@
         "C": {
           "complete_channel_audits": {
             "passive_qubit": {
-              "complete_stacked_map_frobenius_error_upper": 6.785401260963036e-11,
+              "complete_stacked_map_frobenius_error_upper": 1.551118428108832e-10,
               "final_abort_outcome_count": 192,
               "first_abort_outcome_count": 2,
               "full_outcome_count_including_abort": 770,
-              "maximally_mixed_native_abort_probability": 1.439183486145969e-28,
-              "maximally_mixed_native_padding_probability": 1.8256661372459693e-26,
-              "maximum_native_map_frobenius_error": 3.880130932898045e-13,
-              "maximum_work_map_frobenius_error": 1.38583785268146e-11,
-              "prepared_complete_stacked_map_error_upper": 7.257685847321615e-12,
-              "prepared_native_input_completeness_operator_error": 9.057689319146649e-13
+              "maximally_mixed_native_abort_probability": 2.5347681853291554e-27,
+              "maximally_mixed_native_padding_probability": 4.1597513260377236e-23,
+              "maximum_native_map_frobenius_error": 6.384205308298359e-12,
+              "maximum_work_map_frobenius_error": 1.8727925882764504e-11,
+              "prepared_complete_stacked_map_error_upper": 2.1303388759848167e-11,
+              "prepared_native_input_completeness_operator_error": 4.829674655718171e-13
             },
             "protected_qubit": {
-              "complete_stacked_map_frobenius_error_upper": 6.800922598557822e-11,
+              "complete_stacked_map_frobenius_error_upper": 1.528757660855396e-10,
               "final_abort_outcome_count": 192,
               "first_abort_outcome_count": 2,
               "full_outcome_count_including_abort": 770,
-              "maximally_mixed_native_abort_probability": 1.4230256418809144e-28,
-              "maximally_mixed_native_padding_probability": 3.3191744516155585e-26,
-              "maximum_native_map_frobenius_error": 2.9455809797989885e-13,
-              "maximum_work_map_frobenius_error": 1.38583785268146e-11,
-              "prepared_complete_stacked_map_error_upper": 7.276207579960914e-12,
-              "prepared_native_input_completeness_operator_error": 9.094042041337069e-13
+              "maximally_mixed_native_abort_probability": 2.5044344630316274e-27,
+              "maximally_mixed_native_padding_probability": 2.2711978421574665e-23,
+              "maximum_native_map_frobenius_error": 4.764453072844004e-12,
+              "maximum_work_map_frobenius_error": 1.8727925882764504e-11,
+              "prepared_complete_stacked_map_error_upper": 2.1394148252992703e-11,
+              "prepared_native_input_completeness_operator_error": 5.092820041562665e-13
             }
           },
           "memory_witness": {
-            "active_encoded_bell_fidelity_diagnostic": 0.9999999999991108,
+            "active_encoded_bell_fidelity_diagnostic": 0.9999999999995954,
             "complete_pre_read_logical_phase_distances_diagnostic": {
-              "active": 0.9999999999991115,
-              "passive": 0.5610368898929168
+              "active": 0.999999999999596,
+              "passive": 0.5610368898979815
             },
-            "evaluated_passive_decoder_error_lower_diagnostic": 0.21948155505339503,
+            "evaluated_passive_decoder_error_lower_diagnostic": 0.2194815550531854,
             "exact_uniform_passive_obstruction": {
               "infinite_occupation_uniform_lower_bound_claimed": false,
               "scope": "ideal finite pointer; arbitrary incoming work state; before terminal read",
@@ -939,25 +939,25 @@
             "logical_memory_is_assessed_before_terminal_read": true,
             "passive_any_decoder_worst_case_error_lower_formula": "q_bar / 2",
             "passive_distance_formula": "1 - q_bar",
-            "prepared_second_smooth_plus_probability_diagnostic": 0.43896311010679007,
+            "prepared_second_smooth_plus_probability_diagnostic": 0.4389631101063708,
             "source_decoded_complete_terminal_reads": {
               "phase_0": {
-                "abort_probability": 1.4260483718354776e-28,
+                "abort_probability": 2.5455256935558304e-27,
                 "complete_outcome_count": 295106,
-                "plus_code_zero_probability": 0.9999999999990906,
-                "probability_mass": 0.9999999999990906
+                "plus_code_zero_probability": 0.9999999999997018,
+                "probability_mass": 0.9999999999997018
               },
               "phase_pi": {
-                "abort_probability": 1.4200029119263534e-28,
+                "abort_probability": 2.463343232507424e-27,
                 "complete_outcome_count": 295106,
-                "plus_code_zero_probability": 2.013827360604246e-27,
-                "probability_mass": 0.9999999999991321
+                "plus_code_zero_probability": 1.7442692441574205e-24,
+                "probability_mass": 0.9999999999994905
               },
               "phase_pi_over_2": {
-                "abort_probability": 1.4230256418809175e-28,
+                "abort_probability": 2.5044344630316834e-27,
                 "complete_outcome_count": 295106,
-                "plus_code_zero_probability": 0.49999999999953154,
-                "probability_mass": 0.999999999999112
+                "plus_code_zero_probability": 0.5000000000006093,
+                "probability_mass": 0.9999999999995961
               }
             },
             "terminal_read_is_destructive": true
@@ -969,14 +969,14 @@
               "encoder": {
                 "blank_code_qubits": 8,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
-                "pair_code_pulses": 50204,
+                "pair_code_pulses": 7140,
                 "physical_initialization_error_included": false,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "supplied_logical_qubits": 1
               },
               "field_pointer_initializations_and_reads": 4,
@@ -1003,10 +1003,10 @@
               },
               "maximum_first_recovery_native_pulses": 0,
               "maximum_last_recovery_native_pulses": 0,
-              "maximum_native_pulses_per_attempt": 7776713,
-              "maximum_proper_code_export_events_per_attempt": 7776713,
-              "maximum_proper_code_load_events_per_attempt": 7776713,
-              "maximum_proper_code_service_events_per_attempt": 15553426,
+              "maximum_native_pulses_per_attempt": 4465793,
+              "maximum_proper_code_export_events_per_attempt": 4465793,
+              "maximum_proper_code_load_events_per_attempt": 4465793,
+              "maximum_proper_code_service_events_per_attempt": 8931586,
               "native_classical_readout_registers": 5,
               "native_coin_initializations": 2,
               "native_input_qubits": 9,
@@ -1018,14 +1018,14 @@
               "terminal_decoder": {
                 "blank_code_qubits": 0,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
                 "output_rows_retained": 512,
-                "pair_code_pulses": 50204,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "pair_code_pulses": 7140,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "syndrome_postselection_applied": false
               }
             },
@@ -1035,14 +1035,14 @@
               "encoder": {
                 "blank_code_qubits": 8,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
-                "pair_code_pulses": 50204,
+                "pair_code_pulses": 7140,
                 "physical_initialization_error_included": false,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "supplied_logical_qubits": 1
               },
               "field_pointer_initializations_and_reads": 4,
@@ -1067,12 +1067,12 @@
                   0
                 ]
               },
-              "maximum_first_recovery_native_pulses": 259231,
-              "maximum_last_recovery_native_pulses": 306367,
-              "maximum_native_pulses_per_attempt": 8342311,
-              "maximum_proper_code_export_events_per_attempt": 8342311,
-              "maximum_proper_code_load_events_per_attempt": 8342311,
-              "maximum_proper_code_service_events_per_attempt": 16684622,
+              "maximum_first_recovery_native_pulses": 44995,
+              "maximum_last_recovery_native_pulses": 53179,
+              "maximum_native_pulses_per_attempt": 4563967,
+              "maximum_proper_code_export_events_per_attempt": 4563967,
+              "maximum_proper_code_load_events_per_attempt": 4563967,
+              "maximum_proper_code_service_events_per_attempt": 9127934,
               "native_classical_readout_registers": 5,
               "native_coin_initializations": 2,
               "native_input_qubits": 9,
@@ -1084,14 +1084,14 @@
               "terminal_decoder": {
                 "blank_code_qubits": 0,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
                 "output_rows_retained": 512,
-                "pair_code_pulses": 50204,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "pair_code_pulses": 7140,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "syndrome_postselection_applied": false
               }
             }
@@ -1100,37 +1100,37 @@
         "E": {
           "complete_channel_audits": {
             "passive_qubit": {
-              "complete_stacked_map_frobenius_error_upper": 6.77718177112347e-11,
+              "complete_stacked_map_frobenius_error_upper": 1.5536902507854744e-10,
               "final_abort_outcome_count": 960,
               "first_abort_outcome_count": 6,
               "full_outcome_count_including_abort": 2566,
-              "maximally_mixed_native_abort_probability": 2.589100555714161e-28,
-              "maximally_mixed_native_padding_probability": 1.8260129597818995e-26,
-              "maximum_native_map_frobenius_error": 3.8821646706627363e-13,
-              "maximum_work_map_frobenius_error": 1.38583785268146e-11,
-              "prepared_complete_stacked_map_error_upper": 7.248435758918411e-12,
-              "prepared_native_input_completeness_operator_error": 9.048312913748306e-13
+              "maximally_mixed_native_abort_probability": 4.658907312037067e-27,
+              "maximally_mixed_native_padding_probability": 4.160205351121454e-23,
+              "maximum_native_map_frobenius_error": 6.384727613006757e-12,
+              "maximum_work_map_frobenius_error": 1.8727925882764504e-11,
+              "prepared_complete_stacked_map_error_upper": 2.1318920076745572e-11,
+              "prepared_native_input_completeness_operator_error": 5.159892507215546e-13
             },
             "protected_qubit": {
-              "complete_stacked_map_frobenius_error_upper": 6.787463645170472e-11,
+              "complete_stacked_map_frobenius_error_upper": 1.5267723681939417e-10,
               "final_abort_outcome_count": 960,
               "first_abort_outcome_count": 6,
               "full_outcome_count_including_abort": 2566,
-              "maximally_mixed_native_abort_probability": 2.588679388061897e-28,
-              "maximally_mixed_native_padding_probability": 2.746385160013797e-26,
-              "maximum_native_map_frobenius_error": 2.942939486001743e-13,
-              "maximum_work_map_frobenius_error": 1.38583785268146e-11,
-              "prepared_complete_stacked_map_error_upper": 7.260896431959906e-12,
-              "prepared_native_input_completeness_operator_error": 9.080634633289808e-13
+              "maximally_mixed_native_abort_probability": 4.654211455848548e-27,
+              "maximally_mixed_native_padding_probability": 2.2277576476249266e-23,
+              "maximum_native_map_frobenius_error": 4.758457187390691e-12,
+              "maximum_work_map_frobenius_error": 1.8727925882764504e-11,
+              "prepared_complete_stacked_map_error_upper": 2.135226960503006e-11,
+              "prepared_native_input_completeness_operator_error": 5.430442966597735e-13
             }
           },
           "memory_witness": {
-            "active_encoded_bell_fidelity_diagnostic": 0.9999999999991118,
+            "active_encoded_bell_fidelity_diagnostic": 0.999999999999565,
             "complete_pre_read_logical_phase_distances_diagnostic": {
-              "active": 0.9999999999991125,
-              "passive": 0.5610368898928878
+              "active": 0.9999999999995656,
+              "passive": 0.5610368898976451
             },
-            "evaluated_passive_decoder_error_lower_diagnostic": 0.21948155505339503,
+            "evaluated_passive_decoder_error_lower_diagnostic": 0.2194815550531854,
             "exact_uniform_passive_obstruction": {
               "infinite_occupation_uniform_lower_bound_claimed": false,
               "scope": "ideal finite pointer; arbitrary incoming work state; before terminal read",
@@ -1140,25 +1140,25 @@
             "logical_memory_is_assessed_before_terminal_read": true,
             "passive_any_decoder_worst_case_error_lower_formula": "q_bar / 2",
             "passive_distance_formula": "1 - q_bar",
-            "prepared_second_smooth_plus_probability_diagnostic": 0.43896311010679007,
+            "prepared_second_smooth_plus_probability_diagnostic": 0.4389631101063708,
             "source_decoded_complete_terminal_reads": {
               "phase_0": {
-                "abort_probability": 2.6725505883672737e-28,
+                "abort_probability": 5.011063560383803e-27,
                 "complete_outcome_count": 820166,
-                "plus_code_zero_probability": 0.9999999999990921,
-                "probability_mass": 0.9999999999990921
+                "plus_code_zero_probability": 0.9999999999996745,
+                "probability_mass": 0.9999999999996745
               },
               "phase_pi": {
-                "abort_probability": 2.50480818775652e-28,
+                "abort_probability": 4.297359351313293e-27,
                 "complete_outcome_count": 820166,
-                "plus_code_zero_probability": 2.010505834007645e-27,
-                "probability_mass": 0.9999999999991327
+                "plus_code_zero_probability": 1.7439155156051475e-24,
+                "probability_mass": 0.9999999999994569
               },
               "phase_pi_over_2": {
-                "abort_probability": 2.588679388061895e-28,
+                "abort_probability": 4.654211455848856e-27,
                 "complete_outcome_count": 820166,
-                "plus_code_zero_probability": 0.4999999999995323,
-                "probability_mass": 0.999999999999113
+                "plus_code_zero_probability": 0.5000000000005956,
+                "probability_mass": 0.9999999999995656
               }
             },
             "terminal_read_is_destructive": true
@@ -1170,14 +1170,14 @@
               "encoder": {
                 "blank_code_qubits": 8,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
-                "pair_code_pulses": 50204,
+                "pair_code_pulses": 7140,
                 "physical_initialization_error_included": false,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "supplied_logical_qubits": 1
               },
               "field_pointer_initializations_and_reads": 4,
@@ -1204,10 +1204,10 @@
               },
               "maximum_first_recovery_native_pulses": 0,
               "maximum_last_recovery_native_pulses": 0,
-              "maximum_native_pulses_per_attempt": 7776719,
-              "maximum_proper_code_export_events_per_attempt": 7776719,
-              "maximum_proper_code_load_events_per_attempt": 7776719,
-              "maximum_proper_code_service_events_per_attempt": 15553438,
+              "maximum_native_pulses_per_attempt": 4465799,
+              "maximum_proper_code_export_events_per_attempt": 4465799,
+              "maximum_proper_code_load_events_per_attempt": 4465799,
+              "maximum_proper_code_service_events_per_attempt": 8931598,
               "native_classical_readout_registers": 5,
               "native_coin_initializations": 2,
               "native_input_qubits": 9,
@@ -1219,14 +1219,14 @@
               "terminal_decoder": {
                 "blank_code_qubits": 0,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
                 "output_rows_retained": 512,
-                "pair_code_pulses": 50204,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "pair_code_pulses": 7140,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "syndrome_postselection_applied": false
               }
             },
@@ -1236,14 +1236,14 @@
               "encoder": {
                 "blank_code_qubits": 8,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
-                "pair_code_pulses": 50204,
+                "pair_code_pulses": 7140,
                 "physical_initialization_error_included": false,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "supplied_logical_qubits": 1
               },
               "field_pointer_initializations_and_reads": 4,
@@ -1268,12 +1268,12 @@
                   0
                 ]
               },
-              "maximum_first_recovery_native_pulses": 259231,
-              "maximum_last_recovery_native_pulses": 306367,
-              "maximum_native_pulses_per_attempt": 8342317,
-              "maximum_proper_code_export_events_per_attempt": 8342317,
-              "maximum_proper_code_load_events_per_attempt": 8342317,
-              "maximum_proper_code_service_events_per_attempt": 16684634,
+              "maximum_first_recovery_native_pulses": 44995,
+              "maximum_last_recovery_native_pulses": 53179,
+              "maximum_native_pulses_per_attempt": 4563973,
+              "maximum_proper_code_export_events_per_attempt": 4563973,
+              "maximum_proper_code_load_events_per_attempt": 4563973,
+              "maximum_proper_code_service_events_per_attempt": 9127946,
               "native_classical_readout_registers": 5,
               "native_coin_initializations": 2,
               "native_input_qubits": 9,
@@ -1285,14 +1285,14 @@
               "terminal_decoder": {
                 "blank_code_qubits": 0,
                 "identity_phase_pulses": 14,
-                "native_pulses": 164967,
+                "native_pulses": 28635,
                 "new_classical_records": 0,
                 "output_rows_retained": 512,
-                "pair_code_pulses": 50204,
-                "proper_code_export_events": 164967,
-                "proper_code_load_events": 164967,
-                "proper_code_service_events": 329934,
-                "single_code_pulses": 114763,
+                "pair_code_pulses": 7140,
+                "proper_code_export_events": 28635,
+                "proper_code_load_events": 28635,
+                "proper_code_service_events": 57270,
+                "single_code_pulses": 21495,
                 "syndrome_postselection_applied": false
               }
             }

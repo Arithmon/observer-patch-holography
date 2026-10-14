@@ -678,6 +678,21 @@ comparison target, with the extra restriction contributed by the repair
 process stated separately. This construction work and independently
 calibrated tests of the fixed instruments can proceed in parallel.
 
+The [binary native coherent continuation](observer/COHERENT_CONTINUATION.md)
+checks a reversible 3,960-arc lift of the actual N1 events and an exact
+compressed-amplitude recurrence. A continuation phase changes second-step
+Ramsey probabilities despite the same first coherent event; scalar phases
+invisible to complete committed C/E instruments change the coherent spectrum.
+This supplies concrete selection tests, not a selected wave law. The next
+restriction must constrain cross-record phases and continuation, or identify
+an observable independent of that freedom. The classical mean-load control
+is unchanged, and the same-domain reversal fails on collision states.
+
+The current native routing and encoded recovery share a Gray parity compiler:
+the full nine-bit controlled flip costs 2,044 source pulses instead of
+11,782, with identical endpoint action on every code and padding column.
+This reduces declared control resources; it removes no physical service.
+
 The [established-mathematics guide](../docs/AGREEMENT_RESEARCH_FOUNDATIONS.md)
 governs reuse: define compatibility independently of the update, map the
 actual domain and scheduler to the nearest theorem, and identify what is new.

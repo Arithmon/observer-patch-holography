@@ -396,3 +396,30 @@ def test_guarded_polar_detects_a_failed_projection_backend(monkeypatch):
     monkeypatch.setattr(c.np.linalg, "norm", lambda matrix, ord=None: actual_norm(matrix, "fro"))
     with pytest.raises(ArithmeticError, match="polar correction"):
         c.stabilize_executed_unitary(np.eye(4))
+
+
+def test_polar_fallback_keeps_phase_reference_action_and_fixed_guards(monkeypatch):
+    original_svd = np.linalg.svd
+    def fail_vectors(matrix, *args, **kwargs):
+        # Spectral norms need singular values only; reproduce the Windows
+        # failure in the vector-producing decomposition, not the guards.
+        if kwargs.get("compute_uv") is False:
+            return original_svd(matrix, *args, **kwargs)
+        raise np.linalg.LinAlgError("SVD did not converge")
+    monkeypatch.setattr(c.np.linalg, "svd", fail_vectors)
+    target = np.exp(.371j)*np.eye(8)[:, [3, 0, 1, 2, 7, 4, 5, 6]]
+    raw = target@np.diag(1+np.linspace(-3e-12, 4e-12, 8))
+    corrected, report = c.stabilize_executed_unitary(raw)
+    reference = np.arange(24).reshape(8, 3)*(1+.2j)
+    assert_matrix(corrected, target, 1e-14)
+    assert_matrix(corrected@reference, target@reference, 2e-13)
+    assert report["maximum_raw_unitarity_defect"] == 1e-10
+    assert report["maximum_projection_change"] == 5.1e-11
+    assert report["maximum_restored_unitarity_defect"] == 2e-13
+    assert report["physical_error_certificate"] is False
+    with pytest.raises(ArithmeticError, match="fixed rounding guard"):
+        c.stabilize_executed_unitary(.99*target)
+    monkeypatch.setattr(c, "scipy_svd", lambda matrix, **kwargs:
+                        (.99*np.eye(8), np.ones(8), np.eye(8)))
+    with pytest.raises(ArithmeticError, match="polar correction"):
+        c.stabilize_executed_unitary(np.eye(8))
