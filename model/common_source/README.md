@@ -22,6 +22,16 @@ and evolution, including their quantum output rather than only probabilities.
 python -m model.common_source.composition --check model/common_source/composition_results.json
 ```
 
+The [coherent native attachment](QUANTUM_NATIVE.md) executes the native
+repairs around that same continuation with the existing source controls.
+It accepts the full 78-state native carrier with arbitrary reference
+coherence, retains every raw outcome, and uses an executed port permutation
+for the final record-selected seam. C and E remain distinct quantum record
+laws. Its [runtime](quantum_native.py) and
+[receipt](quantum_native_results.json) keep initialization, code services,
+storage and physical calibration as explicit inputs. The earlier classical
+native benchmark remains available with its original scope and counts.
+
 The [observer readout bridge](OBSERVER_READOUTS.md) reconstructs Hilbert
 representations and modular flow from this same executed state, extends
 its complete records with a source-compiled binary modular clock, and
@@ -166,11 +176,12 @@ The complete experiment proceeds as follows:
    and commits bit b. Only b selects the next native repair seam.
 
 All quantum preparations, evolution factors, pointer gates and controlled
-pulses execute through the inherited twelve-port source compiler. The
-native integer-repair channel remains the existing declared primitive in
-the joint instrument. Its entire 78-dimensional channel is not compiled
-into the six-dimensional processor here. Coherent code transfer, blank
-preparation, storage and readout remain supplied services.
+pulses execute through the inherited twelve-port source compiler. In this
+earlier sharp-history benchmark the native integer-repair channel remains
+the declared primitive. The separate [coherent attachment](QUANTUM_NATIVE.md)
+executes the full native interface around the four-read smooth continuation.
+Coherent code transfer, blank preparation, storage and readout remain
+supplied services in both constructions.
 
 At 512 steps per interval, the quantum protocol uses the following emitted
 resources per realized history, including preparation, both pointers,

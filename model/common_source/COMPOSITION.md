@@ -44,6 +44,17 @@ a different smooth instrument.
 
 ## Execute the complete observer
 
+The [coherent native attachment](QUANTUM_NATIVE.md) surrounds this same
+four-read program with source-compiled C or E repairs on the full 78-state
+native carrier. It retains native/reference coherence within each committed
+history, uses the first decoded current for the gauge kick, and routes the
+last repair from the second smooth bit. Its complete source-code outputs
+include padding and abort branches. The construction and its separate
+[receipt](quantum_native_results.json) extend the native interface; they do
+not replace the classical benchmark below.
+
+### Retained classical native benchmark
+
 ```sh
 python -m model.common_source.composition --check model/common_source/composition_results.json
 ```
@@ -117,7 +128,8 @@ inherit the vacuum occupation bound.
 | Observer restrictions and finite GNS | Every resulting CQ state defines the positive functional on the declared record/work algebra. The GNS construction in `OBSERVER_READOUTS.md` applies to this functional; its old four-record numerical spectrum is not reused for sixteen records. |
 | Continued observations and model clocks | Two smooth reads disturb the retained state before the last Hamiltonian interval and gauge probe. The supplied full-work Gibbs identity describes each continuous interval at `t=-beta*s`; physical calibration remains open. |
 | Occupation and temporal approximation | The stagewise theorem below covers that entire same-state continuation. Approximate occupation inclusions are not exact consensus-tower morphisms. |
-| Native observer feedback | All 4,224 outcomes use the existing integer primitive and the specified smooth-bit decoder. Its classical native input is distinct from an arbitrary quantum M78 input. |
+| Classical native observer feedback | The retained 4,224-outcome benchmark uses the existing integer primitive and the specified smooth-bit decoder. Its classical native input is distinct from an arbitrary quantum M78 input. |
+| Coherent native observer interface | [QUANTUM_NATIVE.md](QUANTUM_NATIVE.md) composes source-compiled C/E repairs with this same work instrument on arbitrary native/work/reference inputs. Source-executed exchange of port labels 1 and 5 routes seam `(0,1)` to `(0,5)`; the final selector is `1-r2`. Complete raw outputs retain padding and aborts. Default executed preparations use the declared field vacuum; arbitrary scalar inputs do not inherit its occupation bound. Encoding, source services and physical readout remain supplied. |
 | Alternative instruments and stronger observer contracts | Sharp readout remains executable with its own certificates; its post-read moment bound is not inherited. Regional quantum partial traces are CP but generally not multiplicative. Exact tower naturality, complete federation access and calibrated physical readouts retain their separate premise obligations. |
 
 ## The finite record and instrument contract

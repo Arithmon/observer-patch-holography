@@ -83,6 +83,15 @@ budgets. Both cutoffs d=2,4 execute all 4,224 joint native/quantum outcomes.
 This closes the smooth-read continuation and later model-time probe join;
 it does not transfer smooth moment bounds to the sharp detector.
 
+The [coherent native attachment](common_source/QUANTUM_NATIVE.md) implements
+the surrounding full-carrier C/E repairs with those source controls and
+executes the port permutation needed by the final selected seam. The
+first current, disturbed work state and final scalar feedback belong to one
+complete instrument, with arbitrary native/reference coherence and explicit
+raw padding and abort outcomes. Its supplied encoding, preparation, coherent
+services and physical calibration remain separate from this finite execution.
+The earlier classical native histories and their counts retain their scope.
+
 The [common interacting source](common_source/README.md) joins quantum
 electric flux, a charged CAR pair and two neutral scalar sites on the same
 work register. Native source words implement their noncommuting evolution,
