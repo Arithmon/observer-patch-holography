@@ -216,6 +216,10 @@ also remains distinct from this approximation of the full observer output.
 An `Enclosure` is an in-process proof object whose digest detects accidental
 mutation. The digest is public and is not evidence for externally supplied
 error claims. Published evidence is checked by exact recomputation.
+Resolution settings are revalidated and copied on entry, and exported
+summaries are detached from the proof object. The occupation-support counter
+includes the initial polynomial and intermediate generator/pointer powers,
+including histories with no evolution and finite pointer parity oscillations.
 Independent tests cover the factorial generator metric, finite compression
 between powers, exact vacuum displacement, complete pointer normalization,
 support/rounding charges and phase-sensitive block comparisons. Dense finite

@@ -290,7 +290,14 @@ def test_temporal_slack_cannot_hide_a_changed_preparation(finite_enclosure, monk
         changed = tuple(replace(branch, state=branch.kraus@initial)
                         for branch in history.branches)
         assert all(a.kraus is b.kraus for a, b in zip(changed, history.branches))
-        histories[backend] = replace(history, initial_state=initial, branches=changed)
+        changed_history = replace(history, initial_state=initial, branches=changed)
+        changed_history = replace(changed_history, seal=protocol._seal(changed_history))
+        # Simulate a producer consistently using the wrong normalized input.
+        # This is a valid checkpoint, so only the independent preparation
+        # comparison can reject it; an obsolete integrity seal must not mask
+        # that scientific assertion.
+        protocol.validate_checkpoint(program, changed_history, backend)
+        histories[backend] = changed_history
     monkeypatch.setattr(composition, '_executed',
                         lambda supplied, backend='source': histories[backend])
     with pytest.raises((ValueError, ArithmeticError)):
@@ -382,3 +389,106 @@ def test_cli_replay_rejects_ambiguous_or_inexact_json(payload, finite_enclosure,
     monkeypatch.setattr(sys, 'argv', ['smooth_history', '--check', str(path)])
     with pytest.raises(ValueError):
         s.main()
+
+
+@pytest.mark.parametrize('component', ['resolution', 'nested_stages'])
+def test_exported_summary_is_detached_from_its_enclosure(finite_enclosure, component):
+    exported = s.summary(finite_enclosure)
+    original = deepcopy(exported)
+    resolution_snapshot = deepcopy(finite_enclosure.resolution.__dict__)
+    try:
+        if component == 'resolution':
+            exported['resolution']['bits'] = 0
+        else:
+            exported['stages'][0]['component_l2_upper']['Taylor'] = 'edited for display'
+        assert s.summary(finite_enclosure) == original
+    finally:
+        finite_enclosure.resolution.__dict__.clear()
+        finite_enclosure.resolution.__dict__.update(resolution_snapshot)
+
+
+def test_editing_summary_cannot_poison_later_default_calls():
+    # Preserve the pre-fix shared default even when this regression fails,
+    # so its intended failure cannot contaminate unrelated tests.
+    previous_default = s.enclose.__kwdefaults__['resolution']
+    saved = deepcopy(previous_default.__dict__) if previous_default is not None else None
+    program = protocol.Program(operations=(protocol.Operation('evolve', F(0)),))
+    try:
+        first = s.enclose(program, dimension=2)
+        exported = s.summary(first)
+        exported['resolution']['bits'] = -1
+        later = s.enclose(program, dimension=2)
+        assert later.resolution.bits == 112
+        assert later.vector_error == 0
+    finally:
+        if saved is not None:
+            previous_default.__dict__.clear()
+            previous_default.__dict__.update(saved)
+
+
+@pytest.mark.parametrize(('field', 'value'), [
+    ('cutoff', 0), ('preparation', 3), ('degree', 0),
+    ('steps_per_unit', 0), ('bits', -1),
+])
+def test_explicit_resolution_is_revalidated_at_use(field, value):
+    resolution = s.Resolution()
+    resolution.__dict__[field] = value
+    with pytest.raises(ValueError):
+        s.enclose(protocol.Program(), dimension=2, resolution=resolution)
+
+
+def test_caller_owned_resolution_cannot_change_completed_enclosure():
+    resolution = s.Resolution()
+    enclosure = s.enclose(protocol.Program(), dimension=2, resolution=resolution)
+    original = s.summary(enclosure)
+    resolution.__dict__['bits'] = 0
+    assert s.summary(enclosure) == original
+
+
+@pytest.mark.parametrize('dimension', [None, 4])
+@pytest.mark.parametrize('operations', [(), (protocol.Operation('gauge_read'),),
+    (protocol.Operation('gauge_read'), protocol.Operation('feedback', record=0))])
+def test_reported_support_includes_the_initial_polynomial(dimension, operations):
+    program = protocol.Program(dimension=4, native_current=1, operations=operations)
+    enclosure = s.enclose(program, dimension=dimension)
+    expected = 12 if dimension is None else 2
+    actual = max(n0+n1 for state in enclosure.branches.values()
+                 for n0, n1, gauge in state.coefficients)
+    assert actual == expected
+    assert s.summary(enclosure)['maximum_expanded_total_occupation'] == expected
+
+
+@pytest.mark.parametrize('current', [-1, 0, 1])
+def test_reported_support_includes_finite_pointer_intermediate_power(current):
+    # B_2 sends |0> to |1>, while the next power B_2**2 returns to |0>.
+    # A remainder-only support check therefore misses an actually executed
+    # polynomial coefficient and understates the declared work support.
+    program = protocol.Program(native_current=current,
+                               operations=(protocol.Operation('smooth_read'),))
+    resolution = s.Resolution(cutoff=2, preparation=0, degree=1,
+                              steps_per_unit=2, bits=32)
+    enclosure = s.enclose(program, dimension=2, resolution=resolution)
+    occupied = {n0+n1 for state in enclosure.branches.values()
+                for n0, n1, gauge in state.coefficients}
+    assert occupied == {0, 1}
+    assert s.summary(enclosure)['maximum_expanded_total_occupation'] == 1
+
+
+@pytest.mark.parametrize('expected_backend', ['source', 'product'])
+def test_execution_join_requires_each_actual_backend_role(finite_enclosure, monkeypatch, expected_backend):
+    from . import composition, continuation_bounds
+    program = finite_enclosure.program
+    histories = {backend: composition._executed(program, backend)
+                 for backend in ('source', 'product')}
+    temporal = F(continuation_bounds.program_bound(program)['ideal_temporal_instrument_error_upper'])
+    assert s._execution_check(finite_enclosure, temporal)['source_product_operator_and_branch_checks_pass']
+    substituted_backend = 'product' if expected_backend == 'source' else 'source'
+    replacement = histories[substituted_backend]
+    # This is an intact, healthy executed history, including its original
+    # valid seal. Only the source/independent execution role is incorrect.
+    protocol.validate_checkpoint(program, replacement, substituted_backend)
+    histories[expected_backend] = replacement
+    monkeypatch.setattr(composition, '_executed',
+                        lambda supplied, backend='source': histories[backend])
+    with pytest.raises((ValueError, ArithmeticError)):
+        s._execution_check(finite_enclosure, temporal)

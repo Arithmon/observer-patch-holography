@@ -6,6 +6,7 @@ substitutes for the source-executed finite program. See SMOOTH_HISTORY.md.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 from dataclasses import dataclass, replace
 from fractions import Fraction as F
 import hashlib
@@ -79,11 +80,16 @@ def _evolve(vector, time, normalization, resolution, dimension):
         return ih._advance(vector, time, steps, resolution.degree,
                            resolution.cutoff, resolution.bits, normalization)
     errors = {'Taylor': F(0), 'discarded_support': F(0), 'coefficient_rounding': F(0)}
-    maximum = 0
-    action = lambda v: _compress(ih._hamiltonian_numerator(v), dimension)
+    maximum = max((a+b for a, b, _ in vector.coefficients), default=0)
+
+    def action(v):
+        nonlocal maximum
+        output = _compress(ih._hamiltonian_numerator(v), dimension)
+        maximum = max(maximum, max((a+b for a, b, _ in output), default=0))
+        return output
+
     for _ in range(steps):
         polynomial, remainder = _series(vector, time/steps, resolution.degree, action, 128)
-        maximum = max(maximum, max((a+b for a, b, _ in remainder.coefficients), default=0))
         errors['Taylor'] += ih._root_upper(_norm(remainder, normalization))
         # The finite generator has already been compressed at EVERY power.
         # Its rectangle is retained in full; only coefficient rounding follows.
@@ -111,7 +117,14 @@ def _pointer(vector, normalization, resolution, dimension):
     alpha_upper = ih._root_upper(F(1, 8))
     alpha = alpha_upper-F(1, ih.ROOT_SCALE)
     delta = F(1, ih.ROOT_SCALE)
-    action = lambda v: _coordinate(v, dimension)
+    maximum = max((a+b for a, b, _ in vector.coefficients), default=0)
+
+    def action(v):
+        nonlocal maximum
+        output = _coordinate(v, dimension)
+        maximum = max(maximum, max((a+b for a, b, _ in output), default=0))
+        return output
+
     minus, rem_minus = _series(vector, alpha, resolution.degree, action)
     plus, rem_plus = _series(vector, -alpha, resolution.degree, action)
     taylor = ih._root_upper((_norm(rem_minus, normalization)+_norm(rem_plus, normalization))/2)
@@ -129,7 +142,6 @@ def _pointer(vector, normalization, resolution, dimension):
     errors = {'Taylor': taylor, 'coordinate_coefficient': angle,
               'discarded_support': ih._root_upper(sum((x*x for x in cuts), F(0))),
               'coefficient_rounding': ih._root_upper(sum((x*x for x in rounds), F(0)))}
-    maximum = max((a+b for a, b, _ in rem_minus.coefficients), default=0)
     return tuple(outputs), errors, maximum
 
 
@@ -188,14 +200,19 @@ def _validate(enclosure):
     return enclosure
 
 
-def enclose(program, *, dimension=None, resolution=Resolution()):
+def enclose(program, *, dimension=None, resolution=None):
     """Enclose the whole declared program; None means infinite occupation.
 
     The preparation is the specified blank gauge/free scalar vacuum with a
     native-current kick. Arbitrary supplied work states are outside this API.
     """
+    if resolution is None:
+        resolution = Resolution()
     if type(program) is not protocol.Program or type(resolution) is not Resolution:
         raise ValueError('typed canonical Program and certificate Resolution required')
+    # Revalidate and detach even a caller-owned frozen dataclass: its backing
+    # dictionary can be changed, and completed evidence must retain its inputs.
+    resolution = replace(resolution)
     if program.coupling != F(1, 4):
         raise ValueError('the exact common Hamiltonian requires coupling 1/4')
     if dimension is not None and (type(dimension) is not int or dimension != program.dimension):
@@ -213,7 +230,8 @@ def enclose(program, *, dimension=None, resolution=Resolution()):
         sqrt5_lower = F(math.isqrt(5*ih.ROOT_SCALE**2), ih.ROOT_SCALE)
         preparation_error = ih._root_upper(1-F(4, 9)*sqrt5_lower*normalization)
     branches = {(): _kick(initial, program.native_current)}
-    stages, total_error, maximum = [], F(0), 0
+    stages, total_error = [], F(0)
+    maximum = max((a+b for a, b, _ in initial.coefficients), default=0)
     for index, operation in enumerate(program.operations):
         following, local_errors, components = {}, [], {}
         for record, vector in branches.items():
@@ -290,12 +308,12 @@ def summary(enclosure):
         rows.append({'record': list(record), 'polynomial_sha256': digest,
                      'nonzero_coefficients': len(coefficients),
                      'mass': ih._interval(_norm(state, enclosure.normalization), _norm(state, enclosure.normalization))})
-    return {'dimension': enclosure.dimension, 'resolution': enclosure.resolution.__dict__,
+    return {'dimension': enclosure.dimension, 'resolution': dict(enclosure.resolution.__dict__),
             'preparation_trace_distance_upper': str(enclosure.preparation_error),
             'polynomial_vector_error_upper': str(enclosure.vector_error),
             'complete_output_half_trace_norm_error_upper': str(enclosure.output_error),
             'maximum_expanded_total_occupation': enclosure.maximum_support,
-            'stages': enclosure.stages, 'branches': rows}
+            'stages': deepcopy(enclosure.stages), 'branches': rows}
 
 
 def probability_interval(enclosure, slot, bit):
@@ -330,7 +348,8 @@ def _execution_check(finite, temporal):
     # Preparation is a separate service: an erroneous shared preparation
     # must not be hidden inside the much larger Hamiltonian splitting budget.
     prepared = embedded(ih._initial(finite.dimension-2)).reshape(-1, 1)
-    for history in (source, independent):
+    for history, backend in ((source, 'source'), (independent, 'product')):
+        protocol.validate_checkpoint(finite.program, history, backend)
         if (history.program != finite.program or history.preparation_mode != 'declared_vacuum'
                 or history.cursor != len(finite.program.operations)
                 or history.initial_state.shape != prepared.shape
