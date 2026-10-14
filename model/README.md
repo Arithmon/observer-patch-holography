@@ -5,6 +5,20 @@ The implementation, tests, derivations and next construction steps belong
 here. Start with the finite observer, run its retained results, then extend
 its actual interfaces while preserving the demonstrated behavior.
 
+The [finite executable specification](common_source/COMPOSITION.md) gives
+the common interacting observer one validated operation grammar, state and
+record algebra, preparation, controller, checkpoint and refinement contract.
+Its [runtime](common_source/protocol.py) also executes the existing sharp and
+smooth histories. The [continued observer](common_source/composition.py)
+keeps one preparation through two scalar reads, later feedback and a clock
+probe, then completes the native actuation. Its 4,224 joint outcomes at each
+executed cutoff retain the disturbed quantum state and every record. The
+same-history occupation bound includes those later operations.
+
+```sh
+python -m model.common_source.composition --check model/common_source/composition_results.json
+```
+
 The newest step is the [common interacting source](common_source/README.md):
 quantum electric flux, charged CAR matter and a scalar field share one
 evolving register, with complete measurements, retained records and native

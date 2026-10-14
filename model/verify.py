@@ -30,6 +30,7 @@ REPLAYS = (
     ("model.observer.source_discrimination", None,
      "model/observer/source_discrimination/results.json"),
     ("model.common_source", None, "model/common_source/results.json"),
+    ("model.common_source.composition", None, "model/common_source/composition_results.json"),
     ("model.common_source.infinite_history", None, "model/common_source/infinite_results.json"),
     ("model.common_source.sharp_output", None, "model/common_source/sharp_output_results.json"),
     ("model.common_source.bridge", None, "model/common_source/bridge_results.json"),

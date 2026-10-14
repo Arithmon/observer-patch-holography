@@ -16,7 +16,7 @@ python -m model.verify
 python -m pytest -q -W error model
 ```
 
-The verifier checks the artifact manifests and replays all 21 retained
+The verifier checks the artifact manifests and replays all 22 retained
 receipts. The finite observer contributes the exact native observer, its
 quantum mixing and record capacity, a 20,000-trial sequential run, complete
 record recovery, the P-dependent binary detector with 200,000 trials and

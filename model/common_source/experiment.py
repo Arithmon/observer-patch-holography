@@ -130,18 +130,25 @@ def history(d, steps=512, coupling=COUPLING, feedback_enabled=True, current=0):
         raise ValueError('positive integer split count and explicit feedback switch required')
     if type(current) is not int or current not in (-1, 0, 1):
         raise ValueError('native current -1, 0 or 1 required')
-    initial, prepare_meta = scalar.preparation(d)
+    from . import protocol
+    _, prepare_meta = scalar.preparation(d)
     kick_word = [c.pulse('X', -current*FEEDBACK_ANGLE, [0])]
-    kick, kick_guard = c.stabilize_executed_unitary(c.execute(kick_word, _register(d)[0]))
-    initial = kick@initial
+    _, kick_guard = c.stabilize_executed_unitary(c.execute(kick_word, _register(d)[0]))
     kick_meta = {'guard': kick_guard, 'resources': _word_resources(kick_word),
                  'native_current': current}
-    first, first_meta = scalar.source_unitary(d, steps, time=1., coupling=coupling)
-    second, second_meta = scalar.source_unitary(d, steps, time=.5, coupling=coupling)
-    read_a, read_a_meta = pointer(d, 0)
-    read_b, read_b_meta = scalar_pointer(d)
+    _, first_meta = scalar.source_unitary(d, steps, time=1., coupling=coupling)
+    _, second_meta = scalar.source_unitary(d, steps, time=.5, coupling=coupling)
+    _, read_a_meta = pointer(d, 0)
+    _, read_b_meta = scalar_pointer(d)
     independent_first = scalar.independent_split_unitary(d, steps, time=1., coupling=coupling)
     independent_second = scalar.independent_split_unitary(d, steps, time=.5, coupling=coupling)
+    # Production states and prefix maps come from the canonical engine. The
+    # original metadata and independent target calculations remain this
+    # compatibility receipt's diagnostic surface.
+    program = protocol.sharp_program(d, steps, native_current=current,
+                                     feedback=feedback_enabled, coupling=F(coupling))
+    prefixes = protocol.execution_prefixes(program)
+    terminal = {branch.record: branch for branch in prefixes[-1].branches}
     # The independent preparation is the declared scalar target with gauge |00>.
     from ..observer.source_scalar.field import vacuum_vector
     target = np.kron(vacuum_vector(d)[0], np.array([1., 0., 0., 0.]))
@@ -157,11 +164,11 @@ def history(d, steps=512, coupling=COUPLING, feedback_enabled=True, current=0):
     flux = np.array([-(index & 1)+(index >> 1 & 1) for index in range(size)])
     q0 = np.kron(np.kron(np.eye(d), quadratures(d)[0]), np.eye(4))
     for a in (0, 1):
-        controlled, control_meta = feedback(d, a, feedback_enabled)
+        _, control_meta = feedback(d, a, feedback_enabled)
         oracle_control = _independent_feedback(size, a, feedback_enabled)
         for b in (0, 1):
-            kraus = read_b[b]@second@controlled@read_a[a]@first
-            state = kraus@initial
+            kraus = terminal[a, b].kraus
+            state = terminal[a, b].state[:, 0]
             oracle = (scalar_projectors(d)[b]@independent_second@oracle_control
                       @projector(size, 0, a)@independent_first@target)
             probability = float(np.vdot(state, state).real)
@@ -178,8 +185,7 @@ def history(d, steps=512, coupling=COUPLING, feedback_enabled=True, current=0):
                 for a in (0, 1)]
     margin_b = [sum(row['probability'] for row in branches if row['record'][1] == b)
                 for b in (0, 1)]
-    prefix = first@initial
-    prefix_marginal = [float(np.vdot(k@prefix, k@prefix).real) for k in read_a]
+    prefix_marginal = [branch.probability for branch in prefixes[2].branches]
     normalization_error = abs(sum(row['probability'] for row in branches)-1)
     kraus_error = float(np.linalg.norm(completeness-np.eye(size), 2))
     checks = {'normalized_complete_history': normalization_error < 2e-10,

@@ -72,6 +72,17 @@ of the observer statistics, and independent empirical completion, remain open.
 
 ## Current executable result
 
+The [finite executable specification](common_source/COMPOSITION.md)
+connects the common source's preparation, complete instruments, retained
+records, feedback, continuation and occupation refinement through one
+[typed runtime](common_source/protocol.py). The old sharp and smooth
+histories are programs of this engine and retain their comparison receipts.
+The new four-read program keeps the field through two smooth observations
+and later clock evolution, with source-word costs and complete-output error
+budgets. Both cutoffs d=2,4 execute all 4,224 joint native/quantum outcomes.
+This closes the smooth-read continuation and later model-time probe join;
+it does not transfer smooth moment bounds to the sharp detector.
+
 The [common interacting source](common_source/README.md) joins quantum
 electric flux, a charged CAR pair and two neutral scalar sites on the same
 work register. Native source words implement their noncommuting evolution,
@@ -148,8 +159,11 @@ dimensions 2 and 4 remaining open.
 
 The sharp instrument need not preserve finite kinetic energy; the smooth
 instrument preserves the energy form domain and has unconditional
-infinite-model energy increment `1/8`. None of these occupation results includes
-a limit of either appended clock protocol or a calibrated physical duration.
+infinite-model energy increment `1/8`. The earlier clock probes appended to
+the sharp history have no occupation limit here. The
+[continued smooth program](common_source/COMPOSITION.md) instead bounds its
+actual later gauge-probe instrument; Gibbs modular-data convergence and
+physical clock calibration remain separate obligations.
 
 The [native observer](observer/README.md) executes two repair events with a
 finite tape. It records the first current, issues a supplied forecast from
